@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431032"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>A oszlopcentrikus sorcsoport-minőségének maximalizálása
@@ -80,9 +80,9 @@ A trim_reason_desc megadja, hogy a sorcsoport-e (trim_reason_desc = NO_TRIM azt 
 Egy sorcsoport tömörítéséhez szükséges maximális memória körülbelül
 
 - 72 MB +
-- \#sorok \* \#oszlopai \* 8 bájt +
-- \#sorok \* \#rövid-karakterlánc-oszlopok \* 32 bájt +
-- \#hosszú karakterlánc – 16 MB \* méretű oszlop a tömörítési szótárhoz
+- \#sorok \* \# oszlopai \* 8 bájt +
+- \#sorok \* \# rövid-karakterlánc-oszlopok \* 32 bájt +
+- \#hosszú karakterlánc – \* 16 MB méretű oszlop a tömörítési szótárhoz
 
 ahol a rövid karakterlánc-oszlopok karakterlánc adattípusokat használnak <= 32 bájt és hosszú karakterlánc típusú oszlopokban, a > 32 bájtos karakterlánc-adattípusokat használnak.
 

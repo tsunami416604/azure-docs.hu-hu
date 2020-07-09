@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77621516"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Insight4GRC konfigurálása
@@ -90,7 +89,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim-végpont URL-címét a **bérlői URL**-címben. A végpontot URL-címnek olyan formátumúnak `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` kell lennie, ahol a **Insight4GRC tartományneve** az előző lépések során lekért érték. Adja meg a **titkos jogkivonatban**korábban lekért tulajdonosi jogkivonat értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Insight4GRC. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Insight4GRC-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim-végpont URL-címét a **bérlői URL**-címben. A végpontot URL-címnek olyan formátumúnak kell lennie, `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` ahol a **Insight4GRC tartományneve** az előző lépések során lekért érték. Adja meg a **titkos jogkivonatban**korábban lekért tulajdonosi jogkivonat értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Insight4GRC. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Insight4GRC-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![kiépítési](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -123,7 +122,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |---|---|
       |displayName|Sztring|
       |externalId|Sztring|
-      |tagok|Referencia|
+      |tagok|Hivatkozás|
 
 10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -148,7 +147,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Tekintse meg a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -7,12 +7,12 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Virtuális központ védelme
+    - name: Virtuális központ védelme – ARM-sablon
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
 - name: Oktatóanyagok
   items:
-    - name: A virtuális WAN biztonságossá tétele – portál
+    - name: A virtuális központ biztonságossá tétele – portál
       href: secure-cloud-network.md
     - name: Központi virtuális hálózat biztonságossá tétele – portál
       href: secure-hybrid-network.md
@@ -24,18 +24,26 @@
       href: secured-virtual-hub.md
     - name: Az üzembe helyezés általános folyamata
       href: deployment-overview.md
-    - name: Megbízható biztonsági partnerek
+    - name: Biztonságipartner-szolgáltatók
       href: trusted-security-partners.md
+    - name: IP-csoportok
+      href: ip-groups.md
     - name: Szabályfeldolgozási logika
       href: rule-processing.md
     - name: Architektúralehetőségek
       href: vhubs-and-vnets.md
+    - name: Fenyegetésfelderítési beállítások
+      href: threat-intelligence-settings.md
+    - name: FQDN a hálózatszabályokban
+      href: fqdn-filtering-network-rules.md
 - name: Útmutatók
   items:
-    - name: Megbízható biztonsági partnerek hozzáadása
+    - name: Biztonságipartner-szolgáltatók üzembe helyezése
       href: deploy-trusted-security-partner.md
     - name: Migrálás tűzfalszabályzatba – PowerShell
       href: migrate-to-policy.md
+    - name: DNS-beállítások
+      href: dns-settings.md
 - name: Referencia
   items:
     - name: Azure CLI

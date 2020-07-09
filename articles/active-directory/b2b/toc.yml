@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: Példák
       items:
+        - name: Minták önkiszolgáló regisztrációhoz
+          href: code-samples-self-service-sign-up.md
         - name: Kód- és Azure PowerShell-minták
           href: code-samples.md
     - name: Alapelvek
@@ -52,6 +54,8 @@
           href: identity-providers.md
         - name: Önkiszolgáló regisztráció felhasználói folyamatai (előzetes verzió)
           href: self-service-sign-up-overview.md
+        - name: Önkiszolgáló regisztrációs API-összekötők (előzetes)
+          href: api-connectors-overview.md
         - name: Azure AD-jogosultságkezelés
           href: self-service-portal.md
         - name: Aktuális korlátozások
@@ -95,6 +99,10 @@
               href: user-flow-add-custom-attributes.md
             - name: A felhasználói folyamat nyelvének testreszabása
               href: user-flow-customize-language.md
+            - name: API-összekötő hozzáadása
+              href: self-service-sign-up-add-api-connector.md
+            - name: Egyéni jóváhagyási rendszer hozzáadása
+              href: self-service-sign-up-add-approvals.md
         - name: Vendégfelhasználói fiókok kezelése
           items:
             - name: B2B felhasználó hozzáadása szerepkörhöz
@@ -125,8 +133,8 @@
       items:
         - name: GYIK
           href: faq.md
-        - name: Támogatás igénybevétele B2B-hez
-          href: get-support.md
+        - name: Támogatás igénylése
+          href: 'https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto'
         - name: Azure visszajelzési fórum
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure-ütemterv

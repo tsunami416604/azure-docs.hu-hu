@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334157"
 ---
-# <a name="read-and-write-spatial-data"></a>Térbeli információk olvasása és írása
+# <a name="read-and-write-spatial-data"></a>Térbeli adatok beolvasása és írása
 
 Az alábbi táblázat azokat a térbeli fájlformátumokat sorolja fel, amelyek a térbeli IO-modullal végzett műveletek olvasásához és írásához támogatottak.
 
@@ -45,25 +45,25 @@ Az olvasási függvény eredménye egy `SpatialDataSet` objektum. Ez az objektum
 | `bbox` | `BoundingBox` | Az adatkészletben lévő összes adat határoló mezője. |
 | `features` | `Feature[]` | Az adatkészleten belüli GeoJSON-funkciók. |
 | `groundOverlays` | `(atlas.layer.ImageLayer | atlas.layers.OgcMapLayer)[]` | A KML-GroundOverlays tömbje. |
-| `icons` | Rekord&lt;karakterlánca, karakterlánc&gt; | Ikon URL-címek készlete Kulcs = ikon neve, érték = URL. |
-| properties | bármely | A térbeli adatkészletek dokumentum szintjén megadott tulajdonság-információk. |
+| `icons` | Rekord &lt; karakterlánca, karakterlánc&gt; | Ikon URL-címek készlete Kulcs = ikon neve, érték = URL. |
+| properties | bármelyik | A térbeli adatkészletek dokumentum szintjén megadott tulajdonság-információk. |
 | `stats` | `SpatialDataSetStats` | A térbeli adatkészletek tartalmával és feldolgozási idejével kapcsolatos statisztikák. |
 | `type` | `'FeatureCollection'` | Írásvédett GeoJSON-típus értéke. |
 
 ## <a name="examples-of-reading-spatial-data"></a>Példák a térbeli információk olvasására
 
-A következő kód bemutatja, hogyan olvashatja el a térbeli adatkészleteket, és hogyan jelenítheti meg `SimpleDataLayer` a térképen a osztály használatával. A kód egy GPX-fájlt használ, amelyet egy URL-cím mutat.
+A következő kód bemutatja, hogyan olvashatja el a térbeli adatkészleteket, és hogyan jelenítheti meg a térképen a `SimpleDataLayer` osztály használatával. A kód egy GPX-fájlt használ, amelyet egy URL-cím mutat.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Térbeli adatkészletek egyszerű betöltése' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével egyszerűen megtekintheti a toll- <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>betöltési térbeli adathalmazt</a> .
+<iframe height='500' scrolling='no' title='Térbeli adatkészletek egyszerű betöltése' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az CodePen-on Azure Maps () segítségével egyszerűen megtekintheti a toll- <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>betöltési térbeli adathalmazt</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
-A következő kód bemutatja, hogyan olvashatja és töltheti be a KML-t és a KMZ-t a térképre. A KML tartalmazhat olyan `ImageLyaer` alapátfedéseket, amelyek a vagy `OgcMapLayer`a formában lesznek. Ezeket a átfedéseket a szolgáltatásokból külön kell felvenni a térképen. Emellett, ha az adatkészlethez egyéni ikonok tartoznak, ezeket az ikonokat a szolgáltatások betöltése előtt be kell tölteni a Maps-erőforrásokba.
+A következő kód bemutatja, hogyan olvashatja és töltheti be a KML-t és a KMZ-t a térképre. A KML tartalmazhat olyan alapátfedéseket, amelyek a vagy a formában lesznek `ImageLyaer` `OgcMapLayer` . Ezeket a átfedéseket a szolgáltatásokból külön kell felvenni a térképen. Emellett, ha az adatkészlethez egyéni ikonok tartoznak, ezeket az ikonokat a szolgáltatások betöltése előtt be kell tölteni a Maps-erőforrásokba.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='A KML betöltése a térképen' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A <a href='https://codepen.io'>CodePen</a>-on található Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével MEGtekintheti a KML-t a <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>térképre</a> .
+<iframe height='500' scrolling='no' title='A KML betöltése a térképen' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A CodePen-on található Azure Maps () segítségével megtekintheti a KML-t a <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>térképre</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 Opcionálisan megadhat egy proxy szolgáltatást a tartományok közötti olyan adategységek eléréséhez, amelyekhez nem engedélyezett a CORS. Az olvasási függvény megpróbál hozzáférni egy másik tartományban lévő fájlokhoz a CORS használatával. Miután az első alkalommal nem fér hozzá egy másik tartományhoz tartozó erőforráshoz a CORS használatával, csak további fájlokat fog igényelni, ha van megadva proxy szolgáltatás. Az olvasási függvény hozzáfűzi a fájl URL-címét a megadott proxy URL-cím végéhez. Ez a kódrészlet azt mutatja be, hogyan lehet átadni egy proxy szolgáltatást az olvasási függvénynek:
@@ -85,18 +85,18 @@ Az alábbi bemutató bemutatja, hogyan olvashat egy tagolt fájlt, és hogyan je
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Tagolt fájl hozzáadása' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io'>CodePen</a>-on lévő<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () által <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>határolt fájl hozzáadásával</a> .
+<iframe height='500' scrolling='no' title='Tagolt fájl hozzáadása' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on lévő Azure Maps () által <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>határolt fájl hozzáadásával</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="write-spatial-data"></a>Térbeli adatainak írása
 
-A térbeli IO modulban két fő írási függvény található. A `atlas.io.write` függvény létrehoz egy karakterláncot, míg `atlas.io.writeCompressed` a függvény tömörített zip-fájlt hoz létre. A tömörített ZIP-fájl egy szöveges fájlt tartalmaz, amelyben a térbeli érték szerepel. Mindkét függvény egy ígéretet ad vissza az adatok fájlba való felvételéhez. És mindkét esetben a következő adatok bármelyikét írhatják `SpatialDataSet`:, `DataSource` `ImageLayer` `OgcMapLayer`,,, szolgáltatások gyűjteménye, funkció, geometria vagy az adattípusok bármely kombinációjának tömbje. Ha függvények használatával ír, megadhatja a kívánt fájlformátumot. Ha nincs megadva a fájl formátuma, a rendszer a KML-ként írja be az adatfájlokat.
+A térbeli IO modulban két fő írási függvény található. A `atlas.io.write` függvény létrehoz egy karakterláncot, míg a `atlas.io.writeCompressed` függvény tömörített zip-fájlt hoz létre. A tömörített ZIP-fájl egy szöveges fájlt tartalmaz, amelyben a térbeli érték szerepel. Mindkét függvény egy ígéretet ad vissza az adatok fájlba való felvételéhez. És mindkét esetben a következő adatok bármelyikét írhatják:,,,, `SpatialDataSet` `DataSource` `ImageLayer` `OgcMapLayer` szolgáltatások gyűjteménye, funkció, geometria vagy az adattípusok bármely kombinációjának tömbje. Ha függvények használatával ír, megadhatja a kívánt fájlformátumot. Ha nincs megadva a fájl formátuma, a rendszer a KML-ként írja be az adatfájlokat.
 
-Az alábbi eszköz bemutatja a `atlas.io.write` függvénnyel használható írási lehetőségek többségét.
+Az alábbi eszköz bemutatja a függvénnyel használható írási lehetőségek többségét `atlas.io.write` .
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Térbeli adatírási beállítások' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>térbeli adatainak írási beállításait</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Térbeli adatírási beállítások' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>térbeli adatainak írási beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="example-of-writing-spatial-data"></a>Példa térbeli adatainak írására
@@ -105,7 +105,7 @@ A következő minta lehetővé teszi a térbeli fájlok húzását, majd a térk
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Térbeli fájlok húzása a térképre' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>térbeli fájlok rajzsablonról</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Térbeli fájlok húzása a térképre' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>térbeli fájlok rajzsablonról</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Opcionálisan megadhat egy proxy szolgáltatást a tartományok közötti olyan adategységek eléréséhez, amelyekhez nem engedélyezett a CORS. Ez a kódrészlet egy proxy szolgáltatás beépítését mutatja be:
@@ -124,32 +124,32 @@ atlas.io.read(data, {
 
 ## <a name="read-and-write-well-known-text-wkt"></a>Jól ismert szöveg olvasása és írása (WKT)
 
-A [Well-known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) egy nyílt TÉRINFORMATIKAI konzorcium (OGC) szabvány, amely a térbeli geometriák szövegként való ábrázolására szolgál. Számos térinformatikai rendszer támogatja a WKT, például az Azure SQL és az Azure PostgreSQL használatát a PostGIS beépülő modullal. A legtöbb OGC-szabványhoz hasonlóan a koordináták "hosszúsági szélesség" formátumban vannak formázva az "x y" konvencióval való igazításhoz. Például a hosszúság-110 és a szélesség 45 pont a WKT formátum `POINT(-110 45)` használatával írható.
+A [Well-known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) egy nyílt TÉRINFORMATIKAI konzorcium (OGC) szabvány, amely a térbeli geometriák szövegként való ábrázolására szolgál. Számos térinformatikai rendszer támogatja a WKT, például az Azure SQL és az Azure PostgreSQL használatát a PostGIS beépülő modullal. A legtöbb OGC-szabványhoz hasonlóan a koordináták "hosszúsági szélesség" formátumban vannak formázva az "x y" konvencióval való igazításhoz. Például a hosszúság-110 és a szélesség 45 pont `POINT(-110 45)` a WKT formátum használatával írható.
 
-A függvény használatával a `atlas.io.ogc.WKT.read` jól ismert szöveg olvasható, és a `atlas.io.ogc.WKT.write` függvény használatával írható.
+A függvény használatával a jól ismert szöveg olvasható, `atlas.io.ogc.WKT.read` és a függvény használatával írható `atlas.io.ogc.WKT.write` .
 
 ## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Példák a jól ismert szöveg olvasására és írására (WKT)
 
-A következő kód bemutatja, hogyan olvashatja el a jól ismert szöveges `POINT(-122.34009 47.60995)` karakterláncot, és hogyan jelenítheti meg a térképen a buborék réteg használatával.
+A következő kód bemutatja, hogyan olvashatja el a jól ismert szöveges karakterláncot `POINT(-122.34009 47.60995)` , és hogyan jelenítheti meg a térképen a buborék réteg használatával.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jól ismert szöveg olvasása' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>olvasható, jól ismert szöveget</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Jól ismert szöveg olvasása' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>olvasható, jól ismert szöveget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 A következő kód a jól ismert szövegek olvasását és írását mutatja be előre és vissza.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Jól ismert szöveg olvasása és írása' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>jól ismert szöveg olvasása és írása</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Jól ismert szöveg olvasása és írása' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>jól ismert szöveg olvasása és írása</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>GML olvasása és írása
 
-A GML egy térbeli XML-fájl specifikációja, amelyet gyakran használnak más XML-specifikációk kiterjesztésére. A GeoJSON-alapú adat a `atlas.io.core.GmlWriter.write` függvény használatával XML-ként és GML-címkékkel is írható. A GML tartalmazó XML-fájl olvasható a `atlas.io.core.GmlReader.read` függvény használatával. Az olvasási függvénynek két lehetősége van:
+A GML egy térbeli XML-fájl specifikációja, amelyet gyakran használnak más XML-specifikációk kiterjesztésére. A GeoJSON-alapú adat a függvény használatával XML-ként és GML-címkékkel is írható `atlas.io.core.GmlWriter.write` . A GML tartalmazó XML-fájl olvasható a függvény használatával `atlas.io.core.GmlReader.read` . Az olvasási függvénynek két lehetősége van:
 
 - A `isAxisOrderLonLat` "szélesség, hosszúság" vagy "hosszúság, szélesség" koordinátáinak tengelyes sorrendje eltérő lehet az adathalmazok között, és nem mindig megfelelően van definiálva. Alapértelmezés szerint a GML-olvasó a "szélesség, hosszúság" értékként beolvassa a koordináta-adatokat, de a beállítás True értékre állítása "hosszúsági fok".
-- Ez `propertyTypes` a beállítás a kulcs értékének keresési táblázata, ahol a kulcs az adathalmaz egyik tulajdonságának a neve. Az érték az az Objektumtípus, amelybe a rendszer az elemzés során átadja az értéket. A támogatott típusú értékek a következők `string`: `number`, `boolean`, és `date`. Ha egy tulajdonság nem szerepel a keresési táblában, vagy a típus nincs definiálva, a tulajdonság karakterláncként lesz értelmezve.
+- Ez a beállítás a `propertyTypes` kulcs értékének keresési táblázata, ahol a kulcs az adathalmaz egyik tulajdonságának a neve. Az érték az az Objektumtípus, amelybe a rendszer az elemzés során átadja az értéket. A támogatott típusú értékek a következők: `string` ,, `number` `boolean` és `date` . Ha egy tulajdonság nem szerepel a keresési táblában, vagy a típus nincs definiálva, a tulajdonság karakterláncként lesz értelmezve.
 
 A `atlas.io.read` függvény alapértelmezés szerint a `atlas.io.core.GmlReader.read` függvényt fogja észlelni, amikor azt észleli, hogy a bemeneti adatok XML-formátumúak, de az adatok nem a további támogatási térbeli XML-formátumok egyike.
 
@@ -178,13 +178,13 @@ További információ a cikkben használt osztályokról és módszerekről:
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
-> [OGC-Térkép réteg hozzáadása](spatial-io-add-ogc-map-layer.md)
+> [OGC-térképréteg hozzáadása](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás WFS szolgáltatáshoz](spatial-io-connect-wfs-service.md)
+> [Kapcsolódás WFS-szolgáltatáshoz](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Alapvető műveletek kihasználása](spatial-io-core-operations.md)
+> [Alapvető műveletek előnyeinek kihasználása](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Támogatott adatformátum részletei](spatial-io-supported-data-format-details.md)
+> [Támogatott adatformátumokra vonatkozó részletek](spatial-io-supported-data-format-details.md)

@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b2983bbaf22ae1b9e09ff3362a4bc06e6658b33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506198"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával
 
@@ -74,7 +74,7 @@ Ezután hozzon létre egy új kulcsot a Key vaultban. Új kulcs létrehozásáho
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
 
-Az Azure Storage-titkosítás csak 2048 bites RSA-és RSA-HSM-kulcsokat támogat. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
 
@@ -110,7 +110,7 @@ Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
 
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 
-Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból titkosítva lesz a Microsoft által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok letiltásához hívja [meg a set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) kapcsolót az `-StorageEncryption` alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból titkosítva lesz a Microsoft által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok letiltásához hívja [meg a set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) `-StorageEncryption` kapcsolót az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -120,5 +120,5 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

@@ -4,21 +4,21 @@ description: Azure CLI-minták Azure Cosmos DB Cassandra API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: sample
-ms.date: 9/25/2019
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8edeb6b0c64057f892fa8af4ed1680d5371805a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 093d8cdd97f28a419788070e674d80aad595f46a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556319"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure CLI-minták Azure Cosmos DB Cassandra API
 
 Az alábbi táblázat a Azure Cosmos DB Cassandra API Azure CLI-parancsfájlokra mutató hivatkozásokat tartalmaz. Az összes Azure Cosmos DB CLI-parancsra vonatkozó hivatkozási lapok az [Azure CLI-referenciában](/cli/azure/cosmosdb)érhetők el. A CLI-szkriptek összes Azure Cosmos DB a [Azure Cosmos db CLI GitHub-tárházban](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)található.
 
-| |  |
+|Tevékenység | Leírás |
 |---|---|
 | [Azure Cosmos-fiók, térköz és tábla létrehozása](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, a térközt és a Cassandra API táblát. |
 | [Átviteli sebesség módosítása](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése a szóköz és a tábla alapján.|
@@ -27,4 +27,5 @@ Az alábbi táblázat a Azure Cosmos DB Cassandra API Azure CLI-parancsfájlokra
 | [Biztonságos IP-tűzfallal](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Hozzon létre egy olyan Cosmos-fiókot, amely konfigurálva van az IP-tűzfallal.|
 | [Új fiók biztonságossá tétele szolgáltatási végpontokkal](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Hozzon létre egy Cosmos-fiókot, és gondoskodjon a szolgáltatás-végpontok biztonságáról.|
 | [Meglévő fiók biztonságossá tétele szolgáltatási végpontokkal](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Egy Cosmos-fiók frissítése a szolgáltatás-végpontok biztonságossá tételéhez, ha az alhálózat végül konfigurálva van.|
+| [Erőforrások zárolásának törlése a törlésből](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal.|
 |||

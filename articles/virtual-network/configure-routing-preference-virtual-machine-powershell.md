@@ -7,17 +7,16 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 8325d63881c72a795e3b9e9a6d1d8498c84972ad
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 2002e4a11a2accbbc639c200372c393b8dc2f228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707531"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Útválasztási beállítások konfigurálása virtuális géphez Azure PowerShell használatával
 
@@ -35,7 +34,7 @@ Az útválasztási preferencia szolgáltatás jelenleg előzetes verzióban érh
 Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-ba `Connect-AzAccount` .
 2. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiója Azure-régióban:
 

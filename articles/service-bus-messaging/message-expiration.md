@@ -1,24 +1,13 @@
 ---
 title: Azure Service Bus – üzenet lejárata
 description: Ez a cikk a Azure Service Bus üzenetek érvényességének lejáratát és időpontját ismerteti. Az ilyen határidő lejárta után az üzenet már nem érkezik meg.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341197"
 ---
 # <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (élettartama)
 
@@ -26,7 +15,7 @@ Az üzenetben szereplő hasznos adatok, illetve az üzenetek fogadóknak küldö
 
 Olyan fejlesztési és tesztelési környezetekben, amelyekben gyakran használják a várólistákat és a témaköröket az alkalmazások és az alkalmazások részleges futtatásának kontextusában, azt is érdemes használni, hogy a rendszer az átállási teszteket automatikusan begyűjtse, hogy a következő teszt futtatása megtisztítsa.
 
-Az egyes üzenetek elévülését a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) rendszertulajdonság beállításával szabályozhatja, amely a relatív időtartamot határozza meg. Ha az üzenetet várólistán lévő az entitásba, a lejárati idő abszolút lesz. Ekkor a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) tulajdonság a [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)értéket veszi igénybe. A felügyelt üzenetekben az élettartam (TTL) beállítása nem lép érvénybe, ha nincsenek aktívan figyelt ügyfelek.
+Az egyes üzenetek elévülését a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) rendszertulajdonság beállításával szabályozhatja, amely a relatív időtartamot határozza meg. Ha az üzenetet várólistán lévő az entitásba, a lejárati idő abszolút lesz. Ekkor a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) tulajdonság a [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc)  +  [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)értéket veszi igénybe. A felügyelt üzenetekben az élettartam (TTL) beállítása nem lép érvénybe, ha nincsenek aktívan figyelt ügyfelek.
 
 A **ExpiresAtUtc** azonnali lekérése után az üzenetek nem lesznek jogosultak a beolvasásra. A lejárat nem befolyásolja a kézbesítéshez jelenleg zárolt üzeneteket. ezeket az üzeneteket a rendszer továbbra is szabályosan kezeli. Ha a zárolás lejár, vagy az üzenet el lett hagyva, a lejárat azonnal érvénybe lép.
 

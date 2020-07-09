@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042812"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Ismerje meg, hogyan hozhat létre új bérlőket, és hogyan regisztrálhat azokat a katalógusban
@@ -78,7 +77,7 @@ A Wingtip jegyek SaaS-szkriptek és az alkalmazás forráskódja az [WingtipTick
 
 Annak megismeréséhez, hogy a Wingtip tickets alkalmazás hogyan valósítja meg az új bérlői üzembe helyezést, adjon hozzá egy töréspontot, és kövesse a munkafolyamatot a bérlő kiépítése közben.
 
-1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ ProvisionAndCatalog \\ _demo-ProvisionAndCatalog. ps1_ és állítsa be a következő paramétereket:
+1. A PowerShell ISE-ben nyissa meg a... \\ A Learning \\ -modulok ProvisionAndCatalog \\ _Demo-ProvisionAndCatalog.ps1_ , és a következő paramétereket kell megadni:
 
    * **$TenantName** = az új helyszín neve (például *Bushwillow Blues*).
    * **$VenueType** = az egyik előre definiált helyszín típusa: _blues, ClassicalMusic, Dance, jazz, judo, Motor Racing, többcélú, Opera, rockzene, Soccer_.
@@ -116,7 +115,7 @@ Nem kell explicit módon követnie ezt a munkafolyamatot. Ismerteti, hogyan lehe
 
     Az adatbázis neve a bérlő nevéből jön létre, hogy egyértelmű legyen, melyik szilánk melyik bérlőhöz tartozik. Más adatbázis-elnevezési konvenciókat is használhat. Egy Resource Manager-sablon létrehoz egy bérlői adatbázist egy sablon-adatbázis (_baseTenantDB_) a katalógus-kiszolgálón való másolásával. Másik lehetőségként létrehozhat egy adatbázist, és inicializálhatja azt egy bacpac importálásával. Az inicializálási parancsfájlt jól ismert helyről is végrehajthatja.
 
-    A Resource Manager-sablon a. ..\Learning Modules\Common\ mappában található: *tenantdatabasecopytemplate. JSON*
+    A Resource Manager-sablon a. ..\Learning Modules\Common\ mappában található: *tenantdatabasecopytemplate.jsbekapcsolva*
 
 * **A bérlői adatbázis még inicializálva van.** A rendszer hozzáadja a helyszín (bérlő) nevét és a helyszín típusát. Itt más inicializálás is elvégezhető.
 
@@ -136,7 +135,7 @@ A kiépítés befejezése után a végrehajtás visszatér az eredeti *bemutató
 
 Ez a gyakorlat 17 bérlős köteget foglal le. Javasoljuk, hogy a bérlők számára kiépítse ezt a köteget, mielőtt más Wingtip-jegyeket SaaS-adatbázis-bérlői oktatóanyagokat indít el. Több adatbázissal is dolgozhat a szolgáltatással.
 
-1. A PowerShell ISE-ben nyissa meg a... \\ Learning-modulok \\ ProvisionAndCatalog \\ *demo-ProvisionAndCatalog. ps1*. Módosítsa a *$DemoScenario* paramétert 3 értékre:
+1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ ProvisionAndCatalog \\ *Demo-ProvisionAndCatalog.ps1*. Módosítsa a *$DemoScenario* paramétert 3 értékre:
 
    * **$DemoScenario**  =  **3**. *bérlők kötegének kiépítése*.
 2. A szkript futtatásához nyomja le az F5 billentyűt.

@@ -8,11 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701830"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása App Service Environment v1-ben
 
@@ -35,7 +34,7 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. 
 1. Az [Azure Portalon](https://portal.azure.com/)kattintson az **erőforrás létrehozása > web és mobil > webalkalmazás**elemre. 
    
     ![][1]
-2. Válassza ki előfizetését.  
+2. Válassza ki az előfizetését.  
    
     Ha több előfizetéssel is rendelkezik, akkor a környezet létrehozásakor használt előfizetést kell használnia, hogy létrehozzon egy alkalmazást a App Service Environmentban. 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.

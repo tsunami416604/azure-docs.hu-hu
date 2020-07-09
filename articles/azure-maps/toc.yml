@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Lefedettség
       items:
+        - name: Lefedettség
+          href: geographic-coverage.md
         - name: Geokódolás lefedettsége
           href: geocoding-coverage.md
         - name: Forgalmi lefedettség
@@ -89,6 +91,17 @@
           href: how-to-manage-account-keys.md
         - name: Hitelesítés kezelése
           href: how-to-manage-authentication.md
+          items:
+            - name: Démonalkalmazás biztonságossá tétele
+              href: how-to-secure-daemon-app.md
+            - name: Egylapos alkalmazás interaktív bejelentkezésének biztonságossá tétele
+              href: how-to-secure-spa-users.md
+            - name: Webalkalmazás biztonságossá tétele
+              href: how-to-secure-webapp-users.md
+            - name: Egylapos alkalmazás nem interaktív bejelentkezésének biztonságossá tétele
+              href: how-to-secure-spa-app.md
+            - name: Korlátozott alkalmazás bemenetének biztonságossá tétele
+              href: how-to-secure-device-code.md
         - name: Tarifacsomag kezelése
           href: how-to-manage-pricing-tier.md
         - name: A Creator kezelése
@@ -177,6 +190,14 @@
               href: map-get-information-from-coordinate.md
             - name: Útvonal megjelenítése A-ból B-be
               href: map-route.md
+        - name: Beltéri térképek modul
+          items:
+            - name: Beltéri térképek modul
+              href: how-to-use-indoor-module.md
+            - name: Dinamikus stílus beltéri térképekhez
+              href: indoor-map-dynamic-styling.md
+            - name: Rajzolásihiba-megjelenítő
+              href: drawing-error-visualizer.md
         - name: Térbeli IO-modul
           items:
             - name: A térbeli IO-modul használata
@@ -211,14 +232,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Forgalomadatok megjelenítése
           href: how-to-show-traffic-android.md
-    - name: Fejlesztés a Creator beltéri térképeinek használatával
-      items:
-        - name: Beltéri térképek modul
-          href: how-to-use-indoor-module.md
-        - name: Dinamikus stílus beltéri térképekhez
-          href: indoor-map-dynamic-styling.md
-        - name: Rajzolásihiba-megjelenítő
-          href: drawing-error-visualizer.md
     - name: Adatokkal kapcsolatos visszajelzés küldése
       href: how-to-use-feedback-tool.md
 - name: Referencia
@@ -227,9 +240,11 @@
       items:
         - name: Rajzolási csomag követelményei
           href: drawing-requirements.md
+        - name: 'Dinamikus térképek, StylesObject'
+          href: schema-stateset-stylesobject.md
         - name: Járműhasználati modell
           href: consumption-model.md
-        - name: GeoJSON formátum kiterjesztése
+        - name: Kiterjesztett GeoJSON formátum
           href: extend-geojson.md
         - name: GeoJSON formátum geokerítéssel való ellátása
           href: geofence-geojson.md
@@ -289,6 +304,8 @@
           href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.maps/accounts
+    - name: Azure CLI
+      href: /cli/azure/maps
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
@@ -314,19 +331,15 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Az Azure Maps használati feltételei
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Az Azure Maps árképzése
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-maps'
-    - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-maps.html'
     - name: Azure Maps-videók
       href: 'https://aka.ms/AzureMapsVideos'
     - name: Nyílt forráskódú projektek

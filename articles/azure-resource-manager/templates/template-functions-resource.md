@@ -2,13 +2,12 @@
 title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 89e8907e4e134b621cd1c55bfcefeebde772df10
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.date: 06/18/2020
+ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099256"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
@@ -83,7 +82,7 @@ A következő példa egy erőforráscsoport-zárolás erőforrás-AZONOSÍTÓjá
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lockName":{
@@ -101,14 +100,14 @@ A következő példa egy erőforráscsoport-zárolás erőforrás-AZONOSÍTÓjá
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>listáját
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének a (z) értékkel kell kezdődnie `list` . Néhány gyakori használat: `listKeys` `listKeyValue` és `listSecrets` .
+A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének a (z) értékkel kell kezdődnie `list` . Néhány gyakori használat:, `listKeys` `listKeyValue` és `listSecrets` .
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -120,7 +119,9 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 ### <a name="valid-uses"></a>Érvényes használati módok
 
-A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a List függvényeket, `input` mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
+A List függvények az erőforrás-definíciók tulajdonságaiban is használhatók. Ne használjon olyan lista függvényt, amely bizalmas adatokat tesz elérhetővé a sablon outputs (kimenet) szakaszában. A kimeneti értékek tárolása a központi telepítési előzményekben történik, és egy rosszindulatú felhasználó lekérhető.
+
+Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a List függvényeket, `input` mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
 
 ### <a name="implementations"></a>Megvalósítások
 
@@ -132,8 +133,8 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft. AppConfiguration/configurationStores | Listkeys műveletének beolvasása |
 | Microsoft. Automation/automationAccounts | [Listkeys műveletének beolvasása](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft. batch/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft. BatchAI/munkaterületek/kísérletek/feladatok | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.BatCH/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft.BatchAI/munkaterületek/kísérletek/feladatok | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft. Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft. Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Microsoft. cache/Redis | [Listkeys műveletének beolvasása](/rest/api/redis/redis/listkeys) |
@@ -163,12 +164,12 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. segédösszetevője/Labs/ütemtervek | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft. segédösszetevője/Labs/felhasználók/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft. segédösszetevője/Labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft. DocumentDB/databaseAccounts | [Listkeys műveletének beolvasása](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [Listkeys műveletének beolvasása](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft. EventGrid/tartományok | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
-| Microsoft. EventGrid/témakörök | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
+| Microsoft. EventGrid/tartományok | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
+| Microsoft. EventGrid/témakörök | [Listkeys műveletének beolvasása](/rest/api/eventgrid/version2020-06-01/topics/listsharedaccesskeys) |
 | Microsoft. EventHub/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/eventhub) |
 | Microsoft. EventHub/névterek/disasterRecoveryConfigs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/eventhub) |
 | Microsoft. EventHub/névterek/eventhubs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/eventhub) |
@@ -284,71 +285,31 @@ Ha feltételesen telepített erőforrásban használ egy **List** függvényt, a
 
 ### <a name="list-example"></a>Példa a listára
 
-Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) azt szemlélteti, hogyan lehet visszaadni az elsődleges és másodlagos kulcsokat egy Storage-fiókból a kimenetek szakaszban. Emellett egy SAS-tokent ad vissza a Storage-fiókhoz.
-
-Az SAS-jogkivonat lekéréséhez továbbítson egy objektumot a lejárati időpontra. A lejárati időnek a jövőben kell lennie. Ez a példa a List függvények használatát mutatja be. A SAS-tokent általában egy erőforrás-értékben kell használni, nem pedig kimeneti értékként. A kimeneti értékek tárolása a telepítési előzmények között történik, és nem biztonságosak.
+Az alábbi példa Listkeys műveletének beolvasása használ a [telepítési parancsfájlok](deployment-script-template.md)értékének beállításakor.
 
 ```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagename": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "southcentralus"
-        },
-        "accountSasProperties": {
-            "type": "object",
-            "defaultValue": {
-                "signedServices": "b",
-                "signedPermission": "r",
-                "signedExpiry": "2018-08-20T11:00:00Z",
-                "signedResourceTypes": "s"
-            }
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-02-01",
-            "name": "[parameters('storagename')]",
-            "location": "[parameters('location')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2",
-            "properties": {
-                "supportsHttpsTrafficOnly": false,
-                "accessTier": "Hot",
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        },
-                        "file": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
-            },
-            "dependsOn": []
-        }
-    ],
-    "outputs": {
-        "keys": {
-            "type": "object",
-            "value": "[listKeys(parameters('storagename'), '2018-02-01')]"
-        },
-        "accountSAS": {
-            "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
+"storageAccountSettings": {
+    "storageAccountName": "[variables('storageAccountName')]",
+    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+}
+```
+
+A következő példa egy list függvényt mutat be, amely egy paramétert vesz igénybe. Ebben az esetben a függvény **listAccountSas**. Egy objektum továbbítása a lejárati időhöz. A lejárati időnek a jövőben kell lennie.
+
+```json
+"parameters": {
+    "accountSasProperties": {
+        "type": "object",
+        "defaultValue": {
+            "signedServices": "b",
+            "signedPermission": "r",
+            "signedExpiry": "2020-08-20T11:00:00Z",
+            "signedResourceTypes": "s"
         }
     }
-}
+},
+...
+"sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
 Egy listKeyValue példa: gyors útmutató [: automatikus VM-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
@@ -386,7 +347,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "providerNamespace": {
@@ -537,10 +498,20 @@ Az erőforrás-AZONOSÍTÓk létrehozásának egyszerűbbé tétele érdekében 
 
 [Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) az egyes erőforrásokhoz implicit módon létrehozott [bővítmény-erőforrástípusok](../management/extension-resource-types.md) . Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkozni kell arra az erőforrásra, amelyre az identitás vonatkozik. A használatával az `Full` összes tulajdonságot beolvashatja, beleértve az implicit módon létrehozott identitást is.
 
-Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
+A minta a következő:
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+Ha például egy virtuális gépre alkalmazott felügyelt identitás elsődleges AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+Vagy egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓjának lekéréséhez használja a következőt:
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>Példa hivatkozásra
@@ -549,7 +520,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": {
@@ -643,7 +614,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageResourceGroup": {
@@ -715,7 +686,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -817,7 +788,7 @@ Gyakran ezt a függvényt kell használnia, ha egy másik erőforráscsoport Sto
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -863,7 +834,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -925,7 +896,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -972,7 +943,7 @@ A következő sablon egy beépített szerepkört rendel hozzá. Egy erőforrásc
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -1047,7 +1018,7 @@ Az azonosító a következő formátumban lesz visszaadva:
 
 Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.

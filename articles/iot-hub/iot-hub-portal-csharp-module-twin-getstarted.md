@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759779"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel a portál és a .NET eszköz használata mellett
@@ -83,7 +82,7 @@ Az alábbi lépéseket követve hozhat létre egy alkalmazást, amely frissíti 
 
 A modul identitása és a Twin modul nyilvános előzetes verzióban érhető el. Ez csak a IoT Hub előzetes kiadású SDK-k esetében érhető el. A telepítéséhez kövesse az alábbi lépéseket:
 
-1. A Visual Studióban nyissa meg az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást**.
+1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**.
 
 1. Válassza a **Tallózás**lehetőséget, majd válassza az **előzetes verzió belefoglalása**lehetőséget. Keressen rá a *Microsoft. Azure. Devices. Client*kifejezésre. Válassza ki a legújabb verziót, és telepítse.
 

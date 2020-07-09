@@ -7,12 +7,11 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673360"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper-kiszolgáló nem tud kvórumot alkotni az Azure HDInsight
 
@@ -27,7 +26,7 @@ Ez a cikk az Azure HDInsight-fürtök Zookeeperek kapcsolatos problémák hibael
 
 ## <a name="sample-log"></a>Minta napló
 
-A következőhöz hasonló hibaüzenet jelenhet meg:
+A következőhöz hasonló hibaüzenet jelenhet meg a fonalak naplóiban (/var/log/Hadoop-yarn/yarn/yarn-yarn *. log a átjárócsomópontokkal):
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +115,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>A Zookeeper-kiszolgáló CancelledKeyException nem szükséges a pillanatképek karbantartása
 
+* Ez a kivétel a Zookeeper-kiszolgálókon (/var/log/Zookeeper/Zookeeper-Zookeeper-* vagy/var/log/hdinsight-Zookeeper/Zookeeper * fájlok) látható.
 * Ez a kivétel általában azt jelenti, hogy az ügyfél már nem aktív, és a kiszolgáló nem tud üzenetet küldeni
 * Ez a kivétel azt is jelzi, hogy a Zookeeper-ügyfél idő előtt véget ér
 * Keresse meg a dokumentumban ismertetett egyéb tüneteket

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/4/2020
-ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 7/7/2020
+ms.openlocfilehash: b733ef771444e080eb794b300e75d4396c3ef674
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846052"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079173"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -20,6 +20,12 @@ Az olvasási replikával adatokat replikálhat egy Azure Database for MySQL-kisz
 A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for MySQL-kiszolgálókhoz hasonló módon kezel. Az egyes olvasási replikák esetében a virtuális mag és a Storage szolgáltatásban a kiépített számítási kapacitást a GB/hó értékben számítjuk fel.
 
 Ha többet szeretne megtudni a MySQL-replikációs funkciókról és problémákról, tekintse meg a [MySQL-replikáció dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
+
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 ## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
 
@@ -41,9 +47,7 @@ A főkiszolgáló bármely [Azure Database for MySQL régióban](https://azure.m
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiók bármelyikében létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. A támogatott univerzális replika-régiók a következők:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Közép-Korea, Dél-Brazília, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója.
-
-* Az USA 2. nyugati régiója átmenetileg nem érhető el a régiók közötti replika helyeként.
+Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati középső régiója
 
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
@@ -52,12 +56,15 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 
 Azonban a következő szempontokat kell figyelembe venni: 
 
-* Regionális elérhetőség: Azure Database for MySQL az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Azure Database for MySQL a közép-Franciaországban, Észak-és Közép-Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
     
 * Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
    Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
 
 ## <a name="create-a-replica"></a>Replika létrehozása
+
+> [!IMPORTANT]
+> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
 
 Ha a főkiszolgáló nem rendelkezik meglévő replika-kiszolgálókkal, a főkiszolgáló először újraindul a replikálás előkészítéséhez.
 
@@ -101,11 +108,33 @@ Ha úgy dönt, hogy leállítja a replikálást egy replikára, az elveszíti az
 
 Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-replicas-portal.md).
 
+## <a name="failover"></a>Feladatátvétel
+
+A fő-és a replika-kiszolgálók között nincs automatikus feladatátvétel. 
+
+Mivel a replikáció aszinkron, a főkiszolgáló és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a főkiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika-késés néhány másodperc és néhány perc között mozog. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
+
+> [!Tip]
+> Ha feladatátvételt hajt végre a replikára, akkor a replika a főkiszolgálóról való leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.
+
+Ha úgy döntött, hogy feladatátvételt kíván replikálni egy replikára, 
+
+1. A replika replikálásának leállítása<br/>
+   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. Ennek a folyamatnak a részeként a replika kiszolgáló leválasztása a főkiszolgálóról történik. Miután elindította a replikálást, a háttérrendszer-folyamat általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
+    
+2. Az alkalmazás átirányítása a (korábbi) replikára<br/>
+   Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a főkiszolgáló helyett a (korábbi) replikára mutasson.
+    
+Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
+
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
 ### <a name="pricing-tiers"></a>Árképzési szintek
 
 Az olvasási replikák jelenleg csak a általános célú és a memória optimalizált díjszabási szintjein érhetők el.
+
+> [!NOTE]
+> A replika-kiszolgáló futtatásának díja azon a régión alapul, ahol a replika-kiszolgáló fut.
 
 ### <a name="master-server-restart"></a>Főkiszolgáló újraindítása
 

@@ -11,14 +11,13 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6ff12ce5fec8fcc49fa21ef5f3009fc2283300c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 40dd985b7cf09ddc2a902630cec3f0c74a1edbe1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734605"
 ---
-# <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>A meglévő Azure AD Domain Services felügyelt tartományokhoz tartozó eltérő címtárbeli hibák elhárítása
+# <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>A meglévő Azure Active Directory Domain Services felügyelt tartományokhoz tartozó eltérő címtárbeli hibák elhárítása
 
 Ha egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány nem egyező bérlői hibát jelez, a felügyelt tartomány addig nem felügyelhető, amíg meg nem oldódik. Ez a hiba akkor fordul elő, ha az alapul szolgáló Azure-beli virtuális hálózatot egy másik Azure AD-címtárba helyezi át.
 
@@ -26,7 +25,7 @@ Ez a cikk a hiba okait és megoldását ismerteti.
 
 ## <a name="what-causes-this-error"></a>Mi okozza ezt a hibát?
 
-Nem egyező címtárbeli hiba történik, amikor egy Azure AD DS felügyelt tartomány és virtuális hálózat két különböző Azure AD-bérlőhöz tartozik. Előfordulhat például, hogy rendelkezik egy *aaddscontoso.com* nevű Azure AD DS felügyelt tartománnyal, amely a contoso Azure ad-bérlőben fut. A felügyelt tartományhoz tartozó Azure-beli virtuális hálózat azonban a fabrikam Azure AD-bérlő részét képezi.
+Nem egyező címtárbeli hiba történik, amikor egy Azure AD DS felügyelt tartomány és virtuális hálózat két különböző Azure AD-bérlőhöz tartozik. Előfordulhat például, hogy rendelkezik egy *aaddscontoso.com* nevű felügyelt tartománnyal, amely a contoso Azure ad-bérlőben fut. A felügyelt tartományhoz tartozó Azure-beli virtuális hálózat azonban a fabrikam Azure AD-bérlő részét képezi.
 
 Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) használ az erőforrásokhoz való hozzáférés korlátozására. Az Azure AD DS Azure AD-bérlőben való engedélyezésekor a rendszer a hitelesítő adatok kivonatait szinkronizálja a felügyelt tartományba. Ehhez a művelethez az Azure AD-címtárhoz tartozó bérlői rendszergazdának kell lennie, és a hitelesítő adatokhoz való hozzáférés szabályozása szükséges. Ahhoz, hogy erőforrásokat helyezzen üzembe az Azure-beli virtuális hálózatra, és szabályozza a forgalmat, rendszergazdai jogosultságokkal kell rendelkeznie azon a virtuális hálózaton, amelyben az Azure AD DS üzembe helyezi.
 
@@ -41,13 +40,13 @@ A Resource Manager-környezetben a következő szabályok érvényesek:
 
 ### <a name="valid-configuration"></a>Érvényes konfiguráció
 
-A következő példa telepítési forgatókönyvben a contoso Azure AD DS felügyelt tartomány engedélyezve van a contoso Azure AD-bérlőben. A felügyelt tartomány olyan virtuális hálózatban van telepítve, amely a contoso Azure AD-bérlő által birtokolt Azure-előfizetéshez tartozik. A felügyelt tartomány és a virtuális hálózat is ugyanahhoz az Azure AD-bérlőhöz tartozik. Ez a példa konfiguráció érvényes és teljes mértékben támogatott.
+A következő példa telepítési forgatókönyvben a contoso által felügyelt tartomány engedélyezve van a contoso Azure AD-bérlőben. A felügyelt tartomány olyan virtuális hálózatban van telepítve, amely a contoso Azure AD-bérlő által birtokolt Azure-előfizetéshez tartozik. A felügyelt tartomány és a virtuális hálózat is ugyanahhoz az Azure AD-bérlőhöz tartozik. Ez a példa konfiguráció érvényes és teljes mértékben támogatott.
 
 ![Érvényes Azure AD DS bérlői konfiguráció az azonos Azure AD-bérlő felügyelt tartományával és virtuális hálózati részével](./media/getting-started/valid-tenant-config.png)
 
 ### <a name="mismatched-tenant-configuration"></a>Nem egyező bérlői konfiguráció
 
-Ebben a példában az üzembe helyezési forgatókönyvben a contoso Azure AD DS felügyelt tartomány engedélyezve van a contoso Azure AD-bérlőben. A felügyelt tartományt azonban olyan virtuális hálózatban helyezi üzembe, amely a fabrikam Azure AD-bérlő tulajdonában lévő Azure-előfizetéshez tartozik. A felügyelt tartomány és a virtuális hálózat két különböző Azure AD-bérlőhöz tartozik. Ez a példában szereplő konfiguráció nem egyezik a Bérlővel, és nem támogatott. A virtuális hálózatot a felügyelt tartományba tartozó Azure AD-bérlőre kell áthelyezni.
+Ebben a példában a contoso által felügyelt tartomány engedélyezve van a contoso Azure AD-bérlőben. A felügyelt tartományt azonban olyan virtuális hálózatban helyezi üzembe, amely a fabrikam Azure AD-bérlő tulajdonában lévő Azure-előfizetéshez tartozik. A felügyelt tartomány és a virtuális hálózat két különböző Azure AD-bérlőhöz tartozik. Ez a példában szereplő konfiguráció nem egyezik a Bérlővel, és nem támogatott. A virtuális hálózatot a felügyelt tartományba tartozó Azure AD-bérlőre kell áthelyezni.
 
 ![Nem egyező bérlői konfiguráció](./media/getting-started/mismatched-tenant-config.png)
 
@@ -55,8 +54,8 @@ Ebben a példában az üzembe helyezési forgatókönyvben a contoso Azure AD DS
 
 A következő két lehetőség a nem egyező könyvtárat oldja fel:
 
-* [Törölje az azure AD DS felügyelt tartományt](delete-aadds.md) a meglévő Azure ad-címtárból. [Hozzon létre egy helyettesítő azure AD DS felügyelt tartományt](tutorial-create-instance.md) a használni kívánt virtuális hálózattal azonos Azure ad-címtárban. Ha elkészült, csatlakoztassa a korábban a törölt tartományhoz csatlakozó összes gépet az újból létrehozott felügyelt tartományhoz.
-* Helyezze át a virtuális hálózatot tartalmazó [Azure-előfizetést](../cost-management-billing/manage/billing-subscription-transfer.md) ugyanahhoz az Azure ad-címtárhoz, mint az Azure AD DS felügyelt tartománya.
+* [Törölje a felügyelt tartományt](delete-aadds.md) a meglévő Azure ad-címtárból. [Hozzon létre egy helyettesítő felügyelt tartományt](tutorial-create-instance.md) a használni kívánt virtuális hálózattal azonos Azure ad-címtárban. Ha elkészült, csatlakoztassa a korábban a törölt tartományhoz csatlakozó összes gépet az újból létrehozott felügyelt tartományhoz.
+* Helyezze át a virtuális hálózatot tartalmazó [Azure-előfizetést](../cost-management-billing/manage/billing-subscription-transfer.md) ugyanahhoz az Azure ad-címtárhoz, amely a felügyelt tartomány.
 
 ## <a name="next-steps"></a>További lépések
 

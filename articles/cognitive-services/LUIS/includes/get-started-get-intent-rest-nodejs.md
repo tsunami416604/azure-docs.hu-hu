@@ -6,15 +6,17 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: f60b4391f5b68f163eb2e97153667d82454639d5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 05142c1d98906a591fae41658c5c7b9d36cdb8c4
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654304"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418033"
 ---
+[Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-predict-with-rest/predict.js)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/) programozási nyelv
@@ -50,58 +52,15 @@ A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://
 
 1. Másolja a következő kódrészletet egy nevű fájlba `predict.js` :
 
-    ```javascript
-    var requestPromise = require('request-promise');
-    var queryString = require('querystring');
+    [!code-javascript[Code snippet](~/cognitive-services-quickstart-code/javascript/LUIS/node-predict-with-rest/predict.js)]
 
-    // Analyze a string utterance.
-    getPrediction = async () => {
+1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-        //////////
-        // Values to modify.
-
-        // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
-        const LUIS_appId = "YOUR-APP-ID";
-
-        // YOUR-PREDICTION-KEY: Your LUIS authoring key, 32 character value.
-        const LUIS_predictionKey = "YOUR-PREDICTION-KEY";
-
-        // YOUR-PREDICTION-ENDPOINT: Replace this with your authoring key endpoint.
-        // For example, "https://westus.api.cognitive.microsoft.com/"
-        const LUIS_endpoint = "YOUR-PREDICTION-ENDPOINT";
-
-        // The utterance you want to use.
-        const utterance = "I want a deep dish supreme pizza with extra cheese, hold the onions.";
-        //////////
-
-        // Create query string
-        const queryParams = {
-            "show-all-intents": true,
-            "verbose":  true,
-            "query": utterance,
-            "subscription-key": LUIS_predictionKey
-        }
-
-        // Create the URI for the REST call.
-        const URI = `${LUIS_endpoint}luis/prediction/v3.0/apps/${LUIS_appId}/slots/production/predict?${queryString.stringify(queryParams)}`
-
-        // Send the REST call.
-        const response = await requestPromise(URI);
-
-        // Display the response from the REST call.
-        console.log(response);
-    }
-
-    // Pass an utterance to the sample LUIS app
-    getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
-    ```
-
-1. Cserélje le az `YOUR-KEY` és az `YOUR-ENDPOINT` értékeket a saját előrejelzési **futtatókörnyezeti** kulcsára és végpontra.
-
-    |Információ|Cél|
+    |Információ|Szerep|
     |--|--|
-    |`YOUR-KEY`|Az 32 karakteres előrejelzési **futtatókörnyezet** kulcsa.|
-    |`YOUR-ENDPOINT`| Az előrejelzési URL-végpont. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-APP-ID`|Az alkalmazás azonosítója. A LUIS-portálon, az alkalmazás Alkalmazásbeállítások lapján található.
+    |`YOUR-PREDICTION-KEY`|Az 32 karakteres előrejelzési kulcs. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.
+    |`YOUR-PREDICTION-ENDPOINT`| Az előrejelzési URL-végpont. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.<br>Például: `https://westus.api.cognitive.microsoft.com/`.|
 
  1. Tekintse át az előrejelzési választ, amely JSON-ként lesz visszaadva:
 
@@ -271,7 +230,7 @@ A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://
     }
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 

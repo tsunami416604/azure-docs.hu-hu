@@ -8,14 +8,13 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515405"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez
 
@@ -68,7 +67,7 @@ Az alábbi cikkekből megtudhatja, hogyan használhatók az ügyfelek által fel
 
 Az ügyfél által felügyelt kulcsok Storage-fiókban való engedélyezéséhez Azure Key Vault kell használnia a kulcsok tárolásához. Engedélyeznie kell a **Soft delete** és a No **Purge** tulajdonságot a Key vaulton.
 
-Az Azure Storage-titkosítás csak 2048 bites RSA-és RSA-HSM-kulcsokat támogat. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
 ## <a name="rotate-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok elforgatása
 
@@ -80,7 +79,7 @@ A kulcs elforgatása nem indítja el újra a Storage-fiókban tárolt adattitkos
 
 Bármikor visszavonhatja a Storage-fiók hozzáférését az ügyfél által felügyelt kulcshoz. Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonása után vagy a kulcs letiltását vagy törlését követően az ügyfelek nem hívhatnak meg egy blobba vagy annak metaadataiba beolvasott vagy írt műveleteket. A következő műveletek bármelyikének meghívására tett kísérletek sikertelenek lesznek: 403 (tiltott) hibakód minden felhasználó esetében:
 
-- [Blobok listázása](/rest/api/storageservices/list-blobs)a kérelem URI `include=metadata` -ja paraméterének meghívásakor
+- [Blobok listázása](/rest/api/storageservices/list-blobs)a `include=metadata` kérelem URI-ja paraméterének meghívásakor
 - [BLOB beolvasása](/rest/api/storageservices/get-blob)
 - [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
 - [BLOB metaadatainak beolvasása](/rest/api/storageservices/get-blob-metadata)
@@ -113,4 +112,4 @@ Az ügyfél által felügyelt kulcsok az Azure Managed Disks titkosításának k
 - [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Azure Storage-titkosításhoz a Azure Portal](storage-encryption-keys-portal.md)
 - [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Azure Storage-titkosításhoz a PowerShell-lel](storage-encryption-keys-powershell.md)
 - [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Azure Storage-titkosításhoz az Azure CLI-vel](storage-encryption-keys-cli.md)
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)

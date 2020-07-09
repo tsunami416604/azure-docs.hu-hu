@@ -1,23 +1,14 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése a Event Grid és az Azure CLI használatával'
 description: A rövid útmutató a Azure Event Grid és az Azure CLI használatával tesz közzé egyéni témakört, és előfizethet az adott témakör eseményeire. Az eseményeket egy webalkalmazás kezeli.
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom:
-- seodec18
-- seo-javascript-september2019
-- seo-python-october2019
-ms.openlocfilehash: 4dbf3d2be04403d7cafac4ef9d4305c368da68b1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ecf7e753df4f6fb3de6095ba295a07fd57b458cf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743068"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101681"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz az Azure CLI-vel és a Event Grid
 
@@ -37,7 +28,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -149,7 +140,7 @@ Ha tovább kívánja használni az eseményt vagy az eseménynapló alkalmazást
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

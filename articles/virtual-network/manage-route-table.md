@@ -7,17 +7,16 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: b30c912319104726069ae98920f0bc825d7358cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182854"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708263"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Útválasztási táblázat létrehozása, módosítása vagy törlése
 
@@ -31,9 +30,9 @@ Ha még nem rendelkezik ilyennel, állítson be egy aktív előfizetéssel rende
 
 - **PowerShell-felhasználók**: futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy futtassa a PowerShellt a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. A Azure Cloud Shell böngésző lapon keresse meg a **környezet kiválasztása** legördülő listát, majd válassza a **PowerShell** lehetőséget, ha még nincs kiválasztva.
 
-    Ha helyileg futtatja a PowerShellt, használja a Azure PowerShell modul 1.0.0 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az.Network`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az Azure `Connect-AzAccount` -beli kapcsolatok létrehozásához is futtassa a parancsot.
+    Ha helyileg futtatja a PowerShellt, használja a Azure PowerShell modul 1.0.0 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az.Network`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az `Connect-AzAccount` Azure-beli kapcsolatok létrehozásához is futtassa a parancsot.
 
-- **Azure parancssori felület (CLI) felhasználói**: futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy futtassa a CLI-t a számítógépről. Ha helyileg futtatja az Azure CLI-t, használja az Azure CLI-2.0.31 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Az Azure `az login` -beli kapcsolatok létrehozásához is futtassa a parancsot.
+- **Azure parancssori felület (CLI) felhasználói**: futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy futtassa a CLI-t a számítógépről. Ha helyileg futtatja az Azure CLI-t, használja az Azure CLI-2.0.31 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Az `az login` Azure-beli kapcsolatok létrehozásához is futtassa a parancsot.
 
 A fiókba, amelybe bejelentkezik, vagy az Azure-hoz csatlakozik, hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az [engedélyek](#permissions)között felsorolt megfelelő műveletekhez van rendelve.
 
@@ -52,7 +51,7 @@ Az Azure-helyek és-előfizetések által létrehozható útválasztási táblá
     1. Adja meg az útválasztási táblázat **nevét** .
     1. Válassza ki az **Előfizetést**.
     1. Válasszon ki egy meglévő **erőforráscsoportot** , vagy válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához.
-    1. Válasszon ki egy **helyet**.
+    1. Válasszon egy **helyet**.
     1. Ha azt tervezi, hogy az útválasztási táblázatot egy olyan virtuális hálózat alhálózatához rendeli hozzá, amely VPN-átjárón keresztül csatlakozik a helyszíni hálózathoz, és nem szeretné a helyszíni útvonalakat az alhálózat hálózati adapterei között terjeszteni, állítsa le a **virtuális hálózati átjáró útvonal-propagálását** **Letiltva**értékre.
 
 1. Válassza a **Létrehozás** lehetőséget az új útválasztási táblázat létrehozásához.
@@ -186,7 +185,7 @@ Az útválasztási táblázatokban az Azure-beli hely és az előfizetés alapj�
 
 1. Az útválasztási táblázat listából válassza ki azt az útválasztási táblázatot, amelyhez hozzá kíván adni egy útvonalat.
 
-1. Az útválasztási táblázat menüsávján válassza az **útvonalak** > **Hozzáadás**lehetőséget.
+1. Az útválasztási táblázat menüsávján válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
 
 1. Adja meg az útvonal egyedi **útvonalának nevét** az útválasztási táblázatban.
 
@@ -196,7 +195,7 @@ Az útválasztási táblázatokban az Azure-beli hely és az előfizetés alapj�
 
 1. Ha a **virtuális berendezés** **következő ugrási típusát** választotta, adjon meg egy IP-címet a **következő ugrási címhez**.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ### <a name="create-a-route---commands"></a>Útvonal-parancsok létrehozása
 
@@ -333,7 +332,7 @@ Rövid várakozás után az Azure megadja a következő ugrás típusát és a f
 
 A táblák és útvonalak útválasztási feladatainak elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                                          |   Name (Név)                                                  |
+| Műveletek                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/READ                              |   Útválasztási táblázat beolvasása                                    |
 | Microsoft. Network/routeTables/Write                             |   Útválasztási táblázat létrehozása vagy frissítése                        |

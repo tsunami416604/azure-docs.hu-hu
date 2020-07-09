@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81456889"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808396"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Oktatóanyag – Blobok titkosítása és visszafejtése Azure Key Vault használatával
 
@@ -75,7 +75,7 @@ Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions
 ```
 
-Adja hozzá a AppSettings az app. config fájlhoz.
+Adja hozzá a AppSettings a App.Confighoz.
 
 ```xml
 <appSettings>
@@ -87,7 +87,7 @@ Adja hozzá a AppSettings az app. config fájlhoz.
 </appSettings>
 ```
 
-Adja hozzá a `using` következő irányelveket, és ügyeljen arra, hogy a projekthez adjon hozzá egy hivatkozást a System. Configuration fájlhoz.
+Adja hozzá a következő `using` irányelveket, és ügyeljen arra, hogy adjon hozzá egy hivatkozást System.Configszülő a projekthez.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;

@@ -2,19 +2,19 @@
 title: ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával
 description: A három részből álló Azure SQL Edge oktatóanyag harmadik része, amely az Iron Ore-szennyeződések előrejelzését ismerteti, a ONNX Machine learning-modelleket futtathatja az SQL Edge-ben.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 64594267dc51fa42dabcc3083d18d631904a9cab
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599708"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318641"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával 
 
@@ -32,7 +32,7 @@ A három részből álló, az Azure SQL Edge-beli Iron Ore-szennyeződések elő
    |_Mező_|_Érték_|
    |-------|-------|
    |Kapcsolat típusa| Microsoft SQL Server|
-   |Szolgálja|A bemutatóhoz létrehozott virtuális gépen említett nyilvános IP-cím|
+   |Kiszolgáló|A bemutatóhoz létrehozott virtuális gépen említett nyilvános IP-cím|
    |Felhasználónév|sa|
    |Jelszó|Az Azure SQL Edge-példány létrehozásakor használt erős jelszó|
    |Adatbázis|Alapértelmezett|

@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735657"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790891"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával
 
@@ -36,7 +35,7 @@ Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a követk
 
 ## <a name="get-object-ids"></a>Objektum-azonosítók beolvasása
 
-A szerepkör-hozzárendelések hozzáadásához vagy eltávolításához szükség lehet egy objektum egyedi AZONOSÍTÓjának megadására. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`. Az azonosítót a Azure Portal vagy a Azure PowerShell használatával kérheti le.
+A szerepkör-hozzárendelések hozzáadásához vagy eltávolításához szükség lehet egy objektum egyedi AZONOSÍTÓjának megadására. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111` . Az azonosítót a Azure Portal vagy a Azure PowerShell használatával kérheti le.
 
 ### <a name="user"></a>Felhasználó
 
@@ -112,7 +111,7 @@ Ha szerepkör-hozzárendelést szeretne hozzáadni a szerepkör neve helyett az 
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-A következő példa a [virtuális gépi közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört rendeli hozzá *Alain\@example.com* -felhasználóhoz a *Pharma-Sales* erőforráscsoport hatókörében. Az egyedi szerepkör-azonosító beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) , vagy tekintse meg az [Azure beépített szerepköreit](built-in-roles.md).
+A következő példa a [virtuális gépi közreműködő](built-in-roles.md#virtual-machine-contributor) szerepkört rendeli hozzá *Alain \@ example.com* -felhasználóhoz a *Pharma-Sales* erőforráscsoport hatókörében. Az egyedi szerepkör-azonosító beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) , vagy tekintse meg az [Azure beépített szerepköreit](built-in-roles.md).
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -207,7 +206,7 @@ CanDelegate        : False
 
 Az Azure RBAC a hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést a [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)használatával.
 
-A következő példa eltávolítja a *virtuálisgép-közreműködő* szerepkör-hozzárendelést az *Alain\@example.com* -felhasználótól a *Pharma-Sales* erőforráscsoporthoz:
+A következő példa eltávolítja a *virtuálisgép-közreműködő* szerepkör-hozzárendelést az *Alain \@ example.com* -felhasználótól a *Pharma-Sales* erőforráscsoporthoz:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -225,7 +224,7 @@ A következő példa eltávolítja a <role_name> szerepkört a felügyeleti csop
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Ha a következő hibaüzenet jelenik meg: "a megadott információk nem képeznek szerepkör-hozzárendelést", győződjön meg arról, hogy a vagy `-Scope` `-ResourceGroupName` a paramétereket is megadja. További információ: az [Azure RBAC hibáinak megoldása](troubleshooting.md#role-assignments-with-identity-not-found).
+Ha a következő hibaüzenet jelenik meg: "a megadott információk nem képeznek szerepkör-hozzárendelést", győződjön meg arról, hogy a vagy a paramétereket is megadja `-Scope` `-ResourceGroupName` . További információ: az [Azure RBAC hibáinak megoldása](troubleshooting.md#role-assignments-with-identity-not-found).
 
 ## <a name="next-steps"></a>További lépések
 

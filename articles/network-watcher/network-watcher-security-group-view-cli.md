@@ -7,17 +7,16 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aae9b282c22b405eeebc2719e377a3091fc9d12e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84724950"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>A virtuális gép biztonságának elemzése biztonsági csoport nézetben az Azure CLI használatával
 
@@ -40,7 +39,7 @@ A cikkben ismertetett forgatókönyv egy adott virtuális gép konfigurált és 
 
 ## <a name="get-a-vm"></a>Virtuális gép beszerzése
 
-A `vm list` parancsmag futtatásához virtuális gépnek kell futnia. A következő parancs egy erőforráscsoport virtuális gépei listáját tartalmazza:
+A parancsmag futtatásához virtuális gépnek kell futnia `vm list` . A következő parancs egy erőforráscsoport virtuális gépei listáját tartalmazza:
 
 ```azurecli
 az vm list -resource-group resourceGroupName

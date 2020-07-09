@@ -6,15 +6,15 @@ ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73044770"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085055"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 
@@ -44,14 +44,14 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
 
     ![a VirtualBox Manager normál indítása](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. Nyisson meg egy webböngészőt, és navigáljon a megjelenő URL-címhez (általában `http://127.0.0.1:8888`).
+1. Nyisson meg egy webböngészőt, és navigáljon a megjelenő URL-címhez (általában `http://127.0.0.1:8888` ).
 
 ## <a name="set-sandbox-passwords"></a>A homokozó jelszavainak beállítása
 
 1. A Hortonworks-munkaterületének első **lépések** lépése lapon válassza a **Speciális beállítások megjelenítése**lehetőséget. Az oldalon található információk használatával jelentkezzen be a homokozóba az SSH használatával. Használja a megadott nevet és jelszót.
 
    > [!NOTE]
-   > Ha nem telepített SSH-ügyfelet, használhatja a virtuális gép által biztosított webalapú SSH-t **http://localhost:4200/**.
+   > Ha nem telepített SSH-ügyfelet, használhatja a virtuális gép által biztosított webalapú SSH-t **http://localhost:4200/** .
 
     Amikor először csatlakozik az SSH-val, a rendszer felszólítja a root fiók jelszavának módosítására. Adjon meg egy új jelszót, amelyet az SSH használatával történő bejelentkezéskor használ.
 

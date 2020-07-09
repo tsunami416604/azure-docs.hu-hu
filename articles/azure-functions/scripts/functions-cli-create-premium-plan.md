@@ -4,12 +4,12 @@ description: Function-alkalmazás létrehozása az Azure-ban skálázható prém
 ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
-ms.openlocfilehash: dd31dbadce4f0a55853607504b4322277784f27f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3587e5b5e46867ff3abe97b3593c9732be3afa22
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74536266"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117250"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>Function-alkalmazás létrehozása prémium csomagból – Azure CLI
 
@@ -33,11 +33,11 @@ Ez a szkript egy [Prémium csomag](../functions-premium-plan.md)használatával 
 
 A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik. Ez a szkript a következő parancsokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
-| [az functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Létrehoz egy prémium csomagot. |
+| [az functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Egy prémium szintű csomagot hoz létre egy [adott SKU](../functions-premium-plan.md#available-instance-skus)-ban. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
 
 ## <a name="next-steps"></a>További lépések

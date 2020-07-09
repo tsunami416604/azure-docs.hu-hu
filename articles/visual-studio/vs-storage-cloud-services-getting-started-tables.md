@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88c8ea458aade44f5a3d789a15369718bc38ea35
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72299989"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134519"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Table Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Table Storage használatát
 
 Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adattárolás tárolását. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőn belüli és kívüli hitelesített hívásokat fogadja el. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.
 
-A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C\# kódban vannak megírva, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C kódban vannak megírva \# , és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
 
 **Megjegyzés:** Az Azure Storage-hívásokat végrehajtó API-k némelyike aszinkron módon történik. Lásd: [aszinkron programozás aszinkron módon, és](https://msdn.microsoft.com/library/hh191443.aspx) további információra számíthat. Az alábbi kód az aszinkron programozási módszerek használatát feltételezi.
 
@@ -42,155 +42,177 @@ A Cloud Service-projektek tábláinak eléréséhez minden olyan C#-forrásfájl
 
 1. Győződjön meg arról, hogy a C#-fájl tetején található névtér-deklarációk tartalmazzák **az alábbi utasításokat** .
    
-        using Microsoft.Framework.Configuration;
-        using Microsoft.WindowsAzure.Storage;
-        using Microsoft.WindowsAzure.Storage.Table;
-        using System.Threading.Tasks;
-        using LogLevel = Microsoft.Framework.Logging.LogLevel;
+    ```csharp
+    using Microsoft.Framework.Configuration;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Table;
+    using System.Threading.Tasks;
+    using LogLevel = Microsoft.Framework.Logging.LogLevel;
+    ```
 2. Szerezzen be egy **CloudStorageAccount** -objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában.
    
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage account name>
-         _AzureStorageConnectionString"));
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("<storage account name>
+    _AzureStorageConnectionString"));
+    ```
    > [!NOTE]
    > Használja a fenti kódot a kód elé a következő mintákban.
    > 
    > 
 3. Szerezzen be egy **CloudTableClient** -objektumot, amely a Storage-fiókban található táblázat-objektumokra hivatkozik.
    
-         // Create the table client.
-         CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```csharp
+    // Create the table client.
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 4. Egy **CloudTable** hivatkozási objektum beszerzése egy adott táblára és entitásokra való hivatkozáshoz.
    
-        // Get a reference to a table named "peopleTable".
-        CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
+    ```csharp
+    // Get a reference to a table named "peopleTable".
+    CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
+    ```
 
 ## <a name="create-a-table-in-code"></a>Tábla létrehozása kódban
 Az Azure-tábla létrehozásához egyszerűen vegyen fel egy hívást a **CreateIfNotExistsAsync** -be a **CloudTable** -objektum lekérése után, a "hozzáférési táblázatok a kódban" szakaszban leírtak szerint.
 
-    // Create the CloudTable if it does not exist.
-    await peopleTable.CreateIfNotExistsAsync();
+```csharp
+// Create the CloudTable if it does not exist.
+await peopleTable.CreateIfNotExistsAsync();
+```
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. A következő kód egy **CustomerEntity** nevű Entity osztályt határoz meg, amely az ügyfél utónevét és a vezetéknevét használja a partíciós kulcsként.
 
-    public class CustomerEntity : TableEntity
+```csharp
+public class CustomerEntity : TableEntity
+{
+    public CustomerEntity(string lastName, string firstName)
     {
-        public CustomerEntity(string lastName, string firstName)
-        {
-            this.PartitionKey = lastName;
-            this.RowKey = firstName;
-        }
-
-        public CustomerEntity() { }
-
-        public string Email { get; set; }
-
-        public string PhoneNumber { get; set; }
+        this.PartitionKey = lastName;
+        this.RowKey = firstName;
     }
 
-Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblázatok a kódban" című részében létrehozott **CloudTable** objektum használatával hajthatók végre. A **TableOperation** objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy **CloudTable** objektumot és egy **CustomerEntity** objektumot. A művelet előkészítéséhez létrejön egy **TableOperation** , amely beszúrja az ügyfél entitást a táblába. Végül a műveletet a **CloudTable. ExecuteAsync**meghívásával hajtja végre.
+    public CustomerEntity() { }
 
-    // Create a new customer entity.
-    CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-    customer1.Email = "Walter@contoso.com";
-    customer1.PhoneNumber = "425-555-0101";
+    public string Email { get; set; }
 
-    // Create the TableOperation that inserts the customer entity.
-    TableOperation insertOperation = TableOperation.Insert(customer1);
+    public string PhoneNumber { get; set; }
+}
+```
 
-    // Execute the insert operation.
-    await peopleTable.ExecuteAsync(insertOperation);
+Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblázatok a kódban" című részében létrehozott **CloudTable** objektum használatával hajthatók végre. A **TableOperation** objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy **CloudTable** objektumot és egy **CustomerEntity** objektumot. A művelet előkészítéséhez létrejön egy **TableOperation** , amely beszúrja az ügyfél entitást a táblába. Végezetül **CloudTable.ExecuteAsync**meghívásával hajtja végre a műveletet.
+
+```csharp
+// Create a new customer entity.
+CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
+customer1.Email = "Walter@contoso.com";
+customer1.PhoneNumber = "425-555-0101";
+
+// Create the TableOperation that inserts the customer entity.
+TableOperation insertOperation = TableOperation.Insert(customer1);
+
+// Execute the insert operation.
+await peopleTable.ExecuteAsync(insertOperation);
+```
 
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy **tablebatchoperation művelethez** objektumhoz az Insert metódus használatával, majd elindítja a műveletet a **CloudTable. ExecuteBatchAsync**hívásával.
+Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy **tablebatchoperation művelethez** objektumhoz az Insert metódus használatával, majd elindítja a műveletet **CloudTable.ExecuteBatchAsync**meghívásával.
 
-    // Create the batch operation.
-    TableBatchOperation batchOperation = new TableBatchOperation();
+```csharp
+// Create the batch operation.
+TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a customer entity and add it to the table.
-    CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-    customer1.Email = "Jeff@contoso.com";
-    customer1.PhoneNumber = "425-555-0104";
+// Create a customer entity and add it to the table.
+CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
+customer1.Email = "Jeff@contoso.com";
+customer1.PhoneNumber = "425-555-0104";
 
-    // Create another customer entity and add it to the table.
-    CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-    customer2.Email = "Ben@contoso.com";
-    customer2.PhoneNumber = "425-555-0102";
+// Create another customer entity and add it to the table.
+CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
+customer2.Email = "Ben@contoso.com";
+customer2.PhoneNumber = "425-555-0102";
 
-    // Add both customer entities to the batch insert operation.
-    batchOperation.Insert(customer1);
-    batchOperation.Insert(customer2);
+// Add both customer entities to the batch insert operation.
+batchOperation.Insert(customer1);
+batchOperation.Insert(customer2);
 
-    // Execute the batch operation.
-    await peopleTable.ExecuteBatchAsync(batchOperation);
+// Execute the batch operation.
+await peopleTable.ExecuteBatchAsync(batchOperation);
+```
 
 ## <a name="get-all-of-the-entities-in-a-partition"></a>Egy partíció összes entitásának beolvasása
 Egy partíció összes entitásához tartozó tábla lekérdezéséhez használjon **TableQuery** objektumot. Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
 
-    // Construct the query operation for all customer entities where PartitionKey="Smith".
-    TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
-        .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
+```csharp
+// Construct the query operation for all customer entities where PartitionKey="Smith".
+TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
+    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
-    // Print the fields for each customer.
-    TableContinuationToken token = null;
-    do
+// Print the fields for each customer.
+TableContinuationToken token = null;
+do
+{
+    TableQuerySegment<CustomerEntity> resultSegment = await peopleTable.ExecuteQuerySegmentedAsync(query, token);
+    token = resultSegment.ContinuationToken;
+
+    foreach (CustomerEntity entity in resultSegment.Results)
     {
-        TableQuerySegment<CustomerEntity> resultSegment = await peopleTable.ExecuteQuerySegmentedAsync(query, token);
-        token = resultSegment.ContinuationToken;
+        Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
+        entity.Email, entity.PhoneNumber);
+    }
+} while (token != null);
 
-        foreach (CustomerEntity entity in resultSegment.Results)
-        {
-            Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-            entity.Email, entity.PhoneNumber);
-        }
-    } while (token != null);
-
-    return View();
+return View();
+```
 
 
 ## <a name="get-a-single-entity"></a>Egyetlen entitás beolvasása
 Megírhat egy lekérdezést, amely egyetlen, adott entitást kap. A következő kód egy **TableOperation** objektumot használ a "ben Smith" nevű ügyfél megadásához. Ez a metódus csak egyetlen entitást ad vissza, nem egy gyűjteményt, és a visszaadott értéket a **ableresult. result** egy **CustomerEntity** objektum. A partíciók és a sorok kulcsának a lekérdezésben való megadásával a leggyorsabb módszer egyetlen entitás beolvasására a **Table** szolgáltatásból.
 
-    // Create a retrieve operation that takes a customer entity.
-    TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+```csharp
+// Create a retrieve operation that takes a customer entity.
+TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute the retrieve operation.
-    TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
+// Execute the retrieve operation.
+TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
-    // Print the phone number of the result.
-    if (retrievedResult.Result != null)
-       Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
-    else
-       Console.WriteLine("The phone number could not be retrieved.");
+// Print the phone number of the result.
+if (retrievedResult.Result != null)
+    Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
+else
+    Console.WriteLine("The phone number could not be retrieved.");
+```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
 A keresés után törölheti az entitásokat. A következő kód egy "ben Smith" nevű ügyfél-entitást keres, és ha megtalálta, akkor törli.
 
-    // Create a retrieve operation that expects a customer entity.
-    TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+```csharp
+// Create a retrieve operation that expects a customer entity.
+TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+
+// Execute the operation.
+TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+
+// Assign the result to a CustomerEntity object.
+CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
+
+// Create the Delete TableOperation and then execute it.
+if (deleteEntity != null)
+{
+    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
     // Execute the operation.
-    TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+    await peopleTable.ExecuteAsync(deleteOperation);
 
-    // Assign the result to a CustomerEntity object.
-    CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
+    Console.WriteLine("Entity deleted.");
+}
 
-    // Create the Delete TableOperation and then execute it.
-    if (deleteEntity != null)
-    {
-       TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+else
+    Console.WriteLine("Couldn't delete the entity.");
+```
 
-       // Execute the operation.
-       await peopleTable.ExecuteAsync(deleteOperation);
-
-       Console.WriteLine("Entity deleted.");
-    }
-
-    else
-       Console.WriteLine("Couldn't delete the entity.");
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 

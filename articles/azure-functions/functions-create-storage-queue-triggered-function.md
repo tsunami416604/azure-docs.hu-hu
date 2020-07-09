@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: c4c20579f2306b61741f3c6ab1549285271435a3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123344"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Storage-üzenetsor által aktivált függvény létrehozása
@@ -45,7 +44,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
-    | **Név** | Egyedi a függvényalkalmazásban | Az üzenetsor által aktivált függvény neve. |
+    | **Name (Név)** | Egyedi a függvényalkalmazásban | Az üzenetsor által aktivált függvény neve. |
     | **Üzenetsor neve**   | myqueue-items    | A tárfiókhoz csatlakoztatni kívánt üzenetsor neve. |
     | **Tárfiók kapcsolata** | AzureWebJobsStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |    
 
@@ -87,7 +86,7 @@ Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz e
 
     :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="Nyissa meg a myqueue-elemek várólistáját a Azure Portal." border="true":::
 
-1. Válassza az **üzenet hozzáadása**lehetőséget, és írja be a ""Helló világ!"alkalmazás!" kifejezést. az **üzenet szövege**. Kattintson az **OK** gombra.
+1. Válassza az **üzenet hozzáadása**lehetőséget, és írja be a ""Helló világ!"alkalmazás!" kifejezést. az **üzenet szövege**. Válassza az **OK** lehetőséget.
 
     :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="Nyissa meg a myqueue-elemek várólistáját a Azure Portal." border="true":::
 
@@ -97,7 +96,7 @@ Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz e
 
 1. A Storage-várólistában kattintson a **frissítés** elemre, és ellenőrizze, hogy az üzenet feldolgozása megtörtént-e, és már nem szerepel-e a várólistán.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 

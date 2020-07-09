@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
 ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208465"
 ---
 # <a name="download-notebookspreview-data"></a>Jegyzetfüzetek (előzetes verzió) letöltése
@@ -25,9 +25,9 @@ Ez a cikk lépésről lépésre bemutatja, hogyan tölthetők le a jegyzetfüzet
     ![Navigáljon a jegyzetfüzetek lapra!](./media/download-notebooks/notebooks-list.png)
 
 1. Válassza ki a letölteni kívánt jegyzetfüzetet. Ekkor megnyílik a Jupyter.
-    ![Válasszon ki egy](./media/download-notebooks/select-notebook.png) több jegyzetfüzetet letöltő jegyzetfüzetet egyszerre nem.
+    ![Válasszon ki egy ](./media/download-notebooks/select-notebook.png) több jegyzetfüzetet letöltő jegyzetfüzetet egyszerre nem.
 
-1. Lépjen a **fájlok** -> **Letöltés másként**elemre, és válassza ki a formátum lehetőséget.
+1. Lépjen a **fájlok**  ->  **Letöltés másként**elemre, és válassza ki a formátum lehetőséget.
     ![Notebook letöltési lehetőségei](./media/download-notebooks/download-options.PNG)
 
 1. A lehetőség kiválasztása után a jegyzetfüzet-fájl letöltése megkezdődik. A rendszer figyelmen kívül hagyja a megjelenő 500-vagy 502-es hibákat, és nem érinti a letöltést.

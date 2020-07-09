@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60243549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358667"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel
 A legújabb Azure AD Connect létrehozása előtt a felügyeleti delegálás a szükséges SQL-konfigurációk telepítésekor nem támogatott.  Azok a felhasználók, akik számára telepíteni szeretnék Azure AD Connect szükségesek ahhoz, hogy a kiszolgáló-rendszergazdai (SA) engedélyekkel rendelkezzenek az SQL Serveren.
@@ -31,7 +31,7 @@ A Azure AD Connect legújabb kiadásával az adatbázis üzembe helyezése mosta
 ## <a name="before-you-begin"></a>Előkészületek
 A szolgáltatás használatához fel kell ismernie, hogy több mozgó rész is van, és mindegyikhez tartozhat egy másik rendszergazda a szervezetben.  A következő táblázat összefoglalja az egyes szerepköröket és azok feladatait a Azure AD Connect ezen szolgáltatással való üzembe helyezésével kapcsolatban.
 
-|Szerepkör|Leírás|
+|Szerepkör|Description|
 |-----|-----|
 |Tartományi vagy erdőszintű AD-rendszergazda|Létrehozza a Azure AD Connect által a szinkronizálási szolgáltatás futtatásához használt tartományi szintű szolgáltatásfiókot.  További információ a szolgáltatásfiókok használatáról: [fiókok és engedélyek](reference-connect-accounts-permissions.md).
 |SQL-rendszergazda|Létrehozza a ADSync-adatbázist, és hozzáférést biztosít a Azure AD Connect rendszergazdához és a tartomány/erdő rendszergazdája által létrehozott szolgáltatásfiók-hozzáféréshez.|

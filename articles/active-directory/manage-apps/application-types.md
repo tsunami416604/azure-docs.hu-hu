@@ -3,24 +3,24 @@ title: Váratlan alkalmazás szerepel a saját alkalmazások listájában | Micr
 description: Az összes alkalmazás megjelenítése a bérlőben és annak megértése, hogyan jelennek meg az alkalmazások a minden alkalmazás listában a vállalati alkalmazások területen
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65781099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317464"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Váratlan alkalmazás szerepel az alkalmazások listájában
 
@@ -66,7 +66,7 @@ Ha az **összes alkalmazásra**szűri, a **minden alkalmazás** **lista** megjel
 
 5. Új alkalmazás regisztrációjának hozzáadásakor hozzon létre egy egyéni fejlesztésű alkalmazást a [v 2.0 alkalmazás regisztrációs portálján](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6. Ha olyan alkalmazást ad hozzá, amelyet a Visual Studio [ASP.net hitelesítési módszereivel](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásaival](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) fejleszt
+6. Ha olyan alkalmazást ad hozzá, amelyet a Visual Studio [ASP.net hitelesítési módszereivel](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásaival](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) fejleszt
 
 7. Egyszerű szolgáltatás létrehozásakor az [Azure ad PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0) használatával
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ab196e894fc53b1243ac363f9863d5c7d4e328f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389003"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -31,13 +31,13 @@ Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-sta
 
 ## <a name="add-the-elements"></a>Elemek hozzáadása
 
-A jelszó bonyolultságának konfigurálásához bírálja `newPassword` felül `reenterPassword` a és a [jogcím típusait](claimsschema.md) a [predikátumok érvényességére](predicates.md#predicatevalidations)mutató hivatkozással. A PredicateValidations elem olyan predikátumok halmazát csoportosítja, amelyekkel egy felhasználói bemeneti ellenőrzés alkotható, amely alkalmazható a jogcím típusára. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword` és a `reenterPassword` [jogcím típusait](claimsschema.md) a [predikátumok érvényességére](predicates.md#predicatevalidations)mutató hivatkozással. A PredicateValidations elem olyan predikátumok halmazát csoportosítja, amelyekkel egy felhasználói bemeneti ellenőrzés alkotható, amely alkalmazható a jogcím típusára. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
-1. Adja hozzá `newPassword` a `reenterPassword` és a jogcímeket a **ClaimsSchema** elemhez.
+1. Adja hozzá a `newPassword` és a `reenterPassword` jogcímeket a **ClaimsSchema** elemhez.
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -46,9 +46,9 @@ A jelszó bonyolultságának konfigurálásához bírálja `newPassword` felül 
     </ClaimType>
     ```
 
-1. A [predikátumok](predicates.md) alapszintű ellenőrzést határoznak meg a jogcím típusának ellenőrzéséhez, és igaz vagy hamis értéket ad vissza. Az érvényesítés egy megadott metódus-elem és a metódushoz tartozó paraméterek készletének használatával történik. Adja hozzá a következő predikátumokat a **BuildingBlocks** elemhez közvetlenül az `</ClaimsSchema>` elem bezárása után:
+1. A [predikátumok](predicates.md) alapszintű ellenőrzést határoznak meg a jogcím típusának ellenőrzéséhez, és igaz vagy hamis értéket ad vissza. Az érvényesítés egy megadott metódus-elem és a metódushoz tartozó paraméterek készletének használatával történik. Adja hozzá a következő predikátumokat a **BuildingBlocks** elemhez közvetlenül az elem bezárása után `</ClaimsSchema>` :
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -84,9 +84,9 @@ A jelszó bonyolultságának konfigurálásához bírálja `newPassword` felül 
     </Predicates>
     ```
 
-1. Adja hozzá a következő predikátum-érvényesítéseket a **BuildingBlocks** elemhez közvetlenül az `</Predicates>` elem bezárása után:
+1. Adja hozzá a következő predikátum-érvényesítéseket a **BuildingBlocks** elemhez közvetlenül az elem bezárása után `</Predicates>` :
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -111,7 +111,7 @@ A jelszó bonyolultságának konfigurálásához bírálja `newPassword` felül 
 
 1. A következő műszaki profilok [Active Directory műszaki profilok](active-directory-technical-profile.md), amelyek az Azure Active Directoryba való adatolvasást és-írást írják le. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Ezzel `PersistedClaims` a beállítással letilthatja az erős jelszavas házirendet. Keresse meg a **ClaimsProviders** elemet.  Adja hozzá a következő jogcím-szolgáltatókat az alábbiak szerint:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -140,13 +140,13 @@ A jelszó bonyolultságának konfigurálásához bírálja `newPassword` felül 
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **identitási élmény keretrendszert**.
 5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
-6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
+6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
 ### <a name="run-the-policy"></a>A házirend futtatása
 
 1. Nyissa meg a regisztrálási vagy bejelentkezési szabályzatot. Például *B2C_1A_signup_signin*.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 3. Kattintson a **Futtatás most** parancsra.
 4. Válassza a **regisztráció most**lehetőséget, adjon meg egy e-mail-címet, és adjon meg egy új jelszót. Útmutatást a jelszóra vonatkozó korlátozásokban talál. Fejezze be a felhasználói adatok beírását, majd kattintson a **Létrehozás**gombra. Ekkor meg kell jelennie a visszaadott token tartalmának.
 

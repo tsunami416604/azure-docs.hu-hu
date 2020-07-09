@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 06/29/2020
 ms.author: alzam
-ms.openlocfilehash: 11007bc39cb1112799c89afaf0ca670aa6760de6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c93ad0357011008c45b2898260a655509b02dc2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482132"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560738"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -22,12 +22,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * WAN létrehozása
-> * Elosztó létrehozása
 > * Pont–hely konfiguráció létrehozása
+> * Elosztó létrehozása
+> * DNS-kiszolgálók meghatározása
 > * VPN-ügyfél profiljának letöltése
-> * Pont–hely konfiguráció alkalmazása hubra
-> * Virtuális hálózat csatlakoztatása elosztóhoz
-> * A VPN-ügyfél konfigurációjának letöltése és alkalmazása
 > * A virtuális WAN megtekintése
 
 ![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwanp2s.png)
@@ -48,135 +46,111 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-1. Navigáljon a virtuális WAN lapra. A portálon kattintson az **+Erőforrás létrehozása** gombra. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az ENTER billentyűt.
-2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
-3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
+1. Navigáljon a virtuális WAN lapra. A portálon válassza az **+ erőforrás létrehozása**lehetőséget. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az **ENTER billentyűt**.
+1. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon válassza a **Létrehozás** lehetőséget a WAN létrehozása lap megnyitásához.
+1. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
-   ![Virtuális WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
+   ![Virtual WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
 
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
    * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
    * **Erőforráscsoport helye** – válasszon ki egy erőforrás-helyet a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
    * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
    * **Írja be a következőt:** Standard. Ha alapszintű WAN-t hoz létre, akkor csak egy alapszintű hubot hozhat létre. Az alapszintű hubok csak a VPN-helyek közötti kapcsolatra képesek.
-4. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
-5. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.
-
-## <a name="create-an-empty-virtual-hub"></a><a name="hub"></a>Üres virtuális központ létrehozása
-
-1. A virtuális WAN területen válassza a hubok lehetőséget, majd kattintson az **+ új hub** elemre.
-
-   ![új hely](media/virtual-wan-point-to-site-portal/hub1.jpg)
-2. A virtuális központ létrehozása lapon töltse ki a következő mezőket.
-
-   **Régió** – válassza ki azt a régiót, amelyben a virtuális hubot telepíteni szeretné.
-
-   **Név** – adja meg a virtuális központ meghívásához használni kívánt nevet.
-
-   **Hub magánhálózati címtartomány** – a központ CIDR jelölése.
-
-   ![új hely](media/virtual-wan-point-to-site-portal/hub2.jpg)  
-3. Kattintson a **felülvizsgálat + létrehozás** gombra.
-4. Az **átadott érvényesítés** lapon kattintson a **Létrehozás** gombra.
+1. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.
 
 ## <a name="create-a-p2s-configuration"></a><a name="p2sconfig"></a>Pont–hely konfiguráció létrehozása
 
 A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatására vonatkozó paramétereket.
 
 1. Lépjen a **Minden erőforrás** menüpontra.
-2. Kattintson a létrehozott virtuális WAN-ra.
-3. Kattintson a lap tetején a **+ felhasználói VPN-konfiguráció létrehozása** lehetőségre az **új felhasználói VPN-konfiguráció létrehozása** lap megnyitásához.
+1. Válassza ki a létrehozott virtuális WAN-t.
+1. A lap tetején található **+ felhasználói VPN-konfiguráció létrehozása** lapon megnyithatja az **új felhasználói VPN-konfiguráció létrehozása** lapot.
 
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s1.jpg)
-4. Az **új felhasználói VPN-konfiguráció létrehozása** lapon töltse ki a következő mezőket:
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/p2s1.jpg" alt-text="Felhasználói VPN-konfigurációk":::
 
-   **Konfiguráció neve** – Ez az a név, amellyel hivatkozni szeretne a konfigurációra.
+1. Az **új felhasználói VPN-konfiguráció létrehozása** lapon töltse ki a következő mezőket:
 
-   **Alagút típusa** – Az alagúthoz használni kívánt protokoll.
-
-   **Főtanúsítvány neve** – A tanúsítvány leíró neve.
-
-   **Nyilvános tanúsítvány-adatok** -Base-64 kódolt X. 509 tanúsítvány-adatok.
+   * **Konfiguráció neve** – Ez az a név, amellyel hivatkozni szeretne a konfigurációra.
+   * **Alagút típusa** – Az alagúthoz használni kívánt protokoll.
+   * **Főtanúsítvány neve** – A tanúsítvány leíró neve.
+   * **Nyilvános tanúsítvány-adatok** -Base-64 kódolt X. 509 tanúsítvány-adatok.
   
-5. Kattintson a **Létrehozás** elemre a konfiguráció létrehozásához.
+1. Válassza a **Létrehozás** lehetőséget a konfiguráció létrehozásához.
 
-## <a name="edit-hub-assignment"></a><a name="edit"></a>Hubhozzárendelés szerkesztése
+## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>Hub létrehozása pont – hely átjáróval
 
-1. Navigáljon a virtuális WAN alatt lévő **hubok** panelre
-2. Válassza ki azt a hubot, amelyhez hozzá szeretné rendelni a VPN-kiszolgáló konfigurációját, és kattintson a **.** ..
+1. A virtuális WAN területen válassza a hubok lehetőséget, és válassza az **+ új hub**elemet.
 
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s4.jpg)
-3. Kattintson a **virtuális központ szerkesztése**elemre.
-4. Jelölje be a **pont – hely átjáró belefoglalása** jelölőnégyzetet, és válassza ki a kívánt **átjáró-méretezési egységet** .
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub1.jpg" alt-text="új központ":::
 
-   ![új hely](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+1. A virtuális központ létrehozása lapon töltse ki a következő mezőket.
 
-Az alábbi táblázat a rendelkezésre álló **skálázási egységek** részleteit mutatja be.
+   * **Régió** – válassza ki azt a régiót, amelyben a virtuális hubot telepíteni szeretné.
+   * **Név** – adja meg a virtuális központ meghívásához használni kívánt nevet.
+   * **Hub magánhálózati címtartomány** – a központ CIDR jelölése.
 
-| **Méretezési egység** | **Átviteli sebesség** | **Pont–hely kapcsolatok** |
-| --- | --- | --- |
-| 1| 500 Mbps | 500 |
-| 2| 1 Gbps | 500 |
-| 3| 1,5 GB/s | 500 |
-| 4| 2 Gbps | 1000 |
-| 5| 2,5 GB/s | 1000 |
-| 6| 3 GB/s | 1000 |
-| 7| 3,5 GB/s | 5000 |
-| 8| 4 GB/s | 5000 |
-| 9| 4,5 GB/s | 5000 |
-| 10| 5 Gbps | 5000 |
-| 11| 5,5 GB/s | 5000 |
-| 12| 6 GB/s | 5000 |
-| 13| 6,5 GB/s | 10000 |
-| 14| 7 GB/s | 10000 |
-| 15| 7,5 GB/s | 10000 |
-| 16| 8 GB/s | 10000 |
-| 17| 8,5 GB/s | 10000 |
-| 18| 9 GB/s | 10000 |
-| 19| 9,5 GB/s | 10000 |
-| 20| 10 Gbps | 10000 |
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub2.jpg" alt-text="virtuális központ létrehozása":::
 
-5. Adja meg azt a **címkészletet** , amelyből a VPN-ügyfelek IP-címeket rendelnek.
-6. Kattintson a **megerősítés** gombra.
-7. A művelet végrehajtása akár 30 percet is igénybe vehet.
+1. A pont – hely lapon hajtsa végre a következő mezőket:
+
+   * **Átjáró skálázási egységei** – ez a felhasználói VPN-átjáró összesített kapacitását jelenti.
+   * **Mutasson a hely konfigurációja** lehetőségre, amelyet az előző lépésben hozott létre.
+   * **Ügyféloldali címkészlet** – a távoli felhasználók számára.
+   * **Egyéni DNS-kiszolgáló IP-címe**.
+
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub-with-p2s.png" alt-text="központ pont – hely kapcsolattal":::
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Az **átadott érvényesítés** lapon válassza a **Létrehozás**lehetőséget.
+
+## <a name="specify-dns-server"></a><a name="dns"></a>DNS-kiszolgáló meghatározása
+
+A virtuális WAN felhasználói VPN-átjárók legfeljebb 5 DNS-kiszolgáló megadását teszik lehetővé. Ezt konfigurálhatja a hub létrehozási folyamata során, vagy később is módosíthatja. Ehhez keresse meg a virtuális hubot. A **felhasználói VPN (pont – hely)** területen kattintson a configure (Konfigurálás) elemre, és adja meg a DNS-kiszolgáló IP-címét (ek) az **Egyéni DNS-kiszolgálók** szövegmezőben (es).
+
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="Egyéni DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
 ## <a name="download-vpn-profile"></a><a name="download"></a>VPN-profil letöltése
 
 A VPN-profillal konfigurálhatja az ügyfeleket.
 
-1. A virtuális WAN lapján kattintson a **felhasználói VPN-konfigurációk**elemre.
-2. A lap tetején kattintson a **felhasználói VPN-konfiguráció letöltése**elemre.
-3. Miután befejeződött a fájl létrehozása, a hivatkozásra kattintva letöltheti.
-4. A profil fájl segítségével konfigurálja a VPN-ügyfeleket.
+1. A virtuális WAN lapján válassza a **felhasználói VPN-konfigurációk**lehetőséget.
+2. A lap tetején válassza a **felhasználói VPN-konfiguráció letöltése**lehetőséget. A WAN szintű konfigurációk letöltése beépített Traffic Manager-alapú felhasználói VPN-profilt biztosít. A globális profilokkal vagy a hub-alapú profilokkal kapcsolatos további információkért tekintse meg ezt a [központi profilt](https://docs.microsoft.com/azure/virtual-wan/global-hub-profile).   A feladatátvételi forgatókönyvek egyszerűsített globális profillal.
+
+   Ha valamilyen okból kifolyólag egy központ nem érhető el, a szolgáltatás által biztosított beépített forgalom-kezelés biztosítja a kapcsolódást egy másik hubhoz az Azure-erőforrásokhoz a pont – hely felhasználók számára. A hub-specifikus VPN-konfigurációkat mindig letöltheti az adott hubhoz való navigálással. A **felhasználói VPN (pont – hely)** területen töltse le a virtuális központ **felhasználói VPN-** profilját.
+
+1. Miután befejeződött a fájl létrehozása, kiválaszthatja a letöltésre mutató hivatkozást.
+1. A profil fájl segítségével konfigurálja a VPN-ügyfeleket.
 
 ### <a name="configure-user-vpn-clients"></a>Felhasználói VPN-ügyfelek konfigurálása
+
 A letöltött profillal konfigurálhatja a távelérésű ügyfeleket. Az eljárás minden operációs rendszer esetén eltérő, kövesse az alábbi utasításokat:
 
 #### <a name="microsoft-windows"></a>Microsoft Windows
 ##### <a name="openvpn"></a>OpenVPN
 
 1. Töltse le az OpenVPN-ügyfelet a hivatalos webhelyről, majd telepítse.
-2. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal a felhasználó VPN-konfigurációk lapján vagy a PowerShell új AzureRmVpnClientConfiguration teheti meg.
-3. Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
-4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. A lépéseket lásd: [Tanúsítvány exportálása a kódolt nyilvános kulcs lekéréséhez.](certificates-point-to-site.md)
-5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. A lépéseket lásd: [titkos kulcs kibontása.](howto-openvpn-clients.md#windows).
-6. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
-7. Másolja a vpnconfig.ovpn fájlt a C:\Program Files\OpenVPN\config mappába.
-8. Kattintson a jobb gombbal az OpenVPN ikonjára a rendszertálcán, majd kattintson a Csatlakozás parancsra.
+1. Töltse le az átjáró VPN-profilját. Ezt a Azure Portal a felhasználó VPN-konfigurációk lapján vagy a PowerShell új AzureRmVpnClientConfiguration teheti meg.
+1. Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
+1. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. A lépéseket lásd: [Tanúsítvány exportálása a kódolt nyilvános kulcs lekéréséhez.](certificates-point-to-site.md)
+1. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. A lépéseket lásd: [titkos kulcs kibontása.](howto-openvpn-clients.md#windows).
+1. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
+1. Másolja a vpnconfig.ovpn fájlt a C:\Program Files\OpenVPN\config mappába.
+1. Kattintson a jobb gombbal a tálcán található OpenVPN ikonra, majd válassza a **kapcsolat**lehetőséget.
 
 ##### <a name="ikev2"></a>IKEv2
 
 1. Válassza ki a Windows rendszerű számítógép architektúrájának megfelelő VPN-ügyfélkonfigurációs fájlokat. 64 bites processzorarchitektúra esetén a „VpnClientSetupAmd64” telepítőcsomagot válassza. 32 bites processzorarchitektúra esetén a „VpnClientSetupX86” telepítőcsomagot válassza.
-2. Kattintson duplán a csomagra a telepítéséhez. Ha megjelenik a SmartScreen egy előugró ablaka, kattintson a További információ, majd a Futtatás mindenképpen elemre.
-3. Nyissa meg az ügyfélszámítógépen a Hálózati beállítások eszközt, és kattintson a VPN elemre. A VPN-kapcsolat megjeleníti annak a virtuális hálózatnak a nevét, amelyhez csatlakozott.
-4. Mielőtt megkísérli a csatlakozást, ellenőrizze, hogy telepített-e ügyféltanúsítványt az ügyfélszámítógépen. A natív Azure-tanúsítványhitelesítési típus használata esetén a hitelesítéshez ügyféltanúsítványra van szükség. A tanúsítványok létrehozásával kapcsolatos további információkért lásd: [tanúsítványok létrehozása](certificates-point-to-site.md). Az ügyféltanúsítványok telepítésével kapcsolatos információkért lásd: [ügyféltanúsítvány telepítése](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md).
+1. Kattintson duplán a csomagra a telepítéséhez. Ha egy SmartScreen előugró ablak jelenik meg, válassza a **További információ**, majd a **Futtatás amúgy parancsot**.
+1. Az ügyfélszámítógépen navigáljon a **hálózati beállítások** elemre, és válassza a **VPN**lehetőséget. A VPN-kapcsolat megjeleníti annak a virtuális hálózatnak a nevét, amelyhez csatlakozott.
+1. Mielőtt megkísérli a csatlakozást, ellenőrizze, hogy telepített-e ügyféltanúsítványt az ügyfélszámítógépen. A natív Azure-tanúsítványhitelesítési típus használata esetén a hitelesítéshez ügyféltanúsítványra van szükség. A tanúsítványok létrehozásával kapcsolatos további információkért lásd: [tanúsítványok létrehozása](certificates-point-to-site.md). Az ügyféltanúsítványok telepítésével kapcsolatos információkért lásd: [ügyféltanúsítvány telepítése](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md).
 
 ## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>A virtuális WAN megtekintése
 
 1. Lépjen a virtuális WAN-ra.
-2. Az Áttekintés lapon a térképen látható pontok mindegyike egy elosztót jelöl.
-3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
-
+1. Az **Áttekintés** oldalon a térképen lévő minden pont egy hubot jelöl.
+1. A **hubok és kapcsolatok** szakaszban megtekintheti a hub állapotát, a helyet, a régiót, a VPN-kapcsolat állapotát és a bejövő és kimenő bájtokat.
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 

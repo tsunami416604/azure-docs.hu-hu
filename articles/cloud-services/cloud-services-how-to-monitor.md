@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847244"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a Cloud Service Monitorozásba
 
-Bármely felhőalapú szolgáltatás fő teljesítménymutatóit nyomon követheti. Minden Cloud Service-szerepkör minimális adatmennyiséget gyűjt: a CPU-használatot, a hálózati használatot és a lemez kihasználtságát. Ha a felhőalapú szolgáltatás rendelkezik egy `Microsoft.Azure.Diagnostics` szerepkörre alkalmazott bővítménnyel, akkor a szerepkör további adatpontokat gyűjthet. Ez a cikk a Cloud Services Azure Diagnostics bevezetését ismerteti.
+Bármely felhőalapú szolgáltatás fő teljesítménymutatóit nyomon követheti. Minden Cloud Service-szerepkör minimális adatmennyiséget gyűjt: a CPU-használatot, a hálózati használatot és a lemez kihasználtságát. Ha a felhőalapú szolgáltatás rendelkezik `Microsoft.Azure.Diagnostics` egy szerepkörre alkalmazott bővítménnyel, akkor a szerepkör további adatpontokat gyűjthet. Ez a cikk a Cloud Services Azure Diagnostics bevezetését ismerteti.
 
 Alapszintű figyeléssel a szerepkör példányaiból származó teljesítményszámláló-adatok mintavétele és összegyűjtése 3 percenként történik. Ezt az alapszintű figyelési adat nem tárolja a Storage-fiókban, és nem rendelkezik további díjszabással.
 
@@ -54,13 +54,13 @@ Az egyes szerepkörök létrehozásakor a Visual Studio hozzáadja a Azure Diagn
 
 Először is, ha nem rendelkezik **klasszikus** Storage-fiókkal, [hozzon létre egyet](../storage/common/storage-account-create.md). Győződjön meg arról, hogy a Storage-fiók a megadott **klasszikus üzembehelyezési modellel** lett létrehozva.
 
-Ezután navigáljon a **Storage-fiók (klasszikus)** erőforráshoz. Válassza a **Beállítások** > **hozzáférési kulcsok** lehetőséget, és másolja az **elsődleges kapcsolati sztring** értéket. Erre az értékre szüksége lesz a Cloud Service-hez. 
+Ezután navigáljon a **Storage-fiók (klasszikus)** erőforráshoz. Válassza a **Beállítások**  >  **hozzáférési kulcsok** lehetőséget, és másolja az **elsődleges kapcsolati sztring** értéket. Erre az értékre szüksége lesz a Cloud Service-hez. 
 
 A speciális diagnosztika engedélyezéséhez két konfigurációs fájlra van szükség, a **ServiceDefinition. csdef** és a **ServiceConfiguration. cscfg**.
 
 ### <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
 
-A **ServiceDefinition. csdef** fájlban adjon hozzá egy nevű `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` új beállítást minden olyan szerepkörhöz, amely speciális diagnosztikát használ. Ha új projektet hoz létre, a Visual Studio hozzáadja ezt az értéket a fájlhoz. Ha hiányzik, most hozzáadhatja. 
+A **ServiceDefinition. csdef** fájlban adjon hozzá egy nevű új beállítást `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` minden olyan szerepkörhöz, amely speciális diagnosztikát használ. Ha új projektet hoz létre, a Visual Studio hozzáadja ezt az értéket a fájlhoz. Ha hiányzik, most hozzáadhatja. 
 
 ```xml
 <ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -71,7 +71,7 @@ A **ServiceDefinition. csdef** fájlban adjon hozzá egy nevű `Microsoft.Window
 
 Ez egy új beállítást határoz meg, amelyet hozzá kell adni minden **ServiceConfiguration. cscfg** fájlhoz. 
 
-Legvalószínűbb, hogy két **. cscfg** -fájlt, egy **ServiceConfiguration. Cloud. cscfg** -t használ az Azure-ba való üzembe helyezéshez, valamint egy elnevezett **ServiceConfiguration. local. cscfg** , amely az emulált környezetben való helyi központi telepítésekhez használatos. Nyissa meg és módosítsa az egyes **. cscfg** fájlokat. Adjon hozzá egy nevű `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`beállítást. Állítsa az értéket a klasszikus Storage-fiók **elsődleges kapcsolódási karakterláncára** . Ha a fejlesztői gépen a helyi tárterületet szeretné használni, használja `UseDevelopmentStorage=true`a következőt:.
+Legvalószínűbb, hogy két **. cscfg** -fájlt, egy **ServiceConfiguration. Cloud. cscfg** -t használ az Azure-ba való üzembe helyezéshez, valamint egy elnevezett **ServiceConfiguration. local. cscfg** , amely az emulált környezetben való helyi központi telepítésekhez használatos. Nyissa meg és módosítsa az egyes **. cscfg** fájlokat. Adjon hozzá egy nevű beállítást `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` . Állítsa az értéket a klasszikus Storage-fiók **elsődleges kapcsolódási karakterláncára** . Ha a fejlesztői gépen a helyi tárterületet szeretné használni, használja a következőt: `UseDevelopmentStorage=true` .
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

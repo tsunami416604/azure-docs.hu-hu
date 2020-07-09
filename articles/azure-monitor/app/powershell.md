@@ -3,12 +3,11 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485427"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -473,5 +472,4 @@ Egyéb Automation-cikkek:
 * [Riasztások beállítása](powershell-alerts.md)
 * [Hozzon létre webes teszteket](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)
-* [Üzembe helyezés az Azure-ban a GitHubról](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Kiadási jegyzetek létrehozása](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

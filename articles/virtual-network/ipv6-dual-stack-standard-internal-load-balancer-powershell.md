@@ -8,17 +8,16 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72333364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707514"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>IPv6-alapú kettős stack-alkalmazás üzembe helyezése standard belső Load Balancer az Azure-ban – PowerShell (előzetes verzió)
 
@@ -39,8 +38,8 @@ Az IPv6-kompatibilis belső Load Balancer létrehozásának eljárása majdnem a
 
 A belső terheléselosztó előtér-konfigurációját használó módosítások a következők:
 - Az `PrivateIpAddressVersion` "IPv6"-ként van megadva
-- Az `-PublicIpAddress` argumentum el lett hagyva vagy le lett cserélve `-PrivateIpAddress`. Vegye figyelembe, hogy a magánhálózati címnek azon alhálózati IP-terület tartományba kell esnie, amelyben a belső terheléselosztó üzembe lesz helyezve. Ha a statikus `-PrivateIpAddress` érték nincs megadva, a következő ingyenes IPv6-cím lesz kiválasztva abban az alhálózatban, amelyben a belső terheléselosztó telepítve van.
-- A kettős verem alhálózata, amelyben a belső terheléselosztó telepítve lesz, vagy `-Subnet` `-SubnetId` egy argumentummal van megadva.
+- Az `-PublicIpAddress` argumentum el lett hagyva vagy le lett cserélve `-PrivateIpAddress` . Vegye figyelembe, hogy a magánhálózati címnek azon alhálózati IP-terület tartományba kell esnie, amelyben a belső terheléselosztó üzembe lesz helyezve. Ha a statikus `-PrivateIpAddress` érték nincs megadva, a következő ingyenes IPv6-cím lesz kiválasztva abban az alhálózatban, amelyben a belső terheléselosztó telepítve van.
+- A kettős verem alhálózata, amelyben a belső terheléselosztó telepítve lesz, `-Subnet` vagy egy argumentummal van megadva `-SubnetId` .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -339,7 +338,7 @@ Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti me
 > [!NOTE]
 > Az Azure-beli virtuális hálózat IPv6-értéke csak olvashatóként érhető el a Azure Portal ebben az előzetes kiadásban.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: 11fb2b7785540f24b0a8318428da01a4edd5cb5b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860630"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Log Analytics munkaterület létrehozása az Azure CLI 2,0-vel
@@ -107,7 +106,7 @@ A következő paraméterek alapértelmezett értéket állítanak be:
     ```
 
 2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer.
-3. Mentse ezt a fájlt **deploylaworkspacetemplate. JSON** néven egy helyi mappába.   
+3. Mentse ezt a fájlt **deploylaworkspacetemplate.jsként** egy helyi mappába.   
 4. Készen áll a sablon üzembe helyezésére. Használja az alábbi parancsokat a sablont tartalmazó mappából. Ha a rendszer a munkaterület nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
 
     ```azurecli

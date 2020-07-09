@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: 495d0bce905a980f840527f4cc8cd9e2116e3e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133750"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Virtuális hálózati szolgáltatás végponti házirendjei az Azure Storage-hoz
@@ -58,7 +58,7 @@ Vessünk egy gyors pillantást a szolgáltatás-végponti házirend objektumra.
 ]
 ```
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 -   A végpont-házirendeket beállíthatja úgy, hogy az adott Azure Storage-fiókokra korlátozza a virtuális hálózati forgalmat.
 -   A végpontszabályzatot a virtuális hálózat egy alhálózatán kell konfigurálni. Az Azure Storage szolgáltatási végpontait engedélyezni kell az alhálózaton a szabályzat alkalmazásához.

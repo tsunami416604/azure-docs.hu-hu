@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73747651"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
@@ -51,19 +50,19 @@ Kétféle módon teheti meg:
 
 ### <a name="through-config"></a>Konfiguráción keresztül
 
-Meg kell tudnia, hogyan állíthatja be a Signal Service-kapcsolati karakterláncot a környezeti változók/Alkalmazásbeállítások/web. cofig használatával egy nevű `Azure:SignalR:ConnectionString`konfigurációs bejegyzésben.
+Meg kell tudnia, hogyan állíthatja be a Signal Service-kapcsolati karakterláncot a környezeti változók/Alkalmazásbeállítások/web. cofig használatával egy nevű konfigurációs bejegyzésben `Azure:SignalR:ConnectionString` .
 Ha több végponttal rendelkezik, a következő formátumban állíthatja be őket több konfigurációs bejegyzésbe:
 
 ```
 Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
-Itt `<name>` látható a végpont neve, és `<role>` a szerepköre (elsődleges vagy másodlagos).
+Itt `<name>` látható a végpont neve, és a `<role>` szerepköre (elsődleges vagy másodlagos).
 A név nem kötelező, de akkor is hasznos, ha tovább szeretné testreszabni az útválasztási viselkedést több végpont között.
 
 ### <a name="through-code"></a>Kód használatával
 
-Ha a kapcsolódási karakterláncokat inkább valahol máshol szeretné tárolni, akkor a kódban is elolvashatja őket, és paraméterként használhatja őket `AddAzureSignalR()` a (ASP.net Core) vagy `MapAzureSignalR()` (ASP.net) hívásakor.
+Ha a kapcsolódási karakterláncokat inkább valahol máshol szeretné tárolni, akkor a kódban is elolvashatja őket, és paraméterként használhatja őket a `AddAzureSignalR()` (ASP.net Core) vagy `MapAzureSignalR()` (ASP.net) hívásakor.
 
 A mintakód a következő:
 
@@ -106,11 +105,11 @@ A következő történik, ha egy elsődleges példány leáll (és néhány idő
 
 Az alábbi diagramok azt szemléltetik, hogyan történik a feladatátvétel a Signaler szolgáltatásban:
 
-Feladatátvétel előtt 1 ![. ábra.](media/signalr-concept-disaster-recovery/before-failover.png)
+Feladatátvétel előtt 1. ábra. ![](media/signalr-concept-disaster-recovery/before-failover.png)
 
-2. ábra a feladatátvétel ![utáni feladatátvétel után](media/signalr-concept-disaster-recovery/after-failover.png)
+2. ábra ![ a feladatátvétel utáni feladatátvétel után](media/signalr-concept-disaster-recovery/after-failover.png)
 
-3. ábra rövid idő elteltével az elsődleges helyreállítások ![után rövid idő elteltével](media/signalr-concept-disaster-recovery/after-recover.png)
+3. ábra rövid idő elteltével az elsődleges helyreállítások után ![ rövid idő elteltével](media/signalr-concept-disaster-recovery/after-recover.png)
 
 Normál esetben a csak az elsődleges app Server és a Signaler szolgáltatás rendelkezik online forgalommal (kék színnel).
 A feladatátvétel után a másodlagos app Server és a Signaler szolgáltatás is aktívvá válik.

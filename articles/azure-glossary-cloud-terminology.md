@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807761"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Szószedet: az Azure platform felhőalapú terminológiájának szótára
 
@@ -31,7 +31,7 @@ A Microsoft Azure Szószedet az Azure platformhoz készült Felhőbeli terminol�
 
 ## <a name="account"></a>account
 Egy Azure-előfizetés eléréséhez és kezeléséhez használt fiók. Gyakran Azure-fióknak is nevezzük, bár a fiókok bármelyike lehet: egy meglévő munkahelyi, iskolai vagy személyes Microsoft-fiók, vagy egy Office 365-Felhasználónév és-jelszó. Létrehozhat egy fiókot is az Azure-előfizetés kezeléséhez az [ingyenes próbaverzióra](https://azure.microsoft.com)való regisztráció során.  
-A bejelentkezéshez használható [Azure-előfizetés regisztrálása Office 365-fiókkal](cost-management-billing/manage/office-365-account-for-azure-subscription.md) és- [fiókokkal](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+A bejelentkezéshez használhatja az [Azure-előfizetésre vonatkozó regisztrációt Microsoft 365 fiókját](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) és [fiókját](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-alkalmazás
 [App Service alkalmazás](#app-service-app)másik neve.

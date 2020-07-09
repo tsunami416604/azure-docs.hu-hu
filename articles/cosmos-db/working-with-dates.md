@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85412549"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Dátumok használata Azure Cosmos DB
 
@@ -21,9 +21,9 @@ Az alaptípusokon kívül számos alkalmazásnak szüksége van a DateTime típu
 
 ## <a name="storing-datetimes"></a>Dátum és idő tárolása
 
-Azure Cosmos DB támogatja a JSON-típusokat, például a-string, a number, a Boolean, a null, a Array, az Object. Nem támogatja közvetlenül a DateTime típust. A Azure Cosmos DB jelenleg nem támogatja a dátumok honosítását. Ezért a DateTimes karakterláncként kell tárolnia. A DateTime karakterláncok ajánlott formátuma Azure Cosmos DB, `YYYY-MM-DDThh:mm:ss.fffffffZ` amely az ISO 8601 UTC szabványt követi. Azt javasoljuk, hogy a Azure Cosmos DB összes dátumát UTC-ként tárolja. A dátum sztringek erre a formátumra való konvertálása lehetővé teszi a rendezési dátumok lexicographically. Ha a nem UTC formátumú dátumok vannak tárolva, a logikát az ügyféloldali helyen kell kezelni. Ha a helyi DateTime értéket UTC-re szeretné átalakítani, az eltolásnak ismertnek kell lennie, és a JSON tulajdonságként kell tárolnia, és az ügyfél az eltolás használatával kiszámíthatja az UTC DateTime értékét.
+Azure Cosmos DB támogatja a JSON-típusokat, például a-string, a number, a Boolean, a null, a Array, az Object. Nem támogatja közvetlenül a DateTime típust. A Azure Cosmos DB jelenleg nem támogatja a dátumok honosítását. Ezért a DateTimes karakterláncként kell tárolnia. A DateTime karakterláncok ajánlott formátuma Azure Cosmos DB, `yyyy-MM-ddTHH:mm:ss.fffffffZ` amely az ISO 8601 UTC szabványt követi. Azt javasoljuk, hogy a Azure Cosmos DB összes dátumát UTC-ként tárolja. A dátum sztringek erre a formátumra való konvertálása lehetővé teszi a rendezési dátumok lexicographically. Ha a nem UTC formátumú dátumok vannak tárolva, a logikát az ügyféloldali helyen kell kezelni. Ha a helyi DateTime értéket UTC-re szeretné átalakítani, az eltolásnak ismertnek kell lennie, és a JSON tulajdonságként kell tárolnia, és az ügyfél az eltolás használatával kiszámíthatja az UTC DateTime értékét.
 
-A DateTime sztringekkel rendelkező címtartomány-lekérdezések csak akkor támogatottak, ha a DateTime karakterláncok mind UTC, mind pedig azonos hosszúságú. Azure Cosmos DB a [GetCurrentDateTime](sql-query-getcurrentdatetime.md) System függvény az aktuális UTC dátum és idő ISO 8601 karakterlánc értékét fogja visszaadni a (z) formátumban `YYYY-MM-DDThh:mm:ss.fffffffZ`:.
+A DateTime sztringekkel rendelkező címtartomány-lekérdezések csak akkor támogatottak, ha a DateTime karakterláncok mind UTC, mind pedig azonos hosszúságú. Azure Cosmos DB a [GetCurrentDateTime](sql-query-getcurrentdatetime.md) System függvény az aktuális UTC dátum és idő ISO 8601 karakterlánc értékét fogja visszaadni a (z) formátumban: `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 A legtöbb alkalmazás a következő okok miatt használhatja a DateTime alapértelmezett karakterlánc-ábrázolását:
 
@@ -32,7 +32,7 @@ A legtöbb alkalmazás a következő okok miatt használhatja a DateTime alapér
 * A JSON-ban tárolt dátumok emberi olvashatók.
 * Ez a megközelítés kihasználhatja Azure Cosmos DB indexét a gyors lekérdezési teljesítmény érdekében.
 
-Az alábbi kódrészlet például egy olyan `Order` objektumot tárol, amely két datetime tulajdonságot `ShipDate` tartalmaz `OrderDate` – és a .net SDK-t használó dokumentumként:
+Az alábbi kódrészlet például egy olyan objektumot tárol, `Order` amely két datetime tulajdonságot tartalmaz – `ShipDate` és a `OrderDate` .net SDK-t használó dokumentumként:
 
 ```csharp
     public class Order
@@ -65,7 +65,7 @@ Ezt a dokumentumot a Azure Cosmos DB a következőképpen tárolja:
     }
 ```  
 
-Azt is megteheti, hogy a dátum/idő karakterláncot UNIX-időbélyegként tárolja, azaz az eltelt másodpercek számát jelölő számként, amely a 1970. január 1. A Azure Cosmos DB belső timestamp (`_ts`) tulajdonsága ezt a megközelítést követi. A [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) osztály használatával számként szerializálhatja a dátum és idő értéket.
+Azt is megteheti, hogy a dátum/idő karakterláncot UNIX-időbélyegként tárolja, azaz az eltelt másodpercek számát jelölő számként, amely a 1970. január 1. A Azure Cosmos DB belső timestamp ( `_ts` ) tulajdonsága ezt a megközelítést követi. A [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) osztály használatával számként szerializálhatja a dátum és idő értéket.
 
 ## <a name="querying-datetimes-in-linq"></a>Dátum és idő lekérdezése a LINQ-ben
 

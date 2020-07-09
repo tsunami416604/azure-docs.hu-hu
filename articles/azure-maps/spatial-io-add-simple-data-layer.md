@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84885966"
 ---
 # <a name="add-a-simple-data-layer"></a>Egyszerű adatréteg hozzáadása
 
@@ -37,7 +37,7 @@ var layer = new atlas.layer.SimpleDataLayer(datasource);
 map.layers.add(layer);
 ```
 
-Szolgáltatások hozzáadása az adatforráshoz. Ezután az egyszerű adatrétegből megtudhatja, hogyan jeleníti meg a legjobb funkciókat. Az egyes funkciók stílusa a funkció tulajdonságaiként állítható be. A következő kód egy GeoJSON pont funkciót mutat be, `color` amely a tulajdonságra van beállítva `red`. 
+Szolgáltatások hozzáadása az adatforráshoz. Ezután az egyszerű adatrétegből megtudhatja, hogyan jeleníti meg a legjobb funkciókat. Az egyes funkciók stílusa a funkció tulajdonságaiként állítható be. A következő kód egy GeoJSON pont funkciót mutat be, amely a `color` tulajdonságra van beállítva `red` . 
 
 ```json
 {
@@ -56,7 +56,7 @@ A következő kód a fenti pont funkciót jeleníti meg az egyszerű adatréteg 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Az egyszerű adatréteg használata" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Lásd a tollat <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>az egyszerű adatréteget</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Az egyszerű adatréteg használata" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Lásd a tollat <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>az egyszerű adatréteget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Az egyszerű adatréteg valódi ereje a következőket tartalmazhatja:
@@ -69,7 +69,7 @@ Például az XML-adatcsatornák elemzésekor előfordulhat, hogy nem ismeri a fu
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Az adatrétegek egyszerű beállításai" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>egyszerű adatrétegének beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Az adatrétegek egyszerű beállításai" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>egyszerű adatrétegének beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -77,9 +77,9 @@ Például az XML-adatcsatornák elemzésekor előfordulhat, hogy nem ismeri a fu
 > Ez az egyszerű adatréteg a [felugró sablon](map-add-popup.md#add-popup-templates-to-the-map) osztály segítségével jeleníti meg a KML-buborékokat vagy a funkciók tulajdonságait táblázatként. Alapértelmezés szerint az előugró ablakban megjelenített összes tartalom egy iframe-kereten belül, biztonsági szolgáltatásként fog megjelenni. Vannak azonban korlátozások:
 >
 > - A rendszer letiltja az összes parancsfájlt, űrlapot, mutató zárolást és felső navigációs funkciót. A hivatkozások egy új lapon megnyithatók, amikor rákattintanak. 
-> - Azok a régebbi böngészők, amelyek `srcdoc` nem támogatják a paramétert az IFRAME-eszközökön, csak kis mennyiségű tartalom megjelenítésére lesznek korlátozva.
+> - Azok a régebbi böngészők, amelyek nem támogatják a `srcdoc` paramétert az IFRAME-eszközökön, csak kis mennyiségű tartalom megjelenítésére lesznek korlátozva.
 > 
-> Ha megbízik az előugró ablakban betöltött adataiban, és esetleg szeretné, hogy az előugró ablakban betöltött parancsfájlok hozzáférjenek az alkalmazáshoz, ezt letilthatja, ha `sandboxContent` a felugró sablonok beállítás hamis értékre van állítva. 
+> Ha megbízik az előugró ablakban betöltött adataiban, és esetleg szeretné, hogy az előugró ablakban betöltött parancsfájlok hozzáférjenek az alkalmazáshoz, ezt letilthatja, ha a felugró sablonok beállítás hamis értékre van állítva `sandboxContent` . 
 
 ## <a name="default-supported-style-properties"></a>Alapértelmezett támogatott stílus tulajdonságai
 
@@ -87,13 +87,13 @@ Ahogy azt korábban említettük, az egyszerű adatréteg több alapvető render
 
 A Azure Maps és a GitHub stílusú tulajdonságok a támogatott tulajdonságok két fő halmaza. A különböző Azure Maps-rétegbeli beállítások többsége az egyszerű adatrétegben található szolgáltatások stílusának tulajdonságaiként támogatott. Bizonyos rétegbeli beállításokhoz kifejezések lettek hozzáadva, amelyek támogatják a GitHub által leggyakrabban használt stílusú tulajdonságokat. Ezeket a tulajdonságokat a [GitHub GeoJSON-leképezési támogatása](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)határozza meg, és a platformon belül tárolt és megjelenített GeoJSON-fájlok stílusához használatosak. A GitHub összes stílusának tulajdonsága támogatott az egyszerű adatrétegben, a `marker-symbol` stílus tulajdonságai kivételével.
 
-Ha az olvasó egy kevésbé gyakori Style tulajdonságon keresztül érkezik, a rendszer a legközelebbi Azure Maps Style tulajdonságra konvertálja. Emellett az alapértelmezett stílusú kifejezések felülbírálása az egyszerű adatréteg `getLayers` funkciójának használatával és az egyes rétegek beállításainak frissítésével végezhető el.
+Ha az olvasó egy kevésbé gyakori Style tulajdonságon keresztül érkezik, a rendszer a legközelebbi Azure Maps Style tulajdonságra konvertálja. Emellett az alapértelmezett stílusú kifejezések felülbírálása az `getLayers` egyszerű adatréteg funkciójának használatával és az egyes rétegek beállításainak frissítésével végezhető el.
 
-A következő szakaszokban részletesen ismertetjük az egyszerű adatréteg által támogatott alapértelmezett stílusú tulajdonságokat. A támogatott tulajdonságnév sorrendje szintén a tulajdonság prioritása. Ha ugyanahhoz a réteghez két stílus van definiálva, akkor a lista első elemének magasabb a prioritása.
+A következő szakaszokban részletesen ismertetjük az egyszerű adatréteg által támogatott alapértelmezett stílusú tulajdonságokat. A támogatott tulajdonságnév sorrendje szintén a tulajdonság prioritása. Ha ugyanahhoz a réteghez két stílus van definiálva, akkor a lista első elemének magasabb a prioritása. A színek bármely CSS3 színértéket tartalmazhatnak; HEXADECIMÁLIS, RGB, RGBA, HSL, HSLA vagy named Color érték.
 
 ### <a name="bubble-layer-style-properties"></a>Buborék réteg stílusa tulajdonságai
 
-Ha a `Point` szolgáltatás egy vagy a `MultiPoint`, és a szolgáltatás nem rendelkezik olyan `image` tulajdonsággal, amelyet egyéni ikonként kíván használni a pont szimbólumként való megjelenítéséhez, akkor a funkció a következővel lesz megjelenítve: `BubbleLayer`.
+Ha a szolgáltatás egy `Point` vagy a `MultiPoint` , és a szolgáltatás nem rendelkezik olyan `image` tulajdonsággal, amelyet egyéni ikonként kíván használni a pont szimbólumként való megjelenítéséhez, akkor a funkció a következővel lesz megjelenítve: `BubbleLayer` .
 
 | Réteg beállítása | Támogatott tulajdonságok neve (i) | Alapértelmezett érték |
 |--------------|----------------------------|---------------|
@@ -101,19 +101,19 @@ Ha a `Point` szolgáltatás egy vagy a `MultiPoint`, és a szolgáltatás nem re
 | `radius` | `size`<sup>1</sup>, `marker-size` <sup>2</sup>, `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1\] a `size` és `scale` az értékek skaláris értéknek minősülnek, és megszorozzák őket`8`
+\[1 \] a `size` és az `scale` értékek skaláris értéknek minősülnek, és megszorozzák őket`8`
 
-\[2\] ha a GitHub `marker-size` beállítás meg van adva, a rendszer a következő értékeket fogja használni a RADIUS-hez.
+\[2 \] Ha a GitHub `marker-size` beállítás meg van adva, a rendszer a következő értékeket fogja használni a RADIUS-hez.
 
-| Jelölő mérete | Sugár |
+| Jelölő mérete | Radius |
 |-------------|--------|
 | `small`     | `6`    |
 | `medium`    | `8`    |
 | `large`     | `12`   |
 
-A fürtöket a buborék réteg is megjeleníti. Alapértelmezés szerint a fürt sugara a következőre van beállítva `16`:. A fürt színe a fürtben lévő pontok számától függ, az alábbiakban meghatározottak szerint:
+A fürtöket a buborék réteg is megjeleníti. Alapértelmezés szerint a fürt sugara a következőre van beállítva: `16` . A fürt színe a fürtben lévő pontok számától függ, az alábbiakban meghatározottak szerint:
 
-| pontok száma | Color    |
+| pontok száma | Szín    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
@@ -121,7 +121,7 @@ A fürtöket a buborék réteg is megjeleníti. Alapértelmezés szerint a fürt
 
 ### <a name="symbol-style-properties"></a>Szimbólum stílusa tulajdonságai
 
-Ha egy `Point` szolgáltatás egy vagy a `MultiPoint`, és a szolgáltatás, és rendelkezik egy `image` tulajdonsággal, amelyet egyéni ikonként használhat a pont szimbólumként való megjelenítéséhez, akkor a funkció a következővel lesz megjelenítve: `SymbolLayer`.
+Ha egy szolgáltatás egy `Point` vagy a `MultiPoint` , és a szolgáltatás, és rendelkezik egy `image` tulajdonsággal, amelyet egyéni ikonként használhat a pont szimbólumként való megjelenítéséhez, akkor a funkció a következővel lesz megjelenítve: `SymbolLayer` .
 
 | Réteg beállítása | Támogatott tulajdonságok neve (i) | Alapértelmezett érték |
 |--------------|----------------------------|---------------|
@@ -131,7 +131,7 @@ Ha egy `Point` szolgáltatás egy vagy a `MultiPoint`, és a szolgáltatás, és
 | `offset` | `offset` | `[0, 0]` |
 | `anchor` | `anchor` | `'bottom'` |
 
-\[1\] ha a GitHub `marker-size` beállítás meg van adva, akkor az ikon mérete beállításnál a következő értékeket fogja használni a rendszer.
+\[1 \] Ha a GitHub `marker-size` beállítás meg van adva, akkor az ikon mérete beállításnál a következő értékeket fogja használni a rendszer.
 
 | Jelölő mérete | Szimbólumméret |
 |-------------|-------------|
@@ -143,7 +143,7 @@ Ha a pont funkció egy fürt, a `point_count_abbreviated` tulajdonság szövegk�
 
 ### <a name="line-style-properties"></a>Vonalstílus tulajdonságai
 
-Ha `LineString`a szolgáltatás egy, `MultiLineString` `Polygon`, vagy `MultiPolygon`rendszerű, akkor a funkció a-val lesz megjelenítve `LineLayer`.
+Ha a szolgáltatás egy,, vagy rendszerű `LineString` `MultiLineString` `Polygon` `MultiPolygon` , akkor a funkció a-val lesz megjelenítve `LineLayer` .
 
 | Réteg beállítása | Támogatott tulajdonságok neve (i) | Alapértelmezett érték |
 |--------------|----------------------------|---------------|
@@ -153,7 +153,7 @@ Ha `LineString`a szolgáltatás egy, `MultiLineString` `Polygon`, vagy `MultiPol
 
 ### <a name="polygon-style-properties"></a>Sokszög stílusa tulajdonságai
 
-Ha a `Polygon` funkció a vagy a `MultiPolygon`, és a szolgáltatás nem rendelkezik `height` tulajdonsággal, vagy a `height` tulajdonság nulla, akkor a funkció a-val lesz megjelenítve. `PolygonLayer`
+Ha a funkció a `Polygon` vagy a `MultiPolygon` , és a szolgáltatás nem rendelkezik `height` tulajdonsággal, vagy a `height` tulajdonság nulla, akkor a funkció a-val lesz megjelenítve `PolygonLayer` .
 
 | Réteg beállítása | Támogatott tulajdonságok neve (i) | Alapértelmezett érték |
 |--------------|----------------------------|---------------|
@@ -162,7 +162,7 @@ Ha a `Polygon` funkció a vagy a `MultiPolygon`, és a szolgáltatás nem rendel
 
 ### <a name="extruded-polygon-style-properties"></a>Extrudált sokszög stílusának tulajdonságai
 
-Ha a `Polygon` funkció egy vagy a `MultiPolygon`, és a `height` tulajdonság értéke 0-nál nagyobb, akkor a szolgáltatás egy `PolygonExtrusionLayer`értékkel jelenik meg.
+Ha a funkció egy `Polygon` vagy a `MultiPolygon` , és a `height` tulajdonság értéke 0-nál nagyobb, akkor a szolgáltatás egy értékkel jelenik meg `PolygonExtrusionLayer` .
 
 | Réteg beállítása | Támogatott tulajdonságok neve (i) | Alapértelmezett érték |
 |--------------|----------------------------|---------------|
@@ -183,16 +183,16 @@ További információ a cikkben használt osztályokról és módszerekről:
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
-> [Térbeli információk olvasása és írása](spatial-io-read-write-spatial-data.md)
+> [Térbeli adatok beolvasása és írása](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [OGC-Térkép réteg hozzáadása](spatial-io-add-ogc-map-layer.md)
+> [OGC-térképréteg hozzáadása](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás WFS szolgáltatáshoz](spatial-io-connect-wfs-service.md)
+> [Kapcsolódás WFS-szolgáltatáshoz](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Alapvető műveletek kihasználása](spatial-io-core-operations.md)
+> [Alapvető műveletek előnyeinek kihasználása](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Támogatott adatformátum részletei](spatial-io-supported-data-format-details.md)
+> [Támogatott adatformátumokra vonatkozó részletek](spatial-io-supported-data-format-details.md)

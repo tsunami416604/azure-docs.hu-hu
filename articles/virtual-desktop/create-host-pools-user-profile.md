@@ -4,22 +4,22 @@ description: FSLogix-profilok tárolójának beállítása egy Windows rendszer�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211833"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
 
 A Windows rendszerű virtuális asztali szolgáltatás az ajánlott felhasználói profil megoldásként kínálja a FSLogix-profilok tárolóit. Nem javasoljuk a felhasználói profil lemez (UPD) megoldás használatát, amely a Windows rendszerű virtuális asztal jövőbeli verzióiban elavulttá válik.
 
-Ebből a cikkből megtudhatja, hogyan állíthat be egy FSLogix-profil tároló-megosztást egy gazdagép-készlethez egy virtuálisgép-alapú fájlmegosztás használatával. További FSLogix dokumentációt a [FSLogix webhelyen](https://docs.fslogix.com/)talál.
+Ebből a cikkből megtudhatja, hogyan állíthat be egy FSLogix-profil tároló-megosztást egy gazdagép-készlethez egy virtuálisgép-alapú fájlmegosztás használatával. Javasoljuk, hogy a fájlmegosztás helyett Azure Files használjon. További FSLogix dokumentációt a [FSLogix webhelyen](https://docs.fslogix.com/)talál.
 
 >[!NOTE]
 >Ha összehasonlító anyagot keres az Azure-beli különböző FSLogix-profilok tárolási lehetőségeivel kapcsolatban, tekintse meg a [FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md)című témakört.
@@ -60,13 +60,13 @@ A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a követ
 
 1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Nyisson meg egy webböngészőt, és navigáljon [erre a hivatkozásra](https://go.microsoft.com/fwlink/?linkid=2084562) a FSLogix-ügynök letöltéséhez.
-3. \\ \\Navigáljon a.\\zip fájl \\ \\Win32\\vagy x64 kiadására, és futtassa a **FSLogixAppsSetup** -t a FSLogix-ügynök telepítéséhez.  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](/fslogix/install-ht/).
-4. Navigáljon a **Program Files** > **FSLogix** > **alkalmazásokhoz** , és erősítse meg az ügynök telepítését.
-5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **a\\számítógép\\HKEY_LOCAL_MACHINE\\szoftver FSLogix**.
+3. Navigáljon a \\ \\ \\ \\ \\ \\ . zip fájl Win32 vagy x64 kiadására, és futtassa a **FSLogixAppsSetup** -t a FSLogix-ügynök telepítéséhez.  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](/fslogix/install-ht/).
+4. Navigáljon a **Program Files**  >  **FSLogix**  >  **alkalmazásokhoz** , és erősítse meg az ügynök telepítését.
+5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon a **számítógép \\ HKEY_LOCAL_MACHINE \\ szoftver \\ FSLogix**.
 6. Hozzon létre egy **profilok**nevű kulcsot.
 7. Hozza létre a következő értékeket a profilok kulcshoz:
 
-| Name (Név)                | Típus               | Az adatértékek/értékek                        |
+| Name                | Típus               | Az adatértékek/értékek                        |
 |---------------------|--------------------|-----------------------------------|
 | Engedélyezve             | DWORD              | 1                                 |
 | VHDLocations        | Több karakterláncos érték | "Fájlmegosztás hálózati elérési útja"     |

@@ -4,10 +4,9 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537593"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
@@ -70,7 +69,7 @@ A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja 
 
 Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](../../azure-monitor/app/powershell.md).
 
-1. A [Azure Portal][portal]válassza az **új** > **fejlesztői szolgáltatások** > **Application Insights**lehetőséget.  
+1. A [Azure Portal][portal]válassza az **új**  >  **fejlesztői szolgáltatások**  >  **Application Insights**lehetőséget.  
 
     ![Application Insights ablaktábla](./media/cloudservices/01-new.png)
 
@@ -82,7 +81,7 @@ Minden erőforrást egy rendszerállapot-kulcs azonosít. Később szükség leh
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics beállítása az egyes szerepkörökhöz
 Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. A webes szerepkörök esetében ez a beállítás a teljesítmény figyelését, a riasztásokat, a diagnosztika és a használat elemzését teszi lehetővé. Más szerepkörök esetében olyan Azure Diagnostics kereshet és figyel, mint például az újraindítás, a teljesítményszámlálók és a System. Diagnostics. Trace hívása. 
 
-1. A Visual Studio megoldáskezelő ** \<YourCloudService>**  >  **szerepkörök**területén nyissa meg az egyes szerepkörök tulajdonságait.
+1. A Visual Studio megoldáskezelő a **\<YourCloudService>**  >  **szerepkörök**területen nyissa meg az egyes szerepkörök tulajdonságait.
 
 1. A **konfiguráció**területen jelölje be a **diagnosztikai adatküldés Application Insightsba** jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
 
@@ -90,7 +89,7 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 ![Application Insights konfigurálása](./media/cloudservices/configure-azure-diagnostics.png)
 
-Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a *ServiceConfiguration nevű fájlba\*. cscfg*. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a ServiceConfiguration nevű fájlba *. \* cscfg*. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)teheti meg.
 
@@ -124,7 +123,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
     * [Feldolgozói szerepkör](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Weblapok esetén](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Állítsa be a *ApplicationInsights. config* fájlt, hogy mindig a kimeneti könyvtárba másolja.
+1. Állítsa be, hogy a rendszer mindig a kimeneti könyvtárba másolja a *ApplicationInsights.config* fájlt.
 
    A *. config* fájlban lévő üzenet arra kéri, hogy ott helyezze el a kialakítási kulcsot. A Cloud apps esetében azonban jobb, ha a *. cscfg* fájlból állítja be. Ez a megközelítés biztosítja, hogy a szerepkör helyesen legyen azonosítva a portálon.
 
@@ -147,7 +146,7 @@ Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL
     </Startup>
     ```
     
-2. Töltse le a [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és a [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)fájlt, `AppInsightsAgent` és helyezze azokat az egyes szerepkör-projektek mappájába. Ügyeljen rá, hogy a Visual Studio-fájl tulajdonságain keresztül másolja őket a kimeneti könyvtárba, vagy hozzon létre parancsfájlokat.
+2. Töltse le [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), majd helyezze azokat az `AppInsightsAgent` összes szerepkör-projekt mappájába. Ügyeljen rá, hogy a Visual Studio-fájl tulajdonságain keresztül másolja őket a kimeneti könyvtárba, vagy hozzon létre parancsfájlokat.
 
 3. A feldolgozói szerepkörökben adja hozzá a környezeti változókat: 
 
@@ -233,7 +232,7 @@ Webes szerepkörök esetében a rendszer az alábbi számlálókat is gyűjti:
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-A *ApplicationInsights. config fájl* szerkesztésével további egyéni vagy más Windows-teljesítményszámlálókat is megadhat [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+További egyéni vagy más Windows-teljesítményszámlálókat is megadhat a *ApplicationInsights.config* szerkesztésével [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
   ![Teljesítményszámlálók](./media/cloudservices/002-servers.png)
 
@@ -246,7 +245,7 @@ Ezt a következőképpen teheti meg:
 
 * Állítsa be a correlationId egy CallContext [, az ebben a példában látható módon](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). Ebben az esetben a kérelem AZONOSÍTÓját használjuk correlationId.
 * Vegyen fel egy egyéni TelemetryInitializer-megvalósítást, hogy a Operation.Id a korábban beállított correlationId állítsa be. Példaként tekintse meg a következőt: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Adja hozzá az egyéni telemetriainicializálót. Ezt megteheti a *ApplicationInsights. config* fájlban vagy a kódban [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
+* Adja hozzá az egyéni telemetriainicializálót. Ezt megteheti a *ApplicationInsights.config* fájlban vagy kódban [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Ügyfél-telemetria
 A böngészőalapú telemetria beszerzéséhez, például a lapok megtekintésének száma, az oldal betöltési ideje vagy a parancsfájlok kivételei, valamint az egyéni telemetria írása az oldal parancsfájljaiba: [a JavaScript SDK hozzáadása a weblapokhoz][client].

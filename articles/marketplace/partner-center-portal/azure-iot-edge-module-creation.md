@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Edge modul létrehozása az Azure Marketplace-en a partner centerrel
 description: Megtudhatja, hogyan hozhat létre, konfigurálhat és tehet közzé IoT Edge modul-ajánlatokat az Azure piactéren a partner Center használatával
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: anbene
+ms.author: mingshen
+ms.date: 06/17/2020
+ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847973"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119293"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>IoT Edge modul ajánlatának létrehozása, konfigurálása és közzététele az Azure Marketplace-en
 
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök internetes hálózata (IoT) Edge-modult az Azure Marketplace-hez. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök internetes hálózata (IoT) Edge-modult az Azure Marketplace-hez. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
@@ -50,10 +50,10 @@ Az **ajánlat áttekintése** oldalon láthatók az ajánlat közzétételéhez 
 
 Ezen a lapon olyan hivatkozások találhatók, amelyek az ajánlaton végzett műveletekre vonatkozó műveleteket hajtanak végre. Például:
 
-- Ha az ajánlat Piszkozat- [törlési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Ha az ajánlat előzetes verzióban érhető [el](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Ha még nem fejezte be a közzétevő kijelentkezését – a [Közzététel megszakítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing) folyamatban van.
+- Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer).
+- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan))
+- Ha az ajánlat előzetes verzióban érhető el – [Go-Live](publishing-status.md#publisher-approval))
+- Ha nem fejezte be a közzétevő kijelentkezését – a [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)folyamatban van.)
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
@@ -65,12 +65,12 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor opcionál
 
 1. Válasszon egy érdeklődési célt, ahová küldhetjük az érdeklődőket. A partner Center a következő CRM-rendszereket támogatja:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
+    > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) vagy a [https-végpont](commercial-marketplace-lead-management-instructions-https.md) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
 
 2. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
 3. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben, érvényesítjük a kapcsolatot, és elküldünk egy tesztelési érdeklődőt. Miközben az ajánlat előzetes verziójának megtekintése előtt megtekinti az ajánlatot, tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja megvásárolni az ajánlatot.
@@ -78,9 +78,9 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor opcionál
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Az érdeklődők kezelése – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Az érdeklődők kezelése – áttekintés](commercial-marketplace-get-customer-leads.md)
+- [Érdeklődői felügyelet – gyakori kérdések](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Gyakori vezető konfigurációs hibák](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
@@ -91,7 +91,12 @@ Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához h
 
 #### <a name="category"></a>Kategória
 
-Válasszon legalább egyet, és legfeljebb öt kategóriát. Ezek a kategóriák arra szolgálnak, hogy az ajánlatot a megfelelő Piactéri keresési területeken helyezze el, és az ajánlat részletei oldalon jelennek meg. Az ajánlat leírásában ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. A Tallózás lapokon az összes IoT Edge modul a **eszközök internetes hálózata > IoT Edge modul**   kategóriában látható.
+Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
+
+- Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+
+Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md). A piactéren IoT Edge modulok mindig a **eszközök internetes hálózata**  >  **IoT Edge modul**kategóriában jelennek meg   .
 
 #### <a name="legal"></a>Jogi tudnivalók
 
@@ -104,14 +109,14 @@ Meg kell adnia az ajánlat használati feltételeit. Erre két lehetősége van:
 
 A kereskedelmi piactéren a tranzakciókat megkönnyítő standard szintű szerződési sablon nyújt segítséget. Dönthet úgy is, hogy a standard szerződés keretében kínálja a megoldását, amelyet az ügyfeleknek csak egyszer kell ellenőriznie és elfogadni. Ez jó megoldás, ha nem szeretne egyéni használati feltételeket használni.
 
-A standard szintű szerződéssel kapcsolatos további tudnivalókért tekintse meg [a Microsoft kereskedelmi piactérre vonatkozó standard szintű szerződést](https://docs.microsoft.com/azure/marketplace/standard-contract). Letöltheti a [standard szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját is (Győződjön meg róla, hogy az előugró ablakok blokkolása ki van kapcsolva).
+A standard szintű szerződéssel kapcsolatos további tudnivalókért tekintse meg [a Microsoft kereskedelmi piactérre vonatkozó standard szintű szerződést](../standard-contract.md). Letöltheti a [standard szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját is (Győződjön meg róla, hogy az előugró ablakok blokkolása ki van kapcsolva).
 
 A normál szerződés használatához jelölje be a **szabványos szerződés használata a Microsoft kereskedelmi piactérhez** jelölőnégyzetet, majd kattintson az **elfogadás**gombra.
 
 > [!NOTE]
 > Miután közzétette az ajánlatot a Microsoft kereskedelmi piactérre vonatkozó standard szerződéssel, nem használhatja a saját egyéni használati feltételeit. A standard szerződés keretében vagy a saját használati feltételeinek megfelelően kínálja megoldását.
 
-![A Microsoft kereskedelmi Piactéri szolgáltatásának szabványos szerződését mutatja be.](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
+![A Microsoft kereskedelmi Piactéri szolgáltatásának szabványos szerződését mutatja be.](media//iot-edge-module-standard-contract-checkbox.png)
 
 ##### <a name="your-own-terms-and-conditions"></a>A saját használati feltételei
 
@@ -165,7 +170,7 @@ Adja meg a szervezete adatvédelmi szabályzatának webes címeit. Ön felelős 
 Adja meg az ajánlatával kapcsolatos kiegészítő online dokumentumokat. Legfeljebb 25 hivatkozást adhat hozzá. Hivatkozás hozzáadásához válassza a **+ hivatkozás hozzáadása** lehetőséget, majd hajtsa végre a következő mezőket:
 
 - **Title** – az ügyfelek az ajánlat részletek lapján láthatják a címet.
-- **Hivatkozás (URL)** – adjon meg egy hivatkozást az ügyfelek számára az online dokumentum megtekintéséhez. A hivatkozásnak a http://vagy a https://értékkel kell kezdődnie.
+- **Hivatkozás (URL)** – adjon meg egy hivatkozást az ügyfelek számára az online dokumentum megtekintéséhez. A hivatkozásnak a vagy a értékkel kell kezdődnie `http://` `https://` .
 
 Ügyeljen arra, hogy legalább egy hivatkozást adjon hozzá a dokumentációhoz, és egy hivatkozást az [Azure IoT-eszköz](https://catalog.azureiotsolutions.com/)kompatibilis IoT Edge eszközeire.
 
@@ -183,18 +188,18 @@ A **CSP-program elérhetősége** szakaszban adja meg a hivatkozást (**CSP-prog
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
-Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókért tekintse meg az ajánlott [eljárások listáját](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókért tekintse meg az ajánlott [eljárások listáját](../gtm-offer-listing-best-practices.md).
 
 ### <a name="marketplace-images"></a>Marketplace-rendszerképek
 
-Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
+Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának. png fájlját a következő négy pixeles méretben:
+Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles méretben:
 
 - **Kicsi (48 x 48)**
 - **Közepes (90 x 90)**
@@ -205,33 +210,63 @@ Mind a négy emblémát kötelező megadni, és a piactér-lista különböző h
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 
-Akár öt képernyőképet is felvehet, amelyek bemutatják, hogyan működik az ajánlata. Mindegyiknek 1280 x 720 képpont méretűnek és. png formátumúnak kell lennie.
+Akár öt képernyőképet is felvehet, amelyek bemutatják, hogyan működik az ajánlata. Mindegyiknek 1280 x 720 képpont méretűnek és PNG formátumúnak kell lennie.
 
 #### <a name="videos-optional"></a>Videók (nem kötelező)
 
-Akár öt videót is hozzáadhat, amelyek bemutatják az ajánlatát. Adja meg a videó nevét, a webcímet és a videó miniatűr. png képét 1280 x 720 képpont méretben.
+Akár öt videót is hozzáadhat, amelyek bemutatják az ajánlatát. Adja meg a videó nevét, a webcímet és a videó miniatűr PNG-képét, amely 1280 x 720 képpont méretű.
 
-#### <a name="offer-examples"></a>Ajánlatpéldák
+#### <a name="marketplace--examples"></a>Marketplace-példák
 
-Az alábbi példák azt mutatják be, hogyan jelennek meg az ajánlat-listaelemek mezői az ajánlat különböző helyein.
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace piactéren:
 
-Ez a képernyőkép az **ajánlat-listázási** oldalt mutatja az Azure piactéren.
+:::image type="content" source="media/example-iot-azure-marketplace-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-offer-listing-page.png" alt-text="Az ajánlati lista oldalát szemlélteti az Azure piactéren.":::
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-Ez a képernyőkép a keresési eredményeket mutatja az Azure Marketplace-en:
+1. Nagyméretű embléma
+2. Kategóriák
+3. Támogatási címe (hivatkozás)
+4. használati feltételei
+5. Adatvédelmi szabályzat címe (hivatkozás)
+6. Name
+7. Összefoglalás
+8. Leírás
+9. Hasznos hivatkozások
+10. Képernyőképek/videók
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-search-results.png" alt-text="A keresési eredményeket szemlélteti az Azure Marketplace-en.":::
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace keresési eredményei között:
 
-Ez a képernyőkép a Azure Portal **ajánlatok listája** lapját jeleníti meg.
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactér keresési eredményei között.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-listing-page-azure-portal.png" alt-text="Az ajánlati lista oldalát mutatja Azure Portalban.":::
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-Ez a képernyőkép a Azure Portal keresési eredményeit jeleníti meg.
+1. Kis embléma
+2. Ajánlat neve
+3. Keresési eredmények összegzése
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-search-results.png" alt-text="Az ajánlati lista oldalát mutatja Azure Portalban.":::
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
 
-A következő szakaszra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget, és tekintse meg az előnézetet.
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Name
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek
+
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portal keresési eredmények között:
+
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Azure Portal keresési eredmények között.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Kis embléma
+2. Ajánlat neve
+3. Keresési eredmények összegzése
+
+<br>A következő szakaszra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget, és tekintse meg az előnézetet.
 
 ## <a name="preview"></a>Előnézet
 
@@ -246,9 +281,6 @@ Adja meg az előnézeti célközönséget az Azure-előfizetési azonosító GUI
 > Az Azure-előfizetés AZONOSÍTÓját a Azure Portal előfizetések oldalán találja.
 
 Adjon hozzá legalább egy Azure-előfizetési azonosítót egyenként (legfeljebb 10) vagy egy CSV-fájl feltöltésével (legfeljebb 100). Az előfizetés-azonosítók hozzáadásával meghatározhatja, hogy ki tekintheti meg az ajánlatot az élő közzététel előtt. Ha az ajánlat már élő, megadhatja az előnézeti közönséget az ajánlat változásainak és frissítéseinek teszteléséhez.
-
-> [!NOTE]
-> Az előzetes verzió célközönsége különbözik a privát közönségtől. Az **előzetes** verzió célközönsége megtekintheti és megerősítheti az összes ajánlati csomagot, mielőtt azok elérhetővé válnak a piactéren, beleértve azokat is, amelyeket csak a **privát** célközönség számára tesznek közzé (a rendelkezésre állás lapon állítható be).
 
 A következő szakaszra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget, majd a terv áttekintését.
 
@@ -280,26 +312,24 @@ A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek ezt a nevet látj
 > [!NOTE]
 > A terv azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
-Kattintson a **Létrehozás** gombra.
+Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
 Ezen a lapon konfigurálhatja, hogy a terv mely felhők számára legyen elérhető. Az ezen a lapon megjelenő válaszok hatással vannak arra, hogy mely mezők jelenjenek meg más lapokon.
 
-#### <a name="cloud-availability"></a>Felhőbeli rendelkezésre állás
+#### <a name="azure-regions"></a>Azure-régiók
 
-A csomagnak legalább egy felhőben elérhetőnek kell lennie az Azure IoT Hub használatával.
+Az IoT Edge modulhoz készült összes csomag automatikusan elérhető az **Azure Global**-ban.  A tervét az ügyfelek használhatják a piactért használó összes globális Azure-régióban. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](../marketplace-geo-availability-currencies.md).
 
-Válassza ki az **Azure globális** lehetőséget, így a tervet a piactért használó összes globális Azure-régióban használhatja. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
-
-Válassza a [Azure Government Cloud (felhő](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) ) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található). A Azure Government való [Közzététel](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) előtt tesztelje és erősítse meg a megoldást az adott területen belül, mivel az eredmények eltérőek lehetnek. A megoldás előkészítéséhez és teszteléséhez kérjen egy próbaverziós fiókot [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/).
+Válassza a [Azure Government](../../azure-government/documentation-government-welcome.md) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található). A Azure Government való [Közzététel](../../azure-government/documentation-government-manage-marketplace-partners.md) előtt tesztelje és erősítse meg a megoldást az adott területen belül, mivel az eredmények eltérőek lehetnek. A megoldás előkészítéséhez és teszteléséhez kérjen egy próbaverziós fiókot [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
-> Miután közzétette és elérhetővé tette a csomagot egy adott felhőben, nem távolíthatja el a felhőt.
+> Miután közzétette és elérhetővé tette a csomagot egy adott régióban, nem távolíthatja el a régiót.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government Felhőbeli tanúsítványok
+#### <a name="azure-government-certifications"></a>Azure Government minősítések
 
-Ez a beállítás csak akkor látható, ha **Azure Government felhő** van kiválasztva a **felhő rendelkezésre állása**alatt.
+Ez a beállítás csak akkor látható, ha a **Azure Government** a **felhő rendelkezésre állása**területen van kiválasztva.
 
 Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és követelmények hatálya alá eső adatmennyiséget. Például: FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS. A programok minősítésének megismeréséhez akár 100 hivatkozást is megadhat, amelyek a minősítéseket írják le. Ezek a program közvetlenül vagy a saját webhelyére mutató hivatkozásokat is magukban foglalhatnak. Ezek a hivatkozások csak Azure Government ügyfelek számára láthatók.
 
@@ -309,7 +339,7 @@ Ezen a lapon az adott ajánlaton belüli különböző csomagokra vonatkozó inf
 
 ### <a name="plan-name"></a>Csomag neve
 
-Ez előre ki van töltve azzal a névvel, amelyet a tervének létrehozásakor adott meg. Igény szerint módosíthatja ezt a nevet. Akár 50 karakter hosszú lehet. Ez a név jelenik meg a terv címében az Azure Marketplace-en és a Azure Portalban. A rendszer az alapértelmezett modul neveként használja, miután a terv készen áll a használatra.
+Ez előre ki van töltve azzal a névvel, amelyet a tervének létrehozásakor adott meg. Igény szerint módosíthatja ezt a nevet. Akár 50 karakter hosszú lehet. Ez a név jelenik meg a terv címében az Azure Marketplace-en és a Azure Portal. A rendszer az alapértelmezett modul neveként használja, miután a terv készen áll a használatra.
 
 ### <a name="plan-summary"></a>Csomag összegzése
 
@@ -323,15 +353,25 @@ A mezők befejezése után válassza a **Piszkozat mentése** lehetőséget.
 
 #### <a name="plan-examples"></a>Példák tervezése
 
-Az alábbi példák bemutatják, hogyan jelennek meg a díjcsomag mezői különböző nézetekben.
+Íme egy példa az Azure Marketplace-csomag részleteire (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatosak, és nem tükrözik a tényleges költségeket):
 
-A terv részleteinek megtekintésekor ezek a mezők az Azure Marketplace-en:
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bemutatja az Azure Marketplace-csomag részleteit.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-plan-details.png" alt-text="A terv részleteinek az Azure Marketplace-en való megtekintésekor megjelenő mezőket mutatja be.":::
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-Ezek a Azure Portal terv részletei:
+1. Ajánlat neve
+2. Csomag neve
+3. Csomag leírása
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-plan-details.png" alt-text="A Azure Portal tervének részleteit mutatja be.":::
+<br>Íme egy példa a Azure Portal terv részleteire (a felsorolt díjak csak a felhasználási célokra szolgálnak, és nem tükrözik a tényleges költségeket):
+
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="A Azure Portal terv részleteit mutatja be.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Ajánlat neve
+2. Csomag neve
+3. Csomag leírása
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -350,7 +390,7 @@ A **IoT Edge modul** típusa egy adott típusú tároló, amely egy IoT Edge esz
 
 Az ajánlat közzététele után a rendszer átmásolja IoT Edge-tároló rendszerképét az Azure Marketplace-re egy adott nyilvános tároló-beállításjegyzékben. Az Azure-felhasználók által a modul használatára vonatkozó összes kérelem az Azure piactér nyilvános tárolójának beállításjegyzékében, nem pedig a privát tároló beállításjegyzékében szolgál.
 
-A címkék használatával több platformot is megcélozhat, és a modul-tároló rendszerképének több verzióját is megadhatja. További információ a címkékről és a verziószámozásról: [a IoT Edge modul technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset).
+A címkék használatával több platformot is megcélozhat, és a modul-tároló rendszerképének több verzióját is megadhatja. További információ a címkékről és a verziószámozásról: [a IoT Edge modul technikai eszközeinek előkészítése](create-iot-edge-module-asset.md).
 
 ### <a name="image-repository-details"></a>Rendszerkép-tárház részletei
 
@@ -360,25 +400,35 @@ A **rendszerkép-tárház részletei** lapon adja meg a következő információ
 
 **Azure-előfizetési azonosító**: adja meg azt az előfizetés-azonosítót, amelyben az erőforrás-használatot jelenteni kell, és a szolgáltatás számlázása a tároló képét tartalmazó Azure Container Registryért. Ezt az azonosítót a Azure Portal [előfizetések oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) találja.
 
-**Azure-erőforráscsoport neve**: adja meg az [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) nevét, amely tartalmazza a Azure Container Registry a tároló képével. Az erőforráscsoport számára elérhetőnek kell lennie az előfizetés-AZONOSÍTÓban (fent). A nevet a Azure Portal [erőforráscsoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
+**Azure-erőforráscsoport neve**: adja meg az [erőforráscsoport](../../azure-resource-manager/management/manage-resource-groups-portal.md) nevét, amely tartalmazza a Azure Container Registry a tároló képével. Az erőforráscsoport számára elérhetőnek kell lennie az előfizetés-AZONOSÍTÓban (fent). A nevet a Azure Portal [erőforráscsoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
 
-Az **Azure Container Registry neve**: adja meg annak a [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) a nevét, amely tartalmazza a tároló képét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell lennie. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
+Az **Azure Container Registry neve**: adja meg annak a [Azure Container Registry](../../container-registry/container-registry-intro.md) a nevét, amely tartalmazza a tároló képét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell lennie. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
 
-**A Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) . A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure parancssori felület (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
+A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure parancssori felület (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
-**A Azure Container Registryhoz tartozó jelszó**: adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kérheti le.
+#### <a name="call-out-description"></a>Visszahívás leírása
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="A hozzáférési kulcs képernyőjét mutatja Azure Portalban.":::
+1. Rendszergazdai felhasználó
 
-**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon**találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Vegye figyelembe, hogy a név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
+<br>**A Azure Container Registryhoz tartozó jelszó**: adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kérheti le.
+
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="A Azure Portal a Hívóbetű képernyőjét mutatja.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Elérési kulcs
+2. Felhasználónév
+3. Jelszó
+
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon**találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](../../container-registry/container-registry-repositories.md). Vegye figyelembe, hogy a név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Képcímkék az ajánlat új verzióihoz
 
 A frissítések közzétételekor az ügyfeleknek képesnek kell lenniük automatikusan beolvasni a frissítéseket az Azure piactéren. Ha nem szeretnék frissíteni, akkor a rendszerkép egy adott verziójával kell tudniuk maradni. Ezt úgy teheti meg, hogy minden alkalommal új képcímkéket ad hozzá, amikor frissítést végez a rendszerképhez.
 
-**Rendszerkép címkéje** Ennek a mezőnek tartalmaznia kell egy **legújabb** címkét, amely a lemezkép legújabb verziójára mutat az összes támogatott platformon. Tartalmaznia kell egy Version címkét is (például a XX. xx. xx-es verziójától kezdődően, ahol XX egy szám). Az ügyfeleknek több platform megcélzásához [jegyzékfájl-címkéket](https://github.com/estesp/manifest-tool) kell használniuk. A jegyzékfájl által hivatkozott összes címkét is fel kell venni, hogy fel lehessen tölteni őket. Az összes manifest-címkének (kivéve a legújabb címkét) X. Y vagy X. Y. Z értékkel kell kezdődnie, ahol az X, Y és Z érték egész szám lehet. Ha például egy legújabb címke a 1.0.1-Linux-x64, 1.0.1-Linux-arm32 és a 1.0.1-Windows-arm32 értékre mutat, ezt a mezőt fel kell venni a mezőbe. A címkékkel és a verziószámozással kapcsolatos részletekért lásd: [a IoT Edge modul technikai eszközeinek előkészítése.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)
+**Rendszerkép címkéje** Ennek a mezőnek tartalmaznia kell egy **legújabb** címkét, amely a lemezkép legújabb verziójára mutat az összes támogatott platformon. Tartalmaznia kell egy Version címkét is (például a XX. xx. xx-es verziójától kezdődően, ahol XX egy szám). Az ügyfeleknek több platform megcélzásához [jegyzékfájl-címkéket](https://github.com/estesp/manifest-tool) kell használniuk. A jegyzékfájl által hivatkozott összes címkét is fel kell venni, hogy fel lehessen tölteni őket. Az összes manifest-címkének (kivéve a legújabb címkét) X. Y vagy X. Y. Z értékkel kell kezdődnie, ahol az X, Y és Z érték egész szám lehet. Ha például egy legújabb címke a 1.0.1-Linux-x64, 1.0.1-Linux-arm32 és a 1.0.1-Windows-arm32 értékre mutat, ezt a mezőt fel kell venni a mezőbe. A címkékkel és a verziószámozással kapcsolatos részletekért lásd: [a IoT Edge modul technikai eszközeinek előkészítése.](create-iot-edge-module-asset.md)
 
 ### <a name="default-deployment-settings-optional"></a>Alapértelmezett központi telepítési beállítások (nem kötelező)
 
@@ -386,7 +436,7 @@ Adja meg a IoT Edge modul üzembe helyezésének leggyakoribb beállításait. A
 
 **Alapértelmezett útvonalak**. Az IoT Edge hub a modulok, a IoT Hub és az eszközök közötti kommunikációt kezeli. Megadhat útvonalakat a modulok és a IoT Hub közötti adatbevitelhez és kimenethez, ami lehetővé teszi a rugalmasságot, hogy olyan üzeneteket küldjön, amelyekre szükségük van anélkül, hogy további szolgáltatásokat kellene feldolgoznia az üzenetek feldolgozásához vagy további kód írásához. Az útvonalak név/érték párok használatával vannak kialakítva. Legfeljebb öt alapértelmezett útvonal-nevet határozhat meg, amelyek mindegyike legfeljebb 512 karakter hosszú lehet.
 
-Ügyeljen arra, hogy a megfelelő [útvonal-szintaxist](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) használja az útvonal értékeként (ez általában a következő:/üzenet/* a $upstream). Ez azt jelenti, hogy a modulok által küldött összes üzenet a IoT Hub. A modulra való hivatkozáshoz használja az alapértelmezett modul nevét, amely az **ajánlat neve**, szóközök vagy speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME>-konvenciót, hogy az ügyfelek tudják, hogy frissíteniük kell ezt az információt. IoT Edge útvonalakkal kapcsolatos további információkért lásd: [útvonalak deklarálása](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes).
+Ügyeljen arra, hogy a megfelelő [útvonal-szintaxist](../../iot-edge/module-composition.md#declare-routes)használja az útvonal értékeként (ez általában a következő:/üzenet/* a $upstream). Ez azt jelenti, hogy a modulok által küldött összes üzenet a IoT Hub. A modulra való hivatkozáshoz használja az alapértelmezett modul nevét, amely az **ajánlat neve**, szóközök vagy speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME>-konvenciót, hogy az ügyfelek tudják, hogy frissíteniük kell ezt az információt. IoT Edge útvonalakkal kapcsolatos további információkért lásd: [útvonalak deklarálása](../../iot-edge/module-composition.md#declare-routes)).
 
 Ha például a modul ContosoModule figyeli a ContosoInput és a kimeneti adatok bemeneteit a ContosoOutput-on, érdemes megadnia a következő két alapértelmezett útvonalat:
 
@@ -395,7 +445,7 @@ Ha például a modul ContosoModule figyeli a ContosoInput és a kimeneti adatok 
 - Név #2: FromContosoModuleToCloud
 - Érték #2:/messages/modules/ContonsoModule/outputs/ContosoOutput-ből $upstream
 
-**Alapértelmezett modul – Twin kívánt tulajdonságok**. A Twin modul egy JSON-dokumentum a IoT Hubban, amely egy modul-példány állapotinformációkat tárolja, beleértve a kívánt tulajdonságokat is. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok között is fogadhatja a módosítási értesítéseket. A kívánt tulajdonságok legfeljebb öt név/érték párokkal hozhatók létre, és minden alapértelmezett értéknek 512 karakternél rövidebbnek kell lennie. Legfeljebb öt név/érték Twin kívánt tulajdonságot adhat meg. A Twin kívánt tulajdonságok értékének érvényes JSON-nek kell lennie, és nem Escape-ként kell lennie, és nem szabad olyan tömbök nélkül lennie, amelyek maximális beágyazott hierarchiája négy szinten Olyan esetekben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert. A Twin kívánt tulajdonságokkal kapcsolatos további tudnivalókért lásd a [kívánt tulajdonságok meghatározása vagy frissítése](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)című témakört.
+**Alapértelmezett modul – Twin kívánt tulajdonságok**. A Twin modul egy JSON-dokumentum a IoT Hubban, amely egy modul-példány állapotinformációkat tárolja, beleértve a kívánt tulajdonságokat is. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok között is fogadhatja a módosítási értesítéseket. A kívánt tulajdonságok legfeljebb öt név/érték párokkal hozhatók létre, és minden alapértelmezett értéknek 512 karakternél rövidebbnek kell lennie. Legfeljebb öt név/érték Twin kívánt tulajdonságot adhat meg. A Twin kívánt tulajdonságok értékének érvényes JSON-nek kell lennie, és nem Escape-ként kell lennie, és nem szabad olyan tömbök nélkül lennie, amelyek maximális beágyazott hierarchiája négy szinten Olyan esetekben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert. A Twin kívánt tulajdonságokkal kapcsolatos további tudnivalókért lásd a [kívánt tulajdonságok meghatározása vagy frissítése](../../iot-edge/module-composition.md#define-or-update-desired-properties)című témakört.
 
 Ha például egy modul támogatja a dinamikusan konfigurálható frissítési sebességet Twin kívánt tulajdonságok használatával, érdemes megadnia a következő alapértelmezett dupla kívánt tulajdonságot:
 
@@ -431,8 +481,8 @@ A felülvizsgálati oldalon láthatja a közzétételi állapotot:
 
 Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**lehetőséget.
 
-Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Ha közzé szeretné tenni az ajánlatát a nyilvános (vagy privát ajánlat, privát közönség) számára, lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
+Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer)

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 997b7b1442d29c4daa4e47c89a7f53d46c3b8c81
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860715"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969585"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -29,8 +29,148 @@ Az Azure Security aktív fejlesztés alatt áll, és folyamatosan fejleszti a fe
 
 Ez az oldal rendszeresen frissül, ezért gyakran újra felkeresik. Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
 
+## <a name="july-2020"></a>2020. július
+
+A júliusban elérhető frissítések a következők:
+- [Az Azure Storage veszélyforrások elleni védelme kibővült Azure Files és Azure Data Lake Storage Gen2 (előzetes verzió)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Az Azure Storage veszélyforrások elleni védelme kibővült Azure Files és Azure Data Lake Storage Gen2 (előzetes verzió)
+
+Az Azure Storage veszélyforrások elleni védelme észleli az Azure Storage-fiókok potenciálisan káros tevékenységeit. A Security Center riasztásokat jelenít meg, amikor észleli a Storage-fiókok elérésére vagy kihasználására tett kísérleteket. 
+
+Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva. 
+
+További információ az [Azure Storage veszélyforrások elleni védelméről](threat-protection.md#threat-protection-for-azure-storage-).
+
+
+## <a name="june-2020"></a>2020. június
+
+A júniusi frissítések a következők:
+- [Secure score API (előzetes verzió)](#secure-score-api-preview)
+- [Fejlett adatbiztonság SQL-gépekhez (Azure, egyéb felhők és helyszíni) (előzetes verzió)](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
+- [Két új javaslat a Log Analytics-ügynök üzembe helyezéséhez az Azure arc Machines szolgáltatásban (előzetes verzió)](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
+- [Új szabályzatok folyamatos exportálási és munkafolyamat-automatizálási konfigurációk létrehozásához nagy méretekben](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
+- [Új javaslat a NSG használatára a nem internetre irányuló virtuális gépek elleni védelemhez](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
+- [Új szabályzatok a fenyegetések elleni védelem és a speciális adatbiztonság engedélyezéséhez](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
+
+
+
+### <a name="secure-score-api-preview"></a>Secure score API (előzetes verzió)
+
+Mostantól elérheti a pontszámát a [Secure score API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) -n keresztül (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
+
+A biztonságos pontszám API-val lehetséges külső eszközökre vonatkozó példákat a [GitHub-Közösség biztonságos pontszám területén](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)tekintheti meg.
+
+További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
+
+
+
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>Fejlett adatbiztonság SQL-gépekhez (Azure, egyéb felhők és helyszíni) (előzetes verzió)
+
+Az SQL Machines szolgáltatáshoz készült fejlett adatbiztonság mostantól védi az Azure-ban üzemeltetett SQL-kiszolgálókat, más felhőalapú környezetekben, vagy akár helyszíni gépeken is. Azure Security Center Ez kibővíti az Azure-natív SQL-kiszolgálók védelmét, hogy teljes mértékben támogassa a hibrid környezeteket.
+
+A speciális adatbiztonság biztonsági rések felmérését és komplex veszélyforrások elleni védelmet biztosít az SQL-gépek számára, bárhol is legyenek.
+
+A telepítés két lépést tesz szükségessé:
+
+1. Az Log Analytics-ügynök üzembe helyezése a SQL Server gazdagépén az Azure-fiókkal való kapcsolódás biztosításához.
+
+1. A választható csomag engedélyezése Security Center díjszabási és beállítási lapján.
+
+További információ [az SQL-gépek speciális adatbiztonságáról](security-center-iaas-advanced-data.md).
+
+
+
+### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>Két új javaslat a Log Analytics-ügynök üzembe helyezéséhez az Azure arc Machines szolgáltatásban (előzetes verzió)
+
+Két új javaslat lett hozzáadva a [log Analytics-ügynök](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) üzembe helyezéséhez az Azure arc-gépeken, és gondoskodni kell arról, hogy a Azure Security Center védelemmel rendelkezzenek:
+
+- **Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)**
+- **Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)**
+
+Ezek az új javaslatok ugyanabban a négy biztonsági vezérlőben jelennek meg, mint a meglévő (kapcsolódó) javaslat, a **figyelési ügynök telepítése a gépekre**: a biztonsági konfigurációk szervizelése, adaptív alkalmazás-vezérlés alkalmazása, rendszerfrissítések alkalmazása és az Endpoint Protection engedélyezése.
+
+A javaslatok az üzembe helyezési folyamat felgyorsításához szükséges gyors javítási képességgel is rendelkeznek. 
+
+Ebből a két új javaslatból megismerheti a [számítási és alkalmazási javaslatok](recommendations-reference.md#recs-computeapp) táblázatát.
+
+További információ arról, hogy a Azure Security Center hogyan használja az ügynököt a [log Analytics Agent](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)ügynökben?.
+
+További tudnivalók az [Azure arc-gépek bővítményeiről](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
+
+
+
+### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Új szabályzatok folyamatos exportálási és munkafolyamat-automatizálási konfigurációk létrehozásához nagy méretekben
+
+A szervezet figyelési és incidens-reagálási folyamatainak automatizálása nagy mértékben növelheti a biztonsági incidensek kivizsgálásához és enyhítéséhez szükséges időt.
+
+Az Automation-konfigurációk szervezeten belüli üzembe helyezéséhez használja ezeket a beépített "DeployIfdNotExist" Azure-szabályzatokat a [folyamatos exportálási](continuous-export.md) és [munkafolyamat-automatizálási](workflow-automation.md) eljárások létrehozásához és konfigurálásához:
+
+A szabályzatok az Azure Policy szolgáltatásban találhatók:
+
+
+|Cél  |Szabályzat  |Házirend-azonosító  |
+|---------|---------|---------|
+|Folyamatos Exportálás az Event hub-ba|[Az Event hub-ba való exportálás üzembe helyezése Azure Security Center riasztások és javaslatok esetén](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+|Folyamatos exportálás Log Analytics munkaterületre|[Azure Security Center riasztások és javaslatok Log Analytics munkaterületre való exportálásának központi telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+|Biztonsági riasztások munkafolyamat-automatizálása|[Munkafolyamat-automatizálás üzembe helyezése Azure Security Center riasztásokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|Munkafolyamat-automatizálás biztonsági javaslatokhoz|[Munkafolyamat-automatizálás üzembe helyezése Azure Security Center javaslatokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+||||
+
+Ismerkedés a [munkafolyamat-automatizálási sablonokkal](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
+
+További információ a két exportálási házirend használatáról: [Azure Security Center riasztások és javaslatok folyamatos exportálása a házirend](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)segítségével.
+
+
+### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>Új javaslat a NSG használatára a nem internetre irányuló virtuális gépek elleni védelemhez
+
+Az "ajánlott biztonsági eljárások implementálása" biztonsági vezérlő mostantól az alábbi új javaslatot tartalmazza:
+
+- **A nem internetkapcsolattal rendelkező virtuális gépeket hálózati biztonsági csoportokkal kell védeni**
+
+Egy meglévő, **internetre irányuló virtuális gépet védeni kell a hálózati biztonsági csoportokkal**, nem kell különbséget tenni az internetre irányuló és a nem internetkapcsolattal rendelkező virtuális gépek között. Mindkét esetben magas súlyosságú javaslat jön létre, ha egy virtuális gépet nem hálózati biztonsági csoporthoz rendeltek hozzá. Ez az új javaslat elkülöníti a nem internetkapcsolattal rendelkező gépeket a téves pozitív problémák csökkentése és a szükségtelen magas súlyosságú riasztások elkerülése érdekében.
+
+További információ a [hálózati javaslatok](recommendations-reference.md#recs-network) táblázatban található.
+
+
+
+
+### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>Új szabályzatok a fenyegetések elleni védelem és a speciális adatbiztonság engedélyezéséhez
+
+Az alábbi új szabályzatok az ASC alapértelmezett kezdeményezéshez lettek hozzáadva, és úgy vannak kialakítva, hogy segítséget nyújtsanak a veszélyforrások elleni védelem vagy a speciális adatbiztonság biztosításához a megfelelő erőforrástípusok esetében.
+
+A szabályzatok az Azure Policy szolgáltatásban találhatók:
+
+
+| Szabályzat                                                                                                                                                                                                                                                                | Házirend-azonosító                            |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [A speciális adatbiztonságot engedélyezni kell Azure SQL Database-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
+| [A speciális adatbiztonságot engedélyezni kell a gépeken futó SQL-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
+| [A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie a Storage-fiókokon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure Key Vault-tárolón](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
+| [A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie App Service-csomagokon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure Container Registry-jegyzékeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
+| [Az összetett veszélyforrások elleni védelemnek engedélyezve kell lennie az Azure Kubernetes Service-fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
+| [A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
+|                                                                                                                                                                                                                                                                       |                                      |
+
+További információ a [veszélyforrások elleni védelemről Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+
+
+
+
 
 ## <a name="may-2020"></a>2020. május
+
+A frissítések a következők lehetnek:
+- [Riasztás-elnyomási szabályok (előzetes verzió)](#alert-suppression-rules-preview)
+- [A virtuális gépek sebezhetőségi felmérése mostantól általánosan elérhető](#virtual-machine-vulnerability-assessment-is-now-generally-available)
+- [Az igény szerinti (JIT) virtuális gépekhez való hozzáférés módosításai](#changes-to-just-in-time-jit-virtual-machine-vm-access)
+- [Egyéni javaslatok lettek áthelyezve egy külön biztonsági vezérlőbe](#custom-recommendations-have-been-moved-to-a-separate-security-control)
+- [A bekapcsolva beállítással megtekintheti a vezérlőkre vagy a lapos listára vonatkozó javaslatokat](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
+- [Kibővített biztonsági szabályozás – az ajánlott biztonsági eljárások megvalósítása](#expanded-security-control-implement-security-best-practices)
+- [Az egyéni metaadatokkal rendelkező egyéni szabályzatok már általánosan elérhetők](#custom-policies-with-custom-metadata-are-now-generally-available)
+- [Összeomlási memóriakép-elemzési képességek migrálása a fájlok közötti támadás észlelése érdekében](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
 
 
 ### <a name="alert-suppression-rules-preview"></a>Riasztás-elnyomási szabályok (előzetes verzió)
@@ -96,6 +236,7 @@ A biztonsági vezérlők – és ez a váltás – az új biztonsági pontszám 
 
 További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
 
+!["Group By Controls" – javaslatok](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Kibővített biztonsági szabályozás – az ajánlott biztonsági eljárások megvalósítása 
 
@@ -113,13 +254,14 @@ Az áthelyezett három javaslat a következőket tartalmazza:
 
 A vezérlőhöz hozzáadott két új javaslat a következő:
 
-- **[Előzetes verzió] a vendég konfigurációs ügynöknek telepítve kell lennie** – [Azure Policy vendég konfigurációjának](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) használatával a virtuális gépeken belül láthatóságot biztosít a kiszolgáló és az alkalmazás beállításai számára (csak Windows).
+- **A vendég konfigurációs bővítményt a Windows rendszerű virtuális gépekre (előzetes verzió) kell telepíteni** – a [Azure Policy vendég konfigurációjának](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) használatával a virtuális gépeken belül láthatók a kiszolgálók és az alkalmazások beállításai (csak Windows).
 
-- **[Előzetes verzió] a Windows kiaknázási őr engedélyezve kell legyen** – a Windows Defender Exploit Guard kihasználja a Azure Policy vendég konfigurációs ügynököt. A kiaknázási Gárda négy összetevőből áll, amelyek célja, hogy zárolják az eszközöket a különböző támadási vektorok és a kártevők elleni támadásokban leggyakrabban használt viselkedések blokkolásával, miközben lehetővé teszik a vállalatok számára a biztonsági kockázatok és a termelékenységi követelmények kiegyensúlyozását (csak Windows).
+- A **Windows Defender Exploit Guard védelmet engedélyezni kell a gépeken (előzetes verzió)** – a Windows Defender Exploit Guard kihasználja a Azure Policy vendég konfigurációs ügynököt. A kiaknázási Gárda négy összetevőből áll, amelyek célja, hogy zárolják az eszközöket a különböző támadási vektorok és a kártevők elleni támadásokban leggyakrabban használt viselkedések blokkolásával, miközben lehetővé teszik a vállalatok számára a biztonsági kockázatok és a termelékenységi követelmények kiegyensúlyozását (csak Windows).
 
 További információ a Windows Defender Exploit Guard-védelemről a biztonsági [rés kiaknázására szolgáló szabályzat létrehozása és üzembe helyezése című](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)témakörben.
 
-További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
+További információ a biztonsági ellenőrzésekről: [bővített biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md).
+
 
 
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Az egyéni metaadatokkal rendelkező egyéni szabályzatok már általánosan elérhetők
@@ -133,13 +275,14 @@ Most hozzáadjuk az egyéni ajánlási metaadatok szerkesztésének lehetőség�
 További információk az [Egyéni javaslatok részletes információkkal történő növeléséről](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
 
 
+
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Összeomlási memóriakép-elemzési képességek migrálása a fájlok közötti támadás észlelése érdekében 
 
 Integráljuk a Windows Crash dump Analysis (CDA) észlelési funkcióit a [fájlok közötti támadás észlelésére](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless). A fájlok közötti támadás észlelésének elemzése a következő biztonsági riasztások továbbfejlesztett verzióit biztosítja a Windows rendszerű gépekhez: kód befecskendezése felderített, álcázott Windows-modul, észlelt Héjkód, és gyanús kódrészletet észlelt.
 
 Az áttérés néhány előnye:
 
-- Proaktív **és kellő időben kártevő szoftverek észlelése** – a CDA megközelítése arra vár, hogy összeomlik, majd futtatja az elemzést az aktív kártevők kereséséhez. A fájlok közötti támadás észlelésével a memóriában tárolt fenyegetések proaktív módon azonosíthatók a futás közben. 
+- **Proaktív és kellő időben kártevő szoftverek észlelése** – a CDA megközelítése arra vár, hogy összeomlik, majd futtatja az elemzést a kártékony összetevők kereséséhez. A fájlok közötti támadás észlelésével a memóriában tárolt fenyegetések proaktív módon azonosíthatók a futás közben. 
 
 - Bővített **riasztások** – a fájlokkal nem rendelkező támadások észlelésével kapcsolatos biztonsági riasztások közé tartoznak a CDA-ból nem elérhető bővítések, például az aktív hálózati kapcsolatok adatai. 
 
@@ -150,6 +293,11 @@ Az áttérés néhány előnye:
 
 
 ## <a name="april-2020"></a>2020. április
+
+Az áprilisi frissítések a következők:
+- [A dinamikus megfelelőségi csomagok már általánosan elérhetők](#dynamic-compliance-packages-are-now-generally-available)
+- [A Azure Security Center ingyenes szinten már szerepelnek a személyazonossággal kapcsolatos javaslatok](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
 
 ### <a name="dynamic-compliance-packages-are-now-generally-available"></a>A dinamikus megfelelőségi csomagok már általánosan elérhetők
 
@@ -188,6 +336,14 @@ További információ az [identitás és a hozzáférés figyeléséről](securi
 
 
 ## <a name="march-2020"></a>2020. március
+
+A márciusi frissítések a következők:
+- [A Munkafolyamat-automatizálás mostantól általánosan elérhető](#workflow-automation-is-now-generally-available)
+- [Azure Security Center integrációja a Windows felügyeleti központtal](#integration-of-azure-security-center-with-windows-admin-center)
+- [Az Azure Kubernetes szolgáltatás védelme](#protection-for-azure-kubernetes-service)
+- [Továbbfejlesztett, igény szerinti élmény](#improved-just-in-time-experience)
+- [Két biztonsági javaslat elavult webalkalmazásokhoz](#two-security-recommendations-for-web-applications-deprecated)
+
 
 ### <a name="workflow-automation-is-now-generally-available"></a>A Munkafolyamat-automatizálás mostantól általánosan elérhető
 
@@ -266,13 +422,3 @@ Mivel a támadók egyre nagyobb mértékben alkalmaznak legrejtettebb módszerek
 
 Ennek a fenyegetésnek a ellensúlyozására a 2018-es, a Windows rendszerhez készült, a fájloktól mentesen észlelhető támadás észlelését Azure Security Center, és a Linuxon is kiterjesztette a fájlokkal való támadás észlelését. 
 
-
-## <a name="january-2020"></a>2020. január
-
-### <a name="enhanced-secure-score-preview"></a>Bővített biztonságos pontszám (előzetes verzió)
-
-A Azure Security Center biztonságos pontszám funkciójának továbbfejlesztett verziója már előzetes verzióban érhető el. Ebben a verzióban a több javaslat olyan biztonsági vezérlőkbe van csoportosítva, amelyek jobban tükrözik a sebezhető támadási felületet (például a felügyeleti portokhoz való hozzáférés korlátozása).
-
-Ismerkedjen meg a biztonsági pontszám változásaival az előzetes verzió fázisában, és határozza meg azokat a további szervizeléseket, amelyek segítséget nyújtanak a környezet további védelméhez.
-
-További információ a [Azure Security Center továbbfejlesztett biztonságos pontszámáról (előzetes verzió)](secure-score-security-controls.md).

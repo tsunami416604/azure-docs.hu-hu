@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: fc779d6caba2b896b869440ad523291bc3c9a9b2
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726434"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965280"
 ---
 # <a name="rendering-using-azure"></a>Renderelés az Azure használatával
 
@@ -48,7 +48,7 @@ A számítási feladatok megjelenítéséhez számos Azure-funkció használhat�
 
 A leggyakoribb eset az, hogy egy meglévő helyszíni Render Farm felügyelhető egy renderelési felügyeleti alkalmazással, például a PipelineFX Qube, a Royal Render vagy a Thinkbox határidővel.  A követelmény a helyszíni rendering Farm kapacitásának kiterjesztése Azure-beli virtuális gépek használatával.
 
-A renderelési felügyeleti szoftver beépített Azure-támogatással rendelkezik, vagy elérhetővé tettük az Azure-támogatást hozzáadó beépülő modulokat. A támogatott Render managerekkel és funkciókkal kapcsolatos további információkért tekintse meg a [Render Manager használatával](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)foglalkozó cikket.
+A renderelési felügyeleti szoftver beépített Azure-támogatással rendelkezik, vagy elérhetővé tettük az Azure-támogatást hozzáadó beépülő modulokat. A támogatott Render managerekkel és funkciókkal kapcsolatos további információkért tekintse meg a [Render Manager használatával](./batch-rendering-render-managers.md)foglalkozó cikket.
 
 ### <a name="custom-rendering-workflow"></a>Egyéni renderelési munkafolyamat
 
@@ -77,9 +77,9 @@ Azure Batch számos számítási feladathoz használatos, de a következő lehet
 A Azure Batch számos módon használható, amelyek mindegyike a Azure Batch renderelésre is vonatkozik.
 
 * API-k:
-  * Kód írása a [Rest](https://docs.microsoft.com/rest/api/batchservice), a [.net](https://docs.microsoft.com/dotnet/api/overview/azure/batch), a [Python](https://docs.microsoft.com/python/api/overview/azure/batch), a [Java](https://docs.microsoft.com/java/api/overview/azure/batch)vagy más támogatott API-k használatával.  A fejlesztők a meglévő alkalmazásokhoz vagy munkafolyamatokhoz, akár a felhőben, akár a helyszínen is integrálhatja Azure Batch képességeit.  A [Autodesk Maya beépülő modul](https://github.com/Azure/azure-batch-maya) például a Batch Python API-t használja a kötegek meghívásához, a készletek létrehozásához és kezeléséhez, a feladatok és a feladatok elküldéséhez, valamint a figyelési állapothoz.
+  * Kód írása a [Rest](/rest/api/batchservice), a [.net](/dotnet/api/overview/azure/batch), a [Python](/python/api/overview/azure/batch), a [Java](/java/api/overview/azure/batch)vagy más támogatott API-k használatával.  A fejlesztők a meglévő alkalmazásokhoz vagy munkafolyamatokhoz, akár a felhőben, akár a helyszínen is integrálhatja Azure Batch képességeit.  A [Autodesk Maya beépülő modul](https://github.com/Azure/azure-batch-maya) például a Batch Python API-t használja a kötegek meghívásához, a készletek létrehozásához és kezeléséhez, a feladatok és a feladatok elküldéséhez, valamint a figyelési állapothoz.
 * Parancssori eszközök:
-  * Az [Azure parancssori](https://docs.microsoft.com/cli/azure/) vagy [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
+  * Az [Azure parancssori](/cli/azure/) vagy [Azure PowerShell](/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
   * Különösen a Batch CLI-sablon támogatása sokkal egyszerűbbé teszi a készletek létrehozását és a feladatok elküldését.
 * Felhasználóifelület
   * A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy platformfüggetlen ügyfél-eszköz, amely lehetővé teszi a Batch-fiókok felügyeletét és figyelését is, de a Azure Portal felhasználói felületéhez képest gazdagabb képességeket biztosít.  A készlet és a feladatütemezés készlete minden támogatott alkalmazáshoz testreszabható, és felhasználható a készletek egyszerű létrehozására és a feladatok elküldésére.
@@ -95,9 +95,9 @@ A Azure Batch számos módon használható, amelyek mindegyike a Azure Batch ren
 
 Tekintse meg a következő bevezető oktatóanyagokat a Azure Batch megjelenítésének kipróbálásához:
 
-* [A Batch Explorer használata Turmixgépi jelenet megjelenítéséhez](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [Az Autodesk 3ds Max-jelenet megjelenítése a Batch CLI használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [A Batch Explorer használata Turmixgépi jelenet megjelenítéséhez](./tutorial-rendering-batchexplorer-blender.md)
+* [Az Autodesk 3ds Max-jelenet megjelenítése a Batch CLI használatával](./tutorial-rendering-cli.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Határozza meg az Azure Marketplace virtuálisgép-lemezképekben található renderelési alkalmazások és verziók listáját [ebben a cikkben](https://docs.microsoft.com/azure/batch/batch-rendering-applications).
+Határozza meg az Azure Marketplace virtuálisgép-lemezképekben található renderelési alkalmazások és verziók listáját [ebben a cikkben](./batch-rendering-applications.md).

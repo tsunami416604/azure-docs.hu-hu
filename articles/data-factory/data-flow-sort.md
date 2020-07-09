@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606324"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>Átalakítás rendezése a leképezési adatfolyamban
@@ -24,7 +23,7 @@ A rendezési transzformáció lehetővé teszi a bejövő sorok rendezését az 
 > [!NOTE]
 > Az adatforgalom leképezése olyan Spark-fürtökön történik, amelyek több csomóponton és partíción keresztül terjesztik az adatforgalmat. Ha úgy dönt, hogy egy későbbi átalakítás során újraparticionálja az adatait, a rendezést elveszítheti az adatkeverés miatt.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ![Rendezési beállítások](media/data-flow/sort.png "Rendezés")
 
@@ -40,7 +39,7 @@ Egy oszlop értékének módosításához vagy kinyeréséhez a rendezés alkalm
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

@@ -10,14 +10,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325065"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -29,6 +28,20 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="may-2020"></a>2020. május
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>Az USA keleti régiójában üzembe helyezett Video Indexer
+
+Most már létrehozhat egy Video Indexer fizetős fiókot az USA keleti régiójában.
+ 
+### <a name="video-indexer-url"></a>Video Indexer URL-cím
+
+Video Indexer regionális végpontok mind egységesek voltak, hogy csak a www használatával induljon el. Nincs szükség műveleti tételre.
+
+Mostantól elérhetővé válik a www.videoindexer.ai, függetlenül attól, hogy a widgetek beágyazásához vagy Video Indexer webalkalmazásokhoz való bejelentkezéshez.
+
+A rendszer a wus.videoindexer.ai is átirányítja a www-re. További információ a [beágyazási video Indexer widgetek](video-indexer-embed-widgets.md)alkalmazásokban érhető el.
 
 ## <a name="april-2020"></a>2020. április
 

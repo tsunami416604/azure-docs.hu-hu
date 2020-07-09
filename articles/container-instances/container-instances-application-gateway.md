@@ -3,12 +3,11 @@ title: A Container Group statikus IP-címe
 description: Hozzon létre egy tároló csoportot egy virtuális hálózatban, és egy Azure Application Gateway használatával tegye elérhetővé egy statikus előtérbeli IP-címet egy tárolós webalkalmazáshoz
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299162"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Statikus IP-cím közzététele egy tároló csoport számára
 
@@ -17,7 +16,7 @@ Ebből a cikkből megtudhatja, hogyan tehet elérhetővé egy statikus, nyilván
 Ebben a cikkben az Azure CLI használatával hozza létre a forgatókönyv erőforrásait:
 
 * Azure-beli virtuális hálózat
-* Egy kisméretű webalkalmazást futtató [virtuális hálózatban (előzetes verzió)](container-instances-vnet.md) üzembe helyezett tároló csoport
+* Egy kisméretű webalkalmazást üzemeltető [virtuális hálózaton](container-instances-vnet.md) üzembe helyezett Container Group
 * Egy nyilvános előtérbeli IP-címmel rendelkező Application Gateway, egy webhelynek az átjárón való üzemeltetésére szolgáló figyelő, valamint a háttérbeli tároló csoport útvonala
 
 Mindaddig, amíg az Application Gateway fut, és a tároló csoport egy stabil magánhálózati IP-címet tesz közzé a hálózat delegált alhálózatában, a tároló csoport elérhető ezen a nyilvános IP-címen.
@@ -71,7 +70,7 @@ az network public-ip create \
 
 A következő az [Container Create][az-container-create] paranccsal hozzon létre egy tároló csoportot az előző lépésben konfigurált virtuális hálózaton. 
 
-A csoport a *myACISubnet* alhálózaton van üzembe helyezve, és a *appcontainer* nevű egyetlen példányt tartalmaz, `aci-helloworld` amely lekéri a lemezképet. Ahogy az a dokumentáció más cikkeiben is látható, ez a rendszerkép egy, a Node. js-ben írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki. 
+A csoport a *myACISubnet* alhálózaton van üzembe helyezve, és a *appcontainer* nevű egyetlen példányt tartalmaz, amely lekéri a `aci-helloworld` lemezképet. Ahogy az a dokumentáció más cikkeiben is látható, ez a rendszerkép egy olyan Node.js írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki. 
 
 ```azurecli
 az container create \
@@ -136,7 +135,7 @@ az network public-ip show \
 --output tsv
 ```
 
-A kimenet egy nyilvános IP-cím, amely a `52.142.18.133`következőhöz hasonló:.
+A kimenet egy nyilvános IP-cím, amely a következőhöz hasonló: `52.142.18.133` .
 
 Ha a sikeres konfigurálás után szeretné megtekinteni a futó webalkalmazást, navigáljon az átjáró nyilvános IP-címére a böngészőben. A sikeres hozzáférés a következőhöz hasonló:
 

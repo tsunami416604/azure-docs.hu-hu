@@ -14,14 +14,14 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79534728"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules séma
-A `NetworkTrafficRules` csomópont egy opcionális elem a szolgáltatás-definíciós fájlban, amely megadja, hogy a szerepkörök hogyan kommunikáljanak egymással. Ez korlátozza, hogy mely szerepkörök férhetnek hozzá az adott szerepkör belső végpontjaihoz. A `NetworkTrafficRules` nem önálló elem; egy szolgáltatás-definíciós fájl két vagy több szerepkörével együtt.
+A `NetworkTrafficRules` csomópont egy opcionális elem a szolgáltatás-definíciós fájlban, amely megadja, hogy a szerepkörök hogyan kommunikáljanak egymással. Ez korlátozza, hogy mely szerepkörök férhetnek hozzá az adott szerepkör belső végpontjaihoz. A `NetworkTrafficRules` nem önálló elem; a szolgáltatás definíciós fájljában kettő vagy több szerepkörrel együtt.
 
 A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.
 
@@ -68,13 +68,13 @@ AllowAllTraffic elem
 Az `NetworkTrafficRules` elem határozza meg, hogy mely szerepkörök kommunikálhatnak egymással egy másik szerepkörhöz tartozó végponttal. Egy szolgáltatás egy `NetworkTrafficRules` definíciót is tartalmazhat.
 
 ##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo elem
-Az `OnlyAllowTrafficTo` elem ismerteti a cél végpontok gyűjteményét, valamint azokat a szerepköröket, amelyek kommunikálni tudnak velük. Több `OnlyAllowTrafficTo` csomópontot is megadhat.
+Az `OnlyAllowTrafficTo` elem ismerteti a cél végpontok gyűjteményét, valamint azokat a szerepköröket, amelyek kommunikálni tudnak velük. Több csomópontot is megadhat `OnlyAllowTrafficTo` .
 
 ##  <a name="destinations-element"></a><a name="Destinations"></a>Célhelyek elem
 Az `Destinations` elem a RoleEndpoints gyűjteményét írja le, amely a használatával kommunikálhat.
 
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint elem
-Az `RoleEndpoint` elem egy olyan szerepkörhöz tartozó végpontot ismertet, amely lehetővé teszi a kommunikációt a szolgáltatással. Több `RoleEndpoint` elemet is megadhat, ha a szerepkörhöz több végpont is van.
+Az `RoleEndpoint` elem egy olyan szerepkörhöz tartozó végpontot ismertet, amely lehetővé teszi a kommunikációt a szolgáltatással. Több elemet is megadhat, `RoleEndpoint` Ha a szerepkörhöz több végpont is van.
 
 | Attribútum      | Típus     | Leírás |
 | -------------- | -------- | ----------- |
@@ -82,17 +82,17 @@ Az `RoleEndpoint` elem egy olyan szerepkörhöz tartozó végpontot ismertet, am
 | `roleName`     | `string` | Kötelező. Annak a webes szerepkörnek a neve, amely lehetővé teszi a kommunikációt.|
 
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic elem
-Az `AllowAllTraffic` elem egy olyan szabály, amely lehetővé teszi, hogy az összes szerepkör kommunikáljon a `Destinations` csomópontban definiált végpontokkal.
+Az `AllowAllTraffic` elem egy olyan szabály, amely lehetővé teszi, hogy az összes szerepkör kommunikáljon a csomópontban definiált végpontokkal `Destinations` .
 
 ##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource elem
-Az `WhenSource` elem olyan szerepkörök gyűjteményét írja le, amelyek nem tudnak kommunikálni a `Destinations` csomópontban definiált végpontokkal.
+Az `WhenSource` elem olyan szerepkörök gyűjteményét írja le, amelyek nem tudnak kommunikálni a csomópontban definiált végpontokkal `Destinations` .
 
 | Attribútum | Típus     | Leírás |
 | --------- | -------- | ----------- |
-| `matches` | `string` | Kötelező. Meghatározza a kommunikáció engedélyezésekor alkalmazandó szabályt. Az egyetlen érvényes érték jelenleg `AnyRule`.|
+| `matches` | `string` | Kötelező. Meghatározza a kommunikáció engedélyezésekor alkalmazandó szabályt. Az egyetlen érvényes érték jelenleg `AnyRule` .|
   
 ##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole elem
-Az `FromRole` elem meghatározza azokat a szerepköröket, amelyek kommunikálhatnak a `Destinations` csomópontban definiált végpontokkal. Több `FromRole` elemet is megadhat, ha több olyan szerepkör is van, amely képes kommunikálni a végpontokkal.
+Az `FromRole` elem meghatározza azokat a szerepköröket, amelyek kommunikálhatnak a csomópontban definiált végpontokkal `Destinations` . Több elemet is megadhat, `FromRole` Ha több olyan szerepkör is van, amely képes kommunikálni a végpontokkal.
 
 | Attribútum  | Típus     | Leírás |
 | ---------- | -------- | ----------- |

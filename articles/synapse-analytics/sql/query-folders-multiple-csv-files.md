@@ -1,22 +1,22 @@
 ---
-title: Mappák és több CSV-fájl lekérdezése az SQL igény szerinti használatával (előzetes verzió)
+title: Mappák és több fájl lekérdezése az SQL igény szerinti használatával (előzetes verzió)
 description: Az SQL on-demand (előzetes verzió) támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bb5c01bac512504fc6bee52be7cf619f29bdf959
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207631"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Mappák és több CSV-fájl lekérdezése  
+# <a name="query-folders-and-multiple-files"></a>Mappák és több fájl lekérdezése  
 
 Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban.
 
@@ -27,10 +27,6 @@ Az SQL on-demand támogatja több fájl/mappa olvasását helyettesítő karakte
 Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja hajtani a lekérdezéseket. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
 A minta lekérdezések követéséhez a *CSV/taxi* mappát kell használnia. A New York-i, a sárga taxis utazás a következő adatokat tartalmazza: július 2016 és június 2018. A *CSV/taxiban* található fájlokat a következő minta alapján nevezi el az év és hónap után: yellow_tripdata_ <year> - <month> . csv
-        
-Minden fájl a következő szerkezettel rendelkezik:
-        
-    [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
 
 ## <a name="read-all-files-in-folder"></a>A mappában található összes fájl olvasása
     

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063162"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez való felkeresés konfigurálása
@@ -56,7 +55,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus felhasználó-kiépítés előtt érdemes engedélyezni a rendszert a tartományok közötti Identitáskezelés (SCIM) üzembe helyezéséhez a látogatás során.
 
-1. A [látogatáshoz](https://app.visitly.io/login)jelentkezzen be. Válassza az **integrációk** > **gazdagép-szinkronizálás**lehetőséget.
+1. A [látogatáshoz](https://app.visitly.io/login)jelentkezzen be. Válassza az **integrációk**  >  **gazdagép-szinkronizálás**lehetőséget.
 
     ![Gazdagép szinkronizálása](media/Visitly-provisioning-tutorial/login.png)
 
@@ -100,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben való felkereséshez
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![Minden alkalmazás](common/enterprise-applications.png)
 
@@ -156,7 +155,7 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 A látogatás nem támogatja a merevlemezek törlését. Minden, ami csak a törlést törli.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

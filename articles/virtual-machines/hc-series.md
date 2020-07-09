@@ -1,18 +1,17 @@
 ---
 title: HC-sorozat – Azure Virtual Machines
 description: A HC-sorozatú virtuális gépek specifikációi.
-services: virtual-machines
-author: jonbeck7
+author: ju-shim
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 08496068ac00de26a057e65fd758eb1cf8870a72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673717"
 ---
 # <a name="hc-series"></a>HC-sorozat
 
@@ -30,7 +29,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 | Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Ethernet hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Összes | 700 | 4 | 1 |
+| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Mind | 700 | 4 | 1 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

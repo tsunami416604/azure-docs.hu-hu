@@ -17,11 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692138"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -76,7 +75,7 @@ A delegálás után a marketing részleg a következő táblázathoz hasonló sz
 
 A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a jogosultságok felügyeletére vonatkoznak.
 
-| Jogosultsági felügyeleti szerepkör | Leírás |
+| Jogosultsági felügyeleti szerepkör | Description |
 | --- | --- |
 | Katalógus létrehozója | Katalógusok létrehozása és kezelése. Általában az a rendszergazda, aki nem globális rendszergazda, vagy erőforrás-tulajdonos az erőforrások gyűjteménye számára. A katalógust létrehozó személy automatikusan a katalógus első katalógusának tulajdonosa lesz, és további katalógus-tulajdonosokat is hozzáadhat. A katalógus-létrehozó nem tudja kezelni vagy megtekinteni azokat a katalógusokat, amelyeket nem a saját, és nem adhatnak hozzá olyan erőforrásokat, amelyek nem a katalógusba tartoznak. Ha a katalógus létrehozójának egy másik katalógust kell kezelnie, vagy nem a saját erőforrásokat kell hozzáadnia, kérheti, hogy a katalógus vagy az erőforrás közös tulajdonosa legyen. |
 | Katalógus tulajdonosa | Meglévő katalógusok szerkesztése és kezelése. Általában rendszergazda vagy erőforrás-tulajdonos, vagy a katalógus tulajdonosának kijelölt felhasználója. |
@@ -84,9 +83,9 @@ A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a 
 
 Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is rendelkezik jogosultságokkal, bár ezek nem szerepkörök.
 
-| Jobb | Leírás |
+| Jobb | Description |
 | --- | --- |
-| Approver | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
+| Jóváhagyó | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
 | Requestor (Kérelmező) | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
 
 A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
@@ -122,8 +121,8 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Office 365-csoportot adhat hozzá | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n.a. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n.a. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
 | [Teams szolgáltatás rendszergazdája](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |

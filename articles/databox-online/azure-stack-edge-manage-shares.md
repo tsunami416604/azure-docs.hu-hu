@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d64ecb32c783dcee08164856aa90a43d004894a8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339839"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>A Azure Portal használata az Azure Stack Edge-megosztások kezeléséhez
 
@@ -88,7 +87,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 6. A **minden jogosultság helyi felhasználó** mezőben válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**.
 
-7. Kattintson a **Létrehozás** gombra. 
+7. Válassza a **Létrehozás** lehetőséget. 
 
    ![Helyi megosztás létrehozása](media/azure-stack-edge-manage-shares/add-local-share-2.png)
 

@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656484"
 ---
 # <a name="azure-serial-console"></a>Azure soros konzol
@@ -45,7 +44,7 @@ A virtuális gépek és a virtuálisgép-méretezési csoport soros konzolja csa
 
 ### <a name="serial-console-for-virtual-machines"></a>Virtual Machines soros konzolja
 A virtuális gépek soros konzolja olyan egyszerű, mint a Azure Portal **támogatás + hibaelhárítás** szakaszának **Serial consoleére** kattintva.
-  1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+  1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 
   1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuális gépet. Megnyílik a virtuális gép áttekintő lapja.
 
@@ -55,7 +54,7 @@ A virtuális gépek soros konzolja olyan egyszerű, mint a Azure Portal **támog
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets soros konzolja
 A soros konzol a méretezési csoport minden példányán elérhető a virtuálisgép-méretezési csoportokhoz. A **Serial Console** gomb meglátása előtt navigáljon a virtuálisgép-méretezési csoport egyes példányaira. Ha a virtuálisgép-méretezési csoport nem rendelkezik engedélyezve a rendszerindítási diagnosztika szolgáltatással, frissítse a virtuálisgép-méretezési csoport modelljét a rendszerindítási diagnosztika engedélyezéséhez, majd frissítse az összes példányt az új modellre a soros konzol eléréséhez.
-  1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+  1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 
   1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuálisgép-méretezési készletet. Megnyílik a virtuálisgép-méretezési csoport Áttekintés lapja.
 

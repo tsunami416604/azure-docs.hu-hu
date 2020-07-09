@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735402"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134943"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Valós idejű beszélgetés átirata (előzetes verzió)
 
-A Speech SDK **ConversationTranscriber** API-jával több résztvevő hozzáadását, eltávolítását és azonosítását lehetővé tévő beszélgetéseket hozhat létre a hangvételi szolgáltatásban a vagy `PullStream` `PushStream`a használatával. Ebből a témakörből megtudhatja, hogyan használható a Speech-Text a Speech SDK-val (1.8.0 vagy újabb verzió). További információ: [Mi a Speech Services](overview.md).
+A Speech SDK **ConversationTranscriber** API-jával több résztvevő hozzáadását, eltávolítását és azonosítását lehetővé tévő beszélgetéseket hozhat létre a hangvételi szolgáltatásban a vagy a használatával `PullStream` `PushStream` . Ebből a témakörből megtudhatja, hogyan használható a Speech-Text a Speech SDK-val (1.8.0 vagy újabb verzió). További információ: [Mi a Speech Services](overview.md).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -50,7 +50,7 @@ Első lépésként létre kell hoznia a beszélgetés résztvevőinek hangaláí
 
 ### <a name="sample-code"></a>Mintakód
 
-Az alábbi példa két különböző módszert mutat be a hangaláírások létrehozásához [a C# REST API használatával](https://aka.ms/cts/signaturegenservice) . Vegye figyelembe, hogy a "YourSubscriptionKey", a "speakerVoice. wav" és a "YourServiceRegion" ( `{region}` _CentralUS_ vagy _eastasia_) területének valódi információit kell helyettesítenie.
+Az alábbi példa két különböző módszert mutat be a hangaláírások létrehozásához [a C# REST API használatával](https://aka.ms/cts/signaturegenservice) . Vegye figyelembe, hogy a "YourSubscriptionKey", a "speakerVoice. wav" és a `{region}` "YourServiceRegion" (_CentralUS_ vagy _eastasia_) területének valódi információit kell helyettesítenie.
 
 ```csharp
 class Program
@@ -108,12 +108,12 @@ Az alábbi mintakód bemutatja, hogyan lehet valós időben átírni a beszélge
 
 A mintakód Kiemelt jellemzői a következők:
 
-- `Conversation` Objektum létrehozása az `SpeechConfig` objektumból a következő használatával generált értekezlet-azonosító használatával:`Guid.NewGuid()`
-- `ConversationTranscriber` Objektum létrehozása és a beszélgetéshez `JoinConversationAsync()` való csatlakozás a kezdéshez
+- Objektum létrehozása `Conversation` az `SpeechConfig` objektumból a következő használatával generált értekezlet-azonosító használatával:`Guid.NewGuid()`
+- Objektum létrehozása `ConversationTranscriber` és a beszélgetéshez való csatlakozás a `JoinConversationAsync()` kezdéshez
 - A fontos események regisztrálása
 - Résztvevők hozzáadása vagy eltávolítása a beszélgetéshez a beszélgetési objektum használatával
 - A hang továbbítása
-- A Speech SDK verziójában a 1.9.0 és az `int` újabb `string` verziók is támogatottak a hangaláírás verziója mezőben.
+- A Speech SDK verziójában a 1.9.0 és az újabb verziók is `int` `string` támogatottak a hangaláírás verziója mezőben.
 
 Az átírás és a hangszóró azonosítója visszakerül a regisztrált eseményekre.
 
@@ -140,7 +140,7 @@ public class MyConversationTranscriber
             using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
+                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                 {
                     await conversationTranscriber.JoinConversationAsync(conversation);
 
@@ -215,7 +215,7 @@ public class MyConversationTranscriber
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Aszinkron beszélgetés átírása](how-to-async-conversation-transcription.md)

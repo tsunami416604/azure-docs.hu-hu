@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: trbye
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: b44c1d722e6acbcf3fbe8f1ac6e05b15c2a0676b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddcfeaad70e6552f94f9c87b6e9cf24ed15bfba8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125519"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611466"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>Ismerkedjen meg a beszédfelismerés alapjaival
 
@@ -28,8 +29,8 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a szövegek és a beszédek 
 * Neurális hangok használata
 
 > [!TIP]
-> Ha még nem volt lehetősége az egyik rövid útmutató elvégzésére, javasoljuk, hogy indítson el egy abroncsot, és próbálja ki saját maga is a beszédfelismerést.
-> * [Beszéd felismerése mikrofonból](quickstarts/text-to-speech.md)
+> Ha még nem volt lehetősége az egyik rövid útmutató elvégzésére, javasoljuk, hogy indítson el egy abroncsot, és próbálja meg saját maga is a szöveget.
+> * [Beszédszintézis hangszóróra](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]

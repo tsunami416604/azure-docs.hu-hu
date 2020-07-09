@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792442"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Kereskedelmi partnerek hozzáadása a Azure Logic Apps integrációs fiókjaihoz
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Kereskedelmi partnerek hozzáadása az Azure Logic Apps integrációs fiókjaihoz
 
-[Azure Logic apps](../logic-apps/logic-apps-overview.md)a logikai alkalmazásokkal rendelkező [integrációs fiókkal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) hozhat létre automatizált vállalatközi (B2B) integrációs munkafolyamatokat. A szervezet és mások képviseletéhez kereskedelmi partnereket hozhat létre és adhat hozzá az integrációs fiókjához. A partnerek olyan entitások, amelyek VÁLLALATKÖZI tranzakciókban vesznek részt, és egymással Exchange-üzeneteket használnak.
+[Azure Logic apps](../logic-apps/logic-apps-overview.md)a logikai alkalmazásokkal rendelkező [integrációs fiókkal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) hozhat létre automatizált vállalatközi (B2B) integrációs munkafolyamatokat. A szervezet és mások képviseletéhez kereskedelmi partnereket hozhat létre és adhat hozzá az integrációs fiókjához. A partnerek olyan entitások, amelyek vállalatközi tranzakciókban vesznek részt, és üzeneteket váltanak egymással.
 
 A partnerek létrehozása előtt mindenképpen beszéljen és ossza meg a partnerekkel kapcsolatos információkat a másik által küldött üzenetek azonosításával és ellenőrzésével. Miután elfogadja ezeket a részleteket, készen áll arra, hogy partnereket hozzon létre az integrációs fiókjában.
 
@@ -55,9 +54,9 @@ Egy megállapodásban megadhatja a fogadó partner szemszögéből érkező bej�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Igen | A partner neve |
-   | **Selejtező** | Igen | Az a hitelesítő szervezet, amely egyedi üzleti identitásokat biztosít a szervezeteknek, például **D-U-N-S (Dun & bradstreettől)**. <p>A partnerek kölcsönösen meghatározott üzleti identitást választhatnak. Ezekben az esetekben válassza a **kölcsönösen meghatározott** EDIFACT vagy **kölcsönösen definiált (X12)** beállítást a X12 számára. <p>A RosettaNet esetében válassza a csak a **Duns**lehetőséget, amely a standard. |
-   | **Érték** | Igen | Egy érték, amely azonosítja a logikai alkalmazások által fogadott dokumentumokat. <p>A RosettaNet esetében ennek az értéknek egy kilenc számjegyű számnak kell lennie, amely megfelel a DUNS számának. |
+   | **Name (Név)** | Yes | A partner neve |
+   | **Selejtező** | Yes | Az a hitelesítő szervezet, amely egyedi üzleti identitásokat biztosít a szervezeteknek, például **D-U-N-S (Dun & bradstreettől)**. <p>A partnerek kölcsönösen meghatározott üzleti identitást választhatnak. Ezekben az esetekben válassza a **kölcsönösen meghatározott** EDIFACT vagy **kölcsönösen definiált (X12)** beállítást a X12 számára. <p>A RosettaNet esetében válassza a csak a **Duns**lehetőséget, amely a standard. |
+   | **Érték** | Yes | Egy érték, amely azonosítja a logikai alkalmazások által fogadott dokumentumokat. <p>A RosettaNet esetében ennek az értéknek egy kilenc számjegyű számnak kell lennie, amely megfelel a DUNS számának. |
    ||||
 
    > [!NOTE]
@@ -86,12 +85,12 @@ Válassza ki a **partnerek** csempét.
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Partner besorolása** | Nem | A partner szervezeti típusa |
-   | **Ellátási lánc kódja** | Nem | A partner ellátási láncának kódja, például "információs technológia" vagy "elektronikus összetevők" |
-   | **Kapcsolattartó neve** | Nem | A partner kapcsolattartójának neve |
-   | **E-mail** | Nem | A partner e-mail-címe |
-   | **Fax** | Nem | A partner faxszáma |
-   | **Telefon** | Nem | A partner telefonszáma |
+   | **Partner besorolása** | No | A partner szervezeti típusa |
+   | **Ellátási lánc kódja** | No | A partner ellátási láncának kódja, például "információs technológia" vagy "elektronikus összetevők" |
+   | **Kapcsolattartó neve** | No | A partner kapcsolattartójának neve |
+   | **E-mail** | No | A partner e-mail-címe |
+   | **Fax** | No | A partner faxszáma |
+   | **Telefon** | No | A partner telefonszáma |
    ||||
 
 1. Ha elkészült, kattintson **az OK** gombra a módosítások mentéséhez.

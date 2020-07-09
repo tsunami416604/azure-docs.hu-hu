@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4ce292ad507eb0208633db7743b881508a8e58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338199"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -67,13 +67,13 @@ A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát m
  A felhasználók a jogosultsági felügyelethez való hozzáférését a következő típusú erőforrásokkal kezelheti:
 
 - Azure AD-beli biztonsági csoportok tagsága
-- Office 365-csoportok és-csapatok tagsága
+- Microsoft 365 csoportok és csapatok tagsága
 - Hozzárendelés az Azure AD vállalati alkalmazásokhoz, beleértve az SaaS-alkalmazásokat, valamint az összevonás/egyszeri bejelentkezést és/vagy üzembe helyezést támogató egyéni integrált alkalmazásokat
 - SharePoint Online-webhelyek tagsága
 
-Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
+Az Azure AD biztonsági csoportjaira vagy Microsoft 365 csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
 
-- A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
+- A felhasználói licenceket a Microsoft 365 számára biztosíthatja egy hozzáférési csomagban található Azure AD biztonsági csoport használatával, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
 - Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
 
 ## <a name="how-do-i-control-who-gets-access"></a>Hogyan a hozzáférés-vezérlést?
@@ -114,7 +114,7 @@ A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáféré
 
 A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételek listáját.
 
-| Időtartam | Leírás |
+| Kifejezés | Leírás |
 | --- | --- |
 | hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. Hozzon létre egy új hozzáférési csomagot egy olyan forgatókönyvhöz, amelyben a felhasználóknak hozzáférést kell kérniük.  |
 | hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy jóváhagyási munkafolyamaton keresztül mennek keresztül.  Ha jóváhagyják, a kérelmező felhasználó hozzáférési csomagbeli hozzárendelést kap. |
@@ -157,7 +157,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Forgatókönyv | Számítás | Licencek száma |
+| Eset | Számítás | Licencek száma |
 | --- | --- | --- |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2000 |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |

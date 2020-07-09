@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76847198"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045399"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
 
@@ -20,7 +20,7 @@ Az eredmény nélküli vagy váratlan eredményekkel rendelkező feladatok gyako
 
 ## <a name="debug-a-query-using-job-diagram"></a>Lekérdezés hibakeresése a feladatütemezés használatával
 
-A bemeneti adatoknak a kimeneti adatokba való átalakítására szolgáló Azure Stream Analytics szkript. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépéssel, végül pedig a kimeneti mosogatók számára. Minden lekérdezési lépés egy `WITH` utasítás használatával egy, a parancsfájlban definiált ideiglenes eredményhalmaz számára van leképezve. Megtekintheti az adatokat, valamint az egyes lekérdezési lépések mérőszámait az egyes köztes eredményhalmaz-készletekben, hogy megtalálja a probléma forrását.
+A bemeneti adatoknak a kimeneti adatokba való átalakítására szolgáló Azure Stream Analytics szkript. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépéssel, végül pedig a kimeneti mosogatók számára. Minden lekérdezési lépés egy utasítás használatával egy, a parancsfájlban definiált ideiglenes eredményhalmaz számára van leképezve `WITH` . Megtekintheti az adatokat, valamint az egyes lekérdezési lépések mérőszámait az egyes köztes eredményhalmaz-készletekben, hogy megtalálja a probléma forrását.
 
 > [!NOTE]
 > Ez a feladatütemezés csak egy csomópontban jeleníti meg a helyi tesztelés adatait és mérőszámait. Nem használható a teljesítmény finomhangolásához és a hibaelhárításhoz.
@@ -52,7 +52,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés élő bemeneti forrásai](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
 |**Eseményközpont** | Bemeneti forrás típusa|
@@ -68,7 +68,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Munkaköri diagram helyi bemeneti forrásai](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
@@ -79,7 +79,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés lekérdezési lépése](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**TripData**|Az ideiglenes eredményhalmaz neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
@@ -89,7 +89,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
 |**Események**|A nyelők számára Kimenõ események száma.|
@@ -98,7 +98,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
 |**Helyi kimenet**| Eredmény kimenete egy helyi fájlba.|

@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476015"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Több bérlő használata az Azure Sentinelben 
@@ -27,7 +26,7 @@ Ha Ön felügyelt biztonsági szolgáltató (MSSP), és az [Azure Lighthouse](..
 
 ## <a name="prerequisites"></a>Előfeltételek
 - [Az Azure Lighthouse előkészítése](../lighthouse/how-to/onboard-customer.md)
-- Ahhoz, hogy ez megfelelően működjön, a bérlőt legalább egy előfizetésben regisztrálni kell az Azure Sentinel erőforrás-szolgáltatón. Ha a bérlőben regisztrált Azure Sentinel van, készen áll a kezdésre. Ha nem, válassza az **előfizetések** lehetőséget a Azure Portal, majd az **erőforrás-szolgáltatók**elemet.  Ezután a **SoC-Resource Providers** képernyőn keresse meg és válassza ki `Microsoft.OperationalInsights` a és `Microsoft.SecurityInsights`a elemet, majd válassza a **regisztráció**lehetőséget.
+- Ahhoz, hogy ez megfelelően működjön, a bérlőt legalább egy előfizetésben regisztrálni kell az Azure Sentinel erőforrás-szolgáltatón. Ha a bérlőben regisztrált Azure Sentinel van, készen áll a kezdésre. Ha nem, válassza az **előfizetések** lehetőséget a Azure Portal, majd az **erőforrás-szolgáltatók**elemet.  Ezután a **SoC-Resource Providers** képernyőn keresse meg és válassza ki a és a elemet, majd `Microsoft.OperationalInsights` válassza a `Microsoft.SecurityInsights` **regisztráció**lehetőséget.
    ![Erőforrás-szolgáltatók keresése](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Az Azure Sentinel más bérlők általi elérése
 1. A **címtár + előfizetés**területen válassza ki a delegált címtárakat, valamint azokat az előfizetéseket, amelyeken az ügyfél Azure Sentinel-munkaterületei találhatók.

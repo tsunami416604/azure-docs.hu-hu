@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75397468"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Karakterláncok használata Azure Monitor naplózási lekérdezésekben
@@ -27,7 +26,7 @@ A karakterlánc minden karakterének indexe a helye alapján történik. Az els�
 
 
 ## <a name="strings-and-escaping-them"></a>Karakterláncok és Escape-szövegek
-A karakterlánc-értékek egy vagy két idézőjeles karakterrel vannak becsomagolva. A fordított\\perjel () használatával a karakterek az azt követő karaktereken (például \t: Tab, \n a sortöréshez és \" maga az idézőjelben) használhatók.
+A karakterlánc-értékek egy vagy két idézőjeles karakterrel vannak becsomagolva. A fordított perjel ( \\ ) használatával a karakterek az azt követő karaktereken (például \t: Tab, \n a sortöréshez és \" maga az idézőjelben) használhatók.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -37,7 +36,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-A ""\\Escape-karakterként való működésének megakadályozásához adja\@hozzá a "" karakterláncot előtagként a következő sztringhez:
+A "" \\ Escape-karakterként való működésének megakadályozásához adja hozzá \@ a "" karakterláncot előtagként a következő sztringhez:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -46,46 +45,46 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Karakterlánc-összehasonlítások
 
-Művelet       |Leírás                         |Kis-és nagybetűk megkülönböztetése|Példa (hozamok `true`)
+Operátor       |Leírás                         |Kis-és nagybetűk megkülönböztetése|Példa (hozamok `true` )
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Egyenlő                              |Igen           |`"aBc" == "aBc"`
-`!=`           |Nem egyenlő                          |Igen           |`"abc" != "ABC"`
-`=~`           |Egyenlő                              |Nem            |`"abc" =~ "ABC"`
-`!~`           |Nem egyenlő                          |Nem            |`"aBc" !~ "xyz"`
-`has`          |A jobb oldali teljes kifejezés a bal oldali oldalon |Nem|`"North America" has "america"`
-`!has`         |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |Nem            |`"North America" !has "amer"` 
-`has_cs`       |A jobb oldali teljes kifejezés a bal oldali oldalon |Igen|`"North America" has_cs "America"`
-`!has_cs`      |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |Igen            |`"North America" !has_cs "amer"` 
-`hasprefix`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |Nem            |`"North America" hasprefix "ame"`
-`!hasprefix`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |Nem            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |Igen            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |Igen            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |Nem            |`"North America" hassuffix "ica"`
-`!hassuffix`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |Nem            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |Igen            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |Igen            |`"North America" !hassuffix_cs "icA"`
-`contains`     |A jobb oldali a bal oldali alsorozatként jelenik meg.  |Nem            |`"FabriKam" contains "BRik"`
-`!contains`    |A jobb oldali nem jelenik meg a bal oldali oldalon           |Nem            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |A jobb oldali a bal oldali alsorozatként jelenik meg.  |Igen           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |A jobb oldali nem jelenik meg a bal oldali oldalon           |Igen           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |A jobb oldali a bal oldali első alsorozata|Nem            |`"Fabrikam" startswith "fab"`
-`!startswith`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|Nem        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |A jobb oldali a bal oldali első alsorozata|Igen            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|Igen        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |A jobb oldali a bal oldali záró alsorozata|Nem             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |A jobb oldali nem a bal oldali záró alsorozata|Nem         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |A jobb oldali a bal oldali záró alsorozata|Igen             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |A jobb oldali nem a bal oldali záró alsorozata|Igen         |`"Fabrikam" !endswith "brik"`
-`matches regex`|a bal oldali oldalon a jobb oldali egyezés szerepel        |Igen           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Az egyik elemmel egyenlő       |Igen           |`"abc" in ("123", "345", "abc")`
-`!in`          |Nem egyenlő az elemek bármelyikével   |Igen           |`"bca" !in ("123", "345", "abc")`
+`==`           |Egyenlő                              |Yes           |`"aBc" == "aBc"`
+`!=`           |Nem egyenlő                          |Yes           |`"abc" != "ABC"`
+`=~`           |Egyenlő                              |No            |`"abc" =~ "ABC"`
+`!~`           |Nem egyenlő                          |No            |`"aBc" !~ "xyz"`
+`has`          |A jobb oldali teljes kifejezés a bal oldali oldalon |No|`"North America" has "america"`
+`!has`         |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |No            |`"North America" !has "amer"` 
+`has_cs`       |A jobb oldali teljes kifejezés a bal oldali oldalon |Yes|`"North America" has_cs "America"`
+`!has_cs`      |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |Yes            |`"North America" !has_cs "amer"` 
+`hasprefix`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |No            |`"North America" hasprefix "ame"`
+`!hasprefix`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |No            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |Yes            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |Yes            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |No            |`"North America" hassuffix "ica"`
+`!hassuffix`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |No            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |Yes            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |Yes            |`"North America" !hassuffix_cs "icA"`
+`contains`     |A jobb oldali a bal oldali alsorozatként jelenik meg.  |No            |`"FabriKam" contains "BRik"`
+`!contains`    |A jobb oldali nem jelenik meg a bal oldali oldalon           |No            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |A jobb oldali a bal oldali alsorozatként jelenik meg.  |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |A jobb oldali nem jelenik meg a bal oldali oldalon           |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |A jobb oldali a bal oldali első alsorozata|No            |`"Fabrikam" startswith "fab"`
+`!startswith`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|No        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |A jobb oldali a bal oldali első alsorozata|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|Yes        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |A jobb oldali a bal oldali záró alsorozata|No             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |A jobb oldali nem a bal oldali záró alsorozata|No         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |A jobb oldali a bal oldali záró alsorozata|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |A jobb oldali nem a bal oldali záró alsorozata|Yes         |`"Fabrikam" !endswith "brik"`
+`matches regex`|a bal oldali oldalon a jobb oldali egyezés szerepel        |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Az egyik elemmel egyenlő       |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`          |Nem egyenlő az elemek bármelyikével   |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof
 
 Egy karakterláncban lévő alsztring előfordulásainak megszámlálása. Képes az egyszerű karakterláncok egyeztetésére vagy a regex használatára. Az egyszerű karakterlánc-egyezések átfedésben lehetnek, amíg a regex-egyezések nem.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 ```
 countof(text, search [, kind])
 ```
@@ -93,9 +92,9 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>Argumentumok
 - `text`– A bemeneti sztring 
 - `search`– Egyszerű karakterlánc vagy reguláris kifejezés, amely a szövegen belüli egyezést adja meg.
-- `kind` - _normál_ | _regex_ (alapértelmezett: normál).
+- `kind` - _normál_  |  _regex_ (alapértelmezett: normál).
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Válaszok
 
 Az a szám, ahányszor a keresési karakterlánc összehasonlítható a tárolóban. Az egyszerű karakterlánc-egyezések átfedésben lehetnek, amíg a regex-egyezések nem.
 
@@ -137,7 +136,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text`– A keresendő karakterlánc.
 - `typeLiteral`-Egy nem kötelező típusú literál (például typeof (Long)). Ha meg van adni, a kibontott alkarakterlánc erre a típusra lesz konvertálva.
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Válaszok
 Az alkarakterlánc egyeztetve lett a jelzett rögzítési csoport captureGroup, és igény szerint typeLiteral konvertálható.
 Ha nincs egyezés, vagy a típus konvertálása sikertelen, a null értéket adja vissza.
 
@@ -174,7 +173,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 - a *IsEmpty* igaz értéket ad vissza, ha az argumentum egy üres sztring vagy Null (lásd még: *IsNull*).
 - a *isnotempty* igaz értéket ad vissza, ha az argumentum nem üres karakterlánc vagy NULL értékű (lásd még: *isnotnull*). alias: nem *csábító*.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```Kusto
 isempty(value)
@@ -200,7 +199,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 
 Feldarabol egy URL-címet a részeire (protokoll, gazdagép, Port stb.), és egy olyan szótár objektumot ad vissza, amely tartalmazza a részeket karakterláncként.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 parseurl(urlstring)
@@ -243,7 +242,7 @@ replace(regex, rewrite, input_text)
 - `rewrite`– A helyettesítési regex a megfelelő regexben való egyezéshez. A \ 0 paranccsal hivatkozhat a teljes egyezésre, \ 1 az első rögzítési csoporthoz, \ 2 és így tovább a következő rögzítési csoportokhoz.
 - `input_text`– A keresendő bemeneti sztring.
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Válaszok
 A regex összes egyezésének az újraírás értékelését követő szövege. A egyezések nem fedik át egymást.
 
 ### <a name="examples"></a>Példák
@@ -266,7 +265,7 @@ Tevékenység                                        |helyébe
 
 Egy adott karakterláncot egy megadott elválasztó alapján feldarabol, és az eredményül kapott alsztringek tömbjét adja vissza.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 ```
 split(source, delimiter [, requestedIndex])
 ```
@@ -293,7 +292,7 @@ print split("aabbcc", "bb");        // result: ["aa","cc"]
 
 Karakterlánc-argumentumok összefűzése (támogatja a 1-16 argumentumot).
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 ```
 strcat("string1", "string2", "string3")
 ```
@@ -308,7 +307,7 @@ print strcat("hello", " ", "world") // result: "hello world"
 
 Egy karakterlánc hosszát adja vissza.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 ```
 strlen("text_to_evaluate")
 ```
@@ -323,7 +322,7 @@ print strlen("hello")   // result: 5
 
 Egy adott forrás sztringből származó alsztring kibontása a megadott indextől kezdődően. Opcionálisan megadhatja a kért alkarakterlánc hosszát is.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 ```
 substring(source, startingIndex [, length])
 ```
@@ -347,7 +346,7 @@ print substring("ABCD", 0, 2);  // result: "AB"
 
 Egy adott sztringet konvertál az összes alsó vagy nagybetű értékre.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 ```
 tolower("value")
 toupper("value")

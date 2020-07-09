@@ -3,16 +3,15 @@ title: Azure-beli virtuális gépek karbantartási vezérlése a parancssori fel
 description: Megtudhatja, hogyan szabályozhatja, hogy az Azure-beli virtuális gépek karbantartását hogyan alkalmazza a rendszer a karbantartási és a parancssori felület használatával.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675859"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Frissítések kezelése a karbantartási ellenőrzés és az Azure CLI használatával
 
@@ -20,7 +19,7 @@ A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissíté
 
 ## <a name="create-a-maintenance-configuration"></a>Karbantartási konfiguráció létrehozása
 
-A `az maintenance configuration create` használatával karbantartási konfigurációt hozhat létre. Ez a példa létrehoz egy *konfig* nevű karbantartási konfigurációt a gazdagépre. 
+A használatával `az maintenance configuration create` karbantartási konfigurációt hozhat létre. Ez a példa létrehoz egy *konfig* nevű karbantartási konfigurációt a gazdagépre. 
 
 ```azurecli-interactive
 az group create \
@@ -35,11 +34,11 @@ az maintenance configuration create \
 
 Másolja a konfigurációs azonosítót a kimenetből későbbi használatra.
 
-A `--maintenanceScope host` használatával biztosíthatja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép frissítéseinek vezérlésére.
+A használatával `--maintenanceScope host` biztosíthatja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép frissítéseinek vezérlésére.
 
 Ha azonos nevű konfigurációt próbál létrehozni, de egy másik helyen, hibaüzenetet fog kapni. A konfiguráció nevének egyedinek kell lennie az előfizetésben.
 
-Az elérhető karbantartási konfigurációk lekérdezését a használatával `az maintenance configuration list`végezheti el.
+Az elérhető karbantartási konfigurációk lekérdezését a használatával végezheti el `az maintenance configuration list` .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -47,11 +46,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>A konfiguráció kiosztása
 
-A `az maintenance assignment create` (z) használatával rendelje hozzá a konfigurációt az elkülönített virtuális géphez vagy az Azure dedikált gazdagéphez.
+A (z `az maintenance assignment create` ) használatával rendelje hozzá a konfigurációt az elkülönített virtuális géphez vagy az Azure dedikált gazdagéphez.
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
-Alkalmazza a konfigurációt egy virtuális gépre a konfiguráció AZONOSÍTÓjának használatával. Adja `--resource-type virtualMachines` meg és adja meg a virtuális gép nevét `--resource-name`, valamint a virtuális géphez tartozó ERŐFORRÁSCSOPORTOT `--resource-group`, valamint a virtuális gép helyét. `--location` 
+Alkalmazza a konfigurációt egy virtuális gépre a konfiguráció AZONOSÍTÓjának használatával. Adja meg és adja meg a virtuális gép nevét, valamint a virtuális géphez tartozó `--resource-type virtualMachines` erőforráscsoportot, valamint a virtuális gép `--resource-name` `--resource-group` helyét `--location` . 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -66,9 +65,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-Ha egy dedikált gazdagépre kívánja alkalmazni a konfigurációt, a `--resource-type hosts`nevet `--resource-parent-name` is tartalmaznia kell a gazda csoport nevével és `--resource-parent-type hostGroups`. 
+Ha egy dedikált gazdagépre kívánja alkalmazni a konfigurációt, a nevet is tartalmaznia kell a `--resource-type hosts` `--resource-parent-name` gazda csoport nevével és `--resource-parent-type hostGroups` . 
 
-A paraméter `--resource-id` a gazdagép azonosítója. Az az [VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) paranccsal kérheti le a DEDIKÁLT gazdagép azonosítóját.
+A paraméter a `--resource-id` GAZDAGÉP azonosítója. Az az [VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) paranccsal kérheti le a DEDIKÁLT gazdagép azonosítóját.
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -85,7 +84,7 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>Konfiguráció keresése
 
-Ellenőrizheti, hogy a konfiguráció helyesen lett-e alkalmazva, vagy ellenőrizze, hogy jelenleg milyen konfigurációt `az maintenance assignment list`alkalmaz a használatával.
+Ellenőrizheti, hogy a konfiguráció helyesen lett-e alkalmazva, vagy ellenőrizze, hogy jelenleg milyen konfigurációt alkalmaz a használatával `az maintenance assignment list` .
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
@@ -116,9 +115,9 @@ az maintenance assignment list \
 
 ## <a name="check-for-pending-updates"></a>Függőben lévő frissítések keresése
 
-A `az maintenance update list` használatával megtekintheti, hogy vannak-e függőben lévő frissítések. Frissítés – az előfizetés a virtuális gépet tartalmazó előfizetés AZONOSÍTÓjának kell lennie.
+`az maintenance update list`A használatával megtekintheti, hogy vannak-e függőben lévő frissítések. Frissítés – az előfizetés a virtuális gépet tartalmazó előfizetés AZONOSÍTÓjának kell lennie.
 
-Ha nincsenek frissítések, a parancs egy hibaüzenetet ad vissza, amely a következő szöveget fogja tartalmazni: `Resource not found...StatusCode: 404`.
+Ha nincsenek frissítések, a parancs egy hibaüzenetet ad vissza, amely a következő szöveget fogja tartalmazni: `Resource not found...StatusCode: 404` .
 
 Ha vannak frissítések, akkor is csak egy lesz visszaadva, még akkor is, ha folyamatban van több frissítés. A frissítéshez tartozó adatértékek egy objektumban lesznek visszaadva:
 
@@ -166,7 +165,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Frissítések alkalmazása
 
-A `az maintenance apply update` függőben lévő frissítések alkalmazására használható. Sikeres művelet esetén a parancs a frissítés részleteit tartalmazó JSON-t ad vissza.
+`az maintenance apply update`A függőben lévő frissítések alkalmazására használható. Sikeres művelet esetén a parancs a frissítés részleteit tartalmazó JSON-t ad vissza.
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
@@ -199,9 +198,9 @@ az maintenance applyupdate create \
 
 ## <a name="check-the-status-of-applying-updates"></a>Frissítések alkalmazási állapotának keresése 
 
-A frissítések állapotát a használatával `az maintenance applyupdate get`lehet megtekinteni. 
+A frissítések állapotát a használatával lehet megtekinteni `az maintenance applyupdate get` . 
 
-A frissítés neveként `default` használhatja az utolsó frissítés eredményét, vagy lecserélheti `myUpdateName` a értéket a futtatásakor visszaadott frissítés nevére. `az maintenance applyupdate create`
+A `default` frissítés neveként használhatja az utolsó frissítés eredményét, vagy lecserélheti a értéket a futtatásakor `myUpdateName` visszaadott frissítés nevére `az maintenance applyupdate create` .
 
 ```text
 Status         : Completed
@@ -245,7 +244,7 @@ az maintenance applyupdate get \
 
 ## <a name="delete-a-maintenance-configuration"></a>Karbantartási konfiguráció törlése
 
-Karbantartási `az maintenance configuration delete` konfiguráció törlésére használható. A konfiguráció törlése eltávolítja a karbantartási ellenőrzést a kapcsolódó erőforrásokból.
+`az maintenance configuration delete`Karbantartási konfiguráció törlésére használható. A konfiguráció törlése eltávolítja a karbantartási ellenőrzést a kapcsolódó erőforrásokból.
 
 ```azurecli-interactive
 az maintenance configuration delete \

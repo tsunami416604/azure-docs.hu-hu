@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan csatlakoztathat titkos kötetet a tároló pél
 ms.topic: article
 ms.date: 04/03/2020
 ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657152"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Titkos kötet csatlakoztatása Azure Container Instances
@@ -22,7 +21,7 @@ Használjon *titkos* kötetet bizalmas adatok megadásához egy tároló csoport
 
 ## <a name="mount-secret-volume---azure-cli"></a>Titkos kötet csatlakoztatása – Azure CLI
 
-Ha egy vagy több titkos kulcsot tartalmazó tárolót szeretne üzembe helyezni az Azure CLI használatával, `--secrets` adja `--secrets-mount-path` meg a és a paramétereket az az [Container Create][az-container-create] parancsban. Ez a példa egy *titkos* kötetet csatlakoztat, amely két, Secrets, "mysecret1" és "mysecret2" tartalmú `/mnt/secrets`fájlból áll:
+Ha egy vagy több titkos kulcsot tartalmazó tárolót szeretne üzembe helyezni az Azure CLI használatával, adja `--secrets` meg a és a `--secrets-mount-path` paramétereket az az [Container Create][az-container-create] parancsban. Ez a példa egy *titkos* kötetet csatlakoztat, amely két, Secrets, "mysecret1" és "mysecret2" tartalmú fájlból áll `/mnt/secrets` :
 
 ```azurecli-interactive
 az container create \
@@ -59,7 +58,7 @@ A tároló csoportokat az Azure CLI-vel és egy YAML- [sablonnal](container-inst
 
 Ha YAML-sablonnal végzi a telepítést, a titkos értékeknek **Base64 kódolással** kell rendelkezniük a sablonban. A titkos értékek azonban a tárolóban lévő fájlokban jelennek meg a szöveges szövegben.
 
-A következő YAML-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat `/mnt/secrets`a (z) helyen. A titkos kötet két fájlt tartalmaz: Secrets, "mysecret1" és "mysecret2".
+A következő YAML-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat a (z) helyen `/mnt/secrets` . A titkos kötet két fájlt tartalmaz: Secrets, "mysecret1" és "mysecret2".
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -90,7 +89,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-A YAML sablonnal való üzembe helyezéshez mentse az előző YAML egy nevű `deploy-aci.yaml`fájlba, majd hajtsa végre az az [Container Create][az-container-create] parancsot a `--file` következő paraméterrel:
+A YAML sablonnal való üzembe helyezéshez mentse az előző YAML egy nevű fájlba `deploy-aci.yaml` , majd hajtsa végre az az [Container Create][az-container-create] parancsot a következő `--file` paraméterrel:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -103,16 +102,16 @@ az container create \
 
 A CLI és a YAML üzembe helyezése mellett az Azure [Resource Manager-sablonok](/azure/templates/microsoft.containerinstance/containergroups)használatával is üzembe helyezhet egy tároló csoportot.
 
-Először töltse fel a `volumes` tömböt a sablon tároló csoport `properties` szakaszában. Ha Resource Manager-sablonnal végzi a telepítést, a titkos értékeknek **Base64 kódolással** kell rendelkezniük a sablonban. A titkos értékek azonban a tárolóban lévő fájlokban jelennek meg a szöveges szövegben.
+Először töltse `volumes` fel a tömböt a sablon tároló csoport `properties` szakaszában. Ha Resource Manager-sablonnal végzi a telepítést, a titkos értékeknek **Base64 kódolással** kell rendelkezniük a sablonban. A titkos értékek azonban a tárolóban lévő fájlokban jelennek meg a szöveges szövegben.
 
-Ezután a tároló csoport minden olyan tárolójában, amelyben a *titkos* kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában.
+Ezután a tároló csoport minden olyan tárolójában, amelyben a *titkos* kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a `properties` tároló definíciójának szakaszában.
 
-A következő Resource Manager-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat `/mnt/secrets`a alkalmazásban. A titkos kötet két titkot tartalmaz: "mysecret1" és "mysecret2".
+A következő Resource Manager-sablon egy olyan tároló csoportot határoz meg, amely egy *titkos* kötetet csatlakoztat a alkalmazásban `/mnt/secrets` . A titkos kötet két titkot tartalmaz: "mysecret1" és "mysecret2".
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy `deploy-aci.json`nevű fájlba, majd hajtsa végre az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot a `--template-file` következő paraméterrel:
+A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy nevű fájlba `deploy-aci.json` , majd hajtsa végre az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot a következő `--template-file` paraméterrel:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

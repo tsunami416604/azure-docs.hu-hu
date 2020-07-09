@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 91a9a761b35a945fcd105465ae8dea7cb6623f42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554536"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -65,8 +65,8 @@ Az Azure Multi-Factor Authentication-regisztrációt követően a következő ki
 - Exchange-rendszergazda
 - Feltételes hozzáférésű rendszergazda
 - Biztonsági rendszergazda
-- Segélyszolgálat rendszergazdája vagy jelszavas rendszergazdája
-- Számlázási rendszergazda
+- Segélyszolgálat rendszergazdája
+- Számlázási adminisztrátor
 - Felhasználói rendszergazda
 - Hitelesítés rendszergazdája
 
@@ -92,7 +92,7 @@ Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi pro
 > [!WARNING]
 > A biztonsági beállítások engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-fundamentals-block-legacy-authentication.md).
 
-- [Többfunkciós eszköz vagy alkalmazás beállítása e-mailek küldésére az Office 365 és Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Többfunkciós eszköz vagy alkalmazás beállítása e-mailek küldésére az Office 365 és Microsoft 365 használatával](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>A Kiemelt műveletek védelme
 
@@ -122,7 +122,7 @@ A következő további szempontok a biztonsági Alapértelmezések telepítésé
 
 Ezek az ingyenes biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
 
-|   | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
+| Metódus | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
 | --- | --- | --- |
 | Értesítés a Mobile App használatával | X | X |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből | X * * | X |

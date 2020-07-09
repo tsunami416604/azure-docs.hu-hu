@@ -1,18 +1,18 @@
 ---
 title: Valós idejű irányítópult létrehozása Azure Cosmos DB, Azure Analysis Services és Power BI használatával
 description: Megtudhatja, hogyan hozhat létre élő időjárási irányítópultot Power BI a Azure Cosmos DB és a Azure Analysis Services használatával.
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
-ms.author: bharathb
 ms.reviewer: sngun
-ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: eda3ee3e9e170469ffb0b9b0e1d7dede181fe3f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70376592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262004"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Valós idejű irányítópult létrehozása Azure Cosmos DB és Power BI használatával
 
@@ -53,11 +53,11 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 1. **Csatlakoztassa az Azure Cosmos-fiókot Power bi** – nyissa meg a Power bi Desktop, és a Azure Cosmos db-összekötő használatával válassza ki a megfelelő adatbázist és tárolót.
 
-   ![Azure Cosmos DB Power BI-összekötő](./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png" alt-text="Azure Cosmos DB Power BI-összekötő":::
 
 1. **Növekményes frissítés konfigurálása** – az adathalmaz növekményes frissítésének konfigurálásához kövesse a [növekményes frissítés a Power BIval](/power-bi/service-premium-incremental-refresh) című cikkben ismertetett lépéseket. Adja hozzá a **RangeStart** és a **RangeEnd** paramétert az alábbi képernyőképen látható módon:
 
-   ![Tartomány paramétereinek konfigurálása](./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Tartomány paramétereinek konfigurálása":::
 
    Mivel az adatkészlet egy szöveges formátumú oszlop, a **RangeStart** és a **RangeEnd** paramétereket át kell alakítani a következő szűrő használatára. A **speciális szerkesztő** ablaktáblán módosítsa a lekérdezést, és adja hozzá a következő szöveget a sorok szűréséhez a RangeStart és a RangeEnd paraméterek alapján:
 
@@ -77,13 +77,13 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 1. **A frissítési házirend meghatározása** – a frissítési házirend megadása a táblázat **helyi** menüjének **Növekményes frissítés** lapján. Állítsa be a frissítési szabályzatot, hogy **minden nap** frissítsen, és tárolja az utolsó hónap adatát.
 
-   ![Frissítési szabályzat definiálása](./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Frissítési szabályzat definiálása":::
 
    Hagyja figyelmen kívül azt a figyelmeztetést, amely szerint *az M-lekérdezést nem lehet megerősíteni*. Az Azure Cosmos DB-összekötő kibontja a szűrési lekérdezéseket.
 
 1. **Töltse be az adatgyűjtést, és hozza létre a jelentéseket** – a korábban betöltött adatai alapján hozza létre a diagramokat a hőmérséklet és a csapadék jelentéséhez.
 
-   ![Adattöltés és jelentés készítése](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Adattöltés és jelentés készítése":::
 
 1. **Tegye közzé a jelentést Power bi Premium** – mivel a Növekményes frissítés csak prémium szintű funkció, a közzétételi párbeszédpanel csak a munkaterületek kiválasztását teszi lehetővé a prémium szintű kapacitásban. Az első frissítés tovább tarthat az előzményadatok importálása miatt. A későbbi adatfrissítések sokkal gyorsabban működnek, mivel a növekményes frissítést használják.
 
@@ -96,23 +96,23 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services összekötése az Azure Cosmos-fiókkal
 
-1. **Hozzon létre egy új Azure Analysis Services-fürtöt** - , és[hozzon létre egy Azure Analysis Services-példányt](../analysis-services/analysis-services-create-server.md) ugyanabban a régióban, mint az Azure Cosmos-fiókot és a Databricks-fürtöt.
+1. **Új Azure Analysis Services-fürt létrehozása**  -  [Hozzon létre egy Azure Analysis Services-példányt](../analysis-services/analysis-services-create-server.md) ugyanabban a régióban, mint az Azure Cosmos-fiókot és a Databricks-fürtöt.
 
-1. **Hozzon létre egy új Analysis Services táblázatos projektet a Visual Studióban** -  ,[telepítse a SQL Server Data toolst (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) , és hozzon létre egy Analysis Services táblázatos projektet a Visual Studióban.
+1. **Új Analysis Services táblázatos projekt létrehozása a Visual Studióban**  -   [Telepítse a SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) , és hozzon létre egy Analysis Services táblázatos projektet a Visual Studióban.
 
-   ![Azure Analysis Services projekt létrehozása](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Analysis Services projekt létrehozása":::
 
    Válassza ki az **integrált munkaterület** -példányt, és a kompatibilitási szint beállítása a **következőre SQL Server 2017/Azure Analysis Services (1400)**
 
-   ![Azure Analysis Services táblázatos modell tervezője](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Analysis Services táblázatos modell tervezője":::
 
-1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon**> **Data Sources** > az adatforrások**új** adatforrásához, és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
+1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon az**adatforrások új adatforrásához, >  **Data Sources**  >  **New Data Source** és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
 
-   ![Cosmos DB adatforrás hozzáadása](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB adatforrás hozzáadása":::
 
    A Azure Cosmos DBhoz való kapcsolódáshoz adja meg a **fiók URI-ját**, az **adatbázis nevét**és a **tároló nevét**. Most már láthatja az Azure Cosmos-tárolóból származó adatok importálását a Power BIba.
 
-   ![Előnézet Azure Cosmos DB](./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Előnézet Azure Cosmos DB":::
 
 1. Hozza **létre a Analysis Services modellt** – nyissa meg a lekérdezés-szerkesztőt, hajtsa végre a szükséges műveleteket a betöltött adatkészlet optimalizálása érdekében:
 
@@ -142,7 +142,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 1. **Azure Analysis Partitions** – hozzon létre partíciókat a Azure Analysis Servicesban, hogy az adatkészletet logikai partíciók számára Ossza szét, amelyek egymástól függetlenül és különböző gyakorisággal frissíthetők. Ebben a példában két partíciót hoz létre, amelyek az adatkészletet a legújabb havi adatra és minden másra osztják.
 
-   ![Analysis Services-partíciók létrehozása](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Analysis Services-partíciók létrehozása":::
 
    Hozza létre a következő két partíciót a Azure Analysis Servicesban:
 
@@ -151,20 +151,19 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 1. **Telepítse a modellt az Azure Analysis Serverba** – kattintson a jobb gombbal a Azure Analysis Services projektre, és válassza a **telepítés**lehetőséget. Adja hozzá a kiszolgáló nevét a **központi telepítési kiszolgáló tulajdonságai** ablaktáblán.
 
-   ![Azure Analysis Services modell üzembe helyezése](./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Analysis Services modell üzembe helyezése":::
 
-1. A **partíciók frissítésének és egyesítésének konfigurálása** – Azure Analysis Services lehetővé teszi a partíciók független feldolgozását. Mivel azt szeretnénk, hogy a **legújabb havi** partíció folyamatosan frissüljön a legfrissebb adataival, állítsa a frissítési időközt 5 percre. A korábbi partíciókban lévő Adatfrissítés nem szükséges. Emellett meg kell írnia egy kódot, hogy összevonja a legújabb havi partíciót a korábbi partícióra, és hozzon létre egy új, legújabb havi partíciót.
-
+1. A **partíciók frissítésének és egyesítésének konfigurálása** – Azure Analysis Services lehetővé teszi a partíciók független feldolgozását. Mivel azt szeretnénk, hogy a **legújabb havi** partíció folyamatosan frissüljön a legfrissebb adataival, állítsa a frissítési időközt 5 percre. Az adatai a [REST API](../analysis-services/analysis-services-async-refresh.md), az [Azure Automation](../analysis-services/analysis-services-refresh-azure-automation.md)vagy egy [logikai alkalmazás](../analysis-services/analysis-services-refresh-logic-app.md)használatával frissíthetők. A korábbi partíciókban lévő Adatfrissítés nem szükséges. Emellett meg kell írnia egy kódot, hogy összevonja a legújabb havi partíciót a korábbi partícióra, és hozzon létre egy új, legújabb havi partíciót.
 
 ## <a name="connect-power-bi-to-analysis-services"></a>Power BI összekötése a Analysis Services
 
 1. **Kapcsolódjon az Azure Analysis Server a Azure Analysis Services adatbázis-összekötő használatával** – válassza az **élő módot** , és kapcsolódjon a Azure Analysis Services példányhoz az alábbi képernyőképen látható módon:
 
-   ![Adatok lekérése Azure Analysis Servicesról](./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Adatok lekérése Azure Analysis Servicesról":::
 
 1. **Töltse be az adataikat, és készítsen jelentéseket** – a korábban betöltött adataival, hozzon létre diagramokat a hőmérséklet és a csapadék jelentéséhez. Mivel élő kapcsolatokat hoz létre, a lekérdezéseket az előző lépésben üzembe helyezett Azure Analysis Services modellben lévő adattípuson kell végrehajtani. A hőmérséklet-diagramok az új adatAzure Cosmos DBba való betöltésük után öt percen belül frissülnek.
 
-   ![Az adatterhelés és a jelentések készítése](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Az adatterhelés és a jelentések készítése":::
 
 ## <a name="next-steps"></a>További lépések
 

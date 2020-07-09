@@ -8,28 +8,28 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 12140bd6fac888a4f5dc47023ec1fa8aad0a9969
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 5fcde46738417a03cac8e5e99bea840ce2fd8bc6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392097"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó könyvtár: letöltési információ 
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -38,7 +38,7 @@ ms.locfileid: "84171667"
 |**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Tömeges végrehajtó könyvtár a GitHubban**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API-dokumentáció**|[.NET API-referenciák dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Bevezetés**|[Ismerkedés a tömeges végrehajtó függvénytár .NET SDK-val](bulk-executor-dot-net.md)|
+|**Első lépések**|[Ismerkedés a tömeges végrehajtó függvénytár .NET SDK-val](bulk-executor-dot-net.md)|
 | **Jelenleg támogatott keretrendszer**| Microsoft .NET Framework 4.5.2, 4.6.1 és .NET Standard 2,0 |
 
 > [!NOTE]
@@ -158,7 +158,7 @@ ms.locfileid: "84171667"
 
 * A BulkImport-és BulkUpdate-műveletek támogatása a Azure Cosmos DB SQL API-fiókokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tömeges végrehajtó Java-függvénytárat a következő cikkben tekintheti meg:
 

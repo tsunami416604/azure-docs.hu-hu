@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778821"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743915"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
@@ -160,4 +160,17 @@ Igen, partnerazonosítóját csatolhatja az Azure Stackhez.
 **Hogyan csatolhatom a partnerazonosítómat, ha a cégem [Azure Lighthouse-t](https://docs.microsoft.com/azure/lighthouse/overview) használ az ügyfelek erőforrásainak eléréséhez?**
 
 Ha [felügyelt szolgáltatási ajánlat az Azure Marketplace-en történő közzétételével](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers) kíván ügyfeleket felvenni az Azure által delegált erőforrás-kezelésbe, MPN-azonosítója automatikusan társítva lesz. Ha [Azure Resource Manager-sablonok üzembe helyezésével kíván ügyfeleket felvenni](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), legalább egy olyan felhasználói fiókhoz kell társítania Microsoft Partner Network- (MPN-) azonosítóját, amely hozzáféréssel rendelkezik minden egyes felvett előfizetéshez. Ne felejtse, hogy ezt a szolgáltató bérlőjében kell megtennie. Az egyszerűség kedvéért azt javasoljuk, hogy hozzon létre egy olyan szolgáltatásnév-fiókot a bérlőjében, amely a fő MPN-azonosítójához van társítva, és adjon neki olvasói hozzáférést minden felvett ügyfélhez. Ebben a példában az RBAC olvasói szerepkört használjuk, és ez az egyik olyan szerepkör, amely nem jogosult partneri jóváírásra. További információt a szerepkörökről a [partneri jóváírásra jogosult szerepköröket és engedélyeket](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2) ismertető szakaszban talál.
+
+
+**Hogyan ismertethetem a partnerrendszergazdai hivatkozást (PAL-t) az ügyfeleimmel?**
+
+A partnerrendszergazdai hivatkozás (PAL) lehetővé teszi, hogy a Microsoft azonosítsa és felismerje azokat a partnereket, amelyek segítenek elérni az ügyfelek üzleti céljait és megvalósítani a felhő adta értékeket. Az ügyfeleknek először partneri hozzáférést kell biztosítaniuk az Azure-erőforrásukhoz. A hozzáférés megadása után a rendszer egy Microsoft Partner Network-azonosítót (MPN-azonosítót) társít a partnerhez. Ez a társítás segít a Microsoftnak megismerni az informatikai szolgáltatók ökoszisztémáját, valamint segítséget nyújt a közös ügyfeleink legjobb támogatásához szükséges eszközök és programok finomhangolásában.
+
+**Milyen adatokat gyűjt a PAL?**
+
+A PAL meglévő hitelesítő adatokkal történő társítása nem küld új ügyféladatokat a Microsoftnak. Egyszerűen a telemetriát biztosítja a Microsoft számára, amelyben a partner aktívan jelen van az ügyfél Azure-környezetében. A Microsoft az ügyfél által a partner számára biztosított fiókengedélyek (RBAC-szerepkör) és hatókör (felügyeleti csoport, előfizetés, erőforráscsoport, erőforrás) alapján biztosíthat a partnerszervezet számára befolyást és az Azure által felhasznált bevételt az ügyfélkörnyezetből. 
+
+**Ez hatással van az ügyfél Azure-környezetének biztonságára?**
+
+A PAL társítása csak a partner MPN-azonosítóját adja hozzá a már konfigurált hitelesítő adatokhoz, és nem módosítja az engedélyeket (RBAC-szerepkört), valamint nem biztosít az Azure-szolgáltatással kapcsolatos további információkat a partner vagy a Microsoft számára. 
 

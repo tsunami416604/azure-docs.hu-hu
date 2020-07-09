@@ -6,16 +6,15 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416149"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213380"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Tranzakciók használata a szinapszis SQL-készletben
 
@@ -93,7 +92,7 @@ A naplóba írt adatmennyiség optimalizálása és minimálisra csökkentése �
 Az SQL-készlet a XACT_STATE () függvényt használja a sikertelen tranzakciók jelentésére a-2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció meghiúsult, és csak visszaállításra van megjelölve.
 
 > [!NOTE]
-> A (2) XACT_STATE függvény használata a sikertelen tranzakciók jelölésére a SQL Server eltérő viselkedését jelöli. A SQL Server a-1 érték használatával nem véglegesíthető tranzakciót jelöl. A SQL Server egy tranzakción belül bizonyos hibákat el lehet viselni anélkül, hogy nem véglegesíthető jelöléssel kellene megjelölni. Például hibát okozhat `SELECT 1/0` , de nem kényszerítheti a tranzakciót nem véglegesíthető állapotba.
+> A (2) XACT_STATE függvény használata a sikertelen tranzakciók jelölésére a SQL Server eltérő viselkedését jelöli. A SQL Server a-1 érték használatával nem véglegesíthető tranzakciót jelöl. A SQL Server egy tranzakción belül bizonyos hibákat el lehet viselni anélkül, hogy nem véglegesíthető jelöléssel kellene megjelölni. Például `SELECT 1/0` hibát okozhat, de nem kényszerítheti a tranzakciót nem véglegesíthető állapotba.
 
 A SQL Server a nem véglegesíthető tranzakcióban is engedélyezi a beolvasást. Az SQL-készlet azonban nem teszi lehetővé. Ha egy SQL Pool-tranzakción belül hiba történik, a rendszer automatikusan megadja a-2 állapotot, és nem fog tudni további kiválasztási utasításokat készíteni, amíg az utasítás vissza nem áll.
 

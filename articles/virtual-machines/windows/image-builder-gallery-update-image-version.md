@@ -7,17 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.openlocfilehash: ee3e2a224789c899dcfabdbee56b949ea86f0a08
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82872270"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Előzetes verzió: hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból az Azure rendszerkép-készítő használatával
 
 Ebből a cikkből megtudhatja, hogyan készíthet meglévő rendszerképeket egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, hogyan frissítheti, és hogyan teheti közzé új rendszerképként a gyűjteményben.
 
-A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIGfromWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
+A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIGfromWinSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
@@ -79,7 +78,7 @@ username="user name for the VM"
 vmpassword="password for the VM"
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel érheti `az account show | grep id`el:.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel érheti el: `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -107,7 +106,7 @@ Ha már rendelkezik saját közös rendszerkép-katalógussal, és nem követte 
 
 
 ## <a name="modify-helloimage-example"></a>HelloImage módosítása – példa
-Tekintse át a használni kívánt példát a. JSON fájl megnyitásához: a [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) fájlt a [rendszerkép-készítő sablon hivatkozásával](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)együtt. 
+Tekintse át a használni kívánt példát a. JSON fájl megnyitásához: [helloImageTemplateforSIGfromSIG.jsa](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) [rendszerkép-készítő sablon hivatkozásával](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)együtt. 
 
 
 Töltse le a. JSON-példát, és konfigurálja a változókat. 

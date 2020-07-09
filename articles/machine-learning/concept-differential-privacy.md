@@ -9,18 +9,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 09ac31f31f42f5aed9e7dd464e1fce1436cfe581
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982662"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Az adatvédelem megőrzése a differenciált adatvédelem és a WhiteNoise-csomag használatával
 
 Ismerje meg, hogy mi a különbségi adatvédelem, és hogyan segíti a WhiteNoise-csomag a differentially-magánhálózatok megvalósításában.
 
 Mivel a szervezet által gyűjtött és az elemzésekhez felhasznált adatok mennyisége növekszik, az adatvédelem és a biztonság terén is felmerülnek. Elemzések szükségesek az adatkezeléshez. Általában a modellek betanításához használt több adattal, annál pontosabban vannak. Ha a rendszer személyes adatokat használ ezekhez az elemzésekhez, különösen fontos, hogy az adatok a használat során is magánjellegűek maradjanak.
+
+> [!NOTE]
+> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
 
 ## <a name="how-differential-privacy-works"></a>A különbözeti adatvédelem működése
 
@@ -60,7 +62,7 @@ A differentially privát rendszereinek megvalósítása nehéz feladat. A WhiteN
 
 Az alapszintű függvénytár a következő adatvédelmi mechanizmusokat tartalmazza a differentially privát rendszerének megvalósításához:
 
-|Összetevő  |Leírás  |
+|Összetevő  |Description  |
 |---------|---------|
 |Elemzés     | Tetszőleges számítások gráf-leírása. |
 |Validator     | Egy olyan, a rozsda-függvénytár, amely eszközöket tartalmaz az elemzéshez szükséges feltételek ellenőrzéséhez és lefoglalásához a differentially.          |
@@ -71,7 +73,7 @@ Az alapszintű függvénytár a következő adatvédelmi mechanizmusokat tartalm
 
 A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosítja a táblázatos és a kapcsolati adatokat kezelő szolgáltatásokhoz:
 
-|Összetevő  |Leírás  |
+|Összetevő  |Description  |
 |---------|---------|
 |Adathozzáférés     | Az SQL-lekérdezések elfogására és feldolgozására szolgáló függvénytár, amely jelentéseket készít. Ez a kódtár a Pythonban van megvalósítva, és a következő ODBC-és DBAPI-adatforrásokat támogatja:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandák</li></ul>|
 |Szolgáltatás     | A végrehajtási szolgáltatás, amely REST-végpontot biztosít a kérelmek és a megosztott adatforrások közötti lekérdezések kiszolgálásához. A szolgáltatás úgy lett kialakítva, hogy lehetővé tegye a differenciált adatvédelmi modulok összeállítását, amelyek különböző Delta és epszilon értékeket, más néven heterogén kérelmeket tartalmaznak. Ez a hivatkozási implementáció a korrelált adatok lekérdezéseit érintő további hatásokra utal. |
@@ -79,4 +81,6 @@ A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosít
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné megtudni, hogyan használhatja a WhiteNoise összetevőit, tekintse meg a [WhiteNoise Core csomag](https://github.com/opendifferentialprivacy/whitenoise-core)GitHub-tárházait, a [WhiteNoise rendszercsomagot](https://github.com/opendifferentialprivacy/whitenoise-system) és a [WhiteNoise-mintákat](https://github.com/opendifferentialprivacy/whitenoise-samples).
+Az adatvédelem [megőrzése](how-to-differential-privacy.md) Azure Machine Learningban.
+
+Ha többet szeretne megtudni a WhiteNoise összetevőiről, tekintse meg a [WhiteNoise Core csomag](https://github.com/opendifferentialprivacy/whitenoise-core)GitHub-tárházait, a [WhiteNoise-csomagokat](https://github.com/opendifferentialprivacy/whitenoise-system) és a [WhiteNoise-mintákat](https://github.com/opendifferentialprivacy/whitenoise-samples).

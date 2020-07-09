@@ -3,16 +3,17 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684289"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971096"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Azure Policy vendég konfigurációjának ismertetése
+# <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
-Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) után Azure Policy naplózhatja a beállításokat a gépen belül. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
+A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, mind az Azure-ban, mind az [arc-csatlakoztatott gépeken](../../../azure-arc/servers/overview.md)futó gépek esetében.
+Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
 - Az operációs rendszer konfigurációja
 - Alkalmazás konfigurációja vagy jelenléte
@@ -21,13 +22,17 @@ Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-res
 Jelenleg a legtöbb Azure Policy vendég konfigurációs házirend csak a gépen belüli beállításokat naplózza.
 Nem alkalmaznak konfigurációkat. A kivétel egy, az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített szabályzat.
 
+## <a name="enable-guest-configuration"></a>Vendég konfiguráció engedélyezése
+
+A környezetben lévő gépek állapotának naplózásához, beleértve az Azure-ban és az arc-csatlakoztatott gépeken található gépeket is, tekintse át a következő adatokat.
+
 ## <a name="resource-provider"></a>Erőforrás-szolgáltató
 
 A vendég konfiguráció használatához regisztrálnia kell az erőforrás-szolgáltatót. Az erőforrás-szolgáltató automatikusan regisztrálva van, ha a vendég konfigurációs szabályzatának hozzárendelése a portálon történik. Manuálisan is regisztrálhat a [portálon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShellon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)vagy az [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)-n keresztül.
 
-## <a name="extension-and-client"></a>Kiterjesztés és ügyfél
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure-beli virtuális gépekre vonatkozó követelmények üzembe helyezése
 
-A beállítások számítógépeken belüli naplózásához a [virtuálisgép-bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van. A bővítmény letölti a vonatkozó szabályzat-hozzárendelést és a hozzá tartozó konfigurációs definíciót.
+A beállítások számítógépeken belüli naplózásához a virtuálisgép- [bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van, és a gépnek rendszer által felügyelt identitással kell rendelkeznie. A bővítmény letölti a vonatkozó szabályzat-hozzárendelést és a hozzá tartozó konfigurációs definíciót. Az identitás a gép hitelesítésére szolgál, ahogy az beolvassa és beírja a vendég konfigurációs szolgáltatásba. A bővítmény nem szükséges az arc-csatlakoztatott gépekhez, mert az az arc csatlakoztatott számítógép ügynökének része.
 
 > [!IMPORTANT]
 > Az Azure Virtual Machines szolgáltatásban végzett naplózáshoz a vendég konfigurációs bővítmény szükséges. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő szabályzat-definíciókat: 
@@ -36,18 +41,18 @@ A beállítások számítógépeken belüli naplózásához a [virtuálisgép-b�
 
 ### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
-Ha korlátozni szeretné a bővítménynek a gépen belül futó alkalmazásoktól való korlátozását, a vendég konfigurációja nem lépheti túl a CPU 5%-át. Ez a korlátozás a beépített és az egyéni definíciók esetében is létezik.
+Ha korlátozni szeretné a bővítménynek a gépen belül futó alkalmazásoktól való korlátozását, a vendég konfigurációja nem lépheti túl a CPU 5%-át. Ez a korlátozás a beépített és az egyéni definíciók esetében is létezik. Ugyanez érvényes a vendég konfigurációs szolgáltatáshoz az arc-csatlakoztatott gépi ügynökben.
 
 ### <a name="validation-tools"></a>Ellenőrzési eszközök
 
 A gépen belül a vendég konfigurációs ügyfél helyi eszközöket használ a naplózás futtatásához.
 
-Az alábbi táblázat felsorolja az egyes támogatott operációs rendszereken használt helyi eszközöket:
+Az alábbi táblázat felsorolja az egyes támogatott operációs rendszereken használt helyi eszközöket. Beépített tartalom esetén a vendég konfigurációja automatikusan betölti ezeket az eszközöket.
 
-|Operációs rendszer|Érvényesítési eszköz|Megjegyzések|
+|Operációs rendszer|Érvényesítési eszköz|Jegyzetek|
 |-|-|-|
-|Windows|[Windows PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef Inspect](https://www.chef.io/inspec/)| Ha a Ruby és a Python nem a gépen található, akkor a vendég konfigurációs bővítmény telepíti őket. |
+|Windows|[PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| A rendszer csak az Azure Policy által használt mappába betöltve. Nem ütközik a Windows PowerShell DSC-vel. A PowerShell Core nincs hozzáadva a rendszer elérési útjához.|
+|Linux|[Chef Inspect](https://www.chef.io/inspec/)| Telepíti a Chef Inspect verzió 2.2.61 az alapértelmezett helyen, és hozzáadja a rendszer elérési útjához. Az inspec-csomag függőségei, például a Ruby és a Python is telepítve vannak. |
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
@@ -65,14 +70,10 @@ Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek
 |Microsoft|Windows Server|2012 és újabb verziók|
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7,3 és újabb verziók|
-|Red Hat|Red Hat Enterprise Linux|7,4 és újabb verziók|
+|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8, 9,0 és újabb verziók|
 |SUSE|SLES|12 SP3 és újabb verziók|
 
 Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirendek támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
-
-### <a name="unsupported-client-types"></a>Nem támogatott ügyfelek típusai
-
-A Windows Server Nano Server semmilyen verzióban nem támogatott.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>A vendég konfigurációs bővítmény hálózati követelményei
 
@@ -87,7 +88,7 @@ A bővítményt a virtuális gépekhez hozzáadó **DeployIfNotExists** szabály
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 
-Minden vendég konfigurációhoz tartozó naplózási futtatáshoz két házirend-definíció, egy **DeployIfNotExists** -definíció és egy **AuditIfNotExists** -definíció szükséges.
+Minden vendég konfigurációhoz tartozó naplózási futtatáshoz két házirend-definíció, egy **DeployIfNotExists** -definíció és egy **AuditIfNotExists** -definíció szükséges. A **DeployIfNotExists** házirend-definíciói az egyes gépeken végzett naplózási függőségeket kezelik.
 
 A **DeployIfNotExists** házirend-definíciója ellenőrzi és kijavította a következő elemeket:
 
@@ -116,7 +117,7 @@ A szabályzatot a követelményekkel igazíthatja, vagy a szabályzatot harmadik
 
 Egyes paraméterek egy egész érték tartományát támogatják. A jelszó maximális kora beállítás például naplózhatja a hatályos Csoportházirend beállítást. Az "1, 70" tartomány megerősíti, hogy a felhasználóknak legalább 70 naponta meg kell változtatniuk a jelszavukat, de nem kevesebb mint egy napot.
 
-Ha Azure Resource Manager központi telepítési sablonnal rendeli hozzá a szabályzatot, a kivételek kezeléséhez használjon paramétereket tartalmazó fájlt. A fájlokat egy verziókövetés rendszerbe (például a git-ba) tekintheti meg. A fájl módosításaival kapcsolatos megjegyzések igazolják, hogy egy hozzárendelés miért kivétel a várt értéktől.
+Ha a szabályzatot egy Azure Resource Manager sablon (ARM-sablon) használatával rendeli hozzá, a kivételek kezeléséhez használja a parameters (paraméterek) fájlt. A fájlokat egy verziókövetés rendszerbe (például a git-ba) tekintheti meg. A fájl módosításaival kapcsolatos megjegyzések igazolják, hogy egy hozzárendelés miért kivétel a várt értéktől.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása a vendég konfiguráció használatával
 

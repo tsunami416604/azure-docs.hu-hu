@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807587"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
@@ -52,7 +52,7 @@ Ha a szervezet kimenő proxyn keresztül éri el az internetet, implementálja a
 
 ## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. konfigurálja az SCP-t bármely olyan erdőben, amelyet nem Azure AD Connect konfiguráltak 
 
-A szolgáltatáskapcsolódási pont (SCP) tartalmazza az Azure AD-bérlői adatait, amelyeket az eszközök az automatikus regisztrációhoz fognak használni.  Futtassa a ConfigureSCP. ps1 PowerShell-parancsfájlt, amelyet a Azure AD Connectról töltött le.
+A szolgáltatáskapcsolódási pont (SCP) tartalmazza az Azure AD-bérlői adatait, amelyeket az eszközök az automatikus regisztrációhoz fognak használni.  Futtassa a Azure AD Connectból letöltött PowerShell-parancsfájlt ConfigureSCP.ps1.
 
 ## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. konfigurálja a Azure AD Connect által nem konfigurált összevonási szolgáltatásokat
 
@@ -63,7 +63,7 @@ Ha a szervezete összevonási szolgáltatást használ az Azure AD-be való beje
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. az Azure AD zökkenőmentes egyszeri bejelentkezésének engedélyezése a Windows rendszerű eszközökön
 
-Ha a szervezete jelszó-kivonatoló szinkronizálást vagy átmenő hitelesítést használ az Azure AD-be való bejelentkezéshez, engedélyezze az Azure AD zökkenőmentes SSO-t a bejelentkezési módszerrel a Windows Down-szintű eszközök https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ssohitelesítéséhez:. 
+Ha a szervezete jelszó-kivonatoló szinkronizálást vagy átmenő hitelesítést használ az Azure AD-be való bejelentkezéshez, engedélyezze az Azure AD zökkenőmentes SSO-t a bejelentkezési módszerrel a Windows Down-szintű eszközök hitelesítéséhez: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Állítsa be az Azure AD-szabályzatot a Windows rendszerű eszközökön.
 
@@ -82,19 +82,14 @@ Ha [zökkenőmentes SSO](how-to-connect-sso.md)-t használ, a zónában engedél
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Telepítse a Microsoft Workplace Joint a Windows rendszerű eszközökön.
 
-Ez a telepítő egy ütemezett feladatot hoz létre a felhasználó környezetében futó eszköz rendszeren. A feladat akkor aktiválódik, amikor a felhasználó bejelentkezik a Windowsba. A feladat csendesen csatlakoztatja az eszközt az Azure AD-vel a felhasználói hitelesítő adatokkal az integrált Windows-hitelesítés használatával végzett hitelesítés után. A letöltőközpontban a következő címen https://www.microsoft.com/download/details.aspx?id=53554érhető el:. 
+Ez a telepítő egy ütemezett feladatot hoz létre a felhasználó környezetében futó eszköz rendszeren. A feladat akkor aktiválódik, amikor a felhasználó bejelentkezik a Windowsba. A feladat csendesen csatlakoztatja az eszközt az Azure AD-vel a felhasználói hitelesítő adatokkal az integrált Windows-hitelesítés használatával végzett hitelesítés után. A letöltőközpontban a következő címen érhető el: https://www.microsoft.com/download/details.aspx?id=53554 . 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. konfigurálja a csoportházirendet az eszközök regisztrálásának engedélyezéséhez
 
-* Hozzon létre egy csoportházirend-objektumot a Active Directoryban – ha még nincs létrehozva.
-* Nevezze el (a hibrid Azure AD-csatlakozás).
-* Szerkesztés & ugrás: Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > eszköz regisztrálása
-* Engedélyezés: tartományhoz csatlakoztatott számítógépek regisztrálása eszközként
-* Alkalmazza, és kattintson az OK gombra.
-* Csatolja a GPO-t az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy a tartományhoz az összes eszköz esetében).
+További információ a hibrid Azure AD JOIN egyéni eszközökhöz való engedélyezéséről: [hibrid Azure ad-csatlakozás vezérelt](../devices/hybrid-azuread-join-control.md)ellenőrzése.
 
->[!NOTE]
->A 2012R2 a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakozás ügyfélszámítógépeken**
+> [!NOTE]
+> Az 2012 R2 házirend-beállításai a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakoztatási ügyfélszámítógépeken**.
 
 ## <a name="next-steps"></a>További lépések
 [Az eszköz visszaírási konfigurálása](how-to-connect-device-writeback.md)

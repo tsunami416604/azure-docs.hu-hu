@@ -13,10 +13,9 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683790"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>A TLS 1,2-et nem támogató alkalmazások hibaelhárítása
@@ -51,7 +50,7 @@ A kiszolgáló a titkosítási csomagok korlátozott készletét is tartalmazza:
 
 ## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>1. lépés: a PowerShell-szkript létrehozása a TLS 1,0 és a TLS 1,1 engedélyezéséhez 
 
-A következő kód példaként használható olyan parancsfájl létrehozásához, amely lehetővé teszi a régebbi protokollok és titkosítási csomagok használatát. A jelen dokumentációban a szkript neve: **TLSsettings. ps1**. A parancsfájlt a helyi asztalon tárolja a későbbi lépésekben való egyszerű hozzáférés érdekében. 
+A következő kód példaként használható olyan parancsfájl létrehozásához, amely lehetővé teszi a régebbi protokollok és titkosítási csomagok használatát. A jelen dokumentációban a szkript neve a következő lesz: **TLSsettings.ps1**. A parancsfájlt a helyi asztalon tárolja a későbbi lépésekben való egyszerű hozzáférés érdekében. 
 
 
 ```Powershell
@@ -344,7 +343,7 @@ Adja hozzá a következő kódrészletet a meglévő szolgáltatási definíció
 1) A Visual Studióban kattintson a jobb gombbal a webszerepkörre vagy a WorkerRole
 2) **Hozzáadás** kiválasztása
 3) **Meglévő elem** kijelölése
-4) A Fájlkezelőben navigáljon az asztalra, ahol a **TLSsettings. ps1** és a **RunTLSSettings. cmd** fájlt tárolta 
+4) A Fájlkezelőben navigáljon az asztalra, ahol a **TLSsettings.ps1** és a **RunTLSSettings. cmd** fájlt tárolta 
 5) Válassza ki a két fájlt a Cloud Services projekthez való hozzáadáshoz
 
 ## <a name="step-5-enable-copy-to-output-directory"></a>5. lépés: a másolás engedélyezése a kimeneti könyvtárba
@@ -354,7 +353,7 @@ Annak biztosítása érdekében, hogy a szkriptek feltöltése a Visual studiób
 1) A webrole vagy a WorkerRole alatt kattintson a jobb gombbal a RunTLSSettings. cmd fájlra.
 2) **Tulajdonságok** kiválasztása
 3) A Tulajdonságok lapon módosítsa a *Másolás a kimeneti könyvtárba* a *mindig* lehetőséget.
-4) A **TLSsettings. ps1** lépéseinek megismétlése
+4) **TLSsettings.ps1** lépéseinek megismétlése
 
 ## <a name="step-6-publish--validate"></a>6. lépés: &-ellenőrzés közzététele
 

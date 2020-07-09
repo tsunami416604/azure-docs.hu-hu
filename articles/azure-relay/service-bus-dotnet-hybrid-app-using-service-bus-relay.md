@@ -1,25 +1,14 @@
 ---
 title: Azure Windows Communication Foundation-(WCF-) továbbító hibrid helyszíni/Felhőbeli alkalmazás (.NET) | Microsoft Docs
 description: Megtudhatja, hogyan teheti elérhetővé a helyszíni WCF szolgáltatást a felhőben lévő webalkalmazásokban a Azure Relay használatával
-services: service-bus-relay
-documentationcenter: .net
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus-relay
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.author: spelluru
-ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314412"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Helyszíni WCF-szolgáltatás közzététele a Felhőbeli webalkalmazásokban Azure Relay használatával
 
@@ -46,7 +35,7 @@ Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-* [Visual Studio 2015 vagy újabb](https://www.visualstudio.com). Az oktatóanyagban szereplő példák a Visual Studio 2019-et használják.
+* [Visual Studio 2015 vagy újabb verzió](https://www.visualstudio.com). Az oktatóanyagban szereplő példák a Visual Studio 2019-et használják.
 * Azure SDK a .NET-hez. Telepítse az [SDK letöltési oldaláról](https://azure.microsoft.com/downloads/).
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Hogyan segít az Azure Relay a hibrid megoldások terén?
@@ -197,7 +186,7 @@ Hajtsa végre a következő programkód-módosításokat a megoldásban:
     }
     ```
 
-1. A **megoldáskezelő**kattintson duplán az **app. config** fájlra, és nyissa meg a fájlt a Visual Studio szerkesztőjében. A elem alján, de még a (z) területen `<system.ServiceModel>` is `<system.ServiceModel>` adja hozzá a következő XML-kódot. Ügyeljen arra, hogy a helyére a `yourServiceNamespace` névtér nevét és `yourKey` a korábban a portálról LEkért sas-kulcsot cserélje le:
+1. A **megoldáskezelő**kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban. A elem alján, de még a (z) területen `<system.ServiceModel>` is `<system.ServiceModel>` adja hozzá a következő XML-kódot. Ügyeljen arra, hogy a helyére a `yourServiceNamespace` névtér nevét és `yourKey` a korábban a portálról LEkért sas-kulcsot cserélje le:
 
     ```xml
     <system.serviceModel>
@@ -224,7 +213,7 @@ Hajtsa végre a következő programkód-módosításokat a megoldásban:
     > [!NOTE]
     > A hiba oka `transportClientEndpointBehavior` csupán egy figyelmeztetés, és ez a példa nem blokkolja a problémát.
 
-1. Még mindig az *app. config fájlban*, az `<appSettings>` elemben cserélje le a kapcsolatok karakterlánc értékét a korábban a portálról beszerzett kapcsolatok karakterláncra.
+1. Továbbra is *App.config*, az `<appSettings>` elemben cserélje le a kapcsolatok karakterlánc értékét a korábban a portálról beszerzett kapcsolatok karakterláncára.
 
     ```xml
     <appSettings>
@@ -460,7 +449,7 @@ A következő lépés az Azure-webalkalmazás **ProductsPortal** -felületének 
 1. Válassza **File**  >  **a fájl mentés összes mentése**lehetőséget.
 1. Válassza a **Build újjáépített**  >  **megoldás**lehetőséget.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Az alkalmazás létrehozásához és futtatásához nyomja le az F5 billentyűt. A helyszíni kiszolgálónak, amely a **ProductsServer** -konzol alkalmazás, először el kell indulnia, majd a **ProductsPortal** alkalmazásnak egy böngészőablakban kell kezdődnie, ahogy az itt látható:
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196979"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Alkalmazások kezelése több környezethez
@@ -33,7 +32,7 @@ Az Ön által megadott konfiguráció két kategóriába osztható:
 
 > [!NOTE]
 > Nem minden attribútum szerepel az alkalmazás-és szolgáltatás jegyzékfájl-fájljában.
-> Ezekben az esetekben a karakterláncokat a telepítési munkafolyamat részeként kell kicserélni. Az Azure DevOps olyan bővítményeket használhat, mint például a tokenek https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens cseréje: vagy a Jenkins-ben egy parancsfájl-feladat futtatásával lecserélheti az értékeket.
+> Ezekben az esetekben a karakterláncokat a telepítési munkafolyamat részeként kell kicserélni. Az Azure DevOps olyan bővítményeket használhat, mint például a tokenek cseréje: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens vagy a Jenkins-ben egy parancsfájl-feladat futtatásával lecserélheti az értékeket.
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>Paraméterek megadása az alkalmazás létrehozása során
@@ -41,8 +40,8 @@ Az Ön által megadott konfiguráció két kategóriába osztható:
 Elnevezett alkalmazás-példányok Service Fabricban való létrehozásakor lehetősége van átadni a paramétereket. Ennek módja attól függ, hogyan hozza létre az alkalmazás példányát.
 
   - A PowerShellben a [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag szórótábla-ként veszi át az alkalmazás paramétereit.
-  - A sfctl használatakor [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) a parancs JSON-karakterláncként fogadja a paramétereket. A install.sh parancsfájl a sfctl-t használja.
-  - A Visual Studio az alkalmazás projekt parameters (paraméterek) mappájában található paramétereket tartalmazó fájlok készletét biztosítja. Ezeket a paramétereket a Visual studióból való közzétételkor, az Azure DevOps Services vagy a Azure DevOps Server használatával lehet használni. A Visual Studióban a rendszer a Deploy-FabricApplication. ps1 parancsfájlba továbbítja a fájlok paramétereit.
+  - A sfctl használatakor a [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) parancs JSON-karakterláncként fogadja a paramétereket. A install.sh parancsfájl a sfctl-t használja.
+  - A Visual Studio az alkalmazás projekt parameters (paraméterek) mappájában található paramétereket tartalmazó fájlok készletét biztosítja. Ezeket a paramétereket a Visual studióból való közzétételkor, az Azure DevOps Services vagy a Azure DevOps Server használatával lehet használni. A Visual Studióban a paramétereket a rendszer a Deploy-FabricApplication.ps1 parancsfájlba továbbítja.
 
 ## <a name="next-steps"></a>További lépések
 A következő cikkek bemutatják, hogyan használhatja az itt ismertetett fogalmakat:

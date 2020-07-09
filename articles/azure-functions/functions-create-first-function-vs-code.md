@@ -3,16 +3,16 @@ title: Az első függvény létrehozása az Azure-ban a Visual Studio Code haszn
 description: Hozzon létre és tegyen közzé az Azure-on egy egyszerű, HTTP-eseményindítót használó függvényt az Azure Functions-bővítmény használatával a Visual Studio Code-ban.
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter, seo
+ms.custom: mvc, devcenter, seo, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628180"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833740"
 ---
-# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: függvény létrehozása az Azure-ban a Visual Studio Code használatával
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: Függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
 ::: zone pivot="programming-language-csharp"  
 Ebben a cikkben a Visual Studio Code használatával hozzon létre egy C# szintű függvénytár-alapú függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
@@ -50,11 +50,11 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node. js](https://nodejs.org/), a Windows for NPM esetében kötelező. Csak [az aktív LTS-és karbantartási LTS-verziók](https://nodejs.org/about/releases/). A `node --version` parancs használatával vizsgálja meg a verziót.
++ [Node.js](https://nodejs.org/), amelyet a Windows a NPM igényel. Csak [az aktív LTS-és karbantartási LTS-verziók](https://nodejs.org/about/releases/). A `node --version` parancs használatával vizsgálja meg a verziót.
     A macOS és Linux rendszereken a helyi fejlesztéshez nem szükséges.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node. js](https://nodejs.org/), aktív LTS és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót.
++ [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/) Azure functions (x64) támogatja.
@@ -101,48 +101,48 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 1. Adja meg a következő információkat a kérdésekben:
 
     ::: zone pivot="programming-language-csharp"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `C#`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `C#` .
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `JavaScript`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `JavaScript` .
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `TypeScript`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `TypeScript` .
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `PowerShell`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `PowerShell` .
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `Python`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Python` .
 
     + **Válasszon ki egy Python-aliast a virtuális környezet létrehozásához**: válassza ki a Python-tolmács helyét. Ha a hely nem jelenik meg, írja be a Python bináris fájl teljes elérési útját.  
     ::: zone-end
 
     ::: zone pivot="programming-language-java"  
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `Java`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Java` .
 
-    + **Adja meg a csoport azonosítóját**: válassza a lehetőséget `com.function`.
+    + **Adja meg a csoport azonosítóját**: válassza a lehetőséget `com.function` .
 
-    + **Adja meg az összetevő azonosítóját**: válassza a lehetőséget `myFunction`.
+    + **Adja meg az összetevő azonosítóját**: válassza a lehetőséget `myFunction` .
 
-    + **Adja meg a verziószámot**: válassza a lehetőséget `1.0-SNAPSHOT`.
+    + **Adja meg a verziószámot**: válassza a lehetőséget `1.0-SNAPSHOT` .
 
-    + **Adja meg a csomag nevét**: `com.function`válassza a lehetőséget.
+    + **Adja meg a csomag nevét**: válassza a lehetőséget `com.function` .
 
-    + **Adja meg az alkalmazás nevét**: `myFunction-12345`válassza a lehetőséget.
+    + **Adja meg az alkalmazás nevét**: válassza a lehetőséget `myFunction-12345` .
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Válasszon sablont a projekt első függvényéhez**: válassza a lehetőséget `HTTP trigger`.
+    + **Válasszon sablont a projekt első függvényéhez**: válassza a lehetőséget `HTTP trigger` .
     
-    + **Adja meg a függvény nevét**: `HttpExample`Type.
+    + **Adja meg a függvény nevét**: Type `HttpExample` .
     ::: zone-end  
     ::: zone pivot="programming-language-csharp"
-    + **Adja meg a névteret**: Type `My.Functions`. 
+    + **Adja meg a névteret**: Type `My.Functions` . 
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Engedélyezési szint**: válassza `Anonymous`a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
+    + **Engedélyezési szint**: válassza `Anonymous` a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
     ::: zone-end  
-    + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a `Add to workspace`lehetőséget.
+    + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a lehetőséget `Add to workspace` .
 
 1. Ezen információk használatával a Visual Studio Code egy Azure Functions projektet hoz létre egy HTTP-triggerrel. A helyi projektfájlok a Explorerben tekinthetők meg. További információ a létrehozott fájlokról: [generált projektfájlok](functions-develop-vs-code.md#generated-project-files). 
 
@@ -172,13 +172,15 @@ Miután meggyőződött róla, hogy a függvény megfelelően fut a helyi szám�
 
 1. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába, adja hozzá a `name` lekérdezési karakterláncot `?name=Functions` az URL-cím végéhez, majd hajtsa végre a kérelmet. A HTTP-eseményindítót használó függvényt meghívó URL-címnek az alábbi formátumban kell lennie:
 
-        http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
+    ```http
+    http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
+    ```
         
     Az alábbi példa a böngészőben a függvény által visszaadott távoli GET kérelemre adott választ mutatja be: 
 
     ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha folytatja a következő lépéssel, [vegyen fel egy Azure Storage-várólista-kötést a függvényhez](functions-add-output-binding-storage-queue-vs-code.md), az összes erőforrást meg kell őriznie, hogy az Ön által már elvégzett feladatra épít.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610565"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -134,7 +134,7 @@ A következő táblázat a Resource Manager-sablon paramétereit sorolja fel a m
 | vmName | A titkosítási műveletet futtató virtuális gép neve. |
 | keyVaultName | Annak a kulcstárolónak a neve, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le.`az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | A kulcstárolót tartalmazó erőforráscsoport neve|
-|  keyEncryptionKeyURL | A kulcs titkosítási kulcsának URL-címe&lt;, a https://kulcstartó-név&gt;. Vault.Azure.net/Key/&lt;kulcs-neve&gt;formátumban. Ha nem szeretne KEK-t használni, hagyja üresen ezt a mezőt. |
+|  keyEncryptionKeyURL | A kulcs titkosítási kulcsának URL-címe, a https:// &lt; kulcstartó-név &gt; . Vault.Azure.net/Key/ &lt; kulcs-neve formátumban &gt; . Ha nem szeretne KEK-t használni, hagyja üresen ezt a mezőt. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
 | forceUpdateTag | Adjon meg egy egyedi értéket, például egy GUID-azonosítót, amikor a műveletnek kényszerített futtatást kell futtatnia. |
 | resizeOSDisk | Ha az operációsrendszer-partíciót át szeretné méretezni a teljes operációsrendszer-lemez elfoglalásához a rendszerkötet felosztása előtt. |
@@ -217,22 +217,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 
 ## <a name="disable-encryption"></a>Titkosítás letiltása
-A titkosítást a Azure PowerShell, az Azure CLI vagy egy Resource Manager-sablonnal is letilthatja. A windowsos virtuális gépek adatlemezeinek titkosítása nem a várt módon működik, ha az operációs rendszer és az adatlemezek egyaránt titkosítottak. A titkosítás letiltása az összes lemezen.
-
-- **Lemez titkosításának letiltása a Azure PowerShell:** A titkosítás letiltásához használja a [disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsmagot. 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' -VolumeType "all"
-     ```
-
-- **Titkosítás letiltása az Azure CLI-vel:** A titkosítás letiltásához használja az az [VM encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) parancsot. 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
-     ```
-- **A titkosítás letiltása Resource Manager-sablonnal:** 
-
-    1. Kattintson a **telepítés az Azure** -ba lehetőségre a [lemez titkosításának letiltása Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) virtuálisgép-sablon futtatásához.
-    2. Válassza ki az előfizetést, az erőforráscsoportot, a helyet, a virtuális gépet, a kötet típusát, a jogi feltételeket és a szerződést.
-    3.  Kattintson a **vásárlás** gombra a lemez titkosításának letiltásához egy futó WINDOWSOS virtuális gépen. 
+[!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
 
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
@@ -248,9 +233,11 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Windows Server-tárolók, amelyek mindegyik tárolóhoz dinamikus köteteket hoznak létre.
 - Ideiglenes operációsrendszer-lemezek.
 - Megosztott/elosztott fájlrendszerek titkosítása, például (de nem kizárólag a) DFS, a GFS, a DRDB és a CephFS.
-- Titkosított virtuális gépek áthelyezése másik előfizetésre.
+- Titkosított virtuális gépek áthelyezése másik előfizetésbe vagy régióba.
+- Egy titkosított virtuális gép rendszerképének vagy pillanatképének létrehozása, és annak használata további virtuális gépek telepítéséhez.
 - Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
 - Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md))
+- Az M sorozatú virtuális gépek írásgyorsító lemezzel.
 
 ## <a name="next-steps"></a>További lépések
 

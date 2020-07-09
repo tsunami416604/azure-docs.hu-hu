@@ -5,15 +5,14 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e93bae91827b2807ef577d7659924a5d37454fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987120"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -22,7 +21,7 @@ Ez a cikk bemutatja, hogyan lehet virtuális hálózatokat csatlakoztatni virtu�
 A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak, és az Azure CLI-t használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -292,7 +291,7 @@ A további kapcsolatok létrehozásakor fontos ellenőrizni, hogy az új virtuá
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>7. lépés – A TestVNet5 létrehozása és konfigurálása
 
-Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvégezni. Ezt a részt azon másik szervezet rendszergazdájának kell elvégeznie, amely az előfizetés tulajdonosa. Ha váltani szeretne az előfizetések `az account list --all` között a fiókja számára elérhető előfizetések `az account set --subscription <subscriptionID>` listázásához, akkor a használatával váltson a használni kívánt előfizetésre.
+Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvégezni. Ezt a részt azon másik szervezet rendszergazdájának kell elvégeznie, amely az előfizetés tulajdonosa. Ha váltani szeretne az előfizetések között a `az account list --all` fiókja számára elérhető előfizetések listázásához, akkor `az account set --subscription <subscriptionID>` a használatával váltson a használni kívánt előfizetésre.
 
 1. Győződjön meg róla, hogy az 5. előfizetéshez csatlakozik, majd hozzon létre egy erőforráscsoportot.
 
@@ -331,7 +330,7 @@ Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvég
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>8. lépés – A kapcsolatok létrehozása
 
-Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]**, mivel az átjárók eltérő előfizetésekben találhatók. Ha váltani szeretne az előfizetések `az account list --all` között a fiókja számára elérhető előfizetések `az account set --subscription <subscriptionID>` listázásához, akkor a használatával váltson a használni kívánt előfizetésre.
+Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]**, mivel az átjárók eltérő előfizetésekben találhatók. Ha váltani szeretne az előfizetések között a `az account list --all` fiókja számára elérhető előfizetések listázásához, akkor `az account set --subscription <subscriptionID>` a használatával váltson a használni kívánt előfizetésre.
 
 1. **[1. előfizetés]** Jelentkezzen be, és csatlakozzon az 1. előfizetéshez. Az alábbi parancs kimenetéből olvassa le az átjáró nevét és azonosítóját:
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75974410"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078374"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
 
@@ -45,13 +45,13 @@ A tartományhoz csatlakoztatott HDInsight-fürt üzembe helyezéséhez kövesse 
     |Paraméter |Leírás |
     |---|---|
     |Tartománynév|Az Azure AD DShoz társított tartománynév.|
-    |Tartományi Felhasználónév|Az előző szakaszban létrehozott Azure AD DS DC által felügyelt tartományhoz tartozó szolgáltatásfiók, például: `hdiadmin@contoso.onmicrosoft.com`. Ez a tartományi felhasználó lesz a HDInsight-fürt rendszergazdája.|
+    |Tartományi Felhasználónév|Az előző szakaszban létrehozott Azure AD DS DC által felügyelt tartományhoz tartozó szolgáltatásfiók, például: `hdiadmin@contoso.onmicrosoft.com` . Ez a tartományi felhasználó lesz a HDInsight-fürt rendszergazdája.|
     |Tartományi jelszó|A szolgáltatásfiók jelszava.|
-    |Szervezeti egység|A HDInsight-fürthöz használni kívánt szervezeti egység megkülönböztető neve, például: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Ha ez a szervezeti egység nem létezik, a HDInsight-fürt megpróbálja létrehozni a szervezeti egységet a szolgáltatásfiók jogosultságainak használatával.|
-    |LDAPS URL-CÍM|például: `ldaps://contoso.onmicrosoft.com:636`.|
-    |Felhasználói csoport elérése|Azok a biztonsági csoportok, amelyek felhasználóit szinkronizálni szeretné a fürttel, például `HiveUsers`:. Ha több felhasználói csoportot szeretne megadni, pontosvesszővel válassza el őket egymástól. Az ESP-fürt létrehozása előtt a csoport (ok) nak léteznie kell a címtárban.|
+    |Szervezeti egység|A HDInsight-fürthöz használni kívánt szervezeti egység megkülönböztető neve, például: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com` . Ha ez a szervezeti egység nem létezik, a HDInsight-fürt megpróbálja létrehozni a szervezeti egységet a szolgáltatásfiók jogosultságainak használatával.|
+    |LDAPS URL-CÍM|például: `ldaps://contoso.onmicrosoft.com:636` .|
+    |Felhasználói csoport elérése|Azok a biztonsági csoportok, amelyek felhasználóit szinkronizálni szeretné a fürttel, például: `HiveUsers` . Ha több felhasználói csoportot szeretne megadni, pontosvesszővel válassza el őket egymástól. Az ESP-fürt létrehozása előtt a csoport (ok) nak léteznie kell a címtárban.|
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Bevezetés a Apache Hadoop biztonságba a tartományhoz csatlakoztatott HDInsight-fürtökkel](../domain-joined/hdinsight-security-overview.md)
 - [Azure-tartományhoz csatlakoztatott Apache Hadoop-fürtök tervezése a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md)
@@ -81,19 +81,19 @@ A végpontok közötti vállalati biztonság a következő vezérlők használat
     - Transzparens kiszolgálóoldali titkosítás Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal.
     - Az átvitel titkosítása ügyféloldali titkosítással, HTTPS és TLS protokollal.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Azure Virtual Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure hálózati biztonsági csoportok – áttekintés](../../virtual-network/security-overview.md)
 - [Azure Virtual Network-társítás](../../virtual-network/virtual-network-peering-overview.md)
-- [Biztonsági útmutató az Azure Storage-hoz](../../storage/blobs/security-recommendations.md)
+- [Azure Storage – biztonsági útmutató](../../storage/blobs/security-recommendations.md)
 - [Azure Storage Service Encryption a nyugalmi állapotban](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>Figyelési & riasztások használata
 
 További információt a következő cikkben talál:
 
-[Azure Monitor – áttekintés](../../azure-monitor/overview.md)
+[Azure Monitor áttekintése](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>Fürtök frissítése
 

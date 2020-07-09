@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322042"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure-adatmegosztás gyakori problémáinak elhárítása 
 
@@ -62,9 +62,9 @@ Az SQL-alapú megosztáshoz további engedélyek szükségesek. További részle
 
 ## <a name="troubleshooting-sql-based-sharing"></a>SQL-alapú megosztás hibáinak elhárítása
 
-"A felhasználó x nem létezik az SQL Database-ben"
+"A felhasználó x nem létezik a SQL Databaseban"
 
-Ha ezt a hibaüzenetet akkor kapja meg, amikor SQL-alapú forrásból vesz fel egy adatkészletet, annak oka az lehet, hogy nem hozott létre felhasználót az Azure-beli adatmegosztás felügyelt identitásához a SQL Server.  A probléma megoldásához futtassa a következő parancsfájlt:
+Ha ezt a hibaüzenetet akkor kapja meg, amikor SQL-alapú forrásból vesz fel egy adatkészletet, annak oka az lehet, hogy nem hozott létre felhasználót az Azure-beli adatmegosztás felügyelt identitásához SQL Databaseban.  A probléma megoldásához futtassa a következő parancsfájlt:
 
 ```sql
     create user "<share_acct_name>" from external provider; 

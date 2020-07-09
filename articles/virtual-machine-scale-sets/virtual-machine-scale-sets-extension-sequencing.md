@@ -10,10 +10,10 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83121031"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Szekvenciális bővítmény kiépítés a virtuálisgép-méretezési csoportokban
@@ -249,5 +249,5 @@ az vmss extension set \
 ### <a name="not-able-to-remove-extensions"></a>Nem sikerült eltávolítani a bővítményeket?
 Győződjön meg arról, hogy az eltávolítandó bővítmények nem szerepelnek a provisionAfterExtensions területen a többi bővítménynél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

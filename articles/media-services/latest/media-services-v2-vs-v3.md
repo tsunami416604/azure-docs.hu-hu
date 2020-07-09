@@ -16,10 +16,9 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087817"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 és v3
@@ -107,7 +106,7 @@ A következő táblázat azt mutatja be, hogy az adategység tulajdonságai hogy
 
 Az adategységek védelméhez az eszközöket a tárolási oldal titkosításával kell titkosítani. A következő táblázat bemutatja, hogyan működik a tárolási oldal titkosítása Media Servicesban:
 
-|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs.|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
 |[Inaktív adatok Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott|Támogatott|

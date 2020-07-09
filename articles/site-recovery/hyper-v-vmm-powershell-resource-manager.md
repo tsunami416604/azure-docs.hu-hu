@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77048614"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130222"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>A Hyper-V virtuális gépek vész-helyreállításának beállítása másodlagos helyre a PowerShell használatával (Resource Manager)
 
@@ -23,9 +23,9 @@ Ez a cikk bemutatja, hogyan automatizálható a System Center Virtual Machine Ma
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Tekintse át [a forgatókönyv-architektúrát és -összetevőket](hyper-v-vmm-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-sec-site.md).
-- Győződjön meg arról, hogy a Virtual Machine Manager-kiszolgálók és a Hyper-V-gazdagépek megfelelnek a [támogatási követelményeknek](site-recovery-support-matrix-to-sec-site.md).
-- Győződjön meg arról, hogy a replikálni kívánt virtuális gépek megfelelnek a [replikált gépek támogatásának](site-recovery-support-matrix-to-sec-site.md).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](./vmware-physical-secondary-support-matrix.md).
+- Győződjön meg arról, hogy a Virtual Machine Manager-kiszolgálók és a Hyper-V-gazdagépek megfelelnek a [támogatási követelményeknek](./vmware-physical-secondary-support-matrix.md).
+- Győződjön meg arról, hogy a replikálni kívánt virtuális gépek megfelelnek a [replikált gépek támogatásának](./vmware-physical-secondary-support-matrix.md).
 
 ## <a name="prepare-for-network-mapping"></a>A hálózatleképezés előkészítése
 
@@ -37,10 +37,10 @@ Ez a cikk bemutatja, hogyan automatizálható a System Center Virtual Machine Ma
 
 A Virtual Machine Manager előkészítése a következőképpen történik:
 
-- Győződjön meg arról, hogy rendelkezik [Virtual Machine Manager logikai hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás és a cél Virtual Machine Manager kiszolgálókon:
+- Győződjön meg arról, hogy rendelkezik [Virtual Machine Manager logikai hálózatokkal](/system-center/vmm/network-logical) a forrás és a cél Virtual Machine Manager kiszolgálókon:
   - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
   - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
-- Győződjön meg arról, hogy rendelkezik virtuálisgép- [hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás-és a cél Virtual Machine Manager-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
+- Győződjön meg arról, hogy rendelkezik virtuálisgép- [hálózatokkal](/system-center/vmm/network-virtual) a forrás-és a cél Virtual Machine Manager-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
 - A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni.
 
 ## <a name="prepare-for-powershell"></a>Felkészülés a PowerShellre
@@ -89,7 +89,7 @@ Győződjön meg arról, hogy Azure PowerShell készen áll:
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   A tároló objektumot a `Get-AzRecoveryServicesVault` parancsmag használatával lehet lekérni, miután létrehozta azt.
+   A tároló objektumot a parancsmag használatával lehet lekérni, miután létrehozta azt `Get-AzRecoveryServicesVault` .
 
 ## <a name="set-the-vault-context"></a>A tár környezetének beállítása
 
@@ -210,7 +210,7 @@ A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelés
 
 ##  <a name="configure-network-mapping"></a>Hálózatleképezés konfigurálása
 
-1. Ezzel a paranccsal lekérheti a kiszolgálókat az aktuális tárolóhoz. A parancs a `$Servers` tömb változóban tárolja a site Recovery kiszolgálókat.
+1. Ezzel a paranccsal lekérheti a kiszolgálókat az aktuális tárolóhoz. A parancs a tömb változóban tárolja a Site Recovery kiszolgálókat `$Servers` .
 
    ```azurepowershell
    $Servers = Get-AzRecoveryServicesAsrFabric
@@ -227,7 +227,7 @@ A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelés
    > [!NOTE]
    > A forrás Virtual Machine Manager kiszolgáló lehet az első vagy második a kiszolgáló tömbben. Győződjön meg arról, hogy Virtual Machine Manager a kiszolgálók neveit, és megfelelően kéri le a hálózatokat.
 
-1. Ez a parancsmag létrehoz egy leképezést az elsődleges hálózat és a helyreállítási hálózat között. Az első elemeként megadja az elsődleges hálózatot `$PrimaryNetworks`. A helyreállítási hálózatot a első elemeként adja meg `$RecoveryNetworks`.
+1. Ez a parancsmag létrehoz egy leképezést az elsődleges hálózat és a helyreállítási hálózat között. Az első elemeként megadja az elsődleges hálózatot `$PrimaryNetworks` . A helyreállítási hálózatot a első elemeként adja meg `$RecoveryNetworks` .
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -259,9 +259,9 @@ Miután a kiszolgálók, a felhők és a hálózatok megfelelően vannak konfigu
 > Ha a CMK-kompatibilis felügyelt lemezeket az Azure-ban szeretné replikálni, hajtsa végre a következő lépéseket az az PowerShell 3.3.0-től kezdődően:
 >
 > 1. Feladatátvétel engedélyezése a felügyelt lemezeken a virtuális gép tulajdonságainak frissítésével
-> 1. A következő `Get-AzRecoveryServicesAsrReplicationProtectedItem` parancsmaggal kérheti le a védett elemek LEMEZének azonosítóját:
-> 1. Hozzon létre egy szótár `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` objektumot a parancsmag használatával, amely tartalmazza a lemezes titkosítási készlethez tartozó lemez-azonosító hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
-> 1. Frissítse a virtuális gép tulajdonságait `Set-AzRecoveryServicesAsrReplicationProtectedItem` a parancsmag használatával a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
+> 1. A `Get-AzRecoveryServicesAsrReplicationProtectedItem` következő parancsmaggal kérheti le a védett elemek lemezének azonosítóját:
+> 1. Hozzon létre egy szótár objektumot a `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` parancsmag használatával, amely tartalmazza a lemezes titkosítási készlethez tartozó lemez-azonosító hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
+> 1. Frissítse a virtuális gép tulajdonságait a `Set-AzRecoveryServicesAsrReplicationProtectedItem` parancsmag használatával a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
@@ -359,6 +359,6 @@ if($isJobLeftForProcessing)
 }While($isJobLeftForProcessing)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](/powershell/module/az.recoveryservices) információ a site Recovery Resource Manager PowerShell-parancsmagokkal.

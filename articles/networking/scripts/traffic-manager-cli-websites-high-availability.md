@@ -13,10 +13,9 @@ ms.workload: traffic-manager
 ms.date: 06/26/2018
 ms.author: allensu
 ms.openlocfilehash: 2a083520a0da324d7033d4597a6b734b43c025b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74049252"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állása érdekében – Azure CLI
@@ -45,7 +44,7 @@ az group delete --name myResourceGroup2 --yes
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, egy Traffic Manager-profil és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Létrehoz egy App Service-csomagot. Ez olyan, mint egy kiszolgálófarm az Azure-webalkalmazáshoz. |

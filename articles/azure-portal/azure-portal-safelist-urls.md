@@ -1,5 +1,5 @@
 ---
-title: A tűzfal vagy a proxykiszolgáló Azure Portal URL-címeinek safelist
+title: Az Azure Portal URL-címeinek megbízhatósági listára helyezése a tűzfalon vagy a proxykiszolgálón
 description: Adja hozzá ezeket az URL-címeket a proxykiszolgáló megkerüléséhez a Azure Portal és annak szolgáltatásaival való kommunikációhoz
 services: azure-portal
 keywords: ''
@@ -9,14 +9,14 @@ ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67ccf6e2f113c0ec72cfcbccedf88017e452ec4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361659"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>A tűzfal vagy a proxykiszolgáló Azure Portal URL-címeinek safelist
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Az Azure Portal URL-címeinek megbízhatósági listára helyezése a tűzfalon vagy a proxykiszolgálón
 
 A helyszíni biztonsági eszközöket a Azure Portal URL-címekre vonatkozó biztonsági korlátozások megkerülésére állíthatja be. Ez a konfiguráció növelheti a teljesítményt és a kapcsolatot a helyi vagy a széles körű hálózat és az Azure-felhő között.
 
@@ -53,6 +53,7 @@ A Azure Portal safelist URL-végpontok kifejezetten az Azure-felhőre vonatkozna
 #### <a name="us-government-cloud"></a>[Egyesült államokbeli kormányzati felhő](#tab/us-government-cloud)
 
 ```
+*.applicationinsights.us
 *.azure.us
 *.loganalytics.us
 *.microsoft.us

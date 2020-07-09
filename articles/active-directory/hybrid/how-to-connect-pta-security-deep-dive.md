@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358242"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory átmenő hitelesítés biztonsági mélye
 
@@ -106,7 +106,7 @@ A hitelesítési ügynökök a következő lépésekkel regisztrálhatják maguk
     - A HITELESÍTÉSSZOLGÁLTATÓT csak a továbbított hitelesítés funkció használja. A HITELESÍTÉSSZOLGÁLTATÓ csak az ügyfélszolgálati munkatársak aláírására szolgál a hitelesítési ügynök regisztrációja során.
     -  A többi Azure AD-szolgáltatás egyike sem használja ezt a HITELESÍTÉSSZOLGÁLTATÓT.
     - A tanúsítvány tárgya (megkülönböztető név vagy DN) a bérlői AZONOSÍTÓra van beállítva. Ez a DN egy olyan GUID, amely egyedileg azonosítja a bérlőt. Ez a megkülönböztető név csak a bérlőhöz használható.
-6. Az Azure AD a hitelesítési ügynök nyilvános kulcsát egy Azure SQL Database-adatbázisban tárolja, amely csak az Azure AD számára érhető el.
+6. Az Azure AD egy Azure SQL Database adatbázisban tárolja a hitelesítési ügynök nyilvános kulcsát, amely csak az Azure AD-hez férhet hozzá.
 7. Az 5. lépésben kiadott tanúsítványt a Windows tanúsítványtárolóban (különösen a [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) helyen) tárolja a helyszíni kiszolgálón. Ezt a hitelesítési ügynök és a frissítési alkalmazások is használják.
 
 ### <a name="authentication-agent-initialization"></a>Hitelesítési ügynök inicializálása
@@ -139,7 +139,7 @@ Az átmenő hitelesítés a következő módon kezeli a felhasználó bejelentke
 4. A felhasználó beírja a felhasználónevét a **felhasználói bejelentkezési** oldalra, majd kiválasztja a **tovább** gombot.
 5. A felhasználó beírja a jelszavát a **felhasználói bejelentkezési** oldalra, majd kiválasztja a **Bejelentkezés** gombot.
 6. A felhasználónevet és a jelszót egy HTTPS POST-kérelemben küldi el a rendszer az Azure AD STS-nek.
-7. Az Azure AD STS lekéri a nyilvános kulcsokat a bérlőn regisztrált összes hitelesítési ügynök számára az Azure SQL Database-ből, és titkosítja a jelszót a használatával.
+7. Az Azure AD STS lekéri a nyilvános kulcsokat a bérlőn regisztrált összes hitelesítési ügynök Azure SQL Database, és titkosítja a jelszót a használatával.
     - "N" titkosított jelszavas értékeket hoz létre a bérlőn regisztrált "N" hitelesítési ügynökök számára.
 8. Az Azure AD STS elhelyezi a jelszó-ellenőrzési kérelmet, amely a felhasználónevet és a titkosított jelszó értékét tartalmazza a bérlőre jellemző Service Bus várólistára.
 9. Mivel a inicializált hitelesítési ügynökök tartósan csatlakoztatva vannak a Service Bus-várólistához, az egyik rendelkezésre álló hitelesítési ügynök lekéri a jelszó-ellenőrzési kérelmet.
@@ -178,7 +178,7 @@ A hitelesítési ügynök megbízhatóságának megújítása az Azure AD-vel:
 6. Ha a meglévő tanúsítvány lejárt, az Azure AD törli a hitelesítési ügynököt a bérlő regisztrált hitelesítési ügynökök listájáról. Ezután a globális rendszergazdának manuálisan kell telepítenie és regisztrálnia egy új hitelesítési ügynököt.
     - A tanúsítvány aláírásához használja az Azure AD legfelső szintű HITELESÍTÉSSZOLGÁLTATÓját.
     - Állítsa be a tanúsítvány tulajdonosát (megkülönböztető név vagy DN) a bérlői AZONOSÍTÓra, amely egyedi módon azonosítja a bérlőt. A DN a tanúsítványt csak a bérlőre vonatkozik.
-6. Az Azure AD a hitelesítési ügynök új nyilvános kulcsát egy olyan Azure SQL Database-adatbázisban tárolja, amelyhez csak hozzáfér. A hitelesítési ügynökhöz társított régi nyilvános kulcsot is érvényteleníti.
+6. Az Azure AD a hitelesítési ügynök új nyilvános kulcsát egy olyan adatbázisban tárolja Azure SQL Databaseban, amelyhez csak hozzá van hozzáférése. A hitelesítési ügynökhöz társított régi nyilvános kulcsot is érvényteleníti.
 7. A rendszer ezután az új, az 5. lépésben kiadott tanúsítványt tárolja a kiszolgálón a Windows tanúsítványtárolóban (különösen a [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) helyen).
     - Mivel a megbízhatóság megújítási eljárása nem interaktív módon történik (a globális rendszergazda jelenléte nélkül), a hitelesítési ügynök már nem fér hozzá a meglévő tanúsítvány frissítéséhez a CERT_SYSTEM_STORE_LOCAL_MACHINE helyen. 
     

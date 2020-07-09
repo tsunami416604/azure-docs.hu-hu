@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9721a00ef1f0df056b3300ababfee0d0d29bbddc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943118"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801274"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: egylapos webes alkalmazás létrehozása
 
@@ -43,8 +43,10 @@ Az oktatóanyag oldala teljesen önálló; nem használ semmilyen külső keretr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz. Ha nem rendelkezik ezekkel, használhat egy [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és egy [alapszintű Bing Maps-kulcsot](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz. Ha nem rendelkezik ezekkel, létre kell hoznia őket:
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
 Mint minden egyoldalas webalkalmazás, ez az oktatóalkalmazás is három részből áll:
@@ -352,7 +354,7 @@ Egy leképező függvény a következő paramétereket fogadja el:
 
 Az `index` és `count` paraméterek használhatók a találatok megszámozására, egy gyűjtemény elején vagy végén egy speciális HTML létrehozására, egy bizonyos számú elem utáni sortörés beszúrására és így tovább. Ha egy leképezőnek nincs szüksége erre a funkcióra, akkor nem kell elfogadnia ezt a két paramétert.
 
-A következő JavaScript-kivonatban a `news` leképező látható.
+A `news` megjelenítő a következő JavaScript-részletben látható:
 ```javascript
     // render news story
     news: function (item) {
@@ -407,15 +409,18 @@ Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztü
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Ezután módosítsa a HTML-fájlban lévő Bing Web Search végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 

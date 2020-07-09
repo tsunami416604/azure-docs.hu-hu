@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975329"
 ---
 # <a name="auto-provisioning-concepts"></a>Automatikus kiépítés – fogalmak
@@ -47,13 +46,13 @@ Az automatikus kiépítés az eszköz gyártójára vonatkozó követelményeket
 
 A bal oldali tartalomjegyzékben számos gyors útmutató áll rendelkezésére, amelyek segítenek megmagyarázni az automatikus kiépítés gyakorlati tapasztalatain keresztüli kiosztását. A tanulási folyamat megkönnyítése és egyszerűsítése érdekében a szoftver használatával szimulálható a fizikai eszközök regisztrációja és regisztrálása. Néhány rövid útmutatóban több szerepkör műveleteit kell teljesítenie, beleértve a nem létező szerepkörök műveleteit is, a rövid útmutatók szimulált természete miatt.
 
-| Szerepkör | Művelet | Leírás |
+| Szerepkör | Művelet | Description |
 |------| --------- | ------------|
 | Gyártó | Azonosító és regisztrációs URL-cím kódolása | A használt igazolási mechanizmus alapján a gyártó felelős az eszköz azonosító adatainak és az eszköz kiépítési szolgáltatásának regisztrációs URL-címének kódolásában.<br><br>Gyors **útmutató: mivel**az eszköz szimulálva van, nincs gyártói szerepkör. Tekintse meg a fejlesztői szerepkört az információk beszerzéséről, amely a minta-regisztrációs alkalmazás kódolásakor használatos. |
 | | Eszköz identitásának megadása | Az eszköz személyazonossági adatainak kezdeményezője a gyártó felelős azért, hogy kommunikáljon a kezelővel (vagy egy kijelölt ügynökkel), vagy közvetlenül regisztrálja azt az eszköz kiépítési szolgáltatásának API-kon keresztül.<br><br>Gyors **útmutató: mivel**az eszköz szimulálva van, nincs gyártói szerepkör. Az eszköz identitásának beszerzésével kapcsolatos részletekért tekintse meg az operátori szerepkört, amely egy szimulált eszköz regisztrálására szolgál az eszköz kiépítési szolgáltatásának példányában. |
-| Művelet | Automatikus kiépítés konfigurálása | Ez a művelet megfelel az automatikus kiépítés első fázisának.<br><br>Gyors **útmutató:** végrehajtja az operátori szerepkört, konfigurálja az eszköz kiépítési szolgáltatását és IoT hub példányait az Azure-előfizetésében. |
+| Operátor | Automatikus kiépítés konfigurálása | Ez a művelet megfelel az automatikus kiépítés első fázisának.<br><br>Gyors **útmutató:** végrehajtja az operátori szerepkört, konfigurálja az eszköz kiépítési szolgáltatását és IoT hub példányait az Azure-előfizetésében. |
 |  | Eszköz identitásának regisztrálása | Ez a művelet megfelel az automatikus kiépítés második fázisának.<br><br>Gyors **útmutató:** végrehajtja az operátori szerepkört, és regisztrálja a szimulált eszközt az eszköz kiépítési szolgáltatásának példányában. Az eszköz identitását a rövid útmutatóban (TPM vagy X. 509) szimulált igazolási módszer határozza meg. Az igazolás részleteiért tekintse meg a fejlesztői szerepkört. |
-| Eszköz kiépítési szolgáltatása,<br>IoT Hub | \<minden művelet\> | Mind a fizikai eszközökkel, mind a szimulált eszközökkel végzett gyors üzembe helyezés esetén ezek a szerepkörök az Azure-előfizetésében konfigurált IoT-szolgáltatásokon keresztül teljesülnek. A szerepkörök/műveletek ugyanúgy működnek, mint a IoT-szolgáltatások a fizikai és a szimulált eszközök kiépítéséhez. |
+| Eszköz kiépítési szolgáltatása,<br>IoT Hub | \<all operations\> | Mind a fizikai eszközökkel, mind a szimulált eszközökkel végzett gyors üzembe helyezés esetén ezek a szerepkörök az Azure-előfizetésében konfigurált IoT-szolgáltatásokon keresztül teljesülnek. A szerepkörök/műveletek ugyanúgy működnek, mint a IoT-szolgáltatások a fizikai és a szimulált eszközök kiépítéséhez. |
 | Fejlesztő | Regisztrációs szoftver létrehozása/üzembe helyezése | Ez a művelet megfelel az automatikus kiépítés harmadik fázisának. A fejlesztő feladata a regisztrációs szoftver kiépítése és üzembe helyezése az eszközön a megfelelő SDK használatával.<br><br>Gyors **útmutató: az**Ön által létrehozott minta-regisztrációs alkalmazás szimulál egy valós eszközt, amely a munkaállomáson futó platformhoz/nyelvhez (a fizikai eszközre való üzembe helyezés helyett) fut. A regisztrációs alkalmazás ugyanazokat a műveleteket hajtja végre, mint amelyek egy fizikai eszközön vannak üzembe helyezve. Megadhatja az igazolási módszert (TPM vagy X. 509 tanúsítvány), valamint az eszköz kiépítési szolgáltatási példányának regisztrációs URL-címét és azonosító hatókörét. Az eszköz identitását az SDK igazolási logikája határozza meg futásidőben, a megadott módszer alapján: <ul><li>**TPM-igazolás** – a fejlesztési munkaállomás [TPM szimulátor alkalmazást](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator)futtat. A rendszer futtatása után külön alkalmazás használatával kinyerheti a TPM "záradék kulcsát" és "regisztrációs AZONOSÍTÓját", hogy regisztrálja az eszköz identitását. Az SDK-igazolási logika emellett a szimulátort is használja a regisztráció során, hogy aláírt SAS-tokent nyújtson a hitelesítéshez és a regisztráció ellenőrzéséhez.</li><li>**X509-igazolás** – [tanúsítvány létrehozásához](how-to-use-sdk-tools.md#x509-certificate-generator)használható eszközt használ. A létrejötte után létre kell hoznia a regisztrációhoz szükséges tanúsítványfájl-fájlt. Az SDK-igazolási logika a tanúsítványt a regisztráció során is használja a hitelesítéshez és a regisztráció ellenőrzéséhez.</li></ul> |
 | Eszköz | Indítás és regisztrálás | Ez a művelet megfelel az automatikus kiépítés harmadik fázisának, amelyet a fejlesztő által készített eszköz-regisztrációs szoftver teljesít. A részletekért tekintse meg a fejlesztői szerepkört. Első rendszerindítás esetén: <ol><li>Az alkalmazás az eszköz kiépítési szolgáltatásának példányával csatlakozik, és a fejlesztés során megadott globális URL-cím és szolgáltatás "azonosító hatóköre".</li><li>A csatlakozás után az eszköz hitelesítése az igazolási módszer és a regisztráció során megadott identitás szerint történik.</li><li>A hitelesítés után az eszköz regisztrálva van a kiépítési szolgáltatás példánya által megadott IoT Hub-példányban.</li><li>A sikeres regisztráció után a rendszer egy egyedi eszköz-azonosítót és IoT Hub-végpontot ad vissza a regisztrációs alkalmazásnak a IoT Hubsal való kommunikációhoz.</li><li> Onnan az eszköz lehívhatja a kezdeti, a konfigurációhoz tartozó [különálló](~/articles/iot-hub/iot-hub-devguide-device-twins.md) állapotát, és megkezdheti a telemetria-adatok jelentéskészítési folyamatát.</li></ol>Gyors **útmutató: mivel**az eszköz szimulálva van, a regisztrációs szoftver a fejlesztői munkaállomáson fut.|
 
@@ -105,8 +104,8 @@ Ezután folytassa a "szimulált eszköz automatikus kiépítése" című rövid 
 
 |  | Szimulált eszköz igazolási mechanizmusa | Gyorsindítás SDK/nyelv |  |
 |--|--|--|--|
-|  | Platformmegbízhatósági modul (TPM) | [C#](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C #](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X. 509 tanúsítvány | [C#](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C #](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | Platformmegbízhatósági modul (TPM) | [C#](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
+|  | X. 509 tanúsítvány | [C#](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

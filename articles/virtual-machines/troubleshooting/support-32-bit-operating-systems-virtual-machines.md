@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71846536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856944"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>32 bites operációs rendszerek támogatása az Azure-beli virtuális gépeken
 
-A Microsoft Azure mostantól lehetővé teszi a felhasználók számára, hogy a 32 bites Windows operációs rendszereket használják az Azure-ba. Mivel a fenti operációs rendszerek némelyike már elérte az élettartam-támogatási szerződést, előfordulhat, hogy a Microsoft nem nyújt további támogatást. A támogatás nem érhető el a Linux-alapú vagy a Berkeley Distribution (BSD) alapú operációs rendszerekhez, amelyek Microsoft Azure virtuális gépen (VM) futnak.
+A Microsoft Azure mostantól lehetővé teszi a felhasználók számára, hogy a 32 bites Windows operációs rendszereket használják az Azure-ba. Csak a speciális VHD-k támogatottak, és az általánosított lemezképek nem fognak működni az Azure-ban. Mivel a fenti operációs rendszerek némelyike már elérte az élettartam-támogatási szerződést, előfordulhat, hogy a Microsoft nem nyújt további támogatást. A támogatás nem érhető el a Linux-alapú vagy a Berkeley Distribution (BSD) alapú operációs rendszerekhez, amelyek Microsoft Azure virtuális gépen (VM) futnak.
 
 ## <a name="more-information"></a>További információ
 
@@ -31,7 +31,7 @@ Az Azure Virtual Machines szolgáltatásban támogatott operációs rendszerekke
 * [Microsoft kiszolgálószoftveres támogatás a Microsoft Azure Virtual Machines szolgáltatáshoz](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 * [A Linux és a nyílt forráskódú technológiák támogatása az Azure-ban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [További információ az Azure-beli Windows Server 2008/R2-hez készült ingyenes bővített biztonsági frissítésekről](https://www.microsoft.com/cloud-platform/windows-server-2008)
 * [További információ a Windows Server 2008 SP2 32 bites speciális rendszerképek támogatásáról az Azure-ban](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)

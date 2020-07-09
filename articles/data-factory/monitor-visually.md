@@ -9,13 +9,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
-ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801526"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
 
@@ -191,6 +190,10 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
     ![A célként megadott feltételekhez tartozó mező](media/monitor-visually/add-criteria-1.png)
 
     ![Feltételek listája](media/monitor-visually/add-criteria-2.png)
+
+    ![Feltételek listája](media/monitor-visually/add-criteria-3.png)
+
+    Riasztásokat hozhat létre különböző mérőszámokon, beleértve az ADF-entitások száma/mérete, a tevékenységek/folyamatok/trigger-futtatások, Integration Runtime (IR) CPU-kihasználtság/memória/csomópontok száma/üzenetsor, valamint a SSIS-csomagok végrehajtásához és a SSIS IR indítási/leállítási műveletekhez.
 
 1.  Adja meg a riasztási logikát. Riasztást hozhat létre a kijelölt metrikához az összes folyamathoz és a kapcsolódó tevékenységekhez. Kiválaszthat egy adott tevékenység típusát, a tevékenység nevét, a folyamat nevét vagy a hiba típusát is.
 

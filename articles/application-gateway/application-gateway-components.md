@@ -4,15 +4,15 @@ description: Ez a cikk az Application Gateway különböző összetevőivel kapc
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254327"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők
 

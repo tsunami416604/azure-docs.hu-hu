@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
 ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996429"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows rendszerű számítógépek összekapcsolásának Azure Monitor
@@ -60,9 +59,9 @@ Ha a [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-regist
 
 Konfigurálja a .NET-keretrendszer 4,6-es vagy újabb verzióját a biztonságos titkosítás támogatásához, ahogy az alapértelmezés szerint le van tiltva. Az [erős titkosítás](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) biztonságosabb hálózati protokollokat használ, mint például a TLS 1,2, és blokkolja a nem biztonságos protokollokat. 
 
-1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319**.  
 2. Hozza létre az **1**értékkel rendelkező **alatt** DWORD értéket.  
-3. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft\\. NETFramework\v4.0.30319**.  
+3. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft \\ . NETFramework\v4.0.30319**.  
 4. Hozza létre az **1**értékkel rendelkező **alatt** DWORD értéket. 
 5. A beállítások érvénybe léptetéséhez indítsa újra a rendszert. 
 
@@ -92,7 +91,7 @@ Az ügynök letöltött fájlja egy önálló telepítési csomag.  Az ügynök 
 
 Az alábbi táblázat az ügynök számára a telepítő által támogatott paramétereket mutatja be, beleértve a Automation DSC használatával történő üzembe helyezést is.
 
-|MMA-specifikus beállítások                   |Megjegyzések         |
+|MMA-specifikus beállítások                   |Jegyzetek         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | Nem kötelező megadni. Telepíti az ügynököt a .NET-alkalmazás teljesítményének figyelése nélkül.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = az ügynök konfigurálása munkaterületre való jelentéshez                |
@@ -103,7 +102,7 @@ Az alábbi táblázat az ügynök számára a telepítő által támogatott para
 |OPINSIGHTS_PROXY_USERNAME               | A hitelesített proxy eléréséhez használt Felhasználónév |
 |OPINSIGHTS_PROXY_PASSWORD               | Jelszó a hitelesített proxy eléréséhez |
 
-1. Az ügynök telepítési fájljainak kibontásához emelt szintű parancssorból `MMASetup-<platform>.exe /c` futtassa a parancsot, és kérni fogja a fájlok kinyerésének elérési útját.  Azt is megteheti, hogy az argumentumok `MMASetup-<platform>.exe /c /t:<Full Path>`átadásával megadhatja az elérési utat.  
+1. Az ügynök telepítési fájljainak kibontásához emelt szintű parancssorból futtassa a parancsot, `MMASetup-<platform>.exe /c` és kérni fogja a fájlok kinyerésének elérési útját.  Azt is megteheti, hogy az argumentumok átadásával megadhatja az elérési utat `MMASetup-<platform>.exe /c /t:<Full Path>` .  
 2. Ha csendesen szeretné telepíteni az ügynököt, és úgy konfigurálja, hogy az Azure kereskedelmi felhőben lévő munkaterületre jelentsen, a telepítési fájlokat a következő típusra kibontott mappából állítsa be: 
    
      ```dos
@@ -131,13 +130,13 @@ Az alábbi példa a 64 bites ügynököt telepíti, amelyet az `URI` érték azo
 >[!NOTE]
 >Az eljárás és a parancsfájl például nem támogatja a Windows rendszerű számítógépekre már telepített ügynök frissítését.
 
-Az ügynök csomagjához tartozó 32-bites és 64-bites verziók különböző termékkódok és új verziók is egyedi értékkel rendelkeznek.  A termékkód egy olyan GUID, amely egy alkalmazás vagy termék rendszerbiztonsági azonosítóját jelöli, és a Windows Installer **ProductCode** tulajdonság képviseli.  A `ProductId` **MMAgent. ps1** parancsfájlban szereplő értéknek meg kell egyeznie a 32 bites vagy a 64 bites ügynök telepítőcsomag kódjával.
+Az ügynök csomagjához tartozó 32-bites és 64-bites verziók különböző termékkódok és új verziók is egyedi értékkel rendelkeznek.  A termékkód egy olyan GUID, amely egy alkalmazás vagy termék rendszerbiztonsági azonosítóját jelöli, és a Windows Installer **ProductCode** tulajdonság képviseli.  A `ProductId` **MMAgent.ps1** parancsfájlban szereplő értéknek meg kell egyeznie a 32 bites vagy a 64 bites ügynök telepítőcsomag kódjával.
 
-Ha közvetlenül az ügynök telepítési csomagjából szeretné lekérni a termékkód beolvasását, használhatja az Orca. exe fájlt a [Windows SDK összetevőiről Windows Installer fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , amely a Windows szoftverfejlesztői készlet összetevője, vagy a PowerShell használatával a Microsoft értékes Professional (MVP) által írt [példaként szolgáló parancsfájlt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) követve.  Mindkét módszer esetében először ki kell bontania a **MOMagent. msi** fájlt a MMASetup telepítési csomagjából.  Ez a következő szakaszban látható az [ügynök telepítése parancssor használatával](#install-the-agent-using-the-command-line)című szakasz első lépésében.  
+Ha közvetlenül az ügynök telepítési csomagjából szeretné lekérni a termékkód beolvasását, akkor a Orca.exet a [Windows SDK Windows Installer összetevőkből](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) is használhatja, amelyek a Windows szoftverfejlesztői készlet összetevője, vagy a PowerShell használatával egy Microsoft értékes szakember (MVP) által írt [parancsfájlt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) követve.  Mindkét módszer esetében először ki kell bontania a **MOMagent.msi** fájlt a MMASetup telepítési csomagjából.  Ez a következő szakaszban látható az [ügynök telepítése parancssor használatával](#install-the-agent-using-the-command-line)című szakasz első lépésében.  
 
-1. Importálja a xPSDesiredStateConfiguration DSC- [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) modult Azure Automation-ba.  
+1. Importálja a xPSDesiredStateConfiguration DSC-modult [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Automation-ba.  
 2.    Hozzon létre Azure Automation változó eszközöket *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEYhoz*. Állítsa be *OPSINSIGHTS_WS_ID* a log Analytics munkaterület-azonosítóra, és állítsa *OPSINSIGHTS_WS_KEY* a munkaterület elsődleges kulcsára.
-3.    Másolja a szkriptet, és mentse a MMAgent. ps1 néven.
+3.    Másolja a szkriptet, és mentse MMAgent.ps1ként.
 
 ```powershell
 Configuration MMAgent
@@ -176,7 +175,7 @@ Configuration MMAgent
 ```
 
 4. Frissítse a `ProductId` parancsfájlban szereplő értéket az ügynök telepítési csomagjának legújabb verziójából kinyert kóddal a korábban javasolt módszerek használatával. 
-5. [Importálja az MMAgent. ps1 konfigurációs parancsfájlt](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) az Automation-fiókjába. 
+5. [Importálja az MMAgent.ps1 konfigurációs parancsfájlt](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) az Automation-fiókjába. 
 6. [Rendeljen Windows-számítógépet vagy-csomópontot](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration) a konfigurációhoz. A csomópont 15 percen belül ellenőrzi a konfigurációját, és az ügynököt leküldi a csomópontra.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Ügynök kapcsolatának ellenőrzése Log Analytics

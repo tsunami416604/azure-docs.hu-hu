@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec954c2da317e2e4b332b959b9627cf96792da84
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197107"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Folyamatos üzembe helyezés beállítása a Chocolatey segítségével
 
@@ -81,7 +81,7 @@ Az Automation-fiókját a következő régiókba helyezheti el (más néven hely
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>2. lépés: a virtuálisgép-bővítmény csípésének tétele a Resource Manager-sablonban
 
 A virtuális gépek regisztrálásának részletei (a PowerShell DSC virtuálisgép-bővítmény használatával), amely ebben az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)-útmutatóban van megadva.
-Ez a lépés regisztrálja az új virtuális gépet a lekérési kiszolgálóval az állapot konfigurációs csomópontjainak listájában. A regisztráció részeként meg kell adni a csomópontra alkalmazni kívánt csomópont-konfigurációt. Ennek a csomópont-konfigurációnak még nem kell megtörténnie a lekérési kiszolgálón, ezért a 4. lépés az első alkalommal történik. A 2. lépésben azonban meg kell határoznia a csomópont nevét és a konfiguráció nevét. Ebben a használati példában a csomópont "isvbox", a konfiguráció pedig "ISVBoxConfig". Így a csomópont-konfiguráció neve (a DeploymentTemplate. JSON fájlban adható meg) a következő: "ISVBoxConfig. isvbox".
+Ez a lépés regisztrálja az új virtuális gépet a lekérési kiszolgálóval az állapot konfigurációs csomópontjainak listájában. A regisztráció részeként meg kell adni a csomópontra alkalmazni kívánt csomópont-konfigurációt. Ennek a csomópont-konfigurációnak még nem kell megtörténnie a lekérési kiszolgálón, ezért a 4. lépés az első alkalommal történik. A 2. lépésben azonban meg kell határoznia a csomópont nevét és a konfiguráció nevét. Ebben a használati példában a csomópont "isvbox", a konfiguráció pedig "ISVBoxConfig". Így a csomópont-konfiguráció neve (DeploymentTemplate.json) a következő: "ISVBoxConfig. isvbox".
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>3. lépés: a szükséges DSC-erőforrások hozzáadása a lekérési kiszolgálóhoz
 
@@ -125,7 +125,7 @@ A példában szereplő példa a cChoco és a xNetworking vonatkozó lépéseket 
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>4. lépés: a csomópont-konfiguráció hozzáadása a lekérési kiszolgálóhoz
 
-A konfigurációnak a lekéréses kiszolgálóra való első importálásakor és a fordításakor semmi nem különleges. Ugyanaz a konfiguráció minden későbbi importálása vagy összeállítása pontosan ugyanaz lesz. Minden alkalommal, amikor frissíti a csomagot, és le kell küldenie az éles környezetbe, ezt a lépést a konfigurációs fájl helyességének biztosítása után hajtja végre – beleértve a csomag új verzióját is. Itt látható a **ISVBoxConfig. ps1**konfigurációs fájl:
+A konfigurációnak a lekéréses kiszolgálóra való első importálásakor és a fordításakor semmi nem különleges. Ugyanaz a konfiguráció minden későbbi importálása vagy összeállítása pontosan ugyanaz lesz. Minden alkalommal, amikor frissíti a csomagot, és le kell küldenie az éles környezetbe, ezt a lépést a konfigurációs fájl helyességének biztosítása után hajtja végre – beleértve a csomag új verzióját is. A konfigurációs fájl **ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -170,7 +170,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-Itt látható a **New-ConfigurationScript. ps1** parancsfájl (amely az az modul használatára lett módosítva):
+Itt látható a **New-ConfigurationScript.ps1** szkript (az az modul használatára lett módosítva):
 
 ```powershell
 Import-AzAutomationDscConfiguration `

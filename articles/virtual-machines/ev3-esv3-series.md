@@ -1,26 +1,25 @@
 ---
-title: Ev3 és Esv3 sorozat – Azure Virtual Machines
+title: Ev3 és Esv3 sorozat
 description: A Ev3 és a Esv3 sorozatú virtuális gépek specifikációi.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9fcb714e68548b95ed6d32bb16fb08c43ff0e5fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707633"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 és Esv3 sorozat
 
-A Ev3 és a Esv3 sorozat az Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) processzort egy Hyper-threaded konfigurációban biztosítja, ami jobb értéket biztosít a legtöbb általános célú számítási feladathoz, és a Ev3 a legtöbb más felhőben lévő általános célú virtuális gépekhez társítja.  A memória ki lett bővítve (7 GiB/vCPU – 8 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszintű módon igazította ki, hogy illeszkedjen a feleznie-re való áttéréshez. A Ev3 a D/Dv2 családok nagy memóriabeli virtuálisgép-méretének követése.
+Az Intel® Xeon® Platinum 8272CL (Cascade Lake) Ev3 és Esv3 sorozata vagy Intel® Xeon® 8171M 2,1 GHz-es (Skylake), vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) processzor egy Hyper-threaded konfigurációban, jobb érték kiosztást biztosít a legtöbb általános célú számítási feladathoz, és a Ev3 a legtöbb más felhőben lévő általános célú virtuális gépekhez társítja.  A memória ki lett bővítve (7 GiB/vCPU – 8 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszintű módon igazította ki, hogy illeszkedjen a feleznie-re való áttéréshez. A Ev3 a D/Dv2 családok nagy memóriabeli virtuálisgép-méretének követése.
 
 ## <a name="ev3-series"></a>Ev3-sorozat
 
-A Ev3 sorozat példányai az Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) processzor és az Intel Turbo Boost Technology 2,0 szolgáltatásokon alapulnak. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
+A Ev3 sorozat példányai Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz-es (Skylake) vagy Intel® Xeon® E5-2673 v4 2,3 GHz-es (Broadwell) processzorokkal, valamint az Intel Turbo Boost Technology 2,0 szolgáltatással futnak. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
 
 Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához ESv3-méreteket vegyen igénybe. Az Esv3-méretek díjszabása és számlázási mérőszámai megegyeznek az Ev3-sorozatéval.
 
@@ -54,7 +53,7 @@ Memória megőrzésének frissítései: támogatott
 
 ## <a name="esv3-series"></a>Esv3 sorozat
 
-A Esv3 sorozat példányai az Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) processzor, az Intel Turbo Boost Technology 2,0 és a Premium Storage használata alapján érhetők el. A Esv3 sorozat példányai ideálisak a nagyvállalati igényű vállalati alkalmazásokhoz.
+A Esv3 sorozat példányai Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz-es (Skylake) vagy Intel® Xeon® E5-2673 v4 2,3 GHz-es (Broadwell) processzorral, az Intel Turbo Boost Technology 2,0-vel és a Premium Storage használatával futnak. A Esv3 sorozat példányai ideálisak a nagyvállalati igényű vállalati alkalmazásokhoz.
 
 A Esv3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája.
 

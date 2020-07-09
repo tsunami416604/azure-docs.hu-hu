@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0a6f9e723fb6374f5ac72241501f49a94c2c2fe2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82183831"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101953"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal
 
@@ -31,21 +31,21 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd: [ARM-sablonok létrehozása a Visual Studio Code használatával](use-vs-code-to-create-template.md).
+* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
 Az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templates/) az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
 
-1. A Visual Studio Code-ból válassza a **fájl**>**megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott**fájl elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. A sablonban definiálva van egy Microsoft.Storage/storageAccounts nevű erőforrás. Hasonlítsa össze a sablont a [sablonreferenciával](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
-5. Válassza a **fájl**>**Mentés másként** lehetőséget, hogy mentse a fájlt **azuredeploy. JSON** néven a helyi számítógépre.
+4. A sablonban definiálva van egy Microsoft.Storage/storageAccounts nevű erőforrás. Hasonlítsa össze a sablont a [sablonreferenciával](/azure/templates/Microsoft.Storage/storageAccounts). Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
+5. Válassza a **fájl** > **Mentés másként** lehetőséget, hogy a fájlt **azuredeploy.jsa** helyi számítógépre mentse.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -122,7 +122,7 @@ További információ több példány létrehozásáról: [erőforrás vagy tula
 
 1. A Cloud Shell futtassa a következő parancsokat. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez.
 
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
+    # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
     ```azurecli
     echo "Enter a project name that is used to generate resource group name:" &&
@@ -173,7 +173,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 Hasonlítsa össze a tárfiókok neveit a sablon névdefiníciójával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -182,7 +182,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Az erőforráscsoport összesen három erőforrást fog látni.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre több tárfiókpéldány.  A következő oktatóanyagban egy több erőforrást és több erőforrástípust tartalmazó sablont fog fejleszteni. Egyes erőforrások függő erőforrásokkal rendelkeznek.
 

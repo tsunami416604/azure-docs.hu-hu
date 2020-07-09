@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 12f5f8b1e1a20675fd08f753e515faef2f7a97ce
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312916"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560037"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -65,7 +66,7 @@ Ez az oktatóanyag repülési adatokat használ az Bureau of közlekedési stati
 
 Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Portal használatával.
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**elemzési** > **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks**lehetőséget.
 
     ![Databricks Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Databricks Azure Portal")
 
@@ -75,7 +76,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.  |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/management/overview.md). |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).       |
     |**Díjszabási csomag**     |  Válassza a **standard**lehetőséget.     |
 
@@ -125,11 +126,11 @@ A AzCopy segítségével másolja át az adatait a *. csv* -fájlból a Data Lak
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Cserélje le `<csv-folder-path>` a helyőrző értékét a *. csv* -fájl elérési útjára.
+   * Cserélje le a `<csv-folder-path>` helyőrző értékét a *. csv* -fájl elérési útjára.
 
-   * Cserélje le `<storage-account-name>` a helyőrző értékét a Storage-fiók nevére.
+   * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
 
-   * Cserélje le `<container-name>` a helyőrzőt egy tároló nevére a Storage-fiókban.
+   * Cserélje le a `<container-name>` helyőrzőt egy tároló nevére a Storage-fiókban.
 
 ## <a name="create-a-container-and-mount-it"></a>Tároló létrehozása és csatlakoztatása
 
@@ -161,7 +162,7 @@ Ebben a szakaszban egy tárolót és egy mappát fog létrehozni a Storage-fiók
     extra_configs = configs)
     ```
 
-18. A kód blokkban cserélje le a `appId`, `clientSecret` `tenant`,, és `storage-account-name` helyőrző értékeket a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le `container-name` a helyőrző értékét a tároló nevére.
+18. A kód blokkban cserélje le a `appId` ,,, `clientSecret` `tenant` és `storage-account-name` helyőrző értékeket a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le a `container-name` helyőrző értékét a tároló nevére.
 
 19. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
@@ -209,7 +210,7 @@ Következő lépésként megkezdheti a tárfiókba feltöltött adatok lekérdez
 
 Az adatforrások adatkeretének létrehozásához futtassa a következő parancsfájlt:
 
-* Cserélje le `<csv-folder-path>` a helyőrző értékét a *. csv* -fájl elérési útjára.
+* Cserélje le a `<csv-folder-path>` helyőrző értékét a *. csv* -fájl elérési útjára.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -270,11 +271,11 @@ out1 = spark.sql(
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)

@@ -1,18 +1,14 @@
 ---
 title: Azure Machine Learning Event Grid forrásként
 description: A Machine Learning-munkaterület eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 07/07/2020
+ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102497"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
@@ -197,7 +193,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
+| adatok | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -263,7 +259,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | ----- | ----- |
 | [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)

@@ -4,10 +4,9 @@ description: Használja a Service Fabric DNS-szolgáltatását, hogy a rendszer 
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458027"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-szolgáltatás az Azure Service Fabricben
@@ -46,7 +45,7 @@ Ha nem a portál használatával hozza létre a fürtöt, vagy ha meglévő für
 
 A sablon használata után engedélyezheti a DNS-szolgáltatást a következő lépésekkel:
 
-1. Ellenőrizze, hogy `apiversion` a be van `2017-07-01-preview` -e állítva az `Microsoft.ServiceFabric/clusters` erőforráshoz, és ha nem, akkor frissítse a következő példában látható módon:
+1. Ellenőrizze, hogy a `apiversion` be van `2017-07-01-preview` -e állítva az `Microsoft.ServiceFabric/clusters` erőforráshoz, és ha nem, akkor frissítse a következő példában látható módon:
 
     ```json
     {
@@ -60,7 +59,7 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
 
 2. Most engedélyezze a DNS szolgáltatást a következő módszerek egyikével:
 
-   - Ha engedélyezni szeretné a DNS-szolgáltatást az alapértelmezett beállításokkal, adja `addonFeatures` hozzá azt a `properties` szakaszon belüli szakaszhoz az alábbi példában látható módon:
+   - Ha engedélyezni szeretné a DNS-szolgáltatást az alapértelmezett beállításokkal, adja hozzá azt a szakaszon `addonFeatures` belüli szakaszhoz az `properties` alábbi példában látható módon:
 
         ```json
           "properties": {
@@ -72,7 +71,7 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
           }
         ```
 
-   - Ha a szolgáltatást nem az alapértelmezett beállításokkal szeretné engedélyezni, vegyen fel `DnsService` egy `fabricSettings` szakaszt a szakaszon belüli `properties` szakaszba. Ebben az esetben nem kell hozzáadnia a DnsService a következőhöz `addonFeatures`:. A DNS szolgáltatáshoz beállítható tulajdonságokkal kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
+   - Ha a szolgáltatást nem az alapértelmezett beállításokkal szeretné engedélyezni, vegyen fel egy szakaszt a szakaszon belüli szakaszba `DnsService` `fabricSettings` `properties` . Ebben az esetben nem kell hozzáadnia a DnsService a következőhöz: `addonFeatures` . A DNS szolgáltatáshoz beállítható tulajdonságokkal kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 
        ```json
            "properties": {
@@ -100,7 +99,7 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
               ]
             }
        ```
-3. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService`, **és a Service Fabric Explorer rendszerszolgáltatás** szakasza alatt található. 
+3. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService` , és a Service Fabric Explorer rendszerszolgáltatás szakasza **System** alatt található. 
 
 > [!NOTE]
 > Ha a DNS-t Letiltottról engedélyezettre frissíti, előfordulhat, hogy a Service Fabric Explorer nem tükrözi az új állapotot. Az Azure Resource Manager-sablonban található UpgradePolicy módosításával oldja fel újra a csomópontokat. További információkért tekintse meg a [Service Fabric-sablonra vonatkozó referenciát](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
@@ -109,14 +108,14 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
 > A DNS szolgáltatás helyi gépen való fejlesztésekor a DNS-beállítások felülbírálják a DNS-beállításokat. Ha problémákat tapasztal az internethez való csatlakozás során, ellenőrizze a DNS-beállításokat.
 
 ## <a name="setting-the-dns-name-for-your-service"></a>A szolgáltatás DNS-nevének beállítása
-A szolgáltatások DNS-nevét akár deklaratív módon is beállíthatja az alapértelmezett szolgáltatások ApplicationManifest. xml fájlban vagy PowerShell-parancsokkal.
+A szolgáltatások DNS-nevét akár deklaratív módon is beállíthatja az alapértelmezett szolgáltatások számára a ApplicationManifest.xml fájlban vagy PowerShell-parancsokkal.
 
 A szolgáltatás DNS-neve feloldható a fürtben, ezért fontos, hogy biztosítsa a DNS-név egyediségét a fürtön belül. 
 
-Erősen ajánlott a elnevezési sémájának használata `<ServiceDnsName>.<AppInstanceName>`; például: `service1.application1`. Ha egy alkalmazás a Docker-összeállítás használatával lett telepítve, a rendszer automatikusan hozzárendeli a szolgáltatásokat a DNS-nevekhez ezen elnevezési séma használatával.
+Erősen ajánlott a elnevezési séma használata, `<ServiceDnsName>.<AppInstanceName>` például: `service1.application1` . Ha egy alkalmazás a Docker-összeállítás használatával lett telepítve, a rendszer automatikusan hozzárendeli a szolgáltatásokat a DNS-nevekhez ezen elnevezési séma használatával.
 
-### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Az alapértelmezett szolgáltatás DNS-nevének beállítása a ApplicationManifest. xml fájlban
-Nyissa meg a projektet a Visual Studióban vagy a kedvenc szerkesztőjében, és nyissa meg a ApplicationManifest. xml fájlt. Lépjen az alapértelmezett szolgáltatások szakaszhoz, és minden szolgáltatáshoz adja hozzá `ServiceDnsName` az attribútumot. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás DNS-nevét a következőre`service1.application1`
+### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Az alapértelmezett szolgáltatás DNS-nevének beállítása a ApplicationManifest.xml
+Nyissa meg a projektet a Visual Studióban vagy a kedvenc szerkesztőjében, és nyissa meg a ApplicationManifest.xml fájlt. Lépjen az alapértelmezett szolgáltatások szakaszhoz, és minden szolgáltatáshoz adja hozzá az `ServiceDnsName` attribútumot. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás DNS-nevét a következőre`service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -129,7 +128,7 @@ Az alkalmazás üzembe helyezését követően a Service Fabric Explorerben lát
 
 ![szolgáltatási végpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Az alábbi példa egy állapot-nyilvántartó szolgáltatás DNS-nevét állítja be `statefulsvc.app`a következőre:. A szolgáltatás nevesített particionálási sémát használ. Figyelje meg, hogy a partíciók nevei kisbetűvel vannak elválasztva. Ez a követelmény a DNS-lekérdezésekben célként megadott partíciók esetében. További információ: [DNS-lekérdezések készítése állapot-nyilvántartó szolgáltatás partícióján](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
+Az alábbi példa egy állapot-nyilvántartó szolgáltatás DNS-nevét állítja be a következőre: `statefulsvc.app` . A szolgáltatás nevesített particionálási sémát használ. Figyelje meg, hogy a partíciók nevei kisbetűvel vannak elválasztva. Ez a követelmény a DNS-lekérdezésekben célként megadott partíciók esetében. További információ: [DNS-lekérdezések készítése állapot-nyilvántartó szolgáltatás partícióján](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -143,7 +142,7 @@ Az alábbi példa egy állapot-nyilvántartó szolgáltatás DNS-nevét állítj
 ```
 
 ### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Egy szolgáltatás DNS-nevének beállítása a PowerShell használatával
-Megadhatja a szolgáltatás DNS-nevét a `New-ServiceFabricService` PowerShell-parancs használatával történő létrehozásakor. A következő példa egy új állapot nélküli szolgáltatást hoz létre a DNS-névvel`service1.application1`
+Megadhatja a szolgáltatás DNS-nevét a PowerShell-parancs használatával történő létrehozásakor `New-ServiceFabricService` . A következő példa egy új állapot nélküli szolgáltatást hoz létre a DNS-névvel`service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -170,7 +169,7 @@ A partíciót tároló DNS-lekérdezések a következőképpen vannak formázva:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Az elemek magyarázata:
+Ebben a kódban:
 
 - *Első – a particionált-Service-DNSName* az első része a szolgáltatás DNS-nevének.
 - A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "--". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
@@ -178,10 +177,10 @@ Az elemek magyarázata:
 - A *PartitionSuffix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték üres karakterlánc. További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - A *tovább particionált-Service-DNSName* a szolgáltatás DNS-neve hátralévő része.
 
-Az alábbi példák a fürtön futó particionált szolgáltatások DNS-lekérdezéseit mutatják be, amelyek alapértelmezett `PartitionPrefix` beállításai `PartitionSuffix`a következők: 
+Az alábbi példák a fürtön futó particionált szolgáltatások DNS-lekérdezéseit mutatják be, amelyek alapértelmezett beállításai a következők `PartitionPrefix` `PartitionSuffix` : 
 
-- Ha egy olyan szolgáltatás "0" partícióját szeretné feloldani `backendrangedschemesvc.application` , amelynek a DNS-neve tartományos particionálási `backendrangedschemesvc-0.application`sémát használ, használja a következőt:.
-- Egy nevesített particionálási sémát használó szolgáltatás `backendnamedschemesvc.application` "első" partíciójának feloldásához használja `backendnamedschemesvc-first.application`a következőt:.
+- Ha egy olyan szolgáltatás "0" partícióját szeretné feloldani, amelynek a DNS-neve `backendrangedschemesvc.application` tartományos particionálási sémát használ, használja a következőt: `backendrangedschemesvc-0.application` .
+- Egy `backendnamedschemesvc.application` nevesített particionálási sémát használó szolgáltatás "első" partíciójának feloldásához használja a következőt: `backendnamedschemesvc-first.application` .
 
 A DNS szolgáltatás visszaadja a partíció elsődleges replikájának IP-címét. Ha nincs megadva partíció, a szolgáltatás egy véletlenszerűen kiválasztott partíció elsődleges replikájának IP-címét adja vissza.
 
@@ -218,7 +217,7 @@ public class ValuesController : Controller
 }
 ```
 
-A következő kód egy állapot-nyilvántartó szolgáltatás egy adott partíciójának hívását mutatja be. Ebben az esetben a DNS-név tartalmazza a partíció nevét (partition1). A hívás olyan fürtöt feltételez, amely a `PartitionPrefix` és `PartitionSuffix`a alapértelmezett értékével rendelkezik.
+A következő kód egy állapot-nyilvántartó szolgáltatás egy adott partíciójának hívását mutatja be. Ebben az esetben a DNS-név tartalmazza a partíció nevét (partition1). A hívás olyan fürtöt feltételez, amely a és a alapértelmezett értékével rendelkezik `PartitionPrefix` `PartitionSuffix` .
 
 ```csharp
 public class ValuesController : Controller

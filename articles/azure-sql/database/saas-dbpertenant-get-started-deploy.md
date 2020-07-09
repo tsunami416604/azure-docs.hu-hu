@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d94f7219c5a29de9a707aa9ae4ed25ac4b2bf03e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254310"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Olyan több-bérlős SaaS-alkalmazás üzembe helyezése és feltárása, amely az adatbázis-bérlői mintát használja Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebben az oktatóanyagban üzembe helyezi és felderíti a Wingtip tickets SaaS-adatbázis-bérlői alkalmazást (Wingtip). Az alkalmazás egy adatbázis-bérlői mintát használ a több bérlő által tárolt adattároláshoz. Az alkalmazás úgy van kialakítva, hogy bemutassa a Azure SQL Database funkcióit, amelyek egyszerűbbé teszik az SaaS-forgatókönyvek engedélyezését.
 
-Öt perccel azután, **hogy az üzembe helyezés az Azure**-ba lehetőséget választotta, több-bérlős SaaS-alkalmazással rendelkezik. Az alkalmazás tartalmaz egy felhőben futó SQL-adatbázist. Az alkalmazás három minta Bérlővel van telepítve, amelyek mindegyike saját adatbázissal rendelkezik. Az összes adatbázis üzembe helyezése egy rugalmas SQL-készletbe történik. Az alkalmazás üzembe helyezése az Azure-előfizetésében történik. Teljes hozzáféréssel rendelkezik az alkalmazás egyes összetevőinek megismeréséhez és használatához. Az alkalmazás C#-forráskódja és a felügyeleti parancsfájlok a [WingtipTicketsSaaS-DbPerTenant GitHub-][github-wingtip-dpt]tárházban érhetők el.
+Öt perccel azután, **hogy az üzembe helyezés az Azure**-ba lehetőséget választotta, több-bérlős SaaS-alkalmazással rendelkezik. Az alkalmazás tartalmaz egy adatbázist, amely Azure SQL Database fut. Az alkalmazás három minta Bérlővel van telepítve, amelyek mindegyike saját adatbázissal rendelkezik. Az összes adatbázis üzembe helyezése egy rugalmas SQL-készletbe történik. Az alkalmazás üzembe helyezése az Azure-előfizetésében történik. Teljes hozzáféréssel rendelkezik az alkalmazás egyes összetevőinek megismeréséhez és használatához. Az alkalmazás C#-forráskódja és a felügyeleti parancsfájlok a [WingtipTicketsSaaS-DbPerTenant GitHub-][github-wingtip-dpt]tárházban érhetők el.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -87,7 +88,7 @@ Az alkalmazás üzembe helyezésekor töltse le a forráskódot és a felügyele
 1. Keresse meg a [WingtipTicketsSaaS-DbPerTenant GitHub-][github-wingtip-dpt]tárházat.
 1. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
 1. Válassza a **zip letöltése**lehetőséget, majd mentse a fájlt.
-1. Kattintson a jobb gombbal a **WingtipTicketsSaaS-DbPerTenant-Master. zip** fájlra, majd válassza a **Tulajdonságok parancsot**.
+1. Kattintson a jobb gombbal a **WingtipTicketsSaaS-DbPerTenant-master.zip** fájlra, majd válassza a **Tulajdonságok parancsot**.
 1. Az **általános** lapon jelölje be a **Tiltás feloldása**jelölőnégyzetet  >  **Apply**.
 1. Válassza az **OK**, majd a fájlok kibontása lehetőséget.
 
@@ -107,7 +108,7 @@ Ezek az értékek szinte minden parancsfájlban hivatkoznak rá.
 
 Az alkalmazás az eseményeket üzemeltető helyszíneket mutatja be. A helyszín típusok közé tartoznak a koncert termek, a jazz klubok és a sport klubok. Wingtip-jegyek esetén a helyszínek bérlőként vannak regisztrálva. A bérlők egyszerű lehetőséget biztosítanak az események listázására és a jegyek értékesítésére az ügyfeleknek. Minden helyszín egy személyre szabott webhelyet kap az események listázásához és jegyek eladásához.
 
-Belsőleg az alkalmazásban minden bérlő egy SQL-alapú rugalmas készletbe helyezett SQL-adatbázist kap.
+Belsőleg az alkalmazásban minden bérlő egy rugalmas készletbe helyezett adatbázist kap.
 
 A központi **esemény-központ** oldal a központi telepítésben lévő bérlők hivatkozásainak listáját tartalmazza.
 
@@ -127,7 +128,7 @@ A Wingtip alkalmazás az [*Azure Traffic Manager*](../../traffic-manager/traffi
 
     Az előző formátum részeit a következő táblázat ismerteti.
 
-    | URL-cím része        | Leírás       |
+    | URL-cím része        | Description       |
     | :-------------- | :---------------- |
     | events. Wingtip – DPT | A Wingtip alkalmazás eseményeinek részei.<br /><br /> *– a DPT* megkülönbözteti a Wingtip-jegyek *adatbázis-bérlői* implementációját más megvalósításokból. Ilyenek például az *egyetlen* alkalmazás-bérlő (*-sa*) vagy több- *bérlős adatbázis* (*-MT*) implementációk. |
     | . * &lt; felhasználó &gt; * | a példában szereplő *AF1* . |
@@ -153,7 +154,7 @@ Most, hogy üzembe helyezte az alkalmazást, végezze el a munkát.
 
 A *demo-LoadGenerator PowerShell-* szkript elindít egy munkaterhelést, amely az összes bérlői adatbázison fut. A sok SaaS-alkalmazás valós terhelése szórványos és kiszámíthatatlan. Az ilyen típusú terhelés szimulálása érdekében a generátor véletlenszerűen megjelenő terhelést vagy adattörést eredményez az egyes bérlők esetében. A törések véletlenszerű időközönként történnek. A terhelési minta megjelenése több percet vesz igénybe. A betöltés figyelése előtt legalább három vagy négy percen belül futtassa a létrehozót.
 
-1. A PowerShell ISE-ben nyissa meg a... \\ Learning modules \\ Utilities \\ *demo-LoadGenerator. ps1* parancsfájl.
+1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ segédprogramjai \\ *Demo-LoadGenerator.ps1* szkript.
 2. Nyomja le az F5 billentyűt a szkript futtatásához és a Load Generator elindításához. A paraméterek alapértelmezett értékeinek meghagyása most.
 3. Jelentkezzen be az Azure-fiókjába, és szükség esetén válassza ki a használni kívánt előfizetést.
 
@@ -167,17 +168,17 @@ Ha szeretné vezérelni és figyelni a háttérben futó feladatokat, használja
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator. ps1 műveletek
+### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 műveletek
 
-A *demo-LoadGenerator. ps1* a vevői tranzakciók aktív terhelését utánozza. A következő lépések a *demo-LoadGenerator. ps1* által kezdeményezett műveletek sorát ismertetik:
+A *Demo-LoadGenerator.ps1* az ügyfelek tranzakcióinak aktív terhelését utánozza. A következő lépések a *Demo-LoadGenerator.ps1* kezdeményezett műveletek sorát ismertetik:
 
-1. Az előtérben a *demo-LoadGenerator. ps1* elindítja az *LoadGenerator. ps1* programot.
+1. A *Demo-LoadGenerator.ps1* az előtérben *LoadGenerator.ps1* elindul.
 
     - Mindkét. ps1 fájlt a mappák tanulási modulok \\ segédprogramokban tárolja \\ .
 
-2. A *LoadGenerator. ps1* hurkokat a katalógusban található összes bérlői adatbázison keresztül hajtja végre.
+2. *LoadGenerator.ps1* hurkok a katalógus összes bérlői adatbázisán keresztül.
 
-3. A *LoadGenerator. ps1* minden bérlői adatbázishoz elindítja a háttérben futó PowerShell-feladatot:
+3. *LoadGenerator.ps1* elindítja a háttérben futó PowerShell-feladatot az egyes bérlői adatbázisokhoz:
 
     - Alapértelmezés szerint a háttérben futó feladatok 120 percet vesznek igénybe.
     - Mindegyik feladattípus CPU-alapú terhelést okoz egy bérlői adatbázison *sp_CpuLoadGenerator*végrehajtásával. A terhelés intenzitása és időtartama atől függően változhat `$DemoScenario` .
@@ -199,7 +200,7 @@ Mielőtt továbblépne a következő szakaszra, hagyja a betöltési generátort
 A kezdeti üzembe helyezés három minta bérlőt hoz létre. Most hozzon létre egy másik bérlőt, hogy megtekintse a telepített alkalmazás hatását. A Wingtip alkalmazásban az új bérlők kiépítésére szolgáló munkafolyamatot a [kiépítés és a katalógus oktatóanyagban](saas-dbpertenant-provision-and-catalog.md)ismertetjük. Ebben a fázisban egy új bérlőt hoz létre, amely kevesebb mint egy percet vesz igénybe.
 
 1. Nyisson meg egy új PowerShell ISE-t.
-2. Megnyitás.. \\ . Learning Modules\Provision és Catalog \\ *demo-ProvisionAndCatalog. ps1*.
+2. Megnyitás.. \\ . Learning Modules\Provision és Catalog \\ *Demo-ProvisionAndCatalog.ps1*.
 3. A szkript futtatásához nyomja le az F5 billentyűt. Hagyja meg most az alapértelmezett értékeket.
 
    > [!NOTE]
@@ -239,7 +240,7 @@ Most, hogy már elindította a betöltést a bérlők gyűjteményéből, nézz�
 
 ## <a name="monitor-the-pool"></a>A készlet figyelése
 
-A *LoadGenerator. ps1* futtatása után néhány percen belül elegendő mennyiségű adattal kell rendelkeznie, hogy megkeresse a figyelési funkciókat. Ezek a képességek készletekbe és adatbázisokba vannak építve.
+Néhány percen belül *LoadGenerator.ps1* futtatása után elegendő mennyiségű adattal kell elérhetővé tennie, hogy megtekintse a figyelési funkciókat. Ezek a képességek készletekbe és adatbázisokba vannak építve.
 
 Keresse meg a **tenants1-DPT- &lt; User &gt; **parancsot, és válassza a **Pool1** lehetőséget a készlet erőforrás-kihasználtságának megtekintéséhez. A következő diagramok esetében a Load Generator egy órára futott.
 

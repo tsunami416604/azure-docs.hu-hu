@@ -3,16 +3,16 @@ title: Áttelepítési eszközök hozzáadása a Azure Migrate
 description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901473"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109807"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
 
-Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure Migrate](migrate-overview.md).
+Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure Migrate](./migrate-services-overview.md).
 
 - Ha szeretne hozzáadni egy áttelepítési eszközt, és még nem állított be Azure Migrate projektet, kövesse ezt a [cikket](how-to-add-tool-first-time.md).
 - Ha egy ISV-eszközt adott hozzá az áttelepítéshez, [kövesse a lépéseket](prepare-isv-movere.md), hogy felkészítse az eszközt.
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure M
 2. Válassza ki a használni kívánt áttelepítési forgatókönyvet:
 
     - Ha gépeket és számítási feladatokat szeretne áttelepíteni az Azure-ba, válassza a **kiszolgálók felmérése és áttelepíteni**lehetőséget.
-    - A helyszíni SQL-gépek átköltöztetéséhez válassza az **adatbázisok felmérése és áttelepíteni**lehetőséget.
+    - A helyszíni SQL Server-adatbázisok átköltöztetéséhez válassza az **adatbázisok felmérése és áttelepíteni**lehetőséget.
     - A helyszíni webalkalmazások átköltöztetéséhez válassza a **webalkalmazások felmérése és áttelepíteni**lehetőséget.
     - Ha nagy mennyiségű helyszíni adatátvitelt szeretne áttelepíteni az Azure-ba offline módban, válassza **az Data Box megrendelése**lehetőséget.
 
@@ -63,6 +63,6 @@ Nagy mennyiségű adatok Azure-ba történő átmásolásához rendeljen egy Azu
 2. A **Azure Data Box kiválasztása**lapon adja meg az előfizetését. 
 3. Az átvitel az Azure-ba lesz importálva. Határozza meg az adatforrást és az Azure-régió célhelyét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Hyper-V](tutorial-migrate-hyper-v.md) -vagy [VMware](tutorial-migrate-vmware.md) -alapú virtuális gépekre Azure Migrate kiszolgáló áttelepítését használó áttelepítés kipróbálása.

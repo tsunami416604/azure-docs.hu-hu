@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113150"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
 
  A [OData **$OrderBy** paraméterrel](query-odata-filter-orderby-syntax.md) egyéni rendezési sorrendet alkalmazhat az Azure Cognitive Search keresési eredményeire. Ez a cikk részletesen ismerteti **$OrderBy** szintaxisát. A keresési eredmények megjelenítésével kapcsolatos további általános információkért lásd: a keresési eredmények **$OrderBy** használata [Az Azure-ban Cognitive Search](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A **$OrderBy** paraméter legfeljebb 32 **ORDER-BY záradék**vesszővel tagolt listáját fogadja el. Az ORDER-BY záradék szintaxisát a következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) írja le:
 
@@ -50,15 +49,15 @@ Az interaktív szintaxis diagram is elérhető:
 > [!NOTE]
 > Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-Az egyes záradékok rendezési feltételekkel rendelkeznek, opcionálisan egy rendezési irány után`asc` ( `desc` növekvő vagy csökkenő sorrendben). Ha nem ad meg irányt, az alapértelmezett érték a növekvő. A rendezési feltétel lehet egy `sortable` mező elérési útja vagy a [`geo.distance`](search-query-odata-geo-spatial-functions.md) vagy a [`search.score`](search-query-odata-search-score-function.md) függvények egyik hívása is.
+Az egyes záradékok rendezési feltételekkel rendelkeznek, opcionálisan egy rendezési irány után ( `asc` növekvő vagy `desc` csökkenő sorrendben). Ha nem ad meg irányt, az alapértelmezett érték a növekvő. A rendezési feltétel lehet egy mező elérési útja `sortable` vagy a [`geo.distance`](search-query-odata-geo-spatial-functions.md) vagy a függvények egyik hívása is [`search.score`](search-query-odata-search-score-function.md) .
 
-Ha több dokumentumra ugyanazok a rendezési feltételek tartoznak `search.score` , és a függvény nincs használatban (például ha egy numerikus `Rating` mező alapján rendezi a sort, és a három dokumentum minősítése 4), a kapcsolatok a dokumentum pontszáma szerint csökkenő sorrendben lesznek megszakítva. Ha a dokumentumok pontszámai megegyeznek (például ha nincs megadva teljes szöveges keresési lekérdezés a kérelemben), akkor a kötött dokumentumok relatív sorrendje nem kötelező.
+Ha több dokumentumra ugyanazok a rendezési feltételek tartoznak, és a `search.score` függvény nincs használatban (például ha egy numerikus mező alapján rendezi a sort, `Rating` és a három dokumentum minősítése 4), a kapcsolatok a dokumentum pontszáma szerint csökkenő sorrendben lesznek megszakítva. Ha a dokumentumok pontszámai megegyeznek (például ha nincs megadva teljes szöveges keresési lekérdezés a kérelemben), akkor a kötött dokumentumok relatív sorrendje nem kötelező.
 
-Több rendezési feltételt is megadhat. A kifejezések sorrendje határozza meg a végső rendezési sorrendet. Például a pontszám csökkenő rendezéséhez, amelyet a minősítés követ, a szintaxis a következő: `$orderby=search.score() desc,Rating desc`.
+Több rendezési feltételt is megadhat. A kifejezések sorrendje határozza meg a végső rendezési sorrendet. Például a pontszám csökkenő rendezéséhez, amelyet a minősítés követ, a szintaxis a következő: `$orderby=search.score() desc,Rating desc` .
 
-A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az vonatkozik, típusnak `Edm.GeographyPoint` kell lennie, és azt is `sortable`tartalmaznia kell.
+A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az vonatkozik, típusnak kell lennie, `Edm.GeographyPoint` és azt is tartalmaznia kell `sortable` .
 
-A **$OrderBy** szintaxisa a következő `search.score()` `search.score` :. A függvény `search.score` nem végez paramétereket.
+A $orderby szintaxisa a következő `search.score` **$orderby** : `search.score()` . A függvény `search.score` nem végez paramétereket.
 
 ## <a name="examples"></a>Példák
 

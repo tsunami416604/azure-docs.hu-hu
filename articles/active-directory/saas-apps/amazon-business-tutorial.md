@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b8f5ff42597a457a8849e424e041f1677c28b383
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773019"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608942"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Oktatóanyag: az Amazon Business integrálása a Azure Active Directory
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Az **azonosító (Entity ID)** szövegmezőben írja be az URL-címet a következő minták egyikének használatával:
     
-       | | |
+       | URL-cím | Régió |
        |-|-|
        | `https://www.amazon.com`| Észak-Amerika |
        | `https://www.amazon.co.jp`| Kelet-Ázsia |
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
     
-       | | |
+       | URL-cím | Régió |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Észak-Amerika |
        | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kelet-Ázsia |
@@ -217,7 +217,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure AD biztonsági csoport létrehozása a Azure Portalban
 

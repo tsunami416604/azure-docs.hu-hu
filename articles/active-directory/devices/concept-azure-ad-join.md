@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554897"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
 Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalapú vagy csak felhőalapú célokra alkalmasak. Bármely szervezet az Azure AD-hez csatlakoztatott eszközöket a méret vagy az iparág méretétől függetlenül is üzembe helyezheti. Az Azure AD-csatlakozás hibrid környezetben is működik, ami lehetővé teszi a Felhőbeli és a helyszíni alkalmazások és erőforrások elérését.
 
-|   | Azure AD-csatlakozás |
+| Azure AD-csatlakozás | Description |
 | --- | --- |
 | **Definíció** | Csak az Azure AD-hez csatlakozik, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
 | **Elsődleges célközönség** | Alkalmas a csak felhőalapú és a hibrid szervezetekhez. |

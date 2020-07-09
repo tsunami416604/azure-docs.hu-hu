@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117097"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418177"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
 
@@ -220,7 +220,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-A szimuláció kiosztja a tevékenységeket a Batch-készlet csomópontjainak. A tevékenység látható a készlet hőtérképén az Azure Portalon]. Nyissa meg a **Batch-fiókok** > *myBatchAccount*. Kattintson a **készletek** > *myPoolName*elemre. 
+A szimuláció kiosztja a tevékenységeket a Batch-készlet csomópontjainak. A tevékenység a Azure Portalban lévő készlethez tartozó Heat térképen látható. Nyissa meg a **Batch-fiókok**  >  *myBatchAccount*. Kattintson a **készletek**  >  *myPoolName*elemre. 
 
 ![Párhuzamos R-feladatokat futtató készlet hőtérképe](media/tutorial-r-doazureparallel/pool.png)
 
@@ -250,7 +250,7 @@ Miután a feladat befejeződött, automatikusan törlődik. Ha a fürtre már ni
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban a következőket sajátította el:
 
 > [!div class="checklist"]

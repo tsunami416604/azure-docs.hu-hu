@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sethm
 ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74260761"
 ---
 ## <a name="webapi-project"></a>WebAPI projekt
@@ -92,7 +92,7 @@ ms.locfileid: "74260761"
     }
     ```
 
-Vegye figyelembe, `Post` hogy a metódus most nem küld bejelentési értesítést. Nyers értesítést küld, amely csak az értesítési azonosítót tartalmazza, és nem bizalmas tartalmat. Ügyeljen arra is, hogy a küldési műveletet jegyezze fel azon platformok esetében, amelyekhez nem rendelkezik az értesítési központban konfigurált hitelesítő adatokkal, mivel ezek hibákat eredményeznek.
+Vegye figyelembe, hogy a `Post` metódus most nem küld bejelentési értesítést. Nyers értesítést küld, amely csak az értesítési azonosítót tartalmazza, és nem bizalmas tartalmat. Ügyeljen arra is, hogy a küldési műveletet jegyezze fel azon platformok esetében, amelyekhez nem rendelkezik az értesítési központban konfigurált hitelesítő adatokkal, mivel ezek hibákat eredményeznek.
 
 1. Most újra telepítjük ezt az alkalmazást egy Azure-webhelyre, hogy minden eszközről elérhetővé váljon. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 2. A közzétételi célként válassza az Azure-webhely lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Ebben az oktatóanyagban a *háttérbeli végpontként* erre az URL-címre fogunk hivatkozni. Kattintson a **Publish** (Közzététel) gombra.

@@ -8,24 +8,23 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/13/2019
-ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 06/22/2020
+ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602455"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
-A Azure Machine Learning számítási példány (előzetes verzió) egy teljes körűen felügyelt felhőalapú munkaállomás az adatszakértők számára. 
+Az Azure Machine Learning számítási példány egy felügyelt felhőalapú munkaállomás adatszakértők számára.
 
 A számítási példányok megkönnyítik a Azure Machine Learning fejlesztésének megkezdését, valamint a rendszergazdák számára a felügyeleti és a vállalati készültségi képességek biztosítását.  
 
-Számítási példányt használhat a felhőben teljes mértékben konfigurált és felügyelt fejlesztési környezetként.
+Számítási példányt használhat a felhőben a gépi tanuláshoz teljes mértékben konfigurált és felügyelt fejlesztési környezetként. Emellett számítási célokként is használhatók a fejlesztési és tesztelési célú képzéshez és következtetésekhez.  
 
-A számítási példányokat általában fejlesztési környezetként használják.  A fejlesztéshez és a teszteléshez is használható számítási célként.  A nagyméretű feladatokhoz a többcsomópontos skálázási képességekkel rendelkező [Azure Machine learning számítási fürt](how-to-set-up-training-targets.md#amlcompute) jobb számítási célként szolgál.
-
+Az üzemi szintű modell képzéséhez használjon [Azure Machine learning számítási fürtöt](how-to-set-up-training-targets.md#amlcompute) több csomópontos skálázási képességekkel. Az üzemi szintű modell üzembe helyezéséhez használja az [Azure Kubernetes Service-fürtöt](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="why-use-a-compute-instance"></a>Miért érdemes számítási példányt használni?
 
@@ -33,9 +32,9 @@ A számítási példány egy teljes körűen felügyelt felhőalapú munkaállom
 
 |Főbb előnyök||
 |----|----|
-|Termelékenység|Az adatszakértők a modelleket integrált jegyzetfüzetekkel és a böngészőben a következő eszközökkel hozhatják létre és helyezhetik üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio|
-|Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-enable-virtual-network.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához|
-|Előre konfigurált &nbsp; vagy &nbsp; ml|Időt takaríthat meg a telepítési feladatokban előre konfigurált és naprakész ML-csomagokkal, mély tanulási keretrendszerekkel, GPU-illesztővel.|
+|Termelékenység|A modelleket integrált jegyzetfüzetekkel és a Azure Machine Learning Studio következő eszközeivel hozhatja létre és helyezheti üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio (előzetes verzió)<br/>A számítási példány teljes mértékben integrálva van Azure Machine Learning munkaterülettel és Studióval. A jegyzetfüzeteket és az egyéb adatszakértőket a munkaterületen is megoszthatja. A VS Code-távfelügyeleti szolgáltatást [SSH](how-to-set-up-vs-code-remote.md) -val is beállíthatja |
+|Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-enable-virtual-network.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához<br/>TLS 1,2 engedélyezve |
+|Előre konfigurálva &nbsp; ( &nbsp; ml)|Időt takaríthat meg a telepítési feladatokban előre konfigurált és naprakész ML-csomagokkal, mély tanulási keretrendszerekkel, GPU-illesztővel.|
 |Teljes mértékben testreszabható|Az Azure-beli virtuálisgép-típusok széles körű támogatása, beleértve a GPU-ket és a megőrzött alacsony szintű testreszabásokat, például a csomagok és illesztőprogramok telepítésének speciális forgatókönyveit. |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Eszközök és környezetek
@@ -58,7 +57,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 
 |**R** -eszközök & környezetek|Részletek|
 |----|:----:|
-|RStudio-kiszolgáló – nyílt forráskódú kiadás||
+|RStudio Server nyílt forráskódú kiadás (előzetes verzió)||
 |R kernel||
 |Az R-hez készült Azure Machine Learning SDK|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-minták|
 
@@ -75,8 +74,6 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Azure Machine Learning Python & R SDK-minták||
 
 A Python-csomagok mind a **python 3,6-AzureML** környezetben települnek.  
-
-A számítási példányokat általában fejlesztési környezetként használják.  A fejlesztéshez és a teszteléshez is használható számítási célként.  A nagyméretű feladatokhoz a többcsomópontos skálázási képességekkel rendelkező [Azure Machine learning számítási fürt](how-to-set-up-training-targets.md#amlcompute) jobb számítási célként szolgál.
 
 ### <a name="installing-packages"></a>Csomagok telepítése
 
@@ -96,13 +93,15 @@ Vagy a következő módokon érheti el a terminál-ablakokat:
 
 A jegyzetfüzeteket és R-parancsfájlokat az Azure-fájlmegosztás munkaterületének alapértelmezett Storage-fiókjában tárolja a rendszer.  Ezek a fájlok a "felhasználói fájlok" könyvtár alatt találhatók. Ez a tároló megkönnyíti a jegyzetfüzetek megosztását a számítási példányok között. A Storage-fiók azt is megőrzi, hogy a jegyzetfüzetek biztonságosan megmaradnak a számítási példány leállításakor vagy törlésekor.
 
-A munkaterület Azure-fájlmegosztás fiókja a számítási példány meghajtójának megfelelően van csatlakoztatva. Ez a meghajtó a Jupyter, a Jupyter Labs és a RStudio alapértelmezett munkakönyvtára.
+A munkaterület Azure-fájlmegosztás fiókja a számítási példány meghajtójának megfelelően van csatlakoztatva. Ez a meghajtó a Jupyter, a Jupyter Labs és a RStudio alapértelmezett munkakönyvtára. Ez azt jelenti, hogy a Jupyter, JupyterLab vagy RStudio-ben létrehozott jegyzetfüzetek és egyéb fájlok automatikusan tárolódnak a fájlmegosztás során, és más számítási példányokban is használhatók.
 
 A fájlmegosztás fájljai a munkaterületen lévő összes számítási példányból elérhetők. A rendszer a számítási példányon a fájlok minden módosítását megbízhatóan megőrzi a fájlmegosztás számára.
 
 A legújabb Azure Machine Learning mintákat a munkaterület fájlmegosztás felhasználói fájlok könyvtára alatt is klónozott mappába helyezheti.
 
-A kisméretű fájlok írása lassabb lehet a hálózati meghajtókon, mint a virtuális gépre való írás.  Ha sok kis fájlt ír, próbálkozzon közvetlenül a számítási példányon, például a `/tmp` címtárban. Vegye figyelembe, hogy ezek a fájlok nem lesznek elérhetők a munkaterület más számítási példányaiból.
+A kisméretű fájlok írása a hálózati meghajtókon lassabb lehet, mint a számítási példány helyi lemezének írásakor.  Ha sok kis fájlt ír, próbálkozzon közvetlenül a számítási példányon, például a `/tmp` címtárban. Vegye figyelembe, hogy ezek a fájlok nem lesznek elérhetők más számítási példányokból. 
+
+Az `/tmp` ideiglenes adatokhoz használhatja a számítási példány könyvtárát is.  A számítási példány operációsrendszer-lemezén azonban ne írjon nagy mennyiségű adatfájlt.  Használjon [datastores](concept-azure-machine-learning-architecture.md#datasets-and-datastores) helyette adattárolókat. Ha telepítette a JupyterLab git bővítményt, akkor a számítási példányok teljesítményének lassulásához is vezethet.
 
 ## <a name="managing-a-compute-instance"></a>Számítási példány kezelése
 
@@ -112,38 +111,75 @@ Azure Machine Learning Studio munkaterületén válassza a **számítás**, majd
 
 A következő műveleteket hajthatja végre:
 
-* Új számítási példány létrehozása. Adja meg a nevet, az Azure-beli virtuális gép típusát, beleértve a GPU-ket (vegye figyelembe, hogy a virtuális gép típusa a létrehozás után nem módosítható), az SSH-hozzáférés engedélyezése/letiltása és a virtuális hálózati beállítások konfigurálása. A példányokat közvetlenül is létrehozhatja az integrált jegyzetfüzetek, Azure Portal, Resource Manager-sablonok vagy Azure Machine Learning SDK használatával. A számítási példányok létrehozásához szükséges dedikált magok régiónként a rendszer egységesíti és megosztotta Azure Machine Learning számítási fürt kvótáját.
-* A számítási példányok lap frissítése
-* Számítási példány elindítása, leállítása és újraindítása. Állítsa le a virtuális gépet, ha nem használja azt a Cost csökkentése érdekében. Ezután indítsa el újra, amikor szüksége van rá.
-* Számítási példány törlése
+* [Hozzon létre egy számítási példányt](#create). 
+* Frissítse a számítási példányok lapot.
+* Számítási példány elindítása, leállítása és újraindítása.  A példányért kell fizetnie, amikor fut. Állítsa le a számítási példányt, ha nem használja azt a Cost csökkentése érdekében. Egy számítási példány leállítása felszabadítja azt. Ezután indítsa el újra, amikor szüksége van rá. 
+* Számítási példány törlése.
+* A számítási példányok listájának szűrése a létrehozott értékekre.  Ezek az Ön által elérhető számítási példányok.
 
-A munkaterületen minden számítási példány esetében a következőket teheti:
+A munkaterület minden olyan számítási példányához, amelyhez hozzáfér, a következőket teheti:
 
 * Hozzáférés Jupyter, JupyterLab, RStudio a számítási példányon
 * Az SSH-t a számítási példányba. Az SSH-hozzáférés alapértelmezés szerint le van tiltva, de a számítási példány létrehozási idején is engedélyezhető. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül történik. A lapon megadhatja az SSH-kapcsolat adatait, például az IP-címet, a felhasználónevet és a portszámot.
 * Egy adott számítási példány, például az IP-cím és a régió részletes adatainak beolvasása.
 
-A [RBAC](/azure/role-based-access-control/overview) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le vagy indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója jogosult a Jupyter, a JupyterLab és a RStudio elérésére a számítási példányon. A számítási példány létrehozója rendelkezik a hozzájuk rendelt számítási példánnyal, rendelkezik rendszergazdai hozzáféréssel, és a Jupyter keresztül tud terminált. A számítási példány a létrehozó felhasználó egyfelhasználós bejelentkezési felhasználónevével fog rendelkezni, és minden művelet a felhasználó identitását fogja használni a RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
+A [RBAC](/azure/role-based-access-control/overview) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le vagy indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója jogosult a Jupyter, a JupyterLab és a RStudio elérésére a számítási példányon. A számítási példány létrehozója rendelkezik a hozzájuk rendelt számítási példánnyal, rendelkezik rendszergazdai hozzáféréssel, és a Jupyter/JupyterLab/RStudio-en keresztül terminált is biztosít. A számítási példány a létrehozó felhasználó egyfelhasználós bejelentkezési felhasználónevével fog rendelkezni, és minden művelet a felhasználó identitását fogja használni a RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
+
+Ezeket a műveleteket a RBAC is vezérelheti:
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/olvasás*
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/törlés*
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
+
+### <a name="create-a-compute-instance"></a><a name="create"></a>Számítási példány létrehozása
+
+A Azure Machine Learning Studio munkaterületén hozzon létre egy új számítási példányt a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására.
+
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Új számítási példány létrehozása":::
+
+
+|Mező  |Description  |
+|---------|---------|
+|Számítási név     |  <li>A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.</li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-** a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
+|Virtuális gép típusa |  Válassza a CPU vagy a GPU lehetőséget. Ez a típus nem módosítható a létrehozás után     |
+|Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
+|SSH-hozzáférés engedélyezése/letiltása     |   Az SSH-hozzáférés alapértelmezés szerint le van tiltva.  Az SSH-hozzáférés nem lehet. a létrehozás után módosult. Győződjön meg arról, hogy engedélyezi a hozzáférést, ha interaktívan szeretne hibakeresést végezni a [vs Code Remote](how-to-set-up-vs-code-remote.md) használatával   |
+|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot**és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](how-to-enable-virtual-network.md#compute-instance) .        |
 
 Létrehozhat egy példányt is
-* Közvetlenül az integrált jegyzetfüzetek felületéről
+* Közvetlenül az [integrált jegyzetfüzetek felületéről](tutorial-1st-experiment-sdk-setup.md#azure)
 * Azure Portal
 * Azure Resource Manager sablonból
-* Azure Machine Learning SDK-val
+* [Azure Machine learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb) -val
+* A [CLI-bővítményből Azure Machine learning](reference-azure-machine-learning-cli.md#computeinstance)
 
-A kiszámított példányok létrehozására vonatkozó dedikált magok régiónként, amely a számítási példányok létrehozására vonatkozik, egységesítve van, és megosztva Azure Machine Learning betanítási fürt kvótáját. 
+A dedikált magok régiónként/virtuálisgép-család kvótája és a teljes regionális kvóta, amely a számítási példányok létrehozására vonatkozik. egységesített és közös Azure Machine Learning képzés számítási fürt kvótája. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt.
 
 ## <a name="compute-target"></a>Számítási cél
 
-A számítási példányok a Azure Machine Learning számítási képzési fürtökhöz hasonló [képzési számítási célként](concept-compute-target.md#train) használhatók. Több GPU-t használó virtuális gép kiépítése elosztott betanítási feladatok futtatásához a TensorFlow/PyTorch becslések használatával. Létrehozhat egy futtatási konfigurációt is, és használhatja a kísérlet számítási példányon való futtatásához. A számítási példányokat helyi központi telepítési célként használhatja tesztelési és hibakeresési helyzetekben.
+A számítási példányok a Azure Machine Learning számítási képzési fürtökhöz hasonló [képzési számítási célként](concept-compute-target.md#train) használhatók. 
+
+Egy számítási példány:
+* Rendelkezik a feladatok várólistával.
+* A feladatokat a virtuális hálózati környezetben biztonságosan futtatja anélkül, hogy a vállalatoknak SSH-portot kellene megnyitnia. A feladatot egy tároló környezetben hajtja végre a rendszer, és a modell függőségeit egy Docker-tárolóban csomagolja.
+* Több kisebb feladatot is futtathat párhuzamosan (előzetes verzió).  Az alapszintű két feladat párhuzamosan futtatható, míg a többi feladat várólistára kerül.
+
+A számítási példányokat a tesztelési és hibakeresési forgatókönyvekhez helyi előállítási célként is használhatja.
+
+> [!NOTE]
+> Az elosztott betanítási feladatok nem támogatottak a számítási példányokon.  Az elosztott képzéshez használja a (számítási fürtök] (útmutató – set-up-Training-Targets. MD # amlcompute).
+
+További részletek: notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Ez a jegyzetfüzet a *Training/Train-on-computeinstance*Studio **Samples** mappában is elérhető.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Mi történt a notebook virtuális géppel?
 
 A számítási példányok a notebook virtuális gépet cserélik le.  
 
-A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok egy számítási példányból lesznek elérhetők. Azonban a notebook virtuális gépen korábban telepített egyéni csomagokat újra kell telepíteni a számítási példányon. A számítási fürtök létrehozására vonatkozó kvóta-korlátozások a számítási példányok létrehozására is érvényesek lesznek. 
+A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok egy számítási példányból lesznek elérhetők. Azonban a notebook virtuális gépen korábban telepített egyéni csomagokat újra kell telepíteni a számítási példányon. A számítási fürtök létrehozására vonatkozó kvóta-korlátozások a számítási példányok létrehozására is érvényesek lesznek.
 
-Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre. 
+Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre.
 
 
 ## <a name="next-steps"></a>További lépések

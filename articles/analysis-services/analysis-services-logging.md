@@ -8,10 +8,9 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701492"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
@@ -90,7 +89,7 @@ A metrikák kategória ugyanazokat a [kiszolgálói metrikákat](analysis-servic
 
 3. Kattintson a **Save** (Mentés) gombra.
 
-    Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \< munkaterület nevét>. Az előfizetés \< -előfizetési azonosító> nincs regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
+    Ha a következő hibaüzenet jelenik meg: "a diagnosztika frissítése sikertelen \<workspace name> . Az előfizetés nincs \<subscription id> regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
 
     Ha módosítani szeretné, hogy az erőforrás-naplók hogyan legyenek mentve a jövő bármely pontjára, térjen vissza erre a lapra a beállítások módosításához.
 
@@ -160,9 +159,9 @@ A diagnosztikai adatok megtekintéséhez Log Analytics munkaterületen nyissa me
 
 A lekérdezés-szerkesztőben bontsa ki a **LogManagement**  >  **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass \_ s mező xEvent neveket tartalmaz, amelyek ismerősek lehetnek, ha a helyszíni naplózáshoz xevent típusú eseményekhez használta. Kattintson a **EventClass \_ s** vagy az egyik esemény nevére, és log Analytics munkaterület folytatja a lekérdezés összeállítását. A lekérdezéseket ajánlatos menteni későbbi használatra.
 
-### <a name="example-queries"></a>Példák lekérdezésekre
+### <a name="example-queries"></a>Példa a lekérdezésekre
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 A következő lekérdezés a modell-adatbázis és-kiszolgáló minden lekérdezési End/Fresh End eseményének időtartamát adja vissza. Ha a méretezés ki van bontva, az eredmények a replika szerint vannak kiosztva, mivel a replika száma szerepel a ServerName_sban. Az RootActivityId_g csoportosítása csökkenti a Azure Diagnostics REST API lekért sorszámokat, és az [log Analytics díjszabásában](https://dev.loganalytics.io/documentation/Using-the-API/Limits)leírtaknak megfelelően segít a korlátokon belül maradni.
 
@@ -177,7 +176,7 @@ window
 | order by StartTime_t asc
 ```
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 A következő lekérdezés egy kiszolgáló memória-és QPU-felhasználását adja vissza. Ha a méretezés ki van bontva, az eredmények a replika szerint vannak kiosztva, mivel a replika száma szerepel a ServerName_sban.
 
@@ -192,7 +191,7 @@ window
 | order by TimeGenerated asc 
 ```
 
-#### <a name="example-3"></a>3. példa
+#### <a name="example-3"></a>3\. példa
 
 A következő lekérdezés visszaadja a-kiszolgáló másodpercenkénti olvasási/mp Analysis Services motorjának teljesítményszámlálói értékét.
 

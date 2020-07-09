@@ -3,13 +3,12 @@ title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248971"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -43,7 +42,7 @@ Azure Monitor-riasztásokhoz JIRA-jegyeket is létrehozhat.
 
 ## <a name="botmetric"></a>Botmetric
 
-[További információ.][botmetric-doc]
+[Részletek][botmetric-doc]
 
 ## <a name="circonus"></a>Circonus
 
@@ -106,7 +105,8 @@ A Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi az időso
 
 ![InfluxData embléma](./media/partners/Influxdata.png)
 
-A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platformot biztosít, amely az alapoktól kezdve a DevOps-és IoT-alkalmazások metrikáinak és eseményeinek (idősoros adatok) elemzésére épül. Akár emberekből, érzékelőkből vagy gépekből származó adatokról van szó, a InfluxData lehetővé teszi a fejlesztők számára, hogy a következő generációs monitorozási, elemzési és IoT alkalmazásokat gyorsabban, könnyebben és a valós üzleti értékek gyors méretezésével méretezheti. A San Franciscóban alapuló InfluxData több mint 420 ügyfél, például a Cisco, az eBay, az IBM és a Siemens.
+A InfluxData a InfluxDB, a nyílt forráskódú idősorozat-adatbázis létrehozója. A technológiánk célja, hogy kezelje a IoT-eszközök, alkalmazások, hálózatok, tárolók és számítógépek által előállított nagy mennyiségű időbélyeget. Célunk, hogy segítse a fejlesztőket és a szervezeteket, például az IBM, a Visa, a Siemens, a Tesla és a NASA szolgáltatásait, a valós idejű adattárolást és-elemzést, az átalakítást, az elemzési és IoT alkalmazások gyors és méretezhető kialakítását. Microsoft Azure figyelő metrikáinak és eseményeinek gyűjtési képességei kiterjeszthetők a InfluxData-kiszolgálóval, amely lehetővé teszi a Microsoft felhasználói számára, hogy kihasználhassanak egy vezető idősorozatos adatbázis-megoldást, és kihasználják az egyre növekvő nyílt forráskódú, a-hez való hozzájárulást
+
 
 [Nyissa meg a dokumentációt.][influxdata-doc]
 
@@ -115,7 +115,7 @@ A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platform
 
 ![Logic monitor embléma](./media/partners/logicmonitor.png)
 
-A&reg; LogicMonitor az összetett informatikai infrastruktúra vezető SaaS-alapú, teljesítmény-figyelési platformja. A LogicMonitor több ezer technológiával rendelkezik, és részletes láthatóságot biztosít az infrastruktúra és az alkalmazások teljesítményében. Az LM-felhő átfogó Azure-figyelése lehetővé teszi a felhasználók számára az Azure-felhő, a helyszíni és a hibrid Felhőbeli erőforrások teljesítményének összekapcsolását – mindezt egyetlen platformról. Az automatizált erőforrás-felderítés, beépített figyelési sablonok, előre konfigurált riasztási küszöbértékek és testreszabható irányítópultok kombinálva lehetővé teszik a sikerhez szükséges sebességet, rugalmasságot és láthatóságot.
+A LogicMonitor az &reg; összetett informatikai infrastruktúra vezető SaaS-alapú, teljesítmény-figyelési platformja. A LogicMonitor több ezer technológiával rendelkezik, és részletes láthatóságot biztosít az infrastruktúra és az alkalmazások teljesítményében. Az LM-felhő átfogó Azure-figyelése lehetővé teszi a felhasználók számára az Azure-felhő, a helyszíni és a hibrid Felhőbeli erőforrások teljesítményének összekapcsolását – mindezt egyetlen platformról. Az automatizált erőforrás-felderítés, beépített figyelési sablonok, előre konfigurált riasztási küszöbértékek és testreszabható irányítópultok kombinálva lehetővé teszik a sikerhez szükséges sebességet, rugalmasságot és láthatóságot.
 
 [Nyissa meg a dokumentációt.][logicmonitor-doc]
 
@@ -137,7 +137,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Részletek
+Tudjon meg többet
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -165,7 +165,7 @@ A Moogsoft az Azure Real-Estate szolgáltatásban fut, és integrálva van a mon
 
 ![NewRelic embléma](./media/partners/newrelic.png)
 
-[További információ.][newrelic-doc]
+[Részletek][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 
@@ -195,7 +195,7 @@ A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az I
 
 A ScienceLogic a következő generációs informatikai szolgáltatás-megbízhatósági platformot biztosítja bármely technológia, bárhol a kezeléséhez. A ScienceLogic biztosítja a méretezést, a biztonságot, az automatizálást és a rugalmasságot az informatikai erőforrások, szolgáltatások és alkalmazások kezeléséhez szükséges feladatok egyszerűsítése érdekében. A ScienceLogic platform Azure API-kat használ a Microsoft Azurehoz való kapcsolódáshoz. A ScienceLogic valós idejű láthatóságot biztosít az Azure-szolgáltatásokhoz és-erőforrásokhoz. Így biztos lehet abban, hogy ha valami nem működik, és gyorsabb megoldást kínál. Az Azure-t az egyéb Felhőkkel és adatközpont-rendszerekkel és-szolgáltatásokkal együtt is kezelheti.
 
-[További információ.][sciencelogic-doc]
+[Részletek][sciencelogic-doc]
 
 ## <a name="serverless360"></a>Serverless360
 
@@ -203,7 +203,7 @@ A ScienceLogic a következő generációs informatikai szolgáltatás-megbízhat
 
 A Serverless360 egy platformos eszköz az Azure kiszolgáló nélküli összetevők üzemeltetéséhez, kezeléséhez és figyeléséhez. A kezelhetőség az egyik legfontosabb kihívás a kiszolgáló nélküli megvalósításokban. Több száz kisméretű, különálló kiszolgáló nélküli szolgáltatás különböző helyeken van szétszórva – ilyen megoldások kezelése és működtetése összetett. A Serverless360 számos kifinomult eszközzel oldja meg ezeket a kihívásokat. Felügyelheti a kiszolgáló nélküli szolgáltatásokat, például a Azure Functions, a Logic Apps, az Event grideket, a Service Bus várólistákat, a témákat, a továbbításokat, a Event Hubseket, a tárolási várólistákat, a fájlokat, a blobokat és a A Serverless360 az Azure piactéren érhető el. Ezek a képességek a SaaS-és a privát üzemeltetésben is elérhetők (a saját környezetében található).  
 
-[További információ.][serverless360-doc]
+[Részletek][serverless360-doc]
 
 ## <a name="servicenow"></a>ServiceNow
 
@@ -211,7 +211,7 @@ A Serverless360 egy platformos eszköz az Azure kiszolgáló nélküli összetev
 
 Csökkentse az incidenseket és a MTTR MOSTANtól a AIOps platformmal a zaj, a rangsorolás, a kiváltó okok észlelésének meghatározása a ML használatával, valamint az ITX-munkafolyamatok szervizelésével.  Ismerje meg a IaaS/Péter/FaaS szolgáltatások aktuális állapotát az Azure-ból, és hozzon létre szolgáltatási térképeket a címkékből az üzleti hatás elemzéséhez.    
 
-[További információ.](https://www.servicenow.com/solutions/aiops.html)
+[Részletek](https://www.servicenow.com/solutions/aiops.html)
 
 ## <a name="signalfx"></a>SignalFx
 
@@ -231,7 +231,7 @@ SIGNL4 használatával – az operatív csapatoknak szóló mobil riasztási alk
 
 ## <a name="solarwinds"></a>SolarWinds
 
-[További információ.][solarwinds-doc]
+[Részletek][solarwinds-doc]
 
 ## <a name="splunk"></a>Splunk
 
@@ -247,7 +247,7 @@ A splunk Azure Monitor-bővítménye [itt érhető el a Splunkbase](https://splu
 
 A SquaredUp for Azure az Azure-alkalmazások gyönyörűen egyszerű megjelenítését teszi lehetővé. Valós idejű, interaktív irányítópultokat biztosít. Az előfizetések, az erőforráscsoportok, a címkék és az egyéni erőforrások részletezésével megtekintheti az olyan metrikákat, mint a CPU, a legtöbb bejövő kapcsolat, a Application Insights válaszidő, a teljes ár és az összefoglalás állapota, valamint a részletezés a kapcsolódó adatok, például a riasztások, a Log Analytics események, a részletesebb mérőszámok vagy a kapcsolódó adatok megtekintéséhez a használt egyéb eszközökről – például ServiceNow , Dynatrace, PagerDuty vagy FÜTYÜLÉS például.  Testre szabhatja saját irányítópultját, közzéteheti és megoszthatja őket magánszemélyekkel vagy intranetes lapokon. 
 
-[További információ.](https://squaredup.com/)
+[Részletek](https://squaredup.com/)
 
 ## <a name="sumo-logic"></a>Sumo Logic
 
@@ -255,7 +255,7 @@ A SquaredUp for Azure az Azure-alkalmazások gyönyörűen egyszerű megjelenít
 
 A Sumo Logic egy biztonságos, Felhőbeli natív, gépi adatelemzési szolgáltatás, amely valós idejű, folyamatos intelligenciát biztosít a strukturált, részben strukturált és strukturálatlan adatok között a teljes alkalmazás-életciklus és a verem számára. A világszerte több mint 1 000 ügyfél támaszkodik a szumó logikára az elemzéshez és az elemzésekhez az alkalmazások és a felhőalapú infrastruktúrák kiépítéséhez, futtatásához és védelméhez. A szumó logikával az ügyfelek több-bérlős, szolgáltatási modellt nyerhetnek, így növelhetik a versenyelőny, az üzleti értékek és a növekedés előnyeit.
 
-[További információ.][sumologic-doc]
+[Részletek][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
 
@@ -263,7 +263,7 @@ A Sumo Logic egy biztonságos, Felhőbeli natív, gépi adatelemzési szolgálta
 
 A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség valós idejű optimalizálása révén biztosítja a számítási feladatok automatizálását a hibrid felhők számára. A Turbonomic segít a szervezeteknek az Azure Estate-ben való rugalmas működésében azáltal, hogy folyamatosan optimalizálja a vagyont, így biztosítva, hogy az alkalmazások folyamatosan megkapják a szolgáltatói szerződésük teljesítéséhez szükséges erőforrásokat, valamint a számítási, tárolási és hálózati IaaS és a Péter-réteghez képest nem. A szervezetek szimulálják az áttelepítést, megfelelően méretezhetik a munkaterheléseket, és kivonják az adatközponti erőforrásokat, hogy az Azure-on időben, a teljesítmény és a megfelelőség biztosításával is biztosítva legyenek. Az Turbonomic API-alapú, és ügynök nélküli virtuális gépként fut az Azure-ban és a helyszínen.
 
-[További információ.][turbonomic-doc]
+[Részletek][turbonomic-doc]
 
 ## <a name="next-steps"></a>További lépések
 

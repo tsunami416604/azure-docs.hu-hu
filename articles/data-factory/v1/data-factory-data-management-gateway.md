@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021568"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087078"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "84021568"
 
 Az adatkezelési átjáró egy olyan ügyfél-ügynök, amelyet a helyszíni környezetbe kell telepítenie a Felhőbeli és a helyszíni adattárak közötti adatmásoláshoz. A Data Factory által támogatott helyszíni adattárak listája a [támogatott adatforrások](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szakaszban található.
 
-Ez a cikk az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között című cikk lépéseit](data-factory-move-data-between-onprem-and-cloud.md) egészíti ki. Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez. Ez a cikk részletes információkat tartalmaz az adatkezelési átjáróról.
+Ez a cikk az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között című cikk lépéseit](data-factory-move-data-between-onprem-and-cloud.md) egészíti ki. Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok SQL Server adatbázisból egy Azure-blobba való áthelyezéséhez. Ez a cikk részletes információkat tartalmaz az adatkezelési átjáróról.
 
 Egy adatkezelési átjárót úgy méretezheti fel, hogy több helyszíni gépet társít az átjáróhoz. Az adatáthelyezési feladatok növekvő száma növelhető, amely egyidejűleg futhat egy csomóponton. Ez a funkció egyetlen csomóponttal rendelkező logikai átjáró esetén is elérhető. Részletekért lásd: az [adatkezelési átjáró skálázása Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) cikkben.
 
@@ -103,7 +103,7 @@ Az adatkezelési átjárót a következő módokon lehet telepíteni:
 10. A számítógépen futó **adatkezelés gateway Configuration Manager** átjárójának **regisztrálása** lapon végezze el a következő lépéseket:
     1. Illessze be a kulcsot a szövegbe.
     2. Ha szeretné megtekinteni a kulcs szövegét, kattintson az **átjáró kulcsának megjelenítése** lehetőségre.
-    3. Kattintson a **regisztrálás**gombra.
+    3. Kattintson a **Regisztrálás** parancsra.
 
 ### <a name="register-gateway-using-key"></a>Átjáró regisztrálása kulcs használatával
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Ha még nem hozott létre logikai átjárót a portálon
@@ -140,7 +140,7 @@ Két tűzfalat kell figyelembe vennie: a **vállalati tűzfal** a szervezet köz
 
 A vállalati tűzfal szintjén a következő tartományokat és kimenő portokat kell konfigurálnia:
 
-| Tartománynevek | Portok | Leírás |
+| Tartománynevek | Portok | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
 | *.core.windows.net |443 |Szakaszos másoláshoz használatos az Azure Blob használatával (ha be van állítva)|
@@ -164,7 +164,7 @@ Ha például egy helyszíni **adattárból egy Azure SQL Database fogadóba vagy
 * Konfigurálja a logikai SQL Server tűzfalbeállítások beállítását, és adja hozzá az átjáró-számítógép IP-címét az engedélyezett IP-címek listájához.
 
 > [!NOTE]
-> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, az átjáró nem fér hozzá közvetlenül az Azure SQL-hez. Ebben az esetben a [szakaszos másolás](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) használatával SQL Azure adatbázis/SQL Azure DW. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
+> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, az átjáró nem fér hozzá közvetlenül az Azure SQL-hez. Ebben az esetben a [szakaszos másolással](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) SQL Database/SQL felügyelt példány/SQL Azure DW-t használhat. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
 >
 >
 
@@ -180,8 +180,8 @@ Az átjáró a proxykiszolgálót használja a felhőalapú szolgáltatáshoz va
 Három konfigurációs lehetőség közül választhat:
 
 * Ne **használja a proxyt**: az átjáró nem használ explicit módon semmilyen proxyt a Cloud Serviceshez való csatlakozáshoz.
-* A **System proxy használata**: az átjáró a diahost. exe. config és a diawp. exe. config fájlban konfigurált proxy-beállítást használja. Ha nincs proxy konfigurálva a diahost. exe. config és a diawp. exe. config fájlban, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
-* **Egyéni proxy használata**: konfigurálja az átjáróhoz használni kívánt http-proxy beállítást a diahost. exe. config és a diawp. exe. config fájlban található konfigurációk használata helyett. A címnek és a portnak kötelező megadni. A proxy hitelesítési beállításától függően a Felhasználónév és a jelszó nem kötelező. Minden beállítás titkosítva van az átjáró hitelesítő adataival, és helyileg tárolódik az átjáró gazdagépén.
+* A **System proxy használata**: az átjáró a diahost.exe.config és diawp.exe.config konfigurált proxybeállításokat használja. Ha nincs proxy konfigurálva diahost.exe.config és diawp.exe.config, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
+* **Egyéni proxy használata**: konfigurálja az átjáróhoz használni kívánt http-proxy beállítást diahost.exe.config és diawp.exe.config konfigurációk használata helyett. A címnek és a portnak kötelező megadni. A proxy hitelesítési beállításától függően a Felhasználónév és a jelszó nem kötelező. Minden beállítás titkosítva van az átjáró hitelesítő adataival, és helyileg tárolódik az átjáró gazdagépén.
 
 Az adatkezelési átjáró gazdagép-szolgáltatása automatikusan újraindul a frissített proxybeállítások mentése után.
 
@@ -202,10 +202,10 @@ Configuration Manager eszköz használatával megtekintheti és frissítheti a H
 >
 
 ### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló beállításainak konfigurálása
-Ha a HTTP-proxyhoz a **rendszerproxy használata** beállítást választja, az átjáró a diahost. exe. config és a diawp. exe. config fájl proxybeállításait használja. Ha nincs megadva proxy a diahost. exe. config és a diawp. exe. config fájlban, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost. exe. config fájl frissítéséhez.
+Ha a HTTP-proxyhoz a **rendszerproxy használata** beállítást választja, az átjáró a diahost.exe.config és diawp.exe.config proxy beállítását használja. Ha nincs megadva proxy a diahost.exe.configban, és diawp.exe.config, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost.exe.config fájl frissítéséhez.
 
-1. A Fájlkezelőben hozzon létre egy biztonságos másolatot a *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared \\ diahost. exe. config* fájlban az eredeti fájl biztonsági mentéséhez.
-2. Indítsa el a Notepad. exe alkalmazást rendszergazdaként, és nyissa meg a *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared \\ diahost. exe. config*fájlt. A system.net alapértelmezett címkéjét az alábbi kódban látható módon találja:
+1. A Fájlkezelőben hozzon létre egy biztonságos másolatot a *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ megosztott \\diahost.exe.config* az eredeti fájl biztonsági mentéséhez.
+2. Indítsa el Notepad.exe futtató rendszergazdaként, és nyissa meg a *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ megosztott \\diahost.exe.config*. A system.net alapértelmezett címkéjét az alábbi kódban látható módon találja:
 
     ```
     <system.net>
@@ -231,7 +231,7 @@ Ha a HTTP-proxyhoz a **rendszerproxy használata** beállítást választja, az 
 3. Mentse a konfigurációs fájlt az eredeti helyre, majd indítsa újra a adatkezelés átjáró-gazdagép szolgáltatást, amely felveszi a módosításokat. A szolgáltatás újraindítása: a Vezérlőpulton vagy a **adatkezelés átjáróból** válassza a szolgáltatások kisalkalmazása elemet Configuration Manager > kattintson a **szolgáltatás leállítása** gombra, majd kattintson a **Start Service**(szolgáltatás indítása) elemre. Ha a szolgáltatás nem indul el, valószínűleg helytelen XML-címke-szintaxis lett hozzáadva a szerkesztett alkalmazás konfigurációs fájljához.
 
 > [!IMPORTANT]
-> Ne felejtse el frissíteni a diahost. exe. config és a diawp. exe. config fájlt **is** .
+> Ne felejtse el frissíteni a diahost.exe.config és diawp.exe.config **is** .
 
 Ezeken a pontokon kívül meg kell győződnie arról is, Microsoft Azure a vállalat engedélyezési listájában szerepel. Az érvényes Microsoft Azure IP-címek listáját a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=41653)töltheti le.
 
@@ -247,7 +247,9 @@ A **hitelesítő adatok beállítása** alkalmazás a **8050** bejövő portot h
 
 Ha külső gyártótól származó tűzfalat használ, a 8050-es portot manuálisan is megnyithatja. Ha tűzfalon futtatja a problémát az átjáró telepítésekor, a következő parancs használatával telepítheti az átjárót a tűzfal konfigurálása nélkül.
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 Ha úgy dönt, hogy nem nyitja meg az 8050-as portot az átjárót tartalmazó gépen, használja a **hitelesítő adatok beállítása** az adattároló hitelesítő adatainak beállításához használt mechanizmusokat. Használhatja például a [New-AzDataFactoryEncryptValue PowerShell-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) parancsmagot. Lásd: a hitelesítő adatok és a Biztonság beállítása szakasz, amely az adattár hitelesítő adatainak beállítását ismerteti.
 
@@ -309,7 +311,7 @@ A következő lépések végrehajtásával letilthatja/engedélyezheti az automa
 Miután telepítette az átjárót, a következő módszerek egyikével indíthatja el adatkezelés átjáró Configuration Manager:
 
 1. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez.
-2. Futtassa a végrehajtható *ConfigManager. exe* fájlt a mappában: *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared*.
+2. Futtassa a végrehajtható *ConfigManager.exe* a mappában: *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Kezdőlap
 A kezdőlapon a következő műveletek végezhetők el:
@@ -362,7 +364,7 @@ A Azure Portal az erőforrás-kihasználtság (CPU, memória, hálózat (in/out)
 
 Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlopok leírását tartalmazza:
 
-Figyelési tulajdonság | Leírás
+Figyelési tulajdonság | Description
 :------------------ | :----------
 Name | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
 Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
@@ -510,7 +512,7 @@ Ez a szakasz azt ismerteti, hogyan lehet átjárót létrehozni és regisztráln
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. A Azure PowerShellban váltson a következő mappára: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ PowerShellScript \\ *. Futtassa a *RegisterGateway. ps1* parancsot a helyi változóhoz **$Key** az alábbi parancsban látható módon. Ez a parancsfájl regisztrálja a gépen a korábban létrehozott logikai átjáróval telepített ügyfél-ügynököt.
+1. A Azure PowerShellban váltson a következő mappára: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ PowerShellScript \\ *. Futtassa *RegisterGateway.ps1* a helyi változóhoz társított **$Key** az alábbi parancsban látható módon. Ez a parancsfájl regisztrálja a gépen a korábban létrehozott logikai átjáróval telepített ügyfél-ügynököt.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -543,4 +545,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez.
+* Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok SQL Server adatbázisból egy Azure-blobba való áthelyezéséhez.

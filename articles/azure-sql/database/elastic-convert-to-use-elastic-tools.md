@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 42a2d571c04d08b5ec868bbd06cd521bfcda24bc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84050204"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Meglévő adatbázisok migrálása a vertikális felskálázáshoz
@@ -154,7 +153,7 @@ Get-Mappings -ShardMap $ShardMap
 
 A telepítés befejezése után megkezdheti az Elastic Database ügyféloldali függvénytár használatát. Az [Adatfüggő útválasztást](elastic-scale-data-dependent-routing.md) és a [több szegmensre](elastic-scale-multishard-querying.md)kiterjedő lekérdezést is használhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A PowerShell-parancsfájlok beszerzése [Azure SQL Database-Elastic Database eszközök parancsfájljaiból](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 

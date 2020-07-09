@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728504"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Dinamikus csoporttagság-szabály (előzetes verzió) ellenőrzése Azure Active Directory
 
@@ -27,7 +26,7 @@ A Azure Active Directory (Azure AD) mostantól lehetővé teszi a dinamikus csop
 
 ## <a name="step-by-step-walk-through"></a>Lépésről lépésre haladó útmutató
 
-Első lépésként lépjen a **Azure Active Directory** > **csoportok**elemre. Válasszon ki egy meglévő dinamikus csoportot, vagy hozzon létre egy új dinamikus csoportot, és kattintson a dinamikus tagsági szabályok elemre. Ezután megtekintheti a **szabályok érvényesítése** lapot.
+Első lépésként lépjen a **Azure Active Directory**  >  **csoportok**elemre. Válasszon ki egy meglévő dinamikus csoportot, vagy hozzon létre egy új dinamikus csoportot, és kattintson a dinamikus tagsági szabályok elemre. Ezután megtekintheti a **szabályok érvényesítése** lapot.
 
 ![A szabályok érvényesítése lap megkeresése és egy meglévő szabály elindítása](./media/groups-dynamic-rule-validation/validate-tab.png)
 

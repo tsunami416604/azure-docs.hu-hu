@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: 7b844bcf45417fefc7dd78a26d5dae0b2ce03249
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982904"
 ---
 # <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>Adatfeldolgozás a Azure Data Lake Storage Gen2ba 
@@ -70,6 +70,6 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 1. Ellenőrizze, hogy az adatai helyesen vannak-e írva az SQL-készletben.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szinapszis Analytics adatintegrálásával kapcsolatos további információkért tekintse meg az adatok betöltése [SQL-készletbe](data-integration-sql-pool.md) című cikket.

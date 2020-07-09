@@ -5,17 +5,16 @@ description: Betanítási kísérlet előkészítése prediktív kísérletre, e
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e1efa4fa3a222a11c35f642f68310109c4f32712
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696388"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
@@ -40,7 +39,7 @@ A magas szintű nézetből három lépésben helyezheti üzembe a modelljét:
 
 A prediktív elemzési modellek betanításához Azure Machine Learning Studio (klasszikus) használatával hozzon létre egy képzési kísérletet, ahol különféle modulokat tartalmaz a betanítási adatgyűjtés betöltéséhez, a szükséges, a gépi tanulási algoritmusok alkalmazásához, valamint az eredmények kiértékeléséhez. Megismételheti a kísérletet, és különböző gépi tanulási algoritmusok kipróbálásával összehasonlíthatja és értékelheti az eredményeket.
 
-A képzési kísérletek létrehozásának és kezelésének folyamata máshol még alaposabban szerepel. További információval a következő cikkek szolgálnak:
+A képzési kísérletek létrehozásának és kezelésének folyamata máshol még alaposabban szerepel. További információért lásd a következő cikkeket:
 
 * [Egyszerű kísérlet létrehozása Azure Machine Learning Studio (klasszikus)](create-experiment.md)
 * [Prediktív megoldás fejlesztése Azure Machine Learning Studio (klasszikus)](tutorial-part1-credit-risk.md)
@@ -210,7 +209,7 @@ A díjszabás régió-specifikus, ezért meg kell határoznia egy számlázási 
 6. Az **erőforráscsoport** legördülő listából válassza ki a csomaghoz tartozó erőforráscsoportot. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).
 7. A **csomag neve** mezőbe írja be a csomag nevét.
 8. A **terv beállításai**területen kattintson az új csomag számlázási szintjére.
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Webszolgáltatás üzembe helyezése egy másik régióban
 

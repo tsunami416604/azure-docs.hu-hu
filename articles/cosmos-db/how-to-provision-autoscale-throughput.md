@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118729"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Az adatméretezési sebesség kiépítése a Azure Cosmos DB adatbázisán vagy tárolóján
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan lehet kiépíteni az adatátviteli sebességet e
 
 1. Válassza az **új tároló elemet.** Adja meg az adatbázis, a tároló és a partíciós kulcs nevét. Az **átviteli sebesség**területen válassza az **autoskálázás** lehetőséget, és állítsa be azt a [maximális átviteli sebességet (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) , amelyet az adatbázisnak vagy a tárolónak méreteznie kell.
 
-   ![Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása":::
 
 1. Válassza az **OK** lehetőséget.
 
@@ -45,10 +45,10 @@ Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az auto
 
 1. A **skála**területen válassza az **autoskálázás** lehetőséget, és **mentse**.
 
-   ![Az autoskálázás engedélyezése egy meglévő tárolón](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Az autoskálázás engedélyezése egy meglévő tárolón":::
 
 > [!NOTE]
-> Ha engedélyezi az automatikus méretezést egy meglévő adatbázison vagy tárolón, a maximális RU/s értékét a rendszer határozza meg, az aktuális manuális kiépített átviteli sebesség beállításaitól és tárterülettől függően. A művelet befejezése után szükség esetén módosíthatja a maximális RU/mp-t. [További információ.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
+> Ha engedélyezi az automatikus méretezést egy meglévő adatbázison vagy tárolón, a maximális RU/s értékét a rendszer határozza meg, az aktuális manuális kiépített átviteli sebesség beállításaitól és tárterülettől függően. A művelet befejezése után szükség esetén módosíthatja a maximális RU/mp-t. [Részletek](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>Azure Cosmos DB .NET v3 SDK az SQL API-hoz
 A Azure Cosmos DB .NET SDK for SQL API [3,9-es vagy újabb verzióját](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) használja az autoscale-erőforrások kezeléséhez. 

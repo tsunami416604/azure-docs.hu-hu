@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja Azure Batch file Conventions Libr
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8dea7f503536a4eb2b0c36db7b3d35b70eb8a67
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726332"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965195"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Feladat-és tevékenységadatok megőrzése az Azure Storage-ban a Batch file Conventions Library for .NET
 
@@ -153,7 +153,7 @@ using (ITrackedSaveOperation stdout =
 
 A kommentált szakasz a `Code to process data and produce output file(s)` feladat szokásosan végrehajtandó kódjának helyőrzője. Előfordulhat például, hogy olyan kódot tartalmaz, amely az Azure Storage-ból tölti le az adatait, és az átalakítást vagy a számítást végzi. A kódrészlet fontos része azt mutatja be, hogyan lehet egy blokkban becsomagolni egy ilyen kódot, `using` hogy rendszeresen frissítsen egy fájlt a [SaveTrackedAsync][net_savetrackedasync].
 
-A csomópont-ügynök egy olyan program, amely a készlet minden csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A `Task.Delay` blokk végén meg kell hívni a hívást `using` annak biztosítására, hogy a csomópont-ügynöknek ideje legyen a standard kimenet tartalmának kiürítése a csomóponton található StdOut. txt fájlba. Ezen késés nélkül lehetséges a kimenet utolsó néhány másodpercének kihagyása. Előfordulhat, hogy ez a késleltetés nem szükséges minden fájlhoz.
+A csomópont-ügynök egy olyan program, amely a készlet minden csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A `Task.Delay` blokk végén meg kell hívni a hívást `using` annak biztosítására, hogy a csomópont-ügynöknek ideje legyen a standard tartalmának kiürítésére a csomóponton lévő stdout.txt fájlba. Ezen késés nélkül lehetséges a kimenet utolsó néhány másodpercének kihagyása. Előfordulhat, hogy ez a késleltetés nem szükséges minden fájlhoz.
 
 > [!NOTE]
 > Ha engedélyezi a **SaveTrackedAsync**a fájlok nyomon követését, a rendszer csak a követett fájlhoz *fűzi hozzá* az Azure Storage-ban. Ezt a metódust csak a nem forgó naplófájlok vagy más, a fájl végén hozzáfűzési művelettel írt fájlok nyomon követésére használhatja.
@@ -198,17 +198,17 @@ Ha meg szeretné tekinteni a feladat kimeneti fájljait és naplóit a Azure Por
 A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure batch Code-minták][github_samples] egyike. Ez a Visual Studio-megoldás bemutatja, hogyan használható a Azure Batch file Conventions könyvtár a feladatok kimenetének tartós tárterületre való megőrzéséhez. A minta futtatásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg a projektet a **Visual Studio 2019**-ben.
-2. Adja hozzá a Batch és a Storage- **fiók hitelesítő adatait** a Microsoft. Azure. Batch. Samples. Common projekt **AccountSettings. Settings** eleméhez.
+2. Adja hozzá a Batch és a Storage- **fiók hitelesítő adatait** a **AccountSettings. Settings** Microsoft.Azure.BatCH. Samples. Common projektben.
 3. A megoldás **létrehozása** (de ne fusson). Ha a rendszer kéri, állítsa vissza az NuGet-csomagokat.
 4. A Azure Portal használatával töltse fel a **PersistOutputsTask** [alkalmazási csomagját](batch-application-packages.md) . Adja `PersistOutputsTask.exe` meg a és a függő szerelvényeit a. zip csomagban, állítsa az alkalmazás azonosítóját "PersistOutputsTask" értékre, az alkalmazáscsomag verzióját pedig "1,0"-re.
 5. **Indítsa el** (futtassa) a **PersistOutputs** projektet.
 6. Amikor a rendszer felszólítja, hogy válassza ki a minta futtatásához használni kívánt adatmegőrzési technológiát, írja be az **1** értéket a minta futtatásához a fájl konvenciók könyvtár használatával a feladat kimenetének megőrzése érdekében. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>A .NET-hez készült batch file Conventions Library letöltése
 
-A .NET-hez készült batch file Conventions Library a [NuGet][nuget_package]címen érhető el. A könyvtár kiterjeszti a [CloudJob][net_cloudjob] és a [CloudTask][net_cloudtask] osztályt új metódusokkal. Tekintse meg a file Conventions Library [dokumentációját](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) is.
+A .NET-hez készült batch file Conventions Library a [NuGet][nuget_package]címen érhető el. A könyvtár kiterjeszti a [CloudJob][net_cloudjob] és a [CloudTask][net_cloudtask] osztályt új metódusokkal. Tekintse meg a file Conventions Library [dokumentációját](/dotnet/api/microsoft.azure.batch.conventions.files) is.
 
 A file Conventions könyvtár [forráskódja][github_file_conventions] elérhető a githubon a .net-hez készült Microsoft Azure SDK-tárházban. 
 
@@ -222,20 +222,20 @@ A file Conventions könyvtár [forráskódja][github_file_conventions] elérhet�
 [github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudstorageaccount]: /java/api/com.microsoft.azure.storage.cloudstorageaccount
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
-[net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
-[net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
-[net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_prepareoutputasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync.aspx
-[net_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx
-[net_savetrackedasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync.aspx
-[net_taskoutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputkind.aspx
-[net_taskoutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx
+[net_joboutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputkind
+[net_joboutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage
+[net_joboutputstorage_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_prepareoutputasync]: /dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync
+[net_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync
+[net_savetrackedasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync
+[net_taskoutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputkind
+[net_taskoutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

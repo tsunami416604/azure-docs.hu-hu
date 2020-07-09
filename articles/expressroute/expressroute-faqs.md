@@ -7,12 +7,11 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987301"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -87,15 +86,15 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját.
 * Azure Active Directory
-* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure globális szolgáltatások közössége)
-* Azure nyilvános IP-címek a IaaS (Virtual Machines, Virtual Network átjárók, terheléselosztó stb.)  
+* Azure nyilvános IP-címek IaaS (Virtual Machines, Virtual Network átjárók, terheléselosztó stb.)  
 * A többi Azure-szolgáltatás többsége is támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.
 
 **Nem támogatott:**
 
 * Tartalomkézbesítési hálózat (CDN)
 * Azure Front Door
+* [Windows virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication kiszolgáló (örökölt)
 * Traffic Manager
 
@@ -118,7 +117,7 @@ Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat
 A Dynamics 365-és Common Data Service-(CDS-) környezetek az Azure-ban futnak, ezért az ügyfelek az Azure-erőforrások mögöttes ExpressRoute-támogatás előnyeit élvezik. Ha az útválasztó szűrője tartalmazza azokat az Azure-régiókat, amelyeken a Dynamics 365/CDS-környezetek futnak, csatlakozhat a szolgáltatási végpontokhoz.
 
 > [!NOTE]
-> A Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül **nem** szükséges a [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) használata.
+> Az [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) **nem** szükséges a Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül, ha az ExpressRoute-áramkör ugyanazon a [geopolitikai régión](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)belül van üzembe helyezve.
 
 ## <a name="data-and-connections"></a>Az adatkezelés és a kapcsolatok
 
@@ -152,7 +151,7 @@ Ha az egyik kapcsolat meghiúsul, nem fogja elveszíteni a kapcsolatot. Redundá
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan a redundancia megvalósítását a privát partnereken?
 
-A különböző társi helyekről több ExpressRoute-áramkör csatlakoztatható ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután a helyi kapcsolathoz [nagyobb súlyt rendelhet](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) hozzá, és előnyben részesített egy adott áramkört. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
+Több ExpressRoute-áramkör különböző, egymástól eltérő helyekről vagy akár négy kapcsolatból is csatlakozhat ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután az egyik helyi kapcsolathoz is [hozzárendelhet nagyobb súlyokat](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) egy adott áramkör előnyben részesítése érdekében. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
 
 [Itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) megtekintheti a magas rendelkezésre állást és [itt](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) megtervezheti a vész-helyreállítást.  
 
@@ -164,7 +163,7 @@ A magas rendelkezésre állás kialakításához [itt](https://docs.microsoft.co
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan magas rendelkezésre állást biztosít a ExpressRoute-hez csatlakoztatott virtuális hálózatokon?
 
-Magas rendelkezésre állást érhet el, ha összekapcsolja a ExpressRoute-áramköröket a különböző (például szingapúri, Szingapúr2) helyek között a virtuális hálózatra. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
+Magas rendelkezésre állást érhet el, ha akár négy ExpressRoute-áramkört csatlakoztat a virtuális hálózathoz, vagy ha a ExpressRoute-áramköröket különböző, egymással összekapcsoló (például Szingapúr, Szingapúr2) virtuális hálózathoz csatlakoztatja. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hogyan, hogy az Azure-beli nyilvános szolgáltatásokhoz, például az Azure Storage-hoz és az Azure SQL-hez a Microsoft társközi vagy nyilvános társ-kezeléshez szánt forgalma előnyben részesített a ExpressRoute útvonalon?
 
@@ -195,7 +194,7 @@ Ha a szolgáltató mindkét helyen ExpressRoute kínál, akkor használhatja a s
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Használhatok több ExpressRoute-áramkört ugyanazon a metrón? Hivatkozhatok ugyanahhoz a virtuális hálózathoz?
 
-Igen. Több ExpressRoute-áramkört is megadhat ugyanahhoz vagy más szolgáltatóhoz. Ha a metrón több ExpressRoute-társítási hely található, és az áramkör különböző helyen jön létre, akkor ugyanahhoz a virtuális hálózathoz kapcsolhatja őket. Ha az áramkör ugyanazon a helyen jön létre, akkor akár 4 áramkört is összekapcsolhat ugyanahhoz a virtuális hálózathoz.
+Igen. Több ExpressRoute-áramkört is megadhat ugyanahhoz vagy más szolgáltatóhoz. Ha a metrón több ExpressRoute-társítási hely található, és az áramkör különböző helyen jön létre, akkor ugyanahhoz a virtuális hálózathoz kapcsolhatja őket. Ha az áramkör ugyanazon a helyen jön létre, akkor akár négy áramkört is csatolhat ugyanahhoz a virtuális hálózathoz.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>A virtuális hálózatok összekapcsolása egy ExpressRoute-áramkörrel Hogyan
 
@@ -295,7 +294,7 @@ A ExpressRoute Premium a következő funkciók gyűjteménye:
 * Nagyobb számú virtuális hálózatok és ExpressRoute Global Reach kapcsolat, amely engedélyezhető egy ExpressRoute-áramkörön (az alapértelmezett érték 10). További információ: [ExpressRoute-korlátok](#limits) tábla.
 * Csatlakozás az Office 365-hoz
 * Globális kapcsolat a Microsoft Core hálózaton keresztül. Most már összekapcsolhat egy VNet az egyik geopolitikai régióban egy másik régióban lévő ExpressRoute-áramkörrel.<br>
-    **Példák**
+    **Példák:**
 
     *  Az Európa nyugati régiójában létrehozott VNet egy Szilícium-völgyben létrehozott ExpressRoute-áramkörhöz csatolhatja. 
     *  A Microsoft-társak a többi geopolitikai régió előtagjait is meghirdetik, így például az SQL Azure Nyugat-Európában, a Szilícium-völgyben található áramkörről.

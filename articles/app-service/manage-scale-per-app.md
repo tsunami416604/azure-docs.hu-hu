@@ -8,10 +8,9 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672350"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetés Azure App Service alkalmazáson belüli skálázással
@@ -32,7 +31,7 @@ A platform nem támaszkodik mérőszámokra a munkavégzők kiosztásának eldö
 
 ## <a name="per-app-scaling-using-powershell"></a>Alkalmazások skálázása a PowerShell használatával
 
-Hozzon létre egy csomagot az alkalmazáson belüli skálázással, és ```-PerSiteScaling $true``` adja át a ```New-AzAppServicePlan``` paramétert a parancsmagnak.
+Hozzon létre egy csomagot az alkalmazáson belüli skálázással, és adja ```-PerSiteScaling $true``` át a paramétert a ```New-AzAppServicePlan``` parancsmagnak.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,7 +40,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Az alkalmazáson belüli méretezés engedélyezése meglévő App Servicei csomaggal a `-PerSiteScaling $true` paraméternek a ```Set-AzAppServicePlan``` parancsmagba való átadásával.
+Az alkalmazáson belüli méretezés engedélyezése meglévő App Servicei csomaggal a `-PerSiteScaling $true` paraméternek a parancsmagba való átadásával ```Set-AzAppServicePlan``` .
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -65,7 +64,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`eltér a következőtől `$newapp.MaxNumberOfWorkers`:. Az alkalmazáson belüli méretezés az `$newapp.SiteConfig.NumberOfWorkers` alkalmazás méretezési jellemzőinek meghatározására használja.
+> `$newapp.SiteConfig.NumberOfWorkers`eltér a következőtől: `$newapp.MaxNumberOfWorkers` . Az alkalmazáson belüli méretezés az `$newapp.SiteConfig.NumberOfWorkers` alkalmazás méretezési jellemzőinek meghatározására használja.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Alkalmazáson belüli méretezés Azure Resource Manager használatával
 
@@ -74,7 +73,7 @@ A következő Azure Resource Manager sablon jön létre:
 - Egy 10 példányra méretezett App Service-csomag
 - egy alkalmazás, amely legfeljebb öt példányra méretezhető.
 
-Az App Service terv a **PerSiteScaling** tulajdonságot igaz `"perSiteScaling": true`értékre állítja. Az alkalmazás az 5 `"properties": { "numberOfWorkers": "5" }`értékre állítja a **feldolgozók számát** .
+Az App Service terv a **PerSiteScaling** tulajdonságot igaz értékre állítja `"perSiteScaling": true` . Az alkalmazás az 5 értékre állítja a **feldolgozók számát** `"properties": { "numberOfWorkers": "5" }` .
 
 ```json
 {

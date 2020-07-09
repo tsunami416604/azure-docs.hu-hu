@@ -13,17 +13,16 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683831"
 ---
 # <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
 Ez a útmutató az egyéni eszköz modelljét definiáló JSON-és JavaScript-fájlokat ismerteti. A cikk néhány minta típusú eszköz-definíciós fájlt tartalmaz, és bemutatja, hogyan töltheti fel őket az eszköz szimulációs példányára. Speciális eszköz-modelleket hozhat létre, amelyek reális eszköz-viselkedést szimulálnak a teszteléshez.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,9 +46,9 @@ Az eszköz modelljét JSON-eszköz definíciós fájlja és JavaScript-fájlok k
 
 Egy tipikus eszköz modellje:
 
-* Minden eszköz-modellhez egy JSON-fájl (például: lift. JSON).
-* Egy JavaScript-viselkedési parancsfájl minden eszköz-modellhez (például Elevator-State. js)
-* Egy JavaScript-metódus parancsfájlja minden eszköz-metódushoz (például Elevator-go-Down. js)
+* Egy JSON-fájl minden eszköz-modellhez (például elevator.json).
+* Egy JavaScript-viselkedési parancsfájl minden eszköz-modellhez (például elevator-state.js)
+* Egy JavaScript-metódus parancsfájlja minden eszköz-metódushoz (például elevator-go-down.js)
 
 > [!NOTE]
 > Nem minden eszköz modell definiál metódusokat. Ezért előfordulhat, hogy az eszköz modellje nem rendelkezik metódus-parancsfájlokkal. Azonban minden eszköz modellnek rendelkeznie kell egy viselkedési parancsfájllal.
@@ -187,7 +186,7 @@ A szimulált eszközök reagálnak a metódus hívására is, ebben az esetben b
 
 Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy eszköz modellt a drone számára. A drone véletlenszerűen veszi körül a koordinátákat a hely és a magasság beállításával.
 
-Másolja a következő JSON-t egy szövegszerkesztőbe, és mentse azt a **drone. JSON**néven.
+Másolja a következő JSON-t egy szövegszerkesztőbe, és mentse **drone.jsként**.
 
 ### <a name="device-definition-json-example"></a>Eszköz-definíció JSON-példa
 
@@ -277,7 +276,7 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Viselkedési parancsfájl létrehozása
 
-Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse a **drone-State. js**néven.
+Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse **drone-state.jsként **.
 
 ### <a name="device-model-javascript-simulation-example"></a>Példa az eszköz modell JavaScript-szimulációra
 
@@ -406,7 +405,7 @@ A metódus parancsfájljai hasonlók a viselkedési parancsfájlokhoz. Definiál
 
 A drone-visszahívás parancsfájl beállítja a drone koordinátáit egy rögzített pontra, hogy szimulálja a hazai hazatérést.
 
-Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse a **droneRecall-Method. js**néven.
+Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse **droneRecall-method.jsként **.
 
 ### <a name="device-model-javascript-simulation-example"></a>Példa az eszköz modell JavaScript-szimulációra
 

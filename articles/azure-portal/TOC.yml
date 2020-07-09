@@ -8,6 +8,13 @@
       href: azure-portal-quickstart-center.md
     - name: Támogatott böngészők és eszközök
       href: azure-portal-supported-browsers-devices.md
+- name: Rövid útmutatók
+  items:
+    - name: Virtuális gép létrehozása a portálon
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: Irányítópult létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: Alapelvek
   items:
     - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel
@@ -36,8 +43,8 @@
       items:
         - name: Azure-támogatáskérés létrehozása
           href: supportability/how-to-create-azure-support-request.md
-        - name: Fájlok feltöltése támogatáskérésekhez
-          href: supportability/how-to-use-file-uploader.md
+        - name: Azure-támogatáskérés kezelése
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Kvótanövelések kérése
           items:
             - name: Számítási vCPU-korlátok növelése
@@ -70,6 +77,8 @@
       href: azure-portal-safelist-urls.md
     - name: Az Azure-irányítópultok struktúrája
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: További források
   items:
     - name: Azure-ütemterv

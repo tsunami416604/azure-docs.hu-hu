@@ -12,10 +12,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77620871"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect felhőalapú üzembe helyezés támogatott topológiák és forgatókönyvek
@@ -50,7 +49,7 @@ A gyakori topológia több AD-erdő, egy vagy több tartománnyal és egyetlen A
 Ez a forgatókönyv a többerdős forgatókönyvhöz hasonló, azonban egy meglévő Azure AD Connect-környezettel rendelkezik, majd egy új erdőt hoz létre Azure AD Connect felhőalapú kiépítés használatával.  Példa erre a forgatókönyvre [: oktatóanyag: egy meglévő erdő egyetlen Azure ad-Bérlővel](tutorial-existing-forest.md)
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Azure AD Connect felhőalapú kiépítés kipróbálása egy meglévő hibrid AD-erdőben
-![Egyetlen erdőhöz és egyetlen bérlőhöz](media/plan-cloud-provisioning-topologies/migrate.png) tartozó topológia a tesztelési forgatókönyv magában foglalja a Azure AD Connect és Azure ad Connect felhőalapú kiépítés ugyanabban az erdőben való létezését, és ennek megfelelően a felhasználók és csoportok hatókörét. Megjegyzés: egy objektumnak csak az egyik eszköz hatókörében kell lennie. 
+![Egyetlen erdőhöz és egyetlen bérlőhöz tartozó topológia ](media/plan-cloud-provisioning-topologies/migrate.png) a tesztelési forgatókönyv magában foglalja a Azure ad Connect és Azure ad Connect felhőalapú kiépítés ugyanabban az erdőben való létezését, és ennek megfelelően a felhasználók és csoportok hatókörét. Megjegyzés: egy objektumnak csak az egyik eszköz hatókörében kell lennie. 
 
 Példa erre a forgatókönyvre [: oktatóanyag: kísérleti Azure ad Connect felhőalapú kiépítés egy meglévő szinkronizált ad-erdőben](tutorial-pilot-aadc-aadccp.md)
 

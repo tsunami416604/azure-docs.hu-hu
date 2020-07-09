@@ -6,15 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262667"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
 
@@ -33,7 +33,7 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).  
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).  
 2. Válassza **az erőforrás létrehozása > biztonsági > Key Vault**lehetőséget.  
 3. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:  
    * **Név:** Adjon egyedi nevet a Key Vaultnak.  
@@ -51,7 +51,7 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
    * Adja meg a titkos kulcs **nevét**
    * Adja meg a Cosmos DB-fiókjának a Value ( **érték** ) mezőbe való kapcsolási karakterláncát. Majd válassza a **Létrehozás**lehetőséget.
 
-   ![Titkos kulcs létrehozása](./media/access-secrets-from-keyvault/create-a-secret.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Titkos kulcs létrehozása":::
 
 4. A titkos kód létrehozása után nyissa meg, és másolja a * * titkos azonosítót, amely a következő formátumban van. Ezt az azonosítót a következő szakaszban fogja használni. 
 
@@ -70,11 +70,11 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 
 5. Az alkalmazás telepítése után. A Azure Portal navigáljon az üzembe helyezett webalkalmazáshoz, és kapcsolja be az alkalmazás **felügyelt szolgáltatás identitását** .  
 
-   ![Felügyelt szolgáltatás identitása](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Felügyelt szolgáltatás identitása":::
 
 Ha most futtatja az alkalmazást, a következő hibaüzenet jelenik meg, mivel nem kapott engedélyt az alkalmazásra Key Vault.
 
-![Az alkalmazás hozzáférés nélkül lett üzembe helyezve](./media/access-secrets-from-keyvault/app-deployed-without-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Az alkalmazás hozzáférés nélkül lett üzembe helyezve":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>Regisztrálja az alkalmazást & engedélyt ad a Key Vault olvasásához
 
@@ -84,11 +84,11 @@ Ebben a szakaszban regisztrálnia kell az alkalmazást Azure Active Directory, �
 
 2. Nyissa meg a **hozzáférési házirendeket**, válassza az **+ új** keresés a telepített webalkalmazásban lehetőséget, válassza az engedélyek lehetőséget, majd kattintson **az OK gombra**.  
 
-   ![Hozzáférési szabályzat hozzáadása](./media/access-secrets-from-keyvault/add-access-policy.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Hozzáférési szabályzat hozzáadása":::
 
 Most, ha futtatja az alkalmazást, elolvashatja a titkos kulcsot Key Vaultról.
 
-![Titkos kulccsal üzembe helyezett alkalmazás](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Titkos kulccsal üzembe helyezett alkalmazás":::
  
 Hasonlóképpen hozzáadhat egy felhasználót is a kulcstartó eléréséhez. A **hozzáférési szabályzatok** kiválasztásával, majd az alkalmazás Visual studióból való futtatásához szükséges összes engedély megadásával saját magának kell felvennie a Key Vault. Ha az alkalmazás az asztalról fut, az identitást veszi igénybe.
 

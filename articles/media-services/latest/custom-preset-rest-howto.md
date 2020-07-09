@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65761797"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Kódolás egyéni átalakítással – REST
@@ -39,7 +39,7 @@ Egyéni beállításkészletek létrehozásakor a következő szempontokat kell 
 
 Az alábbi példa egy új átalakító kérelem törzsét határozza meg. Definiáljuk azokat a kimeneteket, amelyeket a rendszer a transzformáció használatakor szeretne generálni. 
 
-Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódoláshoz, és két H264Video réteget a videó kódolásához. A videó rétegekben címkéket rendelünk hozzá, hogy használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet bélyegképeket is tartalmazzon. Az alábbi példában a bemeneti videó felbontásának 50%-ában, valamint három időbélyeggel ({25%, 50%, 75}) adjuk meg a képeket PNG formátumban. Végül megadjuk a kimeneti fájlok formátumát – az egyiket a videó + hang, a másik pedig a miniatűrökhöz. Mivel több H264Layers is rendelkezünk, olyan makrókat kell használnia, amelyek egyedi neveket hoznak létre rétegként. Használhatunk egy vagy `{Bitrate}` egy `{Label}` makrót is, a példa az előzőt mutatja.
+Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódoláshoz, és két H264Video réteget a videó kódolásához. A videó rétegekben címkéket rendelünk hozzá, hogy használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet bélyegképeket is tartalmazzon. Az alábbi példában a bemeneti videó felbontásának 50%-ában, valamint három időbélyeggel ({25%, 50%, 75}) adjuk meg a képeket PNG formátumban. Végül megadjuk a kimeneti fájlok formátumát – az egyiket a videó + hang, a másik pedig a miniatűrökhöz. Mivel több H264Layers is rendelkezünk, olyan makrókat kell használnia, amelyek egyedi neveket hoznak létre rétegként. Használhatunk egy vagy egy `{Label}` `{Bitrate}` makrót is, a példa az előzőt mutatja.
 
 ```json
 {
@@ -135,7 +135,7 @@ Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódolásh
 
 Ebben a példában egy olyan **átalakítót** hozunk létre, amely a korábban definiált egyéni beállításkészlet alapján lett létrehozva. Átalakítás létrehozásakor először a [Get](https://docs.microsoft.com/rest/api/media/transforms/get) paranccsal ellenőrizze, hogy az egyik már létezik-e. Ha az átalakítás létezik, használja újra. 
 
-A letöltött Poster gyűjteményében válassza az **átalakítások és feladatok**->**Létrehozás vagy frissítés átalakítás**lehetőséget.
+A letöltött Poster gyűjteményében válassza az **átalakítások és feladatok** -> **Létrehozás vagy frissítés átalakítás**lehetőséget.
 
 A **put** HTTP-kérelem módszere a következőhöz hasonló:
 

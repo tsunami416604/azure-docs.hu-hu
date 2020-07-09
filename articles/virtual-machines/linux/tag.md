@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460953"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép címkézése az Azure-ban
@@ -35,7 +35,7 @@ A következő parancs használatával megtekintheti az adott virtuális gép ös
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Ha új virtuálisgép-címkét szeretne hozzáadni az Azure CLI-n keresztül, `azure vm update` használja a parancsot a címke paraméterrel együtt – **set**:
+Ha új virtuálisgép-címkét szeretne hozzáadni az Azure CLI-n keresztül, használja a `azure vm update` parancsot a címke paraméterrel együtt – **set**:
 
 ```azurecli
 az vm update \

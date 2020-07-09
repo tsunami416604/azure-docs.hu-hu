@@ -5,15 +5,15 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44b84c03dd9c070fd7ca3764a0dc50e8caa9e1fc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354566"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045161"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Stream Analytics Edge-feladatok fejlesztése a Visual Studio Tools használatával
 
@@ -29,7 +29,7 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek:
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Stream Analytics Edge-projekt létrehozása 
 
-A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget. Nyissa meg a **sablonok** listáját a bal oldalon > bontsa ki a **Azure stream Analytics** > **stream Analytics Edge** > **Azure stream Analytics Edge alkalmazást**. Adja meg a projekt nevét, helyét és a megoldás nevét, majd kattintson **az OK gombra**.
+A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. Nyissa meg a **sablonok** listáját a bal oldalon > bontsa ki a **Azure stream Analytics**  >  **stream Analytics Edge**  >  **Azure stream Analytics Edge alkalmazást**. Adja meg a projekt nevét, helyét és a megoldás nevét, majd kattintson **az OK gombra**.
 
 ![Új Stream Analytics Edge-projekt a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
@@ -46,7 +46,7 @@ A projekt létrehozása után navigáljon a **megoldáskezelő** a mappa-hierarc
 
 ## <a name="define-inputs"></a>A bemenetek meghatározása
 
-1. A **megoldáskezelő**bontsa ki a **bemenetek** csomópontot, és megjelenik egy **EdgeInput. JSON**nevű bemenet. Kattintson ide duplán a beállítások megtekintéséhez.  
+1. A **megoldáskezelő**bontsa ki a **bemenetek** csomópontot, **EdgeInput.jsbe**nevű bemenetnek kell megjelennie. Kattintson ide duplán a beállítások megtekintéséhez.  
 
 2. Forrás típusának beállítása **adatfolyamként**. Ezután állítsa a forrás – **Edge hubot**, az esemény szerializálási formátumát **JSON**-ra, és az **UTF8**kódolással. Szükség esetén átnevezheti a **bemeneti aliast**, így a példaként is elhagyhatja azt. Ha átnevezi a bemeneti aliast, használja a lekérdezés definiálásakor megadott nevet. A beállítások mentéséhez válassza a **Mentés** lehetőséget.  
    ![Stream Analytics a feladatok bemenetének konfigurálása](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
@@ -55,7 +55,7 @@ A projekt létrehozása után navigáljon a **megoldáskezelő** a mappa-hierarc
 
 ## <a name="define-outputs"></a>Kimenetek meghatározása
 
-1. A **megoldáskezelő**bontsa ki a **kimenetek** csomópontot, és a **EdgeOutput. JSON**nevű kimenetet kell látnia. Kattintson ide duplán a beállítások megtekintéséhez.  
+1. A **megoldáskezelő**bontsa ki a **kimenetek** csomópontot, **EdgeOutput.json**nevű kimenet jelenik meg. Kattintson ide duplán a beállítások megtekintéséhez.  
 
 2. Győződjön meg arról, hogy az **Edge hub**kiválasztásához a fogadót állítja be, az esemény szerializálási formátumát **JSON**-re állítja, a kódolást **UTF8**-ra állítja, és beállítja a Format **Array** Szükség esetén átnevezheti a **kimeneti aliast**is, így a példaként is elhagyhatja a következőt:. Ha átnevezi a kimeneti aliast, használja a lekérdezés definiálásakor megadott nevet. A beállítások mentéséhez válassza a **Mentés** lehetőséget. 
    ![Stream Analytics feladatok kimeneti konfigurációja](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
@@ -82,12 +82,12 @@ FROM EdgeInput
 
 A lekérdezés helyi teszteléséhez fel kell töltenie a mintaadatok. Mintaadatok beszerzéséhez töltse le a regisztrációs adatait a [GitHub-adattárból](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) , és mentse a helyi számítógépre. 
 
-1. A mintaadatok feltöltéséhez kattintson a jobb gombbal a **EdgeInput. JSON** fájlra, és válassza a **helyi bemenet hozzáadása** elemet.  
+1. A mintaadatok feltöltéséhez kattintson a jobb gombbal a **EdgeInput.js** fájl elemre, és válassza a **helyi bemenet hozzáadása** elemet.  
 
 2. Az előugró ablakban > **böngészhet** a helyi útvonalon található mintaadatok között > válassza a **Mentés**lehetőséget.
    ![Helyi bemeneti konfiguráció a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
-3. A rendszer automatikusan felvesz egy **local_EdgeInput. JSON** nevű fájlt a bemenetek mappájába.  
+3. A rendszer automatikusan felvesz egy **local_EdgeInput.js** nevű fájlt a bemenetek mappájába.  
 4. Futtathatja helyileg, vagy elküldheti az Azure-ba. A lekérdezés teszteléséhez válassza a **helyi Futtatás**lehetőséget.  
    ![A Visual Studióban Stream Analytics a feladatok futtatásának beállításai](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
@@ -99,7 +99,7 @@ A lekérdezés helyi teszteléséhez fel kell töltenie a mintaadatok. Mintaadat
 
 ## <a name="submit-the-job-to-azure"></a>A feladatok elküldése az Azure-ba
 
-1. Mielőtt elküldi a feladatot az Azure-ba, csatlakoznia kell az Azure-előfizetéséhez. Nyissa meg a **Server Explorert** > kattintson a jobb gombbal az **Azure** > **-beli kapcsolódás lehetőségre Microsoft Azure előfizetés** > jelentkezzen be az Azure-előfizetésbe.  
+1. Mielőtt elküldi a feladatot az Azure-ba, csatlakoznia kell az Azure-előfizetéséhez. Nyissa meg a **Server Explorert** > kattintson a jobb gombbal az **Azure**-beli kapcsolódás lehetőségre  >  **Microsoft Azure előfizetés** > jelentkezzen be az Azure-előfizetésbe.  
 
 2. A feladatoknak az Azure-ba való elküldéséhez navigáljon a lekérdezés-szerkesztő > válassza a **Küldés az Azure**-ba lehetőséget.  
 

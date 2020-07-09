@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317226"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – gyakori kérdések (GYIK)
 
@@ -53,7 +53,7 @@ Az indexek újbóli létrehozásához a külső forrásokból származó adatok 
 
 Alternatív megoldásként használhatja az [Azure Cognitive Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples) -tárházának **index-Backup-Restore** mintakód elemét, hogy biztonsági másolatot készítsen egy index-definícióról, és hogyan indexelje a PILLANATKÉPet egy sor JSON-fájlra. Később az eszköz és a fájlok segítségével visszaállíthatja az indexet, ha szükséges.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Indexelhető az SQL Database-replikák ( [Azure SQL Database indexelő](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)alkalmazásra vonatkozik)
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Indexelhető-e a SQL Database replikák ( [Azure SQL Database indexelő](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)alkalmazásra vonatkozik)
 
 Az elsődleges vagy másodlagos replikák adatforrásként való használata nem vonatkozik a teljesen új indexek létrehozásakor. Az indexnek a növekményes frissítésekkel (módosított rekordok alapján) való frissítése azonban az elsődleges replikát igényli. Ez a követelmény SQL Databaseból származik, amely csak az elsődleges replikák változás-követését garantálja. Ha másodlagos replikákat próbál használni egy index-frissítési feladathoz, akkor nem garantáljuk az összes adat beszerzését.
 
@@ -65,7 +65,7 @@ Nem, ez a művelet nem támogatott. A keresés mindig egyetlen indexre terjed ki
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Korlátozható a keresési index hozzáférése a felhasználói identitás alapján?
 
-A `search.in()` szűrővel [biztonsági szűrőket](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) alkalmazhat. A szűrő jól együttműködik a [(z) Azure Active Directory (HRE) identitás-kezelési szolgáltatásokkal](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) , hogy a keresési eredményeket a definiált felhasználói csoporttagság alapján vágja ki.
+A szűrővel [biztonsági szűrőket](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) alkalmazhat `search.in()` . A szűrő jól együttműködik a [(z) Azure Active Directory (HRE) identitás-kezelési szolgáltatásokkal](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) , hogy a keresési eredményeket a definiált felhasználói csoporttagság alapján vágja ki.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Miért van nulla egyezés az érvényes feltételek alapján?
 
@@ -75,7 +75,7 @@ A helyettesítő karakteres, a zavaros és a regex lekérdezéseket azonban nem 
 
 ### <a name="my-wildcard-searches-are-slow"></a>A helyettesítő karakteres keresések lassúak.
 
-A legtöbb helyettesítő karakteres keresési lekérdezést, például az előtagot, a fuzzy és a regexet, a rendszer a keresési indexben lévő egyező kifejezésekkel együtt írja felül. A keresési index ellenőrzésének további feldolgozása a késéshez. Emellett a széles körű keresési lekérdezések, `a*` mint például a sok kifejezéssel valószínűleg újraírhatók, nagyon lassúak lehetnek. Az elvégezhető helyettesítő karakteres keresések esetében érdemes lehet [Egyéni elemzőt](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiálni.
+A legtöbb helyettesítő karakteres keresési lekérdezést, például az előtagot, a fuzzy és a regexet, a rendszer a keresési indexben lévő egyező kifejezésekkel együtt írja felül. A keresési index ellenőrzésének további feldolgozása a késéshez. Emellett a széles körű keresési lekérdezések, mint `a*` például a sok kifejezéssel valószínűleg újraírhatók, nagyon lassúak lehetnek. Az elvégezhető helyettesítő karakteres keresések esetében érdemes lehet [Egyéni elemzőt](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiálni.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Miért rangsorolja a keresés a 1,0 konstans vagy egyenlő pontszámát minden találatot illetően?
 
@@ -105,4 +105,4 @@ Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Kérje a s
 
  [StackOverflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)  
- [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)
+ [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)

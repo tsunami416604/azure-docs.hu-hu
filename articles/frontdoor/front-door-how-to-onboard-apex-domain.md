@@ -4,20 +4,20 @@ description: Megtudhatja, hogyan lehet bevezetni egy gyökér-vagy APEX-tartomá
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743592"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Egy gyökér-vagy APEX-tartomány beléptetése az előtérben
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Gyökértartomány vagy Apex-tartomány előkészítése a Front Dooron
 Az Azure bevezető ajtaja CNAME rekordokat használ a tartomány tulajdonjogának ellenőrzéséhez az egyéni tartományok bevezetéséhez. Emellett a bevezető ajtó nem teszi elérhetővé az előtér-profilhoz társított előtérbeli IP-címet, így az APEX tartománya nem rendelhető hozzá IP-címhez, ha a cél az, hogy bemutassa az Azure-ba.
 
-A DNS protokoll megakadályozza a CNAME rekordok hozzárendelését a zóna csúcsán. Ha például a tartomány: `contoso.com`; CNAME-rekordokat is létrehozhat `somelabel.contoso.com`a következőhöz:; a `contoso.com` CNAME nem hozható létre önmagához. Ez a korlátozás olyan alkalmazás-tulajdonosoknak nyújt problémát, akik elosztott terhelésű alkalmazásokat vezetnek be az Azure bejárati ajtó mögött. Mivel a bejárati ajtó profiljának használata szükséges egy CNAME rekord létrehozásához, nem lehet az első ajtón lévő profilra mutatni a zóna csúcspontján.
+A DNS protokoll megakadályozza a CNAME rekordok hozzárendelését a zóna csúcsán. Ha például a tartománya a `contoso.com` ; CNAME rekordokat hozhat létre a számára, `somelabel.contoso.com` de saját maga nem hozhat létre CNAME-t `contoso.com` . Ez a korlátozás olyan alkalmazás-tulajdonosoknak nyújt problémát, akik elosztott terhelésű alkalmazásokat vezetnek be az Azure bejárati ajtó mögött. Mivel a bejárati ajtó profiljának használata szükséges egy CNAME rekord létrehozásához, nem lehet az első ajtón lévő profilra mutatni a zóna csúcspontján.
 
 Ezt a problémát a Azure DNS található alias-rekordok használatával oldják meg. A CNAME rekordoktól eltérően az alias-rekordok a zóna csúcsán jönnek létre, és az alkalmazás tulajdonosai használhatják a zóna csúcs-rekordját egy nyilvános végpontokkal rendelkező bejárati profilra. Az alkalmazás tulajdonosai a DNS-zónán belüli bármely más tartományhoz tartozó bejárati ajtós profilra mutatnak. Például, `contoso.com` és `www.contoso.com` ugyanarra az előtérben lévő profilra mutathat. 
 
@@ -48,12 +48,12 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
     ![Alias rekord a zóna csúcsához](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. A fenti lépés egy zóna csúcspont-rekordot hoz létre, `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` amely az előtérben lévő erőforrásra mutat, valamint egy CNAME rekordot, amely a "afdverify" (példa –) nevű CNAME rekord hozzárendelését fogja használni a tartomány bevezetéséhez az előtérben lévő profilban.
+6. A fenti lépés egy zóna csúcspont-rekordot hoz létre, amely az előtérben lévő erőforrásra mutat, valamint egy CNAME rekordot, amely a "afdverify" (példa –) nevű CNAME rekord hozzárendelését fogja használni a tartomány bevezetéséhez az `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` előtérben lévő profilban.
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>Az egyéni tartomány előkészítése a bejárati ajtón
 
 1. Az új egyéni tartomány hozzáadásához az előtér-Tervező lapon kattintson a "+" ikonra a frontend gazdagépek szakaszban.
-2. Adja meg a gyökér vagy a csúcspont tartománynevét az egyéni Állomásnév mezőben, például `contosonews.com`:.
+2. Adja meg a gyökér vagy a csúcspont tartománynevét az egyéni Állomásnév mezőben, például: `contosonews.com` .
 3. Ha a tartományból a bejárati ajtóhoz tartozó CNAME-leképezést érvényesíti, kattintson a **Hozzáadás** gombra az egyéni tartomány hozzáadásához.
 4. Kattintson a **Save (Mentés** ) gombra a módosítások elküldéséhez.
 

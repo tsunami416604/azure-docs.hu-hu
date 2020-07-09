@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983074"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfalának (WAF) hibáinak megoldása
@@ -28,7 +27,7 @@ A WAF-naplók célja, hogy minden, a WAF által egyeztetett vagy letiltott kére
 
 Tegyük fel például, hogy rendelkezik egy olyan legitim forgalommal, amely az *1 = 1* karakterláncot tartalmazza, amelyet át szeretne adni a WAF. Ha kipróbálja a kérelmet, a WAF letiltja az *1 = 1* karakterláncot tartalmazó forgalmat bármely paraméterben vagy mezőben. Ez az SQL-injektálási támadáshoz gyakran társított karakterlánc. Megtekintheti a naplókat, és megtekintheti a kérés időbélyegét és a blokkolt/egyeztetett szabályokat.
 
-A következő példában láthatja, hogy a rendszer négy szabályt indít el ugyanabban a kérésben (a tranzakcióazonosító mező használatával). Az első azt mondja, hogy megegyeznek, mert a felhasználó a kérelemhez numerikus/IP URL-címet használt, amely az anomália pontszámát háromra emeli, mivel ez egy figyelmeztetés. Az egyeztetett következő szabály a 942130, amely az, amit keres. A `details.data` mezőben az *1 = 1* érték látható. Ez tovább növeli az anomália pontszámát három újra, mivel ez egy figyelmeztetés is. Általánosságban elmondható, hogy minden olyan szabály, amely **megfelel** a műveletnek, növeli az anomália pontszámát, és ezen a ponton a anomália értéke hat lenne. További információ: [anomália pontozási mód](ag-overview.md#anomaly-scoring-mode).
+A következő példában láthatja, hogy a rendszer négy szabályt indít el ugyanabban a kérésben (a tranzakcióazonosító mező használatával). Az első azt mondja, hogy megegyeznek, mert a felhasználó a kérelemhez numerikus/IP URL-címet használt, amely az anomália pontszámát háromra emeli, mivel ez egy figyelmeztetés. Az egyeztetett következő szabály a 942130, amely az, amit keres. A mezőben az *1 = 1* érték látható `details.data` . Ez tovább növeli az anomália pontszámát három újra, mivel ez egy figyelmeztetés is. Általánosságban elmondható, hogy minden olyan szabály, amely **megfelel** a műveletnek, növeli az anomália pontszámát, és ezen a ponton a anomália értéke hat lenne. További információ: [anomália pontozási mód](ag-overview.md#anomaly-scoring-mode).
 
 A két utolsó naplóbejegyzés azt mutatja, hogy a kérelem le lett tiltva, mert a rendellenesség pontszáma elég magas volt. Ezek a bejegyzések más művelettel rendelkeznek, mint a másik kettő. Megmutatják, hogy ténylegesen *letiltották* a kérést. Ezek a szabályok kötelezőek, és nem tilthatók le. Nem gondolnak a szabályokra, hanem a belső WAF alapvető infrastruktúráját.
 
@@ -182,7 +181,7 @@ Ezt a mezőt kizárhatja. Ha többet szeretne megtudni a kizárási listáról, 
 
 Azt is megvizsgálhatja, hogy a tűzfal naplófájljaiban megtekintheti, hogy mire van szükség a kizárási listához való hozzáadásához. A naplózás engedélyezéséhez tekintse [meg a háttér állapota, az erőforrás-naplók és a metrikák Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-Vizsgálja meg a tűzfal naplóját, és tekintse meg a PT1H. JSON fájlt, amely azt az órát kéri, amelyet meg szeretne vizsgálni.
+Vizsgálja meg a tűzfal naplóját, és tekintse meg azt a PT1H.jsa fájlban, ameddig a megvizsgálni kívánt kérelem órája megtörtént.
 
 Ebben a példában láthatja, hogy négy olyan szabálya van, amely ugyanazzal a tranzakcióazonosító rendelkezik, és ezek mindegyike pontosan egy időben történt:
 
@@ -301,7 +300,7 @@ A Hegedűs egy hasznos eszköz a kérelmek fejlécének neveinek megkereséséhe
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a Chrome fejlesztői eszközein belül keres. Nyomja le az F12 billentyűt, vagy kattintson a jobb gombbal > **vizsgálja** -> meg a**fejlesztői eszközök**, majd válassza a **hálózat** fület. töltsön be egy weblapot, és kattintson a vizsgálni kívánt kérelemre.
+A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a Chrome fejlesztői eszközein belül keres. Nyomja le az F12 billentyűt, vagy kattintson a jobb gombbal > **vizsgálja**meg  ->  a**fejlesztői eszközök**, majd válassza a **hálózat** fület. töltsön be egy weblapot, és kattintson a vizsgálni kívánt kérelemre.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

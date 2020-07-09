@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378432"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Fájlok elérése és kezelése a OneDrive-összekötőben Azure Logic Apps használatával
@@ -38,7 +37,7 @@ Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, e
 
 Az eseményindító egy olyan esemény, amely a logikai alkalmazásban definiált munkafolyamat elindítására szolgál. A "lekérdezés" a szolgáltatást a kívánt időközönként és gyakorisággal indítja el. [További információ az eseményindítókkal kapcsolatban](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. A Logic app Designerben írja be `onedrive` a következőt az eseményindítók listájának lekéréséhez:  
+1. A Logic app Designerben írja be a következőt az `onedrive` Eseményindítók listájának lekéréséhez:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +65,7 @@ A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajt
 
 2. Válassza **a művelet hozzáadása**lehetőséget.
 
-3. A keresőmezőbe írja be `onedrive` az összes elérhető művelet listáját.
+3. A keresőmezőbe írja be az `onedrive` összes elérhető művelet listáját.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

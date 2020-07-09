@@ -4,11 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-bel
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687429"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -84,7 +83,7 @@ Visszaállítás a következőképpen:
 2. Válassza ki azt a SQL Server nevet és példányt, amelyre vissza kívánja állítani az adatbázist.
 3. A **visszaállított adatbázis neve** mezőbe írja be a céladatbázis nevét.
 4. Ha van ilyen, válassza **a felülírás lehetőséget, ha már létezik ilyen nevű adatbázis a kiválasztott SQL-példányon**.
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
     ![Értékek megadása a konfiguráció visszaállítása menühöz](./media/backup-azure-sql-database/restore-configuration.png)
 
@@ -95,7 +94,7 @@ Visszaállítás a következőképpen:
 
 ### <a name="restore-and-overwrite"></a>Visszaállítás és felülírás
 
-1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye**területen válassza az **adatbázis** > felülírása**OK**elemet.
+1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye**területen válassza az **adatbázis felülírása**  >  **OK**elemet.
 
     ![Válassza az adatbázis felülírása lehetőséget](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -117,10 +116,10 @@ Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsá
     >- Futtatás `PsExec -s cmd` az NT AUTHORITY\SYSTEM-rendszerhéjba való belépéshez
     >   - Hajtsa végre az `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` parancsot.
     >   - Hozzáférés ellenőrzése`dir \\<storageacct>.file.core.windows.net\<filesharename>`
-    >- A Backup- `\\<storageacct>.file.core.windows.net\<filesharename>` tárolóban lévő fájlok visszaállításának elindítási útja<BR>
+    >- A Backup-tárolóban lévő fájlok visszaállításának elindítási `\\<storageacct>.file.core.windows.net\<filesharename>` útja<BR>
     A PsExec-t a használatával töltheti le<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
     ![Válassza a visszaállítás fájlokként lehetőséget.](./media/backup-azure-sql-database/restore-as-files.png)
 
@@ -148,7 +147,7 @@ Ha a **naplókat (időpontot)** a visszaállítási típusként választotta, te
 
 1. Ha a visszaállítás után meg szeretné őrizni az adatbázis működését, a **Speciális konfiguráció** menüben engedélyezze a **visszaállítást a derecovery**művelettel.
 1. Ha módosítani szeretné a célkiszolgáló visszaállítási helyét, adjon meg egy új cél elérési utat.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Speciális konfigurációs menü](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
@@ -170,7 +169,7 @@ Ha a **teljes & különbözetet** választotta a visszaállítási típusként, 
 
 1. Ha a visszaállítás után meg szeretné őrizni az adatbázis működését, a **Speciális konfiguráció** menüben engedélyezze a **visszaállítást a derecovery**művelettel.
 1. Ha módosítani szeretné a célkiszolgáló visszaállítási helyét, adjon meg egy új cél elérési utat.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Speciális konfigurációs menü](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 

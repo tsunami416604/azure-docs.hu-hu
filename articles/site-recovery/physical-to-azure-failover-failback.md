@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497852"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált fizikai kiszolgálók feladatátvétele és feladatátvétele
@@ -42,8 +41,8 @@ Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy a
 
 ### <a name="fail-over-to-azure"></a>Feladatátvétel az Azure-ba
 
-1. A **Beállítások** > **replikált elemek** elemnél kattintson a gép > **feladatátvétel**elemre.
-2. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyhez át szeretné adni a **feladatátvételt** . Az alábbi lehetőségek egyikét használhatja:
+1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a gép > **feladatátvétel**elemre.
+2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Az alábbi lehetőségek egyikét használhatja:
    - **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
    - **Legutóbb feldolgozott**: Ez a beállítás feladatátvételt hajt végre a gépen a site Recovery által feldolgozott legutóbbi helyreállítási pontra. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
    - **Legújabb alkalmazás-konzisztens**: Ez a beállítás a gépet a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre.
@@ -95,7 +94,7 @@ Az Azure-ba való feladatátvételt követően az Azure-beli virtuális gépeket
 
 Ez az eljárás azt feltételezi, hogy a helyszíni virtuális gép nem érhető el.
 
-1. A tároló > a **Beállítások** > **replikált elemek**területen kattintson a jobb gombbal arra a gépre, amelyre a feladatátvételt > **ismételt védelemmel**ellátott.
+1. A tároló > a **Beállítások**  >  **replikált elemek**területen kattintson a jobb gombbal arra a gépre, amelyre a feladatátvételt > **ismételt védelemmel**ellátott.
 2. Az **Ismételt védelem** területen ellenőrizze, hogy be legyen jelölve az **Azure-ról a helyszíni rendszerre** lehetőség.
 3. Adja meg a helyszíni fő célkiszolgálót és a folyamatkiszolgálót.
 4. Az **Adattároló** területen válassza ki azt a fő cél adattárolót, amelyre a lemezeket a helyszínen helyre szeretné állítani.

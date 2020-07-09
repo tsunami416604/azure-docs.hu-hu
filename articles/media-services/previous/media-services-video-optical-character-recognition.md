@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918334"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalmának digitális szöveggé alakításához használja a Azure Media Analytics.  
@@ -46,7 +45,7 @@ Feladat konfigurációja (előre beállított). Amikor az **Azure Media OCR**has
 >
 
 ### <a name="attribute-descriptions"></a>Attribútumok leírása
-| Attribútum neve | Leírás |
+| Attribútum neve | Description |
 | --- | --- |
 |AdvancedOutput| Ha a AdvancedOutput értéke TRUE (igaz), a JSON-kimenet minden egyes szó esetében tartalmaz pozíciós adatokat (a kifejezéseken és a régiókban is). Ha nem szeretné megtekinteni ezeket a részleteket, állítsa hamis értékre a jelzőt. Az alapértelmezett érték a hamis. További információkért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Nyelv |(nem kötelező) annak a szövegnek a nyelvét írja le, amelynek meg kell keresnie. A következők egyike: automatikus észlelés (alapértelmezett), Arab, ChineseSimplified, ChineseTraditional, Cseh dán, holland, angol, finn, francia, német, görög, magyar, olasz, Japán, Koreai, norvég, lengyel, portugál, román, Orosz, SerbianCyrillic, SerbianLatin, szlovák, spanyol, svéd, Török. |
@@ -107,7 +106,7 @@ A videó OCR kimenete időben szegmentált adatokat biztosít a videóban talál
 
 A kimenet a következő attribútumokat tartalmazza:
 
-| Elem | Leírás |
+| Elem | Description |
 | --- | --- |
 | Időskála |"ketyeg" a videó másodpercenként |
 | Eltolás |időbélyeg időeltolódása. A video API-k 1,0-es verziójában ez mindig 0 lesz. |
@@ -193,7 +192,7 @@ A következő program a következőket mutatja be:
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 

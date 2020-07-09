@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408534"
 ---
 # <a name="security-control-identity-and-access-control"></a>Biztonsági ellenőrzés: identitás-és Access Control
@@ -34,7 +34,7 @@ Az Azure AD olyan beépített szerepkörökkel rendelkezik, amelyeket explicit m
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 3,2 | 4.2 | Ügyfél |
+| 3.2 | 4.2 | Ügyfél |
 
 Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával. Más Azure-erőforrások, amelyek jelszó megadását igénylik a bonyolultsági követelményekkel és a jelszó minimális hosszával hozhatók létre, és a szolgáltatástól függően eltérőek. Ön felelős harmadik féltől származó alkalmazásokért és piactér-szolgáltatásért, amelyek az alapértelmezett jelszavakat használhatják.
 

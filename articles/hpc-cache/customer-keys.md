@@ -3,15 +3,14 @@ title: Az Azure HPC cache-ben az ügyfelek által összefoglalt kulcsok használ
 description: A Azure Key Vault használata az Azure HPC cache használatával a titkosítási kulcs elérésének szabályozásához a Microsoft által felügyelt alapértelmezett titkosítási kulcsok használata helyett
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
-ms.translationtype: MT
+ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512913"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Ügyfél által felügyelt titkosítási kulcsok használata az Azure HPC cache-hez
 
@@ -148,4 +147,4 @@ Ezek a cikkek részletesen ismertetik a Azure Key Vault és az ügyfél által f
 
 Miután létrehozta az Azure HPC-gyorsítótárat és a jogosult Key Vault-alapú titkosítást, folytassa a gyorsítótár beállítását úgy, hogy hozzáférést biztosít az adatforrásokhoz.
 
-* [Céltárak hozzáadása](hpc-cache-add-storage.md)
+* [Tárolási célok hozzáadása](hpc-cache-add-storage.md)

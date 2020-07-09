@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikáka
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 5/26/2020
-ms.openlocfilehash: 4854518d77ca3eb0c978a0ca3462535e17ad3fcd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: 2e8d250d20126198b3f267b44af98bed811ad8dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052031"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121180"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a PowerShell használatával
 
@@ -40,6 +40,9 @@ Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjáh
 > Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MariaDB-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
+
+> [!IMPORTANT]
+> Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
 
 A következő paranccsal hozhat létre olvasási replika-kiszolgálót:
 
@@ -103,7 +106,7 @@ A főkiszolgálók törléséhez futtathatja a `Remove-AzMariaDbServer` parancsm
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB kiszolgáló újraindítása a PowerShell-lel](howto-restart-server-powershell.md)

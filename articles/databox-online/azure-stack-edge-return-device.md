@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339365"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge-eszköz visszaküldése vagy cseréje
 
@@ -22,6 +21,7 @@ Ez a cikk az adatok törlését és az Azure Stack Edge-eszköz visszaküldésé
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Adatok törlése az eszközön lévő adatlemezekről
 > * Támogatási jegy megnyitása az eszköz visszaküldéséhez
 > * Az eszköz becsomagolása és a pickup beosztása
@@ -122,6 +122,6 @@ Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hib
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-manage-bandwidth-schedules.md) talál.

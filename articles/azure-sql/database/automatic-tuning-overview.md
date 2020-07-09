@@ -2,7 +2,7 @@
 title: Az automatikus finomhangolás áttekintése
 description: Azure SQL Database és az Azure SQL felügyelt példánya elemzi az SQL-lekérdezést, és automatikusan alkalmazkodik a felhasználói munkaterheléshez.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/30/2020
-ms.openlocfilehash: c29452929e350c3a1ff6059c2beb9fd4281ded03
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d2a00be4d08a7a2dfa8e11a22593d017d184a368
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043631"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982711"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatikus hangolás a Azure SQL Database és az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ A Azure SQL Database és az Azure SQL felügyelt példányának automatikus fino
 - A teljesítmény-nyereség automatikus ellenőrzése
 - Automatikus visszaállítás és saját javítás
 - Hangolási előzmények
-- A T-SQL-parancsfájlok kézi üzembe helyezéshez való finomhangolása
+- Művelet Transact-SQL (T-SQL) parancsfájlok kézi üzembe helyezéséhez
 - Proaktív számítási feladatok teljesítményének figyelése
 - Több százezer adatbázisra kibővíthető képesség
 - Pozitív hatással van a DevOps-erőforrásokra és a teljes tulajdonlási díjakra
@@ -42,7 +42,7 @@ A Azure SQL Database és az Azure SQL felügyelt példányának automatikus fino
 
 A Azure SQL Database adatbázisain alkalmazott hangolási műveletek teljes mértékben biztonságosak a legintenzívebb számítási feladatok teljesítményében. A rendszer olyan gondossággal lett kialakítva, hogy ne zavarja a felhasználói munkaterheléseket. Az Automatikus hangolási javaslatok csak alacsony kihasználtságú esetekben alkalmazhatók. A szolgáltatás átmenetileg letilthatja az Automatikus hangolási műveleteket a munkaterhelés teljesítményének biztosítása érdekében. Ilyen esetben a "rendszer által letiltott" üzenet jelenik meg Azure Portalban. Az automatikus hangolás a legmagasabb erőforrás-prioritással rendelkező számítási feladatokat tartja.
 
-Az Automatikus hangolási mechanizmusok kiforrtak, és az Azure-on futó több millió adatbázison is tökéletesítve lettek. Az alkalmazott Automatikus hangolási műveletek ellenőrzése automatikusan megtörténik, így biztosítva, hogy a számítási feladatok teljesítménye pozitívan javuljon. A romlott teljesítményével kapcsolatos javaslatok dinamikusan észlelhetők és azonnal visszaállíthatók. Az egyes Azure SQL Database és az Azure SQL felügyelt példányain a hangolási előzmények alapján egyértelmű nyomon követhető az egyes és az Azure SQL felügyelt példányának tökéletesítése.
+Az Automatikus hangolási mechanizmusok kiforrtak, és az Azure-on futó több millió adatbázison is tökéletesítve lettek. Az alkalmazott Automatikus hangolási műveletek ellenőrzése automatikusan megtörténik, így biztosítva, hogy a számítási feladatok teljesítménye pozitívan javuljon. A romlott teljesítményével kapcsolatos javaslatok dinamikusan észlelhetők és azonnal visszaállíthatók. A hangolási előzményeken keresztül a Azure SQL Database és az Azure SQL felügyelt példányain lévő egyes adatbázisok hangolási tökéletesítésének egyértelmű nyomon követése áll fenn.
 
 ![Hogyan működik az automatikus hangolás?](./media/automatic-tuning-overview/how-does-automatic-tuning-work.png)
 
@@ -54,8 +54,8 @@ Az automatikus hangolás működésének és a tipikus használati forgatóköny
 
 ## <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 
-- [Engedélyezheti a Azure SQL Database automatikus finomhangolását a Azure Portal](automatic-tuning-enable.md) vagy az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL-utasítás használatával.
-- Az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL-utasítás használatával engedélyezheti az Azure SQL felügyelt példányának automatikus finomhangolását.
+- A [Azure SQL Database automatikus finomhangolását a Azure Portal](automatic-tuning-enable.md) vagy az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL-utasítás használatával engedélyezheti.
+- Az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL-utasítás használatával engedélyezheti az automatikus finomhangolást az Azure SQL felügyelt példányához.
 
 ## <a name="automatic-tuning-options"></a>Automatikus hangolási beállítások
 
@@ -63,11 +63,11 @@ A Azure SQL Database és az Azure SQL felügyelt példányaiban elérhető Autom
 
 | Automatikus hangolási beállítás | Önálló adatbázis és készletezett adatbázis-támogatás | Példány-adatbázis támogatása |
 | :----------------------------- | ----- | ----- |
-| **Index létrehozása** – azonosítja azokat az indexeket, amelyek javíthatják a munkaterhelés teljesítményét, indexeket hoz létre, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult-e. | Igen | Nem |
-| **Drop index** – naponta azonosítja a redundáns és ismétlődő indexeket, kivéve azokat az egyedi indexeket és indexeket, amelyeket hosszú ideje nem használtak (>90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Igen | Nem |
-| **Utolsó jó csomag kényszerítése** (automatikus terv helyesbítése) – az SQL-lekérdezéseket az előző helyes csomagnál lassabb végrehajtási terv alapján azonosítja, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
+| **Index létrehozása** – azonosítja azokat az indexeket, amelyek javíthatják a munkaterhelés teljesítményét, indexeket hoz létre, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult-e. | Yes | Nem |
+| **Drop index** – naponta azonosítja a redundáns és ismétlődő indexeket, kivéve azokat az egyedi indexeket és indexeket, amelyeket hosszú ideje nem használtak (>90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Yes | Nem |
+| **Utolsó jó csomag kényszerítése** (automatikus terv javítása) – az Azure SQL-lekérdezéseket egy olyan végrehajtási terv használatával azonosítja, amely lassabb, mint az előző helyes csomag, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
 
-### <a name="automatic-tuning-for-azure-sql-databases"></a>Automatikus hangolás az Azure SQL Database-adatbázisokhoz
+### <a name="automatic-tuning-for-sql-database"></a>SQL Database automatikus finomhangolása
 
 A Azure SQL Database automatikus finomhangolása a **create index**, **drop index**és a **Last Good Plan** adatbázis-tanácsadói javaslatok használatával optimalizálja az adatbázis teljesítményét. További információ: az [adatbázis-tanácsadói javaslatok a Azure Portal](database-advisor-find-recommendations-portal.md), a [PowerShellben](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)és a [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
@@ -88,9 +88,9 @@ Ha az Automatikus hangolási beállításokat egy kiszolgálón konfigurálja, �
 
 Az Automatikus hangolási javaslatokra vonatkozó e-mail-értesítések létrehozásával kapcsolatos további információkért lásd: [e-mail-értesítések az automatikus hangoláshoz](automatic-tuning-email-notifications-configure.md).
 
-### <a name="automatic-tuning-for-azure-sql-managed-database"></a>Automatikus hangolás az Azure SQL felügyelt adatbázisához
+### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Automatikus hangolás az Azure SQL felügyelt példányaihoz
 
-Az Azure SQL felügyelt adatbázis automatikus finomhangolása csak az **utolsó jó csomag kényszerítését**támogatja. Az Automatikus hangolási beállítások T-SQL-en keresztüli konfigurálásával kapcsolatos további információkért lásd: az automatikus [hangolás bevezeti az automatikus terv javítását](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és az [automatikus terv javítását](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
+Az SQL felügyelt példányának automatikus finomhangolása csak az **utolsó jó csomag kényszerítését**támogatja. Az Automatikus hangolási beállítások T-SQL-en keresztüli konfigurálásával kapcsolatos további információkért lásd: az automatikus [hangolás bevezeti az automatikus terv javítását](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és az [automatikus terv javítását](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
 
 ## <a name="next-steps"></a>További lépések
 

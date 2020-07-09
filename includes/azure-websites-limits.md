@@ -1,17 +1,17 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838696"
 ---
-| Erőforrás | Ingyenes | Megosztott | Basic | Standard | Prémium (v2) | Elkülönített </th> |
+| Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v2) | Elkülönített </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobil-vagy API-alkalmazások](https://azure.microsoft.com/services/app-service/) [Azure app Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> . csomag |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup>|
 | [App Service terv](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
@@ -20,7 +20,7 @@ ms.locfileid: "82844607"
 | <sup>5</sup> . tárterület |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Ha több mint 250 GB-nyi, küldjön egy támogatási kérést. |1 TB<sup>5</sup> <br/><br/> A rendelkezésre álló tárolási kvóta 999 GB. |
 | CPU-idő (5 perc)<sup>6</sup> |3 perc |3 perc |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a>|
 | CPU-idő (nap)<sup>6</sup> |60 perc |240 perc |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |
-| Memória (1 óra) |1 024 MB/App Service csomag |1 024 MB/alkalmazás |N/A |N/A |N/A |N/A |
+| Memória (1 óra) |1 024 MB/App Service csomag |1 024 MB/alkalmazás |N.A. |N.A. |N.A. |N.A. |
 | Sávszélesség |165 MB |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |
 | Alkalmazásarchitektúra |32 bites |32 bites |32 bites/64 bites |32 bites/64 bites |32 bites/64 bites |32 bites/64 bites |
 | Web Sockets/instance<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |Korlátlan |
@@ -45,7 +45,7 @@ ms.locfileid: "82844607"
 <sup>4</sup> További kérések esetén engedélyezett.  
 <sup>5</sup> A tárolási korlát a teljes tartalom mérete az adott app Service-csomagban lévő összes alkalmazásban. Az egyetlen erőforráscsoport és régió összes app Service-csomagjában lévő alkalmazások teljes tartalmának mérete nem haladhatja meg az 500 GB-ot.  
 <sup>6</sup> Ezeket az erőforrásokat a dedikált példányokon található fizikai erőforrások korlátozzák (a példány mérete és a példányok száma).  
-<sup>7</sup> Ha az alkalmazást az alapszintű csomagból két példányra méretezi, akkor a két példány esetében 350 egyidejű kapcsolat. A standard szinthez és a fentiekhez nem tartoznak elméleti korlátok a webes szoftvercsatornák számára, más tényezők pedig korlátozhatják a webes szoftvercsatornák számát. Például a maximálisan megengedett kérelmek (a által meghatározottak `maxConcurrentRequestsPerCpu`szerint) a következők: 7 500/kisméretű virtuális gép, 15 000/közepes méretű virtuális gép (7 500 x 2 mag) és 75 000/nagyméretű virtuális gép (18 750 x 4 mag).  
+<sup>7</sup> Ha az alkalmazást az alapszintű csomagból két példányra méretezi, akkor a két példány esetében 350 egyidejű kapcsolat. A standard szinthez és a fentiekhez nem tartoznak elméleti korlátok a webes szoftvercsatornák számára, más tényezők pedig korlátozhatják a webes szoftvercsatornák számát. Például a maximálisan megengedett kérelmek (a által meghatározottak szerint `maxConcurrentRequestsPerCpu` ) a következők: 7 500/kisméretű virtuális gép, 15 000/közepes méretű virtuális gép (7 500 x 2 mag) és 75 000/nagyméretű virtuális gép (18 750 x 4 mag).  
 <sup>8</sup> A maximális IP-kapcsolatok a példányok száma, és a példány méretétől függ: 1 920/B1/S1/P1V2 példány, 3 968/B2/S2/P2V2-példány, 8 064/B3/S3/P3V2 példány.  
 <sup>9</sup> Az előfizetések App Service-tanúsítvány kvóta-korlátja egy támogatási kérelem alapján növelhető, amely legfeljebb 200 lehet.  
 <sup>10</sup> A izolált App Service SKU-k belsőleg terheléselosztást (ILB) is használhatnak a Azure Load Balancer, így nincs nyilvános kapcsolat az internetről. Ennek eredményeképpen a ILB elkülönített App Service egyes funkcióit olyan gépekről kell használni, amelyek közvetlen hozzáféréssel rendelkeznek a ILB hálózati végponthoz.  

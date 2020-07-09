@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: fda22346a44388248e37473bc7891b8a130569c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81681063"
 ---
 1. A társítás **létrehozása** lap **konfiguráció** lapján adja meg az itt látható mezőket.
@@ -33,7 +33,7 @@ ms.locfileid: "81681063"
         > [!div class="mx-imgBorder"]
         > ![Szerkesztés gomb](../media/setup-direct-conf-tab-edit.png)
     
-    * Egy sor törléséhez válassza a **...** lehetőséget.  >  **Törlés**.
+    * Egy sor törléséhez válassza a **...**  >  lehetőséget. **Törlés**.
 
         > [!div class="mx-imgBorder"]
         > ![Törlés gomb](../media/setup-direct-conf-tab-delete.png)

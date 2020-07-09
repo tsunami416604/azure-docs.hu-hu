@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
-ms.openlocfilehash: d6418a863e8af75e4f2f063d9e6151e19a0e7e6e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7347fee0cd8bdaae73467a84806819c913599a51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977583"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834012"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>A beszédfelismerés szövegéhez tartozó kifejezések listája
 
@@ -31,7 +31,7 @@ Az egyes szavak vagy teljes kifejezések hozzáadhatók egy kifejezési listáho
 
 ## <a name="how-to-use-phrase-lists"></a>Kifejezések Listájainak használata
 
-Az alábbi példák bemutatják, hogyan hozhat létre egy kifejezés- `PhraseListGrammar` listát az objektum használatával.
+Az alábbi példák bemutatják, hogyan hozhat létre egy kifejezés-listát az `PhraseListGrammar` objektum használatával.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,7 +134,7 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> Az `PhraseListGrammar` objektum módosításai érvénybe lépnek a következő felismeréskor, vagy a beszédfelismerési szolgáltatáshoz való Újrakapcsolódás után.
+> Az objektum módosításai `PhraseListGrammar` érvénybe lépnek a következő felismeréskor, vagy a beszédfelismerési szolgáltatáshoz való Újrakapcsolódás után.
 
 ## <a name="next-steps"></a>További lépések
 

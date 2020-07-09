@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 199111d88d1d5d0dfd3b52f62ad60297e9771c20
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.author: trbye
+ms.openlocfilehash: 66422657aefa5bca2e7f20852a19faca63db5a15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806475"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85839018"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,7 +21,7 @@ Az első lépések előtt:
 
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
-Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Hozzon létre egy index. js fájlt, és adja hozzá ezt a kódot.
+Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Hozzon létre egy index.js fájlt, és adja hozzá ezt a kódot.
 
 Ügyeljen rá, hogy a, a és a értékeit adja meg `subscriptionKey` `servcieRegion` `filename` .
 
@@ -184,6 +184,6 @@ A kód végrehajtása a NodeJs használatával
 node index.js
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

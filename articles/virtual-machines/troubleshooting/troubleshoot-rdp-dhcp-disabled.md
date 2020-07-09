@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75749892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087792"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nem lehet RDP-t létesíteni az Azure Virtual Machines miatt, mert a DHCP-ügyfélszolgáltatás le van tiltva
 
@@ -40,7 +40,9 @@ Azure-beli virtuális géppel nem lehet RDP-kapcsolattal csatlakozni, mert a DHC
 
 A Resource Manager-alapú virtuális gépek esetében a soros hozzáférési konzol funkció segítségével lekérdezheti az 7022-es eseménynaplókat a következő paranccsal:
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 A klasszikus virtuális gépek esetében OFFLINE módban kell működnie, és manuálisan kell összegyűjtenie a naplókat.
 
@@ -63,14 +65,21 @@ A probléma megoldásához a soros vezérlőelem használatával engedélyezze a
 ). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md)című témakört.
 2. Ellenőrizze, hogy a DHCP le van-e tiltva a hálózati adapteren:
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. Ha a DHCP leáll, próbálja meg elindítani a szolgáltatást.
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. A szolgáltatás ismételt lekérdezésekor ellenőrizze, hogy a szolgáltatás sikeresen elindult-e.
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     Próbáljon csatlakozni a virtuális géphez, és ellenőrizze, hogy megoldódott-e a probléma.
 5. Ha a szolgáltatás nem indul el, használja a következő megfelelő megoldást a kapott hibaüzenet alapján:
@@ -157,23 +166,38 @@ A probléma megoldásához a soros vezérlőelem használatával engedélyezze a
 
 1. Mivel ez a probléma akkor fordul elő, ha a szolgáltatás indítási fiókja módosult, a fiók visszaállítása az alapértelmezett állapotra:
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. A szolgáltatás elindítása:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. A Távoli asztal használatával próbáljon csatlakozni a virtuális géphez.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP-ügyfélszolgáltatás összeomlik vagy lefagy
 
 1. Ha a szolgáltatás állapota elakad a **kezdő** vagy a **Leállítás** állapotban, próbálja meg leállítani a szolgáltatást:
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. A szolgáltatás elkülönítése a saját "Svchost" tárolóján:
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. A szolgáltatás elindítása:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. Ha a szolgáltatás még nem indul el, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban

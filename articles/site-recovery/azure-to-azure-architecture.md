@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135854"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -34,7 +34,7 @@ Az Azure-beli virtuális gépek vész-helyreállításában részt vevő összet
 **Gyorsítótáras Storage-fiók** | A forrásoldali hálózatban szüksége lesz egy gyorsítótárbeli Storage-fiókra. A replikáció során a virtuális gépek módosításait a rendszer a gyorsítótárban tárolja, mielőtt elküldi őket a célként megadott tárhelyre.  A gyorsítótár-tárolási fiókoknak standard szintűnek kell lenniük.<br/><br/> A gyorsítótár használatával minimális hatással lehet a virtuális gépeken futó éles alkalmazásokra.<br/><br/> [További](azure-to-azure-support-matrix.md#cache-storage) információ a gyorsítótár tárolási követelményeiről. 
 **Cél erőforrásai** | A cél erőforrásait a rendszer a replikáció során, valamint feladatátvétel esetén használja. A Site Recovery alapértelmezés szerint beállíthatja a célként megadott erőforrást, vagy létrehozhat/testreszabhatja őket.<br/><br/> Győződjön meg arról, hogy a célként megadott régióban virtuális gépeket hozhat létre, és hogy az előfizetése elegendő erőforrással rendelkezik a megcélzott régióban szükséges virtuálisgép-méretek támogatásához. 
 
-![Forrás-és cél replikáció](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Forrás-és cél replikáció](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Cél erőforrásai
 
@@ -116,7 +116,7 @@ Az Azure-beli virtuális gépek replikálásának engedélyezésekor a következ
 4. Site Recovery feldolgozza a gyorsítótárban lévő adatokat, és elküldi azt a cél Storage-fiókba vagy a replikált felügyelt lemezekre.
 5. Az adatfeldolgozást követően az összeomlás-konzisztens helyreállítási pontok öt percenként jönnek létre. Az alkalmazással konzisztens helyreállítási pontok a replikációs házirendben megadott beállításnak megfelelően jönnek létre.
 
-![Replikációs folyamat engedélyezése, 2. lépés](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Replikációs folyamat engedélyezése, 2. lépés](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replikációs folyamat**
 
@@ -128,7 +128,7 @@ Az Azure-beli virtuális gépek replikálásának engedélyezésekor a következ
 
 Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, engedélyezze ezeket az URL-címeket.
 
-| **URL** | **Részletek** |
+| **URL-cím** | **Részletek** |
 | ------- | ----------- |
 | *.blob.core.windows.net | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | login.microsoftonline.com | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
@@ -146,9 +146,9 @@ Vegye figyelembe, hogy a hálózati kapcsolatra vonatkozó követelmények rész
 
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage. \<régió neve>
+HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<region-name>
 HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directorynak (Azure AD) megfelelő tartományok engedélyezése  | AzureActiveDirectory
-HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban található Events hubhoz tartozó tartományok engedélyezése. | EventsHub. \<régió neve>
+HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban található Events hubhoz tartozó tartományok engedélyezése. | EventsHub.\<region-name>
 HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
 HTTPS-kimenő engedélyezése: 443-es port | Azure Key Vaultnak megfelelő tartományok engedélyezése (ez csak az ADE-kompatibilis virtuális gépek portálon keresztüli replikálásának engedélyezéséhez szükséges) | AzureKeyVault
 HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfelelő tartományok engedélyezése (ez csak a mobilitási ügynöknek a portálon keresztüli replikált elemek esetében történő automatikus frissítésének engedélyezéséhez szükséges) | GuestAndHybridManagement
@@ -157,9 +157,9 @@ HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfe
 
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-HTTPS-kimenő engedélyezése: 443-es port | A cél régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage. \<régió neve>
+HTTPS-kimenő engedélyezése: 443-es port | A cél régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<region-name>
 HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése  | AzureActiveDirectory
-HTTPS-kimenő engedélyezése: 443-es port | Az Events hub-nak megfelelő tartományok engedélyezése a forrás régióban. | EventsHub. \<régió neve>
+HTTPS-kimenő engedélyezése: 443-es port | Az Events hub-nak megfelelő tartományok engedélyezése a forrás régióban. | EventsHub.\<region-name>
 HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
 HTTPS-kimenő engedélyezése: 443-es port | Azure Key Vaultnak megfelelő tartományok engedélyezése (ez csak az ADE-kompatibilis virtuális gépek portálon keresztüli replikálásának engedélyezéséhez szükséges) | AzureKeyVault
 HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfelelő tartományok engedélyezése (ez csak a mobilitási ügynöknek a portálon keresztüli replikált elemek esetében történő automatikus frissítésének engedélyezéséhez szükséges) | GuestAndHybridManagement
@@ -167,11 +167,11 @@ HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfe
 
 #### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal
 
-Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview)használatával szűri, vegye figyelembe a következő követelményeket:
+Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](../virtual-network/security-overview.md)használatával szűri, vegye figyelembe a következő követelményeket:
 
 - A forrásként szolgáló Azure-régió NSG-szabályainak engedélyezniük kell a kimenő hozzáférést a replikálási forgalom számára.
 - Javasoljuk, hogy hozzon létre szabályokat tesztkörnyezetben, mielőtt éles környezetbe helyezné őket.
-- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) .
+- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](../virtual-network/security-overview.md#service-tags) .
     - A szolgáltatás címkéi az IP-címek egy csoportját alkotják, amelyek a biztonsági szabályok létrehozásakor a bonyolultságuk csökkentése érdekében vannak összegyűjtve.
     - A Microsoft az idő múlásával automatikusan frissíti a szolgáltatás címkéit. 
  
@@ -191,8 +191,8 @@ Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replik�
 
 Feladatátvétel kezdeményezése esetén a virtuális gépek a célként megadott erőforráscsoporthoz, a célként megadott alhálózatra, valamint a cél rendelkezésre állási csoportba kerülnek. Feladatátvétel során bármelyik helyreállítási pontot használhatja.
 
-![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover.png)
+![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

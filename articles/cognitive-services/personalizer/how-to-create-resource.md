@@ -1,14 +1,14 @@
 ---
 title: Személyre szabott erőforrás létrehozása
 description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: adb97db53d1fc0b6f0cdb14b697c82ec52501b84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b56516b5555ca971d7ab1db3caf5b76f252729b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80336057"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344373"
 ---
 # <a name="create-a-personalizer-resource"></a>Személyre szabott erőforrás létrehozása
 
@@ -76,6 +76,6 @@ Hozzon létre egy személyre szabott erőforrást minden visszajelzési hurokhoz
 
     A Rank és a jutalom API-k használatához mind az erőforrás-végpontot, mind a kulcsot kell használnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Konfigurálás](how-to-settings.md) Személyre szabott tanulási hurok

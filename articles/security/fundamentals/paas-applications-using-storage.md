@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70999171"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
@@ -66,7 +66,7 @@ További információ a RBAC:
 
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
 - [Beépített szerepkörök Azure-erőforrásokhoz](/azure/role-based-access-control/built-in-roles)
-- [Biztonsági útmutató az Azure Storage-hoz](/azure/storage/common/storage-security-guide) 
+- [Azure Storage – biztonsági útmutató](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás használata nagy értékű adathoz
 Az ügyféloldali titkosítás lehetővé teszi, hogy programozott módon titkosítsa az adatok átvitelét az Azure Storage-ba való feltöltés előtt, és programozott módon visszafejtse az adatoknak a beolvasása során. Ez az átvitel során az adatok titkosítását is lehetővé teszi, de az inaktív adatok titkosítását is biztosítja. Az ügyféloldali titkosítás a legbiztonságosabb módszer az adattitkosításhoz, de megköveteli, hogy programozott módosításokat hajtson végre az alkalmazásban, és a kulcsfontosságú felügyeleti folyamatokat helyezze üzembe.

@@ -4,17 +4,23 @@ description: Ez a cikk azt ismerteti, hogyan hozhat létre új felhasználói fi
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/2/2020
-ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34fcb8d28ae8deda88a6ce91261301ab5d08a743
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632283"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104554"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Felhasználók létrehozása az Azure Database for MariaDB-ben 
 Ez a cikk azt ismerteti, hogyan hozhatók létre felhasználók a Azure Database for MariaDBban.
+
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 Amikor először hozta létre a Azure Database for MariaDB, a kiszolgáló-rendszergazdai bejelentkezési felhasználónevet és jelszót adott meg. További információt a rövid útmutatóban [talál.](quickstart-create-mariadb-server-database-using-azure-portal.md) A kiszolgáló-rendszergazdai bejelentkezési felhasználónevet megkeresheti a Azure Portal.
 
@@ -29,10 +35,10 @@ A Azure Database for MariaDB-kiszolgáló létrehozása után az első kiszolgá
 1. Kérje le a kapcsolatfelvételi adatokat és a rendszergazda felhasználónevét.
    Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. A kiszolgáló és a bejelentkezési adatok könnyen megtalálhatók a kiszolgáló **Áttekintés** lapján vagy a Azure Portal **Tulajdonságok** lapján. 
 
-2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használhatja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a MySQL. exe, a HeidiSQL vagy más eszközöket. 
+2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használhatja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a mysql.exe, a HeidiSQL vagy más eszközöket. 
    Ha nem tudja, hogyan csatlakozhat, tekintse meg a következőt: a [MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez](./connect-workbench.md)
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le az új felhasználónevet a helyőrző értékre `new_master_user`. Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán (*.*) a felhasználónévre (new_master_user ebben a példában). 
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le az új felhasználónevet a helyőrző értékre `new_master_user` . Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán (*.*) a felhasználónévre (new_master_user ebben a példában). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -54,12 +60,12 @@ A Azure Database for MariaDB-kiszolgáló létrehozása után az első kiszolgá
 1. Kérje le a kapcsolatfelvételi adatokat és a rendszergazda felhasználónevét.
    Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. A kiszolgáló és a bejelentkezési adatok könnyen megtalálhatók a kiszolgáló **Áttekintés** lapján vagy a Azure Portal **Tulajdonságok** lapján. 
 
-2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használhatja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a MySQL. exe, a HeidiSQL vagy más eszközöket. 
+2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használhatja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a mysql.exe, a HeidiSQL vagy más eszközöket. 
    Ha nem tudja, hogyan csatlakozhat, tekintse meg a következőt: a [MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez](./connect-workbench.md)
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző `db_user` értékét a kívánt új felhasználónévre, és adja meg `testdb` a helyőrző értékét a saját adatbázisának nevével.
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét a `db_user` kívánt új felhasználónévre, és adja meg a helyőrző értékét a `testdb` saját adatbázisának nevével.
 
-   Ez az SQL Code-szintaxis egy új, testdb nevű adatbázist hoz létre példaként. Ezután létrehoz egy új felhasználót a Azure Database for MariaDB szolgáltatásban, és minden jogosultságot biztosít az adott felhasználóhoz tartozó új adatbázis-\*sémához (testdb.). 
+   Ez az SQL Code-szintaxis egy új, testdb nevű adatbázist hoz létre példaként. Ezután létrehoz egy új felhasználót a Azure Database for MariaDB szolgáltatásban, és minden jogosultságot biztosít az adott felhasználóhoz tartozó új adatbázis-sémához (testdb. \* ). 
 
    ```sql
    CREATE DATABASE testdb;
@@ -85,7 +91,7 @@ A Azure Database for MariaDB-kiszolgáló létrehozása után az első kiszolgá
    ```
    A felhasználói fiókok kezelésével kapcsolatos további információkért lásd: MariaDB dokumentáció a [felhasználói fiókok kezeléséhez](https://mariadb.com/kb/en/library/user-account-management/), a jogosultságok [megadása](https://mariadb.com/kb/en/library/grant/)és a [jogosultságok](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára a kapcsolódáshoz: [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

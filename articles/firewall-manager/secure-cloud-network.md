@@ -1,24 +1,22 @@
 ---
-title: 'Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Manager előzetes verziójával'
-description: Ebből az oktatóanyagból megtudhatja, hogyan védheti a virtuális WAN-t a Azure Firewall Managerrel a Azure Portal használatával.
+title: 'Oktatóanyag: virtuális központ biztonságossá tétele a Azure Firewall Managerrel'
+description: Ebből az oktatóanyagból megtudhatja, hogyan védheti a virtuális központot Azure Firewall Managerrel a Azure Portal használatával.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 05/01/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691025"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563664"
 ---
-# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Manager előzetes verziójával 
+# <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Oktatóanyag: virtuális központ biztonságossá tétele a Azure Firewall Managerrel
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-A Azure Firewall Manager előzetes verziójának használatával biztonságos virtuális hubokat hozhat létre, amelyekkel biztonságossá teheti a saját IP-címekre, az Azure-ra és az internetre irányuló Felhőbeli hálózati forgalmat. A tűzfal felé irányuló forgalom-útválasztás automatizált, így nem kell felhasználó által megadott útvonalakat (UDR-ket) létrehoznia.
+A Azure Firewall Manager használatával biztonságos virtuális hubokat hozhat létre, amelyekkel biztonságossá teheti a Felhőbeli hálózati forgalmat a magánhálózati IP-címekre, az Azure Pástire és az internetre. A tűzfal felé irányuló forgalom-útválasztás automatizált, így nem kell felhasználó által megadott útvonalakat (UDR-ket) létrehoznia.
 
 ![a felhőalapú hálózat védelme](media/secure-cloud-network/secure-cloud-network.png)
 
@@ -95,7 +93,7 @@ Most már elvégezheti a hub és a küllő virtuális hálózatok.
 5. **Hubok**esetében válassza a **hub-01**elemet.
 6. Az **erőforráscsoport**területen válassza az **FW-Manager**lehetőséget.
 7. **Virtuális hálózat**esetén válassza a **küllő-01**elemet.
-8. Kattintson az **OK** gombra.
+8. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Tűzfal-házirend létrehozása és a központ biztonságossá tétele
 
@@ -111,16 +109,18 @@ A tűzfalszabályok olyan szabályok gyűjteményeit határozzák meg, amelyek e
 8. A **priority**( **100**) mezőbe írja be a következőt:.
 9. Győződjön meg arról, hogy a **szabályok gyűjtésének engedélyezése művelet** **engedélyezett**.
 10. A szabály **neveként** írja be a következőt: **Allow-MSFT**.
-11. A **forrás címe**mezőbe írja **\*** be a következőt:.
-12. A **protokoll**mezőben írja be a következőt: **http, HTTPS**.
-13. Győződjön meg arról, hogy * * a cél típusa **FQDN**.
-14. A **cél**mezőbe írja be ** \*** a következőt:. microsoft.com.
-15. Válassza a **Hozzáadás** lehetőséget.
-16. Válassza a **Next (tovább): hubok**lehetőséget.
-17. A **hubok** lapon válassza a **virtuális hubok hozzárendelése**lehetőséget.
-18. Válassza a **hub-01** elemet, majd kattintson a **Hozzáadás**gombra.
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
-2. Kattintson a **Létrehozás** gombra.
+11. A **forrás típusa**beállításnál válassza az **IP-cím**lehetőséget.
+12. A **forrás**mezőbe írja be a következőt: **\*** .
+13. A **protokoll**mezőben írja be a következőt: **http, HTTPS**.
+14. Győződjön meg arról, hogy a **célként megadott típus** **FQDN**.
+15. A **cél**mezőbe írja be a következőt: ** \* . microsoft.com**.
+16. Válassza a **Hozzáadás** lehetőséget.
+17. Válassza a **Tovább: fenyegetés intelligencia**lehetőséget.
+18. Válassza a **Next (tovább): hubok**lehetőséget.
+19. A **hubok** lapon válassza a **virtuális hubok hozzárendelése**lehetőséget.
+20. Válassza a **hub-01** elemet, majd kattintson a **Hozzáadás**gombra.
+21. Válassza az **Áttekintés + létrehozás** lehetőséget.
+22. Kattintson a **Létrehozás** gombra.
 
 Ez körülbelül öt percet vesz igénybe.
 
@@ -130,13 +130,11 @@ Most meg kell győződnie arról, hogy a hálózati forgalom átirányítva lesz
 
 1. A Firewall Managerben válassza a **biztonságos virtuális hubok**lehetőséget.
 2. Válassza a **hub-01**elemet.
-3. A **Beállítások**területen válassza az **útvonal-beállítások**elemet.
-4. Az **internetes forgalom**, **a virtuális hálózatok közötti forgalom**területen válassza a **Küldés Azure Firewall használatával**lehetőséget.
-5. Az **Azure Private Traffic**, **a virtuális hálózatok felé irányuló forgalom**területen válassza a **Küldés Azure Firewallon keresztül**lehetőséget.
-6. Válassza az **IP-cím előtag (ok) szerkesztése**lehetőséget.
-8. Írja be a **10.0.1.0/24** értéket a munkaterhelés-alhálózat címére, majd válassza a **Mentés**lehetőséget.
-9. A **Beállítások**területen válassza a **kapcsolatok**lehetőséget.
+3. A **Beállítások**területen válassza a **biztonsági konfiguráció**elemet.
+4. Az **internetes forgalom**területen válassza a **Azure Firewall**lehetőséget.
+5. A **privát forgalom**területen válassza a **Küldés Azure Firewall használatával**lehetőséget.
 10. Győződjön meg arról, hogy a **sugaras** kapcsolatok **biztonságosként**jeleníti meg az **internetes forgalmat** .
+11. Kattintson a **Mentés** gombra.
 
 
 ## <a name="test-your-firewall"></a>A tűzfal tesztelése
@@ -190,11 +188,11 @@ Ha engedélyezni szeretné az internetkapcsolatot a Jump-SRV használatával, l�
 9. Írja be az **útvonal nevét**az **Ugrás az inet értékre** .
 10. Adja meg a **0.0.0.0/0** értéket a **címek előtagja**számára.
 11. Válassza az **Internet** lehetőséget a **következő ugrási típushoz**.
-12. Kattintson az **OK** gombra.
+12. Válassza az **OK** lehetőséget.
 13. Amikor az üzembe helyezés befejeződött, válassza az **alhálózatok**, majd a **hozzárendelés**lehetőséget.
 14. Válassza a **küllő-01** lehetőséget a **virtuális hálózathoz**.
 15. Válassza a **Jump-SN** lehetőséget az **alhálózat**elemnél.
-16. Kattintson az **OK** gombra.
+16. Válassza az **OK** lehetőséget.
 
 ### <a name="test-the-rules"></a>A szabályok tesztelése
 
@@ -204,7 +202,7 @@ A tűzfalszabályok tesztelésével ellenőrizze, hogy az a vártnak megfelelőe
 2. Csatlakoztasson egy távoli asztalt a **Jump-SRV** virtuális géphez, és jelentkezzen be. Onnan nyisson meg egy távoli asztali kapcsolattal a **munkaterhelés-SRV** magánhálózati IP-címet.
 
 3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: https://www.microsoft.com.
-4. Az Internet Explorer biztonsági riasztások ablakában kattintson **az OK** > **Bezárás** gombra.
+4. **OK**  >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK**Bezárás** gombra.
 
    A Microsoft kezdőlapjának kell megjelennie.
 

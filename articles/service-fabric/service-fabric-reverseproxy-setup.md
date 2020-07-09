@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476668"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
@@ -154,7 +154,7 @@ A Resource Manager-sablonokkal a következő lépéseket követve engedélyezhet
 
 ## <a name="enable-reverse-proxy-on-standalone-clusters"></a>Fordított proxy engedélyezése önálló fürtökön
 
-Önálló fürtök esetében engedélyezze a fordított proxyt a ClusterConfig. JSON fájlban. A fordított proxyt engedélyezheti a fürt létrehozásakor vagy egy meglévő fürt konfigurációjának frissítésével. Ha többet szeretne megtudni a ClusterConfig. JSON fájlokban elérhető beállításokról, tekintse meg a [különálló fürt beállításai](./service-fabric-cluster-manifest.md)című témakört.
+Önálló fürtök esetében engedélyezze a fordított proxyt a fájl ClusterConfig.js. A fordított proxyt engedélyezheti a fürt létrehozásakor vagy egy meglévő fürt konfigurációjának frissítésével. Ha többet szeretne megtudni a fájlok ClusterConfig.jsján elérhető beállításokról, tekintse meg a [különálló fürt beállításai](./service-fabric-cluster-manifest.md)című témakört.
 
 A következő lépések bemutatják, hogy milyen beállításokkal engedélyezheti a fordított proxyt, és ha szükséges, a fordított proxyt X. 509 tanúsítvánnyal is biztonságossá teheti. 
 
@@ -221,7 +221,7 @@ A következő lépések bemutatják, hogy milyen beállításokkal engedélyezhe
 
    Ha többet szeretne megtudni a tanúsítványok önálló fürthöz való konfigurálásáról és kezeléséről, valamint részletesebben tájékozódhat a fordított proxy védelméhez használt tanúsítványok konfigurálásáról, tekintse meg a [X509-alapú biztonság](./service-fabric-windows-cluster-x509-security.md)című témakört.
 
-Miután módosította a ClusterConfig. JSON fájlt a fordított proxy engedélyezéséhez, kövesse a [fürtkonfiguráció frissítése](service-fabric-cluster-config-upgrade-windows-server.md) a fürt módosításainak leküldéséhez című témakör útmutatását.
+Miután módosította a ClusterConfig.jsfájlt a fordított proxy engedélyezéséhez, kövesse a [fürtkonfiguráció frissítése](service-fabric-cluster-config-upgrade-windows-server.md) a fürt módosításainak leküldéséhez című témakör útmutatását.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Fordított proxy kicserélése nyilvános porton keresztül Azure Load Balancer
@@ -300,7 +300,7 @@ A következő JSON ugyanarra a sablonra hivatkozik, amely a [fordított proxy en
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Fordított proxy viselkedésének testreszabása a háló beállításaival
 
-A fordított proxy viselkedését az Azure-ban üzemeltetett fürtök Resource Manager-sablonjában, illetve az önálló fürtök ClusterConfig. JSON fájljában is testreszabhatja. A fordított proxy viselkedését vezérlő beállítások a fürt **tulajdonságai** szakaszban található **fabricSettings** szakasz [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszában találhatók. 
+A fordított proxy viselkedését az Azure-ban üzemeltetett fürtök Resource Manager-sablonjában, illetve az önálló fürtökön található fájl ClusterConfig.jsjában szabhatja testre. A fordított proxy viselkedését vezérlő beállítások a fürt **tulajdonságai** szakaszban található **fabricSettings** szakasz [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszában találhatók. 
 
 Beállíthatja például a **DefaultHttpRequestTimeout** értékét úgy, hogy a fordított proxyra irányuló kérések időtúllépését 180 másodpercre állítsa a következő JSON-ként:
 

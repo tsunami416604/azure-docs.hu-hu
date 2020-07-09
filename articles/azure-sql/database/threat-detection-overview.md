@@ -1,9 +1,9 @@
 ---
 title: Fejlett fenyegetésvédelem
-titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse
-description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel a Azure SQL Database, az Azure SQL felügyelt példányában és az Azure Szinapszisban rejlő lehetséges biztonsági fenyegetéseket jelezve.
+titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse Analytics
+description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel a Azure SQL Database, az Azure SQL felügyelt példányában és az Azure szinapszis Analyticsben rejlő lehetséges biztonsági fenyegetéseket jelezve.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.devlang: ''
 ms.custom: sqldbrb=2
@@ -13,17 +13,17 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 27d44ba8be56839f248312e1bdb4b0e4b7761110
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 822d4267d5b163ddda50302e2caea5c3ade3b7c4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047019"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985371"
 ---
-# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance--azure-synapse"></a>Komplex veszélyforrások elleni védelem a Azure SQL Database, az SQL felügyelt példánya & Azure szinapszis
+# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Komplex veszélyforrások elleni védelem a Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics számára
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-A [Azure SQL Database](sql-database-paas-overview.md)komplex veszélyforrások elleni védelme, az [Azure SQL felügyelt példánya](../managed-instance/sql-managed-instance-paas-overview.md) és az [Azure szinapszis](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
+A [Azure SQL Database](sql-database-paas-overview.md)komplex veszélyforrások elleni védelme, az [Azure SQL felügyelt példánya](../managed-instance/sql-managed-instance-paas-overview.md) és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) rendellenes tevékenységeket észlel, amelyekben szokatlan és potenciálisan ártalmas kísérleteket jelez az adatbázisok eléréséhez vagy kiaknázásához.
 
 A komplex veszélyforrások elleni védelem a fejlett [adatbiztonsági](advanced-data-security.md) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. Az Advanced Threat Protection a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
@@ -47,13 +47,13 @@ A rendellenes adatbázis-tevékenységek észlelése után e-mailben értesíté
 
    ![Tevékenységgel kapcsolatos fenyegetések](./media/threat-detection-overview/active_threats.png)
 
-2. Egy adott riasztásra kattintva további részleteket és műveleteket kaphat a fenyegetés kivizsgálásához és a jövőbeli fenyegetések szervizelését.
+1. Egy adott riasztásra kattintva további részleteket és műveleteket kaphat a fenyegetés kivizsgálásához és a jövőbeli fenyegetések szervizelését.
 
    Az SQL injection például az egyik leggyakoribb webalkalmazási biztonsági probléma az interneten, amely az adatvezérelt alkalmazások támadására szolgál. A támadók kihasználhatják az alkalmazások biztonsági réseit, hogy rosszindulatú SQL-utasításokat szúrnak be az Application Entry mezőibe, vagy megsértsék vagy módosíthassák az adatokat az adatbázisban. Az SQL-injektálási riasztások esetében a riasztás részletei közé tartozik a kihasznált sebezhető SQL-utasítás.
 
    ![Adott riasztás](./media/threat-detection-overview/specific_alert.png)
 
-## <a name="explore-alerts-in-azure-portal"></a>A riasztások megismerése Azure Portal
+## <a name="explore-alerts-in-the-azure-portal"></a>A riasztások megismerése a Azure Portal
 
 A komplex veszélyforrások elleni védelem a riasztásokat az [Azure Security Center](https://azure.microsoft.com/services/security-center/)szolgáltatással integrálja. Az adatbázison belüli élő SQL Advanced Threat Protection csempék és az SQL-hirdetések pengéi a Azure Portal nyomon követik az aktív fenyegetések állapotát.
 

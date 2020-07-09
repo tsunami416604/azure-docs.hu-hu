@@ -13,12 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248360"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: adatok másolása Blob Storageról SQL Databasera a Data Factory használatával
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.locfileid: "84118587"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md).
 
-Ebben az oktatóanyagban egy adatfeldolgozót hoz létre egy folyamattal, amely az adatok blob Storage-ból az SQL Database-be való másolásához szükséges.
+Ebben az oktatóanyagban egy adatfeldolgozót hoz létre egy folyamattal, amely az adatok blob Storage-ból SQL Databaseba való másolásához szükséges.
 
 A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban. Egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja át az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.  
 
@@ -47,7 +46,7 @@ Az oktatóanyag megkezdése előtt a következő előfeltételeket kell megadnia
 
 * **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért tekintse meg az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) ismertető cikket.
 * **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **forrásként** szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
-* **Azure SQL Database**. Ebben az oktatóanyagban az Azure SQL Database-t használja **célként** szolgáló adattárként. Ha nem rendelkezik Azure SQL-adatbázissal, amelyet az oktatóanyagban használhat, tekintse meg a következő témakört: [Azure SQL Database létrehozása és konfigurálása](../../sql-database/sql-database-get-started.md) egy létrehozásához.
+* **Azure SQL Database**. Ebben az oktatóanyagban a Azure SQL Database használja **célként** szolgáló adattárként. Ha nincs olyan adatbázisa Azure SQL Databaseban, amelyet az oktatóanyagban használhat, tekintse meg a következő témakört: [adatbázis létrehozása és konfigurálása Azure SQL Databaseban](../../sql-database/sql-database-get-started.md) egy létrehozásához.
 * **SQL Server 2012/2014 vagy Visual Studio 2013**. A SQL Server Management Studio vagy a Visual Studio használatával hozzon létre egy mintaadatbázis-adatbázist, és tekintse meg az eredményeket az adatbázisban.  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB Storage-fiók nevének és kulcsának gyűjtése
@@ -66,7 +65,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz az Azure Storage-fiókja fiókj�
 7. Az **X**gombra kattintva zárjuk le az összes pengét.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, adatbázis, felhasználónevek gyűjtése
-Ehhez az oktatóanyaghoz a logikai SQL Server, az adatbázis és a felhasználó nevét kell megadnia. Jegyezze fel a **kiszolgáló**, az **adatbázis**és a **felhasználó** nevét az Azure SQL Database-ben.
+Ehhez az oktatóanyaghoz a logikai SQL Server, az adatbázis és a felhasználó nevét kell megadnia. Jegyezze fel a **kiszolgáló**, az **adatbázis**és a **felhasználó** nevét a Azure SQL Database.
 
 1. A **Azure Portal**kattintson a bal oldali **minden szolgáltatás** elemre, és válassza az **SQL-adatbázisok**lehetőséget.
 2. Az **SQL-adatbázisok**panelen válassza ki az oktatóanyagban használni kívánt **adatbázist** . Jegyezze fel az **adatbázis nevét**.  
@@ -83,9 +82,9 @@ Győződjön **meg** arról, hogy az **Azure-szolgáltatások hozzáférésének
 4. Az **X**gombra kattintva zárjuk le az összes pengét.
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage és SQL Database előkészítése
-Készítse elő az Azure Blob Storage-t és az Azure SQL Database-t az oktatóanyaghoz az alábbi lépések végrehajtásával:  
+Most készítse elő az Azure Blob Storage-t, és Azure SQL Database az oktatóanyaghoz az alábbi lépések végrehajtásával:  
 
-1. Indítsa el a Jegyzettömböt. Másolja az alábbi szöveget, és mentse **EMP. txt** néven a **C:\ADFGetStarted** mappába a merevlemezen.
+1. Indítsa el a Jegyzettömböt. Másolja a következő szöveget, és mentse **emp.txtként** a merevlemez **C:\ADFGetStarted** mappájába.
 
     ```
     John, Doe

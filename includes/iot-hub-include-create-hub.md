@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77461861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85365190"
 ---
 Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
@@ -52,7 +52,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
 
     - **Azure Security Center**: kapcsolja be ezt a beállítást, ha további veszélyforrások elleni védelmet szeretne hozzáadni a IoT és az eszközeihez. Ez a lehetőség az ingyenes szinten lévő hubok esetében nem érhető el. További információ erről a szolgáltatásról: [Azure Security Center a IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
-    - **Advanced Settings** > Az**eszközről a felhőbe**irányuló speciális beállítások: Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
+    - **Speciális beállítások**  >  **Eszközről a felhőbe irányuló partíciók**: Ez a tulajdonság az üzenetek egyidejű olvasóinak számát kapcsolja az eszközről a felhőbe irányuló üzenetekhez. A legtöbb hubhoz csak négy partíció szükséges.
 
 1.  Kattintson a **Next (tovább** ) gombra, hogy a következő képernyőre folytassa a címkéket.
 

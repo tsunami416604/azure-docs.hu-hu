@@ -12,13 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471472"
 ---
-# <a name="url-rewrite-custom-forwarding-path"></a>URL-újraírás (egyéni továbbítási útvonal)
+# <a name="url-rewrite-custom-forwarding-path"></a>URL-átírás (egyéni továbbítási útvonal)
 Az Azure bevezető ajtaja támogatja az URL-cím újraírását, mivel lehetővé teszi egy opcionális **Egyéni továbbítási útvonal** konfigurálását, amelyet a rendszer a háttérbe való továbbításra irányuló kérés összeállításakor használ. Ha nincs megadva egyéni továbbítási útvonal, a Front Door alapértelmezés szerint bemásolja a bejövő URL-útvonalat a továbbított kérelemben használt URL-címbe. A továbbított kérelemben használt állomásfejléc megegyezik a kiválasztott háttérrendszer számára konfigurált állomásfejléccel. Olvassa el a [háttérbeli állomásfejléc-fejlécet](front-door-backend-pool.md#hostheader) , hogy megtudja, mit csinál, és hogyan konfigurálhatja.
 
 Az URL-cím az egyéni továbbítási útvonal használatával történő újraírásának nagy része az, hogy a bejövő elérési út bármely olyan részét átmásolja, amely megegyezik a továbbított útvonalhoz tartozó helyettesítő karakteres elérési úttal (ezek az elérésiút-szegmensek az alábbi példában szereplő **zöld** szegmensek):
@@ -30,24 +29,24 @@ Vegye fontolóra egy útválasztási szabályt a következő előtér-gazdagépe
 
 | Hosts      | Elérési utak       |
 |------------|-------------|
-| www\.-contoso.com | /\*         |
+| www- \. contoso.com | /\*         |
 |            | /foo        |
 |            | foo\*     |
 |            | /foo/bar/\* |
 
 Az alábbi táblázat első oszlopa a beérkező kérelmekre mutat példákat, a második oszlop pedig azt mutatja be, hogy mi lenne a "legpontosabban egyező" útvonal.  A táblázat első sorában a harmadik és az azt követő oszlopok a konfigurált **Egyéni továbbítási útvonalakra**mutatnak, az oszlopok többi sora pedig példát mutat arra, hogy a továbbított kérések elérési útja hogyan illeszkedik az adott sorban található kérelemhez.
 
-Ha például beolvasjuk a második sort, azt mondja, hogy a bejövő kérelem `www.contoso.com/sub`esetében, ha az egyéni továbbítási útvonal volt `/`, akkor a továbbított elérési út a `/sub`következő lesz:. Ha az egyéni továbbítási útvonal `/fwd/`volt, akkor a továbbított elérési út `/fwd/sub`a következő lesz:. És így tovább, a fennmaradó oszlopokhoz. Az alábbi elérési utak **Kiemelt** részei a helyettesítő karakteres egyezés részét képező részeket jelölik.
+Ha például beolvasjuk a második sort, azt mondja, hogy a bejövő kérelem esetében, `www.contoso.com/sub` Ha az egyéni továbbítási útvonal volt `/` , akkor a továbbított elérési út a következő lesz: `/sub` . Ha az egyéni továbbítási útvonal volt `/fwd/` , akkor a továbbított elérési út a következő lesz: `/fwd/sub` . És így tovább, a fennmaradó oszlopokhoz. Az alábbi elérési utak **Kiemelt** részei a helyettesítő karakteres egyezés részét képező részeket jelölik.
 
 
 | Bejövő kérelem       | A legpontosabb egyezési elérési út | /          | fwd          | foo          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www\.-contoso.com/            | /\*                      | /          | fwd          | foo          | /foo/bar/          |
-| www\.contoso.com/**Sub**     | /\*                      | /**Sub**   | /fwd/**Sub**   | /foo/**Sub**   | /foo/Bar/**Sub**   |
-| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/Bar/**a/b/c** |
-| www\.-contoso.com/foo         | /foo                     | /          | fwd          | foo          | /foo/bar/          |
-| www\.-contoso.com/foo/        | foo\*                  | /          | fwd          | foo          | /foo/bar/          |
-| www\.contoso.com/foo/**sáv** | foo\*                  | /**Bár**   | /fwd/**sáv**   | /foo/**sáv**   | /foo/Bar/**sáv**   |
+| www- \. contoso.com/            | /\*                      | /          | fwd          | foo          | /foo/bar/          |
+| www \. contoso.com/**Sub**     | /\*                      | /**Sub**   | /fwd/**Sub**   | /foo/**Sub**   | /foo/Bar/**Sub**   |
+| www \. contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/Bar/**a/b/c** |
+| www- \. contoso.com/foo         | /foo                     | /          | fwd          | foo          | /foo/bar/          |
+| www- \. contoso.com/foo/        | foo\*                  | /          | fwd          | foo          | /foo/bar/          |
+| www \. contoso.com/foo/**sáv** | foo\*                  | /**Bár**   | /fwd/**sáv**   | /foo/**sáv**   | /foo/Bar/**sáv**   |
 
 
 ## <a name="optional-settings"></a>Választható beállítások

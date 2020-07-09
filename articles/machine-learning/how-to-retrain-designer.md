@@ -5,17 +5,16 @@ description: Ismerje meg, hogyan lehet a modelleket a Azure Machine Learning Des
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
 ms.custom: designer
-ms.openlocfilehash: 7a132734c3ccb6d5d143053b83723950d154d74c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: c466684bf5c07b5e88e8052c29aa9fb0b8583a89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430071"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -93,7 +92,7 @@ Egy folyamat közzététele egy folyamat végpontján, hogy a jövőben könnyed
    > [!NOTE]
    > Több folyamat is közzétehető egyetlen végponton. Egy adott végpont minden folyamata egy verziószámot kap, amelyet megadhat a folyamat végpontjának meghívásakor.
 
-1. Kattintson a **Publish** (Közzététel) elemre.
+1. Kattintson a **Közzététel** lehetőségre.
 
 ## <a name="retrain-your-model"></a>A modell újratanítása
 

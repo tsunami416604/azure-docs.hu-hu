@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382718"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601938"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Mi az a Bing Video Search API?
 
@@ -35,7 +35,7 @@ A Bing Video Search API megkönnyíti a videók keresési funkcióinak hozzáad�
 
 A Bing Video Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatás a [REST API](csharp.md) vagy az [SDK](video-search-sdk-quickstart.md) segítségével használható.
 
-1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
 2. Küldjön egy kérést az API-ra egy érvényes keresési lekérdezéssel.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
@@ -43,8 +43,6 @@ A Bing Video Search API egy REST-alapú webszolgáltatás, így könnyen hívhat
 ## <a name="next-steps"></a>További lépések
 
 A Bing Video Search API [interaktív bemutató](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/) bemutatja, hogyan szabhatja testre a keresési lekérdezést, és hogyan kereshet meg videókat a weben.
-
-Amikor kész meghívni az API-t, hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
 A rövid útmutató segítségével gyorsan megkezdheti első [API-](csharp.md) kérelmét.
 

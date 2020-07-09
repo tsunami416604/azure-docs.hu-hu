@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371840"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210371"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning vs Machine Learning Studio (klasszikus)
 
@@ -29,7 +29,7 @@ Az alábbi táblázat a Azure Machine Learning és a Studio (klasszikus) közöt
 
 | | Machine Learning Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
-| Húzási interfész | Támogatott | Támogatott – [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) | 
+| Húzási interfész | Támogatott | Támogatott – [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) <br/>(Vállalati munkaterület szükséges hozzá) | 
 | Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Számítási célok betanítása | Tulajdonosi számítási cél, csak CPU-támogatás | Testreszabható [képzési számítási célok](concept-compute-target.md#train)széles köre. GPU-val és CPU-támogatással rendelkezik | 
 | Üzembe helyezési számítási célok | Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Testreszabható [üzembe helyezési számítási célok](concept-compute-target.md#deploy)széles köre. GPU-val és CPU-támogatással rendelkezik |

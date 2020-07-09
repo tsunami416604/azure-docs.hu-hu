@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
@@ -8,10 +8,10 @@ ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 5f5f682c8c31c17f1a645bcdacdc78f32bd5c001
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77205743"
 ---
 Egy adott Function alkalmazás összes függvényének kódja egy olyan legfelső szintű Project mappában található, amely egy gazdagép konfigurációs fájlját és egy vagy több almappát tartalmaz. Minden almappa egy külön függvény kódját tartalmazza. A mappa szerkezete a következő ábrázolásban látható:
@@ -31,7 +31,7 @@ FunctionApp
 
 A functions alkalmazás 2. x és újabb verziójában a Function app összes funkciójának ugyanazzal a nyelvi veremmel kell rendelkeznie.  
 
-A [Host. JSON](../articles/azure-functions/functions-host-json.md) fájl futtatókörnyezet-specifikus konfigurációkat tartalmaz, és a Function alkalmazás gyökérkönyvtárában található. A *bin* mappa csomagokat és más, a Function alkalmazás által igényelt függvénytár-fájlokat tartalmaz. Tekintse meg a Function app-projekt nyelvspecifikus követelményeit:
+A fájl [host.js](../articles/azure-functions/functions-host-json.md) futtatókörnyezet-specifikus konfigurációkat tartalmaz, és a Function alkalmazás gyökérkönyvtárában található. A *bin* mappa csomagokat és más, a Function alkalmazás által igényelt függvénytár-fájlokat tartalmaz. Tekintse meg a Function app-projekt nyelvspecifikus követelményeit:
 
 * [C# szintű függvénytár (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
 * [C#-szkript (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)

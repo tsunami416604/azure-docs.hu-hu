@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 12616fbc80468d35ebb8b0bc5cd12bfd5871e788
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79503656"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805105"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Gyors útmutató: Azure-beli virtuális gép figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-beli virtuális gépekről a létrehozásuk pillanatában. Ebben a rövid útmutatóban röviden ismerteti az Azure-beli virtuális gépek számára automatikusan összegyűjtött adatokat, valamint azt, hogy miként tekintheti meg a Azure Portalban. Ezután engedélyezi [Azure monitor for VMS](../insights/vminsights-overview.md) a virtuális géphez, amely lehetővé teszi az ügynökök számára a virtuális gép számára az adatok gyűjtését és elemzését a vendég operációs rendszerből, beleértve a folyamatokat és a függőségeiket.
@@ -48,7 +48,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 6. A virtuális gépet az előfizetésében szereplő összes más virtuális géppel megtekintheti. Válassza a **nem figyelt** lapot, ha szeretné megtekinteni az előfizetésében nem szereplő virtuális gépeket.
 
-    ![Első lépések](media/quick-monitor-azure-vm/get-started.png)
+    ![Bevezetés](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Munkaterület konfigurálása
@@ -65,7 +65,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 2. Válassza az **Adatok**, majd a **Windows Eseménynaplók** lehetőséget.
 
-3. Adjon hozzá egy eseménynaplót a napló nevének beírásával.  Írja be a **rendszer** elemet, majd válassza **+** ki a plusz jelet.
+3. Adjon hozzá egy eseménynaplót a napló nevének beírásával.  Írja be a **rendszer** elemet, majd válassza ki a plusz jelet **+** .
 
 4. A táblázatban jelölje be a **Hiba** és **Figyelmeztetés** súlyossági szintet.
 
@@ -75,7 +75,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 1. Válassza a **Syslog** elemet.  
 
-2. Adjon hozzá egy eseménynaplót a napló nevének beírásával.  Írja be a **syslog** -t, majd **+** válassza ki a plusz jelet.  
+2. Adjon hozzá egy eseménynaplót a napló nevének beírásával.  Írja be a **syslog** -t, majd válassza ki a plusz jelet **+** .  
 
 3. A táblázatban törölje a megjelenő **adatokat**, a **figyelmeztetést** és a **hibakeresést**. 
 
@@ -83,7 +83,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 ## <a name="view-data-collected"></a>Összegyűjtött adatok megtekintése
 
-7. Kattintson a virtuális gépre, majd válassza a **teljesítmény** lapot. Ez a virtuális gép vendég operációs rendszerében gyűjtött teljesítményszámlálók kiválasztási csoportját mutatja be. Görgessen lefelé a további számlálók megjelenítéséhez, és mozgassa az egeret egy gráfra az átlag és a százalékos érték különböző időpontokban való megtekintéséhez.
+7. Kattintson a virtuális gépre, majd válassza a **teljesítmény** fület, amely a **figyelés** menü **elemzése csempén** található. Ez a virtuális gép vendég operációs rendszerében gyűjtött teljesítményszámlálók kiválasztási csoportját mutatja be. Görgessen lefelé a további számlálók megjelenítéséhez, és mozgassa az egeret egy gráfra az átlag és a százalékos érték különböző időpontokban való megtekintéséhez.
 
     ![Teljesítmény](media/quick-monitor-azure-vm/performance.png)
 

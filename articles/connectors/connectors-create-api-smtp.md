@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657006"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból Azure Logic Apps
@@ -43,7 +42,7 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 1. Az utolsó lépésben, amelyben hozzá szeretne adni egy SMTP-műveletet, válassza az **új lépés**lehetőséget. 
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be a "SMTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
@@ -51,12 +50,12 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Kapcsolat neve** | Igen | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
-   | **SMTP-kiszolgáló címe** | Igen | Az SMTP-kiszolgáló címe | 
-   | **Felhasználónév** | Igen | Az SMTP-fiókhoz tartozó Felhasználónév | 
-   | **Jelszó** | Igen | Az SMTP-fiók jelszava | 
-   | **SMTP-kiszolgáló portja** | Nem | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
-   | **Engedélyezi az SSL használatát?** | Nem | A TLS/SSL titkosítás bekapcsolása vagy kikapcsolása. | 
+   | **Kapcsolat neve** | Yes | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
+   | **SMTP-kiszolgáló címe** | Yes | Az SMTP-kiszolgáló címe | 
+   | **Felhasználónév** | Yes | Az SMTP-fiókhoz tartozó Felhasználónév | 
+   | **Jelszó** | Yes | Az SMTP-fiók jelszava | 
+   | **SMTP-kiszolgáló portja** | No | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
+   | **Engedélyezi az SSL használatát?** | No | A TLS/SSL titkosítás bekapcsolása vagy kikapcsolása. | 
    |||| 
 
 1. Adja meg a kiválasztott művelethez szükséges adatokat. 

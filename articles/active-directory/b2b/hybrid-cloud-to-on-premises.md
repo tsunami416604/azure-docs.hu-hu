@@ -4,19 +4,19 @@ description: Bemutatja, hogyan biztosítható a felhőalapú B2B-felhasználók 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387014"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
@@ -52,7 +52,7 @@ A következő ábra áttekintést nyújt arról, hogyan működik együtt az Azu
 ![A webalkalmazási és B2B parancsfájl-megoldások ábrája](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
 1.  A rendszer meghívja a contoso bérlőt a partner szervezet (a fabrikam bérlője) felhasználójának.
-2.  A rendszer létrehoz egy vendég felhasználói objektumot a contoso-bérlőben (például egy olyan felhasználói objektumot, amelynek UPN-je guest_fabrikam. com #@contoso.onmicrosoft.comext #).
+2.  A rendszer létrehoz egy vendég felhasználói objektumot a contoso-bérlőben (például egy olyan felhasználói objektumot, amelynek UPN-je guest_fabrikam. com # EXT # @contoso.onmicrosoft.com ).
 3.  A fabrikam vendég a contoso-ból vagy a B2B PowerShell-parancsfájllal lett importálva.
 4.  A fabrikam vendég felhasználói objektum (vendég # EXT #) képviselete vagy lábnyoma a helyszíni címtárban, a Contoso.com-ben vagy a B2B PowerShell-parancsfájllal hozható létre.
 5.  A vendég felhasználó hozzáfér a helyszíni alkalmazáshoz, a app.contoso.com.
@@ -74,7 +74,7 @@ További információ a (z) 2016 Service Pack 1 és a Rendszerfelügyeleti websz
 
 Létezik egy PowerShell-minta parancsfájl, amely kiindulási pontként használható a vendég felhasználói objektumok létrehozásához a helyszíni Active Directory.
 
-A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-Prem. zip fájljának lekéréséhez** .
+A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-prem.zipfájljának lekéréséhez** .
 
 A szkript használata előtt győződjön meg arról, hogy áttekinti az előfeltételeket és a fontos szempontokat a társított readme fájlban. Továbbá Ismerje meg, hogy a szkript csak mintaként érhető el. A fejlesztői csapatnak vagy partnernek a futtatása előtt testre kell szabnia és ellenőriznie kell a parancsfájlt.
 

@@ -11,12 +11,11 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 5adb09389e1d5be13f766240d9fac5a644190d6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84342000"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,14 +26,14 @@ A rugalmas készletek DTU megvásárlásához lásd: [DTU-erőforrások korláta
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Önálló adatbázis: tárolási méretek és számítási méretek
 
-A következő táblázatok az egyes szolgáltatási rétegekben és számítási méretekben elérhető erőforrásokat jelenítik meg az egyes adatbázisokhoz. Az [Azure Portal](single-database-manage.md#azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet és a tárterületet egyetlen adatbázishoz.
+A következő táblázatok az egyes szolgáltatási rétegekben és számítási méretekben elérhető erőforrásokat jelenítik meg az egyes adatbázisokhoz. Az [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#the-azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet és a tárterületet egyetlen adatbázishoz.
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [önálló adatbázis skálázása](single-database-scale.md)
 
 ### <a name="basic-service-tier"></a>Alapszintű szolgáltatási szint
 
-| **Számítási méret** | **Basic** |
+| **Számítási méret** | **Alapszintű** |
 | :--- | --: |
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárterület (GB) | 2 |

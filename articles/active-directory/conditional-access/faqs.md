@@ -4,20 +4,19 @@ description: Válaszok a feltételes hozzáféréssel kapcsolatos gyakori kérd�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 05/28/2020
+ms.topic: troubleshooting
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1704fb50586168be6f960e62b918019cb67ce4c8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253239"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Feltételes hozzáférés Azure Active Directory – gyakori kérdések
 
@@ -55,6 +54,12 @@ A Microsoft Teams asztali Windows-és Mac-ügyfelei támogatják a modern hitele
 
 További információkért tekintse meg a [feltételes hozzáférési szolgáltatás függőségeivel](service-dependencies.md) foglalkozó témakört, és vegye fontolóra a szabályzatok megcélzását az [Office 365 alkalmazáshoz](concept-conditional-access-cloud-apps.md#office-365-preview) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Miért nem működnek a lapok a Microsoft Teams szolgáltatásban a feltételes hozzáférési házirendek engedélyezése után?
+
+Miután engedélyezte a feltételes hozzáférési szabályzatokat a bérlőhöz a Microsoft Teams szolgáltatásban, bizonyos lapok nem fognak működni az asztali ügyfélen a várt módon. Az érintett lapfülek azonban a Microsoft Teams Web Client használatakor működnek. Az érintett lapok tartalmazhatnak Power BI, Forms, VSTS, PowerApps és SharePoint-listát.
+
+Az érintett lapok megjelenítéséhez az Edge, az Internet Explorer vagy a Chrome alkalmazásban kell használni a Teams webes ügyfelet, amelyen telepítve van a Windows 10-es fiók bővítmény. Egyes lapok a webes hitelesítéstől függenek, amely nem működik a Microsoft Teams asztali ügyfélprogramban, ha a feltételes hozzáférés engedélyezve van. A Microsoft a partnerekkel együttműködve engedélyezi ezeket a forgatókönyveket. A mai napig engedélyezte a Planner, a OneNote és a stream scenrarios bevonásával.
+
+## <a name="next-steps"></a>További lépések
 
 - A környezet feltételes hozzáférési házirendjeinek konfigurálásához tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 

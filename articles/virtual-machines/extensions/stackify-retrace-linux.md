@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79253792"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>A Linux-ügynök bővítményének Stackify újranyomkövetése
@@ -54,14 +53,14 @@ Az újranyomkövetési ügynök futtatható a Linux-disztribúciók ellen
 
 A Linux Stackify-ügynökének kiterjesztése megköveteli, hogy a célként megadott virtuális gép csatlakozik az internethez. 
 
-Előfordulhat, hogy módosítania kell a hálózati konfigurációt, hogy engedélyezze a kapcsolódást a Stackify számára. lásd: https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Előfordulhat, hogy módosítania kell a hálózati konfigurációt, hogy engedélyezze a kapcsolódást a Stackify számára. lásd: https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall . 
 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
 ---
 
-A következő JSON a Stackify újranyomkövetési ügynök bővítményének sémáját mutatja be. A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A következő JSON a Stackify újranyomkövetési ügynök bővítményének sémáját mutatja be. A kiterjesztéshez a `environment` és a szükséges `activationKey` .
 
 ```json
     {
@@ -95,7 +94,7 @@ A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforr
 
 Az alábbi példa azt feltételezi, hogy a Stackify retrace Linux-bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép "erőforrások": [] objektumára kerül.
 
-A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A kiterjesztéshez a `environment` és a szükséges `activationKey` .
 
 ```json
     {
@@ -152,7 +151,7 @@ Ha a bővítmény JSON-fájlját a sablon gyökerébe helyezi, az erőforrás ne
 
 A `Set-AzVMExtension` parancs segítségével telepítheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni.
 
-A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A kiterjesztéshez a `environment` és a szükséges `activationKey` .
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +172,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Az Azure CLI-eszköz használatával üzembe helyezheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre.  
 
-A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A kiterjesztéshez a `environment` és a szükséges `activationKey` .
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -183,7 +182,7 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 
 ### <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Jelentés | Lehetséges művelet |
+| Hibakód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
 | 10 | Telepítési hiba | a wget megadása kötelező |
 | 20 | Telepítési hiba | Python szükséges |
@@ -198,4 +197,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Hiba letiltása | A szolgáltatás eltávolítása nem sikerült |
 | 120 | Eltávolítási hiba | A szolgáltatás leállítása sikertelen |
 
-Ha további segítségre van szüksége, vegye fel a kapcsolatot https://support.stackify.coma Stackify támogatási szolgálatával.
+Ha további segítségre van szüksége, vegye fel a kapcsolatot a Stackify támogatási szolgálatával https://support.stackify.com .

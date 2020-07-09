@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476835"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Felhasználónkénti Azure-Multi-Factor Authentication engedélyezése a bejelentkezési események biztonságossá tételéhez
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Az Azure Multi-Factor Authentication felhasználónkénti engedélyezése a bejelentkezési események biztonságossá tételéhez
 
 A többtényezős hitelesítés az Azure AD-ben kétféleképpen biztosítható a felhasználói bejelentkezési események biztonságossá tételéhez. Az első és az előnyben részesített lehetőség egy olyan feltételes hozzáférési szabályzat beállítása, amely bizonyos feltételekkel megköveteli a többtényezős hitelesítést. A második lehetőség az, hogy minden felhasználó számára engedélyezze az Azure Multi-Factor Authentication. Ha a felhasználók külön engedélyezve vannak, a többtényezős hitelesítést a bejelentkezéskor minden alkalommal végrehajtják (bizonyos kivételekkel, például amikor bejelentkeznek a megbízható IP-címekről, vagy ha a _megjegyezett eszközök_ funkció be van kapcsolva).
 
 > [!NOTE]
-> Az Azure-Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával történő engedélyezése az ajánlott módszer. A felhasználói állapotok módosítása már nem ajánlott, kivéve, ha a licencek nem tartalmazzák a feltételes hozzáférést, mert a felhasználóknak minden bejelentkezéskor a többtényezős hitelesítést kell végezniük.
+> Az Azure-Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával történő engedélyezése az ajánlott módszer. A felhasználói állapotok módosítása már nem ajánlott, kivéve, ha a licencek nem tartalmazzák a feltételes hozzáférést, mert a felhasználóknak minden bejelentkezéskor a többtényezős hitelesítést kell végezniük. A feltételes hozzáférés használatának megkezdéséhez tekintse meg az [oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával című témakört.
 >
-> A feltételes hozzáférés használatának megkezdéséhez tekintse meg az [oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával című témakört.
+> A feltételes hozzáférés nélküli Azure AD-bérlők esetében az [alapértelmezett biztonsági beállítások használatával biztosítható a felhasználók védelme](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication felhasználói állapotok
 
@@ -39,7 +39,7 @@ Az Azure Multi-Factor Authentication felhasználói fiókjai a következő háro
 | Állapot | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
 |:---:| --- |:---:|:--:|:--:|
 | Letiltva | Az Azure Multi-Factor Authenticationban nem regisztrált új felhasználók alapértelmezett állapota. | Nem | Nem | Nem |
-| Engedélyezve | A felhasználó regisztrálva lett az Azure Multi-Factor Authenticationban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. | Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure Multi-Factor Authentication regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure Multi-Factor Authentication regisztrációra van szükség. |
+| Engedélyezve | A felhasználó regisztrálva lett az Azure Multi-Factor Authenticationban, de nem regisztrált hitelesítési módszerekkel. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. | Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure Multi-Factor Authentication regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure Multi-Factor Authentication regisztrációra van szükség. |
 | Kényszerítve | A felhasználó regisztrálva lett, és befejezte az Azure Multi-Factor Authentication regisztrációs folyamatát. | Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. | Igen. Bejelentkezéskor Azure Multi-Factor Authentication szükséges. | Igen. Bejelentkezéskor Azure Multi-Factor Authentication szükséges. |
 
 A felhasználó állapota azt jelzi, hogy egy rendszergazda regisztrálta-e őket az Azure Multi-Factor Authenticationban, és hogy elvégezték-e a regisztrációs folyamatot.
@@ -84,7 +84,7 @@ Ha a felhasználói állapotot az [Azure ad PowerShell](/powershell/azure/overvi
 * *Kényszerítve*
 * *Letiltva*  
 
-Ne helyezze át a felhasználókat közvetlenül a *kényszerített* állapotba. Ha így tesz, a nem böngészőalapú alkalmazások nem működnek, mert a felhasználó nem ment át az Azure Multi-Factor Authentication-regisztrációval, és nem kapott meg egy [alkalmazás jelszavát](howto-mfa-mfasettings.md#app-passwords).
+Ne helyezze át a felhasználókat közvetlenül a *kényszerített* állapotba. Ha így tesz, a nem böngészőalapú alkalmazások nem működnek, mert a felhasználó nem ment át az Azure Multi-Factor Authentication-regisztrációval, és nem kapott meg egy [alkalmazás jelszavát](howto-mfa-app-passwords.md).
 
 Első lépésként telepítse a *MSOnline* modult a [install-Module](/powershell/module/powershellget/install-module) paranccsal a következőképpen:
 

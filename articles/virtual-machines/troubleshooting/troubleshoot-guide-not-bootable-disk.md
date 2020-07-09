@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80300978"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Rendszerindítási hiba – ez nem rendszerindító lemez
@@ -59,7 +59,7 @@ Ez a hibaüzenet azt jelenti, hogy az operációs rendszer rendszerindítási fo
 
 Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció *aktívként*van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az *állapot* jelzője elavult volt.
 
-1. Nyisson meg egy rendszergazda jogú parancssort *(Cmd. exe)*.
+1. Nyisson meg egy rendszergazda jogú parancssort *(cmd.exe)*.
 2. Adja meg a *DiskPart* eszközt a DiskPart eszköz elindításához.
 3. Írja be a *lemez listázása* lehetőséget a rendszerlemezek listázásához, és keresse meg a csatolt operációs rendszer virtuális merevlemezét.
 4. Ha a csatlakoztatott operációs rendszer VHD-je található, írja be a *sel Disk #* értéket a lemez kiválasztásához.  Lásd a 2. ábrát, ahol az 1. lemez a csatolt operációs rendszer VHD-je.
@@ -96,12 +96,12 @@ Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD
 
 ### <a name="fix-the-disk-partition"></a>A lemezpartíció kijavítása
 
-1. Nyisson meg egy rendszergazda jogú parancssort (Cmd. exe).
+1. Nyisson meg egy rendszergazda jogú parancssort (cmd.exe).
 2. A következő parancs használatával futtassa a *chkdsk* parancsot a lemez (ek) re, és javítsa a hibákat:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   Az "/f" parancs hozzáadásával kijavíthatja az esetleges hibákat a lemezen. Ügyeljen arra, hogy <DRIVE LETTER> a helyére a csatolt operációs rendszer virtuális merevlemezének betűjelét írja.
+   Az "/f" parancs hozzáadásával kijavíthatja az esetleges hibákat a lemezen. Ügyeljen arra, hogy a helyére a <DRIVE LETTER> csatolt operációs rendszer virtuális merevlemezének betűjelét írja.
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Ajánlott: a virtuális gép újraépítése előtt engedélyezze a soros konzol és a memóriaképek gyűjtését
 

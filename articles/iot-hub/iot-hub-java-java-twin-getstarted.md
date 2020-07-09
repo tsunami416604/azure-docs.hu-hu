@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt
 ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732458"
 ---
 # <a name="get-started-with-device-twins-java"></a>Ismerkedés az eszközök ikrekkel (Java)
@@ -67,7 +66,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
 
 3. A parancssorban navigáljon a **Add-Tags-Query** mappára.
 
-4. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt az **Add-Tags-Query** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az **IOT-Service-Client** csomagot az alkalmazásban az IOT hub használatával folytatott kommunikációhoz:
+4. Egy szövegszerkesztővel nyissa meg a **pom.xml** fájlt a **Add-Tags-Query** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az **IOT-Service-Client** csomagot az alkalmazásban az IOT hub használatával folytatott kommunikációhoz:
 
     ```xml
     <dependency>
@@ -114,7 +113,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     import java.util.Set;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. A `{youriothubconnectionstring}` helyére írja be az IoT hub-beli, a [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncot.
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. A helyére írja `{youriothubconnectionstring}` be az IoT hub-beli, a [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncot.
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -124,7 +123,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     public static final String plant = "Redmond43";
     ```
 
-10. Frissítse a **fő** metódus aláírását, hogy tartalmazza `throws` a következő záradékot:
+10. Frissítse a **fő** metódus aláírását, hogy tartalmazza a következő `throws` záradékot:
 
     ```java
     public static void main( String[] args ) throws IOException
@@ -138,7 +137,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-12. Adja hozzá a `try/catch` következő blokkot a **Main** metódushoz:
+12. Adja hozzá a következő `try/catch` blokkot a **Main** metódushoz:
 
     ```java
     try {
@@ -150,7 +149,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     }
     ```
 
-13. Ha frissíteni szeretné a **régiót** **és a berendezési** eszköz Twin címkéit az eszköz Twin-kódjában `try` , adja hozzá a következő kódot a blokkhoz:
+13. Ha frissíteni szeretné a **régiót** **és a berendezési** eszköz Twin címkéit az eszköz Twin-kódjában, adja hozzá a következő kódot a `try` blokkhoz:
 
     ```java
     // Get the device twin from IoT Hub
@@ -179,7 +178,7 @@ Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak 
     System.out.println(device);
     ```
 
-14. Az eszközök az IoT hub-ban való lekérdezéséhez adja hozzá a következő kódot `try` a blokkhoz az előző lépésben hozzáadott kód után. A kód két lekérdezést futtat. Minden lekérdezés legfeljebb 100 eszközt ad vissza.
+14. Az eszközök az IoT hub-ban való lekérdezéséhez adja hozzá a következő kódot a `try` blokkhoz az előző lépésben hozzáadott kód után. A kód két lekérdezést futtat. Minden lekérdezés legfeljebb 100 eszközt ad vissza.
 
     ```java
     // Query the device twins in IoT Hub
@@ -228,7 +227,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
 
 2. A parancssorban navigáljon a **szimulált eszköz** mappájához.
 
-3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőségeket a **függőségek** csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz.
+3. Egy szövegszerkesztővel nyissa meg a **szimulált eszköz** mappában található **pom.xml** fájlt, és adja hozzá a következő függőségeket a **függőségek** csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz.
 
     ```xml
     <dependency>
@@ -284,7 +283,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub szá
     import java.util.Scanner;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. A `{yourdeviceconnectionstring}` helyére írja be az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban című részhez másolt eszköz-összekapcsolási karakterláncot.
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. A helyére írja `{yourdeviceconnectionstring}` be az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban című részhez másolt eszköz-összekapcsolási karakterláncot.
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";

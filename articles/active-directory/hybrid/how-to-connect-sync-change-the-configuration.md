@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357868"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -243,7 +243,7 @@ Nem minden Azure AD-attribútum importálható a helyszíni AD-összekötő ter�
  5. Kattintson **az OK** gombra a mentéshez.
 ![Forrás attribútum hozzáadása a helyszíni AD Connector sémához](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>3. lépés: a UserType hozzáadása az Azure AD Connector sémához
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>3. lépés: a UserType attribútum hozzáadása az Azure AD Connector sémához
 Alapértelmezés szerint a rendszer nem importálja a UserType attribútumot a Azure AD Connect térbe. A UserType attribútum hozzáadása az importált attribútumok listájához:
 
  1. Nyissa meg a Synchronization Service Manager **Összekötők** lapját.
@@ -265,7 +265,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
     | Name | *Adjon meg egy nevet* | Például az *ad – User UserType* |
-    | Leírás | *Adja meg a leírást* |  |
+    | Description | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
     | Metaverse objektum típusa | **Személy** |  |
@@ -274,7 +274,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
 5. Lépjen a **hatóköri szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** a következő záradékkal:
 
-    | Attribútum | Operátor | Érték |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Felhasználó\_ |
 
@@ -290,7 +290,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
     | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    | Kifejezés | UserType (Felhasználótípus) | IIF (IsPresent ([userPrincipalName]), IIF (CBool (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "tag", "vendég"), hiba ("a userPrincipalName nem áll rendelkezésre a UserType meghatározásához")) | Nincs bejelölve | Frissítés |
+    | Expression | UserType (Felhasználótípus) | IIF (IsPresent ([userPrincipalName]), IIF (CBool (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "tag", "vendég"), hiba ("a userPrincipalName nem áll rendelkezésre a UserType meghatározásához")) | Nincs bejelölve | Frissítés |
 
 7. A Bejövő szabály létrehozásához kattintson a **Hozzáadás** gombra.
 
@@ -307,7 +307,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
     | Name | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
-    | Leírás | *Adja meg a leírást* ||
+    | Description | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
     | Metaverse objektum típusa | **Személy** ||
@@ -316,7 +316,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Lépjen a **hatókör-szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** két záradékkal:
 
-    | Attribútum | Operátor | Érték |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -340,7 +340,7 @@ A következő lépésekkel ellenőrizheti a módosításokat a teljes szinkroniz
 
 1. **Teljes importálás** futtatása a helyszíni **ad-összekötőn**:
 
-   1. Lépjen a Synchronization Service Manager **Operations (műveletek** ) lapjára.
+   1. Nyissa meg a Synchronization Service Manager **Összekötők** lapját.
    2. Kattintson a jobb gombbal a helyszíni **ad-összekötőre** , és válassza a **Futtatás**lehetőséget.
    3. Az előugró párbeszédpanelen válassza a **teljes importálás** lehetőséget, majd kattintson **az OK**gombra.
    4. Várjon, amíg a művelet befejeződik.

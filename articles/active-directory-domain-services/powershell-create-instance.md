@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: e99ad2d53bc26b4e13a34097baaec929058a61a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9dbb8a6011b4f2aebc73df7d37e6f43e7f27b747
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654801"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734520"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
 
@@ -51,7 +51,7 @@ Hozzon létre egy Azure AD-szolgáltatásnevet a [New-azureadserviceprincipal pa
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Most hozzon létre egy *HRE DC-rendszergazdák*nevű Azure ad-csoportot. A csoportba felvett felhasználók engedélyt kapnak az adminisztrációs feladatok végrehajtására az Azure AD DS felügyelt tartományon.
+Most hozzon létre egy *HRE DC-rendszergazdák*nevű Azure ad-csoportot. A csoportba felvett felhasználók engedélyeket kapnak az adminisztrációs feladatok végrehajtásához a felügyelt tartományon.
 
 Hozza létre a *HRE DC rendszergazdák* csoportot a [New-AzureADGroup][New-AzureADGroup] parancsmag használatával:
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Ha létrehozta a *HRE DC-rendszergazdák* csoportot, adjon hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először a Get [-AzureADGroup][Get-AzureADGroup] parancsmaggal szerezheti be a *HRE DC rendszergazdák* csoportjának azonosítóját, majd a kívánt felhasználó objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
 
-A következő példában a fiók felhasználói objektumának azonosítója egy egyszerű felhasználónévvel `admin@aaddscontoso.onmicrosoft.com`. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
+A következő példában a fiók felhasználói objektumának azonosítója egy egyszerű felhasználónévvel `admin@aaddscontoso.onmicrosoft.com` . Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -126,9 +126,9 @@ $Vnet= New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
-## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS felügyelt tartomány létrehozása
+## <a name="create-a-managed-domain"></a>Felügyelt tartomány létrehozása
 
-Most hozzunk létre egy Azure AD DS felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
+Most hozzon létre egy felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
 
 Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
 
@@ -148,14 +148,14 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. Az Azure AD DS felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
+Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. A felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. A Azure Portal a felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
 
-Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
+Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe helyezést, a következő feladatokat kell elvégezni:
 
 * A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
-    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
-* Ha olyan régióban hozott létre Azure AD DS felügyelt tartományt, amely támogatja a Availability Zones, hozzon létre egy hálózati biztonsági csoportot az Azure AD DS felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozására. Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
-    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza és konfigurálja a hálózati biztonsági csoportot.
+    * A DNS konfigurálásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+* Ha olyan régióban hozott létre felügyelt tartományt, amely támogatja a Availability Zonest, hozzon létre egy hálózati biztonsági csoportot a felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozására. Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
+    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza és konfigurálja a hálózati biztonsági csoportot.
 * [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
 
 ## <a name="complete-powershell-script"></a>PowerShell-parancsfájl befejezése
@@ -235,19 +235,19 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. Az Azure AD DS felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
+Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. A felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. A Azure Portal a felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
 
-Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
+Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe helyezést, a következő feladatokat kell elvégezni:
 
 * A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
-    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
-* Ha olyan régióban hozott létre Azure AD DS felügyelt tartományt, amely támogatja a Availability Zones, hozzon létre egy hálózati biztonsági csoportot az Azure AD DS felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozására. Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
-    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza és konfigurálja a hálózati biztonsági csoportot.
+    * A DNS konfigurálásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+* Ha olyan régióban hozott létre felügyelt tartományt, amely támogatja a Availability Zonest, hozzon létre egy hálózati biztonsági csoportot a felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozására. Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
+    * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan létrehozza és konfigurálja a hálózati biztonsági csoportot.
 * [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD DS felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakozhat egy Windows rendszerű virtuális géphez][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatolási szinkronizálást][tutorial-phs].
+A felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakoztathat egy Windows rendszerű virtuális gépet][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatok szinkronizálását][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

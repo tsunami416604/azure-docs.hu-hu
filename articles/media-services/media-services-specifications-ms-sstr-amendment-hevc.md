@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76514221"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954689"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) HEVC vonatkozó módosítása 
 
@@ -242,10 +242,12 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 > 
 >   Az ebben a szakaszban a ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) mezőben meghatározott mezők szintaxisa a következő:
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **Megjegyzés**: a "CCFF" és a "iso8" kompatibilitási márkák azt jelzik, hogy a töredékek megfelelnek a "Common Container File Format" és a Common encryption [ISO/IEC 23001-7] és ISO Base Media File Format Edition 4 [ISO/IEC 14496-12].
 
@@ -288,14 +290,18 @@ A ProtectionElement akkor jelennek meg, ha Common Encryption (CENC) a videó-vag
 > 
 >   A HEVC streameket tartalmazó bemutatókat be kell állítani:
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (Megjegyzés: mezők elavult)
 > 
 >   A bemutatókat is be kell állítani:
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Stream Collection: A *3.1.1.1.2*szakaszban meghatározott stream Description adatelemek gyűjteménye.
 > 

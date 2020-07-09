@@ -1,20 +1,14 @@
 ---
 title: 'Oktatóanyag: egyéni események küldése hibrid kapcsolatok számára – Event Grid'
 description: 'Oktatóanyag: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. Végpontként egy hibrid kapcsolatot használunk.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: tutorial
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720702"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114873"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Oktatóanyag: egyéni események irányítása Azure Relay Hibrid kapcsolatok az Azure CLI-vel és Event Grid
 
@@ -110,14 +104,14 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 
 A figyelőalkalmazásnak meg kell kapnia az eseményüzenetet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

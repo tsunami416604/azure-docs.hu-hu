@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 70ac4942c397e8ca5db2d1b5041d0d9d43ae7222
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794055"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213040"
 ---
 # <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rövid útmutató: a szinapszis SQL-készlet számítási feladatainak elkülönítése munkaterhelési csoport használatával a Azure Portalban
 
-Ebben a rövid útmutatóban a [munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md) úgy konfigurálja, hogy létrehoz egy munkaterhelés-csoportot az erőforrások megőrzéséhez.  Ebben az oktatóanyagban a meghívott `DataLoads`adatok betöltése munkaterhelési csoportot hozunk létre. A munkaterhelés-csoport a rendszererőforrások 20%-át fogja lefoglalni.  Az adatterhelések 20%-os elkülönítése esetén azok garantált erőforrások, amelyek lehetővé teszik számukra, hogy kitalálják a SLA-kat.  A munkaterhelési csoport létrehozása után [hozzon létre egy](quickstart-create-a-workload-classifier-portal.md) számítási feladattal rendelkező számítási feladatot, amely lekérdezéseket rendel ehhez a munkaterhelés-csoporthoz
+Ebben a rövid útmutatóban a [munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md) úgy konfigurálja, hogy létrehoz egy munkaterhelés-csoportot az erőforrások megőrzéséhez.  Ebben az oktatóanyagban a meghívott adatok betöltése munkaterhelési csoportot hozunk létre `DataLoads` . A munkaterhelés-csoport a rendszererőforrások 20%-át fogja lefoglalni.  Az adatterhelések 20%-os elkülönítése esetén azok garantált erőforrások, amelyek lehetővé teszik számukra, hogy kitalálják a SLA-kat.  A munkaterhelési csoport létrehozása után [hozzon létre egy](quickstart-create-a-workload-classifier-portal.md) számítási feladattal rendelkező számítási feladatot, amely lekérdezéseket rendel ehhez a munkaterhelés-csoporthoz
 
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -52,10 +52,10 @@ Munkaterhelés-csoport létrehozása 20%-os elkülönítéssel:
 
     ![Kattintson az egyéni elemre.](./media/quickstart-configure-workload-isolation-portal/create-wg.png)
 
-6.  Adja `DataLoads` meg a **munkaterhelés csoportot**.
-7.  Adja `20` meg a **(z)%. erőforrások minimális**értékeit.
-8.  Adja `5` meg a **(z)%-os minimális erőforrások számát**.
-9.  Adja `100` meg a **Cap-erőforrások%**-át.
+6.  Adja meg `DataLoads` a **munkaterhelés csoportot**.
+7.  Adja meg `20` a **(z)%. erőforrások minimális**értékeit.
+8.  Adja meg `5` a **(z)%-os minimális erőforrások számát**.
+9.  Adja meg `100` a **Cap-erőforrások%**-át.
 10.   Kattintson a **Save** (Mentés) gombra.
 
    ![Kattintson a Save (Mentés) gombra.](./media/quickstart-configure-workload-isolation-portal/configure-wg.png)
@@ -64,10 +64,10 @@ A munkaterhelési csoport létrehozásakor megjelenik egy portál értesítése.
 
    ![Kattintson a végleges gombra](./media/quickstart-configure-workload-isolation-portal/display-wg.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az `DataLoads` oktatóanyagban létrehozott munkaterhelés-csoport törlése:
-1. **`...`** Kattintson a `DataLoads` munkaterhelés csoport jobb oldalán.
+1. Kattintson a **`...`** `DataLoads` munkaterhelés csoport jobb oldalán.
 2. Kattintson a **munkaterhelési csoport törlése**elemre.
 3. Kattintson az **Igen** gombra, amikor a rendszer felszólítja a munkaterhelés-csoport törlésének megerősítésére.
 4. Kattintson a **Save (Mentés**) gombra.
@@ -85,7 +85,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
-    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 
@@ -97,7 +97,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-A `DataLoads` munkaterhelés csoport használatához [létre kell hoznia egy számítási](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) feladatot, amely a kérelmeknek a munkaterhelés-csoportba való továbbításához szükséges.  Folytassa a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-portal.md) oktatóanyagot a számítási feladatok besorolásának `DataLoads`létrehozásához.
+A `DataLoads` munkaterhelés csoport használatához létre [kell](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) hoznia egy számítási feladatot, amely a kérelmeknek a munkaterhelés-csoportba való továbbításához szükséges.  Folytassa a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-portal.md) oktatóanyagot a számítási feladatok besorolásának létrehozásához `DataLoads` .
 
 ## <a name="see-also"></a>Lásd még
 A számítási feladatok kezelésével kapcsolatos további információkért tekintse meg a számítási feladatok kezelésével [és figyelésével](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) kapcsolatos cikket.

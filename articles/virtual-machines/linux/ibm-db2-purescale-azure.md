@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945057"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
@@ -73,13 +72,13 @@ Ez az architektúra az Azure-beli virtuális gépeken futtatja az alkalmazások,
 
 -   A DB2 CF Memória-optimalizált virtuális gépeket használ, például az E-sorozatot vagy az L-sorozatot.
 
--   A Linux rendszerű standard\_DS4\_v2 virtuális gépeket használó megosztott tárolóhelyek fürtje.
+-   A \_ \_ Linux rendszerű standard DS4 v2 virtuális gépeket használó megosztott tárolóhelyek fürtje.
 
--   A felügyeleti Jumpbox egy Linux\_rendszerű\_standard DS2 v2 virtuális gép.  Egy másik lehetőség az Azure Bastion, amely biztonságos RDP/SSH-élményt biztosít a virtuális hálózatban lévő összes virtuális gép számára.
+-   A felügyeleti Jumpbox egy \_ \_ Linux rendszerű standard DS2 v2 virtuális gép.  Egy másik lehetőség az Azure Bastion, amely biztonságos RDP/SSH-élményt biztosít a virtuális hálózatban lévő összes virtuális gép számára.
 
--   Az ügyfél egy Windows\_rendszerű\_standard DS3 v2 virtuális gép (teszteléshez használatos).
+-   Az ügyfél egy \_ \_ Windows rendszerű standard DS3 v2 virtuális gép (teszteléshez használatos).
 
--   Nem *kötelező*. Tanúsító kiszolgáló. Erre csak a DB2-pureScale egyes korábbi verzióira van szükség. Ez a példa egy standard\_DS3\_v2 virtuális gépet használ, amely a Linux rendszert futtatja (a DB2-pureScale esetében használatos).
+-   Nem *kötelező*. Tanúsító kiszolgáló. Erre csak a DB2-pureScale egyes korábbi verzióira van szükség. Ez a példa egy standard \_ DS3 \_ v2 virtuális gépet használ, amely a Linux rendszert futtatja (a DB2-pureScale esetében használatos).
 
 > [!NOTE]
 > A DB2 pureScale-fürtök legalább két DB2-példányt igényelnek. Szükség van egy gyorsítótár-példányra és egy Lock Manager-példányra is.

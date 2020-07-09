@@ -3,18 +3,18 @@ title: Adatimportálás és-exportálás Azure Notebooks előzetes verzióval re
 description: Megtudhatja, hogyan vihet be az adatok egy Azure Notebooks Preview-projektbe külső forrásokból, és hogyan exportálhatók az adatok egy projektből.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834114"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Adatfájlok használata Azure Notebooks előzetes verziójú projektekben
 
-Az adat a sok Jupyter-jegyzetfüzet, különösen az adatelemzéshez használt jegyzetfüzetek éltető eleme. A Azure Notebooks segítségével könnyedén importálhat különböző forrásokból egy projektbe, majd az adatok jegyzetfüzetből való használatával. Azt is megteheti, hogy a jegyzetfüzetek a projektben tárolt adatforrásokat is létrehoznak, amelyeket később más célra is letölthet.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Az adat a sok Jupyter-jegyzetfüzet, különösen az adatelemzéshez használt jegyzetfüzetek éltető eleme. A Azure Notebooks segítségével könnyedén importálhat különböző forrásokból egy projektbe, majd az adatok jegyzetfüzetből való használatával. Azt is megteheti, hogy a jegyzetfüzetek a projektben tárolt adatforrásokat is létrehoznak, amelyeket később más célra is letölthet.
 
 A futó jegyzetfüzetben található **adatok** menü **feltöltési** és **letöltési** parancsokat is biztosít, amelyek a projekt fájljaival, valamint az aktuális jegyzetfüzet-munkamenet ideiglenes fájljaival működnek.
 
@@ -26,7 +26,7 @@ A cikk további részében részletesen ismertetjük a projekt szintű fájlokka
 
 ## <a name="import-data"></a>Adatok importálása
 
-A fájlokat a projekt irányítópultján vagy az **adatok** menüvel vagy egy olyan paranccsal hozhatja be egy projektbe, amely egy futó jegyzetfüzetben `curl`található.
+A fájlokat a projekt irányítópultján vagy az **adatok** menüvel vagy egy olyan paranccsal hozhatja be egy projektbe, amely egy futó jegyzetfüzetben található `curl` .
 
 ### <a name="import-files-from-the-project-dashboard"></a>Fájlok importálása a projekt irányítópultról
 
@@ -46,7 +46,7 @@ A fájlokat a projekt irányítópultján vagy az **adatok** menüvel vagy egy o
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Fájlok importálása egy jegyzetfüzet fájl menüjéből
 
-1. Egy futó jegyzetfüzetben válassza a **fájlfeltöltés** > **parancsot:**
+1. Egy futó jegyzetfüzetben válassza a **fájlfeltöltés**  >  **Upload** parancsot:
 
     ![Fájlfeltöltés menü parancs egy jegyzetfüzeten belül](media/file-menu-upload.png)
 
@@ -54,9 +54,9 @@ A fájlokat a projekt irányítópultján vagy az **adatok** menüvel vagy egy o
 
 1. A megjelenő **feltöltési állapot** előugró ablakban válasszon ki egy **célmappát** a legördülő listából:
 
-    - Munkamenet mappája*~/* (): fájlokat tölt fel az aktuális jegyzetfüzet-munkamenetbe, de nem hoz létre fájlokat a projektben. A munkamenet mappája a projekt mappájához tartozó társ, de a munkamenet vége után nem marad meg. Ha a munkamenet-fájlokat a kódban szeretné elérni, előtagként a fájlneveket a relatív elérési úttal *. /*.
+    - Munkamenet mappája ( *~/* ): fájlokat tölt fel az aktuális jegyzetfüzet-munkamenetbe, de nem hoz létre fájlokat a projektben. A munkamenet mappája a projekt mappájához tartozó társ, de a munkamenet vége után nem marad meg. Ha a munkamenet-fájlokat a kódban szeretné elérni, előtagként a fájlneveket a relatív elérési úttal *. /*.
 
-        A munkamenet mappájának használata hasznos a kísérletezéshez, és elkerüli a projekt zsúfoltságát olyan fájlokkal, amelyek hosszú távon esetleg nem szükségesek. Olyan fájlokat is fel lehet tölteni a munkamenet mappájába, amelyek azonos névvel rendelkeznek a projektben lévő fájlokhoz anélkül, hogy ütközéseket okozna, és nem kell átnevezni a fájlokat. Tegyük fel például, hogy a projektben már van egy, a *. csv fájl* egy verziója, de a *. csv fájl*egy másik verziójával szeretne kísérletezni. A fájlnak a munkamenet mappájába való feltöltésével a feltöltött fájlban lévő adat használatával futtathatja a jegyzetfüzetet (ez a következővel hivatkozik a kódban: *.. /Data.csv*), nem pedig a projekt fájljában található adatértékeket.
+        A munkamenet mappájának használata hasznos a kísérletezéshez, és elkerüli a projekt zsúfoltságát olyan fájlokkal, amelyek hosszú távon esetleg nem szükségesek. Olyan fájlokat is fel lehet tölteni a munkamenet mappájába, amelyek azonos névvel rendelkeznek a projektben lévő fájlokhoz anélkül, hogy ütközéseket okozna, és nem kell átnevezni a fájlokat. Tegyük fel például, hogy már rendelkezik egy *data.csv* -verzióval a projektben, de a *data.csv*egy másik verziójával szeretne kísérletezni. A fájlnak a munkamenet mappájába való feltöltésével a feltöltött fájlban lévő adat használatával futtathatja a jegyzetfüzetet (ez a következővel hivatkozik a kódban: *.. /data.csv*) a projekt fájljában szereplő adathalmazok helyett.
 
     - Project Folder (*/Project*): fájlok feltöltése a projektbe, ahol a kód relatív elérési útjainak használatával érhetők el. Egy fájlnak a mappába való feltöltése megegyezik a projekt irányítópultján található fájl feltöltésével. A rendszer menti a fájlt a projekttel, és a későbbi munkamenetekben is elérhető.
 
@@ -66,7 +66,7 @@ A fájlokat a projekt irányítópultján vagy az **adatok** menüvel vagy egy o
 
 ### <a name="create-or-import-files-using-commands"></a>Fájlok létrehozása vagy importálása parancsok használatával
 
-Egy terminálon belül vagy egy Python-kód cellán belüli parancsokat is használhat a projekt-és munkamenet-mappákban található fájlok létrehozásához. Például közvetlenül az internetről `curl` származó `wget` fájlokra, illetve a fájlok letöltésére.
+Egy terminálon belül vagy egy Python-kód cellán belüli parancsokat is használhat a projekt-és munkamenet-mappákban található fájlok létrehozásához. Például `curl` `wget` közvetlenül az internetről származó fájlokra, illetve a fájlok letöltésére.
 
 Ha fájlokat szeretne letölteni a terminálon, válassza a **terminál** parancsot a projekt irányítópultján, majd adja meg a megfelelő parancsokat:
 
@@ -76,13 +76,13 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Ha a jegyzetfüzetben Python-kód cellát használ, a parancsokhoz `!`előtagot kell megmutatnia.
+Ha a jegyzetfüzetben Python-kód cellát használ, a parancsokhoz előtagot kell megmutatnia `!` .
 
-A Project mappa az alapértelmezett mappa, ezért a cél fájlnevének (például *oil_price. csv)* megadásával létrehozza a fájlt a projektben. Egy munkamenet-fájl létrehozásához előtagként adja meg a nevet *. /* a-ben *. /oil_price. csv*.
+A Project mappa az alapértelmezett mappa, ezért a cél fájlnevét kell megadni, például a *oil_price.csv* létrehozza a fájlt a projektben. Egy munkamenet-fájl létrehozásához előtagként adja meg a nevet *. /* a-ben *. /oil_price.csv*.
 
 ### <a name="create-files-in-code"></a>Fájlok létrehozása kódban
 
-Ha olyan kódot használ, amely létrehoz egy fájlt, például a `write_csv` pandák függvényt, az elérési út mindig a projekt mappájához viszonyítva van. A *.. /* létrehoz egy, a jegyzetfüzet leállításakor és bezárásakor elvetett munkamenet-fájlt.
+Ha olyan kódot használ, amely létrehoz egy fájlt, például a pandák `write_csv` függvényt, az elérési út mindig a projekt mappájához viszonyítva van. A *.. /* létrehoz egy, a jegyzetfüzet leállításakor és bezárásakor elvetett munkamenet-fájlt.
 
 ## <a name="export-files"></a>Fájlok exportálása
 
@@ -100,7 +100,7 @@ Kiválaszthat egy fájlt is, és használhatja a **Letöltés** parancsot (bille
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Fájlok exportálása egy jegyzetfüzet adat menüjéből
 
-1. Válassza a **fájl** > **letöltése** menü parancsot:
+1. Válassza a **fájl**  >  **letöltése** menü parancsot:
 
     ![Az adatletöltés menü parancsa egy jegyzetfüzeten belül](media/file-menu-download.png)
 

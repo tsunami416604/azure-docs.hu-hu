@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477464"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Bizalmas ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
@@ -35,7 +35,7 @@ Az alkalmazás inicializálásához először [regisztrálnia](quickstart-regist
 ## <a name="configure-the-application-from-the-config-file"></a>Az alkalmazás konfigurálása a konfigurációs fájlból
 A MSAL.NET lévő beállítások tulajdonságainak neve megegyezik a `AzureADOptions` ben lévő ASP.net Core tulajdonságainak nevével, így nincs szükség ragasztó-kód írására.
 
-Egy ASP.NET Core alkalmazás konfigurációját egy *appSettings. JSON* fájl írja le:
+ASP.NET Core alkalmazás konfigurációját a fájl egy *appsettings.js* írja le:
 
 ```json
 {
@@ -60,7 +60,7 @@ Egy ASP.NET Core alkalmazás konfigurációját egy *appSettings. JSON* fájl í
 
 A MSAL.NET v3. x verziótól kezdődően beállíthatja a bizalmas ügyfélalkalmazás konfigurációját a konfigurációs fájlból.
 
-Abban az osztályban, amelyben konfigurálni és létrehozni szeretné az alkalmazást, deklarálnia kell egy `ConfidentialClientApplicationOptions` objektumot.  Kösse össze a forrásról (beleértve az appconfig. JSON fájlt) az alkalmazás beállításaihoz tartozó konfigurációt a `IConfigurationRoot.Bind()` [Microsoft. Extensions. Configuration. kévekötő nuget csomag](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)metódusának használatával.
+Abban az osztályban, amelyben konfigurálni és létrehozni szeretné az alkalmazást, deklarálnia kell egy `ConfidentialClientApplicationOptions` objektumot.  Kösse a forrásból beolvasott konfigurációt (beleértve a fájl appconfig.jsis) az alkalmazás beállításainak egy példányához, az `IConfigurationRoot.Bind()`Microsoft.Extensions.Configszülő metódusának használatával [. Kötés nuget csomagja](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Ez lehetővé teszi az *appSettings. JSON* fájl "AzureAD" szakaszának tartalmát, hogy az `ConfidentialClientApplicationOptions` objektum megfelelő tulajdonságaihoz legyen kötve.  Következő lépésként hozzon létre egy `ConfidentialClientApplication` objektumot:
+Ez lehetővé teszi a fájl *appsettings.jsjának* "AzureAD" szakaszának tartalmát, hogy az objektum megfelelő tulajdonságaihoz legyen kötve `ConfidentialClientApplicationOptions` .  Következő lépésként hozzon létre egy `ConfidentialClientApplication` objektumot:
 
 ```csharp
 IConfidentialClientApplication app;

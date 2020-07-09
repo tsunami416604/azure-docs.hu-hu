@@ -4,10 +4,9 @@ description: Alkalmazások teljesítményének figyelése Azure-beli virtuális 
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661328"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban
@@ -32,7 +31,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure Virtual 
 
     * A Application Insights ügynök automatikusan összegyűjti az azonos függőségi jeleket a .NET SDK-val. További információért lásd: [függőségek automatikus gyűjteménye](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
         > [!NOTE]
-        > Jelenleg csak a .NET IIS által üzemeltetett alkalmazások támogatottak. Az SDK-val egy Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon üzemeltetett ASP.NET Core, Java és Node. js-alkalmazásokat használhat.
+        > Jelenleg csak a .NET IIS által üzemeltetett alkalmazások támogatottak. Az SDK-val egy Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon üzemeltetett ASP.NET Core-, Java-és Node.js-alkalmazásokat használhat.
 
 * SDK **-n alapuló kód**
 
@@ -168,7 +167,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Hibaelhárítási tippek az Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon futó .NET-alkalmazások Application Insights monitorozási ügynökének bővítményéhez.
 
 > [!NOTE]
-> A .NET Core, a Java és a Node. js alkalmazások csak az Azure Virtual Machines és az Azure virtuálisgép-méretezési csoportok esetében támogatottak a manuális SDK-alapú rendszerállapotok használatával, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
+> A .NET Core, a Java és a Node.js alkalmazások csak az Azure Virtual Machines és az Azure virtuálisgép-méretezési csoportok esetében támogatottak a manuális SDK-alapú rendszerállapotok használatával, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
 
 A bővítmény-végrehajtás kimenete a következő címtárakban található fájlokra van naplózva:
 ```Windows

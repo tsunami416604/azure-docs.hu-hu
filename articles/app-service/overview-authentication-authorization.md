@@ -7,10 +7,9 @@ ms.date: 04/15/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196437"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
@@ -125,7 +124,7 @@ Ez a lehetőség nagyobb rugalmasságot biztosít a névtelen kérelmek kezelés
 
 ### <a name="allow-only-authenticated-requests"></a>Csak hitelesített kérelmek engedélyezése
 
-A beállítás a ** \< szolgáltató>bejelentkezni **. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized` .
+A beállítás **bejelentkezik a szolgáltatással \<provider> **. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized` .
 
 Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alkalmazásban. A felhasználó jogcímeinek vizsgálatával a finomabb engedélyezés, például a szerepkör-specifikus hitelesítés kezelhető (lásd: [hozzáférés a felhasználói jogcímekhez](app-service-authentication-how-to.md#access-user-claims)).
 

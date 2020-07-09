@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319067"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk a adatkezelés átjáró használatával kapcsolatos hibaelhárítási problémákkal kapcsolatos információkat tartalmaz.
@@ -24,7 +24,7 @@ Ez a cikk a adatkezelés átjáró használatával kapcsolatos hibaelhárítási
 > [!NOTE]
 > Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory saját üzemeltetésű integrációs modulját](../create-self-hosted-integration-runtime.md).
 
-Az átjáróval kapcsolatos részletes információkért tekintse meg az [adatkezelés átjáróval](data-factory-data-management-gateway.md) foglalkozó cikket. Az adatok [áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikkből megtudhatja, hogyan helyezhet át egy helyszíni SQL Server-adatbázisból a blob Storage-ba az átjáró használatával Microsoft Azure.
+Az átjáróval kapcsolatos részletes információkért tekintse meg az [adatkezelés átjáróval](data-factory-data-management-gateway.md) foglalkozó cikket. Az adatok [áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikkből megtudhatja, hogyan helyezhet át adatáthelyezést egy SQL Server-adatbázisból az átjáró használatával Microsoft Azure Blob Storage-ba.
 
 ## <a name="failed-to-install-or-register-gateway"></a>Nem sikerült az átjáró telepítése vagy regisztrálása
 ### <a name="1-problem"></a>1. probléma
@@ -224,7 +224,7 @@ Ez különböző okok miatt fordulhat elő, és ennek megfelelően változik a m
 #### <a name="resolution"></a>Megoldás:
 Az SQL-adatbázishoz való csatlakozás előtt engedélyezze a kimenő TCP-kapcsolatok TCP/1433-kapcsolaton keresztüli portját a adatkezelés átjáró-ügyfél oldalán.
 
-Ha a céladatbázis egy Azure SQL Database-adatbázis, akkor ellenőrizze SQL Server tűzfalbeállítások Azure-ban is.
+Ha a céladatbázis Azure SQL Databaseban található, ellenőrizze az Azure-beli tűzfal-beállítások SQL Serverét is.
 
 A helyszíni adattárakkal létesített kapcsolatok teszteléséhez tekintse meg a következő szakaszt.
 
@@ -279,7 +279,7 @@ Kattintson az **archív átjáró naplói** hivatkozásra az archiváláshoz és
 Az átjárókkal kapcsolatos részletes információkat a Windows-eseménynaplókban találja.
 
 1. Indítsa el a Windows **Eseménynapló**.
-2. Keresse meg a naplókat az **alkalmazás és szolgáltatások naplók** > **adatkezelés átjáró** mappájában.
+2. Keresse meg a naplókat az **alkalmazás és szolgáltatások naplók**  >  **adatkezelés átjáró** mappájában.
 
    Az átjárókkal kapcsolatos problémák elhárításakor keresse meg a hiba szintű eseményeket az eseménynaplóban.
 

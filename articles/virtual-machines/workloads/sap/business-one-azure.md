@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193498"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum útmutatást nyújt az SAP Business One Azure Virtual Machines üzembe helyezéséhez. A dokumentáció nem helyettesíti a Business One for SAP szolgáltatás telepítési dokumentációját. A dokumentációnak az Azure-infrastruktúrára vonatkozó alapszintű tervezési és üzembe helyezési útmutatókat kell kiterjednie, amelyekkel az üzleti alkalmazások futtatása elérhető
@@ -67,17 +67,17 @@ Az üzleti egy olyan alkalmazás, amely két rétegből áll:
 - "Fat" ügyféllel rendelkező ügyféloldali rétegek
 - A bérlőhöz tartozó adatbázis-sémát tartalmazó adatbázis-csomag
 
-Az [SAP Business One rendszergazdai útmutatója](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) részletes áttekintést nyújt arról, hogy mely összetevők futnak az ügyfél részén, és mely részek futnak a kiszolgálói részben 
+Az [SAP Business One rendszergazdai útmutatója](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf) részletes áttekintést nyújt arról, hogy mely összetevők futnak az ügyfél részén, és mely részek futnak a kiszolgálói részben 
 
 Mivel az ügyfél és az adatbázis-kezelői rétegek között jelentős késések vannak, az Azure-ban való üzembe helyezéskor mindkét szintet az Azure-ban kell elhelyezni. a felhasználók ezt követően az RDS szolgáltatást futtató egy vagy több virtuális gépre egy ügyfél-összetevőhöz tartozó ügyfelet futtatnak.
 
 ### <a name="sizing-vms-for-sap-business-one"></a>Virtuális gépek méretezése az SAP Business One-ban
 
-Az ügyfél-virtuális gép (ek) méretezésével kapcsolatban az erőforrás-követelmények az SAP-ben vannak dokumentálva az [SAP Business One Hardware követelmények útmutatójában](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Az Azure-ban a dokumentum 2,4-es fejezetében ismertetett követelményekkel kell összpontosítania és kiszámítani.
+Az ügyfél-virtuális gép (ek) méretezésével kapcsolatban az erőforrás-követelmények az SAP-ben vannak dokumentálva az [SAP Business One Hardware követelmények útmutatójában](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Az Azure-ban a dokumentum 2,4-es fejezetében ismertetett követelményekkel kell összpontosítania és kiszámítani.
 
 Az olyan Azure-beli virtuális gépek, amelyek a vállalat egy ügyfél-összetevőjét és az adatbázis-kezelői gazdagépet üzemeltetik, csak az SAP NetWeaver által támogatott virtuális gépek engedélyezettek. Az SAP NetWeaver által támogatott Azure-beli virtuális gépek listájának megkereséséhez olvassa el az [SAP-megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
-SAP HANA futtatása a vállalati adatbázis-kezelői háttérként, csak a Hana [Certifeid IaaS platform listán](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) támogatott virtuális gépek, amelyek a Hana-ban a Hana-beli vállalati verzióban vannak felsorolva, a Hana-ban. A vállalat egy ügyfél-összetevőjét nem érinti ez a SAP HANA adatbázis-kezelő rendszerként való szigorúbb korlátozás.
+SAP HANA futtatása a vállalati adatbázis-kezelői háttérként, csak a Hana [Certified IaaS platform listájában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) a Hana-ban található, a Hana-beli vállalatoknak listán szereplő virtuális gépeket a Hana támogatja. A vállalat egy ügyfél-összetevőjét nem érinti ez a SAP HANA adatbázis-kezelő rendszerként való szigorúbb korlátozás.
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Az SAP Business One-hoz használt operációs rendszerek kiadásai
 

@@ -3,12 +3,12 @@ title: Azure Migrate berendezés beállítása a Hyper-V-hez
 description: Ismerje meg, hogyan állíthat be egy Azure Migrate berendezést a Hyper-V virtuális gépek felméréséhez és áttelepítéséhez.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56b034709309a3afe9d18df7af9ababc74a24cee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109705"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Berendezés beállítása Hyper-V virtuális gépekhez
 
@@ -35,8 +35,8 @@ A készülék beállítása VHD-sablon használatával:
 
 Töltse le a készülék tömörített VHD-sablonját.
 
-1. Az **áttelepítési célok** > **kiszolgálói** > **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
-2. A **felderítési gépeken** > a**gépek virtualizáltak?**, kattintson **az igen, a Hyper-V**elemre.
+1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
+2. A **felderítési gépeken**a  >  **gépek virtualizáltak?**, kattintson **az igen, a Hyper-V**elemre.
 3. A VHD-fájl letöltéséhez kattintson a **Letöltés** gombra.
 
     ![Virtuális gép letöltése](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
@@ -50,7 +50,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 2. Futtassa a következő parancsot a virtuális merevlemez kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  A készülék verziójának 2.19.11.12 a generált kivonatnak meg kell egyeznie ezekkel a [beállításokkal](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security).
+3.  A készülék verziójának 2.19.11.12 a generált kivonatnak meg kell egyeznie ezekkel a [beállításokkal](./tutorial-assess-hyper-v.md#verify-security).
 
 
 
@@ -65,9 +65,9 @@ Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
     ![VHD üzembe helyezése](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. A virtuális gép importálása varázslóban > a **Kezdés előtt**kattintson a **tovább**gombra.
-3. A **mappában keresse**meg a kibontott virtuális merevlemezt tartalmazó mappát. Kattintson a **Tovább** gombra.
+3. A **mappában keresse**meg a kibontott virtuális merevlemezt tartalmazó mappát. Ezután kattintson a **Tovább** gombra.
 1. A **virtuális gép kiválasztása lapon**kattintson a **tovább**gombra.
-2. Az **importálási típus kiválasztása**területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Kattintson a **Tovább** gombra.
+2. Az **importálási típus kiválasztása**területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Ezután kattintson a **Tovább** gombra.
 3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
 4. A **tárolási mappák**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
 5. A **hálózat kiválasztása**területen adja meg azt a virtuális kapcsolót, amelyet a virtuális gép használni fog. A kapcsolónak internetkapcsolattal kell rendelkeznie az Azure-ba való adatküldéshez.
@@ -91,7 +91,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 1. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-        - Kattintson a proxybeállítások elemre, és írja be a proxy címe és a figyelő portját http://ProxyFQDNaz űrlap http://ProxyIPAddress vagy a **értékre**.
+        - Kattintson a proxybeállítások elemre, és írja be a proxy címe és a figyelő portját az űrlap vagy a **értékre** http://ProxyIPAddress http://ProxyFQDN .
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő a virtuális gép felderítésének megfelelő működéséhez szinkronban kell lennie.
@@ -106,7 +106,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
 4. Válassza ki azt az előfizetést, amelyben a Azure Migrate projektet létrehozták. Ezután válassza ki a projektet.
 5. Adja meg a berendezés nevét. A névnek legalább 14 karakterből kell állnia.
-6. Kattintson a **regisztrálás**gombra.
+6. Kattintson a **Regisztrálás** parancsra.
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Az SMB virtuális merevlemezek hitelesítő adatainak delegálása
@@ -120,7 +120,7 @@ Ha virtuális merevlemezeket futtat az SMB-n, engedélyeznie kell a hitelesítő
     ```
 
 2. Ezt is megteheti a berendezés Helyicsoportházirend-szerkesztőján:
-    - A **helyi számítógép-házirend** > **Számítógép konfigurációja**területen kattintson **Felügyeleti sablonok** > **rendszer** > **hitelesítő adatok delegálása**elemre.
+    - A **helyi számítógép-házirend**  >  **Számítógép konfigurációja**területen kattintson **Felügyeleti sablonok**  >  **rendszer**  >  **hitelesítő adatok delegálása**elemre.
     - Kattintson duplán a **új hitelesítő adatok delegálásának engedélyezése**lehetőségre, és válassza az **engedélyezve**lehetőséget.
     - A **Beállítások**területen kattintson a **Megjelenítés**elemre, és adja hozzá a listában felderíteni kívánt Hyper-V-gazdagépeket a **wsman/** előtagként.
     - A **hitelesítő adatok delegálása**területen kattintson duplán a **friss hitelesítő adatok delegálása csak NTLM kiszolgálói hitelesítéssel**lehetőségre. Ismét adja hozzá a **wsman/** előtagként használni kívánt Hyper-V-gazdagépeket a listához.
@@ -145,9 +145,9 @@ Ez elindítja a felderítést. Körülbelül 15 percet vesz igénybe, hogy a fel
 A felderítés befejezését követően ellenőrizheti, hogy a virtuális gépek megjelennek-e a portálon.
 
 1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-Servers** > **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [Hyper-V értékelését](tutorial-assess-hyper-v.md) Azure Migrate kiszolgáló értékelésével.

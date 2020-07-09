@@ -3,13 +3,14 @@ title: Olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kére
 description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
 ms.date: 03/30/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bfd956a4423031db370eb3a8ad94c59dd0f5931c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996524"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100021"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -123,7 +124,7 @@ cd LocalFunctionProj
 cd fabrikam-functions
 ```
 ::: zone-end  
-Ez a mappa a projekt különböző fájljait tartalmazza, beleértve a Configuration Files [Local. Settings. JSON](functions-run-local.md#local-settings-file) és a [Host. JSON](functions-host-json.md)nevű fájlokat. Mivel a *Local. Settings. JSON* az Azure-ból letöltött titkos kulcsokat tartalmazhat, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
+Ez a mappa a projekthez különböző fájlokat tartalmaz, beleértve a [local.settings.json](functions-run-local.md#local-settings-file) és a [host.js](functions-host-json.md)nevű konfigurációs fájlokat is. Mivel a *local.settings.json* az Azure-ból letöltött titkos kódok is lehetnek, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
 
 [!INCLUDE [functions-cli-add-function](../../includes/functions-cli-add-function.md)]
 
@@ -149,9 +150,9 @@ A Return objektum egy [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.action
 
 A válaszüzenetet a [HttpResponseMessage. Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API hozza létre.
 
-#### <a name="pomxml"></a>Pom. XML
+#### <a name="pomxml"></a>pom.xml
 
-Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a beépülő modul **konfigurációs** elemében vannak meghatározva a **groupId** `com.microsoft.azure` generált Pom. xml fájl GroupID. Az alábbi konfigurációs elem például arra utasítja a Maven-alapú telepítést, hogy hozzon létre egy Function alkalmazást a `java-functions-group` régióban található erőforráscsoporthoz `westus` . A Function alkalmazás maga fut a csomagban lévő Windows rendszeren `java-functions-app-service-plan` , amely alapértelmezés szerint kiszolgáló nélküli fogyasztási csomag.    
+Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a beépülő modul **konfigurációs** elemében vannak meghatározva a **groupId** `com.microsoft.azure` generált pom.xml fájl GroupID. Az alábbi konfigurációs elem például arra utasítja a Maven-alapú telepítést, hogy hozzon létre egy Function alkalmazást a `java-functions-group` régióban található erőforráscsoporthoz `westus` . A Function alkalmazás maga fut a csomagban lévő Windows rendszeren `java-functions-app-service-plan` , amely alapértelmezés szerint kiszolgáló nélküli fogyasztási csomag.    
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
@@ -164,47 +165,47 @@ Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja 
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init \_ \_ . a
 
-az * \_ \_ init \_ \_ .* a a `main()` *function. JSON*fájlban megadott konfiguráció alapján aktivált Python-függvényt tartalmaz.
+az * \_ \_ init \_ \_ .* a (z `main()` ) egy Python-függvényt tartalmaz, amely a *function.js*konfigurációjának megfelelően aktiválódik.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-HTTP-trigger esetén a függvény a `req` *function. JSON*fájlban meghatározott változóban fogadja a kérelmeket. `req`az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. A `$return` *function. JSON*fájlban megadott visszatérési objektum az [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. `req`az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. Afunction.json értékben definiált visszatérési objektum az `$return` [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. *function.json* További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-#### <a name="indexjs"></a>index. js
+#### <a name="indexjs"></a>index.js
 
-az *index. js* olyan függvényt exportál, amely a *function. JSON*fájlban megadott konfiguráció alapján aktiválódik.
+*index.js* exportál egy olyan függvényt, amely a *function.js*beállításának megfelelően aktiválódik.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP-trigger esetén a függvény a `req` *function. JSON*fájlban meghatározott változóban fogadja a kérelmeket. A `$return` Válasz a *function. JSON*fájlban megadott visszatérési objektum. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. A (z `$return` ) *function.jsban*definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
 #### <a name="indexts"></a>index. TS
 
-az *index. TS* olyan függvényt exportál, amely a *function. JSON*fájlban megadott konfiguráció alapján aktiválódik.
+az *index. TS* olyan függvényt exportál, amely a *function.js*konfigurációjának megfelelően aktiválódik.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-HTTP-trigger esetén a függvény a `req` *function. JSON*fájlban meghatározott **HttpRequest** típusú változóban fogadja a kérelmeket. A `$return` Válasz a *function. JSON*fájlban megadott visszatérési objektum. 
+HTTP-trigger esetén a függvény a HttpRequest típusú változóban fogadja a kérelmeket a `req` *function.json*értékben meghatározottak szerint. **HttpRequest** A (z `$return` ) *function.jsban*definiált visszatérési objektum a válasz. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-#### <a name="runps1"></a>a. ps1 futtatása
+#### <a name="runps1"></a>run.ps1
 
-a *Run. ps1* definiál egy, a *function. JSON*fájlban megadott konfigurációnak megfelelő függvény-parancsfájlt.
+*run.ps1* definiál egy olyan függvény-parancsfájlt, amely a *function.js*beállításának megfelelően aktiválódik.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-HTTP-trigger esetén a függvény fogadja a `$Request` *function. JSON*fájlban meghatározott paraméternek átadott kérelmeket. A `Response` válaszként a parancsmagnak a *function. JSON*fájlban megadott visszatérési objektumot adja át a rendszer `Push-OutputBinding` . 
+A HTTP-triggerek esetében a függvény fogadja a `$Request` *function.js*által megadott paraméternek átadott kérelmeket. A rendszer a (z)function.jsban definiált visszaadott objektumot adja `Response` át *function.json* `Push-OutputBinding` válaszként a parancsmagnak. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 #### <a name="functionjson"></a>function.json
 
-a *function. JSON* egy olyan konfigurációs fájl, amely meghatározza a függvény bemenetét és kimenetét `bindings` , beleértve az trigger típusát is. 
+A *function.json* egy konfigurációs fájl, amely meghatározza a függvény bemenetét és kimenetét `bindings` , beleértve az trigger típusát is. 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
@@ -276,7 +277,7 @@ az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Lin
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Ha a Node. js 8-at használja, a következőre is váltson: `--runtime-version` `8` .
+Ha Node.js 8-at használ, akkor is váltson a következőre: `--runtime-version` `8` .
 
 
 ```azurecli
@@ -344,10 +345,10 @@ Functions in msdocs-azurefunctions-qs:
 ::: zone pivot="programming-language-java"  
 ## <a name="deploy-the-function-project-to-azure"></a>A Function projekt üzembe helyezése az Azure-ban
 
-A functions-alkalmazás és a kapcsolódó erőforrások az Azure-ban jönnek létre, amikor először telepíti a functions-projektet. Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a [Pom. xml fájlban](#pomxml)vannak meghatározva. Ebben a cikkben fogadja el az alapértelmezett értékeket.
+A functions-alkalmazás és a kapcsolódó erőforrások az Azure-ban jönnek létre, amikor először telepíti a functions-projektet. Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a [pom.xml fájlban](#pomxml)vannak meghatározva. Ebben a cikkben fogadja el az alapértelmezett értékeket.
 
 > [!TIP]
-> Ha a Windows helyett Linux rendszeren futó Function alkalmazást szeretne létrehozni, módosítsa a `runtime.os` Pom. xml fájl elemét a verzióról a következőre: `windows` `linux` . [Ezekben a régiókban](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)támogatott a Linux futtatása a használati tervekben. Nem rendelkezhet olyan alkalmazásokkal, amelyek Linux rendszeren futnak, és ugyanazon az erőforráscsoporthoz futtatják a Windowson futó alkalmazásokat.
+> Ha a Windows helyett Linux rendszeren futó Function alkalmazást szeretne létrehozni, módosítsa a `runtime.os` pom.xml fájl elemét a verzióról a következőre: `windows` `linux` . [Ezekben a régiókban](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)támogatott a Linux futtatása a használati tervekben. Nem rendelkezhet olyan alkalmazásokkal, amelyek Linux rendszeren futnak, és ugyanazon az erőforráscsoporthoz futtatják a Windowson futó alkalmazásokat.
 
 Az üzembe helyezés előtt az az [login](/cli/azure/authenticate-azure-cli) Azure CLI-paranccsal jelentkezzen be az Azure-előfizetésbe. 
 
@@ -392,6 +393,11 @@ Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel
 
 > [!TIP]
 > A közzétett functions-alkalmazások közel valós idejű naplófájljainak megtekintéséhez használja a [Application Insights élő metrikastream](functions-monitoring.md#streaming-logs).
+>
+> A következő parancs futtatásával nyissa meg az élő metrikák streamet egy böngészőben.
+>   ```
+>   func azure functionapp logstream <APP_NAME> --browser
+>   ```
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
@@ -409,8 +415,12 @@ az group delete --name AzureFunctionsQuickstart-rg
 az group delete --name java-functions-group
 ```
 ::: zone-end
+::: zone pivot="programming-language-python"
+A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate` .
+::: zone-end
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)
+ 

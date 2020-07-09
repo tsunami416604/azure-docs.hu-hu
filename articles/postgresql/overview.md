@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74481662"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213601"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
 A Azure Database for PostgreSQL egy, a fejlesztők számára készült Microsoft-felhőben található, a Microsoft felhőalapú szolgáltatása. A szolgáltatás a nyílt forráskódú [PostgreSQL](https://www.postgresql.org/) adatbázismotor közösségi verzióján alapul, és két központi telepítési lehetőségben érhető el: egyetlen kiszolgáló és nagy kapacitású (Citus).
@@ -44,14 +44,14 @@ A nagy kapacitású (Citus) telepítési lehetőség a következőket biztosítj
 
 A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connection-libraries.md) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
-## <a name="contacts"></a>Kapcsolatok
-Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön e-mailt a Azure Database for PostgreSQL csapatnak ([ @Ask az Azure-adatbázis PostgreSQL-hez](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ez a címe a támogatási jegyek helyett általános kérdésekre szolgál.
+## <a name="contacts"></a>Kapcsolattartók
+Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön e-mailt a Azure Database for PostgreSQL csapatnak (az[ @Ask Azure-adatbázis PostgreSQL-hez](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ez a címe a támogatási jegyek helyett általános kérdésekre szolgál.
 
 Emellett vegye figyelembe az alábbi kapcsolattartási pontokat a megfelelő módon:
 - Ha kapcsolatba szeretne lépni az Azure támogatási szolgálatával, vagy javítsa ki a fiókkal kapcsolatos problémát, vegyen fel [egy jegyet a Azure Portalból](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez.
+- Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez. Az egykiszolgálós és a nagy kapacitású (Citus) telepítési lehetőségek az előre fizetett fenntartott példányok kedvezményeit is tartalmazzák, a részletekért tekintse meg az [egykiszolgálós ri díjszabását](concept-reserved-pricing.md) és a [nagy kapacitású ri díjszabási](concepts-hyperscale-reserved-pricing.md) oldalát.
 - Első lépésként hozza létre első Azure Database for PostgreSQL [egy kiszolgáló](./quickstart-create-server-database-portal.md) -vagy [nagy kapacitású (Citus)](./quickstart-create-hyperscale-portal.md)
 - Építse fel az első alkalmazását Python, PHP, Ruby, C\#, Java, Node.js nyelven: [Csatlakozási kódtárak](./concepts-connection-libraries.md)

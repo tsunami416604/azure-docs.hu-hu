@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847853"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>A fürterőforrás-kezelő integrációja Service Fabric fürtszolgáltatással
 A Service Fabric fürterőforrás-kezelő nem hajtja Service Fabric a frissítéseit, de az érintett. A fürt erőforrás-kezelője által a felügyelethez nyújtott első módszer a fürt és a benne lévő szolgáltatások kívánt állapotának nyomon követése. A fürterőforrás-kezelő jelentést küld, amikor nem tudja a fürtöt a kívánt konfigurációba helyezni. Ha például nincs elegendő kapacitás, a fürterőforrás-kezelő kiküldi az állapottal kapcsolatos figyelmeztetéseket, és hibákat jelez a problémával kapcsolatban. A frissítések működéséhez egy másik integrációra van szükség. A fürterőforrás-kezelő némileg megváltoztatja a viselkedését a frissítések során.  
@@ -18,7 +18,7 @@ A Service Fabric fürterőforrás-kezelő nem hajtja Service Fabric a frissíté
 ## <a name="health-integration"></a>Állapot-integráció
 A fürterőforrás-kezelő folyamatosan nyomon követi a szolgáltatások elhelyezéséhez meghatározott szabályokat. Emellett nyomon követi a csomópontok és a fürt, valamint a fürtben lévő egyes mérőszámok fennmaradó kapacitását is. Ha nem tudja kielégíteni ezeket a szabályokat, vagy ha nincs elegendő kapacitás, a rendszer kibocsátja az állapottal kapcsolatos figyelmeztetéseket és hibákat. Ha például egy csomópont meghaladja a kapacitást, és a fürterőforrás-kezelő megkísérli kijavítani a helyzetet a szolgáltatások áthelyezésével. Ha nem tudja kijavítani a helyzetet, a rendszer olyan állapotra vonatkozó figyelmeztetést bocsát ki, amely azt jelzi, hogy melyik csomóponton van a kapacitás, és mely metrikákat.
 
-A Resource Manager állapotára vonatkozó figyelmeztetések egy másik példája az elhelyezési megkötések megsértése. Ha például meghatározta az elhelyezési korlátozást (például `“NodeColor == Blue”`), és a Resource Manager észleli a korlátozás megsértését, a rendszer állapot-figyelmeztetést bocsát ki. Ez az egyéni megkötések és az alapértelmezett megkötések (például a tartalék tartomány és a frissítési tartományok megkötései) esetében igaz.
+A Resource Manager állapotára vonatkozó figyelmeztetések egy másik példája az elhelyezési megkötések megsértése. Ha például meghatározta az elhelyezési korlátozást (például), `“NodeColor == Blue”` és a Resource Manager észleli a korlátozás megsértését, a rendszer állapot-figyelmeztetést bocsát ki. Ez az egyéni megkötések és az alapértelmezett megkötések (például a tartalék tartomány és a frissítési tartományok megkötései) esetében igaz.
 
 Az alábbi példa egy ilyen állapotjelentés-jelentésre mutat. Ebben az esetben az állapotjelentés a rendszerszolgáltatások egyik partíciója. Az állapotfigyelő üzenet jelzi, hogy a partíció replikái átmenetileg túl kevés frissítési tartományba vannak csomagolva.
 
@@ -122,7 +122,7 @@ Speciális helyzetekben módosíthatja a korlátozási prioritásokat. Tegyük f
 
 A különböző megkötések alapértelmezett prioritási értékei a következő konfigurációban vannak megadva:
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -135,7 +135,7 @@ ClusterManifest. XML
         </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158681"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central alkalmazás beállításainak módosítása
@@ -45,7 +45,7 @@ Az IoT Central alkalmazás végleges törléséhez használja a **delete (Törl�
 
 IoT Central Azure Resource Manager SDK-csomagok a Node, a Python, a C#, a Ruby, a Java és a go esetében érhetők el. Ezeket a csomagokat IoT Central-alkalmazások létrehozásához, listázásához, frissítéséhez vagy törléséhez használhatja. A csomagok közé tartoznak a hitelesítés és a hibakezelés kezeléséhez szükséges segítők.
 
-Példákat talál arra, hogyan használhatja a Azure Resource Manager SDK-kat [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples)a következő helyen:.
+Példákat talál arra, hogyan használhatja a Azure Resource Manager SDK-kat a következő helyen: [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples) .
 
 További információért lásd a következő GitHub-adattárakat és-csomagokat:
 
@@ -56,7 +56,7 @@ További információért lásd a következő GitHub-adattárakat és-csomagokat
 | C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
 | Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)
 | Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
-| Indítás | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
+| Go | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050291"
 ---
 # <a name="confidential-client-assertions"></a>Bizalmas ügyfél-kijelentések
@@ -35,7 +35,7 @@ A MSAL.NET négy módszerrel biztosíthatja a bizalmas ügyfélalkalmazás szám
 - `.WithClientClaims()`
 
 > [!NOTE]
-> Habár az `WithClientAssertion()` API-t használhatja a bizalmas ügyfélhez tartozó jogkivonatok megszerzéséhez, azt nem javasoljuk, hogy alapértelmezés szerint használja, mivel ez fejlettebb, és a nagyon konkrét, nem gyakori forgatókönyvek kezelésére szolgál. Az API `.WithCertificate()` használata lehetővé teszi, hogy a MSAL.net kezelje ezt. Ez az API lehetővé teszi a hitelesítési kérelem testreszabását, ha szükséges, de a által `.WithCertificate()` létrehozott alapértelmezett állítás elegendő a legtöbb hitelesítési forgatókönyvhöz. Ez az API megkerülő megoldásként is használható olyan helyzetekben, ahol a MSAL.NET nem tudja belsőleg végrehajtani az aláírási műveletet.
+> Habár az API-t használhatja a `WithClientAssertion()` bizalmas ügyfélhez tartozó jogkivonatok megszerzéséhez, azt nem javasoljuk, hogy alapértelmezés szerint használja, mivel ez fejlettebb, és a nagyon konkrét, nem gyakori forgatókönyvek kezelésére szolgál. Az `.WithCertificate()` API használata lehetővé teszi, hogy a MSAL.net kezelje ezt. Ez az API lehetővé teszi a hitelesítési kérelem testreszabását, ha szükséges, de a által létrehozott alapértelmezett állítás `.WithCertificate()` elegendő a legtöbb hitelesítési forgatókönyvhöz. Ez az API megkerülő megoldásként is használható olyan helyzetekben, ahol a MSAL.NET nem tudja belsőleg végrehajtani az aláírási műveletet.
 
 ### <a name="signed-assertions"></a>Aláírt kijelentések
 
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternatív módszer
 
-Lehetősége van arra is, hogy a [Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) használatával hozza létre az állítást. A kód az alábbi példában látható módon elegáns lesz:
+Lehetősége van arra is, hogy [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) használatával hozza létre az érvényesítést. A kód az alábbi példában látható módon elegáns lesz:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Ha a bejelentkezett szótár egyik jogcíme megegyezik a kötelező jogcímek egyikével, a rendszer a további jogcím értékét is figyelembe veszi. Felülbírálja a MSAL.NET által kiszámított jogcímeket.
 
-Ha meg szeretné adni saját jogcímeit, beleértve az Azure AD által várt kötelező jogcímeket, `false` adja meg `mergeWithDefaultClaims` a paramétert.
+Ha meg szeretné adni saját jogcímeit, beleértve az Azure AD által várt kötelező jogcímeket, adja meg `false` a `mergeWithDefaultClaims` paramétert.

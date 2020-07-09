@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76899947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553295"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Cognitive Search-ban található, az ügyfél által felügyelt kulcsokat használó tartalom titkosítása Azure Key Vault
 
@@ -26,7 +26,7 @@ Az ügyfél által felügyelt kulcsokkal történő titkosítás az index vagy a
 A kulcsoknak nem kell ugyanabban a Key Vault lennie. Egyetlen keresési szolgáltatás több titkosított indexet vagy szinonima-leképezést is képes tárolni, amelyek titkosítása a saját ügyfelek által felügyelt, különböző Kulcstartókban tárolt titkosítási kulcsokkal történik.  Az indexek és a szinonimák is használhatók ugyanabban a szolgáltatásban, amely nem titkosított az ügyfél által felügyelt kulcsokkal. 
 
 > [!IMPORTANT] 
-> Ez a funkció a [REST API 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) -es és a [.net SDK 8,0-es verziójában](search-dotnet-sdk-migration-version-9.md)érhető el. Jelenleg nem támogatott az ügyfél által felügyelt titkosítási kulcsok konfigurálása a Azure Portalban. A Search szolgáltatást január 2019 után kell létrehozni, és nem lehet ingyenes (megosztott) szolgáltatás.
+> Ez a funkció a [REST API](https://docs.microsoft.com/rest/api/searchservice/) és a [.net SDK 8,0-es verziójának előzetes verziójával](search-dotnet-sdk-migration-version-9.md)érhető el. Jelenleg nem támogatott az ügyfél által felügyelt titkosítási kulcsok konfigurálása a Azure Portalban. A Search szolgáltatást január 2019 után kell létrehozni, és nem lehet ingyenes (megosztott) szolgáltatás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ Ebben a példában a következő szolgáltatásokat használjuk.
 
 + A konfigurációs feladatokhoz [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) van használatban.
 
-+ A [Poster](search-get-started-postman.md), a [Azure PowerShell](search-create-index-rest-api.md) és az [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) a REST API meghívására is használható. Jelenleg nem érhető el portál-támogatás az ügyfél által felügyelt titkosításhoz.
++ A [Poster](search-get-started-postman.md), a [Azure PowerShell](search-create-index-rest-api.md) és a [.net SDK előzetes](https://aka.ms/search-sdk-preview) verziójának használatával hívható meg a REST API. Jelenleg nem érhető el portál-támogatás az ügyfél által felügyelt titkosításhoz.
 
 >[!Note]
 > Az ügyfél által felügyelt kulcsok funkcióval történő titkosítás jellegéből adódóan az Azure Cognitive Search nem fogja tudni lekérni az adatait, ha az Azure Key Vault-kulcsot törli. Ha meg szeretné akadályozni az adatvesztést a véletlen Key Vault a kulcsok törlése miatt, a használat előtt engedélyeznie **kell** a helyreállítható törlést és a védelem kiürítését Key Vault. További információ: [Azure Key Vault Soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   

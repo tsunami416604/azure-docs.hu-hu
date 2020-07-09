@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464638"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
@@ -18,9 +17,9 @@ Ha a szolgáltatásai problémákba ütköznek, az incidensek és az kimaradáso
 Háromféle módon jelenthet jelentést az állapotról a szolgáltatásból:
 
 * Használjon [partíciós](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) vagy [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) objektumokat.  
-  A `Partition` és `CodePackageActivationContext` az objektumok segítségével jelentést készíthet az aktuális környezet részét képező elemek állapotáról. A replika részeként futó kód például csak az adott replikán, a hozzá tartozó partíción, valamint az alkalmazás részeként jelentheti az állapotot.
+  A `Partition` és az objektumok segítségével `CodePackageActivationContext` jelentést készíthet az aktuális környezet részét képező elemek állapotáról. A replika részeként futó kód például csak az adott replikán, a hozzá tartozó partíción, valamint az alkalmazás részeként jelentheti az állapotot.
 * A `FabricClient` címet használja.   
-  Ha a fürt `FabricClient` nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a szolgáltatás rendszergazdai jogosultságokkal fut, akkor az állapotot a szolgáltatás kódjából lehet jelenteni. A legtöbb valós forgatókönyv nem használ nem biztonságos fürtöket, vagy rendszergazdai jogosultságokat biztosít. A `FabricClient`segítségével bármilyen, a fürt részét képező entitáson jelenthet állapotot. Ideális esetben azonban a szolgáltatási kódnak csak a saját állapotával kapcsolatos jelentéseket kell elküldenie.
+  `FabricClient`Ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a szolgáltatás rendszergazdai jogosultságokkal fut, akkor az állapotot a szolgáltatás kódjából lehet jelenteni. A legtöbb valós forgatókönyv nem használ nem biztonságos fürtöket, vagy rendszergazdai jogosultságokat biztosít. A segítségével `FabricClient` bármilyen, a fürt részét képező entitáson jelenthet állapotot. Ideális esetben azonban a szolgáltatási kódnak csak a saját állapotával kapcsolatos jelentéseket kell elküldenie.
 * Használja a REST API-kat a fürt, az alkalmazás, a központilag telepített alkalmazás, a szolgáltatás, a szervizcsomag, a partíció, a replika vagy a csomópont szintjén. Ez felhasználható a tárolóban lévő állapot jelentésére.
 
 Ez a cikk végigvezeti egy olyan példán, amely a szolgáltatási kód állapotát jelenti. A példa azt is bemutatja, hogyan használhatók az Service Fabric által biztosított eszközök az állapot ellenőrzéséhez. Ez a cikk az Service Fabric állapot-figyelési képességeinek gyors bevezetését célozza. Részletesebb információkért olvassa el a cikk végén található hivatkozásra kattintva megtekintheti a részletes cikkek sorozatát.
@@ -48,7 +47,7 @@ A következőknek kell telepítve lennie:
 1. Az alkalmazás állapotát ebben a képen kell megjeleníteni. Jelenleg az alkalmazásnak Kifogástalan állapotba kell esnie, és nem kell hibát megadnia.
    
     ![Kifogástalan állapotú alkalmazás a Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
-1. Az állapotot a PowerShell használatával is megtekintheti. ```Get-ServiceFabricApplicationHealth``` A használatával ellenőrizhető az alkalmazás állapota, és ```Get-ServiceFabricServiceHealth``` a segítségével ellenőrizhető a szolgáltatás állapota. A PowerShellben ugyanarra az alkalmazásra vonatkozó állapotjelentés ebben a képen található.
+1. Az állapotot a PowerShell használatával is megtekintheti. A használatával ```Get-ServiceFabricApplicationHealth``` ellenőrizhető az alkalmazás állapota, és a segítségével ```Get-ServiceFabricServiceHealth``` ellenőrizhető a szolgáltatás állapota. A PowerShellben ugyanarra az alkalmazásra vonatkozó állapotjelentés ebben a képen található.
    
     ![Kifogástalan állapotú alkalmazás a PowerShellben](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
@@ -56,10 +55,10 @@ A következőknek kell telepítve lennie:
 A Visual Studióban Service Fabric Project-sablonok tartalmaznak mintakód-kódot. Az alábbi lépések bemutatják, hogyan jelentheti be a szolgáltatás kódjában az egyéni állapotadatok jelentéseit. Ezek a jelentések automatikusan megjelennek a szabványos eszközök az állapot-figyeléshez, amelyeket Service Fabric biztosít, például Service Fabric Explorer, Azure Portal Health View és PowerShell.
 
 1. Nyissa meg újra a korábban a Visual Studióban létrehozott alkalmazást, vagy hozzon létre egy új alkalmazást az **állapot-nyilvántartó szolgáltatás** Visual Studio-sablonjának használatával.
-1. Nyissa meg a Stateful1.cs fájlt, és `myDictionary.TryGetValueAsync` keresse meg a `RunAsync` hívást a metódusban. Láthatja, hogy ez a metódus egy `result` olyan értéket ad vissza, amely a számláló aktuális értékét tárolja, mert az alkalmazásban lévő kulcs logikája egy futó szám megtartása. Ha az alkalmazás valódi alkalmazás volt, és ha az eredmény hiánya hibát jelzett, akkor meg kell jelenítenie az eseményt.
+1. Nyissa meg a Stateful1.cs fájlt, és keresse meg a `myDictionary.TryGetValueAsync` hívást a `RunAsync` metódusban. Láthatja, hogy ez a metódus egy olyan értéket ad vissza `result` , amely a számláló aktuális értékét tárolja, mert az alkalmazásban lévő kulcs logikája egy futó szám megtartása. Ha az alkalmazás valódi alkalmazás volt, és ha az eredmény hiánya hibát jelzett, akkor meg kell jelenítenie az eseményt.
 1. Ha az eredmény hiánya hibát jelez, adja meg a következő lépéseket az állapot jelentéséhez.
    
-    a. Adja hozzá `System.Fabric.Health` a névteret a Stateful1.cs fájlhoz.
+    a. Adja hozzá a `System.Fabric.Health` névteret a Stateful1.cs fájlhoz.
    
     ```csharp
     using System.Fabric.Health;
@@ -85,9 +84,9 @@ A Visual Studióban Service Fabric Project-sablonok tartalmaznak mintakód-kódo
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-1. Ha a szolgáltatás rendszergazdai jogosultságokkal fut, vagy ha a fürt nem [biztonságos](service-fabric-cluster-security.md), a jelentés állapotát az alábbi `FabricClient` lépésekben látható módon is használhatja.  
+1. Ha a szolgáltatás rendszergazdai jogosultságokkal fut, vagy ha a fürt nem [biztonságos](service-fabric-cluster-security.md), a `FabricClient` jelentés állapotát az alábbi lépésekben látható módon is használhatja.  
    
-    a. Hozza létre `FabricClient` a példányt a `var myDictionary` deklaráció után.
+    a. Hozza létre a `FabricClient` példányt a `var myDictionary` deklaráció után.
    
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
@@ -114,24 +113,24 @@ A Visual Studióban Service Fabric Project-sablonok tartalmaznak mintakód-kódo
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-   Ez a kód minden alkalommal `RunAsync` elindítja az állapotjelentést. Miután elvégezte a módosítást, nyomja le az **F5** billentyűt az alkalmazás futtatásához.
+   Ez a kód minden alkalommal elindítja az állapotjelentést `RunAsync` . Miután elvégezte a módosítást, nyomja le az **F5** billentyűt az alkalmazás futtatásához.
 1. Az alkalmazás futása után nyissa meg Service Fabric Explorer az alkalmazás állapotának vizsgálatához. Ez az idő Service Fabric Explorer azt mutatja, hogy az alkalmazás állapota nem megfelelő. Az alkalmazás nem megfelelő állapotú, mert a korábban hozzáadott kódból származó hibát észlelt.
    
     ![Sérült alkalmazás a Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
-1. Ha kijelöli az elsődleges replikát Service Fabric Explorer fanézetében, látni fogja, hogy az **állapot** hibát jelez. A Service Fabric Explorer megjeleníti az állapotjelentés részleteit is, amelyek a kódban `HealthInformation` szereplő paraméterhez lettek adva. Ugyanazokat az állapotjelentést a PowerShellben és a Azure Portal is láthatja.
+1. Ha kijelöli az elsődleges replikát Service Fabric Explorer fanézetében, látni fogja, hogy az **állapot** hibát jelez. A Service Fabric Explorer megjeleníti az állapotjelentés részleteit is, amelyek a kódban szereplő paraméterhez lettek adva `HealthInformation` . Ugyanazokat az állapotjelentést a PowerShellben és a Azure Portal is láthatja.
    
     ![Replika állapota Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 
-Ez a jelentés a Health Managerben marad, amíg egy másik jelentés nem váltja fel, vagy amíg nem törli a replikát. Mivel nem állítottunk be `TimeToLive` ehhez az állapotjelentés-jelentéshez `HealthInformation` az objektumban, a jelentés soha nem jár le.
+Ez a jelentés a Health Managerben marad, amíg egy másik jelentés nem váltja fel, vagy amíg nem törli a replikát. Mivel nem állítottunk be `TimeToLive` Ehhez az állapotjelentés-jelentéshez az `HealthInformation` objektumban, a jelentés soha nem jár le.
 
-Azt javasoljuk, hogy az állapotot a legrészletesebbebb szinten jelentse, ami ebben az esetben a replika. Az `Partition`állapotot is jelentheti.
+Azt javasoljuk, hogy az állapotot a legrészletesebbebb szinten jelentse, ami ebben az esetben a replika. Az állapotot is jelentheti `Partition` .
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-A, a és `Application` `DeployedApplication` `DeployedServicePackage`a állapotának jelentéséhez `CodePackageActivationContext`használja a következőt:.
+A, a és a állapotának jelentéséhez használja a következőt: `Application` `DeployedApplication` `DeployedServicePackage` `CodePackageActivationContext` .
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);

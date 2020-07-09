@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e33cd64da32dcb918d30cd44f413748f719023b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84771291"
 ---
 # <a name="planning-and-operations-guide"></a>Tervezési és működtetési útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -175,33 +174,17 @@ A Security Center Áttekintés felülete egységesített képet nyújt Azure-er�
 > [!NOTE]
 > A Security Center nem akadályozza Önt a megszokott eljárások elvégzésében, csupán passzívan ellenőrzi az üzemelő példányokat, és javaslatokat biztosít a beállított biztonsági szabályzatok alapján.
 
-Amikor első alkalommal engedélyezi az aktuálisan használt Azure-környezethez a Security Center használatát, ellenőrizze, hogy elolvasta-e az összes javaslatot. Ezt a **Javaslatok** csempén, illetve erőforrásonként (**Számítás**, **Hálózat**, **Tárolás és adatok** és **Alkalmazás**) teheti meg.
-
-Ha már az összes javaslattal foglalkozott, az összes érintett erőforráshoz tartozó **Megelőzés** szakasznak zölden kell megjelennie. Innentől kezdve egyszerűbbé válik a folyamatos ellenőrzés, hiszen kizárólag akkor kell lépéseket tennie, ha az erőforrások biztonsági állapotában változás következik be, vagy javaslat jelenik meg a megfelelő csempén.
-
-Az **Észlelés** szakasz gyakrabban változik. Itt azok az aktuálisan zajló, illetve a múltban lezajlott és a Security Center és a külső fejlesztőktől származó rendszerek vezérlőelemei által észlelt problémákkal kapcsolatos riasztások láthatók. A biztonsági riasztások csempén láthatók az egyes napokon észlelt riasztások számát jelölő sávdiagramok, valamint a különböző súlyossági kategóriák (alacsony, közepes és magas) közötti eloszlásuk. A biztonsági riasztásokkal kapcsolatos további információkért lásd: [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben).
+Amikor először bekapcsolja Security Center használatát a jelenlegi Azure-környezethez, ellenőrizze, hogy áttekinti-e az összes javaslatot, amely a **javaslatok** oldalon végezhető el.
 
 Építse be a fenyegetésfelderítési szolgáltatás használatát napi biztonsági rutinjába. Itt azonosíthatja a környezetre leselkedő biztonsági fenyegetéseket, például megállapíthatja, ha egy adott számítógép egy botnet része.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Új vagy módosult erőforrások keresése
+
 A legtöbb Azure-környezet dinamikus, és az erőforrások létrehozása, megpördült vagy leskálázása, újrakonfigurálása és módosítása történik. A Security Center segítségével könnyen átláthatja az új erőforrások biztonsági állapotát.
 
 A Security Center automatikusan felfedezi az Azure-környezethez adott új erőforrásokat (virtuális gépeket, SQL-adatbázisokat stb.), és elkezdi a biztonsági állapotuk figyelését. Ide tartoznak a PaaS webes és feldolgozói szerepkörei is. Ha a [biztonsági házirendben](tutorial-security-policy.md)az adatgyűjtés engedélyezve van, a virtuális gépekre vonatkozó további figyelési funkciók automatikusan engedélyezve lesznek.
 
-![Fontos területek](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
-
-1. Virtuális gépek esetén kattintson a **számítási & alkalmazások**elemre az **erőforrás-biztonsági higiénia** szakaszban. Az adatokhoz vagy az azzal kapcsolatos javaslatokhoz tartozó problémák az **Áttekintés** lapon a **Figyelési javaslatok** részben jelennek meg.
-2. A **Javaslatok** áttekintésével tudhatja meg, hogy a rendszer azonosított-e biztonsági kockázatokat az új erőforrással kapcsolatban, és ha igen, miket.
-3. Gyakran előfordul, hogy a környezethez adott új virtuális gépekre csak az operációs rendszer van telepítve. Az erőforrás tulajdonosának több időre lehet szüksége a virtuális gépeken használt további alkalmazások telepítéséhez.  Az az ideális, ha tisztában van a számítási feladat végső céljával. Alkalmazáskiszolgálóként fogja használni? Az új számítási feladat típusától függően beállíthatja a megfelelő **biztonsági szabályzatot**, amely a jelen munkafolyamat harmadik lépése.
-4. Az Azure-környezetbe új erőforrások hozzáadásakor új riasztások jelenhetnek meg a **biztonsági riasztások** csempén. Keresse meg az új riasztásokat ebben a csempében, és kövesse az ajánlásokat.
-
-Emellett rendszeresen figyelnie kell a meglévő erőforrásokat azokra a konfigurációs változásokra vonatkozóan, amelyek biztonsági kockázatokat hoztak létre, az ajánlott alaptervek és a biztonsági riasztások miatt. Kezdje a Security Center irányítópultjánál. Innentől kezdve három fő területet kell megvizsgálnia, amelyek következetesen áttekinthetők.
-
-![Műveletek](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
-
-1. A **Megelőzés** szakasz paneljén gyorsan elérheti a legfontosabb erőforrásokat. Ezzel a funkcióval monitorozhatja a Számítást, a Hálózatot, a Tárolást és adatokat, illetve az Alkalmazásokat.
-2. A **Javaslatok** panelen megtekintheti a Security Center javaslatait. A folyamatos monitorozás során előfordulhat, hogy nem rendelkezik napi javaslatokkal, ami normális, mivel a kezdeti Security Center-telepítésre vonatkozó összes javaslatot feloldotta. Ezért fordulhat elő, hogy ebben a szakaszban nem jelennek meg minden nap új információk, így csak olyankor kell megnyitnia, ha szükséges.
-3. Az **Észlelés** szakasz vagy rendkívül gyakran, vagy rendkívül ritkán jelez változásokat. Mindig tekintse meg a biztonsági riasztásokat, és tegye meg a Security Center javaslatai szerinti lépéseket.
+Emellett rendszeresen figyelnie kell a meglévő erőforrásokat azokra a konfigurációs változásokra vonatkozóan, amelyek biztonsági kockázatokat hoztak létre, az ajánlott alaptervek és a biztonsági riasztások miatt. 
 
 ### <a name="hardening-access-and-applications"></a>A hozzáférés megnehezítése és az alkalmazások védelmének megerősítése
 

@@ -13,10 +13,9 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991007"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webes API: kód konfigurálása
@@ -69,11 +68,11 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 A AddAccountToCacheFromJwt () metódusnak a következőket kell tennie:
 
 - A Microsoft Authentication Library (MSAL) bizalmas ügyfélalkalmazás példányának létrehozása.
-- Hívja meg `AcquireTokenOnBehalf` a metódust. Ez a hívás azt a tulajdonosi jogkivonatot cseréli le, amelyet az ügyfél a webes API-hoz kapott a tulajdonosi jogkivonattal, de az API-hívás egy alsóbb rétegbeli API-t tartalmaz.
+- Hívja meg a `AcquireTokenOnBehalf` metódust. Ez a hívás azt a tulajdonosi jogkivonatot cseréli le, amelyet az ügyfél a webes API-hoz kapott a tulajdonosi jogkivonattal, de az API-hívás egy alsóbb rétegbeli API-t tartalmaz.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Bizalmas ügyfélalkalmazás létrehozása
 
-Ez a folyamat csak a bizalmas ügyfél folyamatában érhető el, így a védett webes API a vagy `WithClientSecret` `WithCertificate` a metódus használatával biztosítja az ügyfél hitelesítő adatait (az ügyfél titkos vagy a tanúsítványát) a [ConfidentialClientApplicationBuilder osztályhoz](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) .
+Ez a folyamat csak a bizalmas ügyfél folyamatában érhető el, így a védett webes API a vagy a metódus használatával biztosítja az ügyfél hitelesítő adatait (az ügyfél titkos vagy a tanúsítványát) a [ConfidentialClientApplicationBuilder osztályhoz](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) `WithClientSecret` `WithCertificate` .
 
 ![IConfidentialClientApplication-metódusok listája](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -106,7 +105,7 @@ Az `UserAssertion` osztály a webes API által a saját ügyfeleitől kapott tul
 
 ![UserAssertion tulajdonságai és módszerei](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-A gyakorlatban az OBO flow-t gyakran használják az alsóbb rétegbeli API-k jogkivonatának beszerzésére és a MSAL.NET felhasználói jogkivonat-gyorsítótárba való tárolására. Ezt úgy teheti meg, hogy a webes API más részei később is meghívhatják az alsóbb rétegbeli API-k meghívásához szükséges ``AcquireTokenOnSilent`` [felülbírálásokat](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) . Ez a hívás hatással van a tokenek frissítésére, ha szükséges.
+A gyakorlatban az OBO flow-t gyakran használják az alsóbb rétegbeli API-k jogkivonatának beszerzésére és a MSAL.NET felhasználói jogkivonat-gyorsítótárba való tárolására. Ezt úgy teheti meg, hogy a webes API más részei később is meghívhatják az [overrides](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` alsóbb rétegbeli API-k meghívásához szükséges felülbírálásokat. Ez a hívás hatással van a tokenek frissítésére, ha szükséges.
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -145,7 +144,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 A beérkező (OBO) folyamat az alárendelt webes API meghívására szolgáló token beszerzésére szolgál. Ebben a folyamatban a webes API egy tulajdonosi jogkivonatot kap a felhasználó által delegált engedélyekkel az ügyfélalkalmazás számára, majd ezt a tokent egy másik hozzáférési tokenre cseréli le az alárendelt webes API meghívásához.
 
-Az alábbi kód a rugós biztonsági keretrendszert használja a webes API `SecurityContextHolder` -ban az ellenőrzött tulajdonosi jogkivonat beszerzéséhez. Ezután a MSAL Java Library használatával szerzi be az alsóbb rétegbeli API-tokent `acquireToken` a hívásával `OnBehalfOfParameters`. A MSAL gyorsítótárazza a jogkivonatot, így az API-hoz `acquireTokenSilently` való későbbi hívások a gyorsítótárazott token beszerzésére használhatják.
+Az alábbi kód a rugós biztonsági keretrendszert használja `SecurityContextHolder` a webes API-ban az ellenőrzött tulajdonosi jogkivonat beszerzéséhez. Ezután a MSAL Java Library használatával szerzi be az alsóbb rétegbeli API-tokent a `acquireToken` hívásával `OnBehalfOfParameters` . A MSAL gyorsítótárazza a jogkivonatot, így az API-hoz `acquireTokenSilently` való későbbi hívások a gyorsítótárazott token beszerzésére használhatják.
 
 ```Java
 @Component
@@ -214,13 +213,13 @@ class MsalAuthHelper {
 
 A beérkező (OBO) folyamat az alárendelt webes API meghívására szolgáló token beszerzésére szolgál. Ebben a folyamatban a webes API egy tulajdonosi jogkivonatot kap a felhasználó által delegált engedélyekkel az ügyfélalkalmazás számára, majd ezt a tokent egy másik hozzáférési tokenre cseréli le az alárendelt webes API meghívásához.
 
-Egy Python webes API-nak bizonyos middleware-t kell használnia az ügyféltől kapott tulajdonosi jogkivonat ellenőrzéséhez. A webes API ezt követően a [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metódus meghívásával lekérheti az alsóbb rétegbeli API hozzáférési tokenjét a MSAL Python Library használatával. Az API használatára példaként tekintse [meg a Microsoft-Authentication-Library-for-Python a githubon történő tesztelési kódját](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472). Tekintse meg a 53-es [probléma](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) ugyanazon tárházban való megvitatását is, amely megkerüli a középső rétegbeli alkalmazások szükségességét.
+Egy Python webes API-nak bizonyos middleware-t kell használnia az ügyféltől kapott tulajdonosi jogkivonat ellenőrzéséhez. A webes API ezt követően a metódus meghívásával lekérheti az alsóbb rétegbeli API hozzáférési tokenjét a MSAL Python Library használatával [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Az API használatára példaként tekintse [meg a Microsoft-Authentication-Library-for-Python a githubon történő tesztelési kódját](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472). Tekintse meg a 53-es [probléma](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) ugyanazon tárházban való megvitatását is, amely megkerüli a középső rétegbeli alkalmazások szükségességét.
 
 ---
 
-A [Node. js-ben és a Azure Functionsban](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)is láthatja az OBO flow megvalósításának példáját.
+Megtekintheti az OBO flow megvalósításának példáját is [Node.js és Azure functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 További információ az OBO protokollról: [Microsoft Identity platform és OAuth 2,0 on-Half-of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 

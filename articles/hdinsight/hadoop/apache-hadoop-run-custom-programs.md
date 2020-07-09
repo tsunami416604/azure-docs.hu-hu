@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8751a54393f310c1d5a77ccbfdb553ee3643f74a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645021"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080108"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Egyéni MapReduce programok futtatása
 
@@ -68,7 +68,7 @@ A leggyakoribb MapReduce-programok Java nyelven íródtak, és egy jar-fájlba v
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Ez a parancs a MapReduce-feladatot a FONALba küldi. A bemeneti fájl `/example/data/sample.log`a és a kimeneti könyvtár `/example/data/logoutput`. A bemeneti fájl és a kimeneti fájlok a fürt alapértelmezett tárolójában tárolódnak.
+    Ez a parancs a MapReduce-feladatot a FONALba küldi. A bemeneti fájl a `/example/data/sample.log` és a kimeneti könyvtár `/example/data/logoutput` . A bemeneti fájl és a kimeneti fájlok a fürt alapértelmezett tárolójában tárolódnak.
 
 ## <a name="next-steps"></a>További lépések
 

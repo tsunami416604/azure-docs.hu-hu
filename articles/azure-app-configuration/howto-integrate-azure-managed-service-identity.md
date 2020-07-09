@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056843"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrálás az Azure felügyelt identitásokkal
@@ -60,7 +60,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. A [Azure Portal](https://portal.azure.com)válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott alkalmazás-konfigurációs tárolót.
 
-1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
 
 1. A **hozzáférés engedélyezése** lapon válassza a **Hozzáadás** lehetőséget a **szerepkör-hozzárendelési kártya hozzáadása** felhasználói felületen.
 
@@ -84,7 +84,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Keresse meg az alkalmazás konfigurációs tárolójához tartozó végpontot. Ez az URL-cím a Azure Portal tárolójának **hozzáférési kulcsok** lapján jelenik meg.
 
-1. Nyissa meg a *appSettings. JSON*fájlt, és adja hozzá a következő parancsfájlt. Cserélje le * \<service_endpoint>*, beleértve a zárójeleket is, és az alkalmazás konfigurációs tárolójának URL-címét. 
+1. Nyissa meg *appsettings.jsa on*, és adja hozzá a következő szkriptet. Cserélje le *\<service_endpoint>* , beleértve a zárójeleket is, az alkalmazás konfigurációs tárolójának URL-címével. 
 
     ```json
     "AppConfig": {
@@ -92,16 +92,16 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     }
     ```
 
-1. Nyissa meg a *program.cs*, és adjon hozzá `Azure.Identity` egy `Microsoft.Azure.Services.AppAuthentication` hivatkozást a és a névterekhez:
+1. Nyissa meg a *program.cs*, és adjon hozzá egy hivatkozást a `Azure.Identity` és a `Microsoft.Azure.Services.AppAuthentication` névterekhez:
 
     ```csharp-interactive
     using Azure.Identity;
     ```
 
-1. Ha csak az alkalmazás konfigurációjában közvetlenül tárolt értékeket kívánja elérni, frissítse a `CreateWebHostBuilder` metódust a `config.AddAzureAppConfiguration()` metódus lecserélésével.
+1. Ha csak az alkalmazás konfigurációjában közvetlenül tárolt értékeket kívánja elérni, frissítse a `CreateWebHostBuilder` metódust a metódus lecserélésével `config.AddAzureAppConfiguration()` .
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`a `CreateWebHostBuilder` .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
+    > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -133,7 +133,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     ```
     ---
 
-1. Ha az alkalmazás konfigurációs értékeit és Key Vault hivatkozásokat is szeretné használni, frissítse a *program.cs* az alább látható módon. Ez a kód létrehoz egy `KeyVaultClient` új t `AzureServiceTokenProvider` a használatával, és átadja ezt a `UseAzureKeyVault` hivatkozást a metódus hívására.
+1. Ha az alkalmazás konfigurációs értékeit és Key Vault hivatkozásokat is szeretné használni, frissítse a *program.cs* az alább látható módon. Ez a kód létrehoz egy új `KeyVaultClient` t a használatával `AzureServiceTokenProvider` , és átadja ezt a hivatkozást a metódus hívására `UseAzureKeyVault` .
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -202,7 +202,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-Ha engedélyezni szeretné a helyi git-telepítést az alkalmazáshoz a kudu Build- [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) kiszolgálóval, futtassa Cloud shell.
+Ha engedélyezni szeretné a helyi git-telepítést az alkalmazáshoz a kudu Build-kiszolgálóval, futtassa [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) Cloud shell.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -218,7 +218,7 @@ Ez a parancs a következő kimenethez hasonlót nyújt:
 
 ### <a name="deploy-your-project"></a>A projekt üzembe helyezése
 
-A _helyi terminál ablakban_adjon hozzá egy távoli Azure-t a helyi git-tárházhoz. Cserélje le _ \<az URL-címet>_ a távoli git-távirányító URL-címére, amelyet a [helyi git kudu-vel való engedélyezésével](#enable-local-git-with-kudu)kapott.
+A _helyi terminál ablakban_adjon hozzá egy távoli Azure-t a helyi git-tárházhoz. Cserélje le a _\<url>_ elemet a távoli git-távirányító URL-címére, amely a [helyi git engedélyezése a kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>
@@ -230,7 +230,7 @@ A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazás
 git push azure master
 ```
 
-Előfordulhat, hogy a kimenetben futtatókörnyezet-specifikus automatizálás látható, például az MSBuild for ASP.NET `npm install` , a Node. js és `pip install` a Python esetében.
+Előfordulhat, hogy a kimenetben futtatókörnyezet-specifikus automatizálás látható, például az MSBuild for ASP.NET, `npm install` a Node.js és `pip install` a Python.
 
 ### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
 
@@ -244,7 +244,7 @@ http://<app_name>.azurewebsites.net
 
 A .NET-keretrendszer és a Java Spring alkalmazás-konfigurációs szolgáltatói beépített támogatást is biztosítanak a felügyelt identitásokhoz. Az áruház URL-végpontját a teljes kapcsolati karakterlánca helyett használhatja a szolgáltatók egyikének konfigurálásakor. 
 
-Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer konzol alkalmazást a következő beállítások megadásához az *app. config* fájlban:
+Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer konzol alkalmazást a következő beállítások megadásához a *App.config* fájlban:
 
 ```xml
     <configSections>
@@ -264,7 +264,7 @@ Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer kon
     </appSettings>
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

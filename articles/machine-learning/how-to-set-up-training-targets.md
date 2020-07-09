@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 03/13/2020
-ms.custom: seodec18
-ms.openlocfilehash: 69d4b1d6c67dc63347ec4fb8043427ddf0a42ae1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.topic: how-to
+ms.date: 06/11/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515809"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ A Azure Machine Learning különböző számítási célok esetében eltérő t�
 
 
 > [!NOTE]
-> Azure Machine Learning a számítás állandó erőforrásként hozható létre, vagy dinamikusan hozható létre, amikor futtatást kér. A futtatáson alapuló létrehozás eltávolítja a számítási célt a betanítási Futtatás befejezése után, így nem használhatja fel az így létrehozott számítási célokat.
+> Azure Machine Learning számítási fürtök állandó erőforrásként hozhatók létre, vagy dinamikusan hozhatók létre futtatáskor. A futtatáson alapuló létrehozás eltávolítja a számítási célt a betanítási Futtatás befejezése után, így nem használhatja fel az így létrehozott számítási célokat.
 
 ## <a name="whats-a-run-configuration"></a>Mi az a futtatási konfiguráció?
 
@@ -76,7 +76,8 @@ Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is 
 Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 * [Helyi számítógép](#local)
-* [Azure Machine Learning Compute](#amlcompute)
+* [Számítási fürt Azure Machine Learning](#amlcompute)
+* [Azure Machine Learning számítási példány](#instance)
 * [Távoli virtuális gépek](#vm)
 * [Azure-HDInsight](#hdinsight)
 
@@ -91,9 +92,9 @@ Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure Machine Learning Compute
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Számítási fürt Azure Machine Learning
 
-Azure Machine Learning a számítás egy felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy a felhasználó egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
+Azure Machine Learning számítási fürt felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
 
 A betanítási folyamat a felhőben lévő CPU-vagy GPU-alapú számítási csomópontok fürtön keresztüli elosztásához Azure Machine Learning számítást is használhat. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
@@ -127,6 +128,41 @@ Azure Machine Learning a számítások újra felhasználhatók a futtatások kö
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
 
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning számítási példány
+
+A [Azure Machine learning számítási példány](concept-compute-instance.md) felügyelt számítási infrastruktúra, amely lehetővé teszi egyetlen virtuális gép egyszerű létrehozását. A számítás a munkaterület-régión belül jön létre, de a számítási fürttől eltérően a példányok nem oszthatók meg a munkaterület más felhasználóival. A példány nem méretezhető le automatikusan.  A folyamatos költségek elkerülése érdekében le kell állítania az erőforrást.
+
+Egy számítási példány több feladatot is futtathat párhuzamosan, és feladat-várólistával rendelkezik. 
+
+A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuális hálózati környezetben](how-to-enable-virtual-network.md#compute-instance)anélkül, hogy a vállalatoknak SSH-portokat kellene megnyitnia. A feladatot egy tároló környezetben hajtja végre a rendszer, és a modell függőségeit egy Docker-tárolóban csomagolja. 
+
+1. **Létrehozás és csatolás**: 
+    
+    [! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb? Name = create_instance)]
+
+1. **Konfigurálás**: futtatási konfiguráció létrehozása.
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+A számítási példányhoz hasznos további parancsokat a notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)című témakörben talál. Ez a jegyzetfüzet a *Training/Train-on-computeinstance*Studio **Samples** mappában is elérhető.
+
+Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás beküldése](#submit)
+
+
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>Távoli virtuális gépek
 
 A Azure Machine Learning a saját számítási erőforrásait is támogatja, és csatolja azt a munkaterülethez. Az egyik ilyen erőforrástípus egy tetszőleges távoli virtuális gép, feltéve, hogy az Azure Machine Learningről érhető el. Az erőforrás lehet egy Azure-beli virtuális gép, egy távoli kiszolgáló a szervezetben vagy a helyszínen. Pontosabban, mivel az IP-cím és a hitelesítő adatok (Felhasználónév és jelszó, vagy SSH-kulcs) esetében bármilyen elérhető virtuális gép használható távoli futtatáshoz.
@@ -138,7 +174,9 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 1. **Létrehozás**: hozzon létre egy DSVM, mielőtt a modellt betanítani. Az erőforrás létrehozásával kapcsolatban tekintse meg [a Linux (Ubuntu) Data Science Virtual Machine kiépítése](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)című témakört.
 
     > [!WARNING]
-    > Azure Machine Learning csak az Ubuntut futtató virtuális gépeket támogatja. Amikor létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet választ, ki kell választania egy Ubuntut használó virtuális gépet.
+    > Azure Machine Learning csak az **Ubuntut**futtató virtuális gépeket támogatja. Amikor létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet választ, ki kell választania egy Ubuntut használó virtuális gépet.
+    > 
+    > A Azure Machine Learning azt is megköveteli, hogy a virtuális gép __nyilvános IP-címmel__rendelkezzen.
 
 1. **Csatolás**: Ha egy meglévő virtuális gépet számítási célként szeretne csatolni, meg kell adnia a virtuális gép erőforrás-azonosítóját, felhasználónevét és jelszavát. A virtuális gép erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a virtuális gép neve alapján hozható létre a következő karakterlánc-formátum használatával:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
@@ -153,13 +191,6 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
                                                    ssh_port=22,
                                                    username='<username>',
                                                    password="<password>")
-
-   # If you authenticate with SSH keys instead, use this code:
-   #                                                  ssh_port=22,
-   #                                                  username='<username>',
-   #                                                  password=None,
-   #                                                  private_key_file="<path-to-file>",
-   #                                                  private_key_passphrase="<passphrase>")
 
    # Attach the compute
    compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
@@ -182,13 +213,16 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
 
 1. **Létrehozás**: hozza létre a HDInsight-fürtöt, mielőtt felhasználja a modell betanításához. A Spark on HDInsight-fürt létrehozásával kapcsolatban lásd: [Spark-fürt létrehozása a HDInsight-ben](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
 
+    > [!WARNING]
+    > Azure Machine Learning megköveteli, hogy a HDInsight-fürt __nyilvános IP-címmel__rendelkezzen.
+
     A fürt létrehozásakor meg kell adnia egy SSH-felhasználónevet és-jelszót. Jegyezze fel ezeket az értékeket, mert szüksége lesz rájuk a HDInsight számítási célként való használatához.
     
-    A fürt létrehozása után kapcsolódjon hozzá az állomásnév \< clustername>-SSH.azurehdinsight.net, ahol a \< clustername> a fürthöz megadott név. 
+    A fürt létrehozása után kapcsolódjon hozzá az állomásnév \<clustername> -SSH.azurehdinsight.net, ahol a a \<clustername> fürthöz megadott név. 
 
 1. **Csatolás**: Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt erőforrás-azonosítóját, felhasználónevét és jelszavát. A HDInsight-fürt erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a HDInsight-fürt neve alapján hozható létre a következő karakterlánc-formátum használatával:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
-   ```python
+    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
 
@@ -303,7 +337,7 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. Töltse ki az űrlapot. Adja meg a szükséges tulajdonságokat, különösen a virtuálisgép- **családot**, valamint a számítás felgyorsításához használni kívánt **csomópontok maximális** értékét.  
 
-1. Kattintson a __Létrehozás__ gombra.
+1. Válassza a __Létrehozás__ lehetőséget.
 
 
 1. A létrehozási művelet állapotának megtekintéséhez válassza ki a listából a számítási célt:

@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733673"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent API-referenciája
@@ -66,8 +65,8 @@ Configuring registry for instrumentation engine...
 
 Engedélyezi az IIS-alkalmazások kód alapú csatolásának figyelését a célszámítógépen.
 
-Ez a parancsmag módosítja az IIS applicationHost. config fájlt, és beállítja a beállításkulcsokat.
-Emellett létrehoz egy applicationinsights. rendszerállapotkulcsot. config fájlt is, amely meghatározza az egyes alkalmazások által használt kialakítási kulcsot.
+Ez a parancsmag módosítja az IIS-applicationHost.config, és beállítja a beállításkulcsokat.
+Emellett létrehoz egy applicationinsights.ikey.config fájlt is, amely meghatározza az egyes alkalmazások által használt kialakítási kulcsot.
 Az IIS betölti a RedfieldModule az indításkor, amely az alkalmazások indításakor beadja a Application Insights SDK-t az alkalmazásokba.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
@@ -85,10 +84,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 #### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
 - `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
-- `AppFilter='WebAppExclude'``null` rendszerállapot-kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppExclude'`rendszerállapot- `null` kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
 - `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
 - `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- Végezetül a `AppFilter` `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
+- Végezetül `AppFilter` a helyettesítő karaktert is használja a `'.*'` korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
 - A szóközök hozzáadódnak az olvashatósághoz.
 
 ```powershell
@@ -104,11 +103,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ### <a name="parameters"></a>Paraméterek
 
 #### <a name="-instrumentationkey"></a>– InstrumentationKey
-**Kötelező.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
+**Szükséges.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Kötelező.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
-A beállítással `MachineFilter`egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
+**Szükséges.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
+A beállítással egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára `MachineFilter` .
 
 > [!IMPORTANT]
 > Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.
@@ -213,7 +212,7 @@ Configuring registry for instrumentation engine...
 ## <a name="disable-applicationinsightsmonitoring"></a>ApplicationInsightsMonitoring letiltása
 
 Letiltja a figyelést a célszámítógépen.
-Ez a parancsmag eltávolítja a módosításokat az IIS applicationHost. config fájlból, és eltávolítja a beállításkulcsokat.
+Ez a parancsmag eltávolítja az IIS-applicationHost.config szerkesztését, és eltávolítja a beállításkulcsokat.
 
 ### <a name="examples"></a>Példák
 
@@ -290,7 +289,7 @@ Ez a parancsmag a figyeléshez szükséges kulcsfontosságú fájlokkal kapcsola
 
 #### <a name="example-application-status"></a>Példa: alkalmazás állapota
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus` a webhelyek figyelési állapotának megjelenítéséhez.
+Futtassa a parancsot a webhelyek `Get-ApplicationInsightsMonitoringStatus` figyelési állapotának megjelenítéséhez.
 
 ```powershell
 
@@ -335,7 +334,7 @@ Ebben a példában;
 
 #### <a name="example-powershell-module-information"></a>Példa: PowerShell-modul adatai
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` az aktuális modul adatainak megjelenítéséhez:
+Futtassa a parancsot az `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` aktuális modul adatainak megjelenítéséhez:
 
 ```powershell
 
@@ -392,7 +391,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Megvizsgálhatja a folyamatot a műszeres számítógépen, és ellenőrizheti, hogy az összes DLL-fájl be van-e töltve. Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
 
 
 ```
@@ -446,9 +445,9 @@ Emellett letölti a külső eszközöket is annak megállapításához, hogy a s
 
 
 Ha a folyamat bármilyen okból meghiúsul, manuálisan is futtathatja ezeket a parancsokat:
-- iisreset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
+- iisreset.exe/status
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -477,10 +476,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 #### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
 - `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
-- `AppFilter='WebAppExclude'``null` rendszerállapot-kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppExclude'`rendszerállapot- `null` kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
 - `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
 - `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- Végezetül a `AppFilter` `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
+- Végezetül `AppFilter` a helyettesítő karaktert is használja a `'.*'` korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
 - A szóközök hozzáadódnak az olvashatósághoz.
 
 ```powershell
@@ -494,11 +493,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 ### <a name="parameters"></a>Paraméterek
 
 #### <a name="-instrumentationkey"></a>– InstrumentationKey
-**Kötelező.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
+**Szükséges.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Kötelező.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
-A beállítással `MachineFilter`egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
+**Szükséges.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
+A beállítással egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára `MachineFilter` .
 
 > [!IMPORTANT]
 > Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.
@@ -556,7 +555,7 @@ A [ETW-eseményeket](https://docs.microsoft.com/windows/desktop/etw/event-tracin
 
 Az összegyűjtött események valós időben lesznek kinyomtatva a konzolra, és egy ETL-fájlba lesznek mentve. A kimeneti ETL-fájl a [perfview eszköz](https://github.com/microsoft/perfview) segítségével nyitható meg további vizsgálat céljából.
 
-Ez a parancsmag addig fut, amíg el nem éri az időtúllépés időtartamát (alapértelmezés szerint 5 perc)`Ctrl + C`, vagy manuálisan leállt ().
+Ez a parancsmag addig fut, amíg el nem éri az időtúllépés időtartamát (alapértelmezés szerint 5 perc), vagy manuálisan leállt ( `Ctrl + C` ).
 
 ### <a name="examples"></a>Példák
 
@@ -569,14 +568,14 @@ A kód-visszacsatolási futtatókörnyezet ETW eseményeket bocsát ki az IIS in
 Az események összegyűjtése:
 1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre `iisreset /stop` az IIS és az összes webalkalmazás kikapcsolását.
 2. A parancsmag végrehajtása
-3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon futtassa `iisreset /start` a parancsot az IIS elindításához.
+3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon futtassa a parancsot `iisreset /start` az IIS elindításához.
 4. Próbálja meg megkeresni az alkalmazást.
-5. Miután az alkalmazás befejezte a betöltést, manuálisan leállíthatja (`Ctrl + C`), vagy megvárhatja az időtúllépést.
+5. Miután az alkalmazás befejezte a betöltést, manuálisan leállíthatja ( `Ctrl + C` ), vagy megvárhatja az időtúllépést.
 
 #### <a name="what-events-to-collect"></a>A gyűjteni kívánt események
 
 Az események gyűjtésére három lehetőség áll rendelkezésre:
-1. Használja a kapcsolót `-CollectSdkEvents` a Application Insights SDK-ból kibocsátott események gyűjtéséhez.
+1. Használja a kapcsolót a `-CollectSdkEvents` Application INSIGHTS SDK-ból kibocsátott események gyűjtéséhez.
 2. A kapcsolóval `-CollectRedfieldEvents` összegyűjtheti Állapotmonitor és a Redfield futtatókörnyezet által kibocsátott eseményeket. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
 3. Mindkét kapcsolót mindkét eseménytípus összegyűjtésére használhatja.
 4. Alapértelmezés szerint, ha nincs megadva kapcsoló, mindkét eseménytípus összegyűjtve lesz.

@@ -9,10 +9,9 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844394"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
@@ -37,7 +36,7 @@ A horgony szolgáltatásnak küldendő érzékelő-adatmennyiség az alábbiak e
 
 Első lépésként hozzon létre egy érzékelő ujjlenyomat-szolgáltatót, és tegye meg a munkamenetet:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 // Create the sensor fingerprint provider
@@ -123,8 +122,8 @@ Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva
 
 |             | Beltéri | Szabadban |
 |-------------|---------|----------|
-| GPS         | Ki | Bekapcsolva |
-| Fi        | Bekapcsolva | Bekapcsolva (nem kötelező) |
+| GPS         | Ki | Be |
+| Fi        | Be | Bekapcsolva (nem kötelező) |
 | Egyazon figyelő | Bekapcsolva (nem kötelező a kikötésekkel kapcsolatban lásd alább) | Ki |
 
 
@@ -132,7 +131,7 @@ Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva
 
 Feltételezve, hogy az alkalmazásnak már van engedélye az eszköz GPS-pozíciójának elérésére, az Azure térbeli Horgonyait a következő használatára állíthatja be:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.GeoLocationEnabled = true;
@@ -188,7 +187,7 @@ Ha a GPS-t az alkalmazásban használja, vegye figyelembe, hogy a hardver által
 
 Ha az érzékelő ujjlenyomat-szolgáltatóját egy rögzített munkameneten kívül szeretné használni, mindenképpen indítsa el az érzékelő becslése előtt. Például az alábbi kód gondoskodik az eszköz valós idejű pozíciójának frissítéséről a térképen:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 // Game about to start, start tracking the sensors
@@ -318,7 +317,7 @@ sensorProvider.Stop();
 
 Feltételezve, hogy az alkalmazásnak már van engedélye az eszköz WiFi-állapotának elérésére, az Azure térbeli Horgonyait az alábbiak használatára állíthatja be:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.WifiEnabled = true;
@@ -376,7 +375,7 @@ Az Azure térbeli horgonyok megkísérlik kiépíteni a szűrt WiFi jel erőssé
 
 Feltéve, hogy az alkalmazásnak már van engedélye az eszköz Bluetooth-állapotának elérésére, az Azure térbeli Horgonyait az alábbiak használatára állíthatja be:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.BluetoothEnabled = true;
@@ -425,7 +424,7 @@ A figyelők általában sokoldalú eszközök, ahol minden – beleértve az UUI
 * üzembe helyezheti őket – jellemzően normál mintában, például rácsban.
 * adja át az egyedi Beacon UUID-azonosítók listáját az érzékelő ujjlenyomat-szolgáltatójának:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.KnownBeaconProximityUuids = new[]
@@ -499,7 +498,7 @@ Miután létrehozta a kapcsolódó érzékelők adataival rendelkező horgonyoka
 
 Ha a lekérdezésekhez az érzékelőt szeretné használni, kezdje a "közeli eszköz" feltételek létrehozásával:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 NearDeviceCriteria nearDeviceCriteria = new NearDeviceCriteria();
@@ -592,13 +591,13 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-A `DistanceInMeters` paraméter határozza meg, hogy a rendszer milyen mértékben vizsgálja meg a horgony gráfot a tartalom lekéréséhez. Tegyük fel, hogy olyan helyet töltött fel, amely a 2. számú állandó sűrűségű horgonyokkal van feltöltve. Emellett az eszközön lévő kamera egyetlen horgonyt figyel, és a szolgáltatás sikeresen megtalálta. Legvalószínűbb, hogy az éppen megfigyelt egyedi horgony helyett az összes közeli horgonyt beolvassa. Feltéve, hogy a rögzített horgonyok egy gráfban vannak csatlakoztatva, a szolgáltatás a diagram széleinek követésével lekérheti az összes közeli horgonyt. A gráf bejárási elvégezte mennyiségét `DistanceInMeters`a vezérli. a rendszer az Ön által birtokolt összes horgonyt megkapja, amelyek közelebb vannak a következőhöz: `DistanceInMeters`.
+A `DistanceInMeters` paraméter határozza meg, hogy a rendszer milyen mértékben vizsgálja meg a horgony gráfot a tartalom lekéréséhez. Tegyük fel, hogy olyan helyet töltött fel, amely a 2. számú állandó sűrűségű horgonyokkal van feltöltve. Emellett az eszközön lévő kamera egyetlen horgonyt figyel, és a szolgáltatás sikeresen megtalálta. Legvalószínűbb, hogy az éppen megfigyelt egyedi horgony helyett az összes közeli horgonyt beolvassa. Feltéve, hogy a rögzített horgonyok egy gráfban vannak csatlakoztatva, a szolgáltatás a diagram széleinek követésével lekérheti az összes közeli horgonyt. A gráf bejárási elvégzésének mennyiségét a következő szabályozza:. a rendszer az Ön által birtokolt `DistanceInMeters` összes olyan horgonyt megkapja, amely közelebb van a-hoz `DistanceInMeters` .
 
 Ne feledje, hogy a nagy értékek `MaxResultCount` negatív hatással lehetnek a teljesítményre. Állítsa az alkalmazás ésszerű értékére.
 
 Végezetül meg kell adnia a munkamenetet, hogy használja az érzékelőn alapuló megkeresést:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
@@ -661,7 +660,7 @@ A következő táblázat összefoglalja az egyes támogatott platformokon össze
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | N/A | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
+| GPS         | N.A. | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
 | Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
 | Egyazon figyelő | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
 

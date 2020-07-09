@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479559"
 ---
 # <a name="install-azure-farmbeats"></a>Az Azure FarmBeats telepítése
@@ -124,9 +123,9 @@ Futtassa az alábbi lépéseket egy Cloud Shell-példányban a PowerShell-körny
 
 4. A parancsfájl a következő három bemenetet kéri:
 
-    - **FarmBeats-webhely neve**: Ez a FarmBeats-webalkalmazás egyedi URL-előtagja. Ha az előtag már használatban van, a parancsfájl kikerül a hibába. A telepítés után a FarmBeats üzemelő példánya elérhető lesz\<a https://FarmBeats-websites-Name>. azurewebsites.net és a hencegő API-\<k a következő címen lesznek: https://FarmBeats-website-Name>-API.azurewebsites.net
+    - **FarmBeats-webhely neve**: Ez a FarmBeats-webalkalmazás egyedi URL-előtagja. Ha az előtag már használatban van, a parancsfájl kikerül a hibába. A telepítés után a FarmBeats üzemelő példánya elérhető lesz a https:// \<FarmBeats-website-name> . azurewebsites.net és a hencegő API-k a következő címen lesznek: https:// \<FarmBeats-website-name> -API.azurewebsites.net
 
-    - **Azure bejelentkezési azonosító**: adja meg az Azure bejelentkezési azonosítót azon felhasználó számára, akit hozzá kíván adni a FarmBeats-rendszergazdaként. Ez a felhasználó ezután hozzáférést biztosíthat a FarmBeats webalkalmazásokhoz más felhasználók számára. A bejelentkezési azonosító általában az űrlap john.doe@domain.com. Az Azure UPN is támogatott.
+    - **Azure bejelentkezési azonosító**: adja meg az Azure bejelentkezési azonosítót azon felhasználó számára, akit hozzá kíván adni a FarmBeats-rendszergazdaként. Ez a felhasználó ezután hozzáférést biztosíthat a FarmBeats webalkalmazásokhoz más felhasználók számára. A bejelentkezési azonosító általában az űrlap john.doe@domain.com . Az Azure UPN is támogatott.
 
     - **Előfizetés azonosítója**: Ez annak az előfizetésnek az azonosítója, amelyben telepíteni szeretné az Azure FarmBeats
 
@@ -152,7 +151,7 @@ Most már készen áll a FarmBeats telepítésére. A telepítés elindításáh
 
 2. Nyissa meg az Azure Marketplace-t a portálon, és keresse meg az **Azure FarmBeats** a piactéren.
 
-3. Megjelenik egy új ablak, amely áttekintést nyújt az Azure FarmBeats. Kattintson a **Létrehozás** gombra.
+3. Megjelenik egy új ablak, amely áttekintést nyújt az Azure FarmBeats. Válassza a **Létrehozás** lehetőséget.
 
 4. Ekkor megjelenik egy új ablak. A regisztrációs folyamat befejezéséhez válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet, amelyre telepíteni szeretné az Azure-FarmBeats.
 
@@ -168,9 +167,9 @@ Most már készen áll a FarmBeats telepítésére. A telepítés elindításáh
 
 8. A beírt részletek ellenőrzése után válassza **az OK gombot**. Megjelenik a Használati feltételek lap. Tekintse át a feltételeket, és válassza a **Létrehozás** lehetőséget a telepítés elindításához. A rendszer átirányítja az oldalra, ahol követheti a telepítési folyamatot.
 
-A telepítés befejezése után ellenőrizheti a telepítést, és megkezdheti a FarmBeats-portál használatát, ha a telepítés során megadott webhely nevére navigál: https://\<FarmBeats-website-Name>. azurewebsites.net. A farmok létrehozásához a FarmBeats felhasználói felületét kell megtekinteni.
+A telepítés befejezése után ellenőrizheti a telepítést, és megkezdheti a FarmBeats-portál használatát, ha a telepítés során megadott webhely nevére navigál: https:// \<FarmBeats-website-name> . azurewebsites.net. A farmok létrehozásához a FarmBeats felhasználói felületét kell megtekinteni.
 
-A **Datahub** a következő címen érhető\<el: https://FarmBeats-web-Name>-API.azurewebsites.net/Swagger. Itt látni fogja a különböző FarmBeats API-objektumokat, és REST-műveleteket hajt végre az API-kon.
+A **Datahub** a következő címen érhető el: https:// \<FarmBeats-website-name> -API.azurewebsites.net/Swagger. Itt látni fogja a különböző FarmBeats API-objektumokat, és REST-műveleteket hajt végre az API-kon.
 
 ## <a name="upgrade"></a>Frissítés
 
@@ -196,7 +195,7 @@ A rendszer első alkalommal kéri a felhasználókat, hogy válasszon ki egy el�
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-A input. JSON fájl elérési útja nem kötelező. Ha nincs megadva, a parancsfájl kérni fogja az összes szükséges bemenetet. A frissítés körülbelül 30 percen belül befejeződik.
+A fájl input.jselérési útja nem kötelező. Ha nincs megadva, a parancsfájl kérni fogja az összes szükséges bemenetet. A frissítés körülbelül 30 percen belül befejeződik.
 
 ## <a name="uninstall"></a>Eltávolítás
 

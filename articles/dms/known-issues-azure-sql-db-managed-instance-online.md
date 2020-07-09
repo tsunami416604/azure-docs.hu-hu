@@ -1,6 +1,6 @@
 ---
-title: A Azure SQL Database felügyelt példányának online áttelepítésével kapcsolatos ismert problémák és korlátozások
-description: Ismerje meg a felügyelt példány Azure SQL Database online áttelepítéssel kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
+title: Az Azure SQL felügyelt példányain az online áttelepítéssel kapcsolatos ismert problémák és korlátozások
+description: Ismerje meg az Azure SQL felügyelt példányának online áttelepítésével kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 88e2b5894686ee93caecf33e04940803eb75f394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106407"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database felügyelt példányra
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Ismert problémák/áttelepítési korlátozások az Azure SQL felügyelt példányaihoz való online áttelepítéssel
 
-Az SQL Serverról Azure SQL Database felügyelt példányra történő online áttelepítéshez kapcsolódó ismert problémák és korlátozások alább olvashatók.
+Az SQL Serverról az Azure SQL felügyelt példányra való online áttelepítéssel kapcsolatos ismert problémák és korlátozások alább olvashatók.
 
 > [!IMPORTANT]
 > A SQL Server online áttelepítésével Azure SQL Database a SQL_variant adattípusok áttelepítése nem támogatott.
@@ -29,7 +29,7 @@ Az SQL Serverról Azure SQL Database felügyelt példányra történő online á
 
 - **Biztonsági mentések ellenőrzőösszeggel**
 
-    Azure Database Migration Service a biztonsági mentés és visszaállítás módszert használja a helyszíni adatbázisok átirányításához SQL Database felügyelt példányra. Azure Database Migration Service csak az ellenőrzőösszeg használatával létrehozott biztonsági mentéseket támogatja.
+    A Azure Database Migration Service a biztonsági mentés és visszaállítás módszert használja a helyszíni adatbázisok SQL felügyelt példányra történő átirányításához. Azure Database Migration Service csak az ellenőrzőösszeg használatával létrehozott biztonsági mentéseket támogatja.
 
     [Biztonsági másolatok ellenőrzőösszegének engedélyezése vagy letiltása a biztonsági mentés vagy a visszaállítás során (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
@@ -52,16 +52,16 @@ Az SQL Serverról Azure SQL Database felügyelt példányra történő online á
 
 - **FileStream/objektumnak**
 
-    SQL Database felügyelt példány jelenleg nem támogatja a FileStream és a objektumnak. A funkcióktól függő munkaterhelések esetében javasoljuk, hogy az Azure-beli virtuális gépeken futó SQL-kiszolgálókat Azure-célként válassza.
+    A felügyelt SQL-példány jelenleg nem támogatja a FileStream és a objektumnak. A funkcióktól függő munkaterhelések esetében javasoljuk, hogy az Azure-beli virtuális gépeken futó SQL-kiszolgálókat Azure-célként válassza.
 
 - **Memóriában tárolt táblák**
 
-    A memóriában tárolt OLTP a SQL Database felügyelt példány prémium és üzletileg kritikus szintjein érhető el. a általános célúi réteg nem támogatja a memóriabeli OLTP.
+    A memóriában tárolt OLTP az SQL által felügyelt példány prémium és üzletileg kritikus szintjein érhető el; a általános célúi réteg nem támogatja a memóriabeli OLTP.
 
 ## <a name="migration-resets"></a>Áttelepítési alaphelyzetbe állítás
 
 - **Központi telepítés**
 
-    SQL Database felügyelt példány egy olyan Pásti szolgáltatás, amely automatikus javítással és verzióval frissül. SQL Database felügyelt példányának áttelepítése során a nem kritikus frissítések akár 36 óráig is segítenek. Ezt követően (és a kritikus frissítések esetében), ha az áttelepítés megszakad, a folyamat visszaállítja a teljes visszaállítási állapotot.
+    Az SQL felügyelt példánya egy olyan Pásti szolgáltatás, amely automatikus javítással és verzióval frissül. Az SQL felügyelt példányának áttelepítése során a nem kritikus frissítések akár 36 óráig is tarthatók. Ezt követően (és a kritikus frissítések esetében), ha az áttelepítés megszakad, a folyamat visszaállítja a teljes visszaállítási állapotot.
 
     Az áttelepítési átváltás csak a teljes biztonsági mentés visszaállítása után hívhatók meg, és a rendszer az összes naplózott biztonsági mentést felhasználja. Ha az éles környezetbe történő áttelepítés átállásos érintett, forduljon az [Azure DMS visszajelzési aliasához](mailto:dmsfeedback@microsoft.com).

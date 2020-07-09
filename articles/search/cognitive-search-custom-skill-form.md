@@ -6,14 +6,14 @@ manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321306"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Példa: űrlap-felismerő egyéni képességének létrehozása
 
@@ -43,9 +43,9 @@ Először adja hozzá a projekt szintű környezeti változókat. Keresse meg a 
 * `FORMS_RECOGNIZER_RETRY_DELAY`a 1000 értékre van beállítva. Ez az érték azt az időpontot ezredmásodpercben, ameddig a program megvárja a lekérdezés újbóli megkísérlése előtt.
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS`a 100 értékre van beállítva. Ez az érték az a szám, ahányszor a program lekérdezi a szolgáltatást, miközben megpróbál sikeres választ kapni.
 
-Ezután nyissa meg a _AnalyzeForm.cs_ , `fieldMappings` és keresse meg a változót, amely a *mező-hozzárendelések. JSON* fájlra hivatkozik. Ez a fájl (és az azt hivatkozó változó) meghatározza az űrlapokból kinyerni kívánt kulcsok listáját, valamint az egyes kulcsok egyéni címkéjét. Egy érték például `{ "Address:", "address" }, { "Invoice For:", "recipient" }` azt jelenti, hogy a parancsfájl csak az észlelt `Address:` és `Invoice For:` a mezők értékeit fogja menteni, és az értékeket a és `"address"` `"recipient"`a értékre fogja címkézni.
+Ezután nyissa meg a _AnalyzeForm.cs_ , és keresse meg a `fieldMappings` változót, amely a fájl *field-mappings.js* hivatkozik. Ez a fájl (és az azt hivatkozó változó) meghatározza az űrlapokból kinyerni kívánt kulcsok listáját, valamint az egyes kulcsok egyéni címkéjét. Egy érték például `{ "Address:", "address" }, { "Invoice For:", "recipient" }` azt jelenti, hogy a parancsfájl csak az észlelt és a mezők értékeit fogja menteni `Address:` `Invoice For:` , és az értékeket a és a értékre fogja címkézni `"address"` `"recipient"` .
 
-Végezetül jegyezze fel a `contentType` változót. Ez a parancsfájl az URL-cím által hivatkozott távoli dokumentumokon futtatja a megadott űrlap-felismerő modellt, így a `application/json`tartalomtípus a következő:. Ha a helyi fájlokat a HTTP-kérelmekben foglalt bájtok alapján szeretné elemezni, akkor módosítania kell a `contentType` fájlt a megfelelő [MIME-típusra](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) .
+Végezetül jegyezze fel a `contentType` változót. Ez a parancsfájl az URL-cím által hivatkozott távoli dokumentumokon futtatja a megadott űrlap-felismerő modellt, így a tartalomtípus a következő: `application/json` . Ha a helyi fájlokat a HTTP-kérelmekben foglalt bájtok alapján szeretné elemezni, akkor módosítania kell a `contentType` fájlt a megfelelő [MIME-típusra](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) .
 
 ## <a name="test-the-function-from-visual-studio"></a>A függvény tesztelése a Visual studióból
 
@@ -77,12 +77,12 @@ Kezdje a kérelem szövegtörzs-sablonnal.
 }
 ```
 
-Itt meg kell adnia egy olyan űrlap URL-címét, amelynek a típusa megegyezik a betanított űrlapokkal. Tesztelési célból használhatja a betanítási űrlapok egyikét. Ha követte a cURL gyors üzembe helyezését, az űrlapokat egy Azure Blob Storage-fiókban fogja elhelyezni. Nyissa meg Azure Storage Explorer, keresse meg az űrlapot, kattintson rá a jobb gombbal, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A következő párbeszédablak egy URL-címet és egy SAS-tokent fog biztosítani. Adja meg ezeket a karakterláncokat a kérelem törzsében `"formUrl"` és `"formSasToken"` mezőiben.
+Itt meg kell adnia egy olyan űrlap URL-címét, amelynek a típusa megegyezik a betanított űrlapokkal. Tesztelési célból használhatja a betanítási űrlapok egyikét. Ha követte a cURL gyors üzembe helyezését, az űrlapokat egy Azure Blob Storage-fiókban fogja elhelyezni. Nyissa meg Azure Storage Explorer, keresse meg az űrlapot, kattintson rá a jobb gombbal, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A következő párbeszédablak egy URL-címet és egy SAS-tokent fog biztosítani. Adja meg ezeket a karakterláncokat a `"formUrl"` `"formSasToken"` kérelem törzsében és mezőiben.
 
 > [!div class="mx-imgBorder"]
 > ![Azure Storage Explorer; egy PDF-dokumentum van kiválasztva](media/cognitive-search-skill-form/form-sas.png)
 
-Ha olyan távoli dokumentumot szeretne elemezni, amely nem az Azure Blob Storage-ban található, illessze be `"formUrl"` az URL-címet `"formSasToken"` a mezőbe, és hagyja üresen a mezőt.
+Ha olyan távoli dokumentumot szeretne elemezni, amely nem az Azure Blob Storage-ban található, illessze be az URL-címet a `"formUrl"` mezőbe, és hagyja `"formSasToken"` üresen a mezőt.
 
 > [!NOTE]
 > Ha a képesség integrálva van egy készségkészlet, az URL-címet és a jogkivonatot a Cognitive Search fogja biztosítani.
@@ -111,7 +111,7 @@ Az alábbi példához hasonló válasznak kell megjelennie:
 
 Ha elégedett a funkció működésével, közzéteheti.
 
-1. A Visual Studióban a **megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Közzététel**lehetőséget. Válassza az **új** > **Közzététel**létrehozása lehetőséget.
+1. A Visual Studióban a **megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Közzététel**lehetőséget. Válassza az **új**  >  **Közzététel**létrehozása lehetőséget.
 1. Ha még nem csatlakoztatta a Visual studiót az Azure-fiókjához, válassza a **fiók hozzáadása...** lehetőséget.
 1. Kövesse a képernyőn megjelenő utasításokat. Adjon egyedi nevet az App Service, az Azure-előfizetés, az erőforráscsoport, a üzemeltetési csomag és a használni kívánt Storage-fiók számára. Létrehozhat egy új erőforráscsoportot, egy új üzemeltetési csomagot és egy új Storage-fiókot, ha még nem rendelkezik ezekkel. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 1. A telepítés befejezése után figyelje meg a webhely URL-címét. Ez az URL-cím az Azure-beli Function-alkalmazás címe. Mentse egy ideiglenes helyre.
@@ -119,7 +119,7 @@ Ha elégedett a funkció működésével, közzéteheti.
 
 ## <a name="connect-to-your-pipeline"></a>Kapcsolódás a folyamathoz
 
-Ahhoz, hogy ezt a képességet egy Cognitive Search folyamat használja, hozzá kell adnia egy képzettségi definíciót a készségkészlet. A következő JSON-blokk egy példa a szaktudás meghatározására (a bemenetek és kimenetek frissítése az adott forgatókönyv-és készségkészlet-környezetnek megfelelően). Cserélje `AzureFunctionEndpointUrl` le a függvény URL-címét, `AzureFunctionDefaultHostKey` és cserélje le a helyére a gazdagép kulcsával.
+Ahhoz, hogy ezt a képességet egy Cognitive Search folyamat használja, hozzá kell adnia egy képzettségi definíciót a készségkészlet. A következő JSON-blokk egy példa a szaktudás meghatározására (a bemenetek és kimenetek frissítése az adott forgatókönyv-és készségkészlet-környezetnek megfelelően). Cserélje le a `AzureFunctionEndpointUrl` függvény URL-címét, és cserélje le a helyére a `AzureFunctionDefaultHostKey` gazdagép kulcsával.
 
 ```json
 { 

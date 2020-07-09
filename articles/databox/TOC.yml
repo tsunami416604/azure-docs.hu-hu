@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: A korlátozások ismertetése
               href: data-box-limits.md
-            - name: Biztonság áttekintése
-              href: data-box-security.md
+            - name: Biztonság
+              items:
+                - name: Biztonsági alapkonfiguráció
+                  href: security-baseline.md
+                - name: Biztonság áttekintése
+                  href: data-box-security.md
             - name: GYIK
               href: data-box-faq.md
         - name: Útmutató
@@ -195,11 +199,19 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: A HDFS-tárolóról
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+    - name: Referencia
+      items:
+        - name: Azure CLI
+          href: /cli/azure/ext/databox/databox
+        - name: Azure PowerShell
+          href: /powershell/module/az.databox
+        - name: .NET API-k
+          href: /dotnet/api/overview/azure/databox/management
     - name: További források
       items:
         - name: Data Box-termék
           href: 'https://azure.microsoft.com/services/storage/databox/data/'
         - name: A Data Box díjszabása
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/'
         - name: A Data Box Disk díjszabása
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/disk/'

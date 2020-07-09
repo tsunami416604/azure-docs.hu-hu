@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198292"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>A rajzolási eszközök modulban található interakciós típusok és billentyűparancsok
@@ -37,16 +36,16 @@ Ha a Rajzfigyelő `draw-point` rajzolási módban van, a következő műveleteke
 
 **Rajzolás indítása**
  - Kattintson a bal egérgombra, vagy érintse meg a térképet, és adjon hozzá egy pontot a térképhez. 
- - Ha az egér a Térkép fölé esik, nyomja le `F` a billentyűt, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
- - Ha további pontokat szeretne hozzáadni a térképhez, kattintson a gombra, érintse meg vagy nyomja `F` meg a gombot.
+ - Ha az egér a Térkép fölé esik, nyomja le a `F` billentyűt, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
+ - Ha `F` További pontokat szeretne hozzáadni a térképhez, kattintson a gombra, érintse meg vagy nyomja meg a gombot.
  
 **Rajzolás befejezése**
  - Kattintson a Rajzolás eszköztár bármelyik gombjára. 
  - Programozott módon állíthatja be a rajzolási módot. 
- - Nyomja le `C` a billentyűt.
+ - Nyomja le a `C` billentyűt.
 
 **Rajzolás megszakítása**
- - Nyomja le `Escape` a billentyűt.
+ - Nyomja le a `Escape` billentyűt.
 
 ### <a name="how-to-draw-a-line"></a>Vonal rajzolása
 
@@ -55,10 +54,10 @@ Ha a rajzolási `draw-line` mód fut, a következő műveleteket végezheti el a
 **Rajzolás indítása**
  - Kattintási mód
    * Kattintson a bal egérgombra, vagy érintse meg a térképet, hogy egy sor minden pontját hozzáadja a térképen. Az egyes kattintásokhoz vagy érintésekhez egy koordináta kerül a sorba. 
-   * Ha az egér a Térkép fölé esik, nyomja le `F` a billentyűt, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
+   * Ha az egér a Térkép fölé esik, nyomja le a `F` billentyűt, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
    * Tartsa a kattintást, amíg az összes kívánt pont hozzá nem lett adva a sorhoz.
  - Szabadkézi mód
-   * Nyomja le a bal oldali egérgombot, vagy koppintson a térképre, és húzza az egeret, vagy koppintson a pontra. A koordinátákat a rendszer hozzáadja az egérrel vagy érintési ponttal a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők `freehandInterval` beállítás határozza meg.
+   * Nyomja le a bal oldali egérgombot, vagy koppintson a térképre, és húzza az egeret, vagy koppintson a pontra. A koordinátákat a rendszer hozzáadja az egérrel vagy érintési ponttal a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők beállítás határozza meg `freehandInterval` .
  - Hibrid mód
    * A kattintások és a szabadkézi módszerek közötti váltás a kívánt módon, egyetlen sor rajzolásakor. Például kattintson a néhány pontra, majd az egér húzásával adjon hozzá egy csomó pontot, majd kattintson a továbbiak elemre. 
 
@@ -69,10 +68,10 @@ Ha a rajzolási `draw-line` mód fut, a következő műveleteket végezheti el a
    * Programozott módon állíthatja be a rajzolási módot. 
  - Szabadkézi mód
    * Adja meg az egérgombot vagy az érintési pontot.
- - Nyomja le `C` a billentyűt.
+ - Nyomja le a `C` billentyűt.
 
 **Rajzolás megszakítása**
- - Nyomja le `Escape` a billentyűt.
+ - Nyomja le a `Escape` billentyűt.
 
 ### <a name="how-to-draw-a-polygon"></a>Sokszög rajzolása
 
@@ -81,10 +80,10 @@ Ha a rajzolási `draw-polygon` mód fut, a következő műveleteket végezheti e
 **Rajzolás indítása**
  - Kattintási mód
    * Kattintson a bal egérgombra, vagy érintse meg a térképet a sokszög minden pontjának a térképen való hozzáadásához. Az egyes kattintásokhoz vagy érintésekhez egy koordináta kerül a sokszögbe. 
-   * Ha az egér a Térkép fölé esik, nyomja le `F` a billentyűt, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
+   * Ha az egér a Térkép fölé esik, nyomja le a `F` billentyűt, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
    * Tartsa a kattintást, amíg az összes kívánt pont hozzá nem lett adva a sokszöghez.
  - Szabadkézi mód
-   * Nyomja le a bal oldali egérgombot, vagy koppintson a térképre, és húzza az egeret, vagy koppintson a pontra. A koordinátákat a rendszer hozzáadja a sokszöghez, mert az egér vagy az érintési pont mozog a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők `freehandInterval` beállítás határozza meg.
+   * Nyomja le a bal oldali egérgombot, vagy koppintson a térképre, és húzza az egeret, vagy koppintson a pontra. A koordinátákat a rendszer hozzáadja a sokszöghez, mert az egér vagy az érintési pont mozog a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők beállítás határozza meg `freehandInterval` .
  - Hibrid mód
    * A kattintások és a szabadkézi módszerek közötti váltás a kívánt módon, egyetlen sokszög rajzolásakor. Például kattintson a néhány pontra, majd az egér húzásával adjon hozzá egy csomó pontot, majd kattintson a továbbiak elemre. 
 
@@ -96,10 +95,10 @@ Ha a rajzolási `draw-polygon` mód fut, a következő műveleteket végezheti e
    * Programozott módon állíthatja be a rajzolási módot. 
  - Szabadkézi mód
    * Adja meg az egérgombot vagy az érintési pontot.
- - Nyomja le `C` a billentyűt.
+ - Nyomja le a `C` billentyűt.
 
 **Rajzolás megszakítása**
- - Nyomja le `Escape` a billentyűt.
+ - Nyomja le a `Escape` billentyűt.
 
 ### <a name="how-to-draw-a-rectangle"></a>Négyszög rajzolása
 
@@ -111,10 +110,10 @@ Ha a rajzolási `draw-rectangle` mód fut, a következő műveleteket végezheti
 **Rajzolás befejezése**
  - Adja meg az egérgombot vagy az érintési pontot.
  - Programozott módon állíthatja be a rajzolási módot. 
- - Nyomja le `C` a billentyűt.
+ - Nyomja le a `C` billentyűt.
 
 **Rajzolás megszakítása**
- - Nyomja le `Escape` a billentyűt.
+ - Nyomja le a `Escape` billentyűt.
 
 ### <a name="how-to-draw-a-circle"></a>Kör rajzolása
 
@@ -126,10 +125,10 @@ Ha a rajzolási `draw-circle` mód fut, a következő műveleteket végezheti el
 **Rajzolás befejezése**
  - Adja meg az egérgombot vagy az érintési pontot.
  - Programozott módon állíthatja be a rajzolási módot. 
- - Nyomja le `C` a billentyűt.
+ - Nyomja le a `C` billentyűt.
 
 **Rajzolás megszakítása**
- - Nyomja le `Escape` a billentyűt.
+ - Nyomja le a `Escape` billentyűt.
 
 ## <a name="keyboard-shortcuts"></a>Billentyűparancsok
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 49aaf9c748d75df8ffbb2adcd80aa6b966f88680
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4fa32668faa72973f765a75d4edc3e4598b43652
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673186"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609296"
 ---
 1. Indítsa el az Eclipse-et.
 
@@ -25,7 +25,7 @@ ms.locfileid: "83673186"
 
    ![A New project párbeszédpanel képernyőképe a kiemelt Java Project lehetőséggel](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. Elindul az **új Java-projekt** varázsló. A **Project name** (Projekt neve) mezőbe írja be a **quickstart** (rövid útmutató) kifejezést, és válassza ki a **JavaSE-1.8** futtatókörnyezetet. Válassza a **Finish** (Befejezés) elemet.
+1. Elindul az **új Java-projekt** varázsló. A **Project name** (Projekt neve) mezőbe írja be a **quickstart** (rövid útmutató) kifejezést, és válassza ki a **JavaSE-1.8** futtatókörnyezetet. Válassza a **Befejezés** gombot.
 
    ![A New Java Project varázsló képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "83673186"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Adjon hozzá egy `dependencies` elemet is, amely a SPEECH SDK verziójának 1.12.0 függ:
+   * Adjon hozzá egy `dependencies` elemet is, amely a SPEECH SDK verziójának 1.12.1 függ:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

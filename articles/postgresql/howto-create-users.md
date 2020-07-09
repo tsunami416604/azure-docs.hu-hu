@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan hozhat létre új felhasználói fi
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f25bda1a450919264c7ddba3886554381009c546
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384347"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119599"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Felhasználók létrehozása Azure Database for PostgreSQL – egyetlen kiszolgálón
 
@@ -58,7 +58,7 @@ A kiszolgáló-rendszergazdai felhasználói fiókkal további felhasználókat 
 
 2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használja az előnyben részesített ügyfélprogramot, például pgAdmin vagy psql.
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző `<db_user>` értékét a kívánt új felhasználónévre, és adja meg `<newdb>` a helyőrző értékét a saját adatbázisának nevével. Cserélje le a helyőrző jelszavát a saját erős jelszavára.
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét a `<db_user>` kívánt új felhasználónévre, és adja meg a helyőrző értékét a `<newdb>` saját adatbázisának nevével. Cserélje le a helyőrző jelszavát a saját erős jelszavára.
 
    Ez az SQL Code-szintaxis egy új, testdb nevű adatbázist hoz létre, például a következő célokra:. Ezután létrehoz egy új felhasználót a PostgreSQL szolgáltatásban, és csatlakozási jogosultságokat biztosít az új adatbázishoz az adott felhasználó számára.
 
@@ -82,7 +82,7 @@ A kiszolgáló-rendszergazdai felhasználói fiókkal további felhasználókat 
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=db_user@mydemoserver --dbname=newdb
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára a kapcsolódáshoz: [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal vagy az](howto-manage-firewall-using-portal.md) [Azure CLI](howto-manage-firewall-using-cli.md)használatával.
 

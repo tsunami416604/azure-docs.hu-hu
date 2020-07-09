@@ -60,20 +60,36 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: Erőforrások üzembe helyezése
           href: ./samples/pattern-deploy-resources.md
+    - name: Előírásoknak való megfelelés beépített elemei
+      items:
+        - name: Azure-biztonsági teljesítményteszt
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
+        - name: NIST SP 800-171 R2
+          href: ./samples/nist-sp-800-171-r2.md
 - name: Alapelvek
   items:
-    - name: Azure szabályzatdefiníciók struktúrája
+    - name: Definíciók struktúrája
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: A szabályzat hatásainak megismerése
+    - name: A hatások megismerése
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure Policy-hozzárendelés struktúrája
+    - name: Kezdeményezési struktúra
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: Hozzárendelés struktúrája
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: Új szabályzat hatásának értékelése
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Előírásoknak való megfelelőség
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: Szabályzat tervezése kódmunkafolyamatokként
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -83,6 +99,10 @@
     - name: Vendégkonfigurációval rendelkező virtuális gépek naplózása
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Útmutatók
   items:
     - name: Azure Policy-bővítmény VSCode-hoz
@@ -94,12 +114,17 @@
     - name: Szabályzatok létrehozása tömbtulajdonságokhoz
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: Vendégkonfigurációs szabályzat létrehozása Windows rendszeren
-      displayName: 'powershell, dsc, chef, windows'
-      href: ./how-to/guest-configuration-create.md
-    - name: Vendégkonfigurációs szabályzat létrehozása Linux rendszeren
-      displayName: 'powershell, dsc, chef, linux'
-      href: ./how-to/guest-configuration-create-linux.md
+    - name: Vendégkonfiguráció
+      items:
+        - name: Vendégkonfigurációs szabályzat létrehozása Windows rendszeren
+          displayName: 'powershell, dsc, chef, windows'
+          href: ./how-to/guest-configuration-create.md
+        - name: Vendégkonfigurációs szabályzat létrehozása Linux rendszeren
+          displayName: 'powershell, dsc, chef, linux'
+          href: ./how-to/guest-configuration-create-linux.md
+        - name: Vendégkonfigurációs szabályzat létrehozása csoportházirendből
+          displayName: 'powershell, dsc, grouppolicy, windows'
+          href: ./how-to/guest-configuration-create-group-policy.md
     - name: Megfelelőségi adatok lekérése
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -113,7 +138,7 @@
       items:
         - name: A Key Vault integrálása az Azure Policy szolgáltatással
           displayName: 'key vault, certificate, key'
-          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../key-vault/general/azure-policy.md?bc=/azure/governance/policy/breadcrumb/toc.json&toc=/azure/governance/policy/toc.json
     - name: Azure Lighthouse-integráció
       items:
         - name: Szabályzat nagy léptékű üzembe helyezése
@@ -124,9 +149,14 @@
           href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Azure Monitor-integráció
       items:
+        - name: Az Azure Monitor nagy léptékű üzembe helyezése
+          displayName: 'monitor, diagnostic settings, dependency agent'
+          href: ../../azure-monitor/platform/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Az Azure Monitor engedélyezése virtuális gépek számára (előzetes verzió)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: Hibaelhárítás
+  href: ./troubleshoot/general.md
 - name: Referencia
   items:
     - name: Azure CLI
@@ -134,9 +164,9 @@
     - name: Azure PowerShell
       items:
         - name: Szabályzat
-          href: '/powershell/module/az.resources/#policies'
+          href: /powershell/module/az.resources/#policies
         - name: Policy Insights
-          href: '/powershell/module/az.policyinsights#policy_insights'
+          href: /powershell/module/az.policyinsights#policy_insights
         - name: Vendégkonfiguráció
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Azure SDK for .NET
@@ -151,7 +181,7 @@
           href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
         - name: Szabályzatdefiníciók
           href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
-    - name: Node-hoz készült Azure SDK
+    - name: Azure SDK for JavaScript
       items:
         - name: Szabályzat
           href: /javascript/api/@azure/arm-policy
@@ -198,7 +228,7 @@
     - name: GitHub – Közösségi szabályzatok adattára
       href: 'https://github.com/Azure/Community-Policy'
     - name: Microsoft Q&A – Azure Policy
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: A Governance YouTube-csatornája
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Vendégkonfiguráció – videók

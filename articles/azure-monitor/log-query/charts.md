@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670321"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Diagramok és diagramok létrehozása Azure Monitor log-lekérdezésekből
@@ -33,7 +32,7 @@ Heartbeat
 
 Alapértelmezés szerint az eredmények táblázatként jelennek meg:
 
-![Tábla](media/charts/table-display.png)
+![Táblázat](media/charts/table-display.png)
 
 Jobb nézet létrehozásához válassza a **diagram**lehetőséget, majd az eredmények megjelenítéséhez kattintson a **torta** lehetőségre:
 
@@ -77,7 +76,7 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Amikor diagramként jeleníti meg az eredményeket, a `by` záradék első oszlopát fogja használni. Az alábbi példában egy halmozott oszlopdiagram látható a _Napszállta használatával._ A dimenziónak `string` típusúnak kell lennie, ezért ebben a példában a _Napszállta_ karakterláncba kerül. 
+Amikor diagramként jeleníti meg az eredményeket, a záradék első oszlopát fogja használni `by` . Az alábbi példában egy halmozott oszlopdiagram látható a _Napszállta használatával._ A dimenziónak típusúnak kell lennie `string` , ezért ebben a példában a _Napszállta_ karakterláncba kerül. 
 
 ![Oszlopdiagram Napszállta](media/charts/charts-and-diagrams-multiDimension1.png)
 

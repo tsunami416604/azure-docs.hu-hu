@@ -1,26 +1,25 @@
 ---
 title: Memória-optimalizált Dv2-és DSv2-sorozatú virtuális gépek – Azure Virtual Machines
 description: A Dv2 és a DSv2 sorozatú virtuális gépek specifikációi.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694708"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Memória-optimalizált Dv2 és Dsv2 sorozat
 
-A Dv2 és a Dsv2 sorozat, amely az eredeti D sorozatra mutat, hatékonyabb PROCESSZORral rendelkezik. A DSv2 sorozat méretei az Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok esetében futnak. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+A Dv2 és a Dsv2 sorozat, amely az eredeti D sorozatra mutat, hatékonyabb PROCESSZORral rendelkezik. Az DSv2 sorozatú méretek Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorokkal futnak. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
 ## <a name="dv2-series-11-15"></a>Dv2 – 11-15-es sorozat
 
-A Dv2 sorozat méretei az Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok esetében futnak.
+Az Dv2 sorozatú méretek Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorokkal futnak.
 
 ACU: 210–250
 
@@ -41,7 +40,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 ## <a name="dsv2-series-11-15"></a>DSv2 – 11-15-es sorozat
 
-A DSv2 sorozat méretei az Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy az Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok esetében futnak.
+Az DSv2 sorozatú méretek Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) vagy Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorokkal futnak.
 
 ACU: 210 – 250 <sup>1</sup>
 

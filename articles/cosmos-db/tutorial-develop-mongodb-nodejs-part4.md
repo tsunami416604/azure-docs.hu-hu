@@ -10,16 +10,16 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75441167"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114435"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Cosmos-fiók létrehozása
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy olyan új alkalmazást, amelyet expressz és szögletes Node.js írt be, majd a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md)csatlakozik.
 
 Az oktatóanyag 4. része a [3. részre](tutorial-develop-mongodb-nodejs-part3.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -48,7 +48,7 @@ Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) va
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-Hozzon létre egy Azure Cosmos DB fiókot [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) a paranccsal.
+Hozzon létre egy Azure Cosmos DB fiókot a [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) paranccsal.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -64,11 +64,11 @@ Amint az Azure Cosmos DB-fiók létrejött:
 1. Kattintson az Azure Cosmos DB emblémára ![Az Azure Cosmos DB ikonja az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) a bal oldali sávon, és az megjeleníti az összes rendelkezésre álló Azure Cosmos DB-adatbázist.
 1. Kattintson az imént létrehozott Azure Cosmos DB-fiókra, válassza az **Overview** (Áttekintés) lapot, és görgessen le a térképig, amelyen az adatbázis található. 
 
-    ![Új Azure Cosmos DB-fiók az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Új Azure Cosmos DB-fiók az Azure Portalon":::
 
 4. Görgessen le a bal oldali navigációs sávon, majd kattintson az **Replicate data globally** (Adatok globális replikálása) lapra. Ezzel megjelenít egy térképet, amelyen azokat a különböző területeket láthatja, ahová replikálhat. Például Délkelet-Ausztráliára vagy Kelet-Ausztráliára kattintva az adatokat Ausztráliába replikálhatja. A globális replikációval kapcsolatos további információkért lásd: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md). Egyelőre azonban elég lesz egyetlen példány, de majd ha replikálni szeretnénk, már tudjuk, hogyan kell.
 
-    ![Új Azure Cosmos DB-fiók az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Új Azure Cosmos DB-fiók az Azure Portalon":::
 
 ## <a name="next-steps"></a>További lépések
 

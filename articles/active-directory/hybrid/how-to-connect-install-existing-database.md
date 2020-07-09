@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60245174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358973"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával
 A Azure AD Connect SQL Server adatbázis tárolására van szükség az adattároláshoz. Használhatja a Azure AD Connect telepített alapértelmezett SQL Server 2012 Express LocalDB, vagy használhatja a saját teljes SQL-verzióját. Korábban a Azure AD Connect telepítésekor a rendszer a ADSync nevű új adatbázist mindig létrehozta. A Azure AD Connect verzió 1.1.613.0 (vagy azt követően) lehetősége van a Azure AD Connect telepítésére, ha egy meglévő ADSync-adatbázisra mutat.
@@ -56,7 +56,7 @@ Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 - Nem rendelkezhet több Azure AD Connect kiszolgálóval ugyanazzal a ADSync-adatbázissal. A "meglévő adatbázis használata" módszer lehetővé teszi egy meglévő ADSync-adatbázis újrafelhasználását egy új Azure AD Connect-kiszolgálóval. Nem támogatja a megosztást.
 
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>A Azure AD Connect telepítésének lépései a "meglévő adatbázis használata" módban
-1.  Töltse le Azure AD Connect telepítőt (AzureADConnect. MSI) a Windows Serverre. A Azure AD Connect telepítésének megkezdéséhez kattintson duplán a Azure AD Connect Installer elemre.
+1.  Töltse le Azure AD Connect telepítőt (AzureADConnect.MSI) a Windows Serverre. A Azure AD Connect telepítésének megkezdéséhez kattintson duplán a Azure AD Connect Installer elemre.
 2.  Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
 ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db1.png)
 3.  Indítson új parancssort vagy PowerShell-munkamenetet. Navigáljon a "C:\Program Files\Microsoft Azure Active Directory Connect" mappába. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
@@ -76,19 +76,15 @@ Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 1. A **címtárak csatlakozására** szolgáló képernyőn a címtár-szinkronizáláshoz konfigurált meglévő AD-erdő mellett egy piros kereszt ikon látható. Helyszíni AD-erdőből származó módosítások szinkronizálásához AD DS-fiók szükséges. Az Azure AD Connect varázslója nem tudja lekérni az ADSync-adatbázisban tárolt AD DS-fiók hitelesítő adatait, mert azok titkosítva vannak, és a titkosítás kizárólag az előző Azure AD Connect-kiszolgálóval oldható fel. Kattintson a **hitelesítő adatok módosításának** lehetőségére az AD-erdőhöz tartozó AD DS-fiók megadásához.
    ![Címtárak](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. Az előugró párbeszédpanelen a következő lehetőségek közül választhat: (i) megad vállalati rendszergazdai hitelesítő adatokat, és engedi, hogy az Azure AD Connect hozza létre az AD DS-fiókot, vagy (ii) létrehozza az AD DS-fiókot, és megadja annak hitelesítő adatait az Azure AD Connectnek. Miután kiválasztotta az egyik lehetőséget és megadta a szükséges hitelesítő adatokat, kattintson az **OK** gombra az előugró párbeszédpanel bezáráshoz.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db7.png)
  
- 
 1. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **Tovább** gombra.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
 ## <a name="post-installation-tasks"></a>Telepítés utáni feladatok

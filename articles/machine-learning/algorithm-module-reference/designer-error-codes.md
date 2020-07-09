@@ -5,16 +5,15 @@ description: A modul-kivételek hibakeresése Azure Machine Learning Designerben
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: reference
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213754"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>A tervezőhöz tartozó kivételek és hibakódok (előzetes verzió)
 
@@ -22,9 +21,9 @@ Ez a cikk a Azure Machine Learning Designerben (előzetes verzió) lévő hibaü
 
 A hibaüzenetet a tervezőben a következő lépésekkel érheti el:  
 
-- Válassza a hibás modult, lépjen a **kimenetek és naplók** lapra, ahol megtalálhatja a részletes naplót a **azureml-naplók** kategóriában található **70_driver_log. txt** fájlban.
+- Válassza ki a hibás modult, lépjen a **kimenetek és naplók** lapra, ahol megtalálhatja a részletes naplót a **azureml-naplók** kategóriában található **70_driver_log.txt** fájlban.
 
-- A modul részletes hibája a **module_statistics** kategóriában található error_info. JSON fájlban ellenőrizhető.
+- A modul részletes hibája a **module_statistics** kategóriában található error_info.jsban is ellenőrizhető.
 
 Az alábbiakban a Designer moduljainak hibakódja látható.
 
@@ -68,7 +67,7 @@ Az alábbiakban a Designer moduljainak hibakódja látható.
 
  Ez a hibaüzenet akkor jelenik meg Azure Machine Learning, ha a modulhoz tartozó bemenetek vagy paraméterek null értékűek vagy üresek.  Ez a hiba akkor fordulhat elő, ha például nem adott meg értéket a paraméterhez. Akkor is előfordulhat, ha olyan adatkészletet választott, amely hiányzó értékeket tartalmaz, vagy egy üres adatkészlet.  
 
-**Megoldás:**
+**Felbontás**
 
 + Nyissa meg a kivételt okozó modult, és győződjön meg arról, hogy az összes bemenet meg van adva. Győződjön meg arról, hogy az összes szükséges bemenet meg van adva. 
 + Győződjön meg arról, hogy az Azure Storage-ból betöltött adatok elérhetők, és hogy a fiók neve vagy kulcsa nem módosult.  
@@ -131,7 +130,7 @@ Az alábbiakban a Designer moduljainak hibakódja látható.
 
  Ez a hiba akkor is megjelenhet, ha két olyan adathalmazt ad meg, amelyeknek valamilyen módon meg kell egyezniük. Ha például oszlopokat kíván átnevezni, és index alapján adja meg az oszlopokat, a megadott nevek számának meg kell egyeznie az oszlopok oszlopainak számával. Egy másik példa lehet egy olyan matematikai művelet, amely két oszlopot használ, ahol az oszlopoknak azonos számú sort kell tartalmazniuk. 
 
-**Megoldás:**
+**Felbontás**
 
  + Nyissa meg a szóban forgó modult, és tekintse át a numerikus tulajdonságok beállításait.
  + Győződjön meg arról, hogy bármelyik paraméter értéke az adott tulajdonság értékének támogatott tartománya alá esik.
@@ -178,7 +177,7 @@ Ez a hiba akkor fordul elő Azure Machine Learning Designerben, ha megad egy Azu
  + Nem adta meg teljes mértékben a fájl elérési útját (a blob elérési útját).
    
 
-**Megoldás:**
+**Felbontás**
 
 Ilyen problémák gyakran akkor fordulnak elő, amikor megpróbál kézzel megadnia a fiók nevét, jelszavát vagy tárolójának elérési útját. Javasoljuk, hogy az [adatimportálási](import-data.md) modulhoz az új varázslót használja, amely segít megkeresni és megtekinteni a neveket.
 
@@ -245,7 +244,7 @@ Ha meg van adva egy blob teljes elérési útja, ellenőrizze, hogy az elérési
 
  Ez a hiba akkor fordul elő, ha egy betanított modell nem kompatibilis a kapcsolódó pontozási modullal. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
 
-**Megoldás:**
+**Felbontás**
 
 Határozza meg a betanítási modul által létrehozott tanuló típusát, és határozza meg a tanuló számára megfelelő pontozási modult. 
 
@@ -280,7 +279,7 @@ Ha a modellt a speciális képzési modulok bármelyikével betanítják, a beta
 
  Ez a hiba akkor fordul elő, ha egy oszlop túl sok egyedi értéket tartalmaz.  Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha azt adja meg, hogy egy oszlop kategorikus adatként legyen kezelve, de túl sok egyedi érték van az oszlopban a feldolgozás befejezésének engedélyezéséhez. Ez a hiba akkor is megjelenhet, ha a két bemenetben lévő egyedi értékek száma nem egyezik.   
 
-**Megoldás:**
+**Felbontás**
 
 Nyissa meg a hibát generáló modult, és azonosítsa a bemenetként használt oszlopokat. Egyes modulok esetében kattintson a jobb gombbal az adatkészlet bemenetére, és válassza a **Megjelenítés** lehetőséget az egyes oszlopokra vonatkozó statisztikák beszerzéséhez, beleértve az egyedi értékek számát és a terjesztését.
 
@@ -332,7 +331,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 
  Előfordulhat például, hogy ezt a hibaüzenetet Azure Machine Learning, ha az oszlop kijelölése olyan adattípusú oszlopot tartalmaz, amelyet a modul nem tud feldolgozni, például egy matematikai művelet sztring oszlopát, vagy egy olyan pontszám oszlopot, amelyben a kategorikus funkció oszlop szükséges.  
 
-**Megoldás:**
+**Felbontás**
  1. Azonosítsa a problémát okozó oszlopot.
  2. Tekintse át a modul követelményeit.
  3. Módosítsa az oszlopot úgy, hogy az megfeleljen a követelményeknek. Előfordulhat, hogy a következő modulok közül többet kell használnia a módosítások elvégzéséhez az oszloptól és a megkísérelt konverziótól függően:
@@ -418,7 +417,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 
  Ez a hiba akkor látható, ha az adatkészletben nincs elegendő sor a megadott művelet végrehajtásához Azure Machine Learning. Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha a bemeneti adatkészlet üres, vagy ha olyan műveletet próbál végrehajtani, amely a minimálisan szükséges sorok érvényességét igényli. Ezek a műveletek magukban foglalhatják a statisztikai módszerek, bizonyos dobozolási és a számokkal való tanulás alapján történő csoportosítást vagy besorolást.  
 
-**Megoldás:**
+**Felbontás**
 
  + Nyissa meg a hibát visszaadó modult, és keresse meg a bemeneti adatkészletet és a modul tulajdonságait. 
  + Ellenőrizze, hogy a bemeneti adatkészlet nem üres-e, és hogy van-e elegendő sornyi adat a modul súgójában ismertetett követelmények teljesítéséhez.  
@@ -488,7 +487,7 @@ Kivétel történik, ha az adatkészlet nem tartalmaz felirat oszlopot.
 
 Azt is megteheti, hogy egy felirat típusú oszlop szerepel az adatkészletben, de a Azure Machine Learning nem észleli megfelelően.
 
-**Megoldás:**
+**Felbontás**
 
 + Nyissa meg a hibát generáló modult, és állapítsa meg, hogy van-e felirat típusú oszlop. Az oszlop neve vagy adattípusa nem számít, feltéve, hogy az oszlop egyetlen eredményt (vagy függő változót) tartalmaz, amelyet előre meg szeretne jósolni. Ha nem biztos abban, hogy melyik oszlop rendelkezik a címkével, keresse meg az általános nevet, például az *osztályt* vagy a *célt*. 
 +  Ha az adatkészlet nem tartalmaz felirat oszlopot, akkor lehetséges, hogy a Label oszlop explicit módon vagy véletlenül eltávolította a felsőbb rétegbeli adatokat. Az is előfordulhat, hogy az adatkészlet nem egy felsőbb rétegbeli pontozási modul kimenete.
@@ -658,7 +657,7 @@ Azt is megteheti, hogy egy felirat típusú oszlop szerepel az adatkészletben, 
 
  Ez a hiba Azure Machine Learning akkor fordul elő, ha egy ajánlási modellt próbál használni a pontozáshoz, de nem található a szolgáltatás vektora.  
 
-**Megoldás:**
+**Felbontás**
 
 A Matchbox-ajánló rendelkezik bizonyos követelményekkel, amelyeket az elemek vagy a felhasználói szolgáltatások használatakor kell teljesíteni.  Ez a hiba azt jelzi, hogy hiányzik egy szolgáltatás-vektor a bemenetként megadott felhasználó vagy elem számára. Győződjön meg arról, hogy a szolgáltatások egy vektora elérhető az egyes felhasználók vagy elemek esetében.  
 
@@ -730,7 +729,7 @@ Kiválaszthat például egy oszlopot, és megpróbálhatja a numerikus adattípu
 
 Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely lebegőpontos számokat vagy sok egyedi értéket tartalmaz kategorikus oszlopként. 
 
-**Megoldás:**
+**Felbontás**
 
 + Nyissa meg a hibát generáló modul Súgó lapját, és ellenőrizze az adattípus követelményeit.
 + Tekintse át az oszlopok adattípusait a bemeneti adatkészletben.
@@ -891,7 +890,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
 
-**Megoldás:**
+**Felbontás**
 
 1.  Tekintse át a jelenleg kijelölt oszlopok adattípusát. 
 
@@ -912,7 +911,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 
  Ez a kivétel akkor fordul elő, ha az [adatexportálási](export-data.md) modul vagy más modul használatával menti a folyamat eredményeit Azure Machine learning az Azure Blob Storage-ba, de megpróbál létrehozni egy már létező fájlt vagy blobot.   
 
-**Megoldás:**
+**Felbontás**
 
  Ez a hiba csak akkor fog megjelenni **, ha**korábban már beállította a tulajdonságot az **Azure Blob Storage írási módjára** . A tervezés szerint ez a modul hibát jelez, ha olyan blobhoz próbál meg írni egy adatkészletet, amely már létezik.
 
@@ -1070,7 +1069,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 
  Ez a hiba Azure Machine Learning akkor fordul elő, ha szintaktikai hibák vannak a kaptár QL parancsfájljában, vagy ha a kaptár-értelmező hibát észlel a lekérdezés vagy a parancsfájl végrehajtása közben.  
 
-**Megoldás:**
+**Felbontás**
 
 A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, így az adott hiba alapján műveleteket hajthat végre. 
 
@@ -1078,7 +1077,7 @@ A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, 
 + Ellenőrizze, hogy a lekérdezés megfelelően működik-e Azure Machine Learning a Hadoop-fürt kaptár-konzolján való bejelentkezéssel és a lekérdezés futtatásával.  
 + Próbálja meg egy külön sorban elhelyezni a megjegyzéseket a kaptár-parancsfájlban, szemben a végrehajtható utasítások és megjegyzések egyetlen sorba való keverésével.  
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Erőforrások
 
 A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítségért tekintse meg a következő cikkeket:
 
@@ -1159,7 +1158,7 @@ Kivétel történik, ha egy adatkészlet kvantálásakor érvénytelen dobozolá
 
 Ez a hiba Azure Machine Learning akkor következik be, amikor nem támogatott metódussal próbál meg raktárhelyeket használni, vagy ha a paraméterek kombinációi érvénytelenek.  
 
-**Megoldás:**
+**Felbontás**
 
 Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verziójában lett bevezetve, amely a dobozolási metódusok további testreszabását tette lehetővé. Jelenleg az összes dobozolási-módszer egy legördülő lista egy kiválasztásán alapul, így a továbbiakban nem lehet ezt a hibát megszerezni.
 
@@ -1266,7 +1265,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
 
  Ez a hiba Azure Machine Learning fordul elő, ha az egyik modul használatával próbálja kiértékelni a modelleket egy, a pontszámokat tartalmazó R-szkriptből származó kimenettel.  
 
-**Megoldás:**
+**Felbontás**
 
 |Kivételek üzenetei|
 |------------------------|
@@ -1345,7 +1344,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
 ## <a name="error-0125"></a>0125-es hiba  
  Akkor fordul elő, ha több adatkészlet sémája nem egyezik.  
 
-**Megoldás:**
+**Felbontás**
 
 |Kivételek üzenetei|
 |------------------------|
@@ -1373,7 +1372,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
 ## <a name="error-0128"></a>0128-es hiba  
  A kategorikus oszlopok feltételes valószínűségének száma meghaladja a korlátot.  
 
-**Megoldás:**
+**Felbontás**
 
 |Kivételek üzenetei|
 |------------------------|
@@ -1384,7 +1383,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
 ## <a name="error-0129"></a>0129-es hiba  
  Az adatkészlet oszlopainak száma meghaladja az engedélyezett korlátot.  
 
-**Megoldás:**
+**Felbontás**
 
 |Kivételek üzenetei|
 |------------------------|
@@ -1515,7 +1514,7 @@ Belső függvénytár-kivétel.
 
 Ez a hiba a nem kezelt belső motor hibáinak rögzítésére szolgál. Ezért előfordulhat, hogy a hiba oka eltérő lehet a hibát generáló modultól függően.  
 
-Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a Azure Machine Learning fórumnak, a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
+Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a [Azure Machine learning fórumnak](https://docs.microsoft.com/answers/topics/azure-machine-learning.html), a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
 
 |Kivételek üzenetei|
 |------------------------|

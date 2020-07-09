@@ -1,6 +1,6 @@
 ---
-title: Netvsc. sys probléma megoldása, ha távolról csatlakozik egy Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez az Azure-ban | Microsoft Docs
-description: Ismerje meg, hogyan lehet elhárítani a Netsvc. sys-sel kapcsolatos RDP-problémákat, amikor Windows 10-es vagy Windows Server 2016 rendszerű virtuális géphez csatlakozik az Azure-ban.
+title: netvsc.sys probléma hibaelhárítása, amikor távolról csatlakozik egy Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez az Azure-ban | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a netsvc.sys kapcsolatos RDP-problémákat, amikor Windows 10-es vagy Windows Server 2016 rendszerű virtuális géphez csatlakozik az Azure-ban.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057988"
 ---
-# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nem lehet távolról csatlakozni a Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez az Azure-ban a netvsc. sys miatt
+# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nem lehet távolról csatlakozni a Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez az Azure-ban netvsc.sys
 
 Ez a cikk azt ismerteti, hogyan lehet elhárítani egy olyan problémát, amelyben nincs hálózati kapcsolat, ha Windows 10 vagy Windows Server 2016 Datacenter rendszerű virtuális géphez (VM) csatlakozik a Hyper-V Server 2016 gazdagépen.
 
@@ -31,7 +31,7 @@ Ez a probléma általában a Windows [build 14393](https://support.microsoft.com
 
 ## <a name="cause"></a>Ok
 
-Ez a probléma akkor fordulhat elő, ha a telepített netvsc. sys rendszerfájl verziója **10.0.14393.594** vagy **10.0.15063.0**. A netvsc. sys ezen verziói megakadályozhatják, hogy a rendszer kommunikáljon az Azure platformmal.
+Ez a probléma akkor fordulhat elő, ha a telepített netvsc.sys rendszerfájl verziója **10.0.14393.594** vagy **10.0.15063.0**. A netvsc.sys ezen verziói megakadályozhatják, hogy a rendszer interakcióba kerüljön az Azure platformmal.
 
 
 ## <a name="solution"></a>Megoldás
@@ -46,7 +46,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 > [!NOTE]
 > Ha a soros konzol nincs engedélyezve a virtuális gépen, lépjen a [virtuális gép kijavítása offline](#repair-the-vm-offline) szakaszra.
 
-1. Futtassa a következő parancsot egy PowerShell-példányban a fájl verziójának (**c:\windows\system32\drivers\netvsc.sys**) lekéréséhez:
+1. Futtassa a következő parancsot egy PowerShell-példányban a fájl verziójának lekéréséhez (**c:\windows\system32\drivers\netvsc.sys**):
 
    ```
    (get-childitem "$env:systemroot\system32\drivers\netvsc.sys").VersionInfo.FileVersion
@@ -54,7 +54,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 2. Töltse le a megfelelő frissítést egy olyan új vagy meglévő adatlemezre, amely ugyanahhoz a régióhoz tartozó működő virtuális géphez van csatolva:
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) vagy újabb frissítés
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   vagy újabb frissítés
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) vagy újabb frissítés
 
 3. Válassza le a segédprogram lemezét a működő virtuális gépről, majd csatolja a hibás virtuális géphez.
@@ -77,9 +77,9 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 4. Hozzon létre egy másolatot a **\Windows\System32\config** mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 
-5. A mentési virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe).
+5. A mentési virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe).
 
-6. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **Load kaptár** elemet a menüből.
+6. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl**  >  **Load kaptár** elemet a menüből.
 
 7. Keresse meg a rendszerfájlt a **\Windows\System32\config** mappában.
 
@@ -97,7 +97,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 12. Töltse le a megfelelő frissítést:
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) vagy újabb frissítés
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   vagy újabb frissítés
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) vagy újabb frissítés
 
 13. Csatlakoztassa a rendszerlemezt adatlemezként egy olyan mentési virtuális gépen, amelyen le tudja tölteni a frissítést.

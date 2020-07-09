@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
 ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74793028"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az AS2-üzenet beállításainak referenciája Azure Logic Appsban Enterprise Integration Pack
@@ -49,7 +48,7 @@ Ez a hivatkozás azokat a tulajdonságokat ismerteti, amelyekkel megadható, hog
 | **Üzenetek aláírásának engedélyezése** | No | Megadja, hogy az összes kimenő üzenetnek digitálisan aláírtnak kell-e lennie. Ha aláírásra van szüksége, válassza ki a következő értékeket: <p>– Az **aláírási algoritmus** listából válassza ki az üzenetek aláírásához használandó algoritmust. <br>– A **tanúsítvány** listából válasszon ki egy meglévő, a gazdagéphez tartozó privát tanúsítványt az üzenetek aláírásához. Ha nem rendelkezik tanúsítvánnyal, további tudnivalók a [tanúsítványok hozzáadásáról](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
 | **Üzenetek titkosításának engedélyezése** | No | Meghatározza, hogy az összes kimenő üzenetet titkosítani kell-e. Ha titkosításra van szüksége, válassza ki a következő értékeket: <p>– A **titkosítási algoritmus** listából válassza ki az üzenetek titkosításához használandó vendég partner nyilvános tanúsítvány-algoritmust. <br>– A **tanúsítvány** listából válasszon ki egy meglévő vendég partner privát tanúsítványt a kimenő üzenetek titkosításához. Ha nem rendelkezik tanúsítvánnyal, további tudnivalók a [tanúsítványok hozzáadásáról](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
 | **Üzenetek tömörítésének engedélyezése** | No | Meghatározza, hogy az összes kimenő üzenetnek tömörítettnek kell-e lennie. |
-| **HTTP-fejlécek kidobása** | No | A HTTP `content-type` -fejlécet egyetlen sorba helyezi. |
+| **HTTP-fejlécek kidobása** | No | A HTTP- `content-type` fejlécet egyetlen sorba helyezi. |
 | **Fájlnév továbbítása a MIME-fejlécben** | No | Megadja, hogy a fájl neve szerepeljen-e a MIME-fejlécben. |
 | **MDN kérése** | No | Itt adható meg, hogy az összes kimenő üzenet esetében megjelenjen-e az üzenet-törlési értesítések (MDNs). |
 | **Aláírt MDN kérése** | No | Megadja, hogy a rendszer az összes kimenő üzenet esetében fogad-e aláírt MDNs. Ha aláírásra van szüksége, a **MIC algoritmus** listából válassza ki az üzenetek aláírásához használandó algoritmust. |

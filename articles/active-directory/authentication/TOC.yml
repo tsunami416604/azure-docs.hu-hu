@@ -36,6 +36,8 @@
       items:
         - name: Az MFA működése
           href: concept-mfa-howitworks.md
+        - name: Utasítások és munkamenet-élettartam
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: Adattárolási hely
           href: concept-mfa-data-residency.md
         - name: Licencek
@@ -80,6 +82,8 @@
           href: howto-mfa-userstates.md
         - name: Hitelesítésszolgáltatók konfigurálása
           href: concept-mfa-authprovider.md
+        - name: Alkalmazásjelszavak használata
+          href: howto-mfa-app-passwords.md
         - name: Címtárösszevonás
           items:
             - name: Windows Server 2016 AD FS-adapter
@@ -169,6 +173,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Mobile App Web Service
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: Beállítások konfigurálása
+          href: howto-mfa-server-settings.md
         - name: Magas rendelkezésre állás konfigurálása
           href: howto-mfaserver-deploy-ha.md
         - name: MFA-kiszolgáló frissítése
@@ -219,6 +225,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-parancsmagok
       href: /powershell/azure/overview
+    - name: 'Microsoft Graph REST API, bétaverzió'
+      href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Szolgáltatási korlátozások
       href: ../users-groups-roles/directory-service-limits-restrictions.md
 - name: További források

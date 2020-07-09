@@ -13,17 +13,16 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: allensu
 ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74067073"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>A virtuális gépek forgalmának elosztása magas rendelkezésre állás érdekében
 
 Ez a szkript létrehoz mindent, ami szükséges ahhoz, hogy több Windows rendszerű virtuális gépet futtasson, amelyek egy magasan elérhető és elosztott terhelésű konfigurációban vannak konfigurálva. A szkript futtatása után három virtuális géppel rendelkezik majd, amelyek egy Azure-beli rendelkezésre állási csoporthoz vannak csatlakoztatva, és egy Azure Load Balanceren keresztül érhetők el.
 
-Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)található utasítással, majd futtassa a parancsot `Connect-AzAccount` az Azure-hoz való kapcsolódáshoz.
+Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +44,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép, egy rendelkezésre állási csoport, egy terheléselosztó és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt hoz létre. Ez a konfiguráció a virtuális hálózat létrehozására szolgál. |

@@ -5,22 +5,18 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ceab81f4dd9089acc2d902f80e7acc95e9f9cb11
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122748"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676454"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
 
-Azure Functions lehetővé teszi a kód kiszolgáló nélküli környezetben való futtatását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást.
+Ebben a cikkben a Visual Studióval hozzon létre egy C# szintű függvénytár-alapú függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe.  
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Visual Studio 2019-et a "Hello World" HTTP-trigger C#-függvény alkalmazásának helyi létrehozására és tesztelésére, amelyet aztán közzétehet az Azure-ban. 
-
-![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
-
-Ez a rövid útmutató a Visual Studio 2019-hez készült. 
+A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,17 +24,25 @@ Az oktatóanyag elvégzéséhez először telepítse a [Visual Studio 2019](http
 
 ![A Visual Studio telepítése az Azure-fejlesztési számítási feladattal](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-Ha nem rendelkezik [Azure-előfizetéssel](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/dotnet/).
+Ha nem rendelkezik Azure- [előfizetéssel](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/dotnet/) .
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a (z `Function1` ). Az `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
+A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből. Az `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. 
 
-A megfelelő attribútumok a metódushoz való alkalmazásával kiterjesztheti a függvény képességeit a bemeneti és kimeneti kötésekkel. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md)[Eseményindítók és kötések](functions-dotnet-class-library.md#triggers-and-bindings) szakaszát.
+## <a name="rename-the-function"></a>A függvény átnevezése
 
-Most, hogy létrehozta a függvény projektjét és egy HTTP trigger függvényt, tesztelheti a helyi számítógépen.
+A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a következőképpen jön létre: `Function1` . Mivel az eszközök nem teszik lehetővé, hogy a projekt létrehozásakor felülbírálja az alapértelmezett függvény nevét, szánjon egy percet a Function osztály, a fájl és a metaadatok jobb nevének létrehozásához.
+
+1. A **fájlkezelőben**kattintson a jobb gombbal a Function1.cs fájlra, és nevezze át a következőre: `HttpExample.cs` .
+
+1. A kódban nevezze át a Function1 osztályt a következőre: "HttpExample".
+
+1. A `HttpTrigger` nevű metódusban `Run` nevezze át a `FunctionName` Method attribútumot a következőre: `HttpExample` .
+
+Most, hogy átnevezte a függvényt, tesztelheti a helyi számítógépen.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -56,19 +60,41 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
 ## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
-1. Másolja a Function alkalmazás alap URL-címét a profil **közzététele** lapról. Cserélje le a `localhost:port` függvény helyi teszteléséhez használt URL-cím részét az új alap URL-címmel. Fűzze hozzá a lekérdezési karakterláncot `?name=<YOUR_NAME>` Ehhez az URL-címhez, és futtassa a kérést.
+1. A Cloud Explorerben ki kell választania az új Function alkalmazást. Ha nem, bontsa ki az előfizetését > **app Services**, és válassza ki az új Function alkalmazást.
+
+1. Kattintson a jobb gombbal a Function alkalmazásra, és válassza a **Megnyitás böngészőben**lehetőséget. Ekkor megnyílik a Function alkalmazás gyökere az alapértelmezett böngészőben, és megjeleníti azt a lapot, amely azt jelzi, hogy a Function alkalmazás fut. 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="Futó Function alkalmazás":::
+
+1. A böngésző címsorában fűzze hozzá a karakterláncot `/api/HttpExample?name=Functions` az alap URL-címhez, és futtassa a kérelmet.
 
     A HTTP-trigger függvényt meghívó URL-cím formátuma a következő:
 
-    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
+    `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Az alábbi képen látható, hogy milyen választ kap a böngészőben a távoli GET kérelem a függvény által visszaadott válasza:
+2. Nyissa meg ezt az URL-címet, és megjelenik a függvény által visszaadott távoli GET kérelemre adott válasz, amely a következő példához hasonlóan néz ki:
 
-    ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="A függvény által visszaadott válasz a böngészőben":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatók, oktatóanyagok vagy az ebben a rövid útmutatóban létrehozott bármelyik szolgáltatással dolgozik, ne törölje az erőforrásokat.
+
+Az *erőforrások* kifejezés az Azure-ban például függvényalkalmazásokra, függvényekre vagy tárfiókokra utal. *Erőforráscsoportokba*vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét. 
+
+E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának állapotától](https://azure.microsoft.com/account/) és a [szolgáltatási díjszabástól](https://azure.microsoft.com/pricing/) függően lehetséges, hogy az erőforrások használata díjköteles. Ha már nincs szüksége ezekre az erőforrásokra, a következőképpen törölheti őket:
+
+1. A Cloud Explorerben bontsa ki az előfizetését > **app Services**, kattintson a jobb gombbal a Function alkalmazásra, majd válassza a **Megnyitás a portálon**lehetőséget. 
+
+1. A Function alkalmazás lapon válassza az **Áttekintés** lapot, majd válassza ki az **erőforráscsoport**területen található hivatkozást.
+
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Válassza ki a függvény alkalmazás oldaláról törölni kívánt erőforráscsoportot.":::
+
+2. Az **erőforráscsoport** lapon tekintse át a befoglalt erőforrások listáját, és ellenőrizze, hogy a törölni kívántak-e.
+ 
+3. Válassza az **Erőforráscsoport törlése** elemet, majd kövesse az utasításokat.
+
+   A törlés eltarthat néhány percig. Amint a művelet befejeződött, néhány másodpercre egy értesítés jelenik meg. Az értesítést úgy is megtekintheti, ha kiválasztja a harang ikont az oldal tetején.
 
 ## <a name="next-steps"></a>Következő lépések
 

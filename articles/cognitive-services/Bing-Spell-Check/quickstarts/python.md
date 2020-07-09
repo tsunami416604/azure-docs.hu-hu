@@ -10,12 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: ce0e72545c8ecd82b78d437f2c4939aff6930c3d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: tracking-python
+ms.openlocfilehash: 65994313549c1744da58c5d63a70e803777f7f53
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993558"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84611086"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a Pythonban
 
@@ -142,7 +143,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)

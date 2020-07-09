@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449736"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
 
@@ -32,7 +31,7 @@ Ez a cikk az Apache Cassandra és a Azure Cosmos DB Cassandra API közötti funk
 
 ### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Milyen protokoll-verziót támogat a Cassandra API?
 
-A Azure Cosmos DB Cassandra API támogatja a CQL 3. x verzióját. A CQL kompatibilitása a nyilvános [Apache Cassandra GitHub-adattáron](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)alapul. Ha visszajelzést szeretne küldeni más protokollok támogatásáról, tudassa velünk a [felhasználói visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db) segítségével, vagy küldjön e [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)-mailt a címre.
+A Azure Cosmos DB Cassandra API támogatja a CQL 3. x verzióját. A CQL kompatibilitása a nyilvános [Apache Cassandra GitHub-adattáron](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)alapul. Ha visszajelzést szeretne küldeni más protokollok támogatásáról, tudassa velünk a [felhasználói visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db) segítségével, vagy küldjön e-mailt a címre [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Miért van szükség az átviteli sebességre a táblázathoz?
 
@@ -85,7 +84,7 @@ Igen, a partíciós kulcs az entitás megfelelő helyen történő elhelyezésé
 
 Azure Cosmos DB a szolgáltatói szerződésen (SLA) alapuló rendszer. Korlátlan méretű, a késés, az átviteli sebesség, a rendelkezésre állás és a konzisztencia garanciáit biztosítja. Ez a korlátlan tárterület a horizontálisan kibővített adatmennyiségen alapul, és a particionálást a legfontosabb koncepcióként használja. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben.
 
-Az entitások vagy elemek számának 10 GB-os korlátját kell betartania logikai partíciók esetében. Annak érdekében, hogy az alkalmazás jól méretezhető legyen, azt javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt. Ez a hiba csak akkor jön el, ha az adatai elferdítve vannak: ez egy partíciós kulcs (több mint 10&nbsp;GB). Az adateloszlás a Storage Portal használatával található. A hiba kijavításának módja a tábla újbóli létrehozása és a részletes elsődleges (partíciós kulcs) kiválasztása, amely lehetővé teszi az adatelosztást.
+Az entitások vagy elemek számának 10 GB-os korlátját kell betartania logikai partíciók esetében. Annak érdekében, hogy az alkalmazás jól méretezhető legyen, azt javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt. Ez a hiba csak akkor jön el, ha az adatai elferdítve vannak: ez egy partíciós kulcs (több mint 10 &nbsp; GB). Az adateloszlás a Storage Portal használatával található. A hiba kijavításának módja a tábla újbóli létrehozása és a részletes elsődleges (partíciós kulcs) kiválasztása, amely lehetővé teszi az adatelosztást.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Használhatom a Cassandra API a Key Value Store-ban millió vagy több milliárd partíciós kulccsal?
 
@@ -101,11 +100,11 @@ Azure Cosmos DB erőforrás-szabályozású rendszer az adatkezelési és vezér
 
 ### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Legfeljebb hány tábla hozható létre?
 
-A táblák számának nincs fizikai korlátja. Ha nagy számú táblával rendelkezik (ahol a teljes állandó méret több mint 10 TB adat), amelyeket létre kell hoznia, nem a szokásos tíz vagy száz, küldjön e-mailt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)a címre.
+A táblák számának nincs fizikai korlátja. Ha nagy számú táblával rendelkezik (ahol a teljes állandó méret több mint 10 TB adat), amelyeket létre kell hoznia, nem a szokásos tíz vagy száz, küldjön e-mailt a címre [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Legfeljebb mekkora lemezterületet hozhatok létre?
 
-Nincs fizikai korlátja a kulcstárolók számának, mert metaadat-tárolók. Ha nagy számú alapterülettel rendelkezik, küldjön e-mailt a [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)címre.
+Nincs fizikai korlátja a kulcstárolók számának, mert metaadat-tárolók. Ha nagy számú alapterülettel rendelkezik, küldjön e-mailt a címre [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>A normál táblázatból való Kiindulás után nagy mennyiségű adatok is behelyezhetők?
 
@@ -141,7 +140,7 @@ A Azure Cosmos DB egy olyan platform-szolgáltatás, amely segít a hatékonysá
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Mely ügyféloldali SDK-k működhetnek a Cassandra API?
 
-Az Apache Cassandra SDK az CQLv3-t használó ügyféloldali illesztőprogramjait használták az ügyfélalkalmazások számára. Ha más illesztőprogramokat használ, vagy ha problémák merülnek fel, küldjön e-mailt a [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)következőnek:.
+Az Apache Cassandra SDK az CQLv3-t használó ügyféloldali illesztőprogramjait használták az ügyfélalkalmazások számára. Ha más illesztőprogramokat használ, vagy ha problémák merülnek fel, küldjön e-mailt a következőnek: [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="are-composite-partition-keys-supported"></a>Támogatottak-e az összetett partíciós kulcsok?
 
@@ -153,13 +152,13 @@ Nem, a sstableloader nem támogatott.
 
 ### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Egy helyszíni Apache Cassandra-fürtöt is párosítható a Cassandra API?
 
-A Azure Cosmos DB jelenleg a működési terhelés nélküli felhőalapú környezethez optimalizált élményt nyújt. Ha párosításra van szüksége, küldjön e- [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) mailt a forgatókönyv leírásával. Olyan ajánlaton dolgozunk, amely segít a helyszíni vagy a Felhőbeli Cassandra-fürtnek a Azure Cosmos DB Cassandra APIhoz való párosításában.
+A Azure Cosmos DB jelenleg a működési terhelés nélküli felhőalapú környezethez optimalizált élményt nyújt. Ha párosításra van szüksége, küldjön e-mailt a [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) forgatókönyv leírásával. Olyan ajánlaton dolgozunk, amely segít a helyszíni vagy a Felhőbeli Cassandra-fürtnek a Azure Cosmos DB Cassandra APIhoz való párosításában.
 
 ### <a name="does-the-cassandra-api-provide-full-backups"></a>Biztosít a Cassandra API teljes biztonsági mentést?
 
 Azure Cosmos DB két teljes biztonsági mentést biztosít az összes API-ban négy órás időközönként. Így nem kell beállítania a biztonsági mentési ütemtervet. 
 
-Ha módosítani kívánja az adatmegőrzést és a gyakoriságot [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) , küldjön e-mailt egy támogatási esetre, vagy emeljen fel. A biztonsági mentési képességgel kapcsolatos tudnivalókat az [automatikus online biztonsági mentés és visszaállítás Azure Cosmos db](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) cikkben találja.
+Ha módosítani kívánja az adatmegőrzést és a gyakoriságot, küldjön e-mailt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) egy támogatási esetre, vagy emeljen fel. A biztonsági mentési képességgel kapcsolatos tudnivalókat az [automatikus online biztonsági mentés és visszaállítás Azure Cosmos db](online-backup-and-restore.md) cikkben találja.
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hogyan kezeli a Cassandra API fiók a feladatátvételt, ha egy régió leáll?
 

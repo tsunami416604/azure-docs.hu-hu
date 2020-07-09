@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,13 +9,12 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
 ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179644"
 ---
-Name (Név) | Kereskedelmi URL-cím | Kormányzati URL-cím | Leírás
+Name | Kereskedelmi URL-cím | Kormányzati URL-cím | Description
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | A hozzáférés-vezérléshez és az identitáskezeléshoz használatos a Azure Active Directory használatával. 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Replikációs adatátvitelhez és összehangoláshoz.

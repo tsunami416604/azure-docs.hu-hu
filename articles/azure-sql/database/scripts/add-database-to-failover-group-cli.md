@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: adatbázis hozzáadása a feladatátvételi csoporthoz'
-description: Az Azure CLI-szkript egy Azure SQL Database létrehozására, egy automatikus feladatátvételi csoportba való felvételére és a feladatátvételi tesztre.
+title: 'Az Azure CLI: adatbázis hozzáadása egy feladatátvételi csoporthoz'
+description: Az Azure CLI példa parancsfájl használatával hozzon létre egy adatbázist a Azure SQL Databaseban, vegye fel azt egy automatikus feladatátvételi csoportba, és tesztelje a feladatátvételt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,18 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: fcad936c6fe4b50e0e16b6a059e9565418b5bdad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 09c98f626d9f32a2a6f9f3e31e0db0e4751adacb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053950"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196980"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>Azure SQL Database hozzáadása feladatátvételi csoporthoz a CLI használatával
+# <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>Adatbázis hozzáadása feladatátvételi csoporthoz az Azure CLI használatával
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez az Azure CLI-parancsfájl egy Azure SQL Database hoz létre, létrehoz egy feladatátvételi csoportot, hozzáadja az adatbázist, és teszteli a feladatátvételt.
+Ez az Azure CLI-parancsfájl egy adatbázist hoz létre a Azure SQL Databaseban, létrehoz egy feladatátvételi csoportot, hozzáadja az adatbázist, és teszteli a feladatátvételt.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 

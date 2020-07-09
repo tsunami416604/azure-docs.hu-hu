@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77664694"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984624"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Tároló-figyelési megoldás a Azure Monitor
 
@@ -116,7 +116,7 @@ A Windows rendszerű számítógépeken a Docker-motorok telepítésével és ko
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux-tároló gazdagépek telepítése és konfigurálása
 
-A Docker telepítését követően az alábbi beállításokkal konfigurálhatja az ügynököt a Docker használatára. Először a Log Analytics-munkaterület AZONOSÍTÓját és kulcsát kell használnia, amelyet a Azure Portal találhat. A munkaterületen kattintson **gyorskonfigurálás** > **számítógépekre** a **munkaterület-azonosító** és az **elsődleges kulcs**megtekintéséhez.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
+A Docker telepítését követően az alábbi beállításokkal konfigurálhatja az ügynököt a Docker használatára. Először a Log Analytics-munkaterület AZONOSÍTÓját és kulcsát kell használnia, amelyet a Azure Portal találhat. A munkaterületen kattintson **gyorskonfigurálás**  >  **számítógépekre** a **munkaterület-azonosító** és az **elsődleges kulcs**megtekintéséhez.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
 
 **Az összes Linux-tároló gazdagépen, a CoreOS kivételével:**
 
@@ -231,7 +231,7 @@ Ebben a szakaszban azokat a lépéseket ismertetjük, amelyek szükségesek a Lo
 Ha a titkokat a Log Analytics munkaterület AZONOSÍTÓjának és elsődleges kulcsának védelmére szeretné használni a Log Analytics Agent Daemon-set YAML-fájl használatakor, hajtsa végre a következő lépéseket.
 
 1. Jelentkezzen be a OpenShift fő csomópontjára, és másolja a YAML [-fájlt a OCP-DS-omsagent. YAML](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) és a Secret generáló szkript [OCP-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) a githubból.  Ez a szkript létrehozza a Secrets-adatok védelméhez Log Analytics-munkaterület AZONOSÍTÓjának és elsődleges kulcsának titkos YAML-fájlját.  
-2. A következő parancsok futtatásával hozzon létre egy projektet a Azure Monitorhoz, és állítsa be a felhasználói fiókot. A titkos létrehozó parancsfájl kéri a Log Analytics-munkaterület AZONOSÍTÓját `<WSID>` és elsődleges `<KEY>` kulcsát, és a befejezés után létrehozza a OCP. YAML fájlt.  
+2. A következő parancsok futtatásával hozzon létre egy projektet a Azure Monitorhoz, és állítsa be a felhasználói fiókot. A titkos létrehozó parancsfájl kéri a Log Analytics-munkaterület AZONOSÍTÓját `<WSID>` és elsődleges kulcsát `<KEY>` , és a befejezés után létrehozza a OCP. YAML fájlt.  
 
     ```
     oc adm new-project omslogging --node-selector='zone=default'  
@@ -303,7 +303,7 @@ Kiválaszthatja, hogy omsagent-DaemonSets hoz létre a titkokkal vagy anélkül.
 
 **Alapértelmezett OMSagent Daemonset elemet YAML-fájl titkos kódok nélkül**
 
-- Az alapértelmezett Log Analytics Agent Daemonset elemet YAML fájl esetében cserélje le a `<WSID>` és `<KEY>` a WSID és a kulcsot. Másolja a fájlt a fő csomópontba, és futtassa a következőt:
+- Az alapértelmezett Log Analytics Agent Daemonset elemet YAML fájl esetében cserélje le a `<WSID>` és a `<KEY>` WSID és a kulcsot. Másolja a fájlt a fő csomópontba, és futtassa a következőt:
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -466,7 +466,7 @@ A következő lépésekkel végezheti el a Log Analytics ügynök üzembe helyez
     omsagent-msoms  3        3        3      3           3          <none>         3s
     ```
 
-3. A omsagent állapotát a következő parancs futtatásával tekintheti meg ```helm status "omsagent"``` : és a kimenet az alábbihoz hasonlóan fog kinézni:
+3. A omsagent állapotát a következő parancs futtatásával tekintheti ```helm status "omsagent"``` meg: és a kimenet az alábbihoz hasonlóan fog kinézni:
 
     ```
     keiko@k8s-master-3814F33-0:~$ helm status omsagent
@@ -547,7 +547,7 @@ A következő táblázat példákat mutat be a tároló-figyelési megoldás ál
 | Tároló folyamata | `ContainerProcess_CL` | TimeGenerated, számítógép, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
 | Kubernetes események | `KubeEvents_CL` | TimeGenerated, számítógép, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, üzenet |
 
-A *PodLabel* -adattípusokhoz hozzáfűzött címkék saját egyéni címkék. A táblázatban látható hozzáfűzött PodLabel-feliratok példák. Igen, a, `PodLabel_docker_registry_s` a környezet adatkészletében és általánosságban hasonló módon fog megjelenni `PodLabel_yourlabel_s` `PodLabel_deployment_s` `PodLabel_deploymentconfig_s`
+A *PodLabel* -adattípusokhoz hozzáfűzött címkék saját egyéni címkék. A táblázatban látható hozzáfűzött PodLabel-feliratok példák. Igen, a, `PodLabel_deployment_s` `PodLabel_deploymentconfig_s` `PodLabel_docker_registry_s` a környezet adatkészletében és általánosságban hasonló módon fog megjelenni `PodLabel_yourlabel_s` .
 
 ## <a name="monitor-containers"></a>Tárolók figyelése
 Miután engedélyezte a megoldást a Azure Portalban, a containers **(tárolók) csempén** a tároló gazdagépek és a gazdagépeken futó tárolók összegző információi láthatók.
@@ -618,7 +618,6 @@ Ha egy adott hibával kapcsolatos hibaelhárítást végez, a segítségével me
 - **KubeEvents_CL**  Ezzel a típussal megtekintheti a Kubernetes eseményeket.
 - **KubePodInventory_CL**  Akkor használja ezt a típust, ha meg szeretné ismerni a fürt hierarchiájának információit.
 
-
 ### <a name="to-query-logs-for-container-data"></a>A tárolók adatnaplóinak lekérdezése
 
 * Válasszon egy olyan rendszerképet, amelyről tudja, hogy nemrég meghiúsult, és keresse meg a naplófájlokat. Kezdje azzal, hogy megkeresi az adott képet futtató **ContainerInventory** -kereséssel rendelkező tároló nevét. Például keressen rá a következőre:`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
@@ -628,7 +627,7 @@ Ha egy adott hibával kapcsolatos hibaelhárítást végez, a segítségével me
 
 ## <a name="example-log-queries"></a>Példák a naplók lekérdezésére
 
-Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd úgy módosítják őket, hogy illeszkedjenek a környezetéhez. A kiindulási pontként kísérletezheti a **példák lekérdezési** területén, így könnyebben hozhat létre összetettebb lekérdezéseket.
+Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd úgy módosítják őket, hogy illeszkedjenek a környezetéhez. Kiindulási pontként a megoldás oldal jobb szélén található **lekérdezési** területtel kísérletezheti, így könnyebben hozhat létre összetettebb lekérdezéseket.
 
 ![Tárolók lekérdezései](./media/containers/containers-queries.png)
 

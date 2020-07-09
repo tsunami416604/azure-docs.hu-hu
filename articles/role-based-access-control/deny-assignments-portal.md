@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790246"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure-beli megtagadási hozzárendelések listázása a Azure Portal használatával
 
@@ -56,7 +55,7 @@ Kövesse az alábbi lépéseket a megtagadási hozzárendelések listázásához
 
     |  |  |
     | --- | --- |
-    | **Név** | A megtagadási hozzárendelés neve. |
+    | **Name (Név)** | A megtagadási hozzárendelés neve. |
     | **Résztvevő típusa** | Felhasználó, csoport, rendszer által definiált csoport vagy egyszerű szolgáltatásnév. |
     | **Megtagadva**  | A megtagadási hozzárendelésben szereplő rendszerbiztonsági tag neve. |
     | **ID** | A megtagadási hozzárendelés egyedi azonosítója. |
@@ -90,7 +89,7 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
     ![Hozzárendelés-megtagadási engedélyek megtagadása](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Művelettípus | Leírás |
+    | Művelettípus | Description |
     | --- | --- |
     | **Műveletek**  | A rendszer megtagadta a felügyeleti műveleteket. |
     | **NotActions** | A megtagadott felügyeleti műveletből kizárt felügyeleti műveletek. |

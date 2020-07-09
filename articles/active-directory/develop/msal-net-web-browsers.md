@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772046"
 ---
 # <a name="using-web-browsers-msalnet"></a>Böngészők használata (MSAL.NET)
@@ -47,13 +46,13 @@ A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kódda
 
 | Keretrendszer        | Beágyazott | Rendszer | Alapértelmezett |
 | ------------- |-------------| -----| ----- |
-| Klasszikus .NET     | Igen | Igen ^ | Beágyazott |
-| .NET Core     | Nem | Igen ^ | Rendszer |
-| .NET Standard | Nem | Igen ^ | Rendszer |
-| UWP | Igen | Nem | Beágyazott |
+| Klasszikus .NET     | Yes | Igen ^ | Beágyazott |
+| .NET Core     | No | Igen ^ | Rendszer |
+| .NET Standard | No | Igen ^ | Rendszer |
+| UWP | Yes | Nem | Beágyazott |
 | Xamarin.Android | Igen | Igen  | Rendszer |
 | Xamarin.iOS | Igen | Igen  | Rendszer |
-| Xamarin. Mac| Igen | Nem | Beágyazott |
+| Xamarin. Mac| Yes | Nem | Beágyazott |
 
 ^ A következőt igényli: " http://localhost " átirányítási URI
 

@@ -2,16 +2,13 @@
 title: Fogalmak – alkalmazások méretezése az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) méretezését, beleértve a horizontális Pod automatikus méretezést, a fürt automatikus méretezését és a Azure Container Instances összekötőt.
 services: container-service
-author: zr-msft
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: zarhoads
-ms.openlocfilehash: c5c1180acec726d0863e11a3fe0825ffc7c48e3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232530"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465337"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazásskálázási beállítások az Azure Kubernetes Service-ben (AKS)
 

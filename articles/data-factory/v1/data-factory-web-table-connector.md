@@ -13,11 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689758"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése webtábla-forrásokból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -72,9 +71,9 @@ A következő táblázat a webes társított szolgáltatáshoz tartozó JSON-ele
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **web** |Igen |
-| URL-cím |A webes forrás URL-címe |Igen |
-| authenticationType |Névtelen. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **web** |Yes |
+| URL-cím |A webes forrás URL-címe |Yes |
+| authenticationType |Névtelen. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Névtelen hitelesítés használata
 
@@ -100,11 +99,11 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
+| típus |az adatkészlet típusa. a **webtable** értékre kell beállítani |Yes |
 | path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
-| index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Igen |
+| index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -288,7 +287,7 @@ A Webforrások által támogatott tulajdonságok listájáért lásd: Webforrás
 2. Kattintson a **New Query (új lekérdezés** ) elemre az eszköztáron, mutasson a **más forrásokból** lehetőségre, és kattintson **a from web**
 
     ![Power Query menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON- https://en.wikipedia.org/wiki/) ban kíván használni (például: az adatkészlethez megadott elérési úttal együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK**gombra.
+3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON-ban kíván használni (például: az https://en.wikipedia.org/wiki/) adatkészlethez megadott elérési ÚTTAL együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK**gombra.
 
     ![Webes párbeszédpanelen](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 

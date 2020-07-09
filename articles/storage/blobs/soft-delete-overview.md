@@ -10,10 +10,9 @@ ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884630"
 ---
 # <a name="soft-delete-for-blob-storage"></a>A blob Storage-hoz készült Soft delete
@@ -83,7 +82,7 @@ A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlés
 
 A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor elvárt viselkedést:
 
-| REST API művelet | Erőforrás típusa | Leírás | Változás a viselkedésben |
+| REST API művelet | Erőforrás típusa | Description | Változás a viselkedésben |
 |--------------------|---------------|-------------|--------------------|
 | [Szabályzat](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
 | [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve a benne található összes blobot is. | Nincs változás. A törölt tárolóban lévő Blobok nem lesznek helyreállítva. |

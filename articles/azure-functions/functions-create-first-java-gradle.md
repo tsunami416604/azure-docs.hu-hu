@@ -6,10 +6,9 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996643"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvények létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
@@ -175,4 +174,4 @@ Létrehozott egy Java functions-projektet egy HTTP által aktivált függvénnye
 
 
 [Azure CLI]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

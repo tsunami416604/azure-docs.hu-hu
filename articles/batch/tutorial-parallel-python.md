@@ -4,13 +4,13 @@ description: Oktatóanyag – Médiafájlok párhuzamos feldolgozása ffmpeg seg
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.custom: mvc
-ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 63515012d10739bb018de34e040465fbe337aa02
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117114"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561275"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a Python API használatával
 
@@ -102,7 +102,7 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek** > *LinuxFFmpegPool*elemre.
+A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek**  >  *LinuxFFmpegPool*elemre.
 
 A tevékenységek futásakor a hőtérkép az alábbihoz hasonló:
 
@@ -260,13 +260,13 @@ while datetime.datetime.now() < timeout_expiration:
 ...
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A tevékenységek futtatása után az alkalmazás automatikusan törli a létrehozott bemeneti Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A BatchClient [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) és [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) osztálya is rendelkezik törlési metódusokkal, amelyeket a rendszer meghív, ha megerősíti a törlést. Bár magukért a feladatokért és tevékenységekért nem kell fizetnie, a számítási csomópontokért igen. Ezért ajánlott csak szükség szerint lefoglalni a készleteket. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A bemeneti és kimeneti fájlok azonban megmaradnak a Storage-fiókban.
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez az Azure Portalon válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket sajátította el:
 

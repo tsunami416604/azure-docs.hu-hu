@@ -1,17 +1,16 @@
 ---
 title: A Windows rendszer állapotának biztonsági mentése az Azure-ba
 description: Útmutató a Windows Server és/vagy Windows rendszerű számítógépek rendszerállapotának az Azure-ba történő biztonsági mentéséhez.
-ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611441"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows rendszerállapot biztonsági mentése a Resource Manager üzembe helyezése során
+# <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
 
 Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni a Windows Server rendszer állapotáról az Azure-ba. Ennek célja, hogy végigvezeti az alapokon.
 
@@ -19,49 +18,9 @@ Ha többet szeretne megtudni az Azure Backupról, olvassa el ezt az [áttekinté
 
 Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), amellyel bármely Azure-szolgáltatást elérhet.
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-A Windows Server rendszerállapotának biztonsági mentéséhez létre kell hoznia egy Recovery Services-tárolót abban a régióban, ahol az adatait tárolni szeretné. Emellett a tároló replikálásának módját is meg kell határoznia.
-
-### <a name="to-create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
-
-1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetése használatával.
-2. A központi menüben kattintson a **Minden szolgáltatás** elemre, majd az erőforrások listájában írja be a **Recovery Services** szöveget, és kattintson a **Recovery Services-tárolók** elemre.
-
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-system-state/open-rs-vault-list.png)
-
-    Ha az előfizetés Recovery Services-tárolókat tartalmaz, a tárolók fel vannak sorolva.
-3. A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
-
-    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
-
-    Megnyílik a Recovery Services-tároló panelje, a rendszer pedig egy **Név**, **Előfizetés**, **Erőforráscsoport** és **Hely** megadását kéri.
-
-    ![Recovery Services-tároló létrehozása – 3. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
-
-4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetéshez. Írjon be egy 2–50 karakter hosszúságú nevet. Ennek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
-
-5. Az **Előfizetés** szakaszban, az Azure-előfizetés kiválasztásához használja a legördülő menüt. Ha csak egy előfizetést használ, az az előfizetés jelenik meg, és továbbléphet a következő lépésre. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (vagy javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a szervezetéhez tartozó fiók több Azure-előfizetéssel van összekötve.
-
-6. Az **Erőforráscsoport** szakaszban:
-
-    * válassza az **Új létrehozása** lehetőséget, ha erőforráscsoportot szeretne létrehozni.
-    Vagy
-    * válassza a **Meglévő használata** lehetőséget, és kattintson a legördülő menüben az elérhető erőforráscsoportok listájának megtekintéséhez.
-
-   Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md).
-
-7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. Ez a választás határozza meg a földrajzi régiót, ahová az adatok biztonsági másolata el lesz küldve.
-
-8. Kattintson a Recovery Services-tároló panel alján a **Létrehozás** gombra.
-
-    A Recovery Services-tároló létrehozása több percet is igénybe vehet. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában. Ha több perc után sem látja a tárolót, kattintson a **Frissítés** gombra.
-
-    ![Kattintson a Frissítés gombra](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
-
-    Ha látja a tárolót a Recovery Services-tárolók listájában, készen áll tárhely-redundancia beállítására.
-
-### <a name="set-storage-redundancy-for-the-vault"></a>Tárhely-redundancia beállítása a tárolóhoz
+## <a name="set-storage-redundancy-for-the-vault"></a>Tárhely-redundancia beállítása a tárolóhoz
 
 A Recovery Services-tároló létrehozásakor győződjön meg róla, hogy a tárhely-redundancia a saját igényei szerint van beállítva.
 
@@ -222,7 +181,7 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 
   ![IR befejezve](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>Kérdései vannak?
+## <a name="questions"></a>Kérdése van?
 
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://feedback.azure.com/forums/258995-azure-backup).
 

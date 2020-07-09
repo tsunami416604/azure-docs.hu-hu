@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179789"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>A négyszögletű adatkészletek szerkezeti definíciójának megadása
@@ -18,10 +18,10 @@ Minden oszlop a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
-| type |Az oszlop adattípusa. A típussal kapcsolatos információk megadásával kapcsolatos további részletekért tekintse meg az alábbi típusú konverziók szakaszt. |Nem |
-| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, valamint a (m) típusú .net-típus datetime vagy DateTimeOffset. Az alapértelmezett érték az "en-us". |Nem |
-| formátumban |A típus megadásakor használandó formázó karakterlánc, a típusa pedig a következő: dátum/idő vagy DateTimeOffset. |Nem |
+| name |Az oszlop neve. |Yes |
+| típus |Az oszlop adattípusa. A típussal kapcsolatos információk megadásával kapcsolatos további részletekért tekintse meg az alábbi típusú konverziók szakaszt. |No |
+| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, valamint a (m) típusú .net-típus datetime vagy DateTimeOffset. Az alapértelmezett érték az "en-us". |No |
+| formátumban |A típus megadásakor használandó formázó karakterlánc, a típusa pedig a következő: dátum/idő vagy DateTimeOffset. |No |
 
 Az alábbi minta egy olyan tábla JSON-szakaszát mutatja be, amelyben három oszlop felhasználóazonosító, név és lastlogindate található.
 
@@ -49,7 +49,7 @@ A adat-előállító a következő CLS-kompatibilis .NET-alapú típusú érték
 * Int16
 * Int32 
 * Int64
-* Egyirányú
+* Egyszeres
 * Double
 * Decimal
 * Bájt []

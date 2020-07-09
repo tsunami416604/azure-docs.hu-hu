@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416413"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
@@ -94,7 +94,7 @@ Ha a másolási feladatok egyike a hálózat vagy az adattár átmeneti hibája 
 
 ### <a name="delta-data-migration"></a>Különbözeti adatáttelepítés 
 
-Az AWS S3-ból származó új vagy módosított fájlok azonosításának legtöbbje az idő-particionált elnevezési konvenció használatával történik. Ha az AWS S3-ban lévő adatok időszelet-információval vannak particionálva a fájl-vagy mappanév (például/yyyy/MM/DD/file.csv) számára, akkor a folyamat könnyen azonosítható, hogy mely fájlokat és mappákat másolja a növekményes másolásra. 
+Az AWS S3-ból származó új vagy módosított fájlok azonosításának legalkalmasabb módja az időpartíciós elnevezési konvenció használata – ha az AWS S3-ban tárolt adatok időszelet-információkkal vannak particionálva a fájl-vagy mappanév (például/yyyy/MM/DD/file.csv) esetében, akkor a folyamat könnyen azonosítható, hogy mely fájlokat és mappákat másolja a növekményes másolásra. 
 
 Azt is megteheti, hogy ha az AWS S3-ban lévő adatai particionálva vannak, az ADF képes azonosítani az új vagy módosított fájlokat a LastModifiedDate.   Úgy működik, hogy az ADF megvizsgálja az AWS S3 összes fájlját, és csak azt az új és frissített fájlt másolja, amelynek utolsó módosításának időbélyeg-értéke nagyobb, mint egy bizonyos érték.  Vegye figyelembe, hogy ha az S3-ban nagy számú fájl található, akkor a kezdeti fájl vizsgálata hosszú időt is igénybe vehet, függetlenül attól, hogy hány fájl felel meg a szűrési feltételnek.  Ebben az esetben azt javasoljuk, hogy először particionálja az adatokhoz ugyanazt az "előtag" beállítást használja a pillanatkép-áttelepítés kezdeti áttelepítéséhez, hogy a fájl vizsgálata párhuzamosan történjen.  
 

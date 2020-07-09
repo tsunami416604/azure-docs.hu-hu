@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80241061"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin modul és függőségek üzembe helyezése a semmiből
@@ -111,9 +111,9 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse az OPC Twin- [függőségeket](howto-opc-twin-deploy-dependencies.md) , és `.env` szerezte be az eredményül kapott fájlt. Figyelje meg a `hub name` `PCS_IOTHUBREACT_HUB_NAME` változó üzembe helyezését az eredményül `.env` kapott fájlban.
+1. Telepítse az OPC Twin- [függőségeket](howto-opc-twin-deploy-dependencies.md) , és szerezte be az eredményül kapott `.env` fájlt. Figyelje meg a változó üzembe helyezését `hub name` `PCS_IOTHUBREACT_HUB_NAME` az eredményül kapott `.env` fájlban.
 
-2. Regisztráljon és indítson el egy [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -vagy [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge- `device id`átjárót, és jegyezze fel.
+2. Regisztráljon és indítson el egy [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -vagy [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge-átjárót, és jegyezze fel `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Üzembe helyezés peremhálózati eszközön
 
@@ -180,7 +180,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
 1. Telepítse az [Azure Command Line Interface (az)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) legújabb verzióját [innen.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-### <a name="quickstart"></a>Első lépések
+### <a name="quickstart"></a>Gyorsútmutató
 
 1. Mentse a fenti telepítési jegyzéket egy `deployment.json` fájlba.  
 

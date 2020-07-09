@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714474"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559561"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Oktatóanyag: Python-runbook létrehozása
 
@@ -244,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [PowerShell-runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)
-- [Grafikus runbook létrehozása](automation-tutorial-runbook-graphical.md)
-- [PowerShell-alapú munkafolyamati runbook létrehozása](automation-tutorial-runbook-textual.md)
-- [Azure Automation runbook-típusok](../automation-runbook-types.md)
-- [Azure Python-fejlesztőknek](/azure/python/)
-- [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.
+- A grafikus runbookok megkezdéséhez tekintse meg [a grafikus Runbook létrehozását](automation-tutorial-runbook-graphical.md)ismertető témakört.
+- A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [a PowerShell-munkafolyamat Runbook létrehozása](automation-tutorial-runbook-textual.md)című témakört.
+- Ha többet szeretne megtudni a runbook típusairól, azok előnyeiről és korlátairól, tekintse meg [Azure Automation runbook típusait](../automation-runbook-types.md).
+- Az Azure Pythonban való fejlesztéséről az [Azure Python-fejlesztők](/azure/python/)számára című témakörben olvashat bővebben.
+- A Python 2 runbookok megtekintéséhez tekintse meg a [Azure Automation githubat](https://github.com/azureautomation/runbooks/tree/master/Utility/Python).

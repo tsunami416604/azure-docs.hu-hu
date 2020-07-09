@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389190"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>A bejelentkezett (KMSI) Azure Active Directory B2C használatának engedélyezése
 
@@ -34,9 +34,9 @@ A felhasználók nem engedélyezhetik ezt a lehetőséget a nyilvános számít�
 
 ## <a name="configure-the-page-identifier"></a>Az oldal azonosítójának konfigurálása
 
-A `DataUri` KMSI engedélyezéséhez állítsa a Content definition elemet az oldal- [azonosítóra](contentdefinitions.md#datauri) `unifiedssp` és az oldal Version *1.1.0* vagy újabb [verzióra](page-layout.md) .
+A KMSI engedélyezéséhez állítsa a Content definition `DataUri` elemet az [oldal-azonosítóra](contentdefinitions.md#datauri) `unifiedssp` és az [oldal Version](page-layout.md) *1.1.0* vagy újabb verzióra.
 
-1. Nyissa meg a szabályzat fájlkiterjesztés-fájlját. Például <em> `SocialAndLocalAccounts/` </em>:. Ez a kiterjesztési fájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](custom-policy-get-started.md).
+1. Nyissa meg a szabályzat fájlkiterjesztés-fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> . Ez a kiterjesztési fájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](custom-policy-get-started.md).
 1. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a **ContentDefinitions** elemet a szabályzat **BuildingBlocks** eleméhez.
 
@@ -59,7 +59,7 @@ Ha a KMSI jelölőnégyzetet fel szeretné venni a regisztrációs és bejelentk
 1. Keresse meg a ClaimsProviders elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcím-szolgáltatót a ClaimsProviders elemhez:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -78,11 +78,11 @@ Ha a KMSI jelölőnégyzetet fel szeretné venni a regisztrációs és bejelentk
 
 Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott felhasználói utat.
 
-1. Nyissa meg az egyéni házirend-fájlt. Például: *SignUpOrSignin. XML*.
-1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` alárendelt csomópontot a `<RelyingParty>` csomóponthoz. A szolgáltatásnak közvetlenül a következő `<DefaultUserJourney ReferenceId="User journey Id" />`után kell elhelyezkednie, `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`például:.
-1. Adja hozzá a következő csomópontot az `<UserJourneyBehaviors>` elem gyermekének.
+1. Nyissa meg az egyéni házirend-fájlt. Például *SignUpOrSignin.xml*.
+1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` alárendelt csomópontot a `<RelyingParty>` csomóponthoz. `<DefaultUserJourney ReferenceId="User journey Id" />`A szolgáltatásnak közvetlenül a következő után kell elhelyezkednie, például: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .
+1. Adja hozzá a következő csomópontot az elem gyermekének `<UserJourneyBehaviors>` .
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -90,17 +90,17 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** – azt jelzi, hogyan hosszabbítja meg `SessionExpiryInSeconds` a munkamenetet a és `KeepAliveInDays`a által megadott idő szerint. Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a munkamenet minden alkalommal ki van-e bővítve, amikor a felhasználó végrehajtja a hitelesítést. Az `Absolute` érték azt jelzi, hogy a felhasználónak a megadott időszak után újra hitelesítenie kell magát.
+    - **SessionExpiryType** – azt jelzi, hogyan hosszabbítja meg a munkamenetet a és a által megadott idő szerint `SessionExpiryInSeconds` `KeepAliveInDays` . Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a munkamenet minden alkalommal ki van-e bővítve, amikor a felhasználó végrehajtja a hitelesítést. Az `Absolute` érték azt jelzi, hogy a felhasználónak a megadott időszak után újra hitelesítenie kell magát.
 
     - **SessionExpiryInSeconds** – a munkamenet-cookie-k élettartama, ha a *bejelentkezett* üzenet nem engedélyezett, vagy ha a felhasználó nem jelöli be a *Bejelentkezés megtartása*beállítást. A munkamenet lejár `SessionExpiryInSeconds` , vagy a böngésző bezárult.
 
-    - **KeepAliveInDays** – a munkamenet-cookie-k élettartama, ha be van kapcsolva a *bejelentkezett* üzenet, és a felhasználó kiválasztja a *bejelentkezett lépést*.  `KeepAliveInDays` Az érték elsőbbséget élvez az `SessionExpiryInSeconds` érték felett, és a munkamenet lejárati idejét diktálja. Ha a felhasználó bezárja a böngészőt, és később újra megnyitja, akkor továbbra is csendesen jelentkezhet be, amíg a KeepAliveInDays időszakon belül van.
+    - **KeepAliveInDays** – a munkamenet-cookie-k élettartama, ha be van kapcsolva a *bejelentkezett* üzenet, és a felhasználó kiválasztja a *bejelentkezett lépést*.  Az érték `KeepAliveInDays` elsőbbséget élvez az `SessionExpiryInSeconds` érték felett, és a munkamenet lejárati idejét diktálja. Ha a felhasználó bezárja a böngészőt, és később újra megnyitja, akkor továbbra is csendesen jelentkezhet be, amíg a KeepAliveInDays időszakon belül van.
 
     További információ: [felhasználói út viselkedése](relyingparty.md#userjourneybehaviors).
 
 Azt javasoljuk, hogy a SessionExpiryInSeconds értékét rövid időtartamra (1200 másodpercre) állítsa be, míg a KeepAliveInDays értéke viszonylag hosszú (30 nap) lehet, ahogy az alábbi példában látható:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>

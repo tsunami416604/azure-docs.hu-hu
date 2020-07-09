@@ -7,15 +7,14 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727254"
 ---
 # <a name="error-codes"></a>Hibakódok #
 
-Ha a lejátszás nem indítható el vagy leáll, a rendszer elindít egy hibaüzenetet `error()` , és a függvény egy kódot és egy opcionális üzenetet ad vissza, amely segítséget nyújt az alkalmazás fejlesztőnek további részletek megjelenítéséhez. `error().message`az üzenet nem jelenik meg a felhasználó számára.  A felhasználónak megjelenő üzenet a `error().code` BITS 27-20-es verzióján alapul, lásd az alábbi táblázatot.
+Ha a lejátszás nem indítható el vagy leáll, a rendszer elindít egy hibaüzenetet, és a `error()` függvény egy kódot és egy opcionális üzenetet ad vissza, amely segítséget nyújt az alkalmazás fejlesztőnek további részletek megjelenítéséhez. `error().message`az üzenet nem jelenik meg a felhasználó számára.  A felhasználónak megjelenő üzenet a BITS 27-20-es verzióján alapul `error().code` , lásd az alábbi táblázatot.
 
 ```javascript
 
@@ -44,12 +43,12 @@ Ha a lejátszás nem indítható el vagy leáll, a rendszer elindít egy hibaüz
 Írja le a hiba részleteit, a BITS 27-20 magas szintű, a BITS 19-0 további részleteket biztosít, ha elérhető.
 
 
-| amp. errorCode. neve | Kódok, BITS [27-0] (28 bit) | Leírás |
+| amp. errorCode. neve | Kódok, BITS [27-0] (28 bit) | Description |
 |---|---:|---|
 | **MEDIA_ERR_ABORTED hibák tartománya (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Általános megszakítási hiba |
 | abortedErrNotImplemented | 0x0100001 | Megszakítási hiba, nincs implementálva |
-| abortedErrHttpMixedContentBlocked | 0x0100002 | Megszakítási hiba, a kevert tartalom letiltva – általában `http://` akkor fordul elő `https://` , amikor egy adatfolyamot tölt be egy lapról |
+| abortedErrHttpMixedContentBlocked | 0x0100002 | Megszakítási hiba, a kevert tartalom letiltva – általában akkor fordul elő, amikor egy `http://` adatfolyamot tölt be egy `https://` lapról |
 | **MEDIA_ERR_NETWORK hibák indítási értéke (0x0200000-0x02FFFFF)** | | |
 | networkErrUnknown | 0x0200000 | Általános hálózati hiba |
 | networkErrHttpBadUrlFormat | 0x0200190 | Http 400-hiba válasza |

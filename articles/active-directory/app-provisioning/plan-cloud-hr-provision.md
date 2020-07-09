@@ -2,21 +2,20 @@
 title: A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 description: Ez a cikk a Felhőbeli HR-rendszerek (például a munkanapok és a SuccessFactors) integrálásának telepítési folyamatát ismerteti Azure Active Directoryokkal. Az Azure AD és a Felhőbeli HR rendszer integrálásával egy teljes identitás-életciklus-kezelési rendszer is elérhető.
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781599"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -52,7 +51,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - Az Office 365 e-mail-cím használata.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -73,7 +72,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676434"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics bővítmény sémája
@@ -43,7 +42,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**PublicConfig**|Kötelező. Ezen a lapon a Leírás máshol található.|  
 |**PrivateConfig**|Választható. Ezen a lapon a Leírás máshol található.|  
@@ -54,7 +53,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Ismerteti a nyilvános diagnosztika konfigurációját.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**WadCfg**|Kötelező. Ezen a lapon a Leírás máshol található.|  
 |**StorageAccount**|Annak az Azure Storage-fióknak a neve, amelybe az adattárakat tárolni szeretné. A set-AzureServiceDiagnosticsExtension parancsmag végrehajtásakor paraméterként is megadható.|  
@@ -72,7 +71,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Kötelező
 
-|Attribútumok|Leírás|  
+|Attribútumok|Description|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | A Azure Diagnostics által gyűjtött különböző diagnosztikai adatok által felhasználható helyi lemezterület maximális mérete. Az alapértelmezett beállítás 4096 MB.<br />
 |**useProxyServer** | Konfigurálja Azure Diagnostics az IE-beállításokban beállított proxykiszolgáló-beállítások használatára.|
@@ -81,13 +80,13 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
 <br /> <br />
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**CrashDumps**|Ezen a lapon a Leírás máshol található.|  
 |**DiagnosticInfrastructureLogs**|A Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezése. A diagnosztikai infrastruktúra naplói a diagnosztikai rendszer hibaelhárításához hasznosak. A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a begyűjtött naplók minimális súlyossági szintjét konfigurálja.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Könyvtárak**|Ezen a lapon a Leírás máshol található.|  
 |**EtwProviders**|Ezen a lapon a Leírás máshol található.|  
-|**Mérőszámok**|Ezen a lapon a Leírás máshol található.|  
+|**Metrikák**|Ezen a lapon a Leírás máshol található.|  
 |**PerformanceCounters**|Ezen a lapon a Leírás máshol található.|  
 |**WindowsEventLog**|Ezen a lapon a Leírás máshol található.|
 |**DockerSources**|Ezen a lapon a Leírás máshol található. |
@@ -99,13 +98,13 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Az összeomlási memóriaképek gyűjtésének engedélyezése.  
 
-|Attribútumok|Leírás|  
+|Attribútumok|Description|  
 |----------------|-----------------|  
 |**containerName**|Választható. Az összeomlási memóriaképek tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|  
 |**crashDumpType**|Választható.  A Azure Diagnostics konfigurálja a mini-vagy teljes összeomlási memóriaképek gyűjtésére.|  
 |**directoryQuotaPercentage**|Választható.  Az összeomlási memóriaképek számára fenntartott **overallQuotaInMB** százalékos arányát konfigurálja a virtuális gépen.|  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Kötelező. Meghatározza az egyes folyamatok konfigurációs értékeit.<br /><br /> A következő attribútumra is szükség van:<br /><br /> **processName** – annak a folyamatnak a neve, amelyet az összeomlási memóriakép gyűjtéséhez Azure Diagnostics szeretne.|  
 
@@ -116,10 +115,10 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Nem kötelező **scheduledTransferPeriod** attribútum. Lásd a korábbi magyarázatot.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**IISLogs**|A konfigurációban található elemet is beleértve az IIS-naplók gyűjteményének engedélyezése:<br /><br /> **containerName** – az IIS-naplók tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|   
-|**FailedRequestLogs**|A konfigurációban található elem belefoglalása lehetővé teszi, hogy az IIS-helyekre vagy-alkalmazásokra vonatkozó sikertelen kérelmeket tartalmazó naplók gyűjtése megtörténjen. A nyomkövetési beállításokat is engedélyeznie kell a **rendszeren. Webkiszolgáló** a **web. config fájlban**.|  
+|**FailedRequestLogs**|A konfigurációban található elem belefoglalása lehetővé teszi, hogy az IIS-helyekre vagy-alkalmazásokra vonatkozó sikertelen kérelmeket tartalmazó naplók gyűjtése megtörténjen. A nyomkövetési beállításokat is engedélyeznie kell a **rendszeren. Webkiszolgáló** a **Web.configban **.|  
 |**Adatforrások**|A figyelni kívánt címtárak listája.|
 
 
@@ -130,7 +129,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  A figyelni kívánt címtárak listája.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|Kötelező. Kötelező attribútum:<br /><br /> **containerName** – a naplófájlok tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|  
 
@@ -143,7 +142,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Az **abszolút** vagy **LocalResource** elemet is tartalmazhat, de mindkettőt nem.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**Abszolút**|A figyelni kívánt könyvtár abszolút elérési útja. A következő attribútumok szükségesek:<br /><br /> - **Elérési út** – a figyelni kívánt könyvtár abszolút elérési útja.<br /><br /> - **expandEnvironment** – azt határozza meg, hogy az elérési úton lévő környezeti változók kibontása megtörténjen-e.|  
 |**LocalResource**|A figyelni kívánt helyi erőforráshoz viszonyított elérési út. A kötelező attribútumok a következők:<br /><br /> - **Név** – a figyelni kívánt könyvtárat tartalmazó helyi erőforrás<br /><br /> - **relativePath** – a figyelni kívánt könyvtárat tartalmazó névhez viszonyított elérési út|  
@@ -155,7 +154,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  A EventSource és/vagy a ETW manifest-alapú szolgáltatók ETW-eseményeinek gyűjteményét konfigurálja.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|A [EventSource osztályból](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)generált események gyűjteményét konfigurálja. Kötelező attribútum:<br /><br /> **szolgáltató** – a EventSource esemény osztályának neve.<br /><br /> A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a minimális súlyossági szint, amelyet át kell vinni a Storage-fiókjába.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **Provider** – az esemény SZOLGÁLTATÓJÁNAK GUID azonosítója<br /><br /> A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a minimális súlyossági szint, amelyet át kell vinni a Storage-fiókjába.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -167,7 +166,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  A [EventSource osztályból](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)generált események gyűjteményét konfigurálja.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Nem kötelező attribútum:<br/><br/> **eventDestination** – az eseményeket tároló tábla neve|  
 |**Esemény**|Kötelező attribútum:<br /><br /> **azonosító** – az esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** – az eseményeket tároló tábla neve|  
@@ -177,7 +176,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration elem  
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Nem kötelező attribútum:<br /><br /> **eventDestination** – az eseményeket tároló tábla neve|  
 |**Esemény**|Kötelező attribútum:<br /><br /> **azonosító** – az esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** – az eseményeket tároló tábla neve|  
@@ -189,9 +188,9 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Lehetővé teszi a gyors lekérdezésekhez optimalizált teljesítményszámláló-tábla létrehozását. A **PerformanceCounters** elemben definiált minden teljesítményszámláló a teljesítményszámláló táblán kívül a metrikák táblázatban található.  
 
- A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **Tallózás** -> **erőforráscsoportok**  ->  **<a\>név**elemet. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  
+ A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **Tallózás**  ->  **erőforráscsoportok**  ->  **<a \> név**elemet. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**MetricAggregation**|Kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
@@ -206,9 +205,9 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Nem kötelező **scheduledTransferPeriod** attribútum. Lásd a korábbi magyarázatot.
 
-|Gyermek elem|Leírás|  
+|Gyermek elem|Description|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen található teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf`.<br /><br /> - **mintavételi** – milyen gyakran kell mintát venni a számlálóból.<br /><br /> Nem kötelező attribútum:<br /><br /> **Unit (egység** ) – a számláló mértékegysége. Az értékek a [UnitType osztályban](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) érhetők el |
+|**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen található teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf` .<br /><br /> - **mintavételi** – milyen gyakran kell mintát venni a számlálóból.<br /><br /> Nem kötelező attribútum:<br /><br /> **Unit (egység** ) – a számláló mértékegysége. Az értékek a [UnitType osztályban](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) érhetők el |
 |**fogadóként** | 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Azure Monitor vagy Event Hubs.|    
 
 
@@ -221,7 +220,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Nem kötelező **scheduledTransferPeriod** attribútum. Lásd a korábbi magyarázatot.  
 
-|Gyermek elem|Leírás|  
+|Gyermek elem|Description|  
 |-------------------|-----------------|  
 |**DataSource**|A gyűjteni kívánt Windows-eseménynaplók. Kötelező attribútum:<br /><br /> **név** – a gyűjteni kívánt Windows-eseményeket leíró XPath-lekérdezés. Például:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Az összes esemény összegyűjtéséhez válassza a "*" lehetőséget |
 |**fogadóként** | 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, hogy az összes olyan gyermekobjektum számára is küldjön diagnosztikai adatokat, amelyek támogatják a mosogatókat. A fogadó példa Application Insights vagy Event Hubs.|  
@@ -234,7 +233,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Meghatározza az alapszintű Azure-naplók pufferének konfigurációját.  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Típus|Description|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|**sztring**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
@@ -246,7 +245,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  1,9-ben hozzáadva.
 
-|Elem neve|Leírás|  
+|Elem neve|Description|  
 |------------------|-----------------|  
 |**Statisztikák**|Azt jelzi, hogy a rendszer a Docker-tárolók statisztikáit gyűjti|  
 
@@ -255,7 +254,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Azon helyszínek listája, amelyek diagnosztikai adatait küldik, valamint az ezekhez a helyszínekhez társított konfigurációt.  
 
-|Elem neve|Leírás|  
+|Elem neve|Description|  
 |------------------|-----------------|  
 |**Sink (Fogadó)**|Ezen a lapon a Leírás máshol található.|  
 
@@ -266,11 +265,11 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Azokat a helyszíneket határozza meg, amelyekben diagnosztikai adatként küldenek. Például a Application Insights szolgáltatás.  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Típus|Description|  
 |---------------|----------|-----------------|  
 |**név**|sztring|A sinkname azonosító sztring.|  
 
-|Elem|Típus|Leírás|  
+|Elem|Típus|Description|  
 |-------------|----------|-----------------|  
 |**Application Insights**|sztring|Csak akkor használható, ha az adatokat Application Insightsba küldi. Egy aktív Application Insights fiók kialakítási kulcsát tartalmazza, amelyhez hozzáféréssel rendelkezik.|  
 |**Csatornák**|sztring|Egy minden további szűréshez, amelyet a stream|  
@@ -282,7 +281,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Meghatározza a fogadón keresztül áthaladó naplózási adatstreamek szűrőit.  
 
-|Elem|Típus|Leírás|  
+|Elem|Típus|Description|  
 |-------------|----------|-----------------|  
 |**Csatorna**|sztring|Ezen a lapon a Leírás máshol található.|  
 
@@ -293,7 +292,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Azokat a helyszíneket határozza meg, amelyekben diagnosztikai adatként küldenek. Például a Application Insights szolgáltatás.  
 
-|Attribútumok|Típus|Leírás|  
+|Attribútumok|Típus|Description|  
 |----------------|----------|-----------------|  
 |**Naplózási szint**|**sztring**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
 |**név**|**sztring**|A csatorna egyedi neve, amelyre hivatkozni kell|  
@@ -304,11 +303,11 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Az 1,3-es verzióban lett hozzáadva.  
 
- Optional  
+ Választható  
 
  A Storage-fiók személyes adatait (név, kulcs és végpont) tárolja. Ezeket az adatokat a rendszer elküldi a virtuális géphez, de nem kérhető le belőle.  
 
-|Gyermekelemek|Leírás|  
+|Gyermekelemek|Description|  
 |--------------------|-----------------|  
 |**StorageAccount**|A használandó Storage-fiók. A következő attribútumok szükségesek<br /><br /> - **név** – a Storage-fiók neve.<br /><br /> - **kulcs** – a Storage-fiók kulcsa.<br /><br /> - **Endpoint (végpont** ) – a Storage-fiók eléréséhez használt végpont. <br /><br /> -**sasToken** (hozzáadott 1.8.1) – a privát konfigurációban megadhat egy sas-jogkivonatot a Storage-fiók kulcsa helyett. Ha meg van adni, a rendszer figyelmen kívül hagyja a Storage-fiók kulcsát. <br />Az SAS-tokenre vonatkozó követelmények: <br />-Csak a fiók SAS-tokenjét támogatja <br />- *b*, a *t* szolgáltatás típusának megadása kötelező. <br /> - *a*, *c*, *u*, *w* engedélyekre van szükség. <br /> - *c*, *o* típusú erőforrásokra van szükség. <br /> – Csak a HTTPS protokollt támogatja <br /> – A kezdő és a lejárati időre érvényesnek kell lennie.|  
 
@@ -316,7 +315,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 ## <a name="isenabled-element"></a>IsEnabled elem  
  *Tree: root-DiagnosticsConfiguration-IsEnabled*
 
- Logikai. A `true` használatával engedélyezheti a diagnosztikát `false` , vagy letilthatja a diagnosztikát.
+ Logikai. A használatával `true` engedélyezheti a diagnosztikát, vagy `false` letilthatja a diagnosztikát.
 
 ## <a name="example-configuration"></a>Konfigurációs példa
  A következő egy teljes minta konfiguráció a Windows Diagnostics bővítményhez, amely a JSON és az XML fájlban is látható.

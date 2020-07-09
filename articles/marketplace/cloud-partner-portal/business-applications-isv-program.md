@@ -1,20 +1,20 @@
 ---
-title: Microsoft Business Applications Independent szoftvergyártó (ISV) összekapcsolási útmutató a programhoz
+title: A Microsoft Business Applications független szoftverszállítói (ISV) Connect programjának előkészítési útmutatója
 description: A következőkben bemutatjuk a Business Applications ISV kapcsolódási program bevezetését.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 7/12/2019
-ms.author: dsindona
-ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe518cf5b01bbefd5b596b10dff27d0e3ecfcfcc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80288971"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104947"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Independent szoftvergyártó (ISV) összekapcsolási útmutató a programhoz
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>A Microsoft Business Applications független szoftverszállítói (ISV) Connect programjának előkészítési útmutatója
 
 A [Business Applications ISV csatlakozási program](https://partner.microsoft.com/solutions/business-applications/isv-overview) célja, hogy felgyorsítsa a modern, felhőalapú, üzletági (LOB) megoldások fejlesztését és általános sikerességét a *Dynamics 365 Customer engagement és a PowerApps* ("Dynamics CE ajánlatok") vagy *a Dynamics 365 Finance and Operations* ("Dynamics Ops-ajánlatok") segítségével. A következő lépésekkel lehet részt venni.
 
@@ -43,7 +43,7 @@ Ha már közzétette a Dynamics CE-vagy a Dynamics Ops-ajánlatokat, valószín�
 1. Jelentkezzen be [Cloud Partner Portal](https://cloudpartner.azure.com/) **közzétevői profil** lapjára.
 2. Ha megjelenik egy szalagcím, amely azt mutatja, hogy a Fiókbeállítások át lettek telepítve a partner központba, folytassa a következő szakasszal. Ellenkező esetben válassza a megjelenő szalagcímet, hogy aktiválja a partner Center-fiókját.
 
-További információ: [fiók áttelepítése Cloud Partner Portalról a partneri központba](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
+További információ: [fiók áttelepítése Cloud Partner Portalról a partneri központba](../partner-center-portal/account-migration-from-cpp-to-pc.md).
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>A Business Applications ISV program kiegészítésének elfogadása
 
@@ -88,7 +88,7 @@ A fenti lépések elvégzése után a meglévő Dynamics CE és Dynamics Ops-aj�
 A Business Applications ISV-csatlakozási programba való regisztráció utolsó lépése a meglévő alkalmazások újbóli hitelesítése.
 
 1. [Kövesse az alábbi lépéseket](https://partner.microsoft.com/solutions/business-applications/isv-publish) az alkalmazás AppSource való újbóli hitelesítéséhez.
-2. [Hozzon létre és tegyen közzé egy új ajánlatot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Ez az ajánlat egy teljesen új ajánlat lesz, és nem helyettesíti a meglévőket.
+2. [Hozzon létre és tegyen közzé egy új ajánlatot](../partner-center-portal/create-new-customer-engagement-offer.md). Ez az ajánlat egy teljesen új ajánlat lesz, és nem helyettesíti a meglévőket.
 
 ## <a name="further-info"></a>További információ
 

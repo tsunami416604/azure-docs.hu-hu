@@ -16,10 +16,9 @@ ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81603828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Azure Active Directory integráció Amazon Web Services (AWS) (örökölt oktatóanyag)
@@ -126,7 +125,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név)  | Forrás attribútum  | Névtér |
+    | Name  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -148,7 +147,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Save** (Mentés) gombra.
 
 7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-fájljának** letöltéséhez és a számítógépre mentéséhez.
 
@@ -212,7 +211,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     a. A **kulcs** szövegmezőbe írja be a következőt: Azureadtest.
 
-    b. Az **érték (nem kötelező)** szövegmezőbe írja be a kulcs értékét a következő formátum `accountname-aws-admin`használatával. A fiók nevének minden kisbetűsnek kell lennie.
+    b. Az **érték (nem kötelező)** szövegmezőbe írja be a kulcs értékét a következő formátum használatával `accountname-aws-admin` . A fiók nevének minden kisbetűsnek kell lennie.
 
     c. Kattintson a **Tovább gombra: felülvizsgálat**.
 
@@ -220,7 +219,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyszeri bejelentkezés felülvizsgálatának konfigurálása][34]
 
-    a. A **szerepkör neve** szövegmezőbe írja be az értéket a következő mintában `accountname-aws-admin`.
+    a. A **szerepkör neve** szövegmezőbe írja be az értéket a következő mintában `accountname-aws-admin` .
 
     b. A **szerepkör leírása** szövegmezőbe írja be ugyanazt az értéket, amelyet a szerepkör neveként használt.
 
@@ -283,7 +282,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Microsoft Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. Bontsa ki a appRoles tulajdonságot az egyszerű szolgáltatásnév objektumból.
+    : Bontsa ki a appRoles tulajdonságot az egyszerű szolgáltatásnév objektumból.
 
     ![Microsoft Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
@@ -369,7 +368,7 @@ Azt is ellenőrizheti, hogy az SAML-válasz a jogcímek szerint átadott szerepk
 
 További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [A kiépítés konfigurálása az MS Graph API-k használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](tutorial-list.md)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfcba442a0f9e93b5a5f2adbfa4368353b981f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b282f8e592ffa6b5c8cb36b2f3b2276bdeb0f58
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74185407"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a HootSuite
 
@@ -90,10 +90,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **Válasz URL-címe** szövegmezőbe írja be az egyik URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://hootsuite.com/member/sso-complete` |
-    | `https://hootsuite.com/sso/<ORG_ID>` |
+    ```http
+    https://hootsuite.com/member/sso-complete
+    https://hootsuite.com/sso/<ORG_ID>
+    ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -118,9 +118,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -154,7 +154,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a HootSuite csempére kattint, automatikusan be kell jelentkeznie arra a HootSuite, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

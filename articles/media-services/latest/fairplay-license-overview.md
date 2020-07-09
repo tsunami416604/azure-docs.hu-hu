@@ -15,10 +15,9 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995864"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása 
@@ -39,15 +38,15 @@ A következőkre akkor van szükség, amikor a Media Services használatával ti
 
         A következő lépések azt ismertetik, hogyan hozhatók elő a. pfx tanúsítványfájl a FairPlay:
 
-        1. Telepítse az OpenSSL https://slproweb.com/products/Win32OpenSSL.html-t a rendszerből.
+        1. Telepítse az OpenSSL-t a rendszerből https://slproweb.com/products/Win32OpenSSL.html .
 
             Lépjen arra a mappára, ahol a FairPlay-tanúsítvány és az Apple által szállított egyéb fájlok találhatók.
         2. Futtassa az alábbi parancsot a parancssorból. Ezzel átalakítja a. cer fájlt egy. PEM-fájlba.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" x509 – inform der – FairPlay. cer-out FairPlay-out. PEM
+            "C:\OpenSSL-Win32\bin\openssl.exe" x509 – tájékoztassa a der-in FairPlay. cer-out FairPlay-out. PEM
         3. Futtassa az alábbi parancsot a parancssorból. Ez átalakítja a. PEM fájlt egy. pfx fájlba a titkos kulccsal. A. pfx fájlhoz tartozó jelszót az OpenSSL kéri.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12/pfx-profil-export-out FairPlay-out. pfx-Inkey privatekey. PEM-in FairPlay-out. PEM-passin fájl: privatekey-PEM-pass. txt
+            "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12/pfx-profil-export-out FairPlay-out. pfx-Inkey privatekey. PEM-in FairPlay-out. PEM-passin file:privatekey-pem-pass.txt
             
     * **Alkalmazás-tanúsítvány jelszava**: a. pfx fájl létrehozásához használt jelszó.
     * **Megkérdezés**: Ez a kulcs akkor érkezik, amikor a minősítést az Apple Developer Portal használatával állítja elő. Minden fejlesztői csapat egyedi KÉRÉSt kap. Mentse a kérés másolatát, és tárolja biztonságos helyen. Be kell állítania a KÉRDEZZEn FairPlayAsk-val Media Services.

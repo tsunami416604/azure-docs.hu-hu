@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2851968b102bdcbae95a81352439f39f5837020b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119307"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
@@ -32,7 +32,7 @@ A Azure Cosmos DBtól eltérően az Apache Cassandra nem biztosít natív módon
 
 Az alábbi táblázat azt mutatja be, hogy a natív Cassandra konzisztencia-szintjei hogyan vannak leképezve a Azure Cosmos DB konzisztencia-szintjére Cassandra API használatakor:  
 
-[![Cassandra konzisztencia-modell leképezése](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" alt-text="Cassandra konzisztencia-modell leképezése" lightbox="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" :::
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>A MongoDB és a Azure Cosmos DB konzisztencia-szintjei közötti megfeleltetés
 
@@ -50,7 +50,7 @@ A MongoDB Azure Cosmos DB API-ját használja:
 
 Az alábbi táblázat bemutatja, hogyan vannak leképezve a natív MongoDB írási/olvasási problémái az Azure Cosmos konzisztencia-szintjére, ha Azure Cosmos DB API-ját használja a MongoDB számára:
 
-[![MongoDB konzisztencia-modell leképezése](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="MongoDB konzisztencia-modell leképezése" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>További lépések
 

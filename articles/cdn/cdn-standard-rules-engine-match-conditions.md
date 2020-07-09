@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259926"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>A standard szintű szabályok motorjában szereplő feltételek egyeztetése Azure CDN
@@ -36,7 +35,7 @@ A mobileszköz vagy asztali eszköz által küldött kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | Mobil, asztali
 
@@ -46,7 +45,7 @@ A kérések HTTP-verziója alapján azonosítja a kérelmeket.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | 2,0, 1,1, 1,0, 0,9, összes
 
@@ -56,13 +55,13 @@ A kérelmeket a bejövő kérelemben található cookie-információk alapján a
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Cookie neve | Művelet | Cookie értéke | Eset átalakítása
+Cookie neve | Operátor | Cookie értéke | Eset átalakítása
 ------------|----------|--------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
 #### <a name="key-information"></a>Legfontosabb információk
 
-- A cookie-nevek megadásakor nem használhat helyettesítő\*karaktereket (például csillag ()). a cookie-nak pontos nevet kell használnia.
+- A cookie-nevek megadásakor nem használhat helyettesítő karaktereket (beleértve a csillagokat ( \* )). a cookie nevének pontos nevét kell használnia.
 - Ennek a egyeztetési feltételnek a példánya esetében csak egyetlen cookie-nevet adhat meg.
 - A cookie-nevek összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
 - Több cookie-érték megadásához használjon egyetlen helyet az egyes cookie-értékek között. 
@@ -75,7 +74,7 @@ A kérésben használt POST kérelem metódusa által megadott argumentumok alap
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Argumentum neve | Művelet | Argumentum értéke | Eset átalakítása
+Argumentum neve | Operátor | Argumentum értéke | Eset átalakítása
 --------------|----------|----------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -85,7 +84,7 @@ A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azono
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Lekérdezési sztring | Eset átalakítása
+Operátor | Lekérdezési sztring | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -95,12 +94,12 @@ A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|-----------------
-Bármelyik | N/A
+Bármelyik | N.A.
 Földrajzi egyezés | Országhívószám
 IP-egyeztetés | IP-cím (szóközzel tagolt)
-Nem | N/A
+Nem | N.A.
 Nem földrajzi egyezés | Országhívószám
 Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
 
@@ -120,7 +119,7 @@ A kérések törzsében megjelenő megadott szöveg alapján azonosítja a kére
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | A kérés törzse | Eset átalakítása
+Operátor | A kérés törzse | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -130,7 +129,7 @@ A kérelemben megadott fejlécet használó kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Fejléc neve | Művelet | Fejléc értéke | Eset átalakítása
+Fejléc neve | Operátor | Fejléc értéke | Eset átalakítása
 ------------|----------|--------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -140,7 +139,7 @@ A megadott kérési módszert használó kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | LETÖLTÉS, KÖZZÉTÉTEL, PUT, TÖRLÉS, FEJ, BEÁLLÍTÁSOK, NYOMKÖVETÉS
 
@@ -154,23 +153,23 @@ Azokat a kérelmeket azonosítja, amelyek a megadott protokollt használják.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | HTTP, HTTPS
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>URL-cím kérése
 
 A megadott URL-címnek megfelelő kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Kérés URL-címe | Eset átalakítása
+Operátor | URL-cím kérése | Eset átalakítása
 ---------|-------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
 #### <a name="key-information"></a>Legfontosabb információk
 
-- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: *https://www.\<yourdomain\>.com*.
+- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: * https://www . \<yourdomain\> . com*.
 
 ### <a name="url-file-extension"></a>URL-fájlkiterjesztés
 
@@ -178,7 +177,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlkiterjes
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Mellék | Eset átalakítása
+Operátor | Mellék | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -192,7 +191,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlnevet a 
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Fájlnév | Eset átalakítása
+Operátor | Fájlnév | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
@@ -225,7 +224,7 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 - Contains 
 - Kezdete 
 - Végződik 
-- Kisebb mint
+- Kisebb, mint
 - Kisebb vagy egyenlő
 - Nagyobb, mint
 - Nagyobb vagy egyenlő

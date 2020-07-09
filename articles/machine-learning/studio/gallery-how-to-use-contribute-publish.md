@@ -5,17 +5,16 @@ description: Többek között a Azure AI Galleryban megoszthatja és felderíthe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709028"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
 
@@ -151,16 +150,16 @@ Segíthet másoknak egy olyan **oktatóanyag** megírásában, amely ismerteti a
 
 1. Válassza a **New Item** (Új elem) lehetőséget.
 
-1. A **Leírás** lapon az **elem típusa**beállításnál válassza az **oktatóanyag** vagy a **gyűjtemény**lehetőséget. Adjon meg egy nevet, egy rövid összefoglalást, egy részletes leírást, valamint minden olyan címkét, amely segíthet más felhasználóknak a hozzájárulás megkeresésében. Kattintson a **Tovább** gombra.
+1. A **Leírás** lapon az **elem típusa**beállításnál válassza az **oktatóanyag** vagy a **gyűjtemény**lehetőséget. Adjon meg egy nevet, egy rövid összefoglalást, egy részletes leírást, valamint minden olyan címkét, amely segíthet más felhasználóknak a hozzájárulás megkeresésében. Ezután kattintson a **Tovább** gombra.
 
-1. A **rendszerkép kiválasztása** lapon válasszon ki egy, az Ön hozzájárulásával megjelenített képet. Feltöltheti saját képfájlját, vagy kiválaszthat egy Stock-rendszerképet. Olyan képet válasszon, amely segíthet a felhasználóknak azonosítani a hozzájárulás tartalmát és célját. Kattintson a **Tovább** gombra.
+1. A **rendszerkép kiválasztása** lapon válasszon ki egy, az Ön hozzájárulásával megjelenített képet. Feltöltheti saját képfájlját, vagy kiválaszthat egy Stock-rendszerképet. Olyan képet válasszon, amely segíthet a felhasználóknak azonosítani a hozzájárulás tartalmát és célját. Ezután kattintson a **Tovább** gombra.
 
 1. A **Beállítások** lapon a **láthatóság**beállításnál válassza ki, hogy a hozzájárulás **nyilvános** -e (bárki megtekintheti), vagy nem **listázható** (csak a közvetlen hivatkozású személyek tekinthetik meg).
 
    > [!TIP]
    > Ha azt szeretné, hogy a dokumentációja még a nyilvánosan elérhetővé tétel előtt is megfelelő legyen, először közzéteheti a kísérletet a **listán**. Később módosíthatja a láthatósági beállítást **nyilvánosra** a kísérlet részletei oldalon. Vegye figyelembe, hogy miután megtörtént egy kísérlet **nyilvánosra** állítása, később nem módosítható a **listára**.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Az Ön hozzájárulása már Azure AI Galleryban van. Az Ön hozzájárulásai az **elemek** lap fiók lapján jelennek meg.
 

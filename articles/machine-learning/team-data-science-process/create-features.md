@@ -12,10 +12,9 @@ ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
 ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836821"
 ---
 # <a name="feature-engineering-in-data-science"></a>Az adatelemzés funkcióinak mérnöki funkciója
@@ -101,7 +100,7 @@ A funkciók mérnöki és kijelölési funkciói is kombinálhatók, így a tanu
 
 Nem mindig feltétlenül kell végrehajtani a funkciók mérnöki vagy szolgáltatásbeli kijelölését. Ez az adatoktól, a kiválasztott algoritmustól és a kísérlet céljától függ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Bizonyos környezetekben lévő adatszolgáltatások létrehozásához tekintse meg a következő cikkeket:
 

@@ -2,17 +2,19 @@
 title: Feltételes üzembe helyezés sablonokkal
 description: Ismerteti, hogyan lehet erőforrást feltételesen üzembe helyezni egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 001a1a7d6d15fe29b0f3184b75892f4ec75cef27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259320"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Feltételes üzembe helyezés ARM-sablonokban
 
 Előfordulhat, hogy egy Azure Resource Manager (ARM-) sablonban is telepítenie kell egy erőforrást. Az `condition` elem használatával adhatja meg, hogy az erőforrás telepítve van-e. Az elem értéke TRUE (igaz) vagy FALSE (hamis) értékre lesz feloldva. Ha az érték TRUE (igaz), a rendszer létrehozza az erőforrást. Ha az érték false (hamis), az erőforrás nincs létrehozva. Az értéket csak a teljes erőforrásra lehet alkalmazni.
+
+> [!NOTE]
+> A feltételes üzembe helyezés nem a [gyermek erőforrásaira](child-resource-name-type.md)van kaszkád. Ha az erőforrást és annak alárendelt erőforrásait feltételesen szeretné üzembe helyezni, akkor minden egyes erőforrástípus esetében ugyanazt a feltételt kell alkalmaznia.
 
 ## <a name="new-or-existing-resource"></a>Új vagy meglévő erőforrás
 
@@ -81,7 +83,7 @@ Az [IF](template-functions-logical.md#if) függvény használatával győződjö
 
 Egy erőforrást egy feltételes erőforrástól [függőként](define-resource-dependency.md) kell beállítania, pontosan úgy, ahogy bármely más erőforrás. Ha egy feltételes erőforrás nincs telepítve, Azure Resource Manager automatikusan eltávolítja a szükséges függőségekről.
 
-## <a name="condition-with-complete-mode"></a>Feltétel teljes móddal
+## <a name="complete-mode"></a>Teljes mód
 
 Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az erőforrás nincs telepítve, mert a feltétel hamis értéket ad vissza, akkor az eredmény attól függ, hogy REST API milyen verziót használ a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. A Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
 

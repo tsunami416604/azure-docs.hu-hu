@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508826"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Használja az MMC menü műveleteit a StorSimple Snapshot Manager
 

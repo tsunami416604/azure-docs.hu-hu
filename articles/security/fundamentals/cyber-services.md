@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 997bd480fd8b552d7cff61d7a4798e0a3d4db5bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85123983"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-szolgáltatások a kiberbiztonsági-ben
 
@@ -32,12 +32,12 @@ Technikai szakemberekből álló csapatunk olyan magasan képzett szakértőkbő
 
 További információ a Microsoft-szolgáltatások által nyújtott szolgáltatásokról:
 
-* [Biztonsági kockázatfelmérés](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Biztonsági kockázatfelmérés](https://download.microsoft.com/download/5/D/0/5D06F4EA-EAA1-4224-99E2-0C0F45E941D0/Microsoft%20Security%20Risk%20Asessment%20Datasheet.pdf)
 * [Dinamikus identitás-keretrendszer értékelése](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Offline értékelés a Active Directory-szolgáltatásokhoz](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Fokozott biztonsági felügyeleti környezet](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Offline értékelés a Active Directory-szolgáltatásokhoz](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
+* [Fokozott biztonsági felügyeleti környezet](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure AD-implementációs szolgáltatások](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Az oldalirányú fiókok mozgatásának védelme](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Incidensek válasza és helyreállítása](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [Az oldalirányú fiókok mozgatásának védelme](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [Incidensek válasza és helyreállítása](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 [További](https://aka.ms/cyberserv) információ a Microsoft Services biztonsági tanácsadói szolgáltatásairól.

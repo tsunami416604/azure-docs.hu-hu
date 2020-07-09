@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7973ef9c56b70b6b43256db947e7f6f7210c178f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930437"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234966"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek az Azure-ban
 
@@ -45,7 +45,7 @@ Az Azure-ban létrehozott minden erőforrás világszerte több [földrajzi rég
 
 Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olvasható néhány módszer.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) parancsot. |
@@ -71,7 +71,7 @@ Az Azure számos, a [piactéren elérhető rendszerképet](https://azuremarketpl
 
 Az alábbi tábla bemutat néhány módszert, amelyekkel egy rendszerképről több információ is szerezhető.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | Azure Portal |Az értékek a rendszerképek kiválasztásakor automatikusan megjelennek. |
 | Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) – hely *helye*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) – hely *helye* – közzétevő *közzétevő neve*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) – hely *helye* – közzétevő *közzétevő neve* – ajánlat *offerName* |
@@ -95,11 +95,11 @@ Az alábbi táblázat a virtuális gép által használt erőforrásokat tartalm
 | Erőforrás | Kötelező | Leírás |
 | --- | --- | --- |
 | [Erőforráscsoport](../../azure-resource-manager/management/overview.md) |Igen |A virtuális gépnek egy erőforráscsoport tagjának kell lennie. |
-| [Tárfiók](../../storage/common/storage-create-storage-account.md) |Igen |A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához. |
+| [Storage-fiók](../../storage/common/storage-create-storage-account.md) |Igen |A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához. |
 | [Virtuális hálózat](../../virtual-network/virtual-networks-overview.md) |Igen |A virtuális gépnek egy virtuális hálózat tagjának kell lennie. |
-| [Nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |No |A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni. |
+| [Nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) |Nem |A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni. |
 | [Hálózati adapter](../../virtual-network/virtual-network-network-interface.md) |Igen |A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz. |
-| [Adatlemezek](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak. |
+| [Adatlemezek](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nem |A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak. |
 
 ## <a name="next-steps"></a>További lépések
 

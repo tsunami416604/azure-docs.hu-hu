@@ -11,10 +11,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73667654"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
@@ -25,7 +24,7 @@ Ez a cikk a Azure Data Factory által támogatott függvényekről és változó
 
 ## <a name="data-factory-system-variables"></a>Rendszerváltozók Data Factory
 
-| Változó neve | Leírás | Objektum hatóköre | JSON-hatókör és-használati esetek |
+| Változó neve | Description | Objektum hatóköre | JSON-hatókör és-használati esetek |
 | --- | --- | --- | --- |
 | WindowStart |Az aktuális tevékenység futtatási ablakának időintervallumának kezdete |tevékenység |<ol><li>Az adatkijelölési lekérdezések meghatározása. Lásd az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben hivatkozott összekötő cikkeket.</li> |
 | WindowEnd |Az aktuális tevékenység futtatási időszakának vége |tevékenység |ugyanaz, mint a WindowStart. |
@@ -56,12 +55,12 @@ Az adat-előállítóban a függvények a rendszerváltozókkal együtt a követ
 
 1. Az adatkijelölési lekérdezések megadásával (lásd az [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md) által hivatkozott összekötő-cikkeket).
    
-   A adat-előállító függvény meghívására szolgáló szintaxis a következő: ** $$ \<Function>** az adatkijelölési lekérdezésekhez és a tevékenységek és adatkészletek egyéb tulajdonságaihoz.  
+   A adat-előállító függvény meghívására szolgáló szintaxis a **$$\<function>** következő: adatkijelölési lekérdezések és a tevékenység és az adatkészletek egyéb tulajdonságai.  
 2. A bemeneti függőségek megadása a adat-előállító függvényeknél a tevékenység bemenetei gyűjteményben.
    
     a $ $ nem szükséges a bemeneti függőségi kifejezések megadásához.     
 
-A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a `Text.Format` függvény által visszaadott értékhez van rendelve. Ez a minta egy **WindowStart**nevű rendszerváltozót is használ, amely a tevékenység futtatási ablakának kezdési időpontját jelöli.
+A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a függvény által visszaadott értékhez van rendelve `Text.Format` . Ez a minta egy **WindowStart**nevű rendszerváltozót is használ, amely a tevékenység futtatási ablakának kezdési időpontját jelöli.
 
 ```json
 {
@@ -75,11 +74,11 @@ Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](https://msdn.
 ### <a name="functions"></a>Functions
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
 
-| Kategória | Függvény | Paraméterek | Leírás |
+| Kategória | Függvény | Paraméterek | Description |
 | --- | --- | --- | --- |
-| Time |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |Óra kezdete (X) |X: dátum és idő |Az X óra összetevője által képviselt óra kezdő időpontjának beolvasása. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Idő |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Idő |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Idő |Óra kezdete (X) |X: dátum és idő |Az X óra összetevője által képviselt óra kezdő időpontjának beolvasása. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Dátum |AddDays (X, Y) |X: dátum és idő<br/><br/>Y: int |Y nappal adja hozzá az X-et. <br/><br/>Például: 9/15/2013 12:00:00 PM + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Napokat is ki lehet vonni az Y negatív szám megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Dátum |AddMonths (X, Y) |X: dátum és idő<br/><br/>Y: int |Y hónapot hoz létre az X értékhez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónapok is kivonhatók, ha az Y értéket negatív számként határozza meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Dátum |AddQuarters (X, Y) |X: dátum és idő <br/><br/>Y: int |Y * 3 hónapot adja hozzá X értékhez.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -97,10 +96,10 @@ A következő táblázatok a Azure Data Factory összes funkcióját felsoroljá
 | Szöveg |Formátum (X) |X: string változó |A szöveg formázása (a `\\'` kombináció használata Escape `'` -karakterrel).|
 
 > [!IMPORTANT]
-> Ha egy függvényt egy másik függvényen belül használ, nincs szükség a **$$** belső függvény előtagjának használatára. Például: \\$ $Text. Format (' PartitionKey eq ' my_pkey_filter_value\\' és RowKey GE \\' {0: éééé-hh-nn óó: PP: SS}\\' ', Time. AddHours (SliceStart,-6)). Ebben a példában azt láthatja **$$** , hogy a **Time. AddHours** függvény nem használja az előtagot. 
+> Ha egy függvényt egy másik függvényen belül használ, nincs szükség **$$** a belső függvény előtagjának használatára. Például: $ $Text. Format (' PartitionKey EQ \\ ' my_pkey_filter_value \\ ' és RowKey GE \\ ' {0: ÉÉÉÉ-HH-NN óó: PP: SS} \\ ' ', Time. AddHours (SliceStart,-6)). Ebben a példában azt láthatja, hogy **$$** a **Time. AddHours** függvény nem használja az előtagot. 
 
 #### <a name="example"></a>Példa
-A következő példában a kaptár tevékenységhez tartozó bemeneti és kimeneti paramétereket a Function és a `Text.Format` SliceStart rendszerváltozó használatával határozzuk meg. 
+A következő példában a kaptár tevékenységhez tartozó bemeneti és kimeneti paramétereket a `Text.Format` Function és a SliceStart rendszerváltozó használatával határozzuk meg. 
 
 ```json  
 {
@@ -139,7 +138,7 @@ A következő példában a kaptár tevékenységhez tartozó bemeneti és kimene
 }
 ```
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 A következő példában a tárolt eljárási tevékenység DateTime paraméterét a szöveg használatával határozzuk meg. A Format függvény és a SliceStart változó. 
 
@@ -175,7 +174,7 @@ A következő példában a tárolt eljárási tevékenység DateTime paraméter�
 }
 ```
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 A SliceStart által jelölt nap helyett az előző naptól származó adatok beolvasásához használja a AddDays függvényt az alábbi példában látható módon: 
 
 ```json

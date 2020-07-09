@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557261"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-gazdagított mezők leképezése kereshető indexre
 
@@ -25,10 +25,10 @@ A bővített dokumentumokból származó tartalomnak az indexbe való áthelyez�
 > Nemrég engedélyezte a leképezési függvények funkcióit a kimeneti mezők hozzárendelésein. További részletek a leképezési függvényekről: [mező-hozzárendelési függvények](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata
-A mezők leképezéséhez adja `outputFieldMappings` hozzá az indexelő definícióját az alábbi ábrán látható módon:
+A mezők leképezéséhez adja hozzá `outputFieldMappings` az indexelő definícióját az alábbi ábrán látható módon:
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -74,7 +74,7 @@ Minden egyes kimeneti mező leképezéséhez állítsa be a dúsított dokumentu
 
 ## <a name="flattening-information-from-complex-types"></a>Információk összeolvasztása összetett típusokból 
 
-Egy sourceFieldName elérési útja egy vagy több elemet is jelenthet. A fenti ```/document/content/sentiment``` példában egyetlen numerikus érték szerepel, míg ```/document/content/organizations/*/description``` a több szervezet leírását jelöli. 
+Egy sourceFieldName elérési útja egy vagy több elemet is jelenthet. A fenti példában ```/document/content/sentiment``` egyetlen numerikus érték szerepel, míg a ```/document/content/organizations/*/description``` több szervezet leírását jelöli. 
 
 Azokban az esetekben, ahol több elem is van, azok egy tömbbe kerülnek, amely tartalmazza az egyes elemeket. 
 
@@ -117,7 +117,7 @@ Ez fontos elv, ezért egy másik példát is biztosítunk. Képzelje el, hogy az
 
 Tegyük fel, hogy az indexnek van egy "diseases" nevű mezője (EDM. String), ahol az entitások nevét tárolni szeretné. 
 
-Ezt egyszerűen megteheti a "\*" szimbólum használatával, a következőképpen:
+Ezt egyszerűen megteheti a " \* " szimbólum használatával, a következőképpen:
 
 ```json
     "outputFieldMappings": [

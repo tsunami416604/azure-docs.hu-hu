@@ -4,14 +4,14 @@ description: Azure Database for MariaDB tűzfalszabályok létrehozása és keze
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 8be8e948595cfb93049c0d6c93f421e4902e771d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464b13fe4aa727a4d3ca3ff074b8bb94544576a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530665"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101222"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-címről vagy IP-címről érkező Azure Database for MariaDB-kiszolgálóhoz való hozzáférés.
@@ -54,6 +54,6 @@ Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
 * Meglévő szabály módosításához kattintson a szabály bármelyik mezőjére, majd módosítsa a következőt:. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pontra [...], majd a **Törlés**gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  - Ehhez hasonlóan parancsfájlokat is [létrehozhat Azure Database for MariaDB tűzfalszabályok létrehozásához és kezeléséhez az Azure CLI használatával](howto-manage-firewall-cli.md).
  - További biztonságos hozzáférés a kiszolgálóhoz [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével a Azure Portal használatával](howto-manage-vnet-portal.md).

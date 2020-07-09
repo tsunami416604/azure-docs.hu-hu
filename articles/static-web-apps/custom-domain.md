@@ -7,14 +7,13 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142061"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960299"
 ---
-# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure statikus Web Apps előzetes verziójában
+# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure Static Web Apps előzetes verziójában
 
 Alapértelmezés szerint az Azure statikus Web Apps egy automatikusan generált tartománynevet biztosít. Ez a cikk bemutatja, hogyan képezhető le egyéni tartománynevet egy Azure statikus Web Apps alkalmazáshoz.
 
@@ -29,11 +28,11 @@ Tartománynevek konfigurálásakor A "A" rekordok használatával képezhetők l
 
 Az alkalmazásokhoz számos különböző típusú DNS-konfiguráció érhető el.
 
-| Ha szeretné                            | Majd                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| Támogatja`www.example.com`                 | [CNAME rekord hozzárendelése](#map-a-cname-record)           |
-| Támogatja`example.com`                     | [Legfelső szintű tartomány konfigurálása](#configure-a-root-domain) |
-| Az összes altartományra mutat`www.example.com` | [Helyettesítő karakter hozzárendelése](#map-a-wildcard-domain)                   |
+| Ha szeretné                                 | Majd                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| Támogatás `www.example.com` vagy`blog.example.net`| [CNAME rekord hozzárendelése](#map-a-cname-record)           |
+| Támogatja`example.com`                          | [Legfelső szintű tartomány konfigurálása](#configure-a-root-domain) |
+| Az összes altartományra mutat`www.example.com`      | [Helyettesítő karakter hozzárendelése](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>CNAME rekord hozzárendelése
 
@@ -121,7 +120,7 @@ Most, hogy a helyettesítő karakteres tartomány konfigurálva van, több órá
 
 Ha a DNS-módosítások feltöltése megtörtént, a webhely visszaadja a statikus webalkalmazáshoz konfigurált egyéni tartományt (például: `www.example.com` ).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásbeállítások konfigurálása](application-settings.md)

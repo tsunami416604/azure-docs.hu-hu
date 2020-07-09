@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73847526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562377"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
 
-Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)9,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás a 10-es verzió használatára való frissítéséhez.
+Ha a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)9,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás a 10-es verzió használatára való frissítéséhez.
 
 Azure Search a 10-es verzióban az Azure Cognitive Search lett átnevezve, de a névterek és a csomagok nevei változatlanok. Az SDK korábbi verziói (9,0-es és korábbi verziók) továbbra is a korábbi nevet használják. További információ az SDK használatáról, beleértve a példákat: az [Azure Cognitive Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
-A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API verziójának `2019-05-06`legújabb kiadásával azonos működési szintre helyezheti. Olyan esetekben, amikor a változás megszakítja a meglévő kódot, végigvezeti a [probléma megoldásához szükséges lépéseken](#UpgradeSteps).
+A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API verziószámával megegyező működési szintre helyezheti `2019-05-06` . Olyan esetekben, amikor a változás megszakítja a meglévő kódot, végigvezeti a [probléma megoldásához szükséges lépéseken](#UpgradeSteps).
 
 > [!NOTE]
 > Ha a 8,0-es vagy régebbi verziót használja, először frissítsen a 9-es verzióra, majd frissítsen a 10-es verzióra. Útmutatásért lásd: [a Azure Search .net SDK 9-es verziójára való frissítés](search-dotnet-sdk-migration-version-9.md) .
@@ -32,7 +32,7 @@ A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>A 10-es verzió újdonságai
-Az Azure Cognitive Search .NET SDK 10-es verziója a REST API (`2019-05-06`) legújabb általánosan elérhető verzióját célozza meg a következő frissítésekkel:
+Az Azure Cognitive Search .NET SDK-célok 10-ös verziója REST API a `2019-05-06` következő frissítésekkel:
 
 * Két új szaktudás bevezetése – a [feltételes szaktudás](cognitive-search-skill-conditional.md) és a [szöveg fordítási](cognitive-search-skill-text-translation.md)képességei.
 * A rendszer átalakította a [formálói képességek](cognitive-search-skill-shaper.md) bemeneteit, hogy az összevont környezetek összevonását is elférjen. További információt ebben a példában a [JSON-definícióban](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)talál.
@@ -40,14 +40,14 @@ Az Azure Cognitive Search .NET SDK 10-es verziója a REST API (`2019-05-06`) leg
     - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
     - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
 * Az [Indexelő végrehajtási állapotában](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) megjelenő hibák és figyelmeztetések bizonyos esetekben további részleteket is tartalmazhatnak, amelyek segítenek a hibakeresésben. `IndexerExecutionResult`frissítve lett, hogy tükrözze ezt a viselkedést.
-* A [készségkészlet](cognitive-search-defining-skillset.md) belül meghatározott egyéni készségeket egy `name` tulajdonság megadásával lehet azonosítani.
-* `ServiceLimits`az [összetett típusok](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) korlátait jeleníti meg, és `IndexerExecutionInfo` megjeleníti a kapcsolódó indexelő korlátokat/kvótákat.
+* A [készségkészlet](cognitive-search-defining-skillset.md) belül meghatározott egyéni készségeket egy tulajdonság megadásával lehet azonosítani `name` .
+* `ServiceLimits`az [összetett típusok](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) korlátait jeleníti meg, és megjeleníti a kapcsolódó `IndexerExecutionInfo` Indexelő korlátokat/kvótákat.
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>A frissítés lépései
 
-1. Frissítse a NuGet-referenciát a NuGet Package Manager konzoljának `Microsoft.Azure.Search` használatával, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
+1. Frissítse a NuGet-referenciát `Microsoft.Azure.Search` a NuGet Package Manager konzoljának használatával, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
 2. Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. 
 
@@ -68,7 +68,7 @@ Több, a 10-es verzióban felmerülő változás miatt a kód módosítására i
 
 Az [egyéni webes API-képesség](cognitive-search-custom-skill-web-api.md) definíciója helytelenül lett megadva a 9. és a régebbi verzióban. 
 
-Egy szótárt `WebApiSkill` tartalmazó `HttpHeaders` Object tulajdonságként megadott modell _contains_ . Ha olyan készségkészlet `WebApiSkill` hoz létre, amely ilyen módon lett létrehozva, kivételt eredményezne, mert a REST API a kérést helytelenül alakította ki. Ezt a problémát kijavítottuk a `HttpHeaders` `WebApiSkill` modell **legfelső szintű szótári tulajdonságának** használatával, amely a REST API érvényes kérelmének minősül.
+`WebApiSkill` `HttpHeaders` Egy szótárt _tartalmazó_ Object tulajdonságként megadott modell. Ha olyan készségkészlet hoz létre, amely `WebApiSkill` ilyen módon lett létrehozva, kivételt eredményezne, mert a REST API a kérést helytelenül alakította ki. Ezt a problémát kijavítottuk a modell `HttpHeaders` **legfelső szintű szótári tulajdonságának** használatával, `WebApiSkill` amely a REST API érvényes kérelmének minősül.
 
 Ha például korábban a `WebApiSkill` következőt próbálta létrehozni:
 
@@ -109,22 +109,22 @@ var webApiSkill = new WebApiSkill(
 
 ## <a name="shaper-skill-allows-nested-context-consolidation"></a>A formáló képesség lehetővé teszi a beágyazott környezetek összevonását
 
-A formáló képesség mostantól lehetővé teszi a bemeneti konszolidációt a beágyazott környezetekben. Ennek a módosításnak az engedélyezéséhez `InputFieldMappingEntry` módosítva lett, hogy csak egy `Source` tulajdonság vagy a és `SourceContext` `Inputs` a tulajdonságok megadásával legyen létrehozva.
+A formáló képesség mostantól lehetővé teszi a bemeneti konszolidációt a beágyazott környezetekben. Ennek a módosításnak az engedélyezéséhez módosítva lett, `InputFieldMappingEntry` hogy csak egy `Source` tulajdonság vagy a és a tulajdonságok megadásával legyen létrehozva `SourceContext` `Inputs` .
 
-Valószínűleg nem lesz szükség a kód módosítására; vegye figyelembe azonban, hogy a két kombinációnak csak egy része engedélyezett. Ez a következőket jelenti:
+Valószínűleg nem lesz szükség a kód módosítására; vegye figyelembe azonban, hogy a két kombinációnak csak egy része engedélyezett. Ez a következőkkel jár:
 
-- `InputFieldMappingEntry` A csak `Source` az inicializálási lehetőség létrehozása érvényes.
-- `InputFieldMappingEntry` Csak `SourceContext` a és `Inputs` a inicializálása érvényes.
+- A `InputFieldMappingEntry` csak `Source` az inicializálási lehetőség létrehozása érvényes.
+- Csak a `InputFieldMappingEntry` `SourceContext` és `Inputs` a inicializálása érvényes.
 - A három tulajdonságot tartalmazó összes többi kombináció érvénytelen.
 
 Ha úgy dönt, hogy elkezdi használni ezt az új képességet, győződjön meg arról, hogy az összes ügyfelet először a 10-es verzióra frissíti, mielőtt a módosítást elvégzi. Ellenkező esetben előfordulhat, hogy az ügyfél (az SDK egy régebbi verziójával) általi frissítése érvényesítési hibát eredményezhet.
 
 > [!NOTE]
-> Annak ellenére, hogy `InputFieldMappingEntry` az alapul szolgáló modell úgy lett módosítva, hogy lehetővé tegye az összevonás beágyazott környezetekben való konszolidálását, a használata csak az alakzatra vonatkozó szaktudás definíciójában érvényes. Ha ezt a képességet más szakismeretekben használja, míg a fordítási időpontban érvényes, az érvényesítési hibát eredményez futásidőben.
+> Annak ellenére, hogy az alapul szolgáló `InputFieldMappingEntry` modell úgy lett módosítva, hogy lehetővé tegye az összevonás beágyazott környezetekben való konszolidálását, a használata csak az alakzatra vonatkozó szaktudás definíciójában érvényes. Ha ezt a képességet más szakismeretekben használja, míg a fordítási időpontban érvényes, az érvényesítési hibát eredményez futásidőben.
 
 ## <a name="skills-can-be-identified-by-a-name"></a>A készségek azonosíthatók névvel
 
-A készségkészlet belüli minden egyes képesség mostantól egy új `Name`tulajdonsággal rendelkezik, amely a kódban is inicializálható, így könnyebben azonosítható a szaktudás. Ez nem kötelező – ha meg van adva (ez az alapértelmezett beállítás, ha nem történt meg kifejezett kód módosítása), a rendszer az alapértelmezett nevet rendeli hozzá a készségkészlet, a "#" karakterrel ellátott 1-alapú index használatával. Például a következő készségkészlet-definícióban (a legtöbb inicializálás a rövidség kedvéért kimarad):
+A készségkészlet belüli minden egyes képesség mostantól egy új tulajdonsággal rendelkezik `Name` , amely a kódban is inicializálható, így könnyebben azonosítható a szaktudás. Ez nem kötelező – ha meg van adva (ez az alapértelmezett beállítás, ha nem történt meg kifejezett kód módosítása), a rendszer az alapértelmezett nevet rendeli hozzá a készségkészlet, a "#" karakterrel ellátott 1-alapú index használatával. Például a következő készségkészlet-definícióban (a legtöbb inicializálás a rövidség kedvéért kimarad):
 
 ```csharp
 var skillset = new Skillset()
@@ -139,13 +139,13 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`hozzá van rendelve egy `#1`név `WebApiSkill` , hozzá `#2`van `ShaperSkill` rendelve, `#3` és így tovább.
+`SentimentSkill`hozzá van rendelve egy név `#1` , hozzá `WebApiSkill` van rendelve `#2` , `ShaperSkill` `#3` és így tovább.
 
-Ha úgy dönt, hogy egyéni névvel azonosítja a szaktudást, akkor először frissítse az ügyfelek összes példányát az SDK 10-es verziójára. Ellenkező esetben előfordulhat, hogy az SDK régebbi verzióját használó ügyfelek kihasználhatják `null` a képességek `Name` tulajdonságát, így az ügyfél visszatérhet az alapértelmezett elnevezési sémához.
+Ha úgy dönt, hogy egyéni névvel azonosítja a szaktudást, akkor először frissítse az ügyfelek összes példányát az SDK 10-es verziójára. Ellenkező esetben előfordulhat, hogy az SDK régebbi verzióját használó ügyfelek kihasználhatják a `null` `Name` képességek tulajdonságát, így az ügyfél visszatérhet az alapértelmezett elnevezési sémához.
 
 ## <a name="details-about-errors-and-warnings"></a>Hibákkal és figyelmeztetésekkel kapcsolatos részletek
 
-`ItemError`az `ItemWarning` indexelő végrehajtása során felmerülő hibák és figyelmeztetések (vagy) részletes adatait tartalmazó modellek módosítva lettek, hogy három új tulajdonságot tartalmazzanak, amelyek célja az indexelő hibakeresése. Ezek a tulajdonságok a következők:
+`ItemError`az `ItemWarning` Indexelő végrehajtása során felmerülő hibák és figyelmeztetések (vagy) részletes adatait tartalmazó modellek módosítva lettek, hogy három új tulajdonságot tartalmazzanak, amelyek célja az indexelő hibakeresése. Ezek a tulajdonságok a következők:
 
 - `Name`: Annak a forrásnak a neve, amelyen a hiba származik. Előfordulhat például, hogy egy adott képességre hivatkozik a csatolt készségkészlet.
 - `Details`: További részletes információk a hibáról vagy figyelmeztetésről.

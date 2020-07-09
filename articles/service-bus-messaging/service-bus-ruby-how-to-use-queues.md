@@ -1,25 +1,16 @@
 ---
 title: Azure Service Bus várólisták használata a Ruby használatával
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Ruby-alkalmazásokat egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához.
-services: service-bus-messaging
 documentationcenter: ruby
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 16dda6fc4637f052514a0e78a0804bf4702ed20b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760589"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336652"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Gyors útmutató: Service Bus várólisták használata a Ruby használatával
 
@@ -62,9 +53,9 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>Üzenetek küldése egy várólistára
-Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja `send_queue_message()` a metódust az **Azure:: ServiceBusService** objektumon. A (z) Service Bus várólistákból küldött üzenetek az **Azure:: ServiceBus:: BrokeredMessage** objektumok, valamint a szabványos tulajdonságok (például `label` és `time_to_live`) egy készlete, amely az egyéni alkalmazásspecifikus tulajdonságok tárolására, valamint a tetszőleges alkalmazásadatok törzsére szolgál. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy sztringet küld az üzenetnek, és a szükséges standard tulajdonságokat az alapértelmezett értékekkel tölti fel.
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `send_queue_message()` metódust az **Azure:: ServiceBusService** objektumon. A (z) Service Bus várólistákból küldött üzenetek az **Azure:: ServiceBus:: BrokeredMessage** objektumok, valamint a szabványos tulajdonságok (például és) egy készlete `label` , amely az `time_to_live` Egyéni alkalmazásspecifikus tulajdonságok tárolására, valamint a tetszőleges alkalmazásadatok törzsére szolgál. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy sztringet küld az üzenetnek, és a szükséges standard tulajdonságokat az alapértelmezett értékekkel tölti fel.
 
-Az alábbi példa bemutatja, hogyan küldhet tesztüzenet üzenetet a nevű `test-queue` várólistára a következő paranccsal `send_queue_message()`:
+Az alábbi példa bemutatja, hogyan küldhet tesztüzenet üzenetet a nevű várólistára a következő `test-queue` paranccsal `send_queue_message()` :
 
 ```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -75,13 +66,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
-Az üzenetek egy várólistából érkeznek az `receive_queue_message()` **Azure:: ServiceBusService** objektum metódusának használatával. Alapértelmezés szerint az üzenetek az üzenetsor törlése nélkül olvashatók és zárolva lesznek. Az üzenetek a várólistáról való törlését azonban a `:peek_lock` **hamis**érték beállításával is törölheti.
+Az üzenetek egy várólistából érkeznek az `receive_queue_message()` **Azure:: ServiceBusService** objektum metódusának használatával. Alapértelmezés szerint az üzenetek az üzenetsor törlése nélkül olvashatók és zárolva lesznek. Az üzenetek a várólistáról való törlését azonban a hamis érték beállításával is törölheti `:peek_lock` . **false**
 
-Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a metódus meghívásával `delete_queue_message()` végrehajtja a fogadási folyamat második szakaszát, és megadja az üzenet paraméterként való törlését. A `delete_queue_message()` metódus megjelöli az üzenetet, hogy a rendszer felhasználja, és eltávolítja azt a várólistából.
+Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a metódus meghívásával végrehajtja a fogadási folyamat második szakaszát, `delete_queue_message()` és megadja az üzenet paraméterként való törlését. A `delete_queue_message()` metódus megjelöli az üzenetet, hogy a rendszer felhasználja, és eltávolítja azt a várólistából.
 
 Ha a `:peek_lock` paraméter értéke **hamis**, az olvasás és az üzenet törlése a legegyszerűbb modell lesz, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, az alkalmazás újraindításakor és az üzenetek újrafelhasználásának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket a `receive_queue_message()`használatával. A példa először fogad és töröl egy üzenetet `:peek_lock` **hamis**értékre, majd egy másik üzenetet kap, majd törli az üzenetet a következő használatával `delete_queue_message()`:
+Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket a használatával `receive_queue_message()` . A példa először fogad és töröl egy üzenetet `:peek_lock` **hamis**értékre, majd egy másik üzenetet kap, majd törli az üzenetet a következő használatával `delete_queue_message()` :
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -95,7 +86,7 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 A várólistán lévő üzenethez is van egy időkorlát társítva, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását, és lehetővé teszi az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, `delete_queue_message()` de a metódus hívása előtt, akkor az üzenet az újraindításkor újra megjelenik az alkalmazásban. Ezt a folyamatot gyakran nevezik *legalább egyszer feldolgozásra*; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet `message_id` tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek között.
+Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, de a `delete_queue_message()` metódus hívása előtt, akkor az üzenet az újraindításkor újra megjelenik az alkalmazásban. Ezt a folyamatot gyakran nevezik *legalább egyszer feldolgozásra*; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az `message_id` üzenet tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek között.
 
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 

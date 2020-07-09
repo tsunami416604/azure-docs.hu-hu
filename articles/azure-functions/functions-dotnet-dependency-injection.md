@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 97e8a34f3b8639990f8de736a8f1f7429ebfd448
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832865"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -36,11 +36,8 @@ A szolgáltatások regisztrálásához hozzon létre egy metódust a példányok
 A metódus regisztrálásához adja hozzá azt a `FunctionsStartup` Assembly attribútumot, amely megadja az indításkor használt típus nevét.
 
 ```csharp
-using System;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -52,7 +49,7 @@ namespace MyNamespace
         {
             builder.Services.AddHttpClient();
 
-            builder.Services.AddSingleton((s) => {
+            builder.Services.AddSingleton<IMyService>((s) => {
                 return new MyService();
             });
 
@@ -61,6 +58,8 @@ namespace MyNamespace
     }
 }
 ```
+
+Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja az indításhoz való regisztráláshoz `HttpClient` .
 
 ### <a name="caveats"></a>Figyelmeztetések
 
@@ -72,48 +71,47 @@ A Futtatás előtt és után futtatott regisztrációs lépések sorozata az ind
 
 ## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
 
-A konstruktor-injektálás a függőségek elérhetővé tételéhez használható a függvényben. A konstruktor befecskendezésének használata megköveteli, hogy ne használjon statikus osztályokat.
+A konstruktor-injektálás a függőségek elérhetővé tételéhez használható a függvényben. A konstruktorok befecskendezésének használata megköveteli, hogy ne használjon statikus osztályokat a Beinjektált szolgáltatásokhoz vagy a függvény osztályaihoz.
 
-Az alábbi minta azt mutatja `IMyService` be, hogyan történik a és a függőségek beadása `HttpClient` egy http-triggerrel elindított függvénybe. Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja az indításhoz való regisztráláshoz `HttpClient` .
+Az alábbi minta azt mutatja `IMyService` be, hogyan történik a és a függőségek beadása `HttpClient` egy http-triggerrel elindított függvénybe.
 
 ```csharp
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyNamespace
 {
-    public class HttpTrigger
+    public class MyHttpTrigger
     {
-        private readonly IMyService _service;
         private readonly HttpClient _client;
+        private readonly IMyService _service;
 
-        public HttpTrigger(IMyService service, HttpClient httpClient)
+        public MyHttpTrigger(HttpClient httpClient, MyService service)
         {
-            _service = service;
-            _client = httpClient;
+            this._client = httpClient;
+            this._service = service;
         }
 
-        [FunctionName("GetPosts")]
-        public async Task<IActionResult> Get(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+        [FunctionName("MyHttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            var res = await _client.GetAsync("https://microsoft.com");
-            await _service.AddResponse(res);
+            var response = await _client.GetAsync("https://microsoft.com");
+            var message = _service.GetMessage();
 
-            return new OkResult();
+            return new OkObjectResult("Response from function with injected dependencies.");
         }
     }
 }
 ```
+
+Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja az indításhoz való regisztráláshoz `HttpClient` .
 
 ## <a name="service-lifetimes"></a>Szolgáltatás élettartama
 
@@ -121,13 +119,15 @@ Azure Functions alkalmazások ugyanazt a szolgáltatási élettartamot biztosít
 
 - **Átmeneti**: az átmeneti szolgáltatások a szolgáltatás minden egyes kérelme alapján jönnek létre.
 - **Hatókörön**belüli: a hatókörön belüli szolgáltatás élettartama megfelel a függvény végrehajtási élettartamának. A hatókörrel rendelkező szolgáltatások végrehajtáskor egyszer jönnek létre. A szolgáltatás későbbi kérelmei a végrehajtás során újra felhasználják a meglévő szolgáltatást.
-- **Egyszeres**: az egyszeres szolgáltatás élettartama megegyezik a gazdagép élettartamával, és az adott példányon végrehajtott függvények végrehajtása során újra felhasználja őket. Az egyedi élettartamú szolgáltatások a kapcsolatok és az ügyfelek számára ajánlottak, például `SqlConnection` vagy `HttpClient` példányok esetén.
+- **Egyszeres**: az egyszeres szolgáltatás élettartama megegyezik a gazdagép élettartamával, és az adott példányon végrehajtott függvények végrehajtása során újra felhasználja őket. Az egyedi élettartamú szolgáltatások a kapcsolatok és az ügyfelek számára ajánlottak, például `DocumentClient` vagy `HttpClient` példányok esetén.
 
 A GitHubon megtekintheti és letöltheti a [különböző szolgáltatási élettartamokat tartalmazó mintát](https://aka.ms/functions/di-sample) .
 
 ## <a name="logging-services"></a>Naplózási szolgáltatások
 
-Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni típust `ILoggerProvider` példányként. A Application Insights Azure Functions automatikusan hozzáadja.
+Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni típust a-példányként [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) , amely a [Microsoft. Extensions. Logging. absztrakciós](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet csomagon keresztül érhető el.
+
+A Application Insights Azure Functions automatikusan hozzáadja.
 
 > [!WARNING]
 > - Ne adja hozzá `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteményhez, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
@@ -135,7 +135,9 @@ Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> és ILoggerFactory
 
-A gazdagép a (z `ILogger<T>` ) és a szolgáltatásokat a konstruktorokban fogja beadni `ILoggerFactory` .  Alapértelmezés szerint azonban ezeket az új naplózási szűrőket a rendszer kiszűri a függvények naplóiból.  A fájl módosításával `host.json` további szűrőket és kategóriákat is be kell állítani.  Az alábbi példa bemutatja, hogyan adhat hozzá egy olyan `ILogger<HttpTrigger>` naplókat, amelyeket a gazdagép tesz elérhetővé.
+A gazdagép beinjektálja `ILogger<T>` és a `ILoggerFactory` szolgáltatásokat konstruktorokban tárolja.  Alapértelmezés szerint azonban ezeket az új naplózási szűrőket a rendszer kiszűri a függvények naplóiból.  A fájl módosításával `host.json` további szűrőket és kategóriákat kell megadnia.
+
+Az alábbi példa bemutatja, hogyan adhat hozzá olyan `ILogger<HttpTrigger>` naplókat, amelyek elérhetők a gazdagép számára.
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +162,7 @@ namespace MyNamespace
 }
 ```
 
-És egy olyan `host.json` fájl, amely hozzáadja a napló szűrőt.
+A következő példában szereplő `host.json` fájl hozzáadja a naplózási szűrőt.
 
 ```json
 {
@@ -183,7 +185,7 @@ namespace MyNamespace
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Leírás|
+|Szolgáltatástípus|Élettartama|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -251,7 +253,7 @@ public class HttpTrigger
 A beállításokkal kapcsolatos további részletekért tekintse meg a [ASP.net Core beállítások mintáját](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
 
 > [!WARNING]
-> Kerülje az értékek olvasását olyan fájlokból, mint például a *Local. Settings. JSON* vagy a *appSettings. { Environment}. JSON* a használati tervben. Az elindító kapcsolatokhoz kapcsolódó fájlokból beolvasott értékek nem érhetők el az alkalmazás skálázása miatt, mert az üzemeltetési infrastruktúra nem fér hozzá a konfigurációs adatokhoz.
+> Ne kísérelje meg olyan fájlok értékének olvasását, mint *alocal.settings.jsvagy a* *appSettings. { Environment}. JSON* a használati tervben. Az ezekből a fájlokból az trigger-kapcsolatokhoz kapcsolódó értékek nem érhetők el, mert az üzemeltetési infrastruktúra nem fér hozzá a konfigurációs adatokhoz, mivel a méretezési vezérlő új példányokat hoz létre az alkalmazáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

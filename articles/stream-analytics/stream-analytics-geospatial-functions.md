@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426220"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics térinformatikai függvények bemutatása
@@ -59,7 +58,7 @@ További tudnivalókért tekintse meg a [CreateLineString](https://docs.microsof
 
 A `CreatePoint` függvény a szélességet és a hosszúságot fogadja, és egy GeoJSON pontot ad vissza, amely egy térképen ábrázolható. A szélességi és hosszúsági köröknek **lebegőpontos** adattípusnak kell lenniük.
 
-A következő példa egy pontot `CreatePoint` hoz létre a szélességi és hosszúsági szinttel a bemeneti adatok folyamatos átviteléhez.
+A következő példa `CreatePoint` egy pontot hoz létre a szélességi és hosszúsági szinttel a bemeneti adatok folyamatos átviteléhez.
 
 ```SQL 
 SELECT  
@@ -113,7 +112,7 @@ További tudnivalókért tekintse meg a [CreatePolygon](https://docs.microsoft.c
 ## <a name="st_distance"></a>ST_DISTANCE
 A `ST_DISTANCE` függvény a két pont közötti távolságot adja vissza méterben. 
 
-A következő lekérdezés egy `ST_DISTANCE` esemény előállítására szolgál, ha a gáz állomása kevesebb, mint 10 km az autótól.
+A következő lekérdezés `ST_DISTANCE` egy esemény előállítására szolgál, ha a gáz állomása kevesebb, mint 10 km az autótól.
 
 ```SQL
 SELECT Cars.Location, Station.Location 
@@ -126,7 +125,7 @@ További tudnivalókért tekintse meg a [ST_DISTANCE](https://docs.microsoft.com
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 A `ST_OVERLAPS` függvény két sokszöget hasonlít össze. Ha a sokszögek átfedésben vannak, a függvény egy 1 értéket ad vissza. A függvény a 0 értéket adja vissza, ha a sokszögek nem fedik át egymást. 
 
-A következő lekérdezés a `ST_OVERLAPS` használatával hoz létre egy eseményt, amikor egy épület egy lehetséges árvízi zónán belül van.
+A következő lekérdezés a használatával `ST_OVERLAPS` hoz létre egy eseményt, amikor egy épület egy lehetséges árvízi zónán belül van.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -173,7 +172,7 @@ További tudnivalókért tekintse meg a [ST_INTERSECTS](https://docs.microsoft.c
 ## <a name="st_within"></a>ST_WITHIN
 A `ST_WITHIN` függvény meghatározza, hogy egy pont vagy sokszög egy sokszögen belül van-e. Ha a sokszög a pontot vagy a sokszöget tartalmazza, a függvény 1 értéket ad vissza. A függvény 0 értéket ad vissza, ha a pont vagy a sokszög nem a deklarált sokszögen belül található.
 
-A következő példa a lekérdezés `ST_WITHIN` használatával határozza meg, hogy a kézbesítési célhely a megadott raktári sokszögen belülre esik-e.
+A következő példa a lekérdezés használatával `ST_WITHIN` határozza meg, hogy a kézbesítési célhely a megadott raktári sokszögen belülre esik-e.
 
 ```SQL 
 SELECT  

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a SkyHigh Networks szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SkyHigh hálózatok között.
+title: 'Oktatóanyag: Azure Active Directory integráció a MVISION Cloud Azure AD SSO-konfigurációval | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a MVISION Cloud Azure AD SSO-konfiguráció között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,99 +11,78 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 92f3f101807171e71d40171dfa2bd3f006363ae0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a519ab6558db95ecf86b7595dbbb13a970460043
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090391"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806822"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Oktatóanyag: Azure Active Directory integráció SkyHigh-hálózatokkal
+# <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Oktatóanyag: a MVISION Cloud Azure AD SSO konfigurációjának integrálása Azure Active Directory
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SkyHigh-hálózatokat Azure Active Directory (Azure AD) használatával.
-A SkyHigh Networks és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a MVISION Cloud Azure AD SSO-konfigurációt Azure Active Directory (Azure AD) használatával. Ha integrálja a MVISION Cloud Azure AD SSO-konfigurációt az Azure AD-vel, a következőket teheti:
 
-* A SkyHigh-hálózatokhoz hozzáféréssel rendelkező Azure AD-t is vezérelheti.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a SkyHigh-hálózatokra (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A MVISION Cloud Azure AD SSO-konfigurációhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Felhőbeli Azure AD SSO-MVISION az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció SkyHigh-hálózatokkal való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* SkyHigh Networks egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
+* MVISION Cloud Azure AD SSO konfigurációs egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A SkyHigh hálózatok támogatják **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* MVISION Cloud Azure AD SSO-konfiguráció támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A Dropbox konfigurálása után kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását is biztosítja. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-skyhigh-networks-from-the-gallery"></a>SkyHigh hálózatok hozzáadása a katalógusból
+## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>MVISION Cloud Azure AD SSO-konfiguráció hozzáadása a katalógusból
 
-A SkyHigh hálózatok Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SkyHigh-hálózatokat a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A MVISION Cloud Azure AD SSO konfigurációjának Azure AD-ba való integrálásának konfigurálásához hozzá kell adnia a MVISION Cloud Azure AD SSO konfigurációját a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**SkyHigh hálózatok a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
-
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
-
-    ![A Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A keresőmezőbe írja be a **SkyHigh Networks**kifejezést, válassza a **SkyHigh hálózatok** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
-
-     ![SkyHigh hálózatok az eredmények listájában](common/search-new-app.png)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **MVISION Cloud Azure ad SSO Configuration** kifejezést a keresőmezőbe.
+1. Válassza a **MVISION Cloud Azure ad SSO-konfiguráció** az eredmények panelen lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a SkyHigh-hálózatokkal konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SkyHigh-hálózatok kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
+Az Azure AD SSO konfigurálása és tesztelése a MVISION Cloud Azure AD SSO-konfigurációval a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a MVISION Cloud Azure AD SSO konfigurációjában.
 
-Az Azure AD egyszeri bejelentkezés SkyHigh-hálózatokkal történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD SSO és a MVISION Cloud Azure AD SSO konfigurációjának konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[SkyHigh Networks egyszeri bejelentkezés konfigurálása](#configure-skyhigh-networks-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[SkyHigh Networks-tesztkörnyezet létrehozása](#create-skyhigh-networks-test-user)** – ha a felhasználó Azure ad-Britta összekapcsolt SkyHigh-hálózatokban található, Simon-beli partneri kapcsolattal rendelkezik.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+1. A **[MVISION Cloud Azure ad SSO konfigurációjának konfigurálása](#configure-mvision-cloud-azure-ad-sso-configuration-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[MVISION Cloud Azure ad egyszeri bejelentkezéses konfigurációjának létrehozása](#create-mvision-cloud-azure-ad-sso-configuration-test-user)** – annak érdekében, hogy a Britta Simon partnere legyen a MVISION Cloud Azure ad SSO-konfigurációban, amely a felhasználó Azure ad-képviseletéhez van társítva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-Az Azure AD egyszeri bejelentkezés SkyHigh-hálózatokkal történő konfigurálásához hajtsa végre a következő lépéseket:
+1. A [Azure Portal](https://portal.azure.com/) **datadoggal** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-1. A [Azure Portal](https://portal.azure.com/) **SkyHigh-hálózatok** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
-
-    ![SkyHigh hálózati tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
@@ -111,30 +90,21 @@ Az Azure AD egyszeri bejelentkezés SkyHigh-hálózatokkal történő konfigurá
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![SkyHigh hálózati tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![MVISION Cloud Azure AD SSO konfigurációs tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba a [SkyHigh Networks](mailto:support@skyhighnetworks.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [MVISION Cloud Azure ad SSO konfigurációs ügyfél-támogatási csapatával](mailto:support@skyhighnetworks.com) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. A **SkyHigh-hálózatok beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+7. A **MVISION Cloud Azure ad SSO konfigurációjának beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL-cím
-
-### <a name="configure-skyhigh-networks-single-sign-on"></a>SkyHigh hálózatok egyszeri bejelentkezésének konfigurálása
-
-Az egyszeri bejelentkezés **SkyHigh-hálózatokon** való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portal a [SkyHigh Networks támogatási csapatának](mailto:support@skyhighnetworks.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -159,19 +129,19 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a SkyHigh-hálózatokhoz.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a MVISION Cloud Azure AD SSO-konfigurációhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **SkyHigh hálózatok**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **MVISION Cloud Azure ad SSO-konfiguráció**elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **SkyHigh hálózatok**elemet.
+2. Az alkalmazások listában válassza a **MVISION Cloud Azure ad SSO-konfiguráció**elemet.
 
-    ![Az SkyHigh hálózatok hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A MVISION Cloud Azure AD SSO konfigurációs hivatkozása az alkalmazások listájában](common/all-applications.png)
 
 3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -187,15 +157,21 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-skyhigh-networks-test-user"></a>SkyHigh Networks-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a SkyHigh Networks szolgáltatásban. Együttműködik a [SkyHigh Networks támogatási csapatával](mailto:support@skyhighnetworks.com) , hogy hozzáadja a felhasználókat a SkyHigh Networks platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+## <a name="configure-mvision-cloud-azure-ad-sso-configuration-sso"></a>A MVISION Cloud Azure AD SSO konfigurációjának konfigurálása – SSO
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+Ha egyszeri bejelentkezést szeretne konfigurálni a **MVISION Cloud Azure ad SSO konfigurációs** oldalán, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portal a [MVISION Cloud Azure ad SSO konfigurációs támogatási csapatának](mailto:support@skyhighnetworks.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+
+
+### <a name="create-mvision-cloud-azure-ad-sso-configuration-test-user"></a>MVISION Cloud Azure AD SSO konfigurációs teszt felhasználó létrehozása
+
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a MVISION Cloud Azure AD SSO konfigurációjában. A [MVISION Cloud Azure ad SSO konfigurációs támogatási csapatának](mailto:support@skyhighnetworks.com) használata a felhasználók hozzáadásához a MVISION Cloud Azure ad SSO konfigurációs platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a SkyHigh Networks (hálózatok) csempére kattint, automatikusan be kell jelentkeznie azokra a SkyHigh-hálózatokra, amelyekhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a MVISION Cloud Azure AD SSO-konfiguráció csempére kattint, automatikusan be kell jelentkeznie a MVISION Cloud Azure AD SSO-konfigurációba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -204,3 +180,7 @@ Ha a hozzáférési panelen a SkyHigh Networks (hálózatok) csempére kattint, 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Próbálja ki a MVISION Cloud Azure AD SSO-konfigurációt az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

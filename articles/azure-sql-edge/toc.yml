@@ -6,6 +6,8 @@
       href: overview.md
     - name: Támogatott kiadások és funkciók
       href: features.md
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -69,7 +71,7 @@
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
-    - name: Idősoradatok feldolgozása
+    - name: Idősorozat-adatok feldolgozása
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407220"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei
@@ -36,11 +36,11 @@ Tekintsük át az e-mailek néhány elemét, hogy tudja, hogyan használják leg
 
 Az e-mail tárgya a következő mintát követi:
 
-&lt;a&gt; Felhasználónév meghívja Önt a szervezeten belüli alkalmazások elérésére.
+&lt;a Felhasználónév &gt; meghívja Önt a szervezeten belüli alkalmazások elérésére.
 
 ### <a name="from-address"></a>Feladó címe
 
-A feladó címe esetében a LinkedIn-hez hasonló mintát használjuk. Ennek a mintának egyértelművé kell tennie, hogy bár az invites@microsoft.come-mail származik, a meghívás egy másik szervezettől származik. A formátum a következő: Microsoft <invites@microsoft.com> meghívások vagy Microsoft meghívások&gt; <invites@microsoft.com>a &lt;tenantname nevében. 
+A feladó címe esetében a LinkedIn-hez hasonló mintát használjuk. Ennek a mintának egyértelművé kell tennie, hogy bár az e-mail származik invites@microsoft.com , a meghívás egy másik szervezettől származik. A formátum a következő: Microsoft meghívások  <invites@microsoft.com> vagy Microsoft meghívások a tenantname nevében &lt; &gt;  <invites@microsoft.com> . 
 
 ### <a name="reply-to"></a>Válasz címzettje
 

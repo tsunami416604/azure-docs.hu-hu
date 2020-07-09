@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271901"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085735"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
 
@@ -42,9 +42,9 @@ A Visual studióhoz készült Data Lake Tools használatával C# vagy hibrid top
 
 1. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
 
-1. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe `Storm`, majd írja be a kifejezést. Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább**gombra.
+1. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe, majd írja be a kifejezést `Storm` . Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább**gombra.
 
-1. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután kattintson a **Létrehozás** elemre.
 
     ![Az új Project-ablak, a Visual Studio konfigurálása](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -74,9 +74,9 @@ A Visual studióhoz készült Data Lake Tools használatával C# vagy hibrid top
     Ez a parancs elindítja a fürtön a WordCount példatopológiát. Ez a topológia véletlenszerűen generál mondatokat, majd megszámolja az egyes szavak előfordulását a mondatokban.
 
     > [!NOTE]  
-    > Amikor topológiát küld a fürtnek, előbb át kell másolnia a fürtöt tartalmazó. jar-fájlt a `storm` parancs használata előtt. A fájlnak a fürtbe való másolásához használhatja az `scp` parancsot. Adja meg például a következőt: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
+    > Amikor topológiát küld a fürtnek, előbb át kell másolnia a fürtöt tartalmazó. jar-fájlt a parancs használata előtt `storm` . A fájlnak a fürtbe való másolásához használhatja az `scp` parancsot. Adja meg például a következőt: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
     >
-    > A *WordCount* példát és más Storm Starter-példákat már tartalmaz a fürtben `/usr/hdp/current/storm-client/contrib/storm-starter/`.
+    > A *WordCount* példát és más Storm Starter-példákat már tartalmaz a fürtben `/usr/hdp/current/storm-client/contrib/storm-starter/` .
 
 ## <a name="submit-a-topology-programmatically"></a>Topológia beküldése programozott módon
 
@@ -89,7 +89,7 @@ Amikor a Visual Studióval küldi el a topológiát, megjelenik a **Storm-topol�
 ![Figyelő topológia, Storm-topológiák nézet ablak, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure** > **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**lehetőséget.
+> A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**lehetőséget.
 
 Válassza ki a kiöntő vagy a bolt alakzatát, és tekintse meg az ezen összetevőkre vonatkozó információkat. A kiválasztott elemhez tartozó elemleírás jelenik meg.
 
@@ -163,7 +163,7 @@ storm rebalance TOPOLOGYNAME
 
 ## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Topológia figyelése és kezelése a Storm felhasználói felületének használatával
 
-A Storm felhasználói felülete egy webes felületet biztosít a futó topológiák használatához, és a HDInsight-fürtben is megtalálható. A Storm felhasználói felületének megtekintéséhez nyisson meg `https://CLUSTERNAME.azurehdinsight.net/stormui`egy böngészőt, ahol a *CLUSTERNAME* a fürt neve.
+A Storm felhasználói felülete egy webes felületet biztosít a futó topológiák használatához, és a HDInsight-fürtben is megtalálható. A Storm felhasználói felületének megtekintéséhez nyisson meg egy böngészőt `https://CLUSTERNAME.azurehdinsight.net/stormui` , ahol a *CLUSTERNAME* a fürt neve.
 
 > [!NOTE]  
 > Ha a rendszer a Felhasználónév és a jelszó megadását kéri, adja meg a fürt létrehozásakor használt Fürtfelügyelő-felhasználónevet és-jelszót.
@@ -172,7 +172,7 @@ A Storm felhasználói felülete egy webes felületet biztosít a futó topológ
 
 A Storm felhasználói felületének fő lapja a következő információkat tartalmazza:
 
-| Section | Leírás |
+| Section | Description |
 | --- | --- |
 | Fürt összegzése| Alapszintű információk a Storm-fürtről. |
 | Nimbus összegzése | Az alapvető Nimbus-információk listája. |
@@ -188,7 +188,7 @@ A Storm UI főoldala a következő weboldalhoz hasonlóan néz ki:
 
 A **topológia összegzése** szakasz egy hivatkozásának kiválasztásával az alábbi információk jelennek meg a topológiával kapcsolatban:
 
-| Section | Leírás |
+| Section | Description |
 | --- | --- |
 | Topológia összegzése | A topológiával kapcsolatos alapvető információk. |
 | Topológiai műveletek| A topológiához elvégezhető felügyeleti műveletek. Az elérhető műveleteket a szakasz későbbi részében ismertetjük. |
@@ -205,7 +205,7 @@ A Storm-topológia összefoglalás lapja ehhez a weboldalhoz hasonlóan néz ki:
 
 A **topológiai műveletek** szakaszban a következő gombokra kattintva végezheti el a műveletet:
 
-| Gomb | Leírás |
+| Gomb | Description |
 | --- | --- |
 | Aktiválás | Folytatja a deaktivált topológia feldolgozását. |
 | Inaktiválás | Szünetelteti a futó topológiát. |
@@ -219,7 +219,7 @@ A **topológiai műveletek** szakaszban a következő gombokra kattintva végezh
 
 **A kiöntő vagy a** **boltokból** származó kiöntő kiválasztásakor az alábbi információk jelennek meg a kijelölt elemről:
 
-| Section | Leírás |
+| Section | Description |
 | --- | --- |
 | Összetevő összegzése | Alapszintű információk a kiöntő vagy a boltról. |
 | Összetevő-műveletek | **Hibakeresés** és **Leállítás** gombokkal. |
@@ -245,14 +245,14 @@ További információ: [Apache Storm felhasználói felület REST API](https://s
 
 ### <a name="base-uri"></a>Alap URI
 
-A Linux-alapú HDInsight-fürtökön lévő REST API alap URI-ja az URL- `https://HEADNODEFQDN:8744/api/v1/`címen érhető el, ahol a *HEADNODEFQDN* a fő csomóponttal helyettesíti. A fő csomópont tartományneve a fürt létrehozása során jön létre, és nem statikus.
+A Linux-alapú HDInsight-fürtökön lévő REST API alap URI-ja az URL-címen érhető el `https://HEADNODEFQDN:8744/api/v1/` , ahol a *HEADNODEFQDN* a fő csomóponttal helyettesíti. A fő csomópont tartományneve a fürt létrehozása során jön létre, és nem statikus.
 
 A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megkereshető:
 
-| FQDN-felderítési módszer | Leírás |
+| FQDN-felderítési módszer | Description |
 | --- | --- |
 | SSH-munkamenet | Használja a parancsot `headnode -f` egy SSH-munkamenetből a fürtre. |
-| Ambari web | A Ambari-fürt weblapján (`https://CLUSTERNAME.azurehdinsight.net`) válassza ki a **szolgáltatások** elemet az oldal tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
+| Ambari web | A Ambari-fürt weblapján ( `https://CLUSTERNAME.azurehdinsight.net` ) válassza ki a **szolgáltatások** elemet az oldal tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
 | Ambari REST API | A paranccsal `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` információkat kérhet le arról a csomópontról, amelyen a Storm kezelőfelülete és REST API fut. Cserélje le a *CLUSTERNAME* két példányát a fürt nevére. Amikor a rendszer kéri, adja meg a felhasználói (rendszergazdai) fiókhoz tartozó jelszót. A válaszban a JSON-kimenet "host_name" bejegyzése tartalmazza a csomópont teljes tartománynevét. |
 
 ### <a name="authentication"></a>Hitelesítés

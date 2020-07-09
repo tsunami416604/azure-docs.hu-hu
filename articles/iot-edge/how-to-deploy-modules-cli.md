@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133943"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure IoT Edge-modulok üzembe helyezése az Azure CLI-vel
@@ -112,7 +112,7 @@ A modulok Azure CLI használatával történő üzembe helyezéséhez mentse a k
 
 A modulok az eszközön való üzembe helyezéséhez alkalmazza a modul adataival konfigurált telepítési jegyzékfájlt.
 
-Módosítsa a címtárakat abba a mappába, ahová a telepítési jegyzékfájlt menti. Ha a VS Code IoT Edge-sablonok egyikét használta, használja a `deployment.json` fájlját a megoldás könyvtárának **konfigurációs** mappájába, és ne `deployment.template.json` a fájlt.
+Módosítsa a címtárakat abba a mappába, ahová a telepítési jegyzékfájlt menti. Ha a VS Code IoT Edge-sablonok egyikét használta, használja a `deployment.json` fájlját a megoldás könyvtárának **konfigurációs** mappájába, és ne a `deployment.template.json` fájlt.
 
 A következő parancs használatával alkalmazza a konfigurációt egy IoT Edge eszközre:
 

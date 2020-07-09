@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 46c27f18f8f16f783248790f03364654d0b3c2fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559920"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986828"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -95,9 +95,7 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 
 ## <a name="get-domain-verification-id"></a>Tartomány-ellenőrzési azonosító lekérése
 
-Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a tartomány tulajdonjogát úgy, hogy egy ellenőrző azonosítót ad hozzá TXT-rekordként a tartományi szolgáltatóhoz. Az alkalmazás bal oldali navigációs sávján kattintson az **erőforrás-kezelő** elemre a **fejlesztői eszközök**területen, majd kattintson az **Ugrás**gombra.
-
-Az alkalmazás tulajdonságainak JSON-nézetében keresse meg `customDomainVerificationId`a kifejezést, és másolja az értékét idézőjelek közé. Erre az ellenőrző AZONOSÍTÓra szüksége lesz a következő lépéshez.
+Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a tartomány tulajdonjogát úgy, hogy egy ellenőrző azonosítót ad hozzá TXT-rekordként a tartományi szolgáltatóhoz. Az alkalmazás lap bal oldali navigációs sávján kattintson az **Egyéni tartományok** elemre a **Beállítások**területen. Az egyéni tartomány-ellenőrzési azonosító értékének másolása innen. Erre az ellenőrző AZONOSÍTÓra szüksége lesz a következő lépéshez.
 
 ## <a name="map-your-domain"></a>Saját tartomány leképezése
 
@@ -114,13 +112,15 @@ Az egyéni DNS-neveket **CNAME rekordok** vagy **A rekordok** használatával is
 
 Az oktatóanyag példájában a `www` altartományhoz (például `www.contoso.com`) tartozó CNAME rekordot ad hozzá.
 
+Ha a-től eltérő altartománnyal rendelkezik `www` , cserélje le az `www` altartományra (például `sub` Ha az egyéni tartománya `sub.constoso.com` ).
+
 #### <a name="access-dns-records-with-domain-provider"></a>DNS-rekordok elérése tartományszolgáltató esetén
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (`<app_name>.azurewebsites.net`ahol `<app_name>` az az alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
+Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (ahol az az `<app_name>.azurewebsites.net` `<app_name>` alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
 
 | Rekordtípus | Gazdagép | Érték | Megjegyzések |
 | - | - | - |
@@ -149,7 +149,7 @@ Válassza az **Érvényesítés** lehetőséget.
 
 Megjelenik az **egyéni tartomány hozzáadása** lap.
 
-Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME (www\.example.com vagy bármely altartomány)** értékre van beállítva.
+Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME (www \. example.com vagy bármely altartomány)** értékre van beállítva.
 
 Válassza az **egyéni tartomány hozzáadása**lehetőséget.
 
@@ -196,11 +196,11 @@ Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfel
 
 | Rekordtípus | Gazdagép | Érték | Megjegyzések |
 | - | - | - |
-| A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés`@` (általában a legfelső szintű tartományt jelenti). |
-| TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja `asuid`a következőt:. |
+| A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés ( `@` általában a legfelső szintű tartományt jelenti). |
+| TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja a következőt: `asuid` . |
 
 > [!NOTE]
-> Egy altartomány (például `www.contoso.com`) egy, az ajánlott CNAME- [rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a REKORDnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
+> Egy altartomány (például) egy `www.contoso.com` , az ajánlott [CNAME-rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
 >
 > | Rekordtípus | Gazdagép | Érték |
 > | - | - | - |
@@ -257,7 +257,7 @@ Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-neve
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Adjon hozzá egy CNAME-rekordot a helyettesítő karakter nevének az alkalmazás alapértelmezett tartománynevéhez (`<app_name>.azurewebsites.net`) való leképezéséhez.
+Adjon hozzá egy CNAME-rekordot a helyettesítő karakter nevének az alkalmazás alapértelmezett tartománynevéhez () való leképezéséhez `<app_name>.azurewebsites.net` .
 
 A `*.contoso.com` tartomány példájában a CNAME rekord a `*` előtagot a `<app_name>.azurewebsites.net` elemre képezi le.
 
@@ -281,7 +281,7 @@ Válassza az **+** **egyéni tartomány hozzáadása**elem melletti ikont.
 
 Az **egyéni tartomány hozzáadása** gomb aktiválva van.
 
-Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME rekord (www\.example.com vagy bármely altartomány)**.
+Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME rekord (www \. example.com vagy bármely altartomány)**.
 
 Válassza az **egyéni tartomány hozzáadása**lehetőséget.
 
@@ -289,7 +289,7 @@ Válassza az **egyéni tartomány hozzáadása**lehetőséget.
 
 Eltarthat egy ideig, amíg az új egyéni tartomány megjelennek az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
-Kattintson ismét **+** az ikonra egy másik olyan egyéni tartomány hozzáadásához, amely megfelel a helyettesítő karakteres tartománynak. Például adja hozzá a következőt: `sub2.contoso.com`.
+Kattintson **+** ismét az ikonra egy másik olyan egyéni tartomány hozzáadásához, amely megfelel a helyettesítő karakteres tartománynak. Például adja hozzá a következőt: `sub2.contoso.com`.
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
@@ -325,7 +325,7 @@ A lap alján, a virtuális gyökérkönyvtár (`/`) alapértelmezés szerint a `
 
 ![A virtuális könyvtár testreszabása](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-A művelet befejezése után az alkalmazásnak vissza kell adni a jobb oldalt a gyökér elérési útjában (például `http://contoso.com`:).
+A művelet befejezése után az alkalmazásnak vissza kell adni a jobb oldalt a gyökér elérési útjában (például: `http://contoso.com` ).
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

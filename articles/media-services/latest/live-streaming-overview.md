@@ -13,12 +13,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: ee9dfc11cad61d6190ae4a2382f0124207c32c4c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84418143"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -30,12 +29,14 @@ A Azure Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ü
 - Egy élő videó kódoló, amely egy kamerából (vagy egy másik eszközről, például egy laptopból) származó jeleket alakít át egy Media Servicesba küldendő közreműködői adatcsatornába. A hozzájárulási hírcsatorna tartalmazhat a hirdetésekkel kapcsolatos jeleket, például a SCTE-35 jelölőket.<br/>A javasolt élő adatfolyam-kódolók listáját lásd: [élő adatfolyam-kódolók](recommended-on-premises-live-encoders.md). Továbbá tekintse meg ezt a blogot: [élő streaming Production with OBS](https://link.medium.com/ttuwHpaJeT).
 - A Media Services összetevői, amelyek lehetővé teszik az élő események betöltését, beolvasását, becsomagolását, rögzítését, titkosítását és továbbítását az ügyfelek számára, illetve a CDN-t további terjesztés céljából.
 
+Azon ügyfelek számára, akik nagy internetes célközönségeknek szánt tartalmat szeretnének kézbesíteni, javasoljuk, hogy engedélyezze a CDN használatát a [streaming végponton](streaming-endpoint-concept.md).
+
 Ez a cikk áttekintést nyújt az élő közvetítésről Media Services és más kapcsolódó cikkekre mutató hivatkozásokat tartalmaz.
  
 > [!NOTE]
 > A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
-## <a name="dynamic-packaging"></a>Dinamikus csomagolás
+## <a name="dynamic-packaging-and-delivery"></a>Dinamikus csomagolás és kézbesítés
 
 A Media Services segítségével kihasználhatja a [dinamikus csomagolás](dynamic-packaging-overview.md)előnyeit, így az élő streameket az MPEG Dash-ben [, a HLS-ban Smooth streaming és](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a szolgáltatásba küldött közreműködői adatcsatornán keresztül is megtekintheti és közvetítheti. A megtekintők az élő streamet bármilyen HLS, KÖTŐJELtel vagy Smooth Streaming kompatibilis játékossal játszhatják fel. A webes vagy mobil alkalmazásaiban [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) használhatja az adatfolyam továbbítására ezen protokollok bármelyikében.
 
@@ -46,13 +47,13 @@ A dinamikus titkosítás lehetővé teszi, hogy az élő vagy igény szerinti ta
 > [!NOTE]
 > A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="dynamic-manifest"></a>Dinamikus jegyzékfájl
+## <a name="dynamic-filtering"></a>Dinamikus szűrés
 
 A dinamikus szűréssel szabályozható a játékosok számára eljuttatott zeneszámok, formátumok, bitráták és a megjelenítési idő Windows-száma. További információ: [szűrők és dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md).
 
 ## <a name="live-event-types"></a>Élő események típusai
 
-Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). A Media Services v3 élő közvetítésével kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
+Az élő [események](https://docs.microsoft.com/rest/api/media/liveevents) az élő video-hírcsatornák betöltéséhez és feldolgozásához felelősek. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). A Media Services v3 élő közvetítésével kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Továbbítás
 
@@ -79,7 +80,7 @@ Az Media Services v3 élő közvetítési munkafolyamatának megismeréséhez el
 
 - [Streamvégpontok](streaming-endpoint-concept.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)
-- [Streamelési lokátor](streaming-locators-concept.md)
+- [Streameléskeresők](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Általános lépések
 
@@ -104,7 +105,7 @@ Az Media Services v3 élő közvetítési munkafolyamatának megismeréséhez el
 
     * Állítsa le a stream továbbítását a kódolóban.
     * Állítsa le az élő eseményt. Az élő esemény leállítását követően nem számítunk fel díjat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
-    * A streamvégpontot is leállíthatja, kivéve, ha szeretné elérhetővé tenni az élő esemény archívumát igényalapú streamingre. Ha az élő esemény leállított állapotban van, nem számítunk fel díjat.
+    * Leállíthatja a folyamatos átviteli végpontot, hacsak nem szeretné, hogy az élő esemény archívumát igény szerinti adatfolyamként adja meg. Ha az élő esemény leállított állapotban van, nem számítunk fel díjat.
 
 Az az objektum, amelyet az élő kimenet archivál, automatikusan egy igény szerinti eszközvé válik az élő kimenet törlésekor. Az élő események leállításához minden élő kimenetet törölnie kell. A nem kötelező jelző [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) használatával automatikusan eltávolíthatja az élő kimeneteket a leállítás után. 
 

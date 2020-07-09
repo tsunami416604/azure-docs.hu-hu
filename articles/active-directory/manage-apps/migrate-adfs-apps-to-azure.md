@@ -2,23 +2,23 @@
 title: Alkalmazás-hitelesítés áthelyezése AD FSról Azure Active Directoryra
 description: Ebből a cikkből megtudhatja, hogyan helyezhet át alkalmazásokat az Azure AD-be az összevont SaaS-alkalmazásokra összpontosítva.
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 04/01/2020
-ms.author: baselden
+ms.author: kenwith
+ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608551"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazás-hitelesítés áthelyezése Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directoryra
 
@@ -198,13 +198,13 @@ Az alábbi táblázat egy AD FS függő entitás megbízhatósága Azure AD Ente
 
 | Konfigurációs beállítás| AD FS| Konfigurálás az Azure AD-ben| SAML-jogkivonat |
 | - | - | - | - |
-| **Alkalmazás bejelentkezési URL-címe** <p>Az alkalmazásba a szolgáltató (SP) által kezdeményezett SAML-folyamatba bejelentkező felhasználó URL-címe.| N/A| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N/A |
+| **Alkalmazás bejelentkezési URL-címe** <p>Az alkalmazásba a szolgáltató (SP) által kezdeményezett SAML-folyamatba bejelentkező felhasználó URL-címe.| N.A.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N.A. |
 | **Alkalmazás válasz URL-címe** <p>Az alkalmazás URL-címe az identitás-szolgáltató (identitásszolgáltató) szemszögéből. A identitásszolgáltató elküldi a felhasználót és a tokent, miután a felhasználó bejelentkezett a identitásszolgáltató.  Ezt az SAML-jogcímek **fogyasztói végpontjának**is nevezzük.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| A cél elem az SAML-jogkivonatban. Példaérték: `https://contoso.my.salesforce.com` |
-| **Alkalmazás kijelentkezési URL-címe** <p>Ezt az URL-címet kell elküldeni a "kijelentkezési tisztítási" kérések elküldésekor, amikor egy felhasználó kijelentkezik az alkalmazásból. A identitásszolgáltató elküldi a kérést, hogy kijelentkezzen a felhasználótól az összes többi alkalmazásból is.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N/A |
+| **Alkalmazás kijelentkezési URL-címe** <p>Ezt az URL-címet kell elküldeni a "kijelentkezési tisztítási" kérések elküldésekor, amikor egy felhasználó kijelentkezik az alkalmazásból. A identitásszolgáltató elküldi a kérést, hogy kijelentkezzen a felhasználótól az összes többi alkalmazásból is.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N.A. |
 | **Alkalmazásazonosító** <p>Ez az alkalmazás azonosítója a identitásszolgáltató szemszögéből. A bejelentkezési URL-cím értéke gyakran használatos az azonosítóhoz (de nem mindig).  Néha az alkalmazás meghívja ezt az "Entity ID"-t.| Az **azonosítók** lap kijelölése|Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| Leképezi az SAML-jogkivonat **célközönség** elemét. |
-| **Alkalmazás összevonási metaadatai** <p>Ez az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.| A **figyelés** lap kiválasztása| N/A. Az Azure AD nem támogatja az alkalmazások összevonási metaadatainak közvetlen felhasználását. Az összevonási metaadatokat manuálisan is importálhatja.| N/A |
+| **Alkalmazás összevonási metaadatai** <p>Ez az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.| A **figyelés** lap kiválasztása| N/A. Az Azure AD nem támogatja az alkalmazások összevonási metaadatainak közvetlen felhasználását. Az összevonási metaadatokat manuálisan is importálhatja.| N.A. |
 | **Felhasználói azonosító/név azonosítója** <p>A felhasználó identitását az Azure AD-ből vagy az AD FS-ből az alkalmazás felé egyértelműen azonosító attribútum.  Ez az attribútum általában a felhasználó egyszerű felhasználóneve vagy e-mail-címe.| Jogcím-szabályok. A legtöbb esetben a jogcím szabály a NameIdentifier végződő típussal rendelkező jogcímet bocsát ki.| Az azonosítót a **felhasználói attribútumok és jogcímek**fejléce alatt találja. Alapértelmezés szerint a rendszer az UPN-t használja| Leképezi az SAML-token **NameID** elemét. |
-| **Egyéb jogcímek** <p>A identitásszolgáltató és az alkalmazás között gyakran küldött egyéb jogcím-információk közé tartozik például az utónév, a vezetéknév, az E-mail cím és a csoporttagság.| Az AD FS-ben ez a függő entitásra vonatkozó egyéb jogcímszabályokként található meg.| Az azonosító a fejléc **felhasználói attribútumok & jogcímek**alatt található. Válassza ki az **Egyéb felhasználói attribútumok megtekintése** és szerkesztése elemet.| N/A |
+| **Egyéb jogcímek** <p>A identitásszolgáltató és az alkalmazás között gyakran küldött egyéb jogcím-információk közé tartozik például az utónév, a vezetéknév, az E-mail cím és a csoporttagság.| Az AD FS-ben ez a függő entitásra vonatkozó egyéb jogcímszabályokként található meg.| Az azonosító a fejléc **felhasználói attribútumok & jogcímek**alatt található. Válassza ki az **Egyéb felhasználói attribútumok megtekintése** és szerkesztése elemet.| N.A. |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>A Térkép identitás-szolgáltatója (identitásszolgáltató) beállításai
@@ -224,7 +224,7 @@ Konfigurálja úgy az alkalmazásokat, hogy az egyszeri bejelentkezéshez az Azu
 
 | Elem| Konfigurációs érték |
 | - | - |
-| Identitás-szolgáltató kiállítója| https:\//STS.Windows.net/{Tenant-ID}/ |
+| Identitás-szolgáltató kiállítója| https: \/ /STS.Windows.net/{Tenant-ID}/ |
 | Identitás-szolgáltató bejelentkezési URL-címe| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | Identitás-szolgáltató kijelentkezési URL-címe| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | Összevonási metaadatok helye| [https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}](https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}) |
@@ -239,8 +239,8 @@ Az SaaS-alkalmazásoknak ismerniük kell, hogy hol kell elküldeni a hitelesít�
 | **Identitásszolgáltató bejelentkezési URL-címe** <p>A identitásszolgáltató bejelentkezési URL-címe az alkalmazás szemszögéből (ahol a felhasználó át lesz irányítva a bejelentkezéshez).| A AD FS bejelentkezési URL-cím a AD FS összevonási szolgáltatás neve, majd a "/adfs/ls/." <p>Például:`https://fs.contoso.com/adfs/ls/`| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra. <p> Az SAML-P protokollt használó alkalmazások esetében:[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>A WS-Federation protokollt használó alkalmazások esetében:[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
 | **Identitásszolgáltató kijelentkezési URL-címe**<p>A identitásszolgáltató kijelentkezési URL-címe az alkalmazás szemszögéből (ahol a rendszer átirányítja a felhasználót, amikor kijelentkezik az alkalmazásból).| A kijelentkezési URL-cím vagy azonos a bejelentkezési URL-címmel, vagy a "WA = wsignout 1.0" utótaggal megegyező URL-címmel. Például:`https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra.<p>Az SAML-P protokollt használó alkalmazások esetében:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> A WS-Federation protokollt használó alkalmazások esetében:[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **Jogkivonat-aláíró tanúsítvány**<p>A identitásszolgáltató a tanúsítvány titkos kulcsát használja a kiállított jogkivonatok aláírására. Igazolja, hogy a jogkivonat attól az identitásszolgáltatótól származik, amellyel az alkalmazás megbízhatósági kapcsolata konfigurálva van.| Az AD FS jogkivonat-aláíró tanúsítványa az AD FS-kezelőben a **Tanúsítványok** területen található.| Keresse meg az alkalmazás **egyszeri bejelentkezési tulajdonságainál** az **SAML-aláíró tanúsítvány**alatt található Azure Portalban. Innen letöltheti a tanúsítványt, hogy feltöltse az alkalmazásba.  <p>Ha az alkalmazás több tanúsítvánnyal is rendelkezik, az összes tanúsítvány megtalálható az összevonási metaadatok XML-fájljában. |
-| **Azonosító/"kiállító"**<p>Az alkalmazás perspektívájában lévő identitásszolgáltató azonosítója (más néven "kiállító azonosító").<p>Az SAML-tokenben az érték a kiállító elemként jelenik meg.| A AD FS azonosítója általában az összevonási szolgáltatás azonosítója AD FS kezelés területen a **szolgáltatás > szerkesztés összevonási szolgáltatás tulajdonságok**elemre. Például:`http://fs.contoso.com/adfs/services/trust`| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra.<p>https:\//STS.Windows.net/{Tenant-ID}/ |
-| **Identitásszolgáltató-összevonási metaadatok**<p>A identitásszolgáltató nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)| Keresse meg a AD FS összevonási metaadatok URL-címét AD FS kezelés területen **> végpontok > metaadatok > típus: összevonási metaadatok**. Például:`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Az Azure AD megfelelő értéke követi a mintát [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml). Cserélje le a (z) {Bérlőtartományneve} nevet a bérlő nevére "contoso.onmicrosoft.com" formátumban.   <p>További információkat itt talál: [Összevonási metaadatok](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
+| **Azonosító/"kiállító"**<p>Az alkalmazás perspektívájában lévő identitásszolgáltató azonosítója (más néven "kiállító azonosító").<p>Az SAML-tokenben az érték a kiállító elemként jelenik meg.| A AD FS azonosítója általában az összevonási szolgáltatás azonosítója AD FS kezelés területen a **szolgáltatás > szerkesztés összevonási szolgáltatás tulajdonságok**elemre. Például:`http://fs.contoso.com/adfs/services/trust`| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra.<p>https: \/ /STS.Windows.net/{Tenant-ID}/ |
+| **Identitásszolgáltató-összevonási metaadatok**<p>A identitásszolgáltató nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)| Keresse meg a AD FS összevonási metaadatok URL-címét AD FS kezelés területen **> végpontok > metaadatok > típus: összevonási metaadatok**. Például:`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Az Azure AD megfelelő értéke követi a mintát [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Cserélje le a (z) {Bérlőtartományneve} nevet a bérlő nevére "contoso.onmicrosoft.com" formátumban.   <p>További információkat itt talál: [Összevonási metaadatok](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>AD FS biztonsági szabályzatok jelölése az Azure AD-ben
@@ -397,7 +397,7 @@ A beépített szabályzatok Azure AD-ben történő megvalósításához haszná
 Ebben a táblázatban néhány hasznos engedély szerepel, de a lehetőségek és az Azure AD-hez való leképezésük is. 
 
 
-| | Az engedélyezési lehetőség konfigurálása az Azure AD-ben| Az Azure AD-ban való kivétel beállítása |
+| Beállítás | Az engedélyezési lehetőség konfigurálása az Azure AD-ben| Az Azure AD-ban való kivétel beállítása |
 | - | - | - |
 | Adott hálózatról| Leképezi az Azure AD-ben [elnevezett helyre](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)| A [megbízható helyek](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) **kizárási** beállításának használata |
 | Adott csoportoktól| [Felhasználó/csoport hozzárendelésének beállítása](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| A **kizárás** lehetőség használata a felhasználók és csoportok számára |
@@ -446,11 +446,11 @@ Függetlenül attól, hogy a meglévő külső felhasználók hogyan vannak konf
 Kövesse a cikkben részletezett áttelepítési folyamatot.
 
 Ezután lépjen a [Azure Portalra](https://aad.portal.azure.com/) , és ellenőrizze, hogy sikeres volt-e az áttelepítés. Kövesse az alábbi utasításokat:
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás** lehetőséget, és keresse meg az alkalmazást a listából.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget, és keresse meg az alkalmazást a listából.
 
-1. Válassza a**felhasználók és csoportok** **kezelése** > lehetőséget, ha legalább egy felhasználót vagy csoportot szeretne hozzárendelni az alkalmazáshoz.
+1. Válassza **Manage**  >  a**felhasználók és csoportok** kezelése lehetőséget, ha legalább egy felhasználót vagy csoportot szeretne hozzárendelni az alkalmazáshoz.
 
-1. Válassza a**feltételes hozzáférés** **kezelése** > lehetőséget. Tekintse át a szabályzatok listáját, és ellenőrizze, hogy nem blokkolja-e az alkalmazáshoz való hozzáférést [feltételes hozzáférési szabályzattal](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
+1. Válassza **Manage**a  >  **feltételes hozzáférés**kezelése lehetőséget. Tekintse át a szabályzatok listáját, és ellenőrizze, hogy nem blokkolja-e az alkalmazáshoz való hozzáférést [feltételes hozzáférési szabályzattal](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
 
 Az alkalmazás konfigurálásának módjától függően ellenőrizze, hogy az SSO megfelelően működik-e. 
 
@@ -460,9 +460,9 @@ Az alkalmazás konfigurálásának módjától függően ellenőrizze, hogy az S
 ‎ |
 | SAML-alapú egyszeri bejelentkezés| Használja az **egyszeri bejelentkezés**alatt található [SAML-beállítások tesztelése](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) gombot.  
 ‎ |
-| Jelszó-alapú egyszeri bejelentkezés| Töltse le és telepítse a [MyApps biztonságos bejelentkezési](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[bővítményét](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Ez a bővítmény segítséget nyújt a szervezet olyan felhőalapú alkalmazásainak elindításához, amelyekhez egyszeri bejelentkezéses folyamatot kell használni.  
+| Jelszó-alapú egyszeri bejelentkezés| Töltse le és telepítse a [MyApps biztonságos bejelentkezési](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [bővítményét](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Ez a bővítmény segítséget nyújt a szervezet olyan felhőalapú alkalmazásainak elindításához, amelyekhez egyszeri bejelentkezéses folyamatot kell használni.  
 ‎ |
-| Alkalmazásproxy| Győződjön meg arról, hogy az összekötő fut, és hozzá van rendelve az alkalmazáshoz. További segítségért tekintse meg az [alkalmazásproxy hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) [ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot).  
+| Alkalmazásproxy| Győződjön meg arról, hogy az összekötő fut, és hozzá van rendelve az alkalmazáshoz. További segítségért tekintse meg az [alkalmazásproxy hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) .  
 ‎ |
 
 > [!NOTE]

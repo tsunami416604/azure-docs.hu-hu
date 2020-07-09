@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511093"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>A fejlesztési és tesztelési környezet előkészítése IoT Edge
@@ -43,7 +42,7 @@ Ha más szerkesztővel vagy a parancssori felületről szeretne fejleszteni, a A
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code-bővítmény
 
-A Visual Studio Code-hoz készült Azure IoT Edge bővítmény a következő programozási nyelvekre épülő IoT Edge modul-sablonokat biztosítja: C, C#, Java, Node. js és Python, valamint Azure functions a C#-ban.
+A Visual Studio Code-hoz készült Azure IoT Edge-bővítmény a programozási nyelvekre épülő, a C, a C#, a Java, a Node.js és a Python, valamint a C#-beli Azure functions által készített sablonok IoT Edge.
 
 További információért és a letöltéshez tekintse meg a [Visual Studio Code-hoz készült Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)című témakört.
 
@@ -59,7 +58,7 @@ Egyes nyelvekhez és szolgáltatásokhoz tartozó modul-sablonok előfeltételei
 | C# | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [A JAVA_HOME környezeti változó beállítása](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
-| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node. js-modul generátora](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
+| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js modul generátora](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
 ### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 bővítmény
@@ -97,7 +96,7 @@ További információért és a telepítéshez tekintse meg az [Azure IoT EdgeHu
 
 ### <a name="iot-edge-dev-container"></a>IoT Edge dev-tároló
 
-A Azure IoT Edge fejlesztői tároló egy olyan Docker-tároló, amely a IoT Edge-fejlesztéshez szükséges összes függőséggel rendelkezik. Ez a tároló megkönnyíti az első lépéseket, például a C#, a Python, a Node. js és a Java nyelveket. A telepítéshez csak a Docker vagy a Moby rendszernek kell telepítenie a tárolót a fejlesztői gépre.
+A Azure IoT Edge fejlesztői tároló egy olyan Docker-tároló, amely a IoT Edge-fejlesztéshez szükséges összes függőséggel rendelkezik. Ez a tároló megkönnyíti az első lépéseket, például a C#, a Python, a Node.js és a Java nyelveket. A telepítéshez csak a Docker vagy a Moby rendszernek kell telepítenie a tárolót a fejlesztői gépre.
 
 További információ: [Azure IoT Edge fejlesztői tároló](https://hub.docker.com/r/microsoft/iotedgedev/).
 

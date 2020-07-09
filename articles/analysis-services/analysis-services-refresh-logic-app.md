@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79127024"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
@@ -64,8 +63,8 @@ Konfigurálja a HTTP-tevékenységet a következőképpen:
 
 |Tulajdonság  |Érték  |
 |---------|---------|
-|**Módszer**     |POST         |
-|**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https:\//westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
+|**Metódus**     |POST         |
+|**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
 |**Fejlécek**     |   Content-Type, Application/JSON <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Törzs**     |   A kérés törzsének kialakításával kapcsolatos további tudnivalókért tekintse meg [az aszinkron frissítés a REST API utáni/refreshes](analysis-services-async-refresh.md#post-refreshes)című témakört. |
 |**Hitelesítés**     |Active Directory OAuth         |

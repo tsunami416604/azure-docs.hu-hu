@@ -12,18 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d4281d3b6132e551283a71cd1801ef462fbfc68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33ce2a496caa52609d8bdf8c92e29064ca4ae349
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362040"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft biztonsági kód elemzésének kiadásai és ütemterve
 
-A Microsoft biztonsági kód Analysis Team a Fejlesztői támogatás partnerrel együttműködve büszkén jelenti be, hogy a legújabb és a közelgő fejlesztéseket a MSCA-bővítményben mutatjuk be. Tekintse meg az alábbi ütemtervet.
+A Microsoft biztonsági kód Analysis Team a Fejlesztői támogatás partnerrel együttműködve büszkén jelenti be, hogy a legújabb és a közelgő fejlesztéseket a MSCA-bővítményben mutatjuk be.
 
-![Kiadások](./media/security-code-analysis-releases/releases.png)
 
 ## <a name="credential-scanner-v20-released-in-april-2020"></a>Hitelesítőadat-olvasó v 2.0: megjelent április 2020
 
@@ -54,18 +53,25 @@ A Microsoft biztonsági kód Analysis Team a Fejlesztői támogatás partnerrel 
 
 ### <a name="improvements"></a>Fejlesztései
 
-- SZOLGÁLTATÁS: frissítés a Final SARIF v2-re (2.1.16 verzió). Ez lehetővé teszi, hogy az eredmények gyorsítótárazása a parancssorból történő továbbításkor történjen, jelentős teljesítmény-javulást jelent, amikor rekurzív módon elemzi a címtárakat a vizsgálati célok több példányával.
+- SZOLGÁLTATÁS: frissítés a Final SARIF v2-re (2.1.16 verzió). Ez a frissítés lehetővé teszi az eredmények gyorsítótárazását a parancssorból történő továbbításkor, jelentős teljesítménybeli javulást jelent, ha a címtárakat a vizsgálati célok több példányát tartalmazó könyvtárak rekurzív elemzésével végzi.
 - HIBAJAVÍTÁS: a BA2021 helyesírásának javítása. DoNotMarkWritableSectionsAsExecutable kimenete.
 - TELJESÍTMÉNY: a PDB betöltésének megszüntetése a felügyelt szerelvények összes nem vegyes üzemmódja számára, beleértve az IL-függvénytárat (az idő előtt lefordított) bináris fájlokat.
 - HAMIS negatív javítás: annak ellenőrzése, hogy egy, a bináris fájl mellé helyezett PDB az elemzés alatt álló bináris ÉRTÉKkel egyezik-e.
 - SZOLGÁLTATÁS: adja meg a--local-Symbol-könyvtárak argumentumot a további (helyi, nem szimbólum-kiszolgáló) PDB kikeresési helyeinek megadásához.
 - HAMIS pozitív javítás: hagyja ki a PDB-alapú elemzést a generált .NET Core Native bootstrap exe-re (amely nem felhasználó által irányítható kód).
 
-## <a name="whats-next-in-fy20"></a>Mi a következő lépés a FY20-ben?
+## <a name="whats-next-in-q3-cy20"></a>Mi a következő lépés a Q3 CY20?
 
 - Java Security Analysis Tool
 - Python biztonsági elemzési eszköz
 - Az írógéppel és a JavaScripthez tartozó
+- Resource Manager-sablonok Analysis Tool
+
+## <a name="tool-deprecation-notification"></a>Eszköz elavult értesítése
+
+### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>A Microsoft biztonsági kockázatok észlelése (MSRD) a 26 2020-es júniusi elavult.
+
+Az elavult MSRD-kivonási szolgáltatást egy nyílt forráskódú, saját üzemeltetésű fejlesztői fuzzy platformmal helyettesíti az Azure-hoz. Ez a platform jelenleg fejlesztés alatt áll és tesztelve van a Microsoft alapvető termékcsoportok számos tagja számára. Ez a zavaros platform integrálja a fertőtlenítő szoftvereket, és lehetővé teszi a CI/CD-folyamatokban beépített, alkalmazkodó, tanulási fuzz-teszteket, amelyekkel idővel bővülnek a szoftverek projektjei. A platform nyílt forráskódú kiadása a 2020-as utolsó felére van ütemezve.
 
 ## <a name="next-steps"></a>További lépések
 

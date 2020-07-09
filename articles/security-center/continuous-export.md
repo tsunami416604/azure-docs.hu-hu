@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299944"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok exportálása
 
@@ -28,6 +27,21 @@ Az alábbi eszközöket használhatja:
 * Exportálás CSV-be (egy alkalommal)
 
 
+
+
+## <a name="availability"></a>Rendelkezésre állás
+
+- Kiadás állapota: **általánosan elérhető**
+- Szükséges szerepkörök és engedélyek:
+    - Az exportálási konfigurációt tartalmazó előfizetés **olvasója**
+    - **Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)
+    - A cél erőforráshoz is írási engedéllyel kell rendelkeznie
+- Felhők 
+    - ✔ Kereskedelmi felhők
+    - ✔ US Gov
+    - ✘ China gov, egyéb gov
+
+
 ## <a name="setting-up-a-continuous-export"></a>Folyamatos exportálás beállítása
 
 Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos exportálást állít be Log Analytics munkaterületre vagy az Azure Event Hubsra.
@@ -38,7 +52,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     
 1. Az előfizetés beállítások oldalának oldalsávján válassza a **folyamatos exportálás**lehetőséget.
 
-    Exportálási beállítások a Azure Security Center [ ![](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) Itt láthatja az exportálási beállításokat. Minden elérhető exportálási célponthoz van egy lap. 
+    A [ ![ Azure Security Center exportálási](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) lehetőségei itt láthatók az exportálási beállítások. Minden elérhető exportálási célponthoz van egy lap. 
 
 1. Válassza ki az exportálni kívánt adattípust, és válasszon az egyes típusok szűrőinek közül (például csak a nagy súlyosságú riasztások exportálása).
 

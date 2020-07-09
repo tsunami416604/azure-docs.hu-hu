@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a2d0322436bd91e92a7018552c5827e021ee74e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79477765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851518"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: standard Load Balancer létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
 
@@ -58,7 +58,7 @@ Az 1. zónában lévő, Zona nyilvános IP-cím létrehozásához használja a k
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-Alapszintű nyilvános IP-cím létrehozásához használja `-SKU Basic` . Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** Load balancerrel. A Microsoft a **standard szintű** használatot javasolja a termelési munkaterhelésekhez.
+`-SKU Basic`Alapszintű nyilvános IP-cím létrehozásához használja. Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** Load balancerrel. A Microsoft a **standard szintű** használatot javasolja a termelési munkaterhelésekhez.
 
 > [!IMPORTANT]
 > A rövid útmutató további része azt feltételezi, hogy a **standard** SKU a fenti SKU kiválasztási folyamat során lett kiválasztva.
@@ -73,7 +73,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva. Alapszintű nyilvános IP-cím létrehozásához használja `--sku basic` . A Microsoft a szabványos SKU-t javasolja az éles számítási feladatokhoz.
+Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva. Alapszintű Load Balancer létrehozásához használja a következőt: `--sku basic` . A Microsoft a szabványos SKU-t javasolja az éles számítási feladatokhoz.
 
 ```azurecli-interactive
   az network lb create \
@@ -302,7 +302,7 @@ A terheléselosztó nyilvános IP-címének lekéréséhez használja az [az net
 
    ![Terheléselosztó tesztelése](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és az összes kapcsolódó erőforrás.
 

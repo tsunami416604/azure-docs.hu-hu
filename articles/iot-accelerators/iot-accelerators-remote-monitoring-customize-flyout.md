@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193173"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni menü hozzáadása a távoli figyelési megoldás webes felhasználói felületéhez
@@ -47,11 +47,11 @@ Ha a webes felhasználói felülethez hozzá szeretne adni egy kijelzőt, hozzá
 
 Az első lépésekhez az **src/walkthrough/Components/Pages/pageWithFlyout/menüs/exampleFlyout** mappa tartalmazza azokat a fájlokat, amelyek a következőt határozzák meg:
 
-**exampleFlyout. Container. js**
+**exampleFlyout.container.js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**exampleFlyout. js**
+**exampleFlyout.js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
@@ -59,7 +59,7 @@ Másolja a **src/walkthrough/Components/Pages/pageWithFlyout/a menüket** tartal
 
 ### <a name="add-the-flyout-to-the-page"></a>A képernyő hozzáadása az oldalhoz
 
-Módosítsa az **src/Components/Pages/example/basicPage. js fájlt** a következő érték hozzáadásához:.
+Módosítsa az **src/Components/Pages/example/basicPage.jselemet** a következő érték hozzáadásához:.
 
 Adja hozzá a **BTN** az **összetevők/megosztott** importálások és a **svgs** és a **ExampleFlyoutContainer**importálásához:
 
@@ -133,7 +133,7 @@ Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő
 npm start
 ```
 
-Az előző parancs helyileg futtatja a felhasználói `http://localhost:3000/dashboard`felületet. Navigáljon a **példa** lapra, és kattintson a **nyílra**.
+Az előző parancs helyileg futtatja a felhasználói felületet `http://localhost:3000/dashboard` . Navigáljon a **példa** lapra, és kattintson a **nyílra**.
 
 ## <a name="next-steps"></a>További lépések
 

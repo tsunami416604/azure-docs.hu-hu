@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ac15317fe45573805ff7f6395884f7cb101fec3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546597"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112833"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
 Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
@@ -41,9 +41,10 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | Észak-Kína | 139.219.15.17    |
 | Észak-Kína 2 | 40.73.50.0     |
 | Kelet-Ázsia | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| USA keleti régiója | 40.121.158.30, 191.238.6.43  |
+| USA keleti régiója | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113   |
 | USA 2. keleti régiója |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Közép-Franciaország | 40.79.137.0, 40.79.129.1  |
+| Dél-Franciaország | 40.79.177.0     |
 | Közép-Németország | 51.4.144.100     |
 | Kelet-Észak-Németország | 51.5.144.179  |
 | Közép-India | 104.211.96.159     |
@@ -69,7 +70,7 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | USA nyugati régiója, 2. | 13.66.226.202  |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)

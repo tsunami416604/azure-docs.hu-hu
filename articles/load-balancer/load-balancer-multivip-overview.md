@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022811"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956372"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
@@ -102,20 +102,31 @@ A háttér-készletben lévő minden egyes virtuális géphez futtassa a követk
 
 A virtuális gépen található interfész-nevek listájának lekéréséhez írja be a következő parancsot:
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 A VM NIC (Azure Managed) esetében írja be a következő parancsot:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (a InterfaceName helyére írja be az interfész nevét)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+(a InterfaceName helyére írja be az interfész nevét)
 
 Az egyes hozzáadott visszacsatolási felületek esetében ismételje meg a következő parancsokat:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (cserélje le a InterfaceName-t a visszacsatolási felület nevére)
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (cserélje le a InterfaceName-t a visszacsatolási felület nevére)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+(cserélje le a InterfaceName-t a visszacsatolási felület nevére)
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+(cserélje le a InterfaceName-t a visszacsatolási felület nevére)
 
 > [!IMPORTANT]
 > A visszacsatolási felületek konfigurációja a vendég operációs rendszeren belül történik. Ezt a konfigurációt az Azure nem végzi el vagy nem kezeli. Ezen konfiguráció nélkül a szabályok nem fognak működni. Az állapot-mintavételi definíciók a virtuális gép DIP felületét használják a DSR-felületet jelképező visszacsatolási interfész helyett. Ezért a szolgáltatásnak mintavételi válaszokat kell adnia egy olyan DIP-porton, amely tükrözi a DSR-felületet jelképező visszacsatolási felületen kínált szolgáltatás állapotát.

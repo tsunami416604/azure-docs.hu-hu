@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82136481"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Erőforrás-csoport és erőforrás-törlés Azure Resource Manager
@@ -21,7 +21,7 @@ Egy erőforráscsoport törlésekor a Resource Manager meghatározza az erőforr
 
 1. Az összes alárendelt (beágyazott) erőforrás törölve.
 
-2. A többi erőforrást kezelő erőforrásokat a következő lépéssel törli a rendszer. Egy erőforrás rendelkezhet `managedBy` úgy, hogy egy másik erőforrás felügyelje azt. Ha ez a tulajdonság be van állítva, a másik erőforrást kezelő erőforrás törlődik a többi erőforrás előtt.
+2. A többi erőforrást kezelő erőforrásokat a következő lépéssel törli a rendszer. Egy erőforrás rendelkezhet úgy `managedBy` , hogy egy másik erőforrás felügyelje azt. Ha ez a tulajdonság be van állítva, a másik erőforrást kezelő erőforrás törlődik a többi erőforrás előtt.
 
 3. A fennmaradó erőforrásokat az előző két kategória után törli a rendszer.
 

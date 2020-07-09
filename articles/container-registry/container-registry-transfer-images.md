@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006325"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
@@ -132,7 +131,7 @@ Hozzon létre egy ExportPipeline-erőforrást a forrás-tároló beállításjeg
 
 Másolja az ExportPipeline Resource Manager- [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/ExportPipelines) egy helyi mappába.
 
-Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json`:
+Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json` :
 
 |Paraméter  |Érték  |
 |---------|---------|
@@ -162,7 +161,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját`id`(). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
+A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -178,7 +177,7 @@ Hozzon létre egy ImportPipeline-erőforrást a cél tároló beállításjegyz�
 
 Másolja az ImportPipeline Resource Manager- [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/ImportPipelines) egy helyi mappába.
 
-Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json`:
+Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json` :
 
 Paraméter  |Érték  |
 |---------|---------|
@@ -208,7 +207,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját`id`(). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
+Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -224,7 +223,7 @@ Hozzon létre egy PipelineRun-erőforrást a forrás-tároló beállításjegyz�
 
 Másolja az PipelineRun Resource Manager- [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export) egy helyi mappába.
 
-Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json`:
+Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json` :
 
 |Paraméter  |Érték  |
 |---------|---------|
@@ -257,7 +256,7 @@ az storage blob list \
 
 A AzCopy eszköz vagy más módszerek használatával a [blob-adatok átvitele](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) a forrás Storage-fiókból a cél Storage-fiókba.
 
-A következő [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) parancs például a myblob lévő *átvitel* tárolóból másolja át az *átvitel* tárolóba a cél fiókba. Ha a blob létezik a cél fiókban, az felülírva van. A hitelesítés SAS-jogkivonatokat használ a forrás és a cél tárolók megfelelő engedélyeivel. (A jogkivonatok létrehozásának lépései nem jelennek meg.)
+A következő parancs például a [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) myblob lévő *átvitel* tárolóból másolja át az *átvitel* tárolóba a cél fiókba. Ha a blob létezik a cél fiókban, az felülírva van. A hitelesítés SAS-jogkivonatokat használ a forrás és a cél tárolók megfelelő engedélyeivel. (A jogkivonatok létrehozásának lépései nem jelennek meg.)
 
 ```console
 azcopy copy \
@@ -282,7 +281,7 @@ PipelineRun-erőforrást is használhat, amellyel elindíthat egy ImportPipeline
 
 Másolja az PipelineRun Resource Manager- [sablonfájlokat](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Import) egy helyi mappába.
 
-Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json`:
+Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.parameters.json` :
 
 |Paraméter  |Érték  |
 |---------|---------|
@@ -327,7 +326,7 @@ az deployment group delete \
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 * **Hibák vagy hibák Template deployment**
-  * Ha egy folyamat futtatása sikertelen, tekintse meg `pipelineRunErrorMessage` a futtatási erőforrás tulajdonságát.
+  * Ha egy folyamat futtatása sikertelen, tekintse meg a `pipelineRunErrorMessage` futtatási erőforrás tulajdonságát.
   * A sablonok általános telepítési hibáiért lásd: [ARM-sablonok központi telepítésének hibaelhárítása](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
 * **A tárolási Blobok exportálásával vagy importálásával kapcsolatos problémák**
   * Lehet, hogy az SAS-jogkivonat lejárt, vagy nem rendelkezik megfelelő engedélyekkel a megadott exportálási vagy importálási futtatáshoz.

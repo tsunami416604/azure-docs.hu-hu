@@ -54,6 +54,10 @@
       href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+- name: Alapelvek
+  items:
+    - name: Felügyelt identitások és Azure-beli virtuális gépek
+      href: how-managed-identities-work-vm.md
 - name: Útmutatók
   items:
     - name: Felügyelt identitások konfigurálása virtuális gépeken

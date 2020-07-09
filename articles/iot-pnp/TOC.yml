@@ -4,7 +4,7 @@
   items:
     - name: Mi az IoT Plug and Play?
       href: overview-iot-plug-and-play.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Eszköz létrehozása
@@ -19,7 +19,7 @@
           href: quickstart-connect-pnp-device-c-linux.md
         - name: C Windows
           href: quickstart-connect-pnp-device-c-windows.md
-        - name: 'C#'
+        - name: C#
           href: quickstart-connect-pnp-device-csharp.md
         - name: Java
           href: quickstart-connect-pnp-device-java.md
@@ -29,13 +29,13 @@
       href: ../iot-central/core/tutorial-connect-pnp-device.md
     - name: Csatlakozás a megoldásban található eszközhöz
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstart-connect-pnp-device-solution-csharp.md
         - name: Java
           href: quickstart-connect-pnp-device-solution-java.md
         - name: Node.js
           href: quickstart-connect-pnp-device-solution-node.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Eszköz létrehozása a VS Code használatával
       href: tutorial-pnp-visual-studio-code.md
@@ -83,6 +83,10 @@
           href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
         - name: REST biztonsági jogkivonat létrehozása
           href: howto-generate-sas-token.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
@@ -91,7 +95,7 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Hub eszközkiépítési szolgáltatás
+        - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -108,6 +112,6 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

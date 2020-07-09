@@ -4,16 +4,16 @@ description: A diagnosztikai UX eszköz üzembe helyezése a Windows rendszerű 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362339"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -68,7 +68,7 @@ Ez a szakasz bemutatja, hogyan hozhatja létre a Azure Active Directory alkalmaz
    ```powershell
    Connect-AzureAD
    ```
-4. Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateADAppRegistrationforDiagnostics. ps1** parancsfájlt a PowerShellben.
+4. Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateADAppRegistrationforDiagnostics.ps1** szkriptet a PowerShellben.
 5.  Ha a parancsfájl megkéri az alkalmazás nevének megadására, adjon meg egy egyedi nevet.
 
 
@@ -93,7 +93,7 @@ PowerShell-parancsfájl futtatásával Log Analytics munkaterületet hozhat lét
 A PowerShell-parancsfájl futtatása:
 
 1.  Nyissa meg a PowerShellt rendszergazdaként.
-2.  Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateLogAnalyticsWorkspaceforDiagnostics. ps1** parancsfájlt a PowerShellben.
+2.  Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** szkriptet a PowerShellben.
 3. Adja meg a következő értékeket a paraméterekhez:
 
     - A **ResourceGroupName**mezőben adja meg az erőforráscsoport nevét.
@@ -115,13 +115,13 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Ezután lépjen **log Analytics munkaterületek** elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 3. A **Beállítások** szakaszban válassza a **Speciális beállítások**lehetőséget.
-4. Ezt követően navigáljon az**adatwindows-teljesítményszámlálók** **elemhez** > , és adja hozzá a következő számlálókat:
+4. Ezt követően navigáljon az **Data**  >  **adatwindows-teljesítményszámlálók** elemhez, és adja hozzá a következő számlálókat:
 
-    -   LogicalDisk (\*)\\% szabad terület
-    -   LogicalDisk (C:)\\átlagos Lemezvezérlő-várólista hossza
-    -   Memória (\*)\\elérhető MB-ban
-    -   Processzor adatai (\*)\\processzoridő
-    -   Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetése
+    -   LogicalDisk ( \* ) \\ % szabad terület
+    -   LogicalDisk (C:) \\ átlagos Lemezvezérlő-várólista hossza
+    -   Memória ( \* ) \\ elérhető MB-ban
+    -   Processzor adatai ( \* ) \\ processzoridő
+    -   Felhasználói bemeneti késleltetés/munkamenet ( \* ) \\ maximális bemeneti késleltetése
 
 További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -147,14 +147,14 @@ Győződjön meg arról, hogy a Log Analytics munkaterület előre konfigurált 
 
 1. A [Azure Portal](https://portal.azure.com/)válassza a **log Analytics munkaterületek** lehetőséget a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 2. A **Beállítások**területen válassza a **Speciális beállítások**lehetőséget.
-3. Ezután nyissa **meg a** > következőt:**adatwindows-teljesítményszámlálók**.
+3. Ezután nyissa **meg a**következőt:  >  **adatwindows-teljesítményszámlálók**.
 4. Győződjön meg arról, hogy a következő számlálók előre vannak konfigurálva:
 
-   - LogicalDisk (\*)\\% szabad terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
-   - LogicalDisk (C:)\\– átlagos Lemezvezérlő-várólista hossza: a c meghajtóhoz tartozó lemezes átviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
-   - Memória (\*)\\rendelkezésre álló MB-ban: a rendszer számára rendelkezésre álló memória megabájtban.
-   - Processzor adatai (\*)\\processzoridő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
-   - Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetése
+   - LogicalDisk ( \* ) \\ % szabad terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
+   - LogicalDisk (C:) – átlagos lemezvezérlő- \\ várólista hossza: a c meghajtóhoz tartozó lemezes átviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
+   - Memória ( \* ) \\ rendelkezésre álló MB-ban: a rendszer számára rendelkezésre álló memória megabájtban.
+   - Processzor adatai ( \* ) \\ processzoridő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
+   - Felhasználói bemeneti késleltetés/munkamenet ( \* ) \\ maximális bemeneti késleltetése
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Kapcsolódás virtuális gépekhez a Log Analytics munkaterületen
 
@@ -193,11 +193,12 @@ Az átirányítási URI beállítása:
 4.  A bal oldali panel kezelés területén válassza a **hitelesítés**lehetőséget.
 5.  Adja meg a kívánt átirányítási URI-t az **átirányítási URI** szövegmezőbe, majd kattintson a menü bal felső sarkában található **Mentés** elemre.
 6. A típus alatt válassza a **web** lehetőséget a legördülő menüben.
-7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Például: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Példa: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![Az átirányítási URI-lap](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Az átirányítási URI-lap](../media/redirect-uri-page.png)
 
-8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban használt alkalmazás neve `contosoapp45`, akkor a társított URL-cím: <https://contosoapp45.azurewebsites.net>).
+8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban használt alkalmazás neve `contosoapp45` , akkor a társított URL-cím: <https://contosoapp45.azurewebsites.net> ).
 9. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
 10.   Válassza ki az **Elfogadás** lehetőséget.
 
@@ -226,7 +227,7 @@ A tevékenységek timestamp szerint vannak rendezve, a legújabb tevékenységge
 
 A kapcsolódási tevékenységek több hibával is rendelkezhetnek. A tevékenységtípus kibontásával megtekintheti, hogy a felhasználó milyen hibákat észlelt. Válassza ki a hibakód nevét egy párbeszédpanel megnyitásához, ahol további információkat tekinthet meg róla.
 
-### <a name="investigate-the-session-host"></a>A munkamenet-gazdagép vizsgálata 
+### <a name="investigate-the-session-host"></a>A munkamenet-gazdagép vizsgálata
 
 A keresési eredmények között keresse meg és válassza ki azt a munkamenet-gazdagépet, amelyről adatokat szeretne használni.
 
@@ -242,26 +243,26 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows teljesítményszámláló küszöbértékei
 
-- LogicalDisk (\*)\\% szabad terület:
+- LogicalDisk ( \* ) \\ % szabad terület:
 
     - A logikai lemez szabad területének teljes felhasználható területének százalékos arányát jeleníti meg.
     - Küszöbérték: a 20%-nál kevesebb érték van megjelölve sérültként.
 
-- LogicalDisk (C:)\\átlagos Lemezvezérlő-várólista hossza:
+- LogicalDisk (C:) \\ átlagos Lemezvezérlő-várólista hossza:
 
     - A tárolási rendszerfeltételeket jelöli.
     - Küszöbérték: az 5-nél nagyobb érték van megjelölve sérültként.
 
-- Memória (\*)\\rendelkezésre álló MB-ban:
+- Memória ( \* ) \\ rendelkezésre álló MB-ban:
 
     - A rendszer számára rendelkezésre álló memória.
     - Küszöbérték: nem kifogástalanként megjelölt 500 megabájtnál kisebb.
 
-- Processzor adatai (\*)\\processzoridő:
+- Processzor adatai ( \* ) \\ processzoridő:
 
     - Küszöbérték: a 80%-nál nagyobb érték van megjelölve sérültként.
 
-- [Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
+- [Felhasználói bemeneti késleltetés/munkamenet ( \* ) \\ maximális bemeneti késleltetés](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 315d8bce655cdf21160e3b4c75d2182ff41200a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 37d3127ed9082c73218aede7daf054f0bfe3df2c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666053"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ColorTokens-ZTNA
 
@@ -82,11 +82,8 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<COLORMASTER_HOST>/colormaster/api/v1/<TENANT_NAME>/saml/login?resourceId=<RESOURCEID>&iwa=<TRUE/FALSE>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<tenantname>.spectrum.colortokens.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<COLORMASTER_HOST>.com/<TENANT_NAME>`
-
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<COLORMASTER_HOST>.com/<TENANT_NAME>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a ColorTokens ZTNA-ügyfélszolgálati [csapatához](mailto:support@colortokens.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -97,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a ColorTokens ZTNA alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ------------- | --------- |
     | Részleg | User. userPrincipalName |
     | Csoport | User. groups |

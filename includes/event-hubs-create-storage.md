@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75692576"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
@@ -22,7 +22,7 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
 
     ![Erőforrás menüelem létrehozása Microsoft Azure Portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. Válassza a **Storage** > **Storage-fiók**lehetőséget.
+2. Válassza a **Storage**  >  **Storage-fiók**lehetőséget.
    
     ![Válassza ki a Storage-fiókot, Microsoft Azure Portal](./media/event-hubs-create-storage/select-storage-account.png)
 

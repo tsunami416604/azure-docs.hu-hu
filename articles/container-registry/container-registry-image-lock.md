@@ -4,10 +4,9 @@ description: Adja meg a tárolók rendszerképének vagy tárházának attribút
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659696"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
@@ -17,7 +16,7 @@ Az Azure Container registryben zárolhatja a rendszerkép verzióját vagy a tá
 Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.0.55 vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!IMPORTANT]
-> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portalban vagy `az lock` az Azure CLI parancsai. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/management/lock-resources.md)érdekében.
+> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portalban vagy `az lock` Az Azure CLI parancsai. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/management/lock-resources.md)érdekében.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -69,7 +68,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Rendszerkép zárolása manifest Digest használatával
 
-A manifest Digest által azonosított *myrepo-vagy myimage* 256 `sha256:...`-rendszerkép zárolásához futtassa a következő parancsot: (Egy vagy több képcímkéhez társított jegyzékfájl megkereséséhez futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancsot.)
+A manifest Digest által azonosított *myrepo-vagy myimage* 256-rendszerkép zárolásához `sha256:...` futtassa a következő parancsot: (Egy vagy több képcímkéhez társított jegyzékfájl megkereséséhez futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancsot.)
 
 ```azurecli
 az acr repository update \

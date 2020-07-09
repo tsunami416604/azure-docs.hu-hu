@@ -7,12 +7,11 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5845a49dbb003c184b9520f85e6f1be14315081b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267999"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances Azure biztonsági alapterve
 
@@ -101,7 +100,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
-* [Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
+* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 * [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
@@ -157,7 +156,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 **Útmutató**: az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, a RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el. 
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manag)
+* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 * [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/#network)
 

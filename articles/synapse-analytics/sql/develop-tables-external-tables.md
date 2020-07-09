@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701438"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921811"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -96,13 +96,17 @@ data_source_name
 Megadja az adatforrás felhasználó által definiált nevét. A névnek egyedinek kell lennie az adatbázison belül.
 
 #### <a name="location"></a>Hely
-LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a külső adatforrás elérési útját. Az elérési út tartalmazhat egy tárolót a formájában `'<prefix>://<path>/container'` , valamint egy mappát is `'<prefix>://<path>/container/folder'` .
+LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a külső adatforrás elérési útját. A következő mintákat lehet használni a helyen:
 
 | Külső adatforrás        | Hely előtagja | Hely elérési útja                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
 | 1. generációs Azure Data Lake Store | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | 2. generációs Azure Data Lake Store | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+
+`https:`az előtag lehetővé teszi az elérési út almappájának használatát.
 
 #### <a name="credential"></a>Hitelesítő adat
 HITELESÍTŐADAT = `<database scoped credential>` opcionális hitelesítő adat, amely az Azure Storage-ban való hitelesítéshez használatos. A hitelesítő adatok nélküli külső adatforrás hozzáférhet a nyilvános Storage-fiókhoz. 
@@ -124,7 +128,7 @@ Az alábbi példa egy külső adatforrást hoz létre Azure Data Lake Gen2 a New
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://newyorktaxidataset.azuredatalakestore.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;
@@ -300,7 +304,7 @@ Ha a mappa helyét adja meg, egy SQL igény szerinti lekérdezés a külső táb
 > [!NOTE]
 > A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Azokat a fájlokat adja vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
-Ebben a példában, ha a LOCATION = '/WebData/', egy SQL igény szerinti lekérdezés, akkor a SajátAdatok. txt és a _hidden. txt fájl sorait fogja visszaadni. A mydata2. txt és a mydata3. txt fájlt nem fogja visszaadni, mert egy almappában találhatók.
+Ebben a példában, ha a LOCATION = '/WebData/', egy SQL igény szerinti lekérdezés, mydata.txt és _hidden.txt sorokat ad vissza. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
 ![Rekurzív adatértékek külső táblákhoz](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -371,6 +375,6 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti [a Apache Spark lekérdezését az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

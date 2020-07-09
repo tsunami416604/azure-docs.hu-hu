@@ -4,10 +4,9 @@ description: Az elemzési lekérdezések a Power BIban is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663997"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Hírcsatorna-Power BI Application Insights
@@ -36,7 +35,7 @@ Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 3. Az **Exportálás** menüben válassza a **Power bi (M)** lehetőséget. Mentse a szövegfájlt.
    
     ![Képernyőkép az elemzésről, az Exportálás menü kiemelve](./media/export-power-bi/analytics-export-power-bi.png)
-4. A Power bi Desktop **területen válassza az** > **adatlekérdezés üres lekérdezés**lehetőséget. Ezután a lekérdezés szerkesztő **nézet**területén válassza a **speciális szerkesztő**lehetőséget.
+4. A Power bi Desktop **területen válassza az**  >  **adatlekérdezés üres lekérdezés**lehetőséget. Ezután a lekérdezés szerkesztő **nézet**területén válassza a **speciális szerkesztő**lehetőséget.
 
     Illessze be az exportált M nyelvi szkriptet a Speciális szerkesztőba.
 
@@ -61,7 +60,7 @@ Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Power BI gomb képernyőképe](./media/export-power-bi/button.png)
 
-3. A Power bi Desktop **területen válassza az** > **adatlekérdezés üres lekérdezés**lehetőséget. Ezután a lekérdezés szerkesztő **nézet**területén válassza a **speciális szerkesztő**lehetőséget.
+3. A Power bi Desktop **területen válassza az**  >  **adatlekérdezés üres lekérdezés**lehetőséget. Ezután a lekérdezés szerkesztő **nézet**területén válassza a **speciális szerkesztő**lehetőséget.
 
    ![Képernyőkép a Power BI Desktopről, az üres lekérdezés gomb kiemelve](./media/export-power-bi/blankquery.png)
 
@@ -98,8 +97,8 @@ Ha az elemzési lekérdezésből származó adatkészlet csökkentése nem felel
 
 1. Hozzon létre egy [API-kulcsot](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Frissítse az elemzésből exportált Power BI M parancsfájlt a Azure Resource Manager URL-cím a Application Insights API-val való lecserélésével.
-   * **Https:\//Management.Azure.com/Subscriptions/cseréje..** .
-   * , **https:\//API.applicationinsights.IO/Beta/apps/..** .
+   * **Https: \/ /Management.Azure.com/Subscriptions/cseréje..** .
+   * , **https: \/ /API.applicationinsights.IO/Beta/apps/..** .
 3. Végül frissítse a hitelesítő adatokat az alapszintű verzióra, és használja az API-kulcsot.
 
 **Meglévő parancsfájl**
@@ -119,7 +118,7 @@ Ez a metódus létrehoz egy teljes irányítópultot a telemetria. A kezdeti ada
 
 ### <a name="get-the-adapter"></a>Az adapter beszerzése
 1. Jelentkezzen be a [Power BI-ba](https://app.powerbi.com/).
-2. Nyissa meg az **adatolvasás** ![képernyőképet a GetData](./media/export-power-bi/001.png)ikon bal alsó sarkában, a **szolgáltatások**területen.
+2. Nyissa meg az **adatolvasás** ![ képernyőképet a GetData ikon bal alsó sarkában ](./media/export-power-bi/001.png) , a **szolgáltatások**területen.
 
     ![A Application Insights adatforrásból beolvasott adatok képernyőképei](./media/export-power-bi/002.png)
 

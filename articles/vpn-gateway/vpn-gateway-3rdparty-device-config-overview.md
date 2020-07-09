@@ -4,15 +4,14 @@ description: Ez a cikk áttekintést nyújt a partner VPN-eszköz konfiguráció
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84988072"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>A partneri VPN-eszközök konfigurációinak áttekintése
 Ez a cikk áttekintést nyújt a helyszíni VPN-eszközök konfigurálásáról az Azure VPN Gateway-hez való csatlakozáshoz. A minta Azure-beli virtuális hálózat és a VPN-átjáró beállításával megtudhatja, hogyan csatlakozhat a különböző helyszíni VPN-eszközök konfigurációhoz ugyanazzal a paraméterekkel.

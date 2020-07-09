@@ -2,21 +2,21 @@
 title: SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 description: Ez a cikk a Transact-SQL (T-SQL) közötti különbségeket ismerteti az Azure SQL felügyelt példányai és SQL Server között.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 03/11/2020
+ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 89b33f22cf5e6f08b42fca0e8966a36001bdb29f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298447"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,9 +24,9 @@ ms.locfileid: "84116755"
 Ez a cikk a felügyelt Azure SQL-példány és a SQL Server szintaxisának és viselkedésének különbségeit összegzi és ismerteti. 
 
 
-Az SQL felügyelt példánya magas kompatibilitást biztosít a helyszíni SQL Server adatbázis-motorral, és a legtöbb funkció támogatott egy SQL felügyelt példányban.
+Az SQL felügyelt példánya magas kompatibilitást biztosít a SQL Server adatbázis-motorral, és a legtöbb funkció támogatott egy SQL felügyelt példányban.
 
-![Migrálás](./media/transact-sql-tsql-differences-sql-server/migration.png)
+![Áttelepítés](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
 Néhány, a felügyelt SQL-példányban bevezetett, és a SQL Serverhoz képest valamilyen viselkedési változás következik be. A különbségek a következő kategóriákba vannak osztva:<a name="Differences"></a>
 
@@ -54,7 +54,7 @@ A [magas rendelkezésre állás](../database/high-availability-sla.md) be van é
 
 ### <a name="backup"></a>Backup
 
-Az SQL felügyelt példányai automatikus biztonsági mentéssel rendelkeznek, így a felhasználók teljes adatbázis `COPY_ONLY` biztonsági másolatokat hozhatnak létre. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
+A felügyelt SQL-példányok automatikus biztonsági mentéssel rendelkeznek, így a felhasználók teljes adatbázis `COPY_ONLY` biztonsági másolatokat hozhatnak létre. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
 
 - A felügyelt SQL-példányok esetében csak egy Azure Blob Storage-fiókra készíthet biztonsági másolatot egy példány-adatbázisról:
   - Csak `BACKUP TO URL` a támogatott.
@@ -78,7 +78,7 @@ Korlátozások:
     > - Töltse fel a biztonságimásolat-fájlokat a blob Storage-ba.
     > - Állítsa vissza az SQL felügyelt példányát.
     >
-    > A `Restore` felügyelt SQL-példányok parancsa nagyobb blob-méreteket támogat a biztonságimásolat-fájlokban, mert egy másik blob-típust használ a feltöltött biztonságimásolat-fájlok tárolásához.
+    > A `Restore` felügyelt SQL-példányon lévő parancs támogatja a nagyobb blob-méreteket a biztonságimásolat-fájlokban, mert egy másik blob-típust használ a feltöltött biztonságimásolat-fájlok tárolásához.
 
 A T-SQL használatával történő biztonsági mentéssel kapcsolatos információkért lásd: [biztonsági mentés](/sql/t-sql/statements/backup-transact-sql).
 
@@ -97,7 +97,7 @@ Az SQL felügyelt példány XEvent-naplózása támogatja az Azure Blob Storage-
 Az `CREATE AUDIT` Azure Blob Storage-ba való naplózás szintaxisának főbb eltérései a következők:
 
 - Új szintaxissal `TO URL` megadható az Azure Blob Storage-tároló URL-címe, ahol a `.xel` fájlok el vannak helyezve.
-- A szintaxis `TO FILE` nem támogatott, mert egy SQL felügyelt példány nem fér hozzá a Windows-fájlmegosztáshoz.
+- A szintaxis `TO FILE` nem támogatott, mert az SQL felügyelt példánya nem fér hozzá a Windows-fájlmegosztást.
 
 További információkért lásd: 
 
@@ -107,7 +107,7 @@ További információkért lásd:
 
 ### <a name="certificates"></a>Tanúsítványok
 
-A felügyelt SQL-példányok nem férnek hozzá a fájlmegosztás és a Windows-mappák eléréséhez, így a következő korlátozások érvényesek:
+A felügyelt SQL-példány nem fér hozzá a fájlmegosztás és a Windows-mappák eléréséhez, így a következő korlátozások érvényesek:
 
 - A `CREATE FROM` / `BACKUP TO` fájl nem támogatott tanúsítványokhoz.
 - A `CREATE` / `BACKUP` tanúsítvány `FILE` / `ASSEMBLY` nem támogatott. A titkos kulcs fájljai nem használhatók. 
@@ -130,7 +130,7 @@ Lásd: [hitelesítő adatok létrehozása](/sql/t-sql/statements/create-credenti
 
 ### <a name="cryptographic-providers"></a>Kriptográfiai szolgáltatók
 
-Egy felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási szolgáltatók nem hozhatók létre:
+A felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási szolgáltatók nem hozhatók létre:
 
 - `CREATE CRYPTOGRAPHIC PROVIDER`nem támogatott. Lásd: [titkosítási szolgáltató létrehozása](/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER`nem támogatott. Lásd: a [kriptográfiai szolgáltató módosítása](/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
@@ -159,19 +159,19 @@ Egy felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási 
     - VÉGREHAJTÁS FELHASZNÁLÓKÉNT
     - VÉGREHAJTÁS BEJELENTKEZÉSKÉNT
 
-- Az adatbázis-Exportálás/Importálás a bacpac-fájlok használatával támogatott az SQL felügyelt példányában lévő Azure AD-felhasználók számára a [SSMS v 18.4 vagy újabb](/sql/ssms/download-sql-server-management-studio-ssms), vagy a [SQLPackage. exe](/sql/tools/sqlpackage-download)használatával.
+- Az adatbázis-Exportálás/Importálás a bacpac-fájlok használatával támogatott az SQL felügyelt példányában található Azure AD-felhasználók számára a [SSMS v 18.4 vagy újabb](/sql/ssms/download-sql-server-management-studio-ssms), vagy a [SQLPackage.exe](/sql/tools/sqlpackage-download)használatával.
   - Az adatbázis-bacpac fájl a következő konfigurációkat támogatja: 
     - Adatbázis exportálása/importálása ugyanazon Azure AD-tartományban lévő különböző felügyeleti példányok között.
     - Exportáljon egy adatbázist a felügyelt példányból, és importálja SQL Database ugyanazon az Azure AD-tartományon belül. 
     - Exportáljon egy adatbázist a SQL Databaseból, és importálja az SQL felügyelt példányba ugyanazon az Azure AD-tartományon belül.
     - Exportáljon egy adatbázist a felügyelt példányból, és importálja SQL Serverre (2012-es vagy újabb verzióra).
-      - Ebben a konfigurációban az összes Azure AD-felhasználó a bejelentkezések nélkül SQL Database rendszerbiztonsági tagként (Users) jön létre. A felhasználók típusa SQL (a sys. database_principals) SQL_USER jelenik meg. Engedélyeik és szerepköreik a SQL Server adatbázis-metaadatokban maradnak, és megszemélyesítésre is használhatók. Azonban nem használhatók a SQL Server való hozzáférésre és bejelentkezésre a hitelesítő adataik használatával.
+      - Ebben a konfigurációban az összes Azure AD-felhasználó SQL Server adatbázis-rendszerbiztonsági tagként (Users) jön létre a bejelentkezések nélkül. A felhasználók típusa a következőként jelenik `SQL` meg, és látható a `SQL_USER` sys. database_principals). Engedélyeik és szerepköreik a SQL Server adatbázis-metaadatokban maradnak, és megszemélyesítésre is használhatók. Azonban nem használhatók a SQL Server való hozzáférésre és bejelentkezésre a hitelesítő adataik használatával.
 
 - Csak az SQL felügyelt példány létesítési folyamata által létrehozott kiszolgálói szintű rendszerbiztonsági tag, a kiszolgálói szerepkörök, például a `securityadmin` vagy a `sysadmin` , illetve más bejelentkezési engedélyekkel rendelkező más bejelentkezések az SQL felügyelt példányának főadatbázisában hozhatnak létre Azure ad-kiszolgálói rendszerbiztonsági tagokat (bejelentkezéseket).
 - Ha a bejelentkezés egy SQL-rendszerbiztonsági tag, csak a szerepkör részét képező bejelentkezések `sysadmin` használhatják a Create parancsot az Azure ad-fiókhoz tartozó bejelentkezések létrehozásához.
 - Az Azure AD-bejelentkezésnek a felügyelt Azure SQL-példányhoz használt ugyanazon a címtáron belül kell lennie egy Azure AD-tagnak.
 - Az Azure AD-kiszolgáló résztvevői (bejelentkezések) a Object Explorer SQL Server Management Studio 18,0 Preview 5 verziótól kezdődően láthatók.
-- Az egymást átfedő Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) Azure AD-rendszergazdai fiókkal való használata engedélyezett. Az Azure AD-kiszolgáló rendszerbiztonsági résztvevői (bejelentkezések) elsőbbséget élveznek az Azure AD-rendszergazdával szemben a rendszerbiztonsági tag feloldása és az SQL felügyelt példány engedélyeinek alkalmazása során.
+- Az egymást átfedő Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) Azure AD-rendszergazdai fiókkal való használata engedélyezett. Az Azure ad-kiszolgáló résztvevői (bejelentkezések) elsőbbséget élveznek az Azure AD-rendszergazdával a rendszerbiztonsági tag feloldása és az SQL felügyelt példány engedélyeinek alkalmazása során.
 - A hitelesítés során a rendszer a következő sorozatot alkalmazza a hitelesítő tag feloldására:
 
     1. Ha az Azure AD-fiók létezik közvetlenül leképezve az Azure AD-kiszolgáló rendszerbiztonsági tagja (login) számára, amely megtalálható a sys-ben. server_principals az "E" típussal, adja meg a hozzáférést, és alkalmazza az Azure AD-kiszolgáló rendszerbiztonsági tag (login) engedélyeit.
@@ -243,7 +243,7 @@ További információ: [Create Database (adatbázis létrehozása](/sql/t-sql/st
 
 Bizonyos fájltulajdonságok nem állíthatók be és nem módosíthatók:
 
-- A `ALTER DATABASE ADD FILE (FILENAME='path')` t-SQL-utasításban nem adható meg a fájl elérési útja. Távolítsa el `FILENAME` a parancsfájlt, mert a felügyelt SQL-példányok automatikusan elhelyezik a fájlokat. 
+- A `ALTER DATABASE ADD FILE (FILENAME='path')` t-SQL-utasításban nem adható meg a fájl elérési útja. Távolítsa el `FILENAME` a parancsfájlt, mert az SQL felügyelt példánya automatikusan elhelyezi a fájlokat. 
 - A fájl neve nem módosítható az utasítás használatával `ALTER DATABASE` .
 
 Alapértelmezés szerint a következő beállítások vannak beállítva, és nem módosíthatók:
@@ -291,8 +291,8 @@ További információ: [Alter Database](/sql/t-sql/statements/alter-database-tra
     - Az egyesítéses replikálási feladattípus nem támogatott. 
     - A várólista-olvasó nem támogatott. 
     - A parancs rendszerhéja még nem támogatott.
-  - Az SQL felügyelt példányai nem férnek hozzá a külső erőforrásokhoz, például hálózati megosztások a Robocopy használatával. 
-  - A SQL Server Analysis Services nem támogatottak.
+  - Az SQL felügyelt példánya nem fér hozzá a külső erőforrásokhoz, például hálózati megosztások a Robocopy használatával. 
+  - A SQL Server Analysis Services nem támogatott.
 - Az értesítések részben támogatottak.
 - Az e-mailes értesítések támogatottak, de a Database Mail profil konfigurálását igényli. SQL Server Agent csak egy Database Mail profilt használhat, ezért a hívása kötelező `AzureManagedInstance_dbmail_profile` . 
   - A személyhívó nem támogatott.
@@ -325,11 +325,11 @@ A táblázatok létrehozásával és módosításával kapcsolatos további info
 
 ### <a name="bulk-insert--openrowset"></a>Tömeges Beszúrás/OPENROWSET
 
-A felügyelt SQL-példányok nem férnek hozzá a fájlmegosztás és a Windows-mappák eléréséhez, így a fájlokat az Azure Blob Storage-ból kell importálni:
+A felügyelt SQL-példány nem fér hozzá a fájlmegosztás és a Windows-mappák eléréséhez, így a fájlokat az Azure Blob Storage-ból kell importálni:
 
 - `DATASOURCE`az `BULK INSERT` Azure Blob Storage-ból származó fájlok importálásakor szükséges a parancsban. Lásd: [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE`az `OPENROWSET` Azure Blob Storage-ból származó fájl tartalmának olvasása során szükséges a függvényben. Lásd: [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
-- `OPENROWSET`más Azure SQL-adatbázisok, SQL felügyelt példányok vagy SQL Server példányok adatainak beolvasására használható. Más források, például Oracle-adatbázisok vagy Excel-fájlok nem támogatottak.
+- `OPENROWSET`Azure SQL Database, Azure SQL felügyelt példányból vagy SQL Server példányokból származó adatok olvasására használható. Más források, például Oracle-adatbázisok vagy Excel-fájlok nem támogatottak.
 
 ### <a name="clr"></a>CLR
 
@@ -387,9 +387,9 @@ A [szemantikai keresés](/sql/relational-databases/search/semantic-search-sql-se
 
 ### <a name="linked-servers"></a>Társított kiszolgálók
 
-Az SQL felügyelt példányain lévő csatolt kiszolgálók korlátozott számú célt támogatnak:
+Az SQL felügyelt példányában lévő csatolt kiszolgálók korlátozott számú célt támogatnak:
 
-- A támogatott célok a felügyelt SQL-példányok, SQL Database és SQL Server példányok. 
+- A támogatott célok a következők: SQL felügyelt példány, SQL Database, Azure szinapszis SQL és SQL Server példányok. 
 - A csatolt kiszolgálók nem támogatják az elosztott írható tranzakciókat (MS DTC).
 - A nem támogatott célok a fájlok, a Analysis Services és az egyéb RDBMS. Próbálja meg a natív CSV-importálást használni az Azure Blob Storage használatával `BULK INSERT` vagy a `OPENROWSET` fájl importálása alternatívájaként.
 
@@ -409,8 +409,8 @@ A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső t
 
 - A pillanatképek és a kétirányú replikációs típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
 - A [tranzakciós replikáció](replication-transactional-overview.md) a FELÜGYELt SQL-példány nyilvános előzetes verziójához érhető el, néhány korlátozással:
-    - Az SQL felügyelt példányain az összes replikációs résztvevő (közzétevő, terjesztő, lekéréses előfizető és leküldéses előfizető) helyezhető el, de a közzétevőnek és a terjesztőnek egyaránt a felhőben vagy a helyszínen kell lennie.
-    - Az SQL felügyelt példányai kommunikálhatnak a SQL Server legújabb verzióival. További információért tekintse meg a [támogatott verziók mátrixot](replication-transactional-overview.md#supportability-matrix) .
+    - A replikációs résztvevők (kiadó, terjesztő, lekéréses előfizető és leküldéses előfizető) minden típusa elhelyezhető az SQL felügyelt példányain, de a közzétevőnek és a terjesztőnek egyaránt a felhőben vagy a helyszínen kell lennie.
+    - Az SQL felügyelt példánya képes kommunikálni a SQL Server legújabb verzióival. További információért tekintse meg a [támogatott verziók mátrixot](replication-transactional-overview.md#supportability-matrix) .
     - A tranzakciós replikáció [további hálózati követelményekkel](replication-transactional-overview.md#requirements)rendelkezik.
 
 A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
@@ -432,7 +432,7 @@ A tranzakciós replikáció konfigurálásával kapcsolatos további informáci�
   - `FROM URL`(Az Azure Blob Storage) az egyetlen támogatott lehetőség.
   - `FROM DISK`/`TAPE`a/Backup-eszköz nem támogatott.
   - A biztonságimásolat-készletek nem támogatottak.
-- `WITH`a beállítások nem támogatottak, például a nem `DIFFERENTIAL` vagy a `STATS` .
+- `WITH`a beállítások nem támogatottak. A visszaállítási kísérletek, például például `WITH` `DIFFERENTIAL` ,, `STATS` `REPLACE` stb., sikertelenek lesznek.
 - `ASYNC RESTORE`: A visszaállítás akkor is folytatódik, ha az ügyfél-kapcsolatok megszakadnak. Ha a rendszer eldobta a-kapcsolatokat, megtekintheti a `sys.dm_operation_status` visszaállítási művelet állapotát, valamint egy létrehozási és ELdobási adatbázist. Lásd: [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 A következő adatbázis-beállítások vannak beállítva vagy felülbírálva, és később nem módosíthatók: 
@@ -486,11 +486,11 @@ A több példányban elérhető Service Broker nem támogatott:
 A következő változók, függvények és nézetek eltérő eredményeket adnak vissza:
 
 - `SERVERPROPERTY('EngineEdition')`a 8-as értéket adja vissza. Ez a tulajdonság egyedileg azonosítja a felügyelt SQL-példányt. Lásd: [SERVERPROPERTY](/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')`NULL értéket ad vissza, mert a példány fogalma a SQL Server esetében nem vonatkozik az SQL felügyelt példányaira. Lásd: [SERVERPROPERTY ("példánynév")](/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')`NULL értéket ad vissza, mert a példány fogalma a SQL Server esetében nem vonatkozik az SQL felügyelt példányára. Lásd: [SERVERPROPERTY ("példánynév")](/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME`egy teljes DNS "csatlakoztatható" nevet ad vissza, például my-managed-instance.wcus17662feb9ce98.database.windows.net. Lásd [: @SERVERNAME @](/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS`egy teljes DNS "csatlakoztatható" nevet ad vissza, például `myinstance.domain.database.windows.net` a "Name" és a "data_source" tulajdonsághoz. Lásd: [sys. KISZOLGÁLÓK](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME`NULL értéket ad vissza, mert a szolgáltatáshoz tartozó fogalom SQL Server nem vonatkozik az SQL felügyelt példányaira. Lásd [: @SERVICENAME @](/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`támogatott. NULL értéket ad vissza, ha az Azure AD-bejelentkezés nem a sys. syslogins. Lásd: [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
+- `@@SERVICENAME`NULL értéket ad vissza, mert az SQL Server esetében a szolgáltatás fogalma nem vonatkozik az SQL felügyelt példányára. Lásd [: @SERVICENAME @](/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID`támogatott. NULL értéket ad vissza, ha az Azure AD-bejelentkezés nem sys.sysbejelentkezésekben. Lásd: [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`nem támogatott. A rendszer a helytelen adatmennyiséget adja vissza, ami egy ideiglenes ismert probléma. Lásd: [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="environment-constraints"></a><a name="Environment"></a>Környezeti korlátozások
@@ -502,10 +502,16 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 - A régiókban üzembe helyezhető virtuális mag és típusok száma bizonyos [korlátozásokkal és korlátozásokkal](resource-limits.md#regional-resource-limitations)rendelkezik.
 - Vannak olyan [biztonsági szabályok, amelyeket az alhálózaton kell alkalmazni](connectivity-architecture-overview.md#network-requirements).
 
-### <a name="vnet"></a>VNET
+### <a name="vnet"></a>Virtuális hálózat
 - A VNet az Resource Model használatával telepíthető – a VNet klasszikus modellje nem támogatott.
 - A felügyelt SQL-példányok létrehozása után az SQL felügyelt példányának vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
-- Egyes szolgáltatások, például a App Service környezetek, a Logic apps és az SQL felügyelt példányai (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a különböző régiókban lévő SQL felügyelt példányokhoz, ha a virtuális hálózatok [globális](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)társítással kapcsolódnak egymáshoz. Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
+- Egyes szolgáltatások, mint például a App Service környezetek, a Logic apps és az SQL felügyelt példányai (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt SQL-példányokhoz különböző régiókban, ha a virtuális hálózatok [globális](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)társítással kapcsolódnak egymáshoz. Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
+
+### <a name="failover-groups"></a>Feladatátvételi csoportok
+A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.
+
+### <a name="failover-groups"></a>Feladatátvételi csoportok
+A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.
 
 ### <a name="tempdb"></a>TEMPDB
 
@@ -533,11 +539,11 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 ### <a name="error-logs"></a>Hibanaplók
 
-A felügyelt SQL-példányok részletes információkat helyeznek el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
+Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az SQL felügyelt példányairól: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
+- További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: az [Azure SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md).
 - A kiadási frissítések és az ismert problémák állapota: [SQL felügyelt példány kibocsátási megjegyzései](../database/doc-changes-updates-release-notes.md)
 - Az új, felügyelt SQL-példányok létrehozásának módját bemutató rövid útmutató: [SQL felügyelt példány létrehozása](instance-create-quickstart.md).

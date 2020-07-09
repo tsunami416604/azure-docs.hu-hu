@@ -3,15 +3,15 @@ title: Azure Cosmos-tárolók létrehozása nagyméretű partíciós kulccsal
 description: Megtudhatja, hogyan hozhat létre tárolót Azure Cosmos DB nagyméretű partíciós kulccsal Azure Portal és különböző SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b0a3387fe34a0e1c15109aec877c0654fc1a5b0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 853d3fa79436d9af0119aada86d283f9970d4ef2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262803"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Nagyméretű partíciós kulccsal rendelkező tárolók létrehozása
 
@@ -23,7 +23,7 @@ A nagyméretű partíciós kulcsokat a kivonatoló függvény továbbfejlesztett
 
 Ha nagy méretű partíciót szeretne létrehozni, amikor a Azure Portal használatával hoz létre egy új tárolót, győződjön meg arról, hogy a **saját partíciós kulcs nagyobb, mint 100 bájtos** beállítás. Törölje a jelölőnégyzet jelölését, ha nincs szüksége nagyméretű partíciós kulcsokra, vagy ha olyan alkalmazásokkal rendelkezik, amelyek 1,18-nál régebbi SDK-verzión futnak.
 
-![Nagyméretű partíciós kulcsok létrehozása Azure Portal használatával](./media/large-partition-keys/large-partition-key-with-portal.png)
+:::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="Nagyméretű partíciós kulcsok létrehozása Azure Portal használatával":::
 
 ## <a name="create-a-large-partition-key-powershell"></a>Nagy partíciós kulcs létrehozása (PowerShell)
 
@@ -33,7 +33,7 @@ Nagyméretű partíciós kulcsot támogató tároló létrehozásához lásd:
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>Nagyméretű partíciós kulcs (.net SDK) létrehozása
 
-Ha nagyméretű partíciós kulccsal rendelkező tárolót szeretne létrehozni a .NET SDK használatával, akkor `PartitionKeyDefinitionVersion.V2` a tulajdonságot kell megadnia. Az alábbi példa bemutatja, hogyan adhatja meg a Version tulajdonságot a PartitionKeyDefinition objektumon belül, és beállíthatja a PartitionKeyDefinitionVersion. v2 értékre.
+Ha nagyméretű partíciós kulccsal rendelkező tárolót szeretne létrehozni a .NET SDK használatával, akkor a tulajdonságot kell megadnia `PartitionKeyDefinitionVersion.V2` . Az alábbi példa bemutatja, hogyan adhatja meg a Version tulajdonságot a PartitionKeyDefinition objektumon belül, és beállíthatja a PartitionKeyDefinitionVersion. v2 értékre.
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
@@ -72,8 +72,8 @@ A nagyméretű partíciós kulcsokat a következő SDK-k minimális verziói tá
 |.Net     |    1,18     |
 |Java-szinkronizálás     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| REST API | a kérelem fejlécének használatával `2017-05-03` magasabb `x-ms-version` a verziószáma.|
-| Resource Manager-sablon | 2. verzió az `"version":2` `partitionKey` objektumon belüli tulajdonság használatával. |
+| REST API | `2017-05-03`a kérelem fejlécének használatával magasabb a verziószáma `x-ms-version` .|
+| Resource Manager-sablon | 2. verzió az `"version":2` objektumon belüli tulajdonság használatával `partitionKey` . |
 
 Jelenleg nem használhat nagyméretű partíciós kulccsal rendelkező tárolókat Power BI és Azure Logic Apps. Ezekből az alkalmazásokból nagyméretű partíciós kulcs nélkül is használhat tárolókat.
 

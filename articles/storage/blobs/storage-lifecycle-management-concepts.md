@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194705"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -46,7 +46,7 @@ Az életciklus-kezelési funkció az összes Azure-régióban elérhető.
 
 A szabályzatokat a következő módszerek bármelyikével adhatja hozzá, szerkesztheti vagy távolíthatja el:
 
-* [Azure Portal](https://portal.azure.com)
+* [Azure Portalra](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -226,17 +226,17 @@ Az életciklus-kezelési szabályzat egy JSON-dokumentum szabályainak gyűjtem�
 
 A szabályzatok a szabályok gyűjteményei:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések |
+| Paraméter neve | Paraméter típusa | Jegyzetek |
 |----------------|----------------|-------|
 | `rules`        | Szabály objektumainak tömbje | Egy házirendben legalább egy szabályra van szükség. Egy házirendben legfeljebb 100 szabályt adhat meg.|
 
 A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések | Kötelező |
+| Paraméter neve | Paraméter típusa | Jegyzetek | Kötelező |
 |----------------|----------------|-------|----------|
 | `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | True (Igaz) |
 | `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | False (Hamis) | 
-| `type`         | Enumerálási érték | A jelenlegi érvényes típus: `Lifecycle`. | True (Igaz) |
+| `type`         | Enumerálási érték | A jelenlegi érvényes típus: `Lifecycle` . | True (Igaz) |
 | `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | True (Igaz) |
 
 ## <a name="rules"></a>Szabályok
@@ -245,7 +245,7 @@ Mindegyik szabály definíciója tartalmaz egy szűrőt és egy műveleti készl
 
 ### <a name="sample-rule"></a>Minta szabály
 
-A következő minta szabály úgy szűri a fiókot, hogy a műveleteit a `container1` -ben és a `foo`-ben létező objektumokon futtassa.  
+A következő minta szabály úgy szűri a fiókot, hogy a műveleteit a-ben és a-ben létező objektumokon futtassa `container1` `foo` .  
 
 >[!NOTE]
 >Az életciklus-kezelés csak a blob típusának használatát támogatja.  
@@ -285,15 +285,15 @@ A következő minta szabály úgy szűri a fiókot, hogy a műveleteit a `contai
 
 ### <a name="rule-filters"></a>Szabályok szűrői
 
-A szűrő korlátozza a szabályok műveleteit a Blobok egy részhalmazára a Storage-fiókon belül. Ha egynél több szűrő van definiálva, az összes `AND` szűrőn egy logikai fut.
+A szűrő korlátozza a szabályok műveleteit a Blobok egy részhalmazára a Storage-fiókon belül. Ha egynél több szűrő van definiálva, az `AND` összes szűrőn egy logikai fut.
 
 A szűrők a következők:
 
-| Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
+| Szűrő neve | Szűrő típusa | Jegyzetek | Kötelező |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob`. | Igen |
-| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó `https://myaccount.blob.core.windows.net/container1/foo/...` összes blobot szeretné egyeztetni, a prefixMatch a következő: `container1/foo`. | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik.  | No |
-| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot egy szabály `Project = Contoso` alá `https://myaccount.blob.core.windows.net/` szeretné egyeztetni, a blobIndexMatch a következő:. `{"name": "Project","op": "==","value": "Contoso"}` | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | No |
+| blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob` . | Yes |
+| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó összes blobot szeretné egyeztetni `https://myaccount.blob.core.windows.net/container1/foo/...` , a prefixMatch a következő: `container1/foo` . | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik.  | No |
+| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot `Project = Contoso` egy szabály alá szeretné egyeztetni `https://myaccount.blob.core.windows.net/` , a blobIndexMatch a következő: `{"name": "Project","op": "==","value": "Contoso"}` . | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | No |
 
 > [!NOTE]
 > A blob index nyilvános előzetes verzióban érhető el, és a **franciaországi Közép** -és **dél-franciaországi** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
@@ -311,7 +311,7 @@ Az életciklus-kezelés támogatja a Blobok kiszervezését és törlését, val
 | delete        | Támogatott                                   | Támogatott     |
 
 >[!NOTE]
->Ha ugyanazon a blobon több műveletet is definiál, az életciklus-kezelés a legkevesebb költséges műveletet alkalmazza a blobra. Például a művelet `delete` olcsóbb a műveletnél `tierToArchive`. A `tierToArchive` művelet olcsóbb a műveletnél `tierToCool`.
+>Ha ugyanazon a blobon több műveletet is definiál, az életciklus-kezelés a legkevesebb költséges műveletet alkalmazza a blobra. Például a művelet `delete` olcsóbb a műveletnél `tierToArchive` . `tierToArchive`A művelet olcsóbb a műveletnél `tierToCool` .
 
 A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás idejét használják a kor nyomon követéséhez, a blob-Pillanatképek pedig a pillanatkép létrehozásának idejét használják a kor nyomon követéséhez.
 
@@ -326,7 +326,7 @@ Az alábbi példák bemutatják, hogyan lehet kezelni a gyakori forgatókönyvek
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Az adatvesztést a hűvösebb szintjére helyezheti át
 
-Ez a példa azt mutatja be, hogyan lehet áttérni `container1/foo` a `container2/bar`blokk Blobok előre rögzített vagy. A házirend olyan blobokat vált át, amelyek több mint 30 nap alatt nem lettek módosítva a lassú tároláshoz, és a Blobok 90 nap alatt nem módosultak az archiválási szintre:
+Ez a példa azt mutatja be, hogyan lehet áttérni a blokk Blobok előre rögzített `container1/foo` vagy `container2/bar` . A házirend olyan blobokat vált át, amelyek több mint 30 nap alatt nem lettek módosítva a lassú tároláshoz, és a Blobok 90 nap alatt nem módosultak az archiválási szintre:
 
 ```json
 {
@@ -354,10 +354,10 @@ Ez a példa azt mutatja be, hogyan lehet áttérni `container1/foo` a `container
 
 ### <a name="archive-data-after-ingest"></a>Adatok archiválása betöltés után
 
-Egyes adatforgalom üresjáratban marad a felhőben, és ritkán, ha még egyszer is hozzáfér a tárolóhoz. A következő életciklus-házirend úgy van konfigurálva, hogy a betöltés után röviddel az adatok archiválását. Ez a példa a tárolóban lévő Storage-fiókban `archivecontainer` lévő Blobok archiválási szintre való átváltását eredményezi. Az áttérést az utolsó módosítás időpontja után 0 nappal a Blobok alapján hajtja végre a rendszer:
+Egyes adatforgalom üresjáratban marad a felhőben, és ritkán, ha még egyszer is hozzáfér a tárolóhoz. A következő életciklus-házirend úgy van konfigurálva, hogy a betöltés után röviddel az adatok archiválását. Ez a példa a tárolóban lévő Storage-fiókban lévő Blobok archiválási szintre való átváltását eredményezi `archivecontainer` . Az áttérést az utolsó módosítás időpontja után 0 nappal a Blobok alapján hajtja végre a rendszer:
 
 > [!NOTE] 
-> Javasoljuk, hogy a blobokat közvetlenül az archív szintre töltse fel, hogy hatékonyabb legyen. Az x-MS-Aces-réteg fejléce a [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) vagy a [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) esetében használható a REST-es verzió 2018-11-09-es vagy újabb verziójával, vagy a blob Storage-beli legújabb kódtárakkal. 
+> Javasoljuk, hogy a blobokat közvetlenül az archív szintre töltse fel, hogy hatékonyabb legyen. A [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) és a [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) x-MS-Access-réteg fejléce az 2018-11-09-as és újabb verziókkal, illetve a blob Storage-beli legújabb verziójával is elvégezhető. 
 
 ```json
 {
@@ -410,7 +410,7 @@ A létrehozás után bizonyos adatértékek várhatóan lejárnak a napokban vag
 ```
 
 ### <a name="delete-data-with-blob-index-tags"></a>BLOB-indexekkel rendelkező adattörlési Címkék
-Egyes adatmennyiségeket csak akkor lehet lemondani, ha explicit módon meg van jelölve törlésre. Az életciklus-kezelési házirendet konfigurálhatja úgy, hogy lejárjon a blob index kulcs/érték attribútumaival címkézett adatvesztéssel. Az alábbi példa egy olyan házirendet mutat be, amely törli a `Project = Contoso`címkével ellátott összes blokk blobot. További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob indexével (előzetes verzió)](storage-manage-find-blobs.md).
+Egyes adatmennyiségeket csak akkor lehet lemondani, ha explicit módon meg van jelölve törlésre. Az életciklus-kezelési házirendet konfigurálhatja úgy, hogy lejárjon a blob index kulcs/érték attribútumaival címkézett adatvesztéssel. Az alábbi példa egy olyan házirendet mutat be, amely törli a címkével ellátott összes blokk blobot `Project = Contoso` . További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob indexével (előzetes verzió)](storage-manage-find-blobs.md).
 
 ```json
 {
@@ -447,7 +447,7 @@ Egyes adatmennyiségeket csak akkor lehet lemondani, ha explicit módon meg van 
 
 ### <a name="delete-old-snapshots"></a>Régi Pillanatképek törlése
 
-A gyakran használt és a teljes élettartamon keresztül elért adatmennyiségek esetében a pillanatképeket gyakran a régebbi verziók nyomon követésére használják. Létrehozhat egy szabályzatot, amely a régi pillanatképeket törli a pillanatképek kora alapján. A pillanatképek korát a pillanatkép létrehozásának időpontjának kiértékelésével határozzuk meg. Ez a házirend-szabály törli a pillanatkép- `activedata` létrehozás után 90 napos vagy régebbi tárolóban lévő blob-pillanatképeket.
+A gyakran használt és a teljes élettartamon keresztül elért adatmennyiségek esetében a pillanatképeket gyakran a régebbi verziók nyomon követésére használják. Létrehozhat egy szabályzatot, amely a régi pillanatképeket törli a pillanatképek kora alapján. A pillanatképek korát a pillanatkép létrehozásának időpontjának kiértékelésével határozzuk meg. Ez a házirend-szabály törli a `activedata` Pillanatkép-létrehozás után 90 napos vagy régebbi tárolóban lévő blob-pillanatképeket.
 
 ```json
 {

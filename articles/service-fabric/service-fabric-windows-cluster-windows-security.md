@@ -6,14 +6,13 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
 ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774441"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Önálló fürt biztonságossá tétele Windows rendszeren a Windows biztonsági szolgáltatással
-A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása érdekében védenie kell a fürtöt. A biztonság különösen akkor fontos, ha a fürt éles számítási feladatokat futtat. Ez a cikk azt ismerteti, hogyan konfigurálható a csomópontok közötti és az ügyfél és a csomópont közötti biztonság a Windows Biztonság használatával a *ClusterConfig. JSON* fájlban.  A folyamat megfelel a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)biztonsági lépéseként. További információ arról, hogy a Service Fabric hogyan használja a Windows-biztonságot: a [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).
+A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása érdekében védenie kell a fürtöt. A biztonság különösen akkor fontos, ha a fürt éles számítási feladatokat futtat. Ez a cikk azt ismerteti, hogyan konfigurálható a csomópontok közötti és az ügyfél és a csomópont közötti biztonság a Windows biztonsági funkciójának használatával a fájl *ClusterConfig.JS* .  A folyamat megfelel a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)biztonsági lépéseként. További információ arról, hogy a Service Fabric hogyan használja a Windows-biztonságot: a [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).
 
 > [!NOTE]
 > Érdemes figyelembe vennie a csomópontok közötti biztonság kiválasztását, mivel nincs olyan fürt, amely az egyik biztonsági megoldásból a másikra van frissítve. A biztonsági kijelölés módosításához újra kell építenie a teljes fürtöt.
@@ -21,7 +20,7 @@ A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása é
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>A Windows Biztonság konfigurálása a gMSA használatával  
-A minta *ClusterConfig. gMSA. Windows. MultiMachine. JSON* konfigurációs fájl letölthető a [Microsoft. Azure. ServiceFabric.\< windowsserver fájllal. ](https://go.microsoft.com/fwlink/?LinkId=730690)a (z)>. zip önálló fürtjének verziója tartalmaz egy sablont a Windows biztonsági beállításainak a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx)használatával történő konfigurálásához:  
+A minta *ClusterConfig.gMSA.Windows.MultiMachine.JS* a [Microsoft. Azure. ServiceFabric. windowsserver.. fájllal letöltött konfigurációs fájlban \<version> . a zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomagja olyan sablont tartalmaz, amely a Windows biztonsági beállításait [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx)használatával konfigurálja:  
 
 ```
 "security": {
@@ -52,7 +51,7 @@ A minta *ClusterConfig. gMSA. Windows. MultiMachine. JSON* konfigurációs fájl
 | IsAdmin |Állítsa igaz értékre, ha azt szeretné megadni, hogy a tartományi felhasználó rendszergazdai ügyfél-hozzáféréssel vagy FALSE értékkel rendelkezik a felhasználói ügyfelek hozzáféréséhez. |
 
 > [!NOTE]
-> A ClustergMSAIdentity értékének a következő formátumúnak kell lennie: "mysfgmsa@mydomain".
+> A ClustergMSAIdentity értékének a következő formátumúnak kell lennie: " mysfgmsa@mydomain ".
 
 A csomópontok közötti [Biztonság](service-fabric-cluster-security.md#node-to-node-security) a **ClustergMSAIdentity** beállításával állítható be, ha a Service fabricnek a gMSA alatt kell futnia. A csomópontok közötti megbízhatósági kapcsolatok létrehozásához tudniuk kell egymással kapcsolatban. Ez két különböző módon valósítható meg: megadhatja a fürtben lévő összes csomópontot tartalmazó csoportosan felügyelt szolgáltatásfiókot, vagy megadhatja a fürtben lévő összes csomópontot tartalmazó tartományi számítógép csoportot is. Javasoljuk, hogy használja a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítését, különösen a nagyobb fürtök (több mint 10 csomópont) vagy a valószínűleg növekedni vagy zsugorodó fürtök esetében.  
 Ehhez a megközelítéshez nincs szükség olyan tartományi csoport létrehozására, amelyhez a fürt rendszergazdája hozzáférési jogokat kapott a tagok hozzáadásához és eltávolításához. Ezek a fiókok az automatikus jelszavas felügyelethez is hasznosak. További információ: [első lépések csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/library/jj128431.aspx).  
@@ -77,7 +76,7 @@ A következő példa **biztonsági** szakasz a Windows-biztonságot konfigurálj
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>A Windows biztonsági beállítások konfigurálása gépi csoport használatával  
-Ez a modell elavult. Javasoljuk, hogy a fentiekben ismertetett gMSA használja. A minta *ClusterConfig. Windows. MultiMachine. JSON* konfigurációs fájl letölthető a [Microsoft. Azure. ServiceFabric. windowsserver fájllal.\< a>. zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürtjének verziója tartalmaz egy sablont a Windows biztonságának konfigurálásához.  A Windows biztonsági beállításai a **Tulajdonságok** szakaszban vannak konfigurálva: 
+Ez a modell elavult. Javasoljuk, hogy a fentiekben ismertetett gMSA használja. A minta *ClusterConfig.Windows.MultiMachine.JS* a [Microsoft. Azure. ServiceFabric. windowsserver.. fájllal letöltött konfigurációs fájlban \<version> . a zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomagja tartalmaz egy sablont a Windows biztonságának konfigurálásához.  A Windows biztonsági beállításai a **Tulajdonságok** szakaszban vannak konfigurálva: 
 
 ```
 "security": {
@@ -129,12 +128,12 @@ A következő példa **biztonsági** szakasz a Windows biztonsági beállításo
 ```
 
 > [!NOTE]
-> Service Fabric nem telepíthető tartományvezérlőre. Győződjön meg arról, hogy a ClusterConfig. JSON nem tartalmazza a tartományvezérlő IP-címét egy gépi csoport vagy csoportosan felügyelt szolgáltatásfiók (gMSA) használata esetén.
+> Service Fabric nem telepíthető tartományvezérlőre. Győződjön meg arról, hogy a ClusterConfig.json nem tartalmazza a tartományvezérlő IP-címét egy gépi csoport vagy csoportosan felügyelt szolgáltatásfiók (gMSA) használata esetén.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-Miután konfigurálta a Windows-biztonságot a *ClusterConfig. JSON* fájlban, folytassa a fürt létrehozásának folyamatát a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakörben.
+Miután konfigurálta a Windows-biztonságot a fájl *ClusterConfig.JSjában* , folytassa a fürt létrehozási folyamatát a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakörben.
 
 További információ a csomópontok közötti biztonságról, az ügyfelek és a csomópontok biztonságáról, valamint a szerepköralapú hozzáférés-vezérlésről: [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).
 

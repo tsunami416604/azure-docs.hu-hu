@@ -6,20 +6,19 @@ ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645514"
 ---
 # <a name="configure-stateful-reliable-services"></a>Állapot-nyilvántartó megbízható szolgáltatások konfigurálása
 A megbízható szolgáltatások két konfigurációs beállítással rendelkeznek. Az egyik készlet globális a fürt összes megbízható szolgáltatásához, míg a másik készlet egy adott megbízható szolgáltatásra jellemző.
 
 ## <a name="global-configuration"></a>Globális konfiguráció
-A globális megbízható szolgáltatás konfigurációja a fürt jegyzékfájljában van megadva a KtlLogger szakaszban. Lehetővé teszi a megosztott napló helyének és méretének, valamint a naplózó által használt globális memória-korlátok konfigurálását. A fürt jegyzékfájlja egyetlen XML-fájl, amely a fürt összes csomópontjára és szolgáltatására vonatkozó beállításokat és konfigurációkat tartalmazza. A fájl neve általában ClusterManifest. xml. A fürthöz tartozó jegyzékfájlt a Get-ServiceFabricClusterManifest PowerShell-paranccsal tekintheti meg.
+A globális megbízható szolgáltatás konfigurációja a fürt jegyzékfájljában van megadva a KtlLogger szakaszban. Lehetővé teszi a megosztott napló helyének és méretének, valamint a naplózó által használt globális memória-korlátok konfigurálását. A fürt jegyzékfájlja egyetlen XML-fájl, amely a fürt összes csomópontjára és szolgáltatására vonatkozó beállításokat és konfigurációkat tartalmazza. A fájl neve általában ClusterManifest.xml. A fürthöz tartozó jegyzékfájlt a Get-ServiceFabricClusterManifest PowerShell-paranccsal tekintheti meg.
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Name (Név) | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
+| Name | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobájtban |8388608 |A naplózó írási puffer memória-készletéhez tartozó kernel módban foglalható KB-os minimális szám. Ez a memória-készlet az állapotadatok gyorsítótárazásához használatos a lemezre írás előtt. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobájtban |Korlátlan |Az a maximális méret, ameddig a naplózó írási puffer memória-készlete növekedni tud. |
@@ -38,7 +37,7 @@ Az Azure ARM-ban vagy a helyszíni JSON-sablonban az alábbi példa azt mutatja 
     }]
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Minta a helyi fejlesztői fürt jegyzékfájljának szakasza
-Ha ezt a helyi fejlesztési környezetben szeretné módosítani, szerkesztenie kell a helyi clustermanifest. xml fájlt.
+Ha ezt a helyi fejlesztési környezetben szeretné módosítani, szerkesztenie kell a helyi clustermanifest.xml fájlt.
 
 ```xml
    <Section Name="KtlLogger">
@@ -53,20 +52,20 @@ Ha ezt a helyi fejlesztési környezetben szeretné módosítani, szerkesztenie 
 ### <a name="remarks"></a>Megjegyzések
 A naplózó olyan globális készletet tartalmaz, amely a nem lapozható kernel-memóriából van lefoglalva, amely az állapotadatok gyorsítótárazásához szükséges összes megbízható szolgáltatás számára elérhető a megbízható szolgáltatás másodpéldányához társított dedikált naplóba való írás előtt. A készlet méretét a WriteBufferMemoryPoolMinimumInKB és a WriteBufferMemoryPoolMaximumInKB beállítások vezérlik. A WriteBufferMemoryPoolMinimumInKB megadja a memória-készlet kezdeti méretét, valamint azt a legkisebb méretet, ameddig a memória-készlet csökkenhet. A WriteBufferMemoryPoolMaximumInKB a legnagyobb méret, amellyel a memória-készlet növekedni lehet. Minden megnyitott megbízható szolgáltatás replikája növelheti a memória-készlet méretét a rendszer által meghatározott WriteBufferMemoryPoolMaximumInKB értékkel. Ha a rendelkezésre álló memória több memóriát is igénybe vesz, mint amennyi elérhető, a memóriára vonatkozó kérelmek késleltetve lesznek, amíg a memória elérhetővé válik. Ezért ha az írási pufferbeli memória készlete túl kicsi egy adott konfigurációhoz, akkor a teljesítmény romolhat.
 
-A SharedLogId és a SharedLogPath beállításokat a rendszer mindig együtt használja a fürt összes csomópontjának alapértelmezett megosztott naplójának GUID azonosítójának és helyének definiálásához. Az alapértelmezett megosztott napló minden olyan megbízható szolgáltatáshoz használatos, amely nem határozza meg az adott szolgáltatáshoz tartozó Settings. xml fájlban megadott beállításokat. A legjobb teljesítmény érdekében a megosztott naplófájlokat olyan lemezekre kell helyezni, amelyek kizárólag a megosztott naplófájlhoz használatosak a versengés csökkentése érdekében.
+A SharedLogId és a SharedLogPath beállításokat a rendszer mindig együtt használja a fürt összes csomópontjának alapértelmezett megosztott naplójának GUID azonosítójának és helyének definiálásához. Az alapértelmezett megosztott napló minden olyan megbízható szolgáltatáshoz használatos, amely nem határozza meg az adott szolgáltatáshoz tartozó settings.xml beállításait. A legjobb teljesítmény érdekében a megosztott naplófájlokat olyan lemezekre kell helyezni, amelyek kizárólag a megosztott naplófájlhoz használatosak a versengés csökkentése érdekében.
 
 A SharedLogSizeInMB meghatározza, hogy a rendszer mennyi lemezterületet szabadítson fel az alapértelmezett megosztott bejelentkezéshez az összes csomóponton.  A SharedLogId és a SharedLogPath nem kell megadni a SharedLogSizeInMB megadása érdekében.
 
 ## <a name="service-specific-configuration"></a>Szolgáltatás-specifikus konfiguráció
 Az állapot-nyilvántartó Reliable Services alapértelmezett konfigurációit a konfigurációs csomag (konfiguráció) vagy a szolgáltatás implementálása (kód) használatával módosíthatja.
 
-* **Konfiguráció – a** konfigurációs csomagon keresztül történő konfigurálás a Microsoft Visual Studio-csomag gyökerében létrehozott Settings. xml fájl módosításával valósítható meg.
+* **Konfiguráció – a** konfigurációs csomagon keresztüli konfigurálás a Microsoft Visual Studio-csomag gyökerében létrehozott Settings.xml fájl módosításával történik az alkalmazás minden szolgáltatásának konfigurációs mappájában.
 * A **programkódon** keresztüli konfigurálást úgy érheti el, hogy létrehoz egy ReliableStateManager egy ReliableStateManagerConfiguration objektum használatával a megfelelő beállításokkal.
 
-Alapértelmezés szerint az Azure Service Fabric Runtime a Settings. xml fájlban keresi az előre definiált szakaszok nevét, és a konfigurációs értékeket használja az alapul szolgáló futtatókörnyezet-összetevők létrehozásakor.
+Alapértelmezés szerint az Azure Service Fabric Runtime az előre definiált szakaszok nevét keresi a Settings.xml fájlban, és a konfigurációs értékeket használja az alapul szolgáló futtatókörnyezet-összetevők létrehozásakor.
 
 > [!NOTE]
-> A Visual Studio-megoldásban létrehozott Settings. xml fájlban ne törölje a következő konfigurációk szakaszának nevét, ha **nem** tervezi a szolgáltatás programkódon keresztüli konfigurálását.
+> Ne törölje a Visual Studio-megoldásban létrehozott Settings.xml fájl következő konfigurációjának szakaszait, hacsak **nem** tervezi a szolgáltatás programkódon keresztüli konfigurálását.
 > A konfigurációs csomag vagy a szakasz nevének átnevezéséhez meg kell változtatni a ReliableStateManager konfigurálásához szükséges programkódot.
 > 
 > 
@@ -100,10 +99,10 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Name (Név) | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
+| Name | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Másodperc |0,015 |Az az időszak, ameddig a másodlagos megvárja a műveletet a művelet fogadása után, mielőtt visszaküldi a nyugtát az elsődlegesnek. Az ezen az intervallumon belül feldolgozott műveletekhez küldendő összes más nyugtát egyetlen válaszként kell elküldeni. |
-| ReplicatorEndpoint |N/A |Nincs alapértelmezett – kötelező paraméter |Az az IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikákkal való kommunikációhoz fog használni. Ennek a szolgáltatás jegyzékfájljában a TCP-erőforrás végpontra kell hivatkoznia. A szolgáltatási jegyzékfájlban található végponti erőforrások definiálásával kapcsolatos további információkért tekintse meg a [szolgáltatás jegyzékfájljának erőforrásai](service-fabric-service-manifest-resources.md) című témakört. |
+| ReplicatorEndpoint |N.A. |Nincs alapértelmezett – kötelező paraméter |Az az IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikákkal való kommunikációhoz fog használni. Ennek a szolgáltatás jegyzékfájljában a TCP-erőforrás végpontra kell hivatkoznia. A szolgáltatási jegyzékfájlban található végponti erőforrások definiálásával kapcsolatos további információkért tekintse meg a [szolgáltatás jegyzékfájljának erőforrásai](service-fabric-service-manifest-resources.md) című témakört. |
 | MaxPrimaryReplicationQueueSize |Műveletek száma |8192 |Az elsődleges várólistában lévő műveletek maximális száma. Egy művelet akkor szabadítható fel, ha az elsődleges replikátor nyugtát kap az összes másodlagos replikáló közül. Ennek az értéknek nagyobbnak kell lennie, mint 64, és a 2 hatványa. |
 | MaxSecondaryReplicationQueueSize |Műveletek száma |16384 |A műveletek maximális száma a másodlagos várólistában. A művelet a kitartás után az állapotának nagyfokú rendelkezésre állása után szabadítható fel. Ennek az értéknek nagyobbnak kell lennie, mint 64, és a 2 hatványa. |
 | CheckpointThresholdInMB |MB |50 |A naplófájl azon területének mennyisége, amely után az állapot ellenőrzőpontra kerül. |

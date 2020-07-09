@@ -7,17 +7,16 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 643f326952f72f952aa946079e56f1fb56373c9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710031"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -30,14 +29,14 @@ Megtudhatja, hogyan hozhat létre és törölhet virtuális hálózatokat, és h
 A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a következő feladatokat:
 
 - Ha még nem rendelkezik Azure-fiókkal, regisztráljon az [ingyenes próbaverziós fiókra](https://azure.microsoft.com/free).
-- Ha a portált használja, https://portal.azure.comnyissa meg, majd jelentkezzen be az Azure-fiókjával.
+- Ha a portált használja, nyissa meg https://portal.azure.com , majd jelentkezzen be az Azure-fiókjával.
 - Ha a cikkben szereplő feladatok végrehajtásához PowerShell-parancsokat használ, futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy a PowerShellt a számítógépről futtatva. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia `az login` kell, hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia kell, `az login` hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 - A fiókkal, amelybe bejelentkezik, vagy az Azure-hoz csatlakozik, hozzá kell rendelnie a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy olyan [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az [engedélyekben](#permissions)felsorolt megfelelő műveletekhez van rendelve.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Válassza **az + erőforrás** > **létrehozása hálózatkezelés** > **virtuális hálózat**lehetőséget.
+1. Válassza **az + erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
 2. Adja meg vagy válassza ki a következő beállítások értékeit, majd válassza a **Létrehozás**lehetőséget:
    - **Név**: a névnek egyedinek kell lennie abban az [erőforráscsoportban](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) , amelyet a virtuális hálózat létrehozásához választ. A virtuális hálózat létrehozása után a név nem módosítható. Az idő múlásával több virtuális hálózatot is létrehozhat. A névadási javaslatokért lásd: [elnevezési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources). Az elnevezési konvenciók segítségével könnyebben kezelhet több virtuális hálózatot.
    - **Címterület**: egy virtuális hálózat címterület egy vagy több nem átfedésben lévő címtartományból áll, amelyek CIDR-jelöléssel vannak megadva. Az Ön által definiált címtartomány lehet nyilvános vagy privát (RFC 1918). Függetlenül attól, hogy a címtartományt nyilvános vagy magánjellegűként határozza meg, a címtartomány csak a virtuális hálózatról, az összekapcsolt virtuális hálózatokról és a virtuális hálózathoz csatlakoztatott helyszíni hálózatokról érhető el. A következő címtartományok nem vehetők fel:
@@ -139,7 +138,7 @@ A virtuális hálózathoz csatlakozó virtuális gépek a virtuális hálózatho
 3. Válassza a **DNS-kiszolgálók**lehetőséget a **Beállítások**területen.
 4. Válasszon egyet az alábbi lehetőségek közül:
    - **Alapértelmezett (Azure által biztosított)**: az összes erőforrás neve és magánhálózati IP-címe automatikusan regisztrálva lesz a Azure DNS-kiszolgálókon. A neveket az ugyanahhoz a virtuális hálózathoz csatlakozó erőforrások között lehet feloldani. Ezzel a beállítással nem oldhatók fel a nevek a virtuális hálózatok között. A nevek virtuális hálózatokon keresztüli feloldásához egyéni DNS-kiszolgálót kell használnia.
-   - **Egyéni**: hozzáadhat egy vagy több kiszolgálót, akár egy virtuális hálózat Azure-ra vonatkozó korlátját is. További információ a DNS-kiszolgáló korlátairól: [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). A következő lehetőségek közül választhat:
+   - **Egyéni**: hozzáadhat egy vagy több kiszolgálót, akár egy virtuális hálózat Azure-ra vonatkozó korlátját is. További információ a DNS-kiszolgáló korlátairól: [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Az alábbi lehetőségek állnak rendelkezésére:
    - **Adja**meg a következő címeket: hozzáadja a kiszolgálót a virtuális hálózati DNS-kiszolgálók listájához. Ez a beállítás a DNS-kiszolgálót is regisztrálja az Azure-ban. Ha már regisztrált egy DNS-kiszolgálót az Azure-ban, akkor kiválaszthatja a listában a DNS-kiszolgálót.
    - Válasszon ki **egy címeket**: az eltávolítani kívánt kiszolgáló mellett válassza a **...**, majd az **Eltávolítás**lehetőséget. A kiszolgáló törlésével a kiszolgáló csak a virtuális hálózatok listájáról távolítható el. A DNS-kiszolgáló továbbra is regisztrálva lesz az Azure-ban a többi virtuális hálózat használatára.
    - **DNS-kiszolgáló címeinek átrendezése**: fontos ellenőrizni, hogy a DNS-kiszolgálókat a környezetének megfelelő sorrendben sorolja-e fel. A DNS-kiszolgálók listáját a rendszer a megadott sorrendben használja. Nem működnek ciklikus multiplexelés beállításként. Ha a lista első DNS-kiszolgálója elérhető, akkor az ügyfél ezt a DNS-kiszolgálót használja, függetlenül attól, hogy a DNS-kiszolgáló megfelelően működik-e. Távolítsa el az összes felsorolt DNS-kiszolgálót, majd adja őket vissza a kívánt sorrendben.
@@ -171,7 +170,7 @@ A virtuális hálózat csak akkor törölhető, ha nincs csatlakoztatva erőforr
 
 Ha virtuális hálózatokon szeretné elvégezni a feladatokat, a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                  |   Name (Név)                                |
+| Műveletek                                  |   Name                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/READ   |   Virtuális hálózat beolvasása              |
 |Microsoft. Network/virtualNetworks/Write  |   Virtuális hálózat létrehozása vagy frissítése  |

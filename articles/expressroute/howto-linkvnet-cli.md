@@ -4,22 +4,21 @@ description: Ez a cikk bemutatja, hogyan kapcsolhat virtuális hálózatokat (vi
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84729242"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a CLI használatával
 
 Ez a cikk segítséget nyújt a Virtual Networks (virtuális hálózatok) és az Azure ExpressRoute-áramkörök összekapcsolásához a CLI használatával. Az Azure CLI használatával való hivatkozáshoz a virtuális hálózatokat a Resource Manager-alapú üzemi modell használatával kell létrehozni. Lehetnek ugyanabban az előfizetésben vagy egy másik előfizetés részeként. Ha másik módszert szeretne használni a VNet ExpressRoute-áramkörhöz való összekapcsolásához, a következő listából választhat egy cikket:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -36,7 +35,7 @@ Ez a cikk segítséget nyújt a Virtual Networks (virtuális hálózatok) és az
   * Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](howto-circuit-cli.md) , és engedélyezze az áramkört a kapcsolat szolgáltatója számára. 
   * Győződjön meg arról, hogy az Ön áramköréhez konfigurálva van az Azure-beli magánhálózati kapcsolat. Az útválasztási utasításokért tekintse meg az [Útválasztás konfigurálása](howto-routing-cli.md) című cikket. 
   * Győződjön meg arról, hogy az Azure-beli magánhálózati társítás konfigurálva van. A hálózat és a Microsoft közötti BGP-társat úgy kell beállítani, hogy engedélyezze a végpontok közötti kapcsolatot.
-  * Győződjön meg arról, hogy van egy virtuális hálózat és egy virtuális hálózati átjáró létrehozva és teljesen kiépítve. A [ExpressRoute virtuális hálózati átjárójának konfigurálásához](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)kövesse az utasításokat. Ügyeljen arra, hogy `--gateway-type ExpressRoute`a következőt használja:.
+  * Győződjön meg arról, hogy van egy virtuális hálózat és egy virtuális hálózati átjáró létrehozva és teljesen kiépítve. A [ExpressRoute virtuális hálózati átjárójának konfigurálásához](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)kövesse az utasításokat. Ügyeljen arra, hogy a következőt használja: `--gateway-type ExpressRoute` .
 
 * Akár 10 virtuális hálózatot is összekapcsolhat egy standard ExpressRoute áramkörrel. Szabványos ExpressRoute áramkör használata esetén minden virtuális hálózatnak ugyanabban a geopolitikai régióban kell lennie. 
 

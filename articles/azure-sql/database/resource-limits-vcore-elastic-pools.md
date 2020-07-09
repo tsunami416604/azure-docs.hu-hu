@@ -10,13 +10,12 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 03/03/2020
-ms.openlocfilehash: 48f37a29b227c714552596337d3ff3c692830488
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668457"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +27,7 @@ A DTU megvásárlására vonatkozó korlátokat lásd: [SQL Database DTU erőfor
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
-A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](elastic-pool-manage.md#powershell), az [Azure CLI](elastic-pool-manage.md#azure-cli)vagy a [REST API](elastic-pool-manage.md#rest-api)használatával állíthatja be.
+A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) és a tárterületet a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](elastic-pool-manage.md#powershell), az [Azure CLI](elastic-pool-manage.md#azure-cli)vagy a [REST API](elastic-pool-manage.md#rest-api)használatával állíthatja be.
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [rugalmas készlet](elastic-pool-scale.md)skálázása.
@@ -40,7 +39,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Általános célú szolgáltatási szintek: 4. generációs számítási platform (1. rész)
 
-|Számítási méret|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Számítási méret (szolgáltatási cél)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|1|2|3|4|5|6|
@@ -72,7 +71,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Általános célú szolgáltatási szintek: 4. generációs számítási platform (2. rész)
 
-|Számítási méret|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
+|Számítási méret (szolgáltatási cél)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
@@ -106,7 +105,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Általános célú szolgáltatási szintek: 5. generációs számítási platform (1. rész)
 
-|Számítási méret|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Számítási méret (szolgáltatási cél)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|2|4|6|8|10|12|14|
@@ -138,7 +137,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Általános célú szolgáltatási szintek: 5. generációs számítási platform (2. rész)
 
-|Számítási méret|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Számítási méret (szolgáltatási cél)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
@@ -151,7 +150,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS/készletben <sup>2</sup> |6 400|7 200|8,000|9600|12 800|16000|32 000|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup> |6 400|7 200|8,000|9600|12 800|16000|16000|
 |Maximális naplózási arány (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
@@ -172,13 +171,13 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 sorozatú számítási generáció (előzetes verzió)
 
-|Számítási méret|GP_Fsv2_72|
+|Számítási méret (szolgáltatási cél)|GP_Fsv2_72|
 |:--- | --: |
 |Számítási generáció|Fsv2 sorozat|
 |Virtuális mag|72|
 |Memória (GB)|136,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|
-|Oszlopcentrikus-támogatás|Igen|
+|Oszlopcentrikus-támogatás|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
@@ -209,7 +208,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Üzleti szempontból kritikus szolgáltatási szintek: 4. generációs számítási platform (1. rész)
 
-|Számítási méret|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Számítási méret (szolgáltatási cél)|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|2|3|4|5|6|
@@ -241,7 +240,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Üzleti szempontból kritikus szolgáltatási szintek: 4. generációs számítási platform (2. rész)
 
-|Számítási méret|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Számítási méret (szolgáltatási cél)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
@@ -275,7 +274,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Üzleti szempontból kritikus szolgáltatási szintek: 5. generációs számítási platform (1. rész)
 
-|Számítási méret|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Számítási méret (szolgáltatási cél)|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|4|6|8|10|12|14|
@@ -307,7 +306,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Üzleti szempontból kritikus szolgáltatási szintek: 5. generációs számítási platform (2. rész)
 
-|Számítási méret|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Számítási méret (szolgáltatási cél)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
@@ -341,13 +340,13 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="m-series-compute-generation-preview"></a>Az M-sorozat számítási generációja (előzetes verzió)
 
-|Számítási méret|BC_M_128|
+|Számítási méret (szolgáltatási cél)|BC_M_128|
 |:--- | --: |
 |Számítási generáció|M sorozat|
 |Virtuális mag|128|
 |Memória (GB)|3767,1|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|
-|Oszlopcentrikus-támogatás|Igen|
+|Oszlopcentrikus-támogatás|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|1768|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|2048|
@@ -361,8 +360,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-128|
 |Replikák száma|4|
-|Több – AZ|Igen|
-|Olvasási felskálázás|Igen|
+|Több – AZ|Yes|
+|Olvasási felskálázás|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -378,7 +377,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 
 > [!NOTE]
-> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében, amelyek ugyanazzal a számítási mérettel rendelkeznek. Például az GP_Gen4_1-adatbázisok maximális egyidejű feldolgozói 200 feldolgozók. Így a GP_Gen4_1-készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 200 feldolgozók. Vegye figyelembe, hogy GP_Gen4_1 készletben lévő egyidejű feldolgozók száma összesen 210.
+> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében, amelyek ugyanazzal a számítási mérettel rendelkeznek (szolgáltatási cél). Például az GP_Gen4_1-adatbázisok maximális egyidejű feldolgozói 200 feldolgozók. Így a GP_Gen4_1-készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 200 feldolgozók. Vegye figyelembe, hogy GP_Gen4_1 készletben lévő egyidejű feldolgozók száma összesen 210.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 025d02ccdf38e72682cf67cc07a8b2edd549e599
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82081574"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption az Azure AD-vel (előző kiadás)
@@ -24,7 +24,7 @@ Ez a cikk a [Windows rendszerű virtuális gépek Azure Disk Encryption a](disk-
 ## <a name="networking-and-group-policy"></a>Hálózatkezelés és Csoportházirend
 
 **Ha engedélyezni szeretné a Azure Disk Encryption funkciót a régebbi HRE paraméter szintaxisával, a IaaS virtuális gépeknek meg kell felelniük a következő hálózati végpont-konfigurációs követelményeknek:** 
-  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a IaaS virtuális gépnek képesnek kell lennie csatlakozni \[egy\]Azure Active Directory végponthoz, login.microsoftonline.com.
+  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a IaaS virtuális gépnek képesnek kell lennie csatlakozni egy Azure Active Directory végponthoz, \[ login.microsoftonline.com \] .
   - A titkosítási kulcsok a kulcstartóba való írásához a IaaS virtuális gépnek csatlakoznia kell a Key Vault-végponthoz.
   - A IaaS virtuális gépnek képesnek kell lennie csatlakozni egy Azure Storage-végponthoz, amely az Azure-bővítmény adattárát és a VHD-fájlokat tároló Azure Storage-fiókot tartalmazza.
   -  Ha a biztonsági házirend korlátozza az Azure-beli virtuális gépekről az internetre való hozzáférést, az előző URI-t megoldhatja, és konfigurálhat egy adott szabályt, hogy engedélyezze a kimenő kapcsolatot az IP-címekkel. További információ: [Azure Key Vault tűzfal mögött](../../key-vault/key-vault-access-behind-firewall.md).
@@ -43,7 +43,7 @@ Ez a cikk a [Windows rendszerű virtuális gépek Azure Disk Encryption a](disk-
 **Csoportházirend:**
  - A Azure Disk Encryption megoldás a BitLocker külső kulcstartót használja a Windows IaaS virtuális gépekhez. Tartományhoz csatlakozó virtuális gépek esetében ne küldjön le olyan csoportházirendeket, amelyek kikényszerítik a TPM-védőket. További információ a "BitLocker engedélyezése kompatibilis TPM nélkül" Csoportházirendről: a [bitlocker csoportházirend referenciája](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
--  A tartományhoz csatlakoztatott, egyéni csoportházirendtel rendelkező virtuális gépekre vonatkozó BitLocker-házirendnek tartalmaznia kell a következő beállítást: a [BitLocker helyreállítási adatok felhasználói tárolójának konfigurálása – > engedélyezi a 256 bites helyreállítási kulcsot](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). A Azure Disk Encryption sikertelen lesz, ha a BitLocker egyéni csoportházirend-beállításai nem kompatibilisek. Azokon a gépeken, amelyek nem rendelkeznek a megfelelő házirend-beállítással, alkalmazza az új házirendet, kényszerítse az új házirend frissítését (gpupdate. exe/Force), majd szükség lehet az újraindításra.  
+-  A tartományhoz csatlakoztatott, egyéni csoportházirendtel rendelkező virtuális gépekre vonatkozó BitLocker-házirendnek tartalmaznia kell a következő beállítást: a [BitLocker helyreállítási adatok felhasználói tárolójának konfigurálása – > engedélyezi a 256 bites helyreállítási kulcsot](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). A Azure Disk Encryption sikertelen lesz, ha a BitLocker egyéni csoportházirend-beállításai nem kompatibilisek. Azokon a számítógépeken, amelyeken nem volt megfelelő házirend-beállítás, alkalmazza az új házirendet, kényszerítse az új házirend frissítését (gpupdate.exe/Force), majd szükség lehet az újraindításra.  
 
 ## <a name="encryption-key-storage-requirements"></a>Titkosítási kulcs tárolási követelményei  
 

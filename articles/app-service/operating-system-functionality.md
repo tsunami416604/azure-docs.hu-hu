@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74671611"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer funkciójának Azure App Service
@@ -33,7 +32,7 @@ Mivel App Service támogatja a különböző rétegek közötti zökkenőmentes 
 ## <a name="development-frameworks"></a>Fejlesztési keretrendszerek
 App Service díjszabási szintjei szabályozzák az alkalmazások számára elérhető számítási erőforrások (CPU, lemezes tárolás, memória és hálózati forgalom) mennyiségét. Az alkalmazások számára elérhető keretrendszer-funkcionalitás szélessége azonban a skálázási szintektől függetlenül változatlan marad.
 
-App Service számos fejlesztési keretrendszert támogat, többek között a ASP.NET, a klasszikus ASP-t, a Node. js-t, a PHP-t és a Python-t, amelyek mindegyike az IIS-en belül fut. A biztonsági konfiguráció egyszerűsítése és normalizálása érdekében App Service alkalmazások általában a különböző fejlesztési keretrendszereket futtatják az alapértelmezett beállításokkal. Az alkalmazások konfigurálásának egyik módja az, hogy testre szabhatja az API Surface területét és funkcióit az egyes fejlesztési keretrendszerekhez. A App Service ehelyett inkább általános megközelítést tesz lehetővé azáltal, hogy az alkalmazás fejlesztői keretrendszere alapján az operációs rendszer működésének általános alapkonfigurációját is felhasználja.
+App Service számos fejlesztési keretrendszert támogat, többek között a ASP.NET, a klasszikus ASP, a node.js, a PHP és a Python alkalmazást, amelyek mindegyike az IIS-en belül fut. A biztonsági konfiguráció egyszerűsítése és normalizálása érdekében App Service alkalmazások általában a különböző fejlesztési keretrendszereket futtatják az alapértelmezett beállításokkal. Az alkalmazások konfigurálásának egyik módja az, hogy testre szabhatja az API Surface területét és funkcióit az egyes fejlesztési keretrendszerekhez. A App Service ehelyett inkább általános megközelítést tesz lehetővé azáltal, hogy az alkalmazás fejlesztői keretrendszere alapján az operációs rendszer működésének általános alapkonfigurációját is felhasználja.
 
 A következő részekben App Service alkalmazások számára elérhető általános operációsrendszer-funkciók összegzése látható.
 
@@ -45,7 +44,7 @@ Különböző meghajtók léteznek App Serviceon belül, beleértve a helyi megh
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Helyi meghajtók
-A App Service egy olyan szolgáltatás, amely az Azure Pásti (platform as Service) infrastruktúrájának tetején fut. Ennek eredményeképpen a virtuális géphez csatolt helyi meghajtók ugyanazok a meghajtók, amelyek az Azure-ban futó feldolgozói szerepkörök számára is elérhetők. Az érintett műveletek közé tartoznak az alábbiak:
+A App Service egy olyan szolgáltatás, amely az Azure Pásti (platform as Service) infrastruktúrájának tetején fut. Ennek eredményeképpen a virtuális géphez csatolt helyi meghajtók ugyanazok a meghajtók, amelyek az Azure-ban futó feldolgozói szerepkörök számára is elérhetők. Ide tartoznak az alábbiak:
 
 - Operációs rendszer meghajtója (a D:\ meghajtó
 - Olyan alkalmazás-meghajtó, amely kizárólag App Service által használt Azure Package cspkg-fájlokat tartalmaz (és nem érhető el az ügyfelek számára)
@@ -55,7 +54,7 @@ Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát
 
 - Az alkalmazás olyan hibát okozhat, amely nem elegendő helyet jelez a lemezen.
 - Előfordulhat, hogy a kudu-konzolra való tallózáskor lemezhibák jelenhetnek meg.
-- Az `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`Azure DevOps vagy a Visual studióból történő üzembe helyezés sikertelen lehet.
+- Az Azure DevOps vagy a Visual studióból történő üzembe helyezés sikertelen lehet `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` .
 - Az alkalmazás teljesítménye csökkenhet.
 
 <a id="NetworkDrives"></a>
@@ -76,7 +75,7 @@ Az alkalmazást futtató virtuális géphez csatlakoztatott helyi meghajtókon A
 
 Két példa arra, hogy a App Service hogyan használja az ideiglenes helyi tárolást az ideiglenes ASP.NET-fájlok és az IIS-hez tömörített fájlok könyvtára számára. A ASP.NET-fordítási rendszer az "ideiglenes ASP.NET fájlok" könyvtárat használja ideiglenes fordítási gyorsítótárként. Az IIS az "IIS ideiglenes tömörített fájlok" könyvtárat használja a tömörített válasz kimenetének tárolására. Mindkét fájltípust (valamint másokat) a App Service az alkalmazáson belüli ideiglenes helyi tárterületre rendeli hozzá. Ez az újramegfeleltetés biztosítja, hogy a funkciók a várt módon folytatódnak.
 
-A App Serviceban lévő alkalmazások véletlenszerűen egyedi, alacsony jogosultsági szintű munkavégző folyamat identitásának nevezett "alkalmazáskészlet-identitás" néven futnak, amely az [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)itt olvasható:. Az alkalmazás kódja ezt az identitást használja az operációs rendszer meghajtójának alapszintű írásvédett eléréséhez (a D:\ meghajtó). Ez azt jelenti, hogy az alkalmazás kódja listázhatja az általános címtár-struktúrákat, és beolvashatja az operációs rendszer meghajtóján található általános fájlokat Bár ez némileg szélesebb körű hozzáférésnek tűnhet, ugyanazok a könyvtárak és fájlok érhetők el, amikor feldolgozói szerepkört helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és beolvassa a meghajtó tartalmát. 
+A App Serviceban lévő alkalmazások véletlenszerűen egyedi, alacsony jogosultsági szintű munkavégző folyamat identitásának nevezett "alkalmazáskészlet-identitás" néven futnak, amely az itt olvasható: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) . Az alkalmazás kódja ezt az identitást használja az operációs rendszer meghajtójának alapszintű írásvédett eléréséhez (a D:\ meghajtó). Ez azt jelenti, hogy az alkalmazás kódja listázhatja az általános címtár-struktúrákat, és beolvashatja az operációs rendszer meghajtóján található általános fájlokat Bár ez némileg szélesebb körű hozzáférésnek tűnhet, ugyanazok a könyvtárak és fájlok érhetők el, amikor feldolgozói szerepkört helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és beolvassa a meghajtó tartalmát. 
 
 <a name="multipleinstances"></a>
 
@@ -115,7 +114,7 @@ Az alkalmazások számára nem elérhető diagnosztikai naplózási és nyomköv
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Beállításjegyzék-hozzáférés
-Az alkalmazások csak olvasási hozzáféréssel rendelkeznek a virtuális gép beállításjegyzékéhez, amelyen futnak. A gyakorlatban ez olyan beállításkulcsokat jelent, amely lehetővé teszi, hogy az alkalmazások csak olvasási hozzáférést engedélyezzenek a helyi felhasználók csoport számára. A beállításjegyzék egyik területe, amely jelenleg nem támogatott olvasási vagy írási hozzáférés esetén, a HKEY\_aktuális\_felhasználói struktúrája.
+Az alkalmazások csak olvasási hozzáféréssel rendelkeznek a virtuális gép beállításjegyzékéhez, amelyen futnak. A gyakorlatban ez olyan beállításkulcsokat jelent, amely lehetővé teszi, hogy az alkalmazások csak olvasási hozzáférést engedélyezzenek a helyi felhasználók csoport számára. A beállításjegyzék egyik területe, amely jelenleg nem támogatott olvasási vagy írási hozzáférés esetén, a HKEY \_ aktuális \_ felhasználói struktúrája.
 
 A beállításjegyzékhez való írási hozzáférés le van tiltva, beleértve a felhasználónkénti beállításkulcsok elérését is. Az alkalmazás szemszögéből az írási hozzáférés a beállításjegyzékhez soha nem támaszkodhat az Azure-környezetben, mivel az alkalmazások a különböző virtuális gépeken telepíthetők át (és nem). Az egyetlen alkalmazástól függő, az alkalmazáson belüli, az App Service UNC-megosztásokon tárolt alkalmazások közötti tartalmi könyvtár szerkezete. 
 

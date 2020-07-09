@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732577"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
@@ -93,7 +92,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
 1. Telepítse az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) -ban" számítási feladatot a Visual Studio 2019-es verzióra. A Visual Studio 2017 és a 2015 is támogatott.
 
-1. Telepítse a [cmakt](https://cmake.org/). Győződjön meg arról `PATH` , hogy a parancs beírásával írja `cmake -version` be a parancssorba.
+1. Telepítse a [cmakt](https://cmake.org/). Győződjön meg arról, hogy a `PATH` parancs beírásával írja be a `cmake -version` parancssorba.
 
 1. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához:
 
@@ -136,23 +135,23 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">A minta beolvasása a GitHubon</a>
 
-1. A `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` forrásfájl megnyitásához használja a szerkesztőt.
+1. A forrásfájl megnyitásához használja a szerkesztőt `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` .
 
 1. Keresse meg a `connectionString` konstans deklarációját:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    Cserélje le az `connectionString` állandó értéket az eszköz csatlakoztatási karakterláncára, amelyet a [Send telemetria C](./quickstart-send-telemetry-c.md)( [eszköz regisztrálása](./quickstart-send-telemetry-c.md#register-a-device) ) szakasza tartalmaz.
+    Cserélje le az állandó értéket az `connectionString` eszköz csatlakoztatási karakterláncára, amelyet a [Send telemetria C](./quickstart-send-telemetry-c.md)( [eszköz regisztrálása](./quickstart-send-telemetry-c.md#register-a-device) ) szakasza tartalmaz.
 
-1. Módosítsa a `MESSAGE_COUNT` definiált `5000`értékre:
+1. Módosítsa a `MESSAGE_COUNT` definiált értékre `5000` :
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. Keresse meg a kód azon sorát `IoTHubDeviceClient_LL_SetConnectionStatusCallback` , amely a kapcsolatok állapotának visszahívása funkció regisztrálását kéri a küldési üzenet ciklusa előtt. Az alábbi ábrán látható módon vegyen fel kódot `IoTHubDeviceClient_LL_EnablePolicyConfiguration` az elosztott nyomkövetés engedélyezésének meghívásához az eszközön:
+1. Keresse meg a kód azon sorát, amely a `IoTHubDeviceClient_LL_SetConnectionStatusCallback` kapcsolatok állapotának visszahívása funkció regisztrálását kéri a küldési üzenet ciklusa előtt. Az alábbi ábrán látható módon vegyen fel kódot az `IoTHubDeviceClient_LL_EnablePolicyConfiguration` elosztott nyomkövetés engedélyezésének meghívásához az eszközön:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    A `IoTHubDeviceClient_LL_EnablePolicyConfiguration` függvény lehetővé teszi, hogy a szabályzatok meghatározott IoTHub-funkciókhoz legyenek [konfigurálva.](./iot-hub-devguide-device-twins.md) Ha `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` a fenti kóddal van engedélyezve, az eszköz nyomkövetési viselkedése az eszköz ikerén végrehajtott elosztott nyomkövetési módosításokat tükrözi.
+    A `IoTHubDeviceClient_LL_EnablePolicyConfiguration` függvény lehetővé teszi, hogy a szabályzatok meghatározott IoTHub- [device twins](./iot-hub-devguide-device-twins.md)funkciókhoz legyenek konfigurálva. Ha a `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` fenti kóddal van engedélyezve, az eszköz nyomkövetési viselkedése az eszköz ikerén végrehajtott elosztott nyomkövetési módosításokat tükrözi.
 
 1. Ha a minta alkalmazást az összes kvóta használata nélkül szeretné megőrizni, adjon hozzá egy másodperces késleltetést az üzenet küldése hurok végén:
 
@@ -160,7 +159,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
 ### <a name="compile-and-run"></a>Fordítás és Futtatás
 
-1. Navigáljon a *iothub_ll_telemetry_sample* korábban létrehozott CMAK könyvtárból (`azure-iot-sdk-c/cmake`) iothub_ll_telemetry_sample projekt könyvtárába, és fordítsa le a mintát:
+1. Navigáljon a korábban létrehozott CMak könyvtárból () *iothub_ll_telemetry_sample* projekt könyvtárába `azure-iot-sdk-c/cmake` , és fordítsa le a mintát:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -183,8 +182,8 @@ Az elosztott nyomkövetési funkció **nem triviális** a C SDK használata nél
 
 Először is meg kell valósítania az üzenetekben az összes IoT Hub-protokoll primitívjét, a fejlesztői útmutató [IoT hub üzenetek létrehozása és olvasása](iot-hub-devguide-messages-construct.md)című témakörben leírtak szerint. Ezután szerkessze a protokoll tulajdonságait a MQTT/AMQP üzenetekben a `tracestate` **rendszertulajdonságként**való hozzáadáshoz. Ezek:
 
-* A MQTT esetében adja `%24.tracestate=timestamp%3d1539243209` hozzá az üzenetet a témakörhöz `1539243209` , ahol az üzenet létrehozásának időpontját a Unix timestamp formátumban kell lecserélni. Példaként tekintse át a [C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) implementációját.
-* AMQP esetében adja hozzá `key("tracestate")` a `value("timestamp=1539243209")` és a as üzenetet megjegyzésként. A referenciák megvalósításához [tekintse](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)meg a következő témakört:.
+* A MQTT esetében adja hozzá `%24.tracestate=timestamp%3d1539243209` az üzenetet a témakörhöz, ahol az `1539243209` üzenet létrehozásának időpontját a Unix timestamp formátumban kell lecserélni. Példaként tekintse át a [C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) implementációját.
+* AMQP esetében adja hozzá a `key("tracestate")` és `value("timestamp=1539243209")` a as üzenetet megjegyzésként. A referenciák megvalósításához [tekintse](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)meg a következő témakört:.
 
 A tulajdonságot tartalmazó üzenetek százalékos arányának szabályozása érdekében a felhő által kezdeményezett események, például a kettős frissítések figyeléséhez logikát kell végrehajtani.
 
@@ -208,11 +207,11 @@ A felhőből nyomon követett üzenetek százalékos arányának módosításáh
 
 1. Várjon néhány másodpercet, és kattintson a **frissítés**gombra, majd ha az eszköz sikeresen visszaigazolja az eszközt, a szinkronizálás ikon látható.
 
-1. Lépjen vissza a telemetria-üzenethez tartozó konzolablak ablakához. A rendszer az alkalmazás tulajdonságai `tracestate` között küldi el az üzeneteket.
+1. Lépjen vissza a telemetria-üzenethez tartozó konzolablak ablakához. A rendszer az alkalmazás tulajdonságai között küldi el az üzeneteket `tracestate` .
 
     ![Nyomkövetés állapota](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. Választható Módosítsa a mintavételezési sebességet egy másik értékre, és figyelje meg, hogy az üzenetek milyen `tracestate` mértékben módosulnak az alkalmazás tulajdonságai között.
+1. Választható Módosítsa a mintavételezési sebességet egy másik értékre, és figyelje meg, hogy az üzenetek milyen mértékben módosulnak az `tracestate` alkalmazás tulajdonságai között.
 
 ### <a name="update-using-azure-iot-hub-for-vs-code"></a>Frissítés az Azure IoT Hub a VS Code-hoz
 
@@ -247,10 +246,10 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 }
 ```
 
-| Elem neve | Kötelező | Típus | Leírás |
+| Elem neve | Kötelező | Típus | Description |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1`a és a, `2` ki van kapcsolva. |
-| `sampling_rate` | Igen | Egész szám | Ez az érték százalék. Csak `0` a és a `100` közötti értékek engedélyezettek.  |
+| `sampling_mode` | Yes | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1`a és a, `2` ki van kapcsolva. |
+| `sampling_rate` | Yes | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
 
 ## <a name="query-and-visualize"></a>Lekérdezés és megjelenítés
 
@@ -258,7 +257,7 @@ Ha meg szeretné tekinteni a IoT Hub által naplózott összes nyomkövetést, k
 
 ### <a name="query-using-log-analytics"></a>Lekérdezés Log Analytics használatával
 
-Ha a [log Analyticst a diagnosztikai naplók](../azure-monitor/platform/resource-logs-collect-storage.md)használatával állította be, a `DistributedTracing` lekérdezés a kategória naplói alapján keresi a lekérdezést. Ez a lekérdezés például az összes naplózott nyomkövetést megjeleníti:
+Ha a [log Analyticst a diagnosztikai naplók](../azure-monitor/platform/resource-logs-collect-storage.md)használatával állította be, a lekérdezés a kategória naplói alapján keresi a lekérdezést `DistributedTracing` . Ez a lekérdezés például az összes naplózott nyomkövetést megjeleníti:
 
 ```Kusto
 // All distributed traces 
@@ -307,13 +306,13 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 
 1. A rendszer létrehoz egy üzenetet a IoT-eszközön.
 1. A IoT-eszköz (a felhő segítségével) úgy dönt, hogy ezt az üzenetet nyomkövetési környezettel kell hozzárendelni.
-1. Az SDK hozzáadja `tracestate` a alkalmazást az üzenet-létrehozási időbélyegzőt tartalmazó tulajdonsághoz.
+1. Az SDK hozzáadja a `tracestate` alkalmazást az üzenet-létrehozási időbélyegzőt tartalmazó tulajdonsághoz.
 1. A IoT-eszköz elküldi az üzenetet a IoT Hubnak.
 1. Az üzenet megérkezik az IoT hub-átjáróra.
-1. IoT Hub megkeresi `tracestate` az üzenet alkalmazás tulajdonságait, és ellenőrzi, hogy a formátuma megfelelő-e.
-1. Ha igen, IoT Hub létrehoz egy globálisan `trace-id` egyedit az üzenethez `span-id` , egy a "hop" kifejezésre, és naplózza őket a művelet `DiagnosticIoTHubD2C`alatt Azure monitor diagnosztikai naplókba.
-1. Az üzenetek feldolgozásának befejeződése után IoT Hub létrehoz egy másikat `span-id` , és a művelettel `trace-id` `DiagnosticIoTHubIngress`együtt naplózza.
-1. Ha az útválasztás engedélyezve van az üzenethez, IoT Hub írja azt az egyéni végpontba, és a `span-id` kategóriával `trace-id` `DiagnosticIoTHubEgress`megegyezően naplózza a másikat.
+1. IoT Hub megkeresi az `tracestate` üzenet alkalmazás tulajdonságait, és ellenőrzi, hogy a formátuma megfelelő-e.
+1. Ha igen, IoT Hub létrehoz egy globálisan egyedit `trace-id` az üzenethez, egy a `span-id` "hop" kifejezésre, és naplózza őket a művelet alatt Azure monitor diagnosztikai naplókba `DiagnosticIoTHubD2C` .
+1. Az üzenetek feldolgozásának befejeződése után IoT Hub létrehoz egy másikat, `span-id` és a művelettel együtt naplózza `trace-id` `DiagnosticIoTHubIngress` .
+1. Ha az útválasztás engedélyezve van az üzenethez, IoT Hub írja azt az egyéni végpontba, és a `span-id` kategóriával megegyezően naplózza a másikat `trace-id` `DiagnosticIoTHubEgress` .
 1. A fenti lépéseket minden generált üzenet esetében meg kell ismételni.
 
 ## <a name="public-preview-limits-and-considerations"></a>Nyilvános előzetes verziókra vonatkozó korlátozások és megfontolások

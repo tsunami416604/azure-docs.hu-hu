@@ -4,15 +4,15 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre AS
 author: yegu-ms
 ms.service: cache
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 06/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c9dfc7c9b396ec6ecd27891298ba0b0f1fc3e186
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74927071"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117844"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: az Azure cache használata a Redis ASP.NET-webalkalmazással 
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban a Visual Studio 2019 segítségével hozhat létre 
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. Nyissa meg a Visual studiót, majd válassza a **fájl** >**új** > **projekt**lehetőséget.
+1. Nyissa meg a Visual studiót, majd válassza a **fájl**  > **új**  >  **projekt**lehetőséget.
 
 2. A **New Project** (Új projekt) párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
@@ -41,7 +41,7 @@ Ebben a rövid útmutatóban a Visual Studio 2019 segítségével hozhat létre 
 
     e. A **Name** (Név) mezőben nevezze el a projektet. Ebben a példában a **ContosoTeamStats** nevet használtunk.
 
-    f. Kattintson az **OK** gombra.
+    f. Válassza az **OK** lehetőséget.
    
 3. A projekt típusaként válassza az **MVC** lehetőséget.
 
@@ -59,13 +59,13 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>A *CacheSecrets.config* fájl módosítása
 
-1. Hozzon létre egy fájlt a *CacheSecrets. config*nevű számítógépen. Helyezze olyan helyre, ahol a minta alkalmazás forráskódja nem lesz bejelentkezve. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
+1. Hozzon létre egy fájlt a *CacheSecrets.config*nevű számítógépen. Helyezze olyan helyre, ahol a minta alkalmazás forráskódja nem lesz bejelentkezve. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
 
 1. Szerkessze a *CacheSecrets.config* fájlt. Ezután adja hozzá a következő tartalmat:
 
     ```xml
     <appSettings>
-        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
     </appSettings>
     ```
 
@@ -89,7 +89,7 @@ Ebben a szakaszban frissíti az alkalmazást egy olyan új nézet támogatásáh
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>A web.config fájl frissítése egy gyorsítótárhoz tartozó alkalmazásbeállítással
 
-Amikor helyileg futtatja az alkalmazást, a *CacheSecrets. config fájlban* található információk használatával kapcsolódhat az Azure cache Redis-példányhoz. Később ezt az alkalmazást fogja üzembe helyezni az Azure-ban. Ekkor konfigurálni fog egy alkalmazásbeállítást az Azure-ban, amelyet az alkalmazás a fájl helyett fog használni a gyorsítótár kapcsolati információinak lekéréséhez. 
+Amikor helyileg futtatja az alkalmazást, a *CacheSecrets.configban* található információk az Azure cache Redis-példányhoz való kapcsolódásához használatosak. Később ezt az alkalmazást fogja üzembe helyezni az Azure-ban. Ekkor konfigurálni fog egy alkalmazásbeállítást az Azure-ban, amelyet az alkalmazás a fájl helyett fog használni a gyorsítótár kapcsolati információinak lekéréséhez. 
 
 Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alkalmazással együtt, csak akkor fogja használni, amikor helyben teszteli az alkalmazást. Ezt az információt a lehető legbiztonságosabb módon kell tárolni, hogy mások ne férhessenek hozzá károkozási szándékkal a gyorsítótárazott adatokhoz.
 
@@ -103,7 +103,7 @@ Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alk
 * Előtte: `<appSettings>`
 * Után`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Amikor üzembe helyezi a webalkalmazást az Azure-ban, a *CacheSecrets. config* fájl nincs telepítve.
+Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Amikor üzembe helyezi a webalkalmazást az Azure-ban, a *CacheSecrets.config* fájl nincs telepítve.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Az alkalmazás konfigurálása a StackExchange.Redis használatára
 
@@ -131,19 +131,22 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 3. Adja hozzá a következő metódust a `HomeController` osztályhoz, hogy támogasson egy új `RedisCache`-műveletet, amely futtat néhány parancsot az új gyorsítótáron.
 
     ```csharp
-        public ActionResult RedisCache()
+    public ActionResult RedisCache()
+    {
+        ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+
+        var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+            return ConnectionMultiplexer.Connect(cacheConnection);
+        });
 
-            var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-            {
-                string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-                return ConnectionMultiplexer.Connect(cacheConnection);
-            });
-
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+        // Connection refers to a property that returns a ConnectionMultiplexer
+        // as shown in the previous example.
+            
+        using (ConnectionMultiplexer redis = lazyConnection.Value)
+        {
+            IDatabase cache = redis.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -164,12 +167,37 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 
             // Get the client list, useful to see if connection list is growing...
             ViewBag.command5 = "CLIENT LIST";
-            ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
+            StringBuilder sb = new StringBuilder();
 
-            lazyConnection.Value.Dispose();
+            var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
+            var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+            var clients = server.ClientList();
 
-            return View();
+            sb.AppendLine("Cache response :");
+            foreach (var client in clients)
+            {
+                sb.AppendLine(client.Raw);
+            }
+
+            ViewBag.command5Result = sb.ToString();
+
+        return View();
+    }
+                
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+        return ConnectionMultiplexer.Connect(cacheConnection);
+    });
+
+    public static ConnectionMultiplexer Connection
+    {
+        get
+        {
+            return lazyConnection.Value;
         }
+    }
+
     ```
 
 4. A **Megoldáskezelőben** bontsa ki a **Views** (Nézetek)  > **Shared** (Közös) mappát. Ezután nyissa meg a *_Layout.cshtml* fájlt.
@@ -188,7 +216,7 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 
 ### <a name="to-add-a-new-rediscache-view"></a>Új RedisCache-nézet hozzáadása
 
-1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, majd kattintson a jobb gombbal a **Kezdőmappára**. Válassza a nézet **hozzáadása** > **...** lehetőséget.
+1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, majd kattintson a jobb gombbal a **Kezdőmappára**. Válassza a nézet **hozzáadása**  >  **...** lehetőséget.
 
 2. A **Nézet hozzáadása** párbeszédpanelen a Nézet neve mezőben adja meg a **RedisCache** nevet. Ezután válassza a **Hozzáadás**lehetőséget.
 
@@ -235,7 +263,7 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 Alapértelmezés szerint a projekt úgy van konfigurálva, hogy a teszteléshez és a hibakereséshez [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) helyileg tárolja az alkalmazást.
 
 ### <a name="to-run-the-app-locally"></a>Az alkalmazás futtatása helyben
-1. A Visual Studióban válassza **a hibakeresés** > **indításkor** lehetőséget, hogy a teszteléshez és a hibakereséshez helyileg hozza létre és indítsa el az alkalmazást.
+1. A Visual Studióban válassza a **hibakeresés**  >  **indításkor** lehetőséget, hogy a teszteléshez és a hibakereséshez helyileg hozza létre és indítsa el az alkalmazást.
 
 2. A böngészőben válassza az **Azure cache lehetőséget a Redis teszteléséhez** a navigációs sávon.
 
@@ -296,7 +324,7 @@ A gyorsítótár-hozzáférés teszteléséhez válassza a navigációs sávon a
 
 ![Egyszerű teszt eredménye – Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

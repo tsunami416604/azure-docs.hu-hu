@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c1a8c5231e0a6d6674ca55be78a491074a3d3a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053638"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252916"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>Oktatóanyag: Azure SQL Database biztonságossá tétele
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -25,7 +25,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
 >
 > - Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok létrehozása
-> - Azure Active Directory (AD) rendszergazda konfigurálása
+> - Azure Active Directory (Azure AD) rendszergazdájának konfigurálása
 > - Felhasználói hozzáférés kezelése SQL-hitelesítéssel, Azure AD-hitelesítéssel és biztonságos kapcsolati karakterláncokkal
 > - Engedélyezheti a biztonsági funkciókat, például a speciális adatbiztonságot, a naplózást, az adatmaszkolást és a titkosítást
 
@@ -42,7 +42,7 @@ A Azure SQL Database a következőket teszi biztonságossá:
 További tudnivalókat a [Azure SQL Database biztonsági áttekintése](/azure/sql-database/sql-database-security-index) és [képességei](security-overview.md) című cikkben talál.
 
 > [!TIP]
-> A következő Microsoft Learn modul segít megtanulni a [Azure SQL Database biztonságossá](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)tételének ingyenes módját.
+> A következő Microsoft Learn modul segít megtanulni az adatbázis biztonságossá tételét [Azure SQL Databaseban](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Az oktatóanyagban szereplő összes lépéshez jelentkezzen be [Azure Portal](https://portal.azure.com/)
+Az oktatóanyagban szereplő összes lépésnél jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
 ## <a name="create-firewall-rules"></a>Tűzfalszabályok létrehozása
 
@@ -73,7 +73,7 @@ A kiszolgálói szintű IP-tűzfalszabályok az ugyanazon a kiszolgálón belül
 
 Kiszolgáló szintű tűzfalszabály beállítása:
 
-1. Azure Portal a bal oldali menüben válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
+1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
     ![kiszolgálói tűzfalszabály](./media/secure-database-tutorial/server-name.png)
 
@@ -119,7 +119,7 @@ Győződjön meg arról, hogy a megfelelő Azure Active Directory (AD) felügyel
 
 Az Azure AD-rendszergazda beállítása:
 
-1. Azure Portal az **SQL Server** lapon válassza a **Active Directory rendszergazda**lehetőséget. Ezután válassza a **rendszergazda beállítása**lehetőséget.
+1. A Azure Portal az **SQL Server** lapon válassza a **Active Directory rendszergazda**elemet. Ezután válassza a **rendszergazda beállítása**lehetőséget.
 
     ![az Active Directory kiválasztása](./media/secure-database-tutorial/admin-settings.png)  
 
@@ -219,11 +219,11 @@ Az ügyfélalkalmazás és a SQL Database közötti biztonságos, titkosított k
 - Titkosított kapcsolatok kérése
 - Nem bízik meg a kiszolgálói tanúsítványban
 
-A rendszer Transport Layer Security (TLS) használatával hozza meg a kapcsolatokat, és csökkenti a támadók általi támadás kockázatát. A kapcsolódási karakterláncok adatbázison keresztül érhetők el, és előre konfigurálva vannak az olyan ügyfelek illesztőprogramjainak támogatásához, mint például a ADO.NET, a JDBC, az ODBC és a PHP. További információ a TLS-ről és a kapcsolatokról: [A TLS megfontolandó szempontjai](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+A rendszer Transport Layer Security (TLS) használatával hozza meg a kapcsolatokat, és csökkenti a támadók általi támadás kockázatát. A kapcsolódási karakterláncok adatbázison keresztül érhetők el, és előre konfigurálva vannak az olyan ügyfelek illesztőprogramjainak támogatásához, mint például a ADO.NET, a JDBC, az ODBC és a PHP. További információ a TLS-ről és a kapcsolatokról: [A TLS megfontolandó szempontjai](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 Biztonságos kapcsolódási sztring másolása:
 
-1. Azure Portal a bal oldali menüben válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
+1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
 1. Az **Áttekintés** lapon válassza az **adatbázis-kapcsolati karakterláncok megjelenítése**lehetőséget.
 
@@ -244,15 +244,15 @@ A speciális adatbiztonsági funkció észleli a lehetséges veszélyforrásokat
 
 A speciális adatbiztonság engedélyezése:
 
-1. Azure Portal a bal oldali menüben válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
+1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
 1. Az **Áttekintés** lapon válassza a **kiszolgáló neve** hivatkozást. Ekkor megnyílik a kiszolgáló lap.
 
 1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **speciális adatbiztonság**lehetőséget.
 
-   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ezután válassza a **Save** (Mentés) lehetőséget.
+   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Kattintson a **Mentés** gombra.
 
-      ![Navigációs ablaktábla](./media/secure-database-tutorial/threat-settings.png)
+      ![Navigációs panel](./media/secure-database-tutorial/threat-settings.png)
 
       Az e-maileket is konfigurálhatja a biztonsági riasztások, a tárolási adatok és a veszélyforrások észlelési típusai fogadására.
 
@@ -270,7 +270,7 @@ Az auditálási szolgáltatás nyomon követi az adatbázis eseményeit, és az 
 
 A naplózás engedélyezése:
 
-1. Azure Portal a bal oldali menüben válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
+1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
 1. A **Biztonság** szakaszban válassza a **naplózás**lehetőséget.
 
@@ -301,7 +301,7 @@ A naplózás engedélyezése:
     ![Naplórekordok](./media/secure-database-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> Lásd: az [SQL Database naplózása](../../azure-sql/database/auditing-overview.md) a naplózási események további testreszabásához a PowerShell vagy a REST API használatával.
+> A naplózási események további testreszabásáról a PowerShell vagy a REST API használatával [SQL Database](../../azure-sql/database/auditing-overview.md) .
 
 ### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
 
@@ -309,7 +309,7 @@ Az adatmaszkolási funkció automatikusan elrejti a bizalmas adatokat az adatbá
 
 Az adatmaszkolás engedélyezése:
 
-1. Azure Portal a bal oldali menüben válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
+1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
 1. A **Biztonság** szakaszban válassza a **dinamikus adatmaszkolás**lehetőséget.
 
@@ -327,7 +327,7 @@ A titkosítási funkció automatikusan titkosítja az adatait, és nem igényel 
 
 A titkosítás engedélyezése vagy ellenőrzése:
 
-1. Azure Portal a bal oldali menüben válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
+1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
 1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás**lehetőséget.
 

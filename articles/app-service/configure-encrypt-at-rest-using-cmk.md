@@ -4,10 +4,9 @@ description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408743"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
@@ -31,7 +30,7 @@ Ezután a Storage Explorer használatával [állítson be sas](../vs-azure-tools
 
 ### <a name="configure-running-from-a-package-from-your-storage-account"></a>A Futtatás beállítása csomagból a Storage-fiókból
   
-Miután feltöltötte a fájlt a blob Storage-ba, és egy SAS URL-címmel rendelkezik `WEBSITE_RUN_FROM_PACKAGE` a fájlhoz, állítsa az alkalmazás beállítást a sas URL-címre. Az alábbi példa az Azure CLI-t használja:
+Miután feltöltötte a fájlt a blob Storage-ba, és egy SAS URL-címmel rendelkezik a fájlhoz, állítsa az `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítást a sas URL-címre. Az alábbi példa az Azure CLI-t használja:
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"
@@ -43,7 +42,7 @@ Az Alkalmazásbeállítás hozzáadása a webalkalmazás újraindítását eredm
 
 Most lecserélheti az `WEBSITE_RUN_FROM_PACKAGE` Alkalmazásbeállítások értékét egy Key Vault hivatkozással az SAS-kódolású URL-címre. Így az SAS URL-címe titkosítva van Key Vaultban, ami egy extra biztonsági réteget biztosít.
 
-1. Key Vault példány létrehozásához használja a következő [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create) parancsot.       
+1. [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create)Key Vault példány létrehozásához használja a következő parancsot.       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -63,7 +62,7 @@ Most lecserélheti az `WEBSITE_RUN_FROM_PACKAGE` Alkalmazásbeállítások ért�
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    A `<secret-version>` lesz az előző `az keyvault secret set` parancs kimenetében.
+    A `<secret-version>` lesz az előző parancs kimenetében `az keyvault secret set` .
 
 Az Alkalmazásbeállítás frissítése azt eredményezi, hogy a webalkalmazás újraindul. Az alkalmazás újraindítása után keresse meg a következőt: Ellenőrizze, hogy megfelelően elindult-e a Key Vault hivatkozás használatával.
 
@@ -71,7 +70,7 @@ Az Alkalmazásbeállítás frissítése azt eredményezi, hogy a webalkalmazás 
 
 Az ajánlott eljárás a Storage-fiók SAS-kulcsának rendszeres elforgatása. Annak biztosítása érdekében, hogy a webalkalmazás véletlenül ne legyen laza hozzáférés, az SAS URL-címét is frissítenie kell Key Vaultban.
 
-1. Forgassa el az SAS-kulcsot úgy, hogy a Azure Portalban navigál a Storage-fiókjához. A **Beállítások** > **hozzáférési kulcsok**területen kattintson az ikonra az SAS-kulcs elforgatásához.
+1. Forgassa el az SAS-kulcsot úgy, hogy a Azure Portalban navigál a Storage-fiókjához. A **Beállítások**  >  **hozzáférési kulcsok**területen kattintson az ikonra az SAS-kulcs elforgatásához.
 
 1. Másolja az új SAS URL-címet, és a következő parancs használatával állítsa be a frissített SAS URL-címet a kulcstartóban:
 
@@ -85,7 +84,7 @@ Az ajánlott eljárás a Storage-fiók SAS-kulcsának rendszeres elforgatása. A
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    A `<secret-version>` lesz az előző `az keyvault secret set` parancs kimenetében.
+    A `<secret-version>` lesz az előző parancs kimenetében `az keyvault secret set` .
 
 ## <a name="how-to-revoke-the-web-apps-data-access"></a>A webalkalmazás adatelérésének visszavonása
 
@@ -113,11 +112,11 @@ Csak az Azure Storage-fiókhoz társított költségek és a kimenő forgalomra 
 
 ### <a name="how-does-running-from-the-deployment-package-affect-my-web-app"></a>Hogyan befolyásolja a rendszer a webes alkalmazást a központi telepítési csomagból?
 
-- Ha az alkalmazást a központi telepítési csomagból `wwwroot/` futtatja, az csak olvasható lesz. Az alkalmazás hibaüzenetet kap, amikor megkísérli a címtárba írni.
+- Ha az alkalmazást a központi telepítési csomagból futtatja, az `wwwroot/` csak olvasható lesz. Az alkalmazás hibaüzenetet kap, amikor megkísérli a címtárba írni.
 - A TAR és a GZIP formátum nem támogatott.
 - Ez a funkció nem kompatibilis a helyi gyorsítótárral.
 
 ## <a name="next-steps"></a>További lépések
 
 - [App Service Key Vault referenciái](app-service-key-vault-references.md)
-- [Azure Storage-titkosítás a REST-adatokhoz](../storage/common/storage-service-encryption.md)
+- [Inaktív adatok Azure Storage-titkosítása](../storage/common/storage-service-encryption.md)

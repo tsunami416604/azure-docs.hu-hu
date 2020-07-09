@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645565"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors bemutatása
@@ -92,7 +91,7 @@ myActor.DoWorkAsync().get();
 
 Vegye figyelembe, hogy a Actor proxy objektum létrehozásához használt két adat a színész azonosítója és az alkalmazás neve. A színész azonosítója egyedileg azonosítja a szereplőt, míg az alkalmazás neve azonosítja azt a [Service Fabric alkalmazást](service-fabric-reliable-actors-platform.md#application-model) , amelyben a szereplő üzembe lett helyezve.
 
-Az `ActorProxy`ügyfél oldalán található ( `ActorProxyBase`C#)/(Java) osztály végrehajtja a szükséges megoldást, hogy az azonosító alapján keresse meg a szereplőt, és nyisson meg egy kommunikációs csatornát. A kommunikációs hibák és feladatátvételek esetén is megpróbálja megkeresni a szereplőt. Ennek eredményeképpen az üzenetek kézbesítése a következő jellemzőkkel rendelkezik:
+Az `ActorProxy` ügyfél oldalán található (C#)/ `ActorProxyBase` (Java) osztály végrehajtja a szükséges megoldást, hogy az azonosító alapján keresse meg a szereplőt, és nyisson meg egy kommunikációs csatornát. A kommunikációs hibák és feladatátvételek esetén is megpróbálja megkeresni a szereplőt. Ennek eredményeképpen az üzenetek kézbesítése a következő jellemzőkkel rendelkezik:
 
 * Az üzenetek kézbesítése a legjobb megoldás.
 * Előfordulhat, hogy a szereplők duplikált üzeneteket kapnak ugyanarról az ügyfélről.
@@ -126,7 +125,7 @@ Néhány fontos szempontot figyelembe kell venni:
 * Míg a *Method1* a *ActorId2* nevében hajtja végre az ügyfél kérésére *xyz789*, egy másik ügyfél-kérelem (*abc123*) érkezik, amely megköveteli, hogy *a Method1 is*végrehajtsa a *ActorId2* . A *Method1* második végrehajtása azonban addig nem kezdődik meg, amíg az előző végrehajtás nem fejeződött be. Hasonlóképpen, a *ActorId2* által regisztrált emlékeztető, miközben a *Method1* az ügyfél-kérelem *xyz789*válaszol. Az emlékeztető visszahívása csak a *Method1* végrehajtásának befejeződése után hajtható végre. Ennek az az oka, hogy a *ActorId2*esetében a turn-based Egyidejűség kényszerített.
 * Ehhez hasonlóan a *ActorId1*is kényszeríteni kell a párhuzamos párhuzamosságot, ahogy azt a *Method1*, a *Method2*és a *ActorId1* nevében az időzítő visszahívása is mutatja, soros módon történik.
 * A *Method1* a *ActorId1* nevében való végrehajtása átfedésben van a *ActorId2*nevében végrehajtott végrehajtással. Ennek az az oka, hogy a turn-based Egyidejűség csak egy színészen belül, és nem a különböző szereplőkön van érvényben.
-* Néhány módszer/visszahívás végrehajtás esetén a metódus/visszahívás által `Task`visszaadott (C# `CompletableFuture`)/(Java)/(Java) a metódus visszatérése után fejeződik be. Másokban az aszinkron művelet már befejeződött a metódus/visszahívás visszatérési ideje szerint. Mindkét esetben a rendszer csak a metódus/visszahívás visszaadása és az aszinkron művelet befejezése után szabadítja fel a per-Actor zárolást.
+* Néhány módszer/visszahívás végrehajtás esetén a metódus `Task` `CompletableFuture` /visszahívás által visszaadott (C#)/(Java)/(Java) a metódus visszatérése után fejeződik be. Másokban az aszinkron művelet már befejeződött a metódus/visszahívás visszatérési ideje szerint. Mindkét esetben a rendszer csak a metódus/visszahívás visszaadása és az aszinkron művelet befejezése után szabadítja fel a per-Actor zárolást.
 
 ### <a name="reentrancy"></a>Újbóli belépés
 A Actors futtatókörnyezet alapértelmezés szerint engedélyezi a újbóli belépés. Ez azt jelenti, hogy ha a *Actors* metódusa egy metódust hív meg a " *B" szereplőn*, amely egy másik metódust hív meg az *A actorn*, akkor ez a metódus futhat. Ennek az az oka, hogy ez a logikai hívási lánc környezetének része. Az időzítő és az emlékeztető összes hívása az új logikai hívási környezettel kezdődik. További részletekért tekintse meg a [Reliable Actors újbóli belépés](service-fabric-reliable-actors-reentrancy.md) .

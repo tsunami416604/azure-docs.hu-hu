@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660256"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087605"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz
 
@@ -34,7 +34,7 @@ Az [Azure HDInsight ml-szolgáltatásai](r-server-overview.md) az R-alapú elemz
 - Leképezés csökkentése
 - Spark
 
-A *helyi* és a *localpar* beállítások csak a **rxExec** -hívások végrehajtásának módjában különböznek. Mindkettő más Rx-függvény hívásokat párhuzamosan hajtja végre az összes rendelkezésre álló magokon, kivéve, ha az RevoScaleR **numCoresToUse** kapcsoló használatával másképp van megadva `rxOptions(numCoresToUse=6)`. A párhuzamos végrehajtási lehetőségek optimális teljesítményt nyújtanak.
+A *helyi* és a *localpar* beállítások csak a **rxExec** -hívások végrehajtásának módjában különböznek. Mindkettő más Rx-függvény hívásokat párhuzamosan hajtja végre az összes rendelkezésre álló magokon, kivéve, ha az RevoScaleR **numCoresToUse** kapcsoló használatával másképp van megadva `rxOptions(numCoresToUse=6)` . A párhuzamos végrehajtási lehetőségek optimális teljesítményt nyújtanak.
 
 A következő táblázat összefoglalja a különböző számítási környezeti beállításokat a hívások végrehajtásának beállításához:
 
@@ -73,7 +73,9 @@ Ezen alapelvek alapján a következő szakaszokban a számítási környezet kiv
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Beágyazott Súgó a rxSetComputeContext
 További információ és példák a RevoScaleR számítási környezetekre: a rxSetComputeContext metódus inline súgója az R-ben, például:
 
-    > ?rxSetComputeContext
+```console
+> ?rxSetComputeContext
+```
 
 A [Machine learning Server dokumentációjának](https://docs.microsoft.com/machine-learning-server/) [elosztott számítástechnikai áttekintését](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) is megtekintheti.
 

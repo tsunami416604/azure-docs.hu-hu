@@ -5,17 +5,16 @@ description: Ha a gépi tanulási szolgáltatás központi telepítése Azure Ma
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18
-ms.date: 06/02/2017
-ms.openlocfilehash: 537c7e70176d902c5bc7458b60de7a70ea040c85
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.custom: seodec18, tracking-python
+ms.date: 05/29/2020
+ms.openlocfilehash: 8d78d26298790e033f006fd3f37567caf97f97ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696626"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
 
@@ -252,59 +251,51 @@ Machine Learning webszolgáltatáshoz való kapcsolódáshoz használja a **RCur
 
 **A teljes kérelem így fog kinézni.**
 ```r
-library("RCurl")
+library("curl")
+library("httr")
 library("rjson")
 
-# Accept TLS/SSL certificates issued by public Certificate Authorities
-options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+requestFailed = function(response) {
+    return (response$status_code >= 400)
+}
 
-h = basicTextGatherer()
-hdr = basicHeaderGatherer()
+printHttpResult = function(response, result) {
+    if (requestFailed(response)) {
+        print(paste("The request failed with status code:", response$status_code, sep=" "))
+    
+        # Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
+        print(response$headers)
+    }
+    
+    print("Result:") 
+    print(fromJSON(result))  
+}
 
 req = list(
-    Inputs = list(
+        Inputs = list( 
             "input1" = list(
-                list(
-                        'column1' = "value1",
-                        'column2' = "value2",
-                        'column3' = "value3"
-                    )
-            )
-        ),
+                "ColumnNames" = list("Col1", "Col2", "Col3"),
+                "Values" = list( list( "0", "value", "0" ),  list( "0", "value", "0" )  )
+            )                ),
         GlobalParameters = setNames(fromJSON('{}'), character(0))
 )
 
 body = enc2utf8(toJSON(req))
-api_key = "<your-api-key>" # Replace this with the API key for the web service
+api_key = "abc123" # Replace this with the API key for the web service
 authz_hdr = paste('Bearer', api_key, sep=' ')
 
-h$reset()
-curlPerform(url = "<your-api-uri>",
-httpheader=c('Content-Type' = "application/json", 'Authorization' = authz_hdr),
-postfields=body,
-writefunction = h$update,
-headerfunction = hdr$update,
-verbose = TRUE
-)
+response = POST(url= "<your-api-uri>",
+        add_headers("Content-Type" = "application/json", "Authorization" = authz_hdr),
+        body = body)
 
-headers = hdr$value()
-httpStatus = headers["status"]
-if (httpStatus >= 400)
-{
-print(paste("The request failed with status code:", httpStatus, sep=" "))
+result = content(response, type="text", encoding="UTF-8")
 
-# Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
-print(headers)
-}
-
-print("Result:")
-result = h$value()
-print(fromJSON(result))
+printHttpResult(response, result)
 ```
 
 ### <a name="javascript-sample"></a>JavaScript-minta
 
-Ha Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a **NPM-csomagot a** projektben. Az `JSON` objektumot a bemenet formázásához és az eredmény elemzéséhez is használni fogja. Telepítse `npm install request --save` a-t a használatával, vagy vegye fel `"request": "*"` a csomagot. JSON fájlt a `dependencies` és a Futtatás alatt `npm install` .
+Ha Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a **NPM-csomagot a** projektben. Az `JSON` objektumot a bemenet formázásához és az eredmény elemzéséhez is használni fogja. Telepítse a szolgáltatást a használatával `npm install request --save` , vagy vegye fel a `"request": "*"` package.jsa alá `dependencies` és futtassa `npm install` .
 
 **A teljes kérelem így fog kinézni.**
 ```js

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564439"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Cognitive Services-erőforrás csatlakoztatása egy készségkészlet az Azure-ban Cognitive Search 
 
@@ -29,7 +29,7 @@ Az Azure Cognitive Search függ a Cognitive Servicestől, beleértve a képelemz
 
 + Az Azure Cognitive Search a készségkészlet megadott Cognitive Services erőforrás-kulcsot használja a képek és a szöveg gazdagítása érdekében. A számlázható képességek végrehajtása az [Cognitive Services utólagos elszámolású áron](https://azure.microsoft.com/pricing/details/cognitive-services/)érhető el.
 
-+ A képek kinyerése egy Azure Cognitive Search művelet, amely akkor fordul elő, ha a rendszer a dúsítás előtt megrepedt a dokumentumokat. A rendszerkép kibontása számlázható. A képek kibontásával kapcsolatos díjszabásért tekintse meg az [Azure Cognitive Search díjszabását ismertető oldalt](https://go.microsoft.com/fwlink/?linkid=2042400).
++ A képek kinyerése egy Azure Cognitive Search művelet, amely akkor fordul elő, ha a rendszer a dúsítás előtt megrepedt a dokumentumokat. A rendszerkép kibontása számlázható. A képek kibontásával kapcsolatos díjszabásért tekintse meg az [Azure Cognitive Search díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/search/).
 
 + A szöveg kibontása a dokumentum csinos kifejezésében is előfordul. Nem számlázható.
 
@@ -108,12 +108,12 @@ Ha rendelkezik meglévő készségkészlet, csatolhatja azt egy új vagy egy má
 
 ## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services programozott csatolása
 
-Ha programozott módon definiálja a készségkészlet, vegyen fel egy `cognitiveServices` szakaszt a készségkészlet. Ebben a szakaszban adja meg a készségkészlet társítandó Cognitive Services erőforrás kulcsát. Ne feledje, hogy az erőforrásnak ugyanabban a régióban kell lennie, mint az Azure Cognitive Search erőforrásnak. `@odata.type`Adja meg a és a `#Microsoft.Azure.Search.CognitiveServicesByKey`értékeit is.
+Ha programozott módon definiálja a készségkészlet, vegyen fel egy `cognitiveServices` szakaszt a készségkészlet. Ebben a szakaszban adja meg a készségkészlet társítandó Cognitive Services erőforrás kulcsát. Ne feledje, hogy az erőforrásnak ugyanabban a régióban kell lennie, mint az Azure Cognitive Search erőforrásnak. Adja meg `@odata.type` a és a értékeit is `#Microsoft.Azure.Search.CognitiveServicesByKey` .
 
-A következő példa ezt a mintát mutatja be. Figyelje meg `cognitiveServices` a definíció végén található szakaszt.
+A következő példa ezt a mintát mutatja be. Figyelje meg a `cognitiveServices` definíció végén található szakaszt.
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```

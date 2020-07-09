@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128845"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982050"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
 Az Azure Monitorral az egyes Azure-erőforrásoktól az Azure-ba érkező metrikákat vagy naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Tevékenységnaplók megtekintése
@@ -43,14 +43,13 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 
 ## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
-Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban néhány rendelkezésre álló mérőszámról adunk összefoglaló tájékoztatást:
+Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban a két leggyakrabban használt mérőszám szerepel. Az összes elérhető metrika listáját a [támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)részben tekintheti meg.
 
 * Kapacitás: segít döntéseket hozni a APIM-szolgáltatások frissítésével/lefokozásával kapcsolatban. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
-* Összes átjárókérés: az API-lekérdezések száma az adott időszakban. 
-* Sikeres átjárókérések: a sikert jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 304-es, a 307-es, valamint a 301-nél alacsonyabb (például 200-as) válaszkódokat.
-* Sikertelen átjárókérések: a hibát jelző HTTP-válaszkódot (a 400-as, valamint az 500-nál magasabb válaszkódokat is beleértve) kapott API-kérések száma.
-* Jogosulatlan átjárókérések: a 401-es, 403-as és 429-es HTTP-válaszkódot kapott API-kérések száma.
-* Egyéb átjárókérések: az előző kategóriákba nem tartozó (például 418-as) HTTP-válaszkódot kapott API-kérések száma.
+* Kérelmek: segít az APIM-szolgáltatásokon keresztül haladó API-forgalom elemzésében. A metrikát percenként bocsátja ki, és az átjáróra vonatkozó kérelmek számát jelenti, beleértve a válasz kódokat, a helyet, az állomásnevet és a hibákat. 
+
+> [!IMPORTANT]
+> A következő metrikák elavultak a május 2019-es verziótól kezdve, és augusztus 2023: az átjáró összes kérelme, sikeres átjáró kérése, jogosulatlan átjáró kérése, sikertelen átjáró kérések, egyéb átjáró kérelmek. Telepítse át a kérelmek metrikáját, amely egyenértékű funkciókat biztosít.
 
 ![metrikadiagram](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
@@ -60,9 +59,9 @@ A mérőszámok elérése:
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat. Például: **kérelmek**. 
-1. A diagram az API-hívások teljes számát mutatja,
-1. A diagram a **kérelmek** metrikájának méretei alapján szűrhető. Kattintson például a **szűrő hozzáadása**lehetőségre, válassza a **háttérbeli válasz kódja**lehetőséget, és adja meg a 500 értéket. Most a diagramon az API-háttérbeli sikertelen kérelmek száma látható.   
+2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat. Például: **kérelmek**. 
+3. A diagram az API-hívások teljes számát mutatja,
+4. A diagram a **kérelmek** metrikájának méretei alapján szűrhető. Kattintson például a **szűrő hozzáadása**lehetőségre, válassza a **háttérbeli válasz kódja**lehetőséget, és adja meg a 500 értéket. Most a diagramon az API-háttérbeli sikertelen kérelmek száma látható.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Riasztási szabály beállítása jogosulatlan hívások esetére
 
@@ -188,7 +187,7 @@ A API Management jelenleg az egyes API-kérésekhez tartozó erőforrás-naplók
 | correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
 | location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
 | httpStatusCodeCategory | sztring | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
-| resourceId | sztring | A API Management erőforrás/SUBSCRIPTIONS/\<-előfizetésének azonosítója\<>/resourcegroups/>/Providers/Microsoft. APIMANAGEMENT/szolgáltatás/\<név> |
+| resourceId | sztring | A API Management erőforrás-/SUBSCRIPTIONS/ \<subscription> /RESOURCEGROUPS/- \<resource-group> /providers/Microsoft. azonosítója APIMANAGEMENT/SZOLGÁLTATÁS/\<name> |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
 | method | sztring | A bejövő kérelem HTTP-metódusa |
 | url | sztring | A bejövő kérelem URL-címe |

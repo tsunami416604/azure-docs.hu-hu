@@ -4,22 +4,22 @@ description: Ez a cikk végigvezeti a helyi hálózati átjáró IP-címeinek el
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: bc051a7e0a19dc54431266cfa5f37131868bdc07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4809c51a59805ac996bd4c5971ec633ae6c2aed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75864043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987070"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Helyi hálózati átjáró beállításainak módosítása az Azure CLI használatával
 
 Előfordulhat, hogy a helyi hálózati átjáró címének előtagja vagy az átjáró IP-címének beállításai megváltoznak. Ez a cikk bemutatja, hogyan módosíthatja a helyi hálózati átjáró beállításait. Ezeket a beállításokat más módszer használatával is módosíthatja, ha a következő listából választ egy másik lehetőséget:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [Azure Portalra](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >

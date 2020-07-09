@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652644"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Webes API-kat meghívó mobileszközök regisztrálása
@@ -50,7 +50,7 @@ Ez a felhasználói élmény lehetővé teszi, hogy az alkalmazás egyszeri beje
 
 Az alkalmazás regisztrációs portálján elérhető egy előzetes verzió, amely segítséget nyújt az iOS-és Android-alkalmazások felügyelt válasz URI-azonosítójának kiszámításához:
 
-1. Az alkalmazás-regisztrációs portálon válassza a **hitelesítés** > **kipróbálom az új felhasználói élményt**.
+1. Az alkalmazás-regisztrációs portálon válassza **Authentication**  >  **a hitelesítés kipróbálom az új felhasználói élményt**.
 
    ![A hitelesítés panel, ahol új felhasználói élményt választhat](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 

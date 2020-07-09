@@ -5,24 +5,23 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 601e31cde22942abd6d2bc7c5bdcbc5d97f5a591
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987664"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
 Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
 >

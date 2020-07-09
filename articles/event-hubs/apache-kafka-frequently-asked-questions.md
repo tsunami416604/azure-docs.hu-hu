@@ -1,23 +1,14 @@
 ---
 title: Gyakori kérdések – Azure Event Hubs a Apache Kafka
 description: Ez a cikk bemutatja, hogy a különböző protokollokat (AMQP, Apache Kafka és HTTPS) használó felhasználók és gyártók Hogyan válthatnak be eseményeket az Azure Event Hubs használatakor.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/01/2020
-ms.author: shvija
-ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 066024f657e011aac1449106ec32689f145c5534
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314193"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Gyakori kérdések – Event Hubs Apache Kafka 
 Ez a cikk a Apache Kafka Event Hubs való áttelepítésével kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz.
@@ -39,7 +30,7 @@ Mi a különbség az Event hub fogyasztói csoport és a Kafka fogyasztói csopo
 
 - Ezek önmagukban jönnek létre.  A Kafka-csoportok a Kafka fogyasztói csoport API-jai segítségével kezelhetők.
 - Az eltolásokat a Event Hubs szolgáltatásban tárolhatják.
-- Ezek kulcsként használatosak a mi valójában egy Eltolásos kulcs-érték tároló. A `group.id` és `topic-partition`a rendszer egyedi párjaként egy eltolást tárolunk az Azure Storage-ban (3x-os replikálás). Event Hubs a felhasználók nem számítanak fel további tárolási költséget a Kafka-eltolások tárolásához. Az eltolások a Kafka fogyasztói csoport API-manipulálható keresztül érhetők el, de az Eltolásos tárolási *fiókok* nem közvetlenül láthatók vagy manipulálható az Event hub felhasználói számára.  
+- Ezek kulcsként használatosak a mi valójában egy Eltolásos kulcs-érték tároló. A és a rendszer egyedi párjaként `group.id` `topic-partition` egy eltolást tárolunk az Azure Storage-ban (3x-os replikálás). Event Hubs a felhasználók nem számítanak fel további tárolási költséget a Kafka-eltolások tárolásához. Az eltolások a Kafka fogyasztói csoport API-manipulálható keresztül érhetők el, de az Eltolásos tárolási *fiókok* nem közvetlenül láthatók vagy manipulálható az Event hub felhasználói számára.  
 - Egy névteret ölelnek fel. Ha ugyanazt a Kafka-csoportnevet használja több alkalmazáshoz több témakörben, az azt jelenti, hogy minden alkalmazás és a Kafka-ügyfél újra lesz egyenlítve, amikor csak egyetlen alkalmazásnak kell kiegyensúlyoznia.  Adja meg a csoportok nevét okosan.
 - Teljesen eltérnek Event Hubs fogyasztói csoportoktól. **Nincs** szükség a (z) "$default" használatára, és nem kell aggódnia, hogy a Kafka-ügyfelek AMQP-munkaterhelésekkel ütköznek.
 - Nem láthatók a Azure Portalban. A fogyasztói csoport adatai a Kafka API-kon keresztül érhetők el.

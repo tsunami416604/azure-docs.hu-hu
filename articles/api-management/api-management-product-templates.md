@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79243925"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Termékcsoportok az Azure API Management
@@ -28,7 +27,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 -   [Terméklista](#ProductList)  
   
--   [Termék](#Product)  
+-   [Product](#Product)  
   
 > [!NOTE]
 >  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
@@ -79,7 +78,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |Lapozás|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|A termékek gyűjteményének lapozási adatai.|  
 |Szűrés|Entitás [szűrése](api-management-template-data-model-reference.md#Filtering) .|A Products List lap szűrési információi.|  
@@ -204,9 +203,9 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|Product|[Termék](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
+|Termék|[Product](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
 |IsDeveloperSubscribed|logikai|Azt határozza meg, hogy az aktuális felhasználó előfizetett-e erre a termékre.|  
 |SubscriptionState|szám|Az előfizetés állapota. A lehetséges állapotok a következők:<br /><br /> -   `0 - suspended`– az előfizetés le van tiltva, és az előfizető nem hívhat meg semmilyen API-t a termékről.<br />-   `1 - active`– az előfizetés aktív.<br />-   `2 - expired`– az előfizetés elérte a lejárati dátumot, és inaktiválva lett.<br />-   `3 - submitted`– az előfizetési kérést a fejlesztő hozta létre, de még nem hagyta jóvá vagy nem utasította el.<br />-   `4 - rejected`– az előfizetési kérelmet a rendszergazda megtagadta.<br />-   `5 - cancelled`– a fejlesztő vagy a rendszergazda megszakította az előfizetést.|  
 |Korlátok|tömb|Ez a tulajdonság elavult, és nem használható.|  

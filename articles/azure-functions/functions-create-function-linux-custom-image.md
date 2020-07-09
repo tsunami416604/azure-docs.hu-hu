@@ -3,14 +3,14 @@ title: Azure Functions létrehozása Linuxon egyéni rendszerkép használatáva
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: dbd42668a0a1821e0ab7a6edc8ad05c79bfebe7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123545"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560915"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
@@ -18,7 +18,7 @@ Ebben az oktatóanyagban létrehozhatja és üzembe helyezheti a kódot úgy, ho
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
@@ -436,7 +436,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 ## <a name="write-to-an-azure-storage-queue"></a>Írás Azure Storage-várólistába
 
-Azure Functions lehetővé teszi a függvények más Azure-szolgáltatásokhoz és-erőforrásokhoz való összekapcsolását, mivel saját integrációs kódot kell megírnia. Ezek a *kötések*, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatai a függvények számára paraméterekként vannak megadva. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
+Azure Functions lehetővé teszi a függvények más Azure-szolgáltatásokhoz és-erőforrásokhoz való összekapcsolását anélkül, hogy saját integrációs kódot kellene írnia. Ezek a *kötések*, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatai a függvények számára paraméterekként vannak megadva. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
 
 Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
@@ -505,7 +505,7 @@ A böngészőben a függvény meghívásához ugyanazt az URL-címet használja.
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az oktatóanyagban létrehozott erőforrásokkal szeretné tovább használni az Azure-függvényt, akkor az összes erőforrást helyben hagyhatja. Mivel prémium szintű csomagot hozott létre a Azure Functionshoz, a folyamatos költségek napi egy vagy két USD-t foglalnak magukban.
 
@@ -515,7 +515,7 @@ A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsCo
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

@@ -12,10 +12,9 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74868847"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B együttműködés licencelési útmutatója
@@ -30,7 +29,7 @@ A VÁLLALATKÖZI vendég felhasználói licencelését a rendszer a 1:5 arány a
 Emellett a vendég felhasználók ingyenes Azure AD-funkciókat is használhatnak további licencelési követelmények nélkül. A vendég felhasználók akkor is hozzáférhetnek az ingyenes Azure AD-funkciókhoz, ha nem rendelkezik fizetős Azure AD-licenccel. 
 
 ## <a name="examples-calculating-guest-user-licenses"></a>Példák: Vendég felhasználói licencek kiszámítása
-Miután meghatározta, hogy hány vendégnek kell hozzáférnie a fizetős Azure AD-szolgáltatásokhoz, győződjön meg arról, hogy elegendő Azure AD-licenccel rendelkezik a szükséges 1:5 arányban a vendég felhasználói számára. Néhány példa:
+Miután meghatározta, hogy hány vendégnek kell hozzáférnie a fizetős Azure AD-szolgáltatásokhoz, győződjön meg arról, hogy elegendő Azure AD-licenccel rendelkezik a szükséges 1:5 arányban a vendég felhasználói számára. Az alábbiakban néhány példa következik:
 
 - Az Azure AD-alkalmazásokhoz és-szolgáltatásokhoz 100 vendéget szeretne meghívni, és hozzáférést biztosít a hozzáférés-kezeléshez és a kiépítési feladataihoz. A vendég felhasználók 50 esetében az MFA és a feltételes hozzáférés megkövetelésére is szükség van, így ezeknek a szolgáltatásoknak 10 prémium szintű Azure AD P1 licencre van szükségük. Ha az Identity Protection funkcióit szeretné használni a vendég felhasználói számára, akkor a vendég felhasználói számára prémium szintű Azure AD P2-licenceket kell megadnia ugyanazon a 1:5-arányban.
 - Olyan 60 vendég felhasználókat szeretne meghívni, akik mindegyike MFA-t igényel, ezért legalább 12 prémium szintű Azure AD P1-licenccel kell rendelkeznie. 10 prémium szintű Azure AD P1 licenccel rendelkező alkalmazottja van, ami akár 50 vendég felhasználó számára is lehetővé tenné az 1:5 licencelési arányt. Két további prémium P1-licencet kell vásárolnia, hogy 10 további vendég felhasználót fedjen fel.

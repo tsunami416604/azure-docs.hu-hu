@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767550"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082250"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
@@ -60,7 +60,7 @@ A HDInsight különböző verziói a Hadoop Services és az összetevők külön
 
 A HDInsight különböző verziói az Ubuntu adott verzióira támaszkodnak. A parancsfájlban esetlegesen szükséges operációsrendszer-verziók között eltérések lehetnek. Előfordulhat például, hogy olyan bináris fájlt kell telepítenie, amely az Ubuntu-verzióhoz van kötve.
 
-Az operációs rendszer verziószámának vizsgálatához `lsb_release`használja a következőt:. A következő parancsfájl például bemutatja, hogyan hivatkozhat egy adott tar-fájlra az operációs rendszer verziójától függően:
+Az operációs rendszer verziószámának vizsgálatához használja a következőt: `lsb_release` . A következő parancsfájl például bemutatja, hogyan hivatkozhat egy adott tar-fájlra az operációs rendszer verziójától függően:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -77,7 +77,7 @@ fi
 
 A HDInsight a Ubuntu Linux eloszláson alapul. A HDInsight különböző verziói az Ubuntu különböző verzióira támaszkodnak, ami megváltoztathatja a szkript működésének módját. A HDInsight 3,4-es és korábbi verziói például az üzembe helyezést használó Ubuntu-verziókon alapulnak. A 3,5-es és újabb verziók a rendszer által használt Ubuntu 16,04-es verzión alapulnak. A rendszer és a Kiindulás különböző parancsokra támaszkodik, így a parancsfájlt úgy kell megírni, hogy mindkettővel működjön.
 
-A HDInsight 3,4 és a 3,5 egy másik fontos különbség `JAVA_HOME` , hogy most már a Java 8-ra mutat. A következő kód azt mutatja be, hogyan állapítható meg, hogy a parancsfájl fut-e Ubuntu 14 vagy 16 rendszeren:
+A HDInsight 3,4 és a 3,5 egy másik fontos különbség, hogy `JAVA_HOME` most már a Java 8-ra mutat. A következő kód azt mutatja be, hogyan állapítható meg, hogy a parancsfájl fut-e Ubuntu 14 vagy 16 rendszeren:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,7 +108,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-A kódrészleteket tartalmazó teljes parancsfájlt a következő helyen találja: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
+A kódrészleteket tartalmazó teljes parancsfájlt a következő helyen találja: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh .
 
 A HDInsight által használt Ubuntu-verzió esetében tekintse meg a [HDInsight-összetevő verziószámát](hdinsight-component-versioning.md) ismertető dokumentumot.
 
@@ -152,7 +152,7 @@ A legtöbb művelet esetében nem kell megadnia a fájlrendszert. A következő 
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-Ebben a példában a `hdfs` parancs transzparens módon használja az alapértelmezett fürtöt tárolót. Egyes műveletek esetében előfordulhat, hogy meg kell adnia az URI-t. Azure Data Lake Storage Gen1 `adl:///example/jars` `abfs:///example/jars` például a Data Lake Storage Gen2 vagy `wasb:///example/jars` az Azure Storage esetében.
+Ebben a példában a `hdfs` parancs transzparens módon használja az alapértelmezett fürtöt tárolót. Egyes műveletek esetében előfordulhat, hogy meg kell adnia az URI-t. Azure Data Lake Storage Gen1 például a `adl:///example/jars` `abfs:///example/jars` Data Lake Storage Gen2 vagy `wasb:///example/jars` Az Azure Storage esetében.
 
 ### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>Adatok írása az STDOUT-ba és a STDERR
 
@@ -161,19 +161,19 @@ A HDInsight az STDOUT-ra és a STDERR-re írt parancsfájl-kimenetet naplózza. 
 > [!NOTE]  
 > Az Apache Ambari csak akkor érhető el, ha a fürt létrehozása sikeres volt. Ha parancsfájl-műveletet használ a fürt létrehozása során, és a létrehozás meghiúsul, tekintse meg a [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md) a naplózott adatok elérésének egyéb módjaihoz című témakört.
 
-A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba `echo`küldeni, használja a következőt:. Például:
+A legtöbb segédprogram és telepítési csomag már adatokat ír az STDOUT-ba és a STDERR-be, azonban érdemes lehet további naplózást hozzáadni. Ha szöveget szeretne a STDOUT-ba küldeni, használja a következőt: `echo` . Például:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Alapértelmezés szerint a `echo` karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja `>&2` hozzá `echo`a következőt:. Például:
+Alapértelmezés szerint `echo` a karakterláncot a következőre küldi: StdOut. A STDERR való közvetlen hozzáadáshoz adja hozzá a következőt: `>&2` `echo` . Például:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-Ez Ehelyett a STDOUT-ba írt adatokat STDERR (2) átirányítja. Az i/o-átirányítás részletes ismertetését lásd: [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html).
+Ez Ehelyett a STDOUT-ba írt adatokat STDERR (2) átirányítja. Az i/o-átirányítás részletes ismertetését lásd: [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html) .
 
 A parancsfájl-műveletek által naplózott információk megtekintésével kapcsolatos további információkért lásd: [parancsfájl-műveletek hibakeresése](./troubleshoot-script-action.md).
 
@@ -235,10 +235,10 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 A parancsfájlban a következő segítők használhatók:
 
-| Segítő használata | Leírás |
+| Segítő használata | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Letölt egy fájlt a forrás URI-ból a megadott elérési útra. Alapértelmezés szerint nem írja felül a meglévő fájlt. |
-| `untar_file TARFILE DESTDIR` |Kibont egy tar-fájlt `-xf`(a használatával) a cél könyvtárába. |
+| `untar_file TARFILE DESTDIR` |Kibont egy tar-fájlt (a használatával `-xf` ) a cél könyvtárába. |
 | `test_is_headnode` |Ha a fürt fő csomópontján futott, a Return 1; Ellenkező esetben 0. |
 | `test_is_datanode` |Ha az aktuális csomópont egy adat (feldolgozó) csomópont, egy 1; értéket ad vissza. Ellenkező esetben 0. |
 | `test_is_first_datanode` |Ha az aktuális csomópont az első adat (Worker) csomópont (workernode0), egy 1 értéket ad vissza. Ellenkező esetben 0. |
@@ -256,7 +256,7 @@ Ez a szakasz útmutatást nyújt néhány olyan általános használati minta me
 
 Bizonyos esetekben előfordulhat, hogy a szkript paramétereket kér. Előfordulhat például, hogy a Ambari REST API használatakor szükség van a fürt rendszergazdai jelszavára.
 
-A parancsfájlnak átadott paraméterek *pozicionális paraméterekként*ismertek, és az első `$1` paraméterhez, `$2` a másodikhoz és a (z) rendszerhez vannak rendelve. `$0`a parancsfájl nevét tartalmazza.
+A parancsfájlnak átadott paraméterek *pozicionális paraméterekként*ismertek, és az `$1` első paraméterhez, a másodikhoz és a (z) rendszerhez vannak rendelve `$2` . `$0`a parancsfájl nevét tartalmazza.
 
 A parancsfájlnak átadott értékeket paraméterként aposztrófok (') közé kell foglalni. Így biztosítható, hogy az átadott érték literálként legyen kezelve.
 
@@ -264,15 +264,19 @@ A parancsfájlnak átadott értékeket paraméterként aposztrófok (') közé k
 
 A környezeti változók beállítását a következő utasítás hajtja végre:
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
-Ahol a VARIABLENAME a változó neve. A változó eléréséhez használja `$VARIABLENAME`a következőt:. Ha például egy, a jelszó nevű környezeti változóban egy pozíciós paraméter által megadott értéket szeretne hozzárendelni, használja a következő utasítást:
+Ahol a VARIABLENAME a változó neve. A változó eléréséhez használja a következőt: `$VARIABLENAME` . Ha például egy, a jelszó nevű környezeti változóban egy pozíciós paraméter által megadott értéket szeretne hozzárendelni, használja a következő utasítást:
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
-Ezt követően az adatokhoz való további hozzáférés `$PASSWORD`is használható.
+Ezt követően az adatokhoz való további hozzáférés is használható `$PASSWORD` .
 
-A parancsfájlban beállított környezeti változók csak a parancsfájl hatókörén belül találhatók. Bizonyos esetekben előfordulhat, hogy olyan rendszerszintű környezeti változókat kell hozzáadnia, amelyek a szkript befejeződése után is megmaradnak. Rendszerszintű környezeti változók hozzáadásához adja hozzá a változót `/etc/environment`a következőhöz:. Az alábbi utasítás például a következőt `HADOOP_CONF_DIR`adja meg:
+A parancsfájlban beállított környezeti változók csak a parancsfájl hatókörén belül találhatók. Bizonyos esetekben előfordulhat, hogy olyan rendszerszintű környezeti változókat kell hozzáadnia, amelyek a szkript befejeződése után is megmaradnak. Rendszerszintű környezeti változók hozzáadásához adja hozzá a változót a következőhöz: `/etc/environment` . Az alábbi utasítás például a következőt adja meg `HADOOP_CONF_DIR` :
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -298,7 +302,7 @@ A parancsfájl által használt erőforrásoknak is nyilvánosan elérhetőnek k
 Ha egy Azure Storage-fiókban tárolja a fájlokat, vagy a Azure Data Lake Storage gyors hozzáférést biztosít az Azure-hálózaton belül.
 
 > [!NOTE]  
-> A parancsfájlra való hivatkozáshoz használt URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított Storage-fiókok esetében `wasb://` használja `wasbs://`a vagy a t. Nyilvánosan olvasható URI-k esetén `http://` használja `https://`a következőt: vagy. Data Lake Storage esetén használja `adl://`a következőt:.
+> A parancsfájlra való hivatkozáshoz használt URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított Storage-fiókok esetében használja a vagy a t `wasb://` `wasbs://` . Nyilvánosan olvasható URI-k esetén használja a következőt: `http://` vagy `https://` . Data Lake Storage esetén használja a következőt: `adl://` .
 
 ## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Ellenőrzőlista parancsfájl-művelet telepítéséhez
 
@@ -328,7 +332,7 @@ A Microsoft példákat biztosít a HDInsight-fürtön található összetevők t
 
 A fejlesztett parancsfájlok használatakor a következő hibák merülhetnek fel:
 
-**Hiba**: `$'\r': command not found`. Időnként ezt követi `syntax error: unexpected end of file`.
+**Hiba**: `$'\r': command not found` . Időnként ezt követi `syntax error: unexpected end of file` .
 
 *OK*: Ez a hiba akkor következik be, amikor egy parancsfájl SORAI a CRLF-sel végződik. A UNIX rendszerű rendszerek csak a TT-t várnak a sor végéig.
 
@@ -339,22 +343,24 @@ Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-körn
 > [!NOTE]  
 > A következő parancsok nagyjából egyenértékűek, ha módosítani kell a CRLF sort a LF értékre. Válasszon egyet a rendszeren elérhető segédprogramok alapján.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 | --- | --- |
 | `unix2dos -b INFILE` |Az eredeti fájl biztonsági mentése a-val történik. BAK bővítmény |
 | `tr -d '\r' < INFILE > OUTFILE` |A fájl verziószáma csak LF végződéssel rendelkező verziót tartalmaz |
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Közvetlenül módosítja a fájlt |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |A fájl egy olyan verziót tartalmaz, amely csak LF végződéssel rendelkezik. |
 
-**Hiba**: `line 1: #!/usr/bin/env: No such file or directory`.
+**Hiba**: `line 1: #!/usr/bin/env: No such file or directory` .
 
 *OK*: Ez a hiba akkor fordul elő, ha a parancsfájl UTF-8-as, bájtos rendelési JELLEL (BOM) lett mentve.
 
 *Megoldás*: mentse a fájlt ASCII-ként, vagy egy ANYAGJEGYZÉK nélküli UTF-8-ként. Az alábbi parancsot Linux vagy UNIX rendszerű rendszeren is használhatja az ANYAGJEGYZÉK nélküli fájl létrehozásához:
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
-Cserélje `INFILE` le az helyére az anyagjegyzéket tartalmazó fájlt. `OUTFILE`egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
+Cserélje le az helyére az `INFILE` anyagjegyzéket tartalmazó fájlt. `OUTFILE`egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>További lépések
 

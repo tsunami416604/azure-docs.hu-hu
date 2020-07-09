@@ -13,11 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690183"
 ---
 # <a name="azure-api-management-page-controls"></a>Az Azure API Management oldalának vezérlői
 Az Azure API Management a következő vezérlőket biztosítja a fejlesztői portál sablonjaiban való használathoz.  
@@ -81,7 +80,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- Nincs.  
+ Nincsenek.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `basic-signin` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
@@ -89,7 +88,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 -   [Bejelentkezés](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a><a name="paging-control"></a>Lapozás – vezérlés  
- Az `paging-control` megjeleníti a lapozási funkciót a fejlesztői portálon az elemek listáját megjelenítő lapokon.  
+ Az megjeleníti a `paging-control` lapozási funkciót a fejlesztői portálon az elemek listáját megjelenítő lapokon.  
   
  ![lapozási vezérlő](./media/api-management-page-controls/APIM-paging-control.png "APIM lapozási vezérlő")  
   
@@ -100,7 +99,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- Nincs.  
+ Nincsenek.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `paging-control` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
@@ -123,7 +122,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- Nincs.  
+ Nincsenek.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `providers` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
@@ -131,7 +130,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 -   [Bejelentkezés](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a><a name="search-control"></a>Keresés – vezérlés  
- A `search-control` az elemek listáját megjelenítő fejlesztői portálon keresési funkciókat biztosít.  
+ A az `search-control` elemek listáját megjelenítő fejlesztői portálon keresési funkciókat biztosít.  
   
  ![keresési vezérlő](./media/api-management-page-controls/APIM-search-control.png "APIM keresési vezérlő")  
   
@@ -142,7 +141,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- Nincs.  
+ Nincsenek.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `search-control` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
@@ -163,7 +162,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- Nincs.  
+ Nincsenek.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `sign-up` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
@@ -182,12 +181,12 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- Nincs.  
+ Nincsenek.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `subscribe-button` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
   
--   [Termék](api-management-product-templates.md#Product)  
+-   [Product](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>előfizetés – megszakítás  
  A `subscription-cancel` vezérlő a fejlesztői portál felhasználói profil lapján lévő termékre vonatkozó előfizetés megszakítására szolgáló vezérlőelemet biztosít.  
@@ -212,7 +211,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `subscription-cancel` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
   
--   [Termék](api-management-product-templates.md#Product)
+-   [Product](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

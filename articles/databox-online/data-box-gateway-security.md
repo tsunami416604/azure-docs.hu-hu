@@ -8,12 +8,11 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195874"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Gateway
 
@@ -27,7 +26,6 @@ A Data Box Gateway megoldás négy fő összetevőből áll, amelyek egymással 
 - **Data Box Gateway eszköz**. Az Ön által megadott rendszer hypervisorában kiépített virtuális eszköz. A virtuális eszköz használatával importálhatja a helyszíni adatait az Azure-ba.
 - **Az eszközhöz csatlakoztatott ügyfelek/gazdagépek**. Az infrastruktúra azon ügyfelei, amelyek a Data Box Gateway eszközhöz csatlakoznak, és a védeni kívánt adatait tartalmazzák.
 - **Felhőbeli tárolás**. A hely az Azure Cloud platformon, ahol az adatgyűjtés történik. Ez a hely általában a létrehozott Data Box Gateway erőforráshoz csatolt Storage-fiók.
-
 
 ## <a name="data-box-gateway-service-protection"></a>Data Box Gateway szolgáltatás védelme
 
@@ -64,8 +62,7 @@ A következőket teheti:
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - A [jelszó megváltoztatásához](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)használja a helyi webes felhasználói felületet. Ha megváltoztatja a jelszót, ügyeljen arra, hogy tájékoztassa az összes távelérési felhasználót, hogy ne legyen probléma a bejelentkezéskor.
 
-
-## <a name="protect-your-data"></a>Adatok védelme
+## <a name="protect-your-data"></a>Az adatok védelme
 
 Ez a szakasz azokat a Data Box Gateway biztonsági szolgáltatásokat ismerteti, amelyek a továbbítást és a tárolt információkat védik.
 
@@ -77,10 +74,18 @@ Ez a szakasz azokat a Data Box Gateway biztonsági szolgáltatásokat ismerteti,
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Az adatvédelem a Storage-fiókok használatával
+### <a name="protect-data-using-storage-accounts"></a>Adattárolás a Storage-fiókok használatával
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - Forgassa el és [szinkronizálja rendszeresen a Storage-fiók kulcsait](data-box-gateway-manage-shares.md#sync-storage-keys) , hogy megvédje a Storage-fiókját a jogosulatlan felhasználóktól.
+
+### <a name="protect-the-device-data-using-bitlocker"></a>Az eszköz adatainak védelme a BitLocker használatával
+
+A Data Box Gateway virtuális gépen lévő virtuális lemezek biztonságossá tételéhez ajánlott engedélyezni a BitLockert. Alapértelmezés szerint a BitLocker nincs engedélyezve. További információkért lásd:
+
+- [Titkosítási támogatás beállításai a Hyper-V kezelőjében](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [BitLocker-támogatás egy virtuális gépen](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Személyes adatok kezelése
 

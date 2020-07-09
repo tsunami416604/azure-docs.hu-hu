@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 9a20dca71727e83db98c4c97567949bd127fc7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77111198"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85128181"
 ---
 Az [üzenet-útválasztás](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) lehetővé teszi az telemetria-adatok küldését a IoT-eszközökről a beépített Event hub-kompatibilis végpontokra vagy egyéni végpontokra, például a blob Storage-ba, a Service Bus várólistákra, a Service Bus témakörökre és a Event Hubs. Az egyéni üzenet-útválasztás konfigurálásához [útválasztási lekérdezéseket](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) kell létrehoznia az adott feltételnek megfelelő útvonal testreszabásához. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha egy üzenet nem egyezik a megadott útválasztási lekérdezések egyikével sem, a rendszer az alapértelmezett végpontra irányítja át.
 
@@ -39,13 +39,13 @@ Az oktatóanyag 1. és 2. részének végrehajtásához hajtsa végre a követke
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az oktatóanyag 1. részében:
-  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+  - Rendelkeznie kell egy Azure-előfizetéssel. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Az oktatóanyag 2. részében:
   - El kell végeznie az oktatóanyag 1. részét, és az erőforrások továbbra is elérhetők maradnak.
   - A [Visual Studio](https://www.visualstudio.com/) telepítése.
   - Hozzáférés egy Power BI fiókhoz az alapértelmezett végpont stream Analytics elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Office 365-fiókkal kell rendelkeznie az értesítő e-mailek küldéséhez.
+  - Munkahelyi vagy iskolai fiókja van az értesítő e-mailek küldéséhez.
   - Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő minta MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

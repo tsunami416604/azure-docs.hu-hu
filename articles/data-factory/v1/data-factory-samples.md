@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318909"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
@@ -26,17 +26,17 @@ ms.locfileid: "84019911"
 ## <a name="samples-on-github"></a>Példák a GitHubon
 A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory) számos olyan mintát tartalmaz, amelyek segítségével gyorsan felgyorsítható a Azure Data Factory szolgáltatás (vagy) a parancsfájlok módosítása és használata a saját alkalmazásokban. A Samples\JSON mappa a gyakori forgatókönyvek JSON-kódrészleteit tartalmazza.
 
-| Sample | Leírás |
+| Sample | Description |
 |:--- |:--- |
 | [ADF-útmutató](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Ez a példa egy teljes körű útmutatót biztosít a naplófájlok feldolgozásához a Azure Data Factory használatával az adatoknak a naplófájlokban való bekapcsolásához. <br/><br/>Ebben az útmutatóban a Data Factory folyamat adatnaplókat gyűjt, feldolgozza és gazdagítja a naplókból származó adatokat, és átalakítja az adatokat, hogy kiértékelje a közelmúltban elindított marketingkampány hatékonyságát. |
 | [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Ez a példa JSON-példákat biztosít a gyakori forgatókönyvekhez. |
 | [Http-adatletöltő minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Ez a példa az adatok HTTP-végpontról Blob Storage Azure-ba történő letöltését mutatja be az egyéni .NET-tevékenységek használatával. |
-| [Több mint alkalmazástartomány dot Net-tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi egy olyan egyéni .NET-tevékenység létrehozását, amely nem korlátozza az ADF-indító által használt szerelvény-verziókat (például WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x stb.). |
-| [R-szkript futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a minta tartalmazza a RScript. exe meghívásához használható Data Factory egyéni tevékenységet. Ez a minta csak a saját (nem igény szerinti) HDInsight-fürttel működik, amelyen már telepítve van az R. |
+| [Több mint alkalmazástartomány dot Net-tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi egy olyan egyéni .NET-tevékenység létrehozását, amely nem korlátozódik az ADF-indító által használt szerelvény-verzióra (például WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x stb.). |
+| [R-szkript futtatása](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a minta tartalmazza a RScript.exe meghívásához használható Data Factory egyéni tevékenységet. Ez a minta csak a saját (nem igény szerinti) HDInsight-fürttel működik, amelyen már telepítve van az R. |
 | [Spark-feladatok meghívása a HDInsight Hadoop-fürtön](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ez a minta bemutatja, hogyan hívhat meg egy Spark-programot a MapReduce tevékenység használatával. A Spark program csak az egyik Azure Blob-tárolóból másol át egy másikba. |
 | [Twitter-elemzés Azure Machine Learning batch pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a minta azt mutatja be, hogyan használható a AzureMLBatchScoringActivity egy olyan Azure Machine Learning modell meghívására, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. |
 | [Twitter-elemzés egyéni tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ez a minta azt mutatja be, hogyan használható egy egyéni .NET-tevékenység egy olyan Azure Machine Learning modell meghívásához, amely Twitter-hangulat elemzését, pontozását, előrejelzését stb. végzi. |
-| [Paraméteres folyamatok Azure Machine Learninghoz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A minta egy végpontok közötti C#-kódot biztosít, amellyel N folyamatokat helyezhet üzembe a pontozáshoz és az átképzéshez egy másik régió paraméterrel, amelyben a régiók listája egy, a mintában szereplő Parameters. txt fájlból származik. |
+| [Paraméteres folyamatok Azure Machine Learninghoz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A minta egy végpontok közötti C#-kódot biztosít, amellyel N folyamatokat helyezhet üzembe a pontozáshoz és az átképzéshez egy másik régió paraméterrel, ahol a régiók listája egy parameters.txt fájlból származik, amely ebben a példában szerepel. |
 | [A Azure Stream Analytics-feladatokra vonatkozó referenciák frissítése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Ez a minta azt mutatja be, hogyan használhatók a Azure Data Factory és a Azure Stream Analytics együtt a lekérdezések és a hivatkozási adataik futtatására, valamint az ütemtervek frissítésének beállítására. |
 | [Hibrid folyamat helyszíni Hortonworks-Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |A minta egy helyszíni Hadoop-fürtöt használ számítási célként a feladatok Data Factory való futtatásához, ugyanúgy, mint a Felhőbeli HDInsight-alapú Hadoop-fürtökhöz. |
 | [JSON-átalakító eszköz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Ez az eszköz lehetővé teszi a JSON-verziók konvertálását a 2015-07-01 előtti verzióról a legújabbra vagy a 2015-07-01-Preview-ra (alapértelmezett). |
@@ -46,9 +46,9 @@ A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 A Data Factory a GitHubon a következő Azure Resource Manager sablonokat találhatja meg.
 
-| Sablon | Leírás |
+| Sablon | Description |
 | --- | --- |
-| [Másolás az Azure Blob Storageból a Azure SQL Databaseba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az adott Azure Blob Storage-ból másolja az Azure SQL Database-be. |
+| [Másolás az Azure Blob Storageból a Azure SQL Databaseba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Azure Blob Storage-ból származó adatok Azure SQL Database |
 | [Másolás a Salesforce-ből az Azure-ba Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Salesforce-fiókból az Azure Blob Storage-ba. |
 | [Adatátalakítás a kaptár-parancsfájl futtatásával egy Azure HDInsight-fürtön](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átalakítja az adatszerkezetet egy Azure HDInsight Hadoop-fürtön a minta struktúra-parancsfájl futtatásával. |
 
@@ -104,7 +104,7 @@ A számítógépre a következőket kell telepíteni:
    4. Válassza ki az adatelőállítóhoz tartozó **erőforráscsoportot** .
    5. Válassza ki az **USA nyugati**régiójában, az **USA keleti** **régiójában**vagy **Észak-Európában** .
    6. Kattintson a **Tovább** gombra.
-6. Az **adattárak konfigurálása** lapon adja meg a meglévő **Azure SQL Database-adatbázist** és az **Azure Storage-fiókot** (vagy) hozzon létre egy adatbázist/tárolót, és kattintson a Tovább gombra.
+6. Az **adattárak konfigurálása** lapon adja meg a meglévő **adatbázist a Azure SQL Database** és az **Azure Storage-fiókban** (vagy) hozzon létre egy adatbázist/tárolót, és kattintson a Tovább gombra.
 7. A **számítás konfigurálása** lapon válassza az Alapértelmezések lehetőséget, majd kattintson a **tovább**gombra.
 8. Az **Összefoglalás** lapon tekintse át az összes beállítást, majd kattintson a **tovább**gombra.
 9. A **telepítés állapota** lapon várja meg a telepítés befejeződését, majd kattintson a **Befejezés**gombra.

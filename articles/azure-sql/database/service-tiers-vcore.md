@@ -1,37 +1,37 @@
 ---
 title: Virtuális mag beszerzési modell áttekintése
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: A virtuális mag vásárlási modellje lehetővé teszi a számítási és tárolási erőforrások egymástól független méretezését, a helyszíni teljesítmény egyeztetését, valamint a Azure SQL Database és az Azure SQL felügyelt példány árának optimalizálását.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044093"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985550"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database & SQL felügyelt példánya 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database és az Azure SQL felügyelt példányai által használt Virtual Core (virtuális mag) vásárlási modell számos előnnyel jár:
 
-- Nagyobb számítási, memória-, IO-és tárolási korlátok.
+- Nagyobb számítási, memória-, I/O-és tárolási korlátok.
 - Szabályozhatja a hardver generációját, hogy jobban megfeleljen a számítási és memória-követelményeknek.
 - A [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) és a [fenntartott példány (ri)](reserved-capacity-overview.md)díjszabási kedvezményei.
 - A hardver részletes adatainak nagyobb átláthatósága a számítási teljesítmény érdekében megkönnyíti a helyszíni telepítések áttelepítésének megtervezését.
 
 ## <a name="service-tiers"></a>Szolgáltatásszintek
 
-A virtuális mag modellben található szolgáltatási rétegek beállításai közé tartozik a általános célú, a üzletileg kritikus és a nagy kapacitású. A szolgáltatási szinten általában a tárolási architektúra, a tárhely és az IO-korlátok, valamint a rendelkezésre állással és a vész-helyreállítással kapcsolatos üzletmenet-folytonossági lehetőségek vannak meghatározva.
+A virtuális mag modellben található szolgáltatási rétegek beállításai közé tartozik a általános célú, a üzletileg kritikus és a nagy kapacitású. A szolgáltatási szintek általában meghatározzák a tárolási architektúrát, a tárhelyet és az I/O-korlátokat, valamint a rendelkezésre állással és a vész-helyreállítással kapcsolatos üzletmenet-folytonossági lehetőségeket.
 
-||**Általános célú**|**Üzleti szempontból kritikus**|**Rugalmas skálázás**|
+|-|**általános célú**|**üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
 |Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
@@ -46,7 +46,7 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 
 Az adott munkaterhelés szolgáltatási szintjeinek kiválasztásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-- [Mikor válassza ki az általános célú szolgáltatási szintet](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Mikor válassza ki a általános célú szolgáltatási szintet](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [Mikor válassza ki a üzletileg kritikus szolgáltatási szintet](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [Mikor válassza ki a nagy kapacitású szolgáltatási szintet](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -91,10 +91,11 @@ A Fsv2 sorozat csak a általános célú szinten támogatott.  Azokon a régiók
 - Az M-sorozat egy memória-optimalizált hardveres beállítás, amely több memóriát és nagyobb számítási korlátot igényel, mint amennyit a Gen5 biztosít.
 - Az M-sorozat 29 GB-ot biztosít virtuális mag és 128 virtuális mag, ami növeli a Gen5 viszonyított memória korlátját a 8x-tól közel 4 TB-ig.
 
-Az M-sorozat csak a üzletileg kritikus szinten támogatott, és nem támogatja a zóna-redundanciát.
+Az M-sorozat csak a üzletileg kritikus szinten támogatott, és nem támogatja a zóna-redundanciát.  Az előfizetésnek fizetős ajánlat típusúnak kell lennie, beleértve az utólagos elszámolású vagy a Nagyvállalati Szerződés (EA) szolgáltatásokat.  Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
 
-Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést. Az előfizetésnek fizetős ajánlat típusúnak kell lennie, beleértve az utólagos elszámolású vagy a Nagyvállalati Szerződés (EA) szolgáltatásokat.  Ha a támogatási kérést jóváhagyják, az M sorozat kiválasztási és kiépítési tapasztalatai ugyanazt a mintát követik, mint az egyéb hardveres generációk esetében. Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
@@ -112,7 +113,7 @@ Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az ö
 
 ### <a name="selecting-a-hardware-generation"></a>Hardver-létrehozás kiválasztása
 
-A Azure Portal a létrehozáskor kiválaszthatja a SQL Database vagy a készlet hardveres generációját, vagy megváltoztathatja egy meglévő SQL-adatbázis vagy-készlet hardveres létrehozását is.
+A Azure Portalban kiválaszthatja a hardver generációját a létrehozáskor SQL Database adatbázis vagy készlet számára, vagy megváltoztathatja egy meglévő adatbázis vagy készlet hardveres létrehozását.
 
 **Hardver létrehozásának kiválasztása SQL Database vagy-készlet létrehozásakor**
 
@@ -147,7 +148,7 @@ Az **alapvető beállítások** lapon válassza az **adatbázis konfigurálása*
   
 **Meglévő SQL felügyelt példány hardveres létrehozásának módosítása**
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
 
 Az SQL felügyelt példánya lapon válassza ki az **árképzési** csomag hivatkozását a beállítások szakaszban.
 
@@ -165,7 +166,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 További részletekért keresse [meg a set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) parancsot.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 Használja az alábbi CLI-parancsot:
 
@@ -193,32 +194,33 @@ A Fsv2 sorozat a következő régiókban érhető el: Ausztrália középső ré
 #### <a name="m-series"></a>M sorozat
 
 Az M-sorozat a következő régiókban érhető el: USA keleti régiója, Észak-Európa, Nyugat-Európa, USA 2. nyugati régiója.
-Az M-sorozat további régiókban is korlátozott rendelkezésre állással rendelkezhet. Az itt felsoroltakon kívül más régiót is igényelhet, de előfordulhat, hogy egy másik régióban való teljesítés nem lehetséges.
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Az M-sorozat rendelkezésre állásának az előfizetésben való engedélyezéséhez [egy új támogatási kérelem bejelentésével](#create-a-support-request-to-enable-m-series)kell megkövetelni a hozzáférést.
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>Hozzon létre egy támogatási kérést az M-sorozat engedélyezéséhez: 
+##### Create a support request to enable M-series: 
 
-1. Válassza a **Súgó + támogatás** lehetőséget a portálon.
-2. Válassza az **Új támogatási kérelem** lehetőséget.
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
 
-Az **alapok** lapon adja meg a következőket:
+On the **Basics** page, provide the following:
 
-1. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
-2. **Előfizetés** = válassza ki az M-sorozat engedélyezéséhez szükséges előfizetést.
-3. A **kvóta típusa**beállításnál válassza az **SQL Database**lehetőséget.
-4. Kattintson a **tovább** gombra a **részletek** lapra való ugráshoz.
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-A **részletek** lapon adja meg a következőket:
+On the **Details** page, provide the following:
 
-1. A **probléma részletei** szakaszban válassza a **részletek megadása** hivatkozást. 
-2. **SQL Database a kvóta típusa** lapon válassza az **M-sorozat**lehetőséget.
-3. A **régió**területen válassza ki az M-sorozat engedélyezésének régióját.
-    Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-A jóváhagyott támogatási kérelmek általában 5 munkanapon belül teljesülnek.
-
+Approved support requests are typically fulfilled within 5 business days.
+-->
 
 ## <a name="next-steps"></a>További lépések
 
@@ -228,7 +230,7 @@ Első lépésként tekintse meg a következőt:
 
 A díjszabással kapcsolatos részletekért tekintse meg a [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-Az általános célú és az üzleti szempontból kritikus szolgáltatási szinten elérhető konkrét számítási és tárolási méretek részletes ismertetését lásd: 
+Az általános célú és az üzleti szempontból kritikus szolgáltatási szinten elérhető konkrét számítási és tárolási méretek részletes ismertetését lásd:
 
 - [Azure SQL Database virtuális mag-alapú erőforrás-korlátai](resource-limits-vcore-single-databases.md).
 - [a készletezett Azure SQL Database virtuális mag-alapú erőforrás-korlátai](resource-limits-vcore-elastic-pools.md).

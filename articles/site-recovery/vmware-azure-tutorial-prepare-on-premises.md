@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238859"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704250"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -93,7 +93,7 @@ Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Wi
 - **Internet-hozzáférés**. Feladatátvétel előtt engedélyezze az RDP-t a helyszíni virtuális gépen. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.
 - **Helyek közötti VPN-elérés**:
     - Feladatátvétel előtt engedélyezze az RDP-t a helyszíni gépen.
-    - Az RDP-t engedélyezni kell a **Windows tűzfal** -> **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára.
+    - Az RDP-t engedélyezni kell a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára.
     - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információ](https://support.microsoft.com/kb/3031135).
 - A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 - A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
@@ -116,5 +116,5 @@ Ha azt tervezi, hogy visszaadja a feladatokat a helyszíni helynek, a feladat- [
 
 Állítsa be a vész-helyreállítást. Több virtuális gép replikálásakor tervezze meg a kapacitást.
 > [!div class="nextstepaction"]
-> [Az Azure-ba irányuló vész-helyreállítás beállítása a VMWare virtuális gépek](vmware-azure-tutorial.md)
-> számára a[kapacitás megtervezése](site-recovery-deployment-planner.md).
+> Vész [-helyreállítás beállítása az Azure-ba VMWare virtuális gépekhez](vmware-azure-tutorial.md) 
+>  [Végezze el a kapacitás megtervezését](site-recovery-deployment-planner.md).

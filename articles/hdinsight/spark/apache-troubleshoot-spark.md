@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79271940"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Az Apache Spark hibaelhárítása az Azure HDInsighttal
@@ -21,17 +20,17 @@ Ismerje meg a leggyakoribb problémákat és azok megoldásait, amikor Apache Sp
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Hogyan konfigurálható egy Apache Spark-alkalmazás az Apache Ambari fürtökön történő használatával?
 
-A Spark konfigurációs értékei a Apache Spark alkalmazás `OutofMemoryError` kivételének elkerülése érdekében állíthatók be. Az alábbi lépések az alapértelmezett Spark-konfigurációs értékeket mutatják be az Azure HDInsight:
+A Spark konfigurációs értékei a Apache Spark alkalmazás kivételének elkerülése érdekében állíthatók be `OutofMemoryError` . Az alábbi lépések az alapértelmezett Spark-konfigurációs értékeket mutatják be az Azure HDInsight:
 
-1. Jelentkezzen be a Ambari `https://CLUSTERNAME.azurehdidnsight.net` -ba a fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg. A HDInsight 3,6 és 4,0 közötti enyhe kozmetikai különbségek vannak.
+1. Jelentkezzen be a Ambari-ba a `https://CLUSTERNAME.azurehdidnsight.net` fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg. A HDInsight 3,6 és 4,0 közötti enyhe kozmetikai különbségek vannak.
 
-1. Navigáljon a **Spark2** > -**konfigurációkhoz**.
+1. Navigáljon a **Spark2**-  >  **konfigurációkhoz**.
 
     ![Válassza a konfigurációk fület](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. A konfigurációk listájában válassza ki és bontsa ki az **Egyéni-spark2 – alapértelmezett értékeket**.
 
-1. Keresse meg a módosítani kívánt érték beállítást, például **Spark. végrehajtó. Memory**. Ebben az esetben a **9728m** értéke túl magas.
+1. Keresse meg a módosítani kívánt érték beállítást, például **spark.executor. Memory**. Ebben az esetben a **9728m** értéke túl magas.
 
     ![Egyéni-Spark – alapértékek kiválasztása](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 

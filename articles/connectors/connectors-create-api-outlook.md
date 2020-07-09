@@ -8,15 +8,14 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75707186"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>E-mailek, naptárak és névjegyek kezelése a Outlook.com-ben Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Outlook.com-összekötő](/connectors/outlook/)segítségével logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat @outlook.com hozhat @hotmail.com létre, amelyek a vagy a fiókját kezelik. Automatizálhatja például ezeket a feladatokat:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Outlook.com-összekötő](/connectors/outlook/)segítségével logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a @outlook.com vagy a @hotmail.com fiókját kezelik. Automatizálhatja például ezeket a feladatokat:
 
 * Az e-mailek lekérése, küldése és megválaszolása.
 * Értekezletek ütemezhetnek a naptárban.
@@ -25,7 +24,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Outlook.com-ö
 Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor új e-mail érkezik, amikor egy naptári elem frissül, vagy ha egy esemény a különbségi szolgáltatásban történik. Használhatja az eseményindító eseményre válaszoló műveleteket, például e-mailek küldését vagy új naptári esemény létrehozását.
 
 > [!NOTE]
-> A Microsoft munkahelyi fiókjával (például @fabrikam.onmicrosoft.com) kapcsolatos feladatok automatizálásához használja az [Office 365 Outlook Connectort](../connectors/connectors-create-api-office365-outlook.md).
+> A Microsoft munkahelyi fiókjával (például) kapcsolatos feladatok automatizálásához @fabrikam.onmicrosoft.com használja az [Office 365 Outlook Connectort](../connectors/connectors-create-api-office365-outlook.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +60,7 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "outlook.com" kifejezést. Ebben a példában válassza **az E-mail küldése**lehetőséget. 
 

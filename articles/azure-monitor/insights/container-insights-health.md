@@ -4,10 +4,9 @@ description: Ez a cikk bemutatja, hogyan tekintheti meg és elemezheti az AK-bel
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.openlocfilehash: 94fdb6388134eae326ed5a8e46fbd3d13f8da2d5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649571"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>A Kubernetes-fürt állapotának megértése a tárolók Azure Monitorével
@@ -50,7 +49,7 @@ Az állapot-hierarchia ablaktáblán az összes figyelő hierarchikus elrendezé
 
 Az állapotot a következő ikonok jelölik:
 
-|Ikon|Jelentés|  
+|Ikon|Értelmezés|  
 |--------|-----------|  
 |![Kifogástalan állapotot jelző zöld pipa ikonja](./media/container-insights-health/healthyicon.png)|Sikeres, az állapot rendben van (zöld)|  
 |![Figyelmeztetést jelző sárga háromszög és felkiáltójel](./media/container-insights-health/warningicon.png)|Figyelmeztetés (sárga)|  

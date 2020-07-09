@@ -1,17 +1,17 @@
 ---
 title: Konzisztencia kezelése Azure Cosmos DBban
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti Azure Cosmos DB egységességi szintjeit a Azure Portal, a .NET SDK, a Java SDK és számos más SDK használatával
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/24/2020
-ms.author: mjbrown
-ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.topic: how-to
+ms.date: 06/10/2020
+ms.author: anfeldma
+ms.openlocfilehash: e6f63807eeea32a7cce7e028dab5e16114bf9643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261562"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
 
@@ -23,13 +23,13 @@ Ez a cikk azt ismerteti, hogyan kezelhető a konzisztencia szintjei Azure Cosmos
 
 Az [alapértelmezett konzisztencia-szint](consistency-levels.md) az ügyfelek által alapértelmezés szerint használt konzisztencia-szint.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 Ha szeretné megtekinteni vagy módosítani az alapértelmezett konzisztencia-szintet, jelentkezzen be a Azure Portalba. Keresse meg az Azure Cosmos-fiókját, és nyissa meg az **alapértelmezett konzisztencia** -ablaktáblát. Válassza ki az új alapértelmezettként használni kívánt konzisztencia szintjét, majd kattintson a **Mentés**gombra. A Azure Portal a különböző konzisztencia-szintek vizualizációját is megjeleníti zenei megjegyzésekkel. 
 
-![Konzisztencia menü a Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Konzisztencia menü a Azure Portal":::
 
-# <a name="cli"></a>[parancssori felület](#tab/cli)
+# <a name="cli"></a>[Parancssori felület](#tab/cli)
 
 Hozzon létre egy Cosmos-fiókot a munkamenet konzisztenciájával, majd frissítse az alapértelmezett konzisztenciát.
 
@@ -92,9 +92,27 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
 
-# <a name="java-async-sdk"></a>[Java aszinkron SDK](#tab/javaasync)
+# <a name="async"></a>[Aszinkron](#tab/api-async)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
+
+# <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>Java v2 SDK-k
+
+# <a name="async"></a>[Aszinkron](#tab/api-async)
+
+Aszinkron Java v2 SDK (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
 ```java
 // Override consistency at the client level
@@ -108,7 +126,9 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="java-sync-sdk"></a>[Java Sync SDK](#tab/javasync)
+# <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+
+A Java v2 SDK szinkronizálása (Maven com. microsoft. Azure:: Azure-documentdb)
 
 ```java
 // Override consistency at the client level
@@ -173,9 +193,27 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
 
-# <a name="java-async-sdk"></a>[Java aszinkron SDK](#tab/javaasync)
+# <a name="async"></a>[Aszinkron](#tab/api-async)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
+
+# <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySessionSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java v2 SDK-k
+
+# <a name="async"></a>[Aszinkron](#tab/api-async)
+
+Aszinkron Java v2 SDK (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
 ```java
 // Get session token from response
@@ -197,7 +235,9 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="java-sync-sdk"></a>[Java Sync SDK](#tab/javasync)
+# <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+
+A Java v2 SDK szinkronizálása (Maven com. microsoft. Azure:: Azure-documentdb)
 
 ```java
 // Get session token from response
@@ -240,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 Hogyan lehetséges a végleges konzisztencia? Az átlagos esetben a korábbi verziókra és időpontokra vonatkozó elévülési korlátokat is kínáljuk. A [**Probabilistically határos elavulás (PBS)**](https://pbs.cs.berkeley.edu/) mérőszáma megpróbálja számszerűsíteni az elavultság valószínűségét, és mérőszámként jeleníti meg azt. A PBS-metrika megtekintéséhez lépjen a Azure Portal Azure Cosmos-fiókjába. Nyissa meg a **metrikák** ablaktáblát, és válassza a **konzisztencia** fület. tekintse meg a számítási feladaton **alapuló, erősen konzisztens olvasás valószínűségét mutató diagramot (lásd: PBS)**.
 
-![PBS gráf a Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="PBS gráf a Azure Portal":::
 
 ## <a name="next-steps"></a>További lépések
 

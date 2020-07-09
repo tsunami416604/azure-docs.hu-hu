@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168464"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921030"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -71,7 +70,7 @@ Ha kiigazította és telepítette az alapkonfiguráció 1.0-s verziójával rend
 
 **K: a rendszer naplózza a kérelmeket?**
 
-Válasz **: Ön**dönthet úgy, hogy a nyomkövetés kikapcsolásához létrehoz egy központi telepítést. Ekkor a rendszer nem naplózza a hanganyagot vagy az átírást. Ellenkező esetben a rendszer általában a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
+**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *naplózási tartalmat ebből a végpontból* beállítást, ha [Egyéni végpontot hoz létre](how-to-custom-speech-deploy-model.md) a nyomkövetés engedélyezéséhez. Ezt követően a rendszer a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
 
 **K: a kérelmek szabályozva vannak?**
 
@@ -100,7 +99,7 @@ Az ***Egyéni modell***egyidejűségének növeléséhez a következő informác
   - bejelentkezés (ha szükséges),
   - Válassza ki a projektet és az üzembe helyezést,
   - Válassza ki a végpontot, amelyre szüksége van a párhuzamosság növeléséhez,
-  - másolja a `Endpoint ID`.
+  - másolja a `Endpoint ID` .
 
 Az ***alapmodell***egyidejűségének növeléséhez a következő információkra van szükségünk:
 
@@ -116,8 +115,15 @@ vagy
   - Ugrás a [Azure Portalra](https://portal.azure.com)
   - kattintson `Cognitive Services` a keresőmezőbe,
   - a megjelenített szolgáltatások közül válassza ki azt a beszédfelismerési szolgáltatást, amelyhez a párhuzamosságot növelni szeretné,
-  - a `Properties` szolgáltatás megjelenítésének megjelenítése
-  - másolja a befejezést `Resource ID`.
+  - a szolgáltatás megjelenítésének megjelenítése `Properties`
+  - másolja a befejezést `Resource ID` .
+  
+**K: növeli a párhuzamossági korlátot?**
+
+**A**: nem, a díjszabás a használat alapján történik. A párhuzamosság növelése nem eredményez magasabb költségeket. További részletekért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) oldalunkat. 
+  
+>[!NOTE]
+>A [tárolók](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) nem igénylik a párhuzamossági korlátokat, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák.
 
 ## <a name="importing-data"></a>Adatok importálása
 

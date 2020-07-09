@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy Azure Files fájlmegosztást a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199340"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971028"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Azure-fájlmegosztás biztonsági mentése a PowerShell használatával
 
@@ -60,7 +60,7 @@ A PowerShell beállítása a következőképpen történik:
 5. A megjelenő weboldalon a rendszer kéri, hogy adja meg a fiók hitelesítő adatait.
 
     Azt is megteheti, hogy a fiók hitelesítő adatait paraméterként adja meg a **AzAccount** parancsmagban a **-hitelesítő adatok**használatával.
-   
+
     Ha Ön egy bérlő nevében működő CSP-partner, akkor az ügyfelet bérlőként kell megadnia. Használja a bérlői azonosítót vagy a bérlő elsődleges tartománynevét. Ilyen például a **következő: kapcsolat-AzAccount-bérlő "fabrikam.com"**.
 
 6. Társítsa a fiókhoz használni kívánt előfizetést, mert egy fiók több előfizetéssel is rendelkezhet:
@@ -95,20 +95,11 @@ Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. A [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) parancsmag használatával hozza létre a tárolót. Azonos helyet kell megadnia az erőforráscsoport számára használt tárolóhoz.
+1. A [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) parancsmag használatával hozza létre a tárolót. Azonos helyet kell megadnia az erőforráscsoport számára használt tárolóhoz.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-
-3. Adja meg a tároló tárolásához használni kívánt redundancia típusát. [Helyileg redundáns tárolást](../storage/common/storage-redundancy-lrs.md) vagy [földrajzilag redundáns tárolást](../storage/common/storage-redundancy-grs.md)használhat.
-   
-   A következő példa beállítja a **-BackupStorageRedundancy** beállítást a [set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) parancsmaghoz a **testvault** beállításnál a **GeoRedundant**:
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Az előfizetésben található tárolók megtekintése
 
@@ -246,20 +237,22 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+A Storage-fiókhoz tartozó fájlmegosztás listájának beszerzésével kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0).
+
 ## <a name="important-notice-backup-item-identification"></a>Fontos figyelmeztetés: biztonsági másolati elem azonosítása
 
 Ez a szakasz az Azure-fájlmegosztás biztonsági mentésének fontos változásait ismerteti az általános elérhetőségre való felkészülés során.
 
-Az Azure-fájlmegosztás biztonsági mentésének engedélyezésekor a felhasználó egy fájlmegosztás nevét adja meg az entitás neveként, és létrejön egy biztonságimásolat-elem. A biztonsági mentési elemek neve a Azure Backup szolgáltatás által létrehozott egyedi azonosító. Általában az azonosító a felhasználóbarát név. Ha azonban kezelni szeretné a helyreállítható törlési forgatókönyvet, amelyben egy fájlmegosztás törölhető, és egy másik fájlmegosztás is létrehozható ugyanazzal a névvel, az Azure-fájlmegosztás egyedi identitása már azonosító. 
+Az Azure-fájlmegosztás biztonsági mentésének engedélyezésekor a felhasználó egy fájlmegosztás nevét adja meg az entitás neveként, és létrejön egy biztonságimásolat-elem. A biztonsági mentési elemek neve a Azure Backup szolgáltatás által létrehozott egyedi azonosító. Általában az azonosító a felhasználóbarát név. Ha azonban kezelni szeretné a helyreállítható törlési forgatókönyvet, amelyben egy fájlmegosztás törölhető, és egy másik fájlmegosztás is létrehozható ugyanazzal a névvel, az Azure-fájlmegosztás egyedi identitása már azonosító.
 
-Az egyes elemek egyedi AZONOSÍTÓjának megismeréséhez futtassa a **Get-AzRecoveryServicesBackupItem** parancsot a **BackupManagementType** és a **WorkloadType** megfelelő szűrőinek használatával az összes releváns elem lekéréséhez. Ezután figyelje meg a visszaadott PowerShell objektum/válasz név mezőjét. 
+Az egyes elemek egyedi AZONOSÍTÓjának megismeréséhez futtassa a **Get-AzRecoveryServicesBackupItem** parancsot a **BackupManagementType** és a **WorkloadType** megfelelő szűrőinek használatával az összes releváns elem lekéréséhez. Ezután figyelje meg a visszaadott PowerShell objektum/válasz név mezőjét.
 
 Azt javasoljuk, hogy listaelemeket adjon meg, majd a válasz név mezőjéből olvassa be az egyedi nevet. Ezzel az értékkel szűrheti az elemeket a *Name* paraméterrel. Ellenkező esetben használja a *FriendlyName* paramétert az elem azonosítóval való lekéréséhez.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a PowerShell frissítve lett az Azure-fájlmegosztás biztonsági mentéséhez szükséges minimális verzióra (az. Recoveryservices szolgáltatónál 2.6.0). Ebben a verzióban a **Get-AzRecoveryServicesBackupItem** parancshoz elérhető a *FriendlyName* szűrő. 
+> Győződjön meg arról, hogy a PowerShell frissítve lett az Azure-fájlmegosztás biztonsági mentéséhez szükséges minimális verzióra (az. Recoveryservices szolgáltatónál 2.6.0). Ebben a verzióban a **Get-AzRecoveryServicesBackupItem** parancshoz elérhető a *FriendlyName* szűrő.
 >
-> Adja meg az Azure-fájlmegosztás nevét a *FriendlyName* paraméternek. Ha átadja a fájlmegosztás nevét a *Name* paraméternek, ez a verzió figyelmeztetést küld a név átadására a *FriendlyName* paraméternek. 
+> Adja meg az Azure-fájlmegosztás nevét a *FriendlyName* paraméternek. Ha átadja a fájlmegosztás nevét a *Name* paraméternek, ez a verzió figyelmeztetést küld a név átadására a *FriendlyName* paraméternek.
 >
 > A minimális verzió telepítése nem okozhatja a meglévő parancsfájlok meghibásodását. Telepítse a PowerShell minimális verzióját a következő parancs használatával:
 >
@@ -295,5 +288,5 @@ Az Azure-fájlmegosztás pillanatképeit a rendszer a biztonsági másolatok ké
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók [a Azure Portal Azure Files biztonsági mentéséről](backup-afs.md).
-- A biztonsági mentések ütemezéséhez tekintse [meg a githubon található minta parancsfájlt](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) egy Azure Automation runbook használatával.
+* Tudnivalók [a Azure Portal Azure Files biztonsági mentéséről](backup-afs.md).
+* A biztonsági mentések ütemezéséhez tekintse [meg a githubon található minta parancsfájlt](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) egy Azure Automation runbook használatával.

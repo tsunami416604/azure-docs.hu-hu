@@ -2,14 +2,13 @@
 title: Azure Blockchain Workbench – hibaelhárítás
 description: Azure Blockchain Workbench előzetes verziójú alkalmazások hibáinak megoldása.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.reviewer: brendal
-ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324303"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212853"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Az Azure Blockchain Workbench előzetes verziójának hibaelhárítása
 
@@ -44,19 +43,19 @@ A parancsfájl a következő paramétereket fogadja el:
 
 | Paraméter  | Leírás | Kötelező |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID az összes erőforrás létrehozásához vagy megkereséséhez. | Igen |
-| ResourceGroupName | Azon Azure-erőforráscsoport neve, ahol a Blockchain Workbench telepítve van. | Igen |
-| Outputdirectory paraméterben | A kimenet létrehozásának elérési útja. ZIP-fájl. Ha nincs megadva, az alapértelmezett érték az aktuális könyvtár. | Nem |
-| LookbackHours | A telemetria húzásakor használandó órák száma. Az alapértelmezett érték 24 óra. A maximális érték 90 óra | Nem |
-| OmsSubscriptionId | Az előfizetés-azonosító, amelyben a Azure Monitor naplók telepítve vannak. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve.| Nem |
-| OmsResourceGroup |Az az erőforráscsoport, amelyben a Azure Monitor naplók telepítve vannak. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve.| Nem |
-| OmsWorkspaceName | A Log Analytics munkaterület neve. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve. | Nem |
+| SubscriptionID | SubscriptionID az összes erőforrás létrehozásához vagy megkereséséhez. | Yes |
+| ResourceGroupName | Azon Azure-erőforráscsoport neve, ahol a Blockchain Workbench telepítve van. | Yes |
+| Outputdirectory paraméterben | A kimenet létrehozásának elérési útja. ZIP-fájl. Ha nincs megadva, az alapértelmezett érték az aktuális könyvtár. | No |
+| LookbackHours | A telemetria húzásakor használandó órák száma. Az alapértelmezett érték 24 óra. A maximális érték 90 óra | No |
+| OmsSubscriptionId | Az előfizetés-azonosító, amelyben a Azure Monitor naplók telepítve vannak. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve.| No |
+| OmsResourceGroup |Az az erőforráscsoport, amelyben a Azure Monitor naplók telepítve vannak. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve.| No |
+| OmsWorkspaceName | A Log Analytics munkaterület neve. Csak akkor adja meg ezt a paramétert, ha a blockchain-hálózat Azure Monitor naplói a Blockchain Workbench erőforráscsoportén kívül vannak telepítve. | No |
 
 ## <a name="what-is-collected"></a>Mit gyűjt?
 
 A kimeneti ZIP-fájl a következő mappastruktúrát tartalmazza:
 
-| Mappa vagy fájl | Leírás  |
+| Mappa vagy fájl | Description  |
 |---------|---------|
 | \Summary.txt | A System összefoglalása |
 | \Metrics\blockchain | Metrikák a blockchain |
@@ -66,7 +65,7 @@ A kimeneti ZIP-fájl a következő mappastruktúrát tartalmazza:
 
 Az összegző fájl pillanatképet készít az alkalmazás általános állapotáról és állapotáról. Az összefoglalás ajánlott műveleteket, Kiemelt hibákat és metaadatokat biztosít a futó szolgáltatásokról.
 
-A **metrikák** mappa a különböző rendszerösszetevők metrikáit tartalmazza az idő múlásával. A kimeneti fájl `\Details\Workbench\apiMetrics.txt` például a különböző hibakódok összegzését, valamint a begyűjtési időszakon belüli válaszidőt tartalmazza. A **részletek** mappa részletes naplókat tartalmaz a Workbench vagy a mögöttes blockchain-hálózat konkrét problémáinak elhárításához. A `\Details\Workbench\Exceptions.csv` tartalmaz például egy listát a rendszeren bekövetkezett legutóbbi kivételekről, ami hasznos lehet az intelligens szerződésekkel vagy a blockchain folytatott interakciókkal kapcsolatos hibák elhárításához. 
+A **metrikák** mappa a különböző rendszerösszetevők metrikáit tartalmazza az idő múlásával. A kimeneti fájl például a `\Details\Workbench\apiMetrics.txt` különböző hibakódok összegzését, valamint a begyűjtési időszakon belüli válaszidőt tartalmazza. A **részletek** mappa részletes naplókat tartalmaz a Workbench vagy a mögöttes blockchain-hálózat konkrét problémáinak elhárításához. A tartalmaz például `\Details\Workbench\Exceptions.csv` egy listát a rendszeren bekövetkezett legutóbbi kivételekről, ami hasznos lehet az intelligens szerződésekkel vagy a blockchain folytatott interakciókkal kapcsolatos hibák elhárításához. 
 
 ## <a name="next-steps"></a>További lépések
 

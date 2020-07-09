@@ -1,21 +1,21 @@
 ---
-title: Modellek üzembe helyezése számítási példányokban
+title: Modellek üzembe helyezése számítási példányokhoz
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként számítási példányok használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f2872becd5fb23c71fabb63fb4eafe27c00a637
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106968"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
@@ -39,28 +39,28 @@ A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, a
 
 1. [Azure Machine learning Studióban](https://ml.azure.com)válassza ki a Azure Machine learning számítási példányokat.
 
-1. Nyissa `samples-*` meg az alkönyvtárat, `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`majd nyissa meg a t. A Megnyitás után futtassa a jegyzetfüzetet.
+1. Nyissa meg az `samples-*` alkönyvtárat, majd nyissa meg a t `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` . A Megnyitás után futtassa a jegyzetfüzetet.
 
     ![Képernyőkép a futó helyi szolgáltatásról a notebookon](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. A jegyzetfüzet megjeleníti azt az URL-címet és portot, amelyen a szolgáltatás fut. Például: `https://localhost:6789`. A portot tartalmazó `print('Local service port: {}'.format(local_service.port))` cellát is futtathatja a port megjelenítéséhez.
+1. A jegyzetfüzet megjeleníti azt az URL-címet és portot, amelyen a szolgáltatás fut. Például: `https://localhost:6789`. A portot tartalmazó cellát is futtathatja a `print('Local service port: {}'.format(local_service.port))` port megjelenítéséhez.
 
     ![Képernyőkép a futó helyi szolgáltatás portról](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
 1. A szolgáltatás számítási példányból való teszteléséhez használja az `https://localhost:<local_service.port>` URL-címet. Távoli ügyfélről történő teszteléshez szerezze be a számítási példányon futó szolgáltatás nyilvános URL-címét. A nyilvános URL-cím a következő képlet használatával határozható meg: 
-    * Jegyzetfüzet virtuális gép `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`:. 
-    * Számítási példány: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
+    * Jegyzetfüzet virtuális gép: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` . 
+    * Számítási példány: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
-    Például: 
+    Példa: 
     * Jegyzetfüzet virtuális gép:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * Számítási példány:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
 ## <a name="test-the-service"></a>A szolgáltatás tesztelése
 
-Mintaadatok küldéséhez a futó szolgáltatáshoz használja a következő kódot. Cserélje le a értéket `service_url` az előző lépés URL-címére:
+Mintaadatok küldéséhez a futó szolgáltatáshoz használja a következő kódot. Cserélje le a értéket az `service_url` előző lépés URL-címére:
 
 > [!NOTE]
-> Ha a számítási példányon végzett központi telepítésre végez hitelesítést, a hitelesítés Azure Active Directory használatával történik. A példában szereplő `interactive_auth.get_authentication_header()` hívás a HRE használatával hitelesíti a szolgáltatást, és egy olyan fejlécet ad vissza, amely a számítási példányon a szolgáltatásban történő hitelesítéshez használható. További információ: [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md#interactive-authentication).
+> Ha a számítási példányon végzett központi telepítésre végez hitelesítést, a hitelesítés Azure Active Directory használatával történik. A példában szereplő hívás a `interactive_auth.get_authentication_header()` HRE használatával hitelesíti a szolgáltatást, és egy olyan fejlécet ad vissza, amely a számítási példányon a szolgáltatásban történő hitelesítéshez használható. További információ: [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md#interactive-authentication).
 >
 > Ha az Azure Kubernetes Service-ben vagy a Azure Container Instances-ban üzemelő példányra végzi a hitelesítést, a rendszer egy másik hitelesítési módszert használ. További információt a következő témakörben talál: [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md#web-service-authentication).
 
@@ -92,7 +92,7 @@ resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

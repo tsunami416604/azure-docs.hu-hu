@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017604"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
@@ -92,7 +92,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Leírás | PerfMon | Iostat |
+| Számláló | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
@@ -252,7 +252,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| None |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 

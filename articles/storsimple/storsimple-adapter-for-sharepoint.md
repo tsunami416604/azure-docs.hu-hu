@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75930209"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter telepítése és konfigurálása
@@ -92,7 +91,7 @@ Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, konfigurál
 ## <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, győződjön meg arról, hogy a StorSimple-eszköz, a SharePoint-kiszolgálófarm és a SQL Server példánya megfelel a következő előfeltételeknek.
 
-### <a name="system-requirements"></a>Rendszerkövetelmények
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 A SharePointhoz készült StorSimple-adapter a következő hardverekkel és szoftverekkel működik:
 
 * Támogatott operációs rendszer – Windows Server 2008 R2 SP1, Windows Server 2012 vagy Windows Server 2012 R2
@@ -170,7 +169,7 @@ Miután telepítette a StorSimple-adaptert a SharePointhoz, konfigurálja az RBS
 ## <a name="configure-garbage-collection"></a>A Garbage-gyűjtemény konfigurálása
 Ha egy SharePoint-webhelyről töröl objektumokat, azokat a rendszer nem törli automatikusan az RBS-tároló kötetéről. Ehelyett egy aszinkron, háttérben futó karbantartási program törli az árva blobokat a fájl tárolójából. A rendszergazdák rendszeres időközönként ütemezhetik ezt a folyamatot, vagy ha szükséges, elindíthatják azt.
 
-Az RBS engedélyezésekor a karbantartási program (Microsoft. adat. SqlRemoteBlobs. karbantartó. exe) automatikusan települ az összes SharePoint WFE-kiszolgálóra és-alkalmazás-kiszolgálóra. A program a következő helyen van telepítve: *rendszerindító meghajtó*: \PROGRAM Files\Microsoft SQL távoli Blob Storage 10.50 \ karbantartó \
+Ezt a karbantartási programot (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) automatikusan telepíti a rendszer az összes SharePoint WFE-kiszolgálóra és az alkalmazás-kiszolgálóra az RBS engedélyezésekor. A program a következő helyen van telepítve: *rendszerindító meghajtó*: \PROGRAM Files\Microsoft SQL távoli Blob Storage 10.50 \ karbantartó \
 
 További információ a karbantartási program konfigurálásáról és használatáról: az [RBS megőrzése a SharePoint Server 2013-ben][8].
 
@@ -226,7 +225,7 @@ A SharePoint szoftverhez készült StorSimple-adapter eltávolítása előtt át
 4. Az **StorSimple-adapter konfigurálása** lapon kattintson a **Letiltás** gombra az egyes tartalmi adatbázisok alatt, amelyeket el szeretne távolítani a külső blob-tárolóból. 
 5. Törölje az objektumokat a SharePointból, majd töltse fel újra.
 
-Másik lehetőségként használhatja a SharePointhoz `RBS Migrate()` mellékelt Microsoft PowerShell-parancsmagot is. További információ: [tartalom migrálása az RBS-be vagy](https://technet.microsoft.com/library/ff628255.aspx)abból.
+Másik lehetőségként használhatja a `RBS Migrate()` sharepointhoz mellékelt Microsoft PowerShell-parancsmagot is. További információ: [tartalom migrálása az RBS-be vagy](https://technet.microsoft.com/library/ff628255.aspx)abból.
 
 Miután visszahelyezte a blobokat a tartalom-adatbázisba, ugorjon a következő lépésre: [távolítsa el az adaptert](#uninstall-the-adapter).
 

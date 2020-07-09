@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78bd7f446b7716031e3eef02639acc8bb729719e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672846"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119565"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL-katalógussal Azure Data Lake Analytics
 
@@ -22,9 +22,9 @@ ms.locfileid: "71672846"
 
 Az előző U-SQL-parancsfájlban megismétli, hogy a kinyerés ugyanazzal a forrásfájl használatával olvasson. Ha a U-SQL tábla értékű függvényt (TVF) használja, akkor a későbbiekben újra beágyazhatja az adategységeket.  
 
-A következő szkript létrehoz egy nevű `Searchlog()` TVF az alapértelmezett adatbázisban és sémában:
+A következő szkript létrehoz egy nevű TVF `Searchlog()` az alapértelmezett adatbázisban és sémában:
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 Az alábbi szkript bemutatja, hogyan használhatja az előző parancsfájlban definiált TVF:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -74,9 +74,9 @@ OUTPUT @res
 
 Ha egyetlen lekérdezési kifejezéssel rendelkezik, a TVF helyett egy U-SQL-nézetet használhat a kifejezés beágyazásához.
 
-A következő szkript létrehoz egy nevű `SearchlogView` nézetet az alapértelmezett adatbázisban és sémában:
+A következő szkript létrehoz egy nevű nézetet `SearchlogView` az alapértelmezett adatbázisban és sémában:
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 A következő parancsfájl a definiált nézet használatát mutatja be:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ Csakúgy, mint a kapcsolódó adatbázistáblák esetében, az U-SQL használat�
 
 Hozzon létre egy adatbázist és két táblázatot a következő parancsfájl használatával:
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ Az adatfájlok lekérdezéséhez hasonló módon, például az előző szkriptbe
 
 A táblákból való olvasáshoz módosítsa a korábban használt átalakítási parancsfájlt:
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

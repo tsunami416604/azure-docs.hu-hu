@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79082880"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075570"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -27,7 +27,7 @@ A Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthatják, ha a für
 
 Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és betöltéséről, jelentkezzen be a [Ambari webes felhasználói felületére](hdinsight-hadoop-manage-ambari.md), majd válassza a **gazdagépek** lapot. A gazdagépek teljes tartományneveik szerepelnek a felsorolásban. Az egyes gazdagépek működési állapotát színes állapot kijelzője mutatja:
 
-| Color | Leírás |
+| Szín | Description |
 | --- | --- |
 | Vörös | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
@@ -70,7 +70,7 @@ A Resource Manager felhasználói felületén válassza a **Scheduler** lehetős
 
 ![Apache HAdoop Resource Manager felhasználói felület menü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-## <a name="storage-throttling"></a>Tárolás szabályozása
+## <a name="storage-throttling"></a>Tárterület-szabályozás
 
 A fürt teljesítményének szűk keresztmetszete a tárolási szinten fordulhat elő. Ez a szűk keresztmetszet leggyakrabban a bemeneti/kimeneti (i/o) műveletek *blokkolása* miatt fordul elő, amelyek akkor történnek, ha a futó feladatok több IO-t küldenek, mint amennyit a Storage szolgáltatás tud kezelni. Ez a blokkolás létrehoz egy várólistát a feldolgozásra váró IO-kérelmekről, amíg a jelenlegi IOs-t nem dolgozza fel. A blokkok *tárolási szabályozás*miatt, amely nem egy fizikai korlát, hanem a tárolási szolgáltatás által a szolgáltatói szerződés (SLA) által kiszabott korlát. Ez a korlát biztosítja, hogy egyetlen ügyfél vagy bérlő se Sajátítsa el a szolgáltatást. Az SLA korlátozza a másodpercenkénti IOs (IOPS) számát az Azure Storage-ban – részletekért lásd a [skálázhatóságot és a teljesítményre vonatkozó célokat a standard Storage-fiókok esetében](../storage/common/scalability-targets-standard-account.md).
 
@@ -95,7 +95,7 @@ Bizonyos esetekben előfordulhat, hogy a fürtön kevés a szabad lemezterület.
     du -h --max-depth=1 / | sort -h
     ```
 
-1. Tekintse át a kimenetet, és ellenőrizze, hogy vannak-e nagyméretű `mnt` fájlok a mappában vagy más mappákban. A és `appcache` a `usercache`(mnt/Resource/Hadoop/fonal/local/usercache/kaptár/AppCache/) mappák általában nagyméretű fájlokat tartalmaznak.
+1. Tekintse át a kimenetet, és ellenőrizze, hogy vannak-e nagyméretű fájlok a `mnt` mappában vagy más mappákban. A és a `usercache` `appcache` (mnt/Resource/Hadoop/fonal/local/usercache/kaptár/AppCache/) mappák általában nagyméretű fájlokat tartalmaznak.
 
 1. Ha nagy fájlok vannak, akkor a jelenlegi feladatokban a fájl növekedése vagy egy sikertelen előző feladatokkal kapcsolatos probléma is hozzájárulhat. Annak ellenőrzéséhez, hogy ezt a viselkedést egy aktuális feladatok okozzák-e, futtassa a következő parancsot:
 
@@ -109,7 +109,7 @@ Bizonyos esetekben előfordulhat, hogy a fürtön kevés a szabad lemezterület.
     yarn application -kill -applicationId <application_id>
     ```
 
-    Cserélje `application_id` le az alkalmazást az alkalmazás-azonosítóra. Ha nincs megadva adott feladat, folytassa a következő lépéssel.
+    Cserélje le `application_id` az alkalmazást az alkalmazás-azonosítóra. Ha nincs megadva adott feladat, folytassa a következő lépéssel.
 
 1. A fenti parancs befejezése után, vagy ha nincsenek megadva adott feladatok, törölje az azonosított nagyméretű fájlokat egy olyan parancs futtatásával, amely a következőhöz hasonló:
 

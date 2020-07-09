@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75744864"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085973"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
@@ -33,11 +33,11 @@ A gazdagépek megtekintéséhez nyissa meg a Ambari webes felhasználói felüle
 
     ![Az összes felhasználó és csoport Azure Portal](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. Fejezze be az új felhasználói űrlapot. Válassza ki a fürtön alapuló engedélyek hozzárendeléséhez létrehozott csoportokat. Ebben a példában hozzon létre egy "HiveUsers" nevű csoportot, amelyhez új felhasználókat rendelhet hozzá. Az ESP `HiveUsers` -fürtök létrehozására [vonatkozó példa](hdinsight-domain-joined-configure.md) a következő két csoport hozzáadását `AAD DC Administrators`tartalmazza: és.
+3. Fejezze be az új felhasználói űrlapot. Válassza ki a fürtön alapuló engedélyek hozzárendeléséhez létrehozott csoportokat. Ebben a példában hozzon létre egy "HiveUsers" nevű csoportot, amelyhez új felhasználókat rendelhet hozzá. Az ESP-fürtök létrehozására [vonatkozó példa](hdinsight-domain-joined-configure.md) a következő két csoport hozzáadását tartalmazza: `HiveUsers` és `AAD DC Administrators` .
 
     ![Azure Portal felhasználói ablaktábla csoportok kiválasztása](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>A felhasználók szinkronizálása az Apache Ambari REST API használatával
 
@@ -45,7 +45,7 @@ Ekkor történik a fürt létrehozása során meghatározott felhasználói csop
 
 A következő metódus a POST és a Ambari REST API használja. További információ: HDInsight- [fürtök kezelése az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
+1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot úgy, hogy lecseréli a `CLUSTERNAME` fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -74,7 +74,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
     }
     ```
 
-1. A szinkronizálás állapotának megtekintéséhez hajtson végre egy `curl` új parancsot:
+1. A szinkronizálás állapotának megtekintéséhez hajtson végre egy új `curl` parancsot:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
@@ -127,7 +127,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Az újonnan hozzáadott Azure AD-felhasználó ellenőrzése
 
-Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.md) annak ellenőrzéséhez, hogy az új Azure ad-felhasználó hozzá lett-e adva. A Ambari webes felhasználói felületének eléréséhez **`https://CLUSTERNAME.azurehdinsight.net`** tallózással keresse meg a következőt:. Adja meg a fürt rendszergazdai felhasználónevét és jelszavát.
+Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.md) annak ellenőrzéséhez, hogy az új Azure ad-felhasználó hozzá lett-e adva. A Ambari webes felhasználói felületének eléréséhez tallózással keresse meg a következőt: **`https://CLUSTERNAME.azurehdinsight.net`** . Adja meg a fürt rendszergazdai felhasználónevét és jelszavát.
 
 1. A Ambari Irányítópultján kattintson a **felügyelet Ambari** elemre a **rendszergazda** menüben.
 
@@ -137,14 +137,14 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 
     ![HDInsight-felhasználók és-csoportok menü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre `LDAP` van állítva `Local`.
+3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre van állítva `LDAP` `Local` .
 
     ![HDInsight HRE-felhasználók lap – áttekintés](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Jelentkezzen be a Ambari új felhasználóként
 
 Amikor az új felhasználó (vagy bármely más tartományi felhasználó) bejelentkezik a Ambari-ba, a teljes Azure AD-felhasználónevet és tartományi hitelesítő adatokat használják.  A Ambari megjelenít egy felhasználói aliast, amely a felhasználó megjelenítendő neve az Azure AD-ben.
-Az új példában szereplő felhasználó neve `hiveuser3@contoso.com`. A Ambari-ben ez az új felhasználó úgy `hiveuser3` jelenik meg, ahogy a felhasználó bejelentkezik a Ambari-ba `hiveuser3@contoso.com`.
+Az új példában szereplő felhasználó neve `hiveuser3@contoso.com` . A Ambari-ben ez az új felhasználó úgy jelenik meg, ahogy `hiveuser3` a felhasználó bejelentkezik a Ambari-ba `hiveuser3@contoso.com` .
 
 ## <a name="see-also"></a>Lásd még
 

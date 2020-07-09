@@ -106,6 +106,8 @@
       href: train-clustering-model.md
     - name: Modell betanítása
       href: train-model.md
+    - name: Pytorch-modell betanítása
+      href: train-pytorch-model.md
     - name: Modell-hiperparaméterek hangolása
       href: tune-model-hyperparameters.md
 - name: Modellpontozás és értékelés
@@ -118,6 +120,8 @@
       href: cross-validate-model.md
     - name: Modell értékelése
       href: evaluate-model.md
+    - name: Képmodell pontozása
+      href: score-image-model.md
     - name: Relevanciamodell
       href: score-model.md
 - name: Python nyelv
@@ -142,14 +146,36 @@
       href: preprocess-text.md
     - name: Rejtett Dirichlet-lefoglalás
       href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit modell pontozása
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit modell betanítása
+      href: train-vowpal-wabbit-model.md
+- name: Számítógépes látástechnológia
+  items:
+    - name: Képátalakítás alkalmazása
+      href: apply-image-transformation.md
+    - name: Átalakítás képkönyvtárrá
+      href: convert-to-image-directory.md
+    - name: Képátalakítás indítása
+      href: init-image-transformation.md
+    - name: Képkönyvtár felosztása
+      href: split-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: Ajánlás
   items:
     - name: Ajánló értékelése
       href: evaluate-recommender.md
     - name: SVD-ajánló pontozása
       href: score-svd-recommender.md
+    - name: Wide and Deep ajánló pontozása
+      href: score-wide-and-deep-recommender.md
     - name: SVD-ajánló betanítása
       href: train-svd-recommender.md
+    - name: Wide and Deep ajánló betanítása
+      href: train-wide-and-deep-recommender.md
 - name: Rendellenességek észlelése
   items:
     - name: PCA-alapú rendellenesség-észlelés

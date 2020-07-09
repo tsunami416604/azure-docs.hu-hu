@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64ed7f5d73b4e5a0eb4e7ff4ed6c0ce0788880fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f0e41b9578beb68f497c1a0fa7968064b6b91cee
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157736"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Oktatóanyag: Azure Active Directory integráció a beelintel
 
@@ -109,11 +109,11 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://projects.beeline.net/<instancename>`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    
-    | |
-    |--|
-    | `https://projects.beeline.net/<instancename>/SSO_External.ashx`|
-    | `https://projects.beeline.net/<companyname>/SSO_External.ashx` |
+
+    ```https
+    https://projects.beeline.net/<instancename>/SSO_External.ashx
+    https://projects.beeline.net/<companyname>/SSO_External.ashx
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot az [ügyfél-támogatási csapattal](https://www.beeline.com/contact-us/) , hogy lekérje ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -158,12 +158,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263744"
 ---
 # <a name="templates"></a>Sablonok
@@ -58,7 +57,7 @@ A MPNS (Windows Phone-telefon) és az FCM (Android) platformokhoz hasonló adatt
 
 Ez a követelmény arra kényszeríti az alkalmazási hátteret, hogy az egyes platformokon különböző adattartalmakat hozzon létre, és hatékonyan hozza létre az alkalmazás megjelenítési rétegének egy részéért felelős hátteret. Néhány probléma például a honosítás és a grafikus elrendezés (különösen a Windows áruházbeli alkalmazásokhoz, amelyek a különböző típusú csempék értesítéseit tartalmazzák).
 
-A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazás olyan speciális regisztrációkat hozzon létre, amelyeket sablon-regisztrációknak neveznek, beleértve a címkék készletét is. A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazások sablonokkal társítsák az eszközöket, függetlenül attól, hogy a telepítések (előnyben részesített) vagy a regisztrációk használatával működnek. Az előző adattartalomra vonatkozó példák miatt az egyetlen platformtól független információ a tényleges riasztási üzenet (Hello!). A sablon az értesítési központ utasításait mutatja be, amely bemutatja, hogyan formázhatja a platformtól független üzenetet az adott ügyfélalkalmazás regisztrálásához. Az előző példában a platform-független üzenet egyetlen tulajdonság: `message = Hello!`.
+A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazás olyan speciális regisztrációkat hozzon létre, amelyeket sablon-regisztrációknak neveznek, beleértve a címkék készletét is. A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazások sablonokkal társítsák az eszközöket, függetlenül attól, hogy a telepítések (előnyben részesített) vagy a regisztrációk használatával működnek. Az előző adattartalomra vonatkozó példák miatt az egyetlen platformtól független információ a tényleges riasztási üzenet (Hello!). A sablon az értesítési központ utasításait mutatja be, amely bemutatja, hogyan formázhatja a platformtól független üzenetet az adott ügyfélalkalmazás regisztrálásához. Az előző példában a platform-független üzenet egyetlen tulajdonság: `message = Hello!` .
 
 A következő kép szemlélteti a folyamatot:
 
@@ -139,13 +138,13 @@ A következő táblázat a sablonokban engedélyezett nyelvet mutatja be:
 | $ (prop, n)       | A fentiek szerint azonban a szöveg kifejezetten n karakterből van kivágva, például $ (title, 20) – a title tulajdonság tartalma 20 karakternél. |
 | . (prop, n)       | A fentiek szerint azonban a szöveg három ponttal van ellátva, ahogy azt levágja. A kivágott karakterlánc és az utótag teljes mérete nem haladja meg az n karaktert. . (title, 20) a "this a title line" (cím) mezőben a következő cím jelenik meg: **.** .. |
 | % (prop)          | Hasonló a $ (Name) értékhez, kivéve, ha a kimenet URI-kódolású. |
-| # (prop)          | JSON-sablonokban használatos (például iOS és Android rendszerű sablonok esetén).<br><br>Ez a függvény pontosan ugyanaz, mint a korábban megadott $ (prop), kivéve, ha JSON-sablonokban (például Apple Templates) használatosak. Ebben az esetben, ha ez a függvény nem a "{", "}" (például "myJsonProperty": "# (Name)"), és egy JavaScript formátumú számot ad vissza, például regexp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) (\.&#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, majd a kimenet JSON egy szám.<br><br>Például a "BADGE:" # (név) "lesz" jelvény ": 40 (és nem" 40 "). |
+| # (prop)          | JSON-sablonokban használatos (például iOS és Android rendszerű sablonok esetén).<br><br>Ez a függvény pontosan ugyanaz, mint a korábban megadott $ (prop), kivéve, ha JSON-sablonokban (például Apple Templates) használatosak. Ebben az esetben, ha ez a függvény nem a "{", "}" (például "myJsonProperty": "# (név)"), és egy JavaScript formátumú számot ad vissza, például regexp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) ( \.&#91;0-9&#93;+)? ( (e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, majd a kimenet JSON egy szám.<br><br>Például a "BADGE:" # (név) "lesz" jelvény ": 40 (és nem" 40 "). |
 | "text" vagy "text" | Egy szövegkonstans. A literálek egyetlen vagy idézőjelek közé foglalt tetszőleges szöveget tartalmaznak. |
 | Kif1 + Kif2    | Az összefűzési operátor két kifejezést egyesít egyetlen karakterláncban. |
 
 A kifejezések az előző űrlapok bármelyike lehet.
 
-Az Összefűzés használatakor a teljes kifejezést körül kell lennie `{}`. Például: `{$(prop) + ‘ - ’ + $(prop2)}`.
+Az Összefűzés használatakor a teljes kifejezést körül kell lennie `{}` . Például: `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 A következő sablon például nem érvényes XML-sablon:
 

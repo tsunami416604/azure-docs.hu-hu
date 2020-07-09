@@ -5,16 +5,15 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 41c4a8940cc49a3859a2511f0de65d0019817078
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214451"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
@@ -44,7 +43,7 @@ SELECT *
 FROM OPENROWSET(
         BULK 'csv/population/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -72,7 +71,7 @@ SELECT *
 FROM OPENROWSET(
         BULK 'csv/population-unix/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a'
     )
@@ -100,7 +99,7 @@ SELECT *
 FROM OPENROWSET(
         BULK 'csv/population-unix-hdr/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         FIRSTROW = 2
     )
@@ -128,7 +127,7 @@ SELECT *
 FROM OPENROWSET(
         BULK 'csv/population-unix-hdr-quoted/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
         FIRSTROW = 2,
@@ -161,7 +160,7 @@ SELECT *
 FROM OPENROWSET(
         BULK 'csv/population-unix-hdr-escape/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
         FIRSTROW = 2,
@@ -174,11 +173,42 @@ FROM OPENROWSET(
         [population] bigint
     ) AS [r]
 WHERE
-    country_name = 'Slov,enia';
+    country_name = 'Slovenia';
 ```
 
 > [!NOTE]
 > Ez a lekérdezés meghiúsul, ha a ESCAPECHAR nincs megadva, mert a "Slov, enia" vessző nem az ország/régió neve részeként lesz kezelve. A "Slov, enia" két oszlopként lesz kezelve. Ezért az adott sornak több oszlopa is lehet, mint a többi sor, és egy oszlop a WITH záradékban megadott értékkel.
+
+### <a name="escaping-quoting-characters"></a>Escape-karakterek beidézése
+
+A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix-stílusú új sorral, vesszővel tagolt oszlopokkal és egy megszökött idézőjeles karakterrel az értékeken belül. Figyelje meg a fájl különböző helyét a többi példához képest.
+
+Fájl előnézete:
+
+![A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix-stílusú új sorral, vesszővel tagolt oszlopokkal és egy megszökött idézőjeles karakterrel az értékeken belül.](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
 
 ## <a name="tab-delimited-files"></a>Tabulátorral tagolt fájlok
 
@@ -193,7 +223,7 @@ SELECT *
 FROM OPENROWSET(
         BULK 'csv/population-unix-hdr-tsv/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR ='\t',
         ROWTERMINATOR = '0x0a',
         FIRSTROW = 2
@@ -224,7 +254,7 @@ SELECT
 FROM OPENROWSET(
         BULK 'csv/population/population.csv',
         DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -236,7 +266,7 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkek a következőkre mutatnak:
 

@@ -1,26 +1,14 @@
 ---
 title: 'Gyors útmutató: események küldése a C-Azure Event Hubs használatával'
 description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan C-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.'
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: c
-ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720672"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315670"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Gyors útmutató: események küldése az Azure Event Hubs C használatával
 

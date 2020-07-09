@@ -1,20 +1,16 @@
 ---
-title: Azure Event Grid használata a CloudEvents-sémában lévő eseményekkel
+title: CloudEvents v 1.0 séma Azure Event Grid
 description: Ismerteti, hogyan használható a CloudEvents séma a Azure Event Grid eseményeihez. A szolgáltatás támogatja a felhőalapú események JSON-implementációjában lévő eseményeket.
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 1c6085c0397f23d44cf11d43a3e1da71f0e728bb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103075"
 ---
-# <a name="cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma Event Grid
+# <a name="cloudevents-v10-schema-with-azure-event-grid"></a>CloudEvents v 1.0 séma Azure Event Grid
 
 Az [alapértelmezett esemény sémáján](event-schema.md)kívül Azure Event Grid natív módon támogatja a [CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) és a [http protokoll kötésének](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON-implementációjában lévő eseményeket. A [CloudEvents](https://cloudevents.io/) egy [nyílt specifikáció](https://github.com/cloudevents/spec/blob/v1.0/spec.md) az események leírásához.
 
@@ -56,7 +52,7 @@ Ez a cikk a CloudEvents sémát ismerteti Event Gridokkal.
 
 [Itt](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)találja a CloudEvents 1.0-s verziójában elérhető mezők, típusok és definíciók részletes leírását.
 
-A CloudEvents-sémában és a Event Grid sémában leszállított események fejlécének értékei ugyanazok, `content-type`kivéve a következőt:. A CloudEvents séma esetében a fejléc értéke a `"content-type":"application/cloudevents+json; charset=utf-8"`következő:. Event Grid séma esetében a fejléc értéke a `"content-type":"application/json; charset=utf-8"`következő:.
+A CloudEvents-sémában és a Event Grid sémában leszállított események fejlécének értékei ugyanazok, kivéve a következőt: `content-type` . A CloudEvents séma esetében a fejléc értéke a következő: `"content-type":"application/cloudevents+json; charset=utf-8"` . Event Grid séma esetében a fejléc értéke a következő: `"content-type":"application/json; charset=utf-8"` .
 
 ## <a name="event-grid-for-cloudevents"></a>CloudEvents Event Grid
 
@@ -71,5 +67,5 @@ A CloudEvents-sémában lévő események bemenetéhez és kimenetéhez Event Gr
 
 Az összes esemény sémája esetében a Event Grid érvényesítést igényel az Event Grid-témakörre való közzétételkor és az esemény-előfizetés létrehozásakor. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [a CloudEvents 1.0-s verziójának használata Event Grid használatával](cloudevents-schema.md).  

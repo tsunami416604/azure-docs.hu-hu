@@ -3,12 +3,12 @@ title: Példa Azure CLI-parancsfájlra – batch-feladatok futtatása
 description: Ez a szkript létrehoz egy Batch-feladatot, amelyhez tevékenységeket ad hozzá. Emellett bemutatja a feladat és a hozzá tartozó tevékenységek monitorozásának menetét.
 ms.topic: sample
 ms.date: 12/12/2019
-ms.openlocfilehash: ce3c06b4631095df54371ca2417dc45d493a437d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: eefc6cfdc01ddf4b8fe05b3b52360994e5763013
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681841"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957257"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Parancssori felületi példa: Feladatok és tevékenységek futtatása az Azure Batch segítségével
 
@@ -39,14 +39,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Létrehoz egy Batch-fiókot. |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | Létrehozza számítási csomópontok egy készletét.  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-create) | Létrehoz egy Batch-feladatot.  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-create) | Hozzáad egy tevékenységet a megadott Batch-feladathoz.  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-set) | Frissíti egy Batch-feladat tulajdonságait.  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az-batch-job-show) | Lekérdezi a megadott Batch-feladat részleteit.  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | Lekérdezi a megadott Batch-feladat egy tevékenységének részleteit.  |
+| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | Létrehozza számítási csomópontok egy készletét.  |
+| [az batch job create](/cli/azure/batch/job#az-batch-job-create) | Létrehoz egy Batch-feladatot.  |
+| [az batch task create](/cli/azure/batch/task#az-batch-task-create) | Hozzáad egy tevékenységet a megadott Batch-feladathoz.  |
+| [az batch job set](/cli/azure/batch/job#az-batch-job-set) | Frissíti egy Batch-feladat tulajdonságait.  |
+| [az batch job show](/cli/azure/batch/job#az-batch-job-show) | Lekérdezi a megadott Batch-feladat részleteit.  |
+| [az batch task show](/cli/azure/batch/task#az-batch-task-show) | Lekérdezi a megadott Batch-feladat egy tevékenységének részleteit.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).

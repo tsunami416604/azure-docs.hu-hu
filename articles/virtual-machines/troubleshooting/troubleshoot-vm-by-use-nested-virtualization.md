@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76119618"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Hibás Azure-beli virtuális gép hibáinak megoldása az Azure-beli beágyazott virtualizálás használatával
@@ -42,13 +41,13 @@ A hibás virtuális gép csatlakoztatásához a mentési virtuális gépnek ugya
 
 2.  A mentési virtuális gép létrehozása után a távoli asztal a mentési virtuális géphez.
 
-3.  A Kiszolgálókezelőben válassza a **kezelés** > **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
+3.  A Kiszolgálókezelőben válassza a **kezelés**  >  **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
 
 4.  A **telepítés típusa** szakaszban válassza a **szerepköralapú vagy a szolgáltatáson alapuló telepítés**lehetőséget.
 
 5.  A **célkiszolgáló kijelölése** szakaszban győződjön meg arról, hogy a mentési virtuális gép ki van választva.
 
-6.  Válassza ki a **Hyper-V szerepkör** > **szolgáltatások hozzáadása**elemet.
+6.  Válassza ki a **Hyper-V szerepkör**  >  **szolgáltatások hozzáadása**elemet.
 
 7.  A **funkciók** szakaszban válassza a **tovább** lehetőséget.
 
@@ -60,7 +59,7 @@ A hibás virtuális gép csatlakoztatásához a mentési virtuális gépnek ugya
 
 11. Jelölje be a jelölőnégyzetet a kiszolgáló automatikus újraindításához, ha szükséges.
 
-12. Válassza az **Install** (Telepítés) lehetőséget.
+12. Válassza a **Telepítés** gombot.
 
 13. A Hyper-V szerepkör telepítésének engedélyezése a kiszolgálónak. Ez eltarthat néhány percig, és a kiszolgáló automatikusan újraindul.
 
@@ -74,7 +73,7 @@ A hibás virtuális gép csatlakoztatásához a mentési virtuális gépnek ugya
 
 4.  Nyissa meg a Hyper-V kezelőjét: a **Kiszolgálókezelőben**válassza ki a **Hyper-v szerepkört**. Kattintson a jobb gombbal a kiszolgálóra, majd válassza ki a **Hyper-V kezelőjét**.
 
-5.  A Hyper-V kezelőjében kattintson a jobb gombbal a mentő virtuális gépre, majd válassza az **új** > **virtuális gép** > **tovább**lehetőséget.
+5.  A Hyper-V kezelőjében kattintson a jobb gombbal a mentő virtuális gépre, majd válassza az **új**  >  **virtuális gép**  >  **tovább**lehetőséget.
 
 6.  Adja meg a virtuális gép nevét, majd kattintson a **tovább**gombra.
 

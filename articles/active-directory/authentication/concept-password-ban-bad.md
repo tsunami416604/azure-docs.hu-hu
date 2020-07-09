@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550702"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>A rossz jelszavak kiküszöbölése a szervezetben
 
@@ -111,7 +111,7 @@ A normalizálás két részből áll.  Első lépésként az összes nagybetűt 
 | '$'  | képgalériája |
 | '\@'  | egy |
 
-Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni aBl@nKjelszavát a "" értékre. Bár a "Bl@nk" nem kifejezetten tiltott, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
+Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni a jelszavát a "" értékre Bl@nK . Bár a " Bl@nk " nem kifejezetten tiltott, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>2. lépés: Ellenőrizze, hogy a jelszó betiltottnak minősül-e
 
@@ -147,7 +147,7 @@ A normalizálás után a jelszó "contosoblank12" lesz. A megfelelő folyamat me
 
 [contoso] + [blank] + [1] + [2] = 4 pont, mivel a jelszó öt (5) pont alatt van, a rendszer elutasítja.
 
-Példa: a felhasználó a "ContoS0Bl@nkf9!" értékre módosítja a jelszavát.
+Példa: a felhasználó a "!" értékre módosítja a jelszavát ContoS0Bl@nkf9 .
 
 A normalizálás után ez a jelszó "contosoblankf9!" lesz. A megfelelő folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ezt a jelszót a rendszer a következő pontszámmal adja meg:
 
@@ -158,7 +158,7 @@ A normalizálás után ez a jelszó "contosoblankf9!" lesz. A megfelelő folyama
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
-|   | Azure AD jelszavas védelem a globálisan tiltott jelszavak listájával | Azure AD jelszavas védelem egyéni tiltott jelszavak listájával|
+| Felhasználók | Azure AD jelszavas védelem a globálisan tiltott jelszavak listájával | Azure AD jelszavas védelem egyéni tiltott jelszavak listájával|
 | --- | --- | --- |
 | Csak felhőalapú felhasználók | Azure AD Free | prémium szintű Azure AD P1 vagy P2 |
 | Helyi Windows Server-Active Directoryról szinkronizált felhasználók | prémium szintű Azure AD P1 vagy P2 | prémium szintű Azure AD P1 vagy P2 |

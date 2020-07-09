@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ad2cf5dee43f0345017930377a3ed9d2e4624bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85257482"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Adatok Upsert a Spark Azure Cosmos DB Cassandra APIba
 

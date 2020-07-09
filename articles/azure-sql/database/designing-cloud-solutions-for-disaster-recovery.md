@@ -12,12 +12,11 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: e2414873db06ada4d0a260e007998ef2ba2f2cf9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344645"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Globálisan elérhető szolgáltatások tervezése Azure SQL Database használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +44,7 @@ A következő ábra a leállás előtt mutatja ezt a konfigurációt:
 
 ![1. forgatókönyv Konfiguráció a leállás előtt.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
-Az elsődleges régió meghibásodása után SQL Database észleli, hogy az elsődleges adatbázis nem érhető el, és az automatikus feladatátvételi házirend (1) paraméterei alapján elindítja a feladatátvételt a másodlagos régióba. Az alkalmazás SLA-ja alapján beállíthat egy türelmi időszakot, amely a leállás és a feladatátvétel észlelése közötti időt vezérli. Lehetséges, hogy Traffic Manager kezdeményezi a végpont feladatátvételét, mielőtt a feladatátvételi csoport elindítja az adatbázis feladatátvételét. Ebben az esetben a webalkalmazás nem tud azonnal újracsatlakozni az adatbázishoz. Az újracsatlakoztatások azonban automatikusan sikeresek lesznek, amint az adatbázis feladatátvétele befejeződik. Ha a meghibásodott régiót visszaállítja és újra online állapotban van, a régi elsődleges automatikusan újrakapcsolódik új másodlagosként. Az alábbi ábra szemlélteti a konfigurációt a feladatátvétel után.
+Az elsődleges régió meghibásodása után SQL Database észleli, hogy az elsődleges adatbázis nem érhető el, és az automatikus feladatátvételi házirend (1) paraméterei alapján elindítja a feladatátvételt a másodlagos régióba. Az alkalmazás SLA-ja alapján beállíthat egy türelmi időszakot, amely a leállás és a feladatátvétel észlelése közötti időt vezérli. Lehetséges, hogy az Azure Traffic Manager kezdeményezi a végpont feladatátvételét, mielőtt a feladatátvételi csoport elindítja az adatbázis feladatátvételét. Ebben az esetben a webalkalmazás nem tud azonnal újracsatlakozni az adatbázishoz. Az újracsatlakoztatások azonban automatikusan sikeresek lesznek, amint az adatbázis feladatátvétele befejeződik. Ha a meghibásodott régiót visszaállítja és újra online állapotban van, a régi elsődleges automatikusan újrakapcsolódik új másodlagosként. Az alábbi ábra szemlélteti a konfigurációt a feladatátvétel után.
 
 > [!NOTE]
 > A feladatátvételt követően véglegesített összes tranzakció elvész az Újracsatlakozás során. A feladatátvétel befejezése után a B régióban lévő alkalmazás újra tud csatlakozni, és újraindítja a felhasználói kérések feldolgozását. A webalkalmazás és az elsődleges adatbázis jelenleg a B régióban található, és továbbra is közös helyen található.
@@ -109,9 +108,9 @@ Ebben az esetben az alkalmazás a következő jellemzőkkel rendelkezik:
 * A végfelhasználók az alkalmazást különböző földrajzi helyekről érik el
 * Az alkalmazás olyan írásvédett munkaterheléseket tartalmaz, amelyek nem függnek a legújabb frissítésekkel való teljes szinkronizálástól
 * Az adatíráshoz való hozzáférést a felhasználók többsége számára azonos földrajzi helyen kell támogatni
-* Az olvasási késés a végfelhasználói élmény szempontjából kritikus fontosságú
+* Az olvasási késés kritikus fontosságú a végfelhasználói élményhez
 
-A követelmények teljesítése érdekében biztosítania kell, hogy a felhasználói eszköz **mindig** a csak olvasási műveletekhez, például az adatok böngészéséhez, az elemzésekhez és az adatokhoz tartozó, azonos földrajzi területen üzembe helyezett alkalmazáshoz kapcsolódjon. A OLTP-műveleteket az **idő nagy részében**ugyanabban a földrajzban dolgozzák fel. Például a nap folyamán a OLTP műveletei ugyanabban a földrajzban lesznek feldolgozva, de a munkaidőn kívül más földrajzi helyeken is feldolgozhatók. Ha a végfelhasználói tevékenység többnyire a munkaidő alatt történik, a legtöbb felhasználó számára garantálhatja az optimális teljesítményt a legtöbb esetben. A következő ábra ezt a topológiát mutatja be.
+A követelmények teljesítése érdekében biztosítania kell, hogy a felhasználói eszköz **mindig** a csak olvasási műveletekhez, például az adatok böngészéséhez, az elemzésekhez és az adatokhoz tartozó, azonos földrajzi területen üzembe helyezett alkalmazáshoz kapcsolódjon. A OLTP-műveletek feldolgozása a **legtöbb esetben**azonos földrajzi helyen történik. Például a nap folyamán a OLTP műveletei ugyanabban a földrajzban lesznek feldolgozva, de a munkaidőn kívül más földrajzi helyeken is feldolgozhatók. Ha a végfelhasználói tevékenység többnyire a munkaidő alatt történik, akkor a legtöbb felhasználó számára az optimális teljesítményt garantálhatja a legtöbb esetben. A következő ábra ezt a topológiát mutatja be.
 
 Az alkalmazás erőforrásait minden olyan földrajzi helyen telepíteni kell, ahol jelentős használati igény van. Ha például az alkalmazás aktívan használatban van a Egyesült Államokban, az Európai Unió és Dél-Kelet-Ázsia az alkalmazást az összes ilyen földrajzi területhez telepíteni kell. Az elsődleges adatbázisnak dinamikusan kell váltania az egyik földrajzi helyről a munkaidő végén lévő következőre. Ezt a metódust "a nap követése" néven nevezzük. A OLTP munkaterhelés mindig az adatbázishoz csatlakozik az írási-olvasási figyelő ** &lt; feladatátvétel-csoport-neve &gt; . database.Windows.net** (1) használatával. A csak olvasási feladat közvetlenül a helyi adatbázishoz csatlakozik a Databases Server Endpoint ** &lt; Server – name &gt; . database.Windows.net** (2) adatbázis használatával. Traffic Manager a [teljesítmény-útválasztási módszerrel](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)van konfigurálva. Biztosítja, hogy a végfelhasználó eszköze a legközelebbi régióban található webszolgáltatáshoz kapcsolódjon. A Traffic Manager minden webszolgáltatás-végpontnál (3) engedélyezve kell lennie a végpontok figyelésével.
 
@@ -131,7 +130,7 @@ Az alábbi ábra az új konfigurációt mutatja be a tervezett feladatátvétel 
 
 ![3. forgatókönyv Áttérés az elsődlegesről Észak-Európára.](./media/designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Ha például áramkimaradás fordul elő Észak-Európában, az automatikus adatbázis-feladatátvételt a feladatátvételi csoport kezdeményezi, ami gyakorlatilag a következő régióba helyezi át az alkalmazást a Schedule (1) előtt.  Ebben az esetben az USA keleti régiója az egyetlen fennmaradó másodlagos régió, amíg Észak-Európa ismét online állapotba kerül. A fennmaradó két régió mindhárom régióban kiszolgálja az ügyfeleket a szerepkörök váltásával. A Azure Logic Apps ennek megfelelően kell módosítani. Mivel a többi régió az Európából érkező további felhasználói adatforgalmat kap, az alkalmazás teljesítményét nem csupán a további késések, hanem a végfelhasználói kapcsolatok számának növekedése is befolyásolja. Ha a leállás az észak-európai régióban van enyhítve, a másodlagos adatbázis azonnal szinkronizálva lesz a jelenlegi elsődlegesével. Az alábbi ábrán az észak-európai leállás látható:
+Ha például áramkimaradás fordul elő Észak-Európában, az automatikus adatbázis-feladatátvételt a feladatátvételi csoport kezdeményezi, ami gyakorlatilag a következő régióba helyezi át az alkalmazást a Schedule (1) előtt.  Ebben az esetben az USA keleti régiója az egyetlen fennmaradó másodlagos régió, amíg Észak-Európa ismét online állapotba kerül. A fennmaradó két régió mindhárom régióban kiszolgálja az ügyfeleket a szerepkörök váltásával. A Azure Logic Apps ennek megfelelően kell módosítani. Mivel a többi régió az Európából érkező további felhasználói adatforgalmat kap, az alkalmazás teljesítményét nem csupán a további késések, hanem a végfelhasználói kapcsolatok egyre nagyobb száma is befolyásolja. Ha a leállás az észak-európai régióban van enyhítve, a másodlagos adatbázis azonnal szinkronizálva lesz a jelenlegi elsődlegesével. Az alábbi ábrán az észak-európai leállás látható:
 
 ![3. forgatókönyv Leállás Észak-Európában.](./media/designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

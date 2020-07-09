@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482513"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-hez
 Ez a cikk útmutatást és ajánlott eljárásokat ismertet az adattárház-megoldás fejlesztése során. 
@@ -106,7 +106,7 @@ Mivel a kiváló minőségű oszlopcentrikus szegmensek fontosak, érdemes a kö
 Mivel a oszlopcentrikus-táblák általában nem küldenek le az adatlemezeket egy tömörített oszlopcentrikus, amíg a táblázat több mint 1 000 000 sort tartalmaz, és minden SQL Pool-tábla 60-táblázatba van particionálva, a oszlopcentrikus-táblák nem kapnak lekérdezést, kivéve, ha a tábla több mint 60 000 000 sorral rendelkezik.  
 
 > [!TIP]
-> Az 60 000 000-nál kevesebb sorral rendelkező táblák esetében előfordulhat, hogy a columstore index nem az optimális megoldás.  
+> Az 60 000 000-nál kevesebb sorral rendelkező táblák esetében előfordulhat, hogy a oszlopcentrikus index nem az optimális megoldás.  
 
 Ha particionálja az adatait, akkor azt is érdemes figyelembe venni, hogy minden partíciónak 1 millió sorral kell rendelkeznie a fürtözött oszlopcentrikus indexek előnyeinek kihasználása érdekében.  Ha egy tábla 100 partíciót tartalmaz, akkor legalább 6 000 000 000 sort kell használnia a fürtözött oszlopok tárolójának kihasználása érdekében (60 distributers *100 partitions* 1 000 000 sor).  
 
@@ -150,7 +150,7 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
 Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez csökkenti a fájlok és az adatmennyiség mennyiségét, amelyet a lekérdezésnek olvasni és feldolgoznia kell. 
 
-Így jobb teljesítményt érhet el. További információért olvassa el a [filename](develop-storage-files-overview.md#filename-function) és a [filepath](develop-storage-files-overview.md#filepath-function) függvények és példák című témakört a [megadott fájlok lekérdezéséhez](query-specific-files.md).
+Így jobb teljesítményt érhet el. További információért olvassa el a [filename](query-data-storage.md#filename-function) és a [filepath](query-data-storage.md#filepath-function) függvények és példák című témakört a [megadott fájlok lekérdezéséhez](query-specific-files.md).
 
 Ha a tárolóban lévő adatok particionálása nem történik meg, érdemes particionálni, hogy ezeket a függvényeket a fájlokra irányuló lekérdezések optimalizálására is használhatja.
 

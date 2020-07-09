@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514450"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
 
@@ -115,7 +115,7 @@ Ezek a metódusok a szegmentált API-k burkolói lettek implementálva. A szegme
 
 Ez a megközelítés akkor működhet, ha a Storage-fiók vagy-tábla kis számú objektumot tartalmaz. Az objektumok számának növekedésével azonban a szükséges memória korlát nélkül növekedhet, mert az összes eredmény a memóriában marad. Az egyik listázási művelet nagyon hosszú időt vehet igénybe, amelynek során a hívó nem kapott információt a folyamatáról.
 
-Az SDK-ban a kapzsi listázási API-k nem léteznek C#, Java vagy JavaScript Node. js környezetben. A kapzsi API-k használatával kapcsolatos lehetséges problémák elkerülése érdekében a 0.6.0 előzetes verziójában eltávolította őket.
+Az SDK-ban ezek a kapzsi listázási API-k nem léteznek C#, Java vagy JavaScript Node.js környezetben. A kapzsi API-k használatával kapcsolatos lehetséges problémák elkerülése érdekében a 0.6.0 előzetes verziójában eltávolította őket.
 
 Ha a kód a következő kapzsi API-kat hívja meg:
 

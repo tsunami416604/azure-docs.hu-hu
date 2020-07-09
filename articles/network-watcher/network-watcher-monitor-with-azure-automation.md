@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738215"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók figyelése Network Watcher hibaelhárítással
 
@@ -33,7 +33,7 @@ A rendszer létrehoz egy runbook a VPN-alagút kapcsolati állapotának keresés
 
 Ez a forgatókönyv a következőket teszi:
 
-- A `Start-AzureRmNetworkWatcherResourceTroubleshooting` parancsmagot hívó runbook létrehozása a kapcsolódási állapot megoldásához
+- A parancsmagot hívó runbook létrehozása a `Start-AzureRmNetworkWatcherResourceTroubleshooting` kapcsolódási állapot megoldásához
 - Ütemterv összekapcsolása a runbook
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -53,7 +53,7 @@ A forgatókönyv elindítása előtt a következő előfeltételeknek kell megfe
 
 A példa konfigurálásának első lépése a runbook létrehozása. Ez a példa egy futtató fiókot használ. A futtató fiókokkal kapcsolatos további információkért látogasson el a [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-create-runas-account.md) című témakörre.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Navigáljon Azure Automation a [Azure Portal](https://portal.azure.com) , majd kattintson a **runbookok** elemre.
 
@@ -79,7 +79,7 @@ Ebben a lépésben a runbook egy nevet adunk, a példában a **Get-VPNGatewaySta
 
 ### <a name="step-5"></a>5. lépés
 
-Ebben a lépésben a runbook jön létre, az alábbi kódrészlet tartalmazza a példához szükséges összes kódot. Az értéket \<\> tartalmazó kód elemeit az előfizetésből származó értékekkel kell helyettesíteni.
+Ebben a lépésben a runbook jön létre, az alábbi kódrészlet tartalmazza a példához szükséges összes kódot. A kód azon elemeit, amelyeknek tartalmaznia \<value\> kell az előfizetés értékeit, le kell cserélni.
 
 Használja a következő kódot, kattintson a **Mentés** gombra.
 
@@ -155,7 +155,7 @@ Létre kell hozni egy új ütemtervet. Kattintson az **ütemterv csatolása a ru
 
 ![7. lépés][7]
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Az **ütemterv** panelen kattintson az **új ütemterv létrehozása** lehetőségre.
 

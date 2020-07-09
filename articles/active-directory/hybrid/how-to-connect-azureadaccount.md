@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7f6b623cc5f864106dc2f119308370e80014a4c2
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360010"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Az Azure AD Connector-fiók jelszavának módosítása
 Az Azure AD Connector-fióknak ingyenes szolgáltatásnak kellene lennie. Ha alaphelyzetbe kell állítania a hitelesítő adatait, akkor ez a témakör Önnek szól. Ha például egy globális rendszergazda véletlenül alaphelyzetbe állítja a fiók jelszavát a PowerShell használatával.

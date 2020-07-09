@@ -1,2 +1,4 @@
 - name: Az ArrInspector ellenőrző eszköz
   href: arr-inspector.md
+- name: Azure Remote Rendering eszköz
+  href: ../../samples/azure-remote-rendering-asset-tool.md

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
-ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5faa3d7bf048eee622ddd5a46082bb2432d84871
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76157066"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076249"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight .NET Apache Hadoop SDK használatával
 
@@ -37,7 +37,7 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, így könnyebben haszn
 
 1. Indítsa el a Visual studiót, és hozzon létre egy C# konzolos alkalmazást.
 
-1. Navigáljon az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolra** , és futtassa a következő parancsot:
+1. Navigáljon az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolra** , és futtassa a következő parancsot:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
@@ -45,9 +45,9 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, így könnyebben haszn
 
 ## <a name="sqoop-export"></a>Sqoop-exportálás
 
-A kaptárból a SQL Serverba.  Ez a példa a struktúra `hivesampletable` táblából exportálja az `mobiledata` adatait a SQL Database lévő táblába.
+A kaptárból a SQL Serverba.  Ez a példa a struktúra táblából exportálja az adatait a `hivesampletable` `mobiledata` SQL Database lévő táblába.
 
-1. Használja a következő kódot a Program.cs fájlban. Szerkessze a kódot a és `ExistingClusterName` `ExistingClusterPassword`a értékének megadásához.
+1. Használja a következő kódot a Program.cs fájlban. Szerkessze a kódot a és a értékének megadásához `ExistingClusterName` `ExistingClusterPassword` .
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -115,7 +115,7 @@ A kaptárból a SQL Serverba.  Ez a példa a struktúra `hivesampletable` tábl�
 
 ## <a name="sqoop-import"></a>Sqoop importálása
 
-SQL Server az Azure Storage-ba. Ez a példa a fenti exportálási művelettől függ.  Ez a példa a SQL Database lévő `mobiledata` táblából importálja az `wasb:///tutorials/usesqoop/importeddata` adatait a fürt alapértelmezett Storage-fiókjának könyvtárába.
+SQL Server az Azure Storage-ba. Ez a példa a fenti exportálási művelettől függ.  Ez a példa a SQL Database lévő táblából importálja az adatait a `mobiledata` `wasb:///tutorials/usesqoop/importeddata` fürt alapértelmezett Storage-fiókjának könyvtárába.
 
 1. Cserélje le a fenti kódot a `//sqoop start //sqoop end` blokkba a következő kóddal:
 
@@ -137,7 +137,7 @@ A Linux-alapú HDInsight a következő korlátozásokat mutatja be:
 
 * Tömeges exportálás: a Sqoop-összekötő, amely az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 
-* Kötegelt feldolgozás: a kapcsoló használatával `-batch` a Sqoop több beszúrást hajt végre az INSERT művelet végrehajtása helyett.
+* Kötegelt feldolgozás: a kapcsoló használatával a `-batch` Sqoop több beszúrást hajt végre az INSERT művelet végrehajtása helyett.
 
 ## <a name="next-steps"></a>További lépések
 

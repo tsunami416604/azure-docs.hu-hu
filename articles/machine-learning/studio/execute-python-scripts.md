@@ -5,17 +5,16 @@ description: Ismerje meg, hogyan használhatja a Python-szkriptek végrehajtása
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 5b7d34cd8a841f7931ce85d3f9830c5497bb2f93
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696303"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
 
@@ -75,13 +74,13 @@ Tegyük fel például, hogy a fájl Hello.py egy egyszerű "Helló, világ" füg
 
 ![Felhasználó által definiált függvény a Hello.py fájlban](./media/execute-python-scripts/figure4.png)
 
-Ezután létrehozunk egy Hello. zip fájlt, amely tartalmazza a Hello.py:
+Ezután létrehozunk egy Hello.py tartalmazó Hello.zip fájlt:
 
 ![Felhasználó által definiált Python-kódot tartalmazó Zip-fájl](./media/execute-python-scripts/figure5.png)
 
-Töltse fel a zip-fájlt adatkészletként a studióba (klasszikus). Ezután hozzon létre és futtasson egy kísérletet, amely a Python-kódot használja a Hello. zip fájlban úgy, hogy a következő képen látható módon csatolja a **Python-szkript végrehajtása** modul harmadik bemeneti portjához.
+Töltse fel a zip-fájlt adatkészletként a studióba (klasszikus). Ezután hozzon létre és futtasson egy olyan kísérletet, amely a Python-kódot használja a Hello.zip fájlban úgy, hogy a következő képen látható módon csatolja a **Python-parancsfájl végrehajtása** modul harmadik bemeneti portjához.
 
-![Példa a Hello. zip-alapú kísérletre egy végrehajtási Python parancsfájl-modulba való bemenetként](./media/execute-python-scripts/figure6a.png)
+![Példa a kísérletre Hello.zip bemenetként egy Python parancsfájl-modul végrehajtásához](./media/execute-python-scripts/figure6a.png)
 
 ![Felhasználó által definiált Python-kód zip-fájlként feltöltve](./media/execute-python-scripts/figure6b.png)
 

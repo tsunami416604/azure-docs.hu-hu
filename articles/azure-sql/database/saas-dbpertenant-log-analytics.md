@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 65513b3cd5813d7d127ca9cbabdcd038f11beee9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042868"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>Azure Monitor naplók beállítása és használata több-bérlős Azure SQL Database SaaS-alkalmazással
@@ -48,7 +47,7 @@ Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük. 
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Teljesítmény-diagnosztikai adatok létrehozása a munkaterhelésnek a bérlők számára történő szimulálása révén 
 
-1. A PowerShell ISE-ben nyissa meg a *.. \\ WingtipTicketsSaaS-MultiTenantDb – Master \\ learning-modulok \\ Teljesítményfigyelés és-felügyelet \\ demo-PerformanceMonitoringAndManagement. ps1*. Tartsa nyitva ezt a szkriptet, mert előfordulhat, hogy az oktatóanyag során több betöltési generációs forgatókönyvet szeretne futtatni.
+1. A PowerShell ISE-ben nyissa meg a *.. \\ WingtipTicketsSaaS-MultiTenantDb – fő \\ tanulási modulok \\ teljesítményének figyelése és kezelése \\Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa nyitva ezt a szkriptet, mert előfordulhat, hogy az oktatóanyag során több betöltési generációs forgatókönyvet szeretne futtatni.
 1. Ha még nem tette volna meg, hozzon létre egy köteget, hogy a figyelési környezet érdekesebb legyen. Ez a folyamat néhány percet vesz igénybe.
 
    a. Állítsa be a **$DemoScenario = 1**, _bérlők kötegének kiépítése_.
@@ -69,7 +68,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-szkriptek és az alkalmazás for
 
 Azure Monitor egy különálló szolgáltatás, amelyet konfigurálni kell. Azure Monitor naplók a napló adatait, a telemetria és a metrikákat egy Log Analytics munkaterületen gyűjtik. Az Azure-ban más erőforrásokhoz hasonlóan Log Analytics munkaterületet is létre kell hozni. A munkaterületet nem kell ugyanabban az erőforráscsoporthoz létrehozni, mint az általa figyelt alkalmazásokkal. Ezt gyakran a lehető legtöbbet teszi. A Wingtip tickets alkalmazás esetében egyetlen erőforráscsoport használatával győződjön meg arról, hogy a munkaterület törölve lett az alkalmazással.
 
-1. A PowerShell ISE-ben nyissa meg a *.. \\ WingtipTicketsSaaS-MultiTenantDb – fő \\ tanulási modulok \\ Teljesítményfigyelés és felügyelet \\ log Analytics \\ demo-LogAnalytics. ps1*.
+1. A PowerShell ISE-ben nyissa meg a *.. \\ WingtipTicketsSaaS-MultiTenantDb – fő \\ tanulási modulok \\ teljesítményének figyelése és kezelése \\ log Analytics \\Demo-LogAnalytics.ps1*.
 1. A szkript futtatásához nyomja le az F5 billentyűt.
 
 Most már megnyithatja Azure Monitor naplókat a Azure Portal. Néhány percet vesz igénybe, hogy telemetria gyűjtsön a Log Analytics munkaterületen, és láthatóvá tegye azt. Minél tovább hagyja a rendszer a diagnosztikai adatgyűjtést, annál érdekesebb a tapasztalat. 

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559783"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -21,19 +21,19 @@ Ez a cikk a Application Insights által a több összetevő által elküldett te
 
 ## <a name="data-model-for-telemetry-correlation"></a>Telemetria korrelációs adatmodell
 
-Application Insights definiál egy [adatmodellt](../../azure-monitor/app/data-model.md) az elosztott telemetria korrelációhoz. A telemetria logikai művelettel való hozzárendeléséhez minden telemetria-elemhez tartozik egy nevű `operation_Id`környezeti mező. Ezt az azonosítót az elosztott nyomkövetés minden telemetria-eleme megosztja. Így még akkor is, ha egyetlen rétegből elveszíti a telemetria, a többi összetevő által jelentett telemetria is hozzárendelheti.
+Application Insights definiál egy [adatmodellt](../../azure-monitor/app/data-model.md) az elosztott telemetria korrelációhoz. A telemetria logikai művelettel való hozzárendeléséhez minden telemetria-elemhez tartozik egy nevű környezeti mező `operation_Id` . Ezt az azonosítót az elosztott nyomkövetés minden telemetria-eleme megosztja. Így még akkor is, ha egyetlen rétegből elveszíti a telemetria, a többi összetevő által jelentett telemetria is hozzárendelheti.
 
-Az elosztott logikai műveletek jellemzően olyan kisebb műveletekből állnak, amelyek az egyik összetevő által feldolgozott kérelmek. Ezeket a műveleteket a [kérelem telemetria](../../azure-monitor/app/data-model-request-telemetry.md)határozza meg. Minden kérelem telemetria-eleme rendelkezik a `id` saját egyedi és globális azonosítására. A kérelemhez társított összes telemetria-elemnek (például a nyomkövetéseknek és kivételeknek) a `operation_parentId` kérelem `id`értékét kell beállítania.
+Az elosztott logikai műveletek jellemzően olyan kisebb műveletekből állnak, amelyek az egyik összetevő által feldolgozott kérelmek. Ezeket a műveleteket a [kérelem telemetria](../../azure-monitor/app/data-model-request-telemetry.md)határozza meg. Minden kérelem telemetria-eleme rendelkezik a saját `id` egyedi és globális azonosítására. A kérelemhez társított összes telemetria-elemnek (például a nyomkövetéseknek és kivételeknek) a kérelem értékét kell beállítania `operation_parentId` `id` .
 
-Minden kimenő művelet, például egy HTTP-hívás egy másik összetevőhöz, a [függőségi telemetria](../../azure-monitor/app/data-model-dependency-telemetry.md)szerint jelenik meg. A függőségi telemetria a `id` globálisan egyedit is definiálja. A függőségi hívás által kezdeményezett telemetria kérelme ezt `id` használja. `operation_parentId`
+Minden kimenő művelet, például egy HTTP-hívás egy másik összetevőhöz, a [függőségi telemetria](../../azure-monitor/app/data-model-dependency-telemetry.md)szerint jelenik meg. A függőségi telemetria a `id` globálisan egyedit is definiálja. A függőségi hívás által kezdeményezett telemetria kérelme ezt használja `id` `operation_parentId` .
 
-Az elosztott logikai művelet `operation_Id`nézetét a, `operation_parentId`a és `request.id` a `dependency.id`használatával is létrehozhatja. Ezek a mezők a telemetria-hívások oksági sorrendjét is meghatározzák.
+Az elosztott logikai művelet nézetét a `operation_Id` , `operation_parentId` `request.id` a és a használatával is létrehozhatja `dependency.id` . Ezek a mezők a telemetria-hívások oksági sorrendjét is meghatározzák.
 
-A Service-környezetekben az összetevőkből származó nyomkövetési adatok különböző tárolóhelyekre léphetnek. Minden összetevő rendelkezhet saját kialakítási kulccsal Application Insightsban. A logikai művelet telemetria lekéréséhez Application Insights minden tárolási elemről lekérdezi az adatait. Ha a tárolási elemek száma nagy, szüksége lesz egy tippre, ahol a következőt kell megkeresnie. A Application Insights adatmodell két mezőt definiál a probléma megoldásához: `request.source` és `dependency.target`. Az első mező azonosítja a függőségi kérelmet kezdeményező összetevőt. A második mező azonosítja, hogy melyik összetevő adta vissza a függőségi hívás válaszát.
+A Service-környezetekben az összetevőkből származó nyomkövetési adatok különböző tárolóhelyekre léphetnek. Minden összetevő rendelkezhet saját kialakítási kulccsal Application Insightsban. A logikai művelet telemetria lekéréséhez Application Insights minden tárolási elemről lekérdezi az adatait. Ha a tárolási elemek száma nagy, szüksége lesz egy tippre, ahol a következőt kell megkeresnie. A Application Insights adatmodell két mezőt definiál a probléma megoldásához: `request.source` és `dependency.target` . Az első mező azonosítja a függőségi kérelmet kezdeményező összetevőt. A második mező azonosítja, hogy melyik összetevő adta vissza a függőségi hívás válaszát.
 
 ## <a name="example"></a>Példa
 
-Lássunk erre egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngészője a használatával `GET /Home/Stock`nyit meg. Az alkalmazás a HTTP-hívás `GET /api/stock/value`használatával kérdezi le a Stock API-t.
+Lássunk erre egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngészője a használatával nyit meg `GET /Home/Stock` . Az alkalmazás a HTTP-hívás használatával kérdezi le a Stock API-t `GET /api/stock/value` .
 
 Az eredményül kapott telemetria a következő lekérdezés futtatásával elemezheti:
 
@@ -43,16 +43,16 @@ Az eredményül kapott telemetria a következő lekérdezés futtatásával elem
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-Az eredmények között vegye figyelembe, hogy az összes telemetria-elem `operation_Id`megosztja a gyökeret. Ha a lapon Ajax-hívás történik, a rendszer új egyedi azonosítót (`qJSXU`) rendel a függőségi telemetria, és az oldalmegtekintés azonosítóját használja. `operation_ParentId` A kiszolgálói kérelem ezután az Ajax ID-t `operation_ParentId`használja.
+Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosztja a gyökeret `operation_Id` . Ha a lapon Ajax-hívás történik, a rendszer új egyedi azonosítót ( `qJSXU` ) rendel a függőségi telemetria, és az OLDALMEGTEKINTÉS azonosítóját használja `operation_ParentId` . A kiszolgálói kérelem ezután az Ajax ID-t használja `operation_ParentId` .
 
-| itemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | oldalmegtekintést   | Stock lap                |              | STYz               | STYz         |
 | függőségi | /Home/Stock beolvasása           | qJSXU        | STYz               | STYz         |
 | kérelem    | Kezdőlap/készlet letöltése            | KqKwlrSt9PA = | qJSXU              | STYz         |
 | függőségi | /API/Stock/Value beolvasása      | bBrf2L7mm2g = | KqKwlrSt9PA =       | STYz         |
 
-Ha a hívás `GET /api/stock/value` egy külső szolgáltatásra történik, ismernie kell a kiszolgáló identitását, hogy megfelelően be tudja állítani a `dependency.target` mezőt. Ha a külső szolgáltatás nem támogatja a figyelést, `target` a a szolgáltatás állomásneve (például `stock-prices-api.com`) értékre van állítva. Ha azonban a szolgáltatás egy előre meghatározott HTTP-fejléc visszaadásával `target` azonosítja magát, az tartalmazza azt a szolgáltatás-identitást, amely lehetővé teszi, hogy a Application Insights egy elosztott nyomkövetést hozzon létre a szolgáltatásból származó telemetria lekérdezésével.
+Ha a hívás `GET /api/stock/value` egy külső szolgáltatásra történik, ismernie kell a kiszolgáló identitását, hogy megfelelően be tudja állítani a `dependency.target` mezőt. Ha a külső szolgáltatás nem támogatja a figyelést, a a `target` szolgáltatás állomásneve (például) értékre van állítva `stock-prices-api.com` . Ha azonban a szolgáltatás egy előre meghatározott HTTP-fejléc visszaadásával azonosítja magát, `target` az tartalmazza azt a szolgáltatás-identitást, amely lehetővé teszi, hogy a Application Insights egy elosztott nyomkövetést hozzon létre a szolgáltatásból származó telemetria lekérdezésével.
 
 ## <a name="correlation-headers"></a>Korrelációs fejlécek
 
@@ -68,16 +68,16 @@ A [korrelációs HTTP protokoll, más néven a Request-ID is](https://github.com
 - `Request-Id`: A hívás globálisan egyedi AZONOSÍTÓját hordozza.
 - `Correlation-Context`: Az elosztott nyomkövetési tulajdonságok név-érték párokból álló gyűjteményét adja meg.
 
-A Application Insights a korrelációs HTTP protokoll [bővítményét](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) is meghatározza. Név- `Request-Context` érték párokat használ a közvetlen hívó vagy a hívott által használt tulajdonságok gyűjteményének propagálásához. A Application Insights SDK ezt a fejlécet használja a `dependency.target` és `request.source` a mezők beállításához.
+A Application Insights a korrelációs HTTP protokoll [bővítményét](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) is meghatározza. `Request-Context`Név-érték párokat használ a közvetlen hívó vagy a hívott által használt tulajdonságok gyűjteményének propagálásához. A Application Insights SDK ezt a fejlécet használja a `dependency.target` és a mezők beállításához `request.source` .
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése klasszikus ASP.NET-alkalmazásokhoz
  
   > [!NOTE]
-  >  A `Microsoft.ApplicationInsights.Web` és `Microsoft.ApplicationInsights.DependencyCollector`a rendszertől kezdve nincs szükség konfigurációra.
+  >  A és a rendszertől kezdve `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` nincs szükség konfigurációra.
 
 A W3C nyomkövetési környezet támogatása visszamenőlegesen kompatibilis módon valósítható meg. A korreláció várhatóan az SDK korábbi verzióival (W3C-támogatás nélkül) működő alkalmazásokkal fog működni.
 
-Ha továbbra is az örökölt `Request-Id` protokollt szeretné használni, letilthatja a nyomkövetési környezetet a következő konfiguráció használatával:
+Ha továbbra is az örökölt protokollt szeretné használni `Request-Id` , letilthatja a nyomkövetési környezetet a következő konfiguráció használatával:
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
@@ -85,12 +85,12 @@ Ha továbbra is az örökölt `Request-Id` protokollt szeretné használni, leti
 ```
 
 Ha az SDK egy régebbi verzióját futtatja, javasoljuk, hogy frissítse, vagy alkalmazza a következő konfigurációt a nyomkövetési környezet engedélyezéséhez.
-Ez a funkció a és `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` a csomagokban érhető el, a 2.8.0-béta verziótól kezdődően.
-Alapértelmezés szerint le van tiltva. Az engedélyezéséhez végezze el a következő `ApplicationInsights.config`módosításokat:
+Ez a funkció a és a `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` csomagokban érhető el, a 2.8.0-béta verziótól kezdődően.
+Alapértelmezés szerint le van tiltva. Az engedélyezéséhez végezze el a következő módosításokat `ApplicationInsights.config` :
 
-- A `RequestTrackingTelemetryModule`területen adja hozzá `EnableW3CHeadersExtraction` az elemet, és állítsa be `true`a értékét a következőre:.
-- A `DependencyTrackingTelemetryModule`területen adja hozzá `EnableW3CHeadersInjection` az elemet, és állítsa be `true`a értékét a következőre:.
-- Hozzáadás `W3COperationCorrelationTelemetryInitializer` a `TelemetryInitializers`területen. Ez a következő példához hasonlóan fog kinézni:
+- `RequestTrackingTelemetryModule`A területen adja hozzá az `EnableW3CHeadersExtraction` elemet, és állítsa be a értékét a következőre: `true` .
+- `DependencyTrackingTelemetryModule`A területen adja hozzá az `EnableW3CHeadersInjection` elemet, és állítsa be a értékét a következőre: `true` .
+- Hozzáadás `W3COperationCorrelationTelemetryInitializer` a területen `TelemetryInitializers` . Ez a következő példához hasonlóan fog kinézni:
 
 ```xml
 <TelemetryInitializers>
@@ -106,7 +106,7 @@ Alapértelmezés szerint le van tiltva. Az engedélyezéséhez végezze el a kö
  
 A W3C nyomkövetési környezet támogatása visszamenőlegesen kompatibilis módon valósítható meg. A korreláció várhatóan az SDK korábbi verzióival (W3C-támogatás nélkül) működő alkalmazásokkal fog működni.
 
-Ha továbbra is az örökölt `Request-Id` protokollt szeretné használni, letilthatja a nyomkövetési környezetet a következő konfiguráció használatával:
+Ha továbbra is az örökölt protokollt szeretné használni `Request-Id` , letilthatja a nyomkövetési környezetet a következő konfiguráció használatával:
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
@@ -116,7 +116,7 @@ Ha továbbra is az örökölt `Request-Id` protokollt szeretné használni, leti
 Ha az SDK egy régebbi verzióját futtatja, javasoljuk, hogy frissítse, vagy alkalmazza a következő konfigurációt a nyomkövetési környezet engedélyezéséhez.
 
 Ez a szolgáltatás a `Microsoft.ApplicationInsights.AspNetCore` 2.5.0-béta és a `Microsoft.ApplicationInsights.DependencyCollector` 2.8.0-bétaverzió verzióban érhető el.
-Alapértelmezés szerint le van tiltva. Az engedélyezéséhez állítsa `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` a `true`következőre:
+Alapértelmezés szerint le van tiltva. Az engedélyezéséhez állítsa a következőre `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` `true` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -136,7 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 #### <a name="java-sdk"></a>Java SDK
 - **Bejövő konfiguráció**
 
-  - Java EE-alkalmazások esetén adja hozzá a következőt `<TelemetryModules>` a címkéhez a ApplicationInsights. xml fájlban:
+  - Java EE-alkalmazások esetén adja hozzá a következőt a `<TelemetryModules>` címkéhez ApplicationInsights.xml:
 
     ```xml
     <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule>
@@ -152,7 +152,7 @@ public void ConfigureServices(IServiceCollection services)
 
 - **Kimenő konfiguráció**
 
-  Adja hozzá a következőt a AI-Agent. xml fájlhoz:
+  Adja hozzá a következőt a AI-Agent.xmlhoz:
 
   ```xml
   <Instrumentation>
@@ -163,7 +163,7 @@ public void ConfigureServices(IServiceCollection services)
   ```
 
   > [!NOTE]
-  > A visszafelé kompatibilitási mód alapértelmezés szerint engedélyezve van, és `enableW3CBackCompat` a paraméter nem kötelező. Csak akkor használja, ha a visszafelé való kompatibilitást ki szeretné kapcsolni.
+  > A visszafelé kompatibilitási mód alapértelmezés szerint engedélyezve van, és a `enableW3CBackCompat` paraméter nem kötelező. Csak akkor használja, ha a visszafelé való kompatibilitást ki szeretné kapcsolni.
   >
   > Ideális esetben ezt ki kell kapcsolni, ha az összes szolgáltatás frissítve lett a W3C protokollt támogató SDK-k újabb verzióira. Javasoljuk, hogy a lehető leghamarabb váltson át ezekre az újabb SDK-kat.
 
@@ -172,7 +172,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése a Web Apps számára
 
-Ez a szolgáltatás a `Microsoft.ApplicationInsights.JavaScript`-ben érhető el. Alapértelmezés szerint le van tiltva. Az engedélyezéséhez használja `distributedTracingMode` a config parancsot. A AI_AND_W3C a Application Insights által kiállított örökölt szolgáltatásokkal való visszamenőleges kompatibilitás érdekében van megadva.
+Ez a szolgáltatás a-ben érhető el `Microsoft.ApplicationInsights.JavaScript` . Alapértelmezés szerint le van tiltva. Az engedélyezéséhez használja a `distributedTracingMode` config parancsot. A AI_AND_W3C a Application Insights által kiállított örökölt szolgáltatásokkal való visszamenőleges kompatibilitás érdekében van megadva.
 
 - **NPM telepítője (Mellőzés a kódrészletek beállításakor)**
 
@@ -211,7 +211,7 @@ A [OpenTracing adatmodell-specifikációja](https://opentracing.io/) és Applica
 |------------------------------------    |-------------------------------------------------    |
 | `Request`, `PageView`                  | `Span`a`span.kind = server`                    |
 | `Dependency`                           | `Span`a`span.kind = client`                    |
-| `Id``Request` és`Dependency`     | `SpanId`                                            |
+| `Id``Request`és`Dependency`     | `SpanId`                                            |
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | `Reference`típus `ChildOf` (a szülő span)     |
 
@@ -248,7 +248,7 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-Ez a kód egy minta lombik-alkalmazást futtat a helyi gépen, és figyeli `8080`a portot. A nyomkövetési kontextus összekapcsolásához egy kérést küld a végpontnak. Ebben a példában a `curl` következő parancsot használhatja:
+Ez a kód egy minta lombik-alkalmazást futtat a helyi gépen, és figyeli a portot `8080` . A nyomkövetési kontextus összekapcsolásához egy kérést küld a végpontnak. Ebben a példában a következő `curl` parancsot használhatja:
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
@@ -266,13 +266,13 @@ Ha megtekinti a Azure Monitorba küldendő kérelem bejegyzést, a nyomkövetés
 
 ![Telemetria kérése a naplókban (Analitika)](./media/opencensus-python/0011-correlation.png)
 
-A `id` mező formátuma `<trace-id>.<span-id>`, ahol a `trace-id` a kérelemben átadott nyomkövetési fejlécből származik, és a `span-id` érték a generált 8 bájtos tömb ehhez a tartományhoz.
+A `id` mező formátuma `<trace-id>.<span-id>` , ahol a a `trace-id` kérelemben átadott nyomkövetési fejlécből származik, és a `span-id` érték a generált 8 bájtos tömb ehhez a tartományhoz.
 
-A `operation_ParentId` mező formátuma `<trace-id>.<parent-id>`, ahol a `trace-id` és a `parent-id` is a kérelemben átadott nyomkövetési fejlécből származik.
+A `operation_ParentId` mező formátuma `<trace-id>.<parent-id>` , ahol a `trace-id` és a `parent-id` is a kérelemben átadott nyomkövetési fejlécből származik.
 
 ### <a name="log-correlation"></a>Napló-összefüggések
 
-A OpenCensus Python lehetővé teszi a naplók összekapcsolását egy nyomkövetési azonosító, egy span-azonosító és egy mintavételi jelző hozzáadásával a rekordok naplózásához. Ezeket az attribútumokat a OpenCensus [naplózási integrációjának](https://pypi.org/project/opencensus-ext-logging/)telepítésével adhatja hozzá. A következő attribútumok lesznek hozzáadva a Python `LogRecord` - `traceId`objektumokhoz `spanId`:, `traceSampled`és. Vegye figyelembe, hogy ez csak az integráció után létrehozott naplózók esetén lép életbe.
+A OpenCensus Python lehetővé teszi a naplók összekapcsolását egy nyomkövetési azonosító, egy span-azonosító és egy mintavételi jelző hozzáadásával a rekordok naplózásához. Ezeket az attribútumokat a OpenCensus [naplózási integrációjának](https://pypi.org/project/opencensus-ext-logging/)telepítésével adhatja hozzá. A következő attribútumok lesznek hozzáadva a Python- `LogRecord` objektumokhoz: `traceId` , `spanId` és `traceSampled` . Vegye figyelembe, hogy ez csak az integráció után létrehozott naplózók esetén lép életbe.
 
 Íme egy példa az alkalmazásra, amely a következőket mutatja be:
 
@@ -299,9 +299,9 @@ A kód futtatásakor a következő nyomatok jelennek meg a konzolon:
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-Figyelje meg, hogy a `spanId` naplózási üzenetnek van jelen a tartományon belül. Ez ugyanaz `spanId` , mint a nevű `hello`tartományhoz.
+Figyelje meg, hogy a `spanId` naplózási üzenetnek van jelen a tartományon belül. Ez ugyanaz, mint `spanId` a nevű tartományhoz `hello` .
 
-A naplózási adatai a használatával `AzureLogHandler`exportálhatók. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs).
+A naplózási adatai a használatával exportálhatók `AzureLogHandler` . További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs).
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetria korreláció a .NET-ben
 
@@ -312,7 +312,7 @@ Az idő múlásával a .NET számos módszert definiált a telemetria és diagno
 - `ILogger`a [naplózási hatóköröket](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)használja.
 - A Windows Communication Foundation (WCF) és a HTTP-átvitel "aktuális" kontextus-propagálást használ.
 
-Ezek a módszerek azonban nem engedélyezték az automatikus elosztott nyomkövetés támogatását. `DiagnosticSource`támogatja az automatikus gépek közötti korrelációt. A .NET- `DiagnosticSource` kódtárak támogatják és engedélyezik a korrelációs környezet automatikus, a szállításon keresztüli propagálását, például a http-t.
+Ezek a módszerek azonban nem engedélyezték az automatikus elosztott nyomkövetés támogatását. `DiagnosticSource`támogatja az automatikus gépek közötti korrelációt. A .NET-kódtárak támogatják `DiagnosticSource` és engedélyezik a korrelációs környezet automatikus, a szállításon keresztüli propagálását, például a http-t.
 
 A [tevékenység felhasználói útmutatója](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) `DiagnosticSource` ismerteti a tevékenységek követésének alapjait.
 
@@ -320,14 +320,14 @@ A ASP.NET Core 2,0 támogatja a HTTP-fejlécek kinyerését és az új tevékeny
 
 `System.Net.Http.HttpClient`a 4.1.0 verziótól kezdődően a a korrelációs HTTP-fejlécek automatikus befecskendezését és a HTTP-hívások tevékenységként való nyomon követését támogatja.
 
-Létezik egy új HTTP-modul, a [Microsoft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)a klasszikus ASP.net. Ez a modul telemetria korrelációt valósít meg `DiagnosticSource`a használatával. Elindít egy tevékenységet a bejövő kérelmek fejlécei alapján. Emellett a kérelmek feldolgozásának különböző szakaszaiból is összefügg a telemetria, még akkor is, ha a Internet Information Services (IIS) feldolgozásának minden fázisa egy másik felügyelt szálon fut.
+Létezik egy új HTTP-modul, a [Microsoft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)a klasszikus ASP.net. Ez a modul telemetria korrelációt valósít meg a használatával `DiagnosticSource` . Elindít egy tevékenységet a bejövő kérelmek fejlécei alapján. Emellett a kérelmek feldolgozásának különböző szakaszaiból is összefügg a telemetria, még akkor is, ha a Internet Information Services (IIS) feldolgozásának minden fázisa egy másik felügyelt szálon fut.
 
-Az Application Insights SDK, a 2.4.0-béta verziótól kezdődően `DiagnosticSource` , `Activity` a telemetria és az aktuális tevékenységhez társítja az adatokat.
+Az Application Insights SDK, a 2.4.0-béta verziótól kezdődően, a telemetria és az `DiagnosticSource` `Activity` aktuális tevékenységhez társítja az adatokat.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetria korreláció a javában
 
-A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) , valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 vagy újabb verziója támogatja a telemetria automatikus korrelációját. A rendszer automatikusan kitölti `operation_id` az összes telemetria (például a nyomkövetéseket, a kivételeket és az egyéni eseményeket) a kérelem hatókörén belül. Emellett a HTTP protokollon keresztül terjeszti a korrelációs fejléceket (lásd fentebb) a szolgáltatások közötti hívásokhoz, ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
+A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) , valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 vagy újabb verziója támogatja a telemetria automatikus korrelációját. A rendszer automatikusan kitölti az `operation_id` összes telemetria (például a nyomkövetéseket, a kivételeket és az egyéni eseményeket) a kérelem hatókörén belül. Emellett a HTTP protokollon keresztül terjeszti a korrelációs fejléceket (lásd fentebb) a szolgáltatások közötti hívásokhoz, ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
 
 > [!NOTE]
 > Application Insights Java-ügynök automatikusan gyűjti a JMS, a Kafka, a nettó és a webflux szolgáltatáshoz kapcsolódó kéréseket és függőségeket, és így tovább. A Java SDK-hoz csak az Apache HttpClient keresztül kezdeményezett hívások támogatottak a korrelációs szolgáltatásban. Az SDK-ban az automatikus környezeti propagálás nem támogatott az üzenetkezelési technológiák (például a Kafka, a RabbitMQ és a Azure Service Bus) között. 
@@ -350,9 +350,9 @@ A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-pro
       }
     }
     ```
-    A Felhőbeli szerepkör nevét a környezeti változó `APPLICATIONINSIGHTS_ROLE_NAME`használatával is beállíthatja.
+    A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` .
 
-- A Application Insights Java SDK 2.5.0-es és újabb verzióiban a `cloud_RoleName` ApplicationInsights. `<RoleName>` XML fájl hozzáadásával adhatja meg a következőt:
+- A Application Insights Java SDK 2.5.0-es és újabb verzióiban megadhatja az `cloud_RoleName` `<RoleName>` ApplicationInsights.xml fájl hozzáadásával:
 
   ```XML
   <?xml version="1.0" encoding="utf-8"?>

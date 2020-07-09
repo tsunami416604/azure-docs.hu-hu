@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge számítási feladatok üzembe helyezése
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: d82c93783d80060bc3443131191b7cec32dc4878
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680773"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103976"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge számítási feladatok üzembe helyezése (előzetes verzió)
 
@@ -25,7 +25,7 @@ Az Azure arc és a Azure IoT Edge nagyon jól kiegészíti egymás képességeit
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-* [Regisztráljon IoT Edge eszközt](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device) , és [telepítse a szimulált hőmérséklet-érzékelő modult](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module). Ügyeljen arra, hogy az eszköz kapcsolódási karakterláncát jegyezze fel.
+* [Regisztráljon IoT Edge eszközt](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) , és [telepítse a szimulált hőmérséklet-érzékelő modult](../../iot-edge/quickstart-linux.md#deploy-a-module). Ügyeljen arra, hogy az eszköz kapcsolódási karakterláncát jegyezze fel.
 
 * Használja [IoT Edge támogatását a Kubernetes](https://aka.ms/edgek8sdoc) számára az Azure arc Flux-kezelőjén keresztül történő üzembe helyezéshez.
 
@@ -69,6 +69,6 @@ A konfigurációt a használatával távolíthatja el:
 az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

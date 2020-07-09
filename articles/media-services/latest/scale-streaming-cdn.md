@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128070"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
@@ -58,7 +58,7 @@ A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming
 
 ## <a name="determine-if-a-dns-change-was-made"></a>Annak megállapítása, hogy történt-e DNS-módosítás
 
-Megadhatja, hogy a DNS-módosítás egy streaming végponton történt-e (a forgalom a Azure CDNra van irányítva) a használatával <https://www.digwebinterface.com>. Ha a azureedge.net tartományneveket lát az eredmények között, a forgalom most a CDN-re mutat.
+Megadhatja, hogy a DNS-módosítás egy streaming végponton történt-e (a forgalom a Azure CDNra van irányítva) a használatával <https://www.digwebinterface.com> . Ha a azureedge.net tartományneveket lát az eredmények között, a forgalom most a CDN-re mutat.
 
 ## <a name="origin-assist-cdn-prefetch"></a>Forrás – Assist CDN – prefektus
 
@@ -84,9 +84,9 @@ A *forrás – támogatás CDN-kiindulási* funkció előnyei a következők:
 
 ### <a name="how-it-works"></a>Működés
 
-A Akamai CDN- `Origin-Assist CDN-Prefetch` vel közvetlen szerződéssel rendelkező ügyfelek számára a CDN támogatja a fejléceket (az élő és a video igény szerinti streaming esetében egyaránt). A szolgáltatás a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Media Services-forrás között:
+A `Origin-Assist CDN-Prefetch` Akamai CDN-vel közvetlen szerződéssel rendelkező ügyfelek számára a CDN támogatja a fejléceket (az élő és a video igény szerinti streaming esetében egyaránt). A szolgáltatás a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Szerep|
 | ---- | ---- | ---- | ---- | ----- |
 |`CDN-Origin-Assist-Prefetch-Enabled` | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e.|
 |`CDN-Origin-Assist-Prefetch-Path`| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|Megadhatja a CDN elérési útját.|
@@ -95,7 +95,7 @@ A Akamai CDN- `Origin-Assist CDN-Prefetch` vel közvetlen szerződéssel rendelk
 A következő lépésekkel tekintheti meg a fejléc-Exchange működés közbeni részét:
 
 1. A Poster vagy a cURL használatával küldjön egy kérést a Media Servicesi forrásra egy hang-vagy video-szegmens vagy-töredék számára. Ügyeljen arra, hogy a kérelemben adja hozzá a fejlécet `CDN-Origin-Assist-Prefetch-Enabled: 1` .
-2. A válaszban a relatív elérési úttal rendelkező `CDN-Origin-Assist-Prefetch-Path` fejlécnek kell megjelennie az értékeként.
+2. A válaszban a relatív elérési úttal rendelkező fejlécnek kell megjelennie az `CDN-Origin-Assist-Prefetch-Path` értékeként.
 
 ### <a name="supported-streaming-protocols"></a>Támogatott streaming protokollok
 
@@ -124,7 +124,7 @@ A `Origin-Assist CDN-Prefetch` szolgáltatás a következő folyamatos átviteli
 
 * Élő közvetítés esetén mi történne a forrás-assziszttal, ha a következő szegmens vagy töredék még nem érhető el?
 
-    Ebben az esetben a Media Services a forrás nem fog `CDN-Origin-Assist-Prefetch-Path` megjelenni a fejlécben, és nem kerül sor a CDN-megadásra.
+    Ebben az esetben a Media Services a forrás nem fog megjelenni a `CDN-Origin-Assist-Prefetch-Path` fejlécben, és nem kerül sor a CDN-megadásra.
 
 * Hogyan `Origin-Assist CDN-Prefetch` működik a dinamikus jegyzékfájlok szűrőinek használata?
 

@@ -4,16 +4,16 @@ description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a Windows a
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d333b2f8bbb660e9fd71339159d942c0520f4f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201548"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612690"
 A Windows rendszerű virtuális asztali erőforrásokat Windows 7, Windows 10 és Windows 10 IoT Enterprise rendszerű eszközökön érheti el a Windows asztali ügyfélprogram használatával.
 
 >[!NOTE]
->A Windows-ügyfél automatikusan alapértelmezésben a Windows rendszerű virtuális asztali verzió 2019-es kiadását adja meg. Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők. 
+>A Windows-ügyfél automatikusan alapértelmezésben a Windows rendszerű virtuális asztali verzió 2019-es kiadását adja meg. Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők.
 
 > [!IMPORTANT]
 > A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.

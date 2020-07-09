@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559340"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
 
@@ -30,7 +30,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 -   [Művelet](#Product)  
 -   [Kódminták](#CodeSamples)  
     -   [Curl](#Curl)  
-    -   [C #](#CSharp)  
+    -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
     -   [C célkitűzés](#ObjectiveC)  
@@ -89,7 +89,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`apis`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitások gyűjteménye.|Az aktuális felhasználó számára látható API-k.|  
   
@@ -344,7 +344,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`apiId`|sztring|Az aktuális API azonosítója.|  
 |`apiName`|sztring|Az API neve.|  
@@ -650,7 +650,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 -   [Curl](#Curl)  
   
--   [C #](#CSharp)  
+-   [C#](#CSharp)  
   
 -   [Java](#Stub)  
   

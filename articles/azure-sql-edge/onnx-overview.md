@@ -2,19 +2,19 @@
 title: Gépi tanulás és AI a ONNX az Azure SQL Edge-ben (előzetes verzió)
 description: Az Azure SQL Edge (előzetes verzió) gépi tanulása a nyílt neurális hálózati Exchange (ONNX) formátumú modelleket támogatja. A ONNX egy nyílt formátum, amellyel különböző gépi tanulási keretrendszerek és eszközök közötti adatcsere-modelleket lehet használni.
 keywords: SQL Edge üzembe helyezése
-services: sql-database-edge
-ms.service: sql-database-edge
-ms.subservice: ''
+services: sql-edge
+ms.service: sql-edge
+ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 12c1294a804c2063d405c5ec08440865283d51d3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368056"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Gépi tanulás és AI a ONNX az SQL Edge-ben (előzetes verzió)
 
@@ -36,7 +36,7 @@ Modell beszerzése ONNX formátumban:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit – Learn](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     A támogatott keretrendszerek és példák teljes listájáért lásd: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format).

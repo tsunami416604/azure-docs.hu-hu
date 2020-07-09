@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443571"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
@@ -24,7 +23,7 @@ ms.locfileid: "75443571"
 
 A **felhasználói kockázat elvetése** a klasszikus Identity Protectionben az **Azure ad**-ben a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be.
 
-A **felhasználói kockázat elvetése** az Identity Protection szolgáltatásban a felhasználó kockázati előzményeiben lévő szereplőt a ** \<rendszergazda nevére\>** állítja be, amely a felhasználó paneljére mutató hiperhivatkozással rendelkezik.
+A **felhasználói kockázat elvetése** az Identity Protection szolgáltatásban a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be az Identity Protectionben **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Létezik egy aktuálisan ismert probléma, ami késést okoz a felhasználói kockázat elbocsátási folyamatában. Ha a "felhasználói kockázati szabályzattal" rendelkezik, ez a szabályzat a "felhasználói kockázat elvetése" gombra kattintást követően néhány percen belül leállítja a felhasználókat. Azonban ismert késések vannak az UX-felhasználók "kockázat állapotának" frissítésével. Megkerülő megoldásként frissítse az oldalt a böngésző szintjén, hogy megtekintse a "kockázati állapot" nevű legújabb felhasználót.
 
@@ -85,7 +84,7 @@ Az összes kockázati észlelésről szóló cikkben a [Mi a kockázat](concept-
 
 **Biztonság megerősítése** (bejelentkezéskor) – tájékoztatja Azure ad Identity Protection, hogy a bejelentkezést az identitás tulajdonosa végezte el, és nem jelent kompromisszumot.
 
-- A visszajelzés kézhezvétele után a bejelentkezés (nem a felhasználó) kockázati állapotát a **Biztonság megerősítésére** és a kockázati szintre helyezi át **-**.
+- A visszajelzés kézhezvétele után a bejelentkezés (nem a felhasználó) kockázati állapotát a **Biztonság megerősítésére** és a kockázati szintre helyezi át **-** .
 
 - Ezen felül a kockázatkezelési rendszerek jövőbeli fejlesztései esetében is biztosítjuk az információkat a gépi tanulási rendszerekhez.
 

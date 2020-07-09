@@ -7,13 +7,13 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76906442"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561345"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Gyors útmutató: Blobok kezelése a Python v 2.1 SDK-val
 
@@ -48,7 +48,7 @@ Az alkalmazásban adja meg a tárfiók nevét és a fiókkulcsot, hogy létrehoz
 
 1. Nyissa meg az *example.py* fájlt az IDE Megoldáskezelőjéből.
 
-1. Cserélje le `accountname` az `accountkey` és az értékeket a Storage-fiók nevére és kulcsára:
+1. Cserélje le az `accountname` és az `accountkey` értékeket a Storage-fiók nevére és kulcsára:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -94,8 +94,8 @@ A minta program egy tesztoldalt hoz létre a *dokumentumok* mappában, feltölti
 
 1. A folytatás előtt lépjen a *dokumentumok* mappájába, és keresse meg a két fájlt.
 
-    * *QuickStart_\<univerzálisan egyedi azonosító\>*
-    * *QuickStart_\<univerzálisan egyedi azonosító\>_DOWNLOADED*
+    * *QuickStart_\<universally-unique-identifier\>*
+    * *QuickStart_ \<universally-unique-identifier\> _DOWNLOADED*
 
 1. Ha megnyitja őket, láthatja, hogy megegyeznek.
 
@@ -109,7 +109,7 @@ Most, hogy már tudja, mi a minta, nyissa meg a *example.py* fájlt, és tekints
 
 ### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
 
-Ebben a szakaszban létre fogja hozni az objektumok példányát és egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. Meghívja a tárolót `quickstartblobs`. 
+Ebben a szakaszban létre fogja hozni az objektumok példányát és egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. Meghívja a tárolót `quickstartblobs` . 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -142,7 +142,7 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 
 Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a `create_blob_from_path` metódus használatával. 
 
-A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat *full_path_to_fileként* és a blob nevét *local_file_nameként*. Ez a példa feltölti a fájlt a tárolóba `quickstartblobs`:
+A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat *full_path_to_fileként* és a blob nevét *local_file_nameként*. Ez a példa feltölti a fájlt a tárolóba `quickstartblobs` :
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -167,7 +167,7 @@ A Blob-tárolóval többféle feltöltési módszer használható. Ha például 
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Az alábbi kód létrehoz egy `generator` metódust `list_blobs` a metódushoz. A kód a tárolóban lévő Blobok listáján keresztül hurkot jelenít meg, és kiírja a nevét a konzolra.
+Az alábbi kód létrehoz egy `generator` `list_blobs` metódust a metódushoz. A kód a tárolóban lévő Blobok listáján keresztül hurkot jelenít meg, és kiírja a nevét a konzolra.
 
 ```python
 # List the blobs in the container.
@@ -193,7 +193,7 @@ block_blob_service.get_blob_to_path(
     container_name, local_file_name, full_path_to_file2)
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a `delete_container` metódussal. Az egyes fájlok törléséhez használja a `delete_blob` metódust.
 
 ```python
@@ -216,7 +216,7 @@ A Python-fejlesztés és a blob Storage szolgáltatással kapcsolatos további i
 - További információ a Python-ügyfél könyvtáráról: a [Pythonhoz készült Azure Storage kódtárak](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Tekintse át a Python ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Python használatával. 
 

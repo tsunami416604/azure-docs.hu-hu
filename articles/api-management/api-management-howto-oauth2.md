@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430680"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure API Management OAuth 2,0 használatával
@@ -50,7 +49,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-pé
     > [!NOTE]
     > Ezek a mezők a OAuth 2,0 engedélyezési kiszolgáló azonosítására szolgálnak a jelenlegi API Management szolgáltatási példányon belül, és azok értékei nem a OAuth 2,0-kiszolgálóról származnak.
 
-3. Adja meg az **ügyfél-regisztrációs oldal URL-címét**. Ezen a lapon a felhasználók létrehozhatják és kezelhetik a fiókjaikat, és a OAuth 2,0-szolgáltatótól függően változhatnak. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amellyel a felhasználók létrehozhatják és konfigurálhatják a saját fiókjaikat a OAuth 2,0-szolgáltatók számára, amelyek támogatják a fiókok felhasználói felügyeletét. Néhány szervezet nem konfigurálja és nem használja ezt a funkciót, még akkor sem, ha a OAuth 2,0-szolgáltató támogatja azt. Ha a OAuth 2,0-szolgáltató nem rendelkezik konfigurált fiókok felhasználói felügyeletével, adjon meg egy helyőrző URL-címet, például a vállalat URL-címét, vagy egy URL `https://placeholder.contoso.com`-címet, például:.
+3. Adja meg az **ügyfél-regisztrációs oldal URL-címét**. Ezen a lapon a felhasználók létrehozhatják és kezelhetik a fiókjaikat, és a OAuth 2,0-szolgáltatótól függően változhatnak. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amellyel a felhasználók létrehozhatják és konfigurálhatják a saját fiókjaikat a OAuth 2,0-szolgáltatók számára, amelyek támogatják a fiókok felhasználói felügyeletét. Néhány szervezet nem konfigurálja és nem használja ezt a funkciót, még akkor sem, ha a OAuth 2,0-szolgáltató támogatja azt. Ha a OAuth 2,0-szolgáltató nem rendelkezik konfigurált fiókok felhasználói felügyeletével, adjon meg egy helyőrző URL-címet, például a vállalat URL-címét, vagy egy URL-címet, például: `https://placeholder.contoso.com` .
 
     ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -58,7 +57,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-pé
 
     Adja meg az **engedélyezési típusokat** a kívánt típusok ellenőrzésével. Az **engedélyezési kód** alapértelmezés szerint meg van adva.
 
-    Adja meg az **engedélyezési végpont URL-címét**. Azure Active Directory esetében ez az URL-cím a következő URL-címhez hasonlóan fog `<tenant_id>` megjelenni, ahol az az Azure ad-bérlő azonosítójának helyébe lép.
+    Adja meg az **engedélyezési végpont URL-címét**. Azure Active Directory esetében ez az URL-cím a következő URL-címhez hasonlóan fog megjelenni, ahol az `<tenant_id>` Az Azure ad-bérlő azonosítójának helyébe lép.
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
@@ -68,7 +67,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-pé
 
     ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Egy Azure Active Directory OAuth 2,0-kiszolgáló esetén a **jogkivonat-végpont URL-címének** formátuma a `<TenantID>` következő lesz, ahol `yourapp.onmicrosoft.com`a formátuma:.
+    Egy Azure Active Directory OAuth 2,0-kiszolgáló esetén a **jogkivonat-végpont URL-címének** formátuma a következő lesz, ahol `<TenantID>` a formátuma: `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
@@ -120,7 +119,7 @@ Ha az **engedélyezési kód** van kiválasztva, megjelenik egy előugró ablak,
 
 ![Bejelentkezés][api-management-oauth2-signin]
 
-Miután bejelentkezett, a **kérések fejlécei** egy `Authorization : Bearer` fejléctel lesznek feltöltve, amely engedélyezi a kérést.
+Miután bejelentkezett, a **kérések fejlécei** egy fejléctel lesznek feltöltve, `Authorization : Bearer` amely engedélyezi a kérést.
 
 ![Kérelem fejlécének tokenje][api-management-request-header-token]
 

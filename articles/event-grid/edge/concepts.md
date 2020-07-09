@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992547"
 ---
 # <a name="event-grid-concepts"></a>Az Event Griddel kapcsolatos fogalmak
@@ -50,7 +50,7 @@ A Event Grid előfizetések kezelésével kapcsolatban [REST API dokumentációb
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
-Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. Használhat egy támogatott Azure-szolgáltatást vagy a saját webhookot kezelőként. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. Ha a cél eseménykezelő egy HTTP-webhook, akkor az eseményt a rendszer újrapróbálkozik, amikor a kezelő a következő `200 – OK`állapotkódot adja vissza:. Az Edge hub esetében, ha az esemény kivétel nélkül kerül kézbesítésre, akkor azt a rendszer sikeresnek tekinti.
+Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. Használhat egy támogatott Azure-szolgáltatást vagy a saját webhookot kezelőként. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. Ha a cél eseménykezelő egy HTTP-webhook, akkor az eseményt a rendszer újrapróbálkozik, amikor a kezelő a következő állapotkódot adja vissza: `200 – OK` . Az Edge hub esetében, ha az esemény kivétel nélkül kerül kézbesítésre, akkor azt a rendszer sikeresnek tekinti.
 
 ## <a name="security"></a>Biztonság
 

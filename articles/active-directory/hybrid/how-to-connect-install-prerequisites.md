@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6446b039d90e04c9fe7fca28b361f620183a0292
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358718"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és a Azure AD Connect hardverre vonatkozó követelményeit.
@@ -62,7 +62,7 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 * Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, azok a kiszolgálók, amelyeken AD FS vagy webalkalmazás-proxy telepítve van, Windows Server 2012 R2 vagy újabb rendszernek kell lennie. A Távoli telepítéshez [engedélyezni kell a](#windows-remote-management) Rendszerfelügyeleti webszolgáltatásokat ezeken a kiszolgálókon.
 * Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, [TLS/SSL-tanúsítványokra](#tlsssl-certificate-requirements)van szüksége.
 * Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, akkor konfigurálnia kell [a névfeloldást](#name-resolution-for-federation-servers).
-* Ha a globális rendszergazdák rendelkeznek MFA-támogatással, akkor **https://secure.aadcdn.microsoftonline-p.com** az URL-címnek szerepelnie kell a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kihívást kér, és korábban még nem tette hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
+* Ha a globális rendszergazdák rendelkeznek MFA-támogatással, akkor az URL-címnek szerepelnie kell **https://secure.aadcdn.microsoftonline-p.com** a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kihívást kér, és korábban még nem tette hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
 * A Microsoft azt javasolja, hogy a Azure AD Connect kiszolgáló megerősítse a biztonsági támadási felületet az IT-környezet ezen kritikus összetevője számára.  Az alábbi ajánlásokat követve csökkentheti a szervezete biztonsági kockázatait.
 
 * Azure AD Connect üzembe helyezése egy tartományhoz csatlakoztatott kiszolgálón, és a rendszergazdai hozzáférés korlátozása a tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok számára.
@@ -81,7 +81,7 @@ További tudnivalókért lásd:
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint a SQL Server 2012 Express LocalDB (SQL Server Express) egy egyszerűsített verziója van telepítve. A SQL Server Express 10 GB méretű korláttal rendelkezik, amely lehetővé teszi körülbelül 100 000 objektum kezelését. Ha nagyobb mennyiségű címtár-objektumot kell kezelnie, a telepítővarázslót a SQL Server egy másik telepítésére kell irányítani. A SQL Server telepítésének típusa hatással lehet [Azure ad Connect teljesítményére](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Ha a SQL Server eltérő telepítését használja, a következő követelmények érvényesek:
   * A Azure AD Connect a Microsoft SQL Server összes verzióját támogatja a 2012 (a legújabb szervizcsomaggal) SQL Server 2019. A Microsoft Azure SQL Database adatbázisként **nem támogatott** .
-  * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a nevükben \_CI_ azonosítjuk. A kis-és nagybetűket megkülönböztető rendezés használata **nem támogatott** a nevükben \_CS_ azonosítva.
+  * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a \_ nevükben CI_ azonosítjuk. A kis-és nagybetűket megkülönböztető rendezés használata **nem támogatott** a \_ nevükben CS_ azonosítva.
   * SQL-példányon csak egy szinkronizálási motor tartozhat. **Nem támogatott** SQL-példányok megosztása FIM/a rendszerbe történő szinkronizálással, vagy a következővel: Azure ad-szinkronizáló.
 
 ### <a name="accounts"></a>Fiókok
@@ -96,7 +96,7 @@ További tudnivalókért lásd:
   * Ha a Microsoft Cloudt Németországban vagy a Microsoft Azure Government felhőben használja, tekintse meg [Azure ad Connect szinkronizálási szolgáltatás példányainak szempontjait](reference-connect-instances.md) URL-címeknél.
 * A Azure AD Connect (1.1.614.0 és újabb verzió) alapértelmezés szerint a TLS 1,2-et használja a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. Ha a TLS 1,2 nem érhető el az alapul szolgáló operációs rendszeren, Azure AD Connect fokozatosan visszakerül a régebbi protokollokra (TLS 1,1 és TLS 1,0).
 * A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint a TLS 1,0-et használja a szinkronizálási motor és az Azure AD közötti kommunikáció titkosításához. A TLS 1,2-re való váltáshoz kövesse a [tls 1,2 engedélyezése a Azure ad Connect számára](#enable-tls-12-for-azure-ad-connect)című témakör lépéseit.
-* Ha kimenő proxyt használ az internethez való csatlakozáshoz, a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájl következő beállítását hozzá kell adni a telepítővarázsló számára, és Azure ad Connect a szinkronizálást, hogy csatlakozni tudjon az internethez és az Azure ad-hoz. Ezt a szöveget a fájl alján kell megadni. Ebben a kódban a &lt;PROXYADDRESS&gt; a tényleges proxy IP-címét vagy állomásnevét jelöli.
+* Ha kimenő proxyt használ az internethez való csatlakozáshoz, akkor a **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** fájl következő beállítását hozzá kell adni a telepítővarázsló számára, és Azure ad Connect a szinkronizálást, hogy csatlakozni tudjon az internethez és az Azure ad-hoz. Ezt a szöveget a fájl alján kell megadni. Ebben a kódban &lt; a PROXYADDRESS &gt; a tényleges proxy IP-címét vagy állomásnevét jelöli.
 
 ```
     <system.net>
@@ -110,7 +110,7 @@ További tudnivalókért lásd:
     </system.net>
 ```
 
-* Ha a proxykiszolgáló hitelesítést igényel, akkor a [szolgáltatási fióknak](reference-connect-accounts-permissions.md#adsync-service-account) a tartományban kell lennie, és a testreszabott beállítások telepítési útvonalát kell használnia [Egyéni szolgáltatásfiók](how-to-connect-install-custom.md#install-required-components)megadásához. Szükség van a Machine. config fájl másik módosítására is. Ha ezt a változást a Machine. config fájlban módosítja, a telepítővarázsló és a Szinkronizáló motor válaszol a proxykiszolgáló hitelesítési kéréseire. A telepítővarázsló összes lapján, a configure ( **Konfigurálás** ) lap kivételével a rendszer a bejelentkezett felhasználó hitelesítő adatait használja. A telepítővarázsló végén a **configure (Konfigurálás** ) lapon a környezet átvált az Ön által létrehozott [szolgáltatásfiók](reference-connect-accounts-permissions.md#adsync-service-account) -ra. A Machine. config szakasznak így kell kinéznie.
+* Ha a proxykiszolgáló hitelesítést igényel, akkor a [szolgáltatási fióknak](reference-connect-accounts-permissions.md#adsync-service-account) a tartományban kell lennie, és a testreszabott beállítások telepítési útvonalát kell használnia [Egyéni szolgáltatásfiók](how-to-connect-install-custom.md#install-required-components)megadásához. A machine.config módosítására is szükség van. Ha ez a változás machine.config, a telepítővarázsló és a Szinkronizáló motor válaszol a proxykiszolgáló hitelesítési kéréseire. A telepítővarázsló összes lapján, a configure ( **Konfigurálás** ) lap kivételével a rendszer a bejelentkezett felhasználó hitelesítő adatait használja. A telepítővarázsló végén a **configure (Konfigurálás** ) lapon a környezet átvált az Ön által létrehozott [szolgáltatásfiók](reference-connect-accounts-permissions.md#adsync-service-account) -ra. A machine.config szakasznak így kell kinéznie.
 
 ```
     <system.net>
@@ -151,7 +151,7 @@ A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint TLS 1,0-e
     ```
 2. For all operating systems, set this registry key and restart the server.
     ```
-    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\.NETFramework\v4.0.30319 "alatt" = DWORD: 00000001
+    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319 "alatt" = DWORD: 00000001
     ```
 4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 

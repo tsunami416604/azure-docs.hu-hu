@@ -6,14 +6,14 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/8/2019
-ms.openlocfilehash: abcc979bb36fe0acb663a511875a1e186c2c0739
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: a47a6e1860edcb9b2bf89c25e78f6a66e8a7cf4d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583968"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117712"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáinak elhárítása (Citus)
 
@@ -60,7 +60,7 @@ Ha az alkalmazás tartósan nem tud csatlakozni a nagy kapacitású (Citus), a l
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat.
 4. Keresse meg a szolgáltatás állapotát az irányítópulton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a tűzfalszabályok fogalmait [a Azure Database for PostgreSQL-nagy kapacitású (Citus)](concepts-hyperscale-firewall-rules.md) alkalmazásban
 * Lásd: [Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok kezelése](howto-hyperscale-manage-firewall-using-portal.md)

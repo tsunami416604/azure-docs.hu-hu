@@ -16,10 +16,9 @@ ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84013574"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
@@ -395,9 +394,9 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -511,7 +510,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 | **BusinessTitle**   |  cím     |     |  Létrehozás + frissítés | 
 | **AddressLineData**    |  streetAddress  |     |   Létrehozás + frissítés |
 | **Önkormányzat**   |   l   |     | Létrehozás + frissítés |
-| **CountryReferenceTwoLetter**      |   Co |     |   Létrehozás + frissítés |
+| **CountryReferenceTwoLetter**      |   co |     |   Létrehozás + frissítés |
 | **CountryReferenceTwoLetter**    |  c  |     |         Létrehozás + frissítés |
 | **CountryRegionReference** |  st     |     | Létrehozás + frissítés |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Létrehozás + frissítés |
@@ -668,7 +667,7 @@ A konfiguráció során a kiépítési ügynök csak az Azure ad-bérlőhöz val
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Hogyan konfigurálja a kiépítési ügynököt, hogy proxykiszolgálót használjon a kimenő HTTP-kommunikációhoz?
 
 A kiépítési ügynök támogatja a kimenő proxy használatát. A konfigurálásához módosítsa az ügynök konfigurációs fájljának **C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config**. Adja hozzá a következő sorokat a fájl végéhez közvetlenül a záró `</configuration>` címke előtt.
-Cserélje le a [Proxy-Server] és a [proxy-port] változót a proxykiszolgáló nevére és a port értékeire.
+Cserélje le a [proxy-server] és [proxy-port] változókat a proxykiszolgálója nevére és a port értékeire.
 
 ```xml
     <system.net>
@@ -1059,7 +1058,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 8.    Kattintson a kis **Konfigurálás** hivatkozásra a kérelem/válasz ablaktáblán a munkanap hitelesítő adatainak megadásához. Győződjön meg a **hitelesítésről**, majd adja meg a munkanap-integrációs rendszer fiókjához tartozó felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználónevet \@ bérlőként formázza, és hagyja kiválasztva a **WS-Security UsernameToken** beállítást.
    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. Kattintson az **OK** gombra.
+9. Válassza az **OK** lehetőséget.
 
 10. A **kérelem** ablaktáblában illessze be az alábbi XML-fájlt. **Employee_ID** beállítása egy valós felhasználó ALKALMAZOTTi azonosítójára a munkahelyen belüli bérlőben. Állítsa be a **WD: Version verziót** a használni kívánt WWS-verzióra. Válasszon ki egy olyan felhasználót, aki rendelkezik a kinyerni kívánt attribútummal.
 

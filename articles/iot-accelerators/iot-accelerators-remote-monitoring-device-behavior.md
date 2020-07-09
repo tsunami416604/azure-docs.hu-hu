@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890849"
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszköz modellje működésének megvalósítása
@@ -61,9 +60,9 @@ Az alábbi példa egy szimulált hűtő eszköz eszköz állapot objektumának d
 }
 ```
 
-A szimulált eszköznek a `InitialState` szakaszban meghatározott állapotát a szimulációs szolgáltatás a memóriában tartja. Az állapotadatokat a `main` **Chiller-01-State. js**fájlban megadott függvénynek adja át bemenetként. Ebben a példában a szimulációs szolgáltatás öt másodpercenként futtatja a **Chiller-01-State. js** fájlt. A parancsfájl módosíthatja a szimulált eszköz állapotát.
+A szimulált eszköznek a szakaszban meghatározott állapotát a `InitialState` szimulációs szolgáltatás a memóriában tartja. Az állapotadatokat a rendszer a `main` **chiller-01-state.jsban **definiált függvény bemenetként adja át. Ebben a példában a szimulációs szolgáltatás öt másodpercenként futtatja a **chiller-01-state.js** fájlt. A parancsfájl módosíthatja a szimulált eszköz állapotát.
 
-Az alábbi ábrán egy tipikus `main` függvény körvonala látható:
+Az alábbi ábrán egy tipikus függvény körvonala látható `main` :
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -82,9 +81,9 @@ A `context` paraméter a következő tulajdonságokkal rendelkezik:
 - `deviceId`, például:`Simulated.Chiller.123`
 - `deviceModel`, például:`Chiller`
 
-A `state` paraméter a Device szimulációs szolgáltatás által karbantartott eszköz állapotát tartalmazza. Ez az `state` érték az előző hívás által visszaadott objektum `main`.
+A `state` paraméter a Device szimulációs szolgáltatás által karbantartott eszköz állapotát tartalmazza. Ez az érték az `state` előző hívás által visszaadott objektum `main` .
 
-Az alábbi példa bemutatja, hogyan kezelhető az `main` eszköz állapota a szimulációs szolgáltatás által karbantartott módon:
+Az alábbi példa bemutatja, hogyan `main` kezelhető az eszköz állapota a szimulációs szolgáltatás által karbantartott módon:
 
 ```javascript
 // Default state
@@ -118,7 +117,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Az alábbi példa azt szemlélteti, `main` hogy a metódus hogyan szimulálhatja a telemetria értékeket, amelyek az idő múlásával változnak:
+Az alábbi példa azt szemlélteti, hogy a `main` metódus hogyan szimulálhatja a telemetria értékeket, amelyek az idő múlásával változnak:
 
 ```javascript
 /**
@@ -156,7 +155,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-A GitHubon megtekintheti a teljes [Chiller-01-State. js fájlt](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) .
+A teljes [chiller-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) megtekintheti a githubon.
 
 ## <a name="method-behavior"></a>Metódus viselkedése
 
@@ -187,9 +186,9 @@ A következő példa egy szimulált hűtő eszköz által támogatott metódusok
 
 Minden metódushoz tartozik egy társított JavaScript-fájl, amely megvalósítja a metódus viselkedését.
 
-A szimulált eszköznek a séma `InitialState` szakaszában meghatározott állapotát a szimulációs szolgáltatás a memóriában tartja. Az állapotadatok a JavaScript-fájlban megadott `main` függvény bemenetként továbbítódnak a metódus hívásakor. A parancsfájl módosíthatja a szimulált eszköz állapotát.
+A szimulált eszköznek a séma szakaszában meghatározott állapotát a `InitialState` szimulációs szolgáltatás a memóriában tartja. Az állapotadatok a `main` JavaScript-fájlban megadott függvény bemenetként továbbítódnak a metódus hívásakor. A parancsfájl módosíthatja a szimulált eszköz állapotát.
 
-Az alábbi ábrán egy tipikus `main` függvény körvonala látható:
+Az alábbi ábrán egy tipikus függvény körvonala látható `main` :
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -213,7 +212,7 @@ A metódus működésének megvalósításához három globális funkció haszn�
 - `updateProperty`egyetlen eszköz tulajdonságának frissítése.
 - `sleep`a végrehajtás szüneteltetése egy hosszan futó feladat szimulálása érdekében.
 
-Az alábbi példa a szimulált Chiller-eszközök által használt **IncreasePressure-Method. js** parancsfájl rövidített verzióját mutatja be:
+Az alábbi példa a szimulált Chiller-eszközök által használt **IncreasePressure-method.js** szkript rövidített verzióját mutatja be:
 
 ```javascript
 function main(context, previousState, previousProperties) {

@@ -1,10 +1,10 @@
 ---
 title: A szükséges alhálózati méret meghatározása & tartományban
 titleSuffix: Azure SQL Managed Instance
-description: Ez a témakör azt ismerteti, hogyan számítható ki az az alhálózat, amelyben az Azure SQL felügyelt példányai lesznek telepítve.
+description: Ez a témakör azt ismerteti, hogyan számítható ki az az alhálózat, amelyben az Azure SQL felügyelt példánya telepítve lesz.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,43 +12,87 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 5eebde1fc95cb50f8ff7c13b6cbc411484ddf943
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 562766ada8fb9a2620fa83875dc98d02ab752d95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338555"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>A szükséges alhálózati méret meghatározása & az Azure SQL felügyelt példányának tartománya
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Az Azure SQL felügyelt példányát egy Azure-beli [virtuális hálózaton (VNet)](../../virtual-network/virtual-networks-overview.md)belül kell üzembe helyezni.
 
-A VNet alhálózatán üzembe helyezhető SQL felügyelt példányok száma az alhálózat méretétől (alhálózat-tartomány) függ.
+A VNet alhálózatában üzembe helyezhető felügyelt példányok száma az alhálózat méretétől függ (az alhálózat tartománya).
 
-SQL felügyelt példány létrehozásakor az Azure számos virtuális gépet foglal le a kiépítés során kiválasztott szintjétől függően. Mivel ezek a virtuális gépek az alhálózathoz vannak társítva, IP-címeket igényelnek. A normál működés és a szolgáltatás karbantartása során a magas rendelkezésre állás biztosítása érdekében az Azure további virtuális gépeket foglalhat le. Ennek eredményeképpen az alhálózat kötelező IP-címeinek száma nagyobb, mint az adott alhálózat SQL felügyelt példányainak száma.
+Felügyelt példány létrehozásakor az Azure számos virtuális gépet foglal le a kiépítés során kiválasztott szintjétől függően. Mivel ezek a virtuális gépek az alhálózathoz vannak társítva, IP-címeket igényelnek. A normál működés és a szolgáltatás karbantartása során a magas rendelkezésre állás biztosítása érdekében az Azure további virtuális gépeket foglalhat le. Ennek eredményeképpen a szükséges IP-címek száma nagyobb, mint az alhálózaton lévő felügyelt példányok száma.
 
-A tervezés szerint egy SQL felügyelt példánynak legalább 16 IP-címnek kell lennie egy alhálózatban, és akár 256 IP-címet is használhat. Ennek eredményeképpen az alhálózati IP-címtartományok definiálásakor a/28 és/24 alhálózati maszkok is használhatók. A hálózati maszk bit/28 (14 gazdagép/hálózat) jó méret egyetlen általános célú vagy üzleti szempontból kritikus fontosságú üzembe helyezéshez. A maszk bit/27 (a hálózaton 30 gazdagép) ideális megoldás egy több SQL-alapú felügyelt példányhoz ugyanazon a VNet belül. A/26 (62-es gazdagépek) és/24 (254 gazdagépek) bit-beállításai lehetővé teszik a VNet további skálázását a további SQL felügyelt példányok támogatásához.
+A felügyelt példányok kialakításához legalább 32 IP-címnek kell szerepelnie egy alhálózatban. Ennek eredményeképpen az alhálózati IP-címtartományok meghatározásakor a/27 minimális alhálózati maszkot használhatja. Ajánlott a felügyelt példányok központi telepítésének az alhálózat méretének alapos megtervezése. A tervezés során figyelembe veendő bemenetek:
+
+- A felügyelt példányok száma, beleértve a következő példány-paramétereket:
+  - szolgáltatási szintek
+  - hardver létrehozása
+  - Virtuális mag száma
+- A szolgáltatási szintek vertikális felskálázásának vagy módosításának megtervezése
 
 > [!IMPORTANT]
-> A 16 IP-címmel rendelkező alhálózati méret a minimálisan korlátozott, ha a skálázási művelet, például a virtuális mag-méret változása nem támogatott. A prefix/27 vagy leghosszabb előtaggal rendelkező alhálózat kiválasztása kifejezetten ajánlott.
+> Az alhálózati méret 16 IP-címmel (alhálózati maszk/28) lehetővé teszi a felügyelt példányok üzembe helyezését, de csak az értékeléshez vagy fejlesztési/tesztelési forgatókönyvekben használt egyetlen példány üzembe helyezéséhez használható, amelyekben a skálázási műveletek nem lesznek elvégezve.
 
 ## <a name="determine-subnet-size"></a>Alhálózat méretének meghatározása
 
-Ha több SQL felügyelt példányt szeretne üzembe helyezni az alhálózaton belül, és az alhálózatok méretének optimalizálására van szükség, használja ezeket a paramétereket a számítások létrehozásához:
+Az alhálózat méretezése a jövőbeli példányok központi telepítésének és a skálázási igényeknek megfelelően. A következő paraméterek segíthetnek a számítás kialakításában:
 
 - Az Azure öt IP-címet használ az alhálózaton a saját igényeinek megfelelően
-- Minden általános célú-példánynak két címnek kell lennie
-- Minden üzletileg kritikus-példányhoz négy cím szükséges
-
-**Példa**: azt tervezi, hogy három általános célú és két üzletileg kritikus SQL felügyelt példánya van. Ez azt jelenti, hogy 5 + 3 * 2 + 2 * 4 = 19 IP-címet kell használnia. Mivel az IP-címtartományok a 2. Powerben vannak meghatározva, a 32-es (2 ^ 5) IP-címekre vonatkozó IP-címtartomány szükséges. Ezért le kell foglalni az alhálózatot a/27 alhálózati maszkkal.
+- Minden virtuális fürt további számú címet foglal le 
+- Az egyes felügyelt példányok az árképzési szinttől és a hardver-létrehozástól függő címek számát használják.
 
 > [!IMPORTANT]
-> A fent megjelenő számítás a további fejlesztésekkel elavulttá válik.
+> Az alhálózati címtartomány nem módosítható, ha bármilyen erőforrás létezik az alhálózatban. A felügyelt példányok nem helyezhetők át az egyik alhálózatról a másikra. Amikor csak lehetséges, érdemes nagyobb méretű alhálózatokat használni, és nem kevesebbet, hogy a jövőben ne legyenek probléma.
+
+GP = általános célú; BC = üzleti szempontból kritikus; VC = virtuális fürt
+
+| **Hardveres Gen** | **Díjszabási csomag** | **Azure-használat** | **VC-használat** | **Példány használata** | **Teljes*** |
+| --- | --- | --- | --- | --- | --- |
+| Gen4 | GP | 5 | 1 | 5 | 11 |
+| Gen4 | BC | 5 | 1 | 5 | 11 |
+| Gen5 | GP | 5 | 6 | 3 | 14 |
+| Gen5 | BC | 5 | 6 | 5 | 16 |
+
+  \*Az oszlop összesen azon címek számát jeleníti meg, amelyek akkor történnek, ha az egyik példány üzembe helyezése az alhálózatban történik. Az alhálózatban lévő minden további példány hozzáadja a példány-használat oszlophoz tartozó címek számát. Az Azure használati oszlopával jelölt címek több virtuális fürtön is megoszthatók, míg a VC-használat oszlopmal jelölt címek megosztása megtörténik a virtuális fürtön elhelyezett példányok között.
+
+A frissítési művelethez általában a virtuális fürtök átméretezése szükséges. Bizonyos esetekben a frissítési művelethez a virtuális fürt létrehozása szükséges (további részletekért lásd a [kezelési műveletek című cikket](sql-managed-instance-paas-overview.md#management-operations)). Virtuális fürt létrehozása esetén a további címek számának meg kell egyeznie a VC-használat oszlop által képviselt címek számával, és a virtuális fürtben lévő példányokhoz szükséges címekkel (a példányok használati oszlopa).
+
+**1. példa**: egy általános célú felügyelt példány (Gen4 hardver) és egy üzleti szempontból kritikus felügyelt példány (Gen5 hardver) megtervezése. Ez azt jelenti, hogy legalább 5 + 1 + 1 * 5 + 6 + 1 * 5 = 22 IP-címet kell telepítenie. Mivel az IP-címtartományok meghatározása 2, az alhálózat legalább 32 (2 ^ 5) IP-címtartományt igényel ehhez a központi telepítéshez.<br><br>
+A fentiekben említettek szerint a frissítési művelethez szükség van a virtuális fürt létrehozására. Ez azt jelenti, hogy a Gen5 üzleti szempontból kritikus felügyelt példányának egy virtuális fürt létrehozását igénylő frissítése esetén további 6 + 5 = 11 IP-címmel kell rendelkeznie. Mivel már a 32-es címek közül 22-et használ, a művelethez nem tartoznak elérhető címek. Ezért le kell foglalni az alhálózatot a/26 alhálózati maszkkal (64 cím).
+
+**2. példa**: azt tervezi, hogy három általános célú (Gen5 hardver) és két üzleti szempontból kritikus felügyelt példányt (Gen5 hardver) helyez el ugyanahhoz az alhálózathoz. Ez azt jelenti, hogy 5 + 6 + 3 * 3 + 2 * 5 = 30 IP-címet kell használnia. Ezért le kell foglalni az alhálózatot a/26 alhálózati maszkkal. Ha a/27 alhálózati maszkot választja, a megmaradt címek száma 2 (32 – 30) lesz, ami megakadályozza az összes példány frissítési műveleteit, mivel további címek szükségesek az alhálózatban a példány skálázásának végrehajtásához.
+
+**3. példa**: azt tervezi, hogy egy általános célú felügyelt példányt (Gen5 hardvert) használ, és időről időre végrehajtja a virtuális mag frissítési műveletét. Ez azt jelenti, hogy 5 + 6 + 1 * 3 + 3 = 17 IP-címet kell használnia. Mivel az IP-címtartományok a 2. Powerben vannak meghatározva, a 32-es (2 ^ 5) IP-címekre vonatkozó IP-címtartomány szükséges. Ezért le kell foglalni az alhálózatot a/27 alhálózati maszkkal.
+
+### <a name="address-requirements-for-update-scenarios"></a>Frissítési forgatókönyvek címeire vonatkozó követelmények
+
+A skálázási művelet példányaiban átmenetileg további IP-kapacitásra van szükség, amely az árképzési szinttől és a hardverek létrehozástól függ.
+
+| **Hardveres Gen** | **Díjszabási csomag** | **Forgatókönyv** | **További címek*** |
+| --- | --- | --- | --- |
+| Gen4 | GP vagy BC | Virtuális mag skálázása | 5 |
+| Gen4 | GP vagy BC | Tárterület skálázása | 5 |
+| Gen4 | GP vagy BC | Váltás a GP-ről a BC vagy a BC rendszerre a GP-re | 5 |
+| Gen4 | GP | Váltás a Gen5 * | 9 |
+| Gen4 | BC | Váltás a Gen5 * | 11 |
+| Gen5 | GP | Virtuális mag skálázása | 3 |
+| Gen5 | GP | Tárterület skálázása | 0 |
+| Gen5 | GP | Váltás a BC-re | 5 |
+| Gen5 | BC | Virtuális mag skálázása | 5 |
+| Gen5 | BC | Tárterület skálázása | 5 |
+| Gen5 | BC | Váltás a GP-re | 3 |
+
+  \*A Gen4 hardverek fokozatos kiépítése folyamatban van, és már nem érhető el az új üzemelő példányokhoz. Frissítse a Gen4-ről a Gen5-re vonatkozó hardver-előállítást, hogy kihasználhassa a Gen5-hardverek létrehozásával kapcsolatos képességeket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az áttekintést lásd: [Mi az SQL felügyelt példánya](sql-managed-instance-paas-overview.md).
+- Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - További információ az [SQL felügyelt példányának kapcsolati architektúráról](connectivity-architecture-overview.md).
-- Tekintse meg, hogyan [hozhat létre olyan VNet, ahol telepíteni fogja az SQL felügyelt példányokat](virtual-network-subnet-create-arm-template.md)
-- DNS-problémák esetén tekintse meg az [Egyéni DNS konfigurálása](custom-dns-configure.md) című témakört.
+- Tekintse meg, hogyan [hozhat létre olyan VNet, ahol telepíteni fogja az SQL felügyelt példányát](virtual-network-subnet-create-arm-template.md).
+- DNS-problémák esetén tekintse meg az [Egyéni DNS konfigurálása](custom-dns-configure.md)című témakört.

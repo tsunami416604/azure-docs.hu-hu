@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
 ms.openlocfilehash: de75ea1bc0a1cf63c74be3f7d9e486e1fe38db6f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614563"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>A Azure Cosmos DB API-MongoDB kapcsolatos gyakori kérdések
@@ -29,7 +29,7 @@ További információ: a [Cosmos-adatbázishoz való kapcsolódás Azure Cosmos 
 
 A Common MongoDB-hibakódokkal együtt a Azure Cosmos DB API-ját a MongoDB saját specifikus hibakódokkal rendelkezik:
 
-| Hiba               | Kód  | Leírás  | Megoldás  |
+| Hiba               | Code  | Leírás  | Megoldás  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | A felhasználható kérelmek teljes száma nagyobb, mint a tárolóhoz kiépített kérelem-egység sebessége, és a rendszer szabályozott. | Érdemes lehet egy tárolóhoz rendelt átviteli sebességet, vagy a Azure Portal tárolók készletét vagy újrapróbálkozni. |
 | ExceededMemoryLimit | 16501 | Több-bérlős szolgáltatásként a művelet túllépte az ügyfél memóriájának kiosztását. | Csökkentse a művelet hatókörét szigorúbb lekérdezési feltételekkel, vagy forduljon a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)támogatási szolgálatához. <br><br> Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |

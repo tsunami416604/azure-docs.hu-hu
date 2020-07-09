@@ -10,10 +10,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826060"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása az Azure Logic Appsbe
@@ -220,7 +219,7 @@ Válasz **: a**Feladatütemező és a feladatok összes futtatása leáll, és t
 **K**: Hol kaphatok támogatást a Scheduler-feladatok áttelepítéséhez? <br>
 **A**: Íme néhány lehetőség a támogatás megszerzésére:
 
-**Azure Portal**
+**Azure Portalra**
 
 Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai támogatási kérést hozhat létre a Azure Portal. Ellenkező esetben választhat másik támogatási lehetőséget is.
 

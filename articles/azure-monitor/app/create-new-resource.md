@@ -4,10 +4,9 @@ description: Application Insights figyelésének manuális beállítása egy új
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200659"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
@@ -26,7 +25,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
 
    | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Név**      | `Unique value` | A figyelt alkalmazást azonosító név. |
+   | **Name (Név)**      | `Unique value` | A figyelt alkalmazást azonosító név. |
    | **Erőforráscsoport**     | `myResourceGroup`      | Az új vagy meglévő erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. |
    | **Régió** | `East US` | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
    | **Erőforrás mód** | `Classic` vagy `Workspace-based` | A munkaterület-alapú erőforrások jelenleg nyilvános előzetes verzióban érhetők el, és lehetővé teszik, hogy egy közös Log Analytics munkaterületre küldje el Application Insights telemetria. További információt a [munkaterület-alapú erőforrások című cikkben](create-workspace-resource.md)talál.

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653636"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication felhasználói adatgyűjtés
@@ -70,7 +69,7 @@ Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz has
 
 Aktiválások (a Microsoft Authenticator Mobile alkalmazásban lévő fiók aktiválását kísérli meg):
 - Felhasználónév
-- Fiók neve
+- Account Name
 - Időbélyeg
 - Aktivációs kód eredményének beolvasása
 - Sikeres aktiválás
@@ -136,16 +135,16 @@ Módosítások (az MFA-kiszolgálóra vagy az Azure AD-ra történő felhasznál
 Az MFA-kiszolgáló 8,0-es vagy újabb verziója esetén az alábbi folyamat lehetővé teszi a rendszergazdák számára az összes felhasználó exportálását a felhasználók számára:
 
 - Jelentkezzen be az MFA-kiszolgálóra, lépjen a **felhasználók** lapra, válassza ki a szóban forgó felhasználót, majd kattintson a **Szerkesztés** gombra. Készítsen képernyőképeket (Alt-PrtScn) az egyes lapokon, hogy a felhasználó az aktuális MFA-beállításait adja meg.
-- Az MFA-kiszolgáló parancssorából futtassa az alábbi parancsot a telepítésnek `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` megfelelően a JSON formátumú fájl létrehozásához.
+- Az MFA-kiszolgáló parancssorából futtassa az alábbi parancsot a telepítésnek megfelelően a `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` JSON formátumú fájl létrehozásához.
 - A rendszergazdák a Web Service SDK GetUserGdpr műveletet is használhatják az adott felhasználó számára gyűjtött összes MFA Cloud Service-információ exportálására, vagy egy nagyobb jelentéskészítési megoldásba való beépítésre.
-- A `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` (z) "\<username>" (a keresésben szereplő idézőjelekkel együtt) keresési és minden biztonsági mentéssel megkeresheti az összes hozzáadott vagy módosított felhasználói rekord összes példányát.
+- A `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` (z) "" (a keresésben szereplő idézőjelekkel együtt) megkeresése és minden biztonsági másolata \<username> a felhasználói rekord hozzáadott vagy módosított példányainak megkereséséhez.
    - Ezek a rekordok korlátozottak (de nem távolíthatók el) a **"felhasználói változások naplózása"** lehetőség törlésével az MFA-kiszolgáló UX-ben, a naplózás szakaszban, a naplófájlok lapon.
    - Ha a syslog konfigurálva van, és a **"felhasználói változások naplózása"** be van JELÖLVE az MFA-kiszolgáló UX-ben, a naplózási szakaszban, a syslog lapon, a naplóbejegyzések begyűjthetők a syslog használatával.
-- A MultiFactorAuthSvc. log fájlban és a hitelesítési kísérletekhez tartozó más MFA-kiszolgálók naplófájljaiban található Felhasználónév egyéb előfordulása a MultiFactorAuthGdpr. exe export vagy a Web Service SDK GetUserGdpr használatával biztosított információknak megfelelően működik és duplikált.
+- A MultiFactorAuthSvc. log fájlban és a hitelesítési kísérletekhez tartozó más MFA-kiszolgálók naplófájljaiban található Felhasználónév egyéb előfordulása a MultiFactorAuthGdpr.exe export vagy Web Service SDK-GetUserGdpr használatával biztosított információk működésének és ismétlődőnek tekintendő.
 
 ## <a name="delete-data-from-mfa-server"></a>Adatok törlése az MFA-kiszolgálóról
 
-Az MFA-kiszolgáló parancssorából futtassa az alábbi parancsot az elérési út módosításával a telepítésnek `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` megfelelően, hogy törölje az összes MFA Cloud Service-információ a felhasználó számára gyűjtött adatait.
+Az MFA-kiszolgáló parancssorából futtassa az alábbi parancsot az elérési út módosításával a telepítésnek megfelelően, `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` hogy törölje az összes MFA Cloud Service-információ a felhasználó számára gyűjtött adatait.
 
 - Az exportálásban szereplő adategységeket valós időben törli a rendszer, de akár 30 napig is eltarthat, amíg az operatív vagy a duplikált adatfeldolgozás teljesen el nem távolítható.
 - A rendszergazdák a Web Service SDK DeleteUserGdpr műveletet is használhatják az adott felhasználó számára gyűjtött összes MFA Cloud Service-információ törlésére, vagy egy nagyobb jelentéskészítési megoldásba való beépítésre.

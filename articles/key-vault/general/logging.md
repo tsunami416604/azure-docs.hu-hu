@@ -10,12 +10,11 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422591"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043002"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -43,7 +42,7 @@ További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md)). T
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy meglévő kulcstároló.  
-* Azure PowerShell a 1.0.0 minimális verziója. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette Azure PowerShell és nem ismeri a verziót, a Azure PowerShell konzolon írja be `$PSVersionTable.PSVersion`a következőt:.  
+* Azure PowerShell a 1.0.0 minimális verziója. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette Azure PowerShell és nem ismeri a verziót, a Azure PowerShell konzolon írja be a következőt: `$PSVersionTable.PSVersion` .  
 * A Key Vault naplóihoz elegendő tárhely az Azure-ban.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Kapcsolódás a Key Vault-előfizetéshez
@@ -95,7 +94,7 @@ A [első lépések oktatóanyagban](../secrets/quick-create-cli.md)a kulcstárol
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>Naplózás engedélyezése
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Naplózás engedélyezése Azure PowerShell használatával
 
 A Key Vault naplózásának engedélyezéséhez a **set-AzDiagnosticSetting** parancsmagot fogjuk használni az új Storage-fiókhoz és a kulcstartóhoz létrehozott változókkal együtt. Az **-enabled** jelzőt úgy is beállítjuk, hogy **$true** , és a kategóriát a **AuditEvent** (az egyetlen kategória Key Vault naplózás) értékre állítsa be:
 
@@ -105,15 +104,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 A kimenet így néz ki:
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 Ez a kimenet megerősíti, hogy a naplózás már engedélyezve van a kulcstartóban, és az adatokat a Storage-fiókjába menti.
 
@@ -131,6 +132,25 @@ Mi kerül naplózásra?
   * A kulcsok vagy titkos kódok létrehozása, módosítása vagy törlése.
   * A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása, a titkok beolvasása és a kulcsok és titkok listázása (és azok verziói).
 * A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek olyan tulajdonosi jogkivonattal, amely nem formázott vagy lejárt, vagy érvénytelen tokent tartalmaz.  
+
+## <a name="enable-logging-using-azure-cli"></a>Naplózás engedélyezése az Azure CLI-vel
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>A naplók elérése
 
@@ -187,7 +207,7 @@ Ezt a listát a **Get-AzStorageBlobContent** segítségével letölthet a Blobok
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Ha ezt a második parancsot futtatja, **/** a Blobok neveiben szereplő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
+Ha ezt a második parancsot futtatja, a **/** Blobok neveiben szereplő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
 A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
 
@@ -203,7 +223,7 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Péld�
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Ha a 2019 januári hónapban szeretné letölteni az összes naplót, használja `-Blob '*/year=2019/m=01/*'`a következőt:
+* Ha a 2019 januári hónapban szeretné letölteni az összes naplót, használja a következőt `-Blob '*/year=2019/m=01/*'` :
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -214,15 +234,10 @@ Most már készen áll a naplók tartalmának megtekintésére. Mielőtt azonban
 * A kulcstároló erőforrásához tartozó diagnosztikai beállítások állapotának lekérdezése:`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * A kulcstároló erőforrása naplózásának letiltása:`Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
+
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>A Key Vault naplóinak értelmezése
 
-Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük meg egy példa naplóbejegyzést. Futtassa ezt a parancsot:
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-Ez egy, a következőhöz hasonló naplóbejegyzést ad vissza:
+Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük meg egy példa naplóbejegyzést. 
 
 ```json
     {
@@ -249,7 +264,7 @@ Ez egy, a következőhöz hasonló naplóbejegyzést ad vissza:
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **idő** |Dátum és idő (UTC). |
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
@@ -267,9 +282,9 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
 A **OperationName** *ObjectVerb* formátumban vannak. Például:
 
-* A `Vault<action>` Key Vault összes műveletének formátuma, például `VaultGet` és `VaultCreate`.
-* Az `Key<action>` összes kulcsfontosságú művelet formátuma, például `KeySign` és. `KeyList`
-* Minden titkos művelet `Secret<action>` formátuma, például `SecretGet` és. `SecretListVersions`
+* A Key Vault összes műveletének `Vault<action>` formátuma, például `VaultGet` és `VaultCreate` .
+* Az összes kulcsfontosságú művelet `Key<action>` formátuma, például `KeySign` és `KeyList` .
+* Minden titkos művelet `Secret<action>` formátuma, például `SecretGet` és `SecretListVersions` .
 
 A következő táblázat felsorolja a **operationName** és a hozzá tartozó REST API parancsokat:
 
@@ -303,7 +318,7 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Az Azure Monitor-naplók használata
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor naplók használata
 
 Azure Monitor naplók Key Vault megoldásával áttekintheti Key Vault **AuditEvent** naplóit. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 
@@ -316,5 +331,3 @@ A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért l
 Programozási hivatkozások: [Azure Key Vault developer’s guide](developers-guide.md) (Az Azure Key Vault fejlesztői útmutatója).
 
 Azure Key Vault Azure PowerShell 1,0-parancsmagok listáját itt tekintheti meg: [Azure Key Vault parancsmagok](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
-
-A Key rotációs és a Azure Key Vault használatával történő naplózással kapcsolatos oktatóanyagért tekintse meg a [Key Vault teljes körű kulcsfontosságú rotációs és naplózási](../secrets/key-rotation-log-monitoring.md)funkciójának beállítása című témakört.

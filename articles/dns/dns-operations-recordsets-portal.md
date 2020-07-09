@@ -4,15 +4,14 @@ description: A Azure DNS lehetővé teszi a DNS-rekordhalmazok és-rekordok keze
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 4012b32eb2684126b8dc64b9e86bf35a016e9fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696831"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok és-rekordhalmazok kezelése a Azure Portal használatával
 
@@ -93,7 +92,7 @@ Az automatikusan létrehozott NS és SOA rekordokat más bejegyzéstípusoktól 
 
 ### <a name="modify-soa-records"></a>SOA-rekordok módosítása
 
-Nem adhat hozzá és nem távolíthat el rekordokat az automatikusan létrehozott SOA-rekordhalmazból a zóna csúcspontján\@(név = ""). A SOA-rekordon belül azonban módosíthatja a paramétereket (a "gazdagép" kivételével) és a rekordhalmazt is.
+Nem adhat hozzá és nem távolíthat el rekordokat az automatikusan létrehozott SOA-rekordhalmazból a zóna csúcspontján (név = " \@ "). A SOA-rekordon belül azonban módosíthatja a paramétereket (a "gazdagép" kivételével) és a rekordhalmazt is.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>NS rekordok módosítása a zóna csúcsán
 
@@ -105,7 +104,7 @@ Vegye figyelembe, hogy ez csak a zóna csúcsán beállított NS-rekordra vonatk
 
 ### <a name="delete-soa-or-ns-record-sets"></a>SOA-vagy NS-rekordhalmazok törlése
 
-A SOA és az NS rekordhalmaz nem törölhető a zóna létrehozásakor automatikusan létrehozott (név\@= "") zónában. A zóna törlésekor a rendszer automatikusan törli őket.
+A SOA és az NS rekordhalmaz nem törölhető a zóna \@ létrehozásakor automatikusan létrehozott (név = "") zónában. A zóna törlésekor a rendszer automatikusan törli őket.
 
 ## <a name="next-steps"></a>További lépések
 

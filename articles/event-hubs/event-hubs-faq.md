@@ -1,21 +1,14 @@
 ---
 title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/02/2019
-ms.author: shvija
-ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 06/23/2020
+ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320583"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -97,9 +90,9 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
 2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
@@ -127,15 +120,15 @@ Ezután engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózat
 A Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Apache Kafka-alapú alkalmazásai használhatnak. A konfigurációs változás minden, ami szükséges a Péteri Kafka-élményhez. Alternatívát biztosít a saját Kafka-fürt futtatásához. Event Hubs támogatja a Apache Kafka 1,0-es és újabb verziójú ügyfélprogramokat, és együttműködik a meglévő Kafka-alkalmazásokkal, eszközökkel és keretrendszerekkel. További információ: [Event Hubs for Kafka](https://github.com/Azure/azure-event-hubs-for-kafka)-tárház.
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Milyen konfigurációs módosításokat kell végrehajtani a meglévő alkalmazáshoz, hogy Event Hubs beszéljen?
-Az Event hub-hoz való kapcsolódáshoz frissítenie kell a Kafka-ügyfél konfigurációit. Event Hubs névtér létrehozásával és a [kapcsolatok karakterláncának](event-hubs-get-connection-string.md)beszerzésével végezhető el. Módosítsa a bootstrap. Servert úgy, hogy a Event Hubs teljes tartománynevet és a portot 9093-re mutassa. Frissítse a SASL. jaas. config fájlt, és irányítsa a Kafka-ügyfelet az Event Hubs-végpontra (amely az Ön által beszerzett kapcsolódási karakterlánc), a megfelelő hitelesítéssel, ahogy az alábbi ábrán is látható:
+Az Event hub-hoz való kapcsolódáshoz frissítenie kell a Kafka-ügyfél konfigurációit. Event Hubs névtér létrehozásával és a [kapcsolatok karakterláncának](event-hubs-get-connection-string.md)beszerzésével végezhető el. Módosítsa a bootstrap. Servert úgy, hogy a Event Hubs teljes tartománynevet és a portot 9093-re mutassa. Frissítse a sasl.jaas.configt, hogy a Kafka-ügyfelet a Event Hubs végpontra irányítsa (amely az Ön által beszerzett kapcsolódási karakterlánc), a megfelelő hitelesítéssel az alábbi ábrán látható módon:
 
-bootstrap. Servers = {a. EVENTHUBS. FQDN}: 9093 Request. timeout. MS = 60000 biztonság. Protocol = SASL_SSL SASL. mechanizmus = PLAIN SASL. jaas. config = org. Apache. Kafka. Common. Security. Plain. PlainLoginModule kötelező Felhasználónév = "$ConnectionString" password = "{a. EVENTHUBS. Kapcsolat. KARAKTERLÁNC} ";
+bootstrap. Servers = {a. EVENTHUBS. FQDN}: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN sasl.jaas.config= org. Apache. Kafka. Common. Security. Plain. PlainLoginModule kötelező Felhasználónév = "$ConnectionString" password = "{a. EVENTHUBS. Kapcsolat. KARAKTERLÁNC} ";
 
 Példa:
 
-bootstrap. Servers = dummynamespace. servicebus. Windows. net: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN SASL. jaas. config = org. Apache. Kafka. Common. Security. Plain. PlainLoginModule szükséges username = "$ConnectionString" password = "Endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+bootstrap. Servers = dummynamespace. servicebus. Windows. net: 9093 Request. timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = PLAIN sasl.jaas.config= org. Apache. Kafka. Common. Security. Plain. PlainLoginModule szükséges username = "$ConnectionString" password = "Endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Megjegyzés: Ha a SASL. jaas. config fájl nem támogatott konfiguráció a keretrendszerben, keresse meg azokat a konfigurációkat, amelyek segítségével beállítja a SASL felhasználónevét és jelszavát, és használja ezeket. Adja meg a felhasználónevet $ConnectionString és a jelszót a Event Hubs-kapcsolódási karakterlánchoz.
+Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszerben, keresse meg a SASL felhasználónevének és jelszavának beállításához használt konfigurációkat, és használja ezeket. Adja meg a felhasználónevet $ConnectionString és a jelszót a Event Hubs-kapcsolódási karakterlánchoz.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Mi a Event Hubs üzenet/esemény mérete?
 Az Event Hubs számára engedélyezett maximális üzenet mérete 1 MB.

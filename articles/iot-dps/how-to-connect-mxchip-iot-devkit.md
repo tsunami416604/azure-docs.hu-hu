@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975652"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az Azure IoT Hub Device Provisioning Service automatikus kiépítés használata a MXChip-IoT fejlesztői készlet regisztrálásához IoT Hub
@@ -38,7 +37,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 
 1. Győződjön meg arról, hogy a IoT fejlesztői készlet nincs **csatlakoztatva** a számítógéphez. Először indítsa el a VS Code-ot, majd kapcsolja össze a fejlesztői készlet a számítógéppel.
 
-1. Kattintson `F1` a parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
+1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
 
 1. A IoT Workbench-példák oldalon keresse meg az **eszközök regisztrációja a DPS-vel** és kattintson a **minta megnyitása**lehetőségre. Ezután kiválasztja a mintakód letöltésének alapértelmezett elérési útját.
     ![Minta megnyitása](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
@@ -60,10 +59,10 @@ FRISSÍTÉSI mentése a fejlesztői készlet:
 
 1. A fejlesztői készlet-on tartsa lenyomva az **a gombot**, leküldheti és felszabadíthatja az **Alaphelyzetbe állítás** gombot, majd **a "a" gombot**. A fejlesztői készlet konfigurációs módba lép.
 
-1. Kattintson `F1` a parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: eszközbeállítások konfigurálása... > konfiguráció egyedi eszköz sztring (frissítési)** elemet.
+1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: eszközbeállítások konfigurálása... > konfiguráció egyedi eszköz SZTRING (frissítési)** elemet.
   ![FRISSÍTÉSI konfigurálása](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
-1. Jegyezze fel a generált frissítési karakterláncot. Szüksége lesz rá az X. 509 tanúsítvány létrehozásához. Ezután nyomja `Enter`meg a gombot.
+1. Jegyezze fel a generált frissítési karakterláncot. Szüksége lesz rá az X. 509 tanúsítvány létrehozásához. Ezután nyomja meg a gombot `Enter` .
   ![FRISSÍTÉSI másolása](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
 1. Erősítse meg az értesítést arról, hogy a frissítési sikeresen konfigurálva lett a STSAFE.
@@ -82,21 +81,21 @@ Az eszköz kódjában meg kell adnia az [eszköz kiépítési végpontját](/azu
 1. Nyissa meg a **DevKitDPS. Ino**programot. Keresse meg és `[Global Device Endpoint]` cserélje `[ID Scope]` le az imént feljegyzett értékeket.
   ![Eszköz kiépítési szolgáltatásának végpontja](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
-1. Töltse ki `registrationId` a változót a kódban. Csak alfanumerikus, kisbetűs és kötőjel kombináció megengedett, amely legfeljebb 128 karakterből állhat. Az értéket is fel kell jegyezni.
+1. Töltse ki a `registrationId` változót a kódban. Csak alfanumerikus, kisbetűs és kötőjel kombináció megengedett, amely legfeljebb 128 karakterből állhat. Az értéket is fel kell jegyezni.
   ![Regisztrációs azonosító](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
-1. Kattintson `F1`, írja be és válassza ki az **Azure IoT Device Workbench: eszköz kódjának feltöltése**elemet. Elindítja a kód fordítását és feltöltését a fejlesztői készlet.
+1. Kattintson `F1` , írja be és válassza ki az **Azure IoT Device Workbench: eszköz kódjának feltöltése**elemet. Elindítja a kód fordítását és feltöltését a fejlesztői készlet.
   ![Eszköz feltöltése](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>X. 509 tanúsítvány előállítása
 
 A minta által használt [igazolási mechanizmus](/azure/iot-dps/concepts-device#attestation-mechanism) X. 509 tanúsítvány. A létrehozásához egy segédprogramot kell használnia.
 
-1. A VS Code-ban `F1`kattintson a elemre, írja be a parancsot, majd válassza az **új terminál megnyitása** lehetőséget a terminálablak megnyitásához.
+1. A VS Code-ban kattintson a elemre `F1` , írja be a parancsot, majd válassza az **új terminál megnyitása** lehetőséget a terminálablak megnyitásához.
 
 1. Futtatás `dps_cert_gen.exe` a `tool` mappában.
 
-1. A lefordított bináris fájl helyét a `..\.build\DevKitDPS`következőképpen adhatja meg:. Ezután illessze be az imént feljegyzett **frissítési** és **regisztrációban** . 
+1. A lefordított bináris fájl helyét a következőképpen adhatja meg: `..\.build\DevKitDPS` . Ezután illessze be az imént feljegyzett **frissítési** és **regisztrációban** . 
   ![X. 509 előállítása](media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
 
 1. Egy `.pem` X. 509 tanúsítvány jön létre ugyanabban a mappában.
@@ -107,7 +106,7 @@ A minta által használt [igazolási mechanizmus](/azure/iot-dps/concepts-device
 1. A Azure Portal nyissa meg az eszköz üzembe helyezése szolgáltatást, navigáljon a regisztrációk kezelése szakaszhoz, és kattintson az **Egyéni regisztráció hozzáadása**lehetőségre.
   ![Egyéni regisztráció hozzáadása](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
-1. Kattintson a fájl ikonra az **elsődleges tanúsítvány. PEM vagy. cer fájl** mellett, hogy `.pem` feltöltse a létrehozott fájlt.
+1. Kattintson a fájl ikonra az **elsődleges tanúsítvány. PEM vagy. cer fájl** mellett, hogy feltöltse a `.pem` létrehozott fájlt.
   ![Feltöltés. PEM](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>Ellenőrizze, hogy az fejlesztői készlet regisztrálva van-e az Azure IoT Hub

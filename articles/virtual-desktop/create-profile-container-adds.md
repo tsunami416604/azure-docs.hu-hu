@@ -4,18 +4,18 @@ description: Ez a cikk azt ismerteti, hogyan hozható létre FSLogix-profil tár
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362441"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>FSLogix-profil tároló létrehozása Azure Files
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
 
 Ez a cikk bemutatja, hogyan hozhat létre egy FSLogix-profil tárolót Azure Files és Azure Active Directory Domain Services (AD DS) használatával.
 
@@ -41,7 +41,7 @@ Rendszergazda hozzáadása:
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage-fiók beállítása
 
-Itt az ideje, hogy engedélyezi az Azure AD DS a hitelesítést a Server Message Block (SMB) protokollon keresztül. 
+Itt az ideje, hogy engedélyezi az Azure AD DS a hitelesítést a Server Message Block (SMB) protokollon keresztül.
 
 A hitelesítés engedélyezése:
 
@@ -93,7 +93,8 @@ A Storage-fiók elérési kulcsának beszerzése:
 
     Ezzel letölt egy RDP-fájlt, amely lehetővé teszi, hogy a saját hitelesítő adataival jelentkezzen be a virtuális gépre.
 
-    ![A virtuális gép kapcsolódása ablak RDP lapjának képernyőképe.](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![A virtuális gép kapcsolódása ablak RDP lapjának képernyőképe.](media/rdp-tab.png)
 
 6. Amikor bejelentkezett a virtuális gépre, futtassa a parancssort rendszergazdaként.
 
@@ -103,13 +104,13 @@ A Storage-fiók elérési kulcsának beszerzése:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Cserélje `<desired-drive-letter>` le a betűt a kívánt meghajtóbetűjelre (például: `y:`).
-    - Cserélje le az összes `<storage-account-name>` példányát a korábban megadott Storage-fiók nevére.
-    - Cserélje `<share-name>` le a helyére a korábban létrehozott megosztás nevét.
-    - Cserélje `<storage-account-key>` le a elemet az Azure Storage-fiók kulcsára.
+    - Cserélje le a `<desired-drive-letter>` betűt a kívánt meghajtóbetűjelre (például: `y:` ).
+    - Cserélje le az összes példányát a `<storage-account-name>` korábban megadott Storage-fiók nevére.
+    - Cserélje le a helyére a `<share-name>` korábban létrehozott megosztás nevét.
+    - Cserélje le `<storage-account-key>` a elemet az Azure Storage-fiók kulcsára.
 
-    Például:  
-  
+    Például:
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -120,11 +121,11 @@ A Storage-fiók elérési kulcsának beszerzése:
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - A `<mounted-drive-letter>` helyére írja be annak a meghajtónak a betűjelét, amelyet a felhasználó használni kíván.
-    - A `<user-email>` helyére írja be annak a felhasználónak a felhasználónevét, aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
+    - A helyére írja be annak a `<mounted-drive-letter>` meghajtónak a betűjelét, amelyet a felhasználó használni kíván.
+    - A helyére írja be annak a felhasználónak a felhasználónevét, `<user-email>` aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
 
     Például:
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -137,30 +138,32 @@ FSLogix-profil tárolójának konfigurálása:
 
 1. Jelentkezzen be a cikk elején konfigurált munkamenet-gazda virtuális gépre, majd [töltse le és telepítse a FSLogix-ügynököt](/fslogix/install-ht/).
 
-2. Bontsa ki a letöltött FSLogix-ügynököt, és nyissa meg az **x64** > -es**kiadásokat**, majd nyissa meg a **FSLogixAppsSetup. exe**fájlt
+2. Bontsa ki a letöltött FSLogix-ügynök fájlját **x64**  >  , és nyissa meg az x64-es**kiadásokat**, majd nyissa meg **FSLogixAppsSetup.exe**.
 
 3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
-4. Válassza az **Install** (Telepítés) lehetőséget.
+4. Válassza a **Telepítés** gombot.
 
-5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files** > **FSLogix** > **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
+5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files**  >  **FSLogix**  >  **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
 
      >[!NOTE]
      > Ha több virtuális gép van a gazdagépen, az egyes virtuális gépekhez az 1 – 5. lépést kell megismételni.
 
 6. Futtassa a **Beállításszerkesztőt** (Regedit) rendszergazdaként.
 
-7. Navigáljon a **számítógép** > **HKEY_LOCAL_MACHINE** > **szoftver** > **FSLogix**, kattintson a jobb gombbal a **FSLogix**elemre, válassza az **új**, majd a **kulcs**elemet.
+7. Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix**, kattintson a jobb gombbal a **FSLogix**elemre, válassza az **új**, majd a **kulcs**elemet.
 
 8. Hozzon létre egy új, **profilok**nevű kulcsot.
 
 9.  Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**lehetőséget, majd válassza a **DWORD (32 bites) értéket.** Nevezze el az **engedélyezett** értéket, és állítsa az **adatértéket** **1-re**.
 
-    ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
 
-10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás `\\fsprofile.file.core.windows.net\share` URI-ját adatértékként.
+10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás URI-ját `\\fsprofile.file.core.windows.net\share` adatértékként.
 
-    ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Felhasználók társítása egy munkamenet-gazdagéphez
 
@@ -197,19 +200,19 @@ Felhasználók kiosztása:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    A korábbi parancsmagokhoz hasonlóan a megfelelő értékeket cserélje le `<your-wvd-tenant>` `<wvd-pool>`a, a `<user-principal>` és a kifejezésre.
+    A korábbi parancsmagokhoz hasonlóan a megfelelő értékeket cserélje le a, a és a kifejezésre `<your-wvd-tenant>` `<wvd-pool>` `<user-principal>` .
 
     Például:
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
@@ -231,7 +234,7 @@ A profil ellenőrzése:
 
 6. Válassza ki a **fájlok** ikont, majd bontsa ki a megosztást.
 
-    Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>`.
+    Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>` .
 
 ## <a name="next-steps"></a>További lépések
 

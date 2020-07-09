@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82183500"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Transport Layer Security az Azure HDInsight
 
-A HDInsight-fürthöz a nyilvános fürt végpontján `https://CLUSTERNAME.azurehdinsight.net` keresztül létesített kapcsolatok a fürt átjárójának csomópontjain keresztüli proxyk. Ezek a kapcsolatok a TLS nevű protokoll használatával biztonságosak. A TLS magasabb verzióinak kényszerítése az átjárók esetében javítja a kapcsolatok biztonságát. További információ a TLS újabb verzióinak használatáról: [a tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
+A HDInsight-fürthöz a nyilvános fürt végpontján keresztül létesített kapcsolatok a `https://CLUSTERNAME.azurehdinsight.net` fürt átjárójának csomópontjain keresztüli proxyk. Ezek a kapcsolatok a TLS nevű protokoll használatával biztonságosak. A TLS magasabb verzióinak kényszerítése az átjárók esetében javítja a kapcsolatok biztonságát. További információ a TLS újabb verzióinak használatáról: [a tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
 
 Alapértelmezés szerint az Azure HDInsight-fürtök elfogadják a TLS 1,2-kapcsolatokat a nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. A fürt létrehozása során a Azure Portal vagy egy Resource Manager-sablon használatával szabályozhatja az átjáró csomópontjain támogatott minimális TLS-verziót. A portálon válassza ki a TLS-verziót a **Biztonság + hálózatkezelés** lapon a fürt létrehozása során. A Resource Manager-sablonok központi telepítésének ideje alatt használja a **minSupportedTlsVersion** tulajdonságot. Minta sablon: [HDInsight minimális TLS 1,2 rövid útmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Ez a tulajdonság három értéket támogat: "1,0", "1,1" és "1,2", amely a TLS 1.0 +, a TLS 1.1 + és a TLS 1.2 + értéknek felel meg.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281950"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130286"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>Nyilvános IP-címek beállítása a feladatátvétel után
 
@@ -48,12 +48,12 @@ További információ a feladatátvételi forgatókönyvekről Traffic Manager:
 2. [Azure-ról Azure-ba történő feladatátvétel](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) Traffic Manager 
 
 A telepítés a következő:
-- Hozzon létre egy [Traffic Manager profilt](../traffic-manager/traffic-manager-create-profile.md).
+- Hozzon létre egy [Traffic Manager profilt](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - A **prioritási** útválasztási módszer kihasználása esetén hozzon létre két végpontot – **elsődleges** forrásként és **feladatátvételt** az Azure-hoz. Az **elsődleges** hozzárendelés 1. prioritású, a **feladatátvétel** pedig 2. prioritású.
 - Az **elsődleges** végpont lehet az [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) vagy a [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) , attól függően, hogy a forrás-környezet az Azure-on belül vagy kívül van-e.
 - A **feladatátvételi** végpont **Azure** -végpontként jön létre. **Statikus nyilvános IP-címet** használjon, mivel ez a katasztrófa-esemény Traffic Manager külső végpontja lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Traffic Managerról Azure site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
 - További információ a Traffic Manager [útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).
 - További információ az alkalmazások feladatátvételének automatizálására szolgáló [helyreállítási tervekről](site-recovery-create-recovery-plans.md) .

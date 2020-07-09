@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055412"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
@@ -82,7 +82,7 @@ A folytatás előtt a futtató fióknak a következő követelményeknek kell me
 4. Az **Általános tulajdonságok** lapon válassza a **Windows** lehetőséget a **futtató fiók típusa:** listában.
 5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább**gombra.
 6. A **terjesztés biztonsága** **lapon válassza a biztonságosabb lehetőséget**.
-7. Kattintson a **Létrehozás**gombra.  
+7. Kattintson a **Létrehozás** lehetőségre.  
 
 Most, hogy létrejött a futtató fiók, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált futtató profilhoz kell rendelni, hogy a munkafolyamatok a hitelesítő adatok használatával fussanak.  
 
@@ -147,13 +147,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
 
-Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Ehhez a következő lépések szükségesek.
+Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Hajtsa végre a következő lépéseket.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>A szabály engedélyezése egy adott felügyeleti kiszolgáló számára
 
 1. Az Operations Manager operatív konzol **szerzői** műveletek munkaterületén keresse meg a **szabály panelen a** *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabályát* .
 2. A keresési eredmények közül válassza ki azt, amely a következő szöveget tartalmazza *: felügyeleti kiszolgáló*.
-3. Kattintson a jobb gombbal a szabályra, majd kattintson **a felülbírálások elemre** > a**következő osztály egy adott objektumához: felügyeleti kiszolgáló**.
+3. Kattintson a jobb gombbal a szabályra, majd kattintson **a felülbírálások elemre**a  >  **következő osztály egy adott objektumához: felügyeleti kiszolgáló**.
 4.  Az elérhető felügyeleti kiszolgálók listában válassza ki azt a felügyeleti kiszolgálót, ahol a szabályt futtatni kell.  Ennek a felügyeleti kiszolgálónak kell lennie, amelyet korábban konfigurált a futtató fiókhoz való hozzárendeléséhez.
 5.  Győződjön meg arról, hogy az **engedélyezett** paraméterérték értéke **true (igaz** ) értékre módosul.<br><br> ![felülbírálási paraméter](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ Az értékelés úgy van konfigurálva, hogy alapértelmezés szerint 10 080 per
 
 1. A Operations Manager-konzol **szerzői műveletek** munkaterületén keresse meg a **szabály szakaszban a** *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabályát* .
 2. A keresési eredmények közül válassza ki azt, amely a következő szöveget tartalmazza *: felügyeleti kiszolgáló*.
-3. Kattintson a jobb gombbal a szabályra, majd kattintson a >  **szabály felülbírálása**a**következő osztály összes objektumához: felügyeleti kiszolgáló**.
+3. Kattintson a jobb gombbal a szabályra, majd kattintson a **szabály felülbírálása**a  >  **következő osztály összes objektumához: felügyeleti kiszolgáló**.
 4. Módosítsa az **intervallum** paraméter értékét a kívánt intervallum értékre. Az alábbi példában az érték 1440 percre van állítva (egy nap).<br><br> ![intervallum paraméter](./media/scom-assessment/interval.png)<br>  
 
     Ha az érték 1440 percnél kisebb, akkor a szabály egy nap elteltével fut. Ebben a példában a szabály figyelmen kívül hagyja az intervallum értékét, és egy nap gyakorisággal fut.
@@ -208,7 +208,7 @@ Mielőtt állapot-ellenőrzési megoldást szeretne használni a Log Analyticsba
 Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, majd a részletes ajánlásokat.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>A fókusz területre vonatkozó javaslatok megtekintése és a kijavítani kívánt művelet elvégzése
-1. Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
+1. Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Log Analytics-előfizetések ablaktáblán válasszon ki egy munkaterületet, majd kattintson a **munkaterület-összefoglalás** menüpontra.  
 4. Az **Áttekintés** lapon kattintson a **System Center Operations Manager Health Check** csempére.
@@ -237,9 +237,9 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 
 3. Válassza ki a figyelmen kívül hagyni kívánt ajánlásokat. A következő eljárásban a RecommendationId értékeit fogja használni.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations. txt szövegfájl létrehozása és használata
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt szövegfájl létrehozása és használata
 
-1. Hozzon létre egy IgnoreRecommendations. txt nevű fájlt.
+1. Hozzon létre egy IgnoreRecommendations.txt nevű fájlt.
 2. Illessze be vagy írja be az egyes RecommendationId minden olyan javaslathoz, amelyet szeretne figyelmen kívül hagyni Log Analytics külön sorban, majd mentse és zárjuk be a fájlt.
 3. Helyezze a fájlt a következő mappába az összes olyan számítógépen, amelyen Log Analytics szeretné figyelmen kívül hagyni a javaslatokat.
 4. A Operations Manager felügyeleti kiszolgálón – *rendszermeghajtó*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
@@ -258,7 +258,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Ha később úgy dönt, hogy szeretné látni a figyelmen kívül hagyott javaslatokat, távolítsa el az összes IgnoreRecommendations. txt fájlt, vagy távolítsa el a RecommendationIDs.
+3. Ha később úgy dönt, hogy szeretné megtekinteni a figyelmen kívül hagyott javaslatokat, távolítson el minden IgnoreRecommendations.txt fájlt, vagy távolítsa el a RecommendationIDs.
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Health Check megoldás – gyakori kérdések
 
@@ -272,9 +272,9 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 
 *Ha a System Center Operations Manager Health Check-megoldás hozzáadása után egy másik kiszolgáló is fel van derítve, a rendszer ellenőrzi?* Igen, a felderítés után a rendszer alapértelmezés szerint minden hét nap múlva bejelöli a következőt:.
 
-*Mi az adatgyűjtés folyamatának neve?* AdvisorAssessment. exe
+*Mi az adatgyűjtés folyamatának neve?* AdvisorAssessment.exe
 
-*Hová fut a AdvisorAssessment. exe folyamat?* A AdvisorAssessment. exe azon felügyeleti kiszolgáló HealthService folyamatán fut, amelyen az állapot-ellenőrzési szabály engedélyezve van. Ezzel a folyamattal a teljes környezet felderítése a távoli adatgyűjtésen keresztül érhető el.
+*Hol fut a AdvisorAssessment.exe folyamat?* AdvisorAssessment.exe a felügyeleti kiszolgáló HealthService folyamata alatt fut, ahol az állapot-ellenőrzési szabály engedélyezve van. Ezzel a folyamattal a teljes környezet felderítése a távoli adatgyűjtésen keresztül érhető el.
 
 *Mennyi ideig tart az adatgyűjtés?* A kiszolgálón az adatgyűjtés körülbelül egy órát vesz igénybe. A sok Operations Manager példánnyal vagy adatbázissal rendelkező környezetekben hosszabb időt is igénybe vehet.
 
@@ -282,7 +282,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 
 *Honnan tudható, hogy vannak-e előfeltételi hibák?* Ha az állapot-ellenőrzés futott, és nem jelenik meg az eredmények, akkor valószínű, hogy az ellenőrzés egyes előfeltételei nem teljesülnek. Lekérdezéseket futtathat: `Operation Solution=SCOMAssessment` és `SCOMAssessmentRecommendation FocusArea=Prerequisites` a naplóbeli keresésben megtekintheti a sikertelen előfeltételeket.
 
-*Az előfeltételként szükséges hibákkal kapcsolatos `Failed to connect to the SQL Instance (….).` üzenet jelenik meg. Mi a probléma?* A AdvisorAssessment. exe, az adatokat gyűjtő folyamat a HealthService folyamat alatt fut a felügyeleti kiszolgálón. Az állapot-ellenőrzési eljárás részeként a folyamat megkísérli a kapcsolódást ahhoz a SQL Serverhoz, ahol a Operations Manager-adatbázis megtalálható. Ez a hiba akkor fordulhat elő, ha a tűzfalszabályok letiltják a SQL Server-példányhoz való kapcsolódást.
+*Az `Failed to connect to the SQL Instance (….).` előfeltételként szükséges hibákkal kapcsolatos üzenet jelenik meg. Mi a probléma?* AdvisorAssessment.exe az adatokat gyűjtő folyamat az HealthService folyamat alatt fut a felügyeleti kiszolgálón. Az állapot-ellenőrzési eljárás részeként a folyamat megkísérli a kapcsolódást ahhoz a SQL Serverhoz, ahol a Operations Manager-adatbázis megtalálható. Ez a hiba akkor fordulhat elő, ha a tűzfalszabályok letiltják a SQL Server-példányhoz való kapcsolódást.
 
 *Milyen típusú adatokat gyűjt?* A rendszer a következő adattípusokat gyűjti össze:-WMI-adatok-beállításjegyzék-adatok-Eseménynapló-adatOperations Manager adatok a Windows PowerShell, az SQL-lekérdezések és a fájl-információ gyűjtő használatával.
 

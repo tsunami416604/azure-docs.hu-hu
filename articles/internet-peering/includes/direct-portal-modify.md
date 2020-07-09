@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81681078"
 ---
 Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási műveleteket a közvetlen társításhoz.
@@ -31,7 +31,7 @@ Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási 
 A Azure Portal jelenleg nem támogatja a kapcsolatok eltávolítását. További információért forduljon a [Microsoft-partnerekhez](mailto:peeringexperience@microsoft.com).
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>A sávszélesség frissítése vagy visszalépése aktív kapcsolatokon
-1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése**.
+1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **...**  >  lehetőséget. A **Kapcsolatok szerkesztése**.
     > [!div class="mx-imgBorder"]
     > ![Kapcsolatok szerkesztése](../media/setup-direct-modify-editconnection.png)
 
@@ -40,7 +40,7 @@ A Azure Portal jelenleg nem támogatja a kapcsolatok eltávolítását. További
     > ![Sávszélesség módosítása](../media/setup-direct-modify-editconnectionsettings.png)
 
 ### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>IPv4-vagy IPv6-munkamenet adatainak hozzáadása az aktív kapcsolatokhoz
-1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése** az 1. lépésben látható módon.
+1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **...**  >  lehetőséget. A **Kapcsolatok szerkesztése** az 1. lépésben látható módon.
 1. Adja meg a **munkamenet IPv4-előtagját** vagy a **munkamenet IPv6-előtagjának** adatait, majd kattintson a **Mentés**gombra.
 
 ### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>IPv4-vagy IPv6-munkamenet adatainak eltávolítása az aktív kapcsolatokon

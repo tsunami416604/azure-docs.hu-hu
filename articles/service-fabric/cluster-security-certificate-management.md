@@ -4,12 +4,11 @@ description: További információ az X. 509 tanúsítvánnyal védett Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: ecdeb5c9e30c176e2f3525f8efeb861d9210b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324742"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Tanúsítványkezelő Service Fabric-fürtökben
 
@@ -69,7 +68,7 @@ A fentiekben ismertetett első két lépés nagyrészt nem kapcsolódó. az egye
 
 Ezek a lépések az alábbi ábrán láthatók: Figyelje meg, hogy az ujjlenyomattal és a köznapi névvel deklarált tanúsítványok közötti különbségek kiépítve.
 
-*1. ábra.* Az ujjlenyomattal deklarált tanúsítványok kiállítása és kiépítési folyamata.
+*1\. ábra* Az ujjlenyomattal deklarált tanúsítványok kiállítása és kiépítési folyamata.
 ![Az ujjlenyomattal deklarált tanúsítványok kiépítés][Image1]
 
 *2. ábra.* A tanúsítvány kiállítása és kiépítési folyamata a tulajdonos köznapi neve szerint deklarálva.
@@ -82,7 +81,8 @@ Ez a témakör részletesen szerepel a Key Vault [dokumentációjában](../key-v
     - Miután a kiállító (hitelesítésszolgáltató) válaszol az aláírt tanúsítvánnyal, az eredmény bekerül a tárolóba, és a tanúsítvány elérhető a következő műveletekhez:
       - a (z) {vaultUri}/Certificates/{Name} alatt: a tanúsítvány, beleértve a nyilvános kulcsot és a metaadatokat
       - a (z) {vaultUri}/Keys/{Name}: a tanúsítvány titkos kulcsa, amely titkosítási műveletekhez érhető el (becsomagolás/kicsomagolás, aláírás/ellenőrzés)
-      - a (z) {vaultUri}/Secrets/{Name}: a titkos kulcsát tartalmazó tanúsítvány, amely nem védett pfx-vagy PEM-fájlként való letöltésre van kihasználva, hogy a tároló tanúsítványa valójában a tanúsítvány példányainak kronológiai sora, a szabályzat megosztása. A tanúsítványok verziói a szabályzat élettartama és megújítási attribútumai alapján jönnek létre. Erősen ajánlott, hogy a tár tanúsítványai ne osszanak meg tárgyakat vagy tartományokat/DNS-neveket; zavaró lehet a fürtben, hogy a különböző tár tanúsítványokból származó tanúsítványokat hozzon létre, azonos témákkal, de lényegében más attribútumokkal, például a kibocsátóval, a kulcshasználat stb.
+      - a (z) {vaultUri}/Secrets/{Name}: a titkos kulcsát tartalmazó tanúsítvány, amely nem védett pfx-vagy PEM-fájlként letölthető.  
+    Ne felejtse el, hogy a tároló tanúsítványa valójában a tanúsítvány példányainak kronológiai sora, egy szabályzat megosztása. A tanúsítványok verziói a szabályzat élettartama és megújítási attribútumai alapján jönnek létre. Erősen ajánlott, hogy a tár tanúsítványai ne osszanak meg tárgyakat vagy tartományokat/DNS-neveket; zavaró lehet a fürtben, hogy a különböző tár tanúsítványokból származó tanúsítványokat hozzon létre, azonos témákkal, de lényegében más attribútumokkal, például a kibocsátóval, a kulcshasználat stb.
 
 Ezen a ponton a tárolóban létezik egy tanúsítvány, amely készen áll a felhasználásra. Ettől kezdve:
 
@@ -202,7 +202,7 @@ Itt található egy olyan JSON-kivonat, amely egy olyan sablonhoz tartozik, amel
   ]
 ```   
 
-A fentiek lényegében azt mondja, hogy az ```json [parameters('primaryClusterCertificateTP')] ``` ujjlenyomattal rendelkező tanúsítvány és a ```json [parameters('clusterCertificateUrlValue')] ``` kulcstartó URI-ja a fürt egyetlen tanúsítványa, ujjlenyomat alapján van deklarálva. A következő lépésben a tanúsítvány kiváltásának biztosításához szükséges további erőforrásokat fogjuk beállítani.
+A fentiek lényegében azt mondja, hogy az ujjlenyomattal rendelkező tanúsítvány és a kulcstartó ```json [parameters('primaryClusterCertificateTP')] ``` URI-ja ```json [parameters('clusterCertificateUrlValue')] ``` a fürt egyetlen tanúsítványa, ujjlenyomat alapján van deklarálva. A következő lépésben a tanúsítvány kiváltásának biztosításához szükséges további erőforrásokat fogjuk beállítani.
 
 ### <a name="setting-up-prerequisite-resources"></a>Előfeltételként szükséges erőforrások beállítása
 Ahogy azt korábban említettük, a virtuálisgép-méretezési csoport titkos kulcsaként kiépített tanúsítványt a Microsoft. számítási erőforrás-szolgáltató szolgáltatása, az első féltől származó identitása és a telepítési operátor nevében kéri le. Az automatikus átváltáshoz, amely megváltozik – váltson egy felügyelt identitás használatára, amely a virtuálisgép-méretezési csoporthoz van rendelve, és amely engedélyeket kap a tár titkos kulcsaihoz.
@@ -414,7 +414,7 @@ Ezen a ponton a fent említett frissítéseket egyetlen üzemelő példányban f
 Ez a szakasz a fentiekben ismertetett lépéseket ismerteti, és figyelemmel kíséri a fontos szempontokat.
 
 #### <a name="certificate-provisioning-explained"></a>Tanúsítvány kiépítés, magyarázat
-A KVVM-bővítmény kiépítési ügynökként folyamatosan fut előre meghatározott gyakorisággal. Ha nem sikerül beolvasni egy megfigyelt tanúsítványt, az továbbra is a következő sorba kerül, majd a következő ciklusig hibernálva lesz. A fürt betöltési ügynökének a SFVM-bővítménynek a deklarált tanúsítványokra van szüksége, mielőtt a fürt kikerül. Ez azt jelenti, hogy a SFVM-bővítmény csak a fürt tanúsítvány (ok) sikeres lekérése után futtatható, amelyet a ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` záradék és az KeyVaultVM-bővítmény ```json "requireInitialSync": true``` beállítása is jelez. Ez azt jelzi, hogy az első futtatáskor (az üzembe helyezés után vagy egy újraindítás után) a KVVM-bővítménynek a megfigyelt tanúsítványokon keresztül kell futnia, amíg az összes letöltése nem sikerült. Ha a paraméter hamis értékre van állítva, és a fürt tanúsítványának lekérése sikertelen volt, a rendszer a fürt központi telepítésének meghibásodását eredményezi. Ezzel szemben, ha a megfigyelt tanúsítványok helytelen/érvénytelen listájával való kezdeti szinkronizálást igényel, a KVVM-bővítmény meghibásodását eredményezné, így a fürt üzembe helyezése nem sikerült.  
+A KVVM-bővítmény kiépítési ügynökként folyamatosan fut előre meghatározott gyakorisággal. Ha nem sikerül beolvasni egy megfigyelt tanúsítványt, az továbbra is a következő sorba kerül, majd a következő ciklusig hibernálva lesz. A fürt betöltési ügynökének a SFVM-bővítménynek a deklarált tanúsítványokra van szüksége, mielőtt a fürt kikerül. Ez azt jelenti, hogy a SFVM-bővítmény csak a fürt tanúsítvány (ok) sikeres lekérése után futtatható, amelyet a ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` záradék és az KeyVaultVM-bővítmény beállítása is jelez ```json "requireInitialSync": true``` . Ez azt jelzi, hogy az első futtatáskor (az üzembe helyezés után vagy egy újraindítás után) a KVVM-bővítménynek a megfigyelt tanúsítványokon keresztül kell futnia, amíg az összes letöltése nem sikerült. Ha a paraméter hamis értékre van állítva, és a fürt tanúsítványának lekérése sikertelen volt, a rendszer a fürt központi telepítésének meghibásodását eredményezi. Ezzel szemben, ha a megfigyelt tanúsítványok helytelen/érvénytelen listájával való kezdeti szinkronizálást igényel, a KVVM-bővítmény meghibásodását eredményezné, így a fürt üzembe helyezése nem sikerült.  
 
 #### <a name="certificate-linking-explained"></a>Tanúsítvány összekapcsolása, magyarázat
 Előfordulhat, hogy észrevette a KVVM-bővítmény "linkOnRenewal" jelzőjét, és az a tény, hogy hamis értékre van állítva. Itt részletesen ismertetjük az e jelző által vezérelt viselkedést, valamint a fürt működésével kapcsolatos következményeiket. Megjegyzés Ez a viselkedés a Windowsra jellemző.
@@ -441,7 +441,7 @@ Mindkét esetben a szállítás meghiúsul, és előfordulhat, hogy a fürt leá
 
 Az ilyen incidensek elleni védekezéshez a következőket javasoljuk:
   - ne keverje össze a különböző tár tanúsítványait; minden egyes tár tanúsítványának külön célra kell szolgálnia, és a tulajdonosuk és a SAN-nak meg kell jelennie a sajátosságoknak
-  - a tulajdonos köznapi nevének belefoglalása a SAN-listára (például: "CN<subject common name>=")  
+  - a tulajdonos köznapi nevének belefoglalása a SAN-listára (például: "CN = <subject common name> ")  
   - Ha nem biztos, tiltsa le az KVVM bővítménnyel kiépített tanúsítványok megújításához való csatolást 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>Miért érdemes felhasználó által hozzárendelt felügyelt identitást használni? Mik a használatának következményei?

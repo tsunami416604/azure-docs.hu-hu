@@ -4,15 +4,14 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja a BGP-t egy Azure-beli
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863614"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987753"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>A BGP konfigurálása Azure-beli VPN-átjárón a parancssori felület használatával
 
@@ -91,7 +90,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. hozza létre a VPN-átjárót az AS-számmal
 
-Hozza létre a TestVNet1 virtuális hálózati átjáróját. A BGP egy Route-alapú VPN-átjárót igényel. Emellett a további paraméterre `-Asn` is szükség van a TestVNet1 autonóm rendszer számának (ASN) beállításához. Az átjáró létrehozása hosszabb időt is igénybe vehet (45 perc vagy több). 
+Hozza létre a TestVNet1 virtuális hálózati átjáróját. A BGP egy Route-alapú VPN-átjárót igényel. Emellett a további paraméterre is szükség van a `-Asn` TestVNet1 autonóm rendszer számának (ASN) beállításához. Az átjáró létrehozása hosszabb időt is igénybe vehet (45 perc vagy több). 
 
 Ha ezt a parancsot a `--no-wait` paraméterrel futtatja, nem jelenik meg visszajelzés vagy kimenet. A `--no-wait` paraméter lehetővé teszi, hogy az átjáró a háttérben legyen létrehozva. Ez nem jelenti azt, hogy a VPN-átjárót azonnal létrehozták.
 
@@ -103,7 +102,7 @@ az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP 
 
 Az átjáró létrehozása után be kell szereznie a BGP-társ IP-címét az Azure VPN-átjárón. Ez a címe szükséges ahhoz, hogy a VPN-átjárót BGP-társként konfigurálja a helyszíni VPN-eszközökhöz.
 
-Futtassa a következő parancsot, és keresse `bgpSettings` meg a kimenet tetején található szakaszt:
+Futtassa a következő parancsot, és keresse meg a `bgpSettings` kimenet tetején található szakaszt:
 
 ```azurecli
 az network vnet-gateway list -g TestBGPRG1 
@@ -133,7 +132,7 @@ Ez a gyakorlat továbbra is a diagramon látható konfiguráció összeállítá
 * A helyi hálózati átjáróhoz szükséges minimális előtag a VPN-eszközön található BGP-társ IP-címének állomásneve. Ebben az esetben ez a 10.51.255.254/32 előtag/32.
 * Emlékeztetőként különböző BGP-ASN kell használnia a helyszíni hálózatok és az Azure virtuális hálózat között. Ha ezek megegyeznek, akkor módosítania kell a VNet ASN-t, ha a helyszíni VPN-eszközök már használják az ASN-t más BGP-szomszédokkal.
 
-A folytatás előtt győződjön meg arról, hogy befejezte a [BGP engedélyezése a VPN-átjáróhoz](#enablebgp) című szakaszát, és hogy továbbra is csatlakozik az 1. előfizetéshez. Figyelje meg, hogy ebben a példában egy új erőforráscsoportot hoz létre. Figyelje meg a helyi hálózati átjáró két további paraméterét is: `Asn` és. `BgpPeerAddress`
+A folytatás előtt győződjön meg arról, hogy befejezte a [BGP engedélyezése a VPN-átjáróhoz](#enablebgp) című szakaszát, és hogy továbbra is csatlakozik az 1. előfizetéshez. Figyelje meg, hogy ebben a példában egy új erőforráscsoportot hoz létre. Figyelje meg a helyi hálózati átjáró két további paraméterét is: `Asn` és `BgpPeerAddress` .
 
 ```azurecli
 az group create -n TestBGPRG5 -l eastus2 
@@ -222,7 +221,7 @@ Az alábbi utasítások az előző részekben ismertetett lépésekkel folytató
 
 Fontos annak biztosítása, hogy az új virtuális hálózat (TestVNet2) IP-címének mérete ne legyen átfedésben a VNet-tartományokkal.
 
-Ebben a példában a virtuális hálózatok ugyanahhoz az előfizetéshez tartoznak. A különböző előfizetések közötti VNet-VNet kapcsolatokat is beállíthat. További információ: [VNet-to-VNet-kapcsolatok konfigurálása](vpn-gateway-howto-vnet-vnet-cli.md). A BGP engedélyezéséhez vegye `-EnableBgp $True` fel a kapcsolatot a kapcsolatok létrehozásakor.
+Ebben a példában a virtuális hálózatok ugyanahhoz az előfizetéshez tartoznak. A különböző előfizetések közötti VNet-VNet kapcsolatokat is beállíthat. További információ: [VNet-to-VNet-kapcsolatok konfigurálása](vpn-gateway-howto-vnet-vnet-cli.md). `-EnableBgp $True`A BGP engedélyezéséhez vegye fel a kapcsolatot a kapcsolatok létrehozásakor.
 
 #### <a name="1-create-a-new-resource-group"></a>1. hozzon létre egy új erőforráscsoportot
 
@@ -262,7 +261,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 
 ### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>2. lépés: a TestVNet1 és a TestVNet2 átjárók összekötése
 
-Ebben a lépésben létrehozza a kapcsolódást a TestVNet1 és a site5 között. Ha engedélyezni szeretné a BGP-t ehhez a kapcsolódáshoz `--enable-bgp` , meg kell adnia a paramétert.
+Ebben a lépésben létrehozza a kapcsolódást a TestVNet1 és a site5 között. Ha engedélyezni szeretné a BGP-t ehhez a kapcsolódáshoz, meg kell adnia a `--enable-bgp` paramétert.
 
 A következő példában a virtuális hálózati átjáró és a helyi hálózati átjáró különböző erőforráscsoportok. Ha az átjárók különböző erőforráscsoportok, a virtuális hálózatok közötti kapcsolat beállításához meg kell adnia a két átjáró teljes erőforrás-AZONOSÍTÓját. 
 

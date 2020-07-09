@@ -1,19 +1,16 @@
 ---
 title: Karbantartási konfigurációhoz társított erőforrások áthelyezése másik régióba
 description: Megtudhatja, hogyan helyezhet át egy virtuális gép karbantartási konfigurációjához társított erőforrásokat egy másik Azure-régióba
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676891"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Erőforrások áthelyezése egy karbantartási vezérlő konfigurációjában egy másik régióba
 
@@ -42,7 +39,7 @@ Mielőtt megkezdené a karbantartási vezérlő konfigurációjával kapcsolatos
 
 1. Mielőtt elkezdené, adja meg ezeket a változókat. Mindegyikhez példát adtunk.
 
-    **Változó** | **Részletek** | **Például**
+    **Változó** | **Részletek** | **Példa**
     --- | ---
     $subId | A karbantartási konfigurációkat tartalmazó előfizetés azonosítója | "a-előfizetés-azonosító"
     $rsrcGroupName | Erőforráscsoport neve (Azure VM) | "VMResourceGroup"

@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: 3118ca39ec0efd42c9f7b622c91f857034ef4b03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333839"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560394"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -387,7 +387,7 @@ display(Image(staticMapImage))
 
 ![Az útvonalat ábrázoló Térkép](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hívhatja közvetlenül a Azure Maps REST API-kat, és hogyan jelenítheti meg Azure Maps-adatok a Python használatával.
 

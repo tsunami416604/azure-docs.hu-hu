@@ -7,10 +7,9 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837127"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
@@ -41,7 +40,7 @@ A legtöbb esetben nem kell létrehoznia egy kapcsolódási erőforrást, mert a
 
 Az alábbi táblázatban található parancsmagok automatizálási kapcsolatokat hoznak létre és kezelhetnek a PowerShell-lel. Az az [modulok](shared-resources/modules.md#az-modules)részét képezik.
 
-|Parancsmag|Leírás|
+|Parancsmag|Description|
 |---|---|
 |[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Adatokat kér le egy kapcsolatban.|
 |[Új – AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Új kapcsolatot hoz létre.|
@@ -52,7 +51,7 @@ Az alábbi táblázatban található parancsmagok automatizálási kapcsolatokat
 
 A következő táblázatban található belső parancsmag a runbookok és a DSC-konfigurációk kapcsolatainak elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](shared-resources/modules.md#internal-cmdlets).
 
-|Belső parancsmag|Leírás|
+|Belső parancsmag|Description|
 |---|---|
 |`Get-AutomationConnection` | Lekéri a kapcsolatok különböző mezőinek értékeit, és visszaadja őket [szórótábla](https://go.microsoft.com/fwlink/?LinkID=324844). Ezt a szórótábla a megfelelő parancsokkal használhatja a runbook vagy a DSC-konfigurációban.|
 
@@ -97,7 +96,7 @@ Az Automation-fiók létrehozásakor a szolgáltatás alapértelmezés szerint t
 
 ## <a name="add-a-connection-type"></a>Kapcsolattípus hozzáadása
 
-Ha a runbook vagy a DSC-konfiguráció egy külső szolgáltatáshoz csatlakozik, akkor egy integrációs modul nevű [Egyéni modulban](shared-resources/modules.md#custom-modules) kell megadnia a kapcsolat típusát. Ez a modul tartalmaz egy metaadat-fájlt, amely megadja a kapcsolattípus tulajdonságait, és neve ** &lt; ModuleName &gt; -Automation. JSON**, amely a tömörített **. zip** fájl modul mappájában található. Ez a fájl tartalmazza a kapcsolat azon mezőit, amelyek szükségesek a modul által reprezentált rendszerhez vagy szolgáltatáshoz való kapcsolódáshoz. A fájl használatával beállíthatja a mezők nevét, az adattípusokat, a titkosítási állapotot és a választható állapotot a kapcsolattípus számára. 
+Ha a runbook vagy a DSC-konfiguráció egy külső szolgáltatáshoz csatlakozik, akkor egy integrációs modul nevű [Egyéni modulban](shared-resources/modules.md#custom-modules) kell megadnia a kapcsolat típusát. Ez a modul tartalmaz egy metaadat-fájlt, amely megadja a kapcsolattípus tulajdonságait, és neve ** &lt; ModuleName &gt;-Automation.js, a**tömörített **. zip** fájl modul mappájában található. Ez a fájl tartalmazza a kapcsolat azon mezőit, amelyek szükségesek a modul által reprezentált rendszerhez vagy szolgáltatáshoz való kapcsolódáshoz. A fájl használatával beállíthatja a mezők nevét, az adattípusokat, a titkosítási állapotot és a választható állapotot a kapcsolattípus számára. 
 
 Az alábbi példa egy **. JSON** fájlformátumú sablon, amely a Felhasználónév és a jelszó tulajdonságait határozza meg egy egyéni kapcsolattípus számára, a következő néven `MyModuleConnection` :
 

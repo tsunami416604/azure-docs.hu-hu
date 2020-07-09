@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358446"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>További lépések és a Azure AD Connect kezelése
 A jelen cikkben ismertetett működési eljárások segítségével testreszabhatja Azure Active Directory (Azure AD) kapcsolódását a szervezet igényeinek és követelményeinek megfelelően.  
@@ -72,7 +72,7 @@ Az alábbi táblázat a feladatok összegzését és az egyes feladatok rövid l
 
 ![További feladatok listája](./media/how-to-connect-post-installation/addtasks2.png)
 
-| További feladat | Leírás |
+| További feladat | Description |
 | --- | --- |
 |**Adatvédelmi beállítások**|Megtekintheti, hogy milyen telemetria-adatmegosztások vannak a Microsofttal.|
 |**Aktuális konfiguráció megtekintése**|Tekintse meg az aktuális Azure AD Connect megoldást.  Ide tartozik az általános beállítások, a szinkronizált könyvtárak és a szinkronizálási beállítások. |

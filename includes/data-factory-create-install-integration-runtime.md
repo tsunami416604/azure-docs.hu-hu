@@ -4,16 +4,15 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 20397339c1675686f2a670dc60899bfd4bd4c3ba
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76989084"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050407"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
-Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely a gépen lévő SQL Server adatait másolja az Azure SQL Database-be. 
+Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely a gépen lévő SQL Server adatait másolja Azure SQL Databasere. 
 
 1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyag későbbi részében használni fogja. 
 
@@ -131,7 +130,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     f. Adja meg a felhasználónevet.
 
-    g. Adja meg a felhasználónévhez társított jelszót.
+    : Adja meg a felhasználónévhez társított jelszót.
 
     h. Válassza a **Teszt** elemet annak ellenőrzéséhez, hogy az integrációs modul kapcsolódni tud-e az SQL Serverhez. Sikeres kapcsolódás esetén egy zöld pipa jelenik meg. Sikertelen kapcsolódás esetén egy hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez.    
 

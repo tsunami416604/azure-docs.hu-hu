@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826111"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok az Azure Data Factoryben
@@ -72,10 +71,10 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
-típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
-szerkezet | Az adatkészlet sémája. Részletekért lásd: [adatkészlet sémája](#dataset-structure-or-schema). | Nem |
-typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
+name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
+típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Yes |
+szerkezet | Az adatkészlet sémája. Részletekért lásd: [adatkészlet sémája](#dataset-structure-or-schema). | No |
+typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Yes |
 
 ### <a name="data-flow-compatible-dataset"></a>Adatfolyam-kompatibilis adatkészlet
 
@@ -117,10 +116,10 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
-típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
-séma | Az adatkészlet sémája. Részletekért lásd: [az adatfolyam-kompatibilis adatkészletek](#dataset-type). | Nem |
-typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
+name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
+típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Yes |
+séma | Az adatkészlet sémája. Részletekért lásd: [az adatfolyam-kompatibilis adatkészletek](#dataset-type). | No |
+typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Yes |
 
 
 ## <a name="dataset-example"></a>Adatkészlet – példa
@@ -183,10 +182,10 @@ A struktúra minden oszlopa a következő tulajdonságokat tartalmazza:
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | Az oszlop neve. | Igen
-típus | Az oszlop adattípusa. A Data Factory a következő közbenső adattípusokat támogatja megengedett értékként: **Int16, Int32, Int64, Single, Double, decimális, byte [], Boolean, string, GUID, datetime, DateTimeOffset és TimeSpan** | Nem
-kulturális környezet | . A .NET-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`. | Nem
-formátumban | A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem
+name | Az oszlop neve. | Yes
+típus | Az oszlop adattípusa. A Data Factory a következő közbenső adattípusokat támogatja megengedett értékként: **Int16, Int32, Int64, Single, Double, decimális, byte [], Boolean, string, GUID, datetime, DateTimeOffset és TimeSpan** | No
+kulturális környezet | . A .NET-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`. | No
+formátumban | A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No
 
 ### <a name="example"></a>Példa
 A következő példában tegyük fel, hogy a forrás blob-fájl CSV formátumú, és három oszlopot tartalmaz: felhasználóazonosító, név és lastlogindate. A Int64, string és DateTime típusú egyéni datetime formátummal rendelkeznek, a hét napjainak rövidített francia neveivel.

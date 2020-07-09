@@ -7,12 +7,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267630"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub magas rendelkezésre állása és vészhelyreállítása
 
@@ -60,7 +59,7 @@ Mindkét feladatátvételi beállítás a következő helyreállítási pontok c
 Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről és a háttérbeli alkalmazásokról érkező összes művelet manuális beavatkozás nélkül is működni fog. Ez azt jelenti, hogy az eszközről a felhőbe irányuló üzenetek továbbra is működőképesek maradnak, és a teljes eszköz beállításjegyzéke érintetlen. A Event Grid használatával kibocsátott események a korábban konfigurált előfizetéseken keresztül is felhasználhatók, feltéve, hogy a Event Grid-előfizetések továbbra is elérhetők.
 
 > [!CAUTION]
-> - A IoT Hub esemény hub-kompatibilis neve és végpontja a feladatátvétel után a beépített események végpontjának változása, a konfigurált fogyasztói csoportok pedig el lesznek távolítva (ez az a hiba, amely a 2020. május előtt lesz kijavítva). Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül az alkalmazásban, újra kell [konfigurálnia az általuk használt fogyasztói csoportot, és a feladatátvétel után be kell olvasnia az új Event hub-kompatibilis végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a művelet folytatásához. Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített végponthoz, előfordulhat, hogy **újra kell indítania**a műveletet.
+> - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül az alkalmazásban, akkor a művelet folytatásához le kell [kérnie az új Event hub-kompatibilis végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a feladatátvétel után. Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített végponthoz, előfordulhat, hogy **újra kell indítania**a műveletet.
 >
 > - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. 
 
@@ -130,9 +129,9 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 | HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|None|None|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|None|
-| Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magasság|> 1 IoT hub díja|
+| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|No|None|None|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Yes|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|None|
+| Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|No|Magasság|> 1 IoT hub díja|
 
 ## <a name="next-steps"></a>További lépések
 

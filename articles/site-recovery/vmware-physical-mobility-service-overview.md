@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131792"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
 
@@ -172,7 +172,7 @@ Beállítás | Részletek
 --- | ---
 Szintaxis | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
-`-d` | Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét `/usr/local/ASR`:.
+`-d` | Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét: `/usr/local/ASR` .
 `-v` | Kötelező. Meghatározza azt a platformot, amelyen a mobilitási szolgáltatás telepítve van. <br/> **VMware** VMWare virtuális gépekhez/fizikai kiszolgálókhoz. <br/> **Azure** Azure-beli virtuális gépekhez.
 `-q` | Választható. Megadja, hogy a telepítőt csendes módban kell-e futtatni.
 
@@ -186,8 +186,8 @@ Szintaxis | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-beli virtuálisgép-ügynök
 
-- **Windows rendszerű virtuális gépek**: a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](/azure/virtual-machines/extensions/features-windows#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
-- **Linux rendszerű virtuális gépek**: a [WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
+- **Windows rendszerű virtuális gépek**: a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](../virtual-machines/extensions/features-windows.md#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
+- **Linux rendszerű virtuális gépek**: a [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
 
 ## <a name="locate-installer-files"></a>Telepítőfájlok megkeresése
 
@@ -212,6 +212,6 @@ Telepítőfájl | Operációs rendszer (csak 64-bit)
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A mobilitási szolgáltatás leküldéses telepítésének beállítása](vmware-azure-install-mobility-service.md).

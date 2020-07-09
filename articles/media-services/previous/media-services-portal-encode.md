@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69542605"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Objektum kódolása a Media Encoder Standard használatával az Azure Portalon
@@ -41,14 +40,14 @@ A médiafájlok feldolgozásának méretezésével kapcsolatos további informá
 A tartalom kódolása Media Encoder Standard használatával:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Beállítások** > **eszközök**elemet. Válassza ki a kódolni kívánt objektumot.
+2. Válassza a **Beállítások**  >  **eszközök**elemet. Válassza ki a kódolni kívánt objektumot.
 3. Válassza ki a **Kódolás** gombot.
 4. Az **Objektum kódolása** ablakban válassza a **Media Encoder Standard** feldolgozóeszközt, és egy beállításkészletet. A beállításkészletekkel kapcsolatos információkért lásd a [sávszélességi skála automatikus létrehozását](media-services-autogen-bitrate-ladder-with-mes.md) és a [Media Encoder Standard előre beállított feladatait](media-services-mes-presets-overview.md) ismertető részeket. Fontos, hogy a bemeneti videóhoz legmegfelelőbb beállításkészlet legyen kiválasztva. Ha például tudja, hogy a bemeneti videó felbontása 1920 &#215; 1080 képpont, akkor választhatja a **H264 Multiple Bitrate 1080p** beállításkészletet. Ha a videó alacsony (640 &#215; 360) felbontású, ne használja a **H264 Multiple Bitrate 1080p** beállításkészletet.
    
    Az erőforrások egyszerűbb kezelése érdekében lehetősége van módosítani a kimeneti objektum nevét, illetve a feladat nevét.
    
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

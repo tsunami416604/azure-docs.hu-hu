@@ -12,10 +12,9 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78183975"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
@@ -26,7 +25,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 ## <a name="200"></a>2.0.0
 
-- Önérvényesített lap (`selfasserted`)
+- Önérvényesített lap ( `selfasserted` )
   - A [megjelenítési vezérlők](display-controls.md) támogatása az egyéni házirendekben.
 
 ## <a name="120"></a>1.2.0
@@ -36,7 +35,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
   - Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
     - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
     - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
-  - Az e-mail `type=email` -mező most, a mobil billentyűzetek pedig a megfelelő javaslatokat nyújtják
+  - Az e-mail-mező most `type=email` , a mobil billentyűzetek pedig a megfelelő javaslatokat nyújtják
   - A Chrome fordításának támogatása
 - Egyesített és önérvényesített lapok
   - A Felhasználónév/e-mail és jelszó mezők mostantól a `form` HTML-elemmel lehetővé teszik az Edge és az Internet Explorer (IE) számára az adatok megfelelő mentését.

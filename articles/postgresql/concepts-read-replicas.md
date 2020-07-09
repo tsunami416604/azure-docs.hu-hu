@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/24/2020
+ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367995"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -33,6 +33,9 @@ Az olvasási replika funkció PostgreSQL aszinkron replikálást használ. A fun
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhatja. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
 
+>[!NOTE]
+> Az alapszintű kiszolgálók csak azonos régióbeli replikációt támogatnak.
+
 A főkiszolgáló bármely [Azure Database for PostgreSQL régióban](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)elérhető. A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replika régiók érhetők el a fő régiótól függően.
 
 [![Replika-régiók olvasása](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
@@ -40,10 +43,7 @@ A főkiszolgáló bármely [Azure Database for PostgreSQL régióban](https://az
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiókban bármikor létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. Ezek az univerzális replika-régiók:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Közép-Korea, Dél-Brazília, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója.
-
-* Az USA 2. nyugati régiója átmenetileg nem érhető el a régiók közötti replika helyeként.
-
+Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati középső régiója
 
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
@@ -52,7 +52,7 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 
 A következő szempontokat kell figyelembe venni: 
 
-* Regionális elérhetőség: Azure Database for PostgreSQL az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Azure Database for PostgreSQL a közép-Franciaországban, Észak-és Közép-Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
     
 * Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília. 
    Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL két mérőszámot biztosít a replikáció figyel
 
 A **replikák közötti maximális késés** a fő és a legkésleltetett replika közötti késést mutatja bájtban. Ez a metrika csak a főkiszolgálón érhető el.
 
-A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció óta eltelt időt mutatja. Ha nincs tranzakció a főkiszolgálón, a metrika ezt az időbeli késést tükrözi. Ez a metrika csak replika kiszolgálók esetében érhető el. A replika késését a `pg_stat_wal_receiver` nézetből számítjuk ki:
+A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció óta eltelt időt mutatja. Ha nincs tranzakció a főkiszolgálón, a metrika ezt az időbeli késést tükrözi. Ez a metrika csak replika kiszolgálók esetében érhető el. A replika késését a nézetből számítjuk ki `pg_stat_wal_receiver` :
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -147,7 +147,15 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 Ez a szakasz az olvasási replika szolgáltatással kapcsolatos szempontokat foglalja össze.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Olvasási replika létrehozása előtt a `azure.replication_support` paramétert a főkiszolgálón lévő **replika** értékre kell beállítani. Ha módosítja ezt a paramétert, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót. A `azure.replication_support` paraméter csak a általános célú és a memória optimalizált szintjeire vonatkozik.
+Az olvasási replikák és a [logikai dekódolás](concepts-logical.md) a postgres írási előre megadott naplójától (Wal) függ. Ehhez a két szolgáltatáshoz különböző naplózási szintek szükségesek a postgres. A logikai dekódolás magasabb szintű naplózást igényel, mint az olvasási replikák.
+
+A megfelelő naplózási szint konfigurálásához használja az Azure-replikáció támogatási paraméterét. Az Azure-beli replikáció támogatásának három beállítási lehetősége van:
+
+* **Off** – a legkevesebb információt helyezi el a Wal-ben. Ez a beállítás nem érhető el a legtöbb Azure Database for PostgreSQL kiszolgálón.  
+* **Replika** – részletesebb, mint a **kikapcsolás**. Az [olvasási replikák](concepts-read-replicas.md) működéséhez szükséges naplózás minimális szintje. Ez a beállítás az alapértelmezett a legtöbb kiszolgálón.
+* **Logikai** – részletesebb, mint a **replika**. Ez a minimális szintű naplózás a logikai dekódolás működéséhez. Ebben a beállításban az olvasási replikák is működnek.
+
+A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg ez a paraméter a és a postgres paramétereket állítja be `wal_level` `max_replication_slots` `max_wal_senders` .
 
 ### <a name="new-replicas"></a>Új replikák
 Az olvasási replika új Azure Database for PostgreSQL-kiszolgálóként jön létre. Egy meglévő kiszolgálót nem lehet replikába készíteni. Egy másik olvasási replika replikája nem hozható létre.
@@ -158,14 +166,17 @@ A replika ugyanazokkal a számítási és tárolási beállításokkal jön lét
 > [!IMPORTANT]
 > A főbeállítás új értékre frissítése előtt frissítse a replika konfigurációját egy egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
-A PostgreSQL megköveteli, hogy az `max_connections` olvasási replika paraméterének értéke nagyobb legyen, mint a főérték; Ellenkező esetben a replika nem indul el. A Azure Database for PostgreSQL a `max_connections` paraméter értéke az SKU-on alapul. További információ: [Limits in Azure Database for PostgreSQL](concepts-limits.md). 
+A PostgreSQL megköveteli `max_connections` , hogy az olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. A Azure Database for PostgreSQL a `max_connections` paraméter értéke az SKU-on alapul. További információ: [Limits in Azure Database for PostgreSQL](concepts-limits.md). 
 
 Ha a fent ismertetett kiszolgálói értékeket próbálja meg frissíteni, de nem tartja be a korlátozásokat, hibaüzenetet kap.
 
 A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai nem öröklődnek a főkiszolgálóról a replikára a replika létrehozásakor vagy azt követően.
 
+### <a name="basic-tier"></a>Alapszintű csomag
+Az alapszintű kiszolgálók csak azonos régióbeli replikációt támogatnak.
+
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-A [PostgreSQL megköveteli](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , hogy az `max_prepared_transactions` olvasási replika paraméterének értéke nagyobb legyen, mint a főérték; Ellenkező esetben a replika nem indul el. Ha módosítani `max_prepared_transactions` szeretné a főkiszolgálót, először módosítsa a replikákat.
+A [PostgreSQL megköveteli](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) `max_prepared_transactions` , hogy az olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. Ha módosítani szeretné a `max_prepared_transactions` főkiszolgálót, először módosítsa a replikákat.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a replika újraindul a módosítás alkalmazásához. A leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.

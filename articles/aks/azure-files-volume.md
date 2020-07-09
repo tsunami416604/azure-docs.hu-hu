@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207666"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Files megosztással rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
@@ -22,7 +22,7 @@ A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-be
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>A fájlmegosztás csatlakoztatása kötetként
 
-Ha a Azure Files-megosztást a pod-ba szeretné csatlakoztatni, konfigurálja a kötetet a tároló spec. `azure-files-pod.yaml` hozzon létre egy nevű új fájlt a következő tartalommal. Ha módosította a fájlmegosztás vagy a titkos kód nevét, frissítse a *megosztásnév* és a *secretName*. Ha szükséges, frissítse a `mountPath`-t, amely a fájlok megosztásának elérési útja a pod-ban. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
+Ha a Azure Files-megosztást a pod-ba szeretné csatlakoztatni, konfigurálja a kötetet a tároló spec. hozzon létre egy nevű új fájlt `azure-files-pod.yaml` a következő tartalommal. Ha módosította a fájlmegosztás vagy a titkos kód nevét, frissítse a *megosztásnév* és a *secretName*. Ha szükséges, frissítse a `mountPath` -t, amely a fájlok megosztásának elérési útja a pod-ban. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
 
 ```yaml
 apiVersion: v1
@@ -104,7 +104,7 @@ A `kubectl` parancs használatával hozza létre a pod-t.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Most már rendelkezik egy futó Pod Azure Files-megosztással, amely a */mnt/Azure*-ben van csatlakoztatva. A használatával `kubectl describe pod mypod` ellenőrizheti, hogy a megosztás sikeresen csatlakoztatva van-e. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
+Most már rendelkezik egy futó Pod Azure Files-megosztással, amely a */mnt/Azure*-ben van csatlakoztatva. `kubectl describe pod mypod`A használatával ellenőrizheti, hogy a megosztás sikeresen csatlakoztatva van-e. A következő összefoglalt példa kimenet a tárolóban csatlakoztatott kötetet mutatja:
 
 ```
 Containers:

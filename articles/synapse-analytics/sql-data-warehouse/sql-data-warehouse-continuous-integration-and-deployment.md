@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213567"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Az adattárházak folyamatos integrációja és üzembe helyezése
 
@@ -50,7 +50,7 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
       ![Üzembe helyezési feladat](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Üzembe helyezési feladat")
 
-2. Ha önkiszolgáló ügynököt használ, győződjön meg róla, hogy a környezeti változót a megfelelő SqlPackage. exe használatára állítja be SQL Data Warehouse. Az elérési útnak a következőhöz hasonlóan kell kinéznie:
+2. Ha önkiszolgáló ügynököt használ, győződjön meg róla, hogy a környezeti változót a SQL Data Warehouse megfelelő SqlPackage.exe használatára állítja be. Az elérési útnak a következőhöz hasonlóan kell kinéznie:
 
       ![Környezeti változó](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Környezeti változó")
 

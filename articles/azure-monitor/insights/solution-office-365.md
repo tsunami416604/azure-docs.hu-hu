@@ -1,17 +1,17 @@
 ---
-title: Office 365 felügyeleti megoldás az Azure-ban | Microsoft Docs
+title: Office 365 felügyeleti megoldás az Azure-ban
 description: Ez a cikk részletesen ismerteti az Office 365-megoldás konfigurálását és használatát az Azure-ban.  A Azure Monitorban létrehozott Office 365-rekordok részletes leírását tartalmazza.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023605"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971045"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023605"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Megoldás frissítése
-> Ezt a megoldást az [Office 365](../../sentinel/connect-office-365.md) általánosan elérhető megoldás váltotta fel az [Azure Sentinel](../../sentinel/overview.md) és az [Azure ad jelentéskészítési és figyelési megoldásában](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Együttesen a korábbi Azure Monitor Office 365-megoldás frissített verzióját nyújtják, amely továbbfejlesztett konfigurációs élményt biztosít. Továbbra is használhatja a meglévő megoldást 2020. július 30-ig.
+> Ezt a megoldást az [Office 365](../../sentinel/connect-office-365.md) általánosan elérhető megoldás váltotta fel az [Azure Sentinel](../../sentinel/overview.md) és az [Azure ad jelentéskészítési és figyelési megoldásában](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Együttesen a korábbi Azure Monitor Office 365-megoldás frissített verzióját nyújtják, amely továbbfejlesztett konfigurációs élményt biztosít. Továbbra is használhatja a meglévő megoldást 2020. október 31-ig.
 > 
 > Az Azure Sentinel egy Felhőbeli natív biztonsági információ-és eseménykezelő megoldás, amely betölti a naplókat, és további SIEM-funkciókat biztosít, beleértve az észleléseket, a nyomozást, a vadászatot és a gépi tanulásra épülő elemzéseket. Az Azure Sentinel használatával mostantól az Office 365 SharePoint-tevékenységek és az Exchange felügyeleti naplók betöltése is elérhetővé válik.
 > 
@@ -35,8 +35,8 @@ ms.locfileid: "82023605"
 >
 > ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>K: az Office 365 Azure Monitor megoldást most és július 30-ig is be lehet jelentkezni?
-> Nem, a Azure Monitor Office 365-megoldás bevezetési parancsfájljai már nem érhetők el. A megoldás július 30-ig el lesz távolítva.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>K: van lehetőség arra, hogy az Office 365 Azure Monitor megoldást most és október 31-ig is felhasználja?
+> Nem, a Azure Monitor Office 365-megoldás bevezetési parancsfájljai már nem érhetők el. A megoldás október 31-ig el lesz távolítva.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>K: a táblák és sémák módosulnak?
 > A **OfficeActivity** -tábla neve és sémája ugyanaz marad, mint az aktuális megoldásban. Továbbra is használhatja az új megoldásban ugyanazokat a lekérdezéseket, az Azure AD-adataira hivatkozó lekérdezések kivételével.
@@ -102,11 +102,11 @@ ms.locfileid: "82023605"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>K: az Azure Sentinel további összekötőket biztosít a megoldás részeként?
 > Igen, lásd: [Az Azure Sentinel összekapcsolási adatforrásai](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>K: mi fog történni július 30-án? Előre kell regisztrációjának megszüntetésére szolgáló?
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>K: mi fog történni október 31-én? Előre kell regisztrációjának megszüntetésére szolgáló?
 > 
 > - Nem fogja tudni fogadni az **Office 365** -megoldás adatait. A megoldás többé nem lesz elérhető a piactéren
 > - Az Azure Sentinel-ügyfelek esetében a Log Analytics munkaterület megoldás **Office 365** szerepelni fognak az Azure Sentinel **SecurityInsights** megoldásban.
-> - Ha nem regisztrációjának megszüntetésére szolgáló manuálisan a megoldást, az adatait július 30-án automatikusan leválasztjuk a rendszer.
+> - Ha nem regisztrációjának megszüntetésére szolgáló manuálisan a megoldást, az adatait október 31-én automatikusan leválasztjuk a rendszer.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>K: az adatok átkerülnek az új megoldásba?
 > Igen. Ha eltávolítja az **Office 365** -megoldást a munkaterületről, az adatai átmenetileg elérhetetlenné válnak, mert a séma el lesz távolítva. Ha engedélyezi az új **Office 365** -összekötőt a sentinelben, a séma vissza lesz állítva a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 
@@ -125,7 +125,7 @@ Az Office 365 felügyeleti megoldás lehetővé teszi az Office 365-környezet f
 
 Az Office 365 felügyeleti megoldás eltávolításához használja a [felügyeleti megoldás eltávolítása](solutions.md#remove-a-monitoring-solution)című eljárást. Ez nem állítja le az Office 365-ből gyűjtött adatokat a Azure Monitor mégis. Kövesse az alábbi eljárást az Office 365 lemondásához és az adatok gyűjtésének leállításához.
 
-1. Mentse a következő parancsfájlt *office365_unsubscribe. ps1*néven.
+1. Mentse a következő parancsfájlt *office365_unsubscribe.ps1ként *.
 
     ```powershell
     param (
@@ -243,7 +243,7 @@ Kattintson az **office 365** csempére az **Office 365** irányítópultjának m
 
 Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Minden oszlop felsorolja az első tíz riasztást az oszlopnak a megadott hatókörhöz és időtartományhoz tartozó feltételeinek megfelelő számokkal. Futtathat egy naplóbeli keresést, amely a teljes listát az oszlop alján található az összes megjelenítése elemre kattintva vagy az oszlop fejlécére kattintva jeleníti meg.
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 |:--|:--|
 | Műveletek | Az összes figyelt Office 365-előfizetés aktív felhasználóival kapcsolatos információkat nyújt. Megtekintheti az idő múlásával zajló tevékenységek számát is.
 | Exchange | Megjeleníti az Exchange Server-tevékenységek részletezését, például a Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
@@ -270,7 +270,7 @@ A következő tulajdonságok minden Office 365-rekordnál közösek.
 | OrganizationId (Szervezeti azonosító) | A szervezet Office 365-bérlője GUID azonosítója. Ez az érték mindig ugyanaz lesz a szervezetnél, függetlenül attól, hogy melyik Office 365-szolgáltatásban történik. |
 | RecordType (Rekordtípus) | A végrehajtott művelet típusa. |
 | ResultStatus (Eredmény állapota) | Azt jelzi, hogy a (Művelet tulajdonságban megadott) művelet sikeres volt-e. A lehetséges értékek sikeresek, PartiallySucceeded vagy sikertelenek. Exchange-rendszergazdai tevékenység esetén az érték igaz vagy hamis. |
-| UserId (Felhasználóazonosító) | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például: my_name@my_domain_name. Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
+| UserId (Felhasználóazonosító) | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például: my_name@my_domain_name . Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
 | UserKey (Felhasználói kulcs) | A felhasználóazonosító tulajdonságban azonosított felhasználó alternatív azonosítója.  Ez a tulajdonság például a Passport egyedi azonosítójával (PUID) van feltöltve a felhasználók által a SharePointban, a vállalati OneDrive és az Exchange-ben végrehajtott eseményekhez. Ez a tulajdonság a felhasználóazonosító tulajdonsággal megegyező értéket is megadhat a más szolgáltatásokban és a rendszerfiókokban végrehajtott eseményekben előforduló események esetében.|
 | UserType (Felhasználótípus) | A műveletet végrehajtó felhasználó típusa.<br><br>Rendszergazda<br>Alkalmazás<br>DcAdmin<br>Hagyományos<br>Foglalt<br>Szolgáltatásnév<br>Rendszer |
 
@@ -381,7 +381,7 @@ Ezek a rekordok a postaláda-naplózási bejegyzések létrehozásakor jönnek l
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType (Rekordtípus)     | ExchangeItem |
-| Elem | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
+| Item | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
 | SendAsUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer az e-mailek küldésére használt. |
 | SendAsUserSmtp | A megszemélyesíteni kívánt felhasználó SMTP-címe. |
 | SendonBehalfOfUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer a levél nevében küldött e-mailek küldéséhez. |
@@ -462,10 +462,10 @@ Ezek a rekordok a SharePoint-fájl műveleteire adott válaszként jönnek létr
 
 A következő táblázat példákat tartalmaz a megoldás által gyűjtött frissítési rekordok lekérdezésére.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 | --- | --- |
 |Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összegzések száma () művelet szerint |
-|SharePoint-webhelyek használata|OfficeActivity &#124;, ahol a OfficeWorkload = ~ "SharePoint" &#124; összesítések száma () \| SiteUrl szerint rendezve|
+|SharePoint-webhelyek használata|OfficeActivity &#124;, ahol a OfficeWorkload = ~ "SharePoint" &#124; összesítések száma () SiteUrl szerint \| rendezve|
 |Fájl-hozzáférési műveletek felhasználói típus szerint | OfficeActivity &#124; összegzések száma () UserType szerint |
 |Külső műveletek figyelése az Exchange-ben|OfficeActivity &#124;, ahol OfficeWorkload = ~ "Exchange" és ExternalAccess = = True|
 

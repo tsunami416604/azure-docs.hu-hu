@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399874"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610761"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -37,7 +37,7 @@ A [szöveg és a beszéd](text-to-speech.md) (más néven *beszéd szintézis*) 
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
-A Speech SDK-t használó hangsegédek lehetővé teszik, hogy a fejlesztők természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy segéd között. A megvalósítás a bot Framework közvetlen vonalas beszédfelismerési csatornáját vagy az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni hangportál](https://aka.ms/customvoice) használatával is létrehozhatók egyedi hangalapú felhasználói élményben.
+A Speech SDK-t használó [hangsegédek](voice-assistants.md) lehetővé teszik, hogy a fejlesztők természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy segéd között. A megvalósítás a bot Framework közvetlen vonalas beszédfelismerési csatornáját vagy az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni Hangportálon](https://aka.ms/customvoice) létrehozott egyéni hangokat is felhasználhatják egy egyedi hangkimeneti élmény hozzáadásához.
 
 #### <a name="keyword-spotting"></a>Kulcsszavas bepecsételés
 
@@ -65,7 +65,7 @@ A [Call Center átírása](call-center-transcription.md) gyakori forgatókönyv 
 
 ### <a name="codec-compressed-audio-input"></a>Codec tömörített hangbemenet
 
-A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok <span class="docon docon-navigate-external x-hidden-focus"> </span>használata </a>.
+A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok <span class="docon docon-navigate-external x-hidden-focus"></span> használata </a>.
 
 ## <a name="rest-api"></a>REST API
 

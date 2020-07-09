@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886738"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
@@ -22,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre statikus nyilvános IP-címet, és hog
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 Ez a cikk a standard *SKU IP* *standard* SKU Load Balancer használatával történő használatát ismerteti. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban][ip-sku]című témakörben talál.
 
@@ -74,7 +73,7 @@ az role assignment create \
 
 Azt is megteheti, hogy az egyszerű szolgáltatásnév helyett a rendszerhez rendelt felügyelt identitást használja az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
-Ha a *terheléselosztó* szolgáltatást statikus nyilvános IP-címmel szeretné létrehozni, adja hozzá `loadBalancerIP` a tulajdonságot és a statikus nyilvános IP-cím értékét a YAML-jegyzékhez. Hozzon létre egy `load-balancer-service.yaml` nevű fájlt, és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A következő példa a jegyzetet is beállítja az *myResourceGroup*nevű erőforráscsoporthoz. Adja meg a saját erőforráscsoport-nevét.
+Ha a *terheléselosztó* szolgáltatást statikus nyilvános IP-címmel szeretné létrehozni, adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML-jegyzékhez. Hozzon létre egy nevű fájlt `load-balancer-service.yaml` , és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A következő példa a jegyzetet is beállítja az *myResourceGroup*nevű erőforráscsoporthoz. Adja meg a saját erőforráscsoport-nevét.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +91,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Hozza létre a szolgáltatást és az üzembe `kubectl apply` helyezést a paranccsal.
+Hozza létre a szolgáltatást és az üzembe helyezést a `kubectl apply` paranccsal.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -102,7 +101,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Ha a szolgáltatás dinamikus vagy statikus nyilvános IP-címet használ, használhatja a szolgáltatás megjegyzését `service.beta.kubernetes.io/azure-dns-label-name` egy nyilvános DNS-címke megadásához. Ez egy teljes tartománynevet tesz közzé a szolgáltatáshoz az Azure nyilvános DNS-kiszolgálói és legfelső szintű tartománya segítségével. A jegyzet értékének egyedinek kell lennie az Azure-ban, ezért azt javasoljuk, hogy használjon megfelelően minősített címkét.   
 
-Az Azure ezt követően automatikusan hozzáfűz egy alapértelmezett alhálózatot `<location>.cloudapp.azure.com` , például (ahol a hely a kiválasztott régió), hogy az Ön által megadott nevet adja meg a teljes DNS-név létrehozásához. Például:
+Az Azure ezt követően automatikusan hozzáfűz egy alapértelmezett alhálózatot, például `<location>.cloudapp.azure.com` (ahol a hely a kiválasztott régió), hogy az Ön által megadott nevet adja meg a teljes DNS-név létrehozásához. Például:
 
 ```yaml
 apiVersion: v1

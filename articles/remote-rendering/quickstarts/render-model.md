@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682570"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565505"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
 Ez a rövid útmutató azt ismerteti, hogyan futtathat egy olyan Unity-mintát, amely távolról, az Azure Remote rendering (ARR) szolgáltatás használatával jeleníti meg a beépített modellt.
 
-Nem fogjuk részletesen bemutatni az ARR API-t, vagy egy új Unity-projekt beállítását. Ezek a témakörök a következő [oktatóanyagban találhatók: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md).
+Nem fogjuk részletesen bemutatni az ARR API-t, vagy egy új Unity-projekt beállítását. Ezeket a témaköröket az [oktatóanyag: távolról renderelt modellek megtekintése](../tutorials/unity/view-remote-models/view-remote-models.md)című témakör ismerteti.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan végezheti el a következőket:
 > [!div class="checklist"]
@@ -33,6 +33,9 @@ A következő szoftvereket kell telepíteni:
 
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * A Visual Studio 2019 legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio-eszközök vegyes valósághoz](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
+  * **Asztali fejlesztés C++ nyelven**
+  * **Univerzális Windows-platform (UWP) fejlesztése**
 * GIT [(letöltés)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(letöltés)](https://unity3d.com/get-unity/download)
   * Telepítse ezeket a modulokat az Unity-ben:
@@ -103,7 +106,7 @@ A jelenetben van egy [kivágott sík](../overview/features/cut-planes.md) objekt
 
 Az átalakítások szinkronizálásához kattintson a **szinkronizálás most** lehetőségre, vagy jelölje be a **minden keret szinkronizálása** beállítást. Összetevő-tulajdonságok esetében csak a módosítása elég.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő rövid útmutatóban a mintát egy HoloLens fogjuk üzembe helyezni, hogy az eredeti méretben megtekintse a távolról renderelt modellt.
 

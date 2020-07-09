@@ -5,17 +5,17 @@ description: Ismerje meg, hogy a modell miért teszi a jóslatokat az Azure Mach
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/30/2020
+ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601683"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,9 +44,7 @@ Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutat�
 
 * `azureml.contrib.interpret`, előzetes verzió, és kísérleti funkciók, amelyeket kipróbálhat.
 
-* `azureml.train.automl.automlexplainer`csomag az automatizált gépi tanulási modellek értelmezéséhez.
-
-A `pip install azureml-interpret` és `pip install azureml-interpret-contrib` az általános használatra, `pip install azureml-interpret-contrib` a AutoML pedig az értelmező csomagok beszerzésére használható.
+`pip install azureml-interpret`A és `pip install azureml-interpret-contrib` az általános használatra, a `pip install azureml-contrib-interpret` AutoML pedig az értelmező csomagok beszerzésére használható.
 
 
 > [!IMPORTANT]
@@ -72,7 +70,7 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
  `azureml-interpret`a az [értelmezés – Közösség](https://github.com/interpretml/interpret-community/), a értelmezhető modellek betanítására szolgáló nyílt forráskódú Python-csomag, valamint a tábla AI-rendszerek ismertetésére szolgáló, értelmezhető technikákat használja. A [tolmácsolás – a Közösség](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázatokat üzemeltető gazdagépként működik, és jelenleg a következő értelmező módszereket támogatja:
 
-|Értelmező technika|Leírás|Típus|
+|Értelmező technika|Description|Típus|
 |--|--|--------------------|
 |ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
 |Mélyreható magyarázat kialakítása| A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|
@@ -84,7 +82,7 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
 
 
-A fent ismertetett értelmező technikák mellett egy másik, a nevű `TabularExplainer`SHAP-alapú magyarázat is támogatott. A modelltől függően a támogatott `TabularExplainer` SHAP-magyarázatok egyikét használja:
+A fent ismertetett értelmező technikák mellett egy másik, a nevű SHAP-alapú magyarázat is támogatott `TabularExplainer` . A modelltől függően `TabularExplainer` a támogatott SHAP-magyarázatok egyikét használja:
 
 * TreeExplainer az összes fa alapú modellhez
 * DeepExplainer DNN-modellekhez
@@ -109,7 +107,7 @@ Az `azureml.interpret` SDK csomagja a következő adatkészlet-formátumokkal be
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-A magyarázó függvények bemenetként is elfogadják a modelleket és a folyamatokat. Ha meg van adni modell, a modellnek meg kell valósítania `predict` az `predict_proba` előrejelzési függvényt, vagy a Scikit egyezménynek megfelelően kell megfelelnie. Ha a modell nem támogatja ezt, becsomagolhatja a modellt egy olyan függvénybe, amely ugyanazt az eredményt hozza `predict` létre `predict_proba` , mint a Scikit, és ezt a burkoló függvényt használja a kiválasztott magyarázattal. Ha egy folyamat van megadva, a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájlja egy előrejelzést ad vissza. Ezzel a burkoló módszerrel `azureml.interpret` a PyTorch-, TensorFlow-és kerasz-alapú modelleket, valamint a klasszikus gépi tanulási modelleket is támogathatja.
+A magyarázó függvények bemenetként is elfogadják a modelleket és a folyamatokat. Ha meg van adni modell, a modellnek meg kell valósítania az előrejelzési függvényt, `predict` vagy `predict_proba` a Scikit egyezménynek megfelelően kell megfelelnie. Ha a modell nem támogatja ezt, becsomagolhatja a modellt egy olyan függvénybe, amely ugyanazt az eredményt hozza létre, mint a `predict` `predict_proba` Scikit, és ezt a burkoló függvényt használja a kiválasztott magyarázattal. Ha egy folyamat van megadva, a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájlja egy előrejelzést ad vissza. Ezzel a burkoló módszerrel a `azureml.interpret` PyTorch-, TensorFlow-és kerasz-alapú modelleket, valamint a klasszikus gépi tanulási modelleket is támogathatja.
 
 ## <a name="local-and-remote-compute-target"></a>Helyi és távoli számítási cél
 

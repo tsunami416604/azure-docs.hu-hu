@@ -9,10 +9,10 @@ ms.author: jasondel
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727640"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
@@ -262,7 +262,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 >[!IMPORTANT]
 > Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. Cserélje le a ** \< kubeadmin Password>** az imént beolvasott jelszóra.
+Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. Cserélje le **\<kubeadmin password>** az t az imént beolvasott jelszóra.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

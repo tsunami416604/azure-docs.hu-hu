@@ -2,7 +2,7 @@
 title: SQL felügyelt példányok biztonsága az Azure AD-kiszolgáló rendszerbiztonsági azonosítójával (bejelentkezések)
 description: Ismerje meg az Azure SQL felügyelt példányának védelmét szolgáló technikákat és szolgáltatásokat, valamint az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) használatát
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,29 +10,29 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 54195652cfdf476f364a31bf710852dab33fb154
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053482"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706436"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Oktatóanyag: az Azure SQL felügyelt példányának biztonsága Azure AD Server-rendszerbiztonsági tag használatával (bejelentkezések)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az SQL felügyelt példánya szinte minden olyan biztonsági funkciót biztosít, amelyet a legújabb SQL Server helyszíni (Enterprise Edition) adatbázismotor tartalmaz:
+Az Azure SQL felügyelt példánya szinte minden olyan biztonsági funkciót biztosít, amely a legújabb SQL Server (Enterprise Edition) adatbázismotor:
 
-- A hozzáférés korlátozása elkülönített környezetben
-- Identitást igénylő hitelesítési mechanizmusok használata (Azure AD, SQL-hitelesítés)
+- Hozzáférés korlátozása elkülönített környezetben
+- Identitást igénylő hitelesítési mechanizmusok használata: Azure Active Directory (Azure AD) és SQL-hitelesítés
 - Hitelesítés használata szerepköralapú tagságokkal és engedélyekkel
 - Biztonsági funkciók engedélyezése
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
-> - Hozzon létre egy Azure Active Directory (AD) kiszolgálói rendszerbiztonsági tag (login) egy SQL felügyelt példányhoz
-> - Engedélyek megadása az Azure AD-kiszolgáló rendszerrésztvevői számára (bejelentkezések) a felügyelt SQL-példányokban
+> - Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrehozása felügyelt példányhoz
+> - Engedélyek megadása az Azure AD-kiszolgáló résztvevői számára (bejelentkezések) felügyelt példányokban
 > - Azure AD-felhasználók létrehozása Azure AD Server-rendszerbiztonsági tagokból (bejelentkezések)
 > - Engedélyek kiosztása az Azure AD-felhasználók számára és az adatbázis biztonságának kezelése
 > - Megszemélyesítés használata az Azure AD-felhasználók számára
@@ -46,33 +46,33 @@ További információ: az [Azure SQL felügyelt példányának áttekintése](sq
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
-- SQL felügyelt példány
-  - Kövesse ezt a cikket: gyors útmutató [: SQL felügyelt példány létrehozása](instance-create-quickstart.md)
-- Elérheti az SQL felügyelt példányát, és [üzembe helyezhet egy Azure ad-rendszergazdát a felügyelt SQL-példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). További tudnivalókért lásd:
-  - [Az alkalmazás összekötése egy felügyelt SQL-példánnyal](connect-application-instance.md)
+- Felügyelt példány
+  - Kövesse ezt a cikket: gyors útmutató [: felügyelt példány létrehozása](instance-create-quickstart.md)
+- Képes hozzáférni a felügyelt példányhoz, és [kiépített egy Azure ad-rendszergazdát a felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). További tudnivalókért lásd:
+  - [Az alkalmazás összekötése felügyelt példányokkal](connect-application-instance.md)
   - [SQL felügyelt példány kapcsolati architektúrája](connectivity-architecture-overview.md)
   - [Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel](../database/authentication-aad-configure.md)
 
 ## <a name="limit-access"></a>Hozzáférés korlátozása 
 
-A felügyelt SQL-példányok magánhálózati IP-címen keresztül érhetők el. Az elszigetelt SQL Server helyszíni környezetekhez hasonlóan az alkalmazásoknak és a felhasználóknak az SQL felügyelt példány hálózatához (VNet) is hozzá kell férniük a kapcsolat létrehozása előtt. További információt a következő cikkben talál az [alkalmazás összekapcsolásához egy SQL-felügyelt példányhoz](connect-application-instance.md).
+A felügyelt példányok magánhálózati IP-címen keresztül érhetők el. Az elszigetelt SQL Server környezetekhez hasonlóan az alkalmazásoknak és a felhasználóknak a kapcsolat létrehozása előtt hozzá kell férniük az SQL felügyelt példány hálózatához (VNet). További információ: [az alkalmazás összekötése az SQL felügyelt példányával](connect-application-instance.md).
 
-Egy szolgáltatás-végpontot is beállíthat egy SQL felügyelt példányon, amely lehetővé teszi a nyilvános kapcsolatok használatát, ugyanúgy, mint a Azure SQL Database.
-További információkért tekintse meg a [nyilvános végpont konfigurálása az Azure SQL felügyelt példányon](public-endpoint-configure.md)című cikket.
+Egy szolgáltatás-végpontot felügyelt példányon is konfigurálhat, amely lehetővé teszi, hogy a nyilvános kapcsolatok ugyanolyan módon legyenek, mint a Azure SQL Database.
+További információ: [nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](public-endpoint-configure.md).
 
 > [!NOTE]
 > Még ha engedélyezve vannak a szolgáltatási végpontok, [Azure SQL Database tűzfalszabályok](../database/firewall-configure.md) nem érvényesek. Az Azure SQL felügyelt példányának saját [beépített tűzfala](management-endpoint-verify-built-in-firewall.md) van a kapcsolat kezeléséhez.
 
 ## <a name="create-an-azure-ad-server-principal-login-using-ssms"></a>Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrehozása a SSMS használatával
 
-Az első Azure AD-kiszolgálói rendszerbiztonsági tag (login) a szabványos SQL-rendszergazdai fiók (nem Azure AD) `sysadmin` , vagy a létesítési folyamat során létrehozott SQL felügyelt példány Azure ad-rendszergazdája által hozható létre. További információ: Azure Active Directory- [rendszergazda létesítése az SQL felügyelt példányához](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
+Az első Azure AD-kiszolgálói rendszerbiztonsági tag (login) a standard SQL-rendszergazdai fiók (nem Azure AD) vagy az üzembe helyezési `sysadmin` folyamat során létrehozott felügyelt példányhoz tartozó Azure ad-rendszergazda által hozható létre. További információ: Azure Active Directory- [rendszergazda létesítése SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 
 Az SQL felügyelt példányhoz való kapcsolódásra vonatkozó példákat a következő cikkekben talál:
 
-- [Gyors útmutató: az Azure virtuális gép konfigurálása egy felügyelt SQL-példányhoz való kapcsolódáshoz](connect-vm-instance-configure.md)
-- [Gyors útmutató: pont – hely kapcsolat konfigurálása egy SQL felügyelt példányhoz a helyszíni környezetből](point-to-site-p2s-configure.md)
+- [Gyors útmutató: az Azure virtuális gép konfigurálása az SQL felügyelt példányhoz való kapcsolódásra](connect-vm-instance-configure.md)
+- [Gyors útmutató: pont – hely kapcsolat konfigurálása a helyszíni SQL felügyelt példányhoz](point-to-site-p2s-configure.md)
 
-1. Jelentkezzen be az SQL felügyelt példányára egy szabványos SQL bejelentkezési fiókkal (nem Azure AD), amely egy `sysadmin` vagy Azure ad-rendszergazda a mi számára, [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms)használatával.
+1. Jelentkezzen be a felügyelt példányba egy olyan szabványos SQL bejelentkezési fiókkal (nem Azure AD), amely az `sysadmin` SQL felügyelt példányhoz tartozó vagy Azure ad-rendszergazda, [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms)használatával.
 
 2. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 
@@ -104,7 +104,7 @@ Az SQL felügyelt példányhoz való kapcsolódásra vonatkozó példákat a kö
     GO
     ```
 
-    ![Native-login. png](./media/aad-security-configure-tutorial/native-login.png)
+    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
 
 További információ: [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)).
 
@@ -121,11 +121,11 @@ Más Azure AD-kiszolgálói rendszerbiztonsági tag (login) létrehozásához SQ
 - Ha engedélyezni szeretné az újonnan létrehozott Azure AD-kiszolgáló rendszerbiztonsági tag (login) számára más bejelentkezési adatok létrehozását más Azure AD-felhasználók,-csoportok vagy-alkalmazások számára, adja meg a bejelentkezési `sysadmin` vagy `securityadmin` kiszolgálói szerepkört.
 - Az Azure AD-kiszolgáló rendszerbiztonsági tagjának (bejelentkezési azonosítójának) minden más Azure AD-kiszolgáló-rendszerbiztonsági tag (login) létrehozásához meg kell adni legalább a **bejelentkezési** engedélyeket.
 - Alapértelmezés szerint az újonnan létrehozott Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) számára biztosított szabványos engedély a következő: **SQL-kapcsolat** és **bármely adatbázis megtekintése**.
-- A `sysadmin` kiszolgálói szerepkör az SQL felügyelt példányain belül számos Azure ad-kiszolgálói tag (login) számára biztosítható.
+- A `sysadmin` kiszolgálói szerepkör a felügyelt példányokon belül számos Azure ad-kiszolgálói rendszerbiztonsági tag (bejelentkezés) számára biztosítható.
 
 A bejelentkezés hozzáadása a `sysadmin` kiszolgálói szerepkörhöz:
 
-1. Jelentkezzen be újra az SQL felügyelt példányba, vagy használja a meglévő Azure AD-rendszergazdai vagy SQL-rendszerbiztonsági tag-t `sysadmin` .
+1. Jelentkezzen be újra a felügyelt példányba, vagy használja a meglévő Azure AD-rendszergazdai vagy SQL-rendszerbiztonsági tag-t `sysadmin` .
 
 1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 
@@ -147,19 +147,19 @@ A bejelentkezés hozzáadása a `sysadmin` kiszolgálói szerepkörhöz:
 
 Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sysadmin` jogosultságokkal rendelkezik, a bejelentkezés létrehozhat további bejelentkezéseket a **from External Provider** záradék használatával a **create login**paranccsal.
 
-1. Kapcsolódjon az SQL felügyelt példányhoz az Azure AD-kiszolgáló rendszerbiztonsági azonosítójával (login) SQL Server Management Studio használatával. Adja meg az SQL felügyelt példány állomásneve nevét. A SSMS-ben való hitelesítéshez három lehetőség közül választhat az Azure AD-fiókkal való bejelentkezéskor:
+1. Kapcsolódjon a felügyelt példányhoz az Azure AD-kiszolgáló rendszerbiztonsági azonosítójával (login) SQL Server Management Studio használatával. Adja meg az SQL felügyelt példány állomásneve nevét. A SSMS-ben való hitelesítéshez három lehetőség közül választhat az Azure AD-fiókkal való bejelentkezéskor:
 
    - Active Directory – MFA-támogatással rendelkező univerzális
    - Active Directory – jelszó
    - Active Directory – integrált </br>
 
-     ![SSMS-login-prompt. png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
-     További információt a következő cikkben talál: [univerzális hitelesítés (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md)
+     További információ: [univerzális hitelesítés (SSMS-támogatás multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
-1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással**. Ez egy Multi-Factor Authentication (MFA) bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
+1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással**. Ez egy Multi-Factor Authentication bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
 
-    ![MFA-login-prompt. png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. A SSMS **Object Explorer**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 1. A lekérdezési ablakban a következő szintaxis használatával hozzon létre egy másik Azure AD-fiókhoz tartozó bejelentkezési azonosítót:
@@ -171,7 +171,7 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
     GO
     ```
 
-    Ez a példa egy olyan bejelentkezési azonosítót hoz létre az Azure AD-felhasználó számára bob@aadsqlmi.net , amelynek tartományi aadsqlmi.net az Azure ad-aadsqlmi.onmicrosoft.com összevonták.
+    Ez a példa egy olyan bejelentkezési azonosítót hoz létre az Azure AD-felhasználó számára bob@aadsqlmi.net , amelynek tartományi aadsqlmi.net az Azure ad aadsqlmi.onmicrosoft.com-tartománnyal összevonták.
 
     Hajtsa végre a következő T-SQL-parancsot. Az összevont Azure AD-fiókok a helyi Windows-bejelentkezések és-felhasználók számára az SQL által felügyelt példányok helyére kerülnek.
 
@@ -182,7 +182,7 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
     GO
     ```
 
-1. Hozzon létre egy adatbázist az SQL felügyelt példányában az [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) szintaxis használatával. Ezt az adatbázist fogjuk használni a felhasználói bejelentkezések teszteléséhez a következő szakaszban.
+1. Hozzon létre egy adatbázist a felügyelt példányban az [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) szintaxis használatával. Ezt az adatbázist fogjuk használni a felhasználói bejelentkezések teszteléséhez a következő szakaszban.
     1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
     1. A lekérdezési ablakban használja a következő szintaxist egy **MyMITestDB**nevű adatbázis létrehozásához.
 
@@ -204,7 +204,7 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
     GO
     ```
 
-1. Tesztként jelentkezzen be az SQL által felügyelt példányba az újonnan létrehozott bejelentkezéssel vagy csoporttal. Nyisson meg egy új kapcsolódást az SQL felügyelt példányához, és használja az új bejelentkezést hitelesítéskor.
+1. Tesztként jelentkezzen be a felügyelt példányba az újonnan létrehozott bejelentkezéssel vagy csoporttal. Nyisson meg egy új kapcsolódást a felügyelt példányhoz, és használja az új bejelentkezést hitelesítéskor.
 1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, majd válassza az új **lekérdezés** lehetőséget az új kapcsolatban.
 1. A következő parancs végrehajtásával keresse meg a kiszolgáló engedélyeit az újonnan létrehozott Azure AD-kiszolgáló rendszerbiztonsági tag (login) számára:
 
@@ -214,21 +214,21 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
       ```
 
 > [!NOTE]
-> Az Azure AD vendég felhasználói csak akkor támogatottak az SQL felügyelt példányok bejelentkezéséhez, ha az Azure AD-csoport részeként van hozzáadva. Az Azure AD vendég felhasználója egy olyan fiók, amely az SQL által felügyelt példányhoz tartozó Azure AD-hez tartozik, egy másik Azure AD-ből. Például: joe@contoso.com (Azure ad-fiók) vagy steve@outlook.com (MSA-fiók) hozzáadhatók egy csoporthoz az Azure ad-aadsqlmi. A felhasználók egy csoportba való felvétele után a bejelentkezési szintaxis **létrehozásával** létrehozhat egy bejelentkezést a csoport SQL felügyelt példány **Master** adatbázisában. Azok a vendég felhasználók, akik tagjai ennek a csoportnak, csatlakozhatnak az SQL felügyelt példányához az aktuális bejelentkezésük (például joe@contoso.com vagy steve@outlook.com ) használatával.
+> Az Azure AD vendég felhasználói csak akkor támogatottak az SQL felügyelt példányok bejelentkezéséhez, ha az Azure AD-csoport részeként van hozzáadva. Az Azure AD vendég felhasználója egy olyan fiók, amelyet a felügyelt példányhoz tartozó Azure AD-példányhoz kell meghívni egy másik Azure AD-példányból. Például: joe@contoso.com (Azure ad-fiók) vagy steve@outlook.com (Microsoft-fiók) hozzáadhatók egy csoporthoz az Azure ad aadsqlmi-példányban. A felhasználók egy csoportba való felvétele után a bejelentkezési szintaxis **létrehozásával** létrehozhat egy bejelentkezést a csoport SQL felügyelt példány **Master** adatbázisában. Azok a vendég felhasználók, akik tagjai ennek a csoportnak, csatlakozhatnak a felügyelt példányhoz az aktuális bejelentkezésük (például joe@contoso.com vagy steve@outlook.com ) használatával.
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>Azure AD-felhasználó létrehozása az Azure AD-kiszolgáló rendszerbiztonsági azonosítójával (bejelentkezés)
 
-Az egyes adatbázisokhoz való engedélyezés ugyanúgy működik, mint az SQL felügyelt példánya, mivel SQL Server a helyszínen. A felhasználók létrehozhatók egy adatbázis meglévő bejelentkezési adataiból, és megadhatók az adott adatbázisra vonatkozó engedélyekkel, vagy hozzáadhatók az adatbázis-szerepkörökhöz.
+Az egyes adatbázisokhoz való engedélyezés ugyanúgy működik, mint az SQL felügyelt példánya, mint a SQL Server adatbázisaiban. A felhasználók létrehozhatók egy adatbázis meglévő bejelentkezési adataiból, és megadhatók az adott adatbázisra vonatkozó engedélyekkel, vagy hozzáadhatók az adatbázis-szerepkörökhöz.
 
-Most, hogy létrehoztunk egy **MyMITestDB**nevű adatbázist, és egy olyan bejelentkezési azonosítót, amely csak az alapértelmezett engedélyekkel rendelkezik, a következő lépés egy felhasználó létrehozása a bejelentkezésből. Ebben a pillanatban a bejelentkezés csatlakozhat az SQL felügyelt példányához, és megtekintheti az összes adatbázist, de nem tud kommunikálni az adatbázisokkal. Ha az alapértelmezett engedélyekkel rendelkező Azure AD-fiókkal jelentkezik be, és megpróbálja kibontani az újonnan létrehozott adatbázist, a következő hibaüzenet jelenik meg:
+Most, hogy létrehoztunk egy **MyMITestDB**nevű adatbázist, és egy olyan bejelentkezési azonosítót, amely csak az alapértelmezett engedélyekkel rendelkezik, a következő lépés egy felhasználó létrehozása a bejelentkezésből. Jelenleg a bejelentkezés kapcsolódhat a felügyelt példányhoz, és megtekintheti az összes adatbázist, de nem tud kommunikálni az adatbázisokkal. Ha az alapértelmezett engedélyekkel rendelkező Azure AD-fiókkal jelentkezik be, és megpróbálja kibontani az újonnan létrehozott adatbázist, a következő hibaüzenet jelenik meg:
 
-![SSMS-db-not-accessible. png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 További információ az adatbázis-engedélyek megadásáról: [első lépések az adatbázismotor engedélyeivel](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>Azure AD-felhasználó létrehozása és minta tábla létrehozása
 
-1. Jelentkezzen be az SQL felügyelt példányára egy, a `sysadmin` SQL Server Management Studio használatával rendelkező fiók használatával.
+1. Jelentkezzen be a felügyelt példányba egy olyan `sysadmin` fiókkal, amely SQL Server Management Studiot használ.
 1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 1. A lekérdezési ablakban a következő szintaxissal hozhat létre Azure AD-felhasználót egy Azure AD-kiszolgáló rendszerbiztonsági tag (login) használatával:
 
@@ -250,7 +250,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
 
 1. Azt is támogatja, hogy Azure AD-felhasználót hozzon létre egy csoportba tartozó Azure AD-kiszolgálói rendszerbiztonsági tag (login) használatával.
 
-    A következő példa létrehoz egy bejelentkezést az Azure ad-beli Azure AD-csoport _mygroup_ .
+    Az alábbi példa egy bejelentkezési azonosítót hoz létre az Azure ad-példányban található _mygroup_ .
 
     ```sql
     USE MyMITestDB
@@ -259,7 +259,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
     GO
     ```
 
-    A **mygroup** -hez tartozó összes felhasználó hozzáférhet a **MyMITestDB** -adatbázishoz.
+    A *mygroup* -hez tartozó összes felhasználó hozzáférhet a **MyMITestDB** -adatbázishoz.
 
     > [!IMPORTANT]
     > Amikor egy **felhasználót** egy Azure ad-kiszolgáló rendszerbiztonsági tagja (login) alapján hoz létre, a **bejelentkezéshez**ugyanazt a login_name kell megadnia a user_name.
@@ -293,7 +293,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
 
 Ahhoz, hogy a felhasználó megjelenjen az adatbázisban lévő adat, [adatbázis-szintű szerepköröket](/sql/relational-databases/security/authentication-access/database-level-roles) biztosíthatunk a felhasználónak.
 
-1. Jelentkezzen be az SQL felügyelt példányára egy, a `sysadmin` SQL Server Management Studio használatával rendelkező fiók használatával.
+1. Jelentkezzen be a felügyelt példányba egy olyan `sysadmin` fiókkal, amely SQL Server Management Studiot használ.
 
 1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 
@@ -323,10 +323,10 @@ Ahhoz, hogy a felhasználó megjelenjen az adatbázisban lévő adat, [adatbázi
     GO
     ```
 
-1. Hozzon létre egy új kapcsolódást a felügyelt SQL-példányhoz a szerepkörhöz hozzáadott felhasználóval `db_datareader` .
+1. Hozzon létre egy új kapcsolódást a felügyelt példányhoz azzal a felhasználóval, aki hozzá lett adva a `db_datareader` szerepkörhöz.
 1. A tábla megjelenítéséhez bontsa ki **Object Explorer** az adatbázist.
 
-    ![SSMS-test-table. png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. Nyisson meg egy új lekérdezési ablakot, és hajtsa végre a következő SELECT utasítást:
 
@@ -337,7 +337,7 @@ Ahhoz, hogy a felhasználó megjelenjen az adatbázisban lévő adat, [adatbázi
 
     Meg tudja-e tekinteni a tábla adatait? Ekkor a visszaadott oszlopok láthatók.
 
-    ![SSMS-test-Table-Query. png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Azure AD-kiszolgáló szintű rendszerbiztonsági tag (bejelentkezések) megszemélyesítése
 
@@ -345,7 +345,7 @@ Az SQL felügyelt példánya támogatja az Azure AD-kiszolgáló szintű rendsze
 
 ### <a name="test-impersonation"></a>Megszemélyesítés tesztelése
 
-1. Jelentkezzen be az SQL felügyelt példányára egy, a `sysadmin` SQL Server Management Studio használatával rendelkező fiók használatával.
+1. Jelentkezzen be a felügyelt példányba egy olyan `sysadmin` fiókkal, amely SQL Server Management Studiot használ.
 
 1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 
@@ -387,7 +387,7 @@ Az SQL felügyelt példánya támogatja az Azure AD-kiszolgáló szintű rendsze
 
 Az Azure ad-fiókok és az Azure AD-kiszolgáló résztvevői (bejelentkezések) esetében az adatbázisok közötti lekérdezések támogatottak. Egy Azure AD-csoporttal rendelkező adatbázis-lekérdezés teszteléséhez egy másik adatbázist és táblát kell létrehoznia. Ha már létezik, kihagyhatja egy másik adatbázis és egy tábla létrehozását.
 
-1. Jelentkezzen be az SQL felügyelt példányára egy, a `sysadmin` SQL Server Management Studio használatával rendelkező fiók használatával.
+1. Jelentkezzen be a felügyelt példányba egy olyan `sysadmin` fiókkal, amely SQL Server Management Studiot használ.
 1. A **Object Explorerban**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 1. A lekérdezési ablakban a következő parancs használatával hozzon létre egy **MyMITestDB2** nevű adatbázist és egy **TestTable2**nevű táblát:
 
@@ -416,7 +416,7 @@ Az Azure ad-fiókok és az Azure AD-kiszolgáló résztvevői (bejelentkezések)
     GO
     ```
 
-1. Jelentkezzen be az SQL felügyelt példányára a SQL Server Management Studio használatával az Azure AD Group _mygroup_tagjaként. Nyisson meg egy új lekérdezési ablakot, és hajtsa végre a több adatbázisra vonatkozó SELECT utasítást:
+1. Jelentkezzen be a felügyelt példányra SQL Server Management Studio használatával az Azure AD-csoport _mygroup_tagjaként. Nyisson meg egy új lekérdezési ablakot, és hajtsa végre a több adatbázisra vonatkozó SELECT utasítást:
 
     ```sql
     USE MyMITestDB
@@ -440,7 +440,7 @@ Az Azure ad-fiókok és az Azure AD-kiszolgáló résztvevői (bejelentkezések)
 
 ### <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése
 
-Tekintse meg az [SQL felügyelt példányának következő biztonsági funkcióit](sql-managed-instance-paas-overview.md#security-features) ismertető cikket, amely átfogó listát nyújt az adatbázis biztonságossá tételéhez. A következő biztonsági funkciókat tárgyaljuk:
+Tekintse meg az [SQL felügyelt példányának biztonsági funkciói](sql-managed-instance-paas-overview.md#security-features) című cikket, amely átfogó listát nyújt az adatbázis biztonságossá tételének lehetőségeiről. A következő biztonsági funkciókat tárgyaljuk:
 
 - [SQL felügyelt példányok naplózása](auditing-configure.md)
 - [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
@@ -449,7 +449,7 @@ Tekintse meg az [SQL felügyelt példányának következő biztonsági funkciói
 - [Sorszintű biztonság](/sql/relational-databases/security/row-level-security)
 - [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
-### <a name="managed-instance-capabilities"></a>Felügyelt példányok képességei
+### <a name="sql-managed-instance-capabilities"></a>SQL felügyelt példány képességei
 
 A felügyelt SQL-példányok képességeinek teljes áttekintését lásd:
 

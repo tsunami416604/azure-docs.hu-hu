@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 357026bbe17650464716282608bc316c5d4b055e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419102"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514880"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Gyors útmutató: Azure-beli adatfeldolgozó és-folyamat létrehozása a REST API használatával
 
@@ -42,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 * **Azure Storage-fiók**. A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
 * Telepítse a **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat. Ez a rövid útmutató a PowerShellt használja REST API-hívások indítására.
-* **Egy alkalmazás létrehozása az Azure Active Directoryban**[ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő, a későbbi lépésekben használt értékeket: **Application ID**, **CLIENTSECRETS**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
+* **Egy alkalmazás létrehozása az Azure Active Directoryban**[ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a lépéseit követve. Jegyezze fel a következő, a későbbi lépésekben használt értékeket: **Application ID**, **CLIENTSECRETS**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
 
 ## <a name="set-global-variables"></a>Globális változók beállítása
 
@@ -509,5 +509,5 @@ Az alábbi parancsot futtassa, ha csak az adat-előállítót szeretné töröln
 Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

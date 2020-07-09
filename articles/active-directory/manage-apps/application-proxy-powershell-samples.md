@@ -2,22 +2,22 @@
 title: PowerShell-minták az Azure AD Application Proxy
 description: Ezekkel a PowerShell-mintákkal az Azure AD Application Proxy segítségével információkat kaphat a címtárban található alkalmazásproxy-alkalmazásokról és-összekötőről, felhasználókat és csoportokat rendelhet az alkalmazásokhoz, valamint tanúsítvány-információkat kérhet le.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476bdfdd2c0b81d86900cee18024cc261ee80a07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554982"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-példák az Azure AD Application Proxy
 
@@ -26,7 +26,7 @@ Az alábbi táblázat az Azure AD Application Proxy PowerShell-parancsfájlokra 
 
 A példákban használt parancsmagokkal kapcsolatos további információkért lásd: alkalmazásproxy- [alkalmazás kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) és alkalmazásproxy- [összekötő kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
-| | |
+| Hivatkozás | Leírás |
 |---|---|
 |**Alkalmazásproxy-alkalmazások**||
 | [Az összes alkalmazásproxy-alkalmazás alapszintű információinak listázása](scripts/powershell-get-all-app-proxy-apps-basic.md) | A címtárban lévő összes alkalmazásproxy-alkalmazás alapvető információit (AppId, DisplayName, ObjId) listázza. |

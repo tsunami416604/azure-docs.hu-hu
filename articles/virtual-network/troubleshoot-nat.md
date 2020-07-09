@@ -9,17 +9,17 @@ manager: KumudD
 ms.service: virtual-network
 Customer intent: As an IT administrator, I want to troubleshoot Virtual Network NAT.
 ms.devlang: na
-ms.topic: overview
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688281"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
 
@@ -77,7 +77,7 @@ Egy új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "Atomic
 
 _**Megoldás:**_ A kimenő kapcsolatok méretezése az alábbiak szerint történik:
 
-| Forgatókönyv | Bizonyíték |Kezelés |
+| Eset | Bizonyíték |Kezelés |
 |---|---|---|
 | A SNAT-portok és a SNAT-portok kimerülése a magas kihasználtságú időszakok során tapasztalható. | A (z) Azure Monitor SNAT-kapcsolatok [metrikájának](nat-metrics.md) "sikertelen" kategóriája az idő és a magas csatlakozási kötet esetében átmeneti vagy állandó hibákat mutat be.  | Állapítsa meg, hogy adhat-e további nyilvános IP-cím erőforrásokat vagy nyilvános IP-előtag-erőforrásokat. Ez a Hozzáadás legfeljebb 16 IP-címet tesz lehetővé a NAT-átjáró számára. Ez a Hozzáadás további leltárt nyújt a rendelkezésre álló SNAT-portok (64 000/IP-címek) számára, és lehetővé teszi a forgatókönyv további skálázását.|
 | Már 16 IP-címet adott meg, és továbbra is SNAT a portok kimerülése. | További IP-cím hozzáadására tett kísérlet sikertelen. Az IP-címek teljes száma a nyilvános IP-címek erőforrásaiból vagy a nyilvános IP-előtag erőforrásaiból összesen meghaladja a 16 értéket. | Terjessze az alkalmazási környezetet több alhálózatra, és adjon meg egy NAT Gateway-erőforrást az egyes alhálózatokhoz.  A tervezési minta (ok) újraértékelése az előző [útmutatás](#design-patterns)alapján optimalizálható. |
@@ -130,7 +130,7 @@ Tekintse át a jelen cikk [SNAT-kimerültség](#snat-exhaustion) című szakasz�
 
 Az Azure figyeli és nagy gonddal kezeli az infrastruktúrát. Átmeneti hibák léphetnek fel, ezért nincs garancia arra, hogy az átvitelek veszteségmentesek.  Használjon olyan kialakítási mintákat, amelyek lehetővé teszik a a TCP-alkalmazások SYN-újraküldését. A kapcsolat időtúllépése elég nagy a TCP SYN újraküldésének engedélyezéséhez, hogy csökkentse az elveszett SYN-csomagok által okozott átmeneti hatásokat.
 
-_**Megoldás:**_
+_**Megoldás**_
 
 * SNAT- [kimerültség](#snat-exhaustion)keresése.
 * A SYN-újraküldési viselkedést vezérlő TCP-verem konfigurációs paramétere RTO ([újraküldési időkorlát](https://tools.ietf.org/html/rfc793)). A RTO értéke állítható, de általában 1 másodperc vagy magasabb értékre van beállítva az exponenciális visszalépéshez.  Ha az alkalmazás kapcsolati időkorlátja túl rövid (például 1 másodperc), akkor előfordulhat, hogy a rendszer szórványos kapcsolati időtúllépéseket lát.  Növelje meg az alkalmazás-kapcsolatok időtúllépését.
@@ -155,7 +155,7 @@ Az előző fejezetek azon internetes végponttal együtt érvényesek, amellyel 
 
 Általában a csomagok rögzítése a forráson és a célhelyen (ha van ilyen) szükséges ahhoz, hogy eldöntse, mi zajlik.
 
-_**Megoldás:**_
+_**Megoldás**_
 
 * SNAT- [kimerültség](#snat-exhaustion)keresése. 
 * Ellenőrizze, hogy az adott régióban vagy máshol található végponthoz való csatlakozást szeretné-e összehasonlítani.  
@@ -171,7 +171,7 @@ Ennek egyik lehetséges oka, hogy a TCP-kapcsolatok üresjárati időtúllépés
 
 A TCP-alaphelyzetek nem jönnek létre a NAT-átjáró erőforrásainak nyilvános oldalán. A cél oldalon a TCP-alaphelyzeteket a forrás virtuális gép hozza létre, nem pedig a NAT-átjáró erőforrását.
 
-_**Megoldás:**_
+_**Megoldás**_
 
 * Tekintse át a [tervezési mintákra](#design-patterns) vonatkozó javaslatokat.  
 * Ha szükséges, nyisson meg egy támogatási esetet a további hibaelhárításhoz.
@@ -188,7 +188,7 @@ _**Megoldás:**_ NAT-átjáró üzembe helyezése IPv6-előtag nélküli alhál�
 
 Konfigurálnia kell a NAT-átjárót, az IP-címet (ka), és azt, hogy melyik alhálózatnak kell használnia NAT Gateway-erőforrást. Azonban a NAT-átjáró üzembe helyezése előtt létezett virtuálisgép-példányok kapcsolatai nem az IP-címet (es) használják.  Úgy tűnik, hogy az IP-cím (ek) et használják a NAT-átjáró erőforrásával.
 
-_**Megoldás:**_
+_**Megoldás**_
 
 [Virtual Network NAT](nat-overview.md) lecseréli az alhálózat kimenő kapcsolatát, amelyhez be van állítva. Amikor az alapértelmezett SNAT vagy a terheléselosztó kimenő SNAT a NAT-átjárók használatára vált, az új kapcsolatok azonnal elkezdik használni a NAT-átjáró erőforrásához társított IP-címet (ka) t.  Ha azonban egy virtuális gép még mindig rendelkezik létesített csatlakozással a NAT-átjáró erőforrásra váltás során, akkor a kapcsolódás továbbra is a csatlakozás létrejötte után a régi SNAT IP-címet fogja használni.  Győződjön meg arról, hogy valóban új kapcsolatot létesít, és nem használ olyan kapcsolatot, amely már létezett, mert az operációs rendszer vagy a böngésző egy kapcsolati készletben gyorsítótárazta a kapcsolatokat.  Ha például a PowerShellben a _curlot_ használja, ügyeljen arra, hogy a _-DisableKeepalive_ paraméterrel kényszerítse az új kapcsolatokat.  Ha böngészőt használ, a kapcsolatok is összevonhatók.
 
@@ -196,7 +196,7 @@ Nem szükséges újraindítani a virtuális gépet a NAT-átjáró erőforrásá
 
 Ha továbbra is problémákba ütközött, nyisson meg egy támogatási esetet a további hibaelhárításhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
 * Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)

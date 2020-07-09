@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja a nyilvános hálózati hozzá
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: b5f93f3a3583900810ca75f925c6a88df9102652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8156b01244012d78214f2ba8c49ed76dbceed6d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79374952"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118783"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for MySQL a Azure Portal használatával
 
@@ -41,6 +41,6 @@ Kövesse az alábbi lépéseket a MySQL-kiszolgáló nyilvános hálózati hozz�
 
     ![Azure Database for MySQL a hálózati hozzáférés megtagadása sikeres](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

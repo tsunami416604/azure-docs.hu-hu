@@ -3,16 +3,16 @@ title: Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API a Blitz
 description: Ismerje meg, hogyan telepítheti át az Apache Cassandra Database-ből származó adatok Azure Cosmos DB Cassandra API a Blitzz használatával.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: b2e7f371e587c1c7f0debfa018ea8f25a30718a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260627"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
 
@@ -52,11 +52,11 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
 1. A Blitzz-telepítést és a bináris fájlokat a [Blitzz webhelyén](https://www.blitzz.io)található bemutató igénylésével szerezheti be. Azt is megteheti, hogy [e-mailt](mailto:success@blitzz.io) küld a csapatnak.
 
-   ![Blitzz replikált eszköz letöltése](./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz replikált eszköz letöltése":::
 
-   ![Blitzz replikált-fájlok](./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png)
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replikált-fájlok":::
 
-1. A CLI-terminálon állítsa be a forrás adatbázis konfigurációját. Nyissa meg a konfigurációs **`vi conf/conn/cassandra.yml`** fájlt a paranccsal, és adja hozzá a Cassandra csomópontok, a portszám, a Felhasználónév, a jelszó és a többi szükséges adat IP-címeinek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
+1. A CLI-terminálon állítsa be a forrás adatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/cassandra.yml`** paranccsal, és adja hozzá a Cassandra csomópontok, a portszám, a Felhasználónév, a jelszó és a többi szükséges adat IP-címeinek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
 
    ```bash
    type: CASSANDRA
@@ -71,13 +71,13 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
    ```
 
-   ![A Cassandra-kapcsolatok szerkesztőjének megnyitása](./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png)
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="A Cassandra-kapcsolatok szerkesztőjének megnyitása":::
 
-   ![Cassandra-kapcsolatok konfigurálása](./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png)
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Cassandra-kapcsolatok konfigurálása":::
 
    A konfigurációs adatok kitöltése után mentse és zárjuk be a fájlt.
 
-1. Igény szerint beállíthatja a forrás adatbázis-szűrő fájlját is. A szűrő fájl határozza meg, hogy mely sémákat vagy táblákat kell áttelepíteni. Nyissa meg a konfigurációs **`vi filter/cassandra_filter.yml`** fájlt a parancs használatával, és adja meg a következő konfigurációs adatokat:
+1. Igény szerint beállíthatja a forrás adatbázis-szűrő fájlját is. A szűrő fájl határozza meg, hogy mely sémákat vagy táblákat kell áttelepíteni. Nyissa meg a konfigurációs fájlt a **`vi filter/cassandra_filter.yml`** parancs használatával, és adja meg a következő konfigurációs adatokat:
 
    ```bash
 
@@ -92,13 +92,13 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
 1. Az adatok áttelepítése előtt növelje a tároló átviteli sebességét az alkalmazás gyors áttelepítéséhez szükséges mennyiségre. Megnövelheti például az átviteli sebességet 100000 RUs-re. Az adatátviteli sebesség az áttelepítés megkezdése előtt méretezése segít az adatok áttelepítésében kevesebb idő alatt.
 
-   ![Az Azure Cosmos-tároló méretezése az egész](./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png)
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Az Azure Cosmos-tároló méretezése az egész":::
 
    Csökkentse az átviteli sebességet az áttelepítés befejeződése után. A tárolt adatok mennyisége és az egyes műveletekhez szükséges RUs alapján megbecsülhető az adatáttelepítés után szükséges átviteli sebesség. Ha többet szeretne megtudni arról, hogyan kell megbecsülni az RUs-t, tekintse meg a [tárolók és adatbázisok átviteli sebességének kiépítése](set-throughput.md) és [a Azure Cosmos db Capacity Planner cikkeinek becslése](estimate-ru-with-capacity-planner.md) című cikket.
 
 1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét**és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
 
-1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs **`vi conf/conn/cosmosdb.yml`** fájlt a paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájl tartalmát jeleníti meg:
+1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/cosmosdb.yml`** paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájl tartalmát jeleníti meg:
 
    ```bash
    type: COSMOSDB
@@ -128,7 +128,7 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
    A replikált felhasználói felületén látható a replikálási folyamat. Ha elkészült a séma-áttelepítési és a pillanatkép-művelet, a folyamat 100%-ot mutat. Az áttelepítés befejezése után érvényesítheti a cél Azure Cosmos-adatbázisban található adatforrásokat.
 
-   ![Cassandra adatáttelepítés kimenete](./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png)
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Cassandra adatáttelepítés kimenete":::
 
 
 1. Mivel a teljes áttelepítési módot használta, olyan műveleteket hajthat végre, mint például az adatok beszúrása, frissítése vagy törlése a forrás Apache Cassandra-adatbázison. Később ellenőrizze, hogy a cél Azure Cosmos-adatbázisban valós időben replikálódnak-e. Az áttelepítés után csökkentse az Azure Cosmos-tárolóhoz konfigurált átviteli sebességet.

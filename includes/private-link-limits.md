@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-network
 author: KumudD
 ms.service: virtual-network
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 1c790f10a310b6c4dea3aefd6cb02891b5bbcf9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c33d4988082496e53520254e0d85431497d8b38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84902514"
 ---
  Az Azure Private-hivatkozásra a következő korlátozások vonatkoznak:
 
@@ -21,7 +21,7 @@ ms.locfileid: "81768752"
 |---------|---------|
 |Magánhálózati végpontok száma virtuális hálózatonként     |  1000       |
 |Privát végpontok száma/előfizetés       |   64000       |
-|A Private link Service/előfizetés száma         |   800      |
+|A Private link Services/előfizetés száma         |   800      |
 |Privát kapcsolati szolgáltatás IP-konfigurációinak száma     |  8 (ez a szám a hálózati címfordításhoz használt IP-címekhez használható)       |
 |Privát végpontok száma ugyanazon a privát kapcsolati szolgáltatáson   |  1000       |
 |Privát végpontok száma Key vaultban | 64 |

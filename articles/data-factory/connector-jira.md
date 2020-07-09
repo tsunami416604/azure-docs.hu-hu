@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: ddf752fc78c8c6bb2d7e7a57178b9cf2d719b810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418201"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>Adatok másolása a JIRA a Azure Data Factory használatával
@@ -47,7 +47,7 @@ A JIRA társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **JIRA** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **JIRA** | Igen |
 | gazda | A JIRA szolgáltatás IP-címe vagy állomásneve. (például jira.example.com)  | Igen |
 | port | A JIRA-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Az alapértelmezett érték 443, ha HTTPS-kapcsolaton keresztül csatlakozik, vagy 8080, ha HTTP-n keresztül csatlakozik.  | Nem |
 | felhasználónév | A JIRA szolgáltatás eléréséhez használt Felhasználónév.  | Igen |
@@ -56,7 +56,7 @@ A JIRA társított szolgáltatás a következő tulajdonságokat támogatja:
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -84,10 +84,10 @@ Az adatok JIRA való másolásához állítsa az adatkészlet Type (típus) tula
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **JiraObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **JiraObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -114,10 +114,10 @@ Az adatok JIRA való másolásához állítsa a forrás típusát a másolás te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **JiraSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **JiraSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

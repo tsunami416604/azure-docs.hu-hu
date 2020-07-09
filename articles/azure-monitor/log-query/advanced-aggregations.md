@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662178"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Speciális összesítések Azure Monitor log lekérdezésekben
@@ -23,7 +22,7 @@ ms.locfileid: "77662178"
 Ez a cikk ismerteti a Azure Monitor lekérdezések számára elérhető fejlettebb összesítési lehetőségeket.
 
 ## <a name="generating-lists-and-sets"></a>Listák és készletek létrehozása
-Egy adott oszlop `makelist` értékeinek sorrendje alapján is elvégezheti az adatok kimutatását. Előfordulhat például, hogy meg szeretné vizsgálni a leggyakrabban használt rendezési eseményeket a gépeken. Az adatmennyiséget lényegében az egyes gépek EventIDs sorrendjével lehet kimutatni. 
+`makelist`Egy adott oszlop értékeinek sorrendje alapján is elvégezheti az adatok kimutatását. Előfordulhat például, hogy meg szeretné vizsgálni a leggyakrabban használt rendezési eseményeket a gépeken. Az adatmennyiséget lényegében az egyes gépek EventIDs sorrendjével lehet kimutatni. 
 
 ```Kusto
 Event
@@ -38,9 +37,9 @@ Event
 | számítógép2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-`makelist`létrehoz egy listát abban a sorrendben, ahogy az adatgyűjtés megtörtént. Ha az eseményeket a legrégebbtől a legújabbig szeretné rendezni, használja `asc` a `desc`Order utasítást a következő helyett:. 
+`makelist`létrehoz egy listát abban a sorrendben, ahogy az adatgyűjtés megtörtént. Ha az eseményeket a legrégebbtől a legújabbig szeretné rendezni, használja `asc` a Order utasítást a következő helyett: `desc` . 
 
-Az is hasznos, ha csak a különböző értékek listáját szeretné létrehozni. Ezt egy _készletnek_ nevezzük, amely a `makeset`következővel hozható létre:
+Az is hasznos, ha csak a különböző értékek listáját szeretné létrehozni. Ezt egy _készletnek_ nevezzük, amely a következővel hozható létre `makeset` :
 
 ```Kusto
 Event
@@ -55,10 +54,10 @@ Event
 | számítógép2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-A `makelist`hasonlóan `makeset` a megrendelt adatmennyiséggel is működik, és az átadott sorok sorrendje alapján hozza a tömböket.
+A hasonlóan a `makelist` `makeset` megrendelt adatmennyiséggel is működik, és az átadott sorok sorrendje alapján hozza a tömböket.
 
 ## <a name="expanding-lists"></a>Kiterjesztések listája
-A `makelist` vagy `makeset` a inverz művelete `mvexpand`, amely kibővíti az értékek listáját a sorok elkülönítéséhez. A JSON és a tömb tetszőleges számú dinamikus oszlopán kiterjeszthető. Például megtekintheti a *szívverési* táblázatot olyan megoldások esetében, amelyek az elmúlt órában szívverést küldő számítógépekről küldenek adatokat:
+A vagy a inverz művelete `makelist` `makeset` `mvexpand` , amely kibővíti az értékek listáját a sorok elkülönítéséhez. A JSON és a tömb tetszőleges számú dinamikus oszlopán kiterjeszthető. Például megtekintheti a *szívverési* táblázatot olyan megoldások esetében, amelyek az elmúlt órában szívverést küldő számítógépekről küldenek adatokat:
 
 ```Kusto
 Heartbeat
@@ -73,7 +72,7 @@ Heartbeat
 | számítógép3 | "antimalware", "változáskövetési" |
 | ... | ... |
 
-A `mvexpand` használatával külön sorban jelenítheti meg az egyes értékeket vesszővel tagolt lista helyett:
+A használatával `mvexpand` külön sorban jelenítheti meg az egyes értékeket vesszővel tagolt lista helyett:
 
 ```Kusto
 Heartbeat
@@ -94,7 +93,7 @@ Heartbeat
 | ... | ... |
 
 
-Ezután ismét felhasználhatja `makelist` az elemek csoportosítását, és ez alkalommal a számítógépek listáját tekintheti meg megoldásként:
+Ezután ismét felhasználhatja az `makelist` elemek csoportosítását, és ez alkalommal a számítógépek listáját tekintheti meg megoldásként:
 
 ```Kusto
 Heartbeat
@@ -142,7 +141,7 @@ Heartbeat
 | Közvetlen ügynök | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-A *count_* tömb harmadik eleme a várt érték, és a _TimeGenerated_ tömbben a "2017-06-06T19:00:00.0000000 z" egyező időbélyeg szerepel. Ez a tömb formátuma nehezen olvasható. A `mvexpand` (z) használatával bontsa ki a tömböket, és a következő `summarize`módon hozza létre ugyanazt a formátumot:
+A *count_* tömb harmadik eleme a várt érték, és a _TimeGenerated_ tömbben a "2017-06-06T19:00:00.0000000 z" egyező időbélyeg szerepel. Ez a tömb formátuma nehezen olvasható. A (z) használatával `mvexpand` bontsa ki a tömböket, és a következő módon hozza létre ugyanazt a formátumot `summarize` :
 
 ```Kusto
 Heartbeat
@@ -163,7 +162,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Eredmények szűkítése a következő elemek egy halmazára: `let` `makeset`,, `toscalar`,`in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Eredmények szűkítése a következő elemek egy halmazára:,, `let` `makeset` `toscalar` ,`in`
 Gyakori forgatókönyv, hogy bizonyos entitások nevét kijelöli a feltételek alapján, majd egy másik, az entitásokra vonatkozó adathalmazt szűr. Előfordulhat például, hogy olyan számítógépeket talál, amelyekről ismert, hogy hiányoznak a frissítések, és azonosítsa azokat az IP-címeket, amelyeket a számítógépek meghívtak:
 
 

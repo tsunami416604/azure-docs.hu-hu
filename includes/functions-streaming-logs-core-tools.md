@@ -11,9 +11,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "68881323"
 ---
-#### <a name="built-in-log-streaming"></a>Beépített log streaming
+#### <a name="built-in-log-streaming"></a>Beépített naplóstreamelés
 
-Az Azure `logstream` -ban futó adott Function app-beli adatfolyam-naplók fogadásának megkezdéséhez használja a következő példát:
+A `logstream` paraméterrel elindíthatja az Azure-ban futó adott függvényalkalmazások streamnaplóinak fogadását, ahogyan az az alábbi példában látható:
 
 ```bash
 func azure functionapp logstream <FunctionAppName>
@@ -21,7 +21,7 @@ func azure functionapp logstream <FunctionAppName>
 
 #### <a name="live-metrics-stream"></a>Élő metrikastream
 
-A Function alkalmazáshoz tartozó [élő metrikastream](../articles/azure-monitor/app/live-stream.md) egy új böngészőablakban is megtekintheti a `--browser` lehetőséggel együtt, az alábbi példában látható módon:
+A `--browser` paraméter megadásával az [élő metrikastreamet](../articles/azure-monitor/app/live-stream.md) új böngészőablakban is megtekintheti, ahogyan az az alábbi példában látható:
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

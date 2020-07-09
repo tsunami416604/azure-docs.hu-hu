@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76153768"
 ---
 # <a name="additional-documentation"></a>További dokumentáció
@@ -19,7 +18,7 @@ Ez a cikk a avere Vezérlőpult felügyeleti felületével és a kapcsolódó t�
 
 ## <a name="avere-cluster-documentation"></a>Avere-fürt dokumentációja
 
-További avere-fürt dokumentációja a webhelyén, a következő <https://azure.github.io/Avere/>címen érhető el:. Ezek a dokumentumok segítenek megérteni a fürt képességeit, valamint a beállítások konfigurálásának módját.
+További avere-fürt dokumentációja a webhelyén, a következő címen érhető el: <https://azure.github.io/Avere/> . Ezek a dokumentumok segítenek megérteni a fürt képességeit, valamint a beállítások konfigurálásának módját.
 
 * A [FXT-fürt létrehozási útmutatója](<https://azure.github.io/Avere/#fxt_cluster>) olyan fürtökhöz lett tervezve, amelyek fizikai hardveres csomópontokból állnak, de a dokumentumban található információk a vFXT-fürtökhöz is relevánsak. Az új vFXT-fürt rendszergazdái az alábbi fejezetek elolvasását élvezhetik:
   * A [támogatási és figyelési beállítások testreszabása](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) elmagyarázza, hogyan szabhatja testre a támogatás feltöltési beállításait és engedélyezheti a távoli figyelést.

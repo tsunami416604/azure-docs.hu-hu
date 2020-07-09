@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756664"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Eszközkapcsolatok monitorozása az Azure CLI-vel
@@ -25,7 +24,7 @@ Az Azure CLI IoT bővítmény használatával megtekintheti, hogy az eszközök 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Az Azure CLI telepítve van, és a verziója 2.0.7 vagy újabb. Az Azure CLI verziójának futtatásával keresse meg `az --version`az alkalmazást. Ismerje meg, hogyan telepítheti és frissítheti az [Azure CLI-docs](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Az Azure CLI telepítve van, és a verziója 2.0.7 vagy újabb. Az Azure CLI verziójának futtatásával keresse meg az alkalmazást `az --version` . Ismerje meg, hogyan telepítheti és frissítheti az [Azure CLI-docs](https://docs.microsoft.com/cli/azure/install-azure-cli)
 + Munkahelyi vagy iskolai fiók az Azure-ban, amely felhasználóként van hozzáadva egy IoT Central alkalmazásban.
 
 ## <a name="install-the-iot-central-extension"></a>Az IoT Central-bővítmény telepítése
@@ -50,7 +49,7 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>A bővítmény használata
 
-A következő szakaszok a futtatáskor `az iot central`használható általános parancsokat és beállításokat ismertetik. A parancsok és beállítások teljes készletének megtekintéséhez továbbítsa `--help` a parancsot `az iot central` vagy annak bármelyik alparancsát.
+A következő szakaszok a futtatáskor használható általános parancsokat és beállításokat ismertetik `az iot central` . A parancsok és beállítások teljes készletének megtekintéséhez továbbítsa a `--help` `az iot central` parancsot vagy annak bármelyik alparancsát.
 
 ### <a name="login"></a>Bejelentkezés
 

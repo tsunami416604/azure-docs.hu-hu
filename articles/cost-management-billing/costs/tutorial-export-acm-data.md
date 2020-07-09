@@ -3,17 +3,17 @@ title: Oktatóanyag – Az Azure Cost Managementből exportált adatok létrehoz
 description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure Cost Managementből exportált adatokat külső rendszerekkel való használat céljából.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 05/27/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877949"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142313"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -49,17 +49,15 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-daily-export"></a>Napi rendszerességű exportálás létrehozása
 
-Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyissa meg a kívánt hatókört az Azure Portalon, majd válassza a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A Költségelemzés lap tetején kattintson az **Exportálás** elemre, majd válasszon ki egy exportálási beállítást. Például válassza az **Exportálás üzemezése** lehetőséget.  
+Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyissa meg a kívánt hatókört az Azure Portalon, majd válassza a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A Költségelemzés lap tetején kattintson a **Beállítások**, majd az **Exportálások** elemre, és válasszon ki egy exportálási beállítást.
 
 > [!NOTE]
 > - Az előfizetéseken túl erőforráscsoportokhoz, fiókokhoz, részlegekhez és regisztrációkhoz is hozhat létre exportálásokat. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 >- Amikor partnerként jelentkezik be a számlázási fiók hatókörébe vagy egy ügyfél bérlőjébe, adatokat exportálhat abba az Azure Storage-fiókba, amely össze van kapcsolva a partner tárfiókjával. Ehhez azonban aktív előfizetéssel kell rendelkeznie a CSP-bérlő esetében.
->
-
 
 Kattintson a **Hozzáadás** elemre, adja meg az exportálás kívánt nevét, majd válassza **Az eddigi tárgyhavi költségek napi exportálása** lehetőséget. Kattintson a **Tovább** gombra.
 
-![Példa új exportálásra az exportálás típusával](./media/tutorial-export-acm-data/basics_exports.png)
+[![Példa új exportálásra az exportálás típusával](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
 
 Adja meg az Azure-tárfiók előfizetését, majd válassza ki a tárfiókját.  Adja meg a tárolót és a könyvtár elérési útját, ahová az exportálást irányítani szeretné. Kattintson a **Tovább** gombra.
 
@@ -83,10 +81,19 @@ Kétféle exportálási lehetőség áll rendelkezésre:
 **Egyéni** – Heti és havi exportálási feladatok ütemezését teszi lehetővé az addigi tárgyheti vagy tárgyhavi adatokkal. *A kezdeti exportálás azonnal lefut.*
 
 Ha használatalapú, MSDN- vagy Visual Studio-előfizetéssel rendelkezik, a számlázási időszak nem feltétlenül esik egybe a naptári hónapokkal. Az ilyen típusú előfizetésekhez és erőforráscsoportokhoz olyan exportálásokat is létrehozhat, amelyek a számlázási időszakhoz vagy a naptári hónapokhoz igazodnak. A számlázási hónaphoz igazodó exportálás létrehozásához lépjen az **Egyéni** menüpontra, majd válassza a **Számlázási időszak mai napig** lehetőséget.  A naptári hónaphoz igazodó exportálás létrehozásához válassza az **Ebben a hónapban** lehetőséget.
->
->
 
 ![Új exportálás – Alapvető beállítások lap, amelyen látható az aktuális heti egyéni kiválasztás](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
+#### <a name="create-an-export-for-multiple-subscriptions"></a>Exportálás létrehozása több előfizetéshez
+
+Ha Nagyvállalati Szerződéssel rendelkezik, akkor egy felügyeleti csoporton keresztül egyetlen tárolóban összesítheti az előfizetési költségek adatait, majd exportálhatja a felügyeleti csoport költségkezelési adatait.
+
+Más előfizetési típusokhoz tartozó felügyeleti csoportok adatainak exportálása nem támogatott.
+
+1. Hozzon létre egy felügyeleti csoportot, és rendeljen hozzá előfizetéseket.
+1. Az Exportálások elemnél válassza a **Hatókör** lehetőséget.
+1. Jelölje ki a **Válassza ezt a felügyeleti csoportot** lehetőséget.
+1. Hozzon létre egy megfelelő hatókörű exportálást, hogy lekérhesse a felügyeleti csoportba tartozó előfizetések költségkezelési adatait.
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
 
@@ -104,6 +111,18 @@ A fájl abban a programban vagy alkalmazásban nyílik meg, amelyik a CSV kiterj
 
 ![Példa Excelben megjelenített exportált CSV-adatokra](./media/tutorial-export-acm-data/example-export-data.png)
 
+### <a name="download-an-exported-csv-data-file"></a>Exportált CSV-adatfájl letöltése
+
+Az exportált CSV-fájlt az Azure Portalon is letöltheti. A következő lépések bemutatják, hogyan találja meg a költségelemzésben.
+
+1. A költségelemzésben válassza a **Beállítások**, majd az **Exportálások** lehetőséget.
+1. Az exportálások listájában válassza ki egy exportálás tárfiókját.
+1. A tárfiókban kattintson a **Tárolók** elemre.
+1. A tárolók listájában válassza ki az adott tárolót.
+1. Navigáljon a könyvtárakban és tárolóblobokban a kívánt dátumig.
+1. Jelölje ki a CSV-fájlt, majd a válassza a **Letöltés** lehetőséget.
+
+[![Példa exportálás letöltésére](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
 ## <a name="access-exported-data-from-other-systems"></a>Exportált adatokhoz való hozzáférés más rendszerekből
 

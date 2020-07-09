@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050822"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
@@ -54,7 +54,7 @@ Előfordulhat, hogy egy szervezet VÁLLALATKÖZI együttműködéssel rendelkez�
 Igen. A vendég objektumok alapértelmezés szerint nem láthatók a szervezet globális címlistában (GAL), de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Lásd: [a vendég objektumokat láthatóvá tehetem a globális címlistában?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Használhatok-e egy vendég felhasználót korlátozott rendszergazdaként?
-Abszolút. További információ: [vendég felhasználók hozzáadása szerepkörhöz](add-guest-to-role.md).
+Természetesen. További információ: [vendég felhasználók hozzáadása szerepkörhöz](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Az Azure AD B2B együttműködés lehetővé teszi a B2B-felhasználók számára a Azure Portal elérését?
 Ha egy felhasználó a korlátozott rendszergazda szerepkörhöz van rendelve, a B2B-együttműködés felhasználói nem igényelnek hozzáférést a Azure Portalhoz. Azonban a korlátozott rendszergazda szerepkört hozzárendelő B2B-együttműködés felhasználói hozzáférhetnek a portálhoz. Továbbá, ha egy vendég felhasználó, aki nincs hozzárendelve ezen rendszergazdai szerepkörhöz, hozzáfér a portálhoz, előfordulhat, hogy a felhasználó hozzáférhet a felhasználói élmény bizonyos részeihez. A vendég felhasználói szerepkörnek van néhány engedélye a címtárban.
@@ -64,7 +64,7 @@ Ha egy felhasználó a korlátozott rendszergazda szerepkörhöz van rendelve, a
 Igen! Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja az összes vendég és külső felhasználó hozzáférését a Azure Portalhoz. Ha beállítja ezt a házirendet, ügyeljen arra, hogy elkerülje a tagok és a rendszergazdák számára a hozzáférés véletlen blokkolását.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) biztonsági rendszergazdaként vagy feltételes hozzáférésű rendszergazdaként.
-2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget. 
+2. A Azure Portal válassza a **Azure Active Directory**lehetőséget. 
 3. A **kezelés**területen válassza a **Biztonság**elemet.
 4. A **védelem**területen válassza a **feltételes hozzáférés**lehetőséget. Válassza az **új szabályzat**lehetőséget.
 5. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét (például "a vendégek blokkolják a portál elérését").
@@ -82,8 +82,8 @@ Igen. A multi-Factor Authentication és a fogyasztói e-mail-fiókok egyaránt t
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Támogatja az Azure AD B2B együttműködési felhasználók jelszavának visszaállítását?
 Ha az Azure AD-bérlő a felhasználó saját könyvtára, [alaphelyzetbe állíthatja a felhasználó jelszavát](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) a Azure Portal. Azonban nem lehet közvetlenül alaphelyzetbe állítani egy olyan vendég felhasználó jelszavát, aki egy másik Azure AD-címtár vagy külső identitás-szolgáltató által felügyelt fiókkal jelentkezik be. A jelszót csak a vendég felhasználó vagy a felhasználó kezdőkönyvtárának rendszergazdája állíthatja alaphelyzetbe. Íme néhány példa arra, hogyan működik a jelszó-visszaállítás a vendég felhasználói számára:
  
-* Azok a vendég felhasználók, akik Microsoft-fiókkal jelentkeznek be guestuser@live.com(például), visszaállíthatják saját jelszavukat Microsoft-fiók önkiszolgáló jelszó-visszaállítás (SSPR) használatával. Lásd: [a Microsoft-fiók jelszavának alaphelyzetbe állítása](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
-* Azok a vendégek, akik Google-fiókkal vagy más külső identitás-szolgáltatóval jelentkeznek be, visszaállíthatják saját jelszavukat a személyazonosság-szolgáltató SSPR metódusának használatával. A Google-fiókkal guestuser@gmail.com rendelkező vendég felhasználó például a [jelszó módosítása vagy alaphelyzetbe állítása](https://support.google.com/accounts/answer/41078)című részben leírtak szerint állíthatja vissza a jelszavát.
+* Azok a vendég felhasználók, akik Microsoft-fiókkal jelentkeznek be (például guestuser@live.com ), visszaállíthatják saját jelszavukat Microsoft-fiók önkiszolgáló jelszó-visszaállítás (SSPR) használatával. Lásd: [a Microsoft-fiók jelszavának alaphelyzetbe állítása](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
+* Azok a vendégek, akik Google-fiókkal vagy más külső identitás-szolgáltatóval jelentkeznek be, visszaállíthatják saját jelszavukat a személyazonosság-szolgáltató SSPR metódusának használatával. A Google-fiókkal rendelkező vendég felhasználó például a guestuser@gmail.com [jelszó módosítása vagy alaphelyzetbe állítása](https://support.google.com/accounts/answer/41078)című részben leírtak szerint állíthatja vissza a jelszavát.
 * Ha az identitás bérlője egy igény szerinti (JIT) vagy "vírusos" bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
 
 * Ha a vendég felhasználói kezdőkönyvtár az Azure AD-bérlő, alaphelyzetbe állíthatja a felhasználó jelszavát. Előfordulhat például, hogy létrehozott egy felhasználót, vagy szinkronizált egy felhasználót a helyszíni Active Directory, és beállította a UserType a vendégnek. Mivel ez a felhasználó a címtárban található, alaphelyzetbe állíthatja a jelszót a Azure Portal.

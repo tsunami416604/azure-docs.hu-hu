@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488790"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -33,7 +33,7 @@ Az alkalmazás alapértelmezés szerint csak a RFC1918-forgalmat irányítja át
 
    ![Alkalmazásbeállítás megadása][4]
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. Kattintson a **Mentés** gombra.
 
 Ha az összes kimenő forgalmat átirányítja a VNet, a rendszer az integrációs alhálózatra alkalmazott NSG és UDR vonatkozik. Ha az összes kimenő forgalmat átirányítja a VNet, a kimenő címek továbbra is az alkalmazás tulajdonságaiban felsorolt kimenő címek lesznek, kivéve, ha olyan útvonalakat ad meg, amelyek máshová nem küldik a forgalmat.
@@ -56,11 +56,7 @@ Az egyes csomag-példányok esetében egy-egy-egy-egy címnek Ha öt példányra
 
 Ha azt szeretné, hogy egy másik csomagban lévő alkalmazásai olyan VNet érjenek el, amely már kapcsolódik egy másik csomagban lévő alkalmazásokhoz, válasszon egy másik alhálózatot, mint amelyet a meglévő VNet-integráció használ.
 
-A szolgáltatás előzetes verzióban érhető el a Linux rendszerben. A szolgáltatás Linux-formája csak az RFC 1918-címekre irányuló hívások kezdeményezését támogatja (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
-
-### <a name="web-or-function-app-for-containers"></a>Webes vagy függvényalkalmazás tárolók számára
-
-Ha az alkalmazást Linux rendszeren futtatja a beépített rendszerképekkel, a regionális VNet-integráció további változtatások nélkül működik. Ha web vagy függvényalkalmazást használ a tárolók számára, módosítania kell a Docker-rendszerképet a VNet-integráció használatához. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változóját a tároló indítási ideje automatikusan beállítja a platformon. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy az SSH_PORT környezeti változó által megadott portszámot figyelje, amikor a regionális VNet-integrációt használja. Az átjárók számára szükséges VNet-integráció nem támogatott a Linux rendszeren.
+A szolgáltatás teljes mértékben támogatott Windows-és Linux-alapú webalkalmazásokhoz is. Az összes viselkedés ugyanaz, mint a Windows-alkalmazások és a Linux-alkalmazások között.
 
 ### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 

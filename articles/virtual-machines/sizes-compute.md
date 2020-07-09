@@ -1,31 +1,25 @@
 ---
 title: Azure-beli virtuálisgép-méretek – optimalizált számítás | Microsoft Docs
 description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző számítási optimalizált méreteket. A vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózat sávszélességével kapcsolatos információkat sorolja fel ebben a sorozatban.
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e08d593f641c42f9ad605fda013206e70a34e52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b945348f6fabfa698e45c111241fbfcef088d45e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269635"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058078"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>Számítási optimalizált virtuálisgép-méretek
 
 A számítási optimalizált virtuálisgép-méretek magas CPU-memória aránnyal rendelkeznek. Ezek a méretek kiválóan alkalmasak a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazások kiszolgálói számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számáról nyújt információt. Emellett a tárolási teljesítményre és a hálózati sávszélességre vonatkozó információkat is tartalmaz ebben a csoportosításban.
 
-A [Fsv2 sorozat](fsv2-series.md) az Intel® Xeon® Platinum 8168 processzoron alapul. A szolgáltatás egy tartós, 3,4 GHz-es, a Turbo órajelét és a 3,7 GHz-es max. Intel® AVX-512 utasítások az Intel skálázható processzorok újdonságai. Ezek az utasítások akár kétszeres teljesítmény-növekedést is biztosítanak a vektoros feldolgozási feladatokhoz egy-és dupla pontosságú lebegőpontos műveletekben. Más szóval a számítási feladatokhoz nagyon gyorsak.
+A [Fsv2 sorozat](fsv2-series.md) 2. generációs Intel® Xeon® Platinum 8272CL (Cascade Lake) processzorokat és Intel® Xeon® Platinum 8168 (Skylake) processzorokat futtat. A szolgáltatás egy tartós, 3,4 GHz-es, a Turbo órajelét és a 3,7 GHz-es max. Intel® AVX-512 utasítások az Intel skálázható processzorok újdonságai. Ezek az utasítások akár kétszeres teljesítmény-növekedést is biztosítanak a vektoros feldolgozási feladatokhoz egy-és dupla pontosságú lebegőpontos műveletekben. Más szóval a számítási feladatokhoz nagyon gyorsak.
 
 A Fsv2 sorozat a legjobb ár-teljesítmény az Azure-portfólióban, amely az Azure-beli számítási egység (ACU) alapján vCPU.
 

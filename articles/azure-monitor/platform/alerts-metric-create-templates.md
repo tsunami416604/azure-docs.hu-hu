@@ -5,14 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299299"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -21,7 +20,7 @@ ms.locfileid: "80677007"
 Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
 
 > [!IMPORTANT]
-> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület `Microsoft.OperationalInsights/workspaces`(azaz) további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
+> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
 
 Az alapszintű lépések a következők:
 
@@ -32,9 +31,9 @@ Az alapszintű lépések a következők:
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú erőforrást, `Microsoft.Insights/metricAlerts` és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
-Mentse az alábbi JSON-t simplestaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t simplestaticmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -208,7 +207,7 @@ A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhe
 
 A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál.
 
-Mentse az alábbi JSON-t simplestaticmetricalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+Mentse az alábbi JSON-t simplestaticmetricalert.parameters.jsként, és szükség szerint módosítsa azt.
 
 ```json
 {
@@ -281,9 +280,9 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Egyszerű dinamikus küszöbértékek metrikai riasztásának sablonja
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú erőforrást, `Microsoft.Insights/metricAlerts` és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
-Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t simpledynamicmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -481,7 +480,7 @@ A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhe
 
 A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál. 
 
-Mentse az alábbi JSON-t simpledynamicmetricalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+Mentse az alábbi JSON-t simpledynamicmetricalert.parameters.jsként, és szükség szerint módosítsa azt.
 
 ```json
 {
@@ -567,12 +566,12 @@ Az újabb metrikai riasztások támogatják a többdimenziós metrikákkal kapcs
 
 Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, vegye figyelembe a következő korlátozásokat:
 - Minden egyes feltételhez csak egy értéket lehet kijelölni.
-- A "\*" nem használható dimenzió értékként.
+- A "" nem használható \* dimenzió értékként.
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).
     - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája **ApiName** dimenzióval rendelkezik, és a *criterion1* meghatározza a **ApiName** dimenzió *"GetBlob"* értékét, akkor a *criterion2* **a GetBlob** dimenzió *"ApiName"* értékét is be kell állítania.
 
 
-Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t advancedstaticmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -707,7 +706,7 @@ Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató c�
 
 A fenti sablonnal együtt használhatja az alább megadott paramétert. 
 
-Mentse és módosítsa az alábbi JSON-t advancedstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t advancedstaticmetricalert.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -807,7 +806,7 @@ A következő sablon használatával statikus metrikai riasztási szabályt hozh
 Egyetlen riasztási szabály egyszerre több metrikai idősorozat figyelésére is képes, így kevesebb riasztási szabályt kell kezelni.
 
 Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenzió értékeit figyeli a **tranzakciók** metrikája esetében:
-1. **ResponsType** – a "\*" helyettesítő karakter azt jelenti, hogy a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, külön idősorozatot kell figyelni.
+1. **ResponsType** – a " \* " helyettesítő karakter azt jelenti, hogy a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, külön idősorozatot kell figyelni.
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
 Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
@@ -816,7 +815,7 @@ Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
 - Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
 - Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
 
-Mentse az alábbi JSON-t multidimensionalstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t multidimensionalstaticmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -943,7 +942,7 @@ Mentse az alábbi JSON-t multidimensionalstaticmetricalert. JSON néven az útmu
 
 A fenti sablonnal együtt használhatja az alább megadott paramétert. 
 
-Mentse és módosítsa az alábbi JSON-t multidimensionalstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t multidimensionalstaticmetricalert.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -1036,7 +1035,7 @@ Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
 - Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
 - Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
 
-Mentse az alábbi JSON-t advanceddynamicmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t advanceddynamicmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -1158,7 +1157,7 @@ Mentse az alábbi JSON-t advanceddynamicmetricalert. JSON néven az útmutató c
 
 A fenti sablonnal együtt használhatja az alább megadott paramétert. 
 
-Mentse és módosítsa az alábbi JSON-t advanceddynamicmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t advanceddynamicmetricalert.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -1252,7 +1251,7 @@ Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcso
 
 Ha egyéni metrika esetén riasztási szabályt hoz létre, meg kell adnia a metrika nevét és a metrikai névteret is. Győződjön meg arról is, hogy az egyéni metrika már be van jelentkezve, mivel nem hozható létre riasztási szabály olyan egyéni metrika esetében, amely még nem létezik.
 
-Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t customstaticmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -1432,7 +1431,7 @@ Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató cél
 
 A fenti sablonnal együtt használhatja az alább megadott paramétert. 
 
-Mentse és módosítsa az alábbi JSON-t customstaticmetricalert. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t customstaticmetricalert.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -1527,7 +1526,7 @@ Ebből a szakaszból megtudhatja, hogy három forgatókönyv esetén hogyan figy
 
 Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
 
-Mentse az alábbi JSON-t az All-VM-in-Resource-Group-static. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t all-vms-in-resource-group-static.js-ként az útmutató céljára.
 
 ```json
 {
@@ -1760,7 +1759,7 @@ Mentse az alábbi JSON-t az All-VM-in-Resource-Group-static. JSON néven az útm
 ```
 
 A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-csoport-statikus. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t all-vms-in-resource-group-static.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -1839,7 +1838,7 @@ az group deployment create \
 
 Ez a sablon egy dinamikus küszöbértékek mérőszámának riasztási szabályát fogja létrehozni, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
 
-Mentse az alábbi JSON-t az All-VM-in-Resource-Group-Dynamic. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t all-vms-in-resource-group-dynamic.js-ként az útmutató céljára.
 
 ```json
 {
@@ -2089,7 +2088,7 @@ Mentse az alábbi JSON-t az All-VM-in-Resource-Group-Dynamic. JSON néven az út
 ```
 
 A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t az összes virtuális gép-erőforrás-csoport-dinamikus. Parameters. JSON néven az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t all-vms-in-resource-group-dynamic.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -2174,7 +2173,7 @@ az group deployment create \
 
 Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely figyeli az előfizetésben lévő összes virtuális gép százalékos PROCESSZORát (egy Azure-régióban).
 
-Mentse az alábbi JSON-t az All-VM-in-előfizetés-static. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t all-vms-in-subscription-static.js-ként az útmutató céljára.
 
 ```json
 {
@@ -2408,7 +2407,7 @@ Mentse az alábbi JSON-t az All-VM-in-előfizetés-static. JSON néven az útmut
 ```
 
 A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-static. Parameters. JSON az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t all-vms-in-subscription-static.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -2484,7 +2483,7 @@ az group deployment create \
 
 Ez a sablon egy dinamikus küszöbértékek mérőszámának riasztási szabályát fogja létrehozni, amely figyeli az előfizetésben lévő összes virtuális gép százalékos PROCESSZORát (egy Azure-régióban).
 
-Mentse az alábbi JSON-t az All-VM-in-előfizetés-Dynamic. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t all-vms-in-subscription-dynamic.js-ként az útmutató céljára.
 
 ```json
 {
@@ -2734,7 +2733,7 @@ Mentse az alábbi JSON-t az All-VM-in-előfizetés-Dynamic. JSON néven az útmu
 ```
 
 A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa a JSON-t az alábbi módon: ALL-VM-in-előfizetés-Dynamic. Parameters. JSON az útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t all-vms-in-subscription-dynamic.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -2816,7 +2815,7 @@ az group deployment create \
 
 Ez a sablon létrehoz egy statikus küszöbérték-metrikai riasztási szabályt, amely figyeli a százalékos CPU-t az előfizetésben található virtuális gépek (egy Azure-régióban) listájához.
 
-Mentse az alábbi JSON-t a-VM-static. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t list-of-vms-static.js-ként az útmutató céljára.
 
 ```json
 {
@@ -3050,7 +3049,7 @@ Mentse az alábbi JSON-t a-VM-static. JSON néven az útmutató céljára.
 ```
 
 A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t a-VM-static. Parameters. JSON néven a jelen útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t list-of-vms-static.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -3129,7 +3128,7 @@ az group deployment create \
 
 Ez a sablon létrehoz egy dinamikus küszöbértékek metrikus riasztási szabályt, amely figyeli a százalékos CPU-t egy előfizetésben lévő virtuális gépek (egy Azure-régióban) listájához.
 
-Mentse az alábbi JSON-t a-VM-Dynamic. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t list-of-vms-dynamic.js-ként az útmutató céljára.
 
 ```json
 {
@@ -3379,7 +3378,7 @@ Mentse az alábbi JSON-t a-VM-Dynamic. JSON néven az útmutató céljára.
 ```
 
 A fenti sablonnal az alábbi paramétert használhatja.
-Mentse és módosítsa az alábbi JSON-t a virtuális gép-dinamikus. Parameters. JSON néven a jelen útmutató céljára.
+Mentse és módosítsa az alábbi JSON-t list-of-vms-dynamic.parameters.jsként az útmutató céljára.
 
 ```json
 {
@@ -3465,7 +3464,7 @@ az group deployment create \
 [Application Insights rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek.
 A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). A következő minta Azure Resource Manager sablonnal egy egyszerű rendelkezésre állási teszt és egy kapcsolódó riasztás állítható be.
 
-Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t availabilityalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -3549,7 +3548,6 @@ Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3572,9 +3570,9 @@ A paraméterek értékeit a parancssorban vagy egy paraméterérték használat�
 
 > [!NOTE]
 >
-> `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: "`&amp`;"
+> `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: " `&amp` ;"
 
-Mentse az alábbi JSON-t availabilityalert. Parameters. JSON néven, és módosítsa a szükséges módon.
+Mentse az alábbi JSON-t availabilityalert.parameters.jsként, és szükség szerint módosítsa azt.
 
 ```json
 {

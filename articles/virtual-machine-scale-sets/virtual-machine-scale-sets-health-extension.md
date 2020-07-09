@@ -9,12 +9,11 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783044"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Az Application Health bővítmény használata virtuálisgép-méretezési csoportokkal
 Az alkalmazás állapotának figyelése fontos jel az üzemelő példány kezeléséhez és frissítéséhez. Az Azure virtuálisgép-méretezési csoportok támogatást nyújtanak a [működés közbeni](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) frissítésekhez, beleértve az [automatikus operációsrendszer-képek](virtual-machine-scale-sets-automatic-upgrade.md)frissítéseit is, amelyek az egyes példányok állapotának figyelésére támaszkodnak az üzembe helyezés frissítéséhez. Az állapotfigyelő szolgáltatással is figyelheti a méretezési csoport egyes példányainak alkalmazási állapotát, és elvégezheti a példányok javítását az [automatikus példányok javításával](virtual-machine-scale-sets-automatic-instance-repairs.md).
@@ -61,7 +60,7 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | dátum |
 | közzétevő | `Microsoft.ManagedServices` | sztring |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | sztring |
+| típus | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | sztring |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Beállítások
@@ -154,7 +153,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-A. JSON kiterjesztésű fájl tartalma.
+A fájl tartalmának extension.js.
 
 ```json
 {
@@ -173,7 +172,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 A naplók rendszeresen rögzítik az alkalmazás állapotának állapotát is.

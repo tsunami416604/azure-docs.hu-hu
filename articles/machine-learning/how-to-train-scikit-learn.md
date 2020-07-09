@@ -5,17 +5,16 @@ description: Ismerje meg, hogyan futtathatja a scikit – Ismerje meg nagyválla
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 03/09/2020
-ms.custom: seodec18
-ms.openlocfilehash: c842e0ea126ffe4c3328c4fd237e2891d6cff229
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: a967bb1ac2c29b130ccd5e33b4aad768dd8daa6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168794"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557011"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -217,7 +216,7 @@ Megjegyzés: ezeket a függőségeket az előre elkészített scikit-Learn köve
 A teljes körű [útmutató](how-to-deploy-and-where.md) a Azure Machine learning nagyobb részletességgel történő üzembe helyezését ismerteti.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a scikit-Learn modell betanítását és regisztrálását, valamint az üzembe helyezési lehetőségek megismerését ismertetjük. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 

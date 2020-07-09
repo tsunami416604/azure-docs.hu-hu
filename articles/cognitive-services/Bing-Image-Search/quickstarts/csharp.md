@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 8018fa3935e780f8c4002483c5eebdade82b5f1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f35b69a3ca44308a7d314f448bf35b81d7119228
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119023"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603519"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Gyors útmutató: képek keresése a Bing Image Search REST API és C használatával #
 
@@ -206,11 +206,10 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi az a Bing Image Search API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Próbáljon ki egy online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
-* [A Bing Search API-k díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
-* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
-* Az [Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services).
-* [Bing Image Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [A Bing Search API-k díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

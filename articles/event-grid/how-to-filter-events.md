@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid eseményeinek szűrése
 description: Ez a cikk bemutatja, hogyan szűrhetők az események (eseménytípus szerint, tárgy szerint, operátorok és adattípusok alapján) Event Grid előfizetés létrehozásakor.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 99fb00f99a055033ccfcd99e32a52d423878fb44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454023"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105574"
 ---
 # <a name="filter-events-for-event-grid"></a>Event Grid eseményeinek szűrése
 
@@ -22,7 +18,7 @@ Ez a cikk bemutatja, hogyan szűrheti az eseményeket Event Grid előfizetés l�
 
 ## <a name="filter-by-event-type"></a>Szűrés eseménytípus szerint
 
-Event Grid-előfizetés létrehozásakor megadhatja, hogy mely [típusú események](event-schema.md) legyenek elküldve a végpontnak. Az ebben a szakaszban szereplő példák egy erőforráscsoport esemény-előfizetéseit hoznak létre, de korlátozzák a és `Microsoft.Resources.ResourceWriteFailure` `Microsoft.Resources.ResourceWriteSuccess`a számára eljuttatott eseményeket. Ha az események eseménytípus szerinti szűrése nagyobb rugalmasságot igényel, tekintse meg a következő témakört: szűrés speciális operátorok és adatmezők alapján.
+Event Grid-előfizetés létrehozásakor megadhatja, hogy mely [típusú események](event-schema.md) legyenek elküldve a végpontnak. Az ebben a szakaszban szereplő példák egy erőforráscsoport esemény-előfizetéseit hoznak létre, de korlátozzák a és a számára eljuttatott eseményeket `Microsoft.Resources.ResourceWriteFailure` `Microsoft.Resources.ResourceWriteSuccess` . Ha az események eseménytípus szerinti szűrése nagyobb rugalmasságot igényel, tekintse meg a következő témakört: szűrés speciális operátorok és adatmezők alapján.
 
 A PowerShell esetében használja a `-IncludedEventType` paramétert az előfizetés létrehozásakor.
 
@@ -48,7 +44,7 @@ az eventgrid event-subscription create \
   --included-event-types $includedEventTypes
 ```
 
-Resource Manager-sablonok esetén használja a `includedEventTypes` (z) tulajdonságot.
+Resource Manager-sablonok esetén használja a (z `includedEventTypes` ) tulajdonságot.
 
 ```json
 "resources": [
@@ -81,7 +77,7 @@ Resource Manager-sablonok esetén használja a `includedEventTypes` (z) tulajdon
 
 Az eseményeket a tárgy szerint szűrheti az esemény adataiban. Megadhat egy értéket, amely megegyezik a tárgy elejéhez vagy végéhez. Ha több rugalmasságra van szüksége az események tárgy szerinti szűréséhez, tekintse meg a szűrés speciális operátorok és az adatmezők alapján című témakört.
 
-A következő PowerShell-példában egy olyan esemény-előfizetést hoz létre, amely a tárgy elejétől szűr. A `-SubjectBeginsWith` paraméter használatával egy adott erőforrásra korlátozhatja az eseményeket. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
+A következő PowerShell-példában egy olyan esemény-előfizetést hoz létre, amely a tárgy elejétől szűr. A paraméter használatával `-SubjectBeginsWith` egy adott erőforrásra korlátozhatja az eseményeket. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +89,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-A következő PowerShell-példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket az alkalmazásban `.jpg`megjelenő tárgyra korlátozza.
+A következő PowerShell-példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket az alkalmazásban megjelenő tárgyra korlátozza `.jpg` .
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +101,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-A következő Azure CLI-példában létrehozunk egy esemény-előfizetést, amely a tárgy elejére szűri. A `--subject-begins-with` paraméter használatával egy adott erőforrásra korlátozhatja az eseményeket. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
+A következő Azure CLI-példában létrehozunk egy esemény-előfizetést, amely a tárgy elejére szűri. A paraméter használatával `--subject-begins-with` egy adott erőforrásra korlátozhatja az eseményeket. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +113,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-A következő Azure CLI-példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket az alkalmazásban `.jpg`megjelenő tárgyra korlátozza.
+A következő Azure CLI-példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket az alkalmazásban megjelenő tárgyra korlátozza `.jpg` .
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -155,7 +151,7 @@ A következő Resource Manager-sablonban példaként hozzon létre egy esemény-
 ]
 ```
 
-A következő Resource Manager-sablon példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket az alkalmazásban `.jpg`megjelenő tárgyra korlátozza.
+A következő Resource Manager-sablon példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket az alkalmazásban megjelenő tárgyra korlátozza `.jpg` .
 
 ```json
 "resources": [
@@ -304,7 +300,7 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

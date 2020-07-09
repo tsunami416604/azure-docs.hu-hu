@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74091243"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135357"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server felderítési hibák elhárítása
 
@@ -20,17 +20,19 @@ Ez a cikk segítséget nyújt a VMware vCenter-felderítési hibák miatt előfo
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Nem numerikus értékek a maxSnapShots tulajdonságban
 
-A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, amikor a virtuális gép tulajdonság `snapshot.maxSnapShots` tulajdonságához nem numerikus értéket kér le.
+A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, amikor a virtuális gép tulajdonság tulajdonságához nem numerikus értéket kér le `snapshot.maxSnapShots` .
 
 Ezt a problémát a 95126-es AZONOSÍTÓJÚ hiba azonosítja.
 
-    ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
-    System.FormatException: Input string was not in a correct format.
-       at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-       at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-       at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
-    
-A probléma megoldásához:
+```output
+ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
+System.FormatException: Input string was not in a correct format.
+    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+    at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
+```
+
+A hiba megoldása érdekében:
 
 - Azonosítsa a virtuális gépet, és állítsa be az értéket egy numerikus értékre (a virtuális gép szerkesztési beállításai a vCenter-ben).
 
@@ -46,11 +48,11 @@ a vCenter-felderítés tiszteletben tartja a rendszerfelhasználó által konfig
 
 A probléma előfordulásakor a következő helyzetek történnek:
 
-- A vCenter- \<kiszolgáló vCenter> nem érhető el a hiba miatt: a távoli kiszolgáló a következő hibát adta vissza: (503) a kiszolgáló nem érhető el
-- A vCenter- \<kiszolgáló vCenter> nem érhető el a hiba miatt: a távoli kiszolgáló hibát adott vissza: nem lehet csatlakozni a távoli kiszolgálóhoz.
+- A vCenter-kiszolgáló \<vCenter> nem érhető el a hiba miatt: a távoli kiszolgáló a következő hibát adta vissza: (503) a kiszolgáló nem érhető el
+- A vCenter-kiszolgáló \<vCenter> nem érhető el a következő hiba miatt: a távoli kiszolgáló hibát adott vissza: nem sikerült kapcsolódni a távoli kiszolgálóhoz.
 - Nem lehet csatlakozni a vCenter/ESXi-kiszolgálóhoz.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Töltse le a [PsExec eszközt](https://aka.ms/PsExec). 
 
@@ -73,10 +75,10 @@ DRA-proxy konfigurálásához:
 
 3. Futtassa a következő parancsot a parancssorból.
    
-   **DRCONFIGURATOR. EXE/configure/AddBypassUrls [a vCenter hozzáadásakor megadott vCenter Server IP-címe/teljes tartományneve]**
+   **DRCONFIGURATOR.EXE/configure/AddBypassUrls [a vCenter hozzáadásakor megadott vCenter Server IP-címe/teljes tartományneve]**
 
 4. Indítsa újra a DRA Provider szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 

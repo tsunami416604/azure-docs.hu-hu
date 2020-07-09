@@ -1,18 +1,18 @@
 ---
 title: Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 description: Tekintse át az Azure Marketplace-megoldások felhasználói használatának nyomon követését ismertető cikket.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800788"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103024"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -59,11 +59,14 @@ A GUID azonosítókat regisztrálni kell a partner Centerben, hogy lehetővé v�
 
 Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID azonosítót a partner Centerben, a rendszer nyomon követi a jövőbeli központi telepítéseket.
 
+> [!NOTE]
+> Ha az [Azure-alkalmazást](./partner-center-portal/create-new-azure-apps-offer.md) a partner centeren keresztül teszi közzé az Azure piactéren, a sablonban használt új GUID azonosító automatikusan regisztrálva lesz a partner Center-profilban a sablon feltöltésekor.  
+
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
 
 1. Regisztráljon [kereskedelmi Piactéri közzétevőként](https://aka.ms/JoinMarketplace).
 
-   * A partnereknek [profilra van](https://docs.microsoft.com/azure/marketplace/become-publisher)szükségük a partner Centerben. Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
+   * A partnereknek [profilra van](become-publisher.md)szükségük a partner Centerben. Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
    * A partnerek több GUID-azonosítót is regisztrálhatnak.
    * A partnerek a nem Piactéri megoldások sablonjaihoz és ajánlatokhoz regisztrálhatnak GUID azonosítókat.
 
@@ -71,7 +74,7 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
 
 1. A **Fiókbeállítások lapon**válassza a **nyomkövetési GUID hozzáadása elemet.**
 
-1. A **GUID** mezőben adja meg a nyomkövetési GUID azonosítóját. A **PID** előtag nélkül adja meg a GUID azonosítót. A **Leírás** mezőben adja meg az ajánlat nevét vagy leírását.
+1. A **GUID** mezőben adja meg a nyomkövetési GUID azonosítóját. Az előtag nélkül adja meg a GUID azonosítót `pid-` . A **Leírás** mezőben adja meg az ajánlat nevét vagy leírását.
 
 1. Egynél több GUID-azonosító regisztrálásához válassza ismét a **nyomkövetési GUID hozzáadása** elemet. Az oldalon további mezők jelennek meg.
 
@@ -82,7 +85,7 @@ Számos partneri megoldás Azure Resource Manager-sablonok használatával van �
 
 > [!NOTE]
 > A megoldási sablonok létrehozásával és közzétételével kapcsolatos további információkért lásd:
-> * [Hozza létre és telepítse az első Resource Manager-sablont](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+> * [Hozza létre és telepítse az első Resource Manager-sablont](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 >* [Azure-alkalmazás ajánlata](./partner-center-portal/create-new-azure-apps-offer.md).
 >* Videó: [megoldási sablonok és felügyelt alkalmazások fejlesztése az Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)-en.
 
@@ -93,9 +96,9 @@ Globálisan egyedi azonosító (GUID) hozzáadásához egyetlen módosítást ke
 
 1. Nyissa meg a Resource Manager-sablont.
 
-1. Vegyen fel egy új erőforrást a fő sablonfájlba. Az erőforrásnak csak a **mainTemplate. JSON** vagy a **azuredeploy. JSON** fájlban kell szerepelnie, nem pedig egyetlen beágyazott vagy csatolt sablonban sem.
+1. Vegyen fel egy új erőforrást a fő sablonfájlba. Az erőforrásnak csak a fájl **mainTemplate.js** vagy **azuredeploy.js** kell lennie, és nem minden beágyazott vagy csatolt sablonban.
 
-1. Adja meg a GUID értékét a **PID-** előtag (például: PID-eb7927c8-dd66-43e1-b0cf-c346a422063) után.
+1. Adja meg a GUID értéket az `pid-` előtag után (például: PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
 1. Keresse meg az esetleges hibákat a sablonban.
 
@@ -106,7 +109,7 @@ Globálisan egyedi azonosító (GUID) hozzáadásához egyetlen módosítást ke
 ### <a name="sample-resource-manager-template-code"></a>Példa Resource Manager-sablon kódjára
 
 A sablon követési erőforrásainak engedélyezéséhez hozzá kell adnia a következő további erőforrást az erőforrások szakaszban. Ügyeljen arra, hogy az alábbi mintakód a saját bemeneteit használja a fő sablonfájl hozzáadásakor.
-Az erőforrást csak a **mainTemplate. JSON** vagy a **azuredeploy. JSON** fájlban kell hozzáadni, nem pedig egyetlen beágyazott vagy csatolt sablonban sem.
+Az erőforrást fel kell venni a **mainTemplate.js** vagy **azuredeploy.js** csak fájlba, és nem minden beágyazott vagy csatolt sablonban.
 
 ```
 // Make sure to modify this sample code with your own inputs where applicable
@@ -134,12 +137,12 @@ Ha Resource Manager-sablont használ, a megoldást a korábban ismertetett utas�
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Központi telepítés címkézése a Resource Manager API-kkal
 
-Ha engedélyezni szeretné az ügyfelek használati feltételeit, az API-hívások tervezésekor vegyen fel egy GUID azonosítót a kérelem felhasználói ügynök fejlécében. Adja hozzá a GUID azonosítót az egyes ajánlatokhoz vagy SKU-hoz. Formázza a karakterláncot a **PID-** előtaggal, és adja meg a partner által generált GUID azonosítóját. Íme egy példa a felhasználói ügynökbe való beszúráshoz használt GUID formátumra:
+Ha engedélyezni szeretné az ügyfelek használati feltételeit, az API-hívások tervezésekor vegyen fel egy GUID azonosítót a kérelem felhasználói ügynök fejlécében. Adja hozzá a GUID azonosítót az egyes ajánlatokhoz vagy SKU-hoz. Formázza a karakterláncot az `pid-` előtaggal, és vegye fel a partner által generált GUID azonosítót. Íme egy példa a felhasználói ügynökbe való beszúráshoz használt GUID formátumra:
 
 ![Példa GUID formátumra](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> A karakterlánc formátuma fontos. Ha a **PID-** előtag nem szerepel a rendszerben, nem lehet lekérdezni az adathalmazt. Különböző SDK-k nyomon követése eltérő. Ennek a módszernek a megvalósításához tekintse át az előnyben részesített Azure SDK támogatási és nyomkövetési megközelítését.
+> A karakterlánc formátuma fontos. Ha az `pid-` előtag nem szerepel a szolgáltatásban, az adatlekérdezés nem lehetséges. Különböző SDK-k nyomon követése eltérő. Ennek a módszernek a megvalósításához tekintse át az előnyben részesített Azure SDK támogatási és nyomkövetési megközelítését.
 
 #### <a name="example-the-python-sdk"></a>Példa: a Python SDK
 
@@ -165,7 +168,7 @@ Ha az Azure CLI-t használja a GUID-azonosító hozzáfűzéséhez, állítsa be
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-További információ: [Go nyelvhez készült Azure SDK](https://docs.microsoft.com/azure/go/).
+További információ: [Go nyelvhez készült Azure SDK](https://docs.microsoft.com/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Terraform használata
 
@@ -238,15 +241,15 @@ A jelentés megtekintéséhez a partneri társítás típusa legördülő listá
 
 ## <a name="notify-your-customers"></a>Ügyfelek értesítése
 
-A partnereknek tájékoztatniuk kell az ügyfelet az ügyfél-használati jóváírást használó üzembe helyezésekről. A Microsoft azokat az Azure-használati adatokat jelenti, amelyek a partnerhez való központi telepítésekhez vannak társítva. Az alábbi példák olyan tartalmakat tartalmaznak, amelyekkel értesítheti ügyfeleit ezekről az üzemelő példányokról. A példákban cserélje le a \< PARTNER>t a vállalat nevére. A partnereknek meg kell győződniük arról, hogy az értesítés igazodik az adatvédelemhez és a gyűjtési szabályzatokhoz, beleértve azokat a lehetőségeket, amelyekkel kizárható a nyomon követésből.
+A partnereknek tájékoztatniuk kell az ügyfelet az ügyfél-használati jóváírást használó üzembe helyezésekről. A Microsoft azokat az Azure-használati adatokat jelenti, amelyek a partnerhez való központi telepítésekhez vannak társítva. Az alábbi példák olyan tartalmakat tartalmaznak, amelyekkel értesítheti ügyfeleit ezekről az üzemelő példányokról. A példákban cserélje le a \<PARTNER> nevet a vállalat nevére. A partnereknek meg kell győződniük arról, hogy az értesítés igazodik az adatvédelemhez és a gyűjtési szabályzatokhoz, beleértve azokat a lehetőségeket, amelyekkel kizárható a nyomon követésből.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Értesítés Resource Manager-sablonok üzembe helyezéséhez
 
-A sablon központi telepítésekor a Microsoft azonosítani tudja a \< PARTNER> szoftver telepítését az üzembe helyezett Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
+A sablon központi telepítésekor a Microsoft azonosítani tudja a \<PARTNER> telepített Azure-erőforrásokkal rendelkező szoftverek telepítését. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Értesítés SDK-vagy API-telepítésekhez
 
-A \< partner> szoftver központi telepítésekor a Microsoft azonosítani tudja a \< partner> szoftver telepítését az üzembe helyezett Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
+A szoftverek központi telepítésekor a \<PARTNER> Microsoft képes azonosítani a \<PARTNER> szoftver telepítését a központilag telepített Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -254,7 +257,7 @@ A felmerülő problémáktól függően két támogatási csatorna van.
 
 Ha bármilyen problémába ütközik a partner Centerben, például megtekinti az ügyfél-használati jóváírási jelentést vagy bejelentkezik, hozzon létre egy támogatási kérést a partner Center támogatási csapatával itt:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![A támogatási oldal beszerzésének képernyőképe](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 Ha a piactér bevezetéséhez és/vagy az ügyfelek használati feladataihoz általában segítségre van szüksége, például hogyan kell beállítani az ügyfél-használati jóváírást, kövesse az alábbi lépéseket:
 
@@ -329,7 +332,7 @@ Az Azure Storage GUID Generator űrlapja garantált a szükséges formátumú GU
 
 **Használhatok privát, egyéni VHD-t az Azure piactéren elérhető megoldási sablonhoz?**
 
-Nem. A virtuális gép rendszerképének az Azure Marketplace-ről kell származnia, lásd: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
+Nem. A virtuális gép rendszerképének az Azure Marketplace-ről kell származnia: [közzétételi útmutató a virtuálisgép-ajánlatokhoz az Azure Marketplace](marketplace-virtual-machines.md)-en.
 
 Létrehozhat egy virtuálisgép-ajánlatot a piactéren az egyéni VHD használatával, és megjelölheti magánjellegűként, így senki sem láthatja. Ezután hivatkozzon erre a virtuális gépre a megoldás sablonjában.
 

@@ -11,23 +11,25 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: fae54baf3b08ae5e0fa0f640d011b58d686e443e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 355a450cbdcf44d79cf73904e3b932afb62b7f55
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683155"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987246"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a Java használatával
 
 Ebben a rövid útmutatóban egy miniatűrt fog létrehozni egy képből a Computer Vision REST API használatával. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision az intelligens vágás használatával intelligens módon azonosítja a fontos területet, és az adott régió alapján készíti el a levágási koordinátákat.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A gépén telepítve kell lennie a [Java&trade;-platformhoz készült Standard Edition Development Kit 7-es vagy 8-as verziójának](https://aka.ms/azure-jdks) (JDK 7 vagy 8).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti karakterláncához, a nevet és a-t `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* [Java &trade; Platform, Standard Edition Development Kit 7 vagy 8](https://aka.ms/azure-jdks) (JDK 7 vagy 8)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -166,7 +168,7 @@ public class GenerateThumbnail {
 
 A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris adatok a miniatűr képadatainak felelnek meg. Sikeres kérés esetén a miniatűr a válaszban levő bináris adatokból lesz összeállítva, és a mintaalkalmazás által létrehozott külön ablakban jelenik meg. Ha a kérés meghiúsul, a válasz a konzolablakban jelenik meg. A meghiúsult kérés válasza tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg egy olyan Java Swing-alkalmazással, amely a Computer Visiont használja az optikai karakterfelismerés (OCR) végrehajtásához; intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása.
 

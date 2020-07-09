@@ -4,10 +4,9 @@ description: A Azure Backup használatával biztonsági mentést készíthet, va
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172323"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése Azure Stack
@@ -40,7 +39,7 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. A **csoporttagok kiválasztása** képernyőn kattintson **+** az alelemek listájának kibontásához. A védelemmel ellátni kívánt összes elemnél jelölje be a jelölőnégyzetet. Ha minden elem ki van választva, kattintson a **tovább**gombra.
+3. A **csoporttagok kiválasztása** képernyőn kattintson az **+** alelemek listájának kibontásához. A védelemmel ellátni kívánt összes elemnél jelölje be a jelölőnégyzetet. Ha minden elem ki van választva, kattintson a **tovább**gombra.
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 

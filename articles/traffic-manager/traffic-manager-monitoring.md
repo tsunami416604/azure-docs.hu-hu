@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
 ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757258"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-végpontmonitorozás
@@ -40,7 +39,7 @@ A végpontok figyelésének konfigurálásához a következő beállításokat k
 
 ## <a name="how-endpoint-monitoring-works"></a>A végpont-figyelés működése
 
-Ha a figyelési protokoll HTTP-vagy HTTPS-értékre van beállítva, akkor a Traffic Manager szondázás ügynök GET kérelmet küld a végpontnak a megadott protokoll, port és relatív elérési út használatával. Ha egy 200 – OK választ kap, vagy a **várt állapotkód- \*tartományban**konfigurált válaszokat, akkor a végpont kifogástalannak minősül. Ha a válasz egy másik érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a rendszer az Traffic Manager szondázás-ügynököt az észlelt hibák száma alapján újra megkísérli (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint a hibák száma, akkor a végpont nem kifogástalan állapotú. 
+Ha a figyelési protokoll HTTP-vagy HTTPS-értékre van beállítva, akkor a Traffic Manager szondázás ügynök GET kérelmet küld a végpontnak a megadott protokoll, port és relatív elérési út használatával. Ha egy 200 – OK választ kap, vagy a **várt állapotkód- \* tartományban**konfigurált válaszokat, akkor a végpont kifogástalannak minősül. Ha a válasz egy másik érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a rendszer az Traffic Manager szondázás-ügynököt az észlelt hibák száma alapján újra megkísérli (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint a hibák száma, akkor a végpont nem kifogástalan állapotú. 
 
 Ha a figyelési protokoll TCP, akkor a Traffic Manager szondázás ügynök TCP-kapcsolati kérelmet kezdeményez a megadott port használatával. Ha a végpont válaszként válaszol a kapcsolat létesítésére, az állapot-ellenőrzés sikeresként van megjelölve, és a Traffic Manager szondázás ügynök visszaállítja a TCP-kapcsolatot. Ha a válasz eltérő érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a Traffic Manager-szondázás ügynök újrapróbálkozik a sikertelen hibák beállításának megfelelően (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint az észlelt hibák száma, akkor a végpont állapota nem kifogástalan.
 
@@ -67,7 +66,7 @@ A profil állapota beállítás használatával engedélyezheti vagy letilthatja
 
 A Endpoint monitor állapota egy Traffic Manager által generált érték, amely a végpont állapotát jeleníti meg. Ez a beállítás nem módosítható manuálisan. A végpont-figyelő állapota a végpontok figyelésének és a beállított végpont állapotának kombinációja. A Endpoint monitor állapotának lehetséges értékei a következő táblázatban láthatók:
 
-| Profil állapota | Végpont állapota | Endpoint monitor állapota | Megjegyzések |
+| Profil állapota | Végpont állapota | Endpoint monitor állapota | Jegyzetek |
 | --- | --- | --- | --- |
 | Letiltva |Engedélyezve |Inaktív |A profil le lett tiltva. Bár a végpont állapota engedélyezve van, a profil állapota (letiltva) elsőbbséget élvez. A letiltott profilokban lévő végpontok nincsenek figyelve. A DNS-lekérdezéshez egy NXDOMAIN-hibakódot ad vissza. |
 | &lt;bármelyik&gt; |Letiltva |Letiltva |A végpont le van tiltva. A letiltott végpontok figyelése nem történik meg. A végpont nem része a DNS-válaszoknak, ezért nem kap forgalmat. |
@@ -85,9 +84,9 @@ További információ a végpontok figyelő állapotának a beágyazott végpont
 
 A Profil figyelő állapota a konfigurált profil állapotának és a végpontok figyelő állapotának kombinációja az összes végpontnál. A lehetséges értékeket a következő táblázat ismerteti:
 
-| Profil állapota (konfiguráltként) | Endpoint monitor állapota | Profil figyelő állapota | Megjegyzések |
+| Profil állapota (konfiguráltként) | Endpoint monitor állapota | Profil figyelő állapota | Jegyzetek |
 | --- | --- | --- | --- |
-| Letiltva |&lt;bármely&gt; vagy egy profil, amely nem rendelkezik definiált végpontokkal. |Letiltva |A profil le lett tiltva. |
+| Letiltva |&lt;bármely &gt; vagy egy profil, amely nem rendelkezik definiált végpontokkal. |Letiltva |A profil le lett tiltva. |
 | Engedélyezve |Legalább egy végpont állapota csökken. |Csökkentett teljesítményű |Tekintse át az egyes végpontok állapotának értékeit annak meghatározásához, hogy mely végpontok igényelnek további figyelmet. |
 | Engedélyezve |Legalább egy végpont állapota online állapotban van. A végpontok nem rendelkeznek csökkentett teljesítményű állapottal. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
 | Engedélyezve |Legalább egy végpont állapota CheckingEndpoint. Nem található végpont online vagy csökkentett teljesítményű állapotban. |CheckingEndpoints |Ez az átmeneti állapot akkor fordul elő, ha a profilt létrehozták vagy engedélyezik. A végpont állapota első alkalommal van bejelölve. |

@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608993"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-naplók integrálása Azure Monitor naplókkal
 
@@ -68,7 +67,7 @@ A szolgáltatás használatához prémium szintű Azure AD P1 vagy P2 licenc sz�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-2. Válassza **Azure Active Directory** > **diagnosztikai beállítások** -> **Hozzáadás diagnosztikai beállítást**. A **naplózási naplók** vagy a **bejelentkezések** lapon is kiválaszthatja a **Beállítások exportálása** lehetőséget a diagnosztikai beállítások konfigurációs oldalának beolvasásához.  
+2. Válassza **Azure Active Directory**  >  **diagnosztikai beállítások**  ->  **Hozzáadás diagnosztikai beállítást**. A **naplózási naplók** vagy a **bejelentkezések** lapon is kiválaszthatja a **Beállítások exportálása** lehetőséget a diagnosztikai beállítások konfigurációs oldalának beolvasásához.  
     
 3. A **diagnosztikai beállítások** menüben jelölje be a **Küldés log Analytics munkaterületre** jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
 

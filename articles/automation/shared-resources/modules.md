@@ -8,11 +8,10 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82bec23ac35f4f0e6c65720d0c3a36355fa4224d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.openlocfilehash: 14b26c4c5a72ef2919aca1f872b198257b9f37f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83713454"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
@@ -80,7 +79,7 @@ Azure Automation támogatja a `Orchestrator.AssetManagement.Cmdlets` Windows ren
 >[!NOTE]
 >A belső parancsmagok csak akkor érhetők el, ha runbookok hajt végre az Azure-beli homokozó környezetében, vagy egy Windows hibrid Runbook-feldolgozón. 
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -370,7 +369,7 @@ Modul a PowerShell használatával történő eltávolításához futtassa a kö
 Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)
-* [Windows PowerShell-modul írása](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)
+* Azure PowerShell modulok használatával kapcsolatos további információkért lásd: [az Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)használatának első lépései.
+* További információ a PowerShell-modulok létrehozásáról: [Windows PowerShell-modul írása](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7).

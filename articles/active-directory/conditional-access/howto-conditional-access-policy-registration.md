@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83993745"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Feltételes hozzáférés: biztonsági adatok regisztrációjának biztonságossá tétele
@@ -46,7 +45,7 @@ A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a 
    1. Válassza a **hozzáférés letiltása**lehetőséget.
    1. Ezután kattintson a **Kiválasztás** elemre.
 1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
-1. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A szabályzat 6. lépésében a szervezeteknek döntéseket hozhatnak. A fenti szabályzatnak megbízható hálózati helyről kell regisztrálnia. A szervezetek dönthetnek úgy, hogy az összes rendelkezésre álló feltételt kihasználják a **helyszínek**helyett. Ne feledje, hogy ez a házirend egy blokkolási házirend, ezért a benne foglalt összes adat le van tiltva, és minden, ami nem felel meg a belefoglalásnak. 
 
@@ -63,7 +62,7 @@ Néhány esetben előfordulhat, hogy a fenti 6. lépésben a hely helyett az esz
 > Ha az eszköz állapotát feltételként használja a házirendben, ez hatással lehet a vendég felhasználókra a címtárban. A [csak jelentési mód](concept-conditional-access-report-only.md) segíthet meghatározni a szabályzatok döntéseinek hatását.
 > Vegye figyelembe, hogy a csak jelentési mód nem alkalmazható a "felhasználói műveletek" hatókörű HITELESÍTÉSSZOLGÁLTATÓI házirendek esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

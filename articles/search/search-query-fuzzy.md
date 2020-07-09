@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81262434"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>A hibás helyesírási hibák és az elírások kijavítása a zavaros kereséssel
@@ -21,7 +20,7 @@ Az Azure Cognitive Search támogatja a zavaros keresést, egy olyan típusú lek
 
 ## <a name="what-is-fuzzy-search"></a>Mi az a zavaros keresés?
 
-Ez egy olyan terjeszkedési gyakorlat, amely egyezést eredményez a hasonló kompozícióval rendelkező feltételekben. Ha meg van adva egy fuzzy keresés, a motor összeállít egy gráfot (amely a [determinisztikus véges automata elmélet](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)alapján) a lekérdezésben szereplő összes kifejezéshez hasonlóan áll. Ha például a lekérdezés három kifejezést tartalmaz: "University of Washington", a lekérdezésben `search=university~ of~ washington~` minden kifejezéshez létrejön egy gráf (nem áll le a leállítási szó a zavaros keresésben, így a "a" diagramot kap).
+Ez egy olyan terjeszkedési gyakorlat, amely egyezést eredményez a hasonló kompozícióval rendelkező feltételekben. Ha meg van adva egy fuzzy keresés, a motor összeállít egy gráfot (amely a [determinisztikus véges automata elmélet](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)alapján) a lekérdezésben szereplő összes kifejezéshez hasonlóan áll. Ha például a lekérdezés három kifejezést tartalmaz: "University of Washington", a lekérdezésben minden kifejezéshez létrejön egy gráf `search=university~ of~ washington~` (nem áll le a leállítási szó a zavaros keresésben, így a "a" diagramot kap).
 
 A gráf akár 50 kiterjesztésből vagy permutációból áll, amelyek mindegyike a folyamat helyes és helytelen változatait rögzíti. A motor ezután visszaadja a válaszban a legmagasabb releváns egyezéseket. 
 
@@ -33,7 +32,7 @@ Az Azure Cognitive Searchban:
 
 + A fuzzy lekérdezés a teljes kifejezésekre vonatkozik, de a kifejezéseket és az építményeket is támogathatja. Például: "Unviersty ~ of ~" Wshington ~ "megegyeznek a" Washington Egyetem "kifejezéssel.
 
-+ A Szerkesztés alapértelmezett távolsága 2. Egy érték `~0` nem jelent terjeszkedést (csak a pontos kifejezés minősül egyezésnek), de az egyik eltérést vagy `~1` egy módosítást is megadhat. 
++ A Szerkesztés alapértelmezett távolsága 2. Egy érték `~0` nem jelent terjeszkedést (csak a pontos kifejezés minősül egyezésnek), de `~1` az egyik eltérést vagy egy módosítást is megadhat. 
 
 + A zavaros lekérdezések legfeljebb 50 további variációs időszakra bonthatók ki. Ez a korlát nem konfigurálható, de a szerkesztési távolság 1 értékre csökkentése révén hatékonyan csökkentheti a bővítések számát.
 
@@ -58,13 +57,13 @@ Ha azonban a tesztelési lekérdezések nem a várt egyezéseket alkotják, megp
 
 A fuzzy lekérdezések a teljes Lucene lekérdezési szintaxis használatával készültek, amely meghívja a [Lucene lekérdezés-elemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-1. Állítsa be a teljes Lucene-elemzőt a lekérdezésen (`queryType=full`).
+1. Állítsa be a teljes Lucene-elemzőt a lekérdezésen ( `queryType=full` ).
 
-1. Igény szerint a kérelem hatókörét meghatározott mezőkre is használhatja, ezzel a`searchFields=<field1,field2>`paraméterrel (). 
+1. Igény szerint a kérelem hatókörét meghatározott mezőkre is használhatja, ezzel a paraméterrel ( `searchFields=<field1,field2>` ). 
 
-1. Fűzze hozzá a tilde`~`() operátort a teljes időszak végén (`search=<string>~`).
+1. Fűzze hozzá a tilde ( `~` ) operátort a teljes időszak végén ( `search=<string>~` ).
 
-   Adjon meg egy 0 és 2 közötti számot (alapértelmezett érték), ha meg szeretné adni a szerkesztési távolságot (`~1`). Például a "Blue ~" vagy a "Blue ~ 1" a "Blue", a "blues" és a "ragasztó" értéket fogja visszaadni.
+   Adjon meg egy 0 és 2 közötti számot (alapértelmezett érték), ha meg szeretné adni a szerkesztési távolságot ( `~1` ). Például a "Blue ~" vagy a "Blue ~ 1" a "Blue", a "blues" és a "ragasztó" értéket fogja visszaadni.
 
 Az Azure Cognitive Search a lejárati idő és a távolság (legfeljebb 2) mellett nem adhat meg további paramétereket a lekérdezéshez.
 
@@ -82,7 +81,7 @@ Ha az eredmények nem egyértelműek, a [találatok kiemelése](search-paginatio
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>1. példa: fuzzy keresés a pontos kifejezéssel
 
-Tegyük fel, hogy a következő `"Description"` sztring létezik egy keresési dokumentum egy mezőjében:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Tegyük fel, hogy a következő sztring létezik egy `"Description"` keresési dokumentum egy mezőjében:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 Kezdje egy fuzzy kereséssel a "speciális" kifejezésre, és vegyen fel találatot kiemelve a Leírás mezőbe:
 

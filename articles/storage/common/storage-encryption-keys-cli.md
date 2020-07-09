@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 893c953562e0d150bd5e8110e5473fd24a2aff83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2390cbf41f9a93515f994040a287d69f0036168
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506199"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI használatával
 
@@ -86,13 +86,13 @@ az keyvault key create \
     --vault-name <key-vault>
 ```
 
-Az Azure Storage-titkosítás csak 2048 bites RSA-és RSA-HSM-kulcsokat támogat. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
 
 Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Konfigurálja az Azure Storage-fiókot az ügyfél által felügyelt kulcsokhoz, és adja meg a Storage-fiókhoz társítandó kulcsot.
 
-A Storage-fiók titkosítási beállításainak frissítéséhez hívja az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update)menüpontot az alábbi példában látható módon. Adja meg `--encryption-key-source` a paramétert, és `Microsoft.Keyvault` állítsa be úgy, hogy engedélyezze az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. A példa a Key Vault URI-JÁT és a kulcs legújabb verzióját is lekérdezi, és mindkét értékre szükség van a kulcs a Storage-fiókhoz való hozzárendeléséhez. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+A Storage-fiók titkosítási beállításainak frissítéséhez hívja az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update)menüpontot az alábbi példában látható módon. Adja meg a `--encryption-key-source` paramétert, és állítsa be úgy, hogy `Microsoft.Keyvault` engedélyezze az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. A példa a Key Vault URI-JÁT és a kulcs legújabb verzióját is lekérdezi, és mindkét értékre szükség van a kulcs a Storage-fiókhoz való hozzárendeléséhez. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -134,7 +134,7 @@ az keyvault delete-policy \
 
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 
-Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból titkosítva lesz a Microsoft által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok letiltásához hívja meg az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) parancsot, és állítsa be a `--encryption-key-source parameter` `Microsoft.Storage`parancsot az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból titkosítva lesz a Microsoft által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok letiltásához hívja meg az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) parancsot, és állítsa be a parancsot `--encryption-key-source parameter` `Microsoft.Storage` az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
 ```azurecli-interactive
 az storage account update
@@ -145,5 +145,5 @@ az storage account update
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md) 
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md) 
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

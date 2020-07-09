@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513973"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -31,12 +31,12 @@ A StorSimple Snapshot Manager **hatóköre** ablaktáblán a csomópontok segít
 
 A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a következő információkat jeleníti meg az egyes eszközökről. (A nézetek konfigurálásával kapcsolatos további információkért nyissa meg a [Nézet menüt](storsimple-use-snapshot-manager.md#view-menu).
 
-| Eredmények oszlop | Leírás |
+| Eredmények oszlop | Description |
 |:--- |:--- |
-| Name (Név) |A klasszikus Azure portálon konfigurált eszköz neve |
+| Name |A klasszikus Azure portálon konfigurált eszköz neve |
 | Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
-| status |Az eszköz elérhető-e |
+| Állapot |Az eszköz elérhető-e |
 | Legutóbb szinkronizálva |Az eszköz legutóbbi szinkronizálásának dátuma és időpontja |
 | Sorozatszám. |Az eszköz sorozatszáma |
 
@@ -166,7 +166,7 @@ Meg kell adnia egy jelszót a StorSimple-eszköz StorSimple Snapshot Manager val
 
 #### <a name="to-change-the-expired-password"></a>A lejárt jelszó módosítása
 1. A klasszikus Azure portálon indítsa el a StorSimple Manager szolgáltatást.
-2. Kattintson az **eszközök** > **konfigurálása** az eszközhöz elemre.
+2. Kattintson az **eszközök**  >  **konfigurálása** az eszközhöz elemre.
 3. Görgessen le a StorSimple Snapshot Manager szakaszhoz. 14-15 karakterből álló jelszót adjon meg. Győződjön meg arról, hogy a jelszó kis-és nagybetűket, számokat és speciális karaktereket tartalmaz.
 4. Írja be újra a jelszót a megerősítéshez.
 5. Kattintson a lap alján található **Mentés** gombra.

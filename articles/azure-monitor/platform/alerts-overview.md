@@ -5,10 +5,9 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81769770"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
@@ -76,7 +75,7 @@ Beállíthatja egy riasztás állapotát, hogy meghatározza, hol található a 
 
 A következő riasztási állapotok támogatottak.
 
-| Állapot | Leírás |
+| Állam | Leírás |
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nincs áttekintve. |
 | Nyugtázva | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
@@ -103,7 +102,7 @@ A klasszikus riasztások nem jelennek meg vagy követhetik nyomon. Módosíthatj
 
 A nézet szűréséhez válassza az értékek lehetőséget a lap tetején található legördülő menükben.
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 |:---|:---|
 | Előfizetés | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
 | Erőforráscsoport | Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
@@ -111,7 +110,7 @@ A nézet szűréséhez válassza az értékek lehetőséget a lap tetején talá
 
 Válassza ki az alábbi értékeket a riasztások lap tetején egy másik oldal megnyitásához:
 
-| Érték | Leírás |
+| Érték | Description |
 |:---|:---|
 | Összes riasztás | A kiválasztott feltételeknek megfelelő riasztások teljes száma. Válassza ezt az értéket, ha a minden riasztás nézetet szűrő nélkül szeretné megnyitni. |
 | Intelligens csoportok | Azon intelligens csoportok teljes száma, amelyek a kiválasztott feltételeknek megfelelő riasztásokból lettek létrehozva. Válassza ezt az értéket az intelligens csoportok listájának az összes riasztás nézetben való megnyitásához.
@@ -149,7 +148,7 @@ A **minden riasztás** lap megjelenítéséhez válassza az összes **riasztás*
 
 A nézet szűréséhez válassza a következő értékeket az oldal tetején található legördülő menükben:
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 |:---|:---|
 | Előfizetés | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
 | Erőforráscsoport | Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
@@ -170,7 +169,7 @@ Ha kiválaszt egy riasztást, ez a lap a riasztás részleteit jeleníti meg, é
 
 A riasztás részletei lapon a következő témakörök találhatók:
 
-| Section | Leírás |
+| Section | Description |
 |:---|:---|
 | Összefoglalás | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
 | Előzmények | Felsorolja a riasztás által végrehajtott műveleteket és a riasztáson végrehajtott módosításokat. Jelenleg csak az állapot változásaira korlátozódik. |
@@ -178,7 +177,7 @@ A riasztás részletei lapon a következő témakörök találhatók:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) a riasztási példányokhoz
 
-A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) vagy [figyelő olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1`, a felhasználó csak a `ContosoVM1`által generált riasztásokat használhatja és kezelheti.
+A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) vagy [figyelő olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Riasztási példányok programozott kezelése
 

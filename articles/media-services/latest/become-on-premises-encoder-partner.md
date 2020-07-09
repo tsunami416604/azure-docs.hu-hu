@@ -9,10 +9,9 @@ ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298631"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Helyszíni élő adatfolyam-kódoló ellenőrzése
@@ -65,7 +64,7 @@ Kövesse az [élő esemény ellenőrzésének](#pass-through-live-event-verifica
 
 ## <a name="email-your-recorded-settings"></a>A rögzített beállítások elküldése e-mailben
 
-Végezetül küldje el a rögzített beállításokat és az élő archiválási paramétereket, amshelp@microsoft.com hogy a rendszer értesítést küldjön az összes önellenőrzési ellenőrzés Azure Media Services. Adja meg a kapcsolattartási adatait is a követő feladatokhoz. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Azure Media Services csapatával.
+Végezetül küldje el a rögzített beállításokat és az élő archiválási paramétereket, hogy a rendszer amshelp@microsoft.com értesítést küldjön az összes önellenőrzési ellenőrzés Azure Media Services. Adja meg a kapcsolattartási adatait is a követő feladatokhoz. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Azure Media Services csapatával.
 
 ## <a name="see-also"></a>Lásd még
 

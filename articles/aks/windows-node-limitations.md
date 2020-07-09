@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg az ismert korlátozásokat a Windows Server Node-készletek és az alkalmazás-munkaterhelések Azure Kubernetes szolgáltatásban (ak) való futtatásakor
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339874"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -58,6 +58,19 @@ Az AK-ban lévő Windows Server-csomópontokat *frissíteni* kell a legújabb ja
 > A frissített Windows Server-rendszerkép csak akkor lesz használatban, ha a fürt frissítése (a vezérlési sík frissítése) a csomópont-készlet frissítése előtt lett elvégezve.
 >
 
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Miért jelenik meg hibaüzenet, amikor új Windows Agent-készletet próbálok létrehozni?
+
+Ha a fürtöt február 2020 előtt hozta létre, és még soha nem hajtotta meg a fürt frissítési műveleteit, a fürt továbbra is egy régi Windows-rendszerképet használ. Előfordulhat, hogy a következőhöz hasonló hibaüzenetet észlelt:
+
+"A központi telepítési sablonban hivatkozott rendszerképek alábbi listája nem található: közzétevő: MicrosoftWindowsServer, ajánlat: WindowsServer, SKU: 2019-Datacenter-Core-smalldisk-2004, verzió: Latest. https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimageAz elérhető rendszerképek keresésével kapcsolatos utasításokért tekintse meg a következő témakört:.
+
+A probléma megoldásához:
+
+1. Frissítse a [fürt vezérlőjét][upgrade-cluster-cp]. Ezzel frissíti a rendszerkép-ajánlatot és a közzétevőt.
+1. Hozzon létre új Windows Agent-készleteket.
+1. Windows-hüvelyek áthelyezése meglévő Windows Agent-készletekből új Windows Agent-készletekbe.
+1. Régi Windows-ügynök készletek törlése.
+
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Hogyan elforgatja a szolgáltatásnevet a Windows-csomópontos készlethez?
 
 A Windows-csomópontok nem támogatják a szolgáltatás egyszerű elforgatását. Az egyszerű szolgáltatás frissítéséhez hozzon létre egy új Windows-csomópontot, és telepítse át a hüvelyeket a régi készletből az újat. Ha ez befejeződött, törölje a régi csomópont-készletet.
@@ -72,7 +85,7 @@ A nevet legfeljebb 6 (hat) karakterrel kell megtartania. Ez az AK jelenlegi korl
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Támogatottak-e a Windows-csomópontok összes funkciója?
 
-A hálózati házirendek és a kubenet a Windows-csomópontok esetében jelenleg nem támogatottak. 
+A hálózati házirendek és a kubenet a Windows-csomópontok esetében jelenleg nem támogatottak.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Futtathatok bejövő vezérlőket Windows-csomópontokon?
 
@@ -88,7 +101,7 @@ A csoportosan felügyelt szolgáltatásfiókok (gMSA) támogatása jelenleg nem 
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Használhatom a Windows-csomópontokkal és-tárolókkal rendelkező tárolók Azure Monitor?
 
-Igen, azonban Azure Monitor nem gyűjti a naplókat (StdOut) a Windows-tárolóból. Továbbra is csatlakoztathatja az stdout-naplók élő streamjét egy Windows-tárolóból.
+Igen, azonban Azure Monitor nyilvános előzetes verzióban érhető el a naplók (StdOut, stderr) és a Windows-tárolók metrikáinak összegyűjtéséhez. Az stdout-naplók élő streamjét egy Windows-tárolóból is csatlakoztathatja.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Mi a teendő, ha olyan szolgáltatásra van szükségem, amely nem támogatott?
 
@@ -112,7 +125,10 @@ A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy ol
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide

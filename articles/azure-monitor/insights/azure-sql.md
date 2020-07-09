@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116556"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087180"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
 
@@ -31,26 +31,26 @@ A Azure SQL Analytics megoldás használatáról és a tipikus használati forga
 
 A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az összes Azure SQL-adatbázis diagnosztikai telemetria folyamatos átvitelét. Mivel Azure SQL Analytics nem használ ügynököket Azure Monitorhoz való kapcsolódásra, nem támogatja a helyszíni vagy virtuális gépeken üzemeltetett SQL Server figyelését.
 
-| Összekapcsolt forrás | Támogatott | Leírás |
+| Összekapcsolt forrás | Támogatott | Description |
 | --- | --- | --- |
 | [Diagnosztikai beállítások](../platform/diagnostic-settings.md) | **Igen** | Az Azure metrika és a naplózási adatok közvetlenül az Azure-ban érkeznek Azure Monitor naplókra. |
-| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | Azure Monitor nem olvassa be a Storage-fiók adatait. |
-| [Windows-ügynökök](../platform/agent-windows.md) | Nem | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
-| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Nem | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
+| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
+| [Windows-ügynökök](../platform/agent-windows.md) | No | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
+| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | No | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics beállítások
 
 Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának támogatott lehetőségeit ismerteti, amelyek közül az egyiket Azure SQL Database, a másikat pedig az Azure SQL felügyelt példány-adatbázisaihoz.
 
-| Azure SQL Analytics lehetőség | Leírás | SQL Database támogatás | SQL felügyelt példányok támogatása |
+| Azure SQL Analytics lehetőség | Description | SQL Database támogatás | SQL felügyelt példányok támogatása |
 | --- | ------- | ----- | ----- |
 | Erőforrás típus szerint | Az összes figyelt erőforrást megszámoló perspektíva. | Igen | Igen |
 | Insights | Hierarchikus részletezést biztosít a Intelligent Insightsba a teljesítményig. | Igen | Igen |
 | Hibák | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-hibákhoz. | Igen | Igen |
-| Időtúllépések | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-időtúllépésekhez. | Igen | Nem |
-| Tiltások | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-blokkokhoz. | Igen | Nem |
-| Adatbázis-várakozások | Hierarchikus részletezést biztosít az SQL WAIT statisztikái számára az adatbázis szintjén. A várakozási idő összegzését és a várakozási idő várakozási idejét foglalja magában. |Igen | Nem |
+| Időtúllépések | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-időtúllépésekhez. | Yes | Nem |
+| Tiltások | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-blokkokhoz. | Yes | Nem |
+| Adatbázis-várakozások | Hierarchikus részletezést biztosít az SQL WAIT statisztikái számára az adatbázis szintjén. A várakozási idő összegzését és a várakozási idő várakozási idejét foglalja magában. |Yes | Nem |
 | Lekérdezés időtartama | Hierarchikus részletezést biztosít a lekérdezés végrehajtási statisztikái, például a lekérdezési időtartam, a CPU-használat, az adatio-használat, a log IO használata során. | Igen | Igen |
 | Lekérdezési várakozások | Hierarchikus részletezést biztosít a lekérdezési várakozási statisztikákra a várakozási kategóriánként. | Igen | Igen |
 
@@ -58,11 +58,11 @@ Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának t
 
 Használja a [Solutions Gallery Azure monitor-megoldások hozzáadása az](../../azure-monitor/insights/solutions.md) Azure SQL Analytics (előzetes verzió) a log Analytics munkaterülethez való hozzáadásához használt eljárást.
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>Azure SQL Database-adatbázisok konfigurálása a stream Diagnostics telemetria
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Azure SQL Database konfigurálása a stream Diagnostics telemetria
 
 Miután létrehozta Azure SQL Analytics megoldást a munkaterületen, **konfigurálnia** kell az összes figyelni kívánt erőforrást, hogy a diagnosztikai telemetria továbbítsa a Azure SQL Analytics. Kövesse az oldalon található részletes utasításokat:
 
-- Engedélyezze Azure Diagnostics az Azure SQL Database-hez, hogy a [stream diagnosztikai telemetria Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
+- Engedélyezze Azure Diagnostics az adatbázis számára, hogy a [diagnosztikai telemetria Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 A fenti oldalon megtudhatja, hogyan engedélyezheti a több Azure-előfizetés figyelését egyetlen Azure SQL Analytics munkaterületről egyetlen üvegtáblaként.
 
@@ -72,7 +72,7 @@ Azure SQL Analytics a munkaterülethez való hozzáadásakor a rendszer hozzáad
 
 ![Azure SQL Analytics összefoglaló csempe](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-A betöltést követően a csempén látható az adatbázisok és a rugalmas készletek száma a SQL Database és felügyelt példányokban és példány-adatbázisokban az SQL felügyelt példányában, amelyből a Azure SQL Analytics diagnosztikai telemetria kap.
+A betöltést követően a csempén látható az adatbázisok és a rugalmas készletek száma a SQL Database, valamint a példányok és példányok adatbázisaiban az SQL felügyelt példányában, amelyből a Azure SQL Analytics diagnosztikai telemetria kap.
 
 ![Azure SQL Analytics csempe](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -106,7 +106,7 @@ Miután kiválasztotta az adatbázisok Azure SQL Analytics csempét, megjelenik 
 
 A csempék bármelyikének kiválasztásával megnyithatja a részletezési jelentést az adott perspektívában. A perspektíva kiválasztását követően megnyílik a részletezési jelentés.
 
-Az SQL felügyelt példány nézetének kiválasztásával megtekintheti a felügyelt példányok kihasználtságát, a benne lévő adatbázisokat és a telemetria a példányon végrehajtott lekérdezések részleteit.
+Az SQL felügyelt példány nézetének kiválasztásával megtekintheti a felügyelt példányon végrehajtott lekérdezésekben a példány kihasználtsága, a példány adatbázisai és a telemetria részleteit.
 
 ![Azure SQL Analytics időtúllépések](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -269,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - A riasztás beállításának előfeltétele, hogy a felügyelt példány figyelése a ResourceUsageStats-napló folyamatos átvitelét teszi lehetővé Azure SQL Analytics.
+> - A riasztás beállításának előfeltétele, hogy a figyelt felügyelt példányon engedélyezve legyen a ResourceUsageStats-napló folyamatos átvitele Azure SQL Analytics.
 > - Ehhez a lekérdezéshez riasztási szabályt kell beállítani a riasztás kikapcsolásához, ha a lekérdezés eredménye (> 0 eredmény) létezik, jelezve, hogy a feltétel létezik a felügyelt példányon. A kimenet a felügyelt példány tárolási százalékos aránya.
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>A CPU átlagos fogyasztása 95% fölött van az elmúlt 1 HR-ben

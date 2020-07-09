@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82148221"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files
@@ -102,30 +102,30 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 * Előtér-konfiguráció
   * IP-192.168.14.9
 * Mintavételi port
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * Port 620<strong> &lt; nr &gt; </strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
-  * 32<strong>&lt;nr&gt; </strong> TCP
-  * 36<strong>&lt;nr&gt; </strong> TCP
-  * 39<strong>&lt;nr&gt; </strong> TCP
-  * 81<strong>&lt;nr&gt; </strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 32<strong> &lt; nr &gt; </strong> TCP
+  * 36<strong> &lt; nr &gt; </strong> TCP
+  * 39<strong> &lt; nr &gt; </strong> TCP
+  * 81<strong> &lt; nr &gt; </strong> TCP
+  * 5<strong> &lt; nr &gt; </strong>13 TCP
+  * 5<strong> &lt; nr &gt; </strong>14 TCP
+  * 5<strong> &lt; nr &gt; </strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Előtér-konfiguráció
   * IP-192.168.14.10
 * Mintavételi port
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * Port 621<strong> &lt; nr &gt; </strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
-  * 32<strong>&lt;nr&gt; </strong> TCP
-  * 33<strong>&lt;nr&gt; </strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 32<strong> &lt; nr &gt; </strong> TCP
+  * 33<strong> &lt; nr &gt; </strong> TCP
+  * 5<strong> &lt; nr &gt; </strong>13 TCP
+  * 5<strong> &lt; nr &gt; </strong>14 TCP
+  * 5<strong> &lt; nr &gt; </strong>16 TCP
 
 * Háttér-konfiguráció
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
@@ -260,10 +260,10 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
 
 Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure NetApp Files köteteket használ a NFSv 4.1 protokollal. Minden virtuális gépen végezze el a konfigurálást, ahol Azure NetApp Files NFSv 4.1 kötet lesz csatlakoztatva.  
 
-1. Ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, **`defaultv4iddomain.com`** azaz a leképezés értéke **senki**.  
+1. Ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, azaz **`defaultv4iddomain.com`** a leképezés értéke **senki**.  
 
     > [!IMPORTANT]
-    > Ügyeljen arra, hogy az NFS- `/etc/idmapd.conf` tartományt a virtuális gépen állítsa be, hogy az megfeleljen az alapértelmezett tartományi **`defaultv4iddomain.com`** konfigurációnak Azure NetApp Files:. Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei a következőképpen `nobody`jelennek meg.  
+    > Ügyeljen arra, hogy az NFS-tartományt a virtuális gépen állítsa be, `/etc/idmapd.conf` hogy az megfeleljen az alapértelmezett tartományi konfigurációnak Azure NetApp Files: **`defaultv4iddomain.com`** . Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei a következőképpen jelennek meg `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -275,7 +275,7 @@ Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ellenőrzés `nfs4_disable_idmapping`. Értékeként az **Y**értéknek kell lennie. A-t tartalmazó `nfs4_disable_idmapping` könyvtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+4. **[A]** ellenőrzés `nfs4_disable_idmapping` . Értékeként az **Y**értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -289,7 +289,7 @@ Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   További információ a paraméterek módosításáról `nfs4_disable_idmapping` :. https://access.redhat.com/solutions/1749883
+   További információ a `nfs4_disable_idmapping` Paraméterek módosításáról: https://access.redhat.com/solutions/1749883 .
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -891,7 +891,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 ## <a name="install-database"></a>Az adatbázis telepítése
 
-Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-beli telepítésével kapcsolatos további információkért lásd: a [SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken Red Hat Enterprise Linuxon][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-beli telepítésével kapcsolatos további információkért lásd: a [SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken Red Hat Enterprise Linuxon][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. Az SAP Database-példány telepítésének futtatása
 
@@ -925,7 +925,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
    Frissítse a SAP HANA biztonságos tárolót, hogy az SAP HANA rendszerreplikáció beállításának virtuális nevére mutasson.
 
-   Futtassa a következő parancsot a bejegyzések listázásához sapsid \<>adm-ként
+   Futtassa a következő parancsot a bejegyzések adm-ként való listázásához. \<sapsid>
 
    ```
    hdbuserstore List
@@ -1089,7 +1089,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart`. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart` . Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1183,7 +1183,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a nem `sapstart` indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a `sapstart` nem indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01

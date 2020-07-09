@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81390208"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuális hálózati architektúra
@@ -36,9 +36,9 @@ Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy cso
 
 Használjon teljes tartományneveket (FQDN) a fürt csomópontjainak kezelésekor. A fürt különböző csomópontjaihoz tartozó teljes tartománynevek a [AMBARI API](hdinsight-hadoop-manage-ambari-rest-api.md)használatával szerezhetők be.
 
-Ezek a teljes tartománynevek az űrlapból `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`lesznek.
+Ezek a teljes tartománynevek az űrlapból lesznek `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` .
 
-A `<node-type-prefix>` lesz *HN* a átjárócsomópontokkal, a feldolgozói csomópontok és a *Zn* Zookeeper-csomópontok *számára.*
+A `<node-type-prefix>` lesz *HN* a átjárócsomópontokkal, a *wn* feldolgozói csomópontok és a *Zn* Zookeeper-csomópontok számára.
 
 Ha csak az állomásnévre van szüksége, csak a teljes tartománynév első részét használja:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
@@ -71,16 +71,16 @@ A következő hálózati erőforrások automatikusan létrejönnek a HDInsight h
 
 A HDInsight-fürtöt háromféle módon érheti el:
 
-- Egy HTTPS-végpont a virtuális hálózaton kívül a `CLUSTERNAME.azurehdinsight.net`következő helyen:.
-- Egy SSH-végpont, amely közvetlenül csatlakozik a átjárócsomóponthoz `CLUSTERNAME-ssh.azurehdinsight.net`a következő helyen:.
-- Egy HTTPS-végpont a virtuális hálózaton `CLUSTERNAME-int.azurehdinsight.net`belül. Figyelje meg a`-int`"" kifejezést ebben az URL-ben. Ez a végpont a virtuális hálózatban lévő magánhálózati IP-címekre lesz feloldva, és nem érhető el a nyilvános internetről.
+- Egy HTTPS-végpont a virtuális hálózaton kívül a következő helyen: `CLUSTERNAME.azurehdinsight.net` .
+- Egy SSH-végpont, amely közvetlenül csatlakozik a átjárócsomóponthoz a következő helyen: `CLUSTERNAME-ssh.azurehdinsight.net` .
+- Egy HTTPS-végpont a virtuális hálózaton belül `CLUSTERNAME-int.azurehdinsight.net` . Figyelje meg a " `-int` " kifejezést ebben az URL-ben. Ez a végpont a virtuális hálózatban lévő magánhálózati IP-címekre lesz feloldva, és nem érhető el a nyilvános internetről.
 
 Ez a három végpont mindegyike hozzá van rendelve egy terheléselosztó.
 
 A rendszer a nyilvános IP-címeket is megadja a két végpont számára, amelyek engedélyezik a kapcsolódást a virtuális hálózaton kívülről.
 
-1. Egy nyilvános IP-cím van hozzárendelve a terheléselosztó számára a teljes tartománynév (FQDN) számára, amelyet az internetről `CLUSTERNAME.azurehdinsight.net`a fürthöz való csatlakozáskor kell használni.
-1. A második nyilvános IP-cím csak az SSH-tartománynévhez használatos `CLUSTERNAME-ssh.azurehdinsight.net`.
+1. Egy nyilvános IP-cím van hozzárendelve a terheléselosztó számára a teljes tartománynév (FQDN) számára, amelyet az internetről a fürthöz való csatlakozáskor kell használni `CLUSTERNAME.azurehdinsight.net` .
+1. A második nyilvános IP-cím csak az SSH-tartománynévhez használatos `CLUSTERNAME-ssh.azurehdinsight.net` .
 
 ## <a name="next-steps"></a>További lépések
 

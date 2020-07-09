@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860902"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970688"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiválja a Azure Security Center újdonságait?
 
@@ -29,9 +29,37 @@ Ez az oldal a következő információkat tartalmazza:
 - Hibajavítások
 - Elavult funkciók
 
+
+## <a name="january-2020"></a>2020. január
+
+### <a name="enhanced-secure-score-preview"></a>Bővített biztonságos pontszám (előzetes verzió)
+
+A Azure Security Center biztonságos pontszám funkciójának továbbfejlesztett verziója már előzetes verzióban érhető el. Ebben a verzióban a több javaslat olyan biztonsági vezérlőkbe van csoportosítva, amelyek jobban tükrözik a sebezhető támadási felületet (például a felügyeleti portokhoz való hozzáférés korlátozása).
+
+Ismerkedjen meg a biztonsági pontszám változásaival az előzetes verzió fázisában, és határozza meg azokat a további szervizeléseket, amelyek segítséget nyújtanak a környezet további védelméhez.
+
+További információ a [bővített biztonságos pontszámról (előzetes verzió)](secure-score-security-controls.md).
+
+
+
 ## <a name="november-2019"></a>2019. november
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>Veszélyforrások elleni védelem Azure Key Vault a nyilvános előzetes verzióban Észak-Amerika régióban
+A novemberi frissítések a következők:
+ - [Veszélyforrások elleni védelem Észak-Amerika régiók Azure Key Vault számára (előzetes verzió)](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Az Azure Storage veszélyforrások elleni védelme magában foglalja a kártevők ismertségének szűrését](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Munkafolyamat-automatizálás Logic Appssal (előzetes verzió)](#workflow-automation-with-logic-apps-preview)
+ - [Általánosan elérhető a tömeges erőforrások gyors javítása](#quick-fix-for-bulk-resources-generally-available)
+ - [Biztonsági rések keresése a tárolók rendszerképein (előzetes verzió)](#scan-container-images-for-vulnerabilities-preview)
+ - [További szabályozási megfelelőségi szabványok (előzetes verzió)](#additional-regulatory-compliance-standards-preview)
+ - [Veszélyforrások elleni védelem az Azure Kubernetes szolgáltatásban (előzetes verzió)](#threat-protection-for-azure-kubernetes-service-preview)
+ - [Virtuális gépek sebezhetőségének felmérése (előzetes verzió)](#virtual-machine-vulnerability-assessment-preview)
+ - [Speciális adatbiztonság az Azure-beli SQL-kiszolgálókon Virtual Machines (előzetes verzió)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [Egyéni szabályzatok támogatása (előzetes verzió)](#support-for-custom-policies-preview)
+ - [Azure Security Center lefedettség kiterjesztése közösségi és partneri platformmal](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [Speciális integrációk javaslatok és riasztások exportálásával (előzetes verzió)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [Helyszíni helyszíni kiszolgálók Security Center a Windows felügyeleti központból (előzetes verzió)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>Veszélyforrások elleni védelem Észak-Amerika régiók Azure Key Vault számára (előzetes verzió)
 
 Azure Key Vault egy alapvető szolgáltatás az adatok védelméhez és a felhőalapú alkalmazások teljesítményének javításához azáltal, hogy központilag kezeli a kulcsokat, a titkokat, a titkosítási kulcsokat és a szabályzatokat a felhőben. Mivel Azure Key Vault bizalmas és üzleti szempontból kritikus fontosságú adatokat tárol, a kulcstartók és a bennük tárolt adatok maximális biztonsága szükséges.
 
@@ -146,6 +174,11 @@ Ezzel az új felhasználói felülettel a WAC-kiszolgáló bekerül a Azure Secu
 
 ## <a name="september-2019"></a>2019. szeptember
 
+A szeptemberben elérhető frissítések a következők:
+
+ - [Szabályok kezelése adaptív alkalmazás-vezérlőkkel – tökéletesítések](#managing-rules-with-adaptive-application-controls-improvements)
+ - [A tárolók biztonsági javaslatának szabályozása Azure Policy használatával](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>Szabályok kezelése adaptív alkalmazás-vezérlőkkel – tökéletesítések
 
 Továbbfejlesztettük a virtuális gépekre vonatkozó szabályok kezelésének élményét az adaptív alkalmazások vezérlőinek használatával. Azure Security Center adaptív alkalmazás-vezérlői segítségével szabályozhatja, hogy mely alkalmazások futhatnak a virtuális gépeken. A szabályok kezelésének általános fejlesztésén kívül az új előny lehetővé teszi annak szabályozását, hogy az új szabályok hozzáadásakor milyen fájltípusok lesznek védve.
@@ -161,6 +194,12 @@ Az engedélyezett biztonsági szabályzatok megtekintéséhez Security Center ny
 
 
 ## <a name="august-2019"></a>2019. augusztus
+
+Az augusztusi frissítések a következők:
+
+ - [Igény szerinti (JIT) VM-hozzáférés Azure Firewall](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [Egyszeri kattintás szervizelése a biztonsági helyzet fokozása érdekében (előzetes verzió)](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [Bérlők közötti felügyelet](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Igény szerinti (JIT) VM-hozzáférés Azure Firewall 
 

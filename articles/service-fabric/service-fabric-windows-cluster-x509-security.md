@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653642"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Önálló fürt biztonságossá tétele Windows rendszeren X. 509 tanúsítványok használatával
@@ -18,7 +17,7 @@ Ez a cikk az önálló Windows-fürt különböző csomópontjai közötti kommu
 A fürt biztonságával, például a csomópontok közötti biztonsággal, az ügyfél és a csomópont biztonságával, valamint a szerepköralapú hozzáférés-vezérléssel kapcsolatos további információkért lásd a [fürtök biztonsági forgatókönyveit](service-fabric-cluster-security.md).
 
 ## <a name="which-certificates-do-you-need"></a>Mely tanúsítványokra van szüksége?
-Először [töltse le a Windows Server-csomag Service Fabric](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) a fürt egyik csomópontjára. A letöltött csomagban talál egy ClusterConfig. X509. MultiMachine. JSON fájlt. Nyissa meg a fájlt, és tekintse át a biztonság szakaszban található biztonsági szakaszt a tulajdonságok szakaszban:
+Először [töltse le a Windows Server-csomag Service Fabric](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) a fürt egyik csomópontjára. A letöltött csomagban található egy ClusterConfig.X509.MultiMachine.jsa fájlon. Nyissa meg a fájlt, és tekintse át a biztonság szakaszban található biztonsági szakaszt a tulajdonságok szakaszban:
 
 ```JSON
 "security": {
@@ -265,7 +264,7 @@ A tesztelési célra használt fürtök esetében dönthet úgy, hogy önaláír
 További kérdésekért forduljon a [Gyakori kérdések a tanúsítványokhoz](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions).
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Nem kötelező: önaláírt tanúsítvány létrehozása
-Egy olyan önaláírt tanúsítvány létrehozásának egyik módja, amely megfelelően biztonságossá tehető, ha a C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. CertSetup. ps1 parancsfájlt használja az Service Fabric SDK mappában. A fájl szerkesztésével módosíthatja a tanúsítvány alapértelmezett nevét. (A CN = ServiceFabricDevClusterCert érték megkeresése.) Futtassa ezt a parancsfájlt a következőként: `.\CertSetup.ps1 -Install` .
+Egy olyan önaláírt tanúsítvány létrehozásának egyik módja, amely megfelelően biztonságossá tehető, ha a C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. könyvtárban található Service Fabric SDK mappában a CertSetup.ps1 parancsfájlt használja. A fájl szerkesztésével módosíthatja a tanúsítvány alapértelmezett nevét. (A CN = ServiceFabricDevClusterCert érték megkeresése.) Futtassa ezt a parancsfájlt a következőként: `.\CertSetup.ps1 -Install` .
 
 Ezután exportálja a tanúsítványt egy védett jelszóval rendelkező. pfx fájlba. Először kérje le a tanúsítvány ujjlenyomatát. 
 1. A **Start** menüben futtassa a **számítógép-tanúsítványok kezelése**elemet. 
@@ -344,7 +343,7 @@ A tanúsítványok használata után telepítheti őket a fürtcsomópontokon. A
 4. Ismételje meg az előző lépéseket az egyes kiszolgálói tanúsítványokhoz. Ezekkel a lépésekkel telepítheti az Ügyféltanúsítványok azon számítógépekre, amelyeknek engedélyezni szeretné a fürthöz való hozzáférést.
 
 ## <a name="create-the-secure-cluster"></a>A biztonságos fürt létrehozása
-Miután konfigurálta a ClusterConfig. X509. MultiMachine. JSON fájl biztonsági szakaszát, folytathatja a [fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) szakaszt a csomópontok konfigurálásához és az önálló fürt létrehozásához. Ne felejtse el használni a ClusterConfig. X509. MultiMachine. JSON fájlt a fürt létrehozása közben. Előfordulhat például, hogy a parancs a következőhöz hasonlóan néz ki:
+Miután konfigurálta a ClusterConfig.X509.MultiMachine.jsbiztonsági szakaszát a fájlon, folytathatja a [fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) szakaszt a csomópontok konfigurálásához és az önálló fürt létrehozásához. Ne felejtse el használni a ClusterConfig.X509.MultiMachine.jsfájlt a fürt létrehozásakor. Előfordulhat például, hogy a parancs a következőhöz hasonlóan néz ki:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json

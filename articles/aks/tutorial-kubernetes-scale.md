@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128995"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361591"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
@@ -74,7 +74,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Ha az AK-fürt kevesebb, mint *1,10*, a metrikák kiszolgálója nem települ automatikusan. A metrikák kiszolgáló telepítési jegyzékfájli a metrikai `components.yaml` kiszolgálók kiadásaiban is elérhetők, ami azt jelenti, hogy egy URL-címen keresztül telepítheti őket. Ha többet szeretne megtudni ezekről a YAML-definíciókkal kapcsolatban, tekintse meg a readme [telepítési][metrics-server-github] szakaszát.
+> Ha az AK-fürt kevesebb, mint *1,10*, a metrikák kiszolgálója nem települ automatikusan. A metrikák kiszolgáló telepítési jegyzékfájli a `components.yaml` metrikai kiszolgálók kiadásaiban is elérhetők, ami azt jelenti, hogy egy URL-címen keresztül telepítheti őket. Ha többet szeretne megtudni ezekről a YAML-definíciókkal kapcsolatban, tekintse meg a readme [telepítési][metrics-server-github] szakaszát.
 > 
 > Telepítési példa:
 > ```console
@@ -97,7 +97,7 @@ Az alábbi példa a [kubectl autoscale][kubectl-autoscale] paranccsal automatiku
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Azt is megteheti, hogy létrehoz egy jegyzékfájlt az autoskálázási viselkedés és az erőforrás-korlátok definiálásához. Az alábbi példa egy nevű `azure-vote-hpa.yaml`jegyzékfájlt mutat be.
+Azt is megteheti, hogy létrehoz egy jegyzékfájlt az autoskálázási viselkedés és az erőforrás-korlátok definiálásához. Az alábbi példa egy nevű jegyzékfájlt mutat be `azure-vote-hpa.yaml` .
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -113,6 +113,7 @@ spec:
     name: azure-vote-back
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 
+---
 
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -128,7 +129,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-A `kubectl apply` használatával alkalmazza a `azure-vote-hpa.yaml` jegyzékfájlban definiált autoskálázást.
+A használatával `kubectl apply` alkalmazza a jegyzékfájlban definiált autoskálázást `azure-vote-hpa.yaml` .
 
 ```
 kubectl apply -f azure-vote-hpa.yaml

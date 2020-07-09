@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80983024"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118576"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Ha ingyenes Azure-előfizetéssel, díjmentesen, vagy a [Azure Cosmos db ingyene
 > [!div class="nextstepaction"]
 > [Próbálja ki Azure Cosmos DB ingyen](https://azure.microsoft.com/try/cosmosdb/)
 
-![Az Azure Cosmos DB a Microsoft globálisan elosztott adatbázis-szolgáltatása rugalmas horizontális felskálázási képességgel, garantáltan alacsony késéssel, öt konzisztenciamodellel, valamint átfogó garantált SLA-kkal.](./media/introduction/azure-cosmos-db.png)
+:::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Az Azure Cosmos DB a Microsoft globálisan elosztott adatbázis-szolgáltatása rugalmas horizontális felskálázási képességgel, garantáltan alacsony késéssel, öt konzisztenciamodellel, valamint átfogó garantált SLA-kkal." border="false":::
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
@@ -48,7 +48,7 @@ A Cosmos DB használatával rendkívül rugalmas, bolygó-méretezési alkalmaz�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Pontosan meghatározott, több konzisztencia-választás
 
-Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](consistency-levels-tradeoffs.md)nem szükségesek. Az Cosmos db több főkiszolgálós replikációs protokollját gondosan tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md) - biztosítson*erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* – számára egy intuitív programozási modellhez, amely alacsony késéssel és magas rendelkezésre állással rendelkezik a globálisan elosztott alkalmazások számára.
+Globálisan elosztott alkalmazások Cosmos DB-ben történő létrehozásakor a [konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség közötti rendkívüli kompromisszumok](consistency-levels-tradeoffs.md)nem szükségesek. Az Cosmos db több főkiszolgálós replikációs protokollját gondosan tervezték, hogy [öt jól meghatározott konzisztencia-választási lehetőséget](consistency-levels.md)biztosítson  -  *erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* – számára egy intuitív programozási modellhez, amely alacsony késéssel és magas rendelkezésre állással rendelkezik a globálisan elosztott alkalmazások számára.
 
 ### <a name="no-schema-or-index-management"></a>Nincs séma-vagy indexelési felügyelet
 

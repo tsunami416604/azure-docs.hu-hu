@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60199208"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>A Azure Cloud Shell szerkesztő használata
@@ -37,13 +37,13 @@ A szerkesztő felhasználói felületről való megnyitásához kattintson a `{}
 
 ## <a name="closing-the-editor"></a>A szerkesztő bezárása
 
-A szerkesztő bezárásához nyissa meg `...` a szerkesztő jobb felső sarkában található művelet panelt, `Close editor`és válassza a elemet.
+A szerkesztő bezárásához nyissa meg a `...` szerkesztő jobb felső sarkában található művelet panelt, és válassza a elemet `Close editor` .
 
 ![Szerkesztő lezárása](media/using-cloud-shell-editor/close-editor.png)
 
 ## <a name="command-palette"></a>Parancs paletta
 
-A parancs-paletta elindításához használja `F1` a kulcsot, ha a fókusz be van állítva a szerkesztőben. A parancs-paletta megnyitása a műveleti panelen is megtehető.
+A parancs-paletta elindításához használja a `F1` kulcsot, ha a fókusz be van állítva a szerkesztőben. A parancs-paletta megnyitása a műveleti panelen is megtehető.
 
 ![Cmd-paletta](media/using-cloud-shell-editor/cmd-palette.png)
 
@@ -52,5 +52,5 @@ A parancs-paletta elindításához használja `F1` a kulcsot, ha a fókusz be va
 A Cloud Shell szerkesztőben támogatott nyelvi kiemelés támogatása a [Monacói szerkesztőben](https://github.com/Microsoft/monaco-editor)a Monarch szintaxis-definíciók használatával érhető el. A hozzájárulások létrehozásával kapcsolatban olvassa el a [Monaco közreműködői útmutatót](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md).
 
 ## <a name="next-steps"></a>További lépések
-[Próbálja ki a bash-gyors útmutatót Cloud Shell](quickstart.md)
-[tekintse meg az integrált Cloud Shell eszközök teljes listáját](features.md)
+[Próbálja ki a Bash Cloud Shell](quickstart.md) 
+ [Az integrált Cloud Shell eszközök teljes listájának megtekintése](features.md)

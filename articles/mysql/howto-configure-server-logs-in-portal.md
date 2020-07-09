@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja és érheti el a Azure
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 59faf63312bd7cc657f8b96ca3110707ea997c02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51b05ea016880d04fd6a2123962afefbdb229be1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273604"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101783"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése a Azure Portal
 
@@ -66,7 +66,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
-1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások** > **Hozzáadás diagnosztikai beállítások**elemet.
+1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítások**elemet.
 
    ![A diagnosztikai beállítások beállításainak képernyőképe](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
 
@@ -82,7 +82,7 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
 1. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A lassú lekérdezési naplók programozott módon történő letöltésének megismeréséhez lásd: [a lassú lekérdezési naplók elérése a CLI-ben](howto-configure-server-logs-in-cli.md) .
 - További információ a Azure Database for MySQL [lassú lekérdezési naplóiról](concepts-server-logs.md) .
 - A paraméter-definíciókkal és a MySQL-naplózással kapcsolatos további információkért tekintse meg a MySQL dokumentációját a [naplókon](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131982"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
@@ -51,7 +51,7 @@ A Process Server számos rendszerállapot-riasztást generál. Ezeket a riasztá
 
 **Riasztástípus** | **Hiba** | **Hibaelhárítás**
 --- | --- | --- 
-![Kifogástalan][green] | Nincs  | A Process Server csatlakoztatva van és kifogástalan állapotú.
+![Kifogástalan][green] | None  | A Process Server csatlakoztatva van és kifogástalan állapotú.
 ![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Győződjön meg arról, hogy a szolgáltatások futnak.<br/> 2. Ha a szolgáltatások a várt módon futnak, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Figyelmeztetés][yellow]  | A CPU-kihasználtság > 80%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Kritikus][red] |  A CPU-kihasználtság > 95%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) a VMware/fizikai kiszolgáló replikálásához.
@@ -96,7 +96,7 @@ Ha a Process Server nem rendelkezik szívveréssel (hibakód: 806), tegye a köv
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>4. lépés: a forrásoldali gépen futó idő szinkronizálásának ellenőrzése
 
-Győződjön meg arról, hogy a replikált gép rendszerdátuma és ideje szinkronban van. [További információ](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+Győződjön meg arról, hogy a replikált gép rendszerdátuma és ideje szinkronban van. [További információ](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. lépés: víruskereső szoftver keresése a forrásszámítógépen
 
@@ -105,7 +105,7 @@ Győződjön meg arról, hogy a replikált gépen nem található víruskereső 
 ## <a name="step-6-check-connectivity-from-source-machine"></a>6. lépés: a forrás-számítógép kapcsolatának ellenőrzése
 
 
-1. Ha szükséges, telepítse a [Telnet-ügyfelet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) a forrásoldali gépre. Ne használja a ping parancsot.
+1. Ha szükséges, telepítse a [Telnet-ügyfelet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10)) a forrásoldali gépre. Ne használja a ping parancsot.
 2. A forrásoldali gépről Pingelje a HTTPS-porton futó Process Servert a Telnet használatával. Alapértelmezés szerint a 9443 a replikációs forgalom HTTPS-portja.
 
     `telnet <process server IP address> <port>`
@@ -113,7 +113,7 @@ Győződjön meg arról, hogy a replikált gépen nem található víruskereső 
 3. Ellenőrizze, hogy a sikeres-e a kapcsolatok.
 
 
-**Kapcsolatok** | **Részletek** | **Művelet**
+**Kapcsolódás** | **Részletek** | **Művelet**
 --- | --- | ---
 **Sikeres** | A Telnet egy üres képernyőt jelenít meg, és a Process Server elérhető. | Nincs szükség további műveletre.
 **Sikertelen** | Nem lehet kapcsolatot létesíteni | Győződjön meg arról, hogy a (z) 9443 bejövő port engedélyezett a Process Serveren. Ha például egy peremhálózati hálózat vagy egy szűrt alhálózat van. A kapcsolat ismételt ellenőrzése.
@@ -168,18 +168,18 @@ Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irán
 
   1. A Process Serveren nyissa meg a Feladatkezelő eszközt (nyomja le a CTRL + SHIFT + ESC billentyűkombinációt).
   2. Válassza a **teljesítmény** fület > **Open erőforrás-figyelő**.
-  3. A **erőforrás-figyelő** lapon válassza a **hálózat** lapot. A **folyamatok hálózati tevékenységgel**területen győződjön meg arról, hogy a cbengine. exe aktívan küld-e nagy mennyiségű adat küldését.
+  3. A **erőforrás-figyelő** lapon válassza a **hálózat** lapot. A **hálózati tevékenységgel rendelkező folyamatok**területen győződjön meg arról, hogy a cbengine.exe aktívan küld-e nagy mennyiségű adat.
 
        ![Kötetek a hálózati tevékenységgel rendelkező folyamatokban](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  Ha a cbengine. exe nem küld nagy mennyiségű adatokat, hajtsa végre az alábbi részekben ismertetett lépéseket.
+  Ha cbengine.exe nem küld nagy mennyiségű adatokat, hajtsa végre az alábbi részekben ismertetett lépéseket.
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. lépés: az Azure Blob Storage-hoz való kapcsolódási kiszolgáló keresése
 
-1. A erőforrás-figyelő területen válassza a **cbengine. exe**elemet.
+1. A erőforrás-figyelő területen válassza a **cbengine.exe**lehetőséget.
 2. A **TCP-kapcsolatok**területen ellenőrizze, hogy van-e kapcsolat a Process Server és az Azure Storage között.
 
-  ![Kapcsolat a cbengine. exe és az Azure Blob Storage URL-címével](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Kapcsolat cbengine.exe és az Azure Blob Storage URL-címe között](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Szolgáltatások keresése
 
@@ -244,9 +244,9 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
+Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

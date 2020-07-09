@@ -3,12 +3,12 @@ title: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltat�
 description: Ez a minta azt mutatja be, hogyan adhat hozzá egy alkalmazást Azure Batch készlettel vagy feladattal való használatra.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 792af55be17551d1635b6821456c6e8e53e9daea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 305b6473b4fa149c378e01229b4ad3eea2dbaef4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681935"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964090"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Parancssori felületi példa: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
 
@@ -46,6 +46,6 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az batch application set](/cli/azure/batch/application#az-batch-application-set) | Frissíti egy alkalmazás tulajdonságait.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).

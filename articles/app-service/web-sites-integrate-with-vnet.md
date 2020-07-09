@@ -4,29 +4,25 @@ description: Az alkalmazás integrálása Azure App Service Azure-beli virtuáli
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 7b6b310cdc03cb45fba6ba06dbcf2add9818f6cf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857033"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása Azure-beli virtuális hálózattal
 
-Ez a cikk ismerteti a Azure App Service VNet integrációs funkciót, valamint azt, hogyan állíthatja be a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal. Az [azure Virtual Network][VNETOverview] (virtuális hálózatok) használatával számos Azure-erőforrást elhelyezhet egy nem internetre irányítható hálózaton.
+Ez a cikk ismerteti a Azure App Service VNet integrációs funkciót, valamint azt, hogyan állíthatja be a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal. Az [azure Virtual Network][VNETOverview] (virtuális hálózatok) használatával számos Azure-erőforrást elhelyezhet egy nem internetre irányítható hálózaton. A VNet integrációs funkciója lehetővé teszi, hogy alkalmazásai hozzáférjenek az erőforrásokhoz a vagy a VNet keresztül. A VNet-integráció nem teszi lehetővé, hogy az alkalmazások magánjellegű módon férhessenek hozzá.
 
-Azure App Service két változattal rendelkezik:
+Azure App Service két változattal rendelkezik a VNet-integrációs szolgáltatásban:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>VNet-integráció engedélyezése
-
-> [!NOTE]
-> Ha a "hálózatkezelés" panel le van tiltva (szürkén jelenik meg) a Linux-alkalmazások menüjében, az azt jelenti, hogy a szolgáltatás jelenleg nem érhető el.
->
 
 1. Nyissa meg a **hálózati** felhasználói felületet a app Service portálon. A **VNet-integráció**területen válassza **a kattintson ide a konfiguráláshoz**lehetőséget.
 
@@ -75,8 +71,8 @@ Az átjáróval megkövetelt VNet-integráció támogatja a csatlakozást egy m�
 
 Az átjáróhoz szükséges VNet-integráció nem használható:
 
-* Linux-alkalmazásokkal.
 * Az Azure ExpressRoute-vel összekapcsolt VNet.
+* Linux-alkalmazásokból
 * A szolgáltatási végpont által védett erőforrások eléréséhez.
 * Egy párhuzamos átjáróval, amely támogatja mind a ExpressRoute, mind a pont-hely vagy a helyek közötti VPN-eket.
 
@@ -155,25 +151,27 @@ Az átjáróhoz szükséges VNet-integrációs funkció három díjat tartalmaz:
 
 A CLI-támogatás a regionális VNet-integrációhoz érhető el. Az alábbi parancsok eléréséhez [telepítse az Azure CLI][installCLI]-t.
 
-        az webapp vnet-integration --help
+```azurecli
+az webapp vnet-integration --help
 
-        Group
-            az webapp vnet-integration : Methods that list, add, and remove virtual network integrations
-            from a webapp.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            add    : Add a regional virtual network integration to a webapp.
-            list   : List the virtual network integrations on a webapp.
-            remove : Remove a regional virtual network integration from webapp.
+Group
+    az webapp vnet-integration : Methods that list, add, and remove virtual network
+    integrations from a webapp.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a regional virtual network integration to a webapp.
+    list   : List the virtual network integrations on a webapp.
+    remove : Remove a regional virtual network integration from webapp.
 
-        az appservice vnet-integration --help
+az appservice vnet-integration --help
 
-        Group
-            az appservice vnet-integration : A method that lists the virtual network integrations used in an
-            appservice plan.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            list : List the virtual network integrations used in an appservice plan.
+Group
+    az appservice vnet-integration : A method that lists the virtual network
+    integrations used in an appservice plan.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    list : List the virtual network integrations used in an appservice plan.
+```
 
 Az átjárók számára szükséges VNet-integrációhoz a PowerShell használatával integrálhatja App Serviceeit egy Azure-beli virtuális hálózattal. A használatra kész parancsfájlhoz lásd: [alkalmazás Összekötése Azure app Service egy Azure-beli virtuális hálózatban](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 

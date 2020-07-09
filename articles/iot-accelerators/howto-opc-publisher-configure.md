@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445695"
 ---
 # <a name="configure-opc-publisher"></a>Az OPC Publisher konfigurálása
 
@@ -31,7 +30,7 @@ Ez a szakasz az OPC UA csomópont-közzététel konfigurációs fájlokkal tört
 
 ### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Konfigurációs fájl használata a közzétételi adatváltozások konfigurálásához
 
-Az OPC UA-csomópontok közzétételre való konfigurálásának legegyszerűbb módja egy konfigurációs fájl. A konfigurációs fájl formátuma dokumentálva van a [publishednodes. JSON](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) fájlban a tárházban.
+Az OPC UA-csomópontok közzétételre való konfigurálásának legegyszerűbb módja egy konfigurációs fájl. A konfigurációs fájl formátuma a tárház [publishednodes.jsjában](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) van dokumentálva.
 
 A konfigurációs fájl szintaxisa módosult az idő múlásával. Az OPC-közzétevő továbbra is beolvassa a régi formátumokat, de a konfiguráció megőrzése után a legújabb formátumra alakítja őket.
 
@@ -58,7 +57,7 @@ A következő példa a konfigurációs fájl formátumát mutatja be:
 
 OPC UA-események közzétételéhez ugyanazt a konfigurációs fájlt használja, mint az adatváltozások esetében.
 
-Az alábbi példa bemutatja, hogyan konfigurálhatja a [SimpleEvents-kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server)által generált események közzétételét. A SimpleEvents-kiszolgáló az [OPC Foundation adattárában](https://github.com/OPCFoundation/UA-.NETStandard) található:
+Az alábbi példa bemutatja, hogyan konfigurálhatja a [SimpleEvents-kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server)által generált események közzétételét. A SimpleEvents-kiszolgáló az [OPC Foundation adattárában](https://github.com/OPCFoundation/UA-.NETStandard-Samples) található:
 
 ```json
 [
@@ -116,7 +115,7 @@ Ez a szakasz az OPC-közzétevő konfigurálásához használható metódusi hí
 
 ### <a name="configure-using-opc-ua-method-calls"></a>Konfigurálás OPC UA-metódusok használatával
 
-Az OPC-közzétevő tartalmaz egy OPC UA-kiszolgálót, amely a 62222-es porton érhető el. Ha az állomásnév **közzétevő**, akkor a végpont URI azonosítója: `opc.tcp://publisher:62222/UA/Publisher`.
+Az OPC-közzétevő tartalmaz egy OPC UA-kiszolgálót, amely a 62222-es porton érhető el. Ha az állomásnév **közzétevő**, akkor a végpont URI azonosítója: `opc.tcp://publisher:62222/UA/Publisher` .
 
 Ez a végpont a következő négy módszert teszi elérhetővé:
 

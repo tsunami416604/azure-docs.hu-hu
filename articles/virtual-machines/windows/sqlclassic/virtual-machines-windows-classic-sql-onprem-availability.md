@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017579"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Helyi AlwaysOn rendelkezésre állási csoportok kiterjesztése az Azure-ra
@@ -57,7 +57,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzá
    
    | Beállítás | Leírás |
    | --- | --- |
-   | **Kép** |Válassza ki az operációs rendszer és a SQL Server kívánt kombinációját |
+   | **Rendszerkép** |Válassza ki az operációs rendszer és a SQL Server kívánt kombinációját |
    | **Virtuális gép mérete** |Az üzleti igényeknek leginkább megfelelő virtuális gép méretének kiválasztása |
    | **Virtuális gép neve** |Adja meg az új virtuális gép egyedi nevét. A névnek 3 és 15 karakter közöttinek kell lennie, és csak betűket, számokat és kötőjeleket tartalmazhat, és betűvel kell kezdődnie, és betűvel vagy számmal kell végződnie. |
    | **Virtuális gép felhasználóneve** |Adjon meg egy felhasználónevet, amely a virtuális gépen rendszergazdai fiók lesz. |
@@ -65,7 +65,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzá
    | **Jelszó megerősítése** |Az új fiók jelszavának megerősítése |
    | **Virtual Network** |Itt adhatja meg azt az Azure-beli virtuális hálózatot, amelyet az új virtuális gépnek használnia kell. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../../../virtual-network/virtual-networks-overview.md)). |
    | **Alhálózat Virtual Network** |Itt adhatja meg azt a virtuális hálózati alhálózatot, amelyet az új virtuális gépnek használnia kell |
-   | **Tartományi** |Ellenőrizze, hogy helyes-e a tartomány előre megadott értéke. |
+   | **Domain** |Ellenőrizze, hogy helyes-e a tartomány előre megadott értéke. |
    | **Tartományi Felhasználónév** |Olyan fiókot válasszon, amely a helyi fürt csomópontjain a helyi Rendszergazdák csoportban található |
    | **Jelszó** |Adja meg a tartományi felhasználónévhez tartozó jelszót |
 8. A központi telepítési beállítások érvényesítéséhez kattintson **az OK** gombra.
@@ -89,7 +89,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzá
 ## <a name="create-an-availability-group-listener"></a>Rendelkezésre állási csoport figyelő létrehozása
 A rendelkezésre állási csoport létrehozása után létre kell hoznia egy figyelőt, amellyel az ügyfelek csatlakoznak a replikához. A figyelők a bejövő kapcsolatokat az elsődleges vagy írásvédett másodlagos replikára irányítják. További információ a figyelőkről: [ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban](../classic/ps-sql-int-listener.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Amellett, hogy az **Azure replika hozzáadása varázslót** használja az Always On rendelkezésre állási csoport kiterjesztésére az Azure-ra, az Azure-ba való teljes körű SQL Server munkaterhelések is áthelyezhetők. Első lépésként tekintse [meg SQL Server virtuális gép üzembe helyezése az Azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)-ban című témakört.
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

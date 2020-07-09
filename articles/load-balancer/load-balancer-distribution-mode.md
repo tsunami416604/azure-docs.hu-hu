@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82c203322f1a417fa006c5228d957c178a706b3a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023531"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961013"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
 
@@ -90,29 +90,31 @@ A klasszikus virtuális gépek esetében a Azure PowerShell használatával mód
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Állítsa be az `LoadBalancerDistribution` elem értékét a terheléselosztáshoz szükséges mennyiségre. SourceIP megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. Adja meg a sourceIPProtocol a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. Az öt rekordos terheléselosztás alapértelmezett működéséhez válassza a nincs értéket.
+Állítsa be az elem értékét `LoadBalancerDistribution` a terheléselosztáshoz szükséges mennyiségre. SourceIP megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. Adja meg a sourceIPProtocol a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. Az öt rekordos terheléselosztás alapértelmezett működéséhez válassza a nincs értéket.
 
 A Endpoint Load Balancer terjesztési mód konfigurációjának lekérése a következő beállítások használatával:
 
-    PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
+```azurepowershell
+PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
-    VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
-    LBSetName : MyLoadBalancedSet
-    LocalPort : 80
-    Name : HTTP
-    Port : 80
-    Protocol : tcp
-    Vip : 65.52.xxx.xxx
-    ProbePath :
-    ProbePort : 80
-    ProbeProtocol : tcp
-    ProbeIntervalInSeconds : 15
-    ProbeTimeoutInSeconds : 31
-    EnableDirectServerReturn : False
-    Acl : {}
-    InternalLoadBalancerName :
-    IdleTimeoutInMinutes : 15
-    LoadBalancerDistribution : sourceIP
+VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
+LBSetName : MyLoadBalancedSet
+LocalPort : 80
+Name : HTTP
+Port : 80
+Protocol : tcp
+Vip : 65.52.xxx.xxx
+ProbePath :
+ProbePort : 80
+ProbeProtocol : tcp
+ProbeIntervalInSeconds : 15
+ProbeTimeoutInSeconds : 31
+EnableDirectServerReturn : False
+Acl : {}
+InternalLoadBalancerName :
+IdleTimeoutInMinutes : 15
+LoadBalancerDistribution : sourceIP
+```
 
 Ha az `LoadBalancerDistribution` elem nincs jelen, Azure Load Balancer az alapértelmezett öt rekordos algoritmust használja.
 
@@ -154,42 +156,48 @@ Az alábbi példa azt szemlélteti, hogyan lehet újrakonfigurálni a terhelése
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Terjesztési mód módosítása üzembe helyezett elosztott terhelésű készlethez
 
-Meglévő központi telepítési konfiguráció módosításához használja a klasszikus Azure-alapú üzemi modellt. Adja hozzá `x-ms-version` a fejlécet, és állítsa be az értéket a 2014-09-01-es vagy újabb verzióra.
+Meglévő központi telepítési konfiguráció módosításához használja a klasszikus Azure-alapú üzemi modellt. Adja hozzá a `x-ms-version` fejlécet, és állítsa be az értéket a 2014-09-01-es vagy újabb verzióra.
 
 #### <a name="request"></a>Kérés
 
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
-    Content-Type: application/xml
+```http
+POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+Content-Type: application/xml
+```
 
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
-      <InputEndpoint>
+```xml
+<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
+    <InputEndpoint>
         <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
         <LocalPort> local-port-number </LocalPort>
         <Port> external-port-number </Port>
         <LoadBalancerProbe>
-          <Port> port-assigned-to-probe </Port>
-          <Protocol> probe-protocol </Protocol>
-          <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
-          <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
+            <Port> port-assigned-to-probe </Port>
+            <Protocol> probe-protocol </Protocol>
+            <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
+            <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
         </LoadBalancerProbe>
         <Protocol> endpoint-protocol </Protocol>
         <EnableDirectServerReturn> enable-direct-server-return </EnableDirectServerReturn>
         <IdleTimeoutInMinutes>idle-time-out</IdleTimeoutInMinutes>
         <LoadBalancerDistribution>sourceIP</LoadBalancerDistribution>
-      </InputEndpoint>
-    </LoadBalancedEndpointList>
+    </InputEndpoint>
+</LoadBalancedEndpointList>
+```
 
-Az előzőekben leírtak `LoadBalancerDistribution` szerint állítsa be a sourceIP a kétrekordos affinitásra, a sourceIPProtocol a három rekordos affinitásra, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
+Az előzőekben leírtak szerint állítsa be a `LoadBalancerDistribution` sourceIP a kétrekordos affinitásra, a sourceIPProtocol a három rekordos affinitásra, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
 
 #### <a name="response"></a>Válasz
 
-    HTTP/1.1 202 Accepted
-    Cache-Control: no-cache
-    Content-Length: 0
-    Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
-    x-ms-servedbyregion: ussouth2
-    x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
-    Date: Thu, 16 Oct 2014 22:49:21 GMT
+```http
+HTTP/1.1 202 Accepted
+Cache-Control: no-cache
+Content-Length: 0
+Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
+x-ms-servedbyregion: ussouth2
+x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
+Date: Thu, 16 Oct 2014 22:49:21 GMT
+```
 
 ## <a name="next-steps"></a>További lépések
 

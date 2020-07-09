@@ -3,20 +3,20 @@ title: Csomagok telepítése a Jupyter-jegyzetfüzetekben – Azure Notebooks el
 description: 'Megtudhatja, hogyan telepíthet Python-, R-és F #-csomagokat az Azure-ban futó Jupyter-jegyzetfüzetből.'
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831216"
 ---
 # <a name="install-packages-from-within-azure-notebooks-preview"></a>Csomagok telepítése Azure Notebooks előzetes verzióból
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Bár a projekt szintjén konfigurálhatja a [notebook környezetét](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), érdemes lehet csomagokat közvetlenül egy adott jegyzetfüzeten belül telepíteni.
 
 A jegyzetfüzetből telepített csomagok csak az aktuális kiszolgálói munkamenetre érvényesek. A csomag telepítése nem szűnik meg, ha a kiszolgáló leáll.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -32,7 +32,7 @@ Ha a parancs kimenete azt jelzi, hogy a követelmény már teljesül, az Azure N
 
 ## <a name="r"></a>R
 
-Az R-csomagok a CRAN vagy a GitHub használatával telepíthetők `install.packages` a kód cellájában lévő függvénnyel:
+Az R-csomagok a CRAN vagy a GitHub használatával telepíthetők a `install.packages` kód cellájában lévő függvénnyel:
 
 ```r
 install.packages("package_name")

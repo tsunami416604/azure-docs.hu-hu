@@ -3,12 +3,12 @@ title: Ismerkedés az Azure Advisor szolgáltatással
 description: A Azure Advisor első lépései.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117862"
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan érheti el az Advisorot a Azure Portalon keresztül, javasla
 
 1. Az Advisor irányítópultja a javaslatok összefoglalását jeleníti meg az összes kiválasztott előfizetésre vonatkozóan.  Az előfizetési szűrő legördülő menüje segítségével kiválaszthatja azokat az előfizetéseket, amelyekhez javaslatokat kíván megjeleníteni.
 
-1. Egy adott kategóriához tartozó javaslatok beszerzéséhez kattintson az egyik lapra: **magas rendelkezésre állás**, **Biztonság**, **teljesítmény**vagy **Cost**. 
+1. Egy adott kategóriához tartozó javaslatok beszerzéséhez kattintson az egyik lapra: **megbízhatóság**, **Biztonság**, **teljesítmény**vagy **Cost**. 
 
    ![Azure Advisor irányítópult](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ A letöltési lehetőség tiszteletben tartja az Advisor irányítópultra alkal
 Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 - [Bevezetés a Azure Advisorba](advisor-overview.md)
-- [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
+- [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 - [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 - [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
-- [Advisor – Cost-javaslatok](advisor-performance-recommendations.md)
+- [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+- [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

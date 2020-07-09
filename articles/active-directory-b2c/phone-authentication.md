@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385348"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Telefonos regisztráció és bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2Cban (előzetes verzió)
 
@@ -48,9 +48,9 @@ A következő lépések azt feltételezik, hogy végrehajtotta az [előfeltétel
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Minden fájlban cserélje le a karakterláncot `yourtenant` a Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, az összes példánya `yourtenant.onmicrosoft.com` lesz. `contosob2c.onmicrosoft.com`
+1. Minden fájlban cserélje le a karakterláncot a `yourtenant` Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, az összes példánya `yourtenant.onmicrosoft.com` lesz `contosob2c.onmicrosoft.com` .
 
-1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Ebben az esetben az előfeltételek `/phone-number-passwordless/` **`Phone_Email_Base.xml`** , a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóit** kell frissíteni.
+1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Ebben az esetben az `/phone-number-passwordless/` **`Phone_Email_Base.xml`** Előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóit** kell frissíteni.
 
 ## <a name="upload-the-policy-files"></a>A szabályzat fájljainak feltöltése
 
@@ -58,21 +58,21 @@ A következő lépések azt feltételezik, hogy végrehajtotta az [előfeltétel
 1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
 1. Válassza az **egyéni házirend feltöltése**lehetőséget.
 1. Töltse fel a házirend-fájlokat a következő sorrendben:
-    1. *Phone_Email_Base. XML*
-    1. *SignUpOrSignInWithPhone. XML*
-    1. *SignUpOrSignInWithPhoneOrEmail. XML*
-    1. *ProfileEditPhoneOnly. XML*
-    1. *ProfileEditPhoneEmail. XML*
-    1. *ChangePhoneNumber. XML*
-    1. *PasswordResetEmail. XML*
+    1. *Phone_Email_Base.xml*
+    1. *SignUpOrSignInWithPhone.xml*
+    1. *SignUpOrSignInWithPhoneOrEmail.xml*
+    1. *ProfileEditPhoneOnly.xml*
+    1. *ProfileEditPhoneEmail.xml*
+    1. *ChangePhoneNumber.xml*
+    1. *PasswordResetEmail.xml*
 
-Az egyes fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_`.
+Az egyes fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_SignUpOrSignInWithPhone**lehetőséget.
 1. Az **alkalmazás kiválasztása**területen válassza ki azt a *webapp1* -alkalmazást, amelyet az előfeltételek végrehajtásakor regisztrált.
-1. Válassza a **Válasz URL-cím kiválasztása**lehetőséget `https://jwt.ms`.
+1. Válassza a **Válasz URL-cím kiválasztása**lehetőséget `https://jwt.ms` .
 1. Válassza a **Futtatás most** lehetőséget, és regisztráljon e-mail-cím vagy telefonszám használatával.
 1. Kattintson ismét a **Futtatás** gombra, és jelentkezzen be ugyanazzal a fiókkal, és ellenőrizze, hogy megfelelő-e a konfigurációja.
 

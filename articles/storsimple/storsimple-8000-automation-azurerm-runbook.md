@@ -3,15 +3,15 @@ title: Az StorSimple-eszközök kezelése Azure Automation Runbook
 description: Ismerje meg, hogyan használható Azure Automation Runbook a StorSimple-feladatok automatizálásához
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 737533cd75ebec8d5d6c614f496e0c9b552217aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514169"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Az StorSimple-eszközök kezelése Azure Automation runbookok
 
@@ -41,7 +41,7 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. [Töltse le az NUGET CLI](https://www.nuget.org/downloads) -t az előző lépésben létrehozott mappában. A _nuget. exe_különböző verziói vannak. Válassza ki az SDK-nak megfelelő verziót. Minden letöltési hivatkozás közvetlenül egy _. exe_ -fájlra mutat. Győződjön meg arról, hogy a jobb gombbal rákattint, és mentse a fájlt a számítógépre ahelyett, hogy a böngészőből futtatná.
+2. [Töltse le az NUGET CLI](https://www.nuget.org/downloads) -t az előző lépésben létrehozott mappában. A _nuget.exe_különböző verziói vannak. Válassza ki az SDK-nak megfelelő verziót. Minden letöltési hivatkozás közvetlenül egy _. exe_ -fájlra mutat. Győződjön meg arról, hogy a jobb gombbal rákattint, és mentse a fájlt a számítógépre ahelyett, hogy a böngészőből futtatná.
 
     A következő parancs futtatásával is letöltheti és tárolhatja a parancsfájlt ugyanabban a mappában, amelyet korábban hozott létre.
 
@@ -83,7 +83,7 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
         compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-6. Győződjön meg arról, hogy az Automation-modul ZIP `C:\scripts\StorSimpleSDKTools`-fájlja létrejön a alkalmazásban.
+6. Győződjön meg arról, hogy az Automation-modul ZIP-fájlja létrejön a alkalmazásban `C:\scripts\StorSimpleSDKTools` .
 
     ![az Automation-Module ellenőrzése](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
@@ -182,7 +182,7 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet** (ha lehetséges, ugyanaz, mint ahol a szolgáltatás fut).
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. **A rögzítés az irányítópulton is**megadható. Kattintson a **Létrehozás**gombra.
+   6. **A rögzítés az irányítópulton is**megadható. Kattintson a **Létrehozás** lehetőségre.
 
        ![Create-Automation-Account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -198,7 +198,7 @@ Az StorSimple 8000 sorozatú eszközkezelés automatizálási moduljának létre
 
     ![modul hozzáadása](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Nyissa meg a **Process Automation > runbookok, és kattintson a + Runbook hozzáadása elemre**. A **Runbook hozzáadása** panelen kattintson a **meglévő runbook importálása**elemre. Mutasson a **Runbook fájl**Windows PowerShell-fájljára. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás**gombra.
+6. Nyissa meg a **Process Automation > runbookok, és kattintson a + Runbook hozzáadása elemre**. A **Runbook hozzáadása** panelen kattintson a **meglévő runbook importálása**elemre. Mutasson a **Runbook fájl**Windows PowerShell-fájljára. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
 
     ![modul hozzáadása](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

@@ -1,8 +1,8 @@
 ---
-title: Első lépések időbeli táblázatokkal
+title: Első lépések az időbeli táblázatokkal
 description: Ismerje meg, hogyan kezdheti el a Azure SQL Database és az Azure SQL felügyelt példányának időbeli tábláival való használatának első lépéseit.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,14 +11,14 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e172c251f629dc53bd8f4479d63fe743bbe42095
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 219d3755794a09ef25cdb41afdbe154af3736538
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046746"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985482"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Első lépések a Azure SQL Database és az Azure SQL felügyelt példányának időbeli tábláival
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Első lépések a Azure SQL Database és az Azure SQL felügyelt példányainak időbeli tábláival
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Az időbeli táblázatok a Azure SQL Database és az Azure SQL felügyelt példányának programozható funkciója, amely lehetővé teszi az adatváltozások teljes előzményeinek nyomon követését és elemzését anélkül, hogy egyéni kódolásra lenne szükség. Az ideiglenes táblák az időkörnyezettel szoros kapcsolatban tartanak adatokat, így a tárolt tények csak a megadott időszakon belül érvényesek. Az időbeli táblázatok ezen tulajdonsága lehetővé teszi a hatékony időalapú elemzést, és az adatok evolúciójának beolvasását.
@@ -198,7 +198,7 @@ A rendszerverzióval ellátott időszakos táblázatok esetében az előzmények
 - [Tábla particionálása](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-table-partitioning-approach)
 - [Egyéni karbantartási parancsfájl](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-custom-cleanup-script-approach)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az időbeli táblázatokkal kapcsolatos további információkért lásd: [ideiglenes táblák](/sql/relational-databases/tables/temporal-tables)megtekintése.
 - Látogasson el a Channel 9 csatornára, hogy meghallgassa az [ügyfél időbeli megvalósításának sikertörténetét](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) , és figyelje az [élő időbeli bemutatót](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

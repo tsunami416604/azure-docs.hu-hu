@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418014"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Váltás a Azure Data Factoryban
@@ -22,7 +22,7 @@ ms.locfileid: "81418014"
 
 A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch utasítások a programozási nyelveken. Kiértékeli a feltételnek megfelelő esetet, amely megfelel a feltétel kiértékelésének.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -69,8 +69,8 @@ A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch u
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A kapcsoló tevékenység neve. | Sztring | Igen
-type | *Kapcsolót* kell beállítani* | Sztring | Igen
+name | A kapcsoló tevékenység neve. | Sztring | Igen
+típus | *Kapcsolót* kell beállítani* | Sztring | Igen
 kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Igen
 esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Igen
 defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Igen
@@ -82,7 +82,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 > [!NOTE]
 > Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Folyamat kapcsoló tevékenységgel (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Folyamat kapcsoló tevékenységgel (Adfv2QuickStartPipeline.jsbekapcsolva)
 
 ```json
 {
@@ -230,7 +230,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService.jsbekapcsolva)
 
 ```json
 {
@@ -244,7 +244,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset.jsbekapcsolva)
 
 A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére. 
 
@@ -272,7 +272,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON-je (PipelineParameters.jsbekapcsolva)
 
 ```json
 {

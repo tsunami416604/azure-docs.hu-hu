@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 67674092bd27b85e3e915fe82a7cb7189ff22b02
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 64f5eefa465c3f7fc9e7c0040ca64797a806bc6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141908"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028033"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával
 
@@ -29,7 +29,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 - Legalább öt azonos típusú űrlap. Ezeket az adattípusokat fogja használni a modell betanításához. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumnak kell lenniük. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
 
 > [!NOTE]
-> Ez a rövid útmutató az URL-cím által elért távoli dokumentumokat használja. Ha inkább helyi fájlokat szeretne használni, tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync).
+> Ez a rövid útmutató az URL-cím által elért távoli dokumentumokat használja. Ha inkább helyi fájlokat szeretne használni, tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync).
 
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
@@ -43,7 +43,7 @@ Először is szüksége lesz egy Azure Storage blob-tárolóban található beta
 > [!NOTE]
 > A címkézett adatszolgáltatással manuálisan is felcímkézheti a betanítási adatait. Ez egy összetettebb folyamat, de jobban betanított modellt eredményez. További információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, a következő Python-kód futtatásával hívja meg a **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
+Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, a következő Python-kód futtatásával hívja meg a **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
@@ -58,7 +58,7 @@ Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani eg
     
     # Endpoint URL
     endpoint = r"<endpoint>"
-    post_url = endpoint + r"/formrecognizer/v2.0-preview/custom/models"
+    post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
     source = r"<SAS URL>"
     prefix = "<Blob folder name>"
     includeSubFolders = False
@@ -460,4 +460,4 @@ Ha a folyamat befejeződött, a `200 (Success)` JSON-tartalommal kapcsolatos vá
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a modell betanításához és egy minta forgatókönyvben való futtatásához. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

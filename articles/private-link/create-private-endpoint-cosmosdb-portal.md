@@ -3,21 +3,21 @@ title: Csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
 description: Megtudhatja, hogyan érheti el biztonságosan az Azure Cosmos-fiókot egy virtuális gépről egy privát végpont létrehozásával.
 author: malopMSFT
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252605"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737716"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privát csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Csatlakozzon privát módon egy Azure Cosmos-fiókokhoz az Azure Private Linkkel
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális gépet egy Azure-beli virtuális hálózaton és egy privát végponttal rendelkező Azure Cosmos-fiókon a Azure Portal használatával. Ezután biztonságosan hozzáférhet az Azure Cosmos-fiókhoz a virtuális gépről.
+Ebből a cikkből megismerheti, hogyan hozhat létre virtuális gépet egy Azure virtuális hálózaton és egy privát végponttal rendelkező Azure Cosmos-fiókot az Azure Portalon. Ezt követően biztonságosan hozzáférhet Azure Cosmos-fiókjához a virtuális gépről.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -33,25 +33,25 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | myResourceGroup|
-| **\<virtuális hálózat neve>** | myVirtualNetwork         |
-| **\<régió neve>**          | USA nyugati középső régiója     |
-| **\<IPv4 – címtartomány>**   | 10.1.0.0 \ 16          |
-| **\<alhálózat – név>**          | mySubnet        |
-| **\<alhálózat – címtartomány>** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | USA nyugati középső régiója     |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**számítási** > **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
@@ -114,9 +114,9 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -126,11 +126,11 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Azure Cosmos-fiókhoz. 
 
-1. Az IP-cím és a DNS-hozzárendelés hozzáadásához jelentkezzen be *myVM*a virtuális gép myVM `c:\Windows\System32\Drivers\etc\hosts` , nyissa meg a fájlt, és adja meg a DNS-adatokat az előző lépésből a következő formátumban:
+1. Az IP-cím és a DNS-hozzárendelés hozzáadásához jelentkezzen be a virtuális gép *myVM*, nyissa meg a `c:\Windows\System32\Drivers\etc\hosts` fájlt, és adja meg a DNS-adatokat az előző lépésből a következő formátumban:
 
    [Magánhálózati IP-cím] [Fiók végpontja]. Documents. Azure. com
 
-   **Például**
+   **Példa:**
 
    10.1.255.13 mycosmosaccount.documents.azure.com
 
@@ -147,7 +147,7 @@ Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Az
 
 1. A korábban másolt adatok beillesztésével adja meg a kapcsolatok karakterláncát.
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 
 1. Kattintson a **Csatlakozás** gombra.
 
@@ -157,7 +157,7 @@ Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Az
 
 1. A távoli asztali kapcsolat bezárásával *myVM*.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a privát végponttal, az Azure Cosmos-fiókkal és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást: 
 

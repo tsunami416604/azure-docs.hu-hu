@@ -7,21 +7,25 @@ manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: overview
+ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800629"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700634"
 ---
 # <a name="whats-new-in-personalizer"></a>A személyre szabás újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek tartalmazhatnak kibocsátási megjegyzéseket, videókat, blogbejegyzéseket és más típusú információkat. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="june-2020"></a>2020. június
+
+* Új oktatóanyag – [személyre szabott webes alkalmazás használata](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>Május 2020 – Build konferencia
 

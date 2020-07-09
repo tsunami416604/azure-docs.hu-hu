@@ -2,21 +2,21 @@
 title: Alkalmazásproxy-alkalmazások hibakeresése – Azure Active Directory | Microsoft Docs
 description: Azure Active Directory-(Azure AD-) alkalmazásproxy-alkalmazásokkal kapcsolatos hibák elhárítása.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555050"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Alkalmazásproxy alkalmazáshibáinak hibakeresése 
 
@@ -31,7 +31,7 @@ További információ az alkalmazásproxy használatáról:
 - [Távoli hozzáférés a helyszíni alkalmazásokhoz alkalmazásproxy használatával](application-proxy.md)
 - [Alkalmazásproxy-összekötők](application-proxy-connectors.md)
 - [Összekötő telepítése és regisztrálása](application-proxy-add-on-premises-application.md)
-- [Alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása](application-proxy-troubleshoot.md)
+- [Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-application-issues"></a>Az alkalmazással kapcsolatos problémák folyamatábrája
 
@@ -39,7 +39,7 @@ Ez a folyamatábra végigvezeti az alkalmazáshoz való csatlakozás leggyakorib
 
 ![Egy alkalmazás hibakeresésének lépéseit bemutató folyamatábra](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Műveletek | Leírás | 
+| Lépés | Műveletek | Description |
 |---------|---------|---------|
 |1 | Nyisson meg egy böngészőt, és lépjen be az alkalmazásba, és adja meg a hitelesítő adatait | A hitelesítő adataival jelentkezzen be az alkalmazásba, és keresse meg a felhasználóval kapcsolatos hibákat, például [a vállalati alkalmazás nem érhető el](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | A felhasználó-hozzárendelés ellenőrzése az alkalmazáshoz | Győződjön meg arról, hogy a felhasználói fiókja rendelkezik engedéllyel az alkalmazásnak a vállalati hálózaton belüli eléréséhez, majd tesztelje a bejelentkezést az [alkalmazásba az alkalmazás tesztelése](application-proxy-add-on-premises-application.md#test-the-application)lépéseit követve. Ha a bejelentkezési problémák továbbra is fennállnak, tekintse [meg a bejelentkezéssel kapcsolatos hibák elhárítása](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)című témakört.  |

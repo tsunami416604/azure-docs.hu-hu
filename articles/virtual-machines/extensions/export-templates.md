@@ -15,11 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
 ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703995"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Virtuálisgép-bővítményeket tartalmazó erőforráscsoportok exportálása
 
@@ -78,7 +77,7 @@ Az erőforráscsoport exportálásakor a rendszer egyetlen sablon paramétert ho
 
 Mivel minden védett beállításhoz szükséges tulajdonságok vannak megadva, ezeknek a tulajdonságoknak a listáját össze kell gyűjteni. A védett beállítások konfigurációjának minden paraméterét a [GitHub Azure Resource Manager sémájánál](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json)találja. Ez a séma csak a jelen dokumentum Áttekintés szakaszában felsorolt bővítmények paramétereinek készletét tartalmazza. 
 
-A séma adattárában keresse meg a kívánt kiterjesztést, ebben a példában `IaaSDiagnostics`. Ha a bővítmények `protectedSettings` objektum található, jegyezze fel az egyes paramétereket. A `IaasDiagnostic` bővítmény példájában a szükséges paraméterek a következők `storageAccountName` `storageAccountKey`:, és. `storageAccountEndPoint`
+A séma adattárában keresse meg a kívánt kiterjesztést, ebben a példában `IaaSDiagnostics` . Ha a bővítmények `protectedSettings` objektum található, jegyezze fel az egyes paramétereket. A bővítmény példájában `IaasDiagnostic` a szükséges paraméterek a következők:, `storageAccountName` `storageAccountKey` és `storageAccountEndPoint` .
 
 ```json
 "protectedSettings": {
@@ -106,7 +105,7 @@ A séma adattárában keresse meg a kívánt kiterjesztést, ebben a példában 
 
 Az exportált sablonban keresse meg `protectedSettings` és cserélje le az exportált védett beállítás objektumot egy olyan új elemre, amely tartalmazza a szükséges kiterjesztési paramétereket és az egyes értékek értékét.
 
-A `IaasDiagnostic` bővítmény példájában az új védett beállítási konfiguráció a következő példához hasonlóan fog kinézni:
+A bővítmény példájában `IaasDiagnostic` az új védett beállítási konfiguráció a következő példához hasonlóan fog kinézni:
 
 ```json
 "protectedSettings": {
@@ -148,9 +147,9 @@ A végső kiterjesztési erőforrás a következő JSON-példához hasonlóan n�
 }
 ```
 
-Ha a tulajdonságértékek megadásához a sablon paramétereit használja, ezeket létre kell hozni. Ha sablon-paramétereket hoz létre a védett beállítási értékekhez, ügyeljen arra `SecureString` , hogy a paraméter típusát használja, hogy a bizalmas értékek biztonságosak legyenek. További információ a paraméterek használatáról: [Azure Resource Manager sablonok készítése](../../resource-group-authoring-templates.md).
+Ha a tulajdonságértékek megadásához a sablon paramétereit használja, ezeket létre kell hozni. Ha sablon-paramétereket hoz létre a védett beállítási értékekhez, ügyeljen arra, hogy a `SecureString` paraméter típusát használja, hogy a bizalmas értékek biztonságosak legyenek. További információ a paraméterek használatáról: [Azure Resource Manager sablonok készítése](../../resource-group-authoring-templates.md).
 
-A `IaasDiagnostic` bővítmény példájában a következő paraméterek jönnek létre a Resource Manager-sablon paraméterek szakaszában.
+A bővítmény példájában `IaasDiagnostic` a következő paraméterek jönnek létre a Resource Manager-sablon paraméterek szakaszában.
 
 ```json
 "storageAccountName": {

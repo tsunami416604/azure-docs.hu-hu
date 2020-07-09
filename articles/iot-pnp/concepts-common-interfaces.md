@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5773ec2b3ea88fa9a507b7c1b0b84bb7ea305a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770490"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug and Play előzetes verzió általános felületek
@@ -20,16 +19,16 @@ Minden IoT-Plug and Play eszköznek várhatóan végre kell hajtania néhány gy
 
 ## <a name="summary-of-common-interfaces"></a>Általános felületek összefoglalása
 
-| Name (Név) | ID (Azonosító) | Leírás | Az Azure IoT SDK implementálja | Be kell jelenteni a képesség modellben |
+| Name | ID | Description | Az Azure IoT SDK implementálja | Be kell jelenteni a képesség modellben |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| Modell adatai | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Az eszközök számára, hogy deklarálják a képesség modell AZONOSÍTÓját és felületeit. Minden IoT Plug and Play eszközhöz szükséges. | Igen | Nem |
-| Digitális Twin Client SDK-információk | urn: azureiot: ügyfél: SDKInformation: 1 | Az eszközt az Azure-hoz csatlakoztató ügyfél-SDK. A [minősítéshez](tutorial-build-device-certification.md) szükséges | Igen | Nem |
-| Eszköz adatai | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Hardver-és operációsrendszer-információk az eszközről. A [minősítéshez](tutorial-build-device-certification.md) szükséges | Nem | Igen |
-| Modell definíciója | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Az eszközök számára, hogy deklarálják a képességeinek modelljét és felületét teljes definícióját. Akkor kell megvalósítani, ha a modell-definíciók nem találhatók meg a modell-tárházban. | Nem | Igen |
+| Modell adatai | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Az eszközök számára, hogy deklarálják a képesség modell AZONOSÍTÓját és felületeit. Minden IoT Plug and Play eszközhöz szükséges. | Igen | No |
+| Digitális Twin Client SDK-információk | urn: azureiot: ügyfél: SDKInformation: 1 | Az eszközt az Azure-hoz csatlakoztató ügyfél-SDK. A [minősítéshez](tutorial-build-device-certification.md) szükséges | Igen | No |
+| Eszköz adatai | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Hardver-és operációsrendszer-információk az eszközről. A [minősítéshez](tutorial-build-device-certification.md) szükséges | No | Igen |
+| Modell definíciója | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Az eszközök számára, hogy deklarálják a képességeinek modelljét és felületét teljes definícióját. Akkor kell megvalósítani, ha a modell-definíciók nem találhatók meg a modell-tárházban. | No | Igen |
 | Digital Twin | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | A megoldás fejlesztői számára a Digital Twin modell AZONOSÍTÓjának és illesztőfelület-azonosítóinak beolvasása. Ez az illesztőfelület nincs deklarálva vagy implementálva egy IoT Plug and Play eszközön. | Nem | Nem |
 
 - Az Azure IoT SDK által implementálva – azt határozza meg, hogy az Azure IoT SDK implementálja-e az illesztőfelületekben deklarált képességeket. Az Azure IoT SDK-t használó eszközök Plug and Play IoT nem kell megvalósítani ezt a felületet.
-- Szerepelnie kell a (z) képesség-modellben – ha az igen, akkor ezt a `"implements":` felületet a IoT Plug and Play eszközön található eszköz-képesség modell szakaszában kell deklarálni.
+- Szerepelnie kell a (z) képesség-modellben – ha az igen, akkor ezt a felületet a `"implements":` IoT Plug and Play eszközön található eszköz-képesség modell szakaszában kell deklarálni.
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Illesztőfelület-definíciók beolvasása a nyilvános tárházból
 

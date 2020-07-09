@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
 ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714831"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
@@ -198,6 +197,6 @@ Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, h
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéni lekérdezések létrehozásához tekintse meg az [log Analytics adatmodellt](backup-azure-reports-data-model.md).

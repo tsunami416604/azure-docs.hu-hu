@@ -5,32 +5,140 @@ ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 4330f70328d00766c829478cebeb2cdbb9ad21c1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/23/2020
+ms.openlocfilehash: 540175f02660717793ded667f9c07de8549ec2f5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854479"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320841"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Resource Manager-sablonok – minták a diagnosztikai beállításokhoz Azure Monitor
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz az Azure-erőforrások diagnosztikai beállításainak létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
 
-Diagnosztikai beállítás létrehozásához adjon hozzá egy/Providers/diagnosticSettings típusú erőforrást <resource namespace> a sablonhoz. Ez a cikk két különböző erőforrástípus esetében tartalmaz példákat, de ugyanez a minta alkalmazható más erőforrástípusok esetében is. Az engedélyezett naplók és mérőszámok gyűjteménye minden erőforrástípus esetében eltérő lesz.
+Egy Azure-erőforrás diagnosztikai beállításának létrehozásához adjon hozzá egy típusú erőforrást `<resource namespace>/providers/diagnosticSettings` a sablonhoz. Ez a cikk néhány erőforrástípus esetében tartalmaz példákat, de ugyanez a minta alkalmazható más erőforrástípusok esetében is. Az engedélyezett naplók és mérőszámok gyűjteménye minden erőforrástípus esetében eltérő lesz.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
+## <a name="diagnostic-setting-for-activity-log"></a>A műveletnapló diagnosztikai beállítása
+A következő minta diagnosztikai beállítást hoz létre egy tevékenység-naplóhoz egy típusú erőforrás hozzáadásával `Microsoft.Insights/diagnosticSettings` a sablonhoz.
 
-## <a name="diagnostic-setting-for-azure-key-vault"></a>Az Azure Key Vault diagnosztikai beállításai 
-Az alábbi minta két naplózási lekérdezést vesz fel egy Azure Key vaultba.
+> [!IMPORTANT]
+> Az előfizetéshez kapcsolódó diagnosztikai beállítások jönnek létre, nem pedig az Azure-erőforrásokhoz hasonló beállítások. Az erőforrás-kezelési sablon üzembe helyezéséhez használja `New-AzSubscriptionDeployment` a PowerShellt vagy `az deployment sub create` Az Azure CLI-t.
 
 ### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "settingName": {
+          "type": "String"
+        },
+        "workspaceId": {
+          "type": "String"
+        },
+        "storageAccountId": {
+          "type": "String"
+        },
+        "eventHubAuthorizationRuleId": {
+          "type": "String"
+        },
+        "eventHubName": {
+          "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Insights/diagnosticSettings",
+            "apiVersion": "2017-05-01-preview",
+            "name": "[parameters('settingName')]",
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "storageAccountId": "[parameters('storageAccountId')]",
+                "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+                "eventHubName": "[parameters('eventHubName')]",
+                "logs": [
+                    {
+                        "category": "Administrative",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Security",
+                        "enabled": true
+                    },
+                    {
+                        "category": "ServiceHealth",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Alert",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Recommendation",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Policy",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Autoscale",
+                        "enabled": true
+                    },
+                    {
+                        "category": "ResourceHealth",
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+### <a name="parameter-file"></a>Paraméter fájlja
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "settingName": {
+        "value": "Send to all locations"
+      },
+      "workspaceId": {
+        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyWorkspace"
+      },
+      "storageAccountId": {
+        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
+      },
+      "eventHubAuthorizationRuleId": {
+        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNameSpace/authorizationrules/RootManageSharedAccessKey"
+      },
+      "eventHubName": {
+        "value": "my-eventhub"
+      }
+  }
+}
+```
+
+
+## <a name="diagnostic-setting-for-azure-key-vault"></a>Diagnosztikai beállítás a Azure Key Vault 
+A következő minta diagnosztikai beállítást hoz létre egy Azure Key Vaulthoz, ha hozzáad egy típusú erőforrást `Microsoft.KeyVault/vaults/providers/diagnosticSettings` a sablonhoz.
+
+### <a name="template-file"></a>Sablonfájl
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "settingName": {
+            "type": "String"
+        },
         "vaultName": {
             "type": "String"
         },
@@ -52,10 +160,8 @@ Az alábbi minta két naplózási lekérdezést vesz fel egy Azure Key vaultba.
         {
           "type": "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
           "apiVersion": "2017-05-01-preview",
-          "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/Send to all destinations')]",
-          "dependsOn": [
-            
-          ],
+          "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/', parameters('settingName'))]",
+          "dependsOn": [],
           "properties": {
             "workspaceId": "[parameters('workspaceId')]",
             "storageAccountId": "[parameters('storageAccountId')]",
@@ -83,9 +189,12 @@ Az alábbi minta két naplózási lekérdezést vesz fel egy Azure Key vaultba.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+      "settingName": {
+          "value": "Send to all locations"
+      },
       "vaultName": {
         "value": "MyVault"
       },
@@ -99,21 +208,25 @@ Az alábbi minta két naplózási lekérdezést vesz fel egy Azure Key vaultba.
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNameSpace/authorizationrules/RootManageSharedAccessKey"
       },
       "eventHubName": {
-        "value": "MyKeyVault"
+        "value": "my-eventhub"
       }
   }
 }
 ```
 
 ## <a name="diagnostic-setting-for-azure-sql-database"></a>Diagnosztikai beállítás az Azure SQL Database-hez
-Az alábbi minta két naplózási lekérdezést vesz fel egy Azure SQL Database-adatbázisba.
+Az alábbi minta egy Azure SQL Database diagnosztikai beállítását hozza létre a sablonhoz egy típusú erőforrás hozzáadásával `microsoft.sql/servers/databases/providers/diagnosticSettings` .
+
 ### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "settingName": {
+            "type": "String"
+        },        
         "serverName": {
             "type": "String"
         },
@@ -138,10 +251,8 @@ Az alábbi minta két naplózási lekérdezést vesz fel egy Azure SQL Database-
         {
           "type": "microsoft.sql/servers/databases/providers/diagnosticSettings",
           "apiVersion": "2017-05-01-preview",
-          "name": "[concat(parameters('serverName'),'/',parameters('dbName'),'/microsoft.insights/SQL diagnostic setting')]",
-          "dependsOn": [
-            
-          ],
+          "name": "[concat(parameters('serverName'),'/',parameters('dbName'),'/microsoft.insights', parameters('settingName'))]",
+          "dependsOn": [],
           "properties": {
             "workspaceId": "[parameters('workspaceId')]",
             "storageAccountId": "[parameters('storageAccountId')]",
@@ -209,9 +320,12 @@ Az alábbi minta két naplózási lekérdezést vesz fel egy Azure SQL Database-
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+      "settingName": {
+          "value": "Send to all locations"
+      },
       "serverName": {
         "value": "MySqlServer"
       },
@@ -228,7 +342,7 @@ Az alábbi minta két naplózási lekérdezést vesz fel egy Azure SQL Database-
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNameSpace/authorizationrules/RootManageSharedAccessKey"
       },
       "eventHubName": {
-        "value": "MyKeyVault"
+        "value": "my-eventhub"
       }
   }
 }

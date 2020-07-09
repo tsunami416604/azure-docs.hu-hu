@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127997"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Brands-modell testreszabása a Video Indexer API-val
@@ -30,7 +30,7 @@ A jelen témakörben leírtak szerint a Video Indexer API-k használatával hozh
 A [Brand API létrehozása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) létrehoz egy új egyéni márkát, és hozzáadja azt a megadott fiók egyéni márkák modelljéhez.
 
 > [!NOTE]
-> Ha `enabled` a True (törzs) értékre állítja a beállítást, a rendszer a következőt adja meg a *befoglalási* listán a video Indexer észleléséhez. A `enabled` false (hamis) értékre állításával a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
+> Ha a True (törzs) értékre állítja a beállítást, a rendszer a következőt adja meg a `enabled` *befoglalási* listán a video Indexer észleléséhez. A False (hamis) értékre állításával a `enabled` márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
 
 A törzsben beállítható egyéb paraméterek:
 
@@ -94,7 +94,7 @@ A válasz az alábbi példa formátumát követve információt nyújt a kereset
 ```
 
 > [!NOTE]
-> `enabled`a beállítás azt `true` jelzi, hogy a márka szerepel a *befoglalási* listán a video Indexer észleléséhez, `enabled` és a hamis érték azt jelzi, hogy a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
+> `enabled`a beállítás azt `true` jelzi, hogy a márka szerepel a *befoglalási* listán a video Indexer észleléséhez, és a `enabled` hamis érték azt jelzi, hogy a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
 
 ## <a name="update-a-specific-brand"></a>Adott márka frissítése
 

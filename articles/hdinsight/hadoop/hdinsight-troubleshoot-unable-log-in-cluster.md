@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.openlocfilehash: 2099d1b7583017733498946a5866ab37de43ba9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894057"
 ---
 # <a name="scenario-unable-to-log-into-azure-hdinsight-cluster"></a>Forgatókönyv: nem lehet bejelentkezni az Azure HDInsight-fürtbe

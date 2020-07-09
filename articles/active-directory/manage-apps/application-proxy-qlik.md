@@ -3,23 +3,23 @@ title: Azure AD alkalmazás proxy-és Qlik értelme | Microsoft Docs
 description: Kapcsolja be az Alkalmazásproxyot a Azure Portalban, és telepítse a fordított proxyhoz tartozó összekötőket.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760048"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Alkalmazásproxy és Qlik értelem 
 A Azure Active Directory Application Proxy és a Qlik az értelem összevonásával biztosítható, hogy könnyen tudja használni az alkalmazásproxy-t a Qlik-környezethez való távoli hozzáférés biztosításához.  
@@ -38,7 +38,7 @@ Az alkalmazás közzétételéhez kövesse az alábbi lépéseket. Az 1-8-es lé
 
 
 1. Jelentkezzen be az Azure Portalra globális rendszergazdaként. 
-2. Válassza **Azure Active Directory** > **vállalati alkalmazások**lehetőséget. 
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. 
 3. A panel tetején kattintson a **Hozzáadás** gombra. 
 4. Válassza **a helyszíni alkalmazás**lehetőséget. 
 5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkkal. A beállításokhoz a következő útmutatást használhatja: 

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9431ff862dd987a1a806087053014e7c880bf801
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c9c598d385768e604d9b42e3ea055629e6ae2866
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143303"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108549"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>A modell verziószámozása a Text Analytics API
 
-A Text Analytics API 3. verziója lehetővé teszi, hogy kiválassza a modell azon verzióját, amelyet az adatain használni fog. A választható `model-version` paraméter használatával kiválaszthatja a modell verzióját az API-kérelmekben. Például: `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`. Ha ez a paraméter nincs megadva, az API alapértelmezés szerint a legújabb stabil verziót fogja megadni. 
+A Text Analytics API 3. verziója lehetővé teszi, hogy kiválassza a modell azon verzióját, amelyet az adatain használni fog. A választható `model-version` paraméter használatával kiválaszthatja a modell verzióját az API-kérelmekben. Példa: `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`. Ha ez a paraméter nincs megadva, az API alapértelmezés szerint a legújabb stabil verziót fogja megadni. 
 
 ## <a name="available-versions"></a>Elérhető verziók
 
@@ -37,6 +37,19 @@ Az alábbi táblázat segítségével megkeresheti, hogy az egyes végpontok mil
 
 
 Ezen modellek frissítéseiről a Újdonságok című útmutatóban talál [részleteket.](../whats-new.md)
+
+## <a name="text-analytics-for-health"></a>Text Analytics állapota
+
+Az [állapot](../how-tos/text-analytics-for-health.md) -tároló Text Analytics a fenti API-végpontok helyett a modell eltérő verzióját használja.  Vegye figyelembe, hogy a tárolók rendszerképében csak egy modell verziója érhető el.
+
+| Végpont                        | Tároló képcímkéje                     | Modell verziója |
+|---------------------------------|-----------------------------------------|---------------|
+| `/domains/health`               | `1.1.012640001-amd64-preview`vagy legújabb | `2020-05-08`  |
+| `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

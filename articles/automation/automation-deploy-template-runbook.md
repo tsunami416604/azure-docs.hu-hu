@@ -7,10 +7,9 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Automation
 ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837076"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése egy PowerShell-runbook
@@ -84,11 +83,11 @@ A szövegszerkesztőben másolja a következő szöveget:
 }
 ```
 
-Mentse a fájlt helyileg a **TemplateTest. JSON**néven.
+Mentse a fájlt helyileg **TemplateTest.js**.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>A Resource Manager-sablon mentése az Azure Storage-ban
 
-Most a PowerShell használatával hozzon létre egy Azure Storage-fájlmegosztást, és töltse fel a **TemplateTest. JSON** fájlt.
+Most a PowerShell használatával hozzon létre egy Azure Storage-fájlmegosztást, és töltse fel a **TemplateTest.js** fájlt.
 A fájlmegosztás létrehozásával és a Azure Portal fájl feltöltésével kapcsolatos utasításokért lásd: Ismerkedés [Az Azure file Storage szolgáltatással Windows](../storage/files/storage-dotnet-how-to-use-files.md)rendszeren.
 
 Indítsa el a PowerShellt a helyi gépen, és futtassa a következő parancsokat egy fájlmegosztás létrehozásához, majd töltse fel a Resource Manager-sablont az adott fájlmegosztást.
@@ -114,7 +113,7 @@ Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $t
 
 ## <a name="create-the-powershell-runbook-script"></a>A PowerShell-runbook parancsfájl létrehozása
 
-Most létrehozunk egy PowerShell-szkriptet, amely beolvassa az **TemplateTest. JSON** fájlt az Azure Storage-ból, és üzembe helyezi a sablont egy új Azure Storage-fiók létrehozásához.
+Most létrehozunk egy PowerShell-szkriptet, amely beolvassa az Azure Storage-ból származó fájl **TemplateTest.js** , és üzembe helyezi a sablont egy új Azure Storage-fiók létrehozásához.
 
 Illessze be a következő szöveget egy szövegszerkesztőbe:
 
@@ -161,13 +160,13 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-Mentse a fájlt helyileg a **DeployTemplate. ps1**néven.
+Mentse a fájlt helyileg **DeployTemplate.ps1**.
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>A runbook importálása és közzététele a Azure Automation-fiókban
 
 Most a PowerShell használatával importálja a runbook a Azure Automation-fiókjába, majd közzéteszi a runbook. További információ a runbook importálásáról és közzétételéről a Azure Portalban: [Runbookok kezelése Azure Automation](manage-runbooks.md).
 
-Ha a **DeployTemplate. Ps1** eszközt PowerShell-runbook szeretné importálni az Automation-fiókjába, futtassa a következő PowerShell-parancsokat:
+Ha PowerShell-runbook szeretné importálni **DeployTemplate.ps1** az Automation-fiókjába, futtassa a következő PowerShell-parancsokat:
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1

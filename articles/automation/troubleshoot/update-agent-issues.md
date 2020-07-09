@@ -10,13 +10,12 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680826"
 ---
-# <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent problémáinak elhárítása
+# <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent hibáinak elhárítása
 
 Számos oka lehet annak, hogy a gép a Update Management üzembe helyezése során nem jelenik meg készként (kifogástalan). A probléma okának megállapításához a Windows Hybrid Runbook Worker Agent állapotát is megtekintheti. A következő három készültségi állapotú gép:
 
@@ -55,7 +54,7 @@ Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések s
 
 Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó a következő táblázatban látható operációs rendszerek egyikét futtatja-e.
 
-|Operációs rendszer  |Megjegyzések  |
+|Operációs rendszer  |Jegyzetek  |
 |---------|---------|
 |Windows Server 2012 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers).)<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 

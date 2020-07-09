@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610853"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045654"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 
@@ -26,11 +26,11 @@ Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú v
 
     ![Csatlakoztatási utasítások NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![Csatlakoztatási utasítások SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
-    
-    Ha a NFSv 4.1-et használja, használja a következő parancsot a fájlrendszer csatlakoztatásához:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    ![Csatlakoztatási utasítások SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
+    * Ha NFS-kötetet csatlakoztat, ügyeljen arra, hogy a `vers` parancsban található kapcsolóval `mount` megadhatja az NFS protokoll azon verzióját, amely megfelel a csatlakoztatni kívánt kötetnek. 
+    * Ha a NFSv 4.1-et használja, használja a következő parancsot a fájlrendszer csatlakoztatásához:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. Ha egy Azure-beli virtuális gép indításakor vagy újraindításakor automatikusan csatlakoztatni szeretné az NFS-kötetet, vegyen fel egy `/etc/fstab` bejegyzést a gazdagépen lévő fájlba. 
+3. Ha egy Azure-beli virtuális gép indításakor vagy újraindításakor automatikusan csatlakoztatni szeretné az NFS-kötetet, vegyen fel egy bejegyzést a `/etc/fstab` gazdagépen lévő fájlba. 
 
     Például:`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -41,11 +41,11 @@ Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú v
 4. Ha csatlakoztatni szeretné a kötetet a Windowshoz az NFS használatával:
 
     a. Először csatlakoztassa a kötetet egy UNIX vagy Linux rendszerű virtuális gépre.  
-    b. Futtasson `chmod 777` egy `chmod 775` vagy parancsot a köteten.  
+    b. Futtasson egy `chmod 777` vagy `chmod 775` parancsot a köteten.  
     c. Csatlakoztassa a kötetet a Windows rendszer NFS-ügyfelén keresztül.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
+* [Az NFSv 4.1 alapértelmezett tartományának konfigurálása az Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS – gyakori kérdések](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [Hálózati fájlrendszer – áttekintés](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

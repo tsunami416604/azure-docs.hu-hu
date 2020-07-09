@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 MapReduce teljesítményének finomhan
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a3ea6858355d6cb921f629bf36134d96371f6244
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327931"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106220"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
@@ -21,7 +21,7 @@ Ismerje meg azokat a tényezőket, amelyeket figyelembe kell vennie a Térkép t
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért tekintse meg a rövid útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)című témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 * **A MapReduce használata a HDInsight-on**.  További információ: [MapReduce használata a Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
@@ -40,7 +40,7 @@ A MapReduce-feladatok futtatásakor a Data Lake Storage Gen2 teljesítményének
 
 **MapReduce. job. Maps/MapReduce. job. csökkentse** Ez határozza meg a létrehozandó leképezések vagy szűkítők maximális számát.  A felosztások száma határozza meg, hogy a MapReduce-feladatokhoz hány leképezést hoz létre a rendszer.  Ezért előfordulhat, hogy kevesebb leképezést kap, mint amennyit kért, ha a kért adatleképezések száma kevesebb.       
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 > [!NOTE]
 > A jelen dokumentumban szereplő útmutatás azt feltételezi, hogy az alkalmazás az egyetlen, a fürtön futó alkalmazás.
@@ -57,7 +57,7 @@ A térképhez és a tevékenységek csökkentéséhez használt memória mérete
 
 A MapReduce. job. Maps/MapReduce. job. reakcióhoz. csökkentse a rendelkezésre álló szál teljes memóriájának mennyiségét.  Ez az információ a Ambari-ben érhető el.  Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot.  Ebben az ablakban a szál memóriája jelenik meg.  A fonalak memóriáját a fürtben lévő csomópontok számával kell szorozni a teljes fonal memóriájának beolvasásához.
 
-    Total YARN memory = nodes * YARN memory per node
+Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
 
 Ha üres fürtöt használ, a memória a fürt teljes FONALának memóriája lehet.  Ha más alkalmazások használják a memóriát, akkor úgy is dönthet, hogy csak a fürt memóriájának egy részét használja. ehhez csökkentse a használni kívánt tárolók számát.  
 
@@ -65,7 +65,7 @@ Ha üres fürtöt használ, a memória a fürt teljes FONALának memóriája leh
 
 A FONALas tárolók a feladatokhoz rendelkezésre álló Egyidejűség mennyiségét írják le.  A fonal teljes memóriájának és osztásának elvégzése a MapReduce. map. Memory használatával.  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+\#of fonal-tárolók = teljes fonal-memória/MapReduce. Térkép. memória
 
 **5. lépés: állítsa be a MapReduce. job. Maps/MapReduce. job. csökkenti**
 
@@ -85,18 +85,19 @@ Ebben a példában feltételezzük, hogy az egyetlen futó feladatot felhasznál
 
 Ebben a példában egy I/O-igényes feladatot futtatunk, és eldöntjük, hogy a térképi feladatokhoz szükséges 3GB memória elegendő lesz-e.
 
-    mapreduce.map.memory = 3GB
+MapReduce. map. Memory = 3GB
 
 **3. lépés: a FONALak teljes memóriájának meghatározása**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+A fürt teljes memóriája 8 csomópont * 96GB a D14 = 768GB
+
 **4. lépés: a FONALas tárolók számának kiszámítása**
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+\#FONALas tárolók esetén = a rendelkezésre álló memória 768GB/3 GB memória = 256
 
 **5. lépés: állítsa be a MapReduce. job. Maps/MapReduce. job. csökkenti**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>Futtatási példák
 
@@ -109,12 +110,18 @@ A kiindulási pontnál Íme néhány példa a MapReduce Teragen, a Terasort és 
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

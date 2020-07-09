@@ -9,11 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705372"
 ---
 # <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
 
@@ -46,9 +45,9 @@ Az SAS-jogkivonatok formátuma a következő:
 
 Az egyes tokenek összetevői:
 
-| Érték | Leírás |
+| Érték | Description |
 | --- | --- |
-| aláírás |Egy HMAC-SHA256 aláírási karakterlánc. Az egyéni regisztrációk esetében ez az aláírás a szimmetrikus kulcs (elsődleges vagy másodlagos) segítségével történik a kivonat végrehajtásához. A beléptetési csoportok esetében a rendszer a beléptetési csoport kulcsa alapján származtatott kulcsot használja a kivonat végrehajtásához. A kivonatot az űrlap egy üzenete hajtja végre `URL-encoded-resourceURI + "\n" + expiry`:. **Fontos**: a kulcsot a HMAC-sha256 számítás végrehajtásához a Base64-ből kell dekódolni. Emellett az aláírás eredményének URL-kódolású kell lennie. |
+| aláírás |Egy HMAC-SHA256 aláírási karakterlánc. Az egyéni regisztrációk esetében ez az aláírás a szimmetrikus kulcs (elsődleges vagy másodlagos) segítségével történik a kivonat végrehajtásához. A beléptetési csoportok esetében a rendszer a beléptetési csoport kulcsa alapján származtatott kulcsot használja a kivonat végrehajtásához. A kivonatot az űrlap egy üzenete hajtja végre: `URL-encoded-resourceURI + "\n" + expiry` . **Fontos**: a kulcsot a HMAC-sha256 számítás végrehajtásához a Base64-ből kell dekódolni. Emellett az aláírás eredményének URL-kódolású kell lennie. |
 | ResourceURI |A jogkivonattal elérhető regisztrációs végpont URI-ja, amely az eszköz kiépítési szolgáltatási példányának hatókör-azonosítójával kezdődik. Például: `{Scope ID}/registrations/{Registration ID}` |
 | lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
 | {URL-kódolt-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |

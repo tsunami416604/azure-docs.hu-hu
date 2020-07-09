@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833103"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső Load Balancer használata App Service Environment
 
@@ -46,7 +46,7 @@ Bizonyos dolgok nem hajthatók végre, ha ILB-beadást használ. Ezek a követke
 Egy ILB-bekészítés létrehozása nem sokban különbözik a hagyományos központú adatforrások létrehozásával. A kiegészítő információk létrehozásával kapcsolatos részletes információkért lásd: [app Service Environment létrehozása][HowtoCreateASE]. A ILB beadásának folyamata megegyezik a VNet létrehozása és a már meglévő VNet kiválasztása között. Az ILB ASE létrehozása: 
 
 1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil – > app Service Environment**lehetőséget.
-2. Válassza ki előfizetését.
+2. Válassza ki az előfizetését.
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 5. Hozzon létre egy alhálózatot, ha kiválaszt egy VNet.
@@ -65,10 +65,10 @@ Az alkalmazások ILB-ben történő létrehozása megegyeznek az alkalmazások s
 
 1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil-> webes** vagy **mobil** vagy API- **alkalmazás**elemet.
 2. Adja meg az alkalmazás nevét.
-3. Válassza ki előfizetését.
+3. Válassza ki az előfizetését.
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 5. Válasszon ki vagy hozzon létre egy App Service tervet (ASP). Ha új ASP hoz létre, válassza ki a beadási helyet, és válassza ki azt a munkavégző készletet, amelyben létre szeretné hozni az ASP-t. Az ASP létrehozásakor kiválaszthatja a beadási helyet és a munkavégző készletet. Az alkalmazás nevének megadásakor látni fogja, hogy az alkalmazás neve alá tartozó altartomány helyébe a szolgáltató altartománya kerül. 
-6. Kattintson a **Létrehozás** gombra. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
+6. Válassza a **Létrehozás** lehetőséget. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
 
 ![][2]
 
@@ -118,9 +118,10 @@ A további felügyeleti elemek a Tanúsítványkezelő és a DNS-kezelés. Be ke
 #### <a name="dns-configuration"></a>DNS-konfiguráció
 Külső VIP használata esetén a DNS-t az Azure felügyeli. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. Egy adott altartományhoz, például a contoso.corp.net-hoz létre kell hoznia egy DNS-rekordot, amely a ILB-címere mutat:
 
-    * 
-    *. SCM FTP-közzététel 
-
+- \*
+- *. SCM
+- ftp
+- publish
 
 ## <a name="getting-started"></a>Első lépések
 App Service környezetek használatának megkezdéséhez tekintse [meg a app Service környezetek bemutatása][WhatisASE] című témakört.

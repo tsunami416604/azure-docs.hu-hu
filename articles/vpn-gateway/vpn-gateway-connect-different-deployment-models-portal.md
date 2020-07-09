@@ -4,15 +4,14 @@ description: A klasszikus virtuális hálózatok Resource Manager-virtuális há
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987670"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
 
@@ -84,7 +83,7 @@ Az alábbi táblázat egy példát mutat be a példa virtuális hálózatok és 
 
 Ebben a szakaszban a klasszikus VNet, a helyi hálózatot (helyi helyet) és a virtuális hálózati átjárót hozza létre. A képernyőképek csak példaként szolgálnak. Ügyeljen arra, hogy a saját értékeit cserélje le, vagy használja a [példában](#values) szereplő értékeket.
 
-### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"> </a>klasszikus VNet létrehozása
+### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> klasszikus VNet létrehozása
 
 Ha nem rendelkezik klasszikus VNet, és gyakorlatként futtatja ezeket a lépéseket, létrehozhat egy VNet [ehhez a cikkhez](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) , és a fenti [példában](#values) szereplő beállítások értékeit.
 
@@ -96,7 +95,7 @@ Ha már rendelkezik egy VPN-átjáróval rendelkező VNet, ellenőrizze, hogy az
 4. Keresse meg a "Virtual Network" elemet a visszaadott listából, és kattintson rá a Virtual Network lap megnyitásához. 
 5. Klasszikus VNet létrehozásához a virtuális hálózat lapon válassza a klasszikus lehetőséget. Ha az alapértelmezett értéket használja, a rendszer felvesz egy Resource Manager-VNet.
 
-### <a name="2-configure-the-local-site"></a>2. <a name="local"> </a>a helyi hely konfigurálása
+### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> a helyi hely konfigurálása
 
 1. Keresse meg az **összes erőforrást** , és keresse meg a **ClassicVNet** a listában.
 2. Kattintson a menü **Beállítások** szakaszában az **átjáró** elemre, majd a szalagcímre kattintva hozzon létre egy átjárót.
@@ -207,7 +206,7 @@ Ezekben a lépésekben a Azure Portal segítségével konfigurálja a (z) Resour
 2. Kattintson a **konfiguráció** elemre, és ellenőrizze, hogy az IP-cím értéke a klasszikus VNET tartozó VPN-átjáró. Szükség esetén frissítse a frissítést, majd kattintson a **Mentés**gombra. Zárja be az oldalt.
 3. Az **összes erőforrás**területen kattintson a helyi hálózati átjáróra.
 4. Kattintson a **kapcsolatok** elemre a kapcsolatok lap megnyitásához.
-5. A **kapcsolatok** lapon kattintson **+** a kapcsolat hozzáadásához.
+5. A **kapcsolatok** lapon kattintson a **+** kapcsolat hozzáadásához.
 6. A **kapcsolatok hozzáadása** lapon nevezze el a kapcsolatokat. Például: "RMtoClassic".
 7. Ezen a lapon már ki van választva a **helyek közötti** kapcsolat.
 8. Válassza ki azt a virtuális hálózati átjárót, amelyet hozzá szeretne rendelni a helyhez.

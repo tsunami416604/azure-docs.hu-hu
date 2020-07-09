@@ -1,17 +1,17 @@
 ---
-title: Azure HPC-gyorsítótár létrehozása
+title: Azure HPC cache-példány létrehozása
 description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73582175"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045807"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Az aggregált névtér tervezése
 
@@ -29,14 +29,14 @@ Vegyünk például egy olyan rendszerrendszert, amelyben az Azure-blobban tárol
 
 A sablon adatai egy adatközpontban tárolódnak, és a feladathoz szükséges információk a következő alkönyvtárakban tárolódnak:
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */goldline/templates/acme2017/sku798*
+* */goldline/templates/acme2017/sku980* 
 
 Az adatközpont tárolási rendszere a következő exportálásokat teszi elérhetővé:
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */goldline*
+* */goldline/templates*
 
 Az elemezni kívánt adattípust a rendszer átmásolta egy "sourcecollectionnek" nevű Azure Blob Storage-tárolóba a [CLFSLoad segédprogram](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)használatával.
 
@@ -57,7 +57,7 @@ Mivel az NFS-forrás elérési útjai azonos exportálási alkönyvtárak, meg k
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési ``/templates/sku798``útját ``/templates/sku980`` ``/source``, és.
+Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési útját, ``/source`` ``/templates/sku798`` és ``/templates/sku980`` .
 
 ## <a name="next-steps"></a>További lépések
 

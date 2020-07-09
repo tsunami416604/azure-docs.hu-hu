@@ -5,17 +5,17 @@ description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyi
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9792f52ae60039ff4891ea95688f961e73283af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983431"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok előállítása és exportálása pont – hely kapcsolatokhoz a PowerShell használatával
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>A PowerShell használatával hozzon létre és exportáljon pont–hely kapcsolathoz alkalmazható tanúsítványokat
 
 A pont – hely kapcsolatok tanúsítványokat használnak a hitelesítéshez. Ebből a cikkből megtudhatja, hogyan hozhat létre önaláírt főtanúsítványokat, és hogyan hozhat létre ügyféltanúsítványt a PowerShell használatával Windows 10 vagy Windows Server 2016 rendszeren. Ha más tanúsítványokra vonatkozó utasításokat keres, tekintse meg a [tanúsítványok – Linux](vpn-gateway-certificates-point-to-site-linux.md) vagy [tanúsítványok – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)című témakört.
 

@@ -12,17 +12,16 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74273187"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>VÁLLALATKÖZI együttműködés felhasználói jogcímek leképezése Azure Active Directory
 
 Azure Active Directory (Azure AD) támogatja az SAML-jogkivonatban kiadott jogcímek testreszabását a B2B együttműködési felhasználók számára. Amikor egy felhasználó hitelesíti az alkalmazást, az Azure AD egy SAML-jogkivonatot bocsát ki az alkalmazásnak, amely az egyedileg azonosított felhasználóval kapcsolatos információkat (vagy jogcímeket) tartalmaz. Alapértelmezés szerint ez magában foglalja a felhasználó felhasználónevét, e-mail-címét, utónevét és vezetéknevét.
 
-A [Azure Portal](https://portal.azure.com)megtekintheti vagy szerkesztheti az SAML-jogkivonatban eljuttatott jogcímeket az alkalmazásnak. A beállítások eléréséhez válassza **Azure Active Directory** > **vállalati alkalmazások** lehetőséget > az egyszeri bejelentkezéshez > **egyszeri bejelentkezéshez**konfigurált alkalmazást. Tekintse meg az SAML-jogkivonat beállításait a **felhasználói attribútumok** szakaszban.
+A [Azure Portal](https://portal.azure.com)megtekintheti vagy szerkesztheti az SAML-jogkivonatban eljuttatott jogcímeket az alkalmazásnak. A beállítások eléréséhez válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget > az egyszeri bejelentkezéshez > **egyszeri bejelentkezéshez**konfigurált alkalmazást. Tekintse meg az SAML-jogkivonat beállításait a **felhasználói attribútumok** szakaszban.
 
 ![Megjeleníti az SAML-jogkivonat attribútumait a felhasználói felületen](media/claims-mapping/view-claims-in-saml-token.png)
 

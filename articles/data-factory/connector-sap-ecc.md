@@ -10,13 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/12/2020
+ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987014"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -74,11 +73,11 @@ Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot a következőre `SapEcc`kell beállítani:. | Igen |
-| `url` | Az SAP ECC OData szolgáltatás URL-címe. | Igen |
-| `username` | Az SAP ECC-hoz való kapcsolódáshoz használt Felhasználónév. | Nem |
-| `password` | Az SAP ECC-hoz való kapcsolódáshoz használt egyszerű szöveges jelszó. | Nem |
-| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | Nem |
+| `type` | A tulajdonságot a következőre kell `type` beállítani: `SapEcc` . | Yes |
+| `url` | Az SAP ECC OData szolgáltatás URL-címe. | Yes |
+| `username` | Az SAP ECC-hoz való kapcsolódáshoz használt Felhasználónév. | No |
+| `password` | Az SAP ECC-hoz való kapcsolódáshoz használt egyszerű szöveges jelszó. | No |
+| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | No |
 
 ### <a name="example"></a>Példa
 
@@ -107,13 +106,13 @@ Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). A következő szakasz az SAP ECC-adatkészlet által támogatott tulajdonságokat tartalmazza.
 
-Az adatok SAP ECC-ból történő másolásához `type` állítsa az adatkészlet tulajdonságát `SapEccResource`a következőre:.
+Az adatok SAP ECC-ból történő másolásához állítsa az adatkészlet tulajdonságát a következőre: `type` `SapEccResource` .
 
 A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `path` | Az SAP ECC OData entitás elérési útja. | Igen |
+| `path` | Az SAP ECC OData entitás elérési útja. | Yes |
 
 ### <a name="example"></a>Példa
 
@@ -140,14 +139,15 @@ A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdon
 
 ### <a name="sap-ecc-as-a-source"></a>SAP ECC forrásként
 
-Az SAP ECC-ból származó adatok másolásához `type` a másolási `source` tevékenység szakaszának tulajdonságát állítsa `SapEccSource`a következőre:.
+Az SAP ECC-ból származó adatok másolásához a `type` `source` másolási tevékenység szakaszának tulajdonságát állítsa a következőre: `SapEccSource` .
 
-A másolási tevékenység `source` szakasza a következő tulajdonságokat támogatja:
+A másolási tevékenység szakasza a következő tulajdonságokat támogatja `source` :
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` másolási tevékenység `source` szakaszának tulajdonságát be kell állítani `SapEccSource`. | Igen |
-| `query` | Az OData lekérdezési beállításai az adatszűréshez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| `type` | A `type` másolási tevékenység `source` szakaszának tulajdonságát be kell állítani `SapEccSource` . | Yes |
+| `query` | Az OData lekérdezési beállításai az adatszűréshez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| `httpRequestTimeout` | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | No |
 
 ### <a name="example"></a>Példa
 

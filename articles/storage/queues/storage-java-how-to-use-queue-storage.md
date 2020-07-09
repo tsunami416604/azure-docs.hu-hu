@@ -6,25 +6,23 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 7658b8541e7a79a5e547a6649b35681446e34b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809246"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
-
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A kódminták Java nyelven íródtak, és a [Java-hoz készült Azure Storage SDK-t][Azure Storage SDK for Java] használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a várólisták **létrehozása** és **törlése** . A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
 
-> [!NOTE]
-> Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információk: [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android].
+> [!IMPORTANT]
+> Ez a cikk a Javához készült Azure Storage ügyféloldali kódtár örökölt verziójára vonatkozik. A legújabb verzió használatának megkezdéséhez tekintse meg a következőt: gyors útmutató [: Azure üzenetsor Storage ügyféloldali kódtár Java](storage-quickstart-queues-java.md) -hoz
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -390,6 +388,11 @@ catch (Exception e)
     e.printStackTrace();
 }
 ```
+
+[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+
+> [!NOTE]
+> Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információk: [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android].
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a várólista-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.

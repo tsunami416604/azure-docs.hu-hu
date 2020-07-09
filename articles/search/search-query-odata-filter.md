@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692801"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData $filter szintaxis az Azure-ban Cognitive Search
 
 Az Azure Cognitive Search [OData szűrő kifejezéseket](query-odata-filter-orderby-syntax.md) használ a keresési lekérdezésre vonatkozó további feltételek alkalmazásához a teljes szöveges keresési feltételek mellett. Ez a cikk részletesen ismerteti a szűrők szintaxisát. További általános információk arról, hogy a szűrők milyen módon és hogyan használhatók fel bizonyos lekérdezési forgatókönyvek megvalósításához: [szűrők az Azure Cognitive Searchban](search-filters.md).
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A OData nyelvének egyik szűrője egy logikai kifejezés, amely viszont a különböző típusú kifejezések egyike lehet, ahogyan az a következő EBNF látható ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
@@ -60,15 +59,15 @@ Az interaktív szintaxis diagram is elérhető:
 
 A logikai kifejezések típusai a következők:
 
-- Gyűjtési szűrő kifejezéseket `all`a vagy a használatával `any` . Ezek a szűrési feltételek a gyűjtemény mezőire vonatkoznak. További információ: [OData Collection Operators in Azure Cognitive Search](search-query-odata-collection-operators.md).
-- A más logikai kifejezéseket a kezelők `and`, `or`a és `not`a használatával ötvöző logikai kifejezések. További információ: [OData logikai operátorok az Azure-ban Cognitive Search](search-query-odata-logical-operators.md).
-- Az összehasonlító kifejezések, amelyek a mezőket vagy a tartomány változóit hasonlítják össze `eq`állandó `ne`értékekkel `lt`az `ge`operátorok `le` `gt`,,,, és használatával. További információ: [OData összehasonlító operátorok az Azure Cognitive Searchban](search-query-odata-comparison-operators.md). Az összehasonlító kifejezések a földrajzi térbeli koordináták közötti távolságok összehasonlítására is használhatók a `geo.distance` függvény használatával. További információ: [OData geo-térbeli függvények az Azure Cognitive Searchban](search-query-odata-geo-spatial-functions.md).
-- A logikai literálok `true` és `false`a. Ezek az állandók esetenként hasznosak lehetnek a szűrők programozott módon történő létrehozásakor, de máskülönben nem általában a gyakorlatban használják őket.
+- Gyűjtési szűrő kifejezéseket a vagy a használatával `any` `all` . Ezek a szűrési feltételek a gyűjtemény mezőire vonatkoznak. További információ: [OData Collection Operators in Azure Cognitive Search](search-query-odata-collection-operators.md).
+- A más logikai kifejezéseket a kezelők, a és a használatával ötvöző logikai kifejezések `and` `or` `not` . További információ: [OData logikai operátorok az Azure-ban Cognitive Search](search-query-odata-logical-operators.md).
+- Az összehasonlító kifejezések, amelyek a mezőket vagy a tartomány változóit hasonlítják össze állandó értékekkel az operátorok,,,, `eq` `ne` és használatával `gt` `lt` `ge` `le` . További információ: [OData összehasonlító operátorok az Azure Cognitive Searchban](search-query-odata-comparison-operators.md). Az összehasonlító kifejezések a földrajzi térbeli koordináták közötti távolságok összehasonlítására is használhatók a `geo.distance` függvény használatával. További információ: [OData geo-térbeli függvények az Azure Cognitive Searchban](search-query-odata-geo-spatial-functions.md).
+- A logikai literálok `true` és a `false` . Ezek az állandók esetenként hasznosak lehetnek a szűrők programozott módon történő létrehozásakor, de máskülönben nem általában a gyakorlatban használják őket.
 - Logikai függvények hívása, beleértve a következőket:
   - `geo.intersects`, amely azt ellenőrzi, hogy egy adott pont egy adott sokszögen belül van-e. További információ: [OData geo-térbeli függvények az Azure Cognitive Searchban](search-query-odata-geo-spatial-functions.md).
   - `search.in`, amely egy mező-vagy tartomány-változót hasonlít össze az értékek listájában szereplő értékekkel. További információ: [OData `search.in` függvény az Azure Cognitive Search](search-query-odata-search-in-function.md).
-  - `search.ismatch`és `search.ismatchscoring`, amely teljes szöveges keresési műveleteket hajt végre a szűrő környezetében. További információ: [OData teljes szöveges keresési függvények az Azure Cognitive Searchban](search-query-odata-full-text-search-functions.md).
-- A mező elérési útjai vagy tartomány `Edm.Boolean`típusú változói. Ha például az index egy nevű `IsEnabled` logikai mezővel rendelkezik, és az összes olyan `true`dokumentumot vissza szeretné adni, ahol ez a mező, akkor a szűrő kifejezése csak `IsEnabled`a név lehet.
+  - `search.ismatch`és `search.ismatchscoring` , amely teljes szöveges keresési műveleteket hajt végre a szűrő környezetében. További információ: [OData teljes szöveges keresési függvények az Azure Cognitive Searchban](search-query-odata-full-text-search-functions.md).
+- A mező elérési útjai vagy tartomány típusú változói `Edm.Boolean` . Ha például az index egy nevű logikai mezővel rendelkezik `IsEnabled` , és az összes olyan dokumentumot vissza szeretné adni, ahol ez a mező `true` , akkor a szűrő kifejezése csak a név lehet `IsEnabled` .
 - Logikai kifejezések zárójelben. A zárójelek használatával explicit módon határozható meg a szűrők műveleteinek sorrendje. A OData operátorok alapértelmezett sorrendjéről a következő szakaszban talál további információt.
 
 ### <a name="operator-precedence-in-filters"></a>Operátori prioritás a szűrőkben
@@ -82,7 +81,7 @@ Ha olyan szűrési kifejezést ír, amely nem rendelkezik zárójelekkel az alki
 | Logikai operátorok | `and` |
 | Logikai operátorok | `or` |
 
-A fenti táblázatban magasabb szintű operátor "szorosabban" kötődik az operandusokhoz, mint a többi operátor. Például `and` `or`a (z) és az összehasonlító operátorok magasabb prioritással rendelkeznek, mint bármelyiknél, így a következő két kifejezés egyenértékű:
+A fenti táblázatban magasabb szintű operátor "szorosabban" kötődik az operandusokhoz, mint a többi operátor. Például a (z) `and` `or` és az összehasonlító operátorok magasabb prioritással rendelkeznek, mint bármelyiknél, így a következő két kifejezés egyenértékű:
 
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
@@ -95,7 +94,7 @@ A következő hibaüzenet jelenik meg:
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-Ez a hiba azért fordul elő, mert az operátor csak `Rating` a típusú `Edm.Int32`mezőhöz van társítva, és nem a teljes összehasonlító kifejezéssel. A javítás célja, hogy zárójelek közé `not` helyezze az operandust:
+Ez a hiba azért fordul elő, mert az operátor csak a típusú mezőhöz van társítva, `Rating` `Edm.Int32` és nem a teljes összehasonlító kifejezéssel. A javítás célja, hogy zárójelek közé helyezze az operandust `not` :
 
     not (Rating gt 5)
 
@@ -106,7 +105,7 @@ Ez a hiba azért fordul elő, mert az operátor csak `Rating` a típusú `Edm.In
 Az Azure Cognitive Searchba küldendő szűrési kifejezések mérete és összetettsége korlátozott. A határértékek nagyjából a szűrési kifejezésben szereplő záradékok számán alapulnak. Egy jó iránymutatás, hogy ha több száz záradékkal rendelkezik, azzal a kockázattal jár, hogy túllépi a korlátot. Azt javasoljuk, hogy az alkalmazást úgy tervezze meg, hogy ne állítson be nem kötött méretű szűrőket.
 
 > [!TIP]
-> Az egyenlőségi összehasonlítások hosszú [kiosztása helyett `search.in` a függvény](search-query-odata-search-in-function.md) használatával elkerülhető a szűrő záradék korlátja, mivel a függvények hívása egyetlen záradékként számít.
+> Az egyenlőségi összehasonlítások hosszú [ `search.in` kiosztása helyett a függvény](search-query-odata-search-in-function.md) használatával elkerülhető a szűrő záradék korlátja, mivel a függvények hívása egyetlen záradékként számít.
 
 ## <a name="examples"></a>Példák
 
@@ -134,7 +133,7 @@ Keresse meg az összes olyan szállodát, amely luxust vagy parkolót tartalmaz,
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-A "WiFi" címkével ellátott összes Hotel megkeresése legalább egy helyiségben (ahol minden szobához egy `Collection(Edm.String)` mezőben tárolt címke tartozik):  
+A "WiFi" címkével ellátott összes Hotel megkeresése legalább egy helyiségben (ahol minden szobához egy mezőben tárolt címke tartozik `Collection(Edm.String)` ):  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -146,11 +145,11 @@ Az összes olyan Hotel megkeresése, amely nem rendelkezik szobával:
 
     $filter=not Rooms/any()
 
-Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 `Location` kilométeren belül (ahol `Edm.GeographyPoint`a egy típusú mező):
+Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kilométeren belül (ahol a `Location` egy típusú mező `Edm.GeographyPoint` ):
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
-Az adott nézetablakban lévő összes Hotel megkeresése sokszögként ( `Location` ahol a EDM. geographypoint adattípuson típusú mező). A sokszöget be kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. Emellett [a pontoknak a sorrendben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)kell szerepelniük.
+Az adott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a `Location` EDM. geographypoint adattípuson típusú mező). A sokszöget be kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. Emellett [a pontoknak a sorrendben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)kell szerepelniük.
 
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
@@ -174,11 +173,11 @@ Megtalálhatja a gyűjteményen belüli kifejezéseket, például a "fűtött t�
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a `search=waterfront`következővel:.
+Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
 
     $filter=search.ismatchscoring('waterfront')
 
-Keresse meg a "Hostel" szót tartalmazó dokumentumokat, vagy a 4-es vagy annál nagyobb minősítést, vagy a "Motel" szót tartalmazó dokumentumokat, valamint az 5 értékű minősítést. A kérést nem lehetett kifejezni a `search.ismatchscoring` függvény nélkül, mert a teljes szöveges keresést kombinálja a szűrési műveletekkel a használatával `or`.
+Keresse meg a "Hostel" szót tartalmazó dokumentumokat, vagy a 4-es vagy annál nagyobb minősítést, vagy a "Motel" szót tartalmazó dokumentumokat, valamint az 5 értékű minősítést. A kérést nem lehetett kifejezni a `search.ismatchscoring` függvény nélkül, mert a teljes szöveges keresést kombinálja a szűrési műveletekkel a használatával `or` .
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +185,7 @@ Dokumentumok keresése a "luxus" szó nélkül.
 
     $filter=not search.ismatch('luxury')
 
-Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre `HotelName` és a- `Description`ra lesz végrehajtva. Azok a dokumentumok, amelyek megfelelnek a kivonásnak, csak a második záradékkal lesznek visszaadva `Rating` . Ezeket a dokumentumokat a pontszám nullával adja vissza, így egyértelművé válik, hogy nem felelnek meg a kifejezés egyik pontszámának sem.
+Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre és a-ra lesz végrehajtva `HotelName` `Description` . Azok a dokumentumok, amelyek megfelelnek a kivonásnak, csak a második záradékkal lesznek visszaadva `Rating` . Ezeket a dokumentumokat a pontszám nullával adja vissza, így egyértelművé válik, hogy nem felelnek meg a kifejezés egyik pontszámának sem.
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: cephalin
 ms.openlocfilehash: c3fa57dd162fbbfbf0d46f73bffc78f279ef2968
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649129"
 ---
 * **Felhasználói szintű hitelesítő adatok**: a teljes Azure-fiókhoz tartozó hitelesítő adatok egy halmaza. Felhasználható arra, hogy a App Service bármely olyan alkalmazáshoz, amely az Azure-fiókhoz való hozzáféréshez szükséges. Ez az alapértelmezett beállítás, amely a portál grafikus felhasználói felületén található (például az alkalmazás [erőforrás-oldalának](../articles/azure-resource-manager/management/manage-resources-portal.md#manage-resources) **áttekintése** és **tulajdonságai** ). Ha a felhasználó szerepköralapú Access Control (RBAC) vagy a rendszergazdai jogosultságok használatával kap hozzáférést az alkalmazásokhoz, a felhasználó a hozzáférés visszavonása előtt saját felhasználói szintű hitelesítő adatait használhatja. Ne ossza meg ezeket a hitelesítő adatokat más Azure-felhasználókkal.

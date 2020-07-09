@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681869"
 ---
 # <a name="object-and-resource-lifetime"></a>Objektumok és erőforrások élettartama
@@ -20,7 +19,7 @@ Az Azure távoli renderelés két típust különböztet meg: az **objektumokat*
 
 Az *objektumok* olyan dolgoknak tekintendők, amelyeket a felhasználó saját belátása szerint hozhat létre, módosíthat és semmisít meg. Az objektumok szabadon duplikálható, és az egyes példányok időbeli változékonysága is változhat. Ennek következtében az [entitások](entities.md) és az [összetevők](components.md) objektumok.
 
-Az objektumok élettartama teljes mértékben a felhasználói vezérlés alatt áll. Nem kapcsolódik az ügyféloldali ábrázolás élettartamához, azonban. A ( `Entity` z `Component` ) és `Destroy` a (z) függvényt úgy kell meghívni, hogy a távoli renderelési gazdagépen felszabadítsa az objektumot. `Entity.Destroy()` Emellett a megsemmisíti az entitást, annak gyermekeit és a hierarchiában lévő összes összetevőt.
+Az objektumok élettartama teljes mértékben a felhasználói vezérlés alatt áll. Nem kapcsolódik az ügyféloldali ábrázolás élettartamához, azonban. A (z) és a (z `Entity` `Component` `Destroy` ) függvényt úgy kell meghívni, hogy a távoli renderelési gazdagépen felszabadítsa az objektumot. Emellett `Entity.Destroy()` a megsemmisíti az entitást, annak gyermekeit és a hierarchiában lévő összes összetevőt.
 
 ## <a name="resource-lifetime"></a>Erőforrás élettartama
 
@@ -32,7 +31,7 @@ Számos erőforrás nem változtatható, például a [Rácsvonalak](meshes.md) �
 
 ### <a name="built-in-resources"></a>Beépített erőforrások
 
-Az Azure Remote rendering tartalmaz néhány beépített erőforrást, amelyek a megfelelő azonosítójuk alapján tölthetők be `builtin://` a hívása során `AzureSession.Actions.LoadXYZAsync()`. Az elérhető beépített erőforrások az egyes szolgáltatások dokumentációjában szerepelnek. Az [égbolt szakasz](../overview/features/sky.md) például felsorolja a beépített Sky-textúrákat.
+Az Azure Remote rendering tartalmaz néhány beépített erőforrást, amelyek a megfelelő azonosítójuk alapján tölthetők be `builtin://` a hívása során `AzureSession.Actions.LoadXYZAsync()` . Az elérhető beépített erőforrások az egyes szolgáltatások dokumentációjában szerepelnek. Az [égbolt szakasz](../overview/features/sky.md) például felsorolja a beépített Sky-textúrákat.
 
 ## <a name="general-lifetime"></a>Általános élettartam
 

@@ -1,18 +1,18 @@
 ---
 title: Vezető felügyelet a Microsoft kereskedelmi piactérről
 description: Ismerje meg, hogyan hozhat létre és fogadhat ügyfeleinek vezetőit a Microsoft AppSource és az Azure Marketplace-ajánlatokból
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800934"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133444"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlatának ügyfelei
 
@@ -87,10 +87,12 @@ Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy é
 
 ## <a name="best-practices-for-lead-management"></a>Ajánlott eljárások az érdeklődők felügyeletéhez
 
+Íme néhány javaslat az értékesítési cikluson keresztüli vezetéshez:
+
 - **Folyamat**: adjon meg egy egyértelmű értékesítési folyamatot, a mérföldköveket, az elemzést és a csoport törlését.
 - **Minősítés**: az előfeltételek meghatározása, amely azt jelzi, hogy egy érdeklődő teljesen minősített-e. Győződjön meg arról, hogy az értékesítési vagy a marketing képviselői körültekintően vezetnek be, mielőtt a teljes értékesítési folyamaton átveszik őket.
-- **Követés**: ne felejtsen nyomon követni. A tipikus tranzakció várhatóan 5 – 12 követő hívást igényel.
-- **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon.
+- **Utólagos követés**: ne feledkezzen meg 24 órán belül. Közvetlenül az ügyfél üzembe helyezése után azonnal elérhetővé válik a CRM-ben. e-mailben elküldheti őket, miközben még mindig melegek. Kérje a telefonhívás ütemezését, hogy jobban megértse, ha a termék jó megoldás a problémára. A tipikus tranzakció várhatóan számos követő hívást igényel.
+- **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon. Jelentkezzen be, de ne bombázza őket. Javasoljuk, hogy legalább néhány alkalommal küldje el az e-maileket, mielőtt bezárná őket; Ne adja meg az első kísérlet után. Ne feledje, hogy ezek az ügyfelek közvetlenül a termékkel foglalkoznak, és időt vesznek igénybe az ingyenes próbaverzióban; nagyszerű kilátások.
 
 ## <a name="common-questions-about-lead-management"></a>Az érdeklődők felügyeletével kapcsolatos gyakori kérdések
 
@@ -107,18 +109,21 @@ A válasz a közzétett ajánlat típusától függ. A szolgáltatott szoftverk�
 Keresse meg a kifejezést az `"MSFT_TEST"` érdeklődő célhelyén. Íme egy példa a Microsoft tesztelési folyamatára:
 
 ```
-company = MSFT_TEST_636573304831318844
-country = US
-description = MSFT_TEST_636573304831318844
-email = MSFT_TEST_636573304831318844@test.com
-encoding = UTF-8
-encoding = UTF-8
-first_name = MSFT_TEST_636573304831318844
-last_name = MSFT_TEST_636573304831318844
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name>
-oid = 00Do0000000ZHog
-phone = 1234567890
-title = MSFT_TEST_636573304831318844
+{
+    "UserDetails": {
+      "FirstName": "MSFT_TEST_636573304831318844",
+      "LastName": "MSFT_TEST_636573304831318844",
+      "Email": "MSFT_TEST_636573304831318844@test.com",
+      "Phone": "1234567890",
+      "Country": "US",
+      "Company": "MSFT_TEST_636573304831318844",
+      "Title": "MSFT_TEST_636573304831318844"
+    },
+    "LeadSource": "AzureMarketplace",
+    "ActionCode": "INS",
+    "OfferTitle": "Contoso Test"
+    "Description": "MSFT_TEST_636573304831318844"
+}
 ```
 
 ### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Élő ajánlatom van, de miért nem látok semmilyen érdeklődőt?

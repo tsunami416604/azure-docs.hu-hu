@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dca7392c35c398ae3d9da62114c991ee4c0e57ca
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997004"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051897"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET használatával
 
@@ -51,7 +51,7 @@ Kulcstartó létrehozásához használja az az Key [Vault Create](/cli/azure/key
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Jegyezze fel a visszaadott `vaultUri`értéket, amely a "https://<Your-kulcstartó-Name>. Vault.Azure.net/" formátumban jelenik meg. Ezt a [kód frissítése](#update-the-code) lépésben fogjuk használni.
+Jegyezze fel a visszaadott értéket `vaultUri` , amely a "https://<Your-kulcstartó-name>. Vault.Azure.net/" formátumban jelenik meg. Ezt a [kód frissítése](#update-the-code) lépésben fogjuk használni.
 
 Most már elhelyezheti a titkos kulcsot a Key vaultban az az kulcstartó [Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) paranccsal. Állítsa be a titkos kulcs nevét "keresési kifejezésként" értékre, és a "sikeres!" értéket.
 
@@ -109,13 +109,13 @@ Az üzembe helyezési felhasználó konfigurálásához futtassa az az [WebApp D
 az webapp deployment user set --user-name "<username>" --password "<password>"
 ```
 
-A JSON-kimenet a jelszót jeleníti meg `null`. `'Conflict'. Details: 409` hibaüzenet esetén változtassa meg a felhasználónevet. `'Bad Request'. Details: 400` hibaüzenet esetén használjon erősebb jelszót. 
+A JSON-kimenet a jelszót jeleníti meg `null` . `'Conflict'. Details: 409` hibaüzenet esetén változtassa meg a felhasználónevet. `'Bad Request'. Details: 400` hibaüzenet esetén használjon erősebb jelszót. 
 
 Jegyezze fel a felhasználónevet és a jelszót a webalkalmazások üzembe helyezéséhez.
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-Hozzon létre egy App Service tervet az Azure CLI-vel az [appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest) paranccsal. Az alábbi példa egy, az `myAppServicePlan` **ingyenes** díjszabási szinten elnevezett app Service-csomagot hoz létre:
+Hozzon létre egy App Service tervet az Azure CLI-vel az [appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest) paranccsal. Az alábbi példa egy `myAppServicePlan` , az **ingyenes** díjszabási szinten elnevezett app Service-csomagot hoz létre:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -147,7 +147,7 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 Hozzon létre egy [Azure-webalkalmazást](../../app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` app Service tervben. 
 
 > [!Important]
-> Az Key Vaulthoz hasonlóan az Azure-webalkalmazásoknak egyedi névvel kell rendelkezniük. Cserélje \<le a-WebApp-\> Name nevet a webalkalmazás nevére a következő példákkal.
+> Az Key Vaulthoz hasonlóan az Azure-webalkalmazásoknak egyedi névvel kell rendelkezniük. Cserélje le a \<your-webapp-name\> nevet a webalkalmazás nevére a következő példákkal.
 
 
 ```azurecli-interactive
@@ -176,7 +176,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 
 A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`. Mentse ezt az URL-címet, mert később szüksége lesz rá.
 
-Tallózással keresse meg az újonnan létrehozott alkalmazást. Cserélje le _ &lt;a-WebApp-Name>_ az alkalmazás nevére.
+Tallózással keresse meg az újonnan létrehozott alkalmazást. Cserélje le _ &lt; a-WebApp-Name>_ az alkalmazás nevére.
 
 ```bash
 https://<your-webapp-name>.azurewebsites.net
@@ -186,7 +186,7 @@ Ekkor megjelenik az újonnan létrehozott Azure-webalkalmazás alapértelmezett 
 
 ### <a name="deploy-your-local-app"></a>A helyi alkalmazás üzembe helyezése
 
-Lépjen vissza a helyi terminál ablakba, adjon hozzá egy távoli Azure-t a helyi git-tárházhoz, és cserélje * \<le a deploymentLocalGitUrl-from-Create-Step>* a [távoli Webalkalmazás létrehozása](#create-a-remote-web-app) lépésből mentett git-távoli URL-címére.
+Lépjen vissza a helyi terminál ablakba, és adjon hozzá egy távoli Azure-t a helyi git-tárházhoz, és cserélje le a *\<deploymentLocalGitUrl-from-create-step>* [Távoli webes alkalmazás létrehozása](#create-a-remote-web-app) lépésből mentett git-távoli URL-címére.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
@@ -232,7 +232,7 @@ Tallózással keresse meg (vagy frissítse) a központilag telepített alkalmaz�
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-Megjelenik a ""Helló világ!"alkalmazás!" a meglátogatás `http://localhost:5000`során korábban megjelenő üzenet.
+Megjelenik a ""Helló világ!"alkalmazás!" a meglátogatás során korábban megjelenő üzenet `http://localhost:5000` .
 
 ## <a name="create-and-assign-a-managed-identity"></a>Felügyelt identitás létrehozása és társítása
 
@@ -279,9 +279,10 @@ Adja hozzá ezt a két sort a fejléchez:
 ```csharp
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 ```
 
-Adja hozzá ezeket a sorokat `app.UseEndpoints` a hívás előtt, és frissítse az URI `vaultUri` -t, hogy az tükrözze a kulcstartót. Az alábbi kód az ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén.
+Adja hozzá ezeket a sorokat a `app.UseEndpoints` hívás előtt, és frissítse az URI-t, hogy az tükrözze a `vaultUri` kulcstartót. Az alábbi kód az ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén.
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -301,7 +302,7 @@ KeyVaultSecret secret = client.GetSecret("mySecret");
 string secretValue = secret.Value;
 ```
 
-A sor `await context.Response.WriteAsync("Hello World!");` frissítése az olvasásra:
+A sor frissítése az `await context.Response.WriteAsync("Hello World!");` olvasásra:
 
 ```csharp
 await context.Response.WriteAsync(secretValue);

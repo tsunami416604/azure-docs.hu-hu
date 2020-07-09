@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75444747"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114384"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a felhasználói felület felépítése szögletes
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy olyan új alkalmazást, amelyet expressz és szögletes Node.js írt be, majd a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md)csatlakozik.
 
 Az oktatóanyag 3. része a [2. részre](tutorial-develop-mongodb-nodejs-part2.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -51,7 +51,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
     Az új összetevők létrehozásának megerősítése a terminálablakban látható.
 
-    ![A hero összetevő telepítése](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="A hero összetevő telepítése":::
 
     Vessünk egy pillantást a létrehozott és frissített fájlokra. 
 
@@ -62,7 +62,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
 4. Ugyanebben a mappában nyissa meg az **app.module.ts** fájlt, és láthatja, hogy a rendszer felvette a `HeroesComponent` összetevőt a deklarációk közé az 5. sorban, valamint a 10. sorba is importálta.
 
-    ![Az app-module.ts fájl megnyitása](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Az app-module.ts fájl megnyitása":::
 
 5. Lépjen vissza a **heroes.component.html** fájlra, és másolja be ezt a kódot. A `<div>` tároló tárolja a teljes oldalt. A tárolóban a fő képek egy listája található, amelyeket létre kell hoznia, hogy amikor majd azokra kattint, akkor a felhasználói felületen kijelölhesse és szerkeszthesse, illetve törölhesse azokat. Ezután a HTML-ben némi stíluskezelést hajtunk végre, amely azt mutatja majd, hogy melyik elem lett kijelölve. Emellett van egy szerkesztési terület, ahol felvehetők az új fő képek vagy szerkeszthetők a meglévők. 
 
@@ -394,7 +394,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 5. Kattintson a `Hero` kifejezésre, és a Visual Studio egy villanykörte ikont jelenít meg a kódblokk bal oldalán. 
 
-    ![Villanykörte a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Villanykörte a Visual Studio Code-ban":::
 
 6. Kattintson a villanykörtére, majd a **Fő kép importálása az „/app/hero” fájlból** vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
 
@@ -490,7 +490,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 3. Nyisson meg egy webböngészőt, és lépjen a **localhost:3000** helyre, ahol megtekintheti a helyileg futó alkalmazást.
 
-     ![Helyileg futó főképalkalmazás](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Helyileg futó főképalkalmazás":::
 
 ## <a name="next-steps"></a>További lépések
 

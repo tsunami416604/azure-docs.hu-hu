@@ -36,6 +36,9 @@
           href: tutorial-desktop-app.md
         - name: Egyoldalas
           href: tutorial-single-page-app.md
+        - name: Python
+          href: tutorial-web-app-python.md
+          displayName: flask
     - name: API-hozzáférés biztosítása
       items:
         - name: ASP.NET
@@ -87,11 +90,11 @@
         - name: SAML-szolgáltató regisztrálása
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: Gráfalkalmazás regisztrálása
+        - name: Microsoft Graph-alkalmazás regisztrálása
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: Webes API-alkalmazás hozzáadása
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: Natív ügyfélalkalmazás hozzáadása
           href: add-native-application.md
         - name: iOS ObjC az AppAuth használatával
@@ -188,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: Nyelv testreszabása
               href: custom-policy-localization.md
-            - name: Egyéni e-mail-cím
-              href: custom-email.md
+            - name: Egyéni e-mail-cím ellenőrzése
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: E-mailes ellenőrzés letiltása
               href: custom-policy-disable-email-verification.md
@@ -322,6 +329,8 @@
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
+                    - name: Azure AD SSPR
+                      href: aad-sspr-technical-profile.md
                     - name: Jogcím-átalakítás
                       href: claims-transformation-technical-profile.md
                     - name: JWT-jogkivonatkiállító
@@ -354,6 +363,22 @@
               href: relyingparty.md
             - name: Igénylésfeloldók
               href: claim-resolver-overview.md
+    - name: Partnerintegráció
+      items:
+        - name: Azure AD B2C – partnerkatalógus
+          href: partner-gallery.md
+        - name: Arkose Labs
+          href: partner-arkose-labs.md
+        - name: IDology
+          href: partner-idology.md
+        - name: itsme
+          href: partner-itsme.md
+        - name: Trusona
+          href: partner-trusona.md
+        - name: Twilio
+          href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: A b2clogin.com használata
       items:
         - name: b2clogin.com – áttekintés
@@ -397,6 +422,8 @@
           href: user-migration.md
 - name: Referencia
   items:
+    - name: Alkalmazásregisztrációk
+      href: app-registrations-training-guide.md
     - name: Számlázási modell
       href: billing.md
     - name: Kódminták

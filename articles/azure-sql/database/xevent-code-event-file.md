@@ -10,13 +10,12 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-ms.date: 03/12/2019
-ms.openlocfilehash: f409a4c27e2b69993406f95301d21f05b547aed6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 06/06/2020
+ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485467"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Az eseménynaplóban a kiterjesztett események Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +30,6 @@ Ez a témakör egy kétfázisú mintakód-mintát mutat be:
 
 - PowerShell, Azure Storage-tároló létrehozása a felhőben.
 - Transact-SQL:
-  
   - Az Azure Storage-tároló társítása egy eseményvezérelt fájl céljához.
   - Az esemény-munkamenet létrehozásához és elindításához, és így tovább.
 
@@ -47,8 +45,8 @@ Ez a témakör egy kétfázisú mintakód-mintát mutat be:
   
   - Igény szerint percek alatt [létrehozhat egy **AdventureWorksLT** bemutató adatbázist](single-database-create-quickstart.md) .
 
-- SQL Server Management Studio (SSMS. exe), ideális esetben a legújabb havi frissítési verzió.
-  A legújabb SSMS. exe fájlt a következő címről töltheti le:
+- SQL Server Management Studio (ssms.exe), ideális esetben a legújabb havi frissítési verzió.
+  A legújabb ssms.exe a következő címről töltheti le:
   
   - A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   - [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -63,7 +61,7 @@ Ez a PowerShell a kétfázisú mintakód 1. fázisa.
 
 A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsokkal kezdődik, és a rerunnable.
 
-1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például a Notepad. exe fájlba, és mentse a parancsfájlt fájlként a **. ps1**kiterjesztéssel.
+1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például Notepad.exeba, és mentse a parancsfájlt fájlként a **. ps1**kiterjesztéssel.
 2. Indítsa el a PowerShell ISE-t rendszergazdaként.
 3. A parancssorba írja be a következőt:<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>majd nyomja le az ENTER billentyűt.
 4. A PowerShell ISE-ben nyissa meg a **. ps1** fájlt. Futtassa a szkriptet.
@@ -71,7 +69,7 @@ A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsok
 
    - Ha a munkamenet megszakítása nélkül Újrafuttatja a parancsfájlt, lehetősége van az **Add-AzureAccount** parancs megjegyzésére.
 
-![A PowerShell ISE, amelyen telepítve van az Azure-modul, készen áll a szkript futtatására.][30_powershell_ise]
+![A PowerShell ISE, amelyen telepítve van az Azure-modul, készen áll a szkript futtatására.](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
 
 ### <a name="powershell-code"></a>PowerShell-kód
 
@@ -233,6 +231,15 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 Jegyezze fel a PowerShell-szkript végén kinyomtatott néhány elnevezett értéket. Ezeket az értékeket a 2. fázisként következő Transact-SQL-szkriptbe kell szerkesztenie.
 
+<!--
+TODO:   Consider whether the preceding PowerShell code example deserves to be updated to the latest package (AzureRM.SQL?).
+2020/June/06   Adding the !NOTE below about "ADLS Gen2 storage accounts".
+Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
+-->
+
+> [!NOTE]
+> Az előző PowerShell-kódban például a kiterjesztett SQL-események nem kompatibilisek a ADLS Gen2 Storage-fiókokkal.
+
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2. fázis: az Azure Storage-tárolót használó Transact-SQL-kód
 
 - A kód 1. fázisában egy PowerShell-szkriptet futtatott egy Azure Storage-tároló létrehozásához.
@@ -242,7 +249,7 @@ A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsok
 
 A PowerShell-parancsfájl néhány elnevezett értéket kinyomtatott, amikor véget ért. Az értékek használatához szerkesztenie kell a Transact-SQL parancsfájlt. Keresse meg a **teendőket** a Transact-SQL-szkriptben a szerkesztési pontok megkereséséhez.
 
-1. Nyissa meg SQL Server Management Studio (SSMS. exe).
+1. Nyissa meg SQL Server Management Studio (ssms.exe).
 2. Kapcsolódjon Azure SQL Database-adatbázishoz.
 3. Kattintson ide egy új lekérdezési panel megnyitásához.
 4. Illessze be a következő Transact-SQL-parancsfájlt a lekérdezési ablaktáblába.
@@ -514,6 +521,3 @@ Az Azure Storage szolgáltatás fiókjaival és tárolókkal kapcsolatos tovább
 - [1. lecke: tárolt hozzáférési szabályzat és közös hozzáférésű aláírás létrehozása Azure-tárolón](https://msdn.microsoft.com/library/dn466430.aspx)
   - [2. lecke: SQL Server hitelesítő adat létrehozása közös hozzáférési aláírás használatával](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Microsoft SQL Server bővített eseményei](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
-
-<!-- Image references. -->
-[30_powershell_ise]: ./media/xevent-code-event-file/event-file-powershell-ise-b30.png

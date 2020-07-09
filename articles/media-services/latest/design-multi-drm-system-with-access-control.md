@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161783"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957375"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése 
 
@@ -193,7 +192,7 @@ A megvalósítás a következő lépéseket tartalmazza:
    * Telepítse a Microsoft. Azure. ActiveDirectory. GraphClient csomagot.
    * Telepítse a Microsoft. Owin. Security. OpenIdConnect csomagot.
    * Install-Package Microsoft. Owin. Security. cookie-k
-   * Telepítse a Microsoft. Owin. host. SystemWeb csomagot.
+   * Install-Package Microsoft.Owin.Host.SystemWeb
    * Telepítse a Microsoft. IdentityModel. clients. ActiveDirectory csomagot.
 
 8. Hozzon létre egy lejátszót a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)használatával. A [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) segítségével meghatározhatja, hogy melyik DRM-technológiát használja a különböző DRM-platformokon.
@@ -222,8 +221,10 @@ A megvalósítással kapcsolatos problémák megoldásához használja az alább
 
 * A kiállító URL-címnek a "/" értékkel kell végződnie. A célközönségnek a Player Application Client ID azonosítónak kell lennie. Emellett adja hozzá a "/" parancsot a kiállító URL-címének végén.
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     A [JWT-dekóderben](http://jwt.calebb.net/)az **AUD** és az **ISS**jelenik meg, ahogy az a JWT is látható:
 
@@ -235,11 +236,15 @@ A megvalósítással kapcsolatos problémák megoldásához használja az alább
 
 * A dinamikus CENC-védelem beállításakor használja a megfelelő kiállítót.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     A következő nem működik:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     A GUID az Azure AD-bérlő azonosítója. A GUID a Azure Portal **végpontok** előugró menüjében található.
 
@@ -249,7 +254,7 @@ A megvalósítással kapcsolatos problémák megoldásához használja az alább
 
 * A korlátozási követelmények létrehozásakor állítsa be a megfelelő TokenType.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     Mivel a SWT (ACS) mellett a JWT (Azure AD) támogatását is hozzáadja, az alapértelmezett TokenType a TokenType. JWT. Ha a SWT/ACS-t használja, a tokent a TokenType. SWT értékre kell állítania.
 
@@ -276,7 +281,7 @@ Habár az Azure eredetileg csak Microsoft-fiók felhasználók számára engedé
 
 Mivel az Azure AD megbízhatónak tekinti a Microsoft-fiók tartományt, a következő tartományokból bármelyik fiókot hozzáadhatja az egyéni Azure AD-bérlőhöz, és a fiók használatával jelentkezhet be:
 
-| **Tartománynév** | **Tartományi** |
+| **Tartománynév** | **Domain** |
 | --- | --- |
 | **Egyéni Azure AD-bérlői tartomány** |somename.onmicrosoft.com |
 | **Vállalati tartomány** |microsoft.com |

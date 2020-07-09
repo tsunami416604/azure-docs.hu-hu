@@ -2,13 +2,13 @@
 title: Entity types – LUIS
 description: Egy entitás kinyeri az adatait a felhasználótól az előrejelzési futtatókörnyezetben. Egy _opcionális_, másodlagos cél a szándék vagy más entitások előrejelzésének növelése az entitás szolgáltatásként való használatával.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682172"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676488"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
 
@@ -41,7 +41,9 @@ A [szándékok](luis-concept-intent.md) megadásakor az entitások megadása nem
 
 Az alkalmazás fejlődése és az új adatkezelési igények azonosítása érdekében később is hozzáadhat megfelelő entitásokat a LUIS-modellhez.
 
-## <a name="entity-compared-to-intent"></a>Entitás a szándékhoz képest
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>Az entitás kibontást jelöl
 
 Az entitás egy adatkoncepciót képvisel _a teljes_kifejezésen belül. A cél a _teljes Kimondás_.
 
@@ -53,6 +55,10 @@ Vegye figyelembe a következő négy hosszúságú kimondott szöveg:
 |Küldés valami|sendSomething|-|Nincs kibontva. A modell nem rendelkezik a kinyeréséhez szükséges funkcióval `something` , és nincs megadva címzett.|
 |Bob a present küldése|sendSomething|`Bob`, `present`|A modell kibontása az `Bob` előre elkészített entitás kötelező funkciójának hozzáadásával `personName` . A rendszer gépi tanulási entitást használ a kinyeréséhez `present` .|
 |Bob a csokoládét tartalmazó doboz elküldése|sendSomething|`Bob`, `box of chocolates`|A két fontos adatot, `Bob` a pedig a `box of chocolates` gépi tanulási entitások kinyerték.|
+
+## <a name="label-entities-in-all-intents"></a>Entitások címkézése az összes leképezésben
+
+Az entitások az előre jelzett szándéktól függetlenül kinyerik az adatmennyiséget. Ügyeljen arra, hogy az _összes példa hosszúságú kimondott szöveg az összes cél_ címkével. A `None` szándék hiányában az entitások címkézése zavart okoz, még akkor is, ha a többi cél esetében sokkal több betanítási hosszúságú kimondott szöveg van.
 
 ## <a name="design-entities-for-decomposition"></a>Entitások megtervezése a dekompozícióhoz
 
@@ -85,10 +91,10 @@ A szülő alentitásának gépi tanulási entitásnak kell lennie. Az alentitás
 
 Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
 
-|Entitástípus|Cél|
+|Entitástípus|Szerep|
 |--|--|
 |[**Gépi megtanult**](tutorial-machine-learned-entity.md)|Beágyazott, összetett adatok kinyerése a címkével ellátott példákból. |
-|[**Listáját**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|
+|[**Lista**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|
 |[**Minta. any**](#patternany-entity)|Nehéz megállapítani, hogy az entitás véget ért-e, mert az entitás szabad formátumú. Csak [mintákban](luis-concept-patterns.md)érhető el.|
 |[**Prebuilt**](luis-reference-prebuilt-entities.md)|Már betanítva bizonyos típusú adatok, például URL-cím vagy e-mailek kinyerésére. Ezen előre összeépített entitások némelyike a nyílt forráskódú [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projektben van meghatározva. Ha az adott kulturális környezet vagy entitás jelenleg nem támogatott, akkor hozzájárul a projekthez.|
 |[**Reguláris kifejezés**](reference-entity-regular-expression.md)|Reguláris kifejezést használ a **pontos szöveges egyeztetéshez**.|
@@ -135,7 +141,7 @@ A LUIS-portál azt mutatja be, hogy az entitás eltérő egyed-előrejelzéssel 
 * További [példa hosszúságú kimondott szöveg](luis-concept-utterance.md) és címke hozzáadása az entitáshoz
 * [Tekintse át az aktív tanulási javaslatokat](luis-concept-review-endpoint-utterances.md) az előrejelzési végponton fogadott bármely hosszúságú kimondott szöveg, amely segíthet az entitás koncepciójának azonosításában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a jó [hosszúságú kimondott szöveg](luis-concept-utterance.md)kapcsolatos fogalmakat.
 

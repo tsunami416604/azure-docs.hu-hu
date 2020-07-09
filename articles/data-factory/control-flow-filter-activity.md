@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417213"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Szűrési tevékenység Azure Data Factory
 Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy bemeneti tömbre. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -39,10 +39,10 @@ Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy be
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A `Filter` tevékenység neve. | Sztring | Igen
-type | **Szűrésre**kell beállítani. | Sztring | Igen
-feltétel | A bemenet szűréséhez használandó feltétel. | Kifejezés | Igen
-elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Kifejezés | Igen
+name | A tevékenység neve `Filter` . | Sztring | Igen
+típus | **Szűrésre**kell beállítani. | Sztring | Igen
+feltétel | A bemenet szűréséhez használandó feltétel. | Expression | Igen
+elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Expression | Igen
 
 ## <a name="example"></a>Példa
 

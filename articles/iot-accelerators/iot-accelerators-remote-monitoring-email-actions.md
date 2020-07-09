@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74168367"
 ---
 # <a name="add-an-email-action"></a>E-mail művelet hozzáadása
@@ -160,9 +159,9 @@ A következő lépések bemutatják, hogyan szerkesztheti a HTML e-mail-sablont.
 
     Például a Java-kódban:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. A sablonban szereplő paraméterek a formáját alkotják `${...}`. Egy paraméter törléséhez törölje a szükséges sort. Paraméter hozzáadásához adjon hozzá egy sort a beszúrandó értékkel.
+1. A sablonban szereplő paraméterek a formáját alkotják `${...}` . Egy paraméter törléséhez törölje a szükséges sort. Paraméter hozzáadásához adjon hozzá egy sort a beszúrandó értékkel.
 
-1. Képek vagy egyéni szöveg hozzáadásához közvetlenül frissítse a EmailTemplate. HTML fájlt.
+1. Képek vagy egyéni szöveg hozzáadásához frissítse közvetlenül a EmailTemplate.HTML fájlt.
 
 ## <a name="throttling"></a>Throttling
 

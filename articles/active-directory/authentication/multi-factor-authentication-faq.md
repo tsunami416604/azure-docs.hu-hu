@@ -11,12 +11,11 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84483787"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication – gyakran ismételt kérdések
 
@@ -163,7 +162,7 @@ A jogosulatlan hozzáférés megakadályozása érdekében törölje az összes 
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>Mi a teendő, ha a felhasználó nem tud bejelentkezni a böngészőn kívüli alkalmazásokba?
 
-Ha a szervezet továbbra is örökölt ügyfeleket használ, és [engedélyezte az alkalmazások jelszavainak használatát](howto-mfa-mfasettings.md#app-passwords), a felhasználók nem jelentkezhetnek be az örökölt ügyfelek felhasználónevével és jelszavával. Ehelyett az [alkalmazás jelszavait kell beállítania](../user-help/multi-factor-authentication-end-user-app-passwords.md). A felhasználóknak törölnie kell a bejelentkezési adataikat, újra kell indítaniuk az alkalmazást, majd be kell jelentkezniük a felhasználónevével és az *alkalmazás jelszavával* a normál jelszó helyett.
+Ha a szervezet továbbra is örökölt ügyfeleket használ, és [engedélyezte az alkalmazások jelszavainak használatát](howto-mfa-app-passwords.md), a felhasználók nem jelentkezhetnek be az örökölt ügyfelek felhasználónevével és jelszavával. Ehelyett az [alkalmazás jelszavait kell beállítania](../user-help/multi-factor-authentication-end-user-app-passwords.md). A felhasználóknak törölnie kell a bejelentkezési adataikat, újra kell indítaniuk az alkalmazást, majd be kell jelentkezniük a felhasználónevével és az *alkalmazás jelszavával* a normál jelszó helyett.
 
 Ha a szervezet nem rendelkezik örökölt ügyfelekkel, ne engedélyezze a felhasználóknak az alkalmazás jelszavának létrehozását.
 
@@ -257,4 +256,4 @@ Ha a kérdés itt nem válaszol, a következő támogatási lehetőségek érhet
 * A gyakori technikai problémák megoldásához keressen a [Microsoft ügyfélszolgálata Tudásbázisban](https://support.microsoft.com) .
 * Megkeresheti és böngészheti a Közösség technikai kérdéseit és válaszait, vagy megteheti a saját kérdéseit az [Azure Active Directory Q&a](https://docs.microsoft.com/answers/topics/azure-active-directory.html)-ben.
 * Forduljon a Microsoft Professional szolgáltatáshoz az [Azure multi-Factor Authentication-kiszolgáló támogatásával](https://support.microsoft.com/oas/default.aspx?prid=14947). Amikor kapcsolatba lép velünk, hasznos lehet, ha a lehető legtöbb információt felveheti a probléma megoldására. A megadható információk közé tartozik az a lap, ahol a hiba, a megadott hibakód, a megadott munkamenet-azonosító és a hibát megtekintő felhasználó azonosítója szerepel.
-* Ha Ön örökölt PhoneFactor-ügyfél, és kérdései vannak, vagy segítségre van szüksége a jelszó alaphelyzetbe [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) állításához, akkor az e-mail-cím használatával nyisson meg egy támogatási esetet.
+* Ha Ön örökölt PhoneFactor-ügyfél, és kérdései vannak, vagy segítségre van szüksége a jelszó alaphelyzetbe állításához, akkor az [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) e-mail-cím használatával nyisson meg egy támogatási esetet.

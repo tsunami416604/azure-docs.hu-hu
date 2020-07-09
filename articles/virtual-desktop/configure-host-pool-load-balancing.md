@@ -4,16 +4,16 @@ description: A terheléselosztási módszer konfigurálása Windows rendszerű v
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204342"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>A Windows Virtual Desktop terheléselosztási módjának beállítása
 
@@ -33,15 +33,15 @@ Szélesség – az első terheléselosztás az új, nem állandó gazdagép-kés
 Ha úgy szeretné konfigurálni a gazdagépet, hogy a maximális munkamenet-korlát módosítása nélkül végezze el az első terheléselosztást, futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-Ezt követően, hogy meggyőződjön arról, hogy beállította a szélesség-első terheléselosztási módszert, futtassa a következő parancsmagot: 
+Ezt követően, hogy meggyőződjön arról, hogy beállította a szélesség-első terheléselosztási módszert, futtassa a következő parancsmagot:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Mélység – az első terheléselosztás új felhasználói munkameneteket oszt
 A következő PowerShell-parancsmag futtatásával állíthatja be, hogy a gazdagép mélysége – első terheléselosztást végezzen:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 A beállítás frissítése előtt futtassa a következő parancsmagot:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,8 +77,8 @@ A terheléselosztást a Azure Portal is konfigurálhatja.
 
 Terheléselosztás konfigurálása:
 
-1. Jelentkezzen be Azure Portal a https://portal.azure.comkövetkező címen:. 
-2. Keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet. 
+1. Jelentkezzen be Azure Portal a következő címen: https://portal.azure.com .
+2. Keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet.
 3. A Windows rendszerű virtuális asztal lapon válassza a **gazdagép készletek**elemet.
 4. Válassza ki a szerkeszteni kívánt gazdagép-készlet nevét.
 5. Válassza ki a **Tulajdonságok** elemet.

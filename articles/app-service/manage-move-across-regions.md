@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan helyezhet át App Service erőforrásokat az eg
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77925708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945477"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service alkalmazás áthelyezése másik régióba
 
 Ez a cikk azt ismerteti, hogyan helyezhet át App Service erőforrásokat egy másik Azure-régióba. Az erőforrásokat több okból is áthelyezheti egy másik régióba. Ha például egy új Azure-régió előnyeit szeretné kihasználni, csak meghatározott régiókban elérhető szolgáltatásokat vagy szolgáltatásokat telepíthet, a belső házirend-és irányítási követelmények teljesítéséhez, vagy a kapacitás megtervezésének követelményeire reagálva.
 
-App Service erőforrások régió-specifikusak, és nem helyezhetők át régiók között. Létre kell hoznia a meglévő App Service erőforrásainak másolatát a célként megadott régióban, át kell helyeznie a tartalmat az új alkalmazásba. Ha a forrásoldali alkalmazás egyéni tartományt használ, a befejezéskor [áttelepítheti azt az új alkalmazásba a cél régióban](manage-custom-dns-migrate-domain.md) .
+App Service erőforrások régió-specifikusak, és nem helyezhetők át régiók között. Létre kell hoznia a meglévő App Service erőforrásainak másolatát a célként megadott régióban, majd át kell helyeznie a tartalmat az új alkalmazásba. Ha a forrásoldali alkalmazás egyéni tartományt használ, a befejezéskor [áttelepítheti azt az új alkalmazásba a cél régióban](manage-custom-dns-migrate-domain.md) .
 
 Annak érdekében, hogy az alkalmazás könnyebben átmásolható legyen, [egyetlen app Service alkalmazást is klónozott](app-service-web-app-cloning.md) egy másik régióban lévő app Service-csomagba, de [korlátozásokkal](app-service-web-app-cloning.md#current-restrictions)rendelkezik, különösen, ha nem támogatja a Linux-alkalmazásokat.
 

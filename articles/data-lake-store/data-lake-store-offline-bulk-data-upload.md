@@ -3,15 +3,15 @@ title: Nagyméretű adathalmaz feltöltése Azure Data Lake Storage Gen1 kapcsol
 description: Az import/export szolgáltatás használata az adatok Azure Blob Storage-ból Azure Data Lake Storage Gen1ba való másolásához
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855679"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Az Azure import/export szolgáltatás használata az adatkapcsolat nélküli másoláshoz az Data Lake Storage Gen1
 
@@ -23,7 +23,7 @@ Az Azure import/export szolgáltatás segítségével nagy mennyiségű adatok b
 
 Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Storage-fiók**.
 * **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](data-lake-store-get-started-portal.md)című témakört.
 
@@ -31,17 +31,16 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 Az import/export szolgáltatás használata előtt bontsa az adatfájlt úgy, hogy az átkerüljön a **200 GB-nál kisebb méretű másolatokra** . Az importálási eszköz nem működik a 200 GB-nál nagyobb méretű fájlokkal. Ebben a cikkben a fájlt a 100 GB-nyi méretű darabokra bontottuk. Ezt a [Cygwin](https://cygwin.com/install.html)használatával teheti meg. A Cygwin támogatja a Linux-parancsokat. Ebben az esetben használja a következő parancsot:
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 A felosztott művelet a következő neveket tartalmazó fájlokat hozza létre.
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB. TSV – rész – AA*
+* *319GB. TSV – rész – AB*
+* *319GB. TSV – rész – AC*
+* *319GB. TSV – rész – ad*
 
 ## <a name="get-disks-ready-with-data"></a>Lemezek beolvasása az adatfeldolgozással
 

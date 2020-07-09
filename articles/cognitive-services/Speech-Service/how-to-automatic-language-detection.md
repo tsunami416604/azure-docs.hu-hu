@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+zone_pivot_groups: programming-languages-speech-services-nomore-variant
+ms.openlocfilehash: df8fe6301a629e4f21478d6da4d892afec44c889
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658449"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601224"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Beszédfelismerés automatikus nyelvfelismerés a szöveghez
 
@@ -29,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat `AutoDetectSourceLanguageConfig` l�
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a Speech SDK-val
 
-Az automatikus nyelvfelismerés jelenleg csak két nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást az `AudoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre fog hozni egy `AutoDetectSourceLanguageConfig` -t, majd felhasználhatja azt a létrehozásához `SpeechRecognizer` .
+Az automatikus nyelvfelismerés jelenleg legfeljebb négy nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást az `AudoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre fog hozni egy `AutoDetectSourceLanguageConfig` -t, majd felhasználhatja azt a létrehozásához `SpeechRecognizer` .
 
 > [!TIP]
 > Megadhat egy egyéni modellt is, amelyet a beszéd szövegre való elvégzéséhez használhat. További információ: [Egyéni modell használata automatikus nyelvfelismerés esetén](#use-a-custom-model-for-automatic-language-detection).
@@ -135,6 +135,20 @@ NSString *detectedLanguage = [languageDetectionResult language];
 
 ::: zone-end
 
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromLanguages(["en-US", "de-DE"]);
+var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig, autoDetectConfig);
+speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
+        var languageDetectionResult = SpeechSDK.AutoDetectSourceLanguageResult.fromResult(result);
+        var detectedLanguage = languageDetectionResult.language;
+},
+{});
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>Egyéni modell használata az automatikus nyelvfelismerés
 
 A Speech Service-modelleket használó nyelvfelismerés mellett egyéni modellt is megadhat a továbbfejlesztett felismeréshez. Ha nincs megadva egyéni modell, a szolgáltatás az alapértelmezett nyelvi modellt fogja használni.
@@ -209,6 +223,16 @@ SPXSourceLanguageConfiguration* frLanguageConfig = \
 NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
 SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
         [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var enLanguageConfig = SpeechSDK.SourceLanguageConfig.fromLanguage("en-US");
+var frLanguageConfig = SpeechSDK.SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR");
+var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs([enLanguageConfig, frLanguageConfig]);
 ```
 
 ::: zone-end

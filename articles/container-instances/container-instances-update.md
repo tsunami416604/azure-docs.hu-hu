@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan frissítheti a futó tárolókat a Azure Contai
 ms.topic: article
 ms.date: 04/17/2020
 ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928720"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Tárolók frissítése az Azure Container Instancesben
@@ -84,7 +83,7 @@ Ebben a cikkben többször is említettük a **Container csoportot**. Azure Cont
 
 [Többtárolós csoport üzembe helyezése](container-instances-multi-container-group.md)
 
-[Tárolók manuális leállítása vagy elindítása Azure Container Instances](container-instances-stop-start.md)
+[Tárolók manuális leállítása vagy indítása az Azure Container Instancesben](container-instances-stop-start.md)
 
 <!-- LINKS - External -->
 

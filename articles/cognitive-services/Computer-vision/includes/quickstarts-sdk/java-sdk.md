@@ -9,33 +9,28 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: dbe986145a223f1958f1945abfa189de90952f4a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3d52e83aa574dcd506270dc8e2f244a9f96add53
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80272812"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073275"
 ---
 <a name="HOLTop"></a>
 
-[Dokumentációs](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | anyagok[(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [mintái](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)  |  Összetevő [(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Példák](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
 * A [Gradle Build eszköz](https://gradle.org/install/)vagy egy másik függőségi kezelő.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="setting-up"></a>Beállítás
-
-### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure-erőforrás létrehozása
-
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Computer Vision a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
-
-* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
-
-Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
 
 ### <a name="create-a-new-gradle-project"></a>Új Gradle-projekt létrehozása
 
@@ -74,7 +69,7 @@ A munkakönyvtárból futtassa a következő parancsot egy projekt forrás mapp�
 mkdir -p src/main/java
 ```
 
-Navigáljon az új mappára, és hozzon létre egy *ComputerVisionQuickstarts. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja `import` hozzá a következő utasításokat:
+Navigáljon az új mappára, és hozzon létre egy *ComputerVisionQuickstarts. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
@@ -96,7 +91,7 @@ dependencies {
 
 A következő osztályok és felületek a Computer Vision Java SDK főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Name|Leírás|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
 |[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Ez az osztály az ügyfél objektumból származik, és közvetlenül kezeli az összes képműveletet, például a képek elemzését, a szöveg észlelését és a miniatűr létrehozását.|
@@ -113,7 +108,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a ( `COMPUTER_VISION_SUBSCRIPTION_KEY`z) nevű Computer Vision kulcshoz.
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) nevű Computer Vision kulcshoz `COMPUTER_VISION_SUBSCRIPTION_KEY` .
 
 A következő kód hozzáad egy `main` metódust az osztályhoz, és változókat hoz létre az erőforrás Azure-végpontja és kulcsa számára. Meg kell adnia a saját végponti karakterláncot, amelyet a Azure Portal **Áttekintés** szakaszának ellenőrzésével talál. 
 
@@ -128,7 +123,7 @@ Ezután adja hozzá a következő kódot egy [ComputerVisionClient](https://docs
 
 ## <a name="analyze-an-image"></a>Rendszerkép elemzése
 
-A következő kód egy metódust határoz `AnalyzeLocalImage`meg, amely az ügyfél-objektumot használja egy helyi rendszerkép elemzéséhez és az eredmények kinyomtatásához. A metódus a szöveges leírást, a kategorizálást, a címkék listáját, az észlelt arcokat, a felnőtt tartalom jelzőit, a fő színeket és a képtípust adja vissza.
+A következő kód egy metódust határoz meg, `AnalyzeLocalImage` amely az ügyfél-objektumot használja egy helyi rendszerkép elemzéséhez és az eredmények kinyomtatásához. A metódus a szöveges leírást, a kategorizálást, a címkék listáját, az észlelt arcokat, a felnőtt tartalom jelzőit, a fő színeket és a képtípust adja vissza.
 
 ### <a name="set-up-test-image"></a>Tesztelési rendszerkép beállítása
 
@@ -202,7 +197,7 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a képtípussal kapcsolatos információkat jeleníti meg,&mdash;legyen szó ClipArt vagy vonalas rajzolásról.
+A következő kód a képtípussal kapcsolatos információkat jeleníti &mdash; meg, legyen szó ClipArt vagy vonalas rajzolásról.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
@@ -215,7 +210,7 @@ A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a
 
 ### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
 
-Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket `localTextImagePath` a helyi rendszerkép elérési útjára kell cserélnie. 
+Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket a `localTextImagePath` helyi rendszerkép elérési útjára kell cserélnie. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
@@ -229,7 +224,7 @@ Végül zárjuk le a try/catch blokkot és a metódus definícióját.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Az alkalmazást az alábbiakkal hozhatja létre:
 
@@ -243,7 +238,7 @@ Futtassa az alkalmazást a `gradle run` paranccsal:
 gradle run
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

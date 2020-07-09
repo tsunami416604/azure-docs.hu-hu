@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419306"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Töltse be az 1 TB-ot Azure SQL Data Warehouse 15 perc alatt Data Factory
@@ -46,7 +46,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure Blob Storage: Ez a kísérlet az Azure Blob Storaget (GRS) használja a TPC-H tesztelési adatkészlet tárolásához.  Ha nem rendelkezik Azure Storage-fiókkal, Ismerje meg, [hogyan hozhat létre egy Storage](../../storage/common/storage-account-create.md)-fiókot.
-* [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez a TPC-H eszközkészletből kell `dbgen` használnia, amely segít az adatkészlet létrehozásában.  Le is töltheti a forráskódot a `dbgen` [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) , és lefordíthatja saját magát, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Futtassa a dbgen. exe fájlt a következő parancsokkal, hogy 1 TB- `lineitem` os Flat-fájlt állítson elő a táblázatos elosztott fájlok között 10 fájlban:
+* [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez a `dbgen` TPC-H eszközkészletből kell használnia, amely segít az adatkészlet létrehozásában.  Le is töltheti a forráskódot a `dbgen` [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) , és lefordíthatja saját magát, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Futtassa a dbgen.exe a következő parancsokkal 1 TB-os Flat-fájl létrehozásához a `lineitem` táblázatos elosztott fájlok között 10 fájlban:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -77,9 +77,9 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
 
     ![Méretezési párbeszédpanel](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    Ez a kísérlet Azure SQL Data Warehouse az erőforrás- `xlargerc` osztály használatával tölti be az adatgyűjtést.
+    Ez a kísérlet Azure SQL Data Warehouse az erőforrás-osztály használatával tölti be az adatgyűjtést `xlargerc` .
 
-    A lehető legjobb átviteli sebesség eléréséhez a másolást az `xlargerc` erőforrás osztályhoz tartozó SQL Data Warehouse felhasználó használatával kell elvégezni.  Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.  
+    A lehető legjobb átviteli sebesség eléréséhez a másolást az erőforrás osztályhoz tartozó SQL Data Warehouse felhasználó használatával kell elvégezni `xlargerc` .  Ebből a témakörből megtudhatja, hogyan teheti ezt meg a [felhasználói erőforrás osztályra vonatkozó példa módosítása](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)után.  
 * Hozzon létre egy céltáblabeli sémát Azure SQL Data Warehouse adatbázisban a következő DDL-utasítás futtatásával:
 
     ```SQL  
@@ -123,7 +123,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Létrehozás**gombra.
+   6. Kattintson a **Létrehozás** lehetőségre.
 4. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható:
 
    ![Data factory kezdőlap](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -165,13 +165,13 @@ Ez a szakasz a forrás konfigurálásának lépéseit mutatja be: az Azure-Blob 
     ![Másolás varázsló – fájlformátum-beállítások](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>3. lépés: a cél konfigurálása
-Ez a szakasz bemutatja, hogyan konfigurálhatja a cél `lineitem` : table táblát a Azure SQL Data Warehouse adatbázisban.
+Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` Table táblát a Azure SQL Data Warehouse adatbázisban.
 
 1. Válassza a **Azure SQL Data Warehouse** lehetőséget a cél tárolóként, majd kattintson a **tovább**gombra.
 
     ![Másolási varázsló – cél adattár kiválasztása](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Adja meg a Azure SQL Data Warehousehoz tartozó kapcsolatok adatait.  Győződjön meg arról, hogy a szerepkör `xlargerc` tagja a felhasználónak (lásd az **Előfeltételek** című szakaszt a részletes utasításokhoz), majd kattintson a **tovább**gombra.
+2. Adja meg a Azure SQL Data Warehousehoz tartozó kapcsolatok adatait.  Győződjön meg arról, hogy a szerepkör tagja a felhasználónak `xlargerc` (lásd az **Előfeltételek** című szakaszt a részletes utasításokhoz), majd kattintson a **tovább**gombra.
 
     ![Másolási varázsló – cél kapcsolatok adatai](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -192,7 +192,7 @@ Alapértelmezés szerint be van jelölve a " **Base** " jelölőnégyzet.  Katti
 
     ![Másolás varázsló – összefoglalás lap](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-2. Az üzembe helyezés befejezése után kattintson `Click here to monitor copy pipeline` a gombra a másolás futtatási folyamatának figyeléséhez. Válassza ki a létrehozott másolási folyamatot a **tevékenység Windows** listájában.
+2. Az üzembe helyezés befejezése után kattintson a gombra a `Click here to monitor copy pipeline` Másolás futtatási folyamatának figyeléséhez. Válassza ki a létrehozott másolási folyamatot a **tevékenység Windows** listájában.
 
     ![Másolás varázsló – összefoglalás lap](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 

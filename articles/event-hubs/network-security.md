@@ -1,18 +1,14 @@
 ---
 title: Hálózati biztonság az Azure Event Hubs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312842"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Hálózati biztonság az Azure Event Hubs 
 Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő biztonsági funkciókkal: 
@@ -26,9 +22,9 @@ Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [szolgáltatási címkék áttekintése](../virtual-network/service-tags-overview.md).
 
-A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **EventHub**) megadásával a szabály megfelelő *forrás* vagy *cél* mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules)   vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **EventHub**) megadásával a szabály megfelelő *forrás*   vagy *cél*   mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-| Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Szolgáltatáscímke | Szerep | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **EventHub** | Azure Event Hubs. | Kimenő | Igen | Igen |
 

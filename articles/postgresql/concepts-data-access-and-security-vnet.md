@@ -6,12 +6,11 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099644"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtual Network szolgáltatási végpontok és szabályok használata Azure Database for PostgreSQL – egyetlen kiszolgáló esetén
 
@@ -45,7 +44,7 @@ Egy virtuális hálózati szabály közli a Azure Database for PostgreSQL-kiszol
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Virtuális hálózati szabály előnyei
 
@@ -69,7 +68,7 @@ Ha a **Microsoft. SQL** Server a virtuális hálózat egyik alhálózatának cso
 
 Azonban augusztus 2018-én a Azure Database for PostgreSQL szolgáltatás még nem tartozik az alhálózathoz közvetlenül hozzárendelhető szolgáltatások közé.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>A virtuális hálózati szabályok részletei
 
@@ -89,8 +88,8 @@ Minden virtuális hálózati szabály a teljes Azure Database for PostgreSQL-kis
 
 A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási végpontok felügyelete alatt áll. A következő szerepkörök mindegyike esetében beavatkozásra van szükség:
 
-- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végpontot.
-- **Adatbázis-rendszergazda:** &nbsp; frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a Azure Database for PostgreSQL-kiszolgálóhoz.
+- **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végpontot.
+- **Adatbázis-rendszergazda:** &nbsp; Frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a Azure Database for PostgreSQL-kiszolgálóhoz.
 
 *RBAC alternatíva:*
 
@@ -102,7 +101,7 @@ Használhat [szerepköralapú hozzáférés-vezérlést (RBAC)][rbac-what-is-813
 > Bizonyos esetekben a Azure Database for PostgreSQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
 > - Mindkét előfizetésnek ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
 > - A felhasználó rendelkezik a szükséges engedélyekkel a műveletek elindításához, például a szolgáltatási végpontok engedélyezéséhez és egy VNet-alhálózat hozzáadásához az adott kiszolgálóhoz.
-> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. SQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+> - Győződjön meg arról, hogy az előfizetés mind a **Microsoft. SQL** , mind a **Microsoft. DBforPostgreSQL** erőforrás-szolgáltató regisztrálva van. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
 
 ## <a name="limitations"></a>Korlátozások
 

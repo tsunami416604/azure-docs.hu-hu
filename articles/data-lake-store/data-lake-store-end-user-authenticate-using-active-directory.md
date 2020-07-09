@@ -3,16 +3,16 @@ title: Végfelhasználói hitelesítés – Data Lake Storage Gen1 az Azure AD-v
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést Azure Data Lake Storage Gen1 használatával Azure Active Directory
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511311"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy **natív Azure ad-alkalmazást
 
     ![HRE-tartomány beolvasása](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Az Azure-bérlő azonosítója. A bérlői azonosító lekérésével kapcsolatos utasításokért lásd: [a bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)beolvasása.
+* Az Azure-bérlő azonosítója. A bérlői azonosító lekérésével kapcsolatos utasításokért lásd: [a bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)beolvasása.
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Ez a hitelesítési mechanizmus az ajánlott módszer, ha azt szeretné, hogy a végfelhasználó az Azure AD-n keresztül jelentkezzen be az alkalmazásba. Az alkalmazás ezután elérheti az Azure-erőforrásokat a bejelentkezett végfelhasználóval megegyező hozzáférési szintű hozzáféréssel. A végfelhasználónak rendszeresen meg kell adnia hitelesítő adatait ahhoz, hogy az alkalmazás fenntartsa a hozzáférést.
@@ -57,7 +57,7 @@ Az alkalmazás elindíthat egy OAuth 2,0-alapú engedélyezési előugró ablako
 >
 
 ### <a name="directly-passing-in-user-credentials"></a>Közvetlenül a felhasználói hitelesítő adatok átadása
-Az alkalmazás közvetlenül is biztosíthatja a felhasználói hitelesítő adatokat az Azure AD-nek. Ez a metódus csak szervezeti azonosító felhasználói fiókokkal működik; nem kompatibilis a személyes/"élő azonosító" felhasználói fiókokkal, beleértve a @outlook.com vagy @live.coma végződésű fiókokat is. Továbbá ez a módszer nem kompatibilis olyan felhasználói fiókokkal, amelyek megkövetelik az Azure AD kétfaktoros hitelesítését (2FA).
+Az alkalmazás közvetlenül is biztosíthatja a felhasználói hitelesítő adatokat az Azure AD-nek. Ez a metódus csak szervezeti azonosító felhasználói fiókokkal működik; nem kompatibilis a személyes/"élő azonosító" felhasználói fiókokkal, beleértve a vagy a végződésű fiókokat is @outlook.com @live.com . Továbbá ez a módszer nem kompatibilis olyan felhasználói fiókokkal, amelyek megkövetelik az Azure AD kétfaktoros hitelesítését (2FA).
 
 ### <a name="what-do-i-need-for-this-approach"></a>Mire van szükségem ehhez a megközelítéshez?
 * Azure AD-tartománynév. Ez a követelmény már szerepel a cikk előfeltételeiben.
@@ -78,7 +78,7 @@ A hivatkozás utasításait követve győződjön meg róla, hogy a **natív** l
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: az alkalmazás-azonosító és az átirányítási URI lekérése
 
-Lásd: az alkalmazás-azonosító [beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) az alkalmazás azonosítójának lekéréséhez.
+Lásd: az alkalmazás-azonosító [beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) az alkalmazás azonosítójának lekéréséhez.
 
 Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 

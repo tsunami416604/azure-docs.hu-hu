@@ -7,33 +7,35 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369456"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083559"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
-> * [C #](search-get-started-dotnet.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Node.js](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-A portálon az **adatimportálás** varázsló és a **keresési Explorer** -eszközök segítségével gyorsan felgyorsíthatja a fogalmakat, és néhány percen belül érdekes lekérdezéseket írhat egy indexre.
+Az **adatimportálás** varázsló egy olyan Azure Portal eszköz, amely végigvezeti egy keresési index létrehozásán, így percek alatt írhat érdekes lekérdezéseket. 
 
-Ha az eszközök túl korlátozzák a korlátozást, érdemes lehet egy [kód alapú bevezetést használni az Azure Cognitive Search .net-ben való programozásához](search-howto-dotnet-sdk.md) , vagy a [poster használatával REST API-hívások készítéséhez](search-get-started-postman.md). 
-
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+A varázsló emellett a mesterséges intelligenciával kapcsolatos oldalakat is tartalmaz, így szövegeket és struktúrát nyerhet a képfájlokból és a strukturálatlan szövegből. Az AI-val végzett tartalomkezelés magában foglalja az optikai karakterfelismerést (OCR), a kulcs kifejezését és az entitás kinyerését, valamint a képelemzést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
+Mielőtt elkezdené, a következőkkel kell rendelkeznie:
+
++ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
+
++ Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
 ### <a name="check-for-space"></a>Szabad terület ellenőrzése
 
@@ -51,15 +53,17 @@ Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1. lépés – az adatimportálás varázsló elindítása és adatforrás létrehozása
 
-1. Az Azure Cognitive Search szolgáltatás Irányítópultján kattintson a parancssáv **adatok importálása** elemére a keresési index létrehozásához és feltöltéséhez.
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+
+1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés lapon kattintson az **adatok importálása** gombra a parancssorban a keresési index létrehozásához és feltöltéséhez.
 
    ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd.png)
 
-2. A varázslóban kattintson a **Kapcsolódás** > az**adatmintákhoz** > **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
+1. A varázslóban kattintson a **Kapcsolódás**az  >  **adatmintákhoz**  >  **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
    ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample.png)
 
-3. Folytassa a következő oldallal.
+1. Folytassa a következő oldallal.
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>2. lépés – a "tartalom gazdagítása" oldal kihagyása
 
@@ -146,7 +150,7 @@ A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/
 
    ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Az **index** legördülő menüben válassza a *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2019-05-06).
+2. Az **index** legördülő menüben válassza a *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
 
    ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -154,7 +158,7 @@ A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/
 
    ![Lekérdezési karakterlánc és Keresés gomb](media/search-get-started-portal/search-explorer-query-string-example.png)
 
-## <a name="example-queries"></a>Példák lekérdezésekre
+## <a name="example-queries"></a>Példa a lekérdezésekre
 
 Megadhatja a kifejezéseket és kifejezéseket, hasonlóan a Bing vagy a Google Search szolgáltatáshoz, vagy teljesen meghatározott lekérdezési kifejezésekhez. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza.
 
@@ -193,7 +197,7 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=Category&$top=2`
 
 * A **search=*** egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
-* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának*megfelelő mezőn alapulnak. Nincs összesítés az Azure Cognitive Searchban, de megközelítheti az összesítést a használatával `facet`, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának*megfelelő mezőn alapulnak. Nincs összesítés az Azure Cognitive Searchban, de megközelítheti az összesítést a használatával `facet` , amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 
 * A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
 
@@ -258,7 +262,7 @@ Az Azure Portal **Keresési ablakával** megismert egyes alapvető lekérdezési
 
 Azt is megtanulta, hogyan találhat indexeket, indexelő fájlokat és adatforrásokat a portálon. Később bármilyen új adatforrás definícióit és mezőgyűjteményeit gyorsan és egyszerűen ellenőrizheti a portálon.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
@@ -266,9 +270,14 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy portál varázsló segítségével előkészítheti a böngészőben futó, használatra kész webalkalmazást. Ezt a varázslót kipróbálhatja az imént létrehozott kis indexen, vagy használhatja a beépített mintaadatok egyikét egy gazdagabb keresési élményhez.
 
 > [!div class="nextstepaction"]
-> [Keresési alkalmazás létrehozása a portálon](search-create-app-portal.md)
+> [Bemutató alkalmazás létrehozása a portálon](search-create-app-portal.md)
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

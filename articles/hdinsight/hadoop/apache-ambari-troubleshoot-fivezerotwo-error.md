@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 2b17c2488e47148e8845433f9c7613e1127fbffa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895758"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Forgatókönyv: Apache Ambari UI 502 hiba az Azure HDInsight
@@ -32,7 +31,7 @@ A legtöbb esetben a probléma enyhítése érdekében újraindíthatja az aktí
 
 ### <a name="ambari-server-failed-to-start"></a>Nem sikerült elindítani a Ambari-kiszolgálót
 
-A ambari-naplók segítségével megtudhatja, miért nem sikerült elindítani a Ambari-kiszolgálót. Az egyik gyakori ok az adatbázis konzisztencia-ellenőrzési hibája. Ezt a naplófájlban találja: `/var/log/ambari-server/ambari-server-check-database.log`.
+A ambari-naplók segítségével megtudhatja, miért nem sikerült elindítani a Ambari-kiszolgálót. Az egyik gyakori ok az adatbázis konzisztencia-ellenőrzési hibája. Ezt a naplófájlban találja: `/var/log/ambari-server/ambari-server-check-database.log` .
 
 Ha módosította a fürt csomópontjának módosításait, vonja vissza őket. Mindig használja a Ambari felhasználói felületét a Hadoop/Spark-hoz kapcsolódó konfigurációk módosításához.
 
@@ -49,7 +48,7 @@ service ambari-server start
 
 ### <a name="ambari-server-killed-by-oom-killer"></a>Ambari-kiszolgáló megölte a bácsi-Killer
 
-Bizonyos helyzetekben a átjárócsomóponthoz elfogy a memóriából, és a Linux bácsi-Killer elkezdi felvenni a folyamatokat. Ezt a helyzetet úgy ellenőrizheti, ha megkeresi a AmbariServer folyamat AZONOSÍTÓját, amely nem található. Ezután tekintse meg `/var/log/syslog`a következőt:
+Bizonyos helyzetekben a átjárócsomóponthoz elfogy a memóriából, és a Linux bácsi-Killer elkezdi felvenni a folyamatokat. Ezt a helyzetet úgy ellenőrizheti, ha megkeresi a AmbariServer folyamat AZONOSÍTÓját, amely nem található. Ezután tekintse meg a következőt `/var/log/syslog` :
 
 ```
 Jul 27 15:29:30 xxx-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0

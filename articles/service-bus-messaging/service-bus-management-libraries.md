@@ -1,25 +1,15 @@
 ---
 title: Azure Service Bus felügyeleti kódtárak | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Service Bus felügyeleti kódtárak Service Bus névterek és entitások dinamikus kiépítéséhez.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341717"
 ---
 # <a name="service-bus-management-libraries"></a>A Service Bus felügyeleti könyvtárai
 
@@ -40,7 +30,7 @@ A Service Bus felügyeleti kódtárak használatának megkezdéséhez hitelesít
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId`és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. Legalább [**Azure Service Bus adattulajdonosi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) vagy [**közreműködői**](/azure/role-based-access-control/built-in-roles#contributor) engedélyekkel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyen futtatni szeretné a szolgáltatást.
+Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId` és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. Legalább [**Azure Service Bus adattulajdonosi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) vagy [**közreműködői**](/azure/role-based-access-control/built-in-roles#contributor) engedélyekkel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyen futtatni szeretné a szolgáltatást.
 
 ## <a name="programming-pattern"></a>Programozási minta
 
@@ -52,7 +42,7 @@ A Service Bus-erőforrások kezelésére szolgáló minta egy közös protokollt
 
    var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. Hozza létre `ServiceBusManagementClient` az objektumot:
+2. Hozza létre az `ServiceBusManagementClient` objektumot:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +51,7 @@ A Service Bus-erőforrások kezelésére szolgáló minta egy közös protokollt
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. Állítsa be `CreateOrUpdate` a paramétereket a megadott értékekre:
+3. Állítsa be a `CreateOrUpdate` paramétereket a megadott értékekre:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652154"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
@@ -53,7 +52,7 @@ A Azure Portal-élményben továbbfejlesztettük a jelszavak alaphelyzetbe áll�
 
 ### <a name="converged-registration-preview"></a>Konvergens regisztráció (előzetes verzió)
 
-Ha részt vesz a konvergens regisztráció nyilvános előzetesében, a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági** > **hitelesítési módszerek**alatt találhatók.
+Ha részt vesz a konvergens regisztráció nyilvános előzetesében, a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek**alatt találhatók.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>A jelentés oszlopainak leírása a Azure Portalban
 

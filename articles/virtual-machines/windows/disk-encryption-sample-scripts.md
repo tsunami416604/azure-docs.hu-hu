@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076759"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
@@ -69,29 +69,37 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 Az alábbi szakaszoknak az Azure IaaS-ben titkosított virtuális merevlemezként való üzembe helyezéséhez egy előre titkosított Windows virtuális merevlemez előkészítéséhez van szükségük. Az információk segítségével új Windowsos virtuális gépet (VHD-t) készíthet a Azure Site Recovery vagy az Azure-ban. A virtuális merevlemezek előkészítésével és feltöltésével kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gépek létrehozásához az Azure-ban](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Csoportházirend frissítése, hogy az operációs rendszer védelmét nem TPM-t engedélyezze
-Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás**, amelyet a **helyi számítógép-házirend** > **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők**szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit** > ,**további hitelesítésre van szükség az indításkor** > ,**kompatibilis TPM nélkül**, az alábbi ábrán látható módon:
+Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás**, amelyet a **helyi számítógép-házirend**  >  **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit**  >  ,**további hitelesítésre van szükség az indításkor**  >  ,**kompatibilis TPM nélkül**, az alábbi ábrán látható módon:
 
 ![Microsoft Antimalware szolgáltatás az Azure-ban](../media/disk-encryption/disk-encryption-fig8.png)
 
 ### <a name="install-bitlocker-feature-components"></a>A BitLocker szolgáltatás összetevőinek telepítése
 A Windows Server 2012-es és újabb verzióiban használja a következő parancsot:
 
-    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```console
+dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 Windows Server 2008 R2 esetén használja a következő parancsot:
 
-    ServerManagerCmd -install BitLockers
+```console
+ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>A BitLocker operációsrendszer-kötetének előkészítése a használatával`bdehdcfg`
 Az operációsrendszer-partíció tömörítéséhez és a számítógép BitLockerhez való előkészítéséhez hajtsa végre a [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) , ha szükséges:
 
-    bdehdcfg -target c: shrink -quiet 
+```console
+bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>Az operációs rendszer kötetének biztosítása a BitLocker használatával
 A [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) parancs használatával engedélyezze a titkosítást a rendszerindító köteten egy külső kulcstartó használatával. Helyezze a külső kulcsot (. BEK fájlt) a külső meghajtóra vagy kötetre. A következő újraindítás után a titkosítás engedélyezve van a rendszer/rendszerindító köteten.
 
-    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
-    reboot
+```console
+manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+reboot
+```
 
 > [!NOTE]
 > Készítse elő a virtuális gépet egy külön adat/erőforrás virtuális merevlemezen a külső kulcs BitLocker használatával történő beolvasásához.
@@ -232,12 +240,12 @@ Mielőtt feltölti a titkos kulcsot a kulcstartóba, lehetősége van arra, hogy
     $secretUrl = $response.id
 ```
 
-A következő lépésben használja `$KeyEncryptionKey` az operációsrendszer- [lemez csatlakoztatását a KEK használatával](#using-a-kek). `$secretUrl`
+A `$KeyEncryptionKey` `$secretUrl` következő lépésben használja az operációsrendszer- [lemez csatlakoztatását a KEK használatával](#using-a-kek).
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Titkos URL-cím megadása operációsrendszer-lemez csatlakoztatásakor
 
 ###  <a name="without-using-a-kek"></a>KEK használata nélkül
-Az operációsrendszer-lemez csatlakoztatása közben át kell adnia `$secretUrl`a következőt:. Az URL-cím a "lemez-titkosítási titok, amely nem titkosított KEK-sel" című szakaszban lett létrehozva.
+Az operációsrendszer-lemez csatlakoztatása közben át kell adnia a következőt: `$secretUrl` . Az URL-cím a "lemez-titkosítási titok, amely nem titkosított KEK-sel" című szakaszban lett létrehozva.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -250,7 +258,7 @@ Az operációsrendszer-lemez csatlakoztatása közben át kell adnia `$secretUrl
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK használata
-Az operációsrendszer-lemez csatlakoztatásakor adja meg `$KeyEncryptionKey` a `$secretUrl`és a kapcsolót. Az URL-címet a "lemez titkosítási titka egy KEK-lel titkosítva" szakasz hozta létre.
+Az operációsrendszer-lemez csatlakoztatásakor adja meg a és a kapcsolót `$KeyEncryptionKey` `$secretUrl` . Az URL-címet a "lemez titkosítási titka egy KEK-lel titkosítva" szakasz hozta létre.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

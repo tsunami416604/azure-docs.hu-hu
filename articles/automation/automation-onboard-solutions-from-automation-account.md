@@ -5,12 +5,11 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: e38e9a66db9e775023ff5c7940fd892eb0926824
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: f739134cd066f4dcc7fdf3da16c6db99a54d6265
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204939"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
@@ -73,9 +72,9 @@ A munkaterülethez már jelentést küldő gépeket vagy gépeket manuálisan ke
 
 7. Egy vagy több gép funkciójának engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd az egyes gépek mellett kattintson a **Hozzáadás** elemre a funkció engedélyezéséhez. Ez a feladat hozzáadja a kiválasztott számítógépneveket a szolgáltatáshoz tartozó számítógépcsoport mentett keresési lekérdezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
 * Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
 * A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
-* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.
+* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

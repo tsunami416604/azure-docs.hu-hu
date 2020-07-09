@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333965"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318926"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -36,7 +36,7 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 Ez a megoldás egy olyan forgatókönyvet mutat be, amelyben egy autókölcsönző cég tervezi a bérelt személygépkocsik eseményeinek figyelését és naplózását. Az autókölcsönző vállalatok általában egy adott földrajzi régióba bérelnek autót. Az autókat a bérletük ideje alatt nyomon kell követni. A kiválasztott földrajzi régiót elhagyó autó példányait naplózni kell. A naplózási adatai biztosítják, hogy a szabályzatok, díjak és egyéb üzleti szempontok megfelelően kezelhetők legyenek.
 
-A használati esetünkben a bérelt autók olyan IoT-eszközökkel vannak ellátva, amelyek rendszeresen küldenek telemetria-t az Azure IoT Hubba. A telemetria tartalmazza az aktuális helyet, és jelzi, hogy az autó motorja fut-e. Az eszköz helyének sémája megfelel a [térinformatikai IoT Plug and Play sémájának](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). A bérleti autó eszközének telemetria sémája a következőképpen néz ki:
+A használati esetünkben a bérelt autók olyan IoT-eszközökkel vannak ellátva, amelyek rendszeresen küldenek telemetria-t az Azure IoT Hubba. A telemetria tartalmazza az aktuális helyet, és jelzi, hogy az autó motorja fut-e. Az eszköz helyének sémája megfelel a [térinformatikai IoT Plug and Play sémájának](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md). A bérleti autó eszközének telemetria sémája a következőképpen néz ki:
 
 ```JSON
 {
@@ -175,7 +175,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerí
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
     
-    Az URL-cím `dataFormat` paraméteréhez tartozó "geojson" érték a feltöltött adatformátumot jelöli.
+    Az URL-cím paraméteréhez tartozó "geojson" érték a `dataFormat` feltöltött adatformátumot jelöli.
 
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps kulcsra.
    
@@ -191,13 +191,13 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerí
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Másolja ki az állapot-URI- `subscription-key` t, és fűzze hozzá a paramétert. Rendelje hozzá a Azure Maps fiók előfizetési kulcsának értékét `subscription-key` a paraméterhez. Az állapot URI-formátumának az alábbihoz hasonlóan kell lennie, és `{Subscription-key}` az előfizetési kulccsal kell helyettesíteni.
+6. Másolja ki az állapot-URI-t, és fűzze hozzá a `subscription-key` paramétert. Rendelje hozzá a Azure Maps fiók előfizetési kulcsának értékét a `subscription-key` paraméterhez. Az állapot URI-formátumának az alábbihoz hasonlóan kell lennie, és az `{Subscription-key}` előfizetési kulccsal kell helyettesíteni.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. A létrehozásához `udId` nyisson meg egy új fület a Poster alkalmazásban, majd válassza a http-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és tegyen egy Get-kérést az állapot URI-ja Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId későbbi használatra.
+7. A létrehozásához `udId` Nyisson meg egy új fület a Poster alkalmazásban, majd válassza a http-módszer BEolvasása lehetőséget a Builder (szerkesztő) lapon, és tegyen egy Get-kérést az állapot URI-ja Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId későbbi használatra.
 
    ```JSON
    {
@@ -261,7 +261,7 @@ Miután hozzáadta Event Grid-előfizetést az Azure-függvényhez, megjelenik e
 
 ![központ – például útvonal](./media/tutorial-iot-hub-maps/hub-route.png)
 
-Példánkban szeretnénk kiszűrni az összes olyan üzenetet, ahol a kölcsönzési jármű mozog. Ahhoz, hogy az adott eszközön telemetria az eseményeket a Event Gridba, az útválasztási lekérdezés használatával szűrheti azokat az eseményeket, `Engine` amelyeken a tulajdonság **"on"**. Az eszközről a felhőbe irányuló IoT lekérdezések többféleképpen is megtekinthetők, ha többet szeretne megtudni az üzenetek útválasztási szintaxisáról: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Útválasztási lekérdezés létrehozásához kattintson a **RouteToEventGrid** útvonalra, és cserélje le az **útválasztási lekérdezést** **"Engine =" on ""** értékre, majd kattintson a Save ( **Mentés**) gombra. A IoT hub most csak azt a telemetria teszi közzé, ahol a motor be van kapcsolva.
+Példánkban szeretnénk kiszűrni az összes olyan üzenetet, ahol a kölcsönzési jármű mozog. Ahhoz, hogy az adott eszközön telemetria az eseményeket a Event Gridba, az útválasztási lekérdezés használatával szűrheti azokat az eseményeket, amelyeken a `Engine` tulajdonság **"on"**. Az eszközről a felhőbe irányuló IoT lekérdezések többféleképpen is megtekinthetők, ha többet szeretne megtudni az üzenetek útválasztási szintaxisáról: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Útválasztási lekérdezés létrehozásához kattintson a **RouteToEventGrid** útvonalra, és cserélje le az **útválasztási lekérdezést** **"Engine =" on ""** értékre, majd kattintson a Save ( **Mentés**) gombra. A IoT hub most csak azt a telemetria teszi közzé, ahol a motor be van kapcsolva.
 
 ![központ – pl. szűrő](./media/tutorial-iot-hub-maps/hub-filter.png)
 
@@ -272,7 +272,7 @@ Ha már működik az Azure-függvény, mostantól elküldhetjük a telemetria a 
 
 1. Töltse le a [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C# projektet. 
 
-2. Nyissa meg a simulatedCar.cs-fájlt egy tetszőleges szövegszerkesztőben, és cserélje le az értékét `connectionString` az eszköz regisztrálásakor mentettre, és mentse a fájl módosításait.
+2. Nyissa meg a simulatedCar.cs-fájlt egy tetszőleges szövegszerkesztőben, és cserélje le az értékét az `connectionString` eszköz regisztrálásakor mentettre, és mentse a fájl módosításait.
  
 3. Győződjön meg arról, hogy a .NET Core telepítve van a gépen. A helyi terminál ablakban navigáljon a C# projekt gyökérkönyvtárához, és futtassa a következő parancsot a szükséges csomagok telepítéséhez a szimulált eszköz alkalmazáshoz:
     

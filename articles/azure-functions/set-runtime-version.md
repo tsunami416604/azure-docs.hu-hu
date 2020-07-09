@@ -4,10 +4,9 @@ description: Azure Functions támogatja a futtatókörnyezet több verzióját. 
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77151955"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>A Azure Functions futtatókörnyezet verzióinak megcélzása
@@ -40,7 +39,7 @@ A futtatókörnyezet verziójának módosítása a Function alkalmazás újraind
 Módosíthatja a Function alkalmazás által használt futtatókörnyezet verzióját. A módosítások megszakítása miatt a funkció alkalmazásban való létrehozása előtt csak a futásidejű verziót lehet módosítani. 
 
 > [!IMPORTANT]
-> Bár a futásidejű verziót a `FUNCTIONS_EXTENSION_VERSION` beállítás határozza meg, ezt a módosítást a Azure Portalon kell megtennie, nem pedig közvetlenül a beállítás módosításával. Ennek az az oka, hogy a portál érvényesíti a módosításokat, és szükség szerint más kapcsolódó módosításokat hajt végre.
+> Bár a futásidejű verziót a beállítás határozza meg `FUNCTIONS_EXTENSION_VERSION` , ezt a módosítást a Azure Portalon kell megtennie, nem pedig közvetlenül a beállítás módosításával. Ennek az az oka, hogy a portál érvényesíti a módosításokat, és szükség szerint más kapcsolódó módosításokat hajt végre.
 
 ### <a name="from-the-azure-portal"></a>Az Azure Portalról
 
@@ -51,10 +50,10 @@ Módosíthatja a Function alkalmazás által használt futtatókörnyezet verzi�
 
 ### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>Az Azure CLI-ből
 
-Az Azure CLI-ről is megtekintheti és beállíthatja az `FUNCTIONS_EXTENSION_VERSION` alkalmazást.
+Az Azure CLI-ről is megtekintheti és beállíthatja az alkalmazást `FUNCTIONS_EXTENSION_VERSION` .
 
 >[!NOTE]
->Mivel előfordulhat, hogy a futásidejű verzió más beállításokat is érint, érdemes módosítani a verziót a portálon. A portál automatikusan elvégzi a többi szükséges frissítést, például a Node. js-verziót és a futásidejű veremet, amikor megváltoztatja a futásidejű verziókat.  
+>Mivel előfordulhat, hogy a futásidejű verzió más beállításokat is érint, érdemes módosítani a verziót a portálon. A portál automatikusan elvégzi a többi szükséges frissítést, például a Node.js verziót és a futtatókörnyezetet, amikor megváltoztatja a futtatókörnyezet verzióit.  
 
 Az Azure CLI használatával tekintse meg az aktuális futtatókörnyezet verzióját az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal.
 
@@ -63,9 +62,9 @@ az functionapp config appsettings list --name <function_app> \
 --resource-group <my_resource_group>
 ```
 
-Ebben a kódban cserélje le `<function_app>` a helyére a Function alkalmazás nevét. Cserélje le `<my_resource_group>` a függvényt a Function alkalmazás erőforráscsoport nevére is. 
+Ebben a kódban cserélje le a helyére a `<function_app>` Function alkalmazás nevét. Cserélje le a `<my_resource_group>` függvényt a Function alkalmazás erőforráscsoport nevére is. 
 
-A következő kimenet `FUNCTIONS_EXTENSION_VERSION` jelenik meg, amelyet az egyértelműség érdekében csonkolt:
+A `FUNCTIONS_EXTENSION_VERSION` következő kimenet jelenik meg, amelyet az egyértelműség érdekében csonkolt:
 
 ```output
 [
@@ -90,7 +89,7 @@ A következő kimenet `FUNCTIONS_EXTENSION_VERSION` jelenik meg, amelyet az egy�
 ]
 ```
 
-A Function alkalmazásban `FUNCTIONS_EXTENSION_VERSION` található beállításokat az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal frissítheti.
+A `FUNCTIONS_EXTENSION_VERSION` Function alkalmazásban található beállításokat az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal frissítheti.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -98,7 +97,7 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
 
-Cserélje `<function_app>` le a helyére a Function alkalmazás nevét. Cserélje le `<my_resource_group>` a függvényt a Function alkalmazás erőforráscsoport nevére is. Továbbá cserélje le `<version>` az 1. x futtatókörnyezet vagy `~2` a 2. x verzió érvényes verzióját.
+Cserélje le a helyére `<function_app>` a Function alkalmazás nevét. Cserélje le a `<my_resource_group>` függvényt a Function alkalmazás erőforráscsoport nevére is. Továbbá cserélje le az `<version>` 1. x futtatókörnyezet vagy a `~2` 2. x verzió érvényes verzióját.
 
 Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
 

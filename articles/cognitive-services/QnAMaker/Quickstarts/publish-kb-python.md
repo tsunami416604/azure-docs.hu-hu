@@ -3,14 +3,14 @@ title: 'Gyors útmutató: Tudásbázis közzététele, REST, Python-QnA Maker'
 description: Ez a Python REST-alapú rövid útmutató közzéteszi a tudásbázist, és létrehoz egy olyan végpontot, amely hívható az alkalmazásban vagy a csevegési robotban.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 6f053ecbd58d3c2527c1b904437dcc4715c76af1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: RESTCURL2020FEB27, tracking-python
+ms.topic: how-to
+ms.openlocfilehash: a5aa5a313a96c12adccf0a1c198dce69661935d6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851651"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608655"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Python használatával
 
@@ -68,7 +68,7 @@ python publish-kb-3x.py
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](./get-answer-from-knowledge-base-python.md).
 

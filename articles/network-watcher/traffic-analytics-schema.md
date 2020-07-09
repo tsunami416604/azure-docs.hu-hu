@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666375"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Sémák és adatösszesítések Traffic Analytics
@@ -117,7 +116,7 @@ Alább láthatók a séma mezői és azok
 | FlowDirection_s | * I = bejövő<br> * O = kimenő | A folyamat iránya a NSG-ben/folyamatban |
 | FlowStatus_s  | * A = engedélyezett NSG-szabály szerint <br> * D = NSG szabály által megtagadva  | A flow által engedélyezett/nblocked állapota NSG szerint |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | A folyamathoz társított hálózati biztonsági csoport (NSG) |
-| NSGRules_s | \<0. index érték) \| \<>NSG_RULENAME \| \<>flow iránya>\| \<flow \| \<állapota>FlowCount ProcessedByRule> |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
 | NSGRule_s | NSG_RULENAME |  A folyamatot engedélyező vagy megtagadó NSG-szabály |
 | NSGRuleType_s | * Felhasználó által definiált * alapértelmezett |   A folyamat által használt NSG-szabály típusa |
 | MACAddress_s | MAC-cím | Azon hálózati adapter MAC-címe, amelyen a folyamat rögzített |
@@ -127,10 +126,10 @@ Alább láthatók a séma mezői és azok
 | Region_s | A virtuális hálózat/hálózati adapter/virtuális gép Azure-régiója, amelyhez a folyamathoz tartozó IP-cím tartozik | Csak a FlowType = S2S, a P2S, a AzurePublic, a ExternalPublic, a MaliciousFlow és a UnknownPrivate flow típusokra vonatkozik (a flow típusai, ahol csak az egyik oldal az Azure) |
 | Region1_s | Azure-régió | A virtuális hálózat/hálózati adapter/virtuális gép Azure-régiója, amelyhez a folyamathoz tartozó forrás IP-cím tartozik |
 | Region2_s | Azure-régió | A virtuális hálózat Azure-régiója, amelyhez a folyamat cél IP-címe tartozik |
-| NIC_s | \<resourcegroup_Name>\/ \<NetworkInterfaceName> |  A forgalmat küldő vagy fogadó virtuális géphez társított hálózati adapter |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  A forgalmat küldő vagy fogadó virtuális géphez társított hálózati adapter |
 | NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | A folyamathoz tartozó forrás IP-címhez társított hálózati adapter |
 | NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | A folyamat cél IP-címéhez társított hálózati adapter |
-| VM_s | <resourcegroup_Name>\/ \<NetworkInterfaceName> | A hálózati adapterhez társított virtuális gép NIC_s |
+| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | A hálózati adapterhez társított virtuális gép NIC_s |
 | VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | A folyamathoz tartozó forrás IP-címhez társított virtuális gép |
 | VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | A folyamat cél IP-címéhez társított virtuális gép |
 | Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | A NIC_shoz társított alhálózat |
@@ -143,7 +142,7 @@ Alább láthatók a séma mezői és azok
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | A folyamathoz tartozó forrás IP-címhez társított helyi hálózati átjáró |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | A folyamat cél IP-címéhez társított helyi hálózati átjáró |
 | ConnectionType_s | A lehetséges értékek a következők VNetPeering, átjáróban és ExpressRoute |    Kapcsolattípus |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<kapcsolatnév> | A kapcsolatok neve. A flowtype P2S a következő formátumban lesz formázva <gateway name>: _<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | A kapcsolatok neve. A flowtype P2S a következő formátumban lesz formázva: <gateway name> _<VPN Client IP> |
 | ConnectingVNets_s | Virtuális hálózati nevek szóközzel tagolt listája | A hub és a küllős topológia esetében itt lesznek kitöltve a hub virtuális hálózatok |
 | Country_s | Két betűs országkód (ISO 3166-1 Alpha-2) | Kitöltve a flow Type ExternalPublic. PublicIPs_s mezőben lévő összes IP-cím ugyanazt az országkódot fogja megosztani. |
 | AzureRegion_s | Azure-régió helyei | Kitöltve a flow Type AzurePublic. PublicIPs_s mezőben lévő összes IP-cím az Azure-régiót fogja megosztani |
@@ -157,11 +156,11 @@ Alább láthatók a séma mezői és azok
 | InboundBytes_d |  Fogadott bájtok száma a hálózati adapteren rögzített NSG-szabály alkalmazásakor | Ez csak a NSG flow-napló sémájának 2. verziójára van feltöltve |
 | OutboundBytes_d | Rögzített bájtok a NSG-szabály alkalmazási helyéül szolgáló hálózati adapteren | Ez csak a NSG flow-napló sémájának 2. verziójára van feltöltve |
 | CompletedFlows_d  |  | Ez a nullától eltérő értékkel van feltöltve, csak a NSG flow-napló sémájának 2. verziójára |
-| PublicIPs_s | <PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 1. AzurePublic-és ExternalPublic-folyamatok esetén az Azure-beli virtuális gép IP-címe VMIP_s mezőben van feltöltve, míg a nyilvános IP-címek a PublicIPs_s mezőben vannak feltöltve. A két folyamat esetében az SrcIP_s és a DestIP_s mezők helyett VMIP_s és PublicIPs_st kell használnia. A AzurePublic-és ExternalPublicIP-címek esetében a rendszer tovább összesíti az adatokat, így az ügyfél log Analytics-munkaterületre betöltött rekordok száma minimális. (Ez a mező hamarosan elavult lesz, és a SrcIP_t kell használnia, és DestIP_s attól függően, hogy az Azure-beli virtuális gép a forrás vagy a cél volt a folyamatban)
 1. A flow típusaival kapcsolatos részletek: a folyamatba bevont IP-címek alapján kategorizáljuk a folyamatokat a következő típusú folyamatokhoz:
@@ -174,7 +173,7 @@ Alább láthatók a séma mezői és azok
 1. MaliciousFlow – az IP-címek egyike az Azure Virtual Networkhöz tartozik, míg a másik IP-cím egy olyan nyilvános IP-cím, amely nem az Azure-ban található, és a rendszer kártékonyként jelenti a "FlowIntervalStartTime_t" és a "FlowIntervalEndTime_t" közötti feldolgozási időközre Traffic Analytics.
 1. UnknownPrivate – az IP-címek egyike az Azure Virtual Networkhoz tartozik, míg a másik IP-cím a 1918-as számú RFC-dokumentumban meghatározott magánhálózati IP-tartományhoz tartozik, és nem képezhető le Traffic Analytics egy ügyfél tulajdonában lévő webhelyhez vagy Azure-Virtual Network.
 1. Ismeretlen – a folyamatokban lévő IP-címek egyikét nem lehet leképezni az Azure-beli ügyfél-topológiával, valamint a helyszínen (hely).
-1. Egyes mezők neve a \_következővel van hozzáfűzve \_: s vagy d. Ezek nem jelentik a forrás és a cél jelölését, hanem az adattípusokat, illetve a decimális karakterláncot.
+1. Egyes mezők neve a következővel van hozzáfűzve: \_ s vagy \_ d. Ezek nem jelentik a forrás és a cél jelölését, hanem az adattípusokat, illetve a decimális karakterláncot.
 
 ### <a name="next-steps"></a>Következő lépések
 A gyakori kérdésekre adott válaszokért lásd: [Traffic Analytics – gyakori](traffic-analytics-faq.md) kérdések a funkciók részleteiről: [Traffic Analytics – dokumentáció](traffic-analytics.md)

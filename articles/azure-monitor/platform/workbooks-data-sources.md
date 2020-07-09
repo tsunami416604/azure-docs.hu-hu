@@ -8,14 +8,14 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560138"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor munkafüzetek adatforrásai
 
@@ -42,24 +42,30 @@ Az Azure-erőforrások olyan [metrikákat](data-platform-metrics.md) bocsátanak
 
 ![Képernyőfelvétel a munkafüzet metrikái felületéről](./media/workbooks-overview/metrics.png)
 
-## <a name="azure-resource-graph"></a>Azure Resource Graph 
+## <a name="azure-resource-graph"></a>Azure Resource Graph
 
 A munkafüzetek támogatják az erőforrások és a metaadatok lekérdezését az Azure Resource Graph (ARG) használatával. Ez a funkció elsősorban a jelentések egyéni lekérdezési hatókörének létrehozásához használatos. Az erőforrás hatóköre az ARG által támogatott KQL-részhalmazon keresztül van kifejezve – ami gyakran elegendő a gyakori használati esetekhez.
 
 Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, használja a lekérdezés típusa legördülő listát az Azure Resource Graph kiválasztásához, és válassza ki a célozni kívánt előfizetéseket. A lekérdezés vezérlőelem használatával adja hozzá az ARG KQL-részhalmazt, amely egy érdekes erőforrás-részhalmazt választ ki.
 
-
 ![Képernyőkép az Azure Resource Graph KQL-lekérdezésről](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>Riasztások (előzetes verzió)
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-A munkafüzetek lehetővé teszik a felhasználók számára, hogy megjelenítsék az erőforrásaikkal kapcsolatos aktív riasztásokat. Ez a funkció lehetővé teszi, hogy olyan jelentéseket hozzon létre, amelyek egy jelentésbe összevonják az értesítési adatokat (riasztásokat) és a diagnosztikai adatokat (metrikákat, naplókat). Ezek az információk összekapcsolhatók olyan gazdag jelentések létrehozásához is, amelyek az adatforrások elemzését kombinálják.
+A munkafüzet támogatja a Azure Resource Manager REST-műveleteket. Ez lehetővé teszi a management.azure.com-végpont lekérdezését anélkül, hogy meg kellene adnia a saját hitelesítési fejlécének tokenjét.
 
-Ha szeretné, hogy a lekérdezés vezérlőelem ezt az adatforrást használja, használja a lekérdezés típusa legördülő listát a riasztások kiválasztásához, és válassza ki a célként használni kívánt előfizetéseket, erőforráscsoportokat vagy erőforrásokat. A riasztási szűrő legördülő lista használatával kiválaszthatja az elemzési igényekhez tartozó riasztások érdekes részhalmazát.
+Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, az adatforrás legördülő menüben válassza a Azure Resource Manager lehetőséget. Adja meg a megfelelő paramétereket, például http-metódust, URL-útvonalat, fejléceket, URL-paramétereket és/vagy törzset.
 
-![A riasztások lekérdezésének képernyőképe](./media/workbooks-overview/alerts.png)
+> [!NOTE]
+> Jelenleg csak a, `GET` `POST` , és `HEAD` műveletek támogatottak.
 
-## <a name="workload-health-preview"></a>Munkaterhelés állapota (előzetes verzió)
+## <a name="azure-data-explorer"></a>Azure Data Explorer
+
+A munkafüzetek mostantól támogatják az [Azure adatkezelő](https://docs.microsoft.com/azure/data-explorer/) -fürtökről való lekérdezést a hatékony [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -lekérdezési nyelvvel.   
+
+![Képernyőfelvétel a Kusto-lekérdezési ablakról](./media/workbooks-overview/data-explorer.png)
+
+## <a name="workload-health"></a>Munkaterhelés állapota
 
 Azure Monitor rendelkezik olyan funkciókkal, amelyek proaktív módon figyelik a Windows-vagy Linux-alapú vendég operációs rendszerek rendelkezésre állását és teljesítményét. Azure Monitor a modellek kulcs-összetevőit és azok kapcsolatait, az összetevők állapotának mérésének feltételeit, valamint azt, hogy mely összetevők riasztást küldenek, ha a rendszer nem kifogástalan állapotot észlel. A munkafüzetek lehetővé teszik, hogy a felhasználók részletes interaktív jelentéseket hozzanak létre az adatok használatával.
 
@@ -67,7 +73,7 @@ Ha szeretné, hogy a lekérdezés vezérlőelem ezt az adatforrást használja, 
 
 ![A riasztások lekérdezésének képernyőképe](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Azure-erőforrás állapota 
+## <a name="azure-resource-health"></a>Azure-erőforrás állapota
 
 A munkafüzetek lehetővé teszik az Azure Resource Health beszerzését és más adatforrásokkal való összekapcsolását, hogy gazdag, interaktív állapotjelentést hozzanak létre.
 
@@ -75,13 +81,37 @@ Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást
 
 ![A riasztások lekérdezésének képernyőképe](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Azure Adatkezelő (előzetes verzió)
+## <a name="json"></a>JSON
 
-A munkafüzetek mostantól támogatják az [Azure adatkezelő](https://docs.microsoft.com/azure/data-explorer/) -fürtökről való lekérdezést a hatékony [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -lekérdezési nyelvvel.   
+A JSON-szolgáltató lehetővé teszi a statikus JSON-tartalmak lekérdezési eredményének létrehozását. A paraméterek leggyakrabban a statikus értékek legördülő paramétereinek létrehozásához használatosak. A rendszer automatikusan átalakítja az egyszerű JSON-tömböket vagy-objektumokat a rács soraiba és oszlopaiba.  A további specifikus viselkedés érdekében a Results (eredmények) és a JSONPath beállítások segítségével konfigurálhatja az oszlopokat.
 
-![Képernyőfelvétel a Kusto-lekérdezési ablakról](./media/workbooks-overview/data-explorer.png)
+## <a name="alerts-preview"></a>Riasztások (előzetes verzió)
+
+> [!NOTE]
+> Az Azure-riasztási adatok lekérdezésének javasolt módja az [Azure Resource Graph](#azure-resource-graph) -adatforrás használata a tábla lekérdezésével `AlertsManagementResources` .
+>
+> Tekintse meg az [Azure Resource Graph-táblázat referenciáját](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources), vagy példákat a [riasztások sablonra](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
+>
+> A riasztások adatforrás egy ideig elérhető marad, míg a szerzők az ARG használatára váltanak. Az adatforrás használata a sablonokban nem ajánlott. 
+
+A munkafüzetek lehetővé teszik a felhasználók számára, hogy megjelenítsék az erőforrásaikkal kapcsolatos aktív riasztásokat. Korlátozások: a riasztások adatforrásának olvasási hozzáféréssel kell rendelkeznie az előfizetéshez az erőforrások lekérdezése érdekében, és előfordulhat, hogy nem jeleníti meg az újabb típusú riasztásokat. 
+
+Ha szeretné, hogy a lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüben válassza a _riasztások (előzetes verzió)_ lehetőséget, majd válassza ki a célként használandó előfizetéseket, erőforráscsoportokat vagy erőforrásokat. A riasztási szűrő legördülő lista használatával kiválaszthatja az elemzési igényekhez tartozó riasztások érdekes részhalmazát.
+
+## <a name="custom-endpoint"></a>Egyéni végpont
+
+A munkafüzetek bármilyen külső forrásból származó adatok beolvasását támogatják. Ha az adatai az Azure-on kívül vannak, akkor ez az adatforrás-típus használatával a munkafüzetekbe is helyezhető.
+
+Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüjéből válassza az _Egyéni végpont_lehetőséget. Adja meg a megfelelő paramétereket, például,, `Http method` `url` `headers` `url parameters` és/vagy `body` . Győződjön meg arról, hogy az adatforrás támogatja a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) , máskülönben a kérelem sikertelen lesz.
+
+Ha nem szeretne automatikusan hívásokat kezdeményezni a nem megbízható gazdagépekhez sablonok használatakor, a felhasználónak megbízhatóként kell megjelölni a használt gazdagépeket. Ezt úgy teheti meg, hogy a _Hozzáadás megbízhatóként_ gombra kattint, vagy ha megbízható gazdagépként hozzáadja a munkafüzet-beállításokhoz. Ezek a beállítások a webes feldolgozók IndexDb támogató böngészőkben lesznek mentve. További információ [itt](https://caniuse.com/#feat=indexeddb)található.
+
+> [!NOTE]
+> Ne írjon semmilyen titkot a következő mezők egyikéhez sem (,, `headers` `parameters` `body` , `url` ), mert a munkafüzet összes felhasználója számára láthatóvá válik.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.
+* [Log Analytics lekérdezés-optimalizálási tippek](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* 

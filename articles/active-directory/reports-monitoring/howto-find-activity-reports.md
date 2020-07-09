@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608211"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
 
@@ -33,7 +33,7 @@ A naplók jelentés több jelentést is egyesít az alkalmazások tevékenysége
 2. Válassza ki a címtárat a jobb felső sarokban, majd válassza ki a **Azure Active Directory** panelt a bal oldali navigációs ablaktáblán.
 3. Válassza a **naplók** lehetőséget a Azure Active Directory panel **tevékenység** szakaszában. 
 
-    ![Naplók](./media/howto-find-activity-reports/482.png "Naplók")
+    ![Naplók](./media/howto-find-activity-reports/482.png "Auditnaplók")
 
 A naplózott jelentés a következő jelentéseket összesíti:
 
@@ -52,7 +52,7 @@ A naplózási jelentésben a speciális szűrés használatával férhet hozzá 
 
 A kategóriák a következők:
 
-- Összes
+- Mind
 - AdministrativeUnit
 - ApplicationManagement
 - Hitelesítés
@@ -73,7 +73,7 @@ A **szolgáltatás** legördülő szűrővel is szűrheti egy adott szolgáltat�
 
 A szolgáltatások a következők:
 
-- Összes
+- Mind
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése 
 - Alkalmazás egyszeri bejelentkezés
@@ -147,7 +147,7 @@ Az észlelt kockázati észlelésekkel kapcsolatos jelentések a [Azure Portal](
 
 #### <a name="symptoms"></a>Probléma 
 
-Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Hogy miért? 
+Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Miért? 
 
  ![Jelentéskészítés](./media/troubleshoot-missing-data-download/01.png)
  
@@ -171,10 +171,10 @@ Végrehajtottam bizonyos műveleteket az Azure Portalon, és arra számítottam,
 
 A műveletek nem jelennek meg azonnal a tevékenységnaplókban. Az alábbi táblázat a tevékenységnaplók késési számait sorolja fel. 
 
-| Jelentés | &nbsp; | Késés (P95) | Késés (P99) |
-|--------|--------|---------------|---------------|
-| Címtárnaplózás | &nbsp; | 2 perc | 5 perc |
-| Bejelentkezési tevékenység | &nbsp; | 2 perc | 5 perc | 
+| Jelentés | Késés (P95) | Késés (P99) |
+|--------|---------------|---------------|
+| Címtárnaplózás | 2 perc | 5 perc |
+| Bejelentkezési tevékenység | 2 perc | 5 perc |
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -192,10 +192,10 @@ Nemrég bejelentkeztem az Azure Portalra, és arra számítottam, hogy látom ez
 
 A műveletek nem jelennek meg azonnal a tevékenységnaplókban. Az alábbi táblázat a tevékenységnaplók késési számait sorolja fel. 
 
-| Jelentés | &nbsp; | Késés (P95) | Késés (P99) |
-|--------|--------|---------------|---------------|
-| Címtárnaplózás | &nbsp; | 2 perc | 5 perc |
-| Bejelentkezési tevékenység | &nbsp; | 2 perc | 5 perc | 
+| Jelentés | Késés (P95) | Késés (P99) |
+|--------|---------------|---------------|
+| Címtárnaplózás | 2 perc | 5 perc |
+| Bejelentkezési tevékenység | 2 perc | 5 perc |
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -205,7 +205,7 @@ Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam eltel
 
 #### <a name="symptoms"></a>Probléma
 
-Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Hogy miért? 
+Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Miért? 
 
  ![Jelentéskészítés](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -213,10 +213,10 @@ Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalr�
 
 A licencétől függően az Azure Active Directory-műveletek az alábbi időtartamokig tárolják a tevékenységjelentéseket:
 
-| Jelentés           | &nbsp; |  Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Címtárnaplózás  | &nbsp; |   7 nap     | 30 nap             | 30 nap             |
-| Bejelentkezési tevékenységek | &nbsp; | Nem érhető el. A saját bejelentkezéseit 7 napig érheti el az egyedi felhasználói profil panelről | 30 nap | 30 nap             |
+| Jelentés           | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+| ---              | ---           | ---                 | ---
+| Címtárnaplózás  | 7 nap        | 30 nap             | 30 nap             |
+| Bejelentkezési tevékenységek | Nem érhető el. A saját bejelentkezéseit 7 napig érheti el az egyedi felhasználói profil panelről | 30 nap | 30 nap             |
 
 További információk: [Az Azure Active Directory jelentésmegőrzési házirendje](reference-reports-data-retention.md).  
 

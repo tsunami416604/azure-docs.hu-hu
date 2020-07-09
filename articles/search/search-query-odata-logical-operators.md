@@ -20,23 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113190"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure- `and`ban `or`Cognitive Search-,,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure-ban Cognitive Search- `and` , `or` ,`not`
 
-Az Azure Cognitive Search [OData](query-odata-filter-orderby-syntax.md) olyan logikai kifejezések, amelyek kiértékelése `true` vagy `false`. Az összetett szűrőket úgy írhatja be, hogy az [egyszerűbb szűrők](search-query-odata-comparison-operators.md) sorozatát írja le, és a logikai operátorok segítségével készíti el őket a logikai [algebra](https://en.wikipedia.org/wiki/Boolean_algebra)használatával:
+Az Azure Cognitive Search [OData](query-odata-filter-orderby-syntax.md) olyan logikai kifejezések, amelyek kiértékelése `true` vagy `false` . Az összetett szűrőket úgy írhatja be, hogy az [egyszerűbb szűrők](search-query-odata-comparison-operators.md) sorozatát írja le, és a logikai operátorok segítségével készíti el őket a logikai [algebra](https://en.wikipedia.org/wiki/Boolean_algebra)használatával:
 
-- `and`: Egy bináris operátor, amely kiértékeli, hogy `true` a bal és a jobb oldali alkifejezések is kiértékelésre kerülnek-e. `true`
-- `or`: Egy bináris operátor, amely kiértékeli, hogy `true` a bal vagy a jobb oldali alkifejezések valamelyike `true`kiértékeli-e.
-- `not`: Egy egyoperandusú operátor, amely `true` kiértékeli `false`, hogy az alkifejezés kiértékelése és fordítva.
+- `and`: Egy bináris operátor, amely kiértékeli, hogy a `true` bal és a jobb oldali alkifejezések is kiértékelésre kerülnek-e `true` .
+- `or`: Egy bináris operátor, amely kiértékeli, hogy a `true` bal vagy a jobb oldali alkifejezések valamelyike kiértékeli-e `true` .
+- `not`: Egy egyoperandusú operátor, amely kiértékeli, hogy az `true` alkifejezés kiértékelése `false` és fordítva.
 
-Ezek a [gyűjtemény-operátorokkal `any` együtt, `all`és ](search-query-odata-collection-operators.md)lehetővé teszik olyan szűrők összeállítását, amelyek nagyon összetett keresési feltételeket tudnak kifejezni.
+Ezek a [gyűjtemény-operátorokkal együtt `any` , `all` és ](search-query-odata-collection-operators.md)lehetővé teszik olyan szűrők összeállítását, amelyek nagyon összetett keresési feltételeket tudnak kifejezni.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a logikai operátorokat használó OData-kifejezések nyelvtanát határozza meg.
 
@@ -56,23 +55,23 @@ Az interaktív szintaxis diagram is elérhető:
 > [!NOTE]
 > Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-A logikai kifejezések két formája`and`/`or`létezik: bináris (), ahol két alkifejezés létezik, és az unáris (`not`), ahol csak egy szerepel. Az alkifejezések bármely típusú logikai kifejezés lehet:
+A logikai kifejezések két formája létezik: bináris ( `and` / `or` ), ahol két alkifejezés létezik, és az unáris ( `not` ), ahol csak egy szerepel. Az alkifejezések bármely típusú logikai kifejezés lehet:
 
 - Mezők vagy tartomány típusú változók`Edm.Boolean`
-- Függvények, amelyek típusú `Edm.Boolean`értékeket adnak vissza, például `geo.intersects` vagy`search.ismatch`
+- Függvények, amelyek típusú értékeket adnak vissza `Edm.Boolean` , például `geo.intersects` vagy`search.ismatch`
 - [Összehasonlító kifejezések](search-query-odata-comparison-operators.md), például`rating gt 4`
 - [Gyűjtési kifejezések](search-query-odata-collection-operators.md), például`Rooms/any(room: room/Type eq 'Deluxe Room')`
-- A logikai literálok `true` vagy `false`.
-- Egyéb, a, `and` `or`és `not`a használatával létrehozott logikai kifejezések.
+- A logikai literálok `true` vagy `false` .
+- Egyéb, a, és a használatával létrehozott logikai kifejezések `and` `or` `not` .
 
 > [!IMPORTANT]
-> Vannak olyan helyzetek `and` / `or`, amelyekben nem használhatók az alkifejezések, különösen lambda kifejezéseken belül. Részletekért lásd: [OData Collection Operators in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) .
+> Vannak olyan helyzetek, amelyekben nem használhatók az alkifejezések `and` / `or` , különösen lambda kifejezéseken belül. Részletekért lásd: [OData Collection Operators in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) .
 
 ### <a name="logical-operators-and-null"></a>Logikai operátorok és`null`
 
-A legtöbb logikai kifejezés, például a függvények és az összehasonlítások nem hozhatnak létre `null` értékeket, és a logikai operátorok nem alkalmazhatók közvetlenül a `x and null` `null` konstansra (például nem megengedett). A logikai mezők azonban `null`lehetnek, ezért tisztában kell lennie azzal, hogy a, `and` `or`a és `not` a operátorok hogyan működnek a nullák jelenlétében. Ezt a következő táblázat foglalja össze, ahol `b` a egy típusú `Edm.Boolean`mező:
+A legtöbb logikai kifejezés, például a függvények és az összehasonlítások nem hozhatnak létre `null` értékeket, és a logikai operátorok nem alkalmazhatók `null` közvetlenül a konstansra (például `x and null` nem megengedett). A logikai mezők azonban lehetnek `null` , ezért tisztában kell lennie azzal, hogy a `and` , a `or` és a `not` operátorok hogyan működnek a nullák jelenlétében. Ezt a következő táblázat foglalja össze, ahol a `b` egy típusú mező `Edm.Boolean` :
 
-| Kifejezés | Eredmény, `b` ha`null` |
+| Expression | Eredmény `b` , ha`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,15 +86,15 @@ A legtöbb logikai kifejezés, például a függvények és az összehasonlítá
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Ha egy logikai mező `b` önmagában egy szűrési kifejezésben jelenik meg, akkor úgy viselkedik, mintha `b eq true`megírták volna, tehát ha `b` van `null`, a kifejezés kiértékeli `false`a következőt:. Hasonlóképpen, `not b` úgy viselkedik `not (b eq true)`, hogy kiértékeli a `true`következőt:. Így a mezők ugyanúgy `null` viselkednek, mint `false`. Ez összhangban van azzal, ahogyan a és `and` `or`a használatával más kifejezésekkel kombinálva, ahogy az a fenti táblázatban is látható. Ennek ellenére a közvetlen összehasonlítás `false` () továbbra is kiértékeli a`b eq false` `false`következőt:. Más szóval, `null` nem egyenlő a `false`(z) értékkel, még akkor is, ha a logikai kifejezésekben hasonlóan viselkedik.
+Ha egy logikai mező `b` önmagában egy szűrési kifejezésben jelenik meg, akkor úgy viselkedik, mintha megírták volna `b eq true` , tehát ha `b` van `null` , a kifejezés kiértékeli a következőt: `false` . Hasonlóképpen, `not b` úgy viselkedik `not (b eq true)` , hogy kiértékeli a következőt: `true` . Így a `null` mezők ugyanúgy viselkednek, mint `false` . Ez összhangban van azzal, ahogyan a és a használatával más kifejezésekkel kombinálva `and` `or` , ahogy az a fenti táblázatban is látható. Ennek ellenére a közvetlen összehasonlítás `false` ( `b eq false` ) továbbra is kiértékeli a következőt: `false` . Más szóval, `null` nem egyenlő a `false` (z) értékkel, még akkor is, ha a logikai kifejezésekben hasonlóan viselkedik.
 
 ## <a name="examples"></a>Példák
 
-Olyan dokumentumok egyeztetése `rating` , amelyekben a mező 3 és 5 közötti, beleértve a következőket:
+Olyan dokumentumok egyeztetése, amelyekben a `rating` mező 3 és 5 közötti, beleértve a következőket:
 
     rating ge 3 and rating le 5
 
-Olyan dokumentumok egyeztetése, amelyekben `ratings` a mező minden eleme kisebb, mint 3, vagy több mint 5:
+Olyan dokumentumok egyeztetése, amelyekben a mező minden eleme `ratings` kisebb, mint 3, vagy több mint 5:
 
     ratings/all(r: r lt 3 or r gt 5)
 

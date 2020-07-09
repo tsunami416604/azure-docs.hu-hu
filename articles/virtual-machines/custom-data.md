@@ -7,18 +7,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678358"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Egyéni és Cloud-init az Azure Virtual Machines
 
-## <a name="what-is-custom-data"></a>Mi az egyéni adathalmaz?
-
-Az ügyfelek gyakran kérdezik le, hogyan adhatnak hozzá parancsfájlt vagy egyéb metaadatokat egy Microsoft Azure virtuális géphez a kiépítési idő alatt.  Más felhőkben ezt a koncepciót gyakran felhasználói adatként is nevezik.  Microsoft Azure az egyéni adatszolgáltatáshoz hasonló funkciót tartalmaz. 
+Előfordulhat, hogy egy parancsfájlt vagy más metaadatokat kell beszúrnia egy Microsoft Azure virtuális gépre a kiépítési időpontban.  Más felhőkben ezt a koncepciót gyakran felhasználói adatként is nevezik.  Microsoft Azure az egyéni adatszolgáltatáshoz hasonló funkciót tartalmaz. 
 
 A rendszer csak az első rendszerindítás/kezdeti beállítás során bocsátja elérhetővé a virtuális gép számára, ezt "kiépítés" hívjuk. A kiépítés az a folyamat, amelyben a virtuális gép paramétereket hoz létre (például állomásnév, Felhasználónév, jelszó, tanúsítványok, egyéni adatok, kulcsok stb.) elérhetővé válnak a virtuális gép számára, és a kiépítési ügynök feldolgozza azokat, például a [Linux-ügynököt](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) és a [Cloud-init-](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)t. 
 
@@ -65,12 +62,12 @@ A virtuális gépekre telepített kiépítési ügynökök a platformmal és a f
 Az egyéni adatfájlok bináris fájlként kerülnek a *%SYSTEMDRIVE%\AzureData\CustomData.bin* , de a rendszer nem dolgozza fel őket. Ha szeretné feldolgozni ezt a fájlt, létre kell hoznia egy egyéni rendszerképet, és kódot kell írnia a CustomData. bin feldolgozásához.
 
 ### <a name="linux"></a>Linux  
-A Linux operációs rendszereken a OVF-env. xml fájl segítségével átadja a virtuális gép egyéni adatfájljait, amelyet a rendszer a */var/lib/waagent* könyvtárba másol a kiépítés során.  A Microsoft Azure Linux-ügynök újabb verziói a Base64 kódolású */var/lib/waagent/CustomData* is átmásolják a kényelem érdekében.
+A Linux operációs rendszereken a ovf-env.xml fájl segítségével átadja a virtuális gép egyéni adatfájljait, amelyet a rendszer a */var/lib/waagent* könyvtárba másol a kiépítés során.  A Microsoft Azure Linux-ügynök újabb verziói a Base64 kódolású */var/lib/waagent/CustomData* is átmásolják a kényelem érdekében.
 
 Az Azure jelenleg két kiépítési ügynököt támogat:
 * Linux-ügynök – alapértelmezés szerint az ügynök nem dolgozza fel az egyéni adatok feldolgozását, ezért az általa engedélyezett egyéni rendszerképet kell létrehoznia. A megfelelő beállítások a [dokumentációban](https://github.com/Azure/WALinuxAgent#configuration) a következők:
     * Kiépítés. DecodeCustomData
-    * Kiépítés. ExecuteCustomData
+    * Provisioning.ExecuteCustomData
 
 Ha engedélyezi az egyéni adatértékeket, és végrehajt egy parancsfájlt, akkor a rendszer késlelteti a virtuális gép jelentéskészítését, amely kész, vagy a kiépítés sikeres volt, amíg a parancsfájl be nem fejeződik. Ha a parancsfájl mérete meghaladja a virtuális gépek teljes kiépítési idejét 40 percnél, a virtuális gép létrehozása sikertelen lesz. Vegye figyelembe, hogy ha a parancsfájl végrehajtása nem sikerül, vagy a végrehajtása során hiba lép fel, a rendszer nem végzetes kiépítési hibát jelez, ezért létre kell hoznia egy értesítési útvonalat, amely riasztást küld a parancsfájl befejezési állapotáról.
 
@@ -84,7 +81,7 @@ Az egyéni adatvégrehajtás hibaelhárításához tekintse át a hibaelhárít�
 
 ## <a name="faq"></a>GYIK
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>A virtuális gép létrehozása után frissíthetem az egyéni adatértékeket?
-Egyetlen virtuális gép esetében a virtuálisgép-modellben lévő egyéni adat nem frissíthető, de a VMSS esetében a VMSS egyéni adatait REST API (PS vagy AZ CLI-ügyfelek esetében nem alkalmazható) használatával frissítheti. A VMSS modellben lévő egyéni adattípusok frissítésekor:
+Egyetlen virtuális gép esetében a virtuálisgép-modellben lévő egyéni adat nem frissíthető, de a VMSS esetében a VMSS egyéni adatait [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) (PS vagy az CLI-ügyfelek esetében nem alkalmazható) használatával frissítheti. A VMSS modellben lévő egyéni adattípusok frissítésekor:
 * A VMSS lévő meglévő példányok nem kapják meg az egyéni adatok frissítését, csak addig, amíg el nem távolítják őket.
 * A frissített VMSS lévő meglévő példányok nem kapják meg a frissített egyéni adatértékeket.
 * Az új példányok megkapják az új egyéni adatértékeket.

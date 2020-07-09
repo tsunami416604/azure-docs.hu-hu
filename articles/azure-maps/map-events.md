@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124006"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
@@ -49,7 +48,7 @@ A következő kód hozzáadja a JavaScript-leképezési eseményeket egy HTML-je
 
 A következő táblázat felsorolja az összes támogatott leképezési osztály eseményét.
 
-| Esemény               | Leírás |
+| Esemény               | Description |
 |---------------------|-------------|
 | `boxzoomend`        | A "Box zoom" interakció befejezése után.|
 | `boxzoomstart`      | A "Box zoom" interakció indításakor indul el.|

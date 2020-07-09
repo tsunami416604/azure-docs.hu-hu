@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186288"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni rács hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez
@@ -46,11 +46,11 @@ Ha rácsot szeretne hozzáadni a webes felhasználói felülethez, fel kell venn
 
 A kezdéshez az **src/walkthrough/Components/Pages/pageWithGrid/exampleGrid** mappa tartalmazza a rácsot definiáló fájlokat:
 
-**exampleGrid. js**
+**exampleGrid.js**
 
 [!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
-**exampleGridConfig. js**
+**exampleGridConfig.js**
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
@@ -58,7 +58,7 @@ Másolja a **src/walkthrough/Components/Pages/pageWithGrid/exampleGrid** mappát
 
 ### <a name="add-the-grid-to-the-page"></a>A rács hozzáadása az oldalhoz
 
-Módosítsa a következőt a **src/Components/Pages/example/basicPage. Container. js** fájl alapján a szolgáltatási definíciók importálásához:
+Módosítsa az **src/Components/Pages/example/basicPage.container.js** a következő módon a szolgáltatási definíciók importálásához:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-A rács hozzáadásához módosítsa a **src/Components/Pages/example/basicPage. js fájlt** a következőképpen:
+Módosítsa a **src/Components/Pages/example/basicPage.js** az alábbiak szerint a rács hozzáadásához:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Módosítsa a következőt a **src/Components/Pages/example/basicPage. test. js** fájl alapján a tesztek frissítéséhez:
+Módosítsa a következőt a **src/Components/Pages/example/basicPage.test.js** a tesztek frissítéséhez:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -182,7 +182,7 @@ Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő
 npm start
 ```
 
-Az előző parancs helyileg futtatja a felhasználói `http://localhost:3000/dashboard`felületet. Navigáljon a **példa** lapra, és tekintse meg a szolgáltatásból származó adatok táblázatát.
+Az előző parancs helyileg futtatja a felhasználói felületet `http://localhost:3000/dashboard` . Navigáljon a **példa** lapra, és tekintse meg a szolgáltatásból származó adatok táblázatát.
 
 ## <a name="select-rows"></a>Sorok kiválasztása
 
@@ -192,7 +192,7 @@ Két lehetőség közül választhat, amelyek lehetővé teszik a felhasználók
 
 Ha egy felhasználónak egyszerre több sorban kell működnie, használja a jelölőnégyzeteket a sorokban:
 
-1. A sorok kiválasztásának engedélyezése egy **checkboxColumn** a rácshoz megadott **columnDefs** való hozzáadásával. a **checkboxColumn** a **/src/Components/Shared/pcsGrid/pcsGrid.js**-ben van definiálva:
+1. A sorok kiválasztásának engedélyezése egy **checkboxColumn** a rácshoz megadott **columnDefs** való hozzáadásával. a **checkboxColumn** a **/src/Components/Shared/pcsGrid/pcsGrid.jsban **van definiálva:
 
     ```js
     this.columnDefs = [
@@ -247,7 +247,7 @@ Ha egy felhasználónak egyszerre több sorban kell működnie, használja a jel
 
 Ha a felhasználónak csak egyetlen sorban kell működnie, a **columnDefs**egy vagy több oszlopához állítson be egy Soft-Select hivatkozást.
 
-1. A **exampleGridConfig. js**fájlban adja hozzá a **SoftSelectLinkRenderer** -t egy **columnDef** **cellRendererFramework** .
+1. A **exampleGridConfig.jsban **adja hozzá a **SoftSelectLinkRenderer** -t a **columnDef** **cellRendererFramework** .
 
     ```js
     export const exampleColumnDefs = {

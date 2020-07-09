@@ -14,10 +14,9 @@ ms.topic: how-to
 ms.date: 03/15/2020
 ms.author: juliako
 ms.openlocfilehash: 2f1694825319ed8b8682c044e7e2282ed4c43dcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79478798"
 ---
 # <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
@@ -48,16 +47,16 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Media Services fiókot a Azure Por
 ### <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Kattintson **az + erőforrás** > **létrehozása adathordozó** > -**Media Services**elemre.
+1. Kattintson **az + erőforrás létrehozása**  >  **adathordozó**-  >  **Media Services**elemre.
 1. A **Media Services fiók létrehozása** szakaszban adja meg a szükséges értékeket.
     
-    | Name (Név) | Leírás |
+    | Name | Description |
     | ---|---|
-    |**Fiók neve**|Adja meg az új Media Services fiók nevét. A Media Services-fiók neve csak számokat és kisbetűket tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.|
+    |**Account Name**|Adja meg az új Media Services fiók nevét. A Media Services-fiók neve csak számokat és kisbetűket tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.|
     |**Előfizetés**|Ha egynél több előfizetéssel rendelkezik, válasszon egyet azon Azure-előfizetések listájából, amelyekhez hozzáfér.|
     |**Erőforráscsoport**|Válassza ki az új vagy meglévő erőforrást. Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információ [itt](../../azure-resource-manager/management/overview.md#resource-groups).|
     |**Hely**|Válassza ki azt a földrajzi régiót, amelyet a rendszer a Media Services-fiókhoz tartozó média és metaadat-rekordok tárolására fog használni. A rendszer e régió alapján fogja feldolgozni, illetve streamelni a médiafájlokat. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg. |
-    |**Storage-fiók**|Válassza ki azt a Storage-fiókot, amely a Media Services fiókjából származó médiatartalom blob Storage-tárolóját adja meg. Választhat egy, a Media Services-fiókkal azonos földrajzi régióban elhelyezkedő meglévő tárfiókot, vagy új fiókot is létrehozhat. A újonnan létrehozott tárfiók is ugyanahhoz a régióhoz fog tartozni. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.<br/><br/>Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot társíthat a Media Services-fiókhoz. A Azure Portal másodlagos Storage-fiókok hozzáadására is használható. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](storage-account-concept.md).<br/><br/>A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. Erősen ajánlott a tárfiókokat és a Media Services-fiókot azonos helyen használni a további késés és kimenő adatforgalomból fakadó költségek elkerülése végett.|
+    |**Tárfiók**|Válassza ki azt a Storage-fiókot, amely a Media Services fiókjából származó médiatartalom blob Storage-tárolóját adja meg. Választhat egy, a Media Services-fiókkal azonos földrajzi régióban elhelyezkedő meglévő tárfiókot, vagy új fiókot is létrehozhat. A újonnan létrehozott tárfiók is ugyanahhoz a régióhoz fog tartozni. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.<br/><br/>Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot társíthat a Media Services-fiókhoz. A Azure Portal másodlagos Storage-fiókok hozzáadására is használható. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](storage-account-concept.md).<br/><br/>A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. Erősen ajánlott a tárfiókokat és a Media Services-fiókot azonos helyen használni a további késés és kimenő adatforgalomból fakadó költségek elkerülése végett.|
     
 1. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
 1. Kattintson az űrlap alján található **Létrehozás** lehetőségre.
@@ -80,7 +79,7 @@ az account set --subscription mySubscriptionId
 
 Az erőforráscsoport létrehozásához használja az alábbi parancsot. Az Azure-erőforráscsoport egy olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az erőforrásokat (például az Azure Media Services-fiókokat és a kapcsolódó Storage-fiókokat).
 
-Helyettesítheti `amsResourceGroup` az értékét.
+Helyettesítheti az `amsResourceGroup` értékét.
 
 ```azurecli
 az group create --name amsResourceGroup --location westus2
@@ -92,7 +91,7 @@ A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókho
 
 Rendelkeznie kell egy **elsődleges** Storage-fiókkal, és tetszőleges számú **másodlagos** Storage-fiók társítható a Media Services fiókjához. A Media Services támogatja az **Általános célú v2-** (GPv2-) és az **Általános célú v1-** (GPv1-) fiókokat is. A blobfiókok nem megengedettek **elsődleges** tárfiókként. Ha szeretne többet megtudni a Storage-fiókokkal kapcsolatban, tekintse meg [Az Azure Storage-fiók beállításai](../../storage/common/storage-account-options.md) című témakört. 
 
-Ebben a példában egy általános célú v2 standard LRS-fiókot hozunk létre. Ha a Storage-fiókokkal szeretne kísérletezni, `--sku Standard_LRS`használja a következőt:. Ha azonban az üzemi célú SKU-t választotta, `--sku Standard_RAGRS`érdemes figyelembe vennie az üzleti folytonosságot, amely földrajzi replikációt tesz lehetővé. További információ: Storage- [fiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+Ebben a példában egy általános célú v2 standard LRS-fiókot hozunk létre. Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha azonban az üzemi célú SKU-t választotta, érdemes figyelembe vennie az `--sku Standard_RAGRS` üzleti folytonosságot, amely földrajzi replikációt tesz lehetővé. További információ: Storage- [fiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
 Az alábbi parancs egy Storage-fiókot hoz létre, amelyet a rendszer a Media Services-fiókhoz fog társítani. Az alábbi szkriptben a `storageaccountforams` helyére helyettesítheti be az Ön által megadott értéket. `amsResourceGroup`az előző lépésben az erőforráscsoport számára megadott értéknek kell megegyeznie. A Storage-fiók nevének 24-nél rövidebbnek kell lennie.
 
@@ -106,7 +105,7 @@ az storage account create --name storageaccountforams \
 
 ### <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
 
-Az alábbi Azure CLI-parancs egy új Media Services-fiókot hoz létre. A következő értékeket lehet lecserélni `amsaccount` `storageaccountforams` : (meg kell egyeznie a Storage-fiókhoz megadott értékkel `amsResourceGroup` ), és (meg kell egyeznie az erőforráscsoport számára megadott értékkel).  
+Az alábbi Azure CLI-parancs egy új Media Services-fiókot hoz létre. A következő értékeket lehet lecserélni: `amsaccount` `storageaccountforams` (meg kell egyeznie a Storage-fiókhoz megadott értékkel), és `amsResourceGroup` (meg kell egyeznie az erőforráscsoport számára megadott értékkel).  
 
 ```azurecli
 az ams account create --name amsaccount \

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 2c9287e6f4bda429309dd0041215b271678d03d3
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: e71cd5f3989a175f883f3a08b4f55d36a154dcee
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860698"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753473"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor
 
@@ -25,7 +25,7 @@ A minták használatának alapvető lépései a következők:
 2. Módosítsa a környezet paramétereit, és mentse JSON-fájlként.
 4. A sablon üzembe helyezése a [Resource Manager-sablonok bármely üzembe helyezési módszerének](../../azure-resource-manager/templates/deploy-powershell.md)használatával. 
 
-Az alábbi parancsokkal például telepítheti a sablont és a paramétereket tartalmazó fájlt az előfizetésbe a PowerShell vagy az Azure CLI használatával.
+Például az alábbi parancsokkal telepítheti a sablont és a paramétereket tartalmazó fájlt egy erőforráscsoporthoz a PowerShell vagy az Azure CLI használatával.
 
 
 ```powershell
@@ -36,7 +36,7 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 
 ```azurecli
 az login
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file azure-monitor-deploy.json \

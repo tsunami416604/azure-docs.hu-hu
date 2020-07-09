@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 737587ccf46d4af292dc11d37567249c13260f51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565500"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
 
@@ -66,8 +66,11 @@ Azure Active Directory hitelesítés a következő módszereket támogatja az ad
 - Integrált Azure Active Directory
 - Univerzális Azure Active Directory MFA-val
 - Active Directory alkalmazás-tanúsítványok vagy ügyfél-titkos kulcsok használata
+- [Felügyelt identitás](howto-connect-with-managed-identity.md)
 
 Miután hitelesítette a Active Directory, lekérheti a tokent. Ez a jogkivonat a bejelentkezéshez használt jelszó.
+
+Vegye figyelembe, hogy a felügyeleti műveletek, például az új felhasználók hozzáadása csak az Azure AD-beli felhasználói szerepkörök esetében támogatottak.
 
 > [!NOTE]
 > A Active Directory-tokenekkel való kapcsolódással kapcsolatos további információkért lásd: [Konfigurálás és bejelentkezés az Azure ad-vel a Azure Database for PostgreSQLhoz](howto-configure-sign-in-aad-authentication.md).

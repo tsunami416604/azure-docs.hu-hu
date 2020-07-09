@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64868310"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Fájlok feltöltése Azure Media Services-fiókba az Azure StorSimple-ből  
@@ -36,7 +36,7 @@ A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategy
 
 Az [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) a felhőalapú tárolót a helyszíni tároló kiterjesztéseként használja, és automatikusan rétegzi az adatokat a helyszíni és a felhőalapú tárolók közt. A StorSimple-eszköz deduplikálja és tömöríti az adatokat, mielőtt a felhőbe küldené azokat, így nagyon hatékony eszköz a nagyméretű fájlok a felhőbe továbbításához. A [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) szolgáltatás nyújtotta API-k segítségével az adatok kinyerhetők a StorSimple-ből, és megjeleníthetők AMS-objektumokként.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 1. [Hozzon létre egy Media Services-fiókot](media-services-portal-create-account.md), amelybe az objektumokat át szeretné vinni.
 2. Regisztráljon a Data Manager előzetes verziójára a [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) című cikkben leírtak szerint.
@@ -45,7 +45,7 @@ Az [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) a felhőalap
 
     Amikor a feladat futni kezd, a rendszer létrehoz egy tárolási sort. A sorba az átalakított blobokkal kapcsolatos üzenetek kerülnek, amint a blobok elkészültek. A sor neve megegyezik a feladatdefiníció nevével. A sor használatával megállapíthatja, hogy mikor készül el egy adott objektum, és meghívhatja és futtathatja rajta a kívánt Media Services-műveletet. Például a sor használatával aktiválhat egy Azure Functions-függvényt, amely tartalmazza a szükséges Media Services-kódot.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [A .NET SDK használata a feladatok elindításához a Data Manager](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 

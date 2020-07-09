@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759591"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
@@ -33,10 +32,10 @@ A diagnosztikai naplókban megtekintheti az **401003 IoTHubUnauthorized**és a *
 A következő hibaüzenetek egyikével sikertelen IoT Hub kérelmek:
 
 * Az engedélyezési fejléc hiányzik
-* A (\*z) "" IotHub nem tartalmazza a\*megadott "" eszközt
-* A (z\*) "" engedélyezési szabály nem engedélyezi\*a (z) "" elérését
+* A (z) " \* " IotHub nem tartalmazza a megadott " \* " eszközt
+* A (z) "" engedélyezési szabály \* nem engedélyezi a (z) "" elérését \*
 * Az eszköz hitelesítése nem sikerült, a jogkivonat vagy tanúsítvány megújítása és újracsatlakoztatás
-* Az ujjlenyomat nem felel meg a konfigurációnak: ujjlenyomat\*: SHA1Hash =\*, SHA2Hash =; Konfiguráció: PrimaryThumbprint =\*, SecondaryThumbprint =\*
+* Az ujjlenyomat nem felel meg a konfigurációnak: ujjlenyomat: SHA1Hash = \* , SHA2Hash = \* ; Konfiguráció: PrimaryThumbprint = \* , SecondaryThumbprint =\*
 
 ## <a name="cause"></a>Ok
 
@@ -56,13 +55,13 @@ A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát.
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="solution-1"></a>1. megoldás
+### <a name="solution-1"></a>1\. megoldás
 
 Nincs szükség beavatkozásra, ha az IoT SDK-t használja az eszköz kapcsolati karakterláncával való kapcsolathoz. A IoT SDK újragenerálta az új tokent az SAS-jogkivonat lejáratának újrakapcsolódásához. 
 
 Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújítja az SAS-jogkivonatot a lejárat előtt. Emellett a AMQP az SAS-jogkivonat a kapcsolat leválasztása nélkül is frissíthető.
 
-### <a name="solution-2"></a>2. megoldás
+### <a name="solution-2"></a>2\. megoldás
 
 Általánosságban elmondható, hogy a hibaüzenet kijavításának módját a következő üzenet ismerteti:. Ha valamilyen okból nem fér hozzá a hibaüzenet részleteihez, ügyeljen a következőre:
 

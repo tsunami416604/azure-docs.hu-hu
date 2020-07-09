@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83759115"
 ---
 # <a name="sky-reflections"></a>Égbolt tükröződése
@@ -135,7 +135,7 @@ Az Azure Remote rendering számos beépített környezeti leképezést biztosít
 |builtin://WinterRiver              | Nappali és világos környezeti alapfény                 | ![WinterRiver](media/winter-river.png)
 |builtin://DefaultSky               | Ugyanaz, mint a TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fények](../../overview/features/lights.md)
 * [Anyagok](../../concepts/materials.md)

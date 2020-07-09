@@ -2,27 +2,23 @@
 title: Azure Automation Update Management problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801886"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
 Ez a cikk azokat a problémákat ismerteti, amelyekkel a Update Management funkciónak a gépeken való telepítésekor futhat. A hibrid Runbook-feldolgozó ügynöknek van egy ügynök-hibakeresője a mögöttes probléma meghatározásához. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [Windows Update Agent problémáinak elhárítása](update-agent-issues.md) és a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues-linux.md)című témakört. A szolgáltatással kapcsolatos egyéb problémák esetén lásd: a [funkciók üzembe helyezésével kapcsolatos problémák elhárítása](onboarding.md).
 
 >[!NOTE]
->Ha a virtuális gépeken Update Management telepítésekor problémákba lép, tekintse meg a helyi számítógép **alkalmazás-és szolgáltatások naplói** területén található **Operations Manager** naplót. Keresse meg a 4502-as AZONOSÍTÓJÚ eseményt és a benne található esemény részleteit `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
+>Ha a Update Management Windows rendszerű gépen való telepítésekor problémákba lép, nyissa meg a Windows Eseménynaplót, és ellenőrizze az **Operations Manager** eseménynaplót a helyi számítógép **alkalmazás-és szolgáltatások naplói** területén. Keresse meg a 4502-as AZONOSÍTÓJÚ eseményt és a benne található esemény részleteit `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Forgatókönyv: a "nem sikerült engedélyezni a frissítési megoldást" hibaüzenet jelenik meg
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Forgatókönyv: a "nem sikerült engedélyezni a frissítési megoldást" hibaüzenet jelenik meg
 
 ### <a name="issue"></a>Probléma
 
@@ -48,9 +44,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * A [hálózati konfiguráció](../automation-hybrid-runbook-worker.md#network-planning) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a Update Management működéséhez.  
 
-* A [hálózati konfiguráció](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a log Analytics-ügynök működéséhez.
-
-* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-scope-configurations-update-management.md) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem a Update Management-portálon, akkor a hatókör-konfigurációt úgy kell beállítania, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-scope-configurations-update-management.md) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell beállítani, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Távolítsa el a munkavégző konfigurációt a [hibrid Runbook-feldolgozó eltávolítása helyszíni Windows-számítógépről](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) vagy a [hibrid Runbook-](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)feldolgozó eltávolítása egy helyszíni Linux-számítógépről című témakör lépéseit követve. 
 
@@ -155,7 +149,7 @@ Az Automation erőforrás-szolgáltató regisztrálásához hajtsa végre az al�
 
 1. A portál alján található Azure-szolgáltatások listájában válassza a **minden szolgáltatás**lehetőséget, majd válassza az **előfizetések** lehetőséget az általános szolgáltatás csoportban.
 
-2. Válassza ki előfizetését.
+2. Válassza ki az előfizetését.
 
 3. A **Beállítások**területen válassza az **erőforrás-szolgáltatók**elemet.
 
@@ -608,7 +602,7 @@ Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és bizton
 
 A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 

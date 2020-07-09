@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731883"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for MySQL számítási erőforrások számára fenntartott kapacitással
@@ -38,7 +38,7 @@ Tegyük fel például, hogy egy általános célt futtat, Gen5 – 32 virtuális
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Azure Database for MySQL fenntartott kapacitás vásárlása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza **a minden szolgáltatás** > **foglalás**lehetőséget.
+2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget, majd a foglalások ablaktáblán válassza a **Azure Database for MySQL** lehetőséget a MySQL-adatbázisok új foglalásának megvásárlásához.
 4. Töltse ki a kötelező mezőket. Meglévő vagy új adatbázisok, amelyek megfelelnek a kiválasztott attribútumoknak, a fenntartott kapacitás kedvezményét kapják meg. A kedvezményt megkapó Azure Database for MySQL kiszolgálók tényleges száma függ a hatókörtől és a kiválasztott mennyiségtől.
 
@@ -55,12 +55,12 @@ A következő táblázat a kötelező mezőket ismerteti.
 | Régió | Az Azure Database for MySQL fenntartott kapacitás foglalása által érintett Azure-régió.
 | Központi telepítés típusa | Az a Azure Database for MySQL erőforrástípus, amelyre a foglalást megvásárolni szeretné.
 | Teljesítményszint | A Azure Database for MySQL-kiszolgálók szolgáltatási szintje.
-| Időtartam | Egy év
+| Kifejezés | Egy év
 | Mennyiség | A Azure Database for MySQL fenntartott kapacitás foglalása keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például olyan Azure Database for MySQL-kiszolgálókat futtat, amelyeken az USA keleti régiójában az Gen5 16 virtuális mag teljes számítási kapacitása fut, akkor az összes kiszolgáló előnyének maximalizálása érdekében a 16-as mennyiséget kell megadnia.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 

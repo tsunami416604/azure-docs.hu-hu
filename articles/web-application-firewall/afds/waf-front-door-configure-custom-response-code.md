@@ -1,36 +1,51 @@
 ---
-title: Egyéni válasz beállítása WAF az Azure bejárati ajtóval
-description: Megtudhatja, hogyan konfigurálhat egyéni hibakódot és üzenetet, ha a webalkalmazási tűzfal (WAF) egy kérést blokkol.
+title: A webalkalmazási tűzfal (WAF) egyéni válaszának konfigurálása az Azure bejárati ajtóval
+description: Megtudhatja, hogyan konfigurálhat egyéni hibakódot és üzenetet, ha WAF blokkol egy kérést.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 14e4ccdf17647823dc9e1005c1c68a9f1f217b9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726375"
 ---
-# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Egyéni válasz konfigurálása az Azure webalkalmazási tűzfalhoz
+# <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Egyéni válasz konfigurálása az Azure webalkalmazási tűzfal (WAF) számára
 
-Alapértelmezés szerint, ha az Azure-webalkalmazási tűzfal (WAF) és az Azure bejárati ajtó blokkolja a kérelmet egy egyeztetett szabály miatt, egy 403 állapotkódot ad vissza, amely **a kérésben blokkolt** üzenet. Ez a cikk azt ismerteti, hogyan konfigurálható egy egyéni válasz állapotkódot és válaszüzenetet, ha a WAF letiltotta a kérelmet.
+Ha a WAF egy egyeztetett szabály miatt blokkol egy kérést, alapértelmezés szerint egy 403-es állapotkódot ad vissza, amely **a kérésben blokkolt** üzenet. Az alapértelmezett üzenet tartalmazza a követési hivatkozási karakterláncot is, amely a kérelem [bejegyzéseihez](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor) való hivatkozással használható.  A használati esethez beállíthat egy egyéni válasz állapotkódot és egy egyéni üzenetet, amely hivatkozási karakterláncot tartalmaz. Ez a cikk azt ismerteti, hogyan konfigurálható egy egyéni válasz oldal, ha a WAF egy kérést blokkol.
 
-## <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
+## <a name="configure-custom-response-status-code-and-message-use-portal"></a>Az egyéni válasz állapotának beállítása és az üzenet használata portál
+
+A WAF-portálon a "házirend-beállítások" területen konfigurálhatja az egyéni válasz állapotkódot és törzsét.
+
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF házirend-beállítások":::
+
+A fenti példában megtartottuk a 403-as hibakódot, és egy rövid "Kérjük, vegye fel velünk a kapcsolatot" üzenet jelenik meg az alábbi képen látható módon:
+
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Egyéni válasz – példa":::
+
+a (z) {{Azure-ref}} beilleszti az egyedi hivatkozási karakterláncot a válasz törzsében. Az érték megegyezik a és a naplók TrackingReference mezőjével `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` .
+
+## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>Az egyéni válasz állapotkód és az üzenet konfigurálása a PowerShell használatával
+
+### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
+
 Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modellt használják az Azure-erőforrások kezeléséhez. 
 
 Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be az Azure-beli hitelesítő adataival, és telepítse az az PowerShell-modult.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Kapcsolódás az Azure-hoz interaktív párbeszédablak a bejelentkezéshez
+
 ```
 Connect-AzAccount
 Install-Module -Name Az
+
 ```
 Győződjön meg arról, hogy a PowerShellGet aktuális verziója telepítve van. Futtassa az alábbi parancsot, majd nyissa meg a PowerShellt újból.
-
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
@@ -40,17 +55,17 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Ebben a példában egy erőforráscsoportot hoz létre a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)használatával.
+Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Itt hozzunk létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)használatával.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
 ```
 
-## <a name="create-a-new-waf-policy-with-custom-response"></a>Új WAF-házirend létrehozása egyéni választal 
+### <a name="create-a-new-waf-policy-with-custom-response"></a>Új WAF-házirend létrehozása egyéni választal 
 
-Az alábbi példa egy új WAF szabályzat létrehozását mutatja be, amely az egyéni válasz állapotkód 405-ra van beállítva, és az üzenet, **amelyet Ön blokkol.** a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használata.
+Az alábbi példa egy új WAF szabályzat létrehozását mutatja be, amely az egyéni válasz állapotkód 405 értékre van állítva, az üzenetet pedig **letiltotta.** a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)
 
 ```azurepowershell
 # WAF policy setting
@@ -80,7 +95,7 @@ Update-AzFrontDoorFireWallPolicy `
 Update-AzFrontDoorFireWallPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
--CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"
+-CustomBlockResponseBody "<html><head><title>Forbidden</title></head><body>{{azure-ref}}</body></html>"
 ```
 
 ## <a name="next-steps"></a>További lépések

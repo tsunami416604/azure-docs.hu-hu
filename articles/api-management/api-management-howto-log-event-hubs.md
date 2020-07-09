@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871258"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Események naplózása az Azure Event Hubsba az Azure-ban API Management
@@ -45,8 +44,8 @@ Ha a naplózó konfigurálva van API Managementban, beállíthatja a eventhub-h�
 5. A képernyő felső részén válassza a tervezés lapot.
 6. A bejövő vagy kimenő feldolgozási ablakban kattintson a háromszögre (a ceruza mellett).
 7. Válassza ki a Kódszerkesztőt. További információ: [szabályzatok beállítása vagy szerkesztése](set-edit-policies.md).
-8. Vigye a kurzort a `inbound` vagy `outbound` a házirend szakaszba.
-9. A jobb oldali ablakban válassza a **speciális szabályzatok** > **napló EventHub**lehetőséget. Ez beszúrja `log-to-eventhub` a házirend-utasítás sablonját.
+8. Vigye a kurzort a `inbound` vagy a `outbound` házirend szakaszba.
+9. A jobb oldali ablakban válassza a **speciális szabályzatok**  >  **napló EventHub**lehetőséget. Ez beszúrja a `log-to-eventhub` házirend-utasítás sablonját.
 
 ```xml
 <log-to-eventhub logger-id="logger-id">
@@ -61,9 +60,9 @@ Ha a naplózó konfigurálva van API Managementban, beállíthatja a eventhub-h�
     }
 </log-to-eventhub>
 ```
-Cserélje `logger-id` le a értéket a kérelem URL `{loggerId}` -címében használt értékre az előző lépésben létrehozott naplózó létrehozásához.
+Cserélje le a `logger-id` értéket a kérelem URL-címében használt értékre az `{loggerId}` előző lépésben létrehozott naplózó létrehozásához.
 
-Bármely olyan kifejezést használhat, amely egy karakterláncot ad vissza a `log-to-eventhub` elem értékeként. Ebben a példában egy JSON formátumú karakterláncot, amely a dátumot és az időt, a szolgáltatásnév, a kérelem azonosítóját, a kérelem IP-címét és a művelet nevét tartalmazza.
+Bármely olyan kifejezést használhat, amely egy karakterláncot ad vissza a elem értékeként `log-to-eventhub` . Ebben a példában egy JSON formátumú karakterláncot, amely a dátumot és az időt, a szolgáltatásnév, a kérelem azonosítóját, a kérelem IP-címét és a művelet nevét tartalmazza.
 
 A frissített házirend-konfiguráció mentéséhez kattintson a **Mentés** gombra. Amint menti a szabályzatot, a rendszer aktív állapotba kerül, és az eseményeket a kijelölt Event hub-ba naplózza.
 

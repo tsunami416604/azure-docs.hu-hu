@@ -9,23 +9,23 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 287344b325237843a549973ae61f569eae6dac93
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 85cf251db69d33f02e928eaea6a848f20ae7d923
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202270"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310291"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision inaktív adatok titkosítása
 
 Az Azure Custom Vision automatikusan titkosítja az adatait, amikor a felhőben megmaradt. Custom Vision titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
-[!INCLUDE [cognitive-services-about-encryption](../../../includes/cognitive-services-about-encryption.md)]
+[!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok csak az 2020. május 11. után létrehozott erőforrások. Ahhoz, hogy a CMK a Custom Vision használatával használhassa, létre kell hoznia egy új Custom Vision-erőforrást. Az erőforrás létrehozása után a Azure Key Vault használatával beállíthatja a felügyelt identitást.
 
-### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Az ügyfél által felügyelt kulcsok jelenleg ezekben a régiókban érhetők el:
 
@@ -34,11 +34,10 @@ Az ügyfél által felügyelt kulcsok jelenleg ezekben a régiókban érhetők e
 * USA keleti régiója
 * USA-beli államigazgatás – Virginia
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk.md)]
+[!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Custom Vision ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
-* [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-
+* A CMK támogató szolgáltatások teljes listájáért lásd: [ügyfél által felügyelt kulcsok Cognitive Services](../encryption/cognitive-services-encryption-keys-portal.md)
+* [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+* [Cognitive Services ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)

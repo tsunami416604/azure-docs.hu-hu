@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415283"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamat végrehajtása tevékenység Azure Data Factory
@@ -26,7 +26,7 @@ A Folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyam
 
 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -66,8 +66,8 @@ A Folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyam
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A folyamat végrehajtása tevékenység neve. | Sztring | Igen
-type | A következő értékre kell állítani: **ExecutePipeline**. | Sztring | Igen
+name | A folyamat végrehajtása tevékenység neve. | Sztring | Igen
+típus | A következő értékre kell állítani: **ExecutePipeline**. | Sztring | Igen
 folyamat | A folyamat által meghívott függő folyamathoz tartozó folyamatra mutató hivatkozás. A folyamat hivatkozási objektumának két tulajdonsága van: **hivatkozásnév** és **Type**. A hivatkozásnév tulajdonság a hivatkozási folyamat nevét adja meg. A Type tulajdonságot PipelineReference értékre kell beállítani. | PipelineReference | Igen
 paraméterek | A meghívott folyamatnak átadandó paraméterek | Egy JSON-objektum, amely a paraméterek nevét az argumentum értékére képezi. | Nem
 waitOnCompletion | Meghatározza, hogy a tevékenység-végrehajtás megvárja-e a függő folyamat végrehajtásának befejeződését. Az alapértelmezett érték a false (hamis). | Logikai | Nem
@@ -75,8 +75,8 @@ waitOnCompletion | Meghatározza, hogy a tevékenység-végrehajtás megvárja-e
 ## <a name="sample"></a>Sample
 Ennek a forgatókönyvnek két folyamata van:
 
-- **Főfolyamat** – ez a folyamat egyetlen végrehajtási folyamattal rendelkezik, amely meghívja a meghívott folyamatot. A fő folyamat két paramétert vesz `masterSourceBlobContainer`igénybe:, `masterSinkBlobContainer`.
-- **Meghívott folyamat** – ez a folyamat egy másolási tevékenységgel rendelkezik, amely egy Azure Blob-forrásból származó adatok másolását végzi az Azure Blob fogadóba. A meghívott folyamat két paramétert vesz `sourceBlobContainer`igénybe:, `sinkBlobContainer`.
+- **Főfolyamat** – ez a folyamat egyetlen végrehajtási folyamattal rendelkezik, amely meghívja a meghívott folyamatot. A fő folyamat két paramétert vesz igénybe: `masterSourceBlobContainer` , `masterSinkBlobContainer` .
+- **Meghívott folyamat** – ez a folyamat egy másolási tevékenységgel rendelkezik, amely egy Azure Blob-forrásból származó adatok másolását végzi az Azure Blob fogadóba. A meghívott folyamat két paramétert vesz igénybe: `sourceBlobContainer` , `sinkBlobContainer` .
 
 ### <a name="master-pipeline-definition"></a>Fő folyamat definíciója
 

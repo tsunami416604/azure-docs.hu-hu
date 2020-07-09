@@ -1,23 +1,24 @@
 ---
 title: Kapcsolatok karakterláncai – Azure Database for MySQL
-description: Ez a dokumentum felsorolja a jelenleg támogatott kapcsolati karakterláncokat, amelyekkel az alkalmazások csatlakozhatnak a Azure Database for MySQLhoz, beleértve a ADO.NET (C#), a JDBC, a Node. js, az ODBC, a PHP, a Python és a Ruby alkalmazásokat.
+description: Ez a dokumentum felsorolja a jelenleg támogatott kapcsolati karakterláncokat, amelyekkel az alkalmazások csatlakozhatnak a Azure Database for MySQLhoz, beleértve a ADO.NET (C#), a JDBC, a Node.js, az ODBC, a PHP, a Python és a Ruby alkalmazást.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e5fb5819c1f88cab959be0d1256584174db5c57a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062393"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118613"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Alkalmazások csatlakoztatása az Azure Database for MySQL-adatbázishoz
 Ez a témakör felsorolja a Azure Database for MySQL által támogatott, a sablonokkal és példákkal együtt támogatott kapcsolatok karakterlánc-típusokat. Előfordulhat, hogy a kapcsolatok karakterláncában különböző paraméterek és beállítások vannak.
 
 - A tanúsítvány beszerzéséhez lásd: [az SSL konfigurálása](./howto-configure-ssl.md).
-- {your_host} = \<servername>. mysql.database.Azure.com
+- {your_host} = \<servername> . mysql.database.Azure.com
 - {your_user} @ {servername} = userID-formátum a hitelesítéshez.  Ha csak a felhasználóazonosító-t használja, a hitelesítés sikertelen lesz.
 
 ## <a name="adonet"></a>ADO.NET
@@ -25,7 +26,7 @@ Ez a témakör felsorolja a Azure Database for MySQL által támogatott, a sablo
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-Ebben a példában a kiszolgáló `mydemoserver`neve, az adatbázis neve `wpdb`, a Felhasználónév `WPAdmin`és a jelszó. `mypassword!2` Ennek eredményeképpen a kapcsolatok karakterláncának a következőképpen kell szerepelnie:
+Ebben a példában a kiszolgáló neve `mydemoserver` , az adatbázis neve `wpdb` , a Felhasználónév `WPAdmin` és a jelszó `mypassword!2` . Ennek eredményeképpen a kapcsolatok karakterláncának a következőképpen kell szerepelnie:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,9 +63,9 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati sztring részleteinek beolvasása a Azure Portal
-A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MySQL-kiszolgálót, majd kattintson a **kapcsolódási karakterláncok** lehetőségre a példányhoz tartozó karakterlánc ![-lista lekéréséhez: a kapcsolódási karakterláncok panel a Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MySQL-kiszolgálót, majd kattintson a **kapcsolódási karakterláncok** lehetőségre a példányhoz tartozó karakterlánc-lista lekéréséhez: ![ a kapcsolódási karakterláncok panel a Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 A karakterlánc olyan adatokat tartalmaz, mint például az illesztőprogram, a kiszolgáló és más adatbázis-kapcsolati paraméterek. Módosítsa ezeket a példákat saját paraméterek használatára, például az adatbázis nevére, jelszavára stb. Ezt a karakterláncot használhatja a kód és az alkalmazások kiszolgálóhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a kapcsolatok könyvtárairól: [fogalmak – kapcsolatok kódtárai](./concepts-connection-libraries.md).

@@ -3,16 +3,16 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402381"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135485"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
-Szolgáltatóként az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md) használatával több ügyfél számára is kezelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com)a saját bérlőn belül. A legtöbb feladat és szolgáltatás elvégezhető delegált Azure-erőforrásokon a felügyelt bérlők között. Ez a cikk néhány olyan továbbfejlesztett forgatókönyvet ismertet, amelyekben az Azure-beli delegált erőforrás-kezelés hatékony lehet.
+Szolgáltatóként az [Azure Lighthouse](../overview.md) segítségével több ügyfél számára is kezelheti az erőforrásokat a [Azure Portal](https://portal.azure.com)saját bérlőn belül. Számos feladat és szolgáltatás elvégezhető az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)használatával felügyelt bérlők között delegált Azure-erőforrásokon.
 
 > [!NOTE]
 > Az Azure-beli delegált erőforrás-kezelés [olyan vállalaton belül is felhasználható, amely több Azure ad-Bérlővel rendelkezik a több](enterprise.md) -bérlős felügyelet egyszerűsítése érdekében.
@@ -23,9 +23,9 @@ Egy Azure Active Directory (Azure AD) bérlő egy szervezet képviselete. Ez az 
 
 Az ügyfelekhez tartozó Azure-erőforrások kezeléséhez általában a szolgáltatóknak az ügyfél bérlője által hozzárendelt fiókkal kell bejelentkezniük a Azure Portalba, és az ügyfél bérlője számára meg kell adni a rendszergazdának, hogy a szolgáltatóhoz tartozó felhasználói fiókokat hozzanak létre és kezeljenek.
 
-Az Azure delegált erőforrás-kezeléssel a bevezetési folyamat meghatározza a szolgáltató bérlője azon felhasználóit, akik hozzá tudnak férni és kezelhetnek előfizetéseket, erőforráscsoportokat és erőforrásokat az ügyfél bérlője számára. Ezek a felhasználók ezután a saját hitelesítő adataikkal jelentkezhetnek be a Azure Portalba. A Azure Portalon belül az összes olyan ügyfél erőforrásait kezelhetik, amelyhez hozzáféréssel rendelkeznek. Ezt úgy teheti meg, hogy felkeresi a [saját ügyfelek](../how-to/view-manage-customers.md) lapját a Azure Portalon, vagy közvetlenül az ügyfél előfizetésének kontextusában, akár a Azure Portal, akár API-n keresztül.
+Az Azure Lighthouse használatával a bevezetési folyamat meghatározza a szolgáltató bérlőn belüli felhasználókat, akik hozzáférhetnek és kezelhetnek előfizetéseket, erőforráscsoportokat és erőforrásokat az ügyfél bérlője számára. Ezek a felhasználók ezután a saját hitelesítő adataikkal jelentkezhetnek be a Azure Portalba. A Azure Portalon belül az összes olyan ügyfél erőforrásait kezelhetik, amelyhez hozzáféréssel rendelkeznek. Ezt úgy teheti meg, hogy felkeresi a [saját ügyfelek](../how-to/view-manage-customers.md) lapját a Azure Portalon, vagy közvetlenül az ügyfél előfizetésének kontextusában, akár a Azure Portal, akár API-n keresztül.
 
-Az Azure-beli delegált erőforrás-kezelés nagyobb rugalmasságot biztosít a több ügyfél erőforrásainak kezeléséhez anélkül, hogy a különböző bérlők különböző fiókjaiba kellene bejelentkezniük. Előfordulhat például, hogy a szolgáltatónak két ügyfele van, akik eltérő felelősséggel és hozzáférési szinttel rendelkeznek. Az Azure delegált erőforrás-kezelés használatával a jogosult felhasználók bejelentkezhetnek a szolgáltató bérlőbe az erőforrások eléréséhez.
+Az Azure Lighthouse nagyobb rugalmasságot biztosít a több ügyfél erőforrásainak kezeléséhez anélkül, hogy a különböző bérlők különböző fiókjaiba kellene bejelentkezniük. Előfordulhat például, hogy a szolgáltatónak két ügyfele van, akik eltérő felelősséggel és hozzáférési szinttel rendelkeznek. Az Azure Lighthouse használatával a jogosult felhasználók bejelentkezhetnek a szolgáltató bérlőbe az erőforrások eléréséhez.
 
 ![Egy szolgáltatói bérlőn keresztül kezelt ügyfelek erőforrásai](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -33,22 +33,22 @@ Az Azure-beli delegált erőforrás-kezelés nagyobb rugalmasságot biztosít a 
 
 A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával is elvégezheti a felügyeleti feladatokat. A rendszer minden meglévő API-t felhasználhat a delegált erőforrások használata esetén, ha a funkció támogatott a több-bérlős felügyelet esetében, és a felhasználó rendelkezik a megfelelő engedélyekkel.
 
-A Azure PowerShell [Get-AzSubscription parancsmag](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) megjeleníti az egyes előfizetések **tenantID** , így azonosíthatja, hogy a visszaadott előfizetés a szolgáltatói bérlőhöz vagy egy felügyelt ügyfél bérlőhöz tartozik-e.
+A Azure PowerShell [Get-AzSubscription parancsmag](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) megjeleníti az egyes előfizetések **tenantID** , így azonosíthatja, hogy a visszaadott előfizetés a szolgáltatói bérlőhöz vagy egy felügyelt ügyfél bérlőhöz tartozik-e.
 
-Hasonlóképpen, az Azure CLI-parancsok, például az [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) a **HomeTenantId** és a **managedByTenants** attribútumot jelenítik meg.
+Hasonlóképpen, az Azure CLI-parancsok, például az [az Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) a **HomeTenantId** és a **managedByTenants** attribútumot jelenítik meg.
 
 > [!TIP]
 > Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel próbálja meg törölni a gyorsítótárat `az account clear` `az login --identity` .
 
-Olyan API-kat is biztosítunk, amelyek kifejezetten az Azure-beli delegált erőforrás-kezelési feladatok végrehajtásához szükségesek. További információért lásd a **hivatkozási** szakaszt.
+Olyan API-kat is biztosítunk, amelyek az Azure Lighthouse-feladatok végrehajtására vonatkoznak. További információért lásd a **hivatkozási** szakaszt.
 
 ## <a name="enhanced-services-and-scenarios"></a>Továbbfejlesztett szolgáltatások és forgatókönyvek
 
-A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrásain végezhető el. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet is hatásos lehet.
+A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrásain végezhető el. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet különösen hatékony lehet.
 
 [Azure arc for Servers (előzetes verzió)](../../azure-arc/servers/overview.md):
 
-- A [Windows Server vagy Linux rendszerű gépek összekötése az Azure](../../azure-arc/servers/quickstart-onboard-portal.md) -on kívül az Azure-ban delegált előfizetésekkel és/vagy erőforráscsoportok
+- A [Windows Server vagy Linux rendszerű gépek összekötése az Azure](../../azure-arc/servers/onboard-portal.md) -on kívül az Azure-ban delegált előfizetésekkel és/vagy erőforráscsoportok
 - Csatlakoztatott gépek kezelése Azure-konstrukciók használatával, például Azure Policy és címkézés
 
 [Azure Automation](../../automation/index.yml):
@@ -60,6 +60,10 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 - Ügyféladatok biztonsági mentése és visszaállítása az ügyfelek bérlői számára
 - A [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági másolati elemek működési információit (beleértve a biztonsági mentéshez még nem konfigurált Azure-erőforrásokat), valamint a delegált előfizetések figyelési információit (feladatok és riasztások). A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
 - [Készítsen biztonsági mentési jelentéseket](../../backup/configure-reports.md) a delegált előfizetések között a korábbi trendek nyomon követéséhez, a biztonsági mentési tárolók felhasználásának elemzéséhez, valamint a biztonsági másolatok és visszaállítások ellenőrzéséhez
+
+[Azure Cost Management + számlázás](../../cost-management-billing/index.yml):
+
+- A bérlők felügyeletével a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik az előfizetéssel kapcsolatos költségeket (nem tartalmazza a vásárlásokat) az Azure-csomag alatti ügyfelek számára. A költségek a kiskereskedelmi díjszabáson és az Azure RBAC-hozzáférésen alapulnak, amelyet a partner az ügyfél előfizetéséhez biztosít.
 
 [Azure Kubernetes szolgáltatás (ak)](../../aks/index.yml):
 
@@ -99,7 +103,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
   - Folyamatos szabályozási megfelelőség monitorozása több ügyfél között egyetlen nézetben
   - Gyakorlati biztonsági javaslatok monitorozása, osztályozása és rangsorolása biztonságos pontszámok számításával
 - Több-bérlős biztonsági testhelyzet kezelése
-  - Biztonsági házirendek kezelése
+  - Biztonsági szabályzatok kezelése
   - Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a végrehajtható biztonsági javaslatoknak
   - Biztonsággal kapcsolatos adatok gyűjtése és tárolása
 - Több-bérlős fenyegetések észlelése és védelme
@@ -143,9 +147,8 @@ Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásoka
 - A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](../../role-based-access-control/built-in-roles.md)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepköröket. A felhasználói hozzáférés rendszergazdai szerepköre csak korlátozott használat esetén támogatott a [szerepkörök hozzárendeléséhez a felügyelt identitásokhoz](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 - A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
 - Míg az Azure-beli delegált erőforrás-kezeléshez az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok is bejelentkezhetnek, ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveleteket a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
-- A kezelő bérlő felhasználói nem férhetnek hozzá a delegált ügyfél-előfizetés számlázási adataihoz, még akkor is, ha olyan beépített szerepkörrel rendelkeznek, amely általában lehetővé teszi a hozzáférést. Ennek az az oka, hogy a számlázási adatokhoz való hozzáféréshez olyan további lépések szükségesek, amelyek jelenleg csak ugyanazon bérlőn belüli felhasználók számára támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
 - [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

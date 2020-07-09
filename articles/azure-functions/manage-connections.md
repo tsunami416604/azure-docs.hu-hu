@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan kerülheti el a teljesítménnyel kapcsolatos p
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846768"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése Azure Functionsban
 
@@ -16,7 +16,7 @@ Functions-alkalmazásokban lévő függvények erőforrásainak megosztása. A m
 
 ## <a name="connection-limit"></a>Kapcsolatok korlátja
 
-A rendelkezésre álló kapcsolatok száma részben korlátozott, mert egy Function alkalmazás egy sandbox- [környezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)fut. Az egyik korlátozás, amelyet a homokozó a kódban kiszab, korlátozza a kimenő kapcsolatok számát, amely jelenleg 600 aktív (1 200 összesen) kapcsolatra vonatkozik. Ha eléri ezt a korlátot, a functions futtatókörnyezet a következő üzenetet írja a naplókba: `Host thresholds exceeded: Connections`. További információt a [functions szolgáltatás korlátai](functions-scale.md#service-limits)című témakörben talál.
+A rendelkezésre álló kapcsolatok száma részben korlátozott, mert egy Function alkalmazás egy sandbox- [környezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)fut. Az egyik korlátozás, amelyet a homokozó a kódban kiszab, korlátozza a kimenő kapcsolatok számát, amely jelenleg 600 aktív (1 200 összesen) kapcsolatra vonatkozik. Ha eléri ezt a korlátot, a functions futtatókörnyezet a következő üzenetet írja a naplókba: `Host thresholds exceeded: Connections` . További információt a [functions szolgáltatás korlátai](functions-scale.md#service-limits)című témakörben talál.
 
 Ez a korlát/példány. Ha a [méretezési vezérlő](functions-scale.md#how-the-consumption-and-premium-plans-work) felvette a több kérés kezelésére szolgáló Function app-példányokat, minden példányhoz tartozik egy független kapcsolódási korlát. Ez azt jelenti, hogy nincs globális kapcsolati korlát, és az összes aktív példányon több mint 600 aktív kapcsolat lehet.
 
@@ -52,13 +52,13 @@ public static async Task Run(string input)
 }
 ```
 
-A .NET-beli [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) kapcsolatos gyakori kérdés, hogy "érdemes megsemmisíteni az ügyfelem?" Általánosságban elmondható, hogy olyan objektumokat távolít el `IDisposable` , amelyek a használat közben lépnek érvénybe. Azonban nem távolítja el a statikus ügyfelet, mert a függvény befejeződése után nem használja. Azt szeretné, hogy a statikus ügyfél az alkalmazás időtartamára éljünk.
+A .NET-beli [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) kapcsolatos gyakori kérdés, hogy "érdemes megsemmisíteni az ügyfelem?" Általánosságban elmondható, hogy olyan objektumokat távolít el, amelyek a használat közben lépnek érvénybe `IDisposable` . Azonban nem távolítja el a statikus ügyfelet, mert a függvény befejeződése után nem használja. Azt szeretné, hogy a statikus ügyfél az alkalmazás időtartamára éljünk.
 
 ### <a name="http-agent-examples-javascript"></a>HTTP-ügynökre vonatkozó példák (JavaScript)
 
-Mivel jobb ügyfélkapcsolat-kezelési lehetőségeket biztosít, a natív [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) osztályt kell használnia a nem natív metódusok helyett, például a `node-fetch` modult. A kapcsolatok paramétereinek beállítása az `http.agent` osztály beállításain keresztül történik. A HTTP-ügynökkel elérhető részletes beállításokért lásd: [új ügynök\[(\]beállítások)](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Mivel jobb ügyfélkapcsolat-kezelési lehetőségeket biztosít, a natív osztályt kell használnia a [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) nem natív metódusok helyett, például a `node-fetch` modult. A kapcsolatok paramétereinek beállítása az osztály beállításain keresztül történik `http.agent` . A HTTP-ügynökkel elérhető részletes beállításokért lásd: [új ügynök ( \[ Beállítások \] )](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-A által `http.globalAgent` `http.request()` használt globális osztály mindegyik értéke a megfelelő alapértelmezett értékre van állítva. A függvényekben a kapcsolatok korlátainak konfigurálásához ajánlott módszer a maximális szám megadása globálisan. A következő példa a függvény alkalmazáshoz tartozó szoftvercsatornák maximális számát állítja be:
+A `http.globalAgent` által használt globális osztály `http.request()` mindegyik értéke a megfelelő alapértelmezett értékre van állítva. A függvényekben a kapcsolatok korlátainak konfigurálásához ajánlott módszer a maximális szám megadása globálisan. A következő példa a függvény alkalmazáshoz tartozó szoftvercsatornák maximális számát állítja be:
 
 ```js
 http.globalAgent.maxSockets = 200;
@@ -130,7 +130,7 @@ A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL
 ) kapcsolattól eltérően a ADO.NET alapértelmezés szerint implementálja a kapcsolatok készletezését. Mivel azonban továbbra is kifogyhat a kapcsolatok, érdemes optimalizálni a kapcsolatokat az adatbázissal. További információ: [SQL Server kapcsolatok készletezése (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projekt [Local. Settings. JSON fájljának](functions-run-local.md#local-settings-file) **kapcsolatok karakterlánc** -gyűjteményéből. Ha a [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
+> Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projektben lévő [local.settings.jsfájljának](functions-run-local.md#local-settings-file) a **kapcsolódási karakterláncok** gyűjteményéből. Ha a [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
 
 ## <a name="next-steps"></a>További lépések
 

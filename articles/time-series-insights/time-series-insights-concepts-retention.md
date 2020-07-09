@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81380688"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Az adatmegőrzés ismertetése Azure Time Series Insights
@@ -90,7 +90,7 @@ Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési
 
 [![Event hub-üzenetek megőrzése.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Ha az eseményforrás (`timeStampPropertyName`) egyik tulajdonság sincs konfigurálva, Time Series Insights alapértelmezett érték az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az események `timeStampPropertyName` elemzésekor az adatcsomagban konfigurált konfigurációt keresi.
+Ha az eseményforrás () egyik tulajdonság sincs konfigurálva `timeStampPropertyName` , Time Series Insights alapértelmezett érték az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az `timeStampPropertyName` események elemzésekor az adatcsomagban konfigurált konfigurációt keresi.
 
 Olvassa el, [Hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md) úgy, hogy a környezetét a további kapacitásra vagy a megőrzési időtartamra növelje.
 

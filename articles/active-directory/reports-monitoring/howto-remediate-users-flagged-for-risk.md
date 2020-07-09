@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608925"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
@@ -32,7 +31,7 @@ Ha a rendszer olyan szokatlan tevékenységeket észlel, amelyek egy bizonyos fe
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>A kockázatosként megjelölt felhasználókról szóló jelentés elérése
 
-Áttekintheti a kockázatnak kitett felhasználókat a Azure Portal [kockázati jelentésében lévő felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) számára. Ha nem rendelkezik Azure AD-val, regisztráljon ingyenesen a következő címen: [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). 
+Áttekintheti a kockázatnak kitett felhasználókat a Azure Portal [kockázati jelentésében lévő felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) számára. Ha nem rendelkezik Azure AD-val, regisztráljon ingyenesen a következő címen: [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) . 
 
 A kockázati jelentésre megjelölt felhasználók a következő műveleteket hajtják végre minden felhasználónál:
 
@@ -75,7 +74,7 @@ Végezze el a következő műveleteket az érintett fiókok javításához és a
 
     f. Magas jelszóösszetettség beállítása a fiókhoz.
 
-    g. A postaláda-naplózás engedélyezése.
+    : A postaláda-naplózás engedélyezése.
 
     h. Napló létrehozása a rendszergazdának a felülvizsgálathoz.
 

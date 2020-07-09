@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417963"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
@@ -34,15 +34,15 @@ Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 | @pipeline(). TriggerType | Az adatfolyamatot meghívó eseményindító típusa (manuális, ütemező) |
 | @pipeline(). TriggerId| A folyamatot meghívó trigger azonosítója |
 | @pipeline(). TriggerName| A folyamatot meghívó trigger neve |
-| @pipeline(). TriggerTime| A folyamatot meghívó eseményindító időpontja. Az aktiválási idő a tényleges kilőtt idő, nem az ütemezett időpont. Például `13:20:08.0149599Z` a visszaadott érték a következő helyett:`13:20:00.00Z` |
+| @pipeline(). TriggerTime| A folyamatot meghívó eseményindító időpontja. Az aktiválási idő a tényleges kilőtt idő, nem az ütemezett időpont. Például a `13:20:08.0149599Z` visszaadott érték a következő helyett:`13:20:00.00Z` |
 
 ## <a name="schedule-trigger-scope"></a>Trigger hatókörének ütemterve
 Ezek a rendszerváltozók az trigger JSON-ban bárhol szerepelhetnek, ha az trigger típusa: "ScheduleTrigger".
 
 | Változó neve | Leírás |
 | --- | --- |
-| @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Például egy 5 percenként elindított trigger esetén ez a változó a következőt fogja `2017-06-01T22:20:00Z`visszaadni `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` :.|
-| @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Például egy 5 percenként elindított trigger esetén ez a változó a következőhöz `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` hasonló értéket adhat vissza:. (Megjegyzés: az időbélyeg alapértelmezés szerint ISO 8601 formátumú)|
+| @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Például egy 5 percenként elindított trigger esetén ez a változó a következőt fogja visszaadni: `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` .|
+| @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Például egy 5 percenként elindított trigger esetén ez a változó a következőhöz hasonló értéket adhat vissza: `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` . (Megjegyzés: az időbélyeg alapértelmezés szerint ISO 8601 formátumú)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Kiesési ablak Triggerének hatóköre
 Ezek a rendszerváltozók az trigger JSON-ban bárhol szerepelhetnek, ha az trigger típusa: "TumblingWindowTrigger".

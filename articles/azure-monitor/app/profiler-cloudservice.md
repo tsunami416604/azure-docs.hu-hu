@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671664"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services a Application Insights
@@ -18,7 +17,7 @@ ms.locfileid: "77671664"
 A Application Insights Profiler a következő szolgáltatásokon is üzembe helyezhető:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric alkalmazások](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure-Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler telepítve van a Azure Diagnostics bővítménnyel. Csak konfigurálnia kell Azure Diagnostics a Profiler telepítéséhez és profilok küldéséhez a Application Insights-erőforráshoz.
 
@@ -43,7 +42,7 @@ Application Insights Profiler telepítve van a Azure Diagnostics bővítménnyel
 
       Ha nem találja a fájlt, olvassa el a [diagnosztika beállítása az Azure-Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Adja hozzá a `SinksConfig` következő szakaszt a gyermek elemeként `WadCfg`:  
+    b. Adja hozzá a következő `SinksConfig` szakaszt a gyermek elemeként `WadCfg` :  
 
       ```xml
       <WadCfg>
@@ -63,7 +62,7 @@ Application Insights Profiler telepítve van a Azure Diagnostics bővítménnyel
     > * A ApplicationInsights-fogadó által használt kulcs. 
     > * A ApplicationInsightsProfiler-fogadó által használt kulcs. 
     >
-    > Megkeresheti a fogadó által `ApplicationInsights` a ServiceConfiguration használt tényleges kialakítási kulcs értékét *.\* cscfg* -fájlok. 
+    > Megkeresheti a fogadó által a ServiceConfiguration használt tényleges kialakítási kulcs értékét `ApplicationInsights` *. \* cscfg* -fájlok. 
     > A Visual Studio 15,5 Azure SDK kiadása után csak az alkalmazás által használt rendszerállapot-kulcsok és a ApplicationInsightsProfiler kell egyezniük egymással.
 
 1. Telepítse a szolgáltatást az új diagnosztikai konfigurációval, és Application Insights Profiler konfigurálva van a szolgáltatáson való futtatásra.

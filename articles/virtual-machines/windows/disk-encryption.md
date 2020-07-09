@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 164ce87df77d81a7d36d4448f5d8da8287ed0a01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c3a73028350054d54c6714107bfdfa7ead3ee4a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610436"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -75,12 +75,11 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
 
 - Ha ez a funkció engedélyezve van a lemezen, nem tiltható le.
     Ha ennek megkerülésére van szüksége, az összes olyan felügyelt lemezre [át kell másolnia az összes](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) olyan felügyelt lemezt, amely nem használja az ügyfél által felügyelt kulcsokat.
-- Csak a 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/keys/about-keys.md) támogatottak, nincsenek más kulcsok vagy méretek.
+- Csak a 2080 méretű [szoftveres és HSM RSA-kulcsok](../../key-vault/keys/about-keys.md) támogatottak, más kulcsok és méretek nem.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani, és ugyanahhoz az előfizetéshez kell tartoznia.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani.
 - Az ügyfél által felügyelt kulcsokhoz (Azure Key Vaultok, lemez titkosítási készletek, virtuális gépek, lemezek és Pillanatképek) kapcsolódó összes erőforrásnak ugyanabban az előfizetésben és régióban kell lennie.
 - Az ügyfél által felügyelt kulcsokkal titkosított lemezek, Pillanatképek és lemezképek nem helyezhetők át másik előfizetésbe.
-- Ha a Azure Portal használatával hozza létre a lemez titkosítási készletét, a pillanatképek jelenleg nem használhatók.
 - Az ügyfél által felügyelt kulcsokkal titkosított, kiszolgálóoldali titkosítást használó felügyelt lemezek nem titkosíthatók Azure Disk Encryption és fordítva
 - Az ügyfél által felügyelt kulcsok megosztott képtárakkal történő használatáról további információt az [előzetes verzió: az ügyfél által felügyelt kulcsok használata a lemezképek titkosításához](../image-version-encryption.md)című témakörben talál.
 
@@ -88,41 +87,7 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
 
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>A Azure Key Vault és a DiskEncryptionSet beállítása
 
-1. Győződjön meg arról, hogy telepítette a legújabb [Azure PowerShell-verziót](/powershell/azure/install-az-ps), és be van jelentkezve egy Azure-fiókba a következővel: kapcsolat-AzAccount
-
-1. Hozzon létre egy Azure Key Vault és egy titkosítási kulcs egy példányát.
-
-    A Key Vault-példány létrehozásakor engedélyeznie kell a Soft delete és a kiürítési védelmet. A helyreállítható törlés biztosítja, hogy a Key Vault a megadott megőrzési időtartam (90 nap alapértelmezett értéke) törölt kulcsát tárolja. A védelem kiürítése biztosítja, hogy a törölt kulcsok ne legyenek véglegesen törölve, amíg a megőrzési időszak megszűnik. Ezek a beállítások a véletlen törlés miatt védik az adatok elvesztését. Ezek a beállítások akkor kötelezőek, ha Key Vault használ a felügyelt lemezek titkosításához.
-    
-    ```powershell
-    $ResourceGroupName="yourResourceGroupName"
-    $LocationName="westcentralus"
-    $keyVaultName="yourKeyVaultName"
-    $keyName="yourKeyName"
-    $keyDestination="Software"
-    $diskEncryptionSetName="yourDiskEncryptionSetName"
-
-    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnableSoftDelete -EnablePurgeProtection
-
-    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
-    ```
-
-1.    Hozzon létre egy DiskEncryptionSet egy példányát. 
-    
-        ```powershell
-        $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
-        
-        $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
-        ```
-
-1.    Adja meg a DiskEncryptionSet-erőforrás hozzáférését a kulcstartóhoz.
-
-        > [!NOTE]
-        > Eltarthat néhány percig, amíg az Azure létrehozza a DiskEncryptionSet identitását a Azure Active Directoryban. Ha a következő parancs futtatásakor a "nem találja a Active Directory objektumot" hibaüzenet jelenik meg, várjon néhány percet, és próbálkozzon újra.
-        
-        ```powershell  
-        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-        ```
+[!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../../../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
 
 #### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Virtuális gép létrehozása Piactéri rendszerkép használatával, az operációs rendszer és az adatlemezek titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -260,14 +225,7 @@ Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $Reso
 
 #### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Lemez kiszolgálóoldali titkosításának állapotának megkeresése
 
-```PowerShell
-$ResourceGroupName="yourResourceGroupName"
-$DiskName="yourDiskName"
-
-$disk=Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName
-$disk.Encryption.Type
-
-```
+[!INCLUDE [virtual-machines-disks-encryption-status-powershell](../../../includes/virtual-machines-disks-encryption-status-powershell.md)]
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).

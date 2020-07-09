@@ -1,25 +1,14 @@
 ---
 title: Azure Relay GYIK | Microsoft Docs
 description: Ez a cikk a Azure Relay szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ac8967ab036929bf5363a79c9d7c60485bc98841
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317019"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
@@ -80,7 +69,7 @@ Az üzenet elküldéséhez a rendszer "teljes körű" küldéssel küldi el az �
 A **netTCPRelay** WCF-kötéssel megnyitott továbbítások nem önálló üzenetekként, hanem a rendszeren keresztül áramló adatfolyamként jelennek meg. Ha ezt a kötést használja, csak a küldő és a figyelő tekintheti meg az elküldött és fogadott üzenetek kialakítását. Az **netTCPRelay** -kötést használó relék esetében az összes adattal adatfolyamként kezeli a számlázandó üzenetek kiszámítását. Ebben az esetben a Service Bus 5 percenként kiszámítja az egyes továbbításokon keresztül küldött vagy fogadott adatmennyiséget. Ezt követően a 64 KB-ra osztja el az összes adatmennyiséget, hogy meghatározza a továbbításhoz tartozó számlázandó üzenetek számát az adott időszakban.
 
 ## <a name="quotas"></a>Kvóták
-| Kvóta neve | Hatókör |  Megjegyzések | Érték |
+| Kvóta neve | Hatókör |  Jegyzetek | Érték |
 | --- | --- | --- | --- |
 | Párhuzamos figyelők egy továbbítón |Entitás |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
 | Egyidejű továbbítási kapcsolatok egy szolgáltatási névtér összes továbbítási végpontján |Névtér |- |5000 |
@@ -128,7 +117,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 A gyakori kivételek és a javasolt műveletek leírását a [továbbítási kivételek][Relay exceptions]című témakörben tekintheti meg.
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Mi a közös hozzáférési aláírás, és milyen nyelveket használhatok az aláírások létrehozásához?
-A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. További információ a saját aláírások létrehozásáról a Node. js, a PHP, a Python, a Java, a C és a C# nyelveken: [Service Bus hitelesítés közös hozzáférési aláírásokkal][Shared Access Signatures].
+A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. További információ a saját aláírások létrehozásáról a Node.js, a PHP, a Python, a Java, a C és a C# nyelveken: [Service Bus hitelesítés közös hozzáférési aláírásokkal][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezési lehetősége?
 Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy bejegyzést a `*.servicebus.windows.net` DNS-engedélyezési szolgáltatást támogató tűzfalakhoz.

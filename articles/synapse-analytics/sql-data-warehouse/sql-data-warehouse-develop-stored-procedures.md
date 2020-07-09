@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ffdf7a66c2562b43fc2ed02bb088ab1095118fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87c7eaa57f9da87bd83f89953afc09632d42b1f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213397"
 ---
 # <a name="using-stored-procedures-in-synapse-sql-pool"></a>Tárolt eljárások használata a szinapszis SQL-készletben
 
@@ -72,9 +72,9 @@ GO
 EXEC prc_nesting
 ```
 
-Az SQL-készlet jelenleg nem támogatja a [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-t. Ezért nyomon kell követnie a beágyazási szintet. Nem valószínű, hogy túllépi a nyolc fészekre vonatkozó korlátot. Ha azonban ezt teszi, újra kell dolgoznia a kódját, hogy az illeszkedjen a korláton belüli beágyazási szintekhez.
+Az SQL-készlet jelenleg nem támogatja a [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-t. Ezért nyomon kell követnie a beágyazási szintet. Nem valószínű, hogy túllépi a nyolc fészekre vonatkozó korlátot. Ha azonban ezt teszi, újra kell dolgoznia a kódját, hogy az illeszkedjen a korláton belüli beágyazási szintekhez.
 
-## <a name="insertexecute"></a>Beszúrás.. VÉGREHAJTÁSA
+## <a name="insertexecute"></a>INSERT..EXEARANYOS
 
 Az SQL-készlet nem teszi lehetővé, hogy egy tárolt eljárás eredmény-készletét egy INSERT utasítással használja. Van azonban egy alternatív megközelítés, amelyet használhat. Példaként tekintse meg az [ideiglenes táblákról](sql-data-warehouse-tables-temporary.md)szóló cikket.
 

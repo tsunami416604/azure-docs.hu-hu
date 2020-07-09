@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471528"
 ---
 A feltételes hozzáférés lehetővé teszi a részletes hozzáférés-vezérlést az alkalmazások alapján. A feltételes hozzáférés használatához a feltételes hozzáférési szabályok hatálya alá eső felhasználókra vonatkozóan prémium szintű Azure AD 1 vagy nagyobb licencelési licencet kell alkalmazni.
@@ -40,6 +40,6 @@ A feltételes hozzáférés lehetővé teszi a részletes hozzáférés-vezérl�
 4. A **házirend engedélyezése** szakaszban:
 
    - Válassza **a**be lehetőséget.
-   - Kattintson a **Létrehozás**gombra.
+   - Kattintson a **Létrehozás** lehetőségre.
 
    ![Házirend engedélyezése](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

@@ -3,16 +3,16 @@ title: Azure Cosmos DB adatok biztonsági másolatból való visszaállítása
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági másolatból történő Azure Cosmos DB visszaállítását, az Azure-támogatással való kapcsolatfelvételhez pedig az adatok visszaállításához szükséges lépéseket.
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70240766"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261732"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Adatok visszaállítása biztonsági másolatból Azure Cosmos DB 
 
@@ -43,11 +43,11 @@ Ha az adatsérülés történik, és ha egy tárolóban lévő dokumentumokat m�
 
 Az alábbi képernyőfelvétel azt szemlélteti, hogyan lehet támogatási kérést létrehozni egy tárolóhoz (gyűjtemény/gráf/tábla) az adatAzure Portal használatával történő visszaállításához. Adjon meg további részleteket, például az adatok típusát, a visszaállítás célját, az adatok törlésének időpontját, hogy segítsen a kérés rangsorolásában.
 
-![Biztonsági mentési támogatási kérelem létrehozása Azure Portal használatával](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="Biztonsági mentési támogatási kérelem létrehozása Azure Portal használatával":::
 
 ## <a name="post-restore-actions"></a>Visszaállítás utáni műveletek
 
-Az adatvisszaállítás után értesítést kap az új fiók nevéről (általában a formátuma `<original-name>-restored1`), valamint azt az időpontot, amikor a fiókot visszaállították. A visszaállított fióknak ugyanaz a kiosztott átviteli sebessége, az indexelési szabályzatok és az eredeti fiókkal azonos régióban kell lennie. Az előfizetés-rendszergazda vagy a rendszergazda láthatja a visszaállított fiókot.
+Az adatvisszaállítás után értesítést kap az új fiók nevéről (általában a formátuma `<original-name>-restored1` ), valamint azt az időpontot, amikor a fiókot visszaállították. A visszaállított fióknak ugyanaz a kiosztott átviteli sebessége, az indexelési szabályzatok és az eredeti fiókkal azonos régióban kell lennie. Az előfizetés-rendszergazda vagy a rendszergazda láthatja a visszaállított fiókot.
 
 Az adatok visszaállítása után ellenőrizze és ellenőrizze a visszaállított fiókban lévő adatok vizsgálatát, és győződjön meg róla, hogy a várt verziót tartalmazza. Ha minden jól látható, az adatátvitelt az eredeti fiókba [Azure Cosmos db módosítási hírcsatorna](change-feed.md) vagy [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)használatával kell visszatelepítenie.
 

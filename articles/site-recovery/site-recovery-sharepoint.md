@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74706367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135402"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Vész-helyreállítás beállítása többrétegű SharePoint-alkalmazáshoz a vész-helyreállításhoz Azure Site Recovery használatával
 
@@ -38,8 +38,8 @@ A többrétegű alkalmazások Azure-ba történő helyreállításáról az alá
 
 A Kezdés előtt győződjön meg arról, hogy az alábbiakat ismeri fel:
 
-1. [Virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
-2. [Helyreállítási hálózat tervezése](site-recovery-network-design.md)
+1. [Virtuális gépek replikálása az Azure-ba](./vmware-azure-tutorial.md)
+2. [Helyreállítási hálózat tervezése](./concepts-on-premises-to-azure-networking.md)
 3. [Feladatátvételi teszt végrehajtása az Azure-ba](site-recovery-test-failover-to-azure.md)
 4. [Feladatátvétel az Azure-ba](site-recovery-failover.md)
 5. [Tartományvezérlő replikálása](site-recovery-active-directory.md)
@@ -47,7 +47,7 @@ A Kezdés előtt győződjön meg arról, hogy az alábbiakat ismeri fel:
 
 ## <a name="sharepoint-architecture"></a>SharePoint-architektúra
 
-A SharePoint egy vagy több olyan kiszolgálóra telepíthető, amely többrétegű topológiákat és kiszolgálói szerepköröket használ egy olyan farm kialakításának megvalósításához, amely megfelel bizonyos céloknak és célkitűzéseknek. Egy tipikus nagy, magas keresletű SharePoint Server-Farm, amely számos egyidejű felhasználót és nagyszámú tartalmi elemet támogat a skálázhatósági stratégia részeként. Ez a megközelítés magában foglalja a dedikált kiszolgálókon futó szolgáltatások futtatását, a szolgáltatások csoportosítását, majd a kiszolgálók csoportként történő skálázását. A következő topológia szemlélteti a szolgáltatás és a kiszolgáló csoportosítását egy három szintű SharePoint Server-farmhoz. A különböző SharePoint-topológiákkal kapcsolatos részletes útmutatásért tekintse meg a SharePoint dokumentációját és a termékcsoport architektúráit ismertető témakört. A SharePoint 2013 üzembe helyezéséről a [jelen dokumentumban](https://technet.microsoft.com/library/cc303422.aspx)talál további információt.
+A SharePoint egy vagy több olyan kiszolgálóra telepíthető, amely többrétegű topológiákat és kiszolgálói szerepköröket használ egy olyan farm kialakításának megvalósításához, amely megfelel bizonyos céloknak és célkitűzéseknek. Egy tipikus nagy, magas keresletű SharePoint Server-Farm, amely számos egyidejű felhasználót és nagyszámú tartalmi elemet támogat a skálázhatósági stratégia részeként. Ez a megközelítés magában foglalja a dedikált kiszolgálókon futó szolgáltatások futtatását, a szolgáltatások csoportosítását, majd a kiszolgálók csoportként történő skálázását. A következő topológia szemlélteti a szolgáltatás és a kiszolgáló csoportosítását egy három szintű SharePoint Server-farmhoz. A különböző SharePoint-topológiákkal kapcsolatos részletes útmutatásért tekintse meg a SharePoint dokumentációját és a termékcsoport architektúráit ismertető témakört. A SharePoint 2013 üzembe helyezéséről a [jelen dokumentumban](/SharePoint/sharepoint-server)talál további információt.
 
 
 
@@ -74,7 +74,7 @@ Ha megosztott lemezes fürtöt használ bármely rétegként az alkalmazásban, 
 
 ## <a name="replicating-virtual-machines"></a>Virtuális gépek replikálása
 
-Kövesse [ezt az útmutatót](site-recovery-vmware-to-azure.md) a virtuális gép Azure-ba való replikálásának megkezdéséhez.
+Kövesse [ezt az útmutatót](./vmware-azure-tutorial.md) a virtuális gép Azure-ba való replikálásának megkezdéséhez.
 
 * A replikáció befejezését követően győződjön meg arról, hogy minden egyes szinten minden egyes virtuális gépre rákattintott, majd válassza ki ugyanazt a rendelkezésre állási készletet a "replikált elem > beállítások > tulajdonságok > számítás és hálózat" területen. Ha például a webes szintje 3 virtuális géppel rendelkezik, győződjön meg arról, hogy az összes 3 virtuális gép ugyanazon rendelkezésre állási csoport részeként van konfigurálva az Azure-ban.
 
@@ -99,7 +99,7 @@ Kövesse [ezt az útmutatót](site-recovery-vmware-to-azure.md) a virtuális gé
 
 ### <a name="dns-and-traffic-routing"></a>DNS-és forgalmi Útválasztás
 
-Az internetre irányuló webhelyek esetében [hozzon létre egy Traffic Manager "priority" típusú profilt](../traffic-manager/traffic-manager-create-profile.md) az Azure-előfizetésben. Ezután konfigurálja a DNS-és Traffic Manager-profilt a következő módon.
+Az internetre irányuló webhelyek esetében [hozzon létre egy Traffic Manager "priority" típusú profilt](../traffic-manager/quickstart-create-traffic-manager-profile.md) az Azure-előfizetésben. Ezután konfigurálja a DNS-és Traffic Manager-profilt a következő módon.
 
 
 | **Ahol** | **Forrás** | **Cél**|
@@ -163,7 +163,7 @@ A leggyakrabban használt Azure Site Recovery szkripteket az Automation-fiókjá
     * Ez a módszer azt feltételezi, hogy a Search Service alkalmazás biztonsági másolata a katasztrofális esemény előtt lett elvégezve, és a biztonsági mentés elérhető a DR helyen.
     * Ez könnyen megvalósítható úgy, hogy ütemezi a biztonsági mentést (például naponta egyszer), és egy másolási eljárás használatával helyezi el a biztonsági mentést a DR helyen. A másolási eljárások tartalmazhatnak parancsfájlokból származó programokat, például a AzCopy (Azure Copy) vagy a DFSR (elosztott Fájlszolgáltatások replikációja) beállítását.
     * Most, hogy a SharePoint-farm fut, navigáljon a központi felügyelet, a biztonsági mentés és visszaállítás lehetőségre, és válassza a visszaállítás lehetőséget. A visszaállítás kikérdezi a megadott biztonsági mentési helyet (Előfordulhat, hogy frissítenie kell az értéket). Válassza ki a visszaállítani kívánt Search Service alkalmazás biztonsági másolatát.
-    * A keresés vissza lett állítva. Ne feledje, hogy a visszaállítás arra vár, hogy ugyanazt a topológiát (azonos számú kiszolgálót) és a kiszolgálókhoz hozzárendelt merevlemez-betűjeleket is megkeresse. További információ: "a [keresési szolgáltatás alkalmazásának visszaállítása a SharePoint 2013"](https://technet.microsoft.com/library/ee748654.aspx) dokumentumban.
+    * A keresés vissza lett állítva. Ne feledje, hogy a visszaállítás arra vár, hogy ugyanazt a topológiát (azonos számú kiszolgálót) és a kiszolgálókhoz hozzárendelt merevlemez-betűjeleket is megkeresse. További információ: "a [keresési szolgáltatás alkalmazásának visszaállítása a SharePoint 2013"](/SharePoint/administration/restore-a-search-service-application) dokumentumban.
 
 
 6. Az új keresési szolgáltatásalkalmazás elindításához kövesse az alábbi lépéseket.
@@ -199,5 +199,5 @@ Kövesse [ezt az útmutatót](site-recovery-failover.md) a feladatátvétel vég
 3.  Kattintson a "feladatátvétel" elemre.
 4.  A feladatátvételi folyamat elindításához válassza a helyreállítási pont lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Site Recovery használatával történő [más alkalmazások replikálásáról](site-recovery-workload.md) .

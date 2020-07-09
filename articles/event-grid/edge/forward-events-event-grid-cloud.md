@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844717"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: események továbbítása Event Grid felhőbe
@@ -34,9 +33,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Event Grid-témakör és-előfizetés létrehozása a felhőben
 
-Az [oktatóanyag](../custom-event-quickstart-portal.md)követésével hozzon létre egy Event Grid-témakört és-előfizetést a felhőben. Jegyezze fel, és `topicName` az újonnan létrehozott témakört, amelyet később az oktatóanyagban fog használni. `topicURL` `sasKey`
+Az [oktatóanyag](../custom-event-quickstart-portal.md)követésével hozzon létre egy Event Grid-témakört és-előfizetést a felhőben. Jegyezze fel `topicURL` , `sasKey` és az `topicName` újonnan létrehozott témakört, amelyet később az oktatóanyagban fog használni.
 
-Ha például létrehozta az USA nyugati régiójában `testegcloudtopic` elnevezett témakört, az értékek a következőképpen néznek ki:
+Ha például létrehozta az `testegcloudtopic` USA nyugati régiójában elnevezett témakört, az értékek a következőképpen néznek ki:
 
 * **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **TopicName**:`testegcloudtopic`
@@ -44,7 +43,7 @@ Ha például létrehozta az USA nyugati régiójában `testegcloudtopic` elnevez
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Event Grid-témakör létrehozása a peremhálózat szélén
 
-1. Hozza létre a topic3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre topic3.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
     ```json
         {
@@ -85,7 +84,7 @@ Ha például létrehozta az USA nyugati régiójában `testegcloudtopic` elnevez
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozza létre a subscription3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre subscription3.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
    ```json
         {
@@ -105,7 +104,7 @@ Ha például létrehozta az USA nyugati régiójában `testegcloudtopic` elnevez
    >[!NOTE]
    > A **endpointUrl** megadja, hogy a Event Grid témakör URL-címe a felhőben. A **sasKey** Event Grid Felhőbeli témakör kulcsára hivatkozik. A rendszer az **topicName** -ben lévő értéket fogja használni az összes kimenő esemény Event Grid. Ez akkor lehet hasznos, ha Event Grid tartományi témakörbe való feladást végez. További információ a Event Grid tartományi témakörről: [esemény-tartományok](../event-domains.md)
 
-    Például:
+    Példa:
   
     ```json
         {
@@ -157,7 +156,7 @@ Ha például létrehozta az USA nyugati régiójában `testegcloudtopic` elnevez
 
 ## <a name="publish-an-event-at-the-edge"></a>Esemény közzététele az Edge-ben
 
-1. Hozza létre a event3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért lásd az [API dokumentációját](api.md) .
+1. Hozzon létre event3.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért lásd az [API dokumentációját](api.md) .
 
     ```json
         [

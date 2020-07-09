@@ -10,10 +10,9 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83746630"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation-fiók áthelyezése másik előfizetésre
@@ -155,6 +154,6 @@ Az áthelyezés befejeződése után ellenőrizze, hogy az alábbi képességek 
 |Frissítéskezelés|Ellenőrizze, hogy látja-e a gépeket, és hogy kifogástalanok-e.</br>Futtasson egy teszt szoftverfrissítés központi telepítését.|[Az Update Management hibáinak megoldása](../troubleshoot/update-management.md)|
 |Megosztott erőforrások|Győződjön meg arról, hogy az összes megosztott erőforrás, például a [hitelesítő adatok](../shared-resources/credentials.md) és a [változók](../shared-resources/variables.md)láthatók.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások Azure-ban való áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/management/move-support-resources.md).

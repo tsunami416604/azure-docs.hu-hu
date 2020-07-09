@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-cí
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656771"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
@@ -39,7 +38,7 @@ A Function app számára elérhető kimenő IP-címek megkeresése:
 1. Jelentkezzen be a [Azure erőforrás-kezelőba](https://resources.azure.com).
 2. Válassza **az előfizetések > {előfizetése} > providers > Microsoft. Web > helyek**lehetőséget.
 3. A JSON panelen keresse meg a helyet egy olyan `id` tulajdonsággal, amely a Function alkalmazás nevében ér véget.
-4. Lásd `outboundIpAddresses` : `possibleOutboundIpAddresses`és. 
+4. Lásd: `outboundIpAddresses` és `possibleOutboundIpAddresses` . 
 
 A készlet `outboundIpAddresses` jelenleg elérhető a Function alkalmazás számára. A készlet olyan `possibleOutboundIpAddresses` IP-címeket tartalmaz, amelyek csak akkor lesznek elérhetők, ha a Function alkalmazás [más díjszabási szintekre van bontva](#outbound-ip-address-changes).
 
@@ -126,7 +125,7 @@ Másik lehetőségként használhatja a [Cloud Shell](../cloud-shell/quickstart.
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-A App Service Environment `sku` `Isolated`.
+A App Service Environment `sku` `Isolated` .
 
 ## <a name="next-steps"></a>További lépések
 

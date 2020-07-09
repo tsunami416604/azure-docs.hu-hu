@@ -10,12 +10,11 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734469"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Biztonságos távoli hozzáférés a Azure Active Directory Domain Services virtuális gépekhez
 
@@ -41,7 +40,7 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
+    * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][create-azure-ad-ds-instance].
 * A Azure Active Directory Domain Services virtuális hálózatban létrehozott számítási *feladatok* alhálózata.
     * Ha szükséges, [konfigurálja a virtuális hálózatkezelést egy Azure Active Directory Domain Services felügyelt tartományhoz][configure-azureadds-vnet].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
@@ -55,16 +54,16 @@ A javasolt RDS-telepítés a következő két virtuális gépet tartalmazza:
 * *RDGVM01* – futtatja a RD-kapcsolatszervező-kiszolgálót, a távoli asztali webes elérési kiszolgálót és a RD-átjáró kiszolgálót.
 * *RDSHVM01* – futtatja a távoli asztali munkamenetgazda-kiszolgálót.
 
-Győződjön meg arról, hogy a virtuális gépek üzembe helyezése az Azure AD DS Virtual Network *munkaterhelési* alhálózatán történik, majd csatlakoztassa a virtuális gépeket az Azure AD DS felügyelt tartományhoz. További információ: [Windows Server rendszerű virtuális gép létrehozása és csatlakoztatása Azure AD DS felügyelt tartományhoz][tutorial-create-join-vm].
+Győződjön meg arról, hogy a virtuális gépek üzembe helyezése az Azure AD DS Virtual Network *munkaterhelési* alhálózatán történik, majd csatlakoztassa a virtuális gépeket a felügyelt tartományhoz. További információ: Windows Server rendszerű [virtuális gép létrehozása és csatlakoztatása felügyelt tartományhoz][tutorial-create-join-vm].
 
-A távoli asztali környezet üzembe helyezése számos lépést tartalmaz. A meglévő távoli asztali telepítési útmutató az Azure AD DS felügyelt tartományokban való használathoz adott módosítások nélkül használható:
+A távoli asztali környezet üzembe helyezése számos lépést tartalmaz. A meglévő távoli asztali telepítési útmutató a felügyelt tartományokban való használathoz szükséges módosítások nélkül is használható:
 
 1. Jelentkezzen be a távoli asztali környezethez létrehozott virtuális gépekre egy olyan fiókkal, amely az *Azure ad DC-rendszergazdák* csoport tagja, például *contosoadmin*.
 1. Az RDS létrehozásához és konfigurálásához használja a meglévő [Távoli asztal környezet telepítési útmutatóját][deploy-remote-desktop]. Szükség szerint ossza el a távoli asztali kiszolgáló összetevőit az Azure-beli virtuális gépeken.
     * Az Azure AD DS-ra jellemző – ha a távoli asztali licencelést konfigurálja, állítsa azt **eszközönkénti** módra **, ne pedig felhasználónként a** telepítési útmutatóban feljegyzett értékre.
 1. Ha webböngészővel szeretne hozzáférést biztosítani, [állítsa be az távoli asztal webes ügyfelet a felhasználók][rd-web-client]számára.
 
-Az Azure AD DS felügyelt tartományba telepített RD szolgáltatással felügyelheti és használhatja a szolgáltatást, mint a helyszíni AD DS tartománnyal.
+A felügyelt tartományba telepített távoli asztali környezettel felügyelheti és használhatja a szolgáltatást, mint a helyszíni AD DS tartománnyal.
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>A hálózati házirend-kiszolgáló és az Azure MFA NPS-bővítmény üzembe helyezése és konfigurálása
 
@@ -76,7 +75,7 @@ Ennek a képességnek a biztosításához további hálózati házirend-kiszolg�
 
 Az Azure Multi-Factor Authentication Azure-beli AD DS Távoli asztal-környezetbe való integrálásához hozzon létre egy NPS-kiszolgálót, és telepítse a bővítményt:
 
-1. Hozzon létre egy további, a Windows Server 2016-es vagy 2019-es virtuális GÉPET, például a *NPSVM01*-t, amely az Azure AD DS Virtual Network *munkaterhelési* alhálózatához csatlakozik. Csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz.
+1. Hozzon létre egy további, a Windows Server 2016-es vagy 2019-es virtuális GÉPET, például a *NPSVM01*-t, amely az Azure AD DS Virtual Network *munkaterhelési* alhálózatához csatlakozik. Csatlakoztassa a virtuális gépet a felügyelt tartományhoz.
 1. Jelentkezzen be a hálózati házirend-kiszolgáló virtuális gépre az *Azure ad DC-rendszergazdák* csoport tagjaként, például *contosoadmin*.
 1. A **Kiszolgálókezelőben**válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget, majd telepítse a *hálózati házirend-és elérési szolgáltatások* szerepkört.
 1. Az [Azure MFA NPS-bővítmény telepítéséhez és konfigurálásához][nps-extension]használja a meglévő útmutató cikket.
@@ -87,9 +86,9 @@ Ha telepítette az NPS-kiszolgálót és az Azure Multi-Factor Authentication NP
 
 Az Azure Multi-Factor Authentication NPS bővítmény integrálásához a meglévő útmutató cikk használatával [integrálhatja távoli asztali átjáró-infrastruktúráját a hálózati házirend-kiszolgáló (NPS) bővítménnyel és az Azure ad][azure-mfa-nps-integration]-vel.
 
-A következő további konfigurációs beállítások szükségesek az Azure AD DS felügyelt tartományhoz való integráláshoz:
+A felügyelt tartományhoz való integráláshoz a következő további konfigurációs beállítások szükségesek:
 
-1. Ne [regisztrálja az NPS-kiszolgálót Active Directory-ben][register-nps-ad]. Ez a lépés meghiúsul az Azure AD DS felügyelt tartományában.
+1. Ne [regisztrálja az NPS-kiszolgálót Active Directory-ben][register-nps-ad]. Ez a lépés nem sikerül felügyelt tartományban.
 1. A [hálózati házirend konfigurálásához a 4. lépésben][create-nps-policy]jelölje be a **felhasználói fiók betárcsázási tulajdonságainak figyelmen kívül hagyása**jelölőnégyzetet is.
 1. Ha a Windows Server 2019-et használja a hálózati házirend-kiszolgáló és az Azure Multi-Factor Authentication NPS bővítmény számára, futtassa a következő parancsot a biztonságos csatorna frissítéséhez, hogy a hálózati házirend-kiszolgáló helyesen kommunikáljon:
 

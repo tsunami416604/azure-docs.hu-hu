@@ -20,6 +20,8 @@
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+    - name: Key Vault-kódminták
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: Oktatóanyagok
   items:
     - name: Tanúsítvány importálása
@@ -34,20 +36,26 @@
       href: create-certificate-scenarios.md
     - name: Tanúsítvány-létrehozási módszerek
       href: create-certificate.md
+    - name: Tanúsítvány-aláírási kérelem létrehozása
+      href: create-certificate-signing-request.md
+- name: Útmutatók
+  items:
+    - name: A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
+      href: how-to-integrate-certificate-authority.md
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      href: /dotnet/api/overview/azure/security.keyvault.certificates-readme?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
-      href: /python/api/overview/azure/key-vault?view=azure-python
+      href: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
     - name: REST
       href: /rest/api/keyvault
     - name: Resource Manager-sablon

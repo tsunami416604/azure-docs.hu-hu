@@ -7,19 +7,20 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to learn more about Virtual Network NAT, its NAT gateway resources, and what I can use them for.
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80548388"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549581"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -143,7 +144,7 @@ Virtual Network NAT és a NAT-átjáró erőforrás az összes Azure-beli nyilv�
 
 A NAT a normál támogatási csatornákon keresztül támogatott.
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="suggestions"></a>Javaslatok
 
 Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szavazzon arra, hogy mi a következő lépés a [NAT-UserVoice](https://aka.ms/natuservoice).
 

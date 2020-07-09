@@ -1,7 +1,7 @@
 ---
 title: Indexelő az adatbejárás során az importálás során
 titleSuffix: Azure Cognitive Search
-description: Az Azure SQL Database, Azure Cosmos DB vagy Azure Storage bejárásával kinyerheti a kereshető adatokat, és feltöltheti az Azure Cognitive Search indexét.
+description: A kereshető adatok kinyeréséhez és az Azure Cognitive Search indexének feltöltéséhez bejárási Azure SQL Database, SQL felügyelt példány, Azure Cosmos DB vagy Azure Storage.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564590"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -46,13 +46,13 @@ Az indexelő rendszerhez kapcsolódó összes művelet, beleértve az állapot v
 
 Az indexelő adattárakat térképez fel az Azure-ban.
 
-* [Azure-Blob Storage](search-howto-indexing-azure-blob-storage.md)
+* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database és az SQL felügyelt példánya](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-* [SQL felügyelt példányok az Azure-ban](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [Felügyelt SQL-példány](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
@@ -77,7 +77,7 @@ Az indexelő definíciója egy olyan szerkezet, amely az adatfeldolgozással kap
 
 Habár az indexelés ütemezését közösen is megteheti, az indexelő a [Run paranccsal](https://docs.microsoft.com/rest/api/searchservice/run-indexer)is igény szerint hívható meg:
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Az indexelő állapotát a portálon vagy az indexelő status API-n keresztül k
 Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő) indexelő meghívást, valamint a legutóbbi indexelő hívás előzményeit tartalmazza.
@@ -128,9 +128,9 @@ A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtá
 ## <a name="next-steps"></a>További lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
-* [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure-Blob Storage](search-howto-indexing-azure-blob-storage.md)
+* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [CSV-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-csv-blobs.md)
 * [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő](search-howto-index-json-blobs.md)

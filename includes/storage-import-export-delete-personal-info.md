@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: azure-policy
 author: craigshoemaker
 ms.service: azure-policy
@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179332"
 ---
 ## <a name="deleting-personal-information"></a>Személyes adatok törlése
@@ -41,8 +41,8 @@ A személyes kapcsolattartási adatokat a következő módokon lehet törölni:
 
 - A portál beállításaiban mentett kapcsolattartási adatokat a portál beállításainak törlésével lehet eltávolítani. A portál beállításait a következő lépésekkel törölheti:
   - Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-  - Kattintson a *Beállítások* ikonra ![az Azure beállítások ikon](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
-  - Kattintson az *összes beállítás exportálása* (az aktuális beállítások `.json` fájlba mentéséhez) elemre.
+  - Kattintson a *Beállítások* ikonra az ![ Azure beállítások ikon](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
+  - Kattintson az *összes beállítás exportálása* (az aktuális beállítások fájlba mentéséhez) elemre `.json` .
   - Kattintson az *összes beállítás és privát irányítópultok törlése* lehetőségre az összes beállítás, beleértve a mentett kapcsolattartási adatok törléséhez.
 
 További információkért tekintse át a Microsoft adatvédelmi szabályzatát a következő helyen: [megbízhatósági központ](https://www.microsoft.com/trustcenter)

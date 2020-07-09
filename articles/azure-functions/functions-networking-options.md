@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117226"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -28,13 +28,7 @@ A Function apps több módon is üzemeltethető:
 
 ## <a name="matrix-of-networking-features"></a>Hálózati szolgáltatások mátrixa
 
-|                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium szintű csomag](functions-scale.md#premium-plan)|[App Service terv](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅Igen|✅Igen|✅Igen|✅Igen|
-|[Virtuális hálózat integrációja](#virtual-network-integration)|❌Nem|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅Igen|
-|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌Nem| ✅Igen |✅Igen|✅Igen|
-|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌Nem|✅Igen|✅Igen|✅Igen|
-|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌Nem| ✅Igen|✅Igen|✅Igen|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
 
@@ -139,6 +133,12 @@ További információt a [Hibrid kapcsolatok app Service dokumentációjában](.
 A kimenő IP-korlátozások prémium csomagokban, App Service csomagban vagy App Service Environment érhetők el. Konfigurálhatja a kimenő korlátozásokat arra a virtuális hálózatra, amelyen a App Service Environment telepítve van.
 
 Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező App Service tervben integrál egy függvényt, az alkalmazás alapértelmezés szerint továbbra is elvégezheti a kimenő hívásokat az internetre. Az Alkalmazásbeállítás hozzáadásával `WEBSITE_VNET_ROUTE_ALL=1` kényszeríti az összes kimenő forgalom küldését a virtuális hálózatba, ahol a hálózati biztonsági csoportra vonatkozó szabályok a forgalom korlátozására használhatók.
+
+## <a name="automation"></a>Automation
+A következő API-k lehetővé teszik a regionális virtuális hálózati integrációk programozott kezelését:
+
++ **Azure CLI**: [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) regionális virtuális hálózati integrációk hozzáadására, listázására vagy eltávolítására használható parancsokkal.  
++ **ARM-sablonok**: a regionális virtuális hálózatok integrációja Azure Resource Manager sablon használatával engedélyezhető. Teljes példaként tekintse meg [ezt a functions gyorsindító sablont](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

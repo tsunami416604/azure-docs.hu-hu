@@ -15,7 +15,7 @@ ms.locfileid: "70128055"
 
 Meg kell adnia például a Batch- és a Storage-fiók hitelesítő adatait. A szükséges hitelesítő adatokat például az Azure Portalon kérheti le egyszerűen. (A hitelesítő adatok az Azure API-k vagy parancssori eszközök használatával is lekérhetők.)
 
-1. Válassza a **minden szolgáltatás** > **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
+1. Válassza a **minden szolgáltatás**  >  **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
 
 2. A Batch hitelesítő adatainak megtekintéséhez válassza a **kulcsok**lehetőséget. Másolja a **Batch-fiók**, az **URL** és az **Elsődleges elérési kulcs** mező értékét egy szövegszerkesztőbe.
 

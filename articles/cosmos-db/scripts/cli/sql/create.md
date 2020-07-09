@@ -1,20 +1,20 @@
 ---
-title: SQL-(Core-) API-adatbázis és-tároló létrehozása a Azure Cosmos DBhoz
-description: SQL-(Core-) API-adatbázis és-tároló létrehozása a Azure Cosmos DBhoz
+title: Core (SQL) API-adatbázis és-tároló létrehozása a Azure Cosmos DBhoz
+description: Core (SQL) API-adatbázis és-tároló létrehozása a Azure Cosmos DBhoz
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ae958c7e48b1c4a93a09c607d5a2e51abf49a8ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/03/2020
+ms.openlocfilehash: 416da39df9bfb49d6323ee789d5e67b1743a1cd7
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275492"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509389"
 ---
-# <a name="create-an-azure-cosmos-sql-core-api-account-database-and-container-using-azure-cli"></a>Azure Cosmos SQL (Core) API-fiók, adatbázis és tároló létrehozása az Azure CLI használatával
+# <a name="create-an-azure-cosmos-core-sql-api-account-database-and-container-using-azure-cli"></a>Azure Cosmos Core-(SQL-) API-fiók, adatbázis és tároló létrehozása az Azure CLI használatával
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
@@ -44,7 +44,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb SQL Container Create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Létrehoz egy Azure Cosmos SQL (Core) tárolót. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 

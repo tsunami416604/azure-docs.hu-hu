@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251879"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057007"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
 
@@ -39,7 +38,7 @@ A rendelkezésre állási zónák a Standard Load Balancerrel való használatá
 
 Igény szerint az oktatóanyag az [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -49,17 +48,17 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a terheléselosztó létrehozása során létrehoz egy új nyilvános IP-címet, akkor az automatikusan standard termékváltozatként lesz konfigurálva, és automatikusan zónaredundánssá is válik.
 
-1. A képernyő bal felső részén kattintson az **erőforrás** > létrehozása**hálózatkezelés** > **Load Balancer**lehetőségre.
+1. A képernyő bal felső részén kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer**lehetőségre.
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Előfizetés               | Válassza ki az előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *MyResourceGroupLBAZ* szöveget a szövegmezőbe.|
-    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | SKU           | Válassza a **standard**lehetőséget.                          |
+    | Termékváltozat           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
     |Rendelkezésreállási zóna| Válassza ki a **felesleges zónát**.    |
@@ -75,12 +74,12 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | myResourceGroupLBAZ (meglévő erőforráscsoport kiválasztása) |
-| **\<virtuális hálózat neve>** | myVNet          |
-| **\<régió neve>**          | Nyugat-Európa      |
-| **\<IPv4 – címtartomány>**   | 10.0.0.0 \ 16          |
-| **\<alhálózat – név>**          | myBackendSubnet        |
-| **\<alhálózat – címtartomány>** | 10.0.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupLBAZ (meglévő erőforráscsoport kiválasztása) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Nyugat-Európa      |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -127,7 +126,7 @@ Ebben a szakaszban a hálózati biztonsági csoport szabályait fogja létrehozn
 
 Hozzon létre virtuális gépeket különböző zónákban (1. zóna, 2. zóna, 3. zóna) azon régió számára, amely a terheléselosztó háttérkiszolgálójaként szolgálhat.
 
-1. A képernyő bal felső részén kattintson az **erőforrás** > létrehozása**számítás** > **Windows Server 2016 Datacenter** elemre, és adja meg ezeket az értékeket a virtuális géphez:
+1. A képernyő bal felső részén kattintson az **erőforrás létrehozása**  >  **számítás**  >  **Windows Server 2016 Datacenter** elemre, és adja meg ezeket az értékeket a virtuális géphez:
     - A virtuális gép neve: *myVM1*.        
     - A rendszergazda felhasználóneve: *azureuser*.    
     - *myResourceGroupLBAZ*: Az **Erőforráscsoport** esetében válassza a **Meglévő használata** lehetőséget, majd válassza ki a *myResourceGroupLBAZ* erőforráscsoportot.
@@ -140,9 +139,6 @@ Hozzon létre virtuális gépeket különböző zónákban (1. zóna, 2. zóna, 
     - A hálózati biztonsági csoport (tűzfal) neve: *myNetworkSecurityGroup*.
 5. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 6. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
-  
-   ![Virtuális gép létrehozása](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. Az 1–6. lépés követésével hozzon létre egy második virtuális gépet *VM2* néven a 2. zónában, valamint egy harmadik virtuális gépet a 3. zónában, *myVnet* virtuális hálózattal, *myBackendSubnet* alhálózattal és **myNetworkSecurityGroup* hálózati biztonsági csoporttal.
 
 ### <a name="install-iis-on-vms"></a>Az IIS telepítése virtuális gépekre
@@ -150,7 +146,7 @@ Hozzon létre virtuális gépeket különböző zónákban (1. zóna, 2. zóna, 
 1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a *myResourceGroupLBAZ* erőforráscsoportban található **myVM1** elemre.
 2. Az **Áttekintés** oldalon a **Csatlakozás** gombra kattintva hozzon létre RDP-kapcsolatot a virtuális géppel.
 3. Jelentkezzen be a virtuális gépbe az *azureuser* felhasználónévvel.
-4. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök**>**Windows PowerShell**elemre.
+4. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök** > **Windows PowerShell**elemre.
 5. A PowerShell-ablakban futtassa az alábbi parancsokat az IIS-kiszolgáló telepítéséhez, távolítsa el az alapértelmezett iisstart.htm fájlt, majd adjon hozzá egy új iisstart.htm fájt, amely megjeleníti a virtuális gép nevét:
    ```azurepowershell-interactive
     
@@ -232,7 +228,7 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
 
 Ha meg szeretné tekinteni, hogy hogyan osztja el a terheléselosztó a zónák között elosztott virtuális gépek között a forgalmat, kényszerítheti a webböngésző frissítését.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki a terheléselosztót tartalmazó erőforráscsoportot, és kattintson a **Törlés** elemre.
 

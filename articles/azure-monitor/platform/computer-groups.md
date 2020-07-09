@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274774"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112112"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Számítógépcsoportok a Azure Monitor log lekérdezésekben
 A Azure Monitorban lévő számítógépcsoportok lehetővé teszik a [naplózási lekérdezések](../log-query/log-query-overview.md) hatókörét a számítógépek adott csoportjára.  Minden csoport a számítógépekkel együtt van feltöltve a megadott lekérdezés használatával vagy különböző forrásokból származó csoportok importálásával.  Ha a csoport egy napló lekérdezésében szerepel, az eredmények a csoport számítógépeinek megfelelő rekordokra korlátozódnak.
@@ -21,7 +21,7 @@ A Azure Monitorban lévő számítógépcsoportok lehetővé teszik a [naplózá
 ## <a name="creating-a-computer-group"></a>Számítógépcsoport létrehozása
 Az alábbi táblázatban felsorolt módszerek bármelyikével létrehozhat egy számítógépcsoportot a Azure Monitorban.  Az egyes módszerekkel kapcsolatos részletes információkat az alábbi részben találja. 
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 |:--- |:--- |
 | Napló lekérdezése |Hozzon létre egy olyan log-lekérdezést, amely a számítógépek listáját adja vissza. |
 | Log Search API |A log Search API használatával programozott módon hozhat létre számítógépcsoportot a naplófájlok eredményei alapján. |
@@ -32,9 +32,11 @@ Az alábbi táblázatban felsorolt módszerek bármelyikével létrehozhat egy s
 ### <a name="log-query"></a>Napló lekérdezése
 A napló lekérdezésből létrehozott számítógépcsoportok tartalmazzák az Ön által meghatározott lekérdezés által visszaadott összes számítógépet.  A rendszer minden alkalommal futtatja ezt a lekérdezést, hogy a csoport létrehozása óta minden változás tükröződik.  
 
-Bármilyen lekérdezést használhat egy számítógépcsoport számára, de a használatával `distinct Computer`különböző számítógépeket kell visszaadnia.  Az alábbiakban egy tipikus példát tartalmazó lekérdezés látható, amelyet számítógép-csoportként használhat.
+Bármilyen lekérdezést használhat egy számítógépcsoport számára, de a használatával különböző számítógépeket kell visszaadnia `distinct Computer` .  Az alábbiakban egy tipikus példát tartalmazó lekérdezés látható, amelyet számítógép-csoportként használhat.
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 A következő eljárással hozhat létre számítógépcsoport-keresést a Azure Portal.
 
@@ -48,7 +50,7 @@ A következő táblázat a számítógépcsoport definiálásának tulajdonsága
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Name (Név)   | A portálon megjelenítendő lekérdezés neve. |
+| Name   | A portálon megjelenítendő lekérdezés neve. |
 | Függvény aliasa | Egyedi alias, amely a számítógépcsoport azonosítására szolgál a lekérdezésben. |
 | Kategória       | A lekérdezéseknek a portálon való rendszerezésének kategóriája. |
 
@@ -94,26 +96,28 @@ Kattintson az **Eltávolítás** oszlopban található **x** elemre a számító
 ## <a name="using-a-computer-group-in-a-log-query"></a>Számítógépcsoport használata egy naplózási lekérdezésben
 A lekérdezésekben egy, az alias függvényként való kezelésével létrehozott számítógépcsoportot használ, jellemzően a következő szintaxissal:
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)`
+```
 
 Például az alábbi paranccsal adhat vissza updateSummary típusú-rekordokat csak a mycomputergroup nevű számítógépcsoport számítógépeihez.
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)`
+```
 
 Az importált számítógépcsoportok és a hozzájuk tartozó számítógépek a **ComputerGroup** táblában tárolódnak.  Például a következő lekérdezés visszaküldi a tartományi számítógépek csoport számítógépeinek listáját Active Directoryból. 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 A következő lekérdezés csak a tartományi számítógépeken lévő számítógépek updateSummary típusú rekordjait fogja visszaadni.
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>Számítógépcsoport rekordjai
 A rendszer létrehoz egy rekordot a Log Analytics munkaterületen minden Active Directory vagy WSUS szolgáltatásból létrehozott számítógépcsoport-tagsághoz.  Ezek a rekordok egy **ComputerGroup** rendelkeznek, és a következő táblázatban található tulajdonságokkal rendelkeznek.  A rendszer nem hoz létre rekordokat a számítógép-csoportokhoz a naplózási lekérdezések alapján.
@@ -127,9 +131,9 @@ A rendszer létrehoz egy rekordot a Log Analytics munkaterületen minden Active 
 | `GroupFullName` |A csoport teljes elérési útja, beleértve a forrás-és a forrás nevét. |
 | `GroupSource` |Az a forrás, amelyből a csoportot gyűjtötték. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |Annak a forrásnak a neve, amelyből a csoportot gyűjtötték.  Active Directory esetén ez a tartománynév. |
-| `ManagementGroupName` |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetében ez az AOI-\<Workspace azonosító\> |
+| `ManagementGroupName` |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetében ez az AOI-\<workspace ID\> |
 | `TimeGenerated` |A számítógépcsoport létrehozásának vagy frissítésének dátuma és időpontja. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
 

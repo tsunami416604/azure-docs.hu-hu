@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591914"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
@@ -98,7 +97,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a github
    4. Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    5. Alhálózat azonosítója  
-      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/**&lt;előfizetés&gt;-azonosítója**/resourceGroups/**&lt;nevű erőforráscsoport neve&gt;**/Providers/Microsoft.Network/virtualNetworks/**&lt;virtuális hálózat&gt;** neve/Subnets/**&lt;alhálózat neve&gt; **
+      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/** &lt; előfizetés &gt; -azonosítója**/ResourceGroups/** &lt; &gt; **** &lt; &gt; **nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/** &lt; alhálózat neve &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 

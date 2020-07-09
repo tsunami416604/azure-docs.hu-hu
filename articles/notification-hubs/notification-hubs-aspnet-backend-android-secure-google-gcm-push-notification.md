@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212179"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Biztonságos leküldéses értesítések küldése az Azure Notification Hubs
@@ -86,7 +86,7 @@ Most módosítsa a *bejelentkezési* folyamatot, hogy mentse a hitelesítési fe
         return basicAuthHeader;
     }
     ```
-3. Adja hozzá a `import` következő utasításokat a `MainActivity` fájl elejéhez:
+3. Adja hozzá a következő `import` utasításokat a fájl elejéhez `MainActivity` :
 
     ```java
     import android.content.SharedPreferences;
@@ -103,7 +103,7 @@ Most módosítsa az értesítés fogadásakor meghívott kezelőt.
         retrieveNotification(secureMessageId);
     }
     ```
-2. Ezután adja hozzá `retrieveNotification()` a metódust, és `{back-end endpoint}` cserélje le a helyőrzőt a háttérrendszer üzembe helyezése során kapott háttér-végpontra:
+2. Ezután adja hozzá a `retrieveNotification()` metódust, és cserélje le a helyőrzőt a háttérrendszer `{back-end endpoint}` üzembe helyezése során kapott háttér-végpontra:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {

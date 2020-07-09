@@ -3,12 +3,12 @@ title: A Azure Batch nagyméretű párhuzamos feladatokat futtat a felhőben
 description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779571"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965076"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -18,7 +18,7 @@ A fejlesztők a Batch platformszolgáltatásként való használatával olyan Sa
 
 A Batch felár nélkül használható. Csak a mögöttes erőforrások, például a virtuális gépek, a tárolók és a hálózatkezelés használatáért kell fizetnie.
 
-Az Azure batch és egyéb HPC-megoldási lehetőségeinek összehasonlítását lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)-ban.
+Az Azure batch és egyéb HPC-megoldási lehetőségeinek összehasonlítását lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.
 
 ## <a name="run-parallel-workloads"></a>Párhuzamos számítási feladatok futtatása
 A Batch nagyszerűen működik a belsőleg párhuzamos (más néven „zavaróan párhuzamos”) számítási feladatokkal. A belsőleg párhuzamos számítási feladatok azok, amelyek esetében az alkalmazások egymástól függetlenül futtathatóak, és mindegyik példány a munka egy részét végzi el. Az alkalmazások végrehajtásakor a példányok hozzáférhetnek bizonyos közös adatokhoz, de egymás között nem kommunikálnak. A belsőleg párhuzamos számítási feladatok ezért nagy méretben futtathatók, amit csupán az alkalmazások egyidejű futtatásához rendelkezésre álló számítási erőforrások mennyisége határoz meg.
@@ -34,7 +34,7 @@ Néhány példa a Batchbe bevonható belsőleg párhuzamos számítási feladato
 * Adatbetöltés, -feldolgozás és ETL-műveletek
 * Szoftvertesztek végrehajtása
 
-A Batch használatával [szorosan összekapcsolt számítási feladatokat is futtathat](batch-mpi.md) – ezek olyan számítási feladatok, amelyek során az alkalmazásoknak kommunikálniuk kell egymással, és nem csupán egymástól függetlenül futnak. A szorosan összekapcsolt alkalmazások általában a Message Passing Interface (MPI) API-t használják. A szorosan összekapcsolt számítási feladatokat a Batchben a [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) vagy az Intel MPI használatával futtathatja. Az alkalmazások teljesítményét specializált [HPC](../virtual-machines/linux/sizes-hpc.md) és [GPU-optimalizált](../virtual-machines/linux/sizes-gpu.md) virtuálisgép-méretek használatával javíthatja.
+A Batch használatával [szorosan összekapcsolt számítási feladatokat is futtathat](batch-mpi.md) – ezek olyan számítási feladatok, amelyek során az alkalmazásoknak kommunikálniuk kell egymással, és nem csupán egymástól függetlenül futnak. A szorosan összekapcsolt alkalmazások általában a Message Passing Interface (MPI) API-t használják. A szorosan összekapcsolt számítási feladatokat a Batchben a [Microsoft MPI](/message-passing-interface/microsoft-mpi) vagy az Intel MPI használatával futtathatja. Az alkalmazások teljesítményét specializált [HPC](../virtual-machines/linux/sizes-hpc.md) és [GPU-optimalizált](../virtual-machines/linux/sizes-gpu.md) virtuálisgép-méretek használatával javíthatja.
 
 Néhány példa szorosan összekapcsolt számítási feladatokra:
 * Végeselem-elemzés

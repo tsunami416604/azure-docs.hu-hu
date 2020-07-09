@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
 ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247384"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server Azure Backup
@@ -85,9 +85,9 @@ A következő JSON a WorkloadBackup-bővítmény sémáját jeleníti meg.
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-Name (Név) | Érték/példa | Adattípus
+Name | Érték/példa | Adattípus
  --- | --- | ---
-locale | hu-hu  |  sztring
+területi beállítás | hu-hu  |  sztring
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | sztring
 objectStr <br/> (publicSettings)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250 YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = =" | sztring
 commandStartTimeUTCTicks | "636967192566036845"  | sztring

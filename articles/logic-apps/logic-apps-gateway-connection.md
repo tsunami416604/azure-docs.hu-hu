@@ -7,10 +7,9 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657140"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Csatlakozás helyszíni adatforrásokhoz az Azure Logic Appsből
@@ -44,7 +43,7 @@ Azure Logic Apps a helyszíni adatátjáró támogatja a helyszíni [összeköt�
 * Oracle Database
 * PostgreSQL
 * SAP
-* SharePoint Server
+* SharePoint-kiszolgáló
 * SQL Server
 * Teradata
 
@@ -79,11 +78,11 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
 
    ![Új Azure-erőforrás hozzáadása az adatátjáróhoz](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. Adja meg ezt az információt az átjáró-erőforráshoz a **kapcsolatok átjárójának létrehozása**területen. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Adja meg ezt az információt az átjáró-erőforráshoz a **kapcsolatok átjárójának létrehozása**területen. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    | Tulajdonság | Leírás |
    |----------|-------------|
-   | **Erőforrás neve** | Adja meg az átjáró-erőforrás nevét, amely csak betűket, számokat, kötőjeleket`-`(), aláhúzást (`_`), zárójeleket (`(`, `)`) vagy pontokat (`.`) tartalmaz. |
+   | **Erőforrás neve** | Adja meg az átjáró-erőforrás nevét, amely csak betűket, számokat, kötőjeleket ( `-` ), aláhúzást ( `_` ), zárójeleket ( `(` , `)` ) vagy pontokat ( `.` ) tartalmaz. |
    | **Előfizetés** | Válassza ki az átjáró telepítéséhez használt Azure-fiókhoz tartozó Azure-előfizetést. Az alapértelmezett előfizetés a bejelentkezéshez használt Azure-fiókon alapul. |
    | **Erőforráscsoport** | A használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) |
    | **Hely** | Ugyanaz a régió vagy hely, amely az átjáró Cloud Service-hez lett kiválasztva az [átjáró telepítésekor](../logic-apps/logic-apps-gateway-install.md). Ellenkező esetben az átjáró telepítése nem jelenik meg a **telepítési név** listában. A logikai alkalmazás helye eltérő lehet az átjáró erőforrásának helyétől. |
@@ -121,7 +120,7 @@ Miután létrehozta az átjáró-erőforrást, és társítja az Azure-előfizet
 
    ![Kapcsolat létrehozása a logikai alkalmazás és az adatátjáró között](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 Az átjáró-kapcsolatok most már készen állnak a logikai alkalmazás használatára.
 
@@ -140,7 +139,7 @@ Az átjáró-kapcsolatok beállításainak frissítéséhez szerkesztheti a kapc
 
 Az Azure-előfizetéshez társított összes API-kapcsolat megkeresése:
 
-* A Azure Portal menüben válassza a **minden szolgáltatás** > **webes** > **API-kapcsolatok**lehetőséget.
+* A Azure Portal menüben válassza a **minden szolgáltatás**  >  **webes**  >  **API-kapcsolatok**lehetőséget.
 * Vagy a Azure Portal menüben válassza a **minden erőforrás**elemet. Állítsa a **típus** szűrőt **API-kapcsolatok**értékre.
 
 <a name="change-delete-gateway-resource"></a>

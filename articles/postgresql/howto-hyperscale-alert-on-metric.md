@@ -5,14 +5,14 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8bf887b8d86131e0b358056fc1744a8d144be3fc
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 88425e2c875b3cce7c63cd66fd034e5a7af56ec7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584108"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117032"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>A Azure Database for PostgreSQL-nagy kapacitású (Citus) metrikáinak beállítása a Azure Portal használatával
 
@@ -26,7 +26,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Hívja meg a webhookot.
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -39,7 +39,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 3. Válassza az **új riasztási szabály** (+ ikon) lehetőséget.
 
-4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a szükséges információkat:
+4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
    ![Metrikus riasztási űrlap hozzáadása](./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png)
 
@@ -104,10 +104,10 @@ Mivel a lemez megközelíti a lemezterület korlátját, próbálja ki a követk
 * Érdemes lehet [csomópontokat hozzáadni](howto-hyperscale-scaling.md#add-worker-nodes) a kiszolgálócsoport és a szegmensek újrakiegyensúlyozásához. Az újrakiegyensúlyozás több számítógép között osztja el az adatmegosztást.
 * Vegye fontolóra a munkavégző csomópontok [kapacitásának növekedését](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) . Minden dolgozó legfeljebb 2 TiB tárterületet tartalmazhat. A csomópontok átméretezése előtt azonban meg kell adni a csomópontok hozzáadását, mivel a csomópontok hozzáadása gyorsabban megtörtént.
 
-### <a name="cpu-usage"></a>Processzorhasználat
+### <a name="cpu-usage"></a>CPU-használat
 
 A CPU-használat figyelése hasznos a teljesítmény alapkonfigurációjának létrehozásához. Észreveheti például, hogy a CPU-használat általában 40-60% körül van. Ha a CPU-használat hirtelen megkezdődik a 95% körül, akkor felismerheti az anomáliát. A CPU-használat a szerves növekedést is tükrözheti, de felfedi a kóbor lekérdezést is. A CPU-riasztások létrehozásakor állítsa be a hosszú összesítés részletességét a hosszan tartó növekedéshez, és hagyja figyelmen kívül a pillanatnyi tüskéket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

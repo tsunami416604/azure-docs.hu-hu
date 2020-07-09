@@ -1,18 +1,18 @@
 ---
 title: A Microsoft kereskedelmi piactér kiadásának erőforrásai
 description: Ismerje meg a kereskedelmi piactér új és közelgő funkcióit, kiadásait és egyéb frissítéseit
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 05/19/2020
-ms.openlocfilehash: ae482a4c7b656a4bc84895501c49bf0a98517acc
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 880b9027a3708dc283e43b813d3dabf2c9ffd401
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120806"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>A Microsoft kereskedelmi piactér erőforrásai
 
@@ -28,9 +28,8 @@ A Microsoft kereskedelmi piactéren elérhető legújabb kiadásokról és egyé
 * [A partner Center kereskedelmi piactérének elemzései](./partner-center-portal/analytics.md)
 * [A Microsoft Build piactér blogja](https://aka.ms/marketplacebuildblog)
 * [Előfordulhat, hogy a piactér frissíti a blogot](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* Partneri központ: [fiók](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)  /  [kezelése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)fiók  /  [áttelepítése a CPP-ből](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* Partneri központ: [SaaS-ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)  /  [közzétételi állapotának](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-)  /  [frissítése meglévő ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)-  /  [elemzési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) létrehozása
-* [A piactér támogatásának beszerzése a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* Partneri központ: [fiók](partner-center-portal/create-account.md)  /  [kezelése](partner-center-portal/manage-account.md)fiók  /  [áttelepítése a CPP-ből](partner-center-portal/account-migration-from-cpp-to-pc.md)
+* Partner Center: [SaaS-ajánlat](partner-center-portal/create-new-saas-offer.md)  /  [közzétételi állapotának](partner-center-portal/publishing-status.md) létrehozása/ [meglévő ajánlat frissítése](partner-center-portal/update-existing-offer.md)–  /  [elemzési lehetőségek](partner-center-portal/analytics.md)
+* [A piactér támogatásának beszerzése a partner Centerben](partner-center-portal/support.md)
 
 Szívesen fogadjuk javaslatait! Csatlakozzon a [Microsoft partner közösségének](https://www.microsoftpartnercommunity.com/) beszélgetéséhez, és ismerkedjen meg az új funkciókkal, programokkal és eseményekkel kapcsolatos legújabb frissítésekkel.

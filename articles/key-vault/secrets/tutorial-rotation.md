@@ -1,6 +1,6 @@
 ---
-title: Egyfelhasználós/egyszeres jelszó rotációs oktatóanyaga
-description: Ebből az oktatóanyagból megtudhatja, hogyan automatizálható egy titkos kód elforgatása az egyfelhasználós vagy egyjelszós hitelesítést használó erőforrásokhoz.
+title: A hitelesítési hitelesítő adatokkal rendelkező erőforrások rotációs oktatóanyaga
+description: Ebből az oktatóanyagból megtudhatja, hogyan automatizálható a titkos kód elforgatása olyan erőforrásokhoz, amelyek a hitelesítő adatok egy készletét használják.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183211"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801444"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Egy titkos kód elforgatásának automatizálása az egyfelhasználós/egyjelszós hitelesítést használó erőforrásokhoz
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
 
 Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt identitás](../general/managed-identity.md)használata, de vannak olyan helyzetek, amikor ez nem lehetséges. Ezekben az esetekben a rendszer hozzáférési kulcsokat vagy titkos kódokat használ. Rendszeresen forgatni kell a hozzáférési kulcsokat vagy a titkokat.
 
-Ez az oktatóanyag bemutatja, hogyan automatizálható a titkok rendszeres elforgatása az adatbázisok és szolgáltatások esetében, amelyek egyfelhasználós vagy egyjelszós hitelesítést használnak. Pontosabban, ez az oktatóanyag a Azure Key Vaultokban tárolt jelszavakat SQL Server Azure Event Grid értesítés által aktivált függvény használatával forgatja el:
+Ez az oktatóanyag bemutatja, hogyan automatizálható a titkok rendszeres elforgatása olyan adatbázisokhoz és szolgáltatásokhoz, amelyek a hitelesítő adatok egy készletét használják. Pontosabban, ez az oktatóanyag a Azure Key Vaultokban tárolt jelszavakat SQL Server Azure Event Grid értesítés által aktivált függvény használatával forgatja el:
 
 ![Rotációs megoldás diagramja](../media/rotate1.png)
 
@@ -176,7 +176,7 @@ A teljes kód megtalálható a [githubon](https://github.com/jlichwa/azure-keyva
 
 1. Töltse le a Function app zip-fájlját a [githubról](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip).
 
-1. Töltse fel a simplerotationsample-FN. zip fájlt Azure Cloud Shellba.
+1. Töltse fel a simplerotationsample-fn.zip fájlt a Azure Cloud Shellba.
 
    ![Töltse fel a fájlt](../media/rotate4.png)
 1. Ezzel az Azure CLI-paranccsal telepítheti a zip-fájlt a Function alkalmazásba:
@@ -197,7 +197,7 @@ A Function alkalmazás `eventgrid_extension` kulcsának másolása:
 
    ![eventgrid_extension kulcs](../media/rotate7.png)
 
-Az alábbi parancsban a másolt `eventgrid_extension` kulcs és az előfizetés-azonosító segítségével hozzon létre egy `SecretNearExpiry` Event Grid-előfizetést az eseményekhez:
+Az `eventgrid_extension` alábbi parancsban a másolt kulcs és az előfizetés-azonosító segítségével hozzon létre egy Event Grid-előfizetést az `SecretNearExpiry` eseményekhez:
 
 ```azurecli
 az eventgrid event-subscription create --name simplerotation-eventsubscription --source-resource-id "/subscriptions/<subscription-id>/resourceGroups/simplerotation/providers/Microsoft.KeyVault/vaults/simplerotation-kv" --endpoint "https://simplerotation-fn.azurewebsites.net/runtime/webhooks/EventGrid?functionName=SimpleRotation&code=<extension-key>" --endpoint-type WebHook --included-event-types "Microsoft.KeyVault.SecretNearExpiry"
@@ -217,12 +217,12 @@ $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
 az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Simple123" --tags "UserID=azureuser" "DataSource=simplerotation-sql.database.windows.net" --expires $tomorrowDate
 ```
 
-Egy rövid lejárati dátummal rendelkező titkos kód létrehozása azonnal `SecretNearExpiry` közzétesz egy eseményt, amely viszont aktiválja a függvényt a titkos kód elforgatására.
+Egy rövid lejárati dátummal rendelkező titkos kód létrehozása azonnal közzétesz egy `SecretNearExpiry` eseményt, amely viszont aktiválja a függvényt a titkos kód elforgatására.
 
 ## <a name="test-and-verify"></a>Tesztelés és ellenőrzés
 Néhány perc elteltével a `sqluser` titkos kulcsot automatikusan el kell forgatni.
 
-A titkos kód elforgatásának ellenőrzéséhez nyissa meg a **Key Vault** > **Secrets**:
+A titkos kód elforgatásának ellenőrzéséhez nyissa meg a **Key Vault**  >  **Secrets**:
 
 ![Ugrás a titkokra](../media/rotate8.png)
 
@@ -250,7 +250,7 @@ A webalkalmazás forráskódját a [githubon](https://github.com/jlichwa/azure-k
 A webalkalmazás üzembe helyezéséhez hajtsa végre a következő lépéseket:
 
 1. Töltse le a Function app zip-fájlját a [githubról](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip).
-1. Töltse fel a simplerotationsample-app. zip fájlt Azure Cloud Shellba.
+1. Töltse fel a simplerotationsample-app.zip fájlt a Azure Cloud Shellba.
 1. Ezzel az Azure CLI-paranccsal telepítheti a zip-fájlt a Function alkalmazásba:
 
    ```azurecli
@@ -265,7 +265,7 @@ Nyissa meg az üzembe helyezett alkalmazást, és válassza ki az URL-címet:
 
 Amikor az alkalmazás megnyílik a böngészőben, látni fogja a **generált titkos értéket** , és egy **adatbázishoz kapcsolódó** , *igaz*értéket.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információ
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](../general/event-grid-overview.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)

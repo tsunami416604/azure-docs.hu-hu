@@ -1,15 +1,15 @@
 ---
 title: Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 description: Az Azure-beli többtagú konzorcium Ethereum üzembe helyezéséhez és konfigurálásához használja a Ethereum-szolgáltatói konzorciumi megoldást.
-ms.date: 12/18/2019
-ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75387501"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085922"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -17,15 +17,17 @@ Az Azure-beli Ethereum-alapú hitelesítésszolgáltató [előzetes](https://azu
 
 A megoldási sablon az egyes konzorciumok tagjai által használható blockchain hálózati lábnyomok kiépítésére Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatások használatával. Mindegyik konzorciumi tag hálózati lábnyoma olyan elosztott terhelésű érvényesítő csomópontokból áll, amelyeket az alkalmazás vagy a felhasználó használhat a Ethereum-tranzakciók elküldéséhez.
 
+[!INCLUDE [Preview note](./includes/preview.md)]
+
 ## <a name="choose-an-azure-blockchain-solution"></a>Azure Blockchain-megoldás kiválasztása
 
 Mielőtt kiválasztja a Ethereum proof-of-Authority Consortium megoldás sablonját, hasonlítsa össze a forgatókönyvet az elérhető Azure Blockchain-beállítások gyakori felhasználási eseteivel.
 
 Beállítás | Szolgáltatási modell | Gyakori használati eset
 -------|---------------|-----------------
-Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz.
+Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
 [Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Használja az Azure Blockchain szolgáltatást a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakció adatvédelmet igénylő megoldásokhoz.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet. Az Azure Blockchain Workbenchre nem vonatkozik szolgáltatói szerződés. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
@@ -76,7 +78,7 @@ A következő részekben bemutatjuk, hogyan konfigurálhatja az első tag háló
 
 A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 
-Válassza a **Blockchain** > **Ethereum-szolgáltatói konzorcium (előzetes verzió)** lehetőséget.
+Válassza a **Blockchain**  >  **Ethereum-szolgáltatói konzorcium (előzetes verzió)** lehetőséget.
 
 ### <a name="basics"></a>Alapvető beállítások
 
@@ -95,7 +97,7 @@ Előfizetés | Az előfizetés, amelyre a konzorcium-hálózatot telepíteni kel
 Erőforráscsoport| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
 Hely | Az erőforráscsoport Azure-régiója. | USA nyugati régiója, 2.
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="deployment-regions"></a>Központi telepítési régiók
 
@@ -109,7 +111,7 @@ Régió (k) száma|A konzorcium-hálózat üzembe helyezéséhez szükséges ré
 Első régió | A konzorcium-hálózat üzembe helyezésének első régiója | USA nyugati régiója, 2.
 Második régió | A konzorcium-hálózat üzembe helyezésének második régiója. A további régiók akkor is láthatók, ha a régiók száma kettő vagy nagyobb. | USA 2. keleti régiója
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="network-size-and-performance"></a>Hálózati méret és teljesítmény
 
@@ -125,13 +127,13 @@ Elosztott terhelésű érvényesítő csomópontok száma | A hálózat részek�
 
 A virtuális gép és a tárolási rétegek hatással vannak a hálózati teljesítményre.  A következő táblázat segítségével kiválaszthatja a költséghatékonyságot:
 
-Virtuális gép SKU|Tárolási rétegek|Price|Átviteli sebesség|Késés
+Virtuális gép SKU|Tárolási rétegek|Price|Teljesítmény|Késés
 ---|---|---|---|---
 F1|Standard SSD|alacsony|alacsony|magas
 D2_v3|Standard SSD|közepes|közepes|közepes
 F16s|Prémium SSD|magas|magas|alacsony
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="ethereum-settings"></a>Ethereum-beállítások
 
@@ -144,13 +146,13 @@ Paraméter | Leírás | Példaérték
 Konzorciumi tag azonosítója | A konzorciumi hálózaton résztvevő egyes tagokhoz tartozó azonosító. Az ütközések elkerülése érdekében az IP-címtartomány konfigurálására szolgál. Magánhálózat esetén a tagok AZONOSÍTÓjának egyedinek kell lennie az ugyanazon a hálózaton lévő különböző szervezetek között.  Egyedi tag AZONOSÍTÓra van szükség, még akkor is, ha ugyanaz a szervezet több régióban is üzembe helyezi. Jegyezze fel ennek a paraméternek az értékét, mert meg kell osztania a többi csatlakozó taggal, hogy ne legyen ütközés. Az érvényes tartomány 0 és 255 között van. | 0
 Hálózati azonosító | Az üzembe helyezett konzorcium Ethereum hálózati azonosítója. Mindegyik Ethereum-hálózat saját hálózati AZONOSÍTÓval rendelkezik, és 1 a nyilvános hálózat azonosítója. Az érvényes tartomány 5 – 999 999 999 | 10101010
 Rendszergazdai Ethereum címe | A PoA-irányításban való részvételhez használt Ethereum-fiók címe. A MetaMask használatával létrehozhat egy Ethereum-címeket. |
-Speciális beállítások | Speciális beállítások a Ethereum beállításaihoz | Bekapcsolás
+Speciális beállítások | Speciális beállítások a Ethereum beállításaihoz | Engedélyezés
 Üzembe helyezés nyilvános IP-cím használatával | Ha a privát VNet van kiválasztva, a hálózat egy VNet-átjáró mögött van telepítve, és eltávolítja a társ-hozzáférési hozzáférést. A privát VNet esetében az összes tagnak VNet-átjárót kell használnia ahhoz, hogy a kapcsolódás kompatibilis legyen. | Nyilvános IP-cím
 Gáz korlátjának letiltása | A hálózat indítási blokkjának gáz-korlátja. | 50000000
 Visszazárási időszak blokkolása (mp) | Az üres blokkok létrehozásának gyakorisága, ha nincsenek tranzakciók a hálózaton. A magasabb szintű gyakoriság gyorsabb lesz, de nagyobb a tárolási költségek. | 15
 Tranzakciós engedély szerződése | A tranzakció bytecode vonatkozó szerződés. Az intelligens szerződések üzembe helyezésének és végrehajtásának korlátozása a Ethereum-fiókok engedélyezett listájára. |
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -160,13 +162,13 @@ A figyelés lehetővé teszi a hálózati naplózási erőforrás konfigurálás
 
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
-Figyelés | A figyelés engedélyezésének lehetősége | Bekapcsolás
+Figyelés | A figyelés engedélyezésének lehetősége | Engedélyezés
 Kapcsolódás meglévő Azure Monitor naplókhoz | Lehetőség új Azure Monitor naplók példányának létrehozására vagy meglévő példányhoz való csatlakozásra | Új létrehozása
 Hely | Az új példányt telepítő régió | USA keleti régiója
 Meglévő log Analytics-munkaterület azonosítója (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányának munkaterület-azonosítója||NA
 Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányához való kapcsolódáshoz használt elsődleges kulcs||NA
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="summary"></a>Összefoglalás
 
@@ -335,7 +337,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 További tranzakciós csomópontok megszerzéséhez növelje a portszámot eggyel.
 
-Ha egynél több régiót telepít, módosítsa a parancsot az adott régióban lévő terheléselosztó DNS-nevére vagy IP-címére. A többi régió DNS-nevének vagy IP-címének megkereséséhez keresse meg az erőforrást a (z) ** \* \* \* \* \*-\# lbpip-reg** elnevezési konvencióval, és tekintse meg a DNS-név és az IP-cím tulajdonságait.
+Ha egynél több régiót telepít, módosítsa a parancsot az adott régióban lévő terheléselosztó DNS-nevére vagy IP-címére. A többi régió DNS-nevének vagy IP-címének megkereséséhez keresse meg az erőforrást a (z) ** \* \* \* \* \* - \# lbpip-reg** elnevezési konvencióval, és tekintse meg a DNS-név és az IP-cím tulajdonságait.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Az Azure Traffic Manager terheléselosztása
 
@@ -558,7 +560,7 @@ Az alábbi példában egy egyszerű intelligens szerződést hozunk létre. A sz
 #### <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a szarvasgomba és a Web3 számára. Válassza a telepítés lehetőséget, hogy tartalmazza a Pythont az elérési útban.
-* Telepítse a szarvasgomba `npm install -g truffle@v5.0.5`v 5.0.5. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/)-t. További információ: [szarvasgomba-dokumentáció](https://github.com/trufflesuite/truffle).
+* Telepítse a szarvasgomba v 5.0.5 `npm install -g truffle@v5.0.5` . A szarvasgombához több eszközt kell telepíteni, beleértve a [Node.jst ](https://nodejs.org), a [git](https://git-scm.com/)-t. További információ: [szarvasgomba-dokumentáció](https://github.com/trufflesuite/truffle).
 
 ### <a name="create-truffle-project"></a>Szarvasgomba-projekt létrehozása
 
@@ -567,7 +569,7 @@ Az intelligens szerződések fordítása és üzembe helyezése előtt létre ke
 1. Nyisson meg egy parancssort vagy egy rendszerhéjat.
 1. Hozzon létre egy `HelloWorld` nevű mappát.
 1. Módosítsa a könyvtárat az új `HelloWorld` mappába.
-1. Inicializáljon egy új szarvasgomba projektet a paranccsal `truffle init`.
+1. Inicializáljon egy új szarvasgomba projektet a paranccsal `truffle init` .
 
     ![Új szarvasgomba-projekt létrehozása](./media/ethereum-poa-deployment/create-truffle-project.png)
 
@@ -600,7 +602,7 @@ A szarvasgomba-projektek konfigurációs fájlt tartalmaznak a blockchain háló
 > Soha ne küldje el a Ethereum titkos kulcsát a hálózaton keresztül. Győződjön meg arról, hogy minden tranzakció helyileg van aláírva, és az aláírt tranzakciót a hálózaton keresztül küldik.
 
 1. Szüksége lesz a [blockchain-hálózat telepítésekor használt Ethereum rendszergazdai fiók](#ethereum-settings)hívóbetűje kifejezésére. Ha a MetaMask használatával hozza létre a fiókot, a hívóbetűje a MetaMask kérheti le. Válassza ki a rendszergazdai fiók ikont a MetaMask-bővítmény jobb felső sarkában, és válassza a **beállítások > biztonsági & adatvédelem > a vetőmag szavainak megjelenítése**lehetőséget.
-1. Cserélje le a szarvasgomba `truffle-config.js` -projekt tartalmát a következő tartalomra. Cserélje le a helyőrző végpontot és a hívóbetűje értékeket.
+1. Cserélje le a `truffle-config.js` szarvasgomba-projekt tartalmát a következő tartalomra. Cserélje le a helyőrző végpontot és a hívóbetűje értékeket.
 
     ```javascript
     const HDWalletProvider = require("truffle-hdwallet-provider");
@@ -623,11 +625,11 @@ A szarvasgomba-projektek konfigurációs fájlt tartalmaznak a blockchain háló
     };
     ```
 
-1. Mivel a szarvasgomba HD Wallet szolgáltatót használjuk, a parancs `npm install truffle-hdwallet-provider --save`használatával telepítse a modult a projektbe.
+1. Mivel a szarvasgomba HD Wallet szolgáltatót használjuk, a parancs használatával telepítse a modult a projektbe `npm install truffle-hdwallet-provider --save` .
 
 A szarvasgomba áttelepítési parancsfájlok használatával telepíti az intelligens szerződéseket egy blockchain-hálózatra. Az új intelligens szerződés üzembe helyezéséhez áttelepítési parancsfájlra van szükség.
 
-1. Új áttelepítés hozzáadása az új szerződés telepítéséhez. Hozzon `2_deploy_contracts.js` létre fájlt a szarvasgomba projekt **áttelepítési** alkönyvtárában.
+1. Új áttelepítés hozzáadása az új szerződés telepítéséhez. Hozzon létre fájlt a `2_deploy_contracts.js` szarvasgomba projekt **áttelepítési** alkönyvtárában.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -647,8 +649,8 @@ A szarvasgomba áttelepítési parancsfájlok használatával telepíti az intel
 
 Most, hogy üzembe helyezte az intelligens szerződést, tranzakciót küldhet egy függvény hívásához.
 
-1. A szarvasgomba-projekt könyvtárában hozzon létre egy `sendtransaction.js`nevű új fájlt.
-1. Adja hozzá a következő tartalmakat a **sendtransaction. js**fájlhoz.
+1. A szarvasgomba-projekt könyvtárában hozzon létre egy nevű új fájlt `sendtransaction.js` .
+1. Adja hozzá a következő tartalmakat **sendtransaction.jshoz **.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -718,6 +720,20 @@ A tranzakció sebessége nagymértékben függ a tranzakciók típusaitól és a
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Hogyan előfizetést az intelligens szerződési eseményekre?
 
 A Ethereum-szolgáltató mostantól támogatja a webes szoftvercsatornák használatát.  Az üzembe helyezési kimenetben keresse meg a webes szoftvercsatorna URL-címét és portját.
+
+## <a name="support-and-feedback"></a>Támogatás és visszajelzés
+
+Az Azure Blockchain híreket az Azure [Blockchain blogon](https://azure.microsoft.com/blog/topics/blockchain/) tekintheti meg, ahol naprakészen tarthatja a Blockchain szolgáltatás ajánlatait és az Azure Blockchain Engineering csapata információit.
+
+Ha visszajelzést szeretne küldeni, vagy új szolgáltatásokat szeretne kérni, tegye közzé vagy szavazzon a [blockchain készült Azure feedback fórumán](https://aka.ms/blockchainuservoice)keresztül.
+
+### <a name="community-support"></a>Közösségi támogatás
+
+Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
+
+* [A Microsoft Q&egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). A blockchain-sablonok mérnöki támogatása az üzembe helyezési problémákra korlátozódik.
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>További lépések
 

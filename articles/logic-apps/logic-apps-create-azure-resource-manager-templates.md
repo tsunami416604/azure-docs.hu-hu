@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972634"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317775"
 ---
-# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása a Azure Logic Apps üzembe helyezésének automatizálásához
+# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása az Azure Logic Apps-alkalmazások üzembe helyezésének automatizálásához
 
 A logikai alkalmazás létrehozásának és üzembe helyezésének automatizálása érdekében ez a cikk bemutatja, hogyan hozhat létre [Azure Resource Manager sablont](../azure-resource-manager/management/overview.md) a logikai alkalmazáshoz. A munkafolyamat-definíciót és az üzembe helyezéshez szükséges egyéb erőforrásokat tartalmazó sablon szerkezetének és szintaxisának áttekintését lásd [: Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager sablonokkal](logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -45,7 +45,7 @@ A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a log
 
 A Resource Manager-sablonokat a [LogicAppTemplate modullal](https://github.com/jeffhollan/LogicAppTemplateCreator)Azure PowerShell használatával is létrehozhatja. Ez a nyílt forráskódú modul először kiértékeli a logikai alkalmazást és a logikai alkalmazás által használt kapcsolatokat. A modul ezután létrehozza a sablon erőforrásait az üzembe helyezéshez szükséges paraméterekkel.
 
-Tegyük fel például, hogy van egy logikai alkalmazás, amely egy Azure Service Bus üzenetsor üzenetét fogadja, és feltölti az adatait egy Azure SQL Database-adatbázisba. A modul megőrzi az összes összehangoló logikát, és felparaméterezi az SQL és Service Bus kapcsolódási karakterláncokat, így a telepítési igények alapján megadhatja és módosíthatja ezeket az értékeket.
+Tegyük fel például, hogy rendelkezik egy logikai alkalmazással, amely egy Azure Service Bus üzenetsor üzenetét fogadja, és feltölti az adatait a Azure SQL Databaseba. A modul megőrzi az összes összehangoló logikát, és felparaméterezi az SQL és Service Bus kapcsolódási karakterláncokat, így a telepítési igények alapján megadhatja és módosíthatja ezeket az értékeket.
 
 Ezek a minták azt mutatják be, hogyan hozhat létre és helyezhet üzembe logikai alkalmazásokat Azure Resource Manager sablonok, Azure-folyamatok Azure DevOps és Azure PowerShell használatával:
 
@@ -76,7 +76,7 @@ A manuális telepítéshez kövesse a következő témakör lépéseit: GitHub f
 
 Ahhoz, hogy a LogicAppTemplate modul bármilyen Azure-Bérlővel és előfizetési hozzáférési jogkivonattal működjön, telepítse az [Azure Resource Manager-ügyfél eszközt](https://github.com/projectkudu/ARMClient), amely egy egyszerű parancssori eszköz, amely meghívja a Azure Resource Manager API-t.
 
-Ha ezzel az eszközzel `Get-LogicAppTemplate` futtatja a parancsot, a parancs először egy hozzáférési jogkivonatot kap a ARMClient eszközön keresztül, a tokent a PowerShell-parancsfájlba, majd a sablont JSON-fájlként hozza létre. Az eszközzel kapcsolatos további információkért tekintse meg ezt [a cikket a Azure Resource Manager-ügyfél eszközről](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
+Ha ezzel az eszközzel futtatja a `Get-LogicAppTemplate` parancsot, a parancs először egy hozzáférési jogkivonatot kap a ARMClient eszközön keresztül, a tokent a PowerShell-parancsfájlba, majd a SABLONT JSON-fájlként hozza létre. Az eszközzel kapcsolatos további információkért tekintse meg ezt [a cikket a Azure Resource Manager-ügyfél eszközről](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
 
 ### <a name="generate-template-with-powershell"></a>Sablon készítése a PowerShell-lel
 
@@ -86,7 +86,7 @@ Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplat
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-Ha követni szeretné a [Azure Resource Manager-ügyfél eszközén](https://github.com/projectkudu/ARMClient)található adatcsövekre vonatkozó javaslatot, futtassa ezt a parancsot `$SubscriptionId` ahelyett, hogy az Azure-előfizetés azonosítója:
+Ha követni szeretné a [Azure Resource Manager-ügyfél eszközén](https://github.com/projectkudu/ARMClient)található adatcsövekre vonatkozó javaslatot, futtassa ezt a parancsot ahelyett, hogy az `$SubscriptionId` Azure-előfizetés azonosítója:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -106,8 +106,8 @@ PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $f
 
 | Paraméterek | Kötelező | Leírás |
 |------------|----------|-------------|
-| TemplateFile | Igen | A sablon fájljának elérési útja |
-| KeyVault | Nem | Egy felsorolás, amely leírja, hogyan kell kezelni a lehetséges kulcstároló-értékeket. A mező alapértelmezett értéke: `None`. |
+| TemplateFile | Yes | A sablon fájljának elérési útja |
+| KeyVault | No | Egy felsorolás, amely leírja, hogyan kell kezelni a lehetséges kulcstároló-értékeket. A mező alapértelmezett értéke: `None`. |
 ||||
 
 ## <a name="next-steps"></a>További lépések

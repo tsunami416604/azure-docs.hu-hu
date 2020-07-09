@@ -4,21 +4,21 @@ description: Megtudhatja, hogyan engedélyezheti Active Directory B2B külső eg
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387181"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégek meghívójának kezelése
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégmeghívási jogosultság kezelése
 
 Ez a cikk bemutatja, hogyan engedélyezheti a Azure Active Directory (Azure AD) B2B-együttműködést, és meghatározhatja, hogy kik hívhatják meg a vendégeket. Alapértelmezés szerint a címtárban lévő összes felhasználó és vendég meghívhatja a vendégeket, még akkor is, ha nincsenek rendszergazdai szerepkörhöz rendelve. A külső együttműködési beállítások lehetővé teszik a vendég meghívások be-és kikapcsolását a szervezet különböző típusaihoz. Az egyes felhasználóknak küldött meghívókat olyan szerepkörök hozzárendelésével is delegálhatja, amelyek lehetővé teszik a vendégek meghívását.
 
@@ -48,6 +48,9 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
    - A **vendégek meghívhatják**: ha lehetővé szeretné tenni a vendégek számára más vendégek meghívását, állítsa **Igen**értékre a szabályzatot.
    - **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)**: az egyszeri PIN-kód szolgáltatással kapcsolatos további információkért lásd az [e-mailek egyszeri jelszavas hitelesítését (előzetes verzió)](one-time-passcode.md).
    - **Együttműködési korlátozások**: az adott tartományokra vonatkozó meghívások engedélyezésével vagy blokkolásával kapcsolatos további információkért lásd: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](allow-deny-list.md).
+   
+   > [!NOTE]
+   > Ha a **tagok meghívása** **nem** értékre van állítva, és **a vendég meghívó szerepkörben lévő felhasználók meghívhatják** az **Igen**értéket, akkor a vendég **meghívó** szerepkörben lévő felhasználók továbbra is meghívhatják a vendégeket.
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>A vendég meghívó szerepkör társítása egy felhasználóhoz
 
@@ -66,5 +69,4 @@ Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [B2B Collaboration Guest Users hozzáadása meghívás nélkül](add-user-without-invite.md)
 - [B2B csoportmunka-felhasználó hozzáadása egy szerepkörhöz](add-guest-to-role.md)
-
 

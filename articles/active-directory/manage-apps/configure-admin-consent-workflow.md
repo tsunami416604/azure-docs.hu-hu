@@ -2,22 +2,21 @@
 title: A rendszergazdai beleegyező munkafolyamat konfigurálása – Azure Active Directory | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhatja a végfelhasználók számára, hogy hozzáférést kérjenek a rendszergazdai jogosultságot igénylő alkalmazásokhoz.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763618"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
 
@@ -110,7 +109,7 @@ A kérelmező e-mail-értesítéseket fog kapni, ha:
 * A kérést a rendszer megtagadta vagy letiltotta
 * A kérelem jóváhagyása megtörtént
  
-## <a name="audit-logs"></a>Naplók 
+## <a name="audit-logs"></a>Auditnaplók 
  
 Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhető forgatókönyveket és naplózási értékeket ismerteti. 
 
@@ -131,7 +130,7 @@ Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhet
 
 **Bekapcsoltam ezt a munkafolyamatot, de a funkciók kipróbálásakor miért nem látom az új "jóváhagyás szükséges" kérést, amely lehetővé teszi a hozzáférést?**
 
-A funkció bekapcsolását követően akár 60 percet is igénybe vehet, amíg a végfelhasználók megtekinthetik a frissítést. A konfiguráció megfelelő működésének ellenőrzéséhez tekintse meg a **EnableAdminConsentRequests** értéket az `https://graph.microsoft.com/beta/settings` API-ban.
+A funkció bekapcsolását követően akár 60 percet is igénybe vehet, amíg a végfelhasználók megtekinthetik a frissítést. A konfiguráció megfelelő működésének ellenőrzéséhez tekintse meg a **EnableAdminConsentRequests** értéket az API-ban `https://graph.microsoft.com/beta/settings` .
 
 **Felülvizsgáló miért nem látom az összes függőben lévő kérelmet?**
 
@@ -153,9 +152,9 @@ Ha aggódik a rendszergazdai jóváhagyás megadásával, és a bérlő összes 
 
 További információ az alkalmazásokkal való hozzájárulásról: [Azure Active Directory beleegyezési keretrendszer](../develop/consent-framework.md).
 
-[Annak konfigurálása, hogy a végfelhasználók hogyan hozzájárulásukat az alkalmazásokhoz](configure-user-consent.md)
+[A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
 
-[Bérlői szintű rendszergazdai jóváhagyás engedélyezése egy alkalmazás számára](grant-admin-consent.md)
+[Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
 
 [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
 

@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/06/2020
+ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: abc61b08770ca011c0f843dff3c2cda080ca7262
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6ff56ca61304bdacb3512156babd637afd337c7e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997601"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242134"
 ---
-[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -88,7 +88,7 @@ A projekt *Build. gradle. KTS* fájljában ügyeljen arra, hogy az ügyféloldal
 
 ```kotlin
 dependencies {
-    implementation group: 'com.azure', name: 'azure-ai-formrecognizer', version: '1.0.0-beta.1'
+    implementation group: 'com.azure', name: 'azure-ai-formrecognizer', version: '1.0.0-beta.3'
 }
 ```
 
@@ -130,7 +130,7 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is.
 
 > [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview).
+> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/java/api/overview/azure/formrecognizer).
 
 ```java
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -167,10 +167,10 @@ private static void GetContent(
     FormRecognizerClient recognizerClient, String invoiceUri)
 {
     String analyzeFilePath = invoiceUri;
-    SyncPoller<OperationResult, IterableStream<FormPage>> recognizeContentPoller =
+    SyncPoller<OperationResult, List<FormPage>> recognizeContentPoller =
         recognizerClient.beginRecognizeContentFromUrl(analyzeFilePath);
     
-    IterableStream<FormPage> contentResult = recognizeContentPoller.getFinalResult();
+    List<FormPage> contentResult = recognizeContentPoller.getFinalResult();
 ```
 
 A visszaadott érték egy **FormPage** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. Az alábbi kód megismétli ezeket az objektumokat, és kinyomtatja a kinyert kulcs/érték párokat és a táblák adatait.
@@ -204,41 +204,87 @@ A visszaigazolások URI-ból való felismeréséhez használja a **beginRecogniz
 private static void AnalyzeReceipt(
     FormRecognizerClient recognizerClient, string receiptUri)
 {
-    SyncPoller<OperationResult, IterableStream<RecognizedReceipt>> syncPoller =
+    SyncPoller<OperationResult, List<RecognizedReceipt>> syncPoller =
         formRecognizerClient.beginRecognizeReceiptsFromUrl(receiptUri);
-    IterableStream<RecognizedReceipt> receiptPageResults = syncPoller.getFinalResult();
+    List<RecognizedReceipt> receiptPageResults = syncPoller.getFinalResult();
 ```
 
 A kód következő blokkja megismétli a visszaigazolásokat, és kinyomtatja az adatokat a-konzolra.
 
 ```java
-    receiptPageResults.forEach(recognizedReceipt -> {
-        USReceipt usReceipt = ReceiptExtensions.asUSReceipt(recognizedReceipt);
-        System.out.printf("Page Number: %d%n", usReceipt.getMerchantName().getPageNumber());
-        System.out.printf("Merchant Name: %s, confidence: %.2f%n", usReceipt.getMerchantName().getFieldValue(), usReceipt.getMerchantName().getConfidence());
-        System.out.printf("Merchant Address: %s, confidence: %.2f%n", usReceipt.getMerchantAddress().getName(), usReceipt.getMerchantAddress().getConfidence());
-        System.out.printf("Merchant Phone Number %s, confidence: %.2f%n", usReceipt.getMerchantPhoneNumber().getFieldValue(), usReceipt.getMerchantPhoneNumber().getConfidence());
-        System.out.printf("Total: %s confidence: %.2f%n", usReceipt.getTotal().getName(), usReceipt.getTotal().getConfidence());
+    for (int i = 0; i < receiptPageResults.size(); i++) {
+        RecognizedReceipt recognizedReceipt = receiptPageResults.get(i);
+        Map<String, FormField> recognizedFields = recognizedReceipt.getRecognizedForm().getFields();
+        System.out.printf("----------- Recognized Receipt page %d -----------%n", i);
+        FormField merchantNameField = recognizedFields.get("MerchantName");
+        if (merchantNameField != null) {
+            if (merchantNameField.getFieldValue().getType() == FieldValueType.STRING) {
+                System.out.printf("Merchant Name: %s, confidence: %.2f%n",
+                    merchantNameField.getFieldValue().asString(),
+                    merchantNameField.getConfidence());
+            }
+        }
+        FormField merchantAddressField = recognizedFields.get("MerchantAddress");
+        if (merchantAddressField != null) {
+            if (merchantAddressField.getFieldValue().getType() == FieldValueType.STRING) {
+                System.out.printf("Merchant Address: %s, confidence: %.2f%n",
+                    merchantAddressField.getFieldValue().asString(),
+                    merchantAddressField.getConfidence());
+            }
+        }
+        FormField transactionDateField = recognizedFields.get("TransactionDate");
+        if (transactionDateField != null) {
+            if (transactionDateField.getFieldValue().getType() == FieldValueType.DATE) {
+                System.out.printf("Transaction Date: %s, confidence: %.2f%n",
+                    transactionDateField.getFieldValue().asDate(),
+                    transactionDateField.getConfidence());
+            }
+        }
 ```
 A kód következő blokkja megismétli a nyugtán észlelt egyes elemeket, és kiírja az adataikat a-konzolra.
 
 ```java
-        System.out.printf("Receipt Items: %n");
-        usReceipt.getReceiptItems().forEach(receiptItem -> {
-            if (receiptItem.getName() != null) {
-                System.out.printf("Name: %s, confidence: %.2f%n", receiptItem.getName().getFieldValue(), receiptItem.getName().getConfidence());
+        FormField receiptItemsField = recognizedFields.get("Items");
+        if (receiptItemsField != null) {
+            System.out.printf("Receipt Items: %n");
+            if (receiptItemsField.getFieldValue().getType() == FieldValueType.LIST) {
+                List<FormField> receiptItems = receiptItemsField.getFieldValue().asList();
+                receiptItems.forEach(receiptItem -> {
+                    if (receiptItem.getFieldValue().getType() == FieldValueType.MAP) {
+                        receiptItem.getFieldValue().asMap().forEach((key, formField) -> {
+                            if (key.equals("Name")) {
+                                if (formField.getFieldValue().getType() == FieldValueType.STRING) {
+                                    System.out.printf("Name: %s, confidence: %.2fs%n",
+                                        formField.getFieldValue().asString(),
+                                        formField.getConfidence());
+                                }
+                            }
+                            if (key.equals("Quantity")) {
+                                if (formField.getFieldValue().getType() == FieldValueType.INTEGER) {
+                                    System.out.printf("Quantity: %d, confidence: %.2f%n",
+                                        formField.getFieldValue().asInteger(), formField.getConfidence());
+                                }
+                            }
+                            if (key.equals("Price")) {
+                                if (formField.getFieldValue().getType() == FieldValueType.FLOAT) {
+                                    System.out.printf("Price: %f, confidence: %.2f%n",
+                                        formField.getFieldValue().asFloat(),
+                                        formField.getConfidence());
+                                }
+                            }
+                            if (key.equals("TotalPrice")) {
+                                if (formField.getFieldValue().getType() == FieldValueType.FLOAT) {
+                                    System.out.printf("Total Price: %f, confidence: %.2f%n",
+                                        formField.getFieldValue().asFloat(),
+                                        formField.getConfidence());
+                                }
+                            }
+                        });
+                    }
+                });
             }
-            if (receiptItem.getQuantity() != null) {
-                System.out.printf("Quantity: %s, confidence: %.2f%n", receiptItem.getQuantity().getFieldValue(), receiptItem.getQuantity().getConfidence());
-            }
-            if (receiptItem.getPrice() != null) {
-                System.out.printf("Price: %s, confidence: %.2f%n", receiptItem.getPrice().getFieldValue(), receiptItem.getPrice().getConfidence());
-            }
-            if (receiptItem.getTotalPrice() != null) {
-                System.out.printf("Total Price: %s, confidence: %.2f%n", receiptItem.getTotalPrice().getFieldValue(), receiptItem.getTotalPrice().getConfidence());
-            }
-        });
-    });
+        }
+    }
 }
 ```
 
@@ -269,7 +315,7 @@ private static String TrainModel(
     System.out.printf("Model Id: %s%n", customFormModel.getModelId());
     System.out.printf("Model Status: %s%n", customFormModel.getModelStatus());
     System.out.printf("Model created on: %s%n", customFormModel.getCreatedOn());
-    System.out.printf("Model last updated: %s%n%n", customFormModel.getLastUpdatedOn());
+    System.out.printf("Model last updated: %s%n%n", customFormModel.getCompletedOn());
 ```
 A visszaadott **CustomFormModel** objektum a modell által felismerhető űrlap-típusokkal és az egyes űrlapokból kinyerhető mezőkkel kapcsolatos információkat tartalmaz. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
 
@@ -277,7 +323,7 @@ A visszaadott **CustomFormModel** objektum a modell által felismerhető űrlap-
     System.out.println("Recognized Fields:");
     // looping through the sub-models, which contains the fields they were trained on
     // Since the given training documents are unlabeled, we still group them but they do not have a label.
-    customFormModel.getSubModels().forEach(customFormSubModel -> {
+    customFormModel.getSubmodels().forEach(customFormSubModel -> {
         // Since the training data is unlabeled, we are unable to return the accuracy of this model
         customFormSubModel.getFieldMap().forEach((field, customFormModelField) ->
             System.out.printf("Field: %s Field Label: %s%n",
@@ -294,7 +340,7 @@ Végezetül ez a metódus a modell egyedi AZONOSÍTÓját adja vissza.
 
 ### <a name="train-a-model-with-labels"></a>Modell betanítása címkékkel
 
-Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. Ha címkéket szeretne betanítani, a blob Storage-tárolóban speciális címke-információs fájlokat (* \<filename\> . PDF. labels. JSON*) kell használnia a betanítási dokumentumok mellett. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Miután megadta őket, meghívhatja a **beginTraining** metódust a *uselabels* paraméterrel, amely a következőre van beállítva: `true` .
+Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. Ha címkéket szeretne betanítani, a blob Storage-tárolóban a betanítási dokumentumokkal együtt speciális feliratú információs fájlokat (* \<filename\>.pdf.labels.js*) kell használnia. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Miután megadta őket, meghívhatja a **beginTraining** metódust a *useTrainingLabels* paraméterrel, amely a következőre van beállítva: `true` .
 
 ```java
 private static String TrainModelWithLabels(
@@ -309,8 +355,8 @@ private static String TrainModelWithLabels(
     // Model Info
     System.out.printf("Model Id: %s%n", customFormModel.getModelId());
     System.out.printf("Model Status: %s%n", customFormModel.getModelStatus());
-    System.out.printf("Model created on: %s%n", customFormModel.getCreatedOn());
-    System.out.printf("Model last updated: %s%n%n", customFormModel.getLastUpdatedOn());
+    System.out.printf("Model created on: %s%n", customFormModel.getRequestedOn());
+    System.out.printf("Model last updated: %s%n%n", customFormModel.getCompletedOn());
 ```
 
 A visszaadott **CustomFormModel** jelzi a modell által kinyerhető mezőket, valamint az egyes mezők becsült pontosságát. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
@@ -320,7 +366,7 @@ A visszaadott **CustomFormModel** jelzi a modell által kinyerhető mezőket, va
     // The labels are based on the ones you gave the training document.
     System.out.println("Recognized Fields:");
     // Since the data is labeled, we are able to return the accuracy of the model
-    customFormModel.getSubModels().forEach(customFormSubModel -> {
+    customFormModel.getSubmodels().forEach(customFormSubModel -> {
         System.out.printf("Sub-model accuracy: %.2f%n", customFormSubModel.getAccuracy());
         customFormSubModel.getFieldMap().forEach((label, customFormModelField) ->
             System.out.printf("Field: %s Field Name: %s Field Accuracy: %.2f%n",
@@ -345,10 +391,10 @@ private static void AnalyzePdfForm(
     FormRecognizerClient formClient, String modelId, String pdfFormUrl)
 {    
     String modelId = modelId;
-    SyncPoller<OperationResult, IterableStream<RecognizedForm>> recognizeFormPoller =
+    SyncPoller<OperationResult, List<RecognizedForm>> recognizeFormPoller =
         client.beginRecognizeCustomFormsFromUrl(pdfFormUrl, modelId);
 
-    IterableStream<RecognizedForm> recognizedForms = recognizeFormPoller.getFinalResult();
+    List<RecognizedForm> recognizedForms = recognizeFormPoller.getFinalResult();
 ```
 
 A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
@@ -387,7 +433,7 @@ A következő kódrészlet ellenőrzi, hogy az űrlap-felismerő fiókban hány 
     // First, we see how many custom models we have, and what our limit is
     AccountProperties accountProperties = client.getAccountProperties();
     System.out.printf("The account has %s custom models, and we can have at most %s custom models",
-        accountProperties.getCount(), accountProperties.getLimit());
+        accountProperties.getCustomModelCount(), accountProperties.getCustomModelLimit());
 ```
 
 ### <a name="list-the-models-currently-stored-in-the-resource-account"></a>Az erőforrás-fiókban jelenleg tárolt modellek listázása
@@ -405,9 +451,9 @@ A következő kódrészlet felsorolja a fiókban lévő aktuális modelleket, é
         CustomFormModel customModel = client.getCustomModel(customFormModelInfo.getModelId());
         System.out.printf("Model Id: %s%n", customModel.getModelId());
         System.out.printf("Model Status: %s%n", customModel.getModelStatus());
-        System.out.printf("Created on: %s%n", customModel.getCreatedOn());
-        System.out.printf("Updated on: %s%n", customModel.getLastUpdatedOn());
-        customModel.getSubModels().forEach(customFormSubModel -> {
+        System.out.printf("Created on: %s%n", customModel.getRequestedOn());
+        System.out.printf("Updated on: %s%n", customModel.getCompletedOn());
+        customModel.getSubmodels().forEach(customFormSubModel -> {
             System.out.printf("Custom Model Form type: %s%n", customFormSubModel.getFormType());
             System.out.printf("Custom Model Accuracy: %.2f%n", customFormSubModel.getAccuracy());
             if (customFormSubModel.getFieldMap() != null) {

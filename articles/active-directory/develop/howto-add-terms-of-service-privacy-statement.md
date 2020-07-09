@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478008"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: alkalmazások használati feltételeinek és adatvédelmi nyilatkozatának konfigurálása
 
@@ -96,5 +96,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Ügyeljen arra, hogy ne írja felül a következő mezőkhöz hozzárendelt előre megadott értékeket: `supportUrl`, és `marketingUrl``logoUrl`
+> * Ügyeljen arra, hogy ne írja felül a következő mezőkhöz hozzárendelt előre megadott értékeket: `supportUrl` , `marketingUrl` és`logoUrl`
 > * A Microsoft Graph API csak akkor működik, ha Azure AD-fiókkal jelentkezik be. A személyes Microsoft-fiókok nem támogatottak.

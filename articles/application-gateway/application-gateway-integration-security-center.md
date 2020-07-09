@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277193"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway és Azure Security Center közötti integráció áttekintése
@@ -30,7 +29,7 @@ Ha a webalkalmazási tűzfallal kapcsolatos javaslatokra kattint, megnyílik egy
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Webalkalmazási tűzfal hozzáadása meglévő erőforráshoz
 
-Navigáljon **az összes szolgáltatás** > **Biztonság és Identitáskezelés** > **Security Center** és a **Security Center – áttekintés**területen kattintson az **alkalmazások**elemre. **Security Center alkalmazásokban**a tábla az előfizetésében Security Center észlelt alkalmazások listáját tartalmazza.
+Navigáljon az **összes szolgáltatás**  >  **Biztonság és Identitáskezelés**  >  **Security Center** és a **Security Center – áttekintés**területen kattintson az **alkalmazások**elemre. **Security Center alkalmazásokban**a tábla az előfizetésében Security Center észlelt alkalmazások listáját tartalmazza.
 
 ![webalkalmazások][3]
 
@@ -50,7 +49,7 @@ Webalkalmazás hozzáadása egy Application Gateway-hez Security Centeron keresz
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Erőforrás hozzáadása meglévő webalkalmazási tűzfalhoz
 
-Navigáljon **az összes szolgáltatás** > **Biztonság és Identitáskezelés** > **Security Center** és a **Security Center – áttekintés**területen kattintson a **partneri megoldások**elemre. Meglévő Security Center Aware Application Gateway-átjárók a **partneri megoldások** lapon jelennek meg.
+Navigáljon az **összes szolgáltatás**  >  **Biztonság és Identitáskezelés**  >  **Security Center** és a **Security Center – áttekintés**területen kattintson a **partneri megoldások**elemre. Meglévő Security Center Aware Application Gateway-átjárók a **partneri megoldások** lapon jelennek meg.
 
 ![partneri megoldások][7]
 
@@ -66,7 +65,7 @@ Security Center nyomon követi az Application Gateway számára védett erőforr
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-Security Centeron belül navigáljon az **észlelési** > **biztonsági riasztásokhoz**.  Itt talál WAF-riasztásokat az Application Gateway átjárók számára. A riasztások WAF-szabály szerint vannak lebontva.
+Security Centeron belül navigáljon az **észlelési**  >  **biztonsági riasztásokhoz**.  Itt talál WAF-riasztásokat az Application Gateway átjárók számára. A riasztások WAF-szabály szerint vannak lebontva.
 
 ![biztonsági riasztások][8]
 

@@ -2,19 +2,33 @@
 title: Újdonságok – Language Understanding (LUIS)
 description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Language Understanding APIával kapcsolatos hírekkel.
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/15/2020
+ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675954"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789208"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="june-2020"></a>2020. június
+
+* [Előzetes verzió – 3,0 authoring](luis-migration-authoring-entities.md) SDK
+    * 3.2.0 verziója – előzetes verzió. 3 – [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * Version 4.0.0 – előzetes verzió. 3 – [js – NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
+* DevOps-gyakorlatok alkalmazása a LUIS-vel
+    * Alapelvek
+        * [DevOps eljárások a LUIS számára](luis-concept-devops-sourcecontrol.md)
+        * [Folyamatos integráció és folyamatos kézbesítési munkafolyamatok LUIS DevOps](luis-concept-devops-automation.md)
+        * [A LUIS DevOps tesztelése](luis-concept-devops-testing.md)
+    * Használati útmutató
+        * [A DevOps alkalmazása a LUIS-alkalmazások fejlesztésére GitHub-műveletek használatával](luis-how-to-devops-with-github.md)
+    * [GitHub-adattár teljes kódja](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 
 ### <a name="may-2020---build"></a>Május 2020 – Build
 

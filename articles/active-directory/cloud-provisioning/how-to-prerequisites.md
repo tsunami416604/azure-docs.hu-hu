@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609ad2539753a838f02c4a79be56444ca0fb07f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373862"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>A felhő-kiépítés Azure AD Connectának előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -27,7 +27,7 @@ Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőal
 Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz szüksége:
     
 - Egy hibrid identitás-rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
-- Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.
+- Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.  A kiszolgálónak a [Active Directory felügyeleti rétegek modellje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)alapján 0. rétegű kiszolgálónak kell lennie.
 - Helyszíni tűzfal-konfigurációk.
 
 >[!NOTE]

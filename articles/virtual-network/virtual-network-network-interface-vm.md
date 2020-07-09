@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85480133"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása virtuális gépekről
 
@@ -65,14 +65,14 @@ Hálózati adapter hozzáadása a virtuális géphez:
 
 3. A virtuális gép parancssáv mezőjében válassza a **Leállítás**, majd az **OK gombot** a megerősítő párbeszédpanelen. Ezután várjon, amíg a virtuális gép **állapota** leállítva értékre nem változik (fel van **foglalva)**.
 
-4. A virtuális gép menüsorában válassza a **Networking** > **hálózati adapter csatlakoztatása**lehetőséget. Ezután a **meglévő hálózati adapter csatolása**elemnél válassza ki a csatolni kívánt hálózati adaptert, majd kattintson **az OK gombra**.
+4. A virtuális gép menüsorában **válassza a**  >  **hálózati adapter csatlakoztatása**lehetőséget. Ezután a **meglévő hálózati adapter csatolása**elemnél válassza ki a csatolni kívánt hálózati adaptert, majd kattintson **az OK gombra**.
 
     >[!NOTE]
     >A kiválasztott hálózati adapter nem rendelkezhet a gyorsított hálózatkezelés engedélyezésével, nem rendelkezhet hozzá IPv6-címekkel, és ugyanabban a virtuális hálózatban kell lennie, mint a virtuális GÉPHEZ aktuálisan csatlakoztatott hálózati adapternek.
 
     Ha nem rendelkezik meglévő hálózati adapterrel, először létre kell hoznia egyet. Ehhez válassza a **hálózati adapter létrehozása**lehetőséget. A hálózati adapterek létrehozásával kapcsolatos további tudnivalókért tekintse meg [a hálózati adapterek](virtual-network-network-interface.md#create-a-network-interface)létrehozásával foglalkozó témakört. Ha többet szeretne megtudni a hálózati adapterek virtuális gépekhez adásával kapcsolatos további korlátozásokról, lásd: [megkötések](#constraints).
 
-5. A virtuális gép menüsávján válassza az **Áttekintés** > **indítása** lehetőséget a virtuális gép újraindításához.
+5. A virtuális gép menüsávján válassza az **Áttekintés**  >  **indítása** lehetőséget a virtuális gép újraindításához.
 
 Most már beállíthatja a virtuális gép operációs rendszerét, hogy megfelelően több hálózati adaptert használjon. Megtudhatja, hogyan konfigurálhat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) vagy [Windows rendszert](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) több hálózati adapterhez.
 
@@ -115,7 +115,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 4. Várjon, amíg a virtuális gép **állapota** leállítva értékre nem változik (fel van **foglalva)**.
 
-5. A virtuális gép menüsorában válassza a **Networking** > **hálózat leválasztása hálózati adapter**lehetőséget.
+5. A virtuális gép menüsorában **válassza a**  >  **hálózat leválasztása hálózati adapter**lehetőséget.
 
 6. A **hálózati adapter leválasztása** párbeszédpanelen válassza ki a leválasztani kívánt hálózati adaptert. Ezután kattintson az **OK** gombra.
 
@@ -151,7 +151,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 - A virtuális gép törlése nem törli a hozzá csatolt hálózati adaptereket. Ha töröl egy virtuális gépet, a hálózati adapterek le lesznek választva a virtuális gépről. Ezeket a hálózati adaptereket különböző virtuális gépekhez is hozzáadhatja, vagy törölheti őket.
 
-- Mint az IPv6 esetében, a létrehozása után nem csatolhat hálózati adaptert a gyorsított hálózatkezelést használó virtuális gépekhez. A gyorsított hálózatkezelés kihasználása érdekében a virtuális gép operációs rendszerének lépéseit is végre kell hajtania. További információ a gyorsított hálózatkezelésről és egyéb korlátozásokról Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépek esetén.
+- Az optimális teljesítmény dokumentációjának megvalósításához gyorsított hálózatkezelésre van szükség. Bizonyos esetekben explicit módon engedélyeznie kell a gyorsított hálózatkezelést a Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépekhez.
 
 ## <a name="next-steps"></a>További lépések
 

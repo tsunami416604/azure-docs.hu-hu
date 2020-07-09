@@ -2,7 +2,7 @@
 title: Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 description: Ez a cikk áttekintést nyújt vagy Machine Learning Services az Azure SQL felügyelt példányain.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -11,20 +11,19 @@ author: garyericson
 ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: fb74cc3aba3ad37e36a4d7cbe726bde4cb088e90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708739"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 
 A Machine Learning Services az Azure SQL felügyelt példányainak (előzetes verzió) egyik funkciója, amely az adatbázison belüli gépi tanulást biztosítja a Python és az R szkriptek támogatásával. A szolgáltatás a Microsoft Python és R csomagokat tartalmazza a nagy teljesítményű prediktív elemzéshez és a gépi tanuláshoz. A kapcsolódó adatokat parancsfájlokban tárolt eljárásokkal, a Python-vagy R-utasításokat tartalmazó T-SQL-szkripttel, illetve a T-SQL-T tartalmazó Python vagy R kód használatával lehet használni.
 
 > [!IMPORTANT]
-> A Machine Learning Services az Azure SQL felügyelt példányának egyik funkciója, amely jelenleg nyilvános előzetes verzióban érhető el.
+> A Machine Learning Services a felügyelt Azure SQL-példány egyik szolgáltatása, amely jelenleg nyilvános előzetes verzióként érhető el.
 > Ez az előzetes verziójú funkció kezdetben csak korlátozott számú régióban érhető el az Egyesült Államokban, Ázsia-Európában és Ausztráliában, és később további régiók is elérhetők.
 >
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
@@ -52,14 +51,15 @@ A Python és az R alapszintű terjesztése a Machine Learning Services része. O
 
 A korlátozott nyilvános előzetes verzióra az [Azure előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verziójának feltételei vonatkoznak. 
 
-Ha szeretne csatlakozni az előzetes verzióhoz, és elfogadja ezeket a feltételeket, akkor a regisztrációt az Azure támogatási jegyének létrehozásával kérheti le [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . A "probléma típusa" területen válassza a "technikai" lehetőséget a "szolgáltatás" beállításnál válassza a "SQL Database felügyelt példány" elemet, és a "probléma típusa" területen válassza a "más" lehetőséget. A kérelemben azt az állapotot kell megadnia, amelyet a felügyelt SQL-példányok Machine Learning korlátozott nyilvános előzetes verziójában szeretne regisztrálni a következő részletekkel: logikai kiszolgáló neve, régiója és előfizetés-azonosítója.
+Ha szeretne csatlakozni az előzetes verzióhoz, és elfogadja ezeket a feltételeket, akkor a regisztrációt az Azure támogatási jegyének létrehozásával kérheti le [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . A "probléma típusa" területen válassza a "technikai" lehetőséget a "szolgáltatás" beállításnál válassza a "SQL Database felügyelt példány" elemet, és a "probléma típusa" területen válassza a "más" lehetőséget. A kérelemben meg kell adnia, hogy a felügyelt SQL-példányok Machine Learning szolgáltatásának korlátozott nyilvános előzetes verziójában szeretne regisztrálni a következő adatokkal: a logikai kiszolgáló neve, régiója és az előfizetés-azonosítója.
 
-Miután regisztrált a programban, a Microsoft bevezeti Önt a nyilvános előzetes verzióra, és lehetővé teszi Machine Learning Services a meglévő vagy az új adatbázishoz.
+Miután regisztrált a programban, a Microsoft belépteti Önt a nyilvános előzetes verzióba és engedélyezi a Machine Learning Servicest a meglévő vagy az új adatbázisban.
 
-A nyilvános előzetes verzióban a Machine Learning Services az SQL felügyelt példányában nem ajánlott éles számítási feladatokhoz.
+A felügyelt SQL-példányokban a Machine Learning Services használata nem javasolt éles számítási feladatokhoz a nyilvános előzetes verzióban.
 
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg [SQL Server Machine learning Services főbb különbségeit](machine-learning-services-differences.md).
 - Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
 - Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
+- A más SQL-platformokon futó gépi tanulásról további információt az [SQL Machine learning dokumentációjában](https://docs.microsoft.com/sql/machine-learning/)talál.

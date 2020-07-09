@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686747"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267969"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-útmutató a prediktív karbantartási megoldásokhoz
 
@@ -231,7 +230,7 @@ A berendezések műszaki előírásai, például a gyártás dátuma, a modell s
 
 Az eddig tárgyalt adatelőkészítési erőfeszítéseknek az alább látható módon kell megszervezniük az adatgyűjtést. A betanítási, tesztelési és érvényesítési adatmennyiségnek tartalmaznia kell ezt a logikai sémát (ez a példa nap egységben jeleníti meg az időt).
 
-| Eszköz azonosítója | Time | \<Szolgáltatások oszlopai> | Címke |
+| Eszköz azonosítója | Idő | \<Feature Columns> | Címke |
 | ---- | ---- | --- | --- |
 | A123 |1. nap | . . . | . |
 | A123 |2. nap | . . . | . |
@@ -427,12 +426,11 @@ Az útmutató utolsó szakasza az Azure-ban megvalósított PdM-megoldási sablo
 |--:|:------|-------------|
 | 2 | [Azure prediktív karbantartási megoldás sablonja](https://github.com/Azure/AI-PredictiveMaintenance) | Egy nyílt forráskódú megoldási sablon, amely bemutatja az Azure ML-modellezést és egy teljes körű Azure-infrastruktúrát, amely képes a prediktív karbantartási forgatókönyvek támogatására a IoT távoli monitorozása kontextusában. |
 | 3 | [Mélytanulás a prediktív karbantartáshoz](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure notebook egy bemutató megoldással, amely a LSTM (hosszú rövid távú memória) hálózatokat (az ismétlődő neurális hálózatok osztályát) használja a prediktív karbantartáshoz, egy [blogbejegyzésben a mintában](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
-| 4 | [Prediktív karbantartási modellezési útmutató az R-ben](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | PdM modellezési útmutató az R-szkriptekkel.|
-| 5 | [Azure prediktív karbantartás a repülőgépipar számára](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Az egyik első PdM megoldás-sablon, amely az Azure ML v 1.0-s verzióján alapul a repülőgépek karbantartásához. Ez az útmutató ebből a projektből származik. |
-| 6 | [Azure AI-eszközkészlet a IoT Edgehoz](https://github.com/Azure/ai-toolkit-iot-edge) | AI a IoT Edge a TensorFlow használatával; Az eszközkészlet részletes tanulási modelleket biztosít Azure IoT Edge-kompatibilis Docker-tárolókban, és a modelleket REST API-ként teszi elérhetővé.
-| 7 | [Azure IoT prediktív karbantartás](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite számítógépek – előre konfigurált megoldás. A repülőgép-karbantartási PdM sablon IoT Suite. [Egy másik](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) , ugyanahhoz a projekthez kapcsolódó dokumentum és [útmutató](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) . |
-| 8 | [Prediktív karbantartási sablon SQL Server R Services használatával](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Az R-szolgáltatásokon alapuló, hátralévő hasznos élettartam forgatókönyvének bemutatója. |
-| 9 | [Prediktív karbantartási modellezési útmutató](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | A repülőgép-karbantartási adatkészlet az R [használatával kísérletezik](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) és [adatkészletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) , valamint [Azure notebookok](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) és [kísérletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) a AzureML 1.0-s verziójában|
+| 4 | [Azure prediktív karbantartás a repülőgépipar számára](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Az egyik első PdM megoldás-sablon, amely az Azure ML v 1.0-s verzióján alapul a repülőgépek karbantartásához. Ez az útmutató ebből a projektből származik. |
+| 5 | [Azure AI-eszközkészlet a IoT Edgehoz](https://github.com/Azure/ai-toolkit-iot-edge) | AI a IoT Edge a TensorFlow használatával; Az eszközkészlet részletes tanulási modelleket biztosít Azure IoT Edge-kompatibilis Docker-tárolókban, és a modelleket REST API-ként teszi elérhetővé.
+| 6 | [Azure IoT prediktív karbantartás](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite számítógépek – előre konfigurált megoldás. A repülőgép-karbantartási PdM sablon IoT Suite. [Egy másik](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) , ugyanahhoz a projekthez kapcsolódó dokumentum és [útmutató](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) . |
+| 7 | [Prediktív karbantartási sablon SQL Server R Services használatával](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Az R-szolgáltatásokon alapuló, hátralévő hasznos élettartam forgatókönyvének bemutatója. |
+| 8 | [Prediktív karbantartási modellezési útmutató](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | A repülőgép-karbantartási adatkészlet az R [használatával kísérletezik](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) és [adatkészletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) , valamint Azure notebookok és [kísérletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) a AzureML 1.0-s verziójában|
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Erőforrások betanítása a prediktív karbantartáshoz
 

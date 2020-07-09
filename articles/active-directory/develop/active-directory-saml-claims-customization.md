@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: dd99934ca74736c1f80bd47d701120398437e27a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478297"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, az Azure AD a megadott fo
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Leírás |
+| NameID formátuma | Description |
 |---------------|-------------|
 | **Alapértelmezett** | Az Azure AD az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | Az Azure AD a NameID formátumot használja állandóként. |
@@ -68,7 +68,7 @@ Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, 
 
 Válassza ki a kívánt forrást a `NameIdentifier` (vagy NameID) jogcím számára. A következő lehetőségek közül választhat.
 
-| Name | Leírás |
+| Name | Description |
 |------|-------------|
 | E-mail | A felhasználó e-mail címe |
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |

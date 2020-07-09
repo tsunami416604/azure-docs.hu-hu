@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Data
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 369d19d98946f8309c7f2053f4453e09a7ed902f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534711"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121061"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure Database for MariaDB kiszolgáló újraindítása Azure Portal használatával
 Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
@@ -46,6 +46,6 @@ A következő lépésekkel indítsa újra a MariaDB-kiszolgálót:
 
    ![Azure Database for MariaDB – sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyors útmutató: Azure Database for MariaDB kiszolgáló létrehozása Azure Portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)

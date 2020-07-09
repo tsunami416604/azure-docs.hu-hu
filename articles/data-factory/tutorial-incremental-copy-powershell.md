@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 22fa0e1cc6bdad109c5dcb82cc08b81d91674f9a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022454"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254446"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a PowerShell használatával
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése Azure SQL Databaseról az Azure Blob Storage-ba a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba.
+Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -63,7 +63,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket.
+* **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakörben található [Dataqbase létrehozásához](../azure-sql/database/single-database-create-quickstart.md) szükséges lépéseket: Azure SQL Database.
 * **Azure Storage**. A blobtárolót használjuk majd fogadóadattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg a [tárfiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket. Hozzon létre egy tárolót adftutorial néven. 
 * **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
@@ -192,11 +192,11 @@ Vegye figyelembe a következő szempontokat:
     ```
 
 * Adatelőállító-példányok létrehozásához a felhasználói fióknak, amellyel bejelentkezik az Azure-ba, a közreműködő vagy tulajdonos szerepkörök tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
-* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Storage, SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adattárolók (Storage, SQL Database, Azure SQL felügyelt példány stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban a tárfiókkal és az SQL-adatbázissal társított szolgáltatásokat hoz létre.
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a Storage-fiókjához, és SQL Database.
 
 ### <a name="create-a-storage-linked-service"></a>Storage-beli társított szolgáltatás létrehozása
 1. Hozzon létre egy AzureStorageLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) `<accountName>`A fájl mentése előtt cserélje le a és a `<accountKey>` nevet a Storage-fiók nevére és kulcsára.
@@ -732,7 +732,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * A folyamat futtatása.
 > * A folyamat futásának monitorozása.
 
-Ebben az oktatóanyagban a folyamat egy SQL-adatbázisban lévő egyetlen táblából másolt adatokat egy blobtárolóba. Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat egy helyszíni SQL Server adatbázis több táblájából egy SQL-adatbázisba.
+Ebben az oktatóanyagban a folyamat a blob Storage-ba Azure SQL Database egyetlen táblából másolta az adatait. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan másolhat egy SQL Server-adatbázis több táblájából származó adatok SQL Databaseba.
 
 > [!div class="nextstepaction"]
 >[Adatok növekményes betöltése az SQL Server több táblájából az Azure SQL-adatbázisba](tutorial-incremental-copy-multiple-tables-powershell.md)

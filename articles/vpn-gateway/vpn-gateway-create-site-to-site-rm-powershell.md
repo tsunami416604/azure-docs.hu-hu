@@ -5,24 +5,23 @@ titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd246e4e6a59637c720cbaddf1258b6e01f709b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986109"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
 
 Ez a cikk bemutatja, hogyan használhatja a PowerShellt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a VNet között. A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
 >
@@ -129,7 +128,7 @@ Ennek a szakasznak a lépéseit akkor kövesse, ha már rendelkezik virtuális h
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"> </a>a helyi hálózati átjáró létrehozása
+## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"></a> a helyi hálózati átjáró létrehozása
 
 A helyi hálózati átjáró (LNG) általában a helyszíni helyre vonatkozik. Nem ugyanaz, mint a virtuális hálózati átjáró. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. A helyszíni hálózat módosításakor az előtagok egyszerűen frissíthetők.
 

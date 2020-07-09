@@ -1,23 +1,22 @@
 ---
-title: Python
+title: Python-szkript végrehajtása a Designerben
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan alakíthatja át az adatátalakítást a Python használatával Azure Machine Learning Designerben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer
-ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.custom: designer, tracking-python
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644471"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041013"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-kód végrehajtása a Azure Machine Learning Designerben
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-kód futtatása a Azure Machine Learning Designerben
 
 Ebből a cikkből megtudhatja, hogyan használhatja a [Python parancsfájl](algorithm-module-reference/execute-python-script.md) -modult az egyéni logika Azure Machine learning Designerhez való hozzáadásához. A következő útmutatóban a Panda Library használatával egyszerű funkció-mérnöki műveleteket hajthat végre.
 

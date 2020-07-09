@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176209"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Tárolók kezelése az Azure független felhőkben a PowerShell használatával
@@ -34,7 +34,7 @@ Ha az Azure Storage-t az egyik független felhőben szeretné használni, az Azu
 * Az elérhető régiók meghatározása és használata.
 * A megfelelő végpont-utótagot használja, amely eltér az Azure Public-től.
 
-A példákban Azure PowerShell modul az 0,7-es vagy újabb verziójára van szükség. Egy PowerShell-ablakban futtassa a `Get-Module -ListAvailable Az` parancsot a verzió megkereséséhez. Ha semmi sem szerepel a felsorolásban, vagy frissítenie kell, tekintse meg a [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps)című témakört.
+A példákban Azure PowerShell modul az 0,7-es vagy újabb verziójára van szükség. Egy PowerShell-ablakban futtassa a parancsot a `Get-Module -ListAvailable Az` verzió megkereséséhez. Ha semmi sem szerepel a felsorolásban, vagy frissítenie kell, tekintse meg a [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps)című témakört.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -84,7 +84,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Ez a parancs a következő eredményeket adja vissza.
 
-| Name (Név)| StorageEndpointSuffix|
+| Name| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -154,7 +154,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 Mostantól a PowerShell használatával kezelheti a Storage-fiókjait, és elérheti a blob, a várólista, a fájl és a tábla adatait. További információ: [az. Storage](/powershell/module/az.storage).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha létrehozott egy új erőforráscsoportot és egy Storage-fiókot ehhez a gyakorlathoz, akkor az erőforráscsoport törlésével eltávolíthatja mindkét eszközét. Az erőforráscsoport törlésével a csoportban található összes erőforrás törlődik.
 

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887206"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Az Apache HBase Master (HMaster) nem indul el az Azure HDInsight
@@ -34,7 +33,7 @@ A HMaster egy alapszintű List parancsot tartalmaz a WAL-mappákon. Ha bármikor
 
 Ellenőrizze a hívási veremet, és próbálja meg megállapítani, hogy melyik mappa okozza a problémát (például lehet, hogy a WAL-mappa vagy a. tmp mappa). Ezután a Cloud Explorerben vagy a HDFS parancsok használatával próbálja megkeresni a problémát tartalmazó fájlt. Ez általában egy `*-renamePending.json` fájl. (A `*-renamePending.json` fájl egy olyan naplófájl, amely az atomi átnevezési művelet megvalósítására szolgál a WASB-illesztőprogramban. Az ebben a megvalósításban található hibák miatt ezek a fájlok a folyamat összeomlása után is megmaradhatnak, és így tovább.) Kényszerítse a fájl törlését a Cloud Explorerben vagy a HDFS parancsok használatával.
 
-Időnként előfordulhat, hogy egy, az adott helyen található hasonló `$$$.$$$` nevű ideiglenes fájl is szerepel. A fájl megjelenítéséhez a `ls` HDFS parancsot kell használnia; a fájl nem látható a Cloud Explorerben. A fájl törléséhez használja a HDFS parancsot `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.
+Időnként előfordulhat, hogy egy, az adott helyen található hasonló nevű ideiglenes fájl is szerepel `$$$.$$$` . A fájl megjelenítéséhez a HDFS parancsot kell használnia `ls` ; a fájl nem látható a Cloud Explorerben. A fájl törléséhez használja a HDFS parancsot `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` .
 
 A parancsok futtatása után a HMaster azonnal el kell indulnia.
 
@@ -44,7 +43,7 @@ A parancsok futtatása után a HMaster azonnal el kell indulnia.
 
 ### <a name="issue"></a>Probléma
 
-Előfordulhat, hogy egy üzenet jelenik meg, amely `hbase: meta` azt jelzi, hogy a tábla nem online állapotú. Előfordulhat `hbck` , hogy `hbase: meta table replicaId 0 is not found on any region.` a Futtatás a HMaster-naplókban a következő üzenet jelenik meg `No server address listed in hbase: meta for region hbase: backup <region name>`:.  
+Előfordulhat, hogy egy üzenet jelenik meg, amely azt jelzi, hogy a `hbase: meta` tábla nem online állapotú. `hbck`Előfordulhat `hbase: meta table replicaId 0 is not found on any region.` , hogy a Futtatás a HMaster-naplókban a következő üzenet jelenik meg: `No server address listed in hbase: meta for region hbase: backup <region name>` .  
 
 ### <a name="cause"></a>Ok
 
@@ -59,7 +58,7 @@ A HMaster nem tudott inicializálni a HBase újraindítása után.
     delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. Törölje a `hbase: namespace` bejegyzést. Lehet, hogy ez a bejegyzés ugyanaz a hiba, amelyet a rendszer `hbase: namespace` a tábla vizsgálata során jelez.
+1. Törölje a `hbase: namespace` bejegyzést. Lehet, hogy ez a bejegyzés ugyanaz a hiba, amelyet a rendszer a tábla vizsgálata során jelez `hbase: namespace` .
 
 1. Indítsa újra az aktív HMaster a Ambari felhasználói felületéről, hogy a HBase futási állapotban legyen.
 
@@ -75,7 +74,7 @@ A HMaster nem tudott inicializálni a HBase újraindítása után.
 
 ### <a name="issue"></a>Probléma
 
-A HMaster időtúllépést okoz a következőhöz hasonló `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`végzetes kivétel miatt:.
+A HMaster időtúllépést okoz a következőhöz hasonló végzetes kivétel miatt: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned` .
 
 ### <a name="cause"></a>Ok
 
@@ -83,7 +82,7 @@ Ez a probléma akkor fordulhat elő, ha sok olyan táblája és régiója van, a
 
 ### <a name="resolution"></a>Megoldás:
 
-1. Az Apache Ambari felhasználói felületén nyissa meg a **HBase** > **konfigurációit**. Az egyéni `hbase-site.xml` fájlban adja hozzá a következő beállítást:
+1. Az Apache Ambari felhasználói felületén nyissa meg a **HBase**  >  **konfigurációit**. Az egyéni `hbase-site.xml` fájlban adja hozzá a következő beállítást:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -107,15 +106,15 @@ A csomópontok rendszeres újraindítása. A régió-kiszolgáló naplóiban a k
 
 ### <a name="cause"></a>Ok
 
-Hosszú `regionserver` JVM GC szüneteltetése. A Szüneteltetés `regionserver` nem válaszol, és a ZK-munkamenet 40-es időkorlátján belül nem küldheti el a szívverést a HMaster. A HMaster `regionserver` nem fog elpusztulni, és `regionserver` a rendszer megszakítja az újraindítást.
+Hosszú `regionserver` JVM GC szüneteltetése. A Szüneteltetés `regionserver` nem válaszol, és a ZK-munkamenet 40-es időkorlátján belül nem küldheti el a szívverést a HMaster. `regionserver`A HMaster nem fog elpusztulni, és a rendszer megszakítja az `regionserver` újraindítást.
 
 ### <a name="resolution"></a>Megoldás:
 
-Módosítsa a Zookeeper-munkamenet időtúllépését, `hbase-site` nem `zookeeper.session.timeout` csak a beállítást `zoo.cfg` , `maxSessionTimeout` hanem a Zookeeper beállítást is.
+Módosítsa a Zookeeper-munkamenet időtúllépését, nem csak a `hbase-site` beállítást, `zookeeper.session.timeout` hanem a Zookeeper `zoo.cfg` beállítást is `maxSessionTimeout` .
 
 1. A Ambari felhasználói felületének eléréséhez nyissa meg a **HBase-> configs-> beállításokat**, az időtúllépések szakaszban, és módosítsa a Zookeeper-munkamenet időtúllépésének értékét.
 
-1. A Ambari felhasználói felületének eléréséhez nyissa meg a **Zookeeper-> configs-> egyéni** `zoo.cfg`lehetőséget, és adja hozzá a következő beállítást, vagy módosítsa azt. Győződjön meg arról, hogy az érték megegyezik a `zookeeper.session.timeout`HBase.
+1. A Ambari felhasználói felületének eléréséhez nyissa meg a **Zookeeper-> configs-> egyéni** lehetőséget `zoo.cfg` , és adja hozzá a következő beállítást, vagy módosítsa azt. Győződjön meg arról, hogy az érték megegyezik a HBase `zookeeper.session.timeout` .
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -137,7 +136,7 @@ A másodlagos HDFS és HBase beállításai helytelenül vannak konfigurálva.
 
 ### <a name="resolution"></a>Megoldás:
 
-Állítsa be a hbase. wasb://@.blob.core.windows.net/hbase rootdir: programot, és indítsa újra a szolgáltatásokat a Ambari-on.
+Állítsa be a hbase. rootdir: wasb://@.blob.core.windows.net/hbase programot, és indítsa újra a szolgáltatásokat a Ambari-on.
 
 ---
 

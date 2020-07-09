@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan tekintheti meg az importálási/exportálási f
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72821442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514134"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Az Azure Import/Export-feladatok állapotának megtekintése
 
@@ -28,14 +28,14 @@ Az importálási vagy exportálási feladatok állapotát a Azure Portal követh
 
 A következő feladatok egyike jelenik meg attól függően, hogy a meghajtó hol található a folyamatban.
 
-| Feladatok állapota | Leírás |
+| Feladatok állapota | Description |
 |:--- |:--- |
 | Létrehozás | A feladatok létrehozása után az állapota a **Létrehozás**értékre van állítva. Amíg a feladatsor **létrehozza** az állapotot, az importálási/exportálási szolgáltatás feltételezi, hogy a meghajtókat nem szállították el az adatközpontba. A feladatok akár két hétig is maradhatnak ebben az állapotban, ami után a szolgáltatás automatikusan törli azt. |
 | Shipping | A csomag szállítása után frissítenie kell a követési információkat a Azure Portal.  Ez a feladatot **szállítási** állapotba kapcsolja. A feladatok legfeljebb két hétig maradnak a **szállítási** állapotban. 
 | Megérkezett | Miután az összes meghajtó beérkezett az adatközpontba, a feladatsor értéke **fogadott**. |
 | Átadó | Ha legalább egy meghajtó megkezdte a feldolgozást, a feladattípus az **átvitelre**van beállítva. További információért lépjen a [meghajtó állapota](#view-drive-status)elemre. |
 | Csomagolás | Miután az összes meghajtó befejezte a feldolgozást, a rendszer **csomagolási** állapotba helyezi a feladatot, amíg a meghajtókat vissza nem szállítja. |
-| Befejezve | Miután az összes meghajtót visszaküldi a rendszer, ha a feladatot hibák nélkül végezte el, a rendszer **Befejezettre**állítja a feladatot. A feladatot a rendszer a **befejezett** állapot 90 napja után automatikusan törli. |
+| Befejeződött | Miután az összes meghajtót visszaküldi a rendszer, ha a feladatot hibák nélkül végezte el, a rendszer **Befejezettre**állítja a feladatot. A feladatot a rendszer a **befejezett** állapot 90 napja után automatikusan törli. |
 | Lezárt | Miután az összes meghajtót visszaküldi Önnek, ha hiba történt a feladatok feldolgozásakor, a rendszer **Lezártra**állítja a feladatot. A feladatot a rendszer a 90 nap után automatikusan törli a **lezárt** állapotban. |
 
 ## <a name="view-drive-status"></a>A meghajtók állapotának megtekintése
@@ -44,13 +44,13 @@ Az alábbi táblázat az egyes meghajtók életciklusát mutatja be az importál
 
 A következő táblázat ismerteti az egyes állapotokat, amelyeket a feladatok egyes meghajtói továbbítanak.
 
-| Meghajtó állapota | Leírás |
+| Meghajtó állapota | Description |
 |:--- |:--- |
 | Megadott | Importálási feladatokhoz, ha a feladatot a Azure Portal hozza létre, a meghajtó kezdeti állapota meg van **adva**. Exportálási feladatokhoz, mivel a rendszer nem ad meg meghajtót a feladatok létrehozásakor, a rendszer a kezdeti meghajtó állapotát **fogadja**. |
 | Megérkezett | A meghajtó átvált a **fogadott** állapotba, amikor az importálási/exportálási szolgáltatás feldolgozta az importálási feladatokhoz a hajózási vállalattól érkezett meghajtókat. Exportálási feladatok esetén a kezdeti meghajtó állapota a **fogadott** állapot. |
 | NeverReceived | A meghajtó a **NeverReceived** állapotba kerül, amikor a csomag egy adott feladatokhoz érkezik, de a csomag nem tartalmazza a meghajtót. A meghajtó akkor is ebbe az állapotba kerül, ha két hét telt el, mivel a szolgáltatás megkapta a szállítási adatokat, de a csomag még nem érkezett meg az adatközpontban. |
 | Átadó | A meghajtó áthelyezi az **átadási** állapotba, amikor a szolgáltatás megkezdi az adatok átvitelét a meghajtóról az Azure Storage-ba. |
-| Befejezve | A meghajtó a **befejezett** állapotba kerül, ha a szolgáltatás sikeresen áthelyezte az összes olyan hibát, amely hibák nélkül történt.
+| Befejeződött | A meghajtó a **befejezett** állapotba kerül, ha a szolgáltatás sikeresen áthelyezte az összes olyan hibát, amely hibák nélkül történt.
 | CompletedMoreInfo | A meghajtó a **CompletedMoreInfo** állapotba kerül, amikor a szolgáltatás valamilyen hibát észlelt az adatoknak a vagy a meghajtóra történő másolása közben. Az információ tartalmazhat hibákat, figyelmeztetéseket és tájékoztató üzeneteket a Blobok felülírásával kapcsolatban.
 | ShippedBack | A meghajtó a **ShippedBack** állapotba kerül, amikor az adatközpontból a visszaküldési címnek visszaszállították. |
 
@@ -63,7 +63,7 @@ Az alábbi táblázat a meghajtó meghibásodási állapotait és az egyes álla
 | Meghajtó állapota | Esemény | Megoldás/következő lépés |
 |:--- |:--- |:--- |
 | NeverReceived | Egy **NeverReceived** jelölésű meghajtó (mert nem érkezett a feladatokhoz a feladatainak részeként) egy másik szállítmányban érkezik. | Az operatív csapat áthelyezi a meghajtót a **fogadásba**. |
-| N/A | Egy olyan meghajtó, amely nem része a feladatoknak, egy másik feladattípus részeként az adatközpontba kerül. | A meghajtó külön meghajtóként van megjelölve, és az eredeti csomaghoz társított feladatok befejezése után visszaadja. |
+| N.A. | Egy olyan meghajtó, amely nem része a feladatoknak, egy másik feladattípus részeként az adatközpontba kerül. | A meghajtó külön meghajtóként van megjelölve, és az eredeti csomaghoz társított feladatok befejezése után visszaadja. |
 
 ## <a name="time-to-process-job"></a>A feladatok feldolgozásának ideje
 Az importálási/exportálási feladatok feldolgozásához szükséges idő számos tényezőtől függ, például:

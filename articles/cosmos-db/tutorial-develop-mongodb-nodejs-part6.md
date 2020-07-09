@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184775"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118967"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a szifilisz-függvények hozzáadása az alkalmazáshoz
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md). Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy olyan új alkalmazást, amelyet expressz és szögletes Node.js írt be, majd a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md)csatlakozik. Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * Post, Put és Delete függvények létrehozása a főképszolgáltatáshoz
@@ -40,7 +40,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
     Láthatja, hogy a routes.js 7. sora meghívja a `getHeroes` függvényt a **hero.service.js** 5. sorában.  Ugyanilyen párosítást kell létrehoznunk a Post, Put és Delete függvényekhez. 
 
-    ![A routes.js és a hero.service.js a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban":::
     
     Kezdjük a főképszolgáltatás kódjával. 
 
@@ -88,11 +88,11 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
 6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Lépjen a `http://localhost:3000` helyre, és tekintse meg a hálózaton keresztül végzett hívásokat.
 
-    ![Hálózat lap a Chrome böngészőben a hálózati tevékenységgel](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Hálózat lap a Chrome böngészőben a hálózati tevékenységgel":::
 
 7. Adjon hozzá egy új fő képet az **Add New Hero** (Új fő kép hozzáadása) gomb választásával. Adja meg a „999” azonosítót, a „Fred” nevet és a „Hello” üzenetet, majd válassza a **Save** (Mentés) gombot. A Hálózat lapon látható, hogy POST-kérést küldött egy új fő képre vonatkozóan. 
 
-    ![Hálózat lap a Chrome böngészőben a Get és Post függvények hálózati tevékenységével](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Hálózat lap a Chrome böngészőben a Get és Post függvények hálózati tevékenységével":::
 
     Most térjünk vissza a szerkesztőre, és adjuk hozzá a Put és Delete függvényeket az alkalmazáshoz.
 
@@ -177,11 +177,11 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
     Most a Hálózat lapon az azonosítót kiválasztva megtekintheti a csomag hasznos adatait. A hasznos adatokban láthatja, hogy az üzenet most már a „Bye”.
 
-    ![Fő képek alkalmazás és a Hálózat lap a hasznos adatokkal](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Fő képek alkalmazás és a Hálózat lap a hasznos adatokkal"::: 
 
     A felhasználói felületen törölheti is az egyik fő képet, és láthatja, hogy a törlési műveletek végrehajtása mennyi ideig tart. Ennek kipróbálásához válassza a „Delete” (Törlés) gombot a „Fred” nevű fő képnél.
 
-    ![Főképalkalmazás és a Hálózat lap a függvények végrehajtásához szükséges időkkel](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Főképalkalmazás és a Hálózat lap a függvények végrehajtásához szükséges időkkel"::: 
 
     Ha frissíti az oldalt, a Hálózat lap a fő képek lekéréséhez szükséges időt mutatja. Bár az itt látható idők rövidek, rengeteg múlik azon, hogy az adatok a világ mely részén vannak tárolva, és hogy azokat a felhasználókhoz közeli helyekre tudja-e georeplikálni. A georeplikációról további információkat a nemsokára elérhető következő oktatóanyagban talál majd.
 

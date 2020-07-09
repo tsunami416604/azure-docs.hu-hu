@@ -3,25 +3,24 @@ title: Hozzáférés Azure AD alkalmazás alkalmazásproxy-alkalmazásokhoz a Te
 description: Az Azure AD Application Proxy használatával elérheti a helyszíni alkalmazást a Microsoft Teams szolgáltatáson keresztül.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67807761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764485"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>A helyszíni alkalmazások elérése a Microsoft Teams használatával
 
@@ -33,13 +32,13 @@ A felhasználók hozzáadhatnak felhőalapú alkalmazásokat a csapatok csatorn�
 
 Ha még nem tette meg, [konfigurálja a bérlőhöz tartozó alkalmazásproxy-t, és telepítse az összekötőt](application-proxy-add-on-premises-application.md). Ezt követően [közzéteheti](application-proxy-add-on-premises-application.md) a helyszíni alkalmazást a táveléréshez. Az alkalmazás közzétételekor jegyezze fel a külső URL-címet, mert az alkalmazás a Teams szolgáltatáshoz való hozzáadására szolgál.
 
-Ha már közzétette az alkalmazásokat, de nem emlékszik a külső URL-címekre, tekintse meg őket a [Azure Portalban](https://portal.azure.com). Jelentkezzen be, majd navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** > válassza ki az alkalmazást > **alkalmazásproxy**.
+Ha már közzétette az alkalmazásokat, de nem emlékszik a külső URL-címekre, tekintse meg őket a [Azure Portalban](https://portal.azure.com). Jelentkezzen be, majd navigáljon **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** > válassza ki az alkalmazást > **alkalmazásproxy**.
 
 ## <a name="add-your-app-to-teams"></a>Alkalmazás hozzáadása a csapatokhoz
 
 Miután közzétette az alkalmazást az Application proxyn keresztül, tájékoztassa a felhasználókat arról, hogy közvetlenül a csapatuk csatornáján is felvehetik a lapot, majd az alkalmazás a csapatban mindenki számára elérhető lesz. A következő három lépést kell követnie:
 
-1. Navigáljon ahhoz a Teams-csatornához, amelyhez hozzá szeretné adni **+** az alkalmazást, és válassza a lapot a lap hozzáadásához.
+1. Navigáljon ahhoz a Teams-csatornához, amelyhez hozzá szeretné adni az alkalmazást, és válassza a **+** lapot a lap hozzáadásához.
 
    ![Válassza a + elemet egy lap felvételéhez a csapatokban](./media/application-proxy-integrate-with-teams/add-tab.png)
 

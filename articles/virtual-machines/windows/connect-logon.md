@@ -7,12 +7,11 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 562b1f80397c730b5ea72fe2cd4f3dfdaea1e3f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84235545"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először kapcsolódjon a virtuális géphez, majd jelentkezzen be.
@@ -40,7 +39,7 @@ Ha Mac számítógépről szeretne csatlakozni egy Windows rendszerű virtuális
 
 
    > [!TIP]
-   > Ha a portálon a **Csatlakozás** gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz egy [expressz útvonalon](../../expressroute/expressroute-introduction.md) vagy [helyek közötti VPN-](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) kapcsolaton keresztül, akkor az RDP használata előtt létre kell hoznia és hozzá kell rendelnie egy nyilvános IP-címet a virtuális géphez. További információ: [nyilvános IP-címek az Azure-ban](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+   > Ha a portálon a **Csatlakozás** gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz egy [expressz útvonalon](../../expressroute/expressroute-introduction.md) vagy [helyek közötti VPN-](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) kapcsolaton keresztül, akkor az RDP használata előtt létre kell hoznia és hozzá kell rendelnie egy nyilvános IP-címet a virtuális géphez. További információ: [nyilvános IP-címek az Azure-ban](../../virtual-network/public-ip-addresses.md).
    > 
    > 
 
@@ -48,7 +47,7 @@ Ha Mac számítógépről szeretne csatlakozni egy Windows rendszerű virtuális
 
  
 
-Ha a PowerShellt használja, és a Azure PowerShell modul telepítve van, akkor a `Get-AzRemoteDesktopFile` parancsmag használatával is kapcsolódhat, ahogy az alább látható.
+Ha a PowerShellt használja, és a Azure PowerShell modul telepítve van, akkor a parancsmag használatával is kapcsolódhat `Get-AzRemoteDesktopFile` , ahogy az alább látható.
 
 Ez a példa azonnal elindítja az RDP-kapcsolatokat, így a fentiekhez hasonló kérések is megjelennek.
 

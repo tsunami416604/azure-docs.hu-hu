@@ -20,23 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113134"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>OData `search.score` függvény az Azure Cognitive Search
 
 Ha a [ **$OrderBy** paraméter](search-query-odata-orderby.md)nélkül küld egy Azure Cognitive Search-lekérdezést, a visszaadott eredmények csökkenő sorrendben lesznek rendezve a relevancia pontszám szerint. Még ha a **$OrderBy**is használja, a rendszer alapértelmezés szerint a relevancia pontszámát fogja használni. Néha azonban hasznos lehet a relevancia pontszámának kezdeti rendezési feltételként való használata, valamint a döntetlen-megszakító más feltételeinek megadása. A `search.score` függvény lehetővé teszi ezt.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
-A **$OrderBy** szintaxisa a következő `search.score()` `search.score` :. A függvény `search.score` nem végez paramétereket. A (z) vagy `asc` `desc` a rendezési sorrend megadásával is használható, ugyanúgy, mint a **$OrderBy** paraméter bármely más záradéka. A rendezési feltételek listájában bárhol megjelenhet.
+A $orderby szintaxisa a következő `search.score` **$orderby** : `search.score()` . A függvény `search.score` nem végez paramétereket. A `asc` (z) vagy a rendezési sorrend megadásával is használható `desc` , ugyanúgy, mint a **$OrderBy** paraméter bármely más záradéka. A rendezési feltételek listájában bárhol megjelenhet.
 
 ## <a name="example"></a>Példa
 
-Rendezheti a szállodákat csökkenő sorrendben `search.score` , `rating`a és a alapján, majd növekvő sorrendben, a megadott koordináták távolsága alapján, hogy két, azonos minősítéssel rendelkező, egymással azonos minősítéssel rendelkező Hotel között szerepeljenek a legközelebb:
+Rendezheti a szállodákat csökkenő sorrendben `search.score` , a és a alapján `rating` , majd növekvő sorrendben, a megadott koordináták távolsága alapján, hogy két, azonos minősítéssel rendelkező, egymással azonos minősítéssel rendelkező Hotel között szerepeljenek a legközelebb:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 

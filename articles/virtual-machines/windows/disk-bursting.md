@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594433"
 ---
 # <a name="disk-bursting"></a>Lemezek adatlöket-kezelése
@@ -25,7 +25,7 @@ A burst beállítás alapértelmezés szerint engedélyezve van az azt támogat�
 
 ## <a name="disk-level-bursting"></a>Lemez szintjének felszakadása
 Az adattelen [prémium SSD](disks-types.md#premium-ssd) -lemezeken is elérhetők a P20 és kisebb méretekben az összes régióban. A lemez kitörése alapértelmezés szerint engedélyezve van az azt támogató lemezek új központi telepítésen. A meglévő lemezek mérete, ha támogatják a lemezek kitörését, a következő módszerek egyikével engedélyezheti a kitörést: 
-- **A virtuális gép újraindítása** 
+- **Indítsa újra a virtuális gépet** 
 - **Lemez leválasztása és újracsatolása**
 
 

@@ -4,10 +4,9 @@ description: Az ACR-feladatok futtatásával rendszerképeket hozhat létre Azur
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927768"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>ACR-feladatok futtatása Resource Manager-sablonok használatával
@@ -16,7 +15,7 @@ Az [ACR-feladatok](container-registry-tasks-overview.md) a Azure Container Regis
 
 Ez a cikk Azure Resource Manager sablonon alapuló példákat mutat be a gyors feladatok futtatásához, hasonlóan az az [ACR Build][az-acr-build] parancs használatával manuálisan is létrehozható.
 
-A feladatok futtatására szolgáló Resource Manager-sablonok az Automation-forgatókönyvekben hasznosak, és kibővítik a funkcióit `az acr build`. Például:
+A feladatok futtatására szolgáló Resource Manager-sablonok az Automation-forgatókönyvekben hasznosak, és kibővítik a funkcióit `az acr build` . Például:
 
 * Sablon használatával létrehozhat egy tároló-beállításjegyzéket, és azonnal várólistára helyezheti a feladatok futtatását egy tároló rendszerképének létrehozásához és leküldéséhez.
 * Hozzon létre vagy engedélyezzen további erőforrásokat, amelyeket felhasználhat egy gyors feladatok futtatásához, például felügyelt identitást az Azure-erőforrásokhoz
@@ -28,8 +27,8 @@ A feladatok futtatására szolgáló Resource Manager-sablonok az Automation-for
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **GitHub-fiók** – hozzon létre https://github.com egy fiókot, ha még nem rendelkezik ilyennel. 
-* **Elágazási minta adattár** – az itt bemutatott feladatokhoz használja a GitHub felhasználói felületét a következő minta tárház a GitHub-fiókba https://github.com/Azure-Samples/acr-build-helloworld-nodevaló elágazásához:. Ez a tárház minta-Dockerfiles és forráskódot tartalmaz a kisméretű tárolók lemezképének létrehozásához.
+* **GitHub-fiók** – hozzon létre egy fiókot https://github.com , ha még nem rendelkezik ilyennel. 
+* **Elágazási minta adattár** – az itt bemutatott feladatokhoz használja a GitHub felhasználói felületét a következő minta tárház a GitHub-fiókba való elágazásához: https://github.com/Azure-Samples/acr-build-helloworld-node . Ez a tárház minta-Dockerfiles és forráskódot tartalmaz a kisméretű tárolók lemezképének létrehozásához.
 
 ## <a name="example-create-registry-and-queue-task-run"></a>Példa: beállításjegyzék és várólista-futtatási feladat létrehozása
 
@@ -44,7 +43,7 @@ Ebben a példában adja meg a következő sablon paramétereinek értékeit:
 |registryName     |A létrehozott beállításjegyzék egyedi neve         |
 |tárház     |Cél adattár a felépítési feladathoz        |
 |taskRunName     |A feladat futtatásának neve, amely a képcímkét adja meg |
-|sourceLocation     |A felépítési feladat távoli környezete, például: https://github.com/Azure-Samples/acr-build-helloworld-node. A tárház gyökerében található Docker egy kis Node. js-webalkalmazáshoz hoz létre egy tároló-rendszerképet. Ha kívánja, használja a tárházat a létrehozási környezetként.         |
+|sourceLocation     |A felépítési feladat távoli környezete, például: https://github.com/Azure-Samples/acr-build-helloworld-node . A tárház gyökerében található Docker egy kisméretű Node.js webalkalmazáshoz hoz létre egy tároló-rendszerképet. Ha kívánja, használja a tárházat a létrehozási környezetként.         |
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -112,7 +111,7 @@ A kimenet a feladat futtatási naplóját jeleníti meg.
 A Azure Portal is megtekintheti a feladat futtatási naplóját. 
 
 1. Navigáljon a tároló beállításjegyzékéhez
-2. A **szolgáltatások**területen válassza a **feladatok** > **Futtatás**lehetőséget.
+2. A **szolgáltatások**területen válassza a **feladatok**  >  **Futtatás**lehetőséget.
 3. Válassza ki a futtatási azonosítót, ebben az esetben a *CA1*. 
 
 A portál megjeleníti a feladat futtatási naplóját.
@@ -125,10 +124,10 @@ Ez a forgatókönyv hasonló a [több beállításjegyzékbeli hitelesítéshez 
 
 ### <a name="prepare-base-registry"></a>Alapszintű beállításjegyzék előkészítése
 
-Bemutatóként hozzon létre egy külön tároló-beállításjegyzéket az alapszintű beállításjegyzékben, és küldjön le egy Node. js-alapú alapképet a Docker hub-ból.
+Demonstrációs célokra hozzon létre egy külön tároló-beállításjegyzéket az alapadatbázisként, és küldjön le egy Node.js kiinduló rendszerképet a Docker hub-ból.
 
 1. Hozzon létre egy második tároló-beállításjegyzéket (például *mybaseregistry*) az alaplemezképek tárolásához.
-1. Kérje le `node:9-alpine` a rendszerképet a Docker hub-ból, és címkézze fel az alap beállításjegyzékbe, majd küldje el az alap beállításjegyzékbe:
+1. Kérje le a `node:9-alpine` rendszerképet a Docker hub-ból, és címkézze fel az alap beállításjegyzékbe, majd küldje el az alap beállításjegyzékbe:
 
   ```azurecli
   docker pull node:9-alpine
@@ -139,7 +138,7 @@ Bemutatóként hozzon létre egy külön tároló-beállításjegyzéket az alap
 
 ### <a name="create-new-dockerfile"></a>Új Docker létrehozása
 
-Hozzon létre egy Docker, amely lekéri az alaprendszerképet az alapszintű beállításjegyzékből. Hajtsa végre a következő lépéseket a GitHub-tárház helyi villájában, például: `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
+Hozzon létre egy Docker, amely lekéri az alaprendszerképet az alapszintű beállításjegyzékből. Hajtsa végre a következő lépéseket a GitHub-tárház helyi villájában, például: `https://github.com/myGitHubID/acr-build-helloworld-node.git` .
 
 1. A GitHub felhasználói felületén válassza az **új fájl létrehozása**lehetőséget.
 1. Nevezze el a fájlt *Docker* , és illessze be a következő tartalmakat. Helyettesítse be a *mybaseregistry*beállításjegyzékbeli nevét.
@@ -187,7 +186,7 @@ Ebben a példában adja meg a következő sablon paramétereinek értékeit:
 |userAssignedIdentity |A feladatban engedélyezett, felhasználó által hozzárendelt identitás erőforrás-azonosítója|
 |customRegistryIdentity | A felhasználó által hozzárendelt identitás ügyfél-azonosítója engedélyezve a feladatban, amely az egyéni beállításjegyzékkel való hitelesítéshez használatos |
 |customRegistry |A feladatban elért egyéni beállításjegyzék bejelentkezési kiszolgálójának neve, például *mybaseregistry.azurecr.IO*|
-|sourceLocation     |A felépítési feladat távoli környezete, például: * https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node.* |
+|sourceLocation     |A felépítési feladat távoli környezete, például * https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
 |dockerFilePath | A Docker elérési útja a távoli környezetben, a rendszerkép felépítéséhez. |
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése

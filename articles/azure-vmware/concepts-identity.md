@@ -4,10 +4,10 @@ description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82740953"
 ---
 # <a name="azure-vmware-solution-avs-identity-concepts"></a>Az Azure VMware megoldás (AVS) identitásával kapcsolatos fogalmak
@@ -29,10 +29,10 @@ A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látha
 |  Tanúsítványok            |  --  |        --       |  A Microsoft végzi a Tanúsítványkezelőt.  |
 |  Tartalomtár         | Egy CloudAdmin-felhasználónak van jogosultsága fájlok létrehozására és használatára a dokumentumtárakban.    |         Engedélyezve az SSO-val.         |  A Microsoft a tartalmi könyvtárban lévő fájlokat a ESXi-gazdagépek számára terjeszti.  |
 |  Adatközpont              |  --  |        --          |  A Microsoft az összes adatközpont-műveletet elvégzi.  |
-|  Adattár               | Adattár. AllocateSpace, adattár. Tallózás, adattár. config, adattár. DeleteFile, adattár. FileManagement, adattár. UpdateVirtualMachineMetadata     |    --    |   -- |
+|  Adattár               | Adattár. AllocateSpace, adattár. Tallózás, Datastore.Config, adattár. DeleteFile, adattár. FileManagement, adattár. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX-ügynök kezelője       |  --  |         --       |  A Microsoft minden műveletet elvégez.  |
 |  Mappa                  |  A CloudAdmin-felhasználók minden mappa jogosultsággal rendelkeznek.     |  --  |  --  |
-|  Globális                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global. SystemTag         |                  |    |
+|  Globális                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global.SystemTag         |                  |    |
 |  Gazdagép                    |  Host. HBR. HbrManagement      |        --          |  A Microsoft minden más gazdagép-műveletet hajt végre.  |
 |  InventoryService        |  InventoryService. tagging      |        --          |  --  |
 |  Network (Hálózat)                 |  Network. assign    |                  |  A Microsoft minden más hálózati műveletet hajt végre.  |

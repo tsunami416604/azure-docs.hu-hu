@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410851"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Az Azure HDInsight NSG szolgáltatásának címkéi
@@ -86,9 +86,9 @@ A fennmaradó régiók csoportokba vannak osztva, az általuk használt regioná
 
 #### <a name="group-1"></a>1. csoport
 
-Ha a fürt az alábbi táblázat egyik régiójában jön létre, engedélyezze a szolgáltatás címkéit `HDInsight.WestUS` és. `HDInsight.EastUS` Továbbá a felsorolt regionális szolgáltatás címkéje. Az ebben a szakaszban található régiók három szolgáltatási címkét igényelnek.
+Ha a fürt az alábbi táblázat egyik régiójában jön létre, engedélyezze a szolgáltatás címkéit `HDInsight.WestUS` és `HDInsight.EastUS` . Továbbá a felsorolt regionális szolgáltatás címkéje. Az ebben a szakaszban található régiók három szolgáltatási címkét igényelnek.
 
-Ha például a fürt a `East US 2` régióban lett létrehozva, akkor a következő szolgáltatási címkéket kell hozzáadnia a hálózati biztonsági csoportjához:
+Ha például a fürt a régióban lett létrehozva `East US 2` , akkor a következő szolgáltatási címkéket kell hozzáadnia a hálózati biztonsági csoportjához:
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
@@ -111,15 +111,15 @@ Ha például a fürt a `East US 2` régióban lett létrehozva, akkor a követke
 
 #### <a name="group-2"></a>2. csoport
 
-*Észak-Kína* és *Kelet-Kína* régiójában lévő fürtöknek két szolgáltatási címkét kell engedélyezniük `HDInsight.ChinaNorth` : `HDInsight.ChinaEast`és.
+*Észak-Kína* és *Kelet-Kína* régiójában lévő fürtöknek két szolgáltatási címkét kell engedélyezniük: `HDInsight.ChinaNorth` és `HDInsight.ChinaEast` .
 
 #### <a name="group-3"></a>3. csoport
 
-*US gov Iowa* és *US gov Virginia* régiójában lévő fürtöknek két szolgáltatási címkét kell engedélyezniük `HDInsight.USGovIowa` : `HDInsight.USGovVirginia`és.
+*US gov Iowa* és *US gov Virginia* régiójában lévő fürtöknek két szolgáltatási címkét kell engedélyezniük: `HDInsight.USGovIowa` és `HDInsight.USGovVirginia` .
 
 #### <a name="group-4"></a>4. csoport
 
-A *németországi Közép* -és *Kelet-Németország* régiójában lévő fürtökön két szolgáltatási címkét `HDInsight.GermanyCentral` kell `HDInsight.GermanyNortheast`engedélyezni: és.
+A *németországi Közép* -és *Kelet-Németország* régiójában lévő fürtökön két szolgáltatási címkét kell engedélyezni: `HDInsight.GermanyCentral` és `HDInsight.GermanyNortheast` .
 
 ## <a name="next-steps"></a>További lépések
 

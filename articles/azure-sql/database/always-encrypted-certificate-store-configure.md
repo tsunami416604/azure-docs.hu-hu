@@ -1,5 +1,5 @@
 ---
-title: Always Encrypted konfigurálása a Windows-tanúsítványtároló használatával
+title: Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 description: Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database adatbázis-titkosítással az SQL Server Management Studio (SSMS) Always Encrypted varázslójával. Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
 keywords: adatok titkosítása, SQL-titkosítás, adatbázis-titkosítás, bizalmas adatok Always Encrypted
 services: sql-database
@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 0287e5a965710ea5c3b1ada73fc32dda49c05819
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047705"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954241"
 ---
-# <a name="configure-always-encrypted-using-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows-tanúsítványtároló használatával
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis-titkosítással az [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database vagy az Azure SQL felügyelt példányában az adatbázis-titkosítással [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
 
 A Always Encrypted egy adattitkosítási technológia, amely segít a kiszolgálón tárolt bizalmas adatok védelme során, az ügyfél és a kiszolgáló közötti váltás során, és az adatok használatban vannak, így biztosítva, hogy a bizalmas adatok soha nem jelennek meg az adatbázis-rendszeren belüli egyszerű szövegként. Az adattitkosítást követően csak a kulcsokhoz hozzáférő ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adataihoz. Részletes információ: [Always encrypted (adatbázismotor)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -56,7 +56,7 @@ Az *alkalmazás azonosítójának* és *kulcsának*beszerzéséhez kövesse az [
 
 ## <a name="connect-with-ssms"></a>Csatlakozás SSMS segítségével
 
-Nyissa meg SQL Server Managed Studio (SSMS) alkalmazást, és kapcsolódjon a kiszolgálóhoz, vagy kezelje az adatbázisával.
+Nyissa meg SQL Server Management Studio (SSMS), és kapcsolódjon a kiszolgálóhoz, vagy kezelje az adatbázisával.
 
 1. Nyissa meg az SSMS-t. (Kattintson a **kapcsolat**  >  gombra **Adatbázismotor** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, ha nincs megnyitva.
 2. Adja meg a kiszolgáló nevét és a hitelesítő adatait.
@@ -72,20 +72,22 @@ Ebben a szakaszban létre fog hozni egy táblázatot a páciensek számára. Ez 
 1. Bontsa ki az **adatbázisok**csomópontot.
 2. Kattintson a jobb gombbal a **Klinika** -adatbázisra, majd kattintson az **Új lekérdezés**elemre.
 3. Illessze be a következő Transact-SQL (T-SQL) T az új lekérdezési ablakba, és **hajtsa végre** .
-
-        CREATE TABLE [dbo].[Patients](
-         [PatientId] [int] IDENTITY(1,1),
-         [SSN] [char](11) NOT NULL,
-         [FirstName] [nvarchar](50) NULL,
-         [LastName] [nvarchar](50) NULL,
-         [MiddleName] [nvarchar](50) NULL,
-         [StreetAddress] [nvarchar](50) NULL,
-         [City] [nvarchar](50) NULL,
-         [ZipCode] [char](5) NULL,
-         [State] [char](2) NULL,
-         [BirthDate] [date] NOT NULL
-         PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
-         GO
+    
+    ```tsql
+    CREATE TABLE [dbo].[Patients](
+    [PatientId] [int] IDENTITY(1,1),
+    [SSN] [char](11) NOT NULL,
+    [FirstName] [nvarchar](50) NULL,
+    [LastName] [nvarchar](50) NULL,
+    [MiddleName] [nvarchar](50) NULL,
+    [StreetAddress] [nvarchar](50) NULL,
+    [City] [nvarchar](50) NULL,
+    [ZipCode] [char](5) NULL,
+    [State] [char](2) NULL,
+    [BirthDate] [date] NOT NULL
+    PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
+    GO
+    ```
 
 ## <a name="encrypt-columns-configure-always-encrypted"></a>Oszlopok titkosítása (Always Encrypted konfigurálása)
 
@@ -163,19 +165,21 @@ Ezt közvetlenül a kapcsolatok karakterláncában állíthatja be, vagy beáll�
 
 Adja hozzá a következő kulcsszót a kapcsolódási karakterlánchoz:
 
-    Column Encryption Setting=Enabled
+`Column Encryption Setting=Enabled`
 
 ### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>Always Encrypted engedélyezése SqlConnectionStringBuilder
 
 A következő kód bemutatja, hogyan engedélyezheti a Always Encryptedt a [SqlConnectionStringBuilder. ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) [beállítás engedélyezésével.](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx)
 
-    // Instantiate a SqlConnectionStringBuilder.
-    SqlConnectionStringBuilder connStringBuilder =
-       new SqlConnectionStringBuilder("replace with your connection string");
+```csharp
+// Instantiate a SqlConnectionStringBuilder.
+SqlConnectionStringBuilder connStringBuilder =
+    new SqlConnectionStringBuilder("replace with your connection string");
 
-    // Enable Always Encrypted.
-    connStringBuilder.ColumnEncryptionSetting =
-       SqlConnectionColumnEncryptionSetting.Enabled;
+// Enable Always Encrypted.
+connStringBuilder.ColumnEncryptionSetting =
+    SqlConnectionColumnEncryptionSetting.Enabled;
+```
 
 ## <a name="always-encrypted-sample-console-application"></a>Always Encrypted minta konzolos alkalmazás
 
@@ -499,7 +503,9 @@ namespace AlwaysEncryptedConsoleApp
 
 Futtassa a következő lekérdezést a klinika adatbázisán.
 
-    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+```tsql
+SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+```
 
 Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges információt.
 
@@ -514,7 +520,9 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
     ![Új konzolos alkalmazás](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Futtassa a következő lekérdezést a **Klinika** adatbázisán.
 
-        SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+    ```tsql
+    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+    ```
 
      Most már megtekintheti a titkosított oszlopokban lévő egyszerű szöveges információt.
 

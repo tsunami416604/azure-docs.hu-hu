@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83815995"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
@@ -133,7 +132,7 @@ A következő példa egy olyan sablont mutat be, amely létrehozza a Linux rends
 }
 ```
 
-Ha a sablonfájl neve _Pool-ffmpeg. JSON_, akkor a következő módon hívja meg a sablont:
+Ha a sablonfájl nevepool-ffmpeg.js, akkor a következő módon hívja _meg_a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -152,7 +151,7 @@ A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméter
 }
 ```
 
-Ha a paramétereket tartalmazó JSON-fájl neve *Pool-Parameters. JSON*, majd a következő módon hívja meg a sablont:
+Ha a paraméterek JSON-fájljának nevepool-parameters.js, akkor a következő módon hívja *meg*a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -242,7 +241,7 @@ Az alábbi példa egy olyan sablont mutat be, amely létrehoz egy feladatot, ame
 }
 ```
 
-Ha a sablonfájl neve _Job-ffmpeg. JSON_, akkor a következő módon hívja meg a sablont:
+Ha a sablonfájl nevejob-ffmpeg.js, akkor a következő módon hívja _meg_a sablont:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json

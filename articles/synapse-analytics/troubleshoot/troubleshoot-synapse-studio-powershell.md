@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431474"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Az Azure szinapszis Studio (előzetes verzió) kapcsolódási problémáinak diagnosztizálása a PowerShell-parancsfájllal
@@ -29,7 +29,7 @@ Az Azure szinapszis Studio (előzetes verzió) a webes API-végpontok megfelelő
 
 Kattintson a jobb gombbal a következő hivatkozásra, majd kattintson a cél mentése másként elemre:
 
-- [Test-AzureSynapse. ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Másik lehetőségként közvetlenül is megnyithatja a hivatkozást, és mentheti a megnyitott parancsfájlt. Ne mentse a fenti hivatkozáshoz tartozó címet, mert a jövőben változhat.
 
@@ -49,12 +49,12 @@ A végén egy diagnosztikai összefoglalás jelenik meg. Ha a számítógép nem
 
 ![Diagnosztikai összefoglalás áttekintése](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-Emellett a munkamenethez tartozó diagnosztikai naplófájlt a hibaelhárítási parancsfájlt tartalmazó mappában hozza létre a rendszer. A helye az "általános tippek" szakaszban (`D:\TestAzureSynapse_2020....log`) látható. Ezt a fájlt szükség esetén technikai támogatásra is elküldheti.
+Emellett a munkamenethez tartozó diagnosztikai naplófájlt a hibaelhárítási parancsfájlt tartalmazó mappában hozza létre a rendszer. A helye az "általános tippek" szakaszban () látható `D:\TestAzureSynapse_2020....log` . Ezt a fájlt szükség esetén technikai támogatásra is elküldheti.
 
 Ha Ön hálózati rendszergazda, és az Azure szinapszis studióhoz tartozó tűzfal-konfigurációt hangolja be, akkor az "összefoglalás" szakasz fölötti technikai részletek segíthetnek.
 
 * Az "átadott" értékkel jelölt összes tesztelési elem (kérés) kapcsolati teszteket kapott, a HTTP-állapotkódtől függetlenül.
- A sikertelen kérelmek esetében az OK sárga színnel jelenik meg, például: `NamedResolutionFailure` vagy. `ConnectFailure` Ezek az okok segíthetnek kideríteni, hogy vannak-e helytelen konfiguráció a hálózati környezettel.
+ A sikertelen kérelmek esetében az OK sárga színnel jelenik meg, például: `NamedResolutionFailure` vagy `ConnectFailure` . Ezek az okok segíthetnek kideríteni, hogy vannak-e helytelen konfiguráció a hálózati környezettel.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460449"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések
@@ -44,7 +43,7 @@ A Windows támogatja a többcsatornás SMB használatát, mivel a Windows 2012 l
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Támogatja az Azure-beli virtuális gépek az RSS-t?
 
-Ha szeretné megtudni, hogy az Azure-beli virtuális gépek hálózati adapterei `Get-SmbClientNetworkInterface` támogatják-e az RSS- `RSS Capable`t, futtassa az alábbi parancsot, és ellenőrizze a mezőt: 
+Ha szeretné megtudni, hogy az Azure-beli virtuális gépek hálózati adapterei támogatják-e az RSS-t, futtassa az alábbi parancsot, `Get-SmbClientNetworkInterface` és ellenőrizze a mezőt `RSS Capable` : 
 
 ![RSS-támogatás az Azure-beli virtuális géphez](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
@@ -60,7 +59,7 @@ A többcsatornás SMB szolgáltatás lehetővé teszi, hogy az SMB3-ügyfél kap
 
 Nem. Az SMB-ügyfél megfelel az SMB-kiszolgáló által visszaadott hálózati adapterek számának.  Minden tárolási kötet egy és csak egy tárolási végpontból érhető el.  Ez azt jelenti, hogy a rendszer csak egy hálózati adaptert használ az adott SMB-kapcsolathoz.  
 
-Az `Get-SmbClientNetworkInterace` alábbi kimenet azt mutatja, hogy a virtuális gépnek két hálózati adaptere van – 15 és 12.  Ahogy az a parancs `Get-SmbMultichannelConnection`alatt látható, annak ellenére, hogy két RSS-kompatibilis hálózati adapter van, akkor a rendszer csak a 12-es felületet használja az SMB-megosztással kapcsolatban. a 15. illesztőfelület nincs használatban.
+Az `Get-SmbClientNetworkInterace` alábbi kimenet azt mutatja, hogy a virtuális gépnek két hálózati adaptere van – 15 és 12.  Ahogy az a parancs alatt látható `Get-SmbMultichannelConnection` , annak ellenére, hogy két RSS-kompatibilis hálózati adapter van, akkor a rendszer csak a 12-es felületet használja az SMB-megosztással kapcsolatban; a 15-ös illesztőfelület nincs használatban.
 
 ![RSS-kompatibilis hálózati adapterek](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
@@ -74,9 +73,9 @@ Az alábbi tesztek és grafikonok a többcsatornás SMB hatékonyságát mutatj�
 
 ### <a name="random-io"></a>Véletlenszerű I/O  
 
-Ha a többcsatornás SMB le van tiltva az ügyfélen, a FIO és a 40-GiB munkakészletek használatával a Pure 8 – KiB olvasási és írási tesztek elvégzése is megtörtént.  Az SMB-megosztást leválasztották az egyes tesztek között, az SMB-ügyfélkapcsolatok számának és az RSS hálózati adapter `1``4`beállításainál`8``16`(, `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`,,). A tesztek azt mutatják, hogy az alapértelmezett `4` beállítás elegendő az I/O-igényes munkaterhelésekhez. növekedés a `8` következőre `16` , és nincs hatása. 
+Ha a többcsatornás SMB le van tiltva az ügyfélen, a FIO és a 40-GiB munkakészletek használatával a Pure 8 – KiB olvasási és írási tesztek elvégzése is megtörtént.  Az SMB-megosztást leválasztották az egyes tesztek között, az SMB-ügyfélkapcsolatok számának és az RSS hálózati adapter beállításainál (,,, `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` ). A tesztek azt mutatják, hogy az alapértelmezett beállítás `4` elegendő az I/O-igényes számítási feladatokhoz, és a növekményes érték `8` `16` nem volt hatással. 
 
-A parancs `netstat -na | findstr 445` azt igazolta, `1` hogy további kapcsolatok `4` jöttek-e a- `8` ig és `16`a értékre.  Minden teszt során négy CPU-magot teljes mértékben kihasználtak az SMB számára, ahogy azt `Per Processor Network Activity Cycles` a perfmon-statisztika megerősítette (ez a cikk nem tartalmazza.)
+A parancs azt `netstat -na | findstr 445` igazolta, hogy további kapcsolatok jöttek-e a-ig és a értékre `1` `4` `8` `16` .  Minden teszt során négy CPU-magot teljes mértékben kihasználtak az SMB számára, ahogy azt a perfmon- `Per Processor Network Activity Cycles` statisztika megerősítette (ez a cikk nem tartalmazza.)
 
 ![Véletlenszerű I/O-tesztek](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 

@@ -3,35 +3,32 @@ title: Hitelesítés beállítása
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a hitelesítési módszert a Azure Machine Learning különböző erőforrásaihoz és munkafolyamataihoz. A szolgáltatáson belüli hitelesítés több módon is konfigurálható és használható, az egyszerű, felhasználói felületen alapuló hitelesítéstől kezdve a fejlesztési és tesztelési célokra, a teljes Azure Active Directory a szolgáltatás egyszerű hitelesítése.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: larryfr
+ms.author: larryfr
+ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 12/17/2019
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974687"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be és konfigurálhatja a különböző erőforrások és munkafolyamatok hitelesítését Azure Machine Learningban. A szolgáltatással való hitelesítés több módon is elvégezhető, az egyszerű, felhasználói felületen alapuló hitelesítéstől kezdve a fejlesztési vagy tesztelési célokra, a teljes Azure Active Directory a szolgáltatás egyszerű hitelesítése. Ez a cikk azt is ismerteti, hogyan működik a webes szolgáltatás hitelesítése, illetve hogyan lehet hitelesíteni a Azure Machine Learning REST API.
+Megtudhatja, hogyan végezhet hitelesítést a Azure Machine Learning munkaterületén és a webszolgáltatásként üzembe helyezett modelleken.
 
-Ez az útmutató bemutatja, hogyan végezheti el a következő feladatokat:
+Általában kétféle hitelesítés használható a Azure Machine Learning használatával:
 
-* Interaktív felhasználói felületi hitelesítés használata teszteléshez/fejlesztéshez
-* Egyszerű szolgáltatás hitelesítésének beállítása
-* Hitelesítés a munkaterületen
-* OAuth 2.0 tulajdonosi jogkivonatok beszerzése Azure Machine Learning REST API
-* A webszolgáltatások hitelesítésének megismerése
+* __Interaktív__: a fiókját a Azure Active Directory közvetlenül a hitelesítéshez, vagy a hitelesítéshez használt token beszerzéséhez használja. Az interaktív hitelesítés a kísérletezés és az ismétlődő fejlesztés során használatos. Vagy az erőforrásokhoz (például webszolgáltatásokhoz) való hozzáférés szabályozása felhasználónkénti alapon.
+* __Egyszerű szolgáltatásnév__: egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban való hitelesítéshez anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt. Egy egyszerű szolgáltatás használatával is lekérheti a tokent egy webszolgáltatáshoz való hitelesítéshez, ha nem szeretné, hogy a szolgáltatás végfelhasználója hitelesítse magát. Vagy ha a végfelhasználói hitelesítés nem közvetlenül a Azure Active Directory használatával történik.
 
-A Azure Machine Learningon belüli biztonság és hitelesítés általános áttekintését lásd a [koncepcióról szóló cikkben](concept-enterprise-security.md) .
+A használt hitelesítési típustól függetlenül a szerepköralapú hozzáférés-vezérlés (RBAC) az erőforrásokhoz engedélyezett hozzáférés szintjének hatókörére szolgál. Egy telepített modell hozzáférési jogkivonatának beolvasására használt fióknak például olvasási hozzáféréssel kell rendelkeznie a munkaterülethez. További információ a RBAC: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,103 +37,124 @@ A Azure Machine Learningon belüli biztonság és hitelesítés általános átt
 
 ## <a name="interactive-authentication"></a>Interaktív hitelesítés
 
-A szolgáltatás dokumentációjában szereplő példák többsége interaktív hitelesítést használ a Jupyter jegyzetfüzetekben, egyszerű tesztelési és demonstrációs módszerként. Ez egy egyszerű módja annak, hogy tesztelje, amit épít. Kétféle függvény hívása automatikusan rákérdez a felhasználói felület alapú hitelesítési folyamatra.
+A dokumentációban és a mintákban a legtöbb példa interaktív hitelesítést használ. Az SDK használatakor például két függvényhívás van, amely automatikusan rákérdez a felhasználói felületen alapuló hitelesítési folyamatra:
 
-A `from_config()` függvény meghívásakor a rendszer kiadja a kérdést.
+* A függvény meghívásakor `from_config()` a rendszer kiadja a kérdést.
 
-```python
-from azureml.core import Workspace
-ws = Workspace.from_config()
-```
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
 
-A `from_config()` függvény megkeresi a munkaterület-kapcsolatok adatait tartalmazó JSON-fájlt. A kapcsolat részleteit explicit módon is megadhatja a `Workspace` konstruktor használatával, amely az interaktív hitelesítést is kéri. Mindkét hívás egyenértékű.
+    A `from_config()` függvény megkeresi a munkaterület-kapcsolatok adatait tartalmazó JSON-fájlt.
 
-```python
-ws = Workspace(subscription_id="your-sub-id",
-               resource_group="your-resource-group-id",
-               workspace_name="your-workspace-name"
-              )
-```
+* Ha a `Workspace` konstruktort használja az előfizetés, az erőforráscsoport és a munkaterület adatainak megadására, a rendszer az interaktív hitelesítést is kéri.
 
-Ha több bérlőhöz fér hozzá, előfordulhat, hogy importálnia kell az osztályt, és explicit módon meg kell határoznia, hogy melyik bérlőt célozza meg. A konstruktor `InteractiveLoginAuthentication` meghívása azt is kéri, hogy a fenti hívásokhoz hasonló módon jelentkezzen be.
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
 
-```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-```
+> [!TIP]
+> Ha több bérlőhöz fér hozzá, előfordulhat, hogy importálnia kell az osztályt, és explicit módon meg kell határoznia, hogy melyik bérlőt célozza meg. A konstruktor meghívása azt `InteractiveLoginAuthentication` is kéri, hogy a fenti hívásokhoz hasonló módon jelentkezzen be.
+>
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
 
-A teszteléshez és a tanuláshoz is hasznos, az interaktív hitelesítés nem segít az automatizált vagy a fej nélküli munkafolyamatok létrehozásában. Az egyszerű szolgáltatás hitelesítésének beállítása az SDK-t használó automatizált folyamatok esetében ajánlott módszer.
+## <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-## <a name="set-up-service-principal-authentication"></a>Egyszerű szolgáltatás hitelesítésének beállítása
+Az egyszerű szolgáltatásnév (SP) hitelesítéséhez először létre kell hoznia az SP-t, és hozzáférést kell biztosítania a munkaterülethez. Ahogy azt korábban említettük, az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozható a hozzáférés, ezért azt is el kell döntenie, hogy milyen hozzáférést biztosít az SP-nek.
 
-Ez a folyamat egy adott felhasználói bejelentkezéstől leválasztott hitelesítés engedélyezéséhez szükséges, amely lehetővé teszi, hogy hitelesítse a Azure Machine Learning Python SDK-t az automatizált munkafolyamatokban. Az egyszerű szolgáltatás hitelesítése lehetővé teszi [a REST API hitelesítését](#azure-machine-learning-rest-api-auth)is.
+> [!IMPORTANT]
+> Egyszerű szolgáltatásnév használata esetén adja meg a által használt __feladathoz szükséges minimális hozzáférést__ . Előfordulhat például, hogy nem ad meg egy egyszerű szolgáltatás tulajdonosának vagy közreműködői hozzáférését, ha az az összes használatban van a webes telepítés hozzáférési jogkivonatának beolvasásához.
+>
+> A legkevesebb hozzáférés megadásának oka az, hogy egy egyszerű szolgáltatásnév jelszót használ a hitelesítéshez, és a jelszót egy Automation-parancsfájl részeként lehet tárolni. Ha a jelszó kiszivárgott, az adott feladatokhoz szükséges minimális hozzáférés minimálisra csökken az SP rosszindulatú használata esetén.
 
-Az egyszerű szolgáltatás hitelesítésének beállításához először létre kell hoznia egy alkalmazást a Azure Active Directoryban, majd az alkalmazás szerepköralapú hozzáférését kell adnia az ML-munkaterülethez. A beállítás végrehajtásának legegyszerűbb módja a Azure Portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) . Miután bejelentkezett a portálra, kattintson az `>_` oldal jobb felső sarkában található ikonra a Shell megnyitásához.
-
-Ha még nem használta a Cloud shellt az Azure-fiókjában, létre kell hoznia egy Storage-fiók erőforrást az összes megírt fájl tárolásához. Általánosságban elmondható, hogy ez a Storage-fiók egy elhanyagolható havi költséget von maga után. Ha korábban még nem használta a következő paranccsal, telepítse a Machine learning-bővítményt.
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
+Az [Azure parancssori](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)felületének használatával a legkönnyebben hozhat létre egy SP-t, és hozzáférést biztosíthat a munkaterületéhez. Egyszerű szolgáltatásnév létrehozásához és a munkaterülethez való hozzáférés biztosításához kövesse az alábbi lépéseket:
 
 > [!NOTE]
-> Az alábbi lépések végrehajtásához rendszergazdának kell lennie az előfizetésben.
+> Ezen lépések végrehajtásához rendszergazdai jogosultsággal kell rendelkeznie az előfizetésben.
 
-Ezután futtassa a következő parancsot az egyszerű szolgáltatásnév létrehozásához. Adja meg a nevet, ebben az esetben a **ml-Auth**.
+1. Hitelesítés az Azure-előfizetésében:
 
-```azurecli-interactive
-az ad sp create-for-rbac --sdk-auth --name ml-auth
-```
+    ```azurecli-interactive
+    az login
+    ```
 
-A kimenet az alábbihoz hasonló JSON lesz. Jegyezze fel a, `clientId` `clientSecret`és `tenantId` a mezőket, ahogy a cikk más lépéseire is szüksége lesz.
+    Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
-```json
-{
-    "clientId": "your-client-id",
-    "clientSecret": "your-client-secret",
-    "subscriptionId": "your-sub-id",
-    "tenantId": "your-tenant-id",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net"
-}
-```
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Ezután futtassa a következő parancsot, hogy lekérje az imént létrehozott szolgáltatásnév részleteit, a fentiekben megadott `clientId` értéket használva a `--id` paraméter bemenetének.
+    A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-```azurecli-interactive
-az ad sp show --id your-client-id
-```
+1. Telepítse a Azure Machine Learning bővítményt:
 
-A következő példa a parancs JSON-kimenetének egyszerűsített példáját szemlélteti. Jegyezze fel a `objectId` mezőt, mivel a következő lépéshez szükséges értéknek kell lennie.
+    ```azurecli-interactive
+    az extension add -n azure-cli-ml
+    ```
 
-```json
-{
-    "accountEnabled": "True",
-    "addIns": [],
-    "appDisplayName": "ml-auth",
-    ...
-    ...
-    ...
-    "objectId": "your-sp-object-id",
-    "objectType": "ServicePrincipal"
-}
-```
+1. Hozza létre az egyszerű szolgáltatásnevet. A következő példában egy **ml-Auth** nevű SP jön létre:
 
-Ezután a következő parancs használatával rendeljen hozzá egyszerű szolgáltatásnevet a Machine learning-munkaterülethez. Szüksége lesz a munkaterület nevére és az erőforráscsoport nevére a és `-w` `-g` a paraméterek számára. A `--user` paraméter esetében használja az `objectId` előző lépésben megadott értéket. A `--role` paraméter lehetővé teszi az egyszerű szolgáltatásnév hozzáférési szerepkörének beállítását, és általában a **tulajdonost** vagy a **közreműködőt**fogja használni. Mindkettő rendelkezik írási hozzáféréssel a meglévő erőforrásokhoz, például a számítási fürtökhöz és az adattárolóhoz, de csak a **tulajdonos** tudja kiépíteni ezeket az erőforrásokat.
+    ```azurecli-interactive
+    az ad sp create-for-rbac --sdk-auth --name ml-auth
+    ```
 
-```azurecli-interactive
-az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
-```
+    A kimenet az alábbihoz hasonló JSON lesz. Jegyezze fel a `clientId` , `clientSecret` és a `tenantId` mezőket, ahogy a cikk más lépéseire is szüksége lesz.
 
-Ez a hívás nem hoz létre kimenetet, de most már rendelkezik egyszerű szolgáltatásnév-hitelesítéssel a munkaterületen.
+    ```json
+    {
+        "clientId": "your-client-id",
+        "clientSecret": "your-client-secret",
+        "subscriptionId": "your-sub-id",
+        "tenantId": "your-tenant-id",
+        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+        "resourceManagerEndpointUrl": "https://management.azure.com",
+        "activeDirectoryGraphResourceId": "https://graph.windows.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
+        "galleryEndpointUrl": "https://gallery.azure.com/",
+        "managementEndpointUrl": "https://management.core.windows.net"
+    }
+    ```
 
-## <a name="authenticate-to-your-workspace"></a>Hitelesítés a munkaterületen
+1. Kérje le az egyszerű szolgáltatásnév adatait az `clientId` előző lépésben visszaadott érték használatával:
 
-Most, hogy engedélyezte az egyszerű szolgáltatásnév hitelesítését, a felhasználóként való fizikai bejelentkezés nélkül is hitelesítheti a munkaterületét az SDK-ban. Használja az `ServicePrincipalAuthentication` osztály konstruktort, és használja az előző lépésekben kapott értékeket paraméterekként. A `tenant_id` `tenantId` paraméter leképezi a fenti `service_principal_id` , `clientId`a és `service_principal_password` a leképezését `clientSecret`a következőre:.
+    ```azurecli-interactive
+    az ad sp show --id your-client-id
+    ```
+
+    A következő JSON a parancs kimenetének egyszerűsített példája. Jegyezze fel a `objectId` mezőt, mivel a következő lépéshez szükséges értéknek kell lennie.
+
+    ```json
+    {
+        "accountEnabled": "True",
+        "addIns": [],
+        "appDisplayName": "ml-auth",
+        ...
+        ...
+        ...
+        "objectId": "your-sp-object-id",
+        "objectType": "ServicePrincipal"
+    }
+    ```
+
+1. Engedélyezi az SP számára a Azure Machine Learning munkaterület elérését. Szüksége lesz a munkaterület nevére és az erőforráscsoport nevére a és a paraméterek számára `-w` `-g` . A `--user` paraméter esetében használja az `objectId` előző lépésben megadott értéket. A `--role` paraméter lehetővé teszi az egyszerű szolgáltatásnév hozzáférési szerepkörének beállítását. A következő példában az SP a **tulajdonosi** szerepkörhöz van rendelve. 
+
+    > [!IMPORTANT]
+    > A tulajdonosi hozzáférés lehetővé teszi, hogy az egyszerű szolgáltatás gyakorlatilag bármilyen műveletet hajtson végre a munkaterületen. Ez a dokumentum a hozzáférés megadásának bemutatására szolgál. éles környezetben a Microsoft azt javasolja, hogy a szolgáltatásnak a szükséges szerepkör elvégzéséhez szükséges minimális hozzáférést adja meg. További információt a [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md)című témakörben talál.
+
+    ```azurecli-interactive
+    az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
+    ```
+
+    Ez a hívás nem eredményez sikeres kimenetet.
+
+### <a name="use-a-service-principal-from-the-sdk"></a>Egyszerű szolgáltatásnév használata az SDK-ból
+
+Ha az SDK-ban szeretné hitelesíteni a munkaterületet, használja a szolgáltatásnevet az `ServicePrincipalAuthentication` osztály konstruktorával. Használja a szolgáltató paraméterként való létrehozásakor kapott értékeket. A `tenant_id` paraméter leképezi a `tenantId` fenti, a `service_principal_id` és a `clientId` leképezését a következőre: `service_principal_password` `clientSecret` .
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -146,7 +164,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-A `sp` változó most már rendelkezik egy olyan hitelesítési objektummal, amelyet közvetlenül az SDK-ban használ. Általánosságban elmondható, hogy a fent használt azonosítókat/titkokat a következő kódban látható módon tárolja a környezeti változókon.
+A `sp` változó most már rendelkezik egy olyan hitelesítési objektummal, amelyet közvetlenül az SDK-ban használ. Általánosságban elmondható, hogy a fent használt azonosítókat/titkokat a következő kódban látható módon tárolja a környezeti változókon. A környezeti változókban való tárolás megakadályozza, hogy az adatok véletlenül bekerüljenek egy GitHub-tárházba.
 
 ```python
 import os
@@ -156,7 +174,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
 ```
 
-A Pythonban futó és az SDK-t használó automatizált munkafolyamatok esetében az adott objektumot a legtöbb esetben használhatja a hitelesítéshez. A következő kód hitelesíti a munkaterületet az imént létrehozott Auth objektum használatával.
+A Pythonban futó és az SDK-t használó automatizált munkafolyamatok esetében az adott objektumot a legtöbb esetben használhatja a hitelesítéshez. A következő kód a létrehozott Auth objektum használatával hitelesíti a munkaterületet.
 
 ```python
 from azureml.core import Workspace
@@ -167,16 +185,20 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API hitelesítés
+### <a name="use-a-service-principal-from-the-azure-cli"></a>Egyszerű szolgáltatásnév használata az Azure CLI-vel
 
-A fenti lépésekben létrehozott egyszerű szolgáltatásnév a Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)való hitelesítéshez is használható. A Azure Active Directory ügyfél- [hitelesítő adatok engedélyezési folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)használja, amely lehetővé teszi, hogy a szolgáltatások közötti hívás a fej nélküli hitelesítéshez automatizált munkafolyamatokban történjen. A példák a Python és a Node. js [ADAL-könyvtárával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) valósulnak meg, de az OpenID Connect 1,0-et támogató nyílt forráskódú kódtár is használható.
+Az Azure CLI-parancsokhoz használhat egyszerű szolgáltatást. További információ: [Bejelentkezés egyszerű szolgáltatásnév használatával](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal).
+
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Egyszerű szolgáltatásnév használata a REST API (előzetes verzió)
+
+Az egyszerű szolgáltatásnév a Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (előzetes verzió) hitelesítésére is használható. A Azure Active Directory ügyfél- [hitelesítő adatok engedélyezési folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)használja, amely lehetővé teszi, hogy a szolgáltatások közötti hívás a fej nélküli hitelesítéshez automatizált munkafolyamatokban történjen. A példák a Python és a Node.js [ADAL-függvénytárával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) valósulnak meg, de az OpenID Connect 1,0-et támogató nyílt forráskódú kódtár is használható.
 
 > [!NOTE]
-> A MSAL. js egy újabb könyvtár, mint a ADAL, de a MSAL. js használatával nem végezhető el a szolgáltatások közötti hitelesítés, mivel ez elsősorban az olyan ügyféloldali függvénytár, amely egy adott felhasználóhoz kötött interaktív vagy felhasználói felületi hitelesítéshez készült. Javasoljuk, hogy az alábbi módon használja az ADAL-t az automatizált munkafolyamatok létrehozásához a REST API használatával.
+> MSAL.js egy újabb könyvtár, mint a ADAL, de az ügyfél hitelesítő adataival nem végezhető el a szolgáltatás és a szolgáltatás közötti hitelesítés MSAL.js, mivel ez elsősorban olyan ügyféloldali függvénytár, amely egy adott felhasználóhoz kötött interaktív/felhasználói felületi hitelesítéshez készült. Javasoljuk, hogy az alábbi módon használja az ADAL-t az automatizált munkafolyamatok létrehozásához a REST API használatával.
 
-### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>Node.js
 
-A Node. js használatával a következő lépésekkel hozhatja végre a hitelesítési tokent. A környezetben futtassa a parancsot `npm install adal-node`. Ezután használja `tenantId` `clientId`a, a és `clientSecret` a parancsot a fenti lépésekben létrehozott szolgáltatásnév alapján a következő parancsfájlban található egyező változók értékeiként.
+A következő lépésekkel hozhatja Node.js használatával a hitelesítési tokent. A környezetben futtassa a parancsot `npm install adal-node` . Ezután használja a, `tenantId` a `clientId` és a `clientSecret` parancsot a fenti lépésekben létrehozott szolgáltatásnév alapján a következő parancsfájlban található egyező változók értékeiként.
 
 ```javascript
 const adal = require('adal-node').AuthenticationContext;
@@ -204,7 +226,7 @@ context.acquireTokenWithClientCredentials(
 );
 ```
 
-A változó `tokenResponse` egy olyan objektum, amely tartalmazza a jogkivonatot és a társított metaadatokat, például a lejárati időt. A tokenek 1 órára érvényesek, és az új jogkivonat lekéréséhez futtassa újra ugyanezt a hívást. A következő egy példa erre a válaszra.
+A változó `tokenResponse` egy olyan objektum, amely tartalmazza a jogkivonatot és a társított metaadatokat, például a lejárati időt. A tokenek 1 órára érvényesek, és az új jogkivonat lekéréséhez futtassa újra ugyanezt a hívást. A következő kódrészlet egy mintául szolgáló válasz.
 
 ```javascript
 {
@@ -219,11 +241,11 @@ A változó `tokenResponse` egy olyan objektum, amely tartalmazza a jogkivonatot
 }
 ```
 
-Az Auth `accessToken` token beolvasásához használja a tulajdonságot. Tekintse meg a [REST API dokumentációját](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) , amely bemutatja, hogyan használhatja a tokent API-hívások létrehozásához.
+Az `accessToken` Auth token beolvasásához használja a tulajdonságot. Tekintse meg a [REST API dokumentációját](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) , amely bemutatja, hogyan használhatja a tokent API-hívások létrehozásához.
 
-### <a name="python"></a>Python
+#### <a name="python"></a>Python
 
-A következő lépésekkel hozhatja végre a hitelesítési tokent a Python használatával. A környezetben futtassa a parancsot `pip install adal`. Ezután használja a `tenantId`, `clientId`a és `clientSecret` a parancsot a fenti lépésekben a következő parancsfájlban a megfelelő változók értékeiként létrehozott egyszerű szolgáltatásnév alapján.
+A következő lépésekkel hozhatja végre a hitelesítési tokent a Python használatával. A környezetben futtassa a parancsot `pip install adal` . Ezután használja a `tenantId` , a `clientId` és a `clientSecret` parancsot a fenti lépésekben a következő parancsfájlban a megfelelő változók értékeiként létrehozott egyszerű szolgáltatásnév alapján.
 
 ```python
 from adal import AuthenticationContext
@@ -239,7 +261,7 @@ token_response = auth_context.acquire_token_with_client_credentials("https://man
 print(token_response)
 ```
 
-A változó `token_response` egy olyan szótár, amely tartalmazza a tokent és a kapcsolódó metaadatokat, például a lejárati időt. A tokenek 1 órára érvényesek, és az új jogkivonat lekéréséhez futtassa újra ugyanezt a hívást. A következő egy példa erre a válaszra.
+A változó `token_response` egy olyan szótár, amely tartalmazza a tokent és a kapcsolódó metaadatokat, például a lejárati időt. A tokenek 1 órára érvényesek, és az új jogkivonat lekéréséhez futtassa újra ugyanezt a hívást. A következő kódrészlet egy mintául szolgáló válasz.
 
 ```python
 {
@@ -254,13 +276,21 @@ A változó `token_response` egy olyan szótár, amely tartalmazza a tokent és 
 }
 ```
 
-Az `token_response["accessToken"]` hitelesítési jogkivonat beolvasására használatos. Tekintse meg a [REST API dokumentációját](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) , amely bemutatja, hogyan használhatja a tokent API-hívások létrehozásához.
+`token_response["accessToken"]`Az hitelesítési jogkivonat beolvasására használatos. Tekintse meg a [REST API dokumentációját](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) , amely bemutatja, hogyan használhatja a tokent API-hívások létrehozásához.
 
 ## <a name="web-service-authentication"></a>Webes szolgáltatás hitelesítése
 
-A Azure Machine Learning webszolgáltatásai a fent ismertetett módon eltérő hitelesítési mintát használnak. A központilag telepített webszolgáltatások hitelesítésének legegyszerűbb módja, ha **kulcs-alapú hitelesítést**használ, amely statikus tulajdonosi típusú hitelesítési kulcsokat hoz létre, amelyeket nem kell frissíteni. Ha csak a központilag telepített webszolgáltatásokhoz kell hitelesítést végeznie, nem kell beállítania a szolgáltatás elve szerinti hitelesítést a fent látható módon.
+A Azure Machine Learning által létrehozott modell-telepítések két hitelesítési módszert biztosítanak:
 
-Az Azure Kubernetes szolgáltatásban üzembe helyezett webszolgáltatások esetében alapértelmezés szerint *engedélyezve* van a kulcs alapú hitelesítés. Azure Container Instances központilag telepített szolgáltatások alapértelmezés szerint *le vannak tiltva* a kulcs alapú hitelesítéssel, de az ACI `auth_enabled=True`-webszolgáltatások létrehozásakor is engedélyezhető. Az alábbi példa egy ACI üzembe helyezési konfiguráció létrehozására szolgál, amely lehetővé teszi a kulcs alapú hitelesítés használatát.
+* **kulcs-alapú**: a rendszer statikus kulcsot használ a webszolgáltatáshoz való hitelesítéshez.
+* **jogkivonat-alapú**: a munkaterületről kell beszerezni egy ideiglenes jogkivonatot, amely a webszolgáltatáshoz való hitelesítéshez használatos. Ez a jogkivonat egy adott idő elteltével lejár, és frissíteni kell a webszolgáltatással folytatott munka folytatásához.
+
+    > [!NOTE]
+    > A jogkivonat-alapú hitelesítés csak az Azure Kubernetes szolgáltatásban való üzembe helyezéskor érhető el.
+
+### <a name="key-based-web-service-authentication"></a>Kulcs alapú webszolgáltatás-hitelesítés
+
+Az Azure Kubernetes Service (ak) szolgáltatásban üzembe helyezett webszolgáltatások alapértelmezés szerint *engedélyezve* vannak a kulcs alapú hitelesítéssel. Azure Container Instances (ACI) központilag telepített szolgáltatások esetében a kulcs-alapú hitelesítés alapértelmezés szerint *le van tiltva* , de engedélyezheti `auth_enabled=True` az ACI webszolgáltatások létrehozásakor. A következő kód egy példa arra, hogyan hozható létre egy ACI központi telepítési konfiguráció a kulcs alapú hitelesítéssel.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -270,7 +300,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enabled=True)
 ```
 
-Ezt követően használhatja az egyéni ACI-konfigurációt az üzembe helyezés `Model` során a osztály használatával.
+Ezt követően használhatja az egyéni ACI-konfigurációt az üzembe helyezés során a `Model` osztály használatával.
 
 ```python
 from azureml.core.model import Model, InferenceConfig
@@ -286,7 +316,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Az Auth kulcsok beolvasásához használja `aci_service.get_keys()`a következőt:. A kulcs újragenerálása érdekében használja a `regen_key()` függvényt, és adja át az **elsődleges** vagy a **másodlagos**műveletet.
+Az Auth kulcsok beolvasásához használja a következőt: `aci_service.get_keys()` . A kulcs újragenerálása érdekében használja a `regen_key()` függvényt, és adja át az **elsődleges** vagy a **másodlagos**műveletet.
 
 ```python
 aci_service.regen_key("Primary")
@@ -294,7 +324,7 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-A webszolgáltatások is támogatják a jogkivonat-alapú hitelesítést, de csak az Azure Kubernetes Service-példányok esetében. A hitelesítéssel kapcsolatos további információkért tekintse [meg a webszolgáltatások használatáról](how-to-consume-web-service.md) szóló témakört.
+Az üzembe helyezett modellekkel való hitelesítéssel kapcsolatos további információkért lásd: [ügyfél létrehozása webszolgáltatásként üzembe helyezett modellhez](how-to-consume-web-service.md).
 
 ### <a name="token-based-web-service-authentication"></a>Jogkivonat-alapú webszolgáltatások hitelesítése
 
@@ -302,18 +332,45 @@ Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhaszn
 
 * **Alapértelmezés szerint** a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
 * A jogkivonat-hitelesítés **nem támogatott** , ha Azure Container instances telepíti.
+* A jogkivonat-hitelesítés **nem használható a kulcs alapú hitelesítéssel megegyező időpontban**.
 
-A jogkivonat-hitelesítés vezérléséhez használja `token_auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
-
-Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódus használatával kérhet le egy JSON web token (JWT) és a jogkivonat lejárati idejét:
+A jogkivonat-hitelesítés vezérléséhez használja a (z) `token_auth_enabled` paramétert a központi telepítés létrehozásakor vagy frissítésekor:
 
 ```python
-token, refresh_by = service.get_token()
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import Model, InferenceConfig
+
+# Create the config
+aks_config = AksWebservice.deploy_configuration()
+
+#  Enable token auth and disable (key) auth on the webservice
+aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
+
+aks_service_name ='aks-service-1'
+
+# deploy the model
+aks_service = Model.deploy(workspace=ws,
+                           name=aks_service_name,
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aks_config,
+                           deployment_target=aks_target)
+
+aks_service.wait_for_deployment(show_output = True)
+```
+
+Ha engedélyezve van a jogkivonat-hitelesítés, a metódus használatával kérhet `get_token` le egy JSON web token (JWT) és a jogkivonat lejárati idejét:
+
+> [!TIP]
+> Ha a jogkivonat lekéréséhez egyszerű szolgáltatásnevet használ, és azt szeretné, hogy a jogkivonat lekéréséhez minimálisan szükséges legyen a hozzáférés, rendelje hozzá a munkaterülethez tartozó **olvasó** szerepkörhöz.
+
+```python
+token, refresh_by = aks_service.get_token()
 print(token)
 ```
 
 > [!IMPORTANT]
-> A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie. Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség az, hogy a REST API a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként a `service.get_token()` hívást a korábban tárgyalt módon használja.
+> A jogkivonat időpontját követően új jogkivonatot kell kérnie `refresh_by` . Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség az, hogy a REST API a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként a `service.get_token()` hívást a korábban tárgyalt módon használja.
 >
 > Javasoljuk, hogy az Azure Kubernetes Service-fürttel azonos régióban hozza létre Azure Machine Learning munkaterületét.
 >
@@ -323,5 +380,6 @@ print(token)
 
 ## <a name="next-steps"></a>További lépések
 
+* A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).
 * [Webszolgáltatásként üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)használata.

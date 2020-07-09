@@ -12,6 +12,8 @@
       href: language-support.md
     - name: Régiós támogatás
       href: regions.md
+    - name: A docs újdonságai
+      href: whats-new.md
 - name: Diktálás
   items:
     - name: A Beszédfelismerés dokumentációja
@@ -24,7 +26,7 @@
           href: batch-transcription.md
         - name: Alapszintű beszédfelismerés
           href: speech-to-text-basics.md
-    - name: Első lépések
+    - name: Rövid útmutatók
       items:
         - name: Beszéd felismerése mikrofonbemenettel
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +34,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blobtárolóban tárolt beszéd felismerése
           href: quickstarts/from-blob.md
+        - name: Modell tesztelése hangfájlok használatával a Speech Studióban
+          href: quickstarts/speech-studio-test-model.md
     - name: Útmutatók
       items:
         - name: Beszédfelismerési mód kiválasztása
@@ -67,6 +71,8 @@
           href: how-to-custom-speech-train-model.md
         - name: Egyéni modell üzembe helyezése
           href: how-to-custom-speech-deploy-model.md
+        - name: CI/CD a Custom Speechhez
+          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Ember által címkézett átiratok létrehozása
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Referencia
@@ -76,7 +82,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -101,9 +107,9 @@
     - name: További források
       items:
         - name: Nyelvi támogatás
-          href: 'language-support.md#speech-to-text'
+          href: language-support.md#speech-to-text
         - name: Régiós támogatás
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: Diktálás – GYIK
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
           href: faq-stt.md
@@ -173,7 +179,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -198,11 +204,11 @@
     - name: További források
       items:
         - name: Standard hangszolgáltatási támogatás
-          href: 'language-support.md#standard-voices'
+          href: language-support.md#standard-voices
         - name: Neurális hangszolgáltatási támogatás
-          href: 'language-support.md#neural-voices'
+          href: language-support.md#neural-voices
         - name: Régiós támogatás
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: SSML fonetikus készletek
           href: speech-ssml-phonetic-sets.md
         - name: Szövegfelolvasás – GYIK
@@ -237,7 +243,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -258,9 +264,9 @@
     - name: További források
       items:
         - name: Nyelvi támogatás
-          href: 'language-support.md#speech-translation'
+          href: language-support.md#speech-translation
         - name: Régiós támogatás
-          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+          href: regions.md#speech-to-text-text-to-speech-and-translation
         - name: Beszédfordítás – GYIK
           href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Szándékfelismerés
@@ -283,7 +289,7 @@
             - name: C++
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/cppref'
-            - name: 'C#'
+            - name: C#
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
@@ -310,7 +316,7 @@
         - name: Nyelvi támogatás
           href: ../luis/luis-language-support.md
         - name: Régiós támogatás
-          href: 'regions.md#intent-recognition'
+          href: regions.md#intent-recognition
 - name: Beszélgetési forgatókönyvek
   items:
     - name: A Beszélgetési forgatókönyvek dokumentációja
@@ -338,7 +344,7 @@
                 - name: C++
                   displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/cppref'
-                - name: 'C#'
+                - name: C#
                   displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/csharpref'
                 - name: Java
@@ -376,7 +382,7 @@
               items:
                 - name: C++
                   href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: 'C#'
+                - name: C#
                   href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
                 - name: Java
                   href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
@@ -388,30 +394,64 @@
       items:
         - name: Mi az a hangvezérelt asszisztens?
           href: voice-assistants.md
-    - name: Egyéni parancsok (előzetes verzió)
+    - name: Custom Commands
       items:
-        - name: Mi az a Custom Commands-alkalmazás?
+        - name: Mik azok az egyéni parancsok?
           href: custom-commands.md
         - name: Rövid útmutatók
           items:
             - name: Custom Commands-alkalmazás létrehozása
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Egyéni parancs létrehozása paraméterekkel
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Egyéni parancsok használata Custom Voice szolgáltatással
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: Egyéni parancsok használata a Speech SDK-val
-              href: quickstart-custom-speech-commands-speech-sdk.md
+              href: quickstart-custom-commands-application.md
         - name: Útmutatók
           items:
-            - name: Ügyféltől származó parancsok végrehajtása
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Paraméter-ellenőrzés hozzáadása
-              href: how-to-custom-speech-commands-validations.md
-            - name: Megerősítés hozzáadása
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Egylépéses javítás hozzáadása
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Fejlesztés
+              items:
+                - name: Alkalmazás létrehozása egyszerű parancsokkal
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Paraméterek hozzáadása parancsokhoz
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Konfigurációk hozzáadása parancsparaméterekhez
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Használati szabályok hozzáadása
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Integrálás
+              items:
+                - name: Integrálás ügyfélalkalmazással a Speech SDK használatával
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Tevékenység küldése az ügyfélalkalmazásnak
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Webes végpontok beállítása
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Üzembe helyezés
+              items:
+                - name: Folyamatos üzembe helyezés az Azure DevOps használatával
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Tesztelés
+              items:
+                - name: Custom Commands-alkalmazás tesztelése
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Hibakeresés
+              items:
+                - name: Hibakeresés az alkalmazás létrehozásakor
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Hibakeresés az alkalmazás futtatásakor
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: Referencia
+              items:
+                - name: A Custom Commands alapelvei
+                  href: custom-commands-references.md
+        - name: További források
+          items:
+            - name: Custom Commands-minták (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Hangvezérelt asszisztensek mintái (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
+              href: faq-voice-assistants.md
+            - name: Beszéd SDK
+              href: speech-sdk.md
     - name: Direct Line Speech
       items:
         - name: Mi az a Direct Line Speech?
@@ -454,7 +494,21 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Egyéni kulcsszófelismerés
           href: speech-devices-sdk-create-kws.md
-- name: Üzemeltetés
+- name: Beszélőfelismerés
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi a Speaker Recognition?
+          href: speaker-recognition-overview.md
+        - name: A Speaker Recognition alapjai
+          href: speaker-recognition-basics.md
+    - name: Referencia
+      items:
+        - name: REST API-k
+          items:
+            - name: Speaker Recognition REST API
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: Hosting
   items:
     - name: Az üzemeltetés dokumentációja
       href: index-hosting.yml
@@ -466,6 +520,8 @@
         - name: Speech-tárolók konfigurálása
           displayName: 'containers,configure containers,container config,configuration'
           href: speech-container-configuration.md
+        - name: Kötegelt feldolgozás Speech-tárolók használatával
+          href: speech-container-batch-processing.md
         - name: Speech-tárolók a Kubernetesszel és a Helmmel
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
           href: speech-container-howto-on-premises.md
@@ -513,7 +569,7 @@
       items:
         - name: C++
           href: 'https://aka.ms/csspeech/cppref'
-        - name: 'C#'
+        - name: C#
           href: 'https://aka.ms/csspeech/csharpref'
         - name: Java
           href: 'https://aka.ms/csspeech/javaref'

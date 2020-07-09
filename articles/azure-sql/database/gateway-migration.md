@@ -1,21 +1,21 @@
 ---
 title: Átjáró forgalmi áttelepítési nyilatkozata
-description: A cikk a Azure SQL Database átjárók IP-címeinek áttelepítésére vonatkozó értesítéseket nyújt a felhasználóknak
+description: A cikk a Azure SQL Database átjáró IP-címeinek áttelepítésére vonatkozó értesítéseket nyújt a felhasználóknak
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1 
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: f5e45a4625b1cf9422f7ef7e10e9080a7878172d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043393"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084953"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,10 +24,25 @@ Az Azure-infrastruktúra fejlesztésekor a Microsoft rendszeresen frissíti a ha
 
 Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes régiókban elérhető átjárók változásairól. A legfrissebb információk a [Azure SQL Database átjáró IP-címei](connectivity-architecture.md#gateway-ip-addresses) táblában lesznek karbantartva.
 
-## <a name="impact-of-this-change"></a>A változás hatása
+## <a name="status-updates"></a>Állapot-frissítések
 
-Az újabb átjárók felé irányuló első adatforgalom a következő régiókban **2019 október 14** -én van ütemezve:
+# <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
 
+### <a name="august-2020"></a>Augusztus 2020
+
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+
+- Kelet-Ausztrália: 13.70.112.9
+- Közép-Kanada: 52.246.152.0, 20.38.144.1 
+- USA 2. nyugati régiója: 40.78.240.8
+
+Ezek az SQL-átjárók az ügyfelek forgalmának elfogadását az 2020. augusztus 10-én megkezdik. 
+
+# <a name="completed"></a>[Befejeződött](#tab/completed-ip)
+
+A következő átjárók áttelepítése befejeződött: 
+
+### <a name="october-2019"></a>2019. október
 - Dél-Brazília
 - USA nyugati régiója
 - Nyugat-Európa
@@ -42,11 +57,16 @@ Az újabb átjárók felé irányuló első adatforgalom a következő régiókb
 - USA 2. keleti régiója
 - Kelet-Ázsia
 
-A forgalom áttelepítése megváltoztatja azt a nyilvános IP-címet, amelyet a DNS feloldja a SQL Database.
-A szolgáltatásra hatással lesz:
+---
+
+## <a name="impact-of-this-change"></a>A változás hatása
+
+A forgalom áttelepítése megváltoztathatja azt a nyilvános IP-címet, amelyet a DNS feloldja az adatbázishoz Azure SQL Databaseban.
+A következőket lehet befolyásolni:
 
 - A helyszíni tűzfal adott átjárójának IP-címe nem kódolt
-- Bármely olyan alhálózat, amely a Microsoft. SQL szolgáltatást használja szolgáltatási végpontként, de nem tud kommunikálni az átjáró IP-címeivel
+- Minden olyan alhálózattal rendelkezik, amely a Microsoft. SQL szolgáltatást használja szolgáltatási végpontként, de nem tud kommunikálni az átjáró IP-címeivel
+- A [zóna redundáns konfigurációjának](high-availability-sla.md#zone-redundant-configuration) használata az adatbázishoz
 
 A következőket nem érinti a rendszer:
 

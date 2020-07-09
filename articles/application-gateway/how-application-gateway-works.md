@@ -4,15 +4,15 @@ description: Ez a cikk arról nyújt tájékoztatást, hogy az Application Gatew
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 84a7bdfb9f8f7c741140cbe2086149dff90db211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250230"
 ---
 # <a name="how-an-application-gateway-works"></a>Az Application Gateway működése
 

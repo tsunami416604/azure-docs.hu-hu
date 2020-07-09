@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183378"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298847"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával
 
@@ -43,7 +43,7 @@ A hatókörök lehetőséget nyújtanak a védett erőforrásokhoz való hozzáf
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Az asztali alkalmazás konfigurálásakor a `demo.read` hatókör alatt lévő értéket jegyezze fel **, amelyet egy** későbbi lépésben szeretne használni. A hatókör teljes értéke hasonló a `https://contosob2c.onmicrosoft.com/api/demo.read`következőhöz:.
+Az asztali alkalmazás konfigurálásakor a hatókör alatt lévő értéket jegyezze fel **, amelyet** `demo.read` egy későbbi lépésben szeretne használni. A hatókör teljes értéke hasonló a következőhöz: `https://contosob2c.onmicrosoft.com/api/demo.read` .
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
@@ -51,17 +51,11 @@ A védett webes API-k natív ügyfélalkalmazások általi meghívásához meg k
 
 Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1*nevű natív ügyfélalkalmazás. A következő lépésekkel konfigurálhatja, hogy a natív alkalmazás regisztrálása az előző szakaszban *webapi1* elérhető API-hatókörökkel történjen. Ez lehetővé teszi, hogy az asztali alkalmazás olyan hozzáférési jogkivonatot szerezzen be Azure AD B2Ctól, amelyet a webes API használhat az erőforrásokhoz való hatókörön belüli hozzáférés ellenőrzéséhez és biztosításához. Az oktatóanyag későbbi részében az asztali alkalmazás és a webes API-kód is konfigurálható és futtatható.
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
-1. Válassza az **alkalmazások**, majd a *nativeapp1*lehetőséget.
-1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
-1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
-1. Kattintson az **OK** gombra.
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza ki azt a natív ügyfélalkalmazás-alkalmazást, amelynek hozzáféréssel kell rendelkeznie az API-hoz. Például: *nativeapp1*.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki azt a natív ügyfélalkalmazás-alkalmazást, amelynek hozzáféréssel kell RENDELKEZNIE az API-hoz. Például: *nativeapp1*.
 1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
 1. A **konfigurált engedélyek**területen válassza **az engedély hozzáadása**elemet.
 1. Válassza a **saját API** -k fület.
@@ -72,6 +66,14 @@ Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1*ne
 1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
 1. Válassza ki az **Elfogadás** lehetőséget.
 1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." mindkét hatókör **állapota** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
+
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
+
+1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza a *nativeapp1*lehetőséget.
+1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
+1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
+1. Kattintson az **OK** gombra.
 
 * * *
 
@@ -85,12 +87,12 @@ Most, hogy regisztrálta a webes API-t, és hatóköröket és engedélyeket kon
 
 A cikk előfeltétele, hogy egy [WPF asztali alkalmazást](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) módosítson, hogy engedélyezze a bejelentkezést egy felhasználói folyamattal a Azure ad B2C-bérlőben. Ebben a szakaszban ugyanazt az alkalmazást frissíti, hogy a korábban regisztrált webes API-ra, a *webapi1*-ra hivatkozzon.
 
-1. Nyissa meg az **Active-Directory-B2C-WPF** megoldást (`active-directory-b2c-wpf.sln`) a Visual Studióban.
+1. Nyissa meg az **Active-Directory-B2C-WPF** megoldást ( `active-directory-b2c-wpf.sln` ) a Visual Studióban.
 1. Az **Active Directory-B2C-WPF** projektben nyissa meg a *app.XAML.cs* fájlt, és keresse meg az alábbi változók definícióit.
-    1. Cserélje le a `ApiScopes` változó értékét a **demo. Read** hatókör meghatározásakor korábban rögzített értékre.
-    1. Cserélje le a `ApiEndpoint` változó értékét a korábban feljegyzett **átirányítási URI-ra** , amikor a bérlőben regisztrálta a webes API-t (például *webapi1*).
+    1. Cserélje le a változó értékét `ApiScopes` a **demo. Read** hatókör meghatározásakor korábban rögzített értékre.
+    1. Cserélje le a változó értékét `ApiEndpoint` a korábban feljegyzett **átirányítási URI-ra** , amikor a bérlőben regisztrálta a webes API-t (például *webapi1*).
 
-    Például:
+    Íme egy példa:
 
     ```csharp
     public static string[] ApiScopes = { "https://contosob2c.onmicrosoft.com/api/demo.read" };
@@ -110,7 +112,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 A mintául szolgáló Node.js webes API a Passport.js kódtárat használja arra, hogy engedélyezze az Azure AD B2C-nek az API felé irányuló hívások védelmét.
 
 1. Nyissa meg az `index.js` fájlt.
-1. Frissítse ezeket a változók definícióit a következő értékekkel. Váltson `<web-API-application-ID>` a korábban regisztrált webes API **alkalmazás-(ügyfél-) azonosítójára** (*webapi1*). Váltson `<your-b2c-tenant>` a Azure ad B2C bérlő nevére.
+1. Frissítse ezeket a változók definícióit a következő értékekkel. Váltson a `<web-API-application-ID>` korábban regisztrált webes API **alkalmazás-(ügyfél-) azonosítójára** (*webapi1*). Váltson `<your-b2c-tenant>` a Azure ad B2C bérlő nevére.
 
     ```nodejs
     var clientID = "<web-API-application-ID>";
@@ -118,7 +120,7 @@ A mintául szolgáló Node.js webes API a Passport.js kódtárat használja arra
     var tenantIdGuid = "<your-b2c-tenant>.onmicrosoft.com";
     var policyName = "B2C_1_signupsignin1";
     ```
-1. Mivel helyileg futtatja az API-t `/` , frissítse a Get metódus elérési útját a bemutató alkalmazás helye helyett: `/hello`
+1. Mivel helyileg futtatja az API-t, frissítse a GET metódus elérési útját a `/` bemutató alkalmazás helye helyett `/hello` :
 
     ```nodejs
     app.get("/",

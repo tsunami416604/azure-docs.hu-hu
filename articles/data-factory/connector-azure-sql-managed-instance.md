@@ -10,13 +10,12 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/12/2020
-ms.openlocfilehash: d33c54c677cb3c16b6ef295ee39c0ac3b6fb0159
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: 907579d44575de56f95e0828c3313d0d1682b29c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513899"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Adatok másolása az Azure SQL felügyelt példányára és onnan a Azure Data Factory használatával
 
@@ -38,10 +37,10 @@ Ez az SQL felügyelt példány-összekötő a következőket támogatja:
 
 - Az adatok másolása SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat-hitelesítéssel az Azure-erőforrások egyszerű szolgáltatásával vagy felügyelt identitásával.
 - Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával beolvashatja az adatokból.
-- Fogadóként, az adatsorok hozzáfűzésével vagy egy tárolt eljárás meghívásával egyéni logikával a másolás során.
+- Fogadóként automatikusan hozza létre a céltábla, ha nem létezik a forrásoldali séma alapján; az adattábla hozzáfűzése vagy egy tárolt eljárás meghívása egyéni logikával a másolás során.
 
 >[!NOTE]
-> Ez az összekötő jelenleg nem támogatja az SQL felügyelt példányának [Always Encryptedét](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) . A megoldáshoz használhat egy [általános ODBC-összekötőt](connector-odbc.md) és egy SQL Server ODBC-illesztőt a saját üzemeltetésű integrációs modulon keresztül. Kövesse [ezt az útmutatót](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) az ODBC-illesztőprogram letöltésével és a kapcsolatok karakterlánc-beállításaival.
+> Ez az összekötő jelenleg nem támogatja az SQL felügyelt példányának [Always Encryptedét](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) . A megoldáshoz használhat egy [általános ODBC-összekötőt](connector-odbc.md) és egy SQL Server ODBC-illesztőt a saját üzemeltetésű integrációs modulon keresztül. További információ: [Always encrypted szakasz használata](#using-always-encrypted) . 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -126,7 +125,7 @@ A szolgáltatás egyszerű Azure AD-alapú hitelesítésének használatához k�
 
 1. A [felügyelt példányok Azure Active Directory rendszergazdájának](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-2. [Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a Azure Portal. Jegyezze fel az alkalmazás nevét és a társított szolgáltatást meghatározó következő értékeket:
+2. [Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) a Azure Portal. Jegyezze fel az alkalmazás nevét és a társított szolgáltatást meghatározó következő értékeket:
 
     - Alkalmazásazonosító
     - Alkalmazás kulcsa
@@ -374,14 +373,14 @@ Az SQL felügyelt példányba történő adatmásoláshoz a másolási tevékeny
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység fogadójának Type tulajdonságát **SqlMISink**értékre kell állítani. | Yes |
-| writeBatchSize |A *kötegekben*az SQL-táblába beszúrandó sorok száma.<br/>Az engedélyezett értékek a sorok számának egésze. Alapértelmezés szerint a Azure Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján.  |No |
-| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Ilyen például a "00:30:00", amely 30 percet vesz igénybe. |No |
 | preCopyScript |Ez a tulajdonság határozza meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az SQL felügyelt példányba írna. A rendszer csak egyszer hívja meg a példányt. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |No |
-| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem kell megtenniük a forrásadatokat, például törlés vagy csonkítás, használja a `preCopyScript` tulajdonságot. | No |
+| tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |No |
+| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem kell megtenniük a forrásadatokat, például törlés vagy csonkítás, használja a `preCopyScript` tulajdonságot.<br>Lásd: példa [egy tárolt eljárás meghívására egy SQL-](#invoke-a-stored-procedure-from-a-sql-sink)fogadóból. | No |
 | storedProcedureTableTypeParameterName |A tárolt eljárásban megadott tábla típusú paraméter neve.  |No |
 | sqlWriterTableType |A tárolt eljárásban használandó táblanév neve. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a folyamatban lévő adattal másolt adatfájlokat. |No |
 | storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név és érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. | No |
-| tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |No |
+| writeBatchSize |A *kötegekben*az SQL-táblába beszúrandó sorok száma.<br/>Az engedélyezett értékek a sorok számának egésze. Alapértelmezés szerint a Azure Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján.  |No |
+| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Ilyen például a "00:30:00", amely 30 percet vesz igénybe. |No |
 
 **1. példa: az adathozzáfűzés**
 
@@ -408,8 +407,8 @@ Az SQL felügyelt példányba történő adatmásoláshoz a másolási tevékeny
             },
             "sink": {
                 "type": "SqlMISink",
-                "writeBatchSize": 100000,
-                "tableOption": "autoCreate"
+                "tableOption": "autoCreate",
+                "writeBatchSize": 100000
             }
         }
     }
@@ -473,12 +472,11 @@ Az adathozzáfűzés az SQL felügyelt példány-fogadó összekötő alapértel
 
 ### <a name="upsert-data"></a>Adatok beszúrása és frissítése (upsert)
 
-**1. lehetőség:** Ha nagy mennyiségű adattal szeretne másolni, a következő megközelítéssel hajthat végre egy upsert: 
+**1. lehetőség:** Ha nagy mennyiségű adattal szeretne másolni, a másolási tevékenység használatával tömegesen betöltheti az összes rekordot egy előkészítési táblába, majd futtathatja a tárolt eljárási tevékenységet, hogy [egyesítse](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-mi-current) vagy INSERT/Update utasítást alkalmazzon egy adott felvételen. 
 
-- Először használjon egy [ideiglenes táblázatot](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) az összes rekord tömeges betöltéséhez a másolási tevékenység használatával. Mivel a rendszer nem naplózza az ideiglenes táblák műveleteit, másodpercek alatt több millió rekordot is betölt.
-- Egy tárolt eljárási tevékenység futtatása a Azure Data Factoryban [egyesítési](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) vagy INSERT/Update utasítás alkalmazásához. A temp táblát használja forrásként az összes frissítés vagy Beszúrás egyetlen tranzakcióként való végrehajtásához. Így csökken a kerekítési és a naplózási műveletek száma. A tárolt eljárási tevékenység végén a temp tábla lerövidíthető, hogy készen álljon a következő upsert ciklusra.
+A másolási tevékenység jelenleg nem támogatja natív módon az betöltést egy adatbázis ideiglenes táblájába. A több tevékenység kombinációjának beállításával speciális módon állíthatja be az [SQL Database tömeges Upsert forgatókönyvek optimalizálását](https://github.com/scoriani/azuresqlbulkupsert). Az alábbi példa egy állandó tábla használatát mutatja be átmenetiként.
 
-Azure Data Factory például létrehozhat egy **másolási tevékenységgel** rendelkező **folyamatot egy tárolt eljárási tevékenységgel**. A korábbi adatokat a forrás tárolójából egy ideiglenes táblába másolták, például: **# #UpsertTempTable**, mint a tábla neve az adatkészletben. Ezután az utóbbi egy tárolt eljárást hív meg, hogy egyesítse a forrás adatait a temp táblából a célként megadott táblába, és törölje a temp táblát.
+Azure Data Factory például létrehozhat egy **másolási tevékenységgel** rendelkező **folyamatot egy tárolt eljárási tevékenységgel**. A korábbi adatok másolása a forrás tárolójából egy Azure SQL felügyelt példány-előkészítési táblába, például **UpsertStagingTable**, az adatkészlet táblázatának neveként. Ezután az utóbbi egy tárolt eljárást hív meg, hogy egyesítse a forrás adatait az előkészítési táblából a cél táblába, és törölje az előkészítési táblát.
 
 ![Beszúrás és frissítés](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
@@ -489,7 +487,7 @@ CREATE PROCEDURE [dbo].[spMergeData]
 AS
 BEGIN
     MERGE TargetTable AS target
-    USING ##UpsertTempTable AS source
+    USING UpsertStagingTable AS source
     ON (target.[ProfileID] = source.[ProfileID])
     WHEN MATCHED THEN
         UPDATE SET State = source.State
@@ -497,11 +495,11 @@ BEGIN
         INSERT ([ProfileID], [State], [Category])
       VALUES (source.ProfileID, source.State, source.Category);
     
-    TRUNCATE TABLE ##UpsertTempTable
+    TRUNCATE TABLE UpsertStagingTable
 END
 ```
 
-**2. lehetőség:** Azt is megteheti, hogy egy [másolási tevékenységen belül meghívja a tárolt eljárást](#invoke-a-stored-procedure-from-a-sql-sink). Ez a módszer a forrás tábla minden egyes sorát futtatja ahelyett, hogy a másolási tevékenységben a tömeges beszúrást használja alapértelmezett megközelítésként, ami nem megfelelő a nagyméretű upsert.
+**2. lehetőség:** Megadhat [egy tárolt eljárást a másolási tevékenységen belül](#invoke-a-stored-procedure-from-a-sql-sink). Ez a módszer a forrás táblában lévő összes köteget (a tulajdonság által szabályozott módon) futtatja `writeBatchSize` ahelyett, hogy a tömeges beszúrást használja a másolási tevékenység alapértelmezett módszere.
 
 ### <a name="overwrite-the-entire-table"></a>A teljes táblázat felülírása
 
@@ -509,19 +507,13 @@ A **preCopyScript** tulajdonságot egy másolási tevékenység fogadójában is
 
 ### <a name="write-data-with-custom-logic"></a>Az adatírás egyéni logikával
 
-Az egyéni logikával történő adatírás lépései hasonlóak az [Upsert](#upsert-data) -adatszakaszban leírt lépésekhez. Ha további feldolgozást kell alkalmaznia a forrásadatok végső beszúrása előtt a céltáblaba, nagy méret esetén a következő két dolog közül választhat: 
-
-- Töltsön be egy ideiglenes táblába, majd hívja meg a tárolt eljárást.
-- Tárolt eljárás meghívása a másolás során.
+Az egyéni logikával történő adatírás lépései hasonlóak az [Upsert](#upsert-data) -adatszakaszban leírt lépésekhez. Ha további feldolgozást kell alkalmaznia a forrásadatok végső beszúrása előtt, akkor betöltheti az előkészítési táblát, majd meghívja a tárolt eljárási tevékenységet, vagy meghívhat egy tárolt eljárást a másolási tevékenység fogadójában az adatalkalmazáshoz.
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Tárolt eljárás meghívása egy SQL-gyűjtőből
 
-Az adatok SQL felügyelt példányba való másolása esetén a felhasználó által megadott tárolt eljárás további paraméterekkel is konfigurálható és meghívható. A tárolt eljárás funkció kihasználja a [tábla értékű paraméterek](https://msdn.microsoft.com/library/bb675163.aspx)előnyeit.
+Az adatok SQL felügyelt példányba való másolása során egy felhasználó által megadott tárolt eljárás is konfigurálható és meghívható további paraméterekkel a forrástábla minden kötegén. A tárolt eljárás funkció kihasználja a [tábla értékű paraméterek](https://msdn.microsoft.com/library/bb675163.aspx)előnyeit.
 
-> [!TIP]
-> A tárolt eljárás meghívása az adatsort soronként dolgozza fel egy tömeges művelet helyett, amelyet nem ajánlott nagyméretű másolásra használni. További információ az [adatok SQL felügyelt példányba való betöltésének ajánlott](#best-practice-for-loading-data-into-sql-managed-instance)eljárásairól.
-
-Tárolt eljárás használható, ha a beépített másolási mechanizmusok nem szolgálják ki a célt. Ilyen eset például, ha további feldolgozást szeretne alkalmazni a forrásadatok végső beszúrása előtt a céltáblaba. Néhány további feldolgozási példa az oszlopok egyesítéséhez, további értékek kereséséhez és az adatok több táblába való beszúrásához.
+Tárolt eljárás használható, ha a beépített másolási mechanizmusok nem szolgálják ki a célt. Ilyen eset például, ha további feldolgozást szeretne alkalmazni a forrásadatok végső beszúrása előtt a céltáblaba. Néhány további feldolgozási példa: Ha egyesíteni szeretné az oszlopokat, további értékeket kereshet, és több táblába szúrhat be.
 
 Az alábbi minta azt mutatja be, hogyan használható egy tárolt eljárás egy upsert a SQL Server-adatbázis egyik táblájába. Tegyük fel, hogy a bemeneti adatok és a fogadó **marketing** tábla mindhárom oszlopot tartalmaz: **ProfileID**, **State**és **category**. A upsert a **ProfileID** oszlop alapján végezze el, és csak a "producta" nevű adott kategóriára alkalmazza.
 
@@ -576,9 +568,9 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Bájt [] |
-| bit |Logikai érték |
+| bit |Logikai |
 | char |Karakterlánc, char [] |
-| date |DateTime |
+| dátum |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
@@ -592,7 +584,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 | ntext |Karakterlánc, char [] |
 | numerikus |Decimal |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyirányú |
+| valós szám |Egyszeres |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |
@@ -608,7 +600,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 | xml |Xml |
 
 >[!NOTE]
-> A decimális ideiglenes típusra leképezett adattípusok esetében jelenleg Azure Data Factory támogatja a pontosságot akár 28-ra. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.
+> A decimális átmeneti típusra leképezett adattípusok esetén a másolási tevékenység jelenleg legfeljebb 28-ig támogatja a pontosságot. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
@@ -618,5 +610,34 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="using-always-encrypted"></a>Always Encrypted használata
+
+Ha az Azure SQL felügyelt példányára vagy [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)-ra másol adatokból, az [általános ODBC-összekötőt](connector-odbc.md) és az SQL Server ODBC-illesztőt a saját üzemeltetésű Integration Runtime segítségével. Az Azure SQL felügyelt példány-összekötője jelenleg nem támogatja a Always Encrypted. 
+
+Pontosabban:
+
+1. Hozzon létre egy saját üzemeltetésű Integration Runtime, ha még nem rendelkezik ilyennel. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
+
+2. Töltse le [innen](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=azuresqldb-mi-current)SQL Server a 64 bites ODBC-illesztőt, és telepítse a Integration Runtime gépre. További információ arról, hogy az illesztőprogram hogyan működik a [Always encrypted és a SQL Server ODBC-illesztő használatával](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current#using-the-azure-key-vault-provider).
+
+3. Hozzon létre az SQL-adatbázishoz való kapcsolódáshoz szükséges ODBC-típusú társított szolgáltatást a következő példákban:
+
+    - SQL- **hitelesítés**használata: az alábbi módon adja meg az ODBC-kapcsolódási karakterláncot, majd válassza az **alapszintű** hitelesítés lehetőséget a Felhasználónév és a jelszó megadásához.
+
+        ```
+        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
+        ```
+
+    - **Data Factory felügyelt identitás hitelesítésének**használata: 
+
+        1. Kövesse ugyanezeket az [előfeltételeket](#managed-identity) , hogy adatbázis-felhasználót hozzon létre a felügyelt identitáshoz, és adja meg a megfelelő szerepkört az adatbázisban.
+        2. A társított szolgáltatás mezőben adja meg az ODBC-kapcsolati karakterláncot az alábbi módon, és válassza a **Névtelen** hitelesítés lehetőséget a kapcsolati sztringként `Authentication=ActiveDirectoryMsi` .
+
+        ```
+        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>; Authentication=ActiveDirectoryMsi;
+        ```
+
+4. Ennek megfelelően hozzon létre adatkészletet és másolási tevékenységet az ODBC-típussal. További tudnivalók az [ODBC-összekötőről](connector-odbc.md) című cikkben olvashatók.
+
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

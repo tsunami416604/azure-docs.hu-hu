@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610217"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
-Mielőtt feltöltötte a Windows rendszerű virtuális gépet (VM) a helyszínről az Azure-ba, elő kell készítenie a virtuális merevlemezt (VHD vagy VHDX). Az Azure támogatja az 1. és a 2. generációs virtuális gépeket, amelyek VHD-fájlformátumban vannak, és amelyek rögzített méretű lemezzel rendelkeznek. A VHD számára engedélyezett maximális méret 2 TB.
+Mielőtt feltöltötte a Windows rendszerű virtuális gépet (VM) a helyszínről az Azure-ba, elő kell készítenie a virtuális merevlemezt (VHD vagy VHDX). Az Azure támogatja az 1. és a 2. generációs virtuális gépeket, amelyek VHD-fájlformátumban vannak, és amelyek rögzített méretű lemezzel rendelkeznek. Az 1. generációs virtuális gépeken az operációsrendszer-VHD számára engedélyezett maximális méret 2 TB.
 
-Egy 1. generációs virtuális gépen a VHDX fájlrendszert virtuális merevlemezre konvertálhatja. A dinamikusan bővülő lemezeket rögzített méretű lemezre is konvertálhatja. A virtuális gép generációja azonban nem módosítható. További információkért lásd: [1. vagy 2. generációs virtuális gép létrehozása a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) , valamint a [2. generációs virtuális gépek támogatása az Azure](generation-2.md)-ban.
+Átalakíthat egy VHDX-fájlt a VHD-be, konvertálhat egy dinamikusan bővülő lemezt egy rögzített méretű lemezre, de nem módosíthatja a virtuális gép generációját. További információkért lásd: [1. vagy 2. generációs virtuális gép létrehozása a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) , valamint a [2. generációs virtuális gépek támogatása az Azure](generation-2.md)-ban.
 
 Az Azure-beli virtuális gépek támogatási szabályzatával kapcsolatos információkért lásd: [Microsoft Server szoftveres támogatás Azure-beli virtuális gépekhez](https://support.microsoft.com/help/2721672/).
 
@@ -28,6 +28,73 @@ Az Azure-beli virtuális gépek támogatási szabályzatával kapcsolatos inform
 >
 > - A Windows Server 2008 R2 és újabb Windows Server operációs rendszerek 64 bites verziója. Az 32 bites operációs rendszerek Azure-ban való futtatásával kapcsolatos információkért lásd: [a 32 bites operációs rendszerek támogatása az Azure-beli virtuális gépeken](https://support.microsoft.com/help/4021388/).
 > - Ha a számítási feladatok áttelepítéséhez vész-helyreállítási eszközt használ, például Azure Site Recovery vagy Azure Migrate, akkor ez a folyamat továbbra is szükséges a vendég operációs rendszeren, hogy az áttelepítés előtt előkészítse a rendszerképet.
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>A virtuális lemez átalakítása rögzített méretű VHD-re
+
+Az ebben a szakaszban található módszerek egyikének használatával átalakíthatja és átméretezheti a virtuális lemezt az Azure szükséges formátumával:
+
+1. A virtuális merevlemez átalakításának vagy átméretezési folyamatának futtatása előtt biztonsági másolatot készíthet a virtuális gépről.
+
+1. Győződjön meg arról, hogy a Windows VHD megfelelően működik a helyi kiszolgálón. Az Azure-ba való konvertálás vagy az Azure-ba való feltöltés előtt javítsa ki a virtuális gépen található hibákat.
+
+1. Alakítsa át a virtuális lemezt rögzített típusra.
+
+1. A virtuális lemez átméretezése az Azure-követelmények teljesítéséhez:
+
+   1. Az Azure-beli lemezeken az 1 MiB-hez igazított virtuális méretnek kell szerepelnie. Ha a VHD 1 MiB-töredék, akkor át kell méreteznie a lemezt egy több MiB-re. Azok a lemezek, amelyek egy MiB-töredékek, hibákat okoznak, amikor lemezképeket hoznak létre a feltöltött virtuális merevlemezről. Ennek ellenőrzéséhez használhatja a PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet a "méret" megjelenítéséhez, amelynek az Azure-ban több 1 MIB-nek kell lennie, és a "filesize" értéknek a mérete plusz a VHD-lábléc 512 bájtos értéke.
+   
+   1. Az 1. generációs virtuális géppel rendelkező operációs rendszer VHD-je számára engedélyezett maximális méret 2 048 GiB (2 TiB), 
+   1. Az adatlemezek maximális mérete 32 767 GiB (32 TiB).
+
+> [!NOTE]
+> - Ha egy Windows operációsrendszer-lemezt készít elő a rögzített lemezzé való átalakítás után, és szükség esetén átméretezi, hozzon létre egy virtuális gépet, amely a lemezt használja. Kezdjen hozzá, és jelentkezzen be a virtuális gépre, és folytassa a cikk részeit a feltöltéshez való felkészülés befejezéséhez.  
+> - Ha olyan adatlemezt készít elő, amely ebben a szakaszban leáll, és továbbra is feltöltheti a lemezt.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>A lemez átalakítása a Hyper-V kezelőjével
+
+1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése**lehetőséget.
+1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
+1. A **művelet kiválasztása** lapon válassza a **Konvertálás**  >  **tovább**lehetőséget.
+1. A VHDX konvertálásához válassza a **VHD**  >  **tovább**lehetőséget.
+1. Dinamikusan bővülő lemezről történő konvertáláshoz válassza a **rögzített méret**  >  **tovább**lehetőséget.
+1. Keresse meg és válassza ki az új VHD-fájl mentésének elérési útját.
+1. Válassza a **Befejezés** gombot.
+
+### <a name="use-powershell-to-convert-the-disk"></a>A lemez konvertálása a PowerShell használatával
+
+A virtuális lemezt a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmagjának használatával alakíthatja át. Ha a parancsmag telepítésére vonatkozó információkra van szüksége, kattintson [ide](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Az alábbi példa átalakítja a lemezt a VHDX-ről a VHD-re. Emellett átalakítja a lemezt egy dinamikusan bővülő lemezről a rögzített méretű lemezre.
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+Ebben a példában a **görbe** értékét cserélje le a konvertálni kívánt virtuális merevlemez elérési útjára. Cserélje le a **DestinationPath** értékét a konvertált lemez új elérési útjára és nevére.
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertálás VMware VMDK lemez formátumból
+
+Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](https://en.wikipedia.org/wiki/VMDK)van, a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) használatával alakítsa át VHD formátumra. További információ: [VMware VMDK konvertálása Hyper-V virtuális merevlemezre](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd).
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>A lemez átméretezése a Hyper-V kezelőjével
+
+1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése**lehetőséget.
+1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
+1. A **művelet kiválasztása** lapon válassza a következő **kibontása**lehetőséget  >  **Next**.
+1. A **virtuális merevlemez keresése** lapon adja meg az új méretet a GIB > **következőben**.
+1. Válassza a **Befejezés** gombot.
+
+### <a name="use-powershell-to-resize-the-disk"></a>A lemez átméretezése a PowerShell használatával
+
+A virtuális lemezek átméretezhetők a PowerShell [átméretezés-VHD](/powershell/module/hyper-v/resize-vhd) parancsmagjának használatával. Ha a parancsmag telepítésére vonatkozó információkra van szüksége, kattintson [ide](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Az alábbi példa átméretezi a lemezt a 100,5 MiB-ről a 101 MiB-re, hogy megfeleljen az Azure-igazítási követelményeknek.
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+Ebben a példában a **görbe** értékét cserélje le az átméretezni kívánt virtuális merevlemez elérési útjára. Cserélje le a **SizeBytes** értékét a lemez új méretére bájtban.
 
 ## <a name="system-file-checker"></a>Rendszerfájl-ellenőrzési
 
@@ -55,49 +122,6 @@ Windows Resource Protection did not find any integrity violations.
 
 Az SFC-vizsgálat befejeződése után telepítse a Windows-frissítéseket, és indítsa újra a számítógépet.
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>A virtuális lemez átalakítása rögzített méretű VHD-re
-
-Az ebben a szakaszban található módszerek egyikével alakítsa át a virtuális lemezt az Azure szükséges formátumára:
-
-1. A virtuális gép biztonsági mentését a virtuális lemez átalakítási folyamatának futtatása előtt végezheti el.
-
-1. Győződjön meg arról, hogy a Windows VHD megfelelően működik a helyi kiszolgálón. Az Azure-ba való konvertálás vagy az Azure-ba való feltöltés előtt javítsa ki a virtuális gépen található hibákat.
-
-1. VHD-méret:
-
-   1. Minden Azure-beli virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről a virtuális merevlemezre történő átalakításkor gondoskodnia kell arról, hogy a nyers lemez mérete 1 MB-nál több, az átalakítás előtt.
-      A megabájt töredékei hibát okoznak a feltöltött virtuális merevlemezről származó lemezképek létrehozásakor.
-
-   1. Az operációs rendszer VHD-je számára engedélyezett maximális méret 2 TB.
-
-A lemez konvertálása után hozzon létre egy virtuális gépet, amely a lemezt használja. Indítsa el a virtuális gépet, és jelentkezzen be a feltöltésre való felkészülés befejezéséhez.
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>A lemez átalakítása a Hyper-V kezelőjével
-
-1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet** > **lemez szerkesztése**lehetőséget.
-1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
-1. A **művelet kiválasztása** lapon válassza a **Konvertálás** > **tovább**lehetőséget.
-1. A VHDX konvertálásához válassza a **VHD** > **tovább**lehetőséget.
-1. Dinamikusan bővülő lemezről történő konvertáláshoz válassza a **rögzített méret** > **tovább**lehetőséget.
-1. Keresse meg és válassza ki az új VHD-fájl mentésének elérési útját.
-1. Válassza a **Finish** (Befejezés) elemet.
-
-### <a name="use-powershell-to-convert-the-disk"></a>A lemez konvertálása a PowerShell használatával
-
-A virtuális lemezt a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmagjának használatával alakíthatja át.
-
-Az alábbi példa átalakítja a lemezt a VHDX-ről a VHD-re. Emellett átalakítja a lemezt egy dinamikusan bővülő lemezről a rögzített méretű lemezre.
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-Ebben a példában a **görbe** értékét cserélje le a konvertálni kívánt virtuális merevlemez elérési útjára. Cserélje le a **DestinationPath** értékét a konvertált lemez új elérési útjára és nevére.
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertálás VMware VMDK lemez formátumból
-
-Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](https://en.wikipedia.org/wiki/VMDK)van, a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) használatával alakítsa át VHD formátumra. További információ: [VMware VMDK konvertálása Hyper-V virtuális merevlemezre](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd).
-
 ## <a name="set-windows-configurations-for-azure"></a>Windows-konfigurációk beállítása az Azure-hoz
 
 > [!NOTE]
@@ -105,7 +129,7 @@ Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](htt
 
 1. Távolítsa el a statikus állandó útvonalakat az útválasztási táblában:
 
-   - Az útválasztási táblázat megtekintéséhez futtassa a parancsot `route.exe print`.
+   - Az útválasztási táblázat megtekintéséhez futtassa a parancsot `route.exe print` .
    - Keresse meg az **adatmegőrzési útvonalak** szakaszt. Állandó útvonal esetén a `route.exe delete` parancs használatával távolítsa el azt.
 
 1. Távolítsa el a WinHTTP proxyt:
@@ -128,7 +152,7 @@ Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](htt
    diskpart.exe
    ```
 
-   A lemez SAN-házirendjének [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11))beállítása a következőre:
+   A lemez SAN-házirendjének beállítása a következőre [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11)) :
 
    ```DiskPart
    DISKPART> san policy=onlineall
@@ -174,7 +198,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 Győződjön meg arról, hogy a következő beállítások megfelelően vannak konfigurálva a táveléréshez:
 
 > [!NOTE]
-> Ha futtatásakor `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>`hibaüzenet jelenik meg, nyugodtan figyelmen kívül hagyhatja. Ez azt jelenti, hogy a tartomány nem egy Csoportházirend objektumon keresztül állítja be a konfigurációt.
+> Ha futtatásakor hibaüzenet jelenik meg `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>` , nyugodtan figyelmen kívül hagyhatja. Ez azt jelenti, hogy a tartomány nem egy Csoportházirend objektumon keresztül állítja be a konfigurációt.
 
 1. A RDP protokoll (RDP) engedélyezve van:
 
@@ -347,7 +371,7 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 
    Ha a tárház sérült, tekintse meg a [WMI: adattárház sérülését](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)ismertető témakört.
 
-1. Győződjön meg arról, hogy egyetlen másik alkalmazás sem használja az 3389-es portot. Ez a port az Azure-beli RDP szolgáltatáshoz használatos. A virtuális gépen használt portok megtekintéséhez futtassa `netstat.exe -anob`a következőt:
+1. Győződjön meg arról, hogy egyetlen másik alkalmazás sem használja az 3389-es portot. Ez a port az Azure-beli RDP szolgáltatáshoz használatos. A virtuális gépen használt portok megtekintéséhez futtassa a következőt `netstat.exe -anob` :
 
    ```powershell
    netstat.exe -anob
@@ -399,35 +423,35 @@ Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehe
 
 |        Összetevő        |     Bináris     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Storage                 | Disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
-|                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
-|                         | NTFS. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
-|                         | Iologmsg. dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                   | -                                           | -                          | -                                           | -                                           |
-|                         | CLASSPNP. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614          | 10.0.14393.953 - KB4022715                  | -                          | -                                           | -                                           |
-|                         | VolSnap. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384          | -                                           | 10.0.15063.0               | -                                           | -                                           |
-|                         | PartMgr. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 – KB3000850          | 10.0.14393.953 - KB4022715                  | 10.0.15063.0               | -                                           | -                                           |
-|                         | volmgr. sys     |                                           |                                             |                                     |                                             | 10.0.15063.0               | -                                           | -                                           |
-|                         | Volmgrx. sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | 10.0.15063.0               | -                                           | -                                           |
-|                         | Msiscsi. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726          | 10.0.14393.1066 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
-|                         | Msdsm. sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726          | -                                           | -                          | -                                           | -                                           |
-|                         | MPIO. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726          | 10.0.14393.1198 - KB4022715                 | -                          | -                                           | -                                           |
-|                         | vmstorfl. sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650          | 10.0.14393.2007 - KB4345418                 | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                  | -                                           |
-|                         | Fveapi. dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614          | 10.0.14393.576 - KB4022715                  | -                          | -                                           | -                                           |
-|                         | Fveapibase. dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614          | 10.0.14393.206 - KB4022715                  | -                          | -                                           | -                                           |
-| Network (Hálózat)                 | netvsc. sys     | -                                         | -                                           | -                                   | 10.0.14393.1198 - KB4022715                 | 10.0.15063.250 - KB4020001 | -                                           | -                                           |
-|                         | mrxsmb10. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726          | 10.0.14393.479 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
-|                         | mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726          | 10.0.14393.953 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
-|                         | MRxSmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726          | 10.0.14393.953 - KB4022715                  | 10.0.15063.0               | -                                           | -                                           |
-|                         | tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
-|                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726          | 10.0.14393.251 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
-|                         | vmswitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.138             | -                                           | -                                           |
-| Mag                    | ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.483             | -                                           | -                                           |
-| Távoli asztali szolgáltatások | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
-|                         | termsrv. dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850          | 10.0.14393.0 - KB4022715                    | 10.0.15063.0               | -                                           | -                                           |
-|                         | TermDD. sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
-|                         | Win32k. sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
-|                         | rdpdd. dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
-|                         | Rdpwd. sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
+| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
+|                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
+|                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
+|                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                   | -                                           | -                          | -                                           | -                                           |
+|                         | Classpnp.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614          | 10.0.14393.953 - KB4022715                  | -                          | -                                           | -                                           |
+|                         | Volsnap.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384          | -                                           | 10.0.15063.0               | -                                           | -                                           |
+|                         | partmgr.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 – KB3000850          | 10.0.14393.953 - KB4022715                  | 10.0.15063.0               | -                                           | -                                           |
+|                         | volmgr.sys     |                                           |                                             |                                     |                                             | 10.0.15063.0               | -                                           | -                                           |
+|                         | Volmgrx.sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | 10.0.15063.0               | -                                           | -                                           |
+|                         | Msiscsi.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726          | 10.0.14393.1066 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
+|                         | Msdsm.sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726          | -                                           | -                          | -                                           | -                                           |
+|                         | Mpio.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726          | 10.0.14393.1198 - KB4022715                 | -                          | -                                           | -                                           |
+|                         | vmstorfl.sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650          | 10.0.14393.2007 - KB4345418                 | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                  | -                                           |
+|                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614          | 10.0.14393.576 - KB4022715                  | -                          | -                                           | -                                           |
+|                         | Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614          | 10.0.14393.206 - KB4022715                  | -                          | -                                           | -                                           |
+| Network (Hálózat)                 | netvsc.sys     | -                                         | -                                           | -                                   | 10.0.14393.1198 - KB4022715                 | 10.0.15063.250 - KB4020001 | -                                           | -                                           |
+|                         | mrxsmb10.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726          | 10.0.14393.479 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
+|                         | mrxsmb20.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726          | 10.0.14393.953 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
+|                         | mrxsmb.sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726          | 10.0.14393.953 - KB4022715                  | 10.0.15063.0               | -                                           | -                                           |
+|                         | tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
+|                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726          | 10.0.14393.251 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
+|                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.138             | -                                           | -                                           |
+| Mag                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.483             | -                                           | -                                           |
+| Távoli asztali szolgáltatások | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
+|                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850          | 10.0.14393.0 - KB4022715                    | 10.0.15063.0               | -                                           | -                                           |
+|                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
+|                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
+|                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
+|                         | rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 | Biztonság                | MS17 – 010       | KB4012212                                 | KB4012213                                   | KB4012213                           | KB4012606                                   | KB4012606                  | -                                           | -                                           |
 |                         |                |                                           | KB4012216                                   |                                     | KB4013198                                   | KB4013198                  | -                                           | -                                           |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                           | KB4013429                                   | KB4013429                  | -                                           | -                                           |
@@ -436,11 +460,11 @@ Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehe
 |                         |                | KB4103712                                 | KB4103726                                   | KB4103715                           |                                             |                            |                                             |                                             |
 
 > [!NOTE]
-> Ha el szeretné kerülni a virtuális gépek kiépítés közbeni véletlen újraindítását, javasoljuk, hogy győződjön meg arról, hogy az összes Windows Update telepítés befejeződött, és hogy nincsenek függőben lévő frissítések. Ennek egyik módja, ha a `sysprep.exe` parancs futtatása előtt telepíti az összes lehetséges Windows-frissítést és újraindítást.
+> Ha el szeretné kerülni a virtuális gépek kiépítés közbeni véletlen újraindítását, javasoljuk, hogy győződjön meg arról, hogy az összes Windows Update telepítés befejeződött, és hogy nincsenek függőben lévő frissítések. Ennek egyik módja, ha a parancs futtatása előtt telepíti az összes lehetséges Windows-frissítést és újraindítást `sysprep.exe` .
 
 ### <a name="determine-when-to-use-sysprep"></a>A Sysprep használatának időpontjának meghatározása
 
-A rendszer-előkészítő eszköz (`sysprep.exe`) egy olyan folyamat, amelyet futtathat egy Windows-telepítés alaphelyzetbe állításához.
+A rendszer-előkészítő eszköz ( `sysprep.exe` ) egy olyan folyamat, amelyet futtathat egy Windows-telepítés alaphelyzetbe állításához.
 A Sysprep az összes személyes információ eltávolításával és számos összetevő alaphelyzetbe állításával "kifogyott" élményt biztosít.
 
 Általában a futtatásával `sysprep.exe` létrehozhat egy sablont, amelyből számos más, adott konfigurációval rendelkező virtuális gép üzembe helyezhető. A sablont *általánosított rendszerképnek*nevezzük.
@@ -454,25 +478,28 @@ Ha csak egy virtuális gépet szeretne létrehozni egy lemezről, nem kell a Sys
 
 Nem minden Windows-alapú számítógépre telepített szerepkör vagy alkalmazás támogatja az általánosított rendszerképeket. Az eljárás használata előtt győződjön meg arról, hogy a Sysprep támogatja a számítógép szerepkörét. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
 
+Különösen a Sysprep megköveteli, hogy a meghajtók teljes mértékben visszafejtve legyenek a végrehajtás előtt. Ha engedélyezte a titkosítást a virtuális gépen, tiltsa le a Sysprep futtatása előtt.
+
+
 ### <a name="generalize-a-vhd"></a>Virtuális merevlemez általánosítása
 
 >[!NOTE]
-> Miután a következő `sysprep.exe` lépésekben futtatta a parancsot, kapcsolja ki a virtuális gépet. Ne kapcsolja vissza, amíg létre nem hoz egy rendszerképet az Azure-ban.
+> Miután `sysprep.exe` a következő lépésekben futtatta a parancsot, kapcsolja ki a virtuális gépet. Ne kapcsolja vissza, amíg létre nem hoz egy rendszerképet az Azure-ban.
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
 1. Futtasson egy PowerShell-munkamenetet rendszergazdaként.
-1. Módosítsa a könyvtárat a `%windir%\system32\sysprep`következőre:. Ez után futtassa a `sysprep.exe` parancsot.
+1. Módosítsa a könyvtárat a következőre: `%windir%\system32\sysprep` . Ez után futtassa a `sysprep.exe` parancsot.
 1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása**jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 
     ![Rendszerelőkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
 1. A **leállítási beállítások**területen válassza a **Leállítás**lehetőséget.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. A Sysprep befejeződése után állítsa le a virtuális gépet. Ne használja az **Újraindítás** lehetőséget a virtuális gép leállításához.
 
 Most már készen áll a virtuális merevlemez feltöltésére. A virtuális gépek általánosított lemezről történő létrehozásával kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gép létrehozásához az Azure-ban](sa-upload-generalized.md).
 
 >[!NOTE]
-> Az egyéni *Unattend. XML* fájl nem támogatott. Bár támogatjuk a **additionalUnattendContent** tulajdonságot, amely csak korlátozott támogatást biztosít a [Microsoft-Windows-rendszerhéj-telepítési](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) beállításoknak az Azure-beli kiépítési ügynök által használt *Unattend. XML* fájlba való hozzáadásához. Használhatja például a [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) -t a FirstLogonCommands és a LogonCommands hozzáadásához. További információ: [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Az egyéni *unattend.xml* -fájlok nem támogatottak. Bár támogatjuk a **additionalUnattendContent** tulajdonságot, amely csak korlátozott támogatást biztosít a [Microsoft-Windows-rendszerhéj-telepítési](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) beállításoknak az Azure-beli kiépítési ügynök által használt *unattend.xml* -fájlhoz való hozzáadásához. Használhatja például a [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) -t a FirstLogonCommands és a LogonCommands hozzáadásához. További információ: [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="complete-the-recommended-configurations"></a>A javasolt konfigurációk végrehajtása
 

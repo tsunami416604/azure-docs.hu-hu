@@ -3,21 +3,23 @@ title: Szolgáltatások közötti hitelesítés Azure Key Vault .NET használat�
 description: A Microsoft. Azure. Services. AppAuthentication függvénytár használatával hitelesítheti Azure Key Vault a .NET használatával.
 keywords: Azure Key-Vault hitelesítés – helyi hitelesítő adatok
 author: msmbaldwin
-manager: rkarlin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/28/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855076"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
+
+> [!NOTE]
+> A cikkben dokumentált hitelesítési módszerek már nem tekinthetők az ajánlott eljárásoknak. Javasoljuk, hogy fogadja el a frissített hitelesítési módszereket a [Azure Key Vault való hitelesítéshez](authentication.md).
 
 A Azure Key Vault való hitelesítéshez szüksége van egy Azure Active Directory (Azure AD) hitelesítő adatra, vagy egy közös titkos kulcsra vagy egy tanúsítványra.
 
@@ -35,7 +37,7 @@ A `Microsoft.Azure.Services.AppAuthentication` könyvtár automatikusan kezeli a
 
 A .NET-alkalmazások esetében a felügyelt identitással való munka legegyszerűbb módja a `Microsoft.Azure.Services.AppAuthentication` csomagban található. Az első lépések:
 
-1. Válassza az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást** a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó NuGet-csomagok hivatkozásainak a projekthez való hozzáadásához.
+1. Válassza az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást** a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó NuGet-csomagok hivatkozásainak a projekthez való hozzáadásához.
 
 1. Adja hozzá a következő kódot:
 
@@ -52,7 +54,7 @@ A .NET-alkalmazások esetében a felügyelt identitással való munka legegyszer
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-Az `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában lévő jogkivonatot, és lekéri azt az Azure ad-ből a lejárat előtt. Így a `GetAccessTokenAsync` metódus meghívása előtt már nem kell ellenőriznie a lejáratot. Csak akkor hívja meg a metódust, ha a tokent szeretné használni.
+Az `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában lévő jogkivonatot, és lekéri azt az Azure ad-ből a lejárat előtt. Így a metódus meghívása előtt már nem kell ellenőriznie a lejáratot `GetAccessTokenAsync` . Csak akkor hívja meg a metódust, ha a tokent szeretné használni.
 
 A `GetAccessTokenAsync` metódushoz erőforrás-azonosító szükséges. A Microsoft Azure-szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg a [Mi az Azure-erőforrások felügyelt identitása](../../active-directory/msi-overview.md)című témakört.
 
@@ -62,21 +64,21 @@ Helyi fejlesztés esetén két elsődleges hitelesítési forgatókönyv létezi
 
 ### <a name="authenticating-to-azure-services"></a>Hitelesítés az Azure-szolgáltatásokban
 
-A helyi gépek nem támogatják az Azure-erőforrások felügyelt identitásait. Ennek eredményeképpen a `Microsoft.Azure.Services.AppAuthentication` könyvtár a fejlesztői hitelesítő adatait használja a helyi fejlesztési környezetben való futtatáshoz. Ha a megoldást üzembe helyezi az Azure-ban, a könyvtár felügyelt identitást használ a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatára való váltáshoz. Ez a módszer azt jelenti, hogy a kódot helyileg és távolról is tesztelni kell, anélkül, hogy aggódnia kellene.
+A helyi gépek nem támogatják az Azure-erőforrások felügyelt identitásait. Ennek eredményeképpen a könyvtár a `Microsoft.Azure.Services.AppAuthentication` fejlesztői hitelesítő adatait használja a helyi fejlesztési környezetben való futtatáshoz. Ha a megoldást üzembe helyezi az Azure-ban, a könyvtár felügyelt identitást használ a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatára való váltáshoz. Ez a módszer azt jelenti, hogy a kódot helyileg és távolról is tesztelni kell, anélkül, hogy aggódnia kellene.
 
-Helyi fejlesztés `AzureServiceTokenProvider` esetén a tokeneket a **Visual Studio**, az **Azure parancssori felület** (CLI) vagy az **Azure ad integrált hitelesítés**használatával kérdezi le. Az egyes lehetőségek végrehajtása szekvenciálisan történik, és a könyvtár az első sikeres beállítást használja. Ha egyetlen beállítás sem működik, `AzureServiceTokenProviderException` a kivételt részletes információkkal kell eldobni.
+Helyi fejlesztés esetén a `AzureServiceTokenProvider` tokeneket a **Visual Studio**, az **Azure parancssori felület** (CLI) vagy az **Azure ad integrált hitelesítés**használatával kérdezi le. Az egyes lehetőségek végrehajtása szekvenciálisan történik, és a könyvtár az első sikeres beállítást használja. Ha egyetlen beállítás sem működik, a `AzureServiceTokenProviderException` kivételt részletes információkkal kell eldobni.
 
 #### <a name="authenticating-with-visual-studio"></a>Hitelesítés a Visual Studióval
 
 Hitelesítés a Visual Studio használatával:
 
-1. Jelentkezzen be a Visual studióba, és válassza az **eszközök**&nbsp;>&nbsp;**lehetőséget** a **Beállítások**megnyitásához.
+1. Jelentkezzen be a Visual studióba, és válassza az **eszközök** &nbsp; > &nbsp; **lehetőséget** a **Beállítások**megnyitásához.
 
 1. Válassza az **Azure-szolgáltatás hitelesítése**lehetőséget, válasszon egy fiókot a helyi fejlesztéshez, majd kattintson **az OK gombra**.
 
 Ha problémákba ütközik a Visual Studióval, például a jogkivonat-szolgáltatói fájlt érintő hibákkal, gondosan tekintse át az előző lépéseket.
 
-Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp;>&nbsp;**beállításai lehetőséget**, majd válassza az **&nbsp;Azure szolgáltatás&nbsp;-hitelesítés**lehetőséget. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
+Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök** &nbsp; > &nbsp; **beállításai lehetőséget**, majd válassza az **Azure &nbsp; szolgáltatás- &nbsp; hitelesítés**lehetőséget. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
 
 #### <a name="authenticating-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
 
@@ -88,13 +90,13 @@ Az Azure CLI használata:
 
 1. Jelentkezzen be a Azure Portalba: az *login* (bejelentkezés) gombra az Azure-ba való bejelentkezéshez.
 
-1. A hozzáférés ellenőrzéséhez írja be *az az Account Get-Access-Token--\/Resource https:/Vault.Azure.net*értéket. Ha hibaüzenetet kap, ellenőrizze, hogy megfelelően van-e telepítve az Azure CLI megfelelő verziója.
+1. A hozzáférés ellenőrzéséhez írja be *az az Account Get-Access-Token--Resource https: \/ /Vault.Azure.net*értéket. Ha hibaüzenetet kap, ellenőrizze, hogy megfelelően van-e telepítve az Azure CLI megfelelő verziója.
 
-   Ha az Azure CLI nem az alapértelmezett könyvtárba van telepítve, akkor előfordulhat, hogy `AzureServiceTokenProvider` a hibajelentés nem találja az Azure CLI elérési útját. Az Azure CLI telepítési mappájának definiálásához használja a **AzureCLIPath** környezeti változót. `AzureServiceTokenProvider`szükség esetén hozzáadja a **AzureCLIPath** környezeti változóban megadott könyvtárat a **path** környezeti változóhoz.
+   Ha az Azure CLI nem az alapértelmezett könyvtárba van telepítve, akkor előfordulhat, hogy a hibajelentés `AzureServiceTokenProvider` nem találja az Azure CLI elérési útját. Az Azure CLI telepítési mappájának definiálásához használja a **AzureCLIPath** környezeti változót. `AzureServiceTokenProvider`szükség esetén hozzáadja a **AzureCLIPath** környezeti változóban megadott könyvtárat a **path** környezeti változóhoz.
 
 1. Ha több fiókkal jelentkezett be az Azure CLI-be, vagy a fiókja több előfizetéshez is hozzáfér, meg kell adnia a használni kívánt előfizetést. Írja be az az *Account set--előfizetés <előfizetés-azonosító>* parancsot.
 
-Ez a parancs csak meghibásodás esetén generál kimenetet. A fiók aktuális beállításainak ellenőrzéséhez adja meg a parancsot `az account list`.
+Ez a parancs csak meghibásodás esetén generál kimenetet. A fiók aktuális beállításainak ellenőrzéséhez adja meg a parancsot `az account list` .
 
 #### <a name="authenticating-with-azure-ad-authentication"></a>Hitelesítés az Azure AD-hitelesítéssel
 
@@ -120,7 +122,7 @@ Egyéni szolgáltatást meghívó szolgáltatás létrehozásakor használja az 
         az login --service-principal -u <principal-id> --password <password> --tenant <tenant-id> --allow-no-subscriptions
         ```
 
-        Mivel előfordulhat, hogy az egyszerű szolgáltatás nem fér hozzá egy előfizetéshez `--allow-no-subscriptions` , használja az argumentumot.
+        Mivel előfordulhat, hogy az egyszerű szolgáltatás nem fér hozzá egy előfizetéshez, használja az `--allow-no-subscriptions` argumentumot.
 
 - Környezeti változók használatával megadhatja az egyszerű szolgáltatásnév részleteit. További információ: [az alkalmazás futtatása egyszerű szolgáltatásnév használatával](#running-the-application-using-a-service-principal).
 
@@ -132,7 +134,7 @@ Ez a megközelítés csak a helyi fejlesztésre vonatkozik. Ha a megoldást üze
 
 Ha a kódot egy Azure App Service vagy egy Azure-beli virtuális gépen futtatja, amelyen engedélyezve van a felügyelt identitás, a függvénytár automatikusan a felügyelt identitást használja. Nincs szükség kód módosítására, de a felügyelt identitásnak rendelkeznie kell *Get* engedélyekkel a kulcstartóhoz. A felügyelt *identitás a* Key Vault *hozzáférési házirendjein*keresztül adható meg.
 
-Azt is megteheti, hogy egy felhasználó által hozzárendelt identitással hitelesíti magát. A felhasználó által hozzárendelt identitásokkal kapcsolatos további információkért tekintse meg az [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)című témakört. A felhasználó által hozzárendelt identitással történő hitelesítéshez meg kell adnia a felhasználó által hozzárendelt identitás ügyfél-AZONOSÍTÓját a kapcsolódási karakterláncban. A kapcsolatok karakterlánca a [kapcsolatok karakterláncának támogatásában](#connection-string-support)van megadva.
+Azt is megteheti, hogy egy felhasználó által hozzárendelt identitással hitelesíti magát. A felhasználó által hozzárendelt identitásokkal kapcsolatos további információkért tekintse meg az [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)című témakört. A felhasználó által hozzárendelt identitással történő hitelesítéshez meg kell adnia a felhasználó által hozzárendelt identitás ügyfél-AZONOSÍTÓját a kapcsolódási karakterláncban. A kapcsolatok karakterlánca a [kapcsolatok karakterláncának támogatásában](#connection-string-support)van megadva.
 
 ## <a name="running-the-application-using-a-service-principal"></a>Az alkalmazás futtatása egyszerű szolgáltatásnév használatával
 
@@ -202,7 +204,7 @@ A felügyelt identitásnak vagy a fejlesztői identitásnak engedéllyel kell re
 
 Ügyféltanúsítvány használata az egyszerű szolgáltatás hitelesítéséhez:
 
-1. Hozzon létre egy egyszerű szolgáltatásnév-tanúsítványt, és tárolja automatikusan a Key Vault. Használja az Azure CLI-t az [ad SP Create-for-RBAC-- \<kulcstartó keyvaultname>-- \<CERT certificatename>--Create-CERT--skip-hozzárendelés](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs:
+1. Hozzon létre egy egyszerű szolgáltatásnév-tanúsítványt, és tárolja automatikusan a Key Vault. Az Azure CLI az [ad SP Create-for-RBAC--Key Vault \<keyvaultname> --CERT \<certificatename> --create-CERT--skip-hozzárendelés](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használata:
 
     ```azurecli
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
@@ -210,7 +212,7 @@ A felügyelt identitásnak vagy a fejlesztői identitásnak engedéllyel kell re
 
     A tanúsítvány azonosítója egy URL-cím lesz a formátumban`https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
 
-1. Cserélje `{KeyVaultCertificateSecretIdentifier}` le a karakterláncot a következő azonosítójú tanúsítványra:
+1. Cserélje le a `{KeyVaultCertificateSecretIdentifier}` karakterláncot a következő azonosítójú tanúsítványra:
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
@@ -226,7 +228,7 @@ A felügyelt identitásnak vagy a fejlesztői identitásnak engedéllyel kell re
 
 Alapértelmezés szerint a `AzureServiceTokenProvider` több metódust használ a jogkivonat lekéréséhez.
 
-A folyamat szabályozásához használjon a `AzureServiceTokenProvider` konstruktornak átadott, vagy a *AzureServicesAuthConnectionString* környezeti változóban megadott kapcsolatot megadó karakterláncot.
+A folyamat szabályozásához használjon a konstruktornak átadott, `AzureServiceTokenProvider` vagy a *AzureServicesAuthConnectionString* környezeti változóban megadott kapcsolatot megadó karakterláncot.
 
 A következő lehetőségek támogatottak:
 
@@ -236,7 +238,7 @@ A következő lehetőségek támogatottak:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | `AzureServiceTokenProvider`a Visual studiót használja a jogkivonat lekéréséhez. |
 | `RunAs=CurrentUser` | Helyi fejlesztés | `AzureServiceTokenProvider`Az Azure AD integrált hitelesítést használ a token beszerzéséhez. |
 | `RunAs=App` | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`felügyelt identitást használ a jogkivonat lekéréséhez. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider`felhasználó által hozzárendelt identitást használ a jogkivonat lekéréséhez. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`felhasználó által hozzárendelt identitást használ a jogkivonat lekéréséhez. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Egyéni szolgáltatások hitelesítése | `KeyVaultCertificateSecretIdentifier`a tanúsítvány titkos azonosítója. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Szolgáltatásnév | `AzureServiceTokenProvider`tanúsítvány használatával szerez tokent az Azure AD-ből. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider`tanúsítvány használatával szerez tokent az Azure AD-ből|
@@ -288,8 +290,8 @@ Alapértelmezés szerint a AppAuth az IIS egy másik felhasználói környezeté
 - Konfigurálja a webalkalmazás alkalmazáskészletét úgy, hogy az aktuális felhasználói fiókként fusson. További információk [itt](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) találhatók
 - Konfigurálja a "setProfileEnvironment" értéket a "true" értékre. További információ [itt](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)található. 
 
-    - Ugrás a%windir%\System32\inetsrv\config\applicationHost.config
-    - Keressen rá a "setProfileEnvironment" kifejezésre. Ha "false" (hamis) értékre van állítva, módosítsa a "true" (igaz) értékre. Ha nincs jelen, adja hozzá attribútumként a processModel elemhez (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment), és állítsa "true" értékre.
+    - Ugrás a (z)% windir% \System32\inetsrv\config\applicationHost.config
+    - Keressen rá a "setProfileEnvironment" kifejezésre. Ha "false" (hamis) értékre van állítva, módosítsa a "true" (igaz) értékre. Ha nincs jelen, adja hozzá attribútumként a processModel elemhez ( /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ), és állítsa "true" értékre.
 
 - További információ az [Azure-erőforrások felügyelt identitásáról](../../active-directory/managed-identities-azure-resources/index.yml).
 - További információ az [Azure ad-hitelesítési forgatókönyvekről](../../active-directory/develop/active-directory-authentication-scenarios.md).

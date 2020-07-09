@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/18/2018
-ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/18/2020
+ms.openlocfilehash: 4a8353cf38c63e2642c7f76d05b4b7a2764e0706
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75413058"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117381"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Gyors útmutató: az Azure cache használata a Redis .NET Core-alkalmazással
 
@@ -54,15 +54,14 @@ Nyissa meg a *Redistest.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <UserSecretsId>Redistest</UserSecretsId>
-  </PropertyGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <UserSecretsId>Redistest</UserSecretsId>
+    </PropertyGroup>
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    </ItemGroup>
 </Project>
 ```
 
@@ -93,16 +92,16 @@ using Microsoft.Extensions.Configuration;
 Adja hozzá a következő tagokat a `Program` osztályhoz a *Program.cs* fájlban. Ez a kód egy olyan konfigurációt inicializál, amely hozzáfér az Azure cache Redis-kapcsolati karakterlánchoz tartozó felhasználói titkos kulcshoz.
 
 ```csharp
-        private static IConfigurationRoot Configuration { get; set; }
-        const string SecretName = "CacheConnection";
+private static IConfigurationRoot Configuration { get; set; }
+const string SecretName = "CacheConnection";
 
-        private static void InitializeConfiguration()
-        {
-            var builder = new ConfigurationBuilder()
-                .AddUserSecrets<Program>();
+private static void InitializeConfiguration()
+{
+    var builder = new ConfigurationBuilder()
+        .AddUserSecrets<Program>();
 
-            Configuration = builder.Build();
-        }
+    Configuration = builder.Build();
+}
 ```
 
 ## <a name="configure-the-cache-client"></a>A gyorsítótárügyfél konfigurálása
@@ -131,19 +130,19 @@ A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer`
 A *Program.cs* fájlban adja hozzá a következő tagokat a konzolalkalmazás `Program` osztályához:
 
 ```csharp
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = Configuration[SecretName];
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    string cacheConnection = Configuration[SecretName];
+    return ConnectionMultiplexer.Connect(cacheConnection);
+});
 
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
-        }
+public static ConnectionMultiplexer Connection
+{
+    get
+    {
+        return lazyConnection.Value;
+    }
+}
 ```
 
 A `ConnectionMultiplexer` példány alkalmazásban való megosztásának ez a módszere egy statikus tulajdonságot használ, amely egy csatlakoztatott példányt ad vissza. A kód egy szálbiztos módszert biztosít egyetlen csatlakoztatott `ConnectionMultiplexer`-példány inicializálásához. `abortConnect`hamis értékre van állítva, ami azt jelenti, hogy a hívás akkor is sikeres, ha nem jön létre a Redis-hez készült Azure cache-hez való kapcsolódás. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
@@ -155,42 +154,42 @@ A *CacheConnection* titkos kód értékéhez a Secret Manager konfigurációszol
 A *Program.cs* fájlban adja hozzá a következő kódot a konzolalkalmazás `Program` osztályának `Main` eljárásához:
 
 ```csharp
-        static void Main(string[] args)
-        {
-            InitializeConfiguration();
+static void Main(string[] args)
+{
+    InitializeConfiguration();
 
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+    // Connection refers to a property that returns a ConnectionMultiplexer
+    // as shown in the previous example.
+    IDatabase cache = lazyConnection.Value.GetDatabase();
 
-            // Perform cache operations using the cache object...
+    // Perform cache operations using the cache object...
 
-            // Simple PING command
-            string cacheCommand = "PING";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
+    // Simple PING command
+    string cacheCommand = "PING";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
 
-            // Simple get and put of integral data types into the cache
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Simple get and put of integral data types into the cache
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            cacheCommand = "SET Message \"Hello! The cache is working from a .NET Core console app!\"";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
-            Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
+    cacheCommand = "SET Message \"Hello! The cache is working from a .NET Core console app!\"";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
+    Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
 
-            // Demonstrate "SET Message" executed as expected...
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Demonstrate "SET Message" executed as expected...
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            // Get the client list, useful to see if connection list is growing...
-            cacheCommand = "CLIENT LIST";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+    // Get the client list, useful to see if connection list is growing...
+    cacheCommand = "CLIENT LIST";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
 
-            lazyConnection.Value.Dispose();
-        }
+    lazyConnection.Value.Dispose();
+}
 ```
 
 Mentse a *Program.cs* fájlt.
@@ -239,35 +238,35 @@ using Newtonsoft.Json;
 Adja hozzá a következő `Employee` osztálydefiníciót a *Program.cs* fájlhoz:
 
 ```csharp
-        class Employee
-        {
-            public string Id { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
+class Employee
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
 
-            public Employee(string EmployeeId, string Name, int Age)
-            {
-                this.Id = EmployeeId;
-                this.Name = Name;
-                this.Age = Age;
-            }
-        }
+    public Employee(string EmployeeId, string Name, int Age)
+    {
+        this.Id = EmployeeId;
+        this.Name = Name;
+        this.Age = Age;
+    }
+}
 ```
 
 Másolja és illessze be a következő kódsorokat a *Program.cs* fájl `Main()` eljárásának végére, a `Dispose()` hívása elé, egy szerializált .NET-objektum gyorsítótárazásához és lekéréséhez:
 
 ```csharp
-            // Store .NET object to cache
-            Employee e007 = new Employee("007", "Davide Columbo", 100);
-            Console.WriteLine("Cache response from storing Employee .NET object : " + 
-                cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+    // Store .NET object to cache
+    Employee e007 = new Employee("007", "Davide Columbo", 100);
+    Console.WriteLine("Cache response from storing Employee .NET object : " + 
+    cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
 
-            // Retrieve .NET object from cache
-            Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
-            Console.WriteLine("Deserialized Employee .NET object :\n");
-            Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
-            Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
-            Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
+    // Retrieve .NET object from cache
+    Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
+    Console.WriteLine("Deserialized Employee .NET object :\n");
+    Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
+    Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
+    Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
 Mentse a *Program.cs* fájlt, és hozza létre újra az alkalmazást a következő paranccsal:
@@ -285,7 +284,7 @@ dotnet run
 ![Kész konzolalkalmazás](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

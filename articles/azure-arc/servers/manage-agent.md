@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648104"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103908"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -46,13 +46,13 @@ Az ügynök a szoftverfrissítési felügyeleti folyamat támogatásának számo
 > * Az ügynök frissítéséhez *rendszergazdai* engedélyekkel kell rendelkeznie.
 > * A manuális frissítéshez először le kell töltenie és át kell másolnia a telepítőcsomagot egy mappába a célkiszolgálón vagy egy megosztott hálózati mappából. 
 
-Ha nem ismeri a Windows Installer csomagok parancssori kapcsolóit, tekintse át az [msiexec standard parancssori kapcsolóit](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) és az [msiexec parancssori kapcsolókat](https://docs.microsoft.com/windows/win32/msi/command-line-options).
+Ha nem ismeri a Windows Installer csomagok parancssori kapcsolóit, tekintse át az [msiexec standard parancssori kapcsolóit](/windows/win32/msi/standard-installer-command-line-options) és az [msiexec parancssori kapcsolókat](/windows/win32/msi/command-line-options).
 
 #### <a name="to-upgrade-using-the-setup-wizard"></a>A frissítés a telepítővarázsló használatával
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Futtassa a **AzureConnectedMachineAgent. msi fájlt** a telepítővarázsló elindításához.
+2. **AzureConnectedMachineAgent.msi** végrehajtása a telepítővarázsló elindításához.
 
 A telepítővarázsló felfedi, hogy létezik-e korábbi verzió, és hogy automatikusan végrehajtja-e az ügynök frissítését. Ha a frissítés befejeződött, a telepítővarázsló automatikusan bezáródik.
 
@@ -125,7 +125,7 @@ A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például
 
 ## <a name="about-the-azcmagent-tool"></a>Tudnivalók a Azcmagent eszközről
 
-A Azcmagent eszköz (Azcmagent. exe) segítségével konfigurálhatja az Azure arc for Servers (előzetes verzió) szolgáltatáshoz csatlakoztatott gépi ügynököt a telepítés során, vagy módosíthatja az ügynök kezdeti konfigurációját a telepítés után. A Azcmagent. exe parancssori paramétereket biztosít az ügynök testreszabásához és az állapotának megtekintéséhez:
+A Azcmagent eszköz (Azcmagent.exe) segítségével konfigurálható az Azure arc for Servers (előzetes verzió) csatlakoztatott gépi ügynök a telepítés során, vagy az ügynök kezdeti konfigurációját a telepítés után módosíthatja. A Azcmagent.exe parancssori paramétereket biztosít az ügynök testreszabásához és az állapotának megtekintéséhez:
 
 * **Kapcsolódás** – a gép és az Azure-ív összekapcsolásához
 
@@ -212,11 +212,11 @@ A következő módszerek mindegyike eltávolítja az ügynököt, de nem távol�
     c. A **programok és szolgáltatások**területen válassza **Az Azure Connected Machine Agent ügynököt**, válassza az **Eltávolítás**lehetőséget, majd válassza az **Igen**lehetőséget.  
 
     >[!NOTE]
-    > Az ügynök telepítővarázslójának futtatásához kattintson duplán a **AzureConnectedMachineAgent. msi** telepítőcsomag-csomagra.
+    > Az ügynök telepítővarázslója úgy is futtatható, ha duplán kattint a **AzureConnectedMachineAgent.msi** telepítőcsomag csomagra.
 
 #### <a name="uninstall-from-the-command-line"></a>Eltávolítás a parancssorból
 
-Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy automatikus metódust (például egy parancsfájlt) szeretne használni, használja az alábbi példát. Először le kell kérnie a termékkód beolvasását, amely az alkalmazáscsomag elsődleges azonosítója, az operációs rendszerből. Az Eltávolítás az msiexec. exe parancssor használatával történik `msiexec /x {Product Code}` .
+Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy automatikus metódust (például egy parancsfájlt) szeretne használni, használja az alábbi példát. Először le kell kérnie a termékkód beolvasását, amely az alkalmazáscsomag elsődleges azonosítója, az operációs rendszerből. Az Eltávolítás a Msiexec.exe parancssor használatával történik `msiexec /x {Product Code}` .
 
 1. Nyissa meg a beállításszerkesztőt.
 
@@ -312,7 +312,7 @@ Ha úgy szeretné konfigurálni az ügynököt, hogy a proxykiszolgáló haszná
 sudo azcmagent_proxy remove
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 

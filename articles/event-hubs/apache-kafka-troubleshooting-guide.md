@@ -1,29 +1,19 @@
 ---
 title: Az Azure Event Hubs Apache Kafka kapcsolatos hibáinak elhárítása
 description: Ez a cikk bemutatja, hogyan lehet elhárítani a problémákat az Azure Event Hubs for Apache Kafka
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/01/2020
-ms.author: shvija
-ms.openlocfilehash: 12ddc5fa74b7a1b42bbd64fde9ec3410b1c1e425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c2403fd51729ef8809b9a70383ad6f9fd91e52b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322675"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs Apache Kafka hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket nyújt a Event Hubs Apache Kafka való használatakor futtatott problémákhoz. 
 
 ## <a name="server-busy-exception"></a>Kiszolgáló foglalt kivétele
-A Kafka-szabályozás miatt előfordulhat, hogy a kiszolgáló foglalt kivételt okoz. A AMQP-ügyfelekkel a Event Hubs azonnal visszaadja a **kiszolgáló számára foglalt** kivételt a szolgáltatás szabályozása során. Ez egyenértékű a "Try Again később" üzenettel. A Kafka-ben az üzenetek a befejezés előtt késleltetve lesznek. A késleltetési hossz ezredmásodpercben, `throttle_time_ms` a termék/beolvasási válaszban is visszaadja. A legtöbb esetben ezek a késleltetett kérelmek nem ServerBusy-kivételként vannak naplózva Event Hubs irányítópultokon. Ehelyett a válasz `throttle_time_ms` értékét olyan jelzésként kell használni, amely túllépte a kiosztott kvótát.
+A Kafka-szabályozás miatt előfordulhat, hogy a kiszolgáló foglalt kivételt okoz. A AMQP-ügyfelekkel a Event Hubs azonnal visszaadja a **kiszolgáló számára foglalt** kivételt a szolgáltatás szabályozása során. Ez egyenértékű a "Try Again később" üzenettel. A Kafka-ben az üzenetek a befejezés előtt késleltetve lesznek. A késleltetési hossz ezredmásodpercben, `throttle_time_ms` a termék/beolvasási válaszban is visszaadja. A legtöbb esetben ezek a késleltetett kérelmek nem ServerBusy-kivételként vannak naplózva Event Hubs irányítópultokon. Ehelyett a válasz értékét olyan `throttle_time_ms` jelzésként kell használni, amely túllépte a kiosztott kvótát.
 
 Ha a forgalom túlzott, a szolgáltatás a következő viselkedéssel rendelkezik:
 
@@ -35,11 +25,11 @@ A [dedikált fürtök](event-hubs-dedicated-overview.md) nem rendelkeznek szabá
 ## <a name="no-records-received"></a>Nem érkezett rekord
 Láthatja, hogy a felhasználók nem kapnak semmilyen rekordot, és folyamatosan kiegyensúlyozzák azokat. Ebben a forgatókönyvben a fogyasztók nem kapnak semmilyen rekordot és folyamatosan kiegyensúlyozzák azokat. Nincs kivétel vagy hiba, ha ez megtörténik, de a kafka-naplók azt mutatják, hogy a felhasználók elragadják a csoport újracsatlakoztatását és a partíciók hozzárendelését. Néhány lehetséges ok:
 
-- Győződjön meg `request.timeout.ms` arról, hogy legalább a 60000 javasolt értéke, és `session.timeout.ms` az értéke legalább a 30000 ajánlott. Ha ezek a beállítások túl alacsonyak, a fogyasztói időtúllépéseket okozhatnak, ami után a rendszer kiegyensúlyozza az újraelosztást (ami több időtúllépést okoz, ami nagyobb kiegyensúlyozást eredményezhet stb.) 
+- Győződjön meg arról, hogy `request.timeout.ms` legalább a 60000 javasolt értéke, és az értéke legalább `session.timeout.ms` a 30000 ajánlott. Ha ezek a beállítások túl alacsonyak, a fogyasztói időtúllépéseket okozhatnak, ami után a rendszer kiegyensúlyozza az újraelosztást (ami több időtúllépést okoz, ami nagyobb kiegyensúlyozást eredményezhet stb.) 
 - Ha a konfiguráció megfelel az ajánlott értékeknek, és továbbra is állandó kiegyensúlyozásra van szüksége, nyugodtan megnyithatja a problémát (a probléma megoldásához vegye fel a teljes konfigurációt, hogy segítsen a hibakeresésben)!
 
 ## <a name="compressionmessage-format-version-issue"></a>Tömörítés/üzenet formátumának verziószáma
-A Kafka támogatja a tömörítést, és a Kafka-Event Hubs jelenleg nem. Az üzenet formátumát (például) megemlítő hibák oka `The message format version on the broker does not support the request.`az, hogy az ügyfél tömörített Kafka-üzeneteket próbál küldeni a brókereknek.
+A Kafka támogatja a tömörítést, és a Kafka-Event Hubs jelenleg nem. Az üzenet formátumát (például) megemlítő hibák oka az, hogy `The message format version on the broker does not support the request.` az ügyfél tömörített Kafka-üzeneteket próbál küldeni a brókereknek.
 
 Ha tömörített adatokra van szükség, tömörítse az adatokat, mielőtt elküldi azt a brókereknek, és a rendszer kibontja a befogadást követően érvényes megkerülő megoldást. Az üzenettörzs csak egy bájtos tömb a szolgáltatás számára, így az ügyféloldali tömörítés/kitömörítés nem okoz problémát.
 
@@ -66,7 +56,7 @@ Ha a Kafka Event Hubs-on való használata során problémák merülnek fel, tek
 ## <a name="limits"></a>Korlátok
 Apache Kafka és Event Hubs Kafka. A legtöbb esetben a Kafka-ökoszisztémák Event Hubs ugyanazokat az alapértékeket, tulajdonságokat, hibakódokat és általános viselkedést eredményezik, mint a Apache Kafka. Azok a példányok, amelyekben ez a két explicit módon eltér (vagy ahol a Event Hubs korlátozza, hogy a Kafka nem) alább látható:
 
-- A `group.id` tulajdonság maximális hossza 256 karakter.
+- A tulajdonság maximális hossza `group.id` 256 karakter.
 - A maximális méret `offset.metadata.max.bytes` 1024 bájt
 - Az eltolási véglegesítés 4 hívás/másodpercre van szabályozva, legfeljebb 1 MB belső napló méretével
 

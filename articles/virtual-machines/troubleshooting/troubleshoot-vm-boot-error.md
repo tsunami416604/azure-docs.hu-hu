@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77561949"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>A Linux rendszerű virtuális gép a grub Rescue-t indítja
@@ -41,13 +40,13 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
 * Ha a következő hibaüzenetet kapta **: 15. a fájl nem található, vagy a kezdeti RAM lemez** vagy a **initrd/initramfs fájl nem található**, kövesse az alábbi lépéseket.
 
-    * A hiányzó fájlhoz `/boot/grub2/grub.cfg` , `initrd/initramfs` vagy folytassa a következő folyamattal:
+    * A hiányzó fájlhoz, `/boot/grub2/grub.cfg` vagy `initrd/initramfs` folytassa a következő folyamattal:
 
-    1. Győződjön `/etc/default/grub` meg arról, hogy létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
+    1. Győződjön meg arról `/etc/default/grub` , hogy létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
 
     2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * Ha a `/boot/grub/menu.lst`hiányzó fájl, akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok eltérhetnek. A megfelelő parancsok biztosításához egy régi kiszolgálót kell megadnia, és tesztelni kell.
+   * Ha a hiányzó fájl `/boot/grub/menu.lst` , akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok eltérhetnek. A megfelelő parancsok biztosításához egy régi kiszolgálót kell megadnia, és tesztelni kell.
 
 ### <a name="error---no-such-partition"></a>Hiba – nincs ilyen partíció
 
@@ -57,13 +56,13 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
 * Ha **nem találja a/boot/GRUB2/grub.cfg fájlt**, kövesse az alábbi lépéseket.
 
-    * A hiányzó fájlhoz `/boot/grub2/grub.cfg` , `initrd/initramfs` vagy folytassa a következő folyamattal:
+    * A hiányzó fájlhoz, `/boot/grub2/grub.cfg` vagy `initrd/initramfs` folytassa a következő folyamattal:
 
-    1. Győződjön `/etc/default/grub` meg arról, hogy létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
+    1. Győződjön meg arról `/etc/default/grub` , hogy létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
 
-    2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához: `grub2-mkconfig -o /boot/grub2/grub.cfg`.
+    2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához: `grub2-mkconfig -o /boot/grub2/grub.cfg` .
 
-   * Ha a `/boot/grub/menu.lst`hiányzó fájl, akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. Hozzon létre egy régi kiszolgálót, és ellenőrizze, hogy a megfelelő parancsok vannak-e megadva.
+   * Ha a hiányzó fájl `/boot/grub/menu.lst` , akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. Hozzon létre egy régi kiszolgálót, és ellenőrizze, hogy a megfelelő parancsok vannak-e megadva.
 
 ## <a name="next-steps"></a>További lépések
 

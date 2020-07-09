@@ -2,7 +2,7 @@
 title: Teljesítményproblémák elhárítása az Intelligent Insights segítségével
 description: Intelligent Insights segítséget nyújt a Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémák elhárításában.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 2008dd5e1e583a99756f62bc25f27e8f9832646e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/12/2020
+ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045605"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986385"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak elhárítása Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,6 +25,8 @@ Ez a lap a [Intelligent Insights](intelligent-insights-overview.md) erőforrás-
 
 > [!NOTE]
 > Az Intelligent Insights használatával történő gyors teljesítmény-hibaelhárítási útmutatóért tekintse meg a jelen dokumentum [javasolt hibaelhárítási folyamat](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábráját.
+>
+> Az intelligens betekintő funkció az alábbi régiókban nem érhető el: Nyugat-Európa, Észak-Európa, USA 2. nyugati régiója és USA 1. keleti régiója.
 
 ## <a name="detectable-database-performance-patterns"></a>Észlelhető adatbázis-teljesítménnyel kapcsolatos minták
 
@@ -283,7 +285,7 @@ Az adatbázis-hatókörű konfiguráció módosításait minden egyes adatbázis
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló kiírja az adatbázis hatókörű konfigurációjának módosításait, amelyek a közelmúltban történtek, ami a teljesítmény romlását okozta a munkaterhelések előző hét napján. Visszaállíthatja az előző értékek konfigurációs módosításait. Az érték értéke a kívánt teljesítményszint eléréséig is beállítható. Az adatbázis-hatókör konfigurációs értékeit egy hasonló adatbázisból is átmásolhatja, amely kielégítő teljesítménnyel rendelkezik. Ha nem tudja elhárítani a teljesítményt, térjen át az alapértelmezett alapértelmezett értékekre, és próbálja meg az alaptervtől kezdődően finomhangolást végrehajtani.
+A diagnosztikai napló kiírja az adatbázis hatókörű konfigurációjának módosításait, amelyek a közelmúltban történtek, ami a teljesítmény romlását okozta a munkaterhelések előző hét napján. Visszaállíthatja az előző értékek konfigurációs módosításait. Az érték értéke a kívánt teljesítményszint eléréséig is beállítható. Az adatbázis-hatókör konfigurációs értékeit egy hasonló adatbázisból is átmásolhatja, amely kielégítő teljesítménnyel rendelkezik. Ha nem tudja elhárítani a teljesítményt, térjen át az alapértelmezett értékekre, és próbálja meg az alaptervtől kezdődően finomhangolást elvégezni.
 
 Az adatbázis hatókörű konfigurációjának és a T-SQL szintaxisának a konfiguráció módosítására való optimalizálásával kapcsolatos további információkért lásd: az [adatbázis hatókörű konfigurációjának módosítása (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

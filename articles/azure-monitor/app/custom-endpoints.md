@@ -3,16 +3,16 @@ title: Azure Application Insights alapértelmezett SDK-végpontok felülbírál�
 description: Az alapértelmezett Azure Monitor Application Insights SDK-végpontok módosítása olyan régiók esetében, mint például a Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194835"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
-Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, felül kell bírálnia az alapértelmezett végponti címeket. Az SDK-nak némileg eltérő módosításokra van szüksége, amelyek mindegyike a jelen cikkben szerepel. Ezek a változások megkövetelik a mintakód módosítását, valamint a `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`, és `Profile_Query_Endpoint_address` az adott régió tényleges végponti címeinek cseréjét. A cikk végén a végpontok címeire mutató hivatkozások találhatók, ahol ez a konfiguráció szükséges.
+Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, felül kell bírálnia az alapértelmezett végponti címeket. Az SDK-nak némileg eltérő módosításokra van szüksége, amelyek mindegyike a jelen cikkben szerepel. Ezek a változások megkövetelik a mintakód módosítását, valamint a `QuickPulse_Endpoint_Address` ,, és az `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` adott régió tényleges végponti címeinek cseréjét. A cikk végén a végpontok címeire mutató hivatkozások találhatók, ahol ez a konfiguráció szükséges.
 
 > [!NOTE]
 > A [csatlakozási karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) az új előnyben részesített módszerek, amelyekkel egyéni végpontokat állíthat be Application Insightson belül.
@@ -24,7 +24,7 @@ Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, fel�
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> Az applicationinsights. config fájlt automatikusan felülírja a rendszer, amikor egy SDK-frissítést hajt végre. Az SDK-frissítés végrehajtása után mindenképpen adja meg újra a régió-specifikus végpontok értékeit.
+> A applicationinsights.config fájl automatikusan felül lesz írva, amikor egy SDK-frissítést hajt végre. Az SDK-frissítés végrehajtása után mindenképpen adja meg újra a régió-specifikus végpontok értékeit.
 
 ```xml
 <ApplicationInsights>
@@ -48,7 +48,7 @@ Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, fel�
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Módosítsa a appSettings. JSON fájlt a projektben az alábbiak szerint a fő végpont beállításához:
+Módosítsa a projekt appsettings.jsfájlját a következő módon a fő végpont beállításához:
 
 ```json
 "ApplicationInsights": {
@@ -59,7 +59,7 @@ Módosítsa a appSettings. JSON fájlt a projektben az alábbiak szerint a fő v
   }
 ```
 
-Az élő metrikák és a profil lekérdezési végpontjának értékei csak kód használatával állíthatók be. Ha az összes végpont értékének alapértelmezett értékét szeretné felülbírálni a kódban, hajtsa végre a `ConfigureServices` következő módosításokat a `Startup.cs` fájl metódusában:
+Az élő metrikák és a profil lekérdezési végpontjának értékei csak kód használatával állíthatók be. Ha az összes végpont értékének alapértelmezett értékét szeretné felülbírálni a kódban, hajtsa végre a következő módosításokat a `ConfigureServices` fájl metódusában `Startup.cs` :
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -76,13 +76,13 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Azure Functions azt javasoljuk, hogy a függvény alkalmazási beállításaiban a [kapcsolódási karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) legyenek beállítva. Ha az alkalmazás beállításait a függvények ablaktáblán belül szeretné elérni, válassza a **Beállítások** > **konfigurációs** > **alkalmazás beállításai**lehetőséget. 
+Azure Functions azt javasoljuk, hogy a függvény alkalmazási beállításaiban a [kapcsolódási karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) legyenek beállítva. Ha az alkalmazás beállításait a függvények ablaktáblán belül szeretné elérni, válassza a **Beállítások**  >  **konfigurációs**  >  **alkalmazás beállításai**lehetőséget. 
 
 Név: `APPLICATIONINSIGHTS_CONNECTION_STRING` érték:`Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
-Módosítsa a applicationinsights. xml fájlt az alapértelmezett végponti címek módosításához.
+Módosítsa az applicationinsights.xml fájlt az alapértelmezett végponti címnek a módosításához.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

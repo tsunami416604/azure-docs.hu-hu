@@ -7,17 +7,16 @@ documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60743077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708246"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 
@@ -30,7 +29,7 @@ Ebben a tesztben a két virtuális gépnek ugyanabban a felhőalapú szolgáltat
 
 Jegyezze fel a fogadó IP-címét. Nevezzük ezt az IP-címet: "a. b. c. r"
 
-Jegyezze fel a virtuális gép magok számát. Hívjuk ezt a "\#NUM\_mag" kifejezést
+Jegyezze fel a virtuális gép magok számát. Hívjuk ezt a " \# NUM \_ mag" kifejezést
 
 Futtassa a NTTTCP tesztet 300 másodpercig (vagy 5 percben) a küldő virtuális gépen és a fogadó virtuális gépen.
 
@@ -56,33 +55,33 @@ Töltse le a legújabb verziót:<https://gallery.technet.microsoft.com/NTttcp-Ve
 
 Vagy keressen rá, ha áthelyezte: <https://www.bing.com/search?q=ntttcp+download> \< --először meg kell nyomnia
 
-Fontolja meg a NTTTCP különálló mappába helyezését, például\\a c: Tools
+Fontolja meg a NTTTCP különálló mappába helyezését, például a c: \\ Tools
 
 #### <a name="allow-ntttcp-through-the-windows-firewall"></a>NTTTCP engedélyezése a Windows tűzfalon keresztül
 A FOGADÓn hozzon létre egy engedélyezési szabályt a Windows tűzfalon, hogy a NTTTCP-forgalom megérkezik. A legegyszerűbben úgy engedélyezheti a teljes NTTTCP program nevét, hogy nem engedélyezi a bejövő TCP-portok használatát.
 
 A ntttcp engedélyezése a Windows tűzfalon keresztül:
 
-netsh advfirewall Firewall Add Rule program =\<elérési út\>\\ntttcp. exe Name = "ntttcp" protokoll = bármely dir = in Action = Allow Enable = Yes Profile = any
+netsh advfirewall Firewall Add Rule program = \<PATH\> \\ntttcp.exe Name = "ntttcp" protokoll = bármely dir = in Action = Enable engedélyezése = Yes Profile = any
 
-Ha például a ntttcp. exe fájlt a "c:\\Tools" mappába másolta, a parancs a következő lesz: 
+Ha például a "c: Tools" mappába másolta ntttcp.exe \\ , akkor ez a következő lesz: 
 
-netsh advfirewall Firewall Add Rule program = c:\\eszközök\\ntttcp. exe Name = "ntttcp" protokoll = bármely dir = in Action = Allow Enable = Yes Profile = any
+netsh advfirewall Firewall Add Rule program = c: \\ eszközök \\ntttcp.exe név = "ntttcp" protokoll = bármely dir = in Action = Allow Enable = Yes Profile = any
 
 #### <a name="running-ntttcp-tests"></a>NTTTCP-tesztek futtatása
 
 NTTTCP elindítása a FOGADÓn (**Futtatás a cmd-ből**, nem a powershellből):
 
-ntttcp-r – m [2\*\#NUM\_mag],\*, a. b. c. r-t 300
+ntttcp-r – m [2 \* \# NUM \_ mag], \* , a. b. c. r-t 300
 
 Ha a virtuális gépnek négy magja van, és a 10.0.0.4 IP-címe van, a következőképpen fog kinézni:
 
-ntttcp-r – m 8,\*, 10.0.0.4-t 300
+ntttcp-r – m 8, \* , 10.0.0.4-t 300
 
 
 NTTTCP elindítása a KÜLDŐn (**Futtatás a cmd-ből**, nem a powershellből):
 
-ntttcp-s – m 8,\*, 10.0.0.4-t 300 
+ntttcp-s – m 8, \* , 10.0.0.4-t 300 
 
 Várjon az eredményekre.
 
@@ -132,13 +131,13 @@ Ebben a forgatókönyvben engedélyeznie kell a nem szinkronizált módot, hogy 
 
 #### <a name="from-linux-to-windows"></a>Linuxról Windowsra:
 
-Fogadó \<Windows>:
+Fogadó \<Windows> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-Feladó \<linuxos>:
+Küldő \<Linux> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +145,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>Windowsról Linuxra:
 
-Fogadó \<linuxos>:
+Fogadó \<Linux> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-Küldő \<Windows>:
+Küldő \<Windows> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

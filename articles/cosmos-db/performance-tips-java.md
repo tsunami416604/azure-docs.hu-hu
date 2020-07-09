@@ -4,15 +4,15 @@ description: Az ügyfél-konfigurációs beállítások megismerése az Azure Co
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 998155c2505277170518a62af4ae2481e217a1df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb42ac4e59d8e9d8c3e0c24eb24a810a5797c277
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850095"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Sync Java SDK v2-hez
 
@@ -20,7 +20,8 @@ ms.locfileid: "83650113"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java SDK v2](performance-tips-async-java.md)
 > * [Sync Java SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -63,14 +64,14 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
       DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
       ```
 
-      ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips-java/connection-policy.png)
+      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
 
    <a id="same-region"></a>
 2. **Az ügyfeleket ugyanabban az Azure-régióban helyezze el a jobb teljesítmény érdekében**
 
     Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés >50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-    ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
    
 ## <a name="sdk-usage"></a>SDK-használat
 1. **A legújabb SDK telepítése**
@@ -114,7 +115,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például [readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments)) vagy SQL-lekérdezés kiállításakor az eredményeket szegmentált módon adja vissza, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
 
-    Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör alakú utak számát, az [x-MS-Max-Item-](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) Request fejléc használatával növelheti az oldal méretét a legfeljebb 1000 értékre. Olyan esetekben, ahol csak néhány eredményt kell megjelenítenie, például ha a felhasználói felület vagy az Application API csak 10 eredményt ad vissza, az olvasási és lekérdezési teljesítmény csökkentése érdekében csökkentheti az oldal méretét is 10 értékre.
+    Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör alakú utak számát, az [x-MS-Max-Item-](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) Request fejléc használatával növelheti az oldal méretét a legfeljebb 1000 értékre. Olyan esetekben, ahol csak néhány eredményt kell megjelenítenie, például ha a felhasználói felület vagy az Application API csak 10 eredményt ad vissza, az olvasási és lekérdezési teljesítmény csökkentése érdekében csökkentheti az oldal méretét is 10 értékre.
 
     Az oldalméret a [setPageSize metódussal](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptionsbase.setpagesize)is megadható.
 
@@ -150,7 +151,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a [ResourceResponse \< t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) vagy a [FeedResponse \< t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) RequestCharge tulajdonságot a műveletek által felhasznált kérelmek számának méréséhez.
+    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a [ResourceResponse \<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) vagy a [FeedResponse \<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) egyenértékű RequestCharge tulajdonságát a műveletek által felhasznált kérelmek mennyiségének méréséhez.
 
 
     ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>Sync Java SDK v2 (Maven com. microsoft. Azure:: Azure-documentdb)
@@ -165,12 +166,13 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
    <a id="429"></a>
 1. **A kezelői sebesség korlátozása/kérelmek arányának aránya túl nagy**
 
-    Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló megelőző jelleggel a kérést a RequestRateTooLarge (429-es HTTP-állapotkód), és visszaküldi az [x-MS-újrapróbálkozás-After-MS](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécet, jelezve azt az időtartamot (ezredmásodpercben), ameddig a felhasználónak meg kell várnia a kérés ismételt megkísérlése előtt.
-
+    Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló megelőző jelleggel a kérést a RequestRateTooLarge (429-es HTTP-állapotkód), és visszaküldi az [x-MS-újrapróbálkozás-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécet, jelezve azt az időtartamot (ezredmásodpercben), ameddig a felhasználónak meg kell várnia a kérés ismételt megkísérlése előtt.
+    
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
-
+    ```
     Az SDK-k minden implicit módon elkapják ezt a választ, tiszteletben tartsák a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem éri el, a következő újrapróbálkozás sikeres lesz.
 
     Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor előfordulhat, hogy az ügyfél az újrapróbálkozások alapértelmezett száma jelenleg 9 belső értékre van állítva. Ebben az esetben az ügyfél egy 429-as állapotkódot tartalmazó [DocumentClientException](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception) hoz az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy) -példány [setRetryOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) használatával. Alapértelmezés szerint a 429-as kódú DocumentClientException a rendszer a 30 másodperces kumulatív várakozási idő után adja vissza, ha a kérés továbbra is a kérelmek arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték.

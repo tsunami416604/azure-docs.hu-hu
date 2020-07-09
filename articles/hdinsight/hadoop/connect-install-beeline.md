@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 05/27/2020
-ms.openlocfilehash: fcd1c20ea2ecb5cbeb87fb8f703593453b5f85bb
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122394"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076776"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Kapcsolódás az Apache beelinhez a HDInsight-on vagy helyi telepítése
 
@@ -162,7 +162,7 @@ Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A
 
 1. A kapcsolatok tesztelése. Használja a kapcsolat formátumát a fentiekben [nyilvános vagy privát végpontokon](#over-public-or-private-endpoints).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Példák a Beeline-ügyfél Apache Hive használatával történő használatára: az [Apache Beeline használata a Apache Hive](apache-hadoop-use-hive-beeline.md)
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)

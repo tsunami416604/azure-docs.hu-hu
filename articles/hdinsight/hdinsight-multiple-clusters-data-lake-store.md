@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495748"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083950"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
 
@@ -44,7 +44,7 @@ A táblázatban
 - Az **egyszerű szolgáltatásnév** a fiókhoz társított Azure Active Directory (HRE) egyszerű szolgáltatásnév.
 - A **FINGRP** a HRE-ben létrehozott felhasználói csoport, amely a pénzügyi szervezet felhasználóit tartalmazza.
 
-A HRE-alkalmazások létrehozásával kapcsolatos utasításokért (amely egyben egyszerű szolgáltatásnevet is létrehoz) tekintse meg a [HRE-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)című témakört. A felhasználói csoportok HRE-ben való létrehozásával kapcsolatos utasításokért lásd: [csoportok kezelése a Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+A HRE-alkalmazások létrehozásával kapcsolatos utasításokért (amely egyben egyszerű szolgáltatásnevet is létrehoz) tekintse meg a [HRE-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)című témakört. A felhasználói csoportok HRE-ben való létrehozásával kapcsolatos utasításokért lásd: [csoportok kezelése a Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Néhány fontos szempontot figyelembe kell venni.
 
@@ -79,13 +79,15 @@ Ez a szakasz felsorolja a HDInsight és a Data Lake Storage használatának isme
 
 Ezek a beállítások a 247-as [fonalban](https://hwxmonarch.atlassian.net/browse/YARN-247)rögzített HDInsight-használati esetekre is érvényesek. A feladat-beadványok a következőhöz hasonló hibaüzenettel meghiúsulnak:
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása közben, a Localizer ellenőrzi, hogy az összes kért erőforrás valóban nyilvános-e, ha ellenőrzi a távoli fájlrendszerre vonatkozó engedélyeiket. Minden olyan LocalResource, amely nem fér el ehhez a feltételhez, elutasítja a honosítást. Az engedélyek keresése, a "mások" számára olvasási hozzáférés a fájlhoz. Ez a forgatókönyv a HDInsight-fürtök Azure Data Lake-on való üzemeltetése során nem működik, mert a Azure Data Lake megtagadja a "mások" hozzáférését a gyökérmappa szintjén.
 
 #### <a name="workaround"></a>Áthidaló megoldás
 
-Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például **/** a következő táblázatban látható módon:, **/Clusters** és **/Clusters/Finance** .
+Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például a következő **/** táblázatban látható módon:, **/Clusters** és **/Clusters/Finance** .
 
 ## <a name="see-also"></a>Lásd még
 

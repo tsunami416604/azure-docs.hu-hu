@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203214"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -49,7 +49,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemeneti jogcímeket, a jogcímek átalakítását és a konfigurált féllel folytatott kommunikációt, például egy identitás-szolgáltatót, REST API vagy Azure AD címtárszolgáltatás-szolgáltatást kell küldenie. A folyamat befejezése után a technikai profil visszaadja a kimeneti jogcímeket, és a kimeneti jogcímek átalakítását is futtathatja. A következő ábra a technikai profilban hivatkozott átalakítások és leképezések feldolgozását mutatja be. Függetlenül attól, hogy a technikai profil milyen fél által kommunikál, a jogcímek átalakításának végrehajtása után a technikai profilból származó kimeneti jogcímeket a rendszer azonnal a jogcím-táskában tárolja.
 
 ![A műszaki profil folyamatát ábrázoló diagram](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil munkamenet-állapotának visszaállítása az [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md)használatával.
 1. A bemeneti jogcímek **átalakítása** – a bemeneti [jogcímek átalakításához](claimstransformations.md) tartozó bemeneti jogcímeket a rendszer a jogcím-csomagból használja fel.  A bemeneti jogcímek átalakításának kimeneti jogcímei a következő bemeneti jogcímek átalakításának bemeneti jogcímei lehetnek.
 1. **Bemeneti jogcímek** – a jogcímeket a rendszer a jogcímek táskájában keresi, és a technikai profilhoz használja. Egy [önérvényesített technikai profil](self-asserted-technical-profile.md) például a bemeneti jogcímek használatával előre feltölti a felhasználó által biztosított kimeneti jogcímeket. A REST API műszaki profilok a bemeneti jogcímek használatával küldenek bemeneti paramétereket a REST API végpontnak. A Azure Active Directory a bemeneti jogcímet egyedi azonosítóként használja egy fiók olvasásához, frissítéséhez vagy törléséhez.
@@ -68,9 +68,9 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 
 A műszaki profilok tartalmazhatnak egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához.  Az `IncludeTechnicalProfile` elem az alapszintű műszaki profilra mutató hivatkozás, amelyből a technikai profil származik. A szintek száma nincs korlátozva.
 
-Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil tartalmazza a **HRE-UserReadUsingAlternativeSecurityId**. Ez a technikai profil beállítja `RaiseErrorIfClaimsPrincipalDoesNotExist` a metaadat- `true`elemét, és hibát jelez, ha nem létezik közösségi fiók a címtárban. **HRE-UserReadUsingAlternativeSecurityId – a hiba** felülbírálja ezt a viselkedést, és letiltja a hibaüzenetet.
+Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil tartalmazza a **HRE-UserReadUsingAlternativeSecurityId**. Ez a technikai profil beállítja a `RaiseErrorIfClaimsPrincipalDoesNotExist` metaadat-elemét `true` , és hibát jelez, ha nem létezik közösségi fiók a címtárban. **HRE-UserReadUsingAlternativeSecurityId – a hiba** felülbírálja ezt a viselkedést, és letiltja a hibaüzenetet.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
   <Metadata>
     <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
@@ -79,9 +79,9 @@ Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil ta
 </TechnicalProfile>
 ```
 
-**HRE – a UserReadUsingAlternativeSecurityId** tartalmazza `AAD-Common` a technikai profilt.
+**HRE – a UserReadUsingAlternativeSecurityId** tartalmazza a `AAD-Common` technikai profilt.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -105,7 +105,7 @@ Például a **HRE-UserReadUsingAlternativeSecurityId-Error** technikai profil ta
 
 Mind a **HRE-UserReadUsingAlternativeSecurityId** , mind a **HRE-UserReadUsingAlternativeSecurityId** nem adja meg a szükséges **protokoll** elemet, mert az a **HRE-Common** Technical profilban van megadva.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

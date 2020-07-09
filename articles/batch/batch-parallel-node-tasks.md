@@ -4,12 +4,12 @@ description: A hatékonyság és az alacsonyabb költségek növelése kevesebb 
 ms.topic: how-to
 ms.date: 04/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d38076396ea89eed9e1ef0c2e9ba14cddfd7cc6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1b13f7f276740cd4f37e8d4c4ba1f2967d919ccf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724190"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961574"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Feladatok futtatása párhuzamosan a Batch számítási csomópontok használatának maximalizálása érdekében 
 
@@ -113,21 +113,21 @@ A minta második futtatása a feladatok időtartamának jelentős csökkenését
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="batch-explorer-heat-map"></a>Batch Explorer Heat Térkép
 A [Batch Explorer][batch_labs] egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. Batch Explorer tartalmaz egy *hő-hozzárendelési* funkciót, amely vizualizációt biztosít a feladatok végrehajtásához. A [ParallelTasks][parallel_tasks_sample] -minta alkalmazás végrehajtásakor a Heat Map funkcióval egyszerűen megjelenítheti a párhuzamos feladatok végrehajtását az egyes csomópontokon.
 
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_rest]: /rest/api/batchservice/
 [batch_labs]: https://azure.github.io/BatchExplorer/
-[cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
+[cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[enable_autoscaling]: /rest/api/batchservice/pool/enableautoscale
+[fill_type]: /dotnet/api/microsoft.azure.batch.common.computenodefilltype
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[maxtasks_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
-[rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[maxtasks_net]: /dotnet/api/microsoft.azure.batch.cloudpool
+[rest_addpool]: /rest/api/batchservice/pool/add
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
-[poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
-[task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
+[poolcreate_net]: /dotnet/api/microsoft.azure.batch.pooloperations
+[task_schedule]: /dotnet/api/microsoft.azure.batch.cloudpool
 

@@ -3,12 +3,11 @@ title: Szülő-erőforrással kapcsolatos hibák
 description: Ismerteti, Hogyan oldhatók meg a hibák, amikor egy Azure Resource Manager sablonban lévő szülő erőforrással dolgozik.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673660"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>A szülő erőforrások hibáinak elhárítása
 
@@ -25,7 +24,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Ok
 
-Ha az egyik erőforrás gyermek egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. A gyermek erőforrás neve határozza meg a fölérendelt erőforrással létesített kapcsolatokat. A gyermek erőforrás neve a (z) formátumban `<parent-resource-name>/<child-resource-name>`van. Előfordulhat például, hogy egy SQL Database a következőként van meghatározva:
+Ha az egyik erőforrás gyermek egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. A gyermek erőforrás neve határozza meg a fölérendelt erőforrással létesített kapcsolatokat. A gyermek erőforrás neve a (z) formátumban van `<parent-resource-name>/<child-resource-name>` . Előfordulhat például, hogy egy SQL Database a következőként van meghatározva:
 
 ```json
 {
@@ -52,7 +51,7 @@ Ha ezt a hibát szeretné megoldani, ha a fölérendelt erőforrást korábban e
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {

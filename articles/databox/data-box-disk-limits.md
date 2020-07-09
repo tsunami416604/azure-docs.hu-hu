@@ -8,12 +8,11 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099077"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
@@ -56,6 +55,7 @@ Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és f
     - Egy erőforráscsoport csak egy adott nevű felügyelt lemezt tartalmazhat az előre létrehozott mappákban és a teljes Data Box Disken. Ez azt is jelenti, hogy az előre létrehozott mappákba feltöltött VHD-knak egyedi névvel kell rendelkezniük. Győződjön meg arról, hogy a megadott név nem egyezik meg egy erőforráscsoport meglévő felügyelt lemez nevével sem. Ha a VHD-k azonos névvel rendelkeznek, akkor csak egy VHD lesz átalakítva egy azonos névvel rendelkező felügyelt lemezzé. A többi VHD-fájl lapblobként lesz feltöltve az előkészítési tárfiókba.
     - Mindig másolja át a VHD-kat az egyik előre létrehozott mappába. Ha a VHD-kat ezen mappákon kívülre vagy egy Ön által létrehozott mappába másolja, akkor a VHD-k nem felügyelt lemezekként, hanem lapblobként lesznek feltöltve az Azure Storage-fiókba.
     - Csak a rögzített VHD-ket lehet feltölteni felügyelt lemezek létrehozásához. A dinamikus VHD-k, a virtuális különbséglemezek és a VHDX-fájlok nem támogatottak.
+    - Az előlétrehozott felügyelt lemezekre másolt nem VHD-fájlokat a rendszer nem konvertálja felügyelt lemezre.
 
 ## <a name="azure-storage-account-size-limits"></a>Azure Storage-fiók méretének korlátai
 
@@ -83,14 +83,14 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 | Entitás                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tárolók nevei a blob és az oldal blobja számára <br> Azure Files fájlmegosztás neve | Érvényes DNS-névnek kell lennie, amely 3 – 63 karakter hosszú lehet. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
-| Az Azure Files címtár-és fájlnevei     |<li> Kis-és nagybetűket megőrző, kis-és nagybetűk megkülönböztetése, és legfeljebb 255 karakter hosszú lehet. </li><li> A perjel (/) nem végződhet. </li><li>Ha meg van adni, a rendszer automatikusan eltávolítja. </li><li> A következő karakterek nem engedélyezettek:<code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> A nem engedélyezett URL-címek elérési útja nem megengedett. A kódok, \\például a uE000 nem érvényes Unicode-karakterek. Bizonyos ASCII-vagy Unicode-karakterek, például a vezérlési karakterek ( \\kell lennie 0x00 – 0x1F, u0081 stb.) nem engedélyezettek. A Unicode karakterláncokat a HTTP/1.1-es verzióra vonatkozó szabályoknál lásd: RFC 2616, 2,2. szakasz, alapszintű szabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, dot Character (.), és két pont (...).</li>|
+| Az Azure Files címtár-és fájlnevei     |<li> Kis-és nagybetűket megőrző, kis-és nagybetűk megkülönböztetése, és legfeljebb 255 karakter hosszú lehet. </li><li> A perjel (/) nem végződhet. </li><li>Ha meg van adni, a rendszer automatikusan eltávolítja. </li><li> A következő karakterek nem engedélyezettek:<code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> A nem engedélyezett URL-címek elérési útja nem megengedett. \\A kódok, például a uE000 nem érvényes Unicode-karakterek. Bizonyos ASCII-vagy Unicode-karakterek, például a vezérlési karakterek (kell lennie 0x00 – 0x1F, \\ u0081 stb.) nem engedélyezettek. A Unicode karakterláncokat a HTTP/1.1-es verzióra vonatkozó szabályoknál lásd: RFC 2616, 2,2. szakasz, alapszintű szabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, dot Character (.), és két pont (...).</li>|
 | Blobnevek blokkblob és lapblob esetén      | A blobnevek megkülönböztetik a kis- és nagybetűket, illetve bármilyen karakterkombinációt tartalmazhatnak <br> A blob nevének 1–1024 karakter hosszúságúnak kell lennie. <br> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. <br>A blob nevét alkotó részleges útvonalak száma legfeljebb 254 lehet. A részleges útvonalak két elválasztókarakter (pl. a perjel „/”) közötti sztringek, amelyek megegyeznek egy virtuális könyvtár nevével. |
 
 ## <a name="managed-disk-naming-conventions"></a>Felügyelt lemez elnevezési konvenciói
 
 | Entitás | Konvenciók                                             |
 |-------------------|-----------------------------------------------------------|
-| Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A névnek nem lehetnek szóközök vagy `/`.                                              |
+| Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A névnek nem lehetnek szóközök vagy `/` .                                              |
 
 ## <a name="next-steps"></a>További lépések
 

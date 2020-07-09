@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e1773ef81a5b727187a9a69ccc7ce7ad0421fb2c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80246772"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296202"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új Android-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -28,19 +28,19 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 ## <a name="getting-started"></a>Első lépések
 
-Android Studio elindítása. Az **üdvözli Android Studio** ablakban kattintson az **új Android Studio projekt indítása**lehetőségre. Ha már megnyitott egy projektet, válassza a **fájl**->**új projekt**lehetőséget.
+Android Studio elindítása. Az **üdvözli Android Studio** ablakban kattintson az **új Android Studio projekt indítása**lehetőségre. Ha már megnyitott egy projektet, válassza a **fájl** -> **új projekt**lehetőséget.
 
-Az **új projekt létrehozása** ablakban a **telefon és a tábla** területen válassza az **üres tevékenység**lehetőséget, majd kattintson a **tovább**gombra. Ezután a **minimális API-szint**területen válassza `API 26: Android 8.0 (Oreo)`ki a elemet, és győződjön meg arról `Java`, hogy a **nyelv** értéke. Érdemes lehet módosítani a projekt nevét & helyet és a csomag nevét. Hagyja meg a többi beállítást. Kattintson a **Befejezés** gombra. Ekkor elindul az **összetevő-telepítő** . Ha elkészült, kattintson a **Befejezés**gombra. Néhány feldolgozás után a Android Studio megnyitja az IDE-t.
+Az **új projekt létrehozása** ablakban a **telefon és a tábla** területen válassza az **üres tevékenység**lehetőséget, majd kattintson a **tovább**gombra. Ezután a **minimális API-szint**területen válassza ki `API 26: Android 8.0 (Oreo)` a elemet, és győződjön meg arról, hogy a **nyelv** értéke `Java` . Érdemes lehet módosítani a projekt nevét & helyet és a csomag nevét. Hagyja meg a többi beállítást. Kattintson a **Befejezés** gombra. Ekkor elindul az **összetevő-telepítő** . Ha elkészült, kattintson a **Befejezés**gombra. Néhány feldolgozás után a Android Studio megnyitja az IDE-t.
 
 ## <a name="trying-it-out"></a>Kipróbálás
 
-Az új alkalmazás teszteléséhez csatlakoztassa a fejlesztői eszközöket a fejlesztői számítógéphez USB-kábellel. ->Kattintson **az****alkalmazás futtatása**elemre. A **telepítési cél kiválasztása** ablakban válassza ki az eszközt, majd kattintson **az OK**gombra. Android Studio telepíti az alkalmazást a csatlakoztatott eszközön, és elindítja azt. Ekkor megjelenik a ""Helló világ!"alkalmazás!" az eszközön futó alkalmazásban jelenik meg. ->Kattintson **az****alkalmazás leállítása**parancsra.
+Az új alkalmazás teszteléséhez csatlakoztassa a fejlesztői eszközöket a fejlesztői számítógéphez USB-kábellel. Kattintson **az** -> **alkalmazás futtatása**elemre. A **telepítési cél kiválasztása** ablakban válassza ki az eszközt, majd kattintson **az OK**gombra. Android Studio telepíti az alkalmazást a csatlakoztatott eszközön, és elindítja azt. Ekkor megjelenik a ""Helló világ!"alkalmazás!" az eszközön futó alkalmazásban jelenik meg. Kattintson **az** -> **alkalmazás leállítása**parancsra.
 
 ## <a name="integrating-_arcore_"></a>A _ARCore_ integrálása
 
 A <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> a Google platformja a kibővített valósággal kapcsolatos tapasztalatok kiépítése érdekében, amely lehetővé teszi, hogy az eszköz nyomon követhesse az általa áthelyezett pozíciót, és létrehozza a valós világ saját megértését.
 
-Módosítsa `app\manifests\AndroidManifest.xml` úgy, hogy a legfelső `<manifest>` csomóponton belül szerepeljen a következő bejegyzések. Ez a kódrészlet néhány dolgot tartalmaz:
+Módosítsa `app\manifests\AndroidManifest.xml` úgy, hogy a legfelső csomóponton belül szerepeljen a következő bejegyzések `<manifest>` . Ez a kódrészlet néhány dolgot tartalmaz:
 
 - Lehetővé teszi az alkalmazás számára az eszköz kamerájának elérését.
 - Azt is biztosítja, hogy az alkalmazás csak a ARCore támogató eszközök Google Play Áruház látható legyen.
@@ -71,7 +71,7 @@ dependencies {
 
 A [_Sceneform_](https://developers.google.com/sceneform/develop/) megkönnyíti a valósághű 3D-jelenetek megjelenítését a kibővített Reality-alkalmazásokban anélkül, hogy az OpenGL megismerése nélkül kellene megtanulnia.
 
-Módosítsa `Gradle Scripts\build.gradle (Module: app)` , hogy tartalmazza a következő bejegyzéseket. Ez a kód lehetővé teszi az alkalmazás számára, hogy a Java 8 nyelvi összeállításait `Sceneform` használja, amelyekhez szükség van. Azt is biztosítja, hogy az alkalmazás `Sceneform` a 1,8-es verziót használja, mivel az alkalmazás által használt ARCore-verziónak meg kell egyeznie. A módosítás után értesítést kaphat a szinkronizálást kérő Gradle: kattintson a **szinkronizálás most**elemre.
+Módosítsa `Gradle Scripts\build.gradle (Module: app)` , hogy tartalmazza a következő bejegyzéseket. Ez a kód lehetővé teszi az alkalmazás számára, hogy a Java 8 nyelvi összeállításait használja, amelyekhez `Sceneform` szükség van. Azt is biztosítja, hogy az alkalmazás a `Sceneform` 1,8-es verziót használja, mivel az alkalmazás által használt ARCore-verziónak meg kell egyeznie. A módosítás után értesítést kaphat a szinkronizálást kérő Gradle: kattintson a **szinkronizálás most**elemre.
 
 ```
 android {
@@ -90,7 +90,7 @@ dependencies {
 }
 ```
 
-Nyissa `app\res\layout\activity_main.xml`meg a t, és cserélje le `<TextView>` a meglévő Hello Wolrd elemet a következő ArFragment. Ez a kód azt eredményezi, hogy a kamera hírcsatornája megjelenik a képernyőn, így a ARCore nyomon követheti az eszköz pozícióját.
+Nyissa meg a `app\res\layout\activity_main.xml` t, és cserélje le a meglévő Hello Wolrd `<TextView>` elemet a következő ArFragment. Ez a kód azt eredményezi, hogy a kamera hírcsatornája megjelenik a képernyőn, így a ARCore nyomon követheti az eszköz pozícióját.
 
 ```xml
 <fragment android:name="com.google.ar.sceneform.ux.ArFragment"
@@ -103,21 +103,21 @@ Nyissa `app\res\layout\activity_main.xml`meg a t, és cserélje le `<TextView>` 
 
 ## <a name="place-an-object-in-the-real-world"></a>Egy objektum elhelyezése a valós világban
 
-Hozzuk létre & helyezzen egy objektumot az alkalmazás használatával. Először adja hozzá a következő importálásokat a `app\java\<PackageName>\MainActivity`alkalmazáshoz:
+Hozzuk létre & helyezzen egy objektumot az alkalmazás használatával. Először adja hozzá a következő importálásokat a alkalmazáshoz `app\java\<PackageName>\MainActivity` :
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=23-33)]
 
-Ezután adja hozzá a következő tag-változókat `MainActivity` a osztályhoz:
+Ezután adja hozzá a következő tag-változókat a `MainActivity` osztályhoz:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=52-57)]
 
-Ezután adja hozzá a következő kódot `app\java\<PackageName>\MainActivity` `onCreate()` a metódushoz. Ez a kód egy figyelőt fog összekapcsolni `handleTap()`, amely akkor fog megjelenni, amikor a felhasználó az eszközön koppint a képernyőre. Ha a koppintás úgy történik, hogy egy valós, a ARCore által már ismert felszínen fut, a figyelő futni fog.
+Ezután adja hozzá a következő kódot a `app\java\<PackageName>\MainActivity` `onCreate()` metódushoz. Ez a kód egy figyelőt fog összekapcsolni, `handleTap()` amely akkor fog megjelenni, amikor a felhasználó az eszközön koppint a képernyőre. Ha a koppintás úgy történik, hogy egy valós, a ARCore által már ismert felszínen fut, a figyelő futni fog.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-74,85&highlight=6-7)]
 
-Végül adja hozzá a következő `handleTap()` metódust, amely összekapcsolja az összeset együtt. Létrehoz egy gömbet, és elhelyezi a kitalált helyen. A gömb kezdetben feketévé válik, mert `this.recommendedSessionProgress` jelenleg nulla értékre van állítva. Ez az érték később lesz módosítva.
+Végül adja hozzá a következő `handleTap()` metódust, amely összekapcsolja az összeset együtt. Létrehoz egy gömbet, és elhelyezi a kitalált helyen. A gömb kezdetben feketévé válik, mert jelenleg `this.recommendedSessionProgress` nulla értékre van állítva. Ez az érték később lesz módosítva.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-172,175-183,199-200)]
 
 [Telepítse](#trying-it-out) újra az alkalmazást az eszközére, hogy még egyszer érvényesítse. Ezúttal áthelyezheti az eszközt, hogy ARCore a környezet felismerésének megkezdéséhez. Ezután koppintson a képernyőre a létrehozásához & helyezze el a fekete gömbet a választott felületen.
 
@@ -134,7 +134,7 @@ dependencies {
 }
 ```
 
-Kattintson a jobb `app\java\<PackageName>` ->gombbal az **új**->**Java-osztály**elemre. Állítsa **Name** a nevet _MyFirstApp_, a **Szuperosztály** pedig az _Android. app. Application_értékre. Hagyja meg a többi beállítást. Kattintson az **OK** gombra. A rendszer létrehoz `MyFirstApp.java` egy nevű fájlt. Adja hozzá a következő importálást:
+Kattintson a jobb gombbal az `app\java\<PackageName>` -> **új** -> **Java-osztály**elemre. Állítsa **Name** a nevet _MyFirstApp_, a **Szuperosztály** pedig az _Android. app. Application_értékre. Hagyja meg a többi beállítást. Kattintson az **OK** gombra. A rendszer létrehoz egy nevű fájlt `MyFirstApp.java` . Adja hozzá a következő importálást:
 
 ```java
 import com.microsoft.CloudServices;
@@ -150,7 +150,7 @@ Ezután adja hozzá a következő kódot az új `MyFirstApp` osztályban, amely 
     }
 ```
 
-Most módosítsa `app\manifests\AndroidManifest.xml` a következő bejegyzést a gyökérszintű `<application>` csomóponton belül. Ez a kód összekapcsolja az alkalmazásba létrehozott használati osztályt.
+Most módosítsa a `app\manifests\AndroidManifest.xml` következő bejegyzést a gyökérszintű `<application>` csomóponton belül. Ez a kód összekapcsolja az alkalmazásba létrehozott használati osztályt.
 
 ```xml
     <application
@@ -159,45 +159,45 @@ Most módosítsa `app\manifests\AndroidManifest.xml` a következő bejegyzést a
     </application>
 ```
 
-`app\java\<PackageName>\MainActivity`Ezután adja hozzá a következő importálásokat a alkalmazáshoz:
+Ezután `app\java\<PackageName>\MainActivity` adja hozzá a következő importálásokat a alkalmazáshoz:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=33-40&highlight=2-8)]
 
-Ezután adja hozzá a következő tag-változókat `MainActivity` a osztályhoz:
+Ezután adja hozzá a következő tag-változókat a `MainActivity` osztályhoz:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=57-60&highlight=3-4)]
 
 Ezután adja hozzá a következő `initializeSession()` metódust az `mainActivity` osztályon belül. A meghívást követően az Azure térbeli horgonyok munkamenetét a rendszer az alkalmazás indításakor hozza létre és megfelelően inicializálja.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,147)]
 
-Most pedig `initializeSession()` `onCreate()` Ismerkedjen meg a metódussal. Emellett biztosítjuk, hogy a fényképezőgép-hírcsatornából származó képkockákat a rendszer az Azure térbeli horgonyok SDK-ba küldi a feldolgozáshoz.
+Most pedig Ismerkedjen meg a metódussal `initializeSession()` `onCreate()` . Emellett biztosítjuk, hogy a fényképezőgép-hírcsatornából származó képkockákat a rendszer az Azure térbeli horgonyok SDK-ba küldi a feldolgozáshoz.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-85&highlight=9-17)]
 
 Végül adja hozzá a következő kódot a `handleTap()` metódushoz. Egy helyi Azure térbeli horgonyt fog csatolni a valós világban elhelyezett fekete gömbhöz.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-183,199-200&highlight=12-13)]
 
 Még egyszer [telepítse](#trying-it-out) újra az alkalmazást. Mozgassa az eszközt, koppintson a képernyőre, és helyezzen el egy fekete gömbet. Ezúttal azonban a kód egy helyi Azure térbeli horgonyt hoz létre és csatol a szférához.
 
-Mielőtt továbblépne, létre kell hoznia egy Azure térbeli horgonyok fiókjának azonosítóját és kulcsát, ha még nem tette meg. A beszerzéséhez kövesse az alábbi szakaszt.
+Mielőtt továbblépne, létre kell hoznia egy Azure térbeli horgonyt a fiók azonosítójának, kulcsának és tartományának beszerzéséhez, ha még nem tette meg. A beszerzéséhez kövesse az alábbi szakaszt.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>Töltse fel a helyi horgonyt a felhőbe
 
-Miután megtörtént az Azure térbeli horgonyok fiókjának azonosítója és kulcsa, `app\java\<PackageName>\MainActivity`visszatérhetünk a következő importálásokból:
+Ha már rendelkezik az Azure-beli térbeli horgonyok fiókjának azonosítójának, kulcsának és tartományának használatával, visszatérhet `app\java\<PackageName>\MainActivity` a következő importálások hozzáadásához:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
-Ezután adja hozzá a következő tag-változókat `MainActivity` a osztályhoz:
+Ezután adja hozzá a következő tag-változókat a `MainActivity` osztályhoz:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-Most adja hozzá a következő kódot a `initializeSession()` metódushoz. Első lépésként ez a kód lehetővé teszi, hogy az alkalmazás figyelje az Azure térbeli horgonyok SDK által végrehajtott előrehaladást, mivel a begyűjti a képkockákat a kamerás hírcsatornából. Ahogy igen, a gömb színe az eredeti fekete, szürke színre változik. Ezután a rendszer bekapcsolja a fehér keretet, hogy a horgonyt a felhőbe küldje el. Másodszor, ez a kód megadja a Felhőbeli háttérrel való kommunikációhoz szükséges hitelesítő adatokat. Itt konfigurálhatja az alkalmazást, hogy a fiók azonosítóját és kulcsát használja. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
+Most adja hozzá a következő kódot a `initializeSession()` metódushoz. Első lépésként ez a kód lehetővé teszi, hogy az alkalmazás figyelje az Azure térbeli horgonyok SDK által végrehajtott előrehaladást, mivel a begyűjti a képkockákat a kamerás hírcsatornából. Ahogy igen, a gömb színe az eredeti fekete, szürke színre változik. Ezután a rendszer bekapcsolja a fehér keretet, hogy a horgonyt a felhőbe küldje el. Másodszor, ez a kód megadja a Felhőbeli háttérrel való kommunikációhoz szükséges hitelesítő adatokat. Itt állíthatja be, hogy az alkalmazás a fiók azonosítójának, kulcsának és tartományának használatára legyen konfigurálva. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-148&highlight=11-37)]
 
 Ezután adja hozzá a következő `uploadCloudAnchorAsync()` metódust az `mainActivity` osztályon belül. Ezt követően a metódus aszinkron módon várakozik, amíg az eszközről elegendő keretet nem gyűjt. Amint ez megtörténik, a rendszer a gömb színét sárga értékre cseréli, majd elkezdi feltölteni a helyi Azure térbeli horgonyt a felhőbe. A feltöltés befejeződése után a kód egy szerkesztőpont-azonosítót ad vissza.
 
@@ -205,7 +205,7 @@ Ezután adja hozzá a következő `uploadCloudAnchorAsync()` metódust az `mainA
 
 Végül Ismerkedjen meg egymással. A `handleTap()` metódusban adja hozzá a következő kódot. A `uploadCloudAnchorAsync()` metódust a gömb létrehozása után azonnal meghívja. A metódus visszatérése után az alábbi kód egy végső frissítést hajt végre a szférában, és a színét kékre változtatja.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-200&highlight=24-37)]
 
 Még egyszer [telepítse](#trying-it-out) újra az alkalmazást. Mozgassa az eszközt, koppintson a képernyőre, és helyezze el a gömbjét. Ezúttal azonban a gömb színe feketén fehérre változik, mivel a rendszer begyűjti a fényképezőgép kereteit. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a `Logcat` Android Studioon belüli ablakot is használhatja az alkalmazás által küldött naplóüzenetek figyelésére. Például a munkamenet előrehaladása a keret rögzítése során és a felhő által a feltöltés befejeződése után visszaadott szerkesztőpont-azonosító.
 

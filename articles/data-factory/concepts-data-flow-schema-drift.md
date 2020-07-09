@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886623"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Séma-eltolódás a leképezési adatfolyamban
 
@@ -37,7 +37,7 @@ Ez a videó bevezetést nyújt néhány olyan összetett megoldásról, amelyet 
 
 ## <a name="schema-drift-in-source"></a>Séma-eltolódás a forrásban
 
-A forrás definíciójában lévő adatfolyamatba érkező oszlopok "sodródott" értékűek, ha nem jelennek meg a forrás kivetítésében. A forrás-kivetítést a forrás-átalakítás leképezés lapján tekintheti meg. Ha kijelöl egy adatkészletet a forráshoz, az ADF automatikusan átveszi a sémát az adatkészletből, és létrehoz egy projektet az adott adatkészlet-séma definíciójában.
+A forrás definíciójában lévő adatfolyamatba érkező oszlopok "sodródott" értékűek, ha nem jelennek meg a forrás kivetítésében. A forrás-kivetítést a forrás-átalakítás leképezés lapján tekintheti meg. Ha kijelöl egy adatkészletet a forráshoz, az ADF automatikusan átveszi a sémát az adatkészletből, és létrehoz egy leképezést az adatkészlet sémájának definíciójában.
 
 A forrás-átalakításban a séma-eltolódás olyan oszlopok olvasására van meghatározva, amelyek nem határozzák meg az adatkészlet sémáját. A séma eltolódásának engedélyezéséhez jelölje be a **séma eltolódásának engedélyezése** a forrás-átalakításban lehetőséget.
 
@@ -59,7 +59,7 @@ Ha engedélyezve van a séma-eltolódás, győződjön meg arról, hogy a lekép
 
 Ha az adatfolyamnak vannak sodródott oszlopai, az átalakításokban a következő módszerekkel érheti el őket:
 
-* A és `byPosition` `byName` a kifejezések használatával explicit módon hivatkozhat egy oszlopra név vagy pozíció száma alapján.
+* A `byPosition` és a `byName` kifejezések használatával explicit módon hivatkozhat egy oszlopra név vagy pozíció száma alapján.
 * Oszlop mintázatának hozzáadása egy származtatott oszlophoz vagy összesítő átalakításhoz a név, a stream, a pozíció vagy a típus bármely kombinációjának megfelelően
 * Szabályon alapuló leképezés hozzáadása egy Select vagy mosogató átalakításban, hogy az oszlopok aliasai megegyezzenek a mintázattal
 
@@ -71,7 +71,7 @@ A lebegő oszlopok explicit módon történő hivatkozásához gyorsan létrehoz
 
 ![Térkép felúszik](media/data-flow/mapdrifted1.png "Térkép felúszik")
 
-A generált származtatott oszlop transzformációjában minden egyes lebegő oszlop az észlelt névvel és adattípussal van leképezve. A fenti adatelőnézetben a "movieId" oszlop egész számként van észlelve. Ha a **leképezési** felszínre kattintott, a MovieId a származtatott oszlopban `toInteger(byName('movieId'))` van definiálva, és a séma nézeteiben szerepel az alsóbb rétegbeli átalakításokban.
+A generált származtatott oszlop transzformációjában minden egyes lebegő oszlop az észlelt névvel és adattípussal van leképezve. A fenti adatelőnézetben a "movieId" oszlop egész számként van észlelve. Ha a **leképezési** felszínre kattintott, a MovieId a származtatott oszlopban van definiálva, `toInteger(byName('movieId'))` és a séma nézeteiben szerepel az alsóbb rétegbeli átalakításokban.
 
 ![Térkép felúszik](media/data-flow/mapdrifted2.png "Térkép felúszik")
 

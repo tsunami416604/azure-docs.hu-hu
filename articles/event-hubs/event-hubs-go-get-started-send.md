@@ -1,21 +1,14 @@
 ---
 title: 'Gyors útmutató: események küldése és fogadása a go-Azure Event Hubs'
 description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan go-alkalmazást, amely eseményeket küld az Azure Event Hubsból.'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: kamalb
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720588"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320352"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rövid útmutató: események küldése vagy fogadása Event Hubsról a go használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -30,7 +23,7 @@ Ez az oktatóanyag azt ismerteti, hogyan írhat go-alkalmazásokat események k�
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 - A go telepítése helyileg. Ha szükséges, kövesse [ezeket az utasításokat](https://golang.org/doc/install) .
-- Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot][] .
+- Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][].
 - **Hozzon létre egy Event Hubs névteret és egy Event hubot**. A [Azure Portal](https://portal.azure.com) használatával hozzon létre Event Hubs típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyekre az alkalmazásnak szüksége van az Event hub-vel való kommunikációhoz. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást.
 
 ## <a name="send-events"></a>Események küldése
@@ -38,7 +31,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan go-alkalmazást, am
 
 ### <a name="install-go-package"></a>Go-csomag telepítése
 
-Szerezze be a go `go get` -csomagot Event Hubs a `dep`vagy a rendszerhez. Például:
+Szerezze be a go-csomagot Event Hubs a vagy a rendszerhez `go get` `dep` . Például:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -139,7 +132,7 @@ A go SDK-val tároló összetevők létrehozására szolgáló minták a [Go Sam
 
 ### <a name="go-packages"></a>Csomagok keresése
 
-Az üzenetek fogadásához szerezze be a go `go get` -csomagokat Event Hubs a vagy `dep`a következővel:
+Az üzenetek fogadásához szerezze be a go-csomagokat Event Hubs a vagy a következővel `go get` `dep` :
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go/...
@@ -269,9 +262,9 @@ if err != nil {
 
 ### <a name="write-code-to-receive-messages"></a>Kód írása az üzenetek fogadásához
 
-Minden beállítással megkezdheti az Event processzor-gazdagépet, `Start(context)` hogy folyamatosan fusson, vagy `StartNonBlocking(context)` csak addig, amíg az üzenetek elérhetők.
+Minden beállítással megkezdheti az Event processzor-gazdagépet, `Start(context)` hogy folyamatosan fusson, vagy csak addig, amíg az `StartNonBlocking(context)` üzenetek elérhetők.
 
-Ez az oktatóanyag az alábbiak szerint kezdődik és fut: Példa a GitHub-minta használatára `StartNonBlocking`:
+Ez az oktatóanyag az alábbiak szerint kezdődik és fut: Példa a GitHub-minta használatára `StartNonBlocking` :
 
 ```go
 ctx := context.Background()

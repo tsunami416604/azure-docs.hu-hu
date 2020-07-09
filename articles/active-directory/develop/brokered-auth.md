@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76697897"
 ---
 # <a name="brokered-authentication-in-android"></a>Felügyelt hitelesítés az Androidban
@@ -56,9 +55,9 @@ Ha egy eszközön még nincs telepítve Broker-alkalmazás, a MSAL arra utasítj
 
 ### <a name="when-a-broker-is-installed"></a>Ügynök telepítésekor
 
-Ha egy ügynök telepítve van egy eszközön, az összes további interaktív jogkivonat `acquireToken()`-kérést (hívásokat) a közvetítő kezeli, nem pedig HELYILEG a MSAL. A MSAL számára korábban elérhető SSO-állapotok nem érhetők el a közvetítő számára. Ennek eredményeképpen a felhasználónak újra hitelesítenie kell magát, vagy ki kell választania egy fiókot az eszközön ismert fiókok meglévő listájából.
+Ha egy ügynök telepítve van egy eszközön, az összes további interaktív jogkivonat-kérést (hívásokat `acquireToken()` ) a közvetítő kezeli, nem pedig helyileg a MSAL. A MSAL számára korábban elérhető SSO-állapotok nem érhetők el a közvetítő számára. Ennek eredményeképpen a felhasználónak újra hitelesítenie kell magát, vagy ki kell választania egy fiókot az eszközön ismert fiókok meglévő listájából.
 
-A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. A következő kérelem csak akkor `MsalUiRequiredException` jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException`több okból is kidobják, és interaktív módon kell feloldani. Ezek gyakori okai:
+A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException`több okból is kidobják, és interaktív módon kell feloldani. Ezek gyakori okai:
 
 - A felhasználó megváltoztatta a fiókhoz társított jelszót.
 - A felhasználó fiókja már nem felel meg a feltételes hozzáférési szabályzatnak.
@@ -118,7 +117,7 @@ A MSAL kétféle módon kommunikál a közvetítővel:
 
 A MSAL először a Broker Bound szolgáltatást használja, mert a szolgáltatás meghívásakor nincs szükség Android-engedélyekre. Ha a kötött szolgáltatás kötése meghiúsul, a MSAL az Android AccountManager API-t fogja használni. A MSAL csak akkor teszi ezt, ha az alkalmazás már megkapta az `"READ_CONTACTS"` engedélyt.
 
-Ha hibakódot kap `MsalClientException` `"BROKER_BIND_FAILURE"`, két lehetőség közül választhat:
+Ha `MsalClientException` hibakódot kap `"BROKER_BIND_FAILURE"` , két lehetőség közül választhat:
 
 - Kérje meg a felhasználót, hogy tiltsa le az Microsoft Authenticator alkalmazás és a Intune Céges portál energiagazdálkodásának optimalizálását.
-- Kérje meg a felhasználót, hogy `"READ_CONTACTS"` adja meg az engedélyt
+- Kérje meg a felhasználót, hogy adja meg az `"READ_CONTACTS"` engedélyt

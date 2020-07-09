@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77604453"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782857"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: a szabályozás megfelelőségének javítása
 ---
@@ -103,4 +103,4 @@ További információ:
 
 -   [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.
 
--   [Javítsa a Azure Security Center biztonságos pontszámát](security-center-secure-score.md) – Ismerje meg, hogyan rangsorolhatja a biztonsági réseket és a biztonsági javaslatokat, hogy a leghatékonyabban javítsa a biztonságot.
+-   [Javítsa a Azure Security Center biztonságos pontszámát](secure-score-security-controls.md) – Ismerje meg, hogyan rangsorolhatja a biztonsági réseket és a biztonsági javaslatokat, hogy a leghatékonyabban javítsa a biztonságot.

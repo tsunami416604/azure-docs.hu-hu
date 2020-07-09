@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611288"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -56,7 +56,7 @@ A következő részekben ismertetjük az egyes lehetséges problémák leírás�
 
 **Probléma:** Nincs elég elérhető licenc a csoportban megadott egyik termékhez sem. További licenceket kell vásárolnia a termékhez, vagy fel kell vennie a nem használt licenceket más felhasználóktól vagy csoportokból.
 
-Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, lépjen **Azure Active Directory** > **licencek** > **minden termék**lehetőségre.
+Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, lépjen **Azure Active Directory**  >  **licencek**  >  **minden termék**lehetőségre.
 
 Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a licenceket, válasszon ki egy terméket. A **licenccel rendelkező felhasználók**területen megtekintheti az összes olyan felhasználó listáját, akik közvetlenül vagy egy vagy több csoporton keresztül rendeltek hozzá licenceket. A **licencelt csoportok**területen láthatja az összes olyan csoportot, amelyhez a termékek hozzá lettek rendelve.
 
@@ -87,7 +87,7 @@ A probléma megoldásához meg kell győződnie arról, hogy a szükséges csoma
 
 ## <a name="usage-location-isnt-allowed"></a>A használat helye nem engedélyezett
 
-**Probléma:** Bizonyos Microsoft-szolgáltatások nem érhetők el minden helyen a helyi törvények és rendeletek miatt. Ahhoz, hogy licencet rendeljen a felhasználóhoz, meg kell adnia a felhasználó **használati helye** tulajdonságát. Megadhatja a helyet a Azure Portal **felhasználói** > **profil** > **beállításai** szakaszában.
+**Probléma:** Bizonyos Microsoft-szolgáltatások nem érhetők el minden helyen a helyi törvények és rendeletek miatt. Ahhoz, hogy licencet rendeljen a felhasználóhoz, meg kell adnia a felhasználó **használati helye** tulajdonságát. Megadhatja a helyet a Azure Portal **felhasználói**  >  **profil**  >  **beállításai** szakaszában.
 
 Ha az Azure AD olyan felhasználóhoz próbál csoport-licencet hozzárendelni, amelynek a használati helye nem támogatott, a művelet sikertelen lesz, és hibát jelez a felhasználónál.
 
@@ -120,7 +120,7 @@ A licenc-hozzárendelés felhasználó általi frissítése a proxy-címek kisz�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException a naplókban
 
 **Probléma:** A felhasználó rendelkezik a LicenseAssignmentAttributeConcurrencyException a naplózási naplókban.
-Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az AZure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
+Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az Azure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Egynél több, csoporthoz rendelt licenc
 

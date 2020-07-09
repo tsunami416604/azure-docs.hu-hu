@@ -4,16 +4,16 @@ description: Ismerje meg az Azure import/export szolgáltatás szoftver-és hard
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255313"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512414"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerkövetelményei
 
@@ -50,7 +50,7 @@ A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Sto
 Az egyes feladatokhoz csak egy Storage-fiókból vagy azokból lehet adatátvitelt alkalmazni. Ez azt jelenti, hogy egyetlen importálási/exportálási feladattípus nem terjedhet több Storage-fiókra. További információ az új Storage-fiókok létrehozásáról: [Storage-fiók létrehozása](storage-account-create.md).
 
 > [!IMPORTANT]
-> Az Azure import export szolgáltatás nem támogatja azokat a tárolási fiókokat, amelyeken engedélyezve van a [Virtual Network szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) szolgáltatás. 
+> Az Azure import export szolgáltatás nem támogatja azokat a tárolási fiókokat, amelyeken engedélyezve van a [Virtual Network szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)szolgáltatás   . 
 
 ## <a name="supported-storage-types"></a>Támogatott tárolótípusok
 
@@ -78,11 +78,13 @@ Az importálási/exportálási szolgáltatással az alábbi lemezek listája tá
 |HDD     |  2,5 "<br>3,5 "       |SATA II, SATA III         |
 
 A következő típusú lemezek nem támogatottak:
+
 - USBs.
 - Külső HDD beépített USB-adapterrel.
 - Külső HDD házán belüli lemezek.
 
 Egy adott importálási/exportálási feladatokhoz a következőket teheti:
+
 - Legfeljebb 10 HDD/SSD.
 - Bármilyen méretű HDD/SSD-kombináció.
 
@@ -90,9 +92,6 @@ A nagy számú meghajtó több feladaton is elosztható, és a létrehozható fe
 
 Merevlemezek előkészítésekor és az adatok WAImportExport eszközzel történő másolásakor külső USB-adaptereket is használhat. A legtöbbet a polcon lévő USB 3,0 vagy újabb rendszerű adaptereknek működniük kell.
 
-
 ## <a name="next-steps"></a>További lépések
 
-* [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
 * [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](storage-use-azcopy.md)
-* [Azure importálási REST API minta](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

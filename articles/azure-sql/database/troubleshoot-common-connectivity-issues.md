@@ -9,18 +9,18 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 34c790ee77c05e9e8c5a57a23e153bd9898c1cff
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045556"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078969"
 ---
-# <a name="troubleshooting-transient-connection-errors"></a>Átmeneti kapcsolatok hibáinak elhárítása
+# <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának átmeneti csatlakoztatási hibáinak elhárítása
+
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet megakadályozni, elhárítani, diagnosztizálni és enyhíteni a kapcsolódási hibákat és az olyan átmeneti hibákat, amelyeket az ügyfélalkalmazás a Azure SQL Database, az Azure SQL felügyelt példányával és az Azure szinapszis Analytics szolgáltatással való interakció során észlel. Megtudhatja, hogyan konfigurálhatja az újrapróbálkozási logikát, hogyan alakíthatja ki a kapcsolódási karakterláncot, és hogyan módosíthatja más kapcsolatbeállításokat
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan lehet megakadályozni, elhárítani, diagnosztiz
 
 ## <a name="transient-errors-transient-faults"></a>Átmeneti hibák (átmeneti hibák)
 
-Az átmeneti hiba, amely átmeneti hibának is nevezik, egy mögöttes oka van, amely hamarosan feloldja magát. Az átmeneti hibák esetenként előfordulnak, amikor az Azure-rendszer gyorsan áthelyezi a hardveres erőforrásokat a különböző számítási feladatok egyensúlyának növelése érdekében. Ezeknek az újrakonfigurálási eseményeknek a többsége kevesebb, mint 60 másodperc. Az újrakonfigurálási időszak során előfordulhat, hogy a SQL Database kapcsolódási problémái vannak. Az SQL Databasehoz csatlakozó alkalmazásokat úgy kell felépíteni, hogy elvárják ezeket az átmeneti hibákat. A kezeléséhez az újrapróbálkozási logikát implementálja a kódban, ahelyett, hogy az alkalmazási hibákat felszínre helyezze őket a felhasználók számára.
+Az átmeneti hiba, amely átmeneti hibának is nevezik, egy mögöttes oka van, amely hamarosan feloldja magát. Az átmeneti hibák esetenként előfordulnak, amikor az Azure-rendszer gyorsan áthelyezi a hardveres erőforrásokat a különböző számítási feladatok egyensúlyának növelése érdekében. Ezeknek az újrakonfigurálási eseményeknek a többsége kevesebb, mint 60 másodperc. Az újrakonfigurálási időszakban előfordulhat, hogy problémák léptek fel az adatbázishoz való csatlakozáskor SQL Databaseban. Az adatbázishoz csatlakozó alkalmazásokat úgy kell felépíteni, hogy elvárják ezeket az átmeneti hibákat. A kezeléséhez az újrapróbálkozási logikát implementálja a kódban, ahelyett, hogy az alkalmazási hibákat felszínre helyezze őket a felhasználók számára.
 
 Ha az ügyfélalkalmazás a ADO.NET-t használja, a program a **SqlException**eldobásával kapcsolatos átmeneti hibáról tájékoztat.
 
@@ -37,13 +37,13 @@ Ha az ügyfélalkalmazás a ADO.NET-t használja, a program a **SqlException**el
 
 ### <a name="connection-vs-command"></a>Kapcsolatok és parancsok
 
-Próbálkozzon újra az SQL-kapcsolattal, vagy hozza létre újra a következőtől függően:
+Próbálja megismételni a SQL Database és az SQL felügyelt példányának kapcsolatát, vagy hozza létre újra a következőtől függően:
 
 - **Átmeneti hiba történik a csatlakozás során**
 
 Néhány másodperces késleltetés után próbálja megismételni a kapcsolatokat.
 
-- **Átmeneti hiba történik egy SQL-lekérdezési parancs során**
+- **Átmeneti hiba történik egy SQL Database és az SQL felügyelt példány lekérdezési parancsa során**
 
 Ne próbálkozzon azonnal újra a paranccsal. Ehelyett a késleltetés után frissen hozza létre a kapcsolatot. Ezután próbálja megismételni a parancsot.
 
@@ -51,15 +51,15 @@ Ne próbálkozzon azonnal újra a paranccsal. Ehelyett a késleltetés után fri
 
 ## <a name="retry-logic-for-transient-errors"></a>Újrapróbálkozási logika átmeneti hibák esetén
 
-Az olyan ügyfélprogramok, amelyek időnként átmeneti hibába ütköznek, megbízhatóbbak, ha újrapróbálkozási logikát tartalmaznak. Ha a program a SQL Database harmadik féltől származó middleware-n keresztül kommunikál, kérje meg a gyártót, hogy az átmeneti hibák esetén a middleware tartalmazza-e az újrapróbálkozási logikát.
+Az olyan ügyfélprogramok, amelyek időnként átmeneti hibába ütköznek, megbízhatóbbak, ha újrapróbálkozási logikát tartalmaznak. Ha a program a SQL Database a harmadik féltől származó közbenső adatforráson keresztül kommunikál az adatbázissal, kérje meg a szállítót, hogy a köztes újrapróbálkozási logikát tartalmaz-e átmeneti hibák esetén.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
 ### <a name="principles-for-retry"></a>Újrapróbálkozási alapelvek
 
 - Ha a hiba átmeneti, próbálkozzon újra a kapcsolatok megnyitásával.
-- Ne próbálkozzon közvetlenül újra olyan SQL- `SELECT` utasítással, amely átmeneti hibával meghiúsult. Ehelyett hozzon létre egy új kapcsolatot, majd próbálja megismételni a parancsot `SELECT` .
-- Ha egy SQL `UPDATE` -utasítás átmeneti hibával meghiúsul, hozzon létre egy új kapcsolatot, mielőtt újra próbálkozik a frissítéssel. Az újrapróbálkozási logikának meg kell győződnie arról, hogy a teljes adatbázis-tranzakció befejeződött, vagy hogy a teljes tranzakció vissza lesz állítva.
+- Ne próbálkozzon közvetlenül újra egy olyan SQL Database vagy SQL felügyelt példány `SELECT` utasítással, amely átmeneti hibával meghiúsult. Ehelyett hozzon létre egy új kapcsolatot, majd próbálja megismételni a parancsot `SELECT` .
+- Ha egy SQL Database vagy SQL felügyelt példány `UPDATE` utasítása átmeneti hibával meghiúsul, hozzon létre egy új kapcsolatot, mielőtt újra próbálkozik a frissítéssel. Az újrapróbálkozási logikának meg kell győződnie arról, hogy a teljes adatbázis-tranzakció befejeződött, vagy hogy a teljes tranzakció vissza lesz állítva.
 
 ### <a name="other-considerations-for-retry"></a>Az Újrapróbálkozással kapcsolatos egyéb megfontolások
 
@@ -78,8 +78,8 @@ Azt is megteheti, hogy az újrapróbálkozások maximális számát szeretné be
 
 Az újrapróbálkozási logikával rendelkező példák a következő címen érhetők el:
 
-- [Rugalmas csatlakozás az SQL-hez a ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Rugalmas csatlakozás az SQL-hez a PHP-vel][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Rugalmas csatlakozás az Azure SQL-hez a ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Rugalmas csatlakozás az Azure SQL-hez a PHP-vel][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -105,7 +105,7 @@ A teszt gyakorlati elvégzéséhez a program elindítása előtt húzza ki a sz�
 - A további végrehajtás szüneteltetéséhez használja a **Console. readline** metódust vagy egy OK gombbal rendelkező párbeszédpanelt. A felhasználó a számítógép hálózati csatlakoztatása után megnyomja az ENTER billentyűt.
 - Próbálja megismételni a kapcsolódást, és várta a sikerességet.
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Tesztelés: az adatbázis nevének elírása a csatlakozáskor
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>Tesztelés a Felhasználónév elírásával kapcsolódáskor
 
 A program szándékosan helytelenül betűzheti a felhasználónevet az első kapcsolódási kísérlet előtt. A hiba a következő:
 
@@ -126,7 +126,7 @@ A teszt gyakorlati elvégzéséhez a program felismeri a futásidejű paraméter
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>.NET SqlConnection paraméterek a kapcsolatok újrapróbálkozásához
 
-Ha az ügyfélalkalmazás a .NET-keretrendszer **System. SqlClient. SqlConnection**használatával csatlakozik a SQL Databasehoz, használja a .net 4.6.1-es vagy újabb verzióját (vagy a .net Core-ot), hogy használhassa a kapcsolati újrapróbálkozási funkciót. A szolgáltatással kapcsolatos további információkért tekintse meg [ezt a weblapot](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
+Ha az ügyfélprogram SQL Database a .NET-keretrendszer **System. SqlClient. SqlConnection**használatával csatlakozik az adatbázishoz, használja a .net 4.6.1-es vagy újabb verzióját (vagy a .net Core-t), hogy használhassa a kapcsolati újrapróbálkozási funkciót. A szolgáltatással kapcsolatos további információkért tekintse meg [ezt a weblapot](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -149,7 +149,7 @@ Ha például a Count értéke 3, az intervallum pedig 10 másodperc, akkor a csa
 A **ConnectRetryCount** és a **ConnectRetryInterval** paraméterekkel a **SqlConnection** objektum újra próbálkozik a kapcsolódási művelettel anélkül, hogy elmondja vagy zavarja a programot, például a vezérlés visszaadása a programnak. Az újrapróbálkozások a következő helyzetekben fordulhatnak elő:
 
 - mySqlConnection. open metódus hívása
-- mySqlConnection. Execute metódus hívása
+- mySqlConnection.ExeCute metódus hívása
 
 Van egy finomság. Ha átmeneti hiba történik a *lekérdezés* végrehajtása közben, a **SqlConnection** objektum nem próbálkozik újra a kapcsolódási művelettel. Bizonyára nem próbálja meg újra a lekérdezést. A **SqlConnection** azonban nagyon gyorsan ellenőrzi a kapcsolódást, mielőtt elküldi a lekérdezést a végrehajtáshoz. Ha a gyors vizsgálat csatlakozási problémát észlel, a **SqlConnection** újrapróbálkozik a csatlakozási művelettel. Ha az Újrapróbálkozás sikeres, a rendszer elküldi a lekérdezést a végrehajtáshoz.
 
@@ -159,13 +159,13 @@ Tegyük fel, hogy az alkalmazás robusztus egyéni újrapróbálkozási logikáv
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
-## <a name="connections-to-sql-database"></a>Kapcsolatok SQL Database
+## <a name="connections-to-your-database-in-sql-database"></a>Csatlakozás az adatbázishoz SQL Database
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
 ### <a name="connection-connection-string"></a>Kapcsolatok: kapcsolatok karakterlánca
 
-Az SQL Databasehoz való kapcsolódáshoz szükséges kapcsolati sztring kis mértékben eltér a SQL Serverhoz való kapcsolódáshoz használt karakterlánctól. Az adatbázishoz tartozó kapcsolatok karakterláncát a [Azure Portal](https://portal.azure.com/)másolhatja.
+Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati sztring kis mértékben eltér a SQL Serverhoz való kapcsolódáshoz használt karakterlánctól. Az adatbázishoz tartozó kapcsolatok karakterláncát a [Azure Portal](https://portal.azure.com/)másolhatja.
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -179,7 +179,7 @@ Ha elfelejti az IP-cím konfigurálását, a program egy praktikus hibaüzenette
 
 [!INCLUDE [sql-database-include-ip-address-22-portal](../../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
-További információ: [a tűzfalbeállítások konfigurálása SQL Databaseon](firewall-configure.md).
+További információ: [a tűzfalbeállítások konfigurálása a SQL Databaseban](firewall-configure.md).
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
 ### <a name="connection-ports"></a>Csatlakozás: portok
@@ -193,7 +193,7 @@ Ha például egy Windows rendszerű számítógépen futtatja az ügyfélszoftve
 
 Ha az ügyfélprogram egy Azure-beli virtuális gépen (VM) üzemel, olvassa el [a 1433-es portot a ADO.NET 4,5 és a SQL Database](adonet-v12-develop-direct-route-ports.md).
 
-A portok és IP-címek Azure SQL Database konfigurálásával kapcsolatos háttér-információkért lásd: [Azure SQL Database tűzfal](firewall-configure.md).
+Az adatbázisban található portok és IP-címek konfigurálásával kapcsolatos háttér-információkért lásd: [Azure SQL Database tűzfal](firewall-configure.md).
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
@@ -222,11 +222,11 @@ Ha a ADO.NET 4,0-es vagy korábbi verzióját használja, javasoljuk, hogy friss
 
 ### <a name="diagnostics-test-whether-utilities-can-connect"></a>Diagnosztika: annak tesztelése, hogy a segédprogramok csatlakozhatnak-e
 
-Ha a program nem tud csatlakozni a SQL Databasehoz, az egyik diagnosztikai lehetőség az, hogy megpróbáljon kapcsolódni egy segédprogram-programhoz. Ideális esetben a segédprogram a program által használttal megegyező kódtár használatával csatlakozik.
+Ha a program nem tud csatlakozni az adatbázishoz SQL Database-ben, az egyik diagnosztikai lehetőség az, hogy megpróbáljon kapcsolódni egy segédprogram-programhoz. Ideális esetben a segédprogram a program által használttal megegyező kódtár használatával csatlakozik.
 
 Bármelyik Windows-számítógépen kipróbálhatja a következő segédprogramokat:
 
-- SQL Server Management Studio (SSMS. exe), amely a ADO.NET használatával csatlakozik
+- SQL Server Management Studio (ssms.exe), amely a ADO.NET használatával csatlakozik
 - `sqlcmd.exe`, amely az [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) használatával csatlakozik
 
 Ha a program csatlakoztatva van, tesztelje, hogy egy rövid SQL SELECT lekérdezés működik-e.
@@ -242,7 +242,7 @@ Linux rendszeren a következő segédprogramok hasznosak lehetnek:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Módosítsa a példában szereplő értéket az IP-címére.
 
-Windows rendszeren a [Portqry. exe](https://www.microsoft.com/download/details.aspx?id=17148) segédprogram hasznos lehet. A következő példa egy olyan végrehajtást mutat be, amely a port helyzetét kérdezte le SQL Database és egy hordozható számítógépen futott:
+Windows rendszeren a [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) segédprogram hasznos lehet. Íme egy példa a végrehajtásra, amely lekérdezte a port helyzetét egy SQL Database adatbázisán, és egy hordozható számítógépen futott:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -276,7 +276,7 @@ Az Enterprise Library 6 (EntLib60) .NET által felügyelt osztályokat kínál a
 
 Íme néhány Transact-SQL SELECT utasítás, amely a hibák naplóit és egyéb információkat kérdezi le.
 
-| Napló lekérdezése | Leírás |
+| Napló lekérdezése | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nézet az egyes eseményekről nyújt információkat, amelyek között lehetnek átmeneti hibák vagy csatlakozási hibák.<br/><br/>Ideális esetben összekapcsolhatja a **start_time** vagy **end_time** értékeket, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |A [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nézet a további diagnosztikai események összesített számát kínálja.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
@@ -326,7 +326,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>6. vállalati könyvtár
 
-Az Enterprise Library 6 (EntLib60) olyan .NET-osztályok keretrendszere, amely segít a Cloud Services robusztus ügyfeleinek megvalósításában, amelyek közül az egyik a SQL Database szolgáltatás. A EntLib60 által támogatott egyes területek számára fenntartott témakörök megkereséséhez lásd: [Enterprise Library 6 – április 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
+Az Enterprise Library 6 (EntLib60) olyan .NET-osztályok keretrendszere, amely segít a Cloud Services robusztus ügyfeleinek megvalósításában, amelyek közül az egyik SQL Database. A EntLib60 által támogatott egyes területek számára fenntartott témakörök megkereséséhez lásd: [Enterprise Library 6 – április 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
 Az átmeneti hibák kezelésére szolgáló újrapróbálkozási logika egy olyan rész, amelyben a EntLib60 segíthet. További információkért lásd [: 4 – kitartás, az összes diadal titka: az átmeneti hibák kezelésére szolgáló alkalmazás blokkjának használata](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
@@ -356,7 +356,7 @@ A **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling. TestSupport
 Íme néhány hivatkozás a EntLib60 kapcsolatos információkra:
 
 - Ingyenes könyv letöltése: [fejlesztői útmutató a Microsoft Enterprise Library-hoz, 2. kiadás](https://www.microsoft.com/download/details.aspx?id=41145).
-- Ajánlott eljárások: az [Általános útmutatás](/architecture/best-practices/transient-faults) az újrapróbálkozási logikával kapcsolatos részletes vitát tartalmaz.
+- Ajánlott eljárások: az [Általános útmutatás](/azure/architecture/best-practices/transient-faults) az újrapróbálkozási logikával kapcsolatos részletes vitát tartalmaz.
 - NuGet Letöltés: [Enterprise Library – átmeneti hiba az alkalmazás 6,0-es blokkjában](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

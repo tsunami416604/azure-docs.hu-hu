@@ -1,20 +1,14 @@
 ---
 title: Az Apache flink használata a Apache Kafkahoz – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az Apache flink egy Azure Event hub szolgáltatáshoz
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320138"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Apache Flink használata az Apache Kafkához készült Event Hubs szolgáltatással
 Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja az Apache flink egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Az Azure Event Hubs támogatja az 1,0-es [Apache Kafka-verziót.](https://kafka.apache.org/10/documentation.html)
@@ -51,7 +45,7 @@ Bármely Event Hubs szolgáltatásból történő küldéshez vagy fogadáshoz E
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
-Most, hogy elvégezte a Event Hubs a kapcsolódási karakterláncot, klónozott Azure-Event Hubs a Kafka `flink` -tárházhoz, és navigáljon az almappába:
+Most, hogy elvégezte a Event Hubs a kapcsolódási karakterláncot, klónozott Azure-Event Hubs a Kafka-tárházhoz, és navigáljon az `flink` almappába:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -64,9 +58,9 @@ A megadott flink-előállító példa használatával üzeneteket küldhet a Eve
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka-végpont megadása
 
-#### <a name="producerconfig"></a>producer. config
+#### <a name="producerconfig"></a>producer.config
 
-A `bootstrap.servers` és `sasl.jaas.config` a értékének `producer/src/main/resources/producer.config` frissítésével irányítsa a gyártót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
+A `bootstrap.servers` és a `sasl.jaas.config` értékének frissítésével `producer/src/main/resources/producer.config` irányítsa a gyártót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -87,7 +81,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-A gyártó most megkezdi az események küldését az Event hub `test` -ba a témakörben, és kinyomtatja az eseményeket az stdout-ba.
+A gyártó most megkezdi az események küldését az Event hub-ba a témakörben `test` , és kinyomtatja az eseményeket az stdout-ba.
 
 ## <a name="run-flink-consumer"></a>Flink-fogyasztó futtatása
 
@@ -95,9 +89,9 @@ A megadott fogyasztói példa használatával fogadhat üzeneteket az Event hub-
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka-végpont megadása
 
-#### <a name="consumerconfig"></a>Consumer. config
+#### <a name="consumerconfig"></a>consumer.config
 
-A `bootstrap.servers` és `sasl.jaas.config` a értékének `consumer/src/main/resources/consumer.config` frissítésével irányítsa a fogyasztót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
+A `bootstrap.servers` és a `sasl.jaas.config` értékének frissítésével `consumer/src/main/resources/consumer.config` irányítsa a fogyasztót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -118,7 +112,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Ha az Event hub eseményeivel rendelkezik (például ha a gyártó is fut), akkor a fogyasztó most elkezdi az események fogadását a témakörből `test`.
+Ha az Event hub eseményeivel rendelkezik (például ha a gyártó is fut), akkor a fogyasztó most elkezdi az események fogadását a témakörből `test` .
 
 Tekintse [meg a flink Kafka-összekötő útmutatóját](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) , amely részletesebb információkat biztosít a flink és a Kafka összekapcsolásáról.
 
@@ -129,5 +123,5 @@ Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő 
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
 - [A Kafka-kapcsolat integrálása az Event hubhoz](event-hubs-kafka-connect-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [A befogadó streamek összekötése egy Event hubhoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 2a65579ea7ea1a8e1611b604fa64f6b108c88784
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80546027"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025148"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
 
@@ -55,7 +55,7 @@ Az oktatóanyag ezen részében futtatja a kódot a minta Jupyter notebook *okta
 > Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. 
 > Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
 
-Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de megadhat egy elérésiút-paramétert is, amellyel a fájlra `from_config(path="your/file/path")`mutathat. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
+Importálja az `Workspace` osztályt, és töltse be az előfizetési adatokat a fájlból az `config.json` `from_config().` aktuális könyvtárban található JSON-fájlhoz tartozó függvény használatával, de megadhat egy elérésiút-paramétert is, amellyel a fájlra mutathat `from_config(path="your/file/path")` . A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
 Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot.
 
@@ -74,7 +74,7 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Adatgyűjtés és felkészülés a képzésre
 
-Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a diabéteszes megbetegedések előrehaladásának előrejelzéséhez olyan szolgáltatásokat használ, mint az Age, a gender és a BMI. Töltse be az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/) osztályból, és ossza ki őket képzési és `train_test_split()`tesztelési készletekkel a használatával. Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
+Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a diabéteszes megbetegedések előrehaladásának előrejelzéséhez olyan szolgáltatásokat használ, mint az Age, a gender és a BMI. Töltse be az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/) osztályból, és ossza ki őket képzési és tesztelési készletekkel a használatával `train_test_split()` . Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
 
 
 ```python
@@ -122,10 +122,10 @@ for alpha in alphas:
 
 A fenti kód a következőket hajtja végre:
 
-1. A `alphas` tömbben lévő összes alfa-hiperparaméter esetében új Futtatás jön létre a kísérleten belül. A rendszer naplózza az alfa-értéket az egyes futtatások megkülönböztetése érdekében.
+1. A tömbben lévő összes alfa-hiperparaméter esetében `alphas` új Futtatás jön létre a kísérleten belül. A rendszer naplózza az alfa-értéket az egyes futtatások megkülönböztetése érdekében.
 1. Az egyes futtatások során a Ridge-modell példánya, betanítása és előrejelzések futtatására szolgál. A rendszer kiszámítja a tényleges és az előre jelzett értékeket, majd naplózza a futtatást. Ezen a ponton a futtatáshoz metaadatok vannak csatolva az Alpha értékhez és a gyökátlagos pontosságához.
 1. Ezután az egyes futtatásokhoz tartozó modell szerializálva lesz, és a futtatásra van feltöltve. Ez lehetővé teszi a modell fájljának letöltését a Studio futtatási funkciójával.
-1. Minden iteráció végén meghívja `run.complete()`a futtatást.
+1. Minden iteráció végén meghívja a futtatást `run.complete()` .
 
 A képzés befejezését követően hívja meg a `experiment` változót, hogy beolvassa a kísérletre mutató hivatkozást a Studióban.
 
@@ -133,18 +133,18 @@ A képzés befejezését követően hívja meg a `experiment` változót, hogy b
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Azure Machine Learning Studio-ra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Azure Machine Learning Studio-ra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Képzés eredményeinek megtekintése a Studióban
 
-A **Azure Machine learning studióra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték (`alpha_value` és `rmse`ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a kísérlet oldal tetején található diagramok és csempék számára is. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
+A **Azure Machine learning studióra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték ( `alpha_value` és `rmse` ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a diagramok számára is. Ha egy új diagramot naplózott metrikával szeretne kijelölni, kattintson a diagram hozzáadása elemre, és válassza ki a nyomtatandó mérőszámot.
 
 Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalon könnyedén megtekintheti a betanított modelleket, és hogy miként változnak az egyedi mérőszámok az idő múlásával.
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="A fő kísérlet oldala a Studióban.":::
 
 
-Válasszon egy futtatási szám hivatkozást az `RUN NUMBER` oszlopban az egyes futtatások oldalának megtekintéséhez. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek és naplók** lapra, és megtekintheti `.pkl` azt a modellt, amelyet a Futtatás során töltöttek fel az egyes képzések ismétlése során. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
+Válasszon egy futtatási szám hivatkozást az `RUN NUMBER` oszlopban az egyes futtatások oldalának megtekintéséhez. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek és naplók** lapra, és megtekintheti azt a `.pkl` modellt, amelyet a Futtatás során töltöttek fel az egyes képzések ismétlése során. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Futtassa a részletek lapot a Studióban.":::
 
@@ -175,8 +175,10 @@ print("Best run_id: " + minimum_rmse_runid)
 print("Best run_id rmse: " + str(minimum_rmse))
 ```
 
-    Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-    Best run_id rmse: 57.234760283951765
+```output
+Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
+Best run_id rmse: 57.234760283951765
+```
 
 A legjobb futtatási AZONOSÍTÓval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja `get_file_names()` meg az erről a futtatásról letölthető összes fájl megtekintését. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
 
@@ -186,7 +188,9 @@ best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
 print(best_run.get_file_names())
 ```
 
-    ['model_alpha_0.1.pkl']
+```output
+['model_alpha_0.1.pkl']
+```
 
 Hívja `download()` meg a Futtatás objektumot, és adja meg a letölteni kívánt modell fájlnevét. Alapértelmezés szerint ez a függvény letölti az aktuális könyvtárat.
 
@@ -194,7 +198,7 @@ Hívja `download()` meg a Futtatás objektumot, és adja meg a letölteni kívá
 best_run.download_file(name="model_alpha_0.1.pkl")
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 

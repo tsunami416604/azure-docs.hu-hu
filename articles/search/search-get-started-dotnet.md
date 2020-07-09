@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: keresési index létrehozása a C#-ban a .NET használatával'
+title: Keresési index létrehozása a .NET-ben
 titleSuffix: Azure Cognitive Search
 description: Ebből a C# rövid útmutatóból megtudhatja, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket az Azure Cognitive Search .NET SDK használatával.
 manager: nitinme
@@ -8,37 +8,39 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 7172fe1f7eb81bbd00e7efa611111e04cc96abd3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77589215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083576"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a C#-ban a .NET SDK használatával
+# <a name="quickstart-create-a-search-index-in-net"></a>Gyors útmutató: keresési index létrehozása a .NET-ben
 > [!div class="op_single_selector"]
-> * [C #](search-get-started-dotnet.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 >*
 
-Hozzon létre egy .NET Core C# Console-alkalmazást, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le a Visual Studio és az [azure Cognitive Search .net SDK](https://aka.ms/search-sdk)használatával. Ez a cikk azt ismerteti, hogyan hozható létre az alkalmazás lépésről lépésre. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart).
+Hozzon létre egy .NET Core Console-alkalmazást a C#-ban, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le a Visual Studio és az [azure Cognitive Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)használatával. 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ez a cikk azt ismerteti, hogyan hozható létre az alkalmazás lépésről lépésre. [Le is töltheti és futtathatja a teljes alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart) , ha a kódra szeretne ugrani.
 
 > [!NOTE]
-> A jelen cikkben szereplő bemutató kód az Azure Cognitive Search .NET SDK egyszerűségének szinkron módszereit használja. Éles környezetekben azonban azt javasoljuk, hogy a saját alkalmazásaiban lévő aszinkron metódusok használatával méretezhető és rugalmas legyen. Használhatja `CreateAsync` például a és `DeleteAsync` a és a helyett a `Create` és `Delete`a értéket.
+> A jelen cikkben szereplő bemutató kód az Azure Cognitive Search .NET SDK egyszerűségének szinkron módszereit használja. Éles környezetekben azonban azt javasoljuk, hogy a saját alkalmazásaiban lévő aszinkron metódusok használatával méretezhető és rugalmas legyen. Használhatja például `CreateAsync` `DeleteAsync` a és a és a helyett a és a értéket `Create` `Delete` .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek.
+Mielőtt elkezdené, a következőkkel kell rendelkeznie:
+
++ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
+
++ Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
 + A [Visual Studio](https://visualstudio.microsoft.com/downloads/)bármely kiadása. A mintakód és az utasítások tesztelése az ingyenes közösségi kiadásban történt.
-
-+ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
 <a name="get-service-info"></a>
 
@@ -48,7 +50,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
@@ -62,51 +64,52 @@ Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-o
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-Az [Azure Cognitive Search .net SDK](https://aka.ms/search-sdk) néhány, NuGet-csomagként terjesztett ügyféloldali kódtárat tartalmaz.
+Az [Azure Cognitive Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) néhány, NuGet-csomagként terjesztett ügyféloldali kódtárat tartalmaz.
 
 Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzióját és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
 
-1. Az **eszközök** > **NuGet csomagkezelő**területén válassza a **NuGet-csomagok kezelése megoldást..**. lehetőséget. 
+1. Az **eszközök**  >  **NuGet csomagkezelő**területén válassza a **NuGet-csomagok kezelése megoldást..**. lehetőséget. 
 
 1. Kattintson a **Browse** (Tallózás) gombra.
 
-1. Keresse meg `Microsoft.Azure.Search` és válassza ki a 9.0.1 vagy újabb verziót.
+1. Keresse meg `Microsoft.Azure.Search` és válassza ki a 9.0.1 vagy újabb verziót (a legújabb stabil verzió a 10.1.0).
 
 1. A jobb oldalon kattintson a **telepítés** gombra a szerelvény projekthez és megoldáshoz való hozzáadásához.
 
-1. Ismételje `Microsoft.Extensions.Configuration.Json`meg a beállítást, és válassza a 2.2.0 vagy újabb verziót.
+1. Ismételje meg a `Microsoft.Extensions.Configuration.Json` beállítást, és válassza a 2.2.0 vagy újabb verziót.
 
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Azure Cognitive Search szolgáltatás adatainak hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a projektre, és **Add** > válassza az**új elem hozzáadása..** . lehetőséget. 
+1. Megoldáskezelő kattintson a jobb gombbal a projektre, és **Add**válassza az  >  **új elem hozzáadása..** . lehetőséget. 
 
 1. Az új elem hozzáadása lapon keressen rá a "JSON" kifejezésre, és adja vissza a JSON-hez kapcsolódó elemek listáját.
 
-1. Válassza a **JSON-fájl**nevet, nevezze el a "appSettings. JSON" fájlt, majd kattintson a **Hozzáadás**gombra. 
+1. Válassza a **JSON-fájl**elemet, nevezze el a "appsettings.json" fájlt, majd kattintson a **Hozzáadás**gombra. 
 
-1. Adja hozzá a fájlt a kimeneti könyvtárhoz. Kattintson a jobb gombbal a appSettings. JSON fájlra, és válassza a **Tulajdonságok**lehetőséget. A **Másolás kimeneti könyvtárba**lapon válassza a **Másolás, ha újabb**lehetőséget.
+1. Adja hozzá a fájlt a kimeneti könyvtárhoz. Kattintson a jobb gombbal a appsettings.jselemre, majd válassza a **Tulajdonságok**lehetőséget. A **Másolás kimeneti könyvtárba**lapon válassza a **Másolás, ha újabb**lehetőséget.
 
-1. Másolja a következő JSON-t az új JSON-fájlba. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (a-ADMIN-API-KEY) érvényes értékekkel. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net`, a szolgáltatás neve "mydemo" lesz.
+1. Másolja a következő JSON-t az új JSON-fájlba. 
 
-```json
-{
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
-  "SearchIndexName": "hotels-quickstart"
-}
-```
+    ```json
+    {
+      "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
+      "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+      "SearchIndexName": "hotels-quickstart"
+    }
+    ```
+
+1. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (a-ADMIN-API-KEY) érvényes értékekkel. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net` , a szolgáltatás neve "mydemo" lesz.
 
 ### <a name="add-class-method-files-to-your-project"></a>Osztály hozzáadása ". Metódus "fájlok a projekthez
 
-Amikor kinyomtatja az eredményeket a konzol ablakába, a Hotel objektum egyedi mezőinek karakterláncként kell szerepelnie. A [ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) használatával végrehajthatja ezt a feladatot, és a szükséges kódot két új fájlba másolhatja.
+Ez a lépés szükséges az értelmes kimenet létrehozásához a-konzolon. Amikor kinyomtatja az eredményeket a konzol ablakába, a Hotel objektum egyedi mezőinek karakterláncként kell szerepelnie. Ez a lépés a [ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) megvalósítását valósítja meg a feladat végrehajtásához, amelyet a szükséges kód két új fájlba másolásával hajt végre.
 
 1. Két üres osztály-definíció hozzáadása a projekthez: Address.Methods.cs, Hotel.Methods.cs
 
-1. A Address.Methods.cs írja felül az alapértelmezett tartalmakat a következő kóddal, a 1-32-es [sorokkal](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32).
+1. A Address.Methods.cs írja felül az alapértelmezett tartalmakat a következő kóddal, a 1-25-es [sorokkal](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25).
 
-1. A Hotel.Methods.cs-ben másolja a [1-66 sorokat](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66).
-
+1. A Hotel.Methods.cs-ben másolja a [1-68 sorokat](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68).
 
 ## <a name="1---create-index"></a>1 – index létrehozása
 
@@ -195,13 +198,13 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
     A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. Az `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. 
     
     > [!NOTE]
-    > A .net SDK-ban a [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)mezőket explicit módon [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)kell megadni,, és. [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet) Ez a viselkedés ellentétben áll azzal a REST APItel, amely implicit módon engedélyezi a kiosztást az adattípusok alapján (például az egyszerű karakterlánc mezők automatikusan kereshetők).
+    > A .net SDK-ban a mezőket explicit módon kell megadni,, [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet) [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet) és [`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet) . Ez a viselkedés ellentétben áll azzal a REST APItel, amely implicit módon engedélyezi a kiosztást az adattípusok alapján (például az egyszerű karakterlánc mezők automatikusan kereshetők).
 
-    Az indexben `string` pontosan egy mezőnek kell lennie az egyes dokumentumok egyedi azonosítására *szolgáló kulcsmező.* Ebben a sémában a kulcs a `HotelId`következő:.
+    Az indexben pontosan egy mezőnek `string` kell lennie az *key* egyes dokumentumok egyedi azonosítására szolgáló kulcsmező. Ebben a sémában a kulcs a következő: `HotelId` .
 
-    Ebben az indexben a Description (Leírás [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) ) mezők a választható tulajdonságot használják, ha felül szeretné írni az alapértelmezett standard Lucene-elemzőt. A `description_fr` mező a francia Lucene Analyzert ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) használja, mert francia nyelvű szöveget tárol. A `description` a választható Microsoft nyelvi analizátort ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) használja.
+    Ebben az indexben a Description (Leírás) mezők a választható [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) tulajdonságot használják, ha felül szeretné írni az alapértelmezett standard Lucene-elemzőt. A `description_fr` mező a francia Lucene Analyzert ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) használja, mert francia nyelvű szöveget tárol. A a `description` választható Microsoft nyelvi analizátort ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) használja.
 
-1. A Program.cs-ben hozza létre az [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) osztály egy példányát a szolgáltatáshoz való kapcsolódáshoz az alkalmazás konfigurációs fájljában (appSettings. JSON) tárolt értékek alapján. 
+1. A Program.cs-ben hozza létre az osztály egy példányát a [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) szolgáltatáshoz való kapcsolódáshoz az alkalmazás konfigurációs fájljában (appsettings.js) tárolt értékek alapján. 
 
    `SearchServiceClient`rendelkezik egy [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) tulajdonsággal, amely az Azure Cognitive Search indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja. 
 
@@ -271,7 +274,7 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
             // The fields of the index are defined by calling the FieldBuilder.BuildForType() method.
             private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
             {
-                var definition = new Index()
+                var definition = new Microsoft.Azure.Search.Models.Index()
                 {
                     Name = indexName,
                     Fields = FieldBuilder.BuildForType<Hotel>()
@@ -283,14 +286,14 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
     }    
     ```
 
-    Ha lehetséges, ossza meg az alkalmazás egy `SearchServiceClient` példányát, hogy elkerülje a túl sok kapcsolat megnyitását. Az osztály-metódusok olyan szálon biztonságosak, amely lehetővé teszi az ilyen megosztást.
+    Ha lehetséges, ossza meg az alkalmazás egy példányát, `SearchServiceClient` hogy elkerülje a túl sok kapcsolat megnyitását. Az osztály-metódusok olyan szálon biztonságosak, amely lehetővé teszi az ilyen megosztást.
 
    Az osztálynak több konstruktora van. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. A `SearchCredentials` becsomagolja az API-kulcsot.
 
-    Az index definíciójában az `Field` objektumok létrehozásának legegyszerűbb módja a `FieldBuilder.BuildForType` metódus meghívása, a Model osztály átadása a Type paraméterhez. A modellosztály olyan tulajdonságokkal rendelkezik, amelyek az index mezőire mutatnak. Ez a leképezés lehetővé teszi dokumentumok kötését a keresési indexből a modell osztály példányaira.
+    Az index definíciójában az objektumok létrehozásának legegyszerűbb módja a `Field` metódus meghívása `FieldBuilder.BuildForType` , a Model osztály átadása a Type paraméterhez. A modellosztály olyan tulajdonságokkal rendelkezik, amelyek az index mezőire mutatnak. Ez a leképezés lehetővé teszi dokumentumok kötését a keresési indexből a modell osztály példányaira.
 
     > [!NOTE]
-    > Ha nem tervez modellosztályt használni, közvetlenül `Field` objektumok létrehozásával is meghatározhatja az indexet. A konstruktornak megadhatja a mező nevét és az adattípust (vagy sztringmezők esetében az elemzőnek). Más tulajdonságokat is beállíthat `IsSearchable`, például:, `IsFilterable`, hogy csak néhányat említsünk.
+    > Ha nem tervez modellosztályt használni, közvetlenül `Field` objektumok létrehozásával is meghatározhatja az indexet. A konstruktornak megadhatja a mező nevét és az adattípust (vagy sztringmezők esetében az elemzőnek). Más tulajdonságokat is beállíthat, például: `IsSearchable` ,, `IsFilterable` hogy csak néhányat említsünk.
     >
 
 1. Nyomja le az F5 billentyűt az alkalmazás felépítéséhez és az index létrehozásához. 
@@ -303,9 +306,9 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
 
 Az Azure Cognitive Searchban a dokumentumok olyan adatstruktúrák, amelyek mind a lekérdezések indexeléséhez, mind pedig a kimenetekhez tartoznak. Egy külső adatforrásból beszerzett módon a dokumentumok bemenetei egy adatbázisban, a blob Storage-ban vagy a lemezen található JSON-dokumentumok soraiban lehetnek. Ebben a példában a JSON-dokumentumokat a kód négy szállodájának ajánljuk. 
 
-Dokumentumok feltöltésekor egy [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) objektumot kell használnia. Az `IndexBatch` egy [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) objektumok gyűjteményét tartalmazza, amelyek mindegyike tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely azt jelzi, hogy az Azure Cognitive Search milyen műveletet kell végrehajtani ([feltöltés, Egyesítés, törlés és mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Dokumentumok feltöltésekor egy objektumot kell használnia [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) . Az egy `IndexBatch` objektumok gyűjteményét tartalmazza [`IndexAction`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) , amelyek mindegyike tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely azt jelzi, hogy az Azure Cognitive Search milyen műveletet kell végrehajtani ([feltöltés, Egyesítés, törlés és mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. A Program.cs-ben hozzon létre egy tömböt a dokumentumok és az indexelési műveletek közül `IndexBatch`, majd adja át a tömböt a következőre:. Az alábbi dokumentumok megfelelnek a Hotel – rövid útmutató indexnek, amelyet a szálloda és a címe osztályok határoznak meg.
+1. A Program.cs-ben hozzon létre egy tömböt a dokumentumok és az indexelési műveletek közül, majd adja át a tömböt a következőre: `IndexBatch` . Az alábbi dokumentumok megfelelnek a Hotel – rövid útmutató indexnek, amelyet a szálloda és a címe osztályok határoznak meg.
 
     ```csharp
     // Upload documents as a batch
@@ -425,9 +428,9 @@ Dokumentumok feltöltésekor egy [`IndexBatch`](https://docs.microsoft.com/dotne
     }
     ```
 
-    Miután elvégezte az`IndexBatch` objektum inicializálását, elküldheti az indexnek az [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) objektum hívásával. `Documents`a egy tulajdonsága `SearchIndexClient` , amely az indexben lévő dokumentumok hozzáadására, módosítására, törlésére vagy lekérdezésére szolgáló metódusokat biztosít.
+    Miután elvégezte az `IndexBatch` objektum inicializálását, elküldheti az indexnek az [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) objektum hívásával [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) . `Documents`a egy tulajdonsága, `SearchIndexClient` amely az indexben lévő dokumentumok hozzáadására, módosítására, törlésére vagy lekérdezésére szolgáló metódusokat biztosít.
 
-    `try` / A metódus meghívása során az indexelési hibák megmaradnak, ami akkor fordulhat elő, ha a szolgáltatás nagy terhelés alatt `Index` `catch` Az éles kódban késleltetheti, majd újra megpróbálkozhat a meghiúsult dokumentumok indexelésével, vagy a napló és a folytatás hasonló módon történő megismétlésével, vagy az alkalmazás adatkonzisztenciáji követelményeinek megfelelő más módon történő kezelésével.
+    A `try` / `catch` metódus meghívása során az `Index` indexelési hibák megmaradnak, ami akkor fordulhat elő, ha a szolgáltatás nagy terhelés alatt áll. Az éles kódban késleltetheti, majd újra megpróbálkozhat a meghiúsult dokumentumok indexelésével, vagy a napló és a folytatás hasonló módon történő megismétlésével, vagy az alkalmazás adatkonzisztenciáji követelményeinek megfelelő más módon történő kezelésével.
 
     A 2 másodperces késleltetés kompenzálja az indexelést, amely aszinkron módon történik, így minden dokumentum indexelhető a lekérdezések végrehajtása előtt. A késések kódolása jellemzően csak demók, tesztek és példák esetében szükséges.
 
@@ -533,7 +536,7 @@ Az [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azu
     }
     ```
 
-    A [kifejezéseket kétféleképpen lehet egyeztetni a lekérdezésekben](search-query-overview.md#types-of-queries): teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést keres az index `IsSearchable` mezőiben. A szűrő egy logikai kifejezés, amely egy index `IsFilterable` mezőin van kiértékelve. A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
+    A [kifejezéseket kétféleképpen lehet egyeztetni a lekérdezésekben](search-query-overview.md#types-of-queries): teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést keres az `IsSearchable` index mezőiben. A szűrő egy logikai kifejezés, amely egy index mezőin van kiértékelve `IsFilterable` . A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
 
     A keresések és a szűrések egyaránt a `Documents.Search` módszer használatával vannak végrehajtva. Keresési lekérdezések a `searchText` paraméterben, szűrőkifejezések pedig a `SearchParameters` osztály `Filter` tulajdonságában adhatóak át. A keresés nélküli szűrés végrehajtásához a `searchText` paraméter számára a `"*"` kifejezést adja át. A szűrés nélküli keresés végrehajtásához ne állítsa be a `Filter` tulajdonságot, vagy egyáltalán ne adja át azt egy `SearchParameters`-példányban.
 
@@ -548,7 +551,7 @@ Az [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azu
 
     A kimenet ugyanazokat az üzeneteket tartalmazza, mint a korábban, a lekérdezési adatok és eredmények hozzáadásával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
@@ -556,7 +559,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a C# rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Az olvashatóság és a megértés érdekében a kód leegyszerűsítése különböző fázisokban volt. Ha Ön az alapvető fogalmakkal is rendelkezik, javasoljuk, hogy a következő cikkből megtudhatja, milyen alternatív megközelítésekre és fogalmakra van szükség, amelyek elmélyítik az Ön ismereteit. 
 
@@ -564,3 +567,8 @@ A mintakód és az index ezen egy kibontott verziója. A következő minta egy R
 
 > [!div class="nextstepaction"]
 > [Fejlesztés a .NET-ben](search-howto-dotnet-sdk.md)
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

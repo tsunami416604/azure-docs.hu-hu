@@ -1,20 +1,14 @@
 ---
 title: Események küldése vagy fogadása az Azure Event Hubs a Python (régi) használatával
 description: Ez az útmutató bemutatja, hogyan hozhat létre és futtathat olyan Python-parancsfájlokat, amelyek események küldését és fogadását küldi el az Azure Event Hubs a régi Azure-eventhub 1-es verziójú csomag használatával.
-services: event-hubs
-author: spelluru
-manager: femila
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 4ce53d2d82a00f98dbbd538bd7a61da9ba44e832
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77162599"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314480"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Gyors útmutató: események küldése és fogadása Event Hubs a Python használatával (Azure-eventhub 1-es verzió)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure-eventhub 1. verziójú Python-** csomag használatával. 
@@ -43,11 +37,11 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 Eseményeket küldő Python-alkalmazás létrehozása az Event hub-ba:
 
 > [!NOTE]
-> A gyors üzembe helyezés helyett a GitHubról töltheti le és futtathatja a [minta alkalmazásokat](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) . Cserélje le `EventHubConnectionString` a `EventHubName` és a karakterláncokat az Event hub értékeire.
+> A gyors üzembe helyezés helyett a GitHubról töltheti le és futtathatja a [minta alkalmazásokat](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) . Cserélje le a `EventHubConnectionString` és a `EventHubName` karakterláncokat az Event hub értékeire.
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
 2. Hozzon létre egy új, *Send.py*nevű fájlt. Ez a szkript 100 eseményt küld az Event hub-nak.
-3. Illessze be a következő kódot *a Send.py*-be, \<és cserélje le \<a Event Hubs névtér \<>, a eventhub \<>, a AccessKeyName> és az elsődleges kulcs értékét> értékekre: 
+3. Illessze be a következő kódot a *Send.py*-be, \<namespace> és cserélje le a Event Hubs, \<eventhub> , \<AccessKeyName> és értékeket az \<primary key value> értékekre: 
    
    ```python
    import sys
@@ -110,7 +104,7 @@ Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 Eseményeket fogadó Python-alkalmazás létrehozása az Event hub-ból:
 
 1. A Python-szerkesztőben hozzon létre egy *recv.py*nevű fájlt.
-2. Illessze be a következő kódot *a recv.py*-be, \<és cserélje le \<a Event Hubs névtér \<>, a eventhub \<>, a AccessKeyName> és az elsődleges kulcs értékét> értékekre: 
+2. Illessze be a következő kódot a *recv.py*-be, \<namespace> és cserélje le a Event Hubs, \<eventhub> , \<AccessKeyName> és értékeket az \<primary key value> értékekre: 
    
    ```python
    import os

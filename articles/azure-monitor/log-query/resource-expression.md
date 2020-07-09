@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665699"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>erőforrás () kifejezés Azure Monitor napló lekérdezésében
@@ -18,7 +17,7 @@ ms.locfileid: "77665699"
 A `resource` kifejezés egy olyan Azure monitor lekérdezésben van használatban, amely [egy erőforrásra](scope.md#query-scope) vonatkozik, és más erőforrásokból kéri le az adatok lekérését. 
 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 `resource(`*Azonosító*`)`
 
@@ -32,7 +31,7 @@ A `resource` kifejezés egy olyan Azure monitor lekérdezésben van használatba
 | Erőforráscsoport vagy előfizetés | Az erőforráshoz és a benne található összes erőforráshoz tartozó adattartalom.  | erőforrás ("/Subscriptions/xxxxxxx-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcesgroups/myresourcegroup") |
 
 
-## <a name="notes"></a>Megjegyzések
+## <a name="notes"></a>Jegyzetek
 
 * Olvasási hozzáféréssel kell rendelkeznie az erőforráshoz.
 

@@ -3,12 +3,12 @@ title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682122"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969889"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -40,7 +40,7 @@ Az erőforrások jobb láthatóságának első lépése, hogy szabályzatokat ho
 
 ### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Házirend-definíció létrehozása és társítása a PowerShell-lel
 
-1. A következő JSON-kódrészlet használatával hozzon létre egy AuditStorageAccounts. JSON nevű JSON-fájlt.
+1. A következő JSON-kódrészlet használatával hozzon létre egy JSON-fájlt, amelynek a neve AuditStorageAccounts.js.
 
    ```json
    {
@@ -63,7 +63,7 @@ Az erőforrások jobb láthatóságának első lépése, hogy szabályzatokat ho
 
    A szabályzat-definíciók létrehozásával kapcsolatos további információkért lásd: [Azure Policy definíciós struktúra](../concepts/definition-structure.md).
 
-1. Futtassa a következő parancsot egy szabályzat-definíció létrehozásához a AuditStorageAccounts. JSON fájllal.
+1. A következő parancs futtatásával hozzon létre egy házirend-definíciót a fájl AuditStorageAccounts.jshasználatával.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
@@ -95,7 +95,7 @@ Az erőforrások jobb láthatóságának első lépése, hogy szabályzatokat ho
    - Előfizetés`/subscriptions/{subId}/`
    - Felügyeleti csoport –`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Az erőforrás-házirendek Azure Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért lásd [az az. Resources](/powershell/module/az.resources/#policies)című témakört.
+Az erőforrás-házirendek Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért tekintse meg az [az. Resources](/powershell/module/az.resources/#policies)című témakört.
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Szabályzat-definíció létrehozása és társítása a ARMClient használatával
 

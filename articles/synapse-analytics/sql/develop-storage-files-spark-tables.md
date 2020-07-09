@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 47737489256d349ebc02c107cf8bbb2e8ec1cb7a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e36f98a20d1fc6392aef1aebf5fc86e18085cc10
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701962"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204898"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>Az Azure szinapszis külső táblázatos definícióinak Apache Spark szinkronizálása az igény szerinti SQL-ben (előzetes verzió)
 
@@ -46,7 +46,7 @@ SELECT * FROM [db].dbo.[spark_table]
 | DoubleType      | lebegőpontos                       |
 | DecimalType     | tizedes tört                     |
 | TimestampType   | datetime2                   |
-| DateType        | date                        |
+| DateType        | dátum                        |
 | StringType      | varchar (max) *               |
 | BinaryType      | varbinary                   |
 | BooleanType     | bit                         |
@@ -60,6 +60,6 @@ SELECT * FROM [db].dbo.[spark_table]
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a [storage Access Control](develop-storage-files-storage-access-control.md) cikkével, amely további információt biztosít a Storage hozzáférés-vezérléséről.

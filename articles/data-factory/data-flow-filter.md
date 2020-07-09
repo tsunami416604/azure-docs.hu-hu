@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84112807"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Átalakítás szűrése a leképezési adatfolyamban
@@ -31,7 +30,7 @@ A szűrési feltétel kifejezésének megadásához használja az adatfolyam-Kif
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

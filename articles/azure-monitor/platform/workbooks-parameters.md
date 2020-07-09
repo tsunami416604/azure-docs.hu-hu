@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658217"
 ---
 # <a name="workbook-parameters"></a>Munkafüzet paramétereinek
@@ -54,7 +53,7 @@ A munkafüzet a "tabletták" stílusban fog kinézni, ahogy olvasható módban.
 ## <a name="referencing-a-parameter"></a>Egy paraméterre hivatkozik
 ### <a name="via-bindings"></a>Kötések útján
 1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
-2. Nyissa meg az _időtartomány_ legördülő listát `Time Range` , és válassza a lenti paraméterek szakaszban található lehetőséget.
+2. Nyissa meg az _időtartomány_ legördülő listát, és válassza a `Time Range` lenti paraméterek szakaszban található lehetőséget.
 3. Ezzel a beállítással az időtartomány paraméter a diagram időtartományához köthető. A minta lekérdezés időbeli hatóköre mostantól az elmúlt 24 órában érhető el.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
@@ -63,7 +62,7 @@ A munkafüzet a "tabletták" stílusban fog kinézni, ahogy olvasható módban.
 ### <a name="in-kql"></a>A KQL
 1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
 2. A KQL adja meg az időtartomány szűrőt a (z) paraméter használatával:`| where timestamp {TimeRange}`
-3. Ez kibővíti a lekérdezés értékelésének `| where timestamp > ago(1d)`idejét a értékre, amely a paraméter időtartományának értéke.
+3. Ez kibővíti a lekérdezés értékelésének idejét a értékre `| where timestamp > ago(1d)` , amely a paraméter időtartományának értéke.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
     ![A KQL-ben hivatkozott időtartományt ábrázoló kép](./media/workbooks-parameters/time-in-code.png)
@@ -75,7 +74,7 @@ A munkafüzet a "tabletták" stílusban fog kinézni, ahogy olvasható módban.
 4. A szöveg vezérlőelem szövege a következő lesz: _a kiválasztott időtartomány az elmúlt 24 óra_
 
 ## <a name="parameter-options"></a>Paraméterek beállításai
-A _in Text (szöveg_ ) `label` szakaszban az érték helyett a paramétert használta. A paraméterek az adott típustól függően különböző lehetőségeket tesznek elérhetővé, például az időtartomány-választókat az érték, a címke, a lekérdezés, a kezdés, a Befejezés és a gabona alapján.
+A _in Text (szöveg_ ) szakaszban az `label` érték helyett a paramétert használta. A paraméterek az adott típustól függően különböző lehetőségeket tesznek elérhetővé, például az időtartomány-választókat az érték, a címke, a lekérdezés, a kezdés, a Befejezés és a gabona alapján.
 
 A paraméter `Previews` _szerkesztése_ ablaktábla szakaszának használatával megtekintheti a paraméter bővítési beállításait:
 

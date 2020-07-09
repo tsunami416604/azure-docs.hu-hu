@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: efce2eb33bb95a3dc13cec4cbe0ea89d1a2c3452
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796745"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>Virtuális gép létrehozása általánosított rendszerkép használatával 
@@ -22,7 +22,7 @@ Hozzon létre egy virtuális gépet egy megosztott képtárban tárolt általán
 
 Ha általánosított rendszerkép-verziót használ, létrehozhat egy vagy több új virtuális gépet. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használata. 
 
-Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak biztosítására, hogy az új virtuális gép a rendszerkép legújabb verzióját fogja használni. Egy adott verziót is használhat a rendszerkép-verziójának AZONOSÍTÓjának használatával `Set-AzVMSourceImage -Id`. Például a következő rendszerkép *-verzió használata* : `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 
+Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak biztosítására, hogy az új virtuális gép a rendszerkép legújabb verzióját fogja használni. Egy adott verziót is használhat a rendszerkép-verziójának AZONOSÍTÓjának használatával `Set-AzVMSourceImage -Id` . Például a következő rendszerkép *-verzió használata* `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` : 
 
 Vegye figyelembe, hogy egy adott rendszerkép-verzió használata azt jelenti, hogy az Automation sikertelen lehet, ha az adott rendszerkép verziója nem érhető el, mert törölték vagy eltávolították a régióból. Javasoljuk, hogy az új virtuális gép létrehozásához használja a rendszerkép-definíció AZONOSÍTÓját, kivéve, ha egy adott rendszerkép-verzióra van szükség.
 

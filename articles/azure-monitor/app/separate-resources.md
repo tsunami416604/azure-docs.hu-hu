@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773700"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107427"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -45,33 +45,34 @@ Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot,
 
 Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
-*C #*
-
-    protected void Application_Start()
-    {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey = 
-          // - for example -
-          WebConfigurationManager.AppSettings["ikey"];
-      ...
+```csharp
+protected void Application_Start()
+{
+  Microsoft.ApplicationInsights.Extensibility.
+    TelemetryConfiguration.Active.InstrumentationKey = 
+      // - for example -
+      WebConfigurationManager.AppSettings["ikey"];
+  ...
+```
 
 Ebben a példában a különböző erőforrások erőforráskulcsot a webes konfigurációs fájl különböző verzióiba helyezi. A webes konfigurációs fájl cseréje – a kiadási parancsfájl részeként is elvégezhető – a cél erőforrást fogja cserélni.
 
 ### <a name="web-pages"></a>Weblapok
 A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üzembe helyezés [panelen található parancsfájlban](../../azure-monitor/app/javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
 
-*JavaScript a Borotvában*
-
-    <script type="text/javascript">
-    // Standard Application Insights web page script:
-    var appInsights = window.appInsights || function(config){ ...
-    // Modify this part:
-    }({instrumentationKey:  
-      // Generate from server property:
-      "@Microsoft.ApplicationInsights.Extensibility.
-         TelemetryConfiguration.Active.InstrumentationKey"
-    }) // ...
-
+```javascript
+<script type="text/javascript">
+// Standard Application Insights web page script:
+var appInsights = window.appInsights || function(config){ ...
+// Modify this part:
+}({instrumentationKey:  
+  // Generate from server property:
+  "@Microsoft.ApplicationInsights.Extensibility.
+     TelemetryConfiguration.Active.InstrumentationKey"
+  }
+ )
+//...
+```
 
 ## <a name="create-additional-application-insights-resources"></a>További Application Insights erőforrások létrehozása
 
@@ -96,7 +97,6 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
 * [ASP.NET] Állítsa be a verziót a alkalmazásban `BuildInfo.config` . A webmodul a BuildLabel csomópontból fogja kiválasztani a verziót. Adja meg ezt a fájlt a projektben, és ne feledje, hogy a másolás mindig tulajdonságot Megoldáskezelő.
 
     ```XML
-
     <?xml version="1.0" encoding="utf-8"?>
     <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
@@ -108,16 +108,15 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
     </DeploymentEvent>
 
     ```
-* [ASP.NET] A BuildInfo. config automatikus előállítása az MSBuild-ben. Ehhez adjon hozzá néhány sort a `.csproj` fájlhoz:
+* [ASP.NET] BuildInfo.config automatikus előállítása az MSBuild-ben. Ehhez adjon hozzá néhány sort a `.csproj` fájlhoz:
 
     ```XML
-
     <PropertyGroup>
       <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
     </PropertyGroup>
     ```
 
-    Ez létrehoz egy *yourProjectName*nevű fájlt. BuildInfo. config. a közzétételi folyamat átnevezi a BuildInfo. config névre.
+    Ez létrehoz egy *yourProjectName*.BuildInfo.config nevű fájlt. A közzétételi folyamat átnevezi a BuildInfo.configra.
 
     A Build címke helyőrzőt (AutoGen_...) tartalmaz a Visual Studióval való kiépítés során. Az MSBuild-sel azonban a megfelelő verziószámmal vannak feltöltve.
 
@@ -127,10 +126,10 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
 Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Microsoft Build Engine folyamat létrehozza a `buildinfo.config` fájlt. A `.csproj` fájlban adja hozzá a következőket:  
 
 ```XML
-
-    <PropertyGroup>
-      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
-    </PropertyGroup>
+<PropertyGroup>
+  <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>
+  <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+</PropertyGroup>
 ```
 
 Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/platform/metrics-charts.md).
@@ -140,7 +139,7 @@ Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorj
 ### <a name="release-annotations"></a>Kiadási jegyzetek
 Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Több szerepkör megosztott erőforrásai](../../azure-monitor/app/app-map.md)
 * [Telemetria inicializáló létrehozása a következő megkülönböztetéséhez | B változatok](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

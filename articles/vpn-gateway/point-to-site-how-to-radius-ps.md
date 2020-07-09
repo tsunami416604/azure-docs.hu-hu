@@ -4,15 +4,15 @@ description: A Windows és Mac OS X ügyfelek biztonságos csatlakoztatása a vi
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdaa2fd1e435e8bf7ff4b17c7f8a15d5bd249d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411773"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987171"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Pont – hely kapcsolat konfigurálása VNet a RADIUS-hitelesítés használatával: PowerShell
 
@@ -54,7 +54,7 @@ A Active Directoryon kívül a RADIUS-kiszolgáló is integrálható más küls�
 ![Összekötő diagram – sugár](./media/point-to-site-how-to-radius-ps/radiusimage.png)
 
 > [!IMPORTANT]
->Csak a VPN-helyek közötti kapcsolat használható a helyszíni RADIUS-kiszolgálóhoz való csatlakozáshoz. ExpressRoute-kapcsolatok nem használhatók.
+>Csak a VPN-helyek közötti kapcsolat használható a helyszíni RADIUS-kiszolgálóhoz való csatlakozáshoz. ExpressRoute-kapcsolat nem használható.
 >
 >
 
@@ -109,7 +109,7 @@ Deklarálja a használni kívánt változókat. Használja a következő példá
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"> </a>az erőforráscsoport, a VNet és a nyilvános IP-cím létrehozása
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a> az erőforráscsoport, a VNet és a nyilvános IP-cím létrehozása
 
 A következő lépésekben hozzon létre egy erőforráscsoportot és egy virtuális hálózatot az erőforráscsoport három alhálózattal. Az értékek behelyettesítése esetén fontos, hogy mindig nevezze el az átjáró-alhálózatot, amely kifejezetten "GatewaySubnet". Ha más néven nevezi el, az átjáró létrehozása meghiúsul;
 
@@ -143,7 +143,7 @@ A következő lépésekben hozzon létre egy erőforráscsoportot és egy virtu�
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"> </a>a RADIUS-kiszolgáló beállítása
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a> a RADIUS-kiszolgáló beállítása
 
 A virtuális hálózati átjáró létrehozása és konfigurálása előtt a RADIUS-kiszolgálót helyesen kell konfigurálni a hitelesítéshez.
 
@@ -153,12 +153,12 @@ A virtuális hálózati átjáró létrehozása és konfigurálása előtt a RAD
 
 A [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) című cikk útmutatást nyújt a Windows RADIUS-kiszolgáló (NPS) Active Directory tartományi hitelesítéshez való konfigurálásához.
 
-## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"> </a>a VPN-átjáró létrehozása
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> a VPN-átjáró létrehozása
 
 Konfigurálja és hozza létre a VPN-átjárót a VNet.
 
 * A-GatewayType "VPN" értékűnek kell lennie, a-VpnType pedig "Útvonalalapú" értékűnek kell lennie.
-* A VPN-átjáró akár 45 percet is igénybe vehet, attól függően, hogy melyik [átjárói SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) -t választotta.
+* A VPN-átjáró akár 45 percet is igénybe vehet, attól függően, hogy melyik [átjárói SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)-t   választotta.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -166,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"> </a>a RADIUS-kiszolgáló és az ügyfél-Címkészlet hozzáadása
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a> a RADIUS-kiszolgáló és az ügyfél-Címkészlet hozzáadása
  
 * A-RadiusServer név vagy IP-cím alapján is megadható. Ha megadja a nevet, és a kiszolgáló a helyszínen található, akkor előfordulhat, hogy a VPN-átjáró nem tudja feloldani a nevet. Ha ez a helyzet, akkor érdemes megadnia a kiszolgáló IP-címét. 
 * A-RadiusSecret egyeznie kell azzal, amit a RADIUS-kiszolgálón konfigurált.
@@ -223,7 +223,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"> </a>töltse le a VPN-ügyfél konfigurációs csomagját, és állítsa be a VPN-ügyfelet.
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> töltse le a VPN-ügyfél konfigurációs csomagját, és állítsa be a VPN-ügyfelet.
 
 A VPN-ügyfél konfigurációja lehetővé teszi, hogy az eszközök P2S-kapcsolaton keresztül csatlakozzanak a VNet.VPN-ügyfél konfigurációs csomagjának létrehozásához és a VPN-ügyfél beállításához lásd: [VPN-ügyfél konfigurációjának létrehozása a RADIUS-hitelesítéshez](point-to-site-vpn-client-configuration-radius.md).
 

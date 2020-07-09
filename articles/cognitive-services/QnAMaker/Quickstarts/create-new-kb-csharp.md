@@ -4,13 +4,13 @@ description: Ez a C# REST-alapú rövid útmutató végigvezeti egy olyan minta 
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: e3f3e457a0eb9bcce08499bf7d10c69185d7f211
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851926"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337716"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker C# használatával a REST segítségével
 
@@ -20,7 +20,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Hivatkozási dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [C# minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
 Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű `qna-maker-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `qna-maker-quickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
@@ -68,7 +68,7 @@ A program osztály tetején adja hozzá a szükséges állandókat a QnA Maker e
 Adja meg a következő értékeket a környezeti változókban:
 
 * `QNA_MAKER_SUBSCRIPTION_KEY`– A **kulcs** egy 32 karakterből álló karakterlánc, és a Azure Portal QnA Maker erőforrásban, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
-* `QNA_MAKER_ENDPOINT`– A **végpont** a szerzői URL-cím, a következő formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`:. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
+* `QNA_MAKER_ENDPOINT`– A **végpont** a szerzői URL-cím, a következő formátumban: `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 
@@ -157,7 +157,7 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

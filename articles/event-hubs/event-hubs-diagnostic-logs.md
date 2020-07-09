@@ -1,27 +1,13 @@
 ---
 title: Diagnosztikai naplók beállítása – Azure Event hub | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és a diagnosztikai naplókat az Azure-beli Event hubokhoz.
-keywords: ''
-documentationcenter: ''
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.custom: seodec18
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322452"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
@@ -209,7 +195,7 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 | SubscriptionId | Azure-előfizetés azonosítója |
 | Namespacename tulajdonság | Névtér neve |
 | IPAddress | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
-| Művelet | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
+| Műveletek | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
 | Ok | A művelet elvárt okát adja meg |
 | Darabszám | Az adott művelet előfordulásainak száma |
 | ResourceId | Azure Resource Manager erőforrás-azonosító. |
@@ -247,7 +233,7 @@ Az ügyfél által felügyelt kulcs felhasználói napló JSON a következő tá
 
 ## <a name="next-steps"></a>További lépések
 - [Bevezetés a Event Hubsba](event-hubs-what-is-event-hubs.md)
-- [Event Hubs API overview (Event Hubs API – áttekintés)](event-hubs-api-overview.md)
+- [Event Hubs minták](sdks.md)
 - Bevezetés az Event Hubs használatába
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

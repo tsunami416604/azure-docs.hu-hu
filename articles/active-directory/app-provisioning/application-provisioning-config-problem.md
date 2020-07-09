@@ -2,21 +2,20 @@
 title: Probléma van a felhasználó üzembe helyezésének egy Azure AD Gallery-alkalmazásban való konfigurálásakor
 description: Az Azure AD-alkalmazás-katalógusban már felsorolt alkalmazások felhasználó általi üzembe helyezésének konfigurálásakor felmerülő gyakori problémák elhárítása
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: e6fb5fbecc9b2917f4fde2d1ccb76d6962a0af18
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782126"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor
 
@@ -28,9 +27,9 @@ Az alkalmazáshoz való kiépítés beállítására vonatkozó beállítási ok
 
 A szolgáltatás konfigurálása után a szolgáltatás működésével kapcsolatos legtöbb betekintést két helyről lehet kirajzolni:
 
--   **Kiépítési naplók (előzetes verzió)** – a [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure ad lekérdezését a kiépítés hatókörében lévő hozzárendelt felhasználók számára. A cél alkalmazás lekérdezése a felhasználók létezéséhez, a rendszer közötti felhasználói objektumok összehasonlításával. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren. A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** lehetőség kiválasztásával érheti el.
+-   **Kiépítési naplók (előzetes verzió)** – a [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure ad lekérdezését a kiépítés hatókörében lévő hozzárendelt felhasználók számára. A cél alkalmazás lekérdezése a felhasználók létezéséhez, a rendszer közötti felhasználói objektumok összehasonlításával. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren. A Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** **Activity** lehetőség kiválasztásával érheti el.
 
--   **Aktuális állapot –** Egy adott alkalmazás utolsó kiépítési futtatásának összefoglalása látható a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazás\] &gt;neve kiépítési** szakaszban, a képernyő alján a szolgáltatás beállításai alatt. A jelenlegi állapot szakasz azt mutatja, hogy a létesítési ciklus megkezdte-e a felhasználói fiókok kiépítési folyamatát. Megtekintheti a ciklus előrehaladását, és megtekintheti, hogy hány felhasználó és csoport lett kiépítve, és hogy hány szerepkört hozott létre. Ha bármilyen hiba merül fel, a részletek a [kiépítési naplókban (..) találhatók. /Reports-monitoring/Concept-Provisioning-logs.MD? Context = Azure/Active-Directory/felügyelet-alkalmazások/környezet/kezelés-alkalmazások-környezet).
+-   **Aktuális állapot –** Egy adott alkalmazás utolsó kiépítési futtatásának összefoglalása látható a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[ alkalmazás neve \] &gt; kiépítési** szakaszban, a képernyő alján a szolgáltatás beállításai alatt. A jelenlegi állapot szakasz azt mutatja, hogy a létesítési ciklus megkezdte-e a felhasználói fiókok kiépítési folyamatát. Megtekintheti a ciklus előrehaladását, és megtekintheti, hogy hány felhasználó és csoport lett kiépítve, és hogy hány szerepkört hozott létre. Ha bármilyen hiba merül fel, a részletek a [kiépítési naplókban (..) találhatók. /Reports-monitoring/Concept-Provisioning-logs.MD? Context = Azure/Active-Directory/felügyelet-alkalmazások/környezet/kezelés-alkalmazások-környezet).
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Általános problémás területek az üzembe helyezéssel
 
@@ -42,7 +41,7 @@ Az alábbi lista az általános problémás területeket sorolja fel, amelyeket 
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>A kiépítési szolgáltatás nem jelenik meg a Start menüben
 
-Ha úgy állítja be a **kiépítési állapotot** , hogy be legyen **kapcsolva** a Azure Portal ** &gt; Azure Active Directory vállalati alkalmazások &gt; \[alkalmazásának neve\] &gt;kiépítés** szakaszában. A későbbi Újratöltés után azonban nem jelennek meg más állapotadatok az oldalon. Valószínű, hogy a szolgáltatás fut, de még nem hajtotta végre a kezdeti ciklust. A fent ismertetett **kiépítési naplók** alapján állapítsa meg, hogy milyen műveleteket végez a szolgáltatás, és hogy vannak-e hibák.
+Ha úgy állítja be a **kiépítési állapotot** , hogy be legyen **kapcsolva** a Azure Portal **Azure Active Directory &gt; vállalati alkalmazások &gt; \[ alkalmazásának neve \] &gt; kiépítés** szakaszában. A későbbi Újratöltés után azonban nem jelennek meg más állapotadatok az oldalon. Valószínű, hogy a szolgáltatás fut, de még nem hajtotta végre a kezdeti ciklust. A fent ismertetett **kiépítési naplók** alapján állapítsa meg, hogy milyen műveleteket végez a szolgáltatás, és hogy vannak-e hibák.
 
 >[!NOTE]
 >Egy kezdeti ciklus akár 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. A későbbi szinkronizálások a kezdeti ciklus után gyorsabbak lesznek, mivel a kiépítési szolgáltatás a kezdeti ciklust követően mindkét rendszer állapotát jelképező vízjeleket tárolja, így javítja a későbbi szinkronizálások teljesítményét.

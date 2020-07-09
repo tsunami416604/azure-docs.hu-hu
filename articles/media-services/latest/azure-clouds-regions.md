@@ -3,20 +3,20 @@ title: Felhők és régiók, amelyekben Azure Media Services v3 elérhető
 description: Ez a cikk olyan Azure-felhőket és-régiókat mutat be, amelyekben Azure Media Services v3 elérhető.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196236"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Felhők és régiók, amelyekben Azure Media Services v3 létezik
 
@@ -32,6 +32,19 @@ A Azure Media Services v3 a globális Azure-ban, a Azure Government, az Azure Ge
 | [StandardEncoderPreset](encoding-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 | [LiveEvents](live-streaming-overview.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
+
+## <a name="feature-availability-in-preview"></a>A szolgáltatás rendelkezésre állása előzetes verzióban
+
+A [LiveTranscription](live-transcription.md) a következő régiókban érhető el:
+
+- Délkelet-Ázsia
+- Nyugat-Európa
+- Észak-Európa
+- USA keleti régiója
+- USA középső régiója
+- USA déli középső régiója
+- USA nyugati régiója, 2.
+- Dél-Brazília
 
 ## <a name="regionsgeographieslocations"></a>Régiók/földrajzi területek/helyek
 

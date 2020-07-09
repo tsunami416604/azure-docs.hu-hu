@@ -5,12 +5,11 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100377"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
@@ -90,6 +89,9 @@ Az összes tulajdonsággal rendelkező teljes példa a következő helyen talál
 
 > [!NOTE]
 > Az `SoftwareUpdateConfigurationRunContext` objektum tartalmazhat duplikált bejegyzéseket a gépekhez. Ennek hatására előfordulhat, hogy az előparancsfájlok és a szkriptek többször is futhatnak ugyanazon a gépen. Ennek a viselkedésnek a megkerülő megoldásához `Sort-Object -Unique` a használatával válassza ki a csak egyedi virtuális gépek nevét.
+
+> [!NOTE]
+> Jelenleg csak a PowerShell-runbookok támogatottak a Pre/post parancsfájlként. Más runbook típusok, mint például a Python, a grafikus, a PowerShell-munkafolyamat, a grafikus PowerShell-munkafolyamat jelenleg nem támogatott a Pre/post parancsfájlként.
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Egy üzembe helyezés előtti vagy utáni parancsfájl használata
 
@@ -242,6 +244,6 @@ $variable = Get-AutomationVariable -Name $runId
 > [!NOTE]
 > A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Update Management részleteiért lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).

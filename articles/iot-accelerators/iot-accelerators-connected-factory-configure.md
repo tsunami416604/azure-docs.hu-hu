@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820121"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>A csatlakoztatott gyári megoldás-gyorsító konfigurálása
@@ -29,7 +28,7 @@ Minden contoso-gyár rendelkezik olyan üzemi vonalakkal, amelyek mindegyike há
 * Tesztelési állomás
 * Csomagoló állomás
 
-Ezek az OPC UA-kiszolgálók OPC UA-csomópontokkal rendelkeznek, és az [OPC-közzétevő](overview-opc-publisher.md) elküldi a csomópontok értékeit a csatlakoztatott gyárnak. Az érintett műveletek közé tartoznak az alábbiak:
+Ezek az OPC UA-kiszolgálók OPC UA-csomópontokkal rendelkeznek, és az [OPC-közzétevő](overview-opc-publisher.md) elküldi a csomópontok értékeit a csatlakoztatott gyárnak. Ide tartoznak az alábbiak:
 
 * Aktuális működési állapot, például aktuális energiafogyasztás.
 * Termelési információk, például az előállított termékek száma.
@@ -61,11 +60,11 @@ A topológia minden csomópontja a tulajdonságok közös készletét határozza
 
 ## <a name="topology-configuration-file"></a>Topológia konfigurációs fájlja
 
-Az előző szakaszban felsorolt tulajdonságok konfigurálásához a csatlakoztatott Factory megoldás egy [ContosoTopologyDescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)nevű konfigurációs fájlt használ.
+Az előző szakaszban felsorolt tulajdonságok konfigurálásához a csatlakoztatott gyári megoldás egy [ContosoTopologyDescription.js](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)nevű konfigurációs fájlt használ.
 
-Ezt a fájlt a `WebApp/Contoso/Topology` mappában található megoldás forráskódjában találja.
+Ezt a fájlt a mappában található megoldás forráskódjában találja `WebApp/Contoso/Topology` .
 
-A következő kódrészlet a `ContosoTopologyDescription.json` konfigurációs fájl vázlatát mutatja be:
+A következő kódrészlet a konfigurációs fájl vázlatát mutatja be `ContosoTopologyDescription.json` :
 
 ```json
 {
@@ -85,7 +84,7 @@ A következő kódrészlet a `ContosoTopologyDescription.json` konfigurációs f
 }
 ```
 
-A, a, `<global_configuration>`a `<factory_configuration>`és `<production_line_configuration>` `<station_configuration>` a gyakori tulajdonságai:
+A, a, a és a gyakori tulajdonságai  `<global_configuration>` `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` :
 
 * **Név** (Type string)
 
@@ -99,11 +98,11 @@ A, a, `<global_configuration>`a `<factory_configuration>`és `<production_line_
 
   A WebApp-megoldás rendszerképének elérési útja, amely megjeleníti, hogy mikor jelenjen meg a topológia csomópontjának információja az irányítópulton.
 
-* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (típus `<performance_definition>`)
+* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (típus `<performance_definition>` )
 
   Ezek a tulajdonságok határozzák meg a riasztások létrehozásához használt működési számadat minimális, célként megadott és maximális értékét. Ezek a tulajdonságok meghatározzák a riasztás észlelésekor végrehajtandó műveleteket is.
 
-A `<factory_configuration>` és `<production_line_configuration>` az elemek tulajdonsága:
+A `<factory_configuration>` és az `<production_line_configuration>` elemek tulajdonsága:
 
 * **GUID** (Type string)
 
@@ -111,7 +110,7 @@ A `<factory_configuration>` és `<production_line_configuration>` az elemek tula
 
 `<factory_configuration>`tulajdonsága:
 
-* **Hely** (típus `<location_definition>`)
+* **Hely** (típus `<location_definition>` )
 
   Megadja, hogy a gyár hol található.
 
@@ -122,7 +121,7 @@ A `<factory_configuration>` és `<production_line_configuration>` az elemek tula
   Ezt a tulajdonságot az OPC UA-kiszolgáló OPC UA-alkalmazás URI-ja értékre kell beállítani.
   Mivel az OPC UA-specifikációnak globálisan egyedinek kell lennie, ez a tulajdonság az állomás-topológiai csomópont azonosítására szolgál.
 
-* **OpcNodes**, amely OPC ua-csomópontok tömbje (típus `<opc_node_description>`)
+* **OpcNodes**, amely OPC ua-csomópontok tömbje (típus `<opc_node_description>` )
 
 `<location_definition>`tulajdonságok:
 
@@ -156,11 +155,11 @@ A `<factory_configuration>` és `<production_line_configuration>` az elemek tula
 
   Az érték felső küszöbértéke elérhető. Ha az aktuális érték meghaladja ezt a küszöbértéket, a rendszer riasztást generál.
 
-* **MinimumAlertActions** (típus `<alert_action>`)
+* **MinimumAlertActions** (típus `<alert_action>` )
 
   Meghatározza a műveletek készletét, amely a minimális riasztásra adott válaszként lehet.
 
-* **MaximumAlertActions** (típus `<alert_action>`)
+* **MaximumAlertActions** (típus `<alert_action>` )
 
   Meghatározza a műveletek készletét, amely a maximális riasztásra adott válaszként lehet.
 
@@ -246,11 +245,11 @@ A `<factory_configuration>` és `<production_line_configuration>` az elemek tula
 
   Ha az aktuális érték meghaladja ezt az értéket, a rendszer maximális riasztást generál.
 
-* **MinimumAlertActions** (típus `<alert_action>`)
+* **MinimumAlertActions** (típus `<alert_action>` )
 
   Meghatározza a műveletek készletét, amely a minimális riasztásra adott válaszként lehet.
 
-* **MaximumAlertActions** (típus `<alert_action>`)
+* **MaximumAlertActions** (típus `<alert_action>` )
 
   Meghatározza a műveletek készletét, amely a maximális riasztásra adott válaszként lehet.
 
@@ -262,10 +261,10 @@ A konfigurációs fájlban használt összes tulajdonság különböző kategór
 
 ### <a name="visual-appearance"></a>Vizuális megjelenés
 
-A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák erre vonatkozóan:
+A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák:
 
-* Name (Név)
-* Leírás
+* Name
+* Description
 * Kép
 * Hely
 * Egység
@@ -282,7 +281,7 @@ A csatlakoztatott gyári szimulációhoz tartozó OEE/KPI-számadatok paraméter
 * A számításban szerepeltetni kívánt OPC UA-csomópontok értékei.
 * Az ábra kiszámítása a telemetria értékei alapján.
 
-A csatlakoztatott gyár a által közzétett OEE-képleteket [http://www.oeefoundation.org](http://www.oeefoundation.org)használja.
+A csatlakoztatott gyár a által közzétett OEE-képleteket használja [http://www.oeefoundation.org](http://www.oeefoundation.org) .
 
 A állomások OPC UA Node objektumai lehetővé teszik a címkézést az OEE/KPI-számításokban való használathoz. A **relevancia** tulajdonság azt jelzi, hogy melyik OEE/KPI-nek az OPC ua-csomópont értékét kell használnia. A **műveleti kód** tulajdonság határozza meg, hogy az érték hogyan szerepeljen a számításban.
 
@@ -311,9 +310,9 @@ A telemetria-adatok csatlakoztatott gyárba való betöltésével kapcsolatos to
 
 ## <a name="example-how-kpi1-is-calculated"></a>Példa: a KPI1 kiszámítása
 
-A `ContosoTopologyDescription.json` fájlban megadott konfiguráció vezérli, hogyan számítja ki az OEE/KPI-számokat. Az alábbi példa azt szemlélteti, hogy a fájlban lévő tulajdonságok hogyan szabályozzák a KPI1 számítását.
+A fájlban megadott konfiguráció `ContosoTopologyDescription.json` vezérli, hogyan számítja ki az OEE/KPI-számokat. Az alábbi példa azt szemlélteti, hogy a fájlban lévő tulajdonságok hogyan szabályozzák a KPI1 számítását.
 
-A csatlakoztatott gyár KPI1 az elmúlt órában sikeresen előállított termékek számának mérésére szolgál. A csatlakoztatott gyári szimulációban minden állomás (OPC UA-kiszolgáló) egy OPC UA-csomópontot (`NodeId: "ns=2;i=385"`) biztosít, amely a KPI kiszámításához biztosít telemetria.
+A csatlakoztatott gyár KPI1 az elmúlt órában sikeresen előállított termékek számának mérésére szolgál. A csatlakoztatott gyári szimulációban minden állomás (OPC UA-kiszolgáló) egy OPC UA-csomópontot ( `NodeId: "ns=2;i=385"` ) biztosít, amely a KPI kiszámításához biztosít telemetria.
 
 Az OPC UA-csomópont konfigurációja a következő kódrészlethez hasonlít:
 

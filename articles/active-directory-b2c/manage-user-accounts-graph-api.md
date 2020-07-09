@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387626"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése Microsoft Graph
 
@@ -46,7 +46,7 @@ A következő felhasználói kezelési műveletek érhetők el a [Microsoft Grap
 
 ### <a name="display-name-property"></a>Megjelenítendő név tulajdonság
 
-A `displayName` a felhasználó Azure Portal felhasználói felügyeletében megjelenítendő név, a hozzáférési jogkivonat Azure ad B2C pedig visszaadja az alkalmazásnak. Ezt a tulajdonságot kötelező megadni.
+A a `displayName` felhasználó Azure Portal felhasználói felügyeletében megjelenítendő név, a hozzáférési jogkivonat Azure ad B2C pedig visszaadja az alkalmazásnak. Ezt a tulajdonságot kötelező megadni.
 
 ### <a name="identities-property"></a>Identitások tulajdonság
 
@@ -59,15 +59,15 @@ Az ügyfél fiókkal rendelkező felhasználók több identitással is bejelentk
 
 A Microsoft Graph API-ban a helyi és az összevont identitások is a User `identities` attribútumban tárolódnak, amely [objectIdentity][graph-objectIdentity]típusú. A `identities` gyűjtemény a felhasználói fiókba való bejelentkezéshez használt identitások készletét jelöli. Ez a gyűjtemény lehetővé teszi, hogy a felhasználó a hozzá tartozó identitásokkal jelentkezzen be a felhasználói fiókba.
 
-| Tulajdonság   | Típus |Leírás|
+| Tulajdonság   | Típus |Description|
 |:---------------|:--------|:----------|
-|signInType|sztring| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén: `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName`,,,, vagy bármely más hasonló típus. A közösségi fiókot a `federated`következőre kell beállítani:.|
-|kiállító|sztring|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated`), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartománynevét adja meg `contoso.onmicrosoft.com`, például:. A közösségi identitás (ahol **signInType** a signInType `federated`) értéke a kibocsátó neve, például:`facebook.com`|
-|issuerAssignedId|sztring|A kiállító által a felhasználóhoz rendelt egyedi azonosítót határozza meg. A **kibocsátó** és a **issuerAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha a **signInType** értéke `emailAddress` vagy `userName`, a felhasználó bejelentkezési nevét jelöli.<br>Ha a **signInType** értéke: <ul><li>`emailAddress`(vagy kezdődik, `emailAddress` mint `emailAddress1`a) a **issuerAssignedId** érvényes e-mail-címnek kell lennie</li><li>`userName`(vagy bármely más érték) a **issuerAssignedId** egy [e-mail-cím érvényes helyi részének](https://tools.ietf.org/html/rfc3696#section-3) kell lennie</li><li>`federated`, a **issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli.</li></ul>|
+|signInType|sztring| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` vagy bármely más hasonló típus. A közösségi fiókot a következőre kell beállítani: `federated` .|
+|kiállító|sztring|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated` ), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartománynevét adja meg, például: `contoso.onmicrosoft.com` . A közösségi identitás (ahol **signInType** a signInType `federated` ) értéke a kibocsátó neve, például:`facebook.com`|
+|issuerAssignedId|sztring|A kiállító által a felhasználóhoz rendelt egyedi azonosítót határozza meg. A **kibocsátó** és a **issuerAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha a **signInType** értéke `emailAddress` vagy `userName` , a felhasználó bejelentkezési nevét jelöli.<br>Ha a **signInType** értéke: <ul><li>`emailAddress`(vagy kezdődik a `emailAddress` Like `emailAddress1` ) **issuerAssignedId** érvényes e-mail-címnek kell lennie</li><li>`userName`(vagy bármely más érték) a **issuerAssignedId** egy [e-mail-cím érvényes helyi részének](https://tools.ietf.org/html/rfc3696#section-3) kell lennie</li><li>`federated`, a **issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli.</li></ul>|
 
 A következő **identitások** tulajdonság egy helyi fiók identitásával, egy bejelentkezési névvel, egy e-mail-címmel és egy közösségi identitással. 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -91,11 +91,11 @@ Az összevont identitások esetében az azonosítótól függően a **issuerAssi
 
 ### <a name="password-profile-property"></a>Password Profile tulajdonság
 
-Helyi identitás esetén a **passwordProfile** tulajdonság megadása kötelező, és tartalmazza a felhasználó jelszavát. A `forceChangePasswordNextSignIn` tulajdonság értékének a `false`következőnek kell lennie:.
+Helyi identitás esetén a **passwordProfile** tulajdonság megadása kötelező, és tartalmazza a felhasználó jelszavát. A tulajdonság értékének a következőnek `forceChangePasswordNextSignIn` kell lennie: `false` .
 
 Összevont (közösségi) identitás esetén a **passwordProfile** tulajdonság nem szükséges.
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -106,9 +106,9 @@ Helyi identitás esetén a **passwordProfile** tulajdonság megadása kötelező
 
 A Azure AD B2C jelszóházirend (helyi fiókok esetében) a Azure Active Directory [erős jelszó-erősségi](../active-directory/authentication/concept-sspr-policy.md) házirenden alapul. A Azure AD B2C regisztrációs vagy bejelentkezési és jelszó-visszaállítási szabályzatok ezt az erős jelszót igénylik, és nem járnak le a jelszavak.
 
-A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíteni kívánt fiókok gyengébb jelszóval rendelkeznek, mint az Azure AD B2C által kényszerített [erős jelszó](../active-directory/authentication/concept-sspr-policy.md) , letilthatja a jelszó erős követelményét. Az alapértelmezett jelszóházirend módosításához állítsa a `passwordPolicies` tulajdonságot a következőre `DisableStrongPassword`:. A felhasználói kérelem létrehozása például a következőképpen módosítható:
+A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíteni kívánt fiókok gyengébb jelszóval rendelkeznek, mint az Azure AD B2C által kényszerített [erős jelszó](../active-directory/authentication/concept-sspr-policy.md) , letilthatja a jelszó erős követelményét. Az alapértelmezett jelszóházirend módosításához állítsa a tulajdonságot a következőre: `passwordPolicies` `DisableStrongPassword` . A felhasználói kérelem létrehozása például a következőképpen módosítható:
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -116,9 +116,9 @@ A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíten
 
 Minden ügyfélre kiterjedő alkalmazás egyedi követelményekkel rendelkezik a gyűjtött adatokhoz. A Azure AD B2C bérlője a tulajdonságok területen tárolt beépített információkkal, például a megadott névvel, a vezetéknévvel, a várossal és az irányítószámmal rendelkezik. A Azure AD B2C használatával kiterjesztheti az egyes felhasználói fiókokban tárolt tulajdonságok készletét. Az egyéni attribútumok definiálásával kapcsolatos további információkért lásd: [Egyéni attribútumok (felhasználói folyamatok)](user-flow-custom-attributes.md) és [Egyéni attribútumok (egyéni házirendek)](custom-policy-custom-attributes.md).
 
-Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény `extension_ApplicationObjectID_attributename`használatával vannak elnevezve. Például:
+Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény használatával vannak elnevezve `extension_ApplicationObjectID_attributename` . Például:
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
@@ -135,7 +135,7 @@ A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a 
 
 1. Nyissa meg a projektet a [Visual Studióban](https://visualstudio.microsoft.com) vagy a [Visual Studio Code](https://code.visualstudio.com)-ban.
 1. Nyissa meg a következő fájlt: `src/appsettings.json`.
-1. A `appSettings` szakaszban cserélje `your-b2c-tenant` le a nevet a bérlő nevére, `Application (client) ID` `Client secret` és a felügyeleti alkalmazás regisztrációjának értékeire (lásd a cikk [felügyeleti alkalmazás regisztrálása](#register-a-management-application) című szakaszát).
+1. A `appSettings` szakaszban cserélje le a `your-b2c-tenant` nevet a bérlő nevére, és a `Application (client) ID` `Client secret` felügyeleti alkalmazás regisztrációjának értékeire (lásd a cikk [felügyeleti alkalmazás regisztrálása](#register-a-management-application) című szakaszát).
 1. Nyisson meg egy konzol ablakot a tárház helyi klónján belül, váltson át a `src` címtárra, majd hozza létre a projektet:
     ```console
     cd src
@@ -157,7 +157,7 @@ A Microsoft Graph API-nak benyújtott minden kérelemhez hozzáférési jogkivon
 
 A `RunAsync` metódus a _program.cs_ fájlban:
 
-1. Az Alkalmazásbeállítások beolvasása a _appSettings. JSON_ fájlból
+1. Az Alkalmazásbeállítások beolvasása a _appsettings.js_ fájlból
 1. A [OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) folyamatát használva inicializálja a hitelesítési szolgáltatót. Az ügyfél hitelesítő adatainak megadása esetén az alkalmazás hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
 1. Beállítja a Microsoft Graph szolgáltatási ügyfelet az Auth szolgáltatóval:
 
@@ -202,7 +202,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Az Microsoft Graph SDK-kat használó API](https://docs.microsoft.com/graph/sdks/create-requests) - `$select` hívások a Microsoft Graph információk olvasására és írására, a visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint `$filter` a `$orderBy` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak.
+[Az Microsoft Graph SDK-kat használó API-hívások a](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph információk olvasására és írására, a `$select` visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint a `$filter` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak `$orderBy` .
 
 ## <a name="next-steps"></a>További lépések
 

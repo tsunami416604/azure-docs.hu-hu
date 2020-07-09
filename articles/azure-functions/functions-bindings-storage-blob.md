@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847649"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Blob Storage-kötések Azure Functions – áttekintés
 
@@ -24,7 +24,7 @@ A Azure Functions [triggerekkel és kötésekkel](./functions-triggers-bindings.
 
 ## <a name="add-to-your-functions-app"></a>Hozzáadás a functions-alkalmazáshoz
 
-### <a name="functions-2x-and-higher"></a>2. x és újabb függvények
+### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 

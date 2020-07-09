@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580931"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Tűzfalszabályok a Azure Database for PostgreSQL-nagy kapacitású (Citus)
@@ -32,7 +32,7 @@ A nagy kapacitású (Citus) kiszolgáló csoportjának tűzfala szabályozza, ho
 
 Ha a tűzfal blokkolja a kapcsolatokat, az alkalmazás hibáihoz vezethet. A PostgreSQL JDBC-illesztőprogram használata például a következőhöz hasonló hibát jelez:
 
-> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: nincs PG\_HBA. conf bejegyzés a (z) "123.45.67.890" gazdagéphez, "citus", "citus" adatbázishoz, SSL
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: nincs PG \_ HBA. conf bejegyzés a következő gazdagépre: "123.45.67.890", "citus", adatbázis: "citus", SSL
 
 A szabályok definiálásának megismeréséhez tekintse meg a [Tűzfalszabályok létrehozása és kezelése](howto-hyperscale-manage-firewall-using-portal.md) című témakört.
 
@@ -44,7 +44,7 @@ Ha a PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz való hozzáférés 
 * **A felhasználó nincs hitelesítve, vagy helytelen jelszót használt:** Ha a felhasználó nem rendelkezik jogosultsággal a kiszolgálón, vagy helytelen a használt jelszó, a rendszer megtagadja a kapcsolódást a kiszolgálóval. A tűzfalbeállítások létrehozása csak olyan ügyfelek számára biztosít lehetőséget, akik megpróbálnak csatlakozni a kiszolgálóhoz; minden ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat.
 
 Ha például egy JDBC-ügyfelet használ, a következő hibaüzenet jelenhet meg.
-> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: a jelszó-hitelesítés nem sikerült a (z) "Felhasználónév" felhasználó számára
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: a jelszó-hitelesítés sikertelen volt a (z) "Felhasználónév" felhasználó számára
 
 * **Dinamikus IP-cím**: Ha az internetkapcsolata dinamikus IP-címkezeléssel rendelkezik, és problémákat okoz a tűzfalon való átjutás, próbálja ki a következő megoldások valamelyikét:
 

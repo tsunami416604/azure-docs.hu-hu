@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: c3f9046bd0cca8cb191397413c09a72c4cc11c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416815"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Oracle Service-felhőből Azure Data Factory használatával (előzetes verzió)
@@ -49,7 +49,7 @@ Az Oracle Service Cloud társított szolgáltatás a következő tulajdonságoka
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **OracleServiceCloud** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **OracleServiceCloud** | Igen |
 | gazda | Az Oracle Service Cloud-példány URL-címe.  | Igen |
 | felhasználónév | Az Oracle Service Cloud Server eléréséhez használt Felhasználónév.  | Igen |
 | jelszó | A Felhasználónév kulcsában megadott felhasználónévnek megfelelő jelszó. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Igen |
@@ -57,7 +57,7 @@ Az Oracle Service Cloud társított szolgáltatás a következő tulajdonságoka
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -88,10 +88,10 @@ Ha adatokat szeretne másolni az Oracle Service-felhőből, állítsa az adatké
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **OracleServiceCloudObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **OracleServiceCloudObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -119,10 +119,10 @@ Az Oracle Service-felhőből származó adatok másolásához állítsa a forrá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **OracleServiceCloudSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **OracleServiceCloudSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: Azure-beli virtuális gépen futó SQL Server dokumentációja
+summary: Alapelvek, gyorsútmutatók, oktatóanyagok és példák Azure-beli virtuális gépre telepített SQL Serverhez, Windows és Linux rendszerre egyaránt.
+metadata:
+  title: Azure-beli virtuális gépen futó SQL Server dokumentációja
+  description: Dokumentáció az Azure-beli virtuális gépre telepített SQL Serverhez, Windows és Linux rendszerre egyaránt.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: a02a76e3d0080e731643ff82162aafdf3b783423
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023772"
+landingContent:
+- title: Azure virtuális gépen futó SQL Server
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Windows rendszerű SQL virtuális gép létrehozása (portál)
+      url: windows/sql-vm-create-portal-quickstart.md
+    - text: Windows rendszerű SQL virtuális gép létrehozása (PowerShell)
+      url: windows/sql-vm-create-powershell-quickstart.md
+    - text: Linux rendszerű SQL virtuális gép létrehozása (portál)
+      url: linux/sql-vm-create-portal-quickstart.md
+  - linkListType: overview
+    links:
+    - text: Újdonságok
+      url: windows/doc-changes-updates-release-notes.md?
+    - text: Mit takar a Windows rendszerű virtuális gépeken futó SQL Server?
+      url: windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: Mit takar a Linux rendszerű virtuális gépeken futó SQL Server?
+      url: linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+    - text: Migrálás az SQL Serverről
+      url: windows/migrate-to-vm-from-sql-server.md
+    - text: Biztonsági szempontok
+      url: windows/security-considerations-best-practices.md
+    - text: Teljesítményre vonatkozó irányelvek
+      url: windows/performance-guidelines-best-practices.md
+    - text: Díjszabási útmutató
+      url: windows/pricing-guidance.md
+- title: Kezelés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az SQL Server IaaS-ügynök bővítménye
+      url: windows/sql-server-iaas-agent-extension-automate-management.md
+    - text: Kezelés az Azure Portalon
+      url: windows/manage-sql-vm-portal.md
+    - text: Regisztrálás az SQL VM erőforrás-szolgáltatónál
+      url: windows/sql-vm-resource-provider-register.md
+    - text: Automatikus javítás
+      url: windows/automated-patching.md
+    - text: Licenc típusának módosítása
+      url: windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+    - text: Váltás másik SQL Server-kiadásra
+      url: windows/change-sql-server-edition.md
+    - text: Áthelyezés új régióba
+      url: windows/move-sql-vm-different-region.md
+    - text: Integrálás az Azure Key Vaulttal
+      url: windows/azure-key-vault-integration-configure.md
+- title: Az üzletmenet folytonossága
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Magas rendelkezésre állás és vészhelyreállítás
+      url: windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: Biztonsági mentés és visszaállítás
+      url: windows/backup-restore.md
+    - text: Rendelkezésre állási csoportok
+      url: windows/availability-group-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Rendelkezésre állási csoport (Az parancssori felület)
+      url: windows/availability-group-az-cli-configure.md
+    - text: Fürt nélküli rendelkezésre állási csoport
+      url: windows/availability-group-clusterless-workgroup-configure.md
+    - text: FCI (közvetlen tárolóhelyek)
+      url: windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+    - text: FCI (prémium fájlmegosztás)
+      url: windows/failover-cluster-instance-premium-file-share-manually-configure.md
+  - linkListType: tutorial
+    links:
+    - text: Rendelkezésre állási csoport (manuálisan)
+      url: windows/availability-group-manually-configure-prerequisites-tutorial.md
+    - text: Stonith rendelkezésre állási csoport (RHEL)
+      url: linux/rhel-high-availability-stonith-tutorial.md
+    - text: Rendelkezésre állási csoport figyelője (RHEL)
+      url: linux/rhel-high-availability-listener-tutorial.md
+- title: Referencia
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Oktatási célú SQL-erőforrások
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI-minták
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell-példák
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM-sablonminták
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: Migrálási útmutató
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/

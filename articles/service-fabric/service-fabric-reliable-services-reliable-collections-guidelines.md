@@ -3,43 +3,44 @@ title: Irányelvek a megbízható gyűjteményekhez
 description: Irányelvek és javaslatok Service Fabric megbízható gyűjtemények Azure Service Fabric alkalmazásban való használatához.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483125"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure-Service Fabric megbízható gyűjteményekhez
 Ez a szakasz a megbízható állapot-kezelő és a megbízható gyűjtemények használatához nyújt útmutatást. A cél az, hogy segítse a felhasználókat a gyakori buktatók elkerülésében.
 
 Az irányelvek a feltételek *elvégzése*, a *megfontolás*, a *elkerülés* és a *nem*megfelelő egyszerű javaslatok szerint vannak rendszerezve.
 
-* Ne módosítsa az olvasási műveletek által visszaadott egyéni típusú objektumokat (például `TryPeekAsync` vagy `TryGetValueAsync`). A megbízható gyűjtemények, akárcsak a párhuzamos gyűjtemények, az objektumokra mutató hivatkozást adnak vissza.
+* Ne módosítsa az olvasási műveletek által visszaadott egyéni típusú objektumokat (például `TryPeekAsync` vagy `TryGetValueAsync` ). A megbízható gyűjtemények, akárcsak a párhuzamos gyűjtemények, az objektumokra mutató hivatkozást adnak vissza.
 * A módosítás előtt készítsen részletesen egy egyéni típusú visszaadott objektumot. Mivel a struktúrák és a beépített típusok értéke a pass-by-Value, nem kell részletes másolatot készítenie rajtuk, hacsak nem tartalmaznak hivatkozással megadott mezőket vagy tulajdonságokat, amelyeket módosítani kíván.
 * Ne használja `TimeSpan.MaxValue` az időkorlátot. A holtpontok észleléséhez időtúllépést kell használni.
 * Ne használjon tranzakciót a véglegesítés, a megszakított vagy a használat után.
 * Ne használjon enumerálást a-ben létrehozott tranzakciós hatókörön kívül.
 * Ne hozzon létre tranzakciót egy másik tranzakció `using` utasításán belül, mert a holtpontot eredményezhet.
 * Ne hozzon létre megbízható állapotot, `IReliableStateManager.GetOrAddAsync` és használja a megbízható állapotot ugyanabban a tranzakcióban. Ez egy InvalidOperationException eredményez.
-* Győződjön meg arról, `IComparable<TKey>` hogy a megvalósítás helyes. A rendszer az ellenőrzőpontok és `IComparable<TKey>` a sorok egyesítésének függőségét veszi igénybe.
+* Győződjön meg arról, hogy a `IComparable<TKey>` megvalósítás helyes. A rendszer az `IComparable<TKey>` ellenőrzőpontok és a sorok egyesítésének függőségét veszi igénybe.
 * A frissítési zárolást akkor használja, ha olyan elemeket olvas be, amelyekkel frissíteni kívánja azt, hogy megakadályozza a holtpontok bizonyos osztályait.
 * Vegye figyelembe, hogy a megbízható gyűjtemények száma nem haladhatja meg a 1000-ot. A megbízható gyűjtemények több elemmel is előnyben részesülnek, kevesebb elemmel.
 * Ügyeljen arra, hogy az elemek (például a TKey + TValue megbízható szótárhoz) az 80 kilobájt alatt legyenek: kisebb a jobb. Ez csökkenti a nagyméretű objektum-halom használatának mennyiségét, valamint a lemez és a hálózat i/o-követelményeit. Gyakran csökkenti a duplikált adat replikálását, ha az érték csak egy kis részét frissíti. Ennek a megbízható szótárban való elérésének gyakori módja, ha a sorokat több sorba szeretné bontani.
 * Érdemes lehet biztonsági mentési és visszaállítási funkciókat használni a vész-helyreállításhoz.
-* A különböző elkülönítési szintek miatt ne keverje az egyentitásos `CreateEnumerableAsync`műveleteket és a többentitásos műveleteket (például `GetCountAsync`) ugyanabban a tranzakcióban.
+* A különböző elkülönítési szintek miatt ne keverje az egyentitásos műveleteket és a többentitásos műveleteket (például `GetCountAsync` `CreateEnumerableAsync` ) ugyanabban a tranzakcióban.
 * Végezze el a InvalidOperationException kezelését. A rendszer többféle okból is megszakíthatja a felhasználói tranzakciókat. Ha például a megbízható állapot-kezelő módosítja a szerepkört az elsődlegesen, vagy ha egy hosszan futó tranzakció blokkolja a tranzakciós napló csonkítása. Ilyen esetekben előfordulhat, hogy a felhasználó olyan InvalidOperationException kap, amely azt jelzi, hogy a tranzakciójuk már meg van szakítva. Feltételezve, hogy a felhasználó nem kérte a tranzakció megszüntetését, a kivétel kezelésére a legjobb megoldás, ha a tranzakciót el szeretné érni, ellenőrizze, hogy a lemondási token be van-e állítva (vagy a replika szerepköre módosult-e), és ha nem hoz létre új tranzakciót, és próbálkozzon újra.  
 
 A következő szempontokat érdemes figyelembe venni:
 
 * Az alapértelmezett időtúllépés négy másodperc az összes megbízható gyűjtemény API-hoz. A legtöbb felhasználónak az alapértelmezett időtúllépést kell használnia.
-* Az alapértelmezett lemondási `CancellationToken.None` jogkivonat minden megbízható gyűjtemény API-ban szerepel.
-* A megbízható szótár kulcs Type paraméterének (*TKey*) megfelelően kell megvalósítani `GetHashCode()` a `Equals()`-t és a-t. A kulcsok nem változtathatók meg.
+* Az alapértelmezett lemondási jogkivonat `CancellationToken.None` minden megbízható gyűjtemény API-ban szerepel.
+* A megbízható szótár kulcs Type paraméterének (*TKey*) megfelelően kell megvalósítani a `GetHashCode()` -t és a-t `Equals()` . A kulcsok nem változtathatók meg.
 * Ha magas rendelkezésre állást szeretne biztosítani a megbízható gyűjtemények számára, minden szolgáltatásnak rendelkeznie kell legalább egy célként megadott és minimális replikakészlet 3-as mérettel.
 * A másodlagos olvasási műveletek a kvórumnak nem véglegesített verziókat is tartalmazhatnak.
   Ez azt jelenti, hogy az egyetlen másodlagosból beolvasott adatok egyik verziója hamis lehet.
   Az Elsődlegesből való beolvasás mindig stabil: soha nem lehet hamisan haladni.
-* A megbízható gyűjteményben az alkalmazás által megőrzött adatok biztonsága/adatvédelme a saját döntése, valamint a tárolási felügyelet által biztosított védelem tárgya. I.E. Az operációs rendszer lemezének titkosítása felhasználható az inaktív adatok védelme érdekében.  
+* A megbízható gyűjteményben az alkalmazás által megőrzött adatok biztonsága/adatvédelme a saját döntése, valamint a tárolási felügyelet által biztosított védelem tárgya. I.E. Az operációs rendszer lemezének titkosítása felhasználható az inaktív adatok védelme érdekében.
+* `ReliableDictionary`a számbavétel a kulcs alapján rendezett, rendezett adatszerkezetet használ. A számbavétel hatékonyságát a véglegesíti a rendszer egy ideiglenes szórótábla adja hozzá, és később áthelyezi a fő rendezett adatstruktúra utáni ellenőrzőpontra. A hozzáadási/frissítési/törlési lehetőség az o (1) és a legrosszabb esetben a (z) O (log n) esetek legjobb futtatókörnyezetét adja meg, ha a kulcs jelenléte ellenőrzés alatt áll. A beolvasás lehet az O (1) vagy az O (log n), attól függően, hogy a legutóbbi véglegesítés vagy egy régebbi véglegesítés után olvassa-e a rendszer.
 
 ## <a name="volatile-reliable-collections"></a>Felejtő megbízható gyűjtemények
 Az illékony megbízható gyűjtemények használatának eldöntése során vegye figyelembe a következőket:
@@ -47,8 +48,8 @@ Az illékony megbízható gyűjtemények használatának eldöntése során vegy
 * ```ReliableDictionary```illékony támogatással rendelkezik
 * ```ReliableQueue```illékony támogatással rendelkezik
 * ```ReliableConcurrentQueue```NEM rendelkezik felejtő támogatással
-* A megőrzött szolgáltatások nem hozhatók létre illékonyak. A ```HasPersistedState``` jelző ```false``` módosítása a teljes szolgáltatás teljesen új létrehozásához
-* A felejtő szolgáltatások nem hozhatók létre. A ```HasPersistedState``` jelző ```true``` módosítása a teljes szolgáltatás teljesen új létrehozásához
+* A megőrzött szolgáltatások nem hozhatók létre illékonyak. A ```HasPersistedState``` jelző módosítása a ```false``` teljes szolgáltatás teljesen új létrehozásához
+* A felejtő szolgáltatások nem hozhatók létre. A ```HasPersistedState``` jelző módosítása a ```true``` teljes szolgáltatás teljesen új létrehozásához
 * ```HasPersistedState```a szolgáltatás szintű konfiguráció. Ez azt jelenti, hogy **minden** gyűjteményt megtartanak vagy változékonyak. Az illékony és megőrzött gyűjtemények nem kombinálhatók
 * A felejtő partíció Kvórumának elvesztése a teljes adatvesztést eredményezi
 * A biztonsági mentés és a visszaállítás nem érhető el a felejtő szolgáltatásokhoz

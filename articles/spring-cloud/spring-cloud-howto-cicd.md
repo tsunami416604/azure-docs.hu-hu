@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278515"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>CI/CD az Azure Spring Cloud-hoz
@@ -25,7 +24,7 @@ A folyamatos integráció és a folyamatos kézbesítési eszközök lehetővé 
 
 ### <a name="deploy-artifacts"></a>Összetevők üzembe helyezése
 
-Projektjeit a sorozatának használatával hozhatja létre és helyezheti üzembe `tasks`. Ez a kódrészlet először definiál egy Maven-feladatot az alkalmazás létrehozásához, majd egy második feladatot, amely az Azure Spring Cloud Azure CLI-bővítmény használatával telepíti a JAR-fájlt.
+Projektjeit a sorozatának használatával hozhatja létre és helyezheti üzembe `tasks` . Ez a kódrészlet először definiál egy Maven-feladatot az alkalmazás létrehozásához, majd egy második feladatot, amely az Azure Spring Cloud Azure CLI-bővítmény használatával telepíti a JAR-fájlt.
 
 ```yaml
 steps:

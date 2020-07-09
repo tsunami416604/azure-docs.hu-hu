@@ -1,6 +1,7 @@
 ---
 title: A Ruby használata a lekérdezéshez
-description: Ez a témakör bemutatja, hogyan használható a Ruby egy olyan program létrehozásához, amely Azure SQL Database-adatbázishoz csatlakozik, és hogyan kérdezheti le a Transact-SQL-utasítások használatával.
+description: Ebből a témakörből megtudhatja, hogyan használhatja a Rubyt egy adatbázishoz csatlakozó és a Transact-SQL-utasítások használatával történő lekérdezésre szolgáló program létrehozásához.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,38 +11,38 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: 1a0f65ff6d0b98d3764cb6a7b1d4b07ccb8ae92a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: c297a40a5452938d8e706bf2e0791e4a7d03210c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054406"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267290"
 ---
-# <a name="quickstart-use-ruby-to-query-a-microsoft-azure-sql-database"></a>Gyors útmutató: Microsoft Azure SQL-adatbázis lekérdezése a Ruby használatával
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Ruby használatával
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez a rövid útmutató bemutatja, hogyan használható a [Ruby](https://www.ruby-lang.org) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz és az adatlekérdezéshez Transact-SQL-utasításokkal.
+Ez a rövid útmutató azt ismerteti, hogyan használható a [Ruby](https://www.ruby-lang.org) egy adatbázishoz való kapcsolódáshoz, és hogyan lehet adatokat lekérdezni a Transact-SQL-utasításokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
-- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist az Azure SQL-ben:
+- Egy adatbázis. Az alábbi rövid útmutatók segítségével hozhatja létre és konfigurálhatja az adatbázist:
 
-  || SQL Database | SQL Managed Instance | Azure virtuális gépen futó SQL Server |
+  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [parancssori felület](scripts/create-and-configure-database-cli.md) | [parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Kapcsolódás a webhelyről](../managed-instance/point-to-site-p2s-configure.md) | [Csatlakozás az SQL Serverhez](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  |||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md) | [Kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) | [Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Adventure Works visszaállítása vagy importálása a [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása a [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
+  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. A felügyelt SQL-példányok esetében importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World importőr-adatbázis használatára.
   
 - A Ruby és az operációs rendszerhez kapcsolódó szoftverek:
   
@@ -51,24 +52,24 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
   
   - **Windows**: telepítse a Ruby, a Ruby fejlesztői készlet és a TinyTDS. Lásd: [fejlesztői környezet konfigurálása Ruby-fejlesztéshez](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
+## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
 
-Az Azure SQL Database-hez való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
+A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egy Azure SQL Database vagy a teljes kiszolgálónév (vagy IP-cím) mellett egy Azure SQL felügyelt példányhoz vagy egy Azure-beli **virtuális gépen SQL Server** . A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 > [!NOTE]
-> Az Azure-beli virtuális gépek SQL Server kapcsolati információit lásd: [kapcsolódás SQL Serverhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
+> SQL Server Azure-beli virtuális gépen való kapcsolódásával kapcsolatos információkért lásd: [kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
 
-## <a name="create-code-to-query-your-sql-database"></a>Kód létrehozása az SQL-adatbázis lekérdezéséhez
+## <a name="create-code-to-query-your-database-in-azure-sql-database"></a>Kód létrehozása az adatbázis lekérdezéséhez Azure SQL Database
 
 1. Egy szöveg-vagy Kódszerkesztő-szerkesztőben hozzon létre egy *sqltest. RB*nevű új fájlt.
 
-1. Adja hozzá a következő kódot. Helyettesítse be az Azure SQL-adatbázis értékeit a,, és rendszerhez `<server>` `<database>` `<username>` `<password>` .
+1. Adja hozzá a következő kódot. Helyettesítse be az adatbázis értékeit Azure SQL Database for `<server>` ,,, `<database>` `<username>` és `<password>` .
 
    >[!IMPORTANT]
    >Az ebben a példában szereplő kód a minta AdventureWorksLT-adatait használja, amelyeket az adatbázis létrehozásakor választhat forrásként. Ha az adatbázis különböző adatokkal rendelkezik, a SELECT lekérdezésben használja a saját adatbázisában lévő táblákat. 
@@ -104,7 +105,7 @@ Az Azure SQL Database-hez való kapcsolódáshoz szükséges kapcsolati adatok l
 1. Győződjön meg arról, hogy az adatbázisból az első 20 kategória/termék sorait adja vissza. 
 
 ## <a name="next-steps"></a>További lépések
-- [Tervezze meg első Azure SQL Databaseét](design-first-database-tutorial.md).
-- [A TinyTDS GitHub-tárháza](https://github.com/rails-sqlserver/tiny_tds).
-- [Jelentheti a problémákat, vagy kérdéseket tehet fel a TinyTDS kapcsolatban](https://github.com/rails-sqlserver/tiny_tds/issues).
-- [Ruby-illesztőprogram a SQL Serverhoz](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).
+- [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
+- [GitHub-adattár a TinyTDS-hez](https://github.com/rails-sqlserver/tiny_tds)
+- [Problémák jelentése és kérdezés a TinyTDS-sel kapcsolatban](https://github.com/rails-sqlserver/tiny_tds/issues)
+- [Ruby-illesztőprogram a SQL Serverhoz](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)

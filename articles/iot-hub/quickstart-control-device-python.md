@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- tracking-python
 ms.date: 01/09/2020
-ms.openlocfilehash: ad2c63d1fd5860eaffc2a8c60b6bfa18fc8547d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c03209413235b0d6fca22039756d6c19b643034b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769398"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606496"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Python)
 
@@ -108,7 +109,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
 1. Nyissa meg a **SimulatedDevice.py** fájlt egy tetszőleges szövegszerkesztőben.
 
-    Cserélje le a `CONNECTION_STRING` változó értékét a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice.py**.
+    Cserélje le a változó értékét `CONNECTION_STRING` a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice.py**.
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges kódtárak telepítéséhez:
 
@@ -134,7 +135,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 1. Nyissa meg a **BackEndApplication.py** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `CONNECTION_STRING` változó értékét arra a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **BackEndApplication.py**.
+    Cserélje le a változó értékét arra `CONNECTION_STRING` a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **BackEndApplication.py**.
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges kódtárak telepítéséhez:
 
@@ -156,11 +157,11 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
     ![Változás a szimulált ügyfélben](./media/quickstart-control-device-python/simulated-device-2.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban közvetlen metódust hívott meg egy eszközre egy háttéralkalmazásból, és válaszolt a közvetlenmetódus-hívásra egy szimulálteszköz-alkalmazásban.
 

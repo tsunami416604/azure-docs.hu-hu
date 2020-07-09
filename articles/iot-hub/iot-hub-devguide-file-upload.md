@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.custom: mqtt
 ms.openlocfilehash: 35337a99706f25d62964e08a5b16cd8e81f315c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730299"
 ---
 # <a name="upload-files-with-iot-hub"></a>Fájlok feltöltése az IoT Hubbal
@@ -42,7 +41,7 @@ A [fájlok feltöltése az eszközről a felhőbe a IoT hub](iot-hub-csharp-csha
 > Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k automatikusan kezelik az SAS URI beolvasását, a fájl feltöltését és a befejezett feltöltés IoT hub értesítését.
 
 ## <a name="initialize-a-file-upload"></a>Fájl feltöltésének inicializálása
-IoT Hub egy végponttal rendelkezik, amely a fájlok feltöltésére szolgáló SAS URI-t igényel a tárolóhoz. A fájlfeltöltés folyamatának elindításához az eszköz POST- `{iot hub}.azure-devices.net/devices/{deviceId}/files` kérést küld a következő JSON-törzsnek:
+IoT Hub egy végponttal rendelkezik, amely a fájlok feltöltésére szolgáló SAS URI-t igényel a tárolóhoz. A fájlfeltöltés folyamatának elindításához az eszköz POST-kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files` a következő JSON-törzsnek:
 
 ```json
 {
@@ -67,7 +66,7 @@ IoT Hub a következő adatok visszaadása, amelyeket az eszköz a fájl feltölt
 > [!NOTE]
 > Ez a szakasz az elavult funkciókat ismerteti, amelyekkel egy SAS URI-t fogadhat IoT Hubból. Használja a korábban ismertetett POST metódust.
 
-IoT Hub két REST-végponttal támogatja a fájlok feltöltését, egyet az SAS URI-t a tároláshoz, a másikat pedig egy befejezett feltöltés IoT hub értesítéséhez. Az eszköz elindítja a fájlfeltöltés folyamatát úgy, hogy elküld egy GET parancsot a `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`IoT hubhoz a következő címen:. Az IoT hub a következőket adja vissza:
+IoT Hub két REST-végponttal támogatja a fájlok feltöltését, egyet az SAS URI-t a tároláshoz, a másikat pedig egy befejezett feltöltés IoT hub értesítéséhez. Az eszköz elindítja a fájlfeltöltés folyamatát úgy, hogy elküld egy GET parancsot a IoT hubhoz a következő címen: `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` . Az IoT hub a következőket adja vissza:
 
 * A feltölteni kívánt fájlhoz tartozó SAS URI.
 
@@ -75,7 +74,7 @@ IoT Hub két REST-végponttal támogatja a fájlok feltöltését, egyet az SAS 
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Egy befejezett fájlfeltöltés IoT Hub értesítése
 
-Az eszköz feltölti a fájlt a tárolóba az Azure Storage SDK-k használatával. Ha a feltöltés befejeződött, az eszköz POST-kérést küld a `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` következő JSON-törzsnek:
+Az eszköz feltölti a fájlt a tárolóba az Azure Storage SDK-k használatával. Ha a feltöltés befejeződött, az eszköz POST-kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` a következő JSON-törzsnek:
 
 ```json
 {
@@ -86,7 +85,7 @@ Az eszköz feltölti a fájlt a tárolóba az Azure Storage SDK-k használatáva
 }
 ```
 
-A értéke egy `isSuccess` logikai érték, amely jelzi, hogy a fájl feltöltése sikeres volt-e. A a fájl a `statusCode` tárterületre való feltöltésének állapota, a pedig a következőnek `statusDescription` felel meg: `statusCode`.
+A értéke `isSuccess` egy logikai érték, amely jelzi, hogy a fájl feltöltése sikeres volt-e. A a fájl a `statusCode` tárterületre való feltöltésének állapota, a pedig a következőnek felel meg: `statusDescription` `statusCode` .
 
 ## <a name="reference-topics"></a>Hivatkozási témakörök:
 

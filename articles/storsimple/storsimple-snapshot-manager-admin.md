@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: twooley
-ms.openlocfilehash: b8fe87a2df633af310bc661308813a60987e77d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f9a42a8f94f3e5cb63cd340b696a803d97491c76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512825"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>A StorSimple-megoldás felügyeletéhez használja a StorSimple Snapshot Manager
 

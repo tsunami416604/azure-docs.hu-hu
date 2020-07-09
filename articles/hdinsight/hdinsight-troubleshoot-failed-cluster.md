@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895317"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy HDInsight-fürt lassú vagy meghibásodott feladatának hibaelhárítása
@@ -111,7 +110,7 @@ Az alábbi szakaszok azt ismertetik, hogyan ellenőrizhető az egyes csomóponto
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Pillanatkép készítése a fürt állapotáról a Ambari felhasználói felületének irányítópultja segítségével
 
-A [Ambari felhasználói felület irányítópultja](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) áttekintést nyújt a fürt állapotáról, például a rendelkezésre állásról, a memóriáról, a hálózatról és a CPU-használatról, a HDFS és így tovább. A Ambari hosts (gazdagépek) szakasza segítségével megtekintheti az erőforrásokat a gazdagép szintjén. A szolgáltatások leállítására és újraindítására is lehetőség van.
+A [Ambari felhasználói felület irányítópultja](#view-cluster-configuration-settings-with-the-ambari-ui) ( `https://<clustername>.azurehdinsight.net` ) áttekintést nyújt a fürt állapotáról, például a rendelkezésre állásról, a memóriáról, a hálózatról és a CPU-használatról, a HDFS és így tovább. A Ambari hosts (gazdagépek) szakasza segítségével megtekintheti az erőforrásokat a gazdagép szintjén. A szolgáltatások leállítására és újraindítására is lehetőség van.
 
 ### <a name="check-your-webhcat-service"></a>A Webhcaten szolgáltatás ellenõrzése
 
@@ -129,20 +128,20 @@ A Ambari megjelenít egy riasztást, amely megjeleníti azokat a gazdagépeket, 
 
 ![Apache Ambari – Webhcaten-kiszolgáló újraindítása](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
-Ha a Webhcaten-kiszolgáló továbbra sem jelenik meg, akkor ellenőrizze az operatív naplóban a hibaüzeneteket. További részletekért lásd a `stderr` csomóponton hivatkozott `stdout` és fájlokat.
+Ha a Webhcaten-kiszolgáló továbbra sem jelenik meg, akkor ellenőrizze az operatív naplóban a hibaüzeneteket. További részletekért lásd a `stderr` `stdout` csomóponton hivatkozott és fájlokat.
 
 #### <a name="webhcat-times-out"></a>Webhcaten időtúllépés
 
-An méretű HDInsight átjáró időtúllépési válaszokat küld, amelyek két percnél hosszabb ideig `502 BadGateway`tartanak vissza. A Webhcaten lekérdezi a fonal-szolgáltatásokat a feladatok állapotára vonatkozóan, és ha a szál a válaszadáshoz több mint két percet vesz igénybe, akkor a kérés időtúllépést okozhat.
+An méretű HDInsight átjáró időtúllépési válaszokat küld, amelyek két percnél hosszabb ideig tartanak vissza `502 BadGateway` . A Webhcaten lekérdezi a fonal-szolgáltatásokat a feladatok állapotára vonatkozóan, és ha a szál a válaszadáshoz több mint két percet vesz igénybe, akkor a kérés időtúllépést okozhat.
 
-Ebben az esetben tekintse át a következő naplókat `/var/log/webhcat` a címtárban:
+Ebben az esetben tekintse át a következő naplókat a `/var/log/webhcat` címtárban:
 
 * a **webhcaten. log** a log4j napló, amelyre a kiszolgáló írja a naplókat
 * a **webhcat-Console. log** a kiszolgáló StdOut-a indításakor
 * a **webhcat-Console-error. log** a kiszolgálói folyamat stderr
 
 > [!NOTE]  
-> Mindegyiket `webhcat.log` naponta, a megnevezett `webhcat.log.YYYY-MM-DD`fájlok létrehozásával összesítjük. Válassza ki a vizsgálni kívánt időtartományhoz tartozó megfelelő fájlt.
+> Mindegyiket `webhcat.log` naponta, a megnevezett fájlok létrehozásával összesítjük `webhcat.log.YYYY-MM-DD` . Válassza ki a vizsgálni kívánt időtartományhoz tartozó megfelelő fájlt.
 
 A következő szakaszok a Webhcaten időtúllépésének lehetséges okait ismertetik.
 
@@ -184,25 +183,25 @@ A fonal szintjén két típusú időkorlát létezik:
 
     * Az összes feladat listázása: ez egy időigényes hívás. Ez a hívás enumerálja az alkalmazásokat a fonal erőforráskezelő, és minden befejezett alkalmazás esetében lekéri az állapotot a fonal JobHistoryServer. Ha a feladatok száma nagyobb, a hívás időtúllépést okozhat.
 
-    * Hét napnál régebbi feladatok listázása: a HDInsight fonal JobHistoryServer úgy van konfigurálva, hogy hét napig (`mapreduce.jobhistory.max-age-ms` érték) őrizze meg a Befejezett feladatok adatait. A kiürített feladatok számbavételére tett kísérlet időtúllépést eredményez.
+    * Hét napnál régebbi feladatok listázása: a HDInsight fonal JobHistoryServer úgy van konfigurálva, hogy hét napig (érték) őrizze meg a Befejezett feladatok adatait `mapreduce.jobhistory.max-age-ms` . A kiürített feladatok számbavételére tett kísérlet időtúllépést eredményez.
 
 A problémák diagnosztizálásához:
 
 1. Az UTC-időtartomány meghatározása a hibák megoldásához
-2. Válassza ki a `webhcat.log` megfelelő fájl (oka) t
+2. Válassza ki a megfelelő `webhcat.log` fájl (oka) t
 3. A FIGYELMEZTETÉSi és a HIBAÜZENETek megtekintése ebben az időszakban
 
 #### <a name="other-webhcat-failures"></a>Egyéb Webhcaten hibák
 
 1. HTTP-állapotkód 500
 
-    A legtöbb esetben, ahol a Webhcaten a 500-as értéket adja vissza, a hibaüzenet a hiba részleteit tartalmazza. Ellenkező esetben tekintse `webhcat.log` át a figyelmeztetési és a hibaüzeneteket.
+    A legtöbb esetben, ahol a Webhcaten a 500-as értéket adja vissza, a hibaüzenet a hiba részleteit tartalmazza. Ellenkező esetben tekintse át `webhcat.log` a figyelmeztetési és a hibaüzeneteket.
 
 2. Sikertelen feladatok
 
     Előfordulhatnak olyan esetek, amikor a Webhcaten folytatott interakciók sikeresek, de a feladatok meghiúsulnak.
 
-    A Templeton a `stderr` -ben `statusdir`gyűjti a Feladatkezelő kimenetét, ami gyakran hasznos a hibaelhárításhoz. `stderr`a tényleges lekérdezés fonal-alkalmazási azonosítóját tartalmazza.
+    A Templeton a-ben gyűjti a Feladatkezelő kimenetét `stderr` `statusdir` , ami gyakran hasznos a hibaelhárításhoz. `stderr`a tényleges lekérdezés fonal-alkalmazási azonosítóját tartalmazza.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. lépés: a környezeti verem és a verziók áttekintése
 
@@ -214,7 +213,7 @@ A Ambari felhasználói felületi **verem és verziója** lapon információkat 
 
 A HDInsight-fürtöt alkotó számos szolgáltatásból és összetevőből számos típusú napló jön létre. A [webhcaten-naplófájlok](#check-your-webhcat-service) korábban vannak leírva. A következő szakaszokban leírtak szerint számos más hasznos naplófájl is megvizsgálható a fürttel kapcsolatos problémák szűkítéséhez.
 
-* A HDInsight-fürtök több csomópontból állnak, amelyek többsége elküldött feladatok futtatására szolgál. A feladatok párhuzamosan futnak, de a naplófájlok csak lineárisan jelenítik meg az eredményeket. A HDInsight új feladatokat hajt végre, és leállítja azokat, amelyek nem teljesítik az első lépéseket. A program minden tevékenységet naplóz a és `stderr` `syslog` a fájlok között.
+* A HDInsight-fürtök több csomópontból állnak, amelyek többsége elküldött feladatok futtatására szolgál. A feladatok párhuzamosan futnak, de a naplófájlok csak lineárisan jelenítik meg az eredményeket. A HDInsight új feladatokat hajt végre, és leállítja azokat, amelyek nem teljesítik az első lépéseket. A program minden tevékenységet naplóz a `stderr` és a `syslog` fájlok között.
 
 * A parancsfájl műveleti naplófájljai hibákat vagy váratlan konfigurációs változásokat mutatnak a fürt létrehozási folyamata során.
 

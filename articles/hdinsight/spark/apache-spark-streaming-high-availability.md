@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74807153"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086211"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Apache Spark folyamatos átviteli feladatok létrehozása a FONALral
 
@@ -71,8 +71,8 @@ Ha azonban egy **illesztőprogram** meghibásodik, akkor az összes hozzá tarto
 
 Az DStream ellenőrzőpontokkal rendelkező illesztőprogramok helyreállítása:
 
-* Konfigurálja az automatikus illesztőprogram-újraindítást a SZÁLon a konfigurációs beállítással `yarn.resourcemanager.am.max-attempts`.
-* Egy HDFS-kompatibilis fájlrendszerben állítson be ellenőrzőpont-könyvtárat `streamingContext.checkpoint(hdfsDirectory)`.
+* Konfigurálja az automatikus illesztőprogram-újraindítást a SZÁLon a konfigurációs beállítással `yarn.resourcemanager.am.max-attempts` .
+* Egy HDFS-kompatibilis fájlrendszerben állítson be ellenőrzőpont-könyvtárat `streamingContext.checkpoint(hdfsDirectory)` .
 * A forráskód újrastrukturálása a helyreállításhoz szükséges ellenőrzőpontok használatához, például:
 
     ```scala
@@ -88,7 +88,7 @@ Az DStream ellenőrzőpontokkal rendelkező illesztőprogramok helyreállítása
         context.start()
     ```
 
-* Állítsa be az elveszett adat-helyreállítást úgy `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`, hogy engedélyezi a Write-Ahead naplót (Wal) és letiltja a memórián `StorageLevel.MEMORY_AND_DISK_SER`belüli replikációt a bemeneti DStreams.
+* Állítsa be az elveszett adat-helyreállítást úgy, hogy engedélyezi a Write-Ahead naplót (WAL) `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")` és letiltja a memórián belüli replikációt a bemeneti DStreams `StorageLevel.MEMORY_AND_DISK_SER` .
 
 Ha az ellenőrzőpontok és a WAL + megbízható fogadók használatával szeretne összefoglalni, akkor a "legalább egyszer" adathelyreállítást tud biztosítani:
 

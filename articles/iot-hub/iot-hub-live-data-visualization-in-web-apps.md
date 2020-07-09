@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201533"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT hub-ban egy webalkalmazásban
@@ -23,7 +22,7 @@ ms.locfileid: "83201533"
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amelyeket az IoT hub a helyi számítógépen futó Node. js-webalkalmazással kap. A webalkalmazás helyi futtatása után igény szerint követheti a webalkalmazás futtatásának lépéseit Azure App Serviceban. Ha Power BI használatával szeretné megjeleníteni az IoT hub adatait, tekintse meg a [Power bi használata a valós idejű érzékelők adatainak megjelenítéséhez az Azure IoT hub](iot-hub-live-data-visualization-in-power-bi.md).
+Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amelyeket az IoT hub a helyi számítógépen futó node.js webalkalmazáshoz kap. A webalkalmazás helyi futtatása után igény szerint követheti a webalkalmazás futtatásának lépéseit Azure App Serviceban. Ha Power BI használatával szeretné megjeleníteni az IoT hub adatait, tekintse meg a [Power bi használata a valós idejű érzékelők adatainak megjelenítéséhez az Azure IoT hub](iot-hub-live-data-visualization-in-power-bi.md).
 
 ## <a name="what-you-do"></a>Teendők
 
@@ -37,7 +36,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg a valós idejű 
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például: [málna PI és Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek az alábbi követelményekre vonatkoznak:
+* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például a [málna PI és a node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek az alábbi követelményekre vonatkoznak:
 
   * Aktív Azure-előfizetés
   * Az előfizetés alá tartozó IOT hub
@@ -100,17 +99,17 @@ A Web-Apps-Node-IOT-hub-adatvizualizáció könyvtárában nyissa meg a webalkal
 
 Szánjon egy kis időt a következő fájlok vizsgálatára:
 
-* A **Server. js** egy olyan szolgáltatás-oldali parancsfájl, amely a webes szoftvercsatornát és az Event hub burkoló osztályát inicializálja. Visszahívást biztosít az Event hub burkoló osztályához, amelyet az osztály a bejövő üzenetek webes szoftvercsatornára való szórására használ.
+* A **Server.js** egy olyan szolgáltatás-oldali parancsfájl, amely inicializálja a webes szoftvercsatornát és az Event hub burkoló osztályát. Visszahívást biztosít az Event hub burkoló osztályához, amelyet az osztály a bejövő üzenetek webes szoftvercsatornára való szórására használ.
 
-* A **Event-hub-Reader. js** egy olyan szolgáltatás-oldali parancsfájl, amely az IoT hub beépített végpontját a megadott kapcsolati sztring és fogyasztói csoport használatával köti össze. Kibontja a DeviceId és a EnqueuedTimeUtc a beérkező üzenetek metaadataiból, majd továbbítja az üzenetet a Server. js által regisztrált visszahívási módszer használatával.
+* A **Event-hub-reader.js** egy olyan szolgáltatás-oldali parancsfájl, amely az IoT hub beépített végpontját a megadott kapcsolati sztring és fogyasztói csoport használatával köti össze. Kibontja a DeviceId és a EnqueuedTimeUtc a beérkező üzenetek metaadataiból, majd továbbítja az üzenetet a server.js által regisztrált visszahívási módszer használatával.
 
-* A **chart-Device-Data. js** egy ügyféloldali parancsfájl, amely figyeli a webes szoftvercsatornát, nyomon követi az egyes DeviceID-ket, és a bejövő adat utolsó 50 pontját tárolja minden eszközön. Ezután a kiválasztott eszközhöz tartozó adategységeket a diagram objektumhoz köti.
+* **Chart-device-data.js** egy ügyféloldali parancsfájl, amely figyeli a webes szoftvercsatornát, nyomon követi az egyes DeviceID-ket, és minden eszközön tárolja az utolsó 50 pontot a bejövő adathoz. Ezután a kiválasztott eszközhöz tartozó adategységeket a diagram objektumhoz köti.
 
-* Az **index. html** kezeli a weblap felhasználói felületének elrendezését, és az ügyféloldali logikához szükséges parancsfájlokra hivatkozik.
+* **Index.html** kezeli a weblap felhasználói felületének elrendezését, és az ügyféloldali logikához szükséges parancsfájlokra hivatkozik.
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>Környezeti változók konfigurálása a webalkalmazáshoz
 
-Az IoT hub adatainak beolvasásához a webalkalmazásnak szüksége van az IoT hub kapcsolati karakterláncára és annak a fogyasztói csoportnak a nevére, amelyet át kell olvasnia. Ezeket a karakterláncokat a Server. js következő soraiban található folyamat-környezetből kapja meg:
+Az IoT hub adatainak beolvasásához a webalkalmazásnak szüksége van az IoT hub kapcsolati karakterláncára és annak a fogyasztói csoportnak a nevére, amelyet át kell olvasnia. Ezeket a karakterláncokat a folyamat-környezetből kapja meg a következő sorokban server.js:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
@@ -165,7 +164,7 @@ Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe 
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és üzembe helyezését a helyi gépen található git-adattárból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat. Győződjön meg arról, hogy a (z) paraméterhez a csomópont 10,6-es vagy újabb verzióját `--runtime` használja, az Ön által használt Node. js-futtatókörnyezet verziójától függően. A `az webapp list-runtimes` parancs segítségével lekérheti a támogatott futtatókörnyezetek listáját.
+2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és üzembe helyezését a helyi gépen található git-adattárból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat. Ügyeljen arra, hogy a (z) paraméterhez a (z) 10,6-es vagy újabb csomópontot `--runtime` használja a használt Node.js futtatókörnyezet verziójától függően. A `az webapp list-runtimes` parancs segítségével lekérheti a támogatott futtatókörnyezetek listáját.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
@@ -198,7 +197,7 @@ Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe 
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Adjon hozzá egy távolit a klónhoz, amely a App Service webalkalmazás git-tárházára hivatkozik. A \< git-klón URL-címéhez \> használja az előző lépésben visszaadott URL-címet. Futtassa a következő parancsot a parancsablakban.
+7. Adjon hozzá egy távolit a klónhoz, amely a App Service webalkalmazás git-tárházára hivatkozik. A esetében \<Git clone URL\> használja az előző lépésben visszaadott URL-címet. Futtassa a következő parancsot a parancsablakban.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -239,13 +238,13 @@ Ha bármilyen probléma merül fel ezzel a mintával, próbálkozzon az alábbi 
 
 * A böngészőben nyissa meg a fejlesztői eszközöket (számos böngészőben az F12 billentyű megnyithatja), és keresse meg a konzolt. Keresse meg az ott kinyomtatott figyelmeztetéseket és hibákat.
 
-* Az ügyféloldali szkriptek hibakeresését a/JS/chat-Device-Data.js.-ben végezheti el
+* Az ügyféloldali szkriptek hibakeresése a/JS/chat-device-data.jsban végezhető el.
 
 ### <a name="local-website-issues"></a>Helyi webhely problémái
 
 * Tekintse meg az ablakban azt a kimenetet, amelyen a konzol kimenetéhez tartozó csomópontot indította.
 
-* A kiszolgáló kódjának, különösen a Server. js és a/scripts/Event-hub-Reader.js. hibakeresése
+* Hibakeresés a kiszolgáló kódjával, pontosabban server.js és/Scripts/event-hub-reader.js.
 
 ### <a name="azure-app-service-issues"></a>Azure App Service problémák
 

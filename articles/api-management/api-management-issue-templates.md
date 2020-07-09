@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846856"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sablonok kiadása az Azure API Management
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
@@ -98,7 +98,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Issues`|[Kiállító](api-management-template-data-model-reference.md#Issue) entitások gyűjteménye.|Az aktuális felhasználó számára látható problémák.|  
 |`Paging`|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|Az alkalmazások gyűjteményének lapozási adatai.|  

@@ -4,16 +4,16 @@ description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a macOS-üg
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca54c60d424722d31d195d10eb15751a2ec6c0eb
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f2b4696886c898eec5895c4ccb59347cf2a49f03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208994"
 ---
 # <a name="connect-with-the-macos-client"></a>Kapcsolódás a macOS-ügyfélhez
 
@@ -22,14 +22,14 @@ ms.locfileid: "82612911"
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-macos-2019.md).
 >
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A macOS-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a letölthető ügyféllel. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az ügyfelet.
 
 ## <a name="install-the-client"></a>Az ügyfél telepítése
 
-Első lépésként [töltse le](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) és telepítse a-ügyfelet a MacOS-eszközre.
+Első lépésként [töltse le](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)   és telepítse a-ügyfelet a MacOS-eszközre.
 
 ## <a name="subscribe-to-a-feed"></a>Előfizetés hírcsatornára
 
@@ -39,9 +39,9 @@ Előfizetés a hírcsatornára:
 
 1. A főoldalon válassza a **munkaterület hozzáadása** lehetőséget a szolgáltatáshoz való kapcsolódáshoz és az erőforrások lekéréséhez.
 2. Adja meg a hírcsatorna URL-címét. Ez lehet URL-cím vagy e-mail-cím:
-   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>.
+   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-mail-cím használatához adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda konfigurálta a kiszolgálót.
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 
 Miután bejelentkezett, megjelenik az elérhető erőforrások listája.

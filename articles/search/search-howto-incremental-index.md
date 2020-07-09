@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 66bac2a063a3257a2101ca2f30e5946264adb9ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75b533368a01b2e98bece0751f45b12f36796658
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76989552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556270"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>A növekményes dúsítás gyorsítótárazásának konfigurálása az Azure-ban Cognitive Search
 
 > [!IMPORTANT] 
-> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
+> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es és 2020-06-30-es verziója – előzetes verzióként](search-api-preview.md) adja meg ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 Ebből a cikkből megtudhatja, hogyan adhat hozzá gyorsítótárazást egy alkoholtartalom-növelési folyamathoz, hogy fokozatosan módosítsa a lépéseket anélkül, hogy minden alkalommal újra kellene építenie. Alapértelmezés szerint a készségkészlet állapota állapot nélküli, és az összeállítás bármely részének megváltoztatásához az indexelő teljes újrafuttatására van szükség. A növekményes bővítéssel az indexelő meg tudja határozni, hogy a készségkészlet vagy az indexelő definíciójában észlelt változások alapján a dokumentum fájának mely részeit kell frissíteni. A meglévő feldolgozott kimenet megmarad, és bárhol felhasználható. 
 
-A gyorsítótárazott tartalom az Azure Storage-ba kerül, az Ön által megadott fiókadatok használatával. Az indexelő futtatásakor létrejön a nevű `ms-az-search-indexercache-<alpha-numerc-string>`tároló. Ezt a keresési szolgáltatás által kezelt belső összetevőnek kell tekinteni, és nem módosítható.
+A gyorsítótárazott tartalom az Azure Storage-ba kerül, az Ön által megadott fiókadatok használatával. Az `ms-az-search-indexercache-<alpha-numerc-string>` Indexelő futtatásakor létrejön a nevű tároló. Ezt a keresési szolgáltatás által kezelt belső összetevőnek kell tekinteni, és nem módosítható.
 
 Ha még nem ismeri az indexelő beállítását, kezdje az [Indexelő áttekintésével](search-indexer-overview.md) , majd folytassa a [szakértelmével](cognitive-search-working-with-skillsets.md) , hogy megismerje a dúsítási folyamatokat. A főbb fogalmakkal kapcsolatos további információkért lásd: [növekményes gazdagodás](cognitive-search-incremental-indexing-conceptual.md).
 
@@ -38,10 +38,10 @@ Ha van olyan meglévő indexelő, amely már rendelkezik készségkészlet, köv
 
 Kezdje egy érvényes, meglévő indexelő, amely a következő összetevőket tartalmazta: adatforrás, készségkészlet, index. Az indexelő futtatható kell lennie. 
 
-Egy API-ügyfél használatával hozza létre az indexelő kérelmét az indexelő aktuális konfigurációjának [lekéréséhez](https://docs.microsoft.com/rest/api/searchservice/get-indexer) . Ha az előnézeti API-verziót használja az indexelő beolvasása `cache` lehetőségre, a rendszer hozzáadja a null értékű tulajdonságot a definícióhoz.
+Egy API-ügyfél használatával hozza létre az indexelő kérelmét az indexelő aktuális konfigurációjának [lekéréséhez](https://docs.microsoft.com/rest/api/searchservice/get-indexer) . Ha az előnézeti API-verziót használja az indexelő beolvasása lehetőségre, a `cache` rendszer hozzáadja a null értékű tulajdonságot a definícióhoz.
 
 ```http
-GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
+GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
@@ -55,7 +55,7 @@ Alapértelmezés szerint a `cache` tulajdonság null értékű. API-ügyfél has
 Módosítsa a gyorsítótár objektumot úgy, hogy az tartalmazza a következő szükséges és választható tulajdonságokat: 
 
 + A `storageConnectionString` kötelező, és egy Azure Storage-beli kapcsolódási karakterláncra kell beállítani. 
-+ A `enableReprocessing` logikai tulajdonság nem kötelező (`true` alapértelmezés szerint), és azt jelzi, hogy a növekményes alkoholtartalom engedélyezve van. Ha szükséges, `false` beállíthatja a növekményes feldolgozás felfüggesztését, miközben más erőforrás-igényes műveletek, például az új dokumentumok indexelése folyamatban van, majd visszafordítható `true` később.
++ A `enableReprocessing` logikai tulajdonság nem kötelező ( `true` alapértelmezés szerint), és azt jelzi, hogy a növekményes alkoholtartalom engedélyezve van. Ha szükséges, beállíthatja a `false` növekményes feldolgozás felfüggesztését, miközben más erőforrás-igényes műveletek, például az új dokumentumok indexelése folyamatban van, majd visszafordítható `true` később.
 
 ```json
 {
@@ -78,17 +78,17 @@ Módosítsa a gyorsítótár objektumot úgy, hogy az tartalmazza a következő 
 A meglévő indexelő növekményes bővítésének beállításakor az indexelő alaphelyzetbe állítása szükséges, hogy minden dokumentum konzisztens állapotban legyen. Ehhez a feladathoz használhatja a portált vagy egy API-ügyfelet, valamint az [indexelő REST API alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) lehetőséget.
 
 ```http
-POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
 
 ### <a name="step-4-save-the-updated-definition"></a>4. lépés: a frissített definíció mentése
 
-[Frissítse az indexelő](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) egy Put-kérelemmel, a kérelem törzsének tartalmaznia kell a gyorsítótár tulajdonsággal rendelkező frissített indexelő definíciót. Ha 400 kap, ellenőrizze az indexelő definícióját, és győződjön meg arról, hogy teljesülnek az összes követelmény (adatforrás, készségkészlet, index).
+[Frissítse az indexelő](https://docs.microsoft.com/rest/api/searchservice/preview-api/update-indexer) egy Put-kérelemmel, a kérelem törzsének tartalmaznia kell a gyorsítótár tulajdonsággal rendelkező frissített indexelő definíciót. Ha 400 kap, ellenőrizze az indexelő definícióját, és győződjön meg arról, hogy teljesülnek az összes követelmény (adatforrás, készségkészlet, index).
 
 ```http
-PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
+PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 {
@@ -101,7 +101,7 @@ api-key: [YOUR-ADMIN-KEY]
 }
 ```
 
-Ha most egy másik GET-kérelmet ad ki az indexelő számára, a szolgáltatás válasza tartalmazni `ID` fog egy tulajdonságot a gyorsítótár objektumban. Az alfanumerikus karakterláncot az indexelő által feldolgozott összes dokumentum gyorsítótárazott eredményeit és köztes állapotát tartalmazó tároló neve fűzi hozzá. A rendszer a gyorsítótár egyedi elnevezésére használja az azonosítót a blob Storage-ban.
+Ha most egy másik GET-kérelmet ad ki az indexelő számára, a szolgáltatás válasza tartalmazni fog egy `ID` tulajdonságot a gyorsítótár objektumban. Az alfanumerikus karakterláncot az indexelő által feldolgozott összes dokumentum gyorsítótárazott eredményeit és köztes állapotát tartalmazó tároló neve fűzi hozzá. A rendszer a gyorsítótár egyedi elnevezésére használja az azonosítót a blob Storage-ban.
 
     "cache": {
         "ID": "<ALPHA-NUMERIC STRING>",
@@ -116,7 +116,7 @@ Az indexelő futtatásához használhatja a portált vagy az API-t. A portálon 
 Azt is megteheti, hogy [a REST használatával futtatja az indexelő](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
 ```http
-POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
@@ -129,13 +129,13 @@ Az indexelő futtatása után megkeresheti a gyorsítótárat az Azure Blob Stor
 
 ### <a name="step-6-modify-a-skillset-and-confirm-incremental-enrichment"></a>6. lépés: a készségkészlet módosítása és a növekményes dúsítás megerősítése
 
-A készségkészlet módosításához használhatja a portált vagy az API-t. Ha például szöveges fordítást használ, a-ból `en` vagy más nyelvről történő `es` egyszerű beágyazott változás elegendő a növekményes alkoholtartalom-növelés teszteléséhez.
+A készségkészlet módosításához használhatja a portált vagy az API-t. Ha például szöveges fordítást használ, a `en` `es` -ból vagy más nyelvről történő egyszerű beágyazott változás elegendő a növekményes alkoholtartalom-növelés teszteléséhez.
 
 Futtassa újra az indexelő. Csak a dúsított dokumentum fájának részei frissülnek. Ha a [portál](cognitive-search-quickstart-blob.md) rövid útmutatóját használta, és a szöveg fordítási képességeit "es" értékre módosította, akkor láthatja, hogy az eredeti 14 helyett csak 8 dokumentum frissül. A fordítási folyamat által nem érintett képfájlokat a rendszer újból felhasználja a gyorsítótárból.
 
 ## <a name="enable-caching-on-new-indexers"></a>Gyorsítótárazás engedélyezése új indexelő eszközökön
 
-Egy új indexelő növekményes bővítésének beállításához mindössze annyit kell tennie, hogy a `cache` [create indexer (2019-05-06 – Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer)hívásakor az indexelő definíciójában szereplő tulajdonságot tartalmazza. 
+Egy új indexelő növekményes bővítésének beállításához mindössze annyit kell tennie, hogy a `cache` [create Indexer (2020-06-30 – Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer)hívásakor az indexelő definíciójában szereplő tulajdonságot tartalmazza. 
 
 
 ```json
@@ -169,10 +169,10 @@ A következő táblázat összefoglalja, hogy a különböző API-k hogyan kapcs
 
 | API           | Gyorsítótár hatása     |
 |---------------|------------------|
-| [Indexelő létrehozása (2019-05-06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) | Létrehoz és futtat egy indexelő az első használatnál, beleértve a gyorsítótár létrehozását is, ha az indexelő definíciója megadja azt. |
+| [Indexelő létrehozása (2020-06-30 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Létrehoz és futtat egy indexelő az első használatnál, beleértve a gyorsítótár létrehozását is, ha az indexelő definíciója megadja azt. |
 | [Indexelő futtatása](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Igény szerinti dúsítási folyamatot hajt végre. Ez az API a gyorsítótárból olvassa be, ha létezik, vagy létrehoz egy gyorsítótárat, ha egy frissített indexelő definícióhoz adta a gyorsítótárazást. Ha olyan indexelő futtat, amelyen engedélyezve van a gyorsítótárazás, az indexelő kihagyja a lépéseket, ha a gyorsítótárazott kimenet használható. Használhatja az API általánosan elérhető vagy előzetes verzió API-verzióját.|
 | [Indexelő alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| A növekményes indexelési információk indexelő adatainak törlése. A következő indexelő futtatása (igény szerinti vagy ütemezett) teljes újrafeldolgozást végez, beleértve az összes ismeret ismételt futtatását és a gyorsítótár újjáépítését. Ez a funkció az indexelő törlésével és újbóli létrehozásával egyenértékű. Használhatja az API általánosan elérhető vagy előzetes verzió API-verzióját.|
-| [Képességek alaphelyzetbe állítása (2019-05-06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) | Meghatározza, hogy mely szaktudást futtassa újra a következő indexelő futtatásakor, még akkor is, ha nem módosította a szükséges képességeket. A gyorsítótár ennek megfelelően frissül. Az olyan kimenetek, mint például a Knowledge Store vagy a Search index, a gyorsítótárban található újrafelhasználható adatok használatával, valamint a frissített szaktudással együtt frissülnek. |
+| [Képességek alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | Meghatározza, hogy mely szaktudást futtassa újra a következő indexelő futtatásakor, még akkor is, ha nem módosította a szükséges képességeket. A gyorsítótár ennek megfelelően frissül. Az olyan kimenetek, mint például a Knowledge Store vagy a Search index, a gyorsítótárban található újrafelhasználható adatok használatával, valamint a frissített szaktudással együtt frissülnek. |
 
 A gyorsítótárral kapcsolatos további információkért lásd: [gyorsítótár-kezelés](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

@@ -16,10 +16,9 @@ ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461112"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
@@ -70,7 +69,7 @@ A példa a következőket mutatja be:
 
 2. Hozzon létre egy [folyamatos átviteli lokátort](streaming-locators-concept.md) , amely a titkosított eszköz továbbítására van konfigurálva.
   
-   Az adatfolyam-keresőt egy [folyamatos átviteli házirenddel](streaming-policy-concept.md)kell társítani. A példában a "Predefined_MultiDrmCencStreaming" `StreamingLocator.StreamingPolicyName` házirendre van beállítva.
+   Az adatfolyam-keresőt egy [folyamatos átviteli házirenddel](streaming-policy-concept.md)kell társítani. A példában `StreamingLocator.StreamingPolicyName` a "Predefined_MultiDrmCencStreaming" házirendre van beállítva.
 
    A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha a streamet a CBCS (FairPlay) használatával is titkosítani szeretné, használja a "Predefined_MultiDrmStreaming" házirendet.
 
@@ -124,7 +123,7 @@ A HLS protokoll a következő tároló-formátumokat és titkosítási sémákat
 
 |Tároló formátuma|Titkosítási séma|URL-példa|
 |---|---|---|
-|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|Mind|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2 – TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF (FMP4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2 – TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
@@ -142,7 +141,7 @@ Az MPEG-DASH protokoll a következő tároló-formátumokat és titkosítási s�
 
 |Tároló formátuma|Titkosítási séma|URL-példák
 |---|---|---|
-|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|Mind|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |CSF (FMP4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF (FMP4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
@@ -150,7 +149,7 @@ Az MPEG-DASH protokoll a következő tároló-formátumokat és titkosítási s�
 
 A Smooth Streaming protokoll a következő tároló-formátumokat és titkosítási sémákat támogatja.
 
-|Protocol (Protokoll)|Tároló formátuma|Titkosítási séma|
+|Protokoll|Tároló formátuma|Titkosítási séma|
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
@@ -184,14 +183,14 @@ Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az els�
 
 ### <a name="token-replay-prevention"></a>Jogkivonat-újrajátszás megelőzése
 
-A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. Az ügyfél hozzáadhat egy típusú `urn:microsoft:azure:mediaservices:maxuses` jogcímet a jogkivonathoz, ahol az érték az a szám, ahányszor a jogkivonat használható licenc vagy kulcs beszerzéséhez. Az ugyanazzal a jogkivonattal rendelkező összes további kérelem nem engedélyezett választ ad vissza. Lásd: a jogcím hozzáadása a DRM- [mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
+A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. Az ügyfél hozzáadhat egy típusú jogcímet `urn:microsoft:azure:mediaservices:maxuses` a jogkivonathoz, ahol az érték az a szám, ahányszor a jogkivonat használható licenc vagy kulcs beszerzéséhez. Az ugyanazzal a jogkivonattal rendelkező összes további kérelem nem engedélyezett választ ad vissza. Lásd: a jogcím hozzáadása a DRM- [mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
  
 #### <a name="considerations"></a>Megfontolandó szempontok
 
 * Az ügyfeleknek meg kell határoznia a jogkivonat-generálást. A jogcímet maga a jogkivonatban kell elhelyezni.
 * A szolgáltatás használatakor a rendszer nem engedélyezett válaszként utasítja el azokat a jogkivonatokat, amelyek lejárati ideje meghaladja a kérés fogadásának idejét.
 * A jogkivonatokat az aláírásuk egyedileg azonosítja. A hasznos adatok (például a lejárati idő vagy a jogcím frissítése) változása megváltoztatja a jogkivonat aláírását, és új tokenként fog megjelenni, amely a kulcs kézbesítése előtt nem érkezett meg.
-* A lejátszás meghiúsul, ha a jogkivonat túllépte `maxuses` az ügyfél által beállított értéket.
+* A lejátszás meghiúsul, ha a jogkivonat túllépte az `maxuses` ügyfél által beállított értéket.
 * Ez a szolgáltatás az összes meglévő védett tartalomhoz használható (csak a kiállított jogkivonat módosítására van szükség).
 * Ez a szolgáltatás a JWT és a SWT egyaránt működik.
 
@@ -242,7 +241,7 @@ Például:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`a kért kulcs értéke. Akkor használhatja `AlternativeMediaId` , ha a kérést a saját oldalán lévő entitáshoz szeretné hozzárendelni. Például `AlternativeMediaId` az engedélyek megkeresésének megkönnyítésére használható.
+`ContentKeyId`a kért kulcs értéke. Akkor használhatja, `AlternativeMediaId` Ha a kérést a saját oldalán lévő entitáshoz szeretné hozzárendelni. Például az `AlternativeMediaId` engedélyek megkeresésének megkönnyítésére használható.
 
 Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért lásd: streaming policys [– create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
@@ -251,9 +250,9 @@ Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért l�
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` hibaüzenet jelenik meg, győződjön meg arról, hogy a megfelelő folyamatos átviteli házirendet adta meg.
+Ha a hibaüzenet jelenik meg `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` , győződjön meg arról, hogy a megfelelő folyamatos átviteli házirendet adta meg.
 
-Ha a végén hibákat kap `_NOT_SPECIFIED_IN_URL`, ügyeljen arra, hogy a titkosítási formátumot az URL-címben megadja. Például: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Lásd: [adatfolyam-protokollok és titkosítási típusok](#streaming-protocols-and-encryption-types).
+Ha a végén hibákat kap, ügyeljen `_NOT_SPECIFIED_IN_URL` arra, hogy a titkosítási formátumot az URL-címben megadja. Például: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Lásd: [adatfolyam-protokollok és titkosítási típusok](#streaming-protocols-and-encryption-types).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 

@@ -2,21 +2,21 @@
 title: Azure AD biztonságos hibrid hozzáférés | Microsoft Docs
 description: Ez a cikk azokat a partneri megoldásokat ismerteti, amelyekkel az Azure AD-vel integrálhatja az örökölt helyszíni, nyilvános Felhőbeli és saját felhőalapú alkalmazásokat. Az alkalmazások kézbesítési vezérlőit vagy hálózatait az Azure AD-hez való csatlakozással védheti meg örökölt alkalmazásait.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/18/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e97b95e290ef74ffd98a3396ffe4705270132b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 295891afbb0136e0b05bcd49f4045e0e8bcff6e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75433768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763040"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Biztonságos hibrid hozzáférés: a régi alkalmazások biztonságossá tétele az App Delivery Controllers és Networks szolgáltatással
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: de5c478ac6641fe5b1e342c063d134f70084b2ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201446"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Hozzáférési jogkivonat igénylése Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webalkalmaz�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md) , amely lehetővé teszi a felhasználók számára az alkalmazásba való regisztrációt és bejelentkezést.
-- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C-bérlőhöz](add-web-application.md).
+- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C-bérlőhöz](add-web-api-application.md).
 
 ## <a name="scopes"></a>Hatókörök
 
@@ -67,7 +67,7 @@ Az alábbi példában a következő értékeket kell lecserélnie:
 - `<application-ID>`– A felhasználói folyamat támogatásához regisztrált webalkalmazás alkalmazás-azonosítója.
 - `<redirect-uri>`– Az ügyfélalkalmazás regisztrálásakor megadott **átirányítási URI** .
 
-```HTTP
+```http
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
@@ -84,7 +84,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 Az engedélyezési kód sikeres kézhezvételét követően a segítségével hozzáférési tokent igényelhet:
 
-```HTTP
+```http
 POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -99,7 +99,7 @@ grant_type=authorization_code
 
 A következőhöz hasonló válasznak kell megjelennie:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -113,7 +113,7 @@ A következőhöz hasonló válasznak kell megjelennie:
 
 Ha https://jwt.ms a használatával vizsgálja meg a visszaadott hozzáférési tokent, akkor az alábbi példához hasonlóan kell megjelennie:
 
-```JSON
+```json
 {
   "typ": "JWT",
   "alg": "RS256",

@@ -8,13 +8,12 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189854"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984894"
 ---
 # <a name="create-python-model-module"></a>Python-modell modul létrehozása
 
@@ -25,7 +24,7 @@ Ismerje meg, hogyan hozhat létre egy nem betanított modellt egy Python-szkript
 A modell létrehozása után a [betanítási modell](train-model.md) segítségével betaníthatja a modellt egy adatkészleten, például a Azure Machine learning bármely más tanulója számára. A betanított modell átadható a [pontszám modellnek](score-model.md) az előrejelzések készítéséhez. Ezután mentheti a betanított modellt, és közzéteheti a pontozási munkafolyamatot webszolgáltatásként.
 
 > [!WARNING]
-> Jelenleg nem lehet átadni egy Python-modell pontozásos eredményeit a [modell kiértékeléséhez](evaluate-model.md). Ha ki kell értékelnie egy modellt, írhat egy egyéni Python-szkriptet, és futtathatja azt a [Python-szkript végrehajtása](execute-python-script.md) modul használatával.  
+> Jelenleg nem lehet csatlakozni a modulhoz a **modell hiperparaméterek beállítása** -moduljának finomhangolásához, illetve a [modell kiértékeléséhez](evaluate-model.md)egy Python-modell pontozásos eredményeinek átadásához. Ha be kell állítania a hiperparaméterek beállítása, vagy ki kell értékelnie a modellt, a [Python parancsfájl](execute-python-script.md) -futtatási moduljának használatával egyéni Python-szkriptet is írhat.
 
 
 ## <a name="configure-the-module"></a>A modul konfigurálása

@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus – üzenetkezelési egységek automatikus frissítése
 description: Ez a cikk bemutatja, hogyan használható egy Azure Automation runbook egy Service Bus névtér üzenetkezelési egységének automatikus frissítéséhez.
-services: service-bus-messaging
-ms.service: service-bus-messaging
-documentationcenter: ''
-author: spelluru
 ms.topic: how-to
-ms.date: 05/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 5ece7beaea709c9b1e52cf2130484663da0aa4ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: 52f5b13b482739bfa56ff606f684fd5a9c7d3b6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341494"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése 
 Ez a cikk bemutatja, hogyan lehet automatikusan frissíteni egy Service Bus névtér [üzenetkezelési egységeit](service-bus-premium-messaging.md) erőforrás-(CPU-vagy memória-) használat alapján. 
@@ -75,10 +70,10 @@ Részletes útmutatásért lásd: [modul importálása a modul-galériából](..
         if ($schemaId -eq "AzureMonitorMetricAlert") {
 
             # Get the resource group name from the alert context
-            $resourceGroupName = $AlertContext.resourceGroupName
+            $resourceGroupName = $WebhookBody.resourceGroupName
             
             # Get the namespace name from the alert context
-            $namespaceName = $AlertContext.resourceName
+            $namespaceName = $WebhookBody.resourceName
         }
     }
     

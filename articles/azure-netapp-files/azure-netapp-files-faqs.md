@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be18a9d54049562eebc27720988b085c3e14f2da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185642"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956509"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -64,7 +64,7 @@ Az összes Azure NetApp Files kötet titkosítása az FIPS 140-2 szabvány haszn
 
 Azure NetApp Files felügyeletét a szolgáltatás kezeli. Minden kötethez létrejön egy egyedi XTS-AES-256 adattitkosítási kulcs. A titkosítási kulcs hierarchiája az összes kötet kulcsának titkosítására és védelemmel való ellátására szolgál. Ezeket a titkosítási kulcsokat a rendszer soha nem titkosítatlan formában jeleníti meg vagy jelenti. A rendszer azonnal törli a titkosítási kulcsokat a kötetek törlésekor.
 
-A felhasználó által felügyelt kulcsok támogatása (saját kulcsok használata) az Azure dedikált HSM az USA keleti, USA-beli West2 és USA déli középső régiójában szabályozott módon érhető el.  A következő címen kérhet hozzáférést **anffeedback@microsoft.com**:. A kapacitás elérhetősége esetén a rendszer jóváhagyja a kérelmeket.
+A felhasználó által felügyelt kulcsok támogatása (saját kulcsok használata) az Azure dedikált HSM az USA keleti, USA-beli West2 és USA déli középső régiójában szabályozott módon érhető el.  A következő címen kérhet hozzáférést: **anffeedback@microsoft.com** . A kapacitás elérhetősége esetén a rendszer jóváhagyja a kérelmeket.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Megadhatom az NFS-exportálási házirend szabályait a Azure NetApp Files Service Mount-célhoz való hozzáférés szabályozásához?
 
@@ -79,7 +79,7 @@ Nem, jelenleg nem alkalmazhat hálózati biztonsági csoportokat a Azure NetApp 
 
 Igen, Azure NetApp Files támogatja az Azure IAM RBAC funkcióit.
 
-## <a name="performance-faqs"></a>Teljesítmény – gyakori kérdések
+## <a name="performance-faqs"></a>Gyakori kérdések a teljesítményről
 
 ### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Mit kell tennem a Azure NetApp Files teljesítményének optimalizálásához vagy finomhangolásához?
 
@@ -107,7 +107,7 @@ A Azure NetApp Files a kötetek teljesítményének mérőszámait biztosítja. 
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Az Azure-beli virtuális gépek indításakor vagy újraindításakor egy kötetet szeretnék automatikusan csatlakoztatni.  Hogyan konfigurálja a gazdagépet az állandó NFS-kötetek számára?
 
-Ahhoz, hogy egy NFS-kötet automatikusan csatlakoztatható legyen a virtuális gép indításakor vagy újraindításakor `/etc/fstab` , adjon hozzá egy bejegyzést a gazdagépen lévő fájlhoz. 
+Ahhoz, hogy egy NFS-kötet automatikusan csatlakoztatható legyen a virtuális gép indításakor vagy újraindításakor, adjon hozzá egy bejegyzést a `/etc/fstab` gazdagépen lévő fájlhoz. 
 
 A részletekért lásd: [kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .  
 
@@ -125,6 +125,10 @@ A gyökérszintű leverés jelenleg nem támogatott.
 
 ## <a name="smb-faqs"></a>SMB – gyakori kérdések
 
+### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Mely SMB-verziókat támogatja a Azure NetApp Files?
+
+Azure NetApp Files támogatja az SMB 2,1 és az SMB 3,1 (amely az SMB 3,0 támogatását is támogatja).    
+
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Az SMB-hozzáféréshez Active Directory kapcsolat szükséges? 
 
 Igen, az SMB-kötetek telepítése előtt létre kell hoznia Active Directory-kapcsolatokat. A sikeres kapcsolatok eléréséhez a megadott tartományvezérlőknek a Azure NetApp Files delegált alhálózatának kell elérhetőnek lennie.  További részleteket az [SMB-kötet létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) című témakörben talál. 
@@ -139,7 +143,7 @@ Az AD-kapcsolatok egy NetApp-fiókkal vannak konfigurálva; az AD-kapcsolatok cs
 
 A [Azure Active Directory (ad) tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/overview) és a [Active Directory tartományi szolgáltatások (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként, illetve ExpressRoute vagy S2S VPN-en keresztül is megtalálhatók a helyszínen. A Azure NetApp Files jelenleg nem támogatja az AD Joint [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési `OU=AADDC Computers` útja az Active Directory beállítása a NetApp-fiókhoz.
+Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési útja az `OU=AADDC Computers` Active Directory beállítása a NetApp-fiókhoz.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>A Windows Server Active Directory mely verziói támogatottak?
 
@@ -173,23 +177,26 @@ Nem. Azure Storage Explorer nem támogatja a Azure NetApp Files.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Hogyan megállapítja, hogy egy könyvtár eléri-e a korlát méretét?
 
-A `stat` parancs használatával megtekintheti, hogy a címtár eléri-e a maximális méretkorlátot (320 MB).
+A `stat` parancs használatával megtekintheti, hogy egy címtár eléri-e a maximális méretkorlátot a könyvtár metaadatainak számára (320 MB).
 
 320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokk mérete 512 bájt.  (Ez a 320x1024x1024/512.)  
 
 Példák:
 
-    [makam@cycrh6rtp07 ~]$ stat bin
-    File: 'bin'
-    Size: 4096            Blocks: 8          IO Block: 65536  directory
+```console
+[makam@cycrh6rtp07 ~]$ stat bin
+File: 'bin'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
 
-    [makam@cycrh6rtp07 ~]$ stat tmp
-    File: 'tmp'
-    Size: 12288           Blocks: 24         IO Block: 65536  directory
+[makam@cycrh6rtp07 ~]$ stat tmp
+File: 'tmp'
+Size: 12288           Blocks: 24         IO Block: 65536  directory
  
-    [makam@cycrh6rtp07 ~]$ stat tmp1
-    File: 'tmp1'
-    Size: 4096            Blocks: 8          IO Block: 65536  directory
+[makam@cycrh6rtp07 ~]$ stat tmp1
+File: 'tmp1'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
+```
+
 
 ## <a name="data-migration-and-protection-faqs"></a>Adatáttelepítés és-védelem – gyakori kérdések
 
@@ -234,5 +241,5 @@ Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetAp
 - [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Azure-támogatáskérések létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)
+- [Azure Data Box](https://docs.microsoft.com/azure/databox)
 - [A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések](azure-netapp-files-smb-performance.md)

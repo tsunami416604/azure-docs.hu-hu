@@ -7,10 +7,9 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75441222"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Szintetikus partíciókulcs létrehozása
@@ -28,7 +27,7 @@ A partíciós kulcsot úgy alakíthatja ki, hogy több tulajdonság értékét e
 }
 ```
 
-Az előző dokumentum esetében az egyik lehetőség a/deviceId vagy a/Date beállítása partíciós kulcsként. Akkor használja ezt a lehetőséget, ha az eszköz azonosító vagy dátum alapján szeretné particionálni a tárolót. Egy másik lehetőség, hogy összefűzi a két értéket egy olyan `partitionKey` szintetikus tulajdonságba, amelyet a partíciós kulcsként használ.
+Az előző dokumentum esetében az egyik lehetőség a/deviceId vagy a/Date beállítása partíciós kulcsként. Akkor használja ezt a lehetőséget, ha az eszköz azonosító vagy dátum alapján szeretné particionálni a tárolót. Egy másik lehetőség, hogy összefűzi a két értéket egy olyan szintetikus `partitionKey` tulajdonságba, amelyet a partíciós kulcsként használ.
 
 ```JavaScript
 {
@@ -44,15 +43,15 @@ Valós idejű forgatókönyvekben több ezer elemet is megadhat egy adatbázisba
 
 Egy másik lehetséges stratégia a számítási feladatok egyenletes elosztására a partíciós kulcs értékének végén található véletlenszerű szám hozzáfűzésével. Ha ily módon terjeszt el elemeket, párhuzamos írási műveleteket hajthat végre a partíciók között.
 
-Ilyen eset például, ha egy partíciós kulcs egy dátumot jelöl. Kiválaszthat egy 1 és 400 közötti véletlenszerű számot, és összefűzheti azt a dátumhoz. Ez a metódus a (z `2018-08-09.1``2018-08-09.2` `2018-08-09.400`),, stb. partíciós kulcs értékeit eredményezi. Mivel a partíciós kulcs véletlenszerű, a tárolón lévő írási műveletek mindegyike egyenletesen oszlik el több partíció között. Ez a módszer jobb párhuzamosságot és összességében nagyobb átviteli sebességet eredményez.
+Ilyen eset például, ha egy partíciós kulcs egy dátumot jelöl. Kiválaszthat egy 1 és 400 közötti véletlenszerű számot, és összefűzheti azt a dátumhoz. Ez a metódus a (z),  `2018-08-09.1` `2018-08-09.2` , stb. partíciós kulcs értékeit eredményezi  `2018-08-09.400` . Mivel a partíciós kulcs véletlenszerű, a tárolón lévő írási műveletek mindegyike egyenletesen oszlik el több partíció között. Ez a módszer jobb párhuzamosságot és összességében nagyobb átviteli sebességet eredményez.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Előre kiszámított utótagokkal rendelkező partíciós kulcs használata 
 
 A véletlenszerű utótaggal kapcsolatos stratégia nagy mértékben javíthatja az írási sebességet, de egy adott elem nehezen olvasható. Nem tudja, hogy milyen utótagot használt a rendszer az adott elemmel. Az egyes elemek olvasásának egyszerűbbé tételéhez használja az előre kiszámított utótagok stratégiát. Ahelyett, hogy véletlenszerű számmal terjessze az elemeket a partíciók között, egy számot kell használnia, amelyet a lekérdezni kívánt valami alapján kell kiszámítani.
 
-Vegye figyelembe az előző példát, ahol a tároló egy dátumot használ a partíciós kulcsként. Most tegyük fel, hogy minden `Vehicle-Identification-Number` egyes`VIN`tételhez tartozik egy () attribútum, amelyet szeretnénk elérni. Továbbá tegyük fel, hogy gyakran futtat lekérdezéseket az elemek a `VIN`dátumon felüli kereséséhez. Mielőtt az alkalmazás beírja az elemeket a tárolóba, kiszámíthatja a VIN alapján egy kivonatoló utótagot, és hozzáfűzheti a partíciós kulcs dátumához. Előfordulhat, hogy a számítás egy 1 és 400 közötti számot állít elő, amely egyenletes eloszlású. Ez az eredmény hasonló a véletlenszerű utótagú stratégiai módszer által létrehozott eredményekhez. A partíciós kulcs értéke ezután a számított eredménnyel összefűzött dátum.
+Vegye figyelembe az előző példát, ahol a tároló egy dátumot használ a partíciós kulcsként. Most tegyük fel, hogy minden egyes tételhez tartozik egy  `Vehicle-Identification-Number` ( `VIN` ) attribútum, amelyet szeretnénk elérni. Továbbá tegyük fel, hogy gyakran futtat lekérdezéseket az elemek a `VIN` dátumon felüli kereséséhez. Mielőtt az alkalmazás beírja az elemeket a tárolóba, kiszámíthatja a VIN alapján egy kivonatoló utótagot, és hozzáfűzheti a partíciós kulcs dátumához. Előfordulhat, hogy a számítás egy 1 és 400 közötti számot állít elő, amely egyenletes eloszlású. Ez az eredmény hasonló a véletlenszerű utótagú stratégiai módszer által létrehozott eredményekhez. A partíciós kulcs értéke ezután a számított eredménnyel összefűzött dátum.
 
-Ezzel a stratégiával az írások egyenletesen oszlanak el a partíciós kulcs értékein és a partíciók között. Egy adott elem és dátum könnyen olvasható, mert kiszámíthatja egy adott `Vehicle-Identification-Number`értékhez tartozó partíciós kulcs értékét. Ennek a módszernek az előnye, hogy el kell kerülnie egy egyszerű, például egy olyan partíciós kulcs létrehozását, amely az összes munkaterhelést elvégzi. 
+Ezzel a stratégiával az írások egyenletesen oszlanak el a partíciós kulcs értékein és a partíciók között. Egy adott elem és dátum könnyen olvasható, mert kiszámíthatja egy adott értékhez tartozó partíciós kulcs értékét `Vehicle-Identification-Number` . Ennek a módszernek az előnye, hogy el kell kerülnie egy egyszerű, például egy olyan partíciós kulcs létrehozását, amely az összes munkaterhelést elvégzi. 
 
 ## <a name="next-steps"></a>További lépések
 

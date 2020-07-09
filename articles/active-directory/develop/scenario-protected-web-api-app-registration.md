@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868847"
 ---
 # <a name="protected-web-api-app-registration"></a>Védett webes API: alkalmazás regisztrálása
@@ -56,7 +56,7 @@ A webes API-kra vonatkozó egyéb beállítások a kitett API-k és az elérhet�
 
 ### <a name="application-id-uri-and-scopes"></a>Alkalmazás-azonosító URI-ja és hatókörök
 
-A hatókörök általában az űrlappal `resourceURI/scopeName`rendelkeznek. Microsoft Graph esetén a hatókörökhöz parancsikonok tartoznak. `User.Read` Például egy parancsikon a következőhöz `https://graph.microsoft.com/user.read`:.
+A hatókörök általában az űrlappal rendelkeznek `resourceURI/scopeName` . Microsoft Graph esetén a hatókörökhöz parancsikonok tartoznak. Például `User.Read` egy parancsikon a következőhöz: `https://graph.microsoft.com/user.read` .
 
 Az alkalmazás regisztrálása során meg kell határoznia ezeket a paramétereket:
 
@@ -64,7 +64,7 @@ Az alkalmazás regisztrálása során meg kell határoznia ezeket a paraméterek
 - Egy vagy több hatókör
 - Egy vagy több alkalmazás-szerepkör
 
-Alapértelmezés szerint az alkalmazás regisztrációs portálja azt javasolja, hogy az erőforrás URI `api://{clientId}`-ját használja. Ez az URI egyedi, de nem olvasható. Ha megváltoztatja az URI-t, ellenőrizze, hogy az új érték egyedi-e.
+Alapértelmezés szerint az alkalmazás regisztrációs portálja azt javasolja, hogy az erőforrás URI-JÁT használja `api://{clientId}` . Ez az URI egyedi, de nem olvasható. Ha megváltoztatja az URI-t, ellenőrizze, hogy az új érték egyedi-e.
 
 Az *ügyfélalkalmazások számára a* hatókörök *meghatalmazott engedélyekként* és az alkalmazás szerepköreiként jelennek meg a webes API-hoz.
 
@@ -77,7 +77,7 @@ A hatókörök az alkalmazás felhasználói számára megjelenített engedélye
 
 1. Válassza ki az **API közzététele** az alkalmazás regisztrálásakor lehetőséget.
 1. Válassza a **Hatókör hozzáadása** lehetőséget.
-1. Ha a rendszer kéri, fogadja el a javasolt`api://{clientId}`alkalmazás-azonosító URI-t () a **Mentés és folytatás**lehetőség kiválasztásával.
+1. Ha a rendszer kéri, fogadja el a javasolt alkalmazás-azonosító URI-t ( `api://{clientId}` ) a **Mentés és folytatás**lehetőség kiválasztásával.
 1. A következő értékek meghatározása:
     - Válassza ki a **hatókör nevét** , és adja meg a **access_as_user**.
     - Válassza ki, hogy **ki férhet** hozzá, és győződjön meg arról, hogy a **rendszergazdák és a felhasználók** lehetőség ki van választva
@@ -101,12 +101,12 @@ Az alkalmazás engedélyeinek közzététele érdekében szerkesztenie kell a je
 
 1. Az alkalmazás regisztrációjában válassza a **jegyzékfájl**lehetőséget.
 1. A jegyzékfájl szerkesztéséhez keresse meg a `appRoles` beállítást, és adja hozzá az alkalmazás-szerepköröket. A szerepkör-definíciókat a következő JSON-blokkban kell megadnia.
-1. A `allowedMemberTypes` beállítás csak `"Application"` a következőre hagyható:.
-1. Győződjön meg `id` arról, hogy egyedi GUID-azonosító.
-1. Ügyeljen rá `displayName` , `value` hogy ne tartalmazzon szóközt.
+1. `allowedMemberTypes`A beállítás csak a következőre hagyható: `"Application"` .
+1. Győződjön meg arról `id` , hogy egyedi GUID-azonosító.
+1. Ügyeljen rá `displayName` , hogy `value` ne tartalmazzon szóközt.
 1. Mentse a jegyzékfájlt.
 
-A következő minta a tartalmát mutatja `appRoles`, ahol a értéke `id` lehet bármely egyedi GUID.
+A következő minta a tartalmát mutatja `appRoles` , ahol a értéke lehet `id` bármely egyedi GUID.
 
 ```json
 "appRoles": [
@@ -141,15 +141,15 @@ A fokozott biztonság hozzáadása:
 
    > [!IMPORTANT]
    >
-   > Ha a **felhasználó-hozzárendelést kötelező megadni?** **Igen**, az Azure ad ellenőrzi az ügyfél alkalmazás-szerepkör-hozzárendeléseit, amikor webes API-hozzáférési jogkivonatot kér. Ha az ügyfél nincs hozzárendelve egyetlen alkalmazás-szerepkörhöz sem, az Azure AD a következő hibaüzenetet adja vissza: \<"INVALID_CLIENT\> : AADSTS501051: az alkalmazás alkalmazásának neve \<nincs hozzárendelve a webes API\>-hoz tartozó szerepkörhöz".
+   > Ha a **felhasználó-hozzárendelést kötelező megadni?** **Igen**, az Azure ad ellenőrzi az ügyfél alkalmazás-szerepkör-hozzárendeléseit, amikor webes API-hozzáférési jogkivonatot kér. Ha az ügyfél nincs hozzárendelve egyetlen alkalmazás-szerepkörhöz sem, az Azure AD visszaküldi a következő hibaüzenetet: "invalid_client: AADSTS501051: az alkalmazás \<application name\> nincs hozzárendelve a (z \<web API\> )" szerepkörhöz.
    >
    > Ha megtartja a **felhasználó-hozzárendelést?** a **nem**értékre van ÁLLÍTVA, az Azure ad nem fogja megtekinteni az alkalmazás szerepkör-hozzárendelését, ha az ügyfél hozzáférési jogkivonatot kér a webes API- Minden olyan démon-ügyfél, amely az ügyfél hitelesítő adatait használó összes ügyfelet használja, csak a célközönség megadásával kaphat hozzáférési jogkivonatot az API-hoz. Bármely alkalmazás hozzáférhet az API-hoz anélkül, hogy engedélyt kellene kérnie rá.
    >
-   > Az előző szakaszban leírtaknak megfelelően azonban a webes API-k mindig ellenőrizhetik, hogy az alkalmazás rendelkezik-e a megfelelő szerepkörrel, amelyet a bérlői rendszergazda is jóváhagy. Az API végrehajtja ezt az ellenőrzést annak ellenőrzésével, hogy a hozzáférési jogkivonat rendelkezik szerepkör-jogcímvel, és hogy a jogcím értéke helyes-e. Az előző JSON-mintában az érték a `access_as_application`().
+   > Az előző szakaszban leírtaknak megfelelően azonban a webes API-k mindig ellenőrizhetik, hogy az alkalmazás rendelkezik-e a megfelelő szerepkörrel, amelyet a bérlői rendszergazda is jóváhagy. Az API végrehajtja ezt az ellenőrzést annak ellenőrzésével, hogy a hozzáférési jogkivonat rendelkezik szerepkör-jogcímvel, és hogy a jogcím értéke helyes-e. Az előző JSON-mintában az érték a ( `access_as_application` ).
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás kódjának konfigurálása](scenario-protected-web-api-app-configuration.md)

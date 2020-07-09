@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84048804"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Ismerje meg a SaaS Analytics szolgáltatást Azure SQL Database, az Azure szinapszis Analytics, a Data Factory és a Power BI használatával
@@ -122,7 +121,7 @@ A Object Explorerban:
 1. Kattintson **a \<user\> wingtipstaging** elemre a jelen lévő objektumok megismeréséhez.
 1. Kattintson a **Blobok** csempére
 1. Kattintson a tároló **engedélybeállítások**
-1. Ellenőrizze, hogy a **engedélybeállítások** tartalmaz-e egy **TableConfig. JSON**nevű JSON-fájlt. Ez a fájl tartalmazza a forrás-és a céltábla nevét, az oszlopnevek és a nyomkövetési oszlop nevét.
+1. Ellenőrizze, hogy a **engedélybeállítások** tartalmaz-e egy **TableConfig.js**nevű JSON-fájlt. Ez a fájl tartalmazza a forrás-és a céltábla nevét, az oszlopnevek és a nyomkövetési oszlop nevét.
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
 

@@ -13,12 +13,11 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195897"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
@@ -49,7 +48,7 @@ Valószínűleg nem a megfelelő Azure-fiókot vagy előfizetést használja az 
 
 1. Kapcsolat – AzAccount – a megfelelő felhasználói azonosító és jelszó használata
 2. Get-AzSubscription – megtekintheti a fiókhoz tartozó összes előfizetést.
-3. Select-AzSubscription &lt;előfizetés neve&gt; – válassza ki a megfelelő előfizetést. Használja ugyanazt a szolgáltatást, amellyel létrehoz egy adatgyárat a Azure Portal.
+3. Select-AzSubscription &lt; előfizetés neve &gt; – válassza ki a megfelelő előfizetést. Használja ugyanazt a szolgáltatást, amellyel létrehoz egy adatgyárat a Azure Portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Probléma: nem sikerült elindítani adatkezelés Gateway Express telepítőjét Azure Portal
 Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy egy Microsoft ClickOnce-kompatiblis webböngésző szükséges. Amennyiben az expressz telepítés nem indul el, tegye a következők egyikét:
@@ -61,10 +60,10 @@ Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy e
     Tegye ugyanezt a Firefox esetében is (telepítse a bővítményt). Kattintson az eszköztár Menü megnyitása gombjára (három vízszintes csík a jobb felső sarokban). Kattintson a Kiegészítők menüpontra, keressen a „ClickOnce” kulcsszóra, jelöljön ki egy ClickOnce-bővítmény, és telepítse azt.
 * A portálon ugyanezen a panelen megjelenik a **manuális telepítési** hivatkozás. Ezt a módszert használja a telepítési fájl letöltésére és manuális futtatására. Miután a telepítés sikeres volt, megjelenik az adatkezelés átjáró konfigurációja párbeszédpanel. Másolja ki a **kulcsot** a Portál képernyőről, és a konfigurációkezelőben ezt használva regisztrálja az átjárót a szolgáltatásban.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Probléma: nem lehet csatlakozni a helyszíni SQL Serverhoz
+### <a name="problem-fail-to-connect-to-sql-server"></a>Probléma: nem sikerült csatlakozni a SQL Serverhoz
 Indítsa el **adatkezelés átjárót Configuration Manager** az átjárót használó számítógépen, és a **Hibaelhárítás** lapon tesztelje a SQL Serverhoz való kapcsolódást az átjáró gépről. A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Probléma: a bemeneti szeletek mindig várnak állapotban vannak
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Probléma: a bemeneti szeletek örökre várakozó állapotban vannak
 Különböző okok miatt a szeletek **várakozási** állapotba kerülhetnek. Az egyik gyakori oka, hogy a **külső** tulajdonság értéke nem **true (igaz**). A Azure Data Factory hatókörén kívül létrehozott adatkészleteket **külső** tulajdonsággal kell megjelölni. Ez a tulajdonság azt jelzi, hogy az adatforrások kívül vannak, és az adatelőállítón belüli folyamatok nem rendelkeznek biztonsági mentéssel. Az adatszeletek **Készként** vannak jelölve, amint elérhetőek az adatok a megfelelő tárban.
 
 Tekintse meg a következő példát az **external** tulajdonság használatáról. Megadhatja a **externalData*** beállítást is, ha a külsőt igaz értékre állítja.

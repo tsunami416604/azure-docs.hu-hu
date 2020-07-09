@@ -8,14 +8,13 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416579"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037596"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -163,7 +162,7 @@ A felügyelt identitás adatait a Azure Portal-> a adat-előállító > tulajdon
 - Felügyelt identitás bérlője
 - Felügyelt identitás alkalmazásának azonosítója
 
-A felügyelt identitás adatai is megjelennek, amikor olyan társított szolgáltatást hoz létre, amely támogatja a felügyelt identitásos hitelesítést, mint például az Azure Blob, a Azure Data Lake Storage, a Azure Key Vault stb.
+A felügyelt identitás adatai is megjelennek, ha társított szolgáltatást hoz létre, amely támogatja a felügyelt identitások hitelesítését, például az Azure Blob, a Azure Data Lake Storage, a Azure Key Vault stb.
 
 Az engedélyek megadásakor használja az objektumazonosító vagy a adat-előállító nevét (felügyelt identitás neve) az identitás megkereséséhez.
 
@@ -191,8 +190,63 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
+### <a name="retrieve-managed-identity-using-rest-api"></a>Felügyelt identitás beolvasása a REST API használatával
+
+A rendszer a felügyelt identitás résztvevő-AZONOSÍTÓját és a bérlő AZONOSÍTÓját adja vissza, amikor a következő módon kap egy adott adatgyárat.
+
+Hívja meg az alábbi API-t a kérelemben:
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
+```
+
+**Válasz**: az alábbi példában láthatóhoz hasonló választ fog kapni. Az "Identity" szakasz ennek megfelelően van feltöltve.
+
+```json
+{
+    "name":"<dataFactoryName>",
+    "identity":{
+        "type":"SystemAssigned",
+        "principalId":"554cff9e-XXXX-XXXX-XXXX-90c7d9ff2ead",
+        "tenantId":"72f988bf-XXXX-XXXX-XXXX-2d7cd011db47"
+    },
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>",
+    "type":"Microsoft.DataFactory/factories",
+    "properties":{
+        "provisioningState":"Succeeded",
+        "createTime":"2020-02-12T02:22:50.2384387Z",
+        "version":"2018-06-01",
+        "factoryStatistics":{
+            "totalResourceCount":0,
+            "maxAllowedResourceCount":0,
+            "factorySizeInGbUnits":0,
+            "maxAllowedFactorySizeInGbUnits":0
+        }
+    },
+    "eTag":"\"03006b40-XXXX-XXXX-XXXX-5e43617a0000\"",
+    "location":"<region>",
+    "tags":{
+
+    }
+}
+```
+
+> [!TIP] 
+> A felügyelt identitás ARM-sablonból való lekéréséhez vegyen fel egy **kimenet** SZAKASZT az ARM JSON-ban:
+
+```json
+{
+    "outputs":{
+        "managedIdentityObjectId":{
+            "type":"string",
+            "value":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('<dataFactoryName>')), '2018-06-01', 'Full').identity.principalId]"
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő témaköröket, amelyek bemutatják, mikor és hogyan kell használni az adatok gyári felügyelt identitását:
+Tekintse meg a következő témaköröket, amelyek bemutatják, hogy mikor és hogyan kell használni az adatok gyári felügyelt identitását
 
 - [Hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)
 - [Adatok másolása az Azure-erőforrások hitelesítéséhez tartozó felügyelt identitások használatával vagy Azure Data Lake Storeba](connector-azure-data-lake-store.md)

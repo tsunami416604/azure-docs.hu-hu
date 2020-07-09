@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74196506"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113105"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési problémák elhárítása Storage Analytics-naplók használatával
 
@@ -93,7 +93,7 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 
    * Ügyfél késése = végpontok közötti késés – kiszolgáló – késés
 
-          * Example: 8453 – 391 = 8062ms
+        Például: 8453 – 391 = 8062ms
 
    A következő táblázat a nagy késleltetésű OperationType és a RequestStatus eredményekkel kapcsolatos információkat tartalmaz:
 

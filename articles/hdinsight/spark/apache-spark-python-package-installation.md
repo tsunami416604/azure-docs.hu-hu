@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: seoapr2020
+ms.topic: how-to
+ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835971"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086619"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -33,7 +33,7 @@ A Microsoft Azure HDInsight szolgáltatás olyan nyílt forráskódú technológ
 
 A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhető el:
 
-|Összetevő |Leírás |
+|Összetevő |Description |
 |---|---|
 |Beépített|Ezek az összetevők előre telepítve vannak a HDInsight-fürtökön, és biztosítják a fürt alapvető funkcióit. Például Apache Hadoop a fonal Resource Manager, a Apache Hive lekérdezési nyelv (HiveQL) és a Mahout könyvtár ehhez a kategóriához tartozik. A fürt összetevőinek teljes listája a [HDInsight által biztosított Apache Hadoop-fürt verziójának újdonságai](../hdinsight-component-versioning.md)című részében érhető el.|
 |Egyéni|A fürt felhasználója a munkaterhelésben telepítheti vagy használhatja a Közösségben elérhető vagy Ön által létrehozott összetevőket.|
@@ -50,8 +50,8 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 | |Python 2,7|Python 3,5|
 |----|----|----|
 |Elérési út|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Alapértelmezett érték 2,7|N/A|
-|Livy|Alapértelmezett érték 2,7|N/A|
+|Spark|Alapértelmezett érték 2,7|N.A.|
+|Livy|Alapértelmezett érték 2,7|N.A.|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
@@ -146,7 +146,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
 ## <a name="known-issue"></a>Ismert probléma
 
-Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12` `4.8.0` . Ha a parancsfájl műveletei a következő helyen találhatók: `"Collecting package metadata (repodata.json): ...working..."` és sikertelen `"Python script has been killed due to timeout after waiting 3600 secs"` . [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
+Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12` `4.8.0` . Ha úgy látja, hogy a parancsfájl műveletei nem válaszolnak a következővel: `"Collecting package metadata (repodata.json): ...working..."` `"Python script has been killed due to timeout after waiting 3600 secs"` . [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 

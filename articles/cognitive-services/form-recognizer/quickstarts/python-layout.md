@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: c30374b21c1d95b6b710de10da08391d0af4f538
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 62cbaec3e4eaffb9ff3b29e97516ed7e039b38ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141959"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028107"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: szöveg-és elrendezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -29,7 +29,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 - Egy űrlap-dokumentum. Az ehhez a rövid útmutatóhoz tartozó [minta adatkészletből](https://go.microsoft.com/fwlink/?linkid=2090451) letöltheti a rendszerképet.
 
 > [!NOTE]
-> Ez a rövid útmutató egy helyileg tárolt dokumentumot használ. Az URL-cím alapján elért távoli fájlok használatának megismeréséhez tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync).
+> Ez a rövid útmutató egy helyileg tárolt dokumentumot használ. Az URL-cím alapján elért távoli fájlok használatának megismeréséhez tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync).
 
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
@@ -38,7 +38,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="analyze-the-form-layout"></a>Az űrlap elrendezésének elemzése
 
-Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
+Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le a helyére `<path to your form>` a helyi űrlaphoz tartozó dokumentum elérési útját.
@@ -54,7 +54,7 @@ Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.0/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -84,12 +84,12 @@ Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja
 Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amely segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában szereplő sztring a `operations/` művelet azonosítója.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-layout-results"></a>Az elrendezés eredményének beolvasása
 
-Az elemzési **elrendezési** API meghívása után hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ez a kód a műveleti azonosító értékét használja egy új API-hívásban. Ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
+Az elemzési **elrendezési** API meghívása után hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ez a kód a műveleti azonosító értékét használja egy új API-hívásban. Ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
 
 ```python
 n_tries = 10
@@ -282,4 +282,4 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a számla szöveg elrendezésének kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)

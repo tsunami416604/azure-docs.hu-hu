@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan állíthatja be az Azure import/export szolgál
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74979036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514184"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Az Azure import/export eszköz beállítása
 
@@ -49,28 +49,28 @@ Ha részlegesen sikertelen **exportálást próbál meg kijavítani** , a követ
 
 ## <a name="installing-the-azure-importexport-tool"></a>Az Azure import/export eszköz telepítése
 
-Először [töltse le az Azure import/export eszközt](https://www.microsoft.com/download/details.aspx?id=55280) , és csomagolja ki a számítógép egyik könyvtárába, például `c:\WAImportExport`:.
+Először [töltse le az Azure import/export eszközt](https://www.microsoft.com/download/details.aspx?id=55280) , és csomagolja ki a számítógép egyik könyvtárába, például: `c:\WAImportExport` .
 
 Az Azure import/export eszköz az alábbi fájlokat tartalmazza:
 
-* adatkészlet. csv
-* driveset. csv
-* hddid. dll
-* Microsoft. Rea. Services. Client. dll
-* Microsoft. WindowsAzure. Storage. dll
+* dataset.csv
+* driveset.csv
+* hddid.dll
+* Microsoft.Data.Services.Client.dll
+* Microsoft.WindowsAzure.Storage.dll
 * Microsoft. WindowsAzure. Storage. pdb
-* Microsoft. WindowsAzure. Storage. XML
-* WAImportExport. exe
-* WAImportExport. exe. config
+* Microsoft.WindowsAzure.Storage.xml
+* WAImportExport.exe
+* WAImportExport.exe.config
 * WAImportExport. pdb
-* WAImportExportCore. dll
+* WAImportExportCore.dll
 * WAImportExportCore. pdb
-* WAImportExportRepair. dll
+* WAImportExportRepair.dll
 * WAImportExportRepair. pdb
 
 Ezután nyisson meg egy parancssori ablakot **rendszergazdai módban**, és váltson át a kibontott fájlokat tartalmazó könyvtárba.
 
-A parancs súgójának kimenetéhez futtassa az eszközt (`WAImportExport.exe`) paraméterek nélkül:
+A parancs súgójának kimenetéhez futtassa az eszközt ( `WAImportExport.exe` ) paraméterek nélkül:
 
 ```
 WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013

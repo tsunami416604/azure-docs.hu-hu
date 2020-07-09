@@ -2,18 +2,19 @@
 title: Kvóta növelésének kérése
 description: Ez az oldal azt ismerteti, hogyan lehet támogatási kérést létrehozni a Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó kvóták növelésére.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: service
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 02/04/2020
-ms.openlocfilehash: 53160fa5a2d24f747b0653673a6f817ae14a7975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118865"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987285"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>A kérelmek kvótájának növekedése Azure SQL Database és az SQL felügyelt példányainál
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,19 +50,20 @@ A következő lépésekkel hozzon létre egy új támogatási kérést a SQL Dat
 
    ![Adja meg a kvóta típusát](./media/quota-increase-request/select-quota-type.png)
 
-1. A **részletek** ablakban válassza a **részletek** megadása lehetőséget a további információk megadásához.
+1. További információk megadásához a **részletek** ablakban válassza a **részletek megadása** lehetőséget.
 
-   ![A "részletek megadása" hivatkozás](./media/quota-increase-request/provide-details-link.png)
+   ![Részletek hivatkozásának megadása](./media/quota-increase-request/provide-details-link.png)
 
-A **részletek megadása** lehetőségre kattintva megjelenik a **kvóta részletei** ablak, amely lehetővé teszi további információk hozzáadását. A következő szakaszok a **felügyelt példányok** **SQL Database** és SQL Database különböző lehetőségeit ismertetik.
+A **részletek megadása** elemre kattintva megjelenik a **kvóta részletei** ablak, amely lehetővé teszi további információk hozzáadását. A következő szakaszok a **felügyelt példányok** **SQL Database** és SQL Database különböző lehetőségeit ismertetik.
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database kvóta típusai
 
-A következő szakaszok három kvóta-növelési lehetőséget ismertetnek a **SQL Database** kvóták típusaihoz:
+A következő szakaszok ismertetik a kvóta-növelési lehetőségeket a **SQL Database** kvóták típusaihoz:
 
 - Adatbázis-tranzakciós egységek (DTU) kiszolgálónként
 - Kiszolgálók/előfizetés
-- Előfizetés-hozzáférés engedélyezése egy régióhoz
+- Az M-sorozat régióhoz való hozzáférése
+- Régió elérése
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Adatbázis-tranzakciós egységek (DTU) kiszolgálónként
 
@@ -91,15 +93,32 @@ A következő lépések végrehajtásával növelheti a kiszolgálók számát a
 
 További információ: [SQL Database erőforrás-korlátozások és erőforrás-szabályozás](resource-limits-logical-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Előfizetés-hozzáférés engedélyezése egy régióhoz
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Előfizetés-hozzáférés engedélyezése egy régióhoz
 
 Egyes ajánlati típusok nem érhetők el minden régióban. Előfordulhat, hogy a következő hibaüzenet jelenik meg:
 
-`This location is not available for subscription`
+`Your subscription does not have access to create a server in the selected region. For the latest information about region availability for your subscription, go to aka.ms/sqlcapacity. Please try another region or create a support ticket to request access.`
 
-Ha az előfizetés egy adott régióban fér hozzá, akkor a hozzáférés kéréséhez használja az **egyéb kvóta kérése** lehetőséget. A kérelemben adja meg az ajánlat és az SKU adatait, amelyeket engedélyezni szeretne a régió számára. Az ajánlat és az SKU beállításainak megismeréséhez tekintse meg a [Azure SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/single/).
+Ha az előfizetéshez egy adott régióban hozzáférésre van szüksége, válassza a **régió-hozzáférés** lehetőséget. A kérelemben adja meg az ajánlat és az SKU adatait, amelyeket engedélyezni szeretne a régió számára. Az ajánlat és az SKU beállításainak megismeréséhez tekintse meg a [Azure SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-![Egyéb kvóta részletei](./media/quota-increase-request/quota-details-whitelisting.png)
+1. Válassza ki a **régió hozzáférési** kvótájának típusát.
+
+1. A **válasszon helyet** listából válassza ki a használni kívánt Azure-régiót. Az egyes régiókban a kvóta/előfizetés.
+
+1. Adja meg a **vásárlási modellt**, és a **várt felhasználás** részleteit.
+
+   ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-details-whitelisting.png)
+
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>Az M-sorozat hozzáférésének engedélyezése egy régióhoz
+
+Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést.
+
+1. Válassza ki az **M-sorozat régiójának hozzáférési** kvóta típusát.
+
+1. A **válasszon helyet** listából válassza ki a használni kívánt Azure-régiót. Az egyes régiókban a kvóta/előfizetés.
+
+
+   ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>SQL felügyelt példány kvótájának típusa
 

@@ -4,10 +4,9 @@ description: Fordított proxy konfigurálása az Azure Service Fabric-alkalmazá
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858527"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval
@@ -20,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre biztonságos kapcsolat a fordít
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Biztonságos kapcsolat létesítése a fordított proxy és a szolgáltatások között 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Fordított proxy hitelesítése a szolgáltatásokban:
-A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [**-sablon Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/templates/template-syntax.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig. JSON **biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [**-sablon Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/templates/template-syntax.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig.js**biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 A szolgáltatások a fordított proxy által megjelenített tanúsítvány ellenőrzéséhez implementálják a logikát. A szolgáltatások megadhatják az elfogadott ügyféltanúsítvány részleteit konfigurációs beállításokként a konfigurációs csomagban. Ez futásidőben olvasható, és a fordított proxy által bemutatott tanúsítvány ellenőrzéséhez használható. A konfigurációs beállítások hozzáadásához tekintse meg az [alkalmazás paramétereinek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) című témakört. 
 

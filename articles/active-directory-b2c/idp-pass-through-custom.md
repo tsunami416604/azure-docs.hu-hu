@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c434ad6a724ba513caf7923916997600097b43f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387864"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy egyéni szabályzaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Azure AD B2C támogatja a [OAuth 2,0](authorization-code-flow.md) és az [OpenID
 
 ## <a name="add-the-claim-elements"></a>Jogcím-elemek hozzáadása
 
-1. Nyissa meg a *TrustframeworkExtensions. XML* fájlt, és adja hozzá a következő **claimType** elemet `identityProviderAccessToken` egy azonosítóval a **ClaimsSchema** elemhez:
+1. Nyissa meg *TrustframeworkExtensions.xml* fájlt, és adja hozzá a következő **claimType** elemet egy azonosítóval `identityProviderAccessToken` a **ClaimsSchema** elemhez:
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -47,7 +47,7 @@ Azure AD B2C támogatja a [OAuth 2,0](authorization-code-flow.md) és az [OpenID
 
 2. Adja hozzá a **OutputClaim** elemet a **kivonatjogcím** elemhez minden olyan OAuth 2,0-identitáshoz, amelyhez hozzá szeretné adni a hozzáférési jogkivonatot. A következő példa a Facebook technikai profiljához hozzáadott elemet mutatja be:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -61,10 +61,10 @@ Azure AD B2C támogatja a [OAuth 2,0](authorization-code-flow.md) és az [OpenID
     </ClaimsProvider>
     ```
 
-3. Mentse a *TrustframeworkExtensions. XML* fájlt.
-4. Nyissa meg a függő entitás házirend-fájlját, például *SignUpOrSignIn. XML*fájlt, és adja hozzá a **OutputClaim** elemet a **kivonatjogcím**:
+3. Mentse a *TrustframeworkExtensions.xml* fájlt.
+4. Nyissa meg a függő entitás házirend-fájlját, például *SignUpOrSignIn.xml*, és adja hozzá a **OutputClaim** elemet a **kivonatjogcím**:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">
@@ -80,7 +80,7 @@ Azure AD B2C támogatja a [OAuth 2,0](authorization-code-flow.md) és az [OpenID
 
 ## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure AD B2C token visszaadja `https://jwt.ms` a jogcímeket, hogy áttekintse a benne lévő jogcímeket.
+Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure AD B2C token visszaadja a `https://jwt.ms` jogcímeket, hogy áttekintse a benne lévő jogcímeket.
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
@@ -89,14 +89,14 @@ Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy 
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **identitási élmény keretrendszert**.
 5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
-6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions. XML* fájlt.
+6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions.xml* fájlt.
 7. Válassza a **Feltöltés** lehetőséget.
-8. Ismételje meg az 5 – 7. lépést a függő entitás fájljánál (például *SignUpOrSignIn. XML*).
+8. Ismételje meg az 5 – 7. lépést a függő entitás fájljánál, például *SignUpOrSignIn.xml*.
 
 ### <a name="run-the-policy"></a>A házirend futtatása
 
 1. Nyissa meg a módosított szabályzatot. Például *B2C_1A_signup_signin*.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Az alábbi példában szereplő token megjelenítéséhez a **Válasz URL-címének** meg `https://jwt.ms`kell jelennie.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Az alábbi példában szereplő token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 3. Válassza a **Futtatás most**lehetőséget.
 
     Az alábbi példához hasonlónak kell megjelennie:

@@ -1,24 +1,24 @@
 ---
 title: Beépített szabályzat-definíciók Azure Service Bus üzenetkezeléshez
 description: Felsorolja Azure Policy Azure Service Bus üzenetkezeléshez tartozó beépített szabályzat-definíciókat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 0bda32fc86b40029889f8297d54c85a8cf163b43
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7170a6ad7a69e54e34dfd15be1b4165d4e3b59ac
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650996"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321280"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-service-bus-messaging"></a>Azure Policy beépített szabályzat-definíciók Azure Service Bus üzenetkezeléshez
+# <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Azure Policy beépített definíciók Azure Service Bus üzenetkezeléshez
 
 Ez az oldal az [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe Azure Service Bus üzenetkezeléshez. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-service-bus-messaging"></a>Üzenetküldés Azure Service Bus
 

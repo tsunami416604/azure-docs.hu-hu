@@ -5,15 +5,15 @@ services: databox
 author: priestlg
 ms.service: databox
 ms.subservice: disk
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 74828bfd3a110739afc211a530c11c74387b70ed
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749311"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945018"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>A Azure Portal Azure Data Box Disk önfelügyelt szállítás használata
 
@@ -28,8 +28,9 @@ Az önfelügyelt szállítás a [Azure Data Box Disk megrendelése](data-box-dis
 * Japán
 * Szingapúr
 * Dél-Korea
+* India (előzetes verzió)
 
-## <a name="use-self-managed-shipping"></a>Saját üzemeltetésű szállítás használata
+## <a name="use-self-managed-shipping"></a>Önállóan felügyelt szállítás használata
 
 Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt szállítási lehetőséget.
 
@@ -43,7 +44,7 @@ Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyel
 
    ![Saját üzemeltetésű szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Az eszköz előkészítését követően beütemezhet egy felvételt. A Azure Data Box Diski sorrendben válassza az **Áttekintés** , majd a **felvételi ütemterv**lehetőséget.
+4. Ha az eszköz elkészült, és e-mailben értesítést kapott, beütemezhet egy felvételt. A Azure Data Box Diski sorrendben válassza az **Áttekintés** , majd a **felvételi ütemterv**lehetőséget.
 
    ![Data Box-eszköz megrendelése a felvételi szolgáltatáshoz](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
@@ -57,11 +58,11 @@ Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyel
 
    Jegyezze fel ezt az **engedélyezési kódot**.
 
-   A biztonsági követelményeknek megfelelően az ütemezési felveszés és a leválasztás időpontjában be kell mutatni annak a személynek a nevét, aki megérkezik a felvételhez és a leálláshoz.
+   A biztonsági követelményeknek megfelelően az ütemezési felveszés időpontjában meg kell adni annak a személynek a nevét, aki a beléptetésre fog érkezni.
 
    Azt is meg kell adnia, hogy ki fog szolgálni az adatközpontba. Önnek vagy a kapcsolattartási pontnak a kormány által jóváhagyott, az adatközpontban érvényesített fénykép-AZONOSÍTÓval kell rendelkeznie.
 
-   Emellett az eszköz beszedését végző személynek is rendelkeznie kell az **engedélyezési kóddal**. Az engedélyezési kódot a rendszer az adatközpontok időpontjában érvényesíti.
+   Emellett az eszköz beszedését végző személynek is rendelkeznie kell az **engedélyezési kóddal**. Az engedélyezési kód egyedi egy felvételhez vagy egy leálláshoz, és az adatközpontban érvényesítve van.
 
 7. A megrendelés automatikusan a **kiválasztott** állapotba kerül, amint az eszközt az adatközpontból felvette.
 

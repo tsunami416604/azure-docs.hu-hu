@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1254a2998a0acbf86b3689c66b83502c0334282
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894984"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134477"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services-tár törlése
 
@@ -43,14 +43,14 @@ A tároló törlése előtt el kell távolítania a regisztrált kiszolgálókat
 ## <a name="delete-a-vault-hyper-v-vm-with-vmm-to-azure"></a>Tár-Hyper-V virtuális gép (VMM) törlése az Azure-ba
 
 1. A System Center VMM által felügyelt Hyper-V virtuális gépek törléséhez kövesse az [alábbi lépéseket](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) .
-2. Szüntesse meg az összes replikációs házirend hozzárendelését és törlését. Ezt a tárolóban > **site Recovery infrastruktúra** > **a System Center VMM** > **replikációs házirendek**esetében.
+2. Szüntesse meg az összes replikációs házirend hozzárendelését és törlését. Ezt a tárolóban > **site Recovery infrastruktúra**  >  **a System Center VMM**  >  **replikációs házirendek**esetében.
 3. A csatlakoztatott VMM-kiszolgálók regisztrációjának megszüntetéséhez kövesse [az alábbi lépéseket](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) .
 4. Ezután törölje a tárolót.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Tároló-Hyper-V virtuális gép törlése az Azure-ba
 
 1. Az összes védett virtuális gép törléséhez kövesse az [alábbi lépéseket](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure) .
-2. Szüntesse meg az összes replikációs házirend hozzárendelését és törlését. Ezt a tárolóban > a**Hyper-V-helyek** > **replikációs házirendjeihez** **site Recovery infrastruktúrát** > .
+2. Szüntesse meg az összes replikációs házirend hozzárendelését és törlését. Ezt a tárolóban > a **Site Recovery Infrastructure**  >  **Hyper-V-helyek**  >  **replikációs házirendjeihez**site Recovery infrastruktúrát.
 3. A Hyper-V-gazdagépek regisztrációjának megszüntetéséhez kövesse az [alábbi utasításokat](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site) .
 4. Törölje a Hyper-V-helyet.
 5. Ezután törölje a tárolót.
@@ -72,4 +72,4 @@ Ha védett elemek is vannak, akkor a Site Recovery-tároló törléséhez haszn�
 
     Remove-AzRecoveryServicesVault -Vault $vault
 
-További információ a [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)és a [Remove-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault).
+További információ a [Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)és a [Remove-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault).

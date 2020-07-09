@@ -7,18 +7,18 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cdea30e7b630b2fa62b004f98cb67fd1994f915
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253272"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024174"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -53,15 +53,13 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     ![Azure AD-szerepkörök](./media/pim-how-to-add-role-to-user/roles-list.png)
 
-1. Válassza a **tag hozzáadása** lehetőséget az **új hozzárendelés** lap megnyitásához.
+1. Válassza a **hozzárendelések hozzáadása** lehetőséget a **hozzárendelések hozzáadása** lap megnyitásához.
 
-1. Válassza a **szerepkör kiválasztása** lehetőséget a szerepkör kiválasztása lap megnyitásához.
+1. Válassza a **szerepkör kiválasztása** lehetőséget a **szerepkör kiválasztása** lap megnyitásához.
 
     ![Új hozzárendelés ablaktábla](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. Válassza ki a hozzárendelni kívánt szerepkört, majd kattintson a **kiválasztás**gombra.
-
-1. Válasszon ki egy tagot, akihez hozzárendelni kívánja a szerepkört, majd válassza a **kiválasztás**lehetőséget.
+1. Válassza ki a hozzárendelni kívánt szerepkört, válassza ki a szerepkörhöz hozzárendelni kívánt tagot, majd kattintson a **tovább**gombra.
 
 1. A **tagsági beállítások** ablaktábla **hozzárendelés típusa** listájában válassza a **jogosult** vagy az **aktív**lehetőséget.
 
@@ -69,15 +67,11 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     - Az **aktív** hozzárendelésekhez nem szükséges, hogy a tag bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt tagok rendelkeznek a szerepkörhöz tartozó jogosultságokkal.
 
-1. Ha a hozzárendelésnek állandónak kell lennie (tartósan jogosult vagy véglegesen kiosztott), jelölje be a **véglegesen** jelölőnégyzetet.
-
-    A szerepkör beállításaitól függően előfordulhat, hogy a jelölőnégyzet nem jelenik meg, vagy lehet, hogy nem módosítható.
-
-1. Egy adott hozzárendelés időtartamának megadásához törölje a jelölőnégyzet jelölését, és módosítsa a kezdő és/vagy befejező dátum és idő mezőket. Ha elkészült, válassza a **kész**gombot.
+1. Egy adott hozzárendelés időtartamának megadásához adjon meg egy kezdő és záró dátumot és időmezőt. Ha elkészült, válassza a **hozzárendelés** lehetőséget az új szerepkör-hozzárendelés létrehozásához.
 
     ![Tagsági beállítások – dátum és idő](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
-1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás**lehetőséget. Megjelenik az állapot értesítése.
+1. A szerepkör hozzárendelése után egy hozzárendelési állapotra vonatkozó értesítés jelenik meg.
 
     ![Új hozzárendelés – értesítés](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
@@ -129,7 +123,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Most, hogy a felhasználó jogosult a szerepkörre, tájékoztassa őket arról, hogy a [Privileged Identity Management Azure ad-szerepköreinek aktiválása](pim-how-to-activate-role.md)című témakör utasításai szerint aktiválhatja azt.
 
-    A rendszer arra kéri a jogosult rendszergazdákat, hogy regisztráljanak az Azure Multi-Factor Authentication (MFA) az aktiválás során. Ha a felhasználó nem regisztrálhat az MFA-ra, vagy egy Microsoft-fiók (például @outlook.com) használ, az összes szerepkörében állandónak kell lennie.
+    Az aktiválás során a rendszer arra kéri a jogosult rendszergazdákat, hogy regisztráljanak az Azure Multi-Factor Authentication. Ha a felhasználó nem regisztrálhat az MFA-ra, vagy egy Microsoft-fiók (például @outlook.com ) használ, az összes szerepkörében állandónak kell lennie.
 
 ## <a name="make-a-role-assignment-permanent"></a>Szerepkör-hozzárendelés véglegesvé tétele
 

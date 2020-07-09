@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426635"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Szolgáltatás-távelérés a javában Reliable Services
@@ -24,7 +23,7 @@ Olyan szolgáltatások esetén, amelyek nem kapcsolódnak egy adott kommunikáci
 ## <a name="set-up-remoting-on-a-service"></a>Távelérés beállítása a szolgáltatáson
 Egy szolgáltatás távelérésének beállítása két egyszerű lépésben történik:
 
-1. Hozzon létre egy felületet a szolgáltatás megvalósításához. Ez az interfész határozza meg a szolgáltatásban távoli eljárás hívásához elérhető módszereket. A metódusoknak aszinkron metódusok tevékenység-visszaküldési módszereknek kell lenniük. A csatolónak meg `microsoft.serviceFabric.services.remoting.Service` kell valósítania annak jelzésére, hogy a szolgáltatásnak van-e távelérési felülete.
+1. Hozzon létre egy felületet a szolgáltatás megvalósításához. Ez az interfész határozza meg a szolgáltatásban távoli eljárás hívásához elérhető módszereket. A metódusoknak aszinkron metódusok tevékenység-visszaküldési módszereknek kell lenniük. A csatolónak meg kell valósítania `microsoft.serviceFabric.services.remoting.Service` annak jelzésére, hogy a szolgáltatásnak van-e távelérési felülete.
 2. Használjon távelérési figyelőt a szolgáltatásban. Ez egy olyan `CommunicationListener` implementáció, amely távelérési funkciókat biztosít. `FabricTransportServiceRemotingListener`a távelérés-figyelőt az alapértelmezett távelérési átviteli protokoll használatával lehet létrehozni.
 
 A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén ""Helló világ!"alkalmazás" beolvasását teszi lehetővé.
@@ -67,7 +66,7 @@ class MyServiceImpl extends StatelessService implements MyService {
 >
 
 ## <a name="call-remote-service-methods"></a>Távoli szolgáltatási módszerek hívása
-Ha a távelérési verem használatával metódusokat hív meg egy szolgáltatáson, a szolgáltatás a `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` osztályon keresztül helyi proxy használatával végezhető el. A `ServiceProxyBase` metódus egy helyi proxyt hoz létre ugyanazzal a kezelőfelülettel, amelyet a szolgáltatás implementál. Ezzel a proxyval egyszerűen hívhatja a metódusokat az illesztőfelületen távolról.
+Ha a távelérési verem használatával metódusokat hív meg egy szolgáltatáson, a szolgáltatás a osztályon keresztül helyi proxy használatával végezhető el `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` . A `ServiceProxyBase` metódus egy helyi proxyt hoz létre ugyanazzal a kezelőfelülettel, amelyet a szolgáltatás implementál. Ezzel a proxyval egyszerűen hívhatja a metódusokat az illesztőfelületen távolról.
 
 ```java
 
@@ -77,13 +76,13 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 
 ```
 
-A távelérési keretrendszer a szolgáltatásban a-ügyfél felé irányuló kivételeket propagálja. Így a kivételek kezelése a-ügyfélen a `ServiceProxyBase` használatával közvetlenül kezelheti a szolgáltatás által kiváltott kivételeket.
+A távelérési keretrendszer a szolgáltatásban a-ügyfél felé irányuló kivételeket propagálja. Így a kivételek kezelése a-ügyfélen a használatával `ServiceProxyBase` közvetlenül kezelheti a szolgáltatás által kiváltott kivételeket.
 
 ## <a name="service-proxy-lifetime"></a>Szolgáltatási proxy élettartama
-A ServiceProxy létrehozása egy könnyű művelet, így tetszőleges számú igényt hozhat létre. A Service proxy példányai a szükséges ideig újra felhasználhatók. Ha egy távoli eljáráshívás kivételt jelez, továbbra is használhatja ugyanazt a proxy-példányt. Minden ServiceProxy tartalmaz egy kommunikációs ügyfelet, amely üzenetek küldésére szolgál a vezetékes hálózaton keresztül. A távoli hívások meghívása során a rendszer belső ellenőrzéseket végez annak meghatározására, hogy a kommunikációs ügyfél érvényes-e. Az ellenőrzések eredményei alapján a kommunikációs ügyfél újból létrejön, ha szükséges. Ezért ha kivétel történik, nem kell újból létrehoznia `ServiceProxy`.
+A ServiceProxy létrehozása egy könnyű művelet, így tetszőleges számú igényt hozhat létre. A Service proxy példányai a szükséges ideig újra felhasználhatók. Ha egy távoli eljáráshívás kivételt jelez, továbbra is használhatja ugyanazt a proxy-példányt. Minden ServiceProxy tartalmaz egy kommunikációs ügyfelet, amely üzenetek küldésére szolgál a vezetékes hálózaton keresztül. A távoli hívások meghívása során a rendszer belső ellenőrzéseket végez annak meghatározására, hogy a kommunikációs ügyfél érvényes-e. Az ellenőrzések eredményei alapján a kommunikációs ügyfél újból létrejön, ha szükséges. Ezért ha kivétel történik, nem kell újból létrehoznia `ServiceProxy` .
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory élettartama
-A [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxyt. Ha API `ServiceProxyBase.create` -t használ a proxy létrehozásához, a Framework `FabricServiceProxyFactory`létrehoz egy-t.
+A [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxyt. Ha API-t használ `ServiceProxyBase.create` a proxy létrehozásához, a Framework létrehoz egy-t `FabricServiceProxyFactory` .
 A [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) tulajdonságainak felülbírálásához hasznos lehet manuálisan létrehozni.
 A gyár költséges művelet. `FabricServiceProxyFactory`megőrzi a kommunikációs ügyfelek gyorsítótárát.
 Az ajánlott eljárás a gyorsítótárazás `FabricServiceProxyFactory` a lehető leghosszabbra.

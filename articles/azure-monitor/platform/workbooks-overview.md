@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560162"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
@@ -28,12 +28,12 @@ A munkafüzetek valódi ereje azonban a különböző forrásokból származó a
 A munkafüzetek jelenleg a következő adatforrásokkal kompatibilisek:
 
 * [Naplók](workbooks-data-sources.md#logs)
-* [Mérőszámok](workbooks-data-sources.md#metrics)
+* [Metrikák](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [Riasztások (előnézet)](workbooks-data-sources.md#alerts-preview)
-* [Munkaterhelés állapota (előzetes verzió)](workbooks-data-sources.md#workload-health-preview)
-* [Azure Resource Health (előzetes verzió)](workbooks-data-sources.md#azure-resource-health)
-* [Azure Adatkezelő (előzetes verzió)](workbooks-data-sources.md#azure-data-explorer-preview)
+* [Munkaterhelés állapota](workbooks-data-sources.md#workload-health)
+* [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
+* [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>Vizualizációk
 

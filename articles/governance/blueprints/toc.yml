@@ -4,16 +4,19 @@
   items:
     - name: Mi az az Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
     - name: Terv létrehozása – Portal
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: Terv létrehozása – PowerShell
+      href: ./create-blueprint-portal.md
+    - name: Terv létrehozása – Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: Terv létrehozása – Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: Terv létrehozása – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -34,16 +37,8 @@
       displayName: 'list, examples'
       href: ./samples/index.md
     - name: Azure-biztonsági teljesítményteszt
-      items:
-        - name: Áttekintés
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/index.md
-        - name: Vezérlőelem-leképezés
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/control-mapping.md
-        - name: Az üzembe helyezés lépései
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/deploy.md
+      displayName: 'standards, azure, benchmark'
+      href: ./samples/azure-security-benchmark.md
     - name: Australian Government ISM PROTECTED
       items:
         - name: Vezérlőelem-leképezés
@@ -61,16 +56,8 @@
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
-      items:
-        - name: Áttekintés
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/index.md
-        - name: Az ajánlások leképezése
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/control-mapping.md
-        - name: Az üzembe helyezés lépései
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/deploy.md
+      displayName: 'standards, cis'
+      href: ./samples/cis-azure-1-1-0.md
     - name: DoD Impact Level 4
       items:
         - name: Áttekintés
@@ -82,6 +69,17 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, DoD, IL4'
           href: ./samples/dod-impact-level-4/deploy.md
+    - name: DoD Impact Level 5
+      items:
+        - name: Áttekintés
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/index.md
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/deploy.md
     - name: FedRAMP Moderate
       items:
         - name: Áttekintés
@@ -170,17 +168,12 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, Media'
           href: ./samples/media/deploy.md
-    - name: NIST SP 800-53 Rev4
-      items:
-        - name: Áttekintés
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/index.md
-        - name: Vezérlőelem-leképezés
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/control-mapping.md
-        - name: Az üzembe helyezés lépései
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/deploy.md
+    - name: NIST SP 800-53 R4
+      displayName: 'standards, nist, 800-53, rev 4'
+      href: ./samples/nist-sp-800-53-r4.md
+    - name: NIST SP 800-171 R2
+      displayName: 'standards, nist, 800-171, rev 2'
+      href: ./samples/nist-sp-800-171-r2.md
     - name: PCI-DSS 3.2.1
       items:
         - name: Áttekintés
@@ -268,8 +261,10 @@
   href: ./troubleshoot/general.md
 - name: Referencia
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
-      href: '/powershell/module/az.blueprint/#blueprint'
+      href: /powershell/module/az.blueprint/#blueprint
     - name: Azure SDK for .NET
       href: /dotnet/api/overview/azure/blueprints/management
     - name: REST
@@ -285,7 +280,7 @@
     - name: GitHub – Azure Blueprints-minták
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Microsoft Q&A – Azure Blueprints
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: A Governance YouTube-csatornája
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday – Az Azure Blueprints áttekintése

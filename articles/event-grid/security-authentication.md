@@ -1,92 +1,33 @@
 ---
-title: Biztonság és hitelesítés Azure Event Grid
-description: Ez a cikk a Event Grid-erőforrásokhoz való hozzáférés hitelesítésének különböző módszereit ismerteti (webhook, előfizetések, egyéni témakörök)
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+title: Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
+description: Ez a cikk bemutatja, hogyan hitelesíthető a kézbesítés az eseménykezelők számára a Azure Event Gridban.
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 07/07/2020
+ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119939"
 ---
-# <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid erőforrásokhoz való hozzáférés hitelesítése
-Ez a cikk a következő forgatókönyvekkel kapcsolatos információkat tartalmazza:  
+# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
+Ez a cikk tájékoztatást nyújt az események az eseménykezelők számára történő hitelesítéséről. Azt is bemutatja, hogyan védheti meg az Event Grid események fogadására használt webhook-végpontokat Azure Active Directory (Azure AD) vagy közös titok használatával.
 
-- Olyan ügyfelek hitelesítése, amelyek az eseményeket a közös hozzáférési aláírás (SAS) vagy a kulcs használatával Azure Event Grid témakörökre teszik közzé. 
-- Gondoskodjon arról, hogy az Azure Active Directory (Azure AD) vagy egy közös titok használatával Event Grid események fogadására használt webhook-végpontot.
+## <a name="use-system-assigned-identities-for-event-delivery"></a>Rendszerhez rendelt identitások használata az események kézbesítéséhez
+Engedélyezheti a rendszerhez rendelt felügyelt identitást egy témakörhöz vagy tartományhoz, és az identitás használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint például a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
 
-## <a name="authenticate-publishing-clients-using-sas-or-key"></a>A közzétételi ügyfelek hitelesítése SAS vagy kulcs használatával
-Az egyéni témakörök megosztott elérési aláírást (SAS) vagy kulcsos hitelesítést használnak. A SAS használatát javasoljuk, de a kulcsos hitelesítés egyszerű programozást tesz lehetővé, és számos meglévő webhook-közzétevővel kompatibilis.
+A lépések a következők: 
 
-Adja meg a hitelesítési értéket a HTTP-fejlécben. SAS esetében használja az **AEG-sas-tokent** a fejléc értékéhez. A kulcsos hitelesítéshez használja az **AEG-sas-Key** értéket a fejléc értékeként.
+1. Hozzon létre egy témakört vagy tartományt egy rendszer által hozzárendelt identitással, vagy frissítsen egy meglévő témakört vagy tartományt az identitás engedélyezéséhez. 
+1. Adja hozzá az identitást egy megfelelő szerepkörhöz (például Service Bus adatfeladóhoz) a célhelyen (például egy Service Bus üzenetsor).
+1. Esemény-előfizetések létrehozásakor engedélyezze az identitás használatát, hogy az eseményeket a célhelyre kézbesítse. 
 
-### <a name="key-authentication"></a>Kulcsos hitelesítés
+Részletes útmutatásért lásd: [esemény kézbesítése felügyelt identitással](managed-service-identity.md).
 
-A kulcsos hitelesítés a hitelesítés legegyszerűbb formája. Használja a következő formátumot: az `aeg-sas-key: <your key>` üzenet fejlécében.
-
-Egy kulcsot például a következővel adhat át:
-
-```
-aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-`aeg-sas-key`Lekérdezési paraméterként is megadható. 
-
-```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-### <a name="sas-tokens"></a>SAS-tokenek
-
-A Event Grid SAS-jogkivonatai közé tartozik az erőforrás, a lejárati idő és az aláírás. Az SAS-token formátuma: `r={resource}&e={expiration}&s={signature}` .
-
-Az erőforrás az Event Grid-témakör elérési útja, amelyhez eseményeket küld. Egy érvényes erőforrás elérési útja például a következő: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Az összes támogatott API-verzió megtekintéséhez lásd: [Microsoft. EventGrid erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
-
-Az aláírást egy kulcsból kell előállítani.
-
-Egy érvényes **AEG-sas-token** érték például a következő:
-
-```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
-```
-
-Az alábbi példa egy SAS-tokent hoz létre a Event Gridhoz való használatra:
-
-```cs
-static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
-{
-    const char Resource = 'r';
-    const char Expiration = 'e';
-    const char Signature = 's';
-
-    string encodedResource = HttpUtility.UrlEncode(resource);
-    var culture = CultureInfo.CreateSpecificCulture("en-US");
-    var encodedExpirationUtc = HttpUtility.UrlEncode(expirationUtc.ToString(culture));
-
-    string unsignedSas = $"{Resource}={encodedResource}&{Expiration}={encodedExpirationUtc}";
-    using (var hmac = new HMACSHA256(Convert.FromBase64String(key)))
-    {
-        string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(unsignedSas)));
-        string encodedSignature = HttpUtility.UrlEncode(signature);
-        string signedSas = $"{unsignedSas}&{Signature}={encodedSignature}";
-
-        return signedSas;
-    }
-}
-```
-
-### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
-
-A Event Grid szolgáltatás által a lemezre írt összes eseményt vagy adatfájlt egy Microsoft által felügyelt kulcs titkosítja, amely biztosítja, hogy az inaktív állapotban legyen titkosítva. Emellett az események vagy az adatmegőrzési időszak maximális időtartama 24 óra az [Event Grid újrapróbálkozási házirend](delivery-and-retry.md)betartásával. A Event Grid 24 óra elteltével automatikusan törli az összes eseményt vagy az adatmennyiséget, vagy az esemény élettartama, attól függően, hogy melyik a kisebb.
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Az események kézbesítésének hitelesítése webhook-végpontokra
 Az alábbi szakaszok azt ismertetik, hogyan hitelesíthető az események kézbesítése a webhook-végpontokra. A használt módszertől függetlenül egy érvényesítési kézfogási mechanizmust kell használnia. Részletekért lásd: [webhook-esemény kézbesítése](webhook-event-delivery.md) . 
+
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) használata
 Az Azure AD segítségével biztonságossá teheti a webhook-végpontot, amely a Event Grid eseményeinek fogadására szolgál. Létre kell hoznia egy Azure AD-alkalmazást, létre kell hoznia egy szerepkört és egy egyszerű szolgáltatásnevet az alkalmazásban Event Grid engedélyezéséhez, és az esemény-előfizetést az Azure AD-alkalmazás használatára kell beállítania. Megtudhatja, hogyan [konfigurálhatja a Azure Active Directoryt Event Grid](secure-webhook-delivery.md)használatával.
@@ -101,6 +42,6 @@ További információ az események webhookok általi kézbesítéséről: [webh
 > [!IMPORTANT]
 A Azure Event Grid csak a **https** webhook-végpontokat támogatja. 
 
-## <a name="next-steps"></a>További lépések
 
-- A Event Grid bevezetését lásd: [About Event Grid](overview.md)
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg a [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md) című témakört, amelyből megtudhatja, hogyan hitelesítheti az ügyfeleket a témakörök vagy tartományok számára 

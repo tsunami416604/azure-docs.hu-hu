@@ -17,18 +17,18 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241597"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709215"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása az Azure Portal használatával
 
 Ennek a rövid útmutatónak a követésével egy virtuális gépet fog üzembe helyezni, majd ellenőriz egy IP-címre és URL-címre irányuló és egy IP-címről érkező kommunikációt. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -44,8 +44,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
     |---|---|
     |Name (Név)|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
-    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki előfizetését.|
+    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, az összetettségre vonatkozó követelmények teljesülése mellett.|
+    |Előfizetés| Válassza ki az előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
     |Hely| Válassza ki az **USA keleti** régióját|
 
@@ -59,7 +59,7 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először e
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-Ha már van hálózati figyelő engedélyezve legalább egy régióban, akkor folytassa az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépéssel.
+Ha legalább egy régióban engedélyezve van egy hálózati figyelő, ugorjon az [IP-forgalom használatának ellenőrzése](#use-ip-flow-verify)elemre.
 
 1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
 2. Engedélyezze a hálózati figyelőt az USA keleti régiójában, mert az előző lépésben ebben a régióban helyezte üzembe a virtuális gépet. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
@@ -81,7 +81,7 @@ Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelel
     | Erőforráscsoport    | Válassza a myResourceGroup lehetőséget                                                                            |
     | Virtuális gép   | Válassza a myVm lehetőséget                                                                                       |
     | Hálózati illesztő | myvm – A portál által a virtuális gép létrehozásakor létrehozott hálózati adapter neve ettől eltérő. |
-    | Protocol (Protokoll)          | TCP                                                                                               |
+    | Protokoll          | TCP                                                                                               |
     | Irány         | Kimenő                                                                                          |
     | Helyi IP-cím  | 10.0.0.4                                                                                          |
     | Helyi port      | 60000                                                                                                |
@@ -98,23 +98,23 @@ Most, hogy tudja, hogy mely biztonsági szabályok engedélyezik vagy tagadják 
 
 ## <a name="view-details-of-a-security-rule"></a>Biztonsági szabály részleteinek megtekintése
 
-1. Annak meghatározásához, hogy az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 3–5. lépésében ismertetett szabályok miért engedélyezik vagy tiltják le a kommunikációt, tekintse át a virtuális gép hálózati adapterének hatályos biztonsági szabályait. A portál tetején a keresési mezőbe írja be a *myvm* kifejezést. Ha a **myvm** (vagy bármi is a neve a hálózati adapternek) hálózati adapter megjelenik a keresési eredmények között, válassza ki.
+1. Annak meghatározásához, hogy az **IP-folyamat ellenőrzésének használata** 3–5. lépésében ismertetett szabályok miért engedélyezik vagy tiltják le a kommunikációt, tekintse át a virtuális gép hálózati adapterének hatályos biztonsági szabályait. A portál tetején a keresési mezőbe írja be a *myvm* kifejezést. Ha a **myvm** (vagy bármi is a neve a hálózati adapternek) hálózati adapter megjelenik a keresési eredmények között, válassza ki.
 2. A **TÁMOGATÁS + HIBAELHÁRÍTÁS** területen válassza ki az **Érvényes biztonsági szabályok** lehetőséget az alábbi ábrán látható módon:
 
     ![Érvényes biztonsági szabályok](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
-    Az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 3. lépésében megtudta, hogy a kommunikáció engedélyezésének oka az **AllowInternetOutbound** szabály. Megtekintheti az előző képen, hogy a szabály **CÉL** értékeként az **Internet** van megadva. Nem egyértelmű azonban, hogy az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 3. lépésében tesztelt 13.107.21.200 cím hogyan viszonyul az **Internet** eredményhez.
+    Az **IP-folyamat ellenőrzésének használata** 3. lépésében megtudta, hogy a kommunikáció engedélyezésének oka az **AllowInternetOutbound** szabály. Megtekintheti az előző képen, hogy a szabály **CÉL** értékeként az **Internet** van megadva. Nem egyértelmű azonban, hogy az **IP-folyamat ellenőrzésének használata** 3. lépésében tesztelt 13.107.21.200 cím hogyan viszonyul az **Internet** eredményhez.
 3. Válassza ki az **AllowInternetOutBound** szabályt, majd a **Cél** értékét, az alábbi ábrán látható módon:
 
     ![Biztonsági szabályok előtagjai](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
     A listában lévő előtagok egyike a **12.0.0.0/6**, amely magában foglalja a 12.0.0.1–15.255.255.254 tartományba tartozó IP-címeket. Mivel a 13.107.21.200 ebbe a címtartományba esik, az **AllowInternetOutBound** szabály engedélyezi a kimenő forgalmat. Emellett nincsenek magasabb prioritású (alacsonyabb számú) szabályok megjelenítve a 2. lépésben szereplő ábrán, amelyek felülbírálnák ezt a szabályt. Zárja be a **Címelőtagok** mezőt. Ha szeretné letiltani a 13.107.21.200 címre kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely letiltja az IP-címre kimenő forgalmat a 80-as porton.
-4. Amikor az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 4. lépésében futtatta a 172.131.0.100 címre kimenő forgalom ellenőrzését, megtudta, hogy a **DefaultOutboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály egyenértékű a 2. lépésben megjelenített ábrán látható **DenyAllOutBound** szabállyal, amely a **0.0.0.0/0** értéket határozza meg a **CÉL** értékeként. A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nincs semmilyen más, az ábrán látható **Kimeneti szabály****CÉL** értékén belül. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
-5. Amikor az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) 5. lépésében futtatta a 172.131.0.100 címről bejövő forgalom ellenőrzését, megtudta, hogy a **DefaultInboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály megfelel a 2. lépésben az ábrán látható **DenyAllInBound** szabálynak. A **DenyAllInBound** szabály érvényesül, mert nincs magasabb prioritású szabály, amely lehetővé tenné a 172.31.0.100 címről a 80-as porton a virtuális gépre érkező bejövő forgalmat. Ha szeretné engedélyezni a bejövő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi a 172.31.0.100 címről bejövő forgalmat a 80-as porton.
+4. Amikor az **IP-folyamat ellenőrzésének használata** 4. lépésében futtatta a 172.131.0.100 címre kimenő forgalom ellenőrzését, megtudta, hogy a **DefaultOutboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály egyenértékű a 2. lépésben megjelenített ábrán látható **DenyAllOutBound** szabállyal, amely a **0.0.0.0/0** értéket határozza meg a **CÉL** értékeként. A szabály megtagadja a 172.131.0.100 címre kimenő kommunikációt, mert a cím nincs semmilyen más, az ábrán látható **Kimeneti szabály****CÉL** értékén belül. Ha szeretné engedélyezni a kimenő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi az 172.131.0.100 IP-címre kimenő forgalmat a 80-as porton.
+5. Amikor az **IP-folyamat ellenőrzésének használata** 5. lépésében futtatta a 172.131.0.100 címről bejövő forgalom ellenőrzését, megtudta, hogy a **DefaultInboundDenyAll** szabály letiltotta a kommunikációt. Ez a szabály megfelel a 2. lépésben az ábrán látható **DenyAllInBound** szabálynak. A **DenyAllInBound** szabály érvényesül, mert nincs magasabb prioritású szabály, amely lehetővé tenné a 172.31.0.100 címről a 80-as porton a virtuális gépre érkező bejövő forgalmat. Ha szeretné engedélyezni a bejövő kommunikációt, akkor felvehet egy magasabb prioritású biztonsági szabályt, amely engedélyezi a 172.31.0.100 címről bejövő forgalmat a 80-as porton.
 
 Az ebben a rövid útmutatóban található ellenőrzések az Azure-konfigurációt tesztelték. Ha az ellenőrzések a várt eredményt adták vissza, és továbbra is hálózati problémákat tapasztal, ellenőrizze, hogy nincs-e tűzfal a virtuális gép és a között a végpont között, amelyikkel kommunikál, és hogy a virtuális gép operációs rendszerének tűzfala nem engedélyezi-e vagy tagadja meg a kommunikációt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 

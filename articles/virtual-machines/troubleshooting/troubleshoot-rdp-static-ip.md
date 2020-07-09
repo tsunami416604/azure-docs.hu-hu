@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77918189"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087248"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Statikus IP-cím miatt nem lehet távoli asztali Azure-Virtual Machines
 
@@ -56,18 +56,27 @@ A probléma megoldásához a soros vezérlőelem használatával engedélyezze a
 ). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md)című témakört.
 2. Ellenőrizze, hogy a DHCP le van-e tiltva a hálózati adapteren:
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. Ha a DHCP le van tiltva, állítsa be a hálózati adapter konfigurációját a DHCP használatára:
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhc
+    ```
 
     Ha például az "Ethernet 2" nevű kapcsolati felület neve, futtassa a következő parancsot:
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhc
+    ```
 
 4. Az IP-konfiguráció ismételt lekérdezésével győződjön meg arról, hogy a hálózati adapter helyesen van beállítva. Az új IP-címnek egyeznie kell az Azure által biztosítotttal.
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     Ezen a ponton nem kell újraindítani a virtuális gépet. A virtuális gép elérhető lesz.
 

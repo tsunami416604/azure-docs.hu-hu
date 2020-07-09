@@ -17,10 +17,10 @@ ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 553abc0a221950d81f3ee8591875507d0b6a2f0c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020761"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver multi-SID konfiguráció létrehozása
@@ -667,7 +667,7 @@ A magas szintű eljárás a következő:
 
 10. [Tesztelje az SAP ASCS/SCS instance feladatátvételi és SIOS replikációját][sap-ha-guide-10].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több VIP Azure Load Balancer][load-balancer-multivip-overview]

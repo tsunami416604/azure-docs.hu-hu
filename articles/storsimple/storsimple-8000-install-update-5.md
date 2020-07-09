@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbac6eade634ffcfdc47ae3d22b32e0bd429b7c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513174"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Telepítse az 5. frissítést a StorSimple-eszközön
 
@@ -76,28 +76,28 @@ A gyorsjavítási módszer a következő három lépést foglalja magában:
 
 A következő gyorsjavításokat le kell töltenie és telepítenie kell az előírt sorrendben és a javasolt mappákban:
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Rendelés | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le a _HcsSoftwareUpdate. exe_ és a _CisMSDAgent. exe fájlt_ is |Hagyományos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
+| 1. |KB4037264 |Szoftverfrissítés<br> _HcsSoftwareUpdate.exe_ és _CisMSDAgent.exe_ letöltése |Hagyományos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 
 Ha a 4. frissítést futtató eszközről frissít, csak az operációs rendszer összegző frissítéseit kell második sorrendi frissítésként telepíteni.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Rendelés | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 2a. |KB4025336 |Operációs rendszer összegző frissítései csomag <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
 Ha a telepítést a 3-as vagy korábbi frissítést futtató eszközről végzi, a kumulatív frissítések mellett telepítse a következőt is.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Rendelés | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 2b. |KB4011841 <br> KB4011842 |LSI-illesztőprogram és belső vezérlőprogram frissítései <br> USM belső vezérlőprogram frissítése (3,38-es verzió) |Hagyományos <br></br>Nem zavaró |~ 3 óra <br> (tartalmazza a következőt: 2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Operációs rendszer biztonsági frissítései csomag <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 | 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Operációs rendszer frissítési csomagja <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
 
-Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A `Get-HcsFirmwareVersion` parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire. Ha a következő belső vezérlőprogram-verziókat `XMGJ`futtatja `KZ50`: `F6C2` `VR08` `N003` `0107` `XGEG`,,,,,, akkor nem kell telepítenie ezeket a frissítéseket.
+Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire `Get-HcsFirmwareVersion` . Ha a következő belső vezérlőprogram-verziókat futtatja:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N003` `0107` akkor nem kell telepítenie ezeket a frissítéseket.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
+| Rendelés | KB | Description | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 

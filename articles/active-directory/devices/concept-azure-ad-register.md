@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67462758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554878"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-ben regisztrált eszközök
 
 Az Azure AD-ban regisztrált eszközök célja, hogy a felhasználók számára támogatást nyújtson a saját eszközök használata (BYOD) vagy a mobileszköz-forgatókönyvek számára. Ezekben a forgatókönyvekben a felhasználók személyes eszköz használatával férhetnek hozzá a szervezet Azure Active Directory felügyelt erőforrásaihoz.
 
-|   | Azure AD-regisztráció |
+| Azure AD-regisztráció | Description |
 | --- | --- |
-| **Meghatározás** | Regisztrálva van az Azure AD-be anélkül, hogy szervezeti fiókot kellene bejelentkeznie az eszközre |
+| **Definíció** | Regisztrálva van az Azure AD-be anélkül, hogy szervezeti fiókot kellene bejelentkeznie az eszközre |
 | **Elsődleges célközönség** | Az összes felhasználóra érvényes a következő feltételekkel: |
 |   | Saját eszközök használata (BYOD) |
 |   | Mobileszközök |

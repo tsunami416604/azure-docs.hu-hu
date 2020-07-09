@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196545"
 ---
 # <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
@@ -49,6 +49,6 @@ Javasoljuk, hogy a tesztet többször is futtassa, és a legrosszabb eredmények
 Habár az alacsony késés nem garantálható, hogy az Azure távoli renderelés jól működik a hálózaton, általában úgy láttuk, hogy olyan helyzetekben, amikor a tesztek sikeresen sikeresek voltak.
 Ha olyan összetevőket észlel, mint például az instabil, a vibrálás vagy az Ugrás Hologramok az Azure távoli renderelés futtatásakor, tekintse meg a [hibaelhárítási útmutatót](../resources/troubleshoot.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

@@ -3,12 +3,12 @@ title: Azure-erőforrások – QnA Maker
 description: QnA Maker számos Azure-forrást használ, amelyek mindegyike más célra szolgál. A használatuk módjának megismerése lehetővé teszi, hogy megtervezze és kiválassza a megfelelő árképzési szintet, vagy tudja, mikor kell módosítania az árképzési szintet. Annak megismerése, hogy a rendszer hogyan használja a kombinációkat, így megkeresheti és elháríthatja a problémákat, amikor azok bekövetkeznek.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80873905"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236088"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -72,7 +72,7 @@ Szerezze be a legújabb futtatókörnyezeti frissítéseket a [app Service friss
 
 ## <a name="resource-naming-considerations"></a>Erőforrás-elnevezési megfontolások
 
-A QnA Maker erőforrás `qna-westus-f0-b`neve (például) a többi erőforrás elnevezésére is használatos.
+A QnA Maker erőforrás neve (például `qna-westus-f0-b` ) a többi erőforrás elnevezésére is használatos.
 
 A Azure Portal létrehozási ablakban létrehozhat egy QnA Maker-erőforrást, és kiválaszthatja a többi erőforrás díjszabási szintjeit.
 
@@ -150,7 +150,7 @@ QnA Maker több Azure-erőforrást hoz létre. A felügyelet és a költségmego
 |App Service-csomag|✔|App Service csomag számára lefoglalt rögzített lemezterület. Ha az azonos App Service-csomaggal rendelkező más alkalmazások jelentős lemezterületet használnak, akkor a QnAMaker App Service példánya problémákba ütközik.|
 |App Service|X|Nem lehetséges a kialakítás|
 |Application Insights|✔|Megosztható|
-|Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás számára fenntartott név; mások nem használhatják.<br>2. az QnAMaker szolgáltatás számára fenntartott szinonimák hozzárendelése a név `synonym-map` alapján történik.<br>3. a közzétett tudásbázisok számát a Search szolgáltatási szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
+|Keresési szolgáltatás|✔|1. a `testkb` QnAMaker szolgáltatás számára fenntartott név, amelyet mások nem használhatnak.<br>2. az `synonym-map` QnAMaker szolgáltatás számára fenntartott szinonimák hozzárendelése a név alapján történik.<br>3. a közzétett tudásbázisok számát a Search szolgáltatási szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
 
 ### <a name="using-a-single-cognitive-search-service"></a>Egyetlen Cognitive Search szolgáltatás használata
 
@@ -182,6 +182,14 @@ Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgálta
 A létrehozási és a lekérdezési végpont kulcsa a helyes feltételek. Az előző kifejezés az **előfizetés kulcsa**. Ha az előfizetési kulcsokra hivatkozó egyéb dokumentáció jelenik meg, ezek egyenértékűek a létrehozási és lekérdezési végponti kulcsokkal (a futtatókörnyezetben használt).
 
 Ismernie kell a kulcs elérését, a Tudásbázis felügyeletét vagy a Tudásbázis lekérdezését, hogy megtudja, melyik kulcsot kell megkeresnie.
+
+## <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
+
+* [A virtuális hálózat konfigurálásával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)biztosíthatja a kognitív szolgáltatásokhoz tartozó erőforrásoknak a nyilvános hozzáférés elleni védettségét.
+* App Service (QnA Runtime) védetté tételének biztosítása a nyilvános hozzáférésből:
+    * Csak a kognitív szolgáltatás IP-címeiről érkező forgalom engedélyezése. Ezek már szerepelnek a (z) "CognitiveServicesManagement" szolgáltatási címkében. Ez szükséges az API-k létrehozásához (létrehozás/frissítés KB) az App Service meghívásához és ennek megfelelően a Azure Search szolgáltatás frissítéséhez.
+    * Győződjön meg arról, hogy más belépési pontokat is engedélyez, például a bot Service-t, QnA Maker portált (lehet a Corpnet), stb. a "GenerateAnswer" API-hozzáférés előrejelzéséhez.
+    * [További információ a szolgáltatási címkékről.](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>További lépések
 

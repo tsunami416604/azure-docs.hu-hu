@@ -11,18 +11,17 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558762"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Egyoldalas alkalmazás: bejelentkezés és kijelentkezés
 
 Megtudhatja, hogyan adhat hozzá bejelentkezést az egyoldalas alkalmazás kódjához.
 
-Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített felhasználói környezetre van szükség. A felhasználókat a MSAL. js fájlban kétféleképpen lehet bejelentkezni:
+Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített felhasználói környezetre van szükség. A felhasználókat kétféleképpen lehet bejelentkezni az alkalmazásba MSAL.js módon:
 
 * [Előugró ablak](#sign-in-with-a-pop-up-window)a `loginPopup` metódus használatával
 * [Átirányítás](#sign-in-with-redirect)a `loginRedirect` metódus használatával
@@ -30,7 +29,7 @@ Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített fel
 Igény szerint átadhatja azon API-k hatóköreit, amelyekhez a felhasználónak a bejelentkezéskor hozzá kell járulnia.
 
 > [!NOTE]
-> Ha az alkalmazásnak már van hozzáférése egy hitelesített felhasználói környezethez vagy azonosító jogkivonathoz, kihagyhatja a bejelentkezési lépést, és közvetlenül is beszerezheti a jogkivonatokat. Részletekért lásd: [SSO MSAL. js bejelentkezés nélkül](msal-js-sso.md#sso-without-msaljs-login).
+> Ha az alkalmazásnak már van hozzáférése egy hitelesített felhasználói környezethez vagy azonosító jogkivonathoz, kihagyhatja a bejelentkezési lépést, és közvetlenül is beszerezheti a jogkivonatokat. Részletekért lásd: [egyszeri bejelentkezés MSAL.js bejelentkezés nélkül](msal-js-sso.md#sso-without-msaljs-login).
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Egy előugró vagy átirányítási élmény közötti választás
 
@@ -45,22 +44,34 @@ Az alkalmazásban nem használhatók az előugró és az átirányítási módsz
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
 }
 
-userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
-    //login success
-    let idToken = loginResponse.idToken;
-}).catch(function (error) {
-    //login failure
-    console.log(error);
-});
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
+myMsal.loginPopup(loginRequest)
+    .then(function (loginResponse) {
+        //login success
+        let idToken = loginResponse.idToken;
+    }).catch(function (error) {
+        //login failure
+        console.log(error);
+    });
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-A MSAL szögletes burkolója lehetővé teszi, hogy az alkalmazásban meghatározott útvonalakat biztosítson az útvonal-definícióhoz való hozzáadással `MsalGuard` . Ez az őr meghívja a metódust, hogy bejelentkezzen az útvonal elérésekor.
+A MSAL szögletes burkolója lehetővé teszi, hogy az alkalmazásban meghatározott útvonalakat biztosítson `MsalGuard` az útvonal-definícióhoz való hozzáadással. Ez az őr meghívja a metódust, hogy bejelentkezzen az útvonal elérésekor.
 
 ```javascript
 // In app-routing.module.ts
@@ -103,7 +114,7 @@ Az előugró ablak felhasználói felületén engedélyezze a `popUp` konfigurá
             }
         }, {
             popUp: true,
-            consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
+            consentScopes: ["User.ReadWrite"]
         })
     ]
 })
@@ -117,17 +128,28 @@ Az előugró ablak felhasználói felületén engedélyezze a `popUp` konfigurá
 Az átirányítási módszerek nem adnak vissza ígéretet a fő alkalmazásból való elmozdulás miatt. A visszaadott tokenek feldolgozásához és eléréséhez regisztrálnia kell a sikeres és a sikertelen visszahívásokat az átirányítási módszerek meghívása előtt.
 
 ```javascript
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
+
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
 function authCallback(error, response) {
     //handle redirect response
 }
 
-userAgentApplication.handleRedirectCallback(authCallback);
+myMsal.handleRedirectCallback(authCallback);
 
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
-}
-
-userAgentApplication.loginRedirect(loginRequest);
+myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -143,7 +165,7 @@ A kód itt ugyanaz, mint az előugró ablakba való bejelentkezéssel kapcsolato
 
 A MSAL könyvtár olyan `logout` metódust biztosít, amely törli a gyorsítótárat a böngészőbeli tárolóban, és kijelentkezési kérést küld Azure Active Directory (Azure ad) számára. A kijelentkezés után a könyvtár alapértelmezés szerint átirányítja az alkalmazás kezdőlapját.
 
-Beállíthatja azt az URI-t, amelyre a kijelentkezést követően át kell `postLogoutRedirectUri`irányítani a beállítást. Ezt az URI-t a kijelentkezési URI-ként is regisztrálni kell az alkalmazás regisztrálásakor.
+Beállíthatja azt az URI-t, amelyre a kijelentkezést követően át kell irányítani a beállítást `postLogoutRedirectUri` . Ezt az URI-t a kijelentkezési URI-ként is regisztrálni kell az alkalmazás regisztrálásakor.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -156,9 +178,9 @@ const config = {
     }
 }
 
-const userAgentApplication = new UserAgentApplication(config);
-userAgentApplication.logout();
+const myMsal = new UserAgentApplication(config);
 
+myMsal.logout();
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)

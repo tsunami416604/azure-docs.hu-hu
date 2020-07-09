@@ -14,11 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690031"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Az Azure API Management sablon adatmodell-referenciája
 Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmodelljeiben használt általános elemekhez tartozó entitásokat és típusokat ismerteti.  
@@ -29,7 +28,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Hivatkozás
 
 -   [API](#API)  
 -   [API összefoglaló](#APISummary)  
@@ -47,7 +46,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 -   [Művelet menüpont](#MenuItem)  
 -   [Lapozás](#Paging)  
 -   [Paraméter](#Parameter)  
--   [Termék](#Product)  
+-   [Product](#Product)  
 -   [Szolgáltató](#Provider)  
 -   [Képviselet](#Representation)  
 -   [Előfizetés](#Subscription)  
@@ -59,30 +58,30 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="api"></a><a name="API"></a>API  
  Az `API` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az API-t az aktuális API Management Service-példányon belül. Az érték egy érvényes relatív URL-cím, `apis/{id}` ahol `{id}` az egy API-azonosító. Ez a tulajdonság csak olvasható.|  
+|`id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az API-t az aktuális API Management Service-példányon belül. Az érték egy érvényes relatív URL-cím, ahol az `apis/{id}` egy `{id}` API-azonosító. Ez a tulajdonság csak olvasható.|  
 |`name`|sztring|Az API neve. Nem lehet üres. A maximális hossz 100 karakter.|  
 |`description`|sztring|Az API leírása. Nem lehet üres. Tartalmazhat HTML-formázási címkéket. A maximális hossz 1000 karakter.|  
 |`serviceUrl`|sztring|Az API-t megvalósító háttér-szolgáltatás abszolút URL-címe.|  
 |`path`|sztring|A relatív URL-cím egyedi módon azonosítja ezt az API-t és annak összes erőforrás-elérési útját az API Management Service-példányon belül. A rendszer hozzáfűzi a szolgáltatás példányának létrehozása során megadott API-végponti alap URL-címhez, hogy az API számára egy nyilvános URL-címet formáljon.|  
-|`protocols`|szám tömbje|Leírja, hogy mely protokollok hívhatók meg az API műveleteiben. Az `1 - http` engedélyezett értékek: `2 - https`és, vagy mindkettő.|  
+|`protocols`|szám tömbje|Leírja, hogy mely protokollok hívhatók meg az API műveleteiben. Az engedélyezett értékek: `1 - http` és `2 - https` , vagy mindkettő.|  
 |`authenticationSettings`|[Engedélyezési kiszolgáló hitelesítési beállításai](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Az API-ban található hitelesítési beállítások gyűjteménye.|  
 |`subscriptionKeyParameterNames`|objektum|Nem kötelező tulajdonság, amely az előfizetési kulcsot tartalmazó lekérdezési és/vagy fejléc-paraméterek egyéni nevének megadására használható. Ha ez a tulajdonság jelen van, a következő két tulajdonság közül legalább egyet tartalmaznia kell:<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>API-összefoglalás  
  Az `API summary` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az API-t az aktuális API Management Service-példányon belül. Az érték egy érvényes relatív URL-cím, `apis/{id}` ahol `{id}` az egy API-azonosító. Ez a tulajdonság csak olvasható.|  
+|`id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az API-t az aktuális API Management Service-példányon belül. Az érték egy érvényes relatív URL-cím, ahol az `apis/{id}` egy `{id}` API-azonosító. Ez a tulajdonság csak olvasható.|  
 |`name`|sztring|Az API neve. Nem lehet üres. A maximális hossz 100 karakter.|  
 |`description`|sztring|Az API leírása. Nem lehet üres. Tartalmazhat HTML-formázási címkéket. A maximális hossz 1000 karakter.|  
   
 ##  <a name="application"></a><a name="Application"></a>Alkalmazás  
  Az `application` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Id`|sztring|Az alkalmazás egyedi azonosítója.|  
 |`Title`|sztring|Az alkalmazás címe.|  
@@ -100,7 +99,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="attachment"></a><a name="Attachment"></a>Mellékletet  
  Az `attachment` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`UniqueId`|sztring|A melléklet egyedi azonosítója.|  
 |`Url`|sztring|Az erőforrás URL-címe.|  
@@ -109,11 +108,11 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
   
 ##  <a name="code-sample"></a><a name="Sample"></a>Mintakód  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`title`|sztring|A művelet neve.|  
 |`snippet`|sztring|Ez a tulajdonság elavult, és nem használható.|  
-|`brush`|sztring|A kód mintájának megjelenítésekor használandó kód szintaxisa. Az engedélyezett értékek `plain` `php` `java` `xml` `objc`:,,,,,, és `csharp` `python` `ruby`|  
+|`brush`|sztring|A kód mintájának megjelenítésekor használandó kód szintaxisa. Az engedélyezett értékek:,,,,,, `plain` `php` `java` `xml` `objc` `python` `ruby` és `csharp` .|  
 |`template`|sztring|A kód sablonjának neve.|  
 |`body`|sztring|A kódrészlet kód minta részének helyőrzője.|  
 |`method`|sztring|A művelet HTTP-metódusa.|  
@@ -127,7 +126,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="comment"></a><a name="Comment"></a>Megjegyzés  
  Az `API` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Id`|szám|A Megjegyzés azonosítója.|  
 |`CommentText`|sztring|A Megjegyzés törzse. Tartalmazhat HTML-kódot.|  
@@ -137,7 +136,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="issue"></a><a name="Issue"></a>Kérdés  
  Az `issue` entitás a következő tulajdonságokkal rendelkezik.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Id`|sztring|A probléma egyedi azonosítója.|  
 |`ApiID`|sztring|Annak az API-azonosítónak a azonosítója, amelyre a problémát jelentették.|  
@@ -153,15 +152,15 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="filtering"></a><a name="Filtering"></a>Szűrés  
  Az `filtering` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`Pattern`|sztring|Az aktuális keresési kifejezés; vagy `null` ha nincs keresési kifejezés.|  
+|`Pattern`|sztring|Az aktuális keresési kifejezés; vagy `null` Ha nincs keresési kifejezés.|  
 |`Placeholder`|sztring|A keresési mezőben megjelenítendő szöveg, ha nincs megadva keresési kifejezés.|  
   
 ##  <a name="header"></a><a name="Header"></a>Fejléc  
  Ez a szakasz a `parameter` megjelenítést ismerteti.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|-----------------|----------|  
 |`name`|sztring|A paraméter neve.|  
 |`description`|sztring|Paraméter leírása|  
@@ -174,7 +173,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="http-request"></a><a name="HTTPRequest"></a>HTTP-kérelem  
  Ez a szakasz a `request` megjelenítést ismerteti.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`description`|sztring|Művelet kérésének leírása.|  
 |`headers`|[fejléc](#Header) entitások tömbje|Kérések fejlécei|  
@@ -184,7 +183,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP-válasz  
  Ez a szakasz a `response` megjelenítést ismerteti.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`statusCode`|pozitív egész szám|Művelet válaszának állapota kód.|  
 |`description`|sztring|Művelet válaszának leírása.|  
@@ -193,12 +192,12 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="operation"></a><a name="Operation"></a>Művelet  
  Az `operation` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`id`|sztring|Erőforrás-azonosító. Egyedi módon azonosítja a műveletet az aktuális API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, `apis/{aid}/operations/{id}` ahol `{aid}` az egy API-azonosító, és `{id}` egy műveleti azonosító. Ez a tulajdonság csak olvasható.|  
+|`id`|sztring|Erőforrás-azonosító. Egyedi módon azonosítja a műveletet az aktuális API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, ahol az `apis/{aid}/operations/{id}` egy `{aid}` API-azonosító, és `{id}` egy műveleti azonosító. Ez a tulajdonság csak olvasható.|  
 |`name`|sztring|A művelet neve. Nem lehet üres. A maximális hossz 100 karakter.|  
 |`description`|sztring|A művelet leírása. Nem lehet üres. Tartalmazhat HTML-formázási címkéket. A maximális hossz 1000 karakter.|  
-|`scheme`|sztring|Leírja, hogy mely protokollok hívhatók meg az API műveleteiben. Az engedélyezett értékek `http`a `https`következők:, `http` , `https`vagy mindkettő és.|  
+|`scheme`|sztring|Leírja, hogy mely protokollok hívhatók meg az API műveleteiben. Az engedélyezett értékek a következők:, `http` `https` , vagy mindkettő `http` és `https` .|  
 |`uriTemplate`|sztring|A művelethez tartozó cél erőforrást azonosító relatív URL-sablon. Tartalmazhat paramétereket. Például: `customers/{cid}/orders/{oid}/?date={date}`|  
 |`host`|sztring|Az API-t üzemeltető API Management átjáró URL-címe.|  
 |`httpMethod`|sztring|Művelet HTTP-metódusa.|  
@@ -208,7 +207,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="operation-menu"></a><a name="Menu"></a>Művelet menü  
  Az `operation menu` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`ApiId`|sztring|Az aktuális API azonosítója.|  
 |`CurrentOperationId`|sztring|Az aktuális művelet azonosítója.|  
@@ -218,7 +217,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="operation-menu-item"></a><a name="MenuItem"></a>Művelet menüpont  
  Az `operation menu item` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Id`|sztring|A művelet azonosítója.|  
 |`Title`|sztring|A művelet leírása.|  
@@ -227,7 +226,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="paging"></a><a name="Paging"></a>Lapozófájl  
  Az `paging` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Page`|szám|Az aktuális oldalszám.|  
 |`PageSize`|szám|Az egyetlen oldalon megjelenítendő eredmények maximális száma.|  
@@ -238,7 +237,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="parameter"></a><a name="Parameter"></a>Paraméter  
  Ez a szakasz a `parameter` megjelenítést ismerteti.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|-----------------|----------|  
 |`name`|sztring|A paraméter neve.|  
 |`description`|sztring|Paraméter leírása|  
@@ -251,9 +250,9 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="product"></a><a name="Product"></a>Termék  
  Az `product` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`Id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja a terméket a jelenlegi API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, `products/{pid}` ahol `{pid}` a a termék azonosítója. Ez a tulajdonság csak olvasható.|  
+|`Id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja a terméket a jelenlegi API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, ahol a `products/{pid}` a `{pid}` termék azonosítója. Ez a tulajdonság csak olvasható.|  
 |`Title`|sztring|A termék neve. Nem lehet üres. A maximális hossz 100 karakter.|  
 |`Description`|sztring|A termék leírása. Nem lehet üres. Tartalmazhat HTML-formázási címkéket. A maximális hossz 1000 karakter.|  
 |`Terms`|sztring|A termék használati feltételei. A termékre előfizetett előfizetéseket a fejlesztőknek be kell mutatniuk, és el kell fogadniuk ezeket a feltételeket ahhoz, hogy el tudja végezni az előfizetés folyamatát.|  
@@ -264,38 +263,38 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="provider"></a><a name="Provider"></a>Szolgáltató  
  Az `provider` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Properties`|karakterlánc-szótár|A hitelesítési szolgáltató tulajdonságai.|  
 |`AuthenticationType`|sztring|A szolgáltató típusa (Azure Active Directory, Facebook-Bejelentkezés, Google-fiók, Microsoft-fiók, Twitter).|  
 |`Caption`|sztring|A szolgáltató megjelenített neve.|  
   
 ##  <a name="representation"></a><a name="Representation"></a>Képviselet  
- Ez a szakasz a `representation`következőt ismerteti:.  
+ Ez a szakasz a következőt ismerteti: `representation` .  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`contentType`|sztring|Itt adható meg a jelen ábrázoláshoz tartozó regisztrált vagy egyéni tartalomtípus, például `application/xml`:.|  
+|`contentType`|sztring|Itt adható meg a jelen ábrázoláshoz tartozó regisztrált vagy egyéni tartalomtípus, például: `application/xml` .|  
 |`sample`|sztring|Példa a képviseletre.|  
   
 ##  <a name="subscription"></a><a name="Subscription"></a>Előfizetés  
  Az `subscription` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`Id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az előfizetést a jelenlegi API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, `subscriptions/{sid}` amelynek `{sid}` a formátuma az előfizetés azonosítója. Ez a tulajdonság csak olvasható.|  
-|`ProductId`|sztring|Az előfizetett termék termék-erőforrás-azonosítója. Az érték egy érvényes relatív URL-cím, `products/{pid}` ahol `{pid}` a a termék azonosítója.|  
+|`Id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az előfizetést a jelenlegi API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, amelynek a formátuma az `subscriptions/{sid}` `{sid}` előfizetés azonosítója. Ez a tulajdonság csak olvasható.|  
+|`ProductId`|sztring|Az előfizetett termék termék-erőforrás-azonosítója. Az érték egy érvényes relatív URL-cím, ahol a `products/{pid}` a `{pid}` termék azonosítója.|  
 |`ProductTitle`|sztring|A termék neve. Nem lehet üres. A maximális hossz 100 karakter.|  
 |`ProductDescription`|sztring|A termék leírása. Nem lehet üres. Tartalmazhat HTML-formázási címkéket. A maximális hossz 1000 karakter.|  
 |`ProductDetailsUrl`|sztring|A termék részleteinek relatív URL-címe.|  
 |`state`|sztring|Az előfizetés állapota. A lehetséges állapotok a következők:<br /><br /> - `0 - suspended`– az előfizetés le van tiltva, és az előfizető nem hívhat meg semmilyen API-t a termékről.<br /><br /> - `1 - active`– az előfizetés aktív.<br /><br /> - `2 - expired`– az előfizetés elérte a lejárati dátumot, és inaktiválva lett.<br /><br /> - `3 - submitted`– az előfizetési kérést a fejlesztő hozta létre, de még nem hagyta jóvá vagy nem utasította el.<br /><br /> - `4 - rejected`– az előfizetési kérelmet a rendszergazda megtagadta.<br /><br /> - `5 - cancelled`– a fejlesztő vagy a rendszergazda megszakította az előfizetést.|  
 |`DisplayName`|sztring|Az előfizetés megjelenített neve.|  
-|`CreatedDate`|dateTime|Az előfizetés létrehozásának dátuma, ISO 8601 formátumban: `2014-06-24T16:25:00Z`.|  
+|`CreatedDate`|dateTime|Az előfizetés létrehozásának dátuma, ISO 8601 formátumban: `2014-06-24T16:25:00Z` .|  
 |`CanBeCancelled`|logikai|Azt határozza meg, hogy az előfizetést az aktuális felhasználó megszakíthatja-e.|  
 |`IsAwaitingApproval`|logikai|Az előfizetés jóváhagyásra vár-e.|  
-|`StartDate`|dateTime|Az előfizetés kezdő dátuma ISO 8601 formátumban: `2014-06-24T16:25:00Z`.|  
-|`ExpirationDate`|dateTime|Az előfizetés lejárati dátuma ISO 8601 formátumban: `2014-06-24T16:25:00Z`.|  
-|`NotificationDate`|dateTime|Az előfizetés értesítési dátuma ISO 8601 formátumban: `2014-06-24T16:25:00Z`.|  
+|`StartDate`|dateTime|Az előfizetés kezdő dátuma ISO 8601 formátumban: `2014-06-24T16:25:00Z` .|  
+|`ExpirationDate`|dateTime|Az előfizetés lejárati dátuma ISO 8601 formátumban: `2014-06-24T16:25:00Z` .|  
+|`NotificationDate`|dateTime|Az előfizetés értesítési dátuma ISO 8601 formátumban: `2014-06-24T16:25:00Z` .|  
 |`primaryKey`|sztring|Az elsődleges előfizetési kulcs. A maximális hossz 256 karakter.|  
 |`secondaryKey`|sztring|A másodlagos előfizetési kulcs. A maximális hossz 256 karakter.|  
 |`CanBeRenewed`|logikai|Azt határozza meg, hogy az aktuális felhasználó megújíthatja-e az előfizetést.|  
@@ -307,15 +306,15 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>Előfizetés összefoglalása  
  Az `subscription summary` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
-|`Id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az előfizetést a jelenlegi API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, `subscriptions/{sid}` amelynek `{sid}` a formátuma az előfizetés azonosítója. Ez a tulajdonság csak olvasható.|  
+|`Id`|sztring|Erőforrás-azonosító. Egyedileg azonosítja az előfizetést a jelenlegi API Management szolgáltatási példányon belül. Az érték egy érvényes relatív URL-cím, amelynek a formátuma az `subscriptions/{sid}` `{sid}` előfizetés azonosítója. Ez a tulajdonság csak olvasható.|  
 |`DisplayName`|sztring|Az előfizetés megjelenített neve|  
   
 ##  <a name="user-account-info"></a><a name="UserAccountInfo"></a>Felhasználói fiók adatai  
  Az `user account info` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`FirstName`|sztring|Keresztnév. Nem lehet üres. A maximális hossz 100 karakter.|  
 |`LastName`|sztring|Vezetéknév. Nem lehet üres. A maximális hossz 100 karakter.|  
@@ -328,7 +327,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="user-sign-in"></a><a name="UseSignIn"></a>Felhasználói bejelentkezés  
  Az `user sign in` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Email`|sztring|E-mail-cím. Nem lehet üres, és a szolgáltatási példányon belül egyedinek kell lennie. A maximális hossz 254 karakter.|  
 |`Password`|sztring|Felhasználói fiók jelszava.|  
@@ -346,7 +345,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Felhasználó regisztrálása  
  Az `user sign up` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|logikai|A [regisztrálási](api-management-page-controls.md#sign-up)bejelentkezési vezérlő által használt érték.|  
 |`Password`|sztring|Felhasználói fiók jelszava.|  

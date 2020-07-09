@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844505"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057670"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering-fiók létrehozása
 
@@ -28,20 +27,24 @@ A következő lépések szükségesek ahhoz, hogy fiókot hozzon létre az Azure
     1. Az "erőforrás neve" beállítása a fiók nevére
     1. Előfizetés frissítése, ha szükséges
     1. Az "erőforráscsoport" beállítása tetszőleges erőforráscsoporthoz
+    1. Válasszon ki egy régiót a "location" legördülő listából, ahol ezt az erőforrást létre kell hozni a alkalmazásban. Lásd: Megjegyzések az alábbi [fiók-régiókban](create-an-account.md#account-regions) .
 1. A fiók létrehozása után navigáljon hozzá, és:
     1. Az *Áttekintés* lapon jegyezze fel a fiók azonosítóját.
     1. A *beállítások > hozzáférési kulcsok* lapon jegyezze fel az "elsődleges kulcsot" – Ez a fiók titkos fiókjának kulcsa.
 
+### <a name="account-regions"></a>Fiók régiói
+A fiók létrehozásakor megadott hely határozza meg, hogy a fiók erőforrása melyik régióhoz van rendelve. Ez a létrehozás után nem módosítható. A fiókkal azonban bármely [támogatott régióban](./../reference/regions.md)távoli renderelési munkamenethez kapcsolódhat, függetlenül a fiók helyétől.
+
 ### <a name="retrieve-the-account-information"></a>Fiókadatok beolvasása
 
-A mintáknak és az oktatóanyagoknak meg kell adniuk a fiók AZONOSÍTÓját és kulcsát. A PowerShell-minta parancsfájljaihoz használt **arrconfig. JSON** fájlban például:
+A mintáknak és az oktatóanyagoknak meg kell adniuk a fiók AZONOSÍTÓját és kulcsát. A PowerShell-minta parancsfájljaihoz használt fájlban lévő **arrconfig.js** például:
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 A *régió* lehetőség kitöltéséhez tekintse meg az [elérhető régiók listáját](../reference/regions.md) .
@@ -89,6 +92,7 @@ Most feltételezzük, hogy van egy Storage-fiókja. Keresse meg a Storage-fióko
 > Ha a távoli megjelenítési fiók nem szerepel a listáján, tekintse meg ezt a [hibakeresési szakaszt](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Ismételje meg az új szerepkörök hozzáadását még egyszer a **szerepkör** legördülő menüjéből származó megfelelő beállításokhoz:
+
 * **Tárfiók-közreműködő**
 * **Storage blob adatközreműködői**
 

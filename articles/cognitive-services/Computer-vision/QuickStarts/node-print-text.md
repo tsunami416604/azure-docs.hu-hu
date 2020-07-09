@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: nyomtatott szöveg kinyerése – REST, Node. js'
+title: 'Gyors útmutató: nyomtatott szöveg kinyerése – REST, Node.js'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API és a Node.js használatával.
 services: cognitive-services
@@ -11,27 +11,29 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0e1538aa7f0790eb10708b57bd1a744e5ea77f59
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9c245ed91d710ae4bb77e45d8b9c3cceaedc252a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685105"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986740"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a Node. js használatával
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és Node.js használatával
 
 > [!NOTE]
 > Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)használni.
 
 Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségével Kinyeri a nyomtatott szöveget az Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) módszer használatával felderítheti a képeken található nyomtatott szöveget, és kinyerheti a felismert karaktereket egy gépi használatú adatfolyamba.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Node.js](https://nodejs.org) 4.x-es vagy újabb verziójával kell rendelkeznie.
-- Rendelkeznie kell az [npm-mel](https://www.npmjs.com/).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti karakterláncához, a nevet és a-t `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* [Node.js](https://nodejs.org) 4. x vagy újabb 
+* [NPM](https://www.npmjs.com/) 
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -210,7 +212,7 @@ Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `req
 
 3. A csomag sikeres eltávolítása után zárja be a parancssori ablakot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután Ismerkedjen meg a rendszerképek elemzéséhez használt Computer Vision API-kkal, a hírességek és tereptárgyak észlelésével, a miniatűr létrehozásával, valamint a nyomtatott és a kézírásos szöveg kinyerésével.
 

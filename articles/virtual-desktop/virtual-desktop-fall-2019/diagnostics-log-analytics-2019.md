@@ -4,23 +4,23 @@ description: A log Analytics használata a Windows rendszerű virtuális asztali
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 05bb7274fe598df45ce14bfc89b606aec3f869c9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205968"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../diagnostics-log-analytics.md).
 
-A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. Ez a szolgáltatás naplózza a diagnosztikai adatokat, amikor valaki hozzárendelt egy Windows rendszerű virtuális asztali szerepkört a szolgáltatáshoz. Minden napló tartalmaz információt arról, hogy mely Windows virtuális asztali szerepkört vett részt a tevékenységben, a munkamenet során megjelenő hibaüzeneteket, a bérlői adatokat és a felhasználói adatokat. A diagnosztikai szolgáltatás a felhasználói és rendszergazdai műveletekhez is létrehozza a tevékenység naplóit. Minden tevékenység naplója három fő kategóriába tartozik: 
+A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. Ez a szolgáltatás naplózza a diagnosztikai adatokat, amikor valaki hozzárendelt egy Windows rendszerű virtuális asztali szerepkört a szolgáltatáshoz. Minden napló tartalmaz információt arról, hogy mely Windows virtuális asztali szerepkört vett részt a tevékenységben, a munkamenet során megjelenő hibaüzeneteket, a bérlői adatokat és a felhasználói adatokat. A diagnosztikai szolgáltatás a felhasználói és rendszergazdai műveletekhez is létrehozza a tevékenység naplóit. Minden tevékenység naplója három fő kategóriába tartozik:
 
 - Hírcsatorna-előfizetési tevékenységek: amikor egy felhasználó Microsoft Távoli asztal-alkalmazásokon keresztül próbál csatlakozni a hírcsatornához.
 - Kapcsolódási tevékenységek: amikor egy felhasználó Microsoft Távoli asztal alkalmazáson keresztül próbál csatlakozni egy asztali vagy RemoteApp-hoz.
@@ -36,104 +36,104 @@ Javasoljuk, hogy a Log Analytics használatával elemezze az Azure-ügyfél diag
 
 Mielőtt a diagnosztikai szolgáltatással Log Analytics használni, [létre kell hoznia egy munkaterületet](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
 
-Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait: 
+Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
 
 - A munkaterület azonosítója
 - A munkaterület elsődleges kulcsa
 
 Ezt az információt később a telepítési folyamat során kell megadnia.
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnosztikai adatai leküldése a munkaterületre 
+## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnosztikai adatai leküldése a munkaterületre
 
 A Windows rendszerű virtuális asztali bérlő diagnosztikai adatait leküldheti a munkaterülethez tartozó Log Analyticsba. Ezt a szolgáltatást azonnal beállíthatja a bérlő első létrehozásakor, ha a munkaterületet a bérlőhöz kapcsolja, vagy később egy meglévő Bérlővel is beállíthatja.
 
-Ha az új bérlő beállítása közben szeretné összekapcsolni a bérlőt a Log Analytics munkaterülettel, futtassa a következő parancsmagot a Windows rendszerű virtuális asztalra való bejelentkezéshez a TenantCreator felhasználói fiókjával: 
+Ha az új bérlő beállítása közben szeretné összekapcsolni a bérlőt a Log Analytics munkaterülettel, futtassa a következő parancsmagot a Windows rendszerű virtuális asztalra való bejelentkezéshez a TenantCreator felhasználói fiókjával:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
+Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
 ```
 
-Ha új bérlő helyett egy meglévő bérlőt szeretne összekapcsolni, futtassa a következő parancsmagot: 
+Ha új bérlő helyett egy meglévő bérlőt szeretne összekapcsolni, futtassa a következő parancsmagot:
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String>
 ```
 
-Ezeket a parancsmagokat minden olyan bérlőhöz futtatnia kell, amelyhez Log Analytics szeretne csatolni. 
+Ezeket a parancsmagokat minden olyan bérlőhöz futtatnia kell, amelyhez Log Analytics szeretne csatolni.
 
 >[!NOTE]
->Ha a bérlő létrehozásakor nem szeretné összekapcsolni a Log Analytics munkaterületet, futtassa `New-RdsTenant` inkább a parancsmagot. 
+>Ha a bérlő létrehozásakor nem szeretné összekapcsolni a Log Analytics munkaterületet, futtassa `New-RdsTenant` inkább a parancsmagot.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>A diagnosztikai események küldésének ritmusa
 
-Ha elkészült, a rendszer a diagnosztikai eseményeket a Log Analytics elküldi.  
+Ha elkészült, a rendszer a diagnosztikai eseményeket a Log Analytics elküldi.
 
-## <a name="example-queries"></a>Példák lekérdezésekre
+## <a name="example-queries"></a>Példa a lekérdezésekre
 
 Az alábbi példák azt mutatják be, hogy a diagnosztikai szolgáltatás hogyan készít jelentést a rendszer leggyakoribb tevékenységeiről:
 
 Ez az első példa a támogatott távoli asztali ügyfelekkel rendelkező felhasználók által kezdeményezett kapcsolódási tevékenységeket mutatja be:
 
 ```powershell
-WVDActivityV1_CL 
+WVDActivityV1_CL
 
-| where Type_s == "Connection" 
+| where Type_s == "Connection"
 
-| join kind=leftouter ( 
+| join kind=leftouter (
 
-    WVDErrorV1_CL 
+    WVDErrorV1_CL
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on $left.Id_g  == $right.ActivityId_g 
 
-| join  kind=leftouter (  
+| join  kind=leftouter (
 
-    WVDCheckpointV1_CL 
+    WVDCheckpointV1_CL
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+    ) on $left.Id_g  == $right.ActivityId_g
 
-|project-away ActivityId_g, ActivityId_g1 
+|project-away ActivityId_g, ActivityId_g1
 ```
 
 A következő példában szereplő lekérdezés a rendszergazdák által a bérlők számára végzett felügyeleti tevékenységeket mutatja be:
 
 ```powershell
-WVDActivityV1_CL 
+WVDActivityV1_CL
 
-| where Type_s == "Management" 
+| where Type_s == "Management"
 
-| join kind=leftouter ( 
+| join kind=leftouter (
 
-    WVDErrorV1_CL 
+    WVDErrorV1_CL
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on $left.Id_g  == $right.ActivityId_g 
 
-| join  kind=leftouter (  
+| join  kind=leftouter (
 
-    WVDCheckpointV1_CL 
+    WVDCheckpointV1_CL
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+    ) on $left.Id_g  == $right.ActivityId_g
 
-|project-away ActivityId_g, ActivityId_g1 
+|project-away ActivityId_g, ActivityId_g1
 ```
- 
-## <a name="stop-sending-data-to-log-analytics"></a>Adatok küldésének leállítása a Log Analyticsba 
+
+## <a name="stop-sending-data-to-log-analytics"></a>Adatok küldésének leállítása a Log Analyticsba
 
 Ha le szeretné állítani az adatok egy meglévő bérlőről Log Analyticsra való küldését, futtassa a következő parancsmagot, és állítsa be az üres karakterláncokat:
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String>
 ```
 
-Ezt a parancsmagot minden olyan bérlő esetében futtatnia kell, amelyről le szeretné állítani az adatok küldését. 
+Ezt a parancsmagot minden olyan bérlő esetében futtatnia kell, amelyről le szeretné állítani az adatok küldését.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>További lépések
 
 A diagnosztikai szolgáltatás által azonosítható gyakori hibák áttekintése: a [problémák azonosítása és diagnosztizálása](diagnostics-role-service-2019.md#common-error-scenarios).

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588688"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>A vadászat során az Azure Sentinel használatával nyomon követheti az adatgyűjtést
@@ -36,7 +35,7 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 
 ## <a name="add-a-bookmark"></a>Könyvjelző hozzáadása
 
-1. A Azure Portalban navigáljon a **Sentinel** > **Threat Management** > **vadászathoz** , és futtasson lekérdezéseket a gyanús és rendellenes viselkedés érdekében.
+1. A Azure Portalban navigáljon a **Sentinel**  >  **Threat Management**  >  **vadászathoz** , és futtasson lekérdezéseket a gyanús és rendellenes viselkedés érdekében.
 
 2. Válassza ki az egyik vadászati lekérdezést, és a jobb oldalon, a vadászati lekérdezés részleteiben válassza a **lekérdezés futtatása**lehetőséget. 
 
@@ -67,11 +66,11 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 
  
 > [!NOTE]
-> A napló lekérdezési eredményei támogatják a könyvjelzőket, valahányszor megnyitják ezt a panelt az Azure Sentinelből. Kiválaszthatja például az **általános** > **naplók** elemet a navigációs sávon, kiválaszthatja az események hivatkozásait a vizsgálatok gráfban, vagy kijelölhet egy riasztási azonosítót az incidensek teljes részletei közül (jelenleg előzetes verzióban érhető el). Nem hozhat létre könyvjelzőket, ha a **naplók** panel más helyekről nyílik meg, például közvetlenül a Azure monitorból.
+> A napló lekérdezési eredményei támogatják a könyvjelzőket, valahányszor megnyitják ezt a panelt az Azure Sentinelből. Kiválaszthatja például az **általános**  >  **naplók** elemet a navigációs sávon, kiválaszthatja az események hivatkozásait a vizsgálatok gráfban, vagy kijelölhet egy riasztási azonosítót az incidensek teljes részletei közül (jelenleg előzetes verzióban érhető el). Nem hozhat létre könyvjelzőket, ha a **naplók** panel más helyekről nyílik meg, például közvetlenül a Azure monitorból.
 
 ## <a name="view-and-update-bookmarks"></a>Könyvjelzők megtekintése és frissítése 
 
-1. A Azure Portal navigáljon a **Sentinel** > **Threat Management** > **vadászathoz**. 
+1. A Azure Portal navigáljon a **Sentinel**  >  **Threat Management**  >  **vadászathoz**. 
 
 2. A könyvjelzők listájának megtekintéséhez kattintson a **könyvjelzők** fülre.
 
@@ -88,7 +87,7 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 > Ezeket a szolgáltatásokat szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. A Azure Portal keresse meg a **Sentinel** > **Threat Management** > **vadászati** > **könyvjelzők** fület, és válassza ki a vizsgálni kívánt könyvjelzőt vagy könyvjelzőket.
+1. A Azure Portal keresse meg a **Sentinel**  >  **Threat Management**  >  **vadászati**  >  **könyvjelzők** fület, és válassza ki a vizsgálni kívánt könyvjelzőt vagy könyvjelzőket.
 
 2. A könyvjelző részletei területen győződjön meg arról, hogy legalább egy entitás le van képezve. Az **entitások**esetében például az **IP-cím**, a **gép**vagy a **fiók**bejegyzései jelennek meg.
 
@@ -103,7 +102,7 @@ A vizsgálati gráf használatára vonatkozó utasításokért tekintse meg a r�
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. A Azure Portal navigáljon a **Sentinel** > **Threat Management** > **vadászati** > **könyvjelzők** lapra, és válassza ki az incidenshez hozzáadni kívánt könyvjelzőt vagy könyvjelzőket.
+1. A Azure Portal navigáljon a **Sentinel**  >  **Threat Management**  >  **vadászati**  >  **könyvjelzők** lapra, és válassza ki az incidenshez hozzáadni kívánt könyvjelzőt vagy könyvjelzőket.
 
 2. Válassza az **incidens műveletek (előzetes verzió)** lehetőséget a parancssáv:
     
@@ -115,20 +114,20 @@ A vizsgálati gráf használatára vonatkozó utasításokért tekintse meg a r�
     - Új incidens esetén: igény szerint frissítheti az incidens részleteit, majd válassza a **Létrehozás**lehetőséget.
     - Könyvjelzők meglévő incidenshez való hozzáadásához: válasszon ki egy incidenst, majd válassza a **Hozzáadás**lehetőséget. 
 
-Ha meg szeretné tekinteni a könyvjelzőt az incidensen belül: navigáljon a **Sentinel** > **Threat Management** > **incidensekhez** , és válassza ki az incidenst a könyvjelzővel. Válassza a **teljes részletek megtekintése**lehetőséget, majd kattintson a **könyvjelzők** fülre.
+Ha meg szeretné tekinteni a könyvjelzőt az incidensen belül: navigáljon a **Sentinel**  >  **Threat Management**  >  **incidensekhez** , és válassza ki az incidenst a könyvjelzővel. Válassza a **teljes részletek megtekintése**lehetőséget, majd kattintson a **könyvjelzők** fülre.
 
 > [!TIP]
 > A parancssáv **incidensek (előzetes verzió)** lehetőségének alternatívájaként a menüsávon a helyi menü (**..**.) segítségével választhatja ki az **új incidens létrehozására**, **a meglévő incidenshez való hozzáadására**és **az incidensből való eltávolításra**vonatkozó beállításokat. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Könyvjelzővel ellátott adatnaplók megtekintése
 
-A könyvjelzővel ellátott lekérdezések, eredmények vagy előzmények megtekintéséhez jelölje ki a könyvjelzőt a **vadászati** > **könyvjelzők** lapról, és használja a részleteket tartalmazó ablaktáblán található hivatkozásokat: 
+A könyvjelzővel ellátott lekérdezések, eredmények vagy előzmények megtekintéséhez jelölje ki a könyvjelzőt a **vadászati**  >  **könyvjelzők** lapról, és használja a részleteket tartalmazó ablaktáblán található hivatkozásokat: 
 
 - A forrás **lekérdezés megtekintése** a forrás lekérdezés megtekintéséhez a **naplók** ablaktáblán.
 
 - A **könyvjelzők naplóiban** megtekintheti az összes könyvjelző-metaadatot, beleértve a frissítést, a frissített értékeket és a frissítés időpontját.
 
-Az összes könyvjelzőhöz tartozó nyers könyvjelzők adatait úgy is megtekintheti, hogy kiválasztja a **könyvjelzőket** a **vadászati** > **könyvjelzők** lap menüsávján:
+Az összes könyvjelzőhöz tartozó nyers könyvjelzők adatait úgy is megtekintheti, hogy kiválasztja a **könyvjelzőket** a **vadászati**  >  **könyvjelzők** lap menüsávján:
 
 > [!div class="mx-imgBorder"]
 > ![Könyvjelző-naplók](./media/bookmarks/bookmark-logs.png)
@@ -140,7 +139,7 @@ Ez a nézet megjeleníti a társított metaadatokkal rendelkező összes könyvj
 
 ## <a name="delete-a-bookmark"></a>Könyvjelző törlése
  
-1.  A Azure Portal navigáljon a **Sentinel** > **Threat Management** > **vadászati** > **könyvjelzők** lapra, és válassza ki a törölni kívánt könyvjelzőt vagy könyvjelzőket. 
+1.  A Azure Portal navigáljon a **Sentinel**  >  **Threat Management**  >  **vadászati**  >  **könyvjelzők** lapra, és válassza ki a törölni kívánt könyvjelzőt vagy könyvjelzőket. 
 
 2. Kattintson a jobb gombbal a kiválasztott elemekre, és válassza a könyvjelző vagy könyvjelzők törlésének lehetőségét. Ha például csak egy könyvjelzőt jelölt ki, törölje a **könyvjelzőt** , és ha két könyvjelzőt jelölt ki, **törölheti a 2** könyvjelzőt.
     

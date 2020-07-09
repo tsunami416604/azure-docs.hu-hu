@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan telepíthet át egyéni Windows-tárolókat Azu
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046624"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205622"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>ASP.NET-alkalmazás áttelepítése az Azure App Service szolgáltatásba egy Windows-tároló (előzetes verzió) használatával
 
@@ -25,8 +25,8 @@ Az oktatóanyag elvégzéséhez:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows rendszerhez készült Docker telepítése</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
-    - A > **frissítések keresése**lehetőségre **kattintva telepítse**a legújabb frissítéseket a Visual Studióban.
-    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök** > **beolvasása eszközök és szolgáltatások lekérése**elemre kattintva.
+    - A **Help**  >  **frissítések keresése**lehetőségre kattintva telepítse a legújabb frissítéseket a Visual Studióban.
+    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások lekérése**elemre kattintva.
 
 ## <a name="set-up-the-app-locally"></a>Az alkalmazás helyi beállítása
 
@@ -61,7 +61,7 @@ A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, 
 
 ![A New ASP.NET Project (Új ASP.NET-projekt) párbeszédpanel](media/app-service-web-tutorial-windows-containers-custom-fonts/enable-container-orchestration.png)
 
-Válassza a **Docker-összeállítás** > **OK**elemet.
+Válassza a **Docker-összeállítás**  >  **OK**elemet.
 
 A projekt mostantól futtatható egy Windows-tárolóban. Egy _Docker-fájl_ lesz hozzáadva a **CustomFontSample** projekthez, illetve egy **docker-compose** projekt a megoldáshoz. 
 
@@ -69,13 +69,13 @@ Nyissa meg a **Docker-fájlt** a Megoldáskezelőből.
 
 Egy [támogatott szülőrendszerképet](app-service-web-get-started-windows-container.md#use-a-different-parent-image) kell használnia. Módosítsa a szülőrendszerképet a `FROM` sor a következő kódra való lecserélésével:
 
-```Dockerfile
+```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 A fájl végéhez adja hozzá a következő sort, majd mentse a fájlt:
 
-```Dockerfile
+```dockerfile
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
@@ -97,7 +97,7 @@ A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, 
 
 ### <a name="create-registry-and-publish"></a>Beállításjegyzék létrehozása és közzététele
 
-A Közzétételi varázslóban válassza a **Container Registry** > **új Azure Container Registry** > **Közzététel**lehetőséget.
+A Közzétételi varázslóban válassza a **Container Registry**  >  **új Azure Container Registry**  >  **Közzététel**lehetőséget.
 
 ![A New ASP.NET Project (Új ASP.NET-projekt) párbeszédpanel](media/app-service-web-tutorial-windows-containers-custom-fonts/create-registry.png)
 
@@ -115,7 +115,7 @@ Konfigurálja az új Container Registryt a következő táblázatban javasolt é
 | ----------------- | ------------ | ----|
 |**DNS-előtag**| Megtarthatja a beállításjegyzék létrehozott nevét, vagy módosíthatja egy másik egyedi névre. |  |
 |**Erőforráscsoport**| Kattintson a **New** (Új) lehetőségre, írja be a **myResourceGroup** kifejezést, majd kattintson az **OK** gombra. |  |
-|**SKU**| Basic | [Árképzési szintek](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Termékváltozat**| Alapszintű | [Árképzési szintek](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Beállításjegyzékbeli hely**| Nyugat-Európa | |
 
 ![Az Azure Container Registry konfigurálása](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -128,7 +128,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A bal oldali menüben válassza az **erőforrás** > létrehozása**webes** > **Web App for containers**elemet.
+A bal oldali menüben válassza az **erőforrás létrehozása**  >  **webes**  >  **Web App for containers**elemet.
 
 ### <a name="configure-app-basics"></a>Alkalmazás alapalapjainak konfigurálása
 
@@ -138,7 +138,7 @@ Az **alapvető** beállítások lapon konfigurálja a beállításokat az alább
 | ----------------- | ------------ | ----|
 |**Előfizetés**| Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva. |  |
 |**Erőforráscsoport**| Válassza az **új létrehozása**elemet, írja be a **myResourceGroup**, majd kattintson **az OK**gombra. |  |
-|**Név**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve. |
+|**Name (Név)**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve. |
 |**Közzététel**| Docker-tároló | |
 |**Operációs rendszer**| Windows | |
 |**Régió**| Nyugat-Európa | |
@@ -181,11 +181,11 @@ Várjon néhány percet, és próbálkozzon újra, amíg meg nem jelenik a kezd�
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-**Gratulálok!** Áttelepített egy ASP.NET-alkalmazást az Azure App Service szolgáltatásba egy Windows-tárolóban.
+**Gratulálunk!** Áttelepített egy ASP.NET-alkalmazást az Azure App Service szolgáltatásba egy Windows-tárolóban.
 
 ## <a name="see-container-start-up-logs"></a>A tároló rendszerindítási naplóinak megtekintése
 
-A Windows-tároló betöltése hosszabb időbe telhet. Ha szeretné megtekinteni az előrehaladást, navigáljon a következő URL-címre az alkalmazás neve * \<>* helyére az alkalmazás nevét.
+A Windows-tároló betöltése hosszabb időbe telhet. Ha szeretné megtekinteni a folyamatot, keresse meg a következő URL-címet, *\<app-name>* és cserélje le az alkalmazás nevét.
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
@@ -201,4 +201,3 @@ A streamelt naplók a következőképpen néznek ki:
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container ready
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container start-up and configuration completed successfully
 ```
-

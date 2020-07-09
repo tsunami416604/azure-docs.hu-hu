@@ -6,19 +6,18 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3faca8d1a2538ed03a917d6db8d54323fe626369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 65a6a622a0d3fac7b28cc699d860068f12b780fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728605"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Csoport tagjainak tömeges letöltése Azure Active Directory
 
@@ -27,7 +26,7 @@ A Azure Active Directory (Azure AD) portál használatával tömegesen töltheti
 ## <a name="to-bulk-download-group-membership"></a>Csoporttagság tömeges letöltése
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjait is tömegesen tölthetik le.
-1. Az Azure ad-ben válassza a **csoportok** > **minden csoport**elemet.
+1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport**elemet.
 1. Nyissa meg azt a csoportot, amelynek tagságát le szeretné tölteni, majd válassza a **tagok**lehetőséget.
 1. A **tagok** lapon válassza a **tagok letöltése** lehetőséget, hogy letöltse a csoporttagokat felsoroló CSV-fájlt.
 

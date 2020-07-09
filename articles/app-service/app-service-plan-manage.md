@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811714"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>App Service-csomag kezelése az Azure-ban
@@ -28,7 +27,7 @@ Létrehozhat egy üres App Service-csomagot, vagy létrehozhat egy csomagot az a
 
    ![Hozzon létre egy erőforrást a Azure Portalban.][createResource] 
 
-1. Válassza az **új** > **webalkalmazás** vagy más app Service-alkalmazás lehetőséget.
+1. Válassza az **új**  >  **webalkalmazás** vagy más app Service-alkalmazás lehetőséget.
 
    ![Hozzon létre egy alkalmazást a Azure Portalban.][createWebApp] 
 

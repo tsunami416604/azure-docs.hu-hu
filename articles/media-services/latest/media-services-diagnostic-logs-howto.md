@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382919"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
@@ -96,7 +96,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
  Most megtekintheti a tárfiókban tárolt JSON-eseményt.
 
-### <a name="examples-of-pt1hjson"></a>Példák a PT1H. JSON fájlra
+### <a name="examples-of-pt1hjson"></a>Példák a PT1H.jsbekapcsolására
 
 #### <a name="clear-key-delivery-log"></a>Kulcs kézbesítési naplójának törlése
 
@@ -178,7 +178,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
 * [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122596"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
@@ -153,7 +152,7 @@ Az [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?
 
 - [létrehozása](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [törlése](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [lista](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [listáját](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
 - [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [automatikus felcserélés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
@@ -176,7 +175,7 @@ A tárolóhelyek App Service tervének módosításához kövesse az alábbi lé
 
     :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Módosítsa a Azure Portal App Service tervét." border="true":::
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="limitations"></a>Korlátozások
 

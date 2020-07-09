@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969577"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
@@ -120,8 +119,8 @@ Windows Server biztonsági másolat állapotának ellenőrzéséhez hajtsa végr
       > [!NOTE]
       >Az X helyére írja be annak a kötetnek a betűjelét, amelyben a rendszerállapot biztonsági másolatát szeretné tárolni.
 
-    - A feladatok állapotának rendszeres ellenőrzéséhez futtassa `Get-WBJob` a parancsot a rendszergazda jogú powershellből
-    - A biztonsági mentési feladatok befejezése után a parancs futtatásával `Get-WBJob -Previous 1` vizsgálja meg a feladatok végső állapotát.
+    - A feladatok állapotának rendszeres ellenőrzéséhez futtassa a `Get-WBJob` parancsot a rendszergazda jogú powershellből
+    - A biztonsági mentési feladatok befejezése után a parancs futtatásával vizsgálja meg a feladatok végső állapotát. `Get-WBJob -Previous 1`
 
 Ha a feladat meghiúsul, egy WSB-problémát jelez, amely a MARS-ügynök rendszerállapot-biztonsági Mentéseinak meghibásodását eredményezné.
 

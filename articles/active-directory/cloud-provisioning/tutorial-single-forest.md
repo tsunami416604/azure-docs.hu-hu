@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dab553a93db4650a5d7126d7f1a0c3ca5f808f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360605"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Oktatóanyag: egyetlen erdő integrálása egyetlen Azure AD-Bérlővel
 
@@ -46,9 +46,9 @@ Az oktatóanyagban létrehozott környezetet tesztelésre vagy a Felhőbeli kié
      | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
      
      Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
-   - Ha a tűzfal vagy a proxy lehetővé teszi a biztonságos utótagok megadását, adja hozzá a t-t a ** \*. msappproxy.net** és ** \*a. servicebus.Windows.net**kapcsolatokhoz. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+   - Ha a tűzfal vagy a proxy lehetővé teszi a biztonságos utótagok megadását, adja hozzá a t-t a ** \* . msappproxy.net** és a ** \* . servicebus.Windows.net**kapcsolatokhoz. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
    - Az ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
-   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www\.Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
+   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
 1. Jelentkezzen be a tartományhoz csatlakoztatott kiszolgálóra.  Ha az [alapszintű ad-és Azure-környezettel](tutorial-basic-ad-azure.md) foglalkozó oktatóanyagot használja, az DC1 lenne.
@@ -122,14 +122,14 @@ Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkroniz
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. A bal oldalon válassza a **Azure Active Directory**
-3. A **Kezelés** alatt válassza a **Felhasználókat**.
+3. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 4. Ellenőrizze, hogy megjelenik-e az új felhasználók a bérlőben</br>
 ![Szinkronizálási](media/tutorial-single-forest/synchronize1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
 1. Tallózással keresse meg a[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: (user@domain.onmicrosoft.com). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
+2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
    ![Ellenőrzés](media/tutorial-single-forest/verify1.png)</br>
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.

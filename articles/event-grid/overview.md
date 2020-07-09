@@ -1,20 +1,14 @@
 ---
 title: Mi az Azure Event Grid?
 description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: babanisa
-ms.custom: seodec18
-ms.openlocfilehash: 75ee828c659aba895f65d0cf14070966428a1d19
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116131"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -58,7 +52,7 @@ Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részlet
 * [Továbbító Hibrid kapcsolatok](handler-relay-hybrid-connections.md)
 * [Logic Apps](handler-webhooks.md#logic-apps)
 * [Power automatizálás (korábbi nevén Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Service Bus](handler-service-bus.md)
+* [Szolgáltatásbusz](handler-service-bus.md)
 * [Queue Storage](handler-storage-queues.md)
 * [Webhookok](handler-webhooks.md)
 
@@ -103,7 +97,7 @@ Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Például a
 
 ![Műveletek automatizálása](./media/overview/Ops_automation.png)
 
-Az Event Griddel felgyorsíthatja az automatizálást és egyszerűsítheti a szabályzatok kikényszerítését. Ha például egy virtuális gépet vagy SQL-adatbázist hoz létre, a Event Grid használatával értesítheti Azure Automationt. Az események használatával automatikusan ellenőrizhető, hogy a szolgáltatás konfigurációja megfelelő-e, a metaadatokat az Operations eszközökre, a virtuális gépek címkézésére vagy a fájl munkaelemeire tegye.
+Az Event Griddel felgyorsíthatja az automatizálást és egyszerűsítheti a szabályzatok kikényszerítését. A Event Grid használatával például értesítheti Azure Automation, ha létrejön egy virtuális gép vagy adatbázis az Azure SQL-ben. Az események használatával automatikusan ellenőrizhető, hogy a szolgáltatás konfigurációja megfelelő-e, a metaadatokat az Operations eszközökre, a virtuális gépek címkézésére vagy a fájl munkaelemeire tegye.
 
 ### <a name="application-integration"></a>Alkalmazásintegráció
 

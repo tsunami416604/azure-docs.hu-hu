@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 11/19/2019
-ms.openlocfilehash: f39faae6f9bda9efb814be8cdcbdac3ae80497ba
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: eac5814eb977a01135ad2fcd9551b3475673dbca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691740"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Ez a cikk áttekintést nyújt a Azure SQL Database és az Azure szinapszis Analytics által használt logikai kiszolgáló erőforrás-korlátairól. Információkkal szolgál arról, hogy mi történik az erőforrás-korlátok megváltozásakor vagy túllépésekor, és leírja a határértékek betartatásához használt erőforrás-irányítási mechanizmusokat.
+Ez a cikk áttekintést nyújt a Azure SQL Database és az Azure szinapszis Analytics által használt logikai kiszolgáló erőforrás-korlátairól. Információkkal szolgál arról, hogy mi történik, ha az adott erőforrás korlátai elérik vagy túllépik a korlátot, és ismerteti a korlátok kikényszeríthető erőforrás-irányítási mechanizmusait.
 
 > [!NOTE]
 > Az Azure SQL felügyelt példányokra vonatkozó korlátaival kapcsolatban lásd: [SQL Database erőforrás-korlátok a felügyelt példányok számára](../managed-instance/resource-limits.md).
@@ -53,13 +52,13 @@ Az önálló adatbázisok erőforrás-tárolási méreteit a [DTU-alapú erőfor
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik az adatbázis-erőforrások korlátainak elérésekor
 
-### <a name="compute-dtus-and-edtus--vcores"></a>Számítás (DTU és Edtu/virtuális mag)
+### <a name="compute-cpu"></a>Számítási CPU
 
-Ha az adatbázis számítási kihasználtsága (a DTU és a Edtu, illetve a virtuális mag alapján mérve) magas, a lekérdezés késése megnő, és a lekérdezések is időtúllépést okozhatnak. Ilyen körülmények között előfordulhat, hogy a szolgáltatás várólistára helyezi a lekérdezéseket, és erőforrásokat biztosít a végrehajtáshoz, mivel az erőforrások ingyenesek lesznek.
+Ha az adatbázis számítási CPU-kihasználtsága magas lesz, a lekérdezés késése megnő, és a lekérdezések is időtúllépést okozhatnak. Ilyen körülmények között előfordulhat, hogy a szolgáltatás várólistára helyezi a lekérdezéseket, és erőforrásokat biztosít a végrehajtáshoz, mivel az erőforrások ingyenesek lesznek.
 Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehetőségek a következők:
 
 - Az adatbázis vagy a rugalmas készlet számítási méretének növelése az adatbázis további számítási erőforrásokkal való biztosításához. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
-- Lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében. További információ: a [lekérdezés finomhangolása/célzása](performance-guidance.md#query-tuning-and-hinting).
+- Lekérdezések optimalizálása az egyes lekérdezések CPU-erőforrásai kihasználtságának csökkentése érdekében. További információ: a [lekérdezés finomhangolása/célzása](performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Storage
 
@@ -82,7 +81,28 @@ A magas munkamenet vagy munkavégző kihasználtsága esetén a kockázatcsökke
 - Csökkentse a [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximális párhuzamossági fok) beállítást.
 - A lekérdezési munkaterhelés optimalizálása az előfordulások számának csökkentése és a lekérdezés letiltásának időtartama alapján.
 
-### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Erőforrás-felhasználás felhasználói munkaterhelések és belső folyamatok alapján
+### <a name="memory"></a>Memory (Memória)
+
+Más erőforrásokkal (CPU, munkavégzők, tárterület) ellentétben a memória korlátja nem befolyásolja negatívan a lekérdezési teljesítményt, és nem okoz hibákat és hibákat. A [memória-kezelési architektúra útmutatójában](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide)leírtak szerint a SQL Server adatbázismotor gyakran használja az összes rendelkezésre álló memóriát a tervezés szerint. A memóriát elsősorban az adatgyorsítótárazáshoz használják, hogy elkerülje a drágább tárterület-hozzáférést. Így a magasabb memóriahasználat általában a memóriából való gyorsabb olvasások miatt javítja a lekérdezési teljesítményt, nem pedig a tárterület lassabb olvasását.
+
+Az adatbázismotor elindítása után, ahogy a munkaterhelés elkezdi beolvasni az adatok tárolásból való beolvasását, az adatbázismotor agresszív módon gyorsítótárazza a memóriában tárolt adatok mennyiségét. A kezdeti felfutási időszak után gyakori, és a rendszer a `avg_memory_usage_percent` sys-ben lévő és az oszlopokat is megtekinti `avg_instance_memory_percent` [. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , hogy 100%-kal vagy azzal egyenlő legyen, különösen olyan adatbázisok esetén, amelyek nem tétlenek, és nem teljes mértékben illenek a memóriába.
+
+Az adatgyorsítótáron kívül a rendszer a memóriát használja az adatbázismotor más összetevőiben. Ha igény van a memóriára, és az összes rendelkezésre álló memóriát felhasználta az adatgyorsítótár, az adatbázismotor dinamikusan csökkenti az adatgyorsítótár méretét, hogy a memóriát elérhetővé tegye más összetevők számára, és dinamikusan növelje az adatgyorsítótárat, amikor más összetevők kibocsátják a memóriát.
+
+Ritka esetekben a megfelelően megterhelt számítási feladatok elégtelen memória-feltételt okozhatnak, ami a memórián kívüli hibákhoz vezethet. Ez a memóriahasználat bármely szintjén történhet 0% és 100% között. Ez nagyobb valószínűséggel fordul elő kisebb számítási méretekben, amelyeknek arányosan kisebb a memóriája, és/vagy a munkaterhelések több memóriát használnak a lekérdezések feldolgozásához, például [sűrű rugalmas készletekben](elastic-pool-resource-management.md).
+
+A memórián kívüli hibák észlelésekor a megoldás a következőkre terjed ki:
+- Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
+- A lekérdezések és a konfiguráció optimalizálása a memória kihasználtságának csökkentése érdekében. Az alábbi táblázat ismerteti az általános megoldásokat.
+
+|Megoldás|Description|
+| :----- | :----- |
+|A memóriabeli támogatások méretének csökkentése|A memória-támogatással kapcsolatos további információkért tekintse meg a [SQL Server memória-engedélyezés](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blogbejegyzésének ismertetése című témakört. A túlzottan nagy memória-támogatás elkerülésére szolgáló közös megoldás a [statisztikák](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) naprakészen tartása. Ez a lekérdezési motor által a memória-használat pontosabb becslését eredményezi, így elkerülhető a szükségtelenül nagy memória-támogatás.</br></br>Az adatbázis-kezelő a 140-es és újabb kompatibilitási szintet használó adatbázisokban automatikusan megváltoztathatja a memória-engedélyezési méretet a [Batch Mode memória-engedélyezési visszajelzések](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback)használatával. Az adatbázis-kezelő a 150-es és újabb kompatibilitási szintet használó adatbázisokban hasonlóan a [sor módú memória-engedélyezési visszajelzéseket](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)is használja a leggyakoribb soros üzemmódú lekérdezéseknél. Ez a beépített funkció segít elkerülni a memórián belüli hibákat a szükségtelenül nagy memória-támogatás miatt.|
+|A lekérdezési terv gyorsítótára méretének csökkentése|Az adatbázismotor gyorsítótárazza a memóriában a lekérdezési terveket, így elkerülhető a lekérdezés-végrehajtás minden lekérdezési tervének fordítása. Ha el szeretné kerülni, hogy a lekérdezési terv gyorsítótára a csak egyszer használt gyorsítótárazási csomagokat okozza, engedélyezze a OPTIMIZE_FOR_AD_HOC_WORKLOADS [adatbázis-hatókörű konfigurációt](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|
+|A zárolási memória méretének csökkentése|Az adatbázismotor memóriát használ a [zárolásokhoz](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine). Ha lehetséges, kerülje a nagyméretű tranzakciókat, amelyek nagy számú zárolást igényelhetnek, és nagy mennyiségű zárolási memóriát okozhatnak.|
+
+
+## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Erőforrás-felhasználás felhasználói munkaterhelések és belső folyamatok alapján
 
 A CPU-és a memóriahasználat az egyes adatbázisokban lévő felhasználói munkaterhelések jelentik a [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) és a [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) nézeteit `avg_cpu_percent` és `avg_memory_usage_percent` oszlopait. Rugalmas készletek esetén a rendszer a készlet szintű erőforrás-felhasználást a [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetben jeleníti meg. A felhasználói munkaterhelés CPU-felhasználását a Azure Monitor metrikán keresztül is jelenteni kell a `cpu_percent` készlet szintjén található [önálló adatbázisok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) és [rugalmas készletek](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) esetében.
 
@@ -96,7 +116,7 @@ A Teljesítményfigyelés és a hibaelhárítás kontextusában fontos figyelemb
 
 A **felhasználói CPU-felhasználás** kiszámítása a felhasználói munkaterhelés korlátainak százalékában történik az egyes szolgáltatási célkitűzésekben. Az 100%-os **felhasználói CPU-kihasználtság** azt jelzi, hogy a felhasználói munkaterhelés elérte a szolgáltatási cél korlátját. Ha azonban a **teljes CPU-felhasználás** eléri a 70-100%-os tartományt, megtekintheti a felhasználói munkaterhelés átviteli sebességét, és a lekérdezés késése növekszik, még akkor is, ha a jelentett **felhasználói CPU-felhasználás** jelentős mértékben a 100% alá esik. Ez nagyobb valószínűséggel fordul elő, ha kisebb szolgáltatási célkitűzéseket használ a számítási erőforrások mérsékelt kiosztásával, de viszonylag intenzívebb felhasználói munkaterhelésekkel, például [sűrű rugalmas készletekben](elastic-pool-resource-management.md). Ez kisebb szolgáltatási célkitűzések esetén is előfordulhatnak, ha a belső folyamatok átmenetileg további erőforrásokat igényelnek, például amikor új replikát hoz létre az adatbázisból.
 
-Ha a **teljes CPU** -használat magas, a kockázatcsökkentő lehetőségek megegyeznek a korábban feljegyzett értékekkel, és tartalmazzák a szolgáltatási célkitűzések növekedését és/vagy a felhasználói munkaterhelés optimalizálását.
+Ha a **teljes CPU** -használat magas, a kockázatcsökkentő lehetőségek ugyanazok, mint a korábban feljegyzett, és tartalmazzák a szolgáltatási cél növelését és/vagy a felhasználói munkaterhelés optimalizálását.
 
 ## <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -112,15 +132,15 @@ Az adatio-szabályozás egy olyan folyamat, Azure SQL Database az olvasási és 
 
 Az önálló adatbázisok esetében a munkaterhelési csoportra vonatkozó korlátok a-adatbázisra vonatkozó összes adatforgalomra érvényesek, míg az erőforrás-készletre vonatkozó korlátozások az adott SQL-készletben található összes adatbázisra vonatkoznak az összes tárterületre, beleértve az `tempdb` adatbázist is. A rugalmas készletek esetében a munkaterhelési csoport korlátai a készlet minden adatbázisára érvényesek, míg az erőforráskészlet-korlát a teljes rugalmas készletre vonatkozik, beleértve az adatbázist is, `tempdb` amely a készletben lévő összes adatbázis között meg van osztva. Az erőforrás-készlet korlátai általában nem valósíthatók meg egy adatbázison (akár egyetlen, akár készletezett) keresztül, mert a munkaterhelés-csoport korlátai alacsonyabbak az erőforráskészlet korlátainál, és hamarabb korlátozzák a IOPS/átviteli sebességet. A készletre vonatkozó korlátokat azonban a kombinált munkaterhelés is elérheti ugyanazon a készleten lévő több adatbázisra vonatkozóan.
 
-Ha például egy lekérdezés az i/o-erőforrás szabályozása nélkül 1000 IOPS hoz létre, de a munkaterhelési csoport maximális IOPS értéke 900 IOPS, a lekérdezés nem fog tudni többet létrehozni 900 IOPS. Ha azonban az erőforráskészlet maximális IOPS-korlátja 1500 IOPS, és az erőforráskészlet összes munkaterhelési csoportjának teljes IO-értéke meghaladja az 1500-as IOPS, akkor az azonos lekérdezés IO-értéke a 900 IOPS munkacsoport-korlátja alatt csökkenhet.
+Ha például egy lekérdezés az i/o-erőforrás szabályozása nélkül 1000 IOPS hoz létre, de a munkaterhelési csoport maximális IOPS értéke 900 IOPS, a lekérdezés nem fog tudni több mint 900 IOPS-t létrehozni. Ha azonban az erőforráskészlet maximális IOPS-korlátja 1500 IOPS, és az erőforráskészlet összes munkaterhelési csoportjának teljes IO-értéke meghaladja az 1500-as IOPS, akkor az azonos lekérdezés IO-értéke a 900 IOPS munkacsoport-korlátja alatt csökkenhet.
 
-A [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) által visszaadott IOPS és átviteli sebesség (perc/maximális érték) korlátok/sapkák, nem pedig garanciák. Az erőforrás-szabályozás továbbá nem garantálja az adott tárolási késést. Egy adott felhasználói munkaterhelések esetében az elérhető legjobb késés, IOPS és teljesítmény nem csupán az IO-erőforrásokra vonatkozó irányítási korlátokra, hanem a felhasznált IO-méretek és a mögöttes tároló képességeire is érvényes. Az SQL a 512 KB és 4 MB közötti méretben változó IOs-et használ. A IOPS-korlátok betartatása érdekében minden i/o-érték a mérettől függetlenül fiókba kerül, az Azure Storage-ban tárolt adatfájlokkal rendelkező adatbázisok kivételével. Ebben az esetben a 256 KB-nál nagyobb IOs-nél több 256 KB-os IOs-ként van ellátva, hogy illeszkedjen az Azure Storage IO-nyilvántartásához.
+A [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) által visszaadott IOPS és átviteli sebesség (perc/maximális érték) korlátok/sapkák, nem pedig garanciák. Az erőforrás-szabályozás továbbá nem garantálja az adott tárolási késést. Egy adott felhasználói munkaterhelések esetében az elérhető legjobb késés, IOPS és teljesítmény nem csupán az IO-erőforrásokra vonatkozó irányítási korlátokra, hanem a felhasznált IO-méretek és a mögöttes tároló képességeire is érvényes. A SQL Database a 512 KB és 4 MB közötti méretekben eltérő IOs-t használ. A IOPS-korlátok betartatása érdekében minden i/o-érték a mérettől függetlenül fiókba kerül, az Azure Storage-ban tárolt adatfájlokkal rendelkező adatbázisok kivételével. Ebben az esetben a 256 KB-nál nagyobb IOs-nél több 256-KB-os IOs-ként van ellátva, hogy illeszkedjen az Azure Storage IO-nyilvántartásához.
 
-Az Azure Storage-ban adatfájlokat használó alapszintű, standard és általános célú adatbázisok esetében az érték nem valósítható meg, `primary_group_max_io` Ha egy adatbázis nem rendelkezik elegendő adatfájllal, hogy összesítse a IOPS, vagy ha az adatok nem egyenletesen vannak elosztva a fájlok között, vagy ha az alapul szolgáló Blobok teljesítménye az erőforrás-irányítási korlát alatt korlátozza a IOPS/átviteli sebességet. Hasonlóképpen, a gyakori tranzakció-véglegesítés által generált kis log IOs esetében `primary_max_log_rate` Előfordulhat, hogy az érték nem érhető el az alapul szolgáló Azure Storage-blob IOPS-korlátja miatt.
+Az Azure Storage-ban adatfájlokat használó alapszintű, standard és általános célú adatbázisok esetében az `primary_group_max_io` érték nem érhető el, ha egy adatbázis nem rendelkezik elegendő adatfájllal, hogy összesítse a IOPS, vagy ha az adatok nem egyenletesen vannak elosztva a fájlok között, vagy ha az alapul szolgáló Blobok teljesítményi szintje az erőforrás-irányítási korlát alatti IOPS/átviteli sebességet korlátozza. Hasonlóképpen, a gyakori tranzakció-véglegesítés által generált kis log IOs esetében `primary_max_log_rate` Előfordulhat, hogy az érték nem érhető el az alapul szolgáló Azure Storage-blob IOPS-korlátja miatt.
 
 A (z `avg_data_io_percent` ) és a (z) `avg_log_write_percent` sys. [dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetekben jelentett erőforrás-kihasználtsági értékeket a rendszer a maximális erőforrás-irányítási korlátok százalékában számítja ki. Ezért ha az erőforrás-szabályozástól eltérő tényezők IOPS/átviteli sebességre vannak korlátozva, megtekintheti a IOPS/átviteli sebesség simítását és a késések növelését a munkaterhelés növekedésével, bár a jelentett erőforrás-kihasználtság a 100% alatti marad.
 
-Ha szeretné megtekinteni az IOPS, az átviteli sebességet és a késést az adatbázis-fájlban, használja a [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) függvényt. Ez a függvény felfedi az összes IO-t az adatbázison, beleértve a háttérben lévő i/o-t, amely nem része a felé `avg_data_io_percent` , de az alapul szolgáló TÁRTERÜLET IOPS és átviteli sebességét használja, és hatással lehet a megfigyelt tárolási A függvény emellett felfedi a további késéseket is, amelyeket az i/o-erőforrások irányításával lehet bevezetni az olvasási és írási műveletekhez a `io_stall_queued_read_ms` és az `io_stall_queued_write_ms` oszlopokban.
+Ha szeretné megtekinteni az IOPS, az átviteli sebességet és a késést az adatbázis-fájlban, használja a [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) függvényt. Ez a függvény felfedi az összes i/o-adatbázist az adatbázison, beleértve a háttér i/o-t, amely nem része a felé `avg_data_io_percent` , de az alapul szolgáló TÁRTERÜLET IOPS és átviteli sebességét használja, és hatással lehet a megfigyel A függvény emellett felfedi a további késéseket is, amelyeket az i/o-erőforrások irányításával lehet bevezetni az olvasási és írási műveletekhez a `io_stall_queued_read_ms` és az `io_stall_queued_write_ms` oszlopokban.
 
 ### <a name="transaction-log-rate-governance"></a>Tranzakciós naplók arányának szabályozása
 
@@ -131,13 +151,13 @@ A tranzakciós napló arányának szabályozása Azure SQL Database folyamat, am
 
 A naplózási díjszabás úgy van beállítva, hogy különböző forgatókönyvekben legyenek elérhetők és fenntarthatók, míg a teljes rendszer a felhasználói terhelésnek való lehető legkisebbre csökkentheti a funkcionalitását. A naplózási sebesség szabályozása biztosítja, hogy a tranzakciónapló biztonsági mentései a közzétett helyreállító SLA-ban maradjanak.  Ez a szabályozás a másodlagos replikák túlzott lemaradását is megakadályozza.
 
-A naplóbejegyzések létrehozásakor a rendszer minden egyes műveletet kiértékel és értékel ki, hogy késleltetve legyen-e a maximálisan szükséges naplózási sebesség (MB/s/másodperc) fenntartása érdekében. A rendszer nem adja hozzá a késéseket a naplófájlok tárolóba történő kiürítéséhez, hanem a naplózási sebesség szabályozására a naplózási arány létrehozásakor.
+A naplóbejegyzések létrehozásakor a rendszer minden egyes műveletet kiértékel és értékel ki, hogy késleltetve legyen-e a maximálisan szükséges naplózási sebesség (MB/s/másodperc) fenntartása érdekében. A rendszer nem adja hozzá a késéseket a naplófájlok tárolóba való kiürítéséhez, hanem a naplózási ráta irányítását a naplózási arány létrehozásakor.
 
 A tényleges log-generálási sebességet a futtatási időszakban is befolyásolhatja a visszajelzési mechanizmusok, ami átmenetileg csökkenti az engedélyezett naplók sebességét, így a rendszer képes stabilizálni. A naplófájlok kezelése, amelyekkel elkerülhető, hogy a naplózási terület feltételeit és a rendelkezésre állási csoport replikálási mechanizmusa átmenetileg csökkentse a teljes rendszerkorlátot.
 
 A naplózási arány kormányzója Traffic Shaping a következő várakozási típusoknál (amelyek a [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) nézetekben vannak kitéve):
 
-| Várakozás típusa | Megjegyzések |
+| Várakozás típusa | Jegyzetek |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | Adatbázis korlátozása |
 | POOL_LOG_RATE_GOVERNOR | Készlet korlátozása |
@@ -158,3 +178,4 @@ Ha egy, a kívánt skálázhatóságot akadályozó naplózási sebességre vona
 - Az általános Azure-korlátokkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 - További információ a DTU és a Edtu: [DTU és edtu](purchasing-models.md#dtu-based-purchasing-model).
 - További információ a tempdb méretéről: [tempdb Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).
+ 

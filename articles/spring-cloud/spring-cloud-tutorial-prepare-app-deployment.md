@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833383"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -39,6 +39,7 @@ Spring boot-verzió | Tavaszi felhő verziója
 ---|---
 2.1 | Greenwich. RELEASE
 2,2 | Hoxton. RELEASE
+2.3 | Hoxton. SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>A Spring boot 2,1-es verziójának függőségei
 
@@ -91,7 +92,31 @@ A Spring boot 2,2-es verziójában adja hozzá a következő függőségeket az 
         </dependencies>
     </dependencyManagement>
 ```
+### <a name="dependencies-for-spring-boot-version-23"></a>A Spring boot 2,3-es verziójának függőségei
 
+A Spring boot 2,3-es verziójában adja hozzá a következő függőségeket az Application POM-fájlhoz.
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud ügyfél-függőség
 
 Az Azure Spring Cloud üzemelteti és kezeli a Spring Cloud-összetevőket. Az összetevők közé tartoznak a Spring Cloud Service Registry és a Spring Cloud config Server. Vegye fel az Azure Spring Cloud ügyféloldali kódtárat a függőségeibe, hogy lehetővé váljon a kommunikáció az Azure Spring Cloud Service-példánnyal.
@@ -102,8 +127,9 @@ Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-verzió
 ---|---|---
 2.1 | Greenwich. RELEASE | 2.1
 2,2 | Hoxton. RELEASE | 2,2
+2.3 | Hoxton. SR5 | 2.3
 
-Adja meg a következő függőségek egyikét a Pom. xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
+Adja meg a következő függőségek egyikét a pom.xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Az Azure Spring Cloud 2,1-es verziójának függősége
 
@@ -113,7 +139,7 @@ A Spring boot 2,1-es verziójában adja hozzá a következő függőséget az al
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.1</version>
+        <version>2.1.2</version>
 </dependency>
 ```
 
@@ -125,7 +151,17 @@ A Spring boot 2,2-es verziójában adja hozzá a következő függőséget az al
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.1</version>
+</dependency>
+```
+
+A Spring boot 2,3-es verziójában adja hozzá a következő függőséget az alkalmazás POM-fájljához.
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.3.0</version>
 </dependency>
 ```
 
@@ -135,7 +171,7 @@ Annak érdekében, hogy az Azure Spring Cloud beépített funkciói a szolgálta
 
 ### <a name="service-registry"></a>Szolgáltatás beállításjegyzéke
 
-A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához az `spring-cloud-starter-netflix-eureka-client` itt látható módon vegye fel a függőséget a Pom. XML fájlba:
+A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához adja `spring-cloud-starter-netflix-eureka-client` meg a függőséget a pom.xml fájlban az itt látható módon:
 
 ```xml
     <dependency>
@@ -174,7 +210,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-configuration"></a>Elosztott konfiguráció
 
-Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-cloud-config-client` függőséget a Pom. xml fájl függőségek szakaszába:
+Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-cloud-config-client` függőséget a pom.xml fájl függőségek szakaszába:
 
 ```xml
 <dependency>
@@ -188,7 +224,7 @@ Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-
 
 ### <a name="metrics"></a>Mérőszámok
 
-Vegye fel a függőséget a `spring-boot-starter-actuator` Pom. xml fájl függőségek szakaszába, ahogy az itt látható:
+Vegye fel a függőséget a `spring-boot-starter-actuator` pom.xml fájl függőségek szakaszába, ahogy az itt látható:
 
 ```xml
 <dependency>
@@ -199,9 +235,12 @@ Vegye fel a függőséget a `spring-boot-starter-actuator` Pom. xml fájl függ�
 
  A metrikák rendszeres időközönként a JMX-végpontokról vannak leképezve. A metrikákat a Azure Portal használatával jelenítheti meg.
 
+ > [!WARNING]
+ > Adja meg a `spring.jmx.enabled=true` konfigurációs tulajdonságot. Ellenkező esetben a metrikák nem megjeleníthetők Azure Portalban.
+
 ### <a name="distributed-tracing"></a>Elosztott nyomkövetés
 
-A következő és Függőségek belefoglalása a `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Pom. xml fájl függőségek szakaszába:
+Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` függőségeket a pom.xml fájl függőségek szakaszában:
 
 ```xml
 <dependency>

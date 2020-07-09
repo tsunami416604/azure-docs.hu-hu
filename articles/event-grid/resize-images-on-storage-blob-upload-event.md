@@ -1,23 +1,14 @@
 ---
 title: 'Oktatóanyag: Azure Event Grid használata a feltöltött képek átméretezésének automatizálásához'
 description: 'Oktatóanyag: a Azure Event Grid az Azure Storage-ban blob-feltöltéseket indíthat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.'
-services: event-grid, functions
-author: spelluru
-manager: jpconnoc
-editor: ''
-ms.service: event-grid
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/07/2020
+ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652716"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105795"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
@@ -31,7 +22,7 @@ Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési f
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -62,7 +53,11 @@ Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login`
 
 Ha korábban még nem regisztrálta az Event Grid erőforrás-szolgáltatót az előfizetésében, mindenképp regisztrálja.
 
-```azurecli-interactive
+```bash
+az provider register --namespace Microsoft.EventGrid
+```
+
+```powershell
 az provider register --namespace Microsoft.EventGrid
 ```
 
@@ -72,17 +67,43 @@ Az Azure Functions szolgáltatásnak egy általános célú tárfiókra van szü
 
 1. Állítson be egy változót, amely az előző oktatóanyagban létrehozott erőforráscsoport nevét fogja tárolni.
 
-    ```azurecli-interactive
+    ```bash
     resourceGroupName="myResourceGroup"
     ```
-2. Állítson be egy változót az Azure Functions által igényelt új Storage-fiók nevéhez.
-    ```azurecli-interactive
+
+    ```powershell
+    $resourceGroupName="myResourceGroup"
+    ```
+
+1. Állítson be egy változót a létrehozandó erőforrások helyének tárolására. 
+
+    ```bash
+    location="eastus"
+    ```
+
+    ```powershell
+    $location="eastus"
+    ```
+
+1. Állítson be egy változót az Azure Functions által igényelt új Storage-fiók nevéhez.
+
+    ```bash
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Hozza létre az Azure-függvényhez tartozó Storage-fiókot.
 
-    ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    ```powershell
+    $functionstorage="<name of the storage account to be used by the function>"
+    ```
+
+1. Hozza létre az Azure-függvényhez tartozó Storage-fiókot.
+
+    ```bash
+    az storage account create --name $functionstorage --location $location \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
+    ```
+
+    ```powershell
+    az storage account create --name $functionstorage --location $location `
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -94,14 +115,25 @@ A következő parancsban adja meg a saját egyedi Function-alkalmazásának nev�
 
 1. Adja meg a létrehozandó Function alkalmazás nevét.
 
-    ```azurecli-interactive
+    ```bash
     functionapp="<name of the function app>"
     ```
-2. Hozza létre az Azure-függvényt.
 
-    ```azurecli-interactive
+    ```powershell
+    $functionapp="<name of the function app>"
+    ```
+
+1. Hozza létre az Azure-függvényt.
+
+    ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
+      --functions-version 2
+    ```
+
+    ```powershell
+    az functionapp create --name $functionapp --storage-account $functionstorage `
+      --resource-group $resourceGroupName --consumption-plan-location $location `
       --functions-version 2
     ```
 
@@ -113,8 +145,7 @@ A függvénynek szüksége van a blob Storage-fiókhoz tartozó hitelesítő ada
 
 # <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
-```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
+```bash
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -123,11 +154,18 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+```powershell
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
 
-```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
+  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
 
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -138,6 +176,20 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
   AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
   AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
+  -n $blobStorageAccount --query [0].value --output tsv)
+
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
+  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
   AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
@@ -153,21 +205,34 @@ Most már üzembe helyezhet egy függvénykód-projektet a függvényalkalmazás
 
 A minta C# átméretezési függvény a [githubon](https://github.com/Azure-Samples/function-image-upload-resize)érhető el. Telepítse a programkódot a Function alkalmazásba az az [functionapp Deployment Source config](/cli/azure/functionapp/deployment/source) parancs használatával.
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+```powershell
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
+  --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```
+
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal.
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
+
+```powershell
+az functionapp deployment source config --name $functionapp `
+  --resource-group $resourceGroupName --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
+```
+
 ---
 
 A kép átméretezése függvényt az Event Grid szolgáltatásból küldött HTTP-kérések indítják el. Egy esemény-előfizetés létrehozásával utasítja az Event Gridet, hogy ezeket az értesítéseket a függvénye URL-címére szeretné kapni. Ebben az oktatóanyagban blobok által létrehozott eseményekre iratkozik fel.
@@ -180,9 +245,9 @@ A projekt az `EventGridTrigger` típusú eseményindítót használja. Az által
 
 A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function.json és run.csx fájlt](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function. JSON és az index. js fájlt](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+Ha többet szeretne megtudni erről a függvényről, tekintse [meg afunction.jsés index.js fájlokat](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
 ---
 
@@ -206,18 +271,19 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
-    | **Név** | imageresizersub | Az új esemény-előfizetés azonosítóneve. |
+    | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. |
     | **Témakörtípus** | Tárfiókok | Válassza ki a Storage-fiók eseményszolgáltatóját. |
     | **Előfizetés** | Az Azure-előfizetése | Alapértelmezés szerint az aktuális Azure-előfizetés van kiválasztva. |
     | **Erőforráscsoport** | myResourceGroup | Válassza a **Meglévő használata** elemet, majd válassza ki az oktatóanyagban használt erőforráscsoportot. |
     | **Erőforrás** | Saját Blob Storage-fiók | Válassza ki a létrehozott Blob Storage-fiókot. |
+    | **Rendszertéma neve** | imagestoragesystopic | Adja meg a rendszer témakör nevét. A rendszertémakörökről a [rendszertémakörök áttekintésében](system-topics.md)talál további információt. |    
     | **Eseménytípusok** | Létrehozott blob | Törölje a jelölést az összes típus mellől a **Létrehozott blob** kivételével. A rendszer csak a `Microsoft.Storage.BlobCreated` eseménytípusokat adja át a függvénynek. |
     | **Végpont típusa** | automatikusan létrehozott | Előre definiált **Azure-függvényként**. |
     | **Végpont** | automatikusan létrehozott | A függvény neve. Ebben az esetben ez a **miniatűr**. |
 
 1. Váltson a **szűrők** lapra, és végezze el a következő műveleteket:
     1. Válassza a **tulajdonosi szűrés engedélyezése** lehetőséget.
-    2. A **Tárgy megkezdéséhez**adja meg a következő értéket: **/blobServices/default/containers/images/Blobs/**.
+    1. A **Tárgy megkezdéséhez**adja meg a következő értéket: **/blobServices/default/containers/images/Blobs/**.
 
         ![Az esemény-előfizetés szűrőjének megadása](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
@@ -237,7 +303,7 @@ Figyelje meg, hogy miután a feltöltött rendszerkép eltűnik, a feltöltött 
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezi ezt a képet a *miniatűrök* tárolóba, és a webes ügyfél tölti le.
 

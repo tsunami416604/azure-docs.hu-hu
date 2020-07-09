@@ -2,18 +2,17 @@
 title: B sorozat – feltört – Azure Virtual Machines
 description: Ismerteti a feltört Azure-beli VM-méretek B sorozatát.
 services: virtual-machines
+ms.subservice: sizes
 author: ayshakeen
-manager: gwallace
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678545"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -58,7 +57,7 @@ Alapterv: 270%
 
 ![Óránkénti forgalmi adatok diagramja](./media/b-series-burstable/office-workload.png)
 
-| Forgatókönyv | Time | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
+| Forgatókönyv | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
 | --- | --- | --- | --- | --- |
 | B16ms üzembe helyezése | Üzembe helyezés | Üzembe helyezés  | 480 (kezdeti kreditek) | 480 |
 | Nincs forgalom | 0:00 | 0 | 162 | 642 |
@@ -86,7 +85,7 @@ Alapterv: 270%
 | Nincs forgalom | 22:00 | 0 | 162 | 642 |
 | Nincs forgalom | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> az óránként felhasznált kreditek/kreditek a következővel egyenértékűek `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`:.  
+<sup>1</sup> az óránként felhasznált kreditek/kreditek a következővel egyenértékűek: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
 Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, az óradíj a $0,936/óra (havi $673,92), valamint a 16 vCPU és 64 GiB memóriával rendelkező B16ms esetében a ráta $0,794 óránként (havi $547,86). <b>Ez 15%-os megtakarítást eredményez.</b>
 

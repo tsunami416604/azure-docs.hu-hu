@@ -8,10 +8,9 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125774"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
@@ -38,14 +37,14 @@ A Azure Diagnostics bővítmény egy **adattároló** nevű funkciót használ a
 ## <a name="author-a-resource-manager-template"></a>Resource Manager-sablon készítése 
 Ebben a példában egy nyilvánosan elérhető [minta sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)használhat:  
 
-- A **Azuredeploy. JSON** egy előre konfigurált Resource Manager-sablon egy virtuálisgép-méretezési csoport telepítéséhez.
+- **AAzuredeploy.json** egy virtuálisgép-méretezési csoport üzembe helyezéséhez előre konfigurált Resource Manager-sablon.
 
-- A **Azuredeploy. Parameters. JSON** egy olyan paraméter-fájl, amely a virtuális géphez beállítani kívánt adatokat, például a felhasználónevet és a jelszót tárolja. Az üzembe helyezés során a Resource Manager-sablon a fájlban megadott paramétereket használja. 
+- **AAzuredeploy.parameters.json** paraméter olyan fájl, amely a virtuális géphez beállítani kívánt felhasználónevet és jelszót tárolja. Az üzembe helyezés során a Resource Manager-sablon a fájlban megadott paramétereket használja. 
 
 Töltse le és mentse a fájlokat helyileg. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Módosítsa a azuredeploy. Parameters. JSON fájlt
-Nyissa meg a **azuredeploy. Parameters. JSON** fájlt:  
+###  <a name="modify-azuredeployparametersjson"></a>azuredeploy.parameters.jsmódosítása
+Nyissa meg a **azuredeploy.parameters.js** fájlt:  
  
 - Adjon meg egy **vmSKU** , amelyet központilag telepíteni szeretne. Javasoljuk, hogy Standard_D2_v3. 
 - Adja meg a virtuálisgép-méretezési csoporthoz használni kívánt **windowsOSVersion** . A 2016-Datacenter használatát javasoljuk. 
@@ -54,8 +53,8 @@ Nyissa meg a **azuredeploy. Parameters. JSON** fájlt:
 - Adja meg a virtuálisgép-méretezési csoport **adminUsername** és **adminPassword** értékeit. Ezek a paraméterek a méretezési csoportba tartozó virtuális gépek távoli elérésére szolgálnak. Ha el szeretné kerülni, hogy a virtuális gép eltérítve legyen, **ne használja a** sablonban szereplőket. A robotok a nyilvános GitHub-adattárakban keresik meg az internetet felhasználónevek és jelszavak számára. Valószínűleg ezekkel az alapértékekkel tesztelik a virtuális gépeket. 
 
 
-###  <a name="modify-azuredeployjson"></a>Azuredeploy. JSON módosítása
-Nyissa meg a **azuredeploy. JSON** fájlt. 
+###  <a name="modify-azuredeployjson"></a>azuredeploy.jsmódosítása
+Nyissa meg a **azuredeploy.js** fájlt. 
 
 Adjon hozzá egy változót a Storage-fiók adatainak tárolására a Resource Manager-sablonban. A diagnosztikai konfigurációs fájlban megadott naplók vagy teljesítményszámlálók a Azure Monitor metrika-tárolóba és az itt megadott Storage-fiókba is íródnak: 
 
@@ -266,7 +265,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
 1. Miután az üzembe helyezés sikeres volt, keresse meg a virtuálisgép-méretezési csoportját a Azure Portal. A Azure Monitornak metrikákat kell kibocsátania. 
 
    > [!NOTE]  
-   > A kiválasztott **vmSkuSize**hibákba ütközhet. Ebben az esetben térjen vissza a **azuredeploy. JSON** fájlra, és frissítse a **vmSkuSize** paraméter alapértelmezett értékét. Javasoljuk, hogy próbálkozzon **Standard_DS1_v2**. 
+   > A kiválasztott **vmSkuSize**hibákba ütközhet. Ebben az esetben térjen vissza a **azuredeploy.js** fájlhoz, és frissítse a **vmSkuSize** paraméter alapértelmezett értékét. Javasoljuk, hogy próbálkozzon **Standard_DS1_v2**. 
 
 
 ## <a name="chart-your-metrics"></a>A metrikák diagramja 

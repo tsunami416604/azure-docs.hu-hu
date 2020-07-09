@@ -1,24 +1,24 @@
 ---
 title: Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 description: Megtudhatja, hogyan hozhat létre virtuálisgép-ajánlatot az Azure Marketplace-en a szükséges SKU-val.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: emuench
+ms.author: mingshen
+ms.date: 06/17/2020
+ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847922"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110980"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuális gépeket az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Windows-alapú és a Linux-alapú virtuális gépeket is tartalmazza, amelyek egy operációs rendszert, egy virtuális merevlemezt (VHD) és legfeljebb 16 adatlemezt tartalmaznak. 
 
-Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
+Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="introduction"></a>Introduction (Bevezetés)
 
@@ -33,19 +33,19 @@ Ha közzéteszi az ajánlatait az Azure Marketplace-en, a következőket teheti:
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Ha még nem tette meg, tekintse át a [virtuálisgép-ajánlat közzétételi útmutatóját](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) és az Azure-beli virtuális gép anyagát:
+Ha még nem tette meg, tekintse át a [virtuálisgép-ajánlat közzétételi útmutatóját](../marketplace-virtual-machines.md) és az Azure-beli virtuális gép anyagát:
 
 - Gyors útmutatók
   - [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates)
 - Oktatóanyagok
-  - [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Linux rendszerű virtuális gépek](../../virtual-machines/linux/tutorial-manage-vm.md)
+  - [Windows rendszerű virtuális gépek](../../virtual-machines/windows/tutorial-manage-vm.md)
 - Példák
-  - [Azure CLI-minták Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
-  - [Azure PowerShell Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
-  - [Azure CLI-minták Windows rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
-  - [Azure PowerShell Windows rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [Azure CLI-minták Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/cli-samples.md)
+  - [Azure PowerShell Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/powershell-samples.md)
+  - [Azure CLI-minták Windows rendszerű virtuális gépekhez](../../virtual-machines/windows/cli-samples.md)
+  - [Azure PowerShell Windows rendszerű virtuális gépekhez](../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>A technikai ismeretek alapjai
 
@@ -63,7 +63,7 @@ A mérnöki csapatának alapvető ismeretekkel kell rendelkeznie a következő M
 2. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése**elemet.
 3. Az **Áttekintés** lapon válassza az **új ajánlat**Azure-beli  >  **virtuális gép**lehetőséget.
 
-    ![Képernyőkép a bal oldali ablaktábla menüpontok és az "új ajánlat" gomb megjelenítéséhez.](./media/new-offer-azure-vm.png)
+    ![Képernyőkép a bal oldali ablaktábla menüpontok és az "új ajánlat" gomb megjelenítéséhez.](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végrehajtott módosítások csak az ajánlat ismételt közzététele után jelennek meg az Azure piactéren. A módosítások végrehajtása után ügyeljen arra, hogy mindig újra tegye közzé az ajánlatokat.
@@ -86,14 +86,14 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 ### <a name="test-drive"></a>Tesztverzió
 
-A *tesztvezetés* nagyszerű lehetőség arra, hogy ajánlatot nyújtson a potenciális ügyfeleknek. Lehetővé teszi számukra a "kipróbálás előtt" lehetőséget, amely növelheti a konverziót, és nagymértékben minősített érdeklődőket hozhat. További információ: [Mi az a test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+A *tesztvezetés* nagyszerű lehetőség arra, hogy ajánlatot nyújtson a potenciális ügyfeleknek. Lehetővé teszi számukra a "kipróbálás előtt" lehetőséget, amely növelheti a konverziót, és nagymértékben minősített érdeklődőket hozhat. További információ: [Mi az a test Drive?](../what-is-test-drive.md).
 
 Ha egy tesztelési meghajtót egy meghatározott ideig szeretne engedélyezni, jelölje be a **Test Drive engedélyezése** jelölőnégyzetet. Ha el szeretné távolítani a teszt meghajtót az ajánlatból, törölje a jelet a jelölőnégyzetből.
 
 További tesztelési meghajtó erőforrásai:
 
 - [Gyakorlati tanácsok](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Marketingre vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Marketingre vonatkozó ajánlott eljárások](../what-is-test-drive.md)
 - [A test Drive – áttekintés letöltése](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF-fájl (ellenőrizze, hogy ki van-e kapcsolva az előugró ablak blokkolása).
 
 ### <a name="customer-leads"></a>Ügyfél-érdeklődők
@@ -101,12 +101,12 @@ További tesztelési meghajtó erőforrásai:
 Ha közzéteszi az ajánlatot a kereskedelmi piactéren a partner centerrel, kapcsolja össze azt az Ügyfélkapcsolat-kezelési (CRM) rendszerhez. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket. Ha egy tesztelési meghajtót szeretne engedélyezni, a CRM-hez való csatlakozásra van szükség (lásd az előző szakaszt). Ellenkező esetben a CRM-hez való csatlakozás nem kötelező.
 
 1. Válasszon egy érdeklődési célt, ahová küldhetjük az érdeklődőket. A partner Center a következő CRM-rendszereket támogatja:
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Ha a CRM-rendszer nem szerepel a listán, az [Azure Table Storage](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy egy [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfél-érdeklődő adatait. Ezután exportálja az adatait a CRM-rendszerbe.
+    > Ha a CRM-rendszer nem szerepel a listán, az [Azure Table Storage](commercial-marketplace-lead-management-instructions-azure-table.md) vagy egy [https-végpont](commercial-marketplace-lead-management-instructions-https.md) használatával tárolhatja az ügyfél-érdeklődő adatait. Ezután exportálja az adatait a CRM-rendszerbe.
 
 1. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
 1. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben, a Microsoft ellenőrzi a kapcsolatot, és elküld egy tesztelési érdeklődőt. Noha az ajánlat előzetes megtekintése előtt is elérhetővé válik, az érdeklődői kapcsolatok teszteléséhez próbálja meg saját maga is üzembe helyezni az ajánlatot az előnézeti környezetben.
@@ -116,11 +116,16 @@ Ha közzéteszi az ajánlatot a kereskedelmi piactéren a partner centerrel, kap
 
 ## <a name="properties"></a>Tulajdonságok
 
-A **Tulajdonságok** lapon megadhatja azokat a kategóriákat és iparágakat, amelyek az ajánlat az Azure Marketplace-en, az alkalmazás verziószámán és az ajánlatát támogató jogi szerződések szerint csoportosíthatók.
+A **Tulajdonságok** lapon megadhatja azokat a kategóriákat, amelyek az ajánlat az Azure Marketplace-en, az alkalmazás verziószámán és az ajánlatát támogató jogi szerződések szerint csoportosíthatók.
 
-### <a name="categories"></a>Kategóriák
+### <a name="category"></a>Kategória
 
-Válasszon legalább egyet, és legfeljebb öt kategóriát. Ezekkel a kategóriákkal helyezheti el ajánlatát a megfelelő Azure Marketplace-beli keresési területeken. Az ajánlat leírásában ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. A virtuális gépekre vonatkozó ajánlatok az Azure Marketplace-en, a **számítási** kategóriában jelennek meg.
+Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
+
+- Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+
+Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md). A virtuális gép az Azure Marketplace-en mindig a **számítási** kategóriában jelenik meg.
 
 ### <a name="legal"></a>Jogi tudnivalók
 
@@ -143,7 +148,7 @@ Ajánlati feltételeket és kikötéseket kell megadnia ügyfeleinek. Erre két 
   > [!NOTE]
   > Miután közzétette az ajánlatot a kereskedelmi piactérre vonatkozó standard szerződés használatával, nem használhatja a saját egyéni használati feltételeit. A standard szerződéssel vagy a saját használati feltételeivel is kínálhat megoldást.
 
-  További információ: [standard szintű szerződés a Microsoft kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/standard-contract). Töltse le a [standard szintű szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
+  További információ: [standard szintű szerződés a Microsoft kereskedelmi piactéren](../standard-contract.md). Töltse le a [standard szintű szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
 
   **Standard szintű szerződés módosításai**
 
@@ -171,7 +176,7 @@ Ajánlati feltételeket és kikötéseket kell megadnia ügyfeleinek. Erre két 
 Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az ajánlat nevét, a leírását, a hivatkozásokat és a névjegyeket.
 
 > [!NOTE]
-> Az ajánlat tartalmait, például a leírást, a dokumentumokat, a képernyőképeket és a használati feltételeket nem kell angol nyelven megadni, feltéve, hogy az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a \< nem angol nyelvű>ban érhető el." Megadhat egy URL-címet is, amely egy olyan webhelyre mutató hivatkozást tartalmaz, amely nem az ajánlatban szereplő tartalomban használt tartalommal rendelkezik.
+> Az ajánlat tartalmait, például a leírást, a dokumentumokat, a képernyőképeket és a használati feltételeket nem kell angolul megadnia, feltéve, hogy az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a (z) verzióban érhető el \<non-English language> ." Megadhat egy URL-címet is, amely egy olyan webhelyre mutató hivatkozást tartalmaz, amely nem az ajánlatban szereplő tartalomban használt tartalommal rendelkezik.
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
@@ -237,8 +242,8 @@ Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén ha
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A homályos képek miatt a rendszer elutasítja a kérelmet.
 
->[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a *https://upload.xboxlive.com* partner központ által használt szolgáltatást.
+>[!NOTE]
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace-logók
 
@@ -259,7 +264,7 @@ Akár öt képernyőképet is felvehet, amelyek bemutatják, hogyan működik az
 
 Akár öt videót is hozzáadhat, amelyek bemutatják az ajánlatát. A videókat külső videó szolgáltatásban kell tárolni. Adja meg a videó nevét, webcímeit és miniatűr PNG-képét, amely 1280 &times; 720 képpont.
 
-További információforrások a piactéren: ajánlott [eljárások a Piactéri ajánlatokhoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+További információforrások a piactéren: ajánlott [eljárások a Piactéri ajánlatokhoz](../gtm-offer-listing-best-practices.md).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -307,7 +312,7 @@ A **terv azonosítója** mezőben hozzon létre egy egyedi díjcsomag-azonosít�
 
 A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek akkor látják ezt a nevet, amikor döntik el, hogy melyik tervet kívánják kiválasztani az ajánlaton belül. Hozzon létre egy egyedi nevet, amely egyértelműen rámutat a csomagok közötti különbségekre. Például megadhatja a **Windows Servert** utólagos *Pay-as-you-go*elszámolású, *BYOL*, *speciális*és *vállalati* csomagokkal.
 
-Kattintson a **Létrehozás** gombra.
+Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -324,11 +329,11 @@ Ha több azonos típusú csomaggal rendelkezik, és a csomagok azonosak egymás 
 
 A tervet legalább egy Azure-régióban elérhetővé kell tenni.
 
-Válassza ki az **Azure globális** lehetőséget, hogy a tervet elérhetővé tegye az összes olyan globális Azure-régióban, amely kereskedelmi Piactéri integrációt tartalmaz. További információ: a [földrajzi Elérhetőség és a pénznemek támogatása](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Válassza ki az **Azure globális** lehetőséget, hogy a tervet elérhetővé tegye az összes olyan globális Azure-régióban, amely kereskedelmi Piactéri integrációt tartalmaz. További információ: a [földrajzi Elérhetőség és a pénznemek támogatása](../marketplace-geo-availability-currencies.md).
 
-Válassza a **Azure Government** lehetőséget, hogy a terv elérhető legyen a [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) régióban. Ez a régió szabályozott hozzáférést biztosít az Egyesült Államok szövetségi, állami, helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereinknek. Ön, mint közzétevő, felelős a megfelelőségi ellenőrzésért, a biztonsági intézkedésekért és az ajánlott eljárásokhoz. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az USA-ban található).
+Válassza a **Azure Government** lehetőséget, hogy a terv elérhető legyen a [Azure Government](../../azure-government/documentation-government-welcome.md) régióban. Ez a régió szabályozott hozzáférést biztosít az Egyesült Államok szövetségi, állami, helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereinknek. Ön, mint közzétevő, felelős a megfelelőségi ellenőrzésért, a biztonsági intézkedésekért és az ajánlott eljárásokhoz. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az USA-ban található).
 
-Mielőtt közzéteszi a [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), tesztelje és érvényesítse a tervet a környezetben, mert bizonyos végpontok eltérőek lehetnek. A csomag beállításához és teszteléséhez kérjen egy próbaverziós fiókot a [Microsoft Azure Government próbaverzió](https://azure.microsoft.com/global-infrastructure/government/request/) oldaláról.
+Mielőtt közzéteszi a [Azure Government](../../azure-government/documentation-government-manage-marketplace-partners.md), tesztelje és érvényesítse a tervet a környezetben, mert bizonyos végpontok eltérőek lehetnek. A csomag beállításához és teszteléséhez kérjen egy próbaverziós fiókot a [Microsoft Azure Government próbaverzió](https://azure.microsoft.com/global-infrastructure/government/request/) oldaláról.
 
 > [!NOTE]
 > Miután közzétette és elérhetővé tette a csomagot egy adott Azure-régióban, nem távolíthatja el a régiót.
@@ -400,10 +405,14 @@ Megtervezheti, hogy az egyes tervek mindenki számára láthatók legyenek, vagy
 
 **Privát célközönség**: a terv csak az előkiválasztott közönség számára látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy megváltoztathatja nyilvánosra. Miután megnyitotta a csomagot, nyilvánosnak kell maradnia. Nem módosítható egy privát csomagra.
 
-**Korlátozott célközönség (Azure-előfizetési azonosítók)**: rendelje hozzá azt a célközönséget, amely hozzáférhet ehhez a privát csomaghoz az Azure-előfizetési azonosítók használatával. Igény szerint az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását is megadhatja. Akár 10 előfizetés-azonosítót is hozzáadhat manuálisan vagy akár 20 000 azonosítóhoz, ha CSV-táblázatot importál. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és minden betűnek kisbetűsnek kell lennie.
-
 > [!NOTE]
 > A privát vagy korlátozott célközönség nem azonos az **előnézeti ablaktáblán** meghatározott előnézeti célközönséggel. Az előzetes verzió célközönsége az Azure Marketplace-en való élő közzététel _előtt_ elérheti az ajánlatát. Bár a privát célközönség választása csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes magán-és nyilvános csomagot megtekintheti érvényesítés céljából.
+
+**Korlátozott célközönség (Azure-előfizetési azonosítók)**: rendelje hozzá azt a célközönséget, amely hozzáférhet ehhez a privát csomaghoz az Azure-előfizetési azonosítók használatával. Igény szerint az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását is megadhatja. Akár 10 előfizetés-azonosítót is hozzáadhat manuálisan vagy akár 20 000 azonosítóhoz, ha CSV-táblázatot importál. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és minden betűnek kisbetűsnek kell lennie.
+
+>[!Note]
+>A privát ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített Azure-előfizetések esetében.
+
 
 #### <a name="hide-a-plan"></a>Csomag elrejtése
 
@@ -416,7 +425,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ### <a name="technical-configuration"></a>Technikai konfiguráció
 
-Adja meg a csomaghoz társított képeket és egyéb technikai tulajdonságokat. További információ: Azure-beli [virtuális gép technikai eszközének létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Adja meg a csomaghoz társított képeket és egyéb technikai tulajdonságokat. További információ: Azure-beli [virtuális gép technikai eszközének létrehozása](create-azure-container-technical-assets.md).
 
 > [!NOTE]
 > A **technikai konfiguráció** lap nem jelenik meg, ha úgy konfigurálta ezt a csomagot, hogy a csomagok újrafelhasználását egy másik csomagból a **terv beállítása** lapon.
@@ -450,7 +459,7 @@ A **gyorsított hálózatkezelés támogatásához**válassza ki, hogy a virtuá
 Adja meg a lemez verziószámát és a virtuálisgép-lemezképek megosztott elérési aláírásának (SAS) URI-JÁT. Minden virtuálisgép-rendszerképhez akár 16 adatlemezt is hozzáadhat. Egy adott beadványban csak egy új rendszerkép-verziót adjon meg. A rendszerkép közzététele után nem szerkesztheti, de törölheti is. Egy verzió törlése megakadályozza, hogy az új és a meglévő felhasználók is üzembe lehessen helyezni a törölt verzió új példányát.
 
 - **Lemez verziója**: a megadott lemezkép verziója.
-- **Sas URI**: az Azure Storage-fiók azon helye, ahová az operációs rendszer VHD-jét tárolta.
+- **Sas URI**: az Azure Storage-fiók azon helye, ahová az operációs rendszer VHD-jét tárolta. A SAS URI beszerzésével kapcsolatos további információkért lásd: [a megosztott hozzáférési aláírás URI-ja](get-sas-uri.md)a virtuálisgép-rendszerképhez.
 - Az adatlemez-lemezképek az Azure Storage-fiókokban tárolt VHD közös hozzáférési aláírási URI-k is.
 - Egy csomagban való beküldéshez csak egy képet adjon hozzá.
 
@@ -466,13 +475,13 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="test-drive"></a>Tesztverzió
 
-Állítson be egy bemutatót vagy egy *tesztelési meghajtót*, amely lehetővé teszi, hogy az ügyfelek a megvásárlásuk előtt meghatározott időn belül kipróbálják az ajánlatot. Az ügyfelek számára bemutató környezet létrehozásához tekintse meg [a kereskedelmi piactéren elérhető tesztelési ajánlatokat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
+Állítson be egy bemutatót vagy egy *tesztelési meghajtót*, amely lehetővé teszi, hogy az ügyfelek a megvásárlásuk előtt meghatározott időn belül kipróbálják az ajánlatot. Az ügyfelek számára bemutató környezet létrehozásához tekintse meg [a kereskedelmi piactéren elérhető tesztelési ajánlatokat](test-drive.md).
 
 A tesztelési meghajtó engedélyezéséhez jelölje be a **Test Drive engedélyezése** jelölőnégyzetet az **ajánlat beállítása** ablaktáblán. Ha el szeretné távolítani a teszt meghajtót az ajánlatból, törölje a jelet a jelölőnégyzetből.
 
 További tesztelési meghajtó erőforrásai:
 
-- [Marketingre vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Marketingre vonatkozó ajánlott eljárások](../what-is-test-drive.md)
 - [Gyakorlati tanácsok](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - A [Test Drive áttekintése](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF-fájl (ellenőrizze, hogy ki van-e kapcsolva az előugró ablak blokkolása)
 
@@ -507,39 +516,80 @@ Az **ajánlat áttekintése** lapon láthatók azok a lépések, amelyek az ajá
 
 Ez az oldal olyan hivatkozásokat is tartalmaz, amelyek segítenek az ajánlattal való együttműködésben az állapottól függően:
 
-- Ha az ajánlat egy Piszkozat: a [Piszkozat törlése ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Ha az ajánlat élő: [az ajánlat eladásának leállítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Ha az ajánlat előzetes verzióban érhető el: [Go-Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Ha még nem fejezte be a közzétevő kijelentkezését: [Közzététel megszakítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Ha az ajánlat egy Piszkozat: [törlési ajánlat törlése](update-existing-offer.md#delete-a-draft-offer))
+- Ha az ajánlat élő: [az ajánlat eladásának leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Ha az ajánlat előzetes verzióban érhető el: [Go-Live](publishing-status.md#publisher-approval))
+- Ha még nem fejezte be a közzétevő kijelentkezését: [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Marketplace-példák
 
-Az alábbi példák bemutatják, hogyan jelenik meg az ajánlat az Azure Marketplace-en.
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace piactéren:
 
-### <a name="azure-marketplace-offer-details"></a>Az Azure Marketplace ajánlatának részletei
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
-![Példa az Azure Marketplace ajánlat részletek oldalára](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-### <a name="azure-marketplace-search-results"></a>Az Azure Marketplace keresési eredményei
+1. Nagyméretű embléma
+2. Price
+3. Kategóriák
+4. használati feltételei
+5. Adatvédelmi szabályzat címe (hivatkozás)
+6. Ajánlat neve
+7. Leírás
+8. Hasznos hivatkozások
+9. Képernyőképek/videók
 
-![Példa az Azure Marketplace keresési részletek oldalára](media/avm-create2.png)
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace keresési eredményei között:
 
-### <a name="azure-marketplace-plan-details"></a>Az Azure Marketplace-csomag részletei
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactér keresési eredményei között.":::
 
-![Példa az Azure Marketplace-csomag részletek oldalára](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-### <a name="azure-portal-offer-details"></a>Azure Portal ajánlat részletei
+1. Kis embléma
+2. Ajánlat neve
+3. Keresési eredmények összegzése
+4. Próbaverzió
 
-![Azure Portal ajánlat részletek oldalának példája](media/avm-create4.png)
+<br>Íme egy példa az Azure Marketplace-csomag részleteire:
 
-### <a name="azure-portal-search-results"></a>Azure Portal keresési eredmények
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Bemutatja az Azure Marketplace-csomag részleteit.":::
 
-![Azure Portal keresési eredmények oldalának példája](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-### <a name="azure-portal-plan-details"></a>Azure Portal csomag részletei
+1. Csomag neve és összegzése
+2. VIRTUÁLIS gépek méretének ajánlása
+3. Díjszabás megtervezése
 
-![Azure Portal terv részletei lap példa](media/avm-create6.png)
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
 
-## <a name="next-steps"></a>További lépések
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
 
-- [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Name
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek/videók
+
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portal keresési eredmények között:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Azure Portal keresési eredmények között.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Kis embléma
+2. Ajánlat neve
+3. Keresési eredmények összegzése
+
+<br>Íme egy példa a Azure Portal terv részleteire:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="A Azure Portal terv részleteit mutatja be.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Csomag neve
+2. Csomag leírása
+
+## <a name="next-step"></a>Következő lépés
+
+- [Meglévő ajánlat frissítése a kereskedelmi piactéren](update-existing-offer.md)

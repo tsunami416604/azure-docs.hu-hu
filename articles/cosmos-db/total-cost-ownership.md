@@ -7,22 +7,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72754795"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954655"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 
 Az Azure Cosmos DB részletes, több-bérlős működésre és erőforrás-szabályozásra lett tervezve. Ez lehetővé teszi, hogy az Azure Cosmos DB jelentősen alacsonyabb költségekkel működjön, és így a felhasználók pénzt takaríthassanak meg. Jelenleg az Azure Cosmos DB több mint 280 ügyfél általi számítási feladatot támogat gépenként, miközben ennek sűrűsége folyamatosan nő, valamint több ezret egy fürtön belül. Elosztja az ügyfél általi számítási feladatok replikáit egy adott fürt különböző gépei, valamint egy adatközpont több fürtje között a terheléskiegyenlítés érdekében. További információt [a Azure Cosmos db: globálisan elosztott adatbázisok határának](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)leküldésével foglalkozó témakörben talál. Az erőforrás-szabályozás, a több-bérlős és az Azure-infrastruktúrával való natív integráció miatt a Azure Cosmos DB átlagosan 4 – 6-szor olcsóbb, mint a MongoDB, Cassandra vagy más, IaaS-on futó OSS-NoSQL, és akár 10-szer olcsóbb, mint a helyszínen futó adatbázismotor. Tekintse meg a [NoSQL-adatbázis felhőalapú szolgáltatásának teljes költsége (nem) tulajdonjogát](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
-Az OSS NoSQL adatbázis-megoldásai, például az Apache Cassandra, a MongoDB, a HBase, a motorok helyszíni használatra készültek. Felügyelt szolgáltatásként való felkínálás esetén a kiépített fürtök kezeléséhez és a figyelés támogatásához a bérlői adatbázissal egyenértékű Resource Manager-sablon felel meg. Az OSS NoSQL architektúrák jelentős működési terhelést igényelnek, és a szakértelmet nehéz és költséges lehet megtalálni. Másfelől Azure Cosmos DB egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy az adatbázis-infrastruktúra kezelése és karbantartása helyett az üzleti innovációra összpontosítsanak. 
+Az OSS NoSQL adatbázis-megoldásai, például az Apache Cassandra, a MongoDB, a HBase, a motorok helyszíni használatra készültek. Felügyelt szolgáltatásként való felkínálás esetén a kiépített fürtök kezeléséhez és a figyelés támogatásához a bérlői adatbázissal egyenértékű Resource Manager-sablon felel meg. Az OSS NoSQL architektúrák jelentős működési terhelést igényelnek, és a szakértelmet nehéz és költséges lehet megtalálni. Másfelől Azure Cosmos DB egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy az adatbázis-infrastruktúra kezelése és karbantartása helyett az üzleti innovációra összpontosítsanak.
 
 A natív adatbázis-szolgáltatás Azure Cosmos DBával ellentétben az OSS NoSQL adatbázis-motorokat nem az erőforrás-szabályozással vagy a részletes, az alapvető építészeti alapelveknek megfelelően építettük. Az OSS NoSQL-adatbázis-kezelők, például a Cassandra és a MongoDB, alapvető feltételezést tesznek, hogy a virtuális gép azon erőforrásai, amelyen futnak, elérhetők. Az adatbázis-hajtóművek sok esetben nem működhetnek, ha az erőforrások mennyisége egy bizonyos küszöbérték alá esik. Kisméretű virtuálisgép-példányok esetében például a gyártó által javasolt konfigurációk is elérhetők, amelyek általában nagyobb méretű virtuális gépeket javasolnak. Így nem üzemeltethető OSS-NoSQL vagy bármely más helyszíni adatbázismotor, és elérhetővé teheti azt egy olyan fogyasztáson alapuló díjszabási modell használatával, mint a kérelmek másodpercenkénti száma vagy a felhasznált tárterület.
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB teljes tulajdonlási költsége 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB teljes tulajdonlási költsége
 
 A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az adatbázis-infrastruktúra túlzott kiépítésének szükségességét. A Azure Cosmos DB erőforrások speciális konfigurációk vagy licencelési igények nélkül érhetők el. Ennek eredményeképpen a Azure Cosmos DB által támogatott alkalmazások az OSS NoSQL-adatbázisokhoz képest akár 70%-os teljes tulajdonlási díjat is futtathatnak. A valós idejű példákért tekintse meg az [ügyfelek használati eseteit](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). A Azure Cosmos DB díjszabási modell egyéb előnyei a következők:
 
@@ -30,7 +29,7 @@ A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az
 
 * **Nincs szükség NoSQL DevOps-felügyeletre:** Azure Cosmos DB az egyiknek nem kell DevOps használnia a központi telepítések kezeléséhez, karbantartás, méretezés vagy javítás végrehajtásához. Végrehajthatja az összes olyan munkaterhelést, amelyet a helyszíni vagy a felhőalapú infrastruktúrán üzemeltetett OSS NoSQL-fürtökkel tenne.
 
-![Azure Cosmos DB tulajdonlási díja](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB tulajdonlási díja" border="false":::
 
 * **Rugalmas méretezési képesség:** A Azure Cosmos DB átviteli sebesség fel-és leskálázással növelhető, így csökkentheti a tulajdonosi költségeket a nem maximális időpontokban. A felhőalapú infrastruktúrán üzembe helyezett OSS NoSQL-fürtök korlátozott rugalmasságot biztosítanak, és a helyszíni üzemelő példányok nem rugalmasak a definíciók alapján. Ha Azure Cosmos DB több átviteli sebességet is kiépít, az átviteli sebesség garantált a lineáris skálázás érdekében. Ezt a garanciát a pénzügyi SLA-kat és a esetek 99% percentilis-t bármilyen méretben biztonsági mentéssel készítjük.
 

@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369660"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488205"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Gyors útmutató: lekérdezések futtatása a portálon a keresési tallózó használatával
 
-A **Search Explorer** egy beépített lekérdezési eszköz, amellyel lekérdezéseket lehet futtatni az Azure Cognitive Search keresési indexében. Ez az eszköz megkönnyíti a lekérdezési szintaxis megtanulását, a lekérdezési vagy szűrési kifejezések tesztelését, illetve az index frissítésének eredményét az újabb tartalom meglétének ellenőrzésével.
+A **Search Explorer** egy beépített lekérdezési eszköz, amellyel lekérdezéseket lehet futtatni az Azure Cognitive Search keresési indexében. Ez az eszköz megkönnyíti a lekérdezési szintaxis, a lekérdezési vagy szűrési kifejezés tesztelését vagy az Adatfrissítés megerősítését, ha ellenőrzi, hogy létezik-e új tartalom az indexben.
 
-Ez a rövid útmutató a **Realestate-US-Sample-index** használatával mutatja be a keresési Explorert. A kérések a [keresési REST API](https://docs.microsoft.com/rest/api/searchservice/)alapján lettek kialakítva, és JSON-dokumentumként visszaadott válaszokat kapnak.
+Ez a rövid útmutató egy meglévő indexet használ a Search Explorer bemutatására. A kérések a [keresési REST API](https://docs.microsoft.com/rest/api/searchservice/)alapján lettek kialakítva, és JSON-dokumentumként visszaadott válaszokat kapnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
+Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
-+ **Realestate-US-Sample-index** használatos ehhez a rövid útmutatóhoz. Az [**adatok importálása**](search-import-data-portal.md) varázsló lépéseit bemutatva létrehozhatja az indexet a beépített minták adatforrásból.
++ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
+
++ Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
+
++ Ebben a rövid útmutatóban a *Realestate-US-Sample-index* használatos. Az index létrehozásához használja az [**adatimportálás**](search-import-data-portal.md) varázslót. Az első lépésben, amikor a rendszer megkérdezi az adatforrást, válassza a **minták** lehetőséget, majd válassza ki a **Realestate-US-Sample** adatforrást. Az index létrehozásához fogadja el az összes varázsló alapértelmezett beállítását.
 
 ## <a name="start-search-explorer"></a>A Search Explorer indítása
 
@@ -41,9 +45,9 @@ Ez a rövid útmutató a **Realestate-US-Sample-index** használatával mutatja 
 
 ## <a name="unspecified-query"></a>Meghatározatlan lekérdezés
 
-Ha először a tartalmat kívánja megtekinteni, hajtson végre egy üres keresést a kifejezés nélküli **Keresés** gombra kattintva. Az üres keresések első lekérdezésként hasznosak, mivel teljes dokumentumokat ad vissza, így áttekintheti a dokumentumok összeállítását. Üres keresés esetén a keresés nem történik meg, és a dokumentumok tetszőleges sorrendben lesznek visszaadva (`"@search.score": 1` minden dokumentum esetében). Alapértelmezés szerint a rendszer 50-dokumentumokat ad vissza egy keresési kérelemben.
+Ha először a tartalmat kívánja megtekinteni, hajtson végre egy üres keresést a kifejezés nélküli **Keresés** gombra kattintva. Az üres keresések első lekérdezésként hasznosak, mivel teljes dokumentumokat ad vissza, így áttekintheti a dokumentumok összeállítását. Üres keresés esetén a keresés nem történik meg, és a dokumentumok tetszőleges sorrendben lesznek visszaadva ( `"@search.score": 1` minden dokumentum esetében). Alapértelmezés szerint a rendszer 50-dokumentumokat ad vissza egy keresési kérelemben.
 
-Üres keresés egyenértékű szintaxisa: `*` vagy. `search=*`
+Üres keresés egyenértékű szintaxisa: `*` vagy `search=*` .
    
    ```http
    search=*
@@ -83,7 +87,7 @@ Adja hozzá a **$Count = True** értéket az indexben található egyezések sz�
 
 ## <a name="limit-fields-in-search-results"></a>Mezők korlátozása a keresési eredmények között
 
-[**$Select**](search-query-odata-select.md) hozzáadása az eredmények a explicit módon megnevezett mezőkre való korlátozásához a **Search Explorerben**olvasható kimenethez. A keresési karakterlánc és a **$Count = True**érték megtartásához előtag **&** argumentumai a következővel:. 
+[**$Select**](search-query-odata-select.md) hozzáadása az eredmények a explicit módon megnevezett mezőkre való korlátozásához a **Search Explorerben**olvasható kimenethez. A keresési karakterlánc és a **$Count = True**érték megtartásához előtag argumentumai a következővel: **&** . 
 
    ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
@@ -145,7 +149,7 @@ Ebben a rövid útmutatóban a **keresési tallózó** használatával kérdezet
 
 + A lekérdezési és szűrési kifejezések az Azure Cognitive Search által támogatott szintaxissal vannak tagolva. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de igény szerint a [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) is használhatja nagyobb teljesítményű lekérdezésekhez. A [szűrési kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData szintaxis.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
@@ -153,7 +157,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a lekérdezési struktúrákról és a szintaxisról, a Poster vagy egy azzal egyenértékű eszköz használatával hozzon létre lekérdezési kifejezéseket, amelyek az API több részét hasznosítják. A [keresési REST API](https://docs.microsoft.com/rest/api/searchservice/) különösen hasznos a tanuláshoz és a feltáráshoz.
 

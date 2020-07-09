@@ -1,25 +1,13 @@
 ---
 title: Prémium és standard szintű Azure Service Bus
 description: Ez a cikk a Azure Service Bus standard és prémium szintű csomagját ismerteti. Összehasonlítja ezeket a szinteket, és technikai különbségeket biztosít.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e211774d-821c-4d79-8563-57472d746c58
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337412"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
 
@@ -34,7 +22,7 @@ A következő táblázat néhány fontos eltérést emel ki.
 | Magas teljesítmény |Változó teljesítmény |
 | Kiszámítható teljesítmény |Változó késés |
 | Rögzített díjszabás |Használatalapú változó díjszabás |
-| Lehetőség a munkaterhelés vertikális fel- és leskálázására |N/A |
+| Lehetőség a munkaterhelés vertikális fel- és leskálázására |N.A. |
 | Legfeljebb 1 MB méretű üzenet |Legfeljebb 256 KB méretű üzenet |
 
 A **Service Bus prémium szintű üzenetkezelés** erőforrás-elkülönítést biztosít a CPU és a memória szintjén, így az ügyfél minden számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium szintű névterekhez 1, 2, 4 vagy 8 üzenetküldési egység is megvásárolható. Egyetlen munkaterhelés vagy entitás több üzenetkezelési egységre is kiterjedhet, és az üzenetkezelési egységek száma a következő időpontban módosítható:. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye.

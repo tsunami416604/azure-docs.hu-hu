@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amel
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804349"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
 
@@ -27,11 +27,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Figyelő és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-as vagy újabb verziójára van szükség a tanúsítvány létrehozásához és az IIS telepítéséhez. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az oktatóanyagban szereplő parancsok futtatásához futtatnia `Login-AzAccount` kell a parancsot az Azure-beli kapcsolatok létrehozásához is.
+Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-as vagy újabb verziójára van szükség a tanúsítvány létrehozásához és az IIS telepítéséhez. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az oktatóanyagban szereplő parancsok futtatásához futtatnia kell a parancsot az `Login-AzAccount` Azure-beli kapcsolatok létrehozásához is.
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
@@ -126,7 +126,7 @@ Először adja hozzá a *myListener* nevű figyelőt a 80-es porthoz.
 6. **Átirányítási cél**esetén válassza a **figyelő**lehetőséget.
 7. Győződjön meg arról, hogy a **cél figyelő** **appGatewayHttpListener**van beállítva.
 8. A **belefoglalási lekérdezési karakterlánc** és az **elérési út** beállításnál válassza az *Igen*lehetőséget.
-9. Válassza a **Hozzáadás** lehetőséget.
+9. Válassza a **Hozzáadás** elemet.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
@@ -146,7 +146,7 @@ Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, a
 12. A **hálózatkezelés**területen győződjön meg arról, hogy a terheléselosztási **beállítások** beállítás értéke **Application Gateway**.
 13. Győződjön meg arról, hogy az **Application Gateway** **myAppGateway**van beállítva.
 14. Győződjön meg arról, hogy az **alhálózat** **myBackendSubnet**értékre van beállítva.
-15. Kattintson a **Létrehozás** gombra.
+15. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>A méretezési csoport hozzárendelése a megfelelő háttér-készlethez
 

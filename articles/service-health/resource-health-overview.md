@@ -3,12 +3,11 @@ title: Azure Resource Health áttekintése
 description: A Azure Resource Health áttekintése
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159251"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041574"
 ---
 # <a name="resource-health-overview"></a>Resource Health áttekintése
  
@@ -18,7 +17,7 @@ Az [Azure-állapotjelentések](https://status.azure.com) az Azure-ügyfelek szé
 
 ## <a name="resource-definition-and-health-assessment"></a>Erőforrás-definíció és állapot-Értékelés
 
-Az *erőforrás* egy Azure-szolgáltatás adott példánya, például egy virtuális gép, egy webalkalmazás vagy egy SQL-adatbázis. A Resource Health különböző Azure-szolgáltatásokból származó jelek alapján állapítja meg, hogy az adott erőforrás kifogástalan állapotú-e. Ha egy erőforrás nem kifogástalan állapotú, Resource Health elemzi a probléma forrásának megállapításához szükséges további információkat. Emellett jelentéseket készít a Microsoft által a probléma megoldásához szükséges műveletekről, és azonosítja azokat a műveleteket, amelyeket el tud végezni.
+Az *erőforrás* egy Azure-szolgáltatás adott példánya, például egy virtuális gép, egy webalkalmazás vagy egy SQL Database. A Resource Health különböző Azure-szolgáltatásokból származó jelek alapján állapítja meg, hogy az adott erőforrás kifogástalan állapotú-e. Ha egy erőforrás nem kifogástalan állapotú, Resource Health elemzi a probléma forrásának megállapításához szükséges további információkat. Emellett jelentéseket készít a Microsoft által a probléma megoldásához szükséges műveletekről, és azonosítja azokat a műveleteket, amelyeket el tud végezni.
 
 Az állapot értékelésével kapcsolatos további információkért tekintse meg az erőforrástípusok és állapot-ellenőrzések listáját [Azure Resource Health](resource-health-checks-resource-types.md).
 

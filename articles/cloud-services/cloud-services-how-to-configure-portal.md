@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811415"
 ---
 # <a name="how-to-configure-cloud-services"></a>A Cloud Services Konfigurálása
@@ -46,7 +45,7 @@ Ha egy adott operációsrendszer-verziót kell megcéloznia, beállíthatja a **
 
 ## <a name="monitoring"></a>Figyelés
 
-Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások** > **riasztási szabályok** > riasztás**hozzáadása**elemre.
+Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások**  >  **riasztási szabályok**riasztás  >  **hozzáadása**elemre.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +61,7 @@ Itt beállíthatja a riasztást. A **metrika** legördülő lista használatáva
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Figyelés beállítása metrikai csempéről
 
-A **Beállítások** > **riasztási szabályainak**használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám-csempére kattinthat.
+A **Beállítások**  >  **riasztási szabályainak**használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám-csempére kattinthat.
 
 ![Cloud Service-figyelés](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 

@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75454190"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
@@ -36,7 +35,7 @@ Ha még nem tette meg, hozza létre a kiállító HITELESÍTÉSSZOLGÁLTATÓI ta
 > [!IMPORTANT]
 > Egy alkalmazás regisztrálásához az író szerepkör szükséges.
 
-1. Nyissa meg a tanúsítványszolgáltatásokat a (z) helyen `https://myResourceGroup-app.azurewebsites.net`, és jelentkezzen be.
+1. Nyissa meg a tanúsítványszolgáltatásokat a (z) helyen `https://myResourceGroup-app.azurewebsites.net` , és jelentkezzen be.
 2. Lépjen az **új regisztrálása**gombra. Egy alkalmazás regisztrálásához a felhasználónak legalább a hozzárendelt író szerepkörrel kell rendelkeznie.
 2. A nevezési űrlap az OPC UA elnevezési konvencióit követi. Az alábbi képernyőképen látható, hogy az OPC ua- [hivatkozási kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) mintája az OPC ua .NET Standard stackben jelenik meg:
 
@@ -71,7 +70,7 @@ Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási ké
 8. A titkos kulcs letöltése és biztonságos tárolása után kiválaszthatja a **titkos kulcs törlése**lehetőséget. A nyilvános kulccsal rendelkező tanúsítvány jövőbeli használatra továbbra is elérhető marad.
 9. A CA által aláírt tanúsítvány használata miatt a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és a tanúsítvány-visszavonási lista (CRL) is letölthető.
 
-Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, míg az alkalmazás tanúsítványának nyilvános és titkos kulcsa a tanúsítványtároló `own` egyik mappájára lesz alkalmazva. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
+Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy mappába másolja a rendszer `trusted` , míg az alkalmazás tanúsítványának nyilvános és titkos kulcsa a tanúsítványtároló egyik mappájára lesz alkalmazva `own` . Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Új tanúsítvány igénylése CSR-sel 
 
@@ -96,7 +95,7 @@ Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELES
 10. A tanúsítvány letöltése és biztonságos tárolása után válassza a **tanúsítvány törlése**lehetőséget.
 11. A CA által aláírt tanúsítvány használata miatt a HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t is le kell tölteni.
 
-Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, miközben az alkalmazás tanúsítványa `own` a tanúsítványtároló egyik mappájára van alkalmazva. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
+Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy mappába másolja a rendszer `trusted` , miközben az alkalmazás tanúsítványa a tanúsítványtároló egyik mappájára van alkalmazva `own` . Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
 
 ### <a name="step-3-device-secured"></a>3. lépés: biztonságos eszköz
 

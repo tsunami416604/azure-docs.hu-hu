@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60347691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356627"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
 Ez a témakör azokat a különböző módszereket ismerteti, amelyekkel a Azure Active Directory (Azure AD) a legújabb verzióra történő frissítését végezheti el. Javasoljuk, hogy a Azure AD Connect kiadásával tartsa naprakészen. Ha jelentős konfigurációt végez, a [swing Migrálás](#swing-migration) szakasz lépéseit is használhatja.
@@ -33,7 +33,7 @@ Ha az rSync-ről szeretne frissíteni, tekintse meg a következőt: [verziófris
 
 Néhány különböző stratégia használható a Azure AD Connect frissítéséhez.
 
-| Módszer | Leírás |
+| Metódus | Description |
 | --- | --- |
 | [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md) |Ez a legegyszerűbb módszer az expressz telepítéssel rendelkező ügyfelek számára. |
 | [Frissítés helyben](#in-place-upgrade) |Ha egyetlen kiszolgálóval rendelkezik, a telepítést helyben is frissítheti ugyanarra a kiszolgálóra. |

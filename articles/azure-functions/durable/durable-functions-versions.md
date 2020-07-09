@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807849"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
 
@@ -50,19 +50,19 @@ Telepítse a projektben a [Durable functions kötések bővítmény](https://www
 
 Durable Functions 2. x több feltörési változást vezet be. Durable Functions 1. x alkalmazások kód módosítása nélkül nem kompatibilisek a 2. x Durable Functions. Ez a szakasz azokat a módosításokat sorolja fel, amelyeket az 1. x függvények 2. x verzióra való frissítésekor kell végeznie.
 
-#### <a name="hostjson-schema"></a>Host. JSON séma
+#### <a name="hostjson-schema"></a>Host.jsa sémán
 
-Durable Functions 2. x egy új Host. JSON sémát használ. Az 1. x fő változásai a következők:
+A Durable Functions 2. x egy új host.jshasznál a sémán. Az 1. x fő változásai a következők:
 
 * `"storageProvider"`(és az `"azureStorage"` alszakasz) a Storage-specifikus konfigurációhoz.
 * `"tracing"`nyomkövetési és naplózási konfigurációhoz.
 * `"notifications"`(és az `"eventGrid"` alszakasz) az Event Grid-értesítési konfigurációhoz.
 
-A részletekért tekintse meg a [Durable functions Host. JSON dokumentációját](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+A részletekért tekintse [meg az Durable Functions host.jsdokumentációját](durable-functions-bindings.md#durable-functions-2-0-host-json) .
 
 #### <a name="default-taskhub-name-changes"></a>A taskhub alapértelmezett nevének módosítása
 
-Ha az 1. x verzióban nincs megadva a Task hub neve a Host. JSON fájlban, az alapértelmezett érték a "DurableFunctionsHub". A 2. x verzióban a feladat-központ alapértelmezett neve mostantól a Function alkalmazás nevéből származik. Emiatt, ha a 2. x verzióra való frissítéskor nem adott meg a Task hub nevét, a kód az új Task hub-vel fog működni, és az összes fedélzeti előkészítési folyamat már nem fog működni az alkalmazásban. Ennek megkerülő megoldásához explicit módon állíthatja be a Task hub nevét az "DurableFunctionsHub" v1. x alapértelmezett értékére, vagy követheti a [nulla állásidővel kapcsolatos üzembe helyezési útmutatót](durable-functions-zero-downtime-deployment.md) , amely részletesen ismerteti, hogyan kezelheti a működés közbeni előkészítési folyamatokat.
+Ha az 1. x verzióban nincs megadva a Task hub neve a host.json beállításban, a rendszer alapértelmezés szerint "DurableFunctionsHub". A 2. x verzióban a feladat-központ alapértelmezett neve mostantól a Function alkalmazás nevéből származik. Emiatt, ha a 2. x verzióra való frissítéskor nem adott meg a Task hub nevét, a kód az új Task hub-vel fog működni, és az összes fedélzeti előkészítési folyamat már nem fog működni az alkalmazásban. Ennek megkerülő megoldásához explicit módon állíthatja be a Task hub nevét az "DurableFunctionsHub" v1. x alapértelmezett értékére, vagy követheti a [nulla állásidővel kapcsolatos üzembe helyezési útmutatót](durable-functions-zero-downtime-deployment.md) , amely részletesen ismerteti, hogyan kezelheti a működés közbeni előkészítési folyamatokat.
 
 #### <a name="public-interface-changes-net-only"></a>Nyilvános interfész módosításai (csak .NET)
 
@@ -77,8 +77,12 @@ A fő módosításokat a következő táblázat mutatja be:
 | `DurableActivityContext` vagy `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-Abban az esetben, ha egy absztrakt alaposztály virtuális metódusokat tartalmaz, ezeket a virtuális metódusokat a ben `DurableContextExtensions`definiált kiterjesztési módszerek váltották fel.
+Abban az esetben, ha egy absztrakt alaposztály virtuális metódusokat tartalmaz, ezeket a virtuális metódusokat a ben definiált kiterjesztési módszerek váltották fel `DurableContextExtensions` .
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>function. JSON-változások (JavaScript és C# parancsfájl)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>Változások function.js(JavaScript és C# parancsfájl)
 
-Durable Functions 1. x esetén a hanghangoló ügyfél-kötés a `type` - `orchestrationClient`t használja. Ehelyett a 2. x `durableClient` verziót használja.
+Durable Functions 1. x esetén a hanghangoló ügyfél-kötés a-t használja `type` `orchestrationClient` . Ehelyett a 2. x verziót használja `durableClient` .
+
+#### <a name="raise-event-changes"></a>Események változásának növelése
+
+Durable Functions 1. x, az Event API [előléptetése](durable-functions-external-events.md#send-events) és a nem létező példányok megadásának meghívása csendes hibát eredményezett. A 2. x verziótól kezdődően a rendszer kivételt eredményez, ha egy eseményt nem létező előkészítési folyamatra emel.

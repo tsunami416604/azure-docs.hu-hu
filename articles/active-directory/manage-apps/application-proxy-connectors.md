@@ -2,22 +2,21 @@
 title: Az Azure AD Application Proxy-összekötők ismertetése | Microsoft Docs
 description: Az Azure AD Application Proxy-összekötők alapjaira terjed ki.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764672"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
 
@@ -183,7 +182,7 @@ A szolgáltatás állapotát a szolgáltatások ablakban ellenőrizheti. Az öss
 
  ![Példa: szolgáltatások ablak, amelyen az Azure AD Services helyi](./media/application-proxy-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)

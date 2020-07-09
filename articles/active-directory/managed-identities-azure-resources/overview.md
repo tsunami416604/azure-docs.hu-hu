@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2020
+ms.date: 06/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 3557bab44e1a4af5fdcbda5f8643018952e4e54e
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770924"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099526"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Mik azok az Azure-erőforrások felügyelt identitásai?
 
@@ -43,7 +43,7 @@ Az Azure-erőforrások dokumentációs készletének összes felügyelt identit�
 - **Elsődleges azonosító** – a felügyelt identitáshoz tartozó egyszerű szolgáltatásnév, amely az Azure-erőforrásokhoz való szerepköralapú hozzáférés biztosítására szolgál.
 - **Azure instance metadata Service (IMDS)** – egy Rest-végpont elérhető minden, a Azure Resource Manager használatával létrehozott IaaS-virtuális gép számára. A végpont egy jól ismert, nem irányítható IP-címen (169.254.169.254) érhető el, amely csak a virtuális gépről érhető el.
 
-## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Hogyan működik az Azure-erőforrások felügyelt identitásai?
+## <a name="managed-identity-types"></a>Felügyelt identitások típusai
 
 A felügyelt identitásoknak két típusa létezik:
 
@@ -54,6 +54,9 @@ Belsőleg a felügyelt identitások olyan speciális típusú szolgáltatások, 
 Emellett, ha a felhasználó által hozzárendelt vagy rendszerhez rendelt identitás létrejött, a felügyelt identitás erőforrás-szolgáltatója (MSRP) belső tanúsítványt bocsát ki az identitásnak. 
 
 A kód a felügyelt identitások használatával hozzáférési jogkivonatokat igényelhet az Azure AD-hitelesítést támogató szolgáltatásokhoz. Az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok biztosításáról. 
+
+## <a name="credential-rotation"></a>Hitelesítő adatok elforgatása
+A hitelesítő adatok rotációját az Azure-erőforrást üzemeltető erőforrás-szolgáltató vezérli. A hitelesítő adatok alapértelmezett rotációja 46 naponta történik. Az erőforrás-szolgáltatónak új hitelesítő adatokat kell meghívnia, így az erőforrás-szolgáltató 46 napnál hosszabb ideig is várhat.
 
 Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuális gépekkel (VM) való működése látható:
 
@@ -104,9 +107,6 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 6. A rendszer egy hívást intéz az Azure AD-re, és egy hozzáférési jogkivonatot igényel (az 5. lépésben leírtak szerint) a 3. lépésben konfigurált ügyfél-azonosító és tanúsítvány használatával. Az Azure AD egy JSON Web Token (JWT) formátumú hozzáférési jogkivonatot ad vissza.
 7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
-
-## <a name="credential-rotation"></a>Hitelesítő adatok elforgatása
-A hitelesítő adatok rotációját az Azure-erőforrást üzemeltető erőforrás-szolgáltató vezérli. A hitelesítő adatok alapértelmezett rotációja 46 naponta történik. Az erőforrás-szolgáltatónak új hitelesítő adatokat kell meghívnia, így az erőforrás-szolgáltató 46 napnál hosszabb ideig is várhat.
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Hogyan használhatom az Azure-erőforrások felügyelt identitásait?
 

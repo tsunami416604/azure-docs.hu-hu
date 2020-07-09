@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan állapíthatja meg, hogy a gépi tanulási mode
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560207"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Az adatelemzési csomag használata a Pythonban & ML-modellek elmagyarázása érdekében
 
@@ -71,8 +71,8 @@ Az alábbi példa azt mutatja be, hogyan használható a értelmező csomag a sz
    * Egy magyarázó objektum inicializálásához adja át a modelljét és a betanítási adatait az elmagyarázó konstruktorának.
    * Annak érdekében, hogy a magyarázatokat és a vizualizációkat részletesebben is elvégezze, dönthet úgy, hogy a szolgáltatás nevét és a kimeneti osztály nevét adja meg, ha a besorolást végzi.
 
-   A következő kódrészletek bemutatják, hogyan hozható létre egy magyarázó objektum `TabularExplainer`a `MimicExplainer`, a `PFIExplainer` és a helyileg.
-   * `TabularExplainer`a három SHAP-magyarázat egyikét hívja meg (`TreeExplainer`, `DeepExplainer`, vagy `KernelExplainer`).
+   A következő kódrészletek bemutatják, hogyan hozható létre egy magyarázó objektum a `TabularExplainer` , a `MimicExplainer` és a `PFIExplainer` helyileg.
+   * `TabularExplainer`a három SHAP-magyarázat egyikét hívja meg ( `TreeExplainer` , `DeepExplainer` , vagy `KernelExplainer` ).
    * `TabularExplainer`automatikusan kiválasztja a legmegfelelőbbet a használati esethez, de a három mögöttes magyarázatot közvetlenül is meghívhatja.
 
     ```python
@@ -159,11 +159,11 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ### <a name="raw-feature-transformations"></a>Nyers funkciók átalakítása
 
-Megadhatja, hogy a mesterséges funkciók helyett a nyers, nem átalakított funkciókra vonatkozó magyarázatokat kapjon. Ebben a beállításban a funkció átalakítási folyamatát átadja a magyarázatnak `train_explain.py`. Ellenkező esetben a magyarázó elemek a megfogalmazott funkciókra vonatkozó magyarázatokat biztosítanak.
+Megadhatja, hogy a mesterséges funkciók helyett a nyers, nem átalakított funkciókra vonatkozó magyarázatokat kapjon. Ebben a beállításban a funkció átalakítási folyamatát átadja a magyarázatnak `train_explain.py` . Ellenkező esetben a magyarázó elemek a megfogalmazott funkciókra vonatkozó magyarázatokat biztosítanak.
 
 A támogatott átalakítások formátuma megegyezik a [sklearn-pandák](https://github.com/scikit-learn-contrib/sklearn-pandas)című témakörben leírtak szerint. Általánosságban elmondható, hogy az átalakítások csak akkor támogatottak, ha egyetlen oszlopon működnek, így egyértelmű, hogy egy-a-többhöz.
 
-Tekintse át a nyers funkciókra vonatkozó magyarázatot a `sklearn.compose.ColumnTransformer` vagy a beépített transzformátor-rekordok listájának használatával. A következő példa a `sklearn.compose.ColumnTransformer`-t használja.
+Tekintse át a nyers funkciókra vonatkozó magyarázatot a `sklearn.compose.ColumnTransformer` vagy a beépített transzformátor-rekordok listájának használatával. A következő példa a-t használja `sklearn.compose.ColumnTransformer` .
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -235,7 +235,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztály a modell-értelmező távoli futtatásokhoz való engedélyezéséhez. Elméletileg hasonló a helyi folyamathoz, a következők kivételével:
 
-* `ExplanationClient` Töltse fel a értelmező környezetet a távoli Futtatás paranccsal.
+* `ExplanationClient`Töltse fel a értelmező környezetet a távoli Futtatás paranccsal.
 * A környezet későbbi letöltése helyi környezetben.
 
 1. Telepítés `azureml-interpret` és `azureml-contrib-interpret` csomagok.
@@ -303,7 +303,7 @@ Miután letöltötte a magyarázatokat a helyi Jupyter notebookon, a vizualizác
 
 A következő mintaterületek átfogó képet nyújtanak a betanított modellről, valamint az előrejelzéseit és magyarázatait.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Adatelemzés| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
 |Globális fontosság|Az összesítések az egyes datapoints fontossági értékeit jelenítik meg a modell általános felső K (a konfigurálható K) fontos funkcióinak megjelenítéséhez. Segít az alapul szolgáló modell általános működésének megértésében.|
@@ -317,7 +317,7 @@ A következő mintaterületek átfogó képet nyújtanak a betanított modellrő
 
 Bármilyen adatponthoz betöltheti az egyes funkció fontossági területét, ha az összes adatpontra kattint a teljes mintaterületeken.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Helyi fontosság|Megjeleníti az egyes előrejelzésekhez tartozó legfontosabb funkciókat (K). Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
 |Perturbáció-feltárás (mi a teendő, ha elemzés)|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzés értékének változásait.|
@@ -379,7 +379,7 @@ Kövesse az alábbi elérési utakat a vizualizációs irányítópult elérés�
 
 A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetési idő alatt megadhatja az egyes funkciók fontossági értékeit (helyi magyarázat) az új Datapoint. A könnyebb súlyú pontozási magyarázatokat is kínáljuk, amelyekkel javítható az értelmező teljesítmény a következtetések idején. A könnyebb súlyozású pontozási elmagyarázó üzembe helyezésének folyamata hasonló a modellek üzembe helyezéséhez, és a következő lépéseket tartalmazza:
 
-1. Hozzon létre egy magyarázat objektumot. Például a `TabularExplainer`következőket használhatja:
+1. Hozzon létre egy magyarázat objektumot. Például a `TabularExplainer` következőket használhatja:
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -564,7 +564,7 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 
 1. Karbantartás.
 
-   Központilag telepített webszolgáltatás törléséhez használja `service.delete()`a következőt:.
+   Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 
 ## <a name="next-steps"></a>További lépések
 

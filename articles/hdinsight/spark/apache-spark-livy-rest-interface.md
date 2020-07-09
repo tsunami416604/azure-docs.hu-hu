@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206282"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084613"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata távoli feladatok küldéséhez egy HDInsight Spark-fürtre
 
@@ -41,7 +41,7 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-* Ha a jar fájlnevét és az osztálynév-t egy bemeneti fájl részeként szeretné átadni (ebben a példában a input. txt)
+* Ha a jar fájlnevét és az osztálynév-t egy bemeneti fájl részeként szeretné átadni (ebben a példában input.txt)
 
     ```cmd
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -77,7 +77,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>Példa
 
-Batch-feladatok törlése a Batch- `5`azonosítóval.
+Batch-feladatok törlése a Batch-AZONOSÍTÓval `5` .
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
@@ -99,7 +99,7 @@ Ebben a szakaszban a Livy Spark használatával kötegelt feladatok küldésére
 
 Hajtsa végre a következő lépéseket:
 
-1. Az egyszerű használat érdekében állítsa be a környezeti változókat. Ez a példa egy Windows-környezetben alapul, és szükség szerint módosítja a változókat a környezetében. Cserélje `CLUSTERNAME`le a `PASSWORD` és a értéket a megfelelő értékekre.
+1. Az egyszerű használat érdekében állítsa be a környezeti változókat. Ez a példa egy Windows-környezetben alapul, és szükség szerint módosítja a változókat a környezetében. Cserélje le `CLUSTERNAME` `PASSWORD` a és a értéket a megfelelő értékekre.
 
     ```cmd
     set clustername=CLUSTERNAME
@@ -128,13 +128,13 @@ Hajtsa végre a következő lépéseket:
 
     Figyelje meg, hogy a kimenet utolsó sora **összesen: 0**, amely nem javasol futó kötegeket.
 
-1. Most küldje el a Batch-feladatot. Az alábbi kódrészlet egy bemeneti fájlt (input. txt) használ, hogy paraméterekként adja át a jar nevét és az osztály nevét. Ha ezeket a lépéseket egy Windows rendszerű számítógépről futtatja, az ajánlott módszer a bemeneti fájl használata.
+1. Most küldje el a Batch-feladatot. Az alábbi kódrészlet egy bemeneti fájl (input.txt) használatával továbbítja a jar nevét és az osztály nevét paraméterként. Ha ezeket a lépéseket egy Windows rendszerű számítógépről futtatja, az ajánlott módszer a bemeneti fájl használata.
 
     ```cmd
     curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-    A file **input. txt** fájl paramétereinek meghatározása a következő:
+    A (z) **input.txt** fájl paramétereinek meghatározása a következő:
 
     ```text
     { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
@@ -207,7 +207,7 @@ A HDInsight 3,5-es és újabb fürtökön alapértelmezés szerint letiltja a he
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Livy-feladatok elküldése egy fürthöz egy Azure-beli virtuális hálózaton belül
 
-Ha egy Azure-Virtual Networkon belül csatlakozik egy HDInsight Spark-fürthöz, közvetlenül kapcsolódhat a Livy a fürtön. Ebben az esetben a Livy-végpont URL-címe: `http://<IP address of the headnode>:8998/batches`. Itt a **8998** az a port, amelyen a Livy fut a fürt átjárócsomóponthoz. A nem nyilvános portokon található szolgáltatások elérésével kapcsolatos további információkért lásd: [Apache Hadoop Services által használt portok a HDInsight-on](../hdinsight-hadoop-port-settings-for-services.md).
+Ha egy Azure-Virtual Networkon belül csatlakozik egy HDInsight Spark-fürthöz, közvetlenül kapcsolódhat a Livy a fürtön. Ebben az esetben a Livy-végpont URL-címe: `http://<IP address of the headnode>:8998/batches` . Itt a **8998** az a port, amelyen a Livy fut a fürt átjárócsomóponthoz. A nem nyilvános portokon található szolgáltatások elérésével kapcsolatos további információkért lásd: [Apache Hadoop Services által használt portok a HDInsight-on](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="next-steps"></a>További lépések
 

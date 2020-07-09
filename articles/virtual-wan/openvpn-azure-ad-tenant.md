@@ -5,22 +5,22 @@ titleSuffix: Azure Virtual WAN
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 74347ce969b6a5ffd57f5ca8396517e78590f3f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c65d194d03dd1b7ff4cc2f3b45d84ff7909968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753360"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Azure Active Directory bérlő létrehozása a felhasználói VPN OpenVPN protokoll kapcsolataihoz
 
 A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hitelesítést használhat. Ha azonban a nyílt VPN protokollt használja, akkor Azure Active Directory hitelesítést is használhat. Ebből a cikkből megtudhatja, hogyan állíthat be egy Azure AD-bérlőt a virtuális WAN-felhasználók VPN-hez (pont – hely) nyitott VPN-hitelesítéshez.
 
 > [!NOTE]
-> Az Azure AD-hitelesítés csak az OpenVPN&reg; protokoll kapcsolatai esetén támogatott.
+> Az Azure AD-hitelesítés csak az OpenVPN &reg; protokoll kapcsolatai esetén támogatott.
 >
 
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. az Azure AD-bérlő létrehozása

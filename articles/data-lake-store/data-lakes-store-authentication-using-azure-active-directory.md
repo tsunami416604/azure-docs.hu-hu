@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82692289"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
@@ -37,7 +37,7 @@ A következő táblázat bemutatja, hogyan támogatott a végfelhasználók és 
 |Szolgáltatások közötti (az ügyfél kulcsa)         |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔ *](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔ *](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔ *](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |Szolgáltatások közötti (ügyféltanúsítvány használatával) |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>* Kattintson a <b>✔\* </b> szimbólumra. Ez egy hivatkozás.</i><br>
+<i>* Kattintson a <b>✔ \* </b> szimbólumra. Ez egy hivatkozás.</i><br>
 <i>* * Az MFA a többtényezős hitelesítéshez</i>
 
 Az Azure Active Directory hitelesítéshez való használatáról további információt a [Azure Active Directory hitelesítési forgatókönyvei](../active-directory/develop/authentication-scenarios.md) című témakörben talál.

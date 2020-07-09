@@ -4,15 +4,14 @@ description: Az Azure Service Fabric a Docker-összeállítás formátumát, íg
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691288"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-összeállítás támogatása az Azure Service Fabric (előzetes verzió)
 
-A Docker a [Docker-compose. YML](https://docs.docker.com/compose) fájlt használja több tárolós alkalmazások definiálásához. Annak érdekében, hogy az ügyfelek könnyen megismerjék a Docker-t, hogy az Azure-Service Fabric meglévő tároló-alkalmazásaikat hangolják össze, a platformon natív módon elérhetővé tettük a Docker-összeállítás üzembe helyezésének előzetes támogatását. A Service Fabric a `docker-compose.yml` fájlok 3. vagy újabb verzióját is elfogadhatja. 
+A Docker a [Docker-compose. YML](https://docs.docker.com/compose) fájlt használja több tárolós alkalmazások definiálásához. Annak érdekében, hogy az ügyfelek könnyen megismerjék a Docker-t, hogy az Azure-Service Fabric meglévő tároló-alkalmazásaikat hangolják össze, a platformon natív módon elérhetővé tettük a Docker-összeállítás üzembe helyezésének előzetes támogatását. A Service Fabric a fájlok 3. vagy újabb verzióját is elfogadhatja `docker-compose.yml` . 
 
 Mivel ez a támogatás előzetes verzióban érhető el, csak az összeállítási irányelvek egy részhalmaza támogatott.
 
@@ -24,7 +23,7 @@ Az előzetes verzió használatához hozza létre a 5,7-es vagy újabb verziój�
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Docker-összeállítási fájl üzembe helyezése Service Fabric
 
-A következő parancsok létrehoznak egy Service Fabric alkalmazást ( `fabric:/TestContainerApp`named), amelyet bármely más Service Fabric alkalmazáshoz hasonlóan nyomon követheti és kezelheti. Használhatja a megadott alkalmazásnév állapot-lekérdezéseket.
+A következő parancsok létrehoznak egy Service Fabric alkalmazást (named `fabric:/TestContainerApp` ), amelyet bármely más Service Fabric alkalmazáshoz hasonlóan nyomon követheti és kezelheti. Használhatja a megadott alkalmazásnév állapot-lekérdezéseket.
 Service Fabric felismeri a "DeploymentName" kifejezést az összeállítási telepítés azonosítójaként.
 
 ### <a name="use-powershell"></a>A PowerShell használata
@@ -137,7 +136,7 @@ A portok szakaszban adjon meg http-vagy HTTPS-protokollt, amelyet a Service Fabr
 
 Ha az összeállítási fájlban megadott szolgáltatásnév teljes tartománynév (azaz egy pont [.]), akkor a Service Fabric által regisztrált DNS-név `<ServiceName>` (a ponttal együtt). Ha nem, akkor az alkalmazás nevének minden egyes elérésiút-szegmense a szolgáltatás DNS-neve tartomány címkéjévé válik, és az első elérésiút-szegmens lesz a legfelső szintű tartomány címkéje.
 
-Ha például a megadott alkalmazásnév `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` a a regisztrált DNS-név.
+Ha például a megadott alkalmazásnév `fabric:/SampleApp/MyComposeApp` , `<ServiceName>.MyComposeApp.SampleApp` a a regisztrált DNS-név.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Üzembe helyezés (példány definíciója) és Service Fabric alkalmazás modellje (típus definíciója)
 

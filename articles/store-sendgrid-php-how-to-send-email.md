@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67870917"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>A SendGrid E-mail szolgáltatás használata a PHP-ből
@@ -37,7 +37,7 @@ A SendGrid egy [felhőalapú e-mail-szolgáltatás] , amely megbízható [tranza
 * Ügyfelekkel kapcsolatos kérdések továbbítása
 * Az alkalmazás e-mail-értesítései
 
-További információ: [https://sendgrid.com][https://sendgrid.com].
+További információ: [https://sendgrid.com][https://sendgrid.com] .
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid-fiók létrehozása
 
@@ -53,7 +53,7 @@ E-mailt az SendGrid által biztosított SMTP vagy a webes API használatával is
 
 ### <a name="smtp-api"></a>SMTP API
 
-Ha a SendGrid SMTP API-val szeretne e-mailt küldeni, használja a *Swift-levelezőt*, egy összetevő-alapú könyvtárat, amely e-maileket küld a PHP-alkalmazásokból. Letöltheti a [Swift Mailer Library](https://swiftmailer.symfony.com/) v 5.3.0 (a [zeneszerző] használatával telepítheti a Swift-levelezőt). E-mailek küldése a könyvtárnak `Swift\_SmtpTransport`a, `Swift\_Mailer`, és `Swift\_Message` osztályok példányainak létrehozását, a megfelelő tulajdonságok beállítását és `Swift\_Mailer::send` a metódus meghívását jelenti.
+Ha a SendGrid SMTP API-val szeretne e-mailt küldeni, használja a *Swift-levelezőt*, egy összetevő-alapú könyvtárat, amely e-maileket küld a PHP-alkalmazásokból. Letöltheti a [Swift Mailer Library](https://swiftmailer.symfony.com/) v 5.3.0 (a [zeneszerző] használatával telepítheti a Swift-levelezőt). E-mailek küldése a könyvtárnak a `Swift\_SmtpTransport` , `Swift\_Mailer` , és osztályok példányainak létrehozását `Swift\_Message` , a megfelelő tulajdonságok beállítását és a metódus meghívását jelenti `Swift\_Mailer::send` .
 
 ```php
 <?php
@@ -239,7 +239,7 @@ A kód további sora a következő:
  $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 ```
 
-Ez a sor a csatolási metódust hívja meg `Swift\_Message` az objektumon, és `fromPath` statikus metódust használ az `Swift\_Attachment` osztályban egy fájl üzenethez való lekéréséhez és csatolásához.
+Ez a sor a csatolási metódust hívja meg az `Swift\_Message` objektumon, és statikus metódust használ `fromPath` az `Swift\_Attachment` osztályban egy fájl üzenethez való lekéréséhez és csatolásához.
 
 ### <a name="web-api"></a>Webes API
 

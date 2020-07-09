@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan csatlakozhat egy Windows rend
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6ec60dc313c8a4374637adf38ea0e5a7d4ed964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79eb09a005f62846fc2f7e3e7b493d5e366edabc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744323"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Kapcsolódás Windowsos virtuális géphez az Azure Bastion használatával
 
@@ -40,7 +40,7 @@ A Windows rendszerű virtuális géphez való csatlakozáshoz a következő port
 
 ## <a name="connect"></a><a name="rdp"></a>Kapcsolódás
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
 
    ![VM-kapcsolat](./media/bastion-connect-vm-rdp/connect.png)
 1. Miután rákattintott a Bastion elemre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, akkor a következő hivatkozásra kattintva konfigurálhatja a Bastion-t. A konfigurációs utasításokért lásd: a [Bastion konfigurálása](bastion-create-host-portal.md).

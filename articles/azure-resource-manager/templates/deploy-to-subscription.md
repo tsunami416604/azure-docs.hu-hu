@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/01/2020
+ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832814"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -17,7 +17,7 @@ Az erőforrások kezelésének egyszerűbbé tétele érdekében az Azure-előfi
 > [!NOTE]
 > Az előfizetések szintjén üzembe helyezhetők 800 különböző erőforráscsoportok.
 
-A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azure CLI-t, a PowerShellt vagy a REST API. A Azure Portal nem támogatja az előfizetés szintjén történő telepítést.
+A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azure CLI-t, a PowerShellt vagy a REST API.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
@@ -87,7 +87,7 @@ REST API esetén használja a [központi telepítések – létrehozás az előf
 
 Az előfizetési szintű központi telepítések esetében meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat.
 
-Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy. JSON** nevű sablon üzembe helyezése például létrehoz egy alapértelmezett központi telepítési nevet a **azuredeploy**.
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy**alapértelmezett központi telepítési nevét hozza létre.
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
@@ -209,8 +209,8 @@ A következő példában létrehozunk egy erőforráscsoportot, és üzembe hely
     {
       "type": "Microsoft.Resources/resourceGroups",
       "apiVersion": "2019-10-01",
-      "location": "[parameters('rgLocation')]",
       "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
@@ -224,7 +224,7 @@ A következő példában létrehozunk egy erőforráscsoportot, és üzembe hely
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {},
           "variables": {},
@@ -386,7 +386,7 @@ New-AzSubscriptionDeployment `
 
 [Létrehozhat](../../governance/blueprints/tutorials/create-from-sample.md) egy tervrajz-definíciót egy sablonból.
 
-:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/subscription-deployments/blueprints-new-blueprint/azuredeploy.json":::
 
 Az előfizetéshez tartozó terv definíciójának létrehozásához használja az alábbi CLI-parancsot:
 
@@ -394,7 +394,7 @@ Az előfizetéshez tartozó terv definíciójának létrehozásához használja 
 az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 A sablon PowerShell használatával történő üzembe helyezéséhez használja a következőt:
@@ -403,17 +403,17 @@ A sablon PowerShell használatával történő üzembe helyezéséhez használja
 New-AzSubscriptionDeployment `
   -Name demoDeployment `
   -Location centralus `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Sablonminták
 
-* [Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* [Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 * [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>További lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
-* A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)találhatók.
+* A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments)találhatók.
 * A sablonokat [felügyeleti csoport szintjén](deploy-to-management-group.md) és [bérlői szinten](deploy-to-tenant.md)is üzembe helyezheti.

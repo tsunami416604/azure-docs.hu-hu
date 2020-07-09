@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: tamram
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792979"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 hozzáférési engedélyek kiosztása identitáshoz
@@ -106,7 +106,7 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 3. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
 4. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
 5. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a célként megadott felhasználónevet, amelynek engedélyt szeretne adni az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-7.    Kattintson az **OK** gombra.
+7.    Válassza az **OK** lehetőséget.
 8.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
 9.    Kattintson az **Alkalmaz** gombra.
 

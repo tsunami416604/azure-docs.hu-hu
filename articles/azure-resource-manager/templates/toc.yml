@@ -12,70 +12,150 @@
       href: quickstart-create-templates-use-visual-studio-code.md
     - name: Azure-szolgáltatások
       items:
-        - name: AKS
-          href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Analysis Services – kiszolgáló létrehozása
-          href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Application Gateway
-          href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Backup
-          href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Cognitive Search
-          href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Tárolópéldányok
-          href: ../../container-instances/container-instances-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Cosmos DB
-          href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Cost Management-költségvetés
-          href: ../../cost-management-billing/costs/quick-create-budget-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Database for MySQL
-          href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Event Grid
-          href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Eseményközpont
-          href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Tűzfal – Availability Zones
-          href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Tűzfal – IP-csoportok
-          href: ../../firewall/quick-create-ipgroup-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Tűzfal – több cím
-          href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: HDInsight – Spark
-          href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: HDInsight – Hadoop
-          href: ../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: HDInsight – Kafka
-          href: ../../hdinsight/kafka/apache-kafka-quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: HDInsight – HBase
-          href: ../../hdinsight/hbase/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: HDInsight – Interaktív lekérdezés
-          href: ../../hdinsight/interactive-query/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: HDInsight – ML-szolgáltatások
-          href: ../../hdinsight/r-server/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Key Vault
-          href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Load Balancer
-          href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Felügyelt alkalmazás
-          href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Szabályzat
-          href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Erőforrás-diagram
-          href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Service Bus-üzenetkezelés
-          href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Service Fabric
-          href: ../../service-fabric/quickstart-cluster-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Site Recovery
-          href: ../../site-recovery/quickstart-create-vault-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: SQL Database
-          href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Virtual Machine Scale Sets – Linux
-          href: ../../virtual-machine-scale-sets/quick-create-template-linux.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Virtual Machine Scale Sets – Windows
-          href: ../../virtual-machine-scale-sets/quick-create-template-windows.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Web Application Firewall (Webalkalmazási tűzfal)
-          href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Mesterséges intelligencia és gépi tanulás
+          items:
+            - name: Cognitive Search
+              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Cognitive Services
+              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Adatelemzési virtuális gép
+              href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Machine Learning
+              href: ../../machine-learning/tutorial-resource-manager-workspace.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Elemzés
+          items:
+            - name: Analysis Services
+              href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Databricks
+              href: ../../azure-databricks/quickstart-create-databricks-workspace-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Event Hubs
+              href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: HDInsight – Hadoop
+              href: ../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: HDInsight – HBase
+              href: ../../hdinsight/hbase/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: HDInsight – Interaktív lekérdezés
+              href: ../../hdinsight/interactive-query/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: HDInsight – Kafka
+              href: ../../hdinsight/kafka/apache-kafka-quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: HDInsight – ML-szolgáltatások
+              href: ../../hdinsight/r-server/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: HDInsight – Spark
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Stream Analytics
+              href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Synapse Analytics
+              href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Blokklánc
+          items:
+            - name: Blokklánc
+              href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Compute
+          items:
+            - name: Batch
+              href: ../../batch/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Linuxos virtuális gép
+              href: ../../virtual-machines/linux/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Virtual Machine Scale Sets – Linux
+              href: ../../virtual-machine-scale-sets/quick-create-template-linux.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Virtual Machine Scale Sets – Windows
+              href: ../../virtual-machine-scale-sets/quick-create-template-windows.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Windows rendszerű virtuális gépek
+              href: ../../virtual-machines/windows/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Containers
+          items:
+            - name: AKS
+              href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Tárolópéldányok
+              href: ../../container-instances/container-instances-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Container Registry
+              href: ../../container-registry/container-registry-get-started-geo-replication-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Service Fabric
+              href: ../../service-fabric/quickstart-cluster-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Adatbázisok
+          items:
+            - name: Cosmos DB
+              href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for MariaDB
+              href: ../../mariadb/quickstart-create-mariadb-server-database-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for MySQL
+              href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for PostgreSQL
+              href: ../../postgresql/quickstart-create-postgresql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: SQL Database
+              href: ../../azure-sql/database/single-database-create-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Felügyelt SQL-példány
+              href: ../..//azure-sql/managed-instance/create-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: DevOps
+          items:
+            - name: Folyamatok
+              href: /azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Integráció
+          items:
+            - name: Event Grid
+              href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Logic Apps
+              href: ../../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Service Bus
+              href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Eszközök internetes hálózata
+          items:
+            - name: IoT Edge
+              href: ../../iot-edge/how-to-install-iot-edge-ubuntuvm.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Felügyelet és irányítás
+          items:
+            - name: Advisor
+              href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Backup
+              href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Cost Management és számlázás
+              href: ../../cost-management-billing/costs/quick-create-budget-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Felügyelt alkalmazások
+              href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Figyelés
+              href: ../../azure-monitor/learn/quick-collect-activity-log-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Szabályzat
+              href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Portál
+              href: ../../azure-portal/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Erőforrás-diagram
+              href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Szerepköralapú hozzáférés-vezérlés (RBAC)
+              href: ../../role-based-access-control/quickstart-role-assignments-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Service Health
+              href: ../../service-health/alerts-activity-log-service-notifications-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Site Recovery
+              href: ../../site-recovery/quickstart-create-vault-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Hálózat
+          items:
+            - name: Application Gateway
+              href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Content Delivery Network
+              href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Tűzfal – Availability Zones
+              href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Tűzfal – IP-csoportok
+              href: ../../firewall/quick-create-ipgroup-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Tűzfal – több cím
+              href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Firewall Manager
+              href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Load Balancer
+              href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Privát kapcsolat végpontja
+              href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Privát kapcsolati szolgáltatás
+              href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Web Application Firewall (Webalkalmazási tűzfal)
+              href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Biztonság
+          items:
+            - name: Key Vault
+              href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Web
+          items:
+            - name: Notification Hubs
+              href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Oktatóanyagok
   items:
     - name: Sablonok kezdők számára
@@ -142,20 +222,18 @@
         - name: Állapot-ellenőrzés használata a Deployment Managerben
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: Példák
-  items:
-    - name: Azure gyorsindítási sablonok
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: Sablonminták
-      href: template-samples.md
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások a sablonok használatához
       href: template-best-practices.md
+    - name: Gyakori kérdések
+      href: frequently-asked-questions.md
     - name: Felhőkonzisztencia-sablonok
       href: templates-cloud-consistency.md
     - name: Üzembehelyezési módok
       href: deployment-modes.md
+    - name: Üzembehelyezési előzmények törlései
+      href: deployment-history-deletions.md
     - name: Törlés Teljes mód esetén
       href: complete-mode-deletion.md
     - name: Deployment Manager
@@ -215,16 +293,20 @@
             - name: Kimenetek
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Szerkesztőeszközök használata
+    - name: Sablon tulajdonságainak felfedezése
       items:
-        - name: VS Code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: VS üzembehelyezési szkript frissítése az Az modulba
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
+        - name: Sablon exportálása
+          href: export-template-portal.md
+        - name: Erőforrások felfedezése
+          href: view-resources.md
+    - name: Sablonok ellenőrzése
+      items:
+        - name: What-if típusú üzembe helyezés
+          href: template-deploy-what-if.md
+        - name: Tesztelési eszközkészlet
+          href: test-toolkit.md
+        - name: Tesztelési esetek
+          href: test-cases.md
     - name: Sablonok üzembe helyezése
       items:
         - name: Üzembe helyezés – portál
@@ -241,13 +323,13 @@
           href: deploy-rest.md
         - name: Üzembe helyezés a GitHubból
           href: deploy-to-azure-button.md
-        - name: What-if típusú üzembe helyezés
-          href: template-deploy-what-if.md
         - name: Újratelepítés hiba esetén
           displayName: rollback
           href: rollback-on-error.md
         - name: Sablon védelme SAS-jogkivonattal
           href: secure-template-with-sas-token.md
+        - name: Üzembehelyezési előzmények megtekintése
+          href: deployment-history.md
     - name: Hatókörön belüli üzembe helyezés
       items:
         - name: Előfizetés
@@ -271,10 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: Üzembe helyezés – GitHub-műveletek
           href: deploy-github-actions.md
-    - name: Sablon exportálása
-      href: export-template-portal.md
-    - name: Üzembehelyezési előzmények megtekintése
-      href: deployment-history.md
+    - name: Szerkesztőeszközök használata
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: VS üzembehelyezési szkript frissítése az Az modulba
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Üzemelő példányok hibaelhárítása
       items:
         - name: Üzembehelyezési hibák elhárítása
@@ -347,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: További források
   items:
+    - name: Azure gyorsindítási sablonok
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Díjkalkulátor

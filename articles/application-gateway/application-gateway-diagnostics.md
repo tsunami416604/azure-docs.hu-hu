@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889699"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
@@ -39,7 +38,7 @@ A háttér-állapot jelentés a Application Gateway Health-mintavétel kimeneté
 
 ### <a name="view-back-end-health-through-the-portal"></a>Háttérbeli állapot megtekintése a portálon keresztül
 
-A portálon a háttér állapota automatikusan elérhető. Egy meglévő Application Gateway-ben válassza a háttér **figyelése** > **állapot**lehetőséget.
+A portálon a háttér állapota automatikusan elérhető. Egy meglévő Application Gateway-ben válassza a háttér **figyelése**  >  **állapot**lehetőséget.
 
 Ezen az oldalon a háttér-készlet minden tagja megjelenik (legyen az a hálózati adapter, az IP-cím vagy a teljes tartománynév). Megjelenik a háttér-készlet neve, a port, a háttérbeli HTTP-beállítások neve és az állapot állapota. Az állapot állapota **kifogástalan**, **sérült**és **ismeretlen**.
 
@@ -50,7 +49,7 @@ Ezen az oldalon a háttér-készlet minden tagja megjelenik (legyen az a hálóz
 
 ### <a name="view-back-end-health-through-powershell"></a>Háttér állapotának megtekintése a PowerShell-lel
 
-A következő PowerShell-kód bemutatja, hogyan tekintheti meg a háttérrendszer állapotát `Get-AzApplicationGatewayBackendHealth` a parancsmag használatával:
+A következő PowerShell-kód bemutatja, hogyan tekintheti meg a háttérrendszer állapotát a `Get-AzApplicationGatewayBackendHealth` parancsmag használatával:
 
 ```powershell
 Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
@@ -113,11 +112,11 @@ A naplók tárolásához három lehetőség közül választhat:
 
 A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. Az ezen naplókon keresztül elérhető adatok gyűjtésének megkezdéséhez engedélyeznie kell a hozzáférés és a teljesítmény naplózását. A naplózás engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Jegyezze fel azon Storage-fiók erőforrás-azonosítóját, ahol a naplóadatokat tárolja. Ez az érték a következő formát követi: /előfizetések/\<előfizetésazonosító\>/erőforráscsoportok/\<erőforráscsoport neve\>/szolgáltatások/Microsoft.Storage/storage-fiókok/\<storage-fiók neve\>. Az előfizetés bármilyen tárfiókját használhatja. Ezeket az információkat az Azure Portalon találhatja meg.
+1. Jegyezze fel azon Storage-fiók erőforrás-azonosítóját, ahol a naplóadatokat tárolja. Ez az érték az alábbi formátumú:/Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> . Az előfizetés bármilyen tárfiókját használhatja. Ezeket az információkat az Azure Portalon találhatja meg.
 
     ![Portál: a Storage-fiók erőforrás-azonosítója](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Jegyezze fel az Application Gateway azon erőforrás-AZONOSÍTÓját, amelyhez a naplózás engedélyezve van. Ez az érték\<a következő:/Subscriptions/subscriptionId\>/resourceGroups/\<erőforráscsoport neve\>/Providers/Microsoft.Network/applicationGateways/\<Application Gateway Name.\> Ezeket az információkat a portálon találhatja meg.
+2. Jegyezze fel az Application Gateway azon erőforrás-AZONOSÍTÓját, amelyhez a naplózás engedélyezve van. Ez az érték az alábbi formátumú:/Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> . Ezeket az információkat a portálon találhatja meg.
 
     ![Portál: az Application Gateway erőforrás-azonosítója](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -158,7 +157,7 @@ Az Azure alapértelmezés szerint a tevékenység naplóját hozza létre. A nap
 
 A hozzáférési napló csak akkor jön létre, ha minden Application Gateway példányon engedélyezte az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Application Gateway minden hozzáférése JSON formátumban van naplózva, ahogyan az a V1-hez készült következő példában látható:
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -202,7 +201,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 ```
 Application Gateway és WAF v2 esetén a naplók valamivel több információt mutatnak be:
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -256,7 +255,7 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Application Gateway példányon engedélyezte azt az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Teljesítménynapló adatai 1 percenként jönnek létre. Csak a v1 SKU esetében érhető el. A v2 SKU esetében használja a teljesítményadatok [mérőszámait](application-gateway-metrics.md) . A rendszer naplózza a következő adatnaplókat:
 
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     |  Application Gateway példány, amelynél a teljesítményadatokat generálja a rendszer. A többpéldányos Application Gateway esetében a példányok száma egy sor.        |
 |healthyHostCount     | A háttér-készletben található kifogástalan állapotú gazdagépek száma.        |
@@ -293,7 +292,7 @@ A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Applicati
 A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az összes Application Gateway számára az előző lépésekben részletezett módon. Ehhez a naplóhoz az is szükséges, hogy a webalkalmazási tűzfal konfigurálva legyen egy Application gatewayen. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A rendszer naplózza a következő adatnaplókat:
 
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway a példány, amelyről a rendszer a tűzfalat hozza létre. A többpéldányos Application Gateway esetében a példányok száma egy sor.         |
 |Ügyfélip     |   A kérelemből származó IP-cím.      |

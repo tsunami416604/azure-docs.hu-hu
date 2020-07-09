@@ -4,10 +4,9 @@ description: A többlépéses feladatok bemutatása, amely a Azure Container Reg
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399698"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-feladatokban
@@ -24,7 +23,7 @@ Futtathat például egy feladatot olyan lépésekkel, amelyek automatizálják a
 1. Webalkalmazás-tesztelési rendszerkép összeállítása
 1. Futtassa a webalkalmazás-teszt tárolót, amely teszteket hajt végre a futó alkalmazás tárolóján
 1. Ha a tesztek sikeresek, hozzon létre egy Helm diagram archiválási csomagot
-1. Az új `helm upgrade` Helm chart Archive csomag használata
+1. `helm upgrade`Az új Helm chart Archive csomag használata
 
 Az Azure-on belül minden lépés elvégezhető, és kiszervezi a munkát az Azure számítási erőforrásaira, és felszabadítja az infrastruktúra felügyeletét. Az Azure Container Registry mellett csak a felhasznált erőforrásokért kell fizetnie. A díjszabással kapcsolatos információkért tekintse meg a **tároló-összeállítás** szakaszt [Azure Container Registry díjszabását][pricing].
 
@@ -43,9 +42,9 @@ A többlépéses feladatok a következő logikához hasonló forgatókönyveket 
 
 Az ACR-feladatok több lépésből álló feladatai egy YAML-fájlban lévő lépések sorozata. Az egyes lépések egy vagy több előző lépés sikeres befejezésére vonatkozó függőségeket is meghatározhatnak. A következő feladathoz tartozó lépések típusai érhetők el:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Hozzon létre egy vagy több tárolót `docker build` a jól ismert szintaxissal, sorozatban vagy párhuzamosan.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Hozzon létre egy vagy több tárolót a jól ismert `docker build` szintaxissal, sorozatban vagy párhuzamosan.
 * [`push`](container-registry-tasks-reference-yaml.md#push): Kiépített lemezképek leküldése egy tároló-beállításjegyzékbe. A privát beállításjegyzékek, például a Azure Container Registry támogatottak, csakúgy, mint a nyilvános Docker hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Futtasson egy tárolót úgy, hogy az a futó feladat kontextusában is működhet. Paramétereket adhat át a tárolóhoz `[ENTRYPOINT]`, és meghatározhatja a tulajdonságokat, például az ENV, a leválasztás `docker run` és az egyéb ismerős paramétereket. A `cmd` lépés típusa lehetővé teszi az egység és a funkcionális tesztelést a tárolók párhuzamos végrehajtásával.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Futtasson egy tárolót úgy, hogy az a futó feladat kontextusában is működhet. Paramétereket adhat át a tárolóhoz `[ENTRYPOINT]` , és meghatározhatja a tulajdonságokat, például az ENV, a leválasztás és az egyéb ismerős `docker run` paramétereket. A `cmd` lépés típusa lehetővé teszi az egység és a funkcionális tesztelést a tárolók párhuzamos végrehajtásával.
 
 A következő kódrészletek azt mutatják be, hogyan egyesítheti ezeket a feladattípus-típusokat. A többlépéses feladatok olyan egyszerűek lehetnek, mint a Docker egyetlen rendszerképének létrehozása és a beállításjegyzékbe való továbbítása, a következőhöz hasonló YAML-fájllal:
 
@@ -87,13 +86,13 @@ A feladatok a manuális végrehajtást, a "gyors futtatást" és az automatikus 
 
 Feladat futtatásához először meg kell adnia a feladat lépéseit egy YAML-fájlban, majd végre kell hajtania az Azure CLI-parancsot az [ACR Run][az-acr-run]paranccsal.
 
-Íme egy példa egy Azure CLI-parancsra, amely egy feladatot futtat egy YAML-fájl használatával. A lépései felépítve, majd leküldenek egy képet. A `\<acrName\>` parancs futtatása előtt frissítse az Azure Container Registry nevét.
+Íme egy példa egy Azure CLI-parancsra, amely egy feladatot futtat egy YAML-fájl használatával. A lépései felépítve, majd leküldenek egy képet. `\<acrName\>`A parancs futtatása előtt frissítse az Azure Container Registry nevét.
 
 ```azurecli
 az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-A feladat futtatásakor a kimenetnek a YAML fájlban meghatározott egyes lépések előrehaladását kell megjelenítenie. A következő kimenetben a lépések a következőképpen `acb_step_0` jelennek `acb_step_1`meg: és.
+A feladat futtatásakor a kimenetnek a YAML fájlban meghatározott egyes lépések előrehaladását kell megjelenítenie. A következő kimenetben a lépések a következőképpen jelennek meg: `acb_step_0` és `acb_step_1` .
 
 ```azurecli
 az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git

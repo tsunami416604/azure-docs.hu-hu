@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 5529989384df75b592afa8f5e4960eb9817fb2d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5be992ef8375f98b3c5978d8b71dc92ce9f91123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472517"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081502"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>Tartományi fiókok SSH-hozzáférésének kezelése az Azure HDInsight
 
@@ -20,7 +20,7 @@ A biztonságos fürtökön alapértelmezés szerint az [Azure AD DS](../../activ
 
 ## <a name="manage-access"></a>Hozzáférés kezelése
 
-Az egyes felhasználókhoz vagy csoportokhoz való SSH-hozzáférés `/etc/ssh/sshd_config` módosításához frissítsen minden egyes csomóponton.
+Az egyes felhasználókhoz vagy csoportokhoz való SSH-hozzáférés módosításához frissítsen `/etc/ssh/sshd_config` minden egyes csomóponton.
 
 1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
@@ -28,7 +28,7 @@ Az egyes felhasználókhoz vagy csoportokhoz való SSH-hozzáférés `/etc/ssh/s
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Nyissa `ssh_confi`meg a g fájlt.
+1. Nyissa meg a `ssh_confi` g fájlt.
 
     ```bash
     sudo nano /etc/ssh/sshd_config
@@ -54,11 +54,11 @@ Az egyes felhasználókhoz vagy csoportokhoz való SSH-hozzáférés `/etc/ssh/s
 
 ## <a name="ssh-authentication-log"></a>SSH-hitelesítési napló
 
-Az SSH-hitelesítési napló beírása `/var/log/auth.log`. Ha a helyi vagy tartományi fiókoknál az SSH-n keresztül jelentkeznek bejelentkezési hibák, a hibák hibakereséséhez át kell lépnie a naplóban. Gyakran előfordul, hogy a probléma egy adott felhasználói fiókhoz kapcsolódik, és általában az alapértelmezett SSH-felhasználó (helyi fiók) használatával próbálkozik más felhasználói fiókokkal vagy SSH-val, majd megpróbál egy kinit parancsot.
+Az SSH-hitelesítési napló beírása `/var/log/auth.log` . Ha a helyi vagy tartományi fiókoknál az SSH-n keresztül jelentkeznek bejelentkezési hibák, a hibák hibakereséséhez át kell lépnie a naplóban. Gyakran előfordul, hogy a probléma egy adott felhasználói fiókhoz kapcsolódik, és általában az alapértelmezett SSH-felhasználó (helyi fiók) használatával próbálkozik más felhasználói fiókokkal vagy SSH-val, majd megpróbál egy kinit parancsot.
 
 ## <a name="ssh-debug-log"></a>SSH-hibakeresési napló
 
-A részletes naplózás engedélyezéséhez újra kell indítania `sshd` a `-d` kapcsolót. Az `/usr/sbin/sshd -d` is előfordulhat, hogy `sshd` egyéni porton (például 2222) is futtatható, így nem kell leállítania a fő SSH démont. Az SSH-ügyféllel `-v` is használhat további naplókat (a hibák ügyféloldali nézetét).
+A részletes naplózás engedélyezéséhez újra kell indítania `sshd` a `-d` kapcsolót. `/usr/sbin/sshd -d`Az is előfordulhat, `sshd` hogy egyéni porton (például 2222) is futtatható, így nem kell leállítania a fő SSH démont. `-v`Az SSH-ügyféllel is használhat további naplókat (a hibák ügyféloldali nézetét).
 
 ## <a name="next-steps"></a>További lépések
 

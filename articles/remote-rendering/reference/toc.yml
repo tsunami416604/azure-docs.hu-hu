@@ -1,3 +1,5 @@
+- name: A virtuális gépek mérete
+  href: vm-sizes.md
 - name: Anyagleképzés a modellformátumokhoz
   href: material-mapping.md
 - name: Régiók
@@ -10,5 +12,7 @@
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Mixed Reality Resource Management REST API
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
-- name: 'C# API-dokumentáció'
+- name: C# API-dokumentáció
   href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'
+- name: C++ API-dokumentáció
+  href: 'https://docs.microsoft.com/cpp/api/remote-rendering'

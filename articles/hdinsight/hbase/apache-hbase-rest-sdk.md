@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d03a201711488b1c0a3f4f2bab0981f83374a5d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74806660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085582"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Az Apache HBase készült .NET SDK használata
 
@@ -25,11 +25,13 @@ A C# és a .NET-alkalmazások esetében a [Microsoft HBASE Rest ügyféloldali k
 
 A HBase .NET SDK NuGet-csomagként érhető el, amely a Visual Studio **NuGet Package Manager konzolról** telepíthető a következő paranccsal:
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Új HBaseClient objektum példányának létrehozása
 
-Ha az SDK-t szeretné használni, hozza `HBaseClient` létre az új objektumot `ClusterCredentials` , amely a `Uri` fürtből és a Hadoop felhasználónévből és jelszóból áll.
+Ha az SDK-t szeretné használni, hozza létre az új `HBaseClient` objektumot, amely `ClusterCredentials` a `Uri` fürtből és a Hadoop felhasználónévből és jelszóból áll.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -70,7 +72,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Az adat beszúrásához egyedi sort kell megadnia a sor azonosítójaként. Az összes adattal egy `byte[]` tömb tárolja. A következő kód meghatározza és hozzáadja a `title`, `director`és `release_date` oszlopokat a T1 oszlop családhoz, mivel ezek az oszlopok a leggyakrabban elérhetők. A `description` és `tagline` az oszlopok hozzáadódnak a T2 oszlop családhoz. Szükség szerint particionálhatja az adatait oszlopos családokba.
+Az adat beszúrásához egyedi sort kell megadnia a sor azonosítójaként. Az összes adattal egy tömb tárolja `byte[]` . A következő kód meghatározza és hozzáadja a `title` , `director` és `release_date` oszlopokat a T1 oszlop családhoz, mivel ezek az oszlopok a leggyakrabban elérhetők. A `description` és az `tagline` oszlopok hozzáadódnak a T2 oszlop családhoz. Szükség szerint particionálhatja az adatait oszlopos családokba.
 
 ```csharp
 var key = "fifth_element";
@@ -118,7 +120,7 @@ A HBase a [Felhőbeli BigTable](https://cloud.google.com/bigtable/)valósítja m
 
 ## <a name="select-data"></a>Adatok kiválasztása
 
-Ha egy HBase-táblából szeretne beolvasni egy adatforrást, adja át a `GetCellsAsync` tábla nevét és a `CellSet`sor kulcsát a metódusnak.
+Ha egy HBase-táblából szeretne beolvasni egy adatforrást, adja át a tábla nevét és a sor kulcsát a `GetCellsAsync` metódusnak `CellSet` .
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +134,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-Ebben az esetben a kód csak az első egyező sort adja vissza, mivel egy egyedi kulcsnak csak egy sora lehet. A visszaadott értéket a `string` `byte[]` tömb formátumára változtatja. Az értéket más típusokra is konvertálhatja, például a film kiadási dátumának egészére:
+Ebben az esetben a kód csak az első egyező sort adja vissza, mivel egy egyedi kulcsnak csak egy sora lehet. A visszaadott értéket `string` a tömb formátumára változtatja `byte[]` . Az értéket más típusokra is konvertálhatja, például a film kiadási dátumának egészére:
 
 ```csharp
 var releaseDateField = cells.rows[0].values

@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382919"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
@@ -23,19 +23,19 @@ Microsoft Azure Red Hat OpenShift engedélyre van szüksége a fürt nevében el
 
 A [Azure Portalban](https://portal.azure.com)győződjön meg arról, hogy a bérlő a portál jobb felső részén a Felhasználónév alatt jelenik meg:
 
-![Képernyőkép a portálról a jobb felső sarokban](./media/howto-create-tenant/tenant-callout.png) található Bérlővel, ha nem megfelelő bérlő jelenik meg, kattintson a jobb felső sarokban található felhasználónévre, majd a **könyvtár váltása**lehetőségre, és válassza ki a megfelelő bérlőt a **minden könyvtár** listából.
+![Képernyőkép a portálról a jobb felső sarokban található Bérlővel, ](./media/howto-create-tenant/tenant-callout.png) Ha nem megfelelő bérlő jelenik meg, kattintson a jobb felső sarokban található felhasználónévre, majd a **könyvtár váltása**lehetőségre, és válassza ki a megfelelő bérlőt a **minden könyvtár** listából.
 
 Hozzon létre egy új Azure Active Directory "tulajdonos" felhasználót az Azure Red Hat OpenShift-fürtbe való bejelentkezéshez.
 
 1. Lépjen a [felhasználók – minden felhasználó](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) panelre.
 2. Kattintson az **+ új felhasználó** lehetőségre a **felhasználó** ablaktábla megnyitásához.
 3. Adja meg a felhasználó **nevét** .
-4. Hozzon létre egy **felhasználónevet** a létrehozott bérlő neve alapján, a végéhez `.onmicrosoft.com` hozzáfűzve. Például: `yourUserName@yourTenantName.onmicrosoft.com`. Jegyezze fel ezt a felhasználónevet. Szüksége lesz rá a fürtbe való bejelentkezéshez.
+4. Hozzon létre egy **felhasználónevet** a létrehozott bérlő neve alapján, a `.onmicrosoft.com` végéhez hozzáfűzve. Például: `yourUserName@yourTenantName.onmicrosoft.com`. Jegyezze fel ezt a felhasználónevet. Szüksége lesz rá a fürtbe való bejelentkezéshez.
 5. Kattintson a **címtár-szerepkör** elemre a címtár-szerepkör panel megnyitásához, majd válassza a **tulajdonos** lehetőséget, majd kattintson az **OK** gombra a panel alján.
 6. A **felhasználó** ablaktáblán kattintson a **jelszó megjelenítése** lehetőségre, és jegyezze fel az ideiglenes jelszót. Az első bejelentkezés után a rendszer felszólítja, hogy állítsa alaphelyzetbe.
 7. A panel alján kattintson a **Létrehozás** gombra a felhasználó létrehozásához.
 
-## <a name="create-an-azure-ad-security-group"></a>Azure AD biztonsági csoport létrehozása
+## <a name="create-an-azure-ad-security-group"></a>Azure AD-biztonsági csoport létrehozása
 
 A fürt rendszergazdai hozzáférésének megadásához az Azure AD biztonsági csoportba tartozó tagságok az "OSA-Customer-adminok" OpenShift-csoportba vannak szinkronizálva. Ha nincs megadva, a rendszer nem engedélyezi a fürt rendszergazdai hozzáférését.
 
@@ -54,7 +54,7 @@ A fürt rendszergazdai hozzáférésének megadásához az Azure AD biztonsági 
     Jegyezze fel a csoport AZONOSÍTÓjának értékét.
 
 9. A csoport létrehozásakor megjelenik az összes csoport listájában. Kattintson az új csoportra.
-10. A megjelenő lapon másolja le az **objektum azonosítóját**. Erre az értékre az `GROUPID` [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
+10. A megjelenő lapon másolja le az **objektum azonosítóját**. Erre az értékre `GROUPID` az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
 
 > [!IMPORTANT]
 > Ha a csoportot az OSA-Customer-adminok OpenShift csoporttal szeretné szinkronizálni, hozza létre a fürtöt az Azure CLI használatával. A Azure Portal jelenleg nem rendelkezik a csoport beállításához szükséges mezővel.
@@ -69,7 +69,7 @@ Ha a szervezet még nem rendelkezik olyan Azure Active Directory (Azure AD-beli)
 2. Az **alkalmazás regisztrálása** ablaktáblán adja meg az alkalmazás regisztrációjának nevét.
 3. Győződjön meg arról, hogy az **ebben a szervezeti könyvtárban csak** a **támogatott fióktípus** vannak kiválasztva. Ez a legbiztonságosabb megoldás.
 4. Később egy átirányítási URI-t adunk hozzá, ha ismerjük a fürt URI-JÁT. Az Azure AD-alkalmazás regisztrációjának létrehozásához kattintson a **regisztráció** gombra.
-5. A megjelenő oldalon másolja le az **alkalmazás (ügyfél) azonosítóját**. Erre az értékre az `APPID` [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
+5. A megjelenő oldalon másolja le az **alkalmazás (ügyfél) azonosítóját**. Erre az értékre `APPID` az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
 
 ![Képernyőfelvétel az App Object lapról](./media/howto-create-tenant/get-app-id.png)
 
@@ -82,7 +82,7 @@ Ha a szervezet még nem rendelkezik olyan Azure Active Directory (Azure AD-beli)
 3. Adja meg a **leírást**.
 4. A beállítás **lejárati** ideje a kívánt időtartam, például **2 év**.
 5. Kattintson a **Hozzáadás** gombra, és a kulcs értéke megjelenik az oldal **ügyfél-titkok** szakaszában.
-6. Másolja le a kulcs értékét. Erre az értékre az `SECRET` [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
+6. Másolja le a kulcs értékét. Erre az értékre `SECRET` az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
 
 ![Képernyőkép a tanúsítványok és titkok panelről](./media/howto-create-tenant/create-key.png)
 

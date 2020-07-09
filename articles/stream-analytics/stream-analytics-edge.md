@@ -5,15 +5,15 @@ ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5213a13539ac028d3e2bfec3bc7476ac645f615b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837212"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043478"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
  
@@ -43,13 +43,12 @@ Az ASA a IoT Hub használatával helyezi üzembe az Edge-feladatokat az eszköz 
 
 ### <a name="installation-instructions"></a>Telepítési utasítások
 A magas szintű lépéseket az alábbi táblázat ismerteti. További részleteket a következő szakaszokban talál.
-
-|      |Lépés   | Megjegyzések   |
-| ---   | ---   |  ---      |
-| 1   | **Storage-tároló létrehozása**   | A tárolók a IoT-eszközök által elérhető feladatdefiníció mentésére szolgálnak. <br>  A meglévő tárolókat újra felhasználhatja.     |
-| 2   | **ASA Edge-feladatok létrehozása**   |  Hozzon létre egy új feladatot, és válassza az **Edge** lehetőséget **üzemeltetési környezetként**. <br> Ezek a feladatok a felhőből jönnek létre/kezelhetők, és a saját IoT Edge eszközein futnak.     |
-| 3   | **Az eszköz (ek) IoT Edge környezetének beállítása**   | Windows vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) [rendszerre](https://docs.microsoft.com/azure/iot-edge/quickstart) vonatkozó utasítások.          |
-| 4   | **Az ASA üzembe helyezése IoT Edge eszközön (k)**   |  Az ASA-feladatdefiníció a korábban létrehozott Storage-tárolóba lett exportálva.       |
+|Lépés   | Jegyzetek   |
+| ---   |  ---      |
+| **Storage-tároló létrehozása**   | A tárolók a IoT-eszközök által elérhető feladatdefiníció mentésére szolgálnak. <br>  A meglévő tárolókat újra felhasználhatja.     |
+| **ASA Edge-feladatok létrehozása**   |  Hozzon létre egy új feladatot, és válassza az **Edge** lehetőséget **üzemeltetési környezetként**. <br> Ezek a feladatok a felhőből jönnek létre/kezelhetők, és a saját IoT Edge eszközein futnak.     |
+| **Az eszköz (ek) IoT Edge környezetének beállítása**   | Windows vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) [rendszerre](https://docs.microsoft.com/azure/iot-edge/quickstart) vonatkozó utasítások.          |
+| **Az ASA üzembe helyezése IoT Edge eszközön (k)**   |  Az ASA-feladatdefiníció a korábban létrehozott Storage-tárolóba lett exportálva.       |
 
 [Ezt a részletes oktatóanyagot](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) követve üzembe helyezheti az első ASA-feladatot IoT Edgeon. A következő videó segít megérteni a Stream Analytics feladatok futtatásának folyamatát egy IoT Edge-eszközön:  
 

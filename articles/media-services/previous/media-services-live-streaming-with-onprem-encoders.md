@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559999"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>A helyszíni kódolók többszörös átviteli sebességű streamjét fogadó csatornák használata
 
@@ -186,15 +186,15 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
-| **Indítása** |**Indítása** |Nem (átmeneti állapot) |
-| **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |
+| **Indítás** |**Indítás** |Nem (átmeneti állapot) |
+| **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Yes |
 | **Leállítás** |**Leállítás** |Nem (átmeneti állapot) |
-| **Leállítva** |**Leállítva** |Nem |
+| **Leállítva** |**Leállítva** |No |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Kódolt feliratok és ad-Beszúrás
 Az alábbi táblázat a kódolt feliratozás és az ad-Beszúrás támogatott szabványait mutatja be.
 
-| Standard | Megjegyzések |
+| Standard | Jegyzetek |
 | --- | --- |
 | CEA-708 és EIA-608 (708/608) |A CEA-708 és a KHV-608 a Egyesült Államok és Kanada esetében bezárt feliratozási szabványok.<p><p>Jelenleg a feliratozás csak akkor támogatott, ha a kódolt bemeneti adatfolyamban történik. Olyan élő adathordozó-kódolót kell használnia, amely 608 vagy 708 feliratot szúr be a Media Servicesba küldött kódolt adatfolyamba. Media Services a tartalmat beszúrt feliratokkal látja el a nézők számára. |
 | TTML belül. ismt (Smooth Streaming szöveges számok) |Media Services dinamikus csomagolás lehetővé teszi, hogy az ügyfelek a következő formátumok bármelyikében továbbítsák a tartalmakat: DASH, HLS vagy Smooth Streaming. Ha azonban a. ismt (Smooth Streaming Text tracks) feliratokkal rendelkező töredezett MP4 (Smooth Streaming) betöltést végez, az adatfolyamot csak Smooth Streaming ügyfeleknek továbbíthatja. |
@@ -225,7 +225,8 @@ A csatornákkal és a kapcsolódó összetevőkkel kapcsolatos további szempont
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="suggestions-and-feedback"></a>Javaslatok és visszajelzés
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök

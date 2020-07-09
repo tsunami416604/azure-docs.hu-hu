@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220293"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Üzemelő IoT Edge-példányok monitorozása
 
@@ -24,7 +23,7 @@ Mindkét eszközhöz és modulhoz hasonló adatok tartoznak, például a kapcsol
 
 A IoT Hub szolgáltatás adatokat gyűjt az eszköz és a modul ikrek által jelentett adatokról, és az eszközök különböző állapotait is tartalmazza. A IoT Hub szolgáltatás az adatokat négy metrikai csoportba rendezi:
 
-| Típus | Leírás |
+| Típus | Description |
 | --- | ---|
 | Megcélzott | Megjeleníti a központi telepítésre vonatkozó megcélzott feltételnek megfelelő IoT Edge eszközöket. |
 | Alkalmazva | Azokat a célként IoT Edge eszközöket jeleníti meg, amelyeket a magasabb prioritású központi telepítés nem céloz meg. |
@@ -42,7 +41,7 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
 1. Válassza a **IoT Edge központi telepítések** fület.
 1. Vizsgálja meg a központi telepítés listáját.Az egyes központi telepítések esetében az alábbi adatokat tekintheti meg:
 
-    | Oszlop | Leírás |
+    | Oszlop | Description |
     | --- | --- |
     | ID | A központi telepítés neve. |
     | Típus | A központi telepítés típusa, vagy a **telepítés** vagy a **rétegzett telepítés**. |
@@ -99,6 +98,6 @@ Az üzembe helyezés megjelenítése-metrika parancs a következő paramétereke
 
 Az üzembe helyezés módosításához lásd: [központi telepítés módosítása](how-to-deploy-cli-at-scale.md#modify-a-deployment).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [kommunikálhat a EdgeAgent a beépített közvetlen metódusok használatával](how-to-edgeagent-direct-method.md).
+Megtudhatja, hogyan [figyelheti az ikrek modult](how-to-monitor-module-twins.md), elsősorban a IoT Edge Agent és IoT Edge hub Runtime-modulokat a IoT Edge üzemelő példányok kapcsolatára és állapotára vonatkozóan.

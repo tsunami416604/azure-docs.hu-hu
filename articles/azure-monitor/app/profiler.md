@@ -6,12 +6,11 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678586"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service alkalmazások Application Insights
 
@@ -25,9 +24,9 @@ A Profiler engedélyezéséhez kövesse az alábbi utasításokat. Ha más típu
 
 Application Insights Profiler az App Services futtatókörnyezet részeként előre telepítve van. Az alábbi lépések bemutatják, hogyan engedélyezheti a App Service számára. Kövesse az alábbi lépéseket még akkor is, ha felépítésekor az alkalmazás betekintő SDK-t is feltöltötte az alkalmazásba.
 
-1. Az App Service "always on" beállításának engedélyezése. Az általános beállítások területen a App Service konfiguráció lapján frissítheti a beállítást.
-1. Nyissa meg a Azure Portal **app Services** ablaktábláját.
-1. Navigáljon a **beállítások > Application Insights** panelre.
+1. Navigáljon a App Servicehoz tartozó Azure-vezérlőpultra.
+1. Az App Service "always on" beállításának engedélyezése. Ezt a beállítást a **Beállítások**, a **konfiguráció** lapon találja (lásd a következő lépés képernyőképét), majd kattintson az **általános beállítások** fülre.
+1. Navigáljon a **beállítások > Application Insights** lapra.
 
    ![Az alkalmazás-felismerés engedélyezése App Services portálon](./media/profiler/AppInsights-AppServices.png)
 
@@ -50,7 +49,7 @@ A Profiler engedélyezéséhez a következő beállítások szükségesek:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Ezeket az értékeket [Azure Resource Manager sablonokkal](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)-lel és az [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest)-vel is megadhatja.
+Ezeket az értékeket [Azure Resource Manager sablonok](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)és [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest)használatával állíthatja be.
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>A Profiler engedélyezése más felhők számára manuálisan
 

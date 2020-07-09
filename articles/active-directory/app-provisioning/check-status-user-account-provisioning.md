@@ -2,21 +2,20 @@
 title: Automatikus felhasználói fiók kiépítés az SaaS-alkalmazásokba
 description: Megtudhatja, hogyan ellenőrizhető a felhasználói fiókok automatikus kiépítési feladatainak állapota, és hogyan lehet elhárítani az egyes felhasználók kiépítési feladatait.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 102a0b60c917d5ee24177ac4b52e97fe72c343e7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782007"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: jelentéskészítés a felhasználói fiókok automatikus üzembe helyezéséhez
 
@@ -31,7 +30,7 @@ A kiépítési összekötők a [Azure Portal](https://portal.azure.com)használa
 * **Azure Portal** – ez a cikk elsősorban azt ismerteti, hogyan kell beolvasni a jelentési adatokat a [Azure Portalból](https://portal.azure.com), amely egyszerre egy kiépítési összegző jelentést is biztosít, valamint egy adott alkalmazás részletes kiépítési naplóit.
 * A **audit API** -Azure Active Directory egy olyan naplózási API-t is biztosít, amely lehetővé teszi a részletes kiépítési naplók programozott lekérését. Tekintse meg az API használatára vonatkozó dokumentáció [Azure Active Directory naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Habár ez a cikk nem fedi le az API használatát, részletesen ismerteti a naplóban rögzített kiépítési események típusait.
 
-### <a name="definitions"></a>Meghatározások
+### <a name="definitions"></a>Definíciók
 
 Ez a cikk az alábbi, az alábbiakban meghatározott kifejezéseket használja:
 
@@ -61,7 +60,7 @@ Az **aktuális állapotnak** az első hely rendszergazdáinak kell megkeresnie a
 
 ## <a name="provisioning-logs-preview"></a>Kiépítési naplók (előzetes verzió)
 
-A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD- [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)rögzítik. A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Naplózott tevékenység típusú események a következők:
+A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD- [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)rögzítik. A Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** **Activity** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Naplózott tevékenység típusú események a következők:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

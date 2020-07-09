@@ -3,15 +3,15 @@ title: Adatok másolása a WASB-ba és a Azure Data Lake Storage Gen1 a DistCp h
 description: Adatok másolása az Azure Storage-blobokból és az Azure Data Lake Storage Gen1ba az DistCp eszköz használatával
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 455e73ece2d46a508b3077c13c8106fe53beb4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515673"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen1 közötti adatmásoláshoz
 
@@ -25,7 +25,7 @@ Ha olyan HDInsight-fürttel rendelkezik, amely Azure Data Lake Storage Gen1hoz f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](data-lake-store-get-started-portal.md)című témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 

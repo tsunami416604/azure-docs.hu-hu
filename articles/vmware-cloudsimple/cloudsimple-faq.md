@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025061"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Gyakori kérdések a VMware-megoldásról a CloudSimple
@@ -33,7 +32,7 @@ A CloudSimple az USA keleti régiójában, az USA nyugati régiójában és a Ny
 
 **Hogyan engedélyezni a CloudSimple-előfizetést?**
 
-A CloudSimple szolgáltatás előfizetésének engedélyezéséhez vegye fel a kapcsolatot a Microsoft-fiók képviselőjével [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) . Adja meg az előfizetés-AZONOSÍTÓját az e-mailben, amelyhez engedélyezni szeretné a CloudSimple szolgáltatást.  
+A [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) CloudSimple szolgáltatás előfizetésének engedélyezéséhez vegye fel a kapcsolatot a Microsoft-fiók képviselőjével. Adja meg az előfizetés-AZONOSÍTÓját az e-mailben, amelyhez engedélyezni szeretné a CloudSimple szolgáltatást.  
 
 **Hogyan hozzáférni a CloudSimple-portálhoz?**
 
@@ -150,7 +149,7 @@ A CloudSimple nem hajtja végre a privát felhőre telepített alkalmazások fri
 
 **Mely Azure-szolgáltatások támogatottak?**
 
-A CloudSimple Azure-beli ExpressRoute-kapcsolódást biztosít az Azure-előfizetéshez.  Az előfizetésben futó összes szolgáltatás kapcsolódhat a saját felhőhöz.  Példák erre vonatkozóan:
+A CloudSimple Azure-beli ExpressRoute-kapcsolódást biztosít az Azure-előfizetéshez.  Az előfizetésben futó összes szolgáltatás kapcsolódhat a saját felhőhöz.  Példák:
 
 * **Azure Active Directory** identitás forrásaként a CloudSimple-vCenter.
 * **Azure Storage** biztonsági másolatok, képek és egyéb adatok tárolására a saját felhőből.

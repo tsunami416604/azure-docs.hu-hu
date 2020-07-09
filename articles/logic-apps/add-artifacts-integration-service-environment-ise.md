@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79164877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830026"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -26,7 +26,7 @@ Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtua
 
 * A logikai alkalmazások futtatásához létrehozott ISE. Ha nem rendelkezik ISE-vel, [először hozzon létre egy ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-t.
 
-* Az ISE-ben központilag telepített erőforrások létrehozásához, hozzáadásához vagy frissítéséhez hozzá kell rendelnie a tulajdonosi vagy közreműködői szerepkört az ISE-hez, vagy ha rendelkezik az ISE-hez társított Azure-előfizetéssel vagy Azure-erőforráscsoport-hozzáféréssel. Azok számára, akik nem rendelkeznek tulajdonossal, közreműködővel vagy örökölt engedélyekkel, hozzá lehet rendelni a integrációs szolgáltatási környezet közreműködő szerepkört vagy integrációs szolgáltatási környezet fejlesztői szerepkört. További információ a szerepköralapú hozzáférés-vezérlésről (RBAC): [Mi az Azure-erőforrások szerepköralapú hozzáférés-vezérlése (RBAC)](../role-based-access-control/overview.md)?
+* Az ISE-ben központilag telepített erőforrások létrehozásához, hozzáadásához vagy frissítéséhez hozzá kell rendelnie a tulajdonosi vagy közreműködői szerepkört az ISE-hez, vagy ha rendelkezik az ISE-hez társított Azure-előfizetéssel vagy Azure-erőforráscsoport-hozzáféréssel. Azok számára, akik nem rendelkeznek tulajdonossal, közreműködővel vagy örökölt engedélyekkel, hozzá lehet rendelni a integrációs szolgáltatási környezet közreműködő szerepkört vagy integrációs szolgáltatási környezet fejlesztői szerepkört. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -34,7 +34,7 @@ Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtua
 
 Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások létrehozásához kövesse az alábbi lépéseket:
 
-1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza a **Logic apps** > **Hozzáadás**elemet.
+1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza a **Logic apps**  >  **Hozzáadás**elemet.
 
    ![Új logikai alkalmazás hozzáadása az ISE-hez](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -44,13 +44,13 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Igen | A létrehozandó logikai alkalmazás neve |
-   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek**területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   | **Name (Név)** | Yes | A létrehozandó logikai alkalmazás neve |
+   | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Hely** | Yes | Az **integrációs szolgáltatási környezetek**területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. Folytassa a [logikai alkalmazás létrehozását a szokásos módon](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -66,7 +66,7 @@ A létrehozáskor kiválasztott [ISE SKU](../logic-apps/connect-virtual-network-
 
 ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lépéseket:
 
-1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok** > **Hozzáadás**elemet.
+1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok**  >  **Hozzáadás**elemet.
 
    ![Új integrációs fiók hozzáadása az ISE-hez](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -76,14 +76,14 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Igen | A létrehozni kívánt integrációs fiók neve |
-   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Díjszabási csomag** | Igen | Az integrációs fiókhoz használandó díjszabási csomag |
-   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek**területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   | **Name (Név)** | Yes | A létrehozni kívánt integrációs fiók neve |
+   | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Díjszabási csomag** | Yes | Az integrációs fiókhoz használandó díjszabási csomag |
+   | **Hely** | Yes | Az **integrációs szolgáltatási környezetek**területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. [Kapcsolja össze a logikai alkalmazást az integrációs fiókjával a szokásos módon](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
@@ -101,7 +101,7 @@ Azok a Microsoft által felügyelt összekötők, amelyek az ISE létrehozása u
 
    ![Felügyelt összekötők megtekintése](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Kattintson a **Létrehozás** gombra.
+1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Válassza a **Létrehozás** lehetőséget.
 
    ![Válassza ki az ISE-ben telepíteni kívánt ISE-összekötőt](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -113,7 +113,7 @@ Azok a Microsoft által felügyelt összekötők, amelyek az ISE létrehozása u
 
 Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket az egyéni összekötőket közvetlenül az ISE-ben.
 
-1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **Egyéni összekötők** > **Hozzáadás**elemet.
+1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **Egyéni összekötők**  >  **Hozzáadás**elemet.
 
    ![Egyéni összekötő létrehozása](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

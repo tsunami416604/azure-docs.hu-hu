@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975333"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -22,7 +22,7 @@ Az Azure Cognitive Search indexelő használatakor előfordulhat, hogy a bemenet
 
 Bizonyos helyzetekben hasznosak lehetnek a mezők leképezése:
 
-* Az adatforrás egy nevű `_id`mezővel rendelkezik, de az Azure Cognitive Search nem engedélyezi a mezőneveket, amely aláhúzással kezdődik. A mezők leképezése lehetővé teszi egy mező tényleges átnevezését.
+* Az adatforrás egy nevű mezővel rendelkezik `_id` , de az Azure Cognitive Search nem engedélyezi a mezőneveket, amely aláhúzással kezdődik. A mezők leképezése lehetővé teszi egy mező tényleges átnevezését.
 * Az indexben több mezőt is fel szeretne tölteni ugyanabból az adatforrásból származó adatokból. Előfordulhat például, hogy különböző elemzőket szeretne alkalmazni ezekre a mezőkre.
 * Egynél több adatforrásból származó adatokkal szeretné feltölteni az index mezőt, és az egyes adatforrások különböző mezőneveket használnak.
 * Az adatai Base64 kódolása vagy dekódolása szükséges. A mező-hozzárendelések több **leképezési funkciót**is támogatnak, beleértve a Base64 kódoláshoz és a dekódoláshoz használható függvényeket.
@@ -34,11 +34,14 @@ Bizonyos helyzetekben hasznosak lehetnek a mezők leképezése:
 
 A mezők leképezése három részből áll:
 
-1. A `sourceFieldName`, amely az adatforrás egy mezőjét jelöli. Ezt a tulajdonságot kötelező megadni.
-2. Egy opcionális `targetFieldName`, amely a keresési index egyik mezőjét jelöli. Ha nincs megadva, a rendszer ugyanazt a nevet használja, mint az adatforrásban.
-3. Opcionális `mappingFunction`, amely az adatok átalakítását számos előre definiált függvény használatával végezheti el. Ez a bemeneti és a kimeneti mezők hozzárendelésein is alkalmazható. A függvények teljes listája [alább látható](#mappingFunctions).
+1. A `sourceFieldName` , amely az adatforrás egy mezőjét jelöli. Ezt a tulajdonságot kötelező megadni.
+2. Egy opcionális `targetFieldName` , amely a keresési index egyik mezőjét jelöli. Ha nincs megadva, a rendszer ugyanazt a nevet használja, mint az adatforrásban.
+3. Opcionális `mappingFunction` , amely az adatok átalakítását számos előre definiált függvény használatával végezheti el. Ez a bemeneti és a kimeneti mezők hozzárendelésein is alkalmazható. A függvények teljes listája [alább látható](#mappingFunctions).
 
-A mező-hozzárendelések az indexelő definíciójának `fieldMappings` tömbje számára lesznek hozzáadva.
+A mező-hozzárendelések az `fieldMappings` Indexelő definíciójának tömbje számára lesznek hozzáadva.
+
+> [!NOTE]
+> Ha nincsenek hozzáadva mező-hozzárendelések, az indexelő feltételezi, hogy az adatforrást tartalmazó mezőket az azonos nevű index mezőkhöz kell rendelni. Mező-hozzárendelés hozzáadásával eltávolítja ezeket az alapértelmezett mező-hozzárendeléseket a forrás és a cél mezőhöz. Egyes indexelő, például [a blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md), alapértelmezett mező-hozzárendeléseket adhatnak hozzá az index kulcs mezőjéhez.
 
 ## <a name="map-fields-using-the-rest-api"></a>Mezők leképezése a REST API használatával
 
@@ -75,9 +78,9 @@ A forrás mező több mező-hozzárendelésre is hivatkozhat. Az alábbi példa 
 
 ## <a name="map-fields-using-the-net-sdk"></a>Mezők leképezése a .NET SDK használatával
 
-A [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza `SourceFieldName` a `TargetFieldName`tulajdonságokat, valamint a `MappingFunction` választható hivatkozást.
+A [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza a tulajdonságokat, valamint a `SourceFieldName` `TargetFieldName` választható `MappingFunction` hivatkozást.
 
-Az indexelő létrehozásakor vagy később a `Indexer.FieldMappings` tulajdonság közvetlen beállításával megadhatja a mezők leképezését.
+Az indexelő létrehozásakor vagy később a tulajdonság közvetlen beállításával megadhatja a mezők leképezését `Indexer.FieldMappings` .
 
 A következő C#-példa egy indexelő létrehozásakor beállítja a mező-hozzárendeléseket.
 
@@ -122,7 +125,7 @@ Egy mező-hozzárendelési függvény átalakítja egy mező tartalmát, mielőt
 
 Csak az URL-alapú biztonságos karakterek szerepelhetnek az Azure Cognitive Search-dokumentum kulcsában (mivel az ügyfeleknek a [keresési API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) használatával tudniuk kell kezelni a dokumentumot). Ha a kulcs forrás mezőjében URL-nem biztonságos karakterek szerepelnek, akkor a függvény használatával `base64Encode` átalakíthatja az indexelési időt. Azonban a dokumentum kulcsa (az átalakítás előtt és után is) nem lehet hosszabb 1 024 karakternél.
 
-Ha a beolvasott kulcsot keresési időpontban kéri le, a `base64Decode` függvény használatával beolvashatja az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
+Ha a beolvasott kulcsot keresési időpontban kéri le, a függvény használatával beolvashatja `base64Decode` az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
 
 ```JSON
 
@@ -137,7 +140,28 @@ Ha a beolvasott kulcsot keresési időpontban kéri le, a `base64Decode` függv�
   }]
  ```
 
-Ha nem tartalmaz Parameters tulajdonságot a leképezési függvényhez, az alapértelmezés szerint az értéket `{"useHttpServerUtilityUrlTokenEncode" : true}`adja meg.
+#### <a name="example---preserve-original-values"></a>Példa – eredeti értékek megőrzése
+
+A [blob Storage indexelő](search-howto-indexing-azure-blob-storage.md) automatikusan felvesz egy mező-hozzárendelést a `metadata_storage_path` -ból, a blob URI-ját az index kulcs mezőjébe, ha nincs megadva a mező leképezése. Ez az érték Base64 kódolású, így biztonságos Azure Cognitive Search-dokumentum kulcsaként használni. Az alábbi példa azt mutatja be, hogyan lehet egyszerre leképezni egy *URL-cím – biztonságos Base64-* kódolású verziót `metadata_storage_path` egy `index_key` mezőre, és megőrizni az eredeti értéket egy `metadata_storage_path` mezőben:
+
+```JSON
+
+"fieldMappings": [
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "metadata_storage_path"
+  },
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "index_key",
+    "mappingFunction": {
+       "name": "base64Encode"
+    }
+  }
+]
+```
+
+Ha nem tartalmaz Parameters tulajdonságot a leképezési függvényhez, az alapértelmezés szerint az értéket adja meg `{"useHttpServerUtilityUrlTokenEncode" : true}` .
 
 Az Azure Cognitive Search két különböző Base64-kódolást támogat. Ugyanezeket a paramétereket kell használnia a kódoláshoz és a dekódoláshoz ugyanezen a mezőben. További információ: [Base64 kódolási beállítások](#base64details) a használandó paraméterek eldöntéséhez.
 
@@ -149,7 +173,7 @@ A bemeneti karakterlánc Base64-dekódolását végzi. A bemenet a következő *
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>Példa – blob metaadatainak vagy URL-címek dekódolása
 
-A forrásadatok olyan Base64 kódolású karakterláncokat tartalmazhatnak, mint például a blob metaadat-karakterláncok vagy a webes URL-címek, amelyeket egyszerű szövegként szeretne keresni. A `base64Decode` függvény használatával a kódolt adatokat visszaállíthatja normál karakterláncokra a keresési index feltöltésekor.
+A forrásadatok olyan Base64 kódolású karakterláncokat tartalmazhatnak, mint például a blob metaadat-karakterláncok vagy a webes URL-címek, amelyeket egyszerű szövegként szeretne keresni. A függvény használatával a `base64Decode` kódolt adatokat visszaállíthatja normál karakterláncokra a keresési index feltöltésekor.
 
 ```JSON
 
@@ -164,7 +188,7 @@ A forrásadatok olyan Base64 kódolású karakterláncokat tartalmazhatnak, mint
   }]
 ```
 
-Ha nem tartalmaz Parameters tulajdonságot, a rendszer alapértelmezés szerint az értéket `{"useHttpServerUtilityUrlTokenEncode" : true}`adja meg.
+Ha nem tartalmaz Parameters tulajdonságot, a rendszer alapértelmezés szerint az értéket adja meg `{"useHttpServerUtilityUrlTokenEncode" : true}` .
 
 Az Azure Cognitive Search két különböző Base64-kódolást támogat. Ugyanezeket a paramétereket kell használnia a kódoláshoz és a dekódoláshoz ugyanezen a mezőben. További részletekért lásd a [Base64-kódolási beállításokat](#base64details) a használandó paraméterek eldöntéséhez.
 
@@ -174,21 +198,21 @@ Az Azure Cognitive Search két különböző Base64-kódolást támogat. Ugyanez
 
 Az Azure Cognitive Search támogatja az URL-alapú biztonságos Base64-kódolást és a normál Base64-kódolást. Az indexelés során Base64 kódolású karakterláncot később kell dekódolni ugyanazzal a kódolási lehetőségekkel, különben az eredmény nem egyezik az eredetivel.
 
-Ha a `useHttpServerUtilityUrlTokenEncode` kódoláshoz és a dekódoláshoz szükséges `useHttpServerUtilityUrlTokenDecode` paraméterek a ( `true`z) `base64Encode` értékre vannak beállítva, akkor a következőképpen `base64Decode` viselkedik: [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) , és úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Ha a `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` kódoláshoz és a dekódoláshoz szükséges paraméterek a (z) értékre vannak beállítva `true` , akkor a következőképpen `base64Encode` viselkedik: [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) , és `base64Decode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
 > [!WARNING]
-> Ha `base64Encode` a kulcs értékének megadására `useHttpServerUtilityUrlTokenEncode` szolgál, akkor igaz értékre kell állítani. A kulcsok értékeihez csak az URL-alapú biztonságos Base64-kódolást lehet használni. Lásd: az [Azure Cognitive Search&#41;elnevezési szabályai &#40;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) az összes korlátozást a kulcsok értékeiben.
+> Ha `base64Encode` a kulcs értékének megadására szolgál, akkor igaz értékre kell `useHttpServerUtilityUrlTokenEncode` állítani. A kulcsok értékeihez csak az URL-alapú biztonságos Base64-kódolást lehet használni. Lásd: az [Azure Cognitive Search&#41;elnevezési szabályai &#40;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) az összes korlátozást a kulcsok értékeiben.
 
-A .NET-kódtárak az Azure-ban Cognitive Search feltételezik a teljes .NET-keretrendszert, amely beépített kódolást biztosít. A `useHttpServerUtilityUrlTokenEncode` és `useHttpServerUtilityUrlTokenDecode` a beállítások ezt a beépített funkciót használják. Ha .NET Core-t vagy más keretrendszert használ, javasoljuk, hogy ezeket a beállításokat `false` úgy állítsa be, hogy közvetlenül a keretrendszer kódolási és dekódolási funkcióit hívja meg.
+A .NET-kódtárak az Azure-ban Cognitive Search feltételezik a teljes .NET-keretrendszert, amely beépített kódolást biztosít. A `useHttpServerUtilityUrlTokenEncode` és a `useHttpServerUtilityUrlTokenDecode` beállítások ezt a beépített funkciót használják. Ha .NET Core-t vagy más keretrendszert használ, javasoljuk, hogy ezeket a beállításokat úgy állítsa be, hogy `false` közvetlenül a keretrendszer kódolási és dekódolási funkcióit hívja meg.
 
-A következő táblázat a karakterlánc `00>00?00`különböző Base64 kódolásait hasonlítja össze. Ha meg szeretné határozni a Base64-függvények szükséges további feldolgozását (ha van ilyen), alkalmazza a függvénytár-kódolás `00>00?00` függvényt a karakterláncon, és hasonlítsa össze a kimenetet a várt kimenettel `MDA-MDA_MDA`.
+A következő táblázat a karakterlánc különböző Base64 kódolásait hasonlítja össze `00>00?00` . Ha meg szeretné határozni a Base64-függvények szükséges további feldolgozását (ha van ilyen), alkalmazza a függvénytár-kódolás függvényt a karakterláncon, `00>00?00` és hasonlítsa össze a kimenetet a várt kimenettel `MDA-MDA_MDA` .
 
 | Encoding | Base64 kódolású kimenet | További feldolgozás a függvénytár-kódolás után | További feldolgozás a könyvtár dekódolása előtt |
 | --- | --- | --- | --- |
 | Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
 | Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
 | URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
-| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincs | Nincs |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | None | None |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -201,11 +225,11 @@ Ez a függvény a következő paramétereket használja:
 * `delimiter`: a bemeneti karakterlánc felosztásakor elválasztóként használandó karakterlánc.
 * `position`: a bemeneti sztring felosztása után kiválasztható token egészének nulla alapú pozíciója.
 
-Ha például `Jane Doe`a bemenet, a `delimiter` `" "`(szóköz) és az `position` értéke 0, az eredmény a következő:. `Jane` Ha a `position` értéke 1, az eredmény: `Doe`. Ha a pozíció olyan tokenre hivatkozik, amely nem létezik, hibaüzenetet ad vissza.
+Ha például a bemenet `Jane Doe` , a `delimiter` `" "` (szóköz) és az `position` értéke 0, az eredmény a következő: `Jane` . Ha a `position` értéke 1, az eredmény `Doe` . Ha a pozíció olyan tokenre hivatkozik, amely nem létezik, hibaüzenetet ad vissza.
 
 #### <a name="example---extract-a-name"></a>Példa – név kinyerése
 
-Az adatforrás tartalmaz egy `PersonName` mezőt, és két különálló `FirstName` és `LastName` mezőként szeretné indexelni. Ezt a függvényt használhatja a bemenet elválasztóként való felosztásához.
+Az adatforrás tartalmaz egy `PersonName` mezőt, és két különálló `FirstName` és mezőként szeretné indexelni `LastName` . Ezt a függvényt használhatja a bemenet elválasztóként való felosztásához.
 
 ```JSON
 
@@ -226,13 +250,13 @@ Az adatforrás tartalmaz egy `PersonName` mezőt, és két különálló `FirstN
 
 ### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection függvény
 
-A sztringek JSON-tömbként formázott karakterláncának átalakítása egy karakterlánc-tömbbe, amely az index `Collection(Edm.String)` mezőinek feltöltésére használható.
+A sztringek JSON-tömbként formázott karakterláncának átalakítása egy karakterlánc-tömbbe, amely `Collection(Edm.String)` az index mezőinek feltöltésére használható.
 
-Ha például `["red", "white", "blue"]`a bemeneti karakterlánc, akkor a típusú cél mező a következő `Collection(Edm.String)` három értékkel `red`lesz feltöltve: `white`, és. `blue` A nem értelmezhető JSON-karakterlánc-tömbökkel rendelkező bemeneti értékek esetén hibaüzenetet ad vissza.
+Ha például a bemeneti karakterlánc `["red", "white", "blue"]` , akkor a típusú cél mező a következő `Collection(Edm.String)` három értékkel lesz feltöltve: `red` `white` , és `blue` . A nem értelmezhető JSON-karakterlánc-tömbökkel rendelkező bemeneti értékek esetén hibaüzenetet ad vissza.
 
 #### <a name="example---populate-collection-from-relational-data"></a>Példa – a gyűjtemények feltöltése a kapcsolódó adatokból
 
-Azure SQL Database nem rendelkezik olyan beépített adattípussal, amely természetesen az Azure `Collection(Edm.String)` Cognitive Search mezőihez van társítva. A karakterlánc-gyűjtési mezők feltöltéséhez JSON-karakterlánc-tömbként előre feldolgozhatja a forrásadatokat, majd használhatja a `jsonArrayToStringCollection` leképezési függvényt.
+Azure SQL Database nem rendelkezik olyan beépített adattípussal, amely természetesen az `Collection(Edm.String)` Azure Cognitive Search mezőihez van társítva. A karakterlánc-gyűjtési mezők feltöltéséhez JSON-karakterlánc-tömbként előre feldolgozhatja a forrásadatokat, majd használhatja a `jsonArrayToStringCollection` leképezési függvényt.
 
 ```JSON
 
@@ -251,11 +275,11 @@ Ez a függvény egy karakterlánc kódolására használható, hogy az "URL-bizt
 
 #### <a name="example---document-key-lookup"></a>Példa – dokumentum kulcsának keresése
 
-`urlEncode`a függvény a függvény alternatívájaként is használható, ha `base64Encode` csak a nem biztonságos URL-címeket szeretné átalakítani, miközben más karaktereket is tart.
+`urlEncode`a függvény a függvény alternatívájaként is használható `base64Encode` , ha csak a nem biztonságos URL-címeket szeretné átalakítani, miközben más karaktereket is tart.
 
-Tegyük fel, hogy a `<hello>` bemeneti karakterlánc – a típusú cél mező `(Edm.String)` a következő értékkel lesz feltöltve:`%3chello%3e`
+Tegyük fel, hogy a bemeneti karakterlánc `<hello>` – a típusú cél mező a következő `(Edm.String)` értékkel lesz feltöltve:`%3chello%3e`
 
-Ha a beolvasott kulcsot keresési időpontban kéri le, a `urlDecode` függvény használatával beolvashatja az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
+Ha a beolvasott kulcsot keresési időpontban kéri le, a függvény használatával beolvashatja `urlDecode` az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
 
 ```JSON
 
@@ -277,7 +301,7 @@ Ha a beolvasott kulcsot keresési időpontban kéri le, a `urlDecode` függvény
 
  ### <a name="example---decode-blob-metadata"></a>Példa – blob metaadatainak dekódolása
 
- Egyes Azure Storage-ügyfelek automatikusan URL-címet kódolnak a blob metaadatainak kódolásához, ha nem ASCII-karaktereket tartalmaznak. Ha azonban szeretné, hogy az ilyen metaadatok kereshetők legyenek (egyszerű szövegként), a `urlDecode` függvény használatával a kódolt adatokat visszaállíthatja normál karakterláncokra a keresési index feltöltésekor.
+ Egyes Azure Storage-ügyfelek automatikusan URL-címet kódolnak a blob metaadatainak kódolásához, ha nem ASCII-karaktereket tartalmaznak. Ha azonban szeretné, hogy az ilyen metaadatok kereshetők legyenek (egyszerű szövegként), a függvény használatával a `urlDecode` kódolt adatokat visszaállíthatja normál karakterláncokra a keresési index feltöltésekor.
 
  ```JSON
 

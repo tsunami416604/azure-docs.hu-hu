@@ -3,16 +3,16 @@ title: Az adatáttelepítés Azure File Syncba Azure Data Box
 description: A tömeges adatátvitelt olyan módon telepítse át, amely kompatibilis a Azure File Syncával.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514379"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
 A tömeges adatmennyiségeket kétféleképpen is áttelepítheti Azure File Syncba:
@@ -51,7 +51,7 @@ A következőképpen állíthatja be a Azure File Sync úgy, hogy az kompatibili
 
 | Lépés | Részletek |
 |---|---------------------------------------------------------------------------------------|
-| ![1. lépés](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Rendeljen Data Box](../../databox/data-box-deploy-ordered.md). A Data Box család [számos olyan terméket](https://azure.microsoft.com/services/storage/databox/data) kínál, amelyek megfelelnek az igényeinek. Ha megkapja a Data Boxt, kövesse a [dokumentációját, és másolja](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) át az adatait erre az UNC elérési útra a Data Box: * \\<\>\<\>\<\>DeviceIPAddres StorageAccountName_AzFile megosztásnév*. Itt a *megosztásnév* az átmeneti megosztás neve. Küldje vissza a Data Box az Azure-ba. |
+| ![1\. lépés](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Rendeljen Data Box](../../databox/data-box-deploy-ordered.md). A Data Box család [számos olyan terméket](https://azure.microsoft.com/services/storage/databox/data) kínál, amelyek megfelelnek az igényeinek. Ha megkapja a Data Boxt, kövesse a [dokumentációját, és másolja](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) át az adatait erre az UNC elérési útra a Data Box: * \\<DeviceIPAddres \> \<StorageAccountName_AzFile\> \<ShareName\> *. Itt a *megosztásnév* az átmeneti megosztás neve. Küldje vissza a Data Box az Azure-ba. |
 | ![2. lépés](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Várjon, amíg a fájlok megjelennek az ideiglenes előkészítési megosztásként választott Azure-fájlmegosztás alatt. *Ne engedélyezze ezen megosztások szinkronizálását.* |
 | ![3. lépés](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Hozzon létre egy új, üres megosztást minden olyan fájlmegosztás esetében, amelyet Data Box hozott létre. Az új megosztásnak ugyanabban a Storage-fiókban kell lennie, mint a Data Box-megosztásnak. [Új Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md).</li><li>[Hozzon létre egy szinkronizálási csoportot](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) a Storage Sync szolgáltatásban. Hivatkozzon az üres megosztásra Felhőbeli végpontként. Ismételje meg ezt a lépést minden Data Box fájlmegosztás esetén. [Azure file Sync beállítása](storage-sync-files-deployment-guide.md).</li></ul> |
 | ![4. lépés](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Adja hozzá az élő kiszolgáló címtárát kiszolgálói végpontként](storage-sync-files-deployment-guide.md#create-a-server-endpoint). A folyamat során állítsa be, hogy áthelyezte a fájlokat az Azure-ba, és hivatkozzon az átmeneti megosztásokra. Igény szerint engedélyezheti vagy letilthatja a Felhőbeli rétegek elvégzését. Egy kiszolgálói végpontnak az élő kiszolgálón való létrehozásakor hivatkozzon az átmeneti megosztásra. A **kiszolgáló-végpont hozzáadása** panelen, az **Offline adatátvitel**területen válassza az **engedélyezve**lehetőséget, majd válassza ki azt az átmeneti megosztást, amelynek a Felhőbeli végpontjának ugyanabban a Storage-fiókban kell lennie. Itt az elérhető megosztások listáját a Storage-fiók és a már nem szinkronizált megosztások alapján szűri a rendszer. A táblázat következő képernyőképe azt mutatja be, hogyan hivatkozhat a DataBox-megosztásra a kiszolgálói végpont létrehozásakor a Azure Portalban. |

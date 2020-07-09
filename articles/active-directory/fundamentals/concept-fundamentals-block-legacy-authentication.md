@@ -13,10 +13,10 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196386"
 ---
 # <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
@@ -96,7 +96,7 @@ A modern hitelesítés engedélyezésének lépései a következő cikkekben tal
 * [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 * [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)

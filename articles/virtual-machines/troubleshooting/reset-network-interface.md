@@ -13,11 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706596"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Windows rendszerű Azure-beli virtuális gép hálózati adapterének visszaállítása 
 
@@ -117,7 +116,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 Miután a Távoli asztalt elvégezte a gépen, törölnie kell a régi hálózati adaptereket, hogy elkerülje a lehetséges problémát:
 
 1.  Indítsa el az Eszközkezelőt.
-2.  Válassza a **nézet** > **rejtett eszközök megjelenítése**lehetőséget.
+2.  Válassza a **nézet**  >  **rejtett eszközök megjelenítése**lehetőséget.
 3.  Válassza a **hálózati adapterek**lehetőséget. 
 4.  Keresse meg a "Microsoft Hyper-V hálózati adapter" nevű adaptereket.
 5.  Előfordulhat, hogy egy nem elérhető adapter szürkén jelenik meg. Kattintson a jobb gombbal az adapterre, majd válassza az Eltávolítás lehetőséget.

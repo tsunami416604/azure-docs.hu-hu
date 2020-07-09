@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: edc2b1d7d6a97dd7d7ec35dadf946b5b8581bd06
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833132"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044141"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -56,7 +56,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-8. Kattintson a **Létrehozás**gombra.
+8. Kattintson a **Létrehozás** lehetőségre.
 
 Az adatkészlet a következő beállításokkal jön létre:
 
@@ -109,7 +109,7 @@ Ez a szakasz nem kötelező, de ajánlott.
 1. Ha a TelcoStreaming alkalmazás jelenleg nem fut, indítsa el a következő lépéseket:
 
     * Nyisson meg egy parancssort.
-    * Lépjen arra a mappára, ahol a telcogenerator. exe és a módosított telcodatagen. exe. config fájl található.
+    * Lépjen arra a mappára, ahol a telcogenerator.exe és a módosított telcodatagen.exe.config fájlok találhatók.
     * Futtassa az alábbi parancsot:
 
        `telcodatagen.exe 1000 .2 2`

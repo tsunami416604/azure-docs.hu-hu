@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652584"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory intelligens zárolás
@@ -56,7 +55,7 @@ A helyszíni Active Directory fiókzárolási házirend ellenőrzéséhez köves
 
 1. Nyissa meg a Csoportházirend felügyeleti eszközt.
 2. Szerkessze a szervezet fiókzárolási házirendjét (például az **alapértelmezett tartományi házirendet**) tartalmazó csoportházirendet.
-3. Tallózással keresse meg a **számítógép-konfigurációs** > **házirendek** > **Windows-beállítások** > **biztonsági beállítások** > **fiók házirendek** > fiókzárolási**házirendet**.
+3. Tallózással keresse meg a **számítógép-konfigurációs**  >  **házirendek**  >  **Windows-beállítások**  >  **biztonsági beállítások**  >  **fiók házirendek**fiókzárolási  >  **házirendet**.
 4. Ellenőrizze a fiókzárolás **küszöbértékét** , és **állítsa alaphelyzetbe a fiókzárolás számlálóját** az értékek után.
 
 ![A helyszíni Active Directory fiókzárolási házirend módosítása](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -68,7 +67,7 @@ A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárol�
 A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági** > **hitelesítési módszerek** > **jelszavas védelem**lehetőséget.
+1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelem**lehetőséget.
 1. Állítsa be a **zárolási küszöbértéket**attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
 1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben. Az alapértelmezett érték 60 másodperc (egy perc).
 

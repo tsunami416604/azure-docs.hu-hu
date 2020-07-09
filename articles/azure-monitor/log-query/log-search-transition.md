@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
 ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670134"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés Log Analytics naplóbeli keresésről Azure Monitor naplókra
@@ -53,7 +52,7 @@ A naplók keresése elemre kattintva egy összegzett lekérdezés sorára kattin
 
 ![Naplóbeli keresés részletezése](media/log-search-transition/drilldown-search.png)
 
-Azure Monitor naplókban módosítania kell a lekérdezést a rekordok visszaküldéséhez. Bontsa ki az eredmények egyik sorát, és kattintson **+** a mellette lévő értékre a lekérdezéshez való hozzáadáshoz. Ezután adja ki az **Összefoglalás** parancsot, és futtassa újra a lekérdezést.
+Azure Monitor naplókban módosítania kell a lekérdezést a rekordok visszaküldéséhez. Bontsa ki az eredmények egyik sorát, és kattintson a **+** mellette lévő értékre a lekérdezéshez való hozzáadáshoz. Ezután adja ki az **Összefoglalás** parancsot, és futtassa újra a lekérdezést.
 
 ![Naplók lebontása Azure Monitor](media/log-search-transition/drilldown-logs.png)
 

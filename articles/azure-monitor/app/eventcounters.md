@@ -4,10 +4,9 @@ description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése A
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83700433"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
@@ -134,7 +133,7 @@ Az élő metrikák nem jelenítik meg a EventCounters a mai naptól. A telemetri
 
 ### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>Mely platformok láthatják a .NET Core 3,0-számlálók alapértelmezett listáját?
 
-A EventCounter nem igényel speciális engedélyeket, és a .NET Core 3,0 összes platformján támogatott. Az érintett műveletek közé tartoznak az alábbiak:
+A EventCounter nem igényel speciális engedélyeket, és a .NET Core 3,0 összes platformján támogatott. Ide tartoznak az alábbiak:
 
 * **Operációs rendszer**: Windows, Linux vagy MacOS.
 * **Üzemeltetési módszer**: folyamatban vagy folyamatban.

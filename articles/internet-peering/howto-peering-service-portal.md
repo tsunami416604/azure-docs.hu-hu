@@ -5,15 +5,14 @@ description: Az Azure-alapú társ-kezelés engedélyezése közvetlenül a Azur
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700042"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Az Azure-alapú társ-kezelés engedélyezése közvetlenül a Azure Portal használatával
 
@@ -46,6 +45,6 @@ A kapcsolódási beállítások módosításához tekintse meg a [közvetlen tá
 * [Exchange-társ létrehozása vagy módosítása a portál használatával](howto-exchange-portal.md)
 * [Örökölt Exchange-társ átalakítása Azure-erőforrásra a portál használatával](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 A gyakori kérdésekért tekintse meg a következő témakört: [peering Service – gyakori](service-faqs.md)kérdések.

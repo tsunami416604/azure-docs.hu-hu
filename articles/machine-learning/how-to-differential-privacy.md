@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan alkalmazhatja az WhiteNoise-csomagok használat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 47497f23da94e529826b8dddb05b869727fb528e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981846"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Különbözeti adatvédelem használata Azure Machine Learning
 
@@ -24,6 +24,9 @@ ms.locfileid: "83664948"
 Ismerje meg, hogyan alkalmazhatja a modelleket a WhiteNoise Python-csomagok használatával, hogy a különböző adatvédelmi eljárásokat Azure Machine Learning modellekre alkalmazza.
 
 A különbözeti adatvédelem az adatvédelem arany szabvány szerinti definíciója. Az adatvédelem ezen definícióját betartó rendszerek erős garanciát biztosítanak az adatújjáépítési és-azonosítási támadások széles körére, beleértve a kiegészítő információkat tartalmazó ellenfelek támadásait is. További információ a [differenciált adatvédelem működéséről](./concept-differential-privacy.md).
+
+> [!NOTE]
+> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -148,7 +151,7 @@ A könyvtár használatával összetettebb elemzési diagramokat hozhat létre, 
 | Darabszám         | Gauss   | Típuskonverzió       |
 | Hisztogram     | Lévő értékek mértani  | Befogó   |
 | Középérték          | Laplace    | Digitalizálni   |
-| Quantiles     |            | Szűrő     |
+| Quantiles     |            | Szűrés     |
 | Összeg           |            | Beszámítás |
 | Variancia/szórás |      | Átalakítás  |
 

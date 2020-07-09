@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80258294"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldás gyorsító üzembe helyezése a parancssori felület használatával
@@ -25,7 +25,7 @@ A távoli figyelési megoldás-gyorsító üzembe helyezéséhez aktív Azure-el
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-A CLI futtatásához a helyi gépen telepíteni kell a [Node. js fájlt](https://nodejs.org/) .
+A CLI futtatásához [Node.js](https://nodejs.org/) kell telepíteni a helyi gépre.
 
 ## <a name="install-the-cli"></a>A CLI telepítése
 
@@ -51,7 +51,7 @@ A megoldás-gyorsító telepítésekor több lehetőség is van a telepítési f
 
 | Beállítás | Értékek | Leírás |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard`, `local` | Az _alapszintű_ üzembe helyezés tesztelési és demonstrációs célokra készült, és egyetlen virtuális gépre telepíti az összes szolgáltatást. A _standard szintű_ üzembe helyezés éles környezetben üzemel, és több virtuális gépre helyezi üzembe a szolgáltatást. A _helyi_ telepítés egy Docker-tárolót állít be, amely a helyi gépen futtatja a-szolgáltatásokat, és az Azure Cloud Servicest (például storage és Cosmos db) használja. |
+| Termékváltozat    | `basic`, `standard`, `local` | Az _alapszintű_ üzembe helyezés tesztelési és demonstrációs célokra készült, és egyetlen virtuális gépre telepíti az összes szolgáltatást. A _standard szintű_ üzembe helyezés éles környezetben üzemel, és több virtuális gépre helyezi üzembe a szolgáltatást. A _helyi_ telepítés egy Docker-tárolót állít be, amely a helyi gépen futtatja a-szolgáltatásokat, és az Azure Cloud Servicest (például storage és Cosmos db) használja. |
 | Futtatókörnyezet | `dotnet`, `java` | Kiválasztja a webszolgáltatás nyelvi megvalósítását. |
 
 A helyi telepítési lehetőség használatáról további információt [a távoli figyelési megoldás helyi futtatása](iot-accelerators-remote-monitoring-deploy-local.md)című témakörben talál.
@@ -60,7 +60,7 @@ A helyi telepítési lehetőség használatáról további információt [a táv
 
 Ez a szakasz az alapszintű és a normál üzemelő példány közötti fő különbségeket összegzi.
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Alapszintű
 
 Az alapszintű telepítést a [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) vagy a parancssori felület használatával végezheti el.
 
@@ -73,7 +73,7 @@ Az alapszintű üzembe helyezés a következő szolgáltatásokat hozza létre a
 | 1     | [Linuxos virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Szolgáltatók üzemeltetése |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – standard szint | Eszközkezelés és kommunikáció |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | A konfigurációs, a szabályok, a riasztások és az egyéb hűtőházi tárolók tárolása |  
-| 1     | [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Tároló a virtuális gép és a folyamatos átviteli ellenőrzőpontok számára |
+| 1     | [Azure Storage-tárfiók neve](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Tároló a virtuális gép és a folyamatos átviteli ellenőrzőpontok számára |
 | 1     | [Webalkalmazás](https://azure.microsoft.com/services/app-service/web/)        |                 | Előtér-webalkalmazás üzemeltetése |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Felhasználói identitások és biztonság kezelése |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Az eszköz helyeinek megtekintése |
@@ -103,7 +103,7 @@ A standard szintű üzembe helyezés a következő szolgáltatásokat hozza lét
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Az üzenetek tárolására szolgáló tárterület, amely lehetővé teszi a részletes telemetria elemzését |
 
 > [!NOTE]
-> Ezen szolgáltatások díjszabási információi a következő címen [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)találhatók:. Az előfizetésre vonatkozó használati és számlázási adatokat az [Azure Portalon](https://portal.azure.com/)találhatja meg.
+> Ezen szolgáltatások díjszabási információi a következő címen találhatók: [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) . Az előfizetésre vonatkozó használati és számlázási adatokat az [Azure Portalon](https://portal.azure.com/)találhatja meg.
 
 ## <a name="deploy-the-solution-accelerator"></a>A megoldásgyorsító üzembe helyezése
 
@@ -134,7 +134,7 @@ Ha a `pcs` parancsot egy megoldás üzembe helyezésekor futtatja, a rendszer a 
 - Egy hely.
 - A szolgáltatást futtató virtuális gépek hitelesítő adatai. Ezeket a hitelesítő adatokat használhatja a virtuális gépek hibaelhárításhoz való hozzáféréséhez.
 
-A `pcs` parancs befejeződése után megjelenik az új megoldás-gyorsító URL-címe. A `pcs` parancs egy olyan fájlt `{deployment-name}-output.json` is létrehoz, amely olyan adatokat tartalmaz, mint például a létrehozott IoT hub neve.
+A `pcs` parancs befejeződése után megjelenik az új megoldás-gyorsító URL-címe. A `pcs` parancs egy olyan fájlt is létrehoz, amely olyan adatokat tartalmaz, mint például `{deployment-name}-output.json` a létrehozott IoT hub neve.
 
 A parancssori paraméterekkel kapcsolatos további információkért futtassa a következőt:
 

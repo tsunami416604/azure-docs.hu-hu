@@ -2,17 +2,16 @@
 title: GitHub-műveletek munkafolyamatai az Azure statikus Web Apps
 description: Ismerje meg, hogyan állíthat be folyamatos üzembe helyezést az Azure statikus Web Apps a GitHub-Tárházak használatával.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.author: cshoe
+ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340933"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -50,7 +49,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -105,7 +106,7 @@ A statikus Web Apps munkafolyamat-fájlban két elérhető feladat van.
 | Name  | Description |
 |---------|---------|
 |`build_and_deploy_job` | Végrehajtja a leküldéses végrehajtást, vagy egy lekéréses kérelmet nyit meg a `on` tulajdonságban felsorolt ág alapján. |
-|`close_pull_request_job` | CSAK a lekéréses kérelem lezárásakor hajtható végre. |
+|`close_pull_request_job` | CSAK akkor hajt végre végrehajtást, ha lezárta egy lekéréses kérelmet, amely eltávolítja a lekéréses kérelmekből létrehozott átmeneti környezetet. |
 
 ## <a name="steps"></a>Lépések
 
@@ -134,11 +135,11 @@ with:
     ###### End of Repository/Build Configurations ######
 ```
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |---|---|---|
-| `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Igen |
-| `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | Nem |
-| `app_artifact_location` | A Build kimeneti könyvtárának helye a következőhöz képest: `app_location` .<br><br>Ha például az alkalmazás forráskódja a (z) helyen található `/app` , és a Build szkript a mappába helyezi a fájlt, `/app/build` akkor a értékeként állítsa be a `build` `app_artifact_location` értéket. | Nem |
+| `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Yes |
+| `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | No |
+| `app_artifact_location` | A Build kimeneti könyvtárának helye a következőhöz képest: `app_location` .<br><br>Ha például az alkalmazás forráskódja a (z) helyen található `/app` , és a Build szkript a mappába helyezi a fájlt, `/app/build` akkor a értékeként állítsa be a `build` `app_artifact_location` értéket. | No |
 
 A `repo_token` , a `action` és az értékeket az `azure_static_web_apps_api_token` Azure statikus Web Apps állítja be, ezért nem szabad manuálisan módosítani.
 
@@ -155,15 +156,15 @@ Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívj
 
 ## <a name="route-file-location"></a>Útvonal fájljának helye
 
-Testreszabhatja a munkafolyamatot, hogy megkeresse a [Routes. JSON](routes.md) fájlt a tárház bármely mappájából. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
+Testreszabhatja a munkafolyamatot, hogy megkeresse a [routes.jsa](routes.md) tárház bármely mappájába. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
 
-| Tulajdonság            | Description |
+| Tulajdonság            | Leírás |
 |---------------------|-------------|
-| `routes_location` | Meghatározza azt a könyvtárat, ahol a _Routes. JSON_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
+| `routes_location` | Meghatározza azt a könyvtárat, ahol a _routes.js_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
 
- A _Routes. JSON_ fájl helyével kapcsolatos explicit módon különösen fontos, ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a `app_artifact_location` alapértelmezésbe.
+ Ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a (z) rendszerre, akkor különösen fontos, hogy a _routes.js_ fájljának helye legyen explicit `app_artifact_location` .
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lekéréses kérelmek áttekintése az üzem előtti környezetekben](review-publish-pull-requests.md)
+> [Lekéréses kérelmek áttekintése éles üzem előtti környezetekben](review-publish-pull-requests.md)

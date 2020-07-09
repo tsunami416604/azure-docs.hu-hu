@@ -3,15 +3,14 @@ title: Azure Cosmos DB vezérlési sík műveleteinek naplózása
 description: Megtudhatja, hogyan naplózhatja a vezérlési sík műveleteit, például egy régió hozzáadását, a frissítés sebességét, a régió feladatátvételét, a VNet stb. hozzáadását Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: how-to
+ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414178"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB vezérlési sík műveleteinek naplózása
 
@@ -27,9 +26,9 @@ A következő példák olyan forgatókönyveket mutatnak be, amelyekben a napló
 
 ## <a name="disable-key-based-metadata-write-access"></a>Kulcs alapú metaadatok írási hozzáférésének letiltása
 
-Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az `disableKeyBasedMetadataWriteAccess` írási hozzáférést. A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és a hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk) című cikket. 
+Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az írási hozzáférést `disableKeyBasedMetadataWriteAccess` . A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és a hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk) című cikket. 
 
-Ha a `disableKeyBasedMetadataWriteAccess` be van kapcsolva, ha az SDK-alapú ügyfelek létrehozási vagy frissítési műveletet futtatnak, a " *ContainerNameorDatabaseName" erőforrás "művelet" bejegyzése nem engedélyezett Azure Cosmos db végponton keresztül* . Be kell kapcsolnia a fiókjához való hozzáférést, vagy a létrehozás/frissítés műveletet a Azure Resource Manager, az Azure CLI vagy az Azure PowerShell használatával kell végrehajtania. A visszaállításhoz állítsa a disableKeyBasedMetadataWriteAccess **hamis** értékre az Azure CLI használatával, a [változások megakadályozása a Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) -ban című cikkben leírtak szerint. Ügyeljen arra, hogy a True érték `disableKeyBasedMetadataWriteAccess` helyett false értékűre módosítsa a értéket.
+Ha a `disableKeyBasedMetadataWriteAccess` be van kapcsolva, ha az SDK-alapú ügyfelek létrehozási vagy frissítési műveletet futtatnak, a " *ContainerNameorDatabaseName" erőforrás "művelet" bejegyzése nem engedélyezett Azure Cosmos db végponton keresztül* . Be kell kapcsolnia a fiókjához való hozzáférést, vagy a létrehozás/frissítés műveletet a Azure Resource Manager, az Azure CLI vagy a Azure PowerShell használatával. A visszaállításhoz állítsa a disableKeyBasedMetadataWriteAccess **hamis** értékre az Azure CLI használatával, a [változások megakadályozása a Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) -ban című cikkben leírtak szerint. Ügyeljen arra, hogy a True érték helyett false értékűre módosítsa a értéket `disableKeyBasedMetadataWriteAccess` .
 
 A metaadatok írási hozzáférésének kikapcsolásakor vegye figyelembe a következő szempontokat:
 
@@ -51,7 +50,7 @@ A következő lépésekkel engedélyezheti a naplózást a vezérlési sík műv
 
 A naplókat egy Storage-fiókban vagy egy Event hub-adatfolyamban is tárolhatja. Ez a cikk bemutatja, hogyan küldhet naplókat a log Analyticsnek, majd hogyan kérdezheti le őket. Az engedélyezést követően néhány percet vesz igénybe, amíg a diagnosztikai naplók érvénybe lépnek. Az ezen pont után végrehajtott összes vezérlő sík nyomon követhető. A következő képernyőképen a vezérlési sík naplófájljainak engedélyezése látható:
 
-![Vezérlési sík kérelmek naplózásának engedélyezése](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/enable-control-plane-requests-logs.png" alt-text="Vezérlési sík kérelmek naplózásának engedélyezése":::
 
 ## <a name="view-the-control-plane-operations"></a>A vezérlő síkja műveleteinek megtekintése
 
@@ -69,17 +68,17 @@ A naplózás bekapcsolását követően kövesse az alábbi lépéseket egy adot
 
 Az alábbi képernyőképek rögzítik a naplókat, ha egy Azure Cosmos-fiókhoz módosul egy konzisztencia-szint:
 
-![Vezérlési sík naplói a VNet hozzáadásakor](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Vezérlési sík naplói a VNet hozzáadásakor":::
 
-A következő képernyőképek rögzítik a Cassandra-tábla átviteli sebességét:
+A következő képernyőképek rögzítik a naplókat, amikor létrejön egy Cassandra-fiókhoz tartozó szóköz vagy tábla, és frissül az átviteli sebesség. A vezérlő síkja a létrehozási és frissítési műveletekhez tartozó naplókat naplózza az adatbázison, és a tárolót külön naplózza, ahogy az alábbi képernyőképen is látható:
 
-![Vezérlési sík naplói az átviteli sebesség frissítésekor](./media/audit-control-plane-logs/throughput-update-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Vezérlési sík naplói az átviteli sebesség frissítésekor":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Egy adott művelethez társított identitás azonosítása
 
 Ha további hibakeresést szeretne végezni, akkor a tevékenység azonosítója vagy a művelet időbélyegzője segítségével azonosíthatja a **tevékenységek naplójában** megadott műveletet. Az időbélyeg olyan Resource Manager-ügyfelek esetében használatos, amelyekben a tevékenység azonosítója nem lett explicit módon átadva. A tevékenység naplója részletesen ismerteti a műveletet kezdeményező identitást. Az alábbi képernyőfelvételen a tevékenység-azonosító használata látható, és megkeresheti az ahhoz társított műveleteket a tevékenység naplójában:
 
-![A tevékenység-azonosító használata és a műveletek megkeresése](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="A tevékenység-azonosító használata és a műveletek megkeresése":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vezérlési sík műveletei az Azure Cosmos-fiókhoz
 
@@ -101,30 +100,39 @@ Az alábbiakban a vezérlési sík a fiók szintjén elérhető műveletei láth
 
 A vezérlési sík műveletei az adatbázis és a tároló szintjén érhetők el. Ezek a műveletek metrikaként érhetők el az Azure monitorban:
 
+* SQL Database létrehozva
 * SQL Database frissítve
-* SQL-tároló frissítve
 * SQL Database átviteli sebesség frissítve
-* SQL-tároló átviteli sebessége frissítve
 * SQL Database törölve
+* SQL-tároló létrehozva
+* SQL-tároló frissítve
+* SQL-tároló átviteli sebessége frissítve
 * SQL-tároló törölve
+* Cassandra-terület létrehozva
 * Cassandra Space frissítve
-* Cassandra-tábla frissítve
 * Cassandra Space-átviteli sebesség frissítve
-* Cassandra Table átviteli sebesség frissítve
 * Cassandra szóköz törölve
+* Cassandra-tábla létrehozva
+* Cassandra-tábla frissítve
+* Cassandra Table átviteli sebesség frissítve
 * Cassandra-tábla törölve
+* Gremlin-adatbázis létrehozva
 * Gremlin-adatbázis frissítve
-* Gremlin gráf frissítve
 * Gremlin adatbázis átviteli sebessége frissítve
-* Gremlin gráf átviteli sebessége frissítve
 * Gremlin-adatbázis törölve
+* Gremlin gráf létrehozva
+* Gremlin gráf frissítve
+* Gremlin gráf átviteli sebessége frissítve
 * Gremlin gráf törölve
+* Mongo-adatbázis létrehozva
 * Mongo-adatbázis frissítve
-* Mongo-gyűjtemény frissítve
 * Mongo adatbázis átviteli sebessége frissítve
-* A Mongo-gyűjtési átviteli sebesség frissítve
 * Mongo-adatbázis törölve
+* Mongo-gyűjtemény létrehozva
+* Mongo-gyűjtemény frissítve
+* A Mongo-gyűjtési átviteli sebesség frissítve
 * Mongo-gyűjtemény törölve
+* AzureTable tábla létrehozva
 * AzureTable tábla frissítve
 * AzureTable-tábla átviteli sebessége frissítve
 * AzureTable-tábla törölve
@@ -144,14 +152,15 @@ A következő műveletek nevei a különböző műveletekhez tartozó diagnoszti
 
 Az API-specifikus műveletek esetében a művelet a következő formátumban lesz elnevezve:
 
-* ApiKind + ApiKindResourceType + OperationType + indítás/Befejezés
-* ApiKind + ApiKindResourceType + "átviteli sebesség" + operationType + Kezdés/Befejezés
+* ApiKind + ApiKindResourceType + OperationType
+* ApiKind + ApiKindResourceType + "átviteli sebesség" + operationType
 
 **Példa** 
 
-* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
-* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
-* SqlContainersUpdateStart, SqlContainersUpdateComplete
+* CassandraKeyspacesCreate
+* CassandraKeyspacesUpdate
+* CassandraKeyspacesThroughputUpdate
+* SqlContainersUpdate
 
 A *ResourceDetails* tulajdonság a teljes erőforrás törzsét tartalmazza kérelem hasznos adataiként, és tartalmazza a frissítéshez kért összes tulajdonságot.
 
@@ -161,14 +170,28 @@ Az alábbiakban néhány példát talál a vezérlési sík műveleteihez szüks
 
 ```kusto
 AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdateStart"
+| where Category startswith "ControlPlane"
+| where OperationName contains "Update"
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+| where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 ## <a name="next-steps"></a>További lépések

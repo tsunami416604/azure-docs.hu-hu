@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan szerezhet be tanúsítványt a Lets
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73957982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807039"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>LetsEncrypt.org-t használó tanúsítványok használata a Application Gateway AK-fürtökhöz
 
@@ -24,7 +24,7 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
 
     Futtassa a következő szkriptet a `cert-manager` Helm diagram telepítéséhez. Ez a következő lesz:
 
-    - hozzon létre `cert-manager` egy új névteret az AK-ban
+    - hozzon létre egy új `cert-manager` névteret az AK-ban
     - hozza létre a következő CRDs: tanúsítvány, kérdés, ClusterIssuer, kiállító, rendelés
     - a CERT-Manager diagram telepítése (a docs.cert-manager.io-ből [)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)
 
@@ -56,14 +56,14 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
 
 2. ClusterIssuer erőforrás
 
-    Hozzon `ClusterIssuer` létre egy erőforrást. A `cert-manager` ahhoz a `Lets Encrypt` hitelesítésszolgáltatóhoz szükséges, amely az aláírt tanúsítványokat fogja beszerezni.
+    Hozzon létre egy `ClusterIssuer` erőforrást. A ahhoz a hitelesítésszolgáltatóhoz szükséges, `cert-manager` `Lets Encrypt` amely az aláírt tanúsítványokat fogja beszerezni.
 
-    A nem névteret `ClusterIssuer` erőforrás használatával a CERT-Manager több névtérből is felhasználható tanúsítványokat állít ki. `Let’s Encrypt`az ACME protokoll használatával ellenőrzi, hogy egy adott tartománynevet és a tanúsítvány kiállítását kívánja-e használni. További részletek a tulajdonságok `ClusterIssuer` konfigurálásáról. [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer`a utasítja `cert-manager` a tanúsítványokat a `Lets Encrypt` teszteléshez használt átmeneti környezet használatával (a főtanúsítvány a böngésző-és ügyfél-megbízhatósági tárolókban nem található).
+    A nem névteret erőforrás használatával a `ClusterIssuer` CERT-Manager több névtérből is felhasználható tanúsítványokat állít ki. `Let’s Encrypt`az ACME protokoll használatával ellenőrzi, hogy egy adott tartománynevet és a tanúsítvány kiállítását kívánja-e használni. További részletek a tulajdonságok konfigurálásáról `ClusterIssuer` . [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer`a utasítja `cert-manager` a tanúsítványokat a `Lets Encrypt` teszteléshez használt átmeneti környezet használatával (a főtanúsítvány a böngésző-és ügyfél-megbízhatósági tárolókban nem található).
 
-    Az alábbi YAML az alapértelmezett kérdés típusa a következő `http01`:. Egyéb kihívások dokumentálva vannak a [Letsencrypt.org típusaival](https://letsencrypt.org/docs/challenge-types/) kapcsolatban
+    Az alábbi YAML az alapértelmezett kérdés típusa a következő: `http01` . Egyéb kihívások dokumentálva vannak a [Letsencrypt.org típusaival](https://letsencrypt.org/docs/challenge-types/) kapcsolatban
 
     > [!IMPORTANT] 
-    > Frissítés `<YOUR.EMAIL@ADDRESS>` az alábbi YAML
+    > Frissítés az `<YOUR.EMAIL@ADDRESS>` alábbi YAML
 
     ```bash
     #!/bin/bash
@@ -97,8 +97,8 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
 
     Hozzon létre egy bejövő erőforrást az `guestbook` alkalmazásnak a Application Gateway használatával történő elérhetővé tétele érdekében a tanúsítvány titkosításának lehetővé tétele.
 
-    Győződjön meg arról, hogy Application Gateway rendelkezik egy DNS-névvel rendelkező nyilvános előtéri IP-konfigurációval (az alapértelmezett `azure.com` tartománnyal `Azure DNS Zone` vagy szolgáltatás kiépítésével, valamint saját egyéni tartomány hozzárendelésével).
-    Jegyezze fel a jegyzetet `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`, amely azt jelzi, hogy a tanúsítvány-kezelő feldolgozza a címkézett bejövő erőforrásokat.
+    Győződjön meg arról, hogy Application Gateway rendelkezik egy DNS-névvel rendelkező nyilvános előtéri IP-konfigurációval (az alapértelmezett tartománnyal vagy szolgáltatás kiépítésével, `azure.com` `Azure DNS Zone` valamint saját egyéni tartomány hozzárendelésével).
+    Jegyezze fel a jegyzetet `certmanager.k8s.io/cluster-issuer: letsencrypt-staging` , amely azt jelzi, hogy a tanúsítvány-kezelő feldolgozza a címkézett bejövő erőforrásokat.
 
     > [!IMPORTANT] 
     > Frissítse `<PLACEHOLDERS.COM>` az alábbi YAML a saját tartományával (vagy a Application Gateway egy, például "KH-AKS-ingress.westeurope.cloudapp.Azure.com")
@@ -128,14 +128,14 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
     ```
 
     Néhány másodperc elteltével a `guestbook` szolgáltatás a Application Gateway HTTPS URL-címen keresztül érhető el az automatikusan kiadott **átmeneti** `Lets Encrypt` tanúsítvány használatával.
-    Előfordulhat, hogy a böngésző egy érvénytelen hitelesítésszolgáltatótól figyelmeztet. Az átmeneti tanúsítványt a bocsátja ki `CN=Fake LE Intermediate X1`. Ez azt jelzi, hogy a rendszer a vártnak megfelelően működött, és készen áll az éles tanúsítványra.
+    Előfordulhat, hogy a böngésző egy érvénytelen hitelesítésszolgáltatótól figyelmeztet. Az átmeneti tanúsítványt a bocsátja ki `CN=Fake LE Intermediate X1` . Ez azt jelzi, hogy a rendszer a vártnak megfelelően működött, és készen áll az éles tanúsítványra.
 
 4. Éles tanúsítvány
 
     Az előkészítési tanúsítvány sikeres beállítása után átválthat éles ACME-kiszolgálóra:
     1. Cserélje le az előkészítési jegyzetet a bejövő erőforrásra a következővel:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Törölje az előző lépésben létrehozott `ClusterIssuer` meglévő előkészítést, és hozzon létre egy újat az Acme-kiszolgáló a fenti CLUSTERISSUER-YAML való lecserélésével.`https://acme-v02.api.letsencrypt.org/directory`
+    1. Törölje az `ClusterIssuer` előző lépésben létrehozott meglévő előkészítést, és hozzon létre egy újat az Acme-kiszolgáló a fenti ClusterIssuer-YAML való lecserélésével.`https://acme-v02.api.letsencrypt.org/directory`
 
 5. Tanúsítvány lejárata és megújítása
 
-    A `Lets Encrypt` tanúsítvány lejárata `cert-manager` előtt a automatikusan frissíti a tanúsítványt a Kubernetes titkos tárolóban. Ezen a Application Gateway ponton a bejövő adatforgalom-vezérlő a Application Gateway konfigurálásához az általa használt bejövő erőforrások által hivatkozott frissített titkos kulcsot fogja alkalmazni.
+    A `Lets Encrypt` tanúsítvány lejárata előtt a `cert-manager` automatikusan frissíti a tanúsítványt a Kubernetes titkos tárolóban. Ezen a Application Gateway ponton a bejövő adatforgalom-vezérlő a Application Gateway konfigurálásához az általa használt bejövő erőforrások által hivatkozott frissített titkos kulcsot fogja alkalmazni.

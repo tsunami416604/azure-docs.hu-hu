@@ -5,14 +5,14 @@ author: msft-tacox
 ms.author: tacox
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015012"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087518"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -34,7 +34,7 @@ A kaptár egyik előnye, hogy lehetővé teszi a metaadatok exportálását egy 
 A HDInsight 3,6 és a HDInsight 4,0 ACID táblázatok eltérően értelmezik a savas különbözeteket. Az áttelepítés előtt csak a "MAJOR" tömörítést kell végrehajtani az 3,6-fürt minden egyes savas táblájánál. A tömörítéssel kapcsolatos részletekért tekintse meg a [kaptár nyelvi útmutatóját](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) .
 
 ### <a name="2-copy-sql-database"></a>2. az SQL Database másolása
-Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár használ, az egyik biztonságos és egyszerű módszer a metaadattár másolására, ha az adatbázist másik néven szeretné [visszaállítani](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) a SQL Database Restore függvény használatával.  További információ a külső metaadattár HDInsight-fürthöz való csatolásáról: [külső metaadat-tárolók használata az Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
+Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár használ, az egyik biztonságos és egyszerű módszer a metaadattár másolására, hogy a függvény használatával egy másik néven [állítsa vissza az adatbázist](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) `RESTORE` .  További információ a külső metaadattár HDInsight-fürthöz való csatolásáról: [külső metaadat-tárolók használata az Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
 
 ### <a name="3-upgrade-metastore-schema"></a>3. a metaadattár séma frissítése
 A metaadattár **másolásának** befejeződése után futtasson egy [séma-frissítési parancsfájlt a meglévő](../hdinsight-hadoop-customize-cluster-linux.md) HDInsight 3,6-fürtön az új metaadattár a kaptár 3 sémára való frissítéséhez. (Ehhez a lépéshez nem szükséges, hogy az új metaadattár csatlakozni lehessen egy fürthöz.) Ez lehetővé teszi, hogy az adatbázis HDInsight 4,0 metaadattár legyen csatolva.

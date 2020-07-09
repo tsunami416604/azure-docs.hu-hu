@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783214"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -37,14 +36,8 @@ Azure Security Center a következő Azure-erőforrásokat figyeli:
 
 * Virtuális gépek (VM-EK) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Virtuálisgép-méretezési csoportok
-* Azure virtuális hálózatok
-* Containers
-* Azure SQL-szolgáltatás
-* Azure Storage-fiók
-* Azure Web Apps ( [app Service Environment](../app-service/environment/intro.md))
 * Azure-előfizetéssel integrált partneri megoldások, például webalkalmazási tűzfal virtuális gépeken és App Service Environment
-
-Emellett a nem Azure-t (beleértve a helyszíni gépeket is) Azure Security Center is figyelheti. A [Windows rendszerű gépek](./quick-onboard-windows-computer.md) és a Linux rendszerű [gépek](./quick-onboard-linux-computer.md) egyaránt támogatottak.
+* [A termék áttekintésében szereplő számos Azure-beli Pásti-szolgáltatás](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan tekinthetem meg az Azure-erőforrások aktuális biztonsági állapotát?
@@ -59,7 +52,7 @@ A biztonsági szabályzatok Azure Security Center meghajtó biztonsági javaslat
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Kik módosíthatják a biztonsági házirendeket?
-A biztonsági szabályzatok módosításához biztonsági rendszergazdának vagy az előfizetés tulajdonosának vagy közreműködőnek kell lennie.
+A biztonsági szabályzatok módosításához **biztonsági rendszergazdának** vagy az előfizetés **tulajdonosának** kell lennie.
 
 A biztonsági szabályzatok konfigurálásával kapcsolatos további információkért lásd: [biztonsági házirendek beállítása Azure Security Centerban](tutorial-security-policy.md).
 
@@ -87,7 +80,7 @@ Azure Security Center automatikusan gyűjti, elemzi és megtagadja az Azure-erő
 
 
 ## <a name="why-did-secure-score-values-change"></a>Miért változnak a biztonsági pontszám értékei? <a name="secure-score-faq"></a>
-Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  A biztonságos pontszámról további információt a [biztonságos pontszám kiszámítása](security-center-secure-score.md)című témakörben talál.
+Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  További információ a biztonságos pontszámról: [Azure Security Center továbbfejlesztett biztonságos pontszáma](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség az észlelt fenyegetések és a riasztások között a Microsoft Security Response Center és a Azure Security Center között?

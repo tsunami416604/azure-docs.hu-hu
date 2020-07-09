@@ -3,12 +3,11 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247274"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -54,7 +53,7 @@ A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal re
 
 Ha nem szeretné futtatni az alapkiszolgálót az Azure-ban, akkor futtathatja a kiszolgálót egy Hyper-V virtuális gépen, egy VMware virtuális gépen vagy egy fizikai gazdagépen. A kiszolgálói hardver ajánlott minimális követelményei két mag és 8 GB RAM. A támogatott operációs rendszerek a következő táblázatban láthatók:
 
-| Operációs rendszer | Platform | SKU |
+| Operációs rendszer | Platform | Termékváltozat |
 |:--- | --- |:--- |
 | Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 és legújabb SPs |64 bit |Standard, Datacenter, Essentials  |
@@ -147,7 +146,7 @@ A tárreplikációs beállítás szerkesztése:
 
 ### <a name="extracting-the-software-package"></a>A szoftvercsomag kibontása
 
-Miután letöltötte az összes fájlt, kattintson a **MicrosoftAzureBackupInstaller. exe**fájlra. Ekkor elindul a **Microsoft Azure Backup** telepítővarázsló, hogy kicsomagolja a telepítőfájlokat az Ön által megadott helyre. Folytassa a varázslót, és kattintson a **Kibontás** gombra a kinyerési folyamat megkezdéséhez.
+Az összes fájl letöltése után kattintson a **MicrosoftAzureBackupInstaller.exe**elemre. Ekkor elindul a **Microsoft Azure Backup** telepítővarázsló, hogy kicsomagolja a telepítőfájlokat az Ön által megadott helyre. Folytassa a varázslót, és kattintson a **Kibontás** gombra a kinyerési folyamat megkezdéséhez.
 
 > [!WARNING]
 > A telepítőfájlok kibontásához legalább 4 GB szabad terület szükséges.
@@ -156,7 +155,7 @@ Miután letöltötte az összes fájlt, kattintson a **MicrosoftAzureBackupInsta
 
 ![Microsoft Azure Backup telepítővarázslója](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy elindítsa a frissen kibontott *Setup. exe fájlt* a Microsoft Azure Backup kiszolgáló telepítésének megkezdéséhez, majd kattintson a **Befejezés** gombra.
+Miután a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet a frissen kinyert *setup.exe* elindításához a Microsoft Azure Backup-kiszolgáló telepítésének megkezdéséhez, majd kattintson a **Befejezés** gombra.
 
 ### <a name="installing-the-software-package"></a>A szoftvercsomag telepítése
 
@@ -174,7 +173,7 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
 
     ![Azure Backup Server – SQL-vizsgálat](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Ha hiba lép fel a gép újraindítására vonatkozó javaslattal, tegye a következőt, majd kattintson **ismét az ismételt vizsgálat**gombra. Ha vannak SQL-konfigurációs problémák, konfigurálja újra az SQL-t az SQL-irányelvek alapján, majd próbálja meg újra telepíteni/frissíteni a MABS a meglévő SQL-példány használatával.
+    Ha hiba lép fel a gép újraindítására vonatkozó javaslattal, tegye a következőt, majd kattintson **ismét az ismételt vizsgálat**gombra. Ha vannak SQL-konfigurációs problémák, konfigurálja újra az SQL-t az SQL-irányelvek alapján, majd próbálja meg újra telepíteni/frissíteni a MABS-t a meglévő SQL-példány használatával.
 
    **Manuális konfigurálás**
 
@@ -186,9 +185,9 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
 
     Az SSRS konfigurálásához használja a következő értékeket:
     * Szolgáltatásfiók: a "beépített fiók használata" hálózati szolgáltatásnak kell lennie
-    * Webszolgáltatás URL-címe: a virtuális könyvtárnak ReportServer_ SQLInstanceName kell lennie \<>
-    * Adatbázis: a DatabaseName reportserver $ \< SQLInstanceName>
-    * Webes portál URL-címe: a "virtuális könyvtár" Reports_ SQLInstanceName kell lennie \<>
+    * Webszolgáltatás URL-címe: a "virtuális könyvtár" legyen ReportServer_\<SQLInstanceName>
+    * Adatbázis: a DatabaseName ReportServer $\<SQLInstanceName>
+    * Webes portál URL-címe: a "virtuális könyvtár" legyen Reports_\<SQLInstanceName>
 
     [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
 
@@ -312,7 +311,7 @@ Ha ExpressRoute Microsoft-társat használ, válassza ki a következő szolgált
 
 * Azure Active Directory (12076:5060)
 * Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
-* Azure Storage (a Recovery Services-tároló helyének megfelelően)
+* Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
 További részletekért keresse fel a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
@@ -343,7 +342,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
    > [!NOTE]
    >
-   > Ne lépjen ki az SQL-példány frissítésekor, a kilépés eltávolítja az SQL Reporting-példányt, ezért a MABS újrafrissítésére tett kísérlet sikertelen lesz.
+   > Ne lépjen ki az SQL-példány frissítésekor, a kilépés eltávolítja az SQL jelentéskészítési példányt, így a MABS újrafrissítésére tett kísérlet sikertelen lesz.
 
    > [!IMPORTANT]
    >

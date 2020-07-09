@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 6dc94cca66370daa307a21daa6c96a778baed08c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808833"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -50,9 +50,9 @@ Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A követke
 1. Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 2. **Platform**  >  **Windows** kiválasztása
 3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer) lehetőséget
-4. Válassza a **tovább** lehetőséget
+4. Kattintson a **Tovább** gombra.
 5. A **projekt neve** mezőben adja meg az alkalmazás nevét
-6. **Létrehozás** kiválasztása
+6. Kattintson a **Létrehozás** elemre.
 
 Az oktatóanyagban szereplő összes példa a konzol alkalmazás **program.cs** fájljának **Main ()** metódusához adható hozzá.
 
@@ -74,7 +74,7 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 1. **Tallózás** kiválasztása
 1. Keressen rá az interneten az "Azure. Storage. Queues" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez az Azure. Storage. Common és az Azure. Core kódtárakat is telepíti, amelyek a várólista-függvénytár függőségei.
-1. Keressen rá az interneten a "System. Configuration. ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget a Configuration Manager telepítéséhez.
+1. Keressen rá az interneten a "System.Configuration.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget a Configuration Manager telepítéséhez.
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
@@ -89,7 +89,7 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 1. **Tallózás** kiválasztása
 1. Keressen rá az interneten a "Microsoft. Azure. Storage. üzenetsor" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez a Microsoft. Azure. Storage. Common könyvtárat is telepíti, amely a várólista-függvénytár függősége.
-1. Keressen rá az interneten a "Microsoft. Azure. ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure Configuration Manager telepítéséhez.
+1. Keressen rá az interneten a "Microsoft.Azure.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure-Configuration Manager telepítéséhez.
 
 ---
 
@@ -128,7 +128,7 @@ A kapcsolati sztringekkel kapcsolatos további információkért lásd: [Az Azur
 > [!NOTE]
 > A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
 
-A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban. A kapcsolódási karakterlánc konfigurálásához nyissa meg az *app. config* fájlt megoldáskezelő a Visual Studióban. Adja hozzá az alábbi `\<appSettings\>` elem tartalmát. Cserélje le a *-karakterláncot* a Storage-fiókból másolt értékre a portálon:
+A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban. A kapcsolódási karakterlánc konfigurálásához nyissa meg a *app.config* fájlt megoldáskezelő a Visual Studióban. Adja hozzá az alábbi `\<appSettings\>` elem tartalmát. Cserélje le a *-karakterláncot* a Storage-fiókból másolt értékre a portálon:
 
 ```xml
 <configuration>

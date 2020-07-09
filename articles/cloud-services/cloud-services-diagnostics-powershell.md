@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
 ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386544"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával
@@ -37,7 +36,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Ha a diagnosztikai konfigurációs fájl egy olyan `StorageAccount` elemet ad meg, amely egy Storage-fiók `New-AzureServiceDiagnosticsExtensionConfig` nevét tartalmazza, akkor a parancsmag automatikusan ezt a Storage-fiókot fogja használni. Ahhoz, hogy működjön, a Storage-fióknak ugyanabban az előfizetésben kell lennie, mint az üzembe helyezett felhőalapú szolgáltatásnak.
+Ha a diagnosztikai konfigurációs fájl egy olyan `StorageAccount` elemet ad meg, amely egy Storage-fiók nevét tartalmazza, akkor a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag automatikusan ezt a Storage-fiókot fogja használni. Ahhoz, hogy működjön, a Storage-fióknak ugyanabban az előfizetésben kell lennie, mint az üzembe helyezett felhőalapú szolgáltatásnak.
 
 Az Azure SDK 2,6-tól kezdve az MSBuild közzétételi cél kimenetében létrehozott bővítmény konfigurációs fájljai a Storage-fiók nevét is tartalmazzák a szolgáltatás konfigurációs fájljában (. cscfg) megadott diagnosztikai konfigurációs karakterlánc alapján. Az alábbi szkript bemutatja, hogyan elemezheti a bővítmény konfigurációs fájljait a közzétételi cél kimenetből, és hogyan konfigurálhatja a diagnosztikai bővítményt az egyes szerepkörökhöz a Cloud Service telepítésekor.
 
@@ -80,7 +79,7 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-A Visual Studio online hasonló módszert használ a Cloud Services automatikus üzembe helyezéséhez a diagnosztikai bővítménnyel. Tekintse meg a [publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) teljes példáját.
+A Visual Studio online hasonló módszert használ a Cloud Services automatikus üzembe helyezéséhez a diagnosztikai bővítménnyel. Teljes példa: [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) .
 
 Ha nem `StorageAccount` lett megadva a diagnosztika konfigurációjában, akkor át kell adni a *StorageAccountName* paramétert a parancsmagnak. Ha a *StorageAccountName* paraméter meg van adva, a parancsmag mindig a paraméterben megadott Storage-fiókot fogja használni, nem pedig a diagnosztikai konfigurációs fájlban megadott értéket.
 

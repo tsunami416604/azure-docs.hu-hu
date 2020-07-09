@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367992"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087537"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interaktív lekérdezési Apache Hive adatai megjelenítése a Microsoft Power BI használatával közvetlen lekérdezéssel a HDInsight-ben
 
@@ -35,7 +35,7 @@ A `hivesampletable` kaptár tábla minden HDInsight-fürtöt tartalmaz.
 
 1. Indítsa el a Power BI Desktopot.
 
-2. A menüsávban navigáljon a **Kezdőlap** >  > **adatok beolvasása****továbbiak...** elemre.
+2. A menüsávban navigáljon a **Kezdőlap**  >  **adatok beolvasása**  >  **továbbiak...** elemre.
 
     ![HDInsight Power BI további információ](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

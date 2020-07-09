@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 44ce56238140de90145f69e966c94be8572c7749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f502c93b4df6db83756f3fe9853ac598b40074ef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81252302"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212700"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben Azure PowerShell
 
@@ -113,7 +113,7 @@ Az SQL-készlet állapotának megtekintéséhez használja a [Get-AzSqlDatabaseA
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
@@ -124,7 +124,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson az SQL-készletre.
 
-    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az SQL-készlet fel van függesztve, a **Start** gomb jelenik meg.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 

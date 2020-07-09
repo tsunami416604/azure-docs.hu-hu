@@ -1,18 +1,18 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84317751"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
@@ -48,11 +48,11 @@ A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai 
 
 Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az **ajánlatban** és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
-|Rendszerkép-definíció|Közzétevő|Ajánlat|SKU|
+|Rendszerkép-definíció|Publisher|Ajánlat|SKU|
 |---|---|---|---|
-|myImage1|Contoso|Pénzügy|Háttérrendszer|
-|myImage2|Contoso|Pénzügy|Előtér|
-|myImage3|Tesztelés|Pénzügy|Előtér|
+|myImage1|Contoso|Finance|Háttérrendszer|
+|myImage2|Contoso|Finance|Előtér|
+|myImage3|Tesztelés|Finance|Előtér|
 
 Mindhárom ilyen egyedi értéket tartalmaz. A formátum hasonló ahhoz, ahogyan jelenleg az [Azure Marketplace-lemezképekhez](../articles/virtual-machines/windows/cli-ps-findimage.md) tartozó közzétevőt, ajánlatot és SKU-t megadhatja Azure PowerShell a Piactéri lemezkép legújabb verziójának beszerzéséhez. Minden rendszerkép-definíciónak egyedi készlettel kell rendelkeznie ezeknek az értékeknek.
 
@@ -71,14 +71,14 @@ A következő más paraméterek is megadhatók a képdefinícióban, így könny
 
 ## <a name="generalized-and-specialized-images"></a>Általánosított és speciális rendszerképek
 
-A megosztott rendszerkép-katalógusban két operációsrendszer-állapot támogatott. Általában a lemezképek megkövetelik, hogy a rendszerkép létrehozásához használt virtuális gép általánosítva legyen a lemezkép készítése előtt. Az általánosítás egy olyan folyamat, amely eltávolítja a gép és a felhasználó által megadott adatokat a virtuális gépről. Windows rendszeren a Sysprep is használatban van. A Linux rendszerben [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy `-deprovision+user` paramétereket is használhat.
+A megosztott rendszerkép-katalógusban két operációsrendszer-állapot támogatott. Általában a lemezképek megkövetelik, hogy a rendszerkép létrehozásához használt virtuális gép általánosítva legyen a lemezkép készítése előtt. Az általánosítás egy olyan folyamat, amely eltávolítja a gép és a felhasználó által megadott adatokat a virtuális gépről. Windows esetén a rendszer a Sysprep eszközt használja. A Linux rendszerben [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy paramétereket is használhat `-deprovision+user` .
 
 A speciális virtuális gépek nem a gép specifikus információinak és fiókjainak eltávolítására szolgáló folyamattal rendelkeznek. Emellett a speciális lemezképből létrehozott virtuális gépekhez nincs `osProfile` társítva. Ez azt jelenti, hogy a speciális képek bizonyos előnyök mellett bizonyos korlátozásokkal is rendelkeznek.
 
 - A speciális rendszerképekből létrehozott virtuális gépek és méretezési csoportok gyorsabban üzembe helyezhetők. Mivel azok olyan forrásokból jönnek létre, amelyek már az első rendszerindításon keresztül lettek létrehozva, a rendszerképekből létrehozott virtuális gépek gyorsabban indulnak.
 - A virtuális gépre való bejelentkezéshez használható fiókok az adott virtuális gépről létrehozott speciális rendszerkép használatával létrehozott virtuális gépeken is használhatók.
 - A virtuális gépek neve annak a virtuális gépnek a **számítógépnevét** fogja tartalmazni, amelyet a rendszerkép készített. Az ütközések elkerülése érdekében módosítsa a számítógép nevét.
-- A `osProfile` használatával a () segítségével a virtuális gép bizalmas adatokat továbbít a `secrets`szolgáltatásnak. Ez problémákat okozhat a kulcstartó, a WinRM és a `secrets` `osProfile`által használt egyéb funkciók használatával. Bizonyos esetekben a felügyelt szolgáltatásbeli identitások (MSI) használatával is megkerülheti ezeket a korlátozásokat.
+- A `osProfile` használatával a () segítségével a virtuális gép bizalmas adatokat továbbít a szolgáltatásnak `secrets` . Ez problémákat okozhat a kulcstartó, a WinRM és a által használt egyéb funkciók használatával `secrets` `osProfile` . Bizonyos esetekben a felügyelt szolgáltatásbeli identitások (MSI) használatával is megkerülheti ezeket a korlátozásokat.
 
 ## <a name="regional-support"></a>Regionális támogatás
 
@@ -139,7 +139,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
@@ -218,7 +218,7 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 1. Görgessen le az oldalra, és válassza az **összes erőforrás**lehetőséget.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
 1. Keresse meg a **megosztott képgyűjtemény**típusú erőforrásokat.
@@ -293,7 +293,7 @@ A területi replika számának megadásához adja meg a helyet az adott régiób
 
 Ha a területi replikák száma nincs megadva az egyes helyekhez, akkor a replikák alapértelmezett száma lesz a megadott közös replika. 
 
-A gyakori replikák számának a CLI-ben való megadásához használja a `az sig image-version create` parancsban a **--replika-Count** argumentumot.
+A gyakori replikák számának a CLI-ben való megadásához használja a parancsban a **--replika-Count** argumentumot `az sig image-version create` .
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Létrehozhatom a megosztott képtárat egy másik helyen, mint a rendszerkép-definíció és a rendszerkép verziója?
 

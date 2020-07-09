@@ -4,10 +4,9 @@ description: Útmutatás új tanúsítványok hozzáadásához, az átváltási 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83658392"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Tanúsítványok hozzáadása és törlése Service Fabric-fürtön az Azure-ban
@@ -46,11 +45,11 @@ Ezek a lépések feltételezik, hogy tisztában van azzal, hogy a Resource Manag
 
 ### <a name="edit-your-resource-manager-template"></a>A Resource Manager-sablon szerkesztése
 
-Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. JSON tartalmazza az összes módosítást. a minta a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)tárházban érhető el.
+A könnyebben követhető és a minta 5-VM-1-NodeTypes-Secure_Step2.JSaz összes szerkesztési műveletet tartalmazza. a minta a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)tárházban érhető el.
 
 **Ügyeljen arra, hogy kövesse az összes lépést**
 
-1. Nyissa meg a fürt üzembe helyezéséhez használt Resource Manager-sablont. (Ha letöltötte a mintát az előző tárházból, az 5-VM-1-NodeTypes-Secure_Step1. JSON használatával helyezzen üzembe egy biztonságos fürtöt, majd nyissa meg a sablont).
+1. Nyissa meg a fürt üzembe helyezéséhez használt Resource Manager-sablont. (Ha letöltötte a mintát az előző tárházból, akkor a 5-VM-1-NodeTypes-Secure_Step1.JShasználatával helyezzen üzembe egy biztonságos fürtöt, majd nyissa meg a sablont).
 
 2. Adjon hozzá két "string" típusú "secCertificateThumbprint" és "secCertificateUrlValue" **paramétert** a sablon paraméter szakaszához. Másolja a következő kódrészletet, és adja hozzá a sablonhoz. A sablon forrása alapján előfordulhat, hogy már rendelkezik a megadott beállításokkal, ha a következő lépésre lép. 
  
@@ -165,7 +164,7 @@ Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Szerkessze a sablon fájlját, hogy tükrözze a fent hozzáadott új paramétereket
-Ha a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) tárházban található mintát használja a követéshez, megkezdheti a változtatásokat a 5. NodeTypes-Secure. PARAMETERS_STEP2. JSON fájlban. 
+Ha a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) tárházban található mintát használja a követéshez, megkezdheti a módosítást a minta 5-VM-1-NodeTypes-Secure.parameters_Step2.JS 
 
 Szerkessze a Resource Manager-sablon paraméterét tartalmazó fájlt, adja hozzá a két új paramétert a secCertificateThumbprint és a secCertificateUrlValue. 
 

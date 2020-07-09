@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654059"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344424"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
 
@@ -81,6 +81,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 
 Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja](luis-how-to-train.md) és [közzéteszi](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre legyenek alkalmazva. Ne végezze el a betanítást minden egyes módosítás után. Betanítás egy csoport módosítása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) az entitásokkal való hozzáadásáról.

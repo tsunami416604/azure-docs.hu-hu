@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181732"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás: az alkalmazás jogkivonatának beszerzése
@@ -27,7 +27,7 @@ Létrehozott egy ügyfélalkalmazás-objektumot. Most ezt a lehetőséget fogja 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A vezérlő módszereit olyan `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. A Microsoft Graph meghívására szolgáló kód:
+A vezérlő módszereit olyan attribútum védi `[Authorize]` , amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. A Microsoft Graph meghívására szolgáló kód:
 
 ```csharp
 [Authorize]
@@ -47,7 +47,7 @@ public class HomeController : Controller
 
 A `ITokenAcquisition` szolgáltatást a ASP.net a függőségi befecskendezés használatával fecskendezi.
 
-Itt látható a művelethez tartozó egyszerűsített kód `HomeController`, amely a Microsoft Graph meghívására szolgáló tokent kap:
+Itt látható a művelethez tartozó egyszerűsített kód `HomeController` , amely a Microsoft Graph meghívására szolgáló tokent kap:
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -76,7 +76,7 @@ Ezek a speciális lépések a [3 – WebApp-multi-API](https://github.com/Azure-
 
 A ASP.NET kódja hasonló a ASP.NET Corehoz megjelenített kódhoz:
 
-- Egy [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának BÉRLŐi azonosítóját és felhasználói azonosítóját. (A ASP.NET `HttpContext.User`használja.)
+- Egy [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját `ClaimsPrincipal` . (A ASP.NET használja `HttpContext.User` .)
 - Innentől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication` objektumot.
 - Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
 
@@ -84,7 +84,7 @@ A ASP.NET kódja hasonló a ASP.NET Corehoz megjelenített kódhoz:
 
 A Java-mintában az API-t meghívó kód a [AuthPageController. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)getUsersFromGraph metódusában található.
 
-A metódus hívására `getAuthResultBySilentFlow`tett kísérlet. Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza az `MsalInteractionRequiredException` objektumot, hogy megtámadja a felhasználót.
+A metódus hívására tett kísérlet `getAuthResultBySilentFlow` . Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza az `MsalInteractionRequiredException` objektumot, hogy megtámadja a felhasználót.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

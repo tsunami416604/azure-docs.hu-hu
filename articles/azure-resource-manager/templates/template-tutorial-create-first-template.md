@@ -2,21 +2,21 @@
 title: Oktatóanyag – & üzembe helyezési sablon létrehozása
 description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-ms.date: 05/20/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102091"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése
 
 Ez az oktatóanyag bemutatja Azure Resource Manager (ARM) sablonokat. Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
 
-Ez az oktatóanyag egy sorozat első része. Ahogy halad az adatsorozaton, a sablon megkezdése lépésről lépésre módosítja, amíg az ARM-sablonok összes alapvető részét meg nem vizsgálja. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
+Ez az oktatóanyag egy sorozat első része. Ahogy halad a sorozaton, módosítja a sablon indítása lépésről lépésre, amíg meg nem tárja az ARM-sablonok összes alapvető részét. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
 
 Ha szeretné megismerni a sablonok használatának előnyeit, és azt, hogy miért érdemes a sablonokkal automatizálni az üzembe helyezést, olvassa el a [Azure Resource Manager-sablonok](overview.md)című témakört.
 
@@ -28,7 +28,7 @@ Először is győződjön meg arról, hogy rendelkezik a sablonok létrehozásá
 
 ### <a name="editor"></a>Szerkesztő
 
-A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van szükség. A Visual Studio Code-ot a Resource Manager-eszközök bővítménnyel ajánljuk. Ha telepítenie kell ezeket az eszközöket, tekintse meg [a Visual Studio Code használata ARM-sablonok létrehozásával foglalkozó](use-vs-code-to-create-template.md)témakört.
+A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van szükség. A Visual Studio Code-ot a Resource Manager-eszközök bővítménnyel ajánljuk. Ha telepítenie kell ezeket az eszközöket, tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)használatával című témakört.
 
 ### <a name="command-line-deployment"></a>Parancssori telepítés
 
@@ -37,8 +37,12 @@ A sablon telepítéséhez Azure PowerShell vagy Azure CLI is szükséges. Ha az 
 - [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
+- [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)
 
 A Azure PowerShell vagy az Azure CLI telepítését követően ellenőrizze, hogy az első alkalommal jelentkezik-e be. Segítségért lásd: [Bejelentkezés – PowerShell](/powershell/azure/install-az-ps#sign-in) vagy [Bejelentkezés – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+
+> [!IMPORTANT]
+> Ha az Azure CLI-t használja, ellenőrizze, hogy rendelkezik-e a 2,6-es vagy újabb verziójával. Az oktatóanyagban megjelenő parancsok nem fognak működni, ha régebbi verziókat használ. A telepített verziójának vizsgálatához használja a következőt: `az --version` .
 
 Most már készen áll a sablonok megismerésének megkezdésére.
 
@@ -47,7 +51,7 @@ Most már készen áll a sablonok megismerésének megkezdésére.
 1. Nyissa meg a Visual Studio Code-ot, és telepítse a Resource Manager Tools bővítményt.
 1. Új fájl létrehozásához a **fájl** menüben válassza az **új fájl** elemet.
 1. A **fájl** menüben válassza a **Mentés másként**lehetőséget.
-1. Nevezze el a fájlt **azuredeploy** , és válassza ki a **JSON** -fájl kiterjesztését. A **azuredeploy. JSON**fájl teljes neve.
+1. Nevezze el a fájlt **azuredeploy** , és válassza ki a **JSON** -fájl kiterjesztését. A fájl teljes neve **azuredeploy.js**.
 1. Mentse a fájlt a munkaállomásra. Olyan elérési utat adjon meg, amely könnyen megjegyezhető, mert a sablon telepítésekor később is megadhatja ezt az útvonalat.
 1. Másolja és illessze be a következő JSON-fájlt a fájlba:
 
@@ -67,7 +71,7 @@ Most már készen áll a sablonok megismerésének megkezdésére.
 
     A JSON-fájl a következő elemeket tartalmazza:
 
-    - **$Schema**: a JSON-séma fájljának helyét adja meg. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2019-04-01. Ez a séma-verzió naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
+    - **$Schema**: a JSON-séma fájljának helyét adja meg. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2019-04-01. A séma verziója naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
     - **contentVersion**: a sablon verzióját adja meg (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Ha a sablonnal telepít erőforrásokat, ezzel az értékkel meggyőződhet arról, hogy a megfelelő sablon használatban van-e.
     - **erőforrások**: tartalmazza a telepíteni vagy frissíteni kívánt erőforrásokat. Jelenleg üres, de később további erőforrásokat fog hozzáadni.
 

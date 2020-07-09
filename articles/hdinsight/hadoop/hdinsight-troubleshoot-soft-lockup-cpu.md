@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894103"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Forgatókönyv: "watchdog: BUG: Soft lefagyás-CPU" hiba egy Azure HDInsight-fürtből
@@ -20,7 +19,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="issue"></a>Probléma
 
-A kernel syslogs a következő hibaüzenetet tartalmazza `watchdog: BUG: soft lockup - CPU`:.
+A kernel syslogs a következő hibaüzenetet tartalmazza: `watchdog: BUG: soft lockup - CPU` .
 
 ## <a name="cause"></a>Ok
 
@@ -39,14 +38,14 @@ Kernel-javítás alkalmazása. Az alábbi szkript frissíti a Linux-kernelt, és
     | Tulajdonság | Érték |
     | --- | --- |
     | Parancsfájl típusa | – Egyéni |
-    | Name (Név) |A kernel Soft Lock hibájának javítása |
+    | Name |A kernel Soft Lock hibájának javítása |
     | Bash-parancsfájl URI-ja |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Csomópont típusa (i) |Worker, Zookeeper |
-    | Paraméterek |N/A |
+    | Paraméterek |N.A. |
 
     Válassza a parancsfájl megtartása **művelet...** lehetőséget, ha azt szeretné, hogy az új csomópontok hozzáadásakor végrehajtsa a parancsfájlt.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Várjon, amíg a végrehajtás sikeres lesz.
 

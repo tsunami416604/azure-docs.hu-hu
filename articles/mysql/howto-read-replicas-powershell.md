@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikáka
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/29/2020
-ms.openlocfilehash: 9ac85299311c1fd233988c6472d6325934dd42dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: f6d24ba0d31020b82669947189da180348f2a46b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614537"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107988"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a PowerShell használatával
 
@@ -29,7 +29,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - Egy [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Az az. MySql PowerShell-modul előzetes verzióban érhető el, és a következő paranccsal külön kell telepítenie az az PowerShell-modulból: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Az az. MySql PowerShell-modul előzetes verzióban érhető el, és a következő paranccsal külön kell telepítenie az az PowerShell-modulból: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Amint az az. MySql PowerShell-modul általánosan elérhetővé válik, az a PowerShell modul kiadásainak része lesz, és natív módon elérhető a Azure Cloud Shellon belülről.
 
 Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount) parancsmag használatával.
@@ -40,6 +40,9 @@ Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjáh
 > Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
+
+> [!IMPORTANT]
+> Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
 
 A következő paranccsal hozhat létre olvasási replika-kiszolgálót:
 
@@ -86,7 +89,7 @@ A `Get-AzMySqlReplica` parancshoz a következő paraméterek szükségesek:
 
 ### <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
-Az olvasási replika kiszolgáló törlését a `Remove-AzMySqlServer` parancsmag futtatásával teheti meg.
+Az olvasási replika kiszolgáló törlését a parancsmag futtatásával teheti meg `Remove-AzMySqlServer` .
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
@@ -103,7 +106,7 @@ A főkiszolgálók törléséhez futtathatja a `Remove-AzMySqlServer` parancsmag
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL kiszolgáló újraindítása a PowerShell-lel](howto-restart-server-powershell.md)

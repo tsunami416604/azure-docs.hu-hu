@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74462613"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Az adathordozó elemzése a Azure Portal használatával 
@@ -135,7 +134,7 @@ Ez a processzor segít felderíteni a videókban rejlő lehetséges felnőtteket
 Használja az "2,0".
 
 ### <a name="mode"></a>Mód
-Az 2,0-es verzió `Mode` figyelmen kívül hagyja a beállítást.
+Az 2,0-es verzió figyelmen kívül hagyja a `Mode` beállítást.
 
 ## <a name="next-steps"></a>További lépések
 Megtekintheti Media Services képzési útvonalakat.

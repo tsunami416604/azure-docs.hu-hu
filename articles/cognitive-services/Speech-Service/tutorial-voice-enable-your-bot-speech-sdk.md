@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745611"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753187"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -61,7 +61,7 @@ Az oktatóanyag elvégzéséhez a következőket kell elvégeznie:
 - Egy [GitHub](https://github.com/) -fiók
 - [Git for Windows](https://git-scm.com/download/win)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltatást használ. Ha csökkenteni szeretné a robottól érkező válaszok időkorlátját, győződjön meg arról, hogy ezek a szolgáltatások ugyanabban az Azure-régióban találhatók. Ebben a szakaszban egy erőforráscsoportot hoz létre az **USA nyugati** régiójában. Ezt az erőforráscsoportot fogja használni a rendszer az egyes erőforrások létrehozásához a bot-Framework, a Direct line Speech Channel és a Speech Service számára.
 
@@ -71,7 +71,7 @@ Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltat
    * Adja meg az **erőforráscsoport**nevét. Javasoljuk, hogy **SpeechEchoBotTutorial-ResourceGroup**.
    * A régió legördülő menüben válassza az **USA nyugati** **régiója** lehetőséget.
 1. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-1. Kattintson a **Létrehozás**gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
+1. Kattintson a **Létrehozás** lehetőségre. Az erőforráscsoport létrehozása eltarthat néhány percig.
 1. Az oktatóanyag későbbi részében létrehozott erőforrásokhoz hasonlóan érdemes ezt az erőforráscsoportot az irányítópultra rögzíteni az egyszerű hozzáférés érdekében. Ha rögzíteni szeretné ezt az erőforráscsoportot, kattintson az irányítópult jobb felső sarkában található rögzítés ikonra.
 
 ### <a name="choosing-an-azure-region"></a>Azure-régió kiválasztása
@@ -121,7 +121,7 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
    * A régió területen válassza az **USA nyugati** **régiója**lehetőséget.
    * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie. Ha nem, ügyeljen arra, hogy az operációs rendszert a fent ismertetett módon állítsa be a **Windows** **rendszerre** .
 5. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-6. Kattintson a **Létrehozás**gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
+6. Kattintson a **Létrehozás** lehetőségre. Az erőforráscsoport létrehozása eltarthat néhány percig.
 
 Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoBotTutorial-ResourceGroup**) két erőforrással rendelkezik:
 
@@ -197,6 +197,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
    * Az **üzemeltetési csomag**esetében válassza az **SpeechEchoBotTutorial-AppServicePlan**
    * **Application Insights**esetén hagyja a **none** értéket
 1. Kattintson a **Létrehozás** gombra
+1. Az újonnan létrehozott profil jobb oldalán kattintson a **publish (közzététel** ) elemre.
 1. A Visual Studióban a következőhöz hasonló üzenetnek kell megjelennie:
 
    ```
@@ -236,7 +237,7 @@ Most, hogy létrehozott egy Azure App Service a robot üzemeltetéséhez, a köv
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot channels-regisztráció létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. A rendszer a következő információk megadását kéri:
-   * A **bot Handle**esetében írja be a következőt: **SpeechEchoBotTutorial-BotRegistration**.
+   * A **bot Handle**esetében írja be a következőt: **SpeechEchoBotTutorial-BotRegistration-# # # #** , és cserélje le **####** a-t a tetszőleges számú elemre. Vegye figyelembe, hogy a robot-leírónak globálisan egyedinek kell lennie. Ha egy robot-leírót ad meg, de hibaüzenetet kap, _a kért bot-azonosító nem érhető el_, válasszon másik számot. Az alábbi példákban a 8726-et használtuk
    * Az **előfizetés**mezőben válassza az **ingyenes próbaverzió**lehetőséget.
    * Az **erőforráscsoport**területen válassza a **SpeechEchoBotTutorial-ResourceGroup**elemet.
    * A hely mezőben válassza az **USA nyugati** **régiója**lehetőséget.
@@ -252,21 +253,43 @@ Ekkor a Azure Portalban keresse meg az **SpeechEchoBotTutorial-ResourceGroup** e
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA nyugati régiója |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-csomag | USA nyugati régiója |
-| SpeechEchoBotTutorial-BotRegistration | Robot-csatornák regisztrálása | globális |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Robot-csatornák regisztrálása | globális |
 | SpeechEchoBotTutorial – beszéd | Cognitive Services | USA nyugati régiója |
 
 > [!IMPORTANT]
 > A bot channels regisztrációs erőforrása akkor is megjelenik a globális régióban, ha az USA nyugati régióját választotta. Ez a várható eredmény.
 
+## <a name="optional-test-in-web-chat"></a>Nem kötelező: teszt a webes csevegésben
+
+Az Azure bot channels regisztrációs oldalán a **robot felügyelete**alatt **webes csevegési** lehetőség van. Alapértelmezés szerint nem fog működni a robotban, mivel a webes csevegésnek hitelesítenie kell a roboton. Ha a telepített robotot szövegbeviteli bemenettel szeretné tesztelni, kövesse az alábbi lépéseket. Vegye figyelembe, hogy ezek a lépések nem kötelezőek, és nem szükségesek az oktatóanyag következő lépéseinek folytatásához. 
+
+1. Keresse meg és nyissa meg a **EchoBotTutorial-BotRegistration-#** # # # erőforrást a [Azure Portal](https://portal.azure.com)
+1. A **robot kezelése** navigációs sávon válassza a **Beállítások**lehetőséget. Az érték másolása a **Microsoft app ID** alatt
+1. Nyissa meg a Visual Studio EchoBot megoldást. A megoldás Explorerben keresse meg és kattintson duplán a **appsettings.js** elemre.
+1. Cserélje le az üres karakterláncot a **MicrosoftAppId** mellett a JSON-fájlban a másolt azonosító értékkel.
+1. Visszakapott a Azure Portalba, a **bot Management** navigáció területén válassza a **Beállítások**lehetőséget, majd kattintson a **Microsoft app ID** melletti **(kezelés)** elemre.
+1. Kattintson az **új ügyfél titkára**. Adjon hozzá egy leírást (például "Web Chat"), majd kattintson a **Hozzáadás**gombra. Az új titok másolása
+1. Cserélje le az üres karakterláncot a **MicrosoftAppPassword** mellett a JSON-fájlban a másolt titkos értékkel.
+1. Mentse a JSON-fájlt. A következőhöz hasonló eredményt kell kapnia:
+```json
+{
+  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+}
+```
+9. Tegye közzé újra az alkalmazást (kattintson a jobb gombbal a **EchoBot** projektre a Visual Studio Solution Explorerben, válassza a **Közzététel...** lehetőséget, majd kattintson a **Közzététel** gombra)
+10. Most már készen áll arra, hogy tesztelje a robotot a webes csevegésben!
+
 ## <a name="register-the-direct-line-speech-channel"></a>A közvetlen vonalas beszéd csatorna regisztrálása
 
 Itt az ideje, hogy regisztrálja a robotot a közvetlen vonalas beszéd csatornával. Ez a csatorna az ECHO-robot és a Speech SDK használatával összeállított ügyfélalkalmazás közötti kapcsolat létrehozásához használatos.
 
-1. Keresse meg és nyissa meg a **SpeechEchoBotTutorial-BotRegistration** erőforrást a [Azure Portal](https://portal.azure.com).
-1. Az **Azure-szolgáltatások navigáció területén** válassza a **csatornák**lehetőséget.
+1. Keresse meg és nyissa meg a **SpeechEchoBotTutorial-BotRegistration-#** # # # erőforrást a [Azure Portalban](https://portal.azure.com).
+1. A **robot kezelése** navigációs sávon válassza a **csatornák**lehetőséget.
    * Keresse meg a **további csatornákat**, keresse meg, majd kattintson a **közvetlen vonalas beszéd**elemre.
    * Tekintse át a **közvetlen sortörés beállítása**című oldalon található szöveget, majd bontsa ki a "kognitív szolgáltatás fiókja" feliratú legördülő menüt.
    * Válassza ki a korábban létrehozott Speech-erőforrást (pl. **SpeechEchoBotTutorial-Speech**) a menüből, hogy a robotot a beszédfelismerési előfizetési kulcshoz rendelje.
+   * Hagyja figyelmen kívül a választható mezők hátralévő részét
    * Kattintson a **Save** (Mentés) gombra.
 
 1. A **bot Management** navigációs ablaktáblán kattintson a **Beállítások**elemre.
@@ -289,7 +312,7 @@ Mielőtt továbblép, győződjön meg arról, hogy a mikrofon és a hangszóró
    * Töltse le a futtatni kívánt végrehajtható fájlt tartalmazó ZIP-csomagot, vagy
    * hozza létre a végrehajtható fájlt a tárház klónozásával és a projekt létrehozásával.
 
-1. Indítsa el az ügyfélalkalmazás alkalmazást, és konfigurálja azt.
+1. Az ügyfélalkalmazás elindítása és konfigurálása a robothoz való kapcsolódáshoz a GitHub-tárházban található utasítások alapján
 1. Kattintson az **Újrakapcsolódás** lehetőségre, és győződjön meg róla, hogy a **mikrofon gomb megnyomásával megnyomja az üzenetet, vagy írja be, hogy beszéljen a robotra**.
 1. Tesztelje. Kattintson a mikrofon gombra, és beszéljen néhány szót angolul. A felismert szöveg a következőképpen jelenik meg:. Ha elkészült, a robot a saját hangján válaszol, amely az "Echo" szót követi, amelyet a felismert szavak követnek.
 1. Szöveget is használhat a robottal való kommunikációhoz. Csak írja be a szöveget az alsó sávban. 
@@ -300,13 +323,16 @@ Ha hibaüzenetet kap a fő alkalmazás ablakában, a következő táblázat seg�
 
 | Hiba | Mi a teendő? |
 |-------|----------------------|
-|AuthenticationFailure hiba: a WebSocket frissítése hitelesítési hiba miatt meghiúsult (401). A megfelelő előfizetési kulcs (vagy engedélyezési jogkivonat) és a régió nevének keresése| Az alkalmazás beállítások lapján ellenőrizze, hogy helyesen adta-e meg a beszédfelismerési előfizetési kulcsot és annak régióját.<br>Győződjön meg arról, hogy helyesen adta meg a beszédfelismerési kulcsot és a kulcsfontosságú régiót. |
-|Hiba ConnectionFailure: a távoli gazdagép lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: az üzenet elküldése előtt nem sikerült csatlakozni a robothoz | Győződjön meg arról, hogy [bejelölte az "adatfolyam-végpont engedélyezése"](#register-the-direct-line-speech-channel) és/vagy a [ **webes szoftvercsatornák** ](#enable-web-sockets) bekapcsolva beállítást.<br>Győződjön meg arról, hogy a Azure App Service fut. Ha igen, próbálja meg újraindítani a App Service.|
-|Hiba ConnectionFailure: a távoli gazdagép lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: a válasz állapotkód nem a sikerre utal: 500 (InternalServerError)| A robot a kimeneti tevékenység [beszéd mezőjében](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) egy neurális hangot adott meg, de az előfizetési kulcshoz társított Azure-régió nem támogatja a neurális hangokat. Lásd: [standard és neurális hangok](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
-|Hiba ConnectionFailure: a távoli gazdagép lezárta a kapcsolatokat. Hibakód: 1000. Hiba részletei: túllépte a webes szoftvercsatorna kapcsolatának üresjárati időtartamát (> 300000 MS)| Ez egy várt hiba, ha a csatornához való csatlakozás öt percnél hosszabb ideig nyitott és inaktív. |
+|Hiba (AuthenticationFailure): a WebSocket frissítése hitelesítési hiba miatt meghiúsult (401). A megfelelő előfizetési kulcs (vagy engedélyezési jogkivonat) és a régió nevének keresése| Az alkalmazás beállítások lapján ellenőrizze, hogy helyesen adta-e meg a beszédfelismerési előfizetési kulcsot és annak régióját.<br>Győződjön meg arról, hogy helyesen adta meg a beszédfelismerési kulcsot és a kulcsfontosságú régiót. |
+|Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: az üzenet elküldése előtt nem sikerült csatlakozni a robothoz | Győződjön meg arról, hogy [bejelölte az "adatfolyam-végpont engedélyezése"](#register-the-direct-line-speech-channel) és/vagy a [ **webes szoftvercsatornák** ](#enable-web-sockets) bekapcsolva beállítást.<br>Győződjön meg arról, hogy a Azure App Service fut. Ha igen, próbálja meg újraindítani a App Service.|
+|Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1002. Hiba részletei: a kiszolgáló a (z) 503 állapotkódot adta vissza, amikor a rendszer a (z) 101 állapotkódot várta. | Győződjön meg arról, hogy [bejelölte az "adatfolyam-végpont engedélyezése"](#register-the-direct-line-speech-channel) és/vagy a [ **webes szoftvercsatornák** ](#enable-web-sockets) bekapcsolva beállítást.<br>Győződjön meg arról, hogy a Azure App Service fut. Ha igen, próbálja meg újraindítani a App Service.|
+|Hiba (ConnectionFailure): a távoli állomás lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: a válasz állapotkód nem a sikerre utal: 500 (InternalServerError)| A robot a kimeneti tevékenység [beszéd mezőjében](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) egy neurális hangot adott meg, de az előfizetési kulcshoz társított Azure-régió nem támogatja a neurális hangokat. Lásd: [standard és neurális hangok](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Ha a probléma nem szerepel a táblázatban, olvassa el a következő témakört [: hangsegédek: gyakori kérdések](faq-voice-assistants.md).
+Ha a probléma nem szerepel a táblázatban, olvassa el a következő témakört [: hangsegédek: gyakori kérdések](faq-voice-assistants.md). Ha az oktatóanyag lépéseinek követése után továbbra sem tudja megoldani a problémát, adjon meg egy új problémát a [Hangsegéd GitHub lapján](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
+#### <a name="a-note-on-connection-time-out"></a>A kapcsolatok időtúllépésére vonatkozó Megjegyzés
+
+Ha egy robothoz csatlakozik, és az elmúlt 5 percben nem történt tevékenység, akkor a szolgáltatás automatikusan lezárta a WebSocket-kapcsolatot az ügyféllel és a robottal. Ez az elvárt működés. Egy üzenet jelenik meg az alsó sávban: *"az aktív kapcsolat időtúllépés miatt megszakadt, de készen áll az igény szerinti újrakapcsolódásra"*. Nem kell megnyomnia az "Újrakapcsolódás" gombot – egyszerűen nyomja meg a mikrofon gombot, és írjon be egy szöveges üzenetet, vagy adja meg a kulcsszót (ha van ilyen). A rendszer automatikusan újrakezdi a kapcsolatokat.  
 ### <a name="view-bot-activities"></a>Bot-tevékenységek megtekintése
 
 Minden robot küldi és fogadja a **tevékenységek** üzeneteit. A Windows Voice Assistant-ügyfél **tevékenység napló** ablakában az időbélyeggel ellátott naplókat láthatja az ügyfél által a robottól kapott tevékenységekről. Azt is megtekintheti, hogy az ügyfél milyen tevékenységeket küldhet a robotnak a [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) metódus használatával. Amikor kijelöl egy naplóbejegyzést, a rendszer a társított tevékenység részleteit JSON-ként jeleníti meg.
@@ -331,7 +357,7 @@ Minden robot küldi és fogadja a **tevékenységek** üzeneteit. A Windows Voic
     },
     "entities":[],
     "from":{
-        "id":"SpeechEchoBotTutorial-BotRegistration"
+        "id":"SpeechEchoBotTutorial-BotRegistration-8726"
     },
     "id":"89841b4d-46ce-42de-9960-4fe4070c70cc",
     "inputHint":"acceptingInput",
@@ -444,7 +470,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 > [!div class="nextstepaction"]
 > [Saját ügyfélalkalmazás létrehozása a Speech SDK-val](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * Üzembe helyezés egy [közel található Azure-régióban](https://azure.microsoft.com/global-infrastructure/locations/) a bot válaszideje fejlesztéséhez
 * [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices) üzembe helyezése

@@ -6,12 +6,11 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84457133"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással
 
@@ -32,17 +31,25 @@ A Azure Portal keresse meg a szignáló szolgáltatás erőforrásának *Beáll�
 Az Azure Functions és az Azure SignalR szolgáltatással létrehozott kiszolgáló nélküli, valós idejű alkalmazásokhoz két Azure-függvényre van szükség:
 
 * A „negotiate” függvényre, amelyet az ügyfél egy érvényes SignalR-szolgáltatási hozzáférési jogkivonat és a szolgáltatásvégpont URL-címének lekéréséhez hív meg
-* Egy vagy több olyan függvényre, amelyek üzeneteket küldenek, vagy csoporttagságokat kezelnek
+* Egy vagy több olyan függvény, amely kezeli a Signaler szolgáltatás üzeneteit, és üzeneteket küld vagy kezel csoporttagság
 
 ### <a name="negotiate-function"></a>egyeztetési függvény
 
 Az ügyfélalkalmazás érvényes hozzáférési jogkivonatot igényel az Azure Signaler szolgáltatáshoz való kapcsolódáshoz. A hozzáférési tokenek névtelenek vagy egy adott felhasználói AZONOSÍTÓra hitelesíthetők. A kiszolgáló nélküli szignáló szolgáltatás alkalmazásai egy "egyeztetés" nevű HTTP-végpontot igényelnek a jogkivonat és egyéb kapcsolódási információk beszerzéséhez, például a Signaler szolgáltatás végpontjának URL-címét.
 
-A kapcsolati információ objektum létrehozásához használjon HTTP-triggert használó Azure-függvényt és a *SignalRConnectionInfo* bemeneti kötését. A függvénynek olyan HTTP-útvonalon kell lennie, amely a-ben `/negotiate`ér véget.
+A kapcsolati információ objektum létrehozásához használjon HTTP-triggert használó Azure-függvényt és a *SignalRConnectionInfo* bemeneti kötését. A függvénynek olyan HTTP-útvonalon kell lennie, amely a-ben ér véget `/negotiate` .
+
+A [C#](#class-based-model) nyelvben nem szükséges a *SignalRConnectionInfo* bemeneti kötése, és sokkal könnyebben adhat hozzá egyéni jogcímeket. Lásd: [a tapasztalatok egyeztetése osztály alapú modellben](#negotiate-experience-in-class-based-model)
 
 Az egyeztetési függvény létrehozásával kapcsolatos további információkért tekintse meg a [ *SignalRConnectionInfo* bemeneti kötési referenciáját](../azure-functions/functions-bindings-signalr-service-input.md).
 
 A hitelesített tokenek létrehozásáról a [app Service hitelesítés használata](#using-app-service-authentication)című témakörben olvashat bővebben.
+
+### <a name="handle-messages-sent-from-signalr-service"></a>A Signaler szolgáltatásból küldött üzenetek kezelése
+
+A signaler- *trigger* kötésének használatával kezelheti a jelző szolgáltatásból küldött üzeneteket. Akkor aktiválható, ha az ügyfelek üzeneteket vagy ügyfeleket küldenek a csatlakozáshoz vagy a kapcsolat bontásához.
+
+További információ: a [ *jelző trigger* kötési referenciája](../azure-functions/functions-bindings-signalr-service-trigger.md)
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Üzenetek küldése és csoporttagság kezelése
 
@@ -56,6 +63,111 @@ További információ: a [ *signaler* output kötési referenciája](../azure-fu
 
 A jelző a "hubok" fogalmát mutatja. Az egyes ügyfélkapcsolatok és a Azure Functionsból küldött összes üzenet hatóköre egy adott hubhoz tartozik. A hubokat a kapcsolatok és az üzenetek logikai névterekre való elkülönítésére használhatja.
 
+## <a name="class-based-model"></a>Osztály alapú modell
+
+Az osztály alapú modell a C# nyelvre van kijelölve. A Class-alapú modellel konzisztens, a Signaler kiszolgálóoldali programozási felülete lehet. A következő funkciókkal rendelkezik.
+
+* Kevesebb konfiguráció működik: az osztálynév a nevet használja `HubName` , a metódus neve pedig a `Event` `Category` metódus neve alapján automatikusan eldöntve.
+* Automatikus paraméter kötése: `ParameterNames` nincs szükség sem attribútumra `[SignalRParameter]` . A paraméterek az Azure Function metódus argumentumait automatikusan kötik a sorrendben.
+* Kényelmes kimeneti és egyeztetési élmény.
+
+A következő kódok szemléltetik ezeket a funkciókat:
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+Minden olyan függvénynek, amely a Class-alapú modellt kívánja használni, a **ServerlessHub**örökölt osztály metódusának kell lennie. A példában szereplő osztálynév `SignalRTestHub` a hub neve.
+
+### <a name="define-hub-method"></a>Hub-metódus megadása
+
+Az összes hub- **metódusnak rendelkeznie kell** `[SignalRTrigger]` attribútummal, és a paraméter nélküli konstruktort **kell** használnia. Ezt követően a **metódus neve** paraméter **eseményként**lesz kezelve.
+
+Alapértelmezés szerint `category=messages` a metódus neve csak a következő nevek egyike lehet:
+
+* **OnConnected**: kezelés másként`category=connections, event=connected`
+* **OnDisconnected**: kezelés másként`category=connections, event=disconnected`
+
+### <a name="parameter-binding-experience"></a>Paraméter kötési élménye
+
+Az osztály alapú modellben `[SignalRParameter]` szükségtelen, mert az összes argumentum alapértelmezettként van megjelölve, kivéve, ha az `[SignalRParameter]` alábbi esetek egyike:
+
+* Az argumentumot egy kötési attribútum rendezi.
+* Az argumentum típusa a következő, `ILogger` vagy`CancellationToken`
+* Az argumentumot attribútum szerint rendezi a rendszer.`[SignalRIgnore]`
+
+### <a name="negotiate-experience-in-class-based-model"></a>Az osztály-alapú modell egyeztetése
+
+A Signal bemeneti kötés használata helyett a `[SignalR]` Class-alapú modell egyeztetése rugalmasabb lehet. Az alaposztály `ServerlessHub` metódusa
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+Ez a funkció a felhasználó által testre szabható `userId` vagy `claims` a függvény végrehajtása közben testreszabható.
+
+## <a name="use-signalrfilterattribute"></a>A(z) `SignalRFilterAttribute` használata
+
+A felhasználó örökölheti és implementálhatja az absztrakt osztályt `SignalRFilterAttribute` . Ha kivételeket vált ki `FilterAsync` , a `403 Forbidden` rendszer visszaküldi az ügyfeleknek.
+
+Az alábbi minta bemutatja, hogyan valósítható meg egy olyan ügyfél-szűrő, amely csak a `admin` meghívását engedélyezi `broadcast` .
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+Használja ki az attribútumot a függvény engedélyezéséhez.
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
+
 ## <a name="client-development"></a>Ügyfél-fejlesztés
 
 A signaler ügyfélalkalmazások a Signaler Client SDK-t több nyelven is kihasználhatják, így egyszerűen csatlakozhatnak és fogadhatnak üzeneteket az Azure Signaler szolgáltatástól.
@@ -67,7 +179,7 @@ A Signaler szolgáltatáshoz való kapcsolódáshoz az ügyfélnek sikeres kapcs
 1. A fentiekben ismertetett *egyeztetési* http-végpontra vonatkozó kérelem elvégzése érvényes kapcsolódási adatok beszerzéséhez
 1. Kapcsolódás a Signaler szolgáltatáshoz a szolgáltatási végpont URL-címével és az *egyeztetési* végponttól kapott hozzáférési jogkivonat használatával
 
-A signaler ügyféloldali SDK-k már tartalmazzák az egyeztetési kézfogás végrehajtásához szükséges logikát. Adja át az egyeztetési végpont URL-címét, `negotiate` mínusz a szegmenst az SDK `HubConnectionBuilder`-hoz. Íme egy példa a JavaScriptben:
+A signaler ügyféloldali SDK-k már tartalmazzák az egyeztetési kézfogás végrehajtásához szükséges logikát. Adja át az egyeztetési végpont URL-címét, mínusz a `negotiate` szegmenst az SDK-hoz `HubConnectionBuilder` . Íme egy példa a JavaScriptben:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -102,10 +214,10 @@ A JavaScript/írógéppel ügyfél HTTP-kérelmeket tesz elérhetővé az egyezt
 
 #### <a name="localhost"></a>Localhost
 
-Ha a Function alkalmazást a helyi számítógépen futtatja, a CORS engedélyezéséhez `Host` hozzáadhat egy szakaszt a *Local. Settings. JSON* fájlhoz. A szakaszban `Host` adja hozzá a két tulajdonságot:
+Ha a Function alkalmazást a helyi számítógépen futtatja, akkor a `Host` CORS engedélyezéséhez hozzáadhat egy szakaszt a *local.settings.jshoz* . A `Host` szakaszban adja hozzá a két tulajdonságot:
 
 * `CORS`-adja meg az ügyfélalkalmazás forrásaként szolgáló alap URL-címet
-* `CORSCredentials`-Állítsa be, `true` hogy engedélyezze a "withCredentials" kéréseket
+* `CORSCredentials`-Állítsa be, hogy `true` engedélyezze a "withCredentials" kéréseket
 
 Példa:
 
@@ -167,7 +279,7 @@ A Azure Functions beépített hitelesítéssel támogatja a népszerű szolgált
 
 A Azure Portal a Function app *platform-funkciók* lapján nyissa meg a *hitelesítési/engedélyezési* beállítások ablakot. A hitelesítés konfigurálásához kövesse az [app Service-hitelesítés](../app-service/overview-authentication-authorization.md) dokumentációját.
 
-A konfigurálást követően a hitelesített HTTP- `x-ms-client-principal-name` kérelmek `x-ms-client-principal-id` tartalmazzák a hitelesített identitás felhasználónevét és a felhasználói azonosítóját tartalmazó fejléceket is.
+A konfigurálást követően a hitelesített HTTP-kérelmek tartalmazzák `x-ms-client-principal-name` `x-ms-client-principal-id` a hitelesített identitás felhasználónevét és a felhasználói azonosítóját tartalmazó fejléceket is.
 
 A *SignalRConnectionInfo* kötési konfigurációjában ezeket a fejléceket használhatja a hitelesített kapcsolatok létrehozásához. Íme egy példa C# egyeztetési függvény, amely a `x-ms-client-principal-id` fejlécet használja.
 
@@ -184,7 +296,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Ezután üzeneteket küldhet az adott felhasználónak a jelző üzenet `UserId` tulajdonságának beállításával.
+Ezután üzeneteket küldhet az adott felhasználónak a `UserId` jelző üzenet tulajdonságának beállításával.
 
 ```csharp
 [FunctionName("SendMessage")]

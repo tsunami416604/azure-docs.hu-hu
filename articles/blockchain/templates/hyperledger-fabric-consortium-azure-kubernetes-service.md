@@ -1,15 +1,15 @@
 ---
 title: Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 description: A Hyperledger Fabric Consortium Network üzembe helyezése és konfigurálása az Azure Kubernetes Service-ben
-ms.date: 01/08/2020
-ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980225"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085804"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
@@ -19,6 +19,18 @@ A cikk elolvasása után:
 
 - Szerezze be a Hyperledger-háló és a Hyperledger Fabric blockchain-hálózat építőelemeit alkotó különböző összetevőket.
 - Megtudhatja, hogyan helyezhet üzembe és konfigurálhat Hyperledger Fabric consortiumt az Azure Kubernetes Service-ben az éles környezetekben.
+
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>Azure Blockchain-megoldás kiválasztása
+
+A megoldási sablon használata előtt hasonlítsa össze a forgatókönyvet az elérhető Azure Blockchain-beállítások gyakori felhasználási eseteivel.
+
+Beállítás | Szolgáltatási modell | Gyakori használati eset
+-------|---------------|-----------------
+Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+[Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Használja az Azure Blockchain szolgáltatást a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakció adatvédelmet igénylő megoldásokhoz.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet. Az Azure Blockchain Workbenchre nem vonatkozik szolgáltatói szerződés. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric Consortium-architektúra
 
@@ -273,7 +285,7 @@ A társ szervezeti ügyféltől a következő parancs kiadásával állíthatja 
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-`<anchorPeersList>`egy szóközzel elválasztott lista, amely összeállított társ-csomópontként van beállítva. Például:
+`<anchorPeersList>`egy szóközzel elválasztott lista, amely összeállított társ-csomópontként van beállítva. Példa:
 
   - Állítsa `<anchorPeersList>` "peer1" értékre, ha csak peer1-csomópontot kíván beállítani.
   - Állítsa `<anchorPeersList>` "peer1" "peer3" értékre, ha a peer1 és a peer3 csomópontot is be szeretné állítani a horgony társként.
@@ -358,8 +370,8 @@ Telepíti a chaincode-t a ORGNAME környezeti változóban beállított társ-sz
 
 Kövesse az alábbi lépéseket:  
 
-1.  A `ORGNAME` és `USER_IDENTITY` a érték beállítása a peerOrg1 `./azhlf chaincode install` és a Issue parancs esetében.  
-2.  A `ORGNAME` és `USER_IDENTITY` a érték beállítása a peerOrg2 `./azhlf chaincode install` és a Issue parancs esetében.  
+1.  A `ORGNAME` és `USER_IDENTITY` a érték beállítása a peerOrg1 és a Issue `./azhlf chaincode install` parancs esetében.  
+2.  A `ORGNAME` és `USER_IDENTITY` a érték beállítása a peerOrg2 és a Issue `./azhlf chaincode install` parancs esetében.  
 
 ### <a name="instantiate-chaincode"></a>Chaincode példányának példányai  
 
@@ -368,7 +380,7 @@ A társ ügyfélalkalmazás alkalmazásban futtassa az alábbi parancsot a chain
 ```bash
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
-A (z) és a (z) és a ( `<instantiateFunc>` z `<instantiateFuncArgs>` ) és a (z) argumentumának átadása az Például chaincode_example02. go chaincode-ben a chaincode a következőre van állítva `<instantiateFunc>` `init` `<instantiateFuncArgs>` : "a" "2000" "b" "1000".
+A (z) és a (z) és a (z) és a (z) argumentumának átadása az `<instantiateFunc>` `<instantiateFuncArgs>` Például chaincode_example02. go chaincode-ben a chaincode a következőre van állítva: "a" " `<instantiateFunc>` `init` `<instantiateFuncArgs>` 2000" "b" "1000".
 
 > [!NOTE]
 > Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől. Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a chaincode a csatorna összes társ-csomópontján lévő összes társ-csomóponton példányba kerül.  
@@ -382,7 +394,7 @@ A chaincode függvény meghívásához hajtsa végre az alábbi parancsot a tár
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
- `<invokeFunction>` Adja `<invokeFuncArgs>`meg a függvény nevét és az argumentumok szóközzel tagolt listáját. Folytassa a chaincode_example02. go chaincode-példával, hogy elindítsa `<invokeFunction>` a `invoke` meghívási műveletet az "a" "b" vagy `<invokeFuncArgs>` "10" értékre.  
+Adja meg a függvény nevét és az argumentumok szóközzel tagolt listáját  `<invokeFunction>`    `<invokeFuncArgs>`   . Folytassa a chaincode_example02. go chaincode-példával, hogy elindítsa a meghívási műveletet az "a" "  `<invokeFunction>`    `invoke`    `<invokeFuncArgs>`   b" vagy "10" értékre.  
 
 >[!NOTE]
 > Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől. Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a globális állapotot a rendszer az összes társ-csomóponton frissíti a csatornán.  
@@ -395,7 +407,7 @@ Futtassa az alábbi parancsot a chaincode lekérdezéséhez:
 ```bash
 ./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Adja át a lekérdezési függvény nevét és az argumentumok `<queryFunction>`  `<queryFuncArgs>` szóközzel tagolt listáját. A chaincode_example02. go chaincode-ként a "a" értéket kell megtekintenie a `<queryFunction>` globális állapotban `query`  `<queryArgs>` lévő "a" érték lekéréséhez.  
+Adja át a lekérdezési függvény nevét és az argumentumok szóközzel tagolt listáját  `<queryFunction>`    `<queryFuncArgs>`   . A chaincode_example02. go chaincode-ként a "a" értéket kell megtekintenie a globális állapotban lévő "a" érték lekéréséhez  `<queryFunction>`    `query`  `<queryArgs>` .  
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -418,3 +430,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>Támogatás és visszajelzés
+
+Az Azure Blockchain híreket az Azure [Blockchain blogon](https://azure.microsoft.com/blog/topics/blockchain/) tekintheti meg, ahol naprakészen tarthatja a Blockchain szolgáltatás ajánlatait és az Azure Blockchain Engineering csapata információit.
+
+Ha visszajelzést szeretne küldeni, vagy új szolgáltatásokat szeretne kérni, tegye közzé vagy szavazzon a [blockchain készült Azure feedback fórumán](https://aka.ms/blockchainuservoice)keresztül.
+
+### <a name="community-support"></a>Közösségi támogatás
+
+Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
+
+- [A Microsoft Q&egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). A blockchain-sablonok mérnöki támogatása az üzembe helyezési problémákra korlátozódik.
+- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

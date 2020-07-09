@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8ad669f092fac0cc2e737d93ccc9d225ef57adf
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68823699"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799547"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Oktatóanyag: a dmarcian és a Azure Active Directory integrálása
 
@@ -85,29 +85,29 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    | -- |
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    ```http
+    https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
+    ```http
+    https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/
+    https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/
+    https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/
+    ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
-    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
+    ```http
+    https://us.dmarcian.com/login/<ACCOUNT_ID>
+    https://dmarcian-eu.com/login/<ACCOUNT_ID>
+    https://dmarciam-ap.com/login/<ACCOUNT_ID>
+    ```
      
     > [!NOTE] 
     > Ezek az értékek nem valósak. Ezeket az értékeket a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján fogja frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -163,9 +163,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -205,7 +205,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a dm
 
     ![Az új felhasználó](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. Az **új felhasználói e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon\@contoso.com**-e-mail-címét.
+    a. Az **új felhasználói e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
 
     b. Ha rendszergazdai jogosultságot szeretne adni a felhasználónak, válassza a rendszergazda **felhasználó létrehozása**lehetőséget.
 

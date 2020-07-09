@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 28817489af535ee45a6cc06cc5fe9d4fde9da8eb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 77d8143743f899bcb9fd3927de223d84d406ed6f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086789"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>A C# és a MapReduce streaming használata Apache Hadoop HDInsight
 
@@ -23,7 +23,7 @@ A Apache Hadoop streaming lehetővé teszi, hogy parancsfájl vagy végrehajthat
 
 ## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
-A HDInsight-fürtök [monohttps://mono-project.com) ](https://mono-project.com) -t használnak (.NET-alkalmazások futtatására. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight-mel együtt használt mono verziójával kapcsolatban: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
+A HDInsight-fürtök [mono https://mono-project.com) ](https://mono-project.com) -t használnak (.NET-alkalmazások futtatására. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight-mel együtt használt mono verziójával kapcsolatban: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
 
 További információ a .NET-keretrendszer verzióival való monó kompatibilitásról: [monó kompatibilitás](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -31,9 +31,9 @@ További információ a .NET-keretrendszer verzióival való monó kompatibilit�
 
 A dokumentumban a folyamatos átvitelhez használt alapszintű folyamat a következő:
 
-1. A Hadoop az adatleképezést (ebben a példában a*mapper. exe fájlt* ) az stdin-re továbbítja.
+1. A Hadoop az adatleképezést (ebben a példában a*mapper.exe* ) a stdin-re továbbítja.
 2. A Mapper dolgozza fel az adatfeldolgozást, és tabulátorral tagolt kulcs/érték párokat bocsát ki az STDOUT-ra.
-3. A kimenetet a Hadoop olvassa be, majd átadja a (z) szűkítőnek (ez a példa a*redukáló. exe fájlnak* ) a stdin-ben.
+3. A kimenetet a Hadoop beolvassa, majd átadja a következőnek a redukáló számára (ebben a példában a*reducer.exe* ) a stdin-ben.
 4. A redukáló beolvassa a tabulátorral tagolt kulcs/érték párokat, feldolgozza az adatokat, majd tabulátorral tagolt kulcs/érték párokat bocsát ki az STDOUT-on.
 5. A kimenetet a Hadoop olvassa be, és a kimeneti könyvtárba írja.
 
@@ -51,7 +51,7 @@ További információ a folyamatos átvitelről: [Hadoop streaming](https://hado
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* A fürtök elsődleges tárolójának URI-sémája. Ez a séma `wasb://` az Azure Storage-hoz `abfs://` , Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, akkor `wasbs://` az `abfss://`URI a következő lesz: vagy.
+* A fürtök elsődleges tárolójának URI-sémája. Ez a séma `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, akkor az URI a következő lesz: `wasbs://` vagy `abfss://` .
 
 ## <a name="create-the-mapper"></a>A Mapper létrehozása
 
@@ -88,7 +88,7 @@ namespace mapper
 }
 ```
 
-Miután létrehozta az alkalmazást, hozza létre a */bin/debug/mapper.exe* -fájl létrehozásához a projekt könyvtárában.
+Az alkalmazás létrehozása után hozza létre a */bin/Debug/mapper.exe* -fájl létrehozásához a projekt könyvtárában.
 
 ## <a name="create-the-reducer"></a>A szűkítő létrehozása
 
@@ -141,13 +141,13 @@ namespace reducer
 }
 ```
 
-Miután létrehozta az alkalmazást, hozza létre a */bin/debug/Reducer.exe* -fájl létrehozásához a projekt könyvtárában.
+Az alkalmazás létrehozása után hozza létre a */bin/Debug/reducer.exe* -fájl létrehozásához a projekt könyvtárában.
 
 ## <a name="upload-to-storage"></a>Feltöltés tárolóba
 
 Ezután fel kell töltenie a *Mapper* és a *redukáló* alkalmazásokat a HDInsight-tárolóba.
 
-1. A Visual Studióban válassza a**Server Explorer** **megtekintése** > lehetőséget.
+1. A Visual Studióban válassza **View**a  >  **Server Explorer**megtekintése lehetőséget.
 
 1. Kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
@@ -165,11 +165,11 @@ Ezután fel kell töltenie a *Mapper* és a *redukáló* alkalmazásokat a HDIns
 
         ![HDInsight feltöltés ikonja Mapper, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        Az **új fájl feltöltése** párbeszédpanel **fájlnév**területén válassza a **Tallózás**lehetőséget. A **blob feltöltése** párbeszédpanelen lépjen a *Mapper* projekt *bin\debug* mappájába, majd válassza ki a *mapper. exe* fájlt. Végül kattintson a **Megnyitás** elemre, majd az **OK gombra** a feltöltés befejezéséhez.
+        Az **új fájl feltöltése** párbeszédpanel **fájlnév**területén válassza a **Tallózás**lehetőséget. A **blob feltöltése** párbeszédpanelen lépjen a *Mapper* projekt *bin\debug* mappájába, majd válassza ki a *mapper.exe* fájlt. Végül kattintson a **Megnyitás** elemre, majd az **OK gombra** a feltöltés befejezéséhez.
 
-    * **Azure Data Lake Storage**esetében kattintson a jobb gombbal egy üresre a fájl listázása területen, majd válassza a **feltöltés**lehetőséget. Végül válassza ki a *mapper. exe* fájlt, majd kattintson a **Megnyitás**gombra.
+    * **Azure Data Lake Storage**esetében kattintson a jobb gombbal egy üresre a fájl listázása területen, majd válassza a **feltöltés**lehetőséget. Végül válassza ki a *mapper.exe* fájlt, majd kattintson a **Megnyitás**gombra.
 
-    A *mapper. exe* feltöltésének befejezése után ismételje meg a feltöltési folyamatot a *csökkentő. exe* fájlhoz.
+    A *mapper.exe* feltöltésének befejezése után ismételje meg a *reducer.exe* fájl feltöltési folyamatát.
 
 ## <a name="run-a-job-using-an-ssh-session"></a>Feladatok futtatása: SSH-munkamenet használata
 
@@ -221,7 +221,7 @@ Az alábbi eljárás azt ismerteti, hogyan futtathat MapReduce-feladatokat SSH-m
    |Paraméter | Leírás |
    |---|---|
    |Hadoop-streaming. jar|A streaming MapReduce funkciót tartalmazó jar-fájlt adja meg.|
-   |– fájlok|Megadja a feladatokhoz tartozó *mapper. exe* és *redukáló. exe* fájlt. A `wasbs:///`, `adl:///`vagy `abfs:///` protokoll deklarációja, mielőtt az egyes fájlok a fürt alapértelmezett tárterületének gyökerére mutatnak.|
+   |– fájlok|Megadja a feladatokhoz tartozó *mapper.exe* és *reducer.exe* fájlokat. A `wasbs:///` , `adl:///` vagy `abfs:///` protokoll deklarációja, mielőtt az egyes fájlok a fürt alapértelmezett tárterületének gyökerére mutatnak.|
    |– Mapper|Megadja a leképezést megvalósító fájlt.|
    |-szűkítő|Meghatározza a szűkítőt megvalósító fájlt.|
    |– bemenet|Megadja a bemeneti adatokat.|
@@ -253,7 +253,7 @@ A következő PowerShell-szkripttel futtasson egy MapReduce-feladatot, és tölt
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-Ez a parancsfájl kéri a fürt bejelentkezési fiókjának nevét és jelszavát, valamint a HDInsight-fürt nevét. A művelet befejezése után a kimenet egy *output. txt*nevű fájlba lesz letöltve. A következő szöveg egy példa a `output.txt` fájlban található fájlokra:
+Ez a parancsfájl kéri a fürt bejelentkezési fiókjának nevét és jelszavát, valamint a HDInsight-fürt nevét. A feladatok befejezése után a rendszer letölti a kimenetet egy *output.txt*nevű fájlba. A következő szöveg egy példa a `output.txt` fájlban található fájlokra:
 
 ```output
 you     1128

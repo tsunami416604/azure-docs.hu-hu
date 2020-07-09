@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582702"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Adatfolyam-végpont (forrás) hibái 
@@ -68,7 +68,7 @@ A művelet olyan erőforráson próbálkozik, amely már nem létezik. Előfordu
 
 ## <a name="409-conflict"></a>409 ütközés
 
-A (z) `PUT` vagy `POST` művelet egy erőforrásához megadott azonosítót egy meglévő erőforrás hozta. A probléma megoldásához használjon másik azonosítót az erőforráshoz.
+A (z) vagy művelet egy erőforrásához megadott azonosítót egy `PUT` `POST` meglévő erőforrás hozta. A probléma megoldásához használjon másik azonosítót az erőforráshoz.
 
 |Hibakód|Hexadecimális érték |Hibaleírás|
 |---|---|---|
@@ -198,7 +198,7 @@ A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltat�
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Kódolási hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services fogalmak](concepts-overview.md)

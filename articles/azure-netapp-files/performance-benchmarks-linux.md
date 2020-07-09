@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614589"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>A Linux rendszerre vonatkozó teljesítménytesztek Azure NetApp Files
@@ -47,31 +46,31 @@ Ez a gráf egyszerre 10%-os csökkenést ábrázol, a tiszta olvasástól a tisz
 
 ## <a name="linux-scale-up"></a>Linux-felskálázás  
 
-A Linux 5,3 kernel lehetővé teszi az együgyféles kibővíthető hálózatkezelést az NFS-`nconnect`hez. Az ebben a szakaszban található diagramok az ügyféloldali csatlakoztatási lehetőség NFSv3-vel való ellenőrzésének eredményeit mutatják be. A szolgáltatás a SUSE (SLES12SP4-től kezdve) és az Ubuntu (a 19,10-es kiadástól kezdve) verzióban érhető el. A fogalom a többcsatornás SMB és az Oracle Direct NFS esetében is hasonló.
+A Linux 5,3 kernel lehetővé teszi az együgyféles kibővíthető hálózatkezelést az NFS-hez `nconnect` . Az ebben a szakaszban található diagramok az ügyféloldali csatlakoztatási lehetőség NFSv3-vel való ellenőrzésének eredményeit mutatják be. A szolgáltatás a SUSE (SLES12SP4-től kezdve) és az Ubuntu (a 19,10-es kiadástól kezdve) verzióban érhető el. A fogalom a többcsatornás SMB és az Oracle Direct NFS esetében is hasonló.
 
 A gráfok összehasonlítják a `nconnect` nem csatlakoztatott csatlakoztatott kötetek előnyeit. A gráfokban a FIO az USA-west2 Azure-régióban egyetlen D32s_v3 példányból generálta a munkaterhelést.
 
 ### <a name="linux-read-throughput"></a>Linux olvasási sebesség  
 
-Az alábbi ábrák a ~ 3 500 MiB/s olvasását mutatja be `nconnect`, nagyjából 2,3 x nem.`nconnect`
+Az alábbi ábrák a ~ 3 500 MiB/s olvasását mutatja be `nconnect` , nagyjából 2,3 x nem `nconnect` .
 
 ![Linux olvasási sebesség](../media/azure-netapp-files/performance-benchmarks-linux-read-throughput.png)  
 
 ### <a name="linux-write-throughput"></a>Linux írási sebesség  
 
-A következő diagramok szekvenciális írásokat jelenítenek meg. Ezek azt jelzik, hogy `nconnect` a szekvenciális írásoknak nincs érzékelhető előnyük. 1 500 a MiB/s nagyjából a szekvenciális írási mennyiség felső korlátja, valamint a D32s_v3-példány kimenő korlátja.
+A következő diagramok szekvenciális írásokat jelenítenek meg. Ezek azt jelzik, hogy a `nconnect` szekvenciális írásoknak nincs érzékelhető előnyük. 1 500 a MiB/s nagyjából a szekvenciális írási mennyiség felső korlátja, valamint a D32s_v3-példány kimenő korlátja.
 
 ![Linux írási sebesség](../media/azure-netapp-files/performance-benchmarks-linux-write-throughput.png)  
 
 ### <a name="linux-read-iops"></a>Linux-olvasási IOPS  
 
-A következő diagramok véletlenszerűen olvasnak a ~ 200 000 olvasási IOPS `nconnect`, nagyjából 3x nem.`nconnect`
+A következő diagramok véletlenszerűen olvasnak a ~ 200 000 olvasási IOPS `nconnect` , nagyjából 3x nem `nconnect` .
 
 ![Linux-olvasási IOPS](../media/azure-netapp-files/performance-benchmarks-linux-read-iops.png)  
 
 ### <a name="linux-write-iops"></a>Linux-írási IOPS  
 
-Az alábbi grafikonok véletlenszerű írásokat mutatnak a ~ 135 000 írási `nconnect`IOPS, amely nagyjából 3x`nconnect`-ot nem.
+Az alábbi grafikonok véletlenszerű írásokat mutatnak a ~ 135 000 írási IOPS `nconnect` , amely nagyjából 3x-ot nem `nconnect` .
 
 ![Linux-írási IOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 

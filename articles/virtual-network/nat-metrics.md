@@ -7,19 +7,20 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to understand available Azure Monitor metrics and alerts for Virtual Network NAT.
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 1c3a73cba6a2ece0c9c7459b3515f053a648d683
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 75e20a4fb91b73bc353d347f0b34f9be8f7a8a58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81408617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709946"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT-metrikák
 
@@ -35,7 +36,7 @@ Az Azure Virtual Network NAT-átjáró erőforrásai több dimenziós mérőszá
 
 A NAT-átjáró erőforrásai a következő többdimenziós mérőszámokat biztosítják a Azure Monitorban:
 
-| Metrika | Leírás | Ajánlott összesítés | Dimenziók |
+| Metric | Leírás | Ajánlott összesítés | Dimenziók |
 |---|---|---|---|
 | Bájt | Bejövő és kimenő bájtok feldolgozott száma | Összeg | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
 | Csomagok | A bejövő és kimenő csomagok feldolgozása folyamatban | Összeg | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |

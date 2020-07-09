@@ -3,14 +3,14 @@ title: Kubenet hálózatkezelés konfigurálása az Azure Kubernetes szolgáltat
 description: Megtudhatja, hogyan konfigurálhat kubenet (alapszintű) hálózatot az Azure Kubernetes szolgáltatásban (ak) egy AK-fürt meglévő virtuális hálózatba és alhálózatba való üzembe helyezéséhez.
 services: container-service
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120912"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055494"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -40,7 +40,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfig
 
 Számos környezetben meghatározta a lefoglalt IP-címtartományok virtuális hálózatait és alhálózatait. Ezek a virtuális hálózati erőforrások több szolgáltatás és alkalmazás támogatására szolgálnak. A hálózati kapcsolat biztosításához az AK-fürtök a *kubenet* (alapszintű Hálózatkezelés) vagy az Azure CNI (*speciális hálózatkezelés*) használatát teszik lehetővé.
 
-A *kubenet*csak a csomópontok kapnak IP-címet a virtuális hálózat alhálózatában. A hüvelyek nem tudnak közvetlenül kommunikálni egymással. Ehelyett a rendszer a felhasználó által megadott útválasztást (UDR) és az IP-továbbítást használja a hüvelyek közötti kapcsolathoz a csomópontok között. A hüvelyt olyan szolgáltatás mögött is üzembe helyezheti, amely egy hozzárendelt IP-címet kap, és az alkalmazás számára az adatforgalom terheléselosztását végzi. Az alábbi ábra azt mutatja, hogy az AK-csomópontok Hogyan kapják meg az IP-címet a virtuális hálózati alhálózatban, a hüvelyek kivételével:
+A *kubenet*csak a csomópontok kapnak IP-címet a virtuális hálózat alhálózatában. A hüvelyek nem tudnak közvetlenül kommunikálni egymással. Ehelyett a rendszer a felhasználó által megadott útválasztást (UDR) és az IP-továbbítást használja a hüvelyek közötti kapcsolathoz a csomópontok között. Alapértelmezés szerint a UDR és az IP-továbbítási konfigurációt az AK szolgáltatás hozza létre és tartja karban, de a [saját útválasztási táblázatot is használhatja az egyéni útvonalak kezeléséhez][byo-subnet-route-table]. A hüvelyt olyan szolgáltatás mögött is üzembe helyezheti, amely egy hozzárendelt IP-címet kap, és az alkalmazás számára az adatforgalom terheléselosztását végzi. Az alábbi ábra azt mutatja, hogy az AK-csomópontok Hogyan kapják meg az IP-címet a virtuális hálózati alhálózatban, a hüvelyek kivételével:
 
 ![Kubenet hálózati modell egy AK-fürttel](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Az *Azure CNI* használata:
 
 - Rendelkezésre áll az IP-címtartomány.
 - A pod-kommunikáció nagy része a fürtön kívüli erőforrások.
-- Nem szeretné kezelni a UDR.
+- Nem szeretné kezelni a felhasználó által megadott útvonalakat a pod-kapcsolathoz.
 - Szükség van egy olyan speciális szolgáltatásra, mint a virtuális csomópontok vagy az Azure hálózati házirendje.  A [tarka hálózati házirendek][calico-network-policies]használata.
 
 További információ a használni kívánt hálózati modell eldöntéséhez: [hálózati modellek összehasonlítása és a támogatási hatókörük][network-comparisons].
@@ -139,15 +139,15 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Most rendeljen hozzá egy egyszerű szolgáltatásnevet a virtuális hálózathoz tartozó AK-fürt *közreműködői* engedélyeihez az az [role hozzárendelés Create][az-role-assignment-create] parancs használatával. Adja meg saját * \< AppID>* az előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
+Most rendeljen hozzá egy egyszerű szolgáltatásnevet az AK-fürt *hálózati közreműködői* számára a virtuális hálózaton az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Adja meg a sajátját az *\<appId>* előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AK-fürt létrehozása a virtuális hálózaton
 
-Ezzel létrehozta a virtuális hálózatot és az alhálózatot, és létrehozta és hozzárendelte az egyszerű szolgáltatásnév számára a hálózati erőforrások használatára vonatkozó engedélyeket. Most hozzon létre egy AK-fürtöt a virtuális hálózaton és az alhálózatban az az [AK Create][az-aks-create] paranccsal. Adja meg a saját egyszerű * \< AppID>* és a * \< jelszó>*, ahogy az előző parancs kimenetében látható az egyszerű szolgáltatásnév létrehozásához.
+Ezzel létrehozta a virtuális hálózatot és az alhálózatot, és létrehozta és hozzárendelte az egyszerű szolgáltatásnév számára a hálózati erőforrások használatára vonatkozó engedélyeket. Most hozzon létre egy AK-fürtöt a virtuális hálózaton és az alhálózatban az az [AK Create][az-aks-create] paranccsal. Adja meg a saját szolgáltatásnevet, *\<appId>* és az *\<password>* előző parancs kimenetében látható módon hozza létre az egyszerű szolgáltatást.
 
 A következő IP-címtartományok a fürt létrehozási folyamatának részeként is definiálva vannak:
 
@@ -195,7 +195,43 @@ az aks create \
     --client-secret <password>
 ```
 
-AK-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és egy útválasztási tábla. Ezeket a hálózati erőforrásokat az AK vezérlő síkja kezeli. A hálózati biztonsági csoport automatikusan a csomópontokon lévő virtuális hálózati adapterekhez van társítva. Az útválasztási táblázat automatikusan a virtuális hálózat alhálózatához van társítva. A hálózati biztonsági csoport szabályai és útválasztási táblái automatikusan frissülnek a szolgáltatások létrehozásakor és közzétételekor.
+Ha AK-fürtöt hoz létre, a rendszer automatikusan létrehoz egy hálózati biztonsági csoportot és egy útválasztási táblázatot. Ezeket a hálózati erőforrásokat az AK vezérlő síkja kezeli. A hálózati biztonsági csoport automatikusan a csomópontokon lévő virtuális hálózati adapterekhez van társítva. Az útválasztási táblázat automatikusan a virtuális hálózat alhálózatához van társítva. A hálózati biztonsági csoport szabályai és útválasztási táblái automatikusan frissülnek a szolgáltatások létrehozásakor és közzétételekor.
+
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>Saját alhálózat és útválasztási táblázat használata a kubenet
+
+A kubenet esetében az útválasztási táblázatnak léteznie kell a fürt alhálózatán (k). Az AK támogatja a saját meglévő alhálózat és útválasztási táblázat bevezetését.
+
+Ha az egyéni alhálózat nem tartalmaz útválasztási táblázatot, az AK létrehozza az egyiket az Ön számára, és a fürt életciklusa során a szabályok hozzáadására is lehetőséget nyújt. Ha az egyéni alhálózat útválasztási táblázatot tartalmaz a fürt létrehozásakor, az AK felismeri a meglévő útválasztási táblázatot a fürt műveletei során, és ennek megfelelően hozzáadja/frissíti a szabályokat a felhőalapú szolgáltató műveleteihez.
+
+> [!WARNING]
+> Az egyéni szabályok hozzáadhatók az egyéni útválasztási táblázathoz és frissíthetők. A szabályokat azonban a Kubernetes Cloud Provider adja hozzá, amely nem frissíthető és nem távolítható el. A 0.0.0.0/0 szabályoknak mindig léteznie kell egy adott útválasztási táblában, és le kell képeznie az internetes átjáró céljára, például egy NVA vagy más kimenő átjáróra. Körültekintően járjon el, amikor csak az egyéni szabályok módosítására kerülő szabályokat frissíti.
+
+További információ az [Egyéni útválasztási táblázat][custom-route-table]beállításáról.
+
+A Kubenet hálózatkezeléséhez a kérések sikeres továbbításához meg kell adni a szervezett útválasztási táblázat szabályait. Ennek a kialakításnak köszönhetően az útválasztási táblákat gondosan karban kell tartani minden olyan fürt esetében, amely arra támaszkodik. Több fürt nem oszthat meg útválasztási táblázatot, mert a különböző fürtökből származó Pod CIDRs átfedésbe kerülhet, ami váratlan és hibás útválasztást okoz. Ha több fürtöt állít be ugyanazon a virtuális hálózaton, vagy egy virtuális hálózatot az egyes fürtökhöz kíván hozzárendelni, ügyeljen rá, hogy a következő korlátozások legyenek figyelembe véve.
+
+Korlátozások:
+
+* Az engedélyeket hozzá kell rendelni a fürt létrehozása előtt, ügyeljen arra, hogy az egyéni alhálózathoz és az egyéni útválasztási táblázathoz írási engedéllyel rendelkező egyszerű szolgáltatást használjon.
+* A felügyelt identitások jelenleg nem támogatottak a kubenet egyéni útválasztási tábláival.
+* Az AK-fürt létrehozása előtt egyéni útválasztási táblázatot kell társítani az alhálózathoz.
+* A társított útválasztási tábla erőforrása nem frissíthető a fürt létrehozása után. Amíg az útválasztási tábla erőforrása nem frissíthető, egyéni szabályok módosíthatók az útválasztási táblázatban.
+* Mindegyik AK-fürtnek egyetlen, egyedi útválasztási táblázatot kell használnia a fürthöz társított összes alhálózathoz. Nem lehet felhasználni több fürtből álló útválasztási táblázatot, mert lehetséges az átfedésben lévő Pod CIDRs és az ütköző útválasztási szabályok.
+
+Miután létrehozta az egyéni útválasztási táblázatot, és hozzárendeli azt a virtuális hálózatban lévő alhálózathoz, létrehozhat egy új, az útválasztási táblázatot használó munkaállomás-fürtöt.
+Az alhálózati azonosítót kell használnia az AK-fürt üzembe helyezéséhez. Ezt az alhálózatot is társítani kell az egyéni útválasztási táblázathoz.
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>További lépések
 
@@ -217,9 +253,11 @@ A meglévő virtuális hálózati alhálózatba üzembe helyezett AK-fürttel mo
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

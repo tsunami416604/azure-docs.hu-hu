@@ -12,12 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678766"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Az Azure Windows rendszerű virtuális gépek leállítása a "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" esetén beragadt
 
@@ -43,25 +42,25 @@ A Windows a leállítási folyamattal hajtja végre a rendszerkarbantartási mű
 
 A következő lépések végrehajtásához használja a [soros konzolt](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) :
 
-1. Nyisson meg egy felügyeleti PowerShellt, és győződjön meg arról, hogy a szolgáltatás leáll a leállítás után.
+1. Nyisson meg egy felügyeleti PowerShellt, és keresse meg azt a szolgáltatást, amely nem válaszol a leállítás után.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. A felügyeleti CMD eszközben szerezze be a lefagyott szolgáltatás PID azonosítóját.
+2. A felügyeleti CMD eszközben szerezze be a nem válaszoló szolgáltatás PID azonosítóját.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Memóriakép-minta beszerzése a lefagyott folyamatból <STOPPING SERVICE>.
+3. Memóriakép mintájának beolvasása a nem válaszoló folyamatból <STOPPING SERVICE> .
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. A leállítási folyamat zárolásának feloldásához most öld meg a lefagyott folyamatot.
+4. Most öld meg a nem válaszoló folyamatot a leállítási folyamat zárolásának feloldásához.
 
    ``
    taskkill /PID <PID> /t /f

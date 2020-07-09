@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 1e48573c2b73c10f10f665b5b91759d54d79acdd
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 021999e1757993eea4bbfe3aec0bd68049a37e42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737665"
 ---
-# <a name="data-processing-optimization"></a>Adatfeldolgozás optimalizálása
+# <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark adatfeldolgozási optimalizálása
 
 Ez a cikk azt ismerteti, hogyan optimalizálható a Apache Spark-fürt konfigurációja a legjobb teljesítmény érdekében az Azure HDInsight.
 
@@ -47,7 +47,7 @@ Az illesztések sorrendje, különösen az összetettebb lekérdezésekben. Kezd
 
 A Descartes-féle illesztések párhuzamosságának kezeléséhez beágyazott struktúrákat, ablakokat adhat hozzá, és lehet, hogy kihagy egy vagy több lépést a Spark-feladatokban.
 
-## <a name="optimize-job-execution"></a>Feladatok végrehajtásának optimalizálása
+## <a name="optimize-job-execution"></a>A feladat-végrehajtás optimalizálása
 
 * Szükség szerint gyorsítótárazza, például ha kétszer használja az adatkészletet, majd gyorsítótárazza.
 * Szórási változók az összes végrehajtóra. A változók csak egyszer szerializáltak, ami gyorsabb keresést eredményez.

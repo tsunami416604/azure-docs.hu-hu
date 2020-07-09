@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144072"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Tanúsítvány alapú hitelesítés Azure Active Directory iOS rendszeren
@@ -73,7 +73,7 @@ További információ: [AD FS bejelentkezési oldalának testreszabása](https:/
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Modern hitelesítés használata az Office-alkalmazásokkal
 
-A modern hitelesítéssel rendelkező Office-alkalmazások `prompt=login` az Azure ad-be való küldésük kérelmében vannak engedélyezve. Alapértelmezés szerint az Azure AD az ADFS `prompt=login` -re irányuló kérésben `wauth=usernamepassworduri` (az U/P hitelesítésének megadását kéri `wfresh=0` ) és (az ADFS megkeresése az SSO-állapot mellőzése és új hitelesítés elvégzése). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítsa az alapértelmezett Azure AD-viselkedést.
+A modern hitelesítéssel rendelkező Office-alkalmazások az Azure AD-be való küldésük `prompt=login` kérelmében vannak engedélyezve. Alapértelmezés szerint az Azure AD `prompt=login` az ADFS-re irányuló kérésben `wauth=usernamepassworduri` (az U/P hitelesítésének megadását kéri) és (az ADFS megkeresése az `wfresh=0` SSO-állapot mellőzése és új hitelesítés elvégzése). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítsa az alapértelmezett Azure AD-viselkedést.
 
 Az alapértelmezett viselkedés frissítéséhez állítsa le a "*PromptLoginBehavior*" értéket az összevont tartomány beállításaiban a *letiltáshoz*. Ezt a feladatot a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmaggal hajthatja végre, ahogy az az alábbi példában is látható:
 

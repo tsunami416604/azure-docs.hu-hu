@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80159302"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85317182"
 landingContent:
 - title: Tudnivalók a Security Centerről
   linkLists:
@@ -30,18 +30,16 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: A tárolók védelme
-      url: container-security.md
-    - text: Integrált sebezhetőségi felmérés virtuális gépekhez
-      url: built-in-vulnerability-assessment.md
-    - text: Sémák áttekintése a biztonsági riasztások esetében
-      url: alerts-schemas.md
-    - text: Riasztásokra és javaslatokra adott válaszok automatizálása
-      url: workflow-automation.md
-    - text: Biztonsági riasztások és javaslatok exportálása
-      url: continuous-export.md
-    - text: Fenyegetésvédelem beállítása az Azure Key Vaulthoz
-      url: advanced-threat-protection-key-vault.md
+    - text: A Security Center kibocsátási megjegyzései
+      url: release-notes.md
+    - text: Advanced Data Security SQL-gépekhez
+      url: security-center-iaas-advanced-data.md
+    - text: Riasztáselnyomási szabályok
+      url: alerts-suppression-rules.md
+    - text: Az új biztonsági vezérlők teljes ismertetése
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: Új API biztonsági pontszámhoz
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Bevezetés
   linkLists:
   - linkListType: get-started
@@ -49,7 +47,7 @@ landingContent:
     - text: Biztonsági szabályzatok konfigurálása
       url: tutorial-security-policy.md
     - text: A biztonsági rendszer értékelése
-      url: security-center-secure-score.md
+      url: secure-score-security-controls.md
     - text: Frissítés speciális biztonsági megoldásra
       url: security-center-onboarding.md
 - title: A biztonsági pontszám javítása
@@ -64,6 +62,8 @@ landingContent:
       url: tutorial-security-policy.md
     - text: Javaslatok használata a biztonság növelése érdekében
       url: security-center-using-recommendations.md
+    - text: Nyomkövetés a biztonsági pontszám API-jával
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Fenyegetések enyhítése
   linkLists:
   - linkListType: how-to-guide

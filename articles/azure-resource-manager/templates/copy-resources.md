@@ -4,10 +4,10 @@ description: A másolási művelet és tömbök használata Azure Resource Manag
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583387"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció az ARM-sablonokban
@@ -18,7 +18,7 @@ A másolást a [Tulajdonságok](copy-properties.md), a [változók](copy-variabl
 
 Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A másolási elem a következő általános formátumú:
 
@@ -85,7 +85,7 @@ A következő példa a **storageCount** paraméterben megadott Storage-fiókok s
 }
 ```
 
-Figyelje meg, hogy az egyes erőforrások neve tartalmazza `copyIndex()` a függvényt, amely az aktuális iterációt adja vissza a hurokban. A `copyIndex()` nulla alapú. Tehát a következő példa:
+Figyelje meg, hogy az egyes erőforrások neve tartalmazza a `copyIndex()` függvényt, amely az aktuális iterációt adja vissza a hurokban. A `copyIndex()` nulla alapú. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -109,7 +109,7 @@ A következő neveket hozza létre:
 * storage2
 * storage3
 
-A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a `length` tömb függvényét az iterációk számának megadásához, valamint `copyIndex` a tömb aktuális indexének lekéréséhez.
+A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a `length` tömb függvényét az iterációk számának megadásához, valamint a `copyIndex` tömb aktuális indexének lekéréséhez.
 
 A következő példa egy Storage-fiókot hoz létre a paraméterben megadott minden névhez.
 
@@ -154,7 +154,7 @@ Ha a központilag telepített erőforrások értékeit szeretné visszaadni, a [
 
 Alapértelmezés szerint a Resource Manager párhuzamosan hozza létre az erőforrásokat. Nem korlátozza a párhuzamosan üzembe helyezett erőforrások számát, kivéve a sablonban lévő 800-erőforrások teljes korlátját. A létrehozásuk sorrendje nem garantált.
 
-Azonban érdemes megadnia, hogy az erőforrások sorba legyenek telepítve. Ha például éles környezetet frissít, érdemes lehet megosztani a frissítéseket, hogy csak egy adott szám legyen frissítve egyszerre. Egy adott erőforrás egynél több példányának soros üzembe helyezéséhez állítsa a `mode` **soros** értéket, `batchSize` és adja meg az egyszerre telepítendő példányok számát. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
+Azonban érdemes megadnia, hogy az erőforrások sorba legyenek telepítve. Ha például éles környezetet frissít, érdemes lehet megosztani a frissítéseket, hogy csak egy adott szám legyen frissítve egyszerre. Egy adott erőforrás egynél több példányának soros üzembe helyezéséhez állítsa a `mode` **soros** értéket, és adja meg `batchSize` az egyszerre telepítendő példányok számát. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
 
 Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, használja a következőt:
 
@@ -189,7 +189,7 @@ A Mode (mód) tulajdonság szintén **párhuzamosan**fogadja el az alapértelmez
 
 ## <a name="depend-on-resources-in-a-loop"></a>Egy hurok erőforrásaitól függ
 
-Azt határozza meg, hogy egy erőforrás központi telepítése egy másik erőforrás után történik `dependsOn` a elem használatával. Ha olyan erőforrást szeretne üzembe helyezni, amely egy hurokban lévő erőforrások gyűjteményéből függ, adja meg a másolási hurok nevét a dependsOn elemben. Az alábbi példa bemutatja, hogyan helyezhet üzembe három Storage-fiókot a virtuális gép telepítése előtt. A virtuális gép teljes definíciója nem jelenik meg. Figyelje meg, hogy a másolási elem neve `storagecopy` és a virtuális gép dependsOn eleme is be van állítva `storagecopy`.
+Azt határozza meg, hogy egy erőforrás központi telepítése egy másik erőforrás után történik a `dependsOn` elem használatával. Ha olyan erőforrást szeretne üzembe helyezni, amely egy hurokban lévő erőforrások gyűjteményéből függ, adja meg a másolási hurok nevét a dependsOn elemben. Az alábbi példa bemutatja, hogyan helyezhet üzembe három Storage-fiókot a virtuális gép telepítése előtt. A virtuális gép teljes definíciója nem jelenik meg. Figyelje meg, hogy a másolási elem neve `storagecopy` és a virtuális gép dependsOn eleme is be van állítva `storagecopy` .
 
 ```json
 {
@@ -248,7 +248,7 @@ Tegyük fel például, hogy az adatkészletet általában alárendelt erőforrá
   ]
 ```
 
-Egynél több adathalmaz létrehozásához helyezze át azt az adatelőállítón kívülre. Az adatkészletnek a adat-előállítóval megegyező szinten kell lennie, de még mindig az adat-előállító alárendelt erőforrása. Az adatkészletek és a adatfeldolgozók közötti kapcsolatot a típus és a név tulajdonságon keresztül megőrizheti. Mivel a típus már nem következtethető ki a sablonban lévő pozícióból, a teljes típust a következő formátumban kell megadnia: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Egynél több adathalmaz létrehozásához helyezze át azt az adatelőállítón kívülre. Az adatkészletnek a adat-előállítóval megegyező szinten kell lennie, de még mindig az adat-előállító alárendelt erőforrása. Az adatkészletek és a adatfeldolgozók közötti kapcsolatot a típus és a név tulajdonságon keresztül megőrizheti. Mivel a típus már nem következtethető ki a sablonban lévő pozícióból, a teljes típust a következő formátumban kell megadnia: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
 
 Ha szülő/gyermek kapcsolatot szeretne létesíteni az adatelőállító egy példányával, adja meg a szülő erőforrás nevét tartalmazó adatkészlet nevét. Használja a következő formátumot: `{parent-resource-name}/{child-resource-name}`.
 

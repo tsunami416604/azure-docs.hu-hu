@@ -8,20 +8,19 @@ ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f5639909c3cece627ffba105edd23d943ad966df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69032664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603944"
 ---
-# <a name="reset-a-users-password-using-azure-active-directory"></a>Felhasználó jelszavának alaphelyzetbe állítása Azure Active Directory használatával
+# <a name="reset-a-users-password-using-azure-active-directory"></a>Felhasználói jelszó visszaállítása az Azure Active Directoryval
 
 Rendszergazdaként alaphelyzetbe állíthatja a felhasználó jelszavát, ha a jelszót elfelejtik, ha a felhasználó ki van zárva egy eszközről, vagy ha a felhasználó nem kapott jelszót.
 

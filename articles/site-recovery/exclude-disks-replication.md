@@ -3,12 +3,12 @@ title: Lemezek kizárása a replikációból a Azure Site Recovery
 description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740518"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135697"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -44,7 +44,7 @@ Igen | Igen | Igen | Igen
 
 ## <a name="typical-scenarios"></a>Tipikus forgatókönyvek
 
-Példák a kizárásra alkalmas adatforgalomra: egy lapozófájlba (Pagefile. sys) való írás, és a Microsoft SQL Server tempdb-fájljába való írás. A munkaterheléstől és a tárolási alrendszertől függően a lapozás és a tempdb-fájlok jelentős mennyiségű adatváltozást regisztrálhatnak. Az ilyen típusú adatmennyiség az Azure-ba való replikálása erőforrás-igényes.
+Példák a kizárásra alkalmas adatváltozásokra, például a lapozófájlba való írásra (pagefile.sys), és a Microsoft SQL Server tempdb-fájljába való írásra. A munkaterheléstől és a tárolási alrendszertől függően a lapozás és a tempdb-fájlok jelentős mennyiségű adatváltozást regisztrálhatnak. Az ilyen típusú adatmennyiség az Azure-ba való replikálása erőforrás-igényes.
 
 - Az operációs rendszert és a lapozófájlt is tartalmazó virtuális gépek replikálásának optimalizálásához a következőket teheti:
     1. Ossza fel a virtuális lemezt két virtuális lemezre. Az egyik virtuális lemezen az operációs rendszer, a másikon a lapozófájl található.
@@ -185,7 +185,7 @@ DB-Disk4 | Disk4 | G:\ | 2. felhasználói adatbázis
 
 ## <a name="example-2-exclude-the-paging-file-disk"></a>2. példa: a lapozófájl lemezének kizárása
 
-Nézzük meg, hogyan kezelheti a lemezek kizárását, a feladatátvételt és a feladatátvételt a forrásként szolgáló Windows-alapú virtuális gépek esetében, amelyekhez ki szeretné zárni a lapozófájl. sys fájl lemezét mind a D meghajtón, mind egy másik meghajtón.
+Nézzük meg, hogyan kezelheti a lemezek kizárását, a feladatátvételt és a feladatátvételt a forrásként szolgáló Windowsos virtuális gép esetében, amelyhez ki szeretné zárni a pagefile.sys-lemezt a D meghajtón, valamint egy másik meghajtót is.
 
 
 ### <a name="paging-file-on-the-d-drive"></a>Lapozófájl a D meghajtón
@@ -213,7 +213,7 @@ A feladatátvételt követően az Azure-beli virtuális gép rendelkezik a tábl
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | Ideiglenes tárolás/lapozófájl. sys <br/><br/> Mivel DB-Disk1 (D:) ki lett zárva, a D: az első meghajtóbetűjel az elérhető listából.<br/><br/> Az Azure a D: betűjelet rendeli hozzá az ideiglenes tárolókötethez.<br/><br/> Mivel a D: elérhető, a virtuális gép lapozófájljának beállítása változatlan marad.
+DB-Disk1 | Disk1 | D:\ | Ideiglenes tárolás/pagefile.sys <br/><br/> Mivel DB-Disk1 (D:) ki lett zárva, a D: az első meghajtóbetűjel az elérhető listából.<br/><br/> Az Azure a D: betűjelet rendeli hozzá az ideiglenes tárolókötethez.<br/><br/> Mivel a D: elérhető, a virtuális gép lapozófájljának beállítása változatlan marad.
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
@@ -257,10 +257,9 @@ Az Azure-beli virtuális gépen elérhető lapozófájl-beállítások a követk
 ![Lapozófájl-beállítások az Azure virtuális gépen](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az ideiglenes Storage-lemezre vonatkozó irányelvekről:
-    - [További](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) tudnivalók az SSD-k Azure-beli virtuális gépeken való használatáról SQL Server tempdb és puffer-bővítmények tárolásához
-    - [Tekintse át](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) az Azure-beli virtuális gépek SQL Serverinak teljesítményére vonatkozó ajánlott eljárásokat.
+    - [További](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) tudnivalók az SSD-k Azure-beli virtuális gépeken való használatáról SQL Server tempdb és puffer-bővítmények tárolásához
+    - [Tekintse át](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépek SQL Serverinak teljesítményére vonatkozó ajánlott eljárásokat.
 - Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](failover-failback-overview.md) a feladatátvételi különféle típusaival.
-

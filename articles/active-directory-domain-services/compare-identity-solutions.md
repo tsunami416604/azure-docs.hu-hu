@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655516"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555140"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
 
@@ -31,21 +31,25 @@ Habár a három Active Directory-alapú identitási megoldás közös nevet és 
     * További információ az Azure AD-ről: [Mi az Azure Active Directory?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** – felügyelt tartományi szolgáltatásokat biztosít a teljes mértékben kompatibilis, hagyományos AD DS-funkciók, például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a KERBEROS/NTLM hitelesítés részeként.
     * Az Azure AD DS integrálható az Azure AD-vel, amely képes szinkronizálni a helyszíni AD DS-környezettel. Ez a képesség kiterjeszti a központi identitás használati eseteit az Azure-ban futó hagyományos webalkalmazásokra egy lift-és eltolási stratégia részeként.
+    * Ha többet szeretne megtudni az Azure AD-vel és a helyszíni szolgáltatással való szinkronizálásról, tekintse meg a [felügyelt tartományokban található objektumok és hitelesítő adatok szinkronizálásának módját][synchronization].
 
 Ez az áttekintő cikk összehasonlítja, hogy ezek az identitás-megoldások hogyan működhetnek együtt, vagy a szervezet igényeitől függően függetlenül használhatók.
 
-Első lépésként [hozzon létre egy Azure AD DS felügyelt tartományt a Azure Portal használatával][tutorial-create].
+> [!div class="nextstepaction"]
+> [Első lépésként hozzon létre egy Azure AD DS felügyelt tartományt a Azure Portal használatával][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS és önállóan felügyelt AD DS
 
 Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek olyan hagyományos hitelesítési mechanizmusokhoz férnek hozzá, mint például a Kerberos vagy az NTLM, kétféleképpen biztosíthat Active Directory tartományi szolgáltatások a felhőben:
 
-* Azure Active Directory Domain Services (Azure AD DS) használatával létrehozott *felügyelt* tartomány. A Microsoft létrehozza és kezeli a szükséges erőforrásokat.
+* Azure Active Directory Domain Services (Azure AD DS) használatával létrehozott *felügyelt tartomány* . A Microsoft létrehozza és kezeli a szükséges erőforrásokat.
 * Olyan *önállóan felügyelt* tartomány, amelyet a hagyományos erőforrások, például a virtuális gépek (VM), a Windows Server vendég operációs rendszer és a Active Directory tartományi szolgáltatások (AD DS) használatával hozhat létre és konfigurálhat. Ezután továbbra is felügyelheti ezeket az erőforrásokat.
 
 Az Azure AD DS az alapvető szolgáltatási összetevőket a Microsoft *felügyelt* tartományi felhasználói felületként telepíti és tartja karban. Nem kell telepítenie, felügyelni, javítani és biztonságossá tenni a AD DS infrastruktúrát olyan összetevőkhöz, mint a virtuális gépek, a Windows Server operációs rendszer vagy a tartományvezérlők.
 
-Az Azure AD DS szolgáltatások kisebb részhalmazát kínálja a hagyományos, önfelügyelt AD DS-környezet számára, ami csökkenti a tervezési és a felügyeleti komplexitást. Például nincs olyan AD-erdő, tartomány, hely, és replikációs hivatkozás a tervezéshez és a karbantartáshoz. A felhőben futó alkalmazások és szolgáltatások esetében, valamint a hagyományos hitelesítési mechanizmusokhoz (például Kerberos vagy NTLM) való hozzáférésre van szükség, az Azure AD DS felügyelt tartományi élményt biztosít a minimális adminisztratív terhelésnek megfelelően.
+Az Azure AD DS szolgáltatások kisebb részhalmazát kínálja a hagyományos, önfelügyelt AD DS-környezet számára, ami csökkenti a tervezési és a felügyeleti komplexitást. Például nincs olyan AD-erdő, tartomány, hely, és replikációs hivatkozás a tervezéshez és a karbantartáshoz. Továbbra is [létrehozhat erdőszintű megbízhatósági kapcsolatot az Azure AD DS és a helyszíni környezetek között (jelenleg előzetes][create-forest-trust]verzióban érhető el).
+
+A felhőben futó alkalmazások és szolgáltatások esetében, valamint a hagyományos hitelesítési mechanizmusokhoz (például Kerberos vagy NTLM) való hozzáférésre van szükség, az Azure AD DS felügyelt tartományi élményt biztosít a minimális adminisztratív terhelésnek megfelelően. További információ: [felügyeleti fogalmak a felhasználói fiókokhoz, jelszavakhoz és felügyelethez az Azure ad DSban][administration-concepts].
 
 Ha önálló felügyelet alatt álló AD DS környezetet telepít és futtat, meg kell őriznie az összes kapcsolódó infrastruktúrát és címtár-összetevőt. Az önfelügyelt AD DS-környezetek További karbantartási terheléssel rendelkeznek, azonban további feladatokat is végrehajthat, például kiterjesztheti a sémát, vagy erdőszintű megbízhatósági kapcsolatot hozhat létre.
 
@@ -94,7 +98,7 @@ Az eszközök csatlakoztathatók az Azure AD-hez olyan hibrid üzembe helyezéss
 
 | **Eszköz típusa**                                        | **Eszközplatformok**             | **Mechanizmus**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| Személyes eszközök                                          | Windows 10, iOS, Android, Mac OS | Az Azure AD-ban regisztrálva    |
+| Személyes eszközök                                          | Windows 10, iOS, Android, macOS | Az Azure AD-ban regisztrálva    |
 | A szervezet tulajdonában lévő eszköz nincs a helyszíni AD DShoz csatlakoztatva | Windows 10                       | Azure AD-hez csatlakoztatva        |
 | A szervezet tulajdonában lévő eszköz egy helyszíni AD DShoz csatlakoztatva  | Windows 10                       | csatlakozik a Hibrid Azure AD-hez |
 
@@ -111,9 +115,11 @@ Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az N
 | Hálózat                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
 | Nagyszerű...                    | Végfelhasználói mobil-vagy asztali eszközök                  | Az Azure-ban üzembe helyezett kiszolgálói virtuális gépek                                              |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD DS használatának megkezdéséhez [hozzon létre egy azure AD DS felügyelt tartományt a Azure Portal használatával][tutorial-create].
+
+További információt [a felhasználói fiókokkal, jelszavakkal és az Azure-AD DS felügyeletével kapcsolatos fogalmakról][administration-concepts] , valamint az [objektumok és a hitelesítő adatok felügyelt tartományon belüli szinkronizálásáról][synchronization]is olvashat.
 
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
@@ -124,3 +130,6 @@ Az Azure AD DS használatának megkezdéséhez [hozzon létre egy azure AD DS fe
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

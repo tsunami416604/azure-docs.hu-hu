@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891470"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130549"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -28,8 +28,8 @@ A [mavenhez készült Azure Web App beépülő modullal](/java/api/overview/azur
 
 Ellenkező esetben a telepítési módszer az archiválás típusától függ:
 
-- A. War fájlok Tomcatbe való üzembe helyezéséhez `/api/wardeploy/` használja a végpontot az archív fájl közzétételéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
-- Ha a. jar fájlokat a Java SE-re szeretné `/api/zipdeploy/` telepíteni, használja a kudu-hely végpontját. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
+- A. War fájlok Tomcatbe való üzembe helyezéséhez használja a `/api/wardeploy/` végpontot az archív fájl közzétételéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- Ha a. jar fájlokat a Java SE-re szeretné telepíteni, használja a `/api/zipdeploy/` kudu-hely végpontját. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Ne telepítse a. War-t FTP használatával. Az FTP-eszköz indítási parancsfájlok, függőségek vagy más futásidejű fájlok feltöltésére szolgál. A webalkalmazások üzembe helyezése nem optimális megoldás.
 
@@ -43,7 +43,7 @@ Az Azul JVMs-t használó App Service Java-futtatókörnyezetek a Zulu Flight Re
 
 Ha időzített rögzítést szeretne készíteni, szüksége lesz a Java-alkalmazás PID-re (Process ID). A PID megkereséséhez nyisson meg egy böngészőt a webalkalmazás SCM-webhelyéhez a https://<saját-hely neve>. scm.azurewebsites.net/ProcessExplorer/. Ezen az oldalon a webalkalmazás futó folyamatai láthatók. Keresse meg a "Java" nevű folyamatot a táblában, és másolja a megfelelő PID-t (Process ID).
 
-Ezután nyissa meg a **hibakeresési konzolt** az SCM-hely felső eszköztárán, és futtassa a következő parancsot. Cserélje `<pid>` le a helyére a korábban átmásolt folyamat azonosítóját. Ez a parancs elindítja a Java-alkalmazás 30 másodperces adatrögzítését, és létrehozza a `timed_recording_example.jfr` `D:\home` címtárban megnevezett fájlt.
+Ezután nyissa meg a **hibakeresési konzolt** az SCM-hely felső eszköztárán, és futtassa a következő parancsot. Cserélje le `<pid>` a helyére a korábban átmásolt folyamat azonosítóját. Ez a parancs elindítja a Java-alkalmazás 30 másodperces adatrögzítését, és létrehozza a `timed_recording_example.jfr` címtárban megnevezett fájlt `D:\home` .
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -51,7 +51,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 További információkért tekintse meg a [Jcmd-parancs referenciáját](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190).
 
-#### <a name="analyze-jfr-files"></a>Fájlok `.jfr` elemzése
+#### <a name="analyze-jfr-files"></a>`.jfr`Fájlok elemzése
 
 A [FTPS](deploy-ftp.md) használatával töltse le a JFR-fájlt a helyi gépre. A JFR-fájl elemzéséhez töltse le és telepítse a [Zulu Mission Controlt](https://www.azul.com/products/zulu-mission-control/). A Zulu-feladatok ellenőrzésével kapcsolatos utasításokért tekintse meg az [Azul dokumentációját](https://docs.azul.com/zmc/) és a [telepítési utasításokat](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
@@ -80,9 +80,9 @@ A Azure App Service a Azure Portal és a CLI használatával támogatja a Box fi
 
 ### <a name="set-java-runtime-options"></a>Java-futtatókörnyezet beállításainak megadása
 
-A lefoglalt memória vagy más JVM futásidejű beállításainak megadásához hozzon létre egy `JAVA_OPTS` nevű [alkalmazást](configure-common.md#configure-app-settings) a következő beállításokkal:. App Service átadja ezt a beállítást környezeti változóként a Java futtatókörnyezetnek a indításakor.
+A lefoglalt memória vagy más JVM futásidejű beállításainak megadásához hozzon létre egy nevű [alkalmazást](configure-common.md#configure-app-settings) `JAVA_OPTS` a következő beállításokkal:. App Service átadja ezt a beállítást környezeti változóként a Java futtatókörnyezetnek a indításakor.
 
-A Azure Portal a webalkalmazás **Alkalmazásbeállítások** területén hozzon létre egy nevű `JAVA_OPTS` új alkalmazás-beállítást, amely tartalmazza a további beállításokat, például a következőt:. `-Xms512m -Xmx1204m`
+A Azure Portal a webalkalmazás **Alkalmazásbeállítások** területén hozzon létre egy nevű új alkalmazás-beállítást `JAVA_OPTS` , amely tartalmazza a további beállításokat, például a következőt: `-Xms512m -Xmx1204m` .
 
 Az Alkalmazásbeállítások a Maven beépülő modulból történő konfigurálásához adja hozzá a beállítás/érték címkéket az Azure beépülő modul szakaszban. A következő példa egy meghatározott minimális és maximális Java-halom méretét állítja be:
 
@@ -122,7 +122,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Alapértelmezett karakterkódolás beállítása
 
-A Azure Portal a webalkalmazás **Alkalmazásbeállítások** területén hozzon létre egy új, értékkel `JAVA_OPTS` `-Dfile.encoding=UTF-8`ellátott alkalmazás-beállítást.
+A Azure Portal a webalkalmazás **Alkalmazásbeállítások** területén hozzon létre egy új, értékkel ellátott alkalmazás-beállítást `JAVA_OPTS` `-Dfile.encoding=UTF-8` .
 
 Azt is megteheti, hogy az App Service Maven beépülő modullal konfigurálhatja az alkalmazás beállításait. Adja hozzá a beállítás neve és értéke címkéket a beépülő modul konfigurációjában:
 
@@ -149,13 +149,13 @@ Az alkalmazás hitelesítésének beállítása a Azure Portal a **hitelesítés
 
 #### <a name="tomcat"></a>Tomcat
 
-A Tomcat-alkalmazás közvetlenül a servletből férhet hozzá a felhasználó jogcímeihez, ha a fő objektumot egy Térkép objektummá helyezi. A Térkép objektum az egyes jogcím-típusokat az adott típusú jogcímek gyűjteményéhez rendeli. Az alábbi `request` kódban a egy példánya `HttpServletRequest`.
+A Tomcat-alkalmazás közvetlenül a servletből férhet hozzá a felhasználó jogcímeihez, ha a fő objektumot egy Térkép objektummá helyezi. A Térkép objektum az egyes jogcím-típusokat az adott típusú jogcímek gyűjteményéhez rendeli. Az alábbi kódban a `request` egy példánya `HttpServletRequest` .
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
 ```
 
-Most már megvizsgálhatja `Map` az objektumot egy adott jogcím esetében is. A következő kódrészlet például megismétli az összes jogcím-típust, és kinyomtatja az egyes gyűjtemények tartalmát.
+Most már megvizsgálhatja az `Map` objektumot egy adott jogcím esetében is. A következő kódrészlet például megismétli az összes jogcím-típust, és kinyomtatja az egyes gyűjtemények tartalmát.
 
 ```java
 for (Object key : map.keySet()) {
@@ -179,7 +179,7 @@ public String getScheme()
 public int getServerPort()
 ```
 
-A funkció letiltásához hozzon létre egy nevű `WEBSITE_AUTH_SKIP_PRINCIPAL` Alkalmazásbeállítás értéket `1`. A App Service által hozzáadott összes servlet-szűrő letiltásához hozzon `WEBSITE_SKIP_FILTERS` létre egy nevű beállítást `1`a következő értékkel:.
+A funkció letiltásához hozzon létre egy nevű Alkalmazásbeállítás `WEBSITE_AUTH_SKIP_PRINCIPAL` értéket `1` . A App Service által hozzáadott összes servlet-szűrő letiltásához hozzon létre egy nevű beállítást a következő `WEBSITE_SKIP_FILTERS` értékkel: `1` .
 
 ### <a name="configure-tlsssl"></a>A TLS/SSL konfigurálása
 
@@ -191,7 +191,7 @@ Az [Azure](../key-vault/general/overview.md) kulcstartó központosított titkos
 
 Először is kövesse az alkalmazáshoz [való hozzáférés megadására](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) vonatkozó utasításokat, és a [titkos kulcshoz tartozó kulcstároló-hivatkozást egy Alkalmazásbeállítások alapján](app-service-key-vault-references.md#reference-syntax)végezze el a Key Vault. Ellenőrizheti, hogy a hivatkozás feloldja-e a titkos kulcsot a környezeti változó kinyomtatásával, miközben távolról fér hozzá a App Service terminálhoz.
 
-Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs fájljába, használja`${MY_ENV_VAR}`a környezeti változók befecskendezésének szintaxisát (). A Spring konfigurációs fájlok esetében tekintse meg ezt a dokumentációt a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
+Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs fájljába, használja a környezeti változók befecskendezésének szintaxisát ( `${MY_ENV_VAR}` ). A Spring konfigurációs fájlok esetében tekintse meg ezt a dokumentációt a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 
 ## <a name="configure-apm-platforms"></a>APM-platformok konfigurálása
@@ -201,26 +201,26 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 ### <a name="configure-new-relic"></a>Új ereklye konfigurálása
 
 1. Új ereklye fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -on
-2. Töltse le a Java-ügynököt a NewRelic-ből, mert a fájlnév a *newrelic-Java-x. x. x. zip*fájlhoz hasonló lesz.
+2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz *.
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
 4. Hozzon létre egy új címtár- */Home/site/wwwroot/APM*a [kudu-konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) használatával.
 5. Töltse fel a kicsomagolt új ereklye Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic*-ben kell lenniük.
 6. Módosítsa a YAML fájlt a */Home/site/wwwroot/APM/newrelic/newrelic.YML* címen, és cserélje le a helyőrző licenc értékét a saját licenckulcs használatára.
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
-    - Ha az alkalmazás **Java SE**-t használ, hozzon létre egy `JAVA_OPTS` nevű környezeti változót az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Ha a **tomcat**-t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
+    - Ha az alkalmazás **Java SE**-t használ, hozzon létre egy nevű környezeti változót `JAVA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Ha a **tomcat**-t használja, hozzon létre egy nevű környezeti változót `CATALINA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ### <a name="configure-appdynamics"></a>AppDynamics konfigurálása
 
 1. AppDynamics-fiók létrehozása a [AppDynamics.com](https://www.appdynamics.com/community/register/) -ben
-2. Töltse le a Java-ügynököt a AppDynamics webhelyről, és a fájlnév a *AppServerAgent-x. x. x. xxxxx. zip* fájlhoz hasonló lesz.
+2. Töltse le a Java-ügynököt a AppDynamics webhelyről, a fájl neve hasonló lesz *AppServerAgent-x.x.x.xxxxx.zip*
 3. Hozzon létre egy új címtár- */Home/site/wwwroot/APM*a [kudu-konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) használatával.
 4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics*-ben kell lenniük.
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
-    - Ha **Java SE**-t használ, hozzon létre egy nevű `JAVA_OPTS` környezeti változót `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , `<app-name>` amelynek értéke a app Service neve.
-    - Ha a **tomcat**- `<app-name>` t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót, amelynek értéke `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` a app Service neve.
+    - Ha **Java SE**-t használ, hozzon létre egy nevű környezeti változót, amelynek `JAVA_OPTS` értéke a `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` app Service neve.
+    - Ha a **tomcat**-t használja, hozzon létre egy nevű környezeti változót, amelynek `CATALINA_OPTS` értéke a `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` app Service neve.
 
->  Ha már rendelkezik környezeti változóval a `JAVA_OPTS` vagy `CATALINA_OPTS`a esetében, az `-javaagent:/...` aktuális érték végéhez fűzze hozzá a kapcsolót.
+>  Ha már rendelkezik környezeti változóval a vagy a esetében `JAVA_OPTS` `CATALINA_OPTS` , az `-javaagent:/...` aktuális érték végéhez fűzze hozzá a kapcsolót.
 
 ## <a name="data-sources"></a>Adatforrások
 
@@ -234,7 +234,7 @@ Ezek az utasítások az összes adatbázis-kapcsolatra érvényesek. A helyőrz�
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Letöltés](https://dev.mysql.com/downloads/connector/j/) (válassza a "platform független" lehetőséget) |
 | SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Letöltés](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
-Ha a Tomcat-t a Java Database Connectivity (JDBC) vagy a Java perzisztencia API (közös parlamenti) használatára szeretné `CATALINA_OPTS` konfigurálni, először testre kell szabnia a Tomcat által az indításkor beolvasott környezeti változót. Adja meg ezeket az értékeket a [app Service Maven beépülő modul](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)alkalmazás-beállításán keresztül:
+Ha a Tomcat-t a Java Database Connectivity (JDBC) vagy a Java perzisztencia API (közös parlamenti) használatára szeretné konfigurálni, először testre kell szabnia a `CATALINA_OPTS` tomcat által az indításkor beolvasott környezeti változót. Adja meg ezeket az értékeket a [app Service Maven beépülő modul](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)alkalmazás-beállításán keresztül:
 
 ```xml
 <appSettings>
@@ -245,15 +245,15 @@ Ha a Tomcat-t a Java Database Connectivity (JDBC) vagy a Java perzisztencia API 
 </appSettings>
 ```
 
-Vagy állítsa be a környezeti változókat a Azure Portal **konfigurációs** > **alkalmazás beállításai** lapján.
+Vagy állítsa be a környezeti változókat a Azure Portal **konfigurációs**  >  **alkalmazás beállításai** lapján.
 
 Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy alkalmazáshoz vagy a Tomcat servletben futó összes alkalmazáshoz.
 
 #### <a name="application-level-data-sources"></a>Alkalmazás szintű adatforrások
 
-1. Hozzon létre egy *Context. XML* fájlt a projekt *META-INF-* fájljában/könyvtárában. Ha nem létezik, hozza létre a *META-INF/* könyvtárat.
+1. Hozzon létre egy *context.xml* fájlt a projekt *META-INF-* fájljában/könyvtárában. Ha nem létezik, hozza létre a *META-INF/* könyvtárat.
 
-2. A *Context. xml fájlban*adjon hozzá `Context` egy elemet az adatforrás JNDI való összekapcsolásához. Cserélje le `driverClassName` a helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
+2. A *context.xmlban *adjon hozzá egy `Context` elemet, amely összekapcsolja az adatforrást egy JNDI-címnek. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
 
     ```xml
     <Context>
@@ -268,7 +268,7 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
     </Context>
     ```
 
-3. Frissítse az alkalmazás *web. XML* fájlját az alkalmazás adatforrásának használatára.
+3. Frissítse alkalmazása *web.xml* az alkalmazás adatforrásának használatára.
 
     ```xml
     <resource-env-ref>
@@ -301,14 +301,14 @@ Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt
 
 A Tomcat `server.xml` vagy más konfigurációs fájlok szerkesztéséhez először jegyezze fel a Tomcat főverzióját a portálon.
 
-1. A `env` parancs futtatásával keresse meg a verzióhoz tartozó tomcat-kezdőkönyvtárat. Keresse meg azt a környezeti változót, `AZURE_TOMCAT`amely a-val kezdődik, és megfelel a főverziónak. Például a Tomcat `AZURE_TOMCAT85_HOME` 8,5-es tomcat-könyvtárába mutat.
-1. Miután azonosította a-verzióhoz tartozó tomcat-kezdőkönyvtárat, másolja a konfigurációs könyvtárat a következőre: `D:\home`. Ha `AZURE_TOMCAT85_HOME` például a értéke volt `D:\Program Files (x86)\apache-tomcat-8.5.37`, a másolt könyvtár új elérési útja a következő lesz `D:\home\apache-tomcat-8.5.37`:.
+1. A parancs futtatásával keresse meg a verzióhoz tartozó tomcat-kezdőkönyvtárat `env` . Keresse meg azt a környezeti változót, amely a-val kezdődik, `AZURE_TOMCAT` és megfelel a főverziónak. Például a Tomcat `AZURE_TOMCAT85_HOME` 8,5-es tomcat-könyvtárába mutat.
+1. Miután azonosította a-verzióhoz tartozó tomcat-kezdőkönyvtárat, másolja a konfigurációs könyvtárat a következőre: `D:\home` . Ha például a `AZURE_TOMCAT85_HOME` értéke volt `D:\Program Files (x86)\apache-tomcat-8.5.37` , a másolt könyvtár új elérési útja a következő lesz: `D:\home\apache-tomcat-8.5.37` .
 
-Végezetül indítsa újra a App Service. A központi telepítéseknek ugyanúgy kell `D:\home\site\wwwroot\webapps` megjelenniük, mint korábban.
+Végezetül indítsa újra a App Service. A központi telepítéseknek ugyanúgy kell megjelenniük, `D:\home\site\wwwroot\webapps` mint korábban.
 
 ## <a name="configure-java-se"></a>A Java SE konfigurálása
 
-A futtatásakor. A Windows rendszeren futó Java SE-alkalmazás `server.port` , amely az alkalmazás indításakor parancssori kapcsolóként lesz átadva. A HTTP-port manuálisan is feloldható a környezeti változóból `HTTP_PLATFORM_PORT`. Ennek a környezeti változónak az értéke lesz az alkalmazás által figyelni kívánt HTTP-port. 
+A futtatásakor. A Windows rendszeren futó Java SE-alkalmazás, `server.port` amely az alkalmazás indításakor parancssori kapcsolóként lesz átadva. A HTTP-port manuálisan is feloldható a környezeti változóból `HTTP_PLATFORM_PORT` . Ennek a környezeti változónak az értéke lesz az alkalmazás által figyelni kívánt HTTP-port. 
 
 ## <a name="java-runtime-statement-of-support"></a>A Java futtatókörnyezet támogatási nyilatkozata
 
@@ -322,7 +322,7 @@ A támogatott JDK minden év januárjában, áprilisban, júliusban és október
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 
-A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2. verziójában](https://nvd.nist.gov/cvss.cfm).
+A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2. verziójában](https://nvd.nist.gov/vuln-metrics/cvss).
 
 A Tomcat 8,0 [2018. szeptember 30-ig elérte az élettartamot (EOL)](https://tomcat.apache.org/tomcat-80-eol.html). Habár a futtatókörnyezet továbbra is a Azure App Service avialable, az Azure nem fogja alkalmazni a Tomcat 8,0-es biztonsági frissítéseit. Ha lehetséges, telepítse át az alkalmazásokat a Tomcat 8,5 vagy a 9,0-es verzióra. A Tomcat 8,5 és 9,0 egyaránt elérhető Azure App Serviceon. További információért tekintse meg a [hivatalos tomcat-webhelyet](https://tomcat.apache.org/whichversion.html) . 
 
@@ -342,7 +342,7 @@ Az Azure [által támogatott Azul ZULU JDK-](https://www.azul.com/downloads/azur
 
 A fejlesztők az Azure-támogatással [megnyithatják](/azure/azure-portal/supportability/how-to-create-azure-support-request) az Azul Zulu JDK kapcsolatos problémákat, ha rendelkeznek [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a témakör a Java Runtime Azure App Service Windows rendszeren történő támogatására vonatkozó utasításait ismerteti.
 

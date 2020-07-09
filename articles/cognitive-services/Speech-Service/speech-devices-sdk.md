@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927207"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730305"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Mi a Speech Devices SDK?
 
@@ -37,7 +37,11 @@ A Speech Devices SDK többféle hang-kompatibilis forgatókönyvet tesz lehetőv
 
 ### <a name="android"></a>Android
 
-Android esetén az eszközök az [Android Speech Devices SDK](https://aka.ms/sdsdk-download-android)legújabb verzióját töltik le.
+Az Androidhoz készült Speech Devices SDK támogatja a [Roobo v1](speech-devices-sdk-roobo-v1.md) és az azzal egyenértékű eszközöket, amelyek az [Android SPEECH Devices SDK](https://aka.ms/sdsdk-download-android)legújabb verzióját töltik le.
+
+
+Ha más Android-eszközzel, például telefonnal vagy mobiltal rendelkezik, kezdje az [Android SPEECH SDK](speech-sdk.md) -val
+
 
 ### <a name="windows"></a>Windows
 

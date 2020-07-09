@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 095e837043e6322cf85aeaa732f5bcbf7c0fa098
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257055"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135386"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás-környezet beállítása a VMware – Azure replikáláshoz
 
@@ -31,13 +31,13 @@ A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
 
 1. A **Helyreállítási tárak** listából válassza ki a tár nevét. Ehhez a forgatókönyvhöz a **ContosoVMVault** nevet használjuk.
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
-3. A **védelmi cél** > ,**ahol a gépek találhatók**, válassza **a**helyszíni lehetőséget.
+3. A **védelmi cél**  >  ,**ahol a gépek találhatók**, válassza **a**helyszíni lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
 5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ezután kattintson az **OK** gombra.
 
 ## <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
-A konfigurációs kiszolgálót helyszíni VMware virtuális gépként is beállíthatja egy Open Virtualization Application (PETESEJT) sablonnal. [További](concepts-vmware-to-azure-architecture.md) információ a VMWare virtuális gépre telepítendő összetevőkről.
+A konfigurációs kiszolgálót helyszíni VMware virtuális gépként is beállíthatja egy Open Virtualization Application (PETESEJT) sablonnal. [További](./vmware-azure-architecture.md) információ a VMWare virtuális gépre telepítendő összetevőkről.
 
 1. Ismerje meg a konfigurációs kiszolgáló telepítésének [előfeltételeit](vmware-azure-deploy-configuration-server.md#prerequisites) .
 2. A központi telepítés [Kapacitási számának ellenőrzését](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) .
@@ -84,5 +84,5 @@ A következő mappák kizárása a víruskereső szoftverből
 7. Azure Site Recovery terheléselosztási folyamat kiszolgálójának telepítési könyvtára, példa: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A célként megadott környezet beállítása](./vmware-azure-set-up-target.md) 

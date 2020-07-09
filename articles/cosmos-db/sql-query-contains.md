@@ -4,19 +4,18 @@ description: Ismerje meg, hogy az Azure Cosmos DB SQL System függvénye hogyan 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322703"
 ---
 # <a name="contains-azure-cosmos-db"></a>TARTALMAZZA (Azure Cosmos DB)
 
- Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet.  
+Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet.  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -75,6 +74,8 @@ Vegyük például a következő két tulajdonságot: város és ország. A váro
 ```
 
 Az első lekérdezés valószínűleg több RUs-t fog használni a második lekérdezésnél, mert a város számos országa magasabb.
+
+Ha a tartalmazott tulajdonság mérete nagyobb, mint 1 KB egyes dokumentumokhoz, a lekérdezési motornak be kell töltenie ezeket a dokumentumokat. Ebben az esetben a lekérdezési motor nem tudja teljes mértékben kiértékelni a tartalmaz indexet. Ha nagy számú, 1 KB-nál nagyobb méretű dokumentumot tartalmaz, akkor a rendszer nem számít fel díjat.
 
 ## <a name="next-steps"></a>További lépések
 

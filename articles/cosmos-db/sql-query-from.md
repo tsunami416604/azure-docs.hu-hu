@@ -7,23 +7,22 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005857"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>FROM záradék Azure Cosmos DB
 
-A FROM (`FROM <from_specification>`) záradék nem kötelező, kivéve, ha a forrást a lekérdezésben később szűrik vagy tervezték. Egy lekérdezés, `SELECT * FROM Families` például enumerálások a teljes `Families` tárolón. A tároló neve helyett a speciális azonosító GYÖKERÉt is használhatja a tárolóhoz.
+A FROM ( `FROM <from_specification>` ) záradék nem kötelező, kivéve, ha a forrást a lekérdezésben később szűrik vagy tervezték. Egy lekérdezés, például `SELECT * FROM Families` enumerálások a teljes `Families` tárolón. A tároló neve helyett a speciális azonosító GYÖKERÉt is használhatja a tárolóhoz.
 
 A `FROM` záradék a következő szabályokat érvényesíti a lekérdezéseken:
 
-* A tároló lehet alias, például `SELECT f.id FROM Families AS f` vagy egyszerűen. `SELECT f.id FROM Families f` Itt `f` látható az alias a `Families`következőhöz:. MINT egy opcionális kulcsszó az azonosító [aliasához](sql-query-working-with-json.md#aliasing) .  
+* A tároló lehet alias, például `SELECT f.id FROM Families AS f` vagy egyszerűen `SELECT f.id FROM Families f` . Itt `f` látható az alias a következőhöz: `Families` . MINT egy opcionális kulcsszó az azonosító [aliasához](sql-query-working-with-json.md#aliasing) .  
 
-* Az alias megadása után az eredeti forrás neve nem köthető. Például a szintaktikai `SELECT Families.id FROM Families f` érvénytelen, mert az azonosító `Families` aliast kapott, és többé nem oldható fel.  
+* Az alias megadása után az eredeti forrás neve nem köthető. Például `SELECT Families.id FROM Families f` a szintaktikai érvénytelen, mert az azonosító `Families` aliast kapott, és többé nem oldható fel.  
 
-* Minden hivatkozott tulajdonságnak teljes mértékben minősítettnek kell lennie, hogy elkerülje a nem egyértelmű kötéseket a szigorú sémák betartásának hiányában. Például a szintaktikai `SELECT id FROM Families f` érvénytelen, mert a tulajdonság `id` nincs kötve.
+* Minden hivatkozott tulajdonságnak teljes mértékben minősítettnek kell lennie, hogy elkerülje a nem egyértelmű kötéseket a szigorú sémák betartásának hiányában. Például `SELECT id FROM Families f` a szintaktikai érvénytelen, mert a tulajdonság `id` nincs kötve.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -53,15 +52,15 @@ FROM <from_specification>
   
 -  Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
   
--  Ha a kifejezés `<container_expression>`, akkor property_name, akkor property_name aliasként lesz használva. Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
+-  Ha a kifejezés `<container_expression>` , akkor property_name, akkor property_name aliasként lesz használva. Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
   
 - MINT`input_alias`  
   
-  Megadja, hogy `input_alias` a a mögöttes tároló kifejezés által visszaadott értékek halmaza.  
+  Megadja, hogy a a `input_alias` mögöttes tároló kifejezés által visszaadott értékek halmaza.  
  
 - `input_alias`A  
   
-  Azt adja meg `input_alias` , hogy a megfelelő értéknek kell lennie az alapul szolgáló tároló kifejezés által visszaadott tömb összes tömb elemének megismétlésével. A mögöttes tároló kifejezés által visszaadott összes érték figyelmen kívül lesz hagyva.  
+  Azt adja meg, hogy a megfelelő `input_alias` értéknek kell lennie az alapul szolgáló tároló kifejezés által visszaadott tömb összes tömb elemének megismétlésével. A mögöttes tároló kifejezés által visszaadott összes érték figyelmen kívül lesz hagyva.  
   
 - `<container_expression>`  
   
@@ -81,15 +80,15 @@ FROM <from_specification>
   
 - `<container_expression> '.' property_name`  
   
-  Megadja, hogy a dokumentumot a `property_name` tulajdonság elérésével kell beolvasni.  
+  Megadja, hogy a dokumentumot a tulajdonság elérésével kell beolvasni `property_name` .  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Azt adja meg, hogy a `property_name` dokumentumot a megadott tároló kifejezés által beolvasott összes dokumentum tulajdonságához vagy array_index Array eleméhez való hozzáféréssel kell lekérni.  
+  Azt adja meg, hogy a dokumentumot a `property_name` megadott tároló kifejezés által beolvasott összes dokumentum tulajdonságához vagy array_index Array eleméhez való hozzáféréssel kell lekérni.  
   
 ## <a name="remarks"></a>Megjegyzések
   
-Az `<from_source>(`összes megadott vagy arra hivatkozó aliasnak egyedinek kell lennie. A szintaxis `<container_expression>.`property_name ugyanaz, mint `<container_expression>' ['"property_name"']'`. Az utóbbi szintaxis azonban akkor használható, ha egy tulajdonság neve nem azonosító karaktert tartalmaz.  
+Az összes megadott vagy arra hivatkozó aliasnak `<from_source>(` egyedinek kell lennie. A szintaxis `<container_expression>.` property_name ugyanaz, mint `<container_expression>' ['"property_name"']'` . Az utóbbi szintaxis azonban akkor használható, ha egy tulajdonság neve nem azonosító karaktert tartalmaz.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Hiányzó tulajdonságok, hiányzó tömb elemek és nem definiált értékek kezelésére
   
@@ -99,9 +98,9 @@ Ha egy tároló kifejezése hozzáfér a Tulajdonságok vagy a tömb elemeihez, 
   
 A Container kifejezés lehet tároló-hatókörű vagy dokumentum – hatókör:  
   
-- A kifejezés tároló hatókörű, ha a tároló kifejezésének alapjául szolgáló forrása a ROOT vagy `container_name`a. Ez a kifejezés a tárolóból közvetlenül beolvasott dokumentumok készletét jelöli, és nem függ más tároló-kifejezések feldolgozásából.  
+- A kifejezés tároló hatókörű, ha a tároló kifejezésének alapjául szolgáló forrása a ROOT vagy a `container_name` . Ez a kifejezés a tárolóból közvetlenül beolvasott dokumentumok készletét jelöli, és nem függ más tároló-kifejezések feldolgozásából.  
   
-- A kifejezés dokumentum-hatókörű, ha a lekérdezésben korábban a tároló kifejezés alapjául szolgáló `input_alias` forrás van bevezetve. Ez a kifejezés a tároló kifejezésnek az alias-tárolóhoz társított készlethez tartozó hatókörében való kiértékelésével beszerzett dokumentumok készletét jelöli. Az eredményül kapott készlet az alapul szolgáló készletben lévő összes dokumentum tároló kifejezésének kiértékelésével létrejött készletek Uniója lesz.
+- A kifejezés dokumentum-hatókörű, ha a lekérdezésben korábban a tároló kifejezés alapjául szolgáló forrás van `input_alias` bevezetve. Ez a kifejezés a tároló kifejezésnek az alias-tárolóhoz társított készlethez tartozó hatókörében való kiértékelésével beszerzett dokumentumok készletét jelöli. Az eredményül kapott készlet az alapul szolgáló készletben lévő összes dokumentum tároló kifejezésének kiértékelésével létrejött készletek Uniója lesz.
 
 ## <a name="examples"></a>Példák
 
@@ -165,6 +164,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [WHERE záradék](sql-query-where.md)

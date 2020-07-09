@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247435"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide
@@ -128,17 +128,17 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW3 IP-címe: 10.3.1.54
 
 * Mintavételi portok
-  * <strong>&lt;620&gt;-</strong>es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620**00**, 620**10** és 620**20**
+  * 620**00****10** **20** -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20<strong> &lt; &gt; </strong>
 * Terheléselosztási szabályok – hozzon létre egyet minden példányhoz, azaz a következőhöz: NW1/ASCS, NW2/ASCS és NW3/ASCS.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+    * 32<strong> &lt; nr &gt; </strong> TCP
+    * 36<strong> &lt; nr &gt; </strong> TCP
+    * 39<strong> &lt; nr &gt; </strong> TCP
+    * 81<strong> &lt; nr &gt; </strong> TCP
+    * 5<strong> &lt; nr &gt; </strong>13 TCP
+    * 5<strong> &lt; nr &gt; </strong>14 TCP
+    * 5<strong> &lt; nr &gt; </strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -148,15 +148,15 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW3 10.3.1.55 IP-címe
 
 * Mintavételi port
-  * A 621<strong>&lt;nr&gt;</strong>, ezért a NW1, a NW2 és az N3 mintavételi portok esetében 621**02**, 621**12** és 621**22**
+  * A 621<strong> &lt; nr &gt; </strong>, ezért a NW1, a NW2 és az N3 mintavételi portok esetében 621**02**, 621**12** és 621**22**
 * Terheléselosztási szabályok – hozzon létre egyet az egyes példányok, azaz a NW1/ERS, a NW2/ERS és a NW3/ERS esetében.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+    * 32<strong> &lt; nr &gt; </strong> TCP
+    * 33<strong> &lt; nr &gt; </strong> TCP
+    * 5<strong> &lt; nr &gt; </strong>13 TCP
+    * 5<strong> &lt; nr &gt; </strong>14 TCP
+    * 5<strong> &lt; nr &gt; </strong>16 TCP
 
 * Háttér-konfiguráció
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
@@ -206,7 +206,7 @@ A dokumentáció a következőket feltételezi:
 
 1. Adja hozzá a konfigurációt az újonnan telepített rendszerhez (azaz **NW2**, **NW3**) a meglévő Azure Load Balancerhoz, és az utasításokat követve [telepítse manuálisan a Azure Load Balancert Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal). Módosítsa az IP-címeket, az állapot-mintavételi portokat, a konfiguráció terheléselosztási szabályait.  
 
-2. **[A]** a további SAP-rendszerek beállításának névfeloldása. Használhatja a DNS-kiszolgálót, vagy módosíthatja `/etc/hosts` az összes csomópontot. Ez a példa a `/etc/hosts` fájl használatát mutatja be.  Igazítsa az IP-címeket és az állomásneveket a környezethez. 
+2. **[A]** a további SAP-rendszerek beállításának névfeloldása. Használhatja a DNS-kiszolgálót, vagy módosíthatja `/etc/hosts` az összes csomópontot. Ez a példa a fájl használatát mutatja be `/etc/hosts` .  Igazítsa az IP-címeket és az állomásneveket a környezethez. 
 
     ```
     sudo vi /etc/hosts
@@ -245,7 +245,7 @@ A dokumentáció a következőket feltételezi:
 
 4. **[A]** adja hozzá a/sapmnt/SID-és/usr/sap/SID/sys-fájlrendszerek csatlakoztatási bejegyzéseit a fürtre TELEPÍTENDŐ további SAP-rendszerekhez. Ebben a példában a **NW2** és a **NW3**.  
 
-   `/etc/fstab` Frissítse a fájlrendszert a fürtön üzembe helyezett további SAP-rendszerekhez.  
+   Frissítse a fájlrendszert a `/etc/fstab` fürtön üzembe helyezett további SAP-rendszerekhez.  
 
    * Ha Azure NetApp Files használ, kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation) található utasításokat.  
    * Ha GlusterFS-fürtöt használ, kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation) található utasításokat.  
@@ -326,7 +326,7 @@ A dokumentáció a következőket feltételezi:
 
    Győződjön meg arról, hogy a fürt állapota ok, és hogy minden erőforrás elindult.  
 
-   Ezután győződjön meg arról, hogy az újonnan létrehozott ERS-csoport erőforrásai futnak a fürtcsomóponton, szemben azzal a fürtcsomópont-csomóponttal, ahol a ASCS-példány ugyanarra az SAP-rendszerre lett telepítve.  Ha például a `rhelmsscl1`NW2 ASCS telepítve van, akkor győződjön meg `rhelmsscl2`arról, hogy a NW2 ERS csoport fut.  A NW2 ERS Group `rhelmsscl2` a következő parancs futtatásával telepíthető át a csoport egyik erőforrásához: 
+   Ezután győződjön meg arról, hogy az újonnan létrehozott ERS-csoport erőforrásai futnak a fürtcsomóponton, szemben azzal a fürtcsomópont-csomóponttal, ahol a ASCS-példány ugyanarra az SAP-rendszerre lett telepítve.  Ha például a NW2 ASCS telepítve `rhelmsscl1` van, akkor győződjön meg arról, hogy a NW2 ERS csoport fut `rhelmsscl2` .  A NW2 ERS Group a `rhelmsscl2` következő parancs futtatásával telepíthető át a csoport egyik erőforrásához: 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
@@ -386,7 +386,7 @@ A dokumentáció a következőket feltételezi:
 
 6. **[A]** a/usr/SAP/sapservices fájl frissítése
 
-   Ha meg szeretné akadályozni, hogy a sapinit indítási parancsfájlja elindítsa a példányokat, a pacemaker által kezelt `/usr/sap/sapservices` összes példányt ki kell kommentálni a fájlból.  Az alább látható példa az SAP Systems **NW2** és a **NW3**.  
+   Ha meg szeretné akadályozni, hogy a sapinit indítási parancsfájlja elindítsa a példányokat, a pacemaker által kezelt összes példányt ki kell kommentálni a `/usr/sap/sapservices` fájlból.  Az alább látható példa az SAP Systems **NW2** és a **NW3**.  
 
    ```
     # On the node where ASCS was installed, comment out the line for the ASCS instacnes
@@ -612,7 +612,7 @@ Fejezze be az SAP telepítését:
 Az alábbi tesztek a Red Hat ajánlott eljárási útmutatójában szereplő tesztelési esetek egy részét képezik. Az Ön kényelme érdekében a szolgáltatás részét képezi. A fürt tesztek teljes listáját a következő dokumentációban találja:
 
 * Ha Azure NetApp Files NFS-köteteket használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NETWEAVER RHEL és az SAP-alkalmazások Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* Ha magas rendelkezésre `GlusterFS`állást használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NetWeaver RHEL SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)című témakörben.  
+* Ha magas rendelkezésre `GlusterFS` állást használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NetWeaver RHEL SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)című témakörben.  
 
 Mindig olvassa el a Red Hat ajánlott eljárásokat ismertető útmutatót, és végezze el az esetlegesen hozzáadott további tesztek elvégzését.  
 A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rendszerrel vannak telepítve.  
@@ -752,7 +752,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   Futtassa a következő parancsot root-ként egy csomóponton, ahol legalább egy ASCS-példány fut. Ebben a példában a parancsot futtatjuk `rhelmsscl1`, ahol a NW1, a NW2 és a NW3 ASCS példányai futnak.  
+   Futtassa a következő parancsot root-ként egy csomóponton, ahol legalább egy ASCS-példány fut. Ebben a példában a parancsot futtatjuk `rhelmsscl1` , ahol a NW1, a NW2 és a NW3 ASCS példányai futnak.  
 
    ```
    echo c > /proc/sysrq-trigger

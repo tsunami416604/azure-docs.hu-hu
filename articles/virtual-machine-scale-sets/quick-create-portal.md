@@ -6,21 +6,20 @@ ms.author: jushiman
 ms.topic: quickstart
 ms.service: virtual-machine-scale-sets
 ms.subservice: ''
-ms.date: 10/23/2019
+ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 582bf5c6424b9dc13b354a92e75b3a7ee2cdca6f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197643"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027222"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
-A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hoz létre az Azure Portalon.
+A virtuálisgép-méretezési csoport lehetővé teszi az automatikus méretezésű virtuális gépek készletének üzembe helyezését és kezelését. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hoz létre az Azure Portalon.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -37,12 +36,12 @@ Először hozzon létre egy nyilvános standard Load Balancer a portál használ
 
     | Beállítás                 | Érték   |
     | ---| ---|
-    | Előfizetés  | Válassza ki előfizetését.    |    
+    | Előfizetés  | Válassza ki az előfizetését.    |    
     | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, és írja be a *myVMSSResourceGroup* szöveget a szövegmezőbe.|
     | Name           | *myLoadBalancer*         |
     | Régió         | Válassza az **USA keleti régiója** lehetőséget.       |
     | Típus          | Válassza a **Nyilvános** lehetőséget.       |
-    | SKU           | Válassza a **standard**lehetőséget.       |
+    | Termékváltozat           | Válassza a **standard**lehetőséget.       |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím  | *MyPip*   |
     | Hozzárendelés| Statikus |
@@ -77,7 +76,7 @@ Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképp
 1. Az ellenőrzés elvégzése után válassza a **Létrehozás** lehetőséget a méretezési csoport telepítéséhez.
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a méretezési csoporthoz tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
 
 

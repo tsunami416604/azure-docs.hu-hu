@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471795"
 ---
 # <a name="application-layer-security-with-front-door"></a>Az alkalmazások rétegének biztonsága a bejárati ajtóval
@@ -38,7 +37,7 @@ A bejárati ajtó alkalmazás-védelme a világ minden peremhálózati környeze
 ## <a name="centralized-protection-policy"></a>Központosított védelmi szabályzat
 - Több védelmi szabályt is meghatározhat, és prioritási sorrendben adhatja hozzá őket a szabályzathoz. Az egyéni szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabályrendszert a kivételek engedélyezéséhez. Egyetlen házirend van társítva a webalkalmazáshoz.  Ugyanaz a webalkalmazás-védelmi házirend replikálódik minden peremhálózati kiszolgálóra minden helyen, és gondoskodjon arról, hogy az összes régióban konzisztens biztonsági házirend legyen
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 - Az előzetes verzióban a REST API-k, a PowerShell vagy a CLI használatával hozhatja létre és helyezheti üzembe a bejárati ajtó alkalmazás-védelmi szabályait és szabályzatait. A portál hozzáférését a szolgáltatás általánosan elérhetővé tétele előtt fogja támogatni. 
 
 

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan irányíthatja a webes forgalmat az URL-cím al
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ca5c411db5644182f7e87f1ee1c63f3cbc4d2e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73200400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805992"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webes forgalom irányítása URL-cím alapján az Azure PowerShell használatával
 
@@ -32,13 +32,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-url-route-cli.md) vagy a [Azure Portal](create-url-route-portal.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia `Login-AzAccount` kell, hogy létrehozza az Azure-hoz való kapcsolódást.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Login-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
 Az erőforrások létrehozásához szükséges idő miatt az eljárás végrehajtása akár 90 percet is igénybe vehet.
 
@@ -414,7 +414,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az Application Gateway nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`, vagy `http://52.168.55.24:8080/video/test.htm`.
+Az Application Gateway nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24` , `http://52.168.55.24:8080/images/test.htm` , vagy `http://52.168.55.24:8080/video/test.htm` .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -422,15 +422,15 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/images/test.htm értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet a http:// &lt; IP-cím &gt; : 8080/images/test.htm értékre, és cserélje le az IP-cím IP &lt; -címét &gt; , és az alábbi példához hasonlóan kell megjelennie:
 
 ![Tesztképek URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/video/test.htm értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet http:// &lt; IP-cím &gt; : 8080/video/test.htm értékre, és cserélje le az IP-cím IP &lt; -címét &gt; , és az alábbi példához hasonlóan kell megjelennie:
 
 ![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 

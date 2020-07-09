@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265700"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121316"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -30,14 +30,14 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
 ### <a name="create-an-account"></a>Fiók létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson **az erőforrás** > **létrehozása Intelligence + Analytics** > **Data Lake Analytics**elemre.
+2. Kattintson **az erőforrás létrehozása**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**elemre.
 3. Adja meg az alábbi elemek értékeit: 
    1. **Name (név**): az Data Lake Analytics fiók neve.
    2. **Előfizetés**: a fiókhoz használt Azure-előfizetés.
    3. **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben létre kell hozni a fiókot. 
    4. **Hely**: az Data Lake Analytics-fiókhoz tartozó Azure-adatközpont. 
    5. **Data Lake Store**: a Data Lake Analytics-fiókhoz használandó alapértelmezett tároló. A Azure Data Lake Store fióknak és a Data Lake Analytics fióknak ugyanazon a helyen kell lennie.
-4. Kattintson a **Létrehozás**gombra. 
+4. Kattintson a **Létrehozás** lehetőségre. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics fiók törlése
 
@@ -111,7 +111,7 @@ A Data Lake Analytics fejlesztői szerepkör használatával engedélyezheti a U
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Felhasználók vagy biztonsági csoportok hozzáadása egy Data Lake Analytics-fiókhoz
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson a **hozzáférés-vezérlés (iam)** > **szerepkör-hozzárendelés hozzáadása**elemre.
+2. Kattintson a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés hozzáadása**elemre.
 3. Válasszon egy szerepkört.
 4. Adjon hozzá egy felhasználót.
 5. Kattintson az **OK** gombra.
@@ -161,7 +161,7 @@ Az ismétlődő U-SQL-feladatok listájának megtekintése:
 2. Kattintson a **Job bepillantások**elemre. A "minden feladat" lap alapértelmezésben megjelenik, amely megjeleníti a futó, a várólistán lévő és a Befejezett feladatok listáját.
 3. Kattintson az **ismétlődő feladatok** fülre. Az ismétlődő feladatok listája az egyes ismétlődő feladatokhoz tartozó összesített statisztikával együtt jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Azure Data Lake Analytics kezelése Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)

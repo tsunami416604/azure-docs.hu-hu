@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064172"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler konfigurálása az automatikus felhasználó-kiépítés számára
@@ -84,7 +83,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben az egyik Zscaler
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **Zscaler egyet**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler egyet**.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -102,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet** és a **titkos tokent** tartalmazó mezőket a Zscaler egy fiókkal, a 6. lépésben leírtak szerint.
 
-6. A bérlői URL-cím és a titkos jogkivonat beszerzéséhez nyissa meg a **felügyeleti** > **hitelesítési beállításokat** a Zscaler egy portál felhasználói felületén. A **Hitelesítés típusa**területen válassza az **SAML**lehetőséget.
+6. A bérlői URL-cím és a titkos jogkivonat beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler egy portál felhasználói felületén. A **Hitelesítés típusa**területen válassza az **SAML**lehetőséget.
 
     ![Zscaler egy hitelesítési beállítást](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -158,7 +157,7 @@ A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat 
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../active-directory-saas-provisioning-reporting.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

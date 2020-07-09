@@ -8,12 +8,11 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920076"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Gyakori Cloud Service indítási feladatai
 Ez a cikk néhány példát ismertet a Cloud Service-ben elvégzendő gyakori indítási feladatokra. Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdése előtt. A végrehajtani kívánt műveletek közé tartozik például az összetevők telepítése, a COM-összetevők regisztrálása, a beállításkulcsok beállítása vagy a hosszú ideig futó folyamat elindítása. 
@@ -42,7 +41,7 @@ Ha egy adott feladathoz meghatározott környezeti változókra van szüksége, 
 </ServiceDefinition>
 ```
 
-A változók [érvényes Azure XPath-értéket](cloud-services-role-config-xpath.md) is használhatnak az üzemelő példányra vonatkozó információkra való hivatkozáshoz. Az `value` attribútum használata helyett adjon meg egy [RoleInstanceValue] gyermek elemet.
+A változók [érvényes Azure XPath-értéket](cloud-services-role-config-xpath.md) is használhatnak az üzemelő példányra vonatkozó információkra való hivatkozáshoz. Az attribútum használata helyett `value` adjon meg egy [RoleInstanceValue] gyermek elemet.
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -51,23 +50,23 @@ A változók [érvényes Azure XPath-értéket](cloud-services-role-config-xpath
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>AZ IIS-indítás konfigurálása a AppCmd. exe fájllal
-Az [appcmd. exe](https://technet.microsoft.com/library/jj635852.aspx) parancssori eszköz használatával az Azure-on való indításkor kezelheti az IIS-beállításokat. A *appcmd. exe* kényelmes, parancssori hozzáférést biztosít a konfigurációs beállításokhoz az Azure-beli indítási feladatokban való használathoz. A *appcmd. exe*használatával a webhely beállításai hozzáadhatók, módosíthatók vagy eltávolíthatók az alkalmazásokhoz és a webhelyekhez.
+## <a name="configure-iis-startup-with-appcmdexe"></a>AZ IIS-indítás konfigurálása AppCmd.exe
+Az [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) parancssori eszköz használatával az Azure-beli indításkor kezelheti az IIS-beállításokat. *AppCmd.exe* kényelmes, parancssori hozzáférést biztosít a konfigurációs beállításokhoz az Azure-beli indítási feladatokban való használathoz. A *AppCmd.exe*használatával a webhely beállításai hozzáadhatók, módosíthatók vagy eltávolíthatók az alkalmazásokhoz és a webhelyekhez.
 
-A *appcmd. exe* indítási feladatként való használata azonban néhány dolgot megtekint:
+Azonban van néhány dolog, amit a *AppCmd.exe* indítási feladatként való használatakor kell megnéznie:
 
 * Az indítási feladatok többször is futtathatók az újraindítások között. Például ha egy szerepkör újrahasznosításra kerül.
-* Ha egy *appcmd. exe* művelet többször is elvégezhető, akkor hiba fordulhat elő. Például egy szakasznak a *web. config fájlba* való hozzáadására tett kísérlet során hiba hozható létre.
-* Az indítási feladatok meghiúsulnak, ha nullától eltérő kilépési kódot vagy **errorlevel**értéket adnak vissza. Ha például a *appcmd. exe* hibát generál.
+* Ha egy *AppCmd.exe* műveletet többször hajtanak végre, a hiba léphet fel. Előfordulhat például, hogy egy szakaszt kétszer kell hozzáadnia *Web.config* egy hibát eredményez.
+* Az indítási feladatok meghiúsulnak, ha nullától eltérő kilépési kódot vagy **errorlevel**értéket adnak vissza. Ha például *AppCmd.exe* hibát generál.
 
-Az *appcmd. exe*hívása után érdemes ellenőriznie az **errorlevel** -t, ami egyszerűen elvégezhető, ha a *appcmd. exe* hívását egy *. cmd* fájllal csomagolja be. Ha egy ismert **errorlevel** -választ érzékel, figyelmen kívül hagyhatja, vagy visszaküldheti azt.
+Javasoljuk, hogy a *AppCmd.exe*meghívása után ellenőrizze az **errorlevel** -t, ami könnyen elvégezhető, ha egy *. cmd* fájllal becsomagolja a hívást a *AppCmd.exeba* . Ha egy ismert **errorlevel** -választ érzékel, figyelmen kívül hagyhatja, vagy visszaküldheti azt.
 
-A *appcmd. exe* által visszaadott errorlevel a Winerror. h fájlban szerepel, és az [MSDN](/windows/desktop/Debug/system-error-codes--0-499-)-ben is látható.
+A *AppCmd.exe* által visszaadott errorlevel a Winerror. h fájlban szerepel, és az [MSDN](/windows/desktop/Debug/system-error-codes--0-499-)-ben is látható.
 
 ### <a name="example-of-managing-the-error-level"></a>Példa a hiba szintjének kezelésére
-Ez a példa egy tömörítési szakaszt és egy tömörítési bejegyzést tartalmaz a JSON-hoz a *web. config* fájlhoz, a hibakezelés és a naplózás használatával.
+Ez a példa egy tömörítési szakaszt és egy, a JSON-hoz tartozó tömörítési bejegyzést tartalmaz a *Web.config* fájlhoz, a hibakezelés és a naplózás használatával.
 
-Itt jelennek meg a [ServiceDefinition. csdef] fájl megfelelő részei, amelyek közé tartozik a [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) attribútum `elevated` beállítása, hogy a *appcmd. exe* megfelelő engedélyeket adjon a *web. config* fájlban lévő beállítások módosításához:
+Itt jelennek meg a [ServiceDefinition. csdef] fájl megfelelő részei, amelyek közé tartozik a [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) attribútum beállítása, hogy `elevated` *AppCmd.exe* megfelelő engedélyeket adjon a *Web.config* fájlban lévő beállítások módosításához:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -80,7 +79,7 @@ Itt jelennek meg a [ServiceDefinition. csdef] fájl megfelelő részei, amelyek 
 </ServiceDefinition>
 ```
 
-A *Startup. cmd* batch fájl a *appcmd. exe* fájlt használja a tömörítési szakasz és a JSON-hez készült tömörítési bejegyzés hozzáadásához a *web. config* fájlhoz. A várt 183-es **errorlevel** értéke nulla az ellenőrzés használatával. EXE parancssori program. A rendszer váratlan errorlevel-naplókat naplóz a StartupErrorLog. txt fájlba.
+A *Startup. cmd* batch-fájl a *AppCmd.exe* használatával felvesz egy tömörítési szakaszt és egy, a JSON-hoz tartozó tömörítési bejegyzést a *Web.config* fájlba. A várt 183-es **errorlevel** értéke nulla a VERIFY.EXE parancssori program használatával. Váratlan errorlevelek vannak naplózva StartupErrorLog.txtba.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -121,7 +120,7 @@ EXIT %ERRORLEVEL%
 ## <a name="add-firewall-rules"></a>Tűzfalszabályok hozzáadása
 Az Azure-ban gyakorlatilag két tűzfal van. Az első tűzfal vezérli a virtuális gép és a külső világ közötti kapcsolatokat. Ezt a tűzfalat a [ServiceDefinition. csdef] fájl [végpontok] eleme vezérli.
 
-A második tűzfal a virtuális gép és a virtuális gép folyamatai közötti kapcsolatokat vezérli. Ezt a tűzfalat a `netsh advfirewall firewall` parancssori eszköz is szabályozhatja.
+A második tűzfal a virtuális gép és a virtuális gép folyamatai közötti kapcsolatokat vezérli. Ezt a tűzfalat a parancssori eszköz is szabályozhatja `netsh advfirewall firewall` .
 
 Az Azure tűzfal-szabályokat hoz létre a szerepkörökön belül elindított folyamatokhoz. Például egy szolgáltatás vagy program indításakor az Azure automatikusan létrehozza a szükséges tűzfalszabályok használatát, hogy a szolgáltatás kommunikáljon az internettel. Ha azonban olyan szolgáltatást hoz létre, amelyet a szerepkörön kívüli folyamat (például egy COM+ szolgáltatás vagy egy Windows ütemezett feladat) indít el, akkor manuálisan kell létrehoznia egy tűzfalszabályet, hogy engedélyezze a hozzáférést a szolgáltatáshoz. Ezek a tűzfalszabályok indítási feladat használatával hozhatók létre.
 
@@ -138,7 +137,7 @@ Egy tűzfalszabály létrehozására szolgáló indítási feladatnak egy **emel
 </ServiceDefinition>
 ```
 
-A tűzfalszabály hozzáadásához az indítási batch-fájlban a megfelelő `netsh advfirewall firewall` parancsokat kell használnia. Ebben a példában az indítási feladathoz a 80-es TCP-port biztonsága és titkosítása szükséges.
+A tűzfalszabály hozzáadásához az `netsh advfirewall firewall` indítási batch-fájlban a megfelelő parancsokat kell használnia. Ebben a példában az indítási feladathoz a 80-es TCP-port biztonsága és titkosítása szükséges.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -151,9 +150,9 @@ EXIT /B %errorlevel%
 ```
 
 ## <a name="block-a-specific-ip-address"></a>Adott IP-cím blokkolása
-Az IIS **web. config** fájl módosításával korlátozhatja az Azure-beli webes szerepkörök hozzáférését a megadott IP-címek készletéhez. Emellett egy olyan parancsfájlt is kell használnia, amely feloldja a **applicationHost. config** fájl **ipSecurity** szakaszát.
+Az IIS- **web.config** fájl módosításával korlátozhatja az Azure-beli webes szerepkörök hozzáférését a megadott IP-címek készletéhez. Emellett egy olyan parancsfájlt is kell használnia, amely feloldja a **ApplicationHost.config** fájl **ipSecurity** szakaszát.
 
-A **applicationHost. config** fájl **ipSecurity** szakaszának feloldásához hozzon létre egy olyan parancsfájlt, amely a szerepkör indításakor fut. Hozzon létre egy mappát az **Indítás** nevű webes szerepkör gyökérszintű szintjén, és ezen a mappában hozzon létre egy **Startup. cmd**nevű batch-fájlt. Vegye fel ezt a fájlt a Visual Studio-projektbe, és állítsa be úgy a tulajdonságokat, hogy **mindig** a csomag része legyen.
+A **ApplicationHost.config** fájl **ipSecurity** szakaszának feloldásához hozzon létre egy olyan parancsfájlt, amely a szerepkör indításakor fut. Hozzon létre egy mappát az **Indítás** nevű webes szerepkör gyökérszintű szintjén, és ezen a mappában hozzon létre egy **Startup. cmd**nevű batch-fájlt. Vegye fel ezt a fájlt a Visual Studio-projektbe, és állítsa be úgy a tulajdonságokat, hogy **mindig** a csomag része legyen.
 
 Adja hozzá a következő indítási feladatot a [ServiceDefinition. csdef] fájlhoz.
 
@@ -180,7 +179,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 Ez a feladat azt eredményezi, hogy az **indítási. cmd** batch-fájl a webes szerepkör inicializálása során mindig fut, így biztosítva, hogy a szükséges **ipSecurity** szakasz fel legyen oldva.
 
-Végül módosítsa a [System. webserver szakaszt](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) a webes szerepkör **web. config** fájljában, és adja hozzá a hozzáféréshez megadott IP-címek listáját, ahogy az a következő példában látható:
+Végül módosítsa a [System. webserver szakaszt](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) a webes szerepkör **web.config** fájljában a hozzáféréshez megadott IP-címek listájának hozzáadásához, ahogy az a következő példában látható:
 
 Ez a minta-konfiguráció **lehetővé teszi** , hogy az összes IP-cím hozzáférhessen a kiszolgálóhoz, kivéve a két definiált
 
@@ -272,7 +271,7 @@ Az **ServiceDefinition. csdef** fájl megfelelő fejezetei itt láthatók:
 </ServiceDefinition>
 ```
 
-A **Startup. cmd** parancsfájl például a **PathToStartupStorage** környezeti változó használatával hozza létre a **MyTest. txt** fájlt a helyi tároló helyén.
+A **Startup. cmd** kötegfájl például a **PathToStartupStorage** környezeti változó használatával hozza létre a fájlt **MyTest.txt** a helyi tároló helyén.
 
 ```cmd
 REM   Create a simple text file.
@@ -300,7 +299,7 @@ Az indítási feladat különböző lépéseket hajthat végre a felhőben való
 
 A Compute Emulator és a felhő különböző műveleteinek elvégzésére a [ServiceDefinition. csdef] fájlban lévő környezeti változó létrehozásával van lehetőség. Ezt követően tesztelje a környezeti változót az indítási feladatban szereplő értékhez.
 
-A környezeti változó létrehozásához adja hozzá a[RoleInstanceValue] elem [változót]/, és hozzon létre `/RoleEnvironment/Deployment/@emulated`egy XPath-értéket. A **(z)% ComputeEmulatorRunning%** környezeti változó értéke `true` , ha a Compute Emulator fut, és `false` amikor a felhőben fut.
+A környezeti változó létrehozásához adja hozzá a [Variable] / [RoleInstanceValue] elem változót, és hozzon létre egy XPath-értéket `/RoleEnvironment/Deployment/@emulated` . A **(z)% ComputeEmulatorRunning%** környezeti változó értéke `true` , ha a Compute Emulator fut, és `false` Amikor a felhőben fut.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -377,15 +376,13 @@ EXIT /B 0
 Íme néhány ajánlott eljárás, amelyet a feladatok webes vagy feldolgozói szerepkörhöz való konfigurálásakor kell követni.
 
 ### <a name="always-log-startup-activities"></a>Az indítási tevékenységek naplózása mindig
-A Visual Studio nem biztosít hibakeresőt a Batch-fájlok beléptetéséhez, ezért jó, ha a lehető legtöbb adatmennyiséget szeretné lekérni a Batch-fájlok működéséről. A Batch-fájlok ( **StdOut** és **stderr**) kimenetének naplózásával fontos információkat adhat meg a Batch-fájlok hibakereséséhez és javításához. Ha a **(z)% Temp%** környezeti változóval a könyvtárban lévő StartupLog. txt fájlba szeretné naplózni az **StdOut** -ot és a **stderr** , `>>  "%TEMP%\\StartupLog.txt" 2>&1` adja hozzá a szöveget a naplózni kívánt sorok végéhez. A Setup. exe fájl a **(z)% PathToApp1Install%** könyvtárban való végrehajtásához például:
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+A Visual Studio nem biztosít hibakeresőt a Batch-fájlok beléptetéséhez, ezért jó, ha a lehető legtöbb adatmennyiséget szeretné lekérni a Batch-fájlok működéséről. A Batch-fájlok ( **StdOut** és **stderr**) kimenetének naplózásával fontos információkat adhat meg a Batch-fájlok hibakereséséhez és javításához. Ha a **(z)% Temp%** környezeti változó által rámutatott könyvtárban lévő StartupLog.txt fájlra szeretné naplózni az **StdOut** és a **stderr** , adja hozzá a `>>  "%TEMP%\\StartupLog.txt" 2>&1` bejelentkezni kívánt sorok végéhez a szöveget. Például a **(z)% PathToApp1Install%** könyvtárban lévő setup.exe végrehajtásához:`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Az XML leegyszerűsítése érdekében létrehozhat egy burkoló *cmd* -fájlt, amely az összes indítási feladatot meghívja a naplózással, és biztosítja, hogy az egyes alárendelt feladatok ugyanazokat a környezeti változókat tudják megosztva.
 
-Előfordulhat, hogy bosszantó, ha az egyes `>> "%TEMP%\StartupLog.txt" 2>&1` indítási feladatok végén használja. A feladatok naplózását a naplózást kezelő burkoló létrehozásával kényszerítheti ki. Ez a burkoló hívja meg a futtatni kívánt valódi batch-fájlt. A cél batch-fájlból származó összes kimenet át lesz irányítva a *Startuplog. txt* fájlba.
+Előfordulhat, hogy bosszantó, ha `>> "%TEMP%\StartupLog.txt" 2>&1` az egyes indítási feladatok végén használja. A feladatok naplózását a naplózást kezelő burkoló létrehozásával kényszerítheti ki. Ez a burkoló hívja meg a futtatni kívánt valódi batch-fájlt. A cél batch-fájl minden kimenete át lesz irányítva a *Startuplog.txt* fájlra.
 
-Az alábbi példa bemutatja, hogyan irányíthatja át az összes kimenetet egy indítási batch-fájlból. Ebben a példában a ServerDefinition. csdef fájl egy indítási feladatot hoz létre, amely meghívja a *logwrap. cmd*fájlt. a *logwrap. cmd* meghívja a *Startup2. cmd*fájlt, és átirányítja a kimenetet a következőre: **% temp%\\StartupLog. txt**.
+Az alábbi példa bemutatja, hogyan irányíthatja át az összes kimenetet egy indítási batch-fájlból. Ebben a példában a ServerDefinition. csdef fájl egy indítási feladatot hoz létre, amely meghívja a *logwrap. cmd*fájlt. a *logwrap. cmd* meghívja a *Startup2. cmd*fájlt, és átirányítja a kimenetet a következőre: **% temp% \\StartupLog.txt**.
 
 ServiceDefinition. cmd:
 
@@ -447,7 +444,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-Minta kimenet a **StartupLog. txt** fájlban:
+Minta kimenet a **StartupLog.txt** fájlban:
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -459,16 +456,16 @@ Minta kimenet a **StartupLog. txt** fájlban:
 ```
 
 > [!TIP]
-> A **StartupLog. txt** fájl a *C:\Resources\temp\\{role Identifier} \RoleTemp* mappában található.
+> A **StartupLog.txt** fájl a *C:\Resources\temp \\ {role Identifier} \RoleTemp* mappában található.
 > 
 > 
 
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>ExecutionContext megfelelő beállítása indítási feladatokhoz
 Állítsa be a megfelelő jogosultságokat az indítási feladathoz. Időnként előfordulhat, hogy a rendszerindítási feladatok futtatásához emelt szintű jogosultságok szükségesek, bár a szerepkör normál jogosultságokkal fut.
 
-A [executionContext][Task] attribútum az indítási feladat jogosultsági szintjét állítja be. Az `executionContext="limited"` azt jelenti, hogy az indítási tevékenység a szerepkörével megegyező jogosultsági szinttel rendelkezik. Az `executionContext="elevated"` azt jelenti, hogy az indítási feladat rendszergazdai jogosultságokkal rendelkezik, így az indítási feladat rendszergazdai feladatokat hajthat végre anélkül, hogy rendszergazdai jogosultságokat adna a szerepkörhöz.
+A [executionContext][Task] attribútum az indítási feladat jogosultsági szintjét állítja be. Az `executionContext="limited"` azt jelenti, hogy az indítási tevékenység a szerepkörével megegyező jogosultsági szinttel rendelkezik. `executionContext="elevated"`Az azt jelenti, hogy az indítási feladat rendszergazdai jogosultságokkal rendelkezik, így az indítási feladat rendszergazdai feladatokat hajthat végre anélkül, hogy rendszergazdai jogosultságokat adna a szerepkörhöz.
 
-Emelt szintű jogosultságokat igénylő indítási feladat például egy indítási feladat, amely a **appcmd. exe** eszközt használja az IIS konfigurálásához. A **appcmd. exe fájlra** van szükség `executionContext="elevated"`.
+Emelt szintű jogosultságokat igénylő indítási feladat például az IIS konfigurálását **AppCmd.exe** használó indítási feladat. **AppCmd.exe** szükséges `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>A megfelelő taskType használata
 A [taskType][feladat] attribútuma határozza meg az indítási feladat végrehajtásának módját. Három érték létezik: **egyszerű**, **háttér**és **előtér**. A háttér-és előtér-feladatok aszinkron módon vannak elindítva, és az egyszerű feladatok egyszerre lesznek végrehajtva.
@@ -480,10 +477,10 @@ A **háttérben** futó indítási feladatok és az **előtér** -indítási fel
 ### <a name="end-batch-files-with-exit-b-0"></a>A Batch-fájlok kilépési/B 0
 A szerepkör csak akkor indul el, ha az egyszerű indítási feladat **errorlevel** értéke nulla. Nem minden program helyesen állította be az **errorlevel** (kilépési kódot), így a Batch-fájlnak a megfelelő futtatása után kell végződnie `EXIT /B 0` .
 
-Az indítási `EXIT /B 0` batch-fájl végén hiányzik egy olyan gyakori ok, amely nem indul el.
+Az `EXIT /B 0` indítási batch-fájl végén hiányzik egy olyan gyakori ok, amely nem indul el.
 
 > [!NOTE]
-> Észrevettem, hogy a beágyazott batch-fájlok időnként lefagynak a `/B` paraméter használatakor. Előfordulhat, hogy meg kell győződnie arról, hogy ez a probléma nem fordul elő, ha egy másik batch-fájl meghívja az aktuális batch-fájlt, például ha a [log burkolót](#always-log-startup-activities)használja. Ebben az esetben kihagyhatja a `/B` paramétert.
+> Észrevettem, hogy a beágyazott batch-fájlok időnként nem válaszolnak a paraméter használatakor `/B` . Érdemes lehet meggyőződni arról, hogy ez a probléma nem fordul elő, ha egy másik batch-fájl meghívja az aktuális batch-fájlt, például ha a [log burkolót](#always-log-startup-activities)használja. Ebben az esetben kihagyhatja a `/B` paramétert.
 > 
 > 
 
@@ -512,6 +509,3 @@ További információ a [feladatok](cloud-services-startup-tasks.md) működés�
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-

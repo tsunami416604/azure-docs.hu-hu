@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887435"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-eszközök védelme jogkivonat-hitelesítéssel
 
@@ -96,7 +96,7 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
       > <table>
       > <tr>
       >   <th>Paraméter neve</th> 
-      >   <th>Leírás</th>
+      >   <th>Description</th>
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
@@ -173,17 +173,17 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
 3. A **nagyméretű http**területen válassza a **szabályok motor**elemet. A szabályok motor használatával határozhatja meg a szolgáltatás alkalmazásához szükséges elérési utakat, engedélyezheti a jogkivonat-hitelesítés funkciót, és engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos képességeket. További információ: [szabályok motor referenciája](cdn-rules-engine-reference.md).
 
    1. Válasszon ki egy meglévő szabályt, vagy hozzon létre egy új szabályt annak az eszköznek vagy elérési útnak a megadásához, amelynek a jogkivonat-hitelesítését alkalmazni kívánja. 
-   2. Ha engedélyezni szeretné a jogkivonat-hitelesítést egy szabályon, válassza a **[jogkivonat](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** -hitelesítés elemet a **szolgáltatások** listából, majd válassza az **engedélyezve**lehetőséget. Válassza a **frissítés** lehetőséget, ha a szabályt vagy a **hozzáadást** egy szabály létrehozásakor frissíti.
+   2. Ha engedélyezni szeretné a jogkivonat-hitelesítést egy szabályon, válassza a **[jogkivonat](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** -hitelesítés elemet a **szolgáltatások** listából, majd válassza az **engedélyezve**lehetőséget. Válassza a **frissítés** lehetőséget, ha a szabályt vagy a **hozzáadást** egy szabály létrehozásakor frissíti.
         
       ![CDN-szabályok a motor jogkivonat-hitelesítésének engedélyezése példa](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. A szabályok motorban engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos funkciókat is. A következő szolgáltatások bármelyikének engedélyezéséhez válassza ki a **szolgáltatások** listából, majd válassza az **engedélyezve**lehetőséget.
     
-   - **[Jogkivonat-Auth-elutasítási kód](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)**: meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha a kérelem megtagadva. Az itt beállított szabályok felülbírálják a jogkivonat-alapú hitelesítés lapon a **Custom tagadás-kezelési** szakaszban beállított hibakódot.
+   - **[Jogkivonat-Auth-elutasítási kód](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)**: meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha a kérelem megtagadva. Az itt beállított szabályok felülbírálják a jogkivonat-alapú hitelesítés lapon a **Custom tagadás-kezelési** szakaszban beállított hibakódot.
 
-   - **[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-cím esetén](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)**: meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím megkülönbözteti-e a kis-és
+   - **[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-cím esetén](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)**: meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím megkülönbözteti-e a kis-és
 
-   - **[Jogkivonat-hitelesítési paraméter](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)**: átnevezi a jogkivonat-hitelesítés lekérdezési karakterláncának paraméterét, amely megjelenik a kért URL-címen. 
+   - **[Jogkivonat-hitelesítési paraméter](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)**: átnevezi a jogkivonat-hitelesítés lekérdezési karakterláncának paraméterét, amely megjelenik a kért URL-címen. 
         
      ![CDN-szabályok a motor token hitelesítési beállításai – példa](./media/cdn-token-auth/cdn-rules-engine2.png)
 

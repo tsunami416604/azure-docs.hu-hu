@@ -16,10 +16,9 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918314"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Videók összegzésének létrehozása a Azure Media Video Thumbnails használatával  
@@ -59,7 +58,7 @@ Ha **Azure Media Video Thumbnailskal**rendelkező videó miniatűr feladatot hoz
 
 Jelenleg a következő paramétereket módosíthatja:
 
-| Param | Leírás |
+| Param | Description |
 | --- | --- |
 | outputAudio |Megadja, hogy az eredményül kapott videó tartalmaz-e hangot. <br/>Az engedélyezett értékek: true vagy FALSE. Az alapértelmezett érték a True (igaz). |
 | fadeInFadeOut |Megadja, hogy a rendszer áttűnési átmeneteket használ-e a különálló mozgóképek bélyegképei között.  <br/>Az engedélyezett értékek: true vagy FALSE.  Az alapértelmezett érték a True (igaz). |
@@ -107,7 +106,7 @@ A következő program a következőket mutatja be:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 

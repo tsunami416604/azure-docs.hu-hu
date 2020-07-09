@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494356"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963529"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Storm használata az Apache Kafka on HDInsighttal
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A Kafka-témakör létrehozása
 > * A topológiák elindítása
 > * A topológiák leállítása
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -115,7 +115,7 @@ A következő XML az `pom.xml` [Apache Maven](https://maven.apache.org/) -projek
 
 ## <a name="understanding-the-code"></a>A kód értelmezése
 
-A dokumentumban használt kód a következő címen érhető el [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka):.
+A dokumentumban használt kód a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) .
 
 Az oktatóanyagban két topológia szerepel:
 
@@ -128,7 +128,7 @@ Az oktatóanyagban két topológia szerepel:
     >
     > Ha a Storm-fürt létrehozásához nem használja a dokumentumban lévő sablont, manuálisan kell alkalmaznia a szkriptműveletet a fürtre.
     >
-    > A parancsfájl művelete a ( [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) z) helyen található, és a Storm-fürt felügyelő és Nimbus csomópontjain lesz alkalmazva. A szkriptműveletek használatával kapcsolatos további információkért tekintse meg [a HDInsight szkriptműveletkel való testreszabását](hdinsight-hadoop-customize-cluster-linux.md) ismertető dokumentumot.
+    > A parancsfájl művelete a (z) helyen található [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) , és a Storm-fürt felügyelő és Nimbus csomópontjain lesz alkalmazva. A szkriptműveletek használatával kapcsolatos további információkért tekintse meg [a HDInsight szkriptműveletkel való testreszabását](hdinsight-hadoop-customize-cluster-linux.md) ismertető dokumentumot.
 
 A topológiák a [Flux](https://storm.apache.org/releases/current/flux.html) használatával vannak definiálva. A Flux a Storm 0.10.x verziójával lett bevezetve, és a használatával elválaszthatja a topológia konfigurációját a kódtól. A Flux-keretrendszert használó topológiák esetében a topológia egy YAML-fájlban van definiálva. Az YAML-fájl a topológia részeként is megadható. Önálló fájlként is használható a topológia elküldésekor. A Flux támogatja a változók futásidőben való behelyettesítését is, amit ebben a példában is alkalmazunk.
 
@@ -144,7 +144,7 @@ A topológiákhoz az alábbi paramétereket vannak megadva futásidőben:
 
 * `${hdfs.write.dir}`: A könyvtár, amelybe az adatok íródnak.
 
-További információ a Flux-topológiákkal kapcsolatban: [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
+További információ a Flux-topológiákkal kapcsolatban: [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) .
 
 ### <a name="kafka-writer"></a>Kafka-író
 
@@ -372,7 +372,7 @@ A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák ált
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
 | `kafka.topic` | A topológiák által használt Kafka-témakör. |
 | `hdfs.write.dir` | A könyvtár, amelybe a Kafka-olvasó topológia ír. |
-| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb://` értéket. Azure Data Lake Storage Gen2 esetén használja a értékét `abfs://`. Azure Data Lake Storage Gen1 esetén használja a értékét `adl://`. |
+| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb://` értéket. Azure Data Lake Storage Gen2 esetén használja a értékét `abfs://` . Azure Data Lake Storage Gen1 esetén használja a értékét `adl://` . |
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 
@@ -391,7 +391,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    A Azure Resource Manager sablon a következő helyen **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**található:. A következő erőforrásokat hozza létre:
+    A Azure Resource Manager sablon a következő helyen található: **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** . A következő erőforrásokat hozza létre:
 
     * Azure-erőforráscsoport
     * Azure Virtual Network
@@ -429,7 +429,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
 ## <a name="build-the-topology"></a>A topológia létrehozása
 
-1. A fejlesztési környezetben töltse le a projektet a alkalmazásból [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), nyisson meg egy parancssort, és módosítsa a könyvtárat arra a helyre, amelyet a projekt letöltött.
+1. A fejlesztési környezetben töltse le a projektet a alkalmazásból [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) , nyisson meg egy parancssort, és módosítsa a könyvtárat arra a helyre, amelyet a projekt letöltött.
 
 2. A **hdinsight-storm-java-kafka** könyvtárban fordítsa le a projektet a következő parancs használatával, és hozzon létre egy telepítési csomagot:
 
@@ -500,7 +500,9 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
     A visszaadott érték az alábbi szöveghez hasonló:
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > Bár kettőnél több Zookeeper-csomópont is létezhet, nem kell megadnia a gazdagépek teljes listáját az ügyfeleknek. Egy vagy kettő is elég.
@@ -509,12 +511,14 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
 3. Szerkessze a projekt gyökerében található `dev.properties` fájlt. Adja hozzá a __Kafka__-fürt közvetítő és Zookeeper-gazdagépeinek adatait a fájl megfelelő soraihoz. A következő példa a korábbi lépésekből származó mintaértékekkel van konfigurálva:
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
-    > A `hdfs.url` bejegyzés egy Azure Storage-fiókot használó fürthöz van konfigurálva. Ha az Data Lake Storaget használó Storm-fürttel szeretné használni ezt a topológiát, módosítsa `wasb` ezt `adl`az értéket a értékről a verzióra.
+    > A `hdfs.url` bejegyzés egy Azure Storage-fiókot használó fürthöz van konfigurálva. Ha az Data Lake Storaget használó Storm-fürttel szeretné használni ezt a topológiát, módosítsa ezt az értéket a értékről a verzióra `wasb` `adl` .
 
 4. Mentse a `dev.properties` fájlt, majd a következő parancs használatával töltse fel a **Storm**-fürtbe:
 
@@ -590,11 +594,13 @@ A Kafka az adatokat _témakörökben_ tárolja. A témakört még a Storm-fürt�
 
     A kimenet az alábbi szöveghez hasonló:
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. A fájl tartalmának megtekintéséhez használja az alábbi parancsot. Cserélje le a `filename.txt` elemet egy fájl nevére:
 
@@ -604,13 +610,19 @@ A Kafka az adatokat _témakörökben_ tárolja. A témakört még a Storm-fürt�
 
     A következő szöveg egy példa a fájl tartalmára:
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > négy pontszám és hét évvel ezelőtt
+    >
+    > Hófehérke és a hét törpe
+    >
+    > két természettel vagyok
+    >
+    > Hófehérke és a hét törpe
+    >
+    > két természettel vagyok
+    >
+    > négy pontszám és hét évvel ezelőtt
+    >
+    > az Apple egy nap alatt tartja az orvost
 
 ## <a name="stop-the-topologies"></a>A topológiák leállítása
 
@@ -621,7 +633,7 @@ Használja a következő parancsokat a Storm-fürttel létesített SSH-munkamene
   storm kill kafka-reader
   ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 

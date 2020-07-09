@@ -1,26 +1,13 @@
 ---
 title: A dedikált Event hubok áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a dedikált Azure Event Hubsről, amely az Event hub egybérlős üzembe helyezését kínálja.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72516746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322439"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>A dedikált Event Hubs áttekintése
 

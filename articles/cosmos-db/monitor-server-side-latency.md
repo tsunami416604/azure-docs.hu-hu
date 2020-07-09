@@ -2,16 +2,16 @@
 title: A Azure Cosmos DB-műveletek kiszolgálóoldali késésének figyelése
 description: Megtudhatja, hogyan figyelheti a kiszolgáló késését Azure Cosmos DB fiókban vagy tárolóban végzett műveletekhez. Egy Azure Cosmos DB fiók tulajdonosai megismerhetik az Azure Cosmos-fiókokkal kapcsolatos kiszolgálóoldali késési problémákat.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 0f1e6d07afb3b7b4d26081bc9e34ac257b280d0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5be2365fb5850c3f45b320d66c114fb791b22c3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262701"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB tárolóban vagy fiókban lévő műveletek kiszolgálóoldali késésének figyelése
 
@@ -31,15 +31,15 @@ A visszaadott adatmennyiség megjelenítéséhez megkeresheti a diagnosztikai na
 
 1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
 
-   ![Metrikák ablaktábla Azure Monitor](./media/monitor-server-side-latency/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
    
-   ![Válassza ki a Azure Cosmos DB fiókot a metrikák megtekintéséhez](./media/monitor-server-side-latency/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Válassza ki a Azure Cosmos DB fiókot a metrikák megtekintéséhez":::
 
 1. Ezután válassza ki a **kiszolgálóoldali késés** metrikáját az elérhető metrikák listájából. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **kiszolgálóoldali késést** és az **átlagot** adja meg az összesítési értékként. Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiszolgálóoldali késést percenként láthatja a kiválasztott időszakra vonatkozóan.  
 
-   ![Válassza ki a kiszolgálóoldali késés metrikáját a Azure Portal](./media/monitor-server-side-latency/server-side-latency-metric.png)
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Válassza ki a kiszolgálóoldali késés metrikáját a Azure Portal":::
 
 ## <a name="filters-for-server-side-latency"></a>Kiszolgálóoldali késéssel kapcsolatos szűrők
 
@@ -49,7 +49,7 @@ A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, é
 
 Az egyes műveletek **kiszolgálóoldali késési** mérőszámai az alábbi képen látható módon jelennek meg:
 
-![Kiszolgálóoldali késési metrikák szűrőinek szűrői](./media/monitor-server-side-latency/server-side-latency-filters.png)
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Kiszolgálóoldali késési metrikák szűrőinek szűrői":::
 
 A metrikákat a **felosztás alkalmazása** lehetőség használatával is csoportosíthatja.  
 

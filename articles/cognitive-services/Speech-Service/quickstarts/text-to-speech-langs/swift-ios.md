@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 5fd7f125037777c55b748b45df49f8f5cd2d0409
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975890"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391281"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Gyors útmutató: beszédfelismerési útmutató a Swift-ben az iOS-ben a Speech SDK használatával
 
@@ -39,7 +39,7 @@ Xcode-projektekben használható [CocoaPod](https://cocoapods.org/), illetve man
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
-Indítsa el a Xcode, és indítsa el az új projektet a **fájl** > **új** > **projekt**elemre kattintva.
+Indítsa el a Xcode, és indítsa el az új projektet a **fájl**  >  **új**  >  **projekt**elemre kattintva.
 A sablonválasztó párbeszédpanelen válassza az „iOS Single View App” sablont.
 
 A további párbeszédpaneleken válassza az alábbi lehetőségeket:
@@ -57,32 +57,32 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Helyezzen egy új fejlécet a névvel `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` a HelloWorld projektben található `helloworld` könyvtárba, és illessze be a következő kódot a fájlba:  
+1. Helyezzen egy új fejlécet a névvel a `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` HelloWorld projektben található könyvtárba, és illessze be a következő kódot a fájlba:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/text-to-speech/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
-1. Adja hozzá a relatív `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` elérési utat az áthidaló fejléchez a HelloWorld-cél Swift-projekt beállításainál a *cél-C áthidaló fejléc* mező ![fejlécének tulajdonságainál](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-bridging-header.png)
+1. Adja hozzá a relatív elérési utat az `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` áthidaló fejléchez a HelloWorld-cél Swift-projekt beállításainál a *cél-C áthidaló fejléc* mező ![ fejlécének tulajdonságainál](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-bridging-header.png)
 1. Cserélje le az automatikusan létrehozott `AppDelegate.swift` fájl tartalmát az alábbi kódra:  
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/text-to-speech/helloworld/helloworld/AppDelegate.swift#code)]
 1. Cserélje le az automatikusan létrehozott `ViewController.swift` fájl tartalmát az alábbi kódra:  
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/text-to-speech/helloworld/helloworld/ViewController.swift#code)]
-1. A `ViewController.swift`-ben cserélje le `YourSubscriptionKey` a karakterláncot az előfizetési kulcsra.
+1. A-ben `ViewController.swift` cserélje le a karakterláncot az `YourSubscriptionKey` előfizetési kulcsra.
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Az SDK telepítése CocoaPod
 
 1. Telepítse a CocoaPod-függőség kezelőjét a [telepítési utasításokban](https://guides.cocoapods.org/using/getting-started.html)leírtak szerint.
-1. Navigáljon a minta alkalmazás (`helloworld`) könyvtárába. Helyezzen el egy szövegfájlt a névvel `Podfile` és a következő tartalommal a könyvtárban:  
+1. Navigáljon a minta alkalmazás ( `helloworld` ) könyvtárába. Helyezzen el egy szövegfájlt a névvel `Podfile` és a következő tartalommal a könyvtárban:  
    [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/text-to-speech/helloworld/Podfile)]
-1. Navigáljon a `helloworld` címtárhoz egy terminálon, és futtassa `pod install`a parancsot. Ez egy `helloworld.xcworkspace` Xcode-munkaterületet hoz majd, amely a minta alkalmazást és a Speech SDK-t is függőségként fogja tartalmazni. Ezt a munkaterületet a következőben fogjuk használni.
+1. Navigáljon a `helloworld` címtárhoz egy terminálon, és futtassa a parancsot `pod install` . Ez egy `helloworld.xcworkspace` Xcode-munkaterületet hoz majd, amely a minta alkalmazást és a SPEECH SDK-t is függőségként fogja tartalmazni. Ezt a munkaterületet a következőben fogjuk használni.
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Nyissa `helloworld.xcworkspace` meg a munkaterületet a Xcode.
-1. A hibakeresési kimenet láthatóvá tétele **(** > a**hibakeresési területek** > **aktiválása konzolon**).
-1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **termék** > **cél** menüjének listájában.
-1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a **termék** > **futtatása** lehetőséget a menüből, vagy kattintson a **Lejátszás** gombra.
+1. Nyissa meg a `helloworld.xcworkspace` munkaterületet a Xcode.
+1. A hibakeresési kimenet láthatóvá tétele **(a**  >  **hibakeresési területek**  >  **aktiválása konzolon**).
+1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **termék**  >  **cél** menüjének listájában.
+1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a **termék**  >  **futtatása** lehetőséget a menüből, vagy kattintson a **Lejátszás** gombra.
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

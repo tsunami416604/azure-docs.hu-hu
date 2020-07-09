@@ -3,15 +3,15 @@ title: Az Azure-ba irányuló avere-vFXT áthelyezése
 description: Az Azure-hoz készült avere-vFXT való használatra szolgáló új tárolási kötethez való adatfelvétel módja
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505596"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Adatáthelyezés a vFXT-fürtbe – párhuzamos adatfeldolgozás
 
@@ -21,11 +21,11 @@ Mivel az Azure-fürt avere-vFXT egy skálázható, több ügyfélre kiterjedő g
 
 ![Több ügyfélből álló, többszálas adatáthelyezést ábrázoló diagram: a bal felső sarokban a helyszíni hardveres tárterület ikonja több nyílból származik. A nyilak négy ügyfélszámítógépre mutatnak. Az egyes ügyfélgépekről három nyíl mutat a avere vFXT felé. A avere vFXT több nyíl mutat a blob Storage-ra.](media/avere-vfxt-parallel-ingest.png)
 
-Az ``cp`` adatok ``copy`` az egyik tárolási rendszerről a másikra történő átviteléhez leggyakrabban használt vagy parancsok olyan egyszálas folyamatok, amelyek egyszerre csak egy fájlt másolnak. Ez azt jelenti, hogy a fájlkiszolgáló egyszerre csak egy fájlt tölt be – ez a fürt erőforrásainak hulladéka.
+Az ``cp`` ``copy`` adatok az egyik tárolási rendszerről a másikra történő átviteléhez leggyakrabban használt vagy parancsok olyan egyszálas folyamatok, amelyek egyszerre csak egy fájlt másolnak. Ez azt jelenti, hogy a fájlkiszolgáló egyszerre csak egy fájlt tölt be – ez a fürt erőforrásainak hulladéka.
 
 Ez a cikk a több ügyfelet tartalmazó, többszálas fájlmásolási rendszer létrehozására szolgáló stratégiákat ismerteti az adatoknak a avere vFXT-fürtbe való áthelyezéséhez. Ismerteti a fájlátviteli fogalmakat és a döntési pontokat, amelyek segítségével több ügyfél és egyszerű másolási parancs használatával hatékony Adatmásolást lehet használni.
 
-Emellett ismerteti azokat a segédprogramokat is, amelyek segíthetnek. A ``msrsync`` segédprogram használatával részben automatizálható az adatkészlet gyűjtővé való osztása és parancsok használata ``rsync`` . A ``parallelcp`` parancsfájl egy másik segédprogram, amely beolvassa a forrás könyvtárat, és automatikusan kiadja a másolási parancsokat. Emellett az ``rsync`` eszköz két fázisban is használható, így gyorsabb másolást biztosít, amely továbbra is biztosítja az adatkonzisztenciát.
+Emellett ismerteti azokat a segédprogramokat is, amelyek segíthetnek. A ``msrsync`` segédprogram használatával részben automatizálható az adatkészlet gyűjtővé való osztása és ``rsync`` parancsok használata. A ``parallelcp`` parancsfájl egy másik segédprogram, amely beolvassa a forrás könyvtárat, és automatikusan kiadja a másolási parancsokat. Emellett az ``rsync`` eszköz két fázisban is használható, így gyorsabb másolást biztosít, amely továbbra is biztosítja az adatkonzisztenciát.
 
 Kattintson a hivatkozásra a szakaszra való ugráshoz:
 
@@ -55,7 +55,7 @@ Minden másolási folyamathoz tartozik egy átviteli sebesség és egy fájl –
 
 Manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között.
 
-A Linux/UNIX ``cp`` parancs tartalmazza a tulajdonosi és a mtime metaadatok megőrzésére szolgáló argumentumot ``-p`` . Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyfél és a cél fájlrendszer közötti, a metaadatok módosítására irányuló hívások számát.)
+A Linux/UNIX ``cp`` parancs tartalmazza a ``-p`` tulajdonosi és a mtime metaadatok megőrzésére szolgáló argumentumot. Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyfél és a cél fájlrendszer közötti, a metaadatok módosítására irányuló hívások számát.)
 
 Ez az egyszerű példa két fájlt másol át párhuzamosan:
 
@@ -69,7 +69,7 @@ A parancs kiadása után a `jobs` parancs azt jeleníti meg, hogy két szál fut
 
 Ha a fájlnevek kiszámíthatók, a kifejezések használatával párhuzamos másolási szálakat hozhat létre.
 
-Ha például a könyvtár 1000-es fájlokat tartalmaz `0001` `1000`, amelyek egymás után vannak számozva, a következő kifejezésekkel hozhat létre tíz párhuzamos szálat, amelyeket az egyes 100-fájlok másolnak:
+Ha például a könyvtár 1000-es fájlokat tartalmaz, amelyek egymás után vannak számozva `0001` `1000` , a következő kifejezésekkel hozhat létre tíz párhuzamos szálat, amelyeket az egyes 100-fájlok másolnak:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -88,7 +88,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Ha a fájl-elnevezési struktúra nem kiszámítható, a fájlokat a címtár neve alapján csoportosíthatja.
 
-Ez a példa a ``cp`` parancsok futtatásához használható teljes címtárakat gyűjti a háttérben:
+Ez a példa a parancsok futtatásához használható teljes címtárakat gyűjti a ``cp`` háttérben:
 
 ```bash
 /root
@@ -124,7 +124,7 @@ Ebben az esetben az ügyféloldali csatlakoztatási pontokat más vFXT-fürt IP-
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Az ügyféloldali csatlakoztatási pontok hozzáadásával kikapcsolhatja a további másolási parancsokat a `/mnt/destination[1-3]` további csatlakoztatási pontokra a további párhuzamosságok elérése érdekében.
+Az ügyféloldali csatlakoztatási pontok hozzáadásával kikapcsolhatja a további másolási parancsokat a további `/mnt/destination[1-3]` csatlakoztatási pontokra a további párhuzamosságok elérése érdekében.
 
 Ha például a fájlok nagyon nagy méretűek, a másolási parancsokat definiálhatja a különböző elérési utak használatára, és a másolást végző ügyféltől párhuzamosan több parancsot is küldhet.
 
@@ -246,7 +246,7 @@ for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-A rendszer *n* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a `find` parancs kimenetének részeként megadott négy szintű könyvtárral.
+A rendszer *n* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a parancs kimenetének részeként megadott négy szintű könyvtárral `find` .
 
 Az egyes fájlok használatával hozza létre a másolási parancsot:
 
@@ -260,7 +260,7 @@ A cél a parancsfájlok több szálának párhuzamos futtatása egyszerre több 
 
 ## <a name="use-a-two-phase-rsync-process"></a>Kétfázisú rsync-folyamat használata
 
-A standard ``rsync`` segédprogram nem jól működik a felhőalapú tárolásnak az Azure-rendszerhez készült avere-vFXT keresztüli feltöltéséhez, mert az adatintegritás biztosításához nagy számú fájl létrehozására és átnevezésére szolgáló műveletet hoz létre. Ha azonban azt követi, hogy egy ``--inplace`` második futtatással a fájl integritását ellenőrzi, nyugodtan használhatja a kapcsolót ``rsync`` .
+A standard ``rsync`` segédprogram nem jól működik a felhőalapú tárolásnak az Azure-rendszerhez készült avere-vFXT keresztüli feltöltéséhez, mert az adatintegritás biztosításához nagy számú fájl létrehozására és átnevezésére szolgáló műveletet hoz létre. Ha azonban azt követi, hogy ``--inplace`` ``rsync`` egy második futtatással a fájl integritását ellenőrzi, nyugodtan használhatja a kapcsolót.
 
 A normál ``rsync`` másolási művelet létrehoz egy ideiglenes fájlt, és betölti az adatmennyiséget. Ha az adatátvitel sikeresen befejeződött, az ideiglenes fájl átnevezve lesz az eredeti fájlnévre. Ez a módszer akkor is garantálja a konzisztenciát, ha a fájlok a másolás során hozzáférnek. Ez a módszer azonban több írási műveletet generál, ami lelassítja a fájlok áthelyezését a gyorsítótárban.
 
@@ -278,24 +278,24 @@ Ez a módszer egyszerű és időigényes módszer az adatkészletek számára a 
 
 ## <a name="use-the-msrsync-utility"></a>A msrsync segédprogram használata
 
-Az ``msrsync`` eszköz segítségével áthelyezheti az adatátvitelt a avere-fürtön lévő háttérbeli alapszintű filerbe. Ez az eszköz úgy lett kialakítva, hogy több párhuzamos ``rsync`` folyamat futtatásával optimalizálja a sávszélesség-használatot. A GitHubon érhető el <https://github.com/jbd/msrsync>.
+Az ``msrsync`` eszköz segítségével áthelyezheti az adatátvitelt a avere-fürtön lévő háttérbeli alapszintű filerbe. Ez az eszköz úgy lett kialakítva, hogy több párhuzamos folyamat futtatásával optimalizálja a sávszélesség-használatot ``rsync`` . A GitHubon érhető el <https://github.com/jbd/msrsync> .
 
-``msrsync``elkülöníti a forrás könyvtárat külön "gyűjtő" értékre, majd minden ``rsync`` gyűjtőn futtatja az egyes folyamatokat.
+``msrsync``elkülöníti a forrás könyvtárat külön "gyűjtő" értékre, majd minden gyűjtőn futtatja az egyes ``rsync`` folyamatokat.
 
 A négy Magos virtuális géppel végzett előzetes tesztelés az 64-es folyamatok használatakor a legjobb hatékonyságot mutatja. A következő ``msrsync`` beállítással ``-p`` állíthatja be a folyamatok számát 64-re.
 
-Használhatja az argumentumot is ``--inplace`` a ``msrsync`` parancsokkal. Ha ezt a beállítást használja, érdemes lehet egy második parancsot futtatni (mint a fent ismertetett [rsync](#use-a-two-phase-rsync-process)esetében) az adatok integritásának biztosításához.
+Használhatja az ``--inplace`` argumentumot is a ``msrsync`` parancsokkal. Ha ezt a beállítást használja, érdemes lehet egy második parancsot futtatni (mint a fent ismertetett [rsync](#use-a-two-phase-rsync-process)esetében) az adatok integritásának biztosításához.
 
 ``msrsync``csak a helyi kötetek és a között lehet írni. A forrásnak és a célhelynek elérhetőnek kell lennie helyi csatlakoztatásként a fürt virtuális hálózatában.
 
-``msrsync`` Az Azure-beli Felhőbeli kötetek avere-fürttel való feltöltéséhez kövesse az alábbi utasításokat:
+Az Azure-beli ``msrsync`` Felhőbeli kötetek avere-fürttel való feltöltéséhez kövesse az alábbi utasításokat:
 
 1. Telepítés ``msrsync`` és előfeltételei (rsync és Python 2,6 vagy újabb)
 1. A másolandó fájlok és könyvtárak teljes számának meghatározása.
 
-   Használja például a avere segédprogramot ``prime.py`` argumentumokkal ```prime.py --directory /path/to/some/directory``` (az URL-cím <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>letöltésével érhető el).
+   Használja például a avere segédprogramot ``prime.py`` argumentumokkal ```prime.py --directory /path/to/some/directory``` (az URL-cím letöltésével érhető el <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> ).
 
-   Ha nem használja ``prime.py``, a következő módon számíthatja ki az elemek számát a ``find`` GNU eszközzel:
+   Ha nem használja ``prime.py`` , a következő módon számíthatja ki az elemek számát a GNU ``find`` eszközzel:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -303,15 +303,15 @@ Használhatja az argumentumot is ``--inplace`` a ``msrsync`` parancsokkal. Ha ez
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Az elemek számának felosztása a 64 alapján az elemek számának megállapítása folyamatban. Ezt a számot ``-f`` használhatja a gyűjtők méretének beállításához a parancs futtatásakor.
+1. Az elemek számának felosztása a 64 alapján az elemek számának megállapítása folyamatban. Ezt a számot használhatja a ``-f`` gyűjtők méretének beállításához a parancs futtatásakor.
 
-1. Adja ki ``msrsync`` a parancsot a fájlok másolásához:
+1. Adja ki a ``msrsync`` parancsot a fájlok másolásához:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Ha használja ``--inplace``, adjon hozzá egy második végrehajtást anélkül, hogy ellenőriznie kellene, hogy az Adatmásolás helyesen történt-e:
+   Ha használja ``--inplace`` , adjon hozzá egy második végrehajtást anélkül, hogy ellenőriznie kellene, hogy az Adatmásolás helyesen történt-e:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
@@ -325,7 +325,7 @@ Használhatja az argumentumot is ``--inplace`` a ``msrsync`` parancsokkal. Ha ez
 
 A ``parallelcp`` szkript is hasznos lehet az vFXT-fürt háttér-tárolóba való áthelyezéséhez.
 
-Az alábbi szkript hozzáadja a végrehajtható fájlt `parallelcp`. (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ ``parallel`` , külön kell telepítenie.)
+Az alábbi szkript hozzáadja a végrehajtható fájlt `parallelcp` . (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ, külön kell telepítenie ``parallel`` .)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -379,12 +379,12 @@ EOM
 
 ### <a name="parallel-copy-example"></a>Példa párhuzamos másolásra
 
-Ez a példa a párhuzamos másolási parancsfájl ``glibc`` használatával fordítja le a forrásfájlokat a avere-fürtből.
+Ez a példa a párhuzamos másolási parancsfájl használatával fordítja ``glibc`` le a forrásfájlokat a avere-fürtből.
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
 A forrásfájlok a avere-fürt csatlakoztatási pontján tárolódnak, és az objektum fájljai a helyi merevlemezen vannak tárolva.
 
-Ez a szkript a fenti párhuzamos másolási parancsfájlt használja. A kapcsolót ``-j`` a ``parallelcp`` és ``make`` a párhuzamos megszerzéséhez használja a rendszer.
+Ez a szkript a fenti párhuzamos másolási parancsfájlt használja. A kapcsolót a ``-j`` ``parallelcp`` és a ``make`` párhuzamos megszerzéséhez használja a rendszer.
 
 ```bash
 sudo apt-get update

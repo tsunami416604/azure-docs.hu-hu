@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085688"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
@@ -38,8 +38,8 @@ Az alkalmazott hálózati biztonsági csoportok beállításai továbbra is lehe
 
 Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-windows-aad.md#), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
 
-### <a name="azure-instance-metadata-service"></a>Azure-Instance Metadata Service 
-A virtuális gépnek képesnek kell lennie elérni az [Azure-példány metaadatainak szolgáltatási](../windows/instance-metadata-service.md) végpontját, amely egy jól ismert, nem irányítható IP`169.254.169.254`-címet () használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás 
+A virtuális gépnek képesnek kell lennie elérni az [Azure-példány metaadatainak szolgáltatási](../windows/instance-metadata-service.md) végpontját, amely egy jól ismert, nem irányítható IP-címet ( `169.254.169.254` ) használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>A Windows Server 2016 Server Core hibaelhárítása
 

@@ -9,24 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683117"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057874"
 ---
 # <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
 
 A Language Understanding (LUIS) alkalmazás a leghatékonyabban tanul és hajt végre iterációval. Íme egy tipikus iterációs ciklus:
 
 * Új verzió létrehozása
-* A LUIS-alkalmazás sémájának szerkesztése. Az érintett műveletek közé tartoznak az alábbiak:
+* A LUIS-alkalmazás sémájának szerkesztése. Ide tartoznak az alábbiak:
     * Leképezések példa hosszúságú kimondott szöveg
     * Entitások
-    * Funkciók
+    * Szolgáltatások
 * Betanítás, tesztelés és közzététel
     * Tesztelés az aktív tanulás előrejelzési végpontján
 * Adatok összegyűjtése végponti lekérdezésekből
@@ -70,7 +70,7 @@ A LUIS-nek néhány példát kell hosszúságú kimondott szöveg az egyes **sz�
 
 Minden esetben a kiírásnak minden szükséges adattal rendelkeznie kell az **entitásokkal**megtervezett és címkézett **adatok kinyeréséhez** .
 
-|Kulcs eleme|Cél|
+|Kulcs eleme|Szerep|
 |--|--|
 |Szándék|A felhasználó hosszúságú kimondott szöveg egyetlen célra vagy műveletbe **osztályozhatja** . Ilyenek például `BookFlight` a és a `GetWeather` .|
 |Entitás|Az adatok **kinyerése** a cél befejezéséhez szükséges. Ilyenek például az utazás dátuma és időpontja, valamint a hely.|
@@ -107,11 +107,22 @@ Közzéteheti a fázist és/vagy az éles tárolóhelyeket is. Az egyes tároló
 
 A betanított verziók nem érhetők el automatikusan a LUIS-alkalmazás [végpontján](luis-glossary.md#endpoint). Ahhoz, hogy a LUIS-alkalmazás végpontján elérhető legyen, [közzé](luis-how-to-publish-app.md) kell tennie vagy újra közzé kell tennie egy verziót. Közzéteheti az **előkészítést** és a **gyártást**, így az alkalmazás két verziója érhető el a végponton. Ha az alkalmazás több verzióját is elérhetőnek kell lennie egy végponton, exportálnia kell a verziót, és újra importálnia kell egy új alkalmazásba. Az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik.
 
-### <a name="import-and-export-a-version"></a>Verzió importálása és exportálása
+### <a name="import-a-version"></a>Verzió importálása
 
-A verziók az alkalmazás szintjén importálhatók. Ez a verzió lesz az aktív verzió, és a verziószámot használja az `versionId` alkalmazás fájljának tulajdonságában. A verzió szintjén is importálhat egy meglévő alkalmazást. Az új verzió lesz az aktív verzió.
+A verziók új módon **importálhatók** :
+* Alkalmazás új alkalmazás-AZONOSÍTÓval
+* Meglévő alkalmazás verziója
 
-Egy verzió is exportálható az alkalmazás vagy a verzió szintjén is. Az egyetlen különbség, hogy az alkalmazás-szintű exportált verzió a jelenleg aktív verzió a verzió szintjén, a **[Beállítások](luis-how-to-manage-versions.md)** lapon bármilyen verziót kiválaszthat az exportáláshoz.
+Ez a verzió lesz az aktív verzió, és a verziószámot használja az `versionId` alkalmazás fájljának tulajdonságában.
+
+### <a name="export-a-version"></a>Verzió exportálása
+
+Egy verzió a LUIS portálról **exportálható** az alkalmazás szintjén vagy a verzió szintjén:
+
+* Alkalmazás szintje – válassza az alkalmazás lehetőséget **az alkalmazások** lapon, majd válassza az **Exportálás** lehetőséget.
+* Verzió szintje – alkalmazás kiválasztása hivatkozás a **saját alkalmazások** lapon válassza a **kezelés**lehetőséget, válassza a **verziók** lehetőséget.
+
+Az egyetlen különbség, hogy az alkalmazás-szint, az exportált verzió a jelenleg aktív verzió a verzió szintjén, a **[Beállítások](luis-how-to-manage-versions.md)** lapon bármelyik verziót kiválaszthatja az exportáláshoz.
 
 Az exportált fájl **nem** tartalmazza a következőket:
 
@@ -132,7 +143,7 @@ Először [klónozást](luis-how-to-manage-versions.md#clone-a-version) kell kez
 
 Minden szerző módosítja az alkalmazás saját verzióját. Ha a szerző elégedett a modellel, exportálja az új verziókat a JSON-fájlokba.
 
-Az exportált alkalmazások, a. JSON vagy a. lu fájlok összehasonlítható a változásokkal. Egyesítse a fájlokat úgy, hogy egyetlen fájlt hozzon létre az új verzióval. Módosítsa a `versionId` tulajdonságot úgy, hogy az az új egyesített verziót jelenti. Importálja az adott verziót az eredeti alkalmazásba.
+Az exportált alkalmazások `.json` vagy `.lu` fájlok összehasonlítható a változásokkal. Egyesítse a fájlokat úgy, hogy egyetlen fájlt hozzon létre az új verzióval. Módosítsa a `versionId` tulajdonságot úgy, hogy az az új egyesített verziót jelenti. Importálja az adott verziót az eredeti alkalmazásba.
 
 Ez a módszer lehetővé teszi, hogy egyetlen aktív verziót, egy szakasz verzióját és egy közzétett verziót válasszon. Az aktív verzió eredményeit összehasonlíthatja egy közzétett verzióval (fázis vagy éles környezet) az [interaktív tesztelési panelen](luis-interactive-test.md).
 
@@ -150,4 +161,4 @@ Ha egy iterációs ciklust használ, megismételheti a folyamatot. Első lépés
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg az [együttműködéssel](luis-concept-keys.md)kapcsolatos fogalmakat.
+Ismerje meg az [együttműködéssel](luis-how-to-azure-subscription.md)kapcsolatos fogalmakat.

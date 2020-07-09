@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195067"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>A csoportos adatelemzési folyamat adatgyűjtési és-megértési szakasza
 
@@ -55,7 +54,7 @@ A TDSP egy [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/Da
 Miután elégedett a megtisztított adatmennyiség minőségével, a következő lépés az, hogy jobban megértse az adatelemekben rejlő mintákat. Ez az adatelemzés segít a célnak megfelelő prediktív modell kiválasztásában és fejlesztésében. Keresse meg azt a bizonyítékot, hogy az adatok mennyire jól kapcsolódnak a célhoz. Ezután állapítsa meg, hogy van-e elegendő mennyiségű adattal a következő modellezési lépésekkel való előrelépéshez. Ez a folyamat többször is ismétlődő. Előfordulhat, hogy az előző fázisban eredetileg azonosított adatkészletek kibővítéséhez az új adatforrások pontosabb vagy további releváns adatokat kell keresnie. 
 
 ### <a name="set-up-a-data-pipeline"></a>Adatfolyamat beállítása
-Az adatok kezdeti betöltése és tisztítása mellett általában egy olyan folyamatot kell beállítania, amely új adatokkal szerzi be vagy rendszeresen frissíti az adatmennyiséget egy folyamatban lévő tanulási folyamat részeként. A pontozás egy adatfolyamattal vagy munkafolyamattal is elvégezhető. Az [adatok áthelyezése egy helyszíni SQL Server-példányból a Azure SQL Databaseba Azure Data Factory](move-sql-azure-adf.md) cikkből megtudhatja, hogyan állíthat be egy folyamatot [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)használatával. 
+Az adatok kezdeti betöltése és tisztítása mellett általában egy olyan folyamatot kell beállítania, amely új adatokkal szerzi be vagy rendszeresen frissíti az adatmennyiséget egy folyamatban lévő tanulási folyamat részeként. A pontozás egy adatfolyamattal vagy munkafolyamattal is elvégezhető. Az [adatok áthelyezése egy SQL Server-példányból a Azure SQL Databaseba Azure Data Factory](move-sql-azure-adf.md) cikkből megtudhatja, hogyan állíthat be egy folyamatot [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)használatával. 
 
 Ebben a szakaszban fejleszti az adatfolyamatok megoldási architektúráját. Az adatelemzési projekt következő szakaszába párhuzamosan fejlesztheti a folyamatot. Az üzleti igényektől és a meglévő rendszerek korlátaitól függően, amelyekben a megoldás integrálva van, a folyamat az alábbi lehetőségek egyike lehet: 
 
@@ -63,7 +62,7 @@ Ebben a szakaszban fejleszti az adatfolyamatok megoldási architektúráját. Az
    * Folyamatos átvitel vagy valós idejű 
    * Hibrid 
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>Artifacts
 Ebben a szakaszban a következő termékek szerepelnek:
 
    * [Adatminőségi jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Ez a jelentés az adatösszegzéseket, az egyes attribútumok és a cél, a változó rangsorolás és egyéb kapcsolatok közötti kapcsolatokat tartalmazza. A TDSP részeként nyújtott [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) eszköz gyorsan létrehozhatja ezt a jelentést bármilyen táblázatos adathalmazon, például egy CSV-fájlban vagy egy kapcsolati táblában. 

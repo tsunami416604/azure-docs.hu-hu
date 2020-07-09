@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640973"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111065"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler
 
@@ -35,17 +35,17 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
 
 1. ASP.NET Core MVC-Webalkalmazás létrehozása:
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. Módosítsa a munkakönyvtárat a projekt gyökérkönyvtárára.
 
 1. Adja hozzá a NuGet-csomagot a Profiler-Nyomkövetések gyűjtéséhez:
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Application Insights engedélyezése a Program.cs-ben:
 
@@ -55,7 +55,7 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. A Profiler engedélyezése a Startup.cs-ben:
 
     ```csharp
@@ -69,24 +69,24 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
 1. Adja hozzá a **HomeController.cs** szakaszban található kód sorát, hogy véletlenszerűen késleltess néhány másodpercet:
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. Mentse és véglegesítse a módosításokat a helyi tárházban:
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>A Linux-Webalkalmazás létrehozása a projekt üzemeltetéséhez
@@ -112,7 +112,7 @@ További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](https:
 
 1. A Parancssor ablakban keresse meg a projekt gyökérkönyvtárát. Vegyen fel egy git távoli tárházat, amely a App Service adattárára mutat:
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -121,13 +121,13 @@ További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](https:
 
 2. A projekt üzembe helyezéséhez hajtsa végre a módosításokat az Azure-ban:
 
-    ```
+    ```console
     git push azure master
     ```
 
-Az alábbi példához hasonló kimenetnek kell megjelennie:
+    Az alábbi példához hasonló kimenetnek kell megjelennie:
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -144,8 +144,7 @@ Az alábbi példához hasonló kimenetnek kell megjelennie:
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights hozzáadása a webalkalmazások figyeléséhez
@@ -154,9 +153,7 @@ Az alábbi példához hasonló kimenetnek kell megjelennie:
 
 2. Másolja a Application Insights erőforrás **rendszerállapotkulcsot** értékét, és állítsa be a következő beállításokat a webalkalmazásokban:
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     Az Alkalmazásbeállítások megváltozásakor a hely automatikusan újraindul. Az új beállítások alkalmazása után a Profiler azonnal két percig fut. A Profiler ezután óránként két percig fut.
 
@@ -170,7 +167,7 @@ Az alábbi példához hasonló kimenetnek kell megjelennie:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha Azure App Service által üzemeltetett egyéni tárolókat használ, a Application Insights Profiler engedélyezéséhez kövesse az [Service Profiler engedélyezése a tároló ASP.net Core alkalmazás számára](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) című témakör utasításait.
 
 Jelentse be a Application Insights GitHub-adattárral kapcsolatos problémákat vagy javaslatokat: [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

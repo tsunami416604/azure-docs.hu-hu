@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708110"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>IoT hub létrehozása a Azure Portal használatával
 
@@ -20,7 +19,7 @@ ms.locfileid: "79284732"
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet IoT-hubokat a [Azure Portal](https://portal.azure.com)használatával.
 
-Az oktatóanyag lépéseinek használatához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Az oktatóanyag lépéseinek használatához Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -86,7 +85,7 @@ A Storage-fiók és a tároló kiválasztásához kattintson **a tároló** kiv�
 
 Az **adatforrás**területen válassza az eszközök telemetria-üzenetek lehetőséget. 
 
-Ezután adjon hozzá egy útválasztási lekérdezést. Ebben a példában azokat az üzeneteket, amelyekben a nevű alkalmazás `level` tulajdonsága megegyezik `critical` a Storage-fiókkal, egy értékkel kell elnevezni.
+Ezután adjon hozzá egy útválasztási lekérdezést. Ebben a példában azokat az üzeneteket, amelyekben a nevű alkalmazás tulajdonsága `level` megegyezik a Storage-fiókkal, egy értékkel kell elnevezni `critical` .
 
 ![Új útválasztási szabály mentését bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
@@ -112,7 +111,7 @@ Az alábbi két módon találhat egy adott IoT hubot az előfizetésében:
 
 1. Ha ismeri azt az erőforráscsoportot, amelyhez az IoT hub tartozik, kattintson az **erőforráscsoportok**elemre, majd válassza ki az erőforráscsoportot a listából. Az erőforráscsoport képernyő megjeleníti a csoport összes erőforrását, beleértve a IoT hubokat is. Kattintson arra a hubhoz, amelyre keres.
 
-2. Kattintson a **Minden erőforrás** elemre. A **minden erőforrás** panelen található egy legördülő lista, amely alapértelmezés szerint a következőt tartalmazza: `All types`. Kattintson a legördülő listára, `Select all`és törölje a jelölést. Keresse `IoT Hub` meg és ellenőrizze. Kattintson a legördülő listára a bezárásához, és a bejegyzések szűrve lesznek, és csak a IoT hubok láthatók.
+2. Kattintson a **Minden erőforrás** elemre. A **minden erőforrás** panelen található egy legördülő lista, amely alapértelmezés szerint a következőt tartalmazza: `All types` . Kattintson a legördülő listára, és törölje a jelölést `Select all` . Keresse `IoT Hub` meg és ellenőrizze. Kattintson a legördülő listára a bezárásához, és a bejegyzések szűrve lesznek, és csak a IoT hubok láthatók.
 
 ## <a name="delete-the-iot-hub"></a>Az IoT hub törlése
 

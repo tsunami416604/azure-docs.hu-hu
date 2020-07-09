@@ -1,24 +1,24 @@
 ---
 title: Alkalmazás-Szerepkörök hozzáadása és jogkivonatból való beszerzése | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan adhat hozzá alkalmazás-szerepköröket egy Azure Active Directory regisztrált alkalmazásban, hogyan rendelhet hozzá felhasználókat és csoportokat ezekhez `roles` a szerepkörökhöz, és hogyan fogadhatja azokat a jogkivonatban lévő jogcímben.
+description: Megtudhatja, hogyan adhat hozzá alkalmazás-szerepköröket egy Azure Active Directory regisztrált alkalmazásban, hogyan rendelhet hozzá felhasználókat és csoportokat ezekhez a szerepkörökhöz, és hogyan fogadhatja azokat a `roles` jogkivonatban lévő jogcímben.
 services: active-directory
 author: kkrishna
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aedf5d710b82185cb634fcd92e6981a2c358ad52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477889"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -30,7 +30,7 @@ Egy másik módszer az Azure AD-csoportok és a csoportos jogcímek használata 
 
 ## <a name="declare-roles-for-an-application"></a>Szerepkörök deklarálása egy alkalmazáshoz
 
-Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájljának [Azure Portal](https://portal.azure.com) vannak meghatározva.  Amikor egy felhasználó bejelentkezik az alkalmazásba, az Azure AD `roles` egy jogcímet bocsát ki minden olyan szerepkörhöz, amelyet a felhasználó egyénileg adott meg a felhasználó és a csoporttagság alapján.  A felhasználók és csoportok szerepkörökhöz való hozzárendelése a portál felhasználói felületén vagy programozott módon, [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)használatával végezhető el.
+Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájljának [Azure Portal](https://portal.azure.com) vannak meghatározva.  Amikor egy felhasználó bejelentkezik az alkalmazásba, az Azure AD egy `roles` jogcímet bocsát ki minden olyan szerepkörhöz, amelyet a felhasználó egyénileg adott meg a felhasználó és a csoporttagság alapján.  A felhasználók és csoportok szerepkörökhöz való hozzárendelése a portál felhasználói felületén vagy programozott módon, [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)használatával végezhető el.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazás szerepköreinek deklarálása Azure Portal használatával
 
@@ -40,10 +40,10 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
 1. Az **Azure Active Directory** ablaktáblán válassza a **Alkalmazásregisztrációk** lehetőséget az alkalmazások listájának megtekintéséhez.
 1. Válassza ki azt az alkalmazást, amelyben az alkalmazás-szerepköröket meg szeretné adni. Ezután válassza a **jegyzékfájl**lehetőséget.
-1. Szerkessze az alkalmazás-jegyzékfájlt úgy `appRoles` , hogy megkeresi a beállítást, és hozzáadja az összes alkalmazás-szerepkört.
+1. Szerkessze az alkalmazás-jegyzékfájlt úgy, hogy megkeresi a `appRoles` beállítást, és hozzáadja az összes alkalmazás-szerepkört.
 
      > [!NOTE]
-     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie a `id` tulajdonság jegyzékfájljának kontextusában.
+     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie a tulajdonság jegyzékfájljának kontextusában `id` .
      >
      > Az `value` egyes alkalmazás-szerepkör-definíciók tulajdonságának pontosan egyeznie kell az alkalmazás kódjában használt karakterláncokkal. A `value` tulajdonság nem tartalmazhat szóközöket. Ha igen, hibaüzenetet kap a jegyzékfájl mentésekor.
 
@@ -51,7 +51,7 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 
 ### <a name="examples"></a>Példák
 
-Az alábbi példa azt szemlélteti `appRoles` , hogy milyen műveleteket lehet `users`hozzárendelni.
+Az alábbi példa azt szemlélteti, hogy milyen műveleteket `appRoles` lehet hozzárendelni `users` .
 
 > [!NOTE]
 >A `id` kötelezően egyedi GUID-azonosítónak kell lennie.
@@ -76,7 +76,7 @@ Az alábbi példa azt szemlélteti `appRoles` , hogy milyen műveleteket lehet `
 > [!NOTE]
 >A `displayName` nem tartalmazhat szóközt.
 
-Megadhatja az `users` `applications`alkalmazáshoz tartozó szerepköröket, vagy mindkettőt. Ha elérhető `applications`, az alkalmazás szerepkörei a **szükséges engedélyek** panelen jelennek meg alkalmazási engedélyekként. Az alábbi példa egy alkalmazás-szerepkört mutat be `Application`a felé.
+Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` vagy mindkettőt. Ha elérhető `applications` , az alkalmazás szerepkörei a **szükséges engedélyek** panelen jelennek meg alkalmazási engedélyekként. Az alábbi példa egy alkalmazás-szerepkört mutat be a felé `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -124,6 +124,6 @@ Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárende
 - [Engedélyezés hozzáadása az alkalmazás szerepköreinek & a szerepkörök jogcímeinek használata egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Biztonsági csoportok és alkalmazás-szerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory-alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [HRE hozzáférési jogkivonatok](access-tokens.md)
 - [HRE`id_tokens`](id-tokens.md)

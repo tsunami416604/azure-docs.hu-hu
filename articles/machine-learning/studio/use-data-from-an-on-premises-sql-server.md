@@ -1,27 +1,26 @@
 ---
 title: Helyszíni SQL Server
 titleSuffix: ML Studio (classic) - Azure
-description: Helyszíni SQL Server-adatbázisból származó adatok használatával speciális elemzéseket végezhet Azure Machine Learning Studio (klasszikus).
+description: SQL Server-adatbázisból származó adatokkal speciális elemzési műveleteket hajthat végre Azure Machine Learning Studio (klasszikus) használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 890486214eb67be26479b122c88c7a6b640b8ade
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 49ec8916e03323bdf4263fe9ea6cfca323339dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706052"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Elemzések elvégzése Azure Machine Learning Studio (klasszikus) használatával helyszíni SQL Server-adatbázis segítségével
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Elemzések végrehajtása Azure Machine Learning Studio (klasszikus) SQL Server-adatbázis használatával
 
-A helyszíni adatokkal dolgozó vállalatok gyakran szeretnék kihasználni a felhő méretezését és rugalmasságát a gépi tanulási munkaterhelésekhez. Azonban nem szeretnék megszakítani a jelenlegi üzleti folyamatokat és munkafolyamatokat azáltal, hogy áthelyezik a helyszíni és a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok helyszíni SQL Server-adatbázisból való beolvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan átmásolnia és szinkronizálnia az adatait a felhő és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio (klasszikus) **adatimportálási** modulja most már közvetlenül a helyszíni SQL Server-adatbázisból is beolvasható a betanítási és pontozási feladatokhoz.
+A helyszíni adatokkal dolgozó vállalatok gyakran szeretnék kihasználni a felhő méretezését és rugalmasságát a gépi tanulási munkaterhelésekhez. Azonban nem szeretnék megszakítani a jelenlegi üzleti folyamatokat és munkafolyamatokat azáltal, hogy áthelyezik a helyszíni és a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok SQL Server adatbázisból való olvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan átmásolnia és szinkronizálnia az adatait a felhő és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio (klasszikus) **adatimportálási** modulja most már közvetlenül a SQL Server-adatbázisból is olvasható a betanítási és pontozási feladatokhoz.
 
-Ez a cikk áttekintést nyújt a helyszíni SQL Server-információk Azure Machine Learning Studio (klasszikus) rendszerbe való beáramlásáról. Feltételezi, hogy már ismeri a Studio (klasszikus) fogalmakat, például a munkaterületeket, modulokat, adatkészleteket, kísérleteket *stb*.
+Ez a cikk áttekintést nyújt arról, hogyan lehet bejutni SQL Serverba az adatAzure Machine Learning Studioba (klasszikus). Feltételezi, hogy már ismeri a Studio (klasszikus) fogalmakat, például a munkaterületeket, modulokat, adatkészleteket, kísérleteket *stb*.
 
 > [!NOTE]
 > Ez a funkció ingyenes munkaterületek esetén nem érhető el. További információ a Machine Learning díjszabásáról és szintjeiről: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
@@ -33,7 +32,7 @@ Ez a cikk áttekintést nyújt a helyszíni SQL Server-információk Azure Machi
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>A Data Factory saját üzemeltetésű Integration Runtime telepítése
-Ha Azure Machine Learning Studio (klasszikus) helyszíni SQL Server-adatbázist szeretne elérni, le kell töltenie és telepítenie kell a Data Factory saját üzemeltetésű Integration Runtime, korábbi nevén adatkezelés átjáróként. Ha a Machine Learning Studio (klasszikus) szolgáltatásban konfigurálja a kapcsolatot, lehetősége van a Integration Runtime (IR) letöltésére és telepítésére az alább ismertetett **letöltés és regisztrálás adatátjáró** használatával.
+Azure Machine Learning Studio (klasszikus) SQL Server-adatbázis eléréséhez le kell töltenie és telepítenie kell a Data Factory saját üzemeltetésű Integration Runtime, korábbi nevén adatkezelés átjáróként. Ha a Machine Learning Studio (klasszikus) szolgáltatásban konfigurálja a kapcsolatot, lehetősége van a Integration Runtime (IR) letöltésére és telepítésére az alább ismertetett **letöltés és regisztrálás adatátjáró** használatával.
 
 
 Az IR-t az idő előtt is telepítheti, ha letölti és futtatja az MSI-telepítőcsomagot a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). Az MSI-t a meglévő IR legújabb verzióra történő frissítésére is használhatja, minden beállítás megőrzött.
@@ -64,8 +63,8 @@ Data Factory saját üzemeltetésű Integration Runtime beállításakor és has
 
 A telepítési előfeltételekről, a telepítési lépésekről és a hibaelhárítási tippekről a [Data Factory Integration Runtime](../../data-factory/concepts-integration-runtime.md)cikkben talál részletes információt.
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>A helyszíni SQL Server-adatbázisból származó adatok beáramlása Azure Machine Learning
-Ebben az útmutatóban egy Azure Data Factory Integration Runtime kell beállítania egy Azure Machine Learning munkaterületen, konfigurálnia kell, majd el kell olvasnia egy helyszíni SQL Server-adatbázis adatait.
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Adatok beáramlása a SQL Server-adatbázisból a Azure Machine Learningba
+Ebben az útmutatóban egy Azure Data Factory Integration Runtime kell beállítania egy Azure Machine Learning munkaterületen, konfigurálnia kell, majd el kell olvasnia egy SQL Server-adatbázis adatait.
 
 > [!TIP]
 > Mielőtt elkezdené, tiltsa le a böngésző előugró ablak-blokkoló eszközét `studio.azureml.net` . Ha a Google Chrome böngészőt használja, töltse le és telepítse a Google Chrome webáruházban elérhető több beépülő modul egyikét, [majd kattintson az alkalmazás kiterjesztésére](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
@@ -74,7 +73,7 @@ Ebben az útmutatóban egy Azure Data Factory Integration Runtime kell beállít
 > Azure Data Factory saját üzemeltetésű Integration Runtime korábbi nevén adatkezelés átjáró. Az útmutató lépésről lépésre oktatóanyag továbbra is átjáróként hivatkozik rá.  
 
 ### <a name="step-1-create-a-gateway"></a>1. lépés: átjáró létrehozása
-Első lépésként létre kell hoznia és be kell állítania az átjárót a helyszíni SQL-adatbázis eléréséhez.
+Első lépésként létre kell hoznia és be kell állítania az átjárót az SQL-adatbázis eléréséhez.
 
 1. Jelentkezzen be [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/Home/) webhelyre, és válassza ki azt a munkaterületet, amelyen dolgozni szeretne.
 2. Kattintson a bal oldali **Beállítások** panelre, majd kattintson a felül található **adatátjárók** fülre.
@@ -121,7 +120,7 @@ Most már készen áll a helyszíni adatai használatára.
 Mindegyik munkaterülethez létrehozhat és beállíthat több átjárót a Studio (klasszikus) használatával. Előfordulhat például, hogy egy átjáróval szeretne csatlakozni a tesztelési adatforrásokhoz a fejlesztés során, valamint egy másik átjárót az éles adatforrásokhoz. A Azure Machine Learning Studio (klasszikus) lehetőséget biztosít több átjáró beállítására a vállalati környezettől függően. Jelenleg nem oszthat meg átjárókat a munkaterületek között, és csak egy átjárót telepíthet egyetlen számítógépre. További információkért lásd: [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2. lépés: a helyszíni adatforrásból származó adatok beolvasása az átjáró használatával
-Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult egy olyan kísérlethez, amely beírja az adatokat a helyszíni SQL Server adatbázisból.
+Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult egy olyan kísérlethez, amely beírja az adatokat a SQL Server-adatbázisból.
 
 1. A Machine Learning Studio (klasszikus) területen válassza a **kísérletek** fület, kattintson a bal alsó sarokban található **+ új** elemre, majd válassza az **üres kísérlet** lehetőséget (vagy válassza ki az elérhető több minta kísérlet egyikét).
 2. Keresse meg és húzza az **adatimportálási** modult a kísérleti vászonra.
@@ -133,7 +132,7 @@ Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult eg
 
    ![Adatátjáró kiválasztása adatmodul importálásához](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
 6. Adja meg az SQL **Database-kiszolgáló nevét** és az **adatbázis nevét**, valamint azt az SQL **Database-lekérdezést** , amelyet végre szeretne hajtani.
-7. Kattintson az **értékek megadása** a **Felhasználónév és a jelszó** területen, majd adja meg az adatbázis hitelesítő adatait. A helyszíni SQL Server konfigurálásának módjától függően integrált Windows-hitelesítést vagy SQL Server hitelesítést használhat.
+7. Kattintson az **értékek megadása** a **Felhasználónév és a jelszó** területen, majd adja meg az adatbázis hitelesítő adatait. A SQL Server konfigurálásának módjától függően integrált Windows-hitelesítést vagy SQL Server hitelesítést használhat.
 
    ![Adja meg az adatbázis hitelesítő adatait](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
@@ -144,4 +143,4 @@ Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult eg
 
 Miután a kísérlet futása befejeződött, az **adatok importálása** modul kimeneti portjára kattintva megjelenítheti az adatbázisból importált adatokat, és kiválaszthatja a **Megjelenítés**elemet.
 
-Miután befejezte a kísérletet, üzembe helyezheti és működővé tenni a modellt. A Batch végrehajtási szolgáltatás használatával az adatok **importálása** modulban konfigurált helyszíni SQL Server adatbázisból származó adatok beolvasása és pontozása történik. Habár a kérés-válasz szolgáltatást használhatja a helyszíni adatkereséshez, a Microsoft az [Excel-bővítmény](excel-add-in-for-web-services.md) használatát javasolja helyette. A helyszíni SQL Server adatbázisra való írás jelenleg nem támogatott a **Export Data** kísérletekben vagy a közzétett webszolgáltatásokban.
+Miután befejezte a kísérletet, üzembe helyezheti és működővé tenni a modellt. A Batch végrehajtási szolgáltatás használatával az **adatimportálási** modulban konfigurált SQL Server adatbázisból származó adatok beolvasása és pontozása történik. Habár a kérés-válasz szolgáltatást használhatja a helyszíni adatkereséshez, a Microsoft az [Excel-bővítmény](excel-add-in-for-web-services.md) használatát javasolja helyette. Jelenleg az **exportálási adataival** SQL Server adatbázisba való írás nem támogatott a kísérletekben vagy a közzétett webszolgáltatásokban.

@@ -13,11 +13,10 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708960"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
 
@@ -61,13 +60,13 @@ A beállításkészlet lehetővé teszi több hang-és videó-elemzés kinyerés
 * **Vizuális tartalmak moderálása**: a videók azon része, amelyet felnőttként vagy zamatként megjelöltek a természetben.
 * **Megjegyzés**: a videók előre definiált objektummodell alapján való megjegyzésének eredménye
 
-## <a name="insightsjson-elements"></a>bepillantást. JSON-elemek
+## <a name="insightsjson-elements"></a>Elemek insights.js
 
-A kimenet tartalmaz egy JSON-fájlt (megállapítások. JSON) a videóban vagy a hangban található összes elemzéssel. A JSON a következő elemeket tartalmazhatja:
+A kimenet tartalmaz egy JSON-fájlt (insights.json) a videóban vagy hangban található összes elemzéssel. A JSON a következő elemeket tartalmazhatja:
 
 ### <a name="transcript"></a>átirat
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|A sor azonosítója.|
 |szöveg|Maga a átirat.|
@@ -105,7 +104,7 @@ Példa:
 
 ### <a name="ocr"></a>OCR
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|Az OCR-sor azonosítója.|
 |szöveg|Az OCR szövege.|
@@ -148,10 +147,10 @@ Példa:
 
 ### <a name="faces"></a>arcok
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|A Face azonosító.|
-|név|Az arc neve. Ez lehet "ismeretlen #0", egy azonosított híresség vagy egy felhasználó által betanított személy.|
+|name|Az arc neve. Ez lehet "ismeretlen #0", egy azonosított híresség vagy egy felhasználó által betanított személy.|
 |megbízhatóság|Az arc azonosításának megbízhatósága.|
 |leírás|A híresség leírása. |
 |thumbnailId|Az adott arc miniatűrje.|
@@ -193,7 +192,7 @@ Példa:
 
 ### <a name="shots"></a>lövések
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|A shot azonosítója.|
 |Kulcsképek|A shot keretén belüli kulcstárolók listája (mindegyik rendelkezik egy AZONOSÍTÓval és egy példányok időtartományával). A kulcstároló-példányok egy thumbnailId-mezővel rendelkeznek, amely a kulcs miniatűrjét AZONOSÍTÓval rendelkezik.|
@@ -250,7 +249,7 @@ Példa:
 
 ### <a name="statistics"></a>statisztikák
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |CorrespondenceCount|A videóban található Levelezések száma.|
 |WordCount|A beszélő szavak száma.|
@@ -263,7 +262,7 @@ Példa:
 
 Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/negatív). Például: 0-0,1, 0,1-0.2.
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|Az érzelmi azonosító.|
 |averageScore |Az adott érzelmi típus összes példányának átlaga – pozitív/semleges/negatív|
@@ -298,10 +297,10 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 ### <a name="labels"></a>Címkék
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|A címke azonosítója|
-|név|A címke neve (például "számítógép", "TV").|
+|name|A címke neve (például "számítógép", "TV").|
 |language|A címke nevének nyelve (fordításkor). BCP-47|
 |esetben|Azon időtartományok listája, amelyekben ez a címke megjelent (a címke többször is megjelenhet). Minden példány megbízhatósági mezővel rendelkezik. |
 
@@ -356,7 +355,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 ### <a name="keywords"></a>kulcsszavak
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|A kulcsszó azonosítója.|
 |szöveg|A kulcsszó szövege.|
@@ -405,9 +404,9 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 A visualContentModeration blokk olyan időtartományokat tartalmaz, amelyeknek a Video Indexer valószínűleg felnőtt tartalommal rendelkeznek. Ha a visualContentModeration üres, nincs azonosított felnőtt tartalom.
 
-A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez érhetők el. A felhasználók a tartalom emberi felülvizsgálatára vonatkozó kérelmet küldhetnek, amely esetben az `IsAdult` attribútum az emberi felülvizsgálat eredményét fogja tartalmazni.
+A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez érhetők el. A felhasználók a tartalom emberi felülvizsgálatára vonatkozó kérelmet küldhetnek, amely esetben az attribútum az `IsAdult` emberi felülvizsgálat eredményét fogja tartalmazni.
 
-|Name (Név)|Leírás|
+|Name|Description|
 |---|---|
 |id|A vizuális tartalom moderálásának azonosítója.|
 |adultScore|A felnőtt pontszám (a tartalom moderátora).|

@@ -6,17 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906802"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor (előzetes verzió)
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan elemezheti a szöveges adatokat egy Log Analytics-munkaterületen a gyűjtött adatok alapján. Azt javasoljuk, hogy a szöveges adatok elemzését a lekérdezési szűrőben a következő témakörben ismertetett útmutatást követve olvassa el: [Azure monitor](../log-query/parse-text.md). Számos előnyt biztosít az egyéni mezők használata során.
+
+> [!IMPORTANT]
+> Az egyéni mezők növelik a Log Analytics munkaterületen összegyűjtött adatok mennyiségét, ami növelheti a költségeket. A részletekért lásd: [a használat és a költségek kezelése Azure monitor naplókkal](manage-cost-storage.md#pricing-model) .
 
 A Azure Monitor **Egyéni mezők** funkciója lehetővé teszi, hogy a saját kereshető mezőinek hozzáadásával kiterjessze a log Analytics munkaterületen meglévő rekordokat.  Az egyéni mezők automatikusan ki lesznek töltve az ugyanabban a rekordban lévő más tulajdonságokból kinyert adatokból.
 
@@ -50,7 +53,7 @@ Az első lépés az egyéni mezőt lekérdező rekordok azonosítása.  Első l�
 ### <a name="step-2---perform-initial-extract"></a>2. lépés – kezdeti Kibontás végrehajtása.
 Miután azonosította az egyéni mezőt tartalmazó rekordokat, azonosítsa a kiolvasni kívánt adatokat.  A Log Analytics ezeket az információkat a hasonló rekordokban lévő hasonló minták azonosítására fogja használni.  A lépés után érvényesítheti az eredményeket, és további részleteket adhat meg a Log Analytics számára az elemzésében való használathoz.
 
-1. Jelölje ki a minta rekordban azt a szöveget, amelyet fel szeretne tölteni az egyéni mezővel.  Ekkor megjelenik egy párbeszédpanel, ahol megadhatja a mező nevét és adattípusát, és elvégezheti a kezdeti kinyerést.  A rendszer automatikusan hozzáfűzi a ** \_CF** karaktereket.
+1. Jelölje ki a minta rekordban azt a szöveget, amelyet fel szeretne tölteni az egyéni mezővel.  Ekkor megjelenik egy párbeszédpanel, ahol megadhatja a mező nevét és adattípusát, és elvégezheti a kezdeti kinyerést.  A rendszer automatikusan hozzáfűzi a ** \_ CF** karaktereket.
 2. Az összegyűjtött rekordok elemzéséhez kattintson a **Kibontás** elemre.  
 3. Az **Összefoglalás** és a **keresési eredmények** szakaszban a kivonat eredményei láthatók, így ellenőrizheti annak pontosságát.  Az **Összefoglalás** megjeleníti a rekordok azonosítására szolgáló feltételeket és az azonosított adatértékek számát.  A **keresési eredmények** a feltételnek megfelelő rekordok részletes listáját jelenítik meg.
 

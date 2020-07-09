@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192484"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080006"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
 
-Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage- *fiókok* HDInsight való hozzáadásához. A jelen dokumentum lépései egy meglévő HDInsight-fürthöz adhatnak hozzá Storage- *fiókot* . Ez a cikk a Storage- *fiókokra* vonatkozik (nem az alapértelmezett fürtbeli Storage-fiókra), [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) és [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md)nem a további tárhelyek, például a és a.
+Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage- *fiókok* HDInsight való hozzáadásához. A jelen dokumentum lépései egy meglévő HDInsight-fürthöz adhatnak hozzá Storage- *fiókot* . Ez a cikk a Storage- *fiókokra* vonatkozik (nem az alapértelmezett fürtbeli Storage-fiókra), és nem a további tárhelyek, például a [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) és a [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
 
 > [!IMPORTANT]  
 > A jelen dokumentumban található információk további Storage-fiók (ok) egy fürthöz való hozzáadását ismertetik a létrehozása után. A Storage-fiókok fürt létrehozása során történő hozzáadásával kapcsolatos információkért lásd: [fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és sok más](hdinsight-hadoop-provision-linux-clusters.md).
@@ -32,13 +32,13 @@ Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage
 
 A feldolgozás során a szkript a következő műveleteket végzi el:
 
-* Ha a Storage-fiók már létezik a fürt Core-site. XML konfigurációjában, a parancsfájl kilép, és nem végez további műveleteket.
+* Ha a Storage-fiók már létezik a fürt core-site.xml konfigurációjában, a parancsfájl kilép, és nem történik további művelet.
 
 * Ellenőrzi, hogy a Storage-fiók létezik-e, és hogy a kulcs használatával érhető-e el.
 
 * Titkosítja a kulcsot a fürt hitelesítő adatainak használatával.
 
-* Hozzáadja a Storage-fiókot a Core-site. xml fájlhoz.
+* Hozzáadja a Storage-fiókot a core-site.xml fájlhoz.
 
 * Leállítja és újraindítja az Apache Oozie, Apache Hadoop FONALat, Apache Hadoop MapReduce2 és Apache Hadoop HDFS szolgáltatásokat. A szolgáltatások leállítása és elindítása lehetővé teszi, hogy az új Storage-fiókot használják.
 
@@ -53,21 +53,21 @@ A következő szempontok alapján alkalmazza a módosításokat a [parancsfájl-
 |---|---|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |Csomópont típusa (i)|Head|
-|Paraméterek|`ACCOUNTNAME``ACCOUNTKEY` `-p`|
+|Paraméterek|`ACCOUNTNAME``ACCOUNTKEY` `-p` (nem kötelező)|
 
 * `ACCOUNTNAME`a HDInsight-fürthöz hozzáadandó Storage-fiók neve.
-* `ACCOUNTKEY`a elérési kulcsa `ACCOUNTNAME`.
-* A(z) `-p` nem kötelező. Ha meg van adva, a kulcs nincs titkosítva, és a Core-site. xml fájlban tárolja egyszerű szövegként.
+* `ACCOUNTKEY`a elérési kulcsa `ACCOUNTNAME` .
+* A(z) `-p` nem kötelező. Ha meg van adva, a kulcs nincs titkosítva, és a core-site.xml fájlban tárolódik egyszerű szövegként.
 
 ## <a name="verification"></a>Ellenőrzés
 
-Ha a HDInsight-fürtöt a Azure Portal tekinti meg, akkor a __Tulajdonságok__ területen a __Storage-fiókok__ bejegyzés nem jeleníti meg a parancsfájl-művelettel hozzáadott tárolási fiókokat. Azure PowerShell és az Azure CLI nem jeleníti meg a további Storage-fiókot sem. A tárolási adatok nem jelennek meg, mert a parancsfájl csak `core-site.xml` a fürt konfigurációját módosítja. Ez az információ nem használatos a fürt adatainak Azure felügyeleti API-k használatával történő beolvasásakor.
+Ha a HDInsight-fürtöt a Azure Portal tekinti meg, akkor a __Tulajdonságok__ területen a __Storage-fiókok__ bejegyzés nem jeleníti meg a parancsfájl-művelettel hozzáadott tárolási fiókokat. Azure PowerShell és az Azure CLI nem jeleníti meg a további Storage-fiókot sem. A tárolási adatok nem jelennek meg, mert a parancsfájl csak a `core-site.xml` fürt konfigurációját módosítja. Ez az információ nem használatos a fürt adatainak Azure felügyeleti API-k használatával történő beolvasásakor.
 
 A további tárterület ellenőrzéséhez használja az alábbi módszerek egyikét:
 
 ### <a name="powershell"></a>PowerShell
 
-A parancsfájl visszaadja az adott fürthöz társított Storage-fiók nevét (ke) t. Cserélje `CLUSTERNAME` le a nevet a tényleges fürt nevére, majd futtassa a parancsfájlt.
+A parancsfájl visszaadja az adott fürthöz társított Storage-fiók nevét (ke) t. Cserélje le a `CLUSTERNAME` nevet a tényleges fürt nevére, majd futtassa a parancsfájlt.
 
 ```powershell
 # Update values
@@ -95,19 +95,19 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="apache-ambari"></a>Apache Ambari
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. Navigáljon a **HDFS** > **konfigurációk** > **speciális** > **Egyéni Core-site**elemre.
+1. Navigáljon a **HDFS**  >  **konfigurációk**  >  **speciális**  >  **Egyéni Core-site**elemre.
 
-1. Figyelje meg, hogy milyen kulcsokat kell `fs.azure.account.key`megkezdenie. A fiók neve a kulcs része lesz, ahogy az ebben a példában szereplő képen látható:
+1. Figyelje meg, hogy milyen kulcsokat kell megkezdenie `fs.azure.account.key` . A fiók neve a kulcs része lesz, ahogy az ebben a példában szereplő képen látható:
 
    ![ellenőrzés az Apache Ambari](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
 
 ## <a name="remove-storage-account"></a>Storage-fiók eltávolítása
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. Navigáljon a **HDFS** > **konfigurációk** > **speciális** > **Egyéni Core-site**elemre.
+1. Navigáljon a **HDFS**  >  **konfigurációk**  >  **speciális**  >  **Egyéni Core-site**elemre.
 
 1. Távolítsa el a következő kulcsokat:
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
@@ -123,7 +123,7 @@ Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális h�
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>Nem lehet hozzáférni a tárolóhoz a kulcs módosítása után
 
-Ha megváltoztatja egy Storage-fiók kulcsát, a HDInsight már nem fér hozzá a Storage-fiókhoz. A HDInsight a kulcs gyorsítótárazott példányát használja a Core-site. xml fájlban a fürthöz. Ezt a gyorsítótárazott másolatot frissíteni kell, hogy az megfeleljen az új kulcsnak.
+Ha megváltoztatja egy Storage-fiók kulcsát, a HDInsight már nem fér hozzá a Storage-fiókhoz. A HDInsight a kulcs gyorsítótárazott példányát használja a fürt core-site.xmljában. Ezt a gyorsítótárazott másolatot frissíteni kell, hogy az megfeleljen az új kulcsnak.
 
 A parancsfájl-művelet ismételt futtatása **nem** frissíti a kulcsot, mert a parancsfájl ellenőrzi, hogy van-e már létező bejegyzés a Storage-fiókhoz. Ha egy bejegyzés már létezik, nem végez módosítást.
 
@@ -133,14 +133,6 @@ A probléma megkerülése:
 
 > [!IMPORTANT]  
 > A fürthöz csatolt elsődleges Storage-fiók tárolási kulcsának elforgatása nem támogatott.
-
-### <a name="poor-performance"></a>Gyenge teljesítmény
-
-Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, a teljesítmény gyenge lehet. Az adatok egy másik régióban való elérése a regionális Azure-adatközponton kívüli hálózati forgalmat küld. És a nyilvános interneten keresztül, amely képes késést bevezetni.
-
-### <a name="additional-charges"></a>További díjak
-
-Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, az Azure-számlázás további kimenő költségeire is figyelmeztetheti. Ha az adatközpont elhagyja a helyi adatközpontot, a kimenő forgalom díját is alkalmazza. Ez a díj akkor is alkalmazható, ha a forgalmat egy másik régióban lévő Azure-adatközpontra szánják.
 
 ## <a name="next-steps"></a>További lépések
 

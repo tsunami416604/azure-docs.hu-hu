@@ -1,6 +1,6 @@
 ---
-title: Első lépések az Azure IoT Hub modul Identity & modul twin (node. js)
-description: Ismerje meg, hogyan hozhatja létre a modul identitását és a modulokat a Node. js-hez készült IoT SDK-k használatával.
+title: Első lépések az Azure IoT Hub modul Identity & modul twin (Node.js)
+description: Megtudhatja, hogyan hozhat létre modul-identitást és-frissítési modult a Node.js IoT SDK-k használatával.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,20 +11,19 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp
 ms.openlocfilehash: 8e1599b1bd5db5e410e8bbd76fffbe0beb5f066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732302"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (node. js)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Node.js)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
 > [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Noha az Azure IoT Hub eszköz-identitás és az eszköz kettős, lehetővé teszi a háttér-alkalmazás számára az eszköz konfigurálását és az eszköz feltételeinek láthatóságát A megfelelő, több összetevős eszközök, például az operációs rendszeren vagy a belső vezérlőprogramon alapuló eszközök esetében lehetővé teszi az elkülönített konfigurációk és feltételek beállítását az egyes összetevőkhöz.
 
-Az oktatóanyag végén két Node. js-alkalmazás található:
+Az oktatóanyag végén két Node.js alkalmazást használhat:
 
 * A **CreateIdentities** egy eszközidentitást, egy modulidentitást valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat az eszközhöz és a modulügyfelekhez.
 
@@ -35,7 +34,7 @@ Az oktatóanyag végén két Node. js-alkalmazás található:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* Node.js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Windows vagy Linux rendszerhez készült Node.js az oktatóanyaghoz.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
@@ -51,18 +50,18 @@ Az oktatóanyag végén két Node. js-alkalmazás található:
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Eszköz identitásának és modul-identitásának létrehozása IoT Hub
 
-Ebben a szakaszban egy Node. js-alkalmazást hoz létre, amely létrehoz egy eszköz-identitást és egy modul-identitást az IoT hub identitás-beállításjegyzékében. Egy eszköz vagy modul csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért tekintse meg a [IoT hub fejlesztői útmutató](iot-hub-devguide-identity-registry.md)"Identity Registry" című szakaszát. A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
+Ebben a szakaszban egy Node.js alkalmazást hoz létre, amely létrehoz egy eszköz-identitást és egy modul-identitást az IoT hub identitás-beállításjegyzékében. Egy eszköz vagy modul csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért tekintse meg a [IoT hub fejlesztői útmutató](iot-hub-devguide-identity-registry.md)"Identity Registry" című szakaszát. A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
 
 1. Hozzon létre egy könyvtárat a kód tárolásához.
 
-2. A könyvtár belsejében először futtassa a **NPM init-y** parancsot, és hozzon létre egy üres Package. JSON fájlt az alapértelmezett beállításokkal. Ez a kód projektfájl.
+2. A könyvtár belsejében először futtassa a **NPM init-y** parancsot, hogy üres package.jshozzon létre alapértelmezett értékekkel. Ez a kód projektfájl.
 
-3. A **NPM install-S Azure-iothub\@modulok futtatása – előzetes** verzió a service SDK telepítéséhez a **node_modules** alkönyvtáron belül.
+3. A **NPM install-S Azure-iothub \@ modulok futtatása – előzetes** verzió a Service SDK telepítéséhez a **node_modules** alkönyvtáron belül.
 
     > [!NOTE]
     > Az alkönyvtár neve node_modules a Word modult használja a "csomópont-függvénytár" kifejezésre. Az itt található kifejezés IoT Hub modulokkal nem rendelkezik.
 
-4. Hozza létre a következő. js fájlt a címtárában. Hívja meg az **Add. js fájlt**. Másolja és illessze be a hub-kapcsolatok sztringjét és a hub nevét.
+4. Hozza létre a következő. js fájlt a címtárában. Hívja meg **add.js**. Másolja és illessze be a hub-kapcsolatok sztringjét és a hub nevét.
 
     ```javascript
     var Registry = require('azure-iothub').Registry;
@@ -121,20 +120,20 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre, amely létrehoz egy esz
 
 Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul adatait.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
 
-Futtassa ezt a következő csomópont használatával: Add. js. Megadja az eszköz identitásához tartozó kapcsolatok karakterláncát, és egy másikat a modul identitásához.
+Futtassa ezt a csomópont add.js használatával. Megadja az eszköz identitásához tartozó kapcsolatok karakterláncát, és egy másikat a modul identitásához.
 
 > [!NOTE]
 > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [IoT hub fejlesztői útmutató](iot-hub-devguide-identity-registry.md).
 
-## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>A modul Twin frissítése a Node. js eszközoldali SDK használatával
+## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>A Twin modul frissítése Node.js Device SDK használatával
 
-Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön, amely frissíti a modul Twin jelentett tulajdonságait.
+Ebben a szakaszban egy Node.js alkalmazást hoz létre a szimulált eszközön, amely frissíti a modul Twin jelentett tulajdonságait.
 
 1. **A modul kapcsolódási karakterláncának beszerzése** – bejelentkezés a [Azure Portalba](https://portal.azure.com/). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Hasonlóan a fenti lépéshez, hozzon létre egy könyvtárat az eszköz kódjához, és a NPM használatával inicializálja és telepítse az eszköz SDK-t (**NPM install-S Azure-IOT-Device-\@amqp modulok – előzetes**verzió).
+2. Hasonlóan a fenti lépéshez, hozzon létre egy könyvtárat az eszköz kódjához, és a NPM használatával inicializálja és telepítse az eszköz SDK-t (**NPM install-S Azure-IOT-Device-amqp \@ modulok – előzetes**verzió).
 
    > [!NOTE]
    > Előfordulhat, hogy a NPM telepítési parancs lassú. Legyen türelmes, sok kódot húz le a csomag adattárból.
@@ -142,7 +141,7 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön,
    > [!NOTE]
    > Ha olyan hibaüzenetet lát, amely szerint a NPM ERR! beállításjegyzék-hiba a JSON-elemzés során, ez a biztonságos figyelmen kívül hagyása. Ha olyan hibaüzenetet lát, amely szerint a NPM ERR! beállításjegyzék-hiba a JSON-elemzés során, ez a biztonságos figyelmen kívül hagyása.
 
-3. Hozzon létre egy Twin. js nevű fájlt. Másolja és illessze be a modul Identity sztringjét.
+3. Hozzon létre egy twin.js nevű fájlt. Másolja és illessze be a modul Identity sztringjét.
 
     ```javascript
     var Client = require('azure-iot-device').Client;
@@ -193,7 +192,7 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön,
     });
     ```
 
-4. Ezután futtassa a következő parancsot a **Twin. js**parancs használatával.
+4. Ezután futtassa ezt a parancsot a **twin.jsparancssori csomópont **használatával.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

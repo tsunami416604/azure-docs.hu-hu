@@ -4,15 +4,15 @@ description: További információ az Azure Private linkről
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 81dbbeda9d0132de63180cc13f6243761e0ba865
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737376"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -21,7 +21,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gép
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot, amely a Virtual Network és a privát végpontot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)tárolja. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestUS* helyen:
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>A saját DNS zóna konfigurálása 
-Hozzon létre egy magánhálózati DNS-zónát SQL Database tartományhoz, és hozzon létre egy társítási hivatkozást a virtuális hálózattal: 
+Hozzon létre egy saját DNS zónát SQL Database tartományhoz, hozzon létre egy társítási hivatkozást a Virtual Network, és hozzon létre egy DNS-zónát, hogy társítsa a privát végpontot a saját DNS zónához.
 
 ```azurepowershell
 
@@ -153,19 +153,11 @@ $link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup"
   -ZoneName "privatelink.database.windows.net"`
   -Name "mylink" `
   -VirtualNetworkId $virtualNetwork.Id  
- 
-$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.database.windows.net"  `
--ResourceGroupName "myResourceGroup" -Ttl 600 `
--PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
-} 
-} 
+
+$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
+
+$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
+ -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
 ``` 
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
@@ -192,7 +184,7 @@ mstsc /v:<publicIpAddress>
   > [!NOTE]
   > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon. 
   
-3. Kattintson az **OK** gombra. 
+3. Válassza az **OK** lehetőséget. 
 4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
 
 ## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
@@ -217,7 +209,7 @@ mstsc /v:<publicIpAddress>
     | Beállítás | Érték |
     | --- | --- |
     | Kiszolgáló típusa | Adatbázismotor |
-    | Kiszolgálónév | myserver.database.windows.net |
+    | Kiszolgáló neve | myserver.database.windows.net |
     | Felhasználónév | Adja meg a létrehozás során megadott felhasználónevet |
     | Jelszó | Adja meg a létrehozás során megadott jelszót |
     | Jelszó megjegyzése | Yes |
@@ -234,5 +226,5 @@ Ha végzett a privát végponttal, SQL Database és a virtuális géppel, a [Rem
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [Azure Private linkről](private-link-overview.md)

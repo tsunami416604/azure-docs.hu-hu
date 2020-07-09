@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 04/30/2020
 ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889258"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
@@ -34,7 +33,7 @@ A következő táblázat a HDInsight-fürtök beállításához használható k�
 
 | A-val létrehozott fürtök | Webböngésző | Parancssor | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portalra](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -98,13 +97,13 @@ A HDInsight-fürtök esetében két felhasználói fiókot is beállíthat a fü
 A HTTP-Felhasználónév a következő korlátozásokkal rendelkezik:
 
 * Engedélyezett speciális karakterek: `_` és`@`
-* Nem engedélyezett karakterek: #;. "",\/: "! *? $ (){}[] <>|&--= +% ~ ^ szóköz
+* Nem engedélyezett karakterek: #;. "", \/ : "! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximális hossz: 20
 
 Az SSH-Felhasználónév a következő korlátozásokkal rendelkezik:
 
-* Engedélyezett speciális karakterek:`_` és`@`
-* Nem engedélyezett karakterek: #;. "",\/: "! *? $ (){}[] <>|&--= +% ~ ^ szóköz
+* Engedélyezett speciális karakterek: `_` és`@`
+* Nem engedélyezett karakterek: #;. "", \/ : "! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximális hossz: 64
 * Fenntartott nevek: Hadoop, felhasználók, oozie, struktúra, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, fonal, hcat, AMS, hbase, Storm, Administrator, admin, felhasználó, Felhasználó1, test, Felhasználó2, test1, user3, Rendszergazda1, 1, 123, a, actuser, adm, admin2, ASPNET, Backup, konzol, David, vendég, János, tulajdonos, gyökér, kiszolgáló, SQL, támogatás, support_388945a0, sys, teszt2, test3, user4, user5, Spark
 
@@ -266,21 +265,21 @@ Egyes natív Java-összetevők, például az Apache Mahout és a kaszkádolt, Ja
 
 Időnként a következő konfigurációs fájlokat szeretné konfigurálni a létrehozási folyamat során:
 
-* clusterIdentity. XML
-* Core-site. XML
-* Gateway. XML
-* hbase-env. XML
-* hbase-site. XML
-* hdfs-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred – hely
-* oozie-site. XML
-* oozie-env. XML
-* Storm-site. XML
-* Tez-site. XML
-* webhcat-site. XML
-* yarn-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 
 További információ: HDInsight- [fürtök testreszabása a bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md).
 

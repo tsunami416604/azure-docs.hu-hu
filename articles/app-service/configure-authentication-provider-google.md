@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519950"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Google bejelentkezés használatára
@@ -25,8 +25,8 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Alkalmazás regisztrálása a Google-ban
 
 1. Az ügyfél-azonosító és az ügyfél titkos kódjának létrehozásához kövesse a Google-beli Google-dokumentációt a [kiszolgálóoldali alkalmazásokhoz](https://developers.google.com/identity/sign-in/web/server-side-flow) . A kód módosítása nem szükséges. Csak használja a következő információkat:
-    - A **JavaScript**-alapú engedélyezéshez `https://<app-name>.azurewebsites.net` használja az alkalmazás nevét az * \<app-Name>ban *.
-    - A **jóváhagyott átirányítási URI**- `https://<app-name>.azurewebsites.net/.auth/login/google/callback`hoz használja a következőt:.
+    - Az Ön által használt **JavaScript**-forrásokhoz használja az `https://<app-name>.azurewebsites.net` alkalmazás nevét a ben *\<app-name>* .
+    - A **jóváhagyott átirányítási URI**-hoz használja a következőt: `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Másolja az alkalmazás AZONOSÍTÓját és az alkalmazás titkos értékeit.
 
     > [!IMPORTANT]
@@ -35,9 +35,9 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Google-információk hozzáadása az alkalmazáshoz
 
 1. A [Azure Portal]nyissa meg a app Service alkalmazást.
-1. Válassza a **Beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. Válassza a **Google**lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
    A App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. További információ: [felhasználók engedélyezése vagy megtagadása](app-service-authentication-how-to.md#authorize-or-deny-users).
 
@@ -65,5 +65,5 @@ Most már készen áll a Google használatára a hitelesítéshez az alkalmazás
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 

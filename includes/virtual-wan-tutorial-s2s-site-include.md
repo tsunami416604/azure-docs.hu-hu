@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4bcee1097010bb8746b11185a470ca2584485c3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ac23912b12bc6c7fcd40d7433cb4e2d257eeb5d0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73488935"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563033"
 ---
 1. A virtuális WAN portál lapjának **kapcsolat** szakaszában válassza a **VPN-helyek** lehetőséget a VPN-helyek lap megnyitásához.
 2. A **VPN-helyek** lapon kattintson a **+Hely létrehozása** elemre.
@@ -34,7 +34,12 @@ ms.locfileid: "73488935"
     * **Hivatkozás neve** – a VPN-helyen található fizikai hivatkozáshoz megadni kívánt név. Példa: mylink1.
     * **Szolgáltató neve** : a VPN-helyen található fizikai hivatkozás neve. Példa: ATT, Verizon.
     * **Sebesség** – ez a VPN-eszköz sebessége a fiókiroda helyén. Például: 50, ami azt jelenti, hogy 50 Mbps a VPN-eszköz sebessége a fiókirodában.
-    * **IP-cím** – a hivatkozást használó helyszíni eszköz nyilvános IP-címe. Opcionálisan megadhatja a helyszíni VPN-eszköz magánhálózati IP-címét, amely a ExpressRoute mögött található.
+    * **IP-cím/FQDN** – a helyszíni eszköz nyilvános IP-címe ezen a hivatkozáson keresztül. Opcionálisan megadhatja a helyszíni VPN-eszköz magánhálózati IP-címét, amely a ExpressRoute mögött található. A teljes tartománynevet is megadhatja. Például: *Something.contoso.com*. A teljes tartománynév feloldható a VPN-átjáróról. Ez akkor lehetséges, ha a teljes tartománynevet üzemeltető DNS-kiszolgáló elérhető az interneten keresztül. Az IP-cím elsőbbséget élvez, ha az IP-cím és a teljes tartománynév is meg van adva.
+
+      >[!NOTE]
+      >* A teljes tartományneven egy IPv4-t támogat. Ha a teljes tartománynevet több IP-címhez szeretné feloldani, akkor a VPN-átjáró az első IP4-címet felveszi a listából. Az IPv6-címek jelenleg nem támogatottak.
+      >* A VPN-átjáró olyan DNS-gyorsítótárat tart fenn, amely 5 percenként frissül. Az átjáró csak a leválasztott alagutak teljes tartománynevét próbálja meg feloldani. Az átjáró alaphelyzetbe állítása vagy A konfiguráció módosítása A teljes tartománynév feloldását is elindíthatja.
+      >
 5. A jelölőnégyzettel további hivatkozásokat is törölhet vagy adhat hozzá. VPN-helyek esetében négy hivatkozás támogatott. Ha például négy INTERNETSZOLGÁLTATÓval (internetszolgáltatóval) rendelkezik a fiókiroda helyén, négy hivatkozást hozhat létre. egy-egy INTERNETSZOLGÁLTATÓnál, és adja meg az egyes hivatkozások adatait.
 6. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás** lehetőséget a hely ellenőrzéséhez és létrehozásához.
 7. Tekintse meg az állapotot a VPN-helyek lapon. A hely **kapcsolódásra kerül a kapcsolathoz** , mert a hely még nem csatlakozott az elosztóhoz.

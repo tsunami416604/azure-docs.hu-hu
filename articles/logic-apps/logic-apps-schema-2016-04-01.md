@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792877"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Séma frissítései Azure Logic Apps – június 1-től 2016
@@ -85,7 +84,7 @@ A korábbi sémák verzióiban a feltételek és a hurkok egyetlen művelethez t
 
 ## <a name="runafter-property"></a>"runAfter" tulajdonság
 
-A `runAfter` tulajdonság lecserélésekor `dependsOn`nagyobb pontosságot biztosít, ha az előző műveletek állapota alapján adja meg a műveletek futtatási sorrendjét. A `dependsOn` tulajdonság azt jelzi, hogy "a művelet futott és sikeres volt-e", attól függően, hogy az előző művelet sikeres volt-e, sikertelen vagy kihagyott-e, nem a művelet futtatásához szükséges idő. A `runAfter` tulajdonság rugalmasságot biztosít olyan objektumként, amely az összes művelet nevét adja meg, amely után az objektum fut. Ez a tulajdonság határozza meg az eseményindítóként elfogadható állapotok tömbjét is. Ha például azt szeretné, hogy egy művelet sikeres művelet után fusson, és a B művelet sikeres vagy sikertelen volt-e, állítsa be a `runAfter` következő tulajdonságot:
+A `runAfter` tulajdonság lecserélésekor `dependsOn` nagyobb pontosságot biztosít, ha az előző műveletek állapota alapján adja meg a műveletek futtatási sorrendjét. A `dependsOn` tulajdonság azt jelzi, hogy "a művelet futott és sikeres volt-e", attól függően, hogy az előző művelet sikeres volt-e, sikertelen vagy kihagyott-e, nem a művelet futtatásához szükséges idő. A `runAfter` tulajdonság rugalmasságot biztosít olyan objektumként, amely az összes művelet nevét adja meg, amely után az objektum fut. Ez a tulajdonság határozza meg az eseményindítóként elfogadható állapotok tömbjét is. Ha például azt szeretné, hogy egy művelet sikeres művelet után fusson, és a B művelet sikeres vagy sikertelen volt-e, állítsa be a következő `runAfter` tulajdonságot:
 
 ```json
 {
@@ -141,7 +140,7 @@ A frissítés után a rendszer eltávolítja az erőforrás-címkéket, ezért a
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>A "Manual" trigger átnevezve a "Request" triggerre
 
-Az `manual` trigger típusa elavult, és a típusra `request` `http`lett átnevezve. Ez a változás nagyobb konzisztenciát eredményez a trigger által felépített minta típusához képest.
+Az `manual` trigger típusa elavult, és a típusra lett átnevezve `request` `http` . Ez a változás nagyobb konzisztenciát eredményez a trigger által felépített minta típusához képest.
 
 ### <a name="new-filter-action"></a>Új "szűrő" művelet
 
@@ -149,11 +148,11 @@ Ha egy nagyméretű tömböt kisebb készletekre szeretne szűrni, az új `filte
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>A "foreach" és a "ig" műveletre vonatkozó korlátozások
 
-A `foreach` és `until` a hurok egyetlen műveletre korlátozódik.
+A `foreach` és a `until` hurok egyetlen műveletre korlátozódik.
 
 ### <a name="new-trackedproperties-for-actions"></a>Új "trackedProperties" a műveletekhez
 
-A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperties`, amely a testvér a `runAfter` és `type` a tulajdonságok. Ez az objektum a munkafolyamat részeként kibocsátott Azure diagnosztikai telemetria felvenni kívánt műveletek bemeneteit és kimeneteit határozza meg. Például:
+A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperties` , amely a testvér a `runAfter` és a `type` Tulajdonságok. Ez az objektum a munkafolyamat részeként kibocsátott Azure diagnosztikai telemetria felvenni kívánt műveletek bemeneteit és kimeneteit határozza meg. Például:
 
 ``` json
 {

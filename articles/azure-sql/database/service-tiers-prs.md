@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
 ms.openlocfilehash: e277c2660107e7bb741157b7d8c573ff69b9186e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84051205"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database prémium RS szolgáltatási réteg (előzetes verzió) kivonása folyamatban van – áttelepítési lehetőségek
@@ -98,7 +98,7 @@ A prémium RS szolgáltatási szintjéről a DTU vagy a virtuális mag modellbe 
 
 A prémium RS számítási mérettel rendelkező adatbázisok átmásolhatók olyan adatbázisra, amely korlátozások vagy speciális sorrendek nélkül DTU vagy virtuális mag számítási mérettel rendelkezik, feltéve, hogy a célként megadott számítási méret támogatja a forrásadatbázis maximális adatbázis-méretét. Az adatbázis-másolat létrehoz egy pillanatképet az adatokról a másolási művelet kezdési időpontjáról, és nem hajtja végre az adatszinkronizálást a forrás és a cél között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az önálló adatbázisokhoz rendelkezésre álló számítási méretekről és a tárolási méretekről a következő témakörben talál további információt: [SQL Database virtuális mag-alapú erőforrás-korlátok egyetlen](resource-limits-vcore-single-databases.md) adatbázishoz
 - A rugalmas készletekhez rendelkezésre álló számítási méretekről és a tárhelyek méretére vonatkozó választási lehetőségekről a [rugalmas készletek SQL Database virtuális mag-alapú erőforrás-korlátozásait](resource-limits-vcore-elastic-pools.md)ismertető cikk nyújt tájékoztatást.

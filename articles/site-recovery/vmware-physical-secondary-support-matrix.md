@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256795"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135141"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre való vész-helyreállításának támogatási mátrixa
 
@@ -66,7 +66,7 @@ Csak a következő tárterülettel rendelkező Linux rendszerű gépek replikál
 
 ## <a name="network-configuration---hostguest-vm"></a>Hálózati konfiguráció – gazdagép/vendég virtuális gép
 
-**Configuration** | **Támogatott**  
+**Konfigurálás** | **Támogatott**  
 --- | --- 
 Gazdagép – hálózati adapterek összevonása | Igen 
 Gazdagép – VLAN | Igen 
@@ -86,17 +86,17 @@ Vendég virtuális gép – több hálózati adapter | Igen
 **Storage (gazdagép)** | **Támogatott** 
 --- | --- 
 NFS | Igen 
-SMB 3.0 | N/A 
+SMB 3.0 | N.A. 
 SAN (ISCSI) | Igen 
 Több elérési út (MPIO) | Igen 
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég vagy fizikai kiszolgáló tárterülete
 
-**Configuration** | **Támogatott** 
+**Konfigurálás** | **Támogatott** 
 --- | --- 
 VMDK | Igen 
-VHD/VHDX | N/A 
-2. generációs VM | N/A 
+VHD/VHDX | N.A. 
+2. generációs VM | N.A. 
 Megosztott fürtözött lemez | Igen 
 Titkosított lemez | Nem 
 UEFI| Igen 
@@ -108,7 +108,7 @@ Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
 Tárolóhelyek | Nem 
 Lemez gyors hozzáadása/eltávolítása | Igen 
 Lemez kizárása | Igen 
-Több elérési út (MPIO) | N/A 
+Több elérési út (MPIO) | N.A. 
 
 ## <a name="vaults"></a>Tárolók
 
@@ -124,12 +124,12 @@ A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók, a f
 | **Frissítés** | **Részletek** |
 | --- | --- |
 |Felderítő frissítések | A Scout frissítései összegző jellegűek. <br/><br/> A legújabb Scout [-frissítések megismerése és letöltése](vmware-physical-secondary-disaster-recovery.md#updates) |
-|Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információ](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Inmage Scout felhasználói útmutatójának](https://aka.ms/asr-scout-user-guide) letöltése
 
-- [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
-- [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](tutorial-vmware-to-vmware.md)
+- [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](./hyper-v-vmm-disaster-recovery.md)
+- [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](./vmware-physical-secondary-disaster-recovery.md)

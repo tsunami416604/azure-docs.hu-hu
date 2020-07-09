@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Ismerkedjen meg Azure Media Services élő átírással.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,83 +12,178 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/19/2019
-ms.author: juliako
-ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2019
+ms.author: inhenkel
+ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84765012"
 ---
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
 Az Azure Media Service videó-, hang-és szöveges szolgáltatásokat biztosít különböző protokollokban. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML-ban továbbítja az átmásolt szöveget. A kézbesítés az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a kézbesítést HLS/TS-n keresztül használja, a szöveg kidarabolt VTT lesz kézbesítve.
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető az élő átírás egy élő esemény Azure Media Services v3-vel való továbbításakor. A folytatás előtt győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (részletekért tekintse meg [ezt az oktatóanyagot](stream-files-tutorial-with-rest.md) ). Ismernie kell az [élő adatfolyam-továbbítási](live-streaming-overview.md) koncepciót is. Azt javasoljuk, hogy a [streamet a Media Services oktatóanyaggal élő közvetítéssel](stream-live-tutorial-with-api.md) fejezze be.
+Ha az élő átírás be van kapcsolva, a további díjak érvényesek. Tekintse át a díjszabási információkat a [Media Services díjszabási oldalának](https://azure.microsoft.com/pricing/details/media-services/)élő videó szakaszában.
 
-> [!NOTE]
-> Jelenleg az élő átírás csak előzetes verzióként érhető el az USA 2. nyugati régiójában. Támogatja az angol nyelvű szöveg átírását. Az ehhez a szolgáltatáshoz tartozó API-hivatkozás az alábbi – mert előzetes verzióban érhető el, a részletek nem érhetők el a REST-dokumentumokban.
+Ez a cikk azt ismerteti, hogyan engedélyezhető az élő átírás egy élő esemény Azure Media Services használatával való továbbításakor. A folytatás előtt győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (részletekért tekintse meg [ezt az oktatóanyagot](stream-files-tutorial-with-rest.md) ). Ismernie kell az [élő adatfolyam-továbbítási](live-streaming-overview.md) koncepciót is. Azt javasoljuk, hogy a [streamet a Media Services oktatóanyaggal élő közvetítéssel](stream-live-tutorial-with-api.md) fejezze be.
 
-## <a name="creating-the-live-event"></a>Az élő esemény létrehozása
+## <a name="live-transcription-preview-regions-and-languages"></a>Élő átiratok előzetes verziójának régiói és nyelvei
 
-Az élő esemény létrehozásához a PUT műveletet a 2019-05-01-Preview verzióra kell elküldeni, például:
+Az élő átírás a következő régiókban érhető el:
+
+- Délkelet-Ázsia
+- Nyugat-Európa
+- Észak-Európa
+- USA keleti régiója
+- USA középső régiója
+- USA déli középső régiója
+- USA nyugati régiója, 2.
+- Dél-Brazília
+
+Ez az elérhető nyelveket tartalmazó lista, az API-ban használt nyelvi kód használatával.
+
+| Nyelv | Nyelvkód |
+| -------- | ------------- |
+| Katalán  | ca-ES |
+| Dán (Dánia) | da-DK |
+| Német (Németország) | de-DE |
+| Angol (Ausztrália) | EN-AU |
+| Angol (Kanada) | en-CA |
+| angol (Egyesült Királyság) | en-GB |
+| Angol (India) | EN-IN |
+| Angol (Új-Zéland) | EN-NZ |
+| angol (Egyesült Államok) | en-US |
+| Spanyol (Spanyolország) | es-ES |
+| Spanyol (Mexikó) | es-MX |
+| Finn (Finnország) | fi-FI |
+| Francia (Kanada) | fr – CA |
+| Francia (Franciaország) | fr-FR |
+| Olasz (Olaszország) | it-IT |
+| Holland (Hollandia) | nl-NL |
+| Portugál (Brazília) | pt-BR |
+| Portugál (Portugália) | pt-PT |
+| Svéd (Svédország) | sv-SE |
+
+## <a name="create-the-live-event-with-live-transcription"></a>Élő esemény létrehozása élő átírással
+
+Ha az átírás bekapcsolásával élő eseményt szeretne létrehozni, küldje el a PUT műveletet a 2019-05-01-Preview API-verzióval, például:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény jön létre az RTMP-vel a betöltési protokollként). Vegye figyelembe a transzkripciós tulajdonság hozzáadását. A nyelvhez csak az en-US engedélyezett érték adható meg.
+A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény jön létre az RTMP-vel a betöltési protokollként). Vegye figyelembe a transzkripciós tulajdonság hozzáadását.
 
 ```
-{ 
-  "properties": { 
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions",
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
+```
+
+## <a name="start-or-stop-transcription-after-the-live-event-has-started"></a>Az élő esemény elindítása után az átirat elindítása vagy leállítása
+
+Elindíthatja és leállíthatja az élő átírást, miközben az élő esemény fut állapotban van. Az élő események elindításával és leállításával kapcsolatos további információkért olvassa el a [Media Services V3 API](media-services-apis-overview.md#long-running-operations)-kkal végzett fejlesztés a hosszan futó műveletek című szakaszát.
+
+Az élő átírások bekapcsolásához vagy az átírási nyelv frissítéséhez az élő eseményt az "átiratok" tulajdonsággal együtt kell megadnia. Az élő átírások kikapcsolásához távolítsa el a "átiratok" tulajdonságot az élő esemény objektumból.  
+
+> [!NOTE]
+> **Ha** az élő esemény során többször is be-vagy kikapcsolja az átírást, nem támogatott a forgatókönyv.
+
+Ez az élő átírások bekapcsolására szolgáló példa.
+
+JAVÍTÁS```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+
+```
+{
+  "properties": {
     "description": "Demonstrate how to enable live transcriptions", 
-    "input": { 
-      "streamingProtocol": "RTMP", 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "preview": { 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "encoding": { 
-      "encodingType": "None" 
-    }, 
-    "transcriptions": [ 
-      { 
-        "language": "en-US" 
-      } 
-    ], 
-    "vanityUrl": false, 
-    "streamOptions": [ 
-      "Default" 
-    ] 
-  }, 
-  "location": "West US 2" 
-} 
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
 ```
-
-Lekérdezheti az élő esemény állapotát, amíg a "Running" állapotba nem kerül, ami azt jelzi, hogy most már küldhet egy, az RTMP-hírcsatornát is. Mostantól ugyanazok a lépések láthatók, mint az oktatóanyagban, például az előnézeti hírcsatorna ellenőrzése és az élő kimenetek létrehozása.
 
 ## <a name="transcription-delivery-and-playback"></a>Transzkripciós kézbesítés és lejátszás
 
@@ -101,10 +196,8 @@ Tekintse át a [dinamikus csomagolás áttekintése című](dynamic-packaging-ov
 
 Az előzetes verzióban az alábbi ismert problémák állnak az élő átirattal:
 
-* A szolgáltatás csak az USA 2. nyugati régiójában érhető el.
-* Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertet.
-* Az egyetlen támogatott nyelv az angol (en-US).
-* A tartalomvédelem csak az AES-borítékok titkosítását támogatja.
+- Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertet.
+- A digitális jogkezelési (DRM) védelem nem vonatkozik a szöveges nyomon követésre, csak az AES-borítékok titkosítása lehetséges.
 
 ## <a name="next-steps"></a>További lépések
 

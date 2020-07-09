@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9effbe29917c774279b6e9d203f44d5ad5c72e2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121048"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362934"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
 >[!IMPORTANT]
->Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). A Windows Vritual asztali 2019 környezettel létrehozott cikkek nem kezelhetők a Azure Portal.
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). A Windows rendszerű virtuális asztali 2019 környezettel létrehozott összes objektum nem kezelhető a Azure Portal.
 >
 > A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -41,7 +41,7 @@ Emellett a következő dolgokat is ismernie kell:
 - A használni kívánt rendszerkép forrása. Ez az Azure-katalógusból vagy egy egyéni rendszerkép?
 - A tartományhoz való csatlakozáshoz szükséges hitelesítő adatok.
 
-Győződjön meg arról is, hogy regisztrálta a Microsoft. DesktopVirtualization erőforrás-szolgáltatót. Ha még nem tette meg, lépjen az **előfizetések** elemre, válassza ki a Yoru-előfizetés nevét, majd válassza az **Azure Resource Providers**elemet.
+Győződjön meg arról is, hogy regisztrálta a Microsoft. DesktopVirtualization erőforrás-szolgáltatót. Ha még nem tette meg, nyissa meg az **előfizetések**elemet, válassza ki az előfizetés nevét, majd válassza az **Azure Resource Providers**elemet.
 
 Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](../virtual-machines/windows/prepare-for-upload-vhd-image.md) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md).
 
@@ -67,20 +67,23 @@ Az új címkészlet létrehozásának megkezdéséhez:
    
    A kiválasztott régiókkal társított Azure földrajz a gazdagép-készlet és a hozzá kapcsolódó objektumok metaadatait fogja tárolni. Győződjön meg arról, hogy a földrajzi helyen belüli régiókat választja, amelyekben a szolgáltatás metaadatait tárolni szeretné.
 
-     ![A Azure Portal az USA keleti régiójában kiválasztott Location (hely) mezőt bemutató képernyőkép. A mező mellett a "metaadatok az USA keleti régiójában lesznek tárolva."](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![A Azure Portal az USA keleti régiójában kiválasztott Location (hely) mezőt bemutató képernyőkép. A mező mellett a "metaadatok az USA keleti régiójában lesznek tárolva."](media/portal-location-field.png)
 
 8. Az alkalmazáskészlet típusa területen válassza ki, hogy a gazdagép **személyes** vagy **készletezési**készlettel rendelkezik-e.
 
     - Ha a **személyes**lehetőséget választja, válassza az **automatikus** vagy a **közvetlen** lehetőséget a hozzárendelés típusa mezőben.
 
-      ![A hozzárendelés típusa mező legördülő menüjének képernyőképe. A felhasználó automatikus beállítást adott meg.](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![A hozzárendelés típusa mező legördülő menüjének képernyőképe. A felhasználó automatikus beállítást adott meg.](media/assignment-type-field.png)
 
 9. Ha a **készletezett**lehetőséget választja, adja meg a következő adatokat:
 
      - A **munkamenetek**maximális száma lehetőségnél adja meg, hogy legfeljebb hány felhasználót szeretne terheléselosztással elválasztani egyetlen munkamenet-gazdagépre.
      - **Terheléselosztási algoritmus**esetén a használati minta alapján válassza a szélesség – első vagy a mélység – első lehetőséget.
 
-       ![A hozzárendelés típus mezőjének képernyőképe a "készletezett" beállítással. A felhasználó fölé viszi a kurzort a szélesség – először a terheléselosztás legördülő menüben.](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![A hozzárendelés típus mezőjének képernyőképe a "készletezett" beállítással. A felhasználó fölé viszi a kurzort a szélesség – először a terheléselosztás legördülő menüben.](media/pooled-assignment-type.png)
 
 10. Válassza a Next (tovább) lehetőséget **: virtuális gép adatai**.
 
@@ -111,17 +114,19 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
     - Ha a katalógus lehetőséget **választja, válassza ki a**javasolt rendszerképek egyikét a legördülő menüből:
 
-      - Windows 10 Enterprise multi-session, Version 1909 + Office 365 ProPlus – Gen 1
+      - Windows 10 Enterprise multi-session, Version 1909 + Microsoft 365 Enterprise – 1. generációs alkalmazások
       - Windows 10 Enterprise multi-session, Version 1909 – Gen 1
       - Windows Server 2019 Datacenter – Gen1
 
      Ha nem látja a kívánt rendszerképet, válassza az **összes rendszerkép és lemez tallózása**lehetőséget, amely lehetővé teszi, hogy a katalógusban vagy a Microsoft által biztosított lemezképet vagy más közzétevőket is válasszon egy másik rendszerképben.
 
-     ![A piactér képernyőképe a Microsoft által megjelenített rendszerképek listájáról.](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![A piactér képernyőképe a Microsoft által megjelenített rendszerképek listájáról.](media/marketplace-images.png)
 
      Megnyithatja **az elemeket** , és kiválaszthat egy már feltöltött egyéni rendszerképet is.
 
-     ![Képernyőkép a saját elemek lapról.](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![Képernyőkép a saját elemek lapról.](media/my-items.png)
 
     - Ha a **Storage blob**lehetőséget választja, a saját rendszerképét a Hyper-V használatával vagy egy Azure-beli virtuális gépen is kihasználhatja. Mindössze annyit kell tennie, hogy megadja a rendszerkép helyét a Storage-blobban URI-ként.
 
@@ -136,7 +141,8 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
     >[!NOTE]
     >A nagyobb biztonság érdekében javasoljuk, hogy ne nyissa meg a nyilvános bejövő portokat.
 
-    ![A biztonsági csoport oldalának képernyőképe, amely megjeleníti az elérhető portok listáját a legördülő menüben.](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![A biztonsági csoport oldalának képernyőképe, amely megjeleníti az elérhető portok listáját a legördülő menüben.](media/available-ports.png)
     
     Ha a **speciális**lehetőséget választja, válasszon ki egy már konfigurált, meglévő hálózati biztonsági csoportot.
 
@@ -169,7 +175,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
      >[!NOTE]
      >A felülvizsgálat + ellenőrzési folyamat nem ellenőrzi, hogy a Jelszó megfelel-e a biztonsági szabványoknak, vagy ha az architektúra helyes, ezért az ilyen dolgok bármelyikével kapcsolatos problémákat meg kell vizsgálnia. 
 
-5. Tekintse át az üzemelő példány adatait, és győződjön meg róla, hogy minden helyesnek tűnik. Amikor elkészült, válassza a **Létrehozás** lehetőséget. Ez elindítja a telepítési folyamatot, amely a következő objektumokat hozza létre:
+5. Tekintse át az üzemelő példány adatait, és győződjön meg róla, hogy minden helyesnek tűnik. Ha elkészült, válassza a **Létrehozás** lehetőséget. Ez elindítja a telepítési folyamatot, amely a következő objektumokat hozza létre:
 
      - Az új gazdagép-készletet.
      - Egy asztali alkalmazás csoportja.
@@ -180,7 +186,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
 Ezt követően már készen is van!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elvégezte a gazdagép készletét, feltöltheti azt a RemoteApp-programok használatával. Ha többet szeretne megtudni a Windows rendszerű virtuális asztali alkalmazások kezeléséről, tekintse meg a következő oktatóanyagot:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188446"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079259"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Parancsfájl-műveletek hibakeresése az Azure HDInsight
 
@@ -25,13 +25,13 @@ Az Apache Ambari webes FELÜLETén megtekintheti a parancsfájlok műveletei ál
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari webes felhasználói felület
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
 1. Az oldal tetején található sávban válassza az **Ops** bejegyzést. A lista a fürtön a Ambari használatával végzett aktuális és korábbi műveleteket jeleníti meg.
 
     ![Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Keresse meg azokat a bejegyzéseket, amelyek a **customscriptaction futtatták\_** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
+1. Keresse meg azokat a bejegyzéseket, amelyek a ** \_ customscriptaction futtatták** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
 
     ![Apache Ambari parancsfájl műveleti műveletei](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -41,7 +41,7 @@ Az Apache Ambari webes FELÜLETén megtekintheti a parancsfájlok műveletei ál
 
 Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a naplókat a fürt Storage-fiókjában tárolja.
 
-* A tárolási naplók a következő címen `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`érhetők el:.
+* A tárolási naplók a következő címen érhetők el: `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
     ![Parancsfájl műveleti naplói](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
@@ -53,9 +53,11 @@ Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a napló
 
     * **Zookeeper csomópont**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* A rendszer feltölti a megfelelő gazdagép összes **StdOut** -és **stderr** a Storage-fiókba. Minden parancsfájl-művelethez létezik egy **output-\*. txt** és **errors-\*. txt fájl** . A **output-*. txt** fájl a gazdagépen futó parancsfájl URI azonosítóját tartalmazza. A következő szöveg egy példa erre az információra:
+* A rendszer feltölti a megfelelő gazdagép összes **StdOut** -és **stderr** a Storage-fiókba. Minden parancsfájl-művelethez létezik egy **output- \* . txt** és **errors- \* . txt fájl** . A **output-*. txt** fájl a gazdagépen futó parancsfájl URI azonosítóját tartalmazza. A következő szöveg egy példa erre az információra:
 
-        'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
+    ```output
+    'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
+    ```
 
 * Lehetséges, hogy ismételten létrehoz egy azonos nevű parancsfájl-műveleti fürtöt. Ebben **az esetben a mappa neve** alapján megkülönböztetni a megfelelő naplókat. Például a fürt **mycluster**, amely különböző dátumokban lett létrehozva, a következő naplóbejegyzések szerint jelenik meg:
 
@@ -84,7 +86,7 @@ ImportError: cannot import name BlobService
 
 __OK__. Ez a hiba akkor fordul elő, ha a HDInsight-fürthöz tartozó Python Azure Storage-ügyfelet frissíti. A HDInsight az Azure Storage ügyféloldali 0.20.0 várja.
 
-__Megoldás__. A hiba megoldásához manuálisan kapcsolódjon az egyes fürtcsomópontokon a használatával `ssh`. Futtassa a következő parancsot a megfelelő tárolási ügyfél verziójának újratelepítéséhez:
+__Megoldás__. A hiba megoldásához manuálisan kapcsolódjon az egyes fürtcsomópontokon a használatával `ssh` . Futtassa a következő parancsot a megfelelő tárolási ügyfél verziójának újratelepítéséhez:
 
 ```bash
 sudo pip install azure-storage==0.20.0

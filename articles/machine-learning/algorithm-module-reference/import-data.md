@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611815"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
@@ -24,7 +24,7 @@ Ezzel a modullal az adatok betölthetők egy gépi tanulási folyamatba a meglé
 
 > [!Note]
 > A modul által biztosított összes funkció az **adattár** és az **adatkészletek** segítségével végezhető el a munkaterület üzemelő példányának kezdőlapján. Javasoljuk, hogy az adattárat és az **adatkészletet** **használja, amely** olyan további funkciókat is tartalmaz, mint az adatfigyelés További információk: [az adathozzáférés](../how-to-access-data.md) és [az adatkészletek regisztrálása](../how-to-create-register-datasets.md) című cikk.
-> Az adatkészlet regisztrálása után megkeresheti **azt az** -> adatkészletek**saját adatkészletek** kategóriájában a Designer felületen. Ez a modul Studio (klasszikus) felhasználók számára van fenntartva ismerős élmény érdekében. 
+> Az adatkészlet regisztrálása után megkeresheti **azt az adatkészletek**  ->  **saját adatkészletek** kategóriájában a Designer felületen. Ez a modul Studio (klasszikus) felhasználók számára van fenntartva ismerős élmény érdekében. 
 >
 
 Az **adatimportálási** modul támogatja az adatok olvasását az alábbi forrásokból:
@@ -44,6 +44,10 @@ A kívánt adatok definiálása és a forráshoz való kapcsolódás után az **
 
 Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatokat adhat hozzá az [importálási adatokat](./import-data.md)újrafuttatva.
 
+> [!WARNING]
+> Ha a munkaterület virtuális hálózatban található, akkor konfigurálnia kell az adattárolókat a tervező adatvizualizációs funkcióinak használatához. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [hálózati elkülönítés a betanítás során & a privát virtuális hálózatokkal való következtetés](../how-to-enable-virtual-network.md#machine-learning-studio).
+
+
 ## <a name="how-to-configure-import-data"></a>Az importálási adatgyűjtés konfigurálása
 
 1. Adja hozzá az **adatimportálási** modult a folyamathoz. Ezt a modult a tervező **adatbevitel és kimenet** kategóriájában találja.
@@ -52,7 +56,7 @@ Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatok
 
 1. Válassza **az adatforrás lehetőséget, majd**válassza ki az adatforrás típusát. Ez lehet HTTP vagy adattár.
 
-    Ha az adattár lehetőséget választja, akkor kiválaszthatja azokat a meglévő adattárolókat, amelyek már regisztrálva vannak a Azure Machine Learning munkaterületen, vagy létrehozhat egy új adattárat. Ezután adja meg az adattárba importálandó adatelérési utat. Az elérési út tallózásával egyszerűen tallózhat az elérési **út** ![importálása – adatelérési út lehetőségre kattintva.](media/module/import-data-path.png)
+    Ha az adattár lehetőséget választja, akkor kiválaszthatja azokat a meglévő adattárolókat, amelyek már regisztrálva vannak a Azure Machine Learning munkaterületen, vagy létrehozhat egy új adattárat. Ezután adja meg az adattárba importálandó adatelérési utat. Az elérési út tallózásával egyszerűen tallózhat az elérési **út** ![ importálása – adatelérési út lehetőségre kattintva.](media/module/import-data-path.png)
 
 1. Válassza ki az előnézeti sémát a felvenni kívánt oszlopok szűréséhez. A speciális beállításokat, például a határolójeleket is megadhatja a beállítások elemzésekor.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71f4209b4af9c5bb5f171cf3c8e35b0fbc05fac9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134781"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók a VMware-ről az Azure-ra való Azure Site Recovery Deployment Planner
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -98,9 +98,9 @@ Az eszközt futtathatja Windows Server 2012 R2-ről, ha a kiszolgáló hálózat
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
     Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki.
-    E:\ASR-telepítés Planner_v2.3. zip
+    E:\ASR üzembe helyezési Planner_v2.3.zip
 
-    E:\ASR-telepítés Planner_v2.3 \ ASRDeploymentPlanner. exe
+    E:\ASR üzembe helyezési Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Frissítés a Deployment Planner legújabb verziójára
 
@@ -120,7 +120,7 @@ Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak e
 
 ## <a name="version-history"></a>Verzióelőzmények
 A legújabb Site Recovery Deployment Planner eszköz verziója 2,5.
-Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) lehet tájékozódni.
+Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](./site-recovery-deployment-planner-history.md) lehet tájékozódni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Site Recovery Deployment Planner futtatása](site-recovery-vmware-deployment-planner-run.md)

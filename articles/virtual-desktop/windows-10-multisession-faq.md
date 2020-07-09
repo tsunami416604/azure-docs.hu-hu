@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611993"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086925"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -53,7 +53,7 @@ A Windows 10 Enterprise multi-session jelenleg támogatott hibrid Azure AD-hez. 
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Hol találhatom meg a Windows 10 Enterprise multi-session rendszerképet?
 
-A Windows 10 Enterprise multi-session az Azure-katalógusban található. A kereséshez keresse meg a Azure Portal, és keresse meg a Windows 10 Enterprise for Virtual desktops kiadását. Az Office Pro Plus szolgáltatással integrált rendszerképekhez lépjen a Azure Portalra, és keresse meg a Microsoft Windows 10 + Office 365 ProPlus.
+A Windows 10 Enterprise multi-session az Azure-katalógusban található. A kereséshez keresse meg a Azure Portal, és keresse meg a Windows 10 Enterprise for Virtual desktops kiadását. A nagyvállalati Microsoft 365 alkalmazásokkal integrált rendszerképekért keresse fel a Azure Portal, és keresse meg a **Microsoft Windows 10 + Microsoft 365 vállalati alkalmazásokat**.
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Melyik Windows 10 Enterprise több munkamenetből álló képet szeretném használni?
 
@@ -61,7 +61,7 @@ Az Azure Gallery számos kiadással rendelkezik, többek között a Windows 10 E
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Mely Windows 10 Enterprise több munkamenetes verzió támogatott?
 
-A Windows 10 Enterprise multi-session, a 1809-es és újabb verziói támogatottak, és elérhetők az Azure Galleryben. Ezek a kiadások a Windows 10 Enterprise verzióval azonos támogatási életciklus-szabályzatot követnek, ami azt jelenti, hogy a Spring kiadás 18 hónapig, a csökkenés pedig 30 hónapig érvényes.
+A Windows 10 Enterprise multi-session, a 1809-es és újabb verziói támogatottak, és elérhetők az Azure Galleryben. Ezek a kiadások a Windows 10 Enterprise verzióval megegyező támogatási életciklus-szabályzatot követik, ami azt jelenti, hogy a márciusi kiadás 18 hónapig, a szeptemberi kiadás pedig 30 hónapig használható.
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Milyen profil-felügyeleti megoldást használhatok a Windows 10 Enterprise multi-session szolgáltatáshoz?
 
@@ -92,7 +92,7 @@ A Microsoft Store alkalmazás letiltásával meggyőződhet arról, hogy a felha
 Az áruházbeli alkalmazás letiltása:
 
 1. Hozzon létre egy új Csoportházirend.
-2. Válassza ki a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők**elemet.
+2. Válassza ki a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**elemet.
 3. Válassza az **áruház**lehetőséget.
 4. Válassza az **áruházbeli alkalmazás**lehetőséget.
 5. Válassza a **Letiltva**lehetőséget, majd kattintson **az OK gombra**.

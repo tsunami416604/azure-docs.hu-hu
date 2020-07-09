@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89d2105ab080309639c4341072c3f5f36608dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424768"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765080"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
@@ -34,42 +34,60 @@ Az éles környezetben történő üzembe helyezéshez az Azure szinapszis munka
 
 1. Nevű biztonsági csoport létrehozása`Synapse_WORKSPACENAME_Users`
 2. Nevű biztonsági csoport létrehozása`Synapse_WORKSPACENAME_Admins`
-3. A `Synapse_WORKSPACENAME_Admins` hozzáadása ehhez: `ProjectSynapse_WORKSPACENAME_Users`
+3. A `Synapse_WORKSPACENAME_Admins` hozzáadása ehhez: `Synapse_WORKSPACENAME_Users`
+
+> [!NOTE]
+> [Ebből a cikkből](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)megtudhatja, hogyan hozhat létre biztonsági csoportot ebben a cikkben.
+>
+> [Ebből a cikkből](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal)megtudhatja, hogyan adhat hozzá biztonsági csoportot egy másik biztonsági csoportból ebben a cikkben.
+>
+> WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.
 
 ### <a name="step-2-prepare-the-default-adls-gen2-account"></a>2. lépés: az alapértelmezett ADLS Gen2 fiók előkészítése
 
-Ha kiépíti a munkaterületet, ki kellett választania egy ADLSGEN2-fiókot és egy tárolót a munkaterülethez tartozó fájlrendszerhez.
+A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) fiókot és egy tárolót a munkaterülethez tartozó fájlrendszerhez.
 
 1. A [Azure Portal](https://portal.azure.com) megnyitása
-2. Navigáljon a ADLSGEN2-fiókhoz
+2. Navigáljon a Azure Data Lake Storage Gen2 fiókhoz
 3. Navigáljon az Azure szinapszis munkaterülethez kiválasztott tárolóhoz (fájlrendszerhez)
 4. Kattintson **Access Control (iam)**
 5. Rendelje hozzá a következő szerepköröket:
    1. **Olvasói** szerepkör:`Synapse_WORKSPACENAME_Users`
-   2. **Storage blob-adat tulajdonosi** szerepköre:`Synapse_WORKSPACENAME_Admins`
-   3. **Storage-blob adatközreműködői** szerepköre:`Synapse_WORKSPACENAME_Users`
-   4. **Storage blob-adat tulajdonosi** szerepköre:`WORKSPACENAME`
-  
+   2. **Storage blob-adattulajdonosi** szerepkör:`Synapse_WORKSPACENAME_Admins`
+   3. **Storage blob-adatközreműködői** szerepkör:`Synapse_WORKSPACENAME_Users`
+   4. **Storage blob-adattulajdonosi** szerepkör:`WORKSPACENAME`
+
+> [!NOTE]
+> WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.
+
 ### <a name="step-3-configure-the-workspace-admin-list"></a>3. lépés: a munkaterület-felügyeleti lista konfigurálása
 
 1. Ugrás az [ **Azure szinapszis webes felhasználói felületére**](https://web.azuresynapse.net)
-2. Ugrás a **Manage**  > **biztonsági** > **hozzáférés-vezérlés** kezelése
+2. Ugrás a **Manage**   >  **biztonsági**  >  **hozzáférés-vezérlés** kezelése
 3. Kattintson a **rendszergazda hozzáadása**lehetőségre, majd válassza a`Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. lépés: az SQL-rendszergazdai hozzáférés konfigurálása a munkaterülethez
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
+1. Ugrás a [Azure Portal](https://portal.azure.com)
 2. Navigáljon a munkaterületre
-3. Lépjen a **Beállítások** > **Active Directory adminisztrátor**
+3. Lépjen a **Beállítások**  >  **Active Directory adminisztrátor**
 4. Kattintson a **rendszergazda beállítása** elemre.
 5. A következők szerint válasszon: `Synapse_WORKSPACENAME_Admins`
 6. kattintson a **kiválasztás** elemre.
 7. kattintson a **Mentés** gombra
 
+> [!NOTE]
+> WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.
+
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>5. lépés: felhasználók és rendszergazdák hozzáadása és eltávolítása biztonsági csoportokhoz
 
 1. Rendszergazdai hozzáférésre szoruló felhasználók hozzáadása`Synapse_WORKSPACENAME_Admins`
 2. Az összes többi felhasználó hozzáadása`Synapse_WORKSPACENAME_Users`
+
+> [!NOTE]
+> [Ebből a cikkből](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal) megtudhatja, hogyan vehet fel felhasználót tagként egy biztonsági csoportba ebben a cikkben
+> 
+> WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.
 
 ## <a name="access-control-to-data"></a>AdatAccess Control
 
@@ -82,9 +100,13 @@ Az alapul szolgáló adat hozzáférés-vezérlése három részre oszlik:
 ## <a name="access-control-to-sql-databases"></a>Hozzáférés-vezérlés SQL-adatbázisokhoz
 
 > [!TIP]
-> Az alábbi lépéseket **minden** SQL-adatbázishoz le kell futtatni, hogy minden SQL-adatbázishoz felhasználói hozzáférést biztosítson.
+> Az alábbi lépéseket **minden** SQL-adatbázishoz le kell futtatni ahhoz, hogy felhasználói hozzáférést biztosítson az összes SQL-adatbázishoz, kivéve a szakasz [kiszolgálói szintű engedélyét](#server-level-permission) , ahol rendszergazdai szerepkört rendelhet a felhasználóhoz.
 
 ### <a name="sql-on-demand"></a>Igény szerinti SQL
+
+Ebben a szakaszban példákat talál arra, hogy hogyan adhat engedélyt a felhasználónak egy adott adatbázisra vagy teljes kiszolgálói engedélyekre.
+
+#### <a name="database-level-permission"></a>Adatbázis szintű engedély
 
 Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL igény szerinti adatbázishoz, kövesse az alábbi példában szereplő lépéseket:
 
@@ -93,7 +115,7 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL igény sze
     ```sql
     use master
     go
-    CREATE LOGIN [John.Thomas@microsoft.com] FROM EXTERNAL PROVIDER;
+    CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
     go
     ```
 
@@ -102,7 +124,7 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL igény sze
     ```sql
     use yourdb -- Use your DB name
     go
-    CREATE USER john FROM LOGIN [John.Thomas@microsoft.com];
+    CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
 
 3. FELHASZNÁLÓ hozzáadása a megadott szerepkör tagjaihoz
@@ -110,8 +132,20 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL igény sze
     ```sql
     use yourdb -- Use your DB name
     go
-    alter role db_owner Add member john -- Type USER name from step 2
+    alter role db_owner Add member alias -- Type USER name from step 2
     ```
+
+> [!NOTE]
+> Cserélje le az aliast arra a felhasználóra, aki az Ön által használt vállalati tartománnyal hozzáférést és tartományt szeretne megadni.
+
+#### <a name="server-level-permission"></a>Kiszolgálói szintű engedély
+
+Ha teljes hozzáférést szeretne biztosítani egy felhasználónak az **összes** SQL-igény szerinti adatbázishoz, kövesse a jelen példában szereplő lépést:
+
+```sql
+CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+```
 
 ### <a name="sql-pools"></a>SQL-készletek
 
@@ -135,14 +169,7 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL Databaseho
 > a *db_datareader* és a *db_datawriter* írási/olvasási engedélyekkel is működhet, ha a *db_owner* engedély megadása nem kívánatos.
 > Ahhoz, hogy egy Spark-felhasználó közvetlenül a Sparkból vagy egy SQL-készletből olvassa el és írja az írást, *db_owner* engedélyre van szükség.
 
-A felhasználók létrehozása után ellenőrizze, hogy az SQL on-demand képes-e lekérdezni a Storage-fiókot:
-
-- Futtassa az alábbi parancsot az SQL igény szerinti **Master** adatbázisához:
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+A felhasználók létrehozása után ellenőrizze, hogy az SQL on-demand képes-e lekérdezni a Storage-fiókot.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Hozzáférés-vezérlés a munkaterület-folyamat futtatásához
 
@@ -151,7 +178,7 @@ A felhasználók létrehozása után ellenőrizze, hogy az SQL on-demand képes-
 > [!IMPORTANT]
 > Az SQL-készletre hivatkozó adatkészleteket vagy tevékenységeket tartalmazó folyamatok sikeres futtatásához a munkaterület identitásának közvetlenül az SQL-készlethez kell hozzáférést biztosítania.
 
-Futtassa az alábbi parancsokat az egyes SQL-készleteken, hogy a munkaterület felügyelt identitása folyamatokat futtasson az SQL-készlet adatbázisában:
+Futtassa az alábbi parancsokat az egyes SQL-készleteken, hogy a munkaterület által felügyelt identitás az SQL-készlet adatbázisában futtasson folyamatokat:
 
 ```sql
 --Create user in DB
@@ -173,4 +200,4 @@ DROP USER [<workspacename>];
 
 ## <a name="next-steps"></a>További lépések
 
-A szinapszis SQL hozzáférésének és vezérlésének áttekintését lásd: [SZINAPSZIS SQL-hozzáférés-vezérlés](../sql/access-control.md). További információ az adatbázis-rendszerbiztonsági tagekről: [rendszerbiztonsági tag](https://msdn.microsoft.com/library/ms181127.aspx). Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx) című cikket.
+A szinapszis munkaterület által felügyelt identitás áttekintését lásd: az [Azure szinapszis munkaterület felügyelt identitása](../security/synapse-workspace-managed-identity.md). További információ az adatbázis-rendszerbiztonsági tagekről: [rendszerbiztonsági tag](https://msdn.microsoft.com/library/ms181127.aspx). Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx) című cikket.

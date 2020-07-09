@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672975"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>JSON-és adatstruktúrák használata Azure Monitor log-lekérdezésekben
@@ -57,7 +56,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Objektumok használata
 
 ### <a name="parsejson"></a>parseJSON
-A JSON-struktúra több elemének eléréséhez egyszerűbb a dinamikus objektumként való elérése. A `parsejson` használatával szöveges és dinamikus objektumokra is felhasználható. A dinamikus típusra konvertálása után további függvények is használhatók az adatok elemzéséhez.
+A JSON-struktúra több elemének eléréséhez egyszerűbb a dinamikus objektumként való elérése. `parsejson`A használatával szöveges és dinamikus objektumokra is felhasználható. A dinamikus típusra konvertálása után további függvények is használhatók az adatok elemzéséhez.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -68,7 +67,7 @@ print hosts_object
 
 
 ### <a name="arraylength"></a>arraylength
-Egy `arraylength` tömb elemei számának megszámlálásához használja a következőt:
+`arraylength`Egy tömb elemei számának megszámlálásához használja a következőt:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -77,7 +76,7 @@ print hosts_object
 ```
 
 ### <a name="mvexpand"></a>mvexpand
-Egy `mvexpand` objektum tulajdonságainak különálló sorokra való tördelésére használható.
+`mvexpand`Egy objektum tulajdonságainak különálló sorokra való tördelésére használható.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -88,7 +87,7 @@ print hosts_object
 ![mvexpand](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
-A `buildschema` paranccsal lekérheti az objektum összes értékét azonosító sémát:
+`buildschema`A paranccsal lekérheti az objektum összes értékét azonosító sémát:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');

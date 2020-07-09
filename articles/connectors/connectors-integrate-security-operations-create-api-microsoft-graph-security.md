@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77598833"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
@@ -41,7 +40,7 @@ A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse me
   | Tulajdonság | Érték |
   |----------|-------|
   | **Alkalmazásnév** | `MicrosoftGraphSecurityConnector` |
-  | **Alkalmazás azonosítója** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Alkalmazásazonosító** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
   Az összekötő engedélyezéséhez az Azure AD-bérlő rendszergazdája a következő lépéseket hajthatja végre:
@@ -62,11 +61,11 @@ A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse me
 
 1. Az üres logikai alkalmazások esetében adja hozzá a triggert és minden egyéb műveletet, amelyet a Microsoft Graph biztonsági művelet hozzáadása előtt szeretne használni.
 
-   – vagy –
+   -vagy-
 
    Meglévő Logic apps esetén az utolsó lépésben, amelyhez Microsoft Graph biztonsági műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget.
 
-   – vagy –
+   -vagy-
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása**lehetőséget.
 
@@ -91,12 +90,12 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
 1.  A triggerben adja meg a figyelni kívánt riasztásokkal kapcsolatos információkat. További tulajdonságok megjelenítéséhez nyissa meg az **új paraméter hozzáadása** listát, és válasszon egy paramétert a tulajdonság hozzáadásához az triggerhez.
 
-   | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Leírás |
+   | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Description |
    |----------|-----------------|----------|------|-------------|
-   | **Időköz** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
-   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
-   | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
-   | **Kezdési idő** | `startTime` | Nem | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Ha például a 2017-es szeptember 18-án, 2:00 PM-nél szeretné, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Időköz** | `interval` | Yes | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
+   | **Gyakoriság** | `frequency` | Yes | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
+   | **Időzóna** | `timeZone` | No | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
+   | **Kezdési idő** | `startTime` | No | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>-vagy- <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Ha például a 2017-es szeptember 18-án, 2:00 PM-nél szeretné, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
@@ -109,26 +108,26 @@ Az alábbiakban részletesebb információkat talál a Microsoft Graph biztonsá
 
 ### <a name="manage-alerts"></a>Riasztások kezelése
 
-A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet `https://graph.microsoft.com/v1.0/security/alerts`, például, `GET` vagy `PATCH` a műveletet. Íme egy konkrét példa, amely a **riasztások beolvasása** művelet paramétereit jeleníti meg, ha nagy súlyosságú riasztásokkal rendelkező listát szeretne:
+A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet, például, vagy `https://graph.microsoft.com/v1.0/security/alerts` a `GET` `PATCH` műveletet. Íme egy konkrét példa, amely a **riasztások beolvasása** művelet paramétereit jeleníti meg, ha nagy súlyosságú riasztásokkal rendelkező listát szeretne:
 
 `Filter alerts value as Severity eq 'high'`
 
 Az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg a [Microsoft Graph biztonsági riasztások dokumentációját](https://docs.microsoft.com/graph/api/alert-list). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt olvashat az összekötő által támogatott [séma-tulajdonságok riasztásokról](https://docs.microsoft.com/graph/api/resources/alert) .
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |--------|-------------|
-| **Riasztások beolvasása** | Egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert)alapján szűrt riasztások lekérése `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`, például:. | 
+| **Riasztások beolvasása** | Egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert)alapján szűrt riasztások lekérése, például: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Riasztás beolvasása azonosító alapján** | Egy adott riasztást kap a riasztás azonosítója alapján. | 
 | **Riasztás frissítése** | Egy adott riasztás frissítése a riasztás azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [riasztások szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/alert-update). Ha például riasztást szeretne hozzárendelni egy biztonsági elemzőhöz, hogy el lehessen végezni a vizsgálatot, frissítheti a riasztáshoz **rendelt** tulajdonságot. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Riasztás-előfizetések kezelése
 
-Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/graph/api/resources/subscription)vagy [*webhookokat*](https://docs.microsoft.com/graph/api/resources/webhooks). Az előfizetések lekéréséhez, frissítéséhez vagy törléséhez adja meg a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters) a Microsoft Graph entitás-létrehozáshoz, és adja `security/alerts` meg a ODATA-lekérdezés által követett paramétereket. *Ne adja* meg az alap URL-címet, `https://graph.microsoft.com/v1.0`például:. Ehelyett használja az ebben a példában szereplő formátumot:
+Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/graph/api/resources/subscription)vagy [*webhookokat*](https://docs.microsoft.com/graph/api/resources/webhooks). Az előfizetések lekéréséhez, frissítéséhez vagy törléséhez adja meg a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters) a Microsoft Graph entitás-létrehozáshoz, és adja meg a `security/alerts` ODATA-lekérdezés által követett paramétereket. *Ne adja* meg az alap URL-címet, például: `https://graph.microsoft.com/v1.0` . Ehelyett használja az ebben a példában szereplő formátumot:
 
 `security/alerts?$filter=status eq 'New'`
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |--------|-------------|
 | **Előfizetések létrehozása** | [Hozzon létre egy előfizetést](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) , amely értesítést küld a változásokról. Ezt az előfizetést szűrheti a kívánt riasztási típusokra. Létrehozhat például egy olyan előfizetést, amely értesíti a nagy súlyosságú riasztásokról. |
 | **Aktív előfizetések beolvasása** | [Lejárt előfizetések beolvasása](https://docs.microsoft.com/graph/api/subscription-list). | 
@@ -138,13 +137,13 @@ Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/gr
 
 ### <a name="manage-threat-intelligence-indicators"></a>Fenyegetési intelligencia-mutatók kezelése
 
-A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet `https://graph.microsoft.com/beta/security/tiIndicators`, például, `GET` vagy `PATCH` a műveletet. Az alábbi példa egy olyan példát mutat be, amely a **tiIndicators beolvasása** művelet paramétereit jeleníti meg, `DDoS` ha olyan listát szeretne, amely tartalmazza a veszélyforrás típusát:
+A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet, például, vagy `https://graph.microsoft.com/beta/security/tiIndicators` a `GET` `PATCH` műveletet. Az alábbi példa egy olyan példát mutat be, amely a **tiIndicators beolvasása** művelet paramétereit jeleníti meg, ha olyan listát szeretne, amely tartalmazza a `DDoS` veszélyforrás típusát:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
 Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg [a "választható lekérdezési paraméterek" című részt a Microsoft Graph biztonsági fenyegetésekkel kapcsolatos intelligencia mutatójának dokumentációjában](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt a [séma tulajdonságai által támogatott veszélyforrások felderítésére szolgáló kijelzőn](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) olvashat.
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |--------|-------------|
 | **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)alapján szűrt tiIndicators beolvasása, például:`threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Veszélyforrások elleni intelligencia-jelző beolvasása azonosító alapján** | Egy adott tiIndicator beszerzése a tiIndicator-azonosító alapján. | 

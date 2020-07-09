@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294389"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a Visual Studio használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portalra](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -47,13 +47,13 @@ A Visual Studio 2017 15,4-es vagy korábbi verziójának használatakor a Közz�
    > [!Note]
    > A távoli asztali kapcsolathoz szükséges tanúsítványok eltérnek a többi Azure-művelethez használt tanúsítványtól. A távelérési tanúsítványnak rendelkeznie kell titkos kulccsal.
 
-5. Válasszon ki egy tanúsítványt a listából, vagy válassza a ** &lt;létrehozás... lehetőséget. &gt;**. Ha új tanúsítványt hoz létre, adjon meg egy rövid nevet az új tanúsítványnak, amikor a rendszer kéri, és válassza **az OK**gombot. Az új tanúsítvány megjelenik a legördülő listában.
+5. Válasszon ki egy tanúsítványt a listából, vagy válassza a ** &lt; Létrehozás. &gt; ..** lehetőséget. Ha új tanúsítványt hoz létre, adjon meg egy rövid nevet az új tanúsítványnak, amikor a rendszer kéri, és válassza **az OK**gombot. Az új tanúsítvány megjelenik a legördülő listában.
 
 6. Adja meg a felhasználónevet és a jelszót. Meglévő fiókot nem használhat. Ne használja a "rendszergazda" nevet az új fiókhoz tartozó felhasználónévként.
 
 7. Válassza ki azt a dátumot, amikor a fiók lejár, és azt követően, hogy mely Távoli asztal kapcsolatok lesznek blokkolva.
 
-8. Miután megadta az összes szükséges információt, kattintson **az OK gombra**. A Visual Studio hozzáadja a Távoli asztal beállításait a projekthez `.cscfg` és `.csdef` a fájlokhoz, beleértve a kiválasztott tanúsítvánnyal titkosított jelszót is.
+8. Miután megadta az összes szükséges információt, kattintson **az OK gombra**. A Visual Studio hozzáadja a Távoli asztal beállításait a projekthez `.cscfg` és a `.csdef` fájlokhoz, beleértve a kiválasztott tanúsítvánnyal titkosított jelszót is.
 
 9. A **következő** gomb használatával hajtsa végre a fennmaradó lépéseket, majd válassza a **Közzététel** lehetőséget, amikor készen áll a felhőalapú szolgáltatás közzétételére. Ha nem áll készen a közzétételre, kattintson a **Mégse gombra** , és válassza az **Igen** lehetőséget, amikor a rendszer kéri a módosítások mentésére. A Cloud Service-t később is közzéteheti ezekkel a beállításokkal.
 
@@ -86,7 +86,7 @@ Ha a projektet egy csapattal osztja meg, akkor érdemes törölni a beállítás
 
 Az Azure DevOps Services-ből származó RDP-bővítmény használatához adja meg a következő adatokat a Build folyamatában:
 
-1. Adja `/p:ForceRDPExtensionOverPlugin=true` meg az MSBuild argumentumait, hogy a központi telepítés az RDP beépülő modul helyett az RDP-bővítménnyel működjön. Például:
+1. Adja meg az `/p:ForceRDPExtensionOverPlugin=true` MSBuild argumentumait, hogy a központi telepítés az RDP beépülő modul helyett az RDP-bővítménnyel működjön. Például:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -146,6 +146,6 @@ Miután közzétette a Cloud Service-t az Azure-ban, és engedélyezte a Távoli
 
 3. Adja meg a korábban létrehozott felhasználónevet és jelszót. Most bejelentkezett a távoli munkamenetbe.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)

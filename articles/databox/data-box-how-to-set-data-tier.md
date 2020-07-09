@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608706"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Az adatküldés Azure Data Box vagy Azure Data Box Heavy használatával a megfelelő Azure Storage blob-szintjére
 
@@ -48,7 +47,7 @@ Azt is megteheti, hogy először létrehoz egy Storage-fiókot a megadott hozzá
 Ha Data Box eszközről származó adatok feltöltése az alapértelmezett rétegbe történik, előfordulhat, hogy át szeretné helyezni az adatok egy nem alapértelmezett szintjére. Ezeket az értékeket kétféleképpen helyezheti át egy nem alapértelmezett rétegbe.
 
 - Az **Azure Blob Storage életciklus-kezelője** – házirend-alapú megközelítéssel automatikusan elvégezheti az adatréteget, vagy lejárhat az életciklus végén. További információért látogasson el [Az Azure Blob Storage életciklusának kezelésére](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
-- **Parancsfájlok** – parancsfájlokkal elválasztott megközelítést használhat Azure PowerShellon keresztül a blob szintű rétegek engedélyezéséhez. A `SetBlobTier` művelet meghívásával beállíthatja a szintet a blobon.
+- **Parancsfájlok** – parancsfájlokkal elválasztott megközelítést használhat Azure PowerShellon keresztül a blob szintű rétegek engedélyezéséhez. A művelet meghívásával `SetBlobTier` beállíthatja a szintet a blobon.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>A blob-rétegek beállításához használja a Azure PowerShell
 

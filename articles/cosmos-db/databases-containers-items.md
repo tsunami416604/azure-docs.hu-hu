@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114758"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek használata Azure Cosmos DBban
 
@@ -20,7 +20,7 @@ Miután létrehozta az Azure-előfizetéshez tartozó [Azure Cosmos db fiókot](
 
 Az alábbi képen egy Azure Cosmos DB fiók különböző entitásait ábrázoló hierarchia látható:
 
-![Azure Cosmos-fiókok entitásai](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókok entitásai" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos-adatbázisok
 
@@ -39,10 +39,10 @@ Az Azure Cosmos API-kkal az alábbi táblázatban leírtak szerint dolgozhat:
 
 | Művelet | Azure CLI | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Az összes adatbázis enumerálása| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Igen | NA | NA |
-|Adatbázis beolvasása| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Igen | NA | NA |
-|Új adatbázis létrehozása| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Igen | NA | NA |
-|Adatbázis frissítése| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Igen | NA | NA |
+|Az összes adatbázis enumerálása| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Yes | NA | NA |
+|Adatbázis beolvasása| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Yes | NA | NA |
+|Új adatbázis létrehozása| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Yes | NA | NA |
+|Adatbázis frissítése| Igen | Igen | Igen (az adatbázis egy üres területre van leképezve) | Yes | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-tárolók
@@ -74,7 +74,7 @@ Az Azure Cosmos-tárolók API-specifikus entitásokra vannak kialakítva, az al�
 
 | Azure Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tároló | Tároló | Tábla | Gyűjtemény | Graph | Tábla |
+|Azure Cosmos-tároló | Tároló | Tábla | Gyűjtemény | Graph | Táblázat |
 
 > [!NOTE]
 > Tárolók létrehozásakor ügyeljen arra, hogy ne hozzon létre két tárolót ugyanazzal a névvel, de a különböző burkolattal. Ennek az az oka, hogy az Azure-platform egyes részei nem megkülönböztetik a kis-és nagybetűket, így az ilyen nevű tárolók telemetria és műveleteinek összekeveredését és ütközését okozhatják.
@@ -83,17 +83,17 @@ Az Azure Cosmos-tárolók API-specifikus entitásokra vannak kialakítva, az al�
 
 Az Azure Cosmos-tárolók rendszer által definiált tulajdonságokkal rendelkeznek. Attól függően, hogy melyik API-t használja, előfordulhat, hogy bizonyos tulajdonságok nem lesznek közvetlenül kitéve. A következő táblázat ismerteti a rendszerszintű tulajdonságok listáját:
 
-| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Cél | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
+| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Szerep | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Rendszer által generált | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
-|\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |
-|\_TS | Rendszer által generált | A tároló utolsó frissített időbélyegzője | Igen | Nem | Nem | Nem | Nem |
-|\_önálló | Rendszer által generált | A tároló címezhető URI-ja | Igen | Nem | Nem | Nem | Nem |
+|\_rid | Rendszer által generált | Tároló egyedi azonosítója | Yes | Nem | Nem | Nem | Nem |
+|\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Yes | Nem | Nem | Nem | Nem |
+|\_TS | Rendszer által generált | A tároló utolsó frissített időbélyegzője | Yes | Nem | Nem | Nem | Nem |
+|\_önálló | Rendszer által generált | A tároló címezhető URI-ja | Yes | Nem | Nem | Nem | Nem |
 |id | Felhasználó által konfigurálható | A tároló felhasználó által definiált egyedi neve | Igen | Igen | Igen | Igen | Igen |
-|indexingPolicy | Felhasználó által konfigurálható | Lehetővé teszi az index elérési útjának, az index típusának és az index mód módosítását | Igen | Nem | Nem | Nem | Igen |
-|TimeToLive | Felhasználó által konfigurálható | Lehetővé teszi az elemek automatikus törlését a tárolóból egy beállított időszak után. Részletekért lásd: [time to Live](time-to-live.md). | Igen | Nem | Nem | Nem | Igen |
-|changeFeedPolicy | Felhasználó által konfigurálható | Egy tároló elemein végrehajtott módosítások olvasására szolgál. Részletekért lásd: a [hírcsatorna módosítása](change-feed.md). | Igen | Nem | Nem | Nem | Igen |
-|uniqueKeyPolicy | Felhasználó által konfigurálható | Egy logikai partícióban lévő egy vagy több érték egyediségének biztosítására szolgál. További információ: [egyedi kulcsokra vonatkozó megkötések](unique-keys.md). | Igen | Nem | Nem | Nem | Igen |
+|indexingPolicy | Felhasználó által konfigurálható | Lehetővé teszi az index elérési útjának, az index típusának és az index mód módosítását | Yes | Nem | Nem | Nem | Yes |
+|TimeToLive | Felhasználó által konfigurálható | Lehetővé teszi az elemek automatikus törlését a tárolóból egy beállított időszak után. Részletekért lásd: [time to Live](time-to-live.md). | Yes | Nem | Nem | Nem | Yes |
+|changeFeedPolicy | Felhasználó által konfigurálható | Egy tároló elemein végrehajtott módosítások olvasására szolgál. Részletekért lásd: a [hírcsatorna módosítása](change-feed.md). | Yes | Nem | Nem | Nem | Yes |
+|uniqueKeyPolicy | Felhasználó által konfigurálható | Egy logikai partícióban lévő egy vagy több érték egyediségének biztosítására szolgál. További információ: [egyedi kulcsokra vonatkozó megkötések](unique-keys.md). | Yes | Nem | Nem | Nem | Yes |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Műveletek egy Azure Cosmos-tárolón
 
@@ -113,23 +113,23 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 
 | Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tétel | Dokumentum | Sor | Dokumentum | Csomópont vagy peremhálózati | Elem |
+|Azure Cosmos-tétel | Dokumentum | Sor | Dokumentum | Csomópont vagy peremhálózati | Item |
 
 ### <a name="properties-of-an-item"></a>Egy tétel tulajdonságai
 
 Minden Azure Cosmos-eleme a következő, rendszerszintű tulajdonságokkal rendelkezik. Attól függően, hogy melyik API-t használja, előfordulhat, hogy néhányat nem lehet közvetlenül feltenni.
 
-| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Cél | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
+| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Szerep | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Rendszer által generált | Az objektum egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
-|\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |
-|\_TS | Rendszer által generált | Az elemek utolsó frissítésének időbélyege | Igen | Nem | Nem | Nem | Nem |
-|\_önálló | Rendszer által generált | Az elemek címezhető URI-ja | Igen | Nem | Nem | Nem | Nem |
-|id | Vagy | A felhasználó által definiált egyedi név logikai partícióban. | Igen | Igen | Igen | Igen | Igen |
-|Tetszőleges felhasználó által definiált tulajdonságok | Felhasználó által megadott | A felhasználó által definiált tulajdonságok az API-natív ábrázolásban (beleértve a JSON-t, a BSON és a CQL) | Igen | Igen | Igen | Igen | Igen |
+|\_rid | Rendszer által generált | Az objektum egyedi azonosítója | Yes | Nem | Nem | Nem | Nem |
+|\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Yes | Nem | Nem | Nem | Nem |
+|\_TS | Rendszer által generált | Az elemek utolsó frissítésének időbélyege | Yes | Nem | Nem | Nem | Nem |
+|\_önálló | Rendszer által generált | Az elemek címezhető URI-ja | Yes | Nem | Nem | Nem | Nem |
+|id | Vagy | A felhasználó által definiált egyedi név logikai partícióban. | Yes | Igen | Igen | Igen | Igen |
+|Tetszőleges felhasználó által definiált tulajdonságok | Felhasználó által megadott | A felhasználó által definiált tulajdonságok az API-natív ábrázolásban (beleértve a JSON-t, a BSON és a CQL) | Yes | Igen | Igen | Igen | Igen |
 
 > [!NOTE]
-> A `id` tulajdonság egyedisége csak minden logikai partíción belül érvényesül. Több dokumentum is rendelkezhet ugyanazzal `id` a tulajdonsággal különböző partíciós kulcs értékekkel.
+> A tulajdonság egyedisége `id` csak minden logikai partíción belül érvényesül. Több dokumentum is rendelkezhet ugyanazzal a `id` tulajdonsággal különböző partíciós kulcs értékekkel.
 
 ### <a name="operations-on-items"></a>Elemek műveletei
 
@@ -137,9 +137,9 @@ Az Azure Cosmos-elemek a következő műveleteket támogatják. Az Azure Cosmos 
 
 | Művelet | Azure CLI | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Beszúrás, csere, törlés, Upsert, olvasás | Nem | Igen | Igen | Igen | Igen | Igen |
+| Beszúrás, csere, törlés, Upsert, olvasás | Nem | Yes | Igen | Igen | Igen | Igen |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ ezekről a feladatokról és fogalmakról:
 

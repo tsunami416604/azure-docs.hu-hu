@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385382"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Telefonszám-jogcímek átalakításának meghatározása Azure AD B2C
 
@@ -30,14 +30,14 @@ Ez a cikk a Azure Active Directory B2C (Azure AD B2C) identitás-keretrendszer s
 
 Az `phoneNumber` adattípust `string` adattípusba alakítja.
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Telefonszám | Telefonszám |  A ClaimType karakterlánccá alakítja át. |
 | OutputClaim | phoneNumberString | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
 Ebben a példában a értékkel rendelkező cellPhoneNumber jogcím a következő `phoneNumber` értékkel rendelkező mobil jogcímre lesz konvertálva: `string` .
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -60,7 +60,7 @@ Ebben a példában a értékkel rendelkező cellPhoneNumber jogcím a következ�
 
 Ez a jogcím-átalakítás érvényesíti a telefonszám formátumát. Ha érvényes formátumú, módosítsa az Azure AD B2C által használt szabványos formátumra. Ha a megadott telefonszám formátuma érvénytelen, hibaüzenetet kap.
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | phoneNumberString | sztring |  A telefonszámhoz tartozó karakterlánc-jogcím. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie egy vezető "+" és ország/régió kódnak. Ha a bemeneti jogcímet adja `country` meg, a telefonszám helyi formátumban van megadva (az ország/régió kódja nélkül). |
 | InputClaim | ország | sztring | Választható A ISO3166 formátumú (kétbetűs ISO-3166 ország/régió kódja) típusú telefonszám ország/régió kódjához tartozó jogcíme. |
@@ -72,7 +72,7 @@ A **ConvertStringToPhoneNumberClaim** jogcímek átalakítását a rendszer mind
 
 A jogcím-átalakítással ellenőrizheti, hogy a megadott karakterlánc-jogcím érvényes telefonszám-e. Ha nem, a rendszer hibaüzenetet küld. A következő példa ellenőrzi, hogy a **phoneString** claimType valóban érvényes telefonszám-e, majd a telefonszámot a standard Azure ad B2C formátumban adja vissza. Ellenkező esetben a rendszer hibaüzenetet küld.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ A jogcím-átalakítással ellenőrizheti, hogy a megadott karakterlánc-jogcím
 
 A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt meghívó önérvényesített technikai profil meghatározza a hibaüzenetet.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -95,7 +95,7 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 </TechnicalProfile>
 ```
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 - Bemeneti jogcímek:
   - **phoneNumberString**: 033 456-7890
@@ -103,7 +103,7 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 - Kimeneti jogcímek:
   - **outputClaim**: + 450334567890
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 - Bemeneti jogcímek:
   - **phoneNumberString**: + 1 (123) 456-7890
@@ -115,7 +115,7 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 
 Ezzel kibontja az ország/régió kódját és a nemzeti számot a bemeneti jogcímen, és opcionálisan kivételt jelez, ha a megadott telefonszám érvénytelen.
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Telefonszám | sztring | A telefonszám karakterlánc-jogcíme. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie egy vezető "+" és ország/régió kódnak. |
 | InputParameter | throwExceptionOnFailure | logikai | Választható Egy paraméter, amely azt jelzi, hogy a rendszer kivételt jelez-e, ha a telefonszám érvénytelen. Az alapértelmezett érték false (hamis). |
@@ -132,7 +132,7 @@ A jogcímek átalakításával teljes telefonszámot oszthat meg az ország/rég
 
 A következő példában a telefonszámot a nemzeti szám és az ország/régió kódja között próbálja meg megosztani. Ha a telefonszám érvényes, a telefonszámot a rendszer felülbírálja a nemzeti szám alapján. Ha a telefonszám érvénytelen, a rendszer nem dobja el a kivételt, és a telefonszám továbbra is az eredeti értékkel rendelkezik.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ A következő példában a telefonszámot a nemzeti szám és az ország/régió
 
 A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt meghívó önérvényesített technikai profil meghatározza a hibaüzenetet.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>
@@ -159,7 +159,7 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 </TechnicalProfile>
 ```
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 - Bemeneti jogcímek:
   - **telefonszám**: + 49 (123) 456-7890
@@ -170,7 +170,7 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
   - **nationalNumber**: 1234567890
   - **országhívószám**: de
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 - Bemeneti jogcímek:
   - **telefonszám**: + 49 (123) 456-7890

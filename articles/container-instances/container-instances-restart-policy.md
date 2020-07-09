@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan használhatja a Azure Container Instances a bef
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80131495"
 ---
-# <a name="run-containerized-tasks-with-restart-policies"></a>Tárolózott feladatok futtatása újraindítási szabályzatokkal
+# <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása újraindítási szabályzatokkal
 
 A tárolók Azure Container Instances szolgáltatásban való üzembe helyezésének egyszerűsége és gyorsasága kényelmes platformot biztosít, amellyel egy tárolópéldányban hajthat végre olyan egyszer futó feladatokat, mint a létrehozás, a tesztelés és a képrenderelés.
 
@@ -30,7 +30,7 @@ Amikor Azure Container Instancesban hoz létre egy [tároló csoportot](containe
 
 ## <a name="specify-a-restart-policy"></a>Újraindítási szabályzat meghatározása
 
-Az újraindítási szabályzatok megadásának módja attól függ, hogyan hozza létre a tároló példányait, például az Azure CLI-vel, Azure PowerShell-parancsmagokkal vagy a Azure Portal. Az Azure CLI-ben határozza meg `--restart-policy` a paramétert az [az Container Create][az-container-create]parancs meghívásakor.
+Az újraindítási szabályzatok megadásának módja attól függ, hogyan hozza létre a tároló példányait, például az Azure CLI-vel, Azure PowerShell-parancsmagokkal vagy a Azure Portal. Az Azure CLI-ben határozza meg a `--restart-policy` paramétert az [az Container Create][az-container-create]parancs meghívásakor.
 
 ```azurecli-interactive
 az container create \
@@ -42,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Futtatás a befejezésig példa
 
-Ha szeretné megtekinteni az újraindítási szabályzatot, hozzon létre egy Container-példányt a Microsoft [ACI-WordCount][aci-wordcount-image] rendszerképből, és határozza meg az `OnFailure` újraindítási szabályzatot. Ez a példában szereplő tároló egy Python-szkriptet futtat, amely alapértelmezés szerint a Shakespeare [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)szövegét elemzi, a 10 leggyakoribb szót írja a stdout értékre, majd kilép.
+Ha szeretné megtekinteni az újraindítási szabályzatot, hozzon létre egy Container-példányt a Microsoft [ACI-WordCount][aci-wordcount-image] rendszerképből, és határozza meg az `OnFailure` Újraindítási szabályzatot. Ez a példában szereplő tároló egy Python-szkriptet futtat, amely alapértelmezés szerint a Shakespeare [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)szövegét elemzi, a 10 leggyakoribb szót írja a stdout értékre, majd kilép.
 
 Futtassa a példában szereplő tárolót a következő az [Container Create][az-container-create] paranccsal:
 
@@ -54,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Az Azure Container Instances elindítja a tárolót, majd leállítja, amikor az alkalmazás (vagy ebben az esetben a szkript) kilép. Amikor Azure Container Instances leállít egy olyan tárolót, `Never` amelynek `OnFailure`újraindítási szabályzata vagy, a tároló állapota leállítva **értékre van állítva.** A tároló állapotát az [az Container show][az-container-show] paranccsal tekintheti meg:
+Az Azure Container Instances elindítja a tárolót, majd leállítja, amikor az alkalmazás (vagy ebben az esetben a szkript) kilép. Amikor Azure Container Instances leállít egy olyan tárolót, amelynek újraindítási szabályzata `Never` vagy `OnFailure` , a **Terminated**tároló állapota leállítva értékre van állítva. A tároló állapotát az [az Container show][az-container-show] paranccsal tekintheti meg:
 
 ```azurecli-interactive
 az container show \

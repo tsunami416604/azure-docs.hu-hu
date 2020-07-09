@@ -4,22 +4,22 @@ description: Ez a cikk a privát és a Microsoft-ExpressRoute létrehozásának 
 services: expressroute
 author: mialdrid
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e3d855d0860d8d9875e4a93091653cab18965f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738532"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet útválasztási konfigurációt egy Azure Resource Manager (ARM) ExpressRoute-áramkörhöz a Azure Portal használatával. A ExpressRoute-áramkör állapota, frissítése vagy törlése és megszüntetése is ellenőrizhető. Ha más módszert szeretne használni az áramkörrel való munkavégzéshez, válasszon egy cikket a következő listából:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Nyilvános társak](about-public-peering.md)

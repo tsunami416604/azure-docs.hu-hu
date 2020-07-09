@@ -1,0 +1,121 @@
+### YamlMime:Landing
+title: Azure SQL Database és felügyelt Azure SQL-példány – monitorozás és a teljesítmény finomhangolása
+summary: Az Azure SQL Database és a felügyelt Azure SQL-példány által biztosított eszközökkel metrikákat és diagnosztikai információkat gyűjthet az adatbázis monitorozásához és az adatbázis teljesítményének javításához.
+metadata:
+  title: Azure SQL Database és felügyelt Azure SQL-példány – monitorozási és finomhangolási dokumentáció
+  description: Megismerheti az Azure SQL Database monitorozási és teljesítményhangolási eszközeit, amelyekkel metrikákat és diagnosztikai adatokat gyűjthet, valamint javíthatja az adatbázis teljesítményét.
+  ms.service: sql-database
+  ms.subservice: performance
+  ms.custom: sqldbrb=2
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 21bf93db179ef2b459429fab6b30f5fe6d9d62b0
+  ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/30/2020
+  ms.locfileid: "84220508"
+landingContent:
+- title: Bevezetés a monitorozás és a teljesítmény-finomhangolás világába
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Monitorozás és teljesítmény-finomhangolás
+      url: monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Microsoft Azure – Adatbázis–monitorozási forgatókönyv
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Azure SQL Database – intelligens teljesítménynövelő javaslatok
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Database Advisor – finomhangolási javaslatok
+      url: database-advisor-implement-performance-recommendations.md
+    - text: Automatikus hangolás
+      url: automatic-tuning-enable.md
+    - text: Lekérdezési terheléselemző
+      url: query-performance-insight-use.md
+  - linkListType: video
+    links:
+    - text: Automatikus hangolás
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: Az Azure SQL Database és a felügyelt Azure SQL-példány erőforráskorlátai
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Önálló adatbázis – Virtuális magokra vonatkozó erőforráskorlátok
+      url: resource-limits-vcore-single-databases.md
+    - text: Önálló adatbázis – DTU-alapú erőforráskorlátok
+      url: resource-limits-dtu-single-databases.md
+    - text: Rugalmas készlet – Virtuális magokra vonatkozó erőforráskorlátok
+      url: resource-limits-vcore-elastic-pools.md
+    - text: Rugalmas készlet – DTU-alapú erőforráskorlátok
+      url: resource-limits-dtu-elastic-pools.md
+    - text: A felügyelt SQL-példány erőforráskorlátai
+      url: ../managed-instance/resource-limits.md
+    - text: A példánykészletek erőforráskorlátai
+      url: ../managed-instance/instance-pools-overview.md#resource-limitations
+- title: Az Azure SQL Database és a felügyelt Azure SQL-példány intelligens teljesítményelemzése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Intelligent Insights MI használatával
+      url: intelligent-insights-overview.md
+  - linkListType: concept
+    links:
+    - text: Metrikák és diagnosztikai naplózás
+      url: metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+    - text: A teljesítménydiagnosztikai naplózás ismertetése
+      url: intelligent-insights-use-diagnostics-log.md
+    - text: Azure SQL Analytics
+      url: ../../azure-monitor/insights/azure-sql.md
+    - text: Észlelhető teljesítményminták
+      url: intelligent-insights-troubleshoot-performance.md
+    - text: Intelligens lekérdezés-feldolgozás
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
+  - linkListType: video
+    links:
+    - text: Intelligent Insights
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+- title: Az Azure SQL Database és a felügyelt Azure SQL-példány manuális teljesítmény-finomhangolása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Lekérdezéssel kapcsolatos problémák azonosítása
+      url: ../identify-query-performance-issues.md
+  - linkListType: concept
+    links:
+    - text: Monitorozás DMV-k használatával
+      url: monitoring-with-dmvs.md
+    - text: Alkalmazások és adatbázisok finomhangolása
+      url: performance-guidance.md
+    - text: Lekérdezéstár használata
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: Bővített események használata
+      url: xevent-db-diff-from-svr.md
+    - text: Rugalmas skálázás teljesítménydiagnosztikája
+      url: hyperscale-performance-diagnostics.md
+- title: Az Azure SQL Database és a felügyelt Azure SQL-példány erőforrásainak skálázása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Erőforrások dinamikus skálázása
+      url: scale-resources.md
+  - linkListType: concept
+    links:
+    - text: Önálló adatbázis erőforrásainak skálázása
+      url: single-database-scale.md
+    - text: Rugalmas készletek erőforrásainak skálázása
+      url: elastic-pool-scale.md
+    - text: Felügyelt példány erőforrásainak skálázása
+      url: ../managed-instance/sql-managed-instance-paas-overview.md#management-operations
+    - text: Olvasási felskálázás
+      url: read-scale-out.md
+  - linkListType: video
+    links:
+    - text: Dinamikus skálázhatóság
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

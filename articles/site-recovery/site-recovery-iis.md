@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478292"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131334"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vész-helyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
 
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan lehet védelemmel ellátni egy webalkalmazást I
 Mielőtt elkezdené, győződjön meg arról, hogy tudja, hogyan végezheti el a következő feladatokat:
 
 * [Virtuális gép replikálása az Azure-ba](vmware-azure-tutorial.md)
-* [Helyreállítási hálózat kialakítása](site-recovery-network-design.md)
+* [Helyreállítási hálózat kialakítása](./concepts-on-premises-to-azure-networking.md)
 * [Végezzen feladatátvételi tesztet az Azure-ba](site-recovery-test-failover-to-azure.md)
 * [Feladatátvétel az Azure-ba](site-recovery-failover.md)
 * [Tartományvezérlő replikálása](site-recovery-active-directory.md)
@@ -69,7 +69,7 @@ Azure|NA|Igen
 
 Az összes IIS-webfarm virtuális gép az Azure-ba történő replikálásának megkezdéséhez kövesse a [feladatátvétel tesztelése az Azure-ban](site-recovery-test-failover-to-azure.md)című témakör útmutatását site Recovery.
 
-Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások** > **cél IP**-címet.
+Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások**  >  **cél IP**-címet.
 
 ![A cél IP-cím megadását bemutató képernyőkép a Site Recovery számítási és hálózati ablaktáblán](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -92,12 +92,12 @@ További információ: [a helyreállítási terv testreszabása](site-recovery-r
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Parancsfájl hozzáadása a helyreállítási tervhez
-Ahhoz, hogy az IIS-webfarm megfelelően működjön, előfordulhat, hogy műveleteket kell végrehajtania az Azure-beli virtuális gépeken feladatátvétel utáni vagy feladatátvételi teszt során. Automatizálhat néhány feladatátvétel utáni műveletet. Frissítheti például a DNS-bejegyzést, módosíthatja a hely kötését, vagy megváltoztathatja a kapcsolati karakterláncot úgy, hogy a megfelelő parancsfájlokat hozzáadja a helyreállítási tervhez. [VMM-parancsfájl hozzáadása helyreállítási tervhez](site-recovery-how-to-add-vmmscript.md) az automatizált feladatok parancsfájl használatával történő beállítását ismerteti.
+Ahhoz, hogy az IIS-webfarm megfelelően működjön, előfordulhat, hogy műveleteket kell végrehajtania az Azure-beli virtuális gépeken feladatátvétel utáni vagy feladatátvételi teszt során. Automatizálhat néhány feladatátvétel utáni műveletet. Frissítheti például a DNS-bejegyzést, módosíthatja a hely kötését, vagy megváltoztathatja a kapcsolati karakterláncot úgy, hogy a megfelelő parancsfájlokat hozzáadja a helyreállítási tervhez. [VMM-parancsfájl hozzáadása helyreállítási tervhez](./hyper-v-vmm-recovery-script.md) az automatizált feladatok parancsfájl használatával történő beállítását ismerteti.
 
 #### <a name="dns-update"></a>DNS-frissítés
 Ha a DNS dinamikus DNS-frissítésre van konfigurálva, a virtuális gépek általában az új IP-címmel frissítik a DNS-t az indításkor. Ha explicit lépést szeretne hozzáadni a DNS-nek a virtuális gépek új IP-címeivel való frissítéséhez, adjon hozzá egy [parancsfájlt a DNS IP-](https://aka.ms/asr-dns-update) címének frissítés utáni feladatátvételi művelete helyreállítási terv csoportjain.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Kapcsolati sztring az alkalmazás Web. config fájljában
+#### <a name="connection-string-in-an-applications-webconfig"></a>Az alkalmazás web.configban található kapcsolatok karakterlánca
 A kapcsolatok karakterlánca határozza meg azt az adatbázist, amellyel a webhely kommunikál. Ha a kapcsolatok karakterlánca a virtuális gép nevét adja meg, a feladatátvételt követő további lépések nem szükségesek. Az alkalmazás automatikusan tud kommunikálni az adatbázissal. Továbbá, ha a virtuális gép IP-címe megmarad, nem kell frissítenie a kapcsolódási karakterláncot. 
 
 Ha a kapcsolódási karakterlánc IP-cím használatával hivatkozik az adatbázis virtuális gépre, frissíteni kell a feladatátvételt követően. A következő kapcsolódási karakterlánc például a-adatbázisra mutat az IP-127.0.1.2:
@@ -158,5 +158,5 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [más alkalmazások replikálásáról](site-recovery-workload.md) site Recovery használatával.

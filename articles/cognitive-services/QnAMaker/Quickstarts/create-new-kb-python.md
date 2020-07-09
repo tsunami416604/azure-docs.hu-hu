@@ -3,14 +3,14 @@ title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Python – QnA M
 description: Ez a Python REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: bb51a47efc7bcae5014d5ea004674fed7cb33fe0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: RESTCURL2020FEB27, tracking-python
+ms.topic: how-to
+ms.openlocfilehash: 5facd58553a1a66d2c7986a0b7629f8a36b5c972
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851816"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608519"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Python használatával
 
@@ -20,7 +20,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Dokumentációs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python-minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Python-minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -40,14 +40,14 @@ A `create-new-knowledge-base-3x.py` tetején a következő sorok hozzáadásáva
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
-A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is. Cserélje le a `<your-qna-maker-subscription-key>` és `<your-resource-name>` a értékét a saját QnA Maker kulcsára és az erőforrás nevére.
+A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is. Cserélje le a és a értékét a `<your-qna-maker-subscription-key>` `<your-resource-name>` saját QnA Maker kulcsára és az erőforrás nevére.
 
 A program osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez.
 
 Állítsa be a következő értékeket:
 
 * `<your-qna-maker-subscription-key>`– A **kulcs** egy 32 karakterből álló karakterlánc, és a Azure Portal QnA Maker erőforrásban, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
-* `<your-resource-name>`– Az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható a következő formátumban: `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
+* `<your-resource-name>`– Az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható a következő formátumban: `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -130,7 +130,7 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

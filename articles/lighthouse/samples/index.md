@@ -2,19 +2,19 @@
 title: Azure Lighthouse-minták és -sablonok
 description: Ezek a minták és Azure Resource Manager-sablonok megmutatják, hogyan történik az ügyfelek előkészítése az Azure által delegált erőforrás-kezeléshez, valamint az Azure Lighthouse-forgatókönyvek támogatása.
 ms.topic: sample
-ms.date: 03/30/2020
-ms.openlocfilehash: 9e0ba8175931e277357e5b65e7e9ebded908a675
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 07/07/2020
+ms.openlocfilehash: 9a90923b43fa5afe59f6385e3f227cdc722b27f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421157"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111659"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse-minták
 
 A következő táblázat Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz az Azure Lighthouse-hoz. Többek között ezek a fájlok is megtalálhatók az [Azure Lighthouse mintaadattárában](https://github.com/Azure/Azure-Lighthouse-samples/).
 
-## <a name="onboarding-customers-to-azure-delegated-resource-management"></a>Ügyfelek előkészítése az Azure által delegált erőforrás-kezeléshez
+## <a name="onboarding-customers-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
 [!INCLUDE [azure-lighthouse-samples-onboarding](../../../includes/azure-lighthouse-samples-onboarding.md)]
 

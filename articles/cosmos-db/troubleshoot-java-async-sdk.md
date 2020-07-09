@@ -10,10 +10,9 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651893"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>A Azure Cosmos DB aszinkron Java SDK v2 és az SQL API-fiókok használata esetén felmerülő problémák elhárítása
@@ -193,7 +192,7 @@ A fenti kivétel azt sugallja, hogy a RxJava lib egy régebbi verziójával (pé
 
 Az ilyen problémák megoldásához meg kell határozni, hogy az RxJava-1.2.2 milyen más függőséget eredményez, és kizárja a RxJava-1.2.2-re irányuló tranzitív függőséget, és lehetővé teszi a CosmosDB SDK számára az újabb verzió használatát.
 
-A RxJava-1.2.2 nevű könyvtár azonosításához futtassa a következő parancsot a Project Pom. xml fájl mellett:
+Annak azonosításához, hogy melyik függvénytár hozza a RxJava-1.2.2-t, futtassa a következő parancsot a Project pom.xml fájl mellett:
 ```bash
 mvn dependency:tree
 ```

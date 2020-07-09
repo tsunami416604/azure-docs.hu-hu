@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 1240b4b7e2c84e798c6d7e5257e459628da1420f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68642084"
 ---
-A parancs kimenetében a `identity` szakasz azt mutatja, hogy a típus `UserAssigned` identitása be van állítva a következő feladatban:
+A parancs kimenetében a `identity` szakasz azt mutatja, hogy a típus identitása be `UserAssigned` van állítva a következő feladatban:
 
 ```console
 [...]

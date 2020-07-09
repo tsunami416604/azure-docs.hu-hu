@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826672"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385331"
 ---
 # <a name="secure-your-restful-services"></a>A REST-szolgáltatások biztonságossá tétele 
 
@@ -53,21 +53,21 @@ Ha egy REST API műszaki profilt HTTP alapszintű hitelesítéssel szeretne konf
     Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 1. A **titok** mezőbe írja be a REST API felhasználónevet.
 1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza újra a **házirend-kulcsok** elemet.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. A **Beállítások**lapon válassza a **manuális**lehetőséget.
 1. A **név**mezőbe írja be a következőt: **RestApiPassword**.
     Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 1. A **titok** mezőbe írja be a REST API jelszót.
 1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>A REST API műszaki profil konfigurálása HTTP alapszintű hitelesítés használatára
 
 A szükséges kulcsok létrehozása után konfigurálja a REST API technikai profil metaadatait a hitelesítő adatokra való hivatkozáshoz.
 
-1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions.xml).
 1. Keresse meg a REST API technikai profilt. Például: `REST-ValidateProfile` vagy `REST-GetProfile` .
 1. Keresse meg az `<Metadata>` elemet.
 1. Módosítsa a *AuthenticationType* a következőre: `Basic` .
@@ -114,7 +114,7 @@ Az ügyféltanúsítvány-alapú hitelesítés kölcsönös tanúsítványalapú
 Nem éles környezetekben, ha még nem rendelkezik tanúsítvánnyal, önaláírt tanúsítványt is használhat. Windows rendszeren a PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
 
 1. Futtassa ezt a PowerShell-parancsot egy önaláírt tanúsítvány létrehozásához. Módosítsa az `-Subject` argumentumot megfelelően az alkalmazáshoz, és Azure ad B2C a bérlő nevét. A dátumot úgy is beállíthatja `-NotAfter` , hogy a tanúsítványhoz eltérő lejáratot határozzon meg.
-    ```PowerShell
+    ```powershell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
         -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
@@ -142,13 +142,13 @@ Nem éles környezetekben, ha még nem rendelkezik tanúsítvánnyal, önaláír
     A rendszer automatikusan hozzáadja a *B2C_1A_* előtagot.
 1. A **fájlfeltöltés** mezőben válassza ki a tanúsítvány. pfx fájlját, amely titkos kulccsal rendelkezik.
 1. A **jelszó** mezőbe írja be a tanúsítvány jelszavát.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>Az REST API műszaki profil konfigurálása az ügyféltanúsítvány-alapú hitelesítés használatára
 
 A szükséges kulcs létrehozása után konfigurálja a REST API technikai profil metaadatait az ügyféltanúsítvány hivatkozására.
 
-1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions.xml).
 1. Keresse meg a REST API technikai profilt. Például: `REST-ValidateProfile` vagy `REST-GetProfile` .
 1. Keresse meg az `<Metadata>` elemet.
 1. Módosítsa a *AuthenticationType* a következőre: `ClientCertificate` .
@@ -264,7 +264,7 @@ A ServiceUrl cserélje le a-bérlő-nevet az Azure AD-bérlő nevére. Tekintse 
 
 Ha a tulajdonosi jogkivonat hitelesítését szeretné támogatni az egyéni házirendben, módosítsa a REST API technikai profilt a következővel:
 
-1. A munkakönyvtárában nyissa meg az *TrustFrameworkExtensions. XML* kiterjesztési házirend fájlját.
+1. A munkakönyvtárában nyissa meg az *TrustFrameworkExtensions.xml* -bővítmény házirend-fájlját.
 1. Keresse meg a-t `<TechnicalProfile>` tartalmazó csomópontot `Id="REST-API-SignUp"` .
 1. Keresse meg az `<Metadata>` elemet.
 1. Módosítsa a *AuthenticationType* a *tulajdonosra*, a következőképpen:
@@ -285,7 +285,7 @@ Ha a tulajdonosi jogkivonat hitelesítését szeretné támogatni az egyéni há
 
 A fenti kódrészletek hozzáadása után a technikai profilnak a következő XML-kódhoz hasonlóan kell kinéznie:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
@@ -323,13 +323,13 @@ Hozzon létre egy házirend-kulcsot a tulajdonosi jogkivonat értékének tárol
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `RestApiBearerToken`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza a elemet `Encryption` .
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>A REST API technikai profiljának konfigurálása a tulajdonosi jogkivonat-házirend kulcsának használatára
 
 A szükséges kulcs létrehozása után konfigurálja a REST API technikai profil metaadatait a tulajdonosi jogkivonatra való hivatkozáshoz.
 
-1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions. xml).
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions.xml).
 1. Keresse meg a REST API technikai profilt. Például: `REST-ValidateProfile` vagy `REST-GetProfile` .
 1. Keresse meg az `<Metadata>` elemet.
 1. Módosítsa a *AuthenticationType* a következőre: `Bearer` .

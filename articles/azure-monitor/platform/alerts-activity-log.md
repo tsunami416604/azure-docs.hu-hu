@@ -4,12 +4,12 @@ description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azur
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744267"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056259"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -199,7 +199,12 @@ A műveletnapló riasztási szabályának Azure Resource Manager sablon használ
   ]
 }
 ```
-Az előző minta JSON például a sampleActivityLogAlert. JSON fájlba menthető, és a Azure Resource Manager használatával telepíthető [a Azure Portalban](../../azure-resource-manager/templates/deploy-portal.md), és üzembe helyezhető.
+Az előző minta JSON menthető, például a sampleActivityLogAlert.json, az útmutató céljára, és [a Azure Portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md)használatával is telepíthető.
+
+  > [!NOTE]
+  > 
+  > Figyelje meg, hogy a legmagasabb szintű tevékenységek naplójának riasztásai megadhatók előfizetés.
+  > A néhány előfizetésre vonatkozóan nincs lehetőség a riasztás meghatározására, ezért a definíciónak az előfizetéshez tartozó riasztást kell tartalmaznia.
 
 A feltételek mezőkhöz a Azure Resource Manager sablonban használható beállítások a következők: figyelje meg, hogy a "Resource Health", az "Advisor" és a "Service Health" mező további tulajdonságokkal rendelkezik a speciális mezőkhöz. 
 1. resourceId: a tevékenység naplójának érintett erőforrásának erőforrás-azonosítója, amelyet a riasztásnak generálni kell.
@@ -251,7 +256,7 @@ Ha a PowerShell használatával szeretné telepíteni az előző [Azure Resource
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 
-ahol a sampleActivityLogAlert. Parameters. JSON tartalmazza a riasztási szabály létrehozásához szükséges paraméterekhez megadott értékeket.
+ahol a sampleActivityLogAlert.parameters.jsa riasztási szabály létrehozásához szükséges paraméterekhez megadott értékeket tartalmazza.
 
 ### <a name="use-activity-log-powershell-cmdlets"></a>A log PowerShell-parancsmagok használata
 

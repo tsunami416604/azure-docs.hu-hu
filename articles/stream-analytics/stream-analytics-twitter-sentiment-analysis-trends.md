@@ -6,14 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834764"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040775"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
 
@@ -60,7 +59,7 @@ Ebben a szakaszban létrehoz egy Event hub-névteret, és hozzáad egy Event hub
 
 6. Nevezze el az új Event hub *socialtwitter-eh*nevet. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Az Event hub egyéb beállításait nem kell beállítania.
  
-7. Kattintson a **Létrehozás** gombra.
+7. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="grant-access-to-the-event-hub"></a>Hozzáférés biztosítása az Event hub számára
 
@@ -75,7 +74,7 @@ Ahhoz, hogy egy folyamat adatküldést küldjön egy Event hubhoz, az Event hub-
 
 3.  A hozzáférési házirend lapon válassza a **+ Hozzáadás**lehetőséget. Ezután írja be a *socialtwitter-hozzáférés* **nevet a szabályzat neveként** , és jelölje be a **kezelés** jelölőnégyzetet.
  
-4.  Kattintson a **Létrehozás** gombra.
+4.  Válassza a **Létrehozás** lehetőséget.
 
 5.  Miután telepítette a házirendet, válassza ki a szabályzatot a megosztott hozzáférési házirendek listájából.
 
@@ -127,7 +126,7 @@ Az alkalmazás futtatása előtt szükség van bizonyos információkra, példá
 
 1. Győződjön meg arról, hogy letöltötte a [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) alkalmazást az előfeltételek részben leírtak szerint.
 
-2. Szövegszerkesztő használatával nyissa meg az *app. config* fájlt. Hajtsa végre a következő módosításokat a `<appSettings>` elemen:
+2. Szövegszerkesztő használatával nyissa meg a *App.config* fájlt. Hajtsa végre a következő módosításokat a `<appSettings>` elemen:
 
    * Állítsa be `oauth_consumer_key` a Twitter fogyasztói kulcsát (API-kulcs). 
    * Állítsa be `oauth_consumer_secret` a Twitter fogyasztói titkát (API titkos kulcs).
@@ -148,7 +147,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
     Érdemes a feladatot és az Event hub-t ugyanabban a régióban elhelyezni a legjobb teljesítmény érdekében, és így nem kell fizetnie a régiók közötti adatátvitel során.
 
-3. Kattintson a **Létrehozás** gombra. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
+3. Válassza a **Létrehozás** lehetőséget. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
 
 ## <a name="specify-the-job-input"></a>Adja meg a feladatok bemenetét
 
@@ -159,7 +158,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Bemeneti alias| *TwitterStream* | Adja meg a bemenet aliasát. |
-   |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
+   |Előfizetés  | \<Your subscription\> |  Válassza ki a használni kívánt Azure-előfizetést. |
    |Event Hubs-névtér | *ASA – Twitter – eventhub* |
    |Eseményközpont neve | *socialtwitter – eh* | Válassza a *meglévő használata*lehetőséget. Ezután válassza ki a létrehozott Event hubot.|
    |Esemény tömörítési típusa| GZip | Az adattömörítési típus.|

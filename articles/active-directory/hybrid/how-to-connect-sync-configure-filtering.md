@@ -11,22 +11,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357766"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. Az Office 365 munkaterheléseket, például az Exchange Online-t és a Skype vállalati alkalmazást használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
 
-Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Néhány példa:
+Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Az alábbiakban néhány példa következik:
 
 * A [multi-Azure ad címtár-topológiát](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)tervezi használni. Ezután egy szűrőt kell alkalmaznia annak szabályozására, hogy mely objektumok legyenek szinkronizálva egy adott Azure AD-címtárral.
 * Az Azure-hoz vagy az Office 365-hoz készült pilóta futtatásakor csak a felhasználók egy részhalmazát szeretné használni az Azure AD-ben. A kis pilóta esetében nem fontos, hogy a funkciók megjelenítéséhez teljes globális címlistát lehessen használni.
@@ -144,7 +144,7 @@ Ha frissítette a tartományi szűrőt, a futtatási profilokat is frissítenie 
 3. Az egyes profilok esetében módosítsa a **hozzáadott** és az **eltávolított** tartományokat.
     1. Mindegyik öt profil esetében hajtsa végre a következő lépéseket az egyes **hozzáadott** tartományokhoz:
         1. Válassza ki a futtatási profilt, és kattintson az **új lépés**gombra.
-        2. A **lépés konfigurálása** oldalon, a **típus** legördülő menüben válassza ki a lépés típusát ugyanazzal a névvel, mint a konfigurálni kívánt profillal. Kattintson a **Tovább** gombra.  
+        2. A **lépés konfigurálása** oldalon, a **típus** legördülő menüben válassza ki a lépés típusát ugyanazzal a névvel, mint a konfigurálni kívánt profillal. Ezután kattintson a **Tovább** gombra.  
         ![Összekötő-profilok futtatása 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. Az **összekötő konfigurációja** lapon, a **partíció** legördülő menüben válassza ki a tartomány szűrőhöz hozzáadott tartomány nevét.  
         ![Összekötőn futó profilok 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -270,7 +270,7 @@ Ha szüksége van a szolgáltatásra, létrehozhat több szabályt az első típ
 ### <a name="outbound-filtering"></a>Kimenő szűrés
 Bizonyos esetekben a szűrés csak akkor szükséges, ha az objektumok a metaverse-ben csatlakoztak. Előfordulhat például, hogy a mail attribútumot az erőforrás-erdőben, a userPrincipalName attribútumot pedig a fiók erdőből kell megvizsgálnia annak megállapításához, hogy egy objektumot szinkronizálni kell-e. Ezekben az esetekben a szűrést a Kimenő szabály alapján hozza létre.
 
-Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók legyenek szinkronizálva, akiknek a @contoso.com levelezését és userPrincipalName is befejezte:
+Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók legyenek szinkronizálva, akiknek a levelezését és userPrincipalName is befejezte @contoso.com :
 
 1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
 2. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a **Start** menüből.
@@ -278,7 +278,7 @@ Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók
 4. A használt csatlakozási verziótól függően keresse meg a **HRE – User JOIN** vagy a **HRE-User JOIN SOAInAD**nevű szabályt, és kattintson a **Szerkesztés**gombra.
 5. Az előugró ablakban válaszoljon az **Igen** gombra a szabály másolatának létrehozásához.
 6. A **Leírás** lapon módosítsa a **sorrendet** egy nem használt értékre (például 50).
-7. A bal oldali navigációs sávon kattintson a **hatókör szűrő** elemre, majd kattintson a **záradék hozzáadása**lehetőségre. Az **attribútum**területen válassza az **e-mail**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja ** \@** be a contoso.com, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **userPrincipalName**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja ** \@** be a következőt: contoso.com.
+7. A bal oldali navigációs sávon kattintson a **hatókör szűrő** elemre, majd kattintson a **záradék hozzáadása**lehetőségre. Az **attribútum**területen válassza az **e-mail**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a ** \@ contoso.com**, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **userPrincipalName**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a következőt: ** \@ contoso.com**.
 8. Kattintson a **Save** (Mentés) gombra.
 9. A konfigurálás befejezéséhez **teljes szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
@@ -298,11 +298,11 @@ Hajtsa végre a következő lépéseket:
 
 A szinkronizálás után a rendszer az összes módosítást exportálja. Mielőtt megkezdené a módosításokat az Azure AD-ben, ellenőrizni kívánja, hogy a módosítások helyesek-e.
 
-1. Indítson el egy parancssort, és `%ProgramFiles%\Microsoft Azure AD Sync\bin`nyissa meg a következőt:.
+1. Indítson el egy parancssort, és nyissa meg a következőt: `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. Futtassa az `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
    Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
 3. Futtassa az `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
-4. Most már van egy fájlja a (z)% Temp% nevű exportálás. csv fájlban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
+4. Most már van egy fájlja a (z)% Temp% megnevezett export.csvban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.
 
 Ha elégedett, exportálja a módosításokat az Azure AD-be.

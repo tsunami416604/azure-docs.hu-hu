@@ -1,19 +1,14 @@
 ---
 title: Az Azure Event Hubshoz való hozzáférés engedélyezése
 description: Ez a cikk az Azure Event Hubs-erőforrásokhoz való hozzáférés engedélyezésének különböző lehetőségeiről nyújt információt.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85323182"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
 Minden alkalommal, amikor egy Event hub-ből tesz közzé vagy használ eseményeket/információkat, az ügyfél megpróbál hozzáférni Event Hubs erőforrásokhoz. A biztonságos erőforrásokra vonatkozó minden kérést engedélyezni kell, hogy a szolgáltatás biztosítsa, hogy az ügyfél rendelkezik a szükséges engedélyekkel az adatközzétételhez/felhasználáshoz. 

@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: Az IoT Edge-en futó Live Video Analytics dokumentációja
+summary: Útmutató az IoT Edge-en futó Live Video Analytics használatához
+metadata:
+  title: Az IoT Edge-en futó Live Video Analytics dokumentációja
+  description: Útmutató az IoT Edge-en futó Live Video Analytics használatához
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: 
+  ms.author: 
+  ms.date: 10/12/2019
+  ms.openlocfilehash: ef82f7ccfabce330c5604a26d74f0491876a1634
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259889"
+landingContent:
+- title: Tudnivalók az IoT Edge-en futó Live Video Analytics előzetes verziójáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Tudnivalók az IoT Edge-en futó Live Video Analyticsről
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Médiagrafikon
+      url: media-graph-concept.md
+    - text: Videófelvétel
+      url: video-recording-concept.md
+    - text: Videó lejátszása
+      url: video-playback-concept.md
+  - linkListType: learn
+    links:
+    - text: Folyamatos videófelvétel
+      url: continuous-video-recording-concept.md
+    - text: Eseményalapú videófelvétel
+      url: event-based-video-recording-concept.md
+    - text: Élő videók elemzése
+      url: analyze-live-video-concept.md
+- title: Forgatókönyvek
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Első lépések – Live Video Analytics az IoT Edge-en
+      url: get-started-detect-motion-emit-events-quickstart.md
+    - text: Mozgás észlelése, videóklipek készítése az Azure Media Servicesbe
+      url: detect-motion-record-video-clips-media-services-quickstart.md
+    - text: Mozgás észlelése és események kibocsátása
+      url: detect-motion-emit-events-quickstart.md
+    - text: Mozgás észlelése, videó rögzítése peremeszközökre
+      url: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - text: Live Video Analytics futtatása saját modellel
+      url: use-your-model-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Folyamatos videófelvétel
+      url: continuous-video-recording-tutorial.md
+    - text: Eseményalapú videófelvétel
+      url: event-based-video-recording-tutorial.md
+    - text: Többnapos felvételek lejátszása
+      url: playback-multi-day-recordings-tutorial.md
+- title: Fejlesztés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni Azure Resource Manager-szerepkör létrehozása
+      url: create-custom-azure-resource-manager-role-how-to.md
+    - text: Üzembe helyezés IoT Edge-eszközön
+      url: deploy-iot-edge-device.md
+    - text: Monitorozás és naplózás
+      url: monitoring-logging.md
+    - text: Felvétel lejátszása
+      url: playback-recordings-how-to.md
+    - text: Felvételkészítési szabályzat kezelése
+      url: manage-recording-policy-how-to.md
+    - text: Hibaelhárítás
+      url: troubleshoot-how-to.md
+  - linkListType: reference
+    links:
+    - text: Közvetlen metódusok
+      url: direct-methods.md
+    - text: Ikermodul konfigurációs sémája
+      url: module-twin-configuration-schema.md
+    - text: Kvóták és korlátozások
+      url: quotas-limitations.md

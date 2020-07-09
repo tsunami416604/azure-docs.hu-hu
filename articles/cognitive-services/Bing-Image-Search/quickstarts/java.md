@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 6032478dfc45d3d4ca1488913356718ab188e057
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a41a448a344325c2e3820a891017a078ae1532c5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872039"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603417"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search API és a Javával 
 
@@ -162,8 +162,7 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 ## <a name="see-also"></a>Lásd még
 
 * [Mi az a Bing Image Search API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Próbáljon ki egy online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
-* [A Bing Search API-k díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
-* Az [Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services).
-* [Bing Image Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [A Bing Search API-k díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

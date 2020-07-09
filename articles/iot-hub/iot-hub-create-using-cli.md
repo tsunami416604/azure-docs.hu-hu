@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708076"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>IoT hub létrehozása az Azure CLI használatával
 
@@ -22,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy IoT hubot az Azure CLI használat�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+A útmutató végrehajtásához Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

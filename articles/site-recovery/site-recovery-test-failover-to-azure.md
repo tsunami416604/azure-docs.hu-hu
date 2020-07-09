@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699056"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Feladatátvételi teszt futtatása (vész-helyreállítási részletezés) az Azure-ba 
 
@@ -28,7 +27,7 @@ Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyre
 ![Feladatátvételi teszt](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
-1. A Azure Portal site Recovery kattintson a **helyreállítási tervek** > *recoveryplan_name* > **feladatátvételi teszt**elemre.
+1. A Azure Portal site Recovery kattintson a **helyreállítási tervek**  >  *recoveryplan_name*  >  **feladatátvételi teszt**elemre.
 2. Válassza ki azt a helyreállítási pontot, amelyre a feladatátvételt **hajtja** végre. Az alábbi lehetőségek egyikét használhatja:
     - **Legutóbb feldolgozott**: Ez a beállítás a tervben szereplő összes virtuális gép esetében a site Recovery által feldolgozott legutóbbi helyreállítási pontra meghiúsul. Egy adott virtuális gép legutóbbi helyreállítási pontjának megtekintéséhez tekintse meg a virtuális gép beállításainak **legutóbbi helyreállítási pontjait** . Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
     - **Legutóbb használt alkalmazás – konzisztens**: Ez a beállítás a tervben szereplő összes virtuális gép feladatátvételét végzi a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra. Egy adott virtuális gép legutóbbi helyreállítási pontjának megtekintéséhez tekintse meg a virtuális gép beállításainak **legutóbbi helyreállítási pontjait** .
@@ -40,7 +39,7 @@ Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyre
 
     - Site Recovery a virtuális gép **számítási és hálózati** beállításaiban megadott névvel és UGYANAZZAL az IP-címmel kísérli meg a tesztelési virtuális gépek létrehozását.
     - Ha az azonos nevű alhálózat nem érhető el a feladatátvételi teszthez használt Azure-beli virtuális hálózatban, akkor a teszt virtuális gép betűrendben lesz létrehozva az első alhálózatban.
-    - Ha ugyanaz az IP-cím nem érhető el az alhálózatban, akkor a virtuális gép egy másik elérhető IP-címet kap az alhálózatban. [További információ](#create-a-network-for-test-failover).
+    - Ha ugyanaz az IP-cím nem érhető el az alhálózatban, akkor a virtuális gép egy másik elérhető IP-címet kap az alhálózatban. [További információk](#create-a-network-for-test-failover).
 4. Ha feladatátvételt végez az Azure-ba, és engedélyezve van az adattitkosítás, a **titkosítási kulcsban**válassza ki azt a tanúsítványt, amelyet a rendszer a szolgáltató telepítése során a titkosítás engedélyezésekor adott ki. Ha nincs engedélyezve a titkosítás, figyelmen kívül hagyhatja ezt a lépést.
 5. A **feladatok** lapon nyomon követheti a feladatátvétel folyamatát. A Azure Portalban láthatja a teszt replika gépet.
 6. Ahhoz, hogy RDP-kapcsolatot kezdeményezzen az Azure-beli virtuális géppel, [hozzá kell adnia egy nyilvános IP-címet](https://aka.ms/addpublicip) a FELADATÁTVÉTELI virtuális gép hálózati adapterén.
@@ -105,7 +104,7 @@ Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH hasz
 
 **Feladatátvétel** | **Hely** | **Műveletek**
 --- | --- | ---
-**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal** > **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal** -> **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
+**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
 **Windows rendszerű Azure-beli virtuális gép** | Azure virtuális gép feladatátvétel után |  [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A feladatátvételi virtuális gépen (és az Azure-alhálózaton, amelyhez csatlakozik) a hálózati biztonsági csoport szabályainak engedélyeznie kell a bejövő kapcsolatokat az RDP-porton.<br/><br/> A **rendszerindítási diagnosztika** ellenőrzésével ellenőrizheti a virtuális gép képernyőképét.<br/><br/> Ha nem tud kapcsolatot létesíteni, ellenőrizze, hogy fut-e a virtuális gép, és tekintse át ezeket a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Linux rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 **Linux rendszerű Azure-beli virtuális gép** | Azure virtuális gép feladatátvétel után | Az átadott virtuális gép (és az ahhoz csatlakozó Azure-alhálózat) hálózati biztonsági csoportra vonatkozó szabályainak engedélyeznie kell a bejövő kapcsolatokat az SSH-porton.<br/><br/> [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A virtuális gép képernyőképének megtekintése a **rendszerindítási diagnosztika** szolgáltatásban.<br/><br/>

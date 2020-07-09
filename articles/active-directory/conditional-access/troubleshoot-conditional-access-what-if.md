@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83737639"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Feltételes hozzáférés hibaelhárítása a What If eszköz használatával
@@ -75,7 +74,7 @@ Ez a teszt kiterjeszthető úgy, hogy más adatpontokat is egyesítse a hatókö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mit jelent a feltételes hozzáférés?](overview.md)
+* [Mi az a feltételes hozzáférés?](overview.md)
 * [Mi az az Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Mi az az eszközidentitás?](../devices/overview.md)
 * [Az Azure Multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md)

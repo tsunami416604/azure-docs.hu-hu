@@ -4,16 +4,16 @@
   items:
     - name: Az Azure SignalR Service bemutatása
       href: signalr-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
-    - name: 'ASP.NET Core – C#'
+    - name: ASP.NET Core – C#
       href: signalr-quickstart-dotnet-core.md
-    - name: 'ASP.NET – C#'
+    - name: ASP.NET – C#
       href: signalr-quickstart-dotnet.md
     - name: Azure Functions – JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
-    - name: 'Azure Functions – C#'
+    - name: Azure Functions – C#
       href: signalr-quickstart-azure-functions-csharp.md
     - name: Azure Functions – Java
       href: signalr-quickstart-azure-functions-java.md
@@ -21,20 +21,18 @@
       href: signalr-quickstart-azure-functions-python.md
     - name: REST API
       href: signalr-quickstart-rest-api.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 'Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása'
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Monitoring
-      items:
-        - name: Diagnosztikai naplók használata a SignalR Service szolgáltatás monitorozásához
-          href: signalr-tutorial-diagnostic-logs.md
 - name: Példák
   items:
     - name: Kódminták
       href: 'https://github.com/aspnet/AzureSignalR-samples'
     - name: Azure CLI
       href: signalr-reference-cli.md
+    - name: Az Azure Policy beépített elemei
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Az Azure SignalR szolgáltatás belső elemei
@@ -49,6 +47,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: SignalR-szolgáltatáskötések az Azure Functionshöz – referencia
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Felsőbb rétegbeli beállítások
+          href: concept-upstream.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás
@@ -57,7 +57,7 @@
       href: signalr-concept-messages-and-connections.md
     - name: A teljesítménnyel kapcsolatos megfontolások
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: Hitelesítés
       href: signalr-concept-authenticate-oauth.md
     - name: Eseménykezelés
       href: signalr-concept-event-grid-integration.md
@@ -69,16 +69,30 @@
           href: signalr-howto-scale-signalr.md
         - name: Több példány
           href: signalr-howto-scale-multi-instances.md
-    - name: Védelem
+    - name: Biztonságos
       items:
         - name: Hozzáférési kulcs rotálása
           href: signalr-howto-key-rotation.md
+        - name: Az Azure Service Tags használata
+          href: howto-service-tags.md
+        - name: Az Azure Private Endpoints használata
+          href: howto-private-endpoints.md
+        - name: Hálózati hozzáférés-vezérlés kezelése
+          href: howto-network-access-control.md
+        - name: Felügyelt identitás használata
+          href: howto-use-managed-identity.md
     - name: Integrálás
       items:
         - name: Azure Functions-kötések
           href: signalr-concept-azure-functions.md
         - name: Event Grid-integráció
           href: signalr-howto-event-grid-integration.md
+    - name: Figyelés
+      items:
+        - name: Diagnosztikai naplók használata a SignalR Service szolgáltatás monitorozásához
+          href: signalr-howto-diagnostic-logs.md
+        - name: Megfelelőség naplózása az Azure Policyval
+          href: signalr-howto-azure-policy.md
 - name: Referencia
   items:
     - name: Azure CLI

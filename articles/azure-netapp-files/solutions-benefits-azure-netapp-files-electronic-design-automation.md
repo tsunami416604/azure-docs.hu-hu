@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160153"
 ---
-# <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Az Azure NetApp Files használatának előnyei az elektronikus tervezési automatizáláshoz
+# <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
 
 A félvezető-és a chip-kialakítási iparág szempontjából a piacra jutási idő (TTM) kritikus szempont. Az iparág nagy sávszélességgel és kis késleltetéssel kell rendelkeznie a tároláshoz. Ez a cikk ismerteti az iparági igényeknek való megfelelést biztosító Azure NetApp Files megoldást. Olyan tesztelési forgatókönyveket mutat be, amelyek a szabványos iparági teljesítménytesztet futtatják az elektronikus tervezési automatizáláshoz (EDA) Azure NetApp Files használatával. 
 
@@ -29,7 +29,7 @@ A félvezető-és a chip-kialakítási iparág szempontjából a piacra jutási 
 
 A tesztek három forgatókönyvet tartalmaznak a következő konfigurációkkal. 
 
-|    Forgatókönyv    |    Kötetek    |    Ügyfelek<br> SLES15 D16s_v3  |
+|    Eset    |    Kötetek    |    Ügyfelek<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
 |    Eggyel         |    1          |    1                           |
 |    Kettővel         |    6          |    24                          |
@@ -43,7 +43,7 @@ A második és a harmadik forgatókönyv egyetlen Azure NetApp Files végpont ko
 
 A következő táblázat összefoglalja a tesztelési forgatókönyvek eredményeit.
 
-|    Forgatókönyv       |    I/O-arány<br>  2 MS     |    I/O-arány<br>  a peremen     |    Teljesítmény<br>  2 MS     |    Teljesítmény<br>  a peremen     |
+|    Eset       |    I/O-arány<br>  2 MS     |    I/O-arány<br>  a peremen     |    Teljesítmény<br>  2 MS     |    Teljesítmény<br>  a peremen     |
 |-------------------|---------------------------|--------------------------------|-----------------------------|----------------------------------|
 |    1 kötet       |    39 601                 |    49 502                      |    692 MiB/s                 |    866 MiB/s                      |
 |    6 kötet      |    255 613                |    317 000                     |    4 577 MiB/s               |    5 568 MiB/s                    |

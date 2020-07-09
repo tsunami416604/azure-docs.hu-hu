@@ -7,19 +7,19 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7757fdb4953640597a805c3d74a9e1ef08ef2c07
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243652"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114499"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Elosztott adatforgalom Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
 Ez a cikk a Azure Database for PostgreSQL – nagy kapacitású (Citus) három típusú táblázatát ismerteti.
 Azt mutatja be, hogyan tárolódnak az elosztott táblák a szegmensek között, és hogy a szegmensek hogyan legyenek elhelyezve a csomópontokon.
 
-## <a name="table-types"></a>Táblák típusai
+## <a name="table-types"></a>Táblázattípusok
 
 A nagy kapacitású-(Citus-) kiszolgálócsoport három típusa van, amelyek mindegyike különböző célokra szolgál.
 
@@ -55,7 +55,7 @@ A `pg_dist_shard` koordinátor metaadat-táblázata a rendszeren lévő összes 
 
 ```sql
 SELECT * from pg_dist_shard;
- logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue 
+ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
 ---------------+---------+--------------+---------------+---------------
  github_events |  102026 | t            | 268435456     | 402653183
  github_events |  102027 | t            | 402653184     | 536870911
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Ha a koordinátor-csomópont meg szeretné állapítani `github_events`, hogy melyik szegmens tartalmaz egy sort, akkor a sorban lévő eloszlás oszlop értékét kivonata. Ezután a csomópont ellenőrzi, hogy\'a szegmens k tartománya tartalmazza-e a kivonatos értéket. A tartományok úgy vannak meghatározva, hogy a kivonatoló függvény képe a különálló Unió legyen.
+Ha a koordinátor-csomópont meg szeretné állapítani, hogy melyik szegmens tartalmaz egy sort `github_events` , akkor a sorban lévő eloszlás oszlop értékét kivonata. Ezután a csomópont ellenőrzi, hogy a \' szegmens k tartománya tartalmazza-e a kivonatos értéket. A tartományok úgy vannak meghatározva, hogy a kivonatoló függvény képe a különálló Unió legyen.
 
 ### <a name="shard-placements"></a>Szilánkok
 
-Tegyük fel, hogy a szegmens 102027 a kérdéses sorhoz van társítva. A sor olvasása vagy írása egy feldolgozónak `github_events_102027` nevezett táblában történik. Melyik feldolgozót? Ezt teljes mértékben a metaadat-táblázatok határozzák meg. A szegmensek feldolgozóra való hozzárendelését nevezzük a szilánkok elhelyezésének.
+Tegyük fel, hogy a szegmens 102027 a kérdéses sorhoz van társítva. A sor olvasása vagy írása egy `github_events_102027` feldolgozónak nevezett táblában történik. Melyik feldolgozót? Ezt teljes mértékben a metaadat-táblázatok határozzák meg. A szegmensek feldolgozóra való hozzárendelését nevezzük a szilánkok elhelyezésének.
 
-A koordinátor csomópontja a lekérdezéseket olyan töredékekre írja, amelyek az adott táblákra `github_events_102027` hivatkoznak, például a megfelelő munkatársain futtatják ezeket a töredékeket. Íme egy példa arra, hogy egy lekérdezés a háttérben fusson, hogy megtalálja a csomópontot, amely a 102027-es szegmens AZONOSÍTÓját tárolja.
+A koordinátor csomópontja a lekérdezéseket olyan töredékekre írja, amelyek az adott táblákra hivatkoznak, például a `github_events_102027` megfelelő munkatársain futtatják ezeket a töredékeket. Íme egy példa arra, hogy egy lekérdezés a háttérben fusson, hogy megtalálja a csomópontot, amely a 102027-es szegmens AZONOSÍTÓját tárolja.
 
 ```sql
 SELECT
@@ -84,11 +84,14 @@ JOIN pg_dist_node node
 WHERE shardid = 102027;
 ```
 
-    ┌─────────┬───────────┬──────────┐
-    │ shardid │ nodename  │ nodeport │
-    ├─────────┼───────────┼──────────┤
-    │  102027 │ localhost │     5433 │
-    └─────────┴───────────┴──────────┘
+```output
+┌─────────┬───────────┬──────────┐
+│ shardid │ nodename  │ nodeport │
+├─────────┼───────────┼──────────┤
+│  102027 │ localhost │     5433 │
+└─────────┴───────────┴──────────┘
+```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 - Megtudhatja, hogyan [választhat terjesztési oszlopot](concepts-hyperscale-choose-distribution-column.md) az elosztott táblákhoz.

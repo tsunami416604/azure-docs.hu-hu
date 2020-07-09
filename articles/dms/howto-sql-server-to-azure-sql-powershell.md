@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell: SQL Server migrálása SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Megtudhatja, hogyan telepítheti át a helyszíni SQL Serverról Azure SQL Databasere a Azure Database Migration Service Azure PowerShell használatával.
+description: Megtudhatja, hogyan telepíthet át egy adatbázist SQL Serverról Azure SQL Databasere a Azure Database Migration Service Azure PowerShell használatával.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,15 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: a092ec3d211ed3fafadd73c37b3e58c353b618d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253409"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>A helyszíni SQL Server migrálása Azure SQL Database használatával Azure PowerShell
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>SQL Server-adatbázis migrálása Azure SQL Databasera a Azure PowerShell használatával
 
-Ebben a cikkben a **Adventureworks2012** -adatbázist a Microsoft Azure PowerShell használatával SQL Server 2016 vagy újabb rendszerű helyszíni példányra telepíti át egy Azure SQL Database. Az adatbázisokat áttelepítheti egy helyszíni SQL Server-példányról a Azure SQL Databasere a `Az.DataMigration` Microsoft Azure PowerShell moduljának használatával.
+Ebben a cikkben a **Adventureworks2012** -adatbázist a SQL Server 2016 vagy újabb rendszerű helyszíni példányra telepíti át a Microsoft Azure PowerShell használatával Azure SQL Database. Az adatbázisokat áttelepítheti egy SQL Server-példányról a Azure SQL Databasere a `Az.DataMigration` Microsoft Azure PowerShell moduljának használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -38,7 +37,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 * [SQL Server 2016 vagy újabb](https://www.microsoft.com/sql-server/sql-server-downloads) (bármely kiadás)
 * A TCP/IP protokoll engedélyezéséhez, amely alapértelmezés szerint le van tiltva SQL Server Express telepítéssel. Engedélyezze a TCP/IP protokollt a [kiszolgáló hálózati protokolljának engedélyezése vagy letiltása](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)című cikkben leírtak szerint.
 * A [Windows tűzfal konfigurálása az adatbázismotor-hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Egy Azure SQL Database-példány. Azure SQL Database példány létrehozásához kövesse az [Azure SQL Database-adatbázis létrehozása a Azure Portalban](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)című cikk részleteit.
+* Egy Azure SQL Database-példány. Azure SQL Database-példány létrehozásához kövesse az [Azure Portal-adatbázis létrehozása a Azure SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)című cikk részleteit.
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3-as vagy újabb verzió.
 * Ahhoz, hogy a Azure Resource Manager üzemi modellel létrehozott egy Microsoft Azure Virtual Network, amely Azure Database Migration Service a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával biztosítja a helyek közötti kapcsolatot a helyszíni forráskiszolgálóról.
 * A helyszíni adatbázis és a séma áttelepítésének felmérése a Data Migration Assistant használatával a [SQL Server áttelepítési felmérés végrehajtása](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) című cikkben leírtak szerint
@@ -51,7 +50,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 Az Azure-előfizetéshez a PowerShell használatával történő bejelentkezéshez használja a [Azure PowerShell bejelentkezve](https://docs.microsoft.com/powershell/azure/authenticate-azureps) található cikk utasításait.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot a virtuális gép létrehozása előtt.
 
@@ -96,7 +95,7 @@ Azure Database Migration Service példány létrehozása után hozzon létre egy
 A parancsmag használatával létrehozhat egy adatbázis-elérhetőségi adatobjektumot `New-AzDmsConnInfo` . Ez a parancsmag a következő paramétereket várja:
 
 * *ServerType*. A kért adatbázis-kapcsolatok típusa, például az SQL, az Oracle vagy a MySQL. Az SQL használata a SQL Server és az Azure SQL használatához.
-* *Adatforrás*. Egy SQL Server-példány vagy egy Azure SQL-adatbázis neve vagy IP-címe.
+* *Adatforrás*. SQL Server példány vagy Azure SQL Database neve vagy IP-címe.
 * *AuthType*. A kapcsolatok hitelesítési típusa, amely lehet SqlAuthentication vagy WindowsAuthentication.
 * A *TrustServerCertificate* paraméter egy olyan értéket állít be, amely jelzi, hogy a csatorna titkosítva van-e, miközben megkerüli a megbízhatósági kapcsolat ellenőrzéséhez szükséges tanúsítványláncot. Az érték lehet igaz vagy hamis.
 

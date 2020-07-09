@@ -3,15 +3,15 @@ title: Az Azure HPC cache kezelése és frissítése
 description: Az Azure HPC cache kezelése és frissítése a Azure Portal használatával
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 825b8a34e130286a5772363107311fe4170e8743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537950"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515562"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
@@ -30,6 +30,10 @@ A lap tetején található gombok segítenek a gyorsítótár kezelésében:
 * [**Delete (Törlés**](#delete-the-cache) ) – véglegesen elpusztítja a gyorsítótárat
 
 Az alábbi lehetőségekről itt olvashat bővebben.
+
+Az alábbi képre kattintva megtekintheti a gyorsítótár-kezelési feladatokat bemutató [videót](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) .
+
+[![videó miniatűrje: Azure HPC cache: Manage (kattintson ide a videó oldalának megtekintéséhez)](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>A gyorsítótár leállítása
 

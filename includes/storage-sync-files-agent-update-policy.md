@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123156"
 ---
 Az Azure File Sync-ügynök rendszeres időközönként frissül új funkciók hozzáadásával és a problémák megoldásával. Javasoljuk, hogy konfigurálja Microsoft Update a Azure File Sync-ügynök frissítéseinek elérhetővé tételéhez.
 
 #### <a name="major-vs-minor-agent-versions"></a>Fő vagy másodlagos ügynök verziói
-* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Például: \*2.\*.\*\*
-* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \* \*. 3.\*\*
+* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Például: \* 2. \* .\*\*
+* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \* \* . 3.\*\*
 
 #### <a name="upgrade-paths"></a>Frissítési útvonalak
 A Azure File Sync ügynök frissítéseinek telepítése négy jóváhagyott és tesztelt módon történik. 
 1. **Előnyben részesített Microsoft Update konfigurálása az ügynök frissítéseinek automatikus letöltésére és telepítésére.**  
     Mindig javasoljuk, hogy minden Azure File Sync frissítéssel ellenőrizze, hogy van-e hozzáférése a Server Agent legújabb frissítéseihez. Microsoft Update a folyamat zökkenőmentesen, automatikusan letölti és telepíti a frissítéseket.
-2. **Az ügynök frissítéseinek letöltéséhez és telepítéséhez használja a AfsUpdater. exe fájlt.**  
-    A AfsUpdater. exe az ügynök telepítési könyvtárában található. Az ügynök frissítéseinek letöltéséhez és telepítéséhez kattintson duplán a végrehajtható fájlra. 
+2. **A AfsUpdater.exe használatával letöltheti és telepítheti az ügynökök frissítéseit.**  
+    A AfsUpdater.exe az ügynök telepítési könyvtárában található. Az ügynök frissítéseinek letöltéséhez és telepítéséhez kattintson duplán a végrehajtható fájlra. 
 3. **Meglévő Azure File Sync ügynök javítása egy Microsoft Update-javítócsomag vagy egy. msp végrehajtható fájl használatával. A legújabb Azure File Sync frissítési csomag letölthető a [Microsoft Update katalógusból](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
     Az. msp végrehajtható fájl futtatása a Azure File Sync telepítését az előző frissítési útvonalon Microsoft Update által automatikusan használt módszerrel fogja frissíteni. A Microsoft Update-javítások alkalmazása a Azure File Sync telepítés helyben történő frissítését végzi.
 4. **Töltse le a legújabb Azure File Sync Agent telepítőjét a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?linkid=858257).**  

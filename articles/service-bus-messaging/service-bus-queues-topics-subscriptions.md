@@ -1,21 +1,14 @@
 ---
 title: Üzenetkezelés – várólisták, témakörök és előfizetések Azure Service Bus
 description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési entitásokról (Üzenetsor, témakörök és előfizetések).
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: aschhab
-ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: deeebf56d6e2f4ccfac37c70170a0d1cb4d272a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259512"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119173"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 
@@ -69,7 +62,149 @@ Teljes körű működésre példaként tekintse meg a [TopicSubscriptionWithRule
 
 A lehetséges szűrési értékekkel kapcsolatos további információkért tekintse meg a [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) és a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) osztály dokumentációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="java-message-service-jms-20-entities-preview"></a>Java Message Service (JMS) 2,0 entitások (előzetes verzió)
+
+A Azure Service Bus Premiumhoz csatlakozó ügyfélalkalmazások és a [Azure Service Bus JMS-kódtár](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) használata az alábbi entitásokat használhatja.
+
+### <a name="queues"></a>Üzenetsorok
+
+A JMS lévő várólisták szemantikailag összehasonlíthatóak a fent tárgyalt hagyományos Service Bus-várólistákkal.
+
+Üzenetsor létrehozásához használja az alábbi metódusokat a osztályban: `JMSContext`
+
+```java
+Queue createQueue(String queueName)
+```
+
+### <a name="topics"></a>Témakörök
+
+A JMS-ban található témakörök szemantikai összehasonlítva vannak a fent tárgyalt hagyományos Service Bus témakörökkel.
+
+Témakör létrehozásához használja az alábbi metódusokat a osztályban: `JMSContext`
+
+```java
+Topic createTopic(String topicName)
+```
+
+### <a name="temporary-queues"></a>Ideiglenes várólisták
+
+Ha egy ügyfélalkalmazás olyan ideiglenes entitást igényel, amely már létezik az alkalmazás élettartamához, használhat ideiglenes várólistákat. Ezeket a [kérelem-válasz](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) mintában használják.
+
+Ideiglenes várólista létrehozásához használja az alábbi metódusokat a osztályban: `JMSContext`
+
+```java
+TemporaryQueue createTemporaryQueue()
+```
+
+### <a name="temporary-topics"></a>Ideiglenes témakörök
+
+Az ideiglenes várólistákhoz hasonlóan ideiglenes témakörök is léteznek, amelyek lehetővé teszik a közzétételt és az előfizetést egy olyan ideiglenes entitáson keresztül, amely már létezik az alkalmazás élettartamára.
+
+Egy ideiglenes témakör létrehozásához használja az alábbi metódusokat a `JMSContext` osztályban:
+
+```java
+TemporaryTopic createTemporaryTopic()
+```
+
+### <a name="java-message-service-jms-subscriptions"></a>Java Message Service-(JMS-) előfizetések
+
+Habár ezek szemantikai hasonlóságot mutatnak a fent ismertetett előfizetésekhez (például a témakörben és a közzétételi/előfizetési szemantika engedélyezéséhez), a Java Message Service spec bemutatja az adott előfizetés **megosztott**, nem **megosztott**, **tartós** és **nem tartós** attribútumainak fogalmait.
+
+> [!NOTE]
+> Az alábbi előfizetések Azure Service Bus prémium szinten érhetők el, ha a [Azure Service Bus JMS könyvtár](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)használatával a Azure Service Bushoz csatlakozó ügyfélalkalmazások számára előzetes verzió érhető el.
+>
+> A nyilvános előzetes verzió esetében ezek az előfizetések nem hozhatók létre a Azure Portal használatával.
+>
+
+#### <a name="shared-durable-subscriptions"></a>Közös tartós előfizetések
+
+A rendszer közös tartós előfizetést használ, ha egy adott témakörben közzétett összes üzenetet egy alkalmazásnak kell megkapnia és feldolgoznia, függetlenül attól, hogy az alkalmazás az előfizetésből aktívan használja-e az alkalmazást.
+
+Mivel ez egy megosztott előfizetés, az Service Bustól fogadott összes alkalmazás az előfizetésből is fogadhat.
+
+Megosztott tartós előfizetés létrehozásához használja az alábbi metódusokat a osztályban: `JMSContext`
+
+```java
+JMSConsumer createSharedDurableConsumer(Topic topic, String name)
+
+JMSConsumer createSharedDurableConsumer(Topic topic, String name, String messageSelector)
+```
+
+A megosztott tartós előfizetés továbbra is fennáll, hacsak nem törli a `unsubscribe` metódust az `JMSContext` osztályban.
+
+```java
+void unsubscribe(String name)
+```
+
+#### <a name="unshared-durable-subscriptions"></a>Nem megosztott tartós előfizetések
+
+A közös tartós előfizetéshez hasonlóan a rendszer nem megosztott tartós előfizetést használ, ha egy adott témakörben közzétett összes üzenetet fogadni és feldolgozni kívánja egy alkalmazás, függetlenül attól, hogy az alkalmazás az előfizetésből aktívan használja-e az előfizetést.
+
+Mivel azonban ez egy nem megosztott előfizetés, csak az előfizetést létrehozó alkalmazás tud fogadni.
+
+Nem megosztott tartós előfizetés létrehozásához használja az alábbi metódusokat az `JMSContext` osztályból: 
+
+```java
+JMSConsumer createDurableConsumer(Topic topic, String name)
+
+JMSConsumer createDurableConsumer(Topic topic, String name, String messageSelector, boolean noLocal)
+```
+
+> [!NOTE]
+> A `noLocal` szolgáltatás jelenleg nem támogatott és figyelmen kívül lesz hagyva.
+>
+
+A nem megosztott tartós előfizetés továbbra is fennáll, hacsak nem törli a `unsubscribe` metódust az `JMSContext` osztályban.
+
+```java
+void unsubscribe(String name)
+```
+
+#### <a name="shared-non-durable-subscriptions"></a>Megosztott nem tartós előfizetések
+
+Megosztott, nem tartós előfizetést akkor kell használni, ha több ügyfélalkalmazás számára egyetlen előfizetésből származó üzeneteket kell fogadnia és feldolgoznia, csak addig, amíg aktívan nem veszik igénybe, illetve nem kapják meg őket.
+
+Mivel az előfizetés nem tartós, nem őrzi meg a rendszer. Az előfizetés nem fogad üzenetet, ha nincs aktív felhasználó.
+
+Megosztott, nem tartós előfizetés létrehozásához hozzon létre egy, az `JmsConsumer` alábbi metódusokban látható módon a `JMSContext` osztályból:
+
+```java
+JMSConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName)
+
+JMSConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName, String messageSelector)
+```
+
+A megosztott nem tartós előfizetés addig is fennáll, amíg aktív fogyasztók érkeznek.
+
+#### <a name="unshared-non-durable-subscriptions"></a>Nem megosztva nem tartós előfizetések
+
+A nem megosztott, nem tartós előfizetést akkor használja a rendszer, ha az ügyfélalkalmazás egy előfizetésből származó üzenetet kap és dolgoz fel, csak addig, amíg aktívan nem veszik igénybe. Ezen az előfizetésen csak egy fogyasztó létezhet, azaz az előfizetést létrehozó ügyfél.
+
+Mivel az előfizetés nem tartós, nem őrzi meg a rendszer. Az előfizetés nem fogad üzenetet, ha nincs aktív felhasználó.
+
+A nem megosztott, nem tartós előfizetés létrehozásához hozzon létre egy, az `JMSConsumer` alábbi metódusokban látható módon a "JMSContext osztály – 
+
+```java
+JMSConsumer createConsumer(Destination destination)
+
+JMSConsumer createConsumer(Destination destination, String messageSelector)
+
+JMSConsumer createConsumer(Destination destination, String messageSelector, boolean noLocal)
+```
+
+> [!NOTE]
+> A `noLocal` szolgáltatás jelenleg nem támogatott és figyelmen kívül lesz hagyva.
+>
+
+A nem megosztott, nem tartós előfizetés addig is fennáll, amíg aktív fogyasztó nem kap tőle.
+
+#### <a name="message-selectors"></a>Üzenetek választói
+
+A normál Service Bus-előfizetésekhez hasonlóan a **szűrők és a műveletek** is léteznek, a JMS-előfizetések esetében pedig **üzenetek választhatók** .
+
+Az üzenet-választókat beállíthatja az egyes JMS-előfizetések esetében, és szűrési feltételként létezik az üzenetfejléc tulajdonságaiban. Csak az üzenet-választó kifejezésnek megfelelő fejléc-tulajdonságokkal rendelkező üzenetek érkeznek. A Null érték vagy egy üres karakterlánc azt jelzi, hogy az JMS előfizetés/fogyasztó számára nincs megadva üzenet.
+
+## <a name="next-steps"></a>Következő lépések
 
 További információt és példákat a Service Bus üzenetkezelés használatával kapcsolatban a következő speciális témakörökben talál:
 

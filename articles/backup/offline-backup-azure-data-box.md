@@ -4,10 +4,10 @@ description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Da
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160955"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Data Box a nagyméretű ke
 
 A MARS-ügynökről Azure Data Box használatával történő adatfeldolgozási folyamat a következő Windows-SKU-kal támogatott.
 
-| **OS**                                 | **SKU**                                                      |
+| **OS**                                 | **Termékváltozat**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Munkaállomás**                        |                                                              |
 | Windows 10, 64 bites                     | Enterprise, Pro, Home                                       |
@@ -51,7 +51,7 @@ A MARS-ügynökről Azure Data Box használatával történő adatfeldolgozási 
 | >7,2 TB és <= 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
 * A tipikus tömörítési arányok 10% és 20% között változnak. <br>
-* * Ha várhatóan több mint 80 TB kezdeti biztonsági mentési adatra van szüksége egyetlen MARS-kiszolgálóról, [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)forduljon a következőhöz:.
+* * Ha várhatóan több mint 80 TB kezdeti biztonsági mentési adatra van szüksége egyetlen MARS-kiszolgálóról, forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 >[!IMPORTANT]
 >Az egyetlen kiszolgálóról származó kezdeti biztonsági mentési adatoknak egyetlen Azure Data Box példányon vagy Azure Data Box lemezen kell szerepelniük, és nem oszthatók meg több azonos vagy eltérő SKU-beli eszköz között. Egy Azure Data Box eszköz azonban több kiszolgálóról is tartalmazhat kezdeti biztonsági másolatokat.
@@ -124,7 +124,7 @@ Az offline biztonsági mentési folyamat a MARS és a Azure Data Box használat�
 
 1. Győződjön meg arról, hogy eltávolítja a MARS-ügynök korábbi telepítését.
 1. Töltse le a legújabb MARS-ügynököt [erről a webhelyről](https://aka.ms/azurebackup_agent).
-1. Futtassa a *MARSAgentInstaller. exe fájlt*, és *csak* az [ügynök telepítéséhez és regisztrálásához](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) szükséges lépéseket a Recovery Services tárolóban, ahol a biztonsági másolatokat tárolni szeretné.
+1. Futtassa a *MARSAgentInstaller.exet *, és *csak* az [ügynök telepítéséhez és regisztrálásához](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) szükséges lépéseket a Recovery Services-tárolóban, ahol a biztonsági másolatokat tárolni szeretné.
 
    > [!NOTE]
    > A Recovery Services-tárolónak ugyanabban az előfizetésben kell lennie, mint a Azure Data Box feladatoknak.
@@ -153,8 +153,8 @@ A MARS-ügynök a helyi rendszerkörnyezetben működik, ezért ugyanazt a jogos
 Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként csatlakoztassa az NFS protokoll használatával:
 
 1. Engedélyezze az ügyfél számára az NFS-szolgáltatást azon a Windows Serveren, amelyen telepítve van a MARS-ügynök. Határozza meg a másodlagos forrás *wim: D: \Sources\Install.wim: 4*.
-1. Töltse le a <https://download.sysinternals.com/files/PSTools.zip> PSExec-t a-kiszolgálóra a Mars-ügynökkel.
-1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot a *PSExec. exe fájlt* tartalmazó könyvtárral, amely az aktuális könyvtár.
+1. Töltse le a PSExec-t a <https://download.sysinternals.com/files/PSTools.zip> -kiszolgálóra a Mars-ügynökkel.
+1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot az *PSExec.exet* tartalmazó könyvtárral az aktuális könyvtárként.
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
@@ -195,7 +195,7 @@ Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként c
 
     ![Data Box feladatok beolvasása az előfizetés-AZONOSÍTÓhoz](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Válassza ki a helyes Data Box rendelést, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezt. Kattintson a **Tovább** gombra.
+1. Válassza ki a helyes Data Box rendelést, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezt. Válassza a **Tovább** lehetőséget.
 
     ![Data Box rendelések kiválasztása](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -212,9 +212,9 @@ Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként c
     >
     >![Azure Data Box lemez gyökérkönyvtára](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >Ha `\\mydomain\myserver\disk1\` például a lemez elérési útja, a *Disk1* pedig a *PageBlob*nevű könyvtárat tartalmazza, akkor a Mars-ügynök varázsló lapján megadott elérési út. `\\mydomain\myserver\disk1\`
+    >Ha például a lemez elérési útja, a `\\mydomain\myserver\disk1\` *Disk1* pedig a *PageBlob*nevű KÖNYVTÁRAT tartalmazza, akkor a Mars-ügynök varázsló lapján megadott elérési út `\\mydomain\myserver\disk1\` .
     >
-    >Ha [Azure Data Box 100 – TB eszközt állít](#set-up-azure-data-box-devices)be, adja meg `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` az eszköz hálózati elérési útját.
+    >Ha [Azure Data Box 100 – TB eszközt állít](#set-up-azure-data-box-devices)be, adja meg az `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` eszköz hálózati elérési útját.
 
 1. Válassza a **tovább**lehetőséget, majd a következő lapon válassza a **Befejezés** lehetőséget a biztonsági mentési és adatmegőrzési szabályzat mentéséhez az offline biztonsági mentés konfigurálásával Azure Data Box használatával.
 
@@ -259,7 +259,7 @@ A kapcsolat nélküli biztonsági mentés konfigurálásakor előfordulhat, hogy
 
 Ha szeretné megtekinteni, hogy a probléma megegyezik-e a korábban leírttal, hajtsa végre az alábbi lépések egyikét.
 
-#### <a name="step-1"></a>1. lépés
+#### <a name="step-1"></a>1\. lépés
 
 Ellenőrizze, hogy a következő hibaüzenet jelenik-e meg a Mohácsi-konzolon, amikor konfigurálta az offline biztonsági mentést.
 
@@ -269,22 +269,22 @@ Ellenőrizze, hogy a következő hibaüzenet jelenik-e meg a Mohácsi-konzolon, 
 
 1. Nyissa meg a **temp** mappát a telepítési útvonalon. Az alapértelmezett ideiglenes mappa elérési útja a *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Keresse meg a *CBUICurr* fájlt, és nyissa meg a fájlt.
 
-1. A *CBUICurr* fájlban görgessen az utolsó sorra, és ellenőrizze, hogy a probléma megegyezik-e a hibaüzenettel: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`.
+1. A *CBUICurr* fájlban görgessen az utolsó sorra, és ellenőrizze, hogy a probléma megegyezik-e a hibaüzenettel: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed` .
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
 A probléma megoldásához hajtsa végre a következő lépéseket, majd próbálja megismételni a házirend-konfigurációt.
 
-#### <a name="step-1"></a>1. lépés
+#### <a name="step-1"></a>1\. lépés
 
 Jelentkezzen be a Mohácsi felhasználói felületén megjelenő PowerShellbe egy másik, rendszergazdai hozzáféréssel rendelkező fiókkal az előfizetésben, amely az importálási vagy exportálási feladatot létrehozta.
 
 #### <a name="step-2"></a>2. lépés
 
-Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítéssel, és az `AzureOfflineBackup_<Azure User Id>` alkalmazástól nem függ más kiszolgáló, törölje az alkalmazást. Válassza ki **Azure Portal** > **Azure Active Directory** > **Alkalmazásregisztrációk**.
+Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítéssel, és az alkalmazástól nem függ más kiszolgáló `AzureOfflineBackup_<Azure User Id>` , törölje az alkalmazást. Válassza ki **Azure Portal**  >  **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 
 >[!NOTE]
-> Ellenőrizze, hogy az alkalmazás `AzureOfflineBackup_<Azure User Id>` nem rendelkezik-e más kapcsolat nélküli előkészítéssel, és hogy nem függ-e az alkalmazástól más kiszolgálók. A **nyilvános kulcsok** szakaszban lépjen a **Beállítások** > **kulcsra** . Nem adhat hozzá további nyilvános kulcsokat. Tekintse meg a következő képernyőképet a hivatkozáshoz.
+> Ellenőrizze, hogy az `AzureOfflineBackup_<Azure User Id>` alkalmazás nem rendelkezik-e más kapcsolat nélküli előkészítéssel, és hogy nem függ-e az alkalmazástól más kiszolgálók. **Settings**  >  A **nyilvános kulcsok** szakaszban lépjen a beállítások**kulcsra** . Nem adhat hozzá további nyilvános kulcsokat. Tekintse meg a következő képernyőképet a hivatkozáshoz.
 >
 >![Nyilvános kulcsok](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -292,25 +292,25 @@ Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítésse
 
 Az offline biztonsági mentéshez konfigurálni kívánt kiszolgálóról végezze el a következő műveleteket.
 
-1. Nyissa meg a **számítógép-tanúsítvány alkalmazása** > **személyes** kezelése lapot, és keresse meg a nevet `CB_AzureADCertforOfflineSeeding_<ResourceId>`tartalmazó tanúsítványt.
+1. Nyissa meg a **számítógép-tanúsítvány alkalmazása**  >  **személyes** kezelése lapot, és keresse meg a nevet tartalmazó tanúsítványt `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 
 2. Válassza ki a tanúsítványt, kattintson a jobb gombbal a **minden feladat**elemre, majd válassza az **Exportálás** a titkos kulcs nélkül. cer formátumban lehetőséget.
 
-3. Nyissa meg a 2. lépésben említett Azure offline Backup alkalmazást. Válassza a **Beállítások** > **kulcsok** > **feltöltés nyilvános kulcs**lehetőséget. Töltse fel az előző lépésben exportált tanúsítványt.
+3. Nyissa meg a 2. lépésben említett Azure offline Backup alkalmazást. Válassza a **Beállítások**  >  **kulcsok**  >  **feltöltés nyilvános kulcs**lehetőséget. Töltse fel az előző lépésben exportált tanúsítványt.
 
     ![Nyilvános kulcs feltöltése](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. A-kiszolgálón nyissa meg a beállításjegyzéket úgy, hogy beírja a **Regedit parancsot** a Futtatás ablakba.
 
-5. Ugrás a beállításjegyzék- *számítógép \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Kattintson a jobb gombbal a **CloudBackupProvider**elemre, és adjon hozzá egy új `AzureADAppCertThumbprint_<Azure User Id>`karakterlánc-értéket a névvel.
+5. Ugrás a beállításjegyzék- *számítógép \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Kattintson a jobb gombbal a **CloudBackupProvider**elemre, és adjon hozzá egy új karakterlánc-értéket a névvel `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Az Azure User ID beszerzéséhez hajtsa végre az alábbi műveletek egyikét:
     >
     >- Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` parancsot.
-    > - Nyissa meg a beállításjegyzék `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` elérési útját a *CurrentUserId*néven.
+    > - Nyissa meg a beállításjegyzék elérési útját `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` a *CurrentUserId*néven.
 
-6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Kattintson az **OK** gombra.
+6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Válassza az **OK** lehetőséget.
 
 7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra. Válassza a **részletek** lapot, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza az **ujjlenyomat**lehetőséget, és másolja ki az értéket.
 
@@ -318,4 +318,4 @@ Az offline biztonsági mentéshez konfigurálni kívánt kiszolgálóról végez
 
 ## <a name="questions"></a>Kérdések
 
-Ha bármilyen kérdése vagy pontosítása merülne fel, forduljon [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)a következőhöz:.
+Ha bármilyen kérdése vagy pontosítása merülne fel, forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .

@@ -3,8 +3,8 @@ title: Azure Active Directory Application Proxy központi telepítésének megte
 description: Teljes körű útmutató az alkalmazásproxy üzembe helyezésének megtervezéséhez a szervezeten belül
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: kenwith
+ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367784"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
 
@@ -254,7 +253,7 @@ Olvasási [egyszeri bejelentkezés az Azure ad-alkalmazásokba](what-is-single-s
 
 ###  <a name="working-with-other-types-of-applications"></a>Más típusú alkalmazások használata
 
-Az Azure AD Application Proxy képes támogatni a Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) használatára fejlesztett alkalmazásokat is. Támogatja a natív ügyfélalkalmazások használatát azáltal, hogy az ügyfél kérésének fejléc-adataiban kapott Azure AD-jogkivonatokat használja az előhitelesítés végrehajtásához a felhasználók nevében.
+Az Azure AD Application Proxy képes támogatni a [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)használatára fejlesztett alkalmazásokat is. Támogatja a natív ügyfélalkalmazások használatát azáltal, hogy az ügyfél kérésének fejléc-adataiban kapott Azure AD-jogkivonatokat használja az előhitelesítés végrehajtásához a felhasználók nevében.
 
 Az Application proxy elérhető konfigurációinak megismeréséhez olvassa el a [natív és mobil ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) és a [jogcímbarát alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) közzétételét ismertető témakört.
 
@@ -318,7 +317,7 @@ A következő cikkek olyan gyakori forgatókönyveket mutatnak be, amelyekkel hi
 * [Probléma az alkalmazáslap megjelenítésekor](application-proxy-page-appearance-broken-problem.md)
 * [Az alkalmazás betöltési ideje túl hosszú](application-proxy-page-load-speed-problem.md)
 * [Az alkalmazáslap hivatkozásai nem működnek](application-proxy-page-links-broken-problem.md)
-* [Milyen portokat nyissak meg az alkalmazáshoz?](application-proxy-connectivity-ports-how-to.md)
+* [Milyen portokat nyissak meg az alkalmazáshoz?](application-proxy-add-on-premises-application.md)
 * [Az alkalmazás összekötőcsoportjában nem volt működő összekötő](application-proxy-connectivity-no-working-connector.md)
 * [Konfigurálás a felügyeleti portálon](application-proxy-config-how-to.md)
 * [Egyszeri bejelentkezés beállítása az alkalmazáshoz](application-proxy-config-sso-how-to.md)

@@ -14,10 +14,9 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83660580"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
@@ -56,7 +55,7 @@ Ha több SAP HANA-példányt szeretne tesztelni, futtassa többször a parancsf�
 
       A kimenetnek le kell mutatnia a **hdbdaemon** folyamatot leállított állapotban, és más HANA-folyamatokat sem futó, sem elindított állapotban kell lennie.
 1. Határozza meg, hogy mely pillanatkép-vagy SAP HANA biztonsági mentési AZONOSÍTÓhoz szeretné visszaállítani a vész-helyreállítási helyet. A valós katasztrófa-helyreállítási esetekben ez a pillanatkép általában a legújabb pillanatkép. Ha vissza kell állítania az elveszett adatokat, válasszon egy korábbi pillanatképet.
-1. Magas prioritású támogatási kéréssel forduljon az Azure ügyfélszolgálatához. Kérje meg a pillanatkép visszaállítását, valamint a DR helyen található HANA Backup-azonosító nevét és dátumát. Az alapértelmezett érték az, hogy a műveleti oldal csak a/Hana/Data kötetet állítja vissza. Ha azt szeretné, hogy a/Hana/logbackups-kötetek is legyenek, kifejezetten azt kell megadnia. *Ne állítsa vissza a/Hana/Shared kötetet.* Ehelyett a/Hana/Shared kötet PRD való újracsatlakoztatása után válassza ki az adott fájlokat, például a Global. ini fájlt a **. Snapshot** könyvtárból és annak alkönyvtáraiból. 
+1. Magas prioritású támogatási kéréssel forduljon az Azure ügyfélszolgálatához. Kérje meg a pillanatkép visszaállítását, valamint a DR helyen található HANA Backup-azonosító nevét és dátumát. Az alapértelmezett érték az, hogy a műveleti oldal csak a/Hana/Data kötetet állítja vissza. Ha azt szeretné, hogy a/Hana/logbackups-kötetek is legyenek, kifejezetten azt kell megadnia. *Ne állítsa vissza a/Hana/Shared kötetet.* Ehelyett a PRD/Hana/Shared-kötetének újracsatlakoztatása után válassza ki az adott fájlokat, például global.ini a **. Snapshot** könyvtárból és annak alkönyvtáraiból. 
 
    A műveleti oldalon a következő lépések történnek:
 
@@ -88,7 +87,7 @@ A következő lépések bemutatják, hogyan állíthatja helyre a SAP HANA üzem
 
    ![A napló inicializálási körzetének beállítása](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. Válassza a **Finish** (Befejezés) elemet.
+1. Válassza a **Befejezés** gombot.
 
    ![A DR visszaállítás befejezése](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117089"
 ---
 ## <a name="use-custom-page-content"></a>Egyéni oldal tartalmának használata
@@ -24,9 +24,9 @@ A Azure AD B2C a kódot az ügyfél böngészőjében futtathatja, ha az [erőfo
 
 ## <a name="custom-html-page-content"></a>Egyéni HTML-oldal tartalma
 
-Hozzon létre egy HTML-oldalt saját arculatával az egyéni oldal tartalmának kiszolgálásához. Ez a lap lehet statikus `*.html` lap vagy olyan dinamikus oldal, mint például a .net, a Node. js vagy a php.
+Hozzon létre egy HTML-oldalt saját arculatával az egyéni oldal tartalmának kiszolgálásához. Ez a lap lehet statikus `*.html` oldal vagy dinamikus oldal, például .net, Node.js vagy php.
 
-Az egyéni oldal tartalma bármilyen HTML-elemet tartalmazhat, beleértve a CSS-t és a JavaScriptet is, de nem tartalmazhat olyan nem biztonságos elemeket, mint az iframe elemek. Az egyetlen szükséges elem egy div `id` `api`-elem, amely a következőre van beállítva: `<div id="api"></div>` , például ez a html-oldalon.
+Az egyéni oldal tartalma bármilyen HTML-elemet tartalmazhat, beleértve a CSS-t és a JavaScriptet is, de nem tartalmazhat olyan nem biztonságos elemeket, mint az iframe elemek. Az egyetlen szükséges elem egy div-elem, amely a `id` következőre van beállítva: `api` , például ez `<div id="api"></div>` a html-oldalon.
 
 ```html
 <!DOCTYPE html>
@@ -46,13 +46,13 @@ Ahelyett, hogy az egyéni oldal tartalmait a semmiből hozza létre, testreszabh
 
 A következő táblázat felsorolja a Azure AD B2C által biztosított alapértelmezett oldal tartalmát. Töltse le a fájlokat, és használja kiindulási pontként a saját egyéni oldalai létrehozásához.
 
-| Alapértelmezett lap | Leírás | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
+| Alapértelmezett lap | Description | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
 |:-----------------------|:--------|-------------|
-| [kivétel. html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. | *API. error* |
-| [selfasserted. html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Saját maga által érvényesített oldal**. Ezt a fájlt egyéni oldalként használhatja a közösségi fiók regisztrálása lap, a helyi fiók regisztrálása oldal, a helyi fiók bejelentkezési oldala, a jelszó alaphelyzetbe állítása és egyebek. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. | *API. localaccountsignin*, API. *localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
-| [Multifactor-1.0.0. html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication oldal**. Ezen a lapon a felhasználók megtekinthetik a telefonszámokat (szöveg vagy hang használatával) a regisztráció vagy a bejelentkezés során. | *API. phonefactor* |
-| [updateprofile. html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap**. Ez a lap egy űrlapot tartalmaz, amelyet a felhasználók frissíthetnek a profiljuk frissítéséhez. Ez az oldal hasonló a közösségi fiók regisztrációs oldalához, a jelszó-beviteli mezők kivételével. | *API. selfasserted. profileUpdate* |
-| [egyesített. html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal**. Ez a lap kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. | *API. signuporsignin* |
+| [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. | *API. error* |
+| [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Saját maga által érvényesített oldal**. Ezt a fájlt egyéni oldalként használhatja a közösségi fiók regisztrálása lap, a helyi fiók regisztrálása oldal, a helyi fiók bejelentkezési oldala, a jelszó alaphelyzetbe állítása és egyebek. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. | *API. localaccountsignin*, API. *localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
+| [multifactor-1.0.0.html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication oldal**. Ezen a lapon a felhasználók megtekinthetik a telefonszámokat (szöveg vagy hang használatával) a regisztráció vagy a bejelentkezés során. | *API. phonefactor* |
+| [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap**. Ez a lap egy űrlapot tartalmaz, amelyet a felhasználók frissíthetnek a profiljuk frissítéséhez. Ez az oldal hasonló a közösségi fiók regisztrációs oldalához, a jelszó-beviteli mezők kivételével. | *API. selfasserted. profileUpdate* |
+| [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal**. Ez a lap kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. | *API. signuporsignin* |
 
 ## <a name="hosting-the-page-content"></a>Az oldal tartalmának üzemeltetése
 
@@ -61,7 +61,7 @@ Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabá
 ## <a name="guidelines-for-using-custom-page-content"></a>Irányelvek egyéni lapok tartalmának használatához
 
 - Használjon abszolút URL-címet, ha olyan külső erőforrásokat is tartalmaz, mint például a média, a CSS és a JavaScript-fájlok a HTML-fájlban.
-- Ha a 1.2.0 vagy újabb [verzióját](../articles/active-directory-b2c/page-layout.md) használja, a `data-preload="true"` HTML-címkékben lévő attribútumot hozzáadhatja a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload=true`-ben az oldal a felhasználó előtt jön létre. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a `data-preload` címke használatát mutatja be.
+- Ha a 1.2.0 vagy újabb [verzióját](../articles/active-directory-b2c/page-layout.md) használja, a `data-preload="true"` HTML-címkékben lévő attribútumot hozzáadhatja a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload=true` -ben az oldal a felhasználó előtt jön létre. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a címke használatát mutatja be `data-preload` .
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -73,14 +73,14 @@ Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabá
   - Google Chrome 42,0 és újabb verziók
   - Mozilla Firefox 38,0 és újabb verziók
   - Safari iOS és macOS rendszerekhez, 12-es vagy újabb verzió
-- Biztonsági korlátozások miatt Azure ad B2C nem támogatja `frame`, `iframe`vagy `form` HTML-elemeket.
+- Biztonsági korlátozások miatt Azure AD B2C nem támogatja `frame` , `iframe` vagy `form` HTML-elemeket.
 
 ## <a name="custom-page-content-walkthrough"></a>Egyéni oldal tartalmi útmutatója
 
 A folyamat áttekintése:
 
 1. Készítse elő az egyéni oldal tartalmának (nyilvánosan elérhető, CORS-kompatibilis HTTPS-végpont) üzemeltetésére szolgáló helyet.
-1. Töltse le és szabja testre az alapértelmezett oldal tartalmi fájlját `unified.html`, például:.
+1. Töltse le és szabja testre az alapértelmezett oldal tartalmi fájlját, például: `unified.html` .
 1. Közzéteheti az egyéni oldal tartalmát a nyilvánosan elérhető HTTPS-végponton.
 1. Állítsa be a CORS a webalkalmazáshoz.
 1. Irányítsa a szabályzatot az egyéni házirend-tartalom URI-ra.
@@ -89,7 +89,7 @@ A folyamat áttekintése:
 
 Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címben.
 
-1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5 egy olyan üres elemmel, amelynek neve * \<div id = "API"\>\<\> /div* , amely a * \<törzs\> * címkén belül található. Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
+1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5 egy üres elemmel, amelynek neve *\<div id="api"\>\</div\>* a címkék között található *\<body\>* . Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
 
    ```html
    <!DOCTYPE html>
@@ -103,7 +103,7 @@ Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címb
    </html>
    ```
 
-1. Illessze be a másolt kódrészletet egy szövegszerkesztőbe, majd mentse a fájlt *Customize-UI. html*néven.
+1. Illessze be a másolt kódrészletet egy szövegszerkesztőbe, majd mentse a fájlt *customize-ui.html*néven.
 
 > [!NOTE]
 > A HTML-űrlap elemei a biztonsági korlátozások miatt törlődnek, ha login.microsoftonline.com használ. Ha HTML-űrlap elemeket szeretne használni az egyéni HTML-tartalomban, [használja a b2clogin.com](../articles/active-directory-b2c/b2clogin.md).
@@ -115,7 +115,7 @@ Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhe
 A HTML-tartalom blob Storage-ban való üzemeltetéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A **központi** menüben válassza az **új** > **Storage** > **Storage-fiók**lehetőséget.
+1. A **központi** menüben válassza az **új**  >  **Storage**  >  **Storage-fiók**lehetőséget.
 1. Válasszon egy **előfizetést** a Storage-fiókjához.
 1. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
 1. Adja meg a Storage-fiók egyedi **nevét** .
@@ -142,10 +142,10 @@ Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a
 
 1. Válassza a **Feltöltés** lehetőséget.
 1. Válassza ki a **fájl kiválasztása**melletti mappa ikont.
-1. Navigáljon a lapra, és válassza ki a **Customize-UI. html fájlt**, amelyet korábban az oldal felhasználói felületének testreszabása szakaszban hozott létre.
+1. Navigáljon a lapra, és válassza ki **customize-ui.html**, amelyet korábban hozott létre az oldal felhasználói felületének testreszabása szakaszban.
 1. Ha egy almappában szeretne feltölteni, bontsa ki a **speciális** elemet, és adja meg a mappa nevét a **feltöltés mappába**.
 1. Válassza a **Feltöltés** lehetőséget.
-1. Válassza ki a feltöltött **Customize-UI. html** blobot.
+1. Válassza ki a feltöltött **customize-ui.html** blobot.
 1. Az **URL-cím** szövegmező jobb oldalán válassza a **Másolás vágólapra** ikont az URL-cím vágólapra másolásához.
 1. A böngészőben nyissa meg a vágólapra másolt URL-címet, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha nem érhető el, például ha `ResourceNotFound` hibát tapasztal, győződjön meg arról, hogy a tároló hozzáférési típusa **blob**.
 
@@ -154,8 +154,8 @@ Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a
 Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen eredetű erőforrás-megosztáshoz:
 
 1. A menüben válassza a **CORS**lehetőséget.
-1. Az **engedélyezett eredetek**mezőben `https://your-tenant-name.b2clogin.com`adja meg a következőt:. Cserélje `your-tenant-name` le a helyére a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor használja az összes kisbetűt.
-1. Az **engedélyezett módszerek**esetében válassza a `GET` mindkettő `OPTIONS`és a lehetőséget.
+1. Az **engedélyezett eredetek**mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` . Cserélje le a helyére `your-tenant-name` a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor használja az összes kisbetűt.
+1. Az **engedélyezett módszerek**esetében válassza a mindkettő és a lehetőséget `GET` `OPTIONS` .
 1. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
 1. A közzétett **fejlécek**esetében írjon be egy csillagot (*).
 1. A **Max Age**értéknél adja meg a 200 értéket.
@@ -169,5 +169,5 @@ Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 1. Navigáljon a [www.test-CORS.org](https://www.test-cors.org/) 
 1. A **távoli URL-cím** mezőben illessze be a HTML-fájl URL-címét. Például: `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
 1. Válassza a **küldési kérelem**lehetőséget.
-    Ennek az eredménynek `XHR status: 200`kell lennie. 
+    Ennek az eredménynek kell lennie `XHR status: 200` . 
     Ha hibaüzenetet kap, ellenőrizze, hogy helyesek-e a CORS beállításai. Előfordulhat, hogy törölnie kell a böngésző gyorsítótárát, vagy meg kell nyitnia egy privát böngészési munkamenetet a CTRL + SHIFT + P billentyűkombináció lenyomásával.

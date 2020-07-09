@@ -1,18 +1,14 @@
 ---
 title: Azure-Event Hubs Event Grid forrásként
 description: Az Event hubok eseményeihez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113683"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure-Event Hubs Event Grid forrásként
 
@@ -57,20 +53,20 @@ Ez a példa egy Event hub-esemény sémáját jeleníti meg, amikor a rögzíté
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Event hub-események adatvédelme. |
+| adatok | objektum | Event hub-események adatvédelme. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | fileUrl | sztring | A rögzítési fájl elérési útja. |
 | fileType | sztring | A rögzítési fájl fájltípusa. |
@@ -88,7 +84,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 |---------|---------|
 | [Oktatóanyag: stream big data adattárházba](event-grid-event-hubs-integration.md) | Amikor Event Hubs létrehoz egy rögzítési fájlt, Event Grid küld egy eseményt egy Function alkalmazásnak. Az alkalmazás lekéri a rögzítési fájlt, és áttelepíti az adattárházba. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

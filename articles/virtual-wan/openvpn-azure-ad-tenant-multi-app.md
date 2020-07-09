@@ -4,24 +4,24 @@ description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hiteles�
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: af5ff5817ee9ae7e6d7432fe281ecb440bf25b9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1471226bcc22373904e65f95d0c07c2d5041f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749836"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
 A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hitelesítést használhat. Ha azonban a nyílt VPN protokollt használja, akkor Azure Active Directory hitelesítést is használhat. Ha azt szeretné, hogy a különböző felhasználók a különböző átjárók számára is képesek legyenek csatlakozni, több alkalmazást is regisztrálhat az AD-ben, és összekapcsolhatja őket különböző átjárókkal.
 
 Ebből a cikkből megtudhatja, hogyan állíthat be Azure AD-bérlőt az P2S OpenVPN-hitelesítéshez, és hogyan hozhat létre és regisztrálhat több alkalmazást az Azure AD-ben, hogy különböző felhasználók és csoportok számára engedélyezze a hozzáférést.
 
 > [!NOTE]
-> Az Azure AD-hitelesítés csak az OpenVPN&reg; protokoll kapcsolatai esetén támogatott.
+> Az Azure AD-hitelesítés csak az OpenVPN &reg; protokoll kapcsolatai esetén támogatott.
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
@@ -83,14 +83,14 @@ A VPN-profillal konfigurálhatja az ügyfeleket.
 
 6. Tallózással keresse meg a kibontott "AzureVPN" mappát.
 
-7. Jegyezze fel a "azurevpnconfig. xml" fájl helyét. A azurevpnconfig. XML a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
+7. Jegyezze fel a "azurevpnconfig.xml" fájl helyét. A azurevpnconfig.xml a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
 
 ## <a name="9-configure-user-vpn-clients"></a>9. felhasználói VPN-ügyfelek konfigurálása
 
 A csatlakozáshoz le kell töltenie az Azure VPN-ügyfelet, és importálnia kell az előző lépésekben letöltött VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet.
 
 > [!NOTE]
-> Az Azure AD-hitelesítés csak az OpenVPN&reg; protokoll kapcsolatai esetén támogatott.
+> Az Azure AD-hitelesítés csak az OpenVPN &reg; protokoll kapcsolatai esetén támogatott.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Az Azure VPN-ügyfél letöltése
@@ -155,7 +155,7 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 

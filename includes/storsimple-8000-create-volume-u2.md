@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179172"
 ---
 #### <a name="to-create-a-volume"></a>Kötet létrehozása
@@ -45,7 +45,7 @@ ms.locfileid: "67179172"
          1. Adja meg az ACR **nevét**.
          2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép iSCSI minősített nevét (IQN). Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz.
 
-      1. Kattintson a **Létrehozás**gombra. Létrejön egy kötet a megadott beállításokkal.
+      1. Kattintson a **Létrehozás** lehetőségre. Létrejön egy kötet a megadott beállításokkal.
 
          ![Kattintson a Létrehozás gombra](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

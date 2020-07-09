@@ -10,10 +10,9 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f51b9ecf8e300af6b1e3f11d8431de7a282ab342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759351"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Teljes tartománynév létrehozása a Azure Portal Linux rendszerű virtuális gép számára
@@ -25,7 +24,7 @@ Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha sz�
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Most már távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például `ssh azureuser@mydns.westus.cloudapp.azure.com`:.
+Most már távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például: `ssh azureuser@mydns.westus.cloudapp.azure.com` .
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, üzembe helyezhet olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat, mint például az Nginx, a MongoDB, a Docker stb.

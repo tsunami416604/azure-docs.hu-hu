@@ -1,14 +1,14 @@
 ---
 title: A szabályzatminták indexe
 description: Az Azure Policyhez készült beépített elemek indexe Kategóriacímkék, Jogszabályi megfelelőség, Key Vault, Kubernetes, Vendégkonfiguráció és egyebek.
-ms.date: 03/25/2020
+ms.date: 06/10/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7528a22ad09db1e06aabf84ad946ef7af36a8430
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697184"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736781"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-minták
 
@@ -32,6 +32,15 @@ Az alábbiakban példákat láthat az Azure Policyben található nyelvet és op
 - [Számoperátor](./pattern-count-operator.md)
 - [Szabályzatdefiníciók csoportosítása egy kezdeményezésben](./pattern-group-with-initiative.md)
 - [Erőforrások üzembe helyezése a deployIfNotExists használatával](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>Előírásoknak való megfelelőség
+
+Az alábbiak az [előírásoknak való megfelelőség](../concepts/regulatory-compliance.md) beépített elemei:
+
+- [Azure-biztonsági teljesítményteszt](./azure-security-benchmark.md)
+- [CIS Microsoft Azure Foundations Benchmark 1.1.0-s verzió](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>Egyéb példák
 

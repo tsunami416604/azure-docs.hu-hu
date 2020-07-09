@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e1eb105671883d88d8fe34b9741d402d311556a9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82859015"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához
@@ -63,7 +62,7 @@ Ha például várólistákat és blobokat használ az alkalmazásban, dönthet �
 
 Végső soron ez az alkalmazás összetettségétől függ. Dönthet úgy, hogy nem kezeli a hibákat a szolgáltatással, hanem az összes tárolási szolgáltatás olvasási kérelmeit átirányítja a másodlagos régióba, és az alkalmazást írásvédett módban futtatja, amikor az elsődleges régióban található tárolási szolgáltatásokkal kapcsolatos problémát észlel.
 
-### <a name="other-considerations"></a>Egyéb szempontok
+### <a name="other-considerations"></a>További szempontok
 
 A további szempontokat a cikk további részében tárgyaljuk.
 
@@ -196,7 +195,7 @@ A Geo-redundáns tárolás úgy működik, hogy az elsődlegesről a másodlagos
 
 Az alábbi táblázat egy példát mutat be arra, hogy mi történhet, ha egy alkalmazott adatait frissíti, hogy azok a *rendszergazdák* szerepkör tagjai legyenek. Ennek a példának a kedvéért ehhez frissítenie kell az **alkalmazott** entitást, és frissítenie kell egy **rendszergazdai szerepkör** entitást a rendszergazdák teljes száma számával. Figyelje meg, hogy a frissítések nem sorrendben vannak alkalmazva a másodlagos régióban.
 
-| **Time** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás ideje** | **Eredmény** |
+| **Idő** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás ideje** | **Eredmény** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | A tranzakció: <br> Alkalmazott beszúrása <br> elsődleges entitás |                                   |                    | Egy beszúrt tranzakció az elsődlegesbe<br> még nincs replikálva. |
 | T1       |                                                            | A tranzakció <br> replikálva a következőre<br> másodlagos | T1 | A tranzakció replikálása másodlagosra történik. <br>A legutóbbi szinkronizálás ideje frissítve.    |

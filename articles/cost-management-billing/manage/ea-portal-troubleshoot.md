@@ -3,16 +3,16 @@ title: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hib
 description: Ez a cikk bemutat néhány gyakori problémát, amelyek az Azure Nagyvállalati Szerződéssel kapcsolatban léphetnek fel az Azure EA Portalon.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
-ms.topic: conceptual
+ms.date: 06/05/2020
+ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2a6d1e82fda3a3c76af3fe705db5b398dba2d6a1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115842"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
 

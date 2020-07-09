@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73749643"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078408"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
 
@@ -89,13 +89,15 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
 
     1. Győződjön meg arról, hogy elegendő lemezterület áll rendelkezésre a lemezen a RAM memóriájának lefoglalásához, amely a virtuális gép számára kiválasztott mérettől függ.
     2. Ha nincs elég hely, vagy nagy méretű virtuális gép (G, GS vagy E sorozat), akkor megváltoztathatja a fájl létrehozásának helyét, és a virtuális géphez csatolt bármely más adatlemezre hivatkozni fog. Ehhez módosítania kell a következő kulcsot:
+    
+        ```console
+        reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
 
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-
-            reg unload HKLM\BROKENSYSTEM
+        reg unload HKLM\BROKENSYSTEM
+        ```
 
 3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
 4. Indítsa el a virtuális gépet, és nyissa meg a soros konzolt.

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847404"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -72,15 +72,15 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 |Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
 |---------|------|-----------------------|  
 |**Ügynök**|||  
-|\*.ods.opinsights.azure.com| 443 |Igen|  
-|\*.oms.opinsights.azure.com| 443|Igen|  
-|\*.blob.core.windows.net| 443|Igen|  
-|\*.azure-automation.net| 443|Igen|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Felügyeleti kiszolgáló**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Igen|  
-|\*.ods.opinsights.azure.com| 443| Igen|  
-|*.azure-automation.net | 443| Igen|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konzol Operations Manager Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -110,7 +110,7 @@ A Operations Manager felügyeleti csoport Log Analytics munkaterületre való ke
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Miután elvégezte a következő lépéseket a Azure Monitor-nal való integráláshoz, a konfigurációt a futtatásával `netsh winhttp reset proxy` távolíthatja el, majd az operatív konzol **proxykiszolgáló konfigurálása** lehetőségével megadhatja a proxyt vagy log Analytics átjárókiszolgáló.
+Miután elvégezte a következő lépéseket a Azure Monitor-nal való integráláshoz, a konfigurációt a futtatásával távolíthatja el, `netsh winhttp reset proxy` majd az operatív konzol **proxykiszolgáló konfigurálása** lehetőségével megadhatja a proxyt vagy log Analytics átjárókiszolgáló.
 
 1. Nyissa meg az Operatív konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki az Operations Management Suite-csomópontot, és kattintson a **Kapcsolat** elemre.
@@ -163,14 +163,14 @@ Ha a proxykiszolgáló hitelesítést igényel, a következő lépésekkel konfi
 Miután létrejött a kapcsolódás, és beállíthatja, hogy mely ügynökök gyűjtik és naplózzák az adatokat Azure Monitor, a felügyeleti csoportban a következő konfigurációt alkalmazza a rendszer, nem feltétlenül sorrendben:
 
 * A **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** futtató fiók létrejön. Ez a fiók a **Microsoft System Center Advisor Run As Profile Blob** (Microsoft System Center Advisor futtatóprofil-blob) futtató blobhoz van társítva, és két osztályt céloz: **Gyűjtési kiszolgáló** és **Operations Manager felügyeleti csoport**.
-* Két összekötő jön létre.  Az első neve **Microsoft. SystemCenter. Advisor. DataConnector** , és automatikusan olyan előfizetéssel van konfigurálva, amely a felügyeleti csoportban lévő összes osztály példányaiból generált összes riasztást továbbítja Azure monitor. A második összekötő az **Advisor Connector**, amely a Azure monitor és az adatmegosztással való kommunikációért felelős.
+* Két összekötő jön létre.  Az első neve **Microsoft.SystemCenter. Advisor. DataConnector** , és automatikusan olyan előfizetéssel van konfigurálva, amely a felügyeleti csoportban lévő összes osztály példányaiból generált összes riasztást Azure monitor. A második összekötő az **Advisor Connector**, amely a Azure monitor és az adatmegosztással való kommunikációért felelős.
 * A felügyeleti csoportban az adatok gyűjtésére konfigurált ügynökök és csoportok fel lesznek véve a **Microsoft System Center Advisor monitorozásikiszolgáló-csoportba**.
 
 ## <a name="management-pack-updates"></a>Felügyeleti csomagok frissítései
 
 A konfiguráció befejezése után a Operations Manager felügyeleti csoport kapcsolatot létesít Azure Monitorval. A felügyeleti kiszolgáló szinkronizál a webszolgáltatással, és felügyeleti csomagok formájában megkapja a frissített konfigurációadatokat az Operations Managerrel való integrációra engedélyezett megoldásokra vonatkozóan. Operations Manager ellenőrzi a felügyeleti csomagok frissítéseit, és automatikusan letölti és importálja őket, amikor elérhetők. Ezt a működést kifejezetten két szabály vezérli:
 
-* **Microsoft. SystemCenter. Advisor. MPUpdate** – frissíti az alapszintű Azure monitor felügyeleti csomagokat. Alapértelmezés szerint 12 óránként fut.
+* **Microsoft.SystemCenter. Advisor. MPUpdate** – frissíti az alap Azure monitor felügyeleti csomagokat. Alapértelmezés szerint 12 óránként fut.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** – A munkaterületen engedélyezett megoldások felügyeleti csomagjait frissíti. Alapértelmezés szerint öt (5) percenként fut.
 
 A két szabály felülbírálásával megakadályozhatja az automatikus letöltést, ha letiltja őket, vagy módosítani szeretné, hogy a felügyeleti kiszolgáló milyen gyakran szinkronizálja Azure Monitor annak megállapítására, hogy elérhető-e új felügyeleti csomag, és le kell-e tölteni. A [Szabály vagy figyelő felülbírálása](https://technet.microsoft.com/library/hh212869.aspx) cikkben ismertetett lépések mentén módosíthatja a **Gyakoriság** paraméter másodpercben kifejezett értékét, amely a szinkronizálás ütemezését adja meg, vagy az **Engedélyezve** paraméter módosításával letilthatja a szabályokat. Ezeket a szabálymódosításokat az Operations Manager felügyeleti csoport osztályban lévő minden objektumra alkalmazza.
@@ -350,7 +350,7 @@ Ha törölni szeretné a két összekötőt (a Microsoft.SystemCenter.Advisor.Da
 Ha a felügyeleti csoport Log Analytics munkaterületre való újrakapcsolódását tervezi, akkor a `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` felügyeleti csomag fájlját újra kell importálnia. A környezetében telepített System Center Operations Manager verziójától függően a fájlt a következő helyen találja:
 
 * A forrás-adathordozón a `\ManagementPacks` System Center 2016 – Operations Manager mappában vagy felette.
-* A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. A Operations Manager 2012, a forrás mappa `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és a 2012 R2 esetében a következő helyen található: `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
+* A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. A Operations Manager 2012, a forrás mappa `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és a 2012 R2 esetében a következő helyen található: `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` .
 
 ## <a name="next-steps"></a>További lépések
 

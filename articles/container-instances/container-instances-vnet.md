@@ -5,13 +5,13 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
 ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583637"
 ---
-# <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tároló-példányok üzembe helyezése Azure-beli virtuális hálózatban
+# <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton
 
 Az [azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztonságos, privát hálózatkezelést biztosít az Azure-hoz és a helyszíni erőforrásokhoz. Ha tároló-csoportokat telepít egy Azure-beli virtuális hálózatba, a tárolók biztonságosan kommunikálhatnak a virtuális hálózat többi erőforrásával.
 
@@ -34,13 +34,13 @@ Ha új virtuális hálózatra kíván üzembe helyezni, és az Azure-hoz automat
 * Alhálózat neve
 * Alhálózat CIDR formátuma
 
-A virtuális hálózat és az alhálózati címek előtagjai határozzák meg a virtuális hálózat és az alhálózat címterület-területét. Ezek az értékek az osztály nélküli tartományok közötti útválasztási (CIDR) jelöléssel jelennek meg, `10.0.0.0/16`például:. További információ az alhálózatok használatáról: [virtuális hálózati alhálózat hozzáadása, módosítása vagy törlése](../virtual-network/virtual-network-manage-subnet.md).
+A virtuális hálózat és az alhálózati címek előtagjai határozzák meg a virtuális hálózat és az alhálózat címterület-területét. Ezek az értékek az osztály nélküli tartományok közötti útválasztási (CIDR) jelöléssel jelennek meg, például: `10.0.0.0/16` . További információ az alhálózatok használatáról: [virtuális hálózati alhálózat hozzáadása, módosítása vagy törlése](../virtual-network/virtual-network-manage-subnet.md).
 
 Miután telepítette az első tároló csoportját ezzel a módszerrel, a virtuális hálózat és az alhálózatok nevének megadásával, vagy az Azure által automatikusan létrehozott hálózati profil megadásával ugyanarra az alhálózatra is telepíthető. Mivel az Azure delegálja az alhálózatot Azure Container Instancesre, *csak* a tároló csoportokat telepítheti az alhálózatra.
 
 ### <a name="example"></a>Példa
 
-Az alábbi az [Container Create][az-container-create] parancs egy új virtuális hálózat és alhálózat beállításait adja meg. Adja meg egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, amelyben a tároló csoport központi telepítései [elérhetők](container-instances-region-availability.md#availability---virtual-network-deployment)a virtuális hálózaton. Ez a parancs üzembe helyezi a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weboldalt kiszolgáló kis Node. js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
+Az alábbi az [Container Create][az-container-create] parancs egy új virtuális hálózat és alhálózat beállításait adja meg. Adja meg egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, amelyben a tároló csoport központi telepítései [elérhetők](container-instances-region-availability.md#availability---virtual-network-deployment)a virtuális hálózaton. Ez a parancs központilag telepíti a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weblapot kiszolgáló kisméretű Node.js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
 
 ```azurecli
 az container create \
@@ -83,7 +83,7 @@ A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. 
 10.0.0.4
 ```
 
-Most állítsa `CONTAINER_GROUP_IP` be a `az container show` paranccsal lekért IP-címet, és hajtsa végre a következő `az container create` parancsot. Ez a második tároló, a *commchecker*egy alpesi Linux-alapú rendszerképet futtat, `wget` és az első tároló csoport privát alhálózatának IP-címén hajtja végre.
+Most állítsa be a `CONTAINER_GROUP_IP` paranccsal lekért IP-címet `az container show` , és hajtsa végre a következő `az container create` parancsot. Ez a második tároló, a *commchecker*egy alpesi Linux-alapú rendszerképet futtat, és `wget` az első tároló csoport privát alhálózatának IP-címén hajtja végre.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -98,7 +98,7 @@ az container create \
   --subnet aci-subnet
 ```
 
-A második tároló üzembe helyezésének befejezése után húzza le a naplókat, hogy láthassa az általa végrehajtott `wget` parancs kimenetét:
+A második tároló üzembe helyezésének befejezése után húzza le a naplókat, hogy láthassa az `wget` általa végrehajtott parancs kimenetét:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
@@ -111,7 +111,7 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-A napló kimenetének azt kell `wget` megjelennie, hogy képes volt csatlakozni a fájlhoz, és letölti az indexfájl az első tárolóból a saját magánhálózati IP-címének használatával a helyi alhálózaton. A két tároló csoport közötti hálózati forgalom a virtuális hálózaton belül marad.
+A napló kimenetének azt kell megjelennie, hogy `wget` képes volt csatlakozni a fájlhoz, és letölti az indexfájl az első tárolóból a saját magánhálózati IP-címének használatával a helyi alhálózaton. A két tároló csoport közötti hálózati forgalom a virtuális hálózaton belül marad.
 
 ### <a name="example---yaml"></a>Példa – YAML
 
@@ -124,7 +124,7 @@ Ha például egy YAML-fájlt használ, központilag telepítheti egy olyan virtu
   * `ports`: A megnyitni kívánt portok, ha vannak ilyenek.
   * `protocol`: A megnyitott port protokollja (TCP vagy UDP).
 * `networkProfile`: A virtuális hálózat és az alhálózat hálózati beállításai.
-  * `id`: A teljes erőforrás-kezelő erőforrás-azonosítója `networkProfile`.
+  * `id`: A teljes erőforrás-kezelő erőforrás-azonosítója `networkProfile` .
 
 A hálózati profil AZONOSÍTÓjának lekéréséhez futtassa az az [Network profil List][az-network-profile-list] parancsot, és adja meg az erőforráscsoport nevét, amely a virtuális hálózatot és a delegált alhálózatot tartalmazza.
 
@@ -139,7 +139,7 @@ Példa a kimenetre:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-A hálózati profil azonosítója után másolja a következő YAML egy új, *vnet-Deploy-ACI. YAML*nevű fájlba. A `networkProfile`alatt cserélje le `id` az IMÉNT beolvasott azonosítójú értéket, majd mentse a fájlt. Ez a YAML létrehoz egy *appcontaineryaml* nevű tároló csoportot a virtuális hálózatában.
+A hálózati profil azonosítója után másolja a következő YAML egy új, *vnet-Deploy-ACI. YAML*nevű fájlba. A alatt `networkProfile` cserélje le az `id` imént beolvasott azonosítójú értéket, majd mentse a fájlt. Ez a YAML létrehoz egy *appcontaineryaml* nevű tároló csoportot a virtuális hálózatában.
 
 ```YAML
 apiVersion: '2018-10-01'
@@ -170,7 +170,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Telepítse a tároló csoportot az az [Container Create][az-container-create] paranccsal, és adja meg a `--file` paraméter YAML-fájljának nevét:
+Telepítse a tároló csoportot az az [Container Create][az-container-create] paranccsal, és adja meg a paraméter YAML-fájljának nevét `--file` :
 
 ```azurecli
 az container create --resource-group myResourceGroup \
@@ -185,7 +185,7 @@ Name              ResourceGroup    Status    Image                              
 appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 ### <a name="delete-container-instances"></a>Tároló példányainak törlése
 

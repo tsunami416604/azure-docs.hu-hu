@@ -4,10 +4,10 @@ description: Ismerje meg az Azure Service Fabric legfontosabb alapfogalmait és 
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791850"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Szeretne többet megtudni a Service Fabricról?
@@ -17,22 +17,22 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 [Service Fabric terminológia](service-fabric-technical-overview.md), az [alkalmazás modellje](service-fabric-application-model.md)és a [támogatott programozási modellek](service-fabric-choose-framework.md) több fogalmat és leírást biztosítanak, de itt vannak az alapjai.
 
 ### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Tervezési idő: szolgáltatástípus, szervizcsomag és jegyzékfájl, alkalmazás típusa, alkalmazáscsomag és jegyzékfájl
-A szolgáltatás típusa a szolgáltatás kódjához, adatcsomagjaihoz és konfigurációs csomagjaihoz rendelt név/verzió. Ez egy ServiceManifest. xml fájlban van definiálva. A szolgáltatás típusa a végrehajtható kód és a szolgáltatás konfigurációs beállításaiból tevődik össze, amelyek a futási időben tölthetők be, és a szolgáltatás által felhasznált statikus adatmennyiségek.
+A szolgáltatás típusa a szolgáltatás kódjához, adatcsomagjaihoz és konfigurációs csomagjaihoz rendelt név/verzió. Ez egy ServiceManifest.xml fájlban van definiálva. A szolgáltatás típusa a végrehajtható kód és a szolgáltatás konfigurációs beállításaiból tevődik össze, amelyek a futási időben tölthetők be, és a szolgáltatás által felhasznált statikus adatmennyiségek.
 
-A szervizcsomag egy olyan lemez, amely a szolgáltatás típusának ServiceManifest. XML fájlját tartalmazza, amely a szolgáltatás típusára, a statikus adatokra és a konfigurációs csomagokra hivatkozik. Egy szolgáltatáscsomag például hivatkozhat az adatbázis-szolgáltatást alkotó kód, statikus és konfigurációs csomagokra.
+A szervizcsomag a szolgáltatás típusának ServiceManifest.xml fájlját tartalmazó lemez, amely a szolgáltatás típusának kódját, statikus adatait és konfigurációs csomagjaira hivatkozik. Egy szolgáltatáscsomag például hivatkozhat az adatbázis-szolgáltatást alkotó kód, statikus és konfigurációs csomagokra.
 
-Az alkalmazás típusa a szolgáltatás típusú gyűjteményhez rendelt név/verzió. Ez egy ApplicationManifest. xml fájlban van definiálva.
+Az alkalmazás típusa a szolgáltatás típusú gyűjteményhez rendelt név/verzió. Ez egy ApplicationManifest.xml fájlban van definiálva.
 
 ![Service Fabric az alkalmazások típusai és a szolgáltatások típusai][cluster-imagestore-apptypes]
 
-Az alkalmazáscsomag egy olyan lemez-könyvtár, amely tartalmazza az alkalmazás típusát ApplicationManifest. xml fájlt, amely az alkalmazás típusát alkotó egyes szolgáltatástípus szolgáltatási csomagjaira hivatkozik. Egy e-mail-alkalmazáshoz tartozó alkalmazáscsomag például tartalmazhat üzenetsor-szolgáltatási csomagra, egy előtér-szolgáltatási csomagra és egy adatbázis-szolgáltatási csomagra mutató hivatkozásokat.  
+Az alkalmazáscsomag egy olyan lemez-könyvtár, amely tartalmazza az alkalmazás típusát ApplicationManifest.xml fájlt, amely az alkalmazás típusát alkotó egyes szolgáltatástípus szolgáltatási csomagjaira hivatkozik. Egy e-mail-alkalmazáshoz tartozó alkalmazáscsomag például tartalmazhat üzenetsor-szolgáltatási csomagra, egy előtér-szolgáltatási csomagra és egy adatbázis-szolgáltatási csomagra mutató hivatkozásokat.  
 
 Az alkalmazáscsomag könyvtárában lévő fájlokat a rendszer a Service Fabric-fürt rendszerkép-tárolójába másolja. Ezután létrehozhat egy elnevezett alkalmazást ebből az alkalmazásból, amely ezután a fürtön belül fut. Elnevezett alkalmazás létrehozása után létrehozhat egy elnevezett szolgáltatást az alkalmazás egyik szolgáltatástípus-típusáról. 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Futási idő: fürtök és csomópontok, megnevezett alkalmazások, nevesített szolgáltatások, partíciók és replikák
 A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürtök több ezer gépre skálázhatók.
 
-A fürtök részét képező gépeket vagy virtuális gépeket csomópontoknak nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek. Minden számítógép vagy virtuális gép rendelkezik egy automatikus indítású Windows- `FabricHost.exe`szolgáltatással, amely elindítja a rendszert a rendszerindítás után, majd `Fabric.exe` elindítja `FabricGateway.exe`a két végrehajtható fájl: és. Ez a két végrehajtható fájl alkotja a csomópontot. Fejlesztési vagy tesztelési helyzetekben több csomópontot is tárolhat egyetlen gépen vagy virtuális gépen a `Fabric.exe` és `FabricGateway.exe`a több példányának futtatásával.
+A fürtök részét képező gépeket vagy virtuális gépeket csomópontoknak nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek. Minden számítógép vagy virtuális gép rendelkezik egy automatikus indítású Windows-szolgáltatással, `FabricHost.exe` amely elindítja a rendszert a rendszerindítás után, majd elindítja a két végrehajtható fájl: `Fabric.exe` és `FabricGateway.exe` . Ez a két végrehajtható fájl alkotja a csomópontot. Fejlesztési vagy tesztelési helyzetekben több csomópontot is tárolhat egyetlen gépen vagy virtuális gépen a és a több példányának futtatásával `Fabric.exe` `FabricGateway.exe` .
 
 Az elnevezett alkalmazások olyan nevesített szolgáltatások gyűjteményei, amelyek egy bizonyos függvényt vagy függvényt hajtanak végre. A szolgáltatás teljes és önálló funkciót hajt végre (a többi szolgáltatástól függetlenül elindítható és futtatható), és kód-, konfiguráció-és adatmennyiségből áll. Az alkalmazáscsomag a rendszerkép-tárolóba való másolása után a fürtön belül hozza létre az alkalmazás egy példányát az alkalmazáscsomag alkalmazási típusának (a neve/verziója használatával) megadásával. Minden Application Type-példányhoz egy URI-név tartozik, amely a következőhöz hasonló *: Fabric:/MyNamedApp*. Egy fürtön belül több névvel ellátott alkalmazást is létrehozhat egyetlen alkalmazás típusból. Elnevezett alkalmazásokat is létrehozhat különböző típusú alkalmazásokból. Az elnevezett alkalmazások felügyelete és verziója egymástól függetlenül történik.
 
@@ -66,7 +66,7 @@ Miért van az állapot-nyilvántartó szolgáltatásokkal együtt? A két fő ok
 ## <a name="supported-programming-models"></a>Támogatott programozási modellek
 A Service Fabric többféle módszert kínál a szolgáltatások írására és kezelésére. A szolgáltatások a Service Fabric API-kkal teljes mértékben kihasználhatják a platform funkcióit és alkalmazási keretrendszereit. A szolgáltatások bármilyen nyelven írt és Service Fabric-fürtön tárolt lefordított végrehajtható programok is lehetnek. További információ: [támogatott programozási modellek](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Tárolók
 Alapértelmezés szerint a Service Fabric folyamatokként telepíti és aktiválja a szolgáltatásokat. A Service Fabric [tárolókban](service-fabric-containers-overview.md)is telepíthetnek szolgáltatásokat. Fontos, hogy az ugyanazon alkalmazásban lévő tárolókban található folyamatokban és szolgáltatásokban is összekeverheti a szolgáltatásokat. Service Fabric támogatja a Linux-tárolók és Windows-tárolók telepítését a Windows Server 2016-es verziója esetén. Meglévő alkalmazásokat, állapot nélküli szolgáltatásokat vagy állapot-nyilvántartó szolgáltatásokat helyezhet üzembe tárolókban. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -75,7 +75,7 @@ A [Reliable Services](service-fabric-reliable-services-introduction.md) egy egys
 ### <a name="reliable-actors"></a>Reliable Actors
 A Reliable Servicesra épülő, [megbízható színészi](service-fabric-reliable-actors-introduction.md) keretrendszer egy alkalmazási keretrendszer, amely a színész kialakítási mintája alapján implementálja a virtuális színész mintáját. A megbízható szereplők keretrendszere a számítási és az állapot-független egységeket használja az egyszálas végrehajtással. A megbízható Actors keretrendszer beépített kommunikációt biztosít a szereplők számára, és előre beállított állapot-megőrzési és kibővíthető konfigurációkat tartalmaz.
 
-### <a name="aspnet-core"></a>ASP.NET-mag
+### <a name="aspnet-core"></a>ASP.NET Core
 A Service Fabric a webes és API-alkalmazások létrehozásához első osztályú programozási modellként integrálódik a [ASP.net Coreba](service-fabric-reliable-services-communication-aspnetcore.md) .  A ASP.NET Core a Service Fabric kétféleképpen használható:
 
 - Vendég végrehajtható fájlként futtatva. Ez elsősorban a meglévő ASP.NET Core alkalmazások futtatására használatos Service Fabric a kód módosítása nélkül.
@@ -105,7 +105,7 @@ A [forgatókönyvek](service-fabric-testability-scenarios.md) egy vagy több mű
 * [Feladatátvételi forgatókönyv](service-fabric-testability-scenarios.md#failover-test)– a Chaos tesztelési forgatókönyv olyan verziója, amely egy adott szolgáltatási partíciót céloz meg, miközben más szolgáltatásokat nem érint.
 
 ## <a name="clusters"></a>Fürtök
-A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürtök több ezer gépre skálázhatók. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek. Minden gépen vagy virtuális gépnek van egy automatikus indítási szolgáltatása `FabricHost.exe`, amely elindul a rendszerindítás indításakor, majd két végrehajtható fájlt indít el: Fabric. exe és FabricGateway. exe. Ez a két végrehajtható fájl alkotja a csomópontot. Tesztelési helyzetekben több csomópontot is tárolhat egyetlen gépen vagy virtuális gépen a `Fabric.exe` és `FabricGateway.exe`a több példányának futtatásával.
+A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürtök több ezer gépre skálázhatók. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek. Minden gépen vagy virtuális gépnek van egy automatikus indítási szolgáltatása, `FabricHost.exe` amely elindul a rendszerindítás után, majd elindítja a két végrehajtható fájl: Fabric.exe és FabricGateway.exe. Ez a két végrehajtható fájl alkotja a csomópontot. Tesztelési helyzetekben több csomópontot is tárolhat egyetlen gépen vagy virtuális gépen a és a több példányának futtatásával `Fabric.exe` `FabricGateway.exe` .
 
 Service Fabric fürtöket Windows Server vagy Linux rendszerű virtuális vagy fizikai gépeken lehet létrehozni. Service Fabric alkalmazást bármely olyan környezetben telepítheti és futtathatja, ahol a Windows Server vagy a Linux rendszerű számítógépek összekapcsolhatók: helyszíni, Microsoft Azure vagy bármely felhőalapú szolgáltatón.
 
@@ -143,7 +143,7 @@ Időnként a Service Fabric Runtime új verziói jelennek meg. Futtasson futási
 
 A Service Fabric-fürt olyan erőforrás, amelyet Ön birtokol, de részben a Microsoft felügyeli. A Microsoft felelős a mögöttes operációs rendszer javításához és a háló frissítéseinek a fürtön való frissítéséhez. Beállíthatja, hogy a fürt automatikusan megkapja az automatikus háló frissítéseit, amikor a Microsoft új verziót szabadít fel, vagy válasszon egy támogatott háló-verziót. A háló és a konfiguráció frissítései a Azure Portalon vagy a Resource Manageren keresztül adhatók meg. További információért olvassa el [a Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md)című témakört. 
 
-Az önálló fürt olyan erőforrás, amely teljesen saját maga. A mögöttes operációs rendszer javítása és a háló frissítéseinek kezdeményezése felelős. Ha a fürt képes csatlakozni a [https://www.microsoft.com/download](https://www.microsoft.com/download)kiszolgálóhoz, beállíthatja, hogy a fürt automatikusan letöltse és kiépítse az új Service Fabric futtatókörnyezet-csomagot. Ezután kezdeményezi a frissítést. Ha a fürt nem fér [https://www.microsoft.com/download](https://www.microsoft.com/download)hozzá, manuálisan letöltheti az új futtatókörnyezet-csomagot egy internetkapcsolattal rendelkező gépről, majd kezdeményezheti a frissítést. További információért olvassa el az [önálló Service Fabric-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)című témakört.
+Az önálló fürt olyan erőforrás, amely teljesen saját maga. A mögöttes operációs rendszer javítása és a háló frissítéseinek kezdeményezése felelős. Ha a fürt képes csatlakozni a kiszolgálóhoz, beállíthatja [https://www.microsoft.com/download](https://www.microsoft.com/download) , hogy a fürt automatikusan letöltse és kiépítse az új Service Fabric futtatókörnyezet-csomagot. Ezután kezdeményezi a frissítést. Ha a fürt nem fér hozzá [https://www.microsoft.com/download](https://www.microsoft.com/download) , manuálisan letöltheti az új futtatókörnyezet-csomagot egy internetkapcsolattal rendelkező gépről, majd kezdeményezheti a frissítést. További információért olvassa el az [önálló Service Fabric-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)című témakört.
 
 ## <a name="health-monitoring"></a>Állapotfigyelés
 Service Fabric a nem kifogástalan állapotú fürtök és az alkalmazások bizonyos entitásokra (például a fürtcsomópontok és a szolgáltatási replikák) jelölésére szolgáló [állapot-modellt](service-fabric-health-introduction.md) vezet be. Az állapot-modell az állapotfigyelő jelentéseket (rendszerösszetevők és watchdogok) használja. A cél egyszerű és gyors diagnosztizálás és javítás. A szolgáltatás-íróknak szembe kell nézniük az állapottal és az [állapot-jelentéskészítés kialakításával](service-fabric-report-health.md#design-health-reporting). Minden olyan feltételt, amely hatással lehet az állapotra, jelenteni kell, különösen akkor, ha segíthet a gyökérhez közeledő problémák megjelölésében. Az állapotadatok segítségével időt és fáradságot takaríthat meg a hibakeresés és a vizsgálat során, ha a szolgáltatás üzembe helyezése az éles környezetben történik.

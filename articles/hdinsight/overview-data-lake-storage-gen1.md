@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187245"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>A HDInsight Azure Data Lake Storage Gen1 áttekintése
@@ -73,7 +73,7 @@ A Data Lake Storage Gen1 kompatibilis a Hadoop-környezet legtöbb nyílt forrá
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Data Lake Storage Gen1 fájlrendszer (adl://)
 
-A Hadoop-környezetekben az új fájlrendszer, a Azuredatalakefilesystemet (adl://) használatával férhet hozzá a Data Lake Storage Gen1hoz. A által használt `adl://` alkalmazások és szolgáltatások teljesítménye olyan módon optimalizálható, amely jelenleg nem érhető el a WebHDFS-ben. Ennek eredményeképpen a rugalmasságot úgy érheti el, hogy a javasolt adl://használatával kihasználja a legjobb teljesítményt. Vagy a meglévő kód fenntartása úgy, hogy továbbra is a WebHDFS API-t használja közvetlenül. Az Azure HDInsight teljes mértékben kihasználja a Azuredatalakefilesystemet, hogy a lehető legjobb teljesítményt nyújtsa Data Lake Storage Gen1on.
+A Hadoop-környezetekben az új fájlrendszer, a Azuredatalakefilesystemet (adl://) használatával férhet hozzá a Data Lake Storage Gen1hoz. A által használt alkalmazások és szolgáltatások teljesítménye olyan `adl://` módon optimalizálható, amely jelenleg nem érhető el a WebHDFS-ben. Ennek eredményeképpen a rugalmasságot úgy érheti el, hogy a javasolt adl://használatával kihasználja a legjobb teljesítményt. Vagy a meglévő kód fenntartása úgy, hogy továbbra is a WebHDFS API-t használja közvetlenül. Az Azure HDInsight teljes mértékben kihasználja a Azuredatalakefilesystemet, hogy a lehető legjobb teljesítményt nyújtsa Data Lake Storage Gen1on.
 
 A következő URI használatával férhet hozzá az adataihoz Data Lake Storage Gen1ban:
 

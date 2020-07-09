@@ -3,23 +3,22 @@ title: Virtuális fájlrendszer csatlakoztatása egy készlethez
 description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert egy batch-készlethez.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816029"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954672"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
 Azure Batch mostantól támogatja a Mount Cloud Storage vagy egy külső fájlrendszer használatát a Batch-készletekben lévő Windows-vagy Linux-alapú számítási csomópontokon. Ha egy számítási csomópont egy készlethez csatlakozik, a rendszer csatlakoztatja a virtuális fájlrendszert, és az adott csomóponton helyi meghajtóként kezeli őket. Olyan fájlrendszerek csatlakoztatására van lehetőség, mint például a Azure Files, az Azure Blob Storage, a hálózati fájlrendszer (NFS), beleértve a [avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)-t vagy a Common Internet File System (CIFS) rendszert.
 
-Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert a számítási csomópontok készletéhez a [.net-hez készült batch Management Library](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)használatával.
+Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert a számítási csomópontok készletéhez a [.net-hez készült batch Management Library](/dotnet/api/overview/azure/batch?view=azure-dotnet)használatával.
 
 > [!NOTE]
 > A virtuális fájlrendszer csatlakoztatása támogatott a 2019-08-19-on vagy azt követően létrehozott batch-készleteken. A 2019-08-19-et megelőzően létrehozott batch-készletek nem támogatják ezt a funkciót.
 > 
-> A számítási csomópontokon a fájlrendszerek csatlakoztatására szolgáló API-k a [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -könyvtár részét képezik.
+> A számítási csomópontokon a fájlrendszerek csatlakoztatására szolgáló API-k a [Batch .net](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -könyvtár részét képezik.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>A készlethez való csatlakoztatás előnyei
 
@@ -128,7 +127,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-A Common Internet File Systems (CIFS) olyan készlet-csomópontokhoz is csatlakoztatható, amelyek lehetővé teszik, hogy a hagyományos fájlrendszerek könnyen hozzáférhessenek Azure Batch csomópontok számára. A CIFS egy fájlmegosztási protokoll, amely egy nyílt és platformfüggetlen mechanizmust biztosít a hálózati kiszolgáló fájljainak és szolgáltatásainak igényléséhez. A CIFS a Microsoft kiszolgáló-üzenetblokk (SMB) protokolljának továbbfejlesztett verziója az internetes és az intranetes fájlmegosztás számára, és a külső fájlrendszerek csatlakoztatására szolgál a Windows-csomópontokon. További információ az SMB-ről: [fájlkiszolgáló és SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+A Common Internet File Systems (CIFS) olyan készlet-csomópontokhoz is csatlakoztatható, amelyek lehetővé teszik, hogy a hagyományos fájlrendszerek könnyen hozzáférhessenek Azure Batch csomópontok számára. A CIFS egy fájlmegosztási protokoll, amely egy nyílt és platformfüggetlen mechanizmust biztosít a hálózati kiszolgáló fájljainak és szolgáltatásainak igényléséhez. A CIFS a Microsoft kiszolgáló-üzenetblokk (SMB) protokolljának továbbfejlesztett verziója az internetes és az intranetes fájlmegosztás számára, és a külső fájlrendszerek csatlakoztatására szolgál a Windows-csomópontokon. További információ az SMB-ről: [fájlkiszolgáló és SMB](/windows-server/storage/file-server/file-server-smb-overview).
 
 ```csharp
 new PoolAddParameter
@@ -153,13 +152,13 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Csatlakoztatási hibák diagnosztizálása
 
-Ha a csatlakoztatási konfiguráció meghiúsul, a készlet számítási csomópontja sikertelen lesz, és a csomópont állapota használhatatlanná válik. A csatlakoztatási konfigurációs hibák diagnosztizálásához tekintse [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) meg a tulajdonságot a hibával kapcsolatos részletekért.
+Ha a csatlakoztatási konfiguráció meghiúsul, a készlet számítási csomópontja sikertelen lesz, és a csomópont állapota használhatatlanná válik. A csatlakoztatási konfigurációs hibák diagnosztizálásához tekintse [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) meg a tulajdonságot a hibával kapcsolatos részletekért.
 
 A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles](batch-task-output-files.md) a `*.log` fájlok feltöltéséhez. A `*.log` fájlok a helyhez tartozó fájlrendszer csatlakoztatásával kapcsolatos információkat tartalmaznak `AZ_BATCH_NODE_MOUNTS_DIR` . A csatlakoztatási naplófájlok formátuma a `<type>-<mountDirOrDrive>.log` következő: minden egyes csatlakoztatáshoz. Például egy nevű csatlakoztatási `cifs` könyvtárhoz a következő `test` nevű csatlakozási naplófájl lesz: `cifs-test.log` .
 
 ## <a name="supported-skus"></a>Támogatott SKU-i
 
-| Publisher | Ajánlat | SKU | Azure Files megosztás | Blobfuse | NFS-csatlakoztatás | CIFS-csatlakoztatás |
+| Publisher | Ajánlat | Termékváltozat | Azure Files megosztás | Blobfuse | NFS-csatlakoztatás | CIFS-csatlakoztatás |
 |---|---|---|---|---|---|---|
 | kötegelt | renderelés – centos73 | renderelési | :heavy_check_mark: <br>Megjegyzés: kompatibilis a CentOS 7,7-mel</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04 – LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -179,5 +178,5 @@ A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles]
 
 - További információ a Azure Files-megosztás Windows vagy Linux [rendszeren](../storage/files/storage-how-to-use-files-windows.md) való [Linux](../storage/files/storage-how-to-use-files-linux.md)csatlakoztatásáról.
 - Tudnivalók a [blobfuse](https://github.com/Azure/azure-storage-fuse) virtuális fájlrendszerek használatáról és csatlakoztatásáról.
-- A [hálózati fájlrendszer áttekintése](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) című témakörben MEGISMERHETI az NFS-t és annak alkalmazásait.
-- A CIFS-vel kapcsolatos további tudnivalókért tekintse meg a [Microsoft SMB protokoll és a CIFS protokoll áttekintése](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) című témakört.
+- A [hálózati fájlrendszer áttekintése](/windows-server/storage/nfs/nfs-overview) című témakörben MEGISMERHETI az NFS-t és annak alkalmazásait.
+- A CIFS-vel kapcsolatos további tudnivalókért tekintse meg a [Microsoft SMB protokoll és a CIFS protokoll áttekintése](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) című témakört.

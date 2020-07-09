@@ -4,10 +4,9 @@ description: A szolgáltatás állapotával kapcsolatos értesítések segítsé
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77653968"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
@@ -24,7 +23,7 @@ A Service Health értesítéseinek különböző osztályai vannak:
 
 Az egyes szolgáltatások állapotáról szóló értesítések a hatókörről és az erőforrások hatásáról tartalmaznak részleteket. A részletek a következők:
 
-Tulajdonság neve | Leírás
+Tulajdonság neve | Description
 -------- | -----------
 csatornák | A következő értékek egyike: **rendszergazda** vagy **művelet**.
 correlationId | Általában egy GUID formátumú karakterlánc. Az ugyanahhoz a művelethez tartozó események általában ugyanazt a correlationId használják.

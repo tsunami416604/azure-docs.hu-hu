@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807638"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
 Ez a dokumentum végigvezeti a Azure Active Directory-(Azure AD-) kapcsolat létesítési ügynökének telepítési folyamatán, és azt, hogy miként konfigurálható először a Azure Portal.
@@ -34,7 +34,8 @@ Azure AD Connect kiépítés telepítése és konfigurálása a következő lép
 Az ügynök telepítéséhez kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be arra a kiszolgálóra, amelyet vállalati rendszergazdai engedélyekkel fog használni.
-1. Nyissa meg az Azure Portalt. A bal oldalon válassza a **Azure Active Directory**lehetőséget.
+1. Jelentkezzen be a Azure Portalba, majd lépjen a **Azure Active Directoryra**.
+1. A bal oldali menüben válassza a **Azure ad Connect**lehetőséget.
 1. Válassza a **felügyelet létesítése (előzetes verzió)**  >  **minden ügynök áttekintése**elemet.
 1. Töltse le a Azure AD Connect kiépítési ügynököt a Azure Portalból.
 
@@ -45,7 +46,7 @@ Az ügynök telepítéséhez kövesse az alábbi lépéseket.
    ![Microsoft Azure AD a kiépítési ügynök csomagjának összekapcsolására szolgáló képernyő](media/how-to-install/install1.png)</br>
 
 1. A művelet befejeződése után elindul a konfigurációs varázsló. Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.
-1. A **Active Directory összekapcsolása** képernyőn válassza a **könyvtár hozzáadása**lehetőséget. Ezután jelentkezzen be Active Directory rendszergazdai fiókjával. Ez a művelet hozzáadja a helyszíni címtárat. Kattintson a **Tovább** gombra.
+1. A **Active Directory összekapcsolása** képernyőn válassza a **könyvtár hozzáadása**lehetőséget. Ezután jelentkezzen be Active Directory rendszergazdai fiókjával. Ez a művelet hozzáadja a helyszíni címtárat. Válassza a **Tovább** lehetőséget.
 
    ![Active Directory képernyő összekötése](media/how-to-install/install3.png)</br>
 

@@ -1,6 +1,6 @@
 ---
 title: SQL-adatszinkronizálás adatszinkronizálási ügynök
-description: Ismerje meg, hogyan telepítheti és futtathatja az Azure-beli SQL-adatszinkronizálás adatszinkronizálási ügynökét, hogy szinkronizálja az információkat a helyszíni SQL Server-adatbázisokkal
+description: Ismerje meg, hogyan telepítheti és futtathatja az Azure-beli SQL-adatszinkronizálás adatszinkronizálási ügynökét az adatSQL Server-adatbázisokkal való szinkronizáláshoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,17 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0026f160c247d2b0bfdd32613676b04d6f350081
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195466"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL-adatszinkronizálás adatszinkronizálási ügynök
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Az Azure-beli SQL-adatszinkronizálás adatszinkronizálási ügynökének telepítésével és konfigurálásával szinkronizálhatja a helyszíni SQL Server-adatbázisokat. További információ a SQL-adatszinkronizálásről: az [adatok szinkronizálása több Felhőbeli és helyszíni adatbázis között SQL-adatszinkronizálásokkal](sql-data-sync-data-sql-server-sql-database.md).
+Az Azure-beli SQL-adatszinkronizálás adatszinkronizálási ügynökének telepítésével és konfigurálásával SQL Server adatbázisokkal szinkronizálhatja az adatszinkronizálást. További információ a SQL-adatszinkronizálásről: az [adatok szinkronizálása több Felhőbeli és helyszíni adatbázis között SQL-adatszinkronizálásokkal](sql-data-sync-data-sql-server-sql-database.md).
 
 > [!IMPORTANT]
 > A SQL-adatszinkronizálás jelenleg **nem** támogatja az Azure SQL felügyelt példányát.
@@ -36,7 +35,7 @@ Ha az adatszinkronizálási ügynököt csendesen szeretné telepíteni a paranc
 
 - Ha nem ad meg értéket a **TARGETDIRCDotNet**, az alapértelmezett érték: `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
 
-- Ha a `LocalSystem` **SERVICEACCOUNT**értékeként adja meg, akkor SQL Server hitelesítést kell használnia, ha úgy konfigurálja az ügynököt, hogy a helyszíni SQL Serverhoz kapcsolódjon.
+- Ha a `LocalSystem` **SERVICEACCOUNT**értékeként adja meg, akkor SQL Server hitelesítést kell használnia, ha úgy konfigurálja az ügynököt, hogy az SQL Serverhoz kapcsolódjon.
 
 - Ha a **SERVICEACCOUNT**értékeként tartományi felhasználói fiókot vagy helyi felhasználói fiókot ad meg, akkor a **SERVICEPASSWORD** argumentummal is meg kell adnia a jelszót. Például: `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -44,9 +43,9 @@ Ha az adatszinkronizálási ügynököt csendesen szeretné telepíteni a paranc
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
-## <a name="sync-data-with-sql-server-on-premises"></a>Az SQL Server helyszíni szinkronizálása
+## <a name="sync-data-with-a-sql-server-database"></a>Az adatszinkronizálás SQL Server-adatbázissal
 
-Az adatszinkronizálási ügynök konfigurálásához, hogy szinkronizálja az adatszinkronizálást egy vagy több helyszíni SQL Server-adatbázissal, tekintse [meg a helyszíni SQL Server-adatbázis hozzáadása](sql-data-sync-sql-server-configure.md#add-on-prem)című témakört.
+Az adatszinkronizálási ügynök konfigurálásához, hogy egy vagy több SQL Server adatbázissal szinkronizálja az adatszinkronizálást, tekintse meg [a SQL Server-adatbázis hozzáadása](sql-data-sync-sql-server-configure.md#add-on-prem)című témakört.
 
 ## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Adatszinkronizálási ügynök – gyakori kérdések
 
@@ -194,7 +193,7 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
   1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
   1. Válassza a **küldési ügynök kulcsa**lehetőséget.
   1. A rendelkezésre álló helyen illessze be a kulcsot a vágólapról.
-  1. Kattintson az **OK** gombra.
+  1. Válassza az **OK** lehetőséget.
   1. A program lezárása.
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>Az ügyfél ügynöke nem törölhető a portálról, ha a hozzá tartozó helyszíni adatbázis nem érhető el
@@ -321,7 +320,7 @@ A SQL-adatszinkronizálásról további információt a következő cikkekben ta
 
 -   Áttekintés – az [adatszinkronizálás több Felhőbeli és helyszíni adatbázison SQL-adatszinkronizálás az Azure-ban](sql-data-sync-data-sql-server-sql-database.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
     - A PowerShell-lel
         -  [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Azure SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

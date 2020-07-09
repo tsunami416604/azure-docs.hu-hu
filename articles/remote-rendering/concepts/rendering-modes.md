@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681700"
 ---
 # <a name="rendering-modes"></a>Renderelési módok
@@ -38,7 +37,7 @@ Emellett ebben a módban az egyes részek transzparens anyagokra válthatók, va
 
 Minden egyes GPU MSAA használ az élsimítás helyi tartalmára. Azonban előfordulhat, hogy a különböző GPU-k szélei között belső alias található. Ezt a hatást a utófeldolgozó a végső rendszerkép csökkenti, de a MSAA minősége még rosszabb, mint **TileBasedComposition** módban.
 
-A MSAA összetevők a következő képen láthatók: ![MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
+A MSAA összetevők a következő képen láthatók: ![ MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
 
 Az élsimítás megfelelően működik a szobor és a függöny között, mivel mindkét rész ugyanazon a GPU-on jelenik meg. Másfelől a függöny és a fal közötti szegély néhány aliast mutat be, mivel ez a két rész különálló GPU-ból áll.
 
@@ -50,7 +49,7 @@ A mindkét üzemmód teljesítménybeli jellemzői a használati esettől függ�
 
 ## <a name="setting-the-render-mode"></a>A renderelési mód beállítása
 
-A távoli renderelési virtuális gépen használt renderelési mód a következőn `AzureSession.ConnectToRuntime` keresztül `ConnectToRuntimeParams`van megadva:.
+A távoli renderelési virtuális gépen használt renderelési mód a következőn keresztül van megadva: `AzureSession.ConnectToRuntime` `ConnectToRuntimeParams` .
 
 ```cs
 async void ExampleConnect(AzureSession session)

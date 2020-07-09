@@ -3,15 +3,15 @@ title: Azure Cosmos DB ütemezett méretezése Azure Functions időzítő haszn�
 description: Megtudhatja, hogyan méretezheti a Azure Cosmos DB átviteli sebességének változásait a PowerShell és a Azure Functions használatával.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 68ba40ea212c061fa5c8bbddc47ea0dfc6d8caa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75935167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262480"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Cosmos DB átviteli sebesség méretezése Azure Functions időzítő-trigger használatával
 
@@ -21,7 +21,7 @@ Az átviteli sebességet [Azure Resource Manager sablonokon](resource-manager-sa
 
 ## <a name="throughput-scheduler-sample-project"></a>Átviteli sebesség ütemező minta projekt
 
-A Azure Cosmos DB ütemezésének egyszerűsítése érdekében az [Azure Cosmos átviteli ütemező](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)nevű minta projektet hoztunk létre. Ez a projekt egy Azure Functions alkalmazás két időzítő eseményindítóval – "ScaleUpTrigger" és "ScaleDownTrigger". Az eseményindítók egy PowerShell-parancsfájlt futtatnak, amely minden egyes Eseményindítóban meghatározza `resources.json` az adott erőforrás átviteli sebességét. Az ScaleUpTrigger úgy van konfigurálva, hogy 8 ÓRAKOR UTC-kor fusson, és a ScaleDownTrigger 6 ÓRAKOR UTC-re van konfigurálva, és ezek az időpontok könnyen frissíthetők a `function.json` fájlon belül az egyes triggerekhez.
+A Azure Cosmos DB ütemezésének egyszerűsítése érdekében az [Azure Cosmos átviteli ütemező](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)nevű minta projektet hoztunk létre. Ez a projekt egy Azure Functions alkalmazás két időzítő eseményindítóval – "ScaleUpTrigger" és "ScaleDownTrigger". Az eseményindítók egy PowerShell-parancsfájlt futtatnak, amely minden egyes Eseményindítóban meghatározza az adott erőforrás átviteli sebességét `resources.json` . Az ScaleUpTrigger úgy van konfigurálva, hogy 8 ÓRAKOR UTC-kor fusson, és a ScaleDownTrigger 6 ÓRAKOR UTC-re van konfigurálva, és ezek az időpontok könnyen frissíthetők a `function.json` fájlon belül az egyes triggerekhez.
 
 Ezt a projektet helyileg is elvégezheti, ha módosítani szeretné a felskálázásra és a lefelé irányuló Azure Cosmos DB erőforrásokat, valamint az ütemezett futtatást. Később üzembe helyezheti azt egy Azure-előfizetésben, és biztonságossá teheti felügyelt szolgáltatás identitásával, [szerepköralapú Access Control](role-based-access-control.md) (RBAC) engedélyekkel az "Azure Cosmos db operátor" szerepkörrel az átviteli sebesség beállításához az Azure Cosmos-fiókokon.
 

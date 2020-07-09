@@ -4,12 +4,12 @@ description: Ebből a témakörből megtudhatja, hogy az Azure import/export szo
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373302"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat a Azure Backup
 
@@ -45,7 +45,7 @@ Az alábbi Azure Backup szolgáltatások vagy munkaterhelések támogatják az o
 ## <a name="prerequisites"></a>Előfeltételek
 
   > [!NOTE]
-  > A következő előfeltételek és munkafolyamatok csak a fájlok és mappák offline biztonsági mentésére vonatkoznak a [legújabb Azure Recovery Services ügynök](https://aka.ms/azurebackup_agent)használatával. A System Center DPM vagy a Azure Backup Servert használó munkaterhelések offline biztonsági mentésének végrehajtásához tekintse meg a [DPM és Azure Backup Server offline biztonsági mentési munkafolyamatát](backup-azure-backup-server-import-export-.md).
+  > A következő előfeltételek és munkafolyamatok csak a fájlok és mappák offline biztonsági mentésére vonatkoznak a [legújabb Azure Recovery Services ügynök](https://aka.ms/azurebackup_agent)használatával. A System Center DPM vagy a Azure Backup Servert használó munkaterhelések offline biztonsági mentésének végrehajtásához tekintse meg a [DPM és Azure Backup Server offline biztonsági mentési munkafolyamatát](backup-azure-backup-server-import-export.md).
 
 Az offline biztonsági mentési munkafolyamat elindítása előtt végezze el a következő előfeltételeket:
 
@@ -90,7 +90,7 @@ Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az 
 
     * **Átmeneti hely**: az az ideiglenes tárolási hely, ahová a rendszer a kezdeti biztonsági másolatot írja. Előfordulhat, hogy az előkészítési hely egy hálózati megosztáson vagy egy helyi számítógépen található. Ha a számítógép és a forrásszámítógép másolása eltérő, akkor az előkészítési hely teljes hálózati elérési útját kell megadni.
     * **Azure Resource Manager Storage-fiók**: a Resource Manager típusú Storage-fiók (általános célú v1 vagy általános célú v2) neve bármely Azure-előfizetésben.
-    * **Azure Storage-tároló**: annak az Azure Storage-fióknak a neve, amelybe a biztonsági mentési adatmennyiséget importálja, mielőtt a rendszer átmásolja a Recovery Services-tárolóba.
+    * **Azure Storage-tároló**: a cél blob Storage-tároló neve abban az Azure Storage-fiókban, ahol a biztonsági mentési adatmennyiséget importálja a rendszer a Recovery Services-tárolóba való másolás előtt.
     * **Azure-előfizetés azonosítója**: annak az Azure-előfizetésnek az azonosítója, amelyhez az Azure Storage-fiókot létrehozták.
     * **Azure importálási feladatok neve**: az az egyedi név, amellyel az Azure import/export szolgáltatás és Azure Backup nyomon követheti a lemezeken az Azure-ba továbbított adatok átvitelét.
   
@@ -135,8 +135,8 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
 
     | Paraméter | Leírás |
     | --- | --- |
-    | s:&lt;*átmeneti hely elérési útja*&gt; |Ez a kötelező bemenet arra szolgál, hogy megadja a munkafolyamatban megadott átmeneti hely elérési útját a "kapcsolat nélküli biztonsági mentés indítása" szakaszban. |
-    | p:&lt;*a PublishSettingsFile elérési útja*&gt; |Ez a választható bemenet a "kapcsolat nélküli biztonsági mentés indítása" szakaszban a munkafolyamatban megadott Azure közzétételi beállítási fájl elérési útjának megadására szolgál. |
+    | s: &lt; *átmeneti hely elérési útja*&gt; |Ez a kötelező bemenet arra szolgál, hogy megadja a munkafolyamatban megadott átmeneti hely elérési útját a "kapcsolat nélküli biztonsági mentés indítása" szakaszban. |
+    | p: &lt; *a PublishSettingsFile elérési útja*&gt; |Ez a választható bemenet a "kapcsolat nélküli biztonsági mentés indítása" szakaszban a munkafolyamatban megadott Azure közzétételi beállítási fájl elérési útjának megadására szolgál. |
 
     A parancs futtatásakor a segédprogram kéri az Azure importálási feladatoknak a kiválasztását, amely megfelel az előkészíteni kívánt meghajtóknak. Ha csak egyetlen importálási feladattípus van társítva a megadott átmeneti helyhez, a következőhöz hasonló oldal jelenik meg.
 
@@ -212,7 +212,7 @@ Az importálási feladatok sikeres befejezését követően a kezdeti biztonság
 
 A következő ütemezett biztonsági mentés időpontjában a Azure Backup növekményes biztonsági mentést hajt végre.
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A kezdeti biztonsági mentés befejezését követően biztonságosan törölheti az Azure Storage-tárolóba importált és az átmeneti helyen található biztonsági mentési adataikat.
 

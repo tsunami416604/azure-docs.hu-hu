@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523036"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
@@ -23,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan lehet valós idejű üzeneteket hitelesíteni é
 
 ## <a name="add-to-your-functions-app"></a>Hozzáadás a functions-alkalmazáshoz
 
-### <a name="functions-2x-and-higher"></a>2. x és újabb függvények
+### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 
@@ -43,7 +42,7 @@ A Signaler Azure Functions szolgáltatás konfigurálásával és használatáva
 
 ### <a name="annotations-library-java-only"></a>Jegyzetek könyvtára (csak Java)
 
-Ahhoz, hogy használni lehessen a Signaler szolgáltatás megjegyzéseit a Java-függvényekben, hozzá kell adnia egy függőséget az *Azure-functions-Java-Library-signaler* összetevőhöz (1,0-es vagy újabb verzió) a *Pom. XML* fájlhoz.
+Ahhoz, hogy használni lehessen a Signaler szolgáltatás megjegyzéseit a Java-függvényekben, hozzá kell adnia egy függőséget az *Azure-functions-Java-Library-signaler* összetevőhöz (1,0-es vagy újabb verzió) a *pom.xml* fájlhoz.
 
 ```xml
 <dependency>

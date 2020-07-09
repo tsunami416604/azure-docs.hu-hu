@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 9fd8d6428e94007002d524d9ade99f6b368b8201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70307231"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldett adatmegosztások használatának figyelése a PowerShell használatával
@@ -40,7 +39,7 @@ New-AzDataShareInvitation -ResourceGroupName $resourceGroupName -AccountName $da
 
 Ez a szkript a következő parancsokat használja: 
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Új – AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | Hozzon létre egy adatmegosztási meghívást. |
 |||

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73663167"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A Hyper-V replikálásának tesztelési eredményei másodlagos helyre
@@ -175,10 +174,10 @@ A tábla összegzi az üzemelő példányban mért teljesítmény-mérőszámoka
 | CPU |\Processor(_Total)\% Processor Time |
 | Igénybe vehető memória |\Memory\Available MB-ban |
 | IOPS |\PhysicalDisk (_Total) \ átvitel másodpercenként |
-| VIRTUÁLIS gépek olvasási (IOPS) műveletei (művelet/s) |\Hyper-V virtuális tárolóeszköz (\<VHD>) \Read művelet/mp |
-| Virtuális gép írási (IOPS) műveletei (művelet/s) |\Hyper-V virtuális tárolóeszköz (\<VHD>) \Write művelet/S |
-| Virtuális gép olvasási átviteli sebessége |\Hyper-V virtuális tárolóeszköz (VHD\<>) \Read sebessége (bájt/s) |
-| Virtuális gép írási sebessége |\Hyper-V virtuális tárolóeszköz (VHD\<>) \Write sebessége (bájt/s) |
+| VIRTUÁLIS gépek olvasási (IOPS) műveletei (művelet/s) |\Hyper-V virtuális tárolóeszköz ( \<VHD> ) \Read művelet/mp |
+| Virtuális gép írási (IOPS) műveletei (művelet/s) |\Hyper-V virtuális tárolóeszköz ( \<VHD> ) \Write művelet/S |
+| Virtuális gép olvasási átviteli sebessége |\Hyper-V virtuális tárolóeszköz ( \<VHD> ) \Read sebesség (bájt/s) |
+| Virtuális gép írási sebessége |\Hyper-V virtuális tárolóeszköz ( \<VHD> ) \Write sebesség (bájt/s) |
 
 ## <a name="next-steps"></a>További lépések
 

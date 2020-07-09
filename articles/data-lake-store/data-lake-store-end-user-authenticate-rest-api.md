@@ -3,15 +3,15 @@ title: Végfelhasználói hitelesítés – REST Data Lake Storage Gen1 – Azur
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést Azure Data Lake Storage Gen1 használatával Azure Active Directory használatával REST API
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688064"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984851"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával REST API
 > [!div class="op_single_selector"]
@@ -41,40 +41,46 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
 1. Az alkalmazáson keresztül irányítsa át a felhasználót az alábbi URL-címre:
 
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+    `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát a esetében https://localhosthasználja `https%3A%2F%2Flocalhost`a következőt:)
+   > \<REDIRECT-URI>egy URL-címben való használatra kell kódolni. Tehát a esetében https://localhost használja a `https%3A%2F%2Flocalhost` következőt:)
 
     A jelen oktatóanyagban kicserélheti a fenti URL-ben szereplő helyőrző értékeket, és beillesztheti egy webböngésző címsorába. A rendszer átirányítja az Azure bejelentkezési azonosítójával történő hitelesítéshez. Miután sikeresen bejelentkezett, a válasz megjelenik a böngésző címsorában. A válasz az alábbi formátumban jelenik meg:
 
-        http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
+    `http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>`
 
 2. Rögzítse a válaszban szereplő engedélyezési kódot. Ebben az oktatóanyagban átmásolhatja az engedélyezési kódot a webböngésző címsorába, és átadhatja a POST kérelemben a jogkivonat-végpontnak, ahogy az a következő kódrészletben látható:
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
-        -F redirect_uri=<REDIRECT-URI> \
-        -F grant_type=authorization_code \
-        -F resource=https://management.core.windows.net/ \
-        -F client_id=<APPLICATION-ID> \
-        -F code=<AUTHORIZATION-CODE>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
+    -F redirect_uri=<REDIRECT-URI> \
+    -F grant_type=authorization_code \
+    -F resource=https://management.core.windows.net/ \
+    -F client_id=<APPLICATION-ID> \
+    -F code=<AUTHORIZATION-CODE>
+    ```
 
    > [!NOTE]
-   > Ebben az esetben a \<REDIRECT-URI> kódolása nem szükséges.
+   > Ebben az esetben a \<REDIRECT-URI> szükségtelen kódolást kell végezni.
    > 
    > 
 
-3. A válasz egy JSON-objektum, amely egy hozzáférési jogkivonatot (például `"access_token": "<ACCESS_TOKEN>"`) és egy frissítési tokent (például `"refresh_token": "<REFRESH_TOKEN>"`) tartalmaz. Az alkalmazás a hozzáférési jogkivonatot használja a Azure Data Lake Storage Gen1hoz való hozzáféréshez és a frissítési tokenhez egy másik hozzáférési jogkivonat beszerzéséhez, amikor egy hozzáférési jogkivonat lejár.
+3. A válasz egy JSON-objektum, amely egy hozzáférési jogkivonatot (például `"access_token": "<ACCESS_TOKEN>"` ) és egy frissítési tokent (például `"refresh_token": "<REFRESH_TOKEN>"` ) tartalmaz. Az alkalmazás a hozzáférési jogkivonatot használja a Azure Data Lake Storage Gen1hoz való hozzáféréshez és a frissítési tokenhez egy másik hozzáférési jogkivonat beszerzéséhez, amikor egy hozzáférési jogkivonat lejár.
 
-        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```json
+    {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```
 
 4. Ha a hozzáférési jogkivonat lejár, új hozzáférési jogkivonatot kérhet a frissítési jogkivonat használatával, ahogy az alábbi kódrészletben is látható:
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-             -F grant_type=refresh_token \
-             -F resource=https://management.core.windows.net/ \
-             -F client_id=<APPLICATION-ID> \
-             -F refresh_token=<REFRESH-TOKEN>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+         -F grant_type=refresh_token \
+         -F resource=https://management.core.windows.net/ \
+         -F client_id=<APPLICATION-ID> \
+         -F refresh_token=<REFRESH-TOKEN>
+    ```
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 

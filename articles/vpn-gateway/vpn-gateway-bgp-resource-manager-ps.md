@@ -4,15 +4,14 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja a BGP-t az Azure VPN G
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6896cc268f6472b1816608067340c2c5868a2547
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984631"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>A BGP konfigurálása Azure VPN Gateway-átjárón a PowerShell használatával
 Ez a cikk bemutatja, hogyan engedélyezheti a BGP-t a telephelyek közötti helyek közötti (S2S) VPN-kapcsolaton, valamint egy VNet és VNet kapcsolaton keresztül a Resource Manager-alapú üzemi modell és a PowerShell használatával.

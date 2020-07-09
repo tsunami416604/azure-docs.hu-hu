@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587829"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073390"
 ---
 Ismerkedés a Face ügyféloldali függvénytárával a Go-ban. Az alábbi lépéseket követve telepítheti a könyvtárat, és kipróbálhatja a példákat az alapszintű feladatokhoz. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -30,66 +30,14 @@ A következőhöz való ugráshoz használja a Face Service ügyféloldali függ
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [Go](https://golang.org/dl/) legújabb verziója
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* A kulcs és a végpont beszerzése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz és a végponthoz, a nevet és a-t `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
-## <a name="set-up"></a>Beállítás
-
-### <a name="create-a-face-azure-resource"></a>Face Azure-erőforrás létrehozása 
-
-Kezdje el használni a Face szolgáltatást egy Azure-erőforrás létrehozásával. Válassza ki az Ön számára legmegfelelőbb erőforrás-típust:
-
-* [Próbaverziós erőforrás](https://azure.microsoft.com/try/cognitive-services/#decision) (nincs szükség Azure-előfizetésre): 
-    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
-    * Ez nagyszerű megoldás, ha szeretné kipróbálni a Face Service-t, de nem rendelkezik Azure-előfizetéssel.
-* Egy [Face Service-erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace):
-    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
-    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
-* [Több szolgáltatásból álló erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
-    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.
-
-### <a name="create-an-environment-variable"></a>Környezeti változó létrehozása
-
->[!NOTE]
-> Az 2019. július 1. után létrehozott, nem próbaverziós erőforrásokhoz használt végpontok az alább látható egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
-
-Ha a kulcsot és a végpontot a létrehozott erőforrás alapján hozza létre, hozzon létre két környezeti változót a hitelesítéshez:
-* `FACE_SUBSCRIPTION_KEY`– A kérések hitelesítéséhez szükséges erőforrás-kulcs.
-* `FACE_ENDPOINT`– Az erőforrás-végpont API-kérelmek küldéséhez. A következőképpen fog kinézni: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-Használja az operációs rendszerének utasításait.
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-A környezeti változó hozzáadása után indítsa újra a konzolablak ablakát.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Szerkessze a t `.bash_profile` , és adja hozzá a környezeti változót:
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-***
+## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-a-go-project-directory"></a>Go-projekt könyvtárának létrehozása
 
@@ -251,7 +199,7 @@ A következő kód több képpel rendelkező képet helyez el, és megkeresi az 
 
 ### <a name="get-a-test-image"></a>Tesztelési rendszerkép beolvasása
 
-A következő kód a projekt gyökerében található, amely egy _test-Image-person-Group. jpg_ képet keres, és betölti a program memóriájában. Ezt a lemezképet ugyanabban a tárházban találja, mint a [személyek létrehozása és betanítása csoportban](#create-and-train-a-person-group)használt rendszerképek: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
+A következő kód a projekt gyökerében jelenik meg egy rendszerképet _test-image-person-group.jpg_ és betölti a program memóriába. Ezt a lemezképet ugyanabban a tárházban találja, mint a [személyek létrehozása és betanítása csoportban](#create-and-train-a-person-group)használt rendszerképek: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -301,13 +249,13 @@ A következő kód összehasonlítja az egyes forrás-lemezképeket a célként 
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatok áttelepítéséhez
 
-A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Használhatja ezt a funkciót, ha például egy ingyenes próbaverziós előfizetéssel létrehozott egy **PersonGroup** objektumot, és most szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek szolgáltatás széles körű áttekintéséhez tekintse [meg az Arcfelismerés áttelepítését](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) ismertető cikket.
+A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Használhatja ezt a funkciót, ha például egy ingyenes előfizetéssel létrehozott egy **PersonGroup** objektumot, és most szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek szolgáltatás széles körű áttekintéséhez tekintse [meg az Arcfelismerés áttelepítését](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) ismertető cikket.
 
 Ebben a példában a [személy csoport létrehozása és betanítása](#create-and-train-a-person-group)során létrehozott **PersonGroup** telepíti át. Először hajtsa végre az adott szakaszt, vagy használjon saját Face adatszerkezet (eke) t.
 
 ### <a name="set-up-target-subscription"></a>Cél-előfizetés beállítása
 
-Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. Ezt úgy teheti meg, hogy megismétli a [beállítás](#set-up) szakasz lépéseit. 
+Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. Ezt úgy teheti meg, hogy megismétli a [beállítás](#setting-up) szakasz lépéseit. 
 
 Ezután hozza létre a következő változókat a **Main** metódus teteje közelében. Emellett új környezeti változókat is létre kell hoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcsát, végpontját és előfizetési AZONOSÍTÓját.
 

@@ -1,19 +1,14 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése az Azure-függvénynek – Event Grid'
 description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI vagy a portál használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A végponthoz egy Azure-függvény van használatban.'
-services: event-grid
-keywords: ''
-author: banisadr
-ms.author: babanisa
-ms.date: 11/15/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292155"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115094"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Gyors útmutató: egyéni események átirányítása egy Azure-függvénybe Event Grid
 
@@ -37,7 +32,7 @@ Miután telepítette a bővítményt, kattintson a Continue (folytatás) gombra,
 
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
 2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menüben, keresse meg a **Event Grid**, és válassza ki **Event Grid témákat**. 
 
     ![Event Grid témakörök kiválasztása](./media/custom-event-to-function/select-event-grid-topics.png)
@@ -54,7 +49,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
     5. Tartsa meg az alapértelmezett értéket **Event Grid sémát** az **esemény sémája** mezőhöz. 
 
        ![Témakör létrehozása lap](./media/custom-event-to-function/create-custom-topic.png)
-    6. Kattintson a **Létrehozás** gombra. 
+    6. Válassza a **Létrehozás** lehetőséget. 
 
 5. Az egyéni témakör létrehozása után láthatja a sikeres műveletről szóló értesítést. Válassza **az Ugrás az erőforrás-csoportba**lehetőséget. 
 
@@ -124,7 +119,7 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 ### <a name="azure-powershell"></a>Azure PowerShell
 A második példa a PowerShell használatával végez hasonló lépéseket.
 
-1. A Azure Portal válassza a **Cloud Shell** lehetőséget (másik lehetőség: `https://shell.azure.com/`). Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
+1. A Azure Portal válassza a **Cloud Shell** lehetőséget (másik lehetőség: `https://shell.azure.com/` ). Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
 2. Állítsa be a következő változókat. Az egyes parancsok másolását és beillesztését követően frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt:
 
     ```powershell
@@ -173,7 +168,7 @@ A második példa a PowerShell használatával végez hasonló lépéseket.
 
 ![Sikeres függvény-trigger naplója](./media/custom-event-to-function/successful-function.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 
 1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali menüben. Ha nem látja a bal oldali menüben, válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, és válassza az **erőforráscsoportok**lehetőséget. 
@@ -185,7 +180,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
     A rendszerképben látható másik erőforráscsoportot a Cloud Shell ablak hozta létre és használta. Ha később nem tervezi használni a Cloud Shell ablakot, törölje azt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

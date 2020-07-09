@@ -9,11 +9,10 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706681"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártya használatával
 
@@ -79,7 +78,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Virtuális gép létrehozása és a hálózati adapterek csatlakoztatása
-A virtuális gép létrehozásakor határozza meg a által létrehozott hálózati adaptereket `--nics`. A virtuális gép méretének kiválasztásakor is ügyelnie kell rá. A virtuális gépekhez adható hálózati adapterek teljes száma korlátozott. További információ a [Linux rendszerű virtuális gépek méreteiről](sizes.md).
+A virtuális gép létrehozásakor határozza meg a által létrehozott hálózati adaptereket `--nics` . A virtuális gép méretének kiválasztásakor is ügyelnie kell rá. A virtuális gépekhez adható hálózati adapterek teljes száma korlátozott. További információ a [Linux rendszerű virtuális gépek méreteiről](sizes.md).
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példa egy *myVM*nevű virtuális gépet hoz létre:
 
@@ -169,7 +168,7 @@ Azure Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környe
 
 További információ a [ *Másolás*használatával létrehozott több példány létrehozásáról](../../resource-group-create-multiple.md). 
 
-Az a `copyIndex()` használatával is hozzáfűzheti a számot egy erőforrás nevéhez, amely lehetővé teszi `myNic1`, `myNic2`hogy az, stb. Az alábbi példa az index értékének hozzáfűzését mutatja be:
+Az a használatával is `copyIndex()` hozzáfűzheti a számot egy erőforrás nevéhez, amely lehetővé teszi, hogy az, `myNic1` `myNic2` stb. Az alábbi példa az index értékének hozzáfűzését mutatja be:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -222,7 +221,7 @@ Másodlagos hálózati adapterről történő küldéshez manuálisan kell álla
 
 Amikor az útvonalat hozzáadja az operációs rendszerhez, az átjáró címe *1* , hogy a hálózati adapter melyik alhálózathoz tartozik. Ha például a hálózati adapter hozzá van rendelve a *10.0.2.4*, az útvonalhoz megadott átjáró *10.0.2.1*. Megadhat egy adott hálózatot az útvonal céljához, vagy megadhatja a *0.0.0.0*célhelyét, ha azt szeretné, hogy a csatoló összes forgalma áthaladjon a megadott átjárón. Az egyes alhálózatok átjáróját a virtuális hálózat kezeli.
 
-Miután hozzáadta az útvonalat egy másodlagos csatolóhoz, ellenőrizze, hogy az útvonal az útválasztási táblában van-e `route -n`a következővel:. A következő példa kimenete az útválasztási tábla, amelyben a virtuális gép két hálózati adaptere lett hozzáadva ebben a cikkben:
+Miután hozzáadta az útvonalat egy másodlagos csatolóhoz, ellenőrizze, hogy az útvonal az útválasztási táblában van-e a következővel: `route -n` . A következő példa kimenete az útválasztási tábla, amelyben a virtuális gép két hálózati adaptere lett hozzáadva ebben a cikkben:
 
 ```bash
 Kernel IP routing table

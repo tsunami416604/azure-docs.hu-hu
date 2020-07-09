@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77111769"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Azure által felügyelt identitás használata az ACR-feladatokban 
@@ -52,7 +51,7 @@ Ha úgy tervezi, hogy csak rendszerhez rendelt identitást használ, hagyja ki e
 
 Ha egy ACR-feladatot hoz létre, opcionálisan engedélyezheti a felhasználó által hozzárendelt identitást, a rendszerhez rendelt identitást vagy mindkettőt. Adja át például a `--assign-identity` paramétert az az [ACR Task Create][az-acr-task-create] parancs az Azure CLI-ben való futtatásakor.
 
-A rendszer által hozzárendelt identitás engedélyezéséhez adjon `--assign-identity` meg értéket vagy `assign-identity [system]`értéket. A következő példa egy nyilvános GitHub-tárházból hoz létre egy Linux-feladatot, `hello-world` amely létrehoz egy rendszerképet, és lehetővé teszi a rendszerhez rendelt felügyelt identitást:
+A rendszer által hozzárendelt identitás engedélyezéséhez adjon meg `--assign-identity` értéket vagy értéket `assign-identity [system]` . A következő példa egy nyilvános GitHub-tárházból hoz létre egy Linux-feladatot, amely létrehoz egy `hello-world` rendszerképet, és lehetővé teszi a rendszerhez rendelt felügyelt identitást:
 
 ```azurecli
 az acr task create \
@@ -64,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-A felhasználó által hozzárendelt identitás engedélyezéséhez adja `--assign-identity` meg az identitás erőforrás- *azonosítójának* értékét. A következő példa egy nyilvános GitHub-tárházból hoz létre egy Linux-feladatot, `hello-world` amely létrehoz egy rendszerképet, és lehetővé teszi a felhasználó által hozzárendelt felügyelt identitást:
+A felhasználó által hozzárendelt identitás engedélyezéséhez adja meg az `--assign-identity` identitás erőforrás- *azonosítójának* értékét. A következő példa egy nyilvános GitHub-tárházból hoz létre egy Linux-feladatot, amely létrehoz egy `hello-world` rendszerképet, és lehetővé teszi a felhasználó által hozzárendelt felügyelt identitást:
 
 ```azurecli
 az acr task create \
@@ -84,7 +83,7 @@ Az identitás erőforrás-AZONOSÍTÓját az az [Identity show][az-identity-show
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. adja meg az identitás engedélyeit más Azure-erőforrásokhoz való hozzáféréshez
 
-A feladat követelményeitől függően adja meg az identitás engedélyeit más Azure-erőforrások eléréséhez. Példák erre vonatkozóan:
+A feladat követelményeitől függően adja meg az identitás engedélyeit más Azure-erőforrások eléréséhez. Példák:
 
 * A felügyelt identitást hozzárendelheti egy olyan szerepkörhöz, amely lekéréses, leküldéses és lekéréses, illetve egyéb engedélyekkel rendelkezik az Azure-beli cél tároló A beállításjegyzék szerepköreinek teljes listáját itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md). 
 * Rendeljen hozzá egy szerepkört a felügyelt identitáshoz az Azure Key vaultban található titkos kódok olvasásához.
@@ -103,9 +102,9 @@ az role assignment create \
 
 ### <a name="4-optional-add-credentials-to-the-task"></a>4. (nem kötelező) hitelesítő adatok hozzáadása a feladathoz
 
-Ha a feladatnak hitelesítő adatokra van szüksége a képek más egyéni beállításjegyzékbe való lekéréséhez vagy leküldéséhez, vagy más erőforrások eléréséhez, adja hozzá a hitelesítő adatokat a feladathoz Futtassa az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] parancsot a hitelesítő adatok hozzáadásához, és `--use-identity` adja át a paramétert annak jelzésére, hogy az identitás hozzáférhet a hitelesítő adatokhoz. 
+Ha a feladatnak hitelesítő adatokra van szüksége a képek más egyéni beállításjegyzékbe való lekéréséhez vagy leküldéséhez, vagy más erőforrások eléréséhez, adja hozzá a hitelesítő adatokat a feladathoz Futtassa az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] parancsot a hitelesítő adatok hozzáadásához, és adja át a `--use-identity` paramétert annak jelzésére, hogy az identitás hozzáférhet a hitelesítő adatokhoz. 
 
-Ha például hitelesítő adatokat szeretne hozzáadni egy rendszerhez rendelt identitáshoz az Azure Container Registry *targetregistry*való hitelesítéshez, adja `use-identity [system]`meg a következőt:
+Ha például hitelesítő adatokat szeretne hozzáadni egy rendszerhez rendelt identitáshoz az Azure Container Registry *targetregistry*való hitelesítéshez, adja meg a következőt `use-identity [system]` :
 
 ```azurecli
 az acr task credential add \
@@ -115,7 +114,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Ha a felhasználó által hozzárendelt identitáshoz hitelesítő adatokat szeretne hozzáadni a beállításjegyzék *targetregistry*való hitelesítéshez `use-identity` , adja meg az identitás *ügyfél-azonosítójának* értékét. Például:
+Ha a felhasználó által hozzárendelt identitáshoz hitelesítő adatokat szeretne hozzáadni a beállításjegyzék *targetregistry*való hitelesítéshez, adja meg az `use-identity` identitás *ügyfél-azonosítójának* értékét. Például:
 
 ```azurecli
 az acr task credential add \
@@ -125,7 +124,7 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-Az identitás ügyfél-AZONOSÍTÓját az az [Identity show][az-identity-show] parancs futtatásával kérheti le. Az ügyfél-azonosító az űrlap `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`GUID azonosítója.
+Az identitás ügyfél-AZONOSÍTÓját az az [Identity show][az-identity-show] parancs futtatásával kérheti le. Az ügyfél-azonosító az űrlap GUID azonosítója `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .
 
 ### <a name="5-run-the-task"></a>5. a feladat futtatása
 

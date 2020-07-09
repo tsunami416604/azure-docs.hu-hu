@@ -3,5 +3,7 @@
 - name: Gyakori kérdések
   expanded: true
   items:
+    - name: SRE és kódolás
+      href: code.md
     - name: SRE és DevOps
       href: devops.md

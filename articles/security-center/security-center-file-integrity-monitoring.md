@@ -13,15 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628293"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritás monitorozása az Azure Security Centerben
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
+
+
+## <a name="availability"></a>Rendelkezésre állás
+
+- Kiadás állapota: **általánosan elérhető**
+- Szükséges szerepkörök: a **munkaterület tulajdonosa** engedélyezheti vagy letilthatja a FIM-t (További információ: [Azure-szerepkörök log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)). Az **olvasó** megtekintheti az eredményeket.
+- Felhők
+    - ✔ Kereskedelmi felhők
+    - ✔ US Gov felhő
+    - ✘ China gov/egyéb gov
+
 
 ## <a name="what-is-fim-in-security-center"></a>Mi az a FIM in Security Center?
 A fájlok integritásának figyelése (FIM), más néven a változás figyelése, megvizsgálja az operációs rendszer, az alkalmazás szoftvere és mások által a támadásra utaló módosításokat. A rendszer összehasonlító módszert használ annak megállapítására, hogy a fájl aktuális állapota eltér-e a fájl legutóbbi vizsgálatával. Ezt az összehasonlítást kihasználva megállapíthatja, hogy érvényes vagy gyanús módosítások történtek-e a fájlokban.
@@ -37,7 +47,7 @@ Security Center javasolja az entitások figyelését, amelyekkel egyszerűen eng
 > [!NOTE]
 > A Windows és Linux rendszerű számítógépek és virtuális gépek esetében a fájl integritás-figyelése (FIM) szolgáltatás működik, és a standard szintű Security Center érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). A FIM feltölti az adatokat a Log Analytics munkaterületre. Az adatforgalmi díjak a feltöltött adatok mennyiségétől függően érvényesek. További információkért tekintse meg a [log Analytics díjszabását](https://azure.microsoft.com/pricing/details/log-analytics/) .
 
-A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás**típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtés gyakoriságának részleteiért lásd: [change Tracking adatgyűjtési](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) adatok az Azure Change tracking.
+A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás**típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtési gyakoriság részleteivel kapcsolatban lásd az Azure Change Trackingre vonatkozó [változáskövetési adatgyűjtés részleteit](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
 > [!NOTE]
 > Ha eltávolítja a **change Tracking** -erőforrást, a Security Center a fájl sértetlenségének figyelése funkciót is letiltja.
@@ -49,21 +59,21 @@ A Security Center az alábbi, az ismert támadási minták alapján figyelt elem
 
 |**Linux-fájlok**|**Windows-fájlok**|**Windows-beállításkulcsok**|
 |:----|:----|:----|
-|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
-|/etc/*. conf|C:\Config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/*. conf|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini \Boot|
 |/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows CurrentVersion|
 |/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
 |/bin|C:\Windows\regedit.exe|Hklmsoftwaremicrosoftwindowscurrentversionexplorershell\\\\ mappák|
-|/sbin|CWindowsSystem32Userinit|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj-mappák|
-|/boot|CWindowsExplorer|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
+|/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj-mappák|
+|/boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
 |/usr/local/bin helyekre|C:\Program Files\Microsoft biztonsági Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
 |/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
 |/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
 |/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
-|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
-|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
+|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini \Boot|
 |/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows CurrentVersion|
 |/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
 |/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell mappák|
@@ -97,7 +107,7 @@ Az egyes munkaterületek esetében az alábbi információk szerepelnek:
 A következő gombok is megjelenhetnek egy munkaterülethez:
 
 - ![Engedélyezés ikon][3] Azt jelzi, hogy a FIM nincs engedélyezve a munkaterületen. A munkaterület kiválasztásával engedélyezheti a FIM-t a munkaterület alá tartozó összes gépen.
-- ![A Frissítési terv][4] ikon azt jelzi, hogy a munkaterület vagy az előfizetés nem fut a Security Center Standard szint alatt. A FIM szolgáltatás használatához az előfizetésnek standard szintűnek kell lennie.  A munkaterület kiválasztása lehetővé teszi, hogy a standard szintre frissítsen. A standard csomaggal és a frissítéssel kapcsolatos további tudnivalókért tekintse meg a következő témakört: [frissítés a Security Center Standard szintjére a fokozott biztonság](security-center-pricing.md)érdekében.
+- ![A Frissítési terv ikon ][4] azt jelzi, hogy a munkaterület vagy az előfizetés nem fut a Security Center Standard szint alatt. A FIM szolgáltatás használatához az előfizetésnek standard szintűnek kell lennie.  A munkaterület kiválasztása lehetővé teszi, hogy a standard szintre frissítsen. A standard csomaggal és a frissítéssel kapcsolatos további tudnivalókért tekintse meg a következő témakört: [frissítés a Security Center Standard szintjére a fokozott biztonság](security-center-pricing.md)érdekében.
 - Egy üres (nincs gomb) azt jelenti, hogy a FIM már engedélyezve van a munkaterületen.
 
 A **fájl integritásának figyelése**területen kiválaszthat egy munkaterületet, amely engedélyezi a FIM-t az adott munkaterülethez, megtekintheti a munkaterület fájl integritás-figyelési irányítópultját, vagy a munkaterületet a standard [szintre](security-center-pricing.md)
@@ -184,7 +194,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Új elem hozzáadása a figyeléshez][14]
 
-3. Válassza a **Hozzáadás** lehetőséget. **A hozzáadás Change Tracking** megnyílik.
+3. Válassza a **Hozzáadás** elemet. **A hozzáadás Change Tracking** megnyílik.
 
    ![Adja meg a kért adatokat][15]
 
@@ -216,7 +226,7 @@ Használjon helyettesítő karaktereket a címtárak közötti nyomkövetés egy
 -   Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
 -   Helyettesítő karakterek csak az elérési út utolsó szegmensében használhatók, például C:\folder\file vagy/etc/*. conf
 -   Ha egy környezeti változó érvénytelen elérési utat tartalmaz, az érvényesítés sikeres lesz, de az elérési út sikertelen lesz a leltár futtatásakor.
--   Az elérési út beállításakor kerülje el az általános elérési\*utakat, például a c:. * értéket, ami túl sok mappát fog áthaladni.
+-   Az elérési út beállításakor kerülje el az általános elérési utakat, például a c: \* . * értéket, ami túl sok mappát fog áthaladni.
 
 ## <a name="disable-fim"></a>FIM letiltása
 A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. A FIM letiltásával eltávolítja a Change Tracking megoldást a kiválasztott munkaterületről.

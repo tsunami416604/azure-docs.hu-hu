@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389972"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
 A Azure Automation és a PowerShell Runbookok használatával automatizált adatfrissítési műveleteket hajthat végre az Azure Analysis táblázatos modelleken.  
 
-A cikkben szereplő példa a [PowerShell SQLServer modulokat](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)használja.
-
-A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
+A cikkben szereplő példa a [SQLServer PowerShell-modult](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)használja. A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
 
 ## <a name="authentication"></a>Hitelesítés
 
-Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni.  A cikkben szereplő példa egy egyszerű szolgáltatásnév (SPN) használatával hitelesíti a Azure Analysis Services.
-
-Az egyszerű szolgáltatás létrehozásával kapcsolatos további tudnivalókért tekintse meg az [egyszerű szolgáltatásnév létrehozása Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md)című témakört.
+Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni.  A cikkben szereplő példa egy egyszerű szolgáltatásnevet (SPN) használ a Azure Analysis Services való hitelesítéshez. További információ: [egyszerű szolgáltatásnév létrehozása Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-> Az alábbi példa feltételezi, hogy a Azure Analysis Services tűzfal le van tiltva. Ha a tűzfal engedélyezve van, akkor a kérelem kezdeményezője számára engedélyezni kell a nyilvános IP-címet a tűzfalon.
+> Az alábbi példa feltételezi, hogy a Azure Analysis Services tűzfal le van tiltva. Ha engedélyezve van a tűzfal, a kérelem kezdeményezője nyilvános IP-címét is tartalmaznia kell egy tűzfalszabály számára.
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Telepítse a SqlServer-modulokat a PowerShell-galériából.
 
@@ -68,11 +64,11 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
     ![Runbook importálása](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Tallózással keresse meg a **refresh-Model. ps1** fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás**gombra.
+4. Tallózással keresse meg a **Refresh-Model.ps1** fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás**gombra.
 
     ![Runbook importálása](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. A Runbook létrehozásakor a rendszer automatikusan szerkesztési módba lép.  Kattintson a **Publish** (Közzététel) elemre.
+5. A Runbook létrehozásakor a rendszer automatikusan szerkesztési módba lép.  Kattintson a **Közzététel** lehetőségre.
 
     ![Runbook közzététele](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -105,7 +101,7 @@ Ezt a következőképpen lehet konfigurálni:
 
     ![Ütemterv konfigurálása](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Kattintson a **Létrehozás**gombra.
+3. Kattintson a **Létrehozás** lehetőségre.
 
 4. Adja meg az ütemterv paramétereit. Ezeket a rendszer minden alkalommal felhasználja, amikor a Runbook elindítják. Az **WEBHOOKDATA** paramétert üresen kell hagyni, ha egy ütemterven keresztül fut.
 

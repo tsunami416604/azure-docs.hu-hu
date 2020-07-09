@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33b55afb7796b197f7130ec9288abb01cc115651
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720095"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085650"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Az SQL Server virtuális gépen tárolt adatok megismerése az Azure rendszerben
 
@@ -55,14 +55,18 @@ A Python segítségével megismerheti az adatelemzéseket, és olyan szolgáltat
 
 A következő kapcsolati karakterlánc-formátum használható egy SQL Server-adatbázishoz való kapcsolódáshoz a Pythonból a pyodbc használatával (a kiszolgálónév, a dbname, a Felhasználónév és a jelszó lecserélése a megadott értékekkel):
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 A Pythonban található [Panda Library](https://pandas.pydata.org/) számos adatstruktúrát és adatelemzési eszközt biztosít a Python programozási funkciók adatkezeléséhez. A következő kód beolvassa a SQL Server-adatbázisból a Panda adatkeretbe visszaadott eredményeket:
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 Most már dolgozhat a pandák DataFrame, ahogyan az az Azure Blob-adatfeldolgozási folyamat során az [adatelemzési környezetben](data-blob.md)is szerepel.
 

@@ -6,24 +6,21 @@ keywords: ios leküldéses értesítések,leküldéses üzenetek,leküldéses é
 documentationcenter: xamarin
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 07/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 07417427385806e61db0d7d83624d923e92eb693
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6b3c56734261c47b17b2fc4e65555aea9004eee2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127019"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057942"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Xamarin. iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -73,13 +70,13 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
 
     ![Visual Studio – iOS-alkalmazás konfigurációja][32]
 
-4. A megoldás nézetben kattintson duplán a `Entitlements.plist` elemre, és győződjön meg arról, hogy a **leküldéses értesítések engedélyezése** jelölőnégyzet be van jelölve.
+4. A megoldás nézetben kattintson duplán a elemre, `Entitlements.plist` és győződjön meg arról, hogy a **leküldéses értesítések engedélyezése** jelölőnégyzet be van jelölve.
 
     ![Visual Studio – iOS-jogosultságok konfigurációja][33]
 
-5. Adja hozzá az Azure-üzenetkezelési csomagot. A megoldás nézetben kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás** > **NuGet-csomagok**hozzáadása lehetőséget. Keresse meg a **Xamarin.Azure.NotificationHubs.iOS** elemet, és adja hozzá a csomagot a projektjéhez.
+5. Adja hozzá az Azure-üzenetkezelési csomagot. A megoldás nézetben kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás**  >  **NuGet-csomagok**hozzáadása lehetőséget. Keresse meg a **Xamarin.Azure.NotificationHubs.iOS** elemet, és adja hozzá a csomagot a projektjéhez.
 
-6. Vegyen fel egy új fájlt az osztályba, `Constants.cs` nevezze el, és adja hozzá a következő változókat, és cserélje le `hubname` a karakterlánc `DefaultListenSharedAccessSignature` -literál helyőrzőket a és a korábban feljegyzett értékre.
+6. Vegyen fel egy új fájlt az osztályba, nevezze el, `Constants.cs` és adja hozzá a következő változókat, és cserélje le a karakterlánc-literál helyőrzőket a `hubname` és a `DefaultListenSharedAccessSignature` korábban feljegyzett értékre.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -87,20 +84,20 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. `AppDelegate.cs`A alkalmazásban adja hozzá a következő using utasítást:
+7. A alkalmazásban `AppDelegate.cs` adja hozzá a következő using utasítást:
 
     ```csharp
     using WindowsAzure.Messaging;
     using UserNotifications
     ```
 
-8. A `SBNotificationHub`példányának deklarálása:
+8. A példányának deklarálása `SBNotificationHub` :
 
     ```csharp
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. `AppDelegate.cs`A (z `FinishedLaunching()` ) verzióban frissítse a következő kódot:
+9. A (z) verzióban `AppDelegate.cs` frissítse a `FinishedLaunching()` következő kódot:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -109,10 +106,8 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
         {
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
                                                                     (granted, error) =>
-            {
-                if (granted)
                     InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
-            });
+        }
         } else if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
             var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
                     UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
@@ -129,7 +124,7 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
     }
     ```
 
-10. A `AppDelegate.cs`alkalmazásban felülbírálja a `RegisteredForRemoteNotifications()` metódust:
+10. A alkalmazásban `AppDelegate.cs` felülbírálja a `RegisteredForRemoteNotifications()` metódust:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -152,7 +147,7 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
     }
     ```
 
-11. A `AppDelegate.cs`alkalmazásban felülbírálja a `ReceivedRemoteNotification()` metódust:
+11. A alkalmazásban `AppDelegate.cs` felülbírálja a `ReceivedRemoteNotification()` metódust:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -161,7 +156,7 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
     }
     ```
 
-12. A `AppDelegate.cs`alkalmazásban hozza `ProcessNotification()` létre a metódust:
+12. A alkalmazásban `AppDelegate.cs` hozza létre a `ProcessNotification()` metódust:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -191,8 +186,9 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
                 //Manually show an alert
                 if (!string.IsNullOrEmpty(alert))
                 {
-                    UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-                    avAlert.Show();
+                    var myAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
+                    myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
                 }
             }
         }
@@ -200,7 +196,7 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
     ```
 
     > [!NOTE]
-    > A felülbírálást `FailedToRegisterForRemoteNotifications()` úgy is megadhatja, hogy olyan helyzeteket kezeljen, mint például a nem hálózati kapcsolatok. Ez különösen fontos, ha a felhasználók offline módban is elindíthatják az alkalmazást (például repülőgép üzemmódban), és kezelni szeretné az alkalmazással kapcsolatos egyedi leküldéses üzenetküldési forgatókönyveket.
+    > A felülbírálást úgy is megadhatja `FailedToRegisterForRemoteNotifications()` , hogy olyan helyzeteket kezeljen, mint például a nem hálózati kapcsolatok. Ez különösen fontos, ha a felhasználók offline módban is elindíthatják az alkalmazást (például repülőgép üzemmódban), és kezelni szeretné az alkalmazással kapcsolatos egyedi leküldéses üzenetküldési forgatókönyveket.
 
 13. Futtassa az alkalmazást az eszközön.
 
@@ -238,4 +234,4 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

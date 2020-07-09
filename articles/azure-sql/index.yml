@@ -1,0 +1,183 @@
+### YamlMime:Landing
+title: Azure SQL-dokumentáció
+summary: 'Átnézheti a felhőalapú SQL Server-adatbázismotorok Azure SQL-termékcsaládjába tartozó termékek dokumentációját: Ilyen termék az Azure-beli virtuális gépen futó Azure SQL Database, felügyelt Azure SQL-példány és SQL Server. '
+metadata:
+  title: Azure SQL-dokumentáció
+  description: Az Azure SQL felhőalapú SQL Server-adatbázismotorok termékcsaládja. Ide tartozik a teljes körűen felügyelt adatbázis, az Azure SQL Database; egy teljes körűen felügyelt példány, a felügyelt Azure SQL-példány; és az Azure-beli virtuális gépre telepített SQL Server.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 10/30/2019
+  ms.openlocfilehash: b069cd8a027d5652ae68bbbbf21e03434daf1443
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85318573"
+landingContent:
+- title: Azure SQL Database
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Újdonságok
+      url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: Mi az SQL Database?
+      url: database/sql-database-paas-overview.md
+    - text: Mik azok a rugalmas készletek?
+      url: database/elastic-pool-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL Database létrehozása
+      url: database/single-database-create-quickstart.md
+    - text: Tűzfal konfigurálása
+      url: database/firewall-create-server-level-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Migrálás az SQL Serverről
+      url: database/migrate-to-database-from-sql-server.md
+    - text: Magas szintű biztonság
+      url: database/security-overview.md
+    - text: Az üzletmenet folytonossága
+      url: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: Monitorozás és finomhangolás
+      url: database/monitor-tune-overview.md
+    - text: A T-SQL és az SQL Server közötti eltérések
+      url: database/transact-sql-tsql-differences-sql-server.md
+- title: Felügyelt Azure SQL-példány
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Újdonságok
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: Mi az a felügyelt SQL-példány?
+      url: managed-instance/sql-managed-instance-paas-overview.md
+    - text: Mik azok a példánykészletek?
+      url: managed-instance/instance-pools-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Felügyelt SQL-példány létrehozása
+      url: managed-instance/instance-create-quickstart.md
+    - text: A csatlakoztatni kívánt virtuális gép konfigurálása
+      url: managed-instance/connect-vm-instance-configure.md
+    - text: Mintaadatbázis visszaállítása
+      url: managed-instance/restore-sample-database-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Migrálás az SQL Serverről
+      url: managed-instance/migrate-to-instance-from-sql-server.md
+    - text: Magas szintű biztonság
+      url: database/security-overview.md
+    - text: Az üzletmenet folytonossága
+      url: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: Monitorozás és finomhangolás
+      url: database/monitor-tune-overview.md
+    - text: A T-SQL és az SQL Server közötti eltérések
+      url: managed-instance/transact-sql-tsql-differences-sql-server.md
+- title: Azure virtuális gépen futó SQL Server
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Újdonságok
+      url: virtual-machines/windows/doc-changes-updates-release-notes.md
+    - text: Mit takar a Windows rendszerű virtuális gépeken futó SQL Server?
+      url: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: Mit takar a Linux rendszerű virtuális gépeken futó SQL Server?
+      url: virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL létrehozása Azure-beli virtuális gépen (Windows)
+      url: virtual-machines/windows/sql-vm-create-portal-quickstart.md
+    - text: SQL létrehozása Azure-beli virtuális gépen (Linux)
+      url: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Migrálás az SQL Serverről
+      url: virtual-machines/windows/migrate-to-vm-from-sql-server.md
+    - text: Biztonsági szempontok
+      url: virtual-machines/windows/security-considerations-best-practices.md
+    - text: Magas rendelkezésre állás és vészhelyreállítás
+      url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: Teljesítményre vonatkozó irányelvek
+      url: virtual-machines/windows/performance-guidelines-best-practices.md
+- title: Csatlakozás és lekérdezés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Áttekintés
+      url: database/connect-query-content-reference-guide.md
+    - text: SQL Server Management Studio (SSMS)
+      url: database/connect-query-ssms.md
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/quickstart-sql-database?toc=%2Fazure%2Fazure-sql%2Ftoc.json
+    - text: Azure Portal
+      url: database/connect-query-portal.md
+    - text: Visual Studio (.NET)
+      url: database/connect-query-dotnet-visual-studio.md
+    - text: Visual Studio Code
+      url: database/connect-query-vscode.md
+    - text: .NET Core
+      url: database/connect-query-dotnet-core.md
+    - text: Python
+      url: database/connect-query-python.md
+- title: Fejlesztés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Alkalmazásfejlesztés
+      url: database/develop-overview.md
+    - text: Vészhelyreállítási alkalmazásfejlesztés
+      url: database/designing-cloud-solutions-for-disaster-recovery.md
+    - text: A működés közbeni frissítések kezelése (SQL DB)
+      url: database/manage-application-rolling-upgrade.md
+    - text: Fejlesztési stratégiák (SQL VM)
+      url: virtual-machines/windows/application-patterns-development-strategies.md
+    - text: SaaS-adatbázis bérlői mintázatai
+      url: database/saas-tenancy-app-design-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az első adatbázis megtervezése (SSMS)
+      url: database/design-first-database-tutorial.md
+    - text: Az első adatbázis megtervezése (C#)
+      url: database/design-first-database-csharp-tutorial.md
+- title: Referencia
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Oktatási célú SQL-erőforrások
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI-minták
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell-példák
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM-sablonminták
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: Migrálási útmutató
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/

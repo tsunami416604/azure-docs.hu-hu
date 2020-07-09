@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74007929"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481391"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Mi az Azure Active Directory-jelentés?
 
@@ -81,7 +81,7 @@ A [naplók jelentés](concept-audit-logs.md) a rendszertevékenységek rekordjai
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Milyen Azure AD-licencre van szükség a naplójelentéshez való hozzáféréshez?  
 
-A naplójelentés olyan szolgáltatásokhoz érhető el, amelyekhez licenccel rendelkezik. Ha rendelkezik licenccel egy adott szolgáltatáshoz, annak naplóinformációihoz is hozzáfér. További részletek: [Azure Active Directory szolgáltatások és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+A naplójelentés olyan szolgáltatásokhoz érhető el, amelyekhez licenccel rendelkezik. Ha rendelkezik licenccel egy adott szolgáltatáshoz, annak naplóinformációihoz is hozzáfér. A [Azure Active Directory díjszabási oldalán](https://azure.microsoft.com/pricing/details/active-directory/)megtekintheti a deatiled funkcióinak összehasonlítását a [különböző típusú licencek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) esetében. További részletek: [Azure Active Directory szolgáltatások és képességek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Bejelentkezések jelentés
 

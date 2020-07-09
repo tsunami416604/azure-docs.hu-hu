@@ -1,25 +1,13 @@
 ---
-title: Azure Storage-várólisták és Service Bus-várólisták összehasonlítása
+title: Azure Storage-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 description: Elemzi az Azure által kínált két típusú várólista közötti különbségeket és hasonlóságokat.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 09/04/2019
-ms.author: aschhab
-ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337646"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure jelenleg a következő két típusú várólista közötti különbségeket és hasonlóságokat elemzi: Storage Queues és Service Bus Queues. Ezen információk használatával összehasonlíthatja és megtekintheti a megfelelő technológiákat, és megtudhatja, hogy melyik megoldás felel meg legjobban az igényeinek.
@@ -52,7 +40,7 @@ Megoldás-építészként/fejlesztőként érdemes **megfontolni Service Bus vá
 * Azt szeretné, hogy az alkalmazás párhuzamos, hosszan futó adatfolyamként dolgozza fel az üzeneteket (az üzenetek az üzenetben található [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) -tulajdonsággal vannak társítva). Ebben a modellben a felhasználó alkalmazás minden csomópontja verseng a streamek számára, az üzenetek helyett. Ha egy adatfolyamot egy felhasználó csomóponthoz adnak, a csomópont a tranzakciók használatával megvizsgálhatja az alkalmazás-adatfolyam állapotát.
 * A megoldás tranzakciós viselkedést és atomi kezelést igényel, ha több üzenetet küld vagy fogad egy várólistából.
 * Az alkalmazás kezeli az 64 KB-nál nagyobb méretű üzeneteket, de a 256 KB-os korlátot valószínűleg nem fogja megközelíteni.
-* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információkért tekintse át a következő cikkeket:
+* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információért tekintse át a következő cikkeket:
     - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)
     - [Hitelesítés egy alkalmazásból](authenticate-application.md)
 * Az üzenetsor mérete nem nő 80 GB-nál nagyobbra.
@@ -67,7 +55,7 @@ A következő szakaszokban szereplő táblázatok a várólista-funkciók logika
 ## <a name="foundational-capabilities"></a>Alapvető képességek
 Ez a szakasz összehasonlítja a tárolási várólisták és a Service Bus várólisták által biztosított alapvető üzenetsor-kezelő képességeket.
 
-| Összehasonlítási feltételek | Tárolási várólisták | Service Bus-üzenetsorok |
+| Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Megrendelés jótállása |**Nem** <br/><br>További információkért tekintse meg a "További információ" című szakasz első megjegyzését.</br> |**Igen – elsőként elsőként ki (FIFO)**<br/><br>(üzenetküldési munkamenetek használatával) |
 | Kézbesítési garancia |**Legalább egyszer** |**Legalább egyszeri** (PeekLock fogadási mód használata) – Ez az alapértelmezett beállítás. <br/><br/>**Legfeljebb egyszeri** (ReceiveAndDelete fogadási mód használata) <br/> <br/> További információ a különböző [fogadási módokról](service-bus-queues-topics-subscriptions.md#receive-modes)  |
@@ -99,7 +87,7 @@ Ez a szakasz összehasonlítja a tárolási várólisták és a Service Bus vár
 ## <a name="advanced-capabilities"></a>Speciális képességek
 Ez a szakasz a tárolási várólisták és a Service Bus várólisták speciális képességeit hasonlítja össze.
 
-| Összehasonlítási feltételek | Tárolási várólisták | Service Bus-üzenetsorok |
+| Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Ütemezett kézbesítés |**Igen** |**Igen** |
 | Automatikus kézbesítetlen levelek |**Nem** |**Igen** |
@@ -130,12 +118,12 @@ Ez a szakasz a tárolási várólisták és a Service Bus várólisták speciál
 ## <a name="capacity-and-quotas"></a>Kapacitás és kvóták
 Ez a szakasz a tárolási várólistákat és a Service Bus várólistákat a lehetséges [kapacitás és kvóták](service-bus-quotas.md) szempontjából hasonlítja össze.
 
-| Összehasonlítási feltételek | Tárolási várólisták | Service Bus-üzenetsorok |
+| Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Várólista maximális mérete |**500 TB**<br/><br/>( [egyetlen Storage-fiók kapacitására](../storage/common/storage-introduction.md#queue-storage)korlátozódik) |**1 GB – 80 GB**<br/><br/>(az üzenetsor létrehozásával és a [particionálás engedélyezésével](service-bus-partitioning.md) van meghatározva – lásd a "További információk" szakaszt) |
 | Üzenetek maximális mérete |**64 KB**<br/><br/>(48 KB **Base64** kódolás használatakor)<br/><br/>Az Azure a várólisták és a Blobok kombinálásával is támogatja a nagyméretű üzeneteket, ekkor akár 200 GB-ot is sorba helyezni egyetlen elemhez. |**256 kb** vagy **1 MB**<br/><br/>(beleértve a fejlécet és a törzset is, a fejléc maximális mérete: 64 KB).<br/><br/>A [szolgáltatási szinttől](service-bus-premium-messaging.md)függ. |
 | Üzenetek maximális élettartama (TTL) |**Infinite** (az API-Version 2017-07-27-es verziótól kezdve) |**TimeSpan. max** |
-| Várólisták maximális száma |**Korlátlan** |**10,000**<br/><br/>(szolgáltatási névtér esetében) |
+| Várólisták maximális száma |**Korlátlan** |**10 000**<br/><br/>(szolgáltatási névtér esetében) |
 | Egyidejű ügyfelek maximális száma |**Korlátlan** |**Korlátlan**<br/><br/>(100 az egyidejű kapcsolati korlát csak a TCP protokoll alapú kommunikációra vonatkozik) |
 
 ### <a name="additional-information"></a>További információ
@@ -149,7 +137,7 @@ Ez a szakasz a tárolási várólistákat és a Service Bus várólistákat a le
 ## <a name="management-and-operations"></a>Felügyelet és műveletek
 Ez a szakasz összehasonlítja a tárolási várólisták és Service Bus várólisták által biztosított felügyeleti szolgáltatásokat.
 
-| Összehasonlítási feltételek | Tárolási várólisták | Service Bus-üzenetsorok |
+| Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Felügyeleti protokoll |**REST HTTP/HTTPS-n keresztül** |**REST HTTPS-kapcsolaton keresztül** |
 | Futásidejű protokoll |**REST HTTP/HTTPS-n keresztül** |**REST HTTPS-kapcsolaton keresztül**<br/><br/>**AMQP 1,0 standard (TCP TLS-sel)** |
@@ -173,7 +161,7 @@ Ez a szakasz összehasonlítja a tárolási várólisták és Service Bus váró
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 Ez a szakasz a tárolási várólisták és Service Bus várólisták által támogatott hitelesítési és engedélyezési funkciókat ismerteti.
 
-| Összehasonlítási feltételek | Tárolási várólisták | Service Bus-üzenetsorok |
+| Összehasonlítási feltételek | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Hitelesítés |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
 | Biztonsági modell |Delegált hozzáférés SAS-tokeneken keresztül. |SAS |

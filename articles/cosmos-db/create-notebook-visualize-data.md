@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743579"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961098"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
 
@@ -30,7 +30,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
 1. Lépjen a **jegyzetfüzetek** lapra, válassza a `…` **saját jegyzetfüzetek** lehetőséget, majd hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
 
-   ![Új jegyzetfüzet létrehozása](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása":::
 
 1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
 
@@ -49,7 +49,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
    Cella futtatásához válassza ki `Shift + Enter` vagy válassza ki a cellát, majd válassza az **aktív cella futtatása** lehetőséget az adatkezelő navigációs sávján.
 
-   ![Az aktív cella futtatása](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Az aktív cella futtatása":::
 
    Az adatbázis és a tároló a jelenlegi Azure Cosmos-fiókban jön létre. A tároló 400 RU/s-vel van kiépítve. Az adatbázis és a tároló létrehozása után a következő kimenet jelenik meg. 
 
@@ -60,7 +60,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
    Emellett frissítheti az **adatlapot,** és megtekintheti az újonnan létrehozott erőforrásokat:
 
-   ![Az új tároló megjelenítéséhez frissítse az adatlapot](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Az új tároló megjelenítéséhez frissítse az adatlapot":::
 
 1. A következő lépésként importálni fogja a minta kiskereskedelmi adattárat az Azure Cosmos-tárolóba. Itt látható a kiskereskedelmi adatokból származó elem formátuma:
 
@@ -135,7 +135,7 @@ Egy új jegyzetfüzet-cellában futtassa a következő kódot a kimenet első 10
 df_cosmos.head(10)
 ```
 
-![Lekérdezés futtatása az első 10 elem lekéréséhez](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Lekérdezés futtatása az első 10 elem lekéréséhez":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Lekérdezések futtatása és az adataik elemzése
 
@@ -148,7 +148,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    display(df_revenue.head(5))
    ```
 
-   ![Értékesítési bevétel teljes kimenete](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Értékesítési bevétel teljes kimenete":::
 
 * **Query2:** Az öt legfontosabb megvásárolt elem listájának lekéréséhez nyisson meg egy új jegyzetfüzet-cellát, és futtassa a következő kódot:
 
@@ -159,7 +159,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Az öt legfontosabb megvásárolt elem](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Az öt legfontosabb megvásárolt elem":::
 
 ## <a name="visualize-your-data"></a>Adatok vizualizációja  
 
@@ -235,7 +235,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat és régiókat jelölik.
 
-   ![Országok/régiók bevételi Térkép vizualizációja](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Országok/régiók bevételi Térkép vizualizációja":::
 
 1. Lássuk egy másik esetet az adatvizualizációhoz. A WebsiteData-tároló olyan felhasználókat tartalmaz, akik megtekintett egy tételt, hozzáadták őket a kosárhoz, és megvásárolták az adott tételt. Nézzük meg a megvásárolt elemek konverziós arányát. Futtassa az alábbi kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
 
@@ -286,7 +286,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    show(p)
    ```
 
-   ![Vásárlási konverziós arány megjelenítése](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Vásárlási konverziós arány megjelenítése":::
 
 ## <a name="next-steps"></a>További lépések
 

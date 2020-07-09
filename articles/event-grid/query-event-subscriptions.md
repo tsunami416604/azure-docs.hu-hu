@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid-előfizetések lekérdezése
 description: Ez a cikk az Azure-előfizetésben található Event Grid-előfizetések listázását ismerteti. Az előfizetés típusától függően eltérő paramétereket kell megadnia.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721540"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120449"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid-előfizetések lekérdezése 
 
@@ -158,7 +154,7 @@ $resourceid = (Get-AzResource -Name mystorage -ResourceGroupName myResourceGroup
 Get-AzEventGridSubscription -ResourceId $resourceid
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 63e00f3ce971e2c21e684d743429ee1b09497393
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 268295ce86a9323a1f7ae16bbfcbd4e78367c3a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203622"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>SAML-identitás szolgáltatójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -66,13 +66,13 @@ Az SAML-válasz kiállításának titkosításához az identitás-szolgáltató 
 Az SAML-válasz kijelentésének titkosítása:
 
 1. Töltsön fel egy érvényes X509-tanúsítványt a titkos kulccsal (. pfx fájl) a Azure AD B2C Policy Key Store-ba.
-2. Vegyen fel egy **CryptographicKey** elemet a technikai `SamlAssertionDecryption` profil **CryptographicKeys** gyűjteményéhez tartozó azonosítóval. Állítsa a **StorageReferenceId** az 1. lépésben létrehozott házirend-kulcs nevére.
-3. Állítsa be a technikai profil **WantsEncryptedAssertions** metaadatainak WantsEncryptedAssertions `true`a következőre:.
+2. Vegyen fel egy **CryptographicKey** elemet a `SamlAssertionDecryption` technikai profil **CryptographicKeys** gyűjteményéhez tartozó azonosítóval. Állítsa a **StorageReferenceId** az 1. lépésben létrehozott házirend-kulcs nevére.
+3. Állítsa be a technikai profil metaadatainak **WantsEncryptedAssertions** a következőre: `true` .
 4. Frissítse az identitás-szolgáltatót az új Azure AD B2C technikai profil metaadataival. Látnia kell a **leírót** a **use** tulajdonsággal, amely `encryption` a tanúsítvány nyilvános kulcsát tartalmazza.
 
 A következő példa a metaadatok Azure AD B2C technikai profil titkosítási szakaszát mutatja be:
 
-```XML
+```xml
 <KeyDescriptor use="encryption">
   <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
     <X509Data>
@@ -82,22 +82,22 @@ A következő példa a metaadatok Azure AD B2C technikai profil titkosítási sz
 </KeyDescriptor>
 ```
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
-A protokoll elem **Name** attribútumát be kell állítani `SAML2`.
+A protokoll elem **Name** attribútumát be kell állítani `SAML2` .
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem tartalmazza a SAML-identitás szolgáltatója által visszaadott jogcímek `AttributeStatement` listáját a szakasz alatt. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét az identitás-szolgáltatóban definiált névre. Olyan jogcímeket is megadhat, amelyeket nem ad vissza az identitás-szolgáltató, ha `DefaultValue` beállítja az attribútumot.
+A **OutputClaims** elem tartalmazza a SAML-identitás szolgáltatója által visszaadott jogcímek listáját a `AttributeStatement` szakasz alatt. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét az identitás-szolgáltatóban definiált névre. Olyan jogcímeket is megadhat, amelyeket nem ad vissza az identitás-szolgáltató, ha beállítja az `DefaultValue` attribútumot.
 
 ### <a name="subject-name-output-claim"></a>Tulajdonos neve kimeneti jogcím
 
-Ha **az SAML** -állítást normalizált jogcímként **NameId** szeretné olvasni, állítsa a jogcím **PartnerClaimType** az `SPNameQualifier` attribútum értékére. Ha az `SPNameQualifier`attribútum nem jelenik meg, állítsa a jogcím **PartnerClaimType** értéket az `NameQualifier` attribútum értékére. 
+Ha **az SAML** -állítást normalizált jogcímként **NameId** szeretné olvasni, állítsa a jogcím **PartnerClaimType** az attribútum értékére `SPNameQualifier` . Ha az `SPNameQualifier` attribútum nem jelenik meg, állítsa a jogcím **PartnerClaimType** értéket az attribútum értékére `NameQualifier` . 
 
 
 SAML-állítás: 
 
-```XML
+```xml
 <saml:Subject>
   <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
     <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
@@ -109,18 +109,18 @@ SAML-állítás:
 
 Kimeneti jogcím:
 
-```XML
+```xml
 <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
 ```
 
-Ha mindkettő `SPNameQualifier` vagy `NameQualifier` attribútumok nem JELENnek meg az SAML-állításban, állítsa be a `assertionSubjectName`jogcím **PartnerClaimType** . Győződjön meg arról, hogy a **NameId** az érvényesítési XML első értéke. Ha egynél több kijelentést határoz meg, Azure AD B2C kiválasztja a tárgy értékét az utolsó állításból.
+Ha mindkettő `SPNameQualifier` vagy `NameQualifier` attribútumok nem jelennek meg az SAML-állításban, állítsa be a jogcím **PartnerClaimType** `assertionSubjectName` . Győződjön meg arról, hogy a **NameId** az érvényesítési XML első értéke. Ha egynél több kijelentést határoz meg, Azure AD B2C kiválasztja a tárgy értékét az utolsó állításból.
 
 Az alábbi példa egy SAML-identitás szolgáltató által visszaadott jogcímeket mutatja be:
 
 - A **issuerUserId** jogcím a **assertionSubjectName** jogcímhez van rendelve.
 - Az **first_name** jogcím a **givenName** jogcímhez van rendelve.
 - A **last_name** jogcím a **vezetéknév** jogcímere van leképezve.
-- A **DisplayName** jogcím név leképezése nélkül.
+- A **DisplayName** jogcím a **Name** jogcímre van leképezve.
 - A név leképezése nélküli **e-mail-** jogcím.
 
 A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is visszaadja:
@@ -146,19 +146,19 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| PartnerEntity | Igen | Az SAML-identitás szolgáltatójának metaadatait tartalmazó URL-cím. Másolja az Identity Provider metaadatait, és vegye fel azt a CDATA elembe.`<![CDATA[Your IDP metadata]]>` |
-| WantsSignedRequests | Nem | Azt jelzi, hogy a technikai profil megköveteli-e az összes kimenő hitelesítési kérelem aláírását. Lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha a értékre van állítva `true`, a **SamlMessageSigning** titkosítási kulcsot meg kell adni, és az összes kimenő hitelesítési kérelem alá van írva. Ha a érték értéke `false`, a **SigAlg** és az **aláírás** paraméterei (lekérdezési karakterlánc vagy post paraméter) ki vannak hagyva a kérelemből. Ez a metaadatok a metaadatok **AuthnRequestsSigned** attribútumát is szabályozza, amely a Azure ad B2C az identitás-szolgáltatóval megosztott technikai profil metaadataiban található. Azure AD B2C nem írja alá a kérelmet, ha a technikai profil metaadatainak **WantsSignedRequests** értéke értékre van állítva `false` , és az Identity Provider metaadatainak **WantAuthnRequestsSigned** értéke `false` vagy nincs megadva. |
-| XmlSignatureAlgorithm | Nem | Az a módszer, amelyet a Azure AD B2C az SAML-kérelem aláírására használ. Ez a metaadatok az SAML-kérelemben szereplő **SigAlg** paraméter (lekérdezési karakterlánc vagy post paraméter) értékét vezérlik. Lehetséges értékek: `Sha256`, `Sha384` `Sha512`,, vagy `Sha1`. Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. |
-| WantsSignedAssertions | Nem | Azt jelzi, hogy a technikai profilhoz szükséges-e az összes bejövő érvényesítés aláírása. Lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha a értékre van állítva `true`, a rendszer az identitás `saml:Assertion` -szolgáltató által az Azure ad B2C számára eljuttatott összes érvényesítési szakaszt alá kell írni. Ha a érték értéke `false`, az identitás-szolgáltató nem írja alá az állításokat, de még ha igen, Azure ad B2C nem ellenőrzi az aláírást. Ez a metaadatok a metaadatok jelző **WantsAssertionsSigned**is szabályozzák, amely az identitás-szolgáltatóval megosztott Azure ad B2C technikai profil metaadatainak kimenete. Ha letiltja a kijelentések érvényesítését, érdemes lehet letiltani a válasz aláírásának érvényesítését is (További információ: **ResponsesSigned**). |
-| ResponsesSigned | Nem | Lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha a érték értéke `false`, akkor az identitás-szolgáltató nem írja alá az SAML-választ, de még ha igen, Azure ad B2C nem ellenőrzi az aláírást. Ha a érték értéke `true`, akkor a rendszer aláírja az Identitáskezelő által az Azure ad B2C számára küldött SAML-választ, és érvényesíteni kell. Ha letiltja az SAML-válaszok érvényesítését, érdemes lehet letiltani az érvényesítési aláírás érvényességét (További információ: **WantsSignedAssertions**). |
-| WantsEncryptedAssertions | Nem | Azt jelzi, hogy a technikai profil minden bejövő állítását titkosítani kíván-e. Lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `false`. Ha a érték értéke `true`, akkor az Identitáskezelő által az Azure ad B2Cnak eljuttatott érvényesítéseket alá kell írni, és meg kell adni a **SamlAssertionDecryption** titkosítási kulcsát. Ha a érték értéke `true`, akkor a Azure ad B2C technikai profil metaadatai tartalmazzák a **titkosítási** szakaszt. Az identitás-szolgáltató beolvassa a metaadatokat, és titkosítja az SAML-válaszok érvényesítését a Azure AD B2C technikai profil metaadataiban megadott nyilvános kulccsal. Ha engedélyezi a kijelentések titkosítását, előfordulhat, hogy le kell tiltania a válasz aláírásának érvényesítését (további információért lásd: **ResponsesSigned**). |
-| IdpInitiatedProfileEnabled | Nem | Azt jelzi, hogy engedélyezve van-e az egyszeri bejelentkezés munkamenet-profilja, amelyet egy SAML identitás-szolgáltatói profil kezdeményezett. Lehetséges értékek: `true` vagy `false`. A mező alapértelmezett értéke: `false`. Az identitás-szolgáltató által kezdeményezett folyamat során a rendszer külsőleg hitelesíti a felhasználót, és a rendszer kéretlen választ küld Azure AD B2Cra, amely ezután felhasználja a tokent, végrehajtja az előkészítési lépéseket, majd választ küld a függő entitás alkalmazásnak. |
-| NameIdPolicyFormat | Nem | Meghatározza a kért tárgyat képviselő név azonosítójának korlátozásait. Ha nincs megadva, a rendszer a kért tárgyhoz tartozó személyazonossági szolgáltató által támogatott bármely típusú azonosítót használhatja. Például:  `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. A **NameIdPolicyFormat** használható a **NameIdPolicyAllowCreate**. Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt arról, hogy mely név-azonosító házirendeket támogatja a rendszer. |
-| NameIdPolicyAllowCreate | Nem | A **NameIdPolicyFormat**használatakor a `AllowCreate` **NameIDPolicy**tulajdonságot is megadhatja. A metaadatok értéke `true` vagy `false` annak jelzése, hogy az identitás-szolgáltató jogosult-e új fiókot létrehozni a bejelentkezési folyamat során. Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt ennek elvégzéséhez. |
-| AuthenticationRequestExtensions | Nem | Az Azure AD BC és az identitás-szolgáltató között megállapodott opcionális protokoll-üzenet kiterjesztési elemek. A bővítmény XML formátumban jelenik meg. Az XML-adatértékeket a CDATA elemen `<![CDATA[Your IDP metadata]]>`belül adja hozzá. Tekintse meg az Identitáskezelő dokumentációját, és ellenőrizze, hogy a bővítmények elem támogatott-e. |
-| IncludeAuthnContextClassReferences | Nem | Egy vagy több URI-hivatkozást ad meg a hitelesítési környezet osztályainak azonosításához. Ha például engedélyezni szeretné, hogy egy felhasználó csak a felhasználónévvel és a jelszóval jelentkezzen be, `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`állítsa a értéket a következőre:. Ha engedélyezni szeretné a bejelentkezést a felhasználónévvel és a jelszóval védett munkameneten keresztül (SSL/ `PasswordProtectedTransport`TLS), adja meg a következőt:. Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt a támogatott **AuthnContextClassRef** URI azonosítókkal kapcsolatban. Vesszővel tagolt listaként több URI-t is meg kell adni. |
-| IncludeKeyInfo | Nem | Azt jelzi, hogy az SAML-hitelesítési kérelem tartalmazza- `HTTP-POST`e a tanúsítvány nyilvános kulcsát, amikor a kötés be van állítva. Lehetséges értékek: `true` vagy `false`. |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`, vagy `false`  (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true`. |
+| PartnerEntity | Yes | Az SAML-identitás szolgáltatójának metaadatait tartalmazó URL-cím. Másolja az Identity Provider metaadatait, és vegye fel azt a CDATA elembe.`<![CDATA[Your IDP metadata]]>` |
+| WantsSignedRequests | No | Azt jelzi, hogy a technikai profil megköveteli-e az összes kimenő hitelesítési kérelem aláírását. Lehetséges értékek: `true` vagy `false` . Az alapértelmezett érték `true`. Ha a értékre van állítva `true` , a **SamlMessageSigning** titkosítási kulcsot meg kell adni, és az összes kimenő hitelesítési kérelem alá van írva. Ha a érték értéke `false` , a **SigAlg** és az **aláírás** paraméterei (lekérdezési karakterlánc vagy post paraméter) ki vannak hagyva a kérelemből. Ez a metaadatok a metaadatok **AuthnRequestsSigned** attribútumát is szabályozza, amely a Azure ad B2C az identitás-szolgáltatóval megosztott technikai profil metaadataiban található. Azure AD B2C nem írja alá a kérelmet, ha a technikai profil metaadatainak **WantsSignedRequests** értéke értékre van állítva, `false` és az Identity Provider metaadatainak **WantAuthnRequestsSigned** értéke `false` vagy nincs megadva. |
+| XmlSignatureAlgorithm | No | Az a módszer, amelyet a Azure AD B2C az SAML-kérelem aláírására használ. Ez a metaadatok az SAML-kérelemben szereplő **SigAlg** paraméter (lekérdezési karakterlánc vagy post paraméter) értékét vezérlik. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. |
+| WantsSignedAssertions | No | Azt jelzi, hogy a technikai profilhoz szükséges-e az összes bejövő érvényesítés aláírása. Lehetséges értékek: `true` vagy `false` . Az alapértelmezett érték `true`. Ha a értékre van állítva `true` , a rendszer `saml:Assertion` az identitás-szolgáltató által az Azure ad B2C számára eljuttatott összes érvényesítési szakaszt alá kell írni. Ha a érték értéke `false` , az identitás-szolgáltató nem írja alá az állításokat, de még ha igen, Azure ad B2C nem ellenőrzi az aláírást. Ez a metaadatok a metaadatok jelző **WantsAssertionsSigned**is szabályozzák, amely az identitás-szolgáltatóval megosztott Azure ad B2C technikai profil metaadatainak kimenete. Ha letiltja a kijelentések érvényesítését, érdemes lehet letiltani a válasz aláírásának érvényesítését is (További információ: **ResponsesSigned**). |
+| ResponsesSigned | No | Lehetséges értékek: `true` vagy `false` . Az alapértelmezett érték `true`. Ha a érték értéke `false` , akkor az identitás-szolgáltató nem írja alá az SAML-választ, de még ha igen, Azure ad B2C nem ellenőrzi az aláírást. Ha a érték értéke, akkor `true` a rendszer aláírja az Identitáskezelő által az Azure ad B2C számára küldött SAML-választ, és érvényesíteni kell. Ha letiltja az SAML-válaszok érvényesítését, érdemes lehet letiltani az érvényesítési aláírás érvényességét (További információ: **WantsSignedAssertions**). |
+| WantsEncryptedAssertions | No | Azt jelzi, hogy a technikai profil minden bejövő állítását titkosítani kíván-e. Lehetséges értékek: `true` vagy `false` . Az alapértelmezett érték `false`. Ha a érték értéke, akkor `true` az Identitáskezelő által az Azure ad B2Cnak eljuttatott érvényesítéseket alá kell írni, és meg kell adni a **SamlAssertionDecryption** titkosítási kulcsát. Ha a érték értéke, akkor a `true` Azure ad B2C technikai profil metaadatai tartalmazzák a **titkosítási** szakaszt. Az identitás-szolgáltató beolvassa a metaadatokat, és titkosítja az SAML-válaszok érvényesítését a Azure AD B2C technikai profil metaadataiban megadott nyilvános kulccsal. Ha engedélyezi a kijelentések titkosítását, előfordulhat, hogy le kell tiltania a válasz aláírásának érvényesítését (további információért lásd: **ResponsesSigned**). |
+| IdpInitiatedProfileEnabled | No | Azt jelzi, hogy engedélyezve van-e az egyszeri bejelentkezés munkamenet-profilja, amelyet egy SAML identitás-szolgáltatói profil kezdeményezett. Lehetséges értékek: `true` vagy `false` . A mező alapértelmezett értéke: `false`. Az identitás-szolgáltató által kezdeményezett folyamat során a rendszer külsőleg hitelesíti a felhasználót, és a rendszer kéretlen választ küld Azure AD B2Cra, amely ezután felhasználja a tokent, végrehajtja az előkészítési lépéseket, majd választ küld a függő entitás alkalmazásnak. |
+| NameIdPolicyFormat | No | Meghatározza a kért tárgyat képviselő név azonosítójának korlátozásait. Ha nincs megadva, a rendszer a kért tárgyhoz tartozó személyazonossági szolgáltató által támogatott bármely típusú azonosítót használhatja. Például:  `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. A **NameIdPolicyFormat** használható a **NameIdPolicyAllowCreate**. Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt arról, hogy mely név-azonosító házirendeket támogatja a rendszer. |
+| NameIdPolicyAllowCreate | No | A **NameIdPolicyFormat**használatakor a `AllowCreate` **NameIDPolicy**tulajdonságot is megadhatja. A metaadatok értéke `true` vagy `false` annak jelzése, hogy az identitás-szolgáltató jogosult-e új fiókot létrehozni a bejelentkezési folyamat során. Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt ennek elvégzéséhez. |
+| AuthenticationRequestExtensions | No | Az Azure AD BC és az identitás-szolgáltató között megállapodott opcionális protokoll-üzenet kiterjesztési elemek. A bővítmény XML formátumban jelenik meg. Az XML-adatértékeket a CDATA elemen belül adja hozzá `<![CDATA[Your IDP metadata]]>` . Tekintse meg az Identitáskezelő dokumentációját, és ellenőrizze, hogy a bővítmények elem támogatott-e. |
+| IncludeAuthnContextClassReferences | No | Egy vagy több URI-hivatkozást ad meg a hitelesítési környezet osztályainak azonosításához. Ha például engedélyezni szeretné, hogy egy felhasználó csak a felhasználónévvel és a jelszóval jelentkezzen be, állítsa a értéket a következőre: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` . Ha engedélyezni szeretné a bejelentkezést a felhasználónévvel és a jelszóval védett munkameneten keresztül (SSL/TLS), adja meg a következőt: `PasswordProtectedTransport` . Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt a támogatott **AuthnContextClassRef** URI azonosítókkal kapcsolatban. Vesszővel tagolt listaként több URI-t is meg kell adni. |
+| IncludeKeyInfo | No | Azt jelzi, hogy az SAML-hitelesítési kérelem tartalmazza-e a tanúsítvány nyilvános kulcsát, amikor a kötés be van állítva `HTTP-POST` . Lehetséges értékek: `true` vagy `false` . |
+| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -166,9 +166,9 @@ A **CryptographicKeys** elem a következő attribútumokat tartalmazza:
 
 | Attribútum |Kötelező | Leírás |
 | --------- | ----------- | ----------- |
-| SamlMessageSigning |Igen | Az SAML-üzenetek aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezzel a kulccsal aláírja a kéréseket, és elküldi azokat az identitás-szolgáltatónak. |
-| SamlAssertionDecryption |Igen | Az SAML-üzenetek visszafejtéséhez használt X509-tanúsítvány (RSA-kulcs). Ezt a tanúsítványt az azonosító szolgáltatónak kell megadnia. Azure AD B2C ezt a tanúsítványt használja a személyazonosság-szolgáltató által elküldett adatok visszafejtéséhez. |
-| MetadataSigning |Nem | Az SAML-metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához.  |
+| SamlMessageSigning |Yes | Az SAML-üzenetek aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezzel a kulccsal aláírja a kéréseket, és elküldi azokat az identitás-szolgáltatónak. |
+| SamlAssertionDecryption |Yes | Az SAML-üzenetek visszafejtéséhez használt X509-tanúsítvány (RSA-kulcs). Ezt a tanúsítványt az azonosító szolgáltatónak kell megadnia. Azure AD B2C ezt a tanúsítványt használja a személyazonosság-szolgáltató által elküldett adatok visszafejtéséhez. |
+| MetadataSigning |No | Az SAML-metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához.  |
 
 ## <a name="next-steps"></a>További lépések
 

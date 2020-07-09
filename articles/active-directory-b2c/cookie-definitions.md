@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389343"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>A Azure AD B2C cookie-definíciói
 
@@ -24,11 +24,11 @@ A következő szakaszokban a Azure Active Directory B2C (Azure AD B2C) által ha
 
 ## <a name="samesite"></a>SameSite
 
-Az Microsoft Azure AD B2C szolgáltatás kompatibilis a SameSite böngésző-konfigurációkkal, beleértve az `SameSite=None` `Secure` attribútummal való támogatást is.
+Az Microsoft Azure AD B2C szolgáltatás kompatibilis a SameSite böngésző-konfigurációkkal, beleértve `SameSite=None` az attribútummal való támogatást is `Secure` .
 
 A webhelyekhez való hozzáférés védelme érdekében a böngészők egy új, biztonságos alapértelmezett modellt vezetnek be, amely feltételezi, hogy az összes cookie-t védeni kell a külső hozzáféréstől, hacsak másként nincs megadva. Ennek a változásnak a megkezdéséhez a Chrome böngésző az első lépés a [chrome 80-es](https://www.chromium.org/updates/same-site)verziójában a 2020 februárjában. A Chrome változásának előkészítésével kapcsolatos további információkért lásd [: fejlesztőknek: Felkészülés az új SameSite = none; Biztonságos cookie-beállítások](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html) a Chromium blogon.
 
-A fejlesztőknek az új cookie-beállítást `SameSite=None`kell használniuk, hogy kijelölik a cookie-kat a helyek közötti hozzáféréshez. Ha az `SameSite=None` attribútum megtalálható, egy további `Secure` attribútumot kell használni, így a helyek közötti cookie-k csak HTTPS-kapcsolatokon keresztül érhetők el. Érvényesítse és tesztelje az összes alkalmazást, beleértve a Azure AD B2Ct használó alkalmazásokat is.
+A fejlesztőknek az új cookie-beállítást kell használniuk, `SameSite=None` hogy kijelölik a cookie-kat a helyek közötti hozzáféréshez. Ha az `SameSite=None` attribútum megtalálható, egy további `Secure` attribútumot kell használni, így a helyek közötti cookie-k csak HTTPS-kapcsolatokon keresztül érhetők el. Érvényesítse és tesztelje az összes alkalmazást, beleértve a Azure AD B2Ct használó alkalmazásokat is.
 
 További információkért lásd:
 
@@ -39,7 +39,7 @@ További információkért lásd:
 
 A következő táblázat felsorolja a Azure AD B2C használt cookie-kat.
 
-| Name (Név) | Domain | Lejárat | Cél |
+| Name | Domain | Lejárat | Szerep |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Böngésző- [munkamenet](session-behavior.md) vége | Felhasználói tagsági adattárolást tart fenn a bérlők között. A bérlők a felhasználók és a tagsági szint (rendszergazda vagy felhasználó) tagjai. |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | A kérelmeknek a megfelelő éles példányra való továbbítására szolgál. |

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944321"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -70,7 +70,7 @@ Ha ACL-t szeretne alkalmazni a Service Fabric-fürt folyamataihoz tartozó tanú
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Service Fabric-fürt tanúsítványának védelme köznapi név szerint
 
-A Service Fabric-fürt tanúsítvány `Common Name`alapján történő biztonságossá tételéhez használja a Resource Manager-sablon tulajdonságának [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)a következő módon:
+A Service Fabric-fürt tanúsítvány alapján történő biztonságossá tételéhez `Common Name` használja a Resource Manager-sablon tulajdonságának [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)a következő módon:
 
 ```json
 "certificateCommonNames": {
@@ -87,16 +87,16 @@ A Service Fabric-fürt tanúsítvány `Common Name`alapján történő biztonsá
 > [!NOTE]
 > Service Fabric-fürtök az első érvényes tanúsítványt fogják használni, amelyet a gazdagép tanúsítványtárolójában talál. Windows rendszeren ez az a tanúsítvány, amelynek a legkésőbbi lejárati dátuma megegyezik a köznapi névvel és a kiállító ujjlenyomatával.
 
-Az Azure-tartományok, például\<a * saját\>aldomain. cloudapp.Azure.com \<vagy a saját\>altartománya. trafficmanager.net, a Microsoft tulajdonában vannak. A hitelesítésszolgáltatók nem adnak ki tanúsítványokat a tartományokhoz a jogosulatlan felhasználók számára. A legtöbb felhasználónak meg kell vásárolnia egy tartományt a regisztrátorból, vagy pedig a hitelesítő tartományi rendszergazdának kell lennie ahhoz, hogy egy hitelesítésszolgáltató kiadja az adott köznapi névvel rendelkező tanúsítványt.
+Az Azure-tartományok, például a * \<YOUR SUBDOMAIN\> . cloudapp.Azure.com vagy \<YOUR SUBDOMAIN\> a. trafficmanager.net, a Microsoft tulajdonában vannak. A hitelesítésszolgáltatók nem adnak ki tanúsítványokat a tartományokhoz a jogosulatlan felhasználók számára. A legtöbb felhasználónak meg kell vásárolnia egy tartományt a regisztrátorból, vagy pedig a hitelesítő tartományi rendszergazdának kell lennie ahhoz, hogy egy hitelesítésszolgáltató kiadja az adott köznapi névvel rendelkező tanúsítványt.
 
 Ha további információt szeretne arról, hogyan konfigurálhatja a DNS-szolgáltatást a tartomány Microsoft IP-címhez való feloldására, tekintse át a Azure DNS konfigurálása a [tartomány üzemeltetéséhez](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)című témakört.
 
 > [!NOTE]
 > Miután delegálta a tartományneveket a Azure DNS zónák névkiszolgálók számára, adja hozzá a következő két rekordot a DNS-zónához:
-> - A tartományhoz tartozó "A" rekord, amely nem `Alias record set` az összes olyan IP-cím, amelyet az egyéni tartomány fel fog oldani.
-> - "C" rekord a kiépített Microsoft sub-tartományokhoz `Alias record set`. Használhatja például a Traffic Manager vagy a Load Balancer DNS-nevét.
+> - A tartományhoz tartozó "A" rekord, amely nem az `Alias record set` összes olyan IP-cím, amelyet az egyéni tartomány fel fog oldani.
+> - "C" rekord a kiépített Microsoft sub-tartományokhoz `Alias record set` . Használhatja például a Traffic Manager vagy a Load Balancer DNS-nevét.
 
-Ha a portált úgy szeretné frissíteni, hogy az Service Fabric-fürthöz `"managementEndpoint"`tartozó egyéni DNS-nevet jelenítse meg, frissítse a következő Service Fabric fürterőforrás-kezelő sablon tulajdonságait:
+Ha a portált úgy szeretné frissíteni, hogy az Service Fabric-fürthöz tartozó egyéni DNS-nevet jelenítse meg `"managementEndpoint"` , frissítse a következő Service Fabric fürterőforrás-kezelő sablon tulajdonságait:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -157,12 +157,12 @@ Ha hozzáférést szeretne adni az alkalmazáshoz a titkokhoz, vegye fel a tanú
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Service Fabric-alkalmazások hitelesítése az Azure-erőforrásokhoz Managed Service Identity (MSI) használatával
 
-Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)című témakört.
+Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](../active-directory/managed-identities-azure-resources/overview.md)című témakört.
 Az Azure Service Fabric-fürtök a [Managed Service Identityt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)támogató Virtual Machine Scale sets futnak.
 Az MSI-t használó szolgáltatások listájának lekéréséhez tekintse meg az [Azure Active Directory hitelesítést támogató Azure-szolgáltatásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
 
-A rendszerhez rendelt felügyelt identitás engedélyezéséhez egy virtuálisgép-méretezési csoport vagy egy meglévő virtuálisgép-méretezési csoport létrehozása során deklarálja `"Microsoft.Compute/virtualMachinesScaleSets"` a következő tulajdonságot:
+A rendszerhez rendelt felügyelt identitás engedélyezéséhez egy virtuálisgép-méretezési csoport vagy egy meglévő virtuálisgép-méretezési csoport létrehozása során deklarálja a következő `"Microsoft.Compute/virtualMachinesScaleSets"` tulajdonságot:
 
 ```json
 "identity": { 
@@ -171,7 +171,7 @@ A rendszerhez rendelt felügyelt identitás engedélyezéséhez egy virtuálisg�
 ```
 További információért lásd: [Mi az az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) .
 
-Ha [felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hozott létre, deklarálja a sablonban a következő erőforrást a virtuálisgép-méretezési csoporthoz való hozzárendeléshez. Cserélje `\<USERASSIGNEDIDENTITYNAME\>` le a nevet a létrehozott felhasználó által hozzárendelt felügyelt identitás nevére:
+Ha [felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hozott létre, deklarálja a sablonban a következő erőforrást a virtuálisgép-méretezési csoporthoz való hozzárendeléshez. Cserélje le a `\<USERASSIGNEDIDENTITYNAME\>` nevet a létrehozott felhasználó által hozzárendelt felügyelt identitás nevére:
 
 ```json
 "identity": {
@@ -217,7 +217,12 @@ A [Azure Firewall felügyelt, felhőalapú hálózati biztonsági szolgáltatás
 Ezek a tűzfalszabályok kiegészítik az engedélyezett kimenő hálózati biztonsági csoportokat, amelyek a ServiceFabric és a tárterületet is tartalmazzák a virtuális hálózatból engedélyezett célhelyként.
 
 ## <a name="tls-12"></a>TLS 1.2
-[HKT](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+A Microsoft [Azure azt javasolja](https://azure.microsoft.com/updates/azuretls12/) , hogy minden ügyfél teljes áttelepítést végezzen a Transport Layer Security (tls) 1,2-et támogató megoldások felé, és győződjön meg arról, hogy a TLS 1,2 alapértelmezés szerint használatos.
+
+Az Azure-szolgáltatások, beleértve a [Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)is, befejezték a mérnöki munkát a TLS 1.0/1.1 protokolloktól való függőség megszüntetéséhez, és teljes körű támogatást biztosítanak azoknak az ügyfeleknek, akik csak TLS 1,2-kapcsolatok elfogadására és elindítására szeretnének konfigurálva.
+
+Az ügyfeleknek az Azure-szolgáltatásokkal együttműködve az Azure által üzemeltetett számítási feladatait és helyszíni alkalmazásait a TLS 1,2 alapértelmezett használatára kell beállítani. A következőképpen [konfigurálhatja Service Fabric fürtcsomópontok és alkalmazások](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md) számára egy adott TLS-verzió használatát.
 
 ## <a name="windows-defender"></a>Windows Defender 
 

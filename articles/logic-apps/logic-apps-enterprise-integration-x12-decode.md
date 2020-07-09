@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792367"
 ---
-# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek dekódolása Azure Logic Appsban Enterprise Integration Pack
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek dekódolása az Azure Logic Appsben az Enterprise Integration Packkel
 
-Az X12 dekódolásával érvényesítheti a borítékot egy kereskedelmi partneri szerződéssel, érvényesítheti az EDI-és partner-specifikus tulajdonságokat, feloszthatja az adatváltozásokat a tranzakciós csoportba, vagy megőrizheti a teljes módosításokat, és visszaigazolhatja a feldolgozott tranzakciókat. Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
+Az X12-üzenet dekódolása összekötővel ellenőrizheti az envelope-ot egy kereskedelmi partnerrel kötött megállapodás alapján, ellenőrizheti az EDI-t és a partnerspecifikus tulajdonságokat, feloszthatja az üzenetváltásokat tranzakciókészletekre vagy megőrizheti a teljes üzenetváltásokat, és nyugtázásokat hozhat létre a feldolgozott tranzakciókhoz. Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -71,7 +70,7 @@ Az alábbi elemek szükségesek:
    >
 
 
-## <a name="x12-decode-details"></a>X12 dekódolása – részletek
+## <a name="x12-decode-details"></a>Az X12-dekódolás részletei
 
 A X12 dekódolási összekötő a következő feladatokat hajtja végre:
 
@@ -88,13 +87,13 @@ A X12 dekódolási összekötő a következő feladatokat hajtja végre:
   * Ellenőrzi a tranzakciónapló-vezérlő számát az adott csoportban lévő más tranzakciónapló-vezérlők számával.
 * Feldarabolja a csomópontot a tranzakciós készletekbe, vagy megőrzi a teljes adatcsomópontot:
   * Csomópont felosztása tranzakciónaplóként – a tranzakciók felfüggesztése a következő hiba miatt: felosztás tranzakciós készletekre, és az egyes tranzakciótípusok elemzése. 
-  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg `badMessages`, amelyek nem tudják érvényesíteni az ellenőrzést, `goodMessages`és a fennmaradó tranzakciókat a következőre küldi:.
+  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
   * Csomópont felosztása tranzakciótípusokként – adatcsere felfüggesztése a következő hiba miatt: a rendszer elosztja a csomópontot a tranzakciónaplók között, és elemzi az egyes tranzakciós készleteket. 
-  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja `badMessages`a következőre:.
+  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
   * Adatcsere megőrzése – tranzakciók felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
-  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg `badMessages`, amelyek nem tudják érvényesíteni az ellenőrzést, `goodMessages`és a fennmaradó tranzakciókat a következőre küldi:.
+  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
   * Adatcsere megőrzése – az adatcsere felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
-  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja `badMessages`a következőre:. 
+  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` . 
 * Technikai és/vagy funkcionális nyugtát állít elő (ha konfigurálva van).
   * A technikai nyugtázás a fejléc-ellenőrzés eredményeképpen jön létre. A technikai visszaigazolás a csomópontok fejlécének és a pótkocsinak a címzett általi feldolgozásának állapotát jelenti.
   * A rendszer a törzs érvényesítésének eredményeképpen létrehoz egy funkcionális visszaigazolást. A funkcionális nyugtázási jelentések minden hibát észleltek a fogadott dokumentum feldolgozása során

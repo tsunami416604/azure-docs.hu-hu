@@ -11,12 +11,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731577"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417004"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -306,7 +305,7 @@ A forgalomáttekintő díjszabás a kimenet létrehozásához használt adatpont
 
 A több előfizetésből származó végpontok használata nem lehetséges az Azure Web Apps. Az Azure Web Apps megköveteli, hogy a Web Apps használt egyéni tartománynevek csak egyetlen előfizetésben legyenek használatban. Nem lehet több előfizetésből Web Appst használni ugyanazzal a tartománynévvel.
 
-Más végpontok esetében az Traffic Manager több előfizetésből származó végpontokkal is használható. A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz. Ezek az engedélyek [Azure Resource Manager szerepköralapú hozzáférés-vezérléssel (RBAC)](../role-based-access-control/role-assignments-portal.md)adhatók meg.
+Más végpontok esetében az Traffic Manager több előfizetésből származó végpontokkal is használható. A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz. Ezek az engedélyek [Azure Resource Manager szerepköralapú hozzáférés-vezérléssel (RBAC)](../role-based-access-control/role-assignments-portal.md)adhatók meg. Más előfizetésből származó végpontokat [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)használatával lehet felvenni.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Használhatom Traffic Manager a Cloud Service átmeneti tárolóhelyeit?
 
@@ -497,7 +496,7 @@ A szülő profil nem hajtja végre az állapot-ellenőrzéseket közvetlenül a 
 
 A következő táblázat ismerteti a beágyazott végpontok Traffic Manager állapotának ellenőrzésének viselkedését.
 
-| Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Megjegyzések |
+| Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Jegyzetek |
 | --- | --- | --- |
 | Letiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
 | Leromlott. Legalább egy alárendelt profil-végpont csökkentett teljesítményű állapotban van. |Online: a gyermek profilban található online végpontok száma legalább a MinChildEndpoints értéke.<BR>CheckingEndpoint: az online plusz CheckingEndpoint végpontok száma a gyermek profilban legalább a MinChildEndpoints értéke.<BR>Csökkentett teljesítményű: máskülönben. |A forgalmat az állapot CheckingEndpoint-végpontja irányítja át. Ha a MinChildEndpoints túl magasra van állítva, a végpont mindig csökken. |

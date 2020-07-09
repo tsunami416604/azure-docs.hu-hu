@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639802"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tároló hálózatkezelési módjai
@@ -194,14 +193,14 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
    |Beállítás |Érték | |
    | --- | --- | --- |
    |Prioritás |2000 | |
-   |Name (Név) |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |Forrás |VirtualNetwork | |
    |Cél | VirtualNetwork | |
    |Szolgáltatás | DNS (UDP/53) | |
    |Műveletek | Engedélyezés  | |
    | | |
 
-4. A hálózati mód megadása az alkalmazás jegyzékfájljában az egyes szolgáltatásokhoz `<NetworkConfig NetworkType="Open">`:. A hálózati mód **megnyitásakor** a szolgáltatás dedikált IP-címet kap. Ha nincs megadva mód, a szolgáltatás alapértelmezett értéke **NAT** mód. A következő manifest-példában a és `NodeContainerServicePackage1` `NodeContainerServicePackage2` a szolgáltatások mindegyike ugyanazon a porton figyel (mindkét szolgáltatás figyeli a szolgáltatást `Endpoint1`). Ha meg van adva a hálózati mód `PortBinding` , a konfigurációk nem adhatók meg.
+4. A hálózati mód megadása az alkalmazás jegyzékfájljában az egyes szolgáltatásokhoz: `<NetworkConfig NetworkType="Open">` . A hálózati mód **megnyitásakor** a szolgáltatás dedikált IP-címet kap. Ha nincs megadva mód, a szolgáltatás alapértelmezett értéke **NAT** mód. A következő manifest-példában a `NodeContainerServicePackage1` és a `NodeContainerServicePackage2` szolgáltatások mindegyike ugyanazon a porton figyel (mindkét szolgáltatás figyeli a szolgáltatást `Endpoint1` ). Ha meg van adva a hálózati mód, a `PortBinding` konfigurációk nem adhatók meg.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

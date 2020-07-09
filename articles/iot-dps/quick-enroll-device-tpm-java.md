@@ -10,11 +10,11 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241695"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711221"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Java Service SDK-val
 
@@ -130,7 +130,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
     mvn install -DskipTests
     ```
 
-   Ez a parancs letölti a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven-csomagot a gépre. Ez a csomag tartalmazza a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)bináris fájljait, amelyeket a mintakód létrehozásához szükséges. 
+   Ez a parancs letölti a Maven-csomagot a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) gépre. Ez a csomag tartalmazza a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)bináris fájljait, amelyeket a mintakód létrehozásához szükséges. 
 
 3. Futtassa a mintát a következő parancsokkal a parancsablakban:
 
@@ -145,7 +145,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
 
     ![Sikeres TPM-regisztráció ellenőrzése a portálon](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.

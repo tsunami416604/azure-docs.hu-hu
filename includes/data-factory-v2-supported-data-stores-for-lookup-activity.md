@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: Keresési tevékenységhez támogatott összekötők
 services: data-factory
 author: linda33wj
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d583c25afc5c328ef64a8c931e4209f0d88a14a9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35997f57b0a66b4f7853ea117519273fd7b6f726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436211"
 ---
 | Kategória | Adattár |
 |:--- |:--- |
@@ -29,7 +29,7 @@ ms.locfileid: "84124277"
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Felügyelt Azure SQL-példány](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics (korábban SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
-| &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
+| &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Adatbázis** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
@@ -48,9 +48,10 @@ ms.locfileid: "84124277"
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
 | &nbsp; |[Presto (előzetes verzió)](../articles/data-factory/connector-presto.md) |
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
-| &nbsp; |[SAP Business Warehouse MDX használatával](../articles/data-factory/connector-sap-business-warehouse.md) |
+| &nbsp; |[SAP Business Warehouse via MDX](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[SAP-tábla](../articles/data-factory/connector-sap-table.md) |
+| &nbsp; |[Snowflake](../articles/data-factory/connector-snowflake.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -92,7 +93,7 @@ ms.locfileid: "84124277"
 | &nbsp; |[Shopify (előzetes verzió)](../articles/data-factory/connector-shopify.md) |
 | &nbsp; |[SharePoint Online-lista](../articles/data-factory/connector-sharepoint-online-list.md) |
 | &nbsp; |[Square (előzetes verzió)](../articles/data-factory/connector-square.md) |
-| &nbsp; |[Webtábla (HTML-tábla)](../articles/data-factory/connector-web-table.md) 
+| &nbsp; |[Webes tábla (HTML-táblázat)](../articles/data-factory/connector-web-table.md) 
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |
 | &nbsp; |[Zoho (előzetes verzió)](../articles/data-factory/connector-zoho.md) |
 

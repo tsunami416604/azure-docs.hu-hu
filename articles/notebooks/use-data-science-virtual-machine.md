@@ -6,21 +6,21 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830306"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure adatelemzési Virtual Machines
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak, amely legfeljebb 4 GB memóriával és 1 GB-nyi adattal használható a visszaélések megelőzése érdekében. Ezeket a korlátozásokat egy másik, Azure-előfizetésben üzembe helyezett virtuális géppel lehet kihagyni. Erre a célra a legjobb választás egy Azure Data Science Virtual Machine (DSVM) az **Data Science Virtual Machine for Linux (Ubuntu)** rendszerkép használatával. Egy ilyen DSVM előre konfigurálva van minden, amire szüksége van a Azure Notebookshoz, és automatikusan megjelenik a Azure Notebooks **Futtatás** legördülő listájában.
 
 > [!Note]
 > A Azure Notebooks csak a Linux Ubuntu-lemezképpel létrehozott Dsvm támogatott. A jegyzetfüzetek Windows 2012, Windows 2016 vagy Linux CentOS rendszerű lemezképeken nem támogatottak.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>DSVM-példány létrehozása
 

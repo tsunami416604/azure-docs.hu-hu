@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233329"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>ASP.NET Core alkalmazások üzembe helyezése az Azure Kubernetes Service-ben az Azure DevOps Starter használatával
@@ -35,7 +35,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -134,7 +134,7 @@ A DevOps Starter automatikusan létrehozza és konfigurálja a szükséges lép�
 
 Most már készen áll az alkalmazásban lévő csapattal való együttműködésre egy CI/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkát a webhelyén. A git-tárház minden módosítása egy buildet indít az Azure DevOps, és egy CD-folyamat végrehajtja az Azure-ba történő üzembe helyezést. Kövesse az ebben a szakaszban leírt eljárást, vagy használjon másik technikát a tárház változásainak érvényesítéséhez. Megteheti például, hogy a git-tárházat a kedvenc eszközén vagy IDE helyezi, majd leküldi a módosításokat a tárházban.
 
-1. Az Azure DevOps menüjében válassza a **kódlap** > **lehetőséget, majd**nyissa meg a tárházat.
+1. Az Azure DevOps menüjében válassza a **kódlap**lehetőséget  >  **Files**, majd nyissa meg a tárházat.
 
 1. Nyissa meg a *Views\Home* könyvtárat, válassza az *index. cshtml* fájl melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.
 
@@ -144,7 +144,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti az ebben az oktatóanyagban létrehozott AK-fürtöt és a kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -166,7 +166,7 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 A Kubernetes-irányítópult használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 

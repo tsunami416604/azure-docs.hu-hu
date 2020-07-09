@@ -2,20 +2,21 @@
 title: Oktatóanyag – Azure Toolkit for IntelliJ (Spark-alkalmazás)
 description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy Apache Spark-készletbe (előzetes verzió).
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
+ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644859"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194942"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata a Spark-készletek Apache Spark-alkalmazásainak létrehozásához (előzetes verzió)
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
 Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for IntelliJ beépülő modul olyan Apache Spark-alkalmazások fejlesztéséhez, amelyek a [Scala](https://www.scala-lang.org/)-ben íródtak, majd egy Spark-készletbe (előzetes verzió) közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A beépülő modult többféleképpen is használhatja:
 
@@ -38,7 +39,7 @@ Az oktatóanyag a következőket ismerteti:
 - Scala beépülő modul – telepítés a [IntelliJ beépülő modulból](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
 - Ez az előfeltétel csak Windows-felhasználók számára érhető el.
 
-  Ha a helyi Spark Scala alkalmazást Windows rendszerű számítógépen futtatja, előfordulhat, hogy a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint kivételt tapasztal. A kivétel oka, hogy a WinUtils. exe fájl hiányzik a Windows rendszerből.
+  Ha a helyi Spark Scala alkalmazást Windows rendszerű számítógépen futtatja, előfordulhat, hogy a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint kivételt tapasztal. A kivétel oka, hogy WinUtils.exe hiányzik a Windows rendszerből.
   A hiba elhárításához töltse le a [WinUtils végrehajtható fájlt](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME**környezeti változót, és állítsa a változó értékét **C:\WinUtils**értékre.
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Spark Scala-alkalmazás létrehozása Spark-készlethez
@@ -53,7 +54,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![IntelliJ IDEA új projekt párbeszédpanel](./media/intellij-tool-synapse/create-synapse-application01.png)
 
-5. Kattintson a **Tovább** gombra.
+5. Válassza a **Tovább** lehetőséget.
 6. Az **új projekt** ablakban adja meg a következő információkat:
 
     | Tulajdonság | Leírás |
@@ -66,7 +67,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![Az Apache Spark SDK kiválasztása](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. Válassza a **Finish** (Befejezés) elemet. A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** gombot. A projekt elérhetővé válása néhány percet igénybe vehet.
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő műveleteket:
 
    a. A menüsávban navigáljon a **fájl**  >  **projekt szerkezete...** elemre.
@@ -146,7 +147,7 @@ A Scala-alkalmazás létrehozása után távolról futtathatja azt.
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
     |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Az Azure-beli virtuális fájlrendszerben is böngészheti a fájlokat, amelyek jelenleg csak ADLS Gen2 fürtöt támogatják. További információ: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
-    |Tárhelytípusa|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
+    |Tárhelytípusa|Válassza az **Azure Blob használata** lehetőséget a **fürt alapértelmezett Storage-fiókjának** feltöltéséhez és a legördülő listából való feltöltéséhez.|
     |Tárfiók|Adja meg a Storage-fiókját.|
     |Storage-kulcs|Adja meg a tárolási kulcsot.|
     |Storage-tároló|A Storage- **fiók** és a **Storage-kulcs** megadása után válassza ki a tárolót a legördülő listából.|
@@ -169,9 +170,9 @@ Az alábbi útmutatást követve állíthatja be a helyi futtatást és a helyi 
 
     ![IntelliJ helyi futtatású hibakeresési konfigurációk futtatása](./media/intellij-tool-synapse/local-run-synapse.png)
 
-    - A környezeti változók és a WinUtils. exe hely csak Windows-felhasználók számára használható.
+    - A környezeti változók és a WinUtils.exe helye csak Windows-felhasználók számára használható.
     - Környezeti változók: a rendszerkörnyezeti változó automatikusan észlelhető, ha korábban már beállította, és nem kell manuálisan hozzáadnia.
-    - [WinUtils. exe helye](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): a jobb oldalon található mappa ikonra kattintva megadhatja a WinUtils helyét.
+    - [WinUtils.exe helye](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): a jobb oldalon található mappa ikonra kattintva megadhatja a WinUtils helyét.
 
 2. Ezután kattintson a helyi lejátszás gombra.
 
@@ -210,7 +211,7 @@ Futtathatja a Spark helyi konzolt (Scala), vagy futtathatja a Spark Livy interak
 
 ### <a name="spark-local-console-scala"></a>Spark helyi konzol (Scala)
 
-Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
+Győződjön meg arról, hogy teljesítette a WINUTILS.EXE előfeltételt.
 
 1. A menüsávban navigáljon **a**  >  **konfigurációk szerkesztése..**. lehetőségre.
 2. A **Futtatás/hibakeresés konfigurációk** ablakban, a bal oldali ablaktáblán navigáljon a **Apache Sparkra a szinapszisban**  >  **[a Spark on szinapszis] SajátPr**.
@@ -220,7 +221,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
     |Tulajdonság |Érték |
     |----|----|
     |Környezeti változók|Győződjön meg arról, hogy a HADOOP_HOME értéke helyes.|
-    |WINUTILS. exe helye|Győződjön meg arról, hogy az elérési út helyes.|
+    |WINUTILS.exe helye|Győződjön meg arról, hogy az elérési út helyes.|
 
     ![Helyi konzol beállítása – konfiguráció](./media/intellij-tool-synapse/local-console-synapse01.png)
 
@@ -250,6 +251,7 @@ Ez csak a 2018,2-es és a 2018,3-es IntelliJ támogatott.
 
     |Tulajdonság |Érték |
     |----|----|
+    |Fő osztály neve| Válassza ki a fő osztály nevét.| 
     |Spark-készletek|Válassza ki azokat a Spark-készleteket, amelyeken futtatni szeretné az alkalmazást.|
     ||
 
@@ -268,7 +270,7 @@ A szkript eredményét úgy teheti meg, hogy elküld egy kódot a helyi konzolon
 
    ![Kijelölés küldése a Spark-konzolra](./media/intellij-tool-synapse/send-selection-to-console.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

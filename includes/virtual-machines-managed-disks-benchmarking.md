@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673366"
 ---
 *A gyorsítótár bemelegítése*  
@@ -33,7 +33,7 @@ A Iometer egy olyan tesztoldalt használ, amely azon a köteten található, ame
 
 #### <a name="access-specifications"></a>Hozzáférési specifikációk
 
-A specifikációk, a kérések i/o-mérete, a% Read/Write, a% Random/szekvenciális a Iometer hozzáférési specifikációk lapján konfigurálhatók. Hozzon létre egy hozzáférési specifikációt az alább ismertetett forgatókönyvekhez. Hozza létre a hozzáférési specifikációkat és a mentést egy megfelelő névvel, például\_: – RandomWrites\_8K, RandomReads 8K. A tesztelési forgatókönyv futtatásakor válassza ki a megfelelő specifikációt.
+A specifikációk, a kérések i/o-mérete, a% Read/Write, a% Random/szekvenciális a Iometer hozzáférési specifikációk lapján konfigurálhatók. Hozzon létre egy hozzáférési specifikációt az alább ismertetett forgatókönyvekhez. Hozza létre a hozzáférési specifikációkat és a mentést egy megfelelő névvel, például: – RandomWrites \_ 8K, RandomReads \_ 8K. A tesztelési forgatókönyv futtatásakor válassza ki a megfelelő specifikációt.
 
 Alább látható egy példa a maximális írási IOPS forgatókönyvhöz tartozó hozzáférési specifikációra.  
     ![Példa a maximális írási IOPS hozzáférési előírásaira](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
@@ -44,8 +44,8 @@ A maximális IOPs megjelenítéséhez használja a kisebb kérések méretét. A
 
 | Hozzáférési specifikáció | Kérelem mérete | Véletlenszerű | Olvasni |
 | --- | --- | --- | --- |
-| RandomWrites\_8K |8 E |100 |0 |
-| RandomReads\_8K |8 E |100 |100 |
+| RandomWrites \_ 8K |8 E |100 |0 |
+| RandomReads \_ 8K |8 E |100 |100 |
 
 #### <a name="maximum-throughput-test-specifications"></a>Maximális teljesítmény-tesztelési előírások
 
@@ -53,8 +53,8 @@ A maximális átviteli sebesség kimutatása érdekében használjon nagyobb mé
 
 | Hozzáférési specifikáció | Kérelem mérete | Véletlenszerű | Olvasni |
 | --- | --- | --- | --- |
-| RandomWrites\_64 kb |64 K |100 |0 |
-| RandomReads\_64 kb |64 K |100 |100 |
+| RandomWrites \_ 64 kb |64 K |100 |0 |
+| RandomReads \_ 64 kb |64 K |100 |100 |
 
 #### <a name="run-the-iometer-test"></a>A Iometer teszt futtatása
 
@@ -62,33 +62,33 @@ Hajtsa végre az alábbi lépéseket a gyorsítótár bemelegítéséhez
 
 1. Hozzon létre két hozzáférési specifikációt az alább látható értékekkel,
 
-   | Name (Név) | Kérelem mérete | Véletlenszerű | Olvasni |
+   | Name | Kérelem mérete | Véletlenszerű | Olvasni |
    | --- | --- | --- | --- |
-   | RandomWrites\_1mb |1 MB |100 |0 |
-   | RandomReads\_1mb |1 MB |100 |100 |
+   | RandomWrites \_ 1mb |1 MB |100 |0 |
+   | RandomReads \_ 1mb |1 MB |100 |100 |
 1. Futtassa a Iometer tesztet a gyorsítótár-lemez inicializálásához a következő paraméterekkel. Használjon három munkavégző szálat a célként megadott kötethez, valamint egy 128-es üzenetsor-mélységet. Állítsa a teszt "futtatási idő" időtartamát 2 órára a "teszt beállítása" lapon.
 
-   | Forgatókönyv | Cél kötete | Name (Név) | Időtartam |
+   | Forgatókönyv | Cél kötete | Name | Időtartam |
    | --- | --- | --- | --- |
-   | Gyorsítótár lemezének inicializálása |CacheReads |RandomWrites\_1mb |2 óra |
+   | Gyorsítótár lemezének inicializálása |CacheReads |RandomWrites \_ 1mb |2 óra |
 1. Futtassa a Iometer tesztet a gyorsítótár-lemez bemelegítéséhez a következő paraméterekkel. Használjon három munkavégző szálat a célként megadott kötethez, valamint egy 128-es üzenetsor-mélységet. Állítsa a teszt "futtatási idő" időtartamát 2 órára a "teszt beállítása" lapon.
 
-   | Forgatókönyv | Cél kötete | Name (Név) | Időtartam |
+   | Forgatókönyv | Cél kötete | Name | Időtartam |
    | --- | --- | --- | --- |
-   | Gyorsítótár-lemez bemelegítése |CacheReads |RandomReads\_1mb |2 óra |
+   | Gyorsítótár-lemez bemelegítése |CacheReads |RandomReads \_ 1mb |2 óra |
 
 A gyorsítótár-lemez bemelegítése után folytassa az alább felsorolt tesztelési forgatókönyvekkel. A Iometer teszt futtatásához legalább három munkavégző szálat kell használnia **minden egyes** cél kötethez. Minden munkavégző szál esetében válassza ki a cél kötetet, állítsa be a várólista mélységét, és válassza ki a mentett tesztelési specifikációk egyikét az alábbi táblázatban látható módon a megfelelő tesztelési forgatókönyv futtatásához. Ezen tesztek futtatásakor a táblázat a IOPS és az átviteli sebesség várható eredményeit is megjeleníti. Az összes forgatókönyv esetében a rendszer a 8 KB-os kis i/o-méretet és a 128-es magas üzenetsor-mélységet használja.
 
-| Tesztelési forgatókönyv | Cél kötete | Name (Név) | Eredmény |
+| Tesztelési forgatókönyv | Cél kötete | Name | Eredmény |
 | --- | --- | --- | --- |
-| Legfeljebb IOPS olvasása |CacheReads |RandomWrites\_8K |50 000 IOPS |
-| Legfeljebb IOPS írása |NoCacheWrites |RandomReads\_8K |64 000 IOPS |
-| Legfeljebb Kombinált IOPS |CacheReads |RandomWrites\_8K |100 000 IOPS |
-| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Legfeljebb Olvasási sebesség (MB/s) |CacheReads |RandomWrites\_64 kb |524 MB/s |
-| Legfeljebb Írási sebesség (MB/s) |NoCacheWrites |RandomReads\_64 kb |524 MB/s |
-| Összesített MB/s |CacheReads |RandomWrites\_64 kb |1000 MB/s |
-| NoCacheWrites |RandomReads\_64 kb | &nbsp; | &nbsp; |
+| Legfeljebb IOPS olvasása |CacheReads |RandomWrites \_ 8K |50 000 IOPS |
+| Legfeljebb IOPS írása |NoCacheWrites |RandomReads \_ 8K |64 000 IOPS |
+| Legfeljebb Kombinált IOPS |CacheReads |RandomWrites \_ 8K |100 000 IOPS |
+| NoCacheWrites |RandomReads \_ 8K | &nbsp; | &nbsp; |
+| Legfeljebb Olvasási sebesség (MB/s) |CacheReads |RandomWrites \_ 64 kb |524 MB/s |
+| Legfeljebb Írási sebesség (MB/s) |NoCacheWrites |RandomReads \_ 64 kb |524 MB/s |
+| Összesített MB/s |CacheReads |RandomWrites \_ 64 kb |1000 MB/s |
+| NoCacheWrites |RandomReads \_ 64 kb | &nbsp; | &nbsp; |
 
 Az alábbi Képernyőképek a Iometer-teszt eredményeiből állnak a kombinált IOPS és az átviteli sebességi forgatókönyvek esetében.
 
@@ -116,7 +116,7 @@ Négy munkaszálat használunk az írási műveletekhez és négy munkaszálhoz 
 
 #### <a name="maximum-write-iops"></a>Maximális írási IOPS
 
-Hozza létre a fájlt a következő specifikációkkal a maximális írási IOPS lekéréséhez. Nevezze el "fiowrite. ini" néven.
+Hozza létre a fájlt a következő specifikációkkal a maximális írási IOPS lekéréséhez. Nevezze el "fiowrite.ini".
 
 ```ini
 [global]
@@ -157,7 +157,7 @@ A teszt futtatása közben megtekintheti a virtuális gép és a prémium szint�
 
 #### <a name="maximum-read-iops"></a>Olvasási IOPS maximális száma
 
-Hozza létre a fájlt a következő specifikációkkal a maximális olvasási IOPS lekéréséhez. Nevezze el "fioread. ini" néven.
+Hozza létre a fájlt a következő specifikációkkal a maximális olvasási IOPS lekéréséhez. Nevezze el "fioread.ini".
 
 ```ini
 [global]
@@ -198,7 +198,7 @@ A teszt futtatása közben megtekintheti a virtuális gép és a prémium szint�
 
 #### <a name="maximum-read-and-write-iops"></a>Olvasási és írási IOPS maximális száma
 
-Hozza létre a fájlt a következő specifikációkkal a kombinált olvasási és írási IOPS maximális számának lekéréséhez. Nevezze el "fioreadwrite. ini" néven.
+Hozza létre a fájlt a következő specifikációkkal a kombinált olvasási és írási IOPS maximális számának lekéréséhez. Nevezze el "fioreadwrite.ini".
 
 ```ini
 [global]

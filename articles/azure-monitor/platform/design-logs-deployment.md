@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
 ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82165688"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>A Azure Monitor naplók üzembe helyezésének megtervezése
@@ -114,7 +114,7 @@ A *hozzáférés-vezérlési mód* az egyes munkaterületeken olyan beállítás
 
     Ez az alapértelmezett beállítás az összes olyan munkaterülethez, amelyet a március 2019. előtt hoztak létre.
 
-* **Erőforrás-vagy munkaterület-engedélyek használata**: Ez a vezérlési mód lehetővé teszi a szemcsés RBAC használatát. A felhasználók csak olyan erőforrásokhoz férhetnek hozzá, amelyekhez az Azure `read` -engedély hozzárendelésével megtekinthetők. 
+* **Erőforrás-vagy munkaterület-engedélyek használata**: Ez a vezérlési mód lehetővé teszi a szemcsés RBAC használatát. A felhasználók csak olyan erőforrásokhoz férhetnek hozzá, amelyekhez az Azure-engedély hozzárendelésével megtekinthetők `read` . 
 
     Ha a felhasználó munkaterület-környezet módban fér hozzá a munkaterülethez, a rendszer a munkaterület engedélyeit alkalmazza. Ha a felhasználó erőforrás-kontextus módban fér hozzá a munkaterülethez, a rendszer csak az erőforrás-engedélyeket ellenőrzi, és a munkaterület-engedélyeket figyelmen kívül hagyja. A RBAC engedélyezése a felhasználók számára a munkaterület engedélyeiből való eltávolításával, valamint az erőforrás-engedélyek felismerésének engedélyezésével.
 
@@ -129,7 +129,7 @@ A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource M
 
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az alapértelmezett betöltési arány küszöbértéke **6 GB/perc/** munkaterületre van állítva. Ez egy hozzávetőleges érték, mivel a tényleges méret eltérő lehet az adattípusok között a napló hosszától és a tömörítési aránytól függően. Ez a korlát nem vonatkozik az ügynököktől vagy adatgyűjtő [API](data-collector-api.md)-ból továbbított adatokra.
 
-Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség továbbra is meghaladja a díjszabási korlátot, vagy a közeljövőben várhatóan nem ér véget, akkor a munkaterület növelését kérheti e- LAIngestionRate@microsoft.com mailben vagy egy támogatási kérelem megnyitásával.
+Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség továbbra is meghaladja a díjszabási korlátot, vagy a közeljövőben várhatóan nem ér véget, akkor a munkaterület növelését kérheti e-mailben LAIngestionRate@microsoft.com vagy egy támogatási kérelem megnyitásával.
  
 Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [naplózási riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékű eredmények száma értékkel.
 

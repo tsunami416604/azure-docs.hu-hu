@@ -13,12 +13,11 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266746"
 ---
 # <a name="security-tokens"></a>Biztonsági jogkivonatok
 
@@ -77,7 +76,7 @@ Az ügyfél felépítésének módjától függően a Microsoft Identity platfor
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hibrid OIDC folyamat](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Hibrid OIDC folyamat](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[Jogkivonat-beváltások frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | jogkivonat frissítése | x | x | x| |
 |[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
 |[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |

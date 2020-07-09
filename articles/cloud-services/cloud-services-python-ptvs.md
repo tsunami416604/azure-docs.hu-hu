@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 93e120a0519e1fc61a716e606e088801fdf508dd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75360718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556363"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
 
@@ -323,7 +323,7 @@ Egy folyamatjelző jelenik meg a kimeneti ablakban, majd megnyílik a Microsoft 
 Az üzembe helyezés néhány percet vesz igénybe, majd a webes és/vagy feldolgozói szerepkörök el is indulnak az Azure-ban!
 
 ### <a name="investigate-logs"></a>Naplók vizsgálata
-A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\\{role} \LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba található, amely akkor keletkezik, amikor a szkript megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
+A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory \\ {role} \LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba található, amely akkor keletkezik, amikor a szkript megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
 
 ## <a name="next-steps"></a>További lépések
 A PVTS dokumentációban további információkat találhat a webes és feldolgozói szerepkörök használatáról Python Tools for Visual Studio eszközben:

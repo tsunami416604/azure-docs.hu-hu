@@ -6,12 +6,11 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 041767474fbc56ee7a53bcbd54f27873d17dab77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413637"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -38,7 +37,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 ```
 
 > [!TIP]
-> Ha több bővítményt is engedélyezni szeretne, vesszővel tagolt listaként adja meg őket. A HTTP-alkalmazások útválasztásának és figyelésének engedélyezéséhez például használja a `--enable-addons http_application_routing,monitoring`következő formátumot:.
+> Ha több bővítményt is engedélyezni szeretne, vesszővel tagolt listaként adja meg őket. A HTTP-alkalmazások útválasztásának és figyelésének engedélyezéséhez például használja a következő formátumot: `--enable-addons http_application_routing,monitoring` .
 
 A HTTP-útválasztást egy meglévő AK-fürtön is engedélyezheti az az [AK Enable-addons][az-aks-enable-addons] parancs használatával. Ha engedélyezni szeretné a HTTP-útválasztást egy meglévő fürtön, adja hozzá a `--addons` paramétert, és adja meg a *http_application_routing* az alábbi példában látható módon:
 
@@ -46,16 +45,17 @@ A HTTP-útválasztást egy meglévő AK-fürtön is engedélyezheti az az [AK En
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-A fürt üzembe helyezése vagy frissítése után az az [AK show][az-aks-show] paranccsal kérheti le a DNS-zóna nevét. Ez a név szükséges ahhoz, hogy alkalmazásokat lehessen üzembe helyezni az AK-fürtön.
+A fürt üzembe helyezése vagy frissítése után az az [AK show][az-aks-show] paranccsal kérheti le a DNS-zóna nevét. 
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-Eredmény
+Ez a név szükséges ahhoz, hogy alkalmazásokat lehessen üzembe helyezni az AK-fürtön, és az alábbi példában látható:
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>HTTP-útválasztás üzembe helyezése: portál
 
@@ -67,6 +67,22 @@ A fürt üzembe helyezése után keresse meg az automatikusan létrehozott AK-er
 
 ![DNS-zóna nevének beolvasása](media/http-routing/dns.png)
 
+## <a name="connect-to-your-aks-cluster"></a>Kapcsolódás az AK-fürthöz
+
+Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz a helyi számítógépről, használja a Kubernetes [kubectl][kubectl] nevű parancssori ügyfelét.
+
+Ha az Azure Cloud Shellt használja, a `kubectl` már telepítve van. Helyben is telepítheti az [az aks install-cli][] paranccsal:
+
+```azurecli
+az aks install-cli
+```
+
+Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *MyAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:
+
+```azurecli
+az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
+```
+
 ## <a name="use-http-routing"></a>HTTP-útválasztás használata
 
 A HTTP-alkalmazás útválasztási megoldását csak a következő, megjegyzésekkel ellátott bejövő erőforrások esetében lehet elindítani:
@@ -76,8 +92,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Hozzon létre egy **Samples-http-Application-Routing. YAML** nevű fájlt, és másolja a következő YAML. Az 43-es sorban `<CLUSTER_SPECIFIC_DNS_ZONE>` frissítse a cikket a jelen cikk előző lépésben összegyűjtött DNS-zóna nevével.
-
+Hozzon létre egy **Samples-http-Application-Routing. YAML** nevű fájlt, és másolja a következő YAML. Az 43-es sorban frissítse a `<CLUSTER_SPECIFIC_DNS_ZONE>` cikket a jelen cikk előző lépésben összegyűjtött DNS-zóna nevével.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -136,6 +151,12 @@ spec:
 ```
 
 Az erőforrások létrehozásához használja a [kubectl Apply][kubectl-apply] parancsot.
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+A következő példa a létrehozott erőforrásokat mutatja be:
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -204,7 +225,7 @@ Az erőforrások törléséhez használja a [kubectl delete][kubectl-delete] par
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
 ```
 
-Ismételje meg `kubectl delete` az előző lépést minden olyan *addon-http-Application-Routing* erőforrásnál, amely a fürtön marad.
+Ismételje meg az előző `kubectl delete` lépést minden olyan *addon-http-Application-Routing* erőforrásnál, amely a fürtön marad.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -221,7 +242,7 @@ Ezek a rekordok a Azure Portal DNS-zóna erőforrásán is megtekinthetők.
 
 ![DNS-rekordok beolvasása](media/http-routing/clippy.png)
 
-A [kubectl logs][kubectl-logs] paranccsal megtekintheti az Nginx bejövő adatkezelő vezérlőhöz tartozó alkalmazási naplókat. A naplóknak meg kell `CREATE` erősíteniük egy bejövő erőforrást és a vezérlő újratöltését. Minden HTTP-tevékenység naplózva van.
+A [kubectl logs][kubectl-logs] paranccsal megtekintheti az Nginx bejövő adatkezelő vezérlőhöz tartozó alkalmazási naplókat. A naplóknak meg kell erősíteniük `CREATE` egy bejövő erőforrást és a vezérlő újratöltését. Minden HTTP-tevékenység naplózva van.
 
 ```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -262,7 +283,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Távolítsa el a cikkben létrehozott társított Kubernetes-objektumokat.
+Távolítsa el a cikkben létrehozott társított Kubernetes-objektumokat a következő használatával: `kubectl delete` .
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+A példa kimenetében a Kubernetes objektumok el lettek távolítva.
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -281,11 +308,13 @@ További információ arról, hogyan telepíthet egy HTTPS-védelemmel ellátott
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

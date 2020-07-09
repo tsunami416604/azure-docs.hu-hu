@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79464461"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Összesítő függvények a Azure Cosmos DBban
 
-Az `SELECT` összesítő függvények számítást végeznek a záradékban található értékek halmazán, és egyetlen értéket adnak vissza. A következő lekérdezés például a `Families` tárolóban lévő elemek számát adja vissza:
+Az összesítő függvények számítást végeznek a záradékban található értékek halmazán `SELECT` , és egyetlen értéket adnak vissza. A következő lekérdezés például a tárolóban lévő elemek számát adja vissza `Families` :
 
 ## <a name="examples"></a>Példák
 
@@ -45,7 +44,7 @@ Az eredmény a következő:
     [ 2 ]
 ```
 
-Az összesítéseket szűrők használatával is egyesítheti. Például a következő lekérdezés visszaadja a címe állapotú elemek számát `WA`.
+Az összesítéseket szűrők használatával is egyesítheti. Például a következő lekérdezés visszaadja a címe állapotú elemek számát `WA` .
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -61,7 +60,7 @@ Az eredmény a következő:
 
 ## <a name="types-of-aggregate-functions"></a>Az összesítő függvények típusai
 
-Az SQL API a következő összesítő függvényeket támogatja. `SUM`a `AVG` és a függvény numerikus értékekkel `COUNT`, `MIN`és, `MAX` és számok, karakterláncok, logikai értékek és nullák alapján működik.
+Az SQL API a következő összesítő függvényeket támogatja. `SUM``AVG`a és a függvény numerikus értékekkel, és, és `COUNT` `MIN` `MAX` számok, karakterláncok, logikai értékek és nullák alapján működik.
 
 | Függvény | Leírás |
 |-------|-------------|
@@ -78,7 +77,7 @@ A tömb iterációjának eredményét is összesítheti.
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ezek az összesített rendszerfunkciók kihasználják a [tartomány indexét](index-policy.md#includeexclude-strategy). Ha a (z), `COUNT`, `SUM`, `MIN`vagy `MAX` `AVG` tulajdonságot szeretné elvégezni, a [megfelelő elérési utat is meg kell adni az indexelési házirendben](index-policy.md#includeexclude-strategy).
+Ezek az összesített rendszerfunkciók kihasználják a [tartomány indexét](index-policy.md#includeexclude-strategy). Ha a (z),,, `COUNT` `SUM` `MIN` `MAX` vagy tulajdonságot szeretné elvégezni, a `AVG` [megfelelő elérési utat is meg kell adni az indexelési házirendben](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>További lépések
 

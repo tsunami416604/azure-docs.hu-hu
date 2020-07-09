@@ -3,15 +3,14 @@ title: Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik Azure
 description: Azure Resource Manager sablonnal áthelyezheti az Azure hálózati biztonsági csoportot az egyik Azure-régióból a másikba Azure PowerShell használatával.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75641468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688449"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba Azure PowerShell használatával
 
@@ -61,7 +60,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg az ** \<erőforrás-csoport-név>. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a ** \<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +105,9 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     Get-AzLocation | format-table
     
     ```
-8. Az ** \<erőforrás-csoport neve>. JSON** fájlban más paramétereket is megadhat, ha Ön úgy dönt, hogy a követelményektől függően nem kötelező:
+8. A ** \<resource-group-name> . JSON** fájl egyéb paramétereit is módosíthatja, ha az Ön által választott, és a követelményektől függően választható:
 
-    * **Biztonsági szabályok** – szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG a szabályok hozzáadásával vagy eltávolításával a **securityRules** szakaszhoz az ** \<erőforrás-csoport neve>. JSON** fájlban:
+    * **Biztonsági szabályok** – a ** \<resource-group-name> . JSON** fájl **securityRules** szakaszának szabályainak hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
 
         ```json
            "resources": [
@@ -144,7 +143,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             
         ```
 
-        A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez az alábbi példa formátumban az ** \<erőforrás-csoport neve>. JSON** fájl végén található egyéni szabályok típusait is szerkesztenie kell:
+        A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez a ** \<resource-group-name> . JSON** fájl végén található egyéni szabályok típusait is szerkesztenie kell az alábbi példa formátumában:
 
         ```json
            {
@@ -171,7 +170,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
         ```
 
-9. Mentse az ** \<erőforrás-csoport neve>. JSON** fájlt.
+9. Mentse a ** \<resource-group-name> . JSON** fájlt.
 
 10. Hozzon létre egy erőforráscsoportot a cél régióban a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő NSG:
     
@@ -179,7 +178,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Telepítse a szerkesztett ** \<erőforrás-csoport neve>. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett ** \<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 

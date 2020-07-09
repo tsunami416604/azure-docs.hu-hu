@@ -9,10 +9,10 @@ ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205000"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (CLI)
@@ -36,7 +36,7 @@ oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>Azure Active Directory alkalmazás létrehozása hitelesítéshez
 
-Hozzon létre egy Azure Active Directory alkalmazást, és kérje le a létrehozott alkalmazás azonosítóját. Cserélje le ** \<a ClientSecret>t** biztonságos jelszóval.
+Hozzon létre egy Azure Active Directory alkalmazást, és kérje le a létrehozott alkalmazás azonosítóját. Cserélje le a **\<ClientSecret>** t biztonságos jelszóval.
 
 ```azurecli-interactive
 az ad app create \
@@ -74,9 +74,9 @@ A következő választható jogcímeket használhatja:
 - Módosítsa az Azure AD által a jogkivonatokban visszaadott jogcímek viselkedését.
 - Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
-A OpenShift a `email` jogcím használatára konfigurálja, és visszatérhet `upn` a következőre: az előnyben részesített Felhasználónév beállításához adja hozzá `upn` a Azure Active Directory által visszaadott azonosító jogkivonat részét.
+A OpenShift a jogcím használatára konfigurálja, `email` és visszatérhet a következőre `upn` : az előnyben részesített Felhasználónév beállításához adja hozzá a `upn` Azure Active Directory által visszaadott azonosító jogkivonat részét.
 
-Hozzon létre egy **manifest. JSON** fájlt a Azure Active Directory alkalmazás konfigurálásához.
+Hozzon létre egy **manifest.js** fájlt a Azure Active Directory alkalmazás konfigurálásához.
 
 ```bash
 cat > manifest.json<< EOF
@@ -97,7 +97,7 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>A Azure Active Directory alkalmazás optionalClaims frissítése jegyzékkel
 
-Cserélje le ** \<a AppID>t** a korábban kapott azonosítóra.
+Cserélje le **\<AppID>** a elemet a korábban kapott azonosítóra.
 
 ```azurecli-interactive
 az ad app update \
@@ -109,7 +109,7 @@ az ad app update \
 
 Ahhoz, hogy el tudja olvasni a felhasználói adatokat Azure Active Directoryból, meg kell határoznia a megfelelő hatóköröket.
 
-Cserélje le ** \<a AppID>t** a korábban kapott azonosítóra.
+Cserélje le **\<AppID>** a elemet a korábban kapott azonosítóra.
 
 Adjon hozzá engedélyt a **Azure Active Directory Graph. user. Read** hatókörhöz a bejelentkezés engedélyezéséhez és a felhasználói profil olvasásához.
 
@@ -131,7 +131,7 @@ A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](https
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID-hitelesítés konfigurálása
 
-A `kubeadmin` hitelesítő adatok beolvasása. Futtassa a következő parancsot a `kubeadmin` felhasználó jelszavának megkereséséhez.
+A `kubeadmin` hitelesítő adatok beolvasása. Futtassa a következő parancsot a felhasználó jelszavának megkereséséhez `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -139,7 +139,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-Az alábbi példa kimenetében látható, hogy a jelszó `kubeadminPassword`a következő lesz:.
+Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `kubeadminPassword` .
 
 ```json
 {
@@ -148,13 +148,13 @@ Az alábbi példa kimenetében látható, hogy a jelszó `kubeadminPassword`a k�
 }
 ```
 
-Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. A `$apiServer` változó [korábban]()lett beállítva. Cserélje le ** \<a kubeadmin Password>** a beolvasott jelszóra.
+Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. A `$apiServer` változó [korábban]()lett beállítva. Cserélje le **\<kubeadmin password>** a t a beolvasott jelszóra.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-Hozzon létre egy titkos OpenShift a Azure Active Directory alkalmazás titkos kódjának tárolásához, és cserélje ** \<le a ClientSecret>t** a korábban beolvasott titkos kulcsra.
+Hozzon létre egy titkos OpenShift a Azure Active Directory alkalmazás titkos kódjának tárolásához, és cserélje le **\<ClientSecret>** a korábban beolvasott titkos kulcsra.
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
@@ -162,7 +162,7 @@ oc create secret generic openid-client-secret-azuread \
   --from-literal=clientSecret=<ClientSecret>
 ```    
 
-Hozzon létre egy **oidc. YAML** fájlt a OpenShift OpenID-hitelesítés konfigurálásához Azure Active Directoryon. Cserélje le ** \<a AppID>** és ** \<a TenantId>** a korábban lekért értékekre.
+Hozzon létre egy **oidc. YAML** fájlt a OpenShift OpenID-hitelesítés konfigurálásához Azure Active Directoryon. Cserélje **\<AppID>** le **\<TenantId>** a és a értéket a korábban lekért értékekre.
 
 ```bash
 cat > oidc.yaml<< EOF

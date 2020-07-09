@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570169"
 ---
 Ebben a lépésben azt értékeli, hogy hány Azure-fájlmegosztás szükséges. Egyetlen Windows Server-példány (vagy fürt) akár 30 Azure-fájlmegosztás szinkronizálására is képes.
 
@@ -58,7 +58,7 @@ Azure File Sync egy másik fontos aspektusa, és a kiegyensúlyozott teljesítm�
 > [!IMPORTANT]
 > A Azure File Sync legfontosabb méretezési vektora a szinkronizálandó elemek (fájlok és mappák) száma.
 
-Azure File Sync támogatja akár 100 000 elem szinkronizálását egyetlen Azure-fájlmegosztás számára. Ez a korlát túlléphető, és csak azt jeleníti meg, hogy az Azure File Sync csapat rendszeresen tesztelje a teszteket.
+Azure File Sync támogatja akár 100 000 000 elem szinkronizálását egyetlen Azure-fájlmegosztás számára. Ez a korlát túlléphető, és csak azt jeleníti meg, hogy az Azure File Sync csapat rendszeresen tesztelje a teszteket.
 
 Az ajánlott eljárás az, hogy a szinkronizálási hatókörben lévő elemek száma ne legyen alacsony. Ez fontos szempont a mappák Azure-fájlmegosztás számára történő leképezésében.
 

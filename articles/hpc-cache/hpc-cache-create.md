@@ -4,20 +4,23 @@ description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434099"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
 A gyorsítótár létrehozásához használja a Azure Portal.
 
 ![képernyőkép a gyorsítótár áttekintéséről Azure Portalban, a létrehozás gombbal alul](media/hpc-cache-home-page.png)
+
+Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és a tárolási cél hozzáadásának [bemutató videóját](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) .
+
+[![videó miniatűrje: Azure HPC cache: Setup (kattintson ide a videó oldal megtekintéséhez)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="define-basic-details"></a>Alapszintű részletek meghatározása
 

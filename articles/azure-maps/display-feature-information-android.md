@@ -9,15 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75911691"
 ---
 # <a name="display-feature-information"></a>Funkcióinformációk megjelenítése
 
-A térbeli adataikat gyakran pontok, vonalak és sokszögek használatával jelölik. Ezek az adatok gyakran metaadatokkal kapcsolatos adatokkal rendelkeznek. Előfordulhat például, hogy egy adott pont az áruház helyét és a hozzájuk tartozó metaadatokat a neve, címe és az általa kiszolgált élelmiszer típusát jelöli. Ez a metaadatok hozzáadhatók a szolgáltatások tulajdonságaihoz a `JsonObject`használatával. A következő kód egy egyszerű pont funkciót hoz létre egy `title` olyan tulajdonsággal, amelynek értéke ""Helló világ!"alkalmazás!".
+A térbeli adataikat gyakran pontok, vonalak és sokszögek használatával jelölik. Ezek az adatok gyakran metaadatokkal kapcsolatos adatokkal rendelkeznek. Előfordulhat például, hogy egy adott pont az áruház helyét és a hozzájuk tartozó metaadatokat a neve, címe és az általa kiszolgált élelmiszer típusát jelöli. Ez a metaadatok hozzáadhatók a szolgáltatások tulajdonságaihoz a használatával `JsonObject` . A következő kód egy egyszerű pont funkciót hoz létre egy olyan `title` tulajdonsággal, amelynek értéke ""Helló világ!"alkalmazás!".
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +31,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Ha a felhasználó a térképen található szolgáltatással kommunikál, az események felhasználhatók az adott műveletekre való reagálásra. Gyakori forgatókönyv egy olyan szolgáltatás metaadat-tulajdonságaiból álló üzenet megjelenítése, amellyel a felhasználó az általa kommunikált. Az `OnFeatureClick` esemény a fő esemény, amellyel észlelhető, ha a felhasználó kihasznál egy funkciót a térképen. Van egy `OnLongFeatureClick` esemény is. Az `OnFeatureClick` eseménynek a térképhez való hozzáadásakor a réteg azonosítójának átadásával egyetlen rétegre korlátozható. Ha a rendszer nem adja át a réteg AZONOSÍTÓját, koppintson a Térkép bármelyik szolgáltatására, függetlenül attól, hogy melyik rétegben található, az eseményt. A következő kód létrehoz egy szimbólum réteget a térkép megjelenítéséhez, majd feltesz egy `OnFeatureClick` eseményt, és korlátozza azt erre a szimbólum rétegre.
+Ha a felhasználó a térképen található szolgáltatással kommunikál, az események felhasználhatók az adott műveletekre való reagálásra. Gyakori forgatókönyv egy olyan szolgáltatás metaadat-tulajdonságaiból álló üzenet megjelenítése, amellyel a felhasználó az általa kommunikált. Az `OnFeatureClick` esemény a fő esemény, amellyel észlelhető, ha a felhasználó kihasznál egy funkciót a térképen. Van egy esemény is `OnLongFeatureClick` . Az `OnFeatureClick` eseménynek a térképhez való hozzáadásakor a réteg azonosítójának átadásával egyetlen rétegre korlátozható. Ha a rendszer nem adja át a réteg AZONOSÍTÓját, koppintson a Térkép bármelyik szolgáltatására, függetlenül attól, hogy melyik rétegben található, az eseményt. A következő kód létrehoz egy szimbólum réteget a térkép megjelenítéséhez, majd feltesz egy eseményt, `OnFeatureClick` és korlátozza azt erre a szimbólum rétegre.
 
 ```java
 //Create a symbol and add it to the map.
@@ -50,7 +49,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 ## <a name="display-a-toast-message"></a>Toast-üzenet megjelenítése
 
-A Toast-üzenet az egyik legegyszerűbb módja a felhasználó információinak megjelenítésének, és az Android minden verziójában elérhető. Semmilyen típusú felhasználói bevitelt nem támogat, és csak rövid ideig jelenik meg. Ha azt szeretné, hogy a felhasználó gyorsan tudja, mit találtak a szolgáltatásban, a Toast üzenet jó választás lehet. Az alábbi kód azt mutatja be, hogyan használható a Toast-üzenet `OnFeatureClick` az eseménnyel.
+A Toast-üzenet az egyik legegyszerűbb módja a felhasználó információinak megjelenítésének, és az Android minden verziójában elérhető. Semmilyen típusú felhasználói bevitelt nem támogat, és csak rövid ideig jelenik meg. Ha azt szeretné, hogy a felhasználó gyorsan tudja, mit találtak a szolgáltatásban, a Toast üzenet jó választás lehet. Az alábbi kód azt mutatja be, hogyan használható a Toast-üzenet az `OnFeatureClick` eseménnyel.
 
 ```java
 //Add a feature click event to the map.

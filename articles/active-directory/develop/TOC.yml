@@ -305,7 +305,7 @@
         - name: iOS és macOS
           items:
             - name: Integrálás az Azure AD B2C szolgáltatással
-              href: 'config-authority.md#b2c'
+              href: config-authority.md#b2c
             - name: Migrálás MSAL.iOS vagy macOS rendszerre
               href: migrate-objc-adal-msal.md
             - name: Megosztott eszköz mód iOS-eszközökhöz
@@ -376,6 +376,11 @@
               displayName: 'shared device mode, firstline worker, frontline worker, flw'
             - name: SameSite-cookie-k változásainak kezelése a Chrome böngészőben
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: Az 1.0-s verziójú jogkivonatokat elfogadó webes API hatókörei
+              href: msal-v1-app-scopes.md
+            - name: Alkalmazások migrálása ADAL-ból az MSAL-be
+              href: msal-migration.md
+              displayName: migration
     - name: Hitelesítési protokollok
       displayName: Auth protocol
       items:
@@ -410,6 +415,8 @@
               href: id-tokens.md
             - name: Hozzáférési jogkivonatok
               href: access-tokens.md
+            - name: UserInfo végpont
+              href: userinfo.md
             - name: Tanúsítványok hitelesítő adatai
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 protokoll
@@ -469,6 +476,34 @@
           href: /azure/active-directory/app-provisioning/scim-graph-scenarios
         - name: Automatikus konfigurálás az MS Graph használatával
           href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+    - name: Az Azure Portal súgótémakörei
+      items:
+        - name: A jogkivonatok alapértelmezett élettartama egyéni fejlesztésű alkalmazások esetében
+          href: registration-config-change-token-lifetime-how-to.md
+        - name: Végpontok felderítése
+          href: registration-config-how-to.md
+        - name: Egy adott API engedélyeinek kiválasztása
+          href: perms-for-given-api.md
+        - name: Hitelesítési protokollok
+          href: active-directory-authentication-protocols.md
+        - name: A delegált és az alkalmazásengedélyek közötti különbségek
+          href: delegated-and-app-perms.md
+        - name: Az alkalmazások jóváhagyásának működése
+          href: consent-framework-links.md
+        - name: Egy egyéni fejlesztésű alkalmazáshoz szükséges adott API megkeresése
+          href: api-find-an-api-how-to.md
+        - name: Alkalmazásregisztráció-referencia
+          href: active-directory-v2-registration-portal.md
+        - name: Az Azure Portal regisztrációs mezői egyéni fejlesztésű alkalmazásokhoz
+          href: registration-config-specific-application-property-how-to.md
+        - name: Új több-bérlős alkalmazás konfigurálása
+          href: setup-multi-tenant-app.md
+        - name: Több-bérlős alkalmazás hozzáadása az Azure AD alkalmazáskatalógusához
+          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
+        - name: Integráció az Azure Active Directoryval
+          href: active-directory-how-to-integrate.md
+        - name: Egyszeri bejelentkezés konfigurálása alkalmazásokhoz
+          href: registration-config-sso-how-to.md
 - name: Útmutatók
   items:
     - name: Hitelesítés
@@ -546,6 +581,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: Kérési viselkedés
               href: msal-js-prompt-behavior.md
+            - name: SPA migrálása implicitről hitelesítésikód-alapú folyamatra
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: MSAL iOS és macOS rendszerekre
           items:
             - name: Az MSAL iOS- és macOS-verziója közötti különbségek

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 5867c4ba7fa1447cbd5d40e15237ae50c24c7168
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e3553515e2cbae007883ad75960aa1c6991926df
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199262"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254548"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Használatalapú fizetéses egyéni előfizetés Azure-beli foglalása használatának ismertetése
 
@@ -64,7 +64,7 @@ Tegyük fel, hogy egy 4. generációs SQL Database-adatbázist futtat az USA kel
 
 | Mező | Érték |
 |---| --- |
-|ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
+|Foglalásazonosító |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Mennyiség |2|
 |Product| SQL Database Gen 4 (2 Core)|
 |Régió | eastus |
@@ -91,13 +91,13 @@ Szűrjön az **Additional Info** mezőre, és adja meg a **foglalásazonosítót
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../sql-database/sql-database-reserved-capacity.md)
+- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../azure-sql/database/reserved-capacity-overview.md)
 - [Az Azure Reservations kezelése](manage-reserved-vm-instance.md)
 - [A foglalási kedvezmény alkalmazásának ismertetése](../manage/understand-vm-reservation-charges.md)
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)

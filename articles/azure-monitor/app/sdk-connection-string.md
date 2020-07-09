@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482122"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -57,7 +57,7 @@ A kapcsolatok maximális hossza 4096 karakter.
 
 A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvesszővel elválasztott beállítások listájából áll:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Szintaxis
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`(pl.: 00000000-0000-0000-0000-000000000000)  A kapcsolatok karakterlánca mező **kitöltése kötelező** .
 - `Authorization`(pl.: rendszerállapotkulcsot) (Ez a beállítás nem kötelező, mert ma már csak a rendszerállapotkulcsot-hitelesítés támogatott.)
@@ -165,7 +165,7 @@ A kapcsolatok karakterláncát kód, környezeti változó vagy konfigurációs 
 
 TelemetryConfiguration. ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net explicit módon beállítva:
+.NET explicit módon beállítva:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -182,8 +182,16 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+Explicit módon beállított NetCore:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
-NetCore config. JSON: 
+NetCore config.jsa következőn: 
 
 ```json
 {
@@ -202,7 +210,7 @@ A Java (v 2.5. x) explicit módon be van állítva:
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights. XML
+ApplicationInsights.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

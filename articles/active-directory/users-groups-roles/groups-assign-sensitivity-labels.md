@@ -8,22 +8,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807804"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory (előzetes verzió)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory
 
-Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által az Office 365-csoportok számára közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános GA-ban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > A szolgáltatás konfigurálásához legalább egy aktív prémium szintű Azure Active Directory P1-licenccel kell rendelkeznie az Azure AD-szervezetben.
@@ -104,7 +104,7 @@ A rendszer létrehozza a csoportot, és a kiválasztott címkéhez társított h
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klasszikus Azure AD-besorolások használata
 
-A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meglévő csoportokat és helyeket fogja megjelenni, és csak akkor használja őket az új csoportokhoz, ha olyan alkalmazásokban hoz létre csoportokat, amelyek nem támogatják az érzékenységi címkéket. A rendszergazda szükség esetén később is átalakíthatja az érzékenységi címkéket. A klasszikus besorolások a régi besorolások, amelyet az Azure AD PowerShell `ClassificationList` beállítás értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
+A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meglévő csoportokat és helyeket fogja megjelenni, és csak akkor használja őket az új csoportokhoz, ha olyan alkalmazásokban hoz létre csoportokat, amelyek nem támogatják az érzékenységi címkéket. A rendszergazda szükség esetén később is átalakíthatja az érzékenységi címkéket. A klasszikus besorolások a régi besorolások, amelyet az `ClassificationList` Azure ad PowerShell beállítás értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
 
 ## <a name="troubleshooting-issues"></a>Problémák hibaelhárítása
 

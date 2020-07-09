@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: Zhchia
 ms.openlocfilehash: fabd8a1953bedf6c3db6da443903a6dbd965b01e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060987"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Oktatóanyag: a Robin konfigurálása a felhasználók automatikus üzembe helyezéséhez
@@ -159,7 +158,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -1,20 +1,14 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése webes végpontra – Event Grid, PowerShell'
 description: 'Rövid útmutató: a Azure Event Grid és a PowerShell használatával közzétehet egy egyéni témakört, és feliratkozhat az adott témakör eseményeire. Az eseményeket egy webalkalmazás kezeli.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4dbed993b4123045ae6233466cd9ca0565465a1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721439"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115026"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz a PowerShell és a Event Grid használatával
 
@@ -155,7 +149,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }]
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha tovább kívánja használni az eseményt vagy az eseménynapló alkalmazást, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
@@ -163,7 +157,7 @@ Ha tovább kívánja használni az eseményt vagy az eseménynapló alkalmazást
 Remove-AzResourceGroup -Name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

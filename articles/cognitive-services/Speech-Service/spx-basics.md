@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2e75e177c1a5af13c1907b3a1abc9218096e8d45
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800698"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801869"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
@@ -70,18 +70,22 @@ spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\spe
 
 A felismert beszédfelismerési kimenet az `speech_output.tsv` argumentum használatával íródik `--output file` . A következő példa a kimeneti fájl szerkezetét szemlélteti.
 
-    audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
-    sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
-    sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
+```output
+audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
+sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
+sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
+```
 
 ## <a name="batch-text-to-speech-synthesis"></a>Köteg szövege – beszéd szintézis
 
 A Batch szöveg-beszéd futtatásának legegyszerűbb módja egy új `.tsv` (tabulátorral tagolt) fájl létrehozása, és a parancs kihasználása a `--foreach` beszédfelismerési CLI-ben. Vegye figyelembe a következő fájlt `text_synthesis.tsv` :
 
-    audio.output    text
-    C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-    C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```output
+audio.output    text
+C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```
 
  Ezután futtasson egy parancsot, hogy mutasson rá `text_synthesis.tsv` , végezze el a szintézist az egyes `text` mezőkön, és az eredményt fájlként írja a megfelelő `audio.output` elérési útra `.wav` . 
 
@@ -97,10 +101,12 @@ Ez a parancs megegyezik a `spx synthesize --text Sample text to synthesize --aud
 
 Ha azonban a `.tsv` következő példához hasonló fájllal rendelkezik, olyan oszlopfejléceket, amelyek **nem egyeznek** a parancssori argumentumokkal:
 
-    wav_path    str_text
-    C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-    C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```output
+wav_path    str_text
+C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```
 
 Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás következő szintaxisával `--foreach` . Ez a fenti hívás.
 
@@ -108,6 +114,6 @@ Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás köv
 spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fejezze be a [beszédfelismerési](./quickstarts/speech-to-text-from-microphone.md) vagy [beszédfelismerési](./quickstarts/text-to-speech.md) útmutatókat az SDK használatával.

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: c20c5c14dc939a1ccb917495867090cf75b9f50d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a19a4414cd31c2a4f0261ba0214b99fa12490ecb
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856791"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -43,14 +43,14 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | --- | --- | --- |
 | **Ausztrália kormányzati** | Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
 | **Európa** | Közép-Franciaország, Dél-Franciaország, Észak-Németország, Középnyugat-Németország, Észak-Európa, Kelet-Norvégia, Norvégia nyugati régiója, Észak-Svájc, Nyugat-Svájc, Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Nyugat-Európa |Amszterdam, Amsterdam2, Berlin, Koppenhága, Dublin, Frankfurt, Genf, London, London2, Marseille, Milánó, München, Newport (Wales), Oslo, Párizs, Stavanger, Stockholm, Zürich, München |
-| **Észak-Amerika** | USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2, Montreal, Québec város, Toronto, Vancouver |
+| **Észak-Amerika** | USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, Minneapolis, New York, Queretaro (Mexikó), San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2, Montreal, Québec város, Toronto, Vancouver |
 | **Ázsia** | Kelet-Ázsia, Délkelet-Ázsia | Bangkok, Hongkong, Hong Kong2, Jakarta, Kuala Lumpur, Szingapúr, Szingapúr2, Taipei |
 | **India** | Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | Nyugat-Japán, Kelet-Japán |Osaka, Tokió, Tokyo2 |
 | **Óceánia** | Délkelet-Ausztrália, Kelet-Ausztrália |Auckland, Melbourne, Perth, Sydney, Sydney2 | 
 | **Dél-Korea** | Dél-Korea középső régiója, Korea déli régiója |Busan, Szöul|
 | **EAE** | UAE Central, Észak-Egyesült Arab | Dubai, Dubai2 |
-| **Dél-Afrika** | Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
+| **Dél-afrikai Köztársaság** | Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
 | **Dél-Amerika** | Dél-Brazília |Sao Paulo |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Az Azure-régiók és az országos felhők geopolitikai határai
@@ -79,9 +79,9 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | --- | --- | --- | --- | --- | --- |
 | **Amszterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | Nyugat-Európa | 10G, 100G | Aryaka Networks hálózatok,&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, felhő, Interxion, KPN, IX REACH, 3. szintű kommunikáció, Megaport, NTT Communications, Orange, Tata Communications, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amszterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | Nyugat-Európa | 10G, 100G | CenturyLink Cloud-kapcsolat, Colt, DE-CIX, euNetworks, Interxion, Orange, Vodafone |
-| **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | n.a. | n.a. | Equinix, Megaport |
+| **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | n.a. | 10G, 100G | Equinix, Megaport |
 | **Auckland** | [Vocus csoport, NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | n.a. | 10G | Devoli, Kordia, Megaport, Spark NZ, Vocus csoport, NZ |
-| **Bangkok** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | n.a. | 10G | AIS |
+| **Bangkok** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | n.a. | 10G | AIS, UIH |
 | **Berlin** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Észak-Németország | 10G | NTT globális adatközpontok EMEA|
 | **Busan** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | Dél-Korea déli régiója | n.a. | LG CNS |
 | **Canberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Ausztrália középső régiója | 10G, 100G | CDC |
@@ -94,34 +94,37 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | n.a. | 10G, 100G | Aryaka Networks hálózatok,&T NetBond, Cologix, Equinix, Internet2, level 3 Communications, Megaport, Neutrona Networks, Telmex uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | USA nyugati középső régiója | n.a. | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | Észak-Egyesült Arab | n.a. | Etisalat UAE |
-| **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Észak-Egyesült Arab | n.a. | du datamena, Megaport, Orange, Orixcom |
-| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Észak-Európa | 10G, 100G | Colt, EIR, Equinix, euNetworks, Interxion, Megaport |
-| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Középnyugat-Németország | 10G, 100G | &T NetBond, CenturyLink Cloud kapcsolatba, Colt, DE-CIX, Equinix, GEANT, Interxion, Megaport, Orange, Telia Carrier |
+| **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Észak-Egyesült Arab | n.a. | DE-CIX, du datamena, Megaport, Orange, Orixcom |
+| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Észak-Európa | 10G, 100G | Colt, EIR, Equinix, GEANT, euNetworks, Interxion, Megaport |
+| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Középnyugat-Németország | 10G, 100G | &T NetBond, CenturyLink Cloud kapcsolatba, Colt, DE-CIX, Equinix, euNetworks, GEANT, Interxion, Megaport, Orange, Telia Carrier |
 | **Genfi** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Nyugat-Svájc | 10G, 100G | Equinix, Megaport |
 | **Hongkong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Kelet-Ázsia | n.a. | Aryaka Networks Networks, British Telecom, CenturyLink Cloud, a Telecom, a kínai távközlési globális, a Equinix, a felhő, a Megaport, az NTT Communications, a narancssárga, a PCCW globális korlátozott, a Tata Communications, a Telia Carrier, a Verizon |
-| **Hong Kong2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | n.a. | 10G | Globális kínai Telekom, PCCW, globálisan korlátozott |
+| **Hong Kong2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | n.a. | 10G | China Mobile International, kínai távközlési globális, PCCW globális korlátozott |
 | **Dzsakarta** | Telkom Indonézia | 4 | n.a. | 10G | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Dél-Afrika északi régiója | 10G | BCX, British Telecom, Internet Solutions – Cloud-kapcsolat, Liquid Telecom, Orange, Teraco |
 | **Kuala Lumpur** | [Az idő dotCom Menara célja](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | n.a. | n.a. | TIME dotCom |
 | **Las Vegas** | [LV kapcsoló](https://www.switch.com/las-vegas) | 1 | n.a. | n.a. | CenturyLink Cloud Connect, Megaport |
 | **London** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Az Egyesült Királyság déli régiója | 10G, 100G | &T NetBond, British Telecom, Colt, Equinix, euNetworks, Cloud, Internet Solutions – Cloud-kapcsolat, Interxion, Jisc, level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW globális korlátozott, Tata Communications, KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
-| **London2** | [Ház, Észak-két](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Az Egyesült Királyság déli régiója | 10G, 100G | CenturyLink Cloud-kapcsolat, Colt, IX REACH, Equinix, Megaport, Magánház-KDDI |
-| **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | n.a. | 10G | CoreSite, Equinix, Megaport, Neutrona hálózatok, NTT, Transtelco, Zayo |
+| **London2** | [Ház, Észak-két](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Az Egyesült Királyság déli régiója | 10G, 100G | CenturyLink Cloud-kapcsolat, Colt, GTT, IX REACH, Equinix, Megaport, alhouse-KDDI |
+| **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | n.a. | 10G, 100G | CoreSite, Equinix, Megaport, Neutrona hálózatok, NTT, Zayo |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Dél-Franciaország | n.a. | DE-CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud-kapcsolat |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Délkelet-Ausztrália | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
-| **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n.a. | 10G | Claro, C3ntro, Equinix, Megaport, Neutrona hálózatok |
-| **Milánó** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | n.a. | 10G | |
+| **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n.a. | 10G, 100G | Claro, C3ntro, Equinix, Megaport, Neutrona hálózatok |
+| **Milánó** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | n.a. | 10G | Equinix, Retelit |
+| **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | n.a. | 10G, 100G | Cologix |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n.a. | 10G, 100G | Bell Canada, Cologix, Megaport, Telus, Zayo |
-| **Mumbai** | Tata Communications | 2 | Nyugat-India | 10G | Globális CloudXchange (GCX), bizalom jio, Sify, Tata Communications, Verizon |
+| **Mumbai** | Tata Communications | 2 | Nyugat-India | 10G | DE-CIX, globális CloudXchange (GCX), bizalom jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | 2 | Nyugat-India | n.a. | Airtel, Sify, Vodafone Idea |
-| **München** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | n.a. | 10G, 100G | |
-| **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | n.a. | n.a. | CenturyLink Cloud-kapcsolat, Colt, Coresite, Equinix, felhő, Megaport, csomag, Zayo |
+| **München** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | n.a. | 10G | DE-CIX |
+| **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | n.a. | 10G, 100G | CenturyLink Cloud-kapcsolat, Colt, Coresite, DE-CIX, Equinix, felhő, Megaport, csomag, Zayo |
 | **Newport (Wales)** | [Következő generációs adatok](https://www.nextgenerationdata.co.uk) | 1 | Az Egyesült Királyság nyugati régiója | n.a. | British Telecom, Colt, 3. szintű kommunikáció, következő generációs adatforgalom |
 | **Oszaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Nyugat-Japán | 10G, 100G | Colt, Equinix, Internet Initiative Japan Inc. – IIJ, Megaport, NTT Communications, NTT SmartConnect, Softbank |
-| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Kelet-Norvégia | 10G, 100G | Megaport, Telenor, Telia Carrier |
+| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Kelet-Norvégia | 10G, 100G | Globális kapcsolat, Megaport, Telenor, Telia Carrier |
 | **Párizs** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | Közép-Franciaország | 10G, 100G | CenturyLink Cloud-kapcsolat, Colt, Equinix, Cloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | n.a. | 10G | Megaport, NextDC |
+| **Phoenix** | [EdgeConnext PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | n.a. | 10G | |
 | **Quebec város** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | Kelet-Kanada | n.a. | Bell Canada, Megaport |
+| **Queretaro (Mexikó)** | [KIO hálózatok QR01](https://www.kionetworks.com/es-mx/) | 4 | n.a. | 10G | Transtelco|
 | **Quincy** | [Sabey Datacenter – A](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | USA nyugati régiója, 2. | 10G, 100G | | 
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1 | USA déli középső régiója | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Dél-Brazília | n.a. | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
@@ -131,7 +134,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Szilícium Valley2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | USA nyugati régiója | 10G, 100G | Colt, Coresite | 
 | **Szingapúr** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Délkelet-Ázsia | 10G, 100G | Aryaka Networks Networks,&T NetBond, British Telecom, China Mobile International, epszilon globális kommunikáció, Equinix, felhő, level 3 Communications, Megaport, NTT Communications, Orange, énekel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
 | **Singapore2** | [Globális kapcsoló, Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | Délkelet-Ázsia | 10G, 100G | Kínai Unicom Global, Colt, epszilon globális kommunikáció, Megaport, PCCW globális korlátozott, énekel |
-| **Stavanger** | [Zöld hegyi DC1](https://greenmountain.no/dc1-stavanger/) | 1 | Norvégia nyugati régiója | 10G, 100G | |
+| **Stavanger** | [Zöld hegyi DC1](https://greenmountain.no/dc1-stavanger/) | 1 | Norvégia nyugati régiója | 10G, 100G |Globális kapcsolat, Megaport |
 | **Stockholm** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | n.a. | 10G | Equinix, Telia Carrier |
 | **Sydney** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | Kelet-Ausztrália | 10G, 100G | AARNet,&T NetBond, British Telecom, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, Orange, Spark NZ, Telstra Corporation, TPG Telecom, Verizon, Vocus csoport NZ |
 | **Sydney2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | Kelet-Ausztrália | 10G, 100G | Megaport, NextDC |
@@ -141,7 +144,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | Közép-Kanada | 10G, 100G | &T NetBond, Bell Canada, CenturyLink Cloud kapcsolatba, Cologix, Equinix, IX REACH Megaport, Telus, Verizon, Zayo |
 | **Vancouver** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | n.a. | 10G | Cologix |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | USA keleti régiója, USA 2. keleti régiója | 10G, 100G | Aryaka Networks hálózatok,&T NetBond, British Telecom, CenturyLink Cloud-kapcsolat, Cologix, Colt, Comcast, Coresite, Equinix, Internet2, felhő, IX elérés, 3. szintű kommunikáció, Megaport, Neutrona hálózatok, NTT Communications, Orange, PacketFabric, SES, sprint, Tata Communications, Telia Carrier, Verizon, Zayo |
-| **Washington DC2** | [Coresite Restonban](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | USA keleti régiója, USA 2. keleti régiója | 10G, 100G | CenturyLink Cloud-kapcsolat, Coresite, Intelsat, Viasat, Zayo | 
+| **Washington DC2** | [Coresite Restonban](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | USA keleti régiója, USA 2. keleti régiója | 10G, 100G | CenturyLink Cloud-kapcsolat, Coresite, Intelsat, Megaport, Viasat, Zayo | 
 | **Zürich** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | Észak-Svájc | 10G, 100G | Felhő, Interxion, Megaport, Swisscom |
 
  **+** a hamarosan megjelenő megjegyzések
@@ -244,7 +247,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Észak-Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Dél-Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

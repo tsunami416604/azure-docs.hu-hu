@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641105"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
@@ -51,7 +50,7 @@ A Media Services 2,10 kiadástól kezdve a csatorna létrehozásakor megadhatja,
 > 
 
 ## <a name="billing-implications"></a>Számlázási következmények
-Az élő kódolási csatorna azonnal elkezdi a számlázást, amint az az API-n keresztül a "Running" állapotra vált.   Az állapotot a Azure Portal vagy a Azure Media Services Explorer eszközben is megtekintheti (https://aka.ms/amse).
+Az élő kódolási csatorna azonnal elkezdi a számlázást, amint az az API-n keresztül a "Running" állapotra vált.   Az állapotot a Azure Portal vagy a Azure Media Services Explorer eszközben is megtekintheti ( https://aka.ms/amse) .
 
 Az alábbi táblázat azt mutatja be, hogyan képezhetők le a csatornák az API-ban és Azure Portal a számlázási állapotokra. Az állapotok kis mértékben eltérnek az API és a Portal UX között. Amint a csatorna "Running" állapotban van az API-n keresztül, vagy a Azure Portal "Ready" vagy "streaming" állapotban van, a számlázás aktív lesz.
 Ha a csatornát továbbra is le szeretné állítani a számlázási adatokból, le kell állítania a csatornát az API-n vagy a Azure Portal.
@@ -73,7 +72,7 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Indítás |Indítás |Nem (átmeneti állapot) |
 | Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
-| Leállítva |Leállítva |Nem |
+| Leállítva |Leállítva |No |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Nem használt csatornák automatikus kikapcsolása
 A 2016. január 25-én kezdődően Media Services egy olyan frissítést, amely automatikusan leállítja a csatornát (ha az élő kódolás engedélyezve van), miután egy hosszú ideig nem használt állapotban fut. Ez olyan csatornákra vonatkozik, amelyek nincsenek aktív programok, és amelyek hosszabb ideig nem kaptak meg a bemeneti hozzájárulási hírcsatornát.
@@ -158,7 +157,7 @@ Szempontok:
 
 Ugyanaz, mint az [egyetlen BITRÁTA RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP)esetében.
 
-#### <a name="other-considerations"></a>Egyéb szempontok
+#### <a name="other-considerations"></a>További szempontok
 * Ha a csatorna vagy a hozzá tartozó programok már elindultak, a bemeneti protokoll nem módosítható. Ha más protokollt szeretne használni, hozzon létre külön-külön csatornákat az egyes bemeneti protokollokhoz.
 * A beérkező videó stream maximális felbontása 1920 × 1080, és legfeljebb 60 mező/másodperc, ha váltottsoros, vagy 30 képkocka/másodperc, ha progresszív.
 
@@ -313,9 +312,9 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
 | Indítás |Indítás |Nem (átmeneti állapot) |
-| Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |Igen |
+| Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |Yes |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
-| Leállítva |Leállítva |Nem |
+| Leállítva |Leállítva |No |
 
 > [!NOTE]
 > Jelenleg a csatorna indítási átlaga körülbelül 2 percet vesz igénybe, de időnként akár 20 percig is eltarthat. A csatornák alaphelyzetbe állítása akár 5 percet is igénybe vehet.

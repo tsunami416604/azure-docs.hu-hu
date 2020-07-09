@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73827415"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>A prediktív karbantartási megoldásgyorsító áttekintése
@@ -53,7 +52,7 @@ A megoldás-gyorsító egy szimulált eszköz egy légijármű-motor. A megoldá
 
 A szimulált eszközök a megoldás részét képező IoT Hubról küldött következő parancsokat tudják kezelni:
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | StartTelemetry |A szimuláció állapotát vezérli.<br/>Elindítja a telemetriát küldő eszközt |
 | StopTelemetry |A szimuláció állapotát vezérli.<br/>Leállítja a telemetriát küldő eszközt |
@@ -73,11 +72,11 @@ Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfe
 ## <a name="machine-learning"></a>Machine Learning
 A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. A [azureiotsolutions.com][lnk-azureiotsolutions] lapon megnyithatja a megoldás csempéje Machine learning munkaterületét. A csempe akkor érhető el, amikor a megoldás **Kész** állapotban van.
 
-A Machine Learning modell olyan sablonként érhető el, amely bemutatja, hogyan használhatók a IoT-megoldás gyorsító szolgáltatásain keresztül gyűjtött telemetria. A Microsoft létrehozta a repülőgép-hajtóművek [regressziós modelljét][lnk_regression_model] az<sup>\[1\]</sup>. nyilvánosan elérhető adatmennyiség alapján, és részletes útmutatást nyújt a modell használatáról.
+A Machine Learning modell olyan sablonként érhető el, amely bemutatja, hogyan használhatók a IoT-megoldás gyorsító szolgáltatásain keresztül gyűjtött telemetria. A Microsoft létrehozta a repülőgép-hajtóművek [regressziós modelljét][lnk_regression_model] az<sup> \[ 1 \] </sup>. nyilvánosan elérhető adatmennyiség alapján, és részletes útmutatást nyújt a modell használatáról.
 
 Az Azure IoT prediktív karbantartási megoldásgyorsító az ebből a sablonból létrehozott regressziós modellt használja. A modell üzembe helyezése az Azure-előfizetésében történik, és egy automatikusan generált API-n keresztül érhető el. A megoldás a 4 (100 összesen) motor és a 4 (21 teljes) érzékelő adatstreamek tesztelési értékének egy részhalmazát tartalmazza. Ezek az adatok elegendők ahhoz, hogy pontos eredményt biztosítsanak a betanított modellből.
 
-*\[1\] A. Saxena és K. Goebel (2008). "Turbofan Engine romlási szimulációs adatkészlete", NASA Ames-i (NASA) adattárház (https://c3.nasa.gov/dashlink/resources/139/), NASA Ames Research Center, Moffett Field mező, CA)*
+*\[1 \] A. Saxena és K. Goebel (2008). "Turbofan Engine romlási szimulációs adatkészlete", NASA Ames-i (NASA) adattárház ( https://c3.nasa.gov/dashlink/resources/139/) , NASA Ames Research Center, Moffett Field mező, CA)*
 
 ## <a name="next-steps"></a>További lépések
 A prediktív karbantartási megoldásgyorsító fő összetevőinek áttekintése után érdemes lehet testre szabni azt.

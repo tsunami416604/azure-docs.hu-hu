@@ -35,6 +35,8 @@
 - name: Útmutatók
   expanded: false
   items:
+    - Name: Az Azure AD-eszköz üzembe helyezésének megtervezése
+      href: plan-device-deployment.md
     - name: Az Azure AD-csatlakozás implementálásának megtervezése
       href: azureadjoin-plan.md
     - name: Helyi rendszergazdák hozzárendelése Azure AD-csatlakoztatott eszközökhöz

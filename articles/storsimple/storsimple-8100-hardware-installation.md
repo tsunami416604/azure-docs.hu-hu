@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699107"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
 
@@ -27,7 +26,7 @@ Az alábbi lépések részletesen ismertetik a StorSimple 8100 Storage-eszköz k
 ### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
 Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png)![ nagy súly ikon ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 1. Győződjön meg arról, hogy két személy áll rendelkezésre a ház súlyának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 2. Helyezze a csomagot egy sima, vízszintes felületre.
@@ -42,7 +41,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    
     **A tárolóeszköz kicsomagolt nézete**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Csomagolási mező |
    |   2 |Alsó hab |
@@ -83,7 +82,7 @@ Az eszközt olyan standard 19 hüvelykes állványra kell telepíteni, amely el�
 2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
 3. Győződjön meg arról, hogy az állványon egy 2U-tárolóhely áll rendelkezésre, amelyhez csatlakoztatni kívánja az eszközt.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png)![ nagy súly ikon ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
@@ -104,7 +103,7 @@ A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is e
 
     **Belső vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
-    Címke | Leírás
+    Címke | Description
     ----- | -----------
     1     | M 3x4 gomb – Head csavarok
     2     | Alváz-diák
@@ -118,7 +117,7 @@ A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is e
    
     **Külső sín szerelvények csatlakoztatása a rackhez**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Befogó csavar |
    |   2 |Szögletes furatos elülső állvány utáni csavar |
@@ -144,7 +143,7 @@ Az imént telepített rack Rails használatával hajtsa végre az alábbi lépé
    
     **A karima-sapkák telepítése**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Rögzítési csavar |
 
@@ -184,7 +183,7 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -195,7 +194,7 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
 
     **Az eszköz hálózati kábelezései**
 
-   |Címke | Leírás |
+   |Címke | Description |
    |----- | ----------- |
    | A    | Helyi Internet-hozzáféréssel rendelkező LAN |
    | B    | Vezérlő 0 |

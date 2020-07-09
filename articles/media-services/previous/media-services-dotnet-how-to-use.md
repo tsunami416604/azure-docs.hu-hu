@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: ebdc0aaf1242a79770fafb7bee015115084f1068
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "64724115"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077949"
 ---
 # <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel 
 
@@ -57,39 +57,39 @@ Azt is megteheti, hogy letölti a legújabb Media Services .NET SDK-biteket a Gi
    
     4. A projekt módosult, és a Media Services .NET SDK-bővítményekre, Media Services .NET SDK-ra és más függő szerelvényekre hivatkozik.
 4. A tisztább fejlesztési környezet elősegítése érdekében érdemes lehet engedélyezni a NuGet-csomagok visszaállítását. További információ: NuGet- [csomag visszaállítása "](https://docs.nuget.org/consume/package-restore).
-5. Adjon hozzá egy hivatkozást a **System. Configuration** szerelvényhez. Ez a szerelvény tartalmazza a System. Configurationt. A konfigurációs fájlok eléréséhez használt **ConfigurationManager** osztály (például app. config).
+5. Adjon hozzá egy hivatkozást **System.Configszülő** szerelvényhez. Ez a szerelvény a System.Configszülő tartalmazza. A konfigurációs fájlok eléréséhez használt **ConfigurationManager** osztály (például App.config).
    
     1. Hivatkozások hozzáadásához a hivatkozások kezelése párbeszédpanelen kattintson a jobb gombbal a projekt nevére a Megoldáskezelő. Ezután kattintson a **Hozzáadás**, majd a **hivatkozás...** elemre.
    
     2. Megjelenik a hivatkozások kezelése párbeszédpanel.
-    3. A .NET-keretrendszer szerelvények területen keresse meg és válassza ki a System. Configuration szerelvényt, majd kattintson **az OK gombra**.
-6. Nyissa meg az app. config fájlt, és adjon hozzá egy **appSettings** szakaszt a fájlhoz. Adja meg a Media Services API-hoz való kapcsolódáshoz szükséges értékeket. További információ: [hozzáférés a Azure Media Services API-hoz az Azure ad-hitelesítéssel](media-services-use-aad-auth-to-access-ams-api.md). 
+    3. A .NET-keretrendszer szerelvények területen keresse meg és válassza ki a System.Configszülő szerelvényt, majd kattintson az **OK gombra**.
+6. Nyissa meg a App.config fájlt, és adjon hozzá egy **appSettings** szakaszt a fájlhoz. Adja meg a Media Services API-hoz való kapcsolódáshoz szükséges értékeket. További információ: [hozzáférés a Azure Media Services API-hoz az Azure ad-hitelesítéssel](media-services-use-aad-auth-to-access-ams-api.md). 
 
     Állítsa be a kapcsolódáshoz szükséges értékeket az **egyszerű szolgáltatásnév** hitelesítési módszerének használatával.
 
-        ```csharp
-                <configuration>
-                ...
-                    <appSettings>
-                        <add key="AMSAADTenantDomain" value="tenant"/>
-                        <add key="AMSRESTAPIEndpoint" value="endpoint"/>
-                        <add key="AMSClientId" value="id"/>
-                        <add key="AMSClientSecret" value="secret"/>
-                    </appSettings>
-                </configuration>
-        ```
+    ```xml
+    <configuration>
+    ...
+        <appSettings>
+            <add key="AMSAADTenantDomain" value="tenant"/>
+            <add key="AMSRESTAPIEndpoint" value="endpoint"/>
+            <add key="AMSClientId" value="id"/>
+            <add key="AMSClientSecret" value="secret"/>
+        </appSettings>
+    </configuration>
+    ```
 
-7. Adja hozzá a **System. Configuration** hivatkozást a projekthez.
+7. Adja hozzá az **System.Configszülő** -hivatkozást a projekthez.
 8. Írja felül a meglévő **using** utasításokat a program.cs fájl elején a következő kóddal:
 
     ```csharp      
-            using System;
-            using System.Configuration;
-            using System.IO;
-            using Microsoft.WindowsAzure.MediaServices.Client;
-            using System.Threading;
-            using System.Collections.Generic;
-            using System.Linq;
+    using System;
+    using System.Configuration;
+    using System.IO;
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System.Threading;
+    using System.Collections.Generic;
+    using System.Linq;
     ```
 
     Ezen a ponton készen áll egy Media Services alkalmazás fejlesztésének megkezdésére.    
@@ -99,38 +99,38 @@ Azt is megteheti, hogy letölti a legújabb Media Services .NET SDK-biteket a Gi
 Íme egy kis példa, amely az AMS API-hoz csatlakozik, és felsorolja az összes elérhető adathordozó-processzort.
 
 ```csharp
-        class Program
+class Program
+{
+    // Read values from the App.config file.
+
+    private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+    private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+    private static readonly string _AMSClientId =
+        ConfigurationManager.AppSettings["AMSClientId"];
+    private static readonly string _AMSClientSecret =
+        ConfigurationManager.AppSettings["AMSClientSecret"];
+        
+    private static CloudMediaContext _context = null;
+    static void Main(string[] args)
+    {
+        AzureAdTokenCredentials tokenCredentials = 
+            new AzureAdTokenCredentials(_AADTenantDomain,
+                new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                AzureEnvironments.AzureCloudEnvironment);
+
+        var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+        _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+        
+        // List all available Media Processors
+        foreach (var mp in _context.MediaProcessors)
         {
-            // Read values from the App.config file.
-
-            private static readonly string _AADTenantDomain =
-                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
-            private static readonly string _AMSClientId =
-                ConfigurationManager.AppSettings["AMSClientId"];
-            private static readonly string _AMSClientSecret =
-                ConfigurationManager.AppSettings["AMSClientSecret"];
+            Console.WriteLine(mp.Name);
+        }
         
-            private static CloudMediaContext _context = null;
-            static void Main(string[] args)
-            {
-                AzureAdTokenCredentials tokenCredentials = 
-                    new AzureAdTokenCredentials(_AADTenantDomain,
-                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
-                        AzureEnvironments.AzureCloudEnvironment);
-
-                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-        
-                // List all available Media Processors
-                foreach (var mp in _context.MediaProcessors)
-                {
-                    Console.WriteLine(mp.Name);
-                }
-        
-            }
+    }
  ```
 
 ## <a name="next-steps"></a>További lépések

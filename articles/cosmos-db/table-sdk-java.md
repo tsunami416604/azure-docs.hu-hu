@@ -9,10 +9,9 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: c562aa462248ffcf7c71ad247e05f0a7de15cdb3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168046"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Java-Azure Cosmos DB Table API: kibocsátási megjegyzések és erőforrások
@@ -44,7 +43,7 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017. november 15. |--- |
 

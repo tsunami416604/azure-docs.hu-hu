@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 81f113aa51a7f739b506ec7e3eb5bf2cb9f49a03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302644"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>FELSŐ határ (Azure Cosmos DB)
@@ -34,7 +33,7 @@ CEILING (<numeric_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa a `CEILING` függvényt tartalmazó pozitív numerikus, negatív és nulla értékeket mutatja.  
+  Az alábbi példa a függvényt tartalmazó pozitív numerikus, negatív és nulla értékeket mutatja `CEILING` .  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  

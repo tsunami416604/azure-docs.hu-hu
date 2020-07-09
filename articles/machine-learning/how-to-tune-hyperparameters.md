@@ -8,15 +8,14 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.custom: seodec18
-ms.openlocfilehash: a58ea58ebf6fdc7d8521d204ac42fcbadeca39a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 93418369724286e8b8c967754b2fb37135094008
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189300"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027590"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -50,7 +49,7 @@ Minden hiperparaméter lehet különálló vagy folyamatos, és egy [paraméter-
 
 #### <a name="discrete-hyperparameters"></a>Különálló hiperparaméterek beállítása 
 
-A `choice` diszkrét hiperparaméterek beállítása a különálló értékek között vannak megadva. `choice`a következőket teheti:
+A diszkrét hiperparaméterek beállítása a `choice` különálló értékek között vannak megadva. `choice`a következőket teheti:
 
 * egy vagy több vesszővel tagolt érték
 * egy `range` objektum
@@ -91,7 +90,7 @@ Egy példa a paraméter területének meghatározására:
     }
 ```
 
-Ez a kód egy keresési helyet határoz meg két `learning_rate` paraméterrel `keep_probability`– és. `learning_rate`a normál eloszlás a 10-es értékkel, a szórás pedig 3. `keep_probability`egy egységes eloszlású, amelynek minimális értéke 0,05, maximális értéke pedig 0,1.
+Ez a kód egy keresési helyet határoz meg két paraméterrel – `learning_rate` és `keep_probability` . `learning_rate`a normál eloszlás a 10-es értékkel, a szórás pedig 3. `keep_probability`egy egységes eloszlású, amelynek minimális értéke 0,05, maximális értéke pedig 0,1.
 
 ### <a name="sampling-the-hyperparameter-space"></a>A hiperparaméter-terület mintavételezése
 
@@ -109,6 +108,7 @@ Véletlenszerű mintavételezés esetén a hiperparaméter értékek véletlensz
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
+from azureml.train.hyperdrive import normal, uniform, choice
 param_sampling = RandomParameterSampling( {
         "learning_rate": normal(10, 3),
         "keep_probability": uniform(0.05, 0.1),
@@ -119,10 +119,11 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Rács mintavételezése
 
-A [rács mintavételezése](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) egyszerű rácsos keresést végez a definiált keresési terület minden lehetséges értékén. Csak a használatával `choice`megadott hiperparaméterek beállítása használható. A következő terület például összesen hat mintát tartalmaz:
+A [rács mintavételezése](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) egyszerű rácsos keresést végez a definiált keresési terület minden lehetséges értékén. Csak a használatával megadott hiperparaméterek beállítása használható `choice` . A következő terület például összesen hat mintát tartalmaz:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
+from azureml.train.hyperdrive import choice
 param_sampling = GridParameterSampling( {
         "num_hidden_layers": choice(1, 2, 3),
         "batch_size": choice(16, 32)
@@ -136,10 +137,11 @@ A [Bayes mintavételezés](https://docs.microsoft.com/python/api/azureml-train-c
 
 A Bayes mintavételezés használatakor az egyidejű futtatások száma hatással van a hangolási folyamat hatékonyságára. Az egyidejű futtatások kisebb száma általában nagyobb mintavételezési konvergenciát eredményezhet, mivel a kisebb párhuzamosságok növelik a korábban befejezett futtatások előnyeit kihasználó futtatások számát.
 
-A Bayes mintavételezés csak `choice`a `uniform`és `quniform` a keresési terület feletti eloszlásokat támogatja.
+A Bayes mintavételezés csak `choice` `uniform` `quniform` a és a keresési terület feletti eloszlásokat támogatja.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
+from azureml.train.hyperdrive import uniform, choice
 param_sampling = BayesianParameterSampling( {
         "learning_rate": uniform(0.05, 0.1),
         "batch_size": choice(16, 32, 64, 128)
@@ -148,7 +150,7 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> A Bayes mintavételezés nem támogatja a korai megszakítási házirendet (lásd: [a korai megszakítási házirend meghatározása](#specify-early-termination-policy)). A Bayes paraméter mintavételének használatakor `early_termination_policy = None`állítsa be, vagy hagyja `early_termination_policy` ki a paramétert.
+> A Bayes mintavételezés nem támogatja a korai megszakítási házirendet (lásd: [a korai megszakítási házirend meghatározása](#specify-early-termination-policy)). A Bayes paraméter mintavételének használatakor állítsa be `early_termination_policy = None` , vagy hagyja ki a `early_termination_policy` paramétert.
 
 <a name='specify-primary-metric-to-optimize'/>
 
@@ -180,7 +182,7 @@ run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 
-A betanítási szkript kiszámítja a `val_accuracy` (z) és a "pontosság", amely elsődleges metrikaként szolgál. Minden alkalommal, amikor a metrika be van jelentkezve, a hiperparaméter tuning szolgáltatás fogadja. A modell fejlesztője határozza meg, hogy milyen gyakran jelentse ezt a metrikát.
+A betanítási szkript kiszámítja a (z `val_accuracy` ) és a "pontosság", amely elsődleges metrikaként szolgál. Minden alkalommal, amikor a metrika be van jelentkezve, a hiperparaméter tuning szolgáltatás fogadja. A modell fejlesztője határozza meg, hogy milyen gyakran jelentse ezt a metrikát.
 
 <a name='specify-early-termination-policy'/>
 
@@ -190,7 +192,7 @@ A gyengén teljesítő futtatások automatikus leállítása egy korai megszakí
 
 Korai megszakítási szabályzat használatakor a következő paramétereket állíthatja be a szabályzatok alkalmazása esetén:
 
-* `evaluation_interval`: a szabályzat alkalmazásának gyakorisága. Minden alkalommal, amikor a betanítási parancsfájl egy intervallumként naplózza az elsődleges metrikát. Így az `evaluation_interval` 1 a szabályzatot minden alkalommal alkalmazza, amikor a betanítási parancsfájl az elsődleges metrikát jelenti. A `evaluation_interval` 2 a szabályzatot minden más alkalommal alkalmazza, amikor a betanítási parancsfájl az elsődleges metrikát jelenti. Ha nincs megadva, `evaluation_interval` a értéke alapértelmezés szerint 1.
+* `evaluation_interval`: a szabályzat alkalmazásának gyakorisága. Minden alkalommal, amikor a betanítási parancsfájl egy intervallumként naplózza az elsődleges metrikát. Így az `evaluation_interval` 1 a szabályzatot minden alkalommal alkalmazza, amikor a betanítási parancsfájl az elsődleges metrikát jelenti. A `evaluation_interval` 2 a szabályzatot minden más alkalommal alkalmazza, amikor a betanítási parancsfájl az elsődleges metrikát jelenti. Ha nincs megadva, a értéke `evaluation_interval` alapértelmezés szerint 1.
 * `delay_evaluation`: az első szabályzat kiértékelését a megadott számú intervallumra késlelteti. Ez egy opcionális paraméter, amely lehetővé teszi, hogy az összes konfiguráció a kezdeti minimális számú intervallumra fusson, elkerülve a képzések korai megszakítását. Ha meg van adva, a házirend a evaluation_interval minden olyan többszörösét alkalmazza, amely nagyobb vagy egyenlő, mint delay_evaluation.
 
 Azure Machine Learning a következő korai megszakítási házirendeket támogatja.
@@ -199,9 +201,9 @@ Azure Machine Learning a következő korai megszakítási házirendeket támogat
 
 A [Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) egy tartalékidő-tényező/Slack-mennyiség és a kiértékelési időköz alapján felmondási szabályzat. A házirend korán leáll minden olyan futtatásnál, amelynél az elsődleges metrika nem a megadott tartalékidő-faktor/Slack-értéken belül van, a legjobb teljesítményű képzések futtatására. A következő konfigurációs paramétereket veszi figyelembe:
 
-* `slack_factor`vagy `slack_amount`: a tartalékidőt a legjobb teljesítményt nyújtó tanfolyamra vonatkozóan lehet elvégezni. `slack_factor`meghatározza a megengedett tartalékidőt arányként. `slack_amount`meghatározza a megengedett tartalékidőt abszolút értékként az arány helyett.
+* `slack_factor`vagy `slack_amount` : a tartalékidőt a legjobb teljesítményt nyújtó tanfolyamra vonatkozóan lehet elvégezni. `slack_factor`meghatározza a megengedett tartalékidőt arányként. `slack_amount`meghatározza a megengedett tartalékidőt abszolút értékként az arány helyett.
 
-    Tegyük fel például, hogy a rendszer a 10. intervallumban alkalmazza a Bandit-szabályzatot. Tegyük fel, hogy a legjobb teljesítményű Futtatás a 10-es intervallumban egy elsődleges metrika 0,8, amelynek célja az elsődleges metrika maximalizálása. Ha a házirendet a 0,2- `slack_factor` es értékkel adták meg, akkor minden olyan képzés fut, amelynek a 10. intervallumában a legjobb metrika kisebb,`slack_factor`mint 0,66 (0,8/(1 +)). Ha ehelyett a szabályzatot a 0,2-as `slack_amount` értékkel adták meg, akkor minden olyan oktatóanyag fut, amelynek a 10. intervallumában a legjobb metrika `slack_amount`kevesebb, mint 0,6 (0,8-).
+    Tegyük fel például, hogy a rendszer a 10. intervallumban alkalmazza a Bandit-szabályzatot. Tegyük fel, hogy a legjobb teljesítményű Futtatás a 10-es intervallumban egy elsődleges metrika 0,8, amelynek célja az elsődleges metrika maximalizálása. Ha a házirendet a `slack_factor` 0,2-es értékkel adták meg, akkor minden olyan képzés fut, amelynek a 10. intervallumában a legjobb metrika kisebb, mint 0,66 (0,8/(1 + `slack_factor` )). Ha ehelyett a szabályzatot a 0,2-as `slack_amount` értékkel adták meg, akkor minden olyan oktatóanyag fut, amelynek a 10. intervallumában a legjobb metrika kevesebb, mint 0,6 (0,8- `slack_amount` ).
 * `evaluation_interval`: a házirend alkalmazásának gyakorisága (opcionális paraméter).
 * `delay_evaluation`: az első szabályzat kiértékelését késlelteti a megadott számú intervallumra (opcionális paraméter).
 
@@ -268,11 +270,11 @@ Az erőforrás-költségkeretet a hiperparaméter hangolási kísérlethez a tel
 * `max_duration_minutes`: A hiperparaméter hangolási kísérlet maximális időtartama percben. A paraméter nem kötelező, és ha van, akkor a rendszer automatikusan megszakítja az ezen időtartam után futtatni kívánt futtatásokat.
 
 >[!NOTE] 
->Ha a `max_total_runs` és `max_duration_minutes` a érték is meg van adva, a hiperparaméter hangolási kísérlet leáll, amikor eléri az első két küszöbértéket.
+>Ha a `max_total_runs` és a érték is meg `max_duration_minutes` van adva, a hiperparaméter hangolási kísérlet leáll, amikor eléri az első két küszöbértéket.
 
 Emellett adja meg a betanítási futtatások maximális számát, hogy az a hiperparaméter hangolási keresés során egyidejűleg fusson.
 
-* `max_concurrent_runs`: A futtatott futtatások maximális száma egy adott pillanatban egyszerre. Ha nincs megadva, az `max_total_runs` összeset párhuzamosan fogja elindítani a rendszer. Ha meg van adva, egy 1 és 100 közötti számnak kell lennie.
+* `max_concurrent_runs`: A futtatott futtatások maximális száma egy adott pillanatban egyszerre. Ha nincs megadva, az összeset `max_total_runs` párhuzamosan fogja elindítani a rendszer. Ha meg van adva, egy 1 és 100 közötti számnak kell lennie.
 
 >[!NOTE] 
 >Az egyidejű futtatások száma a megadott számítási célra elérhető erőforrásokon van lefuttatva. Ezért győződjön meg arról, hogy a számítási cél rendelkezik a kívánt egyidejűséghez rendelkezésre álló erőforrásokkal.
@@ -288,7 +290,7 @@ Ez a kód úgy konfigurálja a hiperparaméter hangolási kísérletet, hogy leg
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
 
-[Konfigurálja a hiperparaméter hangolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) kísérletet a megadott hiperparaméter keresési területtel, a korai megszakítási házirenddel, az elsődleges metrikával és az erőforrás-elosztással a fenti fejezetekben. Továbbá adjon meg egy `estimator` , a mintául szolgáló hiperparaméterek beállítása meghívott metódust is. A `estimator` a futtatott képzési szkriptet, az erőforrások/feladatok (egy vagy több GPU) és a használni kívánt számítási célt ismerteti. Mivel a hiperparaméter-hangolási kísérletre vonatkozó Egyidejűség a rendelkezésre álló erőforrásokra van állítva, győződjön meg arról, hogy a `estimator` megfelelő erőforrásokkal rendelkezik a kívánt egyidejűséghez. (További információ a becslések: [modellek betanítása](how-to-train-ml-models.md).)
+[Konfigurálja a hiperparaméter hangolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) kísérletet a megadott hiperparaméter keresési területtel, a korai megszakítási házirenddel, az elsődleges metrikával és az erőforrás-elosztással a fenti fejezetekben. Továbbá adjon meg egy `estimator` , a mintául szolgáló hiperparaméterek beállítása meghívott metódust is. A a `estimator` futtatott képzési szkriptet, az erőforrások/feladatok (egy vagy több GPU) és a használni kívánt számítási célt ismerteti. Mivel a hiperparaméter-hangolási kísérletre vonatkozó Egyidejűség a rendelkezésre álló erőforrásokra van állítva, győződjön meg arról, hogy a `estimator` megfelelő erőforrásokkal rendelkezik a kívánt egyidejűséghez. (További információ a becslések: [modellek betanítása](how-to-train-ml-models.md).)
 
 Konfigurálja a hiperparaméter hangolási kísérletet:
 
@@ -313,7 +315,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name`a hiperparaméter-hangolási kísérlethez hozzárendelt név, és `workspace` az a munkaterület, amelyben létre kívánja hozni a kísérletet (a kísérletekről további információt a [Hogyan működik Azure Machine learning?](concept-azure-machine-learning-architecture.md))
+`experiment_name`a hiperparaméter-hangolási kísérlethez hozzárendelt név, és az `workspace` a munkaterület, amelyben létre kívánja hozni a kísérletet (a kísérletekről további információt a [hogyan működik Azure Machine learning?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>A hiperparaméter-hangolási kísérlet meleg megkezdése (opcionális)
 
@@ -329,7 +331,7 @@ warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
 warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
 ```
 
-Emellett előfordulhatnak olyan alkalmak, amikor a hiperparaméter-hangolási kísérlet egyes képzései megszakadnak a költségvetési megkötések vagy más okok miatt. Mostantól lehetséges a legutóbbi ellenőrzőponton futó egyéni képzések folytatása (feltéve, hogy a betanítási szkript kezeli az ellenőrzőpontokat). Az egyéni képzések futtatásának folytatása ugyanazt a hiperparaméter-konfigurációt fogja használni, és csatolja az adott futtatáshoz használt kimeneti mappát. A betanítási szkriptnek `resume-from` el kell fogadnia az argumentumot, amely tartalmazza azokat az ellenőrzőpontokat vagy modelleket, amelyekből folytatni szeretné a betanítást. A következő kódrészlettel folytathatja az egyéni képzések futtatását:
+Emellett előfordulhatnak olyan alkalmak, amikor a hiperparaméter-hangolási kísérlet egyes képzései megszakadnak a költségvetési megkötések vagy más okok miatt. Mostantól lehetséges a legutóbbi ellenőrzőponton futó egyéni képzések folytatása (feltéve, hogy a betanítási szkript kezeli az ellenőrzőpontokat). Az egyéni képzések futtatásának folytatása ugyanazt a hiperparaméter-konfigurációt fogja használni, és csatolja az adott futtatáshoz használt kimeneti mappát. A betanítási szkriptnek el kell fogadnia az `resume-from` argumentumot, amely tartalmazza azokat az ellenőrzőpontokat vagy modelleket, amelyekből folytatni szeretné a betanítást. A következő kódrészlettel folytathatja az egyéni képzések futtatását:
 
 ```Python
 from azureml.core.run import Run
@@ -339,7 +341,7 @@ resume_child_run_2 = Run(experiment, "resume_child_run_ID_2")
 child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
 ```
 
-A hiperparaméter hangolási kísérletet beállíthatja úgy, hogy az egy korábbi kísérletből induljon, vagy folytassa az egyéni képzések futtatását a választható paraméterek `resume_from` és `resume_child_runs` a konfiguráció használatával:
+A hiperparaméter hangolási kísérletet beállíthatja úgy, hogy az egy korábbi kísérletből induljon, vagy folytassa az egyéni képzések futtatását a választható paraméterek `resume_from` és a `resume_child_runs` konfiguráció használatával:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig

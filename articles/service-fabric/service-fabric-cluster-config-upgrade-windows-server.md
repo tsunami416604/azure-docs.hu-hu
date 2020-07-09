@@ -6,22 +6,22 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790847"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Önálló fürt konfigurációjának frissítése 
 
 Bármely modern rendszer esetében a frissítés a termék hosszú távú sikerességének kulcsa. Az Azure Service Fabric-fürt egy saját erőforrás. Ez a cikk az önálló Service Fabric-fürt konfigurációs beállításainak frissítését ismerteti.
 
-## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>A fürtkonfiguráció testreszabása a ClusterConfig. JSON fájlban
-Az önálló fürtök konfigurálása a *ClusterConfig. JSON* fájlon keresztül történik. További információ a különböző beállításokról: [önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md).
+## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>A fürt beállításainak testreszabása a ClusterConfig.jsfájlban
+Az önálló fürtök konfigurálása a *ClusterConfig.js* fájlon keresztül történik. További információ a különböző beállításokról: [önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md).
 
-A `fabricSettings` *ClusterConfig. JSON* [fürt tulajdonságai](./service-fabric-cluster-manifest.md#cluster-properties) szakaszának szakasza alatt adhat hozzá, frissíthet vagy eltávolíthat beállításokat. 
+A (z `fabricSettings` ) *ClusterConfig.jsa* [fürt tulajdonságai](./service-fabric-cluster-manifest.md#cluster-properties) szakaszának szakasza alatt adhatja hozzá, frissítheti vagy eltávolíthatja a beállításokat. 
 
-A következő JSON például egy új beállítást hoz létre a *diagnosztika* szakasz `fabricSettings` *MaxDiskQuotaInMB* :
+A következő JSON például egy új beállítást hoz létre a *diagnosztika* szakasz *MaxDiskQuotaInMB* `fabricSettings` :
 
 ```json
       {
@@ -35,7 +35,7 @@ A következő JSON például egy új beállítást hoz létre a *diagnosztika* s
       }
 ```
 
-Miután módosította a beállításokat a ClusterConfig. JSON fájlban, [tesztelje a fürtöt](#test-the-cluster-configuration) , majd [frissítse a fürtöt](#upgrade-the-cluster-configuration) , hogy alkalmazza a beállításokat a fürtön. 
+Miután módosította a ClusterConfig.jsbeállításait a fájlon, [tesztelje a fürtöt](#test-the-cluster-configuration) , majd [frissítse a fürt konfigurációját](#upgrade-the-cluster-configuration) , hogy alkalmazza a beállításokat a fürtön. 
 
 ## <a name="test-the-cluster-configuration"></a>A fürt konfigurációjának tesztelése
 A konfiguráció frissítésének megkezdése előtt tesztelheti az új fürtkonfiguráció JSON-t a következő PowerShell-szkript futtatásával az önálló csomagban:

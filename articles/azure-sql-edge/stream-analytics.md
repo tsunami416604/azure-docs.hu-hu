@@ -2,19 +2,19 @@
 title: Azure Stream Analytics Edge-feladatok használata az Azure SQL Edge használatával (előzetes verzió)
 description: Tudnivalók a Stream Analytics feladatok használatáról az Azure SQL Edge-ben (előzetes verzió)
 keywords: SQL Edge, Stream Analytics,
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b57cb8cae80381a6c2cd88358dd9284ba56c919
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254072"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Azure Stream Analytics feladatok használata az SQL Edge használatával
 
@@ -32,7 +32,7 @@ Az Azure SQL Edge a stream Analytics futtatókörnyezet natív implementációj�
 }
 ```
 
-|Mező | Leírás |
+|Mező | Description |
 |------|-------------|
 | SqlPackage | Az SQL Database DAC-csomagot tartalmazó *. zip fájl Azure Blob Storage URI azonosítója.
 | ASAJobInfo | Az ASA Edge-feladatokhoz tartozó Azure Blob Storage URI-ja.
@@ -49,11 +49,11 @@ Az Azure SQL Edge a stream Analytics futtatókörnyezet natív implementációj�
 
     **Kimenet**. Válassza ki SQL Database a kimenetként. Válassza a **SQL Database beállításainak manuális**megadása lehetőséget. Adja meg az adatbázis és a tábla konfigurációjának részleteit.
 
-    |Mező      | Leírás |
+    |Mező      | Description |
     |---------------|-------------|
     |Kimeneti alias | A kimeneti alias neve.|
-    |Adatbázis | Az SQL-adatbázis neve. Érvényes nevet kell adni az SQL Edge-példányon található adatbázisnak.|
-    |Kiszolgálónév | Az SQL-példány neve (vagy IP-címe) és portszáma. SQL Edge-telepítés esetén a kiszolgálónévhez használhatja a **TCP:., 1433** nevet.|
+    |Adatbázis | Az adatbázis neve. Érvényes nevet kell adni az SQL Edge-példányon található adatbázisnak.|
+    |Kiszolgáló neve | Az SQL-példány neve (vagy IP-címe) és portszáma. SQL Edge-telepítés esetén a kiszolgálónévhez használhatja a **TCP:., 1433** nevet.|
     |Felhasználónév | Olyan SQL-bejelentkezési fiók, amely adatolvasóval és adatírókkal fér hozzá a korábban megadott adatbázishoz.|
     |Jelszó | A korábban megadott SQL-bejelentkezési fiók jelszava.|
     |Táblázat | A folyamatos átviteli feladatokhoz használandó tábla neve.|

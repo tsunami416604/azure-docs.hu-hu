@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614485"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Java Service Fabric-alkalmazás hibakeresése az Eclipse használatával
@@ -20,7 +19,7 @@ ms.locfileid: "75614485"
 
 1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started-linux.md)című témakör lépéseit követve.
 
-2. Frissítse a hibakereséshez használni kívánt szolgáltatás entryPoint.sh, hogy elindítsa a Java-folyamatot a Távoli hibakeresési paraméterekkel. Ez a fájl a következő helyen található: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. Ebben a példában a 8001-es port van beállítva a hibakereséshez.
+2. Frissítse a hibakereséshez használni kívánt szolgáltatás entryPoint.sh, hogy elindítsa a Java-folyamatot a Távoli hibakeresési paraméterekkel. Ez a fájl a következő helyen található: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh` . Ebben a példában a 8001-es port van beállítva a hibakereséshez.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
@@ -37,7 +36,7 @@ ms.locfileid: "75614485"
    ```
 6.  Töréspontokat állíthat be a kívánt pontokon, és hibakeresést végezhet az alkalmazásban.
 
-Ha az alkalmazás összeomlik, érdemes lehet engedélyezni a coredumps is. Hajtson végre `ulimit -c` egy rendszerhéjban, és ha 0 értéket ad vissza, akkor a coredumps nem engedélyezettek. A korlátlan coredumps engedélyezéséhez hajtsa végre a következő `ulimit -c unlimited`parancsot:. Az állapotot a parancs `ulimit -a`használatával is ellenőrizheti.  Ha szeretné frissíteni a coredump-létrehozási útvonalat, hajtsa végre `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`a következőt:. 
+Ha az alkalmazás összeomlik, érdemes lehet engedélyezni a coredumps is. Hajtson végre `ulimit -c` egy rendszerhéjban, és ha 0 értéket ad vissza, akkor a coredumps nem engedélyezettek. A korlátlan coredumps engedélyezéséhez hajtsa végre a következő parancsot: `ulimit -c unlimited` . Az állapotot a parancs használatával is ellenőrizheti `ulimit -a` .  Ha szeretné frissíteni a coredump-létrehozási útvonalat, hajtsa végre a következőt: `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` . 
 
 ### <a name="next-steps"></a>További lépések
 

@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828882"
 ---
 # <a name="use-source-control-integration"></a>Verziókövetés-integrálás használata
@@ -62,7 +61,7 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
     |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például **/Runbooks**. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
     |<sup>1</sup> . automatikus szinkronizálás     | Az automatikus szinkronizálás bekapcsolásának vagy kikapcsolásának beállítása a verziókövetés adattárában.        |
     |Runbook közzététele     | Annak beállítása, hogy a runbookok automatikusan közzé legyenek-e téve a forrás-vezérlőelemről való szinkronizálás után, vagy más módon.           |
-    |Leírás     | A verziókövetés további részleteit megadó szöveg        |
+    |Description     | A verziókövetés további részleteit megadó szöveg        |
 
     <sup>1</sup> ha engedélyezni szeretné az automatikus szinkronizálást a verziókövetés Azure Repos-integrációjának konfigurálásakor, a projekt rendszergazdájának kell lennie.
 
@@ -111,7 +110,7 @@ A verziókövetés bizonyos minimális engedélyeket igényel a PATs számára. 
 
 A következő táblázat a GitHubhoz szükséges minimális PAT-engedélyeket határozza meg. A PAT a GitHubon való létrehozásával kapcsolatos további információkért lásd: [személyes hozzáférési jogkivonat létrehozása a parancssorhoz](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Hatókör  |Leírás  |
+|Hatókör  |Description  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | Hozzáférési véglegesítés állapota         |

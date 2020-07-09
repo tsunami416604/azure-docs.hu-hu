@@ -7,22 +7,22 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7cc47414dc985f6fc2fff3c57d809f307b142e30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 936501674fcf1d428de936174575440edad71de2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738515"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Hálózati biztonsági csoport folyamatábráinak konfigurálása REST API használatával
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portalra](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)

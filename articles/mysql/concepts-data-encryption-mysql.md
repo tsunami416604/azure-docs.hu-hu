@@ -6,17 +6,13 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849729"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027409"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
-
-> [!NOTE]
-> Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon a következőhöz: AskAzureDBforMySQL@service.microsoft.com .
 
 Az Azure Database for MySQL ügyfél által felügyelt kulcsokkal történő titkosítása lehetővé teszi a saját kulcs használatát (BYOK) az inaktív adatok védelméhez. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését. Az ügyfél által felügyelt titkosítással Ön felel a kulcs életciklusáért, a kulcs használati engedélyeiért, és a kulcsokkal végzett műveletek naplózásáért.
 
@@ -129,6 +125,19 @@ Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállí
 * Kezdeményezzen helyreállítási vagy olvasási replika-létrehozási folyamatot a fő Azure Database for MySQL.
 * Az újonnan létrehozott kiszolgáló (visszaállított/replika) nem elérhető állapotban marad, mert az egyedi identitása még nem kapott engedélyt a Key Vault.
 * A visszaállított/replika kiszolgálón ellenőrizze, hogy az adattitkosítási beállításokban az ügyfél által felügyelt kulcs újbóli ellenőrzése megtörtént-e, hogy az újonnan létrehozott kiszolgáló a Key Vaultban tárolt kulcshoz becsomagolja és kicsomagolja az engedélyeket.
+
+## <a name="limitations"></a>Korlátozások
+
+A Azure Database for MySQL esetében az ügyfelek által felügyelt kulcs (CMK) használatával történő inaktív adatok titkosításának támogatása néhány korlátozással rendelkezik –
+
+* A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
+* Ez a funkció csak olyan régiókban és kiszolgálókon érhető el, amelyek legfeljebb 16 TB-nyi tárterületet támogatnak. A 16TB-et támogató Azure-régiók listáját [itt](concepts-pricing-tiers.md#storage) találja a dokumentáció tárolás szakaszában.
+
+    > [!NOTE]
+    > - A fent felsorolt régiókban létrehozott összes új MySQL-kiszolgáló **elérhető**. a titkosítás támogatása az ügyfél-kezelő kulcsaival. Az időponthoz visszaállított (PITR) kiszolgáló vagy az olvasási replika nem lesz érvényes, de elméletileg az "új".
+    > - Annak ellenőrzéséhez, hogy a kiépített kiszolgáló támogatja-e a 16TB, nyissa meg a portál díjszabási szintje paneljét, és tekintse meg a kiépített kiszolgáló által támogatott maximális tárterületet. Ha a csúszkát akár 4TB is áthelyezheti, előfordulhat, hogy a kiszolgáló nem támogatja a titkosítást az ügyfél által felügyelt kulcsokkal. Az adatforgalom azonban mindig a szolgáltatás által felügyelt kulcsokkal van titkosítva. AskAzureDBforMySQL@service.microsoft.comHa bármilyen kérdése van, lépjen kapcsolatba.
+
+* A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 048161ec13edbd0cf474fb6598fdd9ff981077ae
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376630"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611679"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt figyelése az Azure-ban
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Telepítse [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása 
 * A fürt telepítési [diagnosztikai gyűjteménye](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)
 * A [EventStore szolgáltatás](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) engedélyezése a fürtben
@@ -124,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 Az HealthState = = 3 (hiba) állapotú állapotjelentést adja vissza, és további tulajdonságokat is Kinyer a EventMessage mezőből:
 
 ```kusto
@@ -191,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-A szolgáltatás runasync indításakor és befejezésekor különböző eseményeket tekinthet meg, amelyek általában az üzembe helyezéseken és a frissítéseken történnek.
+A szolgáltatás `runasync` elindításakor és befejezésekor különböző eseményeket tekinthet meg, amelyek általában az üzembe helyezéseken és a frissítéseken történnek.
 
 ![Service Fabric megoldás Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -210,7 +210,7 @@ A megbízható színészek eseményei hasonló módon tekinthetők meg:
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-A megbízható szereplők részletes eseményeinek konfigurálásához a fürt sablonjában módosíthatja `scheduledTransferKeywordFilter` a diagnosztikai bővítmény konfigurációját. Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
+A megbízható szereplők részletes eseményeinek konfigurálásához a `scheduledTransferKeywordFilter` fürt sablonjában módosíthatja a diagnosztikai bővítmény konfigurációját. Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -487,5 +487,5 @@ Ezután folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan m
 > [!div class="nextstepaction"]
 > [Fürt skálázása](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

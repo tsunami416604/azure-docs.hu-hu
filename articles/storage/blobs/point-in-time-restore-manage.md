@@ -6,15 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445440"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)
 
@@ -30,35 +29,23 @@ További információt és az előzetes verzióra való regisztrációról a kö
 
 ## <a name="install-the-preview-module"></a>Az előzetes verziójú modul telepítése
 
-Az Azure időponthoz való visszaállításának a PowerShell-lel való konfigurálásához először telepítse az az. Storage PowerShell [-modul 1.14.1-](https://www.powershellgallery.com/packages/Az.Storage/1.14.1-preview) verziójának előzetes verzióját. Az előzetes verziójú modul telepítéséhez kövesse az alábbi lépéseket:
+Az Azure időponthoz való visszaállításának PowerShell használatával történő konfigurálásához először telepítse az az. Storage Preview modul verzióját 1.14.1-Preview vagy újabb verzióra. A legújabb előzetes verzió használata ajánlott, de az időponthoz tartozó visszaállítás a 1.14.1-Preview és újabb verziókban is támogatott. Távolítsa el az az. Storage modul bármely más verzióját.
 
-1. Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
+A következő parancs az az. Storage [2.0.1 – Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) modult telepíti:
 
-1. Győződjön meg arról, hogy a PowerShellGet legújabb verziója van telepítve. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot a legújabb verzió telepítéséhez:
+```powershell
+Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
+```
 
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-1. A PowerShellGet telepítése után zárjuk be és nyissa meg újra a PowerShell ablakot.
-
-1. Telepítse a Azure PowerShell legújabb verzióját:
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. Telepítse az az. Storage Preview modult:
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 1.14.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
-
+A fenti parancshoz telepíteni kell a PowerShellGet 2.2.4.1 vagy újabb verzióját. A jelenleg betöltött verzió meghatározása:
+```powershell
+Get-Module PowerShellGet
+```
 További információ a Azure PowerShell telepítéséről: [Azure PowerShell telepítése a PowerShellGet](/powershell/azure/install-az-ps).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Időponthoz tartozó visszaállítás engedélyezése és konfigurálása
 
-Az adott időponthoz tartozó visszaállítás engedélyezése és konfigurálása előtt engedélyezze az előfeltételeket: helyreállítható törlés, a hírcsatorna módosítása és a blob verziószámozása. Az egyes funkciók engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
+Az időponthoz való visszaállítás engedélyezése és konfigurálása előtt engedélyezze a Storage-fiókra vonatkozó előfeltételeket: Soft DELETE, Change feed és blob Versioning. Az egyes funkciók engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [A Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
 - [A módosítási csatorna engedélyezése és letiltása](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
@@ -99,7 +86,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Visszaállítási művelet végrehajtása
 
-A visszaállítási művelet elindításához hívja meg a Restore-AzStorageBlobRange parancsot, és adja meg a visszaállítási pontot UTC **datetime** értékként. Megadhatja az lexicographical-tartományokat, amelyekkel visszaállíthatja a blobokat, vagy kihagyhat egy tartományt a Storage-fiók összes tárolójában lévő összes blob visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
+A visszaállítási művelet elindításához hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a visszaállítási pontot UTC **datetime** értékként. Megadhatja az lexicographical-tartományokat, amelyekkel visszaállíthatja a blobokat, vagy kihagyhat egy tartományt a Storage-fiók összes tárolójában lévő összes blob visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott. Az oldal blobok és a hozzáfűzési Blobok nem szerepelnek a visszaállításban. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
 
 A visszaállítandó Blobok tartományának megadásakor vegye figyelembe a következő szabályokat:
 
@@ -115,7 +102,7 @@ A visszaállítandó Blobok tartományának megadásakor vegye figyelembe a köv
 
 ### <a name="restore-all-containers-in-the-account"></a>A fiókban lévő összes tároló visszaállítása
 
-Ha az összes tárolót és blobot vissza szeretné állítani a Storage-fiókban, hívja meg a Restore-AzStorageBlobRange parancsot, és hagyja ki a `-BlobRestoreRange` paramétert. Az alábbi példa a Storage-fiókban lévő tárolókat a jelen pillanatban 12 órával visszaállítja a következő időpont előtt:
+Ha az összes tárolót és blobot vissza szeretné állítani a Storage-fiókban, hívja meg a **Restore-AzStorageBlobRange** parancsot, és hagyja ki a `-BlobRestoreRange` paramétert. Az alábbi példa a Storage-fiókban lévő tárolókat a jelen pillanatban 12 órával visszaállítja a következő időpont előtt:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -126,7 +113,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-a-single-range-of-block-blobs"></a>Blokkos Blobok egyetlen tartományának visszaállítása
 
-Blobok egy tartományának visszaállításához hívja meg a Restore-AzStorageBlobRange parancsot, és adja meg a paraméterhez a lexicographical és a Blobok nevét `-BlobRestoreRange` . A tartomány kezdete a befogadóban van, a tartomány vége pedig kizárólagos.
+Blobok egy tartományának visszaállításához hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a paraméterhez a lexicographical és a Blobok nevét `-BlobRestoreRange` . A tartomány kezdete a befogadóban van, a tartomány vége pedig kizárólagos.
 
 Például egy *minta-tároló*nevű tárolóban lévő Blobok visszaállításához megadhat egy olyan tartományt, amely *minta-tárolóval* kezdődik, és a *minta-container1*végződik. A kezdő és a záró tartományokban megnevezett tárolók nem kötelezőek. Mivel a tartomány vége kizárólagos, még akkor is, ha a Storage-fiók tartalmaz egy *minta-container1*nevű tárolót, a rendszer csak a *minta-tároló* nevű tárolót állítja vissza:
 
@@ -140,7 +127,7 @@ Ha meg szeretné adni a Blobok egy részhalmazát egy tárolóban a visszaállí
 $range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d -EndRange sample-container/g
 ```
 
-Ezután adja meg a tartományt a Restore-AzStorageBlobRange parancs számára. Adja meg a visszaállítási pontot a paraméter UTC **datetime** értékének megadásával `-TimeToRestore` . Az alábbi példa a megadott tartományba tartozó blobokat a jelen pillanat előtti 3 nappal visszaállítja.
+Ezután adja meg a tartományt a **Restore-AzStorageBlobRange** parancs számára. Adja meg a visszaállítási pontot a paraméter UTC **datetime** értékének megadásával `-TimeToRestore` . Az alábbi példa a megadott tartományba tartozó blobokat a jelen pillanat előtti 3 nappal visszaállítja.
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -155,7 +142,9 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 A blokkos Blobok több tartományának visszaállításához adja meg a paraméter tartományának tömbjét `-BlobRestoreRange` . Egy visszaállítási művelet legfeljebb 10 tartományt támogat. Az alábbi példa két tartományt határoz meg a *container1* és a *container4*teljes tartalmának visszaállításához:
 
 ```powershell
+# Specify a range that includes the complete contents of container1.
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
+# Specify a range that includes the complete contents of container4.
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 -EndRange container5
 
 Restore-AzStorageBlobRange -ResourceGroupName $rgName `
@@ -164,7 +153,32 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -BlobRestoreRange @($range1, $range2)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="restore-block-blobs-asynchronously"></a>A blokk Blobok aszinkron visszaállítása
+
+Ha aszinkron módon szeretné futtatni a visszaállítási műveletet, adja hozzá a `-AsJob` paramétert a **Restore-AzStorageBlobRange** hívásához, és tárolja a hívás eredményét egy változóban. A **Restore-AzStorageBlobRange** parancs **AzureLongRunningJob**típusú objektumot ad vissza. Az objektum State ( **állapot** ) tulajdonságát megtekintve megállapíthatja, hogy a visszaállítási művelet befejeződött-e. Lehet, hogy az **állapot** tulajdonság értéke **fut** vagy **befejeződött**.
+
+Az alábbi példa bemutatja, hogyan hívhat meg aszinkron módon a visszaállítási műveletet:
+
+```powershell
+$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddMinutes(-5) `
+    -AsJob
+
+# Check the state of the job.
+$job.State
+```
+
+Ha a Futtatás után szeretné megvárni a visszaállítási művelet befejezését, hívja meg a [WAIT-Job](/powershell/module/microsoft.powershell.core/wait-job) parancsot az alábbi példában látható módon:
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>Ismert problémák
+- A restores egy részhalmaza, ahol a hozzáfűző Blobok jelennek meg, a visszaállítás sikertelen lesz. Egyelőre ne végezzen visszaállítást, ha a fiókban található hozzáfűzési Blobok szerepelnek.
+
+## <a name="next-steps"></a>További lépések
 
 - [Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)](point-in-time-restore-overview.md)
 - [Helyreállítható törlés](soft-delete-overview.md)

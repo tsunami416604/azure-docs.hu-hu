@@ -7,43 +7,43 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: db5cabd82ebfed3b1de7659e4b9450ccee0ff001
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/04/2020
+ms.openlocfilehash: 8eabb6806dee96871648ea419ba36d768d32a2ab
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82115295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078166"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>Rövid útmutató: Azure Blockchain-szolgáltatásbeli tag létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Rövid útmutató: Azure Blockchain-szolgáltatásbeli tag létrehozása ARM-sablonnal
 
-Ebben a rövid útmutatóban egy új blockchain-tagot és-konzorciumot helyez üzembe az Azure Blockchain Service-ben egy Azure Resource Manager sablon használatával.
-
-Az Azure Blockchain szolgáltatás tagja egy Blockchain-csomópont egy privát konzorcium Blockchain-hálózatában. Egy tag kiépítés esetén létrehozhat vagy csatlakozhat konzorciumi hálózathoz. Legalább egy tagnak szüksége van egy konzorciumi hálózatra. A résztvevők által igényelt blockchain-tagok száma a forgatókönyvtől függ. A konzorcium résztvevői rendelkezhetnek egy vagy több blockchain-taggal, vagy megoszthatnak más résztvevőkkel rendelkező tagokat is. A konzorciumokkal kapcsolatos további információkért lásd: [Azure Blockchain Service Consortium](consortium.md).
+Ebben a rövid útmutatóban egy új blockchain-tagot és-konzorciumot helyez üzembe az Azure Blockchain Service-ben egy Azure Resource Manager-sablon (ARM-sablon) használatával. Az Azure Blockchain szolgáltatás tagja egy Blockchain-csomópont egy privát konzorcium Blockchain-hálózatában. Egy tag kiépítés esetén létrehozhat vagy csatlakozhat konzorciumi hálózathoz. Legalább egy tagnak szüksége van egy konzorciumi hálózatra. A résztvevők által igényelt blockchain-tagok száma a forgatókönyvtől függ. A konzorcium résztvevői rendelkezhetnek egy vagy több blockchain-taggal, vagy megoszthatnak más résztvevőkkel rendelkező tagokat is. A konzorciumokkal kapcsolatos további információkért lásd: [Azure Blockchain Service Consortium](consortium.md).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincs.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/201-blockchain-asaservice/)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/)származik.
 
-[!code-json[<Azure Resource Manager template create blockchain member>](~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
 
 A sablonban definiált Azure-erőforrások:
 
-* [**Microsoft. Blockchain/blockchainMembers**](https://docs.microsoft.com/azure/templates/microsoft.blockchain/blockchainmembers)
+* [**Microsoft. Blockchain/blockchainMembers**](/azure/templates/microsoft.blockchain/blockchainmembers)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. A következő hivatkozásra kattintva jelentkezzen be az Azure-ba, és nyisson meg egy sablont.
 
-    [![Üzembe helyezés az Azure-ban](./media/create-member-template/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
+    [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 
 1. Az Azure Blockchain Service-tag beállításainak megadása.
 
@@ -62,7 +62,13 @@ A sablonban definiált Azure-erőforrások:
 
   A Azure Portal a sablon üzembe helyezéséhez használja a rendszer. Használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
+
+A Azure Portal használatával megtekintheti az üzembe helyezett Azure Blockchain-szolgáltatás tagjainak részleteit. A portálon nyissa meg az Azure Blockchain-szolgáltatás tagját tartalmazó erőforráscsoportot. Válassza ki a létrehozott blockchain-tagot.
+
+![Üzembe helyezett Azure Blockchain-tagok áttekintése – részletek a Azure Portal](./media/create-member-template/deployed-member.png)
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Használhatja a következő rövid útmutatóhoz vagy oktatóanyaghoz létrehozott blockchain tagot. Ha már nincs rá szükség, törölheti az erőforrásokat a gyors útmutatóhoz létrehozott erőforráscsoport törlésével.
 
@@ -71,7 +77,7 @@ Az erőforráscsoport törlése:
 1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
 2. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy Azure Blockchain-szolgáltatási tagot és egy új konzorciumot. Próbálja ki a következő rövid útmutatót a Ethereum készült Azure Blockchain Development Kit használatával az Azure Blockchain-szolgáltatáshoz való csatlakoztatáshoz.
 

@@ -6,12 +6,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84423921"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -31,16 +30,18 @@ Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségein
 
 A módosítások érvénybe léptetésének dátuma:
 
-| Felhő                | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma      |
-|----------------------|--------------------|-------------------------|
-| Azure (globális)       |  2020. január 13.  | Május 11., 2020            |
-| Azure Government     |  Március 13., 2020    | Május 11., 2020            |
-| Azure Germany        |  Március 13., 2020    | Május 11., 2020            |
-| Azure China 21Vianet |  Március 13., 2020    | Május 11., 2020            |
+| Felhő                | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma         |
+|----------------------|--------------------|----------------------------|
+| Azure (globális)       |  2020. január 13.  | A COVID 19 miatt elhalasztották  |
+| Azure Government     |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |
+| Azure Germany        |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |
+| Azure China 21Vianet |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |
+
+Megjegyzés: a 2. fázis új dátuma még nincs meghatározva
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Annak ellenőrzését, hogy az alkalmazás már megfelelő-e
 
-A legkönnyebben megtudhatja, hogy az alkalmazás a TLS 1,2-mel működik-e, ha a TLS- **verzió minimális** értékét a TLS 1,2 értékre állítja egy olyan tesztelési vagy előkészítési gyorsítótárban, amelyet használ. A **TLS minimális verziója** beállítás a Azure Portal gyorsítótár-példányának [speciális beállításaiban](cache-configure.md#advanced-settings) található. Ha az alkalmazás a változás után is továbbra is a várt módon működik, valószínűleg megfelelőnek kell lennie. Előfordulhat, hogy az alkalmazás által használt egyes Redis-kódtárakat külön kell konfigurálnia, hogy engedélyezze a TLS 1,2-et, hogy az adott biztonsági protokollon keresztül Redis az Azure cache-hez.
+A legkönnyebben megtudhatja, hogy az alkalmazás a TLS 1,2-mel működik-e, ha a TLS- **verzió minimális** értékét a TLS 1,2-re állítja be egy tesztelési vagy előkészítési gyorsítótárban, majd futtatja a teszteket. A **TLS minimális verziója** beállítás a Azure Portal gyorsítótár-példányának [speciális beállításaiban](cache-configure.md#advanced-settings) található.  Ha az alkalmazás a változás után is továbbra is a várt módon működik, valószínűleg megfelelőnek kell lennie. Előfordulhat, hogy konfigurálnia kell az alkalmazás által használt Redis ügyféloldali kódtárat a TLS 1,2 engedélyezéséhez ahhoz, hogy csatlakozni lehessen az Azure cache-hez a Redis.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Az alkalmazás konfigurálása a TLS 1,2 használatára
 
@@ -57,9 +58,9 @@ A Redis .NET-ügyfelek alapértelmezés szerint a legkorábbi TLS-verziót haszn
 
 A .NET Core-ügyfelek alapértelmezés szerint az operációs rendszer alapértelmezett TLS-verziójára Redis, ami nyilvánvalóan az operációs rendszertől függ. 
 
-Attól függően, hogy mikor adták ki az operációs rendszert, és ha bármilyen más javítás módosította az alapértelmezett TLS-verziót, az operációs rendszer TLS-verziója meglehetősen változatos lehet. Habár nem áll rendelkezésre teljes információ erről a Windows operációs rendszerhez, pontosabban [itt](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)talál további információt. 
+Az operációs rendszer verziójától és az alkalmazott javításoktől függően a jelenlegi alapértelmezett TLS-verzió változhat. Ez a cikk egy, a Windows rendszerre vonatkozó [információt is biztosít](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) . 
 
-Ha azonban egy régebbi operációs rendszert használ, vagy csak azt szeretné, hogy az ügyfélen keresztül manuálisan konfigurálja az előnyben részesített TLS-verziót.
+Ha azonban egy régebbi operációs rendszert használ, vagy csak azt szeretné, hogy biztosan biztos legyen benne, javasoljuk, hogy az ügyfélen keresztül manuálisan konfigurálja az elsődleges TLS-verziót.
 
 
 ### <a name="java"></a>Java

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74082667"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134930"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V-ről Azure-ba történő vészhelyreállítás architektúrája
 
@@ -67,14 +67,14 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 ### <a name="enable-protection"></a>Védelem engedélyezése
 
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
-2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
-3. A feladat elindítja a kezdeti replikációt a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
-4. A feladatot a **feladatok** lapon követheti nyomon.      ![Feladatok lista](media/hyper-v-azure-architecture/image1.png) ![a védelem lefúrásának engedélyezése](media/hyper-v-azure-architecture/image2.png)
+2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
+3. A feladat elindítja a kezdeti replikációt a [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
+4. A feladatot a **feladatok** lapon követheti nyomon.      ![Feladatok listája ](media/hyper-v-azure-architecture/image1.png) ![ Védelem lefúrásának engedélyezése](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Kezdeti adatreplikálás
 
-1. A kezdeti replikáció indításakor a rendszer a [Hyper-V virtuális gép pillanatképének](https://technet.microsoft.com/library/dd560637.aspx) pillanatképét is elvégzi.
+1. A kezdeti replikáció indításakor a rendszer a [Hyper-V virtuális gép pillanatképének](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) pillanatképét is elvégzi.
 2. A virtuális GÉPEN lévő virtuális merevlemezeket egyenként replikálja a rendszer, amíg az összes Azure-ba át nem másolja őket. A virtuális gép méretétől és a hálózati sávszélességtől függően ez eltarthat egy ideig. [Megtudhatja, hogyan](https://support.microsoft.com/kb/3056159) növelheti a hálózati sávszélességet.
 3. Ha a lemez megváltozik, miközben a kezdeti replikálás folyamatban van, a Hyper-V replika replikációs nyomon követése a változásokat Hyper-V replikációs naplókként (. HRL) követi nyomon. Ezek a naplófájlok ugyanabban a mappában találhatók, mint a lemezek. Minden lemezhez tartozik egy. HRL fájl, amelyet a rendszer a másodlagos tárolóba továbbít. A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
 4. A kezdeti replikáció befejeztével a rendszer törli a virtuális gép pillanatképét.
@@ -140,7 +140,7 @@ Miután a helyszíni infrastruktúra újra működik, visszatérhet. A feladat-v
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [Ez az oktatóanyag](tutorial-prepare-azure.md) ismerteti a Hyper-V és az Azure közötti replikáció megkezdését.

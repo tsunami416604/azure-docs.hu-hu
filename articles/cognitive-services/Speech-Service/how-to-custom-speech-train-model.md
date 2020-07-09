@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bf9209e0c256412ccb06ea62a197046a7b012e00
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722626"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629020"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Modell betanítása a Custom Speech szolgáltatáshoz
 
-A beszédfelismerési modell betanítása javíthatja a Microsoft alapmodelljének felismerési pontosságát. A modell emberi címkével ellátott átírásokkal és kapcsolódó szöveggel van betanítva. Ezek az adatkészletek a korábban feltöltött hangadatokkal együtt a beszéd-szöveg modell pontosítására és betanítására szolgálnak, hogy felismerjék a szavakat, kifejezéseket, betűszókat, neveket és más termékspecifikus kifejezéseket. Minél több tartományi adatkészletet ad meg (amelyek a felhasználók által kimondott és a várhatóan felismert adatokkal kapcsolatosak), annál pontosabbak lesznek a modell, ami jobb felismerést eredményez. Ne feledje, hogy a nem kapcsolódó adatoknak a képzésbe való etetésével csökkentheti vagy megsértheti a modell pontosságát.
+A beszédfelismerési modell betanítása javíthatja a Microsoft alapmodelljének felismerési pontosságát. A modell emberi címkével ellátott átírásokkal és kapcsolódó szöveggel van betanítva. Ezek az adatkészletek a korábban feltöltött hangadatokkal együtt a beszéd-szöveg modell pontosítására és betanítására szolgálnak.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>A pontossággal kapcsolatos problémák megoldása a képzés használatával
 
@@ -39,7 +39,7 @@ Ha a modell felismerésével kapcsolatos problémákat tapasztal, az emberi cím
 A modellek betanításának első lépése a betanítási adatok feltöltése. Az emberi címkével ellátott átiratok és a kapcsolódó szövegek (hosszúságú kimondott szöveg és kiejtések) előkészítéséhez használja az [előkészítés és a tesztelés](how-to-custom-speech-test-data.md) részletes útmutatását. A betanítási adatai feltöltése után kövesse az alábbi utasításokat a modell képzésének megkezdéséhez:
 
 1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
-2. Navigáljon a **beszéd-szöveg > Custom Speech > képzésre**.
+2. Navigáljon a **beszéd – szöveg > Custom Speech > [projekt neve] > képzés**elemre.
 3. Kattintson a **tanítási modell**elemre.
 4. Ezután adja meg a betanítás **nevét** és **leírását**.
 5. A **forgatókönyv és az alapterv modell** legördülő menüben válassza ki a tartományhoz legjobban illő forgatókönyvet. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános**lehetőséget. Az alapmodell a betanítás kiindulási pontja. A legújabb modell általában a legjobb választás.

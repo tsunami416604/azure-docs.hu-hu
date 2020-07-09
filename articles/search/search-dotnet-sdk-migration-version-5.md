@@ -9,16 +9,15 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 32749037ac0abe3c55878c3adaaeff48183ae685
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793025"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080411"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Frissítés a Azure Search .NET SDK 5-ös verziójára
 
-Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)-hoz készült 4,0-es vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás 5-ös verzióra való frissítéséhez.
+Ha a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)4,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás 5-ös verzióra való frissítéséhez.
 
 Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
@@ -35,14 +34,14 @@ A Azure Search .NET SDK 5-ös verziója néhány változást tartalmaz a korább
 A Azure Search .NET SDK 5-ös verziója a Azure Search REST API legújabb általánosan elérhető verzióját célozza meg, pontosabban 2017-11-11. Ez lehetővé teszi a Azure Search új funkcióinak használatát egy .NET-alkalmazásból, beleértve a következőket:
 
 * [Szinonimák](search-synonyms.md).
-* Mostantól programozott módon férhet hozzá a figyelmeztetésekhez az indexelő végrehajtási előzményeiben ( `Warning` további részletekért lásd a `IndexerExecutionResult` [.net-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) található tulajdonságot).
+* Mostantól programozott módon férhet hozzá a figyelmeztetésekhez az indexelő végrehajtási előzményeiben ( `Warning` `IndexerExecutionResult` További részletekért lásd a [.net-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) található tulajdonságot).
 * A .NET Core 2 támogatása.
 * Az új csomag szerkezete csak az SDK által igényelt részek használatát támogatja (részletekért lásd az [5. verzióban](#ListOfChanges) megjelenő változásokat).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>A frissítés lépései
-Először frissítse a NuGet-referenciát `Microsoft.Azure.Search` a NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
+Először frissítse a NuGet-referenciát a `Microsoft.Azure.Search` NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
 Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént. Ha igen, készen állsz!
 
@@ -64,11 +63,11 @@ A felépítési hibák vagy figyelmeztetések kijavítása után módosíthatja 
 
 ### <a name="new-package-structure"></a>Új csomag szerkezete
 
-Az 5-ös verzió legjelentősebb változása, `Microsoft.Azure.Search` hogy a szerelvény és annak tartalma négy különálló szerelvényre oszlik, amelyek most négy külön NuGet-csomagként vannak elosztva:
+Az 5-ös verzió legjelentősebb változása, hogy a `Microsoft.Azure.Search` szerelvény és annak tartalma négy különálló szerelvényre oszlik, amelyek most négy külön NuGet-csomagként vannak elosztva:
 
  - `Microsoft.Azure.Search`: Ez egy olyan meta-csomag, amely tartalmazza az összes többi Azure Search-csomagot függőségként. Ha az SDK egy korábbi verziójáról frissít, egyszerűen frissítse ezt a csomagot, és az újbóli kiépítésnek elegendőnek kell lennie az új verzió használatának megkezdéséhez.
- - `Microsoft.Azure.Search.Data`: Akkor használja ezt a csomagot, ha Azure Search használatával fejleszt .NET-alkalmazást, és csak az indexekben lévő dokumentumok lekérdezésére vagy frissítésére van szükség. Ha indexeket, szinonimákat vagy más szolgáltatási szintű erőforrásokat is létre kell hoznia vagy frissítenie, használja helyette `Microsoft.Azure.Search` a csomagot.
- - `Microsoft.Azure.Search.Service`: Akkor használja ezt a csomagot, ha az Automation szolgáltatást a .NET-ben fejleszti a Azure Search indexek, a szinonimák, az indexelő, az adatforrások vagy más szolgáltatási szintű erőforrások kezeléséhez. Ha csak az indexekben lévő dokumentumokat kell lekérdezni vagy frissítenie, használja `Microsoft.Azure.Search.Data` helyette a csomagot. Ha Azure Search összes funkcióját szeretné használni, használja helyette `Microsoft.Azure.Search` a csomagot.
+ - `Microsoft.Azure.Search.Data`: Akkor használja ezt a csomagot, ha Azure Search használatával fejleszt .NET-alkalmazást, és csak az indexekben lévő dokumentumok lekérdezésére vagy frissítésére van szükség. Ha indexeket, szinonimákat vagy más szolgáltatási szintű erőforrásokat is létre kell hoznia vagy frissítenie, használja `Microsoft.Azure.Search` helyette a csomagot.
+ - `Microsoft.Azure.Search.Service`: Akkor használja ezt a csomagot, ha az Automation szolgáltatást a .NET-ben fejleszti a Azure Search indexek, a szinonimák, az indexelő, az adatforrások vagy más szolgáltatási szintű erőforrások kezeléséhez. Ha csak az indexekben lévő dokumentumokat kell lekérdezni vagy frissítenie, használja `Microsoft.Azure.Search.Data` helyette a csomagot. Ha Azure Search összes funkcióját szeretné használni, használja `Microsoft.Azure.Search` helyette a csomagot.
  - `Microsoft.Azure.Search.Common`: A Azure Search .NET-kódtárak által igényelt általános típusok. Ezt a csomagot nem szükséges közvetlenül az alkalmazásában használni; Csak függőségként használható.
  
 Ez a változás technikailag feltört, mivel számos típust helyeztek át a szerelvények között. Ezért szükséges az alkalmazás újjáépítése az SDK 5-ös verziójára való frissítéshez.
@@ -77,7 +76,7 @@ Az 5-ös verzióban kis mennyiségű egyéb, az alkalmazás újraépítése mell
 
 ### <a name="change-to-suggesters"></a>Váltás a javaslatokra 
 
-A `Suggester` konstruktor már nem rendelkezik `enum` paraméterrel a következőhöz:. `SuggesterSearchMode` Ez a felsorolás csak egy értéket tartalmazott, ezért redundáns volt. Ha a felépítési hibákat látja ennek eredményeképpen, egyszerűen távolítsa el a `SuggesterSearchMode` paraméterre mutató hivatkozásokat.
+A `Suggester` konstruktor már nem rendelkezik `enum` paraméterrel a következőhöz: `SuggesterSearchMode` . Ez a felsorolás csak egy értéket tartalmazott, ezért redundáns volt. Ha a felépítési hibákat látja ennek eredményeképpen, egyszerűen távolítsa el a paraméterre mutató hivatkozásokat `SuggesterSearchMode` .
 
 ### <a name="removed-obsolete-members"></a>Elavult tagok eltávolítva
 
@@ -88,7 +87,7 @@ Előfordulhat, hogy a korábbi verziókban elavultként megjelölt metódusokkal
 
 ### <a name="removed-preview-features"></a>Előzetes verziójú funkciók eltávolítva
 
-Ha a 4,0-es verzióról frissít az 5. verzióra, vegye figyelembe, hogy a rendszer eltávolította a JSON-tömb és a CSV-elemző támogatását a blob indexek esetében, mivel ezek a funkciók még előzetes verzióban vannak. Az `IndexingParametersExtensions` osztály következő módszerei el lettek távolítva:
+Ha a 4,0-es verzióról frissít az 5. verzióra, vegye figyelembe, hogy a rendszer eltávolította a JSON-tömb és a CSV-elemző támogatását a blob indexek esetében, mivel ezek a funkciók még előzetes verzióban vannak. Az osztály következő módszerei `IndexingParametersExtensions` el lettek távolítva:
 
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`

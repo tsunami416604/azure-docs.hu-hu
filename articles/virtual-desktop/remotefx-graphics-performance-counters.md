@@ -9,10 +9,9 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79127559"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
@@ -35,7 +34,7 @@ A grafikus teljesítményszámlálók azonosításához szüksége lesz a távol
 
 Miután meghatározta a távoli munkamenet nevét, kövesse az alábbi utasításokat, hogy összegyűjtse a távoli munkamenethez tartozó távoli grafikus teljesítményszámlálókat.
 
-1. Válassza a**felügyeleti eszközök** > **Teljesítményfigyelő** **indítása** > elemet.
+1. Válassza **Start**a  >  **felügyeleti eszközök**  >  **Teljesítményfigyelő**indítása elemet.
 2. A **Teljesítményfigyelő** párbeszédpanelen bontsa ki a **figyelési eszközök**elemet, válassza a **Teljesítményfigyelő**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 3. A **számlálók hozzáadása** párbeszédpanelen, a **rendelkezésre álló számlálók** listából bontsa ki a távoli rendszerképekhez tartozó szakaszt.
 4. Válassza ki a figyelni kívánt számlálókat.

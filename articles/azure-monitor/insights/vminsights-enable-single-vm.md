@@ -5,73 +5,45 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: 45bc8f16a547d4a95820f9dcd02132844b3be83c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 4cdb9390b3146df74f2cbe8eba7b170a5d11fb2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507058"
 ---
-# <a name="enable-azure-monitor-for-vms-in-the-azure-portal"></a>Azure Monitor for VMs engedélyezése a Azure Portal
+# <a name="enable-azure-monitor-for-single-vm-or-vmss-in-the-azure-portal"></a>Azure Monitor engedélyezése egyetlen virtuális géphez vagy VMSS a Azure Portal
+Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Portal használatával. Ez az eljárás a következő módon használható:
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy kis számú Azure-beli virtuális gépen (VM) a Azure Portal használatával. A cél a virtuális gépek monitorozása és a teljesítmény-vagy rendelkezésre állási problémák felderítése. 
+- Azure virtuális gép
+- Azure virtuálisgép-méretezési csoport
+- Azure arc-gép
 
 Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overview.md) , és győződjön meg arról, hogy az előfizetése és erőforrásai megfelelnek a követelményeknek.  
 
-## <a name="enable-monitoring-for-a-single-azure-vm"></a>Egyetlen Azure-beli virtuális gép figyelésének engedélyezése
-Az Azure-beli virtuális gép monitorozásának engedélyezése:
+## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza a **Virtual Machines**lehetőséget.
+1. Válassza ki a **virtuális gépeket**, a **virtuálisgép-méretezési csoportokat**vagy a **gépeket – Azure ív**.
 
-1. Válasszon ki egy virtuális gépet a listából.
+1. Válasszon ki egy erőforrást a listából.
 
-1. A virtuális gép lap **figyelés** területén válassza az **eredmények elemet, majd az** **Engedélyezés**lehetőséget.
+1. A menü **figyelés** területén válassza az **eredmények lehetőséget, majd** **engedélyezze**a beállítást. Az alábbi példa egy Azure-beli virtuális gépet mutat be, de a menü hasonló az Azure VMSS vagy az Azure archoz.
 
     ![Virtuális gép Azure Monitor for VMsának engedélyezése](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. Ha egy meglévő Log Analytics munkaterülettel rendelkezik ugyanabban az előfizetésben, akkor a **Azure monitor** megállapítások bevezetése lapon válassza ki azt a legördülő listából.  
+1. Ha a virtuális gép még nem csatlakozik Log Analytics munkaterülethez, a rendszer kérni fogja, hogy válasszon egyet. Ha korábban még nem [hozott létre munkaterületet](../../azure-monitor/learn/quick-create-workspace.md), akkor kiválaszthatja azt a helyet, ahol a virtuális gép vagy a VMSS telepítve van az előfizetésben. A rendszer létrehozza és konfigurálja ezt a munkaterületet, ha még nem létezik.
 
-    A lista előjelöli az alapértelmezett munkaterületet és helyet, ahol a virtuális gép üzembe lett helyezve az előfizetésben. 
-
-    >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok virtuális gépről való tárolásához, tekintse meg a [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakört. A Log Analytics-munkaterületnek a [támogatott régiók](vminsights-enable-overview.md#log-analytics)egyikéhez kell tartoznia.
-
-6. Az állapotüzenetek a konfiguráció elvégzése után kapják meg az üzeneteket.
-
-    ![Azure Monitor for VMs figyelés telepítésének engedélyezése](media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
-
-## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Egyetlen virtuálisgép-méretezési csoport figyelésének engedélyezése
-
-Az Azure virtuálisgép-méretezési csoport figyelésének engedélyezéséhez tegye a következőket:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-2. Válassza a **Virtual Machine Scale sets**lehetőséget.
-
-3. A listából válassza ki a virtuálisgép-méretezési csoport elemet.
-
-4. A virtuálisgép-méretezési csoport lap **figyelés** területén válassza az eredmények elemet, **majd az** **Engedélyezés**lehetőséget.
-
-5. Ha meglévő Log Analytics munkaterületet szeretne használni, a megállapítások **lapon válassza** ki azt a legördülő listából.
-
-    A lista előadja az alapértelmezett munkaterületet és helyet, amelyre a virtuális gép telepítve van az előfizetésben. 
-
-    ![Virtuálisgép-méretezési csoport Azure Monitor for VMsának engedélyezése](media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
-
-    >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatoknak a virtuálisgép-méretezési csoportból való tárolásához, tekintse meg [a log Analytics munkaterület létrehozása](../learn/quick-create-workspace.md)című témakört. A Log Analytics-munkaterületnek a [támogatott régiók](vminsights-enable-overview.md#log-analytics)egyikéhez kell tartoznia.
-
-6. Az állapotüzenetek a konfiguráció elvégzése után kapják meg az üzeneteket.
+2. Az állapotüzenetek a konfiguráció elvégzése után kapják meg az üzeneteket.
 
     >[!NOTE]
     >Ha a méretezési csoporthoz manuális frissítési modellt használ, frissítse a példányokat a telepítés befejezéséhez. A frissítések elindításához a **példányok** lapon, a **Beállítások** szakaszban olvashat.
-    
-    ![Azure Monitor for VMs figyelés telepítésének engedélyezése](media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status.png)
 
-Most, hogy engedélyezte a virtuális gép vagy a virtuálisgép-méretezési csoport figyelését, a figyelési információk a Azure Monitor for VMs elemzéséhez érhetők el. 
+    ![Azure Monitor for VMs figyelés telepítésének engedélyezése](media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019400"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolódási és hálózatkezelési problémái: gyakori kérdések (GYIK)
@@ -38,7 +37,7 @@ Vegyen fel szabályokat a NSG, amelyek engedélyezik a forgalmat a **3389** -es 
 
 Nem, nem a normál "ping"/ICMP protokoll használatával. Az ICMP protokoll használata nem engedélyezett az Azure Load balancerben.
 
-A kapcsolat teszteléséhez javasoljuk, hogy végezzen ping portot. Míg a ping. exe ICMP protokollt használ, más eszközöket (például PSPing, nmap és Telnet) is használhat egy adott TCP-porthoz való kapcsolódás tesztelésére.
+A kapcsolat teszteléséhez javasoljuk, hogy végezzen ping portot. Míg a Ping.exe ICMP protokollt használ, más eszközöket (például PSPing, nmap és Telnet) is használhat egy adott TCP-porthoz való csatlakozás teszteléséhez.
 
 További információ: [Az Azure-beli virtuális gépek kapcsolatának tesztelése az ICMP helyett a portokat használó pingek használata](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
 
@@ -65,14 +64,14 @@ A használt terjesztési algoritmus egy 5 rekordos (forrás IP-cím, forrásport
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hogyan lehet átirányítani a bejövő forgalmat a Cloud Service alapértelmezett URL-címére egy egyéni URL-címre?
 
-Az IIS URL-Újraírási moduljának használatával átirányíthatja a felhőalapú szolgáltatás (például \*. cloudapp.net) alapértelmezett URL-címére irányuló forgalmat egy egyéni névre vagy URL-címre. Mivel az URL-cím újraírása modul alapértelmezés szerint engedélyezve van a webes szerepkörökön, és a szabályai az alkalmazás Web. config fájljában vannak konfigurálva, a rendszer a újraindítások/rendszerképektől függetlenül mindig elérhető a virtuális gépen. További információt a következő témakörben talál:
+Az IIS URL-Újraírási moduljának használatával átirányíthatja a felhőalapú szolgáltatás (például. cloudapp.net) alapértelmezett URL-címére irányuló forgalmat \* egy egyéni névre vagy URL-címre. Mivel az URL-cím újraírása modul alapértelmezés szerint engedélyezve van a webes szerepkörökben, és a szabályai konfigurálva vannak az alkalmazás web.configjában, az újraindítások/rendszerképektől függetlenül mindig elérhető a virtuális gépen. További információt a következő témakörben talál:
 
 - [Újraírási szabályok létrehozása az URL-átírási modulhoz](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Alapértelmezett hivatkozás eltávolítása](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére?
 
-Megakadályozhatja a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére/nevére (például \*. cloudapp.net). Állítsa a gazdagép fejlécét egy egyéni DNS-névre (például a www\.MyCloudService.com) a hely kötési konfigurációja területen a Cloud Service Definition (*. csdef) fájlban, a jelzett módon:
+Megakadályozhatja a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére/nevére (például \* . cloudapp.net). Állítsa a gazdagép fejlécét egy egyéni DNS-névre (például a www \. MyCloudService.com) a hely kötési konfigurációja területen a Cloud Service Definition (*. csdef) fájlban, a jelzett módon:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

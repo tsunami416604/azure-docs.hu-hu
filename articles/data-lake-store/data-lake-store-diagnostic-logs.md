@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878716"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985064"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnosztikai naplók elérése Azure Data Lake Storage Gen1hoz
 Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást a Azure Data Lake Storage Gen1-fiókjához, és hogyan tekintheti meg a fiókjához gyűjtött naplókat.
@@ -25,7 +25,7 @@ Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást a Azure Data Lak
 A szervezetek a Azure Data Lake Storage Gen1-fiókjuk számára lehetővé tehetik a diagnosztikai naplózást, hogy adathozzáférési naplókat gyűjtsenek, amelyek olyan információkat biztosítanak, mint például az adatokhoz hozzáférő felhasználók listája, az adatok elérésének gyakorisága, a fiókban tárolt adatok mennyiségét stb. Ha ez a beállítás engedélyezve van, a diagnosztika és/vagy a kérések a lehető leghatékonyabban vannak naplózva. A kérelmek és a diagnosztikai naplóbejegyzések is csak akkor jönnek létre, ha a szolgáltatás végpontján kérések történnek.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage Gen1 fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Diagnosztikai naplózás engedélyezése a Data Lake Storage Gen1-fiókhoz
@@ -91,29 +91,31 @@ A naplózási és a kérési naplók JSON formátumúak. Ebben a szakaszban a JS
 ### <a name="request-logs"></a>Kérelmek naplói
 Íme egy minta bejegyzés a JSON-formátumú kérelem naplójában. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-07T21:02:53.456Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Requests",
+        "operationName": "GETCustomerIngressEgress",
+        "resultType": "200",
+        "callerIpAddress": "::ffff:1.1.1.1",
+        "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+        "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Kérelem naplózási sémája
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Description |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a műveletet végezték |
@@ -126,41 +128,43 @@ A naplózási és a kérési naplók JSON formátumúak. Ebben a szakaszban a JS
 | properties |JSON |Részletekért lásd alább |
 
 #### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Description |
 | --- | --- | --- |
 | HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
-| Útvonal |Sztring |A művelet végrehajtásának elérési útja |
+| Elérési út |Sztring |A művelet végrehajtásának elérési útja |
 | RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
 | Ügyfélkérelem |Sztring |A kérelmet egyedileg azonosító azonosító |
 | StartTime |Sztring |Az az idő, amikor a kiszolgáló megkapta a kérést |
 | EndTime |Sztring |Az az idő, amikor a kiszolgáló választ küldött |
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó root objektummal rendelkezik
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "resultSignature": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-08T19:08:59.359Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Audit",
+        "operationName": "SeOpenStream",
+        "resultType": "0",
+        "resultSignature": "0",
+        "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+        "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+        "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Description |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a műveletet végezték |
@@ -173,7 +177,7 @@ A naplózási és a kérési naplók JSON formátumúak. Ebben a szakaszban a JS
 | properties |JSON |Részletekért lásd alább |
 
 #### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Description |
 | --- | --- | --- |
 | StreamName |Sztring |A művelet végrehajtásának elérési útja |
 
@@ -187,7 +191,7 @@ search *
 ```
 
 
-Azure Data Lake Storage Gen1 a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample):. 
+Azure Data Lake Storage Gen1 a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) . 
 
 ## <a name="see-also"></a>Lásd még
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

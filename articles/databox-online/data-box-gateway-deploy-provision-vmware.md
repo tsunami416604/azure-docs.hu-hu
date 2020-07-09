@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561639"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564206"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a VMware-ben
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális eszköz üzembe helyezése a VMware-ben
 > * A virtuális eszköz elindítása és az IP-cím lekérése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -87,7 +87,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
 1. Másolja a virtuáliseszköz-rendszerképet a rendszerre. Ezt a rendszerképet (két fájlt) az Azure Portalról töltötte le. Jegyezze fel a helyet, ahová a rendszerképet másolta, mivel az eljárás későbbi szakaszában szükség lesz rá.
 
-2. Jelentkezzen be az ESXi-kiszolgálóra ezen az URL-címen keresztül `https://<IP address of the ESXi server>`egy böngészőben:. A virtuális gép létrehozásához rendszergazdai jogosultsággal kell rendelkeznie.
+2. Jelentkezzen be az ESXi-kiszolgálóra ezen az URL-címen keresztül egy böngészőben: `https://<IP address of the ESXi server>` . A virtuális gép létrehozásához rendszergazdai jogosultsággal kell rendelkeznie.
 
    ![Bejelentkezés lap](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -145,7 +145,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
     Ugyanezen az oldalon kattintson az **Add hard disk** (Merevlemez hozzáadása) elemre, majd az **Existing hard disk** (Létező merevlemez) lehetőségre. Válassza ki a VMDK fájlt az adattárban. Ezzel hozzáad egy operációsrendszer-lemezt. 
 
-     ! Beállítások testreszabása lap[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Beállítások testreszabása lap](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Görgessen lefelé, amíg meg nem látja a **New hard disk** (Új merevlemez) elemet, és bontsa azt ki a beállítások megtekintéséhez. Állítsa be a **Virtual Device Node** (Virtuális eszköz csomópontja) beállításnál az **IDE controller 0** értéket.
 
@@ -157,8 +157,8 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
 18. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. Ellenőrizze a következőket: a CPU-k száma 4, a memória mérete 8192 MB, a hálózati adapter értéke 1, valamint a 2. merevlemez beállítása: IDE controller 0. Kattintson a **Befejezés** gombra.
    
-    ![Készen áll a](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![teljes oldalra való felkészülésre](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Készen áll a teljes oldalra ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+     ![ való felkészülésre](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 A rendszer üzembe helyezi a virtuális gépet. Megjelenik erről egy értesítés, és az új virtuális gép hozzáadódik a virtuális gépek listájához.
 

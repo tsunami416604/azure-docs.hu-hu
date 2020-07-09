@@ -1,20 +1,14 @@
 ---
 title: Azure rövid útmutató – Event hub létrehozása a Azure Portal használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure-eseményközpontot az Azure Portallal, majd hogyan küldhet és fogadhat eseményeket a .NET Standard SDK használatával.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-ms.service: event-hubs
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 05/04/2020
-ms.author: spelluru
-ms.openlocfilehash: 7562dc9a70fc462cb9d623a5184fb672a7f7ca39
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.date: 06/23/2020
+ms.openlocfilehash: 9ca71dbb1a82e3fd9fe241e197b0bcbbfec2dcb8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860256"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323143"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -29,7 +23,7 @@ A rövid útmutató elvégzéséhez győződjön meg róla, hogy rendelkezik az 
 - [Visual Studio 2019)](https://www.visualstudio.com/vs) vagy újabb.
 - A [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0-s vagy újabb verziója.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Erőforráscsoport létrehozása:
 

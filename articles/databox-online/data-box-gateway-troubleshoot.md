@@ -5,25 +5,26 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564020"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása
 
-Ez a cikk ismerteti az Azure Data Box Gateway átjáróval kapcsolatos problémák elhárítása. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ez a cikk ismerteti az Azure Data Box Gateway átjáróval kapcsolatos problémák elhárítása.
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Diagnosztika futtatása
 > * Támogatási csomag összeállítása
 > * Hibaelhárítás naplók használatával
-
 
 ## <a name="run-diagnostics"></a>Diagnosztika futtatása
 

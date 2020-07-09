@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890888"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>A távoli figyelési megoldás helyi telepítése – Visual Studio
@@ -37,7 +36,7 @@ A helyi telepítés befejezéséhez a következő eszközökre van szükség a h
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node. js v10-et.
+* [Node.js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node.js v10-et.
 
 > [!NOTE]
 > A Visual Studio a Windows és a Mac rendszerhez érhető el.
@@ -96,7 +95,7 @@ npm install
 npm start
 ```
 
-A kezdés befejezésekor a böngésző a **http:\//localhost: 3000/Dashboard**lapot jeleníti meg. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
+A kezdés befejezésekor a böngésző a **http: \/ /localhost: 3000/Dashboard**lapot jeleníti meg. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
 
 ### <a name="configure-and-run-nginx"></a>Az NGINX konfigurálása és futtatása
 
@@ -109,7 +108,7 @@ További információ az **Nginx**futtatásáról: [Nginx for Windows](https://n
 
 ### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon a\/böngészőben a http:/localhost: 9000 elemre.
+A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon a böngészőben a http: \/ /localhost: 9000 elemre.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

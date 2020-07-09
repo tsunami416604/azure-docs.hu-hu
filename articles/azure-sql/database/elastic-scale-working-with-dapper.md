@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 95723bbcfc5573567bee4a433b9d33908b91f5f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b1bba5c4ff71806ac054b4d16585881570cf589a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829363"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>A rugalmas adatbázis-ügyféloldali kódtár használata jól öltözött
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,6 +64,7 @@ Ezek a megfigyelések egyszerűvé teszik a rugalmas adatbázis-ügyféloldali k
 
 Ez a mintakód (a kapcsolódó mintából) azt szemlélteti, hogy az alkalmazás hogyan biztosít a horizontális Felskálázási kulcsot a könyvtárhoz a jobb oldali szegmenshez való kapcsolódáshoz.   
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
                      connectionString: connStrBldr.ConnectionString,
@@ -76,6 +77,7 @@ Ez a mintakód (a kapcsolódó mintából) azt szemlélteti, hogy az alkalmazás
                             VALUES (@name)", new { name = blog.Name }
                         );
     }
+```
 
 A [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API hívása lecseréli egy SQL-ügyfél-kapcsolatok alapértelmezett létrehozását és megnyitását. A [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) hívása az Adatfüggő útválasztáshoz szükséges argumentumokat veszi igénybe: 
 
@@ -87,6 +89,7 @@ A szegmens leképezési objektum létrehoz egy kapcsolódást a szegmenshez, ame
 
 A lekérdezések ugyanúgy működnek, mint az ügyféloldali API-val a [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) használatával. Ezután az SQL-lekérdezés eredményeinek a .NET-objektumokra való leképezéséhez használja a normál módon kitakarható bővítmény módszereit:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
                     connectionString: connStrBldr.ConnectionString,
@@ -104,6 +107,7 @@ A lekérdezések ugyanúgy működnek, mint az ügyféloldali API-val a [OpenCon
                 Console.WriteLine(item.Name);
             }
     }
+```
 
 Vegye figyelembe, hogy a blokk és a DDR közötti kapcsolatok a blokkon belüli összes adatbázis-műveletet a blokkon belül egy olyan szegmensre **használják** , ahol a tenantId1 tárolva van. A lekérdezés csak az aktuális szegmensen tárolt blogokat adja vissza, a többi szegmensen tárolt fájlokat azonban nem. 
 
@@ -112,6 +116,7 @@ A takaros funkciók olyan további bővítmények ökoszisztémája, amelyek tov
 
 Az alkalmazásban a DapperExtensions használata nem változtatja meg az adatbázis-kapcsolatok létrehozását és kezelését. Továbbra is az alkalmazás feladata a kapcsolatok megnyitása, és a szokásos SQL-ügyfélkapcsolati objektumokat a bővítmény módszerei várják. A fentiekben ismertetett módon a [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) támaszkodhat. Ahogy az alábbi mintakód mutatja, az egyetlen változás, hogy már nem kell megírnia a T-SQL-utasításokat:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -120,9 +125,11 @@ Az alkalmazásban a DapperExtensions használata nem változtatja meg az adatbá
            var blog = new Blog { Name = name2 };
            sqlconn.Insert(blog);
     }
+```
 
 És itt látható a lekérdezéshez tartozó mintakód: 
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -136,12 +143,14 @@ Az alkalmazásban a DapperExtensions használata nem változtatja meg az adatbá
                Console.WriteLine(item.Name);
            }
     }
+```
 
 ### <a name="handling-transient-faults"></a>Átmeneti hibák kezelésére
 A Microsoft Patterns & Practices csapata közzétette az [átmeneti hibák kezelésére szolgáló alkalmazás-blokkot](https://msdn.microsoft.com/library/hh680934.aspx) , hogy segítse az alkalmazás-fejlesztőket a felhőben való futás során felmerülő gyakori átmeneti hibák elhárításában. További információkért tekintse meg [a kitartás, az összes diadal titka: az átmeneti hiba-kezelő alkalmazás blokk használata](https://msdn.microsoft.com/library/dn440719.aspx)című témakört.
 
 A kód mintája az átmeneti hibák elleni védelemre támaszkodik, 
 
+```csharp
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
        using (SqlConnection sqlconn =
@@ -151,6 +160,7 @@ A kód mintája az átmeneti hibák elleni védelemre támaszkodik,
               sqlconn.Insert(blog);
           }
     });
+```
 
 A fenti kódban található **SqlDatabaseUtils. SqlRetryPolicy** egy 10 értékű újrapróbálkozási számmal rendelkező **SqlDatabaseTransientErrorDetectionStrategy** van definiálva, és 5 másodperc várakozási idő az újrapróbálkozások között. Ha tranzakciókat használ, győződjön meg arról, hogy az újrapróbálkozási hatókör a tranzakció elejére kerül vissza átmeneti hiba esetén.
 

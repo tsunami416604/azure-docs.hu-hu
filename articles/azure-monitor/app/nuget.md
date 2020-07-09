@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights NuGet-csomagok
 description: Azure Monitor Application Insights NuGet ASP.NET, ASP.NET Core, Python
 ms.topic: reference
 ms.date: 10/16/2018
-ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91b48aee64a6b6942719f7f4abfb444b894c728e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807162"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-csomagok
 
@@ -16,7 +16,7 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 
 ## <a name="common-packages-for-aspnet"></a>Általános csomagok a ASP.NET
 
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights | 2.12.0 | Alapvető funkciókat biztosít az összes Application Insights Telemetria-típus átviteléhez, és egy függő csomag az összes többi Application Insights csomaghoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft. ApplicationInsights. Agent. lehallgatás | 2.4.0 | Metódus-hívások elfogásának engedélyezése | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
@@ -28,7 +28,7 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 
 ## <a name="common-packages-for-aspnet-core"></a>ASP.NET Core közös csomagjai
 
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. AspNetCore | 2.5.0 | Application Insights ASP.NET Core webalkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Microsoft. ApplicationInsights | 2.12.0 | Ez a csomag alapvető funkciókat biztosít az összes Application Insights Telemetria-típus átviteléhez, és egy függő csomag az összes többi Application Insights csomaghoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -38,7 +38,7 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 | Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel | 2.12.0 | Telemetria csatornát biztosít a Windows Server SDK Application Insights, amely offline helyzetekben megőrzi a telemetria-t. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>Általános csomagok a Pythonhoz a OpenCensus használatával
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | opencensus – ext – Azure | 1.0.0 | A Python-alkalmazások Application Insights a OpenCensus-on keresztül Azure Monitor. | [Csomag letöltése](https://pypi.org/project/opencensus-ext-azure/) |
 | opencensus – ext-Django | 0.7.2 | Ez a csomag integrációt biztosít a Python [Django](https://pypi.org/project/django/) -könyvtárral. | [Csomag letöltése](https://pypi.org/project/opencensus-ext-django/) |
@@ -55,7 +55,7 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 
 ## <a name="listenerscollectorsappenders"></a>Figyelők/gyűjtők/hozzáfűzése
 
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. DiagnosticSourceListener | 2.7.2 |  Lehetővé teszi, hogy az események továbbítása a DiagnosticSource a Application Insights. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
 | Microsoft. ApplicationInsights. EventSourceListener | 2.7.2 | Application Insights EventSourceListener lehetővé teszi adatok küldését a EventSource-eseményekről a Application Insightsba. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
@@ -67,23 +67,23 @@ Alább látható az Application Insights stabil kiadási NuGet csomagjainak aktu
 
 ## <a name="service-fabric"></a>Service Fabric
 
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. ServiceFabric | 2.2.0 | Ez a csomag a telemetria automatikus díszítését biztosítja a Service Fabric-környezettel, amelyben az alkalmazás fut. Ne használja ezt a NuGet natív Service Fabric alkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
 | Microsoft. ApplicationInsights. ServiceFabric. Native | 2.2.0 | Application Insights modul a Service Fabric-alkalmazásokhoz. Ezt a NuGet csak natív Service Fabric alkalmazásokhoz használhatja. A tárolókban futó alkalmazások esetében használja a Microsoft. ApplicationInsights. ServiceFabric csomagot. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>Állapotfigyelő
 
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. Agent_x64 | 2.2.1 |  Lehetővé teszi a futásidejű adatgyűjtést az x64-alapú alkalmazásokhoz | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft. ApplicationInsights. Agent_x86 | 2.2.1 |  Engedélyezi a futásidejű adatgyűjtést x86-alkalmazásokhoz. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Ezek a csomagok a [Állapotmonitor](../../azure-monitor/app/monitor-performance-live-website-now.md)futtatókörnyezet-figyelésének alapvető funkcióinak részét képezik. Ezeket a csomagokat közvetlenül nem kell letöltenie, csak használja a Állapotmonitor telepítőjét. Ha többet szeretne megtudni arról, hogy ezek a csomagok hogyan működnek a motorháztető alatt, akkor az egyik fejlesztőtől származó [blogbejegyzés](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) is jó kezdés.
+Ezek a csomagok a [Állapotmonitor](../../azure-monitor/app/monitor-performance-live-website-now.md)futtatókörnyezet-figyelésének alapvető funkcióinak részét képezik. Ezeket a csomagokat közvetlenül nem kell letöltenie, csak használja a Állapotmonitor telepítőjét. Ha többet szeretne megtudni arról, hogy ezek a csomagok hogyan működnek a motorháztető alatt, akkor az egyik fejlesztőtől származó [blogbejegyzés](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/) is jó kezdés.
 
 ## <a name="additional-packages"></a>További csomagok
 
-| Csomag neve | Stabil verzió | Leírás | Letöltés |
+| Csomag neve | Stabil verzió | Description | Letöltés |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft. ApplicationInsights. AzureWebSites | 2.6.5 | Ez a bővítmény engedélyezi a Application Insights figyelését egy Azure App Service. SDK 2.6.1-es verzió. Útmutatás: vegyen fel "APPINSIGHTS_INSTRUMENTATIONKEY" Alkalmazásbeállítások a rendszerállapotkulcsot, és indítsa újra a webappot, hogy az hatással legyen.| [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft. ApplicationInsights. injektor | 2.6.7 | Ez a csomag a kód nélkül Application Insights injekcióhoz szükséges fájlokat tartalmazza | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |

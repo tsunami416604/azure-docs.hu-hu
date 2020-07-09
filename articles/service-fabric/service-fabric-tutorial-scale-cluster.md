@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Se
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788821"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611645"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
@@ -80,14 +80,14 @@ A be-és kiskálázás, illetve a horizontális skálázás a fürtben lévő cs
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának megadásához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount*és *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
+[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *parameters.js* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának megadásához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount*és *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
 
 Így a *nt1InstanceCount* értékének frissítésével módosíthatja a csomópontok számát a második csomópont típusában.  Ne feledje, hogy a csomópont-típusok több mint 100 csomópontra nem méretezhetők.  Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia. Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 
 Ha méretezést végez, távolítsa el a csomópontokat a ból, a bronz [tartóssági szint][durability] csomópont-típusát [manuálisan el kell távolítania a csomópontok állapotát](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Az ezüst és az arany tartóssági szinten ezeket a lépéseket a platform automatikusan végrehajtja.
 
 ### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
+Mentse a fájlokon a *template.js* és *parameters.js* módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
@@ -103,11 +103,11 @@ Minden, az Azure-ban futó Service Fabric-fürtben definiált csomópont-típus 
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  Ebben a szakaszban egy Resource Manager-sablon frissítésével és telepítésével adhat hozzá egy negyedik csomópont-típust. 
+[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *parameters.js* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  Ebben a szakaszban egy Resource Manager-sablon frissítésével és telepítésével adhat hozzá egy negyedik csomópont-típust. 
 
 Az új csomópont típusa mellett hozzá kell adnia a társított virtuálisgép-méretezési csoportot is (amely a virtuális hálózat különálló alhálózatán fut) és a hálózati biztonsági csoporttal együtt.  Dönthet úgy is, hogy új vagy meglévő nyilvános IP-címet és Azure Load Balancer-erőforrásokat ad hozzá az új méretezési csoporthoz.  Az új csomópont típusa az ezüst és a "Standard_D2_V2" méretének [tartóssági szintje][durability] .
 
-A *template. JSON* fájlban adja hozzá a következő új paramétereket:
+Adja hozzá a következő új paramétereket a fájl *template.js* :
 ```json
 "nt3InstanceCount": {
     "defaultValue": 5,
@@ -122,7 +122,7 @@ A *template. JSON* fájlban adja hozzá a következő új paramétereket:
 },
 ```
 
-A *template. JSON* fájlban adja hozzá a következő új változókat:
+Adja hozzá a következő új változókat a fájl *template.js* :
 ```json
 "lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
 "lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -144,7 +144,7 @@ A *template. JSON* fájlban adja hozzá a következő új változókat:
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-A *template. JSON* fájlban adjon hozzá egy új alhálózatot a virtuális hálózati erőforráshoz:
+A *template.js* fájlon adjon hozzá egy új alhálózatot a virtuális hálózati erőforráshoz:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -181,7 +181,7 @@ A *template. JSON* fájlban adjon hozzá egy új alhálózatot a virtuális hál
 },
 ```
 
-A *template. JSON* fájlban adja hozzá az új nyilvános IP-címet és a terheléselosztó erőforrásait:
+A fájl *template.js* új nyilvános IP-cím és terheléselosztó erőforrások hozzáadása:
 ```json
 {
     "type": "Microsoft.Network/publicIPAddresses",
@@ -362,7 +362,7 @@ A *template. JSON* fájlban adja hozzá az új nyilvános IP-címet és a terhel
 },
 ```
 
-A *template. JSON* fájlban vegyen fel új hálózati biztonsági csoportot és virtuálisgép-méretezési csoport erőforrásait.  A virtuálisgép-méretezési csoport Service Fabric bővítmény tulajdonságaiban található NodeTypeRef tulajdonság a méretezési csoportra képezi le a megadott csomópont típusát.
+A fájl *template.jsban* vegyen fel új hálózati biztonsági csoportot és virtuálisgép-méretezési csoport erőforrásait.  A virtuálisgép-méretezési csoport Service Fabric bővítmény tulajdonságaiban található NodeTypeRef tulajdonság a méretezési csoportra képezi le a megadott csomópont típusát.
 
 ```json
 {
@@ -746,7 +746,7 @@ A *template. JSON* fájlban vegyen fel új hálózati biztonsági csoportot és 
 },
 ```
 
-A *template. JSON* fájlban frissítse a fürterőforrás-t, és adjon hozzá egy új csomópont-típust:
+A *template.js* fájlon frissítse a fürterőforrás-t, és adjon hozzá egy új csomópont-típust:
 ```json
 {
     "type": "Microsoft.ServiceFabric/clusters",
@@ -782,7 +782,7 @@ A *template. JSON* fájlban frissítse a fürterőforrás-t, és adjon hozzá eg
 }                
 ```
 
-A *Parameters. JSON* fájlban adja hozzá a következő új paramétereket és értékeket:
+Adja hozzá a következő új paramétereket és értékeket a fájl *parameters.js* :
 ```json
 "nt3InstanceCount": {
     "Value": 5    
@@ -793,7 +793,7 @@ A *Parameters. JSON* fájlban adja hozzá a következő új paramétereket és �
 ```
 
 ### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
+Mentse a fájlokon a *template.js* és *parameters.js* módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
@@ -833,24 +833,23 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Csomópont-erőforrások bővítése 
-Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét.  
+Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét úgy, hogy lecseréli az eredeti csomópont típusát egy új csomópont-típusra (frissített VM SKU vagy operációsrendszer-rendszerkép használatával). További részletekért lásd: [Azure Service Fabric csomópont-típus vertikális Felskálázása](service-fabric-scale-up-node-type.md).
 
-> [!WARNING]
-> Azt javasoljuk, hogy ne változtassa meg a méretezési csoport/csomópont típusa virtuálisgép-SKU-jának használatát, kivéve, ha az ezüst tartósságon vagy annál nagyobb mértékben fut. A VM SKU méretének módosítása egy adatpusztító helyi infrastruktúra-művelet. A módosítás késleltetése vagy monitorozása nélkül lehetséges, hogy a művelet adatvesztést okozhat az állapot-nyilvántartó szolgáltatások számára, vagy más, előre nem látható működési problémákat okozhat, még az állapot nélküli munkaterhelések esetében is.
+> [!IMPORTANT]
+> Soha ne próbálkozzon a virtuális gép SKU-jának vagy operációsrendszer-rendszerképének helyben történő módosításával, amely veszélyes művelet, és nem támogatott.
 
-> [!WARNING]
-> Azt javasoljuk, hogy ne változtassa meg az elsődleges csomópont típusú virtuálisgép-SKU-t, amely egy veszélyes művelet, és nem támogatott.  Ha nagyobb kapacitásra van szüksége, további virtuálisgép-példányokat vagy további csomópont-típusokat adhat hozzá.  Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja az alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből.  Ha ez nem lehetséges, módosíthatja [az elsődleges csomópont típusú](service-fabric-scale-up-node-type.md)VIRTUÁLISGÉP-SKU-t.
+Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja az alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből. Nem kell visszaállítani a rendszerszolgáltatások állapotát; a rendszer akkor hozza létre újra, amikor az új fürtre telepíti az alkalmazásait. Ha csak az állapot nélküli alkalmazásokat futtatta a fürtön, akkor csak az alkalmazásait telepíti az új fürtre, nincs szükség a visszaállításra.
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  
+[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *parameters.js* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  
 
 A második csomópont típusú virtuális gépek mérete a *vmNodeType1Size* paraméterben van beállítva.  Módosítsa a *vmNodeType1Size* paraméter értékét Standard_D2_V2ról [Standard_D3_V2ra](../virtual-machines/dv2-dsv2-series.md), ami megduplázza az egyes virtuálisgép-példányok erőforrásait.
 
 Mindhárom csomóponthoz tartozó virtuálisgép-SKU a *vmImageSku* paraméterben van beállítva.  Ismét meg kell adni a csomópontok virtuálisgép-SKU-jának módosítását körültekintően, és az elsődleges csomópont típusa nem ajánlott.
 
 ### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
+Mentse a fájlokon a *template.js* és *parameters.js* módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
@@ -873,19 +872,7 @@ Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíth
 > [!div class="nextstepaction"]
 > [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * Csomópont-típusok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
-> * Csomópont-erőforrások bővítése (vertikális felskálázás)
-
-Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíthetők a fürtök futtatókörnyezetei.
-> [!div class="nextstepaction"]
-> [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

@@ -5,13 +5,12 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20a2066dc0228fe9c2fee09387d96bf6aafeb32f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/25/2020
+ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413195"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés Azure Database for MariaDB
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MariaDB különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
@@ -24,11 +23,11 @@ Részletes útmutatást a [riasztások beállítása](howto-alert-metric.md)cím
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MariaDB számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
-|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya.|
+|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya. (Nem alkalmazható az alapszintű kiszolgálók esetében.)|
 |storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális száma által felhasznált tárterület százalékos aránya.|
 |storage_used|Felhasznált tárterület|Bájt|A használatban lévő tárterület mennyisége. A szolgáltatás által használt tárterület magában foglalhatja az adatbázisfájlok, a tranzakciós naplók és a kiszolgáló naplófájljait is.|
 |serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Százalék|A kiszolgáló naplófájl-tárolási helyének maximális tárterületének százalékos értéke.|
@@ -77,7 +76,7 @@ A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztáso
 A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el
+> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
 
 ## <a name="next-steps"></a>További lépések
 

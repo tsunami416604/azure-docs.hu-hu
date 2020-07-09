@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78939219"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Feladatátvételi továbbítás implementálása Media Services v2-vel
@@ -62,8 +61,8 @@ A következő szempontokat kell figyelembe venni:
 Ebben a szakaszban egy C# konzolos alkalmazás-projektet hoz létre és állít be.
 
 1. A Visual Studióval hozzon létre egy új megoldást, amely a C# konzol alkalmazás projektjét tartalmazza. Adja meg a **HandleRedundancyForOnDemandStreaming** nevet, majd kattintson **az OK**gombra.
-2. Hozza létre a **SupportFiles** mappát ugyanazon a szinten, mint a **HandleRedundancyForOnDemandStreaming. csproj** Project fájl. A **SupportFiles** mappában hozza létre a **OutputFiles** és a **MP4Files** mappát. Másolja egy. MP4-fájlt a **MP4Files** mappába. (Ebben a példában az **Ignite. mp4** fájlt használja a rendszer.) 
-3. A **NuGet** használatával a Media Serviceshoz kapcsolódó dll-ekre mutató hivatkozásokat adhat hozzá. A **Visual Studio főmenüjében**válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**. A konzol ablakban írja be a következőt: **Install-Package windowsazure. Mediaservices**, majd nyomja le az ENTER billentyűt.
+2. Hozza létre a **SupportFiles** mappát ugyanazon a szinten, mint a **HandleRedundancyForOnDemandStreaming. csproj** Project fájl. A **SupportFiles** mappában hozza létre a **OutputFiles** és a **MP4Files** mappát. Másolja egy. MP4-fájlt a **MP4Files** mappába. (Ebben a példában a rendszer a **ignite.mp4** fájlt használja.) 
+3. A **NuGet** használatával a Media Serviceshoz kapcsolódó dll-ekre mutató hivatkozásokat adhat hozzá. A **Visual Studio főmenüjében**válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**. A konzol ablakban írja be a következőt: **Install-Package windowsazure. Mediaservices**, majd nyomja le az ENTER billentyűt.
 4. Adja meg a projekthez szükséges egyéb hivatkozásokat: System. Runtime. szerializálás és System. Web.
 5. Cserélje le a **Programs.cs** -fájlhoz hozzáadott utasítások **használatát** a következő esetekben:
 

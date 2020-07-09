@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471180"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087401"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight-naplók elemzése
 
@@ -23,9 +23,9 @@ Megtudhatja, hogyan használhatja a Azure Monitor naplókat a HDInsight Apache K
 
 ## <a name="logs-location"></a>Naplók helye
 
-A fürt Apache Kafka naplófájljai a következő helyen találhatók `/var/log/kafka`:. A kafka-naplók nem tárolódnak és nem maradnak meg a fürt életciklusa között, függetlenül attól, hogy a rendszer felügyelt lemezeket használ-e. A következő táblázat az elérhető naplókat mutatja be.
+A fürt Apache Kafka naplófájljai a következő helyen találhatók: `/var/log/kafka` . A kafka-naplók nem tárolódnak és nem maradnak meg a fürt életciklusa között, függetlenül attól, hogy a rendszer felügyelt lemezeket használ-e. A következő táblázat az elérhető naplókat mutatja be.
 
-|Napló |Leírás |
+|Napló |Description |
 |---|---|
 |Kafka. out|a Kafka-folyamat stdout és stderr. Ebben a fájlban megtalálja a Kafka indítási és leállítási naplóit.|
 |Server. log|A Kafka-kiszolgáló fő naplója. A Kafka-átvitelszervező összes naplója itt fejeződik be.|
@@ -68,7 +68,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Bejövő üzenetek másodpercenkénti száma: ( `your_kafka_cluster_name` cserélje le a fürt nevére.)
+* Bejövő üzenetek másodpercenkénti száma: (cserélje le a `your_kafka_cluster_name` fürt nevére.)
 
     ```kusto
     metrics_kafka_CL 
@@ -76,7 +76,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Bejövő bájtok másodpercenként: (lecserélve `wn0-kafka` a munkavégző csomópont állomásneve)
+* Bejövő bájtok másodpercenként: (lecserélve a `wn0-kafka` munkavégző csomópont állomásneve)
 
     ```kusto
     metrics_kafka_CL 
@@ -84,7 +84,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Kimenő bájtok másodpercenként: (cserélje `your_kafka_cluster_name` le a fürt nevére.)
+* Kimenő bájtok másodpercenként: (cserélje le `your_kafka_cluster_name` a fürt nevére.)
 
     ```kusto
     metrics_kafka_CL 
@@ -94,11 +94,11 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
 
     Megadhatja `*` az összes naplózott típus keresését is. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
 
-    | Napló típusa | Leírás |
+    | Napló típusa | Description |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka Broker Server. log |
-    | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
-    | mérőszámok\_Kafka\_CL | Kafka JMX metrikák |
+    | log \_ kafkaserver \_ CL | Kafka Broker Server. log |
+    | log \_ kafkacontroller \_ CL | Kafka Broker Controller. log |
+    | mérőszámok \_ Kafka \_ CL | Kafka JMX metrikák |
 
     ![Apache Kafka log Analytics CPU-használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 

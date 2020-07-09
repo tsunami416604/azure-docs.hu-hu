@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 04/09/2020
-ms.openlocfilehash: aa2ccf9c382ff560c081c7cdd13c4ab2199c2551
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a246288eb3c4063a85935c20abec5c86467d340
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044975"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042373"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,10 +31,7 @@ A SaaS-fejlesztők több adatbázisból álló nagyméretű adatrétegekre épí
 - A kiépítés a költségek megtakarítása érdekében, a teljesítmény és az ügyfelek elégedettségének rovására a csúcsok során.
 
 A rugalmas készletek a probléma megoldásához biztosítják, hogy az adatbázisok megkapják a szükséges teljesítménybeli erőforrásokat. Egy egyszerű erőforrás-lefoglalási mechanizmust biztosítanak, kiszámítható költségekkel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](saas-tenancy-app-design-patterns.md) című részt.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
-
 > [!IMPORTANT]
 > Rugalmas készletekhez nem tartozik adatbázis-díj. Minden órában, a legmagasabb eDTU vagy virtuális mag, a használattól függetlenül, illetve azt, hogy a készlet egy óránál kevesebb ideig volt-e aktív.
 
@@ -180,7 +177,7 @@ Ha befejezte a készlet konfigurálását, kattintson az Alkalmaz gombra, nevezz
 
 A Azure Portal egy rugalmas készlet és a készleten belüli adatbázisok kihasználtságának figyelésére van lehetőség. A rugalmas készlet módosításait is elvégezheti, és egyszerre is elküldheti az összes módosítást. Ezek a változások közé tartoznak az adatbázisok hozzáadása vagy eltávolítása, a rugalmas készlet beállításainak módosítása vagy az adatbázis beállításainak módosítása.
 
-A rugalmas készlet figyelésének megkezdéséhez keresse meg és nyissa meg a portálon egy rugalmas készletet. Először egy képernyő jelenik meg, amely áttekintést nyújt a rugalmas készlet állapotáról. Az érintett műveletek közé tartoznak az alábbiak:
+A rugalmas készlet figyelésének megkezdéséhez keresse meg és nyissa meg a portálon egy rugalmas készletet. Először egy képernyő jelenik meg, amely áttekintést nyújt a rugalmas készlet állapotáról. Ide tartoznak az alábbiak:
 
 - A rugalmas készlet erőforrásainak használatát bemutató diagramok figyelése
 - A rugalmas készletre vonatkozó legutóbbi riasztások és javaslatok, ha vannak ilyenek

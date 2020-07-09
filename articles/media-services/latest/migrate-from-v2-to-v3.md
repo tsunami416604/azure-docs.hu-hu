@@ -16,15 +16,14 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79472067"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
->Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` -cím másolásával és beillesztésével: az RSS-hírcsatorna-olvasóba.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 
 Ez a cikk a Media Services v2 és v3 közötti áttelepítési útmutatót ismerteti.
 
@@ -42,7 +41,7 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 *  A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. Azure Resource Manager sablonok használatával átalakításokat, folyamatos átviteli végpontokat, élő eseményeket és egyéb műveleteket hozhat létre és helyezhet üzembe.
 * [OpenAPI-specifikáció (korábbi nevén henceg)](https://aka.ms/ams-v3-rest-sdk) dokumentum.
     Minden szolgáltatás-összetevő számára elérhetővé teszi a sémát, beleértve a fájl alapú kódolást is.
-* A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node. js](/javascript/api/overview/azure/mediaservices/management), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
+* A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
 * [Azure CLI](https://aka.ms/ams-v3-cli-ref) -integráció az egyszerű parancsfájlok támogatásához.
 
 ### <a name="new-features"></a>Új funkciók

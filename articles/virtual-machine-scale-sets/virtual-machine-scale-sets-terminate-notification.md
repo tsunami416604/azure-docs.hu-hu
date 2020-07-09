@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuálisgép-méretezési csoport példányaihoz tartozó értesítés leállítása
+title: Azure-beli virtuális gépek méretezésicsoport-példányainak megszüntetési értesítése
 description: Megtudhatja, hogyan engedélyezheti az Azure-beli virtuálisgép-méretezési csoport példányainak megszüntetési értesítését
 author: avirishuv
 ms.author: avverma
@@ -9,14 +9,14 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207515"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure-beli virtuálisgép-méretezési csoport példányaihoz tartozó értesítés leállítása
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure-beli virtuális gépek méretezésicsoport-példányainak megszüntetési értesítése
 A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. A megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által meghatározott késési korláttól függ.
 
 A szolgáltatásba való regisztrálás után a méretezési csoport példányainak nem kell megvárniuk a megadott időtúllépés érvényességét a példány törlése előtt. A lemondási értesítés kézhezvétele után a példány bármikor törölhető, mielőtt lejár a leállítási időkorlát.
@@ -178,7 +178,7 @@ Az alábbiakban a POST kérelem törzsében várt JSON szerepel. A kérésnek ta
 
 Győződjön meg arról, hogy a méretezési csoport minden virtuális gépe csak az adott virtuális géphez tartozó Napszállta hagyja jóvá. A virtuális gépek a [példány metaadatainak használatával](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name)kaphatják meg a virtuális gép nevét. Ez a név a (z) "{Scale-set-name} _ {instance-id}" formában jelenik meg, amely a fent ismertetett lekérdezési válasz "Resources" (erőforrások) szakaszában fog megjelenni.
 
-A [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample) és a [Python](../virtual-machines/linux/scheduled-events.md#python-sample)használatával is megtekintheti az eseményekre vonatkozó lekérdezési és válaszadási parancsfájlokat.
+A [Python](../virtual-machines/linux/scheduled-events.md#python-sample)-események lekérdezéséhez és az azokra való reagáláshoz példákat is talál.
 
 ## <a name="tips-and-best-practices"></a>Tippek és ajánlott eljárások
 -   Értesítések megszakítása csak a "Delete" műveletekben – az összes törlési művelet (manuális törlés vagy automatikus méretezés által kezdeményezett skálázás) a megszakítási eseményeket eredményezi, ha a méretezési csoport *scheduledEventsProfile* engedélyezve van. Más műveletek, például az újraindítás, az áttelepítés, az ismételt üzembe helyezés és a Leállítás/felszabadítás nem eredményeznek megszakítási eseményeket. Az alacsony prioritású virtuális gépek esetében nem engedélyezhető az értesítések megszakítása.

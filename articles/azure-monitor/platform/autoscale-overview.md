@@ -5,10 +5,9 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828984"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
@@ -38,7 +37,7 @@ A virtuálisgép-méretezési csoportok telemetria-adatok használatával haszn�
 ## <a name="custom-metrics"></a>Egyéni metrikák
 Saját egyéni metrikákat is használhat, amelyeket az alkalmazás (ok) okozhat. Ha úgy konfigurálta az alkalmazás (oka) t, hogy metrikákat küldjön a Application Insightsre, a mérőszámok kihasználása lehetővé teszi, hogy a méretezés vagy a nem.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Idő
 Az ütemezett szabályok az UTC-alapúak. A szabályok beállításakor megfelelően be kell állítania az időzónát.  
 
 ## <a name="rules"></a>Szabályok
@@ -89,7 +88,7 @@ Ezzel szemben a vertikális skálázás eltérő. Ugyanazokat a virtuális gépe
 ## <a name="methods-of-access"></a>Hozzáférési módszerek
 Beállíthatja az autoscale on
 
-* [Azure Portal](autoscale-get-started.md)
+* [Azure Portalra](autoscale-get-started.md)
 * [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformfüggetlen parancssori felület (CLI)](../samples/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)

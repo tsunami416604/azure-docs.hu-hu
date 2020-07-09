@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563343"
 ---
 # <a name="service-movement-cost"></a>Szolgáltatás-áthelyezési díj
@@ -94,7 +93,7 @@ A MoveCost segítségével megtalálhatja azokat a megoldásokat, amelyek a lehe
 Ahhoz, hogy a részletesebb MoveCosts figyelembe vegyék, engedélyezni kell a MoveCost a fürtben. Ezen beállítás nélkül a MoveCost kiszámításakor a rendszer az alapértelmezett leltározási módot használja, és a MoveCost-jelentéseket figyelmen kívül hagyja.
 
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -102,7 +101,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [

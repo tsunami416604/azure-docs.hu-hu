@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 45eb227d5e2608f4fbe6a75f3d95e46dbc3bdee4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504287"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Egyidejűség kezelése a Microsoft Azure Storage szolgáltatásban
 
@@ -90,13 +90,13 @@ A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek 
 
 | Művelet | A tároló ETag értékét adja vissza. | Feltételes fejlécek elfogadása |
 |:--- |:--- |:--- |
-| Tároló létrehozása |Igen |Nem |
-| Tároló tulajdonságainak beolvasása |Igen |Nem |
-| Tároló metaadatainak beolvasása |Igen |Nem |
+| Tároló létrehozása |Yes |No |
+| Tároló tulajdonságainak beolvasása |Yes |No |
+| Tároló metaadatainak beolvasása |Yes |No |
 | Tároló metaadatainak beállítása |Igen |Igen |
-| Tároló ACL lekérése |Igen |Nem |
-| Tároló ACL beállítása |Igen |Igen (*) |
-| Tároló törlése |Nem |Igen |
+| Tároló ACL lekérése |Yes |No |
+| Tároló ACL beállítása |Yes |Igen (*) |
+| Tároló törlése |No |Yes |
 | Bérlet tárolója |Igen |Igen |
 | Blobok listázása |Nem |Nem |
 
@@ -114,12 +114,12 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 | BLOB metaadatainak beállítása |Igen |Igen |
 | Címbérleti blob (*) |Igen |Igen |
 | Snapshot Blob |Igen |Igen |
-| Copy Blob |Igen |Igen (a forrás és a cél blob esetében) |
+| Copy Blob |Yes |Igen (a forrás és a cél blob esetében) |
 | BLOB másolásának megszakítása |Nem |Nem |
-| Delete Blob |Nem |Igen |
+| Delete Blob |No |Yes |
 | Put blokk |Nem |Nem |
 | Tiltási lista |Igen |Igen |
-| Tiltási lista lekérése |Igen |Nem |
+| Tiltási lista lekérése |Yes |No |
 | Oldal elhelyezése |Igen |Igen |
 | Oldalak tartományának beolvasása |Igen |Igen |
 
@@ -244,13 +244,13 @@ Az alábbi táblázat összefoglalja, hogyan használják a tábla entitások a 
 
 | Művelet | ETag értéket ad vissza. | A-Match kérelem fejlécének megadását igényli |
 |:--- |:--- |:--- |
-| Lekérdezési entitások |Igen |Nem |
-| Entitás beszúrása |Igen |Nem |
+| Lekérdezési entitások |Yes |Nem |
+| Entitás beszúrása |Yes |Nem |
 | Entitás frissítése |Igen |Igen |
 | Entitás egyesítése |Igen |Igen |
-| Entitás törlése |Nem |Igen |
-| Entitás beszúrása vagy cseréje |Igen |Nem |
-| Entitás beszúrása vagy egyesítése |Igen |Nem |
+| Entitás törlése |Nem |Yes |
+| Entitás beszúrása vagy cseréje |Yes |Nem |
+| Entitás beszúrása vagy egyesítése |Yes |Nem |
 
 Vegye figyelembe, hogy a **INSERT vagy replace entitás** és az **INSERT vagy Merge entitás** műveletek *nem* végeznek Egyidejűség-ellenőrzéseket, mert nem küldenek ETAG értéket a Table szolgáltatásnak.  
 

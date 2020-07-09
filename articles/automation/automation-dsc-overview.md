@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/06/2018
+ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9880915061c0639aebe30bdb33258d7c79e155d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206886"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
-Azure Automation állapot-konfiguráció egy [Azure-beli](/powershell/scripting/dsc/configurations/configurations) konfiguráció-felügyeleti szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapot-konfiguráció (DSC) konfigurációjának írását, kezelését és fordítását bármely Felhőbeli vagy helyszíni adatközpontban. A szolgáltatás a [DSC-erőforrásokat](/powershell/scripting/dsc/resources/resources)is importálja, és a konfigurációkat a célként megadott csomópontokhoz rendeli hozzá a felhőben. A Azure Portal Azure Automation állapot konfigurációját az **állapot konfigurálása (DSC)** elemre kattintva érheti el a **konfiguráció**felügyelete alatt. 
+Azure Automation állapot-konfiguráció egy [Azure-beli](/powershell/scripting/dsc/configurations/configurations) konfiguráció-felügyeleti szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapot-konfiguráció (DSC) konfigurációjának írását, kezelését és fordítását bármely Felhőbeli vagy helyszíni adatközpontban. A szolgáltatás a [DSC-erőforrásokat](/powershell/scripting/dsc/resources/resources)is importálja, és a konfigurációkat a célként megadott csomópontokhoz rendeli hozzá a felhőben. A Azure Portal Azure Automation állapot konfigurációját az **állapot konfigurálása (DSC)** elemre kattintva érheti el a **konfiguráció**felügyelete alatt.
 
 A Azure Automation állapot-konfiguráció számos különböző gép kezelésére használható:
 
@@ -53,7 +53,7 @@ Azure Automation állapot-konfiguráció ugyanazokat a felügyeleti réteget hoz
 
 Azure Automation állapot-konfigurációval felügyelt csomópontok részletes jelentési állapotinformációkat küldenek a beépített lekérési kiszolgálónak. Konfigurálhatja Azure Automation állapot konfigurációját, hogy ezeket az adatLog Analytics-munkaterületre küldje. Lásd: [Azure Automation állapot-konfiguráció jelentési információinak továbbítása Azure monitor naplókhoz](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Azure Automation állapot konfigurációjának használatának előfeltételei
+## <a name="prerequisites"></a>Előfeltételek
 
 Azure Automation állapot konfigurációjának használatakor vegye figyelembe a jelen szakasz követelményeit.
 
@@ -88,9 +88,11 @@ Ha a csomópontok egy magánhálózaton találhatók, a következő portok és U
 * Port: csak TCP 443 szükséges a kimenő internet-hozzáféréshez
 * Globális URL-cím: ***. Azure-Automation.net**
 * US Gov Virginia globális URL-címe: ***. Azure-Automation.us**
-* Ügynök szolgáltatás: **https:// \< munkaterület azonosítója \> . agentsvc.Azure-Automation.net**
+* Ügynök szolgáltatás: **https:// \<workspaceId\> . agentsvc.Azure-Automation.net**
 
 Ha olyan DSC-erőforrásokat használ, amelyek a csomópontok között kommunikálnak, például a [waitfor * erőforrásai](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)között, akkor is engedélyeznie kell a csomópontok közötti forgalmat. A hálózati követelmények megismeréséhez tekintse meg az egyes DSC-erőforrások dokumentációját.
+
+A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="proxy-support"></a>Proxy-támogatás
 
@@ -101,36 +103,9 @@ A DSC-ügynök proxy-támogatása a Windows 1809-es és újabb verzióiban érhe
 
 Linux-csomópontok esetén a DSC-ügynök támogatja a proxyt, és a `http_proxy` változó használatával határozza meg az URL-címet. További információ a proxyk támogatásáról: a [DSC-metaconfigurations előállítása](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
-#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation állapot-konfiguráció hálózati tartományai és névtere
+#### <a name="dns-records-per-region"></a>DNS-rekordok régiónként
 
-A kivételek meghatározásakor ajánlott az alább felsorolt címeket használni. IP-címek esetén letöltheti az [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait tartalmazza.
-
-Ha egy adott régióhoz meghatározott Automation-fiókkal rendelkezik, akkor korlátozhatja a kommunikációt az adott regionális adatközpontra. A következő táblázat az egyes régiók DNS-rekordját tartalmazza:
-
-| **Régió** | **DNS-rekord** |
-| --- | --- |
-| USA nyugati középső régiója | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| USA déli középső régiója |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| USA keleti régiója    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| USA 2. keleti régiója |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Közép-Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Nyugat-Európa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| Észak-Európa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Délkelet-Ázsia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Közép-India |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Kelet-Japán |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Délkelet-Ausztrália |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Az Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatközpont IP-címének](https://www.microsoft.com/download/details.aspx?id=41653) XML-fájlját a Microsoft letöltőközpontból töltheti le.
-
-> [!NOTE]
-> Az Azure Datacenter IP-cím XML-fájlja felsorolja az Microsoft Azure adatközpontokban használt IP-címtartományt. A fájl a számítási, az SQL-és a tárolási tartományokat tartalmazza.
->
->A frissített fájlok hetente kerülnek közzétételre. A fájl a jelenleg telepített tartományokat és az IP-címtartományok közelgő változásait tükrözi. A fájlban megjelenő új tartományok legalább egy hétig nem használhatók az adatközpontokban. Érdemes minden héten letölteni az új XML-fájlt. Ezután frissítse webhelyét, hogy megfelelően azonosítsa az Azure-ban futó szolgáltatásokat. 
-
-Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
+A kivételek meghatározásakor a [DNS-rekordok](how-to/automation-region-dns-records.md) régiónként felsorolt címeinek használatát javasoljuk.
 
 ## <a name="next-steps"></a>További lépések
 

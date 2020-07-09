@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60870706"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0,6 kibocsátási megjegyzések
@@ -85,7 +85,7 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 ## <a name="next-step"></a>Következő lépés
 [Telepítse a 0,6](storsimple-virtual-array-install-update-06.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 Régebbi kiadási megjegyzést keres? Ugrás:
 
 * [StorSimple Virtual Array Update 0,5 kibocsátási megjegyzések](storsimple-virtual-array-update-05-release-notes.md)

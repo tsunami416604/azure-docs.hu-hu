@@ -1,25 +1,14 @@
 ---
 title: Helyszíni WCF REST-szolgáltatás elérhetővé tétele az ügyfeleknek a Azure Relay használatával
 description: Ez az oktatóanyag azt ismerteti, hogyan tehet elérhetővé egy helyszíni WCF REST-szolgáltatást egy külső ügyfél számára az Azure WCF Relay használatával.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 50628073efd7114aaacfe37177d2f5beb3be3d47
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204669"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322692"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával
 
@@ -86,7 +75,7 @@ A szolgáltatási szerződés meghatározza a szolgáltatás által támogatott 
 1. Módosítsa a névtér alapértelmezett `EchoService` nevét a következőre: `Microsoft.ServiceBus.Samples`.
 
    > [!IMPORTANT]
-   > Ez az oktatóanyag a C# névteret használja, `Microsoft.ServiceBus.Samples` amely a [WCF-ügyfél konfigurálása](#configure-the-wcf-client) szakasz konfigurációs fájljában használt, szerződésen alapuló felügyelt típus névtere. Megadhatja a minta összeállításakor használni kívánt névtereket is. Az oktatóanyag azonban nem fog működni, hacsak nem módosítja a szerződés és a szolgáltatás névtereit az alkalmazás konfigurációs fájljában. Az *app. config* fájlban megadott névtérnek meg kell egyeznie a C#-fájlokban megadott névtérrel.
+   > Ez az oktatóanyag a C# névteret használja, `Microsoft.ServiceBus.Samples` amely a [WCF-ügyfél konfigurálása](#configure-the-wcf-client) szakasz konfigurációs fájljában használt, szerződésen alapuló felügyelt típus névtere. Megadhatja a minta összeállításakor használni kívánt névtereket is. Az oktatóanyag azonban nem fog működni, hacsak nem módosítja a szerződés és a szolgáltatás névtereit az alkalmazás konfigurációs fájljában. A *App.config* fájlban megadott névtérnek meg kell egyeznie a C#-fájlokban megadott névtérrel.
    >
 
 1. Közvetlenül a `Microsoft.ServiceBus.Samples` névtér deklarációja után, de a névtéren belül adjon meg egy nevű új felületet, `IEchoContract` és alkalmazza az `ServiceContractAttribute` attribútumot az illesztőfelületre a névtér értékével `https://samples.microsoft.com/ServiceModel/Relay/` . Illessze be a következő kódot a névtér-deklaráció után:
@@ -153,7 +142,7 @@ Most, hogy létrejött a felület, megvalósíthatja azt.
 
 ## <a name="implement-the-wcf-contract"></a>A WCF-szerződés implementálása
 
-Az Azure Relay létrehozásához egy felület használatával először létre kell hoznia a szerződést. Az interfész létrehozásával kapcsolatos további információkért tekintse meg az előző szakaszt. A következő eljárás implementálja a felületet. Ez a feladat magában foglalja egy nevű osztály létrehozását `EchoService` , amely megvalósítja a felhasználó által definiált `IEchoContract` felületet. Az interfész megvalósítása után a felületet az *app. config* konfigurációs fájljának használatával kell konfigurálnia. A konfigurációs fájl az alkalmazáshoz szükséges információkat tartalmazza. Ez az információ tartalmazza a szolgáltatás nevét, a szerződés nevét, valamint a továbbítási szolgáltatással való kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód az eljárást követő példában található. A szolgáltatási szerződések megvalósításával kapcsolatos általánosabb információkért lásd: [szolgáltatási szerződések](/dotnet/framework/wcf/implementing-service-contracts)implementálása.
+Az Azure Relay létrehozásához egy felület használatával először létre kell hoznia a szerződést. Az interfész létrehozásával kapcsolatos további információkért tekintse meg az előző szakaszt. A következő eljárás implementálja a felületet. Ez a feladat magában foglalja egy nevű osztály létrehozását `EchoService` , amely megvalósítja a felhasználó által definiált `IEchoContract` felületet. Az interfész megvalósítása után a felületet a *App.config* konfigurációs fájllal konfigurálhatja. A konfigurációs fájl az alkalmazáshoz szükséges információkat tartalmazza. Ez az információ tartalmazza a szolgáltatás nevét, a szerződés nevét, valamint a továbbítási szolgáltatással való kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód az eljárást követő példában található. A szolgáltatási szerződések megvalósításával kapcsolatos általánosabb információkért lásd: [szolgáltatási szerződések](/dotnet/framework/wcf/implementing-service-contracts)implementálása.
 
 1. Hozzon létre egy új, `EchoService` nevű osztályt közvetlenül az `IEchoContract` felület meghatározása után. Az `EchoService` osztály megvalósítja az `IEchoContract` felületet.
 
@@ -190,7 +179,7 @@ Az Azure Relay létrehozásához egy felület használatával először létre k
 
 A konfigurációs fájl hasonló a WCF konfigurációs fájlhoz. Tartalmazza a szolgáltatás nevét, végpontját és kötését. A végpont az a hely, Azure Relay az ügyfelek és a gazdagépek számára lehetővé teszi az egymással való kommunikációt. A kötés a kommunikációhoz használt protokoll típusa. A fő különbség az, hogy ez a konfigurált szolgáltatási végpont egy [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) kötésre hivatkozik, amely nem része a .NET-keretrendszernek. A [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) a szolgáltatás által meghatározott kötések egyike.
 
-1. A **megoldáskezelő**kattintson duplán az **app. config** fájlra, és nyissa meg a fájlt a Visual Studio szerkesztőjében.
+1. A **megoldáskezelő**kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
 1. Az `<appSettings>` elemben cserélje le a helyőrzőket a szolgáltatási névtér nevére, valamint a korábbi lépésben másolt SAS-kulcsra.
 1. A `<system.serviceModel>` címkéken belül adjon hozzá egy `<services>` elemet. Egyetlen konfigurációs fájlban több továbbító alkalmazást is meghatározhat. Ez az oktatóanyag viszont csak egyet határoz meg.
 
@@ -239,7 +228,7 @@ A következő kód a szolgáltatási szerződés megvalósítását mutatja be.
     }
 ```
 
-A következő kód a Service hosthez társított *app. config* fájl alapszintű formátumát mutatja be.
+A következő kód a szolgáltatás gazdagépéhez tartozó *App.config* fájl alapszintű formátumát mutatja be.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -329,7 +318,7 @@ Az oktatóanyaghoz az URI `sb://putServiceNamespaceHere.windows.net/EchoService`
 
     Ez a lépés tájékoztatja a Relay szolgáltatást, hogy az alkalmazás nyilvánosan elérhető a projekthez tartozó Atom-hírcsatorna vizsgálatával. Ha be van `DiscoveryType` állítva `private` , az ügyfél továbbra is hozzáférhet a szolgáltatáshoz. A szolgáltatás azonban nem jelenik meg, amikor megkeresi a `Relay` névteret. Az ügyfélnek ehhez már ismernie kell a végpont elérési útját.
 
-1. Alkalmazza a szolgáltatás hitelesítő adatait az *app. config* fájlban definiált szolgáltatási végpontokra:
+1. Alkalmazza a szolgáltatás hitelesítő adatait a *App.config* fájlban meghatározott szolgáltatási végpontokra:
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -445,7 +434,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>WCF-ügyfél létrehozása a szolgáltatási szerződéshez
 
-A következő feladat egy ügyfélalkalmazás létrehozása és a később megvalósított szolgáltatási szerződés meghatározása. Ezek a lépések a szolgáltatás létrehozásához szükséges lépéseket hasonlítják össze: szerződések definiálása, *app. config* fájl szerkesztése, a továbbítási szolgáltatáshoz való kapcsolódáshoz használt hitelesítő adatokkal és így tovább. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+A következő feladat egy ügyfélalkalmazás létrehozása és a később megvalósított szolgáltatási szerződés meghatározása. Ezek a lépések a szolgáltatás létrehozásához szükséges lépéseket hasonlítják össze: szerződés meghatározása, *App.config* fájl szerkesztése, hitelesítő adatok használata a Relay szolgáltatáshoz való kapcsolódáshoz és így tovább. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
 1. Hozzon létre egy új projektet a jelenlegi Visual Studio-megoldásban az ügyfél számára:
 
@@ -516,9 +505,9 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="configure-the-wcf-client"></a>A WCF-ügyfél konfigurálása
 
-Ebben a lépésben létrehoz egy *app. config* fájlt egy alapszintű ügyfélalkalmazás számára, amely hozzáfér az ebben az oktatóanyagban korábban létrehozott szolgáltatáshoz. Ez az *app. config* fájl határozza meg a szerződést, a kötést és a végpont nevét. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+Ebben a lépésben létrehoz egy *App.config* fájlt egy alapszintű ügyfélalkalmazás számára, amely hozzáfér az ebben az oktatóanyagban korábban létrehozott szolgáltatáshoz. Ez a *App.config* -fájl határozza meg az egyezményt, a kötést és a végpont nevét. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
-1. **Megoldáskezelő**a **EchoClient** projektben kattintson duplán az **app. config** fájlra, és nyissa meg a fájlt a Visual Studio szerkesztőjében.
+1. **Megoldáskezelő**a **EchoClient** projektben kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
 1. Az `<appSettings>` elemben cserélje le a helyőrzőket a szolgáltatási névtér nevére, valamint a korábbi lépésben másolt SAS-kulcsra.
 1. A `system.serviceModel` elemen belül adjon hozzá egy `<client>` elemet.
 
@@ -546,9 +535,9 @@ Ebben a lépésben létrehoz egy *app. config* fájlt egy alapszintű ügyfélal
 
 1. Válassza **File**  >  **a fájl mentés összes mentése**lehetőséget.
 
-### <a name="example-of-the-appconfig-file"></a>Példa az app. config fájlra
+### <a name="example-of-the-appconfig-file"></a>Példa a App.config fájlra
 
-A következő kód az ECHO-ügyfél *app. config* fájlját mutatja.
+A következő kód az ECHO-ügyfél *App.config* fájlját mutatja be.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -613,7 +602,7 @@ Azonban az egyik fő különbség az, hogy az ügyfélalkalmazás egy csatornát
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-1. Hozza létre a Channel Factoryt, amely betölti az *app. config* fájlban leírt konfigurációt.
+1. Hozza létre a csatorna-előállítót, amely betölti a *App.config* fájlban leírt konfigurációt.
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));

@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 35754270b560b219f762652c6ea9bd0f15e6f661
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053836"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216540"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található viszonyítási adatbázis tervezése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,9 +50,9 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-database"></a>Üres SQL Database létrehozása
+## <a name="create-a-blank-database-in-azure-sql-database"></a>Üres adatbázis létrehozása Azure SQL Database
 
-Azure SQL Database a számítási és tárolási erőforrások egy meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoport](../../active-directory-b2c/overview.md) keretein belül jön létre, és egy [logikai SQL Server](logical-servers.md)használatával van kezelve.
+A Azure SQL Databaseban található adatbázis számítási és tárolási erőforrások egy meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoport](../../active-directory-b2c/overview.md) keretein belül jön létre, és egy [logikai SQL Server](logical-servers.md)használatával van kezelve.
 
 Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
@@ -96,10 +96,10 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Kiszolgálói szintű IP-tűzfalszabály létrehozása
 
-A SQL Database szolgáltatás egy IP-tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz és a kiszolgálón lévő adatbázisokhoz, kivéve, ha egy tűzfalszabály engedélyezi az IP-címet a tűzfalon keresztül. Az adatbázis külső kapcsolatának engedélyezéséhez először hozzá kell adnia egy IP-tűzfalszabály-szabályt az IP-címhez (vagy IP-címtartomány). A [kiszolgálói szintű IP-tűzfalszabály](firewall-configure.md)létrehozásához kövesse az alábbi lépéseket.
+A Azure SQL Database egy IP-tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz és a kiszolgálón lévő adatbázisokhoz, kivéve, ha egy tűzfalszabály engedélyezi az IP-címet a tűzfalon keresztül. Az adatbázis külső kapcsolatának engedélyezéséhez először hozzá kell adnia egy IP-tűzfalszabály-szabályt az IP-címhez (vagy IP-címtartomány). A [kiszolgálói szintű IP-tűzfalszabály](firewall-configure.md)létrehozásához kövesse az alábbi lépéseket.
 
 > [!IMPORTANT]
-> Az SQL Database szolgáltatás a 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni a szolgáltatáshoz, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az adatbázishoz, ha a rendszergazda megnyitja a 1433-es portot.
+> A Azure SQL Database a 1433-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni a szolgáltatáshoz, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az adatbázishoz, ha a rendszergazda megnyitja a 1433-es portot.
 
 1. Az üzembe helyezés befejezése után válassza az **SQL-adatbázisok** lehetőséget a Azure Portal menüben, vagy keresse meg és válassza ki az *SQL-adatbázisok* elemet bármely oldalon.  
 

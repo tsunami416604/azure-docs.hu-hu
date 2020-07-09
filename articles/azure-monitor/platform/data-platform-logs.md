@@ -10,10 +10,9 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83799982"
 ---
 # <a name="logs-in-azure-monitor"></a>Naplók az Azure Monitorban
@@ -128,7 +127,7 @@ A Azure Monitor különböző forrásokból származó naplózási adatokat gyű
 | Azure Sentinel | Az [Azure Sentinel](/azure/sentinel/) adatforrásokból származó adatok log Analytics munkaterületre való tárolását tárolja. Lásd: [az adatforrások összekötése](/azure/sentinel/connect-data-sources).  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor adatplatformról](data-platform.md).
 - [A Azure monitor metrikáinak](data-platform-metrics.md)megismerése.

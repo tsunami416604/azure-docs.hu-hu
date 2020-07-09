@@ -2,16 +2,13 @@
 title: Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 description: Ismerje meg, hogyan integrálható Azure NetApp Files az Azure Kubernetes Service-szel
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
-ms.author: zarhoads
-ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465643"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 
@@ -23,7 +20,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtr
 > [!IMPORTANT]
 > Az AK-fürtnek olyan régióban is kell lennie [, amely támogatja a Azure NetApp Files][anf-regions].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -49,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Ez hosszabb időt is igénybe vehet.
 
-Amikor létrehoz egy Azure NetApp-fiókot az AK-val való használatra, létre kell hoznia a fiókot a **csomópont** -erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá `--query nodeResourceGroup` a lekérdezési paramétert. A következő példa lekéri a *myAKSCluster* nevű AK-fürthöz tartozó csomópont-erőforráscsoportot az erőforráscsoport neve *myResourceGroup*:
+Amikor létrehoz egy Azure NetApp-fiókot az AK-val való használatra, létre kell hoznia a fiókot a **csomópont** -erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` lekérdezési paramétert. A következő példa lekéri a *myAKSCluster* nevű AK-fürthöz tartozó csomópont-erőforráscsoportot az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -148,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Hozzon `pv-nfs.yaml` létre egy definiált PersistentVolume. Cserélje `path` le a *creationToken* elemet a `server` creationToken és az *IP* -cím elemre az előző parancsban. Például:
+Hozzon létre egy `pv-nfs.yaml` definiált PersistentVolume. Cserélje le a `path` elemet a *creationToken* és az `server` *IP* -cím elemre az előző parancsban. Például:
 
 ```yaml
 ---
@@ -180,7 +177,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>A PersistentVolumeClaim létrehozása
 
-Hozzon `pvc-nfs.yaml` létre egy definiált PersistentVolume. Például:
+Hozzon létre egy `pvc-nfs.yaml` definiált PersistentVolume. Például:
 
 ```yaml
 apiVersion: v1
@@ -210,7 +207,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Csatlakoztatás Pod-mel
 
-Hozzon `nginx-nfs.yaml` létre egy olyan Pod-definíciót, amely a PersistentVolumeClaim használja. Például:
+Hozzon létre egy olyan `nginx-nfs.yaml` Pod-definíciót, amely a PersistentVolumeClaim használja. Például:
 
 ```yaml
 kind: Pod
@@ -246,7 +243,7 @@ Ellenőrizze, hogy *fut* -e a pod a [kubectl leíró][kubectl-describe] parancs 
 kubectl describe pod nginx-nfs
 ```
 
-Ellenőrizze, hogy a kötet csatlakoztatva van-e a pod-hoz a [kubectl exec][kubectl-exec] használatával, hogy `df -h` csatlakozik-e a hüvelyhez, és ellenőrizze, hogy a kötet csatlakoztatva van-e.
+Ellenőrizze, hogy a kötet csatlakoztatva van-e a pod-hoz a [kubectl exec][kubectl-exec] használatával, hogy csatlakozik-e a hüvelyhez, `df -h` és ellenőrizze, hogy a kötet csatlakoztatva van-e.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

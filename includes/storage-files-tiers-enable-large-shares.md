@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536486"
 ---
 Alapértelmezés szerint a standard fájlmegosztás legfeljebb 5 TiB-ra terjedhet, bár a megosztási korlát a 100 TiB-ra is növelhető. Ehhez a Storage-fiók szintjén engedélyeznie kell a *nagyméretű fájlmegosztás* szolgáltatást. A Premium Storage-fiókok (*FileStorage* Storage-fiókok) nem rendelkeznek a nagyméretű fájlmegosztás-szolgáltatás jelzőjével, mivel az összes prémium fájlmegosztás már engedélyezve van a teljes 100 TiB-kapacitás kiépítése érdekében.

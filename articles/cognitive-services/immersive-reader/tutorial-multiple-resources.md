@@ -9,32 +9,32 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195621"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267205"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Oktatóanyag: több, magával ragadó olvasó erőforrásainak integrálása
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. A [Node. js](./quickstart-nodejs.md)rövid útmutatójában megtanulta, hogyan használhatja a lebilincselő olvasót egyetlen erőforrással. Ez az oktatóanyag azt ismerteti, hogyan integrálható egyszerre több, az olvasóhoz tartozó erőforrás ugyanabban az alkalmazásban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. A [Node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)rövid útmutatójában megtanulta, hogyan használhatja a lebilincselő olvasót egyetlen erőforrással. Ez az oktatóanyag azt ismerteti, hogyan integrálható egyszerre több, az olvasóhoz tartozó erőforrás ugyanabban az alkalmazásban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Több alámerülés-olvasó erőforrás létrehozása egy meglévő erőforráscsoport alatt
 > * A sokrétű olvasó elindítása több erőforrás használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A rövid [útmutató segítségével](./quickstart-nodejs.md) hozzon létre egy webalkalmazást, amely elindítja a NodeJS-mel ellátott olvasót. Ebben a rövid útmutatóban egy egyszerű olvasó erőforrást konfigurál. Ezen az oktatóanyagon felül fogunk építeni.
+* A rövid [útmutató segítségével](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) hozzon létre egy webalkalmazást, amely elindítja a NodeJS-mel ellátott olvasót. Ebben a rövid útmutatóban egy egyszerű olvasó erőforrást konfigurál. Ezen az oktatóanyagon felül fogunk építeni.
 
 ## <a name="create-the-immersive-reader-resources"></a>A lebilincselő olvasó erőforrásainak létrehozása
 
-Az [alábbi útmutatást](./how-to-create-immersive-reader.md) követve hozzon létre minden magától elolvasó erőforrást. A **create-ImmersiveReaderResource** parancsfájl `ResourceName` `ResourceSubdomain`a, a és `ResourceLocation` a paramétert adja meg. Ezeknek egyedieknek kell lenniük minden létrehozott erőforráshoz. A többi paraméternek azonosnak kell lennie, mint amit az első, az olvasói erőforrás beállításakor használt. Így minden erőforrás ugyanahhoz az Azure-erőforráscsoporthoz és Azure AD-alkalmazáshoz is csatolható.
+Az [alábbi útmutatást](./how-to-create-immersive-reader.md) követve hozzon létre minden magától elolvasó erőforrást. A **create-ImmersiveReaderResource** parancsfájl a, a `ResourceName` `ResourceSubdomain` és `ResourceLocation` a paramétert adja meg. Ezeknek egyedieknek kell lenniük minden létrehozott erőforráshoz. A többi paraméternek azonosnak kell lennie, mint amit az első, az olvasói erőforrás beállításakor használt. Így minden erőforrás ugyanahhoz az Azure-erőforráscsoporthoz és Azure AD-alkalmazáshoz is csatolható.
 
-Az alábbi példa bemutatja, hogyan hozhat létre két erőforrást, egyet a WestUS és egy másikat a EastUS-ben. Figyelje meg `ResourceName`a, `ResourceSubdomain`a és `ResourceLocation`a egyedi értékeit.
+Az alábbi példa bemutatja, hogyan hozhat létre két erőforrást, egyet a WestUS és egy másikat a EastUS-ben. Figyelje meg a, a és a egyedi értékeit `ResourceName` `ResourceSubdomain` `ResourceLocation` .
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -64,7 +64,7 @@ Create-ImmersiveReaderResource
 
 ## <a name="add-resources-to-environment-configuration"></a>Erőforrások hozzáadása a környezeti konfigurációhoz
 
-A rövid útmutatóban létrehozott egy környezeti konfigurációs fájlt, amely tartalmazza a `TenantId`, `ClientId` `ClientSecret`, és `Subdomain` paramétereket. Mivel az összes erőforrás ugyanazt az Azure ad-alkalmazást használja, a `TenantId`, `ClientId`a és `ClientSecret`a esetében is ugyanazokat az értékeket használhatja. Az egyetlen szükséges módosítás az egyes altartományok listázása az egyes erőforrásokhoz.
+A rövid útmutatóban létrehozott egy környezeti konfigurációs fájlt, amely tartalmazza a `TenantId` , `ClientId` , `ClientSecret` és `Subdomain` paramétereket. Mivel az összes erőforrás ugyanazt az Azure AD-alkalmazást használja, a, a és a esetében is ugyanazokat az értékeket használhatja `TenantId` `ClientId` `ClientSecret` . Az egyetlen szükséges módosítás az egyes altartományok listázása az egyes erőforrásokhoz.
 
 Az új __. env__ fájlnak ekkor a következőhöz hasonlóan kell kinéznie:
 
@@ -258,7 +258,7 @@ A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie 
     npm start
     ```
 
-4. Nyissa meg a böngészőt `http://localhost:3000`, és navigáljon a gombra. A fenti tartalomnak a lapon kell megjelennie. Kattintson a EastUS- **Megölelő olvasó** gombra vagy a **WestUS magával ragadó olvasó** gombra, hogy a megfelelő erőforrásokkal elindítsa a magával ragadó olvasót.
+4. Nyissa meg a böngészőt, és navigáljon a gombra `http://localhost:3000` . A fenti tartalomnak a lapon kell megjelennie. Kattintson a EastUS- **Megölelő olvasó** gombra vagy a **WestUS magával ragadó olvasó** gombra, hogy a megfelelő erőforrásokkal elindítsa a magával ragadó olvasót.
 
 ## <a name="next-steps"></a>További lépések
 

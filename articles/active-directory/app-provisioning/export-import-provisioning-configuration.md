@@ -2,20 +2,19 @@
 title: A kiépítés konfigurációjának exportálása és visszavonása a vész-helyreállítás ismert jó állapotára
 description: Megtudhatja, hogyan exportálhatja a kiépítési konfigurációt, és visszaállíthatja a vész-helyreállítás ismert megfelelő állapotát.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
-ms.author: chmutali
-ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.author: kenwith
+ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781722"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Útmutató: az üzembe helyezési konfiguráció exportálása és visszavonása egy ismert megfelelő állapotba
 
@@ -97,7 +96,7 @@ A Microsoft Graph Explorerben konfigurálja a következő PUT lekérdezést, és
 
 A "kérelem törzse" lapon másolja át a JSON-séma fájljának tartalmát.
 
-   [![A kérelem törzse](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
+   [![Kérelem törzse](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
 
 Az "igénylési fejlécek" lapon adja hozzá a Content-Type fejléc attribútumot az "Application/JSON" értékkel.
 

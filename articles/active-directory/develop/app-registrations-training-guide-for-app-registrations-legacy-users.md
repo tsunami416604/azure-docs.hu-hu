@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478144"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Új alkalmazásregisztráció az Azure Portalon – képzési útmutató
 
@@ -54,9 +54,9 @@ Az új felhasználói felületen meg kell adnia egy **nevet** az alkalmazásnak,
 
 A régi felület **tulajdonságlapja** volt. A **Tulajdonságok** a következő mezőkkel rendelkeznek:
 
-- **Név**
+- **Name (Név)**
 - **Objektumazonosító**
-- **Alkalmazás azonosítója**
+- **Alkalmazásazonosító**
 - **Alkalmazásazonosító URI**
 - **Embléma**
 - **Kezdőlap URL-címe**
@@ -73,13 +73,13 @@ Az új felület nem rendelkezik ezzel az oldallal. Itt találja a megfelelő fun
 - A **több-bérlős** váltás az örökölt felhasználói felület által vezérelt funkcióit a **hitelesítés** lapon **támogatott fióktípus** váltotta fel. További információ: gyors útmutató [: alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md).
 - A **kijelentkezési URL-cím** mostantól a **hitelesítés** oldalon található.
 - Az **alkalmazás típusa** már nem érvényes mező. Ehelyett átirányítási URI-k, amelyek a **hitelesítés** oldalon találhatók, meghatározhatja, hogy mely alkalmazások támogatottak.
-- Az alkalmazás- **azonosító URI** -ja már **Application ID URI** -ként van meghívva, és megtalálhatja az API-k **elérhetővé**tétele céljából. A régi élményben ez a tulajdonság a következő formátumban lett automatikus regisztrálva:, `https://{tenantdomain}/{appID}`például: `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`. Az új felhasználói élményben az automatikusan létrejön `api://{appID}`, de explicit módon el kell menteni. Azure AD B2C bérlők esetében a `https://{tenantdomain}/{appID}` formátum továbbra is használatban van.
+- Az alkalmazás- **azonosító URI** -ja már **Application ID URI** -ként van meghívva, és megtalálhatja az API-k **elérhetővé**tétele céljából. A régi élményben ez a tulajdonság a következő formátumban lett automatikus regisztrálva: `https://{tenantdomain}/{appID}` , például: `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` . Az új felhasználói élményben az automatikusan létrejön `api://{appID}` , de explicit módon el kell menteni. Azure AD B2C bérlők esetében a `https://{tenantdomain}/{appID}` Formátum továbbra is használatban van.
 
 ### <a name="reply-urlsredirect-urls"></a>Válasz URL-címek/átirányítási URL-címek
 
 A régi élményben az alkalmazásnak volt egy **Válasz URL-címe** . Az új felhasználói felületen a válasz URL-címei az alkalmazás **hitelesítési** oldalán találhatók. Ezek az úgynevezett **átirányítási URI**-k.
 
-Az átirányítási URI-k formátuma megváltozott. Szükség van egy webes vagy nyilvános alkalmazás-típushoz való társításra. Biztonsági okokból a helyettesítő karakterek és `http://` sémák nem támogatottak, kivéve *http://localhost*a következőt:.
+Az átirányítási URI-k formátuma megváltozott. Szükség van egy webes vagy nyilvános alkalmazás-típushoz való társításra. Biztonsági okokból a helyettesítő karakterek és `http://` sémák nem támogatottak, kivéve a következőt: *http://localhost* .
 
 ### <a name="keyscertificates--secrets"></a>Kulcsok/tanúsítványok & Secrets
 
@@ -118,8 +118,8 @@ Az örökölt és az új tapasztalatok a JSON formátumának különböző verzi
 
 Az új kezelőfelület felhasználói felületi vezérlőket biztosít a következő tulajdonságokhoz:
 
-- A **hitelesítés** lapon **implicit engedélyezési folyamat** (`oauth2AllowImplicitFlow`) szerepel. A régi élménytől eltérően engedélyezheti a **hozzáférési jogkivonatokat** vagy **azonosító jogkivonatokat**, vagy mindkettőt.
-- Az **API közzététele** oldalon az`oauth2Permissions`API () és a **jóváhagyott ügyfélalkalmazások** (`preAuthorizedApplications`) **által definiált hatókörök** szerepelnek. Az alkalmazások webes API-hoz való konfigurálásával és az engedélyek/hatókörök beszerzésével kapcsolatos további információkért lásd [: gyors útmutató: alkalmazás konfigurálása webes API](quickstart-configure-app-expose-web-apis.md)-k megjelenítéséhez.
+- A **hitelesítés** lapon **implicit engedélyezési folyamat** ( `oauth2AllowImplicitFlow` ) szerepel. A régi élménytől eltérően engedélyezheti a **hozzáférési jogkivonatokat** vagy **azonosító jogkivonatokat**, vagy mindkettőt.
+- Az **API közzététele** oldalon az API () és a jóváhagyott ügyfélalkalmazások () **által definiált hatókörök** szerepelnek `oauth2Permissions` **Authorized client applications** `preAuthorizedApplications` . Az alkalmazások webes API-hoz való konfigurálásával és az engedélyek/hatókörök beszerzésével kapcsolatos további információkért lásd [: gyors útmutató: alkalmazás konfigurálása webes API](quickstart-configure-app-expose-web-apis.md)-k megjelenítéséhez.
 - A **védjegyezési** oldal tartalmazza a **közzétevő tartományt**. A közzétevő tartomány megjelenik a felhasználók számára az [alkalmazás jóváhagyására vonatkozó kérésben](application-consent-experience.md). További információkért lásd [: útmutató: alkalmazás közzétevő tartományának konfigurálása](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Korlátozások

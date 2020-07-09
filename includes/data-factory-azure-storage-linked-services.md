@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75466730"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -16,12 +16,12 @@ Az **Azure Storage társított szolgáltatása** lehetővé teszi, hogy egy Azur
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Igen |
-| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Yes |
+| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Yes |
 
 További információ a Storage-fiók hozzáférési kulcsainak beolvasásáról: a [Storage-fiók hozzáférési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
 
-**Például**  
+**Példa:**  
 
 ```json
 {
@@ -49,10 +49,10 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Igen |
-| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Yes |
+| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {

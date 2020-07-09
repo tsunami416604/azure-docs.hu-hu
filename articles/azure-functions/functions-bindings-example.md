@@ -1,24 +1,23 @@
 ---
-title: Azure Functions trigger és kötési példa
+title: Azure Functions-eseményindító és -kötés – példa
 description: Ismerje meg az Azure Function-kötések konfigurálását
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74227244"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions trigger és kötési példa
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions-eseményindító és -kötés – példa
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy [triggert és kötést](./functions-triggers-bindings.md) egy Azure-függvényben.
 
 Tegyük fel, hogy új sort szeretne írni az Azure Table Storage-ba, amikor új üzenet jelenik meg az Azure üzenetsor-tárolóban. Ez a működés megvalósítható egy Azure Queue-tárolóbeli eseményindítóval, és egy Azure Table-tárolóbeli kimeneti kötéssel. 
 
-Ehhez a forgatókönyvhöz a *function. JSON* fájl szükséges. 
+Ebben a forgatókönyvben a fájl *function.js* . 
 
 ```json
 {
@@ -41,18 +40,18 @@ Ehhez a forgatókönyvhöz a *function. JSON* fájl szükséges.
 }
 ```
 
-A `bindings` tömb első eleme a várólista-tároló triggere. A `type` és `direction` a tulajdonságok azonosítják az triggert. A `name` tulajdonság azonosítja az üzenetsor-üzenet tartalmát fogadó Function paramétert. A figyelni kívánt várólista neve `queueName`, a kapcsolódási karakterlánc pedig a által `connection`azonosított alkalmazás-beállításban található.
+A tömb első eleme `bindings` a várólista-tároló triggere. A `type` és a `direction` Tulajdonságok azonosítják az triggert. A `name` tulajdonság azonosítja az üzenetsor-üzenet tartalmát fogadó Function paramétert. A figyelni kívánt várólista neve `queueName` , a kapcsolódási karakterlánc pedig a által azonosított alkalmazás-beállításban található `connection` .
 
-A `bindings` tömb második eleme az Azure Table Storage output kötés. A `type` és `direction` a tulajdonság azonosítja a kötést. A `name` tulajdonság azt határozza meg, hogy a függvény hogyan adja meg az új tábla sorát, ebben az esetben a függvény visszatérési értékét használva. A tábla neve a (z) `tableName`helyen található, és a kapcsolatok karakterlánca a által `connection`azonosított alkalmazás-beállításban szerepel.
+A tömb második eleme `bindings` Az Azure Table Storage output kötés. A `type` és a `direction` tulajdonság azonosítja a kötést. A `name` tulajdonság azt határozza meg, hogy a függvény hogyan adja meg az új tábla sorát, ebben az esetben a függvény visszatérési értékét használva. A tábla neve a (z `tableName` ) helyen található, és a kapcsolatok karakterlánca a által azonosított alkalmazás-beállításban szerepel `connection` .
 
-Ha szeretné megtekinteni és szerkeszteni a *function. JSON* tartalmát a Azure Portalban, kattintson a **speciális szerkesztő** lehetőségre a függvény **integrálás** lapján.
+A Azure Portal *function.js* tartalmának megtekintéséhez és szerkesztéséhez kattintson a függvény **integrálás** lapján található **speciális szerkesztő** lehetőségre.
 
 > [!NOTE]
-> A értéke `connection` egy olyan Alkalmazásbeállítás neve, amely tartalmazza a kapcsolatok karakterláncát, nem maga a kapcsolatok karakterlánca. A kötések az Alkalmazásbeállítások között tárolt kapcsolati karakterláncokat használják, hogy kikényszerítsék a *function. JSON* nem tartalmaz szolgáltatási titkokat.
+> A értéke `connection` egy olyan Alkalmazásbeállítás neve, amely tartalmazza a kapcsolatok karakterláncát, nem maga a kapcsolatok karakterlánca. A kötések az Alkalmazásbeállítások között tárolt kapcsolati karakterláncokat használják annak érdekében, hogy a *function.json* nem tartalmazza a szolgáltatás titkos kulcsait.
 
 ## <a name="c-script-example"></a>C# parancsfájl – példa
 
-A következő C#-szkripttel működik ezzel az triggerrel és kötéssel. Figyelje meg, hogy a várólista-üzenet tartalmát megadó paraméter neve: `order`; ezt a nevet kötelező megadni, `name` mert a *function. JSON* tulajdonság értéke`order` 
+A következő C#-szkripttel működik ezzel az triggerrel és kötéssel. Figyelje meg, hogy a várólista-üzenet tartalmát megadó paraméter neve `order` ; erre a névre van szükség, mert a `name` *function.json* tulajdonság értéke`order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -82,7 +81,7 @@ public class Person
 
 ## <a name="javascript-example"></a>JavaScript-példa
 
-Ugyanez a *function. JSON* fájl JavaScript-függvénnyel is használható:
+Ugyanaz a *function.jsa* fájlon JavaScript-függvénnyel is használható:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -102,7 +101,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Példa az osztály könyvtárára
 
-Egy osztály-függvénytárban ugyanazokat az trigger-és &mdash; kötési információs várólistákat és táblázatokat, a Storage-fiókokat, &mdash; a bemeneti és kimeneti függvények paramétereit a function. JSON fájl helyett attribútumok szolgáltatják. Például:
+Egy osztály-függvénytárban ugyanazokat az trigger-és kötési információs &mdash; várólistákat és táblázatokat, a Storage-fiókokat, a bemeneti és kimeneti függvények paramétereit a &mdash; fájl function.jshelyett attribútumok szolgáltatják. Íme egy példa:
 
 ```csharp
 public static class QueueTriggerTableOutput

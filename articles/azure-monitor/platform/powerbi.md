@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
 ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659283"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor naplózási adatnaplóba való importálás Power BI
@@ -29,7 +28,7 @@ Ha Azure Monitor [log Analytics munkaterületről](manage-access.md) szeretne ad
 Először hozzon létre egy olyan [log-lekérdezést](../log-query/log-query-overview.md) , amely visszaadja azokat az adatokat, amelyeket fel szeretne tölteni a Power bi adatkészletből.  Ezután exportálja a lekérdezést [Power Query (M) nyelvre](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) , amelyet a Power bi Desktop használhat.
 
 1. Az adatkészlethez tartozó adatok kinyeréséhez [hozza létre a log Analytics napló lekérdezést](../log-query/get-started-portal.md) .
-2. Válassza az **Exportálás** > **Power bi lekérdezés (M)** lehetőséget.  Ezzel exportálja a lekérdezést egy **PowerBIQuery. txt**nevű szövegfájlba. 
+2. Válassza az **Exportálás**  >  **Power bi lekérdezés (M)** lehetőséget.  Ezzel exportálja a lekérdezést egy **PowerBIQuery.txt**nevű szövegfájlba. 
 
     ![Naplóbeli keresés exportálása](media/powerbi/export-analytics.png)
 
@@ -39,7 +38,7 @@ Először hozzon létre egy olyan [log-lekérdezést](../log-query/log-query-ove
 A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy a Power BI közzétett adatkészleteket és jelentéseket hozzon létre.  Azt is megteheti, hogy a Azure Monitorból exportált Power Query nyelvet használó lekérdezést hoz létre. 
 
 1. Ha még nincs telepítve, telepítse a [Power bi Desktop](https://powerbi.microsoft.com/desktop/) , majd nyissa meg az alkalmazást.
-2.  > Új lekérdezés megnyitásához válassza az**adatlekérdezés üres lekérdezés** lehetőséget. **Get Data**  Ezután válassza ki **speciális szerkesztő** és illessze be az exportált fájl tartalmát a lekérdezésbe. Kattintson a **Done** (Kész) gombra.
+2. **Get Data**  >  Új lekérdezés megnyitásához válassza az**adatlekérdezés üres lekérdezés** lehetőséget.  Ezután válassza ki **speciális szerkesztő** és illessze be az exportált fájl tartalmát a lekérdezésbe. Kattintson a **Done** (Kész) gombra.
 
     ![Power BI Desktop lekérdezés](media/powerbi/desktop-new-query.png)
 

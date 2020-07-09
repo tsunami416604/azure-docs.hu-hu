@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning mod
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
-ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475475"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087265"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,11 +43,15 @@ Az ACI-ra vonatkozó kvóta-és területi elérhetőséggel kapcsolatos informá
 
     A változók beállításával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
 
-- A cikkben szereplő __CLI__ -kódrészletek azt feltételezik, hogy létrehozott `inferenceconfig.json` egy dokumentumot. A dokumentum létrehozásával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
+- A cikkben szereplő __CLI__ -kódrészletek azt feltételezik, hogy létrehozott egy `inferenceconfig.json` dokumentumot. A dokumentum létrehozásával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
 
 ## <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
 
 Azure Container Instances modell üzembe helyezéséhez hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
+
+> [!NOTE]
+> * Az ACI csak kisméretű modellek esetében alkalmas, <1 GB méretű. 
+> * Javasoljuk, hogy a nagyobb modellek fejlesztéséhez használjon egycsomópontos AK-t.
 
 ### <a name="using-the-sdk"></a>Az SDK használata
 
@@ -69,7 +73,7 @@ Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel
 
 ### <a name="using-the-cli"></a>A parancssori felület használata
 
-A CLI használatával történő üzembe helyezéshez használja a következő parancsot. Cserélje `mymodel:1` le a nevet a regisztrált modell nevére és verziójára. Cserélje `myservice` le a nevet a következő szolgáltatáshoz:
+A CLI használatával történő üzembe helyezéshez használja a következő parancsot. Cserélje le a `mymodel:1` nevet a regisztrált modell nevére és verziójára. Cserélje le `myservice` a nevet a következő szolgáltatáshoz:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json

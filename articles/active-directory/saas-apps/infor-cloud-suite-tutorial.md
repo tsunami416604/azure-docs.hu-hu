@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9bb3d260b808e61f15ec85752c299bfeb3ab6fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d47a70f2e086c5322e8ecd53cbf352c672528ebc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67588560"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Oktatóanyag: Azure Active Directory integráció az infor CloudSuite
 
@@ -109,23 +109,21 @@ Az Azure AD egyszeri bejelentkezés az infor CloudSuite való konfigurálásáho
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | | |
-    |-|-|
-    | `http://mingle-sso.inforcloudsuite.com`|
-    | `http://mingle-sso.se1.inforcloudsuite.com`|
-    | `http://mingle-sso.eu1.inforcloudsuite.com`|
-    | `http://mingle-sso.se2.inforcloudsuite.com`|
-    | |
+    ```http
+    http://mingle-sso.inforcloudsuite.com
+    http://mingle-sso.se1.inforcloudsuite.com
+    http://mingle-sso.eu1.inforcloudsuite.com
+    http://mingle-sso.se2.inforcloudsuite.com
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | | |
-    |-|-|
-    | `https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | |
+    ```http
+    https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
+    ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -133,12 +131,12 @@ Az Azure AD egyszeri bejelentkezés az infor CloudSuite való konfigurálásáho
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | | |
-    |-|-|
-    | `https://mingle-portal.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/`|
+    ```http
+    https://mingle-portal.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az [infor CloudSuite ügyfél-támogatási csapatával](mailto:support@infor.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -179,11 +177,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

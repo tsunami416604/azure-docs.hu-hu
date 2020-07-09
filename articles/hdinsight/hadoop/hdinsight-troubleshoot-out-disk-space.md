@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628537"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Forgatókönyv: a fürtcsomópont elfogyott a lemezterület az Azure HDInsight
@@ -22,7 +22,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 Egy feladat meghiúsulhat a következőhöz hasonló hibaüzenettel:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
 
-Vagy a következőhöz hasonló Apache Ambari-riasztás jelenhet `local-dirs usable space is below configured utilization percentage`meg:.
+Vagy a következőhöz hasonló Apache Ambari-riasztás jelenhet meg: `local-dirs usable space is below configured utilization percentage` .
 
 ## <a name="cause"></a>Ok
 
@@ -32,14 +32,14 @@ Lehetséges, hogy az Apache fonal-alkalmazás gyorsítótára felhasználta az �
 
 1. A Ambari felhasználói felületének használatával meghatározhatja, hogy melyik csomóponton fogy el a szabad lemezterület.
 
-1. Határozza meg, hogy az aggasztó csomópont melyik mappája járul hozzá a lemezterület nagy részét. Először az SSH-t a csomópontra `df` , majd futtassa a parancsot a lemez használatának listázásához az összes csatlakoztatáshoz. Általában ez `/mnt` az OSS által használt Temp-lemez. Megadhat egy mappát, majd beírhatja `sudo du -hs` egy mappa összegzett fájlméretének megjelenítéséhez. Ha egy hasonló mappa jelenik meg, `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`ez azt jelenti, hogy az alkalmazás továbbra is fut. Ennek oka lehet a RDD-megőrzés vagy a közbenső véletlenszerű fájlok.
+1. Határozza meg, hogy az aggasztó csomópont melyik mappája járul hozzá a lemezterület nagy részét. Először az SSH-t a csomópontra, majd futtassa a parancsot a `df` lemez használatának listázásához az összes csatlakoztatáshoz. Általában ez az `/mnt` OSS által használt Temp-lemez. Megadhat egy mappát, majd beírhatja egy `sudo du -hs` mappa összegzett fájlméretének megjelenítéséhez. Ha egy hasonló mappa jelenik meg `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007` , ez azt jelenti, hogy az alkalmazás továbbra is fut. Ennek oka lehet a RDD-megőrzés vagy a közbenső véletlenszerű fájlok.
 
 1. A probléma megoldásához öld meg az alkalmazást, amely felszabadítja az alkalmazás által használt lemezterületet.
 
 1. Ha a probléma gyakran előfordul a munkavégző csomópontokon, beállíthatja a szál helyi gyorsítótárának beállításait a fürtön.
 
     Nyissa meg a Ambari felhasználói felületét, és navigáljon a > konfigurációk--> Advanced elemre.  
-    Adja hozzá az alábbi 2 tulajdonságot az egyéni yarn-site. XML szakaszhoz, és mentse a következőt:
+    Adja hozzá az alábbi két tulajdonságot az egyéni yarn-site.xml szakaszhoz, és mentse a következőt:
 
     ```
     yarn.nodemanager.localizer.cache.target-size-mb=2048

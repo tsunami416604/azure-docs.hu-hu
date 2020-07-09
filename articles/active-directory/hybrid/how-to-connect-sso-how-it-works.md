@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71176672"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357919"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: technikai részletes bemutató
 
@@ -39,12 +39,12 @@ Ez a szakasz három részből áll:
 
 A zökkenőmentes egyszeri bejelentkezés a Azure AD Connect használatával engedélyezhető az [itt](how-to-connect-sso-quick-start.md)látható módon. A szolgáltatás engedélyezése közben a következő lépések történnek:
 
-- A rendszer létrehoz egy`AZUREADSSOACC`számítógépfiókot () a helyszíni Active Directoryban (ad) az Azure ad-vel szinkronizált összes ad-erdőben (Azure ad Connect használatával).
+- A rendszer létrehoz egy számítógépfiókot () a helyszíni `AZUREADSSOACC` Active Directoryban (ad) az Azure ad-vel szinkronizált összes ad-erdőben (Azure ad Connect használatával).
 - Emellett számos Kerberos egyszerű szolgáltatásnevet (SPN-t) hoz létre az Azure AD bejelentkezési folyamata során.
 - A számítógépfiók Kerberos-visszafejtési kulcsa biztonságosan van megosztva az Azure AD-vel. Ha több AD-erdő van, minden számítógépfiók saját, egyedi Kerberos-visszafejtési kulccsal fog rendelkezni.
 
 >[!IMPORTANT]
-> Biztonsági `AZUREADSSOACC` okokból szigorúan védeni kell a számítógépfiókot. Csak a Tartománygazdák kezelhetik a számítógépfiókot. Győződjön meg arról, hogy a számítógépfiók Kerberos-delegálása le van tiltva, és nincs más fiók a Active Directory delegálási `AZUREADSSOACC` engedélyekkel rendelkezik a számítógépfiók számára. Tárolja a számítógépfiókot a szervezeti egységben (OU), ahol biztonságos a véletlen törléstől, és csak a Tartománygazdák férhetnek hozzá. A számítógép fiókjában a Kerberos-visszafejtési kulcsot is bizalmasként kell kezelni. Javasoljuk, hogy legalább 30 naponként átadja a `AZUREADSSOACC` számítógépfiók Kerberos- [visszafejtési kulcsát](how-to-connect-sso-faq.md) .
+> `AZUREADSSOACC`Biztonsági okokból szigorúan védeni kell a számítógépfiókot. Csak a Tartománygazdák kezelhetik a számítógépfiókot. Győződjön meg arról, hogy a számítógépfiók Kerberos-delegálása le van tiltva, és nincs más fiók a Active Directory delegálási engedélyekkel rendelkezik a `AZUREADSSOACC` számítógépfiók számára. Tárolja a számítógépfiókot a szervezeti egységben (OU), ahol biztonságos a véletlen törléstől, és csak a Tartománygazdák férhetnek hozzá. A számítógép fiókjában a Kerberos-visszafejtési kulcsot is bizalmasként kell kezelni. Javasoljuk, hogy legalább 30 naponként átadja a számítógépfiók [Kerberos-visszafejtési kulcsát](how-to-connect-sso-faq.md) `AZUREADSSOACC` .
 
 A beállítás befejezése után a zökkenőmentes SSO ugyanúgy működik, mint bármely más, integrált Windows-hitelesítést (IWA) használó bejelentkezés.
 
@@ -52,7 +52,7 @@ A beállítás befejezése után a zökkenőmentes SSO ugyanúgy működik, mint
 
 A bejelentkezés a böngészőben a következőképpen történik:
 
-1. A felhasználó egy webalkalmazáshoz (például az Outlook Web alkalmazáshoz) próbál hozzáférni https://outlook.office365.com/owa/) egy, a vállalati hálózaton belüli, tartományhoz csatlakoztatott vállalati eszközről.
+1. A felhasználó egy webalkalmazáshoz (például az Outlook Web alkalmazáshoz) próbál hozzáférni egy https://outlook.office365.com/owa/) , a vállalati hálózaton belüli, tartományhoz csatlakoztatott vállalati eszközről.
 2. Ha a felhasználó még nincs bejelentkezve, a rendszer átirányítja a felhasználót az Azure AD bejelentkezési oldalára.
 3. A felhasználó felhasználónevét az Azure AD bejelentkezési oldalára írja be.
 
@@ -60,7 +60,7 @@ A bejelentkezés a böngészőben a következőképpen történik:
    >[Bizonyos alkalmazások](./how-to-connect-sso-faq.md)esetén a 2. & 3. lépés kimarad.
 
 4. A JavaScript használata a háttérben az Azure AD egy 401 jogosulatlan válaszon keresztül vitatja meg a böngészőt a Kerberos-jegy biztosításához.
-5. A böngészőben viszont egy jegyet kér Active Directorytól a számítógépfiók számára (amely `AZUREADSSOACC` az Azure ad-t jelöli).
+5. A böngészőben viszont egy jegyet kér Active Directorytól a `AZUREADSSOACC` számítógépfiók számára (amely az Azure ad-t jelöli).
 6. Active Directory megkeresi a számítógépfiókot, és a számítógép fiókjának titkával titkosított Kerberos-jegyet ad vissza a böngészőnek.
 7. A böngésző továbbítja a Active Directory által az Azure AD-be beszerzett Kerberos-jegyet.
 8. Az Azure AD visszafejti a Kerberos-jegyet, amely magában foglalja a vállalati eszközre bejelentkezett felhasználó identitását a korábban megosztott kulccsal.

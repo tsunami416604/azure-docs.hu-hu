@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057813"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása
@@ -79,7 +78,7 @@ Az Azure AD Foodee hozzáadásához tegye a következőket:
 
     ![Az Azure Active Directory parancs](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ Ebben a szakaszban az Azure AD-kiépítési szolgáltatást úgy konfigurálja, 
 
 Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a következő módon:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -118,7 +117,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
 1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
 
-   a. A **bérlői URL-cím** mezőben adja meg a korábban lekért **https\/:/concierge.Food.ee/scim/v2** értéket.
+   a. A **bérlői URL-cím** mezőben adja meg a korábban lekért **https: \/ /concierge.Food.ee/scim/v2** értéket.
 
    b. A **titkos jogkivonat** mezőben adja meg a korábban lekért **API-jogkivonat** értékét.
    
@@ -168,7 +167,7 @@ Az előző művelet elindítja a **hatókör** legördülő listában definiált
 
 A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat. A jelentés az Azure AD-kiépítési szolgáltatás által a Foodee-on végrehajtott összes műveletet ismerteti. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

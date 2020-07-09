@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 868130b23bc29acf0f1271f68a45f44cee98fe98
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206730"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analytics szolgáltatásban
 

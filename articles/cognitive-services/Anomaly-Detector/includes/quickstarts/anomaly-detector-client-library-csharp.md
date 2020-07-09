@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: f5f135dd44ad9e5ebd1df2144295f9a3cf3cb743
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1a7f902fd8604463d7b841eb72138d89fcc3c3cf
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759999"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986115"
 ---
 Ismerkedés az anomália-detektor .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
@@ -22,23 +22,23 @@ Használja a következőhöz tartozó rendellenesség-Kiderítő ügyféloldali 
 * Az idősorozat-adatkészlet összes rendellenességének észlelése batch-kérelemként
 * Az idősorozat legújabb adatpontjának anomália állapotának észlelése
 
-[Könyvtár-dokumentációs](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [könyvtár](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | –[a githubon található kód megkeresése](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[Könyvtár-referenciák dokumentációja](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/)  |  [A kód megkeresése a githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core) jelenlegi verziója
-* Anomália-detektor kulcsa és végpontja
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
 
-### <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
+[!INCLUDE [anomaly-detector-environment-variables](../environment-variables.md)]
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű `anomaly-detector-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" projektet hoz létre egyetlen C# forrásfájl használatával: *program.cs*. 
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `anomaly-detector-quickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" projektet hoz létre egyetlen C# forrásfájl használatával: *program.cs*. 
 
 ```dotnetcli
 dotnet new console -n anomaly-detector-quickstart
@@ -68,7 +68,7 @@ Az alkalmazás könyvtárában telepítse a következő paranccsal a .NET-hez k�
 dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
 ```
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá `directives`a következőt a használatával:
+A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá a következőt a használatával `directives` :
 
 [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=usingStatements)]
 
@@ -108,15 +108,15 @@ A rövid útmutatóhoz tartozó példa adatainak letöltése a [githubról](http
 
 Ez az idősoros adat. csv-fájlként van formázva, és a rendszer elküldi a rendellenesség-Kiderítő API-nak.
 
-Hozzon létre egy új metódust az idősorozat-adatként való olvasáshoz, és adja hozzá azt egy [kérelem](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) objektumhoz. Hívja `File.ReadAllLines()` meg a fájl elérési útját, és hozzon létre egy listát a [pontok](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) objektumairól, és minden új sor karakterét. Bontsa ki az értékeket, és válassza el a datestamp a numerikus értékétől, és vegye fel `Point` őket egy új objektumba. 
+Hozzon létre egy új metódust az idősorozat-adatként való olvasáshoz, és adja hozzá azt egy [kérelem](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) objektumhoz. Hívja meg `File.ReadAllLines()` a fájl elérési útját, és hozzon létre egy listát a [pontok](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) objektumairól, és minden új sor karakterét. Bontsa ki az értékeket, és válassza el a datestamp a numerikus értékétől, és vegye fel őket egy új `Point` objektumba. 
 
-Tegyen egy `Request` objektumot a pontok sorozatával, valamint `Granularity.Daily` az adatpontok [részletességét](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (vagy gyakoriságát).
+Tegyen egy `Request` objektumot a pontok sorozatával, valamint az `Granularity.Daily` adatpontok [részletességét](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (vagy gyakoriságát).
 
 [!code-csharp[load the time series data file](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=GetSeriesFromFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>A teljes adathalmazban észlelt rendellenességek észlelése 
 
-Hozzon létre egy metódust az ügyfél [EntireDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_EntireDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) metódusának meghívásához az `Request` objektummal, és várja meg a választ [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-dotnet-preview) objektumként. Ha az idősorozat bármely rendellenességet tartalmaz, ismételje meg a válasz [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse.isanomaly?view=azure-dotnet-preview) értékeit, és nyomtassa `true`ki a kívánt értékeket. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
+Hozzon létre egy metódust az ügyfél [EntireDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_EntireDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) metódusának meghívásához az `Request` objektummal, és várja meg a választ [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-dotnet-preview) objektumként. Ha az idősorozat bármely rendellenességet tartalmaz, ismételje meg a válasz [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse.isanomaly?view=azure-dotnet-preview) értékeit, és nyomtassa ki a kívánt értékeket `true` . Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
 [!code-csharp[EntireDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=entireDatasetExample)]
 
@@ -126,9 +126,9 @@ Hozzon létre egy metódust az ügyfél [LastDetectAsync ()](https://docs.micros
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Futtassa az alkalmazást a paranccsal `dotnet run` az alkalmazás könyvtárából.
+Futtassa az alkalmazást a `dotnet run` paranccsal az alkalmazás könyvtárából.
 
 ```dotnetcli
 dotnet run

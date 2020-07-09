@@ -2,18 +2,18 @@
 title: Az Azure Marketplace-en elérhető virtuálisgép-ajánlatok közzétételi útmutatója
 description: Ez a cikk ismerteti a virtuális gépek közzétételének követelményeit, valamint az Azure Marketplace-en üzembe helyezett szoftveres ingyenes próbaverziót.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858315"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116726"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>A virtuális gépekkel kapcsolatos ajánlatok közzétételi útmutatója
 
@@ -54,12 +54,12 @@ Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, h
 | Követelmény | Részletek |  
 |:--- |:--- | 
 | Számlázás és mérés | A virtuális gépnek BYOL vagy utólagos elszámolású havi számlázást kell támogatnia. |  
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. A virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: <ul> <li>Az Azure-ban [támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (linuxos virtuális merevlemezek esetén).</li> <li>[Azure-kompatibilis VHD létrehozása](./partner-center-portal/azure-vm-create-offer.md) (Windows rendszerű virtuális merevlemezekhez).</li> </ul> |  
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. A virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: <ul> <li>Az Azure-ban [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén).</li> <li>[Azure-kompatibilis VHD létrehozása](./partner-center-portal/azure-vm-create-offer.md) (Windows rendszerű virtuális merevlemezekhez).</li> </ul> |  
 
 >[!Note]
 >Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

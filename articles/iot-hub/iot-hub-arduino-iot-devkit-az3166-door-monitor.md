@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75977296"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Ajtó figyelője – a Azure Functions és a SendGrid használatával e-mail küldése az ajtó megnyitásakor           
@@ -81,7 +80,7 @@ Miután az üzembe helyezés befejeződött, kattintson rá, majd kattintson a *
 
 ![SendGrid kezelése](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-A SendGrid lapon kattintson a **Beállítások** > **API-kulcsok** > **create API-kulcs**elemre.
+A SendGrid lapon kattintson a **Beállítások**  >  **API-kulcsok**  >  **create API-kulcs**elemre.
 
 ![SendGrid első API létrehozása](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
@@ -134,13 +133,13 @@ Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLD�
 
 ![mini-Solution – példák](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-A példában szereplő alkalmazást a parancssorból is megnyithatja. A `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+A példában szereplő alkalmazást a parancssorból is megnyithatja. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
 
 ### <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
 A megoldás ablakban futtassa a Cloud kiépítési feladatot:
-- Típus `Ctrl+P` (MacOS: `Cmd+P`).
-- Adja `task cloud-provision` meg a megadott szövegmezőt.
+- Típus `Ctrl+P` (MacOS: `Cmd+P` ).
+- Adja meg `task cloud-provision` a megadott szövegmezőt.
 
 A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azure-szolgáltatások kiépítési folyamatán. Válassza ki az összes olyan elemet a kért listából, amelyet korábban az Azure-beli [üzembe helyezési IoT hub](#deploy-iot-hub-in-azure)kiépített.
 
@@ -155,7 +154,7 @@ Ezután töltse fel az eszköz kódját.
 
 #### <a name="windows"></a>Windows
 
-1. A `Ctrl+P` futtatásához `task device-upload`használja a parancsot.
+1. `Ctrl+P`A futtatásához használja a parancsot `task device-upload` .
 
 2. A terminál felszólítja a konfigurációs mód megadására. Ehhez tartsa lenyomva az A gombot, majd nyomja le és szabadítsa fel az Alaphelyzetbe állítás gombot. A képernyő megjeleníti a fejlesztői készlet azonosító számát és a szó *konfigurációját*.
 
@@ -163,7 +162,7 @@ Ezután töltse fel az eszköz kódját.
 
 1. Helyezze a fejlesztői készlet konfigurációs módba: tartsa lenyomva a gombot, majd nyomja le és szabadítsa fel az Alaphelyzetbe állítás gombot. A képernyő "Configuration" (konfiguráció) értéket jelenít meg.
 
-2. Kattintson `Cmd+P` a futtatáshoz `task device-upload`.
+2. Kattintson `Cmd+P` a futtatáshoz `task device-upload` .
 
 #### <a name="verify-upload-and-run-the-sample-app"></a>A minta alkalmazás ellenőrzése, feltöltése és futtatása
 
@@ -182,7 +181,7 @@ A fejlesztői készlet újraindul, és elindítja a kód futtatását.
 
 A program először inicializálja, ha a fejlesztői készlet egy stabil mágneses mező jelenlétében van.
 
-Az inicializálás `Door closed` után megjelenik a képernyőn. Ha megváltozik a mágneses mező, az állapot módosul `Door opened`. Minden alkalommal, amikor az ajtó állapota megváltozik, e-mailben értesítést kap. (Ezek az e-mail-üzenetek fogadása akár öt percet is igénybe vehet.)
+Az inicializálás után megjelenik `Door closed` a képernyőn. Ha megváltozik a mágneses mező, az állapot módosul `Door opened` . Minden alkalommal, amikor az ajtó állapota megváltozik, e-mailben értesítést kap. (Ezek az e-mail-üzenetek fogadása akár öt percet is igénybe vehet.)
 
 ![Az érzékelőhöz közeledő mágnesek: zárt ajtó](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Az érzékelőhöz közeledő mágnesek: zárt ajtó")
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938911"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és zárolási módok az Azure-ban Service Fabric megbízható gyűjtemények
@@ -43,7 +42,7 @@ A következő táblázat az elkülönítési szint alapértelmezett értékeit �
 | Számbavétel, darabszám |Pillanatkép |Pillanatkép |
 
 > [!NOTE]
-> Az egyentitásos műveletek általános példái a következők `IReliableDictionary.TryGetValueAsync`: `IReliableQueue.TryPeekAsync`.
+> Az egyentitásos műveletek általános példái a következők: `IReliableDictionary.TryGetValueAsync` `IReliableQueue.TryPeekAsync` .
 > 
 
 A megbízható szótár és a megbízható üzenetsor is támogatja az *írások olvasását*.
@@ -55,8 +54,8 @@ Megbízható gyűjteményekben az összes tranzakció szigorú kétfázisú zár
 
 A megbízható szótár minden egyes entitási műveletnél sor szintű zárolást használ.
 A megbízható üzenetsor a szigorú tranzakciós FIFO-tulajdonsághoz tartozó egyidejűségen kívülről kereskedik.
-A megbízható üzenetsor olyan műveleti szintű zárolásokat használ, amelyek `TryPeekAsync` lehetővé teszik egy `TryDequeueAsync` tranzakció és/vagy `EnqueueAsync` egyszerre egy tranzakció beküldését.
-Vegye figyelembe, hogy a FIFO megőrzése érdekében `TryPeekAsync` , `TryDequeueAsync` ha egy vagy minden alkalommal megállapítja, hogy a megbízható várólista üres, akkor `EnqueueAsync`is zárolva lesznek.
+A megbízható üzenetsor olyan műveleti szintű zárolásokat használ, amelyek lehetővé teszik egy tranzakció és/vagy egyszerre egy tranzakció beküldését `TryPeekAsync` `TryDequeueAsync` `EnqueueAsync` .
+Vegye figyelembe, hogy a FIFO megőrzése érdekében, ha egy `TryPeekAsync` vagy `TryDequeueAsync` minden alkalommal megállapítja, hogy a megbízható várólista üres, akkor is zárolva lesznek `EnqueueAsync` .
 
 Az írási műveletek mindig kizárólagos zárolást végeznek.
 Olvasási műveletek esetén a zárolás néhány tényezőtől függ:

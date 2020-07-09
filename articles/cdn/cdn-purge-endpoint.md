@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: ebbb0dd059ce2bcf4a3bc260ed6d426d5be09dfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260258"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887299"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN végpont kiürítése
 ## <a name="overview"></a>Áttekintés
@@ -52,15 +52,15 @@ Ez az oktatóanyag végigvezeti a végpontok összes peremhálózati csomópontj
    > 
    > 
 4. Válassza ki, hogy milyen eszközöket kíván kiüríteni a peremhálózati csomópontokból.  Ha törölni kívánja az összes eszközt, kattintson az **összes kiürítés** jelölőnégyzetre.  Ellenkező esetben írja be **az elérési út szövegmezőben** az összes törölni kívánt eszköz elérési útját. Az alábbi formátumok támogatottak az elérési úton.
-    1. **Egy URL-cím kiürítése**: az egyes eszközök kiürítése a teljes URL-cím megadásával, a fájlkiterjesztés vagy`/pictures/strasbourg.png`anélkül, például:;`/pictures/strasbourg`
-    2. **Helyettesítő karakteres törlés**:\*a csillag () helyettesítő karakterként is használható. Törölheti az összes mappát, almappát és fájlt egy végpont `/*` alatt, az elérési úton `/*`, vagy az összes almappa és fájl kiürítése egy adott mappában, ha a mappát a mappa követi,`/pictures/*`például:.  Vegye figyelembe, hogy a helyettesítő karakterek törlését a Akamai jelenleg nem támogatja Azure CDN. 
+    1. **Egy URL-cím kiürítése**: az egyes eszközök kiürítése a teljes URL-cím megadásával, a fájlkiterjesztés vagy anélkül, például: `/pictures/strasbourg.png` ;`/pictures/strasbourg`
+    2. **Helyettesítő karakteres törlés**: \* a csillag () helyettesítő karakterként is használható. Törölheti az összes mappát, almappát és fájlt egy végpont alatt, `/*` az elérési úton, vagy az összes almappa és fájl kiürítése egy adott mappában, ha a mappát a mappa követi `/*` , például: `/pictures/*` .  Vegye figyelembe, hogy a helyettesítő karakterek törlését a Akamai jelenleg nem támogatja Azure CDN. 
     3. **Gyökértartomány kiürítése**: Ürítse ki a végpont gyökerét az elérési úton található "/" értékkel.
    
    > [!TIP]
    > A törléshez meg kell adni az elérési utakat, és olyan relatív URL-címnek kell lennie, amely megfelel a következő [reguláris kifejezésnek](/dotnet/standard/base-types/regular-expression-language-quick-reference). Az **összes törlése** és a **helyettesítő karakteres törlés** nem támogatott **Azure CDN a Akamai** jelenleg.
    > > Egy URL-cím kiürítése`@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Lekérdezési karakterlánc`@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
-   > > Helyettesítő karakter `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`kiürítése 
+   > > Helyettesítő karakter `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` kiürítése 
    > 
    > A szöveg beírása után további **elérésiút** -szövegmezők jelennek meg, amelyek lehetővé teszik több eszköz listájának összeállítását.  Az eszközöket a három pont (...) gombra kattintva törölheti a listából.
    > 

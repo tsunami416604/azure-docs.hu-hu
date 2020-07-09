@@ -8,14 +8,13 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 58cf3358a9e908070ce9003d05dd0b576b1d2d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5433d9746cd64d0e942e056cfcd1940eba35c77d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417922"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM által védett kulcsok importálása a Key Vaultba
 
@@ -33,11 +32,14 @@ A HSM-védelemmel ellátott kulcsok Key Vaultre való átvitele a használt HSM 
 
 |Szállító neve|Szállító típusa|Támogatott HSM-modellek|Támogatott HSM-Key átvitel módszer|
 |---|---|---|---|
-|nCipher|Gyártó|<ul><li>HSM nShield családja</li></ul>|[Örökölt BYOK metódus használata](hsm-protected-keys-legacy.md)|
-|Thales|Gyártó|<ul><li>SafeNet Luna HSM 7 termékcsalád a belső vezérlőprogram 7,3-es vagy újabb verziójával</li></ul>| [Új BYOK metódus használata (előzetes verzió)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanix|HSM szolgáltatásként|<ul><li>A kulcskezelő szolgáltatás (SDKMS) önvédelme</li></ul>|[Új BYOK metódus használata (előzetes verzió)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Gyártó<br/>HSM szolgáltatásként|<ul><li>HSM nShield családja</li><li>nShield szolgáltatásként</ul>|**1. módszer:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (erős igazolással a kulcs importálásához és a HSM ellenőrzéséhez)<br/>**2. módszer:** [új BYOK metódus használata](hsm-protected-keys-byok.md) |
+|Thales|Gyártó|<ul><li>Luna HSM 7 család belső vezérlőprogram 7,3-es vagy újabb verziójával</li></ul>| [Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>A kulcskezelő szolgáltatás (SDKMS) önvédelme</li><li>Equinix SmartKey</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse [Key Vault ajánlott eljárásokat](../general/best-practices.md) a kulcsok biztonságának, tartósságának és figyelésének biztosításához.
+* Kövesse [Key Vault ajánlott eljárásokat](../general/best-practices.md) a kulcsok biztonságának, tartósságának és figyelésének biztosításához.
+* Az új BYOK metódus teljes leírását a [BYOK-specifikációban](https://docs.microsoft.com/azure/key-vault/keys/byok-specification) találja.

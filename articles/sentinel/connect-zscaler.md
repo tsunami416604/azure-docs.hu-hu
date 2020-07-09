@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587991"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Az Zscaler internet-hozzáférésének összekötése az Azure Sentinel használatával
@@ -43,7 +42,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a Zscaler Internet-hozzáfér�
    > Ez a megoldás a syslog RFC 3164 vagy az RFC 5424 szolgáltatást támogatja.
 
 
-1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a következőt `CommonSecurityLog`:.
+1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a következőt: `CommonSecurityLog` .
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 

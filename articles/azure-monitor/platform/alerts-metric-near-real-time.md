@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
 ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585850"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
@@ -33,55 +33,55 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft.ApiManagement/service | Igen| Nem | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
 |Microsoft. AppPlatform/Spring |Nem| Igen|
 |Microsoft. Automation/automationAccounts | Igen| Nem | [Automation-fiókok](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
-|Microsoft. batch/batchAccounts | N/A| Nem | [Batch-fiókok](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
+|Microsoft.BatCH/batchAccounts | N.A.| Nem | [Batch-fiókok](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
 |Microsoft. cache/Redis|Igen| Nem |[Azure Cache for Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
 |Microsoft. ClassicStorage/storageAccounts/mmxclassic|Nem|Igen|
 |Microsoft. ClassicStorage/storageAccounts/mmxclassic/blobServices|Nem|Igen|
 |Microsoft. ClassicStorage/storageAccounts/mmxclassic/fileServices|Nem|Igen|
 |Microsoft. ClassicStorage/storageAccounts/mmxclassic/queueServices|Nem|Igen|
 |Microsoft. ClassicStorage/storageAccounts/mmxclassic/tableServices|Nem|Igen| |
-|Microsoft. CognitiveServices/fiókok| N/A | Nem | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.Compute/virtualMachines |Igen | Igen | [Virtuális gépek](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets |N/A | Igen |[Virtuálisgép-méretezési csoportok](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft. CognitiveServices/fiókok| N.A. | Nem | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.Compute/virtualMachines |Igen | Igen | [Virtual Machines](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
+|Microsoft.Compute/virtualMachineScaleSets |N.A. | Igen |[Virtuálisgép-méretezési csoportok](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
 |Microsoft. Tárolószolgáltatás/managedClusters | Igen | Nem | [Felügyelt fürtök](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Igen | Igen | |
 |Microsoft. DataFactory/datafactories| Igen| Nem | [Az adatgyárak v1-es verziója](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
 |Microsoft. DataFactory/gyárak |Igen | Nem |[Az adatgyár v2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
 |Microsoft. DataShare/fiókok |Nem| Igen|
-|Microsoft. DBforMySQL/kiszolgálók |N/A| Nem |[A MySQL-hez készült adatbázis](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/kiszolgálók |N/A | Nem | [PostgreSQL-hez készült adatbázis](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft. Devices/IotHubs | N/A | Nem |[IoT Hub metrikák](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
+|Microsoft. DBforMySQL/kiszolgálók |N.A.| Nem |[A MySQL-hez készült adatbázis](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/kiszolgálók |N.A. | Nem | [PostgreSQL-hez készült adatbázis](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft. Devices/IotHubs | N.A. | Nem |[IoT Hub metrikák](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
 |Microsoft. Devices/provisioningServices| Igen | Nem |[DPS-metrikák](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)|
 |Microsoft. EventGrid/tartományok|Nem|Igen| |
-|Microsoft. EventGrid/témakörök |Igen | Nem |[Event Grid témakörök](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
+|Microsoft. EventGrid/témakörök |Igen | Nem |[Event Grid-témakörök](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
 |Microsoft. EventHub/fürtök |Igen| Nem |[Fürtök Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
 |Microsoft. EventHub/névterek |Igen| Nem |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft. kulcstartó/tárolók| Nem |Nem |[Tárolók](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft. Logic/munkafolyamatok |N/A | Nem |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft. Logic/munkafolyamatok |N.A. | Nem |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft. MachineLearningServices/munkaterületek|Igen| Nem | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft. NetApp/netAppAccounts/capacityPools |Igen| Nem | [Azure NetApp-kapacitási készletek](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft. NetApp/netAppAccounts/capacityPools/kötetek |Igen| Nem | [Azure NetApp-kötetek](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways|N/A| Nem |  |
-|Microsoft. Network/dnsZones | N/A| Nem | [DNS-zónák](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | N/A | Nem |[Express Route-kapcsolatcsoportok](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/applicationGateways|N.A.| Nem |  |
+|Microsoft. Network/dnsZones | N.A.| Nem | [DNS-zónák](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft. Network/expressRouteCircuits | N.A. | Nem |[Express Route-kapcsolatcsoportok](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways|Nem|Igen|
 |Microsoft. Network/privateEndpoints|Nem|Igen|
 |Microsoft. Network/privateLinkServices|Nem|Igen|
-|Microsoft. Network/nyilvános IP |N/A | Nem |[Nyilvános IP-címek](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/nyilvános IP |N.A. | Nem |[Nyilvános IP-címek](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft. Network/trafficManagerProfiles | Igen | Nem | [Traffic Manager-profilok](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft. OperationalInsights/munkaterületek| Igen | Nem | [Log Analytics-munkaterületek](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Microsoft. Relay/névterek | Igen | Nem | [Továbbítók](../../azure-monitor/platform/metrics-supported.md#microsoftrelaynamespaces)|
 |Microsoft. peering/peeringServices|Nem|Igen|
-|Microsoft. PowerBIDedicated/kapacitások | N/A | Nem | [Kapacitások](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
-|Microsoft. Search/searchServices |N/A|Nem | [Keresési szolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
-|Microsoft. ServiceBus/névterek |Igen| Nem |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
+|Microsoft. PowerBIDedicated/kapacitások | N.A. | Nem | [Kapacitások](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft. Search/searchServices |N.A.|Nem | [Keresési szolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
+|Microsoft. ServiceBus/névterek |Igen| Nem |[Szolgáltatásbusz](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
 |Microsoft. SQL/kiszolgálók/elasticPools |    Nem | Igen |
 |Microsoft. SQL/kiszolgálók/adatbázisok    | Nem | Igen |
 |Microsoft. Storage/storageAccounts |Igen | Nem | [Storage-fiókok](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft. Storage/storageAccounts/Services | Igen| Nem | [Blob Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Fájlszolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [üzenetsor-szolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) és [Table Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft. StreamAnalytics/streamingjobs |N/A| Nem | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft. StreamAnalytics/streamingjobs |N.A.| Nem | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft. microsoft. VMWareCloudSimple/virtualMachines |Igen|Nem |[CloudSimple-virtuálisgépek](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
 |Microsoft. Web/hostingEnvironments/multiRolePools | Igen | Nem | [Több szerepkört használó készletek App Service Environment](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft. Web/hostingEnvironments/workerPools | Igen | Nem | [Munkavégző készletek App Service Environment](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|

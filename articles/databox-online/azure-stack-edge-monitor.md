@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: ac762450b19f2d3f82b6859de23e07afe2d10629
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339552"
 ---
 # <a name="monitor-your-azure-stack-edge"></a>Az Azure Stack Edge figyelése
 
@@ -82,6 +81,6 @@ A metrikák teljes listája a következő táblázatban látható:
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-manage-bandwidth-schedules.md) talál.

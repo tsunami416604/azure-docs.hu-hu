@@ -2,13 +2,12 @@
 title: Erőforrások üzembe helyezése REST API és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Resource Manager REST API használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: d7865ac6f9b2bb176ea5308e326dec0741a80962
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.date: 06/04/2020
+ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678409"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-REST API
 
@@ -73,7 +72,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
    }
    ```
 
-1. Ellenőrizze az üzemelő példányt, mielőtt végrehajtja a [sablon-telepítési művelet ellenőrzése](/rest/api/resources/deployments/validate) műveletet. A központi telepítés tesztelésekor pontosan úgy adja meg a paramétereket, ahogy a telepítés végrehajtásakor (a következő lépésben látható).
+1. A sablon üzembe helyezése előtt megtekintheti, hogy a sablon milyen módosításokat hajt végre a környezetben. A [mi-if művelettel](template-deploy-what-if.md) ellenőrizheti, hogy a sablon elvégzi-e a várt módosításokat. Mi a teendő, ha a hibát is ellenőrzi a sablonban.
 
 1. Sablon üzembe helyezéséhez adja meg az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, a központi telepítés nevét a kérelem URI-ja alapján.
 
@@ -133,7 +132,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
       "properties": {
       "mode": "Incremental",
       "template": {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
           "storageAccountType": {
@@ -195,7 +194,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).

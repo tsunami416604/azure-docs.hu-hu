@@ -20,24 +20,23 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113172"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Searchban `geo.distance` – és`geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Searchban – `geo.distance` és`geo.intersects`
 
-Az Azure Cognitive Search támogatja a Geo-térbeli lekérdezéseket a [OData-szűrési kifejezésekben](query-odata-filter-orderby-syntax.md) a `geo.distance` és `geo.intersects` függvények használatával. A `geo.distance` függvény két pont közötti távolságot adja vissza, amelyek közül az egyik egy mező-vagy tartomány-változó, és a szűrő részeként egy konstans lett átadva. A `geo.intersects` függvény akkor `true` adja vissza, ha egy adott pont egy adott sokszögen belül van, ahol a pont egy mező-vagy tartomány-változó, és a sokszög a szűrő részeként megadott konstansként van megadva.
+Az Azure Cognitive Search támogatja a Geo-térbeli lekérdezéseket a [OData-szűrési kifejezésekben](query-odata-filter-orderby-syntax.md) a `geo.distance` és `geo.intersects` függvények használatával. A `geo.distance` függvény két pont közötti távolságot adja vissza, amelyek közül az egyik egy mező-vagy tartomány-változó, és a szűrő részeként egy konstans lett átadva. A `geo.intersects` függvény akkor adja vissza `true` , ha egy adott pont egy adott sokszögen belül van, ahol a pont egy mező-vagy tartomány-változó, és a sokszög a szűrő részeként megadott konstansként van megadva.
 
-A `geo.distance` függvény a [ **$OrderBy** paraméterben](search-query-odata-orderby.md) is használható a keresési eredmények rendezésére egy adott pont távolsága alapján. A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. `geo.distance` A **$OrderBy**használatakor a mezőnek, amelyre az alkalmazás vonatkozik, típusnak `Edm.GeographyPoint` kell lennie, és azt is **rendezve**kell lennie.
+A `geo.distance` függvény a [ **$OrderBy** paraméterben](search-query-odata-orderby.md) is használható a keresési eredmények rendezésére egy adott pont távolsága alapján. A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. A `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az alkalmazás vonatkozik, típusnak kell lennie, `Edm.GeographyPoint` és azt is **rendezve**kell lennie.
 
 > [!NOTE]
-> A `geo.distance` **$OrderBy** paraméter használatakor a függvénynek átadott mezőnek csak egyetlen földrajzi pontot kell tartalmaznia. Más szóval a típusnak és nem `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`típusúnak kell lennie. Az Azure Cognitive Searchban nem rendezhető a gyűjtemény mezői.
+> A `geo.distance` **$OrderBy** paraméter használatakor a függvénynek átadott mezőnek csak egyetlen földrajzi pontot kell tartalmaznia. Más szóval a típusnak és nem típusúnak kell lennie `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` . Az Azure Cognitive Searchban nem rendezhető a gyűjtemény mezői.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
-A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) meghatározza a `geo.distance` és `geo.intersects` a függvények nyelvtanát, valamint azokat a Geo-térbeli értékeket, amelyeken működnek:
+A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) meghatározza a és a függvények nyelvtanát `geo.distance` `geo.intersects` , valamint azokat a Geo-térbeli értékeket, amelyeken működnek:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -71,18 +70,18 @@ Az interaktív szintaxis diagram is elérhető:
 
 ### <a name="geodistance"></a>földrajzi távolság
 
-A `geo.distance` függvény két típusú `Edm.GeographyPoint` paramétert fogad, és olyan `Edm.Double` értéket ad vissza, amely a kettő közötti távolság. Ez különbözik az olyan egyéb szolgáltatásokkal, amelyek támogatják a OData geo-térbeli műveleteit, amelyek jellemzően a mért távolságokat adják vissza a mérőórákban.
+A `geo.distance` függvény két típusú paramétert fogad `Edm.GeographyPoint` , és olyan értéket ad vissza, `Edm.Double` amely a kettő közötti távolság. Ez különbözik az olyan egyéb szolgáltatásokkal, amelyek támogatják a OData geo-térbeli műveleteit, amelyek jellemzően a mért távolságokat adják vissza a mérőórákban.
 
-Az egyik paraméternek `geo.distance` a földrajzi pont állandójának kell lennie, és a másiknak mező elérési útnak kell lennie (vagy egy tartományban lévő változónak kell lennie, ha a szűrő `Collection(Edm.GeographyPoint)`egy típusú mezőnél megismétli a mezőt). A paraméterek sorrendje nem számít.
+Az egyik paraméternek `geo.distance` a földrajzi pont állandójának kell lennie, és a másiknak mező elérési útnak kell lennie (vagy egy tartományban lévő változónak kell lennie, ha a szűrő egy típusú mezőnél megismétli a mezőt `Collection(Edm.GeographyPoint)` ). A paraméterek sorrendje nem számít.
 
-A földrajzi pont állandója az űrlap `geography'POINT(<longitude> <latitude>)'`, ahol a hosszúság és a szélesség numerikus konstans.
+A földrajzi pont állandója az űrlap `geography'POINT(<longitude> <latitude>)'` , ahol a hosszúság és a szélesség numerikus konstans.
 
 > [!NOTE]
-> Szűrőben `geo.distance` való használat esetén össze kell hasonlítani a függvény által visszaadott `lt`távolságot állandó használatával `le` `gt`,, vagy. `ge` Az `eq` operátorok `ne` és a távolságok összehasonlítása nem támogatott. Ez például a következő helyes használata `geo.distance`:. `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
+> Szűrőben való használat esetén `geo.distance` össze kell hasonlítani a függvény által visszaadott távolságot állandó használatával, `lt` , `le` `gt` vagy `ge` . Az operátorok `eq` és a `ne` távolságok összehasonlítása nem támogatott. Ez például a következő helyes használata `geo.distance` : `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5` .
 
 ### <a name="geointersects"></a>Geo. metszetek
 
-A `geo.intersects` `Edm.GeographyPoint` függvény egy típus és egy állandó `Edm.GeographyPolygon` változót használ, és egy `Edm.Boolean`  --  `true` értéket ad vissza, ha a pont a sokszög határain belül `false` van, ellenkező esetben.
+A `geo.intersects` függvény egy típus és egy állandó változót használ, `Edm.GeographyPoint` `Edm.GeographyPolygon` és egy értéket ad vissza `Edm.Boolean`  --  `true` , ha a pont a sokszög határain belül van, `false` ellenkező esetben.
 
 A sokszög egy kétdimenziós felület, amely egy határoló gyűrűt definiáló pontok sorozata (lásd az alábbi [példákat](#examples) ). A sokszöget le kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. [A sokszögben lévő pontoknak nem megfelelő sorrendben kell lenniük](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
@@ -90,34 +89,34 @@ A sokszög egy kétdimenziós felület, amely egy határoló gyűrűt definiál�
 
 Számos, a 180th Meridian-t (a Dátumvonali közelében) tartalmazó lekérdezést alkotó geo-térbeli lekérdezési függvénytár esetében vagy nem korlátozza a korlátot, vagy megkerülő megoldásra van szükség, például a sokszög felosztása két, a meridián egyik oldalán.
 
-Az Azure Cognitive Search-ban a 180 fokos hosszúságú földrajzi térbeli lekérdezések a várt módon fognak működni, ha a lekérdezési alakzat téglalap alakú, és a koordináták a hosszúság és a szélesség (például: `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`) rácsos elrendezésére vannak igazítva. Ellenkező esetben a nem téglalap alakú vagy nem igazított alakzatok esetében vegye figyelembe a felosztott sokszög megközelítését.  
+Az Azure Cognitive Search-ban a 180 fokos hosszúságú földrajzi térbeli lekérdezések a várt módon fognak működni, ha a lekérdezési alakzat téglalap alakú, és a koordináták a hosszúság és a szélesség (például:) rácsos elrendezésére vannak igazítva `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'` . Ellenkező esetben a nem téglalap alakú vagy nem igazított alakzatok esetében vegye figyelembe a felosztott sokszög megközelítését.  
 
 ### <a name="geo-spatial-functions-and-null"></a>Geo-térbeli függvények és`null`
 
-Az Azure Cognitive Search összes többi nem gyűjteményéhez hasonlóan a típusú `Edm.GeographyPoint` mezők is tartalmazhatnak `null` értékeket. Amikor az Azure Cognitive Search kiértékel egy mezőt `geo.intersects` `null`, az eredmény mindig a következő lesz: `false`. Ebben az esetben `geo.distance` a viselkedése a kontextustól függ:
+Az Azure Cognitive Search összes többi nem gyűjteményéhez hasonlóan a típusú mezők `Edm.GeographyPoint` is tartalmazhatnak `null` értékeket. Amikor az Azure Cognitive Search kiértékel `geo.intersects` egy mezőt `null` , az eredmény mindig a következő lesz: `false` . Ebben az esetben a viselkedése a `geo.distance` kontextustól függ:
 
-- A szűrők `geo.distance` területen egy `null` mező eredményét jeleníti meg. `null` Ez azt jelenti, `null` `false`hogy a dokumentum nem fog megegyezni, mert a nem null értékhez képest kiértékeli a értéket.
-- Ha az eredményeket **$OrderBy**használatával rendezi `geo.distance` , `null` a mező a lehető legnagyobb távolságot eredményezi. Az ilyen mezőkkel rendelkező dokumentumok a rendezési irány `asc` használatakor alacsonyabbak lesznek, mint az összes többinél (az alapértelmezett érték), és a többinél `desc`nagyobb, mint az irány.
+- A szűrők `geo.distance` `null` területen egy mező eredményét jeleníti meg `null` . Ez azt jelenti, hogy a dokumentum nem fog megegyezni, mert a `null` nem null értékhez képest kiértékeli a értéket `false` .
+- Ha az eredményeket **$OrderBy**használatával rendezi, a `geo.distance` mező a `null` lehető legnagyobb távolságot eredményezi. Az ilyen mezőkkel rendelkező dokumentumok a rendezési irány használatakor alacsonyabbak lesznek, mint az összes többinél `asc` (az alapértelmezett érték), és a többinél nagyobb, mint az irány `desc` .
 
 ## <a name="examples"></a>Példák
 
 ### <a name="filter-examples"></a>Példák szűrőkre
 
-Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kilométeren belül (ahol a `Edm.GeographyPoint`hely egy típusú mező):
+Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kilométeren belül (ahol a hely egy típusú mező `Edm.GeographyPoint` ):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-A megadott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a hely egy típusú `Edm.GeographyPoint`mező). Vegye figyelembe, hogy a sokszög le van zárva (az első és az utolsó pontnak azonosnak kell lennie), és [a pontoknak](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)a következő sorrendben kell szerepelniük.
+A megadott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a hely egy típusú mező `Edm.GeographyPoint` ). Vegye figyelembe, hogy a sokszög le van zárva (az első és az utolsó pontnak azonosnak kell lennie), és [a pontoknak](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)a következő sorrendben kell szerepelniük.
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
 ### <a name="order-by-examples"></a>Rendezési példák
 
-Rendezheti a szállodákat `rating`csökkenő sorrendben, majd a megadott koordináták távolsága alapján:
+Rendezheti a szállodákat csökkenő sorrendben `rating` , majd a megadott koordináták távolsága alapján:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Rendezheti a szállodákat csökkenő sorrendben `search.score` , `rating`a és a alapján, majd növekvő sorrendben, a megadott koordináták távolsága alapján, hogy két, azonos minősítéssel rendelkező, egymással azonos minősítéssel rendelkező Hotel között szerepeljenek a legközelebb:
+Rendezheti a szállodákat csökkenő sorrendben `search.score` , a és a alapján `rating` , majd növekvő sorrendben, a megadott koordináták távolsága alapján, hogy két, azonos minősítéssel rendelkező, egymással azonos minősítéssel rendelkező Hotel között szerepeljenek a legközelebb:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 

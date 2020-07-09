@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81263386"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
@@ -56,7 +55,7 @@ A riasztások segíthetnek a környezetében előforduló késési problémák d
 
    Innentől kezdve a következő feltételek valamelyikével konfigurálhatja a riasztásokat:
 
-   |Metrika  |Leírás  |
+   |Metric  |Leírás  |
    |---------|---------|
    |**Bejövő fogadott bájtok száma**     | Az esemény forrásaiból beolvasott nyers bájtok száma. A nyers darabszám általában a tulajdonság nevét és értékét tartalmazza.  |  
    |**A bejövő forgalom érvénytelen üzeneteket kapott**     | Az összes Azure-Event Hubs vagy az Azure IoT Hub-eseményforrás által beolvasott érvénytelen üzenetek száma.      |

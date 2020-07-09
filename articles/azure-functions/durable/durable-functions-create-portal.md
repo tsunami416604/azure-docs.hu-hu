@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Function
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807961"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -52,7 +52,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu feltöltési csomag. JSON":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu feltöltési package.js":::
 
 4. A `package.json` feltöltése után futtassa a parancsot a `npm install` kudu távoli végrehajtási konzolon.
 
@@ -83,7 +83,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 1. Használjon olyan HTTP-eszközt, mint a Poster vagy a cURL, hogy POST-kérést küldjön a másolt URL-címre. A következő példa egy olyan cURL-parancs, amely POST-kérést küld a tartós függvénynek:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     Ebben a példában az a `{your-function-app-name}` tartomány, amely a Function alkalmazás neve. A válaszüzenet URI-végpontok készletét fogja tartalmazni, amelyek a végrehajtás monitorozásához és szabályozásához használhatók fel hasonlóan a következő példához:
@@ -128,7 +128,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
 Az első tartós funkció most már működik az Azure-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)

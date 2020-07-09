@@ -10,19 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77470751"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041472"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatmodellezés Azure Time Series Insights előzetes verzióban
 
 Ez a cikk bemutatja, hogyan dolgozhat az idősorozat-modellel Azure Time Series Insights előzetes verzióban. Számos gyakori adatesetet részletez.
 
 > [!TIP]
-> * További információ az előnézeti [Idősorozat modelljéről](time-series-insights-update-tsm.md).
+> * További információ az előnézeti [Idősorozat modelljéről](concepts-model-overview.md).
 > * További információ az előnézet felhasználói felületének a [Azure Time Series Insights Preview Explorerben](./time-series-insights-update-explorer.md)való navigálásáról.
 
 ## <a name="instances"></a>példányszám
@@ -168,7 +167,7 @@ A kezdéshez válassza ki a **modell** nézetet a Time Series Insights Explorer 
 
 ## <a name="next-steps"></a>További lépések
 
-- A Time Series-modellel kapcsolatos további információkért olvassa el az [adatmodellezést](./time-series-insights-update-tsm.md)ismertető témakört.
+- A Time Series-modellel kapcsolatos további információkért olvassa el az [adatmodellezést](./concepts-model-overview.md)ismertető témakört.
 
 - Ha többet szeretne megtudni az előzetes verzióról, olvassa el [Az adatmegjelenítés az Azure Time Series Insights Preview Explorerben című részt](./time-series-insights-update-explorer.md).
 

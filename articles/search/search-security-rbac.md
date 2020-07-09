@@ -7,13 +7,12 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84462838"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-szerepkörök beállítása az Azure Cognitive Searchhoz való rendszergazdai hozzáféréshez
 
@@ -34,6 +33,21 @@ Az Azure Cognitive Search esetében a szerepkörök a következő felügyeleti f
 | Olvasó |A szolgáltatás Essentials és metrikáinak megtekintése. Ennek a szerepkörnek a tagjai nem tekinthetik meg az indexet, az indexelő, az adatforrás vagy a kulcs információit.  |
 
 A szerepkörök nem biztosítanak hozzáférési jogosultságot a szolgáltatási végpont számára. A keresési szolgáltatási műveleteket, például az indexelést, az indexelést és a keresési adatok lekérdezéseit az API-kulcsok vezérlik, nem pedig a szerepkörök. További információ: az [API-kulcsok kezelése](search-security-api-keys.md).
+
+## <a name="permissions-table"></a>Engedélyek tábla
+
+Az alábbi táblázat összefoglalja az Azure Cognitive Searchban engedélyezett műveleteket, és egy adott művelethez hozzáférő kulcs feloldja azokat.
+
+| Művelet | Engedélyek |
+|-----------|-------------------------|
+| Szolgáltatás létrehozása | Azure-előfizetés tulajdonosa |
+| Szolgáltatás méretezése | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson  |
+| Szolgáltatás törlése | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson |
+| Objektumok létrehozása, módosítása és törlése a szolgáltatásban: <br>Indexek és összetevők (beleértve az analizátor-definíciókat, a pontozási profilokat, a CORS lehetőségeket), az indexelő, az adatforrások, a szinonimák, a javaslatok | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson |
+| Index lekérdezése | Rendszergazdai vagy lekérdezési kulcs (a RBAC nem alkalmazható) |
+| A rendszerinformációk lekérdezése, például statisztikák, Darabszámok és az objektumok listája | Rendszergazdai kulcs, RBAC az erőforráson (tulajdonos, közreműködő, olvasó) |
+| Rendszergazdai kulcsok kezelése | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson |
+| Lekérdezési kulcsok kezelése |  Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson  |
 
 ## <a name="see-also"></a>Lásd még
 

@@ -10,15 +10,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887857"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Az Azure CDN gyorsítótárazási viselkedésének vezérlése gyorsítótárszabályokkal
 
@@ -75,7 +75,7 @@ Globális és egyéni gyorsítótárazási szabályok esetén a gyorsítótár l
 
 Az egyéni gyorsítótárazási szabályok esetében két egyeztetési feltétel érhető el:
  
-- **Elérési út**: ez az állapot megegyezik az URL-cím elérési útjával, a tartománynév nélkül, és\*támogatja a helyettesítő karakteres szimbólumot (). Például: _/myfile.html_, _/My/Folder/*_, és _/My/images/*. jpg_. A maximális hossz 260 karakter.
+- **Elérési út**: ez az állapot megegyezik az URL-cím elérési útjával, a tartománynév nélkül, és támogatja a helyettesítő karakteres szimbólumot ( \* ). Például: _/myfile.html_, _/My/Folder/*_, és _/My/images/*. jpg_. A maximális hossz 260 karakter.
 
 - **Kiterjesztés**: Ez a feltétel megegyezik a kért fájl fájlkiterjesztés-fájljával. Megadhatja a megfelelő vesszővel tagolt fájlkiterjesztések listáját. Például: _. jpg_, _. mp3_vagy _. png_. A bővítmények maximális száma 50, a kiterjesztések maximális száma pedig 16. 
 
@@ -103,7 +103,7 @@ A globális és az egyéni gyorsítótárazási szabályok feldolgozása a köve
    - Gyorsítótárazási viselkedés: **állítsa be, ha hiányzik**
    - Gyorsítótár lejárati időtartama: 3 nap
 
-Ha ezek a szabályok be vannak állítva, a _ &lt;végponti&gt;állomásnévre_vonatkozó kérelem. a azureedge.net/Home/index.html az egyéni gyorsítótárazási szabályt #2, amely a következőre van beállítva: **Ha hiányzik** és 3 nap van beállítva. Ezért ha az *index. html* fájl vagy `Expires` http `Cache-Control` -fejlécekkel rendelkezik, azok tiszteletben vannak; Ellenkező esetben, ha ezek a fejlécek nincsenek beállítva, a rendszer 3 napig gyorsítótárazza a fájlt.
+Ha ezek a szabályok be vannak állítva, az _ &lt; Endpoint hostname &gt; _. azureedge.net/Home/index.html elindítja az egyéni gyorsítótárazási szabály #2, amely a következőre van beállítva: **Ha hiányzik** és 3 nap van beállítva. Ezért ha a *index.html* `Cache-Control` -fájlt vagy HTTP-fejléceket is megadtak `Expires` , akkor azok tiszteletben vannak, ellenkező esetben, ha nincsenek beállítva ezek a fejlécek, a fájl 3 napig van gyorsítótárazva.
 
 > [!NOTE] 
 > A szabályok módosítása előtt gyorsítótárazott fájlok megőrzik a forrás gyorsítótárának időtartamára vonatkozó beállítást. A gyorsítótár időtartamának alaphelyzetbe állításához el kell [törölni a fájlt](cdn-purge-endpoint.md). 

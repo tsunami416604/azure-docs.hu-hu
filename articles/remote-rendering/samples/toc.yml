@@ -1,5 +1,7 @@
 - name: Mintamodellek
   href: sample-model.md
+- name: Azure Remote Rendering eszköz
+  href: azure-remote-rendering-asset-tool.md
 - name: Unity-bemutatóalkalmazás
   href: showcase-app.md
 - name: PowerShell-példaszkriptek

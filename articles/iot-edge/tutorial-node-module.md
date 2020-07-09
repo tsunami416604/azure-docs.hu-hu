@@ -8,19 +8,19 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 71b22bf9bf040abcdf513a4f8baa916930c8972e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 7e17da94ba124c3b20fdede93ad6b4716247c6ba
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76772226"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610117"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node. js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
 Használja a Visual Studio Code-ot a Node. js-kódok fejlesztéséhez, és telepítse azt egy Azure IoT Edge rendszert futtató linuxos eszközre.
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -66,7 +66,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge Node. js-modu
 
 Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd építkezhet.
 
-1. A Visual Studio Code-ban válassza az**integrált terminál** **megtekintése** > lehetőséget a vs Code integrált terminál megnyitásához.
+1. A Visual Studio Code-ban **View**válassza  >  az**integrált terminál** megtekintése lehetőséget a vs Code integrált terminál megnyitásához.
 
 2. Az integrált terminálon írja be a következő parancsot a **yeoman** és a Node.js Azure IoT Edge-modul generátorának telepítéséhez:
 
@@ -74,7 +74,7 @@ Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd ép
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. A vs Code parancs paletta megnyitásához kattintson a**parancs paletta** **megtekintése** > elemre.
+3. **View**  >  A vs Code parancs paletta megnyitásához kattintson a**parancs paletta** megtekintése elemre.
 
 4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
@@ -86,7 +86,7 @@ Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd ép
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
    | Select module template (Modulsablon kiválasztása) | Válassza ki a **Node. js-modult**. |
    | Provide a module name (Modulnév megadása) | A modulnak adja a **NodeModule** nevet. |
-   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve az utolsó lépésben megadott névvel. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/nodemodule. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve az utolsó lépésben megadott névvel. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A rendszerkép utolsó tárháza a következőhöz hasonlít: \<registry name\> . azurecr.IO/nodemodule. |
 
    ![Docker-rendszerkép adattárának megadása](./media/tutorial-node-module/repository.png)
 
@@ -110,7 +110,7 @@ A Visual Studio Code jelenleg a Linux AMD64 és a Linux ARM32v7-eszközökhöz k
 
 Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** modul szimulált érzékelő adatait veszi át, és átirányítja IoT hub. Ebben a szakaszban kódot adunk hozzá, amely elemzi az üzeneteket azok elküldése előtt.
 
-1. A vs Code Explorerben nyissa meg a **modules** > **NodeModule** > **app. js fájlt**.
+1. A vs Code Explorerben nyissa meg a **modules**  >  **NodeModule**  >  **app. js fájlt**.
 
 2. Adjon hozzá egy hőmérsékleti határértéket tároló változót a szükséges csomópontmodulok alá. A hőmérsékleti határérték azt az értéket állítja be, amelyet a mért hőmérsékletnek túl kell lépnie ahhoz, hogy a rendszer elküldje az adatokat az IoT Hubnak.
 
@@ -185,7 +185,7 @@ Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** 
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a NodeModule, amely kiszűri azokat az üzeneteket, amelyekben a jelentett gépi hőmérséklet az elfogadható határértékeken belül van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. Nyissa meg a vs Code integrált terminált a**terminál** **megtekintése** > lehetőség kiválasztásával.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése**lehetőség kiválasztásával  >  **Terminal**.
 
 1. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 
@@ -193,11 +193,11 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   Biztonsági figyelmeztetés jelenhet meg, amely a használatát javasolja `--password-stdin` . Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 1. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget.
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja, `docker push` hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
@@ -239,7 +239,7 @@ A NodeModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos 
 
 6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 
@@ -247,14 +247,14 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules).
 
 Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
-> [Függvények](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)stream Analytics
-> [Machine Learning](tutorial-deploy-machine-learning.md)Machine learning
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [Függvények](tutorial-deploy-function.md) 
+>  [Stream Analytics](tutorial-deploy-stream-analytics.md) 
+>  [Machine learning](tutorial-deploy-machine-learning.md) 
+>  [Custom Vision Service](tutorial-deploy-custom-vision.md)

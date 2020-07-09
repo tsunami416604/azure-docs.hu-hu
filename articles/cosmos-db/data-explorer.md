@@ -3,15 +3,15 @@ title: Az adatkezelés Azure Cosmos DB Explorer használatával
 description: A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekintheti és kezelheti a Azure Cosmos DB tárolt adatforrásokat.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261885"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Adatok kezelése az Azure Cosmos Explorerrel 
 
@@ -29,7 +29,7 @@ A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekint
 
 2. Az **összes erőforrás**területen keresse meg és navigáljon a Azure Cosmos db-fiókjához, válassza a kulcsok lehetőséget, és másolja ki az **elsődleges kapcsolódási karakterláncot**.  
 
-3. Lépjen a https://cosmos.azure.com/mezőbe, illessze be a kapcsolati karakterláncot, majd válassza a **Kapcsolódás**lehetőséget. A kapcsolati karakterlánc használatával a Azure Cosmos DB Explorer időbeli korlátok nélkül is elérhető.  
+3. Lépjen https://cosmos.azure.com/ a mezőbe, illessze be a kapcsolati karakterláncot, majd válassza a **Kapcsolódás**lehetőséget. A kapcsolati karakterlánc használatával a Azure Cosmos DB Explorer időbeli korlátok nélkül is elérhető.  
 
    Ha más felhasználóknak is ideiglenes hozzáférést szeretne biztosítani a Azure Cosmos DB-fiókjához, ezt az írási-olvasási és olvasási hozzáférési URL-címek használatával teheti meg. 
 
@@ -41,7 +41,7 @@ A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekint
 
    Válassza ki azt a hozzáférési típust, amelyhez meg szeretné nyitni a fiókot, és kattintson a **Megnyitás**gombra. Az Explorer megnyitása után a felhasználói élmény ugyanaz, mint a Azure Portal Adatkezelő lapján.   
 
-   ![Azure Cosmos DB Explorer megnyitása](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer megnyitása":::
 
 ## <a name="known-issues"></a>Ismert problémák
 

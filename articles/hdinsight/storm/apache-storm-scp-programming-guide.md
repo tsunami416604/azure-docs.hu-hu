@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4445bb5c73ca001813d529a3e65d1ea95e084616
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77186863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082454"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP programozási útmutató az Azure HDInsight Apache Storm
 
@@ -201,7 +201,7 @@ public Dictionary<string, Object> stormConf { get; set; }
 public Dictionary<string, Object> pluginConf { get; set; }  
 ```
 
-A **stormConf** rész a Storm által meghatározott paraméterek, a **pluginConf** rész pedig az scp által definiált paraméterek. Például:
+A **stormConf** rész a Storm által meghatározott paraméterek, a **pluginConf** rész pedig az scp által definiált paraméterek. Íme egy példa:
 
 ```csharp
 public class Constants
@@ -217,7 +217,7 @@ public class Constants
 }
 ```
 
-A **TopologyContext** típusa lekéri a topológia környezetét. A funkció több párhuzamos összetevő esetében is hasznos. Például:
+A **TopologyContext** típusa lekéri a topológia környezetét. A funkció több párhuzamos összetevő esetében is hasznos. Íme egy példa:
 
 ```csharp
 //demo how to get TopologyContext info
@@ -357,7 +357,7 @@ public void Abort();
     public T GetAttribute<T>(string key);
 ```
 
-Ha a **simpleMode** értéke **true (igaz**), a **commit** metódus törli a ZooKeeper-ben a megfelelő ZNode. Ellenkező esetben a metódus törli az aktuális ZNode, és hozzáadja az új csomópontot a\_véglegesített elérési úthoz.
+Ha a **simpleMode** értéke **true (igaz**), a **commit** metódus törli a ZooKeeper-ben a megfelelő ZNode. Ellenkező esetben a metódus törli az aktuális ZNode, és hozzáadja az új csomópontot a véglegesített \_ elérési úthoz.
 
 ### <a name="scpruntime"></a>SCPRuntime
 
@@ -434,7 +434,7 @@ A **runSpec** parancs használatával a topológiai specifikációkat közvetlen
 
 A SCP.NET a következő függvényeket adta hozzá a tranzakciós topológiák definiálásához:
 
-| Új függvény | Paraméterek | Leírás |
+| Új függvény | Paraméterek | Description |
 | --- | --- | --- |
 | **TX – topolopy** |*topológia – név*<br />*kiöntő – Térkép*<br />*bolt – Térkép* |Egy tranzakciós topológiát határoz meg a topológia nevével, a kiöntő definíciók leképezésével és a csavarok definíciós térképével. |
 | **SCP – TX-kiöntő** |*exec-név*<br />*args*<br />*mezők* |Egy tranzakciós kiöntőt határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok*által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a kiöntő kimeneti mezőit. |
@@ -446,7 +446,7 @@ A SCP.NET a következő függvényeket adta hozzá a tranzakciós topológiák d
 
 A SCP.NET a következő kulcsszavakat definiálja:
 
-| Kulcsszó | Leírás |
+| Kulcsszó | Description |
 | --- | --- |
 | **: név** |A topológia neve |
 | **: topológia** |Az előző táblázat függvényeit használó topológia és beépített függvények |
@@ -549,7 +549,7 @@ A natív Storm Code Java nyelven íródott. A SCP.NET továbbfejlesztett Storm s
 
 ### <a name="specify-java-spoutbolt-in-a-specification-file"></a>Java kiöntő/bolt megadása egy specifikációs fájlban
 
-Egy specifikációs fájlban **SCP-kiöntő** és **SCP-bolt** is használható a Java kiöntő és a csavarok megadásához. Például:
+Egy specifikációs fájlban **SCP-kiöntő** és **SCP-bolt** is használható a Java kiöntő és a csavarok megadásához. Íme egy példa:
 
 ```csharp
 (spout-spec 
@@ -561,13 +561,13 @@ Itt `microsoft.scp.example.HybridTopology.Generator` látható a Java kiöntő o
 
 ### <a name="specify-the-java-classpath-in-a-runspec-command"></a>A Java-osztályútvonal meghatározása egy runSpec-parancsban
 
-Ha Java kiöntőt vagy csavarokat tartalmazó topológiát szeretne beküldeni, először állítsa össze őket a JAR-fájlok létrehozásához. Ezután adja meg azt a Java-osztályútvonal, amely a topológia beküldésekor a JAR-fájlokat tartalmazza. Például:
+Ha Java kiöntőt vagy csavarokat tartalmazó topológiát szeretne beküldeni, először állítsa össze őket a JAR-fájlok létrehozásához. Ezután adja meg azt a Java-osztályútvonal, amely a topológia beküldésekor a JAR-fájlokat tartalmazza. Íme egy példa:
 
 ```csharp
 bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 ```
 
-`examples\HybridTopology\java\target\` Itt a a Java kiöntő/bolt jar-fájlt tartalmazó mappa.
+Itt a a `examples\HybridTopology\java\target\` Java kiöntő/bolt jar-fájlt tartalmazó mappa.
 
 ### <a name="serialization-and-deserialization-between-java-and-c"></a>A Java és a C közötti szerializálás és deszerializálás #
 
@@ -644,7 +644,7 @@ A Java-oldal deszerializálási módszerének megadása egy specifikációs fáj
 )
 ```
 
-`"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer"` Itt a a deszerializáló neve, és `"microsoft.scp.example.HybridTopology.Person"` az a célként megadott osztály, amelybe a rendszer deszerializálja az adathalmazt.
+Itt a a `"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer"` deszerializáló neve, és az a célként megadott osztály, amelybe `"microsoft.scp.example.HybridTopology.Person"` a rendszer deszerializálja az adathalmazt.
 
 A C# szerializáló és a Java deszerializáló saját implementációját is csatlakoztathatja.
 
@@ -668,7 +668,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 ## <a name="scp-host-mode"></a>SCP-gazdagép üzemmód
 
-Ebben a módban lefordíthatja a kódot DLL-ként, és a SCPHost. exe fájlt használhatja az SCP által megadott topológia elküldéséhez. Egy specifikációs fájl a következő kódrészlethez hasonlít:
+Ebben a módban lefordíthatja a kódot DLL-ként, és az SCP által biztosított SCPHost.exe használhatja a topológia elküldéséhez. Egy specifikációs fájl a következő kódrészlethez hasonlít:
 
 ```csharp
 (scp-spout
@@ -679,10 +679,10 @@ Ebben a módban lefordíthatja a kódot DLL-ként, és a SCPHost. exe fájlt has
   })
 ```
 
-Itt `"plugin.name"` van megadva `"SCPHost.exe"`, amelyet az scp SDK biztosít. A SCPHost. exe három paramétert fogad el a következő sorrendben:
+Itt `"plugin.name"` van megadva, `"SCPHost.exe"` amelyet az scp SDK biztosít. A SCPHost.exe három paramétert fogad el a következő sorrendben:
 
-1. A DLL neve, amely ebben `"HelloWorld.dll"` a példában található.
-1. Az osztály neve, amely `"Scp.App.HelloWorld.Generator"` ebben a példában szerepel.
+1. A DLL neve, amely `"HelloWorld.dll"` ebben a példában található.
+1. Az osztály neve, amely ebben a `"Scp.App.HelloWorld.Generator"` példában szerepel.
 1. Egy nyilvános statikus metódus neve, amely meghívható a **ISCPPlugin**egy példányának beszerzéséhez.
 
 Gazdagép módban a kód lefordítása DLL-ként a SZOLGÁLTATÁSKAPCSOLÓDÁSI pont platformjának meghívásához. Mivel a platform a teljes feldolgozási logika teljes körű felügyeletét teszi elérhetővé, javasoljuk, hogy a topológiát SCP-gazdagép módban küldje el. Így egyszerűbbé válik a fejlesztési élmény. Emellett nagyobb rugalmasságot és jobb visszamenőleges kompatibilitást biztosít a későbbi kiadásokhoz.
@@ -693,7 +693,7 @@ Gazdagép módban a kód lefordítása DLL-ként a SZOLGÁLTATÁSKAPCSOLÓDÁSI 
 
 A következő egyszerű HelloWorld példa a SCP.NET ízét mutatja be. Nem tranzakciós topológiát használ egy **generátor** nevű kifolyóval, és két boltot, a **Splittert** és a **számlálót**. A kiöntő **generátor** véletlenszerűen generál mondatokat, és kibocsátja ezeket a mondatokat az **elosztóra**. Az **elválasztói** csavar a mondatokat szavakra osztja szét, és kibocsátja ezeket a szavakat a **Counter** boltba. A **számláló** az egyes szavak előfordulásának rögzítéséhez szótárt használ.
 
-Ez a példa két specifikációs fájlt tartalmaz: HelloWorld. spec\_és HelloWorld EnableAck. spec. A C#-kód alapján megállapítható, hogy engedélyezve van-e a `pluginConf` nyugtázás, ha a Java-oldalról beolvassa az objektumot.
+Ez a példa két specifikációs fájlt tartalmaz: HelloWorld. spec és HelloWorld \_ EnableAck. spec. A C#-kód alapján megállapítható, hogy engedélyezve van-e a nyugtázás, ha a `pluginConf` Java-oldalról beolvassa az objektumot.
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -704,7 +704,7 @@ if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK)
 Context.Logger.Info("enableAck: {0}", enableAck);
 ```
 
-Ha az igazolás engedélyezve van a kifolyóban, a szótár gyorsítótárazza a nem nyugtázott rekordok. Ha `Fail` a hívása megtörtént, a rendszer visszajátssza a meghiúsult rekordot.
+Ha az igazolás engedélyezve van a kifolyóban, a szótár gyorsítótárazza a nem nyugtázott rekordok. Ha a `Fail` hívása megtörtént, a rendszer visszajátssza a meghiúsult rekordot.
 
 ```csharp
 public void Fail(long seqId, Dictionary<string, Object> parms)
@@ -728,7 +728,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-A következő HelloWorldTx példa bemutatja a tranzakciós topológia megvalósítását. A példában egy **generátor**nevű kiöntő, egy **részleges darabszámú**batch-bolt és egy **Count-Sum**nevű véglegesítő bolt szerepel. A példa három meglévő szövegfájlt is tartalmaz: a DataSource0. txt, a DataSource1. txt és a DataSource2. txt fájlt.
+A következő HelloWorldTx példa bemutatja a tranzakciós topológia megvalósítását. A példában egy **generátor**nevű kiöntő, egy **részleges darabszámú**batch-bolt és egy **Count-Sum**nevű véglegesítő bolt szerepel. A példa három meglévő szövegfájlt is tartalmaz: DataSource0.txt, DataSource1.txt és DataSource2.txt.
 
 Az egyes tranzakciókban a kiöntő **generátor** véletlenszerűen kiválasztja a meglévő három fájlból származó két fájlt, és kibocsátja a két fájlnevet a **részleges számú** boltba. A **részleges számú** bolt:
 
@@ -745,7 +745,7 @@ Ha pontosan egyszer szeretné elérni a szemantikai műveletet, a **Count-Sum** 
 public static long lastCommittedTxId = -1; 
 ```
 
-**ISCPBatchBolt** -példány létrehozásakor az `txAttempt` objektum értéke a bemeneti paraméterekből lesz lekérdezve.
+**ISCPBatchBolt** -példány létrehozásakor az objektum értéke a bemeneti paraméterekből lesz lekérdezve `txAttempt` .
 
 ```csharp
 public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
@@ -763,7 +763,7 @@ public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
 }
 ```
 
-`FinishBatch` Ha a hívása `lastCommittedTxId` megtörtént, frissül, ha nem egy újrajátszott tranzakció.
+Ha a `FinishBatch` hívása megtörtént, `lastCommittedTxId` frissül, ha nem egy újrajátszott tranzakció.
 
 ```csharp
 public void FinishBatch(Dictionary<string, Object> parms)
@@ -783,11 +783,11 @@ public void FinishBatch(Dictionary<string, Object> parms)
 
 ### <a name="hybridtopology"></a>HybridTopology
 
-Ez a topológia egy Java kiöntőt és egy C#-csavart tartalmaz. Az SCP platform által biztosított alapértelmezett szerializálási és deszerializálási implementációt használja. Tekintse meg a HybridTopology. spec fájlt a\\példák HybridTopology mappában a specifikációs fájl részleteihez. Lásd még: SubmitTopology. bat, hogyan lehet megadni a Java-osztályútvonal.
+Ez a topológia egy Java kiöntőt és egy C#-csavart tartalmaz. Az SCP platform által biztosított alapértelmezett szerializálási és deszerializálási implementációt használja. Tekintse meg a HybridTopology. spec fájlt a példák \\ HybridTopology mappában a specifikációs fájl részleteihez. Lásd még: SubmitTopology.bat a Java-osztályútvonal megadásához.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 
-Ez a példa lényegében ugyanaz, mint a HelloWorld. Az egyetlen különbség, hogy a kód DLL-ként van lefordítva, és a topológiát a SCPHost. exe használatával küldi el a rendszer. Részletesebb magyarázatért tekintse meg az SCP-gazdagép üzemmódját ismertető szakaszt.
+Ez a példa lényegében ugyanaz, mint a HelloWorld. Az egyetlen különbség, hogy a kód DLL-ként van lefordítva, és a topológia SCPHost.exe használatával van elküldve. Részletesebb magyarázatért tekintse meg az SCP-gazdagép üzemmódját ismertető szakaszt.
 
 ## <a name="next-steps"></a>További lépések
 

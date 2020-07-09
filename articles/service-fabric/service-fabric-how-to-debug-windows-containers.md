@@ -5,11 +5,10 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701149"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Útmutató: Windows-tárolók hibakeresése az Azure Service Fabric a Visual Studio 2019 használatával
 
@@ -27,7 +26,7 @@ A Visual Studio 2019-es verziójában a .NET-alkalmazások a tárolókban Servic
 
 1. A tárolók közötti DNS-feloldás támogatásához be kell állítania a helyi fejlesztési fürtöt a számítógépnév használatával. Ezek a lépések akkor is szükségesek, ha a szolgáltatásokat a fordított proxyn keresztül szeretné kezelni.
    1. A PowerShell megnyitása rendszergazdaként
-   2. Navigáljon az SDK-fürt telepítési mappájához `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`, amely általában a következő:.
+   2. Navigáljon az SDK-fürt telepítési mappájához, amely általában a következő: `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` .
    3. A parancsfájl futtatása`DevClusterSetup.ps1`
 
       ``` PowerShell
@@ -35,7 +34,7 @@ A Visual Studio 2019-es verziójában a .NET-alkalmazások a tárolókban Servic
       ```
 
       > [!NOTE]
-      > A `-CreateOneNodeCluster` használatával egy egycsomópontos fürtöt állíthat be. Az alapértelmezett érték egy helyi, öt csomópontot tartalmazó fürtöt hoz létre.
+      > A használatával egy `-CreateOneNodeCluster` egycsomópontos fürtöt állíthat be. Az alapértelmezett érték egy helyi, öt csomópontot tartalmazó fürtöt hoz létre.
       >
 
       Ha többet szeretne megtudni a Service Fabric DNS szolgáltatásáról, tekintse meg a [DNS-szolgáltatás az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)-ban című témakört. Ha többet szeretne megtudni a Service Fabric fordított proxy használatáról a tárolóban futó szolgáltatásokból, tekintse meg a [reverse proxy speciális kezelését tárolókban futó szolgáltatásokhoz](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)című témakört.

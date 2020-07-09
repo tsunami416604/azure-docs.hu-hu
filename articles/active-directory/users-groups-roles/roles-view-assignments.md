@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 20e566a450768fca81e29692f7c8d2da3ccf5201
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731562"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Egyéni szerepkör-hozzárendelések megtekintése Azure Active Directory
 
@@ -31,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan lehet megtekinteni a Azure Active Directoryhoz r
 
 Ez az eljárás azt ismerteti, hogyan kell megtekinteni egy szerepkör hozzárendeléseit az egész szervezetre kiterjedő hatókörrel.
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com)a   Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
 1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válasszon ki egy szerepkört a megnyitásához, és tekintse meg a tulajdonságait.
 1. Válassza a **hozzárendelések** lehetőséget a szerepkör hozzárendeléseinek megtekintéséhez.
 
@@ -104,7 +103,7 @@ HTTP/1.1 200 OK
 
 Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendeléseit egy adott alkalmazási hatókörrel. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com)a   Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
 1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki az alkalmazás regisztrációját a tulajdonságainak megtekintéséhez. Előfordulhat, hogy az **összes alkalmazás** lehetőséget kell választania az Azure ad-szervezetben az alkalmazások regisztrálásának teljes listájának megtekintéséhez.
 
     ![Alkalmazások regisztrálásának létrehozása vagy szerkesztése a Alkalmazásregisztrációk lapon](./media/roles-create-custom/appreg-all-apps.png)

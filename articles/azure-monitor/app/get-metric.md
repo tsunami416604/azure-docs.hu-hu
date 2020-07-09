@@ -8,21 +8,20 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927904"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
-Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböző módszerrel gyűjthetik össze az `TrackMetric()`egyéni metrikákat, és `GetMetric()`. A két módszer közötti fő különbség a helyi összesítés. `TrackMetric()`hiányzik az előzetes összesítés, miközben `GetMetric()` az összesítése már megtörtént. Az ajánlott módszer az Összesítés használata, ezért `TrackMetric()` már nem az egyéni metrikák gyűjtésének előnyben részesített módja. Ez a cikk végigvezeti a GetMetric () metódus használatával, valamint a működésének indoklásával.
+Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböző módszerrel gyűjthetik össze az egyéni metrikákat, `TrackMetric()` és `GetMetric()` . A két módszer közötti fő különbség a helyi összesítés. `TrackMetric()`hiányzik az előzetes összesítés `GetMetric()` , miközben az összesítése már megtörtént. Az ajánlott módszer az Összesítés használata, ezért már `TrackMetric()` nem az egyéni metrikák gyűjtésének előnyben részesített módja. Ez a cikk végigvezeti a GetMetric () metódus használatával, valamint a működésének indoklásával.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
 
-`TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. A `TrackMetric()`- `GetMetric()` től eltérően a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
+`TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. `TrackMetric()`A-től eltérően `GetMetric()` a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
 
-Application Insights a- `TrackMetric()` `GetMetric()` n keresztül gyűjtött egyéni metrikák nem tartoznak a [mintavételezésbe](https://docs.microsoft.com/azure/azure-monitor/app/sampling). A mintavétel fontos mérőszámai olyan forgatókönyvekhez vezethetnek, amelyekben előfordulhat, hogy a metrikák körére épülő riasztások megbízhatatlanok lehetnek. Az egyéni mérőszámok soha nem mintavételezésével általában biztos lehet abban, hogy a riasztási küszöbértékek megszegése esetén a riasztás tüzet fog okozni.  Mivel azonban az egyéni metrikák nem mintául szolgálnak, néhány lehetséges probléma van.
+Application Insights a-n keresztül gyűjtött egyéni metrikák `TrackMetric()` `GetMetric()` nem tartoznak a [mintavételezésbe](https://docs.microsoft.com/azure/azure-monitor/app/sampling). A mintavétel fontos mérőszámai olyan forgatókönyvekhez vezethetnek, amelyekben előfordulhat, hogy a metrikák körére épülő riasztások megbízhatatlanok lehetnek. Az egyéni mérőszámok soha nem mintavételezésével általában biztos lehet abban, hogy a riasztási küszöbértékek megszegése esetén a riasztás tüzet fog okozni.  Mivel azonban az egyéni metrikák nem mintául szolgálnak, néhány lehetséges probléma van.
 
 Ha másodpercenként egy metrika trendeket kell követnie, vagy egy még részletesebb intervallumban, ez a következőket eredményezheti:
 
@@ -30,12 +29,12 @@ Ha másodpercenként egy metrika trendeket kell követnie, vagy egy még részle
 - Megnövekedett hálózati forgalom/teljesítmény terhelése. (Bizonyos helyzetekben ez a pénzügyi és az alkalmazások teljesítményével is járhat.)
 - A betöltési szabályozás kockázata. (A Azure Monitor szolgáltatás adatpontokat veszít ("szabályozás"), ha az alkalmazás nagyon nagy telemetria rövid idő alatt küldi el.)
 
-A szabályozás különösen fontos a mintavétel során, mivel a szabályozás nem fogadott riasztásokat eredményezhet, mert a riasztás kiváltásának feltétele helyileg, majd a betöltési végponton, a túl sok adat elküldése miatt eldobásra kerül. A .NET és a .NET Core esetében miért nem javasoljuk a használatát `TrackMetric()` , hacsak nem implementálta a saját helyi összesítési logikáját. Ha az összes példányt nyomon szeretné követni egy adott időszakra vonatkozóan, előfordulhat, hogy ez jobb illeszkedést biztosít [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) . Habár ne feledje, hogy az egyéni metrikákkal ellentétben az egyéni események mintavételezése is megtörténik. Természetesen továbbra is használhatja `TrackMetric()` a saját helyi összesítésének megírása nélkül, de ha így tesz, vegye figyelembe a buktatókat.
+A szabályozás különösen fontos a mintavétel során, mivel a szabályozás nem fogadott riasztásokat eredményezhet, mert a riasztás kiváltásának feltétele helyileg, majd a betöltési végponton, a túl sok adat elküldése miatt eldobásra kerül. A .NET és a .NET Core esetében miért nem javasoljuk a használatát, `TrackMetric()` hacsak nem implementálta a saját helyi összesítési logikáját. Ha az összes példányt nyomon szeretné követni egy adott időszakra vonatkozóan, előfordulhat, hogy ez [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) jobb illeszkedést biztosít. Habár ne feledje, hogy az egyéni metrikákkal ellentétben az egyéni események mintavételezése is megtörténik. Természetesen továbbra is használhatja a `TrackMetric()` saját helyi összesítésének megírása nélkül, de ha így tesz, vegye figyelembe a buktatókat.
 
-Az összefoglalás `GetMetric()` az ajánlott megközelítés, mivel az előzetes összesítést végzi, az összes Track () hívás értékeit összesíti, és percenként egyszer küld egy összegzést/összesítést. Ez jelentősen csökkentheti a költségek és a teljesítmény terhelését azáltal, hogy kevesebb adatpontot küld el, miközben továbbra is összegyűjti az összes releváns információt.
+Az összefoglalás az `GetMetric()` ajánlott megközelítés, mivel az előzetes összesítést végzi, az összes Track () hívás értékeit összesíti, és percenként egyszer küld egy összegzést/összesítést. Ez jelentősen csökkentheti a költségek és a teljesítmény terhelését azáltal, hogy kevesebb adatpontot küld el, miközben továbbra is összegyűjti az összes releváns információt.
 
 > [!NOTE]
-> Csak a .NET-és .NET Core SDK-k rendelkeznek GetMetric () metódussal. Ha Java-t használ, használhat [mikrométer mérőszámokat](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) vagy `TrackMetric()`. Python esetén a [OpenCensus. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) használatával egyéni metrikákat küldhet. A JavaScripthez és a Node. js-hez `TrackMetric()`, amelyet továbbra is használni fog, de ne feledje, hogy az előző szakaszban leírt kikötéseket.
+> Csak a .NET-és .NET Core SDK-k rendelkeznek GetMetric () metódussal. Ha Java-t használ, használhat [mikrométer mérőszámokat](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) vagy `TrackMetric()` . Python esetén a [OpenCensus. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) használatával egyéni metrikákat küldhet. A JavaScript és a Node.js továbbra is használhatja `TrackMetric()` , de tartsa szem előtt az előző szakaszban leírt kikötéseket.
 
 ## <a name="getting-started-with-getmetric"></a>A GetMetric első lépései
 
@@ -43,7 +42,7 @@ Példánkban egy alapszintű .NET Core 3,1 Worker Service-alkalmazást fogunk ha
 
 ### <a name="sending-metrics"></a>Metrikák küldése
 
-Cserélje le a `worker.cs` fájl tartalmát a következőre:
+Cserélje le a fájl tartalmát a `worker.cs` következőre:
 
 ```csharp
 using System;
@@ -109,7 +108,7 @@ Ha megvizsgáljuk a Application Insights erőforrást a naplók (Analytics) szol
 ![Log Analytics lekérdezés nézet](./media/get-metric/log-analytics.png)
 
 > [!NOTE]
-> Míg a nyers telemetria-tétel nem tartalmazott explicit Sum tulajdonságot/mezőt a betöltés után, akkor létrehozunk egyet. Ebben az esetben mind a `value` , `valueSum` mind a tulajdonság ugyanazt a dolgot jelöli.
+> Míg a nyers telemetria-tétel nem tartalmazott explicit Sum tulajdonságot/mezőt a betöltés után, akkor létrehozunk egyet. Ebben az esetben mind a `value` , mind a `valueSum` tulajdonság ugyanazt a dolgot jelöli.
 
 Az egyéni metrika telemetria a portál [_mérőszámok_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) szakaszában is elérheti. [Naplózási és egyéni metrika](pre-aggregated-metrics-log-metrics.md)is. (Az alábbi képernyőképen a log-alapú példa látható.) ![Metrikák Explorer nézet](./media/get-metric/metrics-explorer.png)
 
@@ -140,7 +139,7 @@ Ebben az esetben például a fenti példában a "ComputersSold" metrika esetébe
 
 ```
 
-A metrikai leíró gyorsítótárazása mellett a fenti példa a 50 ezredmásodpercet `Task.Delay` is csökkenti, hogy a hurok gyakrabban fusson a 772 `TrackValue()` -es meghívások miatt.
+A metrikai leíró gyorsítótárazása mellett a fenti példa a `Task.Delay` 50 ezredmásodpercet is csökkenti, hogy a hurok gyakrabban fusson a 772-es `TrackValue()` meghívások miatt.
 
 ## <a name="multi-dimensional-metrics"></a>Többdimenziós metrikák
 
@@ -190,7 +189,7 @@ A metrikus Explorer felhasználói felületén belüli többdimenziós metrikák
 
 ### <a name="enable-multi-dimensional-metrics"></a>Többdimenziós mérőszámok engedélyezése
 
-Ha Application Insights erőforráshoz szeretne többdimenziós mérőszámokat engedélyezni, válassza a **használat és becsült költségek** > **Egyéni metrikák** > **engedélyezése az egyéni metrika dimenziók** > számára**OK**lehetőséget. Erről további részleteket [itt](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)találhat.
+Ha Application Insights erőforráshoz szeretne többdimenziós mérőszámokat engedélyezni, válassza a **használat és becsült költségek**  >  **Egyéni metrikák**  >  **engedélyezése az egyéni metrika dimenziók**számára  >  **OK**lehetőséget. Erről további részleteket [itt](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)találhat.
 
 Miután elvégezte ezt a módosítást, és új többdimenziós telemetria küld, a **felosztást is alkalmazhatja**.
 
@@ -205,7 +204,7 @@ Miután elvégezte ezt a módosítást, és új többdimenziós telemetria küld
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>A MetricIdentifier használata, ha több mint három dimenzió van
 
-Jelenleg 10 dimenzió támogatott, azonban a három dimenziónál nagyobb a következők használata `MetricIdentifier`:
+Jelenleg 10 dimenzió támogatott, azonban a három dimenziónál nagyobb a következők használata `MetricIdentifier` :
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
@@ -248,15 +247,15 @@ Az alábbi "speciális műveleti kérelem mérete" által elküldett metrika-ös
         }
 ```
 
-Ebben a körülmények között az értékek megadásához `MetricDimensionNames` `TelemetryContext` használja a osztályban felsorolt speciális dimenziók nevét.
+Ebben a körülmények között az `MetricDimensionNames` értékek megadásához használja a osztályban felsorolt speciális dimenziók nevét `TelemetryContext` .
 
-Ha például a következő utasításból származó metrika-összesítést a rendszer a Application Insights Felhőbeli végpontra küldi `Context.Operation.Name` , annak adatmezője a "speciális művelet" értékre lesz állítva:
+Ha például a következő utasításból származó metrika-összesítést a rendszer a Application Insights Felhőbeli végpontra küldi, annak `Context.Operation.Name` adatmezője a "speciális művelet" értékre lesz állítva:
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation");
 ```
 
-A speciális dimenzió értékei a `TelemetryContext` rendszerbe másolódnak, és nem lesznek "normál" dimenzióként használva. Ha a normál metrikai feltáráshoz is meg szeretné őrizni a műveleti dimenziót, létre kell hoznia egy külön dimenziót erre a célra:
+A speciális dimenzió értékei a rendszerbe másolódnak `TelemetryContext` , és nem lesznek "normál" dimenzióként használva. Ha a normál metrikai feltáráshoz is meg szeretné őrizni a műveleti dimenziót, létre kell hoznia egy külön dimenziót erre a célra:
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation", "Special Operation");
@@ -266,9 +265,9 @@ _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionName
 
  Annak megakadályozása érdekében, hogy a telemetria alrendszer véletlenül felhasználja az erőforrásokat, beállíthatja az adatsorozatok maximális számát metrikával. Az alapértelmezett határértékek száma nem haladhatja meg a 1000-as összes adatsorozatot, és nem haladhatja meg az 100-nál több különböző értéket.
 
- A dimenzió és az idősorozat-határértékek kontextusában azt `Metric.TrackValue(..)` használjuk, hogy megbizonyosodjon róla, hogy a korlátok megfigyelhetők. Ha a korlátok már nem teljesülnek `Metric.TrackValue(..)` , a "false" értéket ad vissza, és az érték nem lesz nyomon követve. Ellenkező esetben a rendszer "igaz" értéket ad vissza. Ez akkor hasznos, ha a metrika adatai felhasználói adatbevitelből származnak.
+ A dimenzió és az idősorozat-határértékek kontextusában azt használjuk, hogy `Metric.TrackValue(..)` megbizonyosodjon róla, hogy a korlátok megfigyelhetők. Ha a korlátok már nem teljesülnek, `Metric.TrackValue(..)` a "false" értéket ad vissza, és az érték nem lesz nyomon követve. Ellenkező esetben a rendszer "igaz" értéket ad vissza. Ez akkor hasznos, ha a metrika adatai felhasználói adatbevitelből származnak.
 
-A `MetricConfiguration` konstruktor több lehetőséget is igénybe vehet, hogyan kezelheti a különböző adatsorozatokat a vonatkozó metrikán belül, `IMetricSeriesConfiguration` valamint egy olyan osztály objektumát, amely a metrika egyes sorainak összesítési viselkedését határozza meg:
+A `MetricConfiguration` konstruktor több lehetőséget is igénybe vehet, hogyan kezelheti a különböző adatsorozatokat a vonatkozó metrikán belül, valamint egy olyan osztály objektumát, `IMetricSeriesConfiguration` amely a metrika egyes sorainak összesítési viselkedését határozza meg:
 
 ``` csharp
 var metConfig = new MetricConfiguration(seriesCountLimit: 100, valuesPerDimensionLimit:2,
@@ -285,7 +284,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a `TrackValue()`meghívja a következőt:.
+* `seriesCountLimit`a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a meghívja a következőt: `TrackValue()` .
 * `valuesPerDimensionLimit`a dimenziók eltérő értékeinek megkorlátja hasonló módon.
 * `restrictToUInt32Values`meghatározza, hogy a nem negatív egész értékeket kell-e követni.
 

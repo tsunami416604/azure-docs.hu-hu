@@ -1,20 +1,14 @@
 ---
 title: .NET programozási útmutató – Azure Event Hubs (örökölt) | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan írhat kódot az Azure Event Hubs az Azure .NET SDK használatával.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-ms.service: event-hubs
-ms.custom: seodec18
 ms.topic: article
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314538"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
 Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -117,7 +111,7 @@ Az [EventProcessorHost][] osztály használatához megvalósítható az [IEventP
 Az események feldolgozásának megkezdéséhez hozza létre a [EventProcessorHost][], és adja meg az Event hub megfelelő paramétereit. Például:
 
 > [!NOTE]
-> A EventProcessorHost és a hozzá kapcsolódó osztályok a **Microsoft. Azure. EventHubs. Processor** csomagban találhatók. Adja hozzá a csomagot a Visual Studio-projekthez a [cikk](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) utasításait követve, vagy a következő parancs kiadásával a [Package Manager konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakban:`Install-Package Microsoft.Azure.EventHubs.Processor`.
+> A EventProcessorHost és a hozzá kapcsolódó osztályok a **Microsoft. Azure. EventHubs. Processor** csomagban találhatók. Adja hozzá a csomagot a Visual Studio-projekthez a [cikk](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) utasításait követve, vagy a következő parancs kiadásával a [Package Manager konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakban: `Install-Package Microsoft.Azure.EventHubs.Processor` .
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

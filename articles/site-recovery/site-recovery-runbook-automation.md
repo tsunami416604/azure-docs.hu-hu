@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257484"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134803"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
 
@@ -56,6 +56,9 @@ Parancsfájl futtatásakor a helyreállítási terv környezetét befecskendezi 
 | Felhőszolgáltatásneve |Az Azure Cloud Service neve, amely alatt a virtuális gép létrejött. |
 | RoleName |Az Azure-beli virtuális gép neve. |
 | RecoveryPointId|A virtuális gép helyreállításának időbélyege. |
+
+>[!Note]
+>A "FailoverDirection" változó értéke "PrimaryToSecondary" lesz a feladatátvétel és a "SecondaryToPrimary" esetén a feladat-visszavétel esetén.
 
 Az alábbi példa egy környezeti változót mutat be:
 
@@ -112,12 +115,12 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 ## <a name="customize-the-recovery-plan"></a>A helyreállítási terv testreszabása
 
 1. A tárolóban válassza a **helyreállítási tervek (site Recovery) lehetőséget.**
-2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv**elemre. [További információ](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
+2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv**elemre. [További információk](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
 3. A helyreállítási terv lapon kattintson a **Testreszabás**elemre.
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kattintson a három pontra (...) az **1. csoport:** > a**post művelet hozzáadása**lehetőségre.
+2. Kattintson a három pontra (...) az **1. csoport:** a  >  **post művelet hozzáadása**lehetőségre.
 3. A **beszúrási művelet**területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét (**"Helló világ!" alkalmazás**).
 4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva az **1. csoporthoz: utólagos lépések**.
 
@@ -126,7 +129,7 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 
 A külső változók használatával egyetlen runbook parancsfájlt is használhat több helyreállítási tervben. 
 
-- [Azure Automation változók](../automation/automation-variables.md) használatával tárolhatja a helyreállítási terv futtatásához szükséges paramétereket.
+- [Azure Automation változók](../automation/shared-resources/variables.md) használatával tárolhatja a helyreállítási terv futtatásához szükséges paramétereket.
 - Ha a helyreállítási terv nevét hozzáadja a változóhoz, az egyes helyreállítási tervekhez egyedi változókat hozhat létre. Ezután használja a változókat paraméterekként.
 - A paramétereket módosíthatja a parancsfájl módosítása nélkül, de továbbra is megváltoztathatja a szkript működésének módját.
 
@@ -196,7 +199,7 @@ Bizonyos esetekben előfordulhat, hogy nem tud külön változókat létrehozni 
 - A SharePoint-helyreállítás például két előtéri végponttal rendelkezik. Egy alapszintű üzletági (LOB) alkalmazás csak egy előtérrel rendelkezik.
 - Ebben a forgatókönyvben nem hozhat létre külön változókat az egyes helyreállítási tervekhez.
 
-Az alábbi példában egy [összetett változót](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) hozunk létre a Azure Automation fiókban.
+Az alábbi példában egy [összetett változót](/powershell/module/servicemanagement/azure/set-azureautomationvariable) hozunk létre a Azure Automation fiókban.
 
 Ehhez több értéket kell megadnia Azure PowerShell használatával.
 
@@ -259,11 +262,8 @@ Ez a videó egy másik példát is tartalmaz. Bemutatja, hogyan lehet helyreáll
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Automation futtató fiók](../automation/automation-create-runas-account.md) megismerése
+- [Azure Automation futtató fiók](../automation/manage-runas-account.md) megismerése
 - Tekintse át [Azure Automation minta parancsfájlokat](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
 - [További](site-recovery-failover.md) információ a feladatátvételek futtatásáról.
-
-
-

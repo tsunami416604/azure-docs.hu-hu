@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77470717"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>WASB hibakeresése az Azure HDInsight
@@ -26,23 +25,23 @@ A létrehozott napló a következőhöz hasonlóan fog kinézni:
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>A WASB hibakeresési naplójának bekapcsolása
 
-1. Egy böngészőben nyissa meg `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`a (z) `CLUSTERNAME` elemet, ahol a a Spark-fürt neve.
+1. Egy böngészőben nyissa meg a (z `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` ) elemet, ahol a a Spark- `CLUSTERNAME` fürt neve.
 
 1. Navigáljon a **speciális spark2-log4j-Properties**elemre.
 
-    1. Módosítás `log4j.appender.console.Threshold=INFO` a `log4j.appender.console.Threshold=DEBUG`következőre:.
+    1. Módosítás a következőre: `log4j.appender.console.Threshold=INFO` `log4j.appender.console.Threshold=DEBUG` .
 
-    1. Hozzáadás `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
+    1. Hozzáadás `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
 1. Navigáljon a **speciális livy2-log4j-Properties**elemre.
 
-    Hozzáadás `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
+    Hozzáadás `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
 1. Mentse a módosításokat.
 
 ## <a name="additional-logging"></a>További naplózási lehetőségek
 
-A fenti naplóknak magas szintű ismeretekkel kell rendelkezniük a fájlrendszer műveleteiről. Ha a fenti naplók még nem biztosítanak hasznos információkat, vagy ha a blob Storage API-hívásokat szeretné kivizsgálni, `fs.azure.storage.client.logging=true` adja hozzá `core-site`a következőt:. Ezzel a beállítással engedélyezheti a wasb Java SDK-naplóit, és minden hívást a blob Storage-kiszolgálóra kell nyomtatnia. Távolítsa el a beállítást a vizsgálatok után, mert a lemez gyorsan kitölthető, és lelassíthatja a folyamatot.
+A fenti naplóknak magas szintű ismeretekkel kell rendelkezniük a fájlrendszer műveleteiről. Ha a fenti naplók még nem biztosítanak hasznos információkat, vagy ha a blob Storage API-hívásokat szeretné kivizsgálni, adja hozzá a következőt: `fs.azure.storage.client.logging=true` `core-site` . Ezzel a beállítással engedélyezheti a wasb Java SDK-naplóit, és minden hívást a blob Storage-kiszolgálóra kell nyomtatnia. Távolítsa el a beállítást a vizsgálatok után, mert a lemez gyorsan kitölthető, és lelassíthatja a folyamatot.
 
 Ha a háttér Azure Data Lake alapul, használja a következő log4j-beállítást az összetevőhöz (például Spark/TEZ/hdfs):
 

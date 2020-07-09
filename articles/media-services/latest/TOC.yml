@@ -16,6 +16,11 @@
     - name: Élő esemény portál és OBS használatával
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 'A portál használata tartalom feltöltéséhez, kódolásához és streameléséhez'
+      href: manage-assets-quickstart.md
+    - name: A portál használata tartalom titkosításához
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: Oktatóanyagok
   items:
     - name: Távoli fájl kódolása és videó streamelése
@@ -129,10 +134,10 @@
           href: streaming-endpoint-concept.md
         - name: Streamelés méretezése CDN-nel
           href: scale-streaming-cdn.md
-        - name: Streamelési lokátor
+        - name: Streameléskeresők
           displayName: URLs
           href: streaming-locators-concept.md
-        - name: Streamelési szabályok
+        - name: Streamelési szabályzatok
           href: streaming-policy-concept.md
     - name: Tartalomvédelem
       items:
@@ -150,7 +155,7 @@
               href: widevine-license-template-overview.md
             - name: FairPlay-licenckövetelmények
               href: fairplay-license-overview.md
-        - name: Streamelési szabályok
+        - name: Streamelési szabályzatok
           href: streaming-policy-concept.md
         - name: Tartalomkulcsszabályok
           href: content-key-policy-concept.md
@@ -193,6 +198,19 @@
         - name: Streamelés
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: Hibaelhárítás
+      items:
+        - name: Gyakori kérdések
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: Hibakódok
+          items:
+            - name: Streamvégpont-hibakódok
+              href: streaming-endpoint-error-codes.md
+            - name: Élő események hibakódjai
+              href: live-event-error-codes.md
+            - name: Feladathibakódok
+              href: job-error-codes.md
     - name: Migrálás a 2-esről a 3-as verzióra
       items:
         - name: A 2-es és 3-as verzió összevetése
@@ -338,19 +356,6 @@
           href: download-results-howto.md
         - name: Leíró hang jelzése
           href: signal-descriptive-audio-howto.md
-    - name: Hibaelhárítás
-      items:
-        - name: Gyakori kérdések
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: Hibakódok
-          items:
-            - name: Streamvégpont-hibakódok
-              href: streaming-endpoint-error-codes.md
-            - name: Élő események hibakódjai
-              href: live-event-error-codes.md
-            - name: Feladathibakódok
-              href: job-error-codes.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
@@ -369,11 +374,17 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Indítás
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions
+    - name: Standard Encoder-sémák
+      items:
+        - name: Bemeneti metaadatok
+          href: input-metadata-schema.md
+        - name: Kimeneti metaadatok
+          href: output-metadata-schema.md
 - name: További források
   items:
     - name: Azure Media Services-közösség

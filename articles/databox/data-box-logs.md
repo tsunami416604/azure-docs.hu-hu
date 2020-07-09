@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676409"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy követése és eseménynaplózása
@@ -26,7 +25,7 @@ Az alábbi táblázat a Data Box vagy Data Box Heavy sorrendtel kapcsolatos lép
 | Rendelés létrehozása               | [Hozzáférés-vezérlés beállítása a rendelésen a RBAC használatával](#set-up-access-control-on-the-order)                                                    |
 | Megrendelés feldolgozva            | [A sorrend nyomon követése](#track-the-order) <ul><li> Azure Portal </li><li> Szállítási szolgáltató webhelye </li><li>E-mail-értesítések</ul> |
 | Eszköz beállítása              | Az eszköz hitelesítő adatai naplózása a [tevékenység naplófájljaiban](#query-activity-logs-during-setup)                                              |
-| Adatmásolás az eszközre        | [A *hiba. XML* fájlok megtekintése](#view-error-log-during-data-copy) az adatmásoláshoz                                                             |
+| Adatmásolás az eszközre        | Adatmásolási [ *error.xml* fájlok megtekintése](#view-error-log-during-data-copy)                                                             |
 | A szállítás előkészítése            | Az [Anyagjegyzék-fájlok](#inspect-bom-during-prepare-to-ship) vagy a jegyzékfájlok vizsgálata az eszközön                                      |
 | Adatok feltöltése az Azure-ba       | A hibák [másolási naplóinak áttekintése](#review-copy-log-during-upload-to-azure) az adatok feltöltésekor az Azure-adatközpontban                         |
 | Adatok törlése az eszközről   | [Felügyeleti naplók láncának megtekintése](#get-chain-of-custody-logs-after-data-erasure) , beleértve a naplókat és a sorrendi előzményeket                |
@@ -64,7 +63,7 @@ A megrendelés nyomon követhető a Azure Portal és a szállítási szolgáltat
 
 - A Data Box zárolt állapotban érkezik a helyszínen. A megrendeléséhez a Azure Portal elérhető hitelesítő adatok használhatók.  
 
-    Egy Data Box beállításakor előfordulhat, hogy tudnia kell, hogy ki fér hozzá az eszköz hitelesítő adataihoz. Annak megállapításához, hogy ki fér hozzá az **eszköz hitelesítő adatai** panelhez, lekérdezheti a tevékenység naplóit.  Minden olyan művelet, amely magában foglalja az **eszköz adatainak elérését > a hitelesítő adatok panelje** `ListCredentials` műveletként van bejelentkezve a tevékenység naplóiba.
+    Egy Data Box beállításakor előfordulhat, hogy tudnia kell, hogy ki fér hozzá az eszköz hitelesítő adataihoz. Annak megállapításához, hogy ki fér hozzá az **eszköz hitelesítő adatai** panelhez, lekérdezheti a tevékenység naplóit.  Minden olyan művelet, amely magában foglalja az **eszköz adatainak elérését > a hitelesítő adatok panelje** műveletként van bejelentkezve a tevékenység naplóiba `ListCredentials` .
 
     ![Tevékenységnaplók lekérdezése](media/data-box-logs/query-activity-log-1.png)
 
@@ -74,14 +73,14 @@ A megrendelés nyomon követhető a Azure Portal és a szállítási szolgáltat
 
 Az Adatmásolás során Data Box vagy Data Box Heavy a rendszer hibaüzenetet küld, ha az Adatmásolás során problémák merülnek fel.
 
-### <a name="errorxml-file"></a>Error. xml fájl
+### <a name="errorxml-file"></a>Error.xml fájl
 
 Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélkül befejeződött. Ha a másolási folyamat során hibák léptek fel, töltse le a naplókat a **csatlakozás és másolás** lapról.
 
 - Ha olyan fájlt másolt, amely nem 512 bájtra van igazítva a Data Box felügyelt lemez mappájába, a fájl nem lesz feltöltve az átmeneti tárolási fiókba. Hibaüzenet jelenik meg a naplókban. Távolítsa el a fájlt, és másolja a 512 bájtra igazított fájlt.
 - Ha másolt egy VHDX, vagy egy dinamikus VHD-t vagy egy különbséglemezek VHD-t (ezek a fájlok nem támogatottak), akkor hibaüzenet jelenik meg a naplókban.
 
-Íme egy példa a *error. XML fájlra* , amely a felügyelt lemezekre történő másolás során különböző hibákat tartalmaz.
+Íme egy minta a *error.xml* a különböző hibákhoz a felügyelt lemezekre történő másolás során.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +89,7 @@ Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélk
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Íme egy példa a *error. XML fájlra* , amely különböző hibákat mutat a Blobok másolásakor.
+Íme egy példa a *error.xml* a különböző hibákra, amikor az oldal blobokra másol.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +100,7 @@ Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélk
 ```
 
 
-Íme egy példa a *error. XML fájlra* , amely különböző hibákat tartalmaz a Blobok másolásakor.
+Íme egy minta a *error.xml* a különböző hibákhoz, amikor a másoláskor blokkolja a blobokat.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +128,7 @@ Győződjön meg arról, hogy a másolási feladatok végrehajtása hibák nélk
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Itt látható egy példa a *error. XML fájlra* , amely különböző hibákat mutat be Azure Filesre való másoláskor.
+Íme egy példa a *error.xml* a különböző hibákra, amikor Azure Filesre másol.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -203,7 +202,7 @@ A Data Box szolgáltatás minden feldolgozott rendeléshez létrehoz egy másol�
 
 Az Azure-ba való feltöltés során ciklikus redundancia-ellenőrzési (CRC) számítás történik. A FCSF az adatmásolatból és az adatok feltöltése után összehasonlítjuk. A CRC-eltérés azt jelzi, hogy a megfelelő fájlokat nem sikerült feltölteni.
 
-Alapértelmezés szerint a rendszer a naplókat egy nevű `copylog`tárolóba írja. A naplók tárolása a következő elnevezési konvencióval történik:
+Alapértelmezés szerint a rendszer a naplókat egy nevű tárolóba írja `copylog` . A naplók tárolása a következő elnevezési konvencióval történik:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -270,7 +269,7 @@ A tárolók új egyedi nevei a formátum `DataBox-GUID` , a tárolók pedig az �
 
 Íme egy példa arra a másolási naplóra, amelyben az Azure elnevezési konvenciókkal nem egyező Blobok vagy fájlok át lettek nevezve az Azure-ba történő adatfeltöltés során. Az új blob-vagy fájlneveket a rendszer a tároló relatív elérési útjának SHA256-kivonatára konvertálja, és a célhely típusa alapján feltölti az elérési útra. A cél lehet a Blobok, a Blobok vagy a Azure Files blokkolása.
 
-A `copylog` a régi és az új blob vagy fájl nevét és elérési útját adja meg az Azure-ban.
+A a `copylog` régi és az új blob vagy fájl nevét és elérési útját adja meg az Azure-ban.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -295,7 +294,7 @@ A `copylog` a régi és az új blob vagy fájl nevét és elérési útját adja
 
 Miután az adatok törlődnek a Data Box lemezekről a NIST SP 800-88 1. verziójának útmutatása szerint, a felügyeleti naplók lánca elérhető. Ezek a naplók tartalmazzák a naplókat és a megrendelési előzményeket. A rendszer a naplókat is másolja az AJ-vagy manifest-fájlokba.
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 
 A naplók az Azure-adatközponton kívüli Data Box vagy Data Box Heavy megosztásának bekapcsolásával és elérésével kapcsolatos információkat tartalmaznak. Ezek a naplók a következő helyeken találhatók:`storage-account/azuredatabox-chainofcustodylogs`
 

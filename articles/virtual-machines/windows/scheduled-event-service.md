@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099597"
 ---
 # <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
@@ -58,7 +58,7 @@ New-AzVm `
 
 Töltse le a projekt telepítési. zip fájlját a [githubról](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a mappát `SchService.ps1`tartalmazó mappába, például `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`:, és állítsa be a szolgáltatást.
+Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a mappát tartalmazó mappába `SchService.ps1` , például: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` , és állítsa be a szolgáltatást.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -78,7 +78,7 @@ Ellenőrizze a szolgáltatás állapotát, és győződjön meg róla, hogy fut.
 .\SchService.ps1 -status  
 ```
 
-Ennek vissza kell `Running`térnie.
+Ennek vissza kell térnie `Running` .
 
 A szolgáltatás mostantól 10 másodpercenként megkezdi a lekérdezést minden ütemezett eseményre, és jóváhagyja az eseményeket a karbantartás meggyorsításához.  A befagyasztás, az újraindítás, az újbóli üzembe helyezés és a megelőzik az események ütemezett eseményei által rögzített események. Kiterjesztheti a szkriptet bizonyos enyhítések elindításához az esemény jóváhagyása előtt.
 
@@ -95,7 +95,7 @@ Ha az események az ütemezett esemény szolgáltatásban vannak rögzítve, akk
 >
 > A beállításhoz a Windowst választottuk, de a Linuxon hasonló megoldást is tervezhet.
 
-Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a kapcsolók `–stop` és `–remove`a használatával.
+Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a kapcsolók és a használatával `–stop` `–remove` .
 
 ## <a name="connect-to-the-workspace"></a>Kapcsolódás a munkaterülethez
 
@@ -155,7 +155,7 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
     ![A lekérdezés mentése](./media/notifications/save-query.png)
 
 1. Válassza az **Új riasztási szabály** lehetőséget. 
-1. A **szabály létrehozása** lapon hagyja `collectorworkspace` meg az **erőforrást**.
+1. A **szabály létrehozása** lapon hagyja meg `collectorworkspace` az **erőforrást**.
 1. A **feltétel**területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése történik <login undefined> *. Ekkor megnyílik a **jel logikai beállítása** lap.
 1. A **küszöbérték**mezőben adja meg a *0* értéket, majd válassza a **kész**lehetőséget.
 1. A **műveletek**területen válassza a **műveleti csoport létrehozása**lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.

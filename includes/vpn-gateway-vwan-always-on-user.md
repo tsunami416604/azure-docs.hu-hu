@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79500196"
 ---
 1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélre, ahogyan az ebben a [pont – hely VPN-ügyfél](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) című cikkben látható. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie.
@@ -23,7 +23,7 @@ ms.locfileid: "79500196"
 
 Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-es ügyfél helyi számítógép tárolójába, konfigurálja az ügyfél-eszköz alagutat az alábbi példák használatával:
 
-1. Másolja a következő szöveget, és mentse a *usercert. ps1*néven:
+1. Másolja a következő szöveget, és mentse *usercert.ps1ként *:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse *VPNProfile. XML* néven a *usercert. ps1*fájl mappájába. Szerkessze a következő szöveget a környezetének megfelelően:
+1. Másolja a következő szöveget, és mentse *VPNProfile.xmlként* ugyanabban a mappában, mint *usercert.ps1*. Szerkessze a következő szöveget a környezetének megfelelően:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,7 +121,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    ```
 1. Futtassa a PowerShellt rendszergazdaként.
 
-1. A PowerShellben váltson arra a mappára, ahol a *usercert. ps1* és az *VPNProfile. xml fájl* található, és futtassa a következő parancsot:
+1. A PowerShellben váltson arra a mappára, ahol *usercert.ps1* és *VPNProfile.xml* található, és futtassa a következő parancsot:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest

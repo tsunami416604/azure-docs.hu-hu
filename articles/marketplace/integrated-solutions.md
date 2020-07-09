@@ -1,18 +1,18 @@
 ---
 title: Integrált megoldások – Microsoft kereskedelmi piactér
 description: Ismerje meg az előnyeit, erőforrásait és a következő lépéseket a kereskedelmi piactéren elérhető integrált megoldások nyújtásához.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657992"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119514"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>Integrált megoldások a kereskedelmi piactéren
 Az integrált megoldás a Microsoft partnerei által nyújtott legjobb technológiákat, valamint a szakértői szolgáltatások partnerei által biztosított konzultációt, üzembe helyezést és támogatást is magában foglal.
@@ -35,7 +35,7 @@ További információ: [integrált megoldás közzététele](./integrated-soluti
 
 A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi értékes partnerekkel is felfedezheti az integrált megoldásokat:
 

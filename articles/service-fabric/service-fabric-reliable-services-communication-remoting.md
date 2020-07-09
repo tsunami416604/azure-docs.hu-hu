@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
 ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75433884"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérési szolgáltatása C#-ban Reliable Services
@@ -26,11 +25,11 @@ Olyan szolgáltatások esetén, amelyek nem egy adott kommunikációs protokollh
 
 A távelérést két egyszerű lépésben állíthatja be a szolgáltatáshoz:
 
-1. Hozzon létre egy felületet a szolgáltatás megvalósításához. Ez az interfész határozza meg a szolgáltatásban távoli eljárás hívásához elérhető módszereket. A metódusoknak aszinkron metódusok tevékenység-visszaküldési módszereknek kell lenniük. A csatolónak meg `Microsoft.ServiceFabric.Services.Remoting.IService` kell valósítania annak jelzésére, hogy a szolgáltatásnak van-e távelérési felülete.
+1. Hozzon létre egy felületet a szolgáltatás megvalósításához. Ez az interfész határozza meg a szolgáltatásban távoli eljárás hívásához elérhető módszereket. A metódusoknak aszinkron metódusok tevékenység-visszaküldési módszereknek kell lenniük. A csatolónak meg kell valósítania `Microsoft.ServiceFabric.Services.Remoting.IService` annak jelzésére, hogy a szolgáltatásnak van-e távelérési felülete.
 2. Használjon távelérési figyelőt a szolgáltatásban. A távelérési figyelő egy olyan `ICommunicationListener` implementáció, amely távelérési funkciókat biztosít. A `Microsoft.ServiceFabric.Services.Remoting.Runtime` névtér tartalmazza a bővítmény metódust `CreateServiceRemotingInstanceListeners` mind az állapot nélküli, mind a állapot-nyilvántartó szolgáltatásokhoz, amelyekkel távoli figyelőt lehet létrehozni az alapértelmezett távelérési átviteli protokoll használatával.
 
 >[!NOTE]
->A `Remoting` névtér külön NuGet-csomagként érhető el `Microsoft.ServiceFabric.Services.Remoting`.
+>A `Remoting` névtér külön NuGet-csomagként érhető el `Microsoft.ServiceFabric.Services.Remoting` .
 
 A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén ""Helló világ!"alkalmazás" beolvasását teszi lehetővé.
 
@@ -71,7 +70,7 @@ class MyService : StatelessService, IMyService
 
 ## <a name="call-remote-service-methods"></a>Távoli szolgáltatási módszerek hívása
 
-Ha a távelérési verem használatával metódusokat hív meg egy szolgáltatáson, a szolgáltatás a `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` osztályon keresztül helyi proxy használatával végezhető el. A `ServiceProxy` metódus egy helyi proxyt hoz létre ugyanazzal a kezelőfelülettel, amelyet a szolgáltatás implementál. Ezzel a proxyval a metódusok távolról is meghívhatók az illesztőfelületen.
+Ha a távelérési verem használatával metódusokat hív meg egy szolgáltatáson, a szolgáltatás a osztályon keresztül helyi proxy használatával végezhető el `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` . A `ServiceProxy` metódus egy helyi proxyt hoz létre ugyanazzal a kezelőfelülettel, amelyet a szolgáltatás implementál. Ezzel a proxyval a metódusok távolról is meghívhatók az illesztőfelületen.
 
 ```csharp
 
@@ -81,11 +80,11 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-A távelérési keretrendszer a szolgáltatás által az ügyfél felé terjesztett kivételeket propagálja. Ennek eredményeképpen, amikor `ServiceProxy`a használatban van, a-ügyfél feladata a szolgáltatás által okozott kivételek kezelése.
+A távelérési keretrendszer a szolgáltatás által az ügyfél felé terjesztett kivételeket propagálja. Ennek eredményeképpen, amikor a `ServiceProxy` használatban van, a-ügyfél feladata a szolgáltatás által okozott kivételek kezelése.
 
 ## <a name="service-proxy-lifetime"></a>Szolgáltatási proxy élettartama
 
-A szolgáltatás-proxy létrehozása egy könnyű művelet, így tetszőleges számú igényt hozhat létre. A Service proxy-példányok a szükséges ideig újra felhasználhatók. Ha egy távoli eljáráshívás kivételt jelez, továbbra is használhatja ugyanazt a proxy-példányt. Minden szolgáltatási proxy tartalmaz egy kommunikációs ügyfelet, amely üzeneteket küld a vezetékes hálózaton keresztül. A távoli hívások meghívása során a rendszer belső ellenőrzéseket végez annak meghatározására, hogy a kommunikációs ügyfél érvényes-e. Az ellenőrzések eredményei alapján a kommunikációs ügyfelet szükség esetén újra létrehozza a rendszer. Ezért ha kivétel történik, nem kell újból létrehoznia `ServiceProxy`.
+A szolgáltatás-proxy létrehozása egy könnyű művelet, így tetszőleges számú igényt hozhat létre. A Service proxy-példányok a szükséges ideig újra felhasználhatók. Ha egy távoli eljáráshívás kivételt jelez, továbbra is használhatja ugyanazt a proxy-példányt. Minden szolgáltatási proxy tartalmaz egy kommunikációs ügyfelet, amely üzeneteket küld a vezetékes hálózaton keresztül. A távoli hívások meghívása során a rendszer belső ellenőrzéseket végez annak meghatározására, hogy a kommunikációs ügyfél érvényes-e. Az ellenőrzések eredményei alapján a kommunikációs ügyfelet szükség esetén újra létrehozza a rendszer. Ezért ha kivétel történik, nem kell újból létrehoznia `ServiceProxy` .
 
 ### <a name="service-proxy-factory-lifetime"></a>Service proxy gyári élettartama
 
@@ -117,7 +116,7 @@ A v2-verem engedélyezéséhez a következő megközelítések érhetők el.
 
 Ezek a lépések a sablon kódját úgy változtatják meg, hogy a v2-veremet egy Assembly attribútum használatával használják.
 
-1. Módosítsa a végponti `"ServiceEndpoint"` erőforrást `"ServiceEndpointV2"` a szolgáltatás jegyzékfájljában.
+1. Módosítsa a végponti erőforrást a `"ServiceEndpoint"` `"ServiceEndpointV2"` szolgáltatás jegyzékfájljában.
 
    ```xml
    <Resources>
@@ -151,7 +150,7 @@ A Assembly attribútum használatának alternatívájaként a v2-verem is enged�
 
 Ezek a lépések megváltoztatják a sablon kódját, hogy a v2-veremet explicit v2 osztályok használatával használják.
 
-1. Módosítsa a végponti `"ServiceEndpoint"` erőforrást `"ServiceEndpointV2"` a szolgáltatás jegyzékfájljában.
+1. Módosítsa a végponti erőforrást a `"ServiceEndpoint"` `"ServiceEndpointV2"` szolgáltatás jegyzékfájljában.
 
    ```xml
    <Resources>
@@ -177,7 +176,7 @@ Ezek a lépések megváltoztatják a sablon kódját, hogy a v2-veremet explicit
     }
    ```
 
-3. Ügyfelek [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) létrehozásához használja `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` a FabricTransportServiceRemotingClientFactory a névtérből.
+3. Ügyfelek létrehozásához használja a [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` névtérből.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -313,7 +312,7 @@ Kövesse az alábbi lépéseket:
 Ha v1-ről v2-re szeretne frissíteni (kompatibilis illesztőfelület, V2_1), kétlépéses frissítésre van szükség. Kövesse a jelen szakasz lépéseit.
 
 > [!NOTE]
-> Ha v1-ről v2-re frissít, `Remoting` győződjön meg arról, hogy a névtér a v2-re frissült. Például: "Microsoft. ServiceFabric. Services. távoli. v2. FabricTransport. Client"
+> Ha v1-ről v2-re frissít, győződjön meg arról, hogy a névtér a v2-re `Remoting` frissült. Például: "Microsoft. ServiceFabric. Services. távoli. v2. FabricTransport. Client"
 >
 >
 
@@ -359,7 +358,7 @@ Ez a lépés gondoskodik arról, hogy a szolgáltatás csak a v2-figyelőn legye
 A becsomagolt távelérésű üzenetek esetében egyetlen burkolt objektumot hozunk létre, amely az összes paramétert egy mezőként jeleníti meg.
 Kövesse az alábbi lépéseket:
 
-1. Implementálja `IServiceRemotingMessageSerializationProvider` a felületet az egyéni szerializálás megvalósításának biztosításához.
+1. Implementálja a `IServiceRemotingMessageSerializationProvider` felületet az egyéni szerializálás megvalósításának biztosításához.
     Ez a kódrészlet azt mutatja be, hogy a megvalósítás milyen módon fog kinézni.
 
       ```csharp
@@ -521,7 +520,7 @@ Kövesse az alábbi lépéseket:
     }
     ```
 
-2. Felülbírálja az alapértelmezett szerializálási szolgáltatót `JsonSerializationProvider` a távelérés-figyelőhöz.
+2. Felülbírálja az alapértelmezett szerializálási szolgáltatót a `JsonSerializationProvider` távelérés-figyelőhöz.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -537,7 +536,7 @@ Kövesse az alábbi lépéseket:
    }
    ```
 
-3. Felülbírálja az alapértelmezett szerializálási szolgáltatót `JsonSerializationProvider` a távelérési ügyfél-előállítóval.
+3. Felülbírálja az alapértelmezett szerializálási szolgáltatót a `JsonSerializationProvider` távelérési ügyfél-előállítóval.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>

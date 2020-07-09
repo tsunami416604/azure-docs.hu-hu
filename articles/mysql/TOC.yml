@@ -87,7 +87,7 @@
           href: concepts-pricing-tiers.md
         - name: Előre fizetés fenntartott kapacitásért
           href: concept-reserved-pricing.md
-        - name: Korlátok
+        - name: Korlátozások
           href: concepts-limits.md
     - name: Adathozzáférés és -biztonság
       items:
@@ -109,6 +109,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD-hitelesítés
           href: concepts-azure-ad-authentication.md
+        - name: Infrastruktúra kettős titkosítása
+          href: concepts-infrastructure-double-encryption.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Az üzletmenet folytonossága
@@ -132,6 +134,8 @@
           href: concepts-query-performance-insight.md
         - name: Teljesítménnyel kapcsolatos javaslatok
           href: concepts-performance-recommendations.md
+        - name: Kiszolgálóparaméterek
+          href: concepts-server-parameters.md
     - name: Fejlesztés
       items:
         - name: Az illesztőprogramok és eszközök kompatibilitása
@@ -190,6 +194,8 @@
           href: howto-connection-string.md
         - name: Az SSL konfigurálása
           href: howto-configure-ssl.md
+        - name: TLS konfigurálása
+          href: howto-tls-configurations.md
         - name: Webalkalmazások
           href: howto-connect-webapp.md
         - name: Kapcsolódás átirányítással
@@ -272,6 +278,10 @@
           href: howto-data-encryption-cli.md
         - name: Adattitkosítás ellenőrzése
           href: howto-data-encryption-validation.md
+    - name: Infrastruktúra kettős titkosítása
+      items:
+        - name: Infrastruktúra kettős titkosításának konfigurálása
+          href: howto-double-encryption.md
     - name: Azure AD-integráció
       items:
         - name: Az Azure AD-integráció konfigurálása
@@ -290,6 +300,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: Áthelyezés régiók között
+      items:
+        - name: Azure Portal
+          href: howto-move-regions-portal.md
 - name: Referencia
   items:
     - name: Azure CLI

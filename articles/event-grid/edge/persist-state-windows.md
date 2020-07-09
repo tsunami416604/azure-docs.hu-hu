@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086625"
 ---
 # <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
@@ -37,7 +36,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Például:
+    Példa:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -48,7 +47,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Például:
+    Példa:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -73,13 +72,13 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     1. Indítsa el a fájlkezelőt.
     1. Navigáljon a **csatlakoztatási pont**által mutatott mappára.
     1. Kattintson a jobb gombbal, majd válassza a **Tulajdonságok**lehetőséget.
-    1. Válassza a **Security** (Biztonság) lehetőséget.
+    1. Válassza a **Biztonság** elemet.
     1. A * csoport vagy felhasználó neve területen válassza a **Szerkesztés**lehetőséget.
-    1. Válassza a **Hozzáadás**lehetőséget `Users`, írja **be a Névellenőrzés lehetőséget,** majd kattintson **az OK gombra**.
+    1. Válassza a **Hozzáadás**lehetőséget, írja be `Users` a Névellenőrzés lehetőséget, majd kattintson **az OK gombra**. **Check Names**
     1. A *Felhasználók engedélyei*területen válassza a **módosítás**lehetőséget, majd kattintson **az OK gombra**.
 1. **Kötések** használata a kötet csatlakoztatásához és Event Grid modul újbóli üzembe helyezéséhez Azure Portal
 
-   Például:
+   Példa:
 
     ```json
         {
@@ -112,10 +111,10 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     ```
 
    >[!IMPORTANT]
-   >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **:\\C\\: app metadataDb**.
+   >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C: \\ app \\ metadataDb**.
 
 
-    Például:
+    Példa:
 
     ```json
     {
@@ -158,7 +157,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
    mkdir <your-directory-name-here>
    ```
 
-   Például:
+   Példa:
 
    ```sh
    mkdir C:\myhostdir
@@ -176,9 +175,9 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
     ```
 
     >[!IMPORTANT]
-    >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C\\:\\app metadataDb**.
+    >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C: \\ app \\ metadataDb**.
 
-    Például:
+    Példa:
 
     ```json
     {
@@ -220,7 +219,7 @@ Fontos tudnivalók a megőrzött eseményekről:
 * Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
 * A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum az összes üzenetkezelő rendszerhez alkalmazkodik, de csak nagy léptékben érezhető lesz.
 
-Ha engedélyezni szeretné az események megőrzését egy esemény- `persistencePolicy` előfizetésben, állítsa a `true`következőre:
+Ha engedélyezni szeretné az események megőrzését egy esemény-előfizetésben, állítsa a következőre `persistencePolicy` `true` :
 
  ```json
         {

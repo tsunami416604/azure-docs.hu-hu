@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60947802"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134951"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
 
@@ -30,7 +30,7 @@ Az első forgatókönyv esetében vegye fontolóra az **a vállalatot** , amely 
 Az **A vállalat** nyilvános végpontokkal rendelkező alkalmazásokat futtat, és szeretné zökkenőmentesen átirányítani az Azure-ba irányuló forgalmat vészhelyzeti eseményre. A [Kiemelt](../traffic-manager/traffic-manager-configure-priority-routing-method.md) forgalom – az Azure Traffic Manager-útválasztási módszer lehetővé teszi a vállalat számára a feladatátvételi minta egyszerű megvalósítását.
 
 A telepítés a következő:
-- **Az a vállalat** létrehoz egy [Traffic Manager profilt](../traffic-manager/traffic-manager-create-profile.md).
+- **Az a vállalat** létrehoz egy [Traffic Manager profilt](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - A **Kiemelt** útválasztási módszer felhasználásával az **a vállalat** két végpontot hoz létre – **elsődleges** a helyszíni és a **feladatátvételhez** az Azure-hoz. Az **elsődleges** hozzárendelés 1. prioritású, a **feladatátvétel** pedig 2. prioritású.
 - Mivel az **elsődleges** végpont az Azure-on kívül van tárolva, a végpont [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) végpontként jön létre.
 - Azure Site Recovery az Azure-webhely nem rendelkezik a feladatátvétel előtt futó virtuális gépekkel vagy alkalmazásokkal. Így a **feladatátvételi** végpont is **külső** végpontként jön létre.
@@ -65,7 +65,7 @@ Ebben a példában tekintse meg a **C vállalatot** , amely az Azure-t futtató 
 A **C vállalat** nyilvános végpontokkal rendelkező alkalmazásokat futtat, és szeretné zökkenőmentesen átirányítani a forgalmat egy másik Azure-régióba vészhelyzeti esemény esetén. A [Kiemelt](../traffic-manager/traffic-manager-configure-priority-routing-method.md) forgalom – az útválasztási módszer lehetővé teszi a **C vállalat** számára a feladatátvételi minta egyszerű megvalósítását.
 
 A telepítés a következő:
-- A **C vállalat** létrehoz egy [Traffic Manager profilt](../traffic-manager/traffic-manager-create-profile.md).
+- A **C vállalat** létrehoz egy [Traffic Manager profilt](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - A **Kiemelt** útválasztási módszer használatával a **C vállalat** két végpontot hoz létre – **elsődleges** a forrás régió (Azure Kelet-Ázsia) és a **feladatátvétel** a helyreállítási régióban (az Azure Délkelet-Ázsiában). Az **elsődleges** hozzárendelés 1. prioritású, a **feladatátvétel** pedig 2. prioritású.
 - Mivel az **elsődleges** végpont az Azure-ban üzemel, a végpont lehet [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) -végpont.
 - A Azure Site Recovery használatával a helyreállítási Azure-webhely nem rendelkezik a feladatátvétel előtt futó virtuális gépekkel vagy alkalmazásokkal. Így a **feladatátvételi** végpont [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) végpontként is létrehozható.
@@ -115,7 +115,7 @@ Emellett optimalizálhatja a Traffic Manager profilhoz tartozó DNS-élettartam 
 
 Az ügyfél által tapasztalt TTL nem növekszik, ha a DNS-feloldók száma az ügyfél és a mérvadó DNS-kiszolgáló között növekszik. A DNS-feloldók "Count Down" az ÉLETTARTAMot, és csak a rekord gyorsítótárazása óta eltelt időt tükröző TTL-értéket továbbítanak. Ez biztosítja, hogy a DNS-rekord a TTL után frissül az ügyfélen, függetlenül attól, hogy hány DNS-feloldó van a láncban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Traffic Manager [útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).
 - További információ a [beágyazott Traffic Manager-profilokról](../traffic-manager/traffic-manager-nested-profiles.md).
 - További információ a [végpontok figyeléséről](../traffic-manager/traffic-manager-monitoring.md).

@@ -6,17 +6,16 @@ ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836566"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
 A Azure Automation Process Automation szolgáltatás számos runbookok támogat, az alábbi táblázatban meghatározottak szerint. A folyamat-automatizálási környezettel kapcsolatos további tudnivalókért lásd: [Runbook végrehajtása Azure Automationban](automation-runbook-execution.md).
 
-| Típus | Leírás |
+| Típus | Description |
 |:--- |:--- |
 | [Grafikus](#graphical-runbooks)|A Windows PowerShellen alapuló grafikus runbook, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkeszthető. |
 | [Grafikus PowerShell-munkafolyamat](#graphical-runbooks)|A grafikus runbook a Windows PowerShell-munkafolyamaton alapul, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkeszthető. |

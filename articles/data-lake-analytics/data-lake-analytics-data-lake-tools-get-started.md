@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5843ca59c4542fcc990a6b5ac7e89d175efdfb04
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107053"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 
@@ -55,11 +55,11 @@ Ehhez az oktatóanyaghoz feltétel, hogy telepítve legyen a Data Lake Tools for
 
 1. Nyissa meg a Visual Studiót.
 
-1. Nyissa meg a **Server Explorert** a**Server Explorer** **megtekintése** > lehetőség kiválasztásával.
+1. Nyissa meg a **Server Explorert** a **View**  >  **Server Explorer**megtekintése lehetőség kiválasztásával.
 
 1. Kattintson a jobb gombbal az **Azure**elemre, majd válassza **a kapcsolódás Microsoft Azure előfizetéshez**lehetőséget. **Jelentkezzen be a fiókjába**, és kövesse az utasításokat.
 
-1. A **Server Explorerben**válassza az **Azure** > **Data Lake Analytics**elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
+1. A **Server Explorerben**válassza az **Azure**  >  **Data Lake Analytics**elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
 
 ## <a name="write-your-first-u-sql-script"></a>Az első U-SQL parancsfájl megírása
 
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat küldése
 
-1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 
 1. Válassza ki a **U-SQL-projekt** típusát, majd kattintson a **tovább**gombra. Az **új projekt konfigurálása**lapon válassza a **Létrehozás**lehetőséget.
 
@@ -112,7 +112,7 @@ A legutóbbi feladatok állapotának megtekintéséhez és a képernyő frissít
 
 ## <a name="check-job-status"></a>Feladat állapotának ellenőrzése
 
-1. A **Server Explorerben**válassza az **Azure** > **Data Lake Analytics**elemet.
+1. A **Server Explorerben**válassza az **Azure**  >  **Data Lake Analytics**elemet.
 
 1. Bontsa ki a Data Lake Analytics-fiók nevét.
 
@@ -128,7 +128,7 @@ A legutóbbi feladatok állapotának megtekintéséhez és a képernyő frissít
 
 1. A **Feladatkimenetek** lapon jelölje be a `"/data.csv"` fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [U-SQL-szkript futtatása a munkaállomáson teszteléshez és hibakereséshez](data-lake-analytics-data-lake-tools-local-run.md)
 * [C#-kód hibaelhárítása U-SQL-feladatokban az Azure Data Lake Tools for Visual Studio Code használatával](data-lake-tools-for-vscode-local-run-and-debug.md)

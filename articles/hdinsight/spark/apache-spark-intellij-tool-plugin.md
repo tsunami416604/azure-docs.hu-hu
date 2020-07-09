@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a3884fdfbbc215c305053d8615d690880f4026ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314148"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085344"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Apache Spark alkalmazások létrehozása a HDInsight-fürthöz Azure Toolkit for IntelliJ használatával
 
@@ -47,7 +47,7 @@ A Scala beépülő modul telepítésének lépései:
 
 1. Nyissa meg az IntelliJ IDEA-t.
 
-2. Az üdvözlőképernyőn kattintson a**plugins** **konfigurálása** > elemre a **plugins** ablak megnyitásához.
+2. Az üdvözlőképernyőn kattintson a plugins **konfigurálása**elemre  >  **Plugins** a **plugins** ablak megnyitásához.
 
     ![IntelliJ IDEA – a Scala beépülő modul engedélyezése](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
@@ -71,24 +71,24 @@ A Scala beépülő modul telepítésének lépései:
 
      ![IntelliJ IDEA új projekt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-5. Kattintson a **Tovább** gombra.
+5. Válassza a **Tovább** lehetőséget.
 
 6. Az **új projekt** ablakban adja meg a következő információkat:  
 
     |  Tulajdonság   | Leírás   |  
     | ----- | ----- |  
-    |Projektnév| Adjon meg egy nevet.  Ez a cikk `myApp`a következőt használja:.|  
-    |Projekt&nbsp;helye| Adja meg a projekt mentésének helyét.|
+    |Projektnév| Adjon meg egy nevet.  Ez a cikk a következőt használja: `myApp` .|  
+    |Projekt &nbsp; helye| Adja meg a projekt mentésének helyét.|
     |Projekt SDK| Ez a mező lehet üres az első ÖTLETE alapján.  Válassza az **új...** lehetőséget, és navigáljon a JDK-hez.|
     |Spark-verzió|A létrehozás varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a **Spark 2.3.0 (Scala 2.11.8)** használja.|
 
     ![Az Apache Spark SDK kiválasztása](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
-7. Válassza a **Finish** (Befejezés) elemet.  A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** gombot.  A projekt elérhetővé válása néhány percet igénybe vehet.
 
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő lépéseket:
 
-   a. A menüsávban navigáljon a **fájl** > **projekt szerkezete...** elemre.
+   a. A menüsávban navigáljon a **fájl**  >  **projekt szerkezete...** elemre.
 
    b. A **projekt szerkezete** **ablakban válassza az**összetevők elemet.  
 
@@ -98,9 +98,9 @@ A Scala beépülő modul telepítésének lépései:
 
 9. Adja hozzá az alkalmazás forráskódját a következő lépések végrehajtásával:
 
-    a. A projekt területen navigáljon a **SajátPr** > **src** > **Main** > **Scala**webhelyre.  
+    a. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala**webhelyre.  
 
-    b. Kattintson a jobb gombbal a **Scala**elemre, majd navigáljon az **új** > **Scala osztályhoz**.
+    b. Kattintson a jobb gombbal a **Scala**elemre, majd navigáljon az **új**  >  **Scala osztályhoz**.
 
    ![A Scala-osztály projektből való létrehozásának parancsai](./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
@@ -130,7 +130,7 @@ A Scala beépülő modul telepítésének lépései:
     }
     ```
 
-    A kód beolvassa az adatokat a HVAC. csv fájlból (az összes HDInsight Spark-fürtön elérhető), lekéri azokat a sorokat, amelyek csak egy számjegytel rendelkeznek a CSV-fájl hetedik `/HVACOut` oszlopában, és a kimenetet a fürt alapértelmezett tárolójában írja.
+    A kód beolvassa az adatokat a HVAC.csvból (az összes HDInsight Spark-fürtön elérhető), lekérdezi azokat a sorokat, amelyek csak egy számjegytel rendelkeznek a CSV-fájl hetedik oszlopában, és a kimenetet a `/HVACOut` fürthöz tartozó alapértelmezett tárolóba írja.
 
 ## <a name="connect-to-your-hdinsight-cluster"></a>Kapcsolódás a HDInsight-fürthöz
 
@@ -138,7 +138,7 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésbe
 
-1. A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
+1. A menüsávban navigáljon a **Megtekintés**  >  **eszközre a Windows**  >  **Azure Explorerben**.
 
    ![A IntelliJ ÖTLETE az Azure Explorert mutatja be](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
 
@@ -176,9 +176,9 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 ### <a name="link-a-cluster"></a>Fürt csatolása
 
-Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsolhat össze. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév használatával is kapcsolódhat, például: `user1@contoso.com`. Emellett a Livy Service-fürtöt is összekapcsolhatja.
+Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsolhat össze. Hasonlóképpen, a tartományhoz csatlakoztatott HDInsight-fürtökhöz a tartomány és a Felhasználónév használatával is kapcsolódhat, például: `user1@contoso.com` . Emellett a Livy Service-fürtöt is összekapcsolhatja.
 
-1. A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
+1. A menüsávban navigáljon a **Megtekintés**  >  **eszközre a Windows**  >  **Azure Explorerben**.
 
 1. Az Azure Explorerben kattintson a jobb gombbal a **HDInsight** csomópontra, majd válassza a **fürt csatolása**lehetőséget.
 
@@ -224,7 +224,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
 
 A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
 
-1. A projekt területen navigáljon a **SajátPr** > **src** > **Main** > **Scala** > -**SajátPr**.  Kattintson a jobb gombbal a **SajátPr**elemre, majd válassza a **Spark-alkalmazás beküldése** lehetőséget (ez valószínűleg a lista alján található).
+1. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala**-  >  **SajátPr**.  Kattintson a jobb gombbal a **SajátPr**elemre, majd válassza a **Spark-alkalmazás beküldése** lehetőséget (ez valószínűleg a lista alján található).
 
       ![A Spark-alkalmazás beküldése a HDInsight parancsba](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
@@ -258,11 +258,11 @@ Azt is javasoljuk, hogy a Spark-alkalmazást a fürtön küldje el. Ehhez állí
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>HDInsight Spark-fürtök elérése és kezelése Azure Toolkit for IntelliJ használatával
 
-A Azure Toolkit for IntelliJ használatával különböző műveleteket végezhet.  A műveletek többsége az **Azure Explorerben**indul el.  A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
+A Azure Toolkit for IntelliJ használatával különböző műveleteket végezhet.  A műveletek többsége az **Azure Explorerben**indul el.  A menüsávban navigáljon a **Megtekintés**  >  **eszközre a Windows**  >  **Azure Explorerben**.
 
 ### <a name="access-the-job-view"></a>A feladatok nézet elérése
 
-1. Az Azure Explorerben navigáljon a fürt> > **feladatok** **HDInsight** > \<.
+1. Az Azure Explorerben navigáljon a **HDInsight**-  >  \<Your Cluster>  >  **feladatok**elemre.
 
     ![IntelliJ az Azure Explorer-feladatok nézet csomópontja](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
 
@@ -285,7 +285,7 @@ A Azure Toolkit for IntelliJ használatával különböző műveleteket végezhe
 1. Az Azure Explorerben bontsa ki a **HDInsight**csomópontot, kattintson a jobb gombbal a Spark-fürt nevére, majd válassza a **Spark-előzmények megnyitása felhasználói felület**lehetőséget.  
 2. Amikor a rendszer kéri, adja meg a fürt rendszergazdai hitelesítő adatait, amelyet a fürt beállításakor adott meg.
 
-3. A Spark History Server irányítópultján használhatja az alkalmazás nevét, hogy megkeresse az éppen futó alkalmazást. Az előző kódban a paranccsal `val conf = new SparkConf().setAppName("myApp")`állíthatja be az alkalmazás nevét. A Spark-alkalmazás neve **SajátPr**.
+3. A Spark History Server irányítópultján használhatja az alkalmazás nevét, hogy megkeresse az éppen futó alkalmazást. Az előző kódban a paranccsal állíthatja be az alkalmazás nevét `val conf = new SparkConf().setAppName("myApp")` . A Spark-alkalmazás neve **SajátPr**.
 
 ### <a name="start-the-ambari-portal"></a>A Ambari-portál elindítása
 
@@ -307,11 +307,11 @@ Futtathatja a Spark helyi konzolt (Scala), vagy futtathatja a Spark Livy interak
 
 ### <a name="spark-local-consolescala"></a>Spark helyi konzol (Scala)
 
-Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
+Győződjön meg arról, hogy teljesítette a WINUTILS.EXE előfeltételt.
 
-1. A menüsávban navigáljon **Run** > a**konfigurációk szerkesztése..**. lehetőségre.
+1. A menüsávban navigáljon **a**  >  **konfigurációk szerkesztése..**. lehetőségre.
 
-2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight** > **[Spark on HDInsight] SajátPr**.
+2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight**  >  **[Spark on HDInsight] SajátPr**.
 
 3. A fő ablakban válassza a **`Locally Run`** fület.
 
@@ -321,13 +321,13 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
     |----|----|
     |Job Main osztály|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont (**..**.) lehetőség kiválasztásával módosíthatja.  és válasszon másik osztályt.|
     |Környezeti változók|Győződjön meg arról, hogy a HADOOP_HOME értéke helyes.|
-    |WINUTILS. exe helye|Győződjön meg arról, hogy az elérési út helyes.|
+    |WINUTILS.exe helye|Győződjön meg arról, hogy az elérési út helyes.|
 
     ![Helyi konzol beállítása – konfiguráció](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
 
-5. A projekt területen navigáljon a **SajátPr** > **src** > **Main** > **Scala** > -**SajátPr**.  
+5. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala**-  >  **SajátPr**.  
 
-6. A menüsávban navigáljon az **eszközök** > **Spark-konzol** > **Futtatás Spark helyi konzol (Scala)** elemre.
+6. A menüsávban navigáljon az **eszközök**  >  **Spark-konzol**  >  **Futtatás Spark helyi konzol (Scala)** elemre.
 
 7. Ezután két párbeszédpanel jelenik meg, amely megkérdezi, hogy szeretné-e automatikusan kijavítani a függőségeket. Ha igen, válassza az **Automatikus javítás**lehetőséget.
 
@@ -335,15 +335,15 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
     ![IntelliJ ötlet Spark automatikus javítás Dialog2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
-8. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja `sc.appName`be a következőt:, majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
+8. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja be a következőt: `sc.appName` , majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
 
     ![A IntelliJ IDEA helyi konzoljának eredménye](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy interaktív munkamenet-konzol (Scala)
 
-1. A menüsávban navigáljon **Run** > a**konfigurációk szerkesztése..**. lehetőségre.
+1. A menüsávban navigáljon **a**  >  **konfigurációk szerkesztése..**. lehetőségre.
 
-2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight** > **[Spark on HDInsight] SajátPr**.
+2. A **Futtatás/hibakeresés konfigurációk** ablak bal oldali ablaktábláján navigáljon **Apache Spark a HDInsight**  >  **[Spark on HDInsight] SajátPr**.
 
 3. A fő ablakban válassza a **`Remotely Run in Cluster`** fület.
 
@@ -356,11 +356,11 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
     ![Interaktív konzol beállított konfigurációja](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
 
-5. A projekt területen navigáljon a **SajátPr** > **src** > **Main** > **Scala** > -**SajátPr**.  
+5. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala**-  >  **SajátPr**.  
 
-6. A menüsávban navigáljon az **eszközök** > **Spark-konzolon** > a**Spark Livy interaktív munkamenet-konzolja (Scala)** elemre.
+6. A menüsávban navigáljon az **eszközök**  >  **Spark-konzolon**a  >  **Spark Livy interaktív munkamenet-konzolja (Scala)** elemre.
 
-7. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja `sc.appName`be a következőt:, majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
+7. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja be a következőt: `sc.appName` , majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
 
     ![A IntelliJ IDEA interaktív konzoljának eredménye](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
@@ -450,19 +450,19 @@ A IntelliJ IDEA-ben létrehozott meglévő Spark Scala-alkalmazások a Azure Too
 
 2. A gyökérszintű szinten a **modul** olyan eleme, amely az alábbi szöveghez hasonló:
 
-        ```
-        <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-        ```
+    ```xml
+    <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+    ```
 
-   Szerkessze a hozzáadandó `UniqueKey="HDInsightTool"` elemet úgy, hogy a **modul** eleme a következő szövegre hasonlítson:
+   Szerkessze a hozzáadandó elemet `UniqueKey="HDInsightTool"` úgy, hogy a **modul** eleme a következő szövegre hasonlítson:
 
-        ```
-        <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
-        ```
+    ```xml
+    <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
+    ```
 
 3. Mentse a módosításokat. Az alkalmazásnak mostantól kompatibilisnek kell lennie Azure Toolkit for IntelliJsal. Teszteléshez kattintson a jobb gombbal a projekt nevére a projektben. Az előugró menüben már elérhető a **Spark-alkalmazás küldése a HDInsight**.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 

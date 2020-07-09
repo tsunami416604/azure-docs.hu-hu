@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233482"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
@@ -79,9 +79,9 @@ A következőképpen adhat hozzá felhasználókat a rendszergazdák csoporthoz:
 
 Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmagokat](https://docs.microsoft.com/powershell/azure/overview)is használhat. A következőképpen jelentkezhet be rendszergazdaként:
 
-1. Jelentkezzen `Connect-AzAccount` be a parancsmag használatával.
-2. Állítsa a kontextust arra az előfizetésre, amely a `Set-AzContext -SubscriptionID <subscriptionGUID>`szolgáltatást használja.
-3. Egyszeri bejelentkezési URL-cím beszerzése a `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`használatával.
+1. `Connect-AzAccount`Jelentkezzen be a parancsmag használatával.
+2. Állítsa a kontextust arra az előfizetésre, amely a szolgáltatást használja `Set-AzContext -SubscriptionID <subscriptionGUID>` .
+3. Egyszeri bejelentkezési URL-cím beszerzése a használatával `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` .
 4. A felügyeleti portál eléréséhez használja az URL-címet.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért nem érhető el a szabályzat a házirend-szerkesztőben?
@@ -109,7 +109,7 @@ Igen. Tekintse meg az [Azure API Management Service](https://aka.ms/apimtemplate
 Igen. Ez a PowerShell használatával vagy az API-hoz való közvetlen beküldéssel végezhető el. Ezzel a beállítással letilthatja a tanúsítványlánc érvényesítését, és lehetővé teszi önaláírt vagy önaláírt tanúsítványok használatát a API Managementról a háttér-szolgáltatásokhoz való kommunikáció során.
 
 #### <a name="powershell-method"></a>PowerShell-módszer ####
-Használja az [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérrendszer) vagy [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) a (meglévő háttérrendszer) PowerShell-parancsmagokat, és állítsa `-SkipCertificateChainValidation` a paramétert a következőre: `True`.
+Használja az [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérrendszer) vagy a [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (meglévő háttérrendszer) PowerShell-parancsmagokat, és állítsa a paramétert a következőre: `-SkipCertificateChainValidation` `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

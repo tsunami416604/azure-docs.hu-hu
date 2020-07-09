@@ -10,14 +10,14 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 23accddcc468eb841eb7c217ec17a893db214cb6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409471"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083066"
 ---
-# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
+# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Adatátalakítás az Azure Virtual Networkban a kaptár tevékenységgel Azure Data Factory a Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -83,7 +83,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
  
    Az Azure-beli adatgyár nevének **globálisan egyedinek**kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+    *A "MyAzureSsisDataFactory" nevű adatgyár nem érhető el*
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoport**esetében hajtsa végre az alábbi lépések egyikét:
      
@@ -94,7 +94,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás**gombra.
+7. Kattintson a **Létrehozás** lehetőségre.
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -228,7 +228,7 @@ Vegye figyelembe a következő szempontokat:
         ![Szkript beállításai](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. A **Script lapon** bontsa ki az **Advanced** (Speciális) szakaszt. 
     6. Kattintson az **Auto-fill from script** (Automatikus kitöltés szkript alapján) elemre a **Parameters** (Paraméterek) menüpontban. 
-    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Például: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Példa: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Szkript argumentumai](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Ahhoz, hogy közzétehesse az összetevőket a Data Factoryn, kattintson a **Publish** (Közzététel) gombra.
@@ -260,7 +260,7 @@ Vegye figyelembe a következő szempontokat:
 
     ![Kimeneti fájl](./media/tutorial-transform-data-using-hive-in-vnet-portal/output-file.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

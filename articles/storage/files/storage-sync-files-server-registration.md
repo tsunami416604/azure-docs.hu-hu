@@ -3,16 +3,16 @@ title: Regisztrált kiszolgálók kezelése a Azure File Syncrel | Microsoft Doc
 description: Megtudhatja, hogyan regisztrálhat és törölheti a Windows Servert egy Azure File Sync Storage Sync szolgáltatással.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509506"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Regisztrált kiszolgálók kezelése Azure File Sync
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -76,10 +76,7 @@ Ahhoz, hogy egy kiszolgáló egy Azure File Sync *szinkronizálási csoportban* 
 > Ha a kiszolgáló egy feladatátvevő fürt tagja, akkor a Azure File Sync ügynököt a fürt minden csomópontjára telepíteni kell.
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>A kiszolgáló regisztrálása a kiszolgáló regisztrációjának felhasználói felületén
-> [!Important]  
-> A Cloud Solution Provider (CSP) előfizetések nem használhatják a kiszolgáló regisztrációjának felhasználói felületét. Ehelyett használja a PowerShellt (ez a szakasz alatt).
-
-1. Ha a kiszolgáló regisztrációjának felhasználói felülete nem indult el azonnal a Azure File Sync ügynök telepítésének befejezése után, akkor manuálisan is elindítható `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`a végrehajtásával.
+1. Ha a kiszolgáló regisztrációjának felhasználói felülete nem indult el azonnal a Azure File Sync ügynök telepítésének befejezése után, akkor manuálisan is elindítható a végrehajtásával `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` .
 2. Az Azure-előfizetés eléréséhez kattintson a *Bejelentkezés* elemre. 
 
     ![A kiszolgáló regisztrációjának felhasználói felületének megnyitása párbeszédpanel](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -96,7 +93,7 @@ Ahhoz, hogy egy kiszolgáló egy Azure File Sync *szinkronizálási csoportban* 
 > Ha a kiszolgáló egy feladatátvevő fürt tagja, akkor minden kiszolgálónak futtatnia kell a kiszolgáló regisztrációját. Amikor az Azure Portalon tekinti meg a regisztrált kiszolgálókat, Azure File Sync automatikusan felismeri az egyes csomópontokat ugyanazon feladatátvevő fürt tagjaként, és megfelelően csoportosítja őket.
 
 #### <a name="register-the-server-with-powershell"></a>A kiszolgáló regisztrálása a PowerShell-lel
-A kiszolgáló regisztrációját a PowerShell használatával is végrehajthatja. Ez az egyetlen támogatott módszer a felhőalapú megoldás-szolgáltatói (CSP) előfizetések kiszolgálói regisztrálásához:
+A kiszolgáló regisztrációját a PowerShell használatával is végrehajthatja. 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -158,10 +155,10 @@ Mivel Azure File Sync csak ritkán fut az adatközpontban, érdemes korlátozni 
 > A határértékek túl alacsonyra állítása hatással van Azure File Sync szinkronizálás és a visszahívás teljesítményére.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Azure File Sync hálózati korlátok megadása
-A Azure File Sync hálózati kihasználtságát a `StorageSyncNetworkLimit` parancsmagok használatával szabályozhatja.
+A Azure File Sync hálózati kihasználtságát a parancsmagok használatával szabályozhatja `StorageSyncNetworkLimit` .
 
 > [!Note]  
-> A hálózati korlátok nem érvényesek egy többrétegű fájl elérésekor vagy a Meghívási StorageSyncFileRecall parancsmag használatakor.
+> A hálózati korlátok nem érvényesek a többplatformos fájl elérésekor.
 
 Létrehozhat például egy új szabályozási korlátot annak biztosításához, hogy a Azure File Sync ne használjon 10 Mbps-nál több, mint 9 – 5 PM-t (17:00H) a munkahét során: 
 
@@ -176,7 +173,7 @@ A korlátot a következő parancsmaggal érheti el:
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-A hálózati korlátok eltávolításához használja `Remove-StorageSyncNetworkLimit`a következőt:. A következő parancs például eltávolítja az összes hálózati korlátot:
+A hálózati korlátok eltávolításához használja a következőt: `Remove-StorageSyncNetworkLimit` . A következő parancs például eltávolítja az összes hálózati korlátot:
 
 ```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported

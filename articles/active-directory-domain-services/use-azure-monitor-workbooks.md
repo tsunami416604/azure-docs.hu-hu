@@ -9,14 +9,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733398"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure AD Domain Services Azure Monitor munkafüzetek használatával
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
 A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány állapotának megismerése érdekében engedélyezheti a biztonsági naplózási eseményeket. Ezek a biztonsági naplózási események később áttekinthetők a szövegeket, elemzési lekérdezéseket és paramétereket kombináló Azure Monitor munkafüzetek gazdag interaktív jelentésekben való használatával. Az Azure AD DS tartalmaz olyan munkafüzet-sablonokat a biztonsági áttekintéshez és a fiók tevékenységekhez, amelyek lehetővé teszik a naplózási események bevezetését és a környezet kezelését.
 
@@ -31,7 +30,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services felügyelt tartomány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 * A biztonsági naplózási események engedélyezve vannak a Azure Active Directory Domain Services felügyelt tartományon, amelyek az adatLog Analytics-munkaterületre továbbítanak.
     * Ha szükséges, [engedélyezze a Azure Active Directory Domain Services biztonsági naplózását][enable-security-audits].
 

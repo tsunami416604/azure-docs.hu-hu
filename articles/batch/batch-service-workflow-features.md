@@ -3,18 +3,18 @@ title: A Batch szolgáltatás munkafolyamata és erőforrásai
 description: Ismerje meg a Batch szolgáltatás funkcióit és a fejlesztési szempontból magas szintű munkafolyamatát.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835920"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965212"
 ---
 # <a name="batch-service-workflow-and-resources"></a>A Batch szolgáltatás munkafolyamata és erőforrásai
 
 A Azure Batch szolgáltatás alapvető összetevőinek áttekintésében megbeszéljük azt a magas szintű munkafolyamatot, amelyet a Batch-fejlesztők nagy léptékű párhuzamos számítási megoldások létrehozásához használhatnak, valamint a használt elsődleges szolgáltatási erőforrásokat is.
 
-Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, amely közvetlen [REST API](https://docs.microsoft.com/rest/api/batchservice/) hívásokat hajt végre, vagy ha a [Batch SDK](batch-apis-tools.md#batch-service-apis)-k valamelyikét használja, az itt ismertetett erőforrások és szolgáltatások nagy részét fogja használni.
+Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, amely közvetlen [REST API](/rest/api/batchservice/) hívásokat hajt végre, vagy ha a [Batch SDK](batch-apis-tools.md#batch-service-apis)-k valamelyikét használja, az itt ismertetett erőforrások és szolgáltatások nagy részét fogja használni.
 
 > [!TIP]
 > A Batch szolgáltatás részletesebb leírásáért olvassa el a következő cikket: [Basics of Azure Batch](batch-technical-overview.md) (Az Azure Batch alapjai). Lásd továbbá a [Batch szolgáltatás legújabb frissítéseit](https://azure.microsoft.com/updates/?product=batch).
@@ -47,4 +47,4 @@ Az alábbi témakörök ismertetik az elosztott számítási forgatókönyveket 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 - Töltse le és telepítse a [Batch Explorer](https://azure.github.io/BatchExplorer/) alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A Batch Explorer alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, valamint a felmerülő hibáikat is elháríthatja.
-- Lásd: közösségi erőforrások, többek között a [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), a [Batch közösségi](https://github.com/Azure/Batch)tárház és a [Azure batch fórum](https://docs.microsoft.com/answers/topics/azure-batch.html).
+- Lásd: közösségi erőforrások, többek között a [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), a [Batch közösségi](https://github.com/Azure/Batch)tárház és a [Azure batch fórum](/answers/topics/azure-batch.html).

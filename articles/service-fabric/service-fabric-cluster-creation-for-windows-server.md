@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827964"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
@@ -55,9 +54,9 @@ A cikkben létrehozott fürt nem biztonságos.  Bárki csatlakozhat hozzá névt
 ### <a name="step-1-create-the-cluster"></a>1. lépés: a fürt létrehozása
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>"A" forgatókönyv: nem biztonságos helyi fejlesztési fürt létrehozása
-A Service Fabric a *ClusterConfig. unsecure. DevCluster. JSON* fájl használatával helyezhetők üzembe egy egyszámítógépes fejlesztési fürtön [.](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+A Service Fabric egy gépi fejlesztési fürtön is üzembe helyezhetők a [mintákban](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)található fájl *ClusterConfig.Unsecure.DevCluster.js* használatával.
 
-Csomagolja ki az önálló csomagot a gépre, másolja a minta konfigurációs fájlt a helyi gépre, majd futtassa a *CreateServiceFabricCluster. ps1* parancsfájlt egy rendszergazdai PowerShell-munkameneten keresztül az önálló csomag mappájából.
+Csomagolja ki a különálló csomagot a gépre, másolja a minta konfigurációs fájlt a helyi gépre, majd futtassa a *CreateServiceFabricCluster.ps1* parancsfájlt egy rendszergazdai PowerShell-munkameneten keresztül az önálló csomag mappájából.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
@@ -97,7 +96,7 @@ A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdána
     Passed                     : True
     ```
 
-2. Hozza létre a fürtöt: futtassa a *CreateServiceFabricCluster. ps1* parancsfájlt, hogy az Service Fabric-fürtöt a konfiguráció minden számítógépén üzembe helyezi. 
+2. A fürt létrehozása: futtassa a *CreateServiceFabricCluster.ps1* szkriptet a Service Fabric-fürt a konfigurációban lévő minden egyes gépen való üzembe helyezéséhez. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -115,7 +114,7 @@ A futásidejű csomag külön tölthető le, az internethez csatlakozó másik g
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-A *.\ClusterConfig.JSON* és a *.\MicrosoftAzureServiceFabric.cab* a fürtkonfiguráció és a Runtime. cab fájl elérési útja.
+A és a *.\MicrosoftAzureServiceFabric.cab* *.\ClusterConfig.js* a fürtkonfiguráció és a Runtime. cab fájl elérési útja.
 
 ### <a name="step-2-connect-to-the-cluster"></a>2. lépés: Kapcsolódás a fürthöz
 Kapcsolódjon a fürthöz, és ellenőrizze, hogy a fürt fut-e, és elérhető-e. A ServiceFabric PowerShell-modul a futtatókörnyezettel együtt települ.  A fürthöz a fürtcsomópontokon vagy a Service Fabric futtatókörnyezettel rendelkező távoli számítógépről is csatlakozhat.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.

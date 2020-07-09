@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9b2a47cde4d79671aada7c280c2bffd9bb8fe759
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434194"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
@@ -33,12 +32,12 @@ A *Azure Maps beltéri* modult kétféleképpen telepítheti és ágyazhatja be.
 
 Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Delivery Network verzióját szeretné használni, a `<head>` HTML-fájl elemében a következő JavaScript-és stíluslap-hivatkozásokra kell hivatkoznia:
 
-  ```html
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
-  ```
+```html
+<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+```
 
  Vagy letöltheti a *Azure Maps beltéri* modult is. A *Azure Maps beltéri* modul tartalmaz egy ügyféloldali kódtárat a Azure Maps szolgáltatások eléréséhez. Az alábbi lépéseket követve telepítheti és betöltheti a *beltéri* modult a webalkalmazásba.  
   
@@ -47,8 +46,8 @@ Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Deliver
   2. Telepítse a NPM csomagot. Győződjön meg arról, hogy rendszergazdai jogosultságokat használ a konzolon:
 
       ```powershell
-        >npm install azure-maps-control
-        >npm install azure-maps-indoor
+      >npm install azure-maps-control
+      >npm install azure-maps-indoor
       ```
 
   3. A HTML-fájl elemében a *Azure Maps beltéri* modul JavaScript-és stíluslapjának hivatkozása `<head>` :
@@ -63,16 +62,20 @@ Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Deliver
 Először hozzon létre egy *Térkép objektumot*. A *map objektum* a következő lépésben lesz használva a *Indoor Manager* -objektum létrehozásához.  Az alábbi kód bemutatja, hogyan hozhatja létre a *Térkép objektumot*:
 
 ```javascript
-  const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
-  const map = new atlas.Map("map-id", {
-    //use your facility's location
-    center: [-122.13315, 47.63637],
-    //or, you can use bounds: [#,#,#,#] and replace # with your map's bounds
-    style: "blank",
-    subscriptionKey,
-    zoom: 19,
-  });
+const map = new atlas.Map("map-id", {
+  //use your facility's location
+  center: [-122.13315, 47.63637],
+  //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
+  style: "blank",
+  view: 'Auto',
+  authOptions: { 
+      authType: 'subscriptionKey',
+      subscriptionKey: subscriptionKey
+  },
+  zoom: 19,
+});
 ```
 
 ## <a name="instantiate-the-indoor-manager"></a>A Indoor Manager példányának példányai
@@ -92,7 +95,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok*állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság (*állapot*) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
 
 ```javascript
-
 const tilesetId = "";
 const statesetId = "";
 
@@ -104,7 +106,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 if (statesetId.length > 0) {
     indoorManager.setDynamicStyling(true);
 }
-
 ```
 
 ## <a name="indoor-level-picker-control"></a>Beltéri szintű választó vezérlése
@@ -123,14 +124,14 @@ indoorManager.setOptions({ levelControl });
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a level has been changed
-    console.log("The level has changed: ", eventData);
-
+  //code that you want to run after a level has been changed
+  console.log("The level has changed: ", eventData);
 });
+
 map.events.add("facilitychanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a facility has been changed
-    console.log("The facility has changed: ", eventData);
+  //code that you want to run after a facility has been changed
+  console.log("The facility has changed: ", eventData);
 });
 ```
 
@@ -149,7 +150,7 @@ Ebből a példából megtudhatja, hogyan használhatja a *Azure Maps beltéri* m
 4. *Leképezési objektum*inicializálása. A *map objektum* a következő beállításokat támogatja:
     - `Subscription key`a Azure Maps elsődleges előfizetési kulcs.
     - `center`meghatározza a beltéri Térkép középpontjának földrajzi szélességét és hosszúságát. Adjon meg egy értéket, `center` Ha nem kíván értéket megadni a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `center` : [-122,13315, 47,63637].
-    - `bounds`az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `bounds` : [#, #, #, #].
+    - `bounds`az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumot a következőképpen kell megjelennie `bounds` : [# West, # Dél, # Kelet, # North].
     - `style`lehetővé teszi a háttér színének megadását. Fehér háttér megjelenítéséhez adja meg `style` az "üres" értéket.
     - `zoom`lehetővé teszi a Térkép minimális és maximális nagyítási szintjeinek megadását.
 
@@ -168,10 +169,13 @@ A fájlnak most az alábbi HTML-hez hasonlóan kell kinéznie.
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, user-scalable=no" />
       <title>Indoor Maps App</title>
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+        
       <style>
         html,
         body {
@@ -191,16 +195,20 @@ A fájlnak most az alábbi HTML-hez hasonlóan kell kinéznie.
     <body>
       <div id="map-id"></div>
       <script>
-        const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+        const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
         const tilesetId = "<your tilesetId>";
         const statesetId = "<your statesetId>";
 
         const map = new atlas.Map("map-id", {
           //use your facility's location
           center: [-122.13315, 47.63637],
-          //or, you can use bounds: [ # , # , # , # ] and replace # with your Map bounds
+          //or, you can use bounds: [# west, # south, # east, # north] and replace # with your Map bounds
           style: "blank",
-          subscriptionKey,
+          view: 'Auto',
+          authOptions: { 
+              authType: 'subscriptionKey',
+              subscriptionKey: subscriptionKey
+          },
           zoom: 19,
         });
 
@@ -241,7 +249,7 @@ Ha szeretné megtekinteni a beltéri térképet, töltse be azt egy webböngész
 Olvassa el a *Azure Maps beltéri* modulhoz kapcsolódó API-kat:
 
 > [!div class="nextstepaction"]
-> [A rajzolási csomagra vonatkozó követelmények](drawing-requirements.md)
+> [Rajzolási csomag követelményei](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
 > [A beltéri térképek létrehozója](creator-indoor-maps.md)

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025367"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Fiókok kezelése az Azure VMware-megoldásban a CloudSimple-portálon
@@ -35,6 +34,6 @@ Egy bejegyzés eltávolításához kattintson az **X**gombra.
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple-kezelő hozzáférése
 
-Az operátori hozzáférés beállítása lehetővé teszi, hogy a CloudSimple segítséget nyújtson a CloudSimple-portálra való bejelentkezést lehetővé tevő támogatási szakembernek.  A beállítás alapértelmezés szerint engedélyezve van. A támogatási mérnök által az ügyfél-fiókba való bejelentkezéskor végrehajtott összes művelet rögzítve van, és elérhetővé válik a **tevékenység** > **naplózása** lapon végzett felülvizsgálathoz.
+Az operátori hozzáférés beállítása lehetővé teszi, hogy a CloudSimple segítséget nyújtson a CloudSimple-portálra való bejelentkezést lehetővé tevő támogatási szakembernek.  A beállítás alapértelmezés szerint engedélyezve van. A támogatási mérnök által az ügyfél-fiókba való bejelentkezéskor végrehajtott összes művelet rögzítve van, és elérhetővé válik a **tevékenység**  >  **naplózása** lapon végzett felülvizsgálathoz.
 
 Kattintson a **CloudSimple operátor hozzáférés engedélyezve** váltógomb lehetőségre a hozzáférés be-és kikapcsolása.

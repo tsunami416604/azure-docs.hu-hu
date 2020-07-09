@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5e4e80af106de7c4bc8f09bdbecbc84199c2b3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728367"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -36,7 +36,7 @@ Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendsze
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
 
-Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és frissíthet fontos szabályokat. A szabály-szerkesztő legfeljebb öt kifejezést támogat. A szabály-szerkesztő megkönnyíti néhány egyszerű kifejezéssel rendelkező szabály kiépítését, azonban nem használható minden szabály újbóli létrehozásához. Ha a szabály-szerkesztő nem támogatja a létrehozni kívánt szabályt, használhatja a szövegmezőt.
+Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és frissíthet fontos szabályokat. A szabály-szerkesztő legfeljebb öt kifejezés kiépítését támogatja. A szabály-szerkesztő megkönnyíti néhány egyszerű kifejezéssel rendelkező szabály kiépítését, azonban nem használható minden szabály újbóli létrehozásához. Ha a szabály-szerkesztő nem támogatja a létrehozni kívánt szabályt, használhatja a szövegmezőt.
 
 Íme néhány példa a speciális szabályokra vagy szintaxisra, amelyekhez ajánlott a következő szövegmezővel létrehozni:
 
@@ -69,7 +69,7 @@ A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabál
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 
 - Tulajdonság
-- Operátor
+- Művelet
 - Érték
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
@@ -135,7 +135,7 @@ Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabál
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
-| Operátor | Szintaxis |
+| Operátor | Syntax |
 | --- | --- |
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
@@ -160,7 +160,7 @@ Ha egy felhasználói attribútum értékét össze szeretné hasonlítani szám
 
 
 ### <a name="using-the--match-operator"></a>A-Match operátor használata 
-A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Angol nyelvű Példák:
+A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Példák:
 
 ```
 user.displayName -match "Da.*"   
@@ -390,12 +390,12 @@ A következő eszköz-attribútumok használhatók.
  deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ "76ad43c9-32c5-45E8-A272-7b58b58f596d")
  devicePhysicalIds | az Autopilot által használt bármely karakterláncérték, például az összes Autopilot-eszköz, a Rendeléskód vagy a PurchaseOrderID  | (Device. devicePhysicalIDs – any _ – tartalmazza a következőt: "[ZTDId]") (Device. devicePhysicalIds – any _-EQ "[Rendeléskód]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
- systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (Device. systemLabels – a "M365Managed" kifejezést tartalmazza)
+ systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (device.systemLabels – a "M365Managed" kifejezést tartalmazza)
 
 > [!Note]  
 > Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

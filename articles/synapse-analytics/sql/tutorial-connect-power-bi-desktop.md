@@ -1,22 +1,22 @@
 ---
-title: 'Oktatóanyag: az SQL on-demand (előzetes verzió) összekapcsolása Power BI Desktop & jelentés létrehozása'
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban Power BI Desktophoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
+title: 'Oktatóanyag: az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása'
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand az Azure szinapszis Analytics szolgáltatásban Power BI asztalhoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2f4a1ab6dc2f5cb8576931ea5fc1da85f5597624
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745402"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213227"
 ---
-# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: SQL on-demand (előzetes verzió) használata Power BI Desktop & jelentés létrehozása
+# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: az SQL igény szerinti használata Power BI Desktop & jelentés létrehozása
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -29,10 +29,14 @@ Az oktatóanyag a következőket ismerteti:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következő szoftverek szükségesek:
+Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+
+- [Power bi Desktop](https://powerbi.microsoft.com/downloads/) – az adatmegjelenítéshez és a jelentés létrehozásához szükséges.
+- [Azure szinapszis-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) – adatbázis, külső adatforrás és nézet létrehozásához szükséges.
+
+Nem kötelező:
 
 - Egy SQL-lekérdezési eszköz, például [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)vagy [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
-- [Power bi Desktop](https://powerbi.microsoft.com/downloads/).
 
 A következő paraméterek értékei:
 

@@ -3,12 +3,11 @@ title: Adatmodell a Azure Backup diagnosztikai eseményeihez
 description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) történő küldésének erőforrás-specifikus módjára hivatkozik.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 0713db1cee9d6737ce69cb108f3cb8f81d1eb2ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484502"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez
 
@@ -124,7 +123,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | AdhocOrScheduledJob            | Szöveg          | Mező, amely megadja, hogy a feladattípus ad hoc vagy ütemezett           |
 | BackupItemUniqueId             | Szöveg          | A tárolási entitáshoz kapcsolódó biztonsági mentési elem azonosítására használt egyedi azonosító |
 | BackupManagementServerUniqueId | Szöveg          | A tárolási entitáshoz kapcsolódó biztonságimásolat-felügyeleti kiszolgáló azonosítására használt egyedi azonosító |
-| BackupManagementType           | Szöveg          | Szolgáltatói típus a biztonsági mentés végrehajtásához, például IaaSVM, fájlmappa, amelyhez ez a riasztás tartozik |
+| BackupManagementType           | Szöveg          | Szolgáltatói típus a biztonsági mentés végrehajtásához, például: IaaSVM, fájlmappa, amelyhez ez a feladattípus tartozik |
 | DataTransferredInMB            | Szám        | A feladatokhoz tartozó MB-ban továbbított adatok                          |
 | JobDurationInSecs              | Szám        | Feladatok teljes időtartama másodpercben                                |
 | JobFailureCode                 | Szöveg          | Hiba történt a hibakód karakterlánca miatt, mert a művelet sikertelen volt    |
@@ -133,14 +132,14 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | JobStartDateTime               | DateTime      | A feladatok futtatásának dátuma és időpontja                       |
 | Feladat állapota                      | Szöveg          | A Befejezett feladatok állapota, például befejezett, sikertelen   |
 | JobUniqueId                    | Szöveg          | A feladatot azonosító egyedi azonosító                                |
-| ProtectedContainerUniqueId     | Szöveg          | A riasztáshoz társított védett kiszolgáló egyedi azonosítója |
+| ProtectedContainerUniqueId     | Szöveg          | A feladathoz társított védett kiszolgáló egyedi azonosítója |
 | RecoveryJobDestination         | Szöveg          | A helyreállítási feladatok célja, amelyben az adatok helyreállítása történik   |
 | RecoveryJobRPDateTime          | DateTime      | A helyreállított helyreállítási pont létrehozásának dátuma és időpontja |
 | RecoveryJobLocation            | Szöveg          | A helyreállított helyreállítási pont tárolási helye |
 | RecoveryLocationType           | Szöveg          | A helyreállítási hely típusa                                |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állapot                          | Szöveg          | A riasztási objektum aktuális állapota, például aktív, törölve |
-| VaultUniqueId                  | Szöveg          | A riasztáshoz társított védett tároló egyedi azonosítója |
+| Állapot                          | Szöveg          | A feladatütemezés aktuális állapota, például aktív, törölve |
+| VaultUniqueId                  | Szöveg          | A feladathoz társított védett tároló egyedi azonosítója |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
 ## <a name="addonazurebackuppolicy"></a>AddonAzureBackupPolicy
@@ -162,7 +161,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | DiffBackupDaysOfTheWeek         | Szöveg           | A hét napjai az SQL-különbözeti biztonsági mentésekhez az Azure-beli virtuális gép biztonsági mentésében |
 | DiffBackupFormat                | Szöveg           | Az SQL-alapú különbözeti biztonsági másolatok formátuma az Azure virtuális gép biztonsági mentésében   |
 | DiffBackupRetentionDuration     | Tizedes tört | Az SQL Azure-beli virtuális gépek biztonsági mentésének megőrzési időtartama |
-| DiffBackupTime                  | Time           | Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje     |
+| DiffBackupTime                  | Idő           | Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje     |
 | LogBackupFrequency              | Tizedes tört | SQL-naplók biztonsági másolatainak gyakorisága                            |
 | LogBackupRetentionDuration      | Tizedes tört | Az SQL Azure-beli virtuális gép biztonsági mentésében tárolt biztonsági másolatok megőrzési időtartama |
 | MonthlyRetentionDaysOfTheMonth  | Szöveg           | A hónap hete, amikor a havi megőrzés konfigurálva van.  Például: első, utolsó stb. |
@@ -205,7 +204,7 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | BackupManagementServerUniqueId | Szöveg          | A biztonságimásolat-felügyeleti kiszolgáló egyedi azonosítására szolgáló mező, ha van ilyen, a biztonsági mentési elem védelme |
 | BackupManagementType           | Szöveg          | A kiszolgáló szolgáltatói típusa a biztonsági mentési feladatokhoz. Például: IaaSVM, fájlmappa |
 | PreferredWorkloadOnVolume      | Szöveg          | A számítási feladatok, amelyekhez ez a kötet az előnyben részesített tároló      |
-| ProtectedContainerUniqueId     | Szöveg          | A riasztáshoz társított védett kiszolgáló egyedi azonosítója |
+| ProtectedContainerUniqueId     | Szöveg          | A biztonsági mentési elemmel társított védett tároló egyedi azonosítója |
 | Sémaverzióval                  | Szöveg          | A séma verziója. Például: **v2**                   |
 | Állapot                          | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
 | StorageAllocatedInMBs          | Szám        | A megfelelő biztonsági mentési tétel által lefoglalt tárterület a lemez típusú megfelelő tárolóban |

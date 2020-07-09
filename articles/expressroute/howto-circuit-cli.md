@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan lehet ExpressRoute-áramkört létrehoz
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738328"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>ExpressRoute-kapcsolatcsoport létrehozása és módosítása a CLI-vel
 
@@ -20,10 +20,10 @@ ms.locfileid: "79476151"
 Ez a cikk bemutatja, hogyan hozhat létre egy Azure ExpressRoute-áramkört a parancssori felület (CLI) használatával. A cikk azt is bemutatja, hogyan ellenőrizhető az áramkör állapota, frissítése vagy törlése és megszüntetése. Ha más módszert szeretne használni a ExpressRoute-áramkörök használatához, a következő listából választhatja ki a cikket:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -57,7 +57,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. a támogatott szolgáltatók, helyszínek és sávszélességek listájának beolvasása
 
-A ExpressRoute kör létrehozása előtt szüksége lesz a támogatott kapcsolati szolgáltatók, helyszínek és sávszélesség-beállítások listájára. A CLI- `az network express-route list-service-providers` parancs visszaadja ezt az információt, amelyet később a következő lépésekben fog használni:
+A ExpressRoute kör létrehozása előtt szüksége lesz a támogatott kapcsolati szolgáltatók, helyszínek és sávszélesség-beállítások listájára. A CLI-parancs `az network express-route list-service-providers` visszaadja ezt az információt, amelyet később a következő lépésekben fog használni:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -118,7 +118,7 @@ A válasz a következő példához hasonló:
 
 Ellenőrizze a választ, hogy megjelenik-e a kapcsolat szolgáltatója. Jegyezze fel a következő információkat, amelyekre szüksége lesz az áramkör létrehozásakor:
 
-* Name (Név)
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

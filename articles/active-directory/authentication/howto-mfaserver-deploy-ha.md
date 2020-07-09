@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653379"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása a magas rendelkezésre állás érdekében
@@ -66,7 +65,7 @@ Jegyezze fel a következő elemeket az előző diagram megfelelő számú terül
    ![Azure MFA-kiszolgáló – app Server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > Mivel az RPC dinamikus portokat használ, nem ajánlott a tűzfalakat az RPC által potenciálisan használható dinamikus portok tartományához megnyitni. Ha tűzfallal rendelkezik az MFA-alkalmazáskiszolgáló **között** , akkor úgy kell konfigurálnia az MFA-kiszolgálót, hogy az alárendelt és főkiszolgálók közötti replikációs forgalomra vonatkozóan statikus porton kommunikáljon, és a tűzfalon nyissa meg a portot. A statikus portot úgy kényszerítheti, hogy létrehoz egy DWORD beállításjegyzékbeli ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` értéket ```Pfsvc_ncan_ip_tcp_port``` a híváskor, és az értéket egy elérhető statikus portra állítja be. A kapcsolatokat mindig az alárendelt MFA-kiszolgálók kezdeményezik a főkiszolgálón, a statikus portra csak a főkiszolgálón van szükség, de mivel a beosztottak bármikor előállíthatók a főkiszolgálónak, a statikus portot minden MFA-kiszolgálón be kell állítania.
+   > Mivel az RPC dinamikus portokat használ, nem ajánlott a tűzfalakat az RPC által potenciálisan használható dinamikus portok tartományához megnyitni. Ha tűzfallal rendelkezik az MFA-alkalmazáskiszolgáló **között** , akkor úgy kell konfigurálnia az MFA-kiszolgálót, hogy az alárendelt és főkiszolgálók közötti replikációs forgalomra vonatkozóan statikus porton kommunikáljon, és a tűzfalon nyissa meg a portot. A statikus portot úgy kényszerítheti, hogy létrehoz egy DWORD beállításjegyzékbeli értéket a ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` híváskor ```Pfsvc_ncan_ip_tcp_port``` , és az értéket egy elérhető statikus portra állítja be. A kapcsolatokat mindig az alárendelt MFA-kiszolgálók kezdeményezik a főkiszolgálón, a statikus portra csak a főkiszolgálón van szükség, de mivel a beosztottak bármikor előállíthatók a főkiszolgálónak, a statikus portot minden MFA-kiszolgálón be kell állítania.
 
 2. A két felhasználói portál/MFA-alapú mobileszköz-kiszolgáló (MFA-UP-MAS1 és MFA-UP-MAS2) **állapot-nyilvántartó** konfigurációban (MFA.contoso.com) van elosztott terhelésű. Ne felejtse el, hogy a Sticky-munkamenetek az MFA felhasználói portál és a mobil App Service terheléselosztásának követelménye.
    ![Azure MFA-kiszolgáló – felhasználói portál és mobil App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)

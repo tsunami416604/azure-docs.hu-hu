@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 6ae423305b39c1335b5db1cd893d5f817be1929b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060864"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés RFPIO konfigurálása
@@ -64,7 +63,7 @@ Az Azure AD-vel való automatikus RFPIO konfigurálása előtt engedélyeznie ke
     
     ![RFPIO-rendszergazda](media/rfpio-provisioning-tutorial/aadtest.png)
 
-3.  Navigáljon a **felhasználói felügyelet** > **biztonsági** > **scim**.
+3.  Navigáljon a **felhasználói felügyelet**  >  **biztonsági**  >  **scim**.
 
     ![RFPIO-SCIM hozzáadása](media/rfpio-provisioning-tutorial/scim.png)
 
@@ -123,7 +122,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` meg a **bérlői URL-címet**. Egy példa a `https://Azure-test1.rfpio.com/rfpserver/scim/v2`értékre. Adja meg a **scim API-jogkivonat** értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RFPIO. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RFPIO-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` meg a **bérlői URL-címet**. Egy példa a értékre `https://Azure-test1.rfpio.com/rfpserver/scim/v2` . Adja meg a **scim API-jogkivonat** értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RFPIO. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RFPIO-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -163,7 +162,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A RFPIO jelenleg nem támogatja a csoportok üzembe helyezését.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

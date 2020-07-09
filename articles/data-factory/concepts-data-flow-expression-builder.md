@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126161"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
@@ -76,16 +76,12 @@ Néhány példa a karakterlánc-interpolációra:
 
 Megjegyzéseket fűzhet a kifejezésekhez egy egysoros és többsoros Megjegyzés szintaxisának használatával.
 
-![Egysoros és többsoros Megjegyzés szintaxisa](media/data-flow/comments.png "Megjegyzések")
-
 Az alábbi példák érvényes megjegyzéseket tartalmaznak:
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 Ha a kifejezés tetején egy megjegyzést helyez el, az átalakítás szövegmezőben megjelenik az átalakítási kifejezések dokumentálása.
 
@@ -93,7 +89,7 @@ Ha a kifejezés tetején egy megjegyzést helyez el, az átalakítás szövegmez
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 
-Számos kifejezés nyelvi függvénye reguláris kifejezési szintaxist használ. Reguláris kifejezések használata esetén az Expression Build Escape-karakterként próbálja értelmezni a\\fordított perjelet (). Ha a reguláris kifejezésben fordított perjeleket használ, zárja be a teljes regexet a aposztrófokkal\`() metódusba, vagy használjon dupla fordított perjelet.
+Számos kifejezés nyelvi függvénye reguláris kifejezési szintaxist használ. Reguláris kifejezések használata esetén az Expression Build Escape-karakterként próbálja értelmezni a fordított perjelet ( \\ ). Ha a reguláris kifejezésben fordított perjeleket használ, zárja be a teljes regexet a aposztrófokkal () metódusba, \` vagy használjon dupla fordított perjelet.
 
 Aposztrófokkal használó példa:
 
@@ -124,15 +120,19 @@ A tömböket visszaadó Expression függvények a zárójelek ([]) használatáv
 
 ## <a name="convert-to-dates-or-timestamps"></a>Konvertálás dátumokra vagy időbélyegekre
 
-Ha karakterlánc-konstansokat szeretne szerepeltetni az időbélyeg-kimenetben, ```toString()```csomagolja be a konverzióját.
+Ha karakterlánc-konstansokat szeretne szerepeltetni az időbélyeg-kimenetben, csomagolja be a konverzióját ```toString()``` .
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Az ezredmásodpercek időpontról dátumra vagy időbélyegre való `toTimestamp(<number of milliseconds>)`konvertálásához használja a következőt:. Ha az idő másodpercben érkezik, szorozza meg a 1 000-as értékkel.
+Az ezredmásodpercek időpontról dátumra vagy időbélyegre való konvertálásához használja a következőt: `toTimestamp(<number of milliseconds>)` . Ha az idő másodpercben érkezik, szorozza meg a 1 000-as értékkel.
 
 ```toTimestamp(1574127407*1000l)```
 
 Az előző kifejezés végén lévő "l" záró érték hosszú típusra, beágyazott szintaxisként való átalakítást jelent.
+
+## <a name="find-time-from-epoch-or-unix-time"></a>Idő megkeresése az EPOCH vagy a Unix idő alapján
+
+toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' éééé-hh-nn óó: PP: mm. ÉER) *) * 1000
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,10 +7,9 @@ ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122668"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
@@ -75,7 +74,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Név** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
+    | **Name (Név)** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
     | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
     | **Alhálózat neve** | Oktatóanyag – net | Az alhálózat neve. |
     | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a WordPress webhely használja.  Az `/24` alhálózat 254 gazdagép-címet biztosít. |
@@ -136,7 +135,7 @@ Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alk
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
-    | **Név** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
+    | **Name (Név)** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
     | **Útvonal sablonja** | /plant | Egy VM-erőforráshoz hozzárendelt útvonal. |
     | **Háttér-URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le a helyére `<YOUR_VM_IP>` a korábban létrehozott WordPress-virtuális gép IP-címét. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
 

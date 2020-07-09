@@ -8,39 +8,39 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: ba281ffb30801e0ae10cab10ceb95c0a3bffde2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640026"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735047"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Felügyeleti fogalmak a felhasználói fiókokhoz, jelszavakhoz és felügyelethez Azure Active Directory Domain Services
 
 Ha Azure Active Directory Domain Services (AD DS) felügyelt tartományt hoz létre és futtat, a viselkedés a hagyományos helyszíni AD DS környezethez képest valamilyen eltérést mutat. Ugyanazokat a felügyeleti eszközöket használja az Azure AD DS önálló felügyelt tartományként, de nem férhet hozzá közvetlenül a tartományvezérlőhöz (DC). A felhasználói fiókok létrehozásának forrásától függően a jelszóházirend és a jelszó-kivonatok viselkedése is fennáll.
 
-Ez a fogalmi cikk azt ismerteti, hogyan lehet felügyelni egy Azure AD DS felügyelt tartományt és a felhasználói fiókok különböző viselkedését a létrehozásuk módjától függően.
+Ez a fogalmi cikk részletesen ismerteti a felügyelt tartományok felügyeletét és a felhasználói fiókok különböző viselkedését a létrehozásuk módjától függően.
 
 ## <a name="domain-management"></a>Tartományi felügyelet
 
-Az Azure AD DSban az összes erőforrást (például a felhasználókat és a csoportokat, a hitelesítő adatokat és a szabályzatokat) tartalmazó tartományvezérlők (DCs-EK) a felügyelt szolgáltatás részét képezik. A redundancia érdekében a rendszer két tartományvezérlőt hoz létre egy Azure AD DS felügyelt tartomány részeként. A felügyeleti feladatok elvégzéséhez nem lehet bejelentkezni a tartományvezérlőre. Ehelyett létre kell hoznia egy, az Azure AD DS felügyelt tartományhoz csatlakoztatott felügyeleti virtuális gépet, majd telepítenie kell a normál AD DS felügyeleti eszközöket. Használhatja például a Active Directory felügyeleti központ vagy a Microsoft Management Console (MMC) beépülő modult, például a DNS-vagy Csoportházirend-objektumokat.
+A felügyelt tartomány a DNS-névtér és a hozzá tartozó könyvtár. A felügyelt tartományokban az összes erőforrást (például a felhasználókat és a csoportokat, a hitelesítő adatokat és a szabályzatokat) tartalmazó tartományvezérlők (DCs-EK) a felügyelt szolgáltatás részét képezik. A redundancia érdekében a rendszer két tartományvezérlőt hoz létre egy felügyelt tartomány részeként. A felügyeleti feladatok elvégzéséhez nem lehet bejelentkezni a tartományvezérlőre. Ehelyett a felügyelt tartományhoz csatlakoztatott felügyeleti virtuális gépet kell létrehoznia, majd telepítenie kell a rendszeres AD DS felügyeleti eszközöket. Használhatja például a Active Directory felügyeleti központ vagy a Microsoft Management Console (MMC) beépülő modult, például a DNS-vagy Csoportházirend-objektumokat.
 
 ## <a name="user-account-creation"></a>Felhasználói fiók létrehozása
 
-A felhasználói fiókok több módon is létrehozhatók az Azure AD DSban. A legtöbb felhasználói fiók szinkronizálva van az Azure AD-ből, amely tartalmazhatja a helyszíni AD DS környezetből szinkronizált felhasználói fiókot is. A fiókokat manuálisan is létrehozhatja az Azure AD DSban. Bizonyos funkciók, például a kezdeti jelszó-szinkronizálás vagy a jelszóházirend, eltérően viselkednek, attól függően, hogyan és hol jönnek létre a felhasználói fiókok.
+A felhasználói fiókok több módon is létrehozhatók felügyelt tartományokban. A legtöbb felhasználói fiók szinkronizálva van az Azure AD-ből, amely tartalmazhatja a helyszíni AD DS környezetből szinkronizált felhasználói fiókot is. A fiókokat manuálisan is létrehozhatja közvetlenül a felügyelt tartományban. Bizonyos funkciók, például a kezdeti jelszó-szinkronizálás vagy a jelszóházirend, eltérően viselkednek, attól függően, hogyan és hol jönnek létre a felhasználói fiókok.
 
 * A felhasználói fiók szinkronizálható az Azure AD-ből. Ez magában foglalja a közvetlenül az Azure AD-ben létrehozott felhőalapú felhasználói fiókokat, valamint a helyi AD DS környezetből Azure AD Connect használatával szinkronizált hibrid felhasználói fiókokat.
-    * Az Azure AD DS felhasználói fiókjainak többsége az Azure AD szinkronizálási folyamatán keresztül jön létre.
-* A felhasználói fiók manuálisan is létrehozható egy Azure AD DS felügyelt tartományban, és nem létezik az Azure AD-ben.
-    * Ha olyan alkalmazásokhoz kell szolgáltatásfiókot létrehoznia, amelyek csak az Azure AD DSban futnak, manuálisan is létrehozhatja őket a felügyelt tartományban. Mivel a szinkronizálás az Azure AD egyik módja, az Azure AD DSban létrehozott felhasználói fiókok nincsenek szinkronizálva az Azure AD-vel.
+    * A felügyelt tartományokban lévő felhasználói fiókok többségét az Azure AD szinkronizálási folyamata hozza létre.
+* A felhasználói fiók manuálisan is létrehozható egy felügyelt tartományban, és nem létezik az Azure AD-ben.
+    * Ha olyan alkalmazásokhoz kell szolgáltatásfiókot létrehoznia, amelyek csak a felügyelt tartományban futnak, manuálisan is létrehozhatja őket a felügyelt tartományban. Mivel a szinkronizálás az Azure AD egyik módja, a felügyelt tartományban létrehozott felhasználói fiókok nem szinkronizálhatók vissza az Azure AD-be.
 
 ## <a name="password-policy"></a>Jelszóházirend
 
-Az Azure AD DS tartalmaz egy alapértelmezett jelszóházirend-szabályzatot, amely meghatározza a fiókok zárolási beállításait, a jelszavak maximális élettartamát és a jelszó bonyolultságát. Az olyan beállítások, mint a fiókzárolási házirend az Azure AD DS összes felhasználójára érvényesek, függetlenül attól, hogy a felhasználó hogyan lett létrehozva az előző szakaszban leírt módon. Néhány beállítás (például a jelszó minimális hossza és a jelszó bonyolultsága) csak az Azure AD DSban közvetlenül létrehozott felhasználókra vonatkozik.
+Az Azure AD DS tartalmaz egy alapértelmezett jelszóházirend-szabályzatot, amely meghatározza a fiókok zárolási beállításait, a jelszavak maximális élettartamát és a jelszó bonyolultságát. Az olyan beállítások, mint a fiókzárolási házirend a felügyelt tartomány összes felhasználójára érvényesek, függetlenül attól, hogy a felhasználó hogyan lett létrehozva az előző szakaszban leírt módon. Néhány beállítás, például a jelszó minimális hossza és a jelszó bonyolultsága, csak a felügyelt tartományokban közvetlenül létrehozott felhasználókra érvényesek.
 
-Az Azure-AD DS alapértelmezett házirendjének felülbírálásához létrehozhat saját egyéni jelszóházirend-szabályzatokat is. Ezeket az egyéni házirendeket ezután a felhasználók adott csoportjaira lehet alkalmazni, igény szerint.
+A felügyelt tartományokban lévő alapértelmezett házirend felülbírálásához létrehozhat saját egyéni jelszóházirend-szabályzatokat is. Ezeket az egyéni házirendeket ezután a felhasználók adott csoportjaira lehet alkalmazni, igény szerint.
 
 A jelszó-szabályzatok felhasználói létrehozási forrástól függően történő alkalmazásával kapcsolatos további információkért lásd: [jelszó-és fiókzárolási házirendek a felügyelt tartományokon][password-policy].
 
@@ -48,7 +48,7 @@ A jelszó-szabályzatok felhasználói létrehozási forrástól függően tört
 
 A felügyelt tartományon lévő felhasználók hitelesítéséhez az Azure AD DS a jelszó-kivonatokat az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez megfelelő formátumban kell megadni. Az Azure AD az NTLM-vagy Kerberos-hitelesítéshez szükséges formátumban nem állítja elő vagy tárolja a jelszó-kivonatokat, amíg nem engedélyezi az Azure-AD DS a bérlő számára. Biztonsági okokból az Azure AD nem tárolja a jelszó hitelesítő adatait a tiszta szöveges formában. Ezért az Azure AD nem tudja automatikusan előállítani ezeket az NTLM-vagy Kerberos-jelszó-kivonatokat a felhasználók meglévő hitelesítő adatai alapján.
 
-A csak felhőalapú felhasználói fiókok esetében a felhasználóknak meg kell változtatniuk a jelszavukat, mielőtt használniuk tudják az Azure AD DS-t. Ez a jelszó-módosítási folyamat okozza a Kerberos és az NTLM hitelesítés jelszavas kivonatait az Azure AD-ben való létrehozásához és tárolásához. A fiók nincs szinkronizálva az Azure AD-ből az Azure AD DSig, amíg meg nem változtatják a jelszót.
+A csak felhőalapú felhasználói fiókok esetében a felhasználóknak módosítaniuk kell a jelszavukat, mielőtt használhatják a felügyelt tartományt. Ez a jelszó-módosítási folyamat okozza a Kerberos és az NTLM hitelesítés jelszavas kivonatait az Azure AD-ben való létrehozásához és tárolásához. A fiók nincs szinkronizálva az Azure AD-ből az Azure AD DSig, amíg meg nem változtatják a jelszót.
 
 A helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált felhasználók számára [engedélyezze a jelszó-kivonatok szinkronizálását][hybrid-phs].
 
@@ -57,10 +57,10 @@ A helyszíni AD DS környezetből Azure AD Connect használatával szinkronizál
 >
 > Ha az örökölt alkalmazásai nem használnak NTLM-hitelesítést vagy LDAP egyszerű kötéseket, javasoljuk, hogy tiltsa le az NTLM-jelszó kivonatának szinkronizálását az Azure AD DS. További információ: a [gyenge titkosítási csomagok letiltása és az NTLM hitelesítő adatok kivonatának szinkronizálása][secure-domain].
 
-A megfelelő konfigurálást követően a rendszer a használható jelszavak kivonatait az Azure AD DS felügyelt tartományában tárolja. Ha törli az Azure AD DS felügyelt tartományt, az adott ponton tárolt jelszó-kivonatok is törlődnek. Az Azure AD-ben szinkronizált hitelesítő adatok nem használhatók újra, ha később létrehoz egy Azure AD DS felügyelt tartományt – újra kell konfigurálnia a jelszó-kivonatok szinkronizálását a jelszó-kivonatok újbóli tárolására. Korábban a tartományhoz csatlakoztatott virtuális gépek vagy felhasználók nem tudják azonnal hitelesíteni magukat – az Azure AD-nek az új Azure AD DS felügyelt tartományban kell megadnia és tárolnia a jelszó-kivonatokat. További információ: jelszó- [kivonatolási szinkronizálási folyamat az Azure AD DS és Azure ad Connect][azure-ad-password-sync].
+A megfelelő konfigurálást követően a rendszer a használható jelszavak kivonatait a felügyelt tartományban tárolja. Ha törli a felügyelt tartományt, az ezen a ponton tárolt jelszó-kivonatokat is törli a rendszer. A szinkronizált hitelesítő adatokat az Azure AD-ben nem lehet újra felhasználni, ha később egy másik felügyelt tartományt hoz létre – újra kell konfigurálnia a jelszó-kivonat szinkronizálását, hogy a rendszer újra tárolja a jelszó-kivonatokat. Korábban a tartományhoz csatlakoztatott virtuális gépek vagy felhasználók nem fognak tudni azonnal hitelesíteni magukat – az Azure AD-nek a jelszó-kivonatokat az új felügyelt tartományban kell kiállítania és tárolnia. További információ: jelszó- [kivonatolási szinkronizálási folyamat az Azure AD DS és Azure ad Connect][azure-ad-password-sync].
 
 > [!IMPORTANT]
-> A Azure AD Connect csak a helyszíni AD DS környezetekkel való szinkronizálásra kell telepíteni és konfigurálni. Nem támogatott Azure AD Connect telepítése Azure AD DS felügyelt tartományba az objektumok Azure AD-be való visszaszinkronizálásához.
+> A Azure AD Connect csak a helyszíni AD DS környezetekkel való szinkronizálásra kell telepíteni és konfigurálni. A felügyelt tartományokban való Azure AD Connect telepítése nem támogatott az objektumok Azure AD-be való visszaszinkronizálásához.
 
 ## <a name="forests-and-trusts"></a>Erdők és megbízhatóságok
 
@@ -68,7 +68,7 @@ Az *erdők* Active Directory tartományi szolgáltatások (AD DS) által haszná
 
 Az Azure AD DSban az erdő csak egy tartományt tartalmaz. A helyszíni AD DS erdők gyakran sok tartományt tartalmaznak. A nagyméretű szervezeteknél – különösen az összevonások és a beszerzések után – előfordulhat, hogy több helyszíni erdővel is rendelkezik, amelyek mindegyike több tartományt tartalmaz.
 
-Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők az Azure AD DS felügyelt tartományon, például egy tartományhoz csatlakoztatott virtuális gépre való bejelentkezéshez. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
+Alapértelmezés szerint a felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők a felügyelt tartományon, például bejelentkezhetnek egy tartományhoz csatlakoztatott virtuális gépre. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
 
 Egy Azure-AD DS *erőforrás* -erdőben a felhasználók egy egyirányú erdőszintű *megbízhatósági kapcsolaton* keresztül hitelesíthetők a helyszíni AD DS. Ezzel a módszerrel a felhasználói objektumok és jelszavak kivonatai nem szinkronizálhatók az Azure AD DS. A felhasználói objektumok és a hitelesítő adatok csak a helyszíni AD DSban találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok az Azure-ban olyan erőforrásokat és alkalmazás-platformokat működtessenek, amelyek a klasszikus hitelesítéstől (például LDAPs, Kerberos vagy NTLM) függenek, de a hitelesítési problémák és a problémák el Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 
@@ -84,7 +84,7 @@ Az Azure AD DS a rendelkezésre álló teljesítmény és szolgáltatások az SK
 | Enterprise | Korlátlan            | 3 naponta     | 5  |
 | Prémium    | Korlátlan            | Napi            | 10 |
 
-Az Azure AD DS SKU-nak az Azure AD DS felügyelt tartományában lévő objektumok (felhasználói és számítógépfiókok) száma alapján elszámolási modellt használtak. A felügyelt tartomány objektumainak száma alapján már nem változik a díjszabás.
+Ezeknek az Azure AD DS SKU-nak a megkezdése előtt a felügyelt tartomány objektumainak (felhasználói és számítógépfiókok) számán alapuló számlázási modell volt használatban. A felügyelt tartomány objektumainak száma alapján már nem változik a díjszabás.
 
 További információkért tekintse meg az [Azure AD DS díjszabását ismertető oldalt][pricing].
 
@@ -92,17 +92,17 @@ További információkért tekintse meg az [Azure AD DS díjszabását ismertet�
 
 A tartomány teljesítménye attól függően változik, hogy a hitelesítés Hogyan valósul meg az alkalmazáshoz. A további számítási erőforrások segíthetnek a lekérdezési válaszidő javításában és a szinkronizálási műveletekben eltöltött idő csökkentésében. Az SKU szintjének növekedésével a felügyelt tartomány számára elérhető számítási erőforrások megnövekednek. Figyelje az alkalmazások teljesítményét, és tervezze meg a szükséges erőforrásokat.
 
-Ha a vállalat vagy az alkalmazás megváltoztatást igényel, és további számítási teljesítményre van szüksége az Azure AD DS felügyelt tartományához, átválthat egy másik SKU-ra.
+Ha a vállalat vagy az alkalmazás megváltoztatja a változást, és további számítási teljesítményre van szüksége a felügyelt tartományhoz, átválthat egy másik SKU-ra.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-A biztonsági mentés gyakorisága határozza meg, hogy a rendszer milyen gyakran készítsen pillanatképet a felügyelt tartományról. A biztonsági mentések az Azure platform által felügyelt automatizált folyamatok. Ha a felügyelt tartománnyal kapcsolatos probléma merül fel, az Azure-támogatás segíthet a biztonsági mentésből való visszaállításban. Mivel a szinkronizálás csak az Azure AD *egyik módja,* ha az Azure AD DS felügyelt tartomány bármely problémája nem befolyásolja az Azure ad-t vagy a helyszíni AD DS környezeteket és funkciókat.
+A biztonsági mentés gyakorisága határozza meg, hogy a rendszer milyen gyakran készítsen pillanatképet a felügyelt tartományról. A biztonsági mentések az Azure platform által felügyelt automatizált folyamatok. Ha a felügyelt tartománnyal kapcsolatos probléma merül fel, az Azure-támogatás segíthet a biztonsági mentésből való visszaállításban. Mivel a szinkronizálás csak *az* Azure ad egyik módja, a felügyelt tartományokban előforduló problémák nem befolyásolják az Azure ad-t vagy a helyszíni AD DS környezeteket és funkciókat.
 
 Az SKU szintjének növekedésével a biztonsági mentési Pillanatképek gyakorisága növekszik. A felügyelt tartomány szükséges biztonsági mentési gyakoriságának meghatározásához tekintse át az üzleti követelmények és a helyreállítási pont célkitűzését (RPO). Ha az üzleti vagy az alkalmazásra vonatkozó követelmények változnak, és több gyakori biztonsági mentésre van szüksége, átválthat egy másik SKU-ra.
 
-### <a name="outbound-forests"></a>Kimenő erdők
+### <a name="outbound-forest-trusts"></a>Kimenő erdőszintű megbízhatósági kapcsolatok
 
-Az előző szakasz az egyirányú kimenő erdő megbízhatóságát egy Azure AD DS felügyelt tartományból egy helyszíni AD DS környezetbe (jelenleg előzetes verzióban). Az SKU meghatározza az Azure AD DS felügyelt tartományhoz létrehozható erdőszintű megbízhatósági kapcsolatok maximális számát. Tekintse át az üzleti és az alkalmazásra vonatkozó követelményeket, hogy meghatározza, hány megbízhatónak kell lennie, és válassza ki a megfelelő Azure AD DS SKU-t. Ha az üzleti követelmények megváltoznak, és további erdőszintű megbízhatósági kapcsolatokat kell létrehoznia, váltson át egy másik SKU-ra.
+Az előző szakaszban az egyirányú kimenő erdő megbízhatónak tekinti a felügyelt tartományból egy helyszíni AD DS környezetet (jelenleg előzetes verzióban érhető el). Az SKU meghatározza a felügyelt tartományhoz létrehozható erdőszintű megbízhatósági kapcsolatok maximális számát. Tekintse át az üzleti és az alkalmazásra vonatkozó követelményeket, hogy meghatározza, hány megbízhatónak kell lennie, és válassza ki a megfelelő Azure AD DS SKU-t. Ha az üzleti követelmények megváltoznak, és további erdőszintű megbízhatósági kapcsolatokat kell létrehoznia, váltson át egy másik SKU-ra.
 
 ## <a name="next-steps"></a>További lépések
 

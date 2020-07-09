@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82072637"
 ---
 ### <a name="general-query-limits"></a>Általános lekérdezési korlátok
@@ -32,7 +32,7 @@ Azure Monitor több szabályozási korláttal rendelkezik a túlzott számú lek
 | Egyidejű lekérdezések | 5 | Ha a felhasználó számára már 5 lekérdezés fut, minden új lekérdezés egy felhasználónkénti egyidejűségi sorba kerül. Ha az egyik futó lekérdezés véget ér, a rendszer a következő lekérdezést fogja lekérni a várólistából, és elindítja azt. Ez nem tartalmazza a riasztási szabályok lekérdezéseit.
 | A párhuzamossági várólistán lévő idő | 2,5 perc | Ha egy lekérdezés több mint 2,5 percet vesz igénybe a várólistán anélkül, hogy el kellene indítani, a rendszer a 429-es kóddal megszakítja a HTTP-hibaüzenetet. |
 | Összes lekérdezés a egyidejűségi várólistában | 40 | Ha a várólistán lévő lekérdezések száma eléri a 40-et, a további lekérdezések elutasítása a 429-es HTTP-hibakód alapján történik. Ez a szám a egyszerre futtatható 5 lekérdezésen kívül esik. |
-| Lekérdezési arány | 200-lekérdezések száma 30 másodpercenként | Ez az általános mérték, amellyel a lekérdezéseket egyetlen felhasználó elküldheti az összes munkaterülethez.  Ez a korlát a vizualizációs részek, például az Azure-irányítópultok és a Log Analytics munkaterület összefoglalás lapja által kezdeményezett programozott lekérdezésekre és lekérdezésekre vonatkozik. |
+| Lekérdezések sebessége | 200-lekérdezések száma 30 másodpercenként | Ez az általános mérték, amellyel a lekérdezéseket egyetlen felhasználó elküldheti az összes munkaterülethez.  Ez a korlát a vizualizációs részek, például az Azure-irányítópultok és a Log Analytics munkaterület összefoglalás lapja által kezdeményezett programozott lekérdezésekre és lekérdezésekre vonatkozik. |
 
 - Optimalizálja a lekérdezéseket a [Azure monitorban található naplók optimalizálása](../articles/azure-monitor/log-query/query-optimization.md)című témakörben leírtak szerint.
 - Az irányítópultok és a munkafüzetek egyetlen nézetben több lekérdezést is tartalmazhatnak, amelyek minden betöltéskor vagy frissítéskor feltört lekérdezéseket hoznak. Érdemes lehet több, igény szerinti terheléssel rendelkező nézetet feltörni. 

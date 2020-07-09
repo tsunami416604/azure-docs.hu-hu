@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841747"
 ---
 # <a name="output-batching"></a>Kimenet kötegelése
@@ -77,16 +76,16 @@ A Event Grid batching viselkedése előfizetőként testreszabható, az alábbi 
 
 A következő üzembe helyezési idő beállítások az esemény-előfizetés létrehozásakor engedélyezett maximális értéket vezérlik.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | A `PreferredBatchSizeInKilobytes` forgatógomb számára engedélyezett maximális érték Alapértelmezett `1033`érték.
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | A `MaxEventsPerBatch` forgatógomb számára engedélyezett maximális érték Alapértelmezett `50`érték.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | A forgatógomb számára engedélyezett maximális érték `PreferredBatchSizeInKilobytes` Alapértelmezett érték `1033` .
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | A forgatógomb számára engedélyezett maximális érték `MaxEventsPerBatch` Alapértelmezett érték `50` .
 
 ## <a name="configuring-runtime-default-values"></a>Futásidejű alapértelmezett értékek konfigurálása
 
 A következő üzembe helyezési idő beállításai vezérlik az egyes gombok futásidejű alapértelmezett értékét, ha az esemény-előfizetésben nincs megadva. Az ismételt próbálkozáshoz be kell állítani legalább egy gombot az esemény-előfizetésre, hogy bekapcsolja a kötegelt működést.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete `MaxEventsPerBatch` , ha csak meg van adva. Alapértelmezett `1_058_576`érték.
-| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` meg van adva. Alapértelmezett `10`érték.
+| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak meg `MaxEventsPerBatch` van adva. Alapértelmezett érték `1_058_576` .
+| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak meg `MaxBatchSizeInBytes` van adva. Alapértelmezett érték `10` .

@@ -1,5 +1,5 @@
 ---
-title: Támogatott források az Azure Red Hat OpenShift 3,11
+title: Az Azure Red Hat OpenShift 3.11 támogatott erőforrásai
 description: Megtudhatja, hogy mely Azure-régiók és virtuálisgép-méretek támogatottak Microsoft Azure Red Hat-OpenShift.
 author: jimzim
 ms.author: jzim
@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203675"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift-erőforrások

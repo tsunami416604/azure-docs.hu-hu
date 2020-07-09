@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797057"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Rendszerkép másolása egy másik gyűjteményből
@@ -154,7 +153,7 @@ az sig image-version create \
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs`vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `--storage-account-type  standard_zrs` ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `--storage-account-type  standard_zrs` Ha létrehozza a rendszerkép verzióját.
 >
 
 ## <a name="next-steps"></a>További lépések

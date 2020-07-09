@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402459"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106985"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -51,9 +51,12 @@ Mivel a feldolgozó csomópontok érzékenyek, a Microsoft nagy gondossággal go
 
 A Microsoft technikai támogatást nyújt a következőkhöz:
 
+> [!NOTE]
+> A Microsoft/AK által végrehajtott összes művelet felhasználói beleegyezett a beépített Kubernetes `aks-service` -szerepkör és a beépített szerepkör-kötés alá `aks-service-rolebinding` . Ez a szerepkör lehetővé teszi az AK számára a fürtökkel kapcsolatos problémák hibaelhárítását és diagnosztizálását, de nem módosíthatja az engedélyeket, és nem hozhat létre szerepköröket vagy szerepkör-kötéseket, illetve egyéb magas jogosultsági A szerepkör-hozzáférés csak az aktív támogatási jegyek esetében engedélyezett az igény szerinti (JIT) hozzáféréssel.
+
 * A Kubernetes szolgáltatás által biztosított és támogatott összes Kubernetes-összetevő, például az API-kiszolgáló kapcsolata.
 * A Kubernetes Control Plant-szolgáltatások (Kubernetes főcsomópontok, API-kiszolgáló, etcd és Kube-DNS) felügyelete, üzemidő, QoS és műveletei.
-* Etcd. A támogatás 30 percenként, a etcd és a fürt állapotának visszaállítására vonatkozó, automatizált, transzparens biztonsági mentéseket tartalmaz. Ezek a biztonsági másolatok nem érhetők el közvetlenül az ügyfelek és a felhasználók számára. Biztosítják az adatmegbízhatóságot és a konzisztenciát.
+* Etcd. A támogatás 30 percenként, a etcd és a fürt állapotának visszaállítására vonatkozó, automatizált, transzparens biztonsági mentéseket tartalmaz. Ezek a biztonsági másolatok nem érhetők el közvetlenül az ügyfelek és a felhasználók számára. Biztosítják az adatmegbízhatóságot és a konzisztenciát. Etcd. igény szerinti visszaállítás vagy helyreállítás nem támogatott szolgáltatásként.
 * Bármely integrációs pont az Azure Cloud Provider-illesztőprogramban a Kubernetes-hez. Ezek közé tartoznak más Azure-szolgáltatások, például a terheléselosztó, az állandó kötetek vagy a hálózatkezelés (Kubernetes és Azure CNI) integrációja.
 * A vezérlési sík összetevőinek, például a Kubernetes API-kiszolgáló, a etcd és a Kube-DNS testreszabásával kapcsolatos kérdések és problémák.
 * A hálózatkezeléssel kapcsolatos problémák, például az Azure CNI, a kubenet vagy más hálózati hozzáférési és működési problémák. A problémák magukban foglalhatják a DNS-feloldást, a csomagok elvesztését, az útválasztást és így tovább. A Microsoft különböző hálózati forgatókönyveket támogat:

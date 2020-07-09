@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ee648efde22e6bbef045b9d89b8d016e2e489f20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: tracking-python
+ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851615"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -78,14 +79,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node. js/JavaScript
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
 
 > [!NOTE]
 > A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
 >
 
-Alább látható egy példa a Node. js-hez vagy a Javascripthez.
+Alább látható egy példa a Node.js/JavaScript.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -103,25 +104,23 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Python SDK használatával:
 
 ```python
-
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
 client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
 
 ```
 
-## <a name="java-v4-sdk"></a>Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a>Java v4 SDK
 
 A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Java SDK használatával:
 
-### <a id="java4-preferred-locations"></a>
-#### <a name="async"></a>[Aszinkron](#tab/api-async)
+# <a name="async"></a>[Aszinkron](#tab/api-async)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) aszinkron API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
 
-#### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+# <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
 
@@ -130,44 +129,44 @@ A következő kód bemutatja, hogyan állíthatja be az előnyben részesített 
 --- 
 
 ## <a name="rest"></a>REST
-Ha az adatbázisfiók több régióban is elérhetővé vált, az ügyfelek lekérdezhetik a rendelkezésre állását egy GET kéréssel, amely a következő URI-ra vonatkozik.
 
-    https://{databaseaccount}.documents.azure.com/
+Ha egy adatbázis-fiókot több régióban is elérhetővé tettek, az ügyfelek lekérhetik a rendelkezésre állást egy GET kérelem elvégzésével ezen az URI-n`https://{databaseaccount}.documents.azure.com/`
 
 A szolgáltatás visszaadja a régiók listáját és a replikák régiókhoz tartozó Azure Cosmos-DB végpont URI-jait. A válasz az aktuális írási régiót is tartalmazni fogja. Az ügyfél ezután a következő módon választhatja ki a megfelelő végpontot a további REST API-kérésekhez.
 
 Példaválasz
 
-    {
-        "_dbs": "//dbs/",
-        "media": "//media/",
-        "writableLocations": [
-            {
-                "Name": "West US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
-            }
-        ],
-        "readableLocations": [
-            {
-                "Name": "East US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
-            }
-        ],
-        "MaxMediaStorageUsageInMB": 2048,
-        "MediaStorageUsageInMB": 0,
-        "ConsistencyPolicy": {
-            "defaultConsistencyLevel": "Session",
-            "maxStalenessPrefix": 100,
-            "maxIntervalInSeconds": 5
-        },
-        "addresses": "//addresses/",
-        "id": "globaldbexample",
-        "_rid": "globaldbexample.documents.azure.com",
-        "_self": "",
-        "_ts": 0,
-        "_etag": null
-    }
-
+```json
+{
+    "_dbs": "//dbs/",
+    "media": "//media/",
+    "writableLocations": [
+        {
+            "Name": "West US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
+        }
+    ],
+    "readableLocations": [
+        {
+            "Name": "East US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
+        }
+    ],
+    "MaxMediaStorageUsageInMB": 2048,
+    "MediaStorageUsageInMB": 0,
+    "ConsistencyPolicy": {
+        "defaultConsistencyLevel": "Session",
+        "maxStalenessPrefix": 100,
+        "maxIntervalInSeconds": 5
+    },
+    "addresses": "//addresses/",
+    "id": "globaldbexample",
+    "_rid": "globaldbexample.documents.azure.com",
+    "_self": "",
+    "_ts": 0,
+    "_etag": null
+}
+```
 
 * Az összes PUT, POST és DELETE kérelemnek a megadott írási URI-ra kell érkeznie
 * A beolvasás és az egyéb írásvédett kérelmek (például a lekérdezések) az ügyfél tetszőleges végpontján léphetnek fel

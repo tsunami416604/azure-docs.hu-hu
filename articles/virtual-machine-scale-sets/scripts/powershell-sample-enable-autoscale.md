@@ -6,14 +6,14 @@ ms.author: jushiman
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 03/27/2018
+ms.date: 06/25/2020
 ms.custom: avverma
-ms.openlocfilehash: 759ebb58afcceade8d52305c6a6a41a782ed4df6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 1db108adfe1a3af562a046160856a38daf990885
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701994"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374899"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Virtuálisgép-méretezési csoport automatikus méretezése a PowerShell-lel
 Ez a szkript egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot hoz létre, illetve gazdagépalapú mérőszámok használatával automatikusan elvégzi a méretezést, amely a CPU terhelésének változásaihoz igazodik.
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 ## <a name="script-explanation"></a>Szkript ismertetése
 A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Új – AzVmss](/powershell/module/az.compute/new-azvmss) | Létrehozza a virtuálisgép-méretezési csoportot és az összes támogató erőforrást, beleértve a virtuális hálózatot, a terheléselosztót és a NAT-szabályokat. |
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Lekéri a virtuálisgép-méretezési csoport adatait. |

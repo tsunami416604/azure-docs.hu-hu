@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390363"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -220,7 +220,7 @@ Az ACR olyan [Egyéni szerepköröket](container-registry-roles.md) támogat, am
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  Vagy rendelje hozzá a szerepkört egy, az alkalmazás azonosítója alapján azonosított szolgáltatási alapelvhez:
+  Vagy rendeljen hozzá egy szerepkört egy egyszerű szolgáltatáshoz, amelyet az alkalmazás azonosítója azonosított:
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -269,6 +269,7 @@ Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés
 - [Miért nem sorolja fel a Azure Portal az összes saját tárházat vagy címkét?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Miért nem sikerül beolvasni a Azure Portal adattárakat vagy címkéket?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Miért sikertelen a lekéréses vagy leküldéses kérelem a nem engedélyezett művelettel?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [A tárház formátuma érvénytelen vagy nem támogatott](#repository-format-is-invalid-or-unsupported)
 - [A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Állapot-ellenõrzés`az acr check-health`
@@ -438,6 +439,13 @@ Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigu
 * A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [szolgáltatási szintre](https://aka.ms/acr/skus) az [az ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy a Azure Portal használatával.
 * Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) parancsot.
 * Néhány művelet nem engedélyezett, ha a rendszerkép karanténban van. További információ a [karanténba helyezésről](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+* Lehetséges, hogy a beállításjegyzék elérte a [tárolási korlátot](container-registry-skus.md#service-tier-features-and-limits).
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>A tárház formátuma érvénytelen vagy nem támogatott
+
+Ha olyan hibaüzenetet lát, mint például a "nem támogatott adattár formátuma", "érvénytelen formátum" vagy "a kért adatok nem léteznek", amikor az adattár nevét adja meg a tárház műveleteiben, ellenőrizze a név helyesírását és az esetét. Az érvényes Tárházak neve csak kisbetűs alfanumerikus karaktereket, pontokat, kötőjeleket, aláhúzásokat és perjeleket tartalmazhat. 
+
+A Tárházak elnevezési szabályainak elvégzéséhez tekintse [meg a nyílt tároló kezdeményezésének terjesztési specifikációját](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?
 
@@ -493,10 +501,10 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 
 | Git szolgáltatás | Forrás kontextus | Manuális létrehozás | Automatikus létrehozás a commit trigger használatával |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Igen |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Igen |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Nem |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Igen | Nem |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Yes |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Yes |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Nem |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Nem |
 
 ## <a name="run-error-message-troubleshooting"></a>Hibaüzenetek futtatása – hibaelhárítás
 

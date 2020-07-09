@@ -5,21 +5,20 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5a74f1ca8d1055885561a35dbd18899193d3924d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75779688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984137"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
 > 

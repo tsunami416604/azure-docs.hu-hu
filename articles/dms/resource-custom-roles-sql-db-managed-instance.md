@@ -1,7 +1,7 @@
 ---
 title: 'Egyéni szerepkörök: online SQL Server az SQL felügyelt példányainak áttelepítéséhez'
 titleSuffix: Azure Database Migration Service
-description: Megtudhatja, hogyan használhatja a SQL Server egyéni szerepköreit a felügyelt példányok online áttelepítésének Azure SQL Database.
+description: Megtudhatja, hogyan használhatja SQL Server egyéni szerepköreit az Azure SQL felügyelt példányok online áttelepítéséhez.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 479c5165c206ced9f387d7b4a475945173da8a16
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254942"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086228"
 ---
-# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>A felügyelt példányok online áttelepítésének SQL Database SQL Server egyéni szerepkörei
+# <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Egyéni szerepkörök az Azure SQL felügyelt példányok online áttelepítéséhez SQL Server
 
 Azure Database Migration Service egy alkalmazás-azonosítót használ az Azure-szolgáltatásokkal való kommunikációhoz. Az alkalmazás-AZONOSÍTÓhoz a közreműködő szerepkörnek kell lennie az előfizetés szintjén (amely sok vállalati biztonsági osztályt nem engedélyez), vagy olyan egyéni szerepköröket hoz létre, amelyek az Azure Database migrations szolgáltatás által igényelt konkrét engedélyeket biztosítanak. Mivel a Azure Active Directoryban az egyéni szerepkörök 2 000 száma korlátozva van, előfordulhat, hogy az alkalmazás-azonosító által kifejezetten egy vagy két egyéni szerepkörhöz szükséges engedélyeket szeretné egyesíteni, majd az alkalmazás AZONOSÍTÓját az adott objektumokon vagy erőforráscsoportok (vagy az előfizetés szintjén) adja meg az egyéni szerepkörnek. Ha az egyéni szerepkörök száma nem aggodalomra ad okot, az egyéni szerepköröket az erőforrástípus alapján is feloszthatja, hogy az alább leírtak szerint három egyéni szerepkört hozzon létre.
 
@@ -30,7 +30,7 @@ A szerepkör-definíció JSON-karakterláncának AssignableScopes szakasza segí
 Javasoljuk, hogy legalább két egyéni szerepkört hozzon létre az alkalmazás-AZONOSÍTÓhoz, egyet az erőforrás szintjén és a másikat az előfizetés szintjén.
 
 > [!NOTE]
-> Az utolsó egyéni szerepkörre vonatkozó követelményt végül el lehet távolítani, mivel az új SQL Database felügyelt példány kódja üzembe helyezése az Azure-ban történik.
+> Az utolsó egyéni szerepkör-követelményt végül el lehet távolítani, mivel a rendszer az új SQL felügyelt példány kódját telepíti az Azure-ba.
 
 **Egyéni szerepkör az alkalmazás-azonosítóhoz**. Ez a szerepkör az *erőforrás* -vagy *erőforráscsoport* szintjén Azure Database Migration Service áttelepítéshez szükséges (az alkalmazás-azonosítóval kapcsolatos további tudnivalókért tekintse meg a következő cikket: az [Azure ad-alkalmazás és az erőforrások elérésére képes egyszerű szolgáltatásnév létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
 
@@ -87,14 +87,14 @@ További információt az [Azure-erőforrások egyéni szerepkörei](https://doc
 
 Miután létrehozta ezeket az egyéni szerepköröket, szerepkör-hozzárendeléseket kell hozzáadnia a felhasználókhoz és az alkalmazás-AZONOSÍTÓhoz a megfelelő erőforrásokhoz vagy erőforráscsoportokhöz:
 
-* A "DMS role-app ID" szerepkört meg kell adni az áttelepítéshez használt alkalmazás-AZONOSÍTÓhoz, valamint a Storage-fiókhoz, Azure Database Migration Service-példányhoz és SQL Database felügyelt példány erőforrás-szintjeihez.
+* A "DMS role-app ID" szerepkört meg kell adni az áttelepítéshez használt alkalmazás-AZONOSÍTÓnak, valamint a Storage-fiókon, Azure Database Migration Service-példányon és az SQL felügyelt példányának erőforrás-szintjein.
 * A "DMS role-app ID-Sub" szerepkört az előfizetés szintjén kell megadni az alkalmazás-AZONOSÍTÓhoz (az erőforrás vagy az erőforráscsoport megadása sikertelen lesz). Ez a követelmény ideiglenes, amíg nincs telepítve a kód frissítése.
 
 ## <a name="expanded-number-of-roles"></a>Szerepkörök számának kibontása
 
 Ha a Azure Active Directoryban szereplő egyéni szerepkörök száma nem jelent problémát, javasoljuk, hogy hozzon létre összesen három szerepkört. Továbbra is szüksége lesz a "DMS szerepkör-alkalmazás-azonosító – Sub" szerepkörre, de a fenti "DMS szerepkör-alkalmazás-azonosító" szerepkör az erőforrástípus két különböző szerepkörre van bontva.
 
-**Egyéni szerepkör SQL Database felügyelt példányhoz tartozó alkalmazás-AZONOSÍTÓhoz**
+**Egyéni szerepkör a felügyelt SQL-példányhoz tartozó alkalmazás-AZONOSÍTÓhoz**
 
 ```json
 {

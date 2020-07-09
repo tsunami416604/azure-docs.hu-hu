@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84508997"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -47,14 +46,18 @@ Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy
 
 Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](https://docs.microsoft.com/azure/vpn-gateway/)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
+> [!NOTE]
+> Bizonyos esetekben a Azure Database for PostgreSQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforPostgreSQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+
 ## <a name="configure-private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás konfigurálása Azure Database for PostgreSQL egyetlen kiszolgálóhoz
 
 ### <a name="creation-process"></a>Létrehozási folyamat
 
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
-* [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
-* [parancssori felület](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
+* [Azure Portalra](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
+* [Parancssori felület](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), a PostgreSQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) Azure Database for PostgreSQL. A hálózati rendszergazda és a DBA közötti feladatok elkülönítése hasznos lehet az Azure Database for PostgreSQL-kapcsolat kezeléséhez. 
@@ -111,7 +114,7 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 
 Ha csak privát végpontokat szeretne használni a Azure Database for PostgreSQL egyetlen kiszolgálóhoz való hozzáféréshez, letilthatja az összes nyilvános végpont ([Tűzfalszabályok](concepts-firewall-rules.md) és [VNet-végpontok](concepts-data-access-and-security-vnet.md)) beállítását úgy, hogy **megtagadja a nyilvános hálózati hozzáférési konfiguráció megtagadását** az adatbázis-kiszolgálón. 
 
-Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for PostgreSQL. Ha ezt a beállítást úgy állítja be, hogy *egyetlen ügyfél sem* tud csatlakozni a Azure Database for PostgreSQL a tűzfal vagy a VNet szolgáltatás végpont-beállítása alapján. Emellett, ha a magánhálózati hozzáférés értéke ügyfelekre van állítva, a meglévő "tűzfalszabályok" és a "VNet szolgáltatás végpontja" szabály nem adható hozzá és/vagy nem frissíthető.
+Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for PostgreSQL. Ha ezt a beállítást úgy állítja be, hogy *egyetlen ügyfél sem* tud csatlakozni a Azure Database for PostgreSQL a tűzfal vagy a VNet szolgáltatás végpont-beállítása alapján. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
 
 > [!Note]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.
@@ -129,3 +132,6 @@ Ha többet szeretne megtudni a Azure Database for PostgreSQL egyetlen kiszolgál
 * Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for PostgreSQL egyetlen kiszolgálóhoz, tekintse meg a [virtuális hálózatok elérésének konfigurálása](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet)című témakört.
 
 * Az egykiszolgálós kapcsolatok Azure Database for PostgreSQLának áttekintését lásd: [Azure Database for PostgreSQL kapcsolati architektúra](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
 ms.openlocfilehash: 068586a96ad3655cb70171266bd58f56ed320fc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664381"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Saját üzemeltetésű Integration Runtime telepítésének automatizálása helyi PowerShell-parancsfájlok használatával
@@ -34,9 +34,9 @@ Ha az Azure-beli virtuális gépeken kívül szeretné használni a saját üzem
 > Ezek a parancsfájlok a saját üzemeltetésű integrációs modulban a [dokumentált parancssori segédprogram](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell) használatával jönnek létre. Ha szükséges, a szkripteket ennek megfelelően testreszabhatja az automatizálási igényeik kielégítése érdekében.
 > A parancsfájlokat csomóponton kell alkalmazni, ezért mindenképpen futtassa azt az összes csomóponton a magas rendelkezésre állású telepítés (2 vagy több csomópont) esetén.
 
-* A telepítő automatizálása: új, saját üzemeltetésű integrációs modul telepítése és regisztrálása a **[InstallGatewayOnLocalMachine. ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** használatával – a parancsfájl használható a saját üzemeltetésű integrációs modul csomópontjának telepítésére és egy hitelesítési kulccsal való regisztrálására. A parancsfájl két argumentumot fogad el, **először** a saját üzemeltetésű [integrációs](https://www.microsoft.com/download/details.aspx?id=39717) modul helyét adja meg egy helyi lemezen, **Másodszor** a **hitelesítési kulcs** megadását (a saját üzemeltetésű IR-csomópont regisztrálásához).
+* A telepítő automatizálása: új, saját üzemeltetésű integrációs modul telepítése és regisztrálása a **[InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** használatával – a szkript használható a saját üzemeltetésű integrációs modul csomópontjának telepítéséhez és egy hitelesítési kulccsal való regisztrálásához. A parancsfájl két argumentumot fogad el, **először** a saját üzemeltetésű [integrációs](https://www.microsoft.com/download/details.aspx?id=39717) modul helyét adja meg egy helyi lemezen, **Másodszor** a **hitelesítési kulcs** megadását (a saját üzemeltetésű IR-csomópont regisztrálásához).
 
-* A manuális frissítések automatizálásához: frissítse a saját üzemeltetésű IR-csomópontot egy adott verzióval vagy a legújabb **[script-Update-Gateway. ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** verzióra – ez abban az esetben is támogatott, ha kikapcsolta az automatikus frissítést, vagy nagyobb mértékben szeretné vezérelni a frissítéseket. A parancsfájl segítségével frissítheti a saját üzemeltetésű integrációs modul csomópontját a legújabb verzióra vagy egy megadott magasabb verzióra (a visszalépés nem működik). Elfogad egy argumentumot a verziószám megadásához (például:-Version 3.13.6942.1). Ha nincs megadva verzió, az mindig frissíti a saját üzemeltetésű integrációs modult a [letöltésekben](https://www.microsoft.com/download/details.aspx?id=39717)található legújabb verzióra.
+* Manuális frissítések automatizálása: frissítse a saját üzemeltetésű IR-csomópontot egy adott verzióval vagy a legújabb verzióval **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** – ez abban az esetben is támogatott, ha kikapcsolta az automatikus frissítést, vagy nagyobb mértékben szeretné vezérelni a frissítéseket. A parancsfájl segítségével frissítheti a saját üzemeltetésű integrációs modul csomópontját a legújabb verzióra vagy egy megadott magasabb verzióra (a visszalépés nem működik). Elfogad egy argumentumot a verziószám megadásához (például:-Version 3.13.6942.1). Ha nincs megadva verzió, az mindig frissíti a saját üzemeltetésű integrációs modult a [letöltésekben](https://www.microsoft.com/download/details.aspx?id=39717)található legújabb verzióra.
     > [!NOTE]
     > Csak a legutóbbi 3 verziót lehet megadni. Ideális esetben ez egy meglévő csomópont legújabb verzióra való frissítésére szolgál. **feltételezi, hogy rendelkezik egy regisztrált saját**ÜZEMELTETÉSű IR-vel. 
 
@@ -44,7 +44,7 @@ Ha az Azure-beli virtuális gépeken kívül szeretné használni a saját üzem
 
 ### <a name="for-automating-setup"></a>A telepítő automatizálása
 1. Töltse le a saját üzemeltetésű IR [-t innen](https://www.microsoft.com/download/details.aspx?id=39717). 
-1. Itt adhatja meg azt az elérési utat, ahol a fenti letöltött (telepítési fájl). Ha például az elérési út a *IntegrationRuntime_4.7.7368.1. msi c:\users\username\downloads\*van, akkor a következő PowerShell parancssori példa használható ehhez a feladathoz:
+1. Itt adhatja meg azt az elérési utat, ahol a fenti letöltött (telepítési fájl). Ha például az elérési út *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi*, akkor a következő PowerShell parancssori példát használhatja ehhez a feladathoz:
 
    ```powershell
    PS C:\windows\system32> C:\Users\username\Desktop\InstallGatewayOnLocalMachine.ps1 -path "C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi" -authKey "[key]"
@@ -53,7 +53,7 @@ Ha az Azure-beli virtuális gépeken kívül szeretné használni a saját üzem
     > [!NOTE]
     > A [kulcs] helyére írja be a hitelesítési kulcsot az IR regisztrálásához.
     > Cserélje le a "username" nevet a felhasználónevére.
-    > Adja meg a "InstallGatewayOnLocalMachine. ps1" fájl helyét a parancsfájl futtatásakor. Ebben a példában a Desktopban tároltuk.
+    > Adja meg a "InstallGatewayOnLocalMachine.ps1" fájl helyét a parancsfájl futtatásakor. Ebben a példában a Desktopban tároltuk.
 
 1. Ha van egy előre telepített, saját üzemeltetésű integrációs modul a gépen, a parancsfájl automatikusan eltávolítja, majd egy újat konfigurál. Ekkor megjelenik az alábbi ablak: ![ Integration Runtime konfigurálása](media/self-hosted-integration-runtime-automation-scripts/integration-runtime-configure.png)
 

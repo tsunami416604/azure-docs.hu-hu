@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70208142"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959143"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Közös identitás beállítása Data Science Virtual Machine
 
@@ -41,9 +41,9 @@ Az Azure AD DS segítségével egyszerűen kezelheti az identitásait egy teljes
     
    1. A **felhasználók és csoportok**területen válassza a **minden felhasználó**lehetőséget, majd válassza az **új felhasználó**lehetőséget.
    
-           The **User** pane opens:
+        Megnyílik a **felhasználó** ablaktábla:
       
-      ![A "felhasználó" panel](./media/add-user.png)
+        ![A "felhasználó" panel](./media/add-user.png)
     
    1. Adja meg a felhasználó adatait (például **Név** és **Felhasználónév**). A Felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynévnek ([tartománynév]. onmicrosoft. com) vagy egy ellenőrzött, nem összevont [Egyéni tartománynévnek](../../active-directory/add-custom-domain.md) (például "contoso.com") kell lennie.
     
@@ -69,8 +69,8 @@ Az Azure AD DS segítségével egyszerűen kezelheti az identitásait egy teljes
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-1. Tegyük fel például, hogy csatlakoztatta a Azure Files-megosztást a/Data/Workspace.-ben Most hozzon létre címtárakat az egyes felhasználók számára a megosztásban:/Data/Workspace/user1,/Data/Workspace/USER2 stb. Hozzon `notebooks` létre egy könyvtárat az egyes felhasználók munkaterületén. 
-1. Szimbolikus hivatkozások létrehozása a `notebooks` következőhöz: `$HOME/userx/notebooks/remote`.   
+1. Tegyük fel például, hogy csatlakoztatta a Azure Files-megosztást a/Data/Workspace.-ben Most hozzon létre címtárakat az egyes felhasználók számára a megosztásban:/Data/Workspace/user1,/Data/Workspace/USER2 stb. Hozzon létre egy `notebooks` könyvtárat az egyes felhasználók munkaterületén. 
+1. Szimbolikus hivatkozások létrehozása a következőhöz `notebooks` : `$HOME/userx/notebooks/remote` .   
 
 Most már rendelkezik az Azure-ban üzemeltetett Active Directory-példány felhasználóinak. Active Directory hitelesítő adatok használatával a felhasználók bejelentkezhetnek az Azure AD DShoz csatlakoztatott bármely DSVM (SSH vagy JupyterHub). Mivel a felhasználói munkaterület egy Azure Files megosztáson van, a felhasználók a JupyterHub használatakor hozzáférhetnek a notebookokhoz és egyéb munkához bármely DSVM.
 

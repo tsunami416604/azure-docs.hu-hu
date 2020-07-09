@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334501"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Rajzolási eszközök eszköztárának hozzáadása térképhez
@@ -38,7 +38,7 @@ Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási eszköztár hozzáadása" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Rajzolás eszköztár hozzáadásával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Rajzolás eszköztár hozzáadásával</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -62,13 +62,13 @@ Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög rajzolási eszköz hozzáadása" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>sokszög rajzolási eszköz hozzáadása</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>sokszög rajzolási eszköz hozzáadása</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>Rajzolási renderelési stílus módosítása
 
-A rajzolt alakzatok stílusa testreszabható úgy, hogy a (z) `drawingManager.getLayers()` függvény használatával beolvassa a Rajzfigyelő mögöttes rétegeit, majd beállítja a beállításokat az egyes rétegeken. A Koordinátákban megjelenő fogópontok az alakzatok szerkesztésekor HTML-jelölők. A húzási fogópontok stílusa testreszabható a HTML-jelölő beállításainak átadásával a `dragHandleStyle` rajzobjektum `secondaryDragHandleStyle` és a beállítások között.  
+A rajzolt alakzatok stílusa testreszabható úgy, hogy a (z) függvény használatával beolvassa a Rajzfigyelő mögöttes rétegeit `drawingManager.getLayers()` , majd beállítja a beállításokat az egyes rétegeken. A Koordinátákban megjelenő fogópontok az alakzatok szerkesztésekor HTML-jelölők. A húzási fogópontok stílusa testreszabható a HTML-jelölő beállításainak átadásával a `dragHandleStyle` rajzobjektum és a `secondaryDragHandleStyle` beállítások között.  
 
 A következő kód beolvassa a rajzolási rétegeket a projektmenedzsertől, és módosítja a rajzolási stílus módosítására vonatkozó beállításokat. Ebben az esetben a pontok kék jelölő ikonnal jelennek meg. A sorok piros és négy képpont szélesek lesznek. A sokszögek zöld kitöltési színnel és narancssárga körvonalsal fognak rendelkezni. Ezután megváltoztatja a húzási fogópontok stílusát négyzet alakú ikonként. 
 
@@ -122,7 +122,7 @@ Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási renderelési stílus módosítása" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>módosításának rajzolási stílusát</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>módosításának rajzolási stílusát</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

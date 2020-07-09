@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117080"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964804"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Oktatóanyag: Blender-jelenet renderelése a Batch Explorerrel
 
@@ -27,9 +27,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha használatalapú fizetést szeretne alkalmazni a Batch renderelő alkalmazásaira, használatalapú előfizetésre vagy egy egyéb Azure vásárlási opcióra van szüksége. A használatalapú fizetés licencelése nem támogatott, ha olyan ingyenes Azure-ajánlatot használ, amely kreditfeltöltést kínál.
 
-Szüksége van egy Azure Batch-fiókra, társított tárfiókkal.  Batch-fiók létrehozásához tekintse meg bármelyik Batch rövid útmutatót, például a [parancssori felülettel kapcsolatos cikket](https://docs.microsoft.com/azure/batch/quick-create-cli).
+Szüksége van egy Azure Batch-fiókra, társított tárfiókkal.  Batch-fiók létrehozásához tekintse meg bármelyik Batch rövid útmutatót, például a [parancssori felülettel kapcsolatos cikket](./quick-create-cli.md).
 
-Legalább 50 magos alacsony prioritású magkvótára van szükség a virtuális gép méretéhez és a virtuális gépek ebben az oktatóanyagban meghatározott számához; az alapértelmezett kvóta is használható, de ekkor kisebb méretű virtuális gépet kell használni, ami azt jelenti, hogy a képek renderelése hosszabb ideig tart. Ha nagyobb magkvótát szeretne kérni, [ezt a cikket](https://docs.microsoft.com/azure/batch/batch-quota-limit) tekintse át.
+Legalább 50 magos alacsony prioritású magkvótára van szükség a virtuális gép méretéhez és a virtuális gépek ebben az oktatóanyagban meghatározott számához; az alapértelmezett kvóta is használható, de ekkor kisebb méretű virtuális gépet kell használni, ami azt jelenti, hogy a képek renderelése hosszabb ideig tart. Ha nagyobb magkvótát szeretne kérni, [ezt a cikket](./batch-quota-limit.md) tekintse át.
 
 Telepítve kell lennie a [Batch Explorernek](https://azure.github.io/BatchExplorer/), amely Windows, OSX és Linux rendszerekhez érhető el. Nem kötelező, de ha a [Blender](https://www.blender.org/download/) telepítve van, akkor megtekinthető a mintául szolgáló modellfájl.
 
@@ -127,7 +127,7 @@ A feladatsablon azt is meghatározza, hogy a kimeneti képkockát és a naplóf�
 
 Ha minden tevékenység befejeződött, a feladat befejezettként lesz megjelölve: ![Befejezett feladat és tevékenységek](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 > [!WARNING]
 > Törölni kell a készletet (vagy át kell méreteznie nulla csomópontra), hogy a virtuális gépek díjai ne terheljék Azure-előfizetését.
@@ -139,4 +139,4 @@ Ha minden tevékenység befejeződött, a feladat befejezettként lesz megjelöl
 ## <a name="next-steps"></a>További lépések
 * A „Gallery” (Katalógus) szakaszban megismerkedhet a Batch Exploreren keresztül elérhető renderelő alkalmazásokkal.
 * Mindegyik alkalmazáshoz több sablon érhető el, amelyek száma idővel nőni fog.  A Blenderhez elérhetők például olyan sablonok, amelyek egyetlen képet osztanak fel csempékké, hogy egy kép részeit egymással párhuzamosan lehessen renderelni.
-* A renderelési képességek átfogó ismertetését az [itt](https://docs.microsoft.com/azure/batch/batch-rendering-service) található cikkek tartalmazzák.
+* A renderelési képességek átfogó ismertetését az [itt](./batch-rendering-service.md) található cikkek tartalmazzák.

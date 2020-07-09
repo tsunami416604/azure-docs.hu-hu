@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80292007"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039075"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementálása IoT Edge Stream Analyticshoz API-k használatával
 
@@ -24,7 +24,7 @@ A REST API-k Linux és Windows rendszerből is hívhatók. Az alábbi parancsok 
 
 ### <a name="linux"></a>Linux
 
-Linux esetén a következő `Curl` `Wget` parancsokat használhatja:
+Linux esetén a következő parancsokat használhatja `Curl` `Wget` :
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
@@ -55,7 +55,7 @@ echo $response
  
 Stream Analytics-feladatok létrehozásához hívja meg a PUT metódust a Stream Analytics API használatával.
 
-|Módszer|Kérés URL-címe|
+|Metódus|URL-cím kérése|
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
@@ -142,7 +142,7 @@ További információ: [API-dokumentáció](/rest/api/streamanalytics/stream-ana
  
 Ha Stream Analytics feladatot szeretne közzétenni IoT Edge, hívja meg a POST metódust a Edge Package publish API használatával.
 
-|Módszer|Kérés URL-címe|
+|Metódus|URL-cím kérése|
 |------|-----------|
 |POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 

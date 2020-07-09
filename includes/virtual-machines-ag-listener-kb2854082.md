@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179067"
 ---
 Ha a fürt bármely kiszolgálója Windows Server 2008 R2 vagy Windows Server 2012 rendszert futtat, ellenőriznie kell, hogy a gyorsjavítás [KB2854082](https://support.microsoft.com/kb/2854082) telepítve van-e a fürt részét képező helyszíni kiszolgálókon vagy Azure-beli virtuális gépeken. A fürtben lévő minden olyan kiszolgálót vagy virtuális gépet, amely a rendelkezésre állási csoportban nem található, a gyorsjavítást is telepíteni kell.

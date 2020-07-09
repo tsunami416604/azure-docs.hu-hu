@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550277"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
 
@@ -63,7 +63,7 @@ Az ilyen helyzetek rögzítésére szolgáló diszkrét események naplózása a
 
 A kulcs jelszava – az érvényesítéssel kapcsolatos események a következők:
 
-|   |Jelszó módosítása |Jelszó beállítva|
+| Esemény |Jelszó módosítása |Jelszó beállítva|
 | --- | :---: | :---: |
 |Pass |10014 |10015|
 |Sikertelen (az ügyfél jelszavas házirendje miatt)| 10016, 30002| 10017, 30003|
@@ -96,7 +96,7 @@ PasswordSetErrors               : 1
 
 A parancsmag jelentéskészítési hatóköre befolyásolhatja az – erdő, a tartomány vagy a – tartományvezérlő paraméterek egyikét. A paraméter nem adható meg – erdő.
 
-A `Get-AzureADPasswordProtectionSummaryReport` PARANCSMAG a tartományvezérlői ügynök rendszergazdai eseménynaplójának lekérdezésével működik, majd megszámolja az összes megjelenített eredmény kategóriának megfelelő események teljes számát. A következő táblázat az egyes eredmények és a hozzá tartozó eseményazonosító közötti leképezéseket tartalmazza:
+A `Get-AzureADPasswordProtectionSummaryReport` parancsmag a tartományvezérlői ügynök rendszergazdai eseménynaplójának lekérdezésével működik, majd megszámolja az összes megjelenített eredmény kategóriának megfelelő események teljes számát. A következő táblázat az egyes eredmények és a hozzá tartozó eseményazonosító közötti leképezéseket tartalmazza:
 
 |Get-AzureADPasswordProtectionSummaryReport tulajdonság |Megfelelő eseményazonosító|
 | :---: | :---: |
@@ -109,7 +109,7 @@ A `Get-AzureADPasswordProtectionSummaryReport` PARANCSMAG a tartományvezérlői
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Vegye figyelembe, `Get-AzureADPasswordProtectionSummaryReport` hogy a parancsmag PowerShell-parancsfájl formájában van elküldve, és szükség esetén közvetlenül a következő helyen lehet hivatkozni:
+Vegye figyelembe, hogy a `Get-AzureADPasswordProtectionSummaryReport` parancsmag PowerShell-parancsfájl formájában van elküldve, és szükség esetén közvetlenül a következő helyen lehet hivatkozni:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
@@ -235,7 +235,7 @@ A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvé
 
 A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem**nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
 
-|Teljesítményszámláló neve | Leírás|
+|Teljesítményszámláló neve | Description|
 | --- | --- |
 |Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy visszautasított) jelszavak teljes számát jeleníti meg.|
 |Elfogadott jelszavak |Ez a számláló a legutóbbi újraindítás óta elfogadott jelszavak teljes számát jeleníti meg.|

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808608"
 ---
 # <a name="convert-models"></a>Modellek konvertálása
 
@@ -38,6 +38,11 @@ Kisebb eltérések vannak a formátumok között az anyagi tulajdonságok átala
     - vagy *közös hozzáférési aláírás (SAS)* megadásával.
 
 Minden modell-adat (bemenet és kimenet) a felhasználó által megadott Azure Blob Storage-tárolóban tárolódik. Az Azure-alapú távoli renderelés teljes körű irányítást biztosít az eszközök felügyeletéhez.
+
+## <a name="pricing"></a>Díjszabás
+
+Az átalakítás díjszabásával kapcsolatos információkért tekintse meg a [távoli renderelés díjszabását](https://azure.microsoft.com/pricing/details/remote-rendering) ismertető oldalt.
+
 
 ## <a name="conversion-parameters"></a>Átalakítási paraméterek
 

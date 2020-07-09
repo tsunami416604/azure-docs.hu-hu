@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
 ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84112644"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
@@ -67,14 +66,14 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
-| [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [Az Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Metaadatok beállításai
 
 A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység mezőinek listájában a megfelelő információk lekéréséhez:
 
-| Metaadat típusa | Leírás |
+| Metaadat típusa | Description |
 |:--- |:--- |
 | itemName | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusa. A visszaadott érték a következő: `File` vagy `Folder` . |
@@ -93,7 +92,7 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 >[!NOTE]
 >Ha a fájl tárolja a metaadatokat, és `modifiedDatetimeStart` konfigurálja `modifiedDatetimeEnd` a vagy a-t, a `childItems` kimenetben csak a megadott tartományon belüli utolsó módosítási időt tartalmazó fájlok jelennek meg. A nem tartalmazza az almappákban található elemeket.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 **Metaadatok beolvasása tevékenység**
 
@@ -139,10 +138,10 @@ A metaadatok beolvasása tevékenység jelenleg a következő típusú metaadato
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Igen 
-adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Igen
-formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
-storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
+Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Yes 
+adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Yes
+formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
+storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
 
 ## <a name="sample-output"></a>Példa kimenet
 

@@ -4,15 +4,15 @@ description: Útmutató a Graph-adatbázisok modellezéséhez Azure Cosmos DB Gr
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261817"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
 
@@ -45,14 +45,14 @@ Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/
 
 A Graph-objektumok tulajdonságaira vonatkozó ajánlott eljárások a következők:
 
-| Objektum | Tulajdonság | Típus | Megjegyzések |
+| Objektum | Tulajdonság | Típus | Jegyzetek |
 | --- | --- | --- |  --- |
-| Vertex | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
-| Vertex | label | Sztring | Ez a tulajdonság határozza meg a csúcspont által reprezentált entitás típusát. Ha nincs megadva érték, a rendszer az alapértelmezett "Vertex" értéket fogja használni. |
+| Vertex | ID | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
+| Vertex | címke | Sztring | Ez a tulajdonság határozza meg a csúcspont által reprezentált entitás típusát. Ha nincs megadva érték, a rendszer az alapértelmezett "Vertex" értéket fogja használni. |
 | Vertex | properties | Karakterlánc, logikai, numerikus | Az egyes csúcspontokban kulcs-érték párokként tárolt külön tulajdonságok listája. |
 | Vertex | partíciós kulcs | Karakterlánc, logikai, numerikus | Ez a tulajdonság határozza meg, hogy a csúcspont és a kimenő élek hol lesznek tárolva. További információ a [Graph particionálásról](graph-partitioning.md). |
-| Edge | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Alapértelmezés szerint automatikusan létrejön. Az éleket általában nem kell egyedi módon beolvasni egy AZONOSÍTÓval. |
-| Edge | label | Sztring | Ez a tulajdonság határozza meg, hogy milyen típusú kapcsolatra van két csúcspont. |
+| Edge | ID | Sztring | A partíciók egyedi kikényszerítve. Alapértelmezés szerint automatikusan létrejön. Az éleket általában nem kell egyedi módon beolvasni egy AZONOSÍTÓval. |
+| Edge | címke | Sztring | Ez a tulajdonság határozza meg, hogy milyen típusú kapcsolatra van két csúcspont. |
 | Edge | properties | Karakterlánc, logikai, numerikus | Az egyes szegélyekben kulcs-érték párokként tárolt külön tulajdonságok listája. |
 
 > [!NOTE]
@@ -73,11 +73,11 @@ Az egyik gyakori buktató az egyetlen entitás tulajdonságainak leképezése k�
 
 * **Vertex-alapú tulajdonságok**: ebben a megközelítésben az entitás három különálló csúcspontot és két szegélyt használ a tulajdonságainak leírására. Ez a megközelítés csökkentheti a redundanciát, és növeli a modell bonyolultságát. A modell bonyolultságának növekedése a késés, a lekérdezés bonyolultsága és a számítási költségeket eredményezheti. Ez a modell a particionálással kapcsolatos kihívásokat is jelenthet.
 
-![Entitás-modell a tulajdonságok csúcspontokkal.](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
 
 * **Tulajdonsággal beágyazott csúcspontok**: Ez a megközelítés kihasználja a kulcs-érték párok listáját, hogy az entitás összes tulajdonságát reprezentálja a csúcsponton belül. Ez a megközelítés csökkenti a modell bonyolultságát, ami egyszerűbb lekérdezéseket és költséghatékonyabb bejárásokat eredményez.
 
-![Entitás-modell a tulajdonságok csúcspontokkal.](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
 
 > [!NOTE]
 > A fenti példák egy egyszerűsített gráfot mutatnak be, amely csak az entitás tulajdonságainak felosztására szolgáló két módszer összehasonlítását mutatja be.
@@ -90,11 +90,11 @@ Vannak azonban olyan helyzetek, amikor egy tulajdonságra hivatkozva előnyt jel
 
 A csúcspontok modellezése után a szegélyek hozzáadhatók a közöttük lévő kapcsolatok jelöléséhez. Az első szempont, amelyet ki kell értékelni a **kapcsolat irányát**. 
 
-Az Edge-objektumok alapértelmezett iránya a vagy `out()` `outE()` a függvény használatakor bejárási művelet. Ennek a természetes irányú iránynak a használata hatékony műveletet eredményez, mivel minden csúcspontot a kimenő élek tárolnak. 
+Az Edge-objektumok alapértelmezett iránya a vagy a függvény használatakor bejárási `out()` `outE()` művelet. Ennek a természetes irányú iránynak a használata hatékony műveletet eredményez, mivel minden csúcspontot a kimenő élek tárolnak. 
 
 Egy Edge ellenkező irányú átjárása azonban a `in()` függvény használatával mindig egy több partíciós lekérdezést fog eredményezni. További információ a [Graph particionálásról](graph-partitioning.md). Ha állandóan át kell haladnia a `in()` függvény használatával, azt javasoljuk, hogy mindkét irányban vegyen fel éleket.
 
-A peremhálózat irányát a `.to()` vagy `.from()` a predikátumok használatával határozhatja meg az `.addE()` Gremlin lépéshez. Vagy a Gremlin API-hoz készült [tömeges végrehajtó kódtár](bulk-executor-graph-dotnet.md)használatával.
+A peremhálózat irányát a vagy a predikátumok használatával határozhatja meg `.to()` `.from()` az `.addE()` Gremlin lépéshez. Vagy a Gremlin API-hoz készült [tömeges végrehajtó kódtár](bulk-executor-graph-dotnet.md)használatával.
 
 > [!NOTE]
 > Az Edge-objektumok alapértelmezés szerint irányt mutatnak.
@@ -105,7 +105,7 @@ A leíró kapcsolati címkék használatával javítható a peremhálózat-felol
 * Használjon nem általános kifejezéseket a kapcsolatok címkézéséhez.
 * Társítsa a forrás csúcspontjának címkéjét a cél csúcspontjának címkéjéhez a kapcsolat nevével.
 
-![Relációs címkézési példák.](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Relációs címkézési példák." border="false":::
 
 Minél pontosabb a felirat, amelyet a bejárás használ az élek szűrésére, annál jobb. Ez a döntés jelentős hatással lehet a lekérdezési díjakra is. A lekérdezési költségeket bármikor kiértékelheti [a executionProfile lépés használatával](graph-execution-profile.md).
 

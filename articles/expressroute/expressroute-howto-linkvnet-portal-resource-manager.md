@@ -4,20 +4,20 @@ description: Csatlakoztasson egy VNet egy Azure ExpressRoute-áramkörhöz. Útm
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737070"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Virtuális hálózat összekapcsolása ExpressRoute-kapcsolatcsoporttal a portálon
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -55,7 +55,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy kapcsolatot egy virtuál
 1. Győződjön meg arról, hogy a ExpressRoute-áramkör és az Azure Private-társítása sikeresen konfigurálva van. Kövesse a ExpressRoute- [áramkör létrehozása](expressroute-howto-circuit-arm.md) és a [ExpressRoute-kör társításának létrehozása és módosítása](expressroute-howto-routing-arm.md)című témakör utasításait. A ExpressRoute-áramkörnek a következő képhez hasonlóan kell kinéznie:
 
    [![Képernyőkép a ExpressRoute áramkörről](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Áramkör megtekintése")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. Most már megkezdheti a kapcsolat létesítését, hogy a virtuális hálózati átjárót a ExpressRoute áramkörhöz kapcsolja. Kattintson a **Kapcsolódás** > **Hozzáadás** elemre a **Kapcsolódás hozzáadása** lap megnyitásához, majd konfigurálja az értékeket.
+2. Most már megkezdheti a kapcsolat létesítését, hogy a virtuális hálózati átjárót a ExpressRoute áramkörhöz kapcsolja. Kattintson a **Kapcsolódás**  >  **Hozzáadás** elemre a **Kapcsolódás hozzáadása** lap megnyitásához, majd konfigurálja az értékeket.
 
    [![A kapcsolatok hozzáadása képernyőkép](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "A kapcsolatok hozzáadása képernyőkép")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. A kapcsolat sikeres konfigurálását követően a kapcsolati objektum megjeleníti a kapcsolat információit.

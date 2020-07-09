@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204081"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -24,11 +24,11 @@ ms.locfileid: "78184077"
 
 A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a [OAuth 1,0 protokoll](https://tools.ietf.org/html/rfc5849) identitás-szolgáltatója számára. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti. A OAuth1-alapú technikai profillal OAuth1-alapú összevonása (például Twitter) is használható. Az egyesítő lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
-A **protokoll** elem `OAuth1` **Name** attribútumát be kell állítani. A **Twitter-OAUTH1** technikai profilhoz tartozó protokoll például a következő: `OAuth1`.
+A **protokoll** elem **Name** attribútumát be kell állítani `OAuth1` . A **Twitter-OAUTH1** technikai profilhoz tartozó protokoll például a következő: `OAuth1` .
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -54,7 +54,7 @@ A következő példa a Twitter Identity Provider által visszaadott jogcímeket 
 A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is visszaadja:
 
 - Az **identityProvider** -jogcím, amely tartalmazza az identitás-szolgáltató nevét.
-- A **authenticationSource** jogcím alapértelmezett értéke `socialIdpAuthentication`.
+- A **authenticationSource** jogcím alapértelmezett értéke `socialIdpAuthentication` .
 
 ```xml
 <OutputClaims>
@@ -70,13 +70,13 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
-| ProviderName | Nem | Az identitás-szolgáltató neve. |
-| request_token_endpoint | Igen | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
-| authorization_endpoint | Igen | Az engedélyezési végpont URL-címe RFC 5849-ként. |
-| access_token_endpoint | Igen | A jogkivonat-végpont URL-címe RFC 5849-ként. |
-| ClaimsEndpoint | Nem | A felhasználói információs végpont URL-címe |
-| ClaimsResponseFormat | Nem | A jogcímek válaszának formátuma.|
+| client_id | Yes | Az identitás-szolgáltató alkalmazás-azonosítója. |
+| ProviderName | No | Az identitás-szolgáltató neve. |
+| request_token_endpoint | Yes | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
+| authorization_endpoint | Yes | Az engedélyezési végpont URL-címe RFC 5849-ként. |
+| access_token_endpoint | Yes | A jogkivonat-végpont URL-címe RFC 5849-ként. |
+| ClaimsEndpoint | No | A felhasználói információs végpont URL-címe |
+| ClaimsResponseFormat | No | A jogcímek válaszának formátuma.|
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -84,11 +84,11 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka.   |
+| client_secret | Yes | Az Identity Provider alkalmazás ügyfél-titka.   |
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`a (z) értéket. Győződjön meg arról, hogy lecseréli a **bérlőt** a bérlő nevére (például contosob2c.onmicrosoft.com), és **policyId** a szabályzat azonosítójával (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az összes olyan házirendhez, amely az identitás-szolgáltatói bejelentkezést használja.
+Az Identitáskezelő átirányítási URL-címének konfigurálásakor adja meg a (z `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` ) értéket. Győződjön meg arról, hogy lecseréli a **bérlőt** a bérlő nevére (például contosob2c.onmicrosoft.com), és **policyId** a szabályzat azonosítójával (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az összes olyan házirendhez, amely az identitás-szolgáltatói bejelentkezést használja.
 
 Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
 

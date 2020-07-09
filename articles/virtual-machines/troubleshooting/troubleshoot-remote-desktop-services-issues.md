@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919464"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084327"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások nem Azure-beli virtuális gépen indul
 
@@ -47,7 +47,9 @@ Amikor megpróbál csatlakozni egy virtuális géphez, a következő esetekben f
 
     Az alábbi lekérdezés futtatásával is megkeresheti ezeket a hibákat a soros hozzáférés konzoljának használatával: 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>Ok
  
@@ -63,7 +65,7 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
 
 ### <a name="use-serial-console"></a>Soros konzol használata
 
-1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás** > **Serial Console**lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
+1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás**  >  **Serial Console**lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
 
 2. Hozzon létre egy új csatornát egy CMD-példányhoz. Írja be a **cmd parancsot** a csatorna elindításához és a csatorna nevének lekéréséhez.
 
@@ -179,22 +181,37 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
 
 1. Ez a probléma akkor fordul elő, ha a szolgáltatás indítási fiókja módosult. A visszaállítás visszaállítva az alapértelmezett értékre: 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. A szolgáltatás elindítása:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. A Távoli asztal használatával próbáljon csatlakozni a virtuális géphez.
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService szolgáltatás összeomlik vagy lefagy
 1. Ha a szolgáltatás állapota **Indítás** vagy **Leállítás**közben megakad, próbálja meg leállítani a szolgáltatást: 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. A szolgáltatás elkülönítése a saját "Svchost" tárolóján:
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. A szolgáltatás elindítása:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. Ha a szolgáltatás még nem indul el, forduljon az [ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban

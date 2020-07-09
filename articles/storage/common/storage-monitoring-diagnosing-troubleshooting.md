@@ -3,18 +3,17 @@ title: Az Azure Storage figyelése, diagnosztizálása és megoldása | Microsof
 description: Az Azure Storage szolgáltatással kapcsolatos problémák azonosításához, diagnosztizálásához és hibaelhárításához olyan szolgáltatásokat használhat, mint a Storage Analytics, az ügyféloldali naplózás és más külső eszközök.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684657"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513386"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -76,7 +75,7 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
   * [4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez]
   * [5. függelék: az Azure DevOps Application Insights figyelése]
 
-## <a name="introduction"></a><a name="introduction"></a>Bevezetés
+## <a name="introduction"></a><a name="introduction"></a>Introduction (Bevezetés)
 Ez az útmutató bemutatja, hogyan használhatók olyan szolgáltatások, mint például az Azure Storage Analytics, az ügyféloldali naplózás az Azure Storage ügyféloldali Kódtáraban, valamint más, harmadik féltől származó eszközök az Azure Storage-hoz kapcsolódó problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 
 ![][1]
@@ -535,7 +534,7 @@ Naplóbejegyzések:
 | e2d06d78-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
 | e2d06d78-... |Várakozás a válaszra. |
 | de8b1c3c-... |Szinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
-| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-blob-Type: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
+| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-blob-Type: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |A kérések adatbevitelének előkészítése. |
 | e2d06d78-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (404) nem található.. |
 | e2d06d78-... |Válasz érkezett. Állapotkód = 404, kérelem azonosítója = 353ae3bc-..., Content-MD5 =, ETag =. |

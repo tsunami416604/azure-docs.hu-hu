@@ -7,10 +7,9 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75351721"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Service Fabric alkalmazások frissítése a Visual Studióval
@@ -39,33 +38,33 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Service Fabric Mesh szolgáltatás frissítése a Visual Studio használatával
 
-Ez a cikk bemutatja, hogyan frissíthet egy alkalmazást egy alkalmazáson belül. Ebben a példában a `WebFrontEnd` szolgáltatást módosítjuk a feladat kategóriájának megjelenítéséhez, és növeljük a megadott CPU mennyiségét. Ezután frissítjük a telepített szolgáltatást.
+Ez a cikk bemutatja, hogyan frissíthet egy alkalmazást egy alkalmazáson belül. Ebben a példában a szolgáltatást módosítjuk a `WebFrontEnd` feladat kategóriájának megjelenítéséhez, és növeljük a megadott CPU mennyiségét. Ezután frissítjük a telepített szolgáltatást.
 
 ## <a name="modify-the-config"></a>A konfiguráció módosítása
 
 Service Fabric Mesh-alkalmazás létrehozásakor a Visual Studio minden központi telepítési környezet (felhő és helyi) esetében hozzáadja a **Parameters. YAML** fájlt. Ezekben a fájlokban megadhat paramétereket és azok értékeit, amelyek a rácsvonal *. YAML, például a Service. YAML vagy a Network. YAML fájlokra hivatkozhatnak.  A Visual Studio bizonyos változókat biztosít Önnek, például a szolgáltatás által használható CPU mennyiségét.
 
-Frissítjük a `WebFrontEnd_cpu` paramétert a CPU `1.5` -erőforrások frissítéséhez, hogy a rendszer a **webfrontend** szolgáltatást nagyobb mértékben fogja használni.
+Frissítjük a `WebFrontEnd_cpu` paramétert a CPU-erőforrások frissítéséhez, hogy a `1.5` rendszer a **webfrontend** szolgáltatást nagyobb mértékben fogja használni.
 
-1. A **todolistapp** projektben a **környezetek** > **felhő**alatt nyissa meg a **Parameters. YAML** fájlt. Módosítsa a `WebFrontEnd_cpu`értéket a értékre `1.5`. A paraméter neve a szolgáltatás nevével `WebFrontEnd_` van ellátva ajánlott eljárásként, hogy megkülönböztesse azt a különböző szolgáltatásokra érvényes azonos nevű paraméterektől.
+1. A **todolistapp** projektben a **környezetek**  >  **felhő**alatt nyissa meg a **Parameters. YAML** fájlt. Módosítsa a `WebFrontEnd_cpu` értéket a értékre `1.5` . A paraméter neve a szolgáltatás nevével van ellátva `WebFrontEnd_` ajánlott eljárásként, hogy megkülönböztesse azt a különböző szolgáltatásokra érvényes azonos nevű paraméterektől.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Nyissa **meg a webfrontend-** projekt **Service. YAML** fájlját a **webfrontend** > **szolgáltatás-erőforrások**területen.
+2. Nyissa **meg a webfrontend-** projekt **Service. YAML** fájlját a **webfrontend**  >  **szolgáltatás-erőforrások**területen.
 
-    Vegye figyelembe, hogy `resources:` a szakasz `cpu:` a következőre `"[parameters('WebFrontEnd_cpu')]"`van beállítva:. Ha a projekt a felhőhöz készült, a rendszer a **környezetek** > **felhő** > **Parameters. YAML** -fájlból veszi át a értéket, és a következő `1.5`lesz: `'WebFrontEnd_cpu` . Ha a projekt helyben történő futtatásra készült, az érték a **környezetek** > **helyi** > **Parameters. YAML** -fájlból fog származni, és a következő lesz: "0,5".
+    Vegye figyelembe, hogy a szakasz a következőre `resources:` `cpu:` van beállítva: `"[parameters('WebFrontEnd_cpu')]"` . Ha a projekt a felhőhöz készült, a rendszer a `'WebFrontEnd_cpu` **környezetek**  >  **felhő**  >  **Parameters. YAML** -fájlból veszi át a értéket, és a következő lesz: `1.5` . Ha a projekt helyben történő futtatásra készült, az érték a **környezetek**  >  **helyi**  >  **Parameters. YAML** -fájlból fog származni, és a következő lesz: "0,5".
 
 > [!Tip]
 > Alapértelmezés szerint a profil. YAML fájlhoz tartozó, a profil. YAML fájl értékeinek megadására szolgáló fájl.
 > Például a környezetek > a Cloud > Parameters. YAML megadja a környezeti paraméterek értékét > a Cloud > Profile. YAML.
 >
-> Ezt felülbírálhatja úgy, hogy hozzáadja a következőt a profil. YAML fájlhoz:`parametersFilePath=”relative or full path to the parameters file”` például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy`parametersFilePath=”..\CommonParameters.yaml”`
+> Ezt felülbírálhatja úgy, hogy hozzáadja a következőt a profil. YAML fájlhoz: `parametersFilePath=”relative or full path to the parameters file”` például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>A modell módosítása
 
-A kód módosításának bevezetéséhez adjon `Category` hozzá egy tulajdonságot a `ToDoItem` `ToDoItem.cs` fájlban található osztályhoz.
+A kód módosításának bevezetéséhez adjon hozzá egy `Category` tulajdonságot a `ToDoItem` fájlban található osztályhoz `ToDoItem.cs` .
 
 ```csharp
 public class ToDoItem
@@ -93,7 +92,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>A szolgáltatás módosítása
 
-A `WebFrontEnd` projekt egy ASP.net Core-alkalmazás, amely a feladatlistákat megjelenítő weblapokat jeleníti meg. A `WebFrontEnd` projektben nyissa `Index.cshtml` meg az alábbi két sort, és adja hozzá a feladat kategóriájának megjelenítéséhez:
+A `WebFrontEnd` projekt egy ASP.net Core-alkalmazás, amely a feladatlistákat megjelenítő weblapokat jeleníti meg. A `WebFrontEnd` projektben nyissa meg az `Index.cshtml` alábbi két sort, és adja hozzá a feladat kategóriájának megjelenítéséhez:
 
 ```HTML
 <div>

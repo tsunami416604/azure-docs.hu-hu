@@ -4,15 +4,14 @@ description: Hogyan illeszkedik a Application Insights a devOps ciklusba
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669692"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért van szükség a Application Insightsre?
-Application Insights figyeli a futó webalkalmazást. Ismerteti a hibákat és a teljesítménnyel kapcsolatos problémákat, és segít elemezni, hogyan használják az ügyfelek az alkalmazást. A sok platformon (ASP.NET, Java EE, Node. js,...) futó alkalmazások esetében működik, és a felhőben vagy a helyszínen is üzemeltethető. 
+Application Insights figyeli a futó webalkalmazást. Ismerteti a hibákat és a teljesítménnyel kapcsolatos problémákat, és segít elemezni, hogyan használják az ügyfelek az alkalmazást. A sok platformon (ASP.NET, Java EE, Node.js,...) futó alkalmazások esetében működik, és a felhőben vagy a helyszínen üzemel. 
 
 ![A webalkalmazások kézbesítésének bonyolultsági szempontjai](./media/devops/010.png)
 
@@ -158,6 +157,6 @@ Ha riasztást vált ki, Application Insights automatikusan létrehozhat egy munk
 A Application Insights első lépései egyszerűek. A fő lehetőségek a következők:
 
 * [IIS-kiszolgálók](../../azure-monitor/app/monitor-performance-live-website-now.md)és [Azure app Service](../../azure-monitor/app/app-insights-overview.md)esetén is.
-* A projekt fejlesztése a fejlesztés során. Ezt megteheti a [ASP.net](../../azure-monitor/app/asp-net.md) és a [Java](../../azure-monitor/app/java-get-started.md) -alkalmazások, valamint a [Node. js](../../azure-monitor/app/nodejs.md) és [más típusú](../../azure-monitor/app/platforms.md)állomások esetében is. 
+* A projekt fejlesztése a fejlesztés során. Ezt megteheti a [ASP.net](../../azure-monitor/app/asp-net.md) vagy [Java](../../azure-monitor/app/java-get-started.md) -alkalmazásokhoz, valamint a [Node.js](../../azure-monitor/app/nodejs.md) és [más típusú](../../azure-monitor/app/platforms.md)gépekhez is. 
 * [Bármely weblap](../../azure-monitor/app/javascript.md) egy rövid kódrészlet hozzáadásával.
 

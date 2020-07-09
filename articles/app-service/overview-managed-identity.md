@@ -3,15 +3,16 @@ title: Felügyelt identitások
 description: Ismerje meg, hogyan működnek a felügyelt identitások Azure App Service és Azure Functions, hogyan konfigurálhatja a felügyelt identitásokat, és hogyan hozhatja ki a jogkivonatot a háttérbeli erőforrásokhoz.
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: tracking-python
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779973"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985752"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -42,7 +43,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 
 > [!NOTE] 
-> Ha szeretné megkeresni a web vagy a slot alkalmazás felügyelt identitását a Azure Portalban, ugorjon a felhasználói beállítások szakaszra a vállalati alkalmazások területen.
+> Ha szeretné megkeresni a Web App vagy a slot alkalmazás felügyelt identitását a Azure Portalban, a **vállalati alkalmazások**területen tekintse meg a **felhasználói beállítások** szakaszt. A tárolóhely neve általában a következőhöz hasonló: `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
@@ -79,7 +80,9 @@ A következő lépések végigvezetik a webalkalmazások létrehozásán és az 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A következő lépések végigvezetik a webalkalmazások létrehozásán és az identitás hozzárendelésének Azure PowerShell használatával:
+Az alábbi lépések végigvezetik az alkalmazás létrehozásán és identitásának Azure PowerShell használatával történő hozzárendelésén. A webalkalmazások és a functions-alkalmazások létrehozásának utasításai eltérőek.
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>Azure PowerShell használata webalkalmazásokhoz
 
 1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
 
@@ -87,20 +90,39 @@ A következő lépések végigvezetik a webalkalmazások létrehozásán és az 
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. Futtassa a `Set-AzWebApp -AssignIdentity` parancsot az alkalmazás identitásának létrehozásához:
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>Azure PowerShell használata egy Function-alkalmazáshoz
+
+1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
+
+2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions hivatkozást](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+Egy meglévő Function alkalmazást is frissíthet a `Update-AzFunctionApp` helyett.
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 
@@ -176,6 +198,35 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
 
     ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Az alábbi lépések végigvezetik az alkalmazás létrehozásán és identitásának Azure PowerShell használatával történő hozzárendelésén.
+
+> [!NOTE]
+> A Azure App Service Azure PowerShell parancsmagok jelenlegi verziója nem támogatja a felhasználó által hozzárendelt identitásokat. Az alábbi utasítások a Azure Functions.
+
+1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
+
+2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions referenciát](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Az alábbi szkript azt is lehetővé teszi, hogy `New-AzUserAssignedIdentity` külön kell telepíteni, mint a [Létrehozás, a felhasználó által hozzárendelt felügyelt identitások listázása vagy törlése Azure PowerShell használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+Egy meglévő Function alkalmazást is frissíthet a `Update-AzFunctionApp` helyett.
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 
@@ -261,7 +312,7 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
 > | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja az "2019-08-01" vagy az újabb verziót.                                                                                                                                                                                                                                                                 |
@@ -275,7 +326,7 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |
@@ -428,7 +479,11 @@ A Java-alkalmazások és-függvények esetében a felügyelt identitással való
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Identitás eltávolítása
 
-A rendszer által hozzárendelt identitást eltávolíthatja a szolgáltatás a portál, a PowerShell vagy a parancssori felület használatával történő letiltásával ugyanúgy, ahogyan azt létrehozták. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. Az összes identitás eltávolításához állítsa a típust "nincs" értékre az [ARM-sablonban](#using-an-azure-resource-manager-template):
+A rendszer által hozzárendelt identitást eltávolíthatja a szolgáltatás a portál, a PowerShell vagy a parancssori felület használatával történő letiltásával ugyanúgy, ahogyan azt létrehozták. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. Az összes identitás eltávolításához állítsa az identitás típusát "None" értékre.
+
+A rendszer által hozzárendelt identitások eltávolítása az Azure AD-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek az Azure AD-ből az alkalmazás-erőforrás törlésekor.
+
+Az [ARM-sablonban](#using-an-azure-resource-manager-template)lévő összes identitás eltávolítása:
 
 ```json
 "identity": {
@@ -436,7 +491,12 @@ A rendszer által hozzárendelt identitást eltávolíthatja a szolgáltatás a 
 }
 ```
 
-A rendszer által hozzárendelt identitások eltávolítása az Azure AD-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek az Azure AD-ből az alkalmazás-erőforrás törlésekor.
+Azure PowerShell összes identitásának eltávolítása (csak Azure Functions):
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > Van olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.

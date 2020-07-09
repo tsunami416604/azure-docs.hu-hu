@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: e5292f5166e739264e9cf969480b70f415fcc75a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333496"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560375"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -180,10 +180,10 @@ Az alábbi diagramok megjelenítik az előrejelzési adatértékeket. A szél se
 
 <center>
 
-![Szél sebességét](./media/weather-service-tutorial/speed-date-plot.png) ![ábrázoló szél irányának ábrázolása](./media/weather-service-tutorial/direction-date-plot.png)</center>
+![Szél sebességét ábrázoló ](./media/weather-service-tutorial/speed-date-plot.png) ![ szél irányának ábrázolása](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hívhat meg Azure Maps REST API-kat az időjárási előrejelzési adatok beszerzéséhez. Azt is megtanulta, hogyan jelenítheti meg a gráfokban tárolt adatmegjelenítést.
 

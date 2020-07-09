@@ -4,10 +4,10 @@ description: Service Fabric állapot-nyilvántartó szolgáltatások megbízhat�
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81398431"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A megbízható gyűjtemények bemutatása az Azure Service Fabric állapot-nyilvántartó szolgáltatásokban
@@ -35,7 +35,7 @@ A gyengébb konzisztencia elérése érdekében az alkalmazások visszaigazoljá
 A megbízható gyűjtemények API-k az egyidejű gyűjtemények API-k (a **System. Collections. párhuzamos** névtér) fejlődése:
 
 * Aszinkron: feladat visszaadása, mivel a párhuzamos gyűjteményektől eltérően a rendszer replikálja és megőrzi a műveleteket.
-* Nincsenek paraméterek: az a `ConditionalValue<T>` `bool` és a értéket a paraméterek helyett egy érték visszaadására használja. `ConditionalValue<T>`hasonló `Nullable<T>` , de nem igényel T-t struct-ként.
+* Nincsenek paraméterek: `ConditionalValue<T>` az a `bool` és a értéket a paraméterek helyett egy érték visszaadására használja. `ConditionalValue<T>`hasonló, `Nullable<T>` de nem igényel T-t struct-ként.
 * Tranzakciók: tranzakció-objektum használatával lehetővé teszi, hogy a felhasználó több megbízható gyűjteményben csoportosítsa a műveleteket egy tranzakcióban.
 
 Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjteményt tartalmaz:

@@ -1,27 +1,16 @@
 ---
 title: Event Hubs – folyamatos átviteli események rögzítése Azure Portal használatával
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető az események rögzítése az Azure Event Hubs az Azure Portal használatával.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.custom: seodec18
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.author: spelluru
-ms.openlocfilehash: 8a6d9456b00e5520e6f4fbb9ccb77b0260731ddd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77187405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315736"
 ---
-# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubson keresztül továbbított események rögzítésének engedélyezése
+# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubs használatával streamelt események rögzítésének engedélyezése
 
 Az Azure [Event Hubs Capture][capture-overview] szolgáltatással automatikusan továbbíthatja az adatfolyam-továbbítási adatait a Event Hubs egy [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ba, vagy a kívánt [Azure Data Lake Storage Gen1 vagy Gen 2](https://azure.microsoft.com/services/data-lake-store/) fiókba.
 

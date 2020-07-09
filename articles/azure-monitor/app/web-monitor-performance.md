@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985065"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
@@ -21,7 +20,7 @@ A Application Insights Java-és ASP.NET-webalkalmazások és-szolgáltatások, W
 Az ügyféloldali oldalon Application Insights a weblapokról és az iOS-, Android-és Windows áruházbeli alkalmazásokból származó telemetria is igénybe vehet.
 
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Teljesítményfigyelés beállítása
-Ha még nem adott hozzá Application Insightst a projekthez (azaz ha nem rendelkezik a ApplicationInsights. config fájlval), akkor az első lépésekhez válasszon a következő lehetőségek közül:
+Ha még nem adott hozzá Application Insightst a projekthez (azaz ha nincs ApplicationInsights.config), válasszon egyet az alábbi módszerek közül:
 
 * [ASP.NET-webalkalmazások](../../azure-monitor/app/asp-net.md)
   * [Kivétel-figyelés hozzáadása](../../azure-monitor/app/asp-net-exceptions.md)

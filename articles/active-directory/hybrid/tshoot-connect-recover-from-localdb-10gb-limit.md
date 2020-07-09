@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60386924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355998"
 ---
-# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB adatbázisból
+# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk a helyreállítási lépéseket ismerteti.
 
 ## <a name="symptoms"></a>Probléma
@@ -70,11 +69,11 @@ A Azure AD Connecthoz létrehozott adatbázis neve **AdSync**. A Shrink művelet
 
 2. Indítson el egy új PowerShell-munkamenetet.
 
-3. Navigáljon a `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`mappához.
+3. Navigáljon a mappához `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn` .
 
-4. Indítsa el a **Sqlcmd** segédprogramot a `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`parancs futtatásával a sysadmin (rendszergazda) vagy az adatbázis dbo hitelesítő adatainak használatával.
+4. Indítsa el a **Sqlcmd** segédprogramot a parancs futtatásával a `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` sysadmin (rendszergazda) vagy az adatbázis dbo hitelesítő adatainak használatával.
 
-5. Az adatbázis összezsugorodása érdekében a Sqlcmd promptnál (1>) adja `DBCC Shrinkdatabase(ADSync,1);`meg a következő `GO` sort, majd utána:.
+5. Az adatbázis összezsugorodása érdekében a Sqlcmd promptnál (1>) adja meg a `DBCC Shrinkdatabase(ADSync,1);` következő sort, majd utána: `GO` .
 
 6. Ha a művelet sikeres, próbálja meg újból elindítani a szinkronizálási szolgáltatást. Ha el tudja indítani a szinkronizálási szolgáltatást, ugorjon a [futtatási előzmények adatainak törlése](#delete-run-history-data) lépésre. Ha nem, forduljon az ügyfélszolgálathoz.
 
@@ -87,7 +86,7 @@ Alapértelmezés szerint a Azure AD Connect akár hét napig is megőrzi a futta
 
 3. A **műveletek**területen válassza a **futtatások törlése**... lehetőséget.
 
-4. Választhat **az összes Futtatás törlése vagy a** **futtatások törlése lehetőség közül... dátum \<>** lehetőség. Javasoljuk, hogy először törölje a két napnál régebbi futtatási előzményeket. Ha továbbra is adatbázis-mérettel kapcsolatos problémát tapasztal, válassza a **minden Futtatás törlése** lehetőséget.
+4. Választhatja **a minden Futtatás törlése** vagy a **futtatások törlése előtt \<date> ** lehetőséget is. Javasoljuk, hogy először törölje a két napnál régebbi futtatási előzményeket. Ha továbbra is adatbázis-mérettel kapcsolatos problémát tapasztal, válassza a **minden Futtatás törlése** lehetőséget.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>A futtatási előzmények adatmegőrzési időszakának csökkentése
 Ennek a lépésnek a célja, hogy csökkentse a 10 GB-os korláttal való futás valószínűségét több szinkronizálási ciklus után.

@@ -2,22 +2,21 @@
 title: Csatolt bejelentkezés az Azure AD-alkalmazásokhoz – Microsoft Identity platform
 description: Társított egyszeri bejelentkezés (SSO) konfigurálása az Azure AD vállalati alkalmazásokhoz a Microsoft Identity platformon (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763482"
 ---
 # <a name="configure-linked-sign-on"></a>Csatolt bejelentkezés konfigurálása
 
@@ -31,7 +30,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-1. Navigáljon **Azure Active Directory** > **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
+1. Navigáljon **Azure Active Directory**  >  **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
 
 1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
 

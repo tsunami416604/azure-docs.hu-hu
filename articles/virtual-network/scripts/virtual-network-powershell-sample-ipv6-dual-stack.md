@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77201365"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample (előzetes verzió) szolgáltatásban
@@ -250,7 +249,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép, egy rendelkezésre állási csoport, egy terheléselosztó és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt hoz létre. Ez a konfiguráció a virtuális hálózat létrehozására szolgál. |

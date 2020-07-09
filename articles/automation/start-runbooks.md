@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 5fc374cdb60d20896ef01c34f57897c902bbe532
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828865"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Runbook indítása az Azure Automationben
@@ -18,7 +17,7 @@ A következő táblázat segítségével határozhatja meg, hogy miként indíth
 
 | **Metódus** | **Jellemzők** |
 | --- | --- |
-| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Legegyszerűbb módszer interaktív felhasználói felülettel.<br> <li>Egyszerű paraméter-értékeket biztosító űrlap.<br> <li>A feladatok állapotának egyszerűen nyomon követhető.<br> <li>Az Azure-bejelentkezéssel hitelesített hozzáférés. |
+| [Azure Portalra](#start-a-runbook-with-the-azure-portal) |<li>Legegyszerűbb módszer interaktív felhasználói felülettel.<br> <li>Egyszerű paraméter-értékeket biztosító űrlap.<br> <li>A feladatok állapotának egyszerűen nyomon követhető.<br> <li>Az Azure-bejelentkezéssel hitelesített hozzáférés. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Hívás a parancssorból Windows PowerShell-parancsmagokkal.<br> <li>Több lépésből is megadható az automatizált funkcióban.<br> <li>A kérelem hitelesítése tanúsítvány vagy OAuth egyszerű felhasználói tag/szolgáltatásnév alapján történik.<br> <li>Egyszerű és összetett paramétereket adjon meg.<br> <li>Feladatok állapotának nyomon követése<br> <li>A PowerShell-parancsmagok támogatásához szükséges ügyfél. |
 | [Azure Automation API](/rest/api/automation/) |<li>A legrugalmasabb módszer, de a legbonyolultabb is.<br> <li>Bármely olyan egyéni kód meghívása, amely HTTP-kéréseket tesz elérhetővé.<br> <li>A tanúsítványsal hitelesített kérelem vagy OAuth-felhasználó/egyszerű szolgáltatásnév.<br> <li>Egyszerű és összetett paramétereket adjon meg. *Ha az API használatával keres Python-runbook, a JSON-adattartalmat szerializálni kell.*<br> <li>Feladatok állapotának nyomon követése |
 | [Webhookok](automation-webhooks.md) |<li>Runbook elindítása egyetlen HTTP-kérelemből.<br> <li>Hitelesítve a biztonsági jogkivonattal az URL-címben.<br> <li>Az ügyfél nem bírálhatja felül a webhook létrehozásakor megadott paramétereket. A Runbook egyetlen paramétert is meghatározhat, amely a HTTP-kérelem részleteivel van feltöltve.<br> <li>Nincs lehetőség a feladatok állapotának nyomon követésére webhook URL-címén keresztül. |

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311660"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>A IoT alapkonfigurációjának és egyéni ellenőrzésének Azure Security Center
@@ -64,7 +64,7 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 
 ## <a name="baseline-custom-check-properties"></a>Alapterv egyéni ellenőrzési tulajdonságai
 
-| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Boolean** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|

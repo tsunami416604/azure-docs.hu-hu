@@ -2,13 +2,13 @@
 title: Tudnivalók a tárakról & lemezképekről
 description: Bevezetés az Azure Container-nyilvántartások,-adattárak és-tárolók főbb fogalmi alapjaiba.
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390448"
 ---
 # <a name="about-registries-repositories-and-images"></a>A jegyzékek, adattárak és lemezképek
 
@@ -24,13 +24,11 @@ A Docker-tárolók rendszerképein kívül a Azure Container Registry támogatja
 
 Az Azure Container registryben található összetevők címe a következő elemeket tartalmazza. 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** – a beállításjegyzék-gazdagép teljes neve. Az Azure Container registryben található beállításjegyzék-gazdagép formátuma *myregistry*. azurecr.IO (minden kisbetűs). A loginUrl a Docker vagy más ügyféleszközök használatával kell megadnia az összetevők Azure Container registrybe való lekéréséhez vagy leküldéséhez. 
-* **névtér** – perjel – kapcsolódó képek vagy összetevők tagolt logikai csoportosítása – például munkacsoporthoz vagy alkalmazáshoz
-* összetevő **– egy** adott rendszerkép vagy összetevő adattárának neve
-* **címke** – az adattárban tárolt rendszerkép vagy összetevő adott verziója
-
+* **adattár** – egy vagy több kapcsolódó kép vagy összetevő logikai csoportosításának neve, például egy alkalmazás vagy egy alapszintű operációs rendszer lemezképei. Tartalmazhat *névtér* elérési útját. 
+* egy adattárban tárolt rendszerkép vagy összetevő adott verziójának a **címkéje** .
 
 Az Azure Container registryben található rendszerképek teljes neve például az alábbihoz hasonló lehet:
 
@@ -40,20 +38,24 @@ Ezekről az elemekről az alábbi részekben talál további információkat.
 
 ## <a name="repository-name"></a>Adattár neve
 
-A tároló-beállításjegyzékek *adattárakat*, tároló-lemezképek gyűjteményeit vagy más, azonos nevű, de eltérő címkéket tartalmazó összetevőket kezelhetnek. Például a következő három kép szerepel az "ACR-HelloWorld" adattárban:
+A *tárház* tároló-lemezképek vagy más, azonos nevű, de eltérő címkékkel rendelkező összetevők gyűjteménye. Például a következő három kép szerepel az "ACR-HelloWorld" adattárban:
 
 
 - *ACR-HelloWorld: legújabb*
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-A tárház neve tartalmazhat [névtereket](container-registry-best-practices.md#repository-namespaces)is. A névterek lehetővé teszik a képek csoportosítását a továbbítási perjelek által tagolt nevek használatával, például:
+A tárház neve tartalmazhat [névtereket](container-registry-best-practices.md#repository-namespaces)is. A névterek lehetővé teszik a kapcsolódó adattárak és az összetevők tulajdonjogának azonosítását a szervezetben a perjelek által tagolt nevek használatával. A beállításjegyzék azonban egymástól függetlenül kezeli az összes tárházat, nem pedig a hierarchiát. Példák:
 
 - *marketing/campaign10-18/Web: v2*
 - *marketing/campaign10-18/API: v3*
 - *marketing/campaign10-18/e-mail – Feladó: v2*
 - *Product-Returns/web-beküldési: 20180604*
 - *Product-Returns/Legacy-integrátor: 20180715*
+
+A tárház neve csak kisbetűs alfanumerikus karaktereket, pontokat, kötőjeleket, aláhúzásokat és perjeleket tartalmazhat. 
+
+A Tárházak elnevezési szabályainak elvégzéséhez tekintse [meg a nyílt tároló kezdeményezésének terjesztési specifikációját](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ## <a name="image"></a>Kép
 
@@ -63,9 +65,11 @@ A beállításjegyzékben található tároló-rendszerkép vagy más összetev�
 
 A rendszerkép vagy más összetevő *címkéje* a verziószámát adja meg. A tárházon belüli egyetlen összetevőhöz egy vagy több címke rendelhető, és az is lehet, hogy "címkézetlen". Ez azt eredményezheti, hogy az összes címkét törölheti egy képből, míg a rendszerképben lévő adatok (a rétegek) a beállításjegyzékben maradnak.
 
-A tárház (vagy a tárház és a névtér), valamint a címke határozza meg a rendszerkép nevét. A képek leküldéséhez és lekéréséhez adja meg a nevét a leküldéses vagy a lekérési műveletben.
+A tárház (vagy a tárház és a névtér), valamint a címke határozza meg a rendszerkép nevét. A képek leküldéséhez és lekéréséhez adja meg a nevét a leküldéses vagy a lekérési műveletben. Alapértelmezés szerint a címkét akkor `latest` használja a rendszer, ha nem ad meg egyet a Docker-parancsokban.
 
 A tároló-lemezképek címkézésének módját a forgatókönyvek segítségével fejlesztheti vagy helyezheti üzembe. A stabil címkék például az alaplemezképek fenntartásához, valamint a rendszerképek telepítéséhez szükséges egyedi címkékhez ajánlottak. További információ: [a címkézéssel kapcsolatos javaslatok és a tárolók verziószámozása](container-registry-image-tag-version.md).
+
+A címkék elnevezési szabályairól a [Docker dokumentációjában](https://docs.docker.com/engine/reference/commandline/tag/)talál további információt.
 
 ### <a name="layer"></a>Réteg
 

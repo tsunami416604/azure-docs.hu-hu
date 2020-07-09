@@ -7,17 +7,16 @@ author: asudbring
 manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: a7b1e7471f7850f71596317c7e2c38db367bfd3a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 03a619a647da247347492076e9fd36414565bf33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703145"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
@@ -29,7 +28,7 @@ Létrehozhat egy statikus nyilvános IP-címmel rendelkező virtuális gépet is
 
 A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell használatával végezheti el. A helyi számítógép használatához győződjön meg arról, hogy telepítve van a [Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). A Azure Cloud Shell használatához válassza a **kipróbálás** elemet az alábbi parancsok bármelyikének jobb felső sarkában. A Cloud Shell aláírja az Azure-t.
 
-1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az `Connect-AzAccount`Azure-ba.
+1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-ba `Connect-AzAccount` .
 2. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiója Azure-régióban:
 
    ```azurepowershell-interactive
@@ -64,7 +63,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
 > [!WARNING]
 > Ne módosítsa az IP-cím beállításait a virtuális gép operációs rendszerén belül. Az operációs rendszer nem ismeri az Azure nyilvános IP-címeit. Bár a magánhálózati IP-címek beállításait az operációs rendszerhez is hozzáadhatja, azt javasoljuk, hogy csak akkor hajtsa végre ezt, ha szükséges, és nem, amíg az olvasó nem [ad hozzá privát IP-címet az operációs rendszerhez](virtual-network-network-interface-addresses.md#private).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 

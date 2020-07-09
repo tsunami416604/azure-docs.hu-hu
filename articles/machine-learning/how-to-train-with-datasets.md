@@ -5,18 +5,18 @@ description: Ismerje meg, hogyan használhatók az adatkészletek a képzésben
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/20/2020
-ms.openlocfilehash: cd72ce9fed7f821807b8604f68068c64a38293e3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: a9b9faed111e6126bfdb30e4237a988afd947823
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560139"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítana
 
 Az adatkészletek létrehozásához és betanításához a következők szükségesek:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
@@ -42,7 +42,7 @@ Az adatkészletek létrehozásához és betanításához a következők szüksé
 
 Egy meglévő TabularDataset a munkaterületen található kísérlet betanítási parancsfájljában férhet hozzá, és betöltheti az adatkészletet egy Panda dataframe a helyi környezet további feltárása érdekében.
 
-A következő kód a [`get_context()`]() [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) osztály metódusát használja a meglévő bemeneti TabularDataset `titanic`eléréséhez a betanítási parancsfájlban. Ezután a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metódus használatával tölti be az adatkészletet egy Panda dataframe, hogy a képzés előtt további adatfeltárást és előkészítést lehessen készíteni.
+A következő kód a [`get_context()`]() osztály metódusát használja a [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) meglévő bemeneti TabularDataset eléréséhez `titanic` a betanítási parancsfájlban. Ezután a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metódus használatával tölti be az adatkészletet egy Panda dataframe, hogy a képzés előtt további adatfeltárást és előkészítést lehessen készíteni.
 
 > [!Note]
 > Ha az eredeti adatforrás NaN, üres karakterláncokat vagy üres értékeket tartalmaz, akkor a to_pandas_dataframe () használatakor ezek az értékek *Null* értékként lesznek lecserélve. 
@@ -85,11 +85,11 @@ A TabularDataset-objektumok lehetővé teszik a TabularDataset lévő adat betö
 
 A kísérlet futtatásának elküldéséhez egy [kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) objektumot kell használni. A Azure Machine Learning előre konfigurált becslések rendelkezik a gyakori gépi tanulási keretrendszerekhez, valamint egy általános becsléshez is.
 
-Ez a kód egy általános kalkulátor-objektumot `est`hoz létre, amely megadja a
+Ez a kód egy általános kalkulátor-objektumot hoz létre, `est` amely megadja a
 
 * A parancsfájlok parancsfájl-könyvtára. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A betanítási parancsfájl, *train_titanic.*
-* A betanításhoz használt bemeneti `titanic_ds`adatkészlet. `as_named_input()`azért van szükség, hogy a bemeneti adatkészletet a betanítási `titanic` parancsfájlban lévő hozzárendelt név is hivatkozhat. 
+* A betanításhoz használt bemeneti adatkészlet `titanic_ds` . `as_named_input()`azért van szükség, hogy a bemeneti adatkészletet a betanítási parancsfájlban lévő hozzárendelt név is hivatkozhat `titanic` . 
 * A kísérlet számítási célja.
 * A kísérlet környezeti definíciója.
 
@@ -130,9 +130,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>A kalkulátor konfigurálása
 
-Javasoljuk, hogy az adatkészletet argumentumként adja át a csatlakoztatáskor. Az adatkészletnek a kalkulátorban található `inputs` paraméterrel való átadása mellett az adatkészletet átadhatja a (z) `script_params` és az adatelérési utat (beszerelési pont) a betanítási szkriptben argumentumokkal. Így ugyanazt a betanítási szkriptet fogja használni a helyi hibakereséshez és a távoli oktatáshoz bármilyen felhőalapú platformon.
+Javasoljuk, hogy az adatkészletet argumentumként adja át a csatlakoztatáskor. Az adatkészletnek a kalkulátorban található paraméterrel való átadása mellett az adatkészletet átadhatja a `inputs` `script_params` (z) és az adatelérési utat (beszerelési pont) a betanítási szkriptben argumentumokkal. Így ugyanazt a betanítási szkriptet fogja használni a helyi hibakereséshez és a távoli oktatáshoz bármilyen felhőalapú platformon.
 
-A [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) -kalkulátor objektum a scikit-Learn kísérletek futtatásának elküldésére szolgál. Miután elküldte a futtatást, az `mnist` adatkészlet által hivatkozott adatfájlok a számítási célhoz lesznek csatlakoztatva. További információ a [SKlearn-kalkulátor](how-to-train-scikit-learn.md)betanításáról.
+A [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) -kalkulátor objektum a scikit-Learn kísérletek futtatásának elküldésére szolgál. Miután elküldte a futtatást, az adatkészlet által hivatkozott adatfájlok a `mnist` számítási célhoz lesznek csatlakoztatva. További információ a [SKlearn-kalkulátor](how-to-train-scikit-learn.md)betanításáról.
 
 ```Python
 from azureml.train.sklearn import SKLearn

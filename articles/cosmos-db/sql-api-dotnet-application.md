@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: c7e164420b02be35069103ac06238d56449eb7ef
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996736"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118882"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "82996736"
 
 Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure-ban üzemeltetett ASP.NET MVC-alkalmazás adatait a Azure Cosmos DB használatával. Ebben az oktatóanyagban a .NET SDK v3-t használja. Az alábbi képen látható, hogy milyen weboldalt fog létrehozni a cikkben szereplő minta használatával:
 
-![Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
+:::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 Ha nincs ideje az oktatóanyag elvégzésére, letöltheti a teljes minta projektet a [githubról][GitHub].
 
@@ -46,7 +46,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -70,7 +70,7 @@ A következő szakaszban új ASP.NET Core MVC-alkalmazást hoz létre.
 
 1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki **ASP.net Core webalkalmazást** a C# nyelvhez. A folytatáshoz kattintson a **Tovább** gombra.
 
-   ![Új ASP.NET Core webalkalmazás-projekt létrehozása](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Új ASP.NET Core webalkalmazás-projekt létrehozása":::
 
 1. Az **új projekt konfigurálása**lapon nevezze el a Project *Todo* nevet, és válassza a **Létrehozás**lehetőséget.
 
@@ -78,7 +78,7 @@ A következő szakaszban új ASP.NET Core MVC-alkalmazást hoz létre.
 
    A Visual Studio egy üres MVC-alkalmazást hoz létre.
 
-1. A ASP.NET-alkalmazás helyi futtatásához **válassza a hibakeresés**indítása vagy az F5 billentyűt.**Start Debugging**  > 
+1. **Debug**  >  A ASP.NET-alkalmazás helyi futtatásához válassza a hibakeresés**indítása** vagy az F5 billentyűt.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>3. lépés: Azure Cosmos DB NuGet-csomag hozzáadása a projekthez
 
@@ -88,11 +88,11 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET Core MVC Framework-k
 
 1. A **NuGet csomagkezelő eszközben**keresse meg és válassza ki a **Microsoft. Azure. Cosmos**elemet. Válassza az **Install** (Telepítés) lehetőséget.
 
-   ![NuGet-csomag telepítése](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet-csomag telepítése":::
 
    A Visual Studio letölti és telepíti a Azure Cosmos DB csomagot és annak függőségeit.
 
-   A NuGet-csomag telepítéséhez a **Package Manager-konzolt** is használhatja. Ehhez válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**. A parancssorba írja be a következő parancsot:
+   A NuGet-csomag telepítéséhez a **Package Manager-konzolt** is használhatja. Ehhez válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**. A parancssorba írja be a következő parancsot:
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
@@ -104,7 +104,7 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC-alk
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a>Modell hozzáadása
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **modellek** mappára, majd válassza az**osztály** **hozzáadása** > elemet.
+1. A **megoldáskezelő**kattintson a jobb gombbal a **modellek** mappára, majd **Add**válassza az  >  **osztály**hozzáadása elemet.
 
 1. Az **új elem hozzáadása**lapon nevezze el az új osztály *Item.cs* , és válassza a **Hozzáadás**lehetőséget.
 
@@ -112,7 +112,7 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC-alk
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
-A Azure Cosmos DB JSON használatával helyezi át és tárolja az adattárolást. Az attribútum segítségével szabályozhatja, hogy a JSON hogyan szerializálja és deszerializálja az `JsonProperty` objektumokat. Az `Item` osztály az `JsonProperty` attribútumot mutatja be. Ez a kód vezérli a JSON-ba kerülő tulajdonságnév formátumát. Átnevezi a .NET-tulajdonságot `Completed`is.
+A Azure Cosmos DB JSON használatával helyezi át és tárolja az adattárolást. Az `JsonProperty` attribútum segítségével szabályozhatja, hogy a JSON hogyan szerializálja és deszerializálja az objektumokat. Az `Item` osztály az `JsonProperty` attribútumot mutatja be. Ez a kód vezérli a JSON-ba kerülő tulajdonságnév formátumát. Átnevezi a .NET-tulajdonságot is `Completed` .
 
 ### <a name="add-views"></a><a name="add-views"></a>Nézetek hozzáadása
 
@@ -124,9 +124,9 @@ Ezután hozza létre a következő három nézetet.
 
 #### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>Listaelem nézetének hozzáadása
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **nézetek** mappára, és válassza az**új mappa** **hozzáadása** > lehetőséget. Adja meg a mappa *tétel*nevét.
+1. A **megoldáskezelő**kattintson a jobb gombbal a **nézetek** mappára, és **Add**válassza az  >  **új mappa**hozzáadása lehetőséget. Adja meg a mappa *tétel*nevét.
 
-1. Kattintson a jobb gombbal az üres elem mappára, majd válassza a**nézet** **hozzáadása** >  **elemet** .
+1. Kattintson a jobb gombbal az üres elem mappára, majd válassza a nézet **hozzáadása** **elemet**  >  **View**.
 
 1. Az **MVC-nézet hozzáadása**párbeszédpanelen adja meg a következő értékeket:
 
@@ -135,7 +135,7 @@ Ezután hozza létre a következő három nézetet.
    * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)**.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
 
-   ![Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép":::
 
 1. Miután hozzáadta ezeket az értékeket, válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre.
 
@@ -145,7 +145,7 @@ Ha elkészült, a Visual Studio megnyitja az általa létrehozott *cshtml* -fáj
 
 Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítéséhez, hozzon létre egy új nézetet az elemek létrehozásához a következő lépések segítségével:
 
-1. A **megoldáskezelő**kattintson ismét a jobb gombbal az elem mappájára, majd válassza a**nézet** **hozzáadása** >  **elemet** .
+1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a **Add**  >  **nézet**hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása**párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -153,13 +153,13 @@ Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítésé
    * A **sablon**lapon válassza a **Létrehozás**lehetőséget.
    * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)**.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** lehetőséget.
+   * Válassza a **Hozzáadás** elemet.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Elem szerkesztési nézetének hozzáadása
 
 Végül pedig vegyen fel egy nézetet egy elem szerkesztéséhez a következő lépésekkel:
 
-1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a**nézet** **hozzáadása** > elemet.
+1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add**válassza a  >  **nézet**hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása**párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -167,23 +167,23 @@ Végül pedig vegyen fel egy nézetet egy elem szerkesztéséhez a következő l
    * A **Template** (Sablon) mezőben válassza az **Edit** (Szerkesztés) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** lehetőséget.
+   * Válassza a **Hozzáadás** elemet.
 
 Miután elvégezte ezeket a lépéseket, a Visual Studióban zárjunk be minden *cshtml* -dokumentumot, ahogy később visszatér a nézetekhez.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Szolgáltatások deklarálása és inicializálása
 
-Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban ezt a logikát egy nevű `CosmosDBService` osztályba és egy nevű `ICosmosDBService`illesztőfelületbe ágyazjuk be. Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
+Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban ezt a logikát egy nevű osztályba `CosmosDBService` és egy nevű illesztőfelületbe ágyazjuk be `ICosmosDBService` . Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza az**új mappa** **hozzáadása** > lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és **Add**válassza az  >  **új mappa**hozzáadása lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
 
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza az**osztály** **hozzáadása** > elemet. Nevezze el az új osztály *CosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add**válassza az  >  **osztály**hozzáadása elemet. Nevezze el az új osztály *CosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
 
 1. Cserélje le a *CosmosDBService.cs* tartalmát a következő kódra:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza az**osztály** **hozzáadása** > elemet. Nevezze el az új osztály *ICosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add**válassza az  >  **osztály**hozzáadása elemet. Nevezze el az új osztály *ICosmosDBService* , és válassza a **Hozzáadás**lehetőséget.
 
 1. Adja hozzá a következő kódot a *ICosmosDBService* osztályhoz:
 
@@ -193,13 +193,13 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
-1. Ugyanezen a fájlon cserélje le `ConfigureServices` a metódust a következőre:
+1. Ugyanezen a fájlon cserélje le a metódust a következőre `ConfigureServices` :
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
    Az ebben a lépésben szereplő kód a konfiguráció alapján inicializálja az ügyfelet egy egyedi példányként, amelyet a rendszer a [függőségek befecskendezésével ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
 
-   Győződjön meg arról, hogy az alapértelmezett MVC-vezérlőt úgy módosítja, hogy `Item` az `Configure` azonos fájl metódusában lévő útvonalakat szerkeszti:
+   Győződjön meg arról, hogy az alapértelmezett MVC-vezérlőt úgy módosítja, hogy az `Item` `Configure` azonos fájl metódusában lévő útvonalakat szerkeszti:
 
    ```csharp
     app.UseEndpoints(endpoints =>
@@ -211,17 +211,17 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
    ```
 
 
-1. Adja meg a konfigurációt a projekt *appSettings. JSON* fájljában, ahogy az a következő kódrészletben látható:
+1. Adja meg a konfigurációt a projekt *appsettings.js* fájljában, ahogy az a következő kódrészletben látható:
 
    :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Vezérlő hozzáadása
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a**vezérlő** **hozzáadása** > elemet.
+1. **Megoldáskezelő**kattintson a jobb gombbal a **vezérlők** mappára, majd válassza **Add**a  >  **vezérlő**hozzáadása elemet.
 
 1. Az **állvány hozzáadása**területen válassza az **MVC vezérlő – üres** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
-   ![MVC-vezérlő kiválasztása – üres a hozzáadási állványban](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="MVC-vezérlő kiválasztása – üres a hozzáadási állványban":::
 
 1. Nevezze el az új vezérlő *ItemController*.
 
@@ -239,7 +239,7 @@ Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi 
 
 1. Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban való létrehozásához. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
 
-   ![Az oktatóanyag által létrehozott teendők listázása webalkalmazás képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Az oktatóanyag által létrehozott teendők listázása webalkalmazás képernyőképe":::
    
    Ha az alkalmazás Ehelyett megnyílik a kezdőlapra, fűzze hozzá `/Item` az URL-címhez.
 
@@ -247,11 +247,11 @@ Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi 
 
 1. Kattintson a **Létrehozás** gombra. Az alkalmazás visszaküldi az **index** nézetet, és az elem megjelenik a listában. Több elemet is hozzáadhat a **Tennivalók** listájához.
 
-    ![Képernyőfelvétel az index nézetről](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Képernyőfelvétel az index nézetről":::
   
 1. Válassza a lista **elem** melletti **Szerkesztés** lehetőséget. Az alkalmazás megnyitja a **szerkesztési** nézetet, ahol frissítheti az objektum bármely tulajdonságát, beleértve a **befejezett** jelzőt is. Ha a **kész** lehetőséget választja, és a **Mentés**gombra kattint, az alkalmazás a listában befejezettként jeleníti meg az **elemet** .
 
-   ![Képernyőfelvétel az index nézetről a befejezett négyzet bejelölve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Képernyőfelvétel az index nézetről a befejezett négyzet bejelölve":::
 
 1. Ellenőrizze a Azure Cosmos DB szolgáltatásban található adatállapotot a [Cosmos Explorer](https://cosmos.azure.com) vagy a Azure Cosmos DB Emulator adatkezelő használatával.
 
@@ -271,7 +271,7 @@ Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatb�
 
 1. Keresse meg a profilt, majd kattintson **az OK gombra**. Ezután keresse meg a szükséges Azure App Service, és kattintson **az OK gombra**.
 
-   ![A Visual Studio App Service párbeszédpanelje](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="A Visual Studio App Service párbeszédpanelje":::
 
 Egy másik lehetőség egy új profil létrehozása:
 
@@ -283,7 +283,7 @@ Egy másik lehetőség egy új profil létrehozása:
 
 1. A **app Service**mezőben adja meg a webalkalmazás nevét és a megfelelő előfizetést, erőforráscsoportot és üzemeltetési csomagot, majd válassza a **Létrehozás**lehetőséget.
 
-   ![A Visual Studio App Service létrehozása párbeszédpanelje](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png)
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="A Visual Studio App Service létrehozása párbeszédpanelje":::
 
 Néhány másodpercen belül a Visual Studio közzéteszi a webalkalmazást, és elindít egy böngészőt, amelyen megtekintheti az Azure-ban futó projektet.
 

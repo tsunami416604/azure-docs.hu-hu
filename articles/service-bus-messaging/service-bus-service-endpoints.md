@@ -1,21 +1,13 @@
 ---
 title: Virtuális hálózati szolgáltatási végpontok konfigurálása Azure Service Bushoz
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. ServiceBus szolgáltatási végpontot egy virtuális hálózathoz.
-services: service-bus
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: d1766ffb579bb1a86da91ac73a396ce0d008f89e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340992"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Virtuális hálózati szolgáltatási végpontok konfigurálása Azure Service Bushoz
 
@@ -91,7 +83,7 @@ A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati
 Sablon paraméterei:
 
 * **namespacename tulajdonság**: Service Bus névtér.
-* **virtualNetworkingSubnetId**: a virtuális hálózati alhálózat teljes erőforrás-kezelő útvonala; például egy virtuális `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` hálózat alapértelmezett alhálózata esetében.
+* **virtualNetworkingSubnetId**: a virtuális hálózati alhálózat teljes erőforrás-kezelő útvonala; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózata esetében.
 
 > [!NOTE]
 > Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.

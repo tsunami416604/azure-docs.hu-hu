@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy alapszintű 
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: e5b3d1c94de8406c12222eea59beafd7277d646d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 049df92fcbc6126516fef5cf463b1485b1d19b0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945545"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Bejövő adatvezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -41,7 +41,7 @@ A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. Windows
 > A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű*forgalomhoz. Szükség szerint adja meg a saját környezetének névterét.
 
 > [!TIP]
-> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja `--set controller.service.externalTrafficPolicy=Local` hozzá a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
+> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
 
 ```console
 # Create a namespace for your ingress resources
@@ -72,7 +72,7 @@ Még nem jöttek létre Bejövő szabályok, így a belső IP-cím megkeresésé
 
 ## <a name="run-demo-applications"></a>Bemutató alkalmazások futtatása
 
-A beáramló vezérlő működés közbeni megtekintéséhez futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában egy egyszerű `kubectl apply` *Helló World* -alkalmazás két példányának üzembe helyezésére használható.
+A beáramló vezérlő működés közbeni megtekintéséhez futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában `kubectl apply` egy egyszerű *Helló World* -alkalmazás két példányának üzembe helyezésére használható.
 
 Hozzon létre egy *AK-HelloWorld-One. YAML* fájlt, és másolja a következő PÉLDÁBAN szereplő YAML:
 
@@ -80,7 +80,7 @@ Hozzon létre egy *AK-HelloWorld-One. YAML* fájlt, és másolja a következő P
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-helloworld-one
+  name: aks-helloworld-one  
 spec:
   replicas: 1
   selector:
@@ -103,7 +103,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-one
+  name: aks-helloworld-one  
 spec:
   type: ClusterIP
   ports:
@@ -118,7 +118,7 @@ Hozzon létre egy *AK-HelloWorld-Two. YAML* fájlt, és másolja a következő P
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-helloworld-two
+  name: aks-helloworld-two  
 spec:
   replicas: 1
   selector:
@@ -141,7 +141,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-two
+  name: aks-helloworld-two  
 spec:
   type: ClusterIP
   ports:
@@ -150,7 +150,7 @@ spec:
     app: aks-helloworld-two
 ```
 
-Futtassa a két bemutató alkalmazást a `kubectl apply`használatával:
+Futtassa a két bemutató alkalmazást a használatával `kubectl apply` :
 
 ```console
 kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
@@ -161,16 +161,15 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 Mindkét alkalmazás már fut a Kubernetes-fürtön. Az egyes alkalmazásokra irányuló forgalom irányításához hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
 
-A következő példában a *EXTERNAL_IP* felé irányuló forgalmat a rendszer átirányítja a `aks-helloworld-one`nevű szolgáltatásba. *EXTERNAL_IP/Hello-World-Two* irányuló forgalmat a `aks-helloworld-two` szolgáltatás irányítja át. *EXTERNAL_IP/statikus* irányuló forgalmat a rendszer a statikus eszközökhöz `aks-helloworld-one` tartozó nevű szolgáltatáshoz irányítja.
+A következő példában a *EXTERNAL_IP* felé irányuló forgalmat a rendszer átirányítja a nevű szolgáltatásba `aks-helloworld-one` . *EXTERNAL_IP/Hello-World-Two* irányuló forgalmat a szolgáltatás irányítja át `aks-helloworld-two` . *EXTERNAL_IP/statikus* irányuló forgalmat a rendszer a `aks-helloworld-one` statikus eszközökhöz tartozó nevű szolgáltatáshoz irányítja.
 
-Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt, és másolja a következő példában YAML.
+Hozzon létre egy nevű fájlt `hello-world-ingress.yaml` , és másolja a következő PÉLDÁBAN YAML.
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hello-world-ingress
-  namespace: ingress-basic
+  name: hello-world-ingress  
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -226,7 +225,7 @@ Most adja hozzá a */Hello-World-Two* elérési útját az IP-címhez, például
 
 ![A bejövő vezérlő mögött futó második alkalmazás](media/ingress-basic/app-two.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ez a cikk a beáramló összetevők és a minta alkalmazások telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -240,7 +239,7 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>Erőforrások egyenkénti törlése
 
-Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozott egyéni erőforrásokat. Sorolja fel az `helm list` paranccsal a Helm kiadásait. Keresse meg az *Nginx-beáramló* és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
+Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozott egyéni erőforrásokat. Sorolja fel az paranccsal a Helm kiadásait `helm list` . Keresse meg az *Nginx-beáramló* és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
 
 ```
 $ helm list --namespace ingress-basic

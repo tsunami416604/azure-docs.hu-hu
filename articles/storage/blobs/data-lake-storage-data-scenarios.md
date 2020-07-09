@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77369708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193508"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
 
@@ -52,7 +51,7 @@ Ez olyan adatforrásokat jelent, amelyeket különböző források, például al
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével betöltheti a továbbított adatmennyiséget.
 
-|Eszköz | Útmutatás |
+|Eszköz | Útmutató |
 |---|--|
 |Azure Stream Analytics|[Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Kimenő Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Azure HDInsight Storm | [Írás a HDInsight Apache Storm HDFS Apache Hadoop](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
@@ -63,7 +62,7 @@ A kapcsolódó adatbázisok adatait is megtekintheti. Egy adott időszakban a ka
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a rendszer a kapcsolatok adatfeldolgozását is felhasználhatja.
 
-|Eszköz | Útmutatás |
+|Eszköz | Útmutató |
 |---|--|
 |Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -73,7 +72,7 @@ Az ilyen típusú adathalmazokat a rendszer kifejezetten felhívta, mert a webki
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével betöltheti a webkiszolgáló naplófájljait.
 
-|Eszköz | Útmutatás |
+|Eszköz | Útmutató |
 |---|--|
 |Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 |Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
@@ -87,7 +86,7 @@ A legtöbb HDInsight-fürt (Hadoop, HBase, Storm) támogatja az adattároló ada
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a HDInsight-fürtökhöz kapcsolódó adatbevitelt végezheti el.
 
-|Eszköz | Útmutatás |
+|Eszköz | Útmutató |
 |---|--|
 |Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy eszköz | [Adatok átvitele a AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -116,10 +115,10 @@ Ha az adatai elérhetők a Data Lake Storage Gen2ban, a támogatott big data alk
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével adatelemzési feladatokat futtathat az Data Lake Storage Gen2 tárolt adatokon.
 
-|Eszköz | Útmutatás |
+|Eszköz | Útmutató |
 |---|--|
 |Azure HDInsight | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [2. generációs Azure Data Lake Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Az adatok vizualizációja
 
@@ -129,7 +128,7 @@ A Power BI-összekötővel hozhatja létre a Data Lake Storage Gen2 tárolt adat
 
 Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letölteni vagy áthelyezni az adatok Azure Data Lake Storage Gen2:
 
-* Más adattárakba helyezheti át az adatait a meglévő adatfeldolgozási folyamatokkal. Előfordulhat például, hogy át szeretné helyezni az adatok Data Lake Storage Gen2ról Azure SQL Database vagy helyszíni SQL Serverre.
+* Más adattárakba helyezheti át az adatait a meglévő adatfeldolgozási folyamatokkal. Előfordulhat például, hogy át szeretné helyezni Data Lake Storage Gen2 adatait Azure SQL Database vagy egy SQL Server példányba.
 
 * Az alkalmazások prototípusának kiépítése során az IDE-környezetekben tárolt adatfeldolgozási folyamatokat a helyi számítógépre töltheti le.
 
@@ -137,7 +136,7 @@ Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letöl
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel adatok tölthetők le a Data Lake Storage Gen2ról.
 
-|Eszköz | Útmutatás |
+|Eszköz | Útmutató |
 |---|--|
 |Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

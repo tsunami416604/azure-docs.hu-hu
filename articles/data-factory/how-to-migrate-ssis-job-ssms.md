@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82627585"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent feladatok migrálása az ADF-be a SSMS-mel
@@ -33,9 +33,9 @@ Helyszíni [SQL Server Integration Services (SSIS) számítási feladatok ADF-be
 
 |SQL Agent-feladatok objektuma  |ADF-erőforrás  |Megjegyzések|
 |---------|---------|---------|
-|SQL-ügynök feladata|folyamat     |A folyamat neve a *>\<feladatokhoz lesz létrehozva *. <br> <br> A beépített ügynöki feladatok nem alkalmazhatók: <li> SSIS-kiszolgáló karbantartási feladata <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
-|SSIS-feladatok lépései|SSIS-csomag végrehajtása tevékenység|<li> A tevékenység neve> lesz \<. <li> A feladatütemezés során használt proxy fiók a tevékenység Windows-hitelesítésként lesz áttelepítve. <li> Az áttelepítés során a rendszer figyelmen kívül hagyja a *végrehajtási beállításokat* , kivéve a feladatok lépésben definiált *32-bites futtatókörnyezetet* . <li> Az áttelepítés során a rendszer figyelmen kívül hagyja a feladatok lépésben megadott *ellenőrzést* .|
-|schedule      |trigger ütemezése        |Az ütemezett trigger neve lesz *létrehozva az \<ütemterv neve>*. <br> <br> Az SQL Agent feladatütemezés alábbi beállításai figyelmen kívül lesznek hagyva az áttelepítés során: <li> Második szintű intervallum <li> *Automatikus indítás SQL Server Agent indításakor* <li> *Indítás, amikor a processzorok tétlenek lesznek* <li> *hét* *napja és hétvége*<time zone> <br> Az alábbi különbségek az SQL Agent feladatütemezés áttelepítését idézik elő az ADF-ütemező triggerre: <li> Az ADF-ütemterv elindításának későbbi futtatása független az előzmény által aktivált Futtatás végrehajtásának állapotával. <li> Az ADF ütemezése eseményindítójának ismétlődési konfigurációja eltér a napi gyakoriságtól az SQL Agent-feladatokban.|
+|SQL-ügynök feladata|folyamat     |A folyamat neve lesz *Létrehozva \<job name> *. <br> <br> A beépített ügynöki feladatok nem alkalmazhatók: <li> SSIS-kiszolgáló karbantartási feladata <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|SSIS-feladatok lépései|SSIS-csomag végrehajtása tevékenység|<li> A tevékenység neve lesz \<step name> . <li> A feladatütemezés során használt proxy fiók a tevékenység Windows-hitelesítésként lesz áttelepítve. <li> Az áttelepítés során a rendszer figyelmen kívül hagyja a *végrehajtási beállításokat* , kivéve a feladatok lépésben definiált *32-bites futtatókörnyezetet* . <li> Az áttelepítés során a rendszer figyelmen kívül hagyja a feladatok lépésben megadott *ellenőrzést* .|
+|schedule      |trigger ütemezése        |A *rendszer \<schedule name> létrehozza *az ütemezett trigger nevét. <br> <br> Az SQL Agent feladatütemezés alábbi beállításai figyelmen kívül lesznek hagyva az áttelepítés során: <li> Második szintű intervallum <li> *Automatikus indítás SQL Server Agent indításakor* <li> *Indítás, amikor a processzorok tétlenek lesznek* <li> *hét* *napja és hétvége*<time zone> <br> Az alábbi különbségek az SQL Agent feladatütemezés áttelepítését idézik elő az ADF-ütemező triggerre: <li> Az ADF-ütemterv elindításának későbbi futtatása független az előzmény által aktivált Futtatás végrehajtásának állapotával. <li> Az ADF ütemezése eseményindítójának ismétlődési konfigurációja eltér a napi gyakoriságtól az SQL Agent-feladatokban.|
 
 - Azure Resource Manager-(ARM-) Sablonok előállítása a helyi kimeneti mappában, és közvetlenül vagy később, manuálisan is üzembe helyezhető. További információ az ADF Resource Manager-sablonokról: [Microsoft. DataFactory-erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
 
@@ -57,8 +57,8 @@ A cikkben ismertetett szolgáltatáshoz SQL Server Management Studio 18,5-es vag
     1. A forrás mappa elérési útjának frissítése Az érvényes elérési utak a csomagok mappa elérési útjai vagy a szülőmappa elérési útjai.
     1. A célmappa elérési útjának frissítése Az alapértelmezett érték az 1. lépésben kiválasztott alapértelmezett Storage-fiók relatív elérési útja.
     1. Kijelölt leképezés törlése **törlési leképezéssel**.
-![2. lépés](media/how-to-migrate-ssis-job-ssms/step2.png)
-![2. lépés-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![2. lépés ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ 2. lépés-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Válassza ki az áttelepíteni kívánt feladatokat, és konfigurálja a megfelelő *végrehajtott SSIS-csomag tevékenység*beállításait.
 

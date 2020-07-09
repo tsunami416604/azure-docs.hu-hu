@@ -1,18 +1,14 @@
 ---
 title: Egyéni témakörök a Azure Event Grid
 description: A Azure Event Grid egyéni témaköreinek ismertetése.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 166a48d74d32c8b0a3a59310e693ea96ada29116
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394357"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113785"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Egyéni témakörök a Azure Event Grid
 Az Event Grid-témakör olyan végpontot biztosít, amelyben a forrás eseményeket küld. A közzétevő létrehozza az Event Grid-témakört, és eldönti, hogy egy adott eseményforrás egy vagy több témakörre van-e szüksége. A témakörök a kapcsolódó események gyűjteményéhez használatosak. Bizonyos típusú események megválaszolásához az előfizetők eldönthetik, hogy mely témakörökre kell előfizetni.
@@ -72,7 +68,7 @@ A következő szakaszok a Azure Portal, a CLI, a PowerShell és a Azure Resource
 | [Resource Manager-sablon: egyéni témakör és webhook-végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Egy Resource Manager-sablon, amely egyéni témakört és előfizetést hoz létre az adott egyéni témakörhöz. Eseményeket küld egy webhooknak. |
 | [Resource Manager-sablon: egyéni témakör és Event Hubs végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Resource Manager-sablon, amely létrehoz egy egyéni témakörhöz tartozó előfizetést. Eseményeket küld egy Azure-Event Hubs. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Rendszertémakörök](system-topics.md)

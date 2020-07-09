@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388935"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API jogcímek cseréjének integrálása a Azure AD B2C egyéni szabályzatba
 
@@ -32,6 +32,9 @@ A Azure AD B2C használatával saját üzleti logikát adhat hozzá egy felhaszn
 - **Egyéni üzleti logikát futtathat**. Leküldéses értesítések küldhetők, vállalati adatbázisok frissítése, felhasználói áttelepítési folyamat futtatása, engedélyek kezelése, naplózási adatbázisok és egyéb munkafolyamatok elvégzése.
 
 ![REST-alapú szolgáltatási jogcímek cseréjének ábrája](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> Ha a REST-szolgáltatás lassú vagy nem válaszol a Azure AD B2Cre, az időkorlát 30 másodperc, az újrapróbálkozások száma pedig 2 alkalommal (azaz 3 próbálkozás összesen). Az időkorlát és az újrapróbálkozások száma beállítás jelenleg nem konfigurálható.
 
 ## <a name="calling-a-restful-service"></a>REST-szolgáltatás hívása
 
@@ -142,7 +145,7 @@ A REST API bármilyen platformon alapulhat, és bármilyen programozási nyelven
 ## <a name="localize-the-rest-api"></a>A REST API honosítása
 A REST technikai profilban érdemes lehet elküldeni az aktuális munkamenet nyelvét/területi beállítását, és ha szükséges, egy honosított hibaüzenetet kell felvennie. A [jogcímek feloldójának](claim-resolver-overview.md)használatával a kontextusbeli jogcímek, például a felhasználó nyelve is elküldhető. Az alábbi példa egy REST-alapú műszaki profilt mutat be, amely bemutatja ezt a forgatókönyvet.
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -162,7 +165,7 @@ A REST technikai profilban érdemes lehet elküldeni az aktuális munkamenet nye
 
 ## <a name="handling-error-messages"></a>Hibaüzenetek kezelési üzenetei
 
-Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például: "a felhasználó nem található a CRM rendszerben." Hiba esetén a REST API HTTP 409 hibaüzenetet ad vissza (ütközési válasz állapotkód). További információkért tekintse meg a [Rest műszaki profilt](restful-technical-profile.md#returning-error-message).
+Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például: "a felhasználó nem található a CRM rendszerben." Hiba esetén a REST API HTTP 409 hibaüzenetet ad vissza (ütközési válasz állapotkód). További információkért tekintse meg a [Rest műszaki profilt](restful-technical-profile.md#returning-validation-error-message).
 
 Ez csak akkor érhető el, ha egy REST API technikai profilt hív meg egy érvényesítési technikai profilból. Ez lehetővé teszi a felhasználó számára, hogy kijavítsa az adatokat az oldalon, és a lap beküldése után ismét futtassa az ellenőrzést.
 

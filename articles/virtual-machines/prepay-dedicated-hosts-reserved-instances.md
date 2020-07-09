@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 57123abfe7f343a75d264d43afb88f9de1409e8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a8531ec2a3284eac64cb900f2d95ec02b9ffdd45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78207744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678086"
 ---
 # <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Költségek megtakarítása az Azure dedikált gazdagépek fenntartott példányával
 
@@ -38,11 +37,11 @@ A fenntartott példányok a legtöbb dedikált gazdagép méretéhez érhetők e
 
 A foglalási kedvezmények nem vonatkoznak a következőkre:
 
-- **Felhők** – a foglalások nem vásárolhatók meg németországi vagy kínai régiókban.
+- **Felhők**   – A foglalások nem vásárolhatók meg németországi vagy kínai régiókban.
 
-- **Nem elegendő kvóta** – egy adott előfizetésre vonatkozó foglalásnak az új fenntartott példányra vonatkozó előfizetésben elérhető vCPU-kvótával kell rendelkeznie. Ha például a cél előfizetéshez 10 vCPU van korlátozva a DSv3 sorozathoz, akkor nem vásárolhat olyan foglalási dedikált gazdagépeket, amelyek támogatják ezt a sorozatot. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket és dedikált gazdagépeket. A probléma megoldásához kvóta-  [növelési kérelmet hozhat létre](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+- Nem **elegendő kvóta**   – Egy adott előfizetésre vonatkozó foglalásnak az új fenntartott példány előfizetésében elérhető vCPU-kvótával kell rendelkeznie. Ha például a cél előfizetéshez 10 vCPU van korlátozva a DSv3 sorozathoz, akkor nem vásárolhat olyan foglalási dedikált gazdagépeket, amelyek támogatják ezt a sorozatot. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket és dedikált gazdagépeket. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)   .
 
-- **Kapacitás korlátozásai** – ritka esetekben az Azure korlátozza az új foglalások beszerzését a dedikált gazdagépek részhalmaza számára a régió alacsony kapacitása miatt.
+- **Kapacitás korlátozásai**   – Ritka körülmények között az Azure korlátozza az új foglalások megvásárlását a dedikált gazdagépek alkészletei számára a régió alacsony kapacitása miatt.
 
 ## <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -52,7 +51,7 @@ A foglalást [elöl vagy havi fizetéssel](https://docs.microsoft.com/azure/bil
 
 - Legalább egy EA-előfizetéshez vagy egy utólagos elszámolású előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie.
 
-- Az EA-előfizetések esetében engedélyezni kell a **fenntartott példányok** hozzáadása beállítást az [EA portálon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
+- Az EA-előfizetések esetében engedélyezni kell a **fenntartott példányok hozzáadása**   beállítást az [EA portálon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 
 - A Cloud Solution Provider (CSP) program esetében csak a rendszergazdai ügynökök vagy értékesítési ügynökök vásárolhatnak foglalásokat.
 
@@ -60,13 +59,13 @@ Példány vásárlása:
 
 1. Jelentkezzen be az  [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza **a minden szolgáltatás** \> **foglalás**lehetőséget.
+2. Válassza **a minden szolgáltatás**   \>  **foglalás**lehetőséget.
 
-3. Új foglalás megvásárlásához válassza a **Hozzáadás** lehetőséget, majd kattintson a **dedikált gazdagépek**elemre.
+3.  **Add**   Új foglalás megvásárlásához válassza a Hozzáadás lehetőséget, majd kattintson a **dedikált gazdagépek**elemre.
 
 4. Töltse ki a kötelező mezőket. Dedikált gazdagépeken futó példányok futtatása, amelyek megfelelnek a kiválasztott attribútumoknak a foglalási kedvezmény beszerzéséhez. Az engedményt megkapó dedikált gazdagép-példányok tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
 
-Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozzáadásához használhatja a **továbbiak hozzáadása lehetőséget** is. A beállítás más előfizetési típusok esetében nem érhető el.
+Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozzáadásához használhatja a **továbbiak hozzáadása lehetőséget**is   . A beállítás más előfizetési típusok esetében nem érhető el.
 
 | **Mező**           | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -74,20 +73,20 @@ Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozz�
 | Hatókör               | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Régió              | A foglalás által érintett Azure-régió.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Dedikált gazdagép mérete | A dedikált gazdagép-példányok mérete.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Időtartam                | Egy vagy három év.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Kifejezés                | Egy vagy három év.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Mennyiség            | A foglalás keretében megvásárolt példányok száma. A mennyiség a számlázási kedvezményt elérő dedikált gazdagép-példányok száma.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-- **Egy erőforráscsoport hatóköre** – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.
+- **Egy erőforráscsoport hatóköre**   – A foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.
 
-- **Egyszeri előfizetés hatóköre** – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.
+- **Egyszeri előfizetés hatóköre**   – A foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.
 
-- **Megosztott hatókör** – a foglalási kedvezményt a számlázási környezetben található jogosult előfizetésekben lévő erőforrások egyeztetésére alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
+- **Megosztott hatókör**   – A foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekhez tartozó erőforrások egyeztetésére alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
 
 ## <a name="usage-data-and-reservation-utilization"></a>Használati adatok és foglalás kihasználtsága
 
 A használati adatok ára nulla azon használat esetében, amelyre érvényes a foglalási kedvezmény. Láthatja, hogy melyik virtuálisgép-példány fogadta el a foglalási kedvezményt az egyes foglalásokhoz.
 
-További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) , ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)az utólagos elszámolású előfizetéshez című témakört.
+További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea),   ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)az utólagos elszámolású előfizetéshez című témakört.
 
 ## <a name="change-a-reservation-after-purchase"></a>Foglalás módosítása a vásárlás után
 
@@ -105,13 +104,13 @@ A vásárlás után a következő típusú módosításokat nem végezheti el k�
 
 - Egy meglévő foglalás régiója
 
-- SKU
+- Termékváltozat
 
 - Mennyiség
 
 - Időtartam
 
-Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cseréjére* .
+Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cseréjére*   .
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
@@ -127,7 +126,7 @@ A foglalások kezeléséről a [Azure Reservations kezelése](https://docs.micr
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mi a Azure Reservations?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Mi az az Azure Reservations?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
 
 - [Azure-beli dedikált gazdagépek használata](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
 

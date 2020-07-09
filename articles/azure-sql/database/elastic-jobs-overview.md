@@ -11,12 +11,11 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 995d70419edb374c3761fe2f989ce3a757cc7a47
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85251168"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Rugalmas feladatok létrehozása, konfigurálása és kezelése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +26,7 @@ Ha nem használt rugalmas feladatokat, [Ismerkedjen meg a Azure SQL Database fel
 
 ## <a name="create-and-configure-the-agent"></a>Az ügynök létrehozása és konfigurálása
 
-1. Hozzon létre vagy azonosítson egy üres, S0 vagy magasabb szintű SQL-adatbázist. Ez az adatbázis lesz felhasználva a *feladatok adatbázisa* számára a rugalmas feladatok ügynökének létrehozása során.
+1. Hozzon létre vagy azonosítson egy üres S0 vagy egy magasabb adatbázist. Ez az adatbázis lesz felhasználva a *feladatok adatbázisa* számára a rugalmas feladatok ügynökének létrehozása során.
 2. Hozzon létre egy rugalmas feladatot a [portálon](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) vagy a [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)-lel.
 
    ![Rugalmas feladatok ügynökének létrehozása](./media/elastic-jobs-overview/create-elastic-job-agent.png)

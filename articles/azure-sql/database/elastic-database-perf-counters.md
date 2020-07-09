@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: a4e97fc6b46127dbc6b047e897dadf0efa76c94b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c4fddcaf786801e13e962c888a154adfdffae9f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050197"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961829"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Teljesítményszámlálók létrehozása a szegmenses Térkép kezelőjé teljesítményének nyomon követéséhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Rögzítheti egy szegmenses [Térkép kezelőjének](elastic-scale-shard-map-man
 
 A számlálók létrehozásához hívja meg a [ShardMapManagementFactory osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)CreatePerformanceCategoryAndCounters metódusát. Csak egy rendszergazda hajthatja végre a metódust:
 
-    ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
+`ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()`
 
 [Ezt](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) a PowerShell-szkriptet használhatja a metódus végrehajtásához is.
 A metódus a következő teljesítményszámlálókat hozza létre:  
@@ -51,7 +51,7 @@ A metódus a következő teljesítményszámlálókat hozza létre:
 
 A teljesítményszámlálók minden egyes gyorsítótárazott szegmens-leképezéshez jönnek létre.  
 
-## <a name="notes"></a>Megjegyzések
+## <a name="notes"></a>Jegyzetek
 
 A következő események indítják el a teljesítményszámlálók létrehozását:  
 
@@ -66,7 +66,7 @@ A teljesítményszámlálókat a rendszer az összes gyorsítótárazási művel
 * A teljesítmény kategóriájának és számlálóinak létrehozását csak egyszer kell végrehajtani a ShardMapManager objektum létrehozása előtt. A CreatePerformanceCategoryAndCounters () parancs minden végrehajtása törli az előző számlálókat (az összes példány által jelentett adatvesztést), és újakat hoz létre.  
 * A teljesítményszámláló példányai folyamat alapján jönnek létre. A rendszer a gyorsítótárból a szegmensek összes összeomlását vagy eltávolítását eredményezi, és törli a teljesítményszámlálók példányainak törlését.  
 
-### <a name="see-also"></a>További információ
+### <a name="see-also"></a>Lásd még
 
 [Az Elastic Database szolgáltatásainak áttekintése](elastic-scale-introduction.md)  
 

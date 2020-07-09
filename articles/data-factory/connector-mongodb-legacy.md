@@ -2,7 +2,6 @@
 title: Adatok másolása a MongoDB örökölt használatával
 description: Megtudhatja, hogyan másolhat adatmásolási tevékenységet a Mongo DB-ből a Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
 manager: shwang
@@ -12,14 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 803e34a93e8019cfc2577bfaab3ba13c409c6b01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558185"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB a Azure Data Factory használatával
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Adatok másolása a MongoDB Azure Data Factory használatával (örökölt)
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-on-premises-mongodb-connector.md)
@@ -58,19 +56,19 @@ A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot a következőre kell beállítani: **MongoDb** |Igen |
-| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **MongoDb** |Yes |
+| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Yes |
 | port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem (az alapértelmezett érték 27017) |
-| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
-| authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek: **Basic**és **Anonymous**. |Igen |
+| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Yes |
+| authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek: **Basic**és **Anonymous**. |Yes |
 | felhasználónév |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen (ha alapszintű hitelesítést használ). |
 | authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem. Az alapszintű hitelesítéshez az alapértelmezett érték a databaseName tulajdonsággal megadott rendszergazdai fiók és adatbázis használata. |
-| enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | Nem |
-| allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | No |
+| allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | No |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -101,10 +99,10 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbCollection** | Igen |
-| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbCollection** | Yes |
+| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -132,10 +130,10 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbSource** | Yes |
 | lekérdezés |Az egyéni SQL-92 lekérdezés használatával olvashatja el az adatolvasást. Például: select * from Sajáttábla. |Nem (ha meg van adva a "collectionName" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -181,7 +179,7 @@ Az adatok MongoDB-ből való másolása során a rendszer a következő leképez
 | MongoDB adattípusa | Az adatgyár átmeneti adattípusa |
 |:--- |:--- |
 | Bináris |Bájt [] |
-| Logikai |Logikai |
+| Logikai érték |Logikai |
 | Dátum |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |

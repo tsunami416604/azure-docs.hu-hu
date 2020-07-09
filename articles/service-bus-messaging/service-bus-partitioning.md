@@ -1,20 +1,14 @@
 ---
 title: Particionált Azure Service Bus-várólisták és-témakörök létrehozása | Microsoft Docs
 description: Ismerteti, hogyan lehet Service Bus várólistákat és témaköröket több Message Broker használatával particionálni.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
-ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 6ea0bee255f489355056f91d82195382153786bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339643"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -31,11 +25,13 @@ Minden particionált üzenetsor vagy témakör több partíciót tartalmaz. Az e
 
 Ha egy ügyfél egy particionált várólistáról vagy egy particionált témakör előfizetéséről szeretne üzenetet kapni, Service Bus lekérdezi az összes partíciót az üzenetekhez, majd visszaadja az összes üzenetküldési áruházból a fogadónak beszerzett első üzenetet. Service Bus gyorsítótárazza a többi üzenetet, és visszaadja őket, ha további fogadási kéréseket kap. A fogadó ügyfél nem ismeri a particionálást; egy particionált várólista vagy témakör ügyféloldali viselkedése (például olvasás, Befejezés, késleltetés, kézbesítetlen levelek, előre beolvasás) azonos a normál entitás viselkedésével.
 
+A nem particionált entitások betekintés művelete mindig a legrégebbi üzenetet adja vissza, de nem particionált entitáson. Ehelyett egy olyan partíció legrégebbi üzenetét adja vissza, amelynek a Message Broker először válaszol. Nem garantálható, hogy a visszaadott üzenet az összes partíció legrégebbi tagja. 
+
 Az üzenetek elküldésekor vagy egy particionált várólistából vagy témakörből való üzenetküldés esetén nincs további díj.
 
 ## <a name="enable-partitioning"></a>Particionálás engedélyezése
 
-Ha Azure Service Bus használatával particionált várólistákat és témaköröket szeretne használni, használja az Azure SDK 2,2-as vagy `api-version=2013-10` újabb verzióját, vagy adja meg a http-kérelmekben vagy azt később.
+Ha Azure Service Bus használatával particionált várólistákat és témaköröket szeretne használni, használja az Azure SDK 2,2-as vagy újabb verzióját, vagy adja meg a `api-version=2013-10` http-kérelmekben vagy azt később.
 
 ### <a name="standard"></a>Standard
 

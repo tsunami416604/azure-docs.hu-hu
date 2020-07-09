@@ -1,6 +1,7 @@
 ---
 title: A Visual Studio használata a .NET és a C# használatával a lekérdezéshez
-description: A Visual Studióval olyan C#-alkalmazást hozhat létre, amely egy Microsoft Azure SQL-adatbázishoz csatlakozik, és a Transact-SQL-utasításokkal kérdezi le azokat.
+description: A Visual Studióval hozzon létre egy C#-alkalmazást, amely Azure SQL Database vagy az Azure SQL felügyelt példányában található adatbázishoz kapcsolódik, és lekérdezéseket futtat.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,35 +11,35 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 12/31/2019
-ms.openlocfilehash: ea274805e936c327bf9db1c5eedc7e55a32d6c5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 3f951c05100b5e36a2162e2422a066d563b24136
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054262"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250655"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-azure-sql-database"></a>Rövid útmutató: a .NET és a C# használata a Visual Studióban egy Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET és a C# használata a Visual Studióban Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz való kapcsolódáshoz és lekérdezéshez
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez a rövid útmutató bemutatja, hogyan használható a [.NET-keretrendszer](https://www.microsoft.com/net/) és a C# kód a Visual Studióban egy Azure SQL Database-adatbázis Transact-SQL-utasításokkal való lekérdezéséhez.
+Ez a rövid útmutató azt ismerteti, hogyan használható a [.NET-keretrendszer](https://www.microsoft.com/net/) és a C# kód a Visual Studióban egy adatbázis lekérdezéséhez Azure SQL Database Transact-SQL-utasításokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist az Azure SQL-ben:
+- Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
-  || SQL Database | SQL Managed Instance | Azure virtuális gépen futó SQL Server |
+  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [parancssori felület](scripts/create-and-configure-database-cli.md) | [parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Kapcsolódás a webhelyről](../managed-instance/point-to-site-p2s-configure.md) | [Csatlakozás az SQL Serverhez](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  |||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md) | [Csatlakozás az SQL Serverhez](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) | [Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Adventure Works visszaállítása vagy importálása a [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása a [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -46,20 +47,20 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) Közösségi, Professional vagy Enterprise kiadás.
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
+## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
 
-Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
+Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egy Azure SQL Database vagy a teljes kiszolgálónév (vagy IP-cím) mellett egy Azure SQL felügyelt példányhoz vagy egy Azure-beli **virtuális gépen SQL Server** . A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
+3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 > [!NOTE]
-> Az Azure-beli virtuális gépek SQL Server kapcsolati információit lásd: [kapcsolódás SQL Serverhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
+> SQL Server Azure-beli virtuális gépen való kapcsolódásával kapcsolatos információkért lásd: [kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
 
-## <a name="create-code-to-query-the-sql-database"></a>Kód létrehozása az SQL-adatbázis lekérdezéséhez
+## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Kód létrehozása az adatbázis lekérdezéséhez Azure SQL Database
 
 1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. 
    
@@ -143,11 +144,11 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [csatlakozhat egy Azure SQL Database-adatbázishoz a .net Core használatával](connect-query-dotnet-core.md) Windows/Linux/MacOS rendszeren.  
+- Megtudhatja, hogyan [csatlakozhat egy adatbázishoz a Azure SQL Database a .net Core használatával](connect-query-dotnet-core.md) a Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
-- További információ [az első Azure SQL-adatbázisának SSMS-sel való megtervezéséről](design-first-database-tutorial.md) és [az első Azure SQL-adatbázisának .NET-tel való megtervezéséről](design-first-database-csharp-tutorial.md).
+- Megtudhatja, hogyan [tervezheti meg az első adatbázisát Azure SQL Database a SSMS használatával](design-first-database-tutorial.md) , vagy [az első adatbázis megtervezésével Azure SQL Database a .NET használatával](design-first-database-csharp-tutorial.md).
 - A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.
-- Újrapróbálkozási logika példája: [rugalmas csatlakozás az SQL-hez a ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Próbálja ki újra a logikai példát: [kapcsolódjon rugalmasan az Azure SQL-hez a ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->

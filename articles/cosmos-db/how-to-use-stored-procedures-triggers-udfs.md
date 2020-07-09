@@ -3,25 +3,26 @@ title: Tárolt eljárások, eseményindítók és felhasználó által definiál
 description: Megtudhatja, hogyan regisztrálhat és hívhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket a Azure Cosmos DB SDK-k használatával
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 2e870e6cbc16fd98d8fccb5bbe3ac5d8be634cf2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 747878a4fa9e6ad43f7eeb507f0cd7a070c6d743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262905"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználói függvények regisztrálása és használata az Azure Cosmos DB-ben
 
-Az Azure Cosmos DB-ben lévő SQL API támogatja a JavaScript nyelven írt tárolt eljárások, eseményindítók és felhasználói függvények regisztrálását és meghívását. Használhatja az SQL API [.net](sql-api-sdk-dotnet.md), [.net Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)vagy [Python](sql-api-sdk-python.md) SDK-kat a tárolt eljárások regisztrálásához és meghívásához. Miután meghatározta egy vagy több tárolt eljárást, eseményindítót és felhasználó által definiált függvényt, betöltheti és megtekintheti őket a [Azure Portal](https://portal.azure.com/) adatkezelő használatával.
+Az Azure Cosmos DB-ben lévő SQL API támogatja a JavaScript nyelven írt tárolt eljárások, eseményindítók és felhasználói függvények regisztrálását és meghívását. Használhatja az SQL API [.net](sql-api-sdk-dotnet.md), [.net Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md)vagy [Python](sql-api-sdk-python.md) SDK-kat a tárolt eljárások regisztrálásához és meghívásához. Miután meghatározta egy vagy több tárolt eljárást, eseményindítót és felhasználó által definiált függvényt, betöltheti és megtekintheti őket a [Azure Portal](https://portal.azure.com/) adatkezelő használatával.
 
 ## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Tárolt eljárások futtatása
 
 A tárolt eljárások JavaScript használatával íródnak. Létrehozhatják, frissíthetik, olvashatják, lekérhetik és törölhetik az Azure Cosmos-tárolóban lévő elemeket. A tárolt eljárások Azure Cosmos DBban való írásával kapcsolatos további információkért lásd: [tárolt eljárások írása Azure Cosmos db](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) cikkben.
 
-Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy tárolt eljárást a Azure Cosmos DB SDK-k használatával. A tárolt eljárás forrásaként való mentésekor tekintse meg a [dokumentum létrehozása](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) című témakört `spCreateToDoItem.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy tárolt eljárást a Azure Cosmos DB SDK-k használatával. A tárolt eljárás forrásaként való mentésekor tekintse meg a [dokumentum létrehozása](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) című témakört `spCreateToDoItem.js` .
 
 > [!NOTE]
 > Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
@@ -31,7 +32,7 @@ Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy táro
 Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK V2 használatával:
 
 ```csharp
-string storedProcedureId = "spCreateToDoItem";
+string storedProcedureId = "spCreateToDoItems";
 StoredProcedure newStoredProcedure = new StoredProcedure
    {
        Id = storedProcedureId,
@@ -45,17 +46,25 @@ StoredProcedure createdStoredProcedure = response.Resource;
 A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK V2 használatával:
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
+    }
 };
 
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
-var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
+var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, new[] { newItems });
 ```
 
 ### <a name="stored-procedures---net-sdk-v3"></a>Tárolt eljárások – .NET SDK v3
@@ -63,10 +72,11 @@ var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newI
 Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK v3 használatával:
 
 ```csharp
-StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+string storedProcedureId = "spCreateToDoItems";
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("myDatabase", "myContainer").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
 {
-    Id = "spCreateToDoItem",
-    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+    Id = storedProcedureId,
+    Body = File.ReadAllText($@"..\js\{storedProcedureId}.js")
 });
 ```
 
@@ -80,10 +90,16 @@ dynamic[] newItems = new dynamic[]
         name = "Groceries",
         description = "Pick up strawberries",
         isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
     }
 };
 
-var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), new[] { newItems });
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Tárolt eljárások – Java SDK
@@ -94,8 +110,8 @@ Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
 StoredProcedure newStoredProcedure = new StoredProcedure(
     "{" +
-        "  'id':'spCreateToDoItem'," +
-        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItem.js"))) +
+        "  'id':'spCreateToDoItems'," +
+        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItems.js"))) +
     "}");
 //toBlocking() blocks the thread until the operation is complete and is used only for demo.  
 StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(containerLink, newStoredProcedure, null)
@@ -106,8 +122,10 @@ A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a Java S
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItem");
+String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItems");
 final CountDownLatch successfulCompletionLatch = new CountDownLatch(1);
+
+List<ToDoItem> ToDoItems = new ArrayList<ToDoItem>();
 
 class ToDoItem {
     public String category;
@@ -122,10 +140,19 @@ newItem.name = "Groceries";
 newItem.description = "Pick up strawberries";
 newItem.isComplete = false;
 
+ToDoItems.add(newItem)
+
+newItem.category = "Personal";
+newItem.name = "Doctor";
+newItem.description = "Make appointment for check up";
+newItem.isComplete = false;
+
+ToDoItems.add(newItem)
+
 RequestOptions requestOptions = new RequestOptions();
 requestOptions.setPartitionKey(new PartitionKey("Personal"));
 
-Object[] storedProcedureArgs = new Object[] { newItem };
+Object[] storedProcedureArgs = new Object[] { ToDoItems };
 asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArgs)
     .subscribe(storedProcedureResponse -> {
         String storedProcResultAsString = storedProcedureResponse.getResponseAsString();
@@ -146,7 +173,7 @@ Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Java
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
+const sprocId = "spCreateToDoItems";
 await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
@@ -163,7 +190,7 @@ const newItem = [{
     isComplete: false
 }];
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
+const sprocId = "spCreateToDoItems";
 const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
@@ -172,11 +199,11 @@ const {body: result} = await container.scripts.storedProcedure(sprocId).execute(
 Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Python SDK használatával
 
 ```python
-with open('../js/spCreateToDoItem.js') as file:
+with open('../js/spCreateToDoItems.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-    'id': 'spCreateToDoItem',
+    'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
@@ -185,7 +212,7 @@ sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a Python SDK használatával
 
 ```python
-sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
+sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItems'
 new_item = [{
     'category':'Personal',
     'name':'Groceries',
@@ -197,9 +224,9 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Az eseményindítók futtatása
 
-Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy előindítást az Azure Cosmos DB SDK-k használatával. Tekintse meg az [Indítás előtti példát](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , mivel az előtrigger forrásaként a rendszer menti a `trgPreValidateToDoItemTimestamp.js`következőt:.
+Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy előindítást az Azure Cosmos DB SDK-k használatával. Tekintse meg az [Indítás előtti példát](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , mivel az előtrigger forrásaként a rendszer menti a következőt: `trgPreValidateToDoItemTimestamp.js` .
 
-A végrehajtásakor az eseményindítók átadása a RequestOptions objektumba az eseményindító nevének `PreTriggerInclude` megadásával, majd a lista objektumban való átadásával történik.
+A végrehajtásakor az eseményindítók átadása a RequestOptions objektumba az eseményindító nevének megadásával, `PreTriggerInclude` majd a lista objektumban való átadásával történik.
 
 > [!NOTE]
 > Annak ellenére, hogy az trigger neve listaként van átadva, a művelet végrehajtása csak egy triggert tud végrehajtani.
@@ -355,7 +382,7 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Az eseményindítók futtatása
 
-Az alábbi példák bemutatják, hogyan regisztrálhat egy post-triggert a Azure Cosmos DB SDK-k használatával. Tekintse meg a [trigger utáni példát](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , mivel a rendszer a post-trigger forrását menti `trgPostUpdateMetadata.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat egy post-triggert a Azure Cosmos DB SDK-k használatával. Tekintse meg a [trigger utáni példát](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , mivel a rendszer a post-trigger forrását menti `trgPostUpdateMetadata.js` .
 
 ### <a name="post-triggers---net-sdk-v2"></a>Eseményindítók utáni .NET SDK v2
 
@@ -502,7 +529,7 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Felhasználó által definiált függvények használata
 
-Az alábbi példák bemutatják, hogyan regisztrálhat egy felhasználó által definiált függvényt a Azure Cosmos DB SDK-k használatával. Tekintse meg ezt a [felhasználó által definiált függvényt, például](how-to-write-stored-procedures-triggers-udfs.md#udfs) az utólagos trigger forrását `udfTax.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat egy felhasználó által definiált függvényt a Azure Cosmos DB SDK-k használatával. Tekintse meg ezt a [felhasználó által definiált függvényt, például](how-to-write-stored-procedures-triggers-udfs.md#udfs) az utólagos trigger forrását `udfTax.js` .
 
 ### <a name="user-defined-functions---net-sdk-v2"></a>Felhasználó által definiált függvények – .NET SDK v2
 

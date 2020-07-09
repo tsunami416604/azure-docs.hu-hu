@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/30/2020
+ms.subservice: sql-dw
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482853"
 ---
 # <a name="synapse-sql-recommendations"></a>Szinapszis SQL-javaslatok
 
@@ -70,3 +70,7 @@ Ha nagy munkakészlettel rendelkezik, az alacsony gyorsítótárbeli találatok 
 ## <a name="tempdb-contention"></a>Tempdb-tartalom
 
 A lekérdezés teljesítménye csökkenhet, ha magas a tempdb-tartalom.  A tempdb-tartalom felhasználó által definiált ideiglenes táblákon vagy nagy mennyiségű adatmozgatáson keresztül fordulhat elő. Ebben a forgatókönyvben több tempdb-kiosztást és az [erőforrás-osztályok és a számítási feladatok kezelését is beállíthatja](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) , hogy a lekérdezések több memóriát szolgáltassanak. 
+
+## <a name="data-loading-misconfiguration"></a>Az adatbetöltések helytelen konfigurációja
+
+Az adatok a késés csökkentése érdekében mindig az SQL-készlettel azonos régióban lévő Storage-fiókból tölthetők be. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)található: további adattöltési útmutató. 

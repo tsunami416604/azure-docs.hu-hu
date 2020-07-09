@@ -1,18 +1,18 @@
 ---
 title: Delegálási változások figyelése a kezelési bérlőben
 description: Megtudhatja, hogyan figyelheti a delegálási tevékenységeket az ügyfelek bérlői számára a felügyeleti bérlőbe.
-ms.date: 03/30/2020
-ms.topic: conceptual
-ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458811"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105166"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelési bérlőben
 
-Szolgáltatóként érdemes lehet tájékoztatni, ha az ügyfél-előfizetések vagy erőforráscsoportok delegálása az Azure-beli [delegált erőforrás-kezelésen](../concepts/azure-delegated-resource-management.md)keresztül történik, vagy ha a korábban delegált erőforrások törlődnek.
+Szolgáltatóként érdemes lehet tájékoztatni, ha az ügyfél-előfizetések vagy erőforráscsoportok delegálása a bérlőn keresztül történik az [Azure világítótoronyban](../overview.md), vagy ha a korábban delegált erőforrások törlődnek.
 
 A bérlő kezelése során az [Azure-tevékenység naplója](../../azure-monitor/platform/platform-logs-overview.md) a bérlői szinten nyomon követi a delegálási tevékenységet. Ez a naplózott tevékenység magában foglalja az összes ügyfél-bérlő hozzáadott vagy eltávolított delegálását.
 
@@ -44,7 +44,7 @@ Mivel ez egy széles körű hozzáférés, javasoljuk, hogy ezt a szerepkört eg
 
 - [Hozzon létre egy új egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md) , amelyet csak ehhez a függvényhez kell használni, ahelyett, hogy ezt a szerepkört egy másik automatizáláshoz használt meglévő egyszerű szolgáltatáshoz rendeli.
 - Győződjön meg arról, hogy ez az egyszerű szolgáltatás nem rendelkezik hozzáféréssel a delegált ügyfelek erőforrásaihoz.
-- [Tanúsítvány használata](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) az Azure Key Vault biztonságos hitelesítéséhez és [tárolásához](../../key-vault/general/best-practices.md).
+- [Tanúsítvány használata](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) az Azure Key Vault biztonságos hitelesítéséhez és [tárolásához](../../key-vault/general/best-practices.md).
 - Korlátozza azokat a felhasználókat, akik hozzáféréssel rendelkeznek az egyszerű szolgáltatásnév nevében.
 
 Az alábbi módszerek egyikével hajthatja végre a gyökérszintű hatókör-hozzárendeléseket.
@@ -73,7 +73,7 @@ Miután létrehozta a szolgáltatás egyszerű fiókját, és hozzárendelte a f
 
 Miután létrehozott egy új egyszerű szolgáltatásnevet, amely figyeli az olvasó hozzáférését a felügyeleti bérlő legfelső szintű hatóköréhez, használhatja a delegálási tevékenység lekérdezésére és jelentésére a bérlőben. 
 
-[Ezzel a Azure PowerShell parancsfájllal](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) lekérdezheti a tevékenységek és jelentések elmúlt 1 napját a hozzáadott vagy eltávolított delegálásokra vonatkozóan (vagy sikertelen próbálkozások esetén). Lekérdezi a [bérlői tevékenység naplójának](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd létrehozza a következő értékeket a hozzáadott vagy eltávolított delegálások jelentéséhez:
+[Ezzel a Azure PowerShell parancsfájllal](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) lekérdezheti a tevékenységek és jelentések elmúlt 1 napját a hozzáadott vagy eltávolított delegálásokra vonatkozóan (vagy sikertelen próbálkozások esetén). Lekérdezi a [bérlői tevékenység naplójának](/rest/api/monitor/TenantActivityLogs/List) adatait, majd létrehozza a következő értékeket a hozzáadott vagy eltávolított delegálások jelentéséhez:
 
 - **DelegatedResourceId**: a delegált előfizetés vagy erőforráscsoport azonosítója
 - **CustomerTenantId**: az ügyfél BÉRLŐi azonosítója
@@ -156,7 +156,7 @@ else
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan hozhatja be az ügyfeleket az Azure-beli [meghatalmazott erőforrás-felügyeletbe](../concepts/azure-delegated-resource-management.md).
+- Ismerje meg, hogyan hozhatja be az ügyfeleket az [Azure lighthouseba](../concepts/azure-delegated-resource-management.md).
 - Ismerje meg a [Azure monitor](../../azure-monitor/index.yml) és az [Azure-tevékenység naplóját](../../azure-monitor/platform/platform-logs-overview.md).

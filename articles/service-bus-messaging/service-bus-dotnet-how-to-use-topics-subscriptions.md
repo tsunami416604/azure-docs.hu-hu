@@ -1,25 +1,15 @@
 ---
 title: Ismerkedés az Azure Service Bus-üzenettémákkal és előfizetésekkel | Microsoft Docs
 description: Írjon Service Bus-üzenettémákat és előfizetéseket használó C# .NET Core-konzolalkalmazást.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 11/27/2019
-ms.author: aschhab
-ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74560100"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337520"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -75,7 +65,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     static ITopicClient topicClient;
     ``` 
 
-3. Cserélje le `Main()` a metódust a következő **aszinkron** `Main` metódusra, amely aszinkron módon küldi az üzeneteket az SendMessagesAsync metódussal, amelyet a következő lépésben fog hozzáadni. 
+3. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra, amely aszinkron módon küldi az üzeneteket az SendMessagesAsync metódussal, amelyet a következő lépésben fog hozzáadni. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -210,7 +200,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core Consol
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Cserélje le `Main()` a metódust a következő **aszinkron** `Main` metódusra. A következő lépésben `RegisterOnMessageHandlerAndReceiveMessages()` meghívja a metódust, amelyet hozzá fog adni. 
+3. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. A következő lépésben meghívja a `RegisterOnMessageHandlerAndReceiveMessages()` metódust, amelyet hozzá fog adni. 
 
     ```csharp
     public static async Task Main(string[] args)

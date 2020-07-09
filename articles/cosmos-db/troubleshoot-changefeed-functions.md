@@ -8,10 +8,9 @@ ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365508"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
@@ -23,7 +22,7 @@ Ez a cikk a gyakori problémákról, a megkerülő megoldásokról és a diagnos
 A Cosmos DB Azure Functions-trigger és-kötések a Azure Functions futtatókörnyezeten alapuló kiterjesztési csomagoktól függenek. Mindig tartsa naprakészen ezeket a csomagokat, mert olyan javításokat és új funkciókat is tartalmazhatnak, amelyek az esetlegesen felmerülő esetleges problémák megoldására képesek:
 
 * Azure Functions v2 esetén lásd: [Microsoft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
-* A Azure Functions v1 esetében lásd: [Microsoft. Azure. webjobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+* Azure Functions v1 esetén lásd: [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
 Ez a cikk mindig Azure Functions v2-re hivatkozik, ha a futtatókörnyezetet megemlítik, kivéve, ha explicit módon meg van adva.
 
@@ -44,8 +43,8 @@ Az Azure-függvény a következő hibaüzenettel meghiúsul: "vagy" a forrás gy
 Ez azt jelenti, hogy a trigger működéséhez szükséges Azure Cosmos-tárolók egyike vagy mindkettő nem létezik, vagy nem érhető el az Azure-függvény számára. **Maga a hiba azt fogja megállapítani, hogy melyik Azure Cosmos-adatbázis és-tároló az** a konfiguráció alapján keresett trigger.
 
 1. Ellenőrizze az `ConnectionStringSetting` attribútumot, és hogy az **Azure-függvényalkalmazás található beállításokra hivatkozik-** e. Az attribútum értéke nem lehet maga a kapcsolatok karakterlánca, hanem a konfigurációs beállítás neve.
-2. Győződjön meg arról `databaseName` , `collectionName` hogy a és létezik az Azure Cosmos-fiókjában. Ha automatikus érték-helyettesítést használ (mintázatok használatával `%settingName%` ), győződjön meg arról, hogy a beállítás neve létezik az Azure-függvényalkalmazás.
-3. Ha nem ad meg értéket `LeaseCollectionName/leaseCollectionName`, az alapértelmezett érték a "bérletek". Ellenőrizze, hogy létezik-e ilyen tároló. Opcionálisan beállíthatja az `CreateLeaseCollectionIfNotExists` triggerben `true` lévő attribútumot az automatikus létrehozásához.
+2. Győződjön meg arról, hogy a `databaseName` és `collectionName` létezik az Azure Cosmos-fiókjában. Ha automatikus érték-helyettesítést használ ( `%settingName%` mintázatok használatával), győződjön meg arról, hogy a beállítás neve létezik az Azure-függvényalkalmazás.
+3. Ha nem ad meg értéket `LeaseCollectionName/leaseCollectionName` , az alapértelmezett érték a "bérletek". Ellenőrizze, hogy létezik-e ilyen tároló. Opcionálisan beállíthatja az `CreateLeaseCollectionIfNotExists` triggerben lévő attribútumot az `true` automatikus létrehozásához.
 4. Ellenőrizze az [Azure Cosmos-fiókja tűzfal-konfigurációját](how-to-configure-firewall.md) , és győződjön meg róla, hogy nem blokkolja az Azure-függvényt.
 
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Az Azure-függvény nem indul el "a megosztott átviteli sebességű gyűjteménynek rendelkeznie kell partíciós kulccsal"
@@ -58,7 +57,7 @@ Ez a hiba azt jelenti, hogy jelenleg egy particionált címbérleti gyűjtemény
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Az Azure-függvény nem indul el a következővel: "a bérlet gyűjteménye, ha particionálva van, az azonosítóval megegyező partíciós kulcsnak kell lennie."
 
-Ez a hiba azt jelenti, hogy az aktuális címbérleti tároló particionálva van, de a partíciós `/id`kulcs elérési útja nem. A probléma megoldásához újra létre kell hoznia a bérletek tárolót `/id` a partíciós kulccsal.
+Ez a hiba azt jelenti, hogy az aktuális címbérleti tároló particionálva van, de a partíciós kulcs elérési útja nem `/id` . A probléma megoldásához újra létre kell hoznia a bérletek tárolót a `/id` partíciós kulccsal.
 
 ### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Az érték nem lehet null. Paraméter neve: o "a Azure Functions naplókban, amikor megpróbálja futtatni az triggert
 
@@ -78,8 +77,8 @@ Ha ez utóbbi, akkor késés fordulhat elő a módosítások tárolása és azok
 
 A "módosítás" fogalma egy dokumentumon végzett művelet. A leggyakoribb forgatókönyvek, ahol az azonos dokumentum eseményeinek fogadása a következő:
 * A fiók végleges konzisztenciát használ. Miközben a változási csatornát egy végleges konzisztencia-szinten fogyasztja, előfordulhat, hogy a későbbi módosítási hírcsatorna olvasási műveletei között ismétlődő események szerepelnek (az egyik olvasási művelet utolsó eseménye a következőként jelenik meg).
-* A dokumentum frissítése folyamatban van. A módosítási hírcsatorna több műveletet is tartalmazhat ugyanahhoz a dokumentumokhoz, ha a dokumentum frissítéseket fogad, több eseményt is felvehet (egyet az egyes frissítések esetében). Egy egyszerű módja annak, hogy megkülönböztethető legyen az azonos dokumentum különböző műveletei között, `_lsn` hogy nyomon követhesse az [egyes változtatások tulajdonságát](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Ha nem egyeznek meg, ezek a dokumentumok eltérő módosításai.
-* Ha csak a dokumentumokat azonosítja `id`, ne feledje, hogy a dokumentum egyedi azonosítója a `id` és a hozzá tartozó partíciós kulcs (két azonos `id` , de eltérő partíciós kulccsal rendelkező dokumentum is lehet).
+* A dokumentum frissítése folyamatban van. A módosítási hírcsatorna több műveletet is tartalmazhat ugyanahhoz a dokumentumokhoz, ha a dokumentum frissítéseket fogad, több eseményt is felvehet (egyet az egyes frissítések esetében). Egy egyszerű módja annak, hogy megkülönböztethető legyen az azonos dokumentum különböző műveletei között, hogy nyomon követhesse az `_lsn` [egyes változtatások tulajdonságát](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Ha nem egyeznek meg, ezek a dokumentumok eltérő módosításai.
+* Ha csak a dokumentumokat azonosítja `id` , ne feledje, hogy a dokumentum egyedi azonosítója a `id` és a hozzá tartozó partíciós kulcs (két azonos, `id` de eltérő partíciós kulccsal rendelkező dokumentum is lehet).
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Néhány módosítás hiányzik a saját triggerben
 
@@ -89,16 +88,16 @@ Amikor az Azure-függvény megkapja a módosításokat, gyakran dolgozza fel ők
 
 Ha néhány módosítás hiányzik a célhelyről, ez azt jelentheti, hogy hiba történt az Azure-függvény végrehajtása során a módosítások fogadása után.
 
-Ebben az esetben a legjobb megoldás, ha blokkokat ad hozzá `try/catch` a kódban, és azon a hurkon belül, amely feldolgozza a módosításokat, hogy észlelje az elemek adott részhalmaza meghibásodását, és ennek megfelelően kezeli azokat (további elemzés vagy újrapróbálkozás céljából elküldheti őket egy másik tárolóba). 
+Ebben az esetben a legjobb megoldás, ha blokkokat ad hozzá a `try/catch` kódban, és azon a hurkon belül, amely feldolgozza a módosításokat, hogy észlelje az elemek adott részhalmaza meghibásodását, és ennek megfelelően kezeli azokat (további elemzés vagy újrapróbálkozás céljából elküldheti őket egy másik tárolóba). 
 
 > [!NOTE]
 > Az Azure Functions Cosmos DB-eseményindítója alapértelmezés szerint nem próbálkozik újra a módosításköteggel, ha a kódvégrehajtás során nem kezelt kivétel lépett fel. Ez azt jelenti, hogy a módosítások nem érkeznek meg a célhelyre, mert nem kell feldolgoznia azokat.
 
 Ha úgy találja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
 
-Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérleti elemek számát, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint az ismert Azure függvényalkalmazás-példányok, az azt jelenti, hogy ezek a további tulajdonosok a módosítások "ellopása".
+Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérleti elemek számát, a bennük lévő tulajdonság különböző értékeinek meg kell `Owner` egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint az ismert Azure függvényalkalmazás-példányok, az azt jelenti, hogy ezek a további tulajdonosok a módosítások "ellopása".
 
-Ennek a helyzetnek az egyik egyszerű módja, hogy a függvényt `LeaseCollectionPrefix/leaseCollectionPrefix` egy új/eltérő értékkel alkalmazza, vagy Alternatív megoldásként egy új bérletek tárolóval kell tesztelni.
+Ennek a helyzetnek az egyik egyszerű módja, hogy a `LeaseCollectionPrefix/leaseCollectionPrefix` függvényt egy új/eltérő értékkel alkalmazza, vagy Alternatív megoldásként egy új bérletek tárolóval kell tesztelni.
 
 ### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>A tárolóban lévő összes elem újraindítása és újrafeldolgozásának kezdete 
 Egy tároló összes elemének újrafeldolgozása a kezdetektől fogva:
@@ -109,7 +108,7 @@ Egy tároló összes elemének újrafeldolgozása a kezdetektől fogva:
 
 A [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) True értékre állításával megtudhatja, hogy az Azure-függvény az aktuális idő helyett a gyűjtemény előzményeinek elejéről olvassa be a módosításokat. Ez csak akkor működik, ha nincsenek már létrehozott bérletek (azaz a bérletek gyűjtemény dokumentumai). Ha a tulajdonságot igaz értékre állítja, akkor a már létrehozott bérletek nem lépnek érvénybe. Ebben az esetben, ha egy függvény leáll és újraindul, a a bérletek gyűjteményében meghatározottak szerint megkezdi az utolsó ellenőrzőpont olvasását. Az elejétől az újrafeldolgozáshoz kövesse a 1-4-es lépéseket.  
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>A kötés csak a IReadOnlyList\<Document> vagy a JArray használatával végezhető el.
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>A kötés csak a IReadOnlyList vagy a JArray használatával végezhető el. \<Document>
 
 Ez a hiba akkor fordul elő, ha a Azure Functions projekt (vagy bármely hivatkozott projekt) manuális NuGet hivatkozást tartalmaz az Azure Cosmos DB SDK-ra, amely az [Azure Functions Cosmos db bővítmény](./troubleshoot-changefeed-functions.md#dependencies)által megadott verziótól eltérő verziójú.
 

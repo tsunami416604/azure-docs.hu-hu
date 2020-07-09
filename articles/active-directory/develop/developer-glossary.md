@@ -12,12 +12,11 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84308626"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
@@ -202,7 +201,7 @@ Az Azure AD-címtár egy példányát Azure AD-bérlőnek nevezzük. Számos fun
 * felhasználói fiókok és regisztrált alkalmazások hitelesítése
 * A különböző protokollok támogatásához szükséges REST-végpontok, például a OAuth2 és az SAML, beleértve az [engedélyezési végpontot](#authorization-endpoint), a [jogkivonat-végpontot](#token-endpoint) és a [több-bérlős alkalmazások](#multi-tenant-application)által használt "Common" végpontot.
 
-Az Azure AD-bérlők létrehozása/az Azure-beli és az Office 365-előfizetésekhez vannak társítva a regisztráció során, amely az előfizetéshez & hozzáférés-kezelési funkciókat biztosít. Az Azure-előfizetés rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal használatával. Megtudhatja, [hogyan szerezhet be egy Azure Active Directory bérlőt][AAD-How-To-Tenant] a bérlőhöz való hozzáférés különböző módjaival kapcsolatos részletekért. Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiért tekintse meg [, hogy az Azure-előfizetések hogyan vannak társítva Azure Active Directory][AAD-How-Subscriptions-Assoc] .
+Az Azure AD-bérlők létrehozása/az Azure-beli és az Office 365-előfizetésekhez vannak társítva a regisztráció során, amely az előfizetéshez & hozzáférés-kezelési funkciókat biztosít. Az Azure-előfizetés rendszergazdái további Azure AD-bérlőket is létrehozhatnak a Azure Portal használatával. Megtudhatja, [hogyan szerezhet be egy Azure Active Directory bérlőt][AAD-How-To-Tenant] a bérlőhöz való hozzáférés különböző módjaival kapcsolatos részletekért. Az előfizetések és az Azure AD-bérlő közötti kapcsolat részleteiről, valamint az előfizetés Azure AD-bérlőhöz való hozzárendelésével és hozzáadásával kapcsolatos információkért lásd: az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz][AAD-How-Subscriptions-Assoc] .
 
 ## <a name="token-endpoint"></a>jogkivonat-végpont
 

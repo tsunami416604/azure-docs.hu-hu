@@ -15,11 +15,10 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702175"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználók üzembe helyezéséhez (előzetes verzió)
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. Ez az integráció nyilvános előzetes verzióban érhető el, és támogatja a több mint [70 felhasználói attribútum](../app-provisioning/sap-successfactors-attribute-reference.md) lekérését a SuccessFactors Employee Central-ból.
@@ -247,7 +246,7 @@ Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directory
 
 1. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
-   * **Rendszergazdai Felhasználónév** – adja meg a SuccessFactors API felhasználói fiókjának felhasználónevét a HOZZÁFŰZÖTT vállalati azonosítóval. Formátuma: **username\@companyID**
+   * **Rendszergazdai Felhasználónév** – adja meg a SuccessFactors API felhasználói fiókjának felhasználónevét a HOZZÁFŰZÖTT vállalati azonosítóval. Formátuma: **username \@ companyID**
 
    * **Rendszergazdai jelszó –** Adja meg a SuccessFactors API felhasználói fiók jelszavát. 
 

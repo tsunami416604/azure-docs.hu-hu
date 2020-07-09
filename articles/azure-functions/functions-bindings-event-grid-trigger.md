@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: c86a58c384c7356ecdaf668644f08c011a4c0a40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833001"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions Azure Event Grid trigger
 
@@ -78,9 +78,9 @@ namespace Company.Function
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy trigger kötést mutat be egy *function. JSON* fájlban és egy [C# parancsfájl-függvényben](functions-reference-csharp.md) , amely a kötést használja.
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -130,9 +130,9 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -161,9 +161,9 @@ module.exports = function (context, eventGridEvent) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja.
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [Python-függvényt](functions-reference-python.md) , amely a kötést használja.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -305,9 +305,9 @@ A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő táblázat a *function. JSON* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok az `EventGridTrigger` attribútumban.
+Az alábbi táblázat a *function.js* fájlon beállított kötési konfigurációs tulajdonságait ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok az `EventGridTrigger` attribútumban.
 
-|function. JSON-tulajdonság |Description|
+|function.jsa tulajdonságon |Description|
 |---------|---------|
 | **típusa** | Kötelező – a következőre kell beállítani: `eventGridTrigger` . |
 | **direction** | Kötelező – a következőre kell beállítani: `in` . |
@@ -345,11 +345,11 @@ Azure Functions 2. x vagy újabb verzióban a következő paraméter-típust is 
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A Event Grid példány a *function. JSON* fájl tulajdonságában konfigurált paraméterrel érhető el `name` .
+A Event Grid-példány a fájl tulajdonságában található *function.js* konfigurált paraméterrel érhető el `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Event Grid példány a *function. JSON* fájl tulajdonságában konfigurált paraméterrel érhető el `name` `func.EventGridEvent` .
+A Event Grid-példány a fájl tulajdonságában megadott *function.js* konfigurált paraméterrel érhető el `name` `func.EventGridEvent` .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -419,11 +419,15 @@ A parancshoz meg kell adni a végpont URL-címét, amely meghívja a függvényt
 
 #### <a name="version-2x-and-higher-runtime"></a>Version 2. x (és újabb) futtatókörnyezet
 
-    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```
 
 #### <a name="version-1x-runtime"></a>1. x verzió futtatókörnyezete
 
-    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```
 
 A rendszerkulcs egy olyan engedélyezési kulcs, amely egy Event Grid trigger végponti URL-címében szerepelnie kell. A következő szakasz ismerteti, hogyan kérheti le a rendszerkulcsot.
 

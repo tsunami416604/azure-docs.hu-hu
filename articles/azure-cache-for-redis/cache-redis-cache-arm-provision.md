@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75412402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829890"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Azure cache létrehozása Redis sablon használatával
 
@@ -32,7 +32,7 @@ A teljes sablonhoz lásd: az [Azure cache for Redis sablonja](https://github.com
 > * [Prémium szintű Azure cache létrehozása a Redis adatmegőrzési szolgáltatásával](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 > * [Virtual Network üzembe helyezett prémium szintű Redis Cache létrehozása](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
-> A legújabb sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/documentation/templates/) , `Azure Cache for Redis`és keressen rá.
+> A legújabb sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/documentation/templates/) , és keressen rá `Azure Cache for Redis` .
 > 
 > 
 
@@ -52,76 +52,91 @@ Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő pr
 ### <a name="rediscachelocation"></a>redisCacheLocation
 A Redis tartozó Azure cache helye. A legjobb teljesítmény érdekében használja ugyanazt a helyet, mint amelyet a gyorsítótárhoz használni kíván.
 
-    "redisCacheLocation": {
-      "type": "string"
-    }
+```json
+  "redisCacheLocation": {
+    "type": "string"
+  }
+```
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
 A diagnosztikai célra használandó meglévő Storage-fiók neve. 
 
-    "existingDiagnosticsStorageAccountName": {
-      "type": "string"
-    }
+```json
+  "existingDiagnosticsStorageAccountName": {
+    "type": "string"
+  }
+```
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
 Logikai érték, amely azt jelzi, hogy engedélyezi-e a hozzáférést a nem SSL-portokon keresztül.
 
-    "enableNonSslPort": {
-      "type": "bool"
-    }
+```json
+  "enableNonSslPort": {
+    "type": "bool"
+  }
+```
 
 ### <a name="diagnosticsstatus"></a>diagnosticsStatus
 Egy érték, amely jelzi, hogy engedélyezve van-e a diagnosztika. Használat be-és kikapcsolása.
 
-    "diagnosticsStatus": {
-      "type": "string",
-      "defaultValue": "ON",
-      "allowedValues": [
-            "ON",
-            "OFF"
-        ]
-    }
+```json
+  "diagnosticsStatus": {
+    "type": "string",
+    "defaultValue": "ON",
+    "allowedValues": [
+          "ON",
+          "OFF"
+      ]
+  }
+```
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Létrehozza az Azure cache-t a Redis számára.
 
-    {
-      "apiVersion": "2015-08-01",
-      "name": "[parameters('redisCacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[parameters('redisCacheLocation')]",
-      "properties": {
-        "enableNonSslPort": "[parameters('enableNonSslPort')]",
-        "sku": {
-          "capacity": "[parameters('redisCacheCapacity')]",
-          "family": "[parameters('redisCacheFamily')]",
-          "name": "[parameters('redisCacheSKU')]"
+```json
+  {
+    "apiVersion": "2015-08-01",
+    "name": "[parameters('redisCacheName')]",
+    "type": "Microsoft.Cache/Redis",
+    "location": "[parameters('redisCacheLocation')]",
+    "properties": {
+      "enableNonSslPort": "[parameters('enableNonSslPort')]",
+      "sku": {
+        "capacity": "[parameters('redisCacheCapacity')]",
+        "family": "[parameters('redisCacheFamily')]",
+        "name": "[parameters('redisCacheSKU')]"
+      }
+    },
+    "resources": [
+      {
+        "apiVersion": "2017-05-01-preview",
+        "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
+        "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
+        "location": "[parameters('redisCacheLocation')]",
+        "dependsOn": [
+          "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
+        ],
+        "properties": {
+          "status": "[parameters('diagnosticsStatus')]",
+          "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
         }
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-05-01-preview",
-          "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
-          "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
-          "location": "[parameters('redisCacheLocation')]",
-          "dependsOn": [
-            "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-          ],
-          "properties": {
-            "status": "[parameters('diagnosticsStatus')]",
-            "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
-          }
-        }
-      ]
-    }
+      }
+    ]
+  }
+```
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
 
+```azurepowershell
     New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+```
 
 ### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
+```

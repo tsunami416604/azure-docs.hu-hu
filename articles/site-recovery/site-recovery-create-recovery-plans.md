@@ -3,12 +3,11 @@ title: Helyreállítási tervek létrehozása/testreszabása Azure Site Recovery
 description: Megtudhatja, hogyan hozhat létre és szabhat testre helyreállítási terveket a vész-helyreállítási tervekhez a Azure Site Recovery szolgáltatás használatával.
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76705836"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485339"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Helyreállítási tervek létrehozása és testreszabása
 
@@ -16,7 +15,7 @@ Ez a cikk azt ismerteti, hogyan lehet helyreállítási tervet létrehozni és t
 
 ## <a name="create-a-recovery-plan"></a>Helyreállítási terv létrehozása
 
-1. A Recovery Services-tárolóban válassza a **helyreállítási tervek (site Recovery)** > **+ helyreállítási terv**elemet.
+1. A Recovery Services-tárolóban válassza a **helyreállítási tervek (site Recovery)**  >  **+ helyreállítási terv**elemet.
 2. A **helyreállítási terv létrehozása**lapon adja meg a csomag nevét.
 3. Válasszon forrást és célt a csomag gépei alapján, majd válassza a **Resource Manager** lehetőséget a telepítési modellhez. A forrás helyének rendelkeznie kell a feladatátvételhez és a helyreállításhoz engedélyezett gépekkel. 
 
@@ -29,9 +28,9 @@ Ez a cikk azt ismerteti, hogyan lehet helyreállítási tervet létrehozni és t
    Hyper-V (VMM által felügyelt) az Azure-ba  | VMM-kiszolgáló kiválasztása | Az Azure kiválasztása
   
     Vegye figyelembe a következőket:
-    -  Helyreállítási tervet csak a forrás helyéről az Azure-ba történő feladatátvételre használhat. Nem használhat helyreállítási tervet az Azure-beli feladat-visszavételhez.
-    - A forrás helyének rendelkeznie kell a feladatátvételhez és a helyreállításhoz engedélyezett gépekkel. 
-    - A helyreállítási terv ugyanazzal a forrással és céllal rendelkező gépeket tartalmazhat. 
+    - Helyreállítási tervet is használhat az Azure-ba történő feladatátvételhez és az Azure-beli feladat-visszavételhez.
+    - A forrás helyének rendelkeznie kell a feladatátvételhez és a helyreállításhoz engedélyezett gépekkel.
+    - A helyreállítási terv ugyanazzal a forrással és céllal rendelkező gépeket tartalmazhat.
     - A VMM által felügyelt VMware virtuális gépeket és Hyper-V virtuális gépeket is megadhatja ugyanabban a csomagban.
     - A VMware virtuális gépek és a fizikai kiszolgálók is lehetnek ugyanabban a csomagban.
 
@@ -53,7 +52,7 @@ További csoportokat hoz létre, és különböző csoportokba helyezheti el a g
 
 A helyreállítási tervet parancsfájl vagy manuális művelet hozzáadásával is testreszabhatja. Vegye figyelembe:
 
-- Ha az Azure-ba replikál, integrálhatja az Azure Automation-runbookok a helyreállítási tervbe. [További információ](site-recovery-runbook-automation.md).
+- Ha az Azure-ba replikál, integrálhatja az Azure Automation-runbookok a helyreállítási tervbe. [További információk](site-recovery-runbook-automation.md).
 - Ha a System Center VMM által felügyelt Hyper-V virtuális gépeket replikál, létrehozhat egy parancsfájlt a helyszíni VMM-kiszolgálón, és belefoglalhatja azt a helyreállítási tervbe.
 - Parancsfájl hozzáadásakor a rendszer hozzáad egy új műveletet a csoporthoz. Például az 1. csoport előzetes lépéseinek egy készlete jön létre az 1. nevű *csoporttal: előzetes lépések*. A készleten belül minden előzetes lépés megjelenik. Az elsődleges helyen csak akkor adhat hozzá parancsfájlt, ha a VMM-kiszolgáló telepítve van.
 - Ha manuális műveletet ad hozzá, a helyreállítási terv futtatásakor a manuális művelet beszúrt pontján leáll. Megjelenik egy párbeszédpanel, amelyen megadhatja, hogy a manuális művelet befejeződött-e.
@@ -76,7 +75,7 @@ A helyreállítási tervet parancsfájl vagy manuális művelet hozzáadásával
     1. Írja be a művelet nevét, és írja be a művelet utasításait. A feladatátvételt futtató személy ezeket az utasításokat fogja látni.
     1. Adja meg, hogy szeretné-e hozzáadni a manuális műveletet a feladatátvétel összes típusához (teszt, feladatátvétel, tervezett feladatátvétel (ha szükséges)). Ezt követően kattintson az **OK** gombra.
 4. Ha parancsfájlt szeretne felvenni, tegye a következőket:
-    1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkripthez**lehetőséget, és a **parancsfájl elérési útja** mezőbe írja be a megosztás relatív elérési útját. Ha például a megosztás a \\ \<VMMServerName> \msscvmmlibrary\rpscripts található, adja meg a következő elérési utat: \RPScripts\RPScript.ps1.
+    1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkripthez**lehetőséget, és a **parancsfájl elérési útja** mezőbe írja be a megosztás relatív elérési útját. Ha például a megosztás a \MSSCVMMLibrary\RPScripts címen található \\ \<VMMServerName> , adja meg a következő elérési utat: \RPScripts\RPScript.PS1.
     1. Ha Azure Automation-futtatási könyvet ad hozzá, adja meg azt a **Azure Automation fiókot** , amelyben a runbook található, és válassza ki a megfelelő **Azure runbook-szkriptet**.
 5. Futtasson feladatátvételi tesztet a helyreállítási tervből annak ellenőrzéséhez, hogy a parancsfájl a várt módon működik-e.
 

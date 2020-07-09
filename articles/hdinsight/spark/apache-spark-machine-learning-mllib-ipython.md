@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.topic: how-to
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fc5b4843d54c4edd8f0a29393fb6b41468d6a595
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559939"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084596"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
 
@@ -38,7 +38,7 @@ A logisztikai regresszió a besoroláshoz használt algoritmus. A Spark logiszti
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Prediktív elemzési példa az élelmiszer-ellenőrzési adataira
 
-Ebben a példában a Spark használatával végez némi prediktív elemzést az élelmiszer-ellenőrzési adatain (**Food_Inspections1. csv**). A [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett adatmennyiség. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat. Beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a fürthöz társított Storage-fiókban a **/hdisamples/hdisamples/foodinspectiondata/Food_Inspections1. csv**fájlban.
+Ebben a példában a Spark használatával végez némi prediktív elemzést az élelmiszer-ellenőrzési adatain (**Food_Inspections1.csv**). A [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett adatmennyiség. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat. Beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a (z) **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**fürthöz társított Storage-fiókban.
 
 Az alábbi lépésekben egy modellt fejleszt ki, amelyből megtudhatja, mit kell tennie az élelmiszer-ellenőrzés elvégzéséhez vagy elutasításához.
 
@@ -180,7 +180,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
     ![SQL-lekérdezés kimenete](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
 
-3. A Matplotlib-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a `%%local` mágia kell kezdődnie. Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
+3. A Matplotlib-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a mágia kell kezdődnie `%%local` . Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
 
     ```PySpark
     %%local
@@ -207,7 +207,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
      A többi eredmény ("üzleti nem található" vagy "üzleti tevékenység") nem hasznos, és az eredmények egy kis hányadát is elvégzik.
 
-4. A következő kód futtatásával alakítsa át a meglévő dataframe`df`() egy új dataframe, ahol az egyes ellenőrzések címke-megsértési párokként jelennek meg. Ebben az esetben a címkéje a `0.0` hibát jelképező címkét jelöli `1.0` , a címke pedig a sikert jelképezi, a két eredmény pedig az eredményeket `-1.0` jelképezi.
+4. A következő kód futtatásával alakítsa át a meglévő dataframe ( `df` ) egy új dataframe, ahol az egyes ellenőrzések címke-megsértési párokként jelennek meg. Ebben az esetben a címkéje a hibát jelképező címkét jelöli, a címke pedig a sikert jelképezi, a `0.0` `1.0` `-1.0` két eredmény pedig az eredményeket jelképezi.
 
     ```PySpark
     def labelForResults(s):
@@ -252,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Modell kiértékelése egy másik adatkészlet használatával
 
-A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyen eredményeket kapnak. A jóslatok a megfigyelt szabálysértéseken alapulnak. Ezt a modellt a (z **) Food_Inspections1. csv**adatkészleten tanítja ki. A modell erősségének *kiértékeléséhez* használhat egy második adatkészletet ( **Food_Inspections2. csv)**, amely az új adatokat használja. Ez a második adatkészlet (**Food_Inspections2. csv**) a fürthöz társított alapértelmezett tárolóban található.
+A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyen eredményeket kapnak. A jóslatok a megfigyelt szabálysértéseken alapulnak. Ezt a modellt a **Food_Inspections1.csv**adatkészleten tanítja ki. A modell erősségének *kiértékeléséhez* használhat egy második adatkészletet ( **Food_Inspections2.csv**). Ez a második adathalmaz (**Food_Inspections2.csv**) a fürthöz társított alapértelmezett tárolóban található.
 
 1. A következő kód futtatásával hozzon létre egy új dataframe, amely a modell által generált **predictionsDf** tartalmazza. A kódrészlet létrehoz egy, az **előrejelzések** alapján létrehozott ideiglenes táblát is a dataframe alapján.
 
@@ -313,7 +313,7 @@ A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellen
 
 Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményeinek indoklásában.
 
-1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet *true_positive*, *false_positive*, *true_negative*és *false_negativeként*. Az alábbi lekérdezésekben kapcsolja ki a vizualizációt a használatával `-q` , és mentse a kimenetet (a `-o`használatával) a dataframes, amelyet aztán használhat a `%%local` Magic segítségével.
+1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet *true_positive*, *false_positive*, *true_negative*és *false_negativeként*. Az alábbi lekérdezésekben kapcsolja ki a vizualizációt a használatával, `-q` és mentse a kimenetet (a használatával `-o` ) a dataframes, amelyet aztán használhat a Magic segítségével `%%local` .
 
     ```PySpark
     %%sql -q -o true_positive

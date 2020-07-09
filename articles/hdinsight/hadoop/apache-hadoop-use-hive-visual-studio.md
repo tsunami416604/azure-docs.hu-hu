@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74687804"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076453"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive-lekérdezések futtatása a Data Lake Tools for Visual Studióval
 
@@ -58,7 +58,7 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
     ![Batch-struktúra beküldése – lekérdezés, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) `SELECT * FROM`értéket adja meg, az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
+    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) értéket adja meg `SELECT * FROM` , az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
 
 7. A lekérdezés eszköztáron (a lekérdezés lap alatti és a lekérdezés szövege felett) válassza a **Küldés**lehetőséget, vagy válassza a **Küldés** elem melletti legördülő nyilat, és válassza a **speciális** lehetőséget a legördülő listából. Ha az utóbbi lehetőséget választja,
 
@@ -104,7 +104,7 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
 
     * `STORED AS TEXTFILE LOCATION`: Megadja a Kaptárat, hogy az adattárolás a *példában/* adatkönyvtárban történik, és hogy a szövegként van tárolva.
 
-    * `SELECT`: Kiválasztja az összes olyan sor számát, amelyben `t4` az oszlop tartalmazza `[ERROR]`az értéket. Ez az utasítás a értéket adja `3`vissza, mert három sor tartalmazza ezt az értéket.
+    * `SELECT`: Kiválasztja az összes olyan sor számát, amelyben `t4` az oszlop tartalmazza az értéket `[ERROR]` . Ez az utasítás a értéket adja vissza `3` , mert három sor tartalmazza ezt az értéket.
 
     * `INPUT__FILE__NAME LIKE '%.log'`: Arra utasítja a kaptárt, hogy csak a. log fájlban végződő fájlok adatait küldje vissza. Ez a záradék korlátozza a keresést a *sample. log* fájlban, amely tartalmazza az adathalmazt.
 
@@ -114,11 +114,11 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
 
    ![Befejezett struktúra-feladatok összefoglalása, struktúra alkalmazása, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-7. A feladatok kimenetének megtekintéséhez válassza a **feladatok kimenete** elemet. Ekkor megjelenik `[ERROR] 3`a lekérdezés által visszaadott érték.
+7. A feladatok kimenetének megtekintéséhez válassza a **feladatok kimenete** elemet. Ekkor megjelenik `[ERROR] 3` a lekérdezés által visszaadott érték.
 
 ### <a name="additional-example"></a>További példa
 
-Az alábbi példa az előző eljárásban `log4jLogs` létrehozott táblára támaszkodik, és [létrehoz egy kaptár-alkalmazást](#create-a-hive-application).
+Az alábbi példa az `log4jLogs` előző eljárásban létrehozott táblára támaszkodik, és [létrehoz egy kaptár-alkalmazást](#create-a-hive-application).
 
 1. A **Server Explorerben**kattintson a jobb gombbal a fürtre, és válassza a **kaptár-lekérdezés írása**lehetőséget.
 
@@ -135,15 +135,15 @@ Az alábbi példa az előző eljárásban `log4jLogs` létrehozott táblára tá
     * `CREATE TABLE IF NOT EXISTS`: Létrehoz egy táblázatot, ha még nem létezik. Mivel a `EXTERNAL` kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblákat a rendszer a struktúra adattárházában tárolja, és a struktúra kezeli.
 
         > [!NOTE]  
-        > A `EXTERNAL` táblákkal ellentétben a belső táblák eldobása is törli az alapul szolgáló adatokat.
+        > `EXTERNAL`A táblákkal ellentétben a belső táblák eldobása is törli az alapul szolgáló adatokat.
 
     * `STORED AS ORC`: Az adatok az *optimalizált sorok oszlopos* (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
 
-    * `INSERT OVERWRITE ... SELECT`: Kijelöli azokat `log4jLogs` a sorokat, `[ERROR]`amelyek tartalmazzák a táblát, majd beszúrja az adatait a `errorLogs` táblába.
+    * `INSERT OVERWRITE ... SELECT`: Kijelöli azokat a sorokat `log4jLogs` , amelyek tartalmazzák a táblát `[ERROR]` , majd beszúrja az adatait a `errorLogs` táblába.
 
 3. Szükség esetén módosítsa az **interaktív** elemet a **Batch** szolgáltatásban, majd válassza a **Küldés**lehetőséget.
 
-4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, nyissa meg a **Server Explorert** , és bontsa ki az **Azure** > **HDInsight**elemet. Bontsa ki a HDInsight-fürtöt, majd bontsa ki a **kaptár-adatbázisok** > **alapértelmezett értéket**. Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
+4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, nyissa meg a **Server Explorert** , és bontsa ki az **Azure**  >  **HDInsight**elemet. Bontsa ki a HDInsight-fürtöt, majd bontsa ki a **kaptár-adatbázisok**  >  **alapértelmezett értéket**. Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
 
 ## <a name="next-steps"></a>További lépések
 

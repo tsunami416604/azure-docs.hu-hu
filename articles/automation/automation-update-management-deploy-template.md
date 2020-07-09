@@ -6,13 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: feb1cc132bf5463550a2e7921f347c8f2f48260e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667998"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Az Update Management engedélyezése Azure Resource Manager-sablonnal
 
@@ -23,12 +22,9 @@ Az erőforráscsoport Azure Automation Update Management funkciójának engedél
 * Az Automation-fiók összekapcsolása a Log Analytics munkaterülettel, ha még nincs csatolva.
 * Update Management engedélyezése.
 
-A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép engedélyezését.
+A sablon nem automatizálja az Update Management egy vagy több Azure-beli vagy nem Azure-beli virtuális gépen.
 
-Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés támogatott régiójában van telepítve, akkor nincsenek összekapcsolva. A munkaterület még nincs Update Management engedélyezve. A sablon használata sikeresen létrehozza a hivatkozást, és üzembe helyezi Update Management a virtuális gépek számára. 
-
->[!NOTE]
->A Linux Update Management részeként engedélyezett **nxautomation** -felhasználó csak az aláírt runbookok hajtja végre.
+Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés támogatott régiójában van telepítve, akkor nincsenek összekapcsolva. A sablon használatával sikeresen létrehozta a hivatkozást, és üzembe helyezi Update Management.
 
 ## <a name="api-versions"></a>API-verziók
 
@@ -36,8 +32,8 @@ A következő táblázat a sablonban használt erőforrások API-verzióit sorol
 
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| Munkaterület | munkaterületek | 2017-03-15 – előzetes verzió |
-| Automation-fiók | automation | 2015-10-31 | 
+| Munkaterület | munkaterületek | 2020-03-01 – előzetes verzió |
+| Automation-fiók | automation | 2018-06-30 | 
 | Megoldás | megoldások | 2015-11-01 – előzetes verzió |
 
 ## <a name="before-using-the-template"></a>A sablon használata előtt
@@ -48,10 +44,11 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
 
-* A munkaterület neve
-* Az a régió, amelyben létre kívánja hozni a munkaterületet
-* Az Automation-fiók neve
-* Az a régió, amelyben létre kívánja hozni a fiókot
+* A munkaterület neve.
+* Az a régió, amelyben létre kívánja hozni a munkaterületet.
+* Az erőforrás vagy a munkaterület engedélyeinek engedélyezéséhez.
+* Az Automation-fiók neve.
+* Az a régió, amelyben létre kívánja hozni a fiókot.
 
 A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amelyet valószínűleg a környezetben lévő normál konfigurációhoz fog használni. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -59,7 +56,6 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
 
 * SKU – alapértelmezett érték az új GB-os díjszabási szinten, amely az áprilisi 2018 díjszabási modellben jelent meg
 * adatmegőrzés – az alapértelmezett érték 30 nap
-* kapacitás foglalása – alapértelmezett érték: 100 GB
 
 >[!WARNING]
 >Ha Log Analytics munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új, április 2018 díjszabási modellbe van lefoglalva, az egyetlen érvényes Log Analytics díjszabási csomag **PerGB2018**.
@@ -114,18 +110,17 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
                 "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
             }
         },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -150,13 +145,11 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -168,7 +161,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             "resources": [
                 {
                     "apiVersion": "2015-11-01-preview",
-                    "location": "[resourceGroup().location]",
+                    "location": "[parameters('location')]",
                     "name": "[variables('Updates').name]",
                     "type": "Microsoft.OperationsManagement/solutions",
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
@@ -189,7 +182,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
         },
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [],
@@ -201,10 +194,10 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             },
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -219,7 +212,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
 
 2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át.
 
-3. Mentse ezt a fájlt egy helyi mappába a **deployUMSolutiontemplate. JSON**néven.
+3. Mentse ezt a fájlt egy helyi mappába **deployUMSolutiontemplate.jsként**.
 
 4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
 
@@ -242,8 +235,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
 ## <a name="next-steps"></a>További lépések
 
 * Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
+
 * Ha már nincs szüksége a Log Analytics munkaterületre, tekintse meg a [Update Management automatizálási munkaterületének leválasztása az Automation-fiókban](automation-unlink-workspace-update-management.md)című témakör utasításait.
+
 * A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
-* Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
-* A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
-* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920086"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
 Ez a cikk a telepítési problémák gyakori okait ismerteti, és hibaelhárítási tippeket nyújt a problémák megoldásához. Annak jelzése, hogy az alkalmazással kapcsolatban probléma merült fel, ha a szerepkör-példány nem indul el, vagy az inicializálás, a foglalt és a leállítási állapotok között ciklust jelez.
@@ -32,7 +31,7 @@ Ha az alkalmazás egyik szerepköre bármely olyan szerelvényre támaszkodik, a
 Az alkalmazás létrehozása és becsomagolása előtt ellenőrizze a következőket:
 
 * Ha a Visual studiót használja, győződjön meg róla, hogy a **Másolás helyi** tulajdonság értéke **true (igaz** ) értékre van állítva a projektben szereplő összes hivatkozott szerelvény esetében, amely nem része az Azure SDK-nak vagy a .NET-keretrendszernek.
-* Győződjön meg arról, hogy a web. config fájl nem hivatkozik a fordítási elemben lévő nem használt szerelvényekre.
+* Győződjön meg arról, hogy a web.config fájl nem hivatkozik a fordítási elemben lévő nem használt szerelvényekre.
 * Minden. cshtml-fájl **létrehozási művelete** a **Content (tartalom**) értékre van állítva. Ez biztosítja, hogy a fájlok megfelelően jelenjenek meg a csomagban, és lehetővé teszi más hivatkozott fájlok megjelenítését a csomagban.
 
 ## <a name="assembly-targets-wrong-platform"></a>A szerelvény helytelen platformot céloz meg
@@ -45,15 +44,17 @@ A [RoleEntryPoint] osztály metódusai által kiváltott kivételek, beleértve 
 A [futtatási] módszer határozatlan idejű futtatást szolgál. Ha a kód felülbírálja a [futtatási] módszert, határozatlan ideig alvó állapotba kell lépnie. Ha a [Run] metódus visszatér, a szerepkör újrahasznosítja.
 
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Helytelen DiagnosticsConnectionString-beállítás
-Ha az alkalmazás Azure Diagnostics használ, a szolgáltatás konfigurációs fájljának meg `DiagnosticsConnectionString` kell adnia a konfigurációs beállítást. Ezzel a beállítással HTTPS-kapcsolat adható meg a Storage-fiókhoz az Azure-ban.
+Ha az alkalmazás Azure Diagnostics használ, a szolgáltatás konfigurációs fájljának meg kell adnia a `DiagnosticsConnectionString` konfigurációs beállítást. Ezzel a beállítással HTTPS-kapcsolat adható meg a Storage-fiókhoz az Azure-ban.
 
-Győződjön meg arról, `DiagnosticsConnectionString` hogy a beállítás megfelelő, mielőtt az alkalmazáscsomag üzembe helyezését az Azure-ba telepítené, ellenőrizze a következőket:  
+Győződjön meg arról, hogy a `DiagnosticsConnectionString` beállítás megfelelő, mielőtt az alkalmazáscsomag üzembe helyezését az Azure-ba telepítené, ellenőrizze a következőket:  
 
 * A `DiagnosticsConnectionString` beállítás egy érvényes Storage-fiókra mutat az Azure-ban.  
   Alapértelmezés szerint ez a beállítás az emulált Storage-fiókra mutat, ezért az alkalmazáscsomag üzembe helyezése előtt explicit módon módosítania kell ezt a beállítást. Ha nem módosítja ezt a beállítást, akkor kivétel keletkezik, amikor a szerepkör-példány megkísérli elindítani a diagnosztikai figyelőt. Ez azt eredményezheti, hogy a szerepkör-példány határozatlan időre újrahasznosítható.
 * A kapcsolatok karakterlánca a következő [formátumban](../storage/common/storage-configure-connection-string.md)van megadva. (A protokollt HTTPS-ként kell megadni.) Cserélje le a *MyAccountName* nevet a Storage-fiók nevére, és *MyAccountKey* a hozzáférési kulccsal:    
 
-        DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```console
+DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```
 
   Ha a Microsoft Visual studióhoz készült Azure Tools használatával fejleszti az alkalmazást, a tulajdonságlapok használatával állíthatja be ezt az értéket.
 
@@ -68,4 +69,4 @@ További szerepkör-újrahasznosítási forgatókönyvek megtekintése a [Kevin 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Futtassa a következőt:]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[Futtatás]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

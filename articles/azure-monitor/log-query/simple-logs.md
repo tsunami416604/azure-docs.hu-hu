@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
 ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660257"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Egyszerű naplók a Azure Monitorban (előzetes verzió)
@@ -28,7 +27,7 @@ Navigáljon az Azure-előfizetésében található bármely Cosmos DB vagy Key V
 
 ![Menü](media/simple-logs/menu.png)
 
-Válasszon ki egy **mezőt** és egy **operátort** , és adjon meg egy **értéket** az összehasonlításhoz. Kattintson **+** a lehetőségre, és adja meg **és/vagy** adjon hozzá további feltételeket.
+Válasszon ki egy **mezőt** és egy **operátort** , és adjon meg egy **értéket** az összehasonlításhoz. Kattintson a lehetőségre, és **+** adja meg **és/vagy** adjon hozzá további feltételeket.
 
 ![Feltételek](media/simple-logs/criteria.png)
 

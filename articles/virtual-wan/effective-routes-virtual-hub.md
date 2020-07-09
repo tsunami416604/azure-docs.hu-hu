@@ -1,72 +1,68 @@
 ---
 title: 'Virtuális központ tényleges útvonalának megtekintése: Azure Virtual WAN | Microsoft Docs'
-description: Az Azure Virtual WAN-ban lévő virtuális központ tényleges útvonalának megtekintése
+description: Virtuális központ tényleges útvonalának megtekintése az Azure Virtual WAN-ban
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515849"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037766"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>Virtuális központ tényleges útvonalának megtekintése
+# <a name="view-virtual-hub-effective-routes"></a>Virtuális központ érvényes útvonalainak megtekintése
 
-A Azure Portalban megtekintheti a virtuális WAN-központ összes útvonalát. Az útvonalak megtekintéséhez navigáljon a virtuális hubhoz, majd válassza az **Útválasztás – > a hatályos útvonalak megtekintése**lehetőséget.
+A Azure Portalban megtekintheti a virtuális WAN-központ összes útvonalát. Ez a cikk végigvezeti a hatályos útvonalak megtekintésének lépésein. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
-## <a name="understanding-routes"></a><a name="understand"></a>Az útvonalak ismertetése
+> [!NOTE]
+> A Azure Portal ezen funkciók némelyike továbbra is kivezethető, és nem érhető el, amíg a hét augusztus 3. 
+>
 
-A következő példa segít jobban megérteni, hogyan jelenik meg a virtuális WAN-útválasztás.
+## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Kapcsolatok vagy útválasztási táblák kiválasztása
 
-Ebben a példában egy virtuális WAN-t, három hubokat tartalmaz. Az első hub az USA keleti régiójában található, a második központ a Nyugat-európai régióban található, a harmadik pedig az USA nyugati régiójában található. Egy virtuális WAN-ban az összes hub összekapcsolódik egymáshoz. Ebben a példában feltételezzük, hogy az USA keleti régiójában és a Nyugat-európai hubokban a helyszíni ágak (küllők) és az Azure Virtual Network (küllők) kapcsolatai vannak.
+1. Navigáljon a virtuális hubhoz, majd válassza az **Útválasztás**elemet. Az Útválasztás lapon válassza az **érvényes útvonalak**lehetőséget.
+1. A legördülő listából választhatja a **kapcsolattípus** vagy az **útválasztási tábla**lehetőséget. Ha nem látja az útválasztási táblázat lehetőséget, ez azt jelenti, hogy nincs beállítva egyéni vagy alapértelmezett útválasztási tábla ebben a virtuális központban.
+1. A **kapcsolatok/útválasztási táblák**legördülő menüből a következő elemek közül választhat:
 
-Az Azure VNet (10.4.0.0/16) egy hálózati virtuális berendezéssel (10.4.0.6) továbbra is egy VNet (10.5.0.0/16) van társítva. A központi útválasztási táblázattal kapcsolatos további információkért tekintse meg a cikk későbbi részében található [További információkat](#abouthubroute) .
+   * Virtual Network-kapcsolatok
+   * VPN-hely kapcsolata
+   * ExpressRoute-kapcsolatok
+   * Pont – hely kapcsolat
+   * Útválasztási táblázat
 
-Ebben a példában azt is feltételezzük, hogy az 1. Nyugat-európai ág az USA keleti régiójában, valamint a Nyugat-európai hubhoz csatlakozik. Az USA keleti régiójában a 2. ExpressRoute áramkör az USA keleti régiójában csatlakozik.
+   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Útválasztás":::
 
-![diagram](./media/effective-routes-virtual-hub/diagram.png)
+## <a name="view-output"></a><a name="output"></a>Kimenet megtekintése
 
-## <a name="view-effective-routes"></a><a name="view"></a>Érvényes útvonalak megtekintése
+Az oldal kimenete a következő mezőket jeleníti meg:
 
-Ha a portálon a "hatályos útvonalak megtekintése" lehetőséget választja, az az USA keleti régiójának [hub Route táblájában](#routetable) látható kimenetet hozza létre.
+* **Előtag**: az aktuális entitáshoz ismert címek előtagja.
+* **Következő ugrás típusa**: lehet Virtual Network kapcsolat, a VPN_S2S_Gateway, a ExpressRouteGateway, a távoli központ vagy a Azure Firewall.
+* **Következő ugrás**: ez az IP-cím, vagy egyszerűen azt mutatja, hogy a hivatkozás az aktuális hubot jelenti.
+* **Forrás: az**útválasztási forrás erőforrás-azonosítója.
+* **Elérési út**: a BGP attribútum as (autonóm rendszer) elérési útja felsorolja az összes olyan számot, amelyet át kell adni ahhoz, hogy elérje azt a helyet, ahol az elérési utat csatolták, a meghirdetve.
 
-Ahhoz, hogy ez perspektívába kerüljön, az első sor azt jelenti, hogy az USA keleti régiója az 10.20.1.0/24 (1. ág) útvonalát a VPN *következő ugrás típusa* kapcsolat ("Next hop" VPN Gateway Instance0 IP 10.1.0.6, peldany1 "elemet IP 10.1.0.7) miatt megtanulta. Az *útvonal kezdőpontja* az erőforrás-azonosítóra mutat. Az *elérési* út az 1. ág elérési útját jelöli.
+### <a name="example"></a><a name="example"></a>Például
 
-### <a name="hub-route-table"></a><a name="routetable"></a>Hub-útválasztási táblázat
+A következő példában szereplő értékek azt jelzik, hogy a virtuális hub-kapcsolatok vagy az útválasztási táblázat megtanulta a 10.2.0.0/24 (ág-előtag) útvonalát. Megtanulta az útvonalat a **VPN következő ugrásának típusa** VPN_S2S_Gateway a **következő ugrás** VPN Gateway erőforrás-azonosítóval. Az **útvonal kezdőpontja** a kezdeményező VPN-átjáró/útválasztási tábla/kapcsolat erőforrás-azonosítójára mutat. Az **elérési** út a ág as elérési útját jelöli.
 
 A táblázat alján található görgetősáv használatával megtekintheti az "AS Path" kifejezést.
 
 | **Előtag** |  **Következő ugrási típus** | **Következő ugrás** |  **Útvonal forrása** |**Elérési út** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-GW|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW|23000|
-|10.4.0.0/16|Virtual Network-kapcsolatok| Hivatkozáson keresztül |  |  |
-|10.5.0.0/16| IP-cím| 10.4.0.6|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|0.0.0.0/0| IP-cím| `<Azure Firewall IP>` |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|10.22.1.0/16| Távoli központ|10.8.0.6, 10.8.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Távoli központ|  Hivatkozáson keresztül |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/westhub_1| |
+| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
->[!NOTE]
-> Ha az USA keleti régiója és a Nyugat-európai hubok nem kommunikálnak egymással a példában szereplő topológiában, a megtanult útvonal (10.9.0.0/16) nem létezik. A hubok csak azokat a hálózatokat hirdetik, amelyek közvetlenül csatlakoznak hozzájuk.
->
+**Szempontok**
 
-## <a name="additional-information"></a><a name="additional"></a>További információ
+* Ha a a 0.0.0.0/0 értéket látja a **hatékony útvonalak lekérése** kimenetben, az azt jelenti, hogy az útvonal létezik az egyik útválasztási táblában. Ha azonban ez az útvonal az internetre lett beállítva, egy további **"enableInternetSecurity"** jelzőt kell megadnia a kapcsolatban. A virtuálisgép-hálózati adapteren érvényes útvonal nem jeleníti meg az útvonalat, ha a kapcsolat "enableInternetSecurity" jelzője "false" (hamis).
 
-### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Tudnivalók a hub útválasztási táblájáról
-
-Létrehozhatja a virtuális központ útvonalát, és alkalmazhatja az útvonalat a virtuális központ útválasztási táblájára. A virtuális központ útválasztási táblázatán több útvonalat is alkalmazhat. Ezzel a beállítással megadhat egy útvonalat a cél VNet egy IP-cím (jellemzően a hálózati virtuális berendezés (NVA) által küllős VNet) használatával. A NVA kapcsolatos további információkért lásd: [forgalom átirányítása egy virtuális központból egy NVA](virtual-wan-route-table-portal.md).
-
-### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Az alapértelmezett útvonal (0.0.0.0/0)
-
-A virtuális központ képes propagálni egy megtanult alapértelmezett útvonalat egy virtuális hálózatra, egy helyek közötti VPN-re és egy ExpressRoute-kapcsolatra, ha a jelző "enabled" (engedélyezve) van a kapcsolaton. Ez a jelző látható a virtuális hálózati kapcsolat, a VPN-kapcsolat vagy egy ExpressRoute-kapcsolat szerkesztésekor. A "EnableInternetSecurity" mindig hamis alapértelmezés szerint a hub VNet, a ExpressRoute és a VPN-kapcsolatokon.
-
-Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik. A rendszer az alapértelmezett útvonalat propagálja, ha a virtuális WAN-központ már megismerte a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely esetében engedélyezve van a bújtatás.
+* A virtuális hálózati kapcsolat, a VPN-kapcsolat vagy egy ExpressRoute-kapcsolat szerkesztése során az **alapértelmezett propagálási útvonal** mező látható az Azure Virtual WAN portálon. Ebben a mezőben a **enableInternetSecurity** jelző látható, amely a ExpressRoute és a VPN-kapcsolatok esetében mindig "false", de a virtuális hálózati kapcsolatok esetében "igaz".
 
 ## <a name="next-steps"></a>További lépések
 
-A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
+* A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
+* További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

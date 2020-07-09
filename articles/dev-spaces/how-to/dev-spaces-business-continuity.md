@@ -9,10 +9,9 @@ description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure 
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996924"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
@@ -67,7 +66,7 @@ A parancsok futtatása után a rendszer a kiválasztott fürtöt és fejlesztés
 
 Ha a Visual studiót használja, a következő lépésekkel válthat egy meglévő projekt által használt fürtöt:
 
-1. Nyissa meg a projektet a Visual Studióban.
+1. Nyissa meg a projektjét a Visual Studióban.
 1. Kattintson a jobb gombbal a projekt nevére Megoldáskezelő majd kattintson a **Tulajdonságok** elemre.
 1. A bal oldali ablaktáblán kattintson a **hibakeresés** elemre.
 1. A hibakeresés tulajdonságai lapon kattintson a **profil** legördülő listára, és válassza az **Azure dev Spaces**elemet.

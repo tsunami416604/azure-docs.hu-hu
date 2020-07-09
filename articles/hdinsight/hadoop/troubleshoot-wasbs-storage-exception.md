@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: 14c43e4557275d6a425127acfee7495f68d1d354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77165552"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>Az elérni kívánt fiók nem támogatja a http-hibát az Azure HDInsight
@@ -36,7 +35,7 @@ Több oka is van a hibaüzenet fogadásának:
 
 ## <a name="resolution"></a>Megoldás:
 
-Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, akkor `wasbs://` az `abfss://`URI a következő lesz: vagy.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+Ha a biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2 számára, akkor az URI a következő lesz: `wasbs://` vagy `abfss://` .  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 Új fürtök esetén olyan Storage-fiókot használjon, amely már rendelkezik a kívánt biztonságos átviteli beállítással. Ne módosítsa a biztonságos átvitel beállítást egy meglévő fürt által használt Storage-fiókhoz.
 

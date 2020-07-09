@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563360"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>A metrikák és a betöltések töredezettségmentesítését Service Fabric
@@ -58,7 +57,7 @@ A pontos konfiguráció meghatározásához kísérletezésre van szükség. Jav
 ## <a name="configuring-defragmentation-metrics"></a>A Lemeztöredezettség-mentesítő metrikáinak konfigurálása
 A Lemeztöredezettség-mentesítő metrikák konfigurálása globális döntés a fürtben, és egyéni metrikák is kiválaszthatók a töredezettségmentesítéshez. A következő konfigurációs kódrészletek bemutatják, hogyan konfigurálhatja a töredezettségmentesítés mérőszámait. Ebben az esetben a "Metric1" a Lemeztöredezettség-mentesítési metrikaként van konfigurálva, míg a "Metric2" általában továbbra is egyensúlyban marad. 
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -67,7 +66,7 @@ ClusterManifest. XML:
 </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [

@@ -1,77 +1,64 @@
 ---
-title: A REST API előzetes verziójának funkciói
+title: Előzetes verziójú funkciók listája
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search Service REST API 2019-05-06-es verziója – az előzetes verzió olyan kísérleti funkciókat tartalmaz, mint például a Knowledge Store és az indexelő gyorsítótárazása a növekményes bővítéshez.
+description: Az előzetes verziójú funkciók kiadása lehetővé teszi, hogy az ügyfelek visszajelzést tudjanak adni a kialakításról és a segédprogramról. Ez a cikk a jelenleg előzetes verzióban elérhető összes funkció átfogó listáját tartalmazza.
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: b0c6672dcc9340e727c36b0bcf03fc8a8b176a3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830128"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Az Azure előzetes verziójának szolgáltatásai Cognitive Search
 
-Ez a cikk a jelenleg előzetes verzióban elérhető funkciókat sorolja fel. A rendszer eltávolítja a listából az előzetes verzióról az általános elérhetőségre átváltott funkciókat. Megtekintheti a [szolgáltatások frissítéseit](https://azure.microsoft.com/updates/?product=search) , illetve a hirdetmények [újdonságait](whats-new.md) az általános elérhetőséggel kapcsolatban.
+Ez a cikk az előzetes verzióban elérhető összes funkció átfogó listája, amelyekkel meghatározható, hogy éles kódban kell-e használni őket. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Az általánosan elérhetővé vált előzetes verziójú funkciók törlődnek a listából. Ha egy szolgáltatás nem szerepel az alábbi listában, akkor feltételezheti, hogy általánosan elérhető. Az általános elérhetőséggel kapcsolatos közlemények: [szolgáltatások frissítései](https://azure.microsoft.com/updates/?product=search) [vagy Újdonságok](whats-new.md).
+
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Description | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [**featuresMode paraméter**](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/search-documents#featuresmode) | Relevancia (pontozás) | A relevancia pontszámának kiterjesztése a részletekre: a mező szerinti hasonlóság pontszáma, a mezők kifejezésének gyakorisága, valamint az egyedi tokenek számának egyeztetése. Ezeket az adatpontokat [Egyéni pontozási megoldásokban](https://github.com/Azure-Samples/search-ranking-tutorial)használhatja fel. | Adja hozzá ezt a lekérdezési paramétert a [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) használatával az API-Version = 2020-06 -30-Preview vagy a 2019-05-06-Preview értékkel. |
+| [**Felügyelt szolgáltatás identitása**](search-howto-managed-identities-data-sources.md) | Indexelő, biztonság| A Azure Active Directory használatával regisztrálhat egy keresési szolgáltatást, hogy megbízható szolgáltatást végezzen, majd RBAC engedélyeket használjon az Azure-adatforrásokon, hogy az indexelő csak olvasási hozzáférést engedélyezzen. | Hozzáférés ehhez a képességhez a portál használatakor, vagy az [adatforrások (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) API-Version = 2020-06 -30 – Preview vagy API-Version = 2019-05 -06 – előzetes verziójának használatával érhető el. |
+| [**Hibakeresési munkamenetek**](cognitive-search-debug-session.md) | Portál, AI-dúsítás (készségkészlet) | Egy munkameneten belüli készségkészlet-szerkesztő, amely a készségkészlet kapcsolatos problémák vizsgálatára és megoldására szolgál. A hibakeresési munkamenet során alkalmazott javítások menthetők a szolgáltatás egyik készségkészlet is. | Egy hibakeresési munkamenet megnyitásához csak a portálon, az áttekintő lapon található, a lap közepére mutató hivatkozásokat használva. |
+| [**Natív blob – Soft delete**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexelő, Azure-Blobok| Az Azure Blob Storage indexelő az Azure Cognitive Search felismeri a törölt állapotú blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során. | Adja hozzá ezt a konfigurációs beállítást a [create indexelő (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) API-Version = 2020-06 -30-Preview vagy API-Version = 2019-05 -06-Preview paranccsal. |
+| [**Egyéni entitás keresési képességei**](cognitive-search-skill-custom-entity-lookup.md ) | AI-dúsítás (készségkészlet) | Egy kognitív képesség, amely a szavak és kifejezések egyéni, felhasználó által definiált listájáról keres szöveget. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. | Tekintse meg ezt az előzetes szaktudást a portál Készségkészlet szerkesztőjével, vagy [hozzon létre készségkészlet (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) az API-Version = 2020-06 -30-Preview vagy API-Version = 2019-05 -06-Preview használatával. |
+| [**Személyes adatok észlelésének képessége**](cognitive-search-skill-pii-detection.md) | AI-dúsítás (készségkészlet) | Az indexelés során használt kognitív képesség, amellyel a rendszer beolvassa a személyazonosításra alkalmas adatokat egy bemeneti szövegből, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon. | Tekintse meg ezt az előzetes szaktudást a portál Készségkészlet szerkesztőjével, vagy [hozzon létre készségkészlet (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) az API-Version = 2020-06 -30-Preview vagy API-Version = 2019-05 -06-Preview használatával. |
+| [**Növekményes bővítés**](cognitive-search-incremental-indexing-conceptual.md) | Indexelő konfigurálása| Gyorsítótárazást ad hozzá egy alkoholtartalom-növelési folyamathoz, amely lehetővé teszi a meglévő kimenet újrafelhasználását, ha egy célként megadott módosítás, például egy készségkészlet vagy egy másik objektum frissítése nem módosítja a tartalmat. A gyorsítótárazás csak a készségkészlet által létrehozott dúsított dokumentumokra vonatkozik.| Adja hozzá ezt a konfigurációs beállítást a [create indexelő (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) API-Version = 2020-06 -30-Preview vagy API-Version = 2019-05 -06-Preview paranccsal. |
+| [**Cosmos DB indexelő: MongoDB API, Gremlin API, Cassandra API**](search-howto-index-cosmosdb.md) | Indexelő adatforrása | Cosmos DB az SQL API általánosan elérhető, de a MongoDB, a Gremlin és a Cassandra API előzetes verzióban érhető el. | Csak Gremlin és Cassandra esetén [regisztráljon először](https://aka.ms/azure-cognitive-search/indexer-preview) , hogy a támogatás engedélyezve legyen az előfizetéséhez a háttéren. A MongoDB-adatforrások konfigurálhatók a portálon. Ellenkező esetben az adatforrás-konfiguráció mind a három API-hoz támogatott a [create adatforrás (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) és az API-Version = 2020-06 -30 – Preview vagy API-Version = 2019-05 -06-Preview használatával. |
+|  [**Azure Data Lake Storage Gen2 indexelő**](search-howto-index-azure-data-lake-storage.md) | Indexelő adatforrása | Tartalom és metaadatok indexelése Data Lake Storage Gen2ból.| A [regisztrációra](https://aka.ms/azure-cognitive-search/indexer-preview) azért van szükség, hogy a támogatás engedélyezve legyen az előfizetéséhez a háttérbeli alkalmazásban. Ezt az adatforrást az adatforrások [(REST) létrehozásával](https://docs.microsoft.com/rest/api/searchservice/create-datasource) érheti el API-Version = 2020-06 -30-Preview vagy API-Version = 2019-05 -06-Preview használatával. |
+| [**moreLikeThis**](search-more-like-this.md) | Lekérdezés | Megkeresi az adott dokumentumhoz kapcsolódó dokumentumokat. Ez a funkció korábbi előzetes verziókban található. | Adja hozzá ezt a lekérdezési paramétert a [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) hívásokhoz a következő API-Version = 2020-06 -30-preview, 2019-05-06-preview, 2016-09-01-Preview, vagy 2017-11-11-preview. |
+
+## <a name="calling-preview-rest-apis"></a>Előnézet REST API-k hívása
+
+Az Azure Cognitive Search mindig előzetesen kibocsátja a kísérleti szolgáltatásokat a REST API a .NET SDK előzetes verzióival.
+
+Az előzetes verziójú funkciók tesztelésre és kísérletezésre használhatók, és a szolgáltatás kialakításával és megvalósításával kapcsolatos visszajelzések összegyűjtésének célja. Ezért az előzetes verziójú funkciók idővel változhatnak, valószínűleg olyan módon, hogy a visszafelé való kompatibilitást is megszakítja. Ez ellentétben áll a GA verziójának szolgáltatásaival, amelyek stabilak, és nem valószínű, hogy a kis visszamenőlegesen kompatibilis javítások és fejlesztések kivételével megváltoznak. Emellett az előzetes verziójú funkciók nem mindig teszik azt elérhetővé a GA kiadásban.
 
 Előfordulhat, hogy néhány előzetes verziójú funkció elérhető a Portálon és a .NET SDK-ban, a REST API mindig rendelkezik előzetes verziójú szolgáltatásokkal.
 
-+ A keresési műveletek [**`2019-05-06-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) esetében az aktuális előzetes verzió.
-+ A felügyeleti műveletek [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) esetében az aktuális előzetes verzió.
++ A keresési műveletek esetében [**`2020-06-30-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-preview) az aktuális előzetes verzió.
 
-> [!IMPORTANT]
-> Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
++ A felügyeleti műveletek esetében [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) az aktuális előzetes verzió.
 
-## <a name="ai-enrichment-features"></a>AI-dúsítási funkciók
-
-Ismerje meg az AI-bővítés legújabb fejlesztéseit az [előzetes verziójú keresési API](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)-n keresztül.
-
-|||
-|-|-|
-| [Egyéni entitás keresési képességei (előzetes verzió)](cognitive-search-skill-custom-entity-lookup.md ) | Egy kognitív képesség, amely a szavak és kifejezések egyéni, felhasználó által definiált listájáról keres szöveget. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. | 
-| [Személyes adatok észlelésének jártassága (előzetes verzió)](cognitive-search-skill-pii-detection.md) | Az indexelés során használt kognitív képesség, amellyel a rendszer beolvassa a személyazonosításra alkalmas adatokat egy bemeneti szövegből, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon.| 
-| [Növekményes gazdagodás (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) | Gyorsítótárazást ad hozzá egy alkoholtartalom-növelési folyamathoz, amely lehetővé teszi a meglévő kimenet újrafelhasználását, ha egy célként megadott módosítás, például egy készségkészlet vagy egy másik objektum frissítése nem módosítja a tartalmat. A gyorsítótárazás csak a készségkészlet által létrehozott dúsított dokumentumokra vonatkozik.| 
-| [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md) | Egy mesterséges intelligencia-alapú dúsítási folyamat új célja. A fizikai adatstruktúra létezik az Azure Blob Storage-ban és az Azure Table Storage-ban, és akkor jön létre és töltődik fel, amikor olyan indexelő futtat, amely egy kapcsolódó kognitív készségkészlet rendelkezik. A rendszer egy készségkészlet-definíción belül megadta a Tudásbázis definícióját. A Tudásbázis definícióján belül az adatai fizikai szerkezetét az adatformátumot meghatározó *kivetítési* elemekkel szabályozhatja, hogy az adatokat a Table Storage vagy a blob Storage tárolja-e, és hogy van-e több nézet.| 
-
-## <a name="indexing-and-query-features"></a>Indexelési és lekérdezési funkciók
-
-Az indexelő előzetes verziójának funkciói elérhetők az előzetes verziójú keresési API-ban. 
-
-|||
-|-|-|
-| [Cosmos DB indexelő](search-howto-index-cosmosdb.md) | A MongoDB API (előzetes verzió), a Gremlin API (előzetes verzió) és a Cassandra API (előzetes verzió) API-típusok támogatása. | 
-|  [Azure Data Lake Storage Gen2 indexelő (előzetes verzió)](search-howto-index-azure-data-lake-storage.md) | Tartalom és metaadatok indexelése Data Lake Storage Gen2ból.| 
-| [moreLikeThis lekérdezési paraméter (előzetes verzió)](search-more-like-this.md) | Megkeresi az adott dokumentumhoz kapcsolódó dokumentumokat. Ez a funkció korábbi előzetes verziókban található. | 
-
-## <a name="management-features"></a>Felügyeleti funkciók
-
-|||
-|-|-|
-| [Privát végpontok támogatása](service-create-private-endpoint.md) | Létrehozhat egy biztonságos ügyféllel (például virtuális géppel) rendelkező virtuális hálózatot, majd létrehozhat egy privát végpontot használó keresési szolgáltatást. |
-| IP-hozzáférés korlátozása | A [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) felügyeleti REST API használatával olyan szolgáltatásokat hozhat létre, amelyek korlátozásokkal rendelkeznek, amelyek IP-címei engedélyezve vannak. |
-
-## <a name="earlier-preview-features"></a>Korábbi előzetes funkciók
-
-A korábbi előzetes verziókban bejelentett funkciók, ha azok nem az általánosan elérhetővé váltanak, még nyilvános előzetes verzióban érhetők el. Ha olyan API-t hív meg, amely korábban előzetes verziójú API-verziót használ, továbbra is használhatja ezt a verziót `2019-05-06-Preview` , vagy váltson a szolgáltatásra a várt működés módosítása nélkül.
-
-## <a name="how-to-call-a-preview-api"></a>Előzetes verziójú API meghívása
-
-A régebbi előzetes verziók továbbra is működőképesek, de idővel elavultak lesznek. Ha a kód `api-version=2016-09-01-Preview` meghívja `api-version=2017-11-11-Preview`a vagy a-t, a hívások még érvényesek. Azonban csak a legújabb előzetes verzió frissült a újdonságokkal. 
+A régebbi előzetes verziók továbbra is működőképesek, de idővel elavultak lesznek. Ha a kód meghívja `api-version=2019-05-06-Preview` vagy `api-version=2016-09-01-Preview` vagy vagy `api-version=2017-11-11-Preview` , ezek a hívások még érvényesek. Azonban csak a legújabb előzetes verzió frissült a újdonságokkal. 
 
 A következő példa szintaxisa az előzetes verziójú API-verzió hívását mutatja be.
 
-    GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
+```HTTP
+GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+```
 
 Az Azure Cognitive Search szolgáltatás több verzióban is elérhető. További információ: API- [verziók](search-api-versions.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a Search REST API dokumentációját. Ha problémákba ütközik, kérjen segítséget a [StackOverflow](https://stackoverflow.com/) , vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
+Tekintse át a keresési REST előzetes verzió API-dokumentációját. Ha problémákba ütközik, kérjen segítséget [stack overflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Keresési szolgáltatás REST API referenciája](https://docs.microsoft.com/rest/api/searchservice/)
+> [Keresési szolgáltatás REST API referenciája (előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/index-preview)

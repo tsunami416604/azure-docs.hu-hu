@@ -4,15 +4,16 @@ description: Egy cikk, amely megtanítja az IP-tűzfalszabályok konfigurálás�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1dfac9a56e3bc299fbb0651ae1cd5644eba83267
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 255714fcf69a8ed72cf1f306e5aafabd49a199ca
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83645818"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194399"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure szinapszis Analytics IP-tűzfalszabályok (előzetes verzió)
 
@@ -44,7 +45,7 @@ Emellett engedélyeznie kell a kimenő kommunikációt a 53-es UDP-porton a szin
 
 Ha az alapértelmezett átirányítási házirend-beállítást használja, lehetséges, hogy engedélyeznie kell a kimenő kommunikációt a további portokon. A kapcsolatok házirendjeiről [itt](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)olvashat bővebben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

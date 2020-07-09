@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
-ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 55c64048e0604987c5a4c26961e5617106358e76
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673207"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436101"
 ---
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -51,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Ha a HttpExample nem jelenik meg az alább látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL**+**C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
+> Ha a HttpExample nem jelenik meg az alább látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL** + **C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
 
-Másolja a `HttpExample` függvény URL-címét ebből a kimenetből egy böngészőbe, és fűzze hozzá `?name=<your-name>`a lekérdezési karakterláncot, `http://localhost:7071/api/HttpExample?name=Functions`így a teljes URL-címet, például:. A böngészőben a következőhöz hasonló `Hello Functions`üzenetnek kell megjelennie:
+Másolja a függvény URL-címét `HttpExample` ebből a kimenetből egy böngészőbe, és fűzze hozzá a lekérdezési karakterláncot `?name=<your-name>` , így a teljes URL-címet, például: `http://localhost:7071/api/HttpExample?name=Functions` . A böngészőben a következőhöz hasonló üzenetnek kell megjelennie `Hello Functions` :
 
 ![A függvény helyi futtatásának eredménye a böngészőben](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
 A terminál, amelyben elindította a projektet, a naplók kimenetét is megjeleníti a kérések elkészítésekor.
 
-Ha elkészült, használja a **CTRL C billentyűt**+**C** , `y` és válassza a functions gazdagép leállítását.
+Ha elkészült, használja a **CTRL C billentyűt**, + **C** és válassza `y` a functions gazdagép leállítását.

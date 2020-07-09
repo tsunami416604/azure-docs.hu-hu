@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 3078cf7a7b16d5932e861f28a352002aa01cea45
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041993"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043512"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -89,8 +89,8 @@ Gyakran számos tranzakciós adatbázis van, amelyek együtt tartalmazzák az ö
 A következő lépésekben telepíti a **tenantanalytics**nevű Analytics-tárolót. Az oktatóanyagban később feltöltött előre definiált táblákat is üzembe helyezhet:
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Állítsa be az $DemoScenario változót a parancsfájlban, hogy az megfeleljen a választott elemzési tárolónak:
-    - Ha az SQL Database-t szeretné használni az oszlopok tárolása nélkül, állítsa **$DemoScenario**  =  **2**
-    - Ha az SQL Database-t az Column Store-ban szeretné használni, állítsa be a **$DemoScenario**  =  **3**  
+    - Ha SQL Databaset szeretne használni az oszlopok tárolása nélkül, állítsa be a **$DemoScenario**  =  **2**
+    - Ha SQL Databaset szeretne használni az oszlopos tárolóval, állítsa be az **$DemoScenario**  =  **3**  
 3. Nyomja le az **F5** billentyűt a bemutató parancsfájl futtatásához (amely meghívja az *Deploy-TenantAnalytics \<XX> . ps1* parancsfájlt), amely létrehozza a bérlői elemzési tárolót. 
 
 Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adatokkal, használja a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) -t a **tenants1-DPT- &lt; User &gt; ** és a **Catalog-DPT- &lt; User &gt; ** kiszolgálók bejelentkezési = *fejlesztői*, jelszó = *P \@ ssword1*használatával való összekapcsolásához. További útmutatásért tekintse meg a [bevezető oktatóanyagot](../../sql-database/saas-dbpertenant-wingtip-app-overview.md) .

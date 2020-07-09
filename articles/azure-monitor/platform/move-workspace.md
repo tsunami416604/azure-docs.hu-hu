@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: e0ecfd3acb6a8a1d40e006aef1bbf63eae0e1ff4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770798"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -38,6 +37,8 @@ Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolás�
 - Virtuális gépek indítása és leállítása munkaidőn kívül
 - Azure Security Center
 
+>[!IMPORTANT]
+> - Ha engedélyezve van egy munkaterületen, az Azure Sentinel **jelenleg nem támogatja** a munkaterület áthelyezését más erőforráscsoportok vagy előfizetések számára. Ha át kell helyeznie a munkaterületet, forduljon az [Azure sentinelhez](mailto:AzureSentinel@microsoft.com).
 
 ### <a name="delete-solutions-in-azure-portal"></a>Megoldások törlése Azure Portal
 A következő eljárással távolíthatja el a megoldásokat a Azure Portal használatával:

@@ -1,18 +1,16 @@
 ---
 title: Kereskedelmi piactér-fiók létrehozása a partner Centerben
 description: Ismerje meg, hogyan hozhat létre Microsoft kereskedelmi piactér-fiókot a partner Centerben.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: 2a1a6963a540f3e7384f73067af336b53b29134d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856684"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110011"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -75,7 +73,7 @@ A közzétevői profil tartalmazza a vállalat nevét és az MPN-AZONOSÍTÓját
 
     A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán. 
     
-1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások** > **partner-beállítások** > **programok**elemet.
+1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok**elemet.
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -112,7 +110,7 @@ A bejelentkezést követően fejezze be a fiók beállítását a következő m�
 >[!NOTE]
 > A Microsoft Partner Networkba való bejelentkezéshez rendszergazdai **fiókkal** vagy **globális rendszergazdai** szerepkörrel kell rendelkeznie.
 
-1. A [partner Centerben](https://partner.microsoft.com/)válassza a **Beállítások** > **partner beállítások** > **programok** > első**lépések**lehetőséget.
+1. A [partner Centerben](https://partner.microsoft.com/)válassza a **Beállítások**  >  **partner beállítások**  >  **programok**első  >  **lépések**lehetőséget.
 
    Microsoft Partner Network észleli az előfizetését, és megjeleníti a **közzétevői profil** ablaktáblát.
    
@@ -124,7 +122,7 @@ A bejelentkezést követően fejezze be a fiók beállítását a következő m�
 
     A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán. 
     
-1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások** > **partner-beállítások** > **programok**elemet.
+1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok**elemet.
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -143,7 +141,7 @@ Jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/dashboard/acc
 
 Miután bejelentkezett a partneri központba, fejezze be a fiók beállítását a következő módon:
 
-1. A partner Centerben válassza a **Beállítások** > **fejlesztői beállítások** > **programok** > első**lépések**lehetőséget, majd adja meg a munkahelyi e-mail-címét.
+1. A partner Centerben válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **programok**első  >  **lépések**lehetőséget, majd adja meg a munkahelyi e-mail-címét.
 1. Fejezze be a részleteket a **közzétevő profilja** oldalon.
 1. Olvassa el a [Microsoft kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
 
@@ -152,7 +150,7 @@ Miután bejelentkezett a partneri központba, fejezze be a fiók beállítását
 
     A regisztrációt követően a kereskedelmi piactér – áttekintés lapot vesszük. A kereskedelmi piactér fiók megjelenik a bal oldali ablaktáblán. 
     
-1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások** > **partner-beállítások** > **programok**elemet.
+1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok**elemet.
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -168,10 +166,10 @@ Miután a fiók adatait áthelyezte a Cloud Partner Portal a partneri központba
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Új közzétevők hozzáadása a kereskedelmi piactér programhoz
 
-Egy szervezethez több közzétevő is társítva van egy kereskedelmi piactér-fiókkal. Egy meglévő felhasználó további közzétevőket adhat hozzá a partner központba való bejelentkezés után, ha kiválasztja a **Fiókbeállítások** > **közzétevők** > **Hozzáadás kiadó**elemet.
+Egy szervezethez több közzétevő is társítva van egy kereskedelmi piactér-fiókkal. Egy meglévő felhasználó további közzétevőket adhat hozzá a partner központba való bejelentkezés után, ha kiválasztja a **Fiókbeállítások**  >  **közzétevők**  >  **Hozzáadás kiadó**elemet.
 
 >[!NOTE]
->Új közzétevő hozzáadása előtt tekintse át a meglévő közzétevők listáját a partner Centerbe való bejelentkezéssel és a **Fiókbeállítások** > **közzétevők**kiválasztásával.
+>Új közzétevő hozzáadása előtt tekintse át a meglévő közzétevők listáját a partner Centerbe való bejelentkezéssel és a **Fiókbeállítások**  >  **közzétevők**kiválasztásával.
 
 A Azure Active Directory bérlő további felhasználói hozzáadhatnak egy új közzétevőt a következő módon:
 
@@ -187,6 +185,6 @@ A Azure Active Directory bérlő további felhasználói hozzáadhatnak egy új 
 
 A folyamat befejezése után az újonnan létrehozott közzétevőt a bal oldali ablaktáblán látható kereskedelmi Piactéri fiókkal kezelheti. Ha nem látja a kereskedelmi Piactéri fiókot, frissítse az oldalt. Az új közzétevő megjelenik a **közzétevők** listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md)

@@ -5,15 +5,14 @@ author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
 ms.service: storage
-ms.subservice: common
-ms.topic: conceptual
+ms.subservice: blobs
+ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: cc82b6578b06323d8cf9a09644d50043dba8e554
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986284"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
@@ -22,7 +21,7 @@ A blob index címkék kategorizálják az adatait a Storage-fiókban a kulcs-ér
 További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob indexével (előzetes verzió)](storage-manage-find-blobs.md).
 
 > [!NOTE]
-> A blob index nyilvános előzetes verzióban érhető el, és a **franciaországi Közép** -és **dél-franciaországi** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
+> A blob index nyilvános előzetes verzióban érhető el, és a **Közép**-Kanada, **Kelet-Kanada**, **Közép** -Franciaország és **Dél-Franciaország déli** régiójában érhető el. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 # <a name="portal"></a>[Portál](#tab/azure-portal)

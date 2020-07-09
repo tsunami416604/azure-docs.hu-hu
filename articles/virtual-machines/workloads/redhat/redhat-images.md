@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239879"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
@@ -45,7 +45,7 @@ az vm image list --publisher RedHat --all
 
 Az Azure-beli virtuálisgép-rendszerképeket a kiadó, az ajánlat, az SKU és a verzió rendezi. A kiadó: ajánlat: SKU: Version a (z) a rendszerkép URN kombinációja, amely egyedileg azonosítja a használni kívánt rendszerképet.
 
-Például egy RHEL `RedHat:RHEL:8-LVM:8.1.20200318` 8,1 LVM-particionálású rendszerképre hivatkozik, amely 2020. március 18-án épült.
+Például `RedHat:RHEL:8-LVM:8.1.20200318` egy RHEL 8,1 LVM-particionálású rendszerképre hivatkozik, amely 2020. március 18-án épült.
 
 Itt látható egy példa arra, hogyan hozhat létre RHEL 8,1 virtuális gépet.
 
@@ -57,7 +57,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1
 
 Az Azure REST API lehetővé teszi a "legújabb" moniker használatát az adott verzió helyett a verzióhoz. A "legújabb" kifejezéssel az adott közzétevőhöz, ajánlathoz és SKU-hoz készült legújabb elérhető lemezképet helyezheti üzembe.
 
-Például a legújabb `RedHat:RHEL:8-LVM:latest` RHEL 8 családos LVM-particionált lemezképre hivatkozik.
+Például `RedHat:RHEL:8-LVM:latest` a legújabb RHEL 8 családos LVM-particionált lemezképre hivatkozik.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
@@ -71,7 +71,7 @@ A rendszerkép-verzió összehasonlítását úgy végezheti el, hogy az érték
 
 RHEL 6. x rendszerképek esetén a képtípusok az alábbi táblázatban láthatók.
 
-|Közzétevő | Ajánlat | SKU-érték | Verzió | Részletek
+|Publisher | Ajánlat | SKU-érték | Verzió | Részletek
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | Másodlagos verzió (például 6,9) | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 6.9.2018010506) | A standard RHEL 6. x lemezképek ezt az egyezményt követik.
 |RedHat | RHEL – BYOS | RHEL – raw69 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 6.9.20181023) | Ez a rendszerkép egy RHEL 6,9 BYOS-rendszerkép.
@@ -80,12 +80,12 @@ RHEL 6. x rendszerképek esetén a képtípusok az alábbi táblázatban láthat
 
 ## <a name="rhel-7-image-types"></a>RHEL 7 Képtípus
 
-A RHEL 7. x rendszerképek esetében van néhány különböző képtípus. Az alábbi táblázat az általunk kínált rendszerképek különböző készleteit mutatja be. A teljes lista megtekintéséhez használja az Azure CLI-parancsot `az vm image list --publisher redhat --all`.
+A RHEL 7. x rendszerképek esetében van néhány különböző képtípus. Az alábbi táblázat az általunk kínált rendszerképek különböző készleteit mutatja be. A teljes lista megtekintéséhez használja az Azure CLI-parancsot `az vm image list --publisher redhat --all` .
 
 >[!NOTE]
 > Ha másként nincs jelezve, minden lemezkép LVM particionálva van, és csatlakozik a normál RHEL-adattárakhoz. Ez azt is lehetővé tenné, hogy a Tárházak nem bővítik az Update support (EUS) szolgáltatást, és nem frissítik az SAP-t (E4S). A jövőben csak az LVM-particionált rendszerképeket tesszük közzé, de erre a döntésre vonatkozó visszajelzések is nyitva vannak. További információ a bővített frissítés támogatásáról és az SAP-hez készült frissítési szolgáltatásairól: [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata).
 
-|Közzétevő | Ajánlat | SKU-érték | Verzió | Részletek
+|Publisher | Ajánlat | SKU-érték | Verzió | Részletek
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | Másodlagos verzió (például 7,6) | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 7.6.2019102813) | Az április 2019 előtt közzétett rendszerképek a standard RHEL-adattárakhoz vannak csatolva. Az április 2019 után közzétett rendszerképek a Red Hat EUS-adattárakhoz vannak csatolva, hogy lehetővé tegyék a verzió zárolását egy adott alverzión. Azok az ügyfelek, akik szeretnék, hogy a normál Tárházak az SKU-ban lévő 7-LVM vagy 7-es-nyers képeket használják (részletek követik ezt a részleteket). A RHEL 7,7-es és újabb verziói az LVM particionálva vannak. A kategóriába tartozó összes többi rendszerkép nyers particionálású.
 |RedHat | RHEL | 7 – NYERS | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 7.6.2019102813) | Ezek a lemezképek nyers particionálva vannak (például nem lettek hozzáadva logikai kötetek).
@@ -102,7 +102,7 @@ A RHEL 7. x rendszerképek esetében van néhány különböző képtípus. Az a
 
 A RHEL 8 képtípusának részletei alább láthatók.
 
-|Közzétevő | Ajánlat | SKU-érték | Verzió | Részletek
+|Publisher | Ajánlat | SKU-érték | Verzió | Részletek
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191023) | Ezek a képek a standard Red Hat-adattárakhoz csatlakoztatott, 8 LVM-particionált rendszerképek RHEL.
 |RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)-ban.
@@ -129,7 +129,7 @@ RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-Ebben az esetben alapértelmezés `RedHat:RHEL:7.6:7.6.2019102813` szerint a EUs-adattárakhoz van csatolva. Az SKU értéke 7,4. És `RedHat:RHEL:7-LVM:7.6.2019062414` alapértelmezés szerint nem EUs-adattárakhoz van csatolva. Az SKU értéke 7 – LVM.
+Ebben az esetben alapértelmezés szerint a `RedHat:RHEL:7.6:7.6.2019102813` EUs-adattárakhoz van csatolva. Az SKU értéke 7,4. És `RedHat:RHEL:7-LVM:7.6.2019062414` alapértelmezés szerint nem EUs-adattárakhoz van csatolva. Az SKU értéke 7 – LVM.
 
 A normál (nem EUS) adattárak használatához olyan rendszerképet használjon, amely nem tartalmaz alverziószámot az SKU-ban.
 
@@ -147,7 +147,7 @@ Másodlagos verzió |EUS-rendszerkép – példa              |EUS állapota    
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Az április 2019-es és újabb verzióiban közzétett lemezképek alapértelmezés szerint EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | A 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | A 2019-es és újabb verzióiban közzétett rendszerképek alapértelmezés szerint EUS. |
-RHEL 8,0      |N/A                            | A Red Hat nem érhető el EUS.                               |
+RHEL 8,0      |N.A.                            | A Red Hat nem érhető el EUS.                               |
 
 ### <a name="update-services-for-sap"></a>SAP-szolgáltatások frissítése
 

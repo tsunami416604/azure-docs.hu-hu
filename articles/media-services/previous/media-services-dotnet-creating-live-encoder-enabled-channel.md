@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015508"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
@@ -106,7 +106,7 @@ Az ebben a cikkben leírt mintát [innen](https://azure.microsoft.com/documentat
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>A .NET-keretrendszerhez készült Media Services SDK-val történő fejlesztés előkészítése
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 ## <a name="code-example"></a>Mintakód
 

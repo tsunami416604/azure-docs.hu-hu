@@ -6,16 +6,15 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75478876"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057619"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához (előzetes verzió)
 
-Ha [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)Azure-ügyfelet használ, megadhat egy másik felhasználói vagy egyszerű szolgáltatást a fiókjához tartozó előfizetések létrehozásához. Ebből a cikkből megtudhatja, hogyan használhatja a [szerepköralapú Access Control (RBAC)](../../active-directory/role-based-access-control-configure.md) az előfizetések létrehozására, valamint az előfizetés-létrehozás naplózására. A megosztani kívánt fiók tulajdonosi szerepkörének kell lennie.
+Ha [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)Azure-ügyfelet használ, megadhat egy másik felhasználói vagy egyszerű szolgáltatást a fiókjához tartozó előfizetések létrehozásához. Ebből a cikkből megtudhatja, hogyan használhatja a [szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) az előfizetések létrehozására, valamint az előfizetés-létrehozás naplózására. A megosztani kívánt fiók tulajdonosi szerepkörének kell lennie.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -60,7 +59,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
     }
     ```
 
-    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a `name` fiókját. Ha például a RBAC tulajdonosának hozzáférést kíván adni a beléptetési SignUpEngineering@contoso.com fiókhoz, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```a következőt:. Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben használhatja azt `enrollmentAccountObjectId`.
+    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a `name` fiókját. Ha például a RBAC tulajdonosának hozzáférést kíván adni a SignUpEngineering@contoso.com beléptetési fiókhoz, akkor másolja a következőt: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben használhatja azt `enrollmentAccountObjectId` .
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -78,7 +77,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a `ObjectId` fiókját. Ha például a RBAC tulajdonosának hozzáférést kíván adni a beléptetési SignUpEngineering@contoso.com fiókhoz, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```a következőt:. Illessze be ezt az objektumazonosítót valahova, hogy a következő lépésben használhassa azt `enrollmentAccountObjectId`.
+    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a `ObjectId` fiókját. Ha például a RBAC tulajdonosának hozzáférést kíván adni a SignUpEngineering@contoso.com beléptetési fiókhoz, akkor másolja a következőt: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Illessze be ezt az objektumazonosítót valahova, hogy a következő lépésben használhassa azt `enrollmentAccountObjectId` .
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -109,14 +108,14 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
 
     ---
 
-    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a `name` fiókját. Ha például a RBAC tulajdonosának hozzáférést kíván adni a beléptetési SignUpEngineering@contoso.com fiókhoz, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```a következőt:. Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben használhatja azt `enrollmentAccountObjectId`.
+    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a `name` fiókját. Ha például a RBAC tulajdonosának hozzáférést kíván adni a SignUpEngineering@contoso.com beléptetési fiókhoz, akkor másolja a következőt: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben használhatja azt `enrollmentAccountObjectId` .
 
 1. <a id="userObjectId"></a>Szerezze be azon felhasználó vagy csoport objektumazonosító-AZONOSÍTÓját, amelyhez a RBAC tulajdonosi szerepkört kívánja adni
 
     1. A Azure Portal keresse meg a **Azure Active Directory**.
     1. Ha felhasználói hozzáférést szeretne biztosítani, kattintson a bal oldali menüben a **felhasználók** lehetőségre. Ha hozzáférést szeretne adni egy csoporthoz, kattintson a **csoportok**elemre.
     1. Válassza ki azt a felhasználót vagy csoportot, amely számára a RBAC tulajdonosi szerepkört kívánja adni.
-    1. Ha kiválasztott egy felhasználót, az objektumazonosító a profil oldalon található. Ha kiválasztott egy csoportot, az objektum azonosítója az Áttekintés oldalon jelenik meg. Másolja a **ObjectId** a szövegmezőtől jobbra található ikonra kattintva. Illessze be ezt valahova, hogy a következő lépésben használhatja azt `userObjectId`.
+    1. Ha kiválasztott egy felhasználót, az objektumazonosító a profil oldalon található. Ha kiválasztott egy csoportot, az objektum azonosítója az Áttekintés oldalon jelenik meg. Másolja a **ObjectId** a szövegmezőtől jobbra található ikonra kattintva. Illessze be ezt valahova, hogy a következő lépésben használhatja azt `userObjectId` .
 
 1. A RBAC tulajdonosi szerepkörének megadása a felhasználónak vagy csoportnak a beléptetési fiókban
 
@@ -124,7 +123,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
-    Futtassa a következő parancsot, és ```<enrollmentAccountObjectId>``` cserélje `name` le az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) lemásolt elemre. Cserélje ```<userObjectId>``` le a elemet a második lépésből másolt OBJEKTUMAZONOSÍTÓ-azonosítóra.
+    Futtassa a következő parancsot, és cserélje ```<enrollmentAccountObjectId>``` `name` le az első lépésben () lemásolt elemre ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Cserélje le a ```<userObjectId>``` elemet a második lépésből másolt objektumazonosító-azonosítóra.
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -158,7 +157,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    Futtassa a következő [New-AzRoleAssignment](../../active-directory/role-based-access-control-manage-access-powershell.md) parancsot, és ```<enrollmentAccountObjectId>``` cserélje le `ObjectId` az adatokat az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Cserélje ```<userObjectId>``` le a értékét a második lépésben összegyűjtött objektum-azonosítóra.
+    Futtassa a következő [New-AzRoleAssignment](../../role-based-access-control/role-assignments-powershell.md) parancsot, és cserélje le az ```<enrollmentAccountObjectId>``` `ObjectId` adatokat az első lépésben ( ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). Cserélje le a értékét a ```<userObjectId>``` második lépésben összegyűjtött objektum-azonosítóra.
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -166,7 +165,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
-    Futtassa a következőt az az [szerepkör-hozzárendelés létrehozása](../../active-directory/role-based-access-control-manage-access-azure-cli.md) paranccsal, `name` és cserélje le az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) lemásolt helyére. ```<enrollmentAccountObjectId>``` Cserélje ```<userObjectId>``` le a értékét a második lépésben összegyűjtött objektum-azonosítóra.
+    Futtassa a következőt az az [szerepkör-hozzárendelés létrehozása](../../role-based-access-control/role-assignments-cli.md) paranccsal, ```<enrollmentAccountObjectId>``` és cserélje le az `name` első lépésben () lemásolt helyére ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Cserélje le a értékét a ```<userObjectId>``` második lépésben összegyűjtött objektum-azonosítóra.
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -180,7 +179,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
 
 Az ezen az API-n keresztül létrehozott előfizetések nyomon követéséhez használja a [bérlői tevékenység log API](/rest/api/monitor/tenantactivitylogs)-ját. Az előfizetés létrehozásának nyomon követéséhez jelenleg nem használható a PowerShell, a CLI vagy a Azure Portal.
 
-1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../active-directory/role-based-access-control-tenant-admin-access.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
+1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../role-based-access-control/elevate-access-global-admin.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
 1. A naplózási felhasználóként hívja meg a [bérlői tevékenység naplójának API](/rest/api/monitor/tenantactivitylogs) -ját az előfizetés-létrehozási tevékenységek megtekintéséhez. Példa:
 
     ```

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81421794"
 ---
 A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
@@ -51,6 +51,6 @@ A közelségi elhelyezési csoportok közös helyet foglalnak el ugyanabban az a
 ## <a name="best-practices"></a>Ajánlott eljárások 
 - A legkisebb késés érdekében használja a közeli elhelyezési csoportokat a gyorsított hálózatkezeléssel együtt. További információ: [Linux rendszerű virtuális gép gyorsított hálózatkezeléssel való létrehozása](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Minden virtuálisgép-méret üzembe helyezése egyetlen sablonban. Ha el szeretné kerülni, hogy a hardver nem támogatja a szükséges összes virtuálisgép-t és méretet, vegye fel az összes alkalmazási szintet egyetlen sablonba, hogy azok mind egyszerre legyenek telepítve.
-- Ha az üzembe helyezést a PowerShell, a CLI vagy az SDK használatával végezi el, lefoglalási hibaüzenetet `OverconstrainedAllocationRequest`kaphat. Ebben az esetben le kell állítania/fel kell szabadítania az összes meglévő virtuális GÉPET, és módosítania kell a telepítési parancsfájlban szereplő sorozatot, hogy a sikertelen virtuálisgép-SKU/-méretekkel kezdődjön. 
+- Ha az üzembe helyezést a PowerShell, a CLI vagy az SDK használatával végezi el, lefoglalási hibaüzenetet kaphat `OverconstrainedAllocationRequest` . Ebben az esetben le kell állítania/fel kell szabadítania az összes meglévő virtuális GÉPET, és módosítania kell a telepítési parancsfájlban szereplő sorozatot, hogy a sikertelen virtuálisgép-SKU/-méretekkel kezdődjön. 
 - Ha olyan meglévő elhelyezési csoportot kíván újra használni, amelyből a virtuális gépek törölve lettek, várjon, amíg a törlés teljes mértékben befejeződik, mielőtt hozzáadja a virtuális gépeket.
 - Ha a késés az első prioritás, a virtuális gépeket egy közelségi elhelyezési csoportba és a teljes megoldásba helyezheti egy rendelkezésre állási zónában. Ha azonban a rugalmasság a legfontosabb prioritás, a példányokat több rendelkezésre állási zónában is eloszthatja (az egyetlen közelségi elhelyezési csoport nem terjedhet ki a zónákra).

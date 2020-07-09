@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 6ffe7f3d9faf82c892975e9ffa03b383d3610c36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424621"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194858"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark feladatok (előzetes verzió) optimalizálása az Azure szinapszis Analytics szolgáltatásban
 
@@ -56,7 +56,7 @@ A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely 
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata
 
-A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, `.persist()`például `.cache()`:, `CACHE TABLE`és. Ez a natív gyorsítótárazás a kis adatkészletek és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. A Spark natív gyorsítótárazás azonban jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget.
+A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, például:, `.persist()` `.cache()` és `CACHE TABLE` . Ez a natív gyorsítótárazás a kis adatkészletek és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. A Spark natív gyorsítótárazás azonban jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget.
 
 ## <a name="use-memory-efficiently"></a>Hatékony memória használata
 
@@ -77,8 +77,8 @@ Apache Spark az Azure Szinapszisban FONALat [Apache HADOOP fonalat](https://hado
 A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel:
 
 * Tekintse át a DAG felügyeletének véletlenszerű működését. Csökkentse a leképezési és a partíciós (vagy bucketize) adatforrások közötti adatmennyiséget, maximalizálja az egyetlen véletlenszerű sorrendet, és csökkentse a továbbított adatmennyiséget.
-* Inkább `ReduceByKey` a rögzített memória korlátja, `GroupByKey`amely az összesítéseket, az ablakokat és más funkciókat tartalmaz, de Ann nem kötött memória korlátja van.
-* A `TreeReduce`rendszer inkább a végrehajtók vagy a partíciók több munkáját hajtja `Reduce`végre a (z) rendszeren, amely az illesztőprogramon végzett összes munkát végzi.
+* Inkább a `ReduceByKey` rögzített memória korlátja `GroupByKey` , amely az összesítéseket, az ablakokat és más funkciókat tartalmaz, de Ann nem kötött memória korlátja van.
+* A rendszer inkább a `TreeReduce` végrehajtók vagy a partíciók több munkáját hajtja végre a (z `Reduce` ) rendszeren, amely az illesztőprogramon végzett összes munkát végzi.
 * Az alsó szintű RDD-objektumok helyett használja a DataFrames.
 * Hozzon létre olyan ComplexTypes, amelyek műveleteket (például "Top N"), különböző összesítéseket vagy ablakkezelő műveleteket ágyaznak be.
 
@@ -109,7 +109,7 @@ A lassú illesztéseket okozó másik tényező lehet az illesztés típusa. Ala
 
 Az `Broadcast` illesztés a kisebb adatkészletekhez ideális, vagy ha az illesztés egyik oldala sokkal kisebb, mint a másik oldal. Az ilyen típusú illesztések az egyik oldalról az összes végrehajtóra mutatnak, ezért általában több memóriát igényelnek a szórások számára.
 
-Az illesztési típust beállíthatja a konfigurációban `spark.sql.autoBroadcastJoinThreshold`, vagy beállíthatja az illesztési mutatót a DataFrame API-k`dataframe.join(broadcast(df2))`() használatával.
+Az illesztési típust beállíthatja a konfigurációban, vagy beállíthatja az `spark.sql.autoBroadcastJoinThreshold` illesztési mutatót a DataFrame API-k ( `dataframe.join(broadcast(df2))` ) használatával.
 
 ```scala
 // Option 1
@@ -160,7 +160,7 @@ Az egyidejű lekérdezések futtatásakor vegye figyelembe a következőket:
 
 A lekérdezés teljesítményének figyelése kiugró vagy egyéb teljesítménnyel kapcsolatos problémák esetén, az Idősor nézet, az SQL Graph, a feladatok statisztikái és így tovább. Előfordulhat, hogy a végrehajtók közül egy vagy több lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb ideig tart. Ez gyakran előfordul a nagyobb fürtökön (> 30 csomópont). Ebben az esetben a munkát nagyobb számú feladatra osztja fel, így az ütemező kompenzálhatja a lassú feladatokat. 
 
-Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A `conf: spark.speculation = true`feladatokhoz tartozó spekulatív végrehajtást is engedélyezheti.
+Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A feladatokhoz tartozó spekulatív végrehajtást is engedélyezheti `conf: spark.speculation = true` .
 
 ## <a name="optimize-job-execution"></a>Feladatok végrehajtásának optimalizálása
 
@@ -170,7 +170,7 @@ Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó m
 
 A Spark 2. x lekérdezési teljesítménye a Wolfram motor, amely a teljes fázisú programkódok generálásának függvénye. Bizonyos esetekben előfordulhat, hogy a teljes fázisú kód létrehozása le lesz tiltva. 
 
-Ha például nem megváltoztathatatlan típust () használ az`string`összesítési kifejezésben, `SortAggregate` a () helyett a `HashAggregate`következő jelenik meg:. Például a jobb teljesítmény érdekében próbálkozzon a következőkkel, majd engedélyezze újra a kód generálását:
+Ha például nem megváltoztathatatlan típust ( `string` ) használ az összesítési kifejezésben, a () helyett a következő `SortAggregate` jelenik meg: `HashAggregate` . Például a jobb teljesítmény érdekében próbálkozzon a következőkkel, majd engedélyezze újra a kód generálását:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))

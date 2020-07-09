@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979414"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-átalakítás térképekkel az Azure Logic Appsben az Enterprise Integration Pack segítségével
 
-Ha Azure Logic Apps a vállalati integrációs forgatókönyvek formátumai közötti XML-adatok átvitelét szeretné elvégezni, a logikai alkalmazás térképeket vagy pontosabban bővíthető stíluslap nyelvi átalakítási (XSLT) leképezéseket is használhat. A Térkép egy XML-dokumentum, amely leírja, hogyan lehet XML-dokumentumból más formátumba konvertálni az adatok adatait. 
+Az Azure Logic Apps vállalati integrációs forgatókönyveiben a logikai alkalmazás leképezéseket, pontosabban Extensible Stylesheet Language Transformations- (XSLT-) leképezéseket használhat az XML-adatok formátumok közötti átviteléhez. A leképezés egy XML-dokumentum, amely leírja, hogyan lehet más formátumba konvertálni az XML-dokumentumok adatait. 
 
 Tegyük fel például, hogy rendszeresen kap B2B-rendeléseket vagy-számlákat a YYYMMDD-formátumot használó ügyféltől. A szervezet azonban a MMDDYYY formátumot használja. Megadhatja és használhatja azt a térképet, amely átalakítja a YYYMMDD a MMDDYYY formátumba, mielőtt a rendelés vagy a számla részleteit a felhasználói tevékenység adatbázisában tárolja.
 
@@ -36,7 +35,7 @@ Az integrációs fiókokkal és összetevőkkel, például a térképekkel kapcs
   * Szerelvények esetén szüksége van egy Azure Blob-tárolóra, ahol feltöltheti a szerelvényt és a tároló helyét. Így később is megadhatja ezt a helyet, amikor hozzáadja a szerelvényt az integrációs fiókhoz. 
   Ehhez a feladathoz a következő elemek szükségesek:
 
-    | Elem | Leírás |
+    | Item | Description |
     |------|-------------|
     | [Azure Storage-fiók](../storage/common/storage-account-overview.md) | Ebben a fiókban hozzon létre egy Azure BLOB-tárolót a szerelvényhez. Megtudhatja [, hogyan hozhat létre egy Storage-fiókot](../storage/common/storage-account-create.md). |
     | Blobtároló | Ebben a tárolóban feltöltheti a szerelvényt. Erre a tárolóra is szüksége lesz, amikor hozzáadja a szerelvényt az integrációs fiókhoz. Megtudhatja, hogyan [hozhat létre BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). |
@@ -150,7 +149,7 @@ Az integrációs fiók **áttekintő** lapjának **összetevők**területén a *
 1. A feltöltés befejezése után létrehoz egy közös hozzáférési aláírást (SAS) a szerelvényhez. 
    A szerelvény helyi menüjében válassza a **közös hozzáférési aláírás beolvasása**elemet.
 
-1. A **közös hozzáférési aláírás** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI** > **létrehozása**lehetőséget. 
+1. A **közös hozzáférési aláírás** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI**  >  **létrehozása**lehetőséget. 
    A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás**lehetőséget.
 
 1. Térjen vissza a Azure Portal, ahol a **szerelvény hozzáadása** panel meg van nyitva. 

@@ -11,10 +11,9 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680039"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
@@ -25,20 +24,20 @@ A UserPrincipalName attribútum értéke a felhasználói fiókok Azure AD-felha
 ## <a name="upn-terminology"></a>UPN-terminológia
 Ebben a cikkben a következő terminológiát használjuk:
 
-|Időtartam|Leírás|
+|Kifejezés|Description|
 |-----|-----|
 |Kezdeti tartomány|Az alapértelmezett tartomány (onmicrosoft.com) az Azure AD-Bérlőben. Például: contoso.onmicrosoft.com.|
-|Microsoft Online E-mail útválasztási cím (MOERA)|Az Azure AD kiszámítja a MOERA az Azure AD MailNickName attribútumból és az Azure &lt;ad&gt; kezdeti &lt;tartományból&gt;MailNickName&#64;kezdeti tartományként.|
+|Microsoft Online E-mail útválasztási cím (MOERA)|Az Azure AD kiszámítja a MOERA az Azure AD MailNickName attribútumból és az Azure AD kezdeti tartományból &lt; MailNickName &gt;&#64;&lt; kezdeti tartományként &gt; .|
 |Helyszíni mailNickName attribútum|Active Directory egyik attribútuma, amelynek értéke egy Exchange-szervezet felhasználójának aliasát jelöli.|
 |Helyszíni levelezési attribútum|A Active Directory egyik attribútuma, amelynek értéke a felhasználó e-mail-címének felel meg|
-|Elsődleges SMTP-cím|Egy Exchange-címzett objektum elsődleges e-mail-címe. Például SMTP: user\@contoso.com.|
+|Elsődleges SMTP-cím|Egy Exchange-címzett objektum elsődleges e-mail-címe. Például SMTP: user \@ contoso.com.|
 |Másodlagos bejelentkezési azonosító|A UserPrincipalName eltérő helyszíni attribútum, például a mail attribútum, amely a bejelentkezéshez használatos.|
 
 ## <a name="what-is-userprincipalname"></a>Mi az a UserPrincipalName?
 A UserPrincipalName egy olyan attribútum, amely a felhasználó internetes stílusú bejelentkezési neve az Internet standard [RFC 822-es](https://www.ietf.org/rfc/rfc0822.txt)szabvány alapján. 
 
 ### <a name="upn-format"></a>UPN formátuma
-Az egyszerű felhasználónév egy UPN-előtagot (a felhasználói fiók nevét) és egy UPN-utótagot (DNS-tartománynevet) tartalmaz. Az előtag a "\@" szimbólum használatával csatlakozik az utótaghoz. Például: "valaki\@example.com". Az egyszerű felhasználónévnek egyedinek kell lennie az összes rendszerbiztonsági tag objektum között egy címtár-erdőben. 
+Az egyszerű felhasználónév egy UPN-előtagot (a felhasználói fiók nevét) és egy UPN-utótagot (DNS-tartománynevet) tartalmaz. Az előtag a "" szimbólum használatával csatlakozik az utótaghoz \@ . Például: "valaki \@ example.com". Az egyszerű felhasználónévnek egyedinek kell lennie az összes rendszerbiztonsági tag objektum között egy címtár-erdőben. 
 
 ## <a name="upn-in-azure-ad"></a>UPN az Azure AD-ben 
 Az Azure AD egyszerű felhasználónevet használ a felhasználók bejelentkezésének engedélyezéséhez.  A felhasználó által használható egyszerű felhasználónév attól függ, hogy a tartomány ellenőrzése megtörtént-e.  Ha a tartomány ellenőrzése megtörtént, akkor az adott utótaggal rendelkező felhasználó bejelentkezhet az Azure AD-be.  
@@ -59,7 +58,7 @@ Ha engedélyezni szeretné az alternatív bejelentkezési azonosítót az Azure 
 További információ: [alternatív bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) és [Azure ad bejelentkezési konfiguráció](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 
 ## <a name="non-verified-upn-suffix"></a>Nem ellenőrzött UPN-utótag
-Ha a helyszíni UserPrincipalName attribútum vagy az alternatív bejelentkezési azonosító utótagja nem lett ellenőrizve az Azure AD-Bérlővel, akkor az Azure AD-UserPrincipalName attribútum értéke a MOERA értékre van állítva. Az Azure AD kiszámítja a MOERA az Azure AD MailNickName attribútumból és az Azure AD &lt;kezdeti&gt; tartományból &lt;MailNickName&gt;&#64;kezdeti tartományként.
+Ha a helyszíni UserPrincipalName attribútum vagy az alternatív bejelentkezési azonosító utótagja nem lett ellenőrizve az Azure AD-Bérlővel, akkor az Azure AD-UserPrincipalName attribútum értéke a MOERA értékre van állítva. Az Azure AD kiszámítja a MOERA az Azure AD MailNickName attribútumból és az Azure AD kezdeti tartományból &lt; MailNickName &gt;&#64;&lt; kezdeti tartományként &gt; .
 
 ## <a name="verified-upn-suffix"></a>Ellenőrzött UPN-utótag
 Ha a helyszíni UserPrincipalName attribútum/alternatív bejelentkezési azonosító utótagja az Azure AD-Bérlővel van ellenőrizve, akkor az Azure AD UserPrincipalName attribútumának értéke azonos lesz a helyszíni UserPrincipalName attribútummal/a másodlagos bejelentkezési azonosító értékével.
@@ -90,14 +89,14 @@ Az alábbi példák azt szemléltetik, hogyan számítja ki az UPN-t az adott fo
 ![Scenario1](./media/plan-connect-userprincipalname/example1.png)
 
 Helyszíni felhasználói objektum:
-- mailNickName: &lt;nincs beállítva&gt;
-- proxyAddresses: {SMTP:us1@contoso.com}
+- mailNickName: &lt; nincs beállítva&gt;
+- proxyAddresses: { SMTP:us1@contoso.com }
 - levelezésius2@contoso.com
 - userPrincipalNameus3@contoso.com
 
 Az első alkalommal szinkronizálta a felhasználói objektumot az Azure AD-Bérlővel
 - Állítsa be az Azure AD MailNickName attribútumot az elsődleges SMTP-címek előtagjaként.
-- Állítsa be a &lt;MOERA&gt; MailNickName &lt;&#64;kezdeti&gt;tartományba.
+- Állítsa be a MOERA &lt; MailNickName &gt;&#64;&lt; kezdeti tartományba &gt; .
 - Állítsa be az Azure AD UserPrincipalName attribútumát MOERA értékre.
 
 Azure AD-bérlő felhasználói objektum:
@@ -111,7 +110,7 @@ Azure AD-bérlő felhasználói objektum:
 
 Helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses: { SMTP:us1@contoso.com }
 - levelezésius2@contoso.com
 - userPrincipalNameus3@contoso.com
 
@@ -129,13 +128,13 @@ Azure AD-bérlő felhasználói objektum:
 
 Helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses: { SMTP:us1@contoso.com }
 - levelezésius2@contoso.com
 - userPrincipalNameus5@contoso.com
 
 A frissítés szinkronizálása a helyszíni userPrincipalName attribútumon az Azure AD-bérlőn
 - A helyszíni userPrincipalName attribútum frissítése elindítja a MOERA és az Azure AD UserPrincipalName attribútumának újraszámítását.
-- Állítsa be a &lt;MOERA&gt; MailNickName &lt;&#64;kezdeti&gt;tartományba.
+- Állítsa be a MOERA &lt; MailNickName &gt;&#64;&lt; kezdeti tartományba &gt; .
 - Állítsa be az Azure AD UserPrincipalName attribútumát MOERA értékre.
 
 Azure AD-bérlő felhasználói objektum:
@@ -148,7 +147,7 @@ Azure AD-bérlő felhasználói objektum:
 
 Helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses: { SMTP:us6@contoso.com }
 - levelezésius7@contoso.com
 - userPrincipalNameus5@contoso.com
 
@@ -165,7 +164,7 @@ Azure AD-bérlő felhasználói objektum:
 
 Helyszíni felhasználói objektum:
 - mailNickName: us4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses: { SMTP:us6@contoso.com }
 - levelezésius7@contoso.com
 - userPrincipalNameus5@verified.contoso.com
 

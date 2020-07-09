@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809484"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure-előtérben elérhető funkciókkal és funkciókkal kapcsola
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
+### <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
 
 Az Azure bejárati ajtó egy alkalmazásszolgáltatási hálózat (ADN) szolgáltatás, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál alkalmazásai számára. A dinamikus hely gyorsítását (DSA) és a globális terheléselosztást is biztosítja a közel valós idejű feladatátvételsel együtt. Ez egy kiválóan elérhető és méretezhető szolgáltatás, amelyet az Azure teljes körűen kezel.
 
@@ -46,7 +46,7 @@ A legfontosabb forgatókönyvek, hogy miért érdemes Application Gateway a bej�
 
 - A bevezető ajtó csak globális szinten hajthat végre elérésiút-alapú terheléselosztást, de ha a virtuális hálózatán (VNET) belül még tovább szeretné terheléselosztási forgalmat végezni, akkor a Application Gatewayt kell használniuk.
 - Mivel a bejárati ajtó nem működik a virtuális gépek/tárolók szintjén, így nem tudja elvégezni a kapcsolatok kiürítését. Application Gateway azonban lehetővé teszi a kapcsolatok kiürítését. 
-- A AFD mögött egy Application Gateway elérheti a 100%-os TLS/SSL-kiszervezést, és csak a virtuális hálózaton belüli HTTP-kérelmeket (VNET).
+- Egy Application Gateway a bejárati ajtó mögött az egyik elérheti a 100%-os TLS/SSL-kiszervezést, és csak HTTP-kérelmeket irányíthat a virtuális hálózaton (VNET) belül.
 - A bejárati ajtó és a Application Gateway támogatja a munkamenet-affinitást is. Míg a bejárati ajtó egy adott régióban a felhasználói munkamenetből egy adott fürtre vagy háttérre irányíthatja a további forgalmat, Application Gateway a fürtön belüli ugyanazon kiszolgálóra irányíthatja a forgalmat a affinitize.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Üzembe helyezhető Azure Load Balancer a bejárati ajtó mögött?
@@ -93,12 +93,12 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
  
     - Tekintse át az [Azure IP-címtartományok és szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) *AzureFrontDoor. backend* szakaszát az első ajtó IPv4-háttér IP-címéhez, vagy használhatja a *AzureFrontDoor. backend* szolgáltatási címkét is a [hálózati biztonsági csoportokban](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules).
     - Az Azure-beli **IPv6** -háttér IP-területe a szolgáltatás címkéjén látható, nem szerepel az Azure IP-címtartományok JSON-fájljában. Ha explicit IPv6-címtartományt keres, a rendszer jelenleg csak a következőre korlátozódik:`2a01:111:2050::/44`
-    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtualizált gazdagép IP `168.63.129.16` -címein keresztül: és`169.254.169.254`
+    - Az Azure [alapszintű infrastruktúra-szolgáltatásai](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) virtualizált gazdagép IP-címein keresztül: `168.63.129.16` és`169.254.169.254`
 
     > [!WARNING]
     > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
 
--    Hajtson végre egy GET műveletet az előtérben az API- `2020-01-01` vagy újabb verzióval. Az API-hívásban keresse meg `frontdoorID` a mezőt. Szűrje a "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott mező `frontdoorID`értékével. 
+-    Hajtson végre egy GET műveletet az előtérben az API `2020-01-01` -vagy újabb verzióval. Az API-hívásban keresse meg a `frontdoorID` mezőt. Szűrje a "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott mező értékével `frontdoorID` . `Front Door ID`Az értéket az áttekintő szakaszban is megtalálhatja az első ajtós portál oldalon. 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>A kiválasztó IP-cím változhat a bejárati ajtó élettartama során?
 
@@ -213,7 +213,7 @@ Nem, az önaláírt tanúsítványok nem támogatottak a bejárati ajtón, és a
 
 Ahhoz, hogy sikeresen HTTPS-kapcsolatot lehessen létesíteni a háttérrel, hogy az állapot-és a továbbítási kérelmeket, két oka lehet a HTTPS-forgalom meghibásodásának:
 
-1. A **tanúsítvány tulajdonosának neve nem egyezik**: a HTTPS-kapcsolatok esetében a bejárati ajtó azt várja, hogy a háttérrendszer a háttérbeli állomásnévvel egyező tulajdonosi névvel rendelkező érvényes hitelesítésszolgáltatótól származó tanúsítványt jelenít meg. Ha például a háttérbeli állomásnév be van állítva, `myapp-centralus.contosonews.net` és az a tanúsítvány, amelyet a háttér a TLS-kézfogás során ad meg `myapp-centralus.contosonews.net` , `*myapp-centralus*.contosonews.net` sem a tulajdonos, sem a tulajdonos nevében, akkor a bejárati ajtó elutasítja a kapcsolódást, és hibát eredményez. 
+1. A **tanúsítvány tulajdonosának neve nem egyezik**: a HTTPS-kapcsolatok esetében a bejárati ajtó azt várja, hogy a háttérrendszer a háttérbeli állomásnévvel egyező tulajdonosi névvel rendelkező érvényes hitelesítésszolgáltatótól származó tanúsítványt jelenít meg. Ha például a háttérbeli állomásnév be van állítva, `myapp-centralus.contosonews.net` és az a tanúsítvány, amelyet a háttér a TLS-kézfogás során ad meg `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` , sem a tulajdonos, sem a tulajdonos nevében, akkor a bejárati ajtó elutasítja a kapcsolódást, és hibát eredményez. 
     1. **Megoldás**: noha a megfelelőség szempontjából nem ajánlott, megkerülheti ezt a hibát, ha letiltja a tanúsítvány tulajdonosának nevének ellenőrzését az előtérben. Ez a Azure Portal és az API BackendPoolsSettings területén található beállítások területen érhető el.
 2. A **tanúsítvány érvénytelen hitelesítésszolgáltatótól való üzemeltetése**: csak az [érvényes hitelesítésszolgáltatóktól](/azure/frontdoor/front-door-troubleshoot-allowed-ca) származó tanúsítványok használhatók a háttérbe a bejárati ajtónál. A belső hitelesítésszolgáltatóktól vagy önaláírt tanúsítványokból származó tanúsítványok nem engedélyezettek.
 

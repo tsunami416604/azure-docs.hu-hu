@@ -5,10 +5,9 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79273201"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez
@@ -62,7 +61,7 @@ Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimáso
 
 Az alábbi táblázat rögzíti az Azure fájlmegosztás művelet végrehajtásához szükséges biztonságimásolat-kezelési műveleteket és a hozzá tartozó szerepkört.
 
-| Kezelési művelet | Szerepkör szükséges | További források |
+| Kezelési művelet | Szerepkör szükséges | Erőforrások |
 | --- | --- | --- |
 | Azure-fájlmegosztás biztonsági mentésének engedélyezése | Biztonsági mentési közreműködő |Recovery Services-tároló |
 | |Tárfiók | Közreműködői Storage-fiók erőforrása |

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/08/2020
 tags: connectors
 ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75732689"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mailek, partneradatok és naptárak kezelése az Office 365 Outlookban az Azure Logic Apps használatával
@@ -25,7 +24,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Office 365 Ou
 Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor új e-mail érkezik, amikor egy naptári elem frissül, vagy ha egy esemény egy különbségi szolgáltatásban (például Salesforce) történik. Használhatja az eseményindító eseményre válaszoló műveleteket, például e-mailek küldését vagy új naptári esemény létrehozását. 
 
 > [!NOTE]
-> Egy @outlook.com vagy @hotmail.com fiókhoz tartozó feladatok automatizálásához használja az [Outlook.com-összekötőt](../connectors/connectors-create-api-outlook.md).
+> Egy vagy fiókhoz tartozó feladatok automatizálásához @outlook.com @hotmail.com használja az [Outlook.com-összekötőt](../connectors/connectors-create-api-outlook.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +52,7 @@ Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) e
 
 1. A triggerben állítsa be a **gyakoriság** és az **intervallum** értékét. Más elérhető trigger-tulajdonságok (például az **időzóna**) hozzáadásához válassza ki ezeket a tulajdonságokat az **új paraméter hozzáadása** listából.
 
-   Ha például azt szeretné, hogy a trigger 15 percenként ellenőrizze a naptárat, állítsa a **gyakoriságot** **percre**, és állítsa be `15`az **intervallumot** a következőre:. 
+   Ha például azt szeretné, hogy a trigger 15 percenként ellenőrizze a naptárat, állítsa a **gyakoriságot** **percre**, és állítsa be az **intervallumot** a következőre: `15` . 
 
    ![Az trigger gyakoriságának és intervallumának megadása](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
@@ -69,7 +68,7 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be `office 365 outlook` szűrőként a kifejezést. Ez a példa kiválasztja a **kapcsolat létrehozása**elemet.
 

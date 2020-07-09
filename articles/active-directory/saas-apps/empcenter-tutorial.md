@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ce7b4dab18954d26b411948a6a436b16317f4f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6c8955eb62ca413460a45b8cddf46c43bcd80af
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158280"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Oktatóanyag: Azure Active Directory integráció a EmpCenter
 
@@ -108,10 +108,10 @@ Az Azure AD egyszeri bejelentkezés EmpCenter való konfigurálásához hajtsa v
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<subdomain>.EmpCenter.com/<instancename>` |
-    | `https://<subdomain>.workforcehosting.com/<instancename>` |
+    ```https
+    https://<subdomain>.EmpCenter.com/<instancename>
+    https://<subdomain>.workforcehosting.com/<instancename>
+    ```
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a EmpCenter ügyfélszolgálati [csapatához](https://www.workforcesoftware.com/services/customer-support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -152,12 +152,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

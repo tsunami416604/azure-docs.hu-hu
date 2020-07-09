@@ -188,6 +188,8 @@
       items:
         - name: Eszközvisszaírás engedélyezése
           href: how-to-connect-device-writeback.md
+        - name: Csoportvisszaírás engedélyezése
+          href: how-to-connect-group-writeback.md
         - name: Eszközbeállítások
           href: how-to-connect-device-options.md
         - name: Az Azure AD Connect további funkciói

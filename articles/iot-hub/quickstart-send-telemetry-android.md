@@ -12,12 +12,11 @@ ms.custom:
 - mqtt
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 67d56429f092343193fe5c1e3449aff033673320
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: 3a7d6f08870495044c4aef0dc21181feda7eb7ab
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727151"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041285"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Gyors útmutató: IoT telemetria küldése Android-eszközről
 
@@ -81,9 +80,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
 
-1. Nyissa meg Android Studio a GitHub-minta Android-projektet. A projekt az [Azure-IOT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) adattár klónozott vagy letöltött példányának következő könyvtárában található.
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. Nyissa meg Android Studio a GitHub-minta Android-projektet. A projekt az [Azure-IOT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) repository klónozott vagy letöltött példányának következő könyvtárában található: *\azure-IOT-Samples-java\iot-hub\Samples\device\AndroidSample*.
 
 2. A Android Studioban nyissa meg a *gradle. properties* karakterláncot, és cserélje le a **Device_Connection_String** helyőrzőt a korábban jegyzett eszköz-összekapcsolási sztringre.
 
@@ -125,7 +122,7 @@ Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.mic
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldése az hubhoz egy Android-alkalmazás használatával, valamint a telemetria beolvasása a központban a Azure Cloud Shell használatával.
 

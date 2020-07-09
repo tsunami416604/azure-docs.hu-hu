@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
-ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888708"
 ---
 # <a name="custom-reports-from-verizon"></a>Egyéni jelentések a Verizontól
 
@@ -68,7 +68,7 @@ Az Excel-formátumú adatexportáláshoz kattintson az **Ugrás** gomb jobb olda
 
 ## <a name="edge-cnames-custom-report-fields"></a>Edge CNAME-rekordok egyéni jelentés mezői
 
-| Mező                     | Leírás   |
+| Mező                     | Description   |
 |---------------------------|---------------|
 | 2xx                       | A 2xx HTTP-állapotkódot (például 200 OK) eredményező, a peremhálózati CNAME azonosítóhoz (MB) tartozó kérelmek vagy továbbított adatmennyiségek teljes számát adja meg. |
 | 3xx                       | A 3xx HTTP-állapotkódot (például 302 talált vagy 304 nem módosított kérelmek vagy továbbított adatmennyiségek (MB) teljes számát jelzi. |
@@ -77,7 +77,7 @@ Az Excel-formátumú adatexportáláshoz kattintson az **Ugrás** gomb jobb olda
 | Gyorsítótár találati aránya (%)               | A gyorsítótárból a kérelmezőnek kiszolgált gyorsítótárazható kérelmek százalékos arányát jelzi. |
 | Gyorsítótár-találatok                | A gyorsítótárban találatot eredményező (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) találatok vagy továbbított adatmennyiség (MB) teljes számát jelzi. A gyorsítótár találata akkor fordul elő, ha a kért tartalom gyorsítótárazott verziója található. |
 | Továbbított adatátvitel (MB)     | Az átvitt adatok (MB) teljes mennyiségét jelzi a peremhálózati kiszolgálókról a peremhálózati CNAME-hez tartozó HTTP-ügyfelek (böngészők) számára. Az átvitt adatmennyiség kiszámítása úgy történik, hogy hozzáadja a HTTP-válasz fejléceit a válasz törzséhez. Ennek eredményeképpen az egyes eszközök számára továbbított adatok mennyisége nagyobb, mint a tényleges fájlméret. |
-| Leírás               | A peremhálózati CNAME azonosító azonosítása az állomásnév alapján |
+| Description               | A peremhálózati CNAME azonosító azonosítása az állomásnév alapján |
 | Találatok                      | A peremhálózati CNAME-re irányuló kérelmek teljes számát jelzi. |
 | Hiányzik                    | Azt a kérések vagy adatátviteli (MB) értéket adja meg a peremhálózati CNAME rekordhoz, amely a gyorsítótár-kihagyás következtében (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS). A gyorsítótárból való kihagyás akkor következik be, amikor a kért tartalom nem lett gyorsítótárazva a kérést tiszteletben lévő peremhálózati kiszolgálón. | 
 | Nincs gyorsítótár                  | A CONFIG_NOCACHE gyorsítótár-állapotkódot eredményező, a peremhálózati CNAME azonosítóhoz tartozó kérelmek vagy továbbított adatátvitel (MB) teljes számát jelzi.  |

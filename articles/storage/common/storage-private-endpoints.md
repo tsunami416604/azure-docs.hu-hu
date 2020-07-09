@@ -5,17 +5,17 @@ description: A privát végpontok áttekintése a virtuális hálózatok Storage
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513288"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
 
@@ -79,17 +79,17 @@ Ha a VNet kívülről oldja fel a tárolási végpont URL-címét a privát vég
 
 A fenti ábrán látható példában a "StorageAccountA" Storage-fiókhoz tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről történő feloldáskor a következők:
 
-| Name (Név)                                                  | Típus  | Érték                                                 |
+| Name                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Storage szolgáltatás nyilvános végpontja\>                   |
-| \<Storage szolgáltatás nyilvános végpontja\>                   | A     | \<Storage szolgáltatás nyilvános IP-címe\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 Amint azt korábban említettük, a VNet kívüli ügyfelek számára a nyilvános végponton keresztül megtagadhatja vagy vezérelheti a hozzáférést a Storage tűzfal használatával.
 
 A StorageAccountA tartozó DNS-erőforrásrekordok, amikor a privát végpontot üzemeltető VNet-ügyfél feloldotta a következőt:
 
-| Name (Név)                                                  | Típus  | Érték                                                 |
+| Name                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -106,7 +106,7 @@ A tárolási szolgáltatásokhoz tartozó magánhálózati végpontok ajánlott 
 | Tárolási szolgáltatás        | Zóna neve                            |
 | :--------------------- | :----------------------------------- |
 | Blob szolgáltatás           | `privatelink.blob.core.windows.net`  |
-| 2. generációs Data Lake Storage | `privatelink.dfs.core.windows.net`   |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `privatelink.file.core.windows.net`  |
 | Queue szolgáltatás          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
@@ -137,7 +137,7 @@ Ez a megkötés a DNS-módosítások eredményeként történt, amikor az A2-es 
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Hálózat biztonsági csoportok szabályai a privát végpontokkal rendelkező alhálózatok esetében
 
-Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok a magánhálózati végpontra lesznek alkalmazva. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
+Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok csak a privát végponton lévő többi végpontra (például hálózati adapterekre) vonatkoznak. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
 
 ## <a name="next-steps"></a>További lépések
 

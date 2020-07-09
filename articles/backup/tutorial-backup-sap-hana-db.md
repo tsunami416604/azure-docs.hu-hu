@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747226"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770730"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -22,21 +22,24 @@ Ez az oktatóanyag bemutatja, hogyan készíthet biztonsági mentést SAP HANA A
 
 [Itt](sap-hana-backup-support-matrix.md#scenario-support) találja az összes olyan forgatókönyvet, amelyet jelenleg támogatunk.
 
+>[!NOTE]
+>[Ismerkedés](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) a RHEL SAP HANA Backup előzetes verziójával (7,4, 7,6, 7,7 vagy 8,1). További lekérdezések írásához írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 A biztonsági mentések konfigurálása előtt győződjön meg arról, hogy a következőket végzi el:
 
+* Azonosítsa vagy hozzon létre egy [Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) tárolót ugyanabban a régióban és előfizetésben, mint a SAP HANA futtató virtuális gép.
 * Engedélyezze a virtuális gép és az Internet közötti kapcsolat használatát, hogy az elérhető legyen az Azure-ban, az alábbi [hálózati csatlakozási eljárás beállítása](#set-up-network-connectivity) című témakörben leírtak szerint.
+* Győződjön meg arról, hogy a SAP HANA-kiszolgáló virtuális gép neve és az erőforráscsoport neve nem haladja meg az Azure resoure Manager 84 karakterét (ARM_ virtuális gépek (és 77 karakter a klasszikus virtuális gépek esetében). Ez a korlátozás azért van, mert egyes karaktereket a szolgáltatás foglal le.
 * Léteznie kell egy kulcsnak a **hdbuserstore** , amely megfelel a következő feltételeknek:
-  * Jelen kell lennie az alapértelmezett **hdbuserstore**
+  * Az alapértelmezett **hdbuserstore**jelen kell lennie. Az alapértelmezett érték az a `<sid>adm` fiók, amelyben a SAP HANA telepítve van.
   * A MDC a kulcsnak a **NÉVSZERVER**SQL-portjára kell mutatnia. SDC esetén a **INDEXSERVER** SQL-portjára kell mutatnia.
   * A felhasználónak hitelesítő adatokkal kell rendelkeznie a felhasználók hozzáadásához és törléséhez
 * Futtassa a SAP HANA biztonsági mentési konfigurációs parancsfájlt (előzetes regisztrációs parancsfájl) azon a virtuális gépen, ahol a HANA telepítve van, a legfelső szintű felhasználóként. [Ez a szkript](https://aka.ms/scriptforpermsonhana) a HANA-rendszer biztonsági mentésre kész állapotba helyezését kéri le. Az előzetes regisztrációs szkripttel kapcsolatos további információkért tekintse meg az [előzetes regisztrációs parancsfájlt](#what-the-pre-registration-script-does) ismertető szakaszt.
 
 >[!NOTE]
->A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást az Azure-beli virtuális gépen futó SAP HANA-adatbázis biztonsági mentésekor.
->
->Szükség szerint módosítsa manuálisan a szabályzatot.
+>Az előregisztrációs parancsfájl a RHEL-on (7,4, 7,6 és 7,7) futó SAP HANA-munkaterhelések unixODBC234 telepíti, valamint a RHEL 8,1 **-** **unixODBC** . [Ez a csomag a RHEL for SAP HANA (a RHEL 7 Server esetében) Update Services for SAP Solutions (RPMs)](https://access.redhat.com/solutions/5094721)tárházban található.  Az Azure Marketplace RHEL rendszerképében a tárház a következő lenne: **rhui-RHEL-SAP-Hana-for-RHEL-7-Server-rhui-e4s-RPMs**.
 
 ## <a name="set-up-network-connectivity"></a>Hálózati kapcsolat beállítása
 
@@ -56,7 +59,7 @@ Szabály létrehozása a portál használatával:
 
   1. A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
   2. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
-  3. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás címkéje** **AzureBackup**értékre van állítva.
+  3. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás címkéje** **AzureBackup**értékre van állítva.
   4. Kattintson a **Hozzáadás**gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
 Szabály létrehozása a PowerShell használatával:
@@ -99,7 +102,7 @@ HTTP-proxy használata | A proxy részletes vezérlője a tárolási URL-címeke
 
 Az előzetes regisztrációs parancsfájl futtatása a következő funkciókat hajtja végre:
 
-* Telepíti vagy frissíti a Azure Backup ügynök által a terjesztéshez szükséges szükséges csomagokat.
+* A Linux-disztribúció alapján a parancsfájl telepíti vagy frissíti a Azure Backup ügynök által igényelt szükséges csomagokat.
 * Kimenő hálózati kapcsolati ellenőrzéseket hajt végre Azure Backup-kiszolgálókkal és függő szolgáltatásokkal (például Azure Active Directory és Azure Storage).
 * Bejelentkezik a HANA rendszerbe az [Előfeltételek](#prerequisites)részeként felsorolt felhasználói kulccsal. A felhasználói kulcs használatával biztonsági mentési felhasználó (AZUREWLBACKUPHANAUSER) hozható létre a HANA-rendszeren, és a felhasználói kulcs törölhető az előzetes regisztrációs parancsfájl sikeres futtatása után.
 * A AZUREWLBACKUPHANAUSER a szükséges szerepköröket és engedélyeket rendeli hozzá:

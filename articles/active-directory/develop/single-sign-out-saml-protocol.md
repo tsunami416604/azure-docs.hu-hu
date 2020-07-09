@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881265"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egyszeri kijelentkezési SAML protokoll
@@ -28,7 +27,7 @@ Az alábbi ábra az Azure AD egyszeri kijelentkezési folyamatának munkafolyama
 ![Azure AD egyszeri kijelentkezési munkafolyamat](./media/single-sign-out-saml-protocol/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
-A Cloud Service egy `LogoutRequest` üzenetet küld az Azure ad-nek, amely jelzi, hogy a munkamenet le lett szakítva. Az alábbi részlet egy minta `LogoutRequest` elemet mutat be.
+A Cloud Service egy üzenetet küld az `LogoutRequest` Azure ad-nek, amely jelzi, hogy a munkamenet le lett szakítva. Az alábbi részlet egy minta elemet mutat be `LogoutRequest` .
 
 ```
 <samlp:LogoutRequest xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="idaa6ebe6839094fe4abc4ebd5281ec780" Version="2.0" IssueInstant="2013-03-28T07:10:49.6004822Z" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -42,16 +41,16 @@ Az `LogoutRequest` Azure ad-nak eljuttatott elem a következő attribútumokat i
 
 * `ID`-Ez azonosítja a kijelentkezési kérést. A értéke `ID` nem kezdődhet számmal. A tipikus eljárás egy GUID **azonosítójának** hozzáfűzése a GUID karakterlánc-ábrázolásához.
 * `Version`– Az elem értékét állítsa **2,0**-ra. Kötelezően megadandó érték.
-* `IssueInstant`– Ez egy `DateTime` , az egyezményes világidő (UTC) és az [oda-és visszaút formátuma ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)karakterlánc. Az Azure AD egy ilyen típusú értéket vár, de nem kényszeríti ki.
+* `IssueInstant`– Ez egy, az `DateTime` egyezményes világidő (UTC) és az [oda-és visszaút formátuma ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)karakterlánc. Az Azure AD egy ilyen típusú értéket vár, de nem kényszeríti ki.
 
 ### <a name="issuer"></a>Kiállító
-Az `Issuer` a `LogoutRequest` elemnek pontosan egyeznie kell az Azure ad felhőalapú szolgáltatásának egyik **ServicePrincipalNames** . Ez általában az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI-ra** van beállítva.
+Az `Issuer` a elemnek `LogoutRequest` pontosan egyeznie kell az Azure ad felhőalapú szolgáltatásának egyik **ServicePrincipalNames** . Ez általában az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI-ra** van beállítva.
 
 ### <a name="nameid"></a>NameID
-Az `NameID` elem értékének pontosan egyeznie `NameID` kell a kijelentkezett felhasználóval.
+Az elem értékének `NameID` pontosan egyeznie kell a `NameID` kijelentkezett felhasználóval.
 
 ## <a name="logoutresponse"></a>LogoutResponse
-Az Azure AD egy `LogoutResponse` adott `LogoutRequest` elemre adott választ küld. Az alábbi részlet egy mintát `LogoutResponse`mutat be.
+Az Azure AD egy `LogoutResponse` adott elemre adott választ küld `LogoutRequest` . Az alábbi részlet egy mintát mutat be `LogoutResponse` .
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -63,12 +62,12 @@ Az Azure AD egy `LogoutResponse` adott `LogoutRequest` elemre adott választ kü
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-Az Azure ad beállítja `ID`az `Version` elemet `IssueInstant` és az értékeket `LogoutResponse` a elemben. Azt is megadja, `InResponseTo` hogy az elem a válasz kiváltotta `ID` attribútumának `LogoutRequest` értéke.
+Az Azure AD beállítja `ID` az `Version` elemet és az `IssueInstant` értékeket a `LogoutResponse` elemben. Azt is megadja, `InResponseTo` hogy az elem a `ID` `LogoutRequest` Válasz kiváltotta attribútumának értéke.
 
 ### <a name="issuer"></a>Kiállító
-Az Azure AD ezt az értéket `https://login.microsoftonline.com/<TenantIdGUID>/` állítja \<be, hogy a TENANTIDGUID> az Azure ad-bérlő bérlői azonosítóját adja meg.
+Az Azure AD ezt az értéket állítja be, ahol az az `https://login.microsoftonline.com/<TenantIdGUID>/` \<TenantIdGUID> Azure ad-bérlő bérlői azonosítója.
 
-Az `Issuer` elem értékének kiértékeléséhez használja az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI** azonosító értékét.
+Az elem értékének kiértékeléséhez `Issuer` használja az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI** azonosító értékét.
 
-### <a name="status"></a>status
-Az Azure AD az `StatusCode` `Status` elem eleme alapján jelzi a kijelentkezés sikerességét vagy sikertelenségét. Ha a kijelentkezési kísérlet sikertelen, akkor `StatusCode` az elem egyéni hibaüzeneteket is tartalmazhat.
+### <a name="status"></a>Állapot
+Az Azure AD az `StatusCode` `Status` elem eleme alapján jelzi a kijelentkezés sikerességét vagy sikertelenségét. Ha a kijelentkezési kísérlet sikertelen, `StatusCode` akkor az elem egyéni hibaüzeneteket is tartalmazhat.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656324"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133534"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>A mobilitási szolgáltatás leküldéses telepítésének hibáinak megoldása
 
@@ -41,7 +41,7 @@ Windows esetén (**95107**-es hiba) ellenőrizze, hogy a felhasználói fiók re
 * Távoli felhasználói hozzáférés-vezérlést letiltó beállításkulcs manuális hozzáadása:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Új `DWORD`hozzáadása:`LocalAccountTokenFilterPolicy`
+  * Új hozzáadása `DWORD` :`LocalAccountTokenFilterPolicy`
   * Érték beállítása a következőre`1`
 
 * A beállításkulcs hozzáadásához a parancssorból futtassa a következő parancsot:
@@ -51,10 +51,10 @@ Windows esetén (**95107**-es hiba) ellenőrizze, hogy a felhasználói fiók re
 Linux esetén (**95108**-es hiba) a mobilitási szolgáltatás ügynökének sikeres telepítéséhez ki kell választania a **legfelső szintű** fiókot. Emellett az SSH File Transfer Protocol (SFTP) szolgáltatásoknak is futniuk kell. Az SFTP alrendszer és a jelszó hitelesítésének engedélyezése a _sshd_config_ fájlban:
 
 1. Jelentkezzen be **gyökér** szintű felhasználóként.
-1. Nyissa meg a _/etc/ssh/sshd_config fájlt_, és keresse meg a `PasswordAuthentication`kezdetű sort.
-1. Állítsa vissza a sort, és módosítsa az értéket `yes`.
-1. Keresse meg a kezdetű sort `Subsystem`, és a sor megjegyzését.
-1. Indítsa újra `sshd` a szolgáltatást.
+1. Nyissa meg a _/etc/ssh/sshd_config fájlt_, és keresse meg a kezdetű sort `PasswordAuthentication` .
+1. Állítsa vissza a sort, és módosítsa az értéket `yes` .
+1. Keresse meg a kezdetű sort `Subsystem` , és a sor megjegyzését.
+1. Indítsa újra a `sshd` szolgáltatást.
 
 Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse az [alábbi utasításokat](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
@@ -95,10 +95,10 @@ Ez a hiba akkor fordul elő, ha a bejelentkezési kiszolgálók nem érhetők el
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>A bejelentkezési szolgáltatás nem fut a forrásoldali gépen (ErrorID: 95522)
 
-A bejelentkezési szolgáltatás nem fut a forrásoldali gépen, és a bejelentkezési kérelem meghibásodását okozta. Nem lehet telepíteni a mobilitási ügynököt. A hiba elhárításához használja az alábbi módszerek egyikét a `Netlogon` szolgáltatás elindításához a forrásoldali gépen:
+A bejelentkezési szolgáltatás nem fut a forrásoldali gépen, és a bejelentkezési kérelem meghibásodását okozta. Nem lehet telepíteni a mobilitási ügynököt. A hiba elhárításához használja az alábbi módszerek egyikét a szolgáltatás elindításához `Netlogon` a forrásoldali gépen:
 
-* A `Netlogon` szolgáltatás parancssorból történő elindításához futtassa a parancsot `net start Netlogon`.
-* Indítsa el a `Netlogon` szolgáltatást a Feladatkezelő segédprogramból.
+* A szolgáltatás parancssorból történő elindításához `Netlogon` futtassa a parancsot `net start Netlogon` .
+* Indítsa el a szolgáltatást a Feladatkezelő segédprogramból `Netlogon` .
 
 ## <a name="connectivity-failure-errorid-95117--97118"></a>Csatlakozási hiba (ErrorID: 95117 & 97118)
 
@@ -118,10 +118,10 @@ A hiba elhárítása:
   * Az SFTP-szolgáltatásoknak futniuk kell. Az SFTP alrendszer és a jelszó-hitelesítés engedélyezése a _sshd_config_ fájlban:
 
     1. Jelentkezzen be **gyökér** szintű felhasználóként.
-    1. Nyissa meg a _/etc/ssh/sshd_config_ fájlt, és keresse meg a `PasswordAuthentication`kezdetű sort.
-    1. Állítsa vissza a sort, és módosítsa az értéket `yes`.
-    1. Keresse meg a kezdetű sort `Subsystem`, és a sor megjegyzését.
-    1. Indítsa újra `sshd` a szolgáltatást.
+    1. Nyissa meg a _/etc/ssh/sshd_config_ fájlt, és keresse meg a kezdetű sort `PasswordAuthentication` .
+    1. Állítsa vissza a sort, és módosítsa az értéket `yes` .
+    1. Keresse meg a kezdetű sort `Subsystem` , és a sor megjegyzését.
+    1. Indítsa újra a `sshd` szolgáltatást.
 
 * Sikertelen volt egy kapcsolódási kísérlet, ha nincs megfelelő válasz egy adott időtartam után, vagy egy létesített kapcsolat nem sikerült, mert egy csatlakoztatott gazdagép nem válaszolt.
 * Lehet, hogy kapcsolat/hálózat/tartományhoz kapcsolódó probléma van. Az is előfordulhat, hogy a DNS-név megoldja a problémát vagy a TCP-port kimerülési problémáját. Ellenőrizze, hogy vannak-e ilyen ismert problémák a tartományban.
@@ -137,13 +137,13 @@ A kapcsolat ellenőrzése után ellenőrizze, hogy a fájl-és nyomtatómegoszt�
 **Windows 2008 R2 és korábbi verziók**esetén:
 
 * A fájl-és nyomtatómegosztás Windows tűzfalon való engedélyezéséhez
-  1. Nyissa meg**a Vezérlőpult rendszer és biztonság** > **Windows tűzfal** **felületét** > . A bal oldali panelen válassza a **Speciális beállítások** > **Bejövő szabályok** elemet a konzolfán.
+  1. Nyissa meg a **Vezérlőpult**  >  **rendszer és biztonság**  >  **Windows tűzfal**felületét. A bal oldali panelen válassza a **Speciális beállítások**  >  **Bejövő szabályok** elemet a konzolfán.
   1. Keresse meg a szabályok fájl-és nyomtatómegosztás (NetBIOS-munkamenet) és a fájl-és nyomtatómegosztás (SMB, bejövő) szakaszt.
   1. Mindegyik szabályhoz kattintson a jobb gombbal a szabályra, majd kattintson a **szabály engedélyezése**parancsra.
 
 * Fájlmegosztás engedélyezése Csoportházirend használatával:
-  1. Kattintson a **Start**gombra, `gpmc.msc` írja be a parancsot, és keresse meg.
-  1. A navigációs ablaktáblán nyissa meg a következő mappákat: **helyi számítógép-házirend** > **felhasználói konfiguráció** > **Felügyeleti sablonok** > **Windows-összetevők** > **hálózati megosztása**.
+  1. Kattintson a **Start**gombra, írja be a parancsot, `gpmc.msc` és keresse meg.
+  1. A navigációs ablaktáblán nyissa meg a következő mappákat: **helyi számítógép-házirend**  >  **felhasználói konfiguráció**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **hálózati megosztása**.
   1. A részleteket tartalmazó ablaktáblán kattintson duplán a **felhasználók a profilban lévő fájlok megosztásának megakadályozása**lehetőségre.
 
      Ha le szeretné tiltani a Csoportházirend beállítást, és engedélyezni szeretné a felhasználók számára a fájlok megosztását, válassza a **Letiltva**lehetőséget.
@@ -160,7 +160,7 @@ A fájl-és nyomtató-szolgáltatások ellenőrzését követően engedélyezze 
 
 A WMI engedélyezése:
 
-1. Lépjen a **Vezérlőpult** > **Biztonság** elemre, és válassza a **Windows tűzfal**lehetőséget.
+1. Lépjen a **Vezérlőpult**  >  **Biztonság** elemre, és válassza a **Windows tűzfal**lehetőséget.
 1. Válassza a **beállítások módosítása** lehetőséget, majd válassza a **kivételek** lapot.
 1. A **kivételek** ablakban jelölje be Windows Management Instrumentation (WMI) jelölőnégyzetét a WMI-forgalom tűzfalon keresztüli engedélyezéséhez.
 
@@ -170,7 +170,7 @@ A WMI-forgalmat a tűzfalon keresztül is engedélyezheti a parancssorból a kö
 
 Más WMI-hibaelhárítási cikkek a következő cikkekben találhatók.
 
-* [Alapszintű WMI-tesztelés](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
+* [Alapszintű WMI-tesztelés](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 * [WMI-hibaelhárítás](/windows/win32/wmisdk/wmi-troubleshooting)
 * [A WMI-parancsfájlokkal és a WMI-szolgáltatásokkal kapcsolatos problémák elhárítása](/previous-versions/tn-archive/ff406382(v=msdn.10))
 
@@ -221,7 +221,7 @@ Például:
 
 Az eszközök nevét a megfelelő UUID-azonosítókra kell cserélni.
 
-1. A parancs végrehajtásával keresse meg az eszköz UUID-azonosítóját `blkid \<device name>`.
+1. A parancs végrehajtásával keresse meg az eszköz UUID-azonosítóját `blkid \<device name>` .
 
    Például:
 
@@ -232,7 +232,7 @@ Az eszközök nevét a megfelelő UUID-azonosítókra kell cserélni.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Most cserélje le az eszköz nevét az UUID formátumára, például `root=UUID=\<UUID>`:. Ha például az _/boot/GRUB2/grub.cfg_, a _/boot/GRUB2/grub.cfg_vagy a _/etc/default/grub_ fájlban szereplő, a root és a resume paraméterhez tartozó, az UUID értékkel rendelkező eszközök nevét cseréli le, akkor a fájlok sorai a következő sorba hasonlítanak:
+1. Most cserélje le az eszköz nevét az UUID formátumára, például: `root=UUID=\<UUID>` . Ha például az _/boot/GRUB2/grub.cfg_, a _/boot/GRUB2/grub.cfg_vagy a _/etc/default/grub_ fájlban szereplő, a root és a resume paraméterhez tartozó, az UUID értékkel rendelkező eszközök nevét cseréli le, akkor a fájlok sorai a következő sorba hasonlítanak:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -291,7 +291,7 @@ Ha hiba lép fel, ellenőrizze, hogy van-e egy víruskereső program vagy más s
 
 ### <a name="vss-exit-code-806"></a>VSS kilépési kód 806
 
-Ez a hiba akkor fordul elő, ha a telepítéshez használt felhasználói fiók nem rendelkezik `CSScript` a parancs végrehajtásához szükséges engedélyekkel. Adja meg a szükséges engedélyeket a felhasználói fióknak a parancsfájl végrehajtásához, majd próbálja megismételni a műveletet.
+Ez a hiba akkor fordul elő, ha a telepítéshez használt felhasználói fiók nem rendelkezik a parancs végrehajtásához szükséges engedélyekkel `CSScript` . Adja meg a szükséges engedélyeket a felhasználói fióknak a parancsfájl végrehajtásához, majd próbálja megismételni a műveletet.
 
 ### <a name="other-vss-errors"></a>Egyéb VSS-hibák
 
@@ -321,7 +321,7 @@ A hiba okának megállapításához kövesse az alábbi eljárást.
     - Exit code: 802
     ```
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Forduljon a [Microsoft Windows platform csapatához](https://aka.ms/Windows_Support) , és kérjen segítséget a DCOM-probléma megoldásához.
 
@@ -362,13 +362,13 @@ Ez a probléma azt eredményezi, hogy a Azure Site Recovery mobilitási ügynök
 
 ### <a name="to-identify-the-issue"></a>A probléma azonosítása
 
-A konfigurációs kiszolgálón található naplóban a _\<C:\ProgramData\ASRSetupLogs\UploadedLogs dátum-idő>a UA_InstallLogFile. log naplófájlban_ a következő kivétel jelenik meg:
+A (z) _C:\ProgramData\ASRSetupLogs\UploadedLogs \<date-time> UA_InstallLogFile. log_ nevű konfigurációs kiszolgálón található naplóban a következő kivétel jelenik meg:
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
 ```
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 1. Győződjön meg arról, hogy a gép nem fürtözött számítógép, és hogy a fürt összetevői nincsenek használatban.
 1. Ha az összetevők nincsenek használatban, távolítsa el a fürt összetevőit a gépről.
@@ -377,10 +377,10 @@ A probléma megoldásához:
 
 Ha a mobilitási ügynök telepítése nem sikerül, vizsgálja meg a _C:\ProgramData\ASRSetupLogs_ területen található naplókat annak megállapításához, hogy egyes vezérlők hiányoznak-e bizonyos szükséges illesztőprogramok.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
-1. Egy rendszerleíróadatbázis `regedit.msc`-szerkesztővel, például a paranccsal nyissa meg a beállításjegyzéket.
-1. Nyissa `HKEY_LOCAL_MACHINE\SYSTEM` meg a csomópontot.
+1. Egy Rendszerleíróadatbázis-szerkesztővel `regedit.msc` , például a paranccsal nyissa meg a beállításjegyzéket.
+1. Nyissa meg a `HKEY_LOCAL_MACHINE\SYSTEM` csomópontot.
 1. A `SYSTEM` csomóponton keresse meg a vezérlőelem-készleteket.
 1. Nyissa meg az egyes vezérlőelem-készleteket, és ellenőrizze, hogy a következő Windows-illesztőprogramok találhatók-e:
 
@@ -392,6 +392,6 @@ A probléma megoldásához:
 
 1. Telepítse újra a hiányzó illesztőprogramokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](vmware-azure-tutorial.md) információ a VMWare virtuális gépek vész-helyreállításának beállításáról.

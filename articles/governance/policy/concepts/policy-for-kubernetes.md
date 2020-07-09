@@ -1,14 +1,14 @@
 ---
 title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373624"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -25,7 +25,7 @@ A Kubernetes Azure Policy a következő fürt-környezeteket támogatja:
 - [AK-motor](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> A Kubernetes-hez készült Azure Policy előzetes verzióban érhető el, és csak a Linux-csomópontok készleteit és beépített szabályzat-definíciókat támogat. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceRegoPolicy** -effektussal és a kapcsolódó **Kubernetes szolgáltatás** kategóriája _elavult_. Ehelyett használja a frissített [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effektust.
+> A Kubernetes-hez készült Azure Policy előzetes verzióban érhető el, és csak a Linux-csomópontok készleteit és beépített szabályzat-definíciókat támogat. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** és a **EnforceRegoPolicy** effektussal, a kapcsolódó **Kubernetes-szolgáltatások** kategóriája pedig _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Áttekintés
 
@@ -35,6 +35,9 @@ A Kubernetes-fürttel való Azure Policy engedélyezéséhez és használatához
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [Azure Arc-kompatibilis Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AK-motor](#install-azure-policy-add-on-for-aks-engine)
+
+   > [!NOTE]
+   > A telepítéssel kapcsolatos gyakori problémákért lásd: [Hibaelhárítás – Azure Policy bővítmény](../troubleshoot/general.md#add-on-installation-errors).
 
 1. [A Kubernetes Azure Policy nyelvének megismerése](#policy-language)
 
@@ -49,9 +52,6 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 1. Szüksége lesz az Azure CLI-verzió 2.0.62 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 1. Regisztrálja az erőforrás-szolgáltatókat és az előzetes verziójú funkciókat.
-
-   > [!CAUTION]
-   > Ha az előfizetéshez regisztrál egy szolgáltatást, a szolgáltatás nem regisztrálható. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
    - Azure Portal:
 
@@ -367,7 +367,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>Házirend nyelve
 
-A Kubernetes kezelésének Azure Policy nyelvi szerkezete a meglévő szabályzat-definíciókat követi. A _EnforceOPAConstraint_ hatására a rendszer a Kubernetes-fürtök kezelésére szolgál, és részletesen ismerteti az [Opa-korlátozási keretrendszer](https://github.com/open-policy-agent/frameworks/tree/master/constraint) és a forgalomirányító v3 használatára vonatkozó tulajdonságokat. További részletekért és példákért tekintse meg a [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatást.
+A Kubernetes kezelésének Azure Policy nyelvi szerkezete a meglévő szabályzat-definíciókat követi. Az [erőforrás-szolgáltatói móddal](./definition-structure.md#resource-provider-modes) `Microsoft.Kubernetes.Data` a Kubernetes-fürtök kezeléséhez a hatások [naplózása](./effects.md#audit) és [elutasítása](./effects.md#deny) történik. A _naplózási_ és a _megtagadási_ adatoknak meg kell adniuk az [Opa-korlátozási keretrendszer](https://github.com/open-policy-agent/frameworks/tree/master/constraint) és a forgalomirányító v3 használatának **részleteit** .
 
 A _details. constraintTemplate_ és a _details. megkötés_ tulajdonságok részeként a házirend-definícióban Azure Policy átadja ezen [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) URI-azonosítóját a bővítménynek. A Rego az a nyelv, amelyet az OPA és a forgalomirányító támogat a Kubernetes-fürtre irányuló kérelem érvényesítéséhez. A Kubernetes-kezelés meglévő szabványának támogatásával a Azure Policy lehetővé teszi a meglévő szabályok újbóli használatát, és azok párosítását Azure Policy egy egységes Felhőbeli megfelelőségi jelentéskészítési élmény érdekében. További információ: [What is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
@@ -399,7 +399,7 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
    - **Letiltva** – nem kényszeríti ki a szabályzatot a fürtön. A Kubernetes vonatkozó beléptetési kérelmeket nem tagadja meg a rendszer. A megfelelőség értékelésének eredményei továbbra is elérhetők. Amikor új szabályzat-definíciókat hoz létre a fürtök futtatásához, a _letiltott_ beállítás hasznos lehet a szabályzat-definíció teszteléséhez, mivel a rendszer nem tagadja meg a beléptetési kérelmek megsértését.
 
-1. Kattintson a **Tovább** gombra. 
+1. Válassza a **Tovább** lehetőséget. 
 
 1. **Paraméterek értékének** beállítása 
 

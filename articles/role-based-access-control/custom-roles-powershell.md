@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734807"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790211"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése Azure PowerShell használatával
 
@@ -135,7 +135,7 @@ PS C:\> (Get-AzRoleDefinition "Virtual Machine Operator").Actions
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-Egyéni szerepkör létrehozásához használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) parancsot. A szerepkört két módon lehet strukturálni, objektum vagy `PSRoleDefinition` JSON-sablon használatával. 
+Egyéni szerepkör létrehozásához használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) parancsot. A szerepkört két módon lehet strukturálni, `PSRoleDefinition` objektum vagy JSON-sablon használatával. 
 
 ### <a name="get-operations-for-a-resource-provider"></a>Erőforrás-szolgáltató műveleteinek beolvasása
 
@@ -161,7 +161,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 ### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Egyéni szerepkör létrehozása a PSRoleDefinition objektummal
 
-Ha a PowerShell használatával hoz létre egyéni szerepkört, kiindulási pontként használhatja a [beépített szerepkörök](built-in-roles.md) egyikét, vagy akár teljesen is elindíthat. Az ebben a szakaszban szereplő első példa egy beépített szerepkörrel kezdődik, majd a további engedélyekkel testreszabja azt. Szerkessze az attribútumokat, `Actions`és `NotActions`adja hozzá `AssignableScopes` a, vagy a kívánt tulajdonságokat, majd mentse a módosításokat új szerepkörként.
+Ha a PowerShell használatával hoz létre egyéni szerepkört, kiindulási pontként használhatja a [beépített szerepkörök](built-in-roles.md) egyikét, vagy akár teljesen is elindíthat. Az ebben a szakaszban szereplő első példa egy beépített szerepkörrel kezdődik, majd a további engedélyekkel testreszabja azt. Szerkessze az attribútumokat, és adja hozzá a `Actions` , `NotActions` vagy a kívánt tulajdonságokat `AssignableScopes` , majd mentse a módosításokat új szerepkörként.
 
 Az alábbi példa a virtuálisgép- [közreműködő](built-in-roles.md#virtual-machine-contributor) beépített szerepkörével kezdődik a *Virtuálisgép-kezelő*nevű egyéni szerepkör létrehozásához. Az új szerepkör hozzáférést biztosít a *Microsoft. számítás*, a *Microsoft. Storage*és a *Microsoft. Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést biztosít a virtuális gépek elindításához, újraindításához és figyeléséhez. Az egyéni szerepkör két előfizetésben is használható.
 
@@ -187,7 +187,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-A következő példa egy másik módszert mutat be a *Virtuálisgép-kezelő* egyéni szerepkörének létrehozásához. Egy új `PSRoleDefinition` objektum létrehozásával kezdődik. A műveleti műveletek a `perms` változóban vannak megadva, és a `Actions` tulajdonságra vannak beállítva. A `NotActions` tulajdonságot úgy állítja be, `NotActions` hogy beolvassa a [virtuális gép közreműködői](built-in-roles.md#virtual-machine-contributor) beépített szerepkörét. Mivel a [virtuálisgép](built-in-roles.md#virtual-machine-contributor) `NotActions`-közreműködő nem rendelkezik a szolgáltatással, ez a sor nem kötelező, de azt mutatja, hogyan kérhető le az információ egy másik szerepkörből.
+A következő példa egy másik módszert mutat be a *Virtuálisgép-kezelő* egyéni szerepkörének létrehozásához. Egy új objektum létrehozásával kezdődik `PSRoleDefinition` . A műveleti műveletek a `perms` változóban vannak megadva, és a `Actions` tulajdonságra vannak beállítva. A `NotActions` tulajdonságot úgy állítja be, hogy beolvassa a `NotActions` [virtuális gép közreműködői](built-in-roles.md#virtual-machine-contributor) beépített szerepkörét. Mivel a [virtuálisgép-közreműködő](built-in-roles.md#virtual-machine-contributor) nem rendelkezik a `NotActions` szolgáltatással, ez a sor nem kötelező, de azt mutatja, hogyan kérhető le az információ egy másik szerepkörből.
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -209,7 +209,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="create-a-custom-role-with-json-template"></a>Egyéni szerepkör létrehozása JSON-sablonnal
 
-A JSON-sablonok az egyéni szerepkör forrás-definíciója használhatók. Az alábbi példa egy egyéni szerepkört hoz létre, amely olvasási hozzáférést biztosít a tárolóhoz és a számítási erőforrásokhoz, hozzáférést biztosít a támogatáshoz, és hozzáadja ezt a szerepkört két előfizetéshez. Hozzon létre egy `C:\CustomRoles\customrole1.json` új fájlt a következő példával. Az azonosítót úgy kell beállítani, `null` hogy a kezdeti szerepkör létrehozásakor automatikusan új azonosítót hozzon létre. 
+A JSON-sablonok az egyéni szerepkör forrás-definíciója használhatók. Az alábbi példa egy egyéni szerepkört hoz létre, amely olvasási hozzáférést biztosít a tárolóhoz és a számítási erőforrásokhoz, hozzáférést biztosít a támogatáshoz, és hozzáadja ezt a szerepkört két előfizetéshez. Hozzon létre egy új fájlt `C:\CustomRoles\customrole1.json` a következő példával. Az azonosítót úgy kell beállítani, hogy `null` a kezdeti szerepkör létrehozásakor automatikusan új azonosítót hozzon létre. 
 
 ```json
 {
@@ -302,7 +302,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
-Az alábbi példa egy felügyeleti csoportot `AssignableScopes` telepít a virtuálisgép- *kezelő* egyéni szerepkörbe. A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
+Az alábbi példa egy felügyeleti csoportot telepít `AssignableScopes` a virtuálisgép- *kezelő* egyéni szerepkörbe. A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 
 ```azurepowershell
 Get-AzManagementGroup

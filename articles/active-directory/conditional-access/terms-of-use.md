@@ -4,19 +4,18 @@ description: Ismerkedjen meg Azure Active Directory használati feltételeivel, 
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253324"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -92,7 +91,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
 1. A **lejárati kezdési** és a **gyakorisági** beállításokkal megadhatja a használati feltételek lejáratának ütemtervét. A következő táblázat az eredményeket mutatja be néhány példa:
 
-   | Lejárat kezdete | Frequency | Eredmény |
+   | Lejárat kezdete | Gyakoriság | Eredmény |
    | --- | --- | --- |
    | Mai dátum  | Havonta | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket, majd minden hónapban újra el kell fogadniuk azokat. |
    | Jövőbeli dátum  | Havonta | A mai naptól kezdve a felhasználóknak el kell fogadniuk a használati feltételeket. A jövőbeli dátum esetén a beleegyezések lejárnak, majd minden hónapban újra el kell fogadniuk a felhasználókat.  |
@@ -117,7 +116,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
    ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
-   | Sablon | Leírás |
+   | Sablon | Description |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie és be kell jelentkeznie. |
@@ -129,7 +128,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
     Az egyéni feltételes hozzáférési házirendek lehetővé teszik a részletes használati feltételek használatát egy adott felhőalapú alkalmazás vagy felhasználói csoport számára. További információ: gyors üzembe helyezés – a használati [feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md).
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
    Ha egyéni feltételes hozzáférési sablont jelölt ki, megjelenik egy új képernyő, amely lehetővé teszi az egyéni feltételes hozzáférési szabályzat létrehozását.
 
@@ -225,7 +224,7 @@ Szerkesztheti a használati feltételek részleteit, de nem módosíthatja a meg
 
    ![A használati feltételek ablaktábla neve és kibontása lehetőségek megjelenítése](./media/terms-of-use/edit-tou.png)
 
-1. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+1. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
    A módosítások mentése után a felhasználóknak nem kell újra elfogadniuk ezeket a módosításokat.
 
@@ -387,7 +386,7 @@ A: [áttekintheti a korábban elfogadott használati feltételeket](#how-users-c
 A: Ha az Azure AD használati feltételeit és az [Intune használati](/intune/terms-and-conditions-create)feltételeit is beállította, akkor a felhasználónak mindkettőt el kell fogadnia. További információ: a [megfelelő feltételek megoldásának kiválasztása a szervezet blogbejegyzésében](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 **K: milyen végpontokat használnak a használati feltételek a hitelesítéshez?**<br />
-A: a Használati feltételek a következő végpontokat használja a hitelesítéshez https://tokenprovider.termsofuse.identitygovernance.azure.com : https://account.activedirectory.windowsazure.comés. Ha a szervezete rendelkezik a beléptetési URL-címek engedélyezési listájával, ezeket a végpontokat fel kell vennie az engedélyezési listára, valamint a bejelentkezéshez használt Azure AD-végpontokat is.
+A: a Használati feltételek a következő végpontokat használja a hitelesítéshez: https://tokenprovider.termsofuse.identitygovernance.azure.com és https://account.activedirectory.windowsazure.com . Ha a szervezete rendelkezik a beléptetési URL-címek engedélyezési listájával, ezeket a végpontokat fel kell vennie az engedélyezési listára, valamint a bejelentkezéshez használt Azure AD-végpontokat is.
 
 ## <a name="next-steps"></a>További lépések
 

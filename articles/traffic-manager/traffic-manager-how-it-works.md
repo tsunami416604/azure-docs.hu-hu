@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294855"
 ---
 # <a name="how-traffic-manager-works"></a>A Traffic Manager működése
@@ -34,7 +34,7 @@ Amikor egy ügyfél megkísérel a szolgáltatáshoz kapcsolódni, először IP-
 
 ## <a name="traffic-manager-example"></a>Traffic Manager példa
 
-A contoso Corp egy új Partner portált fejlesztett ki. A portál URL-címe: `https://partners.contoso.com/login.aspx`. Az alkalmazás az Azure három régiójában fut. A rendelkezésre állás javítása és a globális teljesítmény maximalizálása érdekében a Traffic Manager segítségével terjesztik az ügyfelek forgalmát a legközelebbi elérhető végpontra.
+A contoso Corp egy új Partner portált fejlesztett ki. A portál URL-címe: `https://partners.contoso.com/login.aspx` . Az alkalmazás az Azure három régiójában fut. A rendelkezésre állás javítása és a globális teljesítmény maximalizálása érdekében a Traffic Manager segítségével terjesztik az ügyfelek forgalmát a legközelebbi elérhető végpontra.
 
 Ennek a konfigurációnak a megvalósításához a következő lépéseket kell végrehajtania:
 
@@ -49,7 +49,7 @@ Ennek a konfigurációnak a megvalósításához a következő lépéseket kell 
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Hogyan csatlakozhatnak az ügyfelek a Traffic Manager
 
-Az előző példát követve, amikor egy ügyfél a lapot `https://partners.contoso.com/login.aspx`kéri, az ügyfél a következő lépéseket hajtja végre a DNS-név feloldásához és a kapcsolat létesítéséhez:
+Az előző példát követve, amikor egy ügyfél a lapot kéri `https://partners.contoso.com/login.aspx` , az ügyfél a következő lépéseket hajtja végre a DNS-név feloldásához és a kapcsolat létesítéséhez:
 
 ![Traffic Manager használó kapcsolatok létrehozása][2]
 

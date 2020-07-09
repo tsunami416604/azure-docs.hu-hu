@@ -6,15 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/23/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 24ff69e76736ffa93cecb795be563f172c422355
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: references_regions
+ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261188"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -29,23 +30,25 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |**USA**||
 |<sup>1</sup> . EastUS|EastUS2|
 |WestUS2|WestUS2|
-|<sup>2</sup> . WestCentralUS|<sup>2</sup> . WestCentralUS|
+|WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
 |**Ázsia és a Csendes-óceáni térség**||
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
+|<sup>2</sup> . ChinaEast2|ChinaEast2|
 |JapanEast|JapanEast|
 |**Európa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
+|<sup>2</sup> . USGovArizona|USGovArizona|
 
 <sup>1</sup> a log Analytics-munkaterületek Automation-fiókokba való EastUS nem pontos a régiók közötti leképezés, de a megfelelő leképezés.
 
-<sup>2</sup> a kapacitás korlátozásai miatt a régió nem érhető el új erőforrások létrehozásakor. Ez magában foglalja az Automation-fiókokat és a Log Analytics munkaterületeket. A régióban lévő, korábban már meglévő csatolt erőforrásoknak azonban továbbra is működniük kell.
+<sup>2</sup> ebben a régióban csak Update Management támogatott, és más funkciók, például a Change Tracking és a leltár jelenleg nem érhetők el.
 
 ## <a name="unlink-a-workspace"></a>Munkaterület leválasztása
 

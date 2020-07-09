@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a040eb6db84c0e20be0f73a8e541ec824b2710c1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 966ca099c44ba8b0f2d3241c391f4d7a101afb26
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666395"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955097"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása (előzetes verzió) a Azure Portal használatával
 
@@ -61,7 +61,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 ![SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
-6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Kattintson a **Létrehozás** gombra.
+6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Válassza a **Létrehozás** lehetőséget.
 ![SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Ekkor elindul az erőforrás-kiépítési folyamat.
@@ -87,7 +87,7 @@ Ha törölni szeretné az SQL-készletet, hajtsa végre a következő lépéseke
 1. Erősítse meg a törlést, **majd nyomja le a DELETE gomb** ![ SQL Pool (Törlés megerősítése) elemet.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Ha a folyamat sikeresen befejeződik, az SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

@@ -11,13 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/13/2019
-ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/08/2020
+ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417776"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660403"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Betöltés az Azure Data Lake Storage Gen2ba Azure Data Factory
 
@@ -42,95 +41,90 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
    
-   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. Az **új adat-előállító** lapon adja meg az alábbi képen látható mezők értékét: 
-      
-   ![Új adat-előállító lap](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)
+2. Az **új adat-előállító** lapon adja meg a következő mezők értékét:
  
-    * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a \"LoadADLSDemo\" nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállító számára. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *YourDataFactoryName* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
     * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
     * **Verzió**: válassza a **v2**elemet.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. 
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
+
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható: 
    
-   ![Data factory kezdőlap](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
+   ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
 
    Az Adatintegráció alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>Adatok betöltése az Azure Data Lake Storage Gen2-be
 
-1. Az **első lépések** lapon válassza ki a **adatok másolása** csempét a adatok másolása eszköz elindításához: 
+1. Az Adatok másolása eszköz elindításához az **Első lépések** oldalon kattintson az **Adatok másolása** csempére.
 
-   ![Az Adatok másolása eszköz csempéje](./media/load-azure-data-lake-storage-gen2/copy-data-tool-tile.png)
-2. A **Tulajdonságok** lapon adja meg a **CopyFromAmazonS3ToADLS** a **feladat neve** mezőben, majd válassza a **Next (tovább**) gombot:
+2. A **Tulajdonságok** lapon adja meg a **CopyFromAmazonS3ToADLS** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra**.
 
     ![Tulajdonságok lap](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
-3. A **forrás adattár** lapon kattintson az **+ új kapcsolatok létrehozása**lehetőségre:
-
-    ![Forrásadattár lap](./media/load-azure-data-lake-storage-gen2/source-data-store-page.png)
-    
-    Válassza ki az **Amazon S3** elemet az összekötő-katalógusból, és válassza a **Folytatás** lehetőséget.
+3. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. Válassza ki az **Amazon S3** elemet az összekötő-katalógusból, és válassza a **Folytatás**lehetőséget.
     
     ![Forrás adattár S3 oldal](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
-4. Az **Amazon S3-kapcsolatok meghatározása** oldalon hajtsa végre a következő lépéseket:
+4. Az **új társított szolgáltatás (Amazon S3)** oldalon hajtsa végre a következő lépéseket:
 
    1. Itt adhatja meg a **hozzáférési kulcs azonosítójának** értékét.
    2. A **titkos hozzáférési kulcs** értékének megadása.
-   3. Kattintson a **Kapcsolat tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Befejezés** lehetőséget.
-   4. Ekkor megjelenik egy új, a létrehozott kapcsolatok. Kattintson a **Tovább** gombra.
-   
+   3. Kattintson a **Kapcsolódás tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Létrehozás**lehetőséget.
+
       ![Amazon S3-fiók meghatározása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-      
-5. **A bemeneti fájl vagy mappa kiválasztása** lapon tallózzon az átmásolni kívánt mappához és fájlhoz. Válassza ki a mappát/fájlt, majd válassza a **kiválasztás**lehetőséget:
+   4. Ekkor megjelenik egy új AmazonS3-kapcsolatok létrehozása. Válassza a **Tovább** lehetőséget. 
+
+5. **A bemeneti fájl vagy mappa kiválasztása** lapon tallózzon az átmásolni kívánt mappához és fájlhoz. Válassza ki a mappát vagy a fájlt, majd válassza **a kiválasztás lehetőséget.**
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. Adja meg a másolási viselkedést a **Fájlok másolása rekurzív módon** és a **Bináris másolat** beállítások bejelölésével. Válassza a **Next (tovább**) lehetőséget:
+6. A **rekurzív** és a **bináris másolási** beállítások ellenőrzésével határozza meg a másolási viselkedést. Válassza a **Tovább** lehetőséget.
 
     ![Kimeneti mappa meghatározása](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
-7. A **cél adattár** lapon kattintson az **+ új kapcsolatok létrehozása**lehetőségre, majd válassza a **Azure Data Lake Storage Gen2**lehetőséget, majd a **Folytatás**:
+7. A **cél adattár** lapon kattintson az **+ új kapcsolatok létrehozása**lehetőségre, majd válassza a **Azure Data Lake Storage Gen2**lehetőséget, majd a **Folytatás**lehetőséget.
 
     ![Céladattár lap](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
 
-8. Az **Azure Data Lake Storage-kapcsolatok meghatározása** oldalon hajtsa végre a következő lépéseket:
+8. Az **új társított szolgáltatás (Azure Data Lake Storage Gen2)** lapon hajtsa végre a következő lépéseket:
 
-   1. Válassza ki a Data Lake Storage Gen2 képes fiókot a "Storage-fiók neve" legördülő listából.
-   2. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután válassza a **tovább**lehetőséget.
-   
-   ![Azure Data Lake Storage Gen2 fiók meghatározása](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
+   1. Válassza ki Data Lake Storage Gen2 kezelésére képes fiókját a „Tárfiók neve” legördülő listából.
+   2. Válassza a **Létrehozás** lehetőséget a kapcsolódás létrehozásához. Ezután válassza a **tovább**lehetőséget.   
+
+        ![Azure Data Lake Storage Gen2 fiók meghatározása](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 
 9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfroms3** a kimeneti mappa neveként, majd kattintson a **tovább**gombra. Az ADF a másolás során létrehozza a megfelelő ADLS Gen2 fájlrendszert és almappákat, ha az nem létezik.
 
     ![Kimeneti mappa meghatározása](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
-10. A **Beállítások** lapon válassza a **tovább** lehetőséget az alapértelmezett beállítások használatához:
+10. A **Beállítások** lapon kattintson a **Tovább** gombra az alapértelmezett beállítások használatához.
 
     ![Beállítások lap](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
-11. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Next (tovább) gombra**:
+
+11. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra**.
 
     ![Összefoglaló lap](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
-12. A folyamat figyeléséhez az **üzembe helyezés lapon**válassza a **figyelő** elemet:
 
-    ![Üzembe helyezés lap](./media/load-azure-data-lake-storage-gen2/deployment-page.png)
-13. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. A **műveletek** oszlop a tevékenység futtatási részleteinek megtekintésére és a folyamat újrafuttatására mutató hivatkozásokat tartalmaz:
+12. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre. 
+ 
+13. Ha a folyamat futása sikeresen befejeződött, egy manuális trigger által aktivált folyamat-Futtatás jelenik meg. A **folyamat neve** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
     ![Folyamatfuttatások monitorozása](./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png)
 
-14. Ha meg szeretné tekinteni a folyamat futtatásához társított tevékenység-futtatásokat, válassza a **műveletek** oszlop **Megtekintés tevékenység futtatása** hivatkozását. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Ha vissza szeretne váltani a folyamat futási nézetére, válassza a felül található **folyamatok** hivatkozást. A lista frissítéséhez kattintson a **Frissítés** gombra. 
-
+14. A folyamat futtatásához társított tevékenységek megtekintéséhez jelölje ki a **CopyFromAmazonS3ToADLS** HIVATKOZÁST a folyamat neve oszlopban. A másolási művelet részleteinek megtekintéséhez kattintson a tevékenység neve oszlop **részletek** hivatkozására (szemüveg ikon). A forrásról a fogadóra másolt adatok mennyiségét, az adatátvitelt, a végrehajtási lépéseket, valamint a megfelelő időtartamot és a használt konfigurációt is figyelheti.
+ 
     ![Tevékenységfuttatások monitorozása](./media/load-azure-data-lake-storage-gen2/monitor-activity-runs.png)
-
-15. Az egyes másolási tevékenységek végrehajtási részleteinek figyeléséhez válassza a tevékenységek figyelése nézet **műveletek** területén található **részletek** hivatkozást (szemüvegek képe). A forrásról a fogadóra másolt adatok mennyiségét, az adatátvitelt, a végrehajtási lépéseket és a megfelelő időtartamot, valamint a használt konfigurációkat is figyelheti:
-
+    
     ![Tevékenység-futtatási részletek figyelése](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
+
+15. A nézet frissítéséhez válassza a Frissítés parancsot. Válassza a felül található **összes folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez.
 
 16. Ellenőrizze, hogy a rendszer átmásolta-e az adatait a Data Lake Storage Gen2-fiókjába.
 

@@ -1,34 +1,32 @@
 ---
-title: Mobilitási (tranzit) lefedettség | Microsoft Azure térképek
-description: Ebben a cikkben megismerheti a mobilitási lefedettséget Microsoft Azure Maps-ben
-author: philmea
-ms.author: philmea
-ms.date: 06/05/2019
+title: Mobilitási (tranzit) lefedettség
+description: Ebből a cikkből megtudhatja, hogyan Microsoft Azure Maps mobilitási szolgáltatásának nyilvános átviteli lefedettségét.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2959a930ef2b3683cbd822eaee61a037fa0e9e29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673642"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps mobilitási lefedettség
 
-A Azure Maps [mobilitási szolgáltatást](https://aka.ms/AzureMapsMobilityService)biztosít. A mobilitási szolgáltatás javítja a nyilvános tranzittal, a kerékpár-megosztással és a robogó-megosztási funkciókkal rendelkező alkalmazások fejlesztési idejét. A nyilvános átvitel funkciói közé tartozik a közeli állomások keresése, a leállások keresése, az átviteli sorok keresése, az ütemtervek lekérése, a valós idejű nyilvános továbbítások beolvasása, a lista leállítása és a lista útvonal-útmutatók. A szolgáltatás valós idejű és statikus rendelkezésre állási információkat ad vissza a megosztott járművek, például az autók, a kerékpárok és a robogók számára. Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális kirándulások megtervezése magában foglalja a biciklis, a Ride-jégeső és a tranzit lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes és a multimodális lépésenkénti útvonalakat és szolgáltatási riasztásokat is használhatják.
+A Azure Maps [mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService) javítja a nyilvános átviteli funkciókkal rendelkező alkalmazások fejlesztési idejét, például a tranzit útválasztást és a közeli nyilvános átvitelek keresését. A felhasználók részletes információkat kérhetnek a továbbítási leállásokról, a sorokról és az ütemtervekről. A mobilitási szolgáltatás azt is lehetővé teszi, hogy a felhasználók leállítsák a leállítási és a vonalas geometriákat, a leállási, a soros és a szolgáltatási területekre vonatkozó riasztásokat, valamint a valós idejű, nyilvános tranzit Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális utazás megtervezése magában foglalja a gyaloglást, a kerékpározást és a nyilvános továbbítási lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes multimodális lépésenkénti útvonalakat is használhatják. 
 
-Azure Maps nem rendelkezik azonos szintű információval és pontossággal az összes város és ország/régió tekintetében. A továbbítási adatok hívásának lehetősége a várostól függ. Továbbá előfordulhat, hogy az adat nem tartalmazza az összes nyilvános árutovábbítási lehetőséget és a várost kiszolgáló ügynökségeket.
+Azure Maps nem biztosít azonos szintű információt és pontosságot az összes város és ország/régió számára. A nyilvános árutovábbítási adatok meghívásának lehetősége a Metro területtől függ. Emellett előfordulhat, hogy a térképi adatok nem tartalmazzák a metró területét kiszolgáló összes nyilvános átviteli lehetőséget és Ügynökséget.
 
 Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi információit tartalmazza.
 
-
-| Szimbólum | Jelentés |
+| Szimbólum | Értelmezés |
 |--------|---------|
 | *      |Szinte teljes lefedettség az ország/régió számára.|
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió |  Város (metró) |
 |----------------|---------|
@@ -119,7 +117,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Svájc | Basel, Genf, Yverdon-Les-Bains, Zürich | 
 | Törökország | Adana-Mersin, Ankara, Antalya, Balıkesir, Bilecik, Bolu, Bursa, Denizli, Duzce, Elazig, Eskisehir, Isztambul, Izmir-Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
 | Egyesült Királyság | Kelet-Anglia, Kelet-Midlands, London és Dél-Kelet, Észak-Kelet, Észak-Nyugat, Észak-Írország, Skócia, Dél-Nyugat, Wales, West Midlands, Yorkshire |
-| Ukrajna | Kharkiv, Zhytomyr, Kiev, Lviv, Chernivtsi |
+| Ukrajna | Kharkiv, Zhytomyr, Kijev, Lviv, Chernivtsi |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika

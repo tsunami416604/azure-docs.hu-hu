@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – IoT Hub-események használata az aktiváláshoz Azure Logic Apps
 description: Ez az oktatóanyag bemutatja, hogyan használhatja a Azure Event Grid esemény-útválasztási szolgáltatását, és hogyan hozhat létre automatizált folyamatokat IoT Hub események alapján végzett Azure Logic Apps műveletek végrehajtásához.
-services: iot-hub
+services: iot-hub, event-grid
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722558"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120483"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: az Azure IoT Hub eseményekre vonatkozó e-mailes értesítések küldése Event Grid és Logic Apps használatával
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése az Event Grid és a Logic Apps használatával
 
 Az Azure Event Griddel reagálhat az IoT Hub eseményeire a folyamatok későbbi szakaszában használt üzleti alkalmazásokban kiváltott műveletekkel.
 
@@ -47,7 +47,7 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 
    ![A logikai alkalmazás létrehozására szolgáló mezők](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Az erőforrás létrehozása után navigáljon a logikai alkalmazáshoz. Ehhez válassza az **erőforráscsoportok**lehetőséget, majd válassza ki az oktatóanyaghoz létrehozott erőforráscsoportot. Ezután keresse meg a logikai alkalmazást az erőforrások listájában, és válassza ki. 
 
@@ -175,19 +175,26 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
 
-   * **Esemény-előfizetés részletei**: adjon meg egy leíró nevet, és válassza ki **Event Grid sémát**.
+    1. Az **esemény-előfizetés részletei** szakaszban hajtsa végre a következő feladatokat:
+        1. Adja meg az esemény-előfizetés **nevét** . 
+        2. Válassza ki **Event Grid sémát** az **eseményvezérelt sémához**. 
+   2. A **témakör részletei** részben hajtsa végre a következő feladatokat:
+       1. Ellenőrizze, hogy a **témakör típusa** **IoT hub**értékre van-e állítva. 
+       2. Győződjön meg róla, hogy az IoT hub neve a **forrás erőforrás** mező értékeként van beállítva. 
+       3. Adja meg annak a **rendszertémakörnek** a nevét, amelyet létre fog hozni Önnek. A rendszertémakörökről a [rendszertémakörök áttekintésében](system-topics.md)talál további információt.
+   3. Az **Event types (eseménytípus** ) szakaszban hajtsa végre a következő feladatokat: 
+        1. Az **eseménytípus szűréséhez**törölje az összes lehetőséget, kivéve az **eszköz létrejöttét**.
 
-   * **Eseménytípus**: a szűrés az **események típusainál**törölje az összes lehetőséget, kivéve az **eszköz létrejöttét**.
+           ![előfizetési események típusai](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. A **VÉGPONT részletei** szakaszban hajtsa végre a következő feladatokat: 
+       1. Válassza ki a **végpont típusát** **webhookként**.
+       2. Kattintson a **válasszon ki egy végpontot**, illessze be a logikai alkalmazásból másolt URL-címet, és erősítse meg a kijelölést.
 
-       ![előfizetési események típusai](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **Végpont részletei**: válassza a végpont típusa **webhook** lehetőséget, majd válassza ki a kívánt *végpontot* , és illessze be a logikai alkalmazásból másolt URL-címet, és erősítse meg a kijelölést.
+         Ha elkészült, a panelnek a következő példához hasonlóan kell kinéznie: 
 
-     ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   Ha elkészült, a panelnek a következő példához hasonlóan kell kinéznie: 
-
-    ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. Ha most mentené az esemény-előfizetést, akkor az IoT-központban létrehozott minden eszközről értesítést kapna. Ebben az oktatóanyagban azonban a választható mezők használatával szűrheti az adott eszközöket. Válassza a **szűrők** elemet a panel tetején.
 

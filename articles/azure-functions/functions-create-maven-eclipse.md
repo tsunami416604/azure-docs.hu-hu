@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756481"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054729"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Az első függvény létrehozása a Java és az Eclipse használatával 
 
@@ -37,14 +37,10 @@ Javasoljuk, hogy a [Azure functions Core Tools, 2-es verziójú verziót](functi
 
 ## <a name="create-a-functions-project"></a>Functions-projekt létrehozása
 
-1. Az Eclipse-ben válassza a **fájl** menüt, majd az **új&gt; -Maven projekt**elemet. 
+1. Az Eclipse-ben válassza a **fájl** menüt, majd az **új- &gt; Maven projekt**elemet. 
 1. Fogadja el az alapértelmezett értékeket az **új Maven-projekt** dialógusban, és kattintson a **Tovább gombra**.
-1. Válassza az **archetípus hozzáadása** lehetőséget, és adja hozzá a bejegyzéseket az [Azure-functions-archetípushoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-    - Archetípus csoport azonosítója: com. microsoft. Azure
-    - Archetípus-összetevő azonosítója: Azure-functions-archetípus
-    - Verzió: a legújabb verzió keresése és használata [a központi adattárból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![– az Eclipse Maven létrehozása](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Kattintson **az OK** , majd a **tovább**gombra.  Ügyeljen arra, hogy az összes mező `resourceGroup` `appName`értékeit kitöltse, például:, `appRegion` és (használjon más appName, mint a **Fabrikam-Function-20170920120101928**), és végül **fejezze**be a műveletet.
+1. Keresse meg és válassza ki az [Azure-functions-archetípus](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) elemet, és kattintson a **tovább**gombra.
+1. Ügyeljen arra, hogy az összes mező értékeit kitöltse, például:, `resourceGroup` `appName` és `appRegion` (használjon más appName, mint a **fabrikam-Function-20170920120101928**), és végül **fejezze**be a műveletet.
     ![Az Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A projektben létrehozott kód egy egyszerű http- [triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
@@ -56,15 +52,15 @@ A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A 
 
 1. Kattintson a jobb gombbal a generált projektre, majd válassza a **Futtatás as** és **Maven Build**lehetőséget.
 1. A **konfiguráció szerkesztése** párbeszédpanelen adja meg `package` a **célok** és **név** mezőket, majd válassza a **Futtatás**lehetőséget. Ezzel létrehozza és becsomagolja a függvény kódját.
-1. A Build befejezése után hozzon létre egy másik futtatási konfigurációt a `azure-functions:run` fentieknek megfelelően, a célt és a nevet használva. Válassza a **Futtatás** lehetőséget a függvény futtatásához az ide-ben.
+1. A Build befejezése után hozzon létre egy másik futtatási konfigurációt a fentieknek megfelelően, `azure-functions:run` a célt és a nevet használva. Válassza a **Futtatás** lehetőséget a függvény futtatásához az ide-ben.
 
 Ha végzett a függvény tesztelésével, szakítsa meg a futtatókörnyezetet a konzol ablakban. Egyszerre csak egy Function Host lehet aktív és helyileg futni.
 
 ### <a name="debug-the-function-in-eclipse"></a>A függvény hibakeresése az Eclipse-ben
 
-Az előző lépésben beállított **futtató** konfigurációban váltson `azure-functions:run` át `azure-functions:run -DenableDebug` , és futtassa a frissített konfigurációt a Function alkalmazás hibakeresési módban történő elindításához.
+Az előző lépésben beállított **futtató** konfigurációban váltson `azure-functions:run` át, `azure-functions:run -DenableDebug` és futtassa a frissített konfigurációt a Function alkalmazás hibakeresési módban történő elindításához.
 
-Válassza a **Futtatás** menüt, és nyissa meg a **hibakeresési konfigurációkat**. Válassza ki a **távoli Java-alkalmazást** , és hozzon létre egy újat. Adja meg a konfiguráció nevét, és adja meg a beállításokat. A portnak konzisztensnek kell lennie a Function Host által megnyitott hibakeresési porttal, `5005`amely alapértelmezés szerint a. A telepítés után kattintson a `Debug` be gombra a hibakeresés megkezdéséhez.
+Válassza a **Futtatás** menüt, és nyissa meg a **hibakeresési konfigurációkat**. Válassza ki a **távoli Java-alkalmazást** , és hozzon létre egy újat. Adja meg a konfiguráció nevét, és adja meg a beállításokat. A portnak konzisztensnek kell lennie a Function Host által megnyitott hibakeresési porttal, amely alapértelmezés szerint a `5005` . A telepítés után kattintson a be gombra a `Debug` hibakeresés megkezdéséhez.
 
 ![Hibakeresési függvények az Eclipse-ben](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
@@ -78,7 +74,7 @@ Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről
 az login
 ```
 
-A kód üzembe helyezése egy új Function alkalmazásban `azure-functions:deploy` a Maven céljával egy új **futtató** konfigurációban.
+A kód üzembe helyezése egy új Function alkalmazásban a `azure-functions:deploy` Maven céljával egy új **futtató** konfigurációban.
 
 Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az Azure-függvényalkalmazásba:
 

@@ -4,21 +4,21 @@ description: Az Azure AD-alapú hitelesítési munkamenet konfigurációjának t
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bba37b5d72bd9dca2e10c699f4ba259319a6c71
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552111"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenet felügyeletének konfigurálása feltételes hozzáféréssel
+# <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
 
 Összetett központi telepítések esetén a szervezeteknek szükségük lehet a hitelesítési munkamenetek korlátozására. Egyes forgatókönyvek például a következők lehetnek:
 
@@ -35,7 +35,7 @@ Mielőtt megkezdené a szabályzat konfigurálásának részleteit, vizsgáljuk 
 
 A bejelentkezési gyakoriság határozza meg azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, amikor egy erőforráshoz próbál hozzáférni.
 
-A felhasználói bejelentkezési gyakorisághoz tartozó Azure Active Directory (Azure AD) alapértelmezett konfigurációja a 90 napos gördülő ablak. A felhasználók a hitelesítő adatokkal való megkérdezése gyakran úgy tűnik, mint egy értelmes dolog, de nem sül el: a hitelesítő adatok megadására betanított felhasználók szándékosan nem tudják megadni őket rosszindulatú hitelesítő adatok megadásához.
+A felhasználói bejelentkezés gyakoriságának Azure Active Directory (Azure AD) alapértelmezett konfigurációja a 90 napos gördülő ablak. A felhasználók a hitelesítő adatokkal való megkérdezése gyakran úgy tűnik, mint egy értelmes dolog, de nem sül el: a hitelesítő adatok megadására betanított felhasználók szándékosan nem tudják megadni őket rosszindulatú hitelesítő adatok megadásához.
 
 Előfordulhat, hogy a felhasználók nem kérik vissza a felhasználót, hogy a valóságban az IT-szabályzatok megszegése visszavonja a munkamenetet. Néhány példa a jelszó módosítására, a nem megfelelő eszközre vagy a fiók letiltására vonatkozik. Explicit módon [visszavonhatja a felhasználói munkameneteket a PowerShell használatával](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Az Azure AD alapértelmezett konfigurációja a "ne kérdezze meg a felhasználókat, hogy adja meg a hitelesítő adataikat, ha a munkamenetek biztonsági helyzete nem változott".
 
@@ -51,13 +51,17 @@ A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, am
 - Dynamics CRM Online
 - Azure Portal
 
+A bejelentkezési gyakoriság beállítása SAML-alkalmazásokkal is működik, feltéve, hogy nem dobja el a saját cookie-kat, és az Azure AD-re való átirányításuk rendszeresen történik.
+
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Felhasználói bejelentkezés gyakorisága és multi-Factor Authentication
 
-Korábban csak az Azure AD-hez csatlakoztatott eszközökön, a hibrid Azure AD-hez csatlakoztatott és az Azure AD-ben regisztrált eszközön történt a bejelentkezés gyakorisága. A többtényezős hitelesítés (MFA) az adott eszközökön való újbóli betartatása nem volt egyszerű módszer. Az ügyfelek visszajelzései alapján a bejelentkezési gyakoriság az MFA-ra is érvényes lesz.
+Korábban csak az Azure AD-hez csatlakoztatott, a hibrid Azure AD-hez és az Azure AD-hez regisztrált eszközökön történt a bejelentkezés gyakorisága. A többtényezős hitelesítés (MFA) az adott eszközökön való újbóli betartatása nem volt egyszerű módszer. Az ügyfelek visszajelzései alapján a bejelentkezési gyakoriság az MFA-ra is érvényes lesz.
+
+[![Bejelentkezési gyakoriság és MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Felhasználói bejelentkezés gyakorisága és az eszközök identitása
 
-Ha van csatlakoztatva az Azure AD-hez, a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökhöz, amikor a felhasználó feloldja az eszközt, vagy interaktív módon jelentkezik be, akkor ez az esemény is megfelel a bejelentkezési gyakoriságra vonatkozó házirendnek. A következő 2 példában a felhasználói bejelentkezés gyakorisága 1 órára van beállítva:
+Ha van csatlakoztatva az Azure AD-hez, a hibrid Azure AD-hez vagy az Azure AD-hez regisztrált eszközökhöz, amikor a felhasználó feloldja az eszközt, vagy interaktív módon jelentkezik be, akkor ez az esemény is megfelel a bejelentkezési gyakoriságra vonatkozó házirendnek. A következő két példában a felhasználói bejelentkezési gyakoriság értéke 1 óra:
 
 1. példa:
 
@@ -101,7 +105,7 @@ A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium s
 
 ![Bejelentkezési gyakoriságra konfigurált feltételes hozzáférési szabályzat](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-Az Azure AD-ben regisztrált Windows-eszközökön jelentkezzen be az eszközre. Ha például az Office-alkalmazások esetében 24 órán keresztül konfigurálta a bejelentkezés gyakoriságát, akkor az Azure AD-ben regisztrált Windows-eszközökön lévő felhasználók a bejelentkezési gyakoriságra vonatkozó szabályzatot az eszközre való bejelentkezéssel fogják kielégíteni, és az Office-alkalmazások megnyitásakor nem fognak megjelenni.
+Az Azure AD-ben regisztrált Windows-eszközökön jelentkezzen be az eszközre. Ha például az Office-alkalmazások esetében 24 órán keresztül konfigurálta a bejelentkezési gyakoriságot, akkor az Azure AD-ben regisztrált Windows-eszközökön lévő felhasználók a bejelentkezési gyakorisági szabályzatot az eszközre való bejelentkezéssel fogják kielégíteni, és az Office-alkalmazások megnyitásakor nem fognak megjelenni.
 
 Ha az azonos böngésző-munkamenetben futó különböző webalkalmazásokhoz eltérő bejelentkezési gyakoriságot állított be, a rendszer mindkét alkalmazásra alkalmazza a legszigorúbb szabályzatot, mivel az azonos böngésző-munkamenetben futó összes alkalmazás egyetlen munkamenet-tokent használ.
 

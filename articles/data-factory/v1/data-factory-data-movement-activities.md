@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195964"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Az adatáthelyezés a másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -81,7 +80,7 @@ A másolási tevékenység a megadott formátumú fájlokra is beolvassa és ír
 
 Például a következő másolási tevékenységeket végezheti el:
 
-* Az Adatmásolás a helyszíni SQL Serverban, és az Azure Data Lake Store az ork formátumba írás.
+* Adatmásolás egy SQL Server-adatbázisban, és az Azure Data Lake Store az ork formátumban kell írni.
 * A fájlok szövegfájlba (CSV) való másolása a helyszíni fájlrendszerből és az Azure Blobba való írás Avro formátumban.
 * Másolja a tömörített fájlokat a helyszíni fájlrendszerből, majd bontsa ki a kibontást, majd Azure Data Lake Store.
 * Adatok másolása GZip tömörített szöveg (CSV) formátumban az Azure Blobból, és írás a Azure SQL Databaseba.
@@ -121,10 +120,10 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | Dél-Korea | Dél-Korea középső régiója | Dél-Korea középső régiója |
 | &nbsp; | Dél-Korea déli régiója | Dél-Korea középső régiója |
 
-Azt is megteheti, hogy explicit módon megadhatja Data Factory szolgáltatás azon régióját, amelyet a másolási `executionLocation` tevékenységben `typeProperties`a tulajdonság megadásával kíván használni. A tulajdonsághoz tartozó támogatott értékek az **adatáthelyezési** oszlophoz használt fenti régióban vannak felsorolva. Vegye figyelembe, hogy az adatai a másolás során a hálózaton keresztül haladnak át az adott régióban. Például a Koreában található Azure-áruházak közötti másoláshoz megadhatja `"executionLocation": "Japan East"` , hogy az átirányítást a japán régión keresztül történjen (lásd a [JSON minta](#by-using-json-scripts) hivatkozásként című témakört).
+Azt is megteheti, hogy explicit módon megadhatja Data Factory szolgáltatás azon régióját, amelyet a másolási tevékenységben a tulajdonság megadásával kíván használni `executionLocation` `typeProperties` . A tulajdonsághoz tartozó támogatott értékek az **adatáthelyezési** oszlophoz használt fenti régióban vannak felsorolva. Vegye figyelembe, hogy az adatai a másolás során a hálózaton keresztül haladnak át az adott régióban. Például a Koreában található Azure-áruházak közötti másoláshoz megadhatja, `"executionLocation": "Japan East"` hogy az átirányítást a japán régión keresztül történjen (lásd a [JSON minta](#by-using-json-scripts) hivatkozásként című témakört).
 
 > [!NOTE]
-> Ha a célként megadott adattár régiója nem szerepel az előző listában, vagy nem észlelhető, a másolási tevékenység alapértelmezés szerint nem halad át egy másik régión, kivéve `executionLocation` , ha meg van adva. A támogatott régiók listája az idő múlásával ki lesz bővítve.
+> Ha a célként megadott adattár régiója nem szerepel az előző listában, vagy nem észlelhető, a másolási tevékenység alapértelmezés szerint nem halad át egy másik régión, kivéve, ha meg `executionLocation` van adva. A támogatott régiók listája az idő múlásával ki lesz bővítve.
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Az Adatmásolás egy helyszíni adattár és egy felhőalapú adattár között
@@ -139,7 +138,7 @@ A Data Factory másolás varázsló segítséget nyújt egy másolási tevékeny
 ### <a name="by-using-json-scripts"></a>JSON-parancsfájlok használatával
 A Visual Studióban Data Factory szerkesztőt is használhat, vagy Azure PowerShell egy folyamat JSON-definíciójának létrehozásához (másolási tevékenység használatával). Ezután üzembe helyezheti a folyamatot Data Factoryban. Lásd [: oktatóanyag: másolási tevékenység használata Azure Data Factoryi folyamatokban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) az oktatóanyaghoz részletes utasításokkal.    
 
-A JSON-tulajdonságok (például a név, a leírás, a bemeneti és a kimeneti táblák és a házirendek) minden típusú tevékenység számára elérhetők. A tevékenység `typeProperties` szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek.
+A JSON-tulajdonságok (például a név, a leírás, a bemeneti és a kimeneti táblák és a házirendek) minden típusú tevékenység számára elérhetők. A tevékenység szakaszában elérhető tulajdonságok az `typeProperties` egyes tevékenységtípusok esetében eltérőek.
 
 Másolási tevékenység esetén a `typeProperties` szakasz a források és a mosdók típusától függően változik. A [támogatott források és mosogatók](#supported-data-stores-and-formats) szakaszban kattintson a forrásra/fogadóra, és Ismerje meg, hogy milyen típusú tulajdonságokat támogat a másolási tevékenység az adott adattár számára.
 

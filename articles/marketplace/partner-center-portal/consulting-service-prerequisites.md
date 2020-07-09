@@ -1,22 +1,22 @@
 ---
 title: Az Azure és a Dynamics 365 tanácsadási szolgáltatásának előfeltételei
 description: Azure-vagy Dynamics 365 Consulting Service-ajánlat előfeltételei a Microsoft kereskedelmi piactéren
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/08/2020
-ms.author: mingshen
-ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ef840985053289858f5145bafa4e51ad84734b66
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996379"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111439"
 ---
 # <a name="consulting-service-prerequisites"></a>Tanácsadási szolgáltatás előfeltételei
 
-A tanácsadási szolgáltatás ajánlatával kapcsolatos további információkért, beleértve az ajánlat típusának követelményeit, tekintse meg a [Microsoft AppSource és az Azure Marketplace tanácsadói szolgáltatásai](https://docs.microsoft.com/azure/marketplace/consulting-services)című témakört. A következő táblázat az adott tanácsadási szolgáltatási típusokra vonatkozó további követelményeket mutatja be.
+A tanácsadási szolgáltatás ajánlatával kapcsolatos további információkért, beleértve az ajánlat típusának követelményeit, tekintse meg a [Microsoft AppSource és az Azure Marketplace tanácsadói szolgáltatásai](../consulting-services.md)című témakört. A következő táblázat az adott tanácsadási szolgáltatási típusokra vonatkozó további követelményeket mutatja be.
 
 | Tanácsadási szolgáltatás témakör | A partner Centerben kiválasztható elsődleges termék | Követelmény |
 |---------|---------|---------|

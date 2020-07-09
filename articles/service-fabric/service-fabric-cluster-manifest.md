@@ -6,24 +6,23 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458373"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Önálló Windows-fürt konfigurációs beállításai
-Ez a cikk egy önálló Azure Service Fabric-fürt konfigurációs beállításait ismerteti, amelyek a *ClusterConfig. JSON* fájlban állíthatók be. Ezzel a fájllal adhatja meg a fürt csomópontjaival, a biztonsági konfigurációkkal, valamint a hálózati topológiával kapcsolatos információkat a hibák és a frissítési tartományok tekintetében.  A konfigurációs beállítások módosítása vagy hozzáadása után [létrehozhat egy önálló fürtöt](service-fabric-cluster-creation-for-windows-server.md) , vagy [frissítheti egy önálló fürt konfigurációját](service-fabric-cluster-config-upgrade-windows-server.md).
+Ez a cikk egy önálló Azure Service Fabric-fürt konfigurációs beállításait ismerteti, amelyek a fájlban *ClusterConfig.js* megadhatók. Ezzel a fájllal adhatja meg a fürt csomópontjaival, a biztonsági konfigurációkkal, valamint a hálózati topológiával kapcsolatos információkat a hibák és a frissítési tartományok tekintetében.  A konfigurációs beállítások módosítása vagy hozzáadása után [létrehozhat egy önálló fürtöt](service-fabric-cluster-creation-for-windows-server.md) , vagy [frissítheti egy önálló fürt konfigurációját](service-fabric-cluster-config-upgrade-windows-server.md).
 
-[Az önálló Service Fabric csomag letöltésekor a rendszer a](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)ClusterConfig. JSON-mintákat is tartalmazza. A nevükben a "DevCluster" nevű minták olyan fürtöt hoznak létre, amely ugyanazon a gépen található mindhárom csomóponttal, logikai csomópontok használatával. Ezen csomópontok közül legalább egy elsődleges csomópontként kell megjelölni. Ez a típusú fürt hasznos fejlesztési vagy tesztelési környezetekhez. Üzemi fürtként nem támogatott. A "MultiMachine" névvel ellátott minták segítenek a termelési szintű fürtök létrehozásában, és mindegyik csomópont külön gépen található. A fürtök elsődleges csomópontjainak száma a fürt [megbízhatósági szintjétől](#reliability)függ. A 5,7-es verzióban az API 05-2017-es verziója eltávolította a megbízhatósági szint tulajdonságot. Ehelyett a kód kiszámítja a fürt leginkább optimalizált megbízhatósági szintjét. Ne próbálkozzon a tulajdonság értékének beállításával a 5,7-es verzióban.
+[Az önálló Service Fabric csomag letöltésekor](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)a rendszer a mintákat is tartalmazza ClusterConfig.js. A nevükben a "DevCluster" nevű minták olyan fürtöt hoznak létre, amely ugyanazon a gépen található mindhárom csomóponttal, logikai csomópontok használatával. Ezen csomópontok közül legalább egy elsődleges csomópontként kell megjelölni. Ez a típusú fürt hasznos fejlesztési vagy tesztelési környezetekhez. Üzemi fürtként nem támogatott. A "MultiMachine" névvel ellátott minták segítenek a termelési szintű fürtök létrehozásában, és mindegyik csomópont külön gépen található. A fürtök elsődleges csomópontjainak száma a fürt [megbízhatósági szintjétől](#reliability)függ. A 5,7-es verzióban az API 05-2017-es verziója eltávolította a megbízhatósági szint tulajdonságot. Ehelyett a kód kiszámítja a fürt leginkább optimalizált megbízhatósági szintjét. Ne próbálkozzon a tulajdonság értékének beállításával a 5,7-es verzióban.
 
-* A ClusterConfig. unsecure. DevCluster. JSON és a ClusterConfig. unsecure. MultiMachine. JSON azt szemlélteti, hogyan lehet létrehozni egy nem biztonságos tesztet vagy üzemi fürtöt.
+* ClusterConfig.Unsecure.DevCluster.jsbe és ClusterConfig.Unsecure.MultiMachine.jsa bemutatjuk, hogyan kell létrehozni egy nem biztonságos tesztet vagy üzemi fürtöt.
 
-* A ClusterConfig. Windows. DevCluster. JSON és a ClusterConfig. Windows. MultiMachine. JSON fájl bemutatja, hogyan hozhatók létre a [Windows biztonsági](service-fabric-windows-cluster-windows-security.md)szolgáltatással védett tesztelési vagy üzemi fürtök.
+* ClusterConfig.Windows.DevCluster.json és ClusterConfig.Windows.MultiMachine.json bemutatjuk, hogyan hozhatók létre a [Windows biztonsági](service-fabric-windows-cluster-windows-security.md)szolgáltatással védett tesztelési vagy üzemi fürtök.
 
-* A ClusterConfig. X509. DevCluster. JSON és a ClusterConfig. X509. MultiMachine. JSON bemutatják, hogyan hozhat létre olyan tesztelési vagy üzemi fürtöket, amelyek a [X509 tanúsítványalapú biztonság](service-fabric-windows-cluster-x509-security.md)használatával biztonságosak.
+* ClusterConfig.X509.DevCluster.json és ClusterConfig.X509.MultiMachine.json bemutatjuk, hogyan hozhat létre olyan tesztelési vagy üzemi fürtöket, amelyek a [X509-tanúsítvány alapú biztonság](service-fabric-windows-cluster-x509-security.md)használatával biztonságosak.
 
-Most vizsgáljuk meg a ClusterConfig. JSON fájl különböző részeit.
+Most vizsgáljuk meg egy ClusterConfig.jskülönböző részeit a fájlon.
 
 ## <a name="general-cluster-configurations"></a>Általános fürtkonfiguráció
 Az általános fürtkonfiguráció a fürtre jellemző konfigurációk körét fedi le, ahogy az a következő JSON-kódrészletben látható:
@@ -65,13 +64,13 @@ Egy Service Fabric fürtnek legalább három csomópontot kell tartalmaznia. A b
 | **Csomópont-konfiguráció** | **Leírás** |
 | --- | --- |
 | Csomópontnév |Bármilyen felhasználóbarát nevet adhat a csomópontnak. |
-| IP-cím |A csomópont IP-címének megkereséséhez nyisson meg egy parancssori ablakot, `ipconfig`és írja be a parancsot. Jegyezze fel az IPV4-címeket, és rendelje hozzá az IP-cím változóhoz. |
+| IP-cím |A csomópont IP-címének megkereséséhez nyisson meg egy parancssori ablakot, és írja be a parancsot `ipconfig` . Jegyezze fel az IPV4-címeket, és rendelje hozzá az IP-cím változóhoz. |
 | nodeTypeRef |Mindegyik csomóponthoz egy másik csomópont-típus rendelhető. A [csomópontok típusai](#node-types) a következő szakaszban vannak meghatározva. |
 | faultDomain |A tartalék tartományok lehetővé teszik a fürt rendszergazdái számára a közös fizikai függőségek miatti feladatátvételt okozó fizikai csomópontok definiálását. |
 | upgradeDomain |A frissítési tartományok olyan csomópont-készleteket határoznak meg, amelyek a Service Fabric frissítéseinek egy időben történő leállításakor állnak le. Kiválaszthatja, hogy mely csomópontok legyenek hozzárendelve a frissítési tartományokhoz, mert nem korlátozzák semmilyen fizikai követelményt. |
 
 ## <a name="cluster-properties"></a>Fürt tulajdonságai
-A ClusterConfig. JSON tulajdonságok szakasza a fürt konfigurálására szolgál a következő ábrán látható módon:
+A ClusterConfig.json tulajdonságok szakasza a fürt konfigurálására szolgál a következő ábrán látható módon:
 
 ### <a name="reliability"></a>Megbízhatóság
 A reliabilityLevel fogalma meghatározza a fürt elsődleges csomópontjain futtatható Service Fabric rendszerszolgáltatások replikáinak vagy példányainak számát. Meghatározza a szolgáltatások megbízhatóságát és így a fürtöt. Az értéket a rendszer a fürt létrehozásakor és a frissítés időpontjában számítja ki.
@@ -147,7 +146,7 @@ A név az adott csomópont típusának rövid neve. A csomópont típusú csomó
 * a leaseDriverEndpointPort az a port, amelyet a fürt címbérletének illesztőprogramja használ annak megállapítására, hogy a csomópontok továbbra is aktívak-e. 
 * a serviceConnectionEndpointPort a csomóponton telepített alkalmazások és szolgáltatások által használt port, amely az adott csomóponton lévő Service Fabric ügyféllel folytatott kommunikációra szolgál.
 * a httpGatewayEndpointPort az Service Fabric Explorer által a fürthöz való csatlakozáshoz használt port.
-* a az ephemeralports felülbírálja az [operációs rendszer által használt dinamikus portokat](https://support.microsoft.com/kb/929851). Service Fabric a portok egy részét használja az alkalmazás portjaiként, és a fennmaradók elérhetők az operációs rendszer számára. Ez a tartomány az operációs rendszerben található meglévő tartományhoz is leképezhető, így az összes célra használhatja a JSON-fájlokban megadott tartományokat. Győződjön meg arról, hogy a kezdő és a záró portok közötti különbség legalább 255. Előfordulhat, hogy ütközések merülhetnek fel, ha a különbség túl alacsony, mert ez a tartomány meg van osztva az operációs rendszerrel. A konfigurált Dinamikus porttartomány megjelenítéséhez futtassa a parancsot `netsh int ipv4 show dynamicport tcp`.
+* a az ephemeralports felülbírálja az [operációs rendszer által használt dinamikus portokat](https://support.microsoft.com/kb/929851). Service Fabric a portok egy részét használja az alkalmazás portjaiként, és a fennmaradók elérhetők az operációs rendszer számára. Ez a tartomány az operációs rendszerben található meglévő tartományhoz is leképezhető, így az összes célra használhatja a JSON-fájlokban megadott tartományokat. Győződjön meg arról, hogy a kezdő és a záró portok közötti különbség legalább 255. Előfordulhat, hogy ütközések merülhetnek fel, ha a különbség túl alacsony, mert ez a tartomány meg van osztva az operációs rendszerrel. A konfigurált Dinamikus porttartomány megjelenítéséhez futtassa a parancsot `netsh int ipv4 show dynamicport tcp` .
 * a applicationPorts a Service Fabric-alkalmazások által használt portok. Az alkalmazás portszámának elég nagynak kell lennie ahhoz, hogy le lehessen fedni az alkalmazások végponti követelményeit. Ez a tartomány nem lehet a számítógép Dinamikus porttartomány, azaz a konfigurációban beállított az ephemeralports-tartomány. Service Fabric ezeket a portokat használja, amikor új portokra van szükség, és gondoskodik a portok tűzfalának megnyitásáról. 
 * a reverseProxyEndpointPort egy nem kötelező fordított proxy végpont. További információ: [Service Fabric fordított proxy](service-fabric-reverseproxy.md). 
 
@@ -199,7 +198,7 @@ Az összes elérhető kiegészítő funkció a [Service Fabric REST API-referenc
 Ha engedélyezni szeretné a tárolók támogatását a Windows Server-tárolók és a Hyper-V tárolók számára az önálló fürtök esetében, engedélyezni kell a DnsService-bővítmény funkciót.
 
 ## <a name="next-steps"></a>További lépések
-Miután megtörtént a teljes *ClusterConfig. JSON* fájl konfigurálása az önálló fürt beállítása alapján, üzembe helyezheti a fürtöt. Kövesse az [önálló Service Fabric-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakör lépéseit. 
+Miután az önálló fürt beállítása szerint konfigurálta a teljes *ClusterConfig.jsa* fájlon, üzembe helyezheti a fürtöt. Kövesse az [önálló Service Fabric-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakör lépéseit. 
 
 Ha önálló fürttel rendelkezik, akkor [egy önálló fürt konfigurációját is frissítheti](service-fabric-cluster-config-upgrade-windows-server.md). 
 

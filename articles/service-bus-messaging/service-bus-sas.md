@@ -1,24 +1,13 @@
 ---
 title: Azure Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 description: A Service Bus hozzáférés-vezérlésének áttekintése a közös hozzáférési aláírások használatával – áttekintés, a SAS-engedélyezéssel kapcsolatos részletek Azure Service Bus.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340970"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -29,7 +18,7 @@ Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek
 > [!NOTE]
 > Azure Service Bus támogatja a Service Bus névterek és az entitások hozzáférésének engedélyezését Azure Active Directory (Azure AD) használatával. Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a közös hozzáférésű aláírások (SAS) számára. Az Azure AD-ben nincs szükség a jogkivonatok tárolására a kódban, és kockázatos biztonsági réseket.
 >
-> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információkért tekintse át a következő cikkeket:
+> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információért tekintse át a következő cikkeket:
 > - [Azure Active Directory használatával hitelesítheti és engedélyezheti az alkalmazást Azure Service Bus entitások eléréséhez](authenticate-application.md).
 > - [Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez](service-bus-managed-service-identity.md)
 
@@ -45,7 +34,7 @@ A [közös hozzáférésű aláírási](/dotnet/api/microsoft.servicebus.shareda
 
 Minden Service Bus névtérnek és minden Service Bus entitásnak van egy közös hozzáférési engedélyezési szabályzata, amely szabályokból áll. A névtér szintjén lévő szabályzat a névtéren belüli összes entitásra vonatkozik, függetlenül az egyes házirend-konfigurációtól.
 
-Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: **név**, **hatókör**és **jogosultságok**. A **név** csak az; a hatókörön belüli egyedi név. A hatókör elég egyszerű: Ez a kérdéses erőforrás URI-ja. Service Bus névtér esetében a hatókör a teljes tartománynév (FQDN), például: `https://<yournamespace>.servicebus.windows.net/`.
+Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: **név**, **hatókör**és **jogosultságok**. A **név** csak az; a hatókörön belüli egyedi név. A hatókör elég egyszerű: Ez a kérdéses erőforrás URI-ja. Service Bus névtér esetében a hatókör a teljes tartománynév (FQDN), például: `https://<yournamespace>.servicebus.windows.net/` .
 
 A házirend-szabály által biztosított jogok a következőket foglalhatják magukban:
 
@@ -77,12 +66,12 @@ Minden olyan ügyfél létrehozhat egy SAS-jogkivonatot, amely egy engedélyezé
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**-A jogkivonat lejárati ideje azonnali. Az egész szám, amely a ( `00:00:00 UTC` z) 1970. január 1-jén (UNIX-kor), a jogkivonat lejárati idejének lejárta óta.
+* **`se`**-A jogkivonat lejárati ideje azonnali. Az egész szám, amely a `00:00:00 UTC` (z) 1970. január 1-jén (UNIX-kor), a jogkivonat lejárati idejének lejárta óta.
 * **`skn`**– Az engedélyezési szabály neve.
 * **`sr`**-Az elérni kívánt erőforrás URI-ja.
 * **`sig`** Aláírás.
 
-Az `signature-string` az SHA-256 kivonat, amely az erőforrás URI-ja alapján lett kiszámítva (az előző szakaszban leírtak szerint)**, valamint a** jogkivonat lejárati időpontjának karakterláncos ÁBRÁZOLása, az LF elválasztva.
+Az az `signature-string` SHA-256 kivonat, amely az erőforrás URI-ja alapján**scope** lett kiszámítva (az előző szakaszban leírtak szerint), valamint a jogkivonat lejárati időpontjának karakterláncos ábrázolása, az LF elválasztva.
 
 A kivonatoló számítás a következő pszeudo-kódhoz hasonlóan néz ki, és egy 256 bites/32 bájtos kivonatoló értéket ad vissza.
 
@@ -92,13 +81,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kiszámíthatja a kivonatot ugyanazzal a paraméterekkel, és ellenőrizheti, hogy a kiállító rendelkezik-e érvényes aláíró kulccsal.
 
-Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például: `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`; azaz: `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például: `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>` ;, azaz, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
 **Az URI-nak [százalékos kódolással](https://msdn.microsoft.com/library/4fkewx0t.aspx)kell rendelkeznie.**
 
-Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például `http://contoso.servicebus.windows.net/contosoTopics/T1` vagy `http://contoso.servicebus.windows.net` az előző példában.
+Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például vagy az `http://contoso.servicebus.windows.net/contosoTopics/T1` `http://contoso.servicebus.windows.net` előző példában.
 
-Az SAS-token érvényes minden olyan erőforráshoz, `<resourceURI>` amelyet a-ben használt `signature-string`.
+Az SAS-token érvényes minden olyan erőforráshoz, amelyet a `<resourceURI>` -ben használt `signature-string` .
 
 ## <a name="regenerating-keys"></a>Kulcsok újragenerálása
 
@@ -191,7 +180,7 @@ Az előző szakaszban megtudhatta, hogyan használhatja az SAS-tokent egy HTTP P
 
 Mielőtt megkezdené az adatküldést a Service Busba, a közzétevőnek az SAS-jogkivonatot egy **$CBS** nevű, jól DEFINIÁLt AMQP-csomópontra kell küldenie egy AMQP (a szolgáltatás által az összes sas-token beszerzéséhez és ellenőrzéséhez használt "speciális" üzenetsorként jelenik meg). A közzétevőnek meg kell adnia a **ReplyTo** MEZŐT a AMQP üzenetben; Ez az a csomópont, amelyben a szolgáltatás a jogkivonatok érvényesítésének eredményeképpen válaszol a közzétevőnek (egyszerű kérelem/válasz minta a közzétevő és a szolgáltatás között). Ez a válasz-csomópont "menet közben" jön létre, amely a "távoli csomópont dinamikus létrehozására" szól a AMQP 1,0 specifikációban leírtak szerint. Miután ellenőrizte, hogy az SAS-jogkivonat érvényes-e, a közzétevő mehet előre, és megkezdheti az adatküldést a szolgáltatásnak.
 
-A következő lépések bemutatják, hogyan küldheti el az SAS-tokent a AMQP protokollal a [AMQP.net Lite](https://github.com/Azure/amqpnetlite) Library használatával. Ez akkor hasznos, ha nem használhatja a (z) C\#platformon fejleszthető hivatalos Service Bus SDK-t (például WinRT, .net kompakt keretrendszer, .net Micro Framework és mono). Természetesen ez a könyvtár hasznos lehet annak megértésében, hogyan működik a jogcímek biztonsága a AMQP szinten, ahogy látta, hogyan működik a HTTP-szinten (HTTP POST-kéréssel és az "engedélyezés" fejlécben küldött SAS-tokenrel). Ha nincs szüksége ilyen mélyre az AMQP-ről, a hivatalos Service Bus SDK-val .NET-keretrendszerbeli alkalmazásokkal is elvégezheti a használatát.
+A következő lépések bemutatják, hogyan küldheti el az SAS-tokent a AMQP protokollal a [AMQP.net Lite](https://github.com/Azure/amqpnetlite) Library használatával. Ez akkor hasznos, ha nem használhatja a (z) C platformon fejleszthető hivatalos Service Bus SDK-t (például WinRT, .NET kompakt keretrendszer, .NET Micro Framework és mono) \# . Természetesen ez a könyvtár hasznos lehet annak megértésében, hogyan működik a jogcímek biztonsága a AMQP szinten, ahogy látta, hogyan működik a HTTP-szinten (HTTP POST-kéréssel és az "engedélyezés" fejlécben küldött SAS-tokenrel). Ha nincs szüksége ilyen mélyre az AMQP-ről, a hivatalos Service Bus SDK-val .NET-keretrendszerbeli alkalmazásokkal is elvégezheti a használatát.
 
 ### <a name="c35"></a>C&#35;
 
@@ -253,7 +242,7 @@ A `PutCbsToken()` metódus fogadja a *kapcsolat* (AMQP-kapcsolati osztály péld
 
 Ezután a közzétevő két AMQP-hivatkozást hoz létre az SAS-token küldéséhez és a válasz fogadásához (jogkivonat-érvényesítési eredmény) a szolgáltatástól.
 
-A AMQP-üzenet tulajdonságok készletét és további információkat tartalmaz, mint egy egyszerű üzenet. Az SAS-token az üzenet törzse (a konstruktorának használatával). A **"ReplyTo"** tulajdonság értéke a csomópont neve, amely a fogadó hivatkozáson keresztül fogadja az érvényesítési eredményt (ha szeretné, módosíthatja a nevét, és a szolgáltatás dinamikusan létrehozza azt). A szolgáltatás az utolsó három alkalmazást/egyéni tulajdonságot használja arra, hogy jelezze, milyen műveletet kell végrehajtania. A CBS-draft specifikációjának megfelelően a **művelet neve** ("Put-token"), a **jogkivonat típusa** (ebben az esetben a `servicebus.windows.net:sastoken`) és annak a **célközönségnek a neve** , amelyre a jogkivonat vonatkozik (a teljes entitás).
+A AMQP-üzenet tulajdonságok készletét és további információkat tartalmaz, mint egy egyszerű üzenet. Az SAS-token az üzenet törzse (a konstruktorának használatával). A **"ReplyTo"** tulajdonság értéke a csomópont neve, amely a fogadó hivatkozáson keresztül fogadja az érvényesítési eredményt (ha szeretné, módosíthatja a nevét, és a szolgáltatás dinamikusan létrehozza azt). A szolgáltatás az utolsó három alkalmazást/egyéni tulajdonságot használja arra, hogy jelezze, milyen műveletet kell végrehajtania. A CBS-draft specifikációjának megfelelően a **művelet neve** ("Put-token"), a **jogkivonat típusa** (ebben az esetben a `servicebus.windows.net:sastoken` ) és annak a **célközönségnek a neve** , amelyre a jogkivonat vonatkozik (a teljes entitás).
 
 Miután elküldte az SAS-tokent a küldő hivatkozáson, a közzétevőnek el kell olvasnia a választ a fogadó hivatkozáson. A válasz egy egyszerű AMQP üzenet, amely egy **"Status-Code"** nevű Application tulajdonságot tartalmaz, amely ugyanazokat az értékeket tartalmazza, mint a http-állapotkód.
 

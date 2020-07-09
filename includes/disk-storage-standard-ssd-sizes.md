@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/28/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ef257d056b20bacbca58baa5ac97fa77a492fefd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f49cc837e79903bb9e50cb630c5a1b9445437cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84637418"
 ---
 | standard SSD méretek | E1 | E2 | E3 | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60 | E70 | E80 |
 |--------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
 | Lemez mérete GiB-ban | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1 024 | 2048 | 4 096 | 8,192 | 16,384 | 32 767 |
-| IOPS-érték lemezenként | Akár 120 | Akár 120 | Akár 120 | Akár 120 | Akár 240 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Akár 2 000 | Akár 4 000 | Akár 6 000 |
-| Adattovábbítás lemezenként |  Akár 25 MiB/s | Akár 25 MiB/s | Akár 25 MiB/s | Akár 25 MiB/s |  Akár 50 MiB/mp  |  Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp| Akár 400 MiB/mp |  Akár 600 MiB/mp | Akár 750 MiB/mp |
+| IOPS-érték lemezenként | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Legfeljebb 500 | Akár 2 000 | Akár 4 000 | Akár 6 000 |
+| Adattovábbítás lemezenként |  Akár 60 MB/s | Akár 60 MB/s | Akár 60 MB/s | Akár 60 MB/s |  Akár 60 MB/s  |  Akár 60 MB/s | Akár 60 MB/s | Akár 60 MB/s | Akár 60 MB/s | Akár 60 MB/s | Akár 60 MB/s| Akár 400 MB/s |  Akár 600 MB/s | Akár 750 MB/s |

@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 979c714ca5446d3f1eabb76e97535ee5ffa2e359
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f8f65d5f5fe9ec2345279d9f680cb77354834715
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140724"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735552"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,8 @@ Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE haszná
 
 #### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő válassza a **Tallózás**lehetőséget, jelölje be az **előzetes verzió**használata jelölőnégyzetet, és keressen rá `Azure.AI.TextAnalytics` . Válassza `1.0.0-preview.5` a verzió, majd a **telepítés**lehetőséget. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Válassza `1.0.0` a verzió, majd a **telepítés**lehetőséget. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+
 
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
@@ -166,7 +167,6 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     DocumentSentiment documentSentiment = client.AnalyzeSentiment(inputText);
     Console.WriteLine($"Document sentiment: {documentSentiment.Sentiment}\n");
 
-    var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
         Console.WriteLine($"\tText: \"{sentence.Text}\"");

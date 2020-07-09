@@ -3,15 +3,15 @@ title: Virtuális hálózat alapú hozzáférés konfigurálása Azure Cosmos-fi
 description: Ez a dokumentum ismerteti a Azure Cosmos DB virtuális hálózati szolgáltatás végpontjának beállításához szükséges lépéseket.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 03/26/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a061676714c35b4e8868ce3df9c71be05297ba99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261664"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Virtuális hálózatok (VNet) elérésének konfigurálása
 
@@ -42,17 +42,17 @@ A következő szakaszok azt ismertetik, hogyan konfigurálható egy virtuális h
 
 1. Válassza ki azt az **előfizetést** , amelyből hozzá szeretné adni az Azure-beli virtuális hálózatot. Válassza ki azokat az Azure-beli **virtuális hálózatokat** és **alhálózatokat** , amelyeknek hozzáférést kíván biztosítani a Azure Cosmos db-fiókjához. Ezután válassza az **Engedélyezés** lehetőséget a kiválasztott hálózatok engedélyezéséhez a "Microsoft. AzureCosmosDB" szolgáltatási végpontokkal. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza ki a virtuális hálózatot és az alhálózatot](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Válassza ki a virtuális hálózatot és az alhálózatot":::
 
 1. Ha a Azure Cosmos DB fiók engedélyezve van egy virtuális hálózatról való hozzáférésre, akkor csak a kiválasztott alhálózatról érkező forgalmat engedélyezi. A hozzáadott virtuális hálózatnak és alhálózatnak az alábbi képernyőképen látható módon kell megjelennie:
 
-   ![A virtuális hálózat és az alhálózat sikeresen konfigurálva](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="A virtuális hálózat és az alhálózat sikeresen konfigurálva":::
 
 > [!NOTE]
 > A virtuális hálózati szolgáltatás végpontok engedélyezéséhez a következő előfizetési engedélyek szükségesek:
 >   * Előfizetés virtuális hálózattal: hálózati közreműködő
 >   * Előfizetés Azure Cosmos DB fiókkal: DocumentDB-fiók közreműködői
->   * Ha a virtuális hálózat és a Azure Cosmos DB fiók különböző előfizetésekben található, győződjön meg arról, hogy a virtuális hálózattal `Microsoft.DocumentDB` rendelkező előfizetéshez erőforrás-szolgáltató is van regisztrálva. Erőforrás-szolgáltató regisztrálásához tekintse meg az [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md) című cikket.
+>   * Ha a virtuális hálózat és a Azure Cosmos DB fiók különböző előfizetésekben található, győződjön meg arról, hogy a virtuális hálózattal rendelkező előfizetéshez erőforrás-szolgáltató is van `Microsoft.DocumentDB` regisztrálva. Erőforrás-szolgáltató regisztrálásához tekintse meg az [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md) című cikket.
 
 Az előfizetés erőforrás-szolgáltatóval való regisztrálásának útmutatója.
 
@@ -66,7 +66,7 @@ Az előfizetés erőforrás-szolgáltatóval való regisztrálásának útmutat�
 
 1. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd válassza a **Létrehozás**lehetőséget. Az alhálózat a "Microsoft. AzureCosmosDB" számára engedélyezett szolgáltatási végponttal lesz létrehozva.
 
-   ![Válasszon ki egy virtuális hálózatot és alhálózatot egy új virtuális hálózat számára](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Válasszon ki egy virtuális hálózatot és alhálózatot egy új virtuális hálózat számára":::
 
 Ha a Azure Cosmos DB-fiókot más Azure-szolgáltatások, például az Azure Cognitive Search vagy a stream Analytics vagy a Power BI használatával érik el, akkor a hozzáférést a **globális Azure-adatközpontokban lévő kapcsolatok fogadása**lehetőség választásával engedélyezheti.
 
@@ -80,7 +80,7 @@ Annak biztosítása érdekében, hogy a portálon Azure Cosmos DB metrikák hozz
 
 1. Virtuális hálózat vagy alhálózat szabályának eltávolításához válassza a **...** lehetőséget a virtuális hálózat vagy alhálózat mellett, és válassza az **Eltávolítás**lehetőséget.
 
-   ![Virtuális hálózat eltávolítása](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Virtuális hálózat eltávolítása":::
 
 1. A módosítások alkalmazásához kattintson a **Mentés** gombra.
 
@@ -202,7 +202,7 @@ az cosmosdb create \
 
 ### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Cosmos-fiók összekapcsolása és konfigurálása a háttérbeli alhálózatokhoz egymástól függetlenül
 
-Ebből a példából megtudhatja, hogyan csatlakoztatható egy Azure Cosmos-fiók egy meglévő új virtuális hálózathoz, ahol az alhálózat még nincs konfigurálva a szolgáltatási végpontokhoz. Ezt a `--ignore-missing-vnet-service-endpoint` paraméter használatával végezheti el. Ez lehetővé teszi, hogy a Cosmos-fiók konfigurációja hiba nélkül befejeződjön, mielőtt a virtuális hálózat alhálózatának konfigurációja befejeződik. Az alhálózat-konfiguráció befejezése után a Cosmos-fiók elérhető lesz a konfigurált alhálózaton keresztül.
+Ebből a példából megtudhatja, hogyan csatlakoztatható egy Azure Cosmos-fiók egy meglévő új virtuális hálózathoz, ahol az alhálózat még nincs konfigurálva a szolgáltatási végpontokhoz. Ezt a paraméter használatával végezheti el `--ignore-missing-vnet-service-endpoint` . Ez lehetővé teszi, hogy a Cosmos-fiók konfigurációja hiba nélkül befejeződjön, mielőtt a virtuális hálózat alhálózatának konfigurációja befejeződik. Az alhálózat-konfiguráció befejezése után a Cosmos-fiók elérhető lesz a konfigurált alhálózaton keresztül.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -257,6 +257,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>Porttartomány közvetlen mód használata esetén
+
+Ha Azure Cosmos-fiókkal rendelkező szolgáltatási végpontokat használ közvetlen módú csatlakozással, meg kell győződnie arról, hogy a TCP-port 10000 és 20000 közötti tartománya nyitva van.
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Áttelepítés IP-tűzfalszabály alapján virtuális hálózati ACL-re
 

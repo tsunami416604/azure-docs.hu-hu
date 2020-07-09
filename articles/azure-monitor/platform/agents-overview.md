@@ -8,11 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686664"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -31,7 +30,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 
 | | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|
-| Támogatott környezetek | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | 
+| Támogatott környezetek | Azure | Azure<br>Egyéb felhő<br>Helyszíni | Azure<br>Egyéb felhő<br>Helyszíni | 
 | Ügynökre vonatkozó követelmények  | None | None | Log Analytics-ügynököt igényel |
 | Összegyűjtött adatok | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>összeomlási memóriaképek,<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<IIS logs><br>Fájl alapú naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
 | Adatküldés | Azure Storage<br>Azure Monitor metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók |
@@ -41,7 +40,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 
 | | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
-| Támogatott környezetek | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények |
+| Támogatott környezetek | Azure | Azure<br>Egyéb felhő<br>Helyszíni | Azure<br>Egyéb felhő<br>Helyszíni | Azure<br>Egyéb felhő<br>Helyszíni |
 | Ügynökre vonatkozó követelmények  | None | None | None | Log Analytics-ügynököt igényel |
 | Összegyűjtött adatok | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
 | Adatküldés | Azure Storage<br>Eseményközpont | Azure Monitor metrikák | Azure Monitor-naplók | Azure Monitor-naplók |

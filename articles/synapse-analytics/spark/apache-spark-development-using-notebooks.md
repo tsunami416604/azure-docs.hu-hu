@@ -1,24 +1,25 @@
 ---
-title: Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
+title: Szinapszis Studio-jegyzetfüzetek
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és fejleszthet Azure szinapszis Studio (előzetes verzió) jegyzetfüzeteket az adatelőkészítés és a vizualizációk elvégzéséhez.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702098"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045688"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
-Az Azure szinapszis Studio (előzetes verzió) jegyzetfüzet egy webes kezelőfelület, amellyel élő kódokat, vizualizációkat és narratív szöveget tartalmazó fájlokat hozhat létre. A jegyzetfüzetek jó kiindulópontot nyújtanak az ötletek érvényesítéséhez és a gyors kísérletekhez az adatokból származó elemzések megszerzéséhez. A jegyzetfüzeteket is széles körben használják az adatok előkészítésében, az adatvizualizációban, a gépi tanulásban és más Big-adatokban.
+A szinapszis Studio (előzetes verzió) jegyzetfüzet egy webes kezelőfelület, amellyel élő kódokat, vizualizációkat és elbeszélési szöveget tartalmazó fájlokat hozhat létre. A jegyzetfüzetek jó kiindulópontot nyújtanak az ötletek érvényesítéséhez és a gyors kísérletekhez az adatokból származó elemzések megszerzéséhez. A jegyzetfüzeteket is széles körben használják az adatok előkészítésében, az adatvizualizációban, a gépi tanulásban és más Big-adatokban.
 
 Az Azure szinapszis Studio notebook használatával a következőket teheti:
 
@@ -109,7 +110,7 @@ Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken 
 
 ### <a name="ide-style-intellisense"></a>IDE-Style IntelliSense
 
-Az Azure szinapszis Studio notebookok integrálva vannak a Monaco-szerkesztővel, hogy IDE-stílusú IntelliSense kerüljön a cellás szerkesztőbe. A szintaxis kiemelése, a hiba-előállító és az automatikus kód befejezése segít a kód írásához és a problémák gyorsabb azonosításához.
+Az Azure szinapszis Studio notebookok integrálva vannak a Monaco-szerkesztővel, hogy IDE-stílusú IntelliSense kerüljön a cellás szerkesztőbe. A szintaxis kiemelése, a hiba jelölője és az automatikus kód befejezése segít a kód írásához és a problémák gyorsabb azonosításához.
 
 Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szintjein vannak. Az alábbi táblázat segítségével megtekintheti, hogy mi támogatott.
 
@@ -118,7 +119,7 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 |PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Igen|
 |SparkSQL|Igen|Igen|-|-|-|-|-|-|
-|.NET for Spark (C#)|Igen|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Szöveg cellájának formázása eszköztár gombjaival
 
@@ -343,7 +344,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
    ![parancssori üzemmód](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, nem kell beírnia a cellába. Adja meg a szerkesztési módot úgy, `Enter` hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
+2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, `Enter` hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -351,7 +352,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis jegyzetfüzetekben.
 
-| Művelet |A szinapszis Studio notebook parancsikonjai  |
+| Műveletek |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget. | SHIFT + ENTER |
 |Az aktuális cella futtatása és az alábbi beszúrása | ALT + ENTER |
@@ -370,7 +371,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis-jegyzetfüzetekben szerkesztési módban.
 
-| Művelet |A szinapszis Studio notebook parancsikonjai  |
+| Műveletek |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Kurzor mozgatása felfelé | Fel |
 |Kurzor mozgatása lefelé|Le|

@@ -4,15 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre felügyelt mag�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193889"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Felügyelt privát végpont létrehozása az adatforráshoz (előzetes verzió)
 
@@ -35,7 +36,7 @@ Válassza ki az adatforrás típusát. Ebben az esetben a célként megadott ada
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. lépés: az adatforrással kapcsolatos adatok megadása
 
-A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a példában egy felügyelt magánhálózati végpontot hozunk létre egy ADLS Gen2-fiókhoz. Adja meg a felügyelt magánhálózati végpont **nevét** . Adja meg az **Azure-előfizetést** és a **Storage-fiók nevét**. Kattintson a **Létrehozás** gombra.
+A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a példában egy felügyelt magánhálózati végpontot hozunk létre egy ADLS Gen2-fiókhoz. Adja meg a felügyelt magánhálózati végpont **nevét** . Adja meg az **Azure-előfizetést** és a **Storage-fiók nevét**. Válassza a **Létrehozás** lehetőséget.
 ![Adja meg a célként megadott adatforrás részleteit](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. lépés: annak ellenőrzése, hogy sikerült-e létrehozni a felügyelt magánhálózati végpontot

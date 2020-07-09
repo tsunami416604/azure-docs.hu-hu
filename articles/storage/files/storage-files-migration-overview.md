@@ -7,12 +7,11 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660758"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -120,9 +119,9 @@ Az alábbi táblázat a Microsoft-eszközöket és az Azure-fájlmegosztás jele
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Natívan integrálva van az Azure-fájlmegosztásba. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Storage áttelepítési szolgáltatás | Közvetetten támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható SMS-célkiszolgálón. | Teljes hűség. * |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, 10,4-es vagy újabb verzió| Támogatott. | Teljes hűség. * |
 |![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Támogatott. | Nem másolja a metaadatokat. [A Data Box a Azure file Sync használatával használható](storage-sync-offline-data-transfer.md). |
-|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Támogatott. | Nem másolja a metaadatokat. |
-|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Storage Explorer | Támogatott. | Nem másolja a metaadatokat. |
+|![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer, 1,14-es verzió | Támogatott. | Nem másolja át az ACL-eket. Az időbélyegeket támogatja.  |
 |![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
 |||||
 

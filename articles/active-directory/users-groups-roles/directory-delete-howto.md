@@ -8,18 +8,17 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5ea42f5196b2c4ffe06c139e595dd4641752d35
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.openlocfilehash: d21e0358e2226f93a6c7088906d1146e5e2cf740
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84729030"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Bérlő törlése Azure Active Directory
 
@@ -143,4 +142,4 @@ Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs ter
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Active Directory dokumentációja](https://docs.microsoft.com/azure/active-directory/)
+[Azure Active Directory-dokumentáció](https://docs.microsoft.com/azure/active-directory/)

@@ -1,18 +1,14 @@
 ---
 title: Geo vész-helyreállítás a Azure Event Gridban | Microsoft Docs
 description: Leírja, hogyan támogatja a Azure Event Grid a Geo vész-helyreállítási (GeoDR) automatikus használatát.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.date: 07/07/2020
+ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "66307317"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105846"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Kiszolgálóoldali földrajzi katasztrófa-helyreállítás Azure Event Grid
 Event Grid mostantól automatikus geo vész-helyreállítási (GeoDR) metaadatokat tartalmaz, nem csak az új, hanem az összes meglévő tartományt, témakört és esemény-előfizetést. Ha egy teljes Azure-régió leáll, Event Grid az összes eseménnyel kapcsolatos infrastruktúra-metaadatát szinkronizálja egy párosított régióba. Az új események az Ön beavatkozása nélkül is újra áramlanak. 
@@ -36,5 +32,5 @@ Event Grid automatikus feladatátvétele különböző RPO és RTOs rendelkezik 
 > A Event Grid metaadatok GeoDR díja: $0.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha saját ügyféloldali feladatátvételi logikát szeretne megvalósítani, tekintse meg a [# saját vész-helyreállítási felépítése az egyéni témakörökhöz című részt Event Grid](custom-disaster-recovery.md)

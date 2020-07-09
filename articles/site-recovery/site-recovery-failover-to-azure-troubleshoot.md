@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133774"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása VMware virtuális gépen vagy fizikai gépen az Azure-ba történő feladatátvétel során
 
@@ -74,6 +74,10 @@ A **Windows vendég operációs rendszerhez**tartozó illesztőprogramok indít�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni/RDP/SSH-kapcsolatot létesíteni a feladatátvételi virtuális géppel a virtuális gép szürke kikapcsolási gombja miatt
 
+Az RDP-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+
+Az SSH-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md).
+
 Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csatlakozás** ) gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz az expressz útvonalon vagy a helyek közötti VPN-kapcsolaton keresztül, akkor
 
 1. Nyissa meg a **virtuális gép**  >  **hálózatkezelését**, és kattintson a szükséges hálózati adapter nevére.  ![hálózati adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -86,7 +90,7 @@ Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csa
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nem lehet csatlakozni/RDP/SSH-VM-csatlakozás gomb elérhető
 
-Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Csatlakozás** gomb elérhető (nem szürkén jelenik meg), akkor ellenőrizze a **rendszerindítási diagnosztikát** a virtuális gépen, és ellenőrizze a hibákat a [jelen cikkben](../virtual-machines/windows/boot-diagnostics.md)leírtak szerint.
+Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Csatlakozás** gomb elérhető (nem szürkén jelenik meg), akkor ellenőrizze a **rendszerindítási diagnosztikát** a virtuális gépen, és ellenőrizze a hibákat a [jelen cikkben](../virtual-machines/troubleshooting/boot-diagnostics.md)leírtak szerint.
 
 1. Ha a virtuális gép nem indult el, próbálja meg a feladatátvételt egy régebbi helyreállítási pontra.
 2. Ha a virtuális gépen belüli alkalmazás nem működik, próbálja meg végrehajtani a feladatátvételt egy alkalmazás-konzisztens helyreállítási pontra.
@@ -130,7 +134,7 @@ Ez a probléma akkor jelenik meg, ha nem tudja megtekinteni az adattárolót az 
 
 A virtuális gépek ismételt védelemmel kapcsolatos további információkért lásd: [a gépek ismételt védetté és visszavétele a helyszíni helyre az Azure-ba történő feladatátvétel után](vmware-azure-reprotect.md).
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Hozza létre manuálisan a fő célt a forrást kezelő vCenter. Az adattár a következő vCenter-felderítési és-frissítési háló műveletei után lesz elérhető.
 
@@ -148,7 +152,7 @@ Ezt a hibát a következő karakterláncok jelzik a telepítési naplóban:
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
  
 1. A konfigurációs kiszolgáló virtuális gépen nyisson meg egy parancssort, és ellenőrizze a proxy beállításait a következő parancsokkal:
 
@@ -169,8 +173,8 @@ A probléma megoldásához:
      - Tiltsa le a proxyt a fő célkiszolgálón. 
 
 
-## <a name="next-steps"></a>További lépések
-- [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/windows/troubleshoot-rdp-connection.md) hibáinak megoldása
-- Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
+## <a name="next-steps"></a>Következő lépések
+- [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) hibáinak megoldása
+- Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
 
-Ha további segítségre van szüksége, tegye közzé a lekérdezését a [Microsoft Q&egy kérdés oldalát, site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) vagy hagyjon megjegyzést a dokumentum végén. Van egy aktív közösségünk, amelynek segítenie kell a segítségét.
+Ha további segítségre van szüksége, tegye közzé a lekérdezését a [Microsoft Q&egy kérdés oldalát, site Recovery](/answers/topics/azure-site-recovery.html) vagy hagyjon megjegyzést a dokumentum végén. Van egy aktív közösségünk, amelynek segítenie kell a segítségét.

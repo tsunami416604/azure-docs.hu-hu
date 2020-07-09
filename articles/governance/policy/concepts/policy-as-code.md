@@ -3,23 +3,23 @@ title: Szabályzat tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684273"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970943"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
 
 Ahogy halad a felhő irányításával, érdemes áttérnie az egyes szabályzat-definíciók manuális felügyeletére a Azure Portal vagy a különböző SDK-k segítségével, hogy a vállalatnál könnyebben kezelhető és ismételhető legyen. A felhőben a rendszerek nagy léptékű kezelésének egyik meghatározó megközelítése a következő:
 
-- Infrastruktúra mint kód: a környezeteket definiáló tartalom kezelésének gyakorlata, a Resource Manager-sablonoktól kezdve minden, ami forráskódként Azure Policy definíciókat az Azure-tervezetekhez.
+- Infrastruktúra-kód: a környezeteket definiáló tartalom kezelésének gyakorlata, minden Azure Resource Manager sablonból (ARM-sablonokból), hogy Azure Policy definíciókat az Azure-tervezetekhez, mint a forráskód.
 - DevOps: a felhasználók, a folyamatok és a termékek Uniója, amelyek lehetővé teszik az értékek folyamatos teljesítését a végfelhasználók számára.
 
 A szabályzat mint kód az ötletek kombinációja. Lényegében tartsa meg a házirend-definíciókat a forrás vezérlőelemben, és valahányszor változás történik, tesztelje és ellenőrizze a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
 
-Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. A létrehozási és a telepítési folyamat korai összetevőjének Azure Policy érvényesítésével az alkalmazás-és műveleti csapatok felderítik, hogy a módosítások nem jelentenek-e panaszt, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
+Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. Azáltal, hogy Azure Policy érvényesítéssel a létrehozási és üzembe helyezési folyamat korai összetevőjét, az alkalmazás-és műveleti csapatok észlelik, ha a módosítások nem megfelelőek, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
 
 ## <a name="workflow-overview"></a>A munkafolyamat áttekintése
 
@@ -115,7 +115,7 @@ Az összes ellenőrzési kapu befejezése után frissítse a hozzárendelést az
 
 ## <a name="process-integrated-evaluations"></a>Integrált értékelések feldolgozása
 
-A szabályzatok általános munkafolyamata olyan házirendek és kezdeményezések fejlesztésére és üzembe helyezésére szolgál, amelyek méretezhetők a környezetben. A szabályzat kiértékelése azonban a telepítési folyamat részeként az Azure-ban üzembe helyezett vagy az erőforrásokat létrehozó munkafolyamatok részét képezi, például alkalmazások üzembe helyezése vagy Resource Manager-sablonok futtatása infrastruktúra létrehozásához.
+A szabályzatok általános munkafolyamata olyan házirendek és kezdeményezések fejlesztésére és üzembe helyezésére szolgál, amelyek méretezhetők a környezetben. A szabályzat kiértékelése azonban a telepítési folyamat részeként az Azure-ban üzembe helyezett vagy az erőforrásokat létrehozó munkafolyamatok részét képezi, például alkalmazások üzembe helyezése vagy ARM-sablonok futtatása az infrastruktúra létrehozásához.
 
 Ezekben az esetekben az alkalmazás vagy az infrastruktúra üzembe helyezését tesztelési előfizetésre vagy erőforráscsoporthoz kell elvégezni, ezért az adott hatókörre vonatkozó házirend-kiértékelést kell végrehajtani az összes meglévő házirend és kezdeményezés ellenőrzésének ellenőrzéséhez. Habár előfordulhat, hogy a **enforcementMode** _le vannak tiltva_ az ilyen környezetben, érdemes korán tudni, ha egy alkalmazás vagy infrastruktúra üzembe helyezése már nem sérti a szabályzat-definíciókat. Ennek a szabályzatnak a kiértékelése ezért a munkafolyamatok egyik lépése, valamint a nem megfelelő erőforrások létrehozására szolgáló sikertelen telepítések.
 

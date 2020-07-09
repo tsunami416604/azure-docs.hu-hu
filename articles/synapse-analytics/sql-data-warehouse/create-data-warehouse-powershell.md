@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 90c976da7316652b1d700a4deda7ba6e42894c78
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 21ca3968065df2575b101efa7735d56f87683938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015760"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211068"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése Azure PowerShell
 
@@ -72,7 +72,7 @@ $endip = "0.0.0.0"
 $databasename = "mySampleDataWarehouse"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. Az erőforráscsoport egy tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
@@ -137,7 +137,7 @@ A választható paraméterek a következők:
 
 A paraméter beállításairól további információt a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakörben talál.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A gyűjtemény részét képező többi rövid útmutató erre a rövid útmutatóra épül.
 

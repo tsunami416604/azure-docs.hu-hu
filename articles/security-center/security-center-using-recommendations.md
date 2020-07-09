@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783231"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Az Azure Security Center javaslatainak használata a biztonság növelése érdekében
 A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
@@ -57,7 +56,7 @@ A napi megfigyelési tevékenységük részeként Jeff bejelentkezik az Azure-ba
 
 2. Jeff ellenőrzi a **biztonságos pontszámot** , hogy átfogó képet kapjon arról, hogy az előfizetések hogyan biztonságosak, és hogy a pontszám 548.
 
-3. Jeffnek el kell döntenie, hogy mely ajánlásokat kell először kezelni. Így Jeff a biztonságos pontszámra kattint, és megkezdi a javaslatok kezelését annak alapján, hogy mennyire javítja a [biztonságos pontszám hatását](security-center-secure-score.md).
+3. Jeffnek el kell döntenie, hogy mely ajánlásokat kell először kezelni. Így Jeff a biztonságos pontszámra kattint, és megkezdi az ajánlások kezelését a [biztonságos pontszámának](secure-score-security-controls.md)javítása alapján.
 
 4. Mivel Jeff számos csatlakoztatott virtuális géppel és kiszolgálóval rendelkezik, Jeff úgy dönt, hogy a **számítási és az alkalmazásokra**koncentrál.
 

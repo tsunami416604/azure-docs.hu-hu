@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/17/2020
+ms.date: 07/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 00de9c803ef796eda8da609a4009e0a8cfcb3664
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b1cf72a75349c420e2d789b435e049ab824446
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455367"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054406"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
@@ -45,7 +45,7 @@ A telepítés olyan továbbfejlesztett regisztráció, amely a leküldéses kapc
 A következő alapvető előnyökkel jár a telepítések használata:
 
 - A telepítés létrehozása vagy frissítése teljesen idempotens. Így újra megpróbálkozhat az ismétlődő regisztrációkkal kapcsolatos probléma nélkül is.
-- A telepítési modell olyan speciális címke formátumot támogat (`$InstallationId:{INSTALLATION_ID}`), amely lehetővé teszi, hogy az értesítéseket közvetlenül az adott eszközre küldje. Ha például az alkalmazás kódja az adott eszközhöz `joe93developer` tartozó telepítési azonosítót állítja be, akkor a fejlesztők megcélozhatja ezt az eszközt, amikor értesítést küld a `$InstallationId:{joe93developer}` címkének. Ez lehetővé teszi egy adott eszköz célzását anélkül, hogy további kódolásra lenne szükség.
+- A telepítési modell olyan speciális címke formátumot támogat ( `$InstallationId:{INSTALLATION_ID}` ), amely lehetővé teszi, hogy az értesítéseket közvetlenül az adott eszközre küldje. Ha például az alkalmazás kódja az `joe93developer` adott eszközhöz tartozó telepítési azonosítót állítja be, akkor a fejlesztők megcélozhatja ezt az eszközt, amikor értesítést küld a `$InstallationId:{joe93developer}` címkének. Ez lehetővé teszi egy adott eszköz célzását anélkül, hogy további kódolásra lenne szükség.
 - A telepítések lehetővé teszik a részleges regisztrációs frissítések elvégzését is. A telepítés részleges frissítését egy PATCH metódussal kell kérni a [JSON-patch szabvány](https://tools.ietf.org/html/rfc6902)használatával. Ez akkor hasznos, ha frissíteni szeretné a címkéket a regisztrációban. Nem kell lekérnie a teljes regisztrációt, majd újra el kell küldenie az összes korábbi címkét.
 
 A telepítés a következő tulajdonságokat tartalmazza. A telepítési tulajdonságok teljes listáját lásd: [telepítés létrehozása vagy felülírása REST API](/rest/api/notificationhubs/create-overwrite-installation) vagy [telepítési tulajdonságokkal](/dotnet/api/microsoft.azure.notificationhubs.installation).
@@ -134,73 +134,73 @@ class DeviceInstallation
     public string platform { get; set; }
     public string pushChannel { get; set; }
     public string[] tags { get; set; }
-}
 
-private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
+    private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
         string hubName, string listenConnectionString)
-{
-    if (deviceInstallation.installationId == null)
-        return HttpStatusCode.BadRequest;
-
-    // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
-    ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
-    string hubResource = "installations/" + deviceInstallation.installationId + "?";
-    string apiVersion = "api-version=2015-04";
-
-    // Determine the targetUri that we will sign
-    string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
-
-    //=== Generate SaS Security Token for Authorization header ===
-    // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
-    string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
-
-    using (var httpClient = new HttpClient())
     {
-        string json = JsonConvert.SerializeObject(deviceInstallation);
+        if (deviceInstallation.installationId == null)
+            return HttpStatusCode.BadRequest;
 
-        httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+        // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
+        ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
+        string hubResource = "installations/" + deviceInstallation.installationId + "?";
+        string apiVersion = "api-version=2015-04";
 
-        var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
-        return response.StatusCode;
+        // Determine the targetUri that we will sign
+        string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
+
+        //=== Generate SaS Security Token for Authorization header ===
+        // See https://msdn.microsoft.com/library/azure/dn495627.aspx
+        string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
+
+        using (var httpClient = new HttpClient())
+        {
+            string json = JsonConvert.SerializeObject(deviceInstallation);
+
+            httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+
+            var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            return response.StatusCode;
+        }
     }
-}
 
-var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+    var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-string installationId = null;
-var settings = ApplicationData.Current.LocalSettings.Values;
+    string installationId = null;
+    var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored an installation ID in application data, create and store as application data.
-if (!settings.ContainsKey("__NHInstallationId"))
-{
-    installationId = Guid.NewGuid().ToString();
-    settings.Add("__NHInstallationId", installationId);
-}
+    // If we have not stored an installation ID in application data, create and store as application data.
+    if (!settings.ContainsKey("__NHInstallationId"))
+    {
+        installationId = Guid.NewGuid().ToString();
+        settings.Add("__NHInstallationId", installationId);
+    }
 
-installationId = (string)settings["__NHInstallationId"];
+    installationId = (string)settings["__NHInstallationId"];
 
-var deviceInstallation = new DeviceInstallation
-{
-    installationId = installationId,
-    platform = "wns",
-    pushChannel = channel.Uri,
-    //tags = tags.ToArray<string>()
-};
+    var deviceInstallation = new DeviceInstallation
+    {
+        installationId = installationId,
+        platform = "wns",
+        pushChannel = channel.Uri,
+        //tags = tags.ToArray<string>()
+    };
 
-var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
+    var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
                     "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
 
-if (statusCode != HttpStatusCode.Accepted)
-{
-    var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
-}
-else
-{
-    var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
+    if (statusCode != HttpStatusCode.Accepted)
+    {
+        var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
+    else
+    {
+        var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
 }
 ```
 

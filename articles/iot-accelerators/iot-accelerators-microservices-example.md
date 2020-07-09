@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447624"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
@@ -44,7 +44,7 @@ Ebben a részben az alapértelmezett IoT hub Manager Service API-t hívja meg. A
 
 1. Győződjön meg arról, hogy a távoli figyelési megoldás helyileg fut a gépen.
 2. Keresse meg a Poster letöltött helyét, és nyissa meg.
-3. A Poster mezőben adja meg a következőt a GET `http://localhost:8080/iothubmanager/v1/status`:.
+3. A Poster mezőben adja meg a következőt a GET: `http://localhost:8080/iothubmanager/v1/status` .
 4. Tekintse meg a visszaadott értéket, és tekintse meg az "állapot": "OK: Alive and Well" kifejezést.
 
     ![Élő és jó postás üzenet](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Fejezze be a távoli figyelési megoldás helyi példányának újbóli üzembe 
     ```
 
 3. Keresse meg a Poster letöltött helyét, és nyissa meg.
-4. A Poster mezőben adja meg a következő kérelmet a GET: `http://localhost:8080/iothubmanager/v1/status`. Ekkor a "status" (állapot): "OK: új szerkesztés itt!" kifejezés látható.
+4. A Poster mezőben adja meg a következő kérelmet a GET: `http://localhost:8080/iothubmanager/v1/status` . Ekkor a "status" (állapot): "OK: új szerkesztés itt!" kifejezés látható.
 
 ![Új szerkesztési üzenet](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

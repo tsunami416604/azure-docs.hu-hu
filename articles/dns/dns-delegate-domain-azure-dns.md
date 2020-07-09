@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238971"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710133"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben
 
@@ -21,7 +21,7 @@ Az Azure DNS használatával saját DNS-tartományt üzemeltethet, és kezelheti
 Tegyük fel, hogy megvette a „contoso.net” tartományt egy tartományregisztrálótól, majd létrehozott egy „contoso.net” nevű zónát az Azure DNS-ben. Mivel Ön a tartomány tulajdonosa, a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálói rekordjait. A regisztráló ezeket a névkiszolgálói rekordokat a „.net” szülőzónában tárolja. Az internetes felhasználók ezután a Azure DNS zónában lesznek átirányítva a tartományba, amikor megpróbálják feloldani a DNS-rekordokat a contoso.net-ben.
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy DNS-zónát.
@@ -49,7 +49,7 @@ Az oktatóanyaghoz használt contoso.net, de a saját tartománynevét használj
 
    | **Beállítás** | **Érték** | **Részletek** |
    |---|---|---|
-   |**Név**|[az Ön tartományneve] |Az Ön által megvásárolt tartománynév. Ez az oktatóanyag a „contoso.net” tartománynevet használja példaként.|
+   |**Name (Név)**|[az Ön tartományneve] |Az Ön által megvásárolt tartománynév. Ez az oktatóanyag a „contoso.net” tartománynevet használja példaként.|
    |**Előfizetés**|[Az Ön előfizetése]|Válassza ki azt az előfizetést, amelyben létre fogja hozni a zónát.|
    |**Erőforráscsoport**|**Új létrehozása:** contosoRG|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül.<br>Az erőforráscsoport helye nincs hatással a DNS-zónára. A DNS-zóna helye mindig "globális", és nem jelenik meg.|
    |**Hely**|USA keleti régiója||
@@ -107,7 +107,7 @@ Nem kell megadnia a Azure DNS névkiszolgálók nevét. Ha a delegálást helyes
    default TTL = 300 (5 mins)
    ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja a **contosoRG** erőforráscsoportot. Ellenkező esetben törölje a **contosoRG** erőforráscsoportot és az oktatóanyag során létrehozott erőforrásokat.
 

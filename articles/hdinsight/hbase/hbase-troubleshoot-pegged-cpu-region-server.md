@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887308"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Forgatókönyv: rögzített CPU a régió-kiszolgálón az Apache HBase-fürtben az Azure HDInsight
@@ -24,19 +23,19 @@ Az Apache HBase-régió kiszolgálói folyamata a 200%-os CPU-hoz közeledik, am
 
 ## <a name="cause"></a>Ok
 
-Ha a HBase-fürt v 3.4-es verzióját futtatja, lehetséges, hogy a JDK-t a 1.7.0 _151 verziójára való frissítés okozta. A megjelenő tünet a régió kiszolgálója, amely a következőhöz közeledik: 200% CPU (annak `top` ellenőrzéséhez, hogy ez a parancs fut-e. ha van olyan folyamat, amely az 200%-os CPU-hoz csatlakozik `ps -aux | grep` , kérje le a PID-t, és ellenőrizze, hogy fut-e a régió kiszolgáló
+Ha a HBase-fürt v 3.4-es verzióját futtatja, lehetséges, hogy a JDK-t a 1.7.0 _151 verziójára való frissítés okozta. A megjelenő tünet a régió kiszolgálója, amely a következőhöz közeledik: 200% CPU (annak ellenőrzéséhez, hogy ez a parancs fut-e `top` . ha van olyan folyamat, amely az 200%-os CPU-hoz csatlakozik, kérje le a PID-t, és ellenőrizze, hogy fut-e a régió kiszolgáló `ps -aux | grep`
 
 ## <a name="resolution"></a>Megoldás:
 
 1. Telepítse a jdk 1,8-et a fürt összes csomópontján az alábbiak szerint:
 
-    * Futtassa a parancsfájl- `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`műveletet. Ügyeljen arra, hogy az összes csomóponton a Futtatás lehetőséget válassza.
+    * Futtassa a parancsfájl-műveletet `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh` . Ügyeljen arra, hogy az összes csomóponton a Futtatás lehetőséget válassza.
 
-    * Másik lehetőségként bejelentkezhet minden egyes csomópontba, és futtathatja a `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`parancsot.
+    * Másik lehetőségként bejelentkezhet minden egyes csomópontba, és futtathatja a parancsot `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk` .
 
-1. Ugrás a Ambari felhasználói felületére – `https://<clusterdnsname>.azurehdinsight.net`.
+1. Ugrás a Ambari felhasználói felületére – `https://<clusterdnsname>.azurehdinsight.net` .
 
-1. Navigáljon a **HBase->konfigurációk->Advanced – >Advanced** `hbase-env configs` (speciális `JAVA_HOME` `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`) elemre, és módosítsa a változót a következőre:. Mentse a konfiguráció módosítását.
+1. Navigáljon a **HBase->konfigurációk->Advanced – >Advanced** (speciális) elemre `hbase-env configs` , és módosítsa a változót a következőre: `JAVA_HOME` `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` . Mentse a konfiguráció módosítását.
 
 1. [Nem kötelező, de ajánlott] [Az összes tábla kiürítése a fürtön](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 

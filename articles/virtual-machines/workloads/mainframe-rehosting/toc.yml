@@ -2,35 +2,37 @@
   items:
     - name: Áttekintés
       items:
-        - name: Első lépések
+        - name: Bevezetés
           href: overview.md
         - name: Számítási feladatok
           href: partner-workloads.md
     - name: Alapelvek
       items:
-        - name: Számítás
+        - name: Compute
           href: concepts/mainframe-compute-azure.md
-        - name: Tárterület
+        - name: Storage
           href: concepts/mainframe-storage-azure.md
     - name: Micro Focus
       items:
-        - name: Első lépések
+        - name: Bevezetés
           href: microfocus/get-started.md
         - name: Az Enterprise Server telepítése
           href: microfocus/set-up-micro-focus-azure.md
+        - name: Enterprise Server üzembe helyezése AKS-ben
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: A CICS BankDemo futtatása
           href: microfocus/demo.md
         - name: Enterprise Server tárolókban
           href: microfocus/run-enterprise-server-container.md
     - name: TmaxSoft OpenFrame
       items:
-        - name: Első lépések
+        - name: Bevezetés
           href: tmaxsoft/get-started.md
         - name: Az OpenFrame telepítése
           href: tmaxsoft/install-openframe-azure.md
     - name: IBM
       items:
-        - name: Első lépések
+        - name: Bevezetés
           href: ibm/get-started.md
         - name: IBM zD&T telepítése
           href: ibm/install-ibm-z-environment.md

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062315"
 ---
 # <a name="routing-and-tag-expressions"></a>Útválasztási és címkézési kifejezések
@@ -39,7 +39,7 @@ A konkrét értesítési regisztrációk célzásának egyetlen módja, ha címk
 
 ## <a name="tags"></a>Címkék
 
-A címke lehet bármilyen karakterlánc, legfeljebb 120 karakter, amely alfanumerikus karaktereket és a`_`következő nem alfanumerikus karaktereket tartalmazza: "", "`@`"`#``.`, "", ",`:`" ","`-`". Az alábbi példa egy olyan alkalmazást mutat be, amelyről bejelentési értesítéseket kaphat az adott zenei csoportokról. Ebben az esetben az értesítések továbbításának egyszerű módja a különböző sávokat jelölő címkékkel rendelkező regisztrációk címkézése, az alábbi ábrán látható módon:
+A címke lehet bármilyen karakterlánc, legfeljebb 120 karakter, amely alfanumerikus karaktereket és a következő nem alfanumerikus karaktereket tartalmazza: "", "", "", "," " `_` `@` `#` `.` `:` ," " `-` . Az alábbi példa egy olyan alkalmazást mutat be, amelyről bejelentési értesítéseket kaphat az adott zenei csoportokról. Ebben az esetben az értesítések továbbításának egyszerű módja a különböző sávokat jelölő címkékkel rendelkező regisztrációk címkézése, az alábbi ábrán látható módon:
 
 ![Címkék – áttekintés](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
@@ -47,7 +47,7 @@ Az ábrán a **beatlesrel** megcímkézett üzenet csak a **Beatles**címkével 
 
 A címkék regisztrációjának létrehozásával kapcsolatos további információkért lásd: [regisztráció kezelése](notification-hubs-push-notification-registration-management.md).
 
-Értesítéseket küldhet a címkékre a `Microsoft.Azure.NotificationHubs.NotificationHubClient` [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK osztály küldési értesítések metódusának használatával. A Node. js-t vagy a leküldéses értesítések REST API-jait is használhatja.  Íme egy példa az SDK használatával.
+Értesítéseket küldhet a címkékre a `Microsoft.Azure.NotificationHubs.NotificationHubClient` [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK osztály küldési értesítések metódusának használatával. Használhat Node.js vagy leküldéses értesítések REST API-kat is.  Íme egy példa az SDK használatával.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -69,7 +69,7 @@ A címkéket nem szabad előre kiépíteni, és több alkalmazás-specifikus fog
 
 Ebben a példában Alice a Beatles frissítései iránt érdeklődik, és Bob a Wailers frissítései érdeklik. Bob a Charlie megjegyzéseit is érdekli, és Charlie-t érdekli a Wailers. Amikor értesítést küld a Charlie megjegyzéséhez a Beatlesben, Notification Hubs elküldi azt az Alice és a Bob számára is.
 
-Míg a címkékben több szempontot is kódolhat (például `band_Beatles` vagy `follows_Charlie`), a címkék egyszerű karakterláncok, és nem az értékekkel rendelkező tulajdonságok. A regisztráció csak adott címke jelenlétére vagy hiányára vonatkozik.
+Míg a címkékben több szempontot is kódolhat (például `band_Beatles` vagy `follows_Charlie` ), a címkék egyszerű karakterláncok, és nem az értékekkel rendelkező tulajdonságok. A regisztráció csak adott címke jelenlétére vagy hiányára vonatkozik.
 
 Ha részletes oktatóanyagot szeretne arról, hogyan használhatók a címkék az érdeklődési csoportokba való küldéshez, tekintse meg a [legfrissebb híreket](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
@@ -82,7 +82,7 @@ A címkék használatának egy másik módja az adott felhasználóhoz társíto
 
 ![Felhasználók címkézése](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-Az ábrán a címkével `user_Alice` ellátott `user_Alice`összes eszköz eléri a címkét.
+Az ábrán a címkével `user_Alice` ellátott összes eszköz eléri a címkét `user_Alice` .
 
 ## <a name="tag-expressions"></a>Címkézési kifejezések
 
@@ -96,7 +96,7 @@ Vegyünk egy olyan sport-alkalmazást, amely egy, a Red Sox és a Cardinals köz
 
 ![Címkézési kifejezések](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-A címkézési `AND` kifejezések támogatják a közös logikai operátorokat, például (`&&`), `NOT` `!` `OR` (`||`) és (); Emellett zárójeleket is tartalmazhatnak. A csak a kezelőket használó kifejezések legfeljebb `OR` 20 címkét hivatkozhatnak. az operátorok kifejezése, de az `AND` operátorok nem `OR` hivatkozhatnak 10 címkére; Ellenkező esetben a címkézési kifejezések legfeljebb 6 címkével rendelkeznek.
+A címkézési kifejezések olyan általános logikai operátorokat támogatnak, mint például a `AND` ( `&&` ), `OR` () `||` és `NOT` ( `!` ); zárójeleket is tartalmazhatnak. A csak a kezelőket használó kifejezések legfeljebb `OR` 20 címkét hivatkozhatnak, de az operátorok `AND` nem `OR` hivatkozhatnak 10 címkére, ellenkező esetben a címke kifejezése 6 címkére van korlátozva.
 
 Íme egy példa arra, hogy az SDK használatával hogyan küldhet értesítéseket címkézési kifejezésekkel:
 

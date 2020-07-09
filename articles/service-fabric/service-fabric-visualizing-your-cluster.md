@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79258186"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
@@ -37,9 +36,9 @@ Az alábbi hivatkozások segítségével töltheti le Service Fabric Explorer as
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer futtatása a fürtből
 
-A Service Fabric Explorer egy Service Fabric-fürt HTTP-kezelési végpontján is fut. Ha az SFX-t egy webböngészőben szeretné elindítani, keresse meg a fürt HTTP-felügyeleti végpontját bármely böngészőből\/– például: https:/clusterFQDN: 19080.
+A Service Fabric Explorer egy Service Fabric-fürt HTTP-kezelési végpontján is fut. Ha az SFX-t egy webböngészőben szeretné elindítani, keresse meg a fürt HTTP-felügyeleti végpontját bármely böngészőből – például: https: \/ /clusterFQDN: 19080.
 
-A fejlesztői munkaállomás beállításához nyissa meg a Service Fabric Explorert a helyi fürtön a ( https://localhost:19080/Explorerz) lehetőségre kattintva. A [fejlesztési környezet előkészítéséhez](service-fabric-get-started.md)tekintse meg ezt a cikket.
+A fejlesztői munkaállomás beállításához nyissa meg a Service Fabric Explorert a helyi fürtön a (z) lehetőségre kattintva https://localhost:19080/Explorer . A [fejlesztési környezet előkészítéséhez](service-fabric-get-started.md)tekintse meg ezt a cikket.
 
 > [!NOTE]
 > Ha a fürtöt önaláírt tanúsítvány védi, a webböngésző "Ez a hely nem biztonságos" hibaüzenet jelenik meg. A figyelmeztetés felülbírálásával egyszerűen folytathatja a legtöbb modern böngészőt. Éles környezetben a fürtöt a köznapi név és a hitelesítésszolgáltató által kiadott tanúsítvány használatával kell védeni. 
@@ -47,7 +46,7 @@ A fejlesztői munkaállomás beállításához nyissa meg a Service Fabric Explo
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Kapcsolódás Service Fabric-fürthöz
-Service Fabric-fürthöz való csatlakozáshoz a fürtök felügyeleti végpontja (FQDN/IP) és a HTTP-felügyeleti végpont portja (alapértelmezés szerint 19080) szükséges. Például: https\://mysfcluster.westus.cloudapp.Azure.com:19080. A "kapcsolódás a localhost-hoz" jelölőnégyzet bejelölésével csatlakozhat egy helyi fürthöz a munkaállomáson.
+Service Fabric-fürthöz való csatlakozáshoz a fürtök felügyeleti végpontja (FQDN/IP) és a HTTP-felügyeleti végpont portja (alapértelmezés szerint 19080) szükséges. Például: https \: //mysfcluster.westus.cloudapp.Azure.com:19080. A "kapcsolódás a localhost-hoz" jelölőnégyzet bejelölésével csatlakozhat egy helyi fürthöz a munkaállomáson.
 
 ### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 A Service Fabric-fürthöz tanúsítványokkal vagy Azure Active Directory (HRE) használatával is szabályozhatja az ügyfelek hozzáférését.
@@ -83,7 +82,7 @@ A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontok
 ## <a name="actions"></a>Műveletek
 A Service Fabric Explorer gyors módszert kínál a csomópontokon, alkalmazásokon és szolgáltatásokon belüli műveletek meghívására a fürtön belül.
 
-Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza az**alkalmazás törlése** **műveletet** > .
+Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza az **Actions**  >  **alkalmazás törlése**műveletet.
 
 ![Alkalmazás törlése Service Fabric Explorer][sfx-delete-application]
 

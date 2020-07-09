@@ -4,20 +4,22 @@ description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladato
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 535c8c34ea7af8e6bc56c3ecfe564de4c1b2bc54
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83694228"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086126"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Gyors útmutató: batch-fiók létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rövid útmutató: batch-fiók létrehozása ARM-sablon használatával
 
-A számítási erőforrások (számítási csomópontok készletei) és a Batch-feladatok létrehozásához batch-fiók szükséges. Létrehozhat egy Azure Storage-fiókot a Batch-fiókjával, amely hasznos az alkalmazások üzembe helyezéséhez és a bemeneti és kimeneti adatok tárolásához a legtöbb valós számítási feladathoz.
-
-Ez a rövid útmutató bemutatja, hogyan használható egy Azure Resource Manager sablon egy batch-fiók, például a Storage létrehozásához. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
+A számítási erőforrások (számítási csomópontok készletei) és a Batch-feladatok létrehozásához batch-fiók szükséges. Létrehozhat egy Azure Storage-fiókot a Batch-fiókjával, amely hasznos az alkalmazások üzembe helyezéséhez és a bemeneti és kimeneti adatok tárolásához a legtöbb valós számítási feladathoz. Ez a rövid útmutató bemutatja, hogyan használható egy Azure Resource Manager sablon (ARM-sablon) egy batch-fiók, például a Storage létrehozásához. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,20 +27,18 @@ Aktív Azure-előfizetéssel kell rendelkeznie.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
-### <a name="review-the-template"></a>A sablon áttekintése
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/)származik.
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-batchaccount-with-storage)származik.
-
-:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json" range="1-80" highlight="36-69":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-- [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): létrehoz egy Storage-fiókot.
-- [Microsoft. batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): létrehoz egy batch-fiókot.
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): létrehoz egy Storage-fiókot.
+- [Microsoft.BatCH/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): létrehoz egy batch-fiókot.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy Azure Batch fiókot és egy Storage-fiókot.
 
@@ -50,7 +50,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
    - **Előfizetés**: válasszon ki egy Azure-előfizetést.
    - **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
-   - **Hely**: válasszon ki egy helyet. Például az **USA középső**régiója.
+   - **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
    - **Batch-fiók neve**: hagyja meg az alapértelmezett értéket.
    - **Tárolási Accountsku**: válassza ki a Storage-fiók típusát. Például **Standard_LRS**.
    - **Hely**: hagyja meg az alapértelmezett értéket, hogy az erőforrások ugyanabban a helyen legyenek, mint az erőforráscsoport.

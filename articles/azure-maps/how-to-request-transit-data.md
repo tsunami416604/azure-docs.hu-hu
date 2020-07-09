@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: f60b66790342874620971c8f15a1e8ace9a3c7cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335459"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással nyilvános árutovábbítási adatai igényelhetők 
@@ -38,7 +38,7 @@ Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a 
 
 ## <a name="get-a-metro-area-id"></a>Metro-körzet AZONOSÍTÓjának beolvasása
 
-Egy adott nagyvárosi terület továbbítási információinak igényléséhez szüksége lesz erre a `metroId` területre. A [Metro Area API beolvasása](https://aka.ms/AzureMapsMobilityMetro) lehetővé teszi, hogy olyan metró területeket kérjen, amelyekben elérhető a Azure Maps mobilitási szolgáltatás. A válasz olyan részleteket tartalmaz, mint `metroId`a `metroName`, és a Metro terület geometriájának ábrázolása GeoJSON formátumban.
+Egy adott nagyvárosi terület továbbítási információinak igényléséhez szüksége lesz erre a `metroId` területre. A [Metro Area API beolvasása](https://aka.ms/AzureMapsMobilityMetro) lehetővé teszi, hogy olyan metró területeket kérjen, amelyekben elérhető a Azure Maps mobilitási szolgáltatás. A válasz olyan részleteket tartalmaz, mint a `metroId` , `metroName` és a Metro terület geometriájának ábrázolása GeoJSON formátumban.
 
 Tegyük fel, hogy beolvassa a Seattle-Tacoma Metro területi AZONOSÍTÓhoz tartozó Metro területet. A Metro-területek AZONOSÍTÓjának kéréséhez hajtsa végre a következő lépéseket:
 
@@ -48,7 +48,7 @@ Tegyük fel, hogy beolvassa a Seattle-Tacoma Metro területi AZONOSÍTÓhoz tart
     
     ![Kérelem létrehozása a Poster-ban](./media/how-to-request-transit-data/postman-new.png)
 
-3. Válassza a http **beolvasása** metódust a Builder (szerkesztő) lapon, majd a Get kérelem létrehozásához adja meg a következő URL-címet. Cserélje `{subscription-key}`le a értékét a Azure Maps elsődleges kulcsára.
+3. Válassza a http **beolvasása** metódust a Builder (szerkesztő) lapon, majd a Get kérelem létrehozásához adja meg a következő URL-címet. Cserélje le a értékét a `{subscription-key}` Azure Maps elsődleges kulcsára.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/metroArea/id/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126
@@ -111,7 +111,7 @@ Tegyük fel, hogy beolvassa a Seattle-Tacoma Metro területi AZONOSÍTÓhoz tart
     }
     ```
 
-5. Másolja a `metroId`következőt:. később szükség lesz rá.
+5. Másolja a következőt: `metroId` . később szükség lesz rá.
 
 ## <a name="request-nearby-transit-stops"></a>A közeli tranzit leállási kérések
 
@@ -119,7 +119,7 @@ A Azure Maps a [közeli tranzit](https://aka.ms/AzureMapsMobilityNearbyTransit) 
 
 Az alábbi lépések végrehajtásával teheti meg a lekéréses [továbbítást a közeli átvitelre](https://aka.ms/AzureMapsMobilityNearbyTransit):
 
-1. A Poster területen kattintson az **új kérelem** | **Get kérelem** és név lehetőségre, amely a **közeli leáll**.
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** és név lehetőségre, amely a **közeli leáll**.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz az alábbi kérelem URL-címét, majd kattintson a **Küldés**gombra.
 
@@ -214,9 +214,9 @@ Az alábbi lépések végrehajtásával teheti meg a lekéréses [továbbítást
     }   
     ```
 
-Ha alaposan megfigyeli a válasz struktúráját, látni fogja, hogy minden egyes árutovábbítási objektumhoz paramétereket tartalmaz. Az egyes árutovábbítási objektumok olyan paraméterekkel `type`rendelkeznek `stopName`, `mainTransitType`mint `mainAgencyName` `id`a,,,, és az objektum koordinátáiban található pozíciója.
+Ha alaposan megfigyeli a válasz struktúráját, látni fogja, hogy minden egyes árutovábbítási objektumhoz paramétereket tartalmaz. Az egyes árutovábbítási objektumok olyan paraméterekkel rendelkeznek, mint a,,,, `id` `type` `stopName` `mainTransitType` `mainAgencyName` és az objektum koordinátáiban található pozíciója.
 
-A tanulás érdekében a következő szakaszban egy `id` , az útvonalhoz tartozó busz leáll a forrásként.  
+A tanulás érdekében a `id` következő szakaszban egy, az útvonalhoz tartozó busz leáll a forrásként.  
 
 
 ## <a name="request-a-transit-route"></a>Átviteli útvonal kérése
@@ -229,7 +229,7 @@ A Space tű torony hely koordinátáinak beszerzéséhez használja a Azure Maps
 
 Az alábbi lépések végrehajtásával teheti meg a kérést a fuzzy Search szolgáltatásnak:
 
-1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze el a **hely koordinátáit**.
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el a **hely koordinátáit**.
 
 2.  A Builder (szerkesztő) lapon válassza a http **beolvasása** metódust, adja meg a kérelem URL-címét, majd kattintson a **Küldés**gombra.
  
@@ -237,7 +237,7 @@ Az alábbi lépések végrehajtásával teheti meg a kérést a fuzzy Search szo
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
     
-3. Ha alaposan megtekinti a választ, több helyet is tartalmaz az eredmények között a Space tű kereséséhez. Minden eredmény tartalmazza a hely koordinátáit a **pozícióban**. Másolja a `lat` és `lon` az első eredmény **pozícióját** .
+3. Ha alaposan megtekinti a választ, több helyet is tartalmaz az eredmények között a Space tű kereséséhez. Minden eredmény tartalmazza a hely koordinátáit a **pozícióban**. Másolja a `lat` és az `lon` első eredmény **pozícióját** .
     
    ```JSON
    {
@@ -337,11 +337,11 @@ Az alábbi lépések végrehajtásával teheti meg a kérést a fuzzy Search szo
 
 Egy útvonal-kérelem elvégzéséhez hajtsa végre az alábbi lépéseket:
 
-1. A Poster lapon kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze el az **útválasztási adatokat**.
+1. A Poster lapon kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el az **útválasztási adatokat**.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz az alábbi kérelem URL-címét, majd kattintson a **Küldés**gombra.
 
-    A és `modeType` `transitType` a paraméterek megadásával egy buszra vonatkozó nyilvános átviteli útvonalakat fogunk kérni. A kérelem URL-címe tartalmazza az előző szakaszban lekért helyet. A `originType`esetében már van egy **stopId**. A esetében `destionationType`pedig a **pozíciónk**.
+    A és a paraméterek megadásával egy buszra vonatkozó nyilvános átviteli útvonalakat fogunk kérni `modeType` `transitType` . A kérelem URL-címe tartalmazza az előző szakaszban lekért helyet. A esetében már `originType` van egy **stopId**. A esetében pedig `destionationType` a **pozíciónk**.
 
     Tekintse meg a kérésben használható [URI-paraméterek listáját](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters) a [Transit Routes API beszerzéséhez](https://aka.ms/AzureMapsMobilityTransitRoute). 
   
@@ -494,13 +494,13 @@ Egy útvonal-kérelem elvégzéséhez hajtsa végre az alábbi lépéseket:
     }
     ```
 
-4. Ha alaposan megfigyel, több **busz** útvonala is van a válaszban. Minden útvonal egyedi útvonal- **azonosítóval** és az útvonal minden egyes szakaszát leíró összegzéssel rendelkezik. A Route láb a két leállítási útpont közötti útvonal része. Ezután a válaszban a `itineraryId` leggyorsabb útvonal részleteit fogjuk kérni.
+4. Ha alaposan megfigyel, több **busz** útvonala is van a válaszban. Minden útvonal egyedi útvonal- **azonosítóval** és az útvonal minden egyes szakaszát leíró összegzéssel rendelkezik. A Route láb a két leállítási útpont közötti útvonal része. Ezután a válaszban a leggyorsabb útvonal részleteit fogjuk kérni `itineraryId` .
 
 ## <a name="request-fastest-route-itinerary"></a>Leggyorsabb útvonal-útvonal kérése
 
 A Azure Maps [Transit útvonal](https://aka.ms/AzureMapsMobilityTransitItinerary) -szolgáltatás lehetővé teszi, hogy egy adott útvonalra vonatkozó adatokat igényeljen az [átviteli útvonalak API](https://aka.ms/AzureMapsMobilityTransitRoute) szolgáltatása által visszaadott útvonal útvonal- **azonosítójának** használatával. A kérelem végrehajtásához hajtsa végre az alábbi lépéseket:
 
-1. A Poster lapon kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze el az **átvitelhez szükséges adatokat**.
+1. A Poster lapon kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el az **átvitelhez szükséges adatokat**.
 
 2. A Builder (szerkesztő) lapon válassza a http **beolvasása** módszert. Adja meg az API-végponthoz a következő kérelem URL-címét, majd kattintson a **Küldés**gombra.
 

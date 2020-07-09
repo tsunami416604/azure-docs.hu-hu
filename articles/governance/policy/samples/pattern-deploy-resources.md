@@ -3,20 +3,20 @@ title: 'Minta: erőforrások üzembe helyezése házirend-definícióval'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan helyezhet üzembe erőforrásokat házirend-definícióval.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172673"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970858"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy minta: erőforrások üzembe helyezése
 
-A [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatására a nem megfelelő erőforrások létrehozásakor vagy frissítésekor lehetővé válik [Azure Resource Manager-sablon](../../../azure-resource-manager/templates/overview.md) üzembe helyezése. Ezt a megközelítést érdemes használni a [Megtagadás](../concepts/effects.md#deny) hatásaként, mivel az erőforrások továbbra is létrejönnek, de gondoskodik arról, hogy a módosítások megfelelőek legyenek.
+A [deployIfNotExists](../concepts/effects.md#deployifnotexists) -effektus lehetővé teszi [Azure Resource Manager sablon](../../../azure-resource-manager/templates/overview.md) (ARM-sablon) központi telepítését olyan erőforrás létrehozásakor vagy frissítésekor, amely nem megfelelő. Ezt a megközelítést érdemes használni a [Megtagadás](../concepts/effects.md#deny) hatásaként, mivel az erőforrások továbbra is létrejönnek, de gondoskodik arról, hogy a módosítások megfelelőek legyenek.
 
 ## <a name="sample-policy-definition"></a>Példa a házirend-definícióra
 
-Ez a házirend-definíció a **mező** operátort használja `type` a létrehozott vagy frissített erőforrás kiértékeléséhez. Ha ez az erőforrás _Microsoft. Network/virtualNetworks_, a házirend az új vagy frissített erőforrás helyén keresi a Network watchert. Ha nem található egyező hálózati figyelő, a rendszer telepíti a Resource Manager-sablont a hiányzó erőforrás létrehozásához.
+Ez a házirend-definíció a **mező** operátort használja a `type` létrehozott vagy frissített erőforrás kiértékeléséhez. Ha ez az erőforrás _Microsoft. Network/virtualNetworks_, a házirend az új vagy frissített erőforrás helyén keresi a Network watchert. Ha a megfelelő hálózati figyelő nem található, a rendszer üzembe helyezi az ARM-sablont a hiányzó erőforrás létrehozásához.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -26,7 +26,7 @@ Ez a házirend-definíció a **mező** operátort használja `type` a létrehozo
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-A **Properties. ' policyrule osztály. retails** blokk közli Azure Policy, hogy mit kell keresni a létrehozott vagy frissített erőforráshoz a **Properties. ' policyrule osztály. if** blokkban. Ebben a példában az erőforráscsoport **networkWatcherRG** lévő hálózati figyelőnek léteznie kell az új vagy frissített erőforrás helyével megegyező **mezővel** `location` . A `field()` függvény használata lehetővé teszi, hogy a **existenceCondition** az új vagy frissített erőforrás tulajdonságait, pontosabban `location` a tulajdonságot hozzáférjenek.
+A **Properties. ' policyrule osztály. retails** blokk közli Azure Policy, hogy mit kell keresni a létrehozott vagy frissített erőforráshoz a **Properties. ' policyrule osztály. if** blokkban. Ebben a példában az erőforráscsoport **networkWatcherRG** lévő hálózati figyelőnek léteznie kell az új vagy **field** `location` frissített erőforrás helyével megegyező mezővel. A `field()` függvény használata lehetővé teszi, hogy a **existenceCondition** az új vagy frissített erőforrás tulajdonságait, pontosabban a `location` tulajdonságot hozzáférjenek.
 
 #### <a name="roledefinitionids"></a>roleDefinitionIds
 

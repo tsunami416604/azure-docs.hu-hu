@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974172"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Oktatóanyag: videó titkosítása AES-128-mel és a Key Delivery Service használata
@@ -30,7 +29,7 @@ A Media Services használatával HTTP Live Streaming (HLS), MPEG-DASH és Smooth
 
 Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](content-protection-overview.md#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni. Lásd még: [védelem a DRM-mel](protect-with-drm.md).
 
-A minta kimenete ez a cikk tartalmazza a Azure Media Player URL-címét, a jegyzékfájl URL-címét és a tartalom lejátszásához szükséges AES-tokent. A minta a JSON Web Token (JWT) token lejáratát 1 órára állítja be. Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-címet, hogy elindítsa a Azure Media Player bemutató oldalt, amely az URL-címet ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```és a tokent kitöltötte a következő formátumban:.
+A minta kimenete ez a cikk tartalmazza a Azure Media Player URL-címét, a jegyzékfájl URL-címét és a tartalom lejátszásához szükséges AES-tokent. A minta a JSON Web Token (JWT) token lejáratát 1 órára állítja be. Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-címet, hogy elindítsa a Azure Media Player bemutató oldalt, amely az URL-címet és a tokent kitöltötte a következő formátumban: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}``` .
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -153,7 +152,7 @@ Most, hogy létrejött a [folyamatos átviteli lokátor](https://docs.microsoft.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

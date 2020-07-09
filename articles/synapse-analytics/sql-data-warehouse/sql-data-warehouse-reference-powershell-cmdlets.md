@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3d6d0c1f71e2262e943998cdc08717291903365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1631a3dcb7383959bb62e2b57049386d0675418
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200834"
 ---
 # <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>PowerShell & REST API-k az Azure szinapszis Analytics SQL-készlethez
 
@@ -78,7 +78,7 @@ Ezek a PowerShell-parancsmagok az Azure szinapszis Analytics-adattárházban tá
 * [Get-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/get-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-* [Restore-AzSqlDatabase]/PowerShell/Module/az.SQL/Restore-azsqldatabase? TOC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/TOC.JSON&BC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/breadcrumb/TOC.JSON)
+* [Restore-AzSqlDatabase]/PowerShell/Module/az.SQL/Restore-azsqldatabase? TOC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/toc.js&BC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/breadcrumb/toc.json)
 * [Folytatás – AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Felfüggesztés – AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
@@ -90,4 +90,4 @@ További PowerShell-példákat a következő témakörben talál:
 * [Adattárház létrehozása a PowerShell használatával](create-data-warehouse-powershell.md)
 * [Adatbázis-visszaállítás](sql-data-warehouse-restore-points.md)
 
-A PowerShell-lel automatizálható egyéb feladatokhoz lásd: [Azure SQL Database parancsmagok]/PowerShell/Module/az.SQL? TOC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/TOC.JSON&BC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/breadcrumb/TOC.JSON). Nem minden Azure SQL Database parancsmag támogatott az Azure szinapszis Analytics-adattárházban. A REST-sel automatizálható feladatok listáját a [Azure SQL Database műveleteit](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)ismertető témakörben tekintheti meg.
+A PowerShell-lel automatizálható egyéb feladatokhoz lásd: [Azure SQL Database parancsmagok]/PowerShell/Module/az.SQL? TOC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/toc.js&BC =/Azure/Synapse-Analytics/SQL-Data-Warehouse/breadcrumb/toc.json). Nem minden Azure SQL Database parancsmag támogatott az Azure szinapszis Analytics-adattárházban. A REST-sel automatizálható feladatok listáját a [Azure SQL Database műveleteit](/rest/api/sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)ismertető témakörben tekintheti meg.

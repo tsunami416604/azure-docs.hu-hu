@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73935887"
 ---
 **Utolsó dokumentum frissítése**: 12 November 2019 10:00 am PST.
@@ -74,7 +74,7 @@ A cél operációs rendszernek naprakésznek kell lennie a további biztonsági 
 
 **1. lépés: a Hyper-Threading szolgáltatás letiltása a virtuális gépen** – a nem megbízható programkódot futtató ügyfeleknek le kell tiltaniuk a Hyper-Threading szolgáltatást, vagy át kell térniük a nem Hyper-THREADed VM-méretre. [Ez a dokumentum](https://docs.microsoft.com/azure/virtual-machines/windows/acu) a Hyper-threaded VM-méretek listájára hivatkozik (ahol a vCPU és a mag aránya 2:1). Annak vizsgálatához, hogy a virtuális gép rendelkezik-e Hyper-Threading szolgáltatással, tekintse meg az alábbi szkriptet a virtuális gépen található Windows-parancssor használatával.
 
-Írja `wmic` be az interaktív interfészt. Ezután írja be az alábbit a virtuális gépen található fizikai és logikai processzorok mennyiségének megtekintéséhez.
+Írja be `wmic` az interaktív interfészt. Ezután írja be az alábbit a virtuális gépen található fizikai és logikai processzorok mennyiségének megtekintéséhez.
 
 ```console
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
@@ -101,17 +101,17 @@ Windows OS support for MDS mitigation is enabled: True
 Windows OS support for TAA mitigation is enabled: True
 ```
 
-Ha a kimenet látható `MDS mitigation is enabled: False`, [forduljon az Azure támogatási szolgálatához](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) a rendelkezésre álló kockázatcsökkentő lehetőségekért.
+Ha a kimenet látható `MDS mitigation is enabled: False` , [forduljon az Azure támogatási szolgálatához](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) a rendelkezésre álló kockázatcsökkentő lehetőségekért.
 
 
 
-**3. lépés**: a kernel virtuális IP-ÁRNYÉKOLÁS (KVAS) és az `Session Manager` ág-cél injekciós (KTF) operációs rendszer támogatásának engedélyezéséhez kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait a beállításkulcsok használatával történő védelem engedélyezéséhez. Újraindítás szükséges.
+**3. lépés**: a kernel virtuális IP-ÁRNYÉKOLÁS (KVAS) és az ág-cél injekciós (KTF) operációs rendszer támogatásának engedélyezéséhez kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait a beállításkulcsok használatával történő védelem engedélyezéséhez `Session Manager` . Újraindítás szükséges.
 
 
 **4. lépés**: [beágyazott virtualizációt](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) használó központi telepítések esetén (csak D3 és E3 esetén): ezek az utasítások a Hyper-V-gazdagépként használt virtuális gépen belül érvényesek.
 
 1.  Kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait a védelem engedélyezéséhez a `MinVmVersionForCpuBasedMitigations` beállításkulcsok használatával.
-2.  Adja meg a hypervisor Scheduler típusát `Core` a [következő útmutatás szerint](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types):.
+2.  Adja meg a hypervisor Scheduler típusát a `Core` következő útmutatás szerint [here](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types):.
 
 
 ### <a name="linux"></a>Linux
@@ -119,11 +119,11 @@ Ha a kimenet látható `MDS mitigation is enabled: False`, [forduljon az Azure t
 <a name="linux"></a>A további biztonsági funkciók készletének engedélyezéséhez a cél operációs rendszernek teljesen naprakésznek kell lennie. Bizonyos enyhítések alapértelmezés szerint engedélyezve lesznek. A következő szakasz azokat a funkciókat ismerteti, amelyek alapértelmezés szerint ki vannak kapcsolva, és/vagy a hardveres támogatásra támaszkodnak. A funkciók engedélyezése hatással lehet a teljesítményre. További útmutatást az operációs rendszer szolgáltatójának dokumentációja tartalmaz.
 
 
-**1. lépés: a Hyper-Threading szolgáltatás letiltása a virtuális gépen** – a nem megbízható programkódot futtató ügyfeleken le kell tiltani a Hyper-Threading szolgáltatást, vagy át kell helyezni egy nem Hyper-THREADED virtuális gépre.  [Ez a dokumentum](https://docs.microsoft.com/azure/virtual-machines/linux/acu) a Hyper-threaded VM-méretek listájára hivatkozik (ahol a vCPU és a mag aránya 2:1). A `lscpu` parancs futtatásával ellenőrizze, hogy fut-e Hyper-THREADED virtuális gép. 
+**1. lépés: a Hyper-Threading szolgáltatás letiltása a virtuális gépen** – a nem megbízható programkódot futtató ügyfeleken le kell tiltani a Hyper-Threading szolgáltatást, vagy át kell helyezni egy nem Hyper-THREADED virtuális gépre.  [Ez a dokumentum](https://docs.microsoft.com/azure/virtual-machines/linux/acu) a Hyper-threaded VM-méretek listájára hivatkozik (ahol a vCPU és a mag aránya 2:1). A parancs futtatásával ellenőrizze, hogy fut-e Hyper-threaded virtuális gép `lscpu` . 
 
-Ha `Thread(s) per core = 2`a, a Hyper-Threading engedélyezve lett. 
+Ha `Thread(s) per core = 2` a, a Hyper-Threading engedélyezve lett. 
 
-Ha `Thread(s) per core = 1`a, a Hyper-Threading le lett tiltva. 
+Ha `Thread(s) per core = 1` a, a Hyper-Threading le lett tiltva. 
 
  
 Minta kimenete egy virtuális gép számára, amelyen engedélyezve van a Hyper-Threading: 

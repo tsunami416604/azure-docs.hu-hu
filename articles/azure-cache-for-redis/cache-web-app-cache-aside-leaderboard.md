@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75411939"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082777"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
 Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.net-webalkalmazást, amely az [Azure cache](cache-web-app-howto.md)-hez készült ASP.net-útmutatóban jön létre a Redis-hez, hogy tartalmazzon egy olyan Leaderboard-t, amely az Azure cache-t használó [gyorsítótár-](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) feltöltési mintát használja Redis A minta alkalmazás megjeleníti a csapat statisztikáit egy adatbázisból, és bemutatja, hogyan használhatja az Azure cache-t a Redis tárolt adatok tárolására és lekérésére a teljesítmény javítása érdekében. Az oktatóanyag elvégzése után egy futó webalkalmazás rendelkezik, amely egy adatbázisba olvas és ír, amely az Azure cache-vel és az Azure-ban üzemeltetett Redis van optimalizálva.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Javítsa az adatok átviteli sebességét, és csökkentse az adatbázis terhelését azáltal, hogy az Azure cache használatával tárolja és beolvassa az Redis.
@@ -250,7 +250,7 @@ A gyors útmutató során már telepítette a *StackExchange.Redis* ügyfélolda
 
     ![Csoportvezérlő](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Adja hozzá a következő `using` két utasítást a **TeamsController.cs**:
+1. Adja hozzá a következő két `using` utasítást a **TeamsController.cs**:
 
     ```csharp
     using System.Configuration;
@@ -615,7 +615,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     </table>
     ```
 
-1. Görgessen az **index. cshtml** fájl aljához, és adja hozzá a `tr` következő elemet, hogy az a fájl utolsó táblájának utolsó sora legyen:
+1. Görgessen az **index. cshtml** fájl aljához, és adja hozzá a következő `tr` elemet, hogy az a fájl utolsó táblájának utolsó sora legyen:
 
     ```html
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
@@ -642,9 +642,9 @@ Az alkalmazás helyi futtatása:
 
 ## <a name="publish-and-run-in-azure"></a>Közzététel és futtatás az Azure-ban
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>SQL Azure-adatbázis üzembe helyezése az alkalmazáshoz
+### <a name="provision-a-database-for-the-app"></a>Adatbázis kiépítése az alkalmazáshoz
 
-Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-ban üzemeltetett alkalmazás számára.
+Ebben a szakaszban egy új adatbázist fog kiépíteni a SQL Databaseban, hogy az alkalmazás az Azure-ban üzemeltethető legyen.
 
 1. Az [Azure Portalon](https://portal.azure.com/) kattintson a portál bal felső sarkában található **Erőforrás létrehozása** elemre.
 
@@ -680,8 +680,8 @@ Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-b
 
     | Helyőrző | Ajánlott érték |
     | --- | --- |
-    | *{saját_felhasználónév}* | Használja az imént létrehozott adatbázis-kiszolgáló **rendszergazdai bejelentkezési nevét**. |
-    | *{saját_jelszó}* | Használja az imént létrehozott adatbázis-kiszolgálóhoz tartozó jelszót. |
+    | *{saját_felhasználónév}* | Használja az imént létrehozott kiszolgáló **rendszergazdai bejelentkezési adatait** . |
+    | *{saját_jelszó}* | Használja az imént létrehozott kiszolgáló jelszavát. |
 
     A felhasználónév és a jelszó alkalmazásbeállításként való hozzáadásával a felhasználónév és a jelszó nem szerepel a kódban. Ez a módszer segíti a hitelesítő adatok védelmét.
 
@@ -715,7 +715,7 @@ Az oktatóanyag ezen lépésében közzéteszi az alkalmazás frissítéseit az 
 
 Kattintson néhány műveletre, és kísérletezzen az adatok különböző forrásokból történő lekérdezésével. Figyelje meg az adatbázisból és a gyorsítótárból történő adatlekérdezés különböző módjainak végrehajtásához szükséges időbeli eltéréseket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- és erőforrás-takarékosság érdekében törölheti az ott használt Azure-erőforrásokat. Minden erőforrásnak azonos erőforráscsoportban kell szerepelnie, és az erőforráscsoport törlésével egy művelettel, együttesen is törölheti őket. Ebben a témakörben a *TestResources* nevű erőforráscsoportot használtuk.
 
@@ -733,7 +733,7 @@ Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- �
 
     A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure cache méretezése a Redis](./cache-how-to-scale.md)

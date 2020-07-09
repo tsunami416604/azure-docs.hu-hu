@@ -1,28 +1,28 @@
 ---
-title: GYIK – Azure szinapszis Analytics
-description: Az Azure szinapszis Analytics szolgáltatással kapcsolatos gyakori kérdések
+title: Gyakori kérdések – Azure szinapszis Analytics (munkaterületek – előzetes verzió)
+description: Gyakori kérdések az Azure szinapszis Analytics szolgáltatásról (munkaterületek előzetes verzió)
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118389"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807876"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterület előzetes verziója) – gyakori kérdések
+# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
 
 Ebben az útmutatóban megtalálja a szinapszis-elemzések leggyakrabban feltett kérdéseit.
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="q-what-is-azure-synapse-analytics"></a>K: Mi az az Azure szinapszis Analytics?
 
@@ -48,6 +48,10 @@ A: az Azure szinapszis a következő képességekkel rendelkezik:
 A: az Azure szinapszis Analytics a Azure SQL Data Warehouse fejlődése egy elemzési platformon, amely az SQL-készletet is tartalmazza adattárház-megoldásként. Ez a platform ötvözi az adatfeltárást, a betöltést, az átalakítást, az előkészítést és a kiszolgáló elemzési rétegét.
 
 ## <a name="use-cases"></a>Használati esetek
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>K: Hogyan átnevezni egy közzétett összetevőt (adatkészlet, jegyzetfüzet, SQL-parancsfájl stb.) az Azure Szinapszisban?
+
+A: egy közzétett összetevő-fájl átnevezéséhez először a fájlt kell megadnia, és átnevezni az új fájlt a kívánt névre. Manuálisan kell frissítenie az összetevő összes hivatkozását az új fájlnévre, és törölnie kell a régit.
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>K: mi a jó használati eset a szinapszis SQL-készlethez
 

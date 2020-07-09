@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a6b324c4caf9619566ba335ab2e5a318ab68bb6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72392240"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079428"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Az Apache Zeppelin használatával Apache Phoenix lekérdezéseket futtathat az Apache HBase az Azure HDInsight
 
@@ -29,7 +29,7 @@ Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin-Megjegyzés létrehozása
 
-1. Cserélje `CLUSTERNAME` le a nevet a fürt nevére a következő URL- `https://CLUSTERNAME.azurehdinsight.net/zeppelin`címben. Ezután írja be az URL-címet egy böngészőben. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát.
+1. Cserélje le a `CLUSTERNAME` nevet a fürt nevére a következő URL-címben `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Ezután írja be az URL-címet egy böngészőben. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát.
 
 1. A Zeppelin lapon válassza az **új Megjegyzés létrehozása**lehetőséget.
 

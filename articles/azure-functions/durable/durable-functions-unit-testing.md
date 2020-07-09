@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan lehet a test Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231225"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions egység tesztelése
@@ -39,7 +38,7 @@ A kigúnyolás a Durable Functions 1. x három absztrakt osztályán keresztül 
 
 * `DurableActivityContextBase`
 
-Ezek az osztályok a `DurableOrchestrationClient`, `DurableOrchestrationContext`a, a és `DurableActivityContext` a Orchestrator, valamint a tevékenységi módszereket definiáló alaposztályok. A kigúnyolja az alaposztály-metódusok várt viselkedését állítja be, így az egység tesztelése ellenőrizheti az üzleti logikát. Az egység kétlépéses munkafolyamata az üzleti logikát teszteli az összehangoló ügyfélben és a Orchestrator:
+Ezek az osztályok a, a, a `DurableOrchestrationClient` `DurableOrchestrationContext` és a Orchestrator, valamint a `DurableActivityContext` tevékenységi módszereket definiáló alaposztályok. A kigúnyolja az alaposztály-metódusok várt viselkedését állítja be, így az egység tesztelése ellenőrizheti az üzleti logikát. Az egység kétlépéses munkafolyamata az üzleti logikát teszteli az összehangoló ügyfélben és a Orchestrator:
 
 1. Az alaposztályok használata a konkrét implementáció helyett az előkészítési ügyfél és a Orchestrator függvény aláírásának meghatározásakor.
 2. A Unit-tesztek során az alaposztályok viselkedését és az üzleti logikát kell ellenőrizni.
@@ -52,16 +51,16 @@ Ebben a szakaszban az egység tesztelése ellenőrzi a következő HTTP-trigger 
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Az egység teszt feladata a válasz adattartalomban megadott `Retry-After` fejléc értékének ellenőrzése. Így az egység tesztelése kigúnyol néhány `DurableOrchestrationClientBase` módszert a kiszámítható működés biztosítása érdekében.
+Az egység teszt feladata a `Retry-After` Válasz adattartalomban megadott fejléc értékének ellenőrzése. Így az egység tesztelése kigúnyol néhány `DurableOrchestrationClientBase` módszert a kiszámítható működés biztosítása érdekében.
 
-Először is szükség van az alaposztály mintájának kiírására `DurableOrchestrationClientBase`. A modell lehet egy új osztály, amely megvalósítja `DurableOrchestrationClientBase`. Azonban a [MOQ](https://github.com/moq/moq4) , például a következő modellezési keretrendszer használatával egyszerűsíti a folyamatot:
+Először is szükség van az alaposztály mintájának kiírására `DurableOrchestrationClientBase` . A modell lehet egy új osztály, amely megvalósítja `DurableOrchestrationClientBase` . Azonban a [MOQ](https://github.com/moq/moq4) , például a következő modellezési keretrendszer használatával egyszerűsíti a folyamatot:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Ezt `StartNewAsync` követően a rendszer kigúnyolja a metódust, hogy egy jól ismert példány azonosítóját adja vissza.
+Ezt követően a `StartNewAsync` rendszer kigúnyolja a metódust, hogy egy jól ismert példány azonosítóját adja vissza.
 
 ```csharp
     // Mock StartNewAsync method
@@ -70,7 +69,7 @@ Ezt `StartNewAsync` követően a rendszer kigúnyolja a metódust, hogy egy jól
         ReturnsAsync(instanceId);
 ```
 
-A `CreateCheckStatusResponse` következő a kigúnyolva, hogy mindig üres http 200 választ ad vissza.
+A következő `CreateCheckStatusResponse` a kigúnyolva, hogy mindig üres HTTP 200 választ ad vissza.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -127,7 +126,7 @@ Az összes lépés egyesítése után az egység tesztelése a következő kódo
 
 A Orchestrator függvények még érdekesebbek az egység tesztelése során, mivel általában sokkal több üzleti logikával rendelkeznek.
 
-Ebben a szakaszban az egység tesztek ellenőrzik a `E1_HelloSequence` Orchestrator függvény kimenetét:
+Ebben a szakaszban az egység tesztek ellenőrzik a Orchestrator függvény kimenetét `E1_HelloSequence` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
@@ -172,7 +171,7 @@ Ebben a szakaszban az egység tesztelése ellenőrzi a `E1_SayHello` tevékenys�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek közvetlenül vagy Mock `DurableActivityContextBase` osztályt használhatnak a paraméterek típusával:
+Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek közvetlenül vagy Mock osztályt használhatnak a paraméterek típusával `DurableActivityContextBase` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

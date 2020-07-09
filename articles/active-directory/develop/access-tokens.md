@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552015"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -71,7 +71,7 @@ A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alk
 
 ### <a name="header-claims"></a>Fejléc jogcímei
 
-|Jogcím | Formátum | Leírás |
+|Jogcím | Formátum | Description |
 |--------|--------|-------------|
 | `typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT.|
 | `nonce` | Sztring | A jogkivonat-Visszajátszási támadások elleni védelemhez használt egyedi azonosító. Az erőforrás rögzítheti ezt az értéket a visszajátszás elleni védelemhez. |
@@ -81,7 +81,7 @@ A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alk
 
 ### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
 
-| Jogcím | Formátum | Leírás |
+| Jogcím | Formátum | Description |
 |-----|--------|-------------|
 | `aud` | Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. Az azonosító jogkivonatokban a célközönség az alkalmazáshoz rendelt alkalmazásspecifikus azonosító, amely a Azure Portalban van hozzárendelve az alkalmazáshoz. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
 | `iss` | Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a kiállított jogkivonat egy v 2.0-token (lásd a `ver` jogcímet), akkor az URI-ja befejeződik `/v2.0` . Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók vásárló felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad` . Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
@@ -139,7 +139,7 @@ Az `BulkCreateGroups.ps1` [alkalmazás-létrehozási parancsfájlok](https://git
 
 A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak ilyenek, de alapértelmezés szerint nem szerepelnek a 2.0-s jogkivonatokban. Ha a 2.0-s verzióját használja, és szüksége van ezekre a jogcímek egyikére, kérje meg őket az [opcionális jogcímek](active-directory-optional-claims.md)használatával.
 
-| Jogcím | Formátum | Leírás |
+| Jogcím | Formátum | Description |
 |-----|--------|-------------|
 | `ipaddr`| Sztring | A felhasználó által hitelesített IP-cím. |
 | `onprem_sid`| Karakterlánc, [SID-formátumban](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, amikor a felhasználó helyszíni hitelesítéssel rendelkezik, ez a jogcím a biztonsági azonosítóját adja meg. `onprem_sid`A for Authorization használatával örökölt alkalmazásokban is használható.|
@@ -155,7 +155,7 @@ A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak
 
 A Microsoft-identitások különböző módokon hitelesíthetők, ami az alkalmazás szempontjából fontos lehet. A `amr` jogcím olyan tömb, amely több elemet is tartalmazhat, például egy `["mfa", "rsa", "pwd"]` jelszót és a hitelesítő alkalmazást egyaránt használó hitelesítéshez.
 
-| Érték | Leírás |
+| Érték | Description |
 |-----|-------------|
 | `pwd` | Jelszó-hitelesítés, vagy egy felhasználó Microsoft-jelszava vagy egy alkalmazás ügyfél-titka. |
 | `rsa` | A hitelesítés egy RSA-kulcs igazolásán alapul, például a [Microsoft Authenticator alkalmazással](https://aka.ms/AA2kvvu). Ez azt is magában foglalja, hogy a hitelesítés egy önaláírt JWT történt, amely egy szolgáltatás tulajdonában álló X509 tanúsítvánnyal rendelkezik. |
@@ -230,11 +230,13 @@ Az alkalmazás üzleti logikája ezt a lépést fogja megállapítani, néhány 
 
 ## <a name="user-and-application-tokens"></a>Felhasználói és alkalmazási jogkivonatok
 
-Az alkalmazás a felhasználó nevében (a szokásos folyamat) vagy közvetlenül egy alkalmazásból (az ügyfél hitelesítő adataival ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) keresztül kaphat jogkivonatokat. Ezek az alkalmazási tokenek azt jelzik, hogy ez a hívás egy alkalmazásból származik, és nem rendelkezik a felhasználó biztonsági mentésével. Ezek a jogkivonatok nagyjából azonosak, néhány különbséggel:
+Előfordulhat, hogy az alkalmazás jogkivonatokat kap a felhasználó számára (általában a folyamatot tárgyalja), vagy közvetlenül egy alkalmazásból (az [ügyfél hitelesítő adatainak folyamatán](v1-oauth2-client-creds-grant-flow.md)keresztül). Ezek az alkalmazási tokenek azt jelzik, hogy ez a hívás egy alkalmazásból származik, és nem rendelkezik a felhasználó biztonsági mentésével. Ezek a jogkivonatok kezelése nagyjából azonos:
 
-* Az alkalmazáshoz tartozó jogkivonatok nem rendelkeznek `scp` jogcímevel, és ehelyett `roles` jogcímeket igényelhetnek. Ebben az esetben a rendszer rögzíti az alkalmazás engedélyét (a delegált engedélyekkel szemben). A delegált és az alkalmazásra vonatkozó engedélyekkel kapcsolatos további információkért lásd: engedély és hozzájárulás ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).
-* Számos emberi jogcíme hiányzik, például a `name` vagy a `upn` .
-* A `sub` és a `oid` jogcímek azonosak lesznek.
+* Ezzel a `roles` beállítással megtekintheti a jogkivonat tulajdonosának (az egyszerű szolgáltatásnév, a jelen esetben nem a felhasználó) engedélyeit.
+* A `oid` vagy a használatával `sub` ellenőrizze, hogy a hívó szolgáltatásnév a várt érték-e.
+
+Ha az alkalmazásnak meg kell különböztetnie az alkalmazáshoz tartozó hozzáférési jogkivonatokat és a felhasználók hozzáférési jogkivonatait, használja az `idtyp` [opcionális jogcímet](active-directory-optional-claims.md).  `idtyp`Ha a jogcímet hozzáadja a `accessToken` mezőhöz, és ellenőrzi az értéket `app` , akkor csak az alkalmazáshoz tartozó hozzáférési jogkivonatok észlelhetők.  A felhasználók azonosító jogkivonatai és hozzáférési jogkivonatai nem `idtyp` foglalják magukban a jogcímeket.
+
 
 ## <a name="token-revocation"></a>Jogkivonat visszavonása
 
@@ -254,7 +256,7 @@ A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-to
 
 A frissítési tokeneket a kiszolgáló visszavonhatja a hitelesítő adatok módosítása, illetve a használati vagy rendszergazdai műveletek miatt.  A frissítési tokenek két osztályba sorolhatók – ezek a bizalmas ügyfelek (a jobb szélső oszlop) és a nyilvános ügyfelek számára kiállítottak (az összes többi oszlop).   
 
-|   | Jelszó alapú cookie | Jelszó alapú jogkivonat | Nem jelszó alapú cookie | Nem jelszó alapú jogkivonat | Bizalmas ügyfél jogkivonata |
+| Módosítás | Jelszó alapú cookie | Jelszó alapú jogkivonat | Nem jelszó alapú cookie | Nem jelszó alapú jogkivonat | Bizalmas ügyfél jogkivonata |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | A jelszó lejár | Életben marad | Életben marad | Életben marad | Életben marad | Életben marad |
 | Jelszó módosítva felhasználó által | Revoked | Revoked | Életben marad | Életben marad | Életben marad |

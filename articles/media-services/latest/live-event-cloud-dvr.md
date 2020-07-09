@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
 ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995809"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket

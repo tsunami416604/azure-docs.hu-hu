@@ -1,74 +1,105 @@
 ---
-title: Szabványos SKU Load Balancer használata
+title: Nyilvános Load Balancer használata
 titleSuffix: Azure Kubernetes Service
-description: Megtudhatja, hogyan használhatja a Load balancert standard SKU-val, hogy szolgáltatásai elérhetők legyenek az Azure Kubernetes szolgáltatással (ak).
+description: Megtudhatja, hogyan használhatja a nyilvános Load balancert egy standard SKU-val, hogy szolgáltatásai elérhetők legyenek az Azure Kubernetes szolgáltatással (ak).
 services: container-service
-author: zr-msft
 ms.topic: article
-ms.date: 09/27/2019
-ms.author: zarhoads
-ms.openlocfilehash: 14e80f6348772af77c5a53b1d5e9111c4ae8ba9b
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.date: 06/14/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: c03c8b385fc287737853c3cabd2e25f365a84578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831522"
 ---
-# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
+# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
-Ahhoz, hogy hozzáférést biztosítson az alkalmazásokhoz az `LoadBalancer` Azure Kubernetes Service (ak) típusú Kubernetes Services használatával, használhat egy Azure Load Balancer. Az AK-on futó Load Balancer belső vagy külső terheléselosztóként is használható. A belső terheléselosztó csak az AK-fürttel azonos virtuális hálózaton futó alkalmazások számára teszi elérhetővé a Kubernetes szolgáltatást. A külső terheléselosztó egy vagy több nyilvános IP-címet kap a bejövő forgalom számára, és a nyilvános IP-címek használatával a Kubernetes szolgáltatás kívülről is elérhetővé válik.
+A Azure Load Balancer a nyílt rendszerek összekapcsolási (OSI) modellje, amely támogatja a bejövő és a kimenő forgatókönyveket is. Elosztja a terheléselosztó előtér-példányaira érkező bejövő folyamatokat.
 
-Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a *standard* SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre. A *standard* SKU Load Balancer használata további funkciókat és funkciókat kínál, például nagyobb méretű háttér-készletet és Availability Zones. Fontos, hogy megértse a *standard* és az *alapszintű* terheléselosztó közötti különbségeket, mielőtt kiválasztja, hogy melyiket kívánja használni. Ha egy AK-fürtöt hoz létre, az adott fürthöz tartozó terheléselosztó SKU nem módosítható. Az *alapszintű* és a *standard* SKU-ról további információt az [Azure Load Balancer SKU-összehasonlítását][azure-lb-comparison]ismertető témakörben talál.
+Az AK-val integrált **nyilvános** Load Balancer két célt szolgálnak:
 
-Ez a cikk a Kubernetes és a Azure Load Balancer fogalmak alapszintű megismerését feltételezi. További információ: a [Kubernetes alapvető fogalmai az Azure Kubernetes Service-ben (ak)][kubernetes-concepts] és [Mi az Azure Load Balancer?][azure-lb]
+1. A fürt csomópontjain belüli kimenő kapcsolatok biztosításához az AK virtuális hálózaton belül. Ezt a célt úgy éri el, hogy a csomópontok magánhálózati IP-címét egy olyan nyilvános IP-címhez fordítja le, amely a *kimenő készlet*részét képezi.
+2. Az alkalmazásokhoz való hozzáférés biztosítása Kubernetes-szolgáltatásokon keresztül `LoadBalancer` . Ezzel könnyedén méretezheti alkalmazásait, és létrehozhat egy magasan elérhető szolgáltatásokat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Egy **belső (vagy privát)** terheléselosztó akkor használatos, ha csak a magánhálózati IP-címek engedélyezettek a rendszerfelületként. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál. A terheléselosztó felülete egy helyszíni hálózatról is elérhető hibrid forgatókönyv esetén.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.81 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Ez a dokumentum a nyilvános Load balancerrel való integrációt ismerteti. A belső Load Balancer integrálásával kapcsolatban tekintse meg az [AK belső terheléselosztó dokumentációját](internal-lb.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy van egy AK-fürt a *standard* SKU Azure Load Balancer. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
+Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a *standard* SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre. A *standard* SKU használatával férhet hozzá a hozzáadott funkciókhoz, például egy nagyobb háttérrendszer-készlethez, [**több csomópontos**](use-multiple-node-pools.md)készlethez és [**Availability Zoneshoz**](availability-zones.md). Ez az ajánlott Load Balancer SKU az AK-hoz.
 
-Ha meglévő alhálózatot vagy erőforráscsoportot használ, az AK-fürt egyszerű szolgáltatása a hálózati erőforrások kezeléséhez is szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást is az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md). Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
+Az *alapszintű* és a *standard* SKU-ról további információt az [Azure Load Balancer SKU-összehasonlítását][azure-lb-comparison]ismertető témakörben talál.
 
-### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Alapszintű SKU-Load Balancerról standard SKU-ra való áttérés
-
-Ha rendelkezik egy meglévő, alapszintű SKU-Load Balancer rendelkező fürttel, akkor fontos, hogy a rendszer az áttelepítés során vegye figyelembe, hogy mikor kell a standard SKU-Load Balancer használatával fürtöt használni.
-
-Tegyük fel például, hogy a fürtök áttelepítésére szolgáló kék/zöld központi telepítések egy gyakori eljárás, mivel a `load-balancer-sku` fürt típusa csak a fürt létrehozási ideje alatt definiálható. Az *alapszintű SKU* -terheléselosztó azonban olyan *alapszintű SKU* IP-címeket használ, amelyek nem kompatibilisek a *standard* SKU-beli Load balancerekkel, mivel *szabványos SKU* IP-címeket igényelnek. Amikor a fürtöket áttelepíti Load Balancer SKU-ra, egy kompatibilis IP-címmel rendelkező új IP-címet kell megadni.
-
-A fürtök áttelepítésével kapcsolatos további szempontokért tekintse meg a [dokumentációt az áttelepítési megfontolásokból](aks-migration.md) , és tekintse meg az áttelepítés során megfontolandó fontos témakörök listáját. Az alábbi korlátozások szintén fontos viselkedési különbségeket is figyelembe vesznek, ha standard SKU Load Balancert használ az AK-ban.
-
-### <a name="limitations"></a>Korlátozások
-
-A következő korlátozások érvényesek a terheléselosztó és a *szabványos* SKU-t támogató AK-fürtök létrehozásakor és kezelésekor:
-
-* Legalább egy nyilvános IP-cím vagy IP-előtag szükséges ahhoz, hogy a kimenő forgalom az AK-fürtből legyen engedélyezve. A nyilvános IP-cím vagy IP-előtag szükséges a vezérlési sík és az ügynök csomópontjai közötti kapcsolat fenntartásához, valamint az AK korábbi verzióival való kompatibilitás fenntartásához is. A következő lehetőségek közül választhat a *szabványos* SKU Load balancerrel rendelkező nyilvános IP-címek vagy IP-előtagok megadásához:
-    * Adja meg saját nyilvános IP-címeit.
-    * Adja meg saját nyilvános IP-előtagjait.
-    * 100-ig terjedő számot kell megadnia, amely lehetővé teszi, hogy az AK-fürt számos *szabványos* SKU-beli nyilvános IP-címet hozzon létre ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, amelyet általában a *MC_* elején neveznek el. Az AK a nyilvános IP-címet a *standard* SKU Load Balancerhez rendeli. Alapértelmezés szerint a rendszer automatikusan létrehoz egy nyilvános IP-címet ugyanabban az erőforráscsoportban, mint az AK-fürtöt, ha nincs megadva nyilvános IP-cím, nyilvános IP-előtag vagy IP-címek száma. Emellett engedélyeznie kell a nyilvános címeket, és el kell kerülnie az IP-létrehozást megtiltó Azure Policy létrehozását.
-* A terheléselosztó *szabványos* SKU-jának használatakor a *1,13-es vagy újabb*Kubernetes-verziót kell használnia.
-* A terheléselosztó SKU definiálása csak akkor hajtható végre, ha AK-fürtöt hoz létre. Egy AK-fürt létrehozása után nem módosíthatja a terheléselosztó SKU-t.
-* Egyetlen fürtben csak egyetlen típusú terheléselosztó SKU-t (alapszintű vagy standard) használhat.
-* *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
-
-## <a name="use-the-standard-sku-load-balancer"></a>A *standard* SKU Load Balancer használata
-
-Ha egy AK-fürtöt hoz létre, a rendszer alapértelmezés szerint a *standard* SKU Load balancert használja, amikor szolgáltatásokat futtat a fürtben. Az [Azure CLI][aks-quickstart-cli] -t használó rövid útmutató például telepíti a *standard* SKU Load balancert használó minta alkalmazást.
+Ez a cikk feltételezi, hogy van egy AK-fürtje a *szabványos* SKU Azure Load Balancer, és végigvezeti a terheléselosztó egyes képességeinek és funkcióinak használatáról és konfigurálásáról. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
 > [!IMPORTANT]
-> A nyilvános IP-címek elkerülhetők a felhasználó által megadott útvonal (UDR) testreszabásával. Egy AK-fürt kimenő típusának megadása a UDR kihagyhatja az IP-kiépítés és a háttérbeli készlet beállítását az AK-hoz létrehozott Azure Load Balancer számára. Lásd: [fürtök beállítása a következőre: `outboundType` "userDefinedRouting"](egress-outboundtype.md).
+> Ha inkább nem szeretné kihasználni a Azure Load Balancer a kimenő kapcsolatok biztosításához, és helyette saját átjárója van, akkor a tűzfal vagy a proxy erre a célra kihagyhatja a terheléselosztó kimenő készletének létrehozását és a megfelelő előtér-IP-címet a [**kimenő típus UserDefinedRouting (UDR)**](egress-outboundtype.md)való használatával. A kimenő típus határozza meg a kilépési módszert egy fürthöz, és alapértelmezés szerint a következőt írja be: Load Balancer.
 
-## <a name="configure-the-load-balancer-to-be-internal"></a>A terheléselosztó belső beállítása
+## <a name="use-the-public-standard-load-balancer"></a>A nyilvános standard Load Balancer használata
 
-Azt is beállíthatja, hogy a terheléselosztó belső legyen, és ne tegye közzé a nyilvános IP-címet. A terheléselosztó belsőként való konfigurálásához vegyen fel `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jegyzetként a *terheléselosztó* szolgáltatásba. [Itt][internal-lb-yaml]láthat egy példát a YAML-jegyzékre, valamint további részleteket is megtudhat a belső terheléselosztó használatával kapcsolatban.
+Miután létrehozta az AK-fürtöt a kimenő típussal: Load Balancer (alapértelmezett), a fürt készen áll arra, hogy a terheléselosztó használatával elérhetővé tegye a szolgáltatásokat is.
 
-## <a name="scale-the-number-of-managed-public-ips"></a>A felügyelt nyilvános IP-címek számának méretezése
+Ahhoz, hogy létre lehessen hozni egy olyan típusú nyilvános szolgáltatást `LoadBalancer` , amely az alábbi példában látható. Első lépésként hozzon létre egy nevű szolgáltatási jegyzékfájlt `public-svc.yaml` :
 
-Ha egy *szabványos* SKU-Load balancert használ a felügyelt kimenő nyilvános IP-címekkel, amelyek alapértelmezés szerint jönnek létre, akkor a felügyelt kimenő nyilvános IP-címeket a *terheléselosztó – felügyelt-IP-Count* paraméter használatával méretezheti.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-svc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: public-app
+```
+
+Telepítse a nyilvános szolgáltatás jegyzékfájlját a [kubectl alkalmazásával][kubectl-apply] , és adja meg a YAML-jegyzék nevét:
+
+```azurecli-interactive
+kubectl apply -f public-svc.yaml
+```
+
+A Azure Load Balancer egy új nyilvános IP-címmel lesz konfigurálva, amely megkezdi ezt az új szolgáltatást. Mivel a Azure Load Balancer több előtér-IP-címmel is rendelkezhet, minden új szolgáltatás üzembe helyezése egy új dedikált előtér-IP-címet kap, amely egyedi módon elérhetővé válik.
+
+Ellenőrizheti, hogy a szolgáltatás létrejött-e, és hogy a terheléselosztó konfigurálva van-e, például:
+
+```azurecli-interactive
+kubectl get service public-svc
+```
+
+```console
+NAMESPACE     NAME          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)         AGE
+default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:32068/TCP    52s
+```
+
+A szolgáltatás részleteinek megtekintésekor a terheléselosztó szolgáltatáshoz létrehozott nyilvános IP-cím megjelenik a *külső IP-* oszlopban. Előfordulhat, hogy az IP-cím egy percet vagy kettőt is igénybe vehet, és a *\<pending\>* fenti példában látható módon megváltoznak.
+
+## <a name="configure-the-public-standard-load-balancer"></a>A nyilvános standard Load Balancer konfigurálása
+
+A standard SKU nyilvános terheléselosztó használatakor lehetőség van a létrehozási időben vagy a fürt frissítésével testreszabható beállításokra. Ezekkel a beállításokkal testreszabhatja a Load Balancer, hogy megfeleljen a számítási feladatoknak, és ennek megfelelően felül kell vizsgálni. A standard Load balancerrel a következőket teheti:
+
+* A felügyelt kimenő IP-címek számának beállítása vagy méretezése
+* Saját egyéni kimenő IP [-címek vagy kimenő IP-előtag](#provide-your-own-outbound-public-ips-or-prefixes) használata
+* A lefoglalt kimenő portok számának testreszabása a fürt mindegyik csomópontján
+* Az üresjárati kapcsolatok időtúllépési beállításának konfigurálása
+
+### <a name="scale-the-number-of-managed-outbound-public-ips"></a>A felügyelt kimenő nyilvános IP-címek számának skálázása
+
+Azure Load Balancer kimenő kapcsolatot biztosít egy virtuális hálózattól a bejövő adatok mellett. A kimenő szabályok egyszerűvé teszik a nyilvános standard Load Balancer kimenő hálózati címfordításának konfigurálását.
+
+Az összes Load Balancer-szabályhoz hasonlóan a kimenő szabályok ugyanazt a szintaxist követik, mint a terheléselosztás és a bejövő NAT-szabályok:
+
+***előtér-IP-címek + paraméterek + háttér-készlet***
+
+Egy kimenő szabály konfigurálja a kimenő NAT-t a háttér-készlet által azonosított összes virtuális gép számára, hogy a rendszer lefordítsa a felületet. A és a paraméterek további részletes szabályozást biztosítanak a kimenő NAT-algoritmushoz képest.
+
+Míg egy kimenő szabály csak egyetlen nyilvános IP-címmel használható, a kimenő szabályok megkönnyítik a kimenő NAT skálázásának konfigurációs terhelését. Több IP-címet is használhat a nagy léptékű forgatókönyvek tervezéséhez, és a kimenő szabályok használatával csökkentheti a SNAT kimerülésének hajlamos mintázatát. A frontend által biztosított minden további IP-cím a SNAT-portokként való használatra Load Balancer 64 KB-os ideiglenes portot biztosít. 
+
+Ha egy *szabványos* SKU-Load balancert használ a felügyelt kimenő nyilvános IP-címekkel, amelyek alapértelmezés szerint jönnek létre, akkor a paraméter használatával méretezheti a felügyelt kimenő nyilvános IP-címek számát **`load-balancer-managed-ip-count`** .
 
 Meglévő fürt frissítéséhez futtassa a következő parancsot. Ez a paraméter a fürt létrehozási ideje beállításnál is beállítható, hogy több felügyelt kimenő nyilvános IP-cím legyen.
 
@@ -81,25 +112,20 @@ az aks update \
 
 A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a *myResourceGroup*-ben található *myAKSCluster* - *fürt esetében.* 
 
-A terheléselosztó által *felügyelt-IP-Count* paraméterrel is beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor a paraméter hozzáfűzésével `--load-balancer-managed-outbound-ip-count` és a kívánt értékre való beállításával. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
+A **`load-balancer-managed-ip-count`** paraméter használatával beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor a paraméter hozzáfűzésével **`--load-balancer-managed-outbound-ip-count`** és a kívánt értékre való beállításával. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
 
-## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Saját nyilvános IP-címek vagy előtagok megadása a kimenő forgalomhoz
+### <a name="provide-your-own-outbound-public-ips-or-prefixes"></a>Saját kimenő nyilvános IP-címek vagy előtagok megadása
 
-*Standard* SKU Load Balancer használatakor az AK-fürt automatikusan létrehoz egy nyilvános IP-címet ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, és hozzárendeli a nyilvános IP-címet a *standard* SKU Load Balancerhez. Azt is megteheti, hogy a fürt létrehozási idején saját nyilvános IP-címet rendel hozzá, vagy frissítheti a meglévő fürt terheléselosztó-tulajdonságait.
+Ha *standard* SKU Load balancert használ, alapértelmezés szerint az Kabai fürt automatikusan létrehoz egy nyilvános IP-címet az AK által felügyelt infrastruktúra-erőforráscsoport számára, és hozzárendeli azt a terheléselosztó kimenő készletéhez.
 
-Több IP-cím vagy előtag megadásával több háttér-szolgáltatást is meghatározhat, ha az IP-címet egyetlen terheléselosztó objektum mögött definiálja. Az adott csomópontok kimenő végpontja attól függ, hogy milyen szolgáltatáshoz vannak társítva.
+Az AK által létrehozott nyilvános IP-címek egy AK által felügyelt erőforrásnak tekintendők. Ez azt jelenti, hogy a nyilvános IP-cím életciklusát az AK felügyeli, és nem igényel felhasználói beavatkozást közvetlenül a nyilvános IP-erőforráson. Azt is megteheti, hogy a fürt létrehozásakor saját egyéni nyilvános IP-címet vagy nyilvános IP-előtagot rendel hozzá. Az egyéni IP-címek egy meglévő fürt terheléselosztó-tulajdonságain is frissíthetők.
 
-### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Előfeltételek a saját IP-címeinek vagy IP-előtagjainak
-1. *Szabványos* SKU nyilvános IP-címeket kell használnia a kimenő forgalomhoz a Load Balancer *standard* SKU-jának megfelelően. A nyilvános IP-címek SKU-jának ellenőrzéséhez használja az az [Network Public-IP show][az-network-public-ip-show] parancsot:
+> [!NOTE]
+> Az egyéni nyilvános IP-címeket a felhasználónak kell létrehoznia és birtokolnia. Az AK által létrehozott felügyelt nyilvános IP-címek nem használhatók fel a saját egyéni IP-címének használatára, mivel a felügyeleti ütközéseket okozhatnak.
 
-   ```azurecli-interactive
-   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-   ```
- 1. A nyilvános IP-címeknek és az IP-ELŐTAGOKNAK ugyanabban a régióban kell lenniük, és ugyanannak az előfizetésnek kell szerepelniük, mint az AK-fürt.
- 1. A nyilvános IP-címek és az IP-előtagok nem lehetnek olyan IP-címek, amelyeket az AK felügyelt IP-ként hozott létre. Győződjön meg arról, hogy az egyéni IP-címekként megadott IP-címek manuálisan lettek létrehozva, és nem az AK szolgáltatás.
- 1. A nyilvános IP-címek és az IP-előtagok nem használhatók másik erőforrás vagy szolgáltatás számára.
+A művelet megkezdése előtt győződjön meg arról, hogy megfelel a kimenő IP-címek vagy a kimenő IP-előtagok konfigurálásához szükséges előfeltételeknek [és megkötéseknek](../virtual-network/public-ip-address-prefix.md#constraints) .
 
- ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Saját nyilvános IP-cím vagy előtag definiálása meglévő fürtön
+#### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>A fürt frissítése saját kimenő nyilvános IP-címmel
 
 A nyilvános IP-címek azonosítóinak listázásához használja az az [Network Public-IP show][az-network-public-ip-show] parancsot.
 
@@ -109,9 +135,9 @@ az network public-ip show --resource-group myResourceGroup --name myPublicIP --q
 
 A fenti parancs a *myPublicIP* nyilvános IP-CÍMÉnek azonosítóját jeleníti meg a *myResourceGroup* -erőforráscsoporthoz.
 
-Használja az az *AK Update* parancsot a *Load-Balancer-kimenő-IPS* paraméterrel, és frissítse a fürtöt a nyilvános IP-címekkel.
+A `az aks update` parancs és a **`load-balancer-outbound-ips`** paraméter használatával frissítse a fürtöt a nyilvános IP-címekkel.
 
-A következő példa a *Load-Balancer-kimenő-IPS* paramétert használja az előző parancs azonosítói alapján.
+A következő példa a `load-balancer-outbound-ips` paramétert használja az előző parancs azonosítói alapján.
 
 ```azurecli-interactive
 az aks update \
@@ -119,6 +145,8 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
+
+#### <a name="update-the-cluster-with-your-own-outbound-public-ip-prefix"></a>A fürt frissítése saját kimenő nyilvános IP-előtaggal
 
 Nyilvános IP-előtagokat is használhat a *standard* SKU Load balancerrel való kimenő forgalomhoz. Az alábbi példa az az [Network Public-IP előtag show][az-network-public-ip-prefix-show] parancsot használja a nyilvános IP-előtagok azonosítóinak listázásához:
 
@@ -137,7 +165,7 @@ az aks update \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Saját nyilvános IP-cím vagy előtag definiálása a fürt létrehozási idején
+#### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>A fürt létrehozása saját nyilvános IP-címmel vagy előtagokkal
 
 Előfordulhat, hogy saját IP-címeket vagy IP-előtagokat kíván létrehozni a kimenő forgalomhoz a fürt létrehozási ideje alatt, hogy támogassa a kimenő végpontok engedélyezési forgatókönyveit. Fűzze hozzá ugyanezeket a paramétereket a fürt létrehozási lépéseként, hogy meghatározza a saját nyilvános IP-címeit és az IP-előtagokat a fürt életciklusának elején.
 
@@ -147,10 +175,6 @@ Előfordulhat, hogy saját IP-címeket vagy IP-előtagokat kíván létrehozni a
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
@@ -159,22 +183,16 @@ Használja az az *AK Create* parancsot a *Load-Balancer-kimenő-IP-előtag* para
 ```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="configure-outbound-ports-and-idle-timeout"></a>Kimenő portok és Üresjárati időkorlát konfigurálása
+### <a name="configure-the-allocated-outbound-ports"></a>A lefoglalt kimenő portok konfigurálása
 
-> [!WARNING]
-> A következő szakasz a nagyobb léptékű hálózatkezelés speciális forgatókönyveit és az alapértelmezett konfigurációk SNAT-kimerülési problémáinak kezelését ismerteti. A virtuális gépek és az IP-címek esetében a rendelkezésre álló kvóta pontos leltározása szükséges ahhoz, hogy a *AllocatedOutboundPorts* vagy a *IdleTimeoutInMinutes* az alapértelmezett értékről az egészséges fürtök fenntartása érdekében módosítsa.
-> 
-> A *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes* értékeinek módosítása jelentősen befolyásolhatja a terheléselosztó kimenő szabályának viselkedését. Az értékek frissítése előtt tekintse át az [Load Balancer kimenő szabályokat][azure-lb-outbound-rules-overview], a [terheléselosztó kimenő szabályait][azure-lb-outbound-rules]és a [kimenő kapcsolatokat az Azure-ban][azure-lb-outbound-connections] , mielőtt frissíti ezeket az értékeket a módosítások hatásának teljes megértéséhez.
+> [!IMPORTANT]
+> Ha olyan alkalmazásokkal rendelkezik a fürtön, amelyek nagy számú kapcsolatot kívánnak létrehozni kis mennyiségű célállomással, például:. az SQL DB-hez csatlakozó előtér-példányok sok esetben nagyon hajlamosak arra, hogy SNAT a portok kimerülését (kifogyott a portokról a csatlakozáshoz). Ezekben a forgatókönyvekben erősen ajánlott a lefoglalt kimenő portok és a kimeneti előtérbeli IP-címek bővítése a terheléselosztó esetében. A növekedésnek figyelembe kell vennie, hogy egy (1) további IP-cím további 64 millió további portot használ az összes fürtcsomóponton való terjesztéshez.
 
-A kimenő lefoglalt portok és a tétlen időtúllépések a [SNAT][azure-lb-outbound-connections]-hez használatosak. Alapértelmezés szerint a *standard* SKU Load Balancer [automatikus hozzárendelést használ a kihelyezett portok számához a háttérbeli készlet mérete alapján][azure-lb-outbound-preallocatedports] , valamint az egyes portok 30 perces üresjárati időkorlátját. Az értékek megtekintéséhez használja az az [Network LB kimenő-Rule List][az-network-lb-outbound-rule-list] lehetőséget a terheléselosztó kimenő szabályának megjelenítéséhez:
+
+Ha másként nincs megadva, az AK a standard Load Balancer által definiált lefoglalt kimenő portok alapértelmezett értékét fogja használni a konfigurálásakor. Ez az érték **null értékű** az AK API-ban, vagy **0** a SLB API-ban, ahogy az alábbi parancs is mutatja:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -189,48 +207,74 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-A példa kimenete a *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes*alapértelmezett értékét jeleníti meg. A *AllocatedOutboundPorts* 0 értéke állítja be a kimenő portok számát a háttérbeli készlet méretétől függően a kimenő portok számának automatikus hozzárendelése használatával. Ha például a fürt 50 vagy kevesebb csomóponttal rendelkezik, az egyes csomópontok 1024 portjai vannak lefoglalva.
+Ez a kimenet nem jelenti azt, hogy 0 porttal rendelkezik, hanem a [háttérrendszer-készlet mérete alapján kihasználja az automatikus kimenő port hozzárendelését][azure-lb-outbound-preallocatedports], így például ha egy fürt 50-as vagy kevesebb csomóponttal rendelkezik, az egyes csomópontok esetében 1024-portok vannak lefoglalva, mivel a csomópontok számának növelésével a csomópontok száma fokozatosan kevesebb portot kap.
 
-Érdemes lehet módosítani a *allocatedOutboundPorts* vagy a *IdleTimeoutInMinutes* beállítást, ha a fenti alapértelmezett konfiguráció alapján szeretné szembenézni a SNAT-kimerüléssel. Minden további IP-cím lehetővé teszi a 64 000 további portok kiosztását, az Azure-standard Load Balancer azonban nem növekszik automatikusan a portok száma csomóponton, ha további IP-címek vannak hozzáadva. Ezeket az értékeket módosíthatja a *Load-Balancer-kimenő-portok* és a *Load-Balancer – Idle-timeout* paraméterek beállításával. Például:
+
+A lefoglalt kimenő portok számának meghatározásához vagy növeléséhez kövesse az alábbi példát:
+
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --load-balancer-outbound-ports 0 \
-    --load-balancer-idle-timeout 30
+    --load-balancer-managed-outbound-ip-count 7 \
+    --load-balancer-outbound-ports 4000
 ```
 
-> [!IMPORTANT]
-> A kapcsolat vagy a skálázási problémák elkerülése érdekében [ki kell számítania a szükséges kvótát][calculate-required-quota] , mielőtt testreszabja a *allocatedOutboundPorts* . A *allocatedOutboundPorts* megadott értéknek a 8-as többszörösének is kell lennie.
+Ebben a példában a fürt minden csomópontja számára 4000 lefoglalt kimenő portot, a 7 4000 IP-címmel pedig a *csomópontok száma * 100 csomópont = 400k összes portja < = 448k Total ports = 7 IP-címek * 64 GB-os port/IP*. Ez lehetővé teszi, hogy biztonságosan méretezhető 100-csomópontra, és alapértelmezett frissítési művelettel rendelkezzen. Fontos, hogy elegendő portot foglaljon le a frissítéshez és egyéb műveletekhez szükséges további csomópontokhoz. Az AK alapértelmezett értéke az egyik puffer csomópontja a frissítéshez, ebben a példában ehhez az adott időpontban 4000 szabad port szükséges. MaxSurge- [értékek](upgrade-cluster.md#customize-node-surge-upgrade-preview)használata esetén a maxSurge értékével szorozza meg a kimenő portokat.
 
-Fürt létrehozásakor a *Load-Balancer-kimenő-portok* és a *Load-Balancer-Idle-timeout* paramétereket is használhatja, de a *terheléselosztás által felügyelt-kimenő-IP-darabszám*, a *Load-Balancer-kimenő-* IP-címek vagy a *Load-Balancer-kimenő-IP-előtag* is megadható.  Például:
+A 100-csomópontok feletti biztonság érdekében további IP-címeket kell hozzáadnia.
+
+
+> [!IMPORTANT]
+> Ki kell [számítania a szükséges kvótát, és ellenőriznie kell a követelményeket][requirements] , mielőtt testreszabja a *allocatedOutboundPorts* a kapcsolatok és a skálázási problémák elkerüléséhez.
+
+A **`load-balancer-outbound-ports`** paramétereket a fürt létrehozásakor is használhatja, de meg kell adnia a vagy a, **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** vagy is **`load-balancer-outbound-ip-prefixes`** .  Például:
 
 ```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
     --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-managed-outbound-ip-count 2 \
-    --load-balancer-outbound-ports 0 \
-    --load-balancer-idle-timeout 30
+    --load-balancer-outbound-ports 1024 
 ```
 
-Ha módosítja a terheléselosztó *– kimenő – portok* és a *terheléselosztó – Üresjárati időkorlát* paramétereit az alapértelmezett értéktől, akkor ez a beállítás hatással van a terheléselosztó-profil viselkedésére, ami hatással van a teljes fürtre.
+### <a name="configure-the-load-balancer-idle-timeout"></a>A terheléselosztó üresjárati időkorlátjának konfigurálása
 
-### <a name="required-quota-for-customizing-allocatedoutboundports"></a>A allocatedOutboundPorts testreszabásához szükséges kvóta
-Elegendő kimenő IP-kapacitásra van szükség a csomópontok és a kívánt kimenő portok számától függően. A következő képlettel ellenőrizheti, hogy van-e elegendő kimenő IP-kapacitása: 
+A SNAT-portok erőforrásainak kimerítése esetén a kimenő folyamatok meghiúsulnak, amíg a meglévő folyamatok SNAT-portokat nem szabadítanak fel. Load Balancer visszaállítja a SNAT-portokat a folyamat bezárásakor, és az AK-konfigurált terheléselosztó 30 perces üresjárati időkorlátot használ a SNAT-portok üresjárati forgalomból való visszaigényléséhez.
+Az átvitelt (például) is használhatja, **`TCP keepalives`** vagy **`application-layer keepalives`** egy üresjárati folyamat frissítésére, és szükség esetén alaphelyzetbe állíthatja az üresjárati időkorlátot. Ezt az időtúllépést az alábbi példát követve állíthatja be: 
+
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-idle-timeout 4
+```
+
+Ha várhatóan több rövid életű kapcsolatra van szüksége, és nem áll rendelkezésre hosszú ideig tartó kapcsolat, és előfordulhat, hogy az `kubectl proxy` `kubectl port-forward` alacsony időtúllépési érték (például 4 perc) használata hosszabb ideig tart. A TCP-Keepalives használata esetén is elegendő, ha engedélyezi őket a csatlakozás egyik oldalán. Például elegendő, ha csak a kiszolgáló oldalon engedélyezi őket, hogy alaphelyzetbe állítsa a folyamat üresjárati időzítőjét, és mindkét fél számára nem szükséges a TCP-Keepalives elindításához. Hasonló fogalmak léteznek az alkalmazási réteghez, beleértve az adatbázis-ügyfél-kiszolgáló konfigurációkat is. Tekintse meg a kiszolgáló oldalát, hogy milyen lehetőségek léteznek az alkalmazásspecifikus Keepalives.
+
+> [!IMPORTANT]
+> Az AK alapértelmezés szerint engedélyezi a TCP alaphelyzetbe állítását, és azt javasolja, hogy ezt a konfigurációt továbbra is megtartsa, és kihasználja azt a forgatókönyvek további kiszámítható alkalmazása érdekében.
+> Az első TCP-t a rendszer csak a TCP-kapcsolatok során, a létesített állapotban továbbítja. [Itt](../load-balancer/load-balancer-tcp-reset.md) talál további információt.
+
+### <a name="requirements-for-customizing-allocated-outbound-ports-and-idle-timeout"></a>A lefoglalt kimenő portok és az üresjárat időkorlátjának testreszabására vonatkozó követelmények
+
+- A *allocatedOutboundPorts* megadott értéknek a 8-as többszörösének is kell lennie.
+- A csomópont virtuális gépei és a szükséges lefoglalt kimenő portok száma alapján elegendő kimenő IP-kapacitással kell rendelkeznie. A következő képlettel ellenőrizheti, hogy van-e elegendő kimenő IP-kapacitása: 
  
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Ha például 3 *nodeVMs*van, és 50 000 *desiredAllocatedOutboundPorts*, legalább 3 *outboundIPs*kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
  
-Ha a *IdleTimeoutInMinutes* eltérő értékre állítja be, mint az alapértelmezett 30 perc, akkor vegye figyelembe, hogy a számítási feladatoknak mennyi ideig kell kiadniuk a kimenő kapcsolatokat. Azt is vegye figyelembe, hogy egy *standard* SKU-Load Balancer alapértelmezett időtúllépési értéke 4 perc. Egy olyan *IdleTimeoutInMinutes* -érték, amely pontosabban tükrözi az adott AK-beli munkaterhelést, csökkentheti a SNAT okozta kimerültséget, mivel a kapcsolatok már nincsenek használatban.
+- Ha a *IdleTimeoutInMinutes* eltérő értékre állítja be, mint az alapértelmezett 30 perc, akkor vegye figyelembe, hogy a számítási feladatoknak mennyi ideig kell kiadniuk a kimenő kapcsolatokat. Azt is vegye figyelembe, hogy egy *standard* SKU-Load Balancer alapértelmezett időtúllépési értéke 4 perc. Egy olyan *IdleTimeoutInMinutes* -érték, amely pontosabban tükrözi az adott AK-beli munkaterhelést, csökkentheti a SNAT okozta kimerültséget, mivel a kapcsolatok már nincsenek használatban.
 
-## <a name="restrict-access-to-specific-ip-ranges"></a>Meghatározott IP-tartományokhoz való hozzáférés korlátozása
+> [!WARNING]
+> Ha módosítja a *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes* értékeit, jelentősen megváltoztathatja a terheléselosztó kimenő szabályának viselkedését, és a kompromisszumok és az alkalmazás kapcsolati mintáinak megismerése nélkül nem kell megtörténnie, a [SNAT hibaelhárítási szakaszában][troubleshoot-snat] ellenőrizze az alábbi lépéseket, és tekintse át a [Load Balancer kimenő][azure-lb-outbound-rules-overview] és [kimenő kapcsolatokat az Azure-ban][azure-lb-outbound-connections] , mielőtt frissíti ezeket az értékeket a módosítások hatásának teljes megértéséhez
+
+
+## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>A bejövő forgalom korlátozása adott IP-tartományokra
 
 A terheléselosztó virtuális hálózatához társított hálózati biztonsági csoport (NSG) alapértelmezés szerint rendelkezik egy olyan szabállyal, amely engedélyezi az összes bejövő külső forgalmat. Ezt a szabályt úgy frissítheti, hogy csak adott IP-tartományokat engedélyezzen a bejövő forgalom számára. A következő jegyzékfájl a *loadBalancerSourceRanges* -t használja a bejövő külső forgalomhoz tartozó új IP-címtartomány megadásához:
 
@@ -249,15 +293,78 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
-A fenti példa frissíti a szabályt úgy, hogy csak a *MY_EXTERNAL_IP_RANGE* tartomány bejövő külső forgalmát engedélyezze. Az ezzel a módszerrel a terheléselosztó szolgáltatáshoz való hozzáférés korlátozására vonatkozó további információk a [Kubernetes dokumentációjában][kubernetes-cloud-provider-firewall]találhatók.
+## <a name="additional-customizations-via-kubernetes-annotations"></a>További testreszabások Kubernetes-jegyzetek használatával
+
+Az alábbi lista a Kubernetes-szolgáltatások típussal támogatott megjegyzéseit sorolja fel `LoadBalancer` , ezek a jegyzetek csak a **bejövő** folyamatokra érvényesek:
+
+| Jegyzet | Érték | Description
+| ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
+| `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` vagy `false`                     | Annak megadása, hogy a terheléselosztó belső legyen-e. Alapértelmezés szerint a nyilvános, ha nincs beállítva.
+| `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Az alhálózat neve                    | Határozza meg, hogy melyik alhálózathoz kell kötni a belső terheléselosztó. Ha nincs beállítva, a rendszer alapértelmezés szerint a Cloud config fájlban konfigurált alhálózatot állítja be.
+| `service.beta.kubernetes.io/azure-dns-label-name`                 | A nyilvános IP-címeken lévő DNS-címke neve   | Adja meg a **nyilvános** szolgáltatás DNS-címkéjének nevét. Ha üres karakterláncra van beállítva, a rendszer nem használja a nyilvános IP-címen található DNS-bejegyzést.
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` vagy `false`                     | Annak megadása, hogy a szolgáltatás elérhető legyen egy másik szolgáltatással megosztható Azure biztonsági szabály használatával, a szabályok kereskedelmi sajátossága, amely az elérhető szolgáltatások számának növekedését eredményezi. Ez a jegyzet a hálózati biztonsági csoportok Azure [kibővített biztonsági szabályok](../virtual-network/security-overview.md#augmented-security-rules) funkcióját veszi alapul. 
+| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Az erőforráscsoport neve            | Itt adhatja meg a terheléselosztó nyilvános IP-címeinek azon erőforrásait, amelyek nem ugyanabban az erőforráscsoporthoz vannak, mint a fürt-infrastruktúra (csomópont-erőforráscsoport).
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Engedélyezett szolgáltatási címkék listája          | Itt adhatja meg az engedélyezett [szolgáltatási címkék](../virtual-network/security-overview.md#service-tags) vesszővel elválasztott listáját.
+| `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP Üresjárati időkorlát (perc)          | Itt adhatja meg, hogy hány perc múlva történjen a TCP-kapcsolat üresjárati időtúllépése a terheléselosztó esetében. Az alapértelmezett és a minimális érték 4. A maximális érték 30. Egész számnak kell lennie.
+|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | `enableTcpReset`SLB letiltása
+
+
+## <a name="troubleshooting-snat"></a>SNAT hibaelhárítása
+
+Ha tudja, hogy több kimenő TCP-vagy UDP-kapcsolatra van szüksége ugyanahhoz a cél IP-címhez és porthoz, és megfigyelheti a sikertelen kimenő kapcsolatokat, vagy ha támogatja a SNAT-portok kimerítésének támogatását (a PAT által használt, előzetesen lefoglalt ideiglenes portok), számos általános kockázatcsökkentő lehetőség közül választhat. Tekintse át ezeket a beállításokat, és döntse el, hogy mi az elérhető és melyik a legmegfelelőbb a forgatókönyvhöz. Lehetséges, hogy egy vagy több segíthet a forgatókönyv kezelésében. Részletes információkért tekintse át a [Kimenő kapcsolatok hibaelhárítási útmutatóját](../load-balancer/troubleshoot-outbound-connection.md).
+
+A SNAT-kimerülés kiváltó oka gyakran a kimenő kapcsolat létesítésének, kezelésének vagy konfigurálható időzítőknek az alapértelmezett értékekről való változásának egy anti-mintázata. Alaposan olvassa át ezt a szakaszt.
+
+### <a name="steps"></a>Lépések
+1. Ellenőrizze, hogy a kapcsolatok hosszú ideig tétlenek maradnak-e, és hogy az adott port kiadásának alapértelmezett üresjárati időkorlátját használja-e. Ha így van, előfordulhat, hogy az alapértelmezett 30 perces időkorlátot csökkenteni kell a forgatókönyv esetében.
+2. Vizsgálja meg, hogy az alkalmazás hogyan hozza létre a kimenő kapcsolatokat (például a kód felülvizsgálatát vagy a csomagok rögzítését).
+3. Állapítsa meg, hogy a tevékenység várható viselkedés-e, vagy hogy az alkalmazás nem működik-e. A Azure Monitor [metrikák](../load-balancer/load-balancer-standard-diagnostics.md) és [naplók](../load-balancer/load-balancer-monitor-log.md) használata az eredmények alátámasztására. Használja például a "sikertelen" kategóriát a SNAT-kapcsolatok mérőszámához.
+4. Értékelje ki, hogy a megfelelő [mintákat](#design-patterns) követi-e.
+5. Értékelje ki, hogy a SNAT-portok kimerülését ki kell-e enyhíteni [további kimenő IP-címekkel + további lefoglalt kimenő portokkal](#configure-the-allocated-outbound-ports) .
+
+### <a name="design-patterns"></a>Tervezési minták
+Mindig használja ki a kapcsolatok újrafelhasználását és a kapcsolatok készletezését, amikor csak lehetséges. Ezek a minták elkerülik az erőforrás-kimerülési problémákat, és kiszámítható viselkedést eredményeznek. A mintákhoz tartozó primitívek számos fejlesztői könyvtárban és keretrendszerben találhatók.
+
+- Az atomi kérelmek (egy kérelem kapcsolatonként) általában nem jó kialakítás. Az ilyen jellegű Anti-pattern korlátozza a méretezést, csökkenti a teljesítményt, és csökkenti a megbízhatóságot. Ehelyett használja újra a HTTP/S-kapcsolatokat a kapcsolatok és a társított SNAT-portok számának csökkentése érdekében. Az alkalmazások méretezése a TLS használata esetén a kisebb kézfogások, a terhelési és a titkosítási műveletek költségeinek növekedésével és teljesítményével nő.
+- Ha fürt/egyéni DNS-t használ, vagy a coreDNS lévő egyéni felsőbb rétegbeli kiszolgálókat is figyelembe kell vennie, a DNS-ben számos különálló folyamat is bevezethető, ha az ügyfél nem gyorsítótárazza a DNS-feloldók eredményét. Ügyeljen rá, hogy az egyéni DNS-kiszolgálók használata helyett először a coreDNS szabja meg, és adjon meg egy jó gyorsítótárazási értéket.
+- Az UDP-folyamatok (például a DNS-lekérdezések) lefoglalják a SNAT-portokat az Üresjárati időkorlát időtartamára. Minél hosszabb az Üresjárati időkorlát, annál nagyobb a terhelés a SNAT-portokon. Használjon rövid üresjárati időkorlátot (például 4 perc).
+A kapcsolatok kötetét a kapcsolódási készletek használatával formázhatja.
+- Soha ne hagyjon le csendes TCP-forgalmat, és a TCP-időzítők használatával törölje a folyamatot. Ha nem engedi, hogy a TCP explicit módon lezárta a kapcsolatot, az állapot a közbenső rendszerek és végpontok számára is lefoglalva marad, és a SNAT portok nem érhetők el más kapcsolatok számára. Ez a minta aktiválhatja az alkalmazások hibáit és SNAT a kimerültséget.
+- Ne változtassa meg az operációs rendszer szintű TCP-hez kapcsolódó időzítő-értékeket a hatás szakértői ismerete nélkül. A TCP-verem helyreállítása közben az alkalmazás teljesítménye negatív hatással lehet, ha a kapcsolatok végpontjai eltérő elvárásokkal rendelkeznek. Az időzítők módosítása általában egy mögöttes tervezési probléma jele. Tekintse át a következő javaslatokat.
+
+
+A fenti példa frissíti a szabályt úgy, hogy csak a *MY_EXTERNAL_IP_RANGE* tartomány bejövő külső forgalmát engedélyezze. Ha a *MY_EXTERNAL_IP_RANGEt* a belső alhálózat IP-címére cseréli le, a forgalom csak a fürt belső IP-címeire korlátozódik. Ez nem teszi lehetővé a Kubernetes-fürtön kívüli ügyfelek számára a terheléselosztó elérését.
+
+## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Áttérés alapszintű SKU Load balancerről standard SKU-ra
+
+Ha rendelkezik egy meglévő, alapszintű SKU-Load Balancer rendelkező fürttel, akkor fontos, hogy a rendszer az áttelepítés során vegye figyelembe, hogy mikor kell a standard SKU-Load Balancer használatával fürtöt használni.
+
+Tegyük fel például, hogy a fürtök áttelepítésére szolgáló kék/zöld központi telepítések egy gyakori eljárás, mivel a `load-balancer-sku` fürt típusa csak a fürt létrehozási ideje alatt definiálható. Az *alapszintű SKU* -Load Balancer azonban *alapszintű SKU* IP-címeket használ, amelyek nem kompatibilisek a *standard* SKU-beli Load balancerekkel, mivel *szabványos SKU* IP-címeket igényelnek. Amikor a fürtöket áttelepíti Load Balancer SKU-ra, egy kompatibilis IP-címmel rendelkező új IP-címet kell megadni.
+
+A fürtök áttelepítésével kapcsolatos további szempontokért tekintse meg a [dokumentációt az áttelepítési megfontolásokból](aks-migration.md) , és tekintse meg az áttelepítés során megfontolandó fontos témakörök listáját. Az alábbi korlátozások szintén fontos viselkedési különbségeket is figyelembe vesznek, ha standard SKU Load Balancert használ az AK-ban.
+
+## <a name="limitations"></a>Korlátozások
+
+A következő korlátozások érvényesek a terheléselosztó és a *szabványos* SKU-t támogató AK-fürtök létrehozásakor és kezelésekor:
+
+* Legalább egy nyilvános IP-cím vagy IP-előtag szükséges ahhoz, hogy a kimenő forgalom az AK-fürtből legyen engedélyezve. A nyilvános IP-cím vagy IP-előtag szükséges a vezérlési sík és az ügynök csomópontjai közötti kapcsolat fenntartásához, valamint az AK korábbi verzióival való kompatibilitás fenntartásához. A következő lehetőségek közül választhat a *szabványos* SKU Load balancerrel rendelkező nyilvános IP-címek vagy IP-előtagok megadásához:
+    * Adja meg saját nyilvános IP-címeit.
+    * Adja meg saját nyilvános IP-előtagjait.
+    * 100-ig terjedő számot kell megadnia, amely lehetővé teszi, hogy az AK-fürt számos *szabványos* SKU-beli nyilvános IP-címet hozzon létre ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, amelyet általában a *MC_* elején neveznek el. Az AK a nyilvános IP-címet a *standard* SKU Load Balancerhez rendeli. Alapértelmezés szerint a rendszer automatikusan létrehoz egy nyilvános IP-címet ugyanabban az erőforráscsoportban, mint az AK-fürtöt, ha nincs megadva nyilvános IP-cím, nyilvános IP-előtag vagy IP-címek száma. Emellett engedélyeznie kell a nyilvános címeket, és el kell kerülnie az IP-létrehozást megtiltó Azure Policy létrehozását.
+* Az AK által létrehozott nyilvános IP-címek nem használhatók fel újra egyéni saját nyilvános IP-címként. A felhasználónak minden egyéni IP-címet létre kell hoznia és kezelnie kell.
+* A terheléselosztó SKU definiálása csak akkor hajtható végre, ha AK-fürtöt hoz létre. A terheléselosztó SKU-t egy AK-fürt létrehozása után nem módosíthatja.
+* Egyetlen fürtben csak egyetlen típusú terheléselosztó SKU-t (alapszintű vagy standard) használhat.
+* *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
+
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 
+További információk a belső Load Balancer a bejövő forgalomhoz való használatáról az [AK belső Load Balancer dokumentációjában](internal-lb.md).
+
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -287,7 +394,7 @@ További információ a Kubernetes Services szolgáltatásról a [Kubernetes Ser
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
-[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
 [azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
@@ -296,4 +403,6 @@ További információ a Kubernetes Services szolgáltatásról a [Kubernetes Ser
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports
+[requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
+[use-multiple-node-pools]: use-multiple-node-pools.md
+[troubleshoot-snat]: #troubleshooting-snat

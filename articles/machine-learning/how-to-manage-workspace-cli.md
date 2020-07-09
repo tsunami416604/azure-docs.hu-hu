@@ -5,16 +5,16 @@ description: Ismerje meg, hogyan hozhat létre új Azure Machine Learning munkat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617777"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392709"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületr
 az login
 ```
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások egy engedélyezési kód [https://aka.ms/devicelogin](https://aka.ms/devicelogin) böngészését és beírását foglalják magukban.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -59,19 +59,19 @@ az extension add -n azure-cli-ml
 A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra vagy-entitásokra támaszkodik:
 
 > [!IMPORTANT]
-> Ha nem ad meg meglévő Azure-szolgáltatást, a rendszer automatikusan létrehozza az egyiket a munkaterület létrehozása során. Mindig meg kell adnia egy erőforráscsoportot.
+> Ha nem ad meg meglévő Azure-szolgáltatást, a rendszer automatikusan létrehozza az egyiket a munkaterület létrehozása során. Mindig meg kell adnia egy erőforráscsoportot. Saját Storage-fiók csatolásakor győződjön meg arról, hogy az Azure Blob és az Azure file képességek is engedélyezve vannak, valamint hogy a hierarchikus névtér (ADLS Gen 2) le van tiltva. A saját Storage-fiókját később is csatolhatja, miután a munkaterület adattárként lett létrehozva.
 
 | Szolgáltatás | Paraméter egy meglévő példány megadásához |
 | ---- | ---- |
 | **Azure-erőforráscsoport** | `-g <resource-group-name>`
-| **Azure Storage-fiók** | `--storage-account <service-id>` |
+| **Azure Storage-tárfiók neve** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az-t az erőforráscsoporthoz használni kívánt névre. Cserélje `<location>` le az az Azure-régiót az erőforráscsoport használatára:
+Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje le az `<resource-group-name>` -t az erőforráscsoporthoz használni kívánt névre. Cserélje le `<location>` az az Azure-régiót az erőforráscsoport használatára:
 
 > [!TIP]
 > Ki kell választania egy régiót, ahol a Azure Machine Learning elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -317,7 +317,7 @@ További információ: az [ml Workspace Share](https://docs.microsoft.com/cli/az
 
 ## <a name="sync-keys-for-dependent-resources"></a>Függő erőforrások szinkronizálási kulcsai
 
-Ha módosítja a munkaterület által használt egyik erőforrás elérési kulcsait, a következő paranccsal szinkronizálhatja az új kulcsokat a munkaterülettel:
+Ha módosítja a munkaterület által használt egyik erőforrás elérési kulcsait, a munkaterület körülbelül egy órát vesz igénybe, hogy szinkronizálja az új kulcsot. Ha szeretné kényszeríteni a munkaterületet, hogy azonnal szinkronizálja az új kulcsokat, használja a következő parancsot:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

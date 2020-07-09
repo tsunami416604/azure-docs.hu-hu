@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179552"
 ---
 ## <a name="download-the-source-code"></a>Forráskód letöltése
@@ -62,7 +62,7 @@ Ha még nem hozta létre a szükséges Azure-erőforrásokat, kövesse az alább
      A parancsfájl környezeti változókat is hozzáad a helyi számítógéphez előtaggal rendelkező **számítógépekhez** . Ezek a környezeti változók adják meg a távoli Figyelés részleteit, hogy el tudják olvasni egy Azure Key Vault erőforrásból. Ez a Key Vault erőforrás, ahol a távoli figyelés beolvassa a konfigurációs értékeit a rendszerből.
 
      > [!TIP]
-     > A parancsfájl befejeződése után a környezeti változókat egy saját kezdőmappa nevű ** \<\>\\fájlba menti. a számítógépek\\\<megoldás\>neve. env**. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **\\\\szolgáltatások helyi\\. env** fájljának értékeit.
+     > A parancsfájl befejeződése után a környezeti változókat egy ** \<your home folder\> \\ . PCs \\ \<solution name\> . env**nevű fájlba menti. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **szolgáltatások \\ \\ helyi \\ . env** fájljának értékeit.
 
 1. Kilépés a parancssori környezetből.
 
@@ -74,6 +74,6 @@ Ha már létrehozta a szükséges Azure-erőforrásokat, hozza létre a megfelel
 * **PCS_AAD_APPID** – a HRE alkalmazás azonosítója
 * **PCS_AAD_APPSECRET** – a HRE alkalmazás titka
 
-A konfigurációs értékek beolvasása ebből a Azure Key Vault erőforrásból történik. Ezeket a környezeti változókat a rendszer a ** \<saját Kezdőlap mappájába\>\\menti\\\<. a\>számítógépek megoldás neve. env** fájl a központi telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **\\\\szolgáltatások helyi\\. env** fájljának értékeit.
+A konfigurációs értékek beolvasása ebből a Azure Key Vault erőforrásból történik. Ezek a környezeti változók menthetők a ** \<your home folder\> \\ . PC \\ \<solution name\> . env** fájlba a telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **szolgáltatások \\ \\ helyi \\ . env** fájljának értékeit.
 
 A webszolgáltatás által igényelt néhány konfiguráció a kezdeti telepítéskor létrehozott **Key Vault** egy példányában van tárolva. A kulcstartó megfelelő változóit szükség szerint módosítani kell.

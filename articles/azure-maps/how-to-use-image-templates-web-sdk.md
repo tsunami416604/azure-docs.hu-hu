@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207090"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
@@ -26,13 +26,13 @@ A képek HTML-jelölővel és a Azure Maps web SDK-n belüli különböző réte
 
 A megfelelő teljesítmény biztosítása érdekében a renderelés előtt töltse be a lemezképeket a Térkép rendszerképéhez tartozó sprite-erőforrásba. A SymbolLayer [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)előre betölt néhány jelölő képet néhány színben a Térkép képének sprite-ba, alapértelmezés szerint. Ezek a jelölő képek és egyebek SVG-sablonokként érhetők el. Felhasználhatók egyéni léptékű rendszerképek létrehozására, vagy ügyfél elsődleges és másodlagos színként való használatára. Összesen 42 képsablonok vannak megadva: 27 szimbólum ikon és 15 sokszög kitöltési minta.
 
-A `map.imageSprite.createFromTemplate` képsablonok a függvény használatával adhatók hozzá a Térkép-rendszerkép sprite-erőforrásaihoz. Ez a függvény legfeljebb öt paraméter átadását teszi lehetővé;
+A képsablonok a függvény használatával adhatók hozzá a Térkép-rendszerkép sprite-erőforrásaihoz `map.imageSprite.createFromTemplate` . Ez a függvény legfeljebb öt paraméter átadását teszi lehetővé;
 
 ```javascript
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-Az `id` egy egyedi azonosító, amelyet Ön hozott létre. A `id` hozzá van rendelve a képhez, amikor a program hozzáadja a Maps-képhez a sprite-hoz. Használja ezt az azonosítót a rétegek között annak meghatározásához, hogy melyik képerőforrást szeretné megjeleníteni. Az `templateName` határozza meg, hogy melyik képsablont kell használni. A `color` beállítás megadja a rendszerkép elsődleges színét, és a `secondaryColor` beállítások a rendszerkép másodlagos színét állítja be. A `scale` beállítással méretezhető a Képsablon, mielőtt alkalmazza azt a képen látható sprite-ra. Ha a képet a rendszer a képre alkalmazza a sprite-ra, a rendszer PNG-re konvertálja. A ropogós renderelés érdekében érdemes a képsablont a sprite-ba felvenni, mint a rétegben való méretezéshez.
+Az `id` egy egyedi azonosító, amelyet Ön hozott létre. A hozzá `id` van rendelve a képhez, amikor a program hozzáadja a Maps-képhez a sprite-hoz. Használja ezt az azonosítót a rétegek között annak meghatározásához, hogy melyik képerőforrást szeretné megjeleníteni. Az `templateName` határozza meg, hogy melyik képsablont kell használni. A `color` beállítás megadja a rendszerkép elsődleges színét, és a `secondaryColor` beállítások a rendszerkép másodlagos színét állítja be. A `scale` beállítással méretezhető a Képsablon, mielőtt alkalmazza azt a képen látható sprite-ra. Ha a képet a rendszer a képre alkalmazza a sprite-ra, a rendszer PNG-re konvertálja. A ropogós renderelés érdekében érdemes a képsablont a sprite-ba felvenni, mint a rétegben való méretezéshez.
 
 Ez a függvény aszinkron módon tölti be a képet a sprite-ba. Így egy olyan ígéretet ad vissza, amely megvárhatja, hogy a függvény befejeződjön.
 
@@ -52,26 +52,26 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="use-an-image-template-with-a-symbol-layer"></a>Képsablon használata szimbólum réteggel
 
-Miután betöltötte a képsablont a térképi képen a sprite-ba, a képerőforrás- `image` azonosítóra hivatkozva szimbólumként is megjeleníthető. `iconOptions`
+Miután betöltötte a képsablont a térképi képen a sprite-ba, a képerőforrás-AZONOSÍTÓra hivatkozva szimbólumként is megjeleníthető `image` `iconOptions` .
 
 Az alábbi minta egy szimbólum réteget jelenít meg a `marker-flat` képsablonban egy kékeszöld elsődleges színnel és egy fehér másodlagos színnel. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Beépített ikon sablonnal rendelkező szimbólum réteg" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>szimbólum réteget a beépített ikon sablonnal</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>szimbólum réteget a beépített ikon sablonnal</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>Képsablon használata a vonalak elérési útja mentén
 
-Miután betöltötte a képsablont a térképi képen a sprite-ba, az egy vonal elérési útján jeleníthető meg egy LineString egy adatforráshoz való hozzáadásával, valamint egy `lineSpacing`szimbólum-réteg és egy kapcsoló használatával, a KÉPerőforrás azonosítójának hivatkozásával a `image` th `iconOptions`lehetőségnél. 
+Miután betöltötte a képsablont a térképi képen a sprite-ba, az egy vonal elérési útján jeleníthető meg egy LineString egy adatforráshoz való hozzáadásával, valamint egy szimbólum-réteg és egy kapcsoló használatával, a `lineSpacing` képerőforrás azonosítójának hivatkozásával a `image` th lehetőségnél `iconOptions` . 
 
 Az alábbi minta egy rózsaszín vonalat jelenít meg a térképen, és egy szimbólum réteget használ a `car` Képsablon használatával, egy Vagány kék elsődleges színnel és egy fehér másodlagos színnel. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Beépített ikon sablonnal rendelkező vonal réteg" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával megtekintheti a Pen <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>line réteget a beépített ikon sablonnal</a> .
+A CodePen-on Azure Maps () használatával megtekintheti a Pen <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>line réteget a beépített ikon sablonnal</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -79,14 +79,14 @@ A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codep
 
 ## <a name="use-an-image-template-with-a-polygon-layer"></a>Képsablon használata sokszög réteggel
 
-Miután betöltötte a képsablont a térképi képen a sprite-ba, a képerőforrás- `fillPattern` azonosítóra hivatkozva kitöltési mintaként jelenítheti meg a réteget.
+Miután betöltötte a képsablont a térképi képen a sprite-ba, a képerőforrás-AZONOSÍTÓra hivatkozva kitöltési mintaként jelenítheti meg a `fillPattern` réteget.
 
 Az alábbi minta egy sokszög réteget jelenít meg a `dot` képsablonnal, vörös elsődleges színnel és transzparens másodlagos színnel.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="A sokszög kitöltése beépített ikon sablonnal" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>kitöltés sokszögét a beépített ikon sablonnal</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>kitöltés sokszögét a beépített ikon sablonnal</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -94,21 +94,32 @@ Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>kitölt
 
 ## <a name="use-an-image-template-with-an-html-marker"></a>Képsablon használata HTML-jelölővel
 
-Egy Képsablon lekérhető a `altas.getImageTemplate` függvény használatával, és a HTML-jelölő tartalmának használata. A sablon `htmlContent` átadható a jelölőnek, majd testreszabható `color`a, `secondaryColor`, és `text` kapcsolók használatával.
+Egy Képsablon lekérhető a függvény használatával `altas.getImageTemplate` , és a HTML-jelölő tartalmának használata. A sablon átadható a `htmlContent` jelölőnek, majd testreszabható a `color` , `secondaryColor` , és `text` kapcsolók használatával.
 
-Az alábbi minta egy vörös `marker-arrow` elsődleges színnel, egy rózsaszín másodlagos színnel és egy "00" szöveges értékkel rendelkező sablont használ.
+Az alábbi minta `marker-arrow` egy vörös elsődleges színnel, egy rózsaszín másodlagos színnel és egy "00" szöveges értékkel rendelkező sablont használ.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="HTML-jelölő beépített ikon sablonnal" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelölőt a beépített ikon sablonnal</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelölőt a beépített ikon sablonnal</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+
+> [!TIP]
+> A képsablonok a térképen kívül is használhatók. A getImageTemplate funciton egy olyan SVG-karakterláncot ad vissza, amely helyőrzőket tartalmaz; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Cserélje le ezeket a helyőrző értékeket egy érvényes SVG-karakterlánc létrehozásához. Ezután hozzáadhatja az SVG-karakterláncot közvetlenül a HTML DOM-hoz, vagy átalakíthatja egy adaturi-ba, és beszúrhatja egy képcímkébe. Például:
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
 
 ## <a name="create-custom-reusable-templates"></a>Egyéni újrafelhasználható sablonok létrehozása
 
 Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha olyan modult hoz létre, amely további képsablonokat ad hozzá, egyszerűen hozzáadhatja és lekérheti ezeket az ikonokat a Azure Maps web SDK-ból. Használja a következő statikus függvényeket a `atlas` névtérben.
 
-| Name (Név) | Visszatérési típus | Leírás | 
+| Name | Visszatérési típus | Description | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hozzáadja az egyéni SVG-képsablont az Atlas-névtérhez. |
 |  `getImageTemplate(templateName: string, scale?: number)`| sztring | Egy SVG-sablon beolvasása név alapján. |
@@ -116,7 +127,7 @@ Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha 
 
 Az SVG-képsablonok a következő helyőrző értékeket támogatják:
 
-| Helyőrző | Leírás |
+| Helyőrző | Description |
 |-|-|
 | `{color}` | Az elsődleges szín. | 
 | `{secondaryColor}` | A másodlagos szín | 
@@ -128,7 +139,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre SVG-sablont, és hogyan adhatj
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Egyéni ikon-sablon hozzáadása az Atlas-névtérhez" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Egyéni ikon-sablon hozzáadása az Atlas-névtérhez</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) lehetőséget a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Egyéni ikon-sablon hozzáadása az Atlas-névtérhez</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) lehetőséget a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="list-of-image-templates"></a>Képsablonok listája
@@ -176,6 +187,25 @@ Ez a táblázat felsorolja az Azure Maps web SDK-ban jelenleg elérhető összes
 | Zig-Zag | Zig-Zag-vertikális | pontok |  |
 | ![Zig-Zag ikon](./media/image-templates/zig-zag.png) | ![Zig-Zag-függőleges ikon](./media/image-templates/zig-zag-vertical.png) | ![pontok ikon](./media/image-templates/dots.png) | |
 
+**Előre feltöltött képikonok**
+
+A Térkép előre betölti az ikonok készletét a Maps-rendszerkép sprite-ban a `marker` , `pin` és a sablonok használatával `pin-round` . Ezek az ikonok neve és a színértékük az alábbi táblázatban látható.
+
+| ikon neve | szín | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
+
 ## <a name="try-it-now-tool"></a>Kipróbálás most eszköz
 
 Az alábbi eszközzel különböző módokon jelenítheti meg a különböző beépített képsablonokat, és testre szabhatja az elsődleges és másodlagos színeket és a méretezést.
@@ -183,7 +213,7 @@ Az alábbi eszközzel különböző módokon jelenítheti meg a különböző be
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Ikon sablon beállításai" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>ikon sablonjának beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>ikon sablonjának beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések

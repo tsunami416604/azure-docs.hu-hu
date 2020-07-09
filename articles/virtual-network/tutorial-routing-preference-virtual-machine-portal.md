@@ -7,17 +7,16 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 2a501280b817db691fb3b93097669d473443a607
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: af3d9e9fcf0dad6a5e51a3db87b63567d701970e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687990"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Útválasztási beállítások konfigurálása virtuális géphez a Azure Portal használatával
 
@@ -50,7 +49,7 @@ Jelentkezzen be az [Azure Portalra](https://preview.portal.azure.com/).
     |Name (Név)|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki előfizetését.|
+    |Előfizetés| Válassza ki az előfizetését.|
     |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
     |Hely| Válassza ki az **USA keleti** régióját|
 

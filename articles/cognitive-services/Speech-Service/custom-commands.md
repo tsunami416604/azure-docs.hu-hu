@@ -1,7 +1,7 @@
 ---
-title: Egyéni parancsok (előzetes verzió) – beszédfelismerési szolgáltatás
+title: Egyéni parancsok – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Az egyéni parancsok (előzetes verzió) funkcióinak, képességeinek és korlátozásának áttekintése, hangalapú alkalmazások létrehozására szolgáló megoldás.
+description: Az egyéni parancsok funkcióinak, képességeinek és korlátozásának áttekintése, hangalapú alkalmazások létrehozására szolgáló megoldás.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,46 +10,49 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367839"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362159"
 ---
-# <a name="what-are-custom-commands-preview"></a>Mik azok az egyéni parancsok (előzetes verzió)?
+# <a name="what-is-custom-commands"></a>Mik azok az egyéni parancsok?
 
-A hangvezérelt alkalmazások, például a [hangsegédek](voice-assistants.md) figyelik a felhasználókat, és válaszként reagálnak, gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet. Az eszközök a Speech SDK `DialogServiceConnector` objektumával csatlakoznak a segédekhez.
+Az olyan alkalmazások, mint például a [hangsegédek](voice-assistants.md) , megfigyelik a felhasználókat, és válaszként olyan műveleteket végeznek, amelyek gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet. Az eszközök a Speech SDK objektumával csatlakoznak a segédekhez `DialogServiceConnector` .
 
-Az **egyéni parancsok (előzetes verzió)** egy egyszerűsített megoldás a hangalapú alkalmazások létrehozásához. Egységes szerzői élményt, automatikus üzemeltetési modellt és viszonylag alacsony komplexitást biztosít, valamint más lehetőségeket, például a [közvetlen vonalas beszédet](direct-line-speech.md). Ez az egyszerűsítés azonban a rugalmasság csökkenésével jár. Így az egyéni parancsok (előzetes verzió) a feladatok befejezéséhez és a parancs-és vezérlési forgatókönyvekhez legmegfelelőbbek. Különösen jól illeszkedik eszközök internetes hálózata (IoT) és a fej nélküli eszközökhöz.
+Az **egyéni parancsok** megkönnyítik a hangvezérelt hangvezérelt alkalmazások készítését a hang-első interakciós élményhez. Egységes szerzői élményt, automatikus üzemeltetési modellt és viszonylag alacsony bonyolultságot biztosít, amely segít a legjobb megoldás kialakításában a hangvezérelt forgatókönyvekhez.
 
-Az összetett beszélgetésekhez és a más megoldásokkal, például a [virtuális asszisztensi megoldáshoz és a vállalati sablonhoz](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) való integrációhoz javasolt a közvetlen vonalas beszéd használata.
+Az egyéni parancsok a feladatok befejezéséhez és a parancs-és vezérlési forgatókönyvekhez legmegfelelőbbek, különösen a eszközök internetes hálózata (IoT) eszközök, a környezeti és a fej nélküli eszközök esetében is. Ilyenek például a vendéglátás, a kiskereskedelmi és az autóipari megoldások, amelyek lehetővé teszik a vendégek számára a legjobb, hangvezérelt felhasználói élmény kialakítását a vendégeknek, kezelheti a leltárt az áruházban, és vezérelheti az autón belüli funkciókat az áthelyezés során.
 
-Az egyéni parancsok (előzetes verzió) jó jelöltje egy rögzített, jól definiált változóval rendelkező szókincs. A Home Automation-feladatok, például a Termosztátok szabályozása ideális megoldás.
+> [!TIP]
+> Tekintse meg a kezdőlapon található minta bemutatókat [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) .
+
+Ha szeretne összetett társalgási alkalmazásokat kiépíteni, javasoljuk, hogy próbálja ki a bot Framework-et a [virtuális asszisztens megoldás](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)használatával. Közvetlenül is hozzáadhat hangokat bármelyik bot Framework-robothoz közvetlen vonalas beszéd használatával.
+
+Az egyéni parancsok jó jelöltje egy rögzített, jól definiált változóval rendelkező szókincs. A Home Automation-feladatok, például a Termosztátok szabályozása ideális megoldás.
 
    ![Példák feladat-végrehajtási forgatókönyvekre](media/voice-assistants/task-completion-examples.png "feladatok befejezésére vonatkozó példák")
 
-## <a name="getting-started-with-custom-commands-preview"></a>Egyéni parancsok – első lépések (előzetes verzió)
+## <a name="getting-started-with-custom-commands"></a>Egyéni parancsok – első lépések
 
-Az egyéni parancsok (előzetes verzió) használatának első lépése, hogy hangalkalmazást kapjon a [beszédfelismerési előfizetési kulcs beszerzéséhez](get-started.md) , és hozzáfér a [Speech studióhoz](https://speech.microsoft.com)tartozó egyéni parancsok (előzetes verzió) szerkesztőhöz. Innen létrehozhat egy új egyéni parancs (előzetes verzió) alkalmazást, és közzéteheti azt, amely után az eszközön futó alkalmazások kommunikálhatnak a Speech SDK használatával.
+Célunk, hogy egyéni parancsokkal csökkentse a kognitív terhelést, hogy megismerje a különböző technológiákat, és koncentráljon a hangvezérelt alkalmazás létrehozására. Az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrások <span class="docon docon-navigate-external x-hidden-focus"></span> létrehozására </a>szolgáló egyéni parancsok használatának első lépése. Megadhatja az egyéni parancsok alkalmazást a Speech Studióban, és közzéteheti azt, amely után az eszközön futó alkalmazások kommunikálhatnak a Speech SDK használatával.
 
-   ![Egyéni parancsok létrehozási folyamata (előzetes verzió)](media/voice-assistants/custom-commands-flow.png "Az egyéni parancsok (előzetes verzió) létrehozási folyamata")
+#### <a name="authoring-flow-for-custom-commands"></a>Egyéni parancsok létrehozási folyamata
+   ![Egyéni parancsok létrehozási folyamata](media/voice-assistants/custom-commands-flow.png "Az egyéni parancsok létrehozási folyamata")
 
-Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot.
+Kövesse a gyors üzembe helyezést, hogy az első egyéni parancsok alkalmazása kevesebb, mint 10 perc alatt futtassa a kódot.
 
-* [Egyéni parancsok (előzetes verzió) alkalmazás létrehozása](quickstart-custom-speech-commands-create-new.md)
-* [Egyéni parancsok (előzetes verzió) alkalmazásának létrehozása paraméterekkel](quickstart-custom-speech-commands-create-parameters.md)
-* [Kapcsolódás egyéni parancsokhoz (előzetes verzió) alkalmazáshoz a Speech SDK, C #](quickstart-custom-speech-commands-speech-sdk.md)
+* [Hangvezérelt asszisztens létrehozása egyéni parancsokkal](quickstart-custom-commands-application.md)
 
-Ha elkészült a gyors útmutatókkal, ismerkedjen meg a How-TOS szolgáltatással.
+Ha elkészült a gyors üzembe helyezéssel, tekintse át a útmutatókat, amelyek részletesen ismertetik az egyéni parancsok alkalmazásának tervezéséhez, fejlesztéséhez, hibakereséséhez, üzembe helyezéséhez és integrálásához szükséges lépéseket.
 
-- [Érvényesítések hozzáadása az egyéni parancs paramétereinek](./how-to-custom-speech-commands-validations.md)
-- [Parancsok végrehajtása az ügyfélen a Speech SDK-val](./how-to-custom-speech-commands-fulfill-sdk.md)
-- [Megerősítés hozzáadása egyéni parancshoz](./how-to-custom-speech-commands-confirmations.md)
-- [Egylépéses javítás hozzáadása egyéni parancshoz](./how-to-custom-speech-commands-one-step-correction.md)
+## <a name="building-voice-assistants-with-custom-commands"></a>Hangsegédek kiépítése egyéni parancsokkal
+> [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
 ## <a name="next-steps"></a>További lépések
 
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
-* [Az egyéni parancsok kipróbálásához nyissa meg a Speech studiót](https://speech.microsoft.com)
+* [Megtekintheti a hangsegédek tárházát a GitHubon a mintákhoz](https://aka.ms/speech/cc-samples)
+* [Az egyéni parancsok kipróbálásához nyissa meg a Speech studiót](https://speech.microsoft.com/customcommands)
 * [A Speech SDK beszerzése](speech-sdk.md)

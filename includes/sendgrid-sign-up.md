@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463530"
 ---
 Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-es ingyenes havi e-mailek hozzáférést biztosítanak a speciális jelentéskészítéshez és elemzésekhez, valamint [az összes API][all APIs] -hoz (web, SMTP, Event, parse stb.). A SendGrid által biztosított további szolgáltatásokról a [SendGrid Solutions][SendGrid Solutions] oldalán talál információkat.

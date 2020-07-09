@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.openlocfilehash: f0cb402741163c657b3e7961eb5a4f9c8e18dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148123"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673020"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -40,6 +39,7 @@ A folyamatos hozzáférés kiértékelését a szolgáltatások (erőforrás-szo
 
 - A felhasználói fiók törölve vagy Letiltva
 - A felhasználó jelszavának módosítása vagy alaphelyzetbe állítása
+- Az MFA engedélyezve van a felhasználó számára
 - A rendszergazda explicit módon visszavonja a felhasználó összes frissítési jogkivonatát.
 - Emelt szintű felhasználói kockázat észlelhető Azure AD Identity Protection
 
@@ -76,7 +76,7 @@ A hozzáférési token élettartamát 24 órára növeljük a CAE-munkamenetekbe
 1. Az erőforrás-szolgáltató hozzáférési tokent mutat be. Az erőforrás-szolgáltató kiértékeli a jogkivonat érvényességét, és ellenőrzi, hogy van-e visszavonási esemény a felhasználó számára. Az erőforrás-szolgáltató ezt az információt használja annak eldöntésére, hogy hozzáférést biztosítson az erőforráshoz, vagy sem.
 1. Ebben az esetben az erőforrás-szolgáltató megtagadja a hozzáférést, és egy 401 + jogcím-feladatot küld vissza az ügyfélnek.
 1. A CAE-kompatibilis ügyfél tisztában van a 401 + jogcím kihívással. Megkerüli a gyorsítótárat, és visszakerül az 1. lépésre, és visszaküldi a frissítési tokent az Azure AD-re vonatkozó jogcím-kihívással együtt. Az Azure AD ezután újraértékeli az összes feltételt, és megkéri a felhasználót, hogy végezze el az újrahitelesítést ebben az esetben.
- 
+
 ## <a name="faqs"></a>Gyakori kérdések
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>Mi a hozzáférési token élettartama?
@@ -93,6 +93,6 @@ Habár a célunk az, hogy a kényszerítés azonnali legyen, bizonyos esetekben 
 
 A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

@@ -2,17 +2,17 @@
 title: Event vezérelt architektúrák az Edge-ben – Azure Event Grid on IoT Edge
 description: A modulok, peremhálózati eszközök és a felhő közötti továbbítási eseményekhez használja a Azure Event Grid modulként IoT Edge.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
-ms.author: babanisa
-ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d569a4be6c9747dea4280d17ed2f888c3bed9936
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844656"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561686"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Mi a Azure IoT Edge Azure Event Grid?
 A Event Grid on IoT Edge a Azure Event Grid hatékonyságát és rugalmasságát teszi lehetővé a peremhálózat számára. Témákat hozhat létre, eseményeket tehet közzé, és előfizethet több célhelyre, függetlenül attól, hogy ugyanazon az eszközön, a többi peremhálózati eszközön vagy a felhőben található modulok.
@@ -65,7 +65,7 @@ A Event Grid on IoT Edge úgy van felépítve, hogy a kívánt helyre küldjön 
 ## <a name="supported-environments"></a>Támogatott környezetek
 Jelenleg a Windows 64 bites, a Linux 64 bites és az ARM 32-bites környezetek támogatottak.
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 A Azure Event Grid öt fogalommal rendelkezik, amelyek lehetővé teszik az első lépéseket:
 
@@ -79,10 +79,10 @@ A Azure Event Grid öt fogalommal rendelkezik, amelyek lehetővé teszik az els�
 
 A nyilvános előzetes verzióban a Event Grid on IoT Edge ingyenes.
 
-## <a name="issues"></a>Hibák
-A Event Grid IoT Edge használatával kapcsolatos esetleges problémák jelentése a [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)következő helyen:.
+## <a name="issues"></a>Issues (Problémák)
+A Event Grid IoT Edge használatával kapcsolatos esetleges problémák jelentése a következő helyen: [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közzététel, előfizetés helyi eseményekre](pub-sub-events-webhook-local.md)
 * [Közzététel, előfizetés a Felhőbeli eseményekre](pub-sub-events-webhook-cloud.md)

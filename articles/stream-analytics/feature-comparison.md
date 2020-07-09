@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133499"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics szolgáltatások összehasonlítása
@@ -43,7 +43,7 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |Egyéni üzenet tulajdonságai     |Igen         |Igen         |Nem       |
 |C# egyéni kód függvény és deszerializáló|Írásvédett mód|Igen|Nem|
 |JavaScript UDF és UDA     |Igen         |Igen         |Csak Windowson         |
-|Machine Learning-szolgáltatás     |Igen        |Igen         |Nem         |
+|Machine Learning szolgáltatás     |Igen        |Igen         |Nem         |
 |Machine Learning Studio     |Igen, de a lekérdezés nem tesztelhető        |Igen |Nem         |
 |Kompatibilitási szint     |1.0</br>1.1</br>1,2 (alapértelmezett)         |1.0</br>1.1</br>1,2 (alapértelmezett)           |1.0</br>1.1</br>1,2 (alapértelmezett)           |
 |Beépített ML-alapú anomáliák észlelési funkciói     |Igen         |Igen         |Igen         |
@@ -68,7 +68,7 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |CI/CD-támogatás     |Nem         |Nem         |Nem         |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [IoT Edge-eszközökön futó Azure Stream Analytics](stream-analytics-edge.md)
 * [Oktatóanyag: C# felhasználó által definiált függvény írása Azure Stream Analytics IoT Edge feladathoz (előzetes verzió)](stream-analytics-edge-csharp-udf.md)

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f7beccde92030d1e01633f4e4044849d7e91d05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d709bf02f1cb504121e52f88385d0f6c074b24a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203588"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Az SAML-token kiállítójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -24,13 +24,13 @@ ms.locfileid: "82229952"
 
 Azure Active Directory B2C (Azure AD B2C) számos különböző típusú biztonsági jogkivonatot bocsát ki, mivel az egyes hitelesítési folyamatokat dolgozza fel. Az SAML-token kiállítójának műszaki profilja olyan SAML-jogkivonatot bocsát ki, amely vissza lesz visszaküldve a függő entitás alkalmazásának (szolgáltatónak). Ez a technikai profil általában a felhasználói út utolsó előkészítési lépése.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
-A **protokoll** elem `None` **Name** attribútumát be kell állítani. Állítsa a **OutputTokenFormat** elemet a `SAML2`következőre:.
+A **protokoll** elem **Name** attribútumát be kell állítani `None` . Állítsa a **OutputTokenFormat** elemet a következőre: `SAML2` .
 
-A következő példa egy technikai profilt mutat be `Saml2AssertionIssuer`:
+A következő példa egy technikai profilt mutat be `Saml2AssertionIssuer` :
 
-```XML
+```xml
 <TechnicalProfile Id="Saml2AssertionIssuer">
   <DisplayName>Token Issuer</DisplayName>
   <Protocol Name="SAML2"/>
@@ -56,7 +56,7 @@ A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek ür
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| IssuerUri | Nem | Az SAML-válaszban megjelenő kiállító neve. Az értéknek meg kell egyeznie a függő entitás alkalmazásban konfigurált névvel. |
+| IssuerUri | No | Az SAML-válaszban megjelenő kiállító neve. Az értéknek meg kell egyeznie a függő entitás alkalmazásban konfigurált névvel. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -64,12 +64,12 @@ A CryptographicKeys elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MetadataSigning | Igen | Az SAML-metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához. |
-| SamlMessageSigning| Igen| Adja meg az SAML-üzenetek aláírásához használandó X509-tanúsítványt (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a függő entitásnak küldött válasz `<samlp:Response>` aláírására.|
+| MetadataSigning | Yes | Az SAML-metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához. |
+| SamlMessageSigning| Yes| Adja meg az SAML-üzenetek aláírásához használandó X509-tanúsítványt (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a `<samlp:Response>` függő entitásnak küldött válasz aláírására.|
 
 ## <a name="session-management"></a>Munkamenet-kezelés
 
-Az Azure AD B2C SAML-munkamenetek konfigurálásához egy függő entitás alkalmazása, az `UseTechnicalProfileForSessionManagement` elem attribútuma, a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-munkamenetre való hivatkozás.
+Az Azure AD B2C SAML-munkamenetek konfigurálásához egy függő entitás alkalmazása, az elem attribútuma `UseTechnicalProfileForSessionManagement` , a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-munkamenetre való hivatkozás.
 
 ## <a name="next-steps"></a>További lépések
 

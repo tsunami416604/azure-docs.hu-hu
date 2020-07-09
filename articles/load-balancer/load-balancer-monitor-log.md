@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858766"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809194"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az Azure Monitor naplózza a nyilvános Alapszintű Load Balancert
 
@@ -38,9 +38,9 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nem rendelkezik terheléselosztó, a folytatás előtt [hozzon létre egy Load balancert](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. A portálon kattintson az **erőforráscsoportok**elemre.
-2. Válassza ki ** \<az erőforrás-csoport neve>** a terheléselosztó helyét.
+2. Válassza ki **\<resource-group-name>** a terheléselosztó helyét.
 3. Válassza ki a Load balancert.
-4. Válassza a **figyelés** > **diagnosztikai beállítások**lehetőséget.
+4. Válassza a **figyelés**  >  **diagnosztikai beállítások**lehetőséget.
 5. A **diagnosztika beállításai** ablaktábla **diagnosztika beállításai**területén válassza a **+ diagnosztikai beállítás hozzáadása**elemet.
 6. A **diagnosztikai beállítások** létrehozása panelen adja meg a **MyLBDiagnostics** nevet a **név** mezőben.
 7. A **diagnosztikai beállításoknak**három lehetősége van.  A követelmények közül választhat egyet, kettőt vagy mindháromat, és konfigurálhatja a következőt:

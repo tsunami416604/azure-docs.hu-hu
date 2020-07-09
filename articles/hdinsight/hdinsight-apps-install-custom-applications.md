@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fd8152b4180d44d3b822feef7e74e267b6b948a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768250"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086500"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 
@@ -43,7 +43,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    A Resource Manager-sablon a következő [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)helyen található:.  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
+    A Resource Manager-sablon a következő helyen található: [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue) .  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
 
 1. Válassza ki azt a meglévő **erőforráscsoportot** , amely a fürtöt tartalmazza a legördülő listából. Ugyanazt az erőforráscsoportot kell használnia, mint a fürtöt.
 
@@ -61,7 +61,7 @@ A telepítés állapotát a portál irányítópultjára rögzített csempén va
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    A Resource Manager-sablon a következő [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json)helyen található:.  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
+    A Resource Manager-sablon a következő helyen található: [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) .  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
 
 2. Kövesse a fürt létrehozására és a Hue telepítésére vonatkozó utasításokat. További információk a HDInsight-fürtökről: [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsight szolgáltatásban).
 
@@ -85,7 +85,7 @@ A **Hue**esetében az alábbi lépéseket hajthatja végre:
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Cserélje `CLUSTERNAME`le a `RESOURCEGROUP` és a értéket a megfelelő értékekre, majd adja meg az alábbi parancsokat:
+Cserélje le `CLUSTERNAME` a és a `RESOURCEGROUP` értéket a megfelelő értékekre, majd adja meg az alábbi parancsokat:
 
 * A HDInsight-fürt összes alkalmazásának felsorolása.
 
@@ -133,7 +133,7 @@ Ha egy alkalmazás telepítése nem sikerült, a következő három helyről lá
 
 ### <a name="azure-cli"></a>Azure CLI
 
-`CLUSTERNAME`Cserélje `NAME`le a, `RESOURCEGROUP` a és a értéket a megfelelő értékekre, majd írja be az alábbi parancsot:
+Cserélje le a, a `NAME` `CLUSTERNAME` és a `RESOURCEGROUP` értéket a megfelelő értékekre, majd írja be az alábbi parancsot:
 
 ```azurecli
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP

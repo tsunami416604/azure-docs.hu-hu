@@ -1,16 +1,15 @@
 ---
 title: Regisztrációs adatbázis georeplikálása
-description: Ismerkedjen meg a földrajzilag replikált Azure Container Registry létrehozásával és kezelésével, amely lehetővé teszi, hogy a beállításjegyzék több régiót is kiszolgáljon több főkiszolgálós regionális replikával.
+description: Ismerkedjen meg a földrajzilag replikált Azure Container Registry létrehozásával és kezelésével, amely lehetővé teszi, hogy a beállításjegyzék több régiót is kiszolgáljon több főkiszolgálós regionális replikával. A Geo-replikáció a prémium szintű sevice csomag egyik funkciója.
 author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84508794"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -127,7 +126,7 @@ Ha ez a probléma merül fel, az egyik megoldás egy ügyféloldali DNS-gyorsít
 
 Ha a DNS-feloldást a legközelebbi replikára szeretné optimalizálni, amikor képeket küld, állítson be egy földrajzilag replikált beállításjegyzéket ugyanabban az Azure-régióban, mint a leküldéses műveletek forrása, vagy a legközelebbi régió, amikor az Azure-on kívül dolgozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a három részből álló oktatóanyag-sorozatot, a [geo-replikációt Azure Container Registryban](container-registry-tutorial-prepare-registry.md). Végigvezeti a földrajzilag replikált beállításjegyzék létrehozásán, a tároló kialakításán, majd egyetlen `docker push` paranccsal, több regionális Web Apps a tárolók példányain való üzembe helyezésével.
 

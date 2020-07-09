@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610785"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
@@ -33,7 +33,7 @@ A következő lépések bemutatják, hogyan állíthatja vissza a Windows Server
 
     ![Adatok helyreállítása](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Az **első lépések** ablaktáblán, ha az adott kiszolgálóra vagy számítógépre szeretné visszaállítani az adatvisszaállítást, válassza ki **ezt a kiszolgálót`<server name>`()** , majd kattintson a **tovább**gombra.
+3. Az **első lépések** ablaktáblán, ha az adott kiszolgálóra vagy számítógépre szeretné visszaállítani az adatvisszaállítást, válassza ki **ezt a kiszolgálót ( `<server name>` )** , majd kattintson a **tovább**gombra.
 
     ![Válassza ezt a lehetőséget, ha az adott gépre szeretné visszaállítani az adatvisszaállítást](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -107,7 +107,7 @@ A következő lépésekben használt terminológiák a következők:
 
     ![kattintson a helyreállítás gombra a helyreállítási folyamat megerősítéséhez](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
-12. Másolja a *WindowsImageBackup* könyvtárat a kiszolgáló nem kritikus kötetére (például D:\)). Általában a Windows operációs rendszer kötete a kritikus kötet.
+12. Másolja a *WindowsImageBackup* könyvtárat a kiszolgáló nem kritikus kötetére (például D: \) ). Általában a Windows operációs rendszer kötete a kritikus kötet.
 
 13. A helyreállítási folyamat befejezéséhez használja a következő szakaszt a [visszaállított rendszerállapot-fájlok Windows Serveren való alkalmazásához](#apply-restored-system-state-on-a-windows-server).
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557883"
 ---
 # <a name="monitor-runbook-output"></a>Runbook kimenetének monitorozása
 
@@ -18,7 +18,7 @@ A legtöbb Azure Automation runbookok valamilyen típusú kimenettel rendelkezik
 
 Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedéssel rendelkeznek Azure Portal a közzétett runbookok és a [runbook tesztelése](automation-testing-runbook.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi stream üzenet-adatfolyamként van besorolva, amely a felhasználó felé irányuló információk közlésére szolgál. 
 
-| Stream | Leírás | Közzétett | Tesztelés |
+| Adatfolyam | Description | Közzétett | Tesztelés |
 |:--- |:--- |:--- |:--- |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivételtől eltérően a runbook alapértelmezés szerint egy hibaüzenet után is folytatódik. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 | Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem írt a feladatok előzményeire |Nem jelenik meg a test output (kimenet) ablaktáblán |
@@ -88,7 +88,7 @@ A következő példák a kimeneti adattípusokra mutatnak:
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>Kimenet adattípusának deklarálása egy munkafolyamatban
 
-A munkafolyamat a kimenet adattípusát adja meg a [OutputType attribútum](https://technet.microsoft.com/library/hh847785.aspx)használatával. Ennek az attribútumnak nincs hatása a futtatókörnyezetben, de a runbook várt kimenetének tervezési ideje szerint jelzi. Mivel a runbookok eszközkészlete továbbra is fejlődik, a kimeneti adattípusok bejelentésének fontossága a tervezési időszakban nő. Ezért ajánlott ezt a deklarációt minden Ön által létrehozott runbookok belefoglalni.
+A munkafolyamat a kimenet adattípusát adja meg a [OutputType attribútum](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)használatával. Ennek az attribútumnak nincs hatása a futtatókörnyezetben, de a runbook várt kimenetének tervezési ideje szerint jelzi. Mivel a runbookok eszközkészlete továbbra is fejlődik, a kimeneti adattípusok bejelentésének fontossága a tervezési időszakban nő. Ezért ajánlott ezt a deklarációt minden Ön által létrehozott runbookok belefoglalni.
 
 Az alábbi példában a runbook kimenete egy sztring típusú objektum, és megadja az elvárt kimenettípust. Amennyiben a runbook kimenete egy bizonyos típusú tömb, akkor is egy típust érdemes megadni, nem pedig a típusok egy tömbjét.
 

@@ -4,16 +4,16 @@ description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmaz
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465473"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214026"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
-Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).  Ha szeretné, megtekintheti az oktatóanyag [útmutató videóját](https://channel9.msdn.com/Events/Connect/2017/E100).
+Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Az oktatóanyag-sorozathoz Windowsos fejlesztői számítógép szükséges. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).  Ha szeretné, megtekintheti az oktatóanyag [útmutató videóját](https://channel9.msdn.com/Events/Connect/2017/E100).
 
 ![AngularJS + ASP. NET API előtér, Service Fabric-beli állapot-nyilvántartó háttér-szolgáltatáshoz való csatlakozás](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
@@ -45,7 +45,7 @@ Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET
 
 1. Indítsa el a Visual studiót **rendszergazdaként**.
 
-2. Hozzon létre egy projektet a **fájl**->**új**->**projekttel**.
+2. Hozzon létre egy projektet a **fájl** -> **új** -> **projekttel**.
 
 3. Az **Új projekt** párbeszédpanelen válassza a **Felhő > Service Fabric-alkalmazás** elemet.
 
@@ -300,7 +300,7 @@ namespace VotingWeb.Controllers
 
 A VotingWeb kezelőfelületi szolgáltatás létrehozásakor a Visual Studio véletlenszerűen kiválaszt egy portot, amelyen a szolgáltatás a figyelést végzi.  A VotingWeb szolgáltatás az alkalmazás kezelőfelületeként működik, és fogadja a külső forgalmat, úgyhogy rendeljük ezt a szolgáltatást egy rögzített, jól ismert porthoz.  A [szolgáltatásjegyzék](service-fabric-application-and-service-manifests.md) deklarálja a szolgáltatásvégpontokat.
 
-A Megoldáskezelőban nyissa meg a *VotingWeb/PackageRoot/ServiceManifest. xml fájlt*.  Keresse meg az **Endpoint** (Végpont) elemet a **Resources** (Erőforrások) szakaszban, és módosítsa a **Port** értékét **8080**-ra. Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásfigyelő-portnak a számítógépen megnyitva és elérhető állapotban kell lennie.
+Megoldáskezelő nyissa meg a *VotingWeb/PackageRoot/ServiceManifest.xml*.  Keresse meg az **Endpoint** (Végpont) elemet a **Resources** (Erőforrások) szakaszban, és módosítsa a **Port** értékét **8080**-ra. Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásfigyelő-portnak a számítógépen megnyitva és elérhető állapotban kell lennie.
 
 ```xml
 <Resources>
@@ -455,7 +455,7 @@ Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-
         ],
 ```
 A helyi fejlesztési fürtben használt fordított proxy port megkereséséhez tekintse meg a **HttpApplicationGatewayEndpoint** elemet a helyi Service Fabric-fürt jegyzékfájljában:
-1. Nyisson meg egy böngészőablakot, és navigáljon\/a http:/localhost: 19080 elemre a Service Fabric Explorer eszköz megnyitásához.
+1. Nyisson meg egy böngészőablakot, és navigáljon a http: \/ /localhost: 19080 elemre a Service Fabric Explorer eszköz megnyitásához.
 2. Válassza ki a **cluster-> jegyzékfájlt**.
 3. Jegyezze fel a HttpApplicationGatewayEndpoint elem portját. Ez alapértelmezés szerint a 19081-es port. Ha mégsem az, akkor módosítania kell a portot a következő VotesController.cs kód GetProxyAddress metódusában.
 

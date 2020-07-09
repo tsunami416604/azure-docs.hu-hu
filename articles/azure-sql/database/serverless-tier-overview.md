@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 5/13/2020
-ms.openlocfilehash: fd552e3236732fd37b2fc5d23dd234f0a87f0f27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 7/6/2020
+ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049938"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045960"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A kiszolgáló nélküli az önálló Azure SQL-adatbázisok számítási szintje, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási kapacitás mennyisége alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
+A kiszolgáló nélküli a Azure SQL Database önálló adatbázisaihoz tartozó számítási szint, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási mennyiség alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
 
 ## <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
-Az önálló Azure SQL-adatbázisok kiszolgáló nélküli számítási rétegét egy számítási automatikus skálázási tartomány és egy automatikus szüneteltetési késleltetés jellemzi.  Ezeknek a paramétereknek a konfigurációja az adatbázis teljesítményének és számítási költségeit formálja.
+Azure SQL Database önálló adatbázisainak kiszolgáló nélküli számítási rétegét egy számítási automatikus skálázási tartomány és egy automatikus szüneteltetési késleltetés jellemzi. Ezeknek a paramétereknek a konfigurációja az adatbázis teljesítményének és számítási költségeit formálja.
 
 ![kiszolgáló nélküli számlázás](./media/serverless-tier-overview/serverless-billing.png)
 
@@ -66,7 +66,7 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási r�
 
 | | **Kiszolgáló nélküli számítástechnika** | **Kiépített számítás** |
 |:---|:---|:---|
-|**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. |  A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
+|**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. | A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
 | **Teljesítmény-felügyeleti tevékenység** |Lower|Magasabb|
 |**Számítási skálázás**|Automatikus|Kézi|
 |**Számítási rugalmasság**|Alacsonyabb az inaktív időszakok után|Azonnali|
@@ -88,9 +88,9 @@ A kiszolgáló nélküli adatbázisok memóriáját gyakrabban, mint a kiépíte
 
 #### <a name="cache-reclamation"></a>Gyorsítótár-visszanyerés
 
-A kiépített számítási adatbázisoktól eltérően az SQL-gyorsítótárból származó memóriát a rendszer a kiszolgáló nélküli adatbázisból állítja vissza, amikor a CPU vagy a gyorsítótár kihasználtsága alacsony.
+A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárból származó memóriát egy kiszolgáló nélküli adatbázisból kell visszaigényelni, amikor a CPU vagy az aktív gyorsítótár kihasználtsága alacsony.  Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.
 
-- A gyorsítótár kihasználtsága akkor minősül alacsonynak, ha a legutóbb használt gyorsítótár-bejegyzések teljes mérete egy adott időtartam alatt egy küszöbérték alá esik.
+- Az aktív gyorsítótár kihasználtsága akkor minősül alacsonynak, ha a legutóbb használt gyorsítótár-bejegyzések teljes mérete egy adott időtartam alatt egy küszöbérték alá esik.
 - A gyorsítótár-újraindításkor a cél gyorsítótárának mérete fokozatosan csökken az előző méret töredékéért, és a visszaigénylés csak akkor folytatódik, ha a használat alacsony marad.
 - A gyorsítótár-visszanyeréskor a kizárni kívánt gyorsítótár-bejegyzések kiválasztására szolgáló házirend ugyanaz a kiválasztási házirend, mint a kiépített számítási adatbázisok esetében, ha a memória nyomása magas.
 - A gyorsítótár mérete soha nem csökken a minimális memória-korlát alatt, amelyet konfigurálhat a percben megadott minimális virtuális mag.
@@ -112,7 +112,7 @@ Az automatikus szüneteltetés akkor aktiválódik, ha az alábbi feltételek mi
 
 Ha szükséges, a rendszer lehetőséget biztosít az autoszüneteltetés letiltására.
 
-A következő szolgáltatások nem támogatják az autoszüneteltetést.  Azaz ha a következő funkciók bármelyikét használják, az adatbázis az adatbázis tétlenségének időtartamától függetlenül online marad:
+A következő szolgáltatások nem támogatják az automatikus szüneteltetést, de támogatják az automatikus skálázást.  Azaz ha a következő funkciók bármelyikét használják, az adatbázis az adatbázis tétlenségének időtartamától függetlenül online marad:
 
 - Geo-replikáció (aktív geo-replikáció és automatikus feladatátvételi csoportok).
 - A biztonsági másolatok hosszú távú megőrzése (LTR).
@@ -125,7 +125,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Funkció|Trigger újraindítása|
+|Szolgáltatás|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -161,19 +161,8 @@ Ha az [ügyfél által felügyelt transzparens adattitkosítást](transparent-da
 
 Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló nélküli számítási rétegbe helyez át, a következő két lépéssel megegyező mintát kell létrehoznia egy új adatbázis létrehozásához a kiépített számítási szinten.
 
-1. A szolgáltatási cél meghatározása. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A következő táblázat a szolgáltatási cél beállításait mutatja be:
+1. A szolgáltatási cél meghatározása. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A szolgáltatás céljának beállításaival kapcsolatban lásd: [kiszolgáló nélküli erőforrás-korlátok](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
-   |Szolgáltatási cél neve|Szolgáltatásszint|Hardver létrehozása|Maximális virtuális mag|
-   |---|---|---|---|
-   |GP_S_Gen5_1|Általános célú|Gen5|1|
-   |GP_S_Gen5_2|Általános célú|Gen5|2|
-   |GP_S_Gen5_4|Általános célú|Gen5|4|
-   |GP_S_Gen5_6|Általános célú|Gen5|6|
-   |GP_S_Gen5_8|Általános célú|Gen5|8|
-   |GP_S_Gen5_10|Általános célú|Gen5|10|
-   |GP_S_Gen5_12|Általános célú|Gen5|12|
-   |GP_S_Gen5_14|Általános célú|Gen5|14|
-   |GP_S_Gen5_16|Általános célú|Gen5|16|
 
 2. Szükség esetén megadhatja a minimális virtuális mag és az automatikus szüneteltetés késleltetését is, ha módosítani szeretné az alapértelmezett értékeket. A következő táblázat a paraméterek elérhető értékeit tartalmazza.
 
@@ -183,11 +172,11 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
    |Automatikus szüneteltetés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Növekmények: 10 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
 
-### <a name="create-new-database-in-serverless-compute-tier"></a>Új adatbázis létrehozása kiszolgáló nélküli számítási szinten 
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Új adatbázis létrehozása a kiszolgáló nélküli számítási szinten
 
 Az alábbi példák egy új adatbázist hoznak létre a kiszolgáló nélküli számítási szinten.
 
-#### <a name="use-azure-portal"></a>Az Azure Portal használata
+#### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
 Lásd [: gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md).
 
@@ -199,7 +188,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+#### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -218,7 +207,7 @@ CREATE DATABASE testdb
 
 Részletekért lásd: [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
 
-### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Adatbázis áthelyezése a kiépített számítási rétegekből kiszolgáló nélküli számítási szintjére
+### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Adatbázis áthelyezése a kiépített számítási szintjéről a kiszolgáló nélküli számítási szintjére
 
 Az alábbi példák egy adatbázist helyeznek át a kiépített számítási szinten a kiszolgáló nélküli számítási szintjére.
 
@@ -231,7 +220,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+#### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
@@ -250,7 +239,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 Részletekért lásd: [adatbázis módosítása](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
-### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Adatbázis áthelyezése kiszolgáló nélküli számítási szintjéről kiépített számítási szinten
+### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Adatbázis áthelyezése a kiszolgáló nélküli számítási szintjéből a kiépített számítási szinten
 
 A kiszolgáló nélküli adatbázisok a kiépített számítási rétegekbe helyezhetők, ugyanúgy, mint a kiépített számítási adatbázisok kiszolgáló nélküli számítási szintjére való áthelyezése.
 
@@ -260,7 +249,7 @@ A kiszolgáló nélküli adatbázisok a kiépített számítási rétegekbe hely
 
 A maximális vagy a minimális virtuális mag, valamint az automatikus szüneteltetés késleltetésének módosítása a PowerShell [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsával történik `MaxVcore` , a, `MinVcore` és `AutoPauseDelayInMinutes` argumentumok használatával.
 
-### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 A maximális vagy a minimális virtuális mag módosítása, valamint az automatikus szüneteltetés késleltetése az az [SQL db Update](/cli/azure/sql/db#az-sql-db-update) paranccsal hajtható végre az Azure CLI-ben a `capacity` , `min-capacity` , és `auto-pause-delay` argumentumokkal.
 
@@ -279,7 +268,7 @@ Az alkalmazáscsomag egy adatbázis külső erőforrás-kezelési határa, függ
 
 A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési határa, függetlenül attól, hogy az adatbázis kiszolgáló nélküli vagy kiépített számítási szinten van-e. A felhasználói erőforráskészlet hatóköre CPU és IO a DDL-lekérdezések által generált felhasználói számítási feladatokhoz, például LÉTREHOZÁSi és MÓDOSÍTÁSi, valamint DML-lekérdezések, például SELECT, INSERT, UPDATE és DELETE. Ezek a lekérdezések általában a kihasználtság legjelentősebb hányadát jelentik az alkalmazáscsomag keretében.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
@@ -307,7 +296,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+#### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
@@ -358,7 +347,7 @@ A Azure Hybrid Benefit (AHB) és a fenntartott kapacitási kedvezmények nem von
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Németország, Északkelet, Egyesült Királyság északi régiója, Egyesült Királyság 2., az USA nyugati középső régiója és a US Gov Central (Iowa).
+A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Kelet-Németország és US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>További lépések
 

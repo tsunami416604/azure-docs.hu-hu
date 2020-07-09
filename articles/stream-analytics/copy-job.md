@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2c6b6af46ae89f794e05c3aa80716250c566257e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612265"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037222"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok másolása vagy biztonsági mentése
 
@@ -39,7 +39,7 @@ A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy bizto
 
     ![ASA-feladatok exportálása a Visual Studio Code-ban](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. Ha más néven szeretné közzétenni a feladatot egy másik régióban vagy biztonsági másolatban, válassza a **kiválasztás az előfizetések közül** lehetőséget a\*lekérdezés-szerkesztőben (. asaql) való közzétételhez, és kövesse az utasításokat.
+3. Ha más néven szeretné közzétenni a feladatot egy másik régióban vagy biztonsági másolatban, válassza a **kiválasztás az előfizetések közül** lehetőséget a lekérdezés-szerkesztőben (. asaql) való közzétételhez, \* és kövesse az utasításokat.
 
     ![Közzététel az Azure-ban a Visual Studio Code-ban](./media/quick-create-vs-code/submit-job.png)
 
@@ -47,7 +47,7 @@ A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy bizto
 
 1. Kövesse az [üzembe helyezett Azure stream Analyticsi feladat exportálása projekt utasításait](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
 
-2. Nyissa \*meg a. asaql fájlt a Lekérdezéstervezőben, válassza az **elküldés az Azure** -ba lehetőséget a parancsfájl-szerkesztőben, és kövesse az utasításokat a feladat egy másik régióba vagy biztonsági másolatba való közzétételéhez egy új néven.
+2. Nyissa meg a \* . asaql fájlt a Lekérdezéstervezőben, válassza az **elküldés az Azure** -ba lehetőséget a parancsfájl-szerkesztőben, és kövesse az utasításokat a feladat egy másik régióba vagy biztonsági másolatba való közzétételéhez egy új néven.
 
 ## <a name="next-steps"></a>További lépések
 

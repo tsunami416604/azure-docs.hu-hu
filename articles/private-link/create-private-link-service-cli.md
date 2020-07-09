@@ -4,22 +4,22 @@ description: Ismerje meg, hogyan hozhat létre Azure Private link Service-t az A
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737342"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -111,7 +111,7 @@ Ezután bemutatjuk, hogyan képezheti le ezt a szolgáltatást egy másik virtu�
 ## <a name="private-endpoints"></a>Privát végpontok
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása 
-Hozzon létre egy virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create)paranccsal. Ez a példa létrehoz egy *myPEVNet* nevű virtuális hálózatot az erőforráscsoport nevű *myResourcegroup*: 
+Hozzon létre egy virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create)paranccsal. Ez a példa létrehoz egy *myPEVNet*nevű virtuális hálózatot   az erőforráscsoport nevű *myResourcegroup*: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Az alhálózat létrehozása 
-Hozzon létre egy alhálózatot a virtuális hálózatban az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)paranccsal. Ez a példa létrehoz egy *mySubnet* nevű alhálózatot a *myPEVnet* nevű virtuális hálózatban az *myResourcegroup*nevű erőforráscsoport-csoportban: 
+Hozzon létre egy alhálózatot a virtuális hálózatban az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)paranccsal. Ez a példa létrehoz egy *mySubnet*nevű alhálózatot a   *myPEVnet* nevű virtuális hálózatban az *myResourcegroup*nevű erőforráscsoport-csoportban: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-A privát *kapcsolat erőforrás-azonosítóját* a Private link Service szolgáltatásban szerezheti `az network private-link-service show` be. Az azonosító a következőképpen fog kinézni:   
+A privát *kapcsolat erőforrás-azonosítóját* a `az network private-link-service show` Private link Service szolgáltatásban szerezheti be. Az azonosító a következőképpen fog kinézni:   
 /subscriptions/subID/resourceGroups/*resourcegroupname*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Magánhálózati kapcsolati szolgáltatás kapcsolatainak megjelenítése 

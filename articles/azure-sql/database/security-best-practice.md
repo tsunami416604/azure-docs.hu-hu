@@ -1,8 +1,8 @@
 ---
 title: Forgatókönyv a közös biztonsági követelmények kezeléséhez
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányának általános biztonsági követelményeit és ajánlott eljárásait ismerteti
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
@@ -10,14 +10,14 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: b2694d83f3059ac9d291f5164a76acd8b011c9a7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049994"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986779"
 ---
-# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Forgatókönyv a közös biztonsági követelmények kezeléséhez Azure SQL Database & SQL felügyelt példányával
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a cikk az általános biztonsági követelmények megoldásának ajánlott eljárásait ismerteti. Nem minden követelmény alkalmazható minden környezetre, és érdemes megtekinteni az adatbázissal és a biztonsági csapattal, hogy mely szolgáltatásokat kell megvalósítani.
@@ -28,14 +28,14 @@ Ez a dokumentum útmutatást nyújt a Azure SQL Database és az Azure SQL felüg
 
 ### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>Azure SQL Database az útmutatóban foglalt központi telepítési ajánlatok
 
-- [Azure SQL Database-adatbázisok](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [önálló adatbázisok](single-database-overview.md) és [rugalmas készletek](elastic-pool-overview.md) a [kiszolgálókon](logical-servers.md)
-- [Felügyelt Azure SQL-példányok](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
+- [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [önálló adatbázisok](single-database-overview.md) és [rugalmas készletek](elastic-pool-overview.md) a [kiszolgálókon](logical-servers.md)
+- [Felügyelt Azure SQL-példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
 
-### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>A jelen útmutatóban nem szereplő SQL-telepítési ajánlatok
+### <a name="deployment-offers-not-covered-in-this-guide"></a>Az útmutatóban nem szereplő központi telepítési ajánlatok
 
 - Azure SQL Data Warehouse
 - Azure SQL virtuális gépek (IaaS)
-- Helyszíni SQL Server
+- SQL Server
 
 ### <a name="audience"></a>Célközönség
 
@@ -60,8 +60,6 @@ Ha másként nincs megadva, javasoljuk, hogy kövesse az egyes szakaszokban fels
 - [NIST speciális kiadvány 800-53 biztonsági vezérlők](https://nvd.nist.gov/800-53): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2
 
-### <a name="feedback"></a>Visszajelzés
-
 Azt tervezzük, hogy továbbra is frissítjük az itt felsorolt ajánlásokat és ajánlott eljárásokat. Adja meg a dokumentum bemenetét vagy helyesbítéseit a cikk alján található **visszajelzési** hivatkozás használatával.
 
 ## <a name="authentication"></a>Hitelesítés
@@ -78,7 +76,7 @@ A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. A Az
 
 A központi Identitáskezelés a következő előnyöket kínálja:
 
-- Csoportfiókok kezelése és felhasználói engedélyek vezérlése a kiszolgálók, adatbázisok és SQL-felügyelt példányok közötti bejelentkezések duplikálása nélkül.
+- Csoportfiókok kezelése és felhasználói engedélyek vezérlése a kiszolgálók, adatbázisok és felügyelt példányok közötti bejelentkezések megkettőzése nélkül.
 - Egyszerűsített és rugalmas engedélyek kezelése.
 - Alkalmazások felügyelete nagy léptékben.
 
@@ -103,52 +101,52 @@ A központi Identitáskezelés a következő előnyöket kínálja:
 
 - Az Azure AD-csoporttagság változásainak figyelése az Azure AD naplózási tevékenységeinek jelentéseivel.
 
-- SQL felügyelt példány esetén külön lépésre van szükség az Azure AD-rendszergazda létrehozásához.
+- Felügyelt példány esetén külön lépésre van szükség az Azure AD-rendszergazda létrehozásához.
   - Tekintse meg a [felügyelt példányok Azure Active Directory rendszergazdájának kiépítése](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)című cikket.
 
 > [!NOTE]
 >
 > - Az Azure AD-hitelesítés az Azure SQL-naplókban van rögzítve, de nem az Azure AD bejelentkezési naplóiban.
 > - Az Azure-ban megadott RBAC engedélyek nem vonatkoznak Azure SQL Database vagy SQL felügyelt példányra vonatkozó engedélyekre. Ezeket az engedélyeket manuálisan kell létrehozni/leképezni a meglévő SQL-engedélyek használatával.
-> - Az Azure AD-hitelesítésnek az ügyfélszámítógépen vagy a felhasználó által megadott útvonalon (UDR) keresztül kell hozzáférnie a VNet.
+> - Az Azure AD-hitelesítésnek szüksége van az internethez vagy a felhasználó által megadott útvonalon (UDR) keresztül egy virtuális hálózatra.
 > - Az Azure AD hozzáférési jogkivonat gyorsítótárazva van az ügyféloldali oldalon, és az élettartama a jogkivonat konfigurációjától függ. Tekintse meg a következő cikket: [konfigurálható jogkivonat élettartama Azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Az Azure AD-hitelesítési problémák elhárításával kapcsolatos útmutatásért tekintse meg a következő blogot: az [Azure ad hibaelhárítása](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 > Megemlítve: OSA Practice #2, ISO Access Control (AC)
 
-Az Azure Multi-Factor Authentication (MFA) további biztonságot nyújt a több hitelesítési módszer megkövetelésével.
+Az Azure Multi-Factor Authentication további biztonságot nyújt azáltal, hogy egynél több hitelesítési módszert igényel.
 
 **Megvalósítás**:
 
-- A feltételes hozzáférés használatával [engedélyezheti az MFA](../../active-directory/authentication/concept-mfa-howitworks.md) használatát az Azure ad-ben, és interaktív hitelesítést használhat.
+- Az Azure AD-ben való [multi-Factor Authentication engedélyezése](../../active-directory/authentication/concept-mfa-howitworks.md) feltételes hozzáférés használatával és interaktív hitelesítés használata.
 
-- A másik lehetőség az MFA engedélyezése a teljes Azure AD-vagy AD-tartományon.
+- A másik lehetőség a teljes Azure AD-vagy AD-tartomány Multi-Factor Authenticationának engedélyezése.
 
 **Ajánlott eljárások**:
 
 - Aktiválja a feltételes hozzáférést az Azure AD-ben (prémium szintű előfizetés szükséges).
   - Tekintse meg a [feltételes hozzáférés az Azure ad-ben](../../active-directory/conditional-access/overview.md)című cikket.  
 
-- Azure AD-csoport (ok) létrehozása és az MFA-szabályzat engedélyezése a kiválasztott csoportokhoz az Azure AD feltételes hozzáférés használatával.
+- Azure AD-csoport (ok) létrehozása és Multi-Factor Authentication szabályzat engedélyezése a kiválasztott csoportokhoz az Azure AD feltételes hozzáférés használatával.
   - Tekintse meg a [feltételes hozzáférés üzembe helyezésének megtervezése](../../active-directory/conditional-access/plan-conditional-access.md)című cikket.
 
-- Az MFA engedélyezhető a teljes Azure AD-hez vagy az Azure AD-vel összevont teljes Active Directoryhoz.
+- Multi-Factor Authentication engedélyezhető a teljes Azure AD-hez vagy az Azure AD-vel összevont teljes Active Directory.
 
-- Az Azure AD interaktív hitelesítési mód használata a Azure SQL Database és az Azure SQL felügyelt példányai esetében, ha a jelszót interaktívan kérik, majd az MFA-hitelesítés követi:
-  - Használjon univerzális hitelesítést a SSMS-ben. Tekintse meg a [multi-Factor HRE hitelesítés használata Azure SQL Database, SQL felügyelt példánnyal, Azure szinapszis (MFA-támogatás az MFA-hoz)](authentication-mfa-ssms-overview.md)című cikket.
+- Az Azure AD interaktív hitelesítési mód használata a Azure SQL Database és az Azure SQL felügyelt példányai esetében, ha a jelszót interaktívan kérik, majd Multi-Factor Authentication:
+  - Használjon univerzális hitelesítést a SSMS-ben. Tekintse meg a [többtényezős Azure ad-hitelesítés Azure SQL Database, SQL felügyelt példánnyal, az Azure szinapszis (SSMS-támogatás multi-Factor Authentication)](authentication-mfa-ssms-overview.md)című cikket.
   - SQL Server Data Tools (SSDT) által támogatott interaktív hitelesítés használata. Tekintse meg a [SQL Server Data Tools (SSDT) Azure Active Directory támogatását](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)ismertető cikket.
-  - Más, MFA-t támogató SQL-eszközök használata.
+  - Használjon más, Multi-Factor Authentication támogató SQL-eszközöket.
     - A SSMS varázsló támogatja az adatbázis exportálását/kinyerését és üzembe helyezését  
-    - [sqlpackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): "/ua" beállítás
+    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): "/ua" kapcsoló
     - [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility): Option-G (interaktív)
     - [BCP-segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility): Option-G (interaktív)
 
-- Alkalmazások implementálása Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódáshoz az MFA-támogatással rendelkező interaktív hitelesítés használatával.
+- Az alkalmazások implementálása Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódáshoz Multi-Factor Authentication támogatással történő interaktív hitelesítéssel.
   - Tekintse meg a következő cikket: [Kapcsolódás a Azure SQL Databasehoz az Azure multi-Factor Authentication használatával](active-directory-interactive-connect-azure-sql-db.md).
   > [!NOTE]
-  > Ez a hitelesítési mód felhasználói identitásokat igényel. Olyan esetekben, amikor olyan megbízható identitású modellt használ, amely megkerüli az egyes Azure AD-felhasználók hitelesítését (például az Azure-erőforrások felügyelt identitásának használatával), az MFA nem alkalmazható.
+  > Ez a hitelesítési mód felhasználói identitásokat igényel. Olyan esetekben, amikor olyan megbízható identitású modellt használ, amely az egyes Azure AD-felhasználók hitelesítésének megkerülését végzi (például az Azure-erőforrások felügyelt identitásának használatával), Multi-Factor Authentication nem alkalmazható.
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>A jelszó-alapú hitelesítés használatának csökkentése a felhasználók számára
 
@@ -178,7 +176,7 @@ A jelszó-alapú hitelesítési módszerek a hitelesítés gyengébb formája. A
 - [Felügyelt identitások használata az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
   - [Rendszer által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
   - [Felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
-  - [Azure SQL Database használata az App Service-ben felügyelt identitással (kód módosítása nélkül)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
+  - [Felügyelt identitással rendelkező Azure App Service Azure SQL Database használata (kód módosítása nélkül)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
 
 - Tanúsítvány alapú hitelesítés használata alkalmazásokhoz.
   - Tekintse meg ezt a [mintakód-mintát](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/token).
@@ -192,7 +190,7 @@ Olyan esetekben, amikor a jelszavak nem elkerülhetők, győződjön meg róla, 
 
 **Megvalósítás**:
 
-- A jelszavak és a titkos kódok tárolására Azure Key Vault használhatja. Ha alkalmazható, használja az MFA-t Azure SQL Database Azure AD-felhasználókkal.
+- A jelszavak és a titkos kódok tárolására Azure Key Vault használhatja. Ha szükséges, használja a Multi-Factor Authenticationt az Azure AD-felhasználók Azure SQL Databaseához.
 
 **Ajánlott eljárások**:
 
@@ -285,7 +283,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 **Megvalósítás**:
 
-- Azonosítsa a feladatok elkülönítésének szükséges szintjét. Angol nyelvű Példák:
+- Azonosítsa a feladatok elkülönítésének szükséges szintjét. Példák:
   - Fejlesztési, tesztelési és éles környezetek között
   - Biztonság – a bizalmas feladatok és az adatbázis-adminisztrátor (DBA) felügyeleti szintű feladatai és fejlesztői feladatok.
     - Példák: auditor, biztonsági szabályzat létrehozása szerepköralapú biztonsághoz (RLS), SQL Database objektumok implementálása DDL-engedélyekkel.
@@ -294,7 +292,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 - Hozzon létre szerepköröket a szükséges felhasználói csoportoknak megfelelően, és rendeljen engedélyeket a szerepkörökhöz.
   - A Azure Portal vagy a PowerShell-Automation segítségével történő felügyeleti szintű feladatokhoz RBAC-szerepköröket használjon. Keressen egy beépített szerepkört, amely megfelel a követelménynek, vagy hozzon létre egy egyéni RBAC-szerepkört az elérhető engedélyek használatával.
-  - Kiszolgálói szerepkörök létrehozása kiszolgálói szintű feladatokhoz (új bejelentkezések, adatbázisok létrehozása) egy SQL felügyelt példányban.
+  - Kiszolgálói szerepköröket hozhat létre a felügyelt példányok kiszolgáló szintű feladatai számára (új bejelentkezések és adatbázisok létrehozása).
   - Adatbázis-szintű feladatokhoz tartozó adatbázis-szerepkörök létrehozása.
 
 - Bizonyos bizalmas feladatok esetében érdemes lehet olyan speciális tárolt eljárásokat létrehozni, amelyeket egy tanúsítvány írt alá a feladatok a felhasználók nevében történő végrehajtásához. A digitálisan aláírt tárolt eljárások egyik fontos előnye, hogy ha az eljárást megváltoztatják, a rendszer azonnal eltávolítja az eljárás korábbi verziójához megadott engedélyeket.
@@ -312,7 +310,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 **Ajánlott eljárások**:
 
-- Győződjön meg arról, hogy a fejlesztési, tesztelési és éles környezetekben különböző fiókok vannak használatban. A különböző fiókok segítenek betartani a tesztelési & éles rendszerek elkülönítését.
+- Győződjön meg arról, hogy a fejlesztési, tesztelési és éles környezetekben különböző fiókok vannak használatban. A különböző fiókok segítenek a tesztelési és éles rendszerek elkülönítésének betartásában.
 
 - Ne rendeljen engedélyeket az egyes felhasználókhoz. A szerepköröket (adatbázis vagy kiszolgálói szerepkörök) következetesen használja helyette. A szerepkörök nagy mértékben segítik a jelentéskészítési és hibaelhárítási engedélyeket.
 
@@ -400,7 +398,7 @@ A inaktív adatok titkosítása az adatok titkosítási védelme, ha az adatbáz
 **Megvalósítás**:
 
 - A szolgáltatás által felügyelt kulcsokkal rendelkező [transzparens adatbázis-titkosítás (TDE)](transparent-data-encryption-tde-overview.md) alapértelmezés szerint engedélyezve van a Azure SQL Database és az SQL felügyelt példányának 2017 után létrehozott adatbázisok esetében.
-- SQL felügyelt példányban, ha az adatbázis egy helyszíni kiszolgáló használatával történő visszaállítási műveletből jön létre, a rendszer az eredeti adatbázis TDE-beállítását fogja tiszteletben venni. Ha az eredeti adatbázis nem rendelkezik TDE-engedélyezéssel, javasoljuk, hogy a TDE manuálisan be lehessen kapcsolni az SQL felügyelt példányához.
+- Felügyelt példány esetén, ha az adatbázis egy helyszíni kiszolgáló használatával történő visszaállítási műveletből jön létre, a rendszer az eredeti adatbázis TDE-beállítását fogja tiszteletben venni. Ha az eredeti adatbázis nem rendelkezik TDE-engedélyezéssel, javasoljuk, hogy a felügyelt példányhoz manuálisan be kell kapcsolni a TDE.
 
 **Ajánlott eljárások**:
 
@@ -503,7 +501,7 @@ Ajánlott eljárások az ügyfélszámítógépek és alkalmazások ismert bizto
 
 **Megvalósítás**:
 
-- Győződjön meg arról, hogy az Azure SQL Database és az SQL felügyelt példányához csatlakozó ügyfélszámítógépek [Transport Layer Security (TLS) protokollt](security-overview.md#transport-layer-security-tls-encryption-in-transit)használnak.
+- Győződjön meg arról, hogy az Azure SQL Database és az SQL felügyelt példányához csatlakozó ügyfélszámítógépek [Transport Layer Security (TLS) protokollt](security-overview.md#transport-layer-security-encryption-in-transit)használnak.
 
 **Ajánlott eljárások**:
 
@@ -534,30 +532,30 @@ SQL Database:
 - VNet-szolgáltatási végpontok és VNet-tűzfalszabályok használata.
 - Használjon privát hivatkozást (előzetes verzió).
 
-SQL felügyelt példányban:
+A felügyelt SQL-példányban:
 
 - Kövesse a [hálózati követelmények](../managed-instance/connectivity-architecture-overview.md#network-requirements)című témakör útmutatását.
 
 **Ajánlott eljárások**:
 
 - A Azure SQL Database és az SQL felügyelt példány hozzáférésének korlátozása egy privát végponthoz való csatlakozással (például privát adatútvonal használatával):
-  - A külső hozzáférés megakadályozása érdekében egy SQL-felügyelt példány különíthető el egy VNet belül. Az azonos régióban található azonos vagy egyenrangú VNet lévő alkalmazások és eszközök közvetlenül hozzáférhetnek hozzá. A különböző régiókban található alkalmazások és eszközök a kapcsolat létesítéséhez VNet-VNet kapcsolatot vagy ExpressRoute áramkör-összevonást használhatnak. Az ügyfélnek hálózati biztonsági csoportokat (NSG) kell használnia az 1433-as porton keresztüli hozzáférés korlátozásához a felügyelt példányokhoz hozzáférést igénylő erőforrásokhoz.
-  - SQL Database esetén használja a [privát hivatkozás](../../private-link/private-endpoint-overview.md) funkciót, amely dedikált magánhálózati IP-címet biztosít a VNet belüli kiszolgálónak. A [VNet szolgáltatás-végpontokat VNet tűzfalszabályok](vnet-service-endpoint-rule-overview.md) használatával is korlátozhatja a kiszolgálókhoz való hozzáférés korlátozására.
+  - A külső hozzáférés megakadályozása érdekében a felügyelt példányok elkülöníthetők egy virtuális hálózaton belül. Az ugyanabban a régióban található azonos vagy egyenrangú virtuális hálózatban lévő alkalmazások és eszközök közvetlenül hozzáférhetnek. A különböző régiókban található alkalmazások és eszközök virtuális hálózat – virtuális hálózati kapcsolat vagy ExpressRoute áramköri kapcsolatok használatával hozhatnak létre kapcsolatot. Az ügyfélnek hálózati biztonsági csoportokat (NSG) kell használnia az 1433-as porton keresztüli hozzáférés korlátozásához a felügyelt példányokhoz hozzáférést igénylő erőforrásokhoz.
+  - SQL Database esetén használja a [privát hivatkozás](../../private-link/private-endpoint-overview.md) funkciót, amely dedikált magánhálózati IP-címet biztosít a kiszolgáló számára a virtuális hálózaton belül. Virtuális hálózati szolgáltatás- [végpontokat is használhat virtuális hálózati tűzfalszabályok](vnet-service-endpoint-rule-overview.md) használatával a kiszolgálókhoz való hozzáférés korlátozására.
   - A mobil felhasználóknak pont – hely típusú VPN-kapcsolatokat kell használniuk az adatútvonalon való csatlakozáshoz.
   - A helyszíni hálózathoz csatlakozó felhasználóknak helyek közötti VPN-kapcsolatot vagy ExpressRoute kell használniuk az adatútvonalon való csatlakozáshoz.
 
 - Az Azure SQL Database és az SQL felügyelt példányát nyilvános végponthoz való csatlakozással érheti el (például egy nyilvános adatútvonal használatával). A következő ajánlott eljárásokat kell figyelembe venni:
   - SQL Database-kiszolgáló esetén az [IP-tűzfalszabályok](firewall-configure.md) használatával korlátozza a hozzáférést csak a jogosult IP-címekhez.
-  - SQL felügyelt példányban lévő példány esetén a hálózati biztonsági csoportok (NSG) használatával korlátozza a hozzáférést a 3342-as porton keresztül, csak a szükséges erőforrásokhoz. További információt az [Azure SQL felügyelt példányának biztonságos használata nyilvános végpontokkal](../managed-instance/public-endpoint-overview.md)című témakörben talál.
+  - SQL felügyelt példány esetén használjon hálózati biztonsági csoportokat (NSG) a 3342-as porton keresztüli hozzáférés korlátozásához a szükséges erőforrásokhoz. További információ: [felügyelt példány biztonságos használata nyilvános végpontokkal](../managed-instance/public-endpoint-overview.md).
 
 > [!NOTE]
-> A felügyelt SQL-példányok nyilvános végpontja alapértelmezés szerint nincs engedélyezve, és explicit módon engedélyezve kell lennie. Ha a vállalati házirend nem engedélyezi a nyilvános végpontok használatát, a [Azure Policy](../../governance/policy/overview.md) használatával megakadályozhatja, hogy az első helyen engedélyezze a nyilvános végpontokat.
+> Az SQL felügyelt példány nyilvános végpontja alapértelmezés szerint nincs engedélyezve, és explicit módon engedélyezve kell lennie. Ha a vállalati házirend nem engedélyezi a nyilvános végpontok használatát, a [Azure Policy](../../governance/policy/overview.md) használatával megakadályozhatja, hogy az első helyen engedélyezze a nyilvános végpontokat.
 
 - Azure hálózati összetevők beállítása:
   - [A hálózati biztonságra vonatkozó Azure ajánlott eljárások](../../security/fundamentals/network-best-practices.md)követése.
-  - Tervezze meg az Virtual Network (VNet) konfigurációt az [Azure Virtual Network gyakori kérdések (GYIK)](../../virtual-network/virtual-networks-faq.md) és a terv című szakaszban ismertetett ajánlott eljárások alapján.
-  - VNet szegmentálása több alhálózatra, és erőforrások kiosztása hasonló szerepkörhöz ugyanahhoz az alhálózathoz (például előtér-és háttér-erőforrások).
-  - Használjon [hálózati biztonsági csoportokat (NSG)](../../virtual-network/security-overview.md) az alhálózatok közötti adatforgalom vezérléséhez az Azure VNet határán belül.
+  - Tervezze meg Virtual Network konfigurációt az [Azure Virtual Network gyakori kérdések (GYIK)](../../virtual-network/virtual-networks-faq.md) és a terv című szakaszban ismertetett ajánlott eljárások alapján.
+  - A virtuális hálózatokat több alhálózatra is kioszthatja, és erőforrásokat rendelhet ugyanahhoz az alhálózathoz (például előtér-és háttér-erőforrásokhoz) hasonló szerepkörhöz.
+  - Használjon [hálózati biztonsági csoportokat (NSG)](../../virtual-network/security-overview.md) az alhálózatok közötti adatforgalom vezérléséhez az Azure-beli virtuális hálózat határain belül.
   - Az előfizetéshez tartozó [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) engedélyezése a bejövő és kimenő hálózati forgalom figyelésére.
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>Power BI konfigurálása a SQL Database/SQL felügyelt példány biztonságos kapcsolataihoz
@@ -578,23 +576,23 @@ SQL felügyelt példányban:
 
 - Egy egyszerű webalkalmazáshoz a nyilvános végponthoz való csatlakozáshoz az **Azure-szolgáltatások engedélyezése** beállítást kell beállítani.
 
-- Az [alkalmazás integrálása Azure-Virtual Network](../../app-service/web-sites-integrate-with-vnet.md) a magánhálózati adatelérési utakhoz való kapcsolódáshoz egy SQL-alapú felügyelt példányhoz. Igény szerint egy webalkalmazást is üzembe helyezhet [app Service környezetekkel](../../app-service/environment/intro.md).
+- Az [alkalmazás integrálása Azure-Virtual Network](../../app-service/web-sites-integrate-with-vnet.md) a felügyelt példányokhoz való magánhálózati adatelérési utakhoz való kapcsolódáshoz. Igény szerint egy webalkalmazást is üzembe helyezhet [app Service környezetekkel](../../app-service/environment/intro.md).
 
-- A SQL Database-adatbázishoz csatlakozó vagy VNet integrált webalkalmazással rendelkező webalkalmazások esetében a [VNet szolgáltatás-végpontok és a VNet tűzfalszabályok](vnet-service-endpoint-rule-overview.md) használatával korlátozhatja a hozzáférést egy adott VNet és alhálózatról. Ezután állítsa be az Azure-szolgáltatások kikapcsolásának **engedélyezése lehetőséget** . Az SQL felügyelt példányában található felügyelt példányhoz is csatlakozhat egy privát adatútvonalon keresztül.  
+- A [virtuális hálózati szolgáltatás-végpontok és](vnet-service-endpoint-rule-overview.md) a virtuális hálózati tűzfalszabályok használatával egy adott virtuális hálózat és alhálózat elérésének korlátozására használhat olyan webalkalmazást, amely vagy a virtuális hálózat integrált webalkalmazása SQL Database-adatbázishoz csatlakozik. Ezután állítsa be az Azure-szolgáltatások kikapcsolásának **engedélyezése lehetőséget** . Az SQL felügyelt példányában található felügyelt példányhoz is csatlakozhat egy privát adatútvonalon keresztül.  
 
-- Győződjön meg arról, hogy a webalkalmazás konfigurálva van a következő cikkben [: ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez Azure app Service használatával](../../security/fundamentals/paas-applications-using-app-services.md).
+- Győződjön meg arról, hogy a webalkalmazás konfigurálva van a cikkben, [ajánlott eljárások a platform szolgáltatásként (Péter) webes és mobil alkalmazások biztonságossá tételéhez Azure app Service használatával](../../security/fundamentals/paas-applications-using-app-services.md).
 
 - Telepítse a [webalkalmazási tűzfalat (WAF)](../../web-application-firewall/ag/ag-overview.md) , hogy megvédje a webalkalmazást a gyakori biztonsági rések és sebezhetőségek ellen.
 
-### <a name="configure-azure-vm-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>Azure-beli virtuális gép üzemeltetésének konfigurálása SQL Database/SQL felügyelt példány biztonságos kapcsolataihoz
+### <a name="configure-azure-virtual-machine-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>Azure-beli virtuális gépek üzemeltetésének konfigurálása biztonságos kapcsolatokhoz SQL Database/SQL felügyelt példányhoz
 
 **Ajánlott eljárások**:
 
-- Az engedélyezési és megtagadási szabályok kombinációját használhatja az Azure-beli virtuális gépek NSG, hogy megtudja, mely régiók érhetők el a virtuális gépről.
+- Az engedélyezési és megtagadási szabályok kombinációját használhatja az Azure-beli virtuális gépek NSG annak szabályozására, hogy mely régiók érhetők el a virtuális gépről.
 
 - Győződjön meg arról, hogy a virtuális gép az Azure-ban a IaaS számítási feladatokhoz [szükséges biztonsági eljárások](../../security/fundamentals/iaas.md)alapján van konfigurálva.
 
-- Győződjön meg arról, hogy minden virtuális gép hozzá van rendelve egy adott VNet és alhálózathoz.
+- Győződjön meg arról, hogy az összes virtuális gép társítva van egy adott virtuális hálózathoz és alhálózathoz.
 
 - Ellenőrizze, hogy szükség van-e az alapértelmezett 0.0.0.0/Internet útvonalra a [kényszerített bújtatással kapcsolatos](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md#about-forced-tunneling)útmutatás alapján.
   - Ha igen – például az előtér-alhálózat –, akkor tartsa meg az alapértelmezett útvonalat.
@@ -602,9 +600,9 @@ SQL felügyelt példányban:
 
 - Nem [kötelező alapértelmezett útvonalakat](../../virtual-network/virtual-networks-udr-overview.md#optional-default-routes) implementálhat, ha a társ-vagy a helyszíni hálózathoz csatlakozik.
 
-- A [felhasználó által megadott útvonalak](../../virtual-network/virtual-networks-udr-overview.md#user-defined) implementálása, ha a VNet lévő összes forgalmat egy hálózati virtuális berendezésbe kell elküldeni a csomagok ellenőrzéséhez.
+- A [felhasználó által megadott útvonalak](../../virtual-network/virtual-networks-udr-overview.md#user-defined) implementálása, ha a virtuális hálózatban lévő összes forgalmat egy hálózati virtuális készülékre kell elküldeni a csomagok vizsgálatához.
 
-- A [VNet szolgáltatás-végpontok](vnet-service-endpoint-rule-overview.md) segítségével biztonságos hozzáférést biztosíthat az Azure Storage-hoz, például az Azure-tárolóhoz az Azure-beli gerinc hálózaton keresztül.
+- [Virtuális hálózati szolgáltatás-végpontok](vnet-service-endpoint-rule-overview.md) használatával biztonságos hozzáférést biztosíthat a Pásti-szolgáltatásokhoz, például az Azure Storage-hoz az Azure gerinc hálózaton keresztül.
 
 ### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>Az elosztott szolgáltatásmegtagadási (DDoS) támadások elleni védelem
 
@@ -616,7 +614,7 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások arra irányulnak, hog
 
 A DDoS elleni védelem automatikusan engedélyezve van az Azure platform részeként. Magában foglalja a forgalom folyamatos figyelését és a nyilvános végpontok hálózati szintű támadásának valós idejű enyhítését.
 
-- A [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) használatával figyelheti a virtuális hálózatok-ben üzembe helyezett erőforrásokhoz társított nyilvános IP-címeket.
+- A [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) használatával figyelheti a virtuális hálózatokban üzembe helyezett erőforrásokhoz társított nyilvános IP-címeket.
 
 - A [Azure SQL Database komplex veszélyforrások elleni védelem](threat-detection-overview.md) használatával észlelheti a szolgáltatásmegtagadási (DOS) támadásokat az adatbázisokon.
 
@@ -666,7 +664,7 @@ Az adatbázis-események nyomon követése segít megérteni az adatbázis tevé
 **Ajánlott eljárások**:
 
 - Ha [SQL Database naplózást](../../azure-sql/database/auditing-overview.md) konfigurál a kiszolgálón vagy a [felügyelt példányok naplózásakor](../managed-instance/auditing-configure.md) az eseményeket naplózza, az adott kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázis naplózva lesz.
-- Alapértelmezés szerint a naplózási házirend minden műveletet (lekérdezéseket, tárolt eljárásokat és sikeres és sikertelen bejelentkezést) tartalmaz az adatbázisokon, ami nagy mennyiségű naplót eredményezhet. Javasoljuk, hogy az ügyfelek a [PowerShell használatával konfigurálják a különböző típusú műveletek és műveleti csoportok naplózását](../../sql-database/sql-database-auditing.md#manage-auditing). A konfigurálásával szabályozhatja a naplózott műveletek számát, és csökkentheti az események elvesztésének kockázatát. Az egyéni naplózási konfiguráció lehetővé teszi, hogy az ügyfelek csak a szükséges naplózási adatmennyiséget rögzítik.
+- Alapértelmezés szerint a naplózási házirend minden műveletet (lekérdezéseket, tárolt eljárásokat és sikeres és sikertelen bejelentkezést) tartalmaz az adatbázisokon, ami nagy mennyiségű naplót eredményezhet. Javasoljuk, hogy az ügyfelek a [PowerShell használatával konfigurálják a különböző típusú műveletek és műveleti csoportok naplózását](../../sql-database/sql-database-auditing.md#manage-auditing). A konfigurálásával szabályozhatja a naplózott műveletek számát, és csökkentheti az események elvesztésének kockázatát. Az egyéni naplózási konfigurációk lehetővé teszik, hogy az ügyfelek csak a szükséges naplózási adatmennyiséget rögzítsen.
 - A naplók közvetlenül a [Azure Portal](https://portal.azure.com/)vagy a konfigurált tárolási helyről is felhasználhatók.
 
 > [!NOTE]
@@ -696,7 +694,7 @@ Korlátozza a hozzáférést a Storage-fiókhoz a feladatok elkülönítésének
 
 Ez a szakasz az adatbázisok biztonsági helyzetének kezelésére szolgáló különböző szempontokat és ajánlott eljárásokat ismerteti. Ajánlott eljárásokat tartalmaz, amelyekkel biztosítható, hogy az adatbázisok megfeleljenek a biztonsági normáknak, a felfedezéshez, valamint az adatbázisokban potenciálisan bizalmas adatokhoz való hozzáférés besorolásához és nyomon követéséhez.
 
-### <a name="ensure-that-the-databases-are-configured-to-meet-security-best-practices"></a>Győződjön meg arról, hogy az adatbázis (ok) úgy van konfigurálva, hogy megfeleljen az ajánlott biztonsági eljárásoknak
+### <a name="ensure-that-the-databases-are-configured-to-meet-security-best-practices"></a>Győződjön meg arról, hogy az adatbázisok úgy vannak konfigurálva, hogy megfeleljenek az ajánlott biztonsági eljárásoknak
 
 Proaktív módon fejlesztheti adatbázisa biztonságát a lehetséges adatbázis-sebezhetőségek felderítésével és szervizelését.
 
@@ -728,7 +726,7 @@ Olyan oszlopok felderítése, amelyek potenciálisan bizalmas adatokat tartalmaz
 - Az [SQL-adatfelderítés és-besorolás](data-discovery-and-classification-overview.md) használatával felderítheti, osztályozhatja, címkézheti és megóvja a bizalmas adatokat az adatbázisaiban.
   - Megtekintheti az automatikus észlelés által létrehozott besorolási javaslatokat az SQL-adatfelderítés és besorolás irányítópulton. Fogadja el a releváns besorolásokat, így a bizalmas adatok állandó címkével vannak ellátva a besorolási címkékkel.
   - Adja meg manuálisan a besorolásokat az automatikus mechanizmus által nem felderített további bizalmas adatmezőkhöz.
-- További információ: SQL- [Adatfelderítés & besorolása](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
+- További információ: [SQL-adatok felderítése és besorolása](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 **Ajánlott eljárások**:
 
@@ -745,7 +743,7 @@ Figyelje meg, hogy ki fér hozzá a bizalmas adatokhoz, és hogyan rögzíthet l
 **Megvalósítás**:
 
 - Az SQL audit és az adatbesorolás együttes használata.
-  - A [SQL Database naplójában](../../azure-sql/database/auditing-overview.md) a hozzáférést a bizalmas adatokhoz is nyomon követheti. Megtekintheti az adatok, például az elért adatokat, valamint az érzékenységi címkét is. További információkért lásd: [Adatfelderítési & besorolás](data-discovery-and-classification-overview.md) és [a bizalmas adatokhoz való hozzáférés naplózása](data-discovery-and-classification-overview.md#audit-sensitive-data).
+  - A [SQL Database naplójában](../../azure-sql/database/auditing-overview.md) a hozzáférést a bizalmas adatokhoz is nyomon követheti. Megtekintheti az adatok, például az elért adatokat, valamint az érzékenységi címkét is. További információ: [adatfelderítés és besorolás](data-discovery-and-classification-overview.md) és [a bizalmas adatokhoz való hozzáférés naplózása](data-discovery-and-classification-overview.md#audit-sensitive-data).
 
 **Ajánlott eljárások**:
 
@@ -755,7 +753,7 @@ Figyelje meg, hogy ki fér hozzá a bizalmas adatokhoz, és hogyan rögzíthet l
 
 ### <a name="visualize-security-and-compliance-status"></a>Biztonsági és megfelelőségi állapot megjelenítése
 
-Olyan egységes infrastruktúra-alapú biztonsági felügyeleti rendszer használata, amely megerősíti az adatközpontok biztonsági állapotát (beleértve az SQL-adatbázisokat is). Az adatbázisok és a megfelelőségi állapot biztonságával kapcsolatos javaslatok listájának megtekintése.
+Olyan egységes infrastruktúra-alapú biztonsági felügyeleti rendszer használata, amely megerősíti az adatközpontok biztonsági állapotát (beleértve a SQL Database adatbázisait is). Az adatbázisok és a megfelelőségi állapot biztonságával kapcsolatos javaslatok listájának megtekintése.
 
 **Megvalósítás**:
 
@@ -785,13 +783,13 @@ Napjainkban a Azure SQL Database és az SQL felügyelt példánya a következő 
   - Csak az Azure-beli virtuális gépet tartalmazó alhálózatról érkező forgalom engedélyezése VNet tűzfalszabály beállításával.
   - [Privát hivatkozás](../../private-link/private-endpoint-overview.md) használata
 - A felügyelt SQL-példányok esetében a magánhálózati IP-hozzáférés alapértelmezés szerint az első olyan kiszűrése, amely a szélhámos virtuális gépekre vonatkozik. Kapcsolja be az alhálózat-delegálás funkciót egy alhálózaton, hogy automatikusan beállítja a legszigorúbb házirendet egy SQL felügyelt példány alhálózatán.
-- A szélhámos DBA-mel kapcsolatos aggályok nagyobb mértékben vannak kitéve egy SQL felügyelt példánnyal, mivel nagyobb felülettel rendelkezik, és a hálózati követelmények láthatók az ügyfelek számára. A legjobb megoldás az ebben a biztonsági útmutatóban található összes eljárás alkalmazásával megakadályozza a szélhámos DBA-forgatókönyvet az első helyen (nem csak az adatkiszűrése esetében). Always Encrypted egy módszer a bizalmas adatok védelmére azáltal, hogy titkosítja, és a kulcs nem érhető el a DBA számára.
+- A szélhámos DBA-mel kapcsolatos aggályok nagyobb mértékben jelennek meg az SQL felügyelt példányaival, mivel nagyobb felületi területtel rendelkezik, és a hálózati követelmények láthatók az ügyfelek számára. A legjobb megoldás az ebben a biztonsági útmutatóban található összes eljárás alkalmazásával megakadályozza a szélhámos DBA-forgatókönyvet az első helyen (nem csak az adatkiszűrése esetében). Always Encrypted egy módszer a bizalmas adatok védelmére azáltal, hogy titkosítja, és a kulcs nem érhető el a DBA számára.
 
 ## <a name="security-aspects-of-business-continuity-and-availability"></a>Az üzletmenet folytonosságának és rendelkezésre állásának biztonsági szempontjai
 
 A legtöbb biztonsági szabvány a működés folytonossága szempontjából az adatrendelkezésre állást kezeli, és a redundancia és a feladatátvételi funkciók megvalósításával kerülhető el, hogy elkerülje az egyes meghibásodási pontokat. Katasztrófa esetén az adatok és a naplófájlok biztonsági mentéseit gyakran érdemes megtartani.A következő szakasz átfogó áttekintést nyújt az Azure-ba beépített képességekről. Emellett további beállításokat is biztosít, amelyek az adott igények kielégítésére konfigurálhatók:
 
-- Az Azure beépített magas rendelkezésre állást kínál: [magas rendelkezésre állás SQL Database & SQL felügyelt példányával](high-availability-sla.md)
+- Az Azure beépített magas rendelkezésre állást kínál: [magas rendelkezésre állás SQL Database és SQL felügyelt példánnyal](high-availability-sla.md)
 
 - A üzletileg kritikus szint feladatátvételi csoportokat, több rendelkezésre állási zónákat, a teljes és differenciált biztonsági másolatokat, valamint az alapértelmezés szerint az időponthoz tartozó visszaállítási biztonsági mentéseket is lehetővé teszi:  
   - [Magas rendelkezésre állás – zóna redundáns konfigurációja](high-availability-sla.md#zone-redundant-configuration)
@@ -800,6 +798,6 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
 
 - További üzletmenet-folytonossági funkciók, például automatikus feladatátvételi csoportok a különböző Azure-térségek az itt leírtak szerint konfigurálhatók: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

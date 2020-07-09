@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854757"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -28,7 +28,7 @@ A következő mezőket használhatja az adatmodell részeként vizualizációk, 
 
 Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | AlertUniqueId_s |Szöveg |A generált riasztás egyedi azonosítója |
 | AlertType_s |Szöveg |A riasztás típusa, például biztonsági mentés |
@@ -62,7 +62,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 
 Ez a táblázat a biztonsági másolati elemek kapcsolódó mezőinek részleteit tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Szöveg |A biztonsági másolati tétel egyedi azonosítója |
@@ -92,7 +92,7 @@ Ez a táblázat a biztonsági másolati elemek kapcsolódó mezőinek részletei
 
 Ez a táblázat a különböző entitásokkal rendelkező biztonsági mentési elemek társításával kapcsolatos részleteket tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Szöveg |A biztonsági másolati tétel egyedi azonosítója |
@@ -117,7 +117,7 @@ Ez a táblázat a különböző entitásokkal rendelkező biztonsági mentési e
 
 Ez a táblázat a különböző entitásokkal rendelkező biztonsági mentési elemek társításával kapcsolatos részleteket tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 |BackupManagementServerName_s     |Szöveg         |A biztonságimásolat-felügyeleti kiszolgáló neve        |
 |AzureBackupAgentVersion_s     |Szöveg         |A Azure Backup ügynök verziója a biztonságimásolat-felügyeleti kiszolgálón          |
@@ -136,7 +136,7 @@ Ez a táblázat a különböző entitásokkal rendelkező biztonsági mentési e
 
 Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |
 | BackupItemUniqueId_s |Szöveg |A biztonsági másolati tétel egyedi azonosítója |
@@ -172,7 +172,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 
 Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információkat.
 
-| Mező | Adattípus | Alkalmazható verziók | Leírás |
+| Mező | Adattípus | Alkalmazható verziók | Description |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli, **v2** |
@@ -204,7 +204,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | YearlyRetentionDaysOfTheMonth_s |Szöveg ||Az éves megőrzéshez kiválasztott hónap dátuma |
 | SynchronisationFrequencyPerDay_s |Egész szám |v2|Napok száma egy nap során a rendszer az SC DPM és a MABS esetében szinkronizálja a fájlok biztonsági mentését |
 | DiffBackupFormat_s |Szöveg |v2|Az SQL-alapú különbözeti biztonsági másolatok formátuma az Azure virtuális gép biztonsági mentésében |
-| DiffBackupTime_s |Time |v2|Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje|
+| DiffBackupTime_s |Idő |v2|Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje|
 | DiffBackupRetentionDuration_s |Tizedes tört |v2|Az SQL Azure-beli virtuális gépek biztonsági mentésének megőrzési időtartama|
 | LogBackupFrequency_s |Tizedes tört |v2|SQL-naplók biztonsági másolatainak gyakorisága|
 | LogBackupRetentionDuration_s |Tizedes tört |v2|Az SQL Azure-beli virtuális gép biztonsági mentésében tárolt biztonsági másolatok megőrzési időtartama|
@@ -220,7 +220,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 
 Ez a táblázat a különböző entitásokkal rendelkező házirend-társítások részleteit tartalmazza.
 
-| Mező | Adattípus | Alkalmazható verziók | Leírás |
+| Mező | Adattípus | Alkalmazható verziók | Description |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli, **v2** |
@@ -243,7 +243,7 @@ Ez a táblázat a különböző entitásokkal rendelkező házirend-társításo
 
 Ez a táblázat a védett tárolók alapszintű mezőit tartalmazza. (ProtectedServer volt a v1-ben)
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | ProtectedContainerUniqueId_s |Szöveg | Védett tároló egyedi azonosítására szolgáló mező |
 | ProtectedContainerOSType_s |Szöveg |A védett tároló operációs rendszerének típusa |
@@ -262,7 +262,7 @@ Ez a táblázat a védett tárolók alapszintű mezőit tartalmazza. (ProtectedS
 
 Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | CloudStorageInBytes_s |Tizedes tört |Biztonsági másolatok által használt Felhőbeli biztonsági mentési tár, amely a legutóbbi érték alapján lett kiszámítva (ez a mező csak a v1-séma esetében)|
 | ProtectedInstances_s |Tizedes tört |A előtér-tároló kiszámításához használt védett példányok száma a számlázásban, a legutóbbi érték alapján számítva |
@@ -290,7 +290,7 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 
 Ez a táblázat a tárterületet más entitásokhoz összekötő alapszintű tárterülettel kapcsolatos mezőket tartalmaz.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- |  --- |
 | StorageUniqueId_s |Szöveg |A tárolási entitás azonosítására használt egyedi azonosító |
 | SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli, **v2** |
@@ -304,7 +304,7 @@ Ez a táblázat a tárterületet más entitásokhoz összekötő alapszintű tá
 
 Ez a táblázat a tárolóval kapcsolatos mezők részleteit tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli, **v2** |
@@ -327,7 +327,7 @@ Ez a táblázat a tárolóval kapcsolatos mezők részleteit tartalmazza.
 
 Ez a táblázat a biztonságimásolat-felügyeleti kiszolgálók alapszintű mezőit tartalmazza.
 
-|Mező  |Adattípus  | Leírás  |
+|Mező  |Adattípus  | Description  |
 |---------|---------|----------|
 |BackupManagementServerName_s     |Szöveg         |A biztonságimásolat-felügyeleti kiszolgáló neve        |
 |AzureBackupAgentVersion_s     |Szöveg         |A Azure Backup ügynök verziója a biztonságimásolat-felügyeleti kiszolgálón          |
@@ -340,7 +340,7 @@ Ez a táblázat a biztonságimásolat-felügyeleti kiszolgálók alapszintű mez
 
 Ez a tábla meghatározza, hogy egy kötet milyen munkaterheléshez van társítva.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | StorageUniqueId_s |Szöveg |A tárolási entitás azonosítására használt egyedi azonosító |
 | BackupItemType_s |Szöveg |Azok a munkaterhelések, amelyekhez ez a kötet az előnyben részesített tároló|
@@ -349,7 +349,7 @@ Ez a tábla meghatározza, hogy egy kötet milyen munkaterheléshez van társít
 
 Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tartalmazza.
 
-| Mező | Adattípus |Alkalmazható verziók | Leírás |
+| Mező | Adattípus |Alkalmazható verziók | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a DPM, MABS használatával biztonsági mentést végző virtuális gépek biztonsági mentési elemének azonosítására szolgál.|
 | ProtectedContainerUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a védett tároló azonosítására szolgál a DPM, a MABS-t használó virtuális gépek kivételével.|
@@ -359,7 +359,7 @@ Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tarta
 
 Ez a tábla a helyreállítási pontok alapszintű kapcsolódó mezőit tartalmazza.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 | --- | --- | --- |
 | BackupItemUniqueId_s |Szöveg |Egyedi azonosító, amely a DPM, MABS használatával biztonsági mentést végző virtuális gépek biztonsági mentési elemének azonosítására szolgál.|
 | OldestRecoveryPointTime_s |Szöveg |A biztonsági mentési tétel legrégebbi helyreállítási pontjának dátuma|
@@ -467,6 +467,30 @@ A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure vi
 
 A fent ismertetett [adatmodellben](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) tekintse meg a harmadik oszlop "Description" utasítását, és azonosítsa, hogy mely oszlopok csak a v1 sémához tartoznak.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>A lekérdezések módosítása a v2 séma használatára
+Mivel a v1 séma elavult elérési úton van, ajánlott csak a v2 sémát használni a Azure Backup diagnosztikai adatain lévő összes egyéni lekérdezésben. Az alábbi példa bemutatja, hogyan frissítheti a lekérdezéseket a v1-séma függőségének eltávolítására:
+
+1. Azonosítsa, hogy a lekérdezés olyan mezőket használ-e, amelyek csak a v1 sémára alkalmazhatók. Tegyük fel, hogy van egy lekérdezése, amely felsorolja az összes biztonsági mentési elemet és a hozzájuk társított védett kiszolgálókat a következőképpen:
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+A fenti lekérdezés a ProtectedServerUniqueId_s mezőt használja, amely csak a v1 sémára alkalmazható. Ennek a mezőnek a v2-sémája ProtectedContainerUniqueId_s (lásd a fenti táblázatokat). A BackupItemUniqueId_s mező még a v2 séma esetében is alkalmazható, és ugyanez a mező használható ebben a lekérdezésben.
+
+2. Frissítse a lekérdezést, hogy a v2 séma mezőinek nevét használja. Javasoljuk, hogy a (z) "Where SchemaVersion_s = =" v2 "" szűrőt használja az összes lekérdezésben, hogy csak a v2 sémának megfelelő rekordokat elemezze a lekérdezés:
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
+
+## <a name="next-steps"></a>További lépések
 
 Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/learn/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.

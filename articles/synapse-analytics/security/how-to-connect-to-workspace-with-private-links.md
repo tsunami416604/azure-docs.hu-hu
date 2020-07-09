@@ -4,15 +4,16 @@ description: Ez a cikk bemutatja, hogyan csatlakozhat az Azure szinapszis-munkat
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d217e6d49f33db099d54e6521073c56ec146c0b8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193872"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Csatlakozás az Azure szinapszis-munkaterülethez privát hivatkozások használatával (előzetes verzió)
 

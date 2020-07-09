@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737002"
 ---
-# <a name="orchestration-mode-preview"></a>Előkészítési mód (előzetes verzió)
+# <a name="orchestration-modes-preview"></a>Előkészítési módok (előzetes verzió)
+
+> [!CAUTION]
+> Köszönjük mindenkinek, aki részt vett ebben a nyilvános előzetes verzióban. Értékes visszajelzést tudtunk gyűjteni a Közösségtől. Ez az előzetes verzió minden új résztvevő számára le van **zárva** , hogy integrálni lehessen a visszajelzéseket. Ezt a helyet minden új információval frissítjük.
 
 A Virtual Machines Scale sets a platform által felügyelt virtuális gépek logikai csoportosítását biztosítja. A méretezési csoportokkal létrehozhat egy virtuálisgép-konfigurációs modellt, automatikusan hozzáadhat vagy eltávolíthat további példányokat a CPU vagy a memória terhelése alapján, és automatikusan frissítheti a legújabb operációsrendszer-verzióra. A méretezési csoportok hagyományosan lehetővé teszik, hogy virtuális gépeket hozzon létre a méretezési csoport létrehozásakor megadott virtuálisgép-konfigurációs modellel, és a méretezési csoport csak a konfigurációs modell alapján implicit módon létrehozott virtuális gépeket tudja kezelni.
 
@@ -41,7 +44,7 @@ A virtuálisgép-méretezési csoportok két különböző előkészítési mód
 
 |                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| Virtuális gép konfigurációs modellje      | Nincs                                       | Kötelező |
+| Virtuális gép konfigurációs modellje      | None                                       | Kötelező |
 | Új virtuális gép felvétele a méretezési csoportba  | A virtuális gép létrehozásakor a rendszer explicit módon hozzáadja a virtuális gépeket a méretezési csoporthoz. | A virtuális gépek implicit módon jönnek létre és a méretezési csoportba kerülnek a virtuálisgép-konfigurációs modell, a példányszám és az automatikus skálázási szabályok alapján. | |
 | Virtuális gép törlése                   | A virtuális gépeket külön kell törölni, a méretezési csoport nem lesz törölve, ha rendelkezik virtuális gépekkel. | A virtuális gépek egyenként törölhetők, a méretezési csoport törlése pedig törli az összes virtuálisgép-példányt.  |
 | Virtuális gépek csatlakoztatása/leválasztása           | Nem támogatott                              | Nem támogatott |

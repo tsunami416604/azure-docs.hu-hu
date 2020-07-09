@@ -3,15 +3,15 @@ title: A avere vFXT előfeltételei – Azure
 description: Az Azure-hoz készült avere-vFXT előfeltételei
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505341"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -68,7 +68,7 @@ Ezt a lépést csak egyszer kell elvégezni az előfizetések esetében.
 
 A szoftver feltételeinek elfogadásához előre:
 
-1. Nyisson meg egy Cloud shellt a Azure Portalban, vagy <https://shell.azure.com>tallózással keresse meg a következőt:. Jelentkezzen be az előfizetés-azonosítójával.
+1. Nyisson meg egy Cloud shellt a Azure Portalban, vagy tallózással keresse meg a következőt: <https://shell.azure.com> . Jelentkezzen be az előfizetés-azonosítójával.
 
    ```azurecli
     az login
@@ -98,7 +98,7 @@ Hozza létre a Storage szolgáltatás végpontját a Azure Portalból.
 1. Válassza ki a fürt virtuális hálózatát.
 1. A bal oldali menüben kattintson a **szolgáltatás-végpontok** elemre.
 1. Kattintson felül a **Hozzáadás** gombra.
-1. Válassza ki a ``Microsoft.Storage``szolgáltatást.
+1. Válassza ki a szolgáltatást ``Microsoft.Storage`` .
 1. Válassza ki a fürt alhálózatát.
 1. A lap alján kattintson a **Hozzáadás**gombra.
 

@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46660a0c8d20ab82c994a62b1c781108ea1070c1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277413"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111201"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Service Bus
 
@@ -24,7 +24,7 @@ A Azure Functions a [Azure Service Bus](https://azure.microsoft.com/services/ser
 
 ## <a name="add-to-your-functions-app"></a>Hozzáadás a functions-alkalmazáshoz
 
-### <a name="functions-2x-and-higher"></a>2. x és újabb függvények
+### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 
@@ -44,7 +44,7 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 
 A functions 1. x alkalmazások automatikusan hivatkoznak a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagra, 2. x verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása Service Bus üzenetsor vagy témakör-üzenet létrehozásakor (trigger)](./functions-bindings-service-bus-trigger.md)
 - [Azure Service Bus üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-service-bus-output.md)

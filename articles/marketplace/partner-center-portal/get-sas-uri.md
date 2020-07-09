@@ -1,18 +1,18 @@
 ---
 title: Virtuálisgép-lemezképek közös hozzáférés-aláírási URI-ja – Azure Marketplace
 description: Közös hozzáférésű aláírás (SAS) URI létrehozása a virtuális merevlemezekhez (VHD) az Azure Marketplace-en.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/09/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 04/09/2020
+ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121724"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 
@@ -124,6 +124,6 @@ Tekintse át az összes létrehozott SAS URI-t az alábbi ellenőrzőlista haszn
 
 ## <a name="next-step"></a>Következő lépés
 
-Ha problémái vannak az SAS URI létrehozásakor, tekintse meg az [általános sas URL-címekkel kapcsolatos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)témakört. Ellenkező esetben mentse a SAS URI-JÁT biztonságos helyre a későbbi használat érdekében. Szüksége lesz rá a virtuálisgép-ajánlat közzétételéhez a partner Centerben.
+Ha problémái vannak az SAS URI létrehozásakor, tekintse meg az [általános sas URL-címekkel kapcsolatos](common-sas-uri-issues.md)témakört. Ellenkező esetben mentse a SAS URI-JÁT biztonságos helyre a későbbi használat érdekében. Szüksége lesz rá a virtuálisgép-ajánlat közzétételéhez a partner Centerben.
 
-* [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Azure-beli virtuális gép ajánlatának létrehozása](azure-vm-create-offer.md)

@@ -2,21 +2,21 @@
 title: Alkalmazásproxy-összekötők hibakeresése – Azure Active Directory | Microsoft Docs
 description: Hibakeresési problémák Azure Active Directory (Azure AD) alkalmazásproxy-összekötővel.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72311849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555041"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Alkalmazásproxy-összekötők problémáinak hibakeresése 
 
@@ -32,7 +32,7 @@ További információ az alkalmazásproxy és az összekötők használatával k
 - [Távoli hozzáférés a helyszíni alkalmazásokhoz alkalmazásproxy használatával](application-proxy.md)
 - [Alkalmazásproxy-összekötők](application-proxy-connectors.md)
 - [Összekötő telepítése és regisztrálása](application-proxy-add-on-premises-application.md)
-- [Alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása](application-proxy-troubleshoot.md)
+- [Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-connector-issues"></a>Összekötői problémák folyamatábrája
 
@@ -40,7 +40,7 @@ Ez a folyamatábra végigvezeti a leggyakoribb összekötő-problémák némelyi
 
 ![Az összekötők hibakeresésének lépéseit bemutató folyamatábra](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Műveletek | Leírás | 
+| Lépés | Műveletek | Description |
 |---------|---------|---------|
 |1 | Az alkalmazáshoz rendelt összekötő-csoport megkeresése | Valószínűleg van több kiszolgálóra telepített összekötő, amely esetben az összekötőket [hozzá kell rendelni az összekötő-csoportokhoz](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). További információ az összekötő-csoportokról: [alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md). |
 |2 | Az összekötő telepítése és a csoport társítása | Ha nincs telepítve összekötő, tekintse meg [az összekötők telepítése és regisztrálása](application-proxy-add-on-premises-application.md#install-and-register-a-connector)című témakört.<br></br> Ha problémába ütközik az összekötő telepítésekor, tekintse meg [az összekötő telepítésekor jelentkező problémát](application-proxy-connector-installation-problem.md).<br></br> Ha az összekötő nincs csoporthoz rendelve, tekintse [meg az összekötő társítása csoporthoz](application-proxy-connector-groups.md#create-connector-groups)című témakört.<br></br>Ha az alkalmazás nincs összekötő-csoporthoz rendelve, tekintse [meg az alkalmazás hozzárendelése összekötő-csoporthoz](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)című témakört.|

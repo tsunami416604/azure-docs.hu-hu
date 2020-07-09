@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5be397ca14a90c333e20f0a1a42b63e0c9f0ae0e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7681a60bc5da8d3cae53642096fd2290e63b8f76
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73154143"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Oktatóanyag: Azure Active Directory integráció a Accredible
 
@@ -108,11 +108,10 @@ Az Azure AD egyszeri bejelentkezés Accredible való konfigurálásához hajtsa 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    |  `https://api.accredible.com/sp/admin/accredible` |
-    | `https://api.accredible.com/sp/user/accredible` |
-    | |
+    ```http
+    https://api.accredible.com/sp/admin/accredible
+    https://api.accredible.com/sp/user/accredible
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 
@@ -155,12 +154,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain. Extension nevet.**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension nevet.**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

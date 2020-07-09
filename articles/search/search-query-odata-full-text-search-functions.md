@@ -20,22 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793351"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési függvények az Azure Cognitive Searchban – `search.ismatch` és`search.ismatchscoring`
 
-Az `search.ismatch` Azure Cognitive Search támogatja a teljes szöveges keresést a OData- [szűrési kifejezések](query-odata-filter-orderby-syntax.md) és `search.ismatchscoring` függvények használatával. Ezek a függvények lehetővé teszik, hogy a teljes szöveges keresést szigorú logikai szűréssel kombinálja olyan módokon, amelyek nem csak a `search` [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)legfelső szintű paraméterével használhatók.
+Az Azure Cognitive Search támogatja a teljes szöveges keresést a OData- [szűrési kifejezések](query-odata-filter-orderby-syntax.md) `search.ismatch` és függvények használatával `search.ismatchscoring` . Ezek a függvények lehetővé teszik, hogy a teljes szöveges keresést szigorú logikai szűréssel kombinálja olyan módokon, amelyek nem csak a `search` [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)legfelső szintű paraméterével használhatók.
 
 > [!NOTE]
-> A `search.ismatch` és `search.ismatchscoring` a függvények csak a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)-ban lévő szűrőkben támogatottak. Az [ajánlott](https://docs.microsoft.com/rest/api/searchservice/suggestions) és az [automatikus kiegészítési](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API-k nem támogatják őket.
+> A `search.ismatch` és a `search.ismatchscoring` függvények csak a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)-ban lévő szűrőkben támogatottak. Az [ajánlott](https://docs.microsoft.com/rest/api/searchservice/suggestions) és az [automatikus kiegészítési](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API-k nem támogatják őket.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
-A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a `search.ismatch` és `search.ismatchscoring` a függvények nyelvtanát határozza meg:
+A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a és a függvények nyelvtanát határozza `search.ismatch` meg `search.ismatchscoring` :
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -72,31 +72,31 @@ A paraméterek a következő táblázatban vannak meghatározva:
 | Paraméter neve | Típus | Leírás |
 | --- | --- | --- |
 | `search` | `Edm.String` | A keresési lekérdezés ( [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) Lucene lekérdezési szintaxis). |
-| `searchFields` | `Edm.String` | A kereshető mezők vesszővel tagolt listája a kereséshez; az alapértelmezett érték az index összes kereshető mezőjénél. Ha a `search` paraméterben a [mezőn belüli keresés](query-lucene-syntax.md#bkmk_fields) szerepel, a Lucene lekérdezés mezőiben szereplő mezők felülbírálják az ebben a paraméterben megadott mezőket. |
-| `queryType` | `Edm.String` | `'simple'`vagy `'full'`; alapértelmezett értéke `'simple'`. Megadja, hogy melyik lekérdezési nyelvet használták `search` a paraméter. |
-| `searchMode` | `Edm.String` | `'any'`vagy `'all'`alapértelmezett értéke: `'any'`. Azt jelzi, hogy a `search` paraméterben szereplő keresési kifejezések bármelyike vagy mindegyike egyezik-e a dokumentum egyezésként való megszámlálásához. Az [Lucene logikai operátorok](query-lucene-syntax.md#bkmk_boolean) használatakor a `search` paraméter elsőbbséget élvez a paraméterrel szemben. |
+| `searchFields` | `Edm.String` | A kereshető mezők vesszővel tagolt listája a kereséshez; az alapértelmezett érték az index összes kereshető mezőjénél. Ha a paraméterben a [mezőn belüli keresés](query-lucene-syntax.md#bkmk_fields) szerepel `search` , a Lucene lekérdezés mezőiben szereplő mezők felülbírálják az ebben a paraméterben megadott mezőket. |
+| `queryType` | `Edm.String` | `'simple'`vagy `'full'` ; alapértelmezett érték: `'simple'` . Megadja, hogy melyik lekérdezési nyelvet használták a `search` paraméter. |
+| `searchMode` | `Edm.String` | `'any'`vagy `'all'` alapértelmezett értéke: `'any'` . Azt jelzi, hogy a paraméterben szereplő keresési kifejezések bármelyike vagy mindegyike egyezik-e a `search` dokumentum egyezésként való megszámlálásához. Az [Lucene logikai operátorok](query-lucene-syntax.md#bkmk_boolean) használatakor a `search` paraméter elsőbbséget élvez a paraméterrel szemben. |
 
 A fenti paraméterek a [keresési API megfelelő keresési kérelmi paramétereinek](https://docs.microsoft.com/rest/api/searchservice/search-documents)felelnek meg.
 
-A `search.ismatch` függvény egy típusú `Edm.Boolean`értéket ad vissza, amely lehetővé teszi, hogy más szűrő alkifejezésekkel kombinálja a logikai [logikai operátorok](search-query-odata-logical-operators.md)használatával.
+A `search.ismatch` függvény egy típusú értéket ad vissza `Edm.Boolean` , amely lehetővé teszi, hogy más szűrő alkifejezésekkel kombinálja a logikai [logikai operátorok](search-query-odata-logical-operators.md)használatával.
 
 > [!NOTE]
-> Az Azure Cognitive Search nem támogatja a `search.ismatch` lambda `search.ismatchscoring` kifejezések használatát és a belső használatot. Ez azt jelenti, hogy nem lehet szűrőket írni olyan objektumok gyűjteményei között, amelyek összekapcsolhatók a teljes szöveges keresési egyezésekkel az azonos objektumon lévő szigorú szűrési egyezésekkel. A korlátozással és a példákkal kapcsolatos további információkért lásd: [gyűjtési szűrők hibaelhárítása Az Azure Cognitive Searchban](search-query-troubleshoot-collection-filters.md). A korlátozás létezésével kapcsolatos további információkért lásd: a [gyűjtemény szűrőinek ismertetése az Azure Cognitive Searchban](search-query-understand-collection-filters.md).
+> Az Azure Cognitive Search nem támogatja a `search.ismatch` lambda kifejezések használatát és a belső használatot `search.ismatchscoring` . Ez azt jelenti, hogy nem lehet szűrőket írni olyan objektumok gyűjteményei között, amelyek összekapcsolhatók a teljes szöveges keresési egyezésekkel az azonos objektumon lévő szigorú szűrési egyezésekkel. A korlátozással és a példákkal kapcsolatos további információkért lásd: [gyűjtési szűrők hibaelhárítása Az Azure Cognitive Searchban](search-query-troubleshoot-collection-filters.md). A korlátozás létezésével kapcsolatos további információkért lásd: a [gyűjtemény szűrőinek ismertetése az Azure Cognitive Searchban](search-query-understand-collection-filters.md).
 
 
 ### <a name="searchismatchscoring"></a>Keresés. ismatchscoring
 
-A `search.ismatchscoring` függvény, például a `search.ismatch` függvény, visszaadja `true` azokat a dokumentumokat, amelyek megfelelnek a paraméterként átadott teljes szöveges keresési lekérdezésnek. Ezek közötti különbség az, hogy a `search.ismatchscoring` lekérdezésnek megfelelő dokumentumok relevanciás pontszáma hozzájárul a teljes dokumentum pontszámához, míg a esetében `search.ismatch`a dokumentum pontszáma nem változik. A függvény alábbi túlterhelései a következőhöz hasonló paraméterekkel érhetők el `search.ismatch`:
+A függvény `search.ismatchscoring` , például a `search.ismatch` függvény, visszaadja `true` azokat a dokumentumokat, amelyek megfelelnek a paraméterként átadott teljes szöveges keresési lekérdezésnek. Ezek közötti különbség az, hogy a lekérdezésnek megfelelő dokumentumok relevanciás pontszáma `search.ismatchscoring` hozzájárul a teljes dokumentum pontszámához, míg a esetében `search.ismatch` a dokumentum pontszáma nem változik. A függvény alábbi túlterhelései a következőhöz hasonló paraméterekkel érhetők el `search.ismatch` :
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-A és `search.ismatch` `search.ismatchscoring` a függvények is ugyanabban a szűrő kifejezésben használhatók.
+A `search.ismatch` és a `search.ismatchscoring` függvények is ugyanabban a szűrő kifejezésben használhatók.
 
 ## <a name="examples"></a>Példák
 
-Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a `search=waterfront`következővel:.
+Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
 
     search.ismatchscoring('waterfront')
 
@@ -108,7 +108,7 @@ Dokumentumok keresése a "luxus" szó nélkül.
 
     not search.ismatch('luxury')
 
-Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre `HotelName` és a- `Rooms/Description`ra lesz végrehajtva.
+Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre és a-ra lesz végrehajtva `HotelName` `Rooms/Description` .
 
 Azok a dokumentumok, amelyek megfelelnek a kivonásnak, csak a második záradékkal lesznek visszaadva `Rating` . Annak egyértelművé tétele érdekében, hogy ezek a dokumentumok nem egyeznek a kifejezés egyik pontján sem, a pontszám értéke nulla lesz.
 

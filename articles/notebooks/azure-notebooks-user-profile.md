@@ -3,14 +3,16 @@ title: Felhasználói profil és azonosító Azure Notebooks előzetes verzióva
 description: Felhasználói profil és felhasználói azonosító létrehozása és kezelése Azure Notebooks használatával, amely a megosztott jegyzetfüzetek URL-címének részévé válik.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831352"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks előzetes verziójának profilja és felhasználói azonosítója
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 A Azure Notebooks hatékony, együttműködésen alapuló területén a felhasználói profil a következő nyilvános képet jeleníti meg mások számára:
 
@@ -23,8 +25,6 @@ A felhasználói azonosító a projektek és jegyzetfüzetek megosztásához has
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Projektfájlok.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Egy adott projekt klónozása.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Egy adott jegyzetfüzet vagy fájl HTML-előnézete.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>Felhasználói azonosító
 
@@ -45,7 +45,7 @@ A felhasználói AZONOSÍTÓnak négy és 16 karakterből, számból és kötőj
 
 ## <a name="your-profile"></a>Saját profil
 
-A profil nyilvánosan megtekinthető információkból áll az URL- `https://notebooks.azure.com/<user_id>`címen. A profil oldala a közelmúltban használt projekteket és bármely csillaggal elválasztott projektet is megjeleníti.
+A profil nyilvánosan megtekinthető információkból áll az URL-címen `https://notebooks.azure.com/<user_id>` . A profil oldala a közelmúltban használt projekteket és bármely csillaggal elválasztott projektet is megjeleníti.
 
 A profil szerkesztéséhez használja a profil- **információ szerkesztése** parancsot a profil oldalán. A profil részei a következők:
 
@@ -61,4 +61,4 @@ A profil szerkesztéséhez használja a profil- **információ szerkesztése** p
 ## <a name="next-steps"></a>További lépések  
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Jupyter-jegyzetfüzet futtatásának létrehozása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)
+> [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

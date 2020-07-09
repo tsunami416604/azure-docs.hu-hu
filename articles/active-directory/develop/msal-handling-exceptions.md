@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d65d85d21521a6277a3ea823a8c9e83a34e3f42c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204626"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
 
@@ -67,7 +67,7 @@ A beavatkozás célja, hogy a felhasználó műveletet hajtson végre. Bizonyos 
 
 A MSAL egy olyan mezőt tesz elérhetővé, amely lehetővé teszi, `Classification` hogy jobb felhasználói élményt nyújtson, például hogy tájékoztassa a felhasználót arról, hogy a jelszava lejárt, vagy hogy bizonyos erőforrások használatához meg kell adnia az engedélyt. A támogatott értékek az enumerálás részét képezik `UiRequiredExceptionClassification` :
 
-| Osztályozás    | Jelentés           | Ajánlott kezelési |
+| Osztályozás    | Értelmezés           | Ajánlott kezelési |
 |-------------------|-------------------|----------------------|
 | BasicAction | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
 | AdditionalAction | A feltételt az interaktív hitelesítési folyamaton kívül további javító interakciók is feloldhatók a rendszerrel. | Hívja meg a AcquireTokenInteractively () egy olyan üzenet megjelenítéséhez, amely ismerteti a javító műveletet. A hívó alkalmazás dönthet úgy, hogy elrejti a additional_actiont igénylő folyamatokat, ha a felhasználó nem valószínű, hogy elvégzi a javító műveletet. |
@@ -76,7 +76,7 @@ A MSAL egy olyan mezőt tesz elérhetővé, amely lehetővé teszi, `Classificat
 | UserPasswordExpired | A felhasználó jelszava lejárt. | Hívja meg a AcquireTokenInteractively (), hogy a felhasználó alaphelyzetbe állíthatja a jelszavát. |
 | PromptNeverFailed| Az interaktív hitelesítés a következő paraméterrel lett meghívva: prompt = soha, kényszerítve a MSAL, hogy a böngésző cookie-kra támaszkodjon, és ne jelenjen meg a böngésző. Ez nem sikerült. | A AcquireTokenInteractively () hívása prompt nélkül. None |
 | AcquireTokenSilentFailed | A MSAL SDK nem rendelkezik elegendő információval a tokennek a gyorsítótárból való beolvasásához. Ennek oka az lehet, hogy a gyorsítótárban nincsenek tokenek, vagy nem található a fiók. A hibaüzenet további részleteket tartalmaz.  | A AcquireTokenInteractively () hívása. |
-| Nincs    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
+| None    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
 
 ## <a name="net-code-example"></a>.NET-kód – példa
 
@@ -138,7 +138,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A MSAL. js olyan hibaüzeneteket biztosít, amelyek absztrakt és osztályozzák a gyakori hibák különböző típusait. Emellett felületet biztosít a hibák konkrét részleteinek eléréséhez, például a hibaüzenetek megfelelő kezeléséhez.
+A MSAL.js olyan hibaüzeneteket biztosít, amelyek absztrakt és osztályozzák a gyakori hibák különböző típusait. Emellett felületet biztosít a hibák konkrét részleteinek eléréséhez, például a hibaüzenetek megfelelő kezeléséhez.
 
 ### <a name="error-object"></a>Hiba objektum
 
@@ -162,7 +162,7 @@ A hiba osztály kibővítésével a következő tulajdonságokat érheti el:
 
 A következő típusú hibák érhetők el:
 
-- `AuthError`: A MSAL. js függvénytár alapszintű hiba osztálya váratlan hibák esetén is használatos.
+- `AuthError`: Az MSAL.js könyvtár alapszintű hibájának osztálya, amely váratlan hibákhoz is használatos.
 
 - `ClientAuthError`: Error osztály, amely az ügyfél-hitelesítéssel kapcsolatos problémát jelöli. A könyvtárból érkező hibák többsége ClientAuthErrors lesz. Ezek a hibák olyan dolgokból származnak, mint például a bejelentkezési módszer meghívása, ha a bejelentkezés már folyamatban van, a felhasználó megszakítja a bejelentkezést, és így tovább.
 
@@ -262,7 +262,7 @@ A hibát okozó bizonyos feltételek egyszerűen feloldhatók a felhasználók s
 
 A MSAL egy mezőt tesz elérhetővé `reason` , amelynek segítségével jobb felhasználói élményt biztosíthat. Előfordulhat például, hogy a `reason` mező arra utasítja a felhasználót, hogy a jelszavuk lejárt, vagy hogy meg kell adnia az egyes erőforrások használatának beleegyezikét. A támogatott értékek az enumerálás részét képezik `InteractionRequiredExceptionReason` :
 
-| Ok | Jelentés | Ajánlott kezelési |
+| Ok | Értelmezés | Ajánlott kezelési |
 |---------|-----------|-----------------------------|
 | `BasicAction` | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | Hívás `acquireToken` interaktív paraméterekkel |
 | `AdditionalAction` | A feltételt az interaktív hitelesítési folyamaton kívüli rendszerrel folytatott további javító interakciók is megoldhatók. | Az `acquireToken` interaktív paraméterek megadásával megjeleníthető egy üzenet, amely leírja, hogy milyen javító műveletet kell végrehajtania. A hívó alkalmazás dönthet úgy, hogy elrejti azokat a folyamatokat, amelyek további műveletet igényelnek, ha a felhasználó nem valószínű, hogy befejezi a javító műveletet. |
@@ -518,21 +518,25 @@ A jogcím-kihívás kezeléséhez az `.WithClaim()` osztály metódusát kell ha
 
 ### <a name="javascript"></a>JavaScript
 
-Ha a tokeneket a MSAL. js használatával csendesen (a használatával) kérdezi `acquireTokenSilent` le, az alkalmazás hibákat kaphat, ha egy olyan API-nak szüksége van egy [feltételes hozzáférési jogcímek feladatára](../azuread-dev/conditional-access-dev-guide.md) , mint például az MFA-szabályzat.
+Ha a tokeneket csendes (a használatával `acquireTokenSilent` ) MSAL.js használatával kéri le, az alkalmazás hibákat kaphat, ha egy olyan API-nak szüksége van egy [feltételes hozzáférési jogcímek](../azuread-dev/conditional-access-dev-guide.md) megoldására, mint például az MFA-szabályzat.
 
-A hiba kezelésére szolgáló minta egy interaktív hívást tesz lehetővé a token MSAL. js-ben való beszerzéséhez, például `acquireTokenPopup` `acquireTokenRedirect` a következő példában vagy a-ben:
+A hiba kezelésére szolgáló minta egy interaktív hívást tesz lehetővé a token beszerzéséhez MSAL.js például `acquireTokenPopup` `acquireTokenRedirect` a következő példában vagy a-ben:
 
 ```javascript
-myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
+myMSALObj.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // call API
-}).catch( function (error) {
+}).catch(function(error) {
     if (error instanceof InteractionRequiredAuthError) {
-        // Extract claims from error message
-        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+    
+        // extract, if exists, claims from error message
+        if (error.ErrorMessage.claims) {
+            accessTokenRequest.claimsRequest = JSON.stringify(error.ErrorMessage.claims);
+        }
+        
         // call acquireTokenPopup in case of InteractionRequiredAuthError failure
-        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // call API
-        }).catch(function (error) {
+        }).catch(function(error) {
             console.log(error);
         });
     }

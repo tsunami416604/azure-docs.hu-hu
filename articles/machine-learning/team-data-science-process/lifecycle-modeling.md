@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720469"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának modellezési szakasza
@@ -69,7 +68,7 @@ A modell betanításának folyamata a következő lépéseket tartalmazza:
 
 Egy [automatizált modellezési és jelentéskészítési eszközt](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) biztosítunk olyan TDSP, amely több algoritmussal és paraméterrel is futtatható egy alapmodell létrehozásához. Emellett olyan alapkonfiguráció-modellezési jelentést is létrehoz, amely összegzi az egyes modellek és paraméterek kombinációjának teljesítményét, beleértve a változó fontosságot is. Ez a folyamat is iterációs, mivel további funkciók mérnöki megoldását is elvégezheti. 
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>Artifacts
 Az ebben a szakaszban bemutatott összetevők a következők:
 
    * [Szolgáltatások készletei](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): a modellezéshez kifejlesztett funkciók leírása az **adatdefiníciós** jelentés **szolgáltatáskészlet-készletek** szakaszában található. A kód mutatóit tartalmazza a funkciók létrehozásához és a szolgáltatás létrehozásának leírásához.

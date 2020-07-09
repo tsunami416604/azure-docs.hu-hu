@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8619bd7159bbbd418548a5e014dd92f7b9c9e84
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531016"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086381"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz
 
@@ -48,9 +48,9 @@ A következő erőforrás-kezelési sablon egy virtuális hálózatot hoz létre
 A következő PowerShell-szkripttel olyan virtuális hálózatot hozhat létre, amely korlátozza a bejövő forgalmat, és engedélyezi az észak-európai régió IP-címeinek forgalmát.
 
 > [!IMPORTANT]  
-> Módosítsa a `hdirule1` és `hdirule2` a példában szereplő IP-címeket úgy, hogy azok megfeleljenek az Ön által használt Azure-régiónak. Ezt az információt a [HDInsight felügyeleti IP-címei](hdinsight-management-ip-addresses.md)között találja.
+> Módosítsa a és a példában szereplő IP-címeket `hdirule1` `hdirule2` úgy, hogy azok megfeleljenek az Ön által használt Azure-régiónak. Ezt az információt a [HDInsight felügyeleti IP-címei](hdinsight-management-ip-addresses.md)között találja.
 
-```powershell
+```azurepowershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
@@ -153,7 +153,7 @@ $vnet | Set-AzVirtualNetwork
 
 Ez a példa bemutatja, hogyan adhat hozzá olyan szabályokat, amelyek engedélyezik a bejövő forgalmat a szükséges IP-címeken. Nem tartalmaz szabályt a más forrásokból érkező bejövő hozzáférés korlátozására. Az alábbi kód bemutatja, hogyan engedélyezhető az SSH-hozzáférés az internetről:
 
-```powershell
+```azurepowershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
 Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 ```
@@ -162,7 +162,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 A következő lépésekkel hozhat létre olyan virtuális hálózatot, amely korlátozza a bejövő forgalmat, de engedélyezi a HDInsight által igényelt IP-címekről érkező forgalmat.
 
-1. A következő parancs használatával hozzon létre egy nevű `hdisecure`új hálózati biztonsági csoportot. Cserélje `RESOURCEGROUP` le az-t az Azure-Virtual Network tartalmazó erőforráscsoporthoz. Cserélje `LOCATION` le azt a helyet (régiót), amelyben a csoport létre lett hozva.
+1. A következő parancs használatával hozzon létre egy nevű új hálózati biztonsági csoportot `hdisecure` . Cserélje le az- `RESOURCEGROUP` t az Azure-Virtual Network tartalmazó erőforráscsoporthoz. Cserélje le `LOCATION` azt a helyet (régiót), amelyben a csoport létre lett hozva.
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -170,10 +170,10 @@ A következő lépésekkel hozhat létre olyan virtuális hálózatot, amely kor
 
     Miután létrejött a csoport, információt kap az új csoportról.
 
-2. A következő paranccsal adhat hozzá olyan szabályokat az új hálózati biztonsági csoporthoz, amelyek engedélyezik a bejövő kommunikációt az 443-es porton az Azure HDInsight Health and Management szolgáltatásból. Cserélje `RESOURCEGROUP` le az értékét az Azure-Virtual Network tartalmazó erőforráscsoport nevére.
+2. A következő paranccsal adhat hozzá olyan szabályokat az új hálózati biztonsági csoporthoz, amelyek engedélyezik a bejövő kommunikációt az 443-es porton az Azure HDInsight Health and Management szolgáltatásból. Cserélje le az értékét az `RESOURCEGROUP` Azure-Virtual Network tartalmazó erőforráscsoport nevére.
 
     > [!IMPORTANT]  
-    > Módosítsa a `hdirule1` és `hdirule2` a példában szereplő IP-címeket úgy, hogy azok megfeleljenek az Ön által használt Azure-régiónak. Ezeket az információkat a [HDInsight-felügyelet IP-címeiben](hdinsight-management-ip-addresses.md)találja meg.
+    > Módosítsa a és a példában szereplő IP-címeket `hdirule1` `hdirule2` úgy, hogy azok megfeleljenek az Ön által használt Azure-régiónak. Ezeket az információkat a [HDInsight-felügyelet IP-címeiben](hdinsight-management-ip-addresses.md)találja meg.
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -192,9 +192,11 @@ A következő lépésekkel hozhat létre olyan virtuális hálózatot, amely kor
 
     Ez a parancs az alábbi szöveghez hasonló értéket ad vissza:
 
-        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```output
+    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```
 
-4. A hálózati biztonsági csoport alhálózatra való alkalmazásához használja az alábbi parancsot. Cserélje le `GUID` az `RESOURCEGROUP` és az értékeket az előző lépésben visszaadott értékekre. Cserélje `VNETNAME` le `SUBNETNAME` a és a nevet a létrehozni kívánt virtuális hálózat nevére és alhálózatára.
+4. A hálózati biztonsági csoport alhálózatra való alkalmazásához használja az alábbi parancsot. Cserélje le az `GUID` és az `RESOURCEGROUP` értékeket az előző lépésben visszaadott értékekre. Cserélje `VNETNAME` le `SUBNETNAME` a és a nevet a létrehozni kívánt virtuális hálózat nevére és alhálózatára.
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -226,9 +228,9 @@ A virtuális hálózatban található egyéni DNS-kiszolgálón:
 
 1. A virtuális hálózat DNS-utótagjának megkereséséhez használja a Azure PowerShell vagy az Azure CLI-t:
 
-    Cserélje `RESOURCEGROUP` le a helyére a virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
+    Cserélje le a helyére a `RESOURCEGROUP` virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -237,7 +239,7 @@ A virtuális hálózatban található egyéni DNS-kiszolgálón:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-1. A virtuális hálózat egyéni DNS-kiszolgálóján használja a következő szöveget a `/etc/bind/named.conf.local` fájl tartalmának megfelelően:
+1. A virtuális hálózat egyéni DNS-kiszolgálóján használja a következő szöveget a fájl tartalmának megfelelően `/etc/bind/named.conf.local` :
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -247,11 +249,11 @@ A virtuális hálózatban található egyéni DNS-kiszolgálón:
     };
     ```
 
-    Cserélje le `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` az értéket a virtuális hálózatának DNS-utótagjának helyére.
+    Cserélje le az `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` értéket a virtuális hálózatának DNS-utótagjának helyére.
 
     Ez a konfiguráció a virtuális hálózat DNS-utótagjának összes DNS-kérelmét az Azure rekurzív feloldóra irányítja.
 
-1. A virtuális hálózat egyéni DNS-kiszolgálóján használja a következő szöveget a `/etc/bind/named.conf.options` fájl tartalmának megfelelően:
+1. A virtuális hálózat egyéni DNS-kiszolgálóján használja a következő szöveget a fájl tartalmának megfelelően `/etc/bind/named.conf.options` :
 
     ```
     // Clients to accept requests from
@@ -281,11 +283,11 @@ A virtuális hálózatban található egyéni DNS-kiszolgálón:
     };
     ```
     
-    * Cserélje le `10.0.0.0/16` az értéket a virtuális hálózata IP-címének tartományára. Ez a bejegyzés lehetővé teszi a névfeloldási kérelmek címét ezen a tartományon belül.
+    * Cserélje le az `10.0.0.0/16` értéket a virtuális hálózata IP-címének tartományára. Ez a bejegyzés lehetővé teszi a névfeloldási kérelmek címét ezen a tartományon belül.
 
     * Adja hozzá a helyszíni hálózat IP-címtartományt a `acl goodclients { ... }` szakaszhoz.  a bejegyzés lehetővé teszi a névfeloldási kérelmeket a helyszíni hálózat erőforrásaiból.
     
-    * Cserélje le az `192.168.0.1` értéket a helyi DNS-kiszolgáló IP-címére. Ez a bejegyzés az összes többi DNS-kérelmet a helyszíni DNS-kiszolgálóra irányítja.
+    * Cserélje le az értéket a `192.168.0.1` helyi DNS-kiszolgáló IP-címére. Ez a bejegyzés az összes többi DNS-kérelmet a helyszíni DNS-kiszolgálóra irányítja.
 
 1. A konfiguráció használatához indítsa újra a kötést. Például: `sudo service bind9 restart`.
 
@@ -308,9 +310,9 @@ Ez a példa a következő feltételezéseket biztosítja:
 
 1. Mindkét virtuális hálózat DNS-utótagjának megkereséséhez használja a Azure PowerShell vagy az Azure CLI-t:
 
-    Cserélje `RESOURCEGROUP` le a helyére a virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
+    Cserélje le a helyére a `RESOURCEGROUP` virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -319,7 +321,7 @@ Ez a példa a következő feltételezéseket biztosítja:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Használja a következő szöveget a `/etc/bind/named.config.local` fájl tartalmának az egyéni DNS-kiszolgálón. Végezze el ezt a módosítást az egyéni DNS-kiszolgálón mindkét virtuális hálózaton.
+2. Használja a következő szöveget a fájl tartalmának az `/etc/bind/named.config.local` Egyéni DNS-kiszolgálón. Végezze el ezt a módosítást az egyéni DNS-kiszolgálón mindkét virtuális hálózaton.
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -329,9 +331,9 @@ Ez a példa a következő feltételezéseket biztosítja:
     };
     ```
 
-    Cserélje le `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` az értéket a __másik__ virtuális hálózat DNS-utótagjának helyére. Ez a bejegyzés a távoli hálózat DNS-utótagjának kéréseit az adott hálózatban lévő egyéni DNS-re irányítja.
+    Cserélje le az `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` értéket a __másik__ virtuális hálózat DNS-utótagjának helyére. Ez a bejegyzés a távoli hálózat DNS-utótagjának kéréseit az adott hálózatban lévő egyéni DNS-re irányítja.
 
-3. A mindkét virtuális hálózatban lévő egyéni DNS-kiszolgálókon használja a következő szöveget a `/etc/bind/named.conf.options` fájl tartalmának megfelelően:
+3. A mindkét virtuális hálózatban lévő egyéni DNS-kiszolgálókon használja a következő szöveget a fájl tartalmának megfelelően `/etc/bind/named.conf.options` :
 
     ```
     // Clients to accept requests from
@@ -360,7 +362,7 @@ Ez a példa a következő feltételezéseket biztosítja:
     };
     ```
 
-   Cserélje le `10.0.0.0/16` az `10.1.0.0/16` és az értékeket a virtuális hálózatok IP-címeinek tartományára. Ez a bejegyzés lehetővé teszi az egyes hálózatokban lévő erőforrások számára, hogy a DNS-kiszolgálókat kérik.
+   Cserélje le az `10.0.0.0/16` és az `10.1.0.0/16` értékeket a virtuális hálózatok IP-címeinek tartományára. Ez a bejegyzés lehetővé teszi az egyes hálózatokban lévő erőforrások számára, hogy a DNS-kiszolgálókat kérik.
 
     A virtuális hálózatok (például microsoft.com) DNS-utótagját nem tartalmazó kérelmeket az Azure rekurzív feloldó kezeli.
 

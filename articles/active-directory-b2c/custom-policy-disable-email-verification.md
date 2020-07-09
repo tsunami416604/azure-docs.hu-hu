@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29426f8e3797c89deb712e89e0d972dd1ac8028e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389309"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az e-mailek ellenőrzésének letiltása az ügyfél-regisztráció során a Azure Active Directory B2C egyéni szabályzatának használatával
 
@@ -30,15 +30,15 @@ Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-sta
 
 A **LocalAccountSignUpWithLogonEmail** technikai profil egy [önérvényesített](self-asserted-technical-profile.md), amelyet a rendszer a regisztrálási folyamat során hív meg. Az e-mail-ellenőrzés letiltásához állítsa a `EnforceEmailVerification` metaadatokat hamis értékre. Bírálja felül a LocalAccountSignUpWithLogonEmail technikai profiljait. 
 
-1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
-1. Keresse meg `ClaimsProviders` az elemet. Ha az elem nem létezik, adja hozzá.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
+1. Keresse meg az `ClaimsProviders` elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcím-szolgáltatót a `ClaimsProviders` elemhez:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
       <Metadata>
         <Item Key="EnforceEmailVerification">false</Item>
       </Metadata>

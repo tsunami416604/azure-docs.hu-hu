@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086708"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition elemek
@@ -35,14 +34,14 @@ A legtöbb elem sémája a következő:
 
 | Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
-| név | Igen | Egy belső azonosító, amely egy elem adott példányára hivatkozik. Az elem nevének leggyakoribb használata a (z), `outputs`ahol a megadott elemek kimeneti értékei a sablon paramétereinek megfelelően vannak leképezve. Azt is megteheti, hogy egy elem `defaultValue` kimeneti értékét egy másik elemhez köti. |
-| type | Igen | Az elemhez tartozó FELHASZNÁLÓIFELÜLET-vezérlő. A támogatott típusok listáját lásd: [elemek](#elements). |
-| label | Igen | Az elem megjelenített szövege Egyes elemek több címkét tartalmaznak, így az érték lehet egy több sztringet tartalmazó objektum. |
-| defaultValue | Nem | Az elem alapértelmezett értéke. Egyes elemtípus-típusok összetett alapértelmezett értékeket támogatnak, így az érték lehet egy objektum. |
-| toolTip | Nem | Az elem elemleírásában megjelenítendő szöveg Ehhez hasonlóan `label`egyes elemek több elemleírás-karakterláncot is támogatnak. A beágyazott hivatkozások a Markdown szintaxis használatával ágyazhatók be.
-| korlátok | Nem | Egy vagy több olyan tulajdonság, amely az elem érvényesítési viselkedésének testreszabására szolgál. A megkötések támogatott tulajdonságai elem típusa szerint változnak. Egyes elemtípus-típusok nem támogatják az érvényesítési viselkedés testreszabását, így nincsenek megkötések tulajdonsága. |
-| beállítások | Nem | További tulajdonságok, amelyek testre szabják az elem viselkedését. `constraints`A következőhöz hasonlóan a támogatott tulajdonságok elemtípus szerint változnak. |
-| látható | Nem | Azt jelzi, hogy megjelenik-e az elem. Ha `true`a elem és a megfelelő alárendelt elemek jelennek meg. Az alapértelmezett érték `true`. A tulajdonság értékének dinamikus vezérléséhez használja a [logikai függvényeket](create-uidefinition-functions.md#logical-functions) .
+| name | Yes | Egy belső azonosító, amely egy elem adott példányára hivatkozik. Az elem nevének leggyakoribb használata a (z `outputs` ), ahol a megadott elemek kimeneti értékei a sablon paramétereinek megfelelően vannak leképezve. Azt is megteheti, hogy egy elem kimeneti értékét `defaultValue` egy másik elemhez köti. |
+| típus | Yes | Az elemhez tartozó FELHASZNÁLÓIFELÜLET-vezérlő. A támogatott típusok listáját lásd: [elemek](#elements). |
+| címke | Yes | Az elem megjelenített szövege Egyes elemek több címkét tartalmaznak, így az érték lehet egy több sztringet tartalmazó objektum. |
+| defaultValue | No | Az elem alapértelmezett értéke. Egyes elemtípus-típusok összetett alapértelmezett értékeket támogatnak, így az érték lehet egy objektum. |
+| toolTip | No | Az elem elemleírásában megjelenítendő szöveg Ehhez hasonlóan `label` egyes elemek több elemleírás-karakterláncot is támogatnak. A beágyazott hivatkozások a Markdown szintaxis használatával ágyazhatók be.
+| korlátok | No | Egy vagy több olyan tulajdonság, amely az elem érvényesítési viselkedésének testreszabására szolgál. A megkötések támogatott tulajdonságai elem típusa szerint változnak. Egyes elemtípus-típusok nem támogatják az érvényesítési viselkedés testreszabását, így nincsenek megkötések tulajdonsága. |
+| beállítások | No | További tulajdonságok, amelyek testre szabják az elem viselkedését. `constraints`A következőhöz hasonlóan a támogatott tulajdonságok elemtípus szerint változnak. |
+| látható | No | Azt jelzi, hogy megjelenik-e az elem. Ha `true` a elem és a megfelelő alárendelt elemek jelennek meg. Az alapértelmezett érték `true`. A tulajdonság értékének dinamikus vezérléséhez használja a [logikai függvényeket](create-uidefinition-functions.md#logical-functions) .
 
 ## <a name="elements"></a>Elemek
 

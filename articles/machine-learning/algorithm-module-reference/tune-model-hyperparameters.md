@@ -8,13 +8,12 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983407"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
@@ -43,33 +42,35 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 
 2.  Csatlakoztasson egy nem betanított modellt a bal szélső bemenethez. 
 
+    > [!NOTE] 
+    > A **modell Hiperparaméterek beállítása hangolása** csak a beépített gépi tanulási algoritmus-modulokhoz csatlakozhat, és nem támogatja a **Python-modell létrehozásakor**létrehozott testreszabott modellt.
 
 
-4.  Adja hozzá a betanításhoz használni kívánt adatkészletet, és kapcsolja össze a Hiperparaméterek beállítása hangolási modell középső bemenetével.  
+3.  Adja hozzá a betanításhoz használni kívánt adatkészletet, és kapcsolja össze a Hiperparaméterek beállítása hangolási modell középső bemenetével.  
 
     Ha címkézett adatkészlettel rendelkezik, a jobb szélső bemeneti porthoz (**opcionális ellenőrzési adatkészlet**) is csatlakoztatható. Ez lehetővé teszi a pontosság mérését a képzés és a hangolás során.
 
-5.  A modell Hiperparaméterek beállítása finomhangolása jobb oldali paneljén válasszon egy értéket a **paraméter-elsöprő üzemmódhoz**. Ezzel a beállítással szabályozhatja, hogy a paraméterek hogyan legyenek kiválasztva.
+4.  A modell Hiperparaméterek beállítása finomhangolása jobb oldali paneljén válasszon egy értéket a **paraméter-elsöprő üzemmódhoz**. Ezzel a beállítással szabályozhatja, hogy a paraméterek hogyan legyenek kiválasztva.
 
     - **Teljes rács**: Ha ezt a beállítást választja, a modul hurkot mutat a rendszer által előre meghatározott rács fölé, hogy kipróbálja a különböző kombinációkat, és azonosítsa a legjobb tanulót. Ez a beállítás akkor lehet hasznos, ha nem tudja, mi a legjobb paraméter-beállítás, és szeretné kipróbálni az értékek összes lehetséges kombinációját.
 
     - **Véletlenszerű sweep**: Ha ezt a beállítást választja, a modul véletlenszerűen kiválasztja a paraméterek értékét a rendszer által meghatározott tartományon. Meg kell adnia, hogy legfeljebb hány futtatást kíván végrehajtani a modul végrehajtásához. Ez a beállítás akkor hasznos, ha a modell teljesítményét a választott mérőszámok használatával szeretné bővíteni, de továbbra is megőrzi a számítástechnikai erőforrásokat.    
 
-6.  A **label (címke) oszlopban**nyissa meg az oszlop-választót egyetlen feliratú oszlop kiválasztásához.
+5.  A **label (címke) oszlopban**nyissa meg az oszlop-választót egyetlen feliratú oszlop kiválasztásához.
 
-7.  Válassza ki a futtatások számát:
+6.  Válassza ki a futtatások számát:
 
-    1. **Futtatások maximális száma véletlenszerű húzáskor**: ha véletlenszerű sweepet választ, megadhatja, hogy a modell hány alkalommal legyen betanítva, a paraméterek véletlenszerű kombinációjának használatával.
+    - **Futtatások maximális száma véletlenszerű húzáskor**: ha véletlenszerű sweepet választ, megadhatja, hogy a modell hány alkalommal legyen betanítva, a paraméterek véletlenszerű kombinációjának használatával.
 
-8.  A **rangsoroláshoz**válassza ki a modellek rangsorolásához használandó egyetlen mérőszámot.
+7.  A **rangsoroláshoz**válassza ki a modellek rangsorolásához használandó egyetlen mérőszámot.
 
     Ha lefuttat egy paramétert, a modul kiszámítja a modell típusához tartozó összes vonatkozó mérőszámot, és visszaadja azokat a **sweep Results** jelentésben. A modul külön mérőszámokat használ a regressziós és besorolási modellekhez.
 
     A kiválasztott metrika azonban meghatározza a modellek rangsorolásának módját. Csak a legfelső szintű modell, amelyet a kiválasztott metrika rangsorol, a kiképzésen alapuló modellként jeleníti meg az eredményt.
 
-9.  A **véletlenszerű mag**mezőben adja meg a paraméter elindításához használandó számot. 
+8.  A **véletlenszerű mag**mezőben adja meg a paraméter elindításához használandó számot. 
 
-10. A folyamat elküldése.
+9. A folyamat elküldése.
 
 ## <a name="results-of-hyperparameter-tuning"></a>A hiperparaméter hangolásának eredményei
 

@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428757"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a szinapszis SQL-ben
@@ -33,7 +33,7 @@ Az SQL Pool-erőforrásban az ideiglenes táblák teljesítménybeli előnyt biz
 
 ### <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
 
-Az ideiglenes táblákat a táblanév előtaggal való előállításával `#`hozza létre a rendszer.  Például:
+Az ideiglenes táblákat a táblanév előtaggal való előállításával hozza létre a rendszer `#` .  Például:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="dropping-temporary-tables"></a>Ideiglenes táblák eldobása
-Új munkamenet létrehozásakor nem létezhet ideiglenes tábla.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely egy ideiglenest hoz létre ugyanazzal a névvel, akkor győződjön meg arról `CREATE TABLE` , hogy az utasítások sikeresek, és egy egyszerű, előfeltétel-ellenőrzéssel ellenőrizze az alábbiakat `DROP`: 
+Új munkamenet létrehozásakor nem létezhet ideiglenes tábla.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely egy ideiglenest hoz létre ugyanazzal a névvel, akkor győződjön meg arról, hogy az `CREATE TABLE` utasítások sikeresek, és egy egyszerű, előfeltétel-ellenőrzéssel ellenőrizze az alábbiakat `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,7 +108,7 @@ BEGIN
 END
 ```
 
-A kódolási konzisztencia esetében érdemes ezt a mintát használni a táblák és az ideiglenes táblák esetében is.  Azt is érdemes használni `DROP TABLE` , hogy az ideiglenes táblákat is távolítsa el, ha elkészült velük.  
+A kódolási konzisztencia esetében érdemes ezt a mintát használni a táblák és az ideiglenes táblák esetében is.  Azt is érdemes használni, hogy az `DROP TABLE` ideiglenes táblákat is távolítsa el, ha elkészült velük.  
 
 A tárolt eljárások fejlesztése során gyakran előfordul, hogy az eljárások végén a legördülő parancsok együttesen jelennek meg, így biztosítva az objektumok tisztítását.
 
@@ -193,7 +193,7 @@ GO
 
 Ebben a szakaszban az egyetlen művelet történt egy olyan tárolt eljárás létrehozásakor, amely létrehozza a #stats_ddl ideiglenes táblát.  Ha már létezik, a tárolt eljárás elveszíti #stats_ddl. Ez a csökkenés gondoskodik arról, hogy az ne legyen sikertelen, ha egy munkameneten belül többször fut.  
 
-Mivel a tárolt eljárás `DROP TABLE` végén nem található a tárolt eljárás, a létrehozott tábla továbbra is elérhető marad, és a tárolt eljáráson kívül is olvasható.  
+Mivel a tárolt eljárás végén nem található a tárolt eljárás `DROP TABLE` , a létrehozott tábla továbbra is elérhető marad, és a tárolt eljáráson kívül is olvasható.  
 
 Más SQL Server-adatbázisokkal szemben a szinapszis SQL lehetővé teszi az ideiglenes tábla használatát az azt létrehozó eljáráson kívül.  Az SQL-készleten keresztül létrehozott ideiglenes táblák a munkameneten belül **bárhol** használhatók. Ennek eredményeképpen több moduláris és felügyelhető kóddal fog rendelkezni, ahogy azt az alábbi minta mutatja:
 

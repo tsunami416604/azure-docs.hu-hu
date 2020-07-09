@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674358"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025777"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
 
@@ -25,7 +25,7 @@ A [Azure Cosmos db analitikus tároló](analytical-store-introduction.md), amely
 
 Az alábbi képen az Azure szinapszis hivatkozásának Azure Cosmos DB és az Azure szinapszis Analytics szolgáltatással való integrációja látható: 
 
-![Architektúra-diagram az Azure szinapszis Analytics-integrációhoz Azure Cosmos DB](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Architektúra-diagram az Azure szinapszis Analytics-integrációhoz Azure Cosmos DB" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a>Előnyei
 
@@ -122,6 +122,8 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 * Jelenleg az analitikai tároló csak új tárolók esetében engedélyezhető (az új és a meglévő Azure Cosmos DB fiókokban is).
 
+* Az előzetes verzióban a szinapszis-kapcsolattal rendelkező adatbázis-fiókok, a tárolók biztonsági mentése és helyreállítása nem támogatott. Ha olyan éles számítási feladatokkal rendelkezik, amelyek biztonsági mentési és visszaállítási funkciókat igényelnek, javasoljuk, hogy ne engedélyezze a szinapszis-hivatkozást ezen adatbázis-fiókokon. 
+
 * A Azure Cosmos DB analitikus tároló és a szinapszis SQL Server nélküli elérése jelenleg az előzetes verzióban érhető el. A hozzáférés kéréséhez küldje el a [Azure Cosmos db csapatának](mailto:cosmosdbsynapselink@microsoft.com)e-mail-címét.
 
 * Jelenleg nem érhető el a Azure Cosmos DB Analytics-tároló elérése a szinapszis SQL kiépített állapotával.
@@ -136,10 +138,10 @@ További információért lásd a következő dokumentumokat:
 
 * [Azure Cosmos DB analitikus áruház – áttekintés](analytical-store-introduction.md)
 
-* [Ismerkedés az Azure szinapszis hivatkozásával Azure Cosmos DB](configure-synapse-link.md)
+* [Az Azure Cosmos DB-hez készült Azure Synapse Link használatának első lépései](configure-synapse-link.md)
  
-* [Az Azure szinapszis Analytics futási idejének támogatása](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
+* [Mit támogat az Azure Synapse Analytics futtatókörnyezete?](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [Gyakran ismételt kérdések az Azure szinapszis hivatkozásáról Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
+* [Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban](synapse-link-frequently-asked-questions.md)
 
-* [Azure szinapszis-hivatkozás Azure Cosmos DB használati esetekhez](synapse-link-use-cases.md)
+* [Az Azure Cosmos DB-hez készült Azure Synapse Link használati esetei](synapse-link-use-cases.md)

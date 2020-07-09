@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649203"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
@@ -40,7 +39,7 @@ A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket
 | ---------- | -------------------------- | ------ | ------------- |
 | Érték      | 42                         | False (Hamis)  | létfontosságú számok |
 | Hitelesítő adat | ••••••••••••••••••••••     | True (Igaz)   | biztonság      |
-| Kifejezés | @ (DateTime. Now. ToString ()) | False (Hamis)  |               |
+| Expression | @ (DateTime. Now. ToString ()) | False (Hamis)  |               |
 
 > [!NOTE]
 > Egy API Management szolgáltatásban tárolt névvel ellátott értékek helyett a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) szolgáltatásban tárolt értékeket használhatja, ahogy azt a [példa](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)mutatja.
@@ -55,7 +54,7 @@ A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket
 
     A név és az érték kötelező érték. Ha az érték titkos, jelölje be a _titkos_ jelölőnégyzetet. Adjon meg egy vagy több opcionális címkét, amely segítséget nyújt az elnevezett értékek megszervezésében, majd kattintson a Mentés gombra.
 
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 A megnevezett érték létrehozása után a szerkesztéséhez kattintson rá. Ha megváltoztatja a megnevezett érték nevét, a rendszer automatikusan frissíti az adott nevesített értékre hivatkozó házirendeket az új név használatára.
 

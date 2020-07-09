@@ -7,16 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921843"
 ---
 # <a name="choose-the-right-consistency-level"></a>A megfelelő konzisztenciaszint kiválasztása 
 
-A magas rendelkezésre állásra, kis késésre vagy mindkettőre támaszkodó elosztott adatbázisok esetében az olvasási konzisztencia és a rendelkezésre állás, a késés és az átviteli sebesség közötti alapvető kompromisszumot kell biztosítani. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázis arra kéri a fejlesztőket, hogy válasszon a két szélsőséges konzisztencia-modell közül: *erős* konzisztencia és *végleges* konzisztencia. Azure Cosmos DB lehetővé teszi a fejlesztők számára, hogy az öt jól meghatározott konzisztencia-modell közül választhatnak: *erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag* és *végleges*. Mindegyik konzisztencia-modell jól definiált, intuitív, és adott valós forgatókönyvekhez használható. Az öt konzisztencia-modell pontos [rendelkezésre állást és teljesítménybeli kompromisszumokat](consistency-levels-tradeoffs.md) biztosít, és átfogó SLA-kat támogat. A következő egyszerű megfontolások segítenek a megfelelő választásban számos gyakori helyzetben.
+A magas rendelkezésre állásra, kis késésre vagy mindkettőre támaszkodó elosztott adatbázisok esetében az olvasási konzisztencia és a rendelkezésre állás, a késés és az átviteli sebesség közötti alapvető kompromisszumot kell biztosítani. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázis arra kéri a fejlesztőket, hogy válasszon a két szélsőséges konzisztencia-modell közül: *erős* konzisztencia és *végleges* konzisztencia. Azure Cosmos DB lehetővé teszi a fejlesztők számára, hogy az öt jól meghatározott konzisztencia-modell közül választhatnak: *erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag* és *végleges*. Mindegyik konzisztencia-modell jól definiált, intuitív, és adott valós forgatókönyvekhez használható. Az öt konzisztencia-modell pontos [rendelkezésre állást és teljesítménybeli kompromisszumokat](consistency-levels-tradeoffs.md) biztosít, és átfogó SLA-kat támogat. Beállíthatja az alapértelmezett konzisztenciát a fiók szintjén, és [felülbírálhatja azt a kérelem szintjén](how-to-manage-consistency.md#override-the-default-consistency-level). A következő egyszerű megfontolások segítenek a megfelelő választásban számos gyakori helyzetben.
 
 ## <a name="sql-api-and-table-api"></a>SQL API és Table API
 

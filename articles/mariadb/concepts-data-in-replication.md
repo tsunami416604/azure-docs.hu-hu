@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 1fbcc1fb27d5e6df4641f79c0d634580f74000b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532060"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Az adatreplikálás Azure Database for MariaDBba
@@ -23,7 +23,7 @@ A felhőbe irányuló replikálás használatának főbb forgatókönyvei:
 - **Hibrid adatszinkronizálás:** A felhőbe irányuló replikálás segítségével megtarthatja a helyszíni kiszolgálók és a Azure Database for MariaDB között szinkronizált adatokat. Ez a szinkronizálás a hibrid alkalmazások létrehozásához hasznos. Ez a módszer akkor fordul elő, ha egy meglévő helyi adatbázis-kiszolgálóval rendelkezik, de az adott régióban szeretné áthelyezni az információkat a végfelhasználók számára.
 - **Több felhős szinkronizálás:** Összetett felhőalapú megoldások esetén a felhőbe irányuló replikálás segítségével szinkronizálhat adatokat Azure Database for MariaDB és különböző felhőalapú szolgáltatók között, beleértve a felhőben üzemeltetett virtuális gépeket és adatbázis-szolgáltatásokat.
 
-## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
+## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
 
 ### <a name="data-not-replicated"></a>Nem replikált adatértékek
 A főkiszolgálón található [*MySQL rendszeradatbázis*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) nem replikálódik. A rendszer nem replikálja a fiókok és engedélyek módosításait a főkiszolgálón. Ha létrehoz egy fiókot a főkiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan kell létrehoznia ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
@@ -34,7 +34,7 @@ A főkiszolgálón található [*MySQL rendszeradatbázis*](https://mariadb.com/
 - Minden táblának rendelkeznie kell egy elsődleges kulccsal.
 - A főkiszolgálónak a InnoDB motort kell használnia.
 - A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
-- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel- `mariadb.az_replication_change_master` e a tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
+- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mariadb.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
 - Győződjön meg arról, hogy a fő kiszolgáló IP-címe hozzá lett adva az Azure Database for MariaDB replikakiszolgálójának tűzfalszabályaihoz. A tűzfalszabályokat az [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) használatával frissítheti.
 - Győződjön meg arról, hogy a főkiszolgálót üzemeltető gép engedélyezi a bejövő és kimenő forgalmat is a 3306-os porton.
 - Győződjön meg arról, hogy a főkiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).

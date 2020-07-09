@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74927051"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086908"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Az Adatmásolás és az adatáthelyezés Egyszerűen Azure Data Factory másolási varázslóval
 > [!NOTE]
@@ -57,7 +57,7 @@ A másolás varázsló automatikusan leképezi a forrás sémában lévő oszlop
 A varázsló lehetővé teszi a forrásadatok szűrését, hogy csak azokat az adatforrásokat válassza ki, amelyeket át kell másolni a cél/fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Rugalmas módszert biztosít a kapcsolódó adatbázisokban lévő adatok szűrésére egy Azure Blob mappában lévő SQL Query Language (vagy) fájlok használatával [Data Factory függvények és változók](data-factory-functions-variables.md)használatával.   
 
 ### <a name="filtering-of-data-in-a-database"></a>Adatbázisbeli Adatszűrés
-A példában az SQL-lekérdezés a függvényt `Text.Format` és `WindowStart` a változót használja. 
+A példában az SQL-lekérdezés a `Text.Format` függvényt és a `WindowStart` változót használja. 
 
 ![Kifejezések ellenőrzése](./media/data-factory-copy-wizard/validate-expressions.png)
 
@@ -66,10 +66,12 @@ A mappa elérési útja változóit használhatja a [rendszerváltozók](data-fa
 
 Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak:
 
-    2016/03/01/01
-    2016/03/01/02
-    2016/03/01/03
-    ...
+```text
+2016/03/01/01
+2016/03/01/02
+2016/03/01/03
+...
+```
 
 Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás**gombra. Ekkor a szövegmezőben kell megjelennie `2016/03/01/02` . Most cserélje le a **2016** -et a { **Year}**, a **03** és a **{month}**, a **01** , a **{Day}** és a **02** ({ **Hour}**) helyére, és nyomja le a TAB billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
 

@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: c5357397817b9c6712bdb2e35490e2cdd403d13c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 63c54369ecda6a4f242ca76730c48a414a9d4724
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836464"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040877"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klasszikus) integráció Stream Analytics (előzetes verzió)
 Stream Analytics támogatja a felhasználó által definiált függvényeket, amelyek Azure Machine Learning Studio (klasszikus) végpontokat hívnak meg. A szolgáltatás REST API támogatását a [Stream Analytics REST API könyvtárban](https://msdn.microsoft.com/library/azure/dn835031.aspx)részletesen ismertetjük. Ez a cikk a funkció sikeres megvalósításához szükséges kiegészítő információkat nyújt Stream Analyticsban. Egy oktatóanyag is közzé lett téve, és [itt](stream-analytics-machine-learning-integration-tutorial.md)érhető el.

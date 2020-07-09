@@ -11,10 +11,10 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631772"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN teljesítményének érvényesítése virtuális hálózaton
@@ -67,7 +67,7 @@ Töltse le a [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip).
  > [!NOTE]
  > A jelen cikkben tárgyalt harmadik féltől származó termékeket a Microsofttól független vállalatok gyártják. A Microsoft nem vállal szavatosságot vagy egyéb garanciát ezen termékek teljesítményéről vagy megbízhatóságáról.
 
-### <a name="run-iperf-iperf3exe"></a>IPerf futtatása (iperf3. exe)
+### <a name="run-iperf-iperf3exe"></a>IPerf futtatása (iperf3.exe)
 
 1. Engedélyezze a forgalmat (nyilvános IP-cím tesztelése az Azure virtuális gépen) NSG/ACL-szabályt.
 
@@ -85,9 +85,9 @@ Töltse le a [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip).
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Az Azure Linux-lemezképek megengedő tűzfallal rendelkeznek. Ha van egy olyan alkalmazás, amely figyeli a portot, a forgalom a-on keresztül engedélyezhető. A védett egyéni rendszerképeknek explicit módon kell megnyitnia a portokat. Az általános Linux operációsrendszer-rétegbeli tűzfalak `iptables`a `ufw`következők: `firewalld`, vagy.
+   **Azure Linux:** Az Azure Linux-lemezképek megengedő tűzfallal rendelkeznek. Ha van egy olyan alkalmazás, amely figyeli a portot, a forgalom a-on keresztül engedélyezhető. A védett egyéni rendszerképeknek explicit módon kell megnyitnia a portokat. Az általános Linux operációsrendszer-rétegbeli tűzfalak a következők:, `iptables` `ufw` vagy `firewalld` .
 
-1. A kiszolgáló csomóponton váltson arra a könyvtárra, ahol a iperf3. exe ki van csomagolva. Ezután futtassa a iPerf kiszolgálói módban, és állítsa be a 5001-as porton az alábbi parancsokkal:
+1. A kiszolgáló csomóponton váltson arra a könyvtárra, ahol a iperf3.exe ki van csomagolva. Ezután futtassa a iPerf kiszolgálói módban, és állítsa be a 5001-as porton az alábbi parancsokkal:
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -123,27 +123,27 @@ Töltse le a [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip).
 
 ## <a name="test-vms-running-windows"></a>Windows rendszerű virtuális gépek tesztelése
 
-### <a name="load-latteexe-onto-the-vms"></a>A latte. exe betöltése a virtuális gépekre
+### <a name="load-latteexe-onto-the-vms"></a>Latte.exe betöltése a virtuális gépekre
 
-A [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) legújabb verziójának letöltése
+[Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) legújabb verziójának letöltése
 
-Fontolja meg a latte. exe külön mappában való elhelyezését, például:`c:\tools`
+Fontolja meg a Latte.exe külön mappába helyezését, például:`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>A latte. exe engedélyezése a Windows tűzfalon keresztül
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte.exe engedélyezése a Windows tűzfalon keresztül
 
-A fogadón hozzon létre egy engedélyezési szabályt a Windows tűzfalon, hogy engedélyezze a latte. exe-forgalom érkezését. A legkönnyebben lehetővé teszi a teljes latte. exe program nevét, és nem az adott TCP-portok bejövő engedélyezését.
+A fogadón hozzon létre egy engedélyezési szabályt a Windows tűzfalon, hogy engedélyezze a Latte.exe forgalmat. A legegyszerűbben úgy engedélyezheti a teljes Latte.exe program nevét, hogy nem engedélyezi a megadott TCP-portok bejövő elérését.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>A latte. exe engedélyezése a Windows tűzfalon keresztül
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Latte.exe engedélyezése a Windows tűzfalon keresztül
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Ha például a "c:\Tools" mappába másolta a latte. exe fájlt, akkor ez a következő lesz:
+Ha például átmásolta latte.exet a "c:\Tools" mappába, a parancs a következő lesz:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Késési tesztek futtatása
 
-A latte. exe elindítása a FOGADÓn (Futtatás a CMD-ből, nem a PowerShellből):
+latte.exe elindítása a FOGADÓn (Futtatás CMD-ből, nem a PowerShellből):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -155,7 +155,7 @@ Ha a virtuális gépen a 10.0.0.4 IP-címe van, akkor a következőhöz hasonló
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-A latte. exe elindítása a KÜLDŐn (Futtatás a CMD-ből, nem a PowerShellből)
+latte.exe elindítása a KÜLDŐn (Futtatás a CMD-ből, nem a PowerShellből)
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -225,7 +225,7 @@ Az ügyfél és a kiszolgáló közötti párhuzamosan gyűjtött csomagok rögz
 
 Még akkor is, ha az előző lépésekkel (iPERF/NTTTCP/etc...) mért összesített átviteli sebesség jó volt, lassú fájl is megjelenhet, ha a Windows Intézőt használja, vagy egy RDP-munkameneten keresztül húzza a fájlt. Ez a probléma általában az alábbi tényezők egyike vagy mindkettő miatt fordul elő:
 
-* A fájlmásolási alkalmazások, például a Windows Intéző és az RDP, nem használnak több szálat a fájlok másolásakor. A jobb teljesítmény érdekében használjon egy többszálas fájlmásolási alkalmazást, például a [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) a fájlok másolását 16 vagy 32 szál használatával. Ha módosítani szeretné a RichCopy található fájlmásolás szálának számát, kattintson a **művelet** > **másolási beállítások** > **Fájlmásolás elemre.**
+* A fájlmásolási alkalmazások, például a Windows Intéző és az RDP, nem használnak több szálat a fájlok másolásakor. A jobb teljesítmény érdekében használjon egy többszálas fájlmásolási alkalmazást, például a [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) a fájlok másolását 16 vagy 32 szál használatával. Ha módosítani szeretné a RichCopy található fájlmásolás szálának számát, kattintson a **művelet**  >  **másolási beállítások**fájlmásolás elemre  >  **File copy**.
 
    ![Lassú fájlmásolás esetén felmerülő problémák](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 

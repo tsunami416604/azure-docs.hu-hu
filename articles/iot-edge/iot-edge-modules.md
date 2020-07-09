@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548713"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
@@ -43,7 +42,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 Ha a IoT Edge futtatókörnyezet létrehoz egy új modul-példányt, a rendszer egy megfelelő modul-identitást kap. A modul identitása IoT Hub van tárolva, és a rendszer az adott modul-példány helyi és felhőalapú kommunikációjának címzési és biztonsági hatókörét használja.
 
-A modul-példányhoz társított identitás azon eszköz identitásán múlik, amelyen a példány fut, valamint az adott modulhoz megadott nevet a megoldásban. Ha például egy Azure Stream Analyticst használó `insight` modult hív meg, és egy nevű `Hannover01`eszközön telepíti azt, akkor a IoT Edge futtatókörnyezet létrehoz egy megfelelő modul-identitást. `/devices/Hannover01/modules/insight`
+A modul-példányhoz társított identitás azon eszköz identitásán múlik, amelyen a példány fut, valamint az adott modulhoz megadott nevet a megoldásban. Ha például egy `insight` Azure stream Analyticst használó modult hív meg, és egy nevű eszközön telepíti azt `Hannover01` , akkor a IoT Edge futtatókörnyezet létrehoz egy megfelelő modul-identitást `/devices/Hannover01/modules/insight` .
 
 Egyértelmű, hogy olyan helyzetekben, amikor egy modul lemezképét többször kell telepíteni ugyanazon az eszközön, több alkalommal is telepítheti ugyanazt a rendszerképet különböző nevekkel.
 

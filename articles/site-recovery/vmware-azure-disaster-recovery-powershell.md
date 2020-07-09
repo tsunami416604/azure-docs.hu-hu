@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257198"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129906"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával
 
@@ -36,7 +36,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 Előkészületek:
 
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](vmware-azure-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](./vmware-physical-azure-support-matrix.md).
 - A Azure PowerShell `Az` modul. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
 
 ## <a name="log-into-azure"></a>Jelentkezzen be az Azure-ba
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Állítsa be a tár környezetét a set-ASRVaultContext parancsmag használatával. A beállítás után a rendszer a PowerShell-munkamenet következő Azure Site Recovery műveleteit a kijelölt tároló környezetében hajtja végre.
 
 > [!TIP]
-> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modulban lévő parancsmagok a Form * \<Operation>-**AzRecoveryServicesAsr**\<objektumot>* , és egyenértékű aliasokkal rendelkeznek, amelyek az űrlap * \<-művelet>-**ASR**\<objektum>*. A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
+> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modulban lévő parancsmagok az űrlapot * \<Operation> - **AzRecoveryServicesAsr** \<Object> * , és egyenértékű aliasokkal rendelkeznek, amelyek az * \<Operation> - **ASR** \<Object> *-űrlapot fogadják. A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
 
 Az alábbi példában a $vault változóból származó tár adatait a rendszer a PowerShell-munkamenethez tartozó tár környezetének megadására használja.
 
@@ -353,9 +353,9 @@ Most replikálja a következő virtuális gépeket az ebben a táblázatban mega
 
 |Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Cél erőforráscsoport  | Célként megadott virtuális hálózat  |Célként megadott alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |
+|CentOSVM1       |ConfigurationServer   |N.A.| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |
 |Win2K12VM1       |Horizontális felskálázás – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/A                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N.A.                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |   
 
 
 ```azurepowershell
@@ -496,5 +496,5 @@ Ebben a lépésben a virtuális gép Win2K12VM1 egy adott helyreállítási pont
 
 2. A feladatátvétel sikeres végrehajtása után véglegesítheti a feladatátvételi műveletet, és visszaállíthatja a visszirányú replikálást az Azure-ból a helyszíni VMware-helyre.
 
-## <a name="next-steps"></a>További lépések
-További feladatok automatizálása a [Azure site Recovery PowerShell-hivatkozás](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)használatával.
+## <a name="next-steps"></a>Következő lépések
+További feladatok automatizálása a [Azure site Recovery PowerShell-hivatkozás](/powershell/module/Az.RecoveryServices)használatával.

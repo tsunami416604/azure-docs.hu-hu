@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154729"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
@@ -71,7 +71,7 @@ Az ügyfél felépítésének módjától függően az Azure AD által támogato
 |[Meghatalmazásos folyamat](v1-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
 |[Ügyfél-hitelesítő adatok](v1-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
 
-Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol `response_mode` a `query` vagy `fragment`a) a böngészőbe kerül vissza.  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek. 
+Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol a vagy a) a böngészőbe kerül vissza `response_mode` `query` `fragment` .  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek. 
 
 Most, hogy az alapokat áttekintettük, a továbbiakban megismerkedhet az identitáskezelési alkalmazásmodellel és API-val, valamint az Azure AD-beli kiépítés működésével, továbbá az Azure AD által támogatott gyakori forgatókönyvekre mutató hivatkozásokat találhat.
 
@@ -132,7 +132,7 @@ Az Azure AD által kibocsátott egyes jogcímek rövid leírását az alábbi t�
 | Kibocsátás időpontja | A jogkivonat kibocsátásának időpontját rögzíti, amely alapján általában a jogkivonat frissességét szokás elbírálni. |
 | Kiállító | A jogkivonatot kiadó biztonsági jegykiadó szolgáltatást, valamint az Azure AD-bérlőt azonosítja. |
 | Vezetéknév | A felhasználó Azure AD-ben beállított vezetéknevét adja meg. |
-| Name (Név) | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. |
+| Name | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. |
 | Objektumazonosító | Az alany Azure AD-beli megváltoztathatatlan egyedi azonosítóját adja meg. |
 | Szerepkörök | A felhasználónak kiosztott Azure AD-beli alkalmazás-szerepkörök rövid neveit adja meg. |
 | Hatókör | Az ügyfélalkalmazás számára megadott engedélyeket jelzi. |

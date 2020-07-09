@@ -9,12 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683011"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985735"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -29,7 +30,7 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
     | [Becslések](#estimators) | A kalkulátor osztályok megkönnyítik a **modellek betanítását a népszerű gépi tanulási keretrendszerek alapján**. A **Scikit-Learn**, a **PyTorch**, a **TensorFlow**, a **chainer**és a **Ray RLlib**-hez vannak kalkulátor-osztályok. Létezik egy általános kalkulátor is, amely olyan keretrendszerek esetében használható, amelyek még nem rendelkeznek dedikált kalkulátor-osztállyal. A becslések használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
     | [Gépi tanulási folyamat](#machine-learning-pipeline) | A folyamatok nem egy másik betanítási módszer, hanem a **munkafolyamatok moduláris, újrafelhasználható lépésekkel való definiálásának módja**, amely magában foglalhatja a munkafolyamatok részét képező képzést is. A gépi tanulási folyamatokat az automatizált gépi tanulás, a becslések és a modellek betanítására szolgáló konfiguráció futtatásával támogatja. Mivel a folyamatok nem kifejezetten a képzésre összpontosítottak, a folyamat használatának okai a többi tanítási módszernél változatosabbek. Általában a következőket lehet használni:<br>* Olyan **felügyelet nélküli folyamatokat szeretne ütemezni** , mint például a hosszan futó betanítási feladatok vagy az adatok előkészítése.<br>* **Több olyan lépést** is használhat, amely heterogén számítási erőforrásokon és tárolási helyeken is össze van hangolva.<br>* Használja a folyamatot **újrafelhasználható sablonként** adott forgatókönyvekhez, például az újraképzéshez vagy a kötegelt pontozáshoz.<br>* A munkafolyamathoz tartozó **adatforrások, bemenetek és kimenetek nyomon követése és verziószáma** .<br>* A munkafolyamatot **különböző csapatok valósítják meg, amelyek egymástól függetlenül működnek**. A lépések ezután összekapcsolhatók egy folyamattal a munkafolyamat megvalósításához. |
 
-+ [Python Azure Machine learning SDK](#r-sdk): az SDK a reticulate-csomagot használja a Azure Machine learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
++ [Azure Machine learning SDK for r](#r-sdk): az r-hez készült SDK a reticulate csomagot használja a Azure Machine learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
 
 + **Tervező**: a Azure Machine learning Designer (előzetes verzió) egyszerű belépési pontot biztosít a gépi tanuláshoz a fogalmak vagy a kis kódolási élményt biztosító felhasználók számára. Lehetővé teszi a modellek betanítását egy fogd és vidd webes KEZELŐFELÜLET használatával. A Python-kódokat használhatja a terv részeként, vagy betaníthatja a modelleket anélkül, hogy kódot kellene írnia.
 

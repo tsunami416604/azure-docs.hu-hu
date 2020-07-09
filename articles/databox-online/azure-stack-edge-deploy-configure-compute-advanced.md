@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: eb7bb7933303aaf16f320e219ad3673bf1efde72
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570768"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080481"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge-vel speciális üzembe helyezési folyamat esetén
 
@@ -22,16 +22,16 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet számítási szerepkört konfigur
 
 A számítás konfigurálható az eszköz egyszerű vagy speciális üzembe helyezési folyamatához.
 
-|                  | Egyszerű üzembe helyezés                                | Speciális üzembe helyezés                   |
+| Feltételek | Egyszerű üzembe helyezés                                | Speciális üzembe helyezés                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | A következőre szánt     | Rendszergazdák                                | Fejlesztők                            |
 | Típus             | Azure Stack Edge szolgáltatás használata modulok üzembe helyezéséhez      | A IoT Hub szolgáltatás használata modulok üzembe helyezéséhez |
-| Üzembe helyezett modulok | Egyirányú                                           | Láncolt vagy több modul           |
+| Üzembe helyezett modulok | Egyszeres                                           | Láncolt vagy több modul           |
 
 
 Ez az eljárás körülbelül 20 – 30 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -66,11 +66,11 @@ A számítás Azure Stack Edge-ben való konfigurálásához létre kell hoznia 
     |Mező  |Érték  |
     |---------|---------|
     |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint a rendszer egy standard szintű (S1) szintet használ IoT-erőforrás létrehozásához. Az ingyenes szintű IoT erőforrás használatához hozzon létre egyet, majd válassza ki a meglévő erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
-    |Name (Név)     |Adja meg a IoT Hub erőforrás nevét.         |
+    |Name     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrejötte után az **Edge számítási** csempék konfigurálása a számítási konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása** csempén.
+4. Válassza a **Létrehozás** lehetőséget. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrejötte után az **Edge számítási** csempék konfigurálása a számítási konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása** csempén.
     
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
@@ -215,11 +215,11 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
 
         ![Egyéni modul hozzáadása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.    Az **útvonalak megadása**területen állítsa be a modulok közötti útvonalakat.  
-    
-    ![Az útvonalak meghatározása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
+5. Az **útvonalak megadása**területen állítsa be a modulok közötti útvonalakat.  
+   
+   ![Az útvonalak meghatározása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    Az *útvonalat* lecserélheti a korábban átmásolt következő útvonal-karakterláncra. Ebben a példában adja meg annak a helyi megosztásnak a nevét, amely a Felhőbeli megosztásba küldi az adattovábbítást. Cserélje le `modulename` a nevet a modul nevére. Kattintson a **Tovább** gombra.
+    Az *útvonalat* lecserélheti a korábban átmásolt következő útvonal-karakterláncra. Ebben a példában adja meg annak a helyi megosztásnak a nevét, amely a Felhőbeli megosztásba küldi az adattovábbítást. Cserélje le a `modulename` nevet a modul nevére. Válassza a **Tovább** lehetőséget.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
@@ -227,9 +227,9 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
 
     ![Az útvonalak meghatározása szakasz](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6.    Az **üzembe helyezés áttekintése**területen tekintse át az összes beállítást, majd kattintson a **Submit (elküldés** ) gombra a modul központi telepítéshez való küldéséhez.
+6. Az **üzembe helyezés áttekintése**területen tekintse át az összes beállítást, majd kattintson a **Submit (elküldés** ) gombra a modul központi telepítéshez való küldéséhez.
 
-    ![A modulok beállítása lap](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![A modulok beállítása lap](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     Ez a művelet elindítja a modul üzembe helyezését. Az üzembe helyezés befejezése után a modul **futtatókörnyezeti állapota** **fut**.
 
@@ -241,13 +241,13 @@ Az utolsó lépés az, hogy ellenőrizze, hogy a modul csatlakoztatva van-e, és
 
 A következő lépésekkel ellenőrizheti az adatok átalakítását és az Azure-ba való átvitelt.
  
-1.    A Fájlkezelőben a korábban létrehozott Edge helyi és peremhálózati megosztásokhoz is csatlakozhat.
+1. A Fájlkezelőben a korábban létrehozott Edge helyi és peremhálózati megosztásokhoz is csatlakozhat.
 
-    ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
+   ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
-1.    Adja hozzá az adatokat a helyi megosztáshoz.
+1. Adja hozzá az adatokat a helyi megosztáshoz.
 
-    ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     Az adatok áthelyeződnek a felhőalapú megosztásba.
 

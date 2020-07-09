@@ -5,14 +5,14 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584079"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116964"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -28,14 +28,14 @@ A PostgreSQL-motor [szerepköröket](https://www.postgresql.org/docs/current/sql
 * `postgres`
 * `citus`
 
-Mivel a nagy kapacitású egy felügyelt Pásti szolgáltatás, csak a Microsoft tud bejelentkezni `postgres` a felügyelői szerepkörbe. A korlátozott rendszergazdai hozzáférés esetén a nagy kapacitású biztosítja `citus` a szerepkört.
+Mivel a nagy kapacitású egy felügyelt Pásti szolgáltatás, csak a Microsoft tud bejelentkezni a `postgres` felügyelői szerepkörbe. A korlátozott rendszergazdai hozzáférés esetén a nagy kapacitású biztosítja a `citus` szerepkört.
 
-A `citus` szerepkör engedélyei:
+A szerepkör engedélyei `citus` :
 
 * Olvassa el az összes konfigurációs változót, még akkor is, ha a változók általában csak a főfelhasználók számára láthatók.
-* Olvassa el az\_összes\_ \* PG stat-nézetet, és használja a statisztikával kapcsolatos különböző bővítményeket – akár nézeteket vagy bővítményeket is, amelyek általában csak a főfelhasználók számára láthatók.
+* Olvassa el az összes PG \_ stat- \_ \* nézetet, és használja a statisztikával kapcsolatos különböző bővítményeket – akár nézeteket vagy bővítményeket is, amelyek általában csak a főfelhasználók számára láthatók.
 * Olyan figyelési funkciókat hajthat végre, amelyek hozzáférést kaphatnak a táblákban lévő MEGOSZTÁSi zárolásokhoz, akár hosszú ideig is.
-* [Hozzon létre PostgreSQL](concepts-hyperscale-extensions.md) `azure_pg_admin`-bővítményeket (mivel a szerepkör a tagja).
+* [Hozzon létre PostgreSQL-bővítményeket](concepts-hyperscale-extensions.md) (mivel a szerepkör a tagja `azure_pg_admin` ).
 
 A `citus` szerepkörnek például vannak korlátai:
 
@@ -44,7 +44,7 @@ A `citus` szerepkörnek például vannak korlátai:
 
 ## <a name="how-to-create-additional-user-roles"></a>További felhasználói szerepkörök létrehozása
 
-Ahogy említettük, `citus` a rendszergazdai fióknak nincs engedélye további felhasználók létrehozására. Felhasználó hozzáadásához használja a Azure Portal felületet.
+Ahogy említettük, a `citus` rendszergazdai fióknak nincs engedélye további felhasználók létrehozására. Felhasználó hozzáadásához használja a Azure Portal felületet.
 
 1. Lépjen a nagy kapacitású-kiszolgálócsoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás**gombra:
 
@@ -60,22 +60,17 @@ A felhasználó a kiszolgálócsoport koordinátor csomópontján jön létre, �
 
 Az új felhasználói szerepköröket általában a korlátozott jogosultságokkal rendelkező adatbázis-hozzáférés biztosítására használják. A felhasználói jogosultságok módosításához használja a standard PostgreSQL-parancsokat egy olyan eszköz használatával, mint például a PgAdmin vagy a psql. (Lásd: [Csatlakozás a psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) -hez a nagy kapacitású (Citus) rövid útmutatójában.)
 
-Ha például engedélyezni `db_user` szeretné az olvasást `mytable`, adja meg az engedélyt:
+Ha például engedélyezni `db_user` szeretné az olvasást `mytable` , adja meg az engedélyt:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-A nagy kapacitású (Citus) a teljes fürtön keresztül propagálja az egytáblás engedélyezési utasításokat, és alkalmazza azokat az összes munkavégző csomóponton. Azonban a teljes rendszerszintű (például a sémában lévő összes táblához tartozó) támogatásnak minden egyes dátum csomóponton futnia kell.  Használja a `run_command_on_workers()` segítő funkciót:
+A nagy kapacitású (Citus) a teljes fürtön keresztül propagálja az egytáblás engedélyezési utasításokat, és alkalmazza azokat az összes munkavégző csomóponton. Emellett a rendszerszintű (például a sémában lévő összes táblázathoz tartozó) támogatásokat is propagálja:
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Felhasználói szerepkör törlése vagy jelszavuk módosítása
@@ -86,7 +81,7 @@ Egy felhasználó frissítéséhez keresse fel a nagy kapacitású-kiszolgálóc
 
 A `citus` szerepkör jogosultsággal rendelkezik, és nem törölhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy csatlakozhasson a kapcsolódáshoz: [nagy kapacitású-(Citus-) tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-hyperscale-manage-firewall-using-portal.md).
 

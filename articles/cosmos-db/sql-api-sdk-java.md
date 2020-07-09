@@ -6,29 +6,29 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53ae3217e77a9301cbe0d3d63ce0712a0b9b7f1e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 520f64cbe768f2fcbd4603d1fb038bc349cd01db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391978"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja a szinkron műveleteket.
@@ -42,11 +42,17 @@ Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja 
 |**SDK letöltése**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API-dokumentáció**|[Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.documentdb)|
 |**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Bevezetés**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
+|**Első lépések**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* Kijavítja a fő partíció gyorsítótárának problémáját a documentCollection-lekérdezésben.
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* Az 449-támogatás hozzáadva az egyéni konfigurációhoz.
 
 ### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * Megjavítja a kapcsolati készlet időtúllépési hibáját.
@@ -266,8 +272,10 @@ A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket
 
 <br/>
 
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2020. június 03. |--- |
+| [2.5.0](#2.5.0) |2020. május 12. |--- |
 | [2.4.7](#2.4.7) |Február 20, 2020 |--- |
 | [2.4.6](#2.4.6) |Január 24, 2020 |--- |
 | [2.4.5](#2.4.5) |November 10, 2019 |--- |

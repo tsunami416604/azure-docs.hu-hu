@@ -8,28 +8,28 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: c826b9f813c30a50d8b88b2cca1b188c328465b0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 766981d355c5f24e817ea5d626aefd0d0e9bed05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392080"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó könyvtár: letöltési információ
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -38,7 +38,7 @@ ms.locfileid: "84171650"
 |**SDK letöltése**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**Tömeges végrehajtó könyvtár a GitHubban**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API-dokumentáció**| [Java API-referenciák dokumentációja](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**Bevezetés**|[Ismerkedés a tömeges végrehajtó függvénytár Java SDK-val](bulk-executor-java.md)|
+|**Első lépések**|[Ismerkedés a tömeges végrehajtó függvénytár Java SDK-val](bulk-executor-java.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések

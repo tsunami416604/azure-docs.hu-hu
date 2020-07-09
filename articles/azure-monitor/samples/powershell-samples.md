@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 6c00556bfbcd2108b3cb5bd2cfdf88a741f85a99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837477"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413892"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -52,7 +52,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>Előfizetés tevékenységi naplójának beolvasása
+## <a name="retrieve-activity-log"></a>Tevékenység naplójának beolvasása
 Használja a [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példát talál. A tevékenység naplójában a műveletek utolsó 90 napja szerepel. Az idő előtti dátumok használata hibaüzenetet eredményez.  
 
 Az alábbi parancsokban megtekintheti, hogy az aktuális dátum/idő milyen időpontot használjon:
@@ -148,9 +148,9 @@ E-mailek és webhook-tulajdonságok a és a használatával is létrehozhatók `
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| parameter | érték |
+| parameter | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Name (Név) |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |legtöbbször |
 | Targetresourceid azonosítója |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 A további webhook-tulajdonságok nem kötelezőek. Egy műveletnapló-riasztás tartalmát a használatával kérheti vissza `Get-AzActivityLogAlert` .
 
 ## <a name="create-and-manage-autoscale-settings"></a>Az autoskálázási beállítások létrehozása és kezelése
+
+> [!NOTE] 
+> Cloud Services (Microsoft. ClassicCompute) esetében az autoskálázás 5 perces időtartamot (PT5M) támogat. A többi szolgáltatás esetében az autoscale legalább 1 perces időtartamot támogat (PT1M)
+
 Egy erőforrás (webalkalmazás, virtuális gép, felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) csak egy, a számára konfigurált méretezési beállítással rendelkezhet.
 Az egyes autoskálázási beállítások azonban több profillal is rendelkezhetnek. Például egy a teljesítmény-alapú méretezési profilhoz, egy másik pedig egy ütemezett profilhoz. Minden profilhoz több szabály is konfigurálható. Az autoscale használatával kapcsolatos további információkért lásd az [alkalmazások autoskálázását](../../cloud-services/cloud-services-how-to-scale-portal.md)ismertető témakört.
 

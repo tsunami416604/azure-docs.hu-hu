@@ -7,10 +7,10 @@ ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72750420"
 ---
 # <a name="legal-notices"></a>Jogi tudnivalók
@@ -19,7 +19,7 @@ A Microsoft és a közreműködők a Microsoft dokumentációjában és egyéb t
 
 A Microsoft, a Windows, a Microsoft Azure és/vagy a Microsoft a dokumentációban hivatkozott egyéb termékei és szolgáltatásai a Microsoft védjegyei vagy bejegyzett védjegyei lehetnek az Amerikai Egyesült Államokban és/vagy más országokban.
 A projekthez tartozó licenc nem biztosít jogot a Microsoft neveinek, emblémáinak vagy védjegyeinek használatára.
-A Microsoft általános védjegyekkel kapcsolatos irányelvei a [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)következő címen találhatók:.
+A Microsoft általános védjegyekkel kapcsolatos irányelvei a következő címen találhatók: [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653) .
 
 Az adatvédelmi információk a következő címen találhatók:[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 

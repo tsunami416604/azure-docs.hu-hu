@@ -8,11 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707650"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>A régióbeli kiszolgálókkal kapcsolatos problémák az Azure HDInsight
 
@@ -22,7 +21,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ### <a name="issue"></a>Probléma
 
-A parancs `hbase hbck` futtatásakor a következőhöz hasonló hibaüzenet jelenik meg:
+A parancs futtatásakor a következőhöz `hbase hbck` hasonló hibaüzenet jelenik meg:
 
 ```
 multiple regions being unassigned or holes in the chain of regions
@@ -40,11 +39,11 @@ Javítsa ki a hozzárendeléseket. Az alábbi lépések végrehajtásával vissz
 
 1. Jelentkezzen be a HDInsight HBase-fürtbe SSH használatával.
 
-1. Futtassa `hbase zkcli` a parancsot a ZooKeeper-rendszerhéjhoz való kapcsolódáshoz.
+1. Futtassa a `hbase zkcli` parancsot a ZooKeeper-rendszerhéjhoz való kapcsolódáshoz.
 
 1. Futtatás `rmr /hbase/regions-in-transition` vagy `rmr /hbase-unsecure/regions-in-transition` parancs.
 
-1. Lépjen ki a Zookeeper- `exit` rendszerhéjból a paranccsal.
+1. Lépjen ki a Zookeeper-rendszerhéjból a `exit` paranccsal.
 
 1. Nyissa meg az Apache Ambari felhasználói felületét, majd indítsa újra az aktív HBase Master szolgáltatást.
 
@@ -62,9 +61,9 @@ A régió-kiszolgálók nem indulnak el.
 
 Több felosztó WAL-könyvtár.
 
-1. Aktuális WALs listájának beolvasása: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Aktuális WALs listájának beolvasása: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` .
 
-1. Vizsgálja meg `wals.out` a fájlt. Ha túl sok felosztó könyvtár van (a *-felosztástól kezdve), akkor a régió-kiszolgáló valószínűleg sikertelen lesz a könyvtárak miatt.
+1. Vizsgálja meg a `wals.out` fájlt. Ha túl sok felosztó könyvtár van (a *-felosztástól kezdve), akkor a régió-kiszolgáló valószínűleg sikertelen lesz a könyvtárak miatt.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -72,11 +71,11 @@ Több felosztó WAL-könyvtár.
 
 1. Végrehajtás `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` a WALs friss listájának lekéréséhez.
 
-1. Helyezze át a *-felosztási könyvtárakat egy ideiglenes mappába `splitWAL`, és törölje a *-felosztási könyvtárakat.
+1. Helyezze át a *-felosztási könyvtárakat egy ideiglenes mappába, `splitWAL` és törölje a *-felosztási könyvtárakat.
 
-1. Futtassa `hbase zkcli` a parancsot a Zookeeper-rendszerhéjhoz való kapcsolódáshoz.
+1. Futtassa a `hbase zkcli` parancsot a Zookeeper-rendszerhéjhoz való kapcsolódáshoz.
 
-1. Végrehajtás `rmr /hbase-unsecure/splitWAL`.
+1. Végrehajtás `rmr /hbase-unsecure/splitWAL` .
 
 1. Indítsa újra a HBase szolgáltatást.
 

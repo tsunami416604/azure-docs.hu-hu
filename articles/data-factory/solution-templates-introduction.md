@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628946"
 ---
 # <a name="templates"></a>Sablonok
@@ -32,7 +32,7 @@ A következő két módon teheti meg a Data Factory folyamat létrehozását a s
 
     ![A sablon-gyűjtemény megnyitása az Áttekintés lapról](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  A erőforrás-kezelő szerző lapján válassza a, majd **+** a **folyamat sablonból** lehetőséget a sablon-gyűjtemény megnyitásához.
+1.  A erőforrás-kezelő szerző lapján válassza **+** a, majd a **folyamat sablonból** lehetőséget a sablon-gyűjtemény megnyitásához.
 
     ![A sablon-gyűjtemény megnyitása a szerző lapról](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -56,7 +56,7 @@ A Data Factory Azure Resource Manager sablonokat használ a következő adattár
 
     -   [Különbözeti másolat az adatbázisból](solution-template-delta-copy-with-control-table.md)
 
-    -   Másolás \<forrásról\> \<célhelyre\>
+    -   Másolás innen \<source\>\<destination\>
 
         -   [Amazon S3-ról Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 

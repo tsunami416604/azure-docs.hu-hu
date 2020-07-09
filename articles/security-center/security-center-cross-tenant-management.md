@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782812"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -43,10 +42,10 @@ A felső menüsorban kattintson a szűrő ikonra, és válassza ki az előfizet�
 
   ![Bérlők szűrése](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-A nézetek és a műveletek alapvetően azonosak. Néhány példa:
+A nézetek és a műveletek alapvetően azonosak. Az alábbiakban néhány példa következik:
 
 - **Biztonsági házirendek kezelése**: az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a [szabályzatokkal](tutorial-security-policy.md), a biztonsági javaslatokkal kapcsolatos műveleteket, valamint a biztonsági adatok gyűjtését és kezelését.
-- A **biztonságos pontszám és a megfelelőségi helyzet javítása**: a bérlők közötti láthatósággal megtekintheti az összes bérlő teljes biztonsági állapotát, valamint azt, hogy miként és hogyan lehet legjobban javítani a [biztonságos pontszámot](security-center-secure-score.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
+- A **biztonságos pontszám és a megfelelőségi helyzet javítása**: a bérlők közötti láthatósággal megtekintheti az összes bérlő teljes biztonsági állapotát, valamint azt, hogy miként és hogyan lehet legjobban javítani a [biztonságos pontszámot](secure-score-security-controls.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
 - **Szervizeléssel kapcsolatos javaslatok**: a különböző bérlők számos erőforrására [vonatkozó javaslatok](security-center-recommendations.md) figyelése és szervizelése egyszerre. Ezután azonnal megoldhatja azokat a biztonsági réseket, amelyek a legnagyobb kockázatot jelentik az összes bérlő esetében.
 - **Riasztások kezelése**: [riasztások](security-center-alerts-overview.md) észlelése a különböző bérlők között. Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a gyakorlatban használható [szervizelési lépéseknek](security-center-managing-and-responding-alerts.md).
 

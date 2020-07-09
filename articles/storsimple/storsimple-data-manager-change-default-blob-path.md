@@ -3,15 +3,15 @@ title: BLOB elérési útjának módosítása az alapértelmezett értékről
 description: Megtudhatja, hogyan állíthat be egy Azure-függvényt a blob-fájlok elérési útjának átnevezéséhez
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270631"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504831"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB elérési útjának módosítása az alapértelmezett elérési útról
 
@@ -31,7 +31,7 @@ Azure-függvény létrehozásához hajtsa végre a következő lépéseket:
 
     ![Írja be a "függvényalkalmazás" kifejezést a keresőmezőbe](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. Kattintson a **Létrehozás**gombra.
+3. Kattintson a **Létrehozás** lehetőségre.
 
     ![A függvényalkalmazás ablak "létrehozás" gombja](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ Azure-függvény létrehozásához hajtsa végre a következő lépéseket:
 
         ![Adja meg az új függvényalkalmazás konfigurációs adatkészletet](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. Kattintson a **Létrehozás**gombra. Létrejön a Function alkalmazás.
+    7. Kattintson a **Létrehozás** lehetőségre. Létrejön a Function alkalmazás.
      
         ![függvényalkalmazás létrehozva](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,7 +64,7 @@ Azure-függvény létrehozásához hajtsa végre a következő lépéseket:
 
         ![Új C#-függvény létrehozása](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Kattintson a **Létrehozás**gombra. A **függvény** létrejött.
+    4. Kattintson a **Létrehozás** lehetőségre. A **függvény** létrejött.
 
      
 10. A függvény ablakban futtassa a _. CSX_ fájlt.
@@ -193,7 +193,7 @@ Azure-függvény létrehozásához hajtsa végre a következő lépéseket:
         
         ![A "fájlok megtekintése" hivatkozás](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Írja be a **Project. JSON**fájlt, majd nyomja le az **ENTER**billentyűt. A **Project. JSON** fájlban illessze be a következő kódot:
+    3. Írja be **aproject.js**be, majd nyomja le az **ENTER**billentyűt. Illessze be a következő kódot a fájl **project.jsba** :
 
         ```
         {

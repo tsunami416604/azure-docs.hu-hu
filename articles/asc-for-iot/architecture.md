@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4cc7d1982555f058a4ea23f7d8a6fdc2d83e484d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311754"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Az Azure Security Center for IoT architektúrája
@@ -64,7 +64,7 @@ A IoT ajánlásainak és értesítéseinek Azure Security Center (az elemzési f
 Ebből a cikkből megismerheti a IoT-megoldás Azure Security Centerának alapszintű architektúráját és munkafolyamatát. Ha többet szeretne megtudni az előfeltételekről, az első lépésekről és a biztonsági megoldás engedélyezéséről IoT Hubban, tekintse meg a következő cikkeket:
 
 - [A szolgáltatás előfeltételei](service-prerequisites.md)
-- [Első lépések](getting-started.md)
+- [Bevezetés](getting-started.md)
 - [A megoldás konfigurálása](quickstart-configure-your-solution.md)
 - [A IoT Hub biztonságának engedélyezése](quickstart-onboard-iot-hub.md)
 - [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)

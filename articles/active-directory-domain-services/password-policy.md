@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654866"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040044"
 ---
-# <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
+# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Jelszó-és fiókzárolási házirendek Active Directory tartományi szolgáltatások felügyelt tartományokban
 
 A Azure Active Directory Domain Services (Azure AD DS) felhasználói biztonságának kezeléséhez olyan részletes jelszóházirendek is megadhatók, amelyek a fiókzárolás beállításait vagy a jelszó minimális hosszát és összetettségét vezérlik. A rendszer az Azure AD DS felügyelt tartomány összes felhasználójára vonatkozóan létrehoz és alkalmaz egy alapértelmezett részletes jelszóházirendek-házirendet. A részletes szabályozás biztosításához és adott üzleti vagy megfelelőségi igények kielégítéséhez további szabályzatok hozhatók létre és alkalmazhatók a felhasználók bizonyos csoportjaira.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat részletes jelszóházirendek az Azure-AD DS a Active Directory felügyeleti központ használatával.
 
 > [!NOTE]
-> A jelszóházirend csak a Resource Manager-alapú üzemi modell használatával létrehozott Azure AD DS felügyelt tartományokhoz érhető el. A klasszikus használatával létrehozott régebbi felügyelt tartományok esetében [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
+> A jelszóházirend csak a Resource Manager-alapú üzemi modell használatával létrehozott felügyelt tartományokhoz érhető el. A klasszikus használatával létrehozott régebbi felügyelt tartományok esetében [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -36,28 +36,28 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
   * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-  * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
-  * Az Azure AD DS-példányt a Resource Manager-alapú üzemi modell használatával kell létrehozni. Szükség esetén [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
-* Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
+  * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services felügyelt tartomány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+  * A felügyelt tartományt a Resource Manager-alapú üzemi modell használatával kell létrehozni. Szükség esetén [telepítse át a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-from-classic].
+* A felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
   * Ha szükséges, fejezze be az oktatóanyagot [egy felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
 
 ## <a name="default-password-policy-settings"></a>Alapértelmezett jelszóházirend-beállítások
 
-A részletes jelszóházirendek (Fgpp-EK) segítségével meghatározott korlátozásokat alkalmazhat a jelszó-és fiókzárolási házirendek számára a tartomány különböző felhasználói számára. A Kiemelt jogosultságú fiókok biztonságossá tételéhez például szigorúbb fiókzárolási beállításokat alkalmazhat, mint a normál, nem Kiemelt fiókok. Több Fgpp is létrehozhat egy Azure AD DS felügyelt tartományon belül, és meghatározhatja a prioritási sorrendet, hogy azok a felhasználókra vonatkozzanak.
+A részletes jelszóházirendek (Fgpp-EK) segítségével meghatározott korlátozásokat alkalmazhat a jelszó-és fiókzárolási házirendek számára a tartomány különböző felhasználói számára. A Kiemelt jogosultságú fiókok biztonságossá tételéhez például szigorúbb fiókzárolási beállításokat alkalmazhat, mint a normál, nem Kiemelt fiókok. Több Fgpp is létrehozhat egy felügyelt tartományon belül, és meghatározhatja a prioritási sorrendet, hogy azok a felhasználókra vonatkozzanak.
 
 A jelszóházirend és a Active Directory felügyeleti központ használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [További tudnivalók a részletes jelszóházirendek](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [Részletes jelszóházirendek konfigurálása az AD felügyeleti központban](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
-A házirendek elosztása egy Azure AD DS felügyelt tartományon keresztül történik, és az elvégzett módosítások a következő felhasználói bejelentkezéskor lesznek alkalmazva. A házirend módosítása nem oldja fel a már kizárt felhasználói fiók zárolását.
+A házirendeket a rendszer egy felügyelt tartományon keresztül terjeszti a csoportba, és a következő felhasználói bejelentkezéskor alkalmazza a módosításokat. A házirend módosítása nem oldja fel a már kizárt felhasználói fiók zárolását.
 
 A jelszóházirend egy kicsit másképp viselkedik attól függően, hogy a felhasználói fiók hogyan lett létrehozva. Az Azure AD DS kétféleképpen hozhat létre felhasználói fiókot:
 
 * A felhasználói fiók szinkronizálható az Azure AD-ből. Ez magában foglalja a közvetlenül az Azure-ban létrehozott felhőalapú felhasználói fiókokat, valamint a helyi AD DS környezetből Azure AD Connect használatával szinkronizált hibrid felhasználói fiókokat.
     * Az Azure AD DS felhasználói fiókjainak többsége az Azure AD szinkronizálási folyamatán keresztül jön létre.
-* A felhasználói fiók manuálisan is létrehozható egy Azure AD DS felügyelt tartományban, és nem létezik az Azure AD-ben.
+* A felhasználói fiók manuálisan is létrehozható egy felügyelt tartományban, és nem létezik az Azure AD-ben.
 
 Minden felhasználó, függetlenül attól, hogy ezek hogyan jönnek létre, a következő fiókzárolási házirendeket alkalmazza az alapértelmezett jelszóházirend az Azure AD DSban:
 
@@ -72,7 +72,7 @@ A fiókzárolás csak a felügyelt tartományon belül történik. A felhasznál
 
 Ha rendelkezik egy Azure AD-beli jelszavas házirenddel, amely 90 napnál hosszabb ideig adja meg a jelszót, akkor a rendszer az Azure AD DS alapértelmezett házirendjére alkalmazza a jelszót. Beállíthatja, hogy az Azure-AD DS eltérő jelszavakat adjon meg egy egyéni jelszóházirend számára. Ügyeljen arra, hogy az Azure AD DS jelszóházirend esetében az Azure AD-ban vagy a helyszíni AD DS-környezetben rövidebb jelszóval rendelkezzen. Ebben az esetben előfordulhat, hogy a felhasználó jelszava lejár az Azure AD DSban, mielőtt a rendszer megkéri az Azure AD-ben vagy egy helyszíni AD DS-környezetben való megváltoztatását.
 
-Az Azure AD DS felügyelt tartományokban manuálisan létrehozott felhasználói fiókok esetében az alapértelmezett házirend az alábbi további jelszavas beállításokat is alkalmazza. Ezek a beállítások nem vonatkoznak az Azure AD-ből szinkronizált felhasználói fiókokra, mivel a felhasználó nem tudja közvetlenül frissíteni a jelszavát az Azure AD DSban.
+Egy felügyelt tartományban manuálisan létrehozott felhasználói fiókok esetében az alapértelmezett házirend az alábbi további jelszavas beállításokat is alkalmazza. Ezek a beállítások nem vonatkoznak az Azure AD-ből szinkronizált felhasználói fiókokra, mivel a felhasználó nem tudja közvetlenül frissíteni a jelszavát az Azure AD DSban.
 
 * **Jelszó minimális hossza (karakter):** 7
 * **A jelszavaknak meg kell felelniük a bonyolultsági követelményeknek**
@@ -83,19 +83,19 @@ A fiókzárolás vagy a jelszó beállításai nem módosíthatók az alapértel
 
 Az Azure-beli alkalmazások létrehozásakor és futtatásakor előfordulhat, hogy egyéni jelszóházirend-szabályzatot szeretne konfigurálni. Létrehozhat például egy házirendet a különböző fiókzárolási házirend-beállítások megadásához.
 
-Az egyéni jelszóházirendek egy Azure AD DS felügyelt tartomány csoportjaira vonatkoznak. Ez a konfiguráció hatékonyan felülbírálja az alapértelmezett házirendet.
+Az egyéni jelszóházirendek a felügyelt tartomány csoportjaira vonatkoznak. Ez a konfiguráció hatékonyan felülbírálja az alapértelmezett házirendet.
 
-Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszközöket kell használnia egy tartományhoz csatlakoztatott virtuális gépről. A Active Directory felügyeleti központ segítségével megtekintheti, szerkesztheti és létrehozhatja az erőforrásokat egy Azure AD DS felügyelt tartományban, beleértve a szervezeti egységeket is.
+Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszközöket kell használnia egy tartományhoz csatlakoztatott virtuális gépről. A Active Directory felügyeleti központ segítségével megtekintheti, szerkesztheti és létrehozhatja az erőforrásokat egy felügyelt tartományban, beleértve a szervezeti egységeket is.
 
 > [!NOTE]
-> Egyéni jelszóházirend Azure AD DS felügyelt tartományban való létrehozásához be kell jelentkeznie egy olyan felhasználói fiókba, amely az *HRE DC-rendszergazdák* csoport tagja.
+> Egyéni jelszóházirend felügyelt tartományban való létrehozásához be kell jelentkeznie egy olyan felhasználói fiókba, amely az *HRE DC-rendszergazdák* csoport tagja.
 
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aaddscontoso.com*.
+1. A bal oldali ablaktáblán válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
 1. Nyissa meg a **rendszer** tárolót, majd a **jelszóbeállítás-tároló**.
 
-    Megjelenik az Azure AD DS felügyelt tartomány beépített jelszavas szabályzata. Ez a beépített házirend nem módosítható. Ehelyett hozzon létre egy egyéni jelszóházirend-szabályzatot az alapértelmezett házirend felülbírálásához.
+    Megjelenik a felügyelt tartomány beépített jelszavas szabályzata. Ez a beépített házirend nem módosítható. Ehelyett hozzon létre egy egyéni jelszóházirend-szabályzatot az alapértelmezett házirend felülbírálásához.
 
     ![Jelszavas szabályzat létrehozása a Active Directory felügyeleti központban](./media/password-policy/create-password-policy-adac.png)
 
@@ -107,7 +107,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
 1. Szükség szerint szerkessze a többi jelszóházirend-beállítást. Jegyezze fel a következő kulcsfontosságú pontokat:
 
-    * A beállítások, például a jelszó bonyolultsága, az életkor vagy a lejárati idő csak az Azure AD DS felügyelt tartományában manuálisan létrehozott felhasználók számára.
+    * Beállítások, például a jelszó bonyolultsága, az életkor vagy a lejárati idő a felügyelt tartományokban manuálisan létrehozott felhasználók számára.
     * A fiókzárolási beállítások minden felhasználóra érvényesek, de csak a felügyelt tartományon belül lépnek életbe, és nem az Azure AD-ben.
 
     ![Egyéni részletes jelszóházirendek létrehozása](./media/password-policy/custom-fgpp.png)

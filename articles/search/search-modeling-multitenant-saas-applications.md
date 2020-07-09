@@ -8,20 +8,23 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081106"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
+
 Egy több-bérlős alkalmazás az egyik, amely ugyanazokat a szolgáltatásokat és képességeket biztosítja a bérlők számára, akik nem láthatják és nem oszthatják meg más bérlők információit. Ez a dokumentum az Azure Cognitive Search-mel létrehozott több-bérlős alkalmazások bérlői elkülönítési stratégiáit tárgyalja.
 
 ## <a name="azure-cognitive-search-concepts"></a>Az Azure Cognitive Search fogalmak
-A szolgáltatásként nyújtott keresési megoldásként az Azure Cognitive Search lehetővé teszi, hogy a fejlesztők gazdag keresési funkciókat adjanak az alkalmazásokhoz anélkül, hogy bármilyen infrastruktúrát kellene kezelniük, vagy az adatok lekérése nélkül kellene foglalkoznia. A szolgáltatás feltölti az adattárat, majd a felhőben tárolja azokat. Az Azure Cognitive Search API-hoz való egyszerű kérések használatával az adatai módosíthatók és kereshetők. A szolgáltatás áttekintése [ebben a cikkben](https://aka.ms/whatisazsearch)található. A tervezési minták megtárgyalása előtt fontos megérteni az Azure Cognitive Search egyes fogalmait.
+A szolgáltatásként nyújtott keresési megoldásként az [Azure Cognitive Search](search-what-is-azure-search.md) lehetővé teszi, hogy a fejlesztők gazdag keresési funkciókat adjanak az alkalmazásokhoz anélkül, hogy bármilyen infrastruktúrát kellene kezelniük, vagy az adatok lekérése nélkül kellene foglalkoznia. A szolgáltatás feltölti az adattárat, majd a felhőben tárolja azokat. Az Azure Cognitive Search API-hoz való egyszerű kérések használatával az adatai módosíthatók és kereshetők. 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Szolgáltatások, indexek, mezők és dokumentumok keresése
+
+A tervezési minták megtárgyalása előtt fontos megérteni néhány alapvető fogalmat.
+
 Az Azure Cognitive Search használatakor az egyik a *keresési szolgáltatásra*van előfizetve. Az Azure Cognitive Searchba való feltöltéskor a rendszer a keresési szolgáltatásban található *indexben* tárolja azt. Egy szolgáltatáson belül több index is lehet. Az adatbázisok ismerős fogalmait használva a keresési szolgáltatás egy adatbázishoz hasonlítható, míg a szolgáltatásban lévő indexek az adatbázisban lévő táblákhoz is hasonlóvá lehetnek.
 
 A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező*határoz meg. Az Azure Cognitive Search indexbe kerülnek az egyes *dokumentumok*formájában. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor az Azure Cognitive Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kiadva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
@@ -37,7 +40,7 @@ A partíciók és replikák hozzáadásával és eltávolításával lehetővé 
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Szolgáltatások és indexek korlátai az Azure Cognitive Search
 Az Azure Cognitive Search különböző [díjszabási szintjei](https://azure.microsoft.com/pricing/details/search/) vannak, és a rétegek mindegyike különböző [korlátozásokkal és kvótákkal](search-limits-quotas-capacity.md)rendelkezik. A korlátozások némelyike a szolgáltatás szintjén van, néhány pedig az index szintjén, néhány pedig a partíció szintjén.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Alapszintű | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Replikák maximális száma szolgáltatás szerint |3 |12 |12 |12 |12 |
 | Partíciók maximális száma szolgáltatás szerint |1 |12 |12 |12 |3 |
@@ -127,5 +130,5 @@ Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosult
 ## <a name="next-steps"></a>További lépések
 Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb Azure-Cognitive Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.
 
-Az Azure Cognitive Search és a több-bérlős forgatókönyvekkel kapcsolatos bármilyen azuresearch_contact@microsoft.comkérdés a következő lehet:.
+Az Azure Cognitive Search és a több-bérlős forgatókönyvekkel kapcsolatos bármilyen kérdés a következő lehet: azuresearch_contact@microsoft.com .
 

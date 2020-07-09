@@ -4,15 +4,15 @@ description: Az MPIO konfigurálása a CentOS 6,6-t futtató Linux-gazdagéphez 
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278362"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511596"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
 Ez a cikk ismerteti a többutas i/o (MPIO) szolgáltatásnak a CentOS 6,6-es gazdagép-kiszolgálón való konfigurálásához szükséges lépéseket. Az iSCSI-kezdeményezők használatával a gazdagép-kiszolgáló a magas rendelkezésre állás érdekében csatlakozik a Microsoft Azure StorSimple eszközhöz. Részletesen ismerteti a Többutas eszközök automatikus észlelését és a StorSimple-kötetek adott beállítását.
@@ -45,7 +45,7 @@ A többszörös elérésű Linux a következő táblázatokból álló kernel-ö
    * **Többutas. conf**: a többutas démon konfigurációs fájlja, amely a beépített konfigurációs tábla felülírására szolgál.
 
 ### <a name="about-the-multipathconf-configuration-file"></a>Tudnivalók a többutas. conf konfigurációs fájlról
-A konfigurációs fájl `/etc/multipath.conf` számos, felhasználó által konfigurálható többutas funkciót tesz elérhetővé. A `multipath` parancs és a kernel démon `multipathd` a fájlban található információkat használja. A fájlt csak a Többutas eszközök konfigurálása során kell megkeresni. A `multipath` parancs futtatása előtt győződjön meg arról, hogy minden módosítást végzett. Ha ezt követően módosítja a fájlt, a módosítások érvénybe léptetéséhez le kell állítania és újra kell indítania a többutas elérési utat.
+A konfigurációs fájl `/etc/multipath.conf` számos, felhasználó által konfigurálható többutas funkciót tesz elérhetővé. A `multipath` parancs és a kernel démon a `multipathd` fájlban található információkat használja. A fájlt csak a Többutas eszközök konfigurálása során kell megkeresni. A parancs futtatása előtt győződjön meg arról, hogy minden módosítást végzett `multipath` . Ha ezt követően módosítja a fájlt, a módosítások érvénybe léptetéséhez le kell állítania és újra kell indítania a többutas elérési utat.
 
 A többutas. conf fájl öt szakaszt tartalmaz:
 
@@ -68,7 +68,7 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
    
     `ifconfig`
    
-    A következő példa a kimenetet mutatja be, ha két`eth0` hálózati `eth1`adapter (és) van jelen a gazdagépen.
+    A következő példa a kimenetet mutatja be, ha két hálózati adapter ( `eth0` és `eth1` ) van jelen a gazdagépen.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -101,7 +101,7 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
 1. Telepítse az *iSCSI-kezdeményező-utils* szolgáltatást a CentOS-kiszolgálóra. Az *iSCSI-kezdeményező-utils*telepítéséhez hajtsa végre az alábbi lépéseket.
    
-   1. `root` Jelentkezzen be a CentOS-gazdagépre.
+   1. Jelentkezzen be a `root` CentOS-gazdagépre.
    1. Telepítse az *iSCSI-kezdeményező-utils-* t. Típus:
       
        `yum install iscsi-initiator-utils`
@@ -109,8 +109,8 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
       
        `service iscsid start`
       
-       Előfordulhat, hogy `iscsid` a rendszer nem indul el ténylegesen `--force` , és szükség lehet a lehetőségre.
-   1. Annak ellenőrzéséhez, hogy az iSCSI-kezdeményező engedélyezve van-e a `chkconfig` rendszerindítás során, a parancs használatával engedélyezze a szolgáltatást.
+       Előfordulhat, hogy a rendszer `iscsid` nem indul el ténylegesen, és szükség lehet a `--force` lehetőségre.
+   1. Annak ellenőrzéséhez, hogy az iSCSI-kezdeményező engedélyezve van-e a rendszerindítás során, a `chkconfig` parancs használatával engedélyezze a szolgáltatást.
       
        `chkconfig iscsi on`
    1. A megfelelő beállítás ellenőrzéséhez futtassa a következő parancsot:
@@ -179,7 +179,7 @@ A többutas létrehozás konfigurációs lépései magában foglalják az automa
 ### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>1. lépés: többutas automatikus észlelés konfigurálása
 A többutas által támogatott eszközök automatikusan felderíthető és konfigurálhatók.
 
-1. `/etc/multipath.conf` Fájl inicializálása. Típus:
+1. Fájl inicializálása `/etc/multipath.conf` . Típus:
    
      `mpathconf --enable`
    
@@ -195,7 +195,7 @@ A többutas által támogatott eszközök automatikusan felderíthető és konfi
    
     `mpathconf --find_multipaths y`
    
-    Ez a beállítás a lent látható alapértelmezett értékeket `multipath.conf` fogja módosítani:
+    Ez a beállítás a lent látható alapértelmezett értékeket fogja módosítani `multipath.conf` :
    
         defaults {
         find_multipaths yes
@@ -206,7 +206,7 @@ A többutas által támogatott eszközök automatikusan felderíthető és konfi
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. lépés: a StorSimple-kötetek többutas elérésének konfigurálása
 Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlban sorolja fel, és a rendszer figyelmen kívül hagyja. A StorSimple-eszközökről származó kötetek többutas elérésének engedélyezéséhez létre kell hoznia egy feketelistán lévő kivételeket is.
 
-1. Szerkessze `/etc/mulitpath.conf` a fájlt. Típus:
+1. Szerkessze a `/etc/mulitpath.conf` fájlt. Típus:
    
     `vi /etc/multipath.conf`
 1. Keresse meg a blacklist_exceptions szakaszt a többutas. conf fájlban. Ebben a szakaszban a StorSimple-eszköznek feketelistán lévő kivételként kell szerepelnie. A fájl megfelelő sorait a lent látható módon törölheti (csak a használt eszköz adott modelljét használja):
@@ -225,10 +225,10 @@ Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlb
 ### <a name="step-3-configure-round-robin-multipathing"></a>3. lépés: a ciklikus multiplexelés többszörös elérésének konfigurálása
 Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elérési utakat az aktív vezérlőhöz a kiegyensúlyozott, ciklikus időszeleteléses módon használja.
 
-1. Szerkessze `/etc/multipath.conf` a fájlt. Típus:
+1. Szerkessze a `/etc/multipath.conf` fájlt. Típus:
    
     `vi /etc/multipath.conf`
-1. A `defaults` szakasz alatt állítsa be a `path_grouping_policy` következőt: `multibus`. A `path_grouping_policy` meghatározza az alapértelmezett elérési út csoportosítására vonatkozó házirendet, amely a meghatározatlan többutas elemekre vonatkozik. Az Alapértelmezések szakasz az alább látható módon jelenik meg.
+1. A `defaults` szakasz alatt állítsa be a következőt: `path_grouping_policy` `multibus` . A `path_grouping_policy` meghatározza az alapértelmezett elérési út csoportosítására vonatkozó házirendet, amely a meghatározatlan többutas elemekre vonatkozik. Az Alapértelmezések szakasz az alább látható módon jelenik meg.
    
         defaults {
                 user_friendly_names yes
@@ -236,7 +236,7 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
         }
 
 > [!NOTE]
-> A `path_grouping_policy` következők leggyakoribb értékei:
+> A következők leggyakoribb értékei `path_grouping_policy` :
 > 
 > * feladatátvétel = 1 elérési út/prioritási csoport
 > * Multibus = az összes érvényes elérési út 1 prioritású csoportban
@@ -244,7 +244,7 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
 > 
 
 ### <a name="step-4-enable-multipathing"></a>4. lépés: a többutas működés engedélyezése
-1. Indítsa újra `multipathd` a démont. Típus:
+1. Indítsa újra a `multipathd` démont. Típus:
    
     `service multipathd restart`
 1. A kimenet az alábbi módon jelenik meg:
@@ -268,7 +268,7 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Másolja a StorSimple-eszköz `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`IQN az előző kimenetből.
+    Másolja a StorSimple-eszköz IQN az `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` előző kimenetből.
 
    b. Kapcsolódjon az eszközhöz a TARGET IQN használatával. Az StorSimple-eszköz itt az iSCSI-cél. Típus:
 
@@ -276,7 +276,7 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    A következő példa a kimenetet mutatja a IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. A kimenet azt jelzi, hogy sikeresen csatlakozott az eszköz két iSCSI-kompatibilis hálózati adapteréhez.
+    A következő példa a kimenetet mutatja a IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` . A kimenet azt jelzi, hogy sikeresen csatlakozott az eszköz két iSCSI-kompatibilis hálózati adapteréhez.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -326,7 +326,7 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
 ## <a name="troubleshoot-multipathing"></a>Többútvonalas hibák megoldása
 Ez a szakasz néhány hasznos tippet tartalmaz, ha a többutas konfiguráció során problémákba ütközik.
 
-K. Nem látom, `multipath.conf` hogy a fájl módosításai érvénybe lépnek.
+K. Nem látom, hogy a fájl módosításai `multipath.conf` érvénybe lépnek.
 
 A. Ha bármilyen módosítást végzett a `multipath.conf` fájlon, újra kell indítania a többutas szolgáltatást. Írja be a következő parancsot:
 
@@ -338,7 +338,7 @@ A. Győződjön meg arról, hogy a két útvonal ugyanazon az alhálózaton van 
 
 K. Ha elérhető útvonalakat listázok, nem látok kimenetet.
 
-A. Általában nem látható, hogy a többutas útvonalak egyike a többutas démon hibáját sugallja, és ez valószínűleg a `multipath.conf` fájl egyik problémája.
+A. Általában nem látható, hogy a többutas útvonalak egyike a többutas démon hibáját sugallja, és ez valószínűleg a fájl egyik problémája `multipath.conf` .
 
 Érdemes ellenőrizni azt is, hogy a célhelyhez való csatlakozás után valóban látni lehet-e lemezeket, mivel a többutas listák egyik válasza sem jelent lemezeket.
 
@@ -413,7 +413,7 @@ A. Annak ellenőrzéséhez, hogy az eszköz engedélyezve van-e, használja a k�
 További információ: [Hibaelhárítás a többutas eléréshez](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
 
 ## <a name="list-of-useful-commands"></a>Hasznos parancsok listája
-| Típus | Parancs | Leírás |
+| Típus | Parancs | Description |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |ISCSI szolgáltatás indítása |
 | &nbsp; |`service iscsid stop` |Az iSCSI szolgáltatás leállítása |

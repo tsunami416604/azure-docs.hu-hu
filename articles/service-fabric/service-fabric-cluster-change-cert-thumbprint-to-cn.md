@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan válthat egy Service Fabric-fürtöt a tanúsí
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272627"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Fürt módosítása tanúsítvány-ujjlenyomatról köznapi névre
@@ -118,7 +117,7 @@ Ezután nyissa meg a sablonfájlt egy szövegszerkesztőben, és három frissít
 
     Vegye fontolóra a *certificateThumbprint*eltávolítását is, ezért előfordulhat, hogy a Resource Manager-sablon nem hivatkozik rá.
 
-2. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile**->**extensionProfile**->-**bővítmények**->**Tulajdonságok**->**beállításai****certificate** `"commonNames": ["[parameters('certificateCommonName')]"],` `"thumbprint": "[parameters('certificateThumbprint')]",`tanúsítvány, Hozzáadás és Eltávolítás elemre.->
+2. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile** -> **extensionProfile**- -> **bővítmények** -> **Tulajdonságok** -> **beállításai** -> **tanúsítvány**, Hozzáadás `"commonNames": ["[parameters('certificateCommonName')]"],` és eltávolítás `"thumbprint": "[parameters('certificateThumbprint')]",` elemre.
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

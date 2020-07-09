@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610727"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
@@ -57,15 +57,15 @@ Ahogy az az alábbi táblázatban is látható, az API megválasztása alapján 
 |----|----|----|
 |SQL API|Adatbázis|Tároló|
 |MongoDB-hez készült Azure Cosmos DB API|Adatbázis|Gyűjtemény|
-|Cassandra API|Kulcstartomány|Tábla|
+|Cassandra API|Kulcstartomány|Táblázat|
 |Gremlin API|Adatbázisfiók|Graph|
-|Table API|Adatbázisfiók|Tábla|
+|Table API|Adatbázisfiók|Táblázat|
 
 Az átviteli sebesség különböző szinteken való kiépítés révén a számítási feladatok jellemzői alapján optimalizálhatja költségeit. Ahogy azt korábban említettük, programozott módon és bármikor növelheti vagy csökkentheti a kiosztott átviteli sebességet az egyes tároló (k) esetében, vagy együttesen a különböző tárolók között. A számítási feladatok változásainak rugalmas skálázásával, csak a konfigurált átviteli sebességért kell fizetnie. Ha a tároló vagy a tárolók több régióban vannak elosztva, akkor a tárolón konfigurált átviteli sebesség és a tárolók halmaza garantáltan elérhető az összes régióban.
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizálás díjszabással – a kérések korlátozása
 
-A késésre nem érzékeny munkaterhelések esetében kiépítheti a kevesebb átviteli sebességet, és engedélyezheti az alkalmazás-kezelői sebesség korlátozását, ha a tényleges átviteli sebesség meghaladja a kiosztott átviteli sebességet. A kiszolgáló a `RequestRateTooLarge` (429-es http-állapotkód) megelőző jelleggel befejezi a kérést `x-ms-retry-after-ms` , és visszaküldi a fejlécet, amely jelzi, hogy a felhasználónak mennyi idő elteltével kell megvárnia a kérés újrapróbálkozása előtt. 
+A késésre nem érzékeny munkaterhelések esetében kiépítheti a kevesebb átviteli sebességet, és engedélyezheti az alkalmazás-kezelői sebesség korlátozását, ha a tényleges átviteli sebesség meghaladja a kiosztott átviteli sebességet. A kiszolgáló a (429-es http-állapotkód) megelőző jelleggel befejezi a kérést, `RequestRateTooLarge` és visszaküldi a `x-ms-retry-after-ms` fejlécet, amely jelzi, hogy a felhasználónak mennyi idő elteltével kell megvárnia a kérés újrapróbálkozása előtt. 
 
 ```html
 HTTP Status 429, 
@@ -75,9 +75,9 @@ HTTP Status 429,
 
 ### <a name="retry-logic-in-sdks"></a>Újrapróbálkozási logika az SDK-ban 
 
-A natív SDK-k (.NET/.NET Core, Java, Node. js és Python) implicit módon elkapják ezt a választ, figyelembe veszik a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem fér hozzá, a következő újrapróbálkozás sikeres lesz.
+A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon elkapják ezt a választ, figyelembe veszik a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd újra megpróbálkoznak a kéréssel. Ha a fiókját több ügyfél egyidejűleg nem fér hozzá, a következő újrapróbálkozás sikeres lesz.
 
-Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor az újrapróbálkozások alapértelmezett száma, amely jelenleg 9, előfordulhat, hogy nem elegendő. Ilyen esetekben az ügyfél az 429-as állapotkódot `RequestRateTooLargeException` veti fel az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a ConnectionPolicy `RetryOptions` -példányra való beállításával. Alapértelmezés szerint a `RequestRateTooLargeException` 429-as állapotkód a 30 másodperces kumulatív várakozási idő után tér vissza, ha a kérés továbbra is a kérelem arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték. 
+Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor az újrapróbálkozások alapértelmezett száma, amely jelenleg 9, előfordulhat, hogy nem elegendő. Ilyen esetekben az ügyfél az `RequestRateTooLargeException` 429-as állapotkódot veti fel az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a ConnectionPolicy-példányra való beállításával `RetryOptions` . Alapértelmezés szerint a `RequestRateTooLargeException` 429-as állapotkód a 30 másodperces kumulatív várakozási idő után tér vissza, ha a kérés továbbra is a kérelem arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték. 
 
 A [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
 
@@ -117,7 +117,7 @@ Alapértelmezés szerint a Azure Cosmos DB automatikusan indexel minden rekord �
 
 Nyomon követheti a kiépített RUs teljes számát, a korlátozott számú kérelmek számát, valamint a Azure Portal felhasznált RUs számát. Az alábbi képen egy példa használati metrika látható:
 
-![A kérések egységeinek figyelése a Azure Portal](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="A kérések egységeinek figyelése a Azure Portal":::
 
 Riasztásokat is beállíthat, hogy ellenőrizze, hogy a korlátozott kérelmek száma meghaladja-e a megadott küszöbértéket. További részletekért tekintse [meg a Azure Cosmos db cikk figyelését](use-metrics.md) ismertető cikket. Ezek a riasztások e-mailt küldhetnek a fiók rendszergazdái számára, vagy meghívhatnak egy egyéni HTTP-webhookot vagy egy Azure-függvényt a kiépített átviteli sebesség automatikus növelésére. 
 
@@ -139,7 +139,7 @@ Az új munkaterhelés kiépített átviteli sebességének meghatározásához a
 
 2. Azt javasoljuk, hogy a tárolókat a vártnál magasabb átviteli sebességgel hozza létre, majd szükség szerint méretezéssel. 
 
-3. Javasoljuk, hogy a natív Azure Cosmos DB SDK-k egyikét használja az automatikus újrapróbálkozások kihasználása érdekében, amikor a kérelmek díjszabása korlátozott. Ha olyan platformon dolgozik, amely nem támogatott, és nem használja a Cosmos DB REST API, akkor a `x-ms-retry-after-ms` fejléc használatával hajtsa végre a saját újrapróbálkozási házirendjét. 
+3. Javasoljuk, hogy a natív Azure Cosmos DB SDK-k egyikét használja az automatikus újrapróbálkozások kihasználása érdekében, amikor a kérelmek díjszabása korlátozott. Ha olyan platformon dolgozik, amely nem támogatott, és nem használja a Cosmos DB REST API, akkor a fejléc használatával hajtsa végre a saját újrapróbálkozási házirendjét `x-ms-retry-after-ms` . 
 
 4. Győződjön meg arról, hogy az alkalmazás kódja szabályosan támogatja az esetet, amikor az összes újrapróbálkozás sikertelen lesz. 
 
@@ -155,7 +155,7 @@ A következő lépések segítségével a megoldásait rugalmasan méretezhető 
 
 1. Ha jelentősen meghaladja a tárolók és adatbázisok kiépített átviteli sebességét, tekintse át az RUs által kiépített vs felhasznált RUs-t, és finomítsa a számítási feladatokat.  
 
-2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](online-backup-and-restore.md)című témakört. 
+2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](optimize-cost-queries.md)című témakört. 
 
 3. A műveletek és azok költségeinek egy másik módja, ha engedélyezi a Azure Monitor-naplókat, így a művelet/időtartam és a kérések díjszabása is elérhető. A Azure Cosmos DB minden művelethez megadja a kérelmek díját, így minden műveleti díj visszatárolható a válaszból, majd elemzésre használható. 
 

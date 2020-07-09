@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45878ea947803b04cd5cd6e471f701c21f2c26fa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388068"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Salesforce SAML-szolgáltatóval történő bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ A Azure AD B2C bérlőben létrehozott tanúsítványt kell tárolnia.
 7. Adja meg a szabályzat **nevét**. Például: SAMLSigningCert. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs nevéhez.
 8. Keresse meg és válassza ki a létrehozott B2CSigningCert. pfx-tanúsítványt.
 9. Adja meg a tanúsítványhoz tartozó **jelszót** .
-3. Kattintson a **Létrehozás**gombra.
+3. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -105,11 +105,11 @@ Ha azt szeretné, hogy a felhasználók Salesforce-fiókkal jelentkezzenek be, m
 
 A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat fájlkiterjesztés fájljában. További információ: SAML- [identitás-szolgáltató technikai profiljának megadása](saml-identity-provider-technical-profile.md).
 
-1. Nyissa meg a *TrustFrameworkExtensions. xml fájlt*.
+1. Nyissa meg a *TrustFrameworkExtensions.xml*.
 1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
 1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>salesforce</Domain>
       <DisplayName>Salesforce</DisplayName>
@@ -152,7 +152,7 @@ A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáad
 1. Frissítse a **StorageReferenceId** mindkét példányának értékét az aláíró tanúsítvány kulcsának nevére. Például B2C_1A_SAMLSigningCert.
 1. Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-kódrészletet. Ha a házirend már tartalmazza a `SM-Saml-idp` technikai profilt, ugorjon a következő lépésre. További információ: [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md).
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Session Management</DisplayName>
       <TechnicalProfiles>
@@ -174,16 +174,16 @@ A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáad
 Most úgy konfigurálta a szabályzatot, hogy Azure AD B2C tudja, hogyan kommunikálhat a Salesforce-fiókjával. Próbálja megismételni a szabályzat kiterjesztési fájljának feltöltését, hogy megbizonyosodjon róla, hogy eddig nincs probléma.
 
 1. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
-2. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
+2. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
 3. Kattintson a **Feltöltés** gombra.
 
 ## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
 
 Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs vagy bejelentkezési képernyőkön nem érhető el. Az elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az a Salesforce-identitás szolgáltatója is legyen.
 
-1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
+1. Nyissa meg a *TrustFrameworkBase.xml* fájlt az alapszintű csomagból.
 2. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
-3. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
+3. Nyissa meg a *TrustFrameworkExtensions.xmlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 4. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 5. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInSalesforce`.
 
@@ -194,7 +194,7 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 1. Keresse meg **OrchestrationStep** az `Order="1"` imént létrehozott felhasználói útra kiterjedő OrchestrationStep elemet.
 2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `SalesforceExchange` :
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="SalesforceExchange" />
     ```
 
@@ -205,13 +205,13 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben 
 1. Keresse meg a felhasználói útra kiterjedő **OrchestrationStep** `Order="2"` .
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt **azonosítóhoz** :
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 
     Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil **azonosítójával** . Például `salesforce` vagy `LinkedIn-OAUTH`.
 
-3. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
+3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
 
@@ -223,7 +223,7 @@ A Azure AD B2Ckel folytatott kommunikáció egy, a B2C-bérlőben regisztrált a
 
 Frissítse a függő entitás (RP) fájlját, amely elindítja az imént létrehozott felhasználói utat:
 
-1. Készítsen másolatot a *SignUpOrSignIn. XML fájlról* a munkakönyvtárában, és nevezze át. Nevezze át például a *SignUpSignInSalesforce. XML fájlba*.
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInSalesforce.xmlra *.
 2. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInSalesforce`.
 3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_salesforce`
 4. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignInSalesforce).

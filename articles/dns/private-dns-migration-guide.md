@@ -5,15 +5,15 @@ description: Ez az útmutató lépésről lépésre bemutatja, hogyan telepíthe
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699464"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
 

@@ -9,10 +9,10 @@ description: Használjon privát Helm-tárházat egy Azure fejlesztői tárhelye
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók, Helm
 manager: gwallace
 ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240469"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Privát Helm-tárház használata az Azure dev Spaces szolgáltatásban
@@ -30,7 +30,7 @@ helm repo update
 
 ## <a name="add-the-chart-to-your-application"></a>Diagram hozzáadása az alkalmazáshoz
 
-Navigáljon a projekt könyvtárába, és futtassa `azds prep`a parancsot.
+Navigáljon a projekt könyvtárába, és futtassa a parancsot `azds prep` .
 
 ```cmd
 azds prep --enable-ingress
@@ -60,7 +60,7 @@ A saját Helm-tárházból származó diagram le lett töltve, és hozzá lett a
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
-Navigáljon a projekt gyökérkönyvtárához, és futtassa `azds up` az alkalmazást, és ellenőrizze, hogy az alkalmazás sikeresen fut-e a fejlesztői térben.
+Navigáljon a projekt gyökérkönyvtárához, és futtassa az `azds up` alkalmazást, és ellenőrizze, hogy az alkalmazás sikeresen fut-e a fejlesztői térben.
 
 ```cmd
 $ azds up

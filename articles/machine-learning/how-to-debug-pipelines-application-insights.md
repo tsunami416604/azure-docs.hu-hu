@@ -1,5 +1,5 @@
 ---
-title: A gépi tanulási folyamatok hibakeresése és hibaelhárítása Application Insights
+title: Figyelő &a folyamat naplófájljainak összegyűjtése
 titleSuffix: Azure Machine Learning
 description: Adja hozzá a naplózást a képzéshez és a Batch-pontozási folyamatokhoz, és tekintse meg a naplózott eredményeket Application Insightsban.
 services: machine-learning
@@ -7,18 +7,17 @@ author: sanpil
 ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
-ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982361"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055715"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>A gépi tanulási folyamatok hibakeresése és hibaelhárítása Application Insights
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>A gépi tanulási folyamat naplófájljainak összegyűjtése a riasztások és a hibakeresés Application Insights
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 A [OpenCensus](https://opencensus.io/quickstart/python/) Python Library segítségével átirányíthatja a naplókat a parancsfájlokból Application Insights. Az egyetlen helyen futtatott naplók összesítése lehetővé teszi a lekérdezések és a problémák diagnosztizálását. A Application Insights használata lehetővé teszi a naplók időbeli nyomon követését és a folyamat-naplók összehasonlítását a futtatások között.

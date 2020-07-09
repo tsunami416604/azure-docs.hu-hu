@@ -16,4 +16,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050209"
 ---
 >[!NOTE]
->A cikkben említett funkciók némelyike, például a felhőből az eszközre irányuló üzenetküldés, az eszközök és az eszközök kezelése csak a standard szintű IoT Hub érhető el. Az alapszintű és standard csomagokról [a megfelelő IoT Hub-csomag kiválasztását](../articles/iot-hub/iot-hub-scaling.md) ismertető cikkben talál további információt.
+>A cikkben említett egyes funkciók, például a felhő–eszköz irányú üzenetküldés, az ikereszközök és az eszközfelügyelet csak a standard szintű IoT Hubon érhető el. Az alapszintű és standard csomagokról [a megfelelő IoT Hub-csomag kiválasztását](../articles/iot-hub/iot-hub-scaling.md) ismertető cikkben talál további információt.

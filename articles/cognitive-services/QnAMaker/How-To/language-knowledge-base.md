@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220632"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693090"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>A QnA Maker Tudásbázis-tartalmának nyelvi támogatása
 
@@ -25,7 +25,7 @@ A nyelv meghatározza, hogy az eredmények mennyire fontosak QnA Maker a felhasz
 
 ## <a name="one-language-for-all-knowledge-bases-in-resource"></a>Az erőforrás összes tudásbázisának egy nyelve
 
-QnA Maker lehetővé teszi a QnA-szolgáltatás nyelvének kiválasztását az első Tudásbázis létrehozásakor. Egy QnA Maker erőforrás összes tudásbázisa esetében mindegyiknek azonos nyelven kell lennie. Ez a nyelv nem módosítható.
+A QnA Maker esetében az első tudásbázis létrehozásakor állíthatja be a QnA-szolgáltatás nyelvét. A QnA Maker-erőforrásban szereplő összes Tudásbázisnak azonos nyelvűnek kell lennie. Ez a nyelv nem módosítható.
 
 Ha egy erőforrás különböző nyelveken található tudásbázisokat hoz létre, negatívan befolyásolja az eredmények jelentőségét QnA Maker a felhasználói lekérdezésekre adott válaszként.
 

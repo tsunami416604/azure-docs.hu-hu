@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bdc7e6e3795719128a8ecfb1e8bc97c1a9a08c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477787"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Útmutató: az Azure AD-alkalmazás korlátozása egy Azure AD-bérlőben lévő felhasználók köré
 
@@ -99,4 +99,4 @@ Ha úgy konfigurálta az alkalmazást, hogy engedélyezze a felhasználó-hozzá
 - [Engedélyezés hozzáadása az alkalmazás szerepköreinek & a szerepkörök jogcímeinek használata egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Biztonsági csoportok és alkalmazás-szerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory-alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

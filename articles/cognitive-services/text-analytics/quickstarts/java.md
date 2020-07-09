@@ -8,20 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: d6278452eda0a6a043654d90519374a741caf76a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446321"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027991"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Gyors útmutató: az Azure Text Analytics kognitív szolgáltatás meghívása a Java használatával
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti a véleményét](#SentimentAnalysis), [kinyerheti a legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) 
+Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti a véleményét](#SentimentAnalysis), [kinyerheti a legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711)  
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -33,11 +32,11 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelv felismerése
+## <a name="detect-language"></a>Nyelvfelismerés
 
 A Nyelvfelismerés API észleli a szöveges dokumentum nyelvét az [észlelési nyelv módszer](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)használatával.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy `DetectLanguage.java`nevű osztályt.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy nevű osztályt `DetectLanguage.java` .
 1. Adja hozzá az alábbi kódot az osztályhoz.
 1. Másolja a Text Analytics kulcsot és a végpontot a kódra. 
 1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
@@ -100,7 +99,7 @@ public class DetectLanguage {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/languages";
+    static String path = "/text/analytics/v3.0/languages";
     
     public static String GetLanguage (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -161,43 +160,38 @@ public class DetectLanguage {
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
-
 {
-   "documents": [
-      {
-         "id": "1",
-         "detectedLanguages": [
-            {
-               "name": "English",
-               "iso6391Name": "en",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "2",
-         "detectedLanguages": [
-            {
-               "name": "Spanish",
-               "iso6391Name": "es",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "3",
-         "detectedLanguages": [
-            {
-               "name": "Chinese_Simplified",
-               "iso6391Name": "zh_chs",
-               "score": 1.0
-            }
-         ]
-      }
-   ],
-   "errors": [
-
-   ]
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 <a name="SentimentAnalysis"></a>
@@ -206,7 +200,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt `GetSentiment.java`a neve alatt.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt a neve alatt `GetSentiment.java` .
 1. Adja hozzá az alábbi kódot az osztályhoz.
 1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
@@ -270,7 +264,7 @@ public class GetSentiment {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/sentiment";
+    static String path = "/text/analytics/v3.0/sentiment";
     
     public static String getTheSentiment (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -332,27 +326,66 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ```json
 {
-   "documents": [
-      {
-         "score": 0.99984133243560791,
-         "id": "1"
-      },
-      {
-         "score": 0.024017512798309326,
-         "id": "2"
-      },
-   ],
-   "errors": [   ]
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 102,
+                    "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                }
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "sentiment": "negative",
+            "confidenceScores": {
+                "positive": 0.02,
+                "neutral": 0.05,
+                "negative": 0.93
+            },
+            "sentences": [
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.05,
+                        "negative": 0.93
+                    },
+                    "offset": 0,
+                    "length": 92,
+                    "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
+## <a name="extract-key-phrases"></a>Kulcsszókeresés
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. Az alábbi példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy nevű `GetKeyPhrases.java`osztályt.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy nevű osztályt `GetKeyPhrases.java` .
 1. Adja hozzá az alábbi kódot az osztályhoz.
 1. Másolja a Text Analytics kulcsot és a végpontot a kódra. 
 1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
@@ -416,7 +449,7 @@ public class GetKeyPhrases {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/keyPhrases";
+    static String path = "/text/analytics/v3.0/keyPhrases";
     
     public static String GetKeyPhrases (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -478,46 +511,50 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ```json
 {
-   "documents": [
-      {
-         "keyPhrases": [
-            "HDR resolution",
-            "new XBox",
-            "clean look"
-         ],
-         "id": "1"
-      },
-      {
-         "keyPhrases": [
-            "Carlos",
-            "notificacion",
-            "algun problema",
-            "telefono movil"
-         ],
-         "id": "2"
-      },
-      {
-         "keyPhrases": [
-            "new hotel",
-            "Grand Hotel",
-            "review",
-            "center of Seattle",
-            "classiest decor",
-            "stars"
-         ],
-         "id": "3"
-      }
-   ],
-   "errors": [  ]
+    "documents": [
+        {
+            "id": "1",
+            "keyPhrases": [
+                "HDR resolution",
+                "new XBox",
+                "clean look"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "keyPhrases": [
+                "Carlos",
+                "notificacion",
+                "algun problema",
+                "telefono movil"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "keyPhrases": [
+                "new hotel",
+                "Grand Hotel",
+                "review",
+                "center of Seattle",
+                "classiest decor",
+                "stars"
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 <a name="Entities"></a>
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location`, míg a wikipedia-ra mutató hivatkozás. `https://en.wikipedia.org/wiki/United_States`  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location` , míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States` .  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt `GetEntities.java`a neve alatt.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE (vagy az asztalon lévő új mappában). Hozzon létre egy osztályt a neve alatt `GetEntities.java` .
 1. Adja hozzá az alábbi kódot az osztályhoz.
 1. Másolja a Text Analytics kulcsot és a végpontot a kódra. 
 1. Győződjön meg arról, hogy telepítve van a [Gson](https://github.com/google/gson) -könyvtár.
@@ -581,7 +618,7 @@ public class GetEntities {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/entities";
+    static String path = "/text/analytics/v3.0/entities/recognition/general";
     
     public static String GetEntities (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -640,51 +677,35 @@ public class GetEntities {
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
-{  
-   "documents":[  
-      {  
-         "id":"1",
-         "entities":[  
-            {  
-               "name":"Microsoft",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.20872054383103444,
-                     "entityTypeScore":0.99996185302734375,
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Microsoft",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
-               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type":"Organization"
-            },
-            {  
-               "name":"Technology company",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.82123868042800585,
-                     "text":"It company",
-                     "offset":16,
-                     "length":10
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Technology company",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
-               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
-            }
-         ]
-      }
-   ],
-    "errors":[]
+{
+    "documents": [
+        {
+            "id": "1",
+            "entities": [
+                {
+                    "text": "Microsoft",
+                    "category": "Organization",
+                    "offset": 0,
+                    "length": 9,
+                    "confidenceScore": 0.86
+                },
+                {
+                    "text": "IT",
+                    "category": "Skill",
+                    "offset": 16,
+                    "length": 2,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

@@ -3,15 +3,14 @@ title: A .NET SDK használata Microsoft Azure StorSimple Data Manager feladatokh
 description: Megtudhatja, hogyan indíthat el StorSimple Data Manager feladatokat a .NET SDK használatával
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514891"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Az adatátalakítás kezdeményezése a .NET SDK használatával
 
@@ -43,7 +42,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 Az alábbi lépések végrehajtásával indítson el egy adat-átalakítási feladatot a .NET használatával.
 
 1. A konfigurációs paraméterek beolvasásához hajtsa végre a következő lépéseket:
-    1. Töltse le `Get-ConfigurationParams.ps1` az elemet a GitHub- `C:\DataTransformation` tárház parancsfájlból a helyről.
+    1. Töltse le az `Get-ConfigurationParams.ps1` elemet a GitHub-tárház parancsfájlból a `C:\DataTransformation` helyről.
     1. Futtassa a `Get-ConfigurationParams.ps1` szkriptet a GitHub-adattárból. Írja be a következő parancsot:
 
         ```

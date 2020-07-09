@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652632"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem engedélyezése
@@ -32,7 +31,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD jelszavas védelmet a he
 
 ## <a name="enable-on-premises-password-protection"></a>Helyszíni jelszavas védelem engedélyezése
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési módszerek** > **jelszavas védelmét**.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg **Azure Active Directory**  >  **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelmét**.
 1. Állítsa be a **jelszavas védelem engedélyezésének lehetőségét a Windows Server Active Directory** az *Igen*értékre.
 
     Ha ez a beállítás a *nem*értékre van állítva, az összes telepített Azure ad-beli jelszavas védelmi tartományvezérlő-ügynök nyugalmi módba kerül, ahol az összes jelszó elfogadva van. Nem végeznek érvényesítési tevékenységet, és nem jönnek létre naplózási események.

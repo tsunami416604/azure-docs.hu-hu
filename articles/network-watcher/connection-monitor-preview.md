@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: d926a9f686f0f4c39203b8a217a7c608cfad926e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52d33e7292ebe7b27eede2b89aa605780f826392
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737614"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
@@ -402,9 +402,9 @@ A Azure Portal a következő mezők értékeinek megadásával hozzon létre egy
    
        Az előfizetések szintjéről a hierarchiában lévő többi szintre is lebonthatja a részletezést:
 
-      **Az előfizetési** > **erőforráscsoportok** > **virtuális hálózatok** > -**alhálózatokat** > **ügynökökkel**
+      **Előfizetés**  >  **Erőforráscsoportok**  >  **Virtuális hálózatok**  >  **Alhálózatok**  >  **Ügynökökkel rendelkező virtuális gépek**
 
-      A **Group By** mező értékét úgy is megváltoztathatja, hogy bármely más szintről elindítsa a fát. Ha például a virtuális hálózat alapján csoportosítja a csoportosítást, akkor a hierarchiában található ügynökökkel rendelkező virtuális gépek a **virtuális hálózatok** > **-alhálózatokat** > **ügynökökkel**látják el.
+      A **Group By** mező értékét úgy is megváltoztathatja, hogy bármely más szintről elindítsa a fát. Ha például a virtuális hálózat alapján csoportosítja a csoportosítást, akkor a hierarchiában található ügynökökkel rendelkező virtuális gépek a **virtuális hálózatok**-  >  **alhálózatokat**  >  **ügynökökkel**látják el.
 
       ![Képernyőfelvétel a kapcsolatkezelő szolgáltatásról, amely a források hozzáadása panelt és az Azure Agents fület jeleníti meg](./media/connection-monitor-2-preview/add-azure-sources.png)
 
@@ -444,7 +444,7 @@ A Azure Portal a következő mezők értékeinek megadásával hozzon létre egy
 
     * **Név** – a teszt konfigurációjának neve.
     * **Protokoll** – válassza a TCP, az ICMP vagy a http lehetőséget. A HTTP HTTPS-re való módosításához válassza a **http** protokollt, és válassza a **443** portot.
-        * **Hálózati teszt konfigurációjának létrehozása** – ez a jelölőnégyzet csak akkor jelenik meg, ha a **protokoll** mezőben a **http** lehetőséget választja. Jelölje be ezt a jelölőnégyzetet, ha olyan tesztelési konfigurációt szeretne létrehozni, amely ugyanazokat a forrásokat és célhelyeket használja, amelyeket a konfigurációban máshol adott meg. Az újonnan létrehozott teszt-konfiguráció neve `<the name of your test configuration>_networkTestConfig`.
+        * **Hálózati teszt konfigurációjának létrehozása** – ez a jelölőnégyzet csak akkor jelenik meg, ha a **protokoll** mezőben a **http** lehetőséget választja. Jelölje be ezt a jelölőnégyzetet, ha olyan tesztelési konfigurációt szeretne létrehozni, amely ugyanazokat a forrásokat és célhelyeket használja, amelyeket a konfigurációban máshol adott meg. Az újonnan létrehozott teszt-konfiguráció neve `<the name of your test configuration>_networkTestConfig` .
         * **Traceroute letiltása** – ez a mező olyan tesztelési csoportokra vonatkozik, amelyek TCP vagy ICMP protokollal rendelkeznek. Jelölje be ezt a jelölőnégyzetet, ha le szeretné állítani, hogy a források felfedjék a topológiát és a hop-by-hop RTT.
     * **Célport** – a mező testreszabható a választott célport használatával.
     * **Tesztelési gyakoriság** – ezzel a mezővel kiválaszthatja, hogy a források milyen gyakran fognak pingelni a protokollon és a megadott porton. 30 másodpercet, 1 percet, 5 percet, 15 percet vagy 30 percet is kiválaszthat. A források a választott érték alapján próbálják meg a célokhoz való kapcsolódást.  Ha például 30 másodpercet választ, a források legalább egyszer ellenőrizhetik a kapcsolatot a célhoz, 30 másodpercen belül.
@@ -573,7 +573,7 @@ A RTT trendjeinek és a sikertelen ellenőrzések százalékos arányának megte
 
 1. Módosítsa az időintervallumot a további adatértékek megtekintéséhez.
 1. A nézet módosításával megtekintheti a forrásokat, a célhelyeket és a tesztelési konfigurációkat. 
-1. Válasszon egy forrást a sikertelen tesztek alapján, és vizsgálja meg az első öt sikertelen tesztet. Válassza például a **View by** > **Sources** (megtekintés forrás szerint) lehetőséget, és **tekintse meg** > **célhelyként** a kapcsolódó tesztek vizsgálatához a kapcsolódási figyelőben.
+1. Válasszon egy forrást a sikertelen tesztek alapján, és vizsgálja meg az első öt sikertelen tesztet. Válassza például a **View by**  >  **Sources** (megtekintés forrás szerint) lehetőséget, és **tekintse meg**  >  **célhelyként** a kapcsolódó tesztek vizsgálatához a kapcsolódási figyelőben.
 
    ![Képernyőfelvétel: az első öt sikertelen teszt teljesítmény-mérőszámai](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
@@ -616,12 +616,12 @@ A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létre
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metrika | Megjelenített név | Unit (Egység) | Összesítés típusa | Leírás | Dimenziók |
+| Metrika | Megjelenített név | Unit (Egység) | Összesítés típusa | Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |
-| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protocol (Protokoll) <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
-| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protocol (Protokoll) <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
 
 #### <a name="metric-alerts-in-azure-monitor"></a>Metrikus riasztások Azure Monitor
 

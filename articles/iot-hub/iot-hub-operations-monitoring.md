@@ -10,10 +10,9 @@ ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp
 ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732236"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub Operations monitoring (elavult)
@@ -43,7 +42,7 @@ A IoT Hub hat kategóriába tartozó eseményt figyeli:
 
     ![Hozzáférési műveletek figyelésének konfigurációja a portálon](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Válassza ki a figyelni kívánt figyelési kategóriákat, majd kattintson a **Mentés**gombra. Az események a **figyelési beállítások**részben felsorolt Event hub-kompatibilis végpontról olvashatók. A rendszer a IoT Hub végpontot hívja `messages/operationsmonitoringevents`meg.
+3. Válassza ki a figyelni kívánt figyelési kategóriákat, majd kattintson a **Mentés**gombra. Az események a **figyelési beállítások**részben felsorolt Event hub-kompatibilis végpontról olvashatók. A rendszer a IoT Hub végpontot hívja meg `messages/operationsmonitoringevents` .
 
     ![Az IoT hub Operations monitoringjának konfigurálása](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 

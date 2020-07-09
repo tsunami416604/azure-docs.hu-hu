@@ -6,34 +6,30 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 8a7ba3c3b9c19b2084b6892b55ac417da38ab047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc4426fc08efff44bc46ba37eb6fbc6fe31f356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278894"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735438"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz
 
-Az összes Azure-szolgáltatás alapértelmezett korlátokat és kvótákat állít be az erőforrásokhoz és a szolgáltatásokhoz.  Az előzetes verzió ideje alatt az Azure Spring Cloud csak egy szolgáltatási csomagot kínál.
+Az összes Azure-szolgáltatás alapértelmezett korlátokat és kvótákat állít be az erőforrásokhoz és a szolgáltatásokhoz.   Az Azure Spring Cloud két díjszabási szintet kínál: alapszintű és standard. A jelen cikk mindkét szintjére vonatkozóan részletezjük a korlátot.
 
-Ez a cikk az aktuális előzetes időszakban felkínált szolgáltatási kvótákat részletezi.
+## <a name="azure-spring-cloud-service-tiers-and-limits"></a>Az Azure Spring Cloud Service szintjei és korlátai
 
-## <a name="azure-spring-cloud-service-tiers-and-quotas"></a>Azure Spring Cloud szolgáltatási szintek és kvóták
+| Erőforrás | Alapszintű | Standard
+------- | ------- | -------
+vCPU | 1/szolgáltatási példány | 4/szolgáltatási példány
+Memory (Memória) | 2 GB/szolgáltatási példány | 8 GB/szolgáltatási példány
+Azure Spring Cloud Service instances régiónként/előfizetés | 10 | 10
+Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 25 | 500
+Tartós kötetek | 1 GB/app x 10 alkalmazás | 50 GB/app x 10 alkalmazás
 
-Az előzetes verzió ideje alatt az Azure Spring Cloud csak egy szolgáltatási szintet kínál.
 
-Erőforrás | Mennyiség
-------- | -------
-vCPU | 4/szolgáltatási példány
-Memory (Memória) | 8 GByte
-Azure Spring Cloud Service instances régiónként/előfizetés | 10
-Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 500
-Alkalmazás-példányok teljes száma tavasszal | 20
-Tartós kötetek | 10 x 50 GByte
-
-Amikor eléri a kvótát, egy 400-as hibaüzenet jelenik meg: "a kvóta meghaladja az *előfizetésre* vonatkozó előfizetési korlátot a régió *régiójában, ahol az Azure Spring Cloud Service létrejött*.
+Az előzetes verzió ideje alatt az Azure Spring Cloud csak egy szolgáltatási szintet kínál. Ha eléri a korlátot, egy 400-as hibaüzenet jelenik meg: "a kvóta meghaladja az *előfizetésre* vonatkozó előfizetési korlátot a régió *régiójában, ahol az Azure Spring Cloud Service létrejött*.
 
 ## <a name="next-steps"></a>További lépések
 
-Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás növekedésre szorul, [hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Néhány alapértelmezett korlát növelhető. Ha a telepítőnek növekedésre van szüksége, [hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).

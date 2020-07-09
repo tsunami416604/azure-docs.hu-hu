@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64869025"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057857"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése  
 
@@ -42,7 +42,7 @@ A Java Media Services SDK használatának megkezdéséhez adja hozzá az `azure-
 
 Ha például a buildelőeszköze a `gradle`, adja a következő függőséget a `build.gradle` fájlhoz:
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >Az `azure-media` csomag `0.9.8`-as verziójától kezdődően az SDK támogatást nyújt az Azure Active Directory (AAD) hitelesítéshez, és nem támogatja az Azure Access Control Service (ACS) hitelesítést. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre. A migrálással kapcsolatos részletekért olvassa el [az Azure Media Services API Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.

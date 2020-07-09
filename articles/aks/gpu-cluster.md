@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80383990"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
@@ -24,7 +24,7 @@ Jelenleg a GPU-t használó csomópont-készletek használata csak Linux-csomóp
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel a GPU-t támogató csomópontokkal. Az AK-fürtnek a 1,10-es vagy újabb Kubernetes kell futnia. Ha szüksége van egy AK-fürtre, amely megfelel ezeknek a követelményeknek, tekintse meg a cikk első szakaszát [egy AK-fürt létrehozásához](#create-an-aks-cluster).
 
-Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
@@ -36,7 +36,7 @@ Először hozzon létre egy erőforráscsoportot a fürthöz az az [Group Create
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy AK-fürtöt az az [AK Create][az-aks-create] paranccsal. A következő példa egy olyan fürtöt hoz létre, amely egyetlen `Standard_NC6`méretű csomóponttal rendelkezik:
+Most hozzon létre egy AK-fürtöt az az [AK Create][az-aks-create] paranccsal. A következő példa egy olyan fürtöt hoz létre, amely egyetlen méretű csomóponttal rendelkezik `Standard_NC6` :
 
 ```azurecli-interactive
 az aks create \
@@ -129,7 +129,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Most a [kubectl leíró csomópont][kubectl-describe] paranccsal ellenőrizze, hogy a GPU-k ütemezhető-e. A *kapacitás* szakaszban a GPU-nak a következőképpen `nvidia.com/gpu:  1`kell szerepelnie.
+Most a [kubectl leíró csomópont][kubectl-describe] paranccsal ellenőrizze, hogy a GPU-k ütemezhető-e. A *kapacitás* szakaszban a GPU-nak a következőképpen kell szerepelnie `nvidia.com/gpu:  1` .
 
 A következő tömörített példa azt mutatja, hogy a GPU elérhető a (z) *nodepool1-18821093-0*nevű csomóponton:
 
@@ -185,7 +185,7 @@ Non-terminated Pods:         (9 in total)
 
 A GPU működés közbeni megtekintéséhez ütemezzen egy GPU-t használó munkaterhelést a megfelelő erőforrás-kéréssel. Ebben a példában egy [Tensorflow](https://www.tensorflow.org/) -feladatot futtatunk a [MNIST adatkészleten](http://yann.lecun.com/exdb/mnist/).
 
-Hozzon létre egy *Samples-TF-mnist-demo. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. A következő feladattípus egy erőforrás-korlátot `nvidia.com/gpu: 1`tartalmaz:
+Hozzon létre egy *Samples-TF-mnist-demo. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. A következő feladattípus egy erőforrás-korlátot tartalmaz `nvidia.com/gpu: 1` :
 
 > [!NOTE]
 > Ha az eszközillesztők meghívásakor hibaüzenetet kap, például a CUDA-illesztőprogram verziószáma nem elegendő a CUDA futtatókörnyezet verziójához, tekintse át az NVIDIA illesztőprogram-mátrix kompatibilitási diagramját –[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -242,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Most a [kubectl logs][kubectl-logs] paranccsal tekintheti meg a pod-naplókat. Az alábbi példában szereplő Pod-naplók megerősítik, hogy a megfelelő GPU `Tesla K80`-eszköz fel lett derítve. Adja meg a saját Pod nevét:
+Most a [kubectl logs][kubectl-logs] paranccsal tekintheti meg a pod-naplókat. Az alábbi példában szereplő Pod-naplók megerősítik, hogy a megfelelő GPU-eszköz fel lett derítve `Tesla K80` . Adja meg a saját Pod nevét:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6
@@ -319,7 +319,7 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A cikkben létrehozott társított Kubernetes-objektumok eltávolításához használja a [kubectl delete Job][kubectl delete] parancsot a következő módon:
 

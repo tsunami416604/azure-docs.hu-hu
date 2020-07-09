@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061329"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367376"
 ---
 # <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
 
@@ -39,16 +39,29 @@ Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktat�
 
 Az oktatóanyag-sorozat ezen részében SAS-jogkivonatokat használunk a miniatűr képekhez való hozzáféréshez. Ebben a lépésben a *thumbnails* tároló nyilvános hozzáférését `off` értékre állítja be.
 
-```azurecli-interactive 
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
     --account-key $blobStorageAccountKey \
     --name thumbnails \
+    --public-access off
+```
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
+
+az storage container set-permission `
+    --account-name $blobStorageAccount `
+    --account-key $blobStorageAccountKey `
+    --name thumbnails `
     --public-access off
 ```
 
@@ -60,11 +73,19 @@ A példában a forráskód adattára a `sasTokens` ágat használja, amely egy f
 
 Az alábbi parancsban a `<web-app>` a webalkalmazás neve.
 
-```azurecli-interactive 
+```bash
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \
     --resource-group myResourceGroup --branch sasTokens --manual-integration \
+    --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
+```powershell
+az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
+
+az webapp deployment source config --name <web_app> `
+    --resource-group myResourceGroup --branch sasTokens --manual-integration `
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
@@ -131,15 +152,17 @@ Az előző feladatban használt osztályok, tulajdonságok és metódusok a köv
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
 |[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Létezik](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[Blobelemet](/dotnet/api/azure.storage.blobs.models.blobitem) | [Név](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[Blobelemet](/dotnet/api/azure.storage.blobs.models.blobitem) | [Name (Név)](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
 |[UriBuilder](/dotnet/api/system.uribuilder) | [Lekérdezés](/dotnet/api/system.uribuilder.query) |  |
-|[Listáját](/dotnet/api/system.collections.generic.list-1) | | [Hozzáadás](/dotnet/api/system.collections.generic.list-1.add) |
+|[Lista](/dotnet/api/system.collections.generic.list-1) | | [Hozzáadás](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
+## <a name="azure-storage-encryption"></a>Azure Storage-titkosítás
 
-Az [Azure Storage Service Encryption (SSE)](../common/storage-service-encryption.md) segít az adatok biztonságos megőrzésében. Az SSE titkosítja az inaktív adatokat, valamint titkosítási, visszafejtési és kulcskezelési feladatokat lát el. Minden adat titkosítása 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) történik, amely a jelenleg elérhető egyik legerősebb blokktitkosító.
+Az [Azure Storage-titkosítás](../common/storage-service-encryption.md) az adatok védelméhez és védelméhez nyújt segítséget azáltal, hogy titkosítja az adatait, és kezeli a titkosítást és a visszafejtést. Minden adat titkosítása 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) történik, amely a jelenleg elérhető egyik legerősebb blokktitkosító.
 
-Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. 
+Megadhatja, hogy a Microsoft kezelje a titkosítási kulcsokat, vagy a Azure Key Vault segítségével saját kulcsokat is használhat az ügyfelek által felügyelt kulcsokkal. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+
+Az Azure Storage-titkosítás automatikusan titkosítja az összes teljesítményszint (standard és prémium), az összes üzembe helyezési modell (Azure Resource Manager és klasszikus), valamint az összes Azure Storage-szolgáltatás (blob, üzenetsor, tábla és fájl) mennyiségét.
 
 ## <a name="enable-https-only"></a>Csak HTTPS engedélyezése
 
@@ -161,7 +184,7 @@ Most, hogy biztonságos átvitel szükséges, az alábbi üzenetet kapja:
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat harmadik részében megtanulta, hogy miként teheti biztonságossá a tárfiókhoz való hozzáférést, többek között:
 

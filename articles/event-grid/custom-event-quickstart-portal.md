@@ -1,31 +1,20 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése webes végpontra – Event Grid, Azure Portal'
 description: 'Gyors útmutató: Azure Event Grid és Azure Portal használata egyéni témakör közzétételéhez és az adott témakör eseményeire való előfizetéshez. Az eseményeket egy webalkalmazás kezeli.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 9edeecdfb0c0e7ef0ef6e9d1704d81b844ac8c53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80293759"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115230"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz a Azure Portal és Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure Portallal, feliratkozunk az egyéni témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
-A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a webalkalmazásnak.
-
-![Eredmények megtekintése](./media/custom-event-quickstart-portal/view-result.png)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
+## <a name="prerequisites"></a>Előfeltételek
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -34,31 +23,31 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali navigációs menüben, keresse meg a **Event Grid**, és válassza ki **Event Grid témákat**. 
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
+2. A témakörben található keresősáv mezőbe írja be **Event Grid témaköröket**, majd válassza a **Event Grid témakörök** elemet a legördülő listából. 
 
-    ![Event Grid témakörök kiválasztása](./media/custom-event-quickstart-portal/select-event-grid-topics.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid témakörök keresése és kiválasztása":::
 3. A **Event Grid témakörök** lapon válassza a **+ Hozzáadás** lehetőséget az eszköztáron. 
 
-    ![Event Grid témakör hozzáadása gomb](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="Event Grid témakör hozzáadása gomb":::
 4. A **témakör létrehozása** lapon kövesse az alábbi lépéseket:
-    1. Adjon egyedi **nevet** az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre egy saját nevet – 3-50 karakter közé kell esnie, és csak a-z, A-Z, 0-9 és a "-" értékeket kell tartalmaznia.
-    2. Válassza ki az Azure- **előfizetését**.
-    3. Válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget, és adja meg az **erőforráscsoport** **nevét** .
+    1. Válassza ki az Azure- **előfizetését**.
+    2. Válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget, és adja meg az **erőforráscsoport** **nevét** .
+    3. Adjon egyedi **nevet** az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre egy saját nevet – 3-50 karakter közé kell esnie, és csak a-z, A-Z, 0-9 és a "-" értékeket kell tartalmaznia.
     4. Válassza ki az Event Grid-témakör **helyét** .
-    5. Tartsa meg az alapértelmezett értéket **Event Grid sémát** az **esemény sémája** mezőhöz. 
+    5. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. 
 
-       ![Témakör létrehozása lap](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. Kattintson a **Létrehozás** gombra. 
-5. Az egyéni témakör létrehozása után láthatja a sikeres műveletről szóló értesítést. Válassza **az Ugrás az erőforrás-csoportba**lehetőséget. 
+        :::image type="content" source="./media/custom-event-quickstart-portal/create-custom-topic.png" alt-text="Témakör létrehozása lap":::
+    6. A **témakör létrehozása** lap **Áttekintés + létrehozás** lapján válassza a **Létrehozás**lehetőséget. 
+    
+        :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="Beállítások áttekintése és létrehozás":::
+5. Miután az üzembe helyezés sikeres volt, írja be újra **Event Grid témaköröket** a keresősávba, és válassza a **Event Grid témakörök** lehetőséget a legördülő listából, ahogy korábban tette. 
+6. Válassza ki a listából létrehozott témakört. 
 
-   ![Sikeres műveletről szóló értesítés megtekintése](./media/custom-event-quickstart-portal/success-notification.png)
-6. Az **erőforráscsoport** lapon válassza az Event Grid-témakört. 
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Válassza ki a témakört a listából":::  
+7. Megjelenik a témakör **Event Grid témakör** lapja. A lap nyitva tartása. Később a rövid útmutatóban is használhatja. 
 
-   ![Az Event Grid-témakör erőforrásának kiválasztása](./media/custom-event-quickstart-portal/select-event-grid-topic.png)
-7. Megjelenik az Event Grid **Event Grid témakör** lapja. A lap nyitva tartása. Később a rövid útmutatóban is használhatja. 
-
-    ![Event Grid témakör kezdőlapja](./media/custom-event-quickstart-portal/event-grid-topic-home-page.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Event Grid témakör kezdőlapja":::
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 Mielőtt létrehoz egy előfizetést az egyéni témakörhöz, hozzon létre egy végpontot az esemény üzenethez. A végpont általában az eseményadatok alapján hajt végre műveleteket. Az útmutató egyszerűsítése érdekében egy olyan [előre létrehozott webalkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) helyezünk üzembe, amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
@@ -67,6 +56,8 @@ Mielőtt létrehoz egy előfizetést az egyéni témakörhöz, hozzon létre egy
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
+
+    Ha a telepítés sikertelen, ellenőrizze a hibaüzenetet. Ennek az lehet az oka, hogy a webhely neve már használatban van. Telepítse újra a sablont, és válasszon másik nevet a hely számára. 
 1. A hely látható, de még nem lett közzétéve esemény.
 
    ![Új hely megtekintése](./media/custom-event-quickstart-portal/view-site.png)
@@ -77,16 +68,16 @@ Az Event Grid-témakörre való feliratkozással lehet tudatni az Event Griddel,
 
 1. Ezután az egyéni témakör **Event Grid témakör** lapján válassza az **+ esemény-előfizetés** lehetőséget az eszköztáron.
 
-   ![Esemény-előfizetés hozzáadása](./media/custom-event-quickstart-portal/new-event-subscription.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="Esemény-előfizetés hozzáadása gomb":::
 2. Az **esemény-előfizetés létrehozása** lapon kövesse az alábbi lépéseket:
     1. Adja meg az esemény-előfizetés **nevét** .
     3. Válassza ki a **végpont típusához**tartozó **webhookot** . 
     4. Válassza **a végpont kiválasztása**lehetőséget. 
 
-       ![Esemény-előfizetés értékeinek megadása](./media/custom-event-quickstart-portal/provide-subscription-values.png)
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-subscription-values.png" alt-text="Esemény-előfizetés értékeinek megadása":::
     5. A webhook végponthoz adja meg a webalkalmazás URL-címét, és adja hozzá az `api/updates` elemet a kezdőlap URL-címéhez. Válassza a **Kiválasztás megerősítése** lehetőséget.
 
-       ![Végpont URL-címének megadása](./media/custom-event-quickstart-portal/provide-endpoint.png)
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-endpoint.png" alt-text="Végpont URL-címének megadása":::
     6. Vissza az **esemény-előfizetés létrehozása** lapon válassza a **Létrehozás**lehetőséget.
 
 3. Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az eseményadatok kibontásához kattintson a szem ikonra. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A webalkalmazás az előfizetés érvényesítéséhez szükséges kódot tartalmaz.
@@ -101,15 +92,18 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 
 
 ### <a name="azure-cli"></a>Azure CLI
-1. A Azure Portal válassza a **Cloud Shell**lehetőséget. Válassza a **bash** elemet a Cloud Shell ablak bal felső sarkában. 
+1. A Azure Portal válassza a **Cloud Shell**lehetőséget. A Cloud Shell megnyílik a webböngésző alsó ablaktábláján. 
+
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Cloud Shell ikon kiválasztása":::
+1. Válassza a **bash** elemet a Cloud Shell ablak bal felső sarkában. 
 
     ![Cloud Shell – bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. A következő parancs futtatásával lekérheti a **végpontot** a témakörhöz: a parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt. 
+1. A következő parancs futtatásával lekérheti a **végpontot** a témakörhöz: a parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt. A jelen témakör-végpontra vonatkozó példákat fog közzétenni. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Futtassa a következő parancsot az egyéni témakörhöz tartozó **kulcs** lekéréséhez: a parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport** nevét a parancs futtatása előtt. 
+2. Futtassa a következő parancsot az egyéni témakörhöz tartozó **kulcs** lekéréséhez: a parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport** nevét a parancs futtatása előtt. Ez az Event Grid témakör elsődleges kulcsa. Ha ezt a kulcsot szeretné lekérni a Azure Portal, váltson a **Event Grid témakör** lap **hozzáférési kulcsok** lapjára. Ahhoz, hogy az eseményt egy egyéni témakörbe lehessen elküldeni, szüksége lesz a hozzáférési kulcsra. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -119,7 +113,7 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
     ```json
     event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
     ```
-4. A következő **curl** -parancs futtatásával tegye közzé az eseményt:
+4. A következő **curl** -parancs futtatásával tegye közzé az eseményt: a parancsban a `aeg-sas-key` fejléc a korábban kapott hozzáférési kulcsra van beállítva. 
 
     ```
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
@@ -128,12 +122,20 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 ### <a name="azure-powershell"></a>Azure PowerShell
 A második példa a PowerShell használatával végez hasonló lépéseket.
 
-1. A Azure Portal válassza a **Cloud Shell** lehetőséget (másik lehetőség: `https://shell.azure.com/`). Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
+1. A Azure Portal válassza a **Cloud Shell** lehetőséget (másik lehetőség: `https://shell.azure.com/` ). A Cloud Shell megnyílik a webböngésző alsó ablaktábláján. 
+
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Cloud Shell ikon kiválasztása":::
+1. A **Cloud Shell**a Cloud Shell ablak bal felső sarkában kattintson a **PowerShell** elemre. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
 2. Állítsa be a következő változókat. Az egyes parancsok másolását és beillesztését követően frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt:
 
+    **Erőforráscsoport**:
     ```powershell
-    $resourceGroupName = <resource group name>
-    $topicName = <topic name>
+    $resourceGroupName = "<resource group name>"
+    ```
+
+    **Event Grid témakör neve**:    
+    ```powershell
+    $topicName = "<topic name>"
     ```
 3. A következő parancsok futtatásával lekérheti a **végpontot** és a **kulcsokat** a témakörhöz:
 
@@ -175,35 +177,21 @@ A második példa a PowerShell használatával végez hasonló lépéseket.
 ### <a name="verify-in-the-event-grid-viewer"></a>Ellenőrzés a Event Grid-megjelenítőben
 Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg a webalkalmazást az imént elküldött esemény megtekintéséhez.
 
-```json
-{
-  "id": "974",
-  "eventType": "recordInserted",
-  "subject": "myapp/vehicles/motorcycles",
-  "eventTime": "2019-03-28T01:11:59+00:00",
-  "data": {
-    "make": "Ducati",
-    "model": "Monster"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1",
-  "topic": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myegridrg/providers/Microsoft.EventGrid/topics/myegridtopic"
-}
-```
+:::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="Event Grid megjelenítője":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 
 1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali menüben. Ha nem látja a bal oldali menüben, válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, és válassza az **erőforráscsoportok**lehetőséget. 
-2. Válassza ki az erőforráscsoportot az **erőforráscsoport** oldal elindításához. 
-3. Válassza az **erőforráscsoport törlése** elemet az eszköztáron. 
-4. A törlés megerősítéséhez írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. 
 
     ![Erőforráscsoportok](./media/custom-event-quickstart-portal/delete-resource-groups.png)
+1. Válassza ki az erőforráscsoportot az **erőforráscsoport** oldal elindításához. 
+1. Válassza az **erőforráscsoport törlése** elemet az eszköztáron. 
+1. A törlés megerősítéséhez írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. 
 
     A rendszerképben látható másik erőforráscsoportot a Cloud Shell ablak hozta létre és használta. Ha később nem tervezi használni a Cloud Shell ablakot, törölje azt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282301"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hogyan Reliable Actors használni a Service Fabric platformot?
@@ -28,7 +27,7 @@ Mivel a Actors szolgáltatás maga egy megbízható szolgáltatás, az összes [
 
 Az előző ábrán látható a Service Fabric alkalmazás-keretrendszerek és a felhasználói kód közötti kapcsolat. A kék elemek a Reliable Services alkalmazás-keretrendszer, a narancssárga a megbízható Actors keretrendszert képviselik, a zöld pedig a felhasználói kódot jelöli.
 
-Reliable Services a szolgáltatás örökli az `StatefulService` osztályt. Ez az osztály a `StatefulServiceBase` (vagy `StatelessService` az állapot nélküli szolgáltatások esetében) származik. Reliable Actors a Actors szolgáltatást használja. A színészi szolgáltatás az `StatefulServiceBase` osztály egy másik implementációja, amely megvalósítja a színészi mintát, amelyben a szereplők futnak. Mivel maga a színészi szolgáltatás maga a implementációja `StatefulServiceBase`, a saját szolgáltatását is megírhatja, amely `ActorService` a szolgáltatás szintjének származtatása és megvalósítása ugyanúgy történik, mint az örökléskor `StatefulService`, például:
+Reliable Services a szolgáltatás örökli az `StatefulService` osztályt. Ez az osztály a `StatefulServiceBase` (vagy `StatelessService` az állapot nélküli szolgáltatások esetében) származik. Reliable Actors a Actors szolgáltatást használja. A színészi szolgáltatás az osztály egy másik implementációja `StatefulServiceBase` , amely megvalósítja a színészi mintát, amelyben a szereplők futnak. Mivel maga a színészi szolgáltatás maga a implementációja `StatefulServiceBase` , a saját szolgáltatását is megírhatja, amely `ActorService` a szolgáltatás szintjének származtatása és megvalósítása ugyanúgy történik, mint az örökléskor `StatefulService` , például:
 
 * Szolgáltatás biztonsági mentése és visszaállítása.
 * Megosztott funkciók minden résztvevő számára, például egy áramkör-megszakító.
@@ -40,7 +39,7 @@ További információ: [a szolgáltatás szintű szolgáltatások megvalósítá
 A Actor Services Reliable Services, így az alkalmazás modellje ugyanaz. A Actor Framework-build eszközei azonban létrehozzák az alkalmazás-modell fájljait.
 
 ### <a name="service-manifest"></a>Szolgáltatás jegyzékfájlja
-A Actor Framework build eszközei automatikusan létrehozzák a Actor szolgáltatás ServiceManifest. XML fájljának tartalmát. Ez a fájl a következőket tartalmazza:
+A Actor Framework build eszközei automatikusan létrehozzák a Actors szolgáltatás ServiceManifest.xml fájljának tartalmát. Ez a fájl a következőket tartalmazza:
 
 * Actor szolgáltatás típusa. A típus nevét a színész projekt neve alapján hozza létre a rendszer. A színész adatmegőrzési attribútuma alapján a HasPersistedState jelző is ennek megfelelően van beállítva.
 * Kód csomag.
@@ -71,7 +70,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Minden `ActorId` kivonat egy Int64. Ezért a Actor szolgáltatásnak egy Int64 particionálási sémát kell használnia a teljes Int64-tartományhoz. Az egyéni azonosító értékek azonban használhatók egy `ActorID`-hoz, beleértve a GUID-ket, az UUID-ket, a karakterláncokat és a Int64s is.
+Minden `ActorId` kivonat egy Int64. Ezért a Actor szolgáltatásnak egy Int64 particionálási sémát kell használnia a teljes Int64-tartományhoz. Az egyéni azonosító értékek azonban használhatók egy-hoz `ActorID` , beleértve a GUID-ket, az UUID-ket, a karakterláncokat és a Int64s is.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -84,7 +83,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-GUID-azonosítók/UUID-kódok és karakterláncok használatakor az értékek kivonatolása egy Int64 történik. Ha azonban explicit módon ad meg egy Int64 `ActorId`, a Int64 további kivonatolás nélkül leképezi közvetlenül a partícióra. Ezzel a technikával szabályozhatja, hogy a szereplők milyen partíciót helyeznek el.
+GUID-azonosítók/UUID-kódok és karakterláncok használatakor az értékek kivonatolása egy Int64 történik. Ha azonban explicit módon ad meg egy Int64 `ActorId` , a Int64 további kivonatolás nélkül leképezi közvetlenül a partícióra. Ezzel a technikával szabályozhatja, hogy a szereplők milyen partíciót helyeznek el.
 
 
 ## <a name="next-steps"></a>További lépések

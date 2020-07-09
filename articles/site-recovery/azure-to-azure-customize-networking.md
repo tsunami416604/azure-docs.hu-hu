@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76292858"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135821"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
@@ -27,9 +27,9 @@ Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a 
 
 Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-konfigurációkat adhatja meg a feladatátvételi virtuális géphez:
 
-- [Belső terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-- [Nyilvános IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
-- [Hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) mind az alhálózathoz, mind a hálózati adapterhez
+- [Belső terheléselosztó](../load-balancer/load-balancer-overview.md)
+- [Nyilvános IP-cím](../virtual-network/public-ip-addresses.md)
+- [Hálózati biztonsági csoport](../virtual-network/manage-network-security-group.md) mind az alhálózathoz, mind a hálózati adapterhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +49,7 @@ Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-k
 
     ![A NIC-konfiguráció szerkesztése](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 Site Recovery most megtartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételi virtuális gép a megfelelő hálózati adapteren keresztül kapcsolódjon a kiválasztott erőforráshoz.
 

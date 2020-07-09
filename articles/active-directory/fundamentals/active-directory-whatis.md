@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: overview
-ms.date: 07/31/2019
+ms.date: 06/05/2020
 ms.author: ajburnle
-ms.custom: it-pro, seodec18, seo-update-azuread-jan
+ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2a6b7d40512fe3537610efa42ccc33c9f8e80212
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240785"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484385"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 
@@ -24,9 +24,9 @@ Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás-és hozzá
 
 - Külső erőforrások, például Microsoft Office 365, a Azure Portal és több ezer más SaaS-alkalmazás.
 
-- Belső erőforrások, például a vállalati hálózaton és az intraneten lévő alkalmazások, valamint a saját szervezete által fejlesztett felhőalapú alkalmazások.
+- Belső erőforrások, például a vállalati hálózaton és az intraneten lévő alkalmazások, valamint a saját szervezete által fejlesztett felhőalapú alkalmazások. További információ a bérlők létrehozásáról a szervezet számára: gyors útmutató [: új bérlő létrehozása Azure Active Directoryban](active-directory-access-create-new-tenant.md).
 
-Az Azure, az Azure AD és az Office 365 legfontosabb identitás-szolgáltatásainak jobb megismeréséhez használhatja a [vállalati építészek sorozatának](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) plakátok különböző Microsoft Cloudeit.
+Az Azure AD és a Active Directory tartományi szolgáltatások közötti különbség megismeréséhez tekintse meg a [Active Directory összevetése a](active-directory-compare-azure-ad-to-ad.md)következővel: Azure Active Directory. Az Azure, az Azure AD és az Office 365 legfontosabb identitás-szolgáltatásainak jobb megismeréséhez használhatja a [vállalati építészek sorozatának](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) plakátjának különböző Microsoft Cloudeit is.
 
 ## <a name="who-uses-azure-ad"></a>Ki használja az Azure AD-t?
 
@@ -57,41 +57,20 @@ Az Azure AD megvalósításának javítása érdekében a prémium szintű Azure
 
 - **"Pay as go" szolgáltatás-licencek.** További szolgáltatás-licenceket is kaphat, például Azure Active Directory üzleti – ügyfél (B2C) szolgáltatást. A B2C segítségével identitás-és hozzáférés-kezelési megoldásokat biztosíthat az ügyfelek felé irányuló alkalmazásaihoz. További információ: [Azure Active Directory B2C dokumentáció](../../active-directory-b2c/index.yml).
 
-Az Azure-előfizetések Azure AD-hez való társításával kapcsolatos további információkért lásd: útmutató: az Azure- [előfizetés társítása vagy hozzáadása a Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md) , valamint a licencek felhasználókhoz való hozzárendelésével kapcsolatos további információkért lásd [: útmutató: Azure Active Directory-licencek hozzárendelése vagy eltávolítása](license-users-groups.md).
-
-## <a name="terminology"></a>Terminológia
-
-Az Azure AD és a hozzá tartozó dokumentáció jobb megismerése érdekében javasoljuk, hogy tekintse át az alábbi feltételeket.
-
-|Kifejezés vagy fogalom|Leírás|
-|---------------|-----------|
-|Identitás| Olyan dolog, amely hitelesíthető lehet. Az identitás lehet felhasználónévvel és jelszóval rendelkező felhasználó. Az identitások olyan alkalmazásokat vagy más kiszolgálókat is tartalmaznak, amelyekhez titkos kulcsokon vagy tanúsítványokon keresztül lehet hitelesítést igényelni.|
-|Fiók| A hozzá társított adatokkal rendelkező identitás. Identitás nélkül nem lehet fiókja.|
-|Azure AD-fiók| Az Azure AD-n vagy egy másik Microsoft Cloud Service-en keresztül létrehozott identitás, például az Office 365. Az identitások az Azure AD-ben tárolódnak, és elérhetők a szervezet Cloud Service-előfizetései számára. Ezt a fiókot más néven munkahelyi vagy iskolai fióknak is nevezik.|
-|Azure-előfizetés| Az Azure Cloud Services fizetésére használatos. Több előfizetéssel is rendelkezhet, és ezek egy hitelkártyához vannak társítva.|
-|Azure-bérlő| Az Azure AD dedikált és megbízható példánya, amely akkor jön létre automatikusan, amikor a szervezet regisztrál egy Microsoft Cloud Service-előfizetésre, például Microsoft Azure, Microsoft Intune vagy Office 365. Az Azure-bérlő egyetlen szervezetet jelöl.|
-|Egybérlős alkalmazás| A dedikált környezetben más szolgáltatásokhoz hozzáférő Azure-bérlők egyetlen bérlőnek tekintendők.|
-|Több-bérlős| Azok az Azure-bérlők, amelyek más szolgáltatásokhoz férnek hozzá egy megosztott környezetben, több szervezeten belül több-bérlőnek számítanak.|
-|Azure AD-címtár|Minden egyes Azure-bérlő dedikált és megbízható Azure AD-címtárral rendelkezik. Az Azure AD-címtár tartalmazza a bérlő felhasználóit, csoportjait és alkalmazásait, és a bérlői erőforrások identitás-és hozzáférés-kezelési funkcióinak végrehajtásához használatos.|
-|Egyéni tartomány|Minden új Azure AD-címtárhoz tartozik egy kezdeti tartománynév, a domainname.onmicrosoft.com. A kezdeti név mellett felveheti a szervezet tartományneveit is, amelyek tartalmazzák az üzleti és a felhasználók által a szervezet erőforrásaihoz való hozzáféréshez használt neveket a listához. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználóneveket hozhat létre, például: alain@contoso.com.|
-|Fiókadminisztrátor|Ez a klasszikus előfizetés-rendszergazdai szerepkör fogalmilag egy előfizetés számlázási tulajdonosa. Ez a szerepkör hozzáfér a [Azure Fiókközponthoz](https://account.azure.com/Subscriptions) , és lehetővé teszi a fiókban lévő összes előfizetés kezelését. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Szolgáltatás-rendszergazda|Ez a klasszikus előfizetés-rendszergazdai szerepkör lehetővé teszi az összes Azure-erőforrás kezelését, beleértve a hozzáférést is. Ez a szerepkör egyenértékű hozzáféréssel rendelkezik egy olyan felhasználóhoz, aki az előfizetés hatókörében tulajdonosi szerepkört rendelt hozzá. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Tulajdonos|Ez a szerepkör segít az összes Azure-erőforrás kezelésében, beleértve a hozzáférést is. Ez a szerepkör a szerepköralapú hozzáférés-vezérlés (RBAC) nevű újabb engedélyezési rendszerre épül, amely részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Globális Azure AD-rendszergazda|Ez a rendszergazdai szerepkör automatikusan hozzá lett rendelve az Azure AD-bérlőhöz. A globális rendszergazdák az Azure AD összes felügyeleti funkcióját és az Azure AD-be összevonása szolgáltatásokat (például Exchange Online, SharePoint Online és Skype vállalati online) is elvégezhetik. Több globális rendszergazda is lehet, de csak a globális rendszergazdák rendelhetnek rendszergazdai szerepköröket (beleértve más globális rendszergazdák hozzárendelését is) a felhasználók számára.<br><br>**Megjegyzés**<br>Ezt a rendszergazdai szerepkört globális rendszergazdaként nevezik a Azure Portalban, de a Microsoft Graph API-ban és az Azure AD PowerShellben a **vállalati rendszergazda** néven is ismert.<br><br>A különböző rendszergazdai szerepkörökkel kapcsolatos további információkért lásd: [rendszergazdai szerepkör engedélyei Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
-|Microsoft-fiók (más néven, MSA)|Személyes fiókok, amelyek hozzáférést biztosítanak a Microsoft-termékekhez és a felhőalapú szolgáltatásokhoz, például az Outlookhoz, a OneDrive, az Xbox LIVE-hoz vagy az Office 365-hoz. A Microsoft-fiók a Microsoft által futtatott Microsoft fogyasztói identitás-fiók rendszerében jön létre és tárolja.|
+Az Azure-előfizetések Azure AD-hez való társításával kapcsolatos további információkért lásd: [Az Azure-előfizetés társítása és hozzáadása a Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md) , valamint a licencek felhasználókhoz való hozzárendelésével kapcsolatos további információk [: útmutató: Azure Active Directory-licencek hozzárendelése vagy eltávolítása](license-users-groups.md).
 
 ## <a name="which-features-work-in-azure-ad"></a>Mely funkciók működnek az Azure AD-ben?
 
 Miután kiválasztotta az Azure AD-licencét, hozzáférhet a szervezete következő szolgáltatásainak egy részéhez vagy mindegyikéhez:
 
-|Kategória|Leírás|
+|Kategória|Description|
 |-------|-----------|
 |Alkalmazáskezelés|A Felhőbeli és helyszíni alkalmazásokat az alkalmazásproxy, az egyszeri bejelentkezés, a saját alkalmazások portál (más néven hozzáférési panel) és a szolgáltatott szoftverek (SaaS) használatával kezelheti. További információkért lásd: [biztonságos távelérés biztosítása a helyszíni alkalmazásokhoz](../manage-apps/application-proxy.md) és az [alkalmazás-felügyeleti dokumentációhoz](../manage-apps/index.yml).|
 |Hitelesítés|Felügyelheti Azure Active Directory önkiszolgáló jelszó-visszaállítást, Multi-Factor Authentication, egyéni tiltott jelszavak listáját és az intelligens zárolást. További információ: [Azure ad-hitelesítés dokumentációja](../authentication/index.yml).|
+|Azure Active Directory fejlesztők számára|Olyan alkalmazásokat hozhat létre, amelyek az összes Microsoft-identitást bejelentkeznek, és a Microsoft Graph, más Microsoft API-k vagy egyéni API-k meghívására kapnak tokeneket. További információ: [Microsoft Identity platform (Azure Active Directory for Developers)](../develop/index.yml).|
 |Vállalatközi (B2B)|Kezelheti vendégeit és külső partnereit, miközben felügyelheti a saját céges adatait. További információ: [Azure Active Directory B2B-dokumentáció](../b2b/index.yml).|
 |Vállalat és ügyfél közötti (B2C)|Testreszabhatja és szabályozhatja, hogy a felhasználók hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik profiljaikat az alkalmazások használatakor. További információ: [Azure Active Directory B2C dokumentáció](../../active-directory-b2c/index.yml).|
 |Feltételes hozzáférés|A felhőalapú alkalmazásokhoz való hozzáférés kezelése. További információt az [Azure ad feltételes hozzáférési dokumentációjában](../conditional-access/index.yml)talál.|
-|Azure Active Directory fejlesztők számára|Olyan alkalmazásokat hozhat létre, amelyek az összes Microsoft-identitást bejelentkeznek, és a Microsoft Graph, más Microsoft API-k vagy egyéni API-k meghívására kapnak tokeneket. További információ: [Microsoft Identity platform (Azure Active Directory for Developers)](../develop/index.yml).|
 |Eszközkezelés|Kezelheti, hogyan férnek hozzá vállalati adataihoz a felhőbeli vagy helyszíni eszközei. További információ: az [Azure ad-eszközkezelés dokumentációja](../devices/index.yml).|
 |Tartományi szolgáltatások|Az Azure-beli virtuális gépeket tartományvezérlők használata nélkül csatlakoztathatja egy tartományhoz. További információ: [Azure ad Domain Services dokumentáció](../../active-directory-domain-services/index.yml).|
 |Vállalati felhasználók|A licenc-hozzárendelések kezelése, az alkalmazások elérése és a delegált csoportok és rendszergazdai szerepkörök használatával történő beállítása. További információ: [Azure Active Directory felhasználói felügyeleti dokumentáció](../users-groups-roles/index.yml).|
@@ -102,12 +81,31 @@ Miután kiválasztotta az Azure AD-licencét, hozzáférhet a szervezete követk
 |Privileged Identity Management (PIM)|A szervezeten belüli hozzáférés kezelése, szabályozása és figyelése. Ez a funkció magában foglalja az Azure AD-ben és az Azure-ban, valamint más Microsoft Online Services-szolgáltatásokban, például az Office 365-ben vagy az Intune-ban További információ: [Azure ad Privileged Identity Management](../privileged-identity-management/index.yml).|
 |Jelentések és monitorozás|Betekintést nyerhet a környezet biztonsági és használati szokásaiba. További információ: [Azure Active Directory jelentések és figyelés](../reports-monitoring/index.yml).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="terminology"></a>Terminológia
+
+Az Azure AD és a hozzá tartozó dokumentáció jobb megismerése érdekében javasoljuk, hogy tekintse át az alábbi feltételeket.
+
+|Kifejezés vagy fogalom|Description|
+|---------------|-----------|
+|Identitás| Olyan dolog, amely hitelesíthető lehet. Az identitás lehet felhasználónévvel és jelszóval rendelkező felhasználó. Az identitások olyan alkalmazásokat vagy más kiszolgálókat is tartalmaznak, amelyekhez titkos kulcsokon vagy tanúsítványokon keresztül lehet hitelesítést igényelni.|
+|Fiók| A hozzá társított adatokkal rendelkező identitás. Identitás nélkül nem lehet fiókja.|
+|Azure AD-fiók| Az Azure AD-n vagy egy másik Microsoft Cloud Service-en keresztül létrehozott identitás, például az Office 365. Az identitások az Azure AD-ben tárolódnak, és elérhetők a szervezet Cloud Service-előfizetései számára. Ezt a fiókot más néven munkahelyi vagy iskolai fióknak is nevezik.|
+|Fiókadminisztrátor|Ez a klasszikus előfizetés-rendszergazdai szerepkör fogalmilag egy előfizetés számlázási tulajdonosa. Ez a szerepkör hozzáfér a [Azure Fiókközponthoz](https://account.azure.com/Subscriptions) , és lehetővé teszi a fiókban lévő összes előfizetés kezelését. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Szolgáltatás-rendszergazda|Ez a klasszikus előfizetés-rendszergazdai szerepkör lehetővé teszi az összes Azure-erőforrás kezelését, beleértve a hozzáférést is. Ez a szerepkör egyenértékű hozzáféréssel rendelkezik egy olyan felhasználóhoz, aki az előfizetés hatókörében tulajdonosi szerepkört rendelt hozzá. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Tulajdonos|Ez a szerepkör segít az összes Azure-erőforrás kezelésében, beleértve a hozzáférést is. Ez a szerepkör a szerepköralapú hozzáférés-vezérlés (RBAC) nevű újabb engedélyezési rendszerre épül, amely részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Globális Azure AD-rendszergazda|Ez a rendszergazdai szerepkör automatikusan hozzá lett rendelve az Azure AD-bérlőhöz. A globális rendszergazdák az Azure AD összes felügyeleti funkcióját és az Azure AD-be összevonása szolgáltatásokat (például Exchange Online, SharePoint Online és Skype vállalati online) is elvégezhetik. Több globális rendszergazda is lehet, de csak a globális rendszergazdák rendelhetnek rendszergazdai szerepköröket (beleértve más globális rendszergazdák hozzárendelését is) a felhasználók számára. Vegye figyelembe, hogy ez a rendszergazdai szerepkör a Azure Portal globális rendszergazdája, de a Microsoft Graph API **-ban** és az Azure ad PowerShellben is ismert. a különböző rendszergazdai szerepkörökkel kapcsolatos további információkért tekintse meg a [rendszergazdai szerepkör engedélyeit a Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).|
+|Azure-előfizetés| Az Azure Cloud Services fizetésére használatos. Több előfizetéssel is rendelkezhet, és ezek egy hitelkártyához vannak társítva.|
+|Azure-bérlő| Az Azure AD dedikált és megbízható példánya, amely akkor jön létre automatikusan, amikor a szervezet regisztrál egy Microsoft Cloud Service-előfizetésre, például Microsoft Azure, Microsoft Intune vagy Office 365. Az Azure-bérlő egyetlen szervezetet jelöl.|
+|Egybérlős alkalmazás| A dedikált környezetben más szolgáltatásokhoz hozzáférő Azure-bérlők egyetlen bérlőnek tekintendők.|
+|Több-bérlős| Azok az Azure-bérlők, amelyek más szolgáltatásokhoz férnek hozzá egy megosztott környezetben, több szervezeten belül több-bérlőnek számítanak.|
+|Azure AD-címtár|Minden egyes Azure-bérlő dedikált és megbízható Azure AD-címtárral rendelkezik. Az Azure AD-címtár tartalmazza a bérlő felhasználóit, csoportjait és alkalmazásait, és a bérlői erőforrások identitás-és hozzáférés-kezelési funkcióinak végrehajtásához használatos.|
+|Egyéni tartomány|Minden új Azure AD-címtárhoz tartozik egy kezdeti tartománynév, a domainname.onmicrosoft.com. A kezdeti név mellett felveheti a szervezet tartományneveit is, amelyek tartalmazzák az üzleti és a felhasználók által a szervezet erőforrásaihoz való hozzáféréshez használt neveket a listához. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználóneveket hozhat létre, például: alain@contoso.com .|
+|Microsoft-fiók (más néven, MSA)|Személyes fiókok, amelyek hozzáférést biztosítanak a Microsoft-termékekhez és a felhőalapú szolgáltatásokhoz, például az Outlookhoz, a OneDrive, az Xbox LIVE-hoz vagy az Office 365-hoz. A Microsoft-fiók a Microsoft által futtatott Microsoft fogyasztói identitás-fiók rendszerében jön létre és tárolja.|
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Prémium szintű Azure Active Directory – Regisztráció](active-directory-get-started-premium.md)
 
 - [Azure-előfizetés hozzárendelése a Azure Active Directoryhoz](active-directory-how-subscriptions-associated-directory.md)
-
-- [Hozzáférés Azure Active Directory és új bérlő létrehozása](active-directory-access-create-new-tenant.md)
 
 - [prémium szintű Azure Active Directory P2 szolgáltatás üzembe helyezési ellenőrzőlistája](active-directory-deployment-checklist-p2.md)

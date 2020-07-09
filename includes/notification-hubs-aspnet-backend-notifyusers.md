@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: foglalja bele a háttérbeli ASP .NET WebAPI-projekt létrehozására szolgáló kódot tartalmazó fájlt.
 services: notification-hubs
 author: spelluru
@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77192769"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
@@ -390,13 +390,13 @@ A következőkben üzembe fogja helyezni ezt az alkalmazást egy Azure-webhelyen
 
     ![A Microsoft Azure App Service (Microsoft Azure App Service) csempe][B15]
 
-3. A **Create App Service** (App Service létrehozása) ablakban válassza ki az Azure-fiókját. Válassza a **change Type** > **Web App**(típus módosítása) lehetőséget. Tartsa meg az alapértelmezett **webalkalmazásnevet**, majd válassza a **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **App Service Plan** (App Service-csomag) elemeket.
+3. A **Create App Service** (App Service létrehozása) ablakban válassza ki az Azure-fiókját. Válassza a **change Type**  >  **Web App**(típus módosítása) lehetőséget. Tartsa meg az alapértelmezett **webalkalmazásnevet**, majd válassza a **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **App Service Plan** (App Service-csomag) elemeket.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 5. Jegyezze fel a **Summary** (Összegzés) szakaszban lévő **Site URL** (Webhely URL-címe) tulajdonságot. Ezt az URL-címet az oktatóanyag későbbi részében fogja használni *háttérvégpontként*.
 
-6. Kattintson a **Publish** (Közzététel) elemre.
+6. Kattintson a **Közzététel** lehetőségre.
 
 Miután a varázsló befejeződött, közzéteszi az ASP.NET-webalkalmazást az Azure-on, majd megnyitja azt az alapértelmezett böngészőben.  Az alkalmazását az Azure App Servicesben tekintheti meg.
 

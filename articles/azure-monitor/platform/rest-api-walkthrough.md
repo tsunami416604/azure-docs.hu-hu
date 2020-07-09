@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945341"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
@@ -95,7 +95,7 @@ A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a
 
 **Metódus**: Get
 
-**Kérelem URI-ja**:\/\/https: Management.Azure.com/Subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourcename}*/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
+**Kérelem URI-ja**: https: \/ \/ Management.Azure.com/Subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}* / *{resourceType}* / *{resourcename}*/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
 Ha például egy Azure Storage-fiók metrika-definícióit szeretné lekérni, a kérelem a következőképpen fog megjelenni:
 
@@ -239,7 +239,7 @@ A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez
 
 **Metódus**: Get
 
-**Kérelem URI**-ja\:: https//Management.Azure.com/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{erőforrás-szolgáltató-névtér}*/*{erőforrás-típus*/*} {Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metrikus}*&TimeSpan =*{kezdő időpont/Befejezés}*&$Filter =*{Filter}*&resultType = metaadatok&API-Version =*{apiVersion}*
+**Kérelem URI-ja**: https \: //Management.Azure.com/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{erőforrás-szolgáltató-névtér}* / *{erőforrás-típus*} / *{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metrikus}*&TimeSpan =*{kezdő időpont/Befejezés}*&$Filter =*{Filter}*&resultType = metaadatok&API-Version =*{apiVersion}*
 
 Ha például le szeretné kérdezni a "Transactions" metrika "API-név dimenziója" számára kibocsátott dimenzióértékeket, ahol a GeoType dimenzió = "elsődleges" érték szerepel a megadott időtartományban, a kérelem a következő lesz:
 
@@ -312,7 +312,7 @@ A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez
 
 **Metódus**: Get
 
-**Kérelem URI-ja**:\/https:/Management.Azure.com/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{erőforrás-szolgáltató-névtér}*/*{erőforrás-típus}*/*{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metrika}*&TimeSpan =*{kezdő időpont/Befejezés}*&$Filter =*{Filter}*&intervallum =*{timeGrain}*&aggregációs =*{aggreation}*&API-Version =*{apiVersion}*
+**Kérelem URI-ja**: https: \/ /Management.Azure.com/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/*{erőforrás-szolgáltató-névtér}* / *{erőforrás-típus}* / *{Resource-Name}*/Providers/Microsoft.Insights/Metrics? metricnames =*{metrika}*&TimeSpan =*{kezdő időpont/Befejezés}*&$Filter =*{Filter}*&intervallum =*{timeGrain}*&aggregációs =*{aggreation}*&API-Version =*{apiVersion}*
 
 Ha például az első 3 API-t csökkenő értékben szeretné lekérdezni, a "tranzakciók" száma egy 5 perces tartományban, ahol a GeotType "elsődleges" volt, a kérelem a következő lesz:
 
@@ -391,7 +391,7 @@ A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a
 
 **Metódus**: Get
 
-**Kérelem URI-ja**:\/\/https: Management.Azure.com/Subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourcename}*/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
+**Kérelem URI-ja**: https: \/ \/ Management.Azure.com/Subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/Providers/*{resourceProviderNamespace}* / *{resourceType}* / *{resourcename}*/Providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
 Ha például egy Azure logikai alkalmazás metrika-definícióit szeretné lekérni, a kérelem a következőképpen fog megjelenni:
 
@@ -582,7 +582,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 Egy további módszer a [ARMClient](https://github.com/projectkudu/armclient) használata a Windows rendszerű gépen. A ARMClient automatikusan kezeli az Azure AD-hitelesítést (és a létrejövő JWT-jogkivonatot). A következő lépések körvonalazzák a ARMClient használatát a metrikus adatok beolvasásához:
 
 1. A [chocolatey](https://chocolatey.org/) és a [ARMClient](https://github.com/projectkudu/armclient)telepítése.
-2. A terminál ablakban írja be a *armclient. exe bejelentkezési nevet*. Ezzel megkéri, hogy jelentkezzen be az Azure-ba.
+2. A terminál ablakban írja be a *armclient.exe login nevet*. Ezzel megkéri, hogy jelentkezzen be az Azure-ba.
 3. Írja be a következőt: *ARMCLIENT Get [your_resource_id]/Providers/Microsoft.Insights/metricdefinitions? API-Version = 2016-03-01*
 4. Írja be a következőt: *ARMCLIENT Get [your_resource_id]/Providers/Microsoft.Insights/Metrics? API-Version = 2016-09-01*
 
@@ -605,7 +605,7 @@ Az alábbi lista néhány példát tartalmaz a különböző Azure-erőforrások
 * **IoT hub** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.Devices/IotHubs/*{IoT-hub-Name}*
 * **Rugalmas SQL-készlet** –*/Subscriptions/{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.SQL/Servers/*{Pool-db}*/elasticpools/*{SQL-Pool-Name}*
 * **SQL Database (V12)** –/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.SQL/Servers/*{kiszolgálónév}*/Databases/*{adatbázis neve}*
-* **Service Bus** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.ServiceBus/*{névtér}*/*{ServiceBus-Name}*
+* **Service Bus** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.ServiceBus/*{névtér}* / *{ServiceBus-Name}*
 * **Virtuálisgép-méretezési** csoportok –/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.Compute/virtualMachineScaleSets/*{VM-Name}*
 * **Virtuális gépek** –/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.Compute/virtualMachines/*{VM-Name}*
 * **Event Hubs** -/Subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{Erőforrás-csoport-név}*/Providers/Microsoft.EventHub/Namespaces/*{EventHub-Namespace}*
@@ -654,7 +654,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha az Azure CLI használatával szeretné lekérni az Azure Storage-fiók erőforrás-AZONOSÍTÓját `az storage account show` , hajtsa végre a parancsot az alábbi példában látható módon:
+Ha az Azure CLI használatával szeretné lekérni az Azure Storage-fiók erőforrás-AZONOSÍTÓját, hajtsa végre a `az storage account show` parancsot az alábbi példában látható módon:
 
 ```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
@@ -705,16 +705,30 @@ Az eredménynek az alábbi példához hasonlónak kell lennie:
 
 ## <a name="retrieve-activity-log-data"></a>Műveletnapló-adatlekérdezés
 
-A mérőszám-definíciók és a kapcsolódó értékek mellett a Azure Monitor REST API is használható az Azure-erőforrásokkal kapcsolatos további érdekes információk lekéréséhez. Példaként lehetséges a [tevékenységi naplóban](https://msdn.microsoft.com/library/azure/dn931934.aspx) tárolt adatlekérdezés. Az alábbi minta azt mutatja be, hogyan használható a Azure Monitor REST API a tevékenységek naplózási adatai lekérdezéséhez egy adott Dátumtartomány alapján egy Azure-előfizetés esetében:
+A mérőszám-definíciók és a kapcsolódó értékek mellett a Azure Monitor REST API is használható az Azure-erőforrásokkal kapcsolatos további érdekes információk lekéréséhez. Példaként lehetséges a [tevékenységi naplóban](https://msdn.microsoft.com/library/azure/dn931934.aspx) tárolt adatlekérdezés. A következő példák a Azure Monitor REST API használják a műveletnapló lekérdezéséhez.
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+Tevékenységek naplóinak beolvasása szűrővel:
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+Tevékenységek naplóinak beolvasása szűrővel és kijelölés:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Tevékenységek naplóinak beolvasása a Select:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Tevékenységek naplóinak beolvasása szűrés vagy kiválasztás nélkül:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>További lépések

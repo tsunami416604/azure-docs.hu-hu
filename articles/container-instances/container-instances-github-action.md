@@ -4,14 +4,14 @@ description: Hozzon létre egy GitHub-műveletet, amely automatizálja a szüks�
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
-ms.openlocfilehash: 13397cee8197afc65b93c587ae1505e59cfdebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80258039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744000"
 ---
-# <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet beállítása tároló-példány létrehozásához
+# <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
 
 A [GitHub-műveletek](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) a GitHub szolgáltatásainak egyik csomagja, amellyel automatizálható a szoftverfejlesztői munkafolyamatok ugyanazon a helyen, mint a kód tárolása és a lekéréses kérelmek és problémák közös használata.
 
@@ -33,7 +33,7 @@ Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **GitHub-fiók** – hozzon létre https://github.com egy fiókot, ha még nem rendelkezik ilyennel.
+* **GitHub-fiók** – hozzon létre egy fiókot https://github.com , ha még nem rendelkezik ilyennel.
 * **Azure CLI** – a Azure Cloud Shell vagy az Azure CLI helyi telepítését használhatja az Azure CLI lépéseinek elvégzéséhez. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 * **Azure Container Registry** – ha még nem rendelkezik ilyennel, hozzon létre egy Azure Container registryt az alapszintű szinten az [azure CLI](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md)vagy más módszerek használatával. Jegyezze fel a központi telepítéshez használt erőforráscsoportot, amelyet a GitHub-munkafolyamathoz használ a rendszer.
 
@@ -45,7 +45,7 @@ Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
   ![A GitHub Fork (Leágaztatás) gombjának (kiemelve) képernyőképe](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Győződjön meg arról, hogy a műveletek engedélyezve vannak a tárházban. Navigáljon az elágazó tárházhoz, és válassza a **Beállítások** > **műveletek**lehetőséget. A **műveletek engedélyei**területen győződjön meg arról, hogy a **helyi és a harmadik féltől származó műveletek engedélyezése ehhez a tárházhoz** beállítás van kiválasztva.
+* Győződjön meg arról, hogy a műveletek engedélyezve vannak a tárházban. Navigáljon az elágazó tárházhoz, és válassza a **Beállítások**  >  **műveletek**lehetőséget. A **műveletek engedélyei**területen győződjön meg arról, hogy a **helyi és a harmadik féltől származó műveletek engedélyezése ehhez a tárházhoz** beállítás van kiválasztva.
 
 ## <a name="configure-github-workflow"></a>GitHub-munkafolyamat konfigurálása
 
@@ -53,7 +53,7 @@ Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
 A GitHub-munkafolyamatban Azure-beli hitelesítő adatokat kell megadnia az Azure CLI-vel való hitelesítéshez. Az alábbi példa létrehoz egy szolgáltatásnevet a közreműködői szerepkörrel a tároló-beállításjegyzékhez tartozó erőforráscsoporthoz.
 
-Először kérje le az erőforráscsoport erőforrás-AZONOSÍTÓját. Helyettesítse be a csoport nevét a következő az [Group show][az-acr-show] paranccsal:
+Először kérje le az erőforráscsoport erőforrás-AZONOSÍTÓját. Helyettesítse be a csoport nevét a következő az [Group show][az-group-show] paranccsal:
 
 ```azurecli
 groupId=$(az group show \
@@ -87,7 +87,7 @@ A kimenet a következőhöz hasonló:
 }
 ```
 
-Mentse a JSON-kimenetet, mert egy későbbi lépésben használatos. Jegyezze fel a `clientId`-t is, amelyre frissítenie kell a szolgáltatásnevet a következő szakaszban.
+Mentse a JSON-kimenetet, mert egy későbbi lépésben használatos. Jegyezze fel a `clientId` -t is, amelyre frissítenie kell a szolgáltatásnevet a következő szakaszban.
 
 ### <a name="update-service-principal-for-registry-authentication"></a>Szolgáltatásnév frissítése a beállításjegyzék-hitelesítéshez
 
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Hitelesítő adatok mentése a GitHub-tárházba
 
-1. A GitHub felhasználói felületén navigáljon az elágazó tárházhoz, és válassza a **Beállítások** > **titkok**lehetőséget. 
+1. A GitHub felhasználói felületén navigáljon az elágazó tárházhoz, és válassza a **Beállítások**  >  **titkok**lehetőséget. 
 
 1. A következő titkok hozzáadásához válassza az **új titok hozzáadása** lehetőséget:
 
@@ -126,9 +126,9 @@ az role assignment create \
 
 ### <a name="create-workflow-file"></a>Munkafolyamat-fájl létrehozása
 
-1. A GitHub felhasználói felületén válassza a **műveletek** > **Új munkafolyamat**elemet.
+1. A GitHub felhasználói felületén válassza a **műveletek**  >  **Új munkafolyamat**elemet.
 1. Válassza **a munkafolyamat beállítása saját maga**lehetőséget.
-1. Az **új fájl szerkesztése**területen illessze be a következő YAML-tartalmat a mintakód felülírásához. Fogadja el az `main.yml`alapértelmezett fájlnevet, vagy adja meg a választott fájlnevet.
+1. Az **új fájl szerkesztése**területen illessze be a következő YAML-tartalmat a mintakód felülírásához. Fogadja el az alapértelmezett fájlnevet `main.yml` , vagy adja meg a választott fájlnevet.
 1. Válassza a **véglegesítés indítása**lehetőséget, opcionálisan adja meg a véglegesítés rövid és részletes leírását, majd válassza az **új fájl véglegesítés**elemet.
 
 ```yml
@@ -173,7 +173,7 @@ jobs:
 
 ### <a name="validate-workflow"></a>Munkafolyamat ellenőrzése
 
-A munkafolyamat-fájl véglegesíte után a rendszer elindítja a munkafolyamatot. A munkafolyamat előrehaladásának áttekintéséhez navigáljon a **műveletek** > **munkafolyamatok**elemre. 
+A munkafolyamat-fájl véglegesíte után a rendszer elindítja a munkafolyamatot. A munkafolyamat előrehaladásának áttekintéséhez navigáljon a **műveletek**  >  **munkafolyamatok**elemre. 
 
 ![Munkafolyamat-folyamatjelző megtekintése](./media/container-instances-github-action/github-action-progress.png)
 
@@ -264,7 +264,7 @@ A munkafolyamat üzembe helyez egy Azure Container-példányt a GitHub-tárház 
 
 A GitHub felhasználói felületen a munkafolyamat állapotának és eredményeinek megtekintéséhez tekintse meg a [munkafolyamat-Futtatás kezelése](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Állítsa le a tárolópéldányt az [az container delete][az-container-delete] paranccsal:
 

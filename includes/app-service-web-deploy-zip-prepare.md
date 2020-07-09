@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 6b5aa4f409b8c2f5a9125ab01e8587f4ac9c4ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570210"
 ---
 ## <a name="create-a-project-zip-file"></a>ZIP-fájl létrehozása a projekthez
 
@@ -23,11 +23,11 @@ ms.locfileid: "75945150"
 
 A helyi terminál ablakban navigáljon az alkalmazás-projekt gyökérkönyvtárához. 
 
-Ennek a könyvtárnak tartalmaznia kell a webalkalmazáshoz tartozó bejegyzést, például az _index. html_, az _index. php_és az _app. js_fájlt. Olyan csomagkezelő fájlokat is tartalmazhat, mint például a _Project. JSON_, a _Composer. JSON_, a _Package. JSON_, a _Bower. JSON_és a _követelmények. txt_.
+Ennek a könyvtárnak tartalmaznia kell a webalkalmazás belépési fájlját, például: _index.html_, _index. php_és _app.js_. Emellett olyan csomagkezelő fájlokat is tartalmazhat, mint például _aproject.js_, a _composer.js, a_ _package.jsa_, a _bower.jsés a_ _requirements.txt_.
 
-Hacsak nem szeretné, hogy app Service az üzembe helyezés automatizálását, futtassa az összes felépítési feladatot (például `npm` `bower` `gulp` `composer`:,,, és `pip`), és győződjön meg arról, hogy rendelkezik az alkalmazás futtatásához szükséges összes fájllal. Erre a lépésre akkor van szükség, ha [közvetlenül szeretné futtatni a csomagot](../articles/app-service/deploy-run-package.md).
+Hacsak nem szeretné, hogy app Service az üzembe helyezés automatizálását, futtassa az összes felépítési feladatot (például:,,, `npm` `bower` `gulp` `composer` és `pip` ), és győződjön meg arról, hogy rendelkezik az alkalmazás futtatásához szükséges összes fájllal. Erre a lépésre akkor van szükség, ha [közvetlenül szeretné futtatni a csomagot](../articles/app-service/deploy-run-package.md).
 
-Készítsen ZIP-archívumot a projekt minden eleméről. A következő parancs a terminál alapértelmezett eszközét használja:
+Készítsen ZIP-archívumot a projekt minden eleméről. A `dotnet` projektek esetében ez a mappa a parancs kimeneti mappája `dotnet publish` . A következő parancs a terminál alapértelmezett eszközét használja:
 
 ```
 # Bash

@@ -15,12 +15,11 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556667"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -86,7 +85,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - [SAP HANA telepítés](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  Az ügyfél, a rendszerintegrátor, a Microsoft és az egyéb érintett felek közötti rendszeres tervezési és üzembe helyezési felülvizsgálati lépésszám definiálása.
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>Kísérleti fázis (erősen ajánlott)
  
 A projektek tervezése és előkészítése előtt vagy közben is futtathat egy próbát. A kísérleti fázist is használhatja a tervezési és előkészítési fázisban végrehajtott megközelítések és kialakítások tesztelésére. És kiterjesztheti a próbaüzem fázisát, hogy valódi bizonyítékot hozzon a koncepcióra.
@@ -213,7 +212,7 @@ Ebben a fázisban általában fejlesztési rendszereket, egység-tesztelési ren
 14. Optimalizálja és élesítse a csapat Azure szerepköralapú hozzáférését, engedélyeit és folyamatait, hogy megbizonyosodjon róla, hogy a feladatok elkülönítése megtörtént. Ugyanakkor győződjön meg arról, hogy az összes csapat el tudja végezni a feladatait az Azure-infrastruktúrában.
 15. Magas rendelkezésre állású és vész-helyreállítási eljárások gyakorlása, tesztelése és dokumentálása, amelyek lehetővé teszik, hogy a munkatársak végrehajtsák ezeket a feladatokat. Azonosítsa a hiányosságokat, és alkalmazkodjon az új Azure-funkciókhoz, amelyeket integrál az üzembe helyezésbe.
 
- 
+
 ## <a name="production-preparation-phase"></a>Éles előkészítési fázis 
 Ebben a fázisban gyűjti a tapasztalt és megtanult adatokat a nem éles környezetben üzemelő környezetekben, és alkalmazza azt a jövőbeli éles üzembe helyezésekre. Elő kell készítenie a jelenlegi üzemeltetési hely és az Azure közötti adatátvitel folyamatát is.
 

@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikáka
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: ed57003c7a9a5a1a9d87aa2e8934af8c48b1d819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: 1df590bcec4dfed08dea81c60738a40ca9be8bee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063327"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108736"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL az Azure CLI és a REST API használatával
 
@@ -30,6 +30,9 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
+> [!IMPORTANT]
+> Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
+
 A következő paranccsal hozhat létre olvasási replika-kiszolgálót:
 
 ```azurecli-interactive
@@ -41,10 +44,10 @@ A `az mysql server replica create` parancshoz a következő paraméterek szüks�
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
-| név | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
+| name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
 | source-server | mydemoserver | A replikálni kívánt létező főkiszolgáló neve vagy azonosítója. |
 
-Egy több régióból származó olvasási replika létrehozásához használja `--location` a paramétert. Az alábbi CLI-példa létrehozza a replikát az USA nyugati régiójában.
+Egy több régióból származó olvasási replika létrehozásához használja a `--location` paramétert. Az alábbi CLI-példa létrehozza a replikát az USA nyugati régiójában.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -88,7 +91,7 @@ A `az mysql server replica stop` parancshoz a következő paraméterek szükség
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a replika-kiszolgáló létezik.  |
-| név | mydemoreplicaserver | Annak a replika-kiszolgálónak a neve, amelyen a replikálást le kell állítani. |
+| name | mydemoreplicaserver | Annak a replika-kiszolgálónak a neve, amelyen a replikálást le kell állítani. |
 
 ### <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
@@ -175,6 +178,6 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

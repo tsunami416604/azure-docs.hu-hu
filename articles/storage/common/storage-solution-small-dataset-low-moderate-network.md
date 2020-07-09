@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60397277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504304"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Kis méretű adathalmazok átvitele kis vagy közepes hálózati sávszélességen
  
@@ -53,11 +53,11 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Rendelkezésre állás | Letöltés és telepítés <br>Önálló eszköz | Webalapú feltárási eszközök a Azure Portal | Parancssori eszköz |Programozható felületek a .NET, a Java, a Python, a JavaScript, a C++, a go, a Ruby és a PHP használatával |
 | Grafikus felület | Igen | Igen | Nem | Nem |
-| Támogatott platformok | Windows, Mac, Linux | Webes alapú |Windows, Mac, Linux |Összes platform |
+| Támogatott platformok | Windows, Mac, Linux | Webes alapú |Windows, Mac, Linux |Minden platform |
 | Engedélyezett blob Storage-műveletek<br>blobok és mappák esetén | Feltöltés<br>Letöltés<br>Kezelés | Feltöltés<br>Letöltés<br>Kezelés |Feltöltés<br>Letöltés<br>Kezelés | Igen, testreszabható |
-| Engedélyezett Data Lake Gen1-tároló<br>fájlok és mappák műveletei | Feltöltés<br>Letöltés<br>Kezelés | Nem |Feltöltés<br>Letöltés<br>Kezelés                   | Nem |
+| Engedélyezett Data Lake Gen1-tároló<br>fájlok és mappák műveletei | Feltöltés<br>Letöltés<br>Kezelés | No |Feltöltés<br>Letöltés<br>Kezelés                   | No |
 | Engedélyezett file Storage-műveletek<br>fájlok és könyvtárak esetén | Feltöltés<br>Letöltés<br>Kezelés | Feltöltés<br>Letöltés<br>Kezelés   |Feltöltés<br>Letöltés<br>Kezelés | Igen, testreszabható |
-| Engedélyezett Table Storage-műveletek<br>táblákhoz |Kezelés | Nem |Tábla-támogatás a AzCopy v7-ben |Igen, testreszabható|
+| Engedélyezett Table Storage-műveletek<br>táblákhoz |Kezelés | No |Tábla-támogatás a AzCopy v7-ben |Igen, testreszabható|
 | Engedélyezett üzenetsor-tárolás | Kezelés | Nem  |Nem | Igen, testreszabható|
 
 

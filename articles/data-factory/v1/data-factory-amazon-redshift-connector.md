@@ -13,11 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710150"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,12 +60,12 @@ Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásáh
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Igen |
-| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
+| **típusa** |Ezt a tulajdonságot **AmazonRedshift**értékre kell beállítani. |Yes |
+| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Yes |
 | **port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
-| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Igen |
-| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Igen |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Igen |
+| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Yes |
+| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Yes |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -76,7 +75,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Táblanév** |Annak a táblának a neve az Amazon vöröseltolódás-adatbázisban, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
+| **tableName** |Annak a táblának a neve az Amazon vöröseltolódás-adatbázisban, amelyre a társított szolgáltatás hivatkozik. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
@@ -87,7 +86,7 @@ Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource**típusú,
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **lekérdezés** | Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
-| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | Nem |
+| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | No |
 | **s3LinkedServiceName** | Az Amazon S3, amelyet ideiglenes tárolóként kell használni. A társított szolgáltatás egy **awsaccesskey használnia**típusú Azure Data Factory-név használatával van megadva. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 | **bucketName** | Azt az Amazon S3 gyűjtőt jelzi, amely az ideiglenes adattároláshoz használható. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehoz egy gyűjtőt. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 
@@ -333,7 +332,7 @@ A következő leképezések akkor használatosak, ha a másolási tevékenység 
 | EGÉSZ SZÁM |Int32 |
 | BIGINT |Int64 |
 | DECIMÁLIS |Decimal |
-| VALÓS SZÁM |Egyirányú |
+| VALÓS SZÁM |Egyszeres |
 | DUPLA PONTOSSÁG |Double |
 | LOGIKAI |Sztring |
 | CHAR |Sztring |

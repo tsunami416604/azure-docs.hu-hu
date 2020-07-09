@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202296"
 ---
 # <a name="display-controls"></a>Vezérlőelemek megjelenítése
 
@@ -32,9 +32,9 @@ Az alábbi ábrán egy önjelölt regisztrációs oldal látható, amelyben két
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- Az [önérvényesített műszaki profilok](self-asserted-technical-profile.md) [metaadatok](self-asserted-technical-profile.md#metadata) szakaszában a hivatkozott [ContentDefinition](contentdefinitions.md) 2.0.0 vagy újabb értékűnek kell lennie `DataUri` . Például:
+ Az [önérvényesített műszaki profilok](self-asserted-technical-profile.md) [metaadatok](self-asserted-technical-profile.md#metadata) szakaszában a hivatkozott [ContentDefinition](contentdefinitions.md) `DataUri` 2.0.0 vagy újabb értékűnek kell lennie. Például:
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -48,12 +48,12 @@ A **DisplayControl** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
-| UserInterfaceControlType | Igen | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
+| Azonosító | Yes | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
+| UserInterfaceControlType | Yes | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
 
 A **DisplayControl** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Szabályzattípushoz | 0:1 | A **szabályzattípushoz** a felhasználó által összegyűjtött jogcímek értékének előre való feltöltésére szolgálnak. |
 | DisplayClaims | 0:1 | A **DisplayClaims** a felhasználótól gyűjtött jogcímek ábrázolására szolgálnak. |
@@ -66,7 +66,7 @@ A megjelenítési vezérlőkben a **szabályzattípushoz** elemek használatáva
 
 A következő példa előre feltölti az e-mail-címet, hogy ellenőrizni lehessen a már meglévő címmel.
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -78,11 +78,11 @@ A következő példa előre feltölti az e-mail-címet, hogy ellenőrizni lehess
 
 A megjelenítési vezérlők mindegyik típusának különböző megjelenítési jogcímeket, [kimeneti jogcímeket](#output-claims)és végrehajtandó [műveleteket](#display-control-actions) kell megadnia.
 
-Az [önérvényesített technikai profilban](self-asserted-technical-profile.md#display-claims)definiált **megjelenítési jogcímek** esetében a megjelenítési jogcímek a felhasználó által a megjelenítési vezérlőn belül összegyűjtött jogcímeket jelölik. A hivatkozott **claimType** elemnek meg kell adnia a Azure ad B2C által támogatott felhasználói beviteli típushoz tartozó **UserInputType** elemet, például `TextBox` : `DropdownSingleSelect`vagy. Ha egy **műveletnek**egy megjelenítési jogcím értékét kell megadnia, **Required** állítsa be a `true` kötelező attribútumot arra, hogy kényszerítse a felhasználót az adott megjelenítési jogcím értékének megadására.
+Az [önérvényesített technikai profilban](self-asserted-technical-profile.md#display-claims)definiált **megjelenítési jogcímek** esetében a megjelenítési jogcímek a felhasználó által a megjelenítési vezérlőn belül összegyűjtött jogcímeket jelölik. A hivatkozott **claimType** elemnek meg kell adnia a Azure ad B2C által támogatott felhasználói beviteli típushoz tartozó **UserInputType** elemet, például: `TextBox` vagy `DropdownSingleSelect` . Ha egy **műveletnek**egy megjelenítési jogcím értékét kell megadnia, állítsa be a **kötelező** attribútumot arra, hogy `true` kényszerítse a felhasználót az adott megjelenítési jogcím értékének megadására.
 
 Bizonyos megjelenítési jogcímek a megjelenítési vezérlők bizonyos típusaihoz szükségesek. Például **VerificationCode** szükséges a **VerificationControl**típusú megjelenítési vezérlőelemhez. A **ControlClaimType** attribútum használatával megtudhatja, hogy melyik DisplayClaim van kijelölve ehhez a szükséges jogcímhez. Például:
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ Egy művelet meghatározza az **érvényesítési műszaki profilok**listáját.
 
 A következő példa egy kódot küld e-mailben vagy SMS-ben az **mfaType** jogcím felhasználó általi kiválasztása alapján.
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ A megjelenítési vezérlőkre az [önérvényesített technikai profil](self-as
 
 Például:
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

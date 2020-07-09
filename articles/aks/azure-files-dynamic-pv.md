@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Azure Files használatával több párhuzamos hüvelyrel való használatra az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 09/12/2019
-ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/01/2020
+ms.openlocfilehash: 78bcd4925451125d5ab56a1da08cc307dc0fc236
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831590"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -45,7 +45,7 @@ Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és másolja a következő
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: azurefile
+  name: my-azurefile
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
@@ -74,11 +74,11 @@ Most hozzon létre egy nevű fájlt `azure-file-pvc.yaml` , és másolja a köve
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: azurefile
+  name: my-azurefile
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: my-azurefile
   resources:
     requests:
       storage: 5Gi
@@ -96,15 +96,15 @@ kubectl apply -f azure-file-pvc.yaml
 Ha elkészült, a rendszer létrehozza a fájlmegosztást. Létrejön egy titkos Kubernetes is, amely tartalmazza a kapcsolatok adatait és a hitelesítő adatokat. A PVC állapotának megtekintéséhez használja a [kubectl Get][kubectl-get] parancsot:
 
 ```console
-$ kubectl get pvc azurefile
+$ kubectl get pvc my-azurefile
 
-NAME        STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
+NAME           STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            my-azurefile      5m
 ```
 
 ## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-A következő YAML létrehoz egy Pod-t, amely az állandó mennyiségi jogcímek *azurefile* használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* elérési úton. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
+A következő YAML létrehoz egy Pod-t, amely a *saját azurefile* állandó mennyiségi jogcím használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* útvonalon. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
 
 Hozzon létre egy nevű fájlt `azure-pvc-files.yaml` , és másolja a következő YAML. Győződjön meg arról, hogy a *claimName* megegyezik az utolsó lépésben létrehozott PVC-vel.
 
@@ -130,7 +130,7 @@ spec:
   volumes:
     - name: volume
       persistentVolumeClaim:
-        claimName: azurefile
+        claimName: my-azurefile
 ```
 
 Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal.
@@ -157,7 +157,7 @@ Containers:
 Volumes:
   volume:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-    ClaimName:  azurefile
+    ClaimName:  my-azurefile
     ReadOnly:   false
 [...]
 ```
@@ -170,7 +170,7 @@ A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes 1.13.
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: azurefile
+  name: my-azurefile
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777

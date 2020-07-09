@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387524"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>A Azure Portal használatával hozhat létre és törölhet felhasználói felhasználókat a Azure AD B2C
 
@@ -31,7 +31,7 @@ A [Azure ad B2C felhasználói fiókjainak áttekintése](user-overview.md)cím�
 
 * Feladatok
 * Vendég
-* Fogyasztói
+* Ügyfélszolgáltatások
 
 Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. A munkahelyi és a vendég fiókok létrehozásával és törlésével kapcsolatos információkért lásd: [felhasználók hozzáadása vagy törlése Azure Active Directory használatával](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
@@ -40,15 +40,15 @@ Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. A **Kezelés** alatt válassza a **Felhasználókat**.
+1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 1. Válassza az **új felhasználó**lehetőséget.
 1. Válassza a **létrehozás Azure ad B2C a felhasználó**lehetőséget.
-1. Válasszon **bejelentkezési módszert** , és adjon meg egy **e-mail-** címet vagy egy **felhasználónevet** az új felhasználó számára. Az itt kiválasztott bejelentkezési módszernek meg kell egyeznie az Azure ad B2C bérlő *helyi fiókjának* identitás-szolgáltatójának megadott beállítással (lásd: az**identitás-szolgáltatók** **kezelése** > a Azure ad B2C-bérlőben).
+1. Válasszon **bejelentkezési módszert** , és adjon meg egy **e-mail-** címet vagy egy **felhasználónevet** az új felhasználó számára. Az itt kiválasztott bejelentkezési módszernek meg kell egyeznie az Azure ad B2C bérlő *helyi fiókjának* identitás-szolgáltatójának megadott beállítással (lásd **Manage**: az  >  **identitás-szolgáltatók** kezelése a Azure ad B2C-bérlőben).
 1. Adja meg a felhasználó **nevét** . Ez általában a felhasználó teljes neve (adott és vezetékneve).
 1. Választható Ha szeretné, hogy a felhasználó ne jelentkezzen be, tiltsa le a **bejelentkezést** . A bejelentkezést később is engedélyezheti, ha szerkeszti a felhasználó **profilját** a Azure Portal.
 1. Válassza az **Automatikus létrehozás jelszava** vagy a **jelszó létrehozása**lehetőséget.
 1. Adja **meg a** felhasználó vezetéknevét és **vezetéknevét**.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ha nem jelölte be a **Bejelentkezés blokkolását**, a felhasználó bejelentkezhet a megadott bejelentkezési módszerrel (e-mail vagy Felhasználónév).
 

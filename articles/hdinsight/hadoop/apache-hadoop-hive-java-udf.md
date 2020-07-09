@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
-ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5af8f2ed1a910e559393796102f0853c4f3f1fd8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74327211"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082046"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Java UDF használata Apache Hive HDInsight
 
@@ -24,7 +24,7 @@ Megtudhatja, hogyan hozhat létre olyan Java-alapú, felhasználó által defini
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) 8-as verzió](https://aka.ms/azure-jdks)
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
-* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az `wasbs://`URI a következő lesz:.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` .  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 * Egy szövegszerkesztő vagy Java IDE
 
@@ -50,7 +50,7 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Ez a parancs létrehoz egy nevű `exampleudf`könyvtárat, amely tartalmazza a Maven-projektet.
+    Ez a parancs létrehoz egy nevű könyvtárat `exampleudf` , amely tartalmazza a Maven-projektet.
 
 2. A projekt létrehozása után törölje a `exampleudf/src/test` projekt részeként létrehozott könyvtárat a következő parancs beírásával:
 
@@ -59,13 +59,13 @@ cd C:\HDI
     rmdir /S /Q "src/test"
     ```
 
-3. A `pom.xml` megnyitásához írja be az alábbi parancsot:
+3. A megnyitásához `pom.xml` írja be az alábbi parancsot:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Ezután cserélje le a `<dependencies>` meglévő bejegyzést a következő XML-fájlra:
+    Ezután cserélje le a meglévő `<dependencies>` bejegyzést a következő XML-fájlra:
 
     ```xml
     <dependencies>
@@ -86,7 +86,7 @@ cd C:\HDI
 
     Ezek a bejegyzések határozzák meg a Hadoop és a struktúra HDInsight 3,6-es verzióját. A [HDInsight-összetevő verziószámozási](../hdinsight-component-versioning.md) dokumentumának HDInsight által biztosított Hadoop és kaptár verzióit a következő témakörben találja:.
 
-    Vegyen `<build>` fel egy szakaszt `</project>` a fájl végén található sor elé. Ez a szakasz a következő XML-kódot tartalmazza:
+    Vegyen fel egy `<build>` szakaszt a `</project>` fájl végén található sor elé. Ez a szakasz a következő XML-kódot tartalmazza:
 
     ```xml
     <build>
@@ -144,7 +144,7 @@ cd C:\HDI
 
     A módosítások elvégzése után mentse a fájlt.
 
-4. Új fájl `ExampleUDF.java`létrehozásához és megnyitásához írja be az alábbi parancsot:
+4. Új fájl létrehozásához és megnyitásához írja be az alábbi parancsot `ExampleUDF.java` :
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -181,7 +181,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>Az UDF létrehozása és telepítése
 
-Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhasználónevet, ha más. Cserélje `mycluster` le a nevet a tényleges fürt nevére.
+Az alábbi parancsokban cserélje le a helyére `sshuser` a tényleges felhasználónevet, ha más. Cserélje le `mycluster` a nevet a tényleges fürt nevére.
 
 1. Fordítsa le és csomagolja ki az UDF-t a következő parancs beírásával:
 
@@ -189,7 +189,7 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
     mvn compile package
     ```
 
-    Ez a parancs létrehozza és becsomagolja az `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` UDF-t a fájlba.
+    Ez a parancs létrehozza és becsomagolja az UDF-t a `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` fájlba.
 
 2. A `scp` paranccsal másolja a fájlt a HDInsight-fürtre a következő parancs beírásával:
 

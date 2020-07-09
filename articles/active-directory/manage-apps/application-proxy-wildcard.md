@@ -3,25 +3,25 @@ title: Helyettesítő karakteres alkalmazások az Azure AD Application Proxy
 description: Megtudhatja, hogyan használhatók helyettesítő alkalmazások a Azure Active Directory alkalmazásproxy használatával.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367733"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
 
@@ -43,9 +43,9 @@ Ha ugyanazokkal a konfigurációval rendelkező alkalmazásokkal rendelkező cso
 
 A helyettesítő karakterekkel rendelkező alkalmazásokat közzéteheti, ha a belső és külső URL-címek formátuma a következő:
 
-> http (s)://*. \<tartomány\>
+> http (s)://*.\<domain\>
 
-Például: `http(s)://*.adventure-works.com`.
+Példa: `http(s)://*.adventure-works.com`.
 
 Míg a belső és külső URL-címek különböző tartományokat használhatnak, az ajánlott eljárásnak megfelelőnek kell lennie. Az alkalmazás közzétételekor hibaüzenet jelenik meg, ha az URL-címek egyike nem tartalmaz helyettesítő karaktert.
 
@@ -62,17 +62,17 @@ Míg az [Egyéni tartományok](application-proxy-configure-custom-domain.md) nem
 1. Ellenőrzött tartomány létrehozása az Azure-ban.
 1. Töltsön fel egy TLS-/SSL-tanúsítványt PFX formátumban az alkalmazásproxy számára.
 
-Érdemes helyettesítő tanúsítványt használni a létrehozni kívánt alkalmazásnak megfelelően. Azt is megteheti, hogy olyan tanúsítványt is használhat, amely csak bizonyos alkalmazásokat listáz. Ebben az esetben csak a tanúsítványban felsorolt alkalmazások lesznek elérhetők a helyettesítő alkalmazáson keresztül.
+Érdemes helyettesítő tanúsítványt használni a létrehozni kívánt alkalmazásnak megfelelően. 
 
 Biztonsági okokból ez nehéz követelmény, és nem támogatjuk a helyettesítő karaktereket olyan alkalmazások esetében, amelyek nem használhatnak egyéni tartományt a külső URL-címhez.
 
 ### <a name="dns-updates"></a>DNS-frissítések
 
-Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a külső URL-címhez (például `*.adventure-works.com`) egy CNAME rekorddal, amely az alkalmazásproxy-végpont külső URL-címére mutat. Helyettesítő karakteres alkalmazások esetén a CNAME rekordnak a megfelelő külső URL-címekre kell mutatnia:
+Egyéni tartományok használatakor létre kell hoznia egy DNS-bejegyzést a külső URL-címhez (például) egy CNAME rekorddal, amely az `*.adventure-works.com` alkalmazásproxy-végpont külső URL-címére mutat. Helyettesítő karakteres alkalmazások esetén a CNAME rekordnak a megfelelő külső URL-címekre kell mutatnia:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Annak ellenőrzéséhez, hogy helyesen konfigurálta-e a CNAME-t, használhatja az [nslookupt](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) az egyik cél végponton, `expenses.adventure-works.com`például:.  A válasznak tartalmaznia kell a már említett aliast (`<yourAADTenantId>.tenant.runtime.msappproxy.net`).
+Annak ellenőrzéséhez, hogy helyesen konfigurálta-e a CNAME-t, használhatja az [nslookupt](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) az egyik cél végponton, például: `expenses.adventure-works.com` .  A válasznak tartalmaznia kell a már említett aliast ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -80,13 +80,13 @@ Az alábbiakban néhány megfontolandó szempontot érdemes figyelembe venni a h
 
 ### <a name="accepted-formats"></a>Elfogadott formátumok
 
-Helyettesítő karakteres alkalmazások esetén a **belső URL-címet** a `http(s)://*.<domain>`következő formátumban kell megadni:.
+Helyettesítő karakteres alkalmazások esetén a **belső URL-címet** a következő formátumban kell megadni: `http(s)://*.<domain>` .
 
-![A belső URL-cím esetében használja a http (s)://* formátumot. \<tartomány>](./media/application-proxy-wildcard/22.png)
+![A belső URL-cím esetében használja a http (s)://* formátumot. \< tartomány>](./media/application-proxy-wildcard/22.png)
 
 **Külső URL-cím**konfigurálásakor a következő formátumot kell használnia:`https://*.<custom domain>`
 
-![A külső URL-cím esetében használja a * https://formátumot. \<egyéni tartomány>](./media/application-proxy-wildcard/21.png)
+![A külső URL-cím esetében használja a * https://formátumot. \< egyéni tartomány>](./media/application-proxy-wildcard/21.png)
 
 A helyettesítő karakterek, több helyettesítő karakter vagy más regex sztringek egyéb helyei nem támogatottak, és hibákat okoznak.
 
@@ -97,11 +97,11 @@ Az alkalmazás nem zárható ki a helyettesítő karakteres alkalmazásból a k�
 - A kivételként szolgáló alkalmazás közzététele normál alkalmazásként
 - A helyettesítő karakterek engedélyezése csak bizonyos alkalmazásokhoz a DNS-beállításokon keresztül
 
-Az alkalmazások normál alkalmazásként történő közzététele az előnyben részesített módszer, amellyel kizárható egy alkalmazás egy helyettesítő karakterből. A kizárt alkalmazásokat a helyettesítő alkalmazások előtt közzé kell tenni, hogy a kivételek kikényszerítve legyenek az elejétől. A legpontosabb alkalmazás mindig elsőbbséget élvez – egy közzétett `budgets.finance.adventure-works.com` alkalmazás elsőbbséget élvez az alkalmazással `*.finance.adventure-works.com`szemben, ami elsőbbséget élvez az alkalmazással `*.adventure-works.com`szemben.
+Az alkalmazások normál alkalmazásként történő közzététele az előnyben részesített módszer, amellyel kizárható egy alkalmazás egy helyettesítő karakterből. A kizárt alkalmazásokat a helyettesítő alkalmazások előtt közzé kell tenni, hogy a kivételek kikényszerítve legyenek az elejétől. A legpontosabb alkalmazás mindig elsőbbséget élvez – egy közzétett alkalmazás elsőbbséget élvez `budgets.finance.adventure-works.com` az alkalmazással szemben `*.finance.adventure-works.com` , ami elsőbbséget élvez az alkalmazással szemben `*.adventure-works.com` .
 
-A helyettesítő karaktert úgy is korlátozhatja, hogy csak bizonyos alkalmazások esetében működjön a DNS-kezelésen keresztül. Ajánlott eljárásként olyan CNAME bejegyzést kell létrehoznia, amely tartalmaz egy helyettesítő karaktert, és megfelel a konfigurált külső URL-cím formátumának. Ehelyett az alkalmazás URL-címeit is kijelölheti a helyettesítő karakterekkel. `*.adventure-works.com`Például a `hr.adventure-works.com`, pont `expenses.adventure-works.com` és `travel.adventure-works.com individually` a `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`helyett.
+A helyettesítő karaktert úgy is korlátozhatja, hogy csak bizonyos alkalmazások esetében működjön a DNS-kezelésen keresztül. Ajánlott eljárásként olyan CNAME bejegyzést kell létrehoznia, amely tartalmaz egy helyettesítő karaktert, és megfelel a konfigurált külső URL-cím formátumának. Ehelyett az alkalmazás URL-címeit is kijelölheti a helyettesítő karakterekkel. Például a `*.adventure-works.com` , pont `hr.adventure-works.com` `expenses.adventure-works.com` és `travel.adventure-works.com individually` a helyett `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` .
 
-Ha ezt a lehetőséget választja, egy másik CNAME-bejegyzésre is szüksége lesz `AppId.domain`az értékhez, `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`például ugyanarra a helyre mutat. A **AppID** a helyettesítő karakteres alkalmazás alkalmazás tulajdonságai lapján található:
+Ha ezt a lehetőséget választja, egy másik CNAME-bejegyzésre is szüksége lesz az értékhez `AppId.domain` , például `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com` ugyanarra a helyre mutat. A **AppID** a helyettesítő karakteres alkalmazás alkalmazás tulajdonságai lapján található:
 
 ![Keresse meg az alkalmazás AZONOSÍTÓját az alkalmazás tulajdonságlapján](./media/application-proxy-wildcard/01.png)
 
@@ -114,7 +114,7 @@ A helyettesítő karakteres alkalmazás csak egy csempével jelenik meg a [MyApp
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos által korlátozott delegálás
 
-A Kerberos által [korlátozott delegálást (KCD) használó alkalmazások egyszeri bejelentkezéses módszere](application-proxy-configure-single-sign-on-with-kcd.md)esetén az egyszeri bejelentkezéses metódushoz megadott egyszerű szolgáltatásnév is helyettesítő karakternek kell lennie. Az egyszerű szolgáltatásnév például a következő lehet: `HTTP/*.adventure-works.com`. Továbbra is rendelkeznie kell a háttér-kiszolgálókon konfigurált egyedi SPN-ek (például `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`:).
+A Kerberos által [korlátozott delegálást (KCD) használó alkalmazások egyszeri bejelentkezéses módszere](application-proxy-configure-single-sign-on-with-kcd.md)esetén az egyszeri bejelentkezéses metódushoz megadott egyszerű szolgáltatásnév is helyettesítő karakternek kell lennie. Az egyszerű szolgáltatásnév például a következő lehet: `HTTP/*.adventure-works.com` . Továbbra is rendelkeznie kell a háttér-kiszolgálókon konfigurált egyedi SPN-ek (például: `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com` ).
 
 ## <a name="scenario-1-general-wildcard-application"></a>1. forgatókönyv: általános helyettesítő karakteres alkalmazás
 
@@ -133,8 +133,8 @@ Mindhárom alkalmazás:
 A helyettesítő karakteres alkalmazást közzéteheti az [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)című témakörben ismertetett lépésekkel. Ez a forgatókönyv a következőket feltételezi:
 
 - Egy bérlő a következő AZONOSÍTÓval:`000aa000-11b1-2ccc-d333-4444eee4444e`
-- Egy nevű `adventure-works.com` ellenőrzött tartomány konfigurálva lett.
-- A **CNAME** rendszer létrehoz egy CNAME `*.adventure-works.com` bejegyzést `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` , amely a következőre mutat:.
+- Egy nevű ellenőrzött tartomány `adventure-works.com` konfigurálva lett.
+- A rendszer létrehoz egy **CNAME** bejegyzést, amely a következőre mutat `*.adventure-works.com` `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` :.
 
 A [dokumentált lépéseket](application-proxy-add-on-premises-application.md)követve hozzon létre egy új alkalmazásproxy-alkalmazást a bérlőben. Ebben a példában a helyettesítő karakter a következő mezőkben szerepel:
 
@@ -150,22 +150,22 @@ A [dokumentált lépéseket](application-proxy-add-on-premises-application.md)k�
 
     ![Példa: helyettesítő karakter az SPN-konfigurációban](./media/application-proxy-wildcard/44.png)
 
-A helyettesítő karakteres alkalmazás közzétételével most már elérheti a három alkalmazást, ha a használt URL-címekre navigál (például: `travel.adventure-works.com`).
+A helyettesítő karakteres alkalmazás közzétételével most már elérheti a három alkalmazást, ha a használt URL-címekre navigál (például: `travel.adventure-works.com` ).
 
 A konfiguráció a következő struktúrát valósítja meg:
 
 ![Megjeleníti a példa konfigurációjában megvalósított struktúrát](./media/application-proxy-wildcard/05.png)
 
-| Color | Leírás |
+| Szín | Description |
 | ---   | ---         |
 | Kék  | A Azure Portal explicit módon közzétett és látható alkalmazások. |
 | Szürke  | A fölérendelt alkalmazás segítségével elérhető alkalmazások. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>2. forgatókönyv: általános helyettesítő karakteres alkalmazás kivétel esetén
 
-Ebben a forgatókönyvben a három általános alkalmazás mellett egy másik alkalmazást `finance.adventure-works.com`is tartalmaz, amely csak a pénzügyi részleg által elérhető. A jelenlegi alkalmazás szerkezete révén a pénzügyi alkalmazása a helyettesítő karakteres alkalmazás és az összes alkalmazott számára elérhetővé válik. Ennek módosításához kizárhatja az alkalmazását a helyettesítő karakterből úgy, hogy a Pénzügyt külön alkalmazásként konfigurálja, és szigorúbb engedélyekkel rendelkezik.
+Ebben a forgatókönyvben a három általános alkalmazás mellett egy másik alkalmazást is tartalmaz, `finance.adventure-works.com` amely csak a pénzügyi részleg által elérhető. A jelenlegi alkalmazás szerkezete révén a pénzügyi alkalmazása a helyettesítő karakteres alkalmazás és az összes alkalmazott számára elérhetővé válik. Ennek módosításához kizárhatja az alkalmazását a helyettesítő karakterből úgy, hogy a Pénzügyt külön alkalmazásként konfigurálja, és szigorúbb engedélyekkel rendelkezik.
 
-Győződjön meg arról, hogy létezik egy CNAME rekord, amely az `finance.adventure-works.com` alkalmazáshoz megadott végpontra mutat, amely az alkalmazás alkalmazásproxy lapján van megadva. Ebben a forgatókönyvben `finance.adventure-works.com` a következőre mutat: `https://finance-awcycles.msappproxy.net/`.
+Győződjön meg arról, hogy létezik egy CNAME rekord, amely az alkalmazáshoz megadott végpontra mutat, amely az alkalmazás alkalmazásproxy `finance.adventure-works.com` lapján van megadva. Ebben a forgatókönyvben a következőre `finance.adventure-works.com` mutat: `https://finance-awcycles.msappproxy.net/` .
 
 A [dokumentált lépéseket](application-proxy-add-on-premises-application.md)követve ehhez a forgatókönyvhöz a következő beállítások szükségesek:
 
@@ -185,9 +185,9 @@ Ez a konfiguráció a következő helyzetet valósítja meg:
 
 ![A minta forgatókönyv által megvalósított konfiguráció megjelenítése](./media/application-proxy-wildcard/09.png)
 
-Mivel `finance.adventure-works.com` a egy konkrétabb URL-cím `*.adventure-works.com`, mint a, elsőbbséget élvez. `finance.adventure-works.com` A felhasználók a pénzügyi erőforrások alkalmazásban megadhatják a felhasználói élményt. Ebben az esetben csak a pénzügyi alkalmazottak férhetnek hozzá `finance.adventure-works.com`.
+Mivel a `finance.adventure-works.com` egy konkrétabb URL-cím `*.adventure-works.com` , mint a, elsőbbséget élvez. A felhasználók a `finance.adventure-works.com` pénzügyi erőforrások alkalmazásban megadhatják a felhasználói élményt. Ebben az esetben csak a pénzügyi alkalmazottak férhetnek hozzá `finance.adventure-works.com` .
 
-Ha több alkalmazás van közzétéve a Finance szolgáltatásban, `finance.adventure-works.com` és Ön ellenőrzött tartománnyal rendelkezik, közzétehet egy másik helyettesítő karaktert `*.finance.adventure-works.com`. Mivel ez az általánosnál `*.adventure-works.com`sokkal pontosabb, elsőbbséget élvez, ha egy felhasználó a pénzügyi tartományban található alkalmazáshoz fér hozzá.
+Ha több alkalmazás van közzétéve a Finance szolgáltatásban, és Ön `finance.adventure-works.com` ellenőrzött tartománnyal rendelkezik, közzétehet egy másik helyettesítő karaktert `*.finance.adventure-works.com` . Mivel ez az általánosnál sokkal pontosabb `*.adventure-works.com` , elsőbbséget élvez, ha egy felhasználó a pénzügyi tartományban található alkalmazáshoz fér hozzá.
 
 ## <a name="next-steps"></a>További lépések
 

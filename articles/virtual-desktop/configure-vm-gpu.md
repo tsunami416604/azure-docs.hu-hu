@@ -4,22 +4,22 @@ description: A GPU-gyorsított renderelés és a kódolás engedélyezése a Win
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 99393ed518df590140f79933623a9f7ec96edc85
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: f7a26b6a622368fe9601ea3b6555386b6a121540
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402275"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081094"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>A grafikus processzor (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztalhoz
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md).
 >
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Windows virtuális asztal támogatja a GPU-gyorsított renderelést és kódolást az alkalmazások teljesítményének és méretezhetőségének növelése érdekében. A GPU-gyorsítás különösen fontos a nagy grafikai igényű alkalmazások esetében.
@@ -60,22 +60,36 @@ Alapértelmezés szerint a többmunkamenetes konfigurációkban futó alkalmazá
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-gyorsított keret kódolásának konfigurálása
 
-Távoli asztal kódolja az alkalmazások és az asztali számítógépek által megjelenített összes grafikát (akár GPU-val, akár CPU-val) a Távoli asztal ügyfeleknek való továbbításhoz. Alapértelmezés szerint a Távoli asztal nem használ elérhető GPU-ket ehhez a kódoláshoz. Konfigurálja Csoportházirend a munkamenet-gazdagép számára a GPU-gyorsított keret kódolásának engedélyezéséhez. Folytassa a fenti lépéseket:
+Távoli asztal kódolja az alkalmazások és az asztali számítógépek által megjelenített összes grafikát (akár GPU-val, akár CPU-val) a Távoli asztal ügyfeleknek való továbbításhoz. Ha a képernyő egy részét gyakran frissítik, a képernyő ezen része egy videó kodekkel (H. 264/AVC) van kódolva. Alapértelmezés szerint a Távoli asztal nem használ elérhető GPU-ket ehhez a kódoláshoz. Konfigurálja Csoportházirend a munkamenet-gazdagép számára a GPU-gyorsított keret kódolásának engedélyezéséhez. Folytassa a fenti lépéseket:
+ 
+>[!NOTE]
+>A GPU-gyorsított keret kódolása nem érhető el a NVv4 sorozatú virtuális gépeken.
 
-1. Válassza ki a szabályzatot **prioritásként h. 264/avc 444 grafikus módban távoli asztal kapcsolatokhoz** , és állítsa be ezt a házirendet úgy, hogy az **engedélyezze** a h. 264/AVC 444 kodek kényszerítését a távoli munkamenetben.
-2. Válassza a házirend a **H. 264/AVC hardveres kódolás beállítása Távoli asztal kapcsolatok számára** lehetőséget, és állítsa be ezt a házirendet **úgy,** hogy engedélyezze az AVC/H. 264 hardveres kódolást a távoli munkamenetben.
+1. Válassza a házirend a **H. 264/AVC hardveres kódolás beállítása Távoli asztal kapcsolatok számára** lehetőséget, és állítsa be ezt a házirendet **úgy,** hogy engedélyezze az AVC/H. 264 hardveres kódolást a távoli munkamenetben.
 
     >[!NOTE]
     >A Windows Server 2016-ben állítsa be a beállítást, hogy a rendszer mindig az **AVC hardveres kódolást** **próbálja**meg használni.
 
-3. Most, hogy a csoportházirendek szerkesztése megtörtént, kényszerítse a csoportházirend frissítését. Nyissa meg a parancssort és írja be a következőt:
+2. Most, hogy a csoportházirendek szerkesztése megtörtént, kényszerítse a csoportházirend frissítését. Nyissa meg a parancssort és írja be a következőt:
 
     ```batch
     gpupdate.exe /force
     ```
 
-4. Jelentkezzen ki a Távoli asztal-munkamenetből.
+3. Jelentkezzen ki a Távoli asztal-munkamenetből.
 
+## <a name="configure-fullscreen-video-encoding"></a>Teljes képernyős videó kódolásának konfigurálása
+
+Ha gyakran használ olyan alkalmazásokat, amelyek nagy képarányú tartalmat hoznak létre, például 3D-modellezést, CAD/CAM-és video-alkalmazásokat, akkor dönthet úgy, hogy egy teljes képernyős kódolást engedélyez egy távoli munkamenetben. A teljes képernyős videó profil magasabb szintű képarányt és jobb felhasználói élményt biztosít az ilyen alkalmazások számára a hálózati sávszélesség, valamint a munkamenet-állomás és az ügyfél erőforrásainak rovására. A teljes képernyős videó kódolásához javasolt a GPU-gyorsított keret kódolása. Konfigurálja Csoportházirend a munkamenet-gazdagép számára a teljes képernyős videó kódolásának engedélyezéséhez. Folytassa a fenti lépéseket:
+
+1. Válassza ki a szabályzatot **prioritásként h. 264/avc 444 grafikus módban távoli asztal kapcsolatokhoz** , és állítsa be ezt a házirendet úgy, hogy az **engedélyezze** a h. 264/AVC 444 kodek kényszerítését a távoli munkamenetben.
+2. Most, hogy a csoportházirendek szerkesztése megtörtént, kényszerítse a csoportházirend frissítését. Nyissa meg a parancssort és írja be a következőt:
+
+    ```batch
+    gpupdate.exe /force
+    ```
+
+3. Jelentkezzen ki a Távoli asztal-munkamenetből.
 ## <a name="verify-gpu-accelerated-app-rendering"></a>GPU-gyorsított alkalmazások megjelenítésének ellenőrzése
 
 Annak ellenőrzéséhez, hogy az alkalmazások a GPU-t használják a rendereléshez, próbálkozzon a következők bármelyikével:
@@ -90,7 +104,14 @@ Annak ellenőrzése, hogy a Távoli asztal GPU-gyorsított kódolást használ-e
 1. Kapcsolódjon a virtuális gép asztalához a Windows Virtual Desktop ügyfélprogram használatával.
 2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák**a  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
 3. Annak megállapításához, hogy a GPU-gyorsított kódolás használatban van-e, keresse meg a 170-es AZONOSÍTÓJÚ eseményt. Ha a "AVC hardveres kódoló engedélyezve: 1" látható, akkor a rendszer GPU-kódolást használ.
-4. Annak megállapításához, hogy az AVC 444 mód használatban van-e, keresse meg a 162-es AZONOSÍTÓJÚ eseményt. Ha a "AVC elérhető: 1 kezdeti profil: 2048" jelenik meg, akkor az AVC 444 használatos.
+
+## <a name="verify-fullscreen-video-encoding"></a>Teljes képernyős videó kódolásának ellenőrzése
+
+Annak ellenőrzése, hogy Távoli asztal a teljes képernyős videó kódolását használja-e:
+
+1. Kapcsolódjon a virtuális gép asztalához a Windows Virtual Desktop ügyfélprogram használatával.
+2. Indítsa el a Eseménynapló, és nyissa meg a következő csomópontot: az **alkalmazások és a szolgáltatások naplózzák**a  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
+3. Annak megállapításához, hogy a teljes videó kódolása használatban van-e, keresse meg a 162-es AZONOSÍTÓJÚ eseményt. Ha a "AVC elérhető: 1 kezdeti profil: 2048" jelenik meg, akkor az AVC 444 használatos.
 
 ## <a name="next-steps"></a>További lépések
 

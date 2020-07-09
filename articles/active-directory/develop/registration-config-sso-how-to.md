@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890467"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Egyszeri bejelentkezés konfigurálása alkalmazáshoz
@@ -40,6 +39,6 @@ IOS esetén lásd: a [Cross app SSO engedélyezése iOS-ben](https://docs.micros
 
 [Alkalmazások integrálása a AzureAD-be](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Engedélyek és beleegyezett a Microsoft Identity platform végpontjában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

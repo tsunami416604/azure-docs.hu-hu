@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74132966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131174"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Támogatási mátrix Hyper-V virtuális gépek másodlagos helyre történő vészhelyreállításához
 
@@ -36,8 +36,8 @@ A következő táblázat összefoglalja az operációs rendszerek támogatását
 
 **Windows-verzió** | **Hyper-V (VMM)**
 --- | ---
-Windows Server 2016 | A [Hyper-V által támogatott](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) bármely vendég operációs rendszer Windows Server 2016 rendszeren 
-Windows Server 2012 R2 | A [Hyper-V által támogatott](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) bármely vendég operációs rendszer Windows Server 2012 R2 rendszeren
+Windows Server 2016 | A [Hyper-V által támogatott](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) bármely vendég operációs rendszer Windows Server 2016 rendszeren 
+Windows Server 2012 R2 | A [Hyper-V által támogatott](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) bármely vendég operációs rendszer Windows Server 2012 R2 rendszeren
 
 ## <a name="linux-machine-storage"></a>Linux rendszerű gép tárterülete
 
@@ -51,7 +51,7 @@ Csak a következő tárterülettel rendelkező Linux rendszerű gépek replikál
 
 ## <a name="network-configuration---hostguest-vm"></a>Hálózati konfiguráció – gazdagép/vendég virtuális gép
 
-**Configuration** | **Támogatott**  
+**Konfigurálás** | **Támogatott**  
 --- | --- 
 Gazdagép – hálózati adapterek összevonása | Igen 
 Gazdagép – VLAN | Igen 
@@ -70,24 +70,24 @@ Vendég virtuális gép – több hálózati adapter | Igen
 
 **Storage (gazdagép)** | **Támogatott**
 --- | --- 
-NFS | N/A
+NFS | N.A.
 SMB 3.0 |  Igen
 SAN (ISCSI) | Igen
 Több elérési út (MPIO) | Igen
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég vagy fizikai kiszolgáló tárterülete
 
-**Configuration** | **Támogatott**
+**Konfigurálás** | **Támogatott**
 --- | --- | 
-VMDK |  N/A
+VMDK |  N.A.
 VHD/VHDX | Igen (legfeljebb 16 lemez)
 2. generációs VM | Igen
 Megosztott fürtözött lemez | Nem
 Titkosított lemez | Nem
-UEFI| N/A
+UEFI| N.A.
 NFS | Nem
 SMB 3.0 | Nem
-RDM | N/A
+RDM | N.A.
 Lemez > 1 TB | Igen
 Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
 Tárolóhelyek | Igen
@@ -112,7 +112,6 @@ A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
-
+[VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](./hyper-v-vmm-disaster-recovery.md)

@@ -8,13 +8,12 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829596"
 ---
-# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>A Twitter figyelése és kezelése Azure Logic Apps használatával
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>A Twitter monitorozása és kezelése az Azure Logic Appsszel
 
 A Azure Logic Apps és a Twitter-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelhetik a Twitteren, például a tweetekben, a követőiben, a felhasználóknál és a követett felhasználóknál, időpontokban és egyéb műveletekben, valamint más műveletekben, például:
 

@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: megosztott lekérdezés létrehozása sablonokkal'
-description: Ebben a rövid útmutatóban egy Resource Manager-sablonnal hoz létre egy olyan megosztott erőforrás-diagramot, amely az operációs rendszer által használt virtuális gépeket számolja.
-ms.date: 04/28/2020
+description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy olyan erőforrás-gráf megosztott lekérdezést, amely az operációs rendszer által használt virtuális gépeket számolja.
+ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 050cf26da2054883fceaa08b11f94c6af4c85a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234331"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969806"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-a-resource-manager-template"></a>Gyors útmutató: megosztott lekérdezés létrehozása Resource Manager-sablon használatával
+# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Gyors útmutató: megosztott lekérdezés létrehozása Azure Resource Manager sablon használatával
 
-Az erőforrás-gráf lekérdezéseit _privát lekérdezésként_ vagy _megosztott lekérdezésként_lehet menteni. A privát lekérdezéseket a rendszer az egyéni portál profiljába menti, és mások számára nem látható. A megosztott lekérdezés egy olyan Resource Manager-objektum, amely engedélyek és szerepköralapú hozzáférés használatával megosztható másokkal. A megosztott lekérdezés az erőforrás-felderítés általános és konzisztens végrehajtását teszi lehetővé. Ez a rövid útmutató egy Resource Manager-sablont használ egy megosztott lekérdezés létrehozásához.
+Az erőforrás-gráf lekérdezéseit _privát lekérdezésként_ vagy _megosztott lekérdezésként_lehet menteni. A privát lekérdezéseket a rendszer az egyéni portál profiljába menti, és mások számára nem látható. A megosztott lekérdezés egy olyan Resource Manager-objektum, amely engedélyek és szerepköralapú hozzáférés használatával megosztható másokkal. A megosztott lekérdezés az erőforrás-felderítés általános és konzisztens végrehajtását teszi lehetővé. Ez a rövid útmutató egy Azure Resource Manager sablont (ARM-sablont) használ egy megosztott lekérdezés létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban létrehoz egy "Count VM" nevű megosztott lekérdez
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/) származik.
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -42,15 +42,15 @@ A sablonban definiált erőforrás:
 
 1. Az alábbi képre kattintva jelentkezzen be az Azure Portalra, és nyissa meg a sablont:
 
-   [![A házirend-sablon üzembe helyezése az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json)
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Az ARM-sablon üzembe helyezése megosztott lekérdezés létrehozásához az Azure-ban" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Name | Érték |
    |------|-------|
    | Előfizetés | Válassza ki az Azure-előfizetését. |
    | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. |
-   | Hely | Válasszon régiót. Például az **USA középső**régiója. |
+   | Hely | Válasszon régiót. Például: **USA középső régiója**. |
    | Lekérdezés neve | Hagyja meg az alapértelmezett értéket a **virtuális gépek operációs rendszer szerinti számlálásával**. |
    | Lekérdezési kód | Hagyja meg az alapértelmezett értéket`Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
    | Lekérdezés leírása | Hagyja meg az alapértelmezett értéket **, ez a megosztott lekérdezés az összes virtuálisgép-erőforrást megszámolja, és az operációs rendszer típusa szerint összegzi.** |
@@ -62,7 +62,7 @@ Néhány további erőforrás:
 
 - További minták sablonjait az Azure rövid útmutató [sablonjában](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)talál.
 - A sablon hivatkozásának megtekintéséhez nyissa meg az [Azure-sablonok referenciáját](/azure/templates/microsoft.resourcegraph/allversions).
-- A Resource Manager-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](../../azure-resource-manager/management/overview.md)talál további információt.
+- Az ARM-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](../../azure-resource-manager/management/overview.md)talál további információt.
 - Az előfizetési szintű központi telepítés megismeréséhez tekintse meg [Az erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../../azure-resource-manager/templates/deploy-to-subscription.md)című témakört.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
@@ -83,7 +83,7 @@ Azt is megteheti, hogy a megosztott lekérdezést megnyithatja a Resource Graph 
 
 1. A lekérdezés betöltését követően kattintson a **lekérdezés futtatása** gombra. Az eredmények az alábbi **eredmények** lapon jelennek meg.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A létrehozott megosztott lekérdezés eltávolításához kövesse az alábbi lépéseket:
 

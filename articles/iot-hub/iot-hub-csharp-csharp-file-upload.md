@@ -11,10 +11,9 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733401"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (.NET)
@@ -62,7 +61,7 @@ Az oktatóanyag végén két .NET konzolos alkalmazást futtat:
 
 Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése](iot-hub-csharp-csharp-c2d.md) az IoT hub-ból című témakörben található, a felhőből az eszközre irányuló üzenetek fogadásához létrehozott IoT hub.
 
-1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a **SimulatedDevice** projektre, majd válassza a**meglévő elem** **hozzáadása** > elemet. Keressen egy képfájlt, és foglalja bele a projektbe. Ez az oktatóanyag feltételezi, hogy a `image.jpg`rendszerkép neve.
+1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a **SimulatedDevice** projektre, **Add**majd válassza a  >  **meglévő elem hozzáadása elemet**. Keressen egy képfájlt, és foglalja bele a projektbe. Ez az oktatóanyag feltételezi, hogy a rendszerkép neve `image.jpg` .
 
 1. Kattintson a jobb gombbal a képre, majd válassza a **Tulajdonságok parancsot**. Győződjön meg arról, hogy a **Másolás a kimeneti könyvtárba** beállítás a **mindig másolás**.
 
@@ -95,7 +94,7 @@ Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése](io
 
     A `UploadToBlobAsync` metódus a feltöltött fájl fájlnevét és stream-forrását veszi fel, és kezeli a feltöltést a tárolóba. A konzol alkalmazás megjeleníti a fájl feltöltéséhez szükséges időt.
 
-1. Adja hozzá a következő sort a **Main** metódushoz, közvetlenül `Console.ReadLine()`előtte:
+1. Adja hozzá a következő sort a **Main** metódushoz, közvetlenül előtte `Console.ReadLine()` :
 
     ```csharp
     SendToBlobAsync();
@@ -114,7 +113,7 @@ Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely a fájlfeltölté
 
 Ebben a szakaszban olyan .NET-konzol alkalmazást ír, amely a IoT Hub címről érkező fájlfeltöltés-értesítési üzeneteket fogad.
 
-1. Az aktuális Visual Studio-megoldásban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. Az aktuális Visual Studio-megoldásban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
 
 1. Nevezze el a projekt *ReadFileUploadNotification*. A **megoldás**területen válassza **a Hozzáadás a megoldáshoz**lehetőséget. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
@@ -180,7 +179,7 @@ Készen áll arra, hogy futtassa az alkalmazásokat.
 
 1. A Solutions Explorerben kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-1. Az **Általános tulajdonságok** > **indítási projekt**területen válassza a **több indítási projekt**elemet, majd válassza a **ReadFileUploadNotification** és a **SimulatedDevice** **indítási** műveletét. A módosítások mentéséhez kattintson az **OK** gombra.
+1. Az **Általános tulajdonságok**  >  **indítási projekt**területen válassza a **több indítási projekt**elemet, majd válassza a **ReadFileUploadNotification** és a **SimulatedDevice** **indítási** műveletét. A módosítások mentéséhez kattintson az **OK** gombra.
 
 1. Nyomja le az **F5**billentyűt. Mindkét alkalmazásnak el kell indulnia. Látnia kell a feltöltést egy adott konzol alkalmazásban, és a másik konzol alkalmazás által fogadott feltöltési értesítési üzenetet. A [Azure Portal](https://portal.azure.com/) vagy a Visual Studio Server Explorer segítségével megkeresheti a feltöltött fájl jelenlétét az Azure Storage-fiókban.
 

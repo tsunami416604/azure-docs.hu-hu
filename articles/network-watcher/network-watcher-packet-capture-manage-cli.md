@@ -7,22 +7,21 @@ author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84724919"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>A csomagok rögzítésének kezelése az Azure Network Watcher Az Azure CLI használatával
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portalra](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -50,7 +49,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Futtassa a `az vm extension set` parancsot a csomag rögzítési ügynökének telepítéséhez a vendég virtuális gépen.
 
@@ -68,7 +67,7 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>2. lépés
 
-Az ügynök telepítésének biztosításához futtassa a `vm extension show` parancsot, és adja át az erőforráscsoportot és a virtuális gép nevét. Ellenőrizze az eredményül kapott listát, és győződjön meg arról, hogy az ügynök telepítve van.
+Az ügynök telepítésének biztosításához futtassa a parancsot, `vm extension show` és adja át az erőforráscsoportot és a virtuális gép nevét. Ellenőrizze az eredményül kapott listát, és győződjön meg arról, hogy az ügynök telepítve van.
 
 Windows rendszerű virtuális gépek esetén:
 
@@ -108,7 +107,7 @@ Az alábbi példa a futtatási választ szemlélteti`az vm extension show`
 
 Miután az előző lépések befejeződik, a rendszer telepíti a csomag-rögzítési ügynököt a virtuális gépre.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Egy Storage-fiók beolvasása. Ez a Storage-fiók tárolja a csomag rögzítésére szolgáló fájlt.
 
@@ -124,7 +123,7 @@ Ezen a ponton készen áll a csomagok rögzítésére.  Először is vizsgáljuk
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-A következő példa a `az network watcher packet-capture create` parancs futtatásának várt kimenete.
+A következő példa a parancs futtatásának várt kimenete `az network watcher packet-capture create` .
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Csomag rögzítésének beolvasása
 
-A `az network watcher packet-capture show-status` parancs futtatásakor a rendszer lekéri egy aktuálisan futó, vagy befejezett csomag rögzítési állapotát.
+A parancs futtatásakor a rendszer `az network watcher packet-capture show-status` lekéri egy aktuálisan futó, vagy befejezett csomag rögzítési állapotát.
 
 ```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-A következő példa a `az network watcher packet-capture show-status` parancs kimenete. A következő példa a rögzítés leállítását, a TimeExceeded StopReason.
+A következő példa a parancs kimenete `az network watcher packet-capture show-status` . A következő példa a rögzítés leállítását, a TimeExceeded StopReason.
 
 ```
 {
@@ -204,7 +203,7 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>Csomagok rögzítésének leállítása
 
-Ha a `az network watcher packet-capture stop` parancs futtatása folyamatban van, a rögzítési munkamenet leáll.
+`az network watcher packet-capture stop`Ha a parancs futtatása folyamatban van, a rögzítési munkamenet leáll.
 
 ```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus

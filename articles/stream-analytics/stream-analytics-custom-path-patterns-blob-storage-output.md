@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747634"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
@@ -129,6 +129,6 @@ A művelet elindításakor a rendszer a blob-tárolóban létrehozza az elérés
 
 ![BLOB-kimenet Stream Analytics egyéni elérésiút-mintázattal](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)

@@ -6,10 +6,9 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 332ff4f6e63a831c1523c3f959708f9dc48a72a9
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84171055"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>A Change Tracking és az Inventory engedélyezése Azure-beli virtuális gépről
@@ -41,7 +40,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 5. Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** lehetőségre a virtuális gép Change Trackingának és leltározásának engedélyezéséhez. A telepítés elvégzése akár 15 percet is igénybe vehet. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szolgáltatással kapcsolatos további részletekért tekintse meg a [change Tracking és a leltár kezelésével](change-tracking-file-contents.md)foglalkozó témakört.
 * A szolgáltatással kapcsolatos általános problémák elhárításához tekintse meg a [change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)című témakört.

@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 188aa8c91ac54316dc1aff9f8add7f8559cae5b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809277"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Ügyféloldali titkosítás és Azure Key Vault Javával Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -56,7 +56,7 @@ A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inic
 > 
 > 
 
-A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **letöltési**/**openInputStream** kényelmi módszereinek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
+A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **letöltési** / **openInputStream** kényelmi módszereinek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
 
 Egy tetszőleges tartomány (**downloadRange** metódus) a titkosított blobban való letöltése magában foglalja a felhasználók által megadott tartomány beállítását, hogy egy kis mennyiségű további adat kapjon segítséget, amely a kért tartomány sikeres visszafejtéséhez használható.  
 

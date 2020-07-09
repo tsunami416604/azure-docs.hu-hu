@@ -11,19 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 0b0ece8adf58d894d9ccafbbc97dea9fba2b3c5d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343829"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>A kötegelt feldolgozás használata az Azure SQL Database és az Azure SQL felügyelt példányok alkalmazásának teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database és az Azure SQL felügyelt példányának kötegelt műveletei jelentősen javítják az alkalmazások teljesítményét és méretezhetőségét. Az előnyök megismerése érdekében a cikk első része néhány olyan vizsgálati eredményt ismertet, amelyek összehasonlítják a szekvenciális és a kötegelt kéréseket egy Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba. A cikk hátralévő része azokat a technikákat, forgatókönyveket és szempontokat mutatja be, amelyek segítségével az Azure-alkalmazásokban sikeresen használhatja a kötegelt feldolgozást.
 
-## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Miért fontos a kötegelt feldolgozás a Azure SQL Database és az Azure SQL felügyelt példányai esetében
+## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Miért fontos a Azure SQL Database és az Azure SQL felügyelt példányának feldolgozása?
 
 A távoli szolgáltatásokra irányuló hívások egy jól ismert stratégia a teljesítmény és a méretezhetőség növeléséhez. A távoli szolgáltatásokkal kapcsolatos interakciók rögzített feldolgozási költségekkel rendelkeznek, például a szerializálással, a hálózati átvitelsel és a deszerializálással kapcsolatban. A sok különböző tranzakció egyetlen kötegbe való csomagolása csökkentheti ezeket a költségeket.
 
@@ -212,7 +211,7 @@ A tábla értékű paraméterekkel kapcsolatos további információkért lásd:
 
 ### <a name="sql-bulk-copy"></a>SQL tömeges másolás
 
-Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** hasonló a parancssori eszközhöz, a **BCP. exe fájlhoz**vagy a Transact-SQL-utasításhoz, **bulk INSERT**. A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable**, Table, a Destination (sajáttábla) táblába a sorokat.
+Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** a parancssori eszközhöz, **Bcp.exehoz **vagy a Transact-SQL-utasításhoz hasonlóan működik, **bulk INSERT**. A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable**, Table, a Destination (sajáttábla) táblába a sorokat.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -331,7 +330,7 @@ A tesztek során általában nem volt előnye a nagyméretű kötegek kisebb ada
 > [!NOTE]
 > Az eredmények nem teljesítménymutatók. Lásd a [jelen cikk időzítési eredményekkel kapcsolatos megjegyzéseit](#note-about-timing-results-in-this-article).
 
-Láthatja, hogy az 1000-es sorok legjobb teljesítménye egyszerre küldi el őket. Más tesztekben (itt nem látható) az 10000-es sorok kötegének kibontása a 5000-es két kötegbe. A tesztek táblázatos sémája azonban viszonylag egyszerű, ezért az adott adatokra és a Batch-méretekre vonatkozó teszteket kell végrehajtania az eredmények ellenőrzéséhez.
+Láthatja, hogy az 1000-es sorok legjobb teljesítménye egyszerre küldi el őket. Más tesztek (itt nem láthatók) esetében kis teljesítményű, 10000-es batch-köteget kell kiosztani a 5000 két kötegében. A tesztek táblázatos sémája azonban viszonylag egyszerű, ezért az adott adatokra és a Batch-méretekre vonatkozó teszteket kell végrehajtania az eredmények ellenőrzéséhez.
 
 Egy másik szempont, hogy ha az összes köteg túl nagy lesz, Azure SQL Database vagy az Azure SQL felügyelt példánya is szabályozhatja és elutasítja a köteg elutasítását. A legjobb eredmény érdekében tesztelje az adott forgatókönyvet, és állapítsa meg, hogy van-e ideális batch-méret. A Batch-méret konfigurálható futásidőben, hogy a gyors beállításokat a teljesítmény vagy a hibák alapján engedélyezze.
 

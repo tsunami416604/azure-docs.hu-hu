@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, openshift, privát fürt, Red Hat
 ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727647"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Privát fürt létrehozása az Azure Red Hat OpenShift 3,11
@@ -62,7 +61,7 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>Private-cluster. JSON
+### <a name="private-clusterjson"></a>private-cluster.jsbekapcsolva
 
 A fent definiált környezeti változók használatával az alábbi példa egy fürtre épülő fürtözött konfigurációt engedélyez a privát fürtön.
 
@@ -139,6 +138,6 @@ cat private-cluster.json | envsubst | curl -v -X PUT \
  https://management.azure.com/subscriptions/$SUBID/resourceGroups/$CLUSTER_NAME/providers/Microsoft.ContainerService/openShiftManagedClusters/$CLUSTER_NAME?api-version=2019-10-27-preview
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a OpenShift-konzol eléréséről: [webkonzol – útmutató](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html).

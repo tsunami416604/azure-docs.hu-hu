@@ -11,18 +11,26 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: b0f01f5f044fd096704683fe67d2068e4ab4c3f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772144"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982169"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>A Azure Media Services v3 dokumentációjának frissítései
 
->Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us` -cím másolásával és beillesztésével: az RSS-hírcsatorna-olvasóba.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 
 Ez a cikk a legfrissebb Media Services v3 dokumentációs frissítéseit tárgyalja.
+
+## <a name="june-2020"></a>2020. június
+
+* A IoT Edge élő videós elemzésének előnézete nyilvános volt. A IoT Edge dokumentációjában tekintse [meg az élő videó elemzésének](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) részleteit.
+* Új gyors útmutató:
+
+    * [A portál használata tartalom feltöltéséhez, kódolásához és streameléséhez](manage-assets-quickstart.md)
+    * [A portál használata tartalom titkosításához](encrypt-content-quickstart.md)
 
 ## <a name="april-2020"></a>2020. április
 

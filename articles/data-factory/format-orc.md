@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417725"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Az ork formátuma Azure Data Factory
@@ -30,8 +30,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Az adatkészlet Type tulajdonságát az **ork**értékre kell beállítani. | Igen      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location`. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
+| típus             | Az adatkészlet Type tulajdonságát az **ork**értékre kell beállítani. | Igen      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
 
 Alább látható egy példa az Azure Blob Storage-beli ork-adatkészletre:
 
@@ -68,39 +68,39 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="orc-as-source"></a>ORK forrásként
 
-A másolási tevékenység *** \*forrása\* *** szakaszban a következő tulajdonságok támogatottak.
+A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrásának Type tulajdonságát **OrcSource**értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings`. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **OrcSource**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
 ### <a name="orc-as-sink"></a>ORK mint fogadó
 
-A másolási *** \*\* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
+A másolási *** \* \* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A másolási tevékenység forrásának Type tulajdonságát **OrcSink**értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings`. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **OrcSink**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
 ## <a name="using-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime használata
 
 > [!IMPORTANT]
 > A saját üzemeltetésű Integration Runtime, például a helyszíni és a Felhőbeli adattárak közötti másoláshoz, ha nem **az ork-** fájlokat másolja, telepítenie kell a **64 bites JRE 8 (Java Runtime Environment) vagy a OpenJDK** és a **Microsoft Visual C++ 2010 terjeszthető csomagot** az IR-gépen. További részletekért olvassa el a következő bekezdést.
 
-A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializálásával futó másoláshoz az ADF megkeresi a Java-futtatókörnyezetet *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* úgy, hogy először ellenőrzi a JRE beállításjegyzékét, ha *`JAVA_HOME`* nem található, másodsorban a OpenJDK rendszer-változó ellenőrzése.
+A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializálásával futó másoláshoz az ADF megkeresi a Java-futtatókörnyezetet úgy, hogy először ellenőrzi a JRE beállításjegyzékét *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* , ha nem található, másodsorban a OpenJDK rendszer-változó ellenőrzése *`JAVA_HOME`* .
 
 - A **JRE használatához**: a 64 bites IR használatához 64 bites JRE szükséges. [Itt](https://go.microsoft.com/fwlink/?LinkId=808605)találhatja meg.
-- **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja a JVM. dll fájlt a OpenJDK összes többi szükséges szerelvényéhez a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
+- **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja ki a jvm.dllt a OpenJDK összes többi szükséges szerelvényével a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
 - **Visual c++ 2010 Újraterjeszthető csomag telepítése: a**visual c++ 2010 Újraterjeszthető csomag nincs telepítve a saját üzemeltetésű IR-telepítésekkel. [Itt](https://www.microsoft.com/download/details.aspx?id=14632)találhatja meg.
 
 > [!TIP]
-> Ha az Adatmásolást az ork formátumba vagy a saját üzemeltetésű Integration Runtime használatával másolja, és a "hiba történt a Java meghívásakor, üzenet: **Java. lang. működése OutOfMemoryError: Java heap Space**" hibaüzenetet, akkor hozzáadhat `_JAVA_OPTIONS` egy környezeti változót a saját üzemeltetésű integrációs modult futtató GÉPEN, amely a JVM minimális/maximális méretének módosítását teszi lehetővé az adott példány számára
+> Ha az Adatmásolást az ork formátumba vagy a saját üzemeltetésű Integration Runtime használatával másolja, és a "hiba történt a Java meghívásakor, üzenet: **Java. lang. működése OutOfMemoryError: Java heap Space**" hibaüzenetet, akkor hozzáadhat egy környezeti változót a saját üzemeltetésű integrációs `_JAVA_OPTIONS` modult futtató gépen, amely a JVM minimális/maximális méretének módosítását teszi lehetővé az adott példány számára
 
 ![JVM-halom méretének beállítása a saját üzemeltetésű IR-ben](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g`. A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét `Xmx` , míg a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a `Xms` memóriával fog elindulni, és a memória maximális `Xmx` mennyiségét fogja tudni használni. Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
+Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` . A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg `Xmx` a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a memóriával fog elindulni, `Xms` és a memória maximális mennyiségét fogja tudni használni `Xmx` . Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
 ## <a name="next-steps"></a>További lépések
 

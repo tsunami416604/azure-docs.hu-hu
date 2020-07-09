@@ -7,12 +7,11 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791622"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-támogatás az Azure statikus Web Apps előzetes verziójában Azure Functions
 
@@ -20,7 +19,7 @@ Az Azure statikus Web Apps [Azure functions](../azure-functions/functions-overvi
 
 - **Integrált biztonság** közvetlen hozzáféréssel a felhasználói [hitelesítéshez és a szerepköralapú engedélyezési](user-information.md) adathoz.
 - **Zökkenőmentes útválasztás** , amely lehetővé teszi, hogy az _API_ -útvonal biztonságosan elérhető legyen a webalkalmazás számára anélkül, hogy egyéni CORS szabályokat kellene megadnia.
-- **Azure functions** v3 kompatibilis a Node. js 12-mel.
+- **Azure functions** v3 kompatibilis a Node.js 12 rendszerrel.
 - **Http-eseményindítók** és kimeneti kötések.
 
 ## <a name="configuration"></a>Konfiguráció
@@ -33,6 +32,7 @@ Az Azure statikus Web Apps Azure Functionson keresztül biztosít API-t. A Azure
 
 - Az API-útvonal előtagjának _API_-nak kell lennie.
 - Az API functions alkalmazásnak JavaScript-ben kell lennie.
+- Az API functions útválasztási szabályai csak az [átirányítások](routes.md#redirects) támogatását és [a szerepkörökkel rendelkező útvonalak biztonságossá](routes.md#securing-routes-with-roles)tételét támogatják.
 - Az eseményindítók és kötések a [http](../azure-functions/functions-bindings-http-webhook.md)-re korlátozódnak.
   - Az összes többi [Azure functions eseményindító és kötés](../azure-functions/functions-triggers-bindings.md#supported-bindings) a kimeneti kötések kivételével korlátozott.
 - A naplók csak akkor érhetők el, ha [Application Insightst](../azure-functions/functions-monitoring.md) ad hozzá a functions-alkalmazáshoz.

@@ -5,15 +5,15 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 27cc1052a2f35382b2d6a93482b7af219a9a187a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015165"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085939"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie használata az Apache Hadooppal a munkafolyamatok Linux-alapú Azure HDInsighton való meghatározásához és futtatásához
 
@@ -35,7 +35,7 @@ A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, péld
 
 * **Egy SSH-ügyfél**. Lásd: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Egy Azure SQL Database**.  Lásd: [Azure SQL Database létrehozása a Azure Portalban](../sql-database/sql-database-get-started.md).  Ez a cikk egy **oozietest**nevű adatbázist használ.
+* **Egy Azure SQL Database**.  Lásd: [adatbázis létrehozása Azure SQL Databaseban a Azure Portalban](../sql-database/sql-database-get-started.md).  Ez a cikk egy **oozietest**nevű adatbázist használ.
 
 * A fürtök elsődleges tárolójának URI-sémája. `wasb://`Azure Storage esetén `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetén `adl://` . Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` . Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
 
@@ -47,9 +47,11 @@ A dokumentumban használt munkafolyamat két műveletet tartalmaz. A műveletek 
 
 1. A kaptárak egy HiveQL parancsfájlt futtatnak a HDInsight-ben található rekordok kinyeréséhez `hivesampletable` . Az egyes adatsorok egy adott mobileszköz egy látogatását írják le. A rekord formátuma az alábbi szöveghez hasonlóan jelenik meg:
 
-        8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-        23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-        23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```output
+    8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+    23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+    23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```
 
     A dokumentumban használt struktúra-szkript megszámolja az egyes platformok, például az Android vagy az iPhone összes látogatását, és a leltárt egy új struktúrás táblára tárolja.
 
@@ -126,7 +128,7 @@ A következő lépésekkel hozhat létre egy, a-lekérdezést definiáló kaptá
 
    * `${hiveDataFolder}`: A tábla adatfájljainak tárolására szolgáló helyet tartalmazza.
 
-     A munkafolyamat-definíciós fájl (workflow. xml) ebben a cikkben a futtatáskor átadja ezeket az értékeket erre a HiveQL-parancsfájlra.
+     A munkafolyamat-definíciós fájl workflow.xml ebben a cikkben a futtatáskor továbbítja ezeket az értékeket erre a HiveQL-parancsfájlra.
 
 1. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.  
 
@@ -240,11 +242,13 @@ A Oozie munkafolyamat-definíciókat Hadoop Process Definition Language (hPDL) n
 
     Az alábbi szöveghez hasonló kimenetet kap:
 
-        locale is "en_US.UTF-8"
-        locale charset is "UTF-8"
-        using default charset "UTF-8"
-        Default database being set to oozietest
-        1>
+    ```output
+    locale is "en_US.UTF-8"
+    locale charset is "UTF-8"
+    using default charset "UTF-8"
+    Default database being set to oozietest
+    1>
+    ```
 
 3. Az `1>` parancssorban írja be a következő sorokat:
 
@@ -268,14 +272,16 @@ A Oozie munkafolyamat-definíciókat Hadoop Process Definition Language (hPDL) n
 
     Az alábbi szöveghez hasonló kimenet jelenik meg:
 
-        TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-        oozietest       dbo             mobiledata      BASE TABLE
+    ```output
+    TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+    oozietest       dbo             mobiledata      BASE TABLE
+    ```
 
 4. Lépjen ki a TSQL segédprogramból a parancssorba való beírásával `exit` `1>` .
 
 ## <a name="create-the-job-definition"></a>A feladatdefiníció létrehozása
 
-A feladatdefiníció leírja, hol található a munkafolyamat. xml fájl. Azt is leírja, hogy hol található a munkafolyamat által használt egyéb fájlok, például: `useooziewf.hql` . Emellett meghatározza a munkafolyamatban és a társított fájlokban használt tulajdonságok értékeit is.
+A feladatdefiníció leírja, hol található a workflow.xml. Azt is leírja, hogy hol található a munkafolyamat által használt egyéb fájlok, például: `useooziewf.hql` . Emellett meghatározza a munkafolyamatban és a társított fájlokban használt tulajdonságok értékeit is.
 
 1. Az alapértelmezett tárterület teljes címe az alábbi paranccsal kérhető le. Ezt a címeket a következő lépésben létrehozott konfigurációs fájlban fogja használni a rendszer.
 
@@ -366,7 +372,7 @@ A feladatdefiníció leírja, hol található a munkafolyamat. xml fájl. Azt is
     </configuration>
     ```
 
-    A fájlban található információk többsége a Workflow. XML vagy ooziewf. HQL fájlokban használt értékek feltöltésére szolgál, például: `${nameNode}` .  Ha az elérési út egy `wasbs` elérési út, akkor a teljes elérési utat kell használnia. Ne rövidítse le egyszerűen `wasbs:///` . A `oozie.wf.application.path` bejegyzés határozza meg, hogy hol található a munkafolyamat. xml fájlja. Ez a fájl tartalmazza a feladatok által futtatott munkafolyamatot.
+    A fájlban található információk többsége a workflow.xml-vagy ooziewf. HQL-fájlokban használt értékek feltöltésére szolgál, például: `${nameNode}` .  Ha az elérési út egy `wasbs` elérési út, akkor a teljes elérési utat kell használnia. Ne rövidítse le egyszerűen `wasbs:///` . A `oozie.wf.application.path` bejegyzés határozza meg, hogy hol található a workflow.xml fájl. Ez a fájl tartalmazza a feladatok által futtatott munkafolyamatot.
 
 3. A Oozie-feladatdefiníció konfigurációjának létrehozásához használja a következő parancsot:
 
@@ -424,20 +430,22 @@ A következő lépések a Oozie parancs használatával küldenek és kezelhetne
 
     Ez a következő szöveghez hasonló adatokat ad vissza:
 
-        Job ID : 0000005-150622124850154-oozie-oozi-W
-        ------------------------------------------------------------------------------------------------------------------------------------
-        Workflow Name : useooziewf
-        App Path      : wasb:///tutorials/useoozie
-        Status        : PREP
-        Run           : 0
-        User          : USERNAME
-        Group         : -
-        Created       : 2015-06-22 15:06 GMT
-        Started       : -
-        Last Modified : 2015-06-22 15:06 GMT
-        Ended         : -
-        CoordAction ID: -
-        ------------------------------------------------------------------------------------------------------------------------------------
+    ```output
+    Job ID : 0000005-150622124850154-oozie-oozi-W
+    ------------------------------------------------------------------------------------------------------------------------------------
+    Workflow Name : useooziewf
+    App Path      : wasb:///tutorials/useoozie
+    Status        : PREP
+    Run           : 0
+    User          : USERNAME
+    Group         : -
+    Created       : 2015-06-22 15:06 GMT
+    Started       : -
+    Last Modified : 2015-06-22 15:06 GMT
+    Ended         : -
+    CoordAction ID: -
+    ------------------------------------------------------------------------------------------------------------------------------------
+    ```
 
     A feladattípus állapota: `PREP` . Ez az állapot azt jelzi, hogy a feladatot létrehozták, de nem indult el.
 
@@ -464,14 +472,16 @@ A következő lépések a Oozie parancs használatával küldenek és kezelhetne
 
     A visszaadott információ az alábbi szöveghez hasonló:
 
-        deviceplatform  count
-        Android 31591
-        iPhone OS       22731
-        proprietary development 3
-        RIM OS  3464
-        Unknown 213
-        Windows Phone   1791
-        (6 rows affected)
+    ```output
+    deviceplatform  count
+    Android 31591
+    iPhone OS       22731
+    proprietary development 3
+    RIM OS  3464
+    Unknown 213
+    Windows Phone   1791
+    (6 rows affected)
+    ```
 
 További információ a Oozie parancsról: [Apache Oozie parancssori eszköz](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
@@ -539,7 +549,7 @@ A Oozie webes felhasználói felületének eléréséhez hajtsa végre a követk
 
 A koordinátor használatával megadhatja a feladatok kezdési, befejezési és előfordulási gyakoriságát. A munkafolyamat ütemtervének definiálásához hajtsa végre a következő lépéseket:
 
-1. A következő parancs használatával hozzon létre egy **koordinátor. XML**nevű fájlt:
+1. A következő parancs használatával hozzon létre egy **coordinator.xml**nevű fájlt:
 
     ```bash
     nano coordinator.xml
@@ -564,7 +574,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
     > * `${coordStart}`: A feladatok kezdési ideje.
     > * `${coordEnd}`: A feladatok befejezési időpontja.
     > * `${coordTimezone}`: A koordinátori feladatok olyan rögzített időzónában vannak, amely nem rendelkezik a nyári időszámítás idejével, jellemzően UTC használatával. Ezt az időzónát a *Oozie feldolgozási időzónájának nevezzük.*
-    > * `${wfPath}`: A munkafolyamat. XML fájljának elérési útja.
+    > * `${wfPath}`: A workflow.xml elérési útja.
 
 2. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**, írja be az **Y**értéket, majd válassza az **ENTER billentyűt**.
 
@@ -593,7 +603,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
         </property>
         ```
 
-       Cserélje le a `wasbs://mycontainer@mystorageaccount.blob.core.windows` szöveget a job. xml fájl egyéb bejegyzéseiben használt értékre.
+       Cserélje le a `wasbs://mycontainer@mystorageaccount.blob.core.windows` szöveget a job.xml fájl egyéb bejegyzéseiben használt értékre.
 
    * A koordinátor indításának, befejezésének és gyakoriságának meghatározásához adja hozzá a következő XML-t:
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f53b3f8dd2a324e4eb3e4b6c073de478bff97a3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9eadaf21705944a5d6aa8ea6d5ca190a21624ee8
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666083"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798663"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Ice Contact centerrel
 
@@ -86,19 +86,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | | |
-    |-|-|
-    | `https://<TENANT>-imrpool.icescape365.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.icescape.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.iceuc.com:PORT/identity`|
+    ```http
+    https://<TENANT>-imrpool.icescape365.com:PORT/identity
+    https://<TENANT>-imrpool.icescape.com:PORT/identity
+    https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | | |
-    |-|-|
-    | `https://<TENANT>-imrpool.icescape365.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.icescape.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.iceuc.com:PORT/identity`|
+    ```http
+    https://<TENANT>-imrpool.icescape365.com:PORT/identity
+    https://<TENANT>-imrpool.icescape.com:PORT/identity
+    https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba az [Ice Contact Center](mailto:support@computer-talk.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -117,7 +117,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -5,14 +5,14 @@ services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968954"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043529"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics-feladatok exportálása Azure Resource Manager sablon
 
@@ -42,13 +42,13 @@ A következő lépés a feladatok parancsfájljának lefordítása egy Azure Res
 
 1. Figyelje meg, hogy az **üzembe helyezési** mappa megjelenik a stream Analytics feladatok munkaterületen.
 
-1. Fedezze fel a *JobTemplate. JSON* fájlt, amely az üzembe helyezéséhez használt Azure Resource Management-sablon.
+1. Ismerkedjen *meg a fájlJobTemplate.jsával* , amely az üzembe helyezéséhez használt Azure Resource Management-sablon.
 
 ## <a name="complete-the-parameters-file"></a>A parameters (paraméterek) fájl befejezése
 
 Ezután fejezze be az Azure Resource Management-sablon paramétereit tartalmazó fájlt.
 
-1. Nyissa meg a *JobTemplate. Parameters. JSON* fájlt, amely a Visual Studio Code-ban található stream Analytics feladatok munkaterületének **központi telepítése** mappájában található.
+1. A Visual Studio Code-ban nyissa meg a Stream Analytics feladatok munkaterület **üzembe helyezés** mappájában található *JobTemplate.parameters.js* fájlt.
 
 1. Figyelje meg, hogy a bemeneti és a kimeneti kulcsok null értékűek. Cserélje le a null értékeket a bemeneti és kimeneti erőforrások tényleges hozzáférési kulcsaival.
 
@@ -58,7 +58,7 @@ Ezután fejezze be az Azure Resource Management-sablon paramétereit tartalmazó
 
 Készen áll a Azure Stream Analytics-feladatok üzembe helyezésére az előző szakaszban létrehozott Azure Resource Manager-sablonok használatával.
 
-Futtassa a következő parancsot egy PowerShell-ablakban. Ügyeljen arra, hogy a *ResourceGroupName*, a *TemplateFile*és a *TemplateParameterFile* a tényleges reaplce, valamint a *JobTemplate. JSON* és a *JobTemplate. Parameters. JSON* fájl teljes elérési útját a feladatok munkaterület **központi telepítése mappájába** .
+Futtassa a következő parancsot egy PowerShell-ablakban. Ügyeljen arra, hogy reaplce a *ResourceGroupName*, a *TemplateFile*és a *TemplateParameterFile* a tényleges erőforráscsoport-névvel, és a teljes fájlelérési utat a *JobTemplate.jsbe* -és *JobTemplate.parameters.js* a feladatok munkaterület **központi telepítés mappájában** található fájlokra.
 
 Ha nincs Azure PowerShell konfigurálva, kövesse az [Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-Az-ps)című témakör lépéseit.
 

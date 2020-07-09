@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75526243"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Rendszeres biztonsági mentés és visszaállítás önálló Service Fabric
@@ -55,7 +54,7 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Győződjön meg arról, hogy a fürt a `Connect-SFCluster` paranccsal van csatlakoztatva, mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
+* Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
 ```powershell
 
@@ -66,7 +65,7 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
 ## <a name="enabling-backup-and-restore-service"></a>Biztonsági mentési és visszaállítási szolgáltatás engedélyezése
 Először engedélyeznie kell a _biztonsági mentési és visszaállítási szolgáltatást_ a fürtben. Szerezze be a telepíteni kívánt fürt sablonját. Használhatja a [minta sablonokat](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Engedélyezze a _biztonsági mentési és visszaállítási szolgáltatást_ a következő lépésekkel:
 
-1. Ellenőrizze, hogy `apiversion` a be van `10-2017` -e állítva a fürt konfigurációs fájljába, és ha nem, frissítse az alábbi kódrészletben látható módon:
+1. Ellenőrizze, hogy a be `apiversion` van-e állítva a `10-2017` fürt konfigurációs fájljába, és ha nem, frissítse az alábbi kódrészletben látható módon:
 
     ```json
     {
@@ -77,7 +76,7 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
     }
     ```
 
-2. Most engedélyezze a _biztonsági mentési és visszaállítási szolgáltatást_ úgy, `addonFeatures` hogy hozzáadja `properties` a következő szakaszt a szakaszban, ahogy az a következő kódrészletben látható: 
+2. Most engedélyezze a _biztonsági mentési és visszaállítási szolgáltatást_ úgy, hogy hozzáadja a következő `addonFeatures` szakaszt a `properties` szakaszban, ahogy az a következő kódrészletben látható: 
 
     ```json
         "properties": {
@@ -89,7 +88,7 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
 
     ```
 
-3. Konfigurálja az X. 509 tanúsítványt a hitelesítő adatok titkosításához. Ez fontos annak biztosítása érdekében, hogy a tárolóhoz való kapcsolódáshoz megadott hitelesítő adatok titkosítottak maradjanak, mielőtt megőrzik. A titkosítási tanúsítvány konfigurálásához adja hozzá `BackupRestoreService` a következő `fabricSettings` szakaszt a szakaszhoz, ahogy az a következő kódrészletben látható: 
+3. Konfigurálja az X. 509 tanúsítványt a hitelesítő adatok titkosításához. Ez fontos annak biztosítása érdekében, hogy a tárolóhoz való kapcsolódáshoz megadott hitelesítő adatok titkosítottak maradjanak, mielőtt megőrzik. A titkosítási tanúsítvány konfigurálásához adja hozzá a következő `BackupRestoreService` szakaszt a `fabricSettings` szakaszhoz, ahogy az a következő kódrészletben látható: 
 
     ```json
     "properties": {
@@ -113,13 +112,13 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Rendszeres biztonsági mentés engedélyezése megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors
 A megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezéséhez hajtsa végre a lépéseket. Az alábbi lépések feltételezik
 - A fürt beállítása a _biztonsági mentési és visszaállítási szolgáltatással_történik.
-- Megbízható állapot-nyilvántartó szolgáltatás van telepítve a fürtön. Ebben a rövid útmutatóban az alkalmazás URI `fabric:/SampleApp` -ja, az alkalmazáshoz tartozó megbízható állapot-nyilvántartó szolgáltatás URI azonosítója pedig. `fabric:/SampleApp/MyStatefulService` A szolgáltatás egyetlen partícióval van üzembe helyezve, a partíció azonosítója pedig `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
+- Megbízható állapot-nyilvántartó szolgáltatás van telepítve a fürtön. Ebben a rövid útmutatóban az alkalmazás URI-ja, `fabric:/SampleApp` az alkalmazáshoz tartozó megbízható állapot-nyilvántartó szolgáltatás URI azonosítója pedig `fabric:/SampleApp/MyStatefulService` . A szolgáltatás egyetlen partícióval van üzembe helyezve, a partíció azonosítója pedig `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7` .  
 
 ### <a name="create-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
 Első lépésként létre kell hoznia egy biztonsági mentési szabályzatot, amely leírja a biztonsági mentés ütemezését, a biztonsági mentési adatok céljának tárolását, a szabályzat nevét, a teljes biztonsági mentési és adatmegőrzési szabályzatot a biztonsági mentési tár számára. 
 
-A biztonsági mentési tár esetében hozzon létre fájlmegosztást, és adjon ReadWrite hozzáférést ehhez a fájlmegosztáshoz az összes Service Fabric csomópontos gépen. Ez a példa feltételezi, hogy a `BackupStore` megosztás neve szerepel `StorageServer`a következőben:.
+A biztonsági mentési tár esetében hozzon létre fájlmegosztást, és adjon ReadWrite hozzáférést ehhez a fájlmegosztáshoz az összes Service Fabric csomópontos gépen. Ez a példa feltételezi, hogy a megosztás neve szerepel a következőben: `BackupStore` `StorageServer` .
 
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
@@ -184,7 +183,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
-Hajtsa végre a következő PowerShell-szkriptet a szükséges REST API meghívásához `BackupPolicy1` a biztonsági mentési szabályzatnak a `SampleApp`fenti lépésben létrehozott névvel való hozzárendeléséhez az alkalmazással.
+Hajtsa végre a következő PowerShell-szkriptet a szükséges REST API meghívásához a biztonsági mentési szabályzatnak a fenti lépésben létrehozott névvel való hozzárendeléséhez az `BackupPolicy1` alkalmazással `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -225,7 +224,7 @@ A megbízható állapot-nyilvántartó szolgáltatásokhoz tartozó összes part
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-Futtassa a következő PowerShell-szkriptet a HTTP API meghívásához, hogy enumerálja az alkalmazásban `SampleApp` található összes partícióhoz létrehozott biztonsági másolatokat.
+Futtassa a következő PowerShell-szkriptet a HTTP API meghívásához, hogy enumerálja az alkalmazásban található összes partícióhoz létrehozott biztonsági másolatokat `SampleApp` .
 
 ```powershell
 $url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

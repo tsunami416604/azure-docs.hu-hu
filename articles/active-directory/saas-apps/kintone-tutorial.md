@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b473502f740717fb0426d09261c1f1107144d047
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227581"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Oktatóanyag: Azure Active Directory integráció a Kintone
 
@@ -109,10 +109,10 @@ Az Azure AD egyszeri bejelentkezés Kintone való konfigurálásához hajtsa vé
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<companyname>.cybozu.com` |
-    | `https://<companyname>.kintone.com` |
+    ```http
+    https://<companyname>.cybozu.com
+    https://<companyname>.kintone.com
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Kintone ügyfélszolgálati [csapatához](https://www.kintone.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -186,7 +186,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

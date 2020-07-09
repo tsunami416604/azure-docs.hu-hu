@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan törölhet egy meghívót egy adatmegosztási c
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 97068ce652881818527557dd63a186b5d63a9363
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 040e1c02913291c31865a0b2e1e03e28040b8d40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490500"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120211"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>A címzettek meghívásának törlése az Azure-adatmegosztásban
 
@@ -23,5 +23,5 @@ Az Azure-adatmegosztás területen navigáljon az elküldött megosztáshoz, és
 
 ![Meghívás törlése](./media/how-to/how-to-delete-invitation/delete-invitation.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [megosztási előfizetések visszavonásáról](how-to-revoke-share-subscription.md).

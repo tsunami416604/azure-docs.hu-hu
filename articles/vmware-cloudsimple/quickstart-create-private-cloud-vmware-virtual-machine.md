@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566148"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
@@ -96,7 +95,7 @@ A következő szakaszban a DNS-és DHCP-kiszolgálók saját Felhőbeli számít
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Felhasználók és identitási források hozzáadása a vCenter (nem kötelező)
 
-A CloudSimple egy alapértelmezett vCenter-felhasználói fiókot rendel a `cloudowner@cloudsimple.local`felhasználónévhez. A kezdéshez nincs szükség további fiók beállítására.  A CloudSimple szabályosan rendeli hozzá a rendszergazdákat a normál működéshez szükséges jogosultságok végrehajtásához.  Állítsa be a helyszíni Active Directoryt vagy az Azure AD-t egy [további személyazonossági forrásként](set-vcenter-identity.md) a privát felhőben.
+A CloudSimple egy alapértelmezett vCenter-felhasználói fiókot rendel a felhasználónévhez `cloudowner@cloudsimple.local` . A kezdéshez nincs szükség további fiók beállítására.  A CloudSimple szabályosan rendeli hozzá a rendszergazdákat a normál működéshez szükséges jogosultságok végrehajtásához.  Állítsa be a helyszíni Active Directoryt vagy az Azure AD-t egy [további személyazonossági forrásként](set-vcenter-identity.md) a privát felhőben.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS-és DHCP-kiszolgáló létrehozása (nem kötelező)
 

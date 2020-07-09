@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79277309"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure üzenetsor-tárolási trigger és kötések Azure Functions – áttekintés
@@ -24,7 +23,7 @@ Azure Functions futtatható új Azure üzenetsor-tároló üzenetekkel, és egy 
 
 ## <a name="add-to-your-functions-app"></a>Hozzáadás a functions-alkalmazáshoz
 
-### <a name="functions-2x-and-higher"></a>2. x és újabb függvények
+### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 

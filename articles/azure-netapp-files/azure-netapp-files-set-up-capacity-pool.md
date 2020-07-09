@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483499"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
@@ -41,7 +41,7 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
     Ekkor megjelenik az Új kapacitáskészlet ablak.
 
 3. Adja meg az alábbi, az új kapacitáskészletre vonatkozó információkat:  
-   * **Név**  
+   * **Name (Név)**  
      Adja meg a kapacitáskészlet nevét.  
      A kapacitáskészlet nevének a NetApp-fiókban egyedinek kell lennie.
 

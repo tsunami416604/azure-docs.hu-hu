@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682643"
 ---
 # <a name="service-fabric-application-resource-model"></a>Alkalmazás-erőforrás modell Service Fabric
@@ -50,7 +50,7 @@ Felhasználhat egy meglévő Storage-fiókot, vagy létrehozhat egy új Storage-
 
 ### <a name="configure-your-storage-account"></a>A Storage-fiók konfigurálása
 
-A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal keresse meg azt az Azure Storage-fiókot, ahol az alkalmazásokat tárolni szeretné. Válassza a **Blobok** > **Hozzáadás tároló**elemet. 
+A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal keresse meg azt az Azure Storage-fiókot, ahol az alkalmazásokat tárolni szeretné. Válassza a **Blobok**  >  **Hozzáadás tároló**elemet. 
 
 A fürtben lévő erőforrások biztonságossá tétele a nyilvános hozzáférési szint **magánjellegűre**állításával lehetséges. A hozzáférést több módon is megadhatja:
 
@@ -71,7 +71,7 @@ Ebben az oktatóanyagban a [szavazási minta alkalmazást](https://github.com/Az
 1. A Visual Studióban kattintson a jobb gombbal a **szavazási** projektre, majd válassza a **csomag**elemet.
 
    ![Alkalmazáscsomag][PackageApplication]  
-1. Nyissa meg a *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* könyvtárat. Zip a tartalmat egy *szavazás. zip*nevű fájlba. A *ApplicationManifest. XML* fájlnak a zip-fájlban lévő gyökérkönyvtárban kell lennie.
+1. Nyissa meg a *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* könyvtárat. A tartalom zip-fájlját egy *Voting.zip*nevű fájlba. A *ApplicationManifest.xml* fájlnak a zip-fájlban lévő gyökérkönyvtárban kell lennie.
 
    ![Zip-alkalmazás][ZipApplication]  
 1. Nevezze át a fájlt úgy, hogy a. zip kiterjesztését a *. sfpkg*értékre módosítsa.
@@ -84,10 +84,10 @@ Az alkalmazás most már előkészítés alatt áll, és létrehozhatja az alkal
 
 ### <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 
-A minta alkalmazás az alkalmazás üzembe helyezéséhez használható [Azure Resource Manager sablonokat](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) tartalmaz. A sablon fájlnevei a következők: *UserApp. JSON* és *UserApp. Parameters. JSON*.
+A minta alkalmazás az alkalmazás üzembe helyezéséhez használható [Azure Resource Manager sablonokat](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) tartalmaz. A sablon fájlnevei *UserApp.jsbe* és *UserApp.Parameters.jsbe*.
 
 > [!NOTE]
-> A *UserApp. Parameters. JSON* fájlt frissíteni kell a fürt nevével.
+> A fájl *UserApp.Parameters.js* a fürt nevével kell frissíteni.
 >
 >
 
@@ -95,11 +95,11 @@ A minta alkalmazás az alkalmazás üzembe helyezéséhez használható [Azure R
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Annak a fürtnek a neve, amelyre telepítve van | SF – cluster123                                                |                                                              |
 | alkalmazás            | Az alkalmazás neve                 | Szavazás                                                       |
-| applicationTypeName    | Az alkalmazás típusának neve           | VotingType                                                   | Meg kell egyeznie a ApplicationManifest. xml fájlnak.                 |
-| applicationTypeVersion | Az alkalmazás típusának verziója         | 1.0.0                                                        | Meg kell egyeznie a ApplicationManifest. xml fájlnak.                 |
+| applicationTypeName    | Az alkalmazás típusának neve           | VotingType                                                   | Meg kell egyeznie ApplicationManifest.xml                 |
+| applicationTypeVersion | Az alkalmazás típusának verziója         | 1.0.0                                                        | Meg kell egyeznie ApplicationManifest.xml                 |
 | serviceName            | A szolgáltatás neve         | Szavazás ~ VotingWeb                                             | A formátumának ApplicationName ~ ServiceType kell lennie            |
-| serviceTypeName        | A szolgáltatás típusának neve                | VotingWeb                                                    | Meg kell egyeznie a ServiceManifest. xml fájlnak.                 |
-| appPackageUrl          | Az alkalmazás blob Storage URL-címe     | https:\//servicefabricapps.blob.Core.Windows.net/apps/voting.sfpkg | Az alkalmazáscsomag blob Storage-beli URL-címe (az URL-cím beállításához szükséges eljárást a cikk későbbi részében ismertetjük) |
+| serviceTypeName        | A szolgáltatás típusának neve                | VotingWeb                                                    | Meg kell egyeznie ServiceManifest.xml                 |
+| appPackageUrl          | Az alkalmazás blob Storage URL-címe     | https: \/ /servicefabricapps.blob.Core.Windows.net/apps/voting.sfpkg | Az alkalmazáscsomag blob Storage-beli URL-címe (az URL-cím beállításához szükséges eljárást a cikk későbbi részében ismertetjük) |
 
 ```json
 {
@@ -140,7 +140,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 A következő okok egyike miatt frissíthet egy Service Fabric-fürtre már telepített alkalmazást:
 
-* Új szolgáltatás kerül be az alkalmazásba. A *Service-manifest. XML* és a *Application-manifest. XML* fájlokhoz hozzá kell adni egy szolgáltatási definíciót, ha egy szolgáltatás hozzá van adva az alkalmazáshoz. Az alkalmazás új verziójának megjelenítéséhez az alkalmazás típusának verzióját is módosítania kell a 1.0.0-ról 1.0.1-re a [UserApp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)fájlban:
+* Új szolgáltatás kerül be az alkalmazásba. A szolgáltatáshoz hozzá kell adni egy szolgáltatási definíciót *service-manifest.xml* és *application-manifest.xml* fájlokhoz, amikor egy szolgáltatás hozzá lett adva az alkalmazáshoz. Az alkalmazás új verziójának megjelenítéséhez az alkalmazás típusának verzióját is módosítania kell a 1.0.0-ból a (z) [UserApp.Parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
 
     ```json
     "applicationTypeVersion": {
@@ -154,7 +154,7 @@ A következő okok egyike miatt frissíthet egy Service Fabric-fürtre már tele
     }
     ```
 
-* Egy meglévő szolgáltatás új verziója lesz hozzáadva az alkalmazáshoz. Ilyenek például az alkalmazás kódjának módosítása és az alkalmazás típusú verzió és a név frissítése. Ehhez a frissítéshez frissítse a UserApp. Parameters. JSON fájlt a következőhöz hasonló módon:
+* Egy meglévő szolgáltatás új verziója lesz hozzáadva az alkalmazáshoz. Ilyenek például az alkalmazás kódjának módosítása és az alkalmazás típusú verzió és a név frissítése. Ehhez a frissítéshez a következőhöz hasonló frissítést UserApp.Parameters.js:
 
     ```json
      "applicationTypeVersion": {

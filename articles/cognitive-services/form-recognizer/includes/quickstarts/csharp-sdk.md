@@ -9,14 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: efb07605d692b4980c108d60cc8f57babae68082
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: c4a8950e5aaa56f739fb3f6f780fbcfef80e2ec6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997622"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035590"
 ---
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,6 +62,7 @@ A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részes�
 ```csharp
 using Azure.AI.FormRecognizer;
 using Azure.AI.FormRecognizer.Models;
+using Azure.AI.FormRecognizer.Training;
 
 using System;
 using System.IO;
@@ -85,7 +85,7 @@ static void Main(string[] args)
 Az alkalmazás könyvtárában telepítse a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a következő paranccsal:
 
 ```console
-dotnet add package Azure.AI.FormRecognizer --version 1.0.0-preview.1
+dotnet add package Azure.AI.FormRecognizer --version 1.0.0-preview.3
 ```
 
 Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
@@ -134,7 +134,7 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is, vagy használhatja a mintaként megadott képet.
 
 > [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview).
+> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer).
 
 ```csharp
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -198,7 +198,7 @@ A visszaadott érték egy **FormPage** -objektum gyűjteménye: egy a beküldöt
                 $" {table.ColumnCount} columns.");
             foreach (FormTableCell cell in table.Cells)
             {
-                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex})"
+                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex})" +
                     $" contains text: '{cell.Text}'.");
             }
         }
@@ -216,48 +216,89 @@ A visszaigazolások URI-ból való felismeréséhez használja a **StartRecogniz
 private static async Task<Guid> AnalyzeReceipt(
     FormRecognizerClient recognizerClient, string receiptUri)
 {
-    Response<IReadOnlyList<RecognizedReceipt>> receipts = await recognizerClient
-        .StartRecognizeReceiptsFromUri(new Uri(receiptUri)).WaitForCompletionAsync();
-    foreach (var receipt in receipts.Value)
+    RecognizedReceiptCollection receipts = await recognizerClient.StartRecognizeReceiptsFromUri(new Uri(receiptUri))
+    .WaitForCompletionAsync();
+
+    foreach (RecognizedReceipt receipt in receipts)
     {
-        USReceipt usReceipt = receipt.AsUSReceipt();
-    
-        string merchantName = usReceipt.MerchantName?.Value ?? default;
-        DateTime transactionDate = usReceipt.TransactionDate?.Value ?? default;
-        IReadOnlyList<USReceiptItem> items = usReceipt.Items ?? default;
-    
-        Console.WriteLine($"Recognized USReceipt fields:");
-        Console.WriteLine($"    Merchant Name: '{merchantName}', with confidence " +
-            $"{usReceipt.MerchantName.Confidence}");
-        Console.WriteLine($"    Transaction Date: '{transactionDate}', with" +
-            $" confidence {usReceipt.TransactionDate.Confidence}");
+    FormField merchantNameField;
+    if (receipt.RecognizedForm.Fields.TryGetValue("MerchantName", out merchantNameField))
+    {
+        if (merchantNameField.Value.Type == FieldValueType.String)
+        {
+            string merchantName = merchantNameField.Value.AsString();
+
+            Console.WriteLine($"Merchant Name: '{merchantName}', with confidence {merchantNameField.Confidence}");
+        }
+    }
+
+    FormField transactionDateField;
+    if (receipt.RecognizedForm.Fields.TryGetValue("TransactionDate", out transactionDateField))
+    {
+        if (transactionDateField.Value.Type == FieldValueType.Date)
+        {
+            DateTime transactionDate = transactionDateField.Value.AsDate();
+
+            Console.WriteLine($"Transaction Date: '{transactionDate}', with confidence {transactionDateField.Confidence}");
+        }
+    }
 ```
 
 A kód következő blokkja megismétli a nyugtán észlelt egyes elemeket, és kiírja az adataikat a-konzolra.
 
 ```csharp
-        for (int i = 0; i < items.Count; i++)
+    FormField itemsField;
+    if (receipt.RecognizedForm.Fields.TryGetValue("Items", out itemsField))
+    {
+        if (itemsField.Value.Type == FieldValueType.List)
         {
-            USReceiptItem item = usReceipt.Items[i];
-            Console.WriteLine($"    Item {i}:  Name: '{item.Name.Value}'," +
-                $" Quantity: '{item.Quantity?.Value}', Price: '{item.Price?.Value}'");
-            Console.WriteLine($"    TotalPrice: '{item.TotalPrice.Value}'");
+            foreach (FormField itemField in itemsField.Value.AsList())
+            {
+                Console.WriteLine("Item:");
+
+                if (itemField.Value.Type == FieldValueType.Dictionary)
+                {
+                    IReadOnlyDictionary<string, FormField> itemFields = itemField.Value.AsDictionary();
+
+                    FormField itemNameField;
+                    if (itemFields.TryGetValue("Name", out itemNameField))
+                    {
+                        if (itemNameField.Value.Type == FieldValueType.String)
+                        {
+                            string itemName = itemNameField.Value.AsString();
+
+                            Console.WriteLine($"    Name: '{itemName}', with confidence {itemNameField.Confidence}");
+                        }
+                    }
+
+                    FormField itemTotalPriceField;
+                    if (itemFields.TryGetValue("TotalPrice", out itemTotalPriceField))
+                    {
+                        if (itemTotalPriceField.Value.Type == FieldValueType.Float)
+                        {
+                            float itemTotalPrice = itemTotalPriceField.Value.AsFloat();
+
+                            Console.WriteLine($"    Total Price: '{itemTotalPrice}', with confidence {itemTotalPriceField.Confidence}");
+                        }
+                    }
+                }
+            }
         }
+    }
 ```
 
-Végül a kód utolsó blokkja kinyomtatja a fő visszaigazolás további részleteit.
+Végül a kód utolsó blokkja kinyomtatja a nyugtán lévő teljes értéket.
 
 ```csharp
-        float subtotal = usReceipt.Subtotal?.Value ?? default;
-        float tax = usReceipt.Tax?.Value ?? default;
-        float tip = usReceipt.Tip?.Value ?? default;
-        float total = usReceipt.Total?.Value ?? default;
-    
-        Console.WriteLine($"    Subtotal: '{subtotal}', with confidence" +
-            $" '{usReceipt.Subtotal.Confidence}'");
-        Console.WriteLine($"    Tax: '{tax}', with confidence '{usReceipt.Tax.Confidence}'");
-        Console.WriteLine($"    Tip: '{tip}', with confidence '{usReceipt.Tip?.Confidence ?? 0.0f}'");
-        Console.WriteLine($"    Total: '{total}', with confidence '{usReceipt.Total.Confidence}'");
+    FormField totalField;
+    if (receipt.RecognizedForm.Fields.TryGetValue("Total", out totalField))
+    {
+        if (totalField.Value.Type == FieldValueType.Float)
+        {
+            float total = totalField.Value.AsFloat();
+
+            Console.WriteLine($"Total: '{total}', with confidence '{totalField.Confidence}'");
+        }
     }
 }
 ```
@@ -280,22 +321,22 @@ private static async Task<Guid> TrainModel(
     FormRecognizerClient trainingClient, string trainingDataUrl)
 {
     CustomFormModel model = await trainingClient
-        .StartTrainingAsync(new Uri(trainingDataUrl)).WaitForCompletionAsync();
+        .StartTrainingAsync(new Uri(trainingFileUrl), useTrainingLabels: false).WaitForCompletionAsync();
     
     Console.WriteLine($"Custom Model Info:");
     Console.WriteLine($"    Model Id: {model.ModelId}");
     Console.WriteLine($"    Model Status: {model.Status}");
-    Console.WriteLine($"    Created On: {model.CreatedOn}");
-    Console.WriteLine($"    Last Modified: {model.LastModified}");
+    Console.WriteLine($"    Requested on: {model.RequestedOn}");
+    Console.WriteLine($"    Completed on: {model.CompletedOn}");
 ```
 
 A visszaadott **CustomFormModel** objektum a modell által felismerhető űrlap-típusokkal és az egyes űrlapokból kinyerhető mezőkkel kapcsolatos információkat tartalmaz. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
 
 ```csharp
-    foreach (CustomFormSubModel subModel in model.Models)
+    foreach (CustomFormSubmodel submodel in model.Submodels)
     {
-        Console.WriteLine($"SubModel Form Type: {subModel.FormType}");
-        foreach (CustomFormModelField field in subModel.Fields.Values)
+        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
+        foreach (CustomFormModelField field in submodel.Fields.Values)
         {
             Console.Write($"    FieldName: {field.Name}");
             if (field.Label != null)
@@ -316,29 +357,29 @@ Végezetül ez a metódus a modell egyedi AZONOSÍTÓját adja vissza.
 
 ### <a name="train-a-model-with-labels"></a>Modell betanítása címkékkel
 
-Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. Ha címkéket szeretne betanítani, a blob Storage-tárolóban speciális címke-információs fájlokat (* \<filename\> . PDF. labels. JSON*) kell használnia a betanítási dokumentumok mellett. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Miután megadta őket, meghívhatja a **StartTrainingAsync** metódust a *uselabels* paraméterrel, amely a következőre van beállítva: `true` .
+Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. Ha címkéket szeretne betanítani, a blob Storage-tárolóban a betanítási dokumentumokkal együtt speciális feliratú információs fájlokat (* \<filename\>.pdf.labels.js*) kell használnia. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Miután megadta őket, meghívhatja a **StartTrainingAsync** metódust a *uselabels* paraméterrel, amely a következőre van beállítva: `true` .
 
 ```csharp
 private static async Task<Guid> TrainModelWithLabelsAsync(
     FormRecognizerClient trainingClient, string trainingDataUrl)
 {
-    CustomFormModel model = await trainingClient.StartTrainingAsync(
-        new Uri(trainingDataUrl), useLabels: true).WaitForCompletionAsync();
+    CustomFormModel model = await trainingClient
+    .StartTrainingAsync(new Uri(trainingFileUrl), useTrainingLabels: true).WaitForCompletionAsync();
     
     Console.WriteLine($"Custom Model Info:");
     Console.WriteLine($"    Model Id: {model.ModelId}");
     Console.WriteLine($"    Model Status: {model.Status}");
-    Console.WriteLine($"    Created On: {model.CreatedOn}");
-    Console.WriteLine($"    Last Modified: {model.LastModified}");
+    Console.WriteLine($"    Requested on: {model.RequestedOn}");
+    Console.WriteLine($"    Completed on: {model.CompletedOn}");
 ```
 
 A visszaadott **CustomFormModel** jelzi a modell által kinyerhető mezőket, valamint az egyes mezők becsült pontosságát. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
 
 ```csharp
-    foreach (CustomFormSubModel subModel in model.Models)
+    foreach (CustomFormSubmodel submodel in model.Submodels)
     {
-        Console.WriteLine($"SubModel Form Type: {subModel.FormType}");
-        foreach (CustomFormModelField field in subModel.Fields.Values)
+        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
+        foreach (CustomFormModelField field in submodel.Fields.Values)
         {
             Console.Write($"    FieldName: {field.Name}");
             if (field.Accuracy != null)
@@ -498,9 +539,8 @@ Ha például egy érvénytelen URI azonosítóval ellátott nyugtát küld, a re
 ```csharp Snippet:FormRecognizerBadRequest
 try
 {
-    Response<IReadOnlyList<RecognizedReceipt>> receipts = await client
-    .StartRecognizeReceiptsFromUri(new Uri("http://invalid.uri"))
-    .WaitForCompletionAsync();
+    RecognizedReceiptCollection receipts = await client.StartRecognizeReceiptsFromUri(new Uri(receiptUri)).WaitForCompletionAsync();
+
 }
 catch (RequestFailedException e)
 {
@@ -530,7 +570,7 @@ Headers:
     Content-Type: application/json; charset=utf-8
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő .NET ügyféloldali kódtárat használta a modellek betanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

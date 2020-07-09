@@ -1,28 +1,27 @@
 ---
-title: Dv3 és Dsv3 sorozat – Azure Virtual Machines
+title: Dv3 és DSv3 sorozat
 description: A Dv3 és a Dsv3 sorozatú virtuális gépek specifikációi.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 85b38b58884c05f9f6ced938df1b7e4f51bb9d09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694620"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 és DSv3 sorozat
 
-A Dv3 sorozat az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Hyper-threaded konfigurációban való futtatásával jobb értéket biztosít a legtöbb általános célú munkaterheléshez. A memória ki lett bontva (~ 3,5 GiB/vCPU – 4 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszinten igazította ki, hogy az a feleznie-re legyen igazítva. A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memóriabeli virtuálisgép-méretével, ezeket a rendszer áthelyezte a memória-optimalizált [Ev3 és Esv3-sorozatba](ev3-esv3-series.md).
+A Dv3 sorozat Intel® Xeon® Platinum 8272CL (Cascade Lake) fut, Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok egy Hyper-threaded konfigurációban, ami jobb értéket biztosít a legtöbb általános célú munkaterheléshez. A memória ki lett bontva (~ 3,5 GiB/vCPU – 4 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszinten igazította ki, hogy az a feleznie-re legyen igazítva. A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memóriabeli virtuálisgép-méretével, ezeket a rendszer áthelyezte a memória-optimalizált [Ev3 és Esv3-sorozatba](ev3-esv3-series.md).
 
 Példa: a D sorozat használati esetei nagyvállalati szintű alkalmazások, a kapcsolódó adatbázisok, a memórián belüli gyorsítótárazás és az elemzések.
 
 ## <a name="dv3-series"></a>Dv3-sorozat
 
-A Dv3 sorozat méretei az Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Intel Turbo Boost Technology 2,0. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+Az Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok Intel Turbo Boost Technology 2,0-Dv3 sorozatos méretei. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
 Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához Dsv3-méreteket vegyen igénybe. A Dsv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Dv3-sorozatéval.
 
@@ -50,7 +49,7 @@ Memória megőrzésének frissítései: támogatott
 
 ## <a name="dsv3-series"></a>Dsv3-sorozat
 
-Az Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok az Intel Turbo Boost Technology 2,0 használatával futnak, és a Premium Storage-t használják a Dsv3 sorozatos méretek futtatására. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+Az Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) vagy Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) processzorok az Intel Turbo Boost Technology 2,0 használatával futnak, és a Premium Storage-t használják a Dsv3 sorozatokra. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
 Az Dsv3 sorozatú virtuális gépek Intel® Hyper-Threading technológiával rendelkeznek.
 

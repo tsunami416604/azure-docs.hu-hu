@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189283"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027460"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az adatelemzés áttekintése az Azure HDInsight Spark használatával
 
@@ -93,22 +92,33 @@ A New York-i taxi Trip-adatok körülbelül 20 GB tömörített, vesszővel tago
 
 1. A (z) "trip_data" CSV-fájlok olyan utazási adatokat tartalmaznak, mint például az utasok száma, a beléptetési és a lemorzsolódási pontok, az utazás időtartama és az utazás hossza. Íme néhány példa a rekordokra:
 
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+   `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+   `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 2. A (z) "trip_fare" CSV-fájlok tartalmazzák az egyes utazások díjait, például a fizetési típust, a díjszabást, a pótdíjat, az adókat, a tippeket és az autópályadíjat, valamint a teljes fizetett összeget. Íme néhány példa a rekordokra:
 
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+   `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
 
-Ezeket a fájlokat a 0,1%-os mintát vettük, és az\_utazási adatok és\_az utazási viteldíjak CVS-fájljai egyetlen adatkészletbe lettek használva, amely az útmutató bemeneti adatkészlete. Az utazáshoz\_és az utazási\_viteldíjhoz való csatlakozás egyedi kulcsa a következő mezőkből áll: emlékérem\_, Hack-\_licenc és a pickup DateTime. Az adatkészlet minden rekordja a következő attribútumokat tartalmazza, amelyek a New York-i taxis utakat jelképezik:
+   `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
+
+Ezeket a fájlokat a 0,1%-os mintát vettük, és az utazási \_ adatok és az utazási \_ viteldíjak CVS-fájljai egyetlen adatkészletbe lettek használva, amely az útmutató bemeneti adatkészlete. Az utazáshoz és az utazási viteldíjhoz való csatlakozás egyedi kulcsa \_ a következő \_ mezőkből áll: emlékérem, Hack- \_ licenc és a pickup \_ DateTime. Az adatkészlet minden rekordja a következő attribútumokat tartalmazza, amelyek a New York-i taxis utakat jelképezik:
 
 | Mező | Rövid leírás |
 | --- | --- |
@@ -141,11 +151,11 @@ Ezeket a fájlokat a 0,1%-os mintát vettük, és az\_utazási adatok és\_az ut
 | tip_class |Tipp osztály (0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Kód végrehajtása Jupyter-jegyzetfüzetből a Spark-fürtön
-A Jupyter Notebook a Azure Portal indítható el. Keresse meg a Spark-fürtöt az irányítópulton, és kattintson rá a fürt felügyeleti oldalának megadásához. A Spark-fürthöz társított jegyzetfüzet megnyitásához kattintson a **fürt irányítópultok** -> **Jupyter notebook**elemre.
+A Jupyter Notebook a Azure Portal indítható el. Keresse meg a Spark-fürtöt az irányítópulton, és kattintson rá a fürt felügyeleti oldalának megadásához. A Spark-fürthöz társított jegyzetfüzet megnyitásához kattintson a **fürt irányítópultok**  ->  **Jupyter notebook**elemre.
 
 ![Fürt irányítópultok](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Tallózással is megkeresheti a Jupyter ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** -jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
+Tallózással is megkeresheti ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** a Jupyter-jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
 
 ![Jupyter-jegyzetfüzetek tallózása](./media/spark-overview/spark-jupyter-notebook.png)
 
@@ -164,7 +174,7 @@ Ezután:
 
 * A jegyzetfüzetre kattintva tekintse meg a kódot.
 * Hajtsa végre az egyes cellákat a **SHIFT**billentyű lenyomásával.
-* A teljes jegyzetfüzet futtatásához kattintson a **cella** -> **futtatása**elemre.
+* A teljes jegyzetfüzet futtatásához kattintson a **cella**  ->  **futtatása**elemre.
 * Használja a lekérdezések automatikus vizualizációját.
 
 > [!TIP]

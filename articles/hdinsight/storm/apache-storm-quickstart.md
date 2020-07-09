@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73241221"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045025"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rövid útmutató: Apache Storm topológia létrehozása és figyelése az Azure HDInsight
 
@@ -29,13 +29,13 @@ Ebben a rövid útmutatóban egy példát használ az Apache [Storm-Starter](htt
 
 ## <a name="create-the-topology"></a>A topológia létrehozása
 
-1. Kapcsolódjon a Storm-fürthöz. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a Storm-fürt nevét, majd beírja a következő parancsot:
+1. Kapcsolódjon a Storm-fürthöz. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `CLUSTERNAME` Storm-fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. A **WordCount** példa a HDInsight-fürtön található `/usr/hdp/current/storm-client/contrib/storm-starter/`. A topológia véletlenszerű mondatokat generál, és megszámolja, hogy hányszor fordulnak elő szavak. A következő parancs használatával indítsa el a fürtön a **WordCount** topológiát:
+2. A **WordCount** példa a HDInsight-fürtön található `/usr/hdp/current/storm-client/contrib/storm-starter/` . A topológia véletlenszerű mondatokat generál, és megszámolja, hogy hányszor fordulnak elő szavak. A következő parancs használatával indítsa el a fürtön a **WordCount** topológiát:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -82,22 +82,24 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
 4. Egy adott spout vagy bolt részletes adatainak megtekintésekor az összetevők adott példánya részletes adatainak megtekintéséhez jelöljön ki egy bejegyzést a **Port** oszlopból az **Executors** (Végrehajtók) szakaszban.
 
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [snow, 747293]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [white]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
+```output
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [snow, 747293]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [white]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
+```
 
-    Ebben a példában a **seven** szó 1 493 957 alkalommal fordul elő. A szó előfordulásainak számlálása a topológia indításától kezdve történik.
+Ebben a példában a **seven** szó 1 493 957 alkalommal fordul elő. A szó előfordulásainak számlálása a topológia indításától kezdve történik.
 
 ## <a name="stop-the-topology"></a>A topológia leállítása
 
 Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-count topológiához, majd válassza a **Kill** (Törlés) gombot a **Topology actions** (Topológiaműveletek) szakaszban. Amikor a rendszer kéri, adjon meg 10 másodperces értéket a topológia leállítása előtti várakozási időként. Az időtúllépés lejáratát követően az adott topológia már nem jelenik meg az irányítópult **Storm felhasználói felülete** szakaszában.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 

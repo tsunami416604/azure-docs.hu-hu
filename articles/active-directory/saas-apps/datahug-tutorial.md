@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9271d8b5657769ce70c46b5e428d995ddc642608
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf2ef4211cab0dd778295c71a39a32305d074765
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158449"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Oktatóanyag: Azure Active Directory integráció a Datahug
 
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés Datahug való konfigurálásához hajtsa vé
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://apps.datahug.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Datahug ügyfélszolgálati [csapatához](https://datahug.com/about/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Datahug ügyfélszolgálati [csapatához](https://www.sap.com/corporate/en/company/office-locations.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -147,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés Datahug való konfigurálásához hajtsa vé
 
 ### <a name="configure-datahug-single-sign-on"></a>Datahug egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Datahug** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Datahug támogatási csapatának](https://datahug.com/about/contact-us/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **Datahug** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Datahug támogatási csapatának](https://www.sap.com/corporate/en/company/office-locations.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -167,12 +167,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain. Extension nevet.**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension nevet.**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

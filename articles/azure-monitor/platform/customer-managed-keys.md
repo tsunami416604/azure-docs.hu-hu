@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 05/20/2020
-ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/05/2020
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134621"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -29,7 +29,7 @@ Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás]
 
 A CMK segítségével szabályozhatja az adataihoz való hozzáférést, és bármikor visszavonhatja azt. Azure Monitor a tároló egy órán belül mindig tiszteletben tartja a legfontosabb engedélyek változásait. Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az adatforgalom a Microsoft kulcsaival együtt titkosítva marad, függetlenül a CMK-konfigurációtól, az SSD-adatforgalom pedig a [kulcs visszavonását](#cmk-kek-revocation)követi. Dolgozunk, hogy a CMK-mel titkosított SSD-adatforgalom a 2020-as második fele legyen.
 
-A CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, meg kell adnia az előfizetés előzetes engedélyezési feltételeit. A CMK konfigurálásának megkezdése előtt használja a Microsoft-névjegyét az előfizetés engedélyezési listájának beszerzéséhez.
+A CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, az előfizetést előzetesen engedélyezni kell. A CMK konfigurálásának megkezdése előtt használja a Microsoft-névjegyét az előfizetés engedélyezéséhez.
 
 A [log Analytics-fürtök díjszabási modellje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)a   1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
 
@@ -40,7 +40,7 @@ Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja 
 A CMK konfigurálása után a *fürt* erőforrásaihoz tartozó munkaterületekre betöltött összes adatot titkosítja Key Vault a kulcsával. Bármikor leválaszthatja a munkaterületeket a *fürt* erőforrásaiból. Az új adatai bekerülnek a Log Analytics tárterületre, és titkosítva vannak a Microsoft-kulccsal, míg az új és a régi adatait zökkenőmentesen le lehet kérdezni.
 
 
-![A CMK áttekintése](media/customer-managed-keys/cmk-overview-8bit.png)
+![A CMK áttekintése](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics a Key Vault számára engedélyekkel rendelkező, felügyelt identitással rendelkező *fürterőforrás* – az identitást a dedikált log Analytics fürt tárterületére propagálja a rendszer.
@@ -69,16 +69,16 @@ A következő szabályok érvényesek:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-létesítési eljárás
 
-1. Előfizetés-engedélyezési lista – a CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, meg kell adnia az előfizetés előzetes engedélyezési feltételeit. Az előfizetés engedélyezési listájának beszerzése a Microsoft-névjegy használatával
+1. Előfizetés engedélyezése – a CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, az előfizetést előzetesen engedélyezni kell. Az előfizetését a Microsoft-névjegy használatával kérheti le.
 2. Azure Key Vault létrehozása és a kulcs tárolása
 3. *Fürterőforrás* létrehozása
 4. Engedélyek megadása a Key Vault számára
 5. Log Analytics-munkaterületek társítása
 
-Az eljárás jelenleg nem támogatott a felhasználói felületen, a kiépítési folyamat pedig REST APIon keresztül történik.
+Az eljárás nem támogatott Azure Portal és a kiépítés PowerShell-vagy REST-kérelmeken keresztül történik.
 
 > [!IMPORTANT]
-> Minden API-kérésnek tartalmaznia kell egy tulajdonosi engedélyezési jogkivonatot a kérelem fejlécében.
+> A REST-kérelmeknek tartalmaznia kell egy tulajdonosi engedélyezési jogkivonatot a kérelem fejlécében.
 
 Például:
 
@@ -100,12 +100,12 @@ A jogkivonatot a következő módszerek egyikével is beszerezheti:
 
 ### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
 
-A konfigurációs eljárás egyes műveletei aszinkron módon futnak, mert nem hajthatók végre gyorsan. Az aszinkron műveletre adott válasz kezdetben egy 200-es HTTP-állapotkódot (OK) és egy, az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
+A konfigurációs eljárás egyes műveletei aszinkron módon futnak, mert nem hajthatók végre gyorsan. Ha REST-kérelmeket használ a konfigurációban, a válasz kezdetben a 200-es HTTP-állapotkódot (OK) és az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
-Az aszinkron művelet állapotát úgy tekintheti meg, hogy egy GET kérelmet küld az *Azure-AsyncOperation* fejléc értékére:
+Ezután az aszinkron művelet állapotát úgy tekintheti meg, hogy elküld egy GET kérelmet az *Azure-AsyncOperation* fejléc értékére:
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
@@ -172,9 +172,9 @@ Sikertelen művelet
 }
 ```
 
-### <a name="subscription-whitelisting"></a>Előfizetés-engedélyezési lista
+### <a name="allowing-subscription-for-cmk-deployment"></a>Előfizetés engedélyezése a CMK üzembe helyezéséhez
 
-A CMK képesség dedikált Log Analytics-fürtökön van továbbítva.Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, meg kell adnia az előfizetés előzetes engedélyezési feltételeit. Az előfizetések azonosítóinak megadásához használja a Microsoft névjegyeit.
+A CMK képesség dedikált Log Analytics-fürtökön van továbbítva.Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, az előfizetést előzetesen engedélyezni kell. Az előfizetések azonosítóinak megadásához használja a Microsoft névjegyeit.
 
 > [!IMPORTANT]
 > A CMK-képesség regionális. A Azure Key Vault, a *fürterőforrás* és a társított log Analytics-munkaterületnek ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet.
@@ -191,20 +191,27 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül érhetők el:
 
 ### <a name="create-cluster-resource"></a>*Fürterőforrás* létrehozása
 
-Ez az erőforrás köztes identitás-kapcsolatként használatos a Key Vault és az Log Analytics-munkaterületek között. Miután megkapta a megerősítést, hogy az előfizetések engedélyezve lettek, hozzon létre egy Log Analytics *fürterőforrás* azon a régión, ahol a munkaterületek találhatók.
+Ez az erőforrás köztes identitás-kapcsolatként használatos a Key Vault és az Log Analytics-munkaterületek között. Miután megkapta a jóváhagyást, hogy az előfizetések engedélyezettek voltak, hozzon létre egy Log Analytics *fürterőforrás* azon a régión, ahol a munkaterületek találhatók.
 
 *Fürterőforrás* létrehozásakor meg kell adnia a *kapacitás foglalási* szintjét (SKU). A *kapacitás foglalási* szintje napi 1 000 és 2 000 GB között lehet, és később is frissíthető 100-os lépésekben. Ha napi 2 000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: LAIngestionRate@microsoft.com . [További információ](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 A *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá tartozó adatforrások számlázási hozzárendelését:
-- *fürt* (alapértelmezett) – a számlázás a *fürterőforrás* üzemeltetéséhez használt előfizetéshez van hozzárendelve.
-- *munkaterületek* – a számlázás a munkaterületek arányosan üzemelő előfizetésekhez van hozzárendelve.
+- *Fürt* (alapértelmezett) – a fürt kapacitásának foglalási költségei a *fürterőforrás* számára vannak hozzárendelve.
+- *Munkaterületek* – a fürt kapacitásának foglalási költségei arányosak a fürtben lévő munkaterületekhez, és a *fürt* erőforrása egy bizonyos használatot számláz, ha a napi teljes betöltött adat a kapacitás foglalása alatt áll. A fürt árképzési modelljével kapcsolatos további tudnivalókért tekintse meg [log Analytics dedikált fürtök](manage-cost-storage.md#log-analytics-dedicated-clusters) című témakört. 
 
 > [!NOTE]
-> A *fürterőforrás* létrehozása után frissítheti azt *SKU*-val, *KEYVAULTPROPERTIES* vagy *billingType* a patch Rest-kérelem használatával.
+> * A *fürterőforrás* létrehozása után frissítheti azt *SKU*-val, *KEYVAULTPROPERTIES* vagy *billingType* a patch Rest-kérelem használatával.
+> * A *billingType* a REST-kérelem használatával frissítheti jelenleg, ez nem támogatott a PowerShellben
 
-**Létrehozás**
+Ez a művelet aszinkron, és egy darabig elvégezhető.
 
-Ez a Resource Manager-kérelem aszinkron művelet.
+> [!IMPORTANT]
+> Másolja ki és mentse a választ, mivel a következő lépésekben szükség lesz a részletekre.
+> 
+
+```powershell
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+```
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -242,9 +249,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-> [!IMPORTANT]
-> Másolja ki és mentse a választ, mivel a következő lépésekben szükség lesz a részletekre.
-
 **Válasz**
 
 ```json
@@ -261,7 +265,6 @@ Authorization: Bearer <token>
     },
   "properties": {
     "provisioningState": "ProvisioningAccount",
-    "clusterType": "LogAnalytics",
     "billingType": "cluster",
     "clusterId": "cluster-id"
     },
@@ -276,10 +279,10 @@ A "principalId" GUID azonosítót a *fürterőforrás* felügyelt identitási sz
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault engedélyek megadása
 
-Frissítse a Key Vault egy olyan új hozzáférési házirenddel, amely engedélyt ad a *fürterőforrás* számára. Ezeket az engedélyeket az alátét Azure Monitor tárolója használja az adattitkosításhoz. Nyissa meg a Key Vault a Azure Portalban, és kattintson a "hozzáférési szabályzatok", majd a "hozzáférési házirend hozzáadása" lehetőségre a szabályzat létrehozásához a következő beállításokkal:
+Frissítse a Key Vault egy új hozzáférési házirenddel, hogy engedélyeket biztosítson a *fürterőforrás* számára. Ezeket az engedélyeket az alátét Azure Monitor tárolója használja az adattitkosításhoz. Nyissa meg a Key Vault a Azure Portalban, és kattintson a "hozzáférési szabályzatok", majd a "hozzáférési házirend hozzáadása" lehetőségre a szabályzat létrehozásához a következő beállításokkal:
 
 - Kulcs engedélyei: válassza a beolvasás, a betakart kulcs és a kicsomagolási kulcs engedélyeket.
-- Rendszerbiztonsági tag kiválasztása: adja meg az előző lépésben a válaszban visszaadott résztvevő-azonosító értéket.
+- Rendszerbiztonsági tag kiválasztása: adja meg az előző lépésben a válaszban visszaadott *fürterőforrás* -nevet vagy Principal-ID értéket.
 
 ![Key Vault engedélyek megadása](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -295,12 +298,14 @@ Ha szeretné frissíteni a *fürterőforrás* adatait a Key Vault *kulcs-azonos�
 
 Frissítse a *fürterőforrás* KeyVaultProperties a kulcs-azonosító részleteivel.
 
-**Frissítés**
+Ez a művelet aszinkron módon frissül, és hosszabb időt is igénybe vehet. A kapacitás értékének frissítésekor szinkronban van.
 
-Ez a Resource Manager-kérelem aszinkron művelet a kulcs-azonosító részleteinek frissítésekor, miközben a kapacitás értékének frissítésekor szinkronban van.
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
 
 > [!NOTE]
-> Az *SKU*-t, a *keyVaultProperties* -t vagy a *billingType*-t egy részleges törzsben is megadhatja a *fürt* erőforrásaiban.
+> A *fürt* erőforrás- *SKU*-t, a *KeyVaultProperties* -t vagy a *billingType* -t a patch használatával frissítheti.
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -357,7 +362,6 @@ A *fürt* erőforrására vonatkozó kérésre adott válasznak a következőhö
       "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
     "billingType": "cluster",
     "clusterId": "cluster-id"
   },
@@ -378,9 +382,12 @@ A művelet végrehajtásához "írási" engedélyekkel kell rendelkeznie a munka
 > [!IMPORTANT]
 > Ezt a lépést csak a Log Analytics-fürt üzembe helyezésének befejezése után kell végrehajtani. Ha munkaterületeket rendel hozzá, és a kiépítés előtt betölti az adatot, a rendszer elveti a betöltött adatmennyiséget, és nem lesz helyreállítható.
 
-**Munkaterület hozzárendelése**
+Ez a művelet aszinkron, és egy darabig elvégezhető.
 
-Ez a Resource Manager-kérelem aszinkron művelet.
+```powershell
+$clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name").id
+Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId
+```
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -454,9 +461,85 @@ A CMK forgatásához explicit frissítés szükséges a *fürterőforrás* szám
 
 Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, mivel az adatai mindig titkosítva vannak a fiók titkosítási kulcsával (AEK), míg a AEK mostantól titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
 
-## <a name="cmk-manage"></a>CMK kezelése
+## <a name="cmk-for-queries"></a>Lekérdezések CMK
+
+A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme a CMK szabályzat részeként történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
+
+> [!NOTE]
+> A munkafüzetekben és az Azure-irányítópultokon használt lekérdezések CMK még nem támogatott. Ezek a lekérdezések a Microsoft-kulccsal titkosítva maradnak.  
+
+Ha [saját tárolót](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) használ, és hozzárendeli azt a munkaterülethez, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
+
+**Szempontok a lekérdezések CMK beállítása előtt**
+* A munkaterület és a Storage-fiók "Write" engedélyekkel kell rendelkeznie
+* Győződjön meg arról, hogy a Storage-fiókot ugyanabban a régióban hozza létre, mint ahol a Log Analytics munkaterület található.
+* A tárolóban végzett *keresések* szolgáltatásbeli összetevőknek számítanak, és a formátumuk változhat
+* A meglévő *mentett keresések* el lesznek távolítva a munkaterületről. A konfiguráció előtt másolja és mentse a szükséges *kereséseket* . A *mentett keresések* megtekinthetők a [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch) használatával
+* A lekérdezési előzmények nem támogatottak, és nem láthatja a futtatott lekérdezéseket
+* A lekérdezések mentése céljából egyetlen Storage-fiókot rendelhet a munkaterülethez, de a *mentett keresések* és a *log-riasztások* lekérdezése is felhasználható.
+* A rögzítés az irányítópulton nem támogatott
+
+**BYOS konfigurálása mentett keresési lekérdezésekhez**
+
+A Storage-fiók *hozzárendelése a* munkaterülethez – a *mentett keresési* lekérdezések a Storage-fiókba lesznek mentve. 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Query", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+A konfiguráció után a rendszer minden új *mentett keresési* lekérdezést ment a tárolóba.
+
+**BYOS konfigurálása a log-riasztási lekérdezésekhez**
+
+Storage-fiók hozzárendelése a munkaterülethez a *riasztásokhoz* – a *log-riasztási* lekérdezések a Storage-fiókba lesznek mentve. 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Alerts", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tárolóba.
+
+## <a name="cmk-management"></a>CMK-kezelés
 
 - **Erőforráscsoport összes *fürterőforrás* -erőforrásának beolvasása**
+  
+  ```powershell
+  Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
+  ```
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -486,7 +569,6 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
               "keyVersion": "current-version"
               },
           "provisioningState": "Succeeded",
-          "clusterType": "LogAnalytics", 
           "billingType": "cluster",
           "clusterId": "cluster-id"
         },
@@ -500,6 +582,10 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
   ```
 
 - **Az előfizetés összes *fürterőforrás* -erőforrásának beolvasása**
+  
+  ```powershell
+  Get-AzOperationalInsightsCluster
+  ```
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -514,8 +600,15 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
 
   Ha a társított munkaterületekhez tartozó adatmennyiség idővel módosul, és a kapacitás foglalási szintjét megfelelően szeretné frissíteni. Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új kapacitás értékét. A 1 000 és 2 000 GB közötti tartományban, illetve a 100-as lépéseknél lehet. A napi 2 000 GB-nál nagyobb szint esetén a Microsoft-kapcsolattartóval engedélyezheti. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell az SKU-t:
 
-  **törzse**
-  ```json
+  ```powershell
+  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
+  ```
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "sku": {
       "name": "capacityReservation",
@@ -532,8 +625,11 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
   
   Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új billingType értéket. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell a *billingType*:
 
-  **törzse**
-  ```json
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "properties": {
       "billingType": "cluster",
@@ -545,7 +641,11 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
 
   A művelet végrehajtásához a munkaterületre és a *fürt* erőforrására vonatkozó "írási" engedélyekre van szükség. Bármikor leválaszthat egy munkaterületet a *fürt* erőforrásáról. Az új betöltött adatmennyiség a társítási művelet Log Analytics tárolóban történő tárolása és a Microsoft-kulccsal való titkosítása után történik. Lekérdezheti a munkaterületre betöltött adatmennyiséget, mielőtt a társítást zökkenőmentesen elvégezte, amíg a *fürterőforrás* kiépítve és érvényes Key Vault kulccsal van konfigurálva.
 
-  Ez a Resource Manager-kérelem aszinkron művelet.
+  Ez a művelet aszinkron, és egy darabig elvégezhető.
+
+  ```powershell
+  Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
+  ```
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
@@ -561,9 +661,23 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
   1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. [Munkaterületek küldése –](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) kérelem kérése és a válasz megtekintése, a nem társított munkaterület nem rendelkezik a *szolgáltatások* *clusterResourceId* .
 
+- **Munkaterület társítási állapotának megtekintése**
+  
+  Hajtsa végre a Get műveletet a munkaterületen, és figyelje meg, hogy a *clusterResourceId* tulajdonság szerepel-e a válaszban a *szolgáltatások*területen. A társított munkaterület a *clusterResourceId* tulajdonsággal fog rendelkezni.
+
+  ```powershell
+  Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+  ```
+
 - **A *fürterőforrás* törlése**
 
-  A művelet elvégzéséhez írási engedéllyel kell rendelkeznie a *fürt* erőforrásához. A rendszer helyreállított törlési műveletet végez, amely lehetővé teszi a *fürterőforrás* helyreállítását 14 napon belül, akár véletlen, akár szándékos törlést is. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A Soft-delete időszak után a rendszer felszabadítja a *fürterőforrás* nevét, a *fürt* erőforrásait és adatait véglegesen törli, és nem helyreállítható. A társított munkaterületek a törlési művelet során kikerülnek a *fürterőforrás* alapján. Az új betöltött adatot Log Analytics tárolóban tároljuk, és a Microsoft kulccsal titkosítjuk. A munkaterületek nem társított művelete aszinkron, és akár 90 percet is igénybe vehet.
+  A művelet elvégzéséhez írási engedéllyel kell rendelkeznie a *fürt* erőforrásához. A rendszer helyreállított törlési műveletet végez, amely lehetővé teszi a *fürterőforrás* helyreállítását 14 napon belül, akár véletlen, akár szándékos törlést is. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A Soft-delete időszak után a rendszer felszabadítja a *fürterőforrás* nevét, a *fürt* erőforrásait és adatait véglegesen törli, és nem helyreállítható. A társított munkaterületek a törlési művelet során kikerülnek a *fürterőforrás* alapján. Az új betöltött adatot Log Analytics tárolóban tároljuk, és a Microsoft kulccsal titkosítjuk. 
+  
+  A munkaterületek nem társított művelete aszinkron, és akár 90 percet is igénybe vehet.
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -590,8 +704,10 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
 
 – A CMK titkosítás a CMK-konfiguráció után az újonnan betöltött adatmennyiségre vonatkozik      .A CMK      -konfiguráció előtt betöltött adatmennyiség továbbra is titkosítva marad a Microsoft-kulccsal.    A CMK konfigurálása zökkenőmentesen és után is lekérdezheti az adatfeldolgozást.
 
-– A Azure Key Vault helyreállítható kell konfigurálni.Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és a parancssori felület vagy a PowerShell használatával kell konfigurálni: a törlési védelmet be kell kapcsolni, hogy a rendszer a    -  [Soft Delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
-         -  [Purge protection](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)   titkos törlés után még a titok/tár kényszerített törlését is bekapcsolja.
+– A Azure Key Vault helyreállítható kell konfigurálni.Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és a CLI vagy a PowerShell használatával kell konfigurálni:
+
+  -Helyreállítható  [Törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
+      a kiürítést be kell kapcsolni a Törlés elleni    -  [védelemhez](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)   , hogy védelmet biztosítson a titkos kulcs/tár kényszerített törlésének kényszerítése után is.
 
 - *Fürt*   az erőforrás jelenleg nem támogatott más erőforráscsoporthoz vagy előfizetéshez      .
 
@@ -614,8 +730,6 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
 
 - Ha a meglévő *fürterőforrás* frissítése a KeyVaultProperties és a "Get" kulcs-hozzáférési szabályzat hiányzik a Key Vault, a művelet sikertelen lesz.
 
-- Ha egy munkaterülethez társított *fürterőforrás* törlését kísérli meg, a törlési művelet sikertelen lesz.
-
 - Ha a *fürterőforrás* létrehozásakor ütközési hiba lép fel, akkor előfordulhat, hogy az elmúlt 14 napban törölte a *fürterőforrás* -t, és ez egy nem megfelelő törlési időszak. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A név akkor jelenik meg, ha a rendszer véglegesen törli a *fürt* erőforrását a helyreállított törlési időszak után.
 
 - Ha egy művelet végrehajtása közben frissíti a *fürterőforrás* -erőforrást, a művelet sikertelen lesz.
@@ -623,5 +737,9 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
 - Ha nem sikerül telepíteni a *fürterőforrás* -t, ellenőrizze, hogy a Azure Key Vault, a *fürterőforrás*   és a társított log Analytics-munkaterületek ugyanabban a régióban találhatók-e. A lehet különböző előfizetésekben.
 
 - Ha Key Vaultban frissíti a kulcs verzióját, és nem frissíti az új kulcs-azonosító részleteit a *fürterőforrás* -ben, a log Analytics-fürt továbbra is az előző kulcsot fogja használni, és az adatai elérhetetlenné válnak. Frissítse az új kulcs-azonosító részleteit a *fürterőforrás* -ben az adatok feldolgozásának folytatásához és az adatok lekérdezési képességéhez.
+
+- Bizonyos műveletek hosszúak, és eltarthat egy ideig – ezek a *fürtök* létrehozása, a *fürt* kulcsának frissítése és a *fürt* törlése. A művelet állapotát kétféleképpen tekintheti meg:
+  1. a REST használatakor másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
+  2. GET kérelem küldése a *fürtnek* vagy a munkaterületnek, és figyelje meg a választ. A nem társított munkaterület például nem rendelkezik a szolgáltatások *clusterResourceId* . *features*
 
 - Az ügyfél által felügyelt kulccsal kapcsolatos támogatásért és segítségért használja a Microsoft-partnereit.

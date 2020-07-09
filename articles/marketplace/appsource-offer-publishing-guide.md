@@ -1,18 +1,18 @@
 ---
 title: A Microsoft AppSource közzétételi útmutatója
 description: Részletes útmutató és közzétételi ellenőrzőlisták alkalmazások közzétételéhez az Office 365, a Dynamics 365, a Power apps és a Power BI Microsoft AppSource.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 60fb95e47831363353e553d8e55c56e812127bfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0052b515d87ecb744783d57942d2557fc1db913
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110283"
 ---
 # <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>Az Office 365, a Dynamics 365, a Power apps és a Power BI közzétételi útmutatója
 
@@ -24,7 +24,7 @@ A AppSource fizetős, listázási és próbaverziós ajánlatokat tartalmaz, és
 
 Az egyes ajánlati típusokhoz kapcsolódó folyamatok és irányelvek közzétételére mutató hivatkozásokat az alábbi táblázat tartalmazza:
 
-| Product    | Közzétételi útmutató  |
+| Termék    | Közzétételi útmutató  |
 | :------------------- | :-------------------|
 | Office 365 | Tekintse át a [közzétételi folyamatot és az irányelveket](/office/dev/store/submit-to-appsource-via-partner-center). |
 | Dynamics 365 Business Central | Ha közzé szeretne tenni egy ajánlatot a partner Centerben, tekintse meg az [új Dynamics 365 Business Central-ajánlat létrehozását](./partner-center-portal/create-new-business-central-offer.md)ismertető témakört. |
@@ -35,7 +35,7 @@ Az egyes ajánlati típusokhoz kapcsolódó folyamatok és irányelvek közzét�
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

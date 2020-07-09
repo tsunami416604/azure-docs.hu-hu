@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438905"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248547"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "75438905"
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -33,11 +33,11 @@ ms.locfileid: "75438905"
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md). 
 
 
-Ez az oktatóanyag megmutatja, hogyan másolhat adatokat egy Azure Blob Storage-tárból egy Azure SQL-adatbázisba a **Másolás varázsló** segítségével. 
+Ebből az oktatóanyagból megtudhatja, hogyan másolhat adatok egy Azure Blob Storage-ból a Azure SQL Databaseba a **Másolás varázsló** használatával. 
 
 Az Azure Data Factory **Másolás varázslójával** gyorsan létrehozhat egy olyan adatátviteli folyamatot, amely a támogatott forrásadattárból adatokat másol a támogatott céladattárba. Ezért azt javasoljuk, hogy a varázsló segítségével első lépésként hozzon létre mintafolyamatot az adatátviteli forgatókönyvhöz. A forrásként és célként támogatott adattárak listáját a [támogatott adattárakról](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szóló témakörben találja.  
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. Amikor befejezte a varázsló lépéseit, a varázsló automatikusan létrehoz egy másolási tevékenységet tartalmazó folyamatot, amelynek során az adatokat átmásolja egy Azure Blob Storage-tárból egy Azure SQL-adatbázisba. A másolási tevékenységről további információk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben találhatók.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. A varázsló lépéseinek befejezése után a varázsló automatikusan létrehoz egy másolási tevékenységgel rendelkező folyamatot, amely átmásolja az Azure Blob Storage-ból a Azure SQL Databaseba. A másolási tevékenységről további információk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben találhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
@@ -64,7 +64,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
         Az oktatóanyag egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Létrehozás**gombra.
+   6. Kattintson a **Létrehozás** lehetőségre.
       
        ![A New data factory (Új data factory) panel](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
 3. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható:
@@ -119,7 +119,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    5. Adja meg a **felhasználónevet** és a **jelszót**.
    6. Kattintson a **Tovább** gombra.  
       
-      ![Copy (Másolás) eszköz – specify Azure SQL database (Az Azure SQL-adatbázis megadása) oldal](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![Másolási eszköz – Azure SQL Database megadása](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. A **Table mapping** (Tábla-hozzárendelés) oldalon válassza ki a legördülő listából az **emp** beállítást a **Destination** (Cél) mezőhöz, és kattintson a **lefelé mutató nyílra** (opcionális) a séma és az adatok előnézetének megtekintéséhez.
     
      ![Copy (Másolás) eszköz – Table mapping (Tábla-hozzárendelés) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
@@ -150,7 +150,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     Az alkalmazás használatáról további tudnivalókat talál a [Monitor and manage pipeline using Monitoring App](data-factory-monitor-manage-app.md) (Folyamat figyelése és felügyelete a Monitoring App használatával) című cikkben.
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag egy olyan másolási műveletet mutatott be, amelynek a forrásadattára egy Azure Blob Storage-tár, a céladattára pedig egy Azure SQL-adatbázis volt. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
+Ebben az oktatóanyagban az Azure Blob Storage-t forrás adattárként használta, és a másolási művelet során Azure SQL Database célként megadott adattárként. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

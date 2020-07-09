@@ -5,12 +5,11 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84464572"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -21,7 +20,7 @@ Az Application Insights bármely weblappal használható – csak egy rövid Jav
 ## <a name="adding-the-javascript-sdk"></a>A JavaScript SDK hozzáadása
 
 1. Először Application Insights erőforrásra van szüksége. Ha még nem rendelkezik erőforrás-és kialakítási kulccsal, kövesse az [új erőforrás létrehozása című témakört](create-new-resource.md).
-2. Másolja a kialakítási kulcsot abból az erőforrásból, ahová a JavaScript-telemetria elküldeni kívánja.
+2. Másolja a kialakítási _kulcsot_ (más néven "rendszerállapotkulcsot") ahhoz az erőforráshoz, amelyen a JavaScript-telemetria el szeretné juttatni (az 1. lépésből) Adja hozzá a `instrumentationKey` Application Insights JavaScript SDK beállításához.
 3. Adja hozzá a Application Insights JavaScript SDK-t a weboldalához vagy az alkalmazáshoz az alábbi két lehetőség egyikének használatával:
     * [NPM-telepítő](#npm-based-setup)
     * [JavaScript-kódrészlet](#snippet-based-setup)
@@ -34,6 +33,14 @@ Az Application Insights bármely weblappal használható – csak egy rövid Jav
 
 ### <a name="npm-based-setup"></a>NPM-alapú telepítés
 
+Telepítse a NPM-on keresztül.
+
+```sh
+npm i --save @microsoft/applicationinsights-web
+```
+
+> *Megjegyzés:* a **beírások**bekerülnek a csomagba, így **nem** kell külön begépelési csomagot telepítenie.
+    
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -47,17 +54,63 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>Kódrészlet-alapú telepítés
 
-Ha az alkalmazás nem használja az NPM-t, akkor közvetlenül a weblapjait az egyes lapok tetején található kódrészlettel Application Insightshatja. Lehetséges, hogy a `<head>` szakasz első szkriptje legyen, amely képes figyelni az összes függőségével kapcsolatos esetleges problémákat. Ha a Blazer Server alkalmazást használja, adja hozzá a kódrészletet a (z) `_Host.cshtml` `<head>` szakaszban található fájl elejéhez.
+Ha az alkalmazás nem használja az NPM-t, akkor közvetlenül a weblapjait az egyes lapok tetején található kódrészlettel Application Insightshatja. Lehetséges, hogy a szakasz első szkriptje legyen, `<head>` hogy képes legyen figyelni az összes függőséggel kapcsolatos esetleges problémát, és opcionálisan bármilyen JavaScript-hibát. Ha a Blazer Server alkalmazást használja, adja hozzá a kódrészletet a (z) szakaszban található fájl elejéhez `_Host.cshtml` `<head>` .
+
+Annak érdekében, hogy az alkalmazás által használt kódrészlet melyik verzióját használja, az 2.5.5-verziótól kezdődően egy új "Ai. internal. kódrészlet" címkét fog tartalmazni, amely tartalmazza az azonosított kódrészlet verzióját.
+
+Az aktuális kódrészlet (alább látható) a "3" verzióként lesz azonosítva.
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
-{
-  instrumentationKey:"INSTRUMENTATION_KEY"
-}
-);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    /* ...Other Configuration Options... */
+}});
 </script>
 ```
+
+> [!NOTE]
+> Az olvashatóság és a lehetséges JavaScript-hibák csökkentése érdekében az összes lehetséges konfigurációs beállítás megjelenik a fenti kódrészlet kódjának egy új sorában, ha nem szeretné módosítani egy megjegyzéses sor értékét, akkor az eltávolítható.
+
+
+#### <a name="reporting-script-load-failures"></a>Jelentéskészítési parancsfájlok betöltésének hibái
+
+A kódrészlet jelen verziója észleli a hibákat, amikor az SDK-t a CDN-ből tölti be kivételként a Azure Monitor portálra (a hibák &gt; kivételei &gt; böngészőben), ez a kivétel az ilyen típusú hibák láthatóságát biztosítja, így biztos lehet benne, hogy az alkalmazás nem jelent telemetria (vagy más kivételeket) a várt módon. Ez a jel fontos szempont, hogy megértsük, hogy elvesztette a telemetria, mert az SDK nem töltődött be vagy inicializált, ami a következőket eredményezheti:
+- A felhasználók által használt (vagy a használni próbált) webhely bejelentése
+- Hiányzik a telemetria, hogy a végfelhasználók hogyan használják a webhelyet;
+- Hiányzó JavaScript-hibák, amelyek esetleg blokkolják a végfelhasználókat a hely sikeres használatával.
+
+A kivétel részleteiért lásd az [SDK-Betöltési hiba](javascript-sdk-load-failure.md) elhárítása oldalt.
+
+Ennek a hibának a bejelentése kivételként a portálon nem használja az Application betekintő konfigurációjának konfigurációs beállítását, ```disableExceptionTracking``` ezért ha ez a hiba történik, mindig a kódrészlet fogja jelenteni, még akkor is, ha az ablak. onError támogatása le van tiltva.
+
+Az SDK-betöltési hibák jelentése kifejezetten nem támogatott IE 8 (vagy kevesebb) esetén. Ez segít a kódrészletek minified méretének csökkentésében azáltal, hogy a legtöbb környezet nem kizárólag IE 8 vagy kevesebb. Ha ezt a követelményt szeretné megkapni, és ezeket a kivételeket is el kívánja fogadni, akkor be kell állítania egy beolvasott Poly-kitöltést, vagy létre kell hoznia egy saját kódrészlet-verziót, amelyet a ```XDomainRequest``` helyett használ ```XMLHttpRequest``` , ezért javasolt a [megadott kódrészletet](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js) kiindulási pontként használni.
+
+> [!NOTE]
+> Ha a kódrészlet egy korábbi verzióját használja, erősen ajánlott a legújabb verzióra frissíteni, hogy megkapja ezeket a korábban nem jelentett problémákat.
+
+#### <a name="snippet-configuration-options"></a>Kódrészlet konfigurációs beállításai
+
+Az összes konfigurációs beállítás mostantól a szkript végére került, így elkerülhetők a JavaScript-hibák, amelyek nem csupán az SDK betöltését okozzák, hanem letiltják a hiba jelentését is.
+
+Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szeretné felülbírálni a felsorolt elemek alapértelmezett értékét [nem kötelező] értékkel, eltávolíthatja ezt a sort a visszaadott oldal méretének csökkentése érdekében.
+
+Az elérhető konfigurációs lehetőségek a következők 
+
+| Name | Típus | Description
+|------|------|----------------
+| src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
+| name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, az alapértelmezett érték a appInsights. Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
+| ld | szám az MS-ban *[opcionális]* | Meghatározza azt a betöltési késleltetést, ameddig a rendszer megpróbálja betölteni az SDK-t. Az alapértelmezett érték a 0ms, és minden negatív érték azonnal hozzáad egy szkript címkét &lt; a &gt; lap főrégiójához, amely letiltja az oldal betöltési eseményét, amíg a parancsfájl be nem töltődik (vagy sikertelen).
+| useXhr | logikai érték *[opcionális]* | Ez a beállítás csak jelentési SDK-betöltési hibák esetén használatos. A jelentéskészítés először a beolvasást () fogja használni, ha elérhető, majd a tartalék x/óra értékre állítja be ezt az értéket, csak a beolvasás ellenőrzését. Ezt az értéket csak akkor kell használni, ha az alkalmazás olyan környezetben van használatban, amelyben a fetch nem fogja elküldeni a sikertelen események eseményeit.
+| crossOrigin | karakterlánc *[nem kötelező]* | Ennek a beállításnak a megadásával az SDK letöltéséhez hozzáadott parancsfájl-címke tartalmazza a crossOrigin attribútumot a karakterlánc értékkel. Ha nincs definiálva (az alapértelmezett) nincs crossOrigin attribútum hozzáadva. Az ajánlott értékek nincsenek definiálva (az alapértelmezett érték); ""; vagy "névtelen" (az összes érvényes értéknél lásd [: HTML-attribútum: crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) -dokumentáció)
+| cfg | objektum **[kötelező]** | Az inicializálás során a Application Insights SDK-nak átadott konfiguráció.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Telemetria küldése a Azure Portalba
 
@@ -80,9 +133,9 @@ Alapértelmezés szerint a Application Insights JavaScript SDK autogyűjt számo
 - **A munkamenetadatokat**
 
 ### <a name="telemetry-initializers"></a>Telemetria inicializálók
-A telemetria inicializálók segítségével módosítható a begyűjtött telemetria tartalma, mielőtt a felhasználó böngészőjéből elküldjék. Azt is felhasználhatják, hogy bizonyos telemetria ne küldjön vissza `false`. Több telemetria-inicializáló is felvehető a Application Insights-példányba, és ezeket a rendszer a hozzáadásuk sorrendjében hajtja végre.
+A telemetria inicializálók segítségével módosítható a begyűjtött telemetria tartalma, mielőtt a felhasználó böngészőjéből elküldjék. Azt is felhasználhatják, hogy bizonyos telemetria ne küldjön vissza `false` . Több telemetria-inicializáló is felvehető a Application Insights-példányba, és ezeket a rendszer a hozzáadásuk sorrendjében hajtja végre.
 
-A bemenet argumentuma `addTelemetryInitializer` egy olyan visszahívás, amely [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) argumentumként fogadja el a függvényt, és visszaadja a vagy `boolean` `void`a értéket. Ha visszatér `false`, a rendszer nem küldi el az telemetria elemet, ellenkező esetben a következő telemetria-inicializálást (ha van ilyen), vagy pedig a telemetria-gyűjtemény végpontjának küldi el.
+A bemenet argumentuma `addTelemetryInitializer` egy olyan visszahívás, amely argumentumként fogadja el a [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) függvényt, és visszaadja a vagy a értéket `boolean` `void` . Ha visszatér `false` , a rendszer nem küldi el az telemetria elemet, ellenkező esetben a következő telemetria-inicializálást (ha van ilyen), vagy pedig a telemetria-gyűjtemény végpontjának küldi el.
 
 Példa telemetria inicializálók használatára:
 ```ts
@@ -97,9 +150,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
 ## <a name="configuration"></a>Konfiguráció
-A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező `instrumentationKey`, kivéve a következőt:.
+A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Szükséges**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -109,7 +162,7 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | maxBatchInterval | 15 000 | Mennyi ideig kell a Batch telemetria a küldés előtt (ezredmásodperc) |
 | disableExceptionTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti össze a kivételeket. Az alapértelmezett érték a false (hamis). |
 | disableTelemetry | hamis | Ha az értéke igaz, a rendszer nem gyűjti és nem továbbítja a telemetria. Az alapértelmezett érték a false (hamis). |
-| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>***Megjegyzés:*** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, `consoleLoggingLevel` érdemes `telemetryLoggingLevel` lehet a `enableDebug`vagy a helyett használni. |
+| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>***Megjegyzés:*** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
 | loggingLevelConsole | 0 | **Belső** Application Insights hibák naplózása a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | loggingLevelTelemetry | 1 | **Belső** Application Insights hibákat küld a telemetria. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | diagnosticLogInterval | 10000 | belső A belső naplózási várólista lekérdezési időköze (MS) |
@@ -136,29 +189,34 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | appId | null | A AppId az AJAX-függőségek közötti korrelációt használja a kiszolgálóoldali kérelmekkel az ügyfélen. Ha a Beacon API engedélyezve van, nem használható automatikusan, de manuálisan is beállítható a konfigurációban. Az alapértelmezett érték null |
 | enableCorsCorrelation | hamis | Ha az értéke igaz, az SDK két fejlécet ("Request-id" és "Request-Context") ad hozzá az összes CORS-kérelemhez a kimenő AJAX-függőségek összekapcsolásához a kiszolgálói oldalon található megfelelő kérelmekkel. Az alapértelmezett érték false (hamis) |
 | namePrefix | nem definiált | Egy nem kötelezően megadandó érték, amely a localStorage és a cookie neveként a Postfix nevet fogja használni.
-| enableAutoRouteTracking | hamis | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai`example.com/foo#bar`() új oldalletöltésekként is rögzítve lesznek.
+| enableAutoRouteTracking | hamis | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai ( `example.com/foo#bar` ) új oldalletöltésekként is rögzítve lesznek.
 | enableRequestHeaderTracking | hamis | Igaz értéke esetén az AJAX & a lekérési kérelmek fejlécének nyomon követése, az alapértelmezett érték a false.
 | enableResponseHeaderTracking | hamis | Igaz értéke esetén a rendszer az AJAX & beolvasási kérelem válaszának fejléceit nyomon követi, az alapértelmezett érték a false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással.
+| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)a példát.
+| enableAjaxErrorStatusText | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a nem a sikertelen AJAX-kérelmekhez tartozó függőségi esemény szövege
+| enableAjaxPerfTracking | hamis | Alapértelmezett hamis érték. A felkeresett és a további böngészőablakokat is tartalmazó jelző. a jelentett Ajax (x/óra és beolvasás) teljesítménybeli időzítései jelentettek mérőszámokat.
+| maxAjaxPerfLookupAttempts | 3 | Az alapértelmezett érték 3. Az ablak keresésének maximális száma. a teljesítmény időzítése (ha elérhető), ez azért szükséges, mert nem minden böngésző tölti ki az ablakot. a teljesítmény az x/h-kérelem végének bejelentése előtt, valamint a beolvasási kérelmeknél ez a befejezés után lesz hozzáadva.
+| ajaxPerfLookupDelay | 25 | Az alapértelmezett érték 25 MS. Az a várakozási idő, ameddig a rendszer újra megkísérli megkeresni a Windowst. a teljesítmény időzítése egy Ajax-kérelem esetében, az idő ezredmásodpercben van, és közvetlenül a setTimeout () értékre lesz átadva.
+| enableUnhandledPromiseRejectionTracking | hamis | Ha az értéke igaz, a nem kezelt ígéretek elutasítása automatikusan történik, és JavaScript-hibaként fog jelenteni. Ha a disableExceptionTracking értéke igaz (ne kövesse nyomon a kivételeket), a rendszer figyelmen kívül hagyja a konfigurációs értéket, és nem kezeli az ígéretek elutasítását.
 
 ## <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
-Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez `enableAutoRouteTracking: true` hozzáadhat a telepítési konfigurációhoz.
+Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez hozzáadhat a `enableAutoRouteTracking: true` telepítési konfigurációhoz.
 
 Jelenleg egy külön [reakciós beépülő modult](#react-extensions)is kínálunk, amelyet az SDK-val inicializálhat. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint [más reagáló specifikus telemetria](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)is gyűjthet.
 
 > [!NOTE]
-> Csak `enableAutoRouteTracking: true` akkor használja, ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
+> Csak akkor használja `enableAutoRouteTracking: true` , ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
 
 ## <a name="configuration-autotrackpagevisittime"></a>Konfiguráció: autoTrackPageVisitTime
 
-A beállítás `autoTrackPageVisitTime: true`szerint a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) kell elküldeni `PageVisitTime`. Ez az egyéni metrika a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "napló alapú metrika" néven látható.
+A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "napló alapú metrika" néven látható.
 
 ## <a name="react-extensions"></a>Reakciós bővítmények
 
 | Bővítmények |
 |---------------|
-| [Reagálni](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Natív reagálás](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Böngésző-és ügyféloldali adat megismerése
@@ -183,7 +241,7 @@ Válassza a **böngésző** lehetőséget, majd válassza a **hibák** vagy a **
 
 ### <a name="analytics"></a>Elemzés
 
-A JavaScript SDK által gyűjtött telemetria lekéréséhez válassza a **megtekintés a naplókban (elemzés)** gombot. Egy `where` utasítás `client_Type == "Browser"`hozzáadásával csak a JavaScript SDK-ból és más SDK-k által gyűjtött kiszolgálóoldali telemetria fog adatokat kizárni.
+A JavaScript SDK által gyűjtött telemetria lekéréséhez válassza a **megtekintés a naplókban (elemzés)** gombot. Egy utasítás hozzáadásával `where` `client_Type == "Browser"` csak a JavaScript SDK-ból és más SDK-k által gyűjtött kiszolgálóoldali telemetria fog adatokat kizárni.
  
 ```kusto
 // average pageView duration by name
@@ -220,7 +278,7 @@ A könnyű használhatóság érdekében telepítheti az Application Insights al
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-Ez a verzió a szolgáltatások és funkciók minimális számát tartalmazza, és arra támaszkodik, hogy felépítse azt, ahogy jónak látja. Például nem hajt végre autocollectiont (nem kezelt kivételeket, AJAX-t stb.). Az egyes telemetria-típusok ( `trackTrace` `trackException`például stb.) küldésére szolgáló API-k nem szerepelnek ebben a verzióban, ezért meg kell adnia a saját burkolóját. Az egyetlen elérhető API `track`. Itt található egy [minta](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
+Ez a verzió a szolgáltatások és funkciók minimális számát tartalmazza, és arra támaszkodik, hogy felépítse azt, ahogy jónak látja. Például nem hajt végre autocollectiont (nem kezelt kivételeket, AJAX-t stb.). Az egyes telemetria-típusok (például stb.) küldésére szolgáló API `trackTrace` `trackException` -k nem szerepelnek ebben a verzióban, ezért meg kell adnia a saját burkolóját. Az egyetlen elérhető API `track` . Itt található egy [minta](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
 
 ## <a name="examples"></a>Példák
 
@@ -231,10 +289,10 @@ A futtatható-példákat lásd: [Application Insights JavaScript SDK-minták](ht
 Az SDK v2 verziójában feltört változások:
 - A jobb API-aláírások engedélyezéséhez néhány API-hívás (például a trackPageView és a trackException) frissült. Az Internet Explorer 8 és a böngésző korábbi verziói nem támogatottak.
 - Az telemetria-borítékban az Adatséma frissítései miatt a mező neve és szerkezete módosul.
-- Áthelyezve a `context.operation` `context.telemetryTrace`következő helyre:. Egyes mezők is módosultak (`operation.id` --> `telemetryTrace.traceID`).
-  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`a következőt:.
+- Áthelyezve a következő helyre: `context.operation` `context.telemetryTrace` . Egyes mezők is módosultak ( `operation.id`  -->  `telemetryTrace.traceID` ).
+  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja a következőt: `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
     > [!NOTE]
-    > A nyomkövetési azonosító egyediként való megtartásához, `Util.newId()`ahol korábban már `Util.generateW3CId()`használta, használja a következőt:. Mindkét esetben végül a művelet azonosítója jelenik meg.
+    > A nyomkövetési azonosító egyediként való megtartásához, ahol korábban már használta, használja a következőt: `Util.newId()` `Util.generateW3CId()` . Mindkét esetben végül a művelet azonosítója jelenik meg.
 
 Ha az aktuális Application bepillantást előállító SDK-t (1.0.20) használja, és szeretné megtekinteni, hogy az új SDK működik-e futásidőben, frissítse az URL-címet az aktuális SDK-betöltési forgatókönyvtől függően.
 
@@ -243,7 +301,7 @@ Ha az aktuális Application bepillantást előállító SDK-t (1.0.20) használj
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- NPM-forgatókönyv: `downloadAndSetup` meghívja a teljes ApplicationInsights-szkript letöltését a CDN-ből, és inicializálja a kialakítási kulccsal:
+- NPM-forgatókönyv: meghívja a `downloadAndSetup` teljes ApplicationInsights-szkript letöltését a CDN-ből, és inicializálja a kialakítási kulccsal:
 
    ```ts
    appInsights.downloadAndSetup({
@@ -256,12 +314,13 @@ Tesztelés belső környezetben a figyelés telemetria ellenőrzéséhez a várt
 
 ## <a name="sdk-performanceoverhead"></a>SDK-teljesítmény/terhelés
 
-Ha mindössze 25 KB-os tömörített, és csak ~ 15 MS-ot szeretne inicializálni, a Application Insights elhanyagolható mennyiségű loadtime hoz létre a webhelyhez. A kódrészlet használatával a könyvtár minimális összetevői gyorsan betöltődik. Addig a teljes szkript le lesz töltve a háttérben.
+Ha mindössze 36 KB-os tömörített, és csak ~ 15 MS-ot szeretne inicializálni, a Application Insights elhanyagolható mennyiségű loadtime hoz létre a webhelyhez. A kódrészlet használatával a könyvtár minimális összetevői gyorsan betöltődik. Addig a teljes szkript le lesz töltve a háttérben.
 
 A parancsfájl a CDN-ből való letöltését követően az oldal összes nyomon követését várólistára helyezi. Miután a letöltött parancsfájl aszinkron módon inicializálja az inicializálást, a rendszer a várólistára helyezett összes eseményt nyomon követte. Ennek eredményeképpen az oldal teljes életciklusa során semmilyen telemetria nem fog elveszíteni. Ez a telepítési folyamat zökkenőmentes analitikai rendszerrel rendelkező oldalt biztosít a felhasználók számára.
 
 > Összegzés:
-> - **25 KB** tömörített
+> - ![NPM verziója](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
+> - ![gzip tömörített méret](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - **15 MS** teljes inicializálási idő
 > - A lap életciklusa során kimaradt **nulla** követés
 
@@ -269,7 +328,15 @@ A parancsfájl a CDN-ből való letöltését követően az oldal összes nyomon
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Operát](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-A Chrome legújabb ✔ |  Firefox legújabb ✔ | IE 9 + & Edge ✔ | Az Opera legújabb ✔ | A Safari legújabb ✔ |
+A Chrome legújabb ✔ |  Firefox legújabb ✔ | IE 9 + & Edge ✔<br>IE 8 – kompatibilis | Az Opera legújabb ✔ | A Safari legújabb ✔ |
+
+## <a name="es3ie8-compatibility"></a>ES3/IE8-kompatibilitás
+
+SDK-ként számos felhasználó nem tudja szabályozni az ügyfelek által használt böngészőket. Ennek megfelelően biztosítania kell, hogy ez az SDK továbbra is "work" maradjon, és ne szakítsa meg a JS-végrehajtást egy régebbi böngészővel való betöltéskor. Habár ideális megoldás az IE8 és a régebbi generációs (ES3) böngészők támogatására, számos nagy ügyfelet/felhasználót kell megadnia, amely továbbra is a "work" lapokat igényli, és azt is, hogy a végfelhasználók milyen böngészőt használnak a felhasználók számára.
+
+Ez nem jelenti azt, hogy csak a legkisebb közös funkciókat fogjuk támogatni, csak azt, hogy a ES3-kód kompatibilitását és a hozzájuk tartozó új szolgáltatások hozzáadását olyan módon kell hozzáadni, amely nem szakítja meg a ES3 JavaScript-elemzést, és nem vehető fel választható szolgáltatásként.
+
+[Az IE8-támogatással kapcsolatos részletes információkért lásd: GitHub](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 
@@ -279,3 +346,4 @@ A Application Insights JavaScript SDK nyílt forráskódú a forráskód megteki
 * [Használat követése](usage-overview.md)
 * [Egyéni események és a mérőszámok](api-custom-events-metrics.md)
 * [Összeállítás, mérés, tanulás](usage-overview.md)
+* [Az SDK betöltési hibájának hibaelhárítása](javascript-sdk-load-failure.md)

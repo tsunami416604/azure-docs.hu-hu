@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79269483"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware virtuális gépek migrálása a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal rendelkező Azure virtuális gépekre
@@ -52,7 +51,7 @@ A kiszolgálói áttelepítési portál felülete megkönnyíti a replikációs 
 
 1. A Azure Portal lépjen az erőforráscsoportok lapra, és válassza ki azt az erőforráscsoportot, amelyben a Azure Migrate projektet létrehozták.
 2. Válassza a bal oldali menüben a **központi telepítések** elemet, majd keressen rá a *"Microsoft. MigrateV2. VMwareV2EnableMigrate"* karakterlánccal kezdődő központi telepítési névre. Megjelenik a portál felhasználói felülete által létrehozott Resource Manager-sablonok listája, amelyekkel beállíthatja a virtuális gépek replikálását ebben a projektben. Egy ilyen sablont töltünk le, amelyet a sablonnak a CMK-vel való replikáláshoz való előkészítéséhez használunk.
-3. A sablon letöltéséhez jelölje ki az előző lépésben szereplő karakterlánc-mintának megfelelő központi telepítést > válassza a bal oldali menüben a **sablon** kiválasztása lehetőséget > kattintson a felső menüben a **Letöltés** lehetőségre. Mentse helyileg a template. JSON fájlt. Ez a sablonfájl az utolsó lépésben lesz módosítva.
+3. A sablon letöltéséhez jelölje ki az előző lépésben szereplő karakterlánc-mintának megfelelő központi telepítést > válassza a bal oldali menüben a **sablon** kiválasztása lehetőséget > kattintson a felső menüben a **Letöltés** lehetőségre. Mentse helyileg a template.jsfájlt. Ez a sablonfájl az utolsó lépésben lesz módosítva.
 
 ## <a name="create-a-disk-encryption-set"></a>Lemezes titkosítási csoport létrehozása
 

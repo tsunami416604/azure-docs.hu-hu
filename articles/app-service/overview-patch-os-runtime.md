@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78273640"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
@@ -51,11 +50,11 @@ A futtatókörnyezet frissítései és az elavulás itt jelent meg:
 
 ### <a name="new-patch-updates"></a>Új javítási frissítések
 
-A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést az új verzióval. A Node. js-javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [site Extensions](https://azure.microsoft.com/blog/azure-web-sites-extensions/)használatával, a beépített Python-telepítésekkel párhuzamosan.
+A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést az új verzióval. Node.js a javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [site Extensions](https://azure.microsoft.com/blog/azure-web-sites-extensions/)használatával, a beépített Python-telepítésekkel párhuzamosan.
 
 ### <a name="new-major-and-minor-versions"></a>Új fő-és alverziók
 
-Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha egy konfigurációs fájlban (például `web.config` és `package.json`) konfigurálta a futásidejű verziót, ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a [Azure Portalban](https://portal.azure.com) vagy egy [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
+Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha egy konfigurációs fájlban (például és) konfigurálta a futásidejű verziót `web.config` `package.json` , ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a [Azure Portalban](https://portal.azure.com) vagy egy [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -77,16 +76,16 @@ Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmaz
 
 | Információ | Hol található | 
 |-|-|
-| Windows-verzió | Lásd `https://<appname>.scm.azurewebsites.net/Env.cshtml` : (a Rendszerinformáció területen) |
-| .NET-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET Core-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
-| PHP-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `php --version` |
-| Alapértelmezett Node. js-verzió | A [Cloud Shell](../cloud-shell/overview.md)futtassa a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `python --version` |  
-| Java-verzió | `https://<appname>.scm.azurewebsites.net/DebugConsole`A alkalmazásban futtassa a következő parancsot a parancssorban: <br> `java -version` |  
+| Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a Rendszerinformáció területen) |
+| .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET Core-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
+| PHP-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `php --version` |
+| Alapértelmezett Node.js verziója | A [Cloud Shell](../cloud-shell/overview.md)futtassa a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Python-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `python --version` |  
+| Java-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `java -version` |  
 
 > [!NOTE]  
-> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol a ["kb"-os javításokat](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) tartalmazó információk tárolódnak, zárolva vannak.
+> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , ahol a ["kb"-os javításokat](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) tartalmazó információk tárolódnak, zárolva vannak.
 >
 >
 

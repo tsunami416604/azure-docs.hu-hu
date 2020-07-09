@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: c577859f6e8a44dd3573537aecadba638a5f6fa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059390"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806032"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással az Azure PowerShell használatával
 
@@ -32,7 +32,7 @@ A következő példában a 8080-as és a 8081-es portról egyaránt érkezik web
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-url-redirect-cli.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -491,7 +491,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm` `http://52.168.55.24:8080/video/test.htm`,, vagy `http://52.168.55.24:8081/images/test.htm`.
+A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:,,, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm` `http://52.168.55.24:8080/video/test.htm` vagy `http://52.168.55.24:8081/images/test.htm` .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -509,7 +509,7 @@ Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/video/test.htm értékr
 
 Most módosítsa az URL-címet a http://&lt;ip-cím&gt;:8081/images/test.htm értékre, és az &lt;ip-cím&gt; helyére írja be a saját IP-címét. Ekkor azt kellene látnia, hogy a forgalom vissza lesz irányítva a képek háttérkészletére, amely a http://&lt;ip-cím&gt;:8080/images címen található.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 

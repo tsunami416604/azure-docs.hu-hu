@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975669"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Terjesztési oszlopok kiválasztása Azure Database for PostgreSQL – nagy kapacitású (Citus)
@@ -28,18 +27,18 @@ A több-bérlős architektúra hierarchikus adatbázis-modellezési formát hasz
 
 A nagy kapacitású (Citus) megvizsgálja a lekérdezéseket, hogy megtudja, melyik bérlői AZONOSÍTÓval jár, és megkeresi a megfelelő tábla szegmensét. A lekérdezést egyetlen, a szegmenst tartalmazó munkavégző csomópontra irányítja. Egy lekérdezés futtatása az azonos csomóponton elhelyezett összes releváns adathoz közös elhelyezésű.
 
-A következő ábra a több-bérlős adatmodell közös elhelyezését szemlélteti. Két táblát, fiókot és kampányt tartalmaz, amelyeket `account_id`mindegyik terjeszt. Az árnyékolt mezők szegmenseket jelölnek. A zöld szegmensek tárolása egy munkavégző csomóponton történik, és a kék szegmensek egy másik munkavégző csomóponton vannak tárolva. Figyelje meg, hogy a fiókok és a kampányok közötti csatlakozási lekérdezés az összes szükséges adattal együttesen egy csomóponton található, ha mindkét tábla ugyanahhoz\_a fiók-azonosítóhoz van korlátozva.
+A következő ábra a több-bérlős adatmodell közös elhelyezését szemlélteti. Két táblát, fiókot és kampányt tartalmaz, amelyeket mindegyik terjeszt `account_id` . Az árnyékolt mezők szegmenseket jelölnek. A zöld szegmensek tárolása egy munkavégző csomóponton történik, és a kék szegmensek egy másik munkavégző csomóponton vannak tárolva. Figyelje meg, hogy a fiókok és a kampányok közötti csatlakozási lekérdezés az összes szükséges adattal együttesen egy csomóponton található, ha mindkét tábla ugyanahhoz a fiók-azonosítóhoz van korlátozva \_ .
 
 ![Több-bérlős közös elhelyezés](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Ha a kialakítást a saját sémájában szeretné alkalmazni, azonosítsa, hogy mi képezi a bérlőt az alkalmazásban. Gyakori példányok például a következők: vállalat, fiók, szervezet vagy ügyfél. Az oszlop neve a következőhöz hasonló `company_id` lesz `customer_id`: vagy. Vizsgálja meg az egyes lekérdezéseket, és kérdezzen rá, hogy működik-e, ha további WHERE záradékokkal szeretné korlátozni az összes olyan táblát, amely az azonos bérlői AZONOSÍTÓval rendelkező sorokra vonatkozik?
+Ha a kialakítást a saját sémájában szeretné alkalmazni, azonosítsa, hogy mi képezi a bérlőt az alkalmazásban. Gyakori példányok például a következők: vállalat, fiók, szervezet vagy ügyfél. Az oszlop neve a következőhöz hasonló lesz: `company_id` vagy `customer_id` . Vizsgálja meg az egyes lekérdezéseket, és kérdezzen rá, hogy működik-e, ha további WHERE záradékokkal szeretné korlátozni az összes olyan táblát, amely az azonos bérlői AZONOSÍTÓval rendelkező sorokra vonatkozik?
 A több-bérlős modellben lévő lekérdezések hatóköre egy bérlőre vonatkozik. Például az értékesítés vagy a leltár lekérdezése egy adott tárolón belül van hatókörben.
 
 #### <a name="best-practices"></a>Ajánlott eljárások
 
--   **Elosztott táblák particionálása közös bérlői\_azonosító oszlop szerint.** Például egy SaaS-alkalmazásban, ahol a bérlők a vállalatok, a\_bérlői azonosító valószínűleg a vállalat\_azonosítója lesz.
+-   **Elosztott táblák particionálása közös bérlői \_ azonosító oszlop szerint.** Például egy SaaS-alkalmazásban, ahol a bérlők a vállalatok, a bérlői \_ azonosító valószínűleg a vállalat \_ azonosítója lesz.
 -   **Kisméretű, több-bérlős táblák átalakítása táblázatokra.** Ha több bérlő is osztozik egy kis táblázatban, küldje el hivatkozási táblázatként.
--   **Korlátozza a bérlői\_azonosító alapján az összes alkalmazás lekérdezésének szűrését.** Minden lekérdezésnek egyszerre egy bérlő adatait kell kérnie.
+-   **Korlátozza a bérlői azonosító alapján az összes alkalmazás lekérdezésének szűrését \_ .** Minden lekérdezésnek egyszerre egy bérlő adatait kell kérnie.
 
 A [több-bérlős oktatóanyagban](./tutorial-design-database-hyperscale-multi-tenant.md) megtudhatja, hogyan építhet ki ilyen típusú alkalmazást.
 

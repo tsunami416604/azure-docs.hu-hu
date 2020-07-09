@@ -9,30 +9,28 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 78ed2d85729cce94e8dfa579545f558d2cfe4651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79502970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749614"
 ---
-# <a name="train-anomaly-detection-model"></a>Rendellenesség-észlelési modell betanítása
+# <a name="train-anomaly-detection-model-module"></a>A Train rendellenesség észlelési modell modulja
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Train rendellenesség-észlelési modell** modulja egy betanított anomália-észlelési modell létrehozásához.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) Train rendellenesség-észlelési modell modulja egy betanított anomália-észlelési modell létrehozásához.
 
-A modul a modell paramétereinek egy készletét adja meg a rendellenesség-észlelési modellhez és egy címkézetlen adatkészlethez. Egy betanított anomália-észlelési modellt ad vissza, amely a betanítási adatokhoz tartozó címkék készletével együtt.  
+A modul bemenetként egy anomália-észlelési modell és egy címkézetlen adatkészlet paramétereit adja meg. Egy betanított anomália-észlelési modellt ad vissza, amely a betanítási adatokhoz tartozó címkék készletével együtt.  
 
-A tervezőben elérhető anomália-észlelési algoritmusokkal kapcsolatos további információkért tekintse meg a következő témaköröket: 
-
-+ [PCA-alapú rendellenesség-észlelés](pca-based-anomaly-detection.md)  
+A tervezőben elérhető anomália-észlelési algoritmusokkal kapcsolatos további információkért lásd: [PCA-alapú anomáliák észlelése](pca-based-anomaly-detection.md).  
 
 ## <a name="how-to-configure-train-anomaly-detection-model"></a>A Train anomália észlelési modell konfigurálása 
 
 1.  Adja hozzá a **vonat anomália észlelési modell** modult a folyamathoz a tervezőben. Ez a modul az **anomáliák észlelése** kategóriában található.
 
-2. A anomáliák észlelésére tervezett modulok egyikének összekötése, például a [PCA-alapú anomáliák észlelése](pca-based-anomaly-detection.md)
+2. Csatlakoztasson egy olyan modult, amely anomáliák észlelésére szolgál (például [PEM-alapú anomáliák észlelése](pca-based-anomaly-detection.md)).
 
-    Más típusú modellek nem támogatottak; a folyamat futtatásakor a következő hibaüzenet jelenik meg: minden modellnek ugyanazzal a tanulói típussal kell rendelkeznie.  
+    Más típusú modellek nem támogatottak. A folyamat futtatásakor a következő hibaüzenet jelenik meg: "az összes modellnek ugyanazzal a tanulói típussal kell rendelkeznie."  
 
 3.  Konfigurálja az anomáliák észlelése modult a Label (címke) oszlop kiválasztásával, és az algoritmushoz tartozó egyéb paraméterek megadásával.  
 
@@ -46,9 +44,9 @@ A betanítás befejezése után:
 
 + A modell paramétereinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. 
 
-+ Az előrejelzések létrehozásához használja a [score modelt](score-model.md) új bemeneti adatokkal.
++ Az előrejelzések létrehozásához használja a [score Model](score-model.md) modult az új bemeneti adatokkal.
 
-+ A betanított modell pillanatképének mentéséhez válassza ki a modult, majd kattintson az **adatkészlet regisztrálása** ikonra a jobb oldali panel **outputs + naplók** lapján.   
++ A betanított modell pillanatképének mentéséhez válassza ki a modult. Ezután válassza az **adatkészlet regisztrálása** ikont a jobb oldali panel **outputs + naplók** lapján.   
 
  
 ## <a name="next-steps"></a>További lépések

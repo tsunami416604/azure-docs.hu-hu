@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437017"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka számítási feladatok migrálása az Azure HDInsight 4,0
@@ -54,7 +54,7 @@ A frissítések teljes listáját a [Apache Kafka 2,0 kibocsátási megjegyzése
 
 ## <a name="kafka-client-compatibility"></a>Kafka-ügyfél kompatibilitása
 
-Az új Kafka-közvetítők támogatják a régebbi ügyfeleket. A [KIP-35 – a protokoll verziójának lekérése](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) bevezetett egy mechanizmust a Kafka-közvetítő és a KIP-97 funkciójának dinamikus meghatározásához [: a továbbfejlesztett KAFKA-ügyfél RPC-kompatibilitási szabályzata](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) új kompatibilitási szabályzatot és garanciákat vezetett be a Java-ügyfél számára. Korábban egy Kafka-ügyfélnek ugyanazzal a verzióval vagy újabb verzióval kellett kommunikálnia. Mostantól a Java-ügyfelek és más, a KIP-35-et támogató ügyfelek újabb `librdkafka` verziói visszatérhetnek a régebbi típusú kérelmekhez, vagy elhelyezhetik a megfelelő hibákat, ha a funkció nem érhető el.
+Az új Kafka-közvetítők támogatják a régebbi ügyfeleket. A [KIP-35 – a protokoll verziójának lekérése](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) bevezetett egy mechanizmust a Kafka-közvetítő és a KIP-97 funkciójának dinamikus meghatározásához [: a továbbfejlesztett KAFKA-ügyfél RPC-kompatibilitási szabályzata](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) új kompatibilitási szabályzatot és garanciákat vezetett be a Java-ügyfél számára. Korábban egy Kafka-ügyfélnek ugyanazzal a verzióval vagy újabb verzióval kellett kommunikálnia. Mostantól a Java-ügyfelek és más, a KIP-35-et támogató ügyfelek újabb verziói visszatérhetnek a `librdkafka` régebbi típusú kérelmekhez, vagy elhelyezhetik a megfelelő hibákat, ha a funkció nem érhető el.
 
 ![A Kafka-ügyfél kompatibilitásának frissítése](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 

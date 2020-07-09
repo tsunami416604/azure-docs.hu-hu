@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4af70a4e2a698bd280c8c41018bc5aaa1bfa27f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512549"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a Azure Portal használatával
 
@@ -32,7 +32,7 @@ Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meg
 - [A Soft-delete használata a PowerShell-](../../key-vault/general/soft-delete-powershell.md)lel.
 - [A Soft delete használata a parancssori](../../key-vault/general/soft-delete-cli.md)felülettel.
 
-Az Azure Storage-titkosítás csak 2048 bites RSA-és RSA-HSM-kulcsokat támogat. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 
@@ -101,5 +101,5 @@ Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból tit
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

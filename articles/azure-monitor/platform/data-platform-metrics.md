@@ -10,10 +10,9 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83799967"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
@@ -114,7 +113,7 @@ Az Azure-ban a legtöbb erőforrás esetében a metrikák 93 napig tárolódnak.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor adatplatformról](data-platform.md).
 - Tudnivalók a [Azure monitor naplózási adatainak](data-platform-logs.md)használatáról.

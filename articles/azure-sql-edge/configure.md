@@ -1,62 +1,61 @@
 ---
 title: Az Azure SQL Edge konfigurálása (előzetes verzió)
-description: Tudnivalók az Azure SQL Edge konfigurálásáról (előzetes verzió)
+description: Az Azure SQL Edge (előzetes verzió) konfigurálásának ismertetése.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: dc2b76a31982a3f72da02348c1a4796212887cb7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636240"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
 
 Az Azure SQL Edge a következő két lehetőség egyikének használatával támogatja a konfigurálást:
 
-- Környezeti változók használata.
-- Az MSSQL. conf fájl használata a/var/opt/MSSQL mappába helyezve.
+- Környezeti változók
+- A/var/opt/MSSQL mappába helyezett MSSQL. conf fájl
 
 > [!NOTE]
 > A környezeti változók beállítása felülbírálja az MSSQL. conf fájlban megadott beállításokat.
 
-## <a name="configure-using-environment-variables"></a>Konfigurálás környezeti változók használatával
+## <a name="configure-by-using-environment-variables"></a>Konfigurálás környezeti változók használatával
 
-Az Azure SQL Edge számos különböző környezeti változót tesz elérhetővé, amelyek segítségével konfigurálhatja az SQL Edge-tárolót. Ezek a környezeti változók a SQL Server on Linux számára elérhető környezeti változók részhalmazai. SQL Server on Linux környezeti változókról további információért lásd: [környezeti változók](/sql/linux/sql-server-linux-configure-environment-variables/).
+Az Azure SQL Edge számos különböző környezeti változót tesz elérhetővé, amelyek segítségével konfigurálhatja az SQL Edge-tárolót. Ezek a környezeti változók a SQL Server on Linux számára rendelkezésre álló részhalmazok. SQL Server on Linux környezeti változókról további információért lásd: [környezeti változók](/sql/linux/sql-server-linux-configure-environment-variables/).
 
-Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változókat. Ha meg van adva, a rendszer figyelmen kívül hagyja ezeket a környezeti változókat a tároló inicializálásakor.
+Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változót. Ha meg van adva, a rendszer a tároló inicializálása során figyelmen kívül hagyja ezt a környezeti változót.
 
 | Környezeti változó | Description |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az "1" érték például engedélyezve van, és a "0" le van tiltva. |
+| **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az **1** érték például engedélyezve van, és a **0** le van tiltva. |
 
 > [!IMPORTANT]
-> Az SQL Edge *MSSQL_PID* környezeti változója csak a **prémium** és a **fejlesztői** értéket fogadja el érvényes értékként. Az Azure SQL Edge nem támogatja az inicializálást termékkulcs használatával.
+> Az SQL Edge **MSSQL_PID** környezeti változója csak a **prémium** és a **fejlesztői** értéket fogadja el érvényes értékként. Az Azure SQL Edge nem támogatja az inicializálást termékkulcs használatával.
 
 > [!NOTE]
-> Az Azure SQL Edge végfelhasználói licencszerződésének letöltéséhez tekintse át a [végfelhasználói](https://go.microsoft.com/fwlink/?linkid=2128283)licencszerződést.
+> Töltse le az Azure SQL Edge-hez készült [Microsoft szoftverlicenc-feltételeit](https://go.microsoft.com/fwlink/?linkid=2128283) .
 
-### <a name="specifying-the-environment-variables"></a>A környezeti változók meghatározása
+### <a name="specify-the-environment-variables"></a>Környezeti változók meghatározása
 
-Az SQL Edge környezeti változói az Azure SQL Edge a [Azure Portal](deploy-portal.md)használatával történő telepítésekor adhatók meg. Ez a modul központi telepítésének "környezeti változók" szakaszában vagy a tároló létrehozása lehetőség részeként vehető fel az alább leírtak szerint.
+Az SQL Edge környezeti változóinak megadása, amikor a [Azure Portalon](deploy-portal.md)keresztül telepíti a szolgáltatást. A modul központi telepítésének **környezeti változók** szakaszában vagy a **tároló létrehozása lehetőség**részeként is hozzáadhatja őket.
 
-*Beállítás környezeti változók használatával beállítások*
+Értékek hozzáadása **környezeti változókban**.
 
-![beállítás környezeti változók listája alapján](media/configure/set-environment-variables.png)
+![Beállítás környezeti változók listája alapján](media/configure/set-environment-variables.png)
 
-*Beállítás a tároló létrehozási beállításaival*
+Értékek hozzáadása a **tároló létrehozási beállításaiban**.
 
-![beállítás a tároló létrehozási beállításaival](media/configure/set-environment-variables-using-create-options.png)
+![Beállítás a tároló létrehozása lehetőség használatával](media/configure/set-environment-variables-using-create-options.png)
 
-## <a name="configure-using-mssqlconf-file"></a>Konfigurálás az MSSQL. conf fájllal
+## <a name="configure-by-using-an-mssqlconf-file"></a>Konfigurálás az MSSQL. conf fájl használatával
 
-Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot](/sql/linux/sql-server-linux-configure-mssql-conf/) , például a SQL Server on Linuxt, mivel az MSSQL. conf fájlt manuálisan kell konfigurálni, és az SQL Edge-modul/var/opt/MSSQL/mappájához rendelt állandó tárolóeszközre kell helyezni. Ha az Azure Marketplace-en helyezi üzembe az SQL Edge-t, ez a leképezés a tároló létrehozása lehetőség * * csatlakoztatások lehetőségével van megadva.
+Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot](/sql/linux/sql-server-linux-configure-mssql-conf/) , mint például a SQL Server on Linux. Manuálisan kell konfigurálnia az MSSQL. conf fájlt, és az SQL Edge-modul/var/opt/MSSQL/mappájára leképezett állandó tárolóban kell elhelyeznie. Ha az SQL Edge-t az Azure Marketplace-ről telepíti, ez a leképezés a **tároló létrehozási beállításai**között a **csatlakoztatások** lehetőséggel van megadva.
 
 ```json
     {
@@ -75,14 +74,14 @@ A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 
 |Beállítás|Description|
 |:---|:---|
-|**Felhasználói visszajelzés** | Adja meg, hogy SQL Server küld-e visszajelzést a Microsoftnak. |
-|**Database Mail profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
+|**Felhasználói visszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
+|**Adatbázisbeli levelezési profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
 |**Magas rendelkezésre állás** | Rendelkezésre állási csoportok engedélyezése. |
-|**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. Az SQL Edge esetében nem támogatottak az elosztott tranzakciókkal kapcsolatos további konfigurációs beállítások is. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc) |
-|**MLServices végfelhasználói licencszerződései** | Az R-és Python-LICENCSZERZŐDÉSek elfogadása Machine Learning Services csomagokhoz. Csak SQL Server 2019-es verzióra vonatkozik.|
+|**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**MLServices végfelhasználói licencszerződései** | Az R-és Python-LICENCSZERZŐDÉSek elfogadása Azure Machine Learning csomagokhoz. Csak SQL Server 2019-es verzióra vonatkozik.|
 |**outboundnetworkaccess** |Engedélyezze a kimenő hálózati hozzáférést [Machine learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R-, Python-és Java-bővítményekhez.|
 
-Az alábbi táblázat az SQL Edge-hez használható MSSQL. conf fájlt mutatja be. Az MSSQL. conf fájl formátumával kapcsolatos további információkért lásd az [MSSQL. conf formátumot](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+Az alábbi minta MSSQL. conf fájl az SQL Edge esetében működik. Az MSSQL. conf fájl formátumával kapcsolatos további információkért lásd az [MSSQL. conf formátumot](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]
@@ -114,7 +113,7 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>További lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
-- [Teljes körű IoT-megoldás létrehozása az SQL Edge használatával](tutorial-deploy-azure-resources.md)
+- [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

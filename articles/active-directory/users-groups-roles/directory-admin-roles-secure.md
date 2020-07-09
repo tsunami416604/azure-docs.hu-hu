@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.author: curtand
 ms.date: 04/30/2020
-ms.topic: article
+ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759030"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807859"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -90,8 +90,8 @@ Azure AD Privileged Identity Management bekapcsolását követően tekintse meg 
 
 * Globális rendszergazda
 * Kiemelt szerepkörű rendszergazda
-* Exchange Online-rendszergazda
-* SharePoint Online-rendszergazda
+* Exchange-rendszergazda
+* SharePoint-rendszergazda
 
 Ha nem rendelkezik Azure AD Privileged Identity Management a szervezetében, használhatja a [POWERSHELL API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)-t. Kezdje a globális rendszergazdai szerepkörrel, mert a globális rendszergazda ugyanazokkal az engedélyekkel rendelkezik az összes olyan felhőalapú szolgáltatáshoz, amelyhez a szervezet előfizetett. Ezek az engedélyek a hozzárendelésük helyétől függetlenül megadhatók: a Microsoft 365 felügyeleti központban, a Azure Portalban vagy a Microsoft PowerShellhez készült Azure AD-modulban.
 
@@ -114,7 +114,7 @@ A sürgősségi hozzáférési fiókok segítenek a rendszerjogosultságú hozz�
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A többtényezős hitelesítés bekapcsolása és az összes többi magas jogosultsági szintű, egyetlen felhasználótól eltérő, nem összevont rendszergazdai fiók regisztrálása
 
-Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
+Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange-rendszergazda és SharePoint-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. fázis: a gyakran használt támadások enyhítése
 
@@ -321,7 +321,7 @@ Az Azure AD rendszergazdai szerepköreivel felügyelheti, felügyelheti és figy
 Az Azure log-integráció lehetővé teszi, hogy az Azure-erőforrásokból származó nyers naplókat integrálja a szervezet meglévő biztonsági információi és eseménykezelő (SIEM) rendszereibe. Az [Azure log-integráció](../../security/fundamentals/azure-log-integration-overview.md) Windows-eseményeket gyűjt a Windows Eseménynapló-naplókból és az Azure-erőforrásokból a következő helyekről:
 
 * Azure-tevékenység naplói
-* Riasztások Azure Security Center
+* Azure Security Center-riasztások
 * Azure-erőforrás-naplók
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépések a más felhőalapú alkalmazásokhoz való hozzáférést kezelő szervezetek számára az Azure AD-n keresztül

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74327399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086092"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream) példa a Apache Kafka on HDInsight
 
@@ -42,7 +42,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    A Azure Resource Manager sablon a következő helyen **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**található:.
+    A Azure Resource Manager sablon a következő helyen található: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
 
     > [!WARNING]  
     > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. A sablon egy három feldolgozó csomópontot tartalmazó Kafka-fürtöt hoz létre.
@@ -76,7 +76,7 @@ Az erőforrások létrehozása után megjelenik egy összefoglaló lap.
 
 ## <a name="use-the-notebooks"></a>Jegyzetfüzetek használata
 
-A dokumentumban ismertetett példa kódja a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
+A dokumentumban ismertetett példa kódja a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) .
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 

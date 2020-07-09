@@ -7,10 +7,9 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660750"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
@@ -23,7 +22,7 @@ A [Network Performance monitor](network-performance-monitor.md) Azure ExpressRou
 
 ![ExpressRoute-figyelő](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
-## <a name="configuration"></a>Configuration 
+## <a name="configuration"></a>Konfiguráció 
 A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás**lehetőséget.
 
 ### <a name="configure-network-security-group-rules"></a>A hálózati biztonsági csoport szabályainak konfigurálása 
@@ -32,7 +31,7 @@ Az Azure-ban a Network Performance Monitor-on keresztül történő figyelésre 
 További információ a NSG: [hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
-> A lépés folytatása előtt telepítse a helyszíni kiszolgáló ügynököt és az Azure Server Agent ügynököt, majd futtassa a EnableRules. ps1 PowerShell-szkriptet. 
+> A lépés folytatása előtt telepítse a helyszíni kiszolgáló ügynököt és az Azure Server Agent ügynököt, és futtassa a EnableRules.ps1 PowerShell-parancsfájlt. 
 
  
 ### <a name="discover-expressroute-peering-connections"></a>ExpressRoute-társítási kapcsolatok felderítése 
@@ -109,7 +108,7 @@ Network Performance Monitor segítséget nyújt több áramköri kapcsolati prob
 
 Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **LogAnalytics**-on keresztül. A **NPM diagnosztika** lapon az összes aktivált diagnosztikai üzenet leírását láthatja.
 
-| Értesítési kód (naplók) | Leírás |
+| Értesítési kód (naplók) | Description |
 | --- | --- |
 | 5501 | A ExpressRoute áramkör másodlagos kapcsolata nem haladhat át |
 | 5502 | A ExpressRoute áramkör elsődleges kapcsolata nem haladhat át |

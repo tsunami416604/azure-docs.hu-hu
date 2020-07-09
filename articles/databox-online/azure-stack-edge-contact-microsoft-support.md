@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 291dbdd874e3d657ff171d7e08ea6a1ee7e5999f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339909"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge-hez és Azure Data Box Gateway
 
@@ -57,7 +56,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
         ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Kattintson a **Létrehozás** gombra. 
+4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Válassza a **Létrehozás** lehetőséget. 
 
     ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 

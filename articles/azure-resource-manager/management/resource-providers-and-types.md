@@ -4,11 +4,10 @@ description: A Resource Managert, a sémákat és az elérhető API-verziókat t
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702771"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-beli erőforrás-szolgáltatók és -típusok
 
@@ -44,7 +43,7 @@ Az összes erőforrás-szolgáltató megjelenítéséhez és az előfizetés reg
 
     ![erőforrás-szolgáltatók megjelenítése](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie a `/register/action` művelet végrehajtásához az erőforrás-szolgáltatón. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció**lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint**számára.
+6. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie a művelet végrehajtásához `/register/action` az erőforrás-szolgáltatón. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció**lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint**számára.
 
     Nem törölheti az erőforrás-szolgáltató regisztrációját, ha továbbra is az adott erőforrás-szolgáltatótól származó erőforrástípusok vannak az előfizetésben.
 
@@ -94,7 +93,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie a `/register/action` művelet végrehajtásához az erőforrás-szolgáltatón. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
+Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie a művelet végrehajtásához `/register/action` az erőforrás-szolgáltatón. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -199,7 +198,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie a `/register/action` művelet végrehajtásához az erőforrás-szolgáltatón. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
+Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. Alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van. Előfordulhat azonban, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie a művelet végrehajtásához `/register/action` az erőforrás-szolgáltatón. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch

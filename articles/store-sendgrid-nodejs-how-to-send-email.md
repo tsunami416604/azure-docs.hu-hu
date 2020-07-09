@@ -1,6 +1,6 @@
 ---
-title: A SendGrid e-mail szolgáltatás használata (node. js) | Microsoft Docs
-description: Ismerje meg, hogyan küldhet e-mailt az Azure SendGrid e-mail szolgáltatásával. A Node. js API használatával írt példák.
+title: A SendGrid e-mail szolgáltatás használata (Node.js) | Microsoft Docs
+description: Ismerje meg, hogyan küldhet e-mailt az Azure SendGrid e-mail szolgáltatásával. A Node.js API használatával írt példák.
 services: ''
 documentationcenter: nodejs
 author: erikre
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60931704"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>E-mailek küldése a SendGrid használatával a Node. js-ből
+# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>E-mailek küldése a SendGrid használatával Node.js
 
-Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure SendGrid e-mail szolgáltatásával. A mintákat a Node. js API-val kell írni. A tárgyalt forgatókönyvek közé tartozik például az **e-mailek**létrehozása, az **e-mail küldése**, a **mellékletek hozzáadása**, **a szűrők használata és a** **Tulajdonságok frissítése**. További információt a SendGrid és az e-mailek küldéséről a [következő lépések](#next-steps) című szakaszban talál.
+Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure SendGrid e-mail szolgáltatásával. A minták a Node.js API használatával íródnak. A tárgyalt forgatókönyvek közé tartozik például az **e-mailek**létrehozása, az **e-mail küldése**, a **mellékletek hozzáadása**, **a szűrők használata és a** **Tulajdonságok frissítése**. További információt a SendGrid és az e-mailek küldéséről a [következő lépések](#next-steps) című szakaszban talál.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Mi a SendGrid E-mail szolgáltatás?
 
@@ -36,15 +36,15 @@ A SendGrid egy [felhőalapú e-mail-szolgáltatás] , amely megbízható [tranza
 * Ügyfelekkel kapcsolatos kérdések továbbítása
 * Az alkalmazás e-mail-értesítései
 
-További információ: [https://sendgrid.com](https://sendgrid.com).
+További információ: [https://sendgrid.com](https://sendgrid.com) .
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid-fiók létrehozása
 
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-nodejs-module"></a>Hivatkozás a SendGrid Node. js-modulra
+## <a name="reference-the-sendgrid-nodejs-module"></a>Hivatkozás a SendGrid Node.js modulra
 
-A Node. js-hez készült SendGrid modul a következő paranccsal telepíthető a Node Package Manager (NPM) használatával:
+A Node.js SendGrid-modulja a következő paranccsal telepíthető a Node Package Manager (NPM) használatával:
 
 ```bash
 npm install sendgrid
@@ -211,7 +211,7 @@ A SendGrid olyan webes API-kat kínál, amelyek segítségével további SendGri
 
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
-* SendGrid Node. js-modul adattár: [SendGrid-NodeJS][sendgrid-nodejs]
+* SendGrid Node.js modul adattára: [SendGrid-NodeJS][sendgrid-nodejs]
 * SendGrid API-dokumentáció:<https://sendgrid.com/docs>
 * SendGrid Speciális ajánlat az Azure-ügyfelek számára:[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 

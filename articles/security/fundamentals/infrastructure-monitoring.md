@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727152"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure-infrastruktúra figyelése   
@@ -29,7 +28,7 @@ Az Azure évente megtekinti és frissíti a hardver-, szoftver-és hálózati es
 
 Az Azure-alapú szolgáltatásokhoz szükséges alapkonfigurációkat az Azure biztonsági és megfelelőségi csapata, valamint a szolgáltatási csapatok vizsgálják felül. A Service Team-áttekintés a termelési szolgáltatás üzembe helyezése előtt megjelenő tesztelés részét képezi.
 
-## <a name="vulnerability-management"></a>Sebezhetőségek kezelése
+## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 A biztonsági frissítés kezelése segít a rendszerek ismert biztonsági rések elleni védelmében. Az Azure integrált központi telepítési rendszereket használ a Microsoft szoftverhez készült biztonsági frissítések terjesztésének és telepítésének kezeléséhez. Az Azure képes a Microsoft Security Response Center (MSRC) erőforrásaira is felhívni. Az MSRC azonosítja, figyeli, válaszol, és a biztonsági incidenseket és a Felhőbeli biztonsági réseket az év minden napján megoldotta.
 
 ## <a name="vulnerability-scanning"></a>Sebezhetőségi vizsgálat

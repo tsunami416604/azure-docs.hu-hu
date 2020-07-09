@@ -4,19 +4,18 @@ description: Leírja, hogyan használják a jegyzékfájlokat Service Fabric alk
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349962"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric alkalmazás-és szolgáltatás-jegyzékfájlok
-Ez a cikk azt ismerteti, hogyan történik a Service Fabric-alkalmazások és-szolgáltatások meghatározása és verziószámozása a ApplicationManifest. XML és a ServiceManifest. xml fájl használatával.  Részletesebb példákért tekintse meg az [alkalmazás-és szolgáltatás-jegyzékfájl példáit](service-fabric-manifest-examples.md).  A jegyzékfájlok XML-sémája dokumentálva van a [ServiceFabricServiceModel. XSD-séma dokumentációjában](service-fabric-service-model-schema.md).
+Ez a cikk azt ismerteti, hogyan történik a Service Fabric alkalmazások és szolgáltatások meghatározása és verziószámozása a ApplicationManifest.xml és ServiceManifest.xml fájlok használatával.  Részletesebb példákért tekintse meg az [alkalmazás-és szolgáltatás-jegyzékfájl példáit](service-fabric-manifest-examples.md).  A jegyzékfájlok XML-sémája dokumentálva van a [ServiceFabricServiceModel. XSD-séma dokumentációjában](service-fabric-service-model-schema.md).
 
 > [!WARNING]
 > A jegyzékfájl XML-fájl sémája kikényszeríti a gyermek elemek helyes sorrendjét.  Részleges megkerülő megoldásként nyissa meg a "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" kifejezést a Visual Studióban a Service Fabric-jegyzékek bármelyikének létrehozásakor vagy módosításakor. Ez lehetővé teszi, hogy megtekintse a gyermek elemek sorrendjét, és az ész értelmet adja.
 
-## <a name="describe-a-service-in-servicemanifestxml"></a>Szolgáltatás leírása a ServiceManifest. xml fájlban
+## <a name="describe-a-service-in-servicemanifestxml"></a>Szolgáltatás leírása ServiceManifest.xml
 A szolgáltatás jegyzékfájlja deklaratívul határozza meg a szolgáltatás típusát és verzióját. Meghatározza a szolgáltatás metaadatait, például a szolgáltatástípus, az állapot tulajdonságai, a terheléselosztás metrikáit, a szolgáltatás bináris fájljait és a konfigurációs fájlokat.  Ezt egy másik módszer írja le, amely leírja, hogy milyen kód-, konfigurációs és adatcsomagokat állít össze egy vagy több szolgáltatás típusának támogatásához. A szolgáltatási jegyzékfájl több kód-, konfigurációs és adatcsomagot is tartalmazhat, amelyek egymástól függetlenül telepíthetők. Itt látható a [szavazási minta alkalmazás](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) ASP.net Core webes előtér-szolgáltatásának szolgáltatási jegyzékfájlja (és íme néhány [részletesebb példa](service-fabric-manifest-examples.md)):
 
 ```xml
@@ -65,16 +64,16 @@ A **BelépésiPont** által megadott végrehajtható fájl általában a hosszan
 
 A **SetupEntryPoint** használatára jellemző forgatókönyvek, amikor végrehajtható fájlt futtat a szolgáltatás elindítása előtt, vagy emelt szintű jogosultságokkal hajt végre műveletet. Például:
 
-* A szolgáltatás végrehajtható fájlja által igényelt környezeti változók beállítása és inicializálása. Ez nem korlátozódik kizárólag az Service Fabric programozási modelleken keresztül írt végrehajtható fájlokra. Például a NPM. exe fájlhoz a Node. js-alkalmazások üzembe helyezéséhez konfigurált környezeti változók szükségesek.
+* A szolgáltatás végrehajtható fájlja által igényelt környezeti változók beállítása és inicializálása. Ez nem korlátozódik kizárólag az Service Fabric programozási modelleken keresztül írt végrehajtható fájlokra. npm.exe például szüksége van egy node.js alkalmazás üzembe helyezéséhez konfigurált környezeti változóra.
 * Hozzáférés-vezérlés beállítása biztonsági tanúsítványok telepítésével.
 
 A SetupEntryPoint konfigurálásával kapcsolatos további információkért lásd: [a szolgáltatás telepítési belépési pontja házirend konfigurálása](service-fabric-application-runas-security.md)
 
-A **EnvironmentVariables** (az előző példában nem megadott) tartalmazza a programkódhoz beállított környezeti változók listáját. A környezeti változók felülbírálása a alkalmazásban `ApplicationManifest.xml` a különböző szolgáltatási példányok eltérő értékeinek megadásával lehetséges. 
+A **EnvironmentVariables** (az előző példában nem megadott) tartalmazza a programkódhoz beállított környezeti változók listáját. A környezeti változók felülbírálása a alkalmazásban a `ApplicationManifest.xml` különböző szolgáltatási példányok eltérő értékeinek megadásával lehetséges. 
 
 A **datapackage szakaszából** (nem az előző példában) deklarálja a **Name** attribútum által elnevezett mappát, amely tetszőleges statikus adatmennyiséget tartalmaz, amelyet a folyamat futási időben felhasználhat.
 
-A **ConfigPackage** deklarál egy **Name** attribútummal elnevezett mappát, amely egy *Settings. XML* fájlt tartalmaz. A Settings (beállítások) fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben olvas vissza. Ha a frissítés során csak a **ConfigPackage** **verziója** módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. Íme egy példa a *Settings. XML* fájlra:
+A **ConfigPackage** deklarál egy *Settings.xml* nevű fájlt tartalmazó mappát a **Name attribútum nevével** . A Settings (beállítások) fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben olvas vissza. Ha a frissítés során csak a **ConfigPackage** **verziója** módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. Példa *Settings.xml* fájlra:
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -101,7 +100,7 @@ For more information about other features supported by service manifests, refer 
 *TODO: Configuration overrides
 -->
 
-## <a name="describe-an-application-in-applicationmanifestxml"></a>Alkalmazás leírása a ApplicationManifest. xml fájlban
+## <a name="describe-an-application-in-applicationmanifestxml"></a>Alkalmazás leírása ApplicationManifest.xml
 Az alkalmazás jegyzékfájlja deklaratívan leírja az alkalmazás típusát és verzióját. Meghatározza a szolgáltatás-összeállítási metaadatokat, például a stabil neveket, a particionálási sémát, a példányok darabszámát/replikálási tényezőjét, a biztonsági/elkülönítési házirendet, az elhelyezési korlátozásokat, a konfiguráció felülbírálásait és az összetevők A terheléselosztási tartományok, amelyekben az alkalmazás elhelyezve van, szintén le vannak írva.
 
 Így az alkalmazás-jegyzékfájl az alkalmazás szintjén leírja az elemeket, és egy vagy több szolgáltatási jegyzékfájlra hivatkozik az alkalmazás típusának összeállításához. Itt látható a [szavazási minta alkalmazáshoz](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) tartozó alkalmazási jegyzékfájl (és íme néhány [részletesebb példa](service-fabric-manifest-examples.md)):
@@ -151,7 +150,7 @@ A szolgáltatási jegyzékfájlokhoz hasonlóan a **verziók** attribútumai nem
 
 A **Paraméterek** az alkalmazás jegyzékfájljában használt paramétereket határozzák meg. Ezeknek a paramétereknek az értékei az alkalmazás példányainak létrehozásakor és az alkalmazás vagy szolgáltatás konfigurációs beállításainak felülbírálásával állíthatók be.  Az alapértelmezett paraméterérték akkor használatos, ha az érték nem módosul az alkalmazás létrehozásakor. Ha szeretné megtudni, hogyan kezelheti az egyes környezetek különböző alkalmazás-és szolgáltatási paramétereit, tekintse meg az [alkalmazások paramétereinek kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)című témakört.
 
-A **ServiceManifestImport** az alkalmazás típusát alkotó szolgáltatás-jegyzékfájlokra mutató hivatkozásokat tartalmaz. Az alkalmazás jegyzékfájlja több Service manifest-importálást is tartalmazhat, amelyek egymástól függetlenül telepíthetők. Az importált szolgáltatás-jegyzékfájlok határozzák meg, hogy milyen típusú szolgáltatások érvényesek ezen az alkalmazás-típuson belül. A ServiceManifestImport belül felülbírálja a Settings. XML és a környezeti változók konfigurációs értékeit a ServiceManifest. xml fájlban. A végponti kötésre, a biztonságra és a hozzáférésre vonatkozó **szabályzatok** , valamint a csomagok megosztása az importált szolgáltatási jegyzékeken állítható be.  További információ: [biztonsági szabályzatok konfigurálása az alkalmazáshoz](service-fabric-application-runas-security.md).
+A **ServiceManifestImport** az alkalmazás típusát alkotó szolgáltatás-jegyzékfájlokra mutató hivatkozásokat tartalmaz. Az alkalmazás jegyzékfájlja több Service manifest-importálást is tartalmazhat, amelyek egymástól függetlenül telepíthetők. Az importált szolgáltatás-jegyzékfájlok határozzák meg, hogy milyen típusú szolgáltatások érvényesek ezen az alkalmazás-típuson belül. A ServiceManifestImport belül felülbírálja Settings.xml és környezeti változók konfigurációs értékeit ServiceManifest.xml fájlokban. A végponti kötésre, a biztonságra és a hozzáférésre vonatkozó **szabályzatok** , valamint a csomagok megosztása az importált szolgáltatási jegyzékeken állítható be.  További információ: [biztonsági szabályzatok konfigurálása az alkalmazáshoz](service-fabric-application-runas-security.md).
 
 A **DefaultServices** deklarálja azokat a szolgáltatási példányokat, amelyek automatikusan létrejönnek, amikor egy alkalmazás ezen az alkalmazási típuson jön létre. Az alapértelmezett szolgáltatások csak kényelmi jellegűek, és minden tekintetben ugyanúgy viselkednek, mint a normál szolgáltatások. Ezek az alkalmazás-példány minden más szolgáltatásával együtt frissülnek, és szintén eltávolíthatók. Az alkalmazás jegyzékfájlja több alapértelmezett szolgáltatást is tartalmazhat.
 

@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445525"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows rendszerű virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Windows-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure Marketplace számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb operációsrendszer-és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) használatával.
 
-Ez a cikk az 2/21/2019-es, a [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.3.0 és a [Packer](https://www.packer.io/docs/install/index.html) Version 1.3.4 használatával tesztelte utoljára.
+Ez a cikk az 2/21/2019-es, a [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.3.0 és a [Packer](https://www.packer.io/docs/install) Version 1.3.4 használatával tesztelte utoljára.
 
 > [!NOTE]
 > Az Azure-ban már van egy szolgáltatás, egy Azure Image Builder (előzetes verzió), amellyel meghatározhatja és létrehozhatja saját egyéni rendszerképeit. Az Azure rendszerkép-szerkesztő a Csomagolón alapul, így a meglévő csomagoló rendszerhéj-szkripteket is használhatja. Az Azure rendszerkép-szerkesztő megkezdéséhez tekintse meg [a Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel](image-builder.md)című témakört.
@@ -64,7 +64,7 @@ Get-AzSubscription
 ## <a name="define-packer-template"></a>Csomagoló sablon definiálása
 Lemezképek létrehozásához JSON-fájlként hozzon létre egy sablont. A sablonban meg kell határoznia a tényleges felépítési folyamatot végző építőket és kiépítési folyamatokat. A csomagoló rendelkezik egy [Azure-előkészítővel](https://www.packer.io/docs/builders/azure.html) , amely lehetővé teszi az Azure-erőforrások, például az előző lépésben létrehozott egyszerű szolgáltatás hitelesítő adatainak definiálását.
 
-Hozzon létre egy *Windows. JSON* nevű fájlt, és illessze be az alábbi tartalmat. Adja meg a saját értékeit a következőkhöz:
+Hozzon létre egy *windows.js* nevű fájlt, és illessze be a következő tartalmat. Adja meg a saját értékeit a következőkhöz:
 
 | Paraméter                           | A beszerzés helye |
 |-------------------------------------|----------------------------------------------------|
@@ -122,7 +122,7 @@ Ez a sablon egy Windows Server 2016 rendszerű virtuális gépet hoz létre, tel
 
 
 ## <a name="build-packer-image"></a>Csomagoló rendszerkép létrehozása
-Ha még nincs telepítve a csomagoló a helyi gépen, [kövesse a csomagoló telepítési utasításait](https://www.packer.io/docs/install/index.html).
+Ha még nincs telepítve a csomagoló a helyi gépen, [kövesse a csomagoló telepítési utasításait](https://learn.hashicorp.com/packer/getting-started/install).
 
 A rendszerkép létrehozásához nyisson meg egy parancssort, és adja meg a csomagoló sablon fájlját a következőképpen:
 

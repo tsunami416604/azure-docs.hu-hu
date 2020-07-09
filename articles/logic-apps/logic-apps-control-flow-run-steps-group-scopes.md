@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831585"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
@@ -61,7 +60,7 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
 
    1. Ha még nem rendelkezik Bing Maps-kapcsolódással, a rendszer megkéri, hogy hozzon létre egy-egy kapcsolódást.
 
-      | Beállítás | Érték | Leírás |
+      | Beállítás | Érték | Description |
       | ------- | ----- | ----------- |
       | **Kapcsolat neve** | BingMapsConnection | Adja meg a kapcsolat nevét. | 
       | **API-kulcs** | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. | 
@@ -73,16 +72,16 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
 
       További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx).
 
-      | Beállítás | Érték | Leírás |
+      | Beállítás | Érték | Description |
       | ------- | ----- | ----------- |
       | **1. útvonalpont** | <*Start*> | Adja meg az útvonal forrását. | 
       | **2. útvonalpont** | <*végén*> | Adja meg az útvonal célhelyét. | 
-      | **Elkerülés** | Nincs | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Elkerülés** | None | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
-      | **Tranzit dátuma és időpontja** | Nincs | Csak az átviteli módra vonatkozik. | 
-      | **Tranzit dátum-típus típusa** | Nincs | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátuma és időpontja** | None | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátum-típus típusa** | None | Csak az átviteli módra vonatkozik. | 
       ||||  
 
 1. [Adjon hozzá egy feltételt](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy az aktuális utazási idő meghaladja-e a megadott időt. 

@@ -11,10 +11,9 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84113691"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
@@ -46,11 +45,11 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 | Tulajdonság | Leírás |
 -------- | ------------- | 
 | Name | Az Azure Integration Runtime neve. |  
-| Állam | Az Azure Integration Runtime állapota. | 
+| Állapot | Az Azure Integration Runtime állapota. | 
 | Hely | Az Azure Integration Runtime helye. Az Azure Integration Runtime helyével kapcsolatos részletekért lásd: [az Integration Runtime bemutatása](concepts-integration-runtime.md). |
 | DataFactoryName | Annak az adatelőállítónak a neve, amelyhez az Azure Integration Runtime tartozik. | 
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
-| Leírás | Az Integration Runtime leírása.  |
+| Description | Az Integration Runtime leírása.  |
 
 ### <a name="status"></a>Állapot
 Az alábbi táblázat az Azure Integration Runtime lehetséges állapotait tartalmazza:
@@ -94,7 +93,7 @@ A Azure Portalban felülbírálhatja a számított alapértelmezett értéket. V
 ### <a name="status-per-node"></a>Állapot (/csomópont)
 A következő táblázat a saját üzemeltetésű Integration Runtime csomópont lehetséges állapotait tartalmazza:
 
-| Állapot | Leírás |
+| Állapot | Description |
 | ------ | ------------------ | 
 | Online | A csomópont a Data Factory szolgáltatáshoz van csatlakoztatva. |
 | Offline | A csomópont offline állapotban van. |
@@ -159,13 +158,13 @@ Az Azure-SSIS Integration Runtime egy teljes körűen felügyelt Azure-beli virt
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Tulajdonság/állapot | Leírás |
+| Tulajdonság/állapot | Description |
 | --------------- | ----------- |
 | CreateTime | Az Azure-SSIS integrációs modul létrehozásának UTC-ideje. |
 | Csomópontok | Az Azure-SSIS integrációs modul lefoglalt/elérhető csomópontjai, a csomópont-specifikus állapotokkal (kezdő/elérhető/újrahasznosítási/nem elérhető) és a végrehajtható hibákkal. |
 | OtherErrors | Az Azure-SSIS integrációs modulján nem Node-specifikus működés közbeni hibák. |
 | LastOperation | Az Azure-SSIS integrációs modul utolsó indítási/leállítási műveletének eredménye, ha a művelet sikertelen. |
-| Állam | Az Azure-SSIS integrációs modul általános állapota (kezdeti/indítás/elindítva/leállítva). |
+| Állapot | Az Azure-SSIS integrációs modul általános állapota (kezdeti/indítás/elindítva/leállítva). |
 | Hely | Az Azure-SSIS Integration Runtime helye. |
 | NodeSize | Az Azure-SSIS Integration Runtime egyes csomópontjainak mérete. |
 | NodeCount | Az Azure-SSIS Integration Runtime csomópontjainak száma. |
@@ -181,7 +180,7 @@ Az Azure-SSIS Integration Runtime egy teljes körűen felügyelt Azure-beli virt
 | ResourceGroupName | Az Azure-erőforráscsoport neve, amelyben az adatgyár és az Azure-SSIS Integration Runtime létrejött. |
 | DataFactoryName | Az Azure-beli adatgyár neve. |
 | Name | Az Azure-SSIS Integration Runtime neve. |
-| Leírás | Az Azure SSIS Integration Runtime leírása. |
+| Description | Az Azure SSIS Integration Runtime leírása. |
 
   
 ### <a name="status-per-node"></a>Állapot (/csomópont)
@@ -195,7 +194,7 @@ Az Azure-SSIS Integration Runtime egy teljes körűen felügyelt Azure-beli virt
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Állapot (teljes Azure-SSIS Integration Runtime)
 
-| Általános állapot | Leírás | 
+| Általános állapot | Description | 
 | -------------- | ----------- | 
 | Kezdeti | Az Azure-SSIS Integration Runtime csomópontjai nem lettek kiosztva/előkészített állapotban. | 
 | Indítás | Megkezdődött az Azure-SSIS integrációs modul csomópontjainak kiosztása/előkészítése és számlázása. |

@@ -12,10 +12,9 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
 ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045038"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Elastic Database feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával
@@ -389,7 +388,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 A következő tárolt eljárások a [feladatok adatbázisban](job-automation-overview.md#job-database)találhatók.
 
-|Tárolt eljárás  |Leírás  |
+|Tárolt eljárás  |Description  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Új feladatok hozzáadására szolgál.    |
 |[sp_update_job](#sp_update_job)    |      Egy meglévő feladatot frissít.   |
@@ -1204,7 +1203,7 @@ GO
 
 A [feladatok adatbázisban](job-automation-overview.md#job-database)a következő nézetek érhetők el.
 
-|Nézet  |Leírás  |
+|Nézet  |Description  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  A feladatok végrehajtási előzményeit jeleníti meg.      |
 |[feladatok](#jobs-view)     |   Megjeleníti az összes feladatot.      |
@@ -1220,7 +1219,7 @@ A [feladatok adatbázisban](job-automation-overview.md#job-database)a következ�
 
 A feladatok végrehajtási előzményeit jeleníti meg.
 
-|Oszlop neve | Adattípus | Leírás |
+|Oszlop neve | Adattípus | Description |
 |---------|---------|---------|
 |**job_execution_id** | uniqueidentifier | A feladatok végrehajtásának egy példányának egyedi azonosítója.
 |**job_name** | nvarchar (128) | A feladattípus neve.
@@ -1247,7 +1246,7 @@ A feladatok végrehajtási előzményeit jeleníti meg.
 
 Megjeleníti az összes feladatot.
 
-|Oszlop neve | Adattípus |Leírás|
+|Oszlop neve | Adattípus |Description|
 |------|------|-------|
 |**job_name** | nvarchar (128) | A feladattípus neve.|
 |**job_id**| uniqueidentifier |A feladatokhoz tartozó egyedi azonosító.|
@@ -1264,7 +1263,7 @@ Megjeleníti az összes feladatot.
 
 Megjeleníti az összes feladattípust.
 
-|Oszlop neve|Adattípus|Leírás|
+|Oszlop neve|Adattípus|Description|
 |------|------|-------|
 |**job_name**|nvarchar (128)|A feladattípus neve.|
 |**job_id**|uniqueidentifier|A feladatokhoz tartozó egyedi azonosító.|
@@ -1276,7 +1275,7 @@ Megjeleníti az összes feladattípust.
 
 Megjeleníti az egyes feladatok aktuális verziójának összes lépését.
 
-|Oszlop neve|Adattípus|Leírás|
+|Oszlop neve|Adattípus|Description|
 |------|------|-------|
 |**job_name**|nvarchar (128)|A feladattípus neve.|
 |**job_id**|uniqueidentifier|A feladatokhoz tartozó egyedi azonosító.|
@@ -1316,7 +1315,7 @@ Megjeleníti az egyes feladatok összes verziójának összes lépését. A sém
 
 Felsorolja az összes célcsoportot.
 
-|Oszlop neve|Adattípus|Leírás|
+|Oszlop neve|Adattípus|Description|
 |-----|-----|-----|
 |**target_group_name**|nvarchar (128)|A célcsoport neve, adatbázisok gyűjteménye.
 |**target_group_id**|uniqueidentifier|A célcsoport egyedi azonosítója.
@@ -1327,7 +1326,7 @@ Felsorolja az összes célcsoportot.
 
 Megjeleníti az összes célcsoport összes tagját.
 
-|Oszlop neve|Adattípus|Leírás|
+|Oszlop neve|Adattípus|Description|
 |-----|-----|-----|
 |**target_group_name**|nvarchar (128|A célcsoport neve, adatbázisok gyűjteménye. |
 |**target_group_id**|uniqueidentifier|A célcsoport egyedi azonosítója.|
@@ -1342,7 +1341,7 @@ Megjeleníti az összes célcsoport összes tagját.
 |**elastic_pool_name**|nvarchar (128)|A célcsoportban található rugalmas készlet neve. Csak akkor van megadva, ha target_type "SqlElasticPool".|
 |**shard_map_name**|nvarchar (128)|A célcsoportban lévő szegmens térképek neve. Csak akkor van megadva, ha target_type "SqlShardMap".|
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 - ![Témakör hivatkozás ikon](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Témakör hivatkozásának ikonja") [Transact-SQL szintaxisának konvenciói](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

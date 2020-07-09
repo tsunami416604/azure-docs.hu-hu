@@ -1,21 +1,17 @@
 ---
 title: Esemény kézbesítése felügyelt szolgáltatás identitásával
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolgáltatás identitása egy Azure Event Grid-témakörben. Használatával továbbíthatja az eseményeket a támogatott célhelyekre.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: spelluru
-ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.date: 07/07/2020
+ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167995"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119191"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Esemény kézbesítése felügyelt identitással
-Ez a cikk azt ismerteti, hogyan engedélyezhető a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) Azure Event Grid témakörhöz vagy tartományhoz. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
+Ez a cikk azt ismerteti, hogyan engedélyezhető a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) az Azure Event Grid-témakörökhöz vagy-tartományokhoz. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
 
 A cikk részletesen ismerteti a következő lépéseket:
 1. Hozzon létre egy témakört vagy tartományt egy rendszer által hozzárendelt identitással, vagy frissítsen egy meglévő témakört vagy tartományt az identitás engedélyezéséhez. 
@@ -44,13 +40,18 @@ Hasonlóképpen a `az eventgrid domain create` paranccsal is létrehozható egy 
 Az előző szakaszban megtanulta, hogyan engedélyezheti a rendszer által felügyelt identitásokat egy témakör vagy tartomány létrehozásakor. Ebből a szakaszból megtudhatja, hogyan engedélyezheti a rendszer által felügyelt identitásokat egy meglévő témakörhöz vagy tartományhoz. 
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
+A következő eljárás bemutatja, hogyan engedélyezheti a rendszer által felügyelt identitást a témakörben. A tartomány identitásának engedélyezésének lépései hasonlóak. 
+
 1. Lépjen a [Azure Portal](https://portal.azure.com).
-2. Keresse meg az **Event Grid-témaköröket** a keresősáv alatt.
+2. Keresse meg az **Event Grid-témaköröket** a felül található keresési sávon.
 3. Válassza ki azt a **témakört** , amelyhez engedélyezni kívánja a felügyelt identitást. 
 4. Váltson az **Identity (identitás** ) lapra. 
-5. Kapcsolja be a kapcsolót az identitás engedélyezéséhez. 
+5. Kapcsolja **be a** kapcsolót az identitás engedélyezéséhez. 
+1. A beállítás mentéséhez válassza az eszköztár **Mentés** elemét. 
 
-A hasonló lépéseket követve engedélyezheti az identitást egy Event Grid tartományhoz.
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="A témakör Identity lapja"::: 
+
+Az Event Grid-tartomány identitásának engedélyezéséhez hasonló lépések használhatók.
 
 ### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 Használja a parancsot a következőre `az eventgrid topic update` `--identity` : beállítással `systemassigned` engedélyezheti a rendszerhez rendelt identitást egy meglévő témakörhöz. Ha le szeretné tiltani az identitást, állítsa be `noidentity` értékként. 
@@ -65,7 +66,7 @@ Egy meglévő tartomány frissítésére szolgáló parancs hasonló ( `az event
 ## <a name="supported-destinations-and-rbac-roles"></a>Támogatott célhelyek és RBAC szerepkörök
 Miután engedélyezte az identitást az Event Grid-témakörhöz vagy-tartományhoz, az Azure automatikusan létrehoz egy identitást Azure Active Directoryban. Adja hozzá ezt az identitást a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörökhöz, hogy a témakör vagy tartomány továbbítsa az eseményeket a támogatott célhelyekre. Például adja hozzá az identitást az **azure Event Hubs Adatfeladói** szerepkörhöz egy Azure Event Hubs-névtérhez, hogy az Event Grid-témakör továbbítsa az eseményeket az adott névtérben található Event hubokba. 
 
-Jelenleg Azure Event Grid támogatja a rendszerhez rendelt felügyelt identitással konfigurált témaköröket vagy tartományokat az események továbbításához a következő célhelyekre. Ez a tábla olyan szerepköröket is biztosít, amelyeknek az identitásnak kell lennie, hogy a témakör továbbítsa az eseményeket.
+Az Azure Event Grid jelenleg a rendszerhez rendelt felügyelt identitással konfigurált témaköröket és tartományokat támogatja az események továbbításához a következő célhelyekre. Ez a tábla olyan szerepköröket is biztosít, amelyeknek az identitásnak kell lennie, hogy a témakör továbbítsa az eseményeket.
 
 | Cél | RBAC-szerepkör | 
 | ----------- | --------- | 
@@ -93,7 +94,7 @@ Az alábbi példa egy **msitesttopic** nevű Event Grid-témakörhöz tartozó f
 A lépések hasonlóak az identitásnak a táblázatban említett más szerepkörökhöz való hozzáadásához. 
 
 ### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-Az ebben a szakaszban szereplő példa bemutatja, hogyan adhat identitást egy RBAC-szerepkörhöz az Azure CLI használatával. A mintául szolgáló parancsok az Event Grid-témakörökre vonatkoznak. A Event Grid tartományok parancsai hasonlóak. 
+Az ebben a szakaszban szereplő példa bemutatja, hogyan adhat identitást egy RBAC-szerepkörhöz az Azure CLI használatával. A mintául szolgáló parancsok az Event Grid-témakörökre vonatkoznak. Az Event Grid-tartományok parancsai hasonlóak. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>A témakör rendszeridentitásának elsődleges AZONOSÍTÓjának beolvasása 
 Először szerezze be a témakör rendszerfelügyelt identitásának elsődleges AZONOSÍTÓját, és rendelje hozzá az identitást a megfelelő szerepkörökhöz.

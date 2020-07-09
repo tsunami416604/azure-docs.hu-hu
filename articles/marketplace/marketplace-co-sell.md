@@ -1,18 +1,18 @@
 ---
 title: Partneri szerepvállalás – Microsoft kereskedelmi piactér
 description: A Microsoft partner Center közös értékesítési programja a partnereknek segítséget nyújt a jelentős ügyfélkör eléréséhez és új értékesítések létrehozásához.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/19/2020
-ms.openlocfilehash: 86ff08ed01ea09497c14e91b4c891988569e2df1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: abd5308d965ba35f63fcef1e286a6989be4a0453
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657936"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119462"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -30,7 +30,7 @@ A Microsoft három partner-értékesítési indítványt kínál:
 
 ![Diagram, amely bemutatja, hogyan történik a közös értékesítés a Microsoft által felügyelt ügyfeleken megosztva, elfogadva és megnyert értékesítési érdeklődők esetén.](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Microsofttal való értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).
 * További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./partner-center-portal/commercial-marketplace-co-sell.md).

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233164"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Üzembe helyezés Azure Functions a DevOps Starter használatával
@@ -34,9 +34,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 >* A CI-folyamat vizsgálata
 >* A CD-folyamat vizsgálata
 >* Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
->* Az erőforrások eltávolítása
+>* Erőforrások felszabadítása
 
-A függvények támogatott futtatókörnyezetei jelenleg a **.net** és a **Node. js**. Használjuk. Az oktatóanyaghoz tartozó NET Runtime a Azure Functions üzembe helyezéséhez. 
+A függvények támogatott futtatókörnyezetei jelenleg a **.net** és a **Node.js**. Használjuk. Az oktatóanyaghoz tartozó NET Runtime a Azure Functions üzembe helyezéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -149,7 +149,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
      Néhány pillanat elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Starter irányítópultján vagy a böngészőben az Azure DevOps-szervezettel.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -164,5 +164,5 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 

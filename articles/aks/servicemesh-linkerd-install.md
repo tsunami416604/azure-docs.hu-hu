@@ -7,10 +7,9 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593723"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>A Linkerd telepítése az Azure Kubernetes szolgáltatásban (ak)
@@ -20,9 +19,9 @@ A [Linkerd][linkerd-github] egy nyílt forráskódú Service Mesh-és [CNCF-inku
 Ez a cikk bemutatja, hogyan telepítheti a Linkerd. A Linkerd `linkerd` -ügyfél bináris fájlja telepítve van az ügyfélszámítógépre, és a Linkerd-összetevők a Kubernetes-fürtön vannak telepítve az AK-ban.
 
 > [!NOTE]
-> Ezek az utasítások a Linkerd `stable-2.6.0`-verzióra hivatkoznak.
+> Ezek az utasítások a Linkerd-verzióra hivatkoznak `stable-2.6.0` .
 >
-> A Linkerd `stable-2.6.x` Kubernetes-verziókkal `1.13+`is futtatható. További stabil és peremhálózati Linkerd-verziók a [GitHub-Linkerd kiadásokban][linkerd-github-releases]találhatók.
+> A Linkerd `stable-2.6.x` Kubernetes-verziókkal is futtatható `1.13+` . További stabil és peremhálózati Linkerd-verziók a [GitHub-Linkerd kiadásokban][linkerd-github-releases]találhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -35,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt `1.13` (Kubernetes és újabb, RBAC engedélyezve), és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
+A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
 Az összes Linkerd-hüvelyt Linux-csomópontokon kell futtatni – ez a beállítás az alapértelmezett telepítési módszer az alábbiakban részletezett módon, és nem igényel további konfigurálást.
 
@@ -117,19 +116,19 @@ linkerd-version
 Status check results are √
 ```
 
-Most itt az ideje, hogy telepítse a Linkerd-összetevőket. A és `linkerd` `kubectl` a bináris fájlok használatával telepítse a Linkerd összetevőket az AK-fürtbe. A `linkerd` rendszer automatikusan létrehozza a névteret, és az összetevőket a rendszer ebbe a névtérbe telepíti.
+Most itt az ideje, hogy telepítse a Linkerd-összetevőket. A `linkerd` és a `kubectl` bináris fájlok használatával telepítse a Linkerd összetevőket az AK-fürtbe. A `linkerd` rendszer automatikusan létrehozza a névteret, és az összetevőket a rendszer ebbe a névtérbe telepíti.
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-A Linkerd számos objektumot telepít. A lista a fenti `linkerd install` parancs kimenetében jelenik meg. A Linkerd-összetevők üzembe helyezéséhez a fürt környezetéből függően 1 percet kell elvégeznie.
+A Linkerd számos objektumot telepít. A lista a fenti parancs kimenetében jelenik meg `linkerd install` . A Linkerd-összetevők üzembe helyezéséhez a fürt környezetéből függően 1 percet kell elvégeznie.
 
 Ezen a ponton üzembe helyezte a Linkerd-t az AK-fürtön. A Linkerd sikeres üzembe helyezésének biztosítása érdekében térjünk át a következő szakaszra a [Linkerd telepítésének ellenőrzéséhez](#validate-the-linkerd-installation).
 
 ## <a name="validate-the-linkerd-installation"></a>A Linkerd telepítésének ellenőrzése
 
-Győződjön meg arról, hogy az erőforrások létrehozása sikeresen megtörtént. A [kubectl Get SVC][kubectl-get] és a [kubectl Get Pod][kubectl-get] parancsok használatával kérdezheti `linkerd` le a névteret, ahol a Linkerd-összetevőket `linkerd install` a parancs telepítette:
+Győződjön meg arról, hogy az erőforrások létrehozása sikeresen megtörtént. A [kubectl Get SVC][kubectl-get] és a [kubectl Get Pod][kubectl-get] parancsok használatával kérdezheti le a `linkerd` névteret, ahol a Linkerd-összetevőket a parancs telepítette `linkerd install` :
 
 ```console
 kubectl get svc --namespace linkerd --output wide

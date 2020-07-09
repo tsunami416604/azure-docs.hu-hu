@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 001706d63b22899016cc2c45e384597db3d6747f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71336824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358828"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már létezik bérlő
 A Azure AD Connect használatának első lépései a legtöbb esetben feltételezik, hogy új Azure AD-bérlőt használ, és nincsenek felhasználók vagy más objektumok. Ha azonban egy Azure AD-Bérlővel lett elindítva, feltöltve a felhasználókkal és más objektumokkal, és most a kapcsolódást szeretné használni, akkor ez a témakör Önnek szól.
@@ -34,7 +34,7 @@ A helyszínen és a felhőben is kezelheti a felhasználókat. Ennek a konfigur�
 Ha olyan Azure AD-felhasználók felügyeletét kezdte meg, amelyek a helyszíni AD-ben is szerepelnek, és később a kapcsolódást szeretnék használni, akkor további szempontokat is figyelembe kell vennie.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Szinkronizálás meglévő felhasználókkal az Azure AD-ben
-A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName**, **ProxyAddresses**és **sourceAnchor**/**immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek**nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
+A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName**, **ProxyAddresses**és **sourceAnchor** / **immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek**nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
 
 A egyezés csak a kapcsolatból érkező új objektumok esetében lesz kiértékelve. Ha módosít egy meglévő objektumot, hogy az a fenti attribútumok bármelyikének megfelelő legyen, akkor egy hibaüzenet jelenik meg.
 

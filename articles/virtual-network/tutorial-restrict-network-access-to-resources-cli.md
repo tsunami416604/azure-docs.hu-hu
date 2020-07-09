@@ -11,18 +11,17 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d08dd2705c69f3fa8f8e0830e487833f7cf96f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689333"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása az Azure CLI használatával
 
@@ -35,7 +34,7 @@ Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózat
 * Erőforráshoz való alhálózati hozzáférés ellenőrzése
 * Erőforráshoz való alhálózati és internetes hozzáférés letiltásának ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -160,7 +159,7 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy Azure Storage-fiókot az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Cserélje `<replace-with-your-unique-storage-account-name>` le az karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ.
+Hozzon létre egy Azure Storage-fiókot az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Cserélje le `<replace-with-your-unique-storage-account-name>` az karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -272,7 +271,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A létrehoz�
 
 ## <a name="confirm-access-to-storage-account"></a>Tárfiókhoz való hozzáférés ellenőrzése
 
-SSH-t a *myVmPrivate* virtuális gépre. Cserélje le * \<a publicIpAddress>t* a *myVmPrivate* virtuális gép nyilvános IP-címére.
+SSH-t a *myVmPrivate* virtuális gépre. Cserélje le a helyére *\<publicIpAddress>* a *myVmPrivate* virtuális gép nyilvános IP-címét.
 
 ```bash 
 ssh <publicIpAddress>
@@ -284,7 +283,7 @@ Mappa létrehozása csatlakoztatási ponthoz:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Csatlakoztassa az Azure-fájlmegosztást a létrehozott címtárhoz. A következő parancs futtatása előtt cserélje le `<storage-account-name>` a parancsot a fiók nevére `<storage-account-key>` és a megjelenő kulccsal a [Storage-fiók létrehozása](#create-a-storage-account)lehetőségre.
+Csatlakoztassa az Azure-fájlmegosztást a létrehozott címtárhoz. A következő parancs futtatása előtt cserélje le a parancsot `<storage-account-name>` a fiók nevére és a megjelenő `<storage-account-key>` kulccsal a [Storage-fiók létrehozása](#create-a-storage-account)lehetőségre.
 
 ```bash
 sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -304,7 +303,7 @@ Lépjen ki az SSH-munkamenetből a *myVmPrivate* virtuális gépre.
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Tárfiókhoz való hozzáférés letiltásának ellenőrzése
 
-A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVmPublic* virtuális géppel. Cserélje `<publicIpAddress>` le a t a *myVmPublic* virtuális gép nyilvános IP-címére: 
+A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVmPublic* virtuális géppel. Cserélje le a `<publicIpAddress>` t a *myVmPublic* virtuális gép nyilvános IP-címére: 
 
 ```bash 
 ssh <publicIpAddress>
@@ -316,13 +315,13 @@ Könyvtár létrehozása csatlakoztatási ponthoz:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Kísérelje meg az Azure-fájlmegosztás csatlakoztatását a létrehozott könyvtárba. Ez a cikk azt feltételezi, hogy telepítette az Ubuntu legújabb verzióját. Ha az Ubuntu korábbi verzióit használja, tekintse [meg a Linux csatlakoztatása](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört, amely további utasításokat tartalmaz a fájlmegosztás csatlakoztatásával kapcsolatban. A következő parancs futtatása előtt cserélje le `<storage-account-name>` a parancsot a fiók nevére `<storage-account-key>` és a megjelenő kulcsra a [Storage-fiók létrehozása](#create-a-storage-account)területen:
+Kísérelje meg az Azure-fájlmegosztás csatlakoztatását a létrehozott könyvtárba. Ez a cikk azt feltételezi, hogy telepítette az Ubuntu legújabb verzióját. Ha az Ubuntu korábbi verzióit használja, tekintse [meg a Linux csatlakoztatása](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört, amely további utasításokat tartalmaz a fájlmegosztás csatlakoztatásával kapcsolatban. A következő parancs futtatása előtt cserélje le a parancsot `<storage-account-name>` a fiók nevére és a megjelenő `<storage-account-key>` kulcsra a [Storage-fiók létrehozása](#create-a-storage-account)területen:
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A hozzáférés megtagadva, és `mount error(13): Permission denied` hibaüzenet jelenik meg, mivel a *myVmPublic* virtuális gép a *nyilvános* alhálózaton belül van üzembe helyezve. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal, és a tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
+A hozzáférés megtagadva, és hibaüzenet jelenik meg `mount error(13): Permission denied` , mivel a *myVmPublic* virtuális gép a *nyilvános* alhálózaton belül van üzembe helyezve. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal, és a tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
 
 Lépjen ki az SSH-munkamenetből a *myVmPublic* virtuális gépre.
 
@@ -336,7 +335,7 @@ az storage share list \
 
 A hozzáférés megtagadva, és a *kérelem nem jogosult a művelet elvégzésére* , mert a számítógép nem a *MyVirtualNetwork* virtuális hálózat *privát* alhálózatán található.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az Group delete](/cli/azure) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 

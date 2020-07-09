@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja az SQL FQDN-
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 05/18/2020
+ms.topic: how-to
+ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610506"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall alkalmazás-szabályok konfigurálása SQL FQDN-sel
 
@@ -24,7 +24,7 @@ Az SQL FQDN használatával szűrheti a forgalmat:
 - A helyszínről az Azure SQL felügyelt példányaira vagy a virtuális hálózatok futó SQL-IaaS.
 - Az Azure SQL felügyelt példányain vagy a virtuális hálózatok futó SQL-IaaS.
 
-Az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) támogatott (1433-es port). Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](overview.md#network-traffic-filtering-rules)részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
+Az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) támogatott (1433-es port). Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](features.md#network-traffic-filtering-rules)részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
 Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, ezeket a portokat a tűzfal alkalmazási szabályaiban állíthatja be.
 
 ## <a name="configure-using-azure-cli"></a>Konfigurálás az Azure CLI használatával
@@ -63,4 +63,4 @@ Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, ezeket a port
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL proxy és az átirányítási módok megismeréséhez tekintse meg az [Azure SQL Database kapcsolódási architektúráját](../azure-sql/database/connectivity-architecture.md)ismertető témakört.
+Az SQL proxy és az átirányítási módok megismeréséhez tekintse meg [Azure SQL Database kapcsolati architektúrát](../azure-sql/database/connectivity-architecture.md).

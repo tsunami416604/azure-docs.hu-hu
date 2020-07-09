@@ -1,42 +1,67 @@
 ---
 title: Rendszertémakörök a Azure Event Grid
 description: A Azure Event Grid rendszertémaköreinek ismertetése.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393153"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119922"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Rendszertémakörök a Azure Event Grid
-A Azure Event Grid szolgáltatás rendszertémaköröket hoz létre, amikor létrehoz egy első esemény-előfizetést egy Azure-esemény forrásához. Jelenleg Event Grid nem hoz létre rendszertémaköröket a március, 15, 2020. előtt létrehozott témakör-forrásokhoz. Az ezen dátumon vagy azt követően létrehozott összes témakörhöz Event Grid automatikusan létrehozza a rendszertémaköröket. Ez a cikk a Azure Event Grid **rendszertémaköreit** ismerteti.
+A Event Grid rendszertémaköre egy vagy több olyan eseményt jelent, amelyet az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs tesznek közzé. Előfordulhat például, hogy egy rendszertémakör az **összes blob-eseményt** vagy csak a **blob által létrehozott** és a blob által **törölt** , **adott Storage-fiók**számára közzétett eseményeket jelöli. Ebben a példában, amikor egy blobot töltenek fel a Storage-fiókba, az Azure Storage szolgáltatás **létrehoz egy blobot létrehozott** eseményt a Event grid rendszer témakörében, amely ezután továbbítja az eseményt a témakör azon [előfizetőknek](event-handlers.md) , akik megkapják és feldolgozzák az eseményt. 
 
-> [!NOTE]
-> Ez a funkció jelenleg nincs engedélyezve Azure Government felhőben. 
+> [!NOTE] 
+> Csak az Azure-szolgáltatások tehetnek közzé eseményeket a rendszer témaköreiben. Ezért nem kap olyan végpontot vagy hozzáférési kulcsot, amelyet az egyéni témakörökhöz vagy tartományokhoz hasonló események közzétételére használhat.
 
-## <a name="overview"></a>Áttekintés
-Ha az első esemény-előfizetést egy Azure-eseményforrás, például az Azure Storage-fiókhoz hozza létre, az előfizetés létesítési folyamata egy további, **Microsoft. EventGrid/systemTopics**típusú erőforrást hoz létre. Ha az Azure-eseményforrás utolsó eseményének előfizetését törli, a rendszer automatikusan törli a rendszertémakört.
+## <a name="azure-services-that-support-system-topics"></a>Rendszertémaköröket támogató Azure-szolgáltatások
+Itt látható az Azure-szolgáltatások aktuális listája, amelyek támogatják a rendszertémakörök létrehozását.
 
-A rendszertémakör nem alkalmazható egyéni témakör-forgatókönyvekre, azaz Event Grid témakörökre és Event Grid tartományokra. 
+- [Azure App Configuration](event-schema-app-configuration.md)
+- [Azure App Service](event-schema-app-service.md)
+- [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Container Registry](event-schema-container-registry.md)
+- [Azure Event Hubs](event-schema-event-hubs.md)
+- [Azure IoT Hub](event-schema-iot-hub.md)
+- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure Maps](event-schema-azure-maps.md)
+- [Azure Media Services](event-schema-media-services.md)
+- [Azure-erőforráscsoportok](event-schema-resource-groups.md)
+- [Azure Service Bus](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure-előfizetések](event-schema-subscriptions.md)
 
-## <a name="location"></a>Hely
+## <a name="system-topics-as-azure-resources"></a>Rendszertémakörök Azure-erőforrásként
+A múltban a rendszertémakör implicit volt, és nem volt elérhető az egyszerűség kedvéért. A rendszertémakörök mostantól Azure-erőforrásokként jelennek meg, és az alábbi képességeket biztosítják:
+
+- [Rendszertémakörök megtekintése a Azure Portal](create-view-manage-system-topics.md#view-all-system-topics)
+- Resource Manager-sablonok exportálása a rendszertémakörökhöz és az esemény-előfizetésekhez a Azure Portalban
+- [Diagnosztikai naplók beállítása a rendszertémakörökhöz](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-system-topic)
+- Riasztások beállítása közzétételi és kézbesítési hibák esetén 
+
+## <a name="lifecycle-of-system-topics"></a>A rendszertémakörök életciklusa
+A rendszertémakört kétféleképpen hozhatja létre: 
+
+- Hozzon létre egy [esemény-előfizetést egy Azure-erőforráshoz kiterjesztési erőforrásként](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate), amely automatikusan létrehoz egy rendszertémakört a következő formátumban: `<Azure resource name>-<GUID>` . Az ily módon létrehozott rendszertémakör automatikusan törlődik, amikor a témakör utolsó esemény-előfizetését törli a rendszer. 
+- Hozzon létre egy rendszertémakört az Azure-erőforrásokhoz, majd hozzon létre egy esemény-előfizetést az adott rendszertémakörhöz. Ha ezt a módszert használja, megadhatja a rendszer témakör nevét. A legutóbbi esemény-előfizetés törlésekor a rendszer nem törli automatikusan a rendszertémakört. Manuálisan kell törölnie. 
+
+    A Azure Portal használatakor mindig ezt a módszert használja. Amikor [egy Azure-erőforrás **események** lapjával](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)hoz létre egy esemény-előfizetést, a rendszer először létrehozza a rendszertémakört, majd létrehozza a témakör előfizetését. Az [ **Event Grid rendszertémakörök** lapon](create-view-manage-system-topics.md#create-a-system-topic) explicit módon létrehozhat egy rendszertémakört, majd létrehoz egy előfizetést az adott témakörhöz. 
+
+A [CLI](create-view-manage-system-topics-cli.md), a [REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)vagy a [Azure Resource Manager sablon](create-view-manage-system-topics-arm.md)használatakor a fenti módszerek bármelyikét kiválaszthatja. Javasoljuk, hogy először hozzon létre egy rendszertémakört, majd hozzon létre egy előfizetést a témakörben, mivel ez a legújabb módszer a rendszertémakörök létrehozásához.
+
+A rendszertémakör létrehozása sikertelen lesz, ha úgy állította be az Azure-szabályzatokat, hogy az Event Grid szolgáltatás nem tudja létrehozni. Például rendelkezhet egy olyan házirenddel, amely csak bizonyos típusú erőforrások (például az Azure Storage, az Azure Event Hubs stb.) létrehozását engedélyezi az előfizetésben. 
+
+## <a name="location-and-resource-group-for-a-system-topic"></a>Rendszerbeli témakör helye és erőforráscsoport
 Egy adott régióban/helyen található Azure-beli eseményforrás esetén a rendszertémakör ugyanazon a helyen jön létre, mint az Azure-esemény forrása. Ha például egy Azure Blob Storage-hoz hoz létre egy Event-előfizetést az USA keleti régiójában, akkor a rendszer témakör az USA keleti régiójában jön létre. A globális Azure-események, például az Azure-előfizetések, az erőforráscsoportok vagy a Azure Maps esetében a Event Grid a **globális** helyen hozza létre a rendszer témakört. 
 
-## <a name="resource-group"></a>Erőforráscsoport 
 Általánosságban elmondható, hogy a rendszertémakör ugyanabban az erőforráscsoportban jön létre, amelyben az Azure-esemény forrása található. Az Azure-előfizetések hatókörében létrehozott esemény-előfizetések esetén a rendszertémakört az erőforráscsoport **alapértelmezett-EventGrid**alatt hozza létre a rendszer. Ha az erőforráscsoport nem létezik, Azure Event Grid létrehozza azt a rendszertémakör létrehozása előtt. 
 
-Amikor megpróbálja törölni az erőforráscsoportot a Storage-fiókkal, az érintett erőforrások listájában megjelenik a rendszer témakör.  
-
-![Erőforráscsoport törlése](./media/system-topics/delete-resource-group.png)
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
-- [Egyéni témakörök](custom-topics.md)
-- [Tartományok](event-domains.md)
+- [Rendszertémakörök létrehozása, megtekintése és kezelése Azure Portal használatával](create-view-manage-system-topics.md).
+- [Event Grid rendszertémakörök létrehozása, megtekintése és kezelése az Azure CLI használatával](create-view-manage-system-topics-cli.md)
+- [Event Grid rendszertémakörök létrehozása Azure Resource Manager sablonok használatával](create-view-manage-system-topics-arm.md)

@@ -13,10 +13,9 @@ ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75423003"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitás-adattárolás a Azure Active Directory európai ügyfelei számára
@@ -53,7 +52,7 @@ Az Azure AD DS ugyanott tárolja a felhasználói adatokat, ahol a felhasználó
 A Microsoft Exchange Server összevonási szolgáltatásával kapcsolatos további információkért tekintse meg az [összevonás: Exchange 2013 Súgó](https://docs.microsoft.com/exchange/federation-exchange-2013-help) cikkét.
 
 
-## <a name="other-considerations"></a>Egyéb szempontok
+## <a name="other-considerations"></a>További szempontok
 
 Az Azure AD-vel integrált szolgáltatások és alkalmazások hozzáférhetnek az azonosító adatokhoz. Értékelje ki az egyes szolgáltatásait és alkalmazásait annak meghatározásához, hogy az adott szolgáltatás és alkalmazás hogyan dolgozza fel az azonosító adatait, és hogy megfelelnek-e a vállalat adattárolási követelményeinek.
 

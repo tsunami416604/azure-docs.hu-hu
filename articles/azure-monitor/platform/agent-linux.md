@@ -7,10 +7,9 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
 ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637527"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux rendszerű számítógépek összekapcsolásának Azure Monitor
@@ -29,7 +28,7 @@ A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux 
 
 ## <a name="agent-install-package"></a>Ügynök telepítési csomagja
 
-A Linux Log Analytics-ügynöke több csomagból áll. A kiadási fájl a következő csomagokat tartalmazza, amelyek a rendszerhéj-csomagnak a `--extract` paraméterrel való futtatásával érhetők el:
+A Linux Log Analytics-ügynöke több csomagból áll. A kiadási fájl a következő csomagokat tartalmazza, amelyek a rendszerhéj-csomagnak a paraméterrel való futtatásával érhetők el `--extract` :
 
 **Csomag** | **Verzió** | **Leírás**
 ----------- | ----------- | --------------
@@ -45,11 +44,11 @@ Docker – cimprov | 1.0.0 | A következőhöz tartozó Docker-szolgáltató:. C
 
 A Linux-csomagok Log Analytics ügynökének telepítése után a rendszer a következő további rendszerszintű konfigurációs módosításokat alkalmazza. Ezek az összetevők el lesznek távolítva a omsagent-csomag eltávolításakor.
 
-* A (z) nevű `omsagent` nem Kiemelt felhasználó létrejött. A démon ezen a hitelesítő adatokon fut. 
-* A rendszer létrehoz egy sudo *-fájlt* a `/etc/sudoers.d/omsagent`alkalmazásban. Ez engedélyezi `omsagent` a syslog és a omsagent démonok újraindítását. Ha a sudo *include* utasítások nem támogatottak a sudo telepített verziójában, a rendszer ezeket a bejegyzéseket fogja `/etc/sudoers`írni a következőre:.
+* A (z) nevű nem Kiemelt felhasználó `omsagent` létrejött. A démon ezen a hitelesítő adatokon fut. 
+* A rendszer létrehoz egy sudo *-fájlt a* alkalmazásban `/etc/sudoers.d/omsagent` . Ez engedélyezi `omsagent` a syslog és a omsagent démonok újraindítását. Ha a sudo *include* utasítások nem támogatottak a sudo telepített verziójában, a rendszer ezeket a bejegyzéseket fogja írni a következőre: `/etc/sudoers` .
 * A syslog-konfiguráció úgy módosul, hogy az események egy részhalmazát továbbítsa az ügynöknek. További információ: a [syslog-adatok gyűjtésének konfigurálása](data-sources-syslog.md).
 
-A figyelt Linux rendszerű számítógépeken az ügynök szerepel a `omsagent`következőben:. `omsconfig`a Linux-alapú konfigurációs ügynök Log Analytics ügynöke, amely 5 percenként keresi az új portál oldal konfigurációját. Az új és frissített konfiguráció a (z) helyen `/etc/opt/microsoft/omsagent/conf/omsagent.conf`található ügynök konfigurációs fájljaira lesz alkalmazva.
+A figyelt Linux rendszerű számítógépeken az ügynök szerepel a következőben: `omsagent` . `omsconfig`a Linux-alapú konfigurációs ügynök Log Analytics ügynöke, amely 5 percenként keresi az új portál oldal konfigurációját. Az új és frissített konfiguráció a (z) helyen található ügynök konfigurációs fájljaira lesz alkalmazva `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
 
@@ -78,16 +77,16 @@ A Linux rendszerhez készült Log Analytics-ügynök egy önkicsomagoló és tel
 
 1. [Töltse le](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) és vigye át a megfelelő köteget (x64 vagy x86) a Linux rendszerű virtuális gépre vagy fizikai számítógépre, SCP/SFTP használatával.
 
-2. Telepítse a csomagot az `--install` argumentum használatával. Ha a telepítés során Log Analytics munkaterületre szeretne bejelentkezni `-w <WorkspaceID>` , `-s <workspaceKey>` adja meg a korábban átmásolt és paramétereket.
+2. Telepítse a csomagot az argumentum használatával `--install` . Ha a telepítés során Log Analytics munkaterületre szeretne bejelentkezni, adja meg a `-w <WorkspaceID>` `-s <workspaceKey>` korábban átmásolt és paramétereket.
 
     >[!NOTE]
-    >Az `--upgrade` argumentumot akkor kell használnia, ha a függő csomagok, például a omsconfig, az SCX vagy a régebbi verziói telepítve vannak, például ha már telepítve van a system Center Operations Manager-ügynök a Linux rendszerhez. 
+    >Az argumentumot akkor kell használnia `--upgrade` , ha a függő csomagok, például a omsconfig, az SCX vagy a régebbi verziói telepítve vannak, például ha már telepítve van a System Center Operations Manager-ügynök a Linux rendszerhez. 
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --install -w <workspace id> -s <shared key>
     ```
 
-3. Ha úgy szeretné konfigurálni a Linux-ügynököt, hogy Log Analytics átjárón keresztül telepítsen és kapcsolódjon egy Log Analytics-munkaterülethez, futtassa a következő parancsot a proxy, a munkaterület-azonosító és a munkaterület-kulcs paramétereinek megadásával. Ez a konfiguráció a parancssorban is megadható a `-p [protocol://][user:password@]proxyhost[:port]`következővel:. A *ProxyHost* tulajdonság a log Analytics átjárókiszolgáló teljes tartománynevét vagy IP-címét fogadja el.  
+3. Ha úgy szeretné konfigurálni a Linux-ügynököt, hogy Log Analytics átjárón keresztül telepítsen és kapcsolódjon egy Log Analytics-munkaterülethez, futtassa a következő parancsot a proxy, a munkaterület-azonosító és a munkaterület-kulcs paramétereinek megadásával. Ez a konfiguráció a parancssorban is megadható a következővel: `-p [protocol://][user:password@]proxyhost[:port]` . A *ProxyHost* tulajdonság a log Analytics átjárókiszolgáló teljes tartománynevét vagy IP-címét fogadja el.  
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -121,7 +120,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 
 A következő lépésekkel konfigurálhatja az ügynököt az Azure-ban Log Analyticshoz, és Azure Government a felhőt a Linux rendszerű számítógépek burkoló parancsfájljának használatával, amelyek közvetlenül vagy egy proxykiszolgálón keresztül kommunikálhatnak a GitHubon üzemeltetett ügynök letöltésével és az ügynök telepítésével.  
 
-Ha a Linux rendszerű számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics, akkor ez a konfiguráció a parancssorban is megadható `-p [protocol://][user:password@]proxyhost[:port]`. A *Protocol* tulajdonság `http` fogadja `https`vagy a, és a *ProxyHost* tulajdonság fogadja a proxykiszolgáló teljes tartománynevét vagy IP-címét. 
+Ha a Linux rendszerű számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics, akkor ez a konfiguráció a parancssorban is megadható `-p [protocol://][user:password@]proxyhost[:port]` . A *Protocol* tulajdonság fogadja `http` vagy a `https` , és a *ProxyHost* tulajdonság fogadja a proxykiszolgáló teljes tartománynevét vagy IP-címét. 
 
 Például:`https://proxy01.contoso.com:30443`
 
@@ -158,7 +157,7 @@ Ha mindkét esetben hitelesítésre van szükség, meg kell adnia a felhasznál�
 
 ## <a name="upgrade-from-a-previous-release"></a>Frissítés korábbi kiadásról
 
-A korábbi verzióról a 1.0.0-47 verziótól kezdődően minden kiadásban támogatott a frissítés. Végezze el a telepítést `--upgrade` a paraméterrel az ügynök összes összetevőjének a legújabb verzióra való frissítéséhez.
+A korábbi verzióról a 1.0.0-47 verziótól kezdődően minden kiadásban támogatott a frissítés. Végezze el a telepítést a `--upgrade` paraméterrel az ügynök összes összetevőjének a legújabb verzióra való frissítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

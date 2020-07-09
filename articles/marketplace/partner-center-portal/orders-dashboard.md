@@ -1,18 +1,16 @@
 ---
 title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzésében
 description: Megtudhatja, hogyan érheti el a Piactéri ajánlatokra vonatkozó analitikus jelentéseket grafikus és letölthető formátumban.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747798"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118358"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -123,7 +121,7 @@ Több szűrőt is kiválaszthat, hogy a diagramot a megtekinteni kívánt felté
 
      ![A partneri központ elemzési sorrendje egyetlen, a szűrőre alkalmazott értékkel](./media/filters-applied-single.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

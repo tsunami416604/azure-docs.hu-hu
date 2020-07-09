@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109387"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>A hibrid identitás életciklusának tervezése
@@ -61,7 +61,7 @@ A követelmények meghatározása során győződjön meg arról, hogy legalább
 ## <a name="synchronization-management"></a>Szinkronizálás kezelése
 Az Identity Manager egyik célja, hogy képes legyen az összes identitás-szolgáltatót bevezetni, és szinkronizálni őket. Megtartja az adatok szinkronizálását egy mérvadó főazonosító-szolgáltató alapján. Hibrid identitás esetén a szinkronizált felügyeleti modellel minden felhasználó és eszköz identitását felügyelheti egy helyszíni kiszolgálón, és szinkronizálhatja a fiókokat, és opcionálisan a jelszavakat a felhőbe. A felhasználó ugyanazt a jelszót adja meg a helyszínen, mint a felhőben, és bejelentkezéskor a jelszót az Identity megoldás ellenőrzi. Ez a modell egy címtár-szinkronizáló eszközt használ.
 
-![címtár-](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) szinkronizálás a megfelelő kialakításhoz a hibrid identitás megoldásának szinkronizálása érdekében győződjön meg arról, hogy a következő kérdések válaszolnak:
+![címtár-szinkronizálás a ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) megfelelő kialakításhoz a hibrid identitás megoldásának szinkronizálása érdekében győződjön meg arról, hogy a következő kérdések válaszolnak:
 *    Milyen szinkronizálási megoldások érhetők el a hibrid identitás megoldáshoz?
 *    Milyen funkciók érhetők el az egyszeri bejelentkezéshez?
 *    Mik a B2B és B2C közötti identitás-összevonás lehetőségei?

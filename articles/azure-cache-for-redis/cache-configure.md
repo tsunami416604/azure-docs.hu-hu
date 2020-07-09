@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010307"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
@@ -45,20 +44,20 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
     * [Frissítések ütemezése](#schedule-updates)
     * [Georeplikáció](#geo-replication)
     * [Virtual Network](#virtual-network)
-    * [Tűzfal](#firewall)
+    * [Firewall](#firewall)
     * [Tulajdonságok](#properties)
     * [Zárak](#locks)
     * [Automation-szkript](#automation-script)
 * Felügyelet
     * [Adatimportálás](#importexport)
-    * [Adatok exportálása](#importexport)
+    * [Adatexportálás](#importexport)
     * [Újraindítás](#reboot)
 * [Figyelés](#monitoring)
     * [Redis metrikák](#redis-metrics)
     * [Riasztási szabályok](#alert-rules)
     * [Diagnosztika](#diagnostics)
 * Támogatási & hibaelhárítási beállítások
-    * [Erőforrás állapota](#resource-health)
+    * [Resource health](#resource-health)
     * [Új támogatási kérelem](#new-support-request)
 
 
@@ -97,7 +96,7 @@ A **Settings (beállítások** ) szakasz a gyorsítótár következő beállít�
 * [Frissítések ütemezése](#schedule-updates)
 * [Georeplikáció](#geo-replication)
 * [Virtual Network](#virtual-network)
-* [Tűzfal](#firewall)
+* [Firewall](#firewall)
 * [Tulajdonságok](#properties)
 * [Zárak](#locks)
 * [Automation-szkript](#automation-script)
@@ -139,13 +138,13 @@ A **Maxmemory házirend** konfigurálja a gyorsítótár kiürítési házirendj
 * `volatile-ttl`
 * `noeviction`
 
-A `maxmemory` szabályzatokkal kapcsolatos további információkért lásd: [kizárási szabályzatok](https://redis.io/topics/lru-cache#eviction-policies).
+A szabályzatokkal kapcsolatos további információkért `maxmemory` lásd: [kizárási szabályzatok](https://redis.io/topics/lru-cache#eviction-policies).
 
 A **maxmemory fenntartott** beállítás azt a memóriát állítja be MB-ban, amely nem gyorsítótárbeli műveletekhez van fenntartva, például feladatátvétel közbeni replikáláshoz. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson a terheléstől függően. Ezt az értéket magasabb értékre kell állítani a nagy írási feladatok esetében. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
 
 A **maxfragmentationmemory fenntartott** beállítás azt a memóriát adja meg MB-ban, amely a memória töredezettségének kielégítésére van fenntartva. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson, ha a gyorsítótár megtelt, vagy a teljes és a töredezettségi arány magas. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
 
-Az új memória foglalási értékének (**maxmemory** vagy **maxfragmentationmemory**) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. `used_memory` Ha a jelenlegi vagy `used_memory_rss` az értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, `used_memory` amíg `used_memory_rss` mindkettő és 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a `used_memory` -vel `used_memory_rss`és a-vel kapcsolatos további információkért lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Az új memória foglalási értékének (**maxmemory** vagy **maxfragmentationmemory**) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. Ha a jelenlegi `used_memory` vagy az `used_memory_rss` értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, amíg mindkettő `used_memory` és `used_memory_rss` 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a-vel és a-vel kapcsolatos további információkért `used_memory` `used_memory_rss` lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > A **maxmemory fenntartott** és a **maxfragmentationmemory számára fenntartott** beállítások csak a standard és a prémium szintű gyorsítótárak esetében érhetők el.
@@ -258,13 +257,13 @@ A **Virtual Network** szakasz a gyorsítótár virtuális hálózati beállítá
 >
 >
 
-### <a name="firewall"></a>Tűzfal
+### <a name="firewall"></a>Firewall
 
 A tűzfalszabályok konfigurálása a Redis összes Azure cache-hez elérhető.
 
 A gyorsítótárra vonatkozó tűzfalszabályok megtekintéséhez és konfigurálásához kattintson a **tűzfal** elemre.
 
-![Tűzfal](./media/cache-configure/redis-firewall-rules.png)
+![Firewall](./media/cache-configure/redis-firewall-rules.png)
 
 Megadhatja a tűzfalszabályok kezdő és záró IP-címtartományt. A tűzfalszabályok konfigurálásakor csak a megadott IP-címtartományok kapcsolatai kapcsolódhatnak a gyorsítótárhoz. Tűzfalszabály mentésekor rövid idő elteltével a szabály érvényben marad. Ez a késés általában egy percnél kisebb.
 
@@ -291,7 +290,7 @@ A **felügyelet** szakaszban található beállítások lehetővé teszik a köv
 ![Felügyelet](./media/cache-configure/redis-cache-administration.png)
 
 * [Adatimportálás](#importexport)
-* [Adatok exportálása](#importexport)
+* [Adatexportálás](#importexport)
 * [Újraindítás](#reboot)
 
 
@@ -356,7 +355,7 @@ A **támogatási és hibaelhárítási** szakaszban található beállítások l
 
 ![Támogatás + hibaelhárítás](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-* [Erőforrás állapota](#resource-health)
+* [Resource health](#resource-health)
 * [Új támogatási kérelem](#new-support-request)
 
 ### <a name="resource-health"></a>Erőforrás állapota
@@ -386,18 +385,18 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 >
 
-| Beállítás | Alapértelmezett érték | Leírás |
+| Beállítás | Alapértelmezett érték | Description |
 | --- | --- | --- |
-| `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0 `connection.GetDatabase(dbid)` , a és `dbid` `0` `databases - 1`a közötti kapcsolaton keresztül választhat egy másikat. |
+| `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0, a és a közötti kapcsolaton keresztül választhat egy másikat `connection.GetDatabase(dbid)` `dbid` `0` `databases - 1` . |
 | `maxclients` |A<sup>2</sup> . árképzési szinttől függ |Ez az érték a csatlakoztatott ügyfelek által egyszerre engedélyezett maximális szám. Ha elérte a korlátot, a Redis lezárja az összes új kapcsolatot, és "az ügyfelek maximális száma elérte a hibát" hibaüzenetet adja vissza. |
-| `maxmemory-policy` |`volatile-lru` |A Maxmemory házirend az a beállítás, amellyel a Redis kiválaszthatja `maxmemory` , hogy mit kell eltávolítani, ha a rendszer elérte a gyorsítótár létrehozásakor kiválasztott gyorsítótár-ajánlat méretét. Az Azure cache for Redis az alapértelmezett beállítás `volatile-lru`, amely a LRU algoritmus használatával eltávolítja a lejárati készlet kulcsait. Ez a beállítás konfigurálható a Azure Portalban. További információ: memória- [házirendek](#memory-policies). |
+| `maxmemory-policy` |`volatile-lru` |A Maxmemory házirend az a beállítás, amellyel a Redis kiválaszthatja, hogy mit kell eltávolítani, ha a `maxmemory` rendszer elérte a gyorsítótár létrehozásakor kiválasztott gyorsítótár-ajánlat méretét. Az Azure cache for Redis az alapértelmezett beállítás `volatile-lru` , amely a LRU algoritmus használatával eltávolítja a lejárati készlet kulcsait. Ez a beállítás konfigurálható a Azure Portalban. További információ: memória- [házirendek](#memory-policies). |
 | `maxmemory-samples` |3 |A memória mentéséhez a LRU és a minimális TTL-algoritmusokat a pontos algoritmusok helyett közelítő algoritmusok használják. Alapértelmezés szerint a Redis három kulcsot ellenőriz, és kiválasztja azt, amelyet a közelmúltban kevésbé használt. |
 | `lua-time-limit` |5000 |Lua-szkriptek maximális végrehajtási ideje ezredmásodpercben. Ha elérte a maximális végrehajtási időt, a Redis azt naplózza, hogy a parancsfájl még a maximálisan megengedett idő után is végrehajtás alatt áll, és a rendszer megkezdi a válaszadást a hibákkal rendelkező lekérdezésekre. |
 | `lua-event-limit` |500 |A parancsfájl-események várólistájának maximális mérete. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti pufferének korlátai felhasználhatók az olyan ügyfelek leválasztásának kényszerítésére, amelyek nem elég gyorsan olvasni az adatokat a kiszolgálóról (ennek gyakori oka, hogy a pub/sub-ügyfél nem tud az üzeneteket olyan gyorsan használni, ahogy a közzétevő elő tudja állítani őket). További információ: [https://redis.io/topics/clients](https://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti pufferének korlátai felhasználhatók az olyan ügyfelek leválasztásának kényszerítésére, amelyek nem elég gyorsan olvasni az adatokat a kiszolgálóról (ennek gyakori oka, hogy a pub/sub-ügyfél nem tud az üzeneteket olyan gyorsan használni, ahogy a közzétevő elő tudja állítani őket). További információ: [https://redis.io/topics/clients](https://redis.io/topics/clients) . |
 
 <a name="databases"></a>
-<sup>1</sup> A Redis- `databases` díjszabási szinten az egyes Azure-gyorsítótárak esetében eltérő a korlát, és beállítható a gyorsítótár létrehozásakor. Ha nincs `databases` megadva beállítás a gyorsítótár létrehozásakor, az alapértelmezett érték 16.
+<sup>1</sup> A `databases` Redis-díjszabási szinten az egyes Azure-gyorsítótárak esetében eltérő a korlát, és beállítható a gyorsítótár létrehozásakor. Ha nincs `databases` megadva beállítás a gyorsítótár létrehozásakor, az alapértelmezett érték 16.
 
 * Alapszintű és standard gyorsítótárak
   * C0 (250 MB) gyorsítótár – legfeljebb 16 adatbázis
@@ -412,17 +411,17 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
   * P2 (13 GB-130 GB) – legfeljebb 32 adatbázis
   * P3 (26 GB-260 GB) – legfeljebb 48 adatbázis
   * P4 (53 GB-530 GB) – legfeljebb 64 adatbázis
-  * Minden prémium szintű gyorsítótár a Redis-fürtön engedélyezve – a Redis-fürt csak az adatbázis 0 `databases` használatát támogatja, így a Redis-fürtön engedélyezve lévő prémium gyorsítótárak maximális száma hatékonyan 1, a [Select](https://redis.io/commands/select) parancs használata nem engedélyezett. További információkért lásd: [az ügyfélalkalmazás használatának módosítása a fürtözéshez?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Minden prémium szintű gyorsítótár a Redis-fürtön engedélyezve – a Redis-fürt csak az adatbázis 0 használatát támogatja, így a `databases` Redis-fürtön engedélyezve lévő prémium gyorsítótárak maximális száma hatékonyan 1, a [Select](https://redis.io/commands/select) parancs használata nem engedélyezett. További információkért lásd: [az ügyfélalkalmazás használatának módosítása a fürtözéshez?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Az adatbázisokkal kapcsolatos további információkért lásd: [Mik a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> A `databases` beállítás csak akkor konfigurálható a gyorsítótár létrehozásakor, ha csak a PowerShell, a CLI vagy más felügyeleti ügyfeleket használja. A gyorsítótár létrehozásakor a `databases` PowerShell használatával történő konfigurálásra példát a [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)című témakörben talál.
+> A `databases` beállítás csak akkor konfigurálható a gyorsítótár létrehozásakor, ha csak a PowerShell, a CLI vagy más felügyeleti ügyfeleket használja. A `databases` gyorsítótár létrehozásakor a PowerShell használatával történő konfigurálásra példát a [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)című témakörben talál.
 >
 >
 
 <a name="maxclients"></a>
-<sup>a 2</sup> `maxclients` az egyes Azure-gyorsítótárak esetében eltér a Redis díjszabási szintjénél.
+a <sup>2</sup> az `maxclients` egyes Azure-gyorsítótárak esetében eltér a Redis díjszabási szintjénél.
 
 * Alapszintű és standard gyorsítótárak
   * C0 (250 MB) gyorsítótár – legfeljebb 256 kapcsolat
@@ -447,7 +446,7 @@ Az adatbázisokkal kapcsolatos további információkért lásd: [Mik a Redis-ad
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>A Redis Azure cache-ben nem támogatott Redis-parancsok
 > [!IMPORTANT]
-> Mivel az Azure cache konfigurálását és kezelését a Redis-példányok esetében a Microsoft felügyeli, a következő parancsok le vannak tiltva. Ha megpróbálja meghívni őket, a következőhöz hasonló hibaüzenet jelenik meg: `"(error) ERR unknown command"`.
+> Mivel az Azure cache konfigurálását és kezelését a Redis-példányok esetében a Microsoft felügyeli, a következő parancsok le vannak tiltva. Ha megpróbálja meghívni őket, a következőhöz hasonló hibaüzenet jelenik meg: `"(error) ERR unknown command"` .
 >
 > * BGREWRITEAOF
 > * BGSAVE
@@ -461,14 +460,14 @@ Az adatbázisokkal kapcsolatos további információkért lásd: [Mik a Redis-ad
 >
 >
 
-További információ a Redis parancsokról: [https://redis.io/commands](https://redis.io/commands).
+További információ a Redis parancsokról: [https://redis.io/commands](https://redis.io/commands) .
 
 ## <a name="redis-console"></a>Redis-konzol
 A Redis-példányok számára a **Redis-konzol**segítségével biztonságosan adhat meg parancsokat az Azure cache-hez, amely az összes gyorsítótári szinten elérhető Azure Portal.
 
 > [!IMPORTANT]
 > - A Redis-konzol nem működik a [VNET](cache-how-to-premium-vnet.md). Ha a gyorsítótár egy VNET része, akkor csak a VNET lévő ügyfelek férhetnek hozzá a gyorsítótárhoz. Mivel a Redis-konzol a helyi böngészőben fut, amely a VNET kívül esik, nem tud csatlakozni a gyorsítótárhoz.
-> - Nem minden Redis-parancs támogatott az Azure cache-ben a Redis számára. Az Azure cache for Redis szolgáltatásban letiltott Redis-parancsok listáját az [Azure cache Redis szakaszban nem támogatott korábbi Redis-parancsok között](#redis-commands-not-supported-in-azure-cache-for-redis) találja. További információ a Redis parancsokról: [https://redis.io/commands](https://redis.io/commands).
+> - Nem minden Redis-parancs támogatott az Azure cache-ben a Redis számára. Az Azure cache for Redis szolgáltatásban letiltott Redis-parancsok listáját az [Azure cache Redis szakaszban nem támogatott korábbi Redis-parancsok között](#redis-commands-not-supported-in-azure-cache-for-redis) találja. További információ a Redis parancsokról: [https://redis.io/commands](https://redis.io/commands) .
 >
 >
 
@@ -494,7 +493,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-Az előző példában a szegmens 1 a kiválasztott szegmens, de `myKey` a 0. szegmensben található, amelyet a hibaüzenet `(shard 0)` része jelez. Ebben a példában az eléréshez `myKey`válassza ki a szegmens 0 elemet a szegmens választó használatával, majd adja ki a kívánt parancsot.
+Az előző példában a szegmens 1 a kiválasztott szegmens, de a 0. szegmensben `myKey` található, amelyet a `(shard 0)` hibaüzenet része jelez. Ebben a példában az eléréshez `myKey` válassza ki a szegmens 0 elemet a szegmens választó használatával, majd adja ki a kívánt parancsot.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>A gyorsítótár áthelyezése egy új előfizetésre

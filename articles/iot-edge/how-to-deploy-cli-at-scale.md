@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: a7bb2cc23374110d447ec7526ada75f7e36a966e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726162"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>IoT Edge-modulok üzembe helyezése és figyelése az Azure CLI használatával
@@ -247,6 +246,6 @@ Az üzembe helyezés törlése parancs a következő paramétereket veszi figyel
 * **--Deployment-ID** – az IoT hub-ban található központi telepítés neve.
 * **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal`az account set -s [subscription name]`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [modulok IoT Edge eszközökön való telepítéséről](module-deployment-monitoring.md).

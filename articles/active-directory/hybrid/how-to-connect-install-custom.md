@@ -9,17 +9,17 @@ manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f96e70c6699fb7ce85bd1c01f72028f537f994f2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 84b5635d934b15c7ddd289e3a9deb014361d3c94
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680307"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850173"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -133,7 +133,7 @@ Az erdők közötti megfeleltetés szolgáltatás segítségével meghatározhat
 | [Mail attribute (Mail attribútum)](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Ez a beállítás összekapcsolja a felhasználókat és a kapcsolattartókat, amennyiben a levél attribútum ugyanazzal az értékkel rendelkezik különböző felhőkben. Használja ezt a beállítást, ha a kapcsolattartók a GALSync használatával lettek létrehozva. Ha ez a beállítás ki van választva, azok a felhasználói objektumok, amelyek Mail attribútuma nincs feltöltve adatokkal, nem lesznek szinkronizálva az Azure AD-be. |
 | [ObjectSID and msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid (ObjectSID és msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid)](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Ez a beállítás összeköt egy fiókerdőben található engedélyezett felhasználót egy erőforráserdőben található letiltott felhasználóval. Az Exchange ezt a konfigurációt csatolt postaládaként ismeri. A beállítás akkor is használható, ha csak a Lync szolgáltatást használja, és az Exchange nincs jelen az erőforráserdőben. |
 | sAMAccountName and MailNickName (sAMAccountName és MailNickName) |Ez a beállítás azokat az attribútumokat csatlakoztatja, ahol a felhasználó bejelentkezési azonosítója várhatóan megtalálható. |
-| A specific attribute (Egy adott attribútum) |Ez a beállítás lehetővé teszi, hogy kiválassza a saját attribútumát. Ha ez a beállítás ki van választva, azok a felhasználói objektumok, amelyek (kiválasztott) attribútuma nincs feltöltve adatokkal, nem lesznek szinkronizálva az Azure AD-be. **Korlátozás:** Mindenképp olyan attribútumot kell választania, amely már megtalálható a metaverzumban. Amennyiben egy egyedi attribútumot választ (amely nem tartozik a metaverzumba), a varázsló nem képes befejezni a feladatot. |
+| A specific attribute (Egy adott attribútum) |Ez a beállítás lehetővé teszi, hogy kiválassza a saját attribútumát. Ha ez a beállítás ki van választva, azok a felhasználói objektumok, amelyek (kiválasztott) attribútuma nincs feltöltve adatokkal, nem lesznek szinkronizálva az Azure AD-be. **Korlátozás:** Ehhez a lehetőséghez csak a metaverse-ban már megtalálható attribútumok érhetők el. " |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Válassza ki, hogyan történjen a felhasználók azonosítása az Azure AD – Source Anchor (Forráshorgony) használatával
 A sourceAnchor egy olyan attribútum, amely a felhasználói objektum élettartama alatt megváltoztathatatlan. Ez a helyszíni felhasználót az Azure AD-felhasználóval összekötő elsődleges kulcs.
@@ -181,7 +181,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 | Azure AD app and attribute filtering (Azure AD alkalmazás- és attribútumszűrés) |Az Azure AD alkalmazás- és attribútumszűrés engedélyezésével a szinkronizált attribútumok halmaza testre szabható. Ez a beállítás két további konfigurációs oldallal bővíti a varázslót. További információkért lásd: [Azure AD alkalmazás- és attribútumszűrés](#azure-ad-app-and-attribute-filtering). |
 | Jelszókivonat szinkronizálása |Amennyiben az összevonás megoldást választotta a bejelentkezéshez, engedélyezheti ezt a beállítást. A jelszókivonat-szinkronizálás ezt követően használható másodlagos beállításként. További információk: [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md). </br></br>Ha az átmenő hitelesítést választotta, ez a beállítás is engedélyezhető, hogy támogassa a régebbi ügyfelek biztonsági mentési lehetőségként történő használatát. További információk: [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md).|
 | Jelszóvisszaíró |A jelszóvisszaíró engedélyezésével az Azure AD szolgáltatásban végrehajtott jelszómódosítások visszaíródnak a helyszíni címtárba. További részletekért lásd: [A jelszókezelés első lépései](../authentication/quickstart-sspr.md). |
-| Group writeback (Csoportvisszaíró) |Amennyiben használja az **Office 365 Csoportok** szolgáltatást, ezeket a csoportokat szerepeltetheti a helyszíni Active Directory szolgáltatásban is. Ez a beállítás kizárólag akkor elérhető, ha az Exchange jelen van a helyszíni Active Directory szolgáltatásban. |
+| Group writeback (Csoportvisszaíró) |Amennyiben használja az **Office 365 Csoportok** szolgáltatást, ezeket a csoportokat szerepeltetheti a helyszíni Active Directory szolgáltatásban is. Ez a beállítás kizárólag akkor elérhető, ha az Exchange jelen van a helyszíni Active Directory szolgáltatásban. További információ: [Azure ad Connect csoport visszaírási](how-to-connect-group-writeback.md)|
 | Eszközvisszaíró |Lehetővé teszi, hogy a feltételes hozzáférési forgatókönyvek esetén visszaírási az Azure AD-ben a helyszíni Active Directory. További információkért lásd: [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md). |
 | Directory extension attribute sync (Címtárbővítmény-attribútumok szinkronizálása) |A címtárbővítmény-attribútumok szinkronizálásának engedélyezésével a megadott attribútumok szinkronizálva lesznek az Azure AD szolgáltatásba. További információkért lásd: [Címtárbővítmények](how-to-connect-sync-feature-directory-extensions.md). |
 
@@ -230,12 +230,7 @@ Egy számítógépen, amelyen telepítve vannak a csoportházirend-kezelési esz
 1.  Nyissa meg a csoportházirend-kezelési eszközöket.
 2.  Módosítsa azt a csoportházirendet, amelyik minden felhasználóra vonatkozni fog. Ilyen lehet például az alapértelmezett tartományi házirend.
 3.  Lépjen a **Felhasználói konfiguráció\Felügyeleti sablonok\Windows-összetevők\Internet Explorer\Internet vezérlőpult\Biztonság lapra**, és válassza ki a **Helyek zónákhoz való társításának listáját** az alábbi ábra szerint.
-4.  Engedélyezze a szabályzatot, és adja meg a következő elemet a párbeszédpanelen.
-
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-
-
+4.  Engedélyezze a szabályzatot, és adjon meg egy értéket a (z `https://autologon.microsoftazuread-sso.com` `1` ) párbeszédpanelen.
 5.  Ennek a következőképpen kell kinéznie:  
 ![Intranet zónák](./media/how-to-connect-install-custom/sitezone.png)
 

@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617212"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példányok)
@@ -39,7 +38,7 @@ A HANA nagyméretű példányok egysége nem kapcsolódik közvetlenül az inter
 
 Szüksége van egy SAP S-User vagy más felhasználóra, amely lehetővé teszi az SAP piactér elérését.
 
-1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **Szoftvertelepítés** > letöltése**és a frissítés** > **ABC-index alapján**lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása** > **SAP HANA platform Edition 2,0** > -**telepítés**lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
+1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **Szoftvertelepítés letöltése**  >  **és**  >  **a frissítés ABC-index alapján**lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása**  >  **SAP HANA platform Edition 2,0**-  >  **telepítés**lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
 
    ![Képernyőkép a letölteni kívánt fájlokról](./media/hana-installation/image16_download_hana.PNG)
 

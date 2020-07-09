@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559590"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
 
@@ -21,7 +21,7 @@ A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) 
 > A GitHub-műveletek jelenleg béta verzióban vannak. Először [regisztrálnia kell, hogy csatlakozzon az előzetes](https://github.com/features/actions) verzióhoz a GitHub-fiók használatával.
 > 
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg `/.github/workflows/` a tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
 Azure App Service munkafolyamathoz a fájl három szakaszt tartalmaz:
 
@@ -59,12 +59,12 @@ Használhatja az alkalmazás szintű hitelesítő adatokat is, például a közz
 
 3. Illessze be a letöltött közzétételi profil tartalmát a titok Value mezőjébe.
 
-4. Most az ág munkafolyamat-fájljában: `.github/workflows/workflow.yml` cserélje le az Azure-webalkalmazás `publish-profile` üzembe helyezése művelethez tartozó titkos kulcsot.
+4. Most az ág munkafolyamat-fájljában: `.github/workflows/workflow.yml` cserélje le az `publish-profile` Azure-webalkalmazás üzembe helyezése művelethez tartozó titkos kulcsot.
     
     ```yaml
         - uses: azure/webapps-deploy@v2
           with:
-            creds: ${{ secrets.azureWebAppPublishProfile }}
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
 5. A titkos kulcsot az alább látható módon láthatja.
@@ -193,7 +193,7 @@ A kód App Service alkalmazásba való üzembe helyezéséhez használja a `azur
 
 ### <a name="deploy-using-publish-profile"></a>Üzembe helyezés a közzétételi profil használatával
 
-Az alábbi példa a Node. js-alkalmazások Azure-ban való létrehozására és üzembe helyezésére szolgáló minta munkafolyamat a közzétételi profil használatával.
+Alább látható egy Node.js-alkalmazás Azure-ban való létrehozásához és üzembe helyezéséhez szükséges minta munkafolyamat a közzétételi profil használatával.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -227,7 +227,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Üzembe helyezés az Azure egyszerű szolgáltatásával
 
-Az alábbi példa a Node. js-alkalmazások Azure-beli egyszerű szolgáltatással történő létrehozásához és üzembe helyezéséhez használható minta munkafolyamat.
+Az alábbi példa egy Azure-szolgáltatásnév használatával Node.js alkalmazás Azure-beli létrehozásához és üzembe helyezéséhez használható minta munkafolyamat.
 
 ```yaml
 on: [push]

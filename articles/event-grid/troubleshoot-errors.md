@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid – hibaelhárítási útmutató
 description: Ez a cikk a hibakódok, a hibaüzenetek, a leírások és a javasolt műveletek listáját tartalmazza.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: 3b09b431e827bed4e416913c88d23ee1eddaf17c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 07/07/2020
+ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629014"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119038"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid hibák elhárítása
 Ez a hibaelhárítási útmutató a Azure Event Grid hibakódok, a hibaüzenetek, a leírások és az ajánlott műveletek listáját tartalmazza, amelyeket a hibák vételekor kell végrehajtania. 
@@ -29,11 +25,18 @@ Ez a hibaelhárítási útmutató a Azure Event Grid hibakódok, a hibaüzenetek
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode. Conflict <br/>409 | A megadott nevű témakör már létezik. Válasszon másik témakör-nevet.   | Az egyéni témakör nevének egyedinek kell lennie egyetlen Azure-régióban a megfelelő közzétételi művelet biztosítása érdekében. Ugyanezt a nevet különböző Azure-régiókban is használhatja. | Válasszon másik nevet a témakörnek. |
 | HttpStatusCode. Conflict <br/> 409 | A megadott tartomány már létezik. Válasszon másik tartománynevet. | A tartománynévnek egyedinek kell lennie egyetlen Azure-régióban a megfelelő közzétételi művelet biztosítása érdekében. Ugyanezt a nevet különböző Azure-régiókban is használhatja. | Válasszon másik nevet a tartománynak. |
-| HttpStatusCode. Conflict<br/>409 | Elérte a kvóta korlátját. További információ ezekről a korlátozásokról: [Azure Event Grid korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Az egyes Azure-előfizetések az általa használható Azure Event Grid erőforrások számát korlátozzák. A kvóta egy részét vagy egészét túllépte, és nem hozható létre több erőforrás. |    Győződjön meg az erőforrások aktuális használatáról, és törölje a szükséges adatokat. Ha továbbra is meg kell emelnie a kvótát, küldjön [aeg@microsoft.com](mailto:aeg@microsoft.com) e-mailt a szükséges erőforrások pontos számával. |
+| HttpStatusCode. Conflict<br/>409 | Elérte a kvóta korlátját. További információ ezekről a korlátozásokról: [Azure Event Grid korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Az egyes Azure-előfizetések az általa használható Azure Event Grid erőforrások számát korlátozzák. A kvóta egy részét vagy egészét túllépte, és nem hozható létre több erőforrás. |    Győződjön meg az erőforrások aktuális használatáról, és törölje a szükséges adatokat. Ha továbbra is meg kell emelnie a kvótát, küldjön e-mailt [aeg@microsoft.com](mailto:aeg@microsoft.com) a szükséges erőforrások pontos számával. |
+
+## <a name="error-code-403"></a>Hibakód: 403
+
+| Hibakód | Hibaüzenet | Leírás | Javasolt művelet |
+| ---------- | ------------- | ----------- | ------------------ |
+| HttpStatusCode. tiltott <br/>403 | Az IP-cím szűrési szabályainak elutasítása miatt a rendszer elutasította a (a (témakör/tartomány) {Ip_cím} ügyfél általi közzétételét | A témakörhöz vagy tartományhoz IP-tűzfalszabályok vannak konfigurálva, és a hozzáférés csak a konfigurált IP-címekre van korlátozva. | Adja hozzá az IP-címet az IP-tűzfalszabályok számára: [IP-tűzfal konfigurálása](configure-firewall.md) |
+| HttpStatusCode. tiltott <br/> 403 | A (z) {topic/domain} ügyfél általi közzétételét a rendszer elutasította, mivel a kérés a privát végponttól érkezett, és nem található az erőforráshoz tartozó saját végpont-kapcsolódás. | A témakörhöz vagy a tartományhoz saját végpontok vannak konfigurálva, és a közzétételi kérelem olyan privát végpontból jött létre, amely nincs konfigurálva/jóváhagyva. | Magánhálózati végpont konfigurálása a témakörhöz/tartományhoz. [Privát végpontok konfigurálása](configure-private-endpoints.md) |
 
 ## <a name="troubleshoot-event-subscription-validation"></a>Az esemény-előfizetés ellenőrzésének hibája
 
-Ha az esemény-előfizetés létrehozása során hibaüzenetet kap (például) `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation`, az azt jelzi, hogy hiba történt az érvényesítési kézfogásban. A hiba megoldásához ellenőrizze a következő szempontokat:
+Ha az esemény-előfizetés létrehozása során hibaüzenetet kap (például `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` ), az azt jelzi, hogy hiba történt az érvényesítési kézfogásban. A hiba megoldásához ellenőrizze a következő szempontokat:
 
 - Végezzen HTTP-BEJEGYZÉST a webhook URL-címére a Poster vagy a curl vagy hasonló eszköz használatával egy [minta SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) -kérelem Törzsével.
 - Ha a webhook szinkron ellenőrzési kézfogási mechanizmust valósít meg, ellenőrizze, hogy a ValidationCode a válasz részeként adja-e vissza.
@@ -51,5 +54,5 @@ Ha az esemény-előfizetés létrehozása során hibaüzenetet kap (például) `
   931130 (lehetséges távoli fájlok felvételének (RFI) támadása = off-domain Reference/link)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/). 

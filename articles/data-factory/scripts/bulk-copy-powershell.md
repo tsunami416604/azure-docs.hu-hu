@@ -10,16 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: efc79f82a2181099f832da0d4a17fc370bf4f7f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74929866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248616"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell-parancsfájl – több tábla másolása a Azure Data Factory használatával
 
-Ez a PowerShell-szkript egy Azure SQL Database-adatbázis több táblájából származó adatait másolja egy Azure SQL-adattárházba.
+Ez a PowerShell-parancsfájl az Azure SQL Database több táblájából másolja az Azure SQL-adattárházba.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 Ez a szkript a következő parancsokat használja: 
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-azdatafactoryv2) | Adat-előállító létrehozása |

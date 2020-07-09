@@ -1,20 +1,20 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/10/2018
+ms.date: 06/23/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85292177"
 ---
 **A konfigurációs és a feldolgozási kiszolgáló követelményei**
 
@@ -52,15 +52,13 @@ Hálózati adapter típusa | VMXNET3 (ha a konfigurációs kiszolgáló egy VMwa
  |
 **Internet-hozzáférés** (a kiszolgálónak közvetlenül vagy proxyn keresztül kell hozzáférnie a következő URL-címekhez):|
 \*.backup.windowsazure.com | A replikált adatátvitelhez és a koordinációhoz használatos
-\*.store.core.windows.net | A replikált adatátvitelhez és a koordinációhoz használatos
-\*.blob.core.windows.net | A replikált adattárban tárolt Storage-fiók elérésére szolgál
+\*.blob.core.windows.net | A replikált adattárolást tároló fiók elérésére szolgál. Megadhatja a gyorsítótárbeli Storage-fiók adott URL-címét.
 \*.hypervrecoverymanager.windowsazure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
-https:\//management.azure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos 
-*.services.visualstudio.com | Telemetria célra használatos (nem kötelező)
+https:\//login.microsoftonline.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos 
 time.nist.gov | A rendszer és a globális idő közötti idő-szinkronizálás vizsgálatára szolgál.
 time.windows.com | A rendszer és a globális idő közötti idő-szinkronizálás vizsgálatára szolgál.
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.Live.com </li><li> https:\//Graph.Windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.Live.com </li><li> https:\//www.microsoft.com </li></ul> | A OVF-telepítőnek hozzá kell férnie ezen URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory.
-https:\//dev.mysql.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi  | A MySQL letöltésének befejezéséhez. </br> Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /login.Live.com </li><li> https: \/ /Graph.Windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (nem kötelező) </li><li> https: \/ /www.Live.com </li><li> https: \/ /www.microsoft.com </li></ul> | A OVF-telepítőnek hozzá kell férnie a további URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | A MySQL letöltésének befejezéséhez. </br> Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
 |
 
 ## <a name="required-software"></a>Szükséges szoftverek
@@ -79,7 +77,7 @@ A következő táblázat összefoglalja a konfigurációs kiszolgáló kapacitá
 **CPU** | **Memory (Memória)** | **Lemez gyorsítótára** | **Adatváltozási arány** | **Replikált gépek**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 szoftvercsatorna * 4 mag \@ 2,5 GHz | 16 GB | 300 GB | 500 GB vagy kevesebb | < 100 gép
-12 vCPU<br/><br/> 2 SOCKS * 6 \@ mag 2,5 GHz | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gép
+12 vCPU<br/><br/> 2 SOCKS * 6 mag \@ 2,5 GHz | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gép
 16 vCPU<br/><br/> 2 zokni * 8 mag \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 – 200 gép
 |
 

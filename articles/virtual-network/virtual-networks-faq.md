@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481731"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -55,7 +55,14 @@ A VNet létrehozásához és konfigurálásához a következő eszközöket hasz
 * Egy hálózati konfigurációs fájl (netcfg – csak a klasszikus virtuális hálózatok). Tekintse meg a [VNet konfigurálása hálózati konfigurációs fájl használatával](virtual-networks-using-network-configuration-file.md) című cikket.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Milyen címtartományok használhatók a virtuális hálózatok?
-Az [RFC 1918](https://tools.ietf.org/html/rfc1918)-ben definiált bármely IP-címtartomány. Például: 10.0.0.0/16. A következő címtartományok nem vehetők fel:
+Azt javasoljuk, hogy használja a [1918-es számú RFC-dokumentumban](https://tools.ietf.org/html/rfc1918)felsorolt címtartományt, amelyeket az IETF a magánjellegű, nem irányítható tárolóhelyek számára is meghatároz:
+* 10.0.0.0-10.255.255.255 (10/8 előtag)
+* 172.16.0.0-172.31.255.255 (172.16/12 előtag)
+* 192.168.0.0-192.168.255.255 (192.168/16 előtag)
+
+Előfordulhat, hogy más címterület is működhet, de nem lehet mellékhatása.
+
+Emellett a következő címtartományok nem vehetők fel:
 * 224.0.0.0/4 (csoportos küldés)
 * 255.255.255.255/32 (szórásos)
 * 127.0.0.0/8 (visszacsatolási)
@@ -184,7 +191,7 @@ Igen. Egy VNet belül telepített összes virtuális gép és Cloud Services sze
 ## <a name="azure-services-that-connect-to-vnets"></a>Virtuális hálózatok-hez csatlakozó Azure-szolgáltatások
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Használhatok Azure App Service Web Apps VNet?
-Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információkért tekintse át a következő cikkeket:
+Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információért tekintse át a következő cikkeket:
 
 * [Hálózati szolgáltatások App Service](../app-service/networking-features.md)
 * [Web Apps létrehozása App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

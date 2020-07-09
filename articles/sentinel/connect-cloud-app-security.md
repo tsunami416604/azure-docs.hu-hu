@@ -1,6 +1,6 @@
 ---
 title: Cloud App Security-adatkapcsolat összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Megtudhatja, hogyan csatlakoztatható Cloud App Security-adatkapcsolat az Azure Sentinelhez.
+description: Ismerje meg, hogyan használhatja a Microsoft Cloud App Security-(MCAS-) összekötőt a riasztások továbbítására, illetve a MCAS-naplók Cloud Discoveryára az Azure Sentinelbe. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563949"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok összekapcsolásának Microsoft Cloud App Security 
-
-
 
 A [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) összekötővel riasztásokat és [Cloud Discovery naplókat](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) továbbíthat a MCAS-ből az Azure sentinelbe. Ez lehetővé teszi a felhőalapú alkalmazások láthatóságát, a kifinomult elemzéseket a előforduló kiberfenyegetésekkel kapcsolatban azonosításához és leküzdéséhez, valamint az adattovábbítások szabályozásához.
 
@@ -50,7 +48,9 @@ Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a
 
 1. Kattintson a **módosítások alkalmazása**lehetőségre.
 
-1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, `SecurityAlert` írja be a következőt a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja `McasShadowItReporting`be a következőt:.
+1. Kiválaszthatja, hogy a Azure Security Center riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása**területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés**területen módosíthatja az **aktív szabályok** lapon.
+
+1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityAlert` a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja be a következőt: `McasShadowItReporting` .
 
 > [!NOTE]
 > Cloud Discovery segít a trendek észlelésében és azonosításában azáltal, hogy összesíti az adatokat használó felhasználók kapcsolatait a felhőalapú alkalmazásokkal.

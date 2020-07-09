@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
-ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343217"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>A Azure CDN Rules Engine Verizon-specifikus HTTP-fejlécei
 
 A **Verizon** -termékek prémium szintű Azure CDN a HTTP-kérések a forráskiszolgálón való elküldésekor a jelenléti pont (POP) kiszolgáló egy vagy több fenntartott fejlécet (vagy proxy speciális fejlécet) adhat hozzá az ügyfél-kérelemben a pop-hoz. Ezek a fejlécek a normál továbbítási fejléceken kívül is megérkeztek. További információ a szabványos kérelmek fejlécéről: [kérelmek mezői](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
 
-Ha szeretné megakadályozni, hogy ezek a fenntartott fejlécek hozzá legyenek adva a Azure CDN (Content Delivery Network) POP-kérelemhez a forráskiszolgálón, létre kell hoznia egy szabályt a szabályok motor [speciális fejlécek szolgáltatásával](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) . Ebben a szabályban zárja ki az eltávolítani kívánt fejlécet a fejlécek mezőben lévő fejlécek alapértelmezett listájából. Ha engedélyezte a [hibakeresési gyorsítótár válaszának fejléceit](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers), ügyeljen arra, hogy hozzáadja `X-EC-Debug` a szükséges fejléceket. 
+Ha szeretné megakadályozni, hogy ezek a fenntartott fejlécek hozzá legyenek adva a Azure CDN (Content Delivery Network) POP-kérelemhez a forráskiszolgálón, létre kell hoznia egy szabályt a szabályok motor [speciális fejlécek szolgáltatásával](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) . Ebben a szabályban zárja ki az eltávolítani kívánt fejlécet a fejlécek mezőben lévő fejlécek alapértelmezett listájából. Ha engedélyezte a [hibakeresési gyorsítótár válaszának fejléceit](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm), ügyeljen arra, hogy hozzáadja a szükséges `X-EC-Debug` fejléceket. 
 
 Ha például el szeretné távolítani a `Via` fejlécet, a szabály fejlécek mezőjében szerepelnie kell a következő fejlécek listájának: *x-Forwarded-For, x-továbbítva-proto, x-Host, x-Midgress, x-Gateway-List, x-EC-name, Host*. 
 
@@ -42,10 +41,10 @@ X-Host | Megadja a kérelem állomásnevét. | cdn.mydomain.com
 X – Midgress | Azt jelzi, hogy a kérés egy másik CDN-kiszolgálón keresztül lett-e proxyn. Például egy POP-kiszolgáló – forrás védelmi kiszolgáló vagy egy POP-kiszolgáló – ADN átjárókiszolgáló. <br />Ezt a fejlécet csak akkor adja hozzá a rendszer a kéréshez, ha a midgress forgalom történik. Ebben az esetben a fejléc 1 értékre van állítva, jelezve, hogy a kérés egy további CDN-kiszolgálón keresztül lett proxyn.| 1
 [Állomás](#host-request-header) | Azonosítja a gazdagépet és azt a portot, ahol a kért tartalom található. | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN: az ügyfél-forráshoz rendelt ADN Gateway-kiszolgálók feladatátvételi listáját azonosítja. <br />Origin Shield: az ügyfél-forráshoz rendelt Origin Shield-kiszolgálók készletét jelzi. | `icn1,hhp1,hnd1`
-X-EC-_&lt;Name&gt;_ | Az *x-EC* -vel kezdődő kérelmek fejlécei (például az x-EC-tag, az [x-EC-debug](cdn-http-debug-headers.md)) a CDN használatára vannak fenntartva.| WAF – éles üzem
+X-EC-_ &lt; name &gt; _ | Az *x-EC* -vel kezdődő kérelmek fejlécei (például az x-EC-tag, az [x-EC-debug](cdn-http-debug-headers.md)) a CDN használatára vannak fenntartva.| WAF – éles üzem
 
 ## <a name="via-request-header"></a>Kérelem fejléce
-Az alábbi szintaxissal adható `Via` meg, hogy a kérelem fejléce milyen formátumban adja meg a pop-kiszolgálót:
+Az `Via` alábbi szintaxissal adható meg, hogy a kérelem fejléce milyen formátumban adja meg a pop-kiszolgálót:
 
 `Via: Protocol from Platform (POP/ID)` 
 
@@ -54,7 +53,7 @@ A szintaxisban használt kifejezések a következőképpen vannak meghatározva:
 
 - Platform: arra a platformra utal, amelyre a tartalmat kérték. A következő kódok érvényesek ehhez a mezőhöz: 
 
-    Kód | Platform
+    Code | Platform
     -----|---------
     ECAcc | Nagyméretű HTTP
     ECS   | Kis méretű HTTP
@@ -69,11 +68,11 @@ A szintaxisban használt kifejezések a következőképpen vannak meghatározva:
 `Via: HTTP/1.1 ECD (dca/1A2B)`
 
 ## <a name="host-request-header"></a>Gazdagép-kérelem fejléce
-A POP-kiszolgálók felülírják `Host` a fejlécet, ha az alábbi feltételek mindegyike teljesül:
+A POP-kiszolgálók felülírják a `Host` fejlécet, ha az alábbi feltételek mindegyike teljesül:
 - A kért tartalom forrása egy ügyfél-forráskiszolgáló.
 - A megfelelő ügyfél-forrás HTTP-állomásfejléc-fejlécének beállítása nem üres.
 
-A `Host` rendszer felülírja a kérelem fejlécét, hogy TÜKRÖZZE a HTTP-állomásfejléc beállításban meghatározott értéket.
+A `Host` rendszer felülírja a kérelem fejlécét, hogy tükrözze a HTTP-állomásfejléc beállításban meghatározott értéket.
 Ha az ügyfél forrásának HTTP-állomásfejléc beállítása üresre van állítva, akkor a `Host` kérelmező által küldött kérelem fejléce továbbítva lesz az ügyfél forrás-kiszolgálójára.
 
 ## <a name="x-gateway-list-request-header"></a>X-Gateway-List kérelem fejléce

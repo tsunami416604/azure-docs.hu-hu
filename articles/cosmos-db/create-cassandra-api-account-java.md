@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4122e575fc7823fd2e79a26f210f06e5c1b0a835
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857983"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118406"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Oktatóanyag: Cassandra API-fiók létrehozása a Azure Cosmos DBban Java-alkalmazás használatával a kulcs/érték típusú adattároláshoz
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) . 
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 
 * Szerezze be a [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable)legújabb verzióját. 
 
@@ -42,19 +42,19 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 
-2. Válassza **az erőforrás** > **létrehozása adatbázisok** > **Azure Cosmos db**elemet. 
+2. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db**elemet. 
 
 3. Az **új fiók** panelen adja meg az új Azure Cosmos-fiók beállításait. 
 
    |Beállítás   |Ajánlott érték  |Leírás  |
    |---------|---------|---------|
-   |ID (Azonosító)   |   Adjon meg egy egyedi nevet    | Adjon meg egy egyedi nevet az Azure Cosmos-fiók azonosításához. <br/><br/>A rendszer a .azure.com utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.         |
+   |ID   |   Adjon meg egy egyedi nevet    | Adjon meg egy egyedi nevet az Azure Cosmos-fiók azonosításához. <br/><br/>A rendszer a .azure.com utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.         |
    |API    |  Cassandra   |  A létrehozni kívánt fiók típusát az API határozza meg. <br/> Válassza a **Cassandra**lehetőséget, mert ebben a cikkben egy olyan széles oszlopú adatbázist fog létrehozni, amely a Cassandra Query Language (CQL) szintaxis használatával kérdezhető le.  |
    |Előfizetés    |  Az Ön előfizetése        |  Válassza ki az Azure Cosmos-fiókhoz használni kívánt Azure-előfizetést.        |
    |Erőforráscsoport   | Név megadása    |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet.    |
    |Hely    |  Válassza ki a felhasználóihoz legközelebb eső régiót    |  Válassza ki azt a földrajzi helyet, ahol az Azure Cosmos-fiókját tárolni szeretné. Használja a felhasználókhoz legközelebb eső helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adataihoz.    |
 
-   ![Fiók létrehozása a portál használatával](./media/create-cassandra-api-account-java/create-account.png)
+   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Fiók létrehozása a portál használatával":::
 
 4. Kattintson a **Létrehozás** gombra. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
 
@@ -91,7 +91,7 @@ A következő lépésekkel hozhatja létre a mintát a semmiből:
  
 2. Keresse meg a `cassandra-demo` mappát. Egy szövegszerkesztővel nyissa meg a létrejött `pom.xml` fájlt. 
 
-   Adja hozzá a projekthez szükséges Cassandra-függőségeket és Build beépülő modulokat a [Pom. XML](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) fájlban látható módon.  
+   Adja hozzá a projekthez szükséges Cassandra-függőségeket és a Build beépülő modult, ahogyan az a [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) fájlban látható.  
 
 3. A `cassandra-demo\src\main` mappában hozzon létre egy új mappát `resources` néven.  Az erőforrások mappájában adja hozzá a config.properties és log4j.properties fájlokat:
 
@@ -99,13 +99,13 @@ A következő lépésekkel hozhatja létre a mintát a semmiből:
    
    - A [log4j. properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) fájl határozza meg, hogy milyen szintű naplózásra van szükség a Cassandra API való interakcióhoz.  
 
-4. Tallózással keresse `src/main/java/com/azure/cosmosdb/cassandra/` meg a mappát. A cassandra mappán belül hozzon létre egy másik mappát `utils` néven. Ez az új mappa tartalmazza a Cassandra API-fiókhoz való csatlakozáshoz szükséges segédeszközosztályokat. 
+4. Tallózással keresse meg a `src/main/java/com/azure/cosmosdb/cassandra/` mappát. A cassandra mappán belül hozzon létre egy másik mappát `utils` néven. Ez az új mappa tartalmazza a Cassandra API-fiókhoz való csatlakozáshoz szükséges segédeszközosztályokat. 
 
    Adja hozzá a [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) osztályt a fürt létrehozásához és a Cassandra-munkamenetek megnyitásához és bezárásához. A fürt csatlakozik a Azure Cosmos DB Cassandra API-fiókjához, és visszaadja az elérni kívánt munkamenetet. Használja a [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) osztályt a kapcsolati sztring adatainak olvasásához a config.properties fájlból. 
 
 5. A Java-minta olyan adatbázist hoz létre a felhasználói adatokkal, mint a Felhasználónév, a felhasználói azonosító és a User City. Meg kell adnia a get és set metódusokat a fő függvényben található felhasználói adatok eléréséhez.
  
-   Hozzon létre egy [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) osztályt a mappában a Get és a `src/main/java/com/azure/cosmosdb/cassandra/` set metódussal. 
+   Hozzon létre egy [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) osztályt a `src/main/java/com/azure/cosmosdb/cassandra/` mappában a Get és a set metódussal. 
 
 ## <a name="add-a-database-and-a-table"></a>Egy adatbázis és egy tábla hozzáadása  
 
@@ -113,7 +113,7 @@ Ez a szakasz azt ismerteti, hogyan adhat hozzá egy adatbázist (szóköz) és e
 
 1. A `src\main\java\com\azure\cosmosdb\cassandra` mappában hozzon létre egy új mappát `repository` néven. 
 
-2. Hozza létre `UserRepository` a Java-osztályt, és adja hozzá a következő kódot: 
+2. Hozza létre a `UserRepository` Java-osztályt, és adja hozzá a következő kódot: 
 
    ```java
    package com.azure.cosmosdb.cassandra.repository; 
@@ -160,7 +160,7 @@ Ez a szakasz azt ismerteti, hogyan adhat hozzá egy adatbázist (szóköz) és e
 
 3. Lépjen az `src\main\java\com\azure\cosmosdb\cassandra` mappába, és hozzon létre egy új almappát `examples` néven.
 
-4. Hozza létre `UserProfile` a Java-osztályt. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat: 
+4. Hozza létre a `UserProfile` Java-osztályt. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat: 
 
    ```java
    package com.azure.cosmosdb.cassandra.examples; 

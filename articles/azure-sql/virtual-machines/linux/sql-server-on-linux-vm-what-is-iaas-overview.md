@@ -1,10 +1,9 @@
 ---
-title: Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren) | Microsoft Docs
-description: Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure-beli, Linux rendszerű virtuális gépeken. Ebben a cikkben közvetlen hivatkozásokat találhat az SQL Servert tartalmazó összes linuxos virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz.
+title: Az Azure Virtual Machines for Linux SQL Server áttekintése | Microsoft Docs
+description: Ismerje meg, hogyan futtathat teljes SQL Server kiadásokat az Azure Virtual Machines for Linux rendszeren. Ebben a cikkben közvetlen hivatkozásokat találhat az SQL Servert tartalmazó összes linuxos virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz.
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: conceptual
@@ -12,12 +11,11 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e916e005687c1f0a197f8c97f643e5a26552c23c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 721f30f5b17b078f3a3905204f6be56db25adead
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669477"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,16 +24,16 @@ ms.locfileid: "84046200"
 > * [Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 > * [Linux](sql-server-on-linux-vm-what-is-iaas-overview.md)
 
-Az Azure virtuális gépeken futó SQL Serverrel teljes SQL Server-verziókat használhat a felhőben anélkül, hogy bármilyen helyszíni hardvert kellene fenntartania. Az SQL Servert futtató virtuális gépekkel a használatalapú licencelési költségek is leegyszerűsödnek.
+Az Azure Virtual Machines SQL Server lehetővé teszi a felhőalapú SQL Server teljes verziójának használatát anélkül, hogy bármilyen helyszíni hardvert kellene kezelnie. Az SQL Servert futtató virtuális gépekkel a használatalapú licencelési költségek is leegyszerűsödnek.
 
-Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/windows/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Ez számos különböző SQL Server számítási feladatra teszi alkalmassá a virtuális gépeket.
+Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/windows/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Ez számos különböző SQL Server számítási feladatra teszi alkalmassá a virtuális gépeket. 
 
-## <a name="get-started-with-sql-vms"></a><a id="create"></a>Ismerkedés az SQL-alapú virtuális gépekkel
+## <a name="get-started-with-sql-server-vms"></a><a id="create"></a>Ismerkedés a SQL Server virtuális gépekkel
 
 Első lépésként válassza ki a megfelelő verziójú, kiadású és operációs rendszerű SQL Server virtuális gép rendszerképét. Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez.
 
 > [!TIP]
-> Az SQL-rendszerképek díjszabásával kapcsolatos további információkért tekintse meg [az SQL Servert futtató Linux rendszerű virtuális gépek díjszabási lapját](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> A SQL Server rendszerképek díjszabásának megismeréséhez tekintse meg [a SQL Server rendszert futtató linuxos virtuális gépek díjszabási oldalát](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
@@ -44,13 +42,13 @@ Első lépésként válassza ki a megfelelő verziójú, kiadású és operáci�
 | **SQL Server 2017** | Ubuntu 16.04 LTS |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) |
 
 > [!NOTE]
-> A Windows rendszerhez elérhető SQL Server-virtuálisgépek rendszerképeivel kapcsolatban lásd [az SQL Server használatának áttekintését az Azure Virtual Machines szolgáltatásban (Windows rendszeren)](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
+> A Windows rendszerhez elérhető SQL Server virtuálisgép-rendszerképek megtekintéséhez lásd: az [Azure Virtual Machines (Windows) SQL Server áttekintése](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
 ## <a name="installed-packages"></a><a id="packages"></a> Telepített csomagok
 
-A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbázismotor csomagjait, majd több választható csomagot is, a felhasználó igényei szerint. A Linux rendszerű SQL Server-virtuálisgépek rendszerképei automatikusan telepítik a legtöbb csomagot. A következő táblázat ismerteti, hogy melyik disztribúció melyik csomagokat telepíti.
+SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a követelményektől függően számos opcionális csomagot kell telepítenie. A Linux rendszerű SQL Server-virtuálisgépek rendszerképei automatikusan telepítik a legtöbb csomagot. A következő táblázat ismerteti, hogy melyik disztribúció melyik csomagokat telepíti.
 
-| Disztribúció | [Adatbázismotor](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Eszközök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Teljes szöveges keresés](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [Magas rendelkezésreállási bővítmény](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Disztribúció | [Adatbázismotor](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Eszközök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server ügynök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Teljes szöveges keresés](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [Magas rendelkezésreállási bővítmény](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) |
 | SLES | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) |
@@ -60,7 +58,7 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 
 ### <a name="linux-virtual-machines"></a>Linux rendszerű virtuális gépek
 
-* [Virtual Machines – áttekintés](../../../virtual-machines/linux/overview.md)
+* [Az Azure Virtual Machines áttekintése](../../../virtual-machines/linux/overview.md)
 
 ### <a name="storage"></a>Storage
 
@@ -69,7 +67,7 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 ### <a name="networking"></a>Hálózat
 
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
-* [IP-címek az Azure-ban](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/windows/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
@@ -79,10 +77,10 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL Server használatbavétele Azure-beli, Linux rendszerű virtuális gépeken:
+Ismerkedés a SQL Server on Linux Virtual Machines szolgáltatással:
 
 * [SQL Servert futtató virtuális gép létrehozása az Azure Portalon](sql-vm-create-portal-quickstart.md)
 
-Választ találhat a Linux rendszerű SQL virtuális gépek használatával kapcsolatos gyakori kérdésekre:
+Válaszok a Linux rendszerű SQL Server virtuális gépekkel kapcsolatos gyakori kérdésekre:
 
-* [Az SQL Server használata Azure-beli, Linux rendszerű virtuális gépeken – gyakori kérdések](frequently-asked-questions-faq.md)
+* [Az SQL Server használata Azure virtuális gépeken – gyakori kérdések](frequently-asked-questions-faq.md)

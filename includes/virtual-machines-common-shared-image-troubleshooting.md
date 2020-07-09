@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75773028"
 ---
 Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. A hibakeresési mód aktiválása a **-Debug** kapcsoló parancssori felülettel való átadásával és a **-Debug** kapcsolóval a PowerShell használatával történik. A hiba megtalálása után kövesse ezt a dokumentumot a hibák elhárításához.

@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851771"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Felügyeleti egységek kezelése Azure Active Directory
 
@@ -57,20 +57,24 @@ A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez 
 
 Telepítse az Azure AD PowerShellt (előzetes verzió), mielőtt megpróbálja futtatni a következő parancsokat:
 
-    Connect-AzureAD
-    New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+```powershell
+Connect-AzureAD
+New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+```
 
 Az idézőjelek közé foglalt értékeket igény szerint módosíthatja.
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph használata
 
-    Http Request
-    POST /administrativeUnits
-    Request body
-    {
-        "displayName": "North America Operations",
-        "description": "North America Operations administration"
-    }
+```http
+Http Request
+POST /administrativeUnits
+Request body
+{
+  "displayName": "North America Operations",
+  "description": "North America Operations administration"
+}
+```
 
 ## <a name="remove-an-administrative-unit"></a>Felügyeleti egység eltávolítása
 
@@ -78,7 +82,7 @@ Az Azure ad-ben eltávolíthatja azt a felügyeleti egységet, amelyre már ninc
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. A Azure Portal nyissa meg az **Azure ad** > **felügyeleti egységeit**. 
+1. A Azure Portal nyissa meg az **Azure ad**  >  **felügyeleti egységeit**. 
 1. Válassza ki a törölni kívánt felügyeleti egységet, majd válassza a **Törlés**lehetőséget. 
 1. Annak megerősítéséhez, hogy törölni kívánja a felügyeleti egységet, válassza az **Igen**lehetőséget. A felügyeleti egység törölve lett.
 
@@ -86,17 +90,21 @@ Az Azure ad-ben eltávolíthatja azt a felügyeleti egységet, amelyre már ninc
 
 ### <a name="use-powershell"></a>A PowerShell használata
 
-    $delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-    Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+```powershell
+$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+```
 
 Az idézőjelek közé foglalt értékeket módosíthatja az adott környezethez szükséges módon.
 
 ### <a name="use-the-graph-api"></a>A Graph API használata
 
-    HTTP request
-    DELETE /administrativeUnits/{Admin id}
-    Request body
-    {}
+```http
+HTTP request
+DELETE /administrativeUnits/{Admin id}
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>További lépések
 

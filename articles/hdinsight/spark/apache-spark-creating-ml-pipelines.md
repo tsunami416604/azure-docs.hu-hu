@@ -6,35 +6,35 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
-ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075450"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark Machine Learning-folyamat létrehozása
 
-Apache Spark méretezhető gépi tanulási könyvtára (MLlib) a modellezési képességeket elosztott környezetbe hozza. A Spark- [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) csomag a DataFrames-re épülő, magas szintű API-k készlete. Ezek az API-k segítenek a gyakorlati gépi tanulási folyamatok létrehozásában és finomhangolásában.  A *Spark Machine learning* erre a MLlib-alapú DataFrame API-ra hivatkozik, nem a régebbi RDD-alapú folyamat API-ra.
+Apache Spark méretezhető gépi tanulási könyvtára (MLlib) a modellezési képességeket elosztott környezetbe hozza. A Spark-csomag a [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames-re épülő, magas szintű API-k készlete. Ezek az API-k segítenek a gyakorlati gépi tanulási folyamatok létrehozásában és finomhangolásában.  A *Spark Machine learning* erre a MLlib-alapú DataFrame API-ra hivatkozik, nem a régebbi RDD-alapú folyamat API-ra.
 
 A Machine learning (ML) folyamat olyan teljes munkafolyamat, amely több gépi tanulási algoritmust egyesít. Több lépésre van szükség az adatok feldolgozásához és megismeréséhez, az algoritmusok sorrendjének megköveteléséhez. A folyamatok meghatározzák a gépi tanulási folyamat szakaszait és sorrendjét. A MLlib-ben a folyamat egyes szakaszait egy adott PipelineStages-sorozatot jelképezik, ahol a transzformátorok és az egyes feladatok elvégzésére szolgáló kalkulátorok.
 
 A transzformátorok olyan algoritmusok, amelyek az egyik DataFrame egy másikra alakítják át a `transform()` metódus használatával. Egy szolgáltatás-átalakító például elolvashatja egy DataFrame egy oszlopát, leképezheti azt egy másik oszlopba, és egy új DataFrame is kipróbálhatja a hozzárendelt oszlophoz hozzáfűzve.
 
-A kalkulátor a tanulási algoritmusok absztrakciója, és az adatkészletek összevonása és betanítása egy transzformátor létrehozásához. A kalkulátor egy nevű `fit()`metódust valósít meg, amely elfogad egy DataFrame, és létrehoz egy DataFrame, amely egy átalakító.
+A kalkulátor a tanulási algoritmusok absztrakciója, és az adatkészletek összevonása és betanítása egy transzformátor létrehozásához. A kalkulátor egy nevű metódust valósít meg `fit()` , amely elfogad egy DataFrame, és létrehoz egy DataFrame, amely egy átalakító.
 
 A transzformátorok és a kalkulátorok minden állapot nélküli példánya saját egyedi azonosítóval rendelkezik, amelyet a paraméterek megadásakor használ a rendszer. Mindkettő egységes API-t használ ezeknek a paramétereknek a megadásához.
 
 ## <a name="pipeline-example"></a>Példa a folyamatra
 
-Egy ML-folyamat gyakorlati használatának bemutatása érdekében ebben a példában a HDInsight-fürt `HVAC.csv` alapértelmezett tárolójában előre betöltött minta adatfájlt használunk, vagy az Azure Storage vagy a Data Lake Storage. A fájl tartalmának megtekintéséhez navigáljon a `/HdiSamples/HdiSamples/SensorSampleData/hvac` címtárhoz. `HVAC.csv`több időpontot tartalmaz, és a cél és a tényleges hőmérséklet is megadható a különböző épületekben található HVAC (*fűtő, szellőzés és légkondicionáló*) rendszerek esetében. A cél a modell betanítása az adatra, és egy adott épület előrejelzési hőmérsékletének előállítása.
+Egy ML-folyamat gyakorlati használatának bemutatása érdekében ebben a példában a `HVAC.csv` HDInsight-fürt alapértelmezett tárolójában előre betöltött minta adatfájlt használunk, vagy az Azure Storage vagy a Data Lake Storage. A fájl tartalmának megtekintéséhez navigáljon a `/HdiSamples/HdiSamples/SensorSampleData/hvac` címtárhoz. `HVAC.csv`több időpontot tartalmaz, és a cél és a tényleges hőmérséklet is megadható a különböző épületekben található HVAC (*fűtő, szellőzés és légkondicionáló*) rendszerek esetében. A cél a modell betanítása az adatra, és egy adott épület előrejelzési hőmérsékletének előállítása.
 
 A következő kód:
 
-1. `LabeledDocument`Meghatározza a, a `BuildingID` `SystemInfo` (a rendszer azonosítóját és korát) és a `label` (1,0, ha az épület túl gyors, 0,0 egyébként) tárolja.
-2. Egy egyéni elemzési függvényt `parseDocument` hoz létre, amely egy sor (sor) adatokat vesz igénybe, és meghatározza, hogy az épület "forró"-e, ha a célként megadott hőmérsékletet a tényleges hőmérsékletgel hasonlítja össze.
+1. Meghatározza a, `LabeledDocument` a (a `BuildingID` `SystemInfo` rendszer azonosítóját és korát) és a `label` (1,0, ha az épület túl gyors, 0,0 egyébként) tárolja.
+2. Egy egyéni elemzési függvényt hoz létre `parseDocument` , amely egy sor (sor) adatokat vesz igénybe, és meghatározza, hogy az épület "forró"-e, ha a célként megadott hőmérsékletet a tényleges hőmérsékletgel hasonlítja össze.
 3. A forrásadatok kibontásakor alkalmazza az elemzőt.
 4. Betanítási adatkészletet hoz létre.
 
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-A példában szereplő folyamat három szakaszból `Tokenizer` áll `HashingTF` : és (mindkettő transzformátor) `Logistic Regression` és (egy kalkulátor).  A `training` DataFrame kinyert és elemzett adatait a `pipeline.fit(training)` rendszer a folyamaton keresztül a hívásakor átfolyik.
+A példában szereplő folyamat három szakaszból áll: `Tokenizer` és `HashingTF` (mindkettő transzformátor) és `Logistic Regression` (egy kalkulátor).  A DataFrame kinyert és elemzett adatait a `training` rendszer a folyamaton keresztül a `pipeline.fit(training)` hívásakor átfolyik.
 
-1. Első lépésként `Tokenizer`a a `SystemInfo` bemeneti oszlopot (amely a rendszerazonosító és a kor értékeiből áll) egy `words` kimeneti oszlopba osztja fel. Ezt az `words` új oszlopot a rendszer hozzáadja a DataFrame. 
-2. A második szakasza `HashingTF`átalakítja az új `words` oszlopot a szolgáltatás-vektorokra. Ezt az `features` új oszlopot a rendszer hozzáadja a DataFrame. Ezek az első két szakasz a transzformátorok. 
-3. A harmadik szakasz `LogisticRegression`egy kalkulátor, így a folyamat meghívja a `LogisticRegression.fit()` metódust a létrehozásához. `LogisticRegressionModel` 
+1. Első lépésként a a `Tokenizer` `SystemInfo` bemeneti oszlopot (amely a rendszerazonosító és a kor értékeiből áll) egy `words` kimeneti oszlopba osztja fel. Ezt az új `words` oszlopot a rendszer hozzáadja a DataFrame. 
+2. A második szakasza `HashingTF` átalakítja az új `words` oszlopot a szolgáltatás-vektorokra. Ezt az új `features` oszlopot a rendszer hozzáadja a DataFrame. Ezek az első két szakasz a transzformátorok. 
+3. A harmadik szakasz `LogisticRegression` egy kalkulátor, így a folyamat meghívja a metódust a létrehozásához `LogisticRegression.fit()` `LogisticRegressionModel` . 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-A `Tokenizer` és `HashingTF` a Transformers `words` által `features` hozzáadott új és oszlopok megtekintéséhez, valamint a `LogisticRegression` kalkulátor mintájának megjelenítéséhez futtasson egy `PipelineModel.transform()` metódust az eredeti DataFrame. Az éles kódban a következő lépés egy tesztelési DataFrame átadása a képzés érvényesítéséhez.
+A `words` `features` és a Transformers által hozzáadott új és oszlopok megtekintéséhez, valamint a `Tokenizer` `HashingTF` kalkulátor mintájának megjelenítéséhez `LogisticRegression` futtasson egy `PipelineModel.transform()` metódust az eredeti DataFrame. Az éles kódban a következő lépés egy tesztelési DataFrame átadása a képzés érvényesítéséhez.
 
 ```python
 peek = model.transform(training)

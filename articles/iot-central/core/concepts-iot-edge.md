@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759103"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
@@ -30,7 +29,7 @@ Az **eszköz-sablonok** határozzák meg az eszköz képességeit és IoT Edge m
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Alsóbb rétegbeli eszközök kapcsolatai átjáróval és modulokkal
 
-Az alsóbb rétegbeli eszközök a `$edgeHub` modulon keresztül kapcsolódhatnak egy IoT Edge átjáró eszközhöz. Ez az IoT Edge-eszköz egy transzparens átjáró lesz ebben a forgatókönyvben.
+Az alsóbb rétegbeli eszközök a modulon keresztül kapcsolódhatnak egy IoT Edge átjáró eszközhöz `$edgeHub` . Ez az IoT Edge-eszköz egy transzparens átjáró lesz ebben a forgatókönyvben.
 
 ![Transzparens átjáró diagramja](./media/concepts-iot-edge/gateway-transparent.png)
 
@@ -38,11 +37,11 @@ Az alárendelt eszközök egy egyéni modulon keresztül is csatlakozhatnak egy 
 
 ![Egyéni modul-kapcsolatok diagramja](./media/concepts-iot-edge/gateway-module.png)
 
-Az alábbi ábrán egy IoT Edge átjáró-eszközhöz való kapcsolódás látható mindkét típusú modulban ( `$edgeHub`egyéni és).  
+Az alábbi ábrán egy IoT Edge átjáró-eszközhöz való kapcsolódás látható mindkét típusú modulban (egyéni és `$edgeHub` ).  
 
 ![A csatlakozás diagramja mindkét kapcsolati modulon keresztül](./media/concepts-iot-edge/gateway-module-transparent.png)
 
-Végül az alsóbb rétegbeli eszközök több egyéni modulon keresztül csatlakozhatnak egy IoT Edge átjáróhoz. Az alábbi ábrán egy Modbus egyéni modul, egy egyedi modul és a `$edgeHub` modul segítségével csatlakozó alsóbb rétegbeli eszközök láthatók. 
+Végül az alsóbb rétegbeli eszközök több egyéni modulon keresztül csatlakozhatnak egy IoT Edge átjáróhoz. Az alábbi ábrán egy Modbus egyéni modul, egy egyedi modul és a modul segítségével csatlakozó alsóbb rétegbeli eszközök láthatók `$edgeHub` . 
 
 ![Több egyéni modulon keresztüli csatlakozás diagramja](./media/concepts-iot-edge/gateway-module2-transparent.png)
 

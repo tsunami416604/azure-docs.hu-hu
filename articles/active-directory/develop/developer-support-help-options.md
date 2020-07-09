@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885531"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
@@ -46,7 +45,7 @@ Ahol *{a keresési kifejezések}* megfelelnek a keresési kulcsszavaknak.
 
 ## <a name="use-the-development-support-tools"></a>A fejlesztői támogatási eszközök használata
 
-| Eszköz  | Leírás  |
+| Eszköz  | Description  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | A jogcímek nevének és értékének dekódolásához illesszen be egy azonosítót vagy hozzáférési tokent. |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmek elfogadását és a válaszok megtekintését a Microsoft Graph API-ra. |

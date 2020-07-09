@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671579"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton futó profil Web Apps Application Insights Profiler használatával
@@ -65,7 +64,7 @@ Ez a cikk bemutatja, hogyan érheti el az Azure-beli virtuális gépen (VM) vagy
     Set-AzVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Ha a kívánt alkalmazás az [IIS](https://www.microsoft.com/web/downloads/platform.aspx)-en keresztül fut, `IIS Http Tracing` engedélyezze a Windows-szolgáltatást.
+1. Ha a kívánt alkalmazás az [IIS](https://www.microsoft.com/web/downloads/platform.aspx)-en keresztül fut, engedélyezze a `IIS Http Tracing` Windows-szolgáltatást.
 
    a. Hozzon létre távoli hozzáférést a környezethez, majd használja a [Windows-szolgáltatások hozzáadása]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakot. Vagy futtassa a következő parancsot a PowerShellben (rendszergazdaként):  
 
@@ -87,7 +86,7 @@ Még nem tudjuk beállítani a Application Insights Profiler-gyűjtőt a portál
 
     ![Ellenőrizze, hogy telepítve van-e a WAD bővítmény][wadextension]
 
-2. Keresse meg a VM Diagnostics bővítményt a virtuális géphez. Ugrás a [https://resources.azure.com](https://resources.azure.com)következőre:. Bontsa ki az erőforráscsoportot, a Microsoft. számítási virtualMachines, a virtuális gép nevét és a bővítményeket.  
+2. Keresse meg a VM Diagnostics bővítményt a virtuális géphez. Ugrás a következőre: [https://resources.azure.com](https://resources.azure.com) . Bontsa ki az erőforráscsoportot, a Microsoft. számítási virtualMachines, a virtuális gép nevét és a bővítményeket.  
 
     ![Navigáljon a WAD-konfigurációhoz Azure Erőforrás-kezelő][azureresourceexplorer]
 

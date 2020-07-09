@@ -5,25 +5,21 @@ description: Megtudhatja, hogyan gyűjthet Azure Machine Learning bemeneti model
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432991"
 ---
 # <a name="collect-data-for-models-in-production"></a>Adatok gyűjtése a termelési modellekhez
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> A Azure Machine Learning monitoring SDK hamarosan megszűnik. Az SDK továbbra is megfelelő azoknak a fejlesztőknek, akik jelenleg az SDK használatával figyelik az adateltolódást a modellekben. Az új ügyfelek esetében azonban javasoljuk, hogy az egyszerűsített [adatfigyelést Application Insights](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)használatával használja.
 
 Ez a cikk bemutatja, hogyan gyűjtheti be a bemeneti modell adatait Azure Machine Learningból. Azt is bemutatja, hogyan helyezheti üzembe a bemeneti adatokat egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön, és hogyan tárolhatja a kimeneti adatokat az Azure Blob Storage-ban.
 
@@ -56,11 +52,11 @@ A blob kimeneti adatelérési útja a következő szintaxist követi:
 ```
 
 >[!NOTE]
-> A 0.1.0 A16 verziónál korábbi Pythonhoz készült Azure Machine Learning SDK verziójában az `designation` argumentum neve. `identifier` Ha a kódot egy korábbi verzióval fejlesztette ki, azt ennek megfelelően kell frissítenie.
+> A 0.1.0 A16 verziónál korábbi Pythonhoz készült Azure Machine Learning SDK verziójában az `designation` argumentum neve `identifier` . Ha a kódot egy korábbi verzióval fejlesztette ki, azt ennek megfelelően kell frissítenie.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree) .
+- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 
 - Telepíteni kell egy AzureMachine learning-munkaterületet, egy helyi könyvtárat, amely tartalmazza a parancsfájlokat, valamint a Pythonhoz készült Azure Machine Learning SDK-t. A telepítésének megismeréséhez tekintse meg [a fejlesztési környezet konfigurálása](how-to-configure-environment.md)című témakört.
 
@@ -125,7 +121,7 @@ Ha már van olyan szolgáltatás, amelynek függőségei a környezet fájljába
 
 1. Nyissa meg a munkaterületet.
 
-1. Válassza a **központi telepítés** > lehetőséget,**majd válassza a szolgáltatás** > **szerkesztése**lehetőséget.
+1. Válassza a **központi telepítés**lehetőséget,  >  **majd válassza a szolgáltatás**  >  **szerkesztése**lehetőséget.
 
    ![A szolgáltatás szerkesztése](././media/how-to-enable-data-collection/EditService.PNG)
 
@@ -143,7 +139,7 @@ Bármikor leállíthatja az adatgyűjtést. A Python-kód vagy a Azure Machine L
 
 1. Nyissa meg a munkaterületet.
 
-1. Válassza a **központi telepítés** > lehetőséget,**majd válassza a szolgáltatás** > **szerkesztése**lehetőséget.
+1. Válassza a **központi telepítés**lehetőséget,  >  **majd válassza a szolgáltatás**  >  **szerkesztése**lehetőséget.
 
    [![Válassza a szerkesztés lehetőséget](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
@@ -189,7 +185,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI blob beállítása](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Adja meg a Storage-fiók nevét, és adja meg a Storage-kulcsát. Ezt az információt a blobban található **Beállítások** > **hozzáférési kulcsok** lehetőség kiválasztásával érheti el.
+1. Adja meg a Storage-fiók nevét, és adja meg a Storage-kulcsát. Ezt az információt a blobban található **Beállítások**  >  **hozzáférési kulcsok** lehetőség kiválasztásával érheti el.
 
 1. Válassza ki a **modell** adattárolót, és válassza a **Szerkesztés**lehetőséget.
 
@@ -199,7 +195,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Adja meg a modell elérési útját a szűrőben. Ha csak egy adott évből vagy hónapból származó fájlokra szeretne rákeresni, egyszerűen bontsa ki a szűrő elérési útját. Ha például csak a márciusi adatmegjelenítést szeretné megkeresni, használja a szűrő elérési útját:
 
-   /modeldata/\<subscriptionid>/\<resourcegroupname>/\<workspacename>/\<webszolgáltatásnév>/\<modelname>/\<modelversion>/\<megjelölés>/\<év>/3
+   /modeldata/ \<subscriptionid> / \<resourcegroupname> / \<workspacename> / \<webservicename> / \<modelname> / \<modelversion> / \<designation> / \<year> /3
 
 1. A **név** értékek alapján szűrheti a megfelelő adatokat. Ha a jóslatokat és a bemeneti adatokat tárolta, mindegyikhez létre kell hoznia egy lekérdezést.
 
@@ -207,7 +203,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI tartalom](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Kattintson az **OK** gombra. Az adatelőre betöltött sorok.
+1. Válassza az **OK** lehetőséget. Az adatelőre betöltött sorok.
 
     [![Power BI fájlok egyesítése](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -227,7 +223,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Databricks adatok feltöltése lehetőség kiválasztása](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Válassza az **új tábla létrehozása** lehetőséget, és válassza az **egyéb adatforrások** > **Azure Blob Storage** > **tábla létrehozása jegyzetfüzetben**elemet.
+1. Válassza az **új tábla létrehozása** lehetőséget, és válassza az **egyéb adatforrások**  >  **Azure Blob Storage**  >  **tábla létrehozása jegyzetfüzetben**elemet.
 
     [![Databricks-tábla létrehozása](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

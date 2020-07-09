@@ -5,48 +5,57 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/22/2020
+ms.date: 06/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: ed317039e683ef36054d5ace612e09ca75dfa11e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0a7048e79ddd4a86d7e14e573cf5b8556f462f03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550326"
 ---
-# <a name="sign-in-to-azure-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés az Azure-ba e-mailben másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
-Számos szervezet szeretné engedélyezni, hogy a felhasználók a helyszíni címtár-környezettel megegyező hitelesítő adatokkal jelentkezzenek be az Azure-ba. A hibrid hitelesítésnek nevezett megközelítéssel a felhasználóknak csak egy hitelesítő adatot kell megemlékezniük.
+Számos szervezet szeretné engedélyezni, hogy a felhasználók a helyszíni címtár-környezettel megegyező hitelesítő adatokkal jelentkezzenek be Azure Active Directoryba (Azure AD-ba). A hibrid hitelesítésnek nevezett megközelítéssel a felhasználóknak csak egy hitelesítő adatot kell megemlékezniük.
 
 Néhány szervezet nem helyezte át a hibrid hitelesítést a következő okok miatt:
 
-* Alapértelmezés szerint a Azure Active Directory (Azure AD) egyszerű felhasználónév (UPN) a helyszíni címtárral megegyező egyszerű felhasználónévre van beállítva.
-* Az Azure AD UPN módosítása helytelen egyezést hoz létre az olyan helyszíni és az Azure-környezetek között, amelyek bizonyos alkalmazásokkal és szolgáltatásokkal kapcsolatos problémákat okozhatnak.
-* Az üzleti vagy megfelelőségi okok miatt a szervezet nem szeretné a helyszíni UPN-t használni az Azure-ba való bejelentkezéshez.
+* Alapértelmezés szerint az Azure AD egyszerű felhasználóneve (UPN) ugyanarra az egyszerű felhasználónévre van beállítva, mint a helyszíni címtár.
+* Az Azure AD UPN módosítása helytelen egyezést hoz létre az olyan helyszíni és Azure AD-környezetek között, amelyek bizonyos alkalmazásokkal és szolgáltatásokkal kapcsolatos problémákat okozhatnak.
+* Az üzleti vagy megfelelőségi okok miatt a szervezet nem szeretné a helyszíni UPN-t használni az Azure AD-be való bejelentkezéshez.
 
-Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t úgy, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be az Azure-ba, alternatív bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam*-re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-címével, például a paranccsal jelentkezhetnek be az Azure-ba `balas@fabrikam.com` .
+Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be egy másik bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam*-re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-cím használatával bejelentkeznek az Azure AD-be, például: `balas@fabrikam.com` .
 
-|     |
-| --- |
-| Jelentkezzen be az Azure AD-be a másodlagos bejelentkezési AZONOSÍTÓként a Azure Active Directory nyilvános előzetes verziójára. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Jelentkezzen be az Azure AD-be a másodlagos bejelentkezési AZONOSÍTÓként a Azure Active Directory nyilvános előzetes verziójára. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Az Azure AD bejelentkezési módszereinek áttekintése
 
-Az egyszerű felhasználónevek (UPN-EK) a helyszíni címtárban és az Azure AD-ben lévő felhasználói fiókok egyedi azonosítói. A címtárban lévő összes felhasználói fiókot egy egyszerű felhasználónév jelképezi, például: `balas@contoso.com` . Ha a helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetet az Azure AD-vel szinkronizálja, alapértelmezés szerint az Azure AD UPN-t úgy kell beállítani, hogy az megfeleljen a helyszíni UPN-nek.
+Az Azure AD-be való bejelentkezéshez a felhasználók olyan nevet adjon meg, amely egyedileg azonosítja a fiókját. Történelmileg csak az Azure AD UPN-t használhatja bejelentkezési névként.
 
-Számos szervezet esetében érdemes beállítani a helyszíni UPN-t és az Azure AD UPN-t az egyeztetéshez. Amikor a felhasználók bejelentkeznek az Azure-alkalmazásokba és-szolgáltatásokba, az Azure AD UPN-t használják. Egyes szervezetek azonban nem használhatják a bejelentkezéshez szükséges UPN-ket az üzleti szabályzatok vagy a felhasználói élménygel kapcsolatos problémák miatt.
+Olyan szervezetek esetében, ahol a helyszíni UPN a felhasználó elsődleges bejelentkezési e-mail-címe, ez a megközelítés nagyszerű volt. Ezek a szervezetek az Azure AD UPN-t a helyszíni egyszerű felhasználónévvel megegyező értékre állítja be, és a felhasználóknak egységes bejelentkezési felülettel kell rendelkezniük.
 
-Azok a szervezetek, amelyek nem használhatják az egyező UPN-ket az Azure AD-ben, néhány lehetőség közül választhatnak:
+Egyes szervezeteknél azonban a helyszíni UPN nem használatos bejelentkezési névként. A helyszíni környezetekben a helyi AD DS úgy konfigurálja, hogy engedélyezze a bejelentkezést egy másik bejelentkezési AZONOSÍTÓval. Ha az Azure AD UPN-t ugyanarra az értékre állítja be, mint a helyszíni UPN-t, az Azure AD-ben a felhasználók ezt az értéket kell bejelentkezniük.
 
-* Az egyik módszer az, ha az Azure AD UPN-t az üzleti igények alapján (például:) szeretné beállítani `balas@fabrikam.com` .
-    * Azonban nem minden alkalmazás és szolgáltatás kompatibilis a helyszíni UPN-re és az Azure AD UPN-re vonatkozó eltérő érték használatával.
-* A jobb megoldás az, hogy az Azure AD és a helyszíni UPN-azonosítók ugyanarra az értékre legyenek beállítva, és konfigurálja az Azure AD-t, hogy a felhasználók alternatív Bejelentkezési azonosítóként jelentkezzenek be az Azure-ba.
+A probléma tipikus megkerülő megoldás volt az Azure AD UPN beállítása arra az e-mail-címre, amellyel a felhasználó bejelentkezik. Ez a megközelítés működik, de a helyszíni AD és az Azure AD között különböző UPN-ket eredményez, és ez a konfiguráció nem kompatibilis az összes Microsoft 365 munkaterheléssel.
 
-Ha az e-mail-cím másodlagos bejelentkezési AZONOSÍTÓként szolgál, a felhasználók az egyszerű felhasználónév megadásával továbbra is bejelentkezhetnek az Azure-ba, de az e-mailben is bejelentkezhetnek. Ennek támogatásához meg kell adnia egy e-mail-címet a felhasználó *ProxyAddresses* attribútumában a helyszíni címtárban. Ez a *ProxyAddress* attribútum egy vagy több e-mail-címet támogat.
+Egy másik módszer, hogy szinkronizálja az Azure AD-t és a helyszíni UPN-ket ugyanarra az értékre, majd konfigurálja az Azure AD-t, hogy a felhasználók ellenőrzött e-mail-címmel jelentkezzenek be az Azure AD-be. Ennek a képességnek a biztosításához meg kell adnia egy vagy több e-mail-címet a felhasználó *ProxyAddresses* attribútumában a helyszíni címtárban. A *ProxyAddresses* ezután automatikusan szinkronizálva lesznek az Azure ad-vel Azure ad Connect használatával.
+
+## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+
+Az aktuális előzetes verzióban a következő korlátozások érvényesek, amikor egy felhasználó egy nem UPN-alapú e-mail-címmel jelentkezik be alternatív bejelentkezési AZONOSÍTÓként:
+
+* A felhasználók akkor is láthatják az UPN-t, ha a nem UPN-alapú e-mail-címmel jelentkezett be. A következő példa az alábbi viselkedést tapasztalhatja:
+    * A rendszer felszólítja a felhasználót, hogy jelentkezzen be az UPN-be, amikor az Azure AD-be irányítja a-ba `login_hint=<non-UPN email>` .
+    * Ha a felhasználó egy nem UPN-alapú e-mail-címmel jelentkezik be, és helytelen jelszót ad meg, a "jelszó megadása" lapon az egyszerű felhasználónév megjelenítéséhez az *"adja meg a jelszót"* oldal változik.
+    * Bizonyos Microsoft-webhelyek és-alkalmazások (például a és a Microsoft Office) esetében [https://portal.azure.com](https://portal.azure.com) a **Account Manager** vezérlőelem általában a jobb felső sarokban jelenhet meg a bejelentkezéshez használt nem UPN e-mail helyett.
+
+* Egyes folyamatok jelenleg nem kompatibilisek a nem UPN-alapú e-mailekkel, például a következőkkel:
+    * Az Identity Protection jelenleg nem felel meg az e-mailek másodlagos bejelentkezési azonosítóinak a *kiszivárgott hitelesítő adatok* kockázatának észlelésével. Ez a kockázati észlelés az UPN-t használja a kiszivárgott hitelesítő adatok egyeztetéséhez. További információ: [Azure ad Identity Protection kockázatkezelés és szervizelés][identity-protection].
+    * A másodlagos bejelentkezési AZONOSÍTÓra küldött B2B-meghívók nem teljes mértékben támogatottak. Miután elfogadta a meghívó e-mailként való elküldését egy másik bejelentkezési AZONOSÍTÓként, a másodlagos e-mail-címmel való bejelentkezés nem működik a bérlői végponton.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Bejelentkezési e-mail-címek szinkronizálása az Azure AD-vel
 
@@ -179,6 +188,7 @@ További információ a hibrid identitási műveletekről: [jelszó-kivonatolás
 [hybrid-overview]: ../hybrid/cloud-governed-management-for-on-premises.md
 [phs-overview]: ../hybrid/how-to-connect-password-hash-synchronization.md
 [pta-overview]: ../hybrid/how-to-connect-pta-how-it-works.md
+[identity-protection]: ../identity-protection/overview-identity-protection.md#risk-detection-and-remediation
 
 <!-- EXTERNAL LINKS -->
 [Install-Module]: /powershell/module/powershellget/install-module

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650082"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Biztonsági keret: kivételek kezelése | Enyhítését 
@@ -36,7 +35,7 @@ ms.locfileid: "83650082"
 | **Összetevő**               | WCF | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános, NET-keretrendszer 3 |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Lépéseket** | A Windows Communication Framework (WCF) szolgáltatások beállítható a hibakeresési információk megjelenítésére. A hibakeresési adatok nem használhatók éles környezetekben. A `<serviceDebug>` címke határozza meg, hogy a hibakeresési információ funkció engedélyezve van-e a WCF szolgáltatáshoz. Ha a includeExceptionDetailInFaults attribútum értéke TRUE (igaz), a rendszer az alkalmazásból származó kivételi adatokat adja vissza az ügyfeleknek. A támadók az alkalmazás által használt keretrendszerre, adatbázisra vagy más erőforrásokra irányuló támadásokhoz való csatlakozáshoz szükséges további információkat is kihasználhatják. |
 
@@ -71,7 +70,7 @@ Hibakeresési információk letiltása a szolgáltatásban. Ez a `<serviceDebug>
 | **Összetevő**               | Webes API | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | MVC 5, MVC 6 |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [Kivételek a ASP.net web API](https://www.asp.net/web-api/overview/error-handling/exception-handling)-ban, [a modell érvényesítése a ASP.net webes API-ban](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Lépéseket** | Alapértelmezés szerint a ASP.NET webes API legtöbb nem kezelt kivétele egy HTTP-válaszra van lefordítva, állapotkód`500, Internal Server Error`|
 
@@ -189,8 +188,8 @@ A ASP.NET web API kivételes kezelési és modell-ellenőrzésével kapcsolatos 
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Hivatkozások**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket** | <p>Az általános hibaüzenetek közvetlenül a felhasználó számára érhetők el, anélkül, hogy bizalmas alkalmazásadatok is beletartoznak. A bizalmas adatokra például a következők tartoznak:</p><ul><li>Kiszolgálók nevei</li><li>Kapcsolati sztringek</li><li>Felhasználónevek</li><li>Jelszavak</li><li>SQL-eljárások</li><li>A dinamikus SQL-hibák részletei</li><li>Verem nyomkövetése és a kód sorai</li><li>Memóriában tárolt változók</li><li>Meghajtók és mappák helye</li><li>Alkalmazás telepítési pontjai</li><li>Gazdagép konfigurációs beállításai</li><li>Egyéb belső alkalmazás részletei</li></ul><p>Az alkalmazáson belüli hibák és általános hibaüzenetek megadásával, valamint az IIS-n belüli egyéni hibák elhárításával megelőzhető az adatokhoz való illetéktelen hozzáférés. SQL Server adatbázis-és .NET-kivételek kezelését, többek között az architektúrák kezelésére, különösen részletesek, és rendkívül hasznosak az alkalmazás rosszindulatú felhasználói profilkészítéséhez. Ne jelenítse meg közvetlenül a .NET-kivétel osztályból származtatott osztály tartalmát, és ügyeljen arra, hogy megfelelő kivételek legyenek, hogy egy váratlan kivételt ne közvetlenül a felhasználóhoz lehessen kiemelni.</p><ul><li>Adja meg az általános hibaüzeneteket közvetlenül a felhasználó számára, amely a kivétel/hiba üzenetben közvetlenül megtalálható a megadott adatokból.</li><li>A .NET-kivételi osztály tartalmának megjelenítése közvetlenül a felhasználó számára</li><li>Az összes hibaüzenet alátöltése, és ha szükséges, az alkalmazás ügyfelének küldött általános hibaüzeneten keresztül tájékoztatja a felhasználót</li><li>Ne tegye elérhetővé a kivétel osztály tartalmát közvetlenül a felhasználónak, különösen a visszatérési értéket `.ToString()` , vagy az üzenet vagy a StackTrace tulajdonságainak értékét. Biztonságosan naplózhatja ezeket az információkat, és egy ártalmatlan üzenetet jeleníthet meg a felhasználónak</li></ul>|
 
 ## <a name="implement-default-error-handling-page"></a><a id="default"></a>Alapértelmezett hibakezelő lap implementálása
@@ -200,9 +199,9 @@ A ASP.NET web API kivételes kezelési és modell-ellenőrzésével kapcsolatos 
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [Az ASP.NET hibalapok beállításainak szerkesztése párbeszédablak](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Lépéseket** | <p>Ha egy ASP.NET-alkalmazás meghibásodik, és a HTTP/1. x 500 belső kiszolgálóhiba miatt vagy egy szolgáltatás konfigurációja (például a kérelmek szűrése) megakadályozza a lapok megjelenítését, hibaüzenetet fog generálni. A rendszergazdák megadhatják, hogy az alkalmazásnak barátságos üzenetet kell-e megjelenítenie az ügyfélnek, részletes hibaüzenetet küld az ügyfélnek, vagy részletes hibaüzenetet kap a localhost-ra. A `<customErrors>` web. config fájlban három mód van:</p><ul><li>Ekkor **:** Megadja, hogy az egyéni hibák engedélyezve vannak. Ha nincs megadva defaultRedirect attribútum, a felhasználók általános hibát látnak. Az egyéni hibák a távoli ügyfelek és a helyi gazdagép számára jelennek meg</li><li>**Kikapcsolva:** Megadja, hogy az egyéni hibák le vannak tiltva. A részletes ASP.NET hibák a távoli ügyfelek és a helyi gazdagép számára jelennek meg</li><li>**RemoteOnly:** Megadja, hogy az egyéni hibák csak a távoli ügyfeleknél jelenjenek meg, és hogy a ASP.NET hibák a helyi gazdagépen jelennek meg. Ez az alapértelmezett érték</li></ul><p>Nyissa meg a `web.config` fájlt az alkalmazáshoz vagy a webhelyhez, és győződjön meg arról, hogy a címke vagy a `<customErrors mode="RemoteOnly" />` `<customErrors mode="On" />` definiálva van.</p>|
+| **Lépéseket** | <p>Ha egy ASP.NET-alkalmazás meghibásodik, és a HTTP/1. x 500 belső kiszolgálóhiba miatt vagy egy szolgáltatás konfigurációja (például a kérelmek szűrése) megakadályozza a lapok megjelenítését, hibaüzenetet fog generálni. A rendszergazdák megadhatják, hogy az alkalmazásnak barátságos üzenetet kell-e megjelenítenie az ügyfélnek, részletes hibaüzenetet küld az ügyfélnek, vagy részletes hibaüzenetet kap a localhost-ra. A `<customErrors>` web.config címkéjének három módja van:</p><ul><li>Ekkor **:** Megadja, hogy az egyéni hibák engedélyezve vannak. Ha nincs megadva defaultRedirect attribútum, a felhasználók általános hibát látnak. Az egyéni hibák a távoli ügyfelek és a helyi gazdagép számára jelennek meg</li><li>**Kikapcsolva:** Megadja, hogy az egyéni hibák le vannak tiltva. A részletes ASP.NET hibák a távoli ügyfelek és a helyi gazdagép számára jelennek meg</li><li>**RemoteOnly:** Megadja, hogy az egyéni hibák csak a távoli ügyfeleknél jelenjenek meg, és hogy a ASP.NET hibák a helyi gazdagépen jelennek meg. Ez az alapértelmezett érték</li></ul><p>Nyissa meg a `web.config` fájlt az alkalmazáshoz vagy a webhelyhez, és győződjön meg arról, hogy a címke vagy a `<customErrors mode="RemoteOnly" />` `<customErrors mode="On" />` definiálva van.</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>Üzembe helyezési módszer beállítása a kiskereskedelmi környezetbe az IIS-ben
 
@@ -211,9 +210,9 @@ A ASP.NET web API kivételes kezelési és modell-ellenőrzésével kapcsolatos 
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [üzembe helyezési elem (ASP.NET-beállítási séma)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
-| **Lépéseket** | <p>A `<deployment retail>` kapcsoló üzemi IIS-kiszolgálók általi használatra készült. Ezzel a kapcsolóval az alkalmazások a lehető legjobb teljesítménnyel és a lehető legkevesebb biztonsági információval futnak, ha letiltja az alkalmazás nyomkövetési kimenetét egy oldalon, letiltva a részletes hibaüzenetek megjelenítését a végfelhasználók számára, és letiltja a hibakeresési kapcsolót.</p><p>Az aktív fejlesztés során az olyan gyakran használt kapcsolók és beállítások, amelyek fejlesztői fókuszban vannak, például a sikertelen kérelmek nyomon követése és a hibakeresés. Azt javasoljuk, hogy a telepítési módszer bármely üzemi kiszolgálón legyen a kiskereskedelmi értékre állítva. Nyissa meg a Machine. config fájlt, és győződjön meg arról, hogy a `<deployment retail="true" />` változatlanul igaz értékre van állítva.</p>|
+| **Lépéseket** | <p>A `<deployment retail>` kapcsoló üzemi IIS-kiszolgálók általi használatra készült. Ezzel a kapcsolóval az alkalmazások a lehető legjobb teljesítménnyel és a lehető legkevesebb biztonsági információval futnak, ha letiltja az alkalmazás nyomkövetési kimenetét egy oldalon, letiltva a részletes hibaüzenetek megjelenítését a végfelhasználók számára, és letiltja a hibakeresési kapcsolót.</p><p>Az aktív fejlesztés során az olyan gyakran használt kapcsolók és beállítások, amelyek fejlesztői fókuszban vannak, például a sikertelen kérelmek nyomon követése és a hibakeresés. Azt javasoljuk, hogy a telepítési módszer bármely üzemi kiszolgálón legyen a kiskereskedelmi értékre állítva. Nyissa meg a machine.config fájlt, és győződjön meg arról, hogy a `<deployment retail="true" />` változatlanul igaz értékre van állítva.</p>|
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>A kivételek biztonságosan meghiúsulnak
 
@@ -222,7 +221,7 @@ A ASP.NET web API kivételes kezelési és modell-ellenőrzésével kapcsolatos 
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Hivatkozások**              | [Biztonságos feladatátvétel](https://owasp.org/www-community/Fail_securely) |
 | **Lépéseket** | Az alkalmazásnak biztonságosan kell működnie. Bármely olyan metódus, amely egy logikai értéket ad vissza, amely alapján bizonyos döntés születik, a kivételek blokkolását alaposan létre kell hozni. Sok logikai hiba történt, mivel a biztonsági problémák a bekúszik a alkalmazásban, amikor a kivételi blokkot gondatlanul írták.|
 

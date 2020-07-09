@@ -4,10 +4,10 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733448"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
@@ -15,7 +15,7 @@ ms.locfileid: "82733448"
 Az [Azure app Services](https://docs.microsoft.com/azure/app-service/) -on futó ASP.NET és ASP.net Core-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél egyszerűbb. Mivel korábban a hely kiterjesztésének manuális telepítésére volt szükség, alapértelmezés szerint a legújabb bővítmény/ügynök már be van építve az App Service-lemezképbe. Ebből a cikkből megtudhatja, hogyan engedélyezheti Application Insights monitorozását, valamint előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
 
 > [!NOTE]
-> Application Insights hely bővítményének manuális hozzáadása a **fejlesztői eszközök** > **bővítményein** keresztül elavult. Ez a bővítmény-telepítési módszer az egyes új verziók manuális frissítéseitől függ. A bővítmény legújabb stabil kiadása mostantól a App Service rendszerkép részeként van [előtelepítve](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . A fájlok a ben `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` találhatók, és automatikusan frissülnek az egyes stabil kiadásokkal. Ha követi az ügynök-alapú utasításokat az alábbi figyelés engedélyezéséhez, az automatikusan eltávolítja az elavult bővítményt.
+> Application Insights hely bővítményének manuális hozzáadása a **fejlesztői eszközök**  >  **bővítményein** keresztül elavult. Ez a bővítmény-telepítési módszer az egyes új verziók manuális frissítéseitől függ. A bővítmény legújabb stabil kiadása mostantól a App Service rendszerkép részeként van [előtelepítve](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . A fájlok a ben találhatók, `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` és automatikusan frissülnek az egyes stabil kiadásokkal. Ha követi az ügynök-alapú utasításokat az alábbi figyelés engedélyezéséhez, az automatikusan eltávolítja az elavult bővítményt.
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -66,9 +66,9 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 | Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
 | Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
 
-3. Az olyan beállítások konfigurálásához, mint például a mintavételezés, amelyet korábban a applicationinsights. config fájlon keresztül kezelhet, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
+3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
-    * Például a kezdeti mintavételi százalék módosításához hozzon létre egy alkalmazás-beállítást: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` és egy értéket. `100`
+    * Például a kezdeti mintavételi százalék módosításához hozzon létre egy alkalmazás-beállítást: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` és egy értéket `100` .
 
     * A támogatott adaptív mintavételi telemetria processzor-beállításainak listájáért tekintse meg a [kódot](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) és a [kapcsolódó dokumentációt](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
@@ -95,7 +95,7 @@ A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-A app Service webalkalmazás **Beállítások** > területén**válassza a Application Insights** > **Engedélyezés**lehetőséget. A Node. js-ügynök alapú figyelés jelenleg előzetes verzióban érhető el.
+A app Service webalkalmazás **Beállítások**területén  >  **válassza a Application Insights**  >  **Engedélyezés**lehetőséget. Node.js ügynök-alapú figyelés jelenleg előzetes verzióban érhető el.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -132,7 +132,7 @@ Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van a .ne
 
 Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 
-* **Beállítások** > **alkalmazás beállításainak** kiválasztása
+* **Beállítások**  >  **alkalmazás beállításainak** kiválasztása
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
      név:`APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -145,7 +145,7 @@ Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Ha engedélyezni szeretné az ügyféloldali figyelést a Node. js-alkalmazáshoz, [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+Az Node.js alkalmazás ügyféloldali figyelésének engedélyezéséhez [manuálisan kell hozzáadnia az ügyféloldali JavaScript SDK-t az alkalmazáshoz](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -165,12 +165,12 @@ Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedé
 
 ### <a name="application-settings-definitions"></a>Alkalmazásbeállítások definíciói
 
-|Alkalmazás-beállítás neve |  Meghatározás | Érték |
+|Alkalmazás-beállítás neve |  Definíció | Érték |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | A fő bővítmény, amely a futtatókörnyezet figyelését vezérli. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett módban csak az alapvető funkciók engedélyezettek az optimális teljesítmény biztosításához. | `default` vagy `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Azt szabályozza, hogy a bináris Újraírási motor `InstrumentationEngine` be legyen-e kapcsolva. Ez a beállítás teljesítménybeli következményekkel jár, és a hatás a hideg indítás/indítás ideje. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | Azt szabályozza, hogy az SQL & Azure Table szövege a függőségi hívásokkal együtt rögzítve lesz-e. Teljesítményre vonatkozó figyelmeztetés: a rendszer az alkalmazás hideg indítási idejét fogja érinteni. Ehhez a beállításhoz `InstrumentationEngine`a szükséges. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | Azt szabályozza, hogy az SQL & Azure Table szövege a függőségi hívásokkal együtt rögzítve lesz-e. Teljesítményre vonatkozó figyelmeztetés: a rendszer az alkalmazás hideg indítási idejét fogja érinteni. Ehhez a beállításhoz a szükséges `InstrumentationEngine` . | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Alkalmazás-beállítások App Service Azure Resource Manager
 
@@ -212,7 +212,7 @@ Ez a beállítás a legújabb Azure Resource Manager sablont hozza létre a konf
 
   ![Webalkalmazás-sablon App Service](./media/azure-web-apps/arm-template.png)
 
-Az alábbi példa az összes példányát `AppMonitoredSite` lecseréli a hely nevével:
+Az alábbi példa az összes példányát lecseréli a `AppMonitoredSite` hely nevével:
 
 ```json
 {
@@ -355,8 +355,8 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 > [!NOTE]
 > A Java-alkalmazások csak az Azure App Serviceson, manuális SDK-alapú rendszerállapoton keresztül támogatottak, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
 
-1. Ellenőrizze, hogy az alkalmazást a használatával `ApplicationInsightsAgent`figyeli-e.
-    * Győződjön meg `ApplicationInsightsAgent_EXTENSION_VERSION` arról, hogy az alkalmazás beállítása "~ 2" értékre van állítva.
+1. Ellenőrizze, hogy az alkalmazást a használatával figyeli-e `ApplicationInsightsAgent` .
+    * Győződjön meg arról, hogy az `ApplicationInsightsAgent_EXTENSION_VERSION` alkalmazás beállítása "~ 2" értékre van állítva.
 2. Győződjön meg arról, hogy az alkalmazás megfelel a figyelni kívánt követelményeknek.
     * Tallózással keresse meg a`https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
@@ -368,22 +368,22 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
     * Győződjön meg arról, hogy az állapot forrása létezik, és így néz ki:`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Ha nem található hasonló érték, az azt jelenti, hogy az alkalmazás jelenleg nem fut vagy nem támogatott. Az alkalmazás futásának ellenőrzéséhez próbálja meg manuálisan meglátogatni az alkalmazás URL-címét/alkalmazás-végpontját, ami lehetővé teszi, hogy a futásidejű információk elérhetővé váljanak.
 
-    * Erősítse meg `IKeyExists` , hogy a`true`
-        * Ha igen `false`, adja hozzá `APPINSIGHTS_INSTRUMENTATIONKEY` a `APPLICATIONINSIGHTS_CONNECTION_STRING` és az rendszerállapotkulcsot GUID azonosítóját az alkalmazás beállításaihoz.
+    * Erősítse meg, hogy `IKeyExists` a`true`
+        * Ha igen `false` , adja hozzá a `APPINSIGHTS_INSTRUMENTATIONKEY` és `APPLICATIONINSIGHTS_CONNECTION_STRING` az rendszerállapotkulcsot GUID azonosítóját az alkalmazás beállításaihoz.
 
-    * Győződjön meg arról, hogy nincsenek bejegyzések `AppAlreadyInstrumented`a `AppContainsDiagnosticSourceAssembly`, és `AppContainsAspNetTelemetryCorrelationAssembly`rendszerhez.
-        * Ha bármelyik bejegyzés létezik, távolítsa el a következő csomagokat az alkalmazásból: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`és `Microsoft.AspNet.TelemetryCorrelation`.
+    * Győződjön meg arról, hogy nincsenek bejegyzések a `AppAlreadyInstrumented` , és rendszerhez `AppContainsDiagnosticSourceAssembly` `AppContainsAspNetTelemetryCorrelationAssembly` .
+        * Ha bármelyik bejegyzés létezik, távolítsa el a következő csomagokat az alkalmazásból: `Microsoft.ApplicationInsights` , `System.Diagnostics.DiagnosticSource` és `Microsoft.AspNet.TelemetryCorrelation` .
 
 Az alábbi táblázat részletesen ismerteti, hogy mit jelentenek ezek az értékek, a kiváltó okok és az ajánlott javítások:
 
 |Probléma értéke|Magyarázat|Hibajavítás
 |---- |----|---|
-| `AppAlreadyInstrumented:true` | Ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni. Ennek oka lehet a következőre való hivatkozás `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`vagy`Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozásokat. A hivatkozások némelyike alapértelmezés szerint a Visual Studio-sablonokból adódik hozzá, és a Visual Studio régebbi verziói is hozzáadhatnak `Microsoft.ApplicationInsights`hivatkozásokat a alkalmazáshoz.
+| `AppAlreadyInstrumented:true` | Ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni. Ennek oka lehet a következőre való hivatkozás `System.Diagnostics.DiagnosticSource` , `Microsoft.AspNet.TelemetryCorrelation` vagy`Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozásokat. A hivatkozások némelyike alapértelmezés szerint a Visual Studio-sablonokból adódik hozzá, és a Visual Studio régebbi verziói is hozzáadhatnak hivatkozásokat a alkalmazáshoz `Microsoft.ApplicationInsights` .
 |`AppAlreadyInstrumented:true` | Ha az alkalmazás a .NET Core 2,1-es vagy a 2,2-es verzióra vonatkozik, és a [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-csomagra hivatkozik, akkor Application Insights, és a bővítmény vissza fog térni. | A .NET Core 2.1-es és 2.2-es ügyfeleinek [ajánlott](https://github.com/aspnet/Announcements/issues/287) a Microsoft. AspNetCore. app meta-Package használata.|
 |`AppAlreadyInstrumented:true` | Ezt az értéket is okozhatja, ha a fenti DLL-eket egy korábbi telepítésből az alkalmazás mappájába helyezi. | Törölje az alkalmazás mappáját, és győződjön meg arról, hogy a DLL-fájlok el lesznek távolítva. Győződjön meg arról, hogy a helyi alkalmazás bin-könyvtára és a App Service wwwroot könyvtára is található. (A App Service webalkalmazás wwwroot könyvtárának megkereséséhez: speciális eszközök (kudu) > hibakeresési konzol > CMD > home\site\wwwroot).
-|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy a `Microsoft.AspNet.TelemetryCorrelation` bővítmény az alkalmazásra hivatkozik, és vissza fog térni. | Távolítsa el a hivatkozást.
-|`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy a `System.Diagnostics.DiagnosticSource` bővítmény az alkalmazásra hivatkozik, és vissza fog térni.| Távolítsa el a hivatkozást.
-|`IKeyExists:false`|Ez az érték azt jelzi, hogy a kialakítási kulcs nem szerepel a Alkalmazásbeállítás `APPINSIGHTS_INSTRUMENTATIONKEY`. Lehetséges okok: Előfordulhat, hogy a rendszer véletlenül eltávolította az értékeket, elfelejtette az értékek beállítását az Automation-parancsfájlban stb. | Győződjön meg arról, hogy a beállítás szerepel a App Service alkalmazás beállításai között.
+|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy `Microsoft.AspNet.TelemetryCorrelation` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni. | Távolítsa el a hivatkozást.
+|`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy `System.Diagnostics.DiagnosticSource` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni.| Távolítsa el a hivatkozást.
+|`IKeyExists:false`|Ez az érték azt jelzi, hogy a kialakítási kulcs nem szerepel a Alkalmazásbeállítás `APPINSIGHTS_INSTRUMENTATIONKEY` . Lehetséges okok: Előfordulhat, hogy a rendszer véletlenül eltávolította az értékeket, elfelejtette az értékek beállítását az Automation-parancsfájlban stb. | Győződjön meg arról, hogy a beállítás szerepel a App Service alkalmazás beállításai között.
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>A APPINSIGHTS_JAVASCRIPT_ENABLED és a urlCompression nem támogatott
 

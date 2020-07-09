@@ -2,13 +2,13 @@
 title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791154"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964042"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -27,6 +27,8 @@ A Batch szolgáltatásban működő számítási csomópontok emellett a követk
 - Szabványos [mappastruktúra](files-and-directories.md), valamint az ehhez tartozó [környezeti változók](jobs-and-tasks.md), amelyekre a tevékenységek hivatkozni tudnak.
 - A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások**.
 - [Távelérés](error-handling.md#connect-to-compute-nodes) a windowsos (RDP-) és a linuxos (SSH-) csomópontokhoz.
+
+Alapértelmezés szerint a csomópontok képesek kommunikálni egymással, de nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem azonos készlet részét képezik. Ahhoz, hogy a csomópontok biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, a készletet egy [Azure-beli virtuális hálózat (VNet) alhálózatában](batch-virtual-network.md)is kiépítheti. Ha így tesz, a csomópontok nyilvános IP-címeken keresztül is elérhetők. Ezeket a nyilvános IP-címeket a Batch hozza létre, és a készlet élettartamára változhat. Létrehozhat egy Ön által vezérelt [statikus nyilvános IP-címmel rendelkező készletet](create-pool-public-ip.md) is, amely biztosítja, hogy a rendszer váratlanul ne változzon meg.
 
 ## <a name="pools"></a>Készletek
 
@@ -78,7 +80,7 @@ Ahogy a Cloud Services feldolgozói szerepkörei esetében, itt is megadhatja az
 
 ### <a name="node-agent-skus"></a>Csomóponti ügynök SKU-i
 
-Készletek létrehozásakor ki kell választania a megfelelő **nodeAgentSkuId** értéket a virtuális merevlemez alapképének operációs rendszerétől függően. Az elérhető csomópont-ügynök SKU-azonosítóinak leképezése az operációsrendszer-rendszerkép hivatkozásaira a [lista támogatott csomópont-ügynök SKU](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) -jának meghívásával kérhető le.
+Készletek létrehozásakor ki kell választania a megfelelő **nodeAgentSkuId** értéket a virtuális merevlemez alapképének operációs rendszerétől függően. Az elérhető csomópont-ügynök SKU-azonosítóinak leképezése az operációsrendszer-rendszerkép hivatkozásaira a [lista támogatott csomópont-ügynök SKU](/rest/api/batchservice/list-supported-node-agent-skus) -jának meghívásával kérhető le.
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Egyéni rendszerképek virtuálisgép-készletekhez
 
@@ -127,7 +129,7 @@ A méretezési képletek a következő mérőszámokon alapulhatnak:
 - Az **erőforrás-mérőszámok** a CPU-használat, a sávszélesség-használat, a memóriahasználat és a csomópontok száma alapján számíthatók ki.
 - A **tevékenységmetrikák** alapját a tevékenységállapotok, például *Aktív* (sorban áll), *Fut* vagy *Befejezve* képezik.
 
-Amikor az automatikus skálázás csökkenti a készletben működő csomópontok számát, érdemes megfontolni, hogy mi történjen a csökkentési művelet idején még futó tevékenységekkel. Ennek elvégzéséhez a Batch olyan [*csomópont-felszabadítási lehetőséget*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) biztosít, amelyet felvehet a képletbe. Megadhatja például, hogy a rendszer azonnal leállítsa a futó tevékenységeket, majd egy másik csomóponton sorba állítsa a tevékenységeket végrehajtás céljából, vagy hagyja őket lefutni, és csak ezután távolítsa el a csomópontot a készletből. Vegye figyelembe, hogy a csomópont-felszabadítási beállítás a vagy a érték megadásával `taskcompletion` `retaineddata` megakadályozza a készlet átméretezési műveleteit, amíg az összes tevékenység be nem fejeződik, vagy az összes tevékenység megőrzési időszaka lejárt.
+Amikor az automatikus skálázás csökkenti a készletben működő csomópontok számát, érdemes megfontolni, hogy mi történjen a csökkentési művelet idején még futó tevékenységekkel. Ennek elvégzéséhez a Batch olyan [*csomópont-felszabadítási lehetőséget*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) biztosít, amelyet felvehet a képletbe. Megadhatja például, hogy a rendszer azonnal leállítsa a futó tevékenységeket, majd egy másik csomóponton sorba állítsa a tevékenységeket végrehajtás céljából, vagy hagyja őket lefutni, és csak ezután távolítsa el a csomópontot a készletből. Vegye figyelembe, hogy a csomópont-felszabadítási beállítás a vagy a érték megadásával `taskcompletion` `retaineddata` megakadályozza a készlet átméretezési műveleteit, amíg az összes tevékenység be nem fejeződik, vagy az összes tevékenység megőrzési időszaka lejárt.
 
 Az alkalmazások automatikus méretezésével kapcsolatos további információért lásd: [Számítási csomópontok automatikus méretezése egy Azure Batch-készletben](batch-automatic-scaling.md).
 
@@ -162,13 +164,16 @@ További információkat az alkalmazások a Batch-csomópontokon alkalmazáscsom
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>A virtuális hálózat (VNet) és a tűzfal konfigurálása
 
-Amikor számítási csomópontok készletét hozza létre a Batchben, hozzárendelheti a készletet egy Azure-beli [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört.  
+Amikor számítási csomópontok készletét hozza létre a Batchben, hozzárendelheti a készletet egy Azure-beli [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört.
 
 ### <a name="vnet-requirements"></a>A virtuális hálózat követelményei
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 A Batch-készletek virtuális hálózatban való beállítására vonatkozó további információért lásd: [Virtuális gépek készletének létrehozása a virtuális hálózattal](batch-virtual-network.md).
+
+> [!TIP]
+> Annak érdekében, hogy a csomópontokhoz való hozzáféréshez használt nyilvános IP-címek ne változzon meg, létrehozhat [egy olyan készletet, amely a megadott nyilvános IP-címekkel](create-pool-public-ip.md)rendelkezik.
 
 ## <a name="pool-and-compute-node-lifetime"></a>Készlet és számítási csomópont élettartama
 
@@ -184,7 +189,7 @@ A változó, de folyamatos terhelések kezeléséhez általában egy kombinált 
 
 Általában tanúsítványokat kell használnia tevékenységek bizalmas információinak, például az [Azure Storage-fiókok](accounts.md#azure-storage-accounts) kulcsának titkosításakor vagy visszafejtésekor. Ehhez tanúsítványokat telepíthet a csomópontokra. A titkosított titkos kulcsok parancssori paraméterek segítségével vagy valamelyik tevékenység-erőforrásba ágyazva jutnak el a tevékenységekhez, és a telepített tanúsítványokkal fejthetők vissza.
 
-A [Tanúsítvány hozzáadása](https://docs.microsoft.com/rest/api/batchservice/certificate/add) művelettel (Batch REST) vagy a [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) metódussal (Batch .NET) adhat tanúsítványt Batch-fiókhoz. Ezután a tanúsítványt új vagy meglévő készlethez társíthatja.
+A [Tanúsítvány hozzáadása](/rest/api/batchservice/certificate/add) művelettel (Batch REST) vagy a [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) metódussal (Batch .NET) adhat tanúsítványt Batch-fiókhoz. Ezután a tanúsítványt új vagy meglévő készlethez társíthatja.
 
 Amikor egy tanúsítvány egy készlethez van társítva, a Batch szolgáltatás telepíti a tanúsítványt a készlet minden csomópontján. A Batch szolgáltatás telepíti a megfelelő tanúsítványokat a csomópont indításakor a feladatok elindítása előtt (beleértve az [indítási feladatot](jobs-and-tasks.md#start-task) és a Feladatkezelő [feladatot](jobs-and-tasks.md#job-manager-task)).
 

@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 1ccb32996cd8f15805a810dd5b5985aeb5f87c26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770458"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
@@ -57,9 +56,9 @@ az login
 
 Az Azure CLI-hez készült Azure IoT-bővítmény használatához a következők szükségesek:
 
-- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-parancs használatával regisztrálhat egy eszközt, `{YourIoTHubName}` és `{YourDeviceID}` a helyőrzőket cserélje le az értékekre:
+- Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-parancs használatával regisztrálhat egy eszközt, és a helyőrzőket cserélje le az `{YourIoTHubName}` `{YourDeviceID}` értékekre:
 
     ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}

@@ -3,23 +3,25 @@ title: 'Rövid útmutató: Cassandra API .NET-tel – Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására az Azure Portal és a .NET használatával
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/18/2020
+ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240225"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118423"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
@@ -118,35 +120,35 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget.
 
-    Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-dotnet/copy.png) a USERNAME érték másolásához.
+1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-dotnet/copy.png) a USERNAME érték másolásához.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán":::
 
-2. A Visual Studióban nyissa meg a Program.cs fájlt. 
+1. A Visual Studióban nyissa meg a Program.cs fájlt. 
 
-3. Illessze be a USERNAME értéket a Portalból a `<FILLME>` helyére a 13. sorban.
+1. Illessze be a USERNAME értéket a Portalból a `<FILLME>` helyére a 13. sorban.
 
     A Program.cs 13. sorának ekkor a következőhöz hasonlónak kell kinéznie: 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. Lépjen vissza a Portalba, és másolja a PASSWORD értéket. Illessze be a PASSWORD értéket a Portalból a 14. sorban található `<FILLME>` érték helyére.
+1. Lépjen vissza a Portalba, és másolja a PASSWORD értéket. Illessze be a PASSWORD értéket a Portalból a 14. sorban található `<FILLME>` érték helyére.
 
     A Program.cs 14. sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. Lépjen vissza a Portalba, és másolja a CONTACT POINT értéket. Illessze be a CONTACT POINT értéket a Portalból a 15. sorban található `<FILLME>` érték helyére.
+1. Lépjen vissza a Portalba, és másolja a CONTACT POINT értéket. Illessze be a CONTACT POINT értéket a Portalból a 15. sorban található `<FILLME>` érték helyére.
 
     A Program.cs 15. sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-5. Mentse a Program.cs fájlt.
+1. Mentse a Program.cs fájlt.
     
 ## <a name="run-the-net-app"></a>A .NET-alkalmazás futtatása
 
-1. A Visual Studióban válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
 
 2. A parancssorban a következő paranccsal telepítse a .NET illesztő NuGet-csomagját. 
 
@@ -155,19 +157,19 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     ```
 3. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az alkalmazás megjelenik a konzolablakban. 
 
-    ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="A kimenet megtekintése és ellenőrzése":::
 
     Nyomja le a CTRL + C billentyűkombinációt a program futásának megszakításához, és zárja be a konzolablakot. 
     
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat.
 
-    ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Adatok megtekintése az Adatkezelőben":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

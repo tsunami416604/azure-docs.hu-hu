@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266117"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
 Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát. A rendszergazdának be kell kapcsolnia ezt a funkciót ahhoz, hogy be tudja állítani az adatokat, és [alaphelyzetbe állíthatja a saját jelszavát](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
 
-Ha ismeri a jelszavát, de módosítani szeretné, tekintse meg a jelen cikk [jelszó módosítása lépéseit](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) ismertető fejezetét.
+Ha ismeri a jelszavát, és módosítani szeretné, tekintse meg a jelen cikk [jelszavas lépések módosítása](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) című részét.
 
 >[!Important]
 >Ez a cikk olyan felhasználók számára készült, akik elfelejtett vagy ismeretlen munkahelyi vagy iskolai fiók jelszavának visszaállítását szeretnék használni. Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)témakört.
@@ -103,7 +102,7 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
 
      Ha továbbra sem tud hozzáférni a fiókjához, további segítségért forduljon a szervezet rendszergazdájához.
 
-A jelszó alaphelyzetbe állítása után egy visszaigazoló e-mailt kap, amely egy olyan fiókból származik, mint a "Microsoft az \< *your_organization*> nevében." Ha hasonló e-mailt kap, de nemrég nem állította vissza a jelszavát, azonnal kapcsolatba kell lépnie a szervezet rendszergazdájával.
+A jelszó alaphelyzetbe állítása után egy megerősítő e-mailt kap, amely egy olyan fiókból származik, mint a "Microsoft a nevében \<*your_organization*> ." Ha hasonló e-mailt kap, de nemrég nem állította vissza a jelszavát, azonnal kapcsolatba kell lépnie a szervezet rendszergazdájával.
 
 ## <a name="how-to-change-your-password"></a>Jelszó módosítása
 
@@ -155,7 +154,7 @@ Ha a rendszergazda bekapcsolta a funkciót, megtekintheti a **jelszó alaphelyze
 
 Íme néhány gyakori hiba eset és megoldásuk:
 
-|Probléma|Leírás|Megoldás|
+|Probléma|Description|Megoldás|
 | --- | --- | --- |
 |Ha megpróbálom módosítani a jelszavam, hibaüzenetet kapok. |A jelszó olyan szót, kifejezést vagy mintázatot tartalmaz, amely könnyen kitalálhatja a jelszavát.| Próbálkozzon újra egy erősebb jelszó használatával.|
 |A felhasználói azonosító megadását követően egy, a "forduljon a rendszergazdához" nevű oldalra ugorjon.|A Microsoft azt állapította meg, hogy a felhasználói fiók jelszavát a rendszergazda felügyeli a helyszíni környezetben. Ennek eredményeképpen nem állíthatja alaphelyzetbe a jelszavát a "nem lehet hozzáférni a fiókhoz" hivatkozással. |További segítségért forduljon a rendszergazdához.|

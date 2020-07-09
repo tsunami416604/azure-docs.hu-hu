@@ -4,13 +4,22 @@
   items:
     - name: Mi az Azure Advisor?
       href: advisor-overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Riasztások konfigurálása új javaslatokhoz
+      items:
+        - name: Azure Portal
+          href: advisor-alerts-portal.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: advisor-alerts-arm.md
 - name: Oktatóanyagok
   items:
     - name: Bevezetés az Advisor használatába
       href: advisor-get-started.md
 - name: Útmutatók
   items:
-    - name: Azure-alkalmazások rendelkezésre állásának javítása
+    - name: Azure-alkalmazások megbízhatóságának javítása
       href: advisor-high-availability-recommendations.md
     - name: Az erőforrások biztonságosabbá tétele
       href: advisor-security-recommendations.md
@@ -25,7 +34,7 @@
     - name: Engedélyek és letiltott műveletek
       href: permissions.md
     - name: Riasztások konfigurálása javaslatokhoz
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: Tömeges szervizelés javaslatokhoz
       href: advisor-quick-fix.md
     - name: Advisor-adatok az Azure Resource Graph-ban
@@ -40,7 +49,7 @@
       href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/advisor/'
-    - name: parancssori felület
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest'
     - name: PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0'

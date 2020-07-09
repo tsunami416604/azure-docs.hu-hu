@@ -24,28 +24,28 @@
           href: work-remotely-support.md
     - name: Kapcsolati modellek
       href: expressroute-connectivity-models.md
-    - name: Kapcsolatcsoportok és társviszonyok
-      href: expressroute-circuit-peerings.md
     - name: Helyek és partnerek
       items:
         - name: Szolgáltatók hely alapján
           href: expressroute-locations-providers.md
         - name: Helyek szolgáltató alapján
           href: expressroute-locations.md
-    - name: A virtuális hálózati átjárók ismertetése
-      href: expressroute-about-virtual-network-gateways.md
     - name: Előfeltételek
       href: expressroute-prerequisites.md
     - name: Munkafolyamatok
       href: expressroute-workflows.md
     - name: Útválasztási követelmények
       href: expressroute-routing.md
+    - name: Kapcsolatcsoportok és társviszonyok
+      items:
+        - name: Kapcsolatcsoportok és társviszonyok ismertetése
+          href: expressroute-circuit-peerings.md
+        - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra
+          href: expressroute-move.md
     - name: BFD ExpressRoute-on keresztül
       href: expressroute-bfd.md
     - name: QoS-követelmények
       href: expressroute-qos.md
-    - name: Információk a kapcsolatcsoportok módosításáról klasszikus üzemi modellből Resource Manager-alapú modellbe
-      href: expressroute-move.md
     - name: Az ExpressRoute FastPath ismertetése
       href: about-fastpath.md
     - name: Az ExpressRoute Direct ismertetése
@@ -54,6 +54,14 @@
       href: expressroute-global-reach.md
     - name: Az ExpressRoute-titkosítás ismertetése
       href: expressroute-about-encryption.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
+        - name: Biztonsági attribútumok
+          href: expressroute-security-controls.md
+    - name: A virtuális hálózati átjárók ismertetése
+      href: expressroute-about-virtual-network-gateways.md
     - name: Kapcsolódás nyilvános felhőkhöz az Azure-ból
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Háttérkapcsolat együttműködési lehetőségei
@@ -68,11 +76,9 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Hálózatok közötti kapcsolatok
       href: cross-network-connectivity.md
-    - name: Beépített biztonsági vezérlők
-      href: expressroute-security-controls.md
-    - name: Magas rendelkezésre állás tervezése
+    - name: Magas rendelkezésre állás – tervezés
       href: designing-for-high-availability-with-expressroute.md
-    - name: Tervezés a vészhelyreállítást szem előtt tartva
+    - name: Vészhelyreállítás – tervezés
       items:
         - name: Magánhálózati társviszony-létesítés
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
@@ -129,6 +135,8 @@
       href: expressroute-howto-coexist-resource-manager.md
     - name: Az ExpressRoute Direct konfigurálása
       items:
+        - name: Azure Portal
+          href: how-to-expressroute-direct-portal.md
         - name: Azure PowerShell
           href: expressroute-howto-erdirect.md
         - name: Azure CLI
@@ -165,6 +173,8 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: Network Performance Monitor for ExpressRoute konfigurálása
           href: how-to-npm.md
+        - name: Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
+          href: how-to-custom-route-alert.md
     - name: Klasszikus és örökölt cikkek
       items:
         - name: Kapcsolatcsoport módosítása
@@ -204,7 +214,7 @@
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

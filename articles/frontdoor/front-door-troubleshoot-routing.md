@@ -9,15 +9,15 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743575"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Gyakori útválasztási problémák elhárítása
 
@@ -39,7 +39,7 @@ Ez a tünet akkor fordul elő, ha a háttérrendszer túllépi az időtúllépé
 
 - Küldje el a kérést a háttérbe közvetlenül (anélkül, hogy belépjen a bejárati ajtón), és megtudhatja, mi a szokásos idő a háttérrendszer megválaszolására.
 - Küldje el a kérést a bejárati ajtón keresztül, és ellenőrizze, hogy van-e 503-válasz. Ha nem, akkor ez nem lehet időtúllépési probléma. Forduljon az ügyfélszolgálathoz.
-- Ha a bejárati ajtón keresztüli végrehajtás a 503-es hibakódot eredményezi, akkor a bejárati ajtó sendReceiveTimeout mezőjében adja meg az alapértelmezett időtúllépést akár 4 percre (240 másodpercre). A beállítás a és a `backendPoolSettings` néven van meghívva `sendRecvTimeoutSeconds`. 
+- Ha a bejárati ajtón keresztüli végrehajtás a 503-es hibakódot eredményezi, akkor a bejárati ajtó sendReceiveTimeout mezőjében adja meg az alapértelmezett időtúllépést akár 4 percre (240 másodpercre). A beállítás a és a `backendPoolSettings` néven van meghívva `sendRecvTimeoutSeconds` . 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>Az egyéni tartományba küldött kérések 400 állapotkódot adnak vissza.
 

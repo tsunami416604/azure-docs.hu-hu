@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181783"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
@@ -51,7 +51,7 @@ A MSAL számos alkalmazási helyzetben használható, többek között az alább
 | Kódtár | Támogatott platformok és keretrendszerek|
 | --- | --- |
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, .NET Core, Xamarin Android, Xamarin iOS, Univerzális Windows-platform|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, mint például a AngularJS, az ember. js vagy a Durante. js|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, például AngularJS, Ember.js vagy Durandal.js|
 | [MSAL Android rendszerhez](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [MSAL iOS és macOS rendszerekre](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS és macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
@@ -61,4 +61,4 @@ A MSAL számos alkalmazási helyzetben használható, többek között az alább
 
 Active Directory-hitelesítési tár (ADAL) integrálható az Azure AD for Developers (v 1.0) végponttal, ahol a MSAL a Microsoft Identity platform (v 2.0) végponttal integrálódik. A v 1.0 végpont támogatja a munkahelyi fiókokat, a személyes fiókokat azonban nem. A 2.0-s végpont a személyes Microsoft-fiókok és-munkahelyi fiókok egységesítése egyetlen hitelesítési rendszerbe. Emellett a MSAL-mel is beszerezhetők a Azure AD B2C hitelesítései.
 
-További információért olvassa el az áttelepítés a [MSAL.net-ről a ADAL.net](msal-net-migration.md) -ről és a [MSAL. js-re való Migrálás a ADAL. js-ből](msal-compare-msal-js-and-adal-js.md)című témakört.
+További információért olvassa el a [Migrálás a MSAL.net-ről a ADAL.net](msal-net-migration.md) -ről és a [MSAL.js-re való Migrálás ADAL.jsról ](msal-compare-msal-js-and-adal-js.md)című témakört.

@@ -11,10 +11,9 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83725312"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Átirányítási URI/válasz URL-cím korlátozásai
@@ -31,7 +30,7 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, amelyet az engedélyez�
 
 A következő táblázat az alkalmazás regisztrálásakor felvehető átirányítási URI-k maximális számát mutatja.
 
-| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
+| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Description |
 |--------------------------|---------------------------------|-------------|
 | Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience`az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
 | Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |
@@ -72,6 +71,6 @@ Ebben a megközelítésben:
 > [!NOTE]
 > Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek védenie kell ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-azonosítóban lévő tartománynév érvényesítésével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az [alkalmazás jegyzékfájljának](reference-app-manifest.md) megismerése

@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277357"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-szívófej üzembe helyezése Cloud Foundry rendszer-figyeléshez
@@ -36,7 +35,7 @@ A következő lépések a fúvóka üzembe helyezésének előfeltételei.
 
 Használhatja a fúvókát egy nyílt forráskódú CF üzembe helyezéssel vagy egy Pivotal Cloud Foundry (PCF) üzemelő példány használatával.
 
-* [A Cloud Foundry üzembe helyezése az Azure-ban](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
+* [A Cloud Foundry on Azure üzembe helyezése](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
 
 * [Pivotal Cloud Foundry üzembe helyezése az Azure-ban](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
 
@@ -183,7 +182,7 @@ Ha manuálisan hozta létre a Log Analytics munkaterületet, kövesse az alábbi
 
 ### <a name="1-import-the-oms-view"></a>1. importálja a OMS nézetet
 
-A OMS-portálon keresse meg a **Designer** > -**Importálás** > **tallózását**, és válassza ki az egyik omsview-fájlt. Válassza például a *Cloud Foundry. omsview*elemet, és mentse a nézetet. Most egy csempe jelenik meg az **Áttekintés** oldalon. Jelölje ki a vizualizációs mérőszámok megjelenítéséhez.
+A OMS-portálon keresse meg a **Designer**-  >  **Importálás**  >  **tallózását**, és válassza ki az egyik omsview-fájlt. Válassza például a *Cloud Foundry. omsview*elemet, és mentse a nézetet. Most egy csempe jelenik meg az **Áttekintés** oldalon. Jelölje ki a vizualizációs mérőszámok megjelenítéséhez.
 
 Ezeket a nézeteket testreszabhatja, vagy létrehozhat új nézeteket a **Tervező nézet**használatával.
 
@@ -193,7 +192,7 @@ A *"Cloud Foundry. omsview"* a Cloud Foundry OMS View sablon előzetes verziója
 
 [Létrehozhatók a riasztások](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
 
-| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Leírás                                                                       |
+| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "tartomány. CF-apps"                   | Találatok száma < 1   | **BBS. Domain.cf – az alkalmazások** azt jelzik, hogy a CF-apps tartomány naprakész-e. Ez azt jelenti, hogy a Cloud Controller által benyújtott CF-alkalmazások szinkronizálása a BBS-be történik. LRPsDesired (Diego – kívánt AIs) a végrehajtáshoz. Nem érkezett adat: a CF-apps tartomány nem naprakész a megadott időablakban. |
 | Type = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d>1            | Találatok száma > 0   | Diego-sejtek esetén a 0 a kifogástalan állapotot jelenti, az 1 pedig sérült. Állítsa be a riasztást, ha a megadott időtartományban több nem kifogástalan állapotú Diego-cella észlelhető. |

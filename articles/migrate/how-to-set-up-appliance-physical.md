@@ -4,12 +4,11 @@ description: Megtudhatja, hogyan állíthat be Azure Migrate készüléket a fiz
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84331780"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Berendezés beállítása fizikai kiszolgálókhoz
 
@@ -35,8 +34,8 @@ A készülék beállítása:
 
 Töltse le a készülék tömörített fájlját.
 
-1. Az **áttelepítési célok** > **kiszolgálói** > **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
-2. A **felderítési gépeken** > a**gépek virtualizáltak?** kattintson a **nem virtualizált/egyéb**elemre.
+1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
+2. A **felderítési gépeken**a  >  **gépek virtualizáltak?** kattintson a **nem virtualizált/egyéb**elemre.
 3. A tömörített fájl letöltéséhez kattintson a **Letöltés** gombra.
 
     ![Virtuális gép letöltése](./media/tutorial-assess-physical/download-appliance.png)
@@ -51,20 +50,19 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Példa a nyilvános felhő használatára:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - Példa kormányzati felhő használatára:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Kivonatoló értékek ellenőrzése:
+3.  Ellenőrizze a készülék legújabb verzióját és a kivonatoló értékeket:
  
-    - A nyilvános felhőhöz (a készülék legújabb verziójához):
+    - Nyilvános felhő esetén:
 
-        **Algoritmus** | **Kivonat értéke**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
+        --- | --- | ---
+        Fizikai (63,1 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Az Azure Government esetében (a készülék legújabb verziójához):
+    - Azure Government esetén:
 
-        **Algoritmus** | **Kivonat értéke**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
+        --- | --- | ---
+        Fizikai (63,1 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
@@ -72,7 +70,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -83,7 +81,7 @@ Futtassa a szkriptet a következő módon:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a kiszolgálón, amely a készüléket fogja üzemeltetni.  Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a fenti kiszolgálón rendszergazdai (emelt szintű) jogosultsággal.
 3. Módosítsa a PowerShell könyvtárat arra a mappára, ahol a rendszer kibontotta a tartalmat a letöltött tömörített fájlból.
-4. Futtassa a **AzureMigrateInstaller. ps1** nevű szkriptet a következő parancs futtatásával:
+4. Futtassa a **AzureMigrateInstaller.ps1** nevű szkriptet a következő parancs futtatásával:
 
     - Nyilvános felhő esetén:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - Azure Government esetén:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
@@ -108,7 +106,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 2. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-        - Kattintson a proxybeállítások elemre, és írja be a proxy címe és a figyelő portját http://ProxyFQDNaz űrlap http://ProxyIPAddress vagy a **értékre**.
+        - Kattintson a proxybeállítások elemre, és írja be a proxy címe és a figyelő portját az űrlap vagy a **értékre** http://ProxyIPAddress http://ProxyFQDN .
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő a virtuális gép felderítésének megfelelő működéséhez szinkronban kell lennie.
@@ -123,7 +121,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
 4. Válassza ki azt az előfizetést, amelyben a Azure Migrate projektet létrehozták. Ezután válassza ki a projektet.
 5. Adja meg a berendezés nevét. A névnek legalább 14 karakterből kell állnia.
-6. Kattintson a **regisztrálás**gombra.
+6. Kattintson a **Regisztrálás** parancsra.
 
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
@@ -146,7 +144,7 @@ Ez elindítja a felderítést. Körülbelül 15 percet vesz igénybe, hogy a fel
 A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
 1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-Servers** > **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
 
 ## <a name="next-steps"></a>További lépések

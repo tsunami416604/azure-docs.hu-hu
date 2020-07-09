@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4ef5d89ea58c5c27f4344633afa2fe8048948719
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849474"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025590"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
-
-> [!NOTE]
-> Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon a következőhöz: AskAzureDBforPostgreSQL@service.microsoft.com .
 
 Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database for PostgreSQL egyetlen kiszolgálón lehetővé teszi a saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését. Az ügyfél által felügyelt titkosítással Ön felel a kulcs életciklusáért, a kulcs használati engedélyeiért, és a kulcsokkal végzett műveletek naplózásáért.
 
@@ -129,6 +126,19 @@ Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállí
 * Kezdeményezzen visszaállítási vagy olvasási replika-létrehozási folyamatot a fő Azure Database for PostgreSQL egyetlen kiszolgálóról.
 * Az újonnan létrehozott kiszolgáló (visszaállított/replika) nem elérhető állapotban marad, mert az egyedi identitása még nem kapott engedélyt a Key Vault.
 * A visszaállított/replika kiszolgálón ellenőrizze újra az ügyfél által felügyelt kulcsot az adattitkosítási beállításokban. Ez biztosítja, hogy az újonnan létrehozott kiszolgáló becsomagolja és kicsomagolja az engedélyeket a Key Vaultban tárolt kulcshoz.
+
+## <a name="limitations"></a>Korlátozások
+
+Azure Database for PostgreSQL esetén az ügyfelek által felügyelt kulcs (CMK) használatával a REST-adatok titkosításának támogatása néhány korlátozással rendelkezik –
+
+* A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
+* Ez a funkció csak olyan régiókban és kiszolgálókon érhető el, amelyek legfeljebb 16 TB-nyi tárterületet támogatnak. A 16TB-et támogató Azure-régiók listáját [itt](concepts-pricing-tiers.md#storage) találja a dokumentáció tárolás szakaszában.
+
+    > [!NOTE]
+    > - A fent felsorolt régiókban létrehozott összes új PostgreSQL-kiszolgáló **elérhető**. a titkosítás támogatása az ügyfél-kezelő kulcsaival. Az időponthoz visszaállított (PITR) kiszolgáló vagy az olvasási replika nem lesz érvényes, de elméletileg az "új".
+    > - Annak ellenőrzéséhez, hogy a kiépített kiszolgáló támogatja-e a 16TB, nyissa meg a portál díjszabási szintje paneljét, és tekintse meg a kiépített kiszolgáló által támogatott maximális tárterületet. Ha a csúszkát akár 4TB is áthelyezheti, előfordulhat, hogy a kiszolgáló nem támogatja a titkosítást az ügyfél által felügyelt kulcsokkal. Az adatforgalom azonban mindig a szolgáltatás által felügyelt kulcsokkal van titkosítva. AskAzureDBforPostgreSQL@service.microsoft.comHa bármilyen kérdése van, lépjen kapcsolatba.
+
+* A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

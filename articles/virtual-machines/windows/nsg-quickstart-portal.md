@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
 ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170039"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális géphez a Azure Portal
@@ -25,7 +24,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. Keresse meg és válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Hozzáadás**lehetőséget, majd keresse meg és válassza ki a **hálózati biztonsági csoportot**.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     Megnyílik a **hálózati biztonsági csoport létrehozása** ablak.
 
@@ -73,7 +72,7 @@ A cikkben ismertetett parancsok segítségével gyorsan lekérheti a virtuális 
 
 A magasan elérhető webalkalmazások esetében érdemes lehet egy Azure Load Balancer mögött elhelyezni a virtuális gépeket. A terheléselosztó elosztja a forgalmat a virtuális gépekre egy olyan hálózati biztonsági csoporttal, amely forgalmi szűrést biztosít. További információkért lásd: [Windows rendszerű virtuális gépek terheléselosztása az Azure-ban egy magasan elérhető alkalmazás létrehozásához](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, létrehozott egy bejövő szabályt, amely engedélyezi a HTTP-forgalmat az 80-as porton, majd hozzárendeli a szabályt egy alhálózathoz. 
 
 A részletesebb környezetek létrehozásáról a következő cikkekben talál információt:

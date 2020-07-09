@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996312"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367104"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
-Az Azure HDInsight számos módszert kínál a nagyvállalati biztonsági igények kielégítésére. A megoldások többsége alapértelmezés szerint nem aktiválódik. Ez a rugalmasság lehetővé teszi, hogy kiválassza a legfontosabb biztonsági funkciókat. És segít elkerülni a nem kívánt szolgáltatások kifizetését. Ez a rugalmasság azt is jelenti, hogy az Ön felelőssége, hogy a megfelelő megoldások engedélyezve legyenek a telepítéshez és a környezethez.
+Az Azure HDInsight számos módszert kínál a nagyvállalati biztonsági igények kielégítésére. A megoldások többsége alapértelmezés szerint nem aktiválódik. Ez a rugalmasság lehetővé teszi, hogy kiválassza a legfontosabb biztonsági funkciókat, és segít elkerülni a nem kívánt szolgáltatások kifizetését. Ez a rugalmasság azt is jelenti, hogy az Ön felelőssége, hogy a megfelelő megoldások engedélyezve legyenek a telepítéshez és a környezethez.
 
 Ez a cikk a biztonsági megoldásokat úgy tekinti meg, hogy a biztonsági megoldásokat négy hagyományos biztonsági pillérre osztja: biztonsági, hitelesítési, engedélyezési és titkosítási szinten.
 
@@ -53,7 +53,7 @@ A fürterőforrás-hozzáférés naplózása szükséges az erőforrások jogosu
 
 A rendszergazda megtekintheti és jelentheti az összes hozzáférést a HDInsight-fürt erőforrásaihoz és az adatforrásokhoz. A rendszergazda megtekintheti és jelentheti a hozzáférés-vezérlési szabályzatok módosításait.
 
-Az Apache Ranger és a Ambari-naplók eléréséhez, valamint az SSH-hozzáférési naplókhoz [engedélyezze a Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing). És tekintse meg a naplózási rekordokat biztosító táblákat.
+Az Apache Ranger és a Ambari-naplók eléréséhez, valamint az SSH-hozzáférési naplókhoz [engedélyezze Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) és tekintse meg a naplózási rekordokat biztosító táblákat.
 
 ### <a name="encryption"></a>Titkosítás
 
@@ -81,6 +81,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 |  | [Azure Virtual Network szolgáltatásbeli végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) konfigurálása a Cosmos db és az [Azure SQL db](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) -hez | Ügyfél |
 |  | Győződjön meg arról, hogy a [TLS-titkosítás](../../storage/common/storage-security-tls.md) engedélyezve van az átvitt adatforgalomban. | Ügyfél |
 |  | [Ügyfél által felügyelt kulcsok](../../storage/common/storage-encryption-keys-portal.md) konfigurálása az Azure Storage encryption szolgáltatáshoz | Ügyfél |
+|  | Az Azure-támogatás által az adataihoz való hozzáférés vezérlése az [ügyfél kulcstárolójának](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) használatával | Ügyfél |
 | Alkalmazás-és middleware-biztonság | Integráció a HRE-DS szolgáltatással és a [hitelesítés konfigurálása](apache-domain-joined-configure-using-azure-adds.md) | Ügyfél |
 |  | [Apache Ranger-engedélyezési](apache-domain-joined-run-hive.md) házirendek konfigurálása | Ügyfél |
 |  | [Azure monitor naplók](../hdinsight-hadoop-oms-log-analytics-tutorial.md) használata | Ügyfél |
@@ -89,10 +90,10 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Hálózati biztonság | [Virtuális hálózat](../hdinsight-plan-virtual-network-deployment.md) konfigurálása |
 |  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../control-network-traffic.md) konfigurálása | Ügyfél |
 |  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal | Ügyfél |
-| Virtualizált infrastruktúra | N.A. | HDInsight (felhőalapú szolgáltató) |
-| Fizikai infrastruktúra biztonsága | N.A. | HDInsight (felhőalapú szolgáltató) |
+| Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
+| Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az ESP-vel rendelkező HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md)

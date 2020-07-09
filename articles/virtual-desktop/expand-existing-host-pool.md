@@ -4,23 +4,23 @@ description: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel a W
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85209351"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md).
 >
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A gazdagépen belüli használat során előfordulhat, hogy a meglévő gazdagépet új munkamenet-gazdagépekkel kell bővíteni az új terhelés kezeléséhez.
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan bővítheti a meglévő gazdagépeket új 
 
 Mielőtt elkezdené, győződjön meg arról, hogy létrehozta a gazdagép-készletet és a munkamenet-gazda virtuális gépeket (VM) az alábbi módszerek egyikének használatával:
 
-- [Azure Portal](./create-host-pools-azure-marketplace.md)
+- [Azure Portalra](./create-host-pools-azure-marketplace.md)
 - [Gazdagépcsoport létrehozása a PowerShell-lel](./create-host-pools-powershell.md)
 
 A következő információkra is szüksége lesz a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor:
@@ -50,19 +50,19 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
 3. A képernyő bal oldali menüjében válassza a **gazdagép készletek**lehetőséget, majd válassza ki annak a gazdagépnek a nevét, amelyhez virtuális gépeket szeretne hozzáadni.
 
-4. Válassza a **virtuális gépek** lehetőséget a képernyő bal oldalán található menüből.
+4. Válassza a **munkamenet-gazdagépek** lehetőséget a képernyő bal oldalán található menüből.
 
 5. Válassza a **+ Hozzáadás** lehetőséget a gazdagép-készlet létrehozásának megkezdéséhez.
 
 6. Hagyja figyelmen kívül az alapvető beállítások lapot, és válassza a **virtuális gép részletei** lapot. Itt megtekintheti és szerkesztheti a gazdagép-készlethez hozzáadni kívánt virtuális gép (VM) adatait.
 
 7. Válassza ki azt az erőforráscsoportot, amelyben létre kívánja hozni a virtuális gépeket, majd válassza ki a régiót. Kiválaszthatja az Ön által használt aktuális régiót vagy egy új régiót.
-   
+
 8. Adja meg a gazdagép-készletbe felvenni kívánt munkamenet-gazdagépek számát a **virtuális gépek számával**. Ha például öt gazdagépen bővíti a gazdagép-készletet, írja be az **5**értéket.
-   
+
     >[!NOTE]
     >A virtuális gépek mérete vagy képe nem módosítható, mert fontos annak biztosítása, hogy a gazdagépen lévő összes virtuális gép mérete azonos legyen.
-    
+
 9. A **virtuális hálózat adatainál**válassza ki azt a virtuális hálózatot és alhálózatot, amelyhez csatlakoztatni kívánja a virtuális gépeket. Kiválaszthatja ugyanazt a virtuális hálózatot, amelyet jelenleg használ meglévő gépe, vagy válasszon egy másikat, amely jobban megfelel a 7. lépésben kiválasztott régiónak.
 
 10. A **rendszergazdai fióknál**adja meg a kiválasztott virtuális hálózathoz társított Active Directory tartományi felhasználónevet és jelszót. A rendszer ezeket a hitelesítő adatokat használja a virtuális gépek virtuális hálózathoz való csatlakoztatásához.
@@ -70,9 +70,9 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
       >[!NOTE]
       >Győződjön meg arról, hogy a rendszergazda neve megfelel az itt megadott információknak. Továbbá, hogy a fiókban nincs engedélyezve az MFA.
 
-11. Válassza a **címke** fület, ha olyan címkékkel rendelkezik, amelyekhez a virtuális gépeket szeretné csoportosítani. Ellenkező esetben ugorja át ezt a lapot. 
+11. Válassza a **címke** fület, ha olyan címkékkel rendelkezik, amelyekhez a virtuális gépeket szeretné csoportosítani. Ellenkező esetben ugorja át ezt a lapot.
 
-12. Válassza a **felülvizsgálat + létrehozás** lapot. tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget. 
+12. Válassza a **felülvizsgálat + létrehozás** lapot. tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

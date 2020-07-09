@@ -1,15 +1,15 @@
 ---
 title: Az előrejelzési végpont módosításai a V3 API-ban
 description: Megváltoztak a lekérdezés-előrejelzési végpont V3 API-jai. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 3. verziójú Endpoint API-kat.
-ms.topic: conceptual
-ms.date: 05/15/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849331"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610880"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -57,7 +57,7 @@ Ha tudja, hogy egyik ügyfélalkalmazás vagy integráció (bot Framework és Bi
 
 ## <a name="not-supported"></a>Nem támogatott
 
-### <a name="bing-spell-check"></a>Bing – Helyesírás-ellenőrzés
+### <a name="bing-spell-check"></a>Bing Spell Check
 
 Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is használja a v2 API-előrejelzési végpontot a helyesírási helyesbítésekhez. Ha a V3 API használatakor helyesírási korrekcióra van szüksége, az ügyfélalkalmazás meghívja a [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API-t, és a szöveget a megfelelő helyesírásra módosítja, mielőtt elküldené a szöveget a Luis API-nak.
 
@@ -86,17 +86,7 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 
 ### <a name="query-string-changes"></a>Lekérdezési karakterlánc módosításai
 
-A V3 API különböző lekérdezési karakterlánc-paraméterekkel rendelkezik.
-
-|Params neve|Típus|Verzió|Alapértelmezett|Cél|
-|--|--|--|--|--|
-|`log`|logikai|V2 & V3|hamis|A lekérdezés tárolása a naplófájlban. Az alapértelmezett érték false (hamis).|
-|`query`|sztring|Csak v3|Nincs alapértelmezett – a GET kérelemben szükséges|A **v2-ben**az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
-|`show-all-intents`|logikai|Csak v3|hamis|Az összes leképezés visszaküldése a megfelelő pontszámmal a **jóslat. szándékok** objektumban. A rendszer a fölérendelt objektumban lévő objektumokként adja vissza a leképezéseket `intents` . Ez lehetővé teszi a programozott hozzáférést anélkül, hogy meg kellene találni a szándékot egy tömbben: `prediction.intents.give` . A v2-ben ezek egy tömbben voltak visszaadva. |
-|`verbose`|logikai|V2 & V3|hamis|Ha **a v2**értéke TRUE (igaz) értékre van állítva, az összes előre jelzett leképezést visszaadja. Ha minden előre jelzett leképezésre van szüksége, használja a v3 paraméterét `show-all-intents` .<br><br>**A v3-** as verzióban ez a paraméter csak az entitások előrejelzését biztosító entitás-metaadatokat tartalmazza.  |
-|`timezoneOffset`|sztring|2. verzió|-|A datetimeV2 entitásokra alkalmazott időzóna.|
-|`datetimeReference`|sztring|V3|-|A datetimeV2 entitásokra alkalmazott [időzóna](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . `timezoneOffset`A rendszer a v2-ből cseréli le.|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>V3 POST törzs
 

@@ -5,15 +5,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet elhárítani az átirányít�
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806499"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A Application Gateway App Service problémáinak elhárítása
 
@@ -77,7 +77,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-Az előző példában figyelje meg, hogy a válasz fejlécének 301-as állapotkód van az átirányításhoz. A Location fejlécben az App Service állomásneve az eredeti állomásnév helyett `www.contoso.com`.
+Az előző példában figyelje meg, hogy a válasz fejlécének 301-as állapotkód van az átirányításhoz. A Location fejlécben az App Service állomásneve az eredeti állomásnév helyett `www.contoso.com` .
 
 ## <a name="solution-rewrite-the-location-header"></a>Megoldás: a hely fejlécének újraírása
 
@@ -98,9 +98,9 @@ Egy egyéni tartománynak kell lennie, és a következő eljárást kell követn
 
     ![App Service – egyéni tartomány listája](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Az App Service készen áll az állomásnév elfogadására `www.contoso.com`. Módosítsa a DNS-beli CNAME-bejegyzést úgy, hogy az az Application Gateway teljes tartománynevére mutasson `appgw.eastus.cloudapp.azure.com`, például:.
+- Az App Service készen áll az állomásnév elfogadására `www.contoso.com` . Módosítsa a DNS-beli CNAME-bejegyzést úgy, hogy az az Application Gateway teljes tartománynevére mutasson, például: `appgw.eastus.cloudapp.azure.com` .
 
-- DNS-lekérdezés esetén győződjön `www.contoso.com` meg arról, hogy a tartomány az Application Gateway teljes tartománynevére van feloldva.
+- DNS-lekérdezés esetén győződjön meg arról, hogy a tartomány `www.contoso.com` az Application Gateway teljes tartománynevére van feloldva.
 
 - Az egyéni mintavétel beállításával letilthatja a **pick hostname elemet a háttérbeli http-beállítások közül**. A Azure Portal törölje a jelölést a mintavételi beállítások között. A PowerShellben ne használja a **-PickHostNameFromBackendHttpSettings** kapcsolót a **set-AzApplicationGatewayProbeConfig** parancsban. A mintavétel állomásnév mezőjében adja meg az App Service teljes tartománynevét (example.azurewebsites.net). Az Application Gateway által küldött mintavételi kérelmek ezt a teljes tartománynevet a gazdagép fejlécében hajtják végre.
 
@@ -111,7 +111,7 @@ Egy egyéni tartománynak kell lennie, és a következő eljárást kell követn
 
 - Rendelje vissza az egyéni mintavételt a háttérbeli HTTP-beállításokhoz, és ellenőrizze, hogy a háttér állapota Kifogástalan-e.
 
-- Az Application Gatewaynek ekkor el kell küldenie ugyanazt az `www.contoso.com`állomásnevet az App Service-be. Az átirányítás ugyanazon az állomásnéven történik. Olvassa el a következő példában szereplő kérelem és válasz fejléceket.
+- Az Application Gatewaynek ekkor el kell küldenie ugyanazt az állomásnevet az `www.contoso.com` app Service-be. Az átirányítás ugyanazon az állomásnéven történik. Olvassa el a következő példában szereplő kérelem és válasz fejléceket.
 
 Az előző lépések végrehajtásához a PowerShell használatával egy meglévő beállításhoz használja az alábbi minta PowerShell-parancsfájlt. Figyelje meg, hogy nem használtuk a **-PickHostname** kapcsolókat a mintavétel és a http-beállítások konfigurációjában.
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5e4bb1d3f62685c90e95eebf5f8f07720a23b82
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870010"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086993"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault beállítása virtuális gépekhez Azure Resource Manager
 
@@ -33,36 +33,46 @@ Ha a PowerShell használatával szeretne kulcstartót létrehozni, olvassa el [a
 
 Új kulcstartók esetén ezt a PowerShell-parancsmagot használhatja:
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+```
 
 A meglévő kulcstartók esetében ezt a PowerShell-parancsmagot használhatja:
 
-    Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+```
 
 ## <a name="use-cli-to-set-up-key-vault"></a>Key Vault beállítása a CLI használatával
 Key Vault parancssori felületen (CLI) való létrehozásával kapcsolatban lásd: [Key Vault kezelése a CLI használatával](../../key-vault/general/manage-with-cli2.md#create-a-key-vault).
 
 A CLI esetében létre kell hoznia a kulcstartót, mielőtt hozzárendeli a központi telepítési szabályzatot. Ehhez futtassa az alábbi parancsot:
 
-    az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
-    
+```azurecli
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
+```
+
 Ezután az Key Vault a sablonok központi telepítésének engedélyezéséhez futtassa a következő parancsot:
 
-    az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+```azurecli
+az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Sablonok használata a Key Vault beállításához
-Sablon használatakor a `enabledForDeployment` tulajdonságot `true` a Key Vault erőforráshoz kell beállítania.
+Sablon használatakor a `enabledForDeployment` tulajdonságot a Key Vault erőforráshoz kell beállítania `true` .
 
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "name": "ContosoKeyVault",
-      "apiVersion": "2015-06-01",
-      "location": "<location-of-key-vault>",
-      "properties": {
-        "enabledForDeployment": "true",
-        ....
-        ....
-      }
-    }
+```config
+{
+  "type": "Microsoft.KeyVault/vaults",
+  "name": "ContosoKeyVault",
+  "apiVersion": "2015-06-01",
+  "location": "<location-of-key-vault>",
+  "properties": {
+    "enabledForDeployment": "true",
+    ....
+    ....
+  }
+}
+```
 
 A Key Vault sablonok használatával történő létrehozásakor konfigurálható egyéb beállításokért lásd: [kulcstartó létrehozása](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

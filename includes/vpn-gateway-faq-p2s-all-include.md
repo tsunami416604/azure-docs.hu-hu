@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84317441"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
 Ez az átjáró SKU-jának függ. A támogatott kapcsolatok számával kapcsolatos további információkért lásd: [átjáró SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)-i.
 
-### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Milyen ügyfél operációs rendszereket használhatok pont–hely kapcsolatokhoz?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Milyen ügyféloldali operációs rendszereket használhatok pont – hely kapcsolatokhoz?
 
 A következő ügyféloldali operációs rendszerek támogatottak:
 
@@ -29,6 +29,7 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 * Windows Server 2012 (csak 64 bites)
 * Windows Server 2012 R2 (csak 64 bites)
 * Windows Server 2016 (csak 64 bites)
+* Windows Server 2019 (csak 64 bites)
 * Windows 10
 * Mac OS X 10,11 vagy újabb verzió
 * Linux (StrongSwan)

@@ -95,6 +95,10 @@
           href: batch-management-dotnet.md
         - name: Költségelemzés és költségvetések
           href: budget.md
+        - name: Privát végpontok használata Batch-fiókokkal
+          href: private-connectivity.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
+          href: batch-customer-managed-key.md
     - name: Hitelesítés az Azure AD-vel
       items:
         - name: Azure AD a Batch szolgáltatással
@@ -129,6 +133,10 @@
           href: batch-custom-images.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
           href: batch-virtual-network.md
+        - name: Készlet létrehozása nyilvános IP-címekkel
+          href: create-pool-public-ip.md
+        - name: Készlet létrehozása nyilvános IP-címek nélkül
+          href: batch-pool-no-public-ip-address.md
         - name: Virtuális fájlrendszer csatlakoztatása
           href: virtual-file-mount.md
         - name: Azure-fájlmegosztás csatlakoztatása
@@ -264,13 +272,13 @@
     - name: Visszajelzések a Batchhez
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: Microsoft Q&A kérdések oldala a Batchhez
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: HPC az Azure-on
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: Díjkalkulátor

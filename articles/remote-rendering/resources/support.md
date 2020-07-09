@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8c471687579dfe30b913197c6f080a450f5f3449
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82107445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782517"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Az Azure távoli renderelés támogatási lehetőségei
 
@@ -24,7 +23,7 @@ Technikai támogatási jegy megnyitása az Azure Remote rendering Azure Portalon
 
     ![Azure Portal Súgó és támogatás](media/portal-help.png)
 
-1. Válassza az **új támogatási kérelem**lehetőséget.
+1. Válassza az **Új támogatási kérelem** lehetőséget.
 
     ![Új támogatási kérelem Azure Portal](media/portal-new-request.png)
 
@@ -43,7 +42,7 @@ Technikai támogatási jegy megnyitása az Azure Remote rendering Azure Portalon
 
 ## <a name="community-support"></a>Közösségi támogatás
 
-A felhasználói Közösség támogatásához tekintse meg az [Azure távoli renderelés stack Overflowon](https://stackoverflow.com/questions/tagged/azure-remote-rendering)című témakört.
+A felhasználói Közösség támogatásához tekintse [meg az Azure távoli renderelés stack Overflowon](https://stackoverflow.com/questions/tagged/azure-remote-rendering)című témakört.
 
 ## <a name="provide-documentation-feedback"></a>Dokumentációs visszajelzés megadása
 
@@ -52,6 +51,11 @@ Az egyes dokumentációs cikkek alján megnyithatja a GitHub-problémát, hogy v
 ## <a name="provide-product-feedback"></a>Termékkel kapcsolatos visszajelzés küldése
 
 Ha visszajelzést szeretne küldeni, ossza meg az Azure távoli rendereléssel kapcsolatos ötleteit vagy javaslatait, vagy szavazzon a mások által beküldött ötletekre, látogasson el az [Azure távoli renderelés visszajelzési fórumára](https://feedback.azure.com/forums/928696-azure-remote-rendering).
+
+
+## <a name="microsoft-qa"></a>Microsoft Q&A
+
+A Microsoft mérnököktől, az Azure legértékesebb szakemberektől (MVP), illetve a szakértői Közösségtől érkező technikai kérdésekkel kapcsolatos gyors és megbízható válaszokért forduljon hozzánk a [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), az Azure előnyben részesített céljaként a közösségi támogatáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

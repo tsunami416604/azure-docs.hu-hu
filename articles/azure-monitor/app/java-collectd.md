@@ -4,10 +4,9 @@ description: A Java-webhely bővített alkalmazás-teljesítményének figyelés
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537525"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>begyűjtve: Linux teljesítmény-metrikák a Application Insights
@@ -29,8 +28,8 @@ A Linux Server rendszerű gépeken:
 
 1. Telepítse a [gyűjtött](https://collectd.org/) 5.4.0 vagy újabb verziót.
 2. Töltse le a [Application Insights gyűjtött író beépülő modult](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Jegyezze fel a verziószámot.
-3. Másolja a beépülő modult `/usr/share/collectd/java`a-ba.
-4. Szerkesztés `/etc/collectd/collectd.conf`:
+3. Másolja a beépülő modult a-ba `/usr/share/collectd/java` .
+4. Szerkesztés `/etc/collectd/collectd.conf` :
    * Győződjön meg arról, hogy [a Java beépülő modul](https://collectd.org/wiki/index.php/Plugin:Java) engedélyezve van.
    * Frissítse a Java. class. Path JVMArg, hogy az tartalmazza a következő JAR-t. Frissítse a verziószámot, hogy az megfeleljen a letöltöttnek:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
@@ -92,12 +91,12 @@ Alapértelmezés szerint a Application Insights beépülő modul az összes olya
 Adott beépülő modulok vagy adatforrások adatainak kizárása:
 
 * Szerkessze a konfigurációs fájlt. 
-* A `<Plugin ApplicationInsightsWriter>`-ben adja hozzá a következőhöz hasonló direktíva-sorokat:
+* A-ben `<Plugin ApplicationInsightsWriter>` adja hozzá a következőhöz hasonló direktíva-sorokat:
 
 | Irányelv | Hatás |
 | --- | --- |
-| `Exclude disk` |A `disk` beépülő modul által összegyűjtött összes adatok kizárása |
-| `Exclude disk:read,write` |Zárja ki a nevű `read` és `write` a `disk` beépülő modulból származó forrásokat. |
+| `Exclude disk` |A beépülő modul által összegyűjtött összes adatok kizárása `disk` |
+| `Exclude disk:read,write` |Zárja ki a nevű `read` és a `write` `disk` beépülő modulból származó forrásokat. |
 
 Külön irányelvek egy sortöréssel.
 
@@ -106,7 +105,7 @@ Külön irányelvek egy sortöréssel.
 
 * Nyissa meg a [keresést][diagnostic] , és ellenőrizze, hogy a nyers események megérkeztek-e. Időnként hosszabb időt is igénybe kell venni a metrikák Explorerben.
 * Előfordulhat, hogy [tűzfal-kivételeket kell beállítania a kimenő adatértékekhez](../../azure-monitor/app/ip-addresses.md) .
-* A nyomkövetés engedélyezése a Application Insights beépülő modulban. A sor hozzáadása a `<Plugin ApplicationInsightsWriter>`következőn belül:
+* A nyomkövetés engedélyezése a Application Insights beépülő modulban. A sor hozzáadása a következőn belül `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Nyisson meg egy terminált, és kezdjen el részletes módban összegyűjteni, hogy megtekintse a jelentett problémákat:
   * `sudo collectd -f`

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
 ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873335"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL-lekérdezések – első lépések
@@ -23,7 +22,7 @@ Azure Cosmos DB SQL API-fiókok az Structured Query Language (SQL) használatáv
 
 ## <a name="upload-sample-data"></a>Mintaadatok feltöltése
 
-Az SQL API Cosmos DB fiókjában hozzon létre egy nevű `Families`tárolót. Hozzon létre két egyszerű JSON-elemet a tárolóban. Az Azure Cosmos DB lekérdezési docs legtöbb lekérdezését futtathatja ezen adathalmaz használatával.
+Az SQL API Cosmos DB fiókjában hozzon létre egy nevű tárolót `Families` . Hozzon létre két egyszerű JSON-elemet a tárolóban. Az Azure Cosmos DB lekérdezési docs legtöbb lekérdezését futtathatja ezen adathalmaz használatával.
 
 ### <a name="create-json-items"></a>JSON-elemek létrehozása
 
@@ -52,7 +51,7 @@ A következő kód két egyszerű JSON-elemet hoz létre a családokról. Az And
 }
 ```
 
-A második tétel a `givenName` és `familyName` a helyett `firstName` a `lastName`és a értéket használja.
+A második tétel a `givenName` és `familyName` a helyett a és a értéket használja `firstName` `lastName` .
 
 ```json
 {
@@ -88,7 +87,7 @@ A második tétel a `givenName` és `familyName` a helyett `firstName` a `lastNa
 
 Próbáljon ki néhány lekérdezést a JSON-adaton, hogy megértse a Azure Cosmos DB SQL-lekérdezési nyelvének főbb szempontjait.
 
-A következő lekérdezés azokat az elemeket adja vissza `id` , amelyekben a mező megfelel `AndersenFamily`. Mivel ez egy `SELECT *` lekérdezés, a lekérdezés kimenete a teljes JSON-elem. A SELECT szintaxissal kapcsolatos további információkért lásd: [SELECT utasítás](sql-query-select.md). 
+A következő lekérdezés azokat az elemeket adja vissza, amelyekben a `id` mező megfelel `AndersenFamily` . Mivel ez egy `SELECT *` lekérdezés, a lekérdezés kimenete a teljes JSON-elem. A SELECT szintaxissal kapcsolatos további információkért lásd: [SELECT utasítás](sql-query-select.md). 
 
 ```sql
     SELECT *
@@ -118,7 +117,7 @@ A lekérdezés eredményei a következők:
     }]
 ```
 
-A következő lekérdezés újraformázza a JSON-kimenetet egy másik alakzatba. A lekérdezés egy új JSON `Family` -objektumot választ ki két kiválasztott mezővel, `Name` és `City`ha a városi város megegyezik az állapottal. "NY, NY" megfelel ebben az esetben.
+A következő lekérdezés újraformázza a JSON-kimenetet egy másik alakzatba. A lekérdezés egy új JSON- `Family` objektumot választ ki két kiválasztott mezővel, `Name` és `City` Ha a városi város megegyezik az állapottal. "NY, NY" megfelel ebben az esetben.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -137,7 +136,7 @@ A lekérdezés eredményei a következők:
     }]
 ```
 
-A következő lekérdezés az összes olyan gyermek nevét adja vissza a családban, `id` amelyek `WakefieldFamily`egyezéseit város szerint rendezi.
+A következő lekérdezés az összes olyan gyermek nevét adja vissza a családban `id` , amelyek egyezéseit `WakefieldFamily` város szerint rendezi.
 
 ```sql
     SELECT c.givenName
@@ -160,7 +159,7 @@ Az eredmény a következő:
 
 Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mutatják be:  
 
-* Mivel az SQL API JSON-értékeken működik, sorok és oszlopok helyett faszerkezetű entitásokkal foglalkozik. A facsomópontok tetszőleges részletességgel, `Node1.Node2.Node3…..Nodem`például az ANSI SQL- `<table>.<column>` ben lévő kétrészes hivatkozáshoz hasonlóan is megtekinthetők.
+* Mivel az SQL API JSON-értékeken működik, sorok és oszlopok helyett faszerkezetű entitásokkal foglalkozik. A facsomópontok tetszőleges részletességgel, például az `Node1.Node2.Node3…..Nodem` ANSI SQL-ben lévő kétrészes hivatkozáshoz hasonlóan is megtekinthetők `<table>.<column>` .
 
 * Mivel a lekérdezési nyelv a séma nélküli adatmennyiséggel működik, a típusrendszer számára dinamikusan kell kötni. Ugyanez a kifejezés különböző típusokat eredményezhet különböző elemeken. A lekérdezés eredménye egy érvényes JSON-érték, de nem garantált, hogy rögzített séma legyen.  
 

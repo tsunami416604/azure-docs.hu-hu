@@ -1,21 +1,21 @@
 ---
-title: Események elindítása ML-munkafolyamatokban
+title: Események elindítása ML-munkafolyamatokban (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Eseményvezérelt alkalmazások, folyamatok vagy CI/CD gépi tanulási munkafolyamatok beállítása Azure Machine Learningban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 4a8c9c8088126a33b28bd36382536a8fe25ff0a7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800474"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135965"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
@@ -47,7 +47,7 @@ További információ az eseményforrás és az eseménykezelők használatáró
 
 A Azure Machine Learning a gépi tanulási életciklus különböző pontjain biztosít eseményeket: 
 
-| Eseménytípus | Description |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Gépi tanulási kísérlet futtatásának befejeződése után következik be |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Akkor következik be, amikor egy Machine learning-modell van regisztrálva a munkaterületen |
@@ -117,7 +117,7 @@ Azure Event Grid lehetővé teszi, hogy az ügyfelek olyan, de egymással össze
 
 1. A bal oldali sávon válassza az __események__ lehetőséget, majd válassza az **esemény-előfizetések**lehetőséget. 
 
-    ![Select-events-in-Workspace. png](./media/how-to-use-event-grid/select-event.png)
+    ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
 1. Válassza ki a használni kívánt eseménytípus típusát. Az alábbi képernyőképen például a __regisztrált modell__van kiválasztva, a __modell üzembe helyezése__, a __Futtatás befejeződött__és az __adatkészlet-eltolódás észlelhető__:
 
@@ -146,11 +146,11 @@ Az alábbi példa bemutatja, hogyan választhat ki egy Azure-előfizetést, és 
 # Select the Azure subscription that contains the workspace
 az account set --subscription "<name or ID of the subscription>"
 
-# Subscribe to the machine learning workspace.
-az eventgrid event-subscription create \
-  --name {eventGridFilterName} \
-  --source-resource-id "/subscriptions/{subId}/resourceGroups/{rgName}/ \providers/Microsoft.MachineLearningServices/workspaces/{wsName}" \
-  --endpoint {event handler endpoint} \
+# Subscribe to the machine learning workspace. This example uses EventHub as a destination. 
+az eventgrid event-subscription create --name {eventGridFilterName} \
+  --source-resource-id /subscriptions/{subId}/resourceGroups/{RG}/providers/Microsoft.MachineLearningServices/workspaces/{wsName} \
+  --endpoint-type eventhub \
+  --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/n1/eventhubs/EH1 \
   --included-event-types Microsoft.MachineLearningServices.ModelRegistered \
   --subject-begins-with "models/mymodelname"
 ```

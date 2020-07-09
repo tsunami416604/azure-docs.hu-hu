@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 525417bd83a1d30479fd3effbce690ed04d9af73
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400832"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608000"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Szöveg-beszéd átalakítás a Python használatával
 
@@ -26,7 +27,7 @@ Ehhez a cikkhez egy Speech Service-erőforrással rendelkező [Azure Cognitive S
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Python 2.7.x vagy 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>vagy a kedvenc szövegszerkesztője
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span> </a>vagy a kedvenc szövegszerkesztője
 * A beszédfelismerési szolgáltatáshoz tartozó Azure-előfizetési kulcs
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
@@ -67,13 +68,13 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-Az `subscription_key` a Azure Portal egyedi kulcsa. `tts`megkéri a felhasználót, hogy adjon meg szöveget, amelyet a rendszer beszédre konvertál. Ez a bemeneti karakterlánc, ezért nem kell megszöknie a karaktereket. `timestr` Végül lekérdezi az aktuális időt, amelyet a fájl neveként fogunk használni.
+Az a `subscription_key` Azure Portal egyedi kulcsa. `tts`megkéri a felhasználót, hogy adjon meg szöveget, amelyet a rendszer beszédre konvertál. Ez a bemeneti karakterlánc, ezért nem kell megszöknie a karaktereket. Végül `timestr` lekérdezi az aktuális időt, amelyet a fájl neveként fogunk használni.
 
 ## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-A szöveg-beszéd REST APIhoz hozzáférési jogkivonat szükséges a hitelesítéshez. Hozzáférési jogkivonat lekéréséhez Exchange szükséges. Ez a példa a `issueToken` beszédfelismerési szolgáltatás előfizetési kulcsát a végpont használatával cseréli egy hozzáférési jogkivonatra.
+A szöveg-beszéd REST APIhoz hozzáférési jogkivonat szükséges a hitelesítéshez. Hozzáférési jogkivonat lekéréséhez Exchange szükséges. Ez a példa a beszédfelismerési szolgáltatás előfizetési kulcsát a végpont használatával cseréli egy hozzáférési jogkivonatra `issueToken` .
 
-Ez a példa azt feltételezi, hogy a Speech Service-előfizetés az USA nyugati régiójában található. Ha más régiót használ, frissítse a értékét `fetch_token_url`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Ez a példa azt feltételezi, hogy a Speech Service-előfizetés az USA nyugati régiójában található. Ha más régiót használ, frissítse a értékét `fetch_token_url` . A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Másolja ezt a kódot a `TextToSpeech` osztályba:
 
@@ -92,11 +93,11 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Kérelem elkészítése és a válasz mentése
 
-Itt fogja felépíteni a kérést, és menteni a beszédfelismerési választ. Először be kell állítania a és `base_url` `path`a. Ez a példa feltételezi, hogy az USA nyugati végpontját használja. Ha az erőforrás egy másik régióban van regisztrálva, győződjön meg róla, hogy `base_url`frissíti a-t. További információ: [Speech Service Regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Itt fogja felépíteni a kérést, és menteni a beszédfelismerési választ. Először be kell állítania a és a `base_url` `path` . Ez a példa feltételezi, hogy az USA nyugati végpontját használja. Ha az erőforrás egy másik régióban van regisztrálva, győződjön meg róla, hogy frissíti a-t `base_url` . További információ: [Speech Service Regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Ezután hozzá kell adnia a kéréshez szükséges fejléceket. Győződjön meg arról, hogy `User-Agent` az erőforrás nevét (a Azure Portalban található) frissíti, és állítsa `X-Microsoft-OutputFormat` az előnyben részesített hang kimenetére. A kimeneti formátumok teljes listáját itt tekintheti meg: [hang kimenetek](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Ezután hozzá kell adnia a kéréshez szükséges fejléceket. Győződjön meg arról, hogy `User-Agent` az erőforrás nevét (a Azure Portalban található) frissíti, és állítsa az `X-Microsoft-OutputFormat` előnyben részesített hang kimenetére. A kimeneti formátumok teljes listáját itt tekintheti meg: [hang kimenetek](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Ezután hozza létre a kérelem törzsét a Speech szintézis Markup Language (SSML) használatával. Ez a minta határozza meg a struktúrát, `tts` és a korábban létrehozott bemenetet használja.
+Ezután hozza létre a kérelem törzsét a Speech szintézis Markup Language (SSML) használatával. Ez a minta határozza meg a struktúrát, és a `tts` korábban létrehozott bemenetet használja.
 
 >[!NOTE]
 > Ez a példa a `Guy24kRUS` hangbetűkészletet használja. A Microsoft által biztosított hangok és nyelvek teljes listájáért lásd a [nyelvi támogatást](language-support.md)ismertető témakört.
@@ -159,11 +160,11 @@ python tts.py
 
 Ha a rendszer kéri, írja be a szöveget, amit szeretne szöveggé konvertálni. Ha a művelet sikeres, a beszédfelismerési fájl a Project mappában található. Játssza le kedvenc médialejátszó használatával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Python-minták megismerése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)

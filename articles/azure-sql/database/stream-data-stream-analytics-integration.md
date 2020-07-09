@@ -1,5 +1,5 @@
 ---
-title: Adatfolyam-adatátvitel Stream Analytics integrációval (előzetes verzió)
+title: Adatfolyam-adatátvitel Azure Stream Analytics integrációval (előzetes verzió)
 description: Azure Stream Analytics integráció használatával továbbíthatja az adatAzure SQL Databaseba.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,15 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: ea129902e5ab30a5d7f7a70c3606d4aa73cd84a5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345359"
 ---
-# <a name="stream-data-into-azure-sql-database-using-stream-analytics-integration-preview"></a>Adatfolyam-továbbítás Azure SQL Database Stream Analytics Integration (előzetes verzió)
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
+# <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Adatfolyam-továbbítás Azure SQL Database Azure Stream Analytics Integration (előzetes verzió)
 
-A felhasználók mostantól a valós idejű adatfolyam-adatok egy táblázatba való betöltését, feldolgozását, megtekintését és elemzését közvetlenül a Azure Portalban lévő SQL-adatbázisból [Azure stream Analytics](../../stream-analytics/stream-analytics-introduction.md)használatával végezheti el. Ez a felhasználói élmény számos különböző forgatókönyvet támogat, például a csatlakoztatott autót, a távoli figyelést, a csalások észlelését és sok más lehetőséget. A Azure Portal kiválaszthatja az események forrását (Event hub/IoT Hub), megtekintheti a bejövő valós idejű eseményeket, és kiválaszthatja az események tárolására szolgáló táblázatot. Stream Analytics lekérdezési nyelvi lekérdezéseket is írhat a portálon a bejövő események átalakításához és a kiválasztott táblában való tárolásához. Ez az új belépési pont a Stream Analyticsban már létező létrehozási és konfigurációs élményeken felül van. Ez a felület az adatbázis kontextusában indul el, és lehetővé teszi, hogy gyorsan beállítson egy Stream Analytics feladatot, és zökkenőmentesen navigáljon a Azure SQL Database és a Stream Analytics-élmény között.
+A felhasználók mostantól a valós idejű adatfolyam-adatok táblázatba való betöltését, feldolgozását, megtekintését és elemzését közvetlenül egy Azure SQL Database adatbázisból is elvégezheti. Ezt a Azure Portal [Azure stream Analytics](../../stream-analytics/stream-analytics-introduction.md)használatával teszik meg. Ez a felhasználói élmény számos különböző forgatókönyvet támogat, például a csatlakoztatott autót, a távoli figyelést, a csalások észlelését és sok más lehetőséget. A Azure Portal kiválaszthatja az események forrását (Event hub/IoT Hub), megtekintheti a bejövő valós idejű eseményeket, és kiválaszthatja az események tárolására szolgáló táblázatot. Azure Stream Analytics lekérdezési nyelvi lekérdezéseket is írhat a portálon a bejövő események átalakításához és a kiválasztott táblában való tárolásához. Ez az új belépési pont a Stream Analyticsban már létező létrehozási és konfigurációs élményeken felül van. Ez a felület az adatbázis kontextusában indul el, amely lehetővé teszi, hogy gyorsan beállítson egy Stream Analytics feladatot, és zökkenőmentesen navigáljon az adatbázis között Azure SQL Database és Stream Analytics-élményben.
 
 ![Stream Analytics folyamat](./media/stream-data-stream-analytics-integration/stream-analytics-flow.png)
 
@@ -32,7 +30,7 @@ A felhasználók mostantól a valós idejű adatfolyam-adatok egy táblázatba v
 - További egyszerű használat az előzetes verziójú adatokkal: a beérkező adatok előnézete az események forrásáról (Event hub/IoT Hub) a kiválasztott tábla kontextusában
 
 > [!IMPORTANT]
-> Az Azure Stream Analytics-feladatok kimenete Azure SQL Database, Azure SQL felügyelt példány vagy Azure szinapszis (korábban Azure SQL Data Warehouse) lehet. További információt a [kimenetek](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)című témakörben talál.
+> Az Azure Stream Analytics feladatok kimenete Azure SQL Database, Azure SQL felügyelt példány vagy Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) lehet. További információt a [kimenetek](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +47,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
-3. Az adatfolyam-adatok ebbe az SQL-adatbázisba való betöltéséhez válassza a **Létrehozás** lehetőséget, és adjon nevet a folyamatos átviteli feladatnak, majd válassza a **Tovább: bemenet**lehetőséget.
+3. A folyamatos átviteli adatok ebbe az adatbázisba való betöltéséhez válassza a **Létrehozás** lehetőséget, és adjon nevet a folyamatos átviteli feladatnak, majd válassza a **Tovább: bemenet**lehetőséget.
 
     ![Stream Analytics-feladatok létrehozása](./media/stream-data-stream-analytics-integration/create-job.png)
 
@@ -76,7 +74,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 6. Megnyílik egy lekérdezési oldal a következő részletekkel:
 
-   - A **bemenet** (bemeneti események forrása), amelyből adatokat fog betölteni  
+   - A **bemenet** (bemeneti események forrása), amelyből adatokat tölt be  
    - Az átalakított adatokat tároló **kimenet** (kimeneti tábla)
    - Példa [SAQL-lekérdezésre](../../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) a SELECT utasítással.
    - **Bemeneti előnézet**: a bemeneti események forrásának legújabb bejövő adatainak pillanatképét jeleníti meg.
@@ -107,8 +105,8 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
      - Custom (egyéni): a rendszer most elindítja a feladatot, de egy adott időpontból dolgozza fel az adatait (ez lehet a múltban vagy a jövőben is). További információ: [Azure stream Analytics feladatok elindítása](../../stream-analytics/start-job.md).
    - **Folyamatos átviteli egységek**: a Azure stream Analytics díjszabása a szolgáltatásba való adatfeldolgozáshoz szükséges folyamatos átviteli egységek számával történik. További információ: [Azure stream Analytics díjszabása](https://azure.microsoft.com/pricing/details/stream-analytics/).
    - **Kimeneti adathibaok feldolgozása**:  
-     - Újrapróbálkozás: Ha hiba lép fel, Azure Stream Analytics újrapróbálkozik az esemény határozatlan idejű írásával, amíg az írás nem sikerül. Az újrapróbálkozások esetében nincs időkorlát. Végül az összes további eseményt le kell tiltani az újrapróbálkozást követően. Ez a beállítás az alapértelmezett kimeneti hiba kezelési szabályzata.
-     - Drop: Azure Stream Analytics el fog dobni minden olyan kimeneti eseményt, amely Adatátalakítási hibát eredményez. Az elvetett események később nem állíthatók helyre a feldolgozás újbóli megkísérléséhez. A rendszer az összes átmeneti hibát (például hálózati hibákat) újrapróbálkozik, függetlenül attól, hogy milyen kimeneti hiba történik a házirend-konfigurációban.
+     - Újrapróbálkozás: Ha hiba lép fel, Azure Stream Analytics újrapróbálkozik az esemény határozatlan idejű írásával, amíg az írás nem sikerül. Nincs időkorlát az újrapróbálkozásokhoz. Végül az összes további eseményt le kell tiltani az újrapróbálkozást követően. Ez a beállítás az alapértelmezett kimeneti hiba kezelési szabályzata.
+     - Drop: Azure Stream Analytics el fog dobni minden olyan kimeneti eseményt, amely Adatátalakítási hibát eredményez. Az eldobott események később nem állíthatók helyre újrafeldolgozásra. A rendszer az összes átmeneti hibát (például hálózati hibákat) újrapróbálkozik, függetlenül attól, hogy milyen kimeneti hiba történik a házirend-konfigurációban.
    - **SQL Database kimeneti beállítások**: az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több író használatával a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](../../stream-analytics/stream-analytics-sql-output-perf.md).
    - **Kötegek maximális száma**: az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.  
     A kimeneti hibák kezelésével kapcsolatos további információkért lásd: [kimeneti hibák házirendjei a Azure stream Analyticsban](../../stream-analytics/stream-analytics-output-error-policy.md).  
@@ -118,8 +116,8 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 8. Miután elindította a feladatot, látni fogja a futó feladatot a listában, és a következő műveleteket hajthatja végre:
    - **A művelet indítása/leállítása**: Ha a feladatot futtatja, leállíthatja a feladatot. Ha a feladatot leállítja, elkezdheti a feladatot.
    - **Feladatok szerkesztése**: szerkesztheti a lekérdezést. Ha további módosításokat szeretne végrehajtani a feladatban, vegyen fel további bemeneteket/kimeneteket, majd nyissa meg a feladatot Stream Analyticsban. A Szerkesztés lehetőség le van tiltva, amikor a feladatot futtatják.
-   - **Előzetes verziójú kimeneti tábla**: megtekintheti a táblázatot az SQL Query Editorban.
-   - **Megnyitás stream Analyticsban**: Nyissa meg a feladatot a stream Analytics szolgáltatásban a figyelés, a feladathoz tartozó hibakeresés részleteinek megtekintéséhez.
+   - **Előzetes verziójú kimeneti tábla**: megtekintheti a táblázatot az SQL-lekérdezés szerkesztőjében.
+   - **Megnyitás stream Analyticsban**: Nyissa meg a feladatot a stream Analyticsban a figyelés, a feladathoz tartozó hibakeresés részleteinek megtekintéséhez.
 
      ![Stream Analytics-feladatok](./media/stream-data-stream-analytics-integration/jobs.png)
 
@@ -127,3 +125,4 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 - [Az Azure Stream Analytics dokumentációja](https://docs.microsoft.com/azure/stream-analytics/)
 - [Az Azure Stream Analytics megoldásmintái](../../stream-analytics/stream-analytics-solution-patterns.md)
+ 

@@ -4,16 +4,16 @@ description: Windows 10 rendszerű, többmunkamenetes virtuális gépek nyelvi c
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80634034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361302"
 ---
 # <a name="install-language-packs"></a>Nyelvi csomagok telepítése
 
@@ -32,42 +32,47 @@ Nyelvi csomagok telepítése:
 
 1. Jelentkezzen be rendszergazdaként.
 2. Győződjön meg arról, hogy telepítette a Windows és a Windows áruház legújabb frissítéseit.
-3. Lépjen a **Beállítások** > **ideje & nyelvi** > **régió**menüpontra.
+3. Lépjen a **Beállítások**  >  **ideje & nyelvi**  >  **régió**menüpontra.
 4. Az **ország vagy régió**területen válassza ki az előnyben részesített országot vagy régiót a legördülő menüből.
     Ebben a példában a **franciaországi**lehetőséget fogjuk kiválasztani, ahogy az alábbi képernyőképen is látható:
 
-    ![A régió oldalának képernyőképe. A jelenleg kiválasztott régió Franciaország.](media/region-page-france.png)
+    > [!div class="mx-imgBorder"]
+    > ![A régió oldalának képernyőképe. A jelenleg kiválasztott régió Franciaország.](media/region-page-france.png)
 
 5. Ezután válassza a **Language (nyelv**), majd **a nyelv hozzáadása**lehetőséget. Válassza ki a listából a telepíteni kívánt nyelvet, majd kattintson a **tovább**gombra.
 6. Amikor megnyílik a **nyelvi szolgáltatások telepítése** ablak, jelölje be a **nyelvi csomag telepítése és beállítása a Windows megjelenítési nyelvként**jelölőnégyzetet.
-7. Válassza az **Install** (Telepítés) lehetőséget.
+7. Válassza a **Telepítés** gombot.
 8. Ha egyszerre több nyelvet szeretne felvenni, válassza a **nyelv hozzáadása**lehetőséget, majd ismételje meg a folyamatot, és adjon hozzá egy nyelvet az 5. és 6. lépésben. Ismételje meg ezt a folyamatot minden telepíteni kívánt nyelvnél. Egyszerre azonban csak egy nyelvet állíthat be megjelenítési nyelvként.
 
     Futtassunk egy gyors vizuális bemutatót. Az alábbi képek bemutatják, hogyan telepítheti a francia és holland nyelvi csomagokat, majd beállíthatja a franciát megjelenítési nyelvként.
 
-    ![A folyamat elején található nyelvi oldal képernyőképe. A kiválasztott Windows megjelenítési nyelv az angol.](media/language-page-default.png)
+    > [!div class="mx-imgBorder"]
+    > ![A folyamat elején található nyelvi oldal képernyőképe. A kiválasztott Windows megjelenítési nyelv az angol.](media/language-page-default.png)
 
-    ![A nyelv kiválasztása ablak képernyőképe. A felhasználó a francia nyelvi csomagok megtalálásához a "francia" kifejezést adta meg a keresősávban.](media/select-language-french.png)
+    > [!div class="mx-imgBorder"]
+    > ![A nyelv kiválasztása ablak képernyőképe. A felhasználó a francia nyelvi csomagok megtalálásához a "francia" kifejezést adta meg a keresősávban.](media/select-language-french.png)
 
-    ![A nyelvi szolgáltatások telepítési oldalának képernyőképe. A franciát választott nyelvként válassza ki. A kiválasztott beállítások a "saját megjelenítési nyelv beállítása", "nyelvi csomag telepítése", "beszédfelismerés" és "kézírás".](media/install-language-features.png)
+    > [!div class="mx-imgBorder"]
+    > ![A nyelvi szolgáltatások telepítési oldalának képernyőképe. A franciát választott nyelvként válassza ki. A kiválasztott beállítások a "saját megjelenítési nyelv beállítása", "nyelvi csomag telepítése", "beszédfelismerés" és "kézírás".](media/install-language-features.png)
 
     Miután telepítette a nyelvi csomagokat, megjelenik a nyelvi csomagok neve a nyelvek listájában.
 
-    ![A nyelvi oldal képernyőképe a telepített új nyelvi csomagokkal. A francia és a holland nyelvi csomagok az "előnyben részesített nyelvek" területen jelennek meg.](media/language-page-complete.png)
+    > [!div class="mx-imgBorder"]
+    > ![A nyelvi oldal képernyőképe a telepített új nyelvi csomagokkal. A francia és a holland nyelvi csomagok az "előnyben részesített nyelvek" területen jelennek meg.](media/language-page-complete.png)
 
 9. Ha megjelenik egy ablak, amely arra kéri, hogy jelentkezzen ki a munkamenetből. Jelentkezzen ki, majd jelentkezzen be újra. A megjelenítési nyelvnek most a kiválasztott nyelvnek kell lennie.
 
-10.  Nyissa meg a **Vezérlőpult** > **óra és régió** > **régióját**.
+10.  Nyissa meg a **Vezérlőpult**  >  **óra és régió**  >  **régióját**.
 
 11.  Amikor megnyílik a **régió** ablak, válassza az **Adminisztráció** fület, majd válassza a **Beállítások másolása**lehetőséget.
 
 12.  Jelölje be az **üdvözlő képernyő és a rendszerfiókok** és az **új felhasználói fiókok**jelölőnégyzetet.
 
-13.  Kattintson az **OK** gombra.
+13.  Válassza az **OK** lehetőséget.
 
 14.  Ekkor megnyílik egy ablak, és megtudhatja, hogy újraindítsa a munkamenetet. Válassza az **Újraindítás most**lehetőséget.
 
-15.  Miután bejelentkezett, lépjen vissza a **Vezérlőpult** > **óra és régió** > **területére**.
+15.  Miután bejelentkezett, lépjen vissza a **Vezérlőpult**  >  **óra és régió**  >  **területére**.
 
 16.  Válassza az **Adminisztráció** lapot.
 
@@ -89,13 +94,13 @@ A gép Sysprep:
 
 1. Nyissa meg a PowerShellt rendszergazdaként.
 2. Futtassa a következő parancsmagot, hogy a megfelelő könyvtárba lépjen:
-   
+
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
 3. Ezután futtassa a következő parancsmagot:
-    
+
     ```powershell
     .\sysprep.exe
     ```
@@ -109,11 +114,12 @@ A gép Sysprep:
 
 Ha a Sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tennie:
 
-1. Nyissa meg a **C meghajtót** , és lépjen a **Windows** > **System32 Sysprep** > **Panther**elemre, majd nyissa meg a **Setuperr** fájlt.
+1. Nyissa meg a **C meghajtót** , és lépjen a **Windows**  >  **System32 Sysprep**  >  **Panther**elemre, majd nyissa meg a **Setuperr** fájlt.
 
    A hibaüzenet szövege azt jelzi, hogy el kell távolítania egy adott nyelvi csomagot, ahogy az az alábbi képen is látható. Másolja a nyelvi csomag nevét a következő lépéshez.
 
-   ![Képernyőkép a Setuperr-fájlról. A csomag nevét tartalmazó szöveg ki van emelve a sötétkék színnel.](media/setuperr-package-name.png)
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőkép a Setuperr-fájlról. A csomag nevét tartalmazó szöveg ki van emelve a sötétkék színnel.](media/setuperr-package-name.png)
 
 2. Nyisson meg egy új PowerShell-ablakot, és futtassa a következő parancsmagot a 2. lépésben átmásolt csomag nevével a nyelvi csomag eltávolításához:
 
@@ -123,7 +129,7 @@ Ha a Sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tenn
 
 3. Győződjön meg arról, hogy eltávolította a csomagot a `Remove-AppxPackage` parancsmag ismételt futtatásával. Ha sikeresen eltávolította a csomagot, megjelenik egy üzenet, amely szerint az eltávolítani kívánt csomag nem létezik.
 
-4. Futtassa újra `sysprep.exe` a parancsmagot.
+4. Futtassa `sysprep.exe` újra a parancsmagot.
 
 ## <a name="capture-the-image"></a>A rendszerkép rögzítése
 
@@ -137,9 +143,10 @@ Rendszerkép rögzítése:
 
 3. Adja meg a rendszerkép nevét a Name ( **név** ) mezőben, és rendelje hozzá az **erőforráscsoporthoz az erőforráscsoport legördülő menüből** az alábbi ábrán látható módon.
 
-   ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
+   > [!div class="mx-imgBorder"]
+   > ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 5. Várjon néhány percet, amíg a rögzítési folyamat befejeződik. Ha a rendszerkép elkészült, egy üzenet jelenik meg az értesítési központban, amely értesíti, hogy a rendszerkép rögzítése megtörténik.
 

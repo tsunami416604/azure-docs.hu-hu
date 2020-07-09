@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76717332"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628997"
 ---
 # <a name="create-a-custom-voice"></a>Egyéni hang létrehozása
 
@@ -28,7 +28,7 @@ Győződjön meg arról, hogy milyen nyelveken támogatott az egyéni hang: a [T
 
 ## <a name="upload-your-datasets"></a>Az adatkészletek feltöltése
 
-Ha készen áll az adatok feltöltésére, nyissa meg az [Egyéni hangportált](https://aka.ms/custom-voice-portal). Hozzon létre vagy válasszon ki egy egyéni hangprojektet. A projektnek meg kell osztania a megfelelő nyelvi/területi beállításokat és a nemek tulajdonságait a hangképzéshez használni kívánt adatként. Válassza ki `en-GB` például, hogy az angol nyelvű hangfelvételek angol nyelvűek-e, és az Egyesült Királyság akcentusa.
+Ha készen áll az adatok feltöltésére, nyissa meg az [Egyéni hangportált](https://aka.ms/custom-voice-portal). Hozzon létre vagy válasszon ki egy egyéni hangprojektet. A projektnek meg kell osztania a megfelelő nyelvi/területi beállításokat és a nemek tulajdonságait a hangképzéshez használni kívánt adatként. Válassza ki például, hogy `en-GB` az angol nyelvű hangfelvételek angol nyelvűek-e, és az Egyesült Királyság akcentusa.
 
 Lépjen az **adatok** lapra, és kattintson az **adatok feltöltése**elemre. A varázslóban válassza ki a megfelelő adattípust, amely megfelel az előkészített előírásoknak.
 
@@ -44,7 +44,7 @@ Az adatkészletek automatikusan érvényesítve lesznek a feltöltés gomb megny
 
 Az alábbi táblázat az importált adatkészletek feldolgozási állapotait mutatja be:
 
-| Állapot | Jelentés |
+| Állam | Értelmezés |
 | ----- | ------- |
 | Feldolgozás | Az adatkészlet beérkezett, és feldolgozás alatt áll. |
 | Sikeres | Az adatkészlet érvényesítve lett, és most már használható hangmodell létrehozásához. |
@@ -62,13 +62,13 @@ Gondolja át újra a hosszúságú kimondott szöveg az alacsony kiejtési ponts
 
 Az adatkészlet ellenőrzése után felhasználhatja az egyéni hangmodell összeállításához.
 
-1.  Navigáljon a **szöveg-beszéd > egyéni hang > betanítás**elemre.
+1.  Navigáljon a **szöveg-beszéd > egyéni hang > [a projekt neve] > képzés**elemre.
 
 2.  Kattintson a **tanítási modell**elemre.
 
 3.  Ezután adjon meg egy **nevet** és egy **leírást** , amely segítséget nyújt a modell azonosításához.
 
-    Gondosan válassza ki a nevet. Az itt megadott név lesz az a név, amelyet a SSML-bevitel részeként a beszédfelismerési kérelemben szereplő hang megadására fog használni. Csak betűket, számokat és néhány írásjelet (például:-, \_, és (",") tartalmazhat. Használjon különböző neveket a különböző hangmodellekhez.
+    Gondosan válassza ki a nevet. Az itt megadott név lesz az a név, amelyet a SSML-bevitel részeként a beszédfelismerési kérelemben szereplő hang megadására fog használni. Csak betűket, számokat és néhány írásjelet (például:-, \_ , és (",") tartalmazhat. Használjon különböző neveket a különböző hangmodellekhez.
 
     A **Leírás** mező gyakori használata a modell létrehozásához használt adatkészletek nevének rögzítése.
 
@@ -86,7 +86,7 @@ A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az ú
 
 A megjelenített állapot az adatkészlet hangmodellre alakításának folyamatát tükrözi, ahogy az itt látható.
 
-| Állapot | Jelentés |
+| Állam | Értelmezés |
 | ----- | ------- |
 | Feldolgozás | A hangmodell létrehozása folyamatban van. |
 | Sikeres | A hangmodell létrehozása megtörtént, és üzembe helyezhető. |
@@ -106,7 +106,7 @@ Ha a neurális hangképzési funkciót használja, kiválaszthatja a valós idej
 
 A hangalapú betűkészlet sikeres létrehozása után tesztelheti a használatát a használathoz való üzembe helyezése előtt.
 
-1.  Navigáljon a **szöveg-beszéd > egyéni hang > a teszteléshez**.
+1.  Navigáljon a **szöveg-beszéd > egyéni hang > [a projekt neve] > a tesztelés**elemre.
 
 2.  Kattintson a **teszt hozzáadása**gombra.
 
@@ -143,7 +143,7 @@ A végpont online tesztelése az egyéni hangportálon keresztül is elérhető.
 
 Az egyéni végpont funkcionálisan megegyezik a szöveg-beszéd kérelmekhez használt standard végponttal. További információ: [REST API](rest-text-to-speech.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: hangminták rögzítése](record-custom-voice-samples.md)
 * [Text-to-Speech API-referencia](rest-text-to-speech.md)

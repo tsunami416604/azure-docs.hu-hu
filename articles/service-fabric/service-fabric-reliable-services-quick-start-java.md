@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184146"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Ismerkedés a Reliable Services Javával
@@ -28,7 +28,7 @@ Ha be kell állítania, ugorjon az [Ismerkedés a Mac gépen](service-fabric-get
 ## <a name="basic-concepts"></a>Alapfogalmak
 A Reliable Services megkezdéséhez csak néhány alapvető fogalmat kell megismernie:
 
-* **Szolgáltatás típusa**: Ez a szolgáltatás implementálása. A nevet a megjelenő osztály határozza meg, `StatelessService` amely kiterjeszti, valamint az ott használt egyéb kódokat vagy függőségeket, valamint a nevét és verziószámát.
+* **Szolgáltatás típusa**: Ez a szolgáltatás implementálása. A nevet a megjelenő osztály határozza meg, amely kiterjeszti, `StatelessService` valamint az ott használt egyéb kódokat vagy függőségeket, valamint a nevét és verziószámát.
 * **Nevesített Service-példány**: a szolgáltatás futtatásához a szolgáltatás típusának elnevezett példányait kell létrehoznia, hasonlóan ahhoz, mint egy adott típusú objektum példányának létrehozásakor. A szolgáltatás példányai valójában az Ön által írt szolgáltatási osztály példányai.
 * **Service Host**: a létrehozott elnevezett szolgáltatás-példányokat a gazdagépen belül kell futtatni. A szolgáltatás gazdagépe csak egy folyamat, ahol a szolgáltatás példányai futhatnak.
 * **Szolgáltatás regisztrálása**: a regisztráció minden együtt jár. A szolgáltatási típust regisztrálni kell a Service Host Service Fabric futtatókörnyezetében, hogy a Service Fabric példányokat hozzon létre a futtatásához.  
@@ -40,7 +40,7 @@ Először hozzon létre egy Service Fabric alkalmazást. A Linux rendszerhez ké
 $ yo azuresfjava
 ```
 
-A **megbízható állapot nélküli szolgáltatás**létrehozásához kövesse az utasításokat. Ebben az oktatóanyagban nevezze el a "HelloWorldApplication" alkalmazást és a "HelloWorld" szolgáltatást. Az eredmény a `HelloWorldApplication` és `HelloWorld`a címtárakat is tartalmazza.
+A **megbízható állapot nélküli szolgáltatás**létrehozásához kövesse az utasításokat. Ebben az oktatóanyagban nevezze el a "HelloWorldApplication" alkalmazást és a "HelloWorld" szolgáltatást. Az eredmény a és a címtárakat is tartalmazza `HelloWorldApplication` `HelloWorld` .
 
 ```bash
 HelloWorldApplication/
@@ -67,7 +67,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Szolgáltatás regisztrációja
-A szolgáltatások típusait regisztrálni kell a Service Fabric futtatókörnyezetben. A szolgáltatás típusa a `ServiceManifest.xml` és a által megvalósított szolgáltatási osztályban van definiálva `StatelessService`. A szolgáltatás regisztrációja a folyamat fő belépési pontján történik. Ebben a példában a folyamat fő belépési pontja `HelloWorldServiceHost.java`a következő:
+A szolgáltatások típusait regisztrálni kell a Service Fabric futtatókörnyezetben. A szolgáltatás típusa a és a által `ServiceManifest.xml` megvalósított szolgáltatási osztályban van definiálva `StatelessService` . A szolgáltatás regisztrációja a folyamat fő belépési pontján történik. Ebben a példában a folyamat fő belépési pontja a következő `HelloWorldServiceHost.java` :
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -87,7 +87,7 @@ public static void main(String[] args) throws Exception {
 
 Nyissa meg a **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService. Java**programot. Ez az osztály határozza meg a szolgáltatás típusát, és futtathat bármilyen kódot. A Service API két belépési pontot biztosít a kódhoz:
 
-* Egy nyílt végű belépési pont metódus, amelynek `runAsync()`a neve, ahol megkezdheti a munkaterhelések végrehajtását, beleértve a hosszú ideig futó számítási munkaterheléseket is.
+* Egy nyílt végű belépési pont metódus, amelynek a neve `runAsync()` , ahol megkezdheti a munkaterhelések végrehajtását, beleértve a hosszú ideig futó számítási munkaterheléseket is.
 
 ```java
 @Override
@@ -120,7 +120,7 @@ Ezt a koordinálást a Service Fabric felügyeli, hogy a szolgáltatás legyen e
 `runAsync()`ne tiltsa le a szinkron módon. A runAsync implementációjának CompletableFuture kell visszaadnia, hogy a futtatókörnyezet továbbra is folytatódjon. Ha a munkaterhelésnek egy hosszú ideig futó feladatot kell megvalósítani, amelyet a CompletableFuture belül kell végrehajtani.
 
 #### <a name="cancellation"></a>Lemondás
-A számítási feladatok megszakítása a megadott lemondási token által koordinált együttműködési erőfeszítés. A rendszer megvárja a feladat befejezését (sikeres befejezéssel, megszakítással vagy hibával), mielőtt továbblép. Fontos, hogy tiszteletben tartsák a lemondási jogkivonatot, fejezze `runAsync()` be a munkát, és a lehető leggyorsabban lépjen ki, amikor a rendszer a lemondást kéri. Az alábbi példa bemutatja, hogyan kezelheti a lemondási eseményt:
+A számítási feladatok megszakítása a megadott lemondási token által koordinált együttműködési erőfeszítés. A rendszer megvárja a feladat befejezését (sikeres befejezéssel, megszakítással vagy hibával), mielőtt továbblép. Fontos, hogy tiszteletben tartsák a lemondási jogkivonatot, fejezze be a munkát, és `runAsync()` a lehető leggyorsabban lépjen ki, amikor a rendszer a lemondást kéri. Az alábbi példa bemutatja, hogyan kezelheti a lemondási eseményt:
 
 ```java
 @Override
@@ -151,7 +151,7 @@ Service Fabric bevezet egy új, állapot-nyilvántartó jellegű szolgáltatást
 
 Ha a számláló értékét állapot nélkül szeretné átalakítani a nagyfokú rendelkezésre állásra és a tartósra, még akkor is, ha a szolgáltatás áthelyezi vagy újraindul, szüksége van egy állapot-nyilvántartó szolgáltatásra.
 
-A HelloWorld-alkalmazással megegyező könyvtárban új szolgáltatást is hozzáadhat a `yo azuresfjava:AddService` parancs futtatásával. Válassza ki a "megbízható állapot-nyilvántartó szolgáltatást" a keretrendszer számára, és nevezze el a "HelloWorldStateful" szolgáltatást. 
+A HelloWorld-alkalmazással megegyező könyvtárban új szolgáltatást is hozzáadhat a parancs futtatásával `yo azuresfjava:AddService` . Válassza ki a "megbízható állapot-nyilvántartó szolgáltatást" a keretrendszer számára, és nevezze el a "HelloWorldStateful" szolgáltatást. 
 
 Az alkalmazásnak most két szolgáltatással kell rendelkeznie: az állapot nélküli szolgáltatás HelloWorld és az állapot-nyilvántartó szolgáltatás HelloWorldStateful.
 
@@ -183,7 +183,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás előtt `RunAsync()`. Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
+`RunAsync()`hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás előtt `RunAsync()` . Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható State Manager
 ```java

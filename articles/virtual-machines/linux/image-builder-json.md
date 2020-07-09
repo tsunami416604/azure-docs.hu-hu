@@ -1,19 +1,19 @@
 ---
 title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779346"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135074"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -29,7 +29,7 @@ Ez az alapszintű sablon formátuma:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Alapértelmezés szerint a rendszerkép-készítő egy "Standard_D1_v2" Build vi
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Alapértelmezés szerint a képszerkesztő nem változtatja meg a rendszerkép méretét, a méretet a forrás rendszerképből fogja használni. Megnövelheti az operációsrendszer-lemez méretét (Win és Linux), ez nem kötelező, és a 0 érték azt jelenti, hogy a forrás képével megegyező méret marad. 
+Alapértelmezés szerint a képszerkesztő nem változtatja meg a rendszerkép méretét, a méretet a forrás rendszerképből fogja használni. **Csak** az operációsrendszer-lemez (Win és Linux) méretének növelésére van lehetőség, ez nem kötelező, és a 0 érték azt jelenti, hogy a forrás képével megegyező méret marad. Az operációsrendszer-lemez mérete nem csökkenthető a forrás rendszerképének méreténél kisebb méretre.
 
 ```json
  {
@@ -106,7 +106,7 @@ Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozz
         "resourceGroupName": "<vnetRgName>"
     }
 ```
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Tags
 
 Ezek a generált rendszerképhez megadható kulcs/érték párok.
 
@@ -391,7 +391,8 @@ A fájl-testreszabó fájljai az [MSI](https://github.com/danielsollondon/azvmim
 
 ### <a name="windows-update-customizer"></a>Windows Update testreszabása
 Ez a testreszabó a Packer [közösségi Windows Update-kiépítési](https://packer.io/docs/provisioners/community-supported.html) csomagjára épül, amely egy nyílt forráskódú projekt, amelyet a csomagoló Közösség tart fenn. A Microsoft a rendszerkép-készítő szolgáltatással teszteli és érvényesíti a kiépítő szolgáltatást, és támogatja a problémák megoldását, a Microsoft pedig hivatalosan nem támogatja a nyílt forráskódú projektet. A Windows Update-létesítéssel kapcsolatos részletes dokumentációt és segítséget a Project adattárában talál.
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Ez a testreszabó a Packer [közösségi Windows Update-kiépítési](https://pa
                 "updateLimit": 20
             }
                ], 
-Operációs rendszer támogatása: Windows
+OS support: Windows
+```
 
 Tulajdonságok testreszabása:
 - **típus** – windowsupdate.
@@ -521,7 +523,7 @@ A rendszerkép kimenete felügyelt rendszerkép-erőforrás lesz.
  
 Elosztás tulajdonságai:
 - **típus** – managedImage 
-- **imageId** – a célként megadott rendszerkép erőforrás-azonosítója, a várt formátum:/subscriptions/ \< subscriptionId>/Resourcegroups/ \< destinationResourceGroupName>/Providers/Microsoft.Compute/images/ \< imageName>
+- **imageId** – a célként megadott rendszerkép erőforrás-azonosítója, a várt formátum:/Subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.Compute/images/\<imageName>
 - **hely** – a felügyelt rendszerkép helye.  
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
@@ -561,7 +563,7 @@ A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjte
 Megosztott képtárak tulajdonságainak terjesztése:
 
 - **típus** – sharedImage  
-- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A formátum:/Subscriptions/ \< subscriptionId>/Resourcegroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
+- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A formátum:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
 - **replicationRegions** – a replikálási régiók tömbje. Az egyik régió az a régió, amelyben a katalógus üzembe van helyezve.
@@ -601,7 +603,7 @@ az resource show \
 > [!NOTE]
 > A virtuális merevlemez létrehozása után a lehető leghamarabb másolja át egy másik helyre. A virtuális merevlemezt az ideiglenes erőforráscsoport tárolja, amely akkor jön létre, amikor a rendszer elküldi a képsablont az Azure rendszerkép-szerkesztő szolgáltatásba. Ha törli a képsablont, akkor elveszíti a VHD-t. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure rendszerkép-készítő githubon](https://github.com/danielsollondon/azvmimagebuilder)különböző forgatókönyvekhez készült minta. JSON fájlok találhatók.
  

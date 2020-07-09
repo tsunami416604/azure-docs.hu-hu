@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608517"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Az egyszerű felhasználónevek változásának megtervezése és megoldása Azure Active Directory
 
 Az egyszerű felhasználónév (UPN) egy olyan attribútum, amely a felhasználói fiókok internetes kommunikációs szabványa. Az egyszerű felhasználónév egy UPN-előtagot (a felhasználói fiók nevét) és egy UPN-utótagot (DNS-tartománynevet) tartalmaz. Az előtag a "@" szimbólum használatával csatlakozik az utótaghoz. Például: someone@example.com. Az egyszerű felhasználónévnek egyedinek kell lennie az összes rendszerbiztonsági tag objektum között egy címtár-erdőben. 
 
-> [!NOTE]
-> A fejlesztők számára azt javasoljuk, hogy az egyszerű felhasználónév helyett a felhasználó objectID használja nem változtatható azonosítóként. Ha az alkalmazásai jelenleg UPN-t használnak, javasoljuk, hogy az egyszerű felhasználónevet úgy állítsa be, hogy az megfeleljen a felhasználó elsődleges e-mail-címének a felhasználói élmény javítása érdekében.<br> **Hibrid környezetben fontos, hogy a felhasználók egyszerű felhasználóneve azonos legyen a helyszíni címtárban és a Azure Active Directory**.
-
 **Ez a cikk azt feltételezi, hogy az UPN-t használja felhasználói azonosítóként. Az egyszerű felhasználónév megtervezése és az UPN-változások okozta problémák helyreállítása.**
+
+> [!NOTE]
+> A fejlesztők számára azt javasoljuk, hogy a felhasználói objectID a nem módosítható azonosítóként használja az egyszerű felhasználónév és az e-mail-címek helyett.
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>Az egyszerű felhasználónevek és az UPN-változások ismertetése
 A bejelentkezési lapok gyakran kérik a felhasználókat, hogy adja meg az e-mail-címüket, ha a szükséges érték valójában az UPN. Ezért ügyeljen arra, hogy a felhasználók UPN-címét bármikor módosítsa az elsődleges e-mail-cím módosításaival.
@@ -47,10 +48,10 @@ Az UPN-t módosíthatja az előtag, az utótag vagy mindkettő módosításával
 * **Az előtag módosítása**.
 
    *  Ha például egy személy neve módosult, akkor megváltoztathatja a fiók nevét:  
-BSimon@contoso.com ideBJohnson@contoso.com
+ide BSimon@contoso.comBJohnson@contoso.com
 
    * Az előtagokhoz is módosíthatja a vállalati szabványokat:  
-Bsimon@contoso.com ideBritta.Simon@contoso.com
+ide Bsimon@contoso.comBritta.Simon@contoso.com
 
 * **Az utótag módosítása** <br>
 
@@ -60,7 +61,7 @@ Bsimon@contoso.com ideBritta.Simon@contoso.com
      Vagy<br>
     * Britta.Simon@corp.contoso.comhogyBritta.Simon@labs.contoso.com 
 
-Módosítsa a felhasználó egyszerű felhasználónevét minden alkalommal, amikor egy felhasználó elsődleges e-mail-címe frissül. Az e-mailek módosításának okát nem számítja ki, hogy az egyszerű felhasználónevet mindig a megfelelő értékre kell frissíteni.
+Javasoljuk, hogy minden alkalommal módosítsa a felhasználói UPN-t, amikor az elsődleges e-mail-címe frissül.
 
 A Active Directoryról az Azure AD-be történő kezdeti szinkronizálás során győződjön meg arról, hogy a felhasználók e-mail-címe megegyezik az UPN-vel.
 
@@ -77,7 +78,7 @@ Előfordulhat például, hogy hozzá kívánja adni a labs.contoso.com, és a fe
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> Ha az Active Directory UPN-je és a Azure Active Directory nem egyeznek, a rendszer problémákba ütközik. Ha [a Active Directory utótagját módosítja](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), akkor győződjön meg arról, hogy az Azure ad-ben hozzá kell adni egy egyező egyéni tartománynevet, [és ellenőrizni](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)kell azt. 
+> Ha [a Active Directory utótagját módosítja](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), akkor győződjön meg arról, hogy az Azure ad-ben hozzá kell adni egy egyező egyéni tartománynevet, [és ellenőrizni](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)kell azt. 
 
 ![Az ellenőrzött tartományok képernyőképe](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -115,7 +116,7 @@ A [szolgáltatott szoftver (SaaS)](https://azure.microsoft.com/overview/what-is-
 **Ismert probléma**<br>
 A felhasználó UPN-értékének módosítása megszakíthatja a kapcsolatot az Azure AD-felhasználó és az alkalmazáson létrehozott felhasználói profil között. Ha az alkalmazás igény szerinti [kiépítés alatt](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)áll, létrehozhat egy új, vadonatúj felhasználói profilt. Ehhez szükség lesz az alkalmazás rendszergazdájának, hogy manuális módosításokat hajtson végre a kapcsolat kijavítása érdekében.
 
-**Workaround**<br>
+**Áthidaló megoldás**<br>
 Az [Azure ad automatikus felhasználói üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) helyezése lehetővé teszi a felhasználói identitások automatikus létrehozását, karbantartását és eltávolítását a támogatott felhőalapú alkalmazásokban. Az automatikus felhasználó-kiépítés konfigurálása az alkalmazásokban automatikusan frissíti az UPN-ket az alkalmazásokban. Tesztelje az alkalmazásokat a fokozatos bevezetés részeként annak ellenőrzéséhez, hogy az UPN-változások nem érintik-e őket.
 Ha Ön fejlesztő, érdemes SCIM-támogatást hozzáadnia az [alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) , hogy lehetővé váljon az automatikus felhasználó-kiépítés Azure Active Directory. 
 
@@ -130,10 +131,14 @@ Az [Azure ad-hez csatlakoztatott](https://docs.microsoft.com/azure/active-direct
 **Ismert problémák** <br>
 A felhasználók egyszeri bejelentkezéssel kapcsolatos problémákat tapasztalhatnak olyan alkalmazásokkal, amelyek az Azure AD-vel való hitelesítéstől függenek.
 
-**Workaround** <br>
+**Resolution** (Osztás) <br>
+Az ebben a szakaszban említett problémák a Windows 10 2020-es frissítésében (2004) is megoldódott.
+
+**Áthidaló megoldás** <br>
 Elég idő az egyszerű felhasználónév módosítására az Azure AD-vel való szinkronizáláshoz. Miután meggyőződött arról, hogy az új egyszerű felhasználónév megjelenik az Azure AD-portálon, kérje meg a felhasználót, hogy az új UPN-sel való bejelentkezéshez válassza az "egyéb felhasználó" csempét. A [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)használatával is ellenőrizheti. Az új egyszerű felhasználónévvel való bejelentkezés után a régi UPN-re mutató hivatkozások továbbra is megjelennek a "hozzáférés munkahelyi vagy iskolai" Windows-beállításhoz.
 
 ![Az ellenőrzött tartományok képernyőképe](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
 
@@ -149,13 +154,17 @@ Emellett a következő üzenet jelenik meg, amely egy perc elteltével újraind�
 
 "A számítógép egy percen belül automatikusan újraindul. A Windows hibát észlelt, és újra kell indítani. Most ezt az üzenetet kell bezárnia, és el kell mentenie a munkáját.
 
-**Workaround** 
+**Resolution** (Osztás) <br>
+Az ebben a szakaszban említett problémák a Windows 10 2020-es frissítésében (2004) is megoldódott.
+
+**Áthidaló megoldás** 
 
 Az eszközt le kell venni az Azure AD-ből, és újra kell indítani. Az újraindítás után az eszköz ismét automatikusan csatlakozik az Azure AD-hez, és a felhasználónak be kell jelentkeznie az új UPN használatával az "egyéb felhasználó" csempére kattintva. Egy eszköz Azure AD-ból való kikapcsolásához futtassa a következő parancsot a parancssorban:
 
 **dsregcmd /leave**
 
 Ha használatban van, a felhasználónak [újra regisztrálnia](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) kell a vállalati Windows Hello-t. Ez a probléma nem érinti a Windows 7 és a 8,1 rendszerű eszközöket az UPN módosítása után.
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator ismert problémák és megkerülő megoldások
 
@@ -179,7 +188,7 @@ A Microsoft Authenticator alkalmazás sávon kívüli ellenőrzési lehetősége
 
 Amikor módosít egy felhasználó egyszerű felhasználónevét, a régi UPN továbbra is megjelenik a felhasználói fiókban, és előfordulhat, hogy az értesítés nem érkezik meg. Az [ellenőrző kódok](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) továbbra is működőképesek.
 
-**Workaround**
+**Áthidaló megoldás**
 
 Ha értesítést kap, utasítsa a felhasználót, hogy zárja be az értesítést, nyissa meg a hitelesítő alkalmazást, koppintson az "értesítések keresése" lehetőségre, és hagyja jóvá az MFA-kérést. Ezt követően a rendszer frissíti a fiókban megjelenő egyszerű felhasználónevet. Megjegyzés: Előfordulhat, hogy a frissített UPN új fiókként jelenik meg, mert más hitelesítő funkció is használatban van. További információkért tekintse meg a jelen cikk további ismert problémáit.
 
@@ -198,7 +207,7 @@ Emellett lehetővé teszi az alkalmazások számára, hogy olyan speciális funk
 **Ismert problémák**<br>
 A felhasználó interaktív hitelesítési kéréseket jelenít meg a közvetítő által támogatott bejelentkezést használó új alkalmazásokban, az alkalmazás által átadott login_hint és a brókeren tárolt egyszerű felhasználónév közötti eltérések miatt.
 
-**Workaround** <br> A felhasználónak manuálisan kell eltávolítania a fiókot a Microsoft Authenticatorból, és egy új bejelentkezést kell elindítania egy közvetítő által támogatott alkalmazásból. A rendszer automatikusan hozzáadja a fiókot a kezdeti hitelesítés után.
+**Áthidaló megoldás** <br> A felhasználónak manuálisan kell eltávolítania a fiókot a Microsoft Authenticatorból, és egy új bejelentkezést kell elindítania egy közvetítő által támogatott alkalmazásból. A rendszer automatikusan hozzáadja a fiókot a kezdeti hitelesítés után.
 
 ### <a name="device-registration"></a>Eszközregisztráció
 
@@ -213,7 +222,7 @@ A Microsoft Authenticator alkalmazás feladata az eszköz regisztrálása az Azu
 **Ismert problémák**<br>
 Amikor megváltoztatja az UPN-t, megjelenik egy új, az új egyszerű felhasználónévvel rendelkező fiók a Microsoft Authenticator alkalmazásban, miközben a régi UPN-vel rendelkező fiók továbbra is szerepel. Emellett a régi UPN is megjelenik az eszközbeállítások szakaszban az alkalmazás beállításainál. Az eszközök regisztrációjának vagy a függő forgatókönyveknek a szokásos funkciója nem változik.
 
-**Workaround** <br> Ha el szeretné távolítani az összes, a régi egyszerű felhasználónévre mutató hivatkozást a Microsoft Authenticator alkalmazásban, utasítsa a felhasználót, hogy manuálisan távolítsa el a régi és az új fiókot a Microsoft Authenticatorről, regisztrálja újra az MFA-t, majd csatlakoztassa újra az eszközt.
+**Áthidaló megoldás** <br> Ha el szeretné távolítani az összes, a régi egyszerű felhasználónévre mutató hivatkozást a Microsoft Authenticator alkalmazásban, utasítsa a felhasználót, hogy manuálisan távolítsa el a régi és az új fiókot a Microsoft Authenticatorről, regisztrálja újra az MFA-t, majd csatlakoztassa újra az eszközt.
 
 ### <a name="phone-sign-in"></a>Telefonos bejelentkezés
 
@@ -222,7 +231,7 @@ A telefonos bejelentkezés lehetővé teszi, hogy a felhasználók jelszó nélk
 **Ismert problémák** <br>
 A felhasználók nem tudják használni a telefonos bejelentkezést, mert nem kapnak értesítést. Ha a felhasználó a riasztások keresésekor felkeresi az értesítéseket, hibaüzenetet kap.
 
-**Workaround**<br>
+**Áthidaló megoldás**<br>
 A felhasználónak ki kell választania a legördülő menüt a telefonos bejelentkezéshez engedélyezett fiókban, és válassza a telefonos bejelentkezés letiltása lehetőséget. Ha szükséges, a telefonos bejelentkezés újra engedélyezhető.
 
 ## <a name="security-key-fido2-known-issues-and-workarounds"></a>Biztonsági kulcs (FIDO2) – ismert problémák és megkerülő megoldások
@@ -230,7 +239,7 @@ A felhasználónak ki kell választania a legördülő menüt a telefonos bejele
 **Ismert problémák** <br>
 Ha több felhasználó van regisztrálva ugyanazon a kulcson, a bejelentkezési képernyő egy fiók kiválasztása lapot jelenít meg, ahol a régi UPN jelenik meg. A biztonsági kulcsokat használó bejelentkezéseket az UPN-változások nem érintik.  
 
-**Workaround**<br>
+**Áthidaló megoldás**<br>
 A régi UPN-re mutató hivatkozások eltávolításához [a felhasználóknak alaphelyzetbe kell állítania a biztonsági kulcsot, és újra regisztrálnia](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues)kell.
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>OneDrive ismert problémák és megkerülő megoldások

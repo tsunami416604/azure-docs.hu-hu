@@ -8,10 +8,9 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78247992"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
@@ -44,9 +43,9 @@ Ha egy későbbi kibővített műveletet hajt végre, például a két és öt k
 
 * A szinkronizálás akkor is engedélyezett, ha nincsenek replikák a lekérdezési készletben. Ha az elsődleges kiszolgálón lévő feldolgozási műveletből egy vagy több replikára horizontális felskálázást végez, először hajtsa végre a szinkronizálást a lekérdezési készletben lévő replikák nélkül, majd a horizontális felskálázást. A horizontális felskálázás előtt a szinkronizálás elkerüli az újonnan hozzáadott replikák redundáns hidratációját.
 
-* Ha az elsődleges kiszolgálóról törli a modell-adatbázist, a rendszer nem törli automatikusan a lekérdezési készlet replikái közül. A szinkronizálási műveletet a [Sync-AzAnalysisServicesInstance PowerShell-](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal kell végrehajtania, amely eltávolítja az adott adatbázishoz tartozó fájlokat a replika megosztott blob Storage-helyéről, majd törli a modell-adatbázist a lekérdezési készlet replikái között. Annak megállapításához, hogy létezik-e a modell adatbázisa a lekérdezési készlet replikái között, de nem az elsődleges kiszolgálón, ügyeljen arra, hogy a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** beállítás értéke **Igen**. Ezután a SSMS használatával kapcsolódjon az elsődleges kiszolgálóhoz a `:rw` minősítővel, és ellenőrizze, hogy létezik-e az adatbázis. Ezután kapcsolódjon a lekérdezési készlet replikái számára úgy, hogy `:rw` a minősítő nélkül csatlakozik az adatbázishoz. Ha az adatbázis létezik a lekérdezési készlet replikái között, de az elsődleges kiszolgálón nem, futtassa a szinkronizálási műveletet.   
+* Ha az elsődleges kiszolgálóról törli a modell-adatbázist, a rendszer nem törli automatikusan a lekérdezési készlet replikái közül. A szinkronizálási műveletet a [Sync-AzAnalysisServicesInstance PowerShell-](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal kell végrehajtania, amely eltávolítja az adott adatbázishoz tartozó fájlokat a replika megosztott blob Storage-helyéről, majd törli a modell-adatbázist a lekérdezési készlet replikái között. Annak megállapításához, hogy létezik-e a modell adatbázisa a lekérdezési készlet replikái között, de nem az elsődleges kiszolgálón, ügyeljen arra, hogy a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** beállítás értéke **Igen**. Ezután a SSMS használatával kapcsolódjon az elsődleges kiszolgálóhoz a `:rw` minősítővel, és ellenőrizze, hogy létezik-e az adatbázis. Ezután kapcsolódjon a lekérdezési készlet replikái számára úgy, hogy a minősítő nélkül csatlakozik az `:rw` adatbázishoz. Ha az adatbázis létezik a lekérdezési készlet replikái között, de az elsődleges kiszolgálón nem, futtassa a szinkronizálási műveletet.   
 
-* Ha az elsődleges kiszolgálón átnevez egy adatbázist, további lépésekre van szükség annak biztosításához, hogy az adatbázis megfelelően legyen szinkronizálva a replikákkal. Az Átnevezés után hajtson végre szinkronizálást a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal, és adja meg `-Database` a paramétert a régi adatbázis nevével. Ez a szinkronizálás eltávolítja az adatbázist és a fájlokat a régi névvel bármely replikáról. Ezután hajtson végre egy másik szinkronizálást a `-Database` paraméter megadásával az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlok második készletére, és hidratálja a replikákat. Ezek a szinkronizálások nem hajthatók végre a portálon a modell szinkronizálása parancs használatával.
+* Ha az elsődleges kiszolgálón átnevez egy adatbázist, további lépésekre van szükség annak biztosításához, hogy az adatbázis megfelelően legyen szinkronizálva a replikákkal. Az Átnevezés után hajtson végre szinkronizálást a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal, és adja meg a `-Database` paramétert a régi adatbázis nevével. Ez a szinkronizálás eltávolítja az adatbázist és a fájlokat a régi névvel bármely replikáról. Ezután hajtson végre egy másik szinkronizálást a paraméter megadásával `-Database` az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlok második készletére, és hidratálja a replikákat. Ezek a szinkronizálások nem hajthatók végre a portálon a modell szinkronizálása parancs használatával.
 
 ### <a name="synchronization-mode"></a>Szinkronizálási mód
 
@@ -98,7 +97,7 @@ Használjon Azure Monitor naplókat a kibővíthető kiszolgáló erőforrásain
 
 1. A portálon kattintson a **kibővítés**elemre. A csúszka segítségével válassza ki a lekérdezési replika kiszolgálók számát. A kiválasztott replikák száma a meglévő kiszolgálón kívül történik.  
 
-2. A **feldolgozó kiszolgáló leválasztása a lekérdezési készletből**beállításnál válassza az Igen lehetőséget, ha ki szeretné zárni a feldolgozó kiszolgálót a lekérdezési kiszolgálókról. Az alapértelmezett kapcsolati karakterláncot (nem `:rw` [) használó](#connections) ügyfélkapcsolatokat a rendszer átirányítja a lekérdezési készlet replikái között. 
+2. A **feldolgozó kiszolgáló leválasztása a lekérdezési készletből**beállításnál válassza az Igen lehetőséget, ha ki szeretné zárni a feldolgozó kiszolgálót a lekérdezési kiszolgálókról. Az [connections](#connections) alapértelmezett kapcsolati karakterláncot (nem) használó ügyfélkapcsolatokat `:rw` a rendszer átirányítja a lekérdezési készlet replikái között. 
 
    ![Felskálázási csúszka](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -131,12 +130,12 @@ Használja a **szinkronizálási** műveletet.
 Visszatérési állapotkódok:
 
 
-|Kód  |Leírás  |
+|Code  |Description  |
 |---------|---------|
 |-1     |  Érvénytelen       |
 |0     | Replikáló        |
 |1     |  Rehidratálása       |
-|2     |   Befejezve       |
+|2     |   Befejeződött       |
 |3     |   Sikertelen      |
 |4     |    Véglegesítése     |
 |||
@@ -152,7 +151,7 @@ A szinkronizálás futtatásához használja a [Sync-AzAnalysisServicesInstance]
 
 A lekérdezési replikák számának beállításához használja a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Válassza a választható `-ReadonlyReplicaCount` paramétert.
 
-A feldolgozó kiszolgáló a lekérdezési készletből való elkülönítéséhez használja a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Válassza ki a `-DefaultConnectionMode` használni `Readonly`kívánt választható paramétert.
+A feldolgozó kiszolgáló a lekérdezési készletből való elkülönítéséhez használja a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Válassza ki a `-DefaultConnectionMode` használni kívánt választható paramétert `Readonly` .
 
 További információ: [egyszerű szolgáltatásnév használata az az. AnalysisServices modullal](analysis-services-service-principal.md#azmodule).
 
@@ -172,9 +171,9 @@ Az árképzési szintet egy több replikával rendelkező kiszolgálón is módo
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-**Probléma:** A felhasználók hibaüzenete **nem találja a\<(z)> kiszolgáló nevét a (z) "ReadOnly" csatlakoztatási módban.**
+**Probléma:** A felhasználó által lekérdezett hiba nem találja a (z) " ** \<Name of the server> " kiszolgáló példányát a (z) "ReadOnly" kapcsolatok módban.**
 
-**Megoldás:** Amikor kiválasztja a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** lehetőséget, a rendszer az alapértelmezett kapcsolati karakterláncot ( `:rw`nem) használó ügyfélkapcsolatokat a lekérdezési készlet replikáinak átirányítja. Ha a lekérdezési készlet replikái még nincsenek online állapotban, mert a szinkronizálás még nem fejeződött be, az átirányított ügyfélkapcsolatok sikertelenek lehetnek. A sikertelen kapcsolatok megelőzése érdekében a lekérdezési készletben legalább két kiszolgálónak kell lennie a szinkronizálás végrehajtásához. Minden kiszolgáló külön van szinkronizálva, míg mások online állapotban maradnak. Ha úgy dönt, hogy nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készletben a feldolgozás során, dönthet úgy, hogy a készletből eltávolítja a feldolgozást, majd a feldolgozás befejezése után visszaadja azt a készletbe, de a szinkronizálás előtt. A szinkronizálási állapot figyeléséhez használja a memória és a QPU metrikáját.
+**Megoldás:** Amikor kiválasztja a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** lehetőséget, a rendszer az alapértelmezett kapcsolati karakterláncot (nem) használó ügyfélkapcsolatokat a `:rw` lekérdezési készlet replikáinak átirányítja. Ha a lekérdezési készlet replikái még nincsenek online állapotban, mert a szinkronizálás még nem fejeződött be, az átirányított ügyfélkapcsolatok sikertelenek lehetnek. A sikertelen kapcsolatok megelőzése érdekében a lekérdezési készletben legalább két kiszolgálónak kell lennie a szinkronizálás végrehajtásához. Minden kiszolgáló külön van szinkronizálva, míg mások online állapotban maradnak. Ha úgy dönt, hogy nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készletben a feldolgozás során, dönthet úgy, hogy a készletből eltávolítja a feldolgozást, majd a feldolgozás befejezése után visszaadja azt a készletbe, de a szinkronizálás előtt. A szinkronizálási állapot figyeléséhez használja a memória és a QPU metrikáját.
 
 
 

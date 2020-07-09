@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 0703e7cd44a79dd45680e19c8f5f3232be840823
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84338056"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások az Azure Data Factoryben
 
@@ -32,7 +31,7 @@ Ha most ismerkedik a Data Factoryával, tekintse meg a [Azure Data Factory bemut
 
 ## <a name="overview"></a>Áttekintés
 
-A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy egy másolási tevékenységgel másol egy helyszíni SQL Server adatait az Azure Blob Storage szolgáltatásba. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységet is használhat a kimeneti adatok Azure SQL Data Warehouseba másolásához, amelyek alapján az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek](concepts-pipelines-activities.md) Azure Data Factoryban.
+A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy másolási tevékenységet használ az adatok SQL Serverról az Azure Blob Storage-ba való másolásához. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységet is használhat a kimeneti adatok Azure SQL Data Warehouseba másolásához, amelyek alapján az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek](concepts-pipelines-activities.md) Azure Data Factoryban.
 
 Az **adatkészlet** mostantól olyan elnevezett nézet, amely egyszerűen rámutat vagy hivatkozik a **tevékenységekben** használni kívánt adatokra bemenetként és kimenetként.
 
@@ -68,10 +67,10 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-name | A társított szolgáltatás neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
-típus | A társított szolgáltatás típusa. Például: Azure Storage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Igen |
-typeProperties | A típus tulajdonságai különbözőek az egyes adattárokhoz vagy számításokhoz. <br/><br/> A támogatott adattár-típusok és a típusuk tulajdonságai a jelen cikk [adatkészlet típusa](concepts-datasets-linked-services.md#dataset-type) táblázatában találhatók. Navigáljon az adattár-összekötő cikkhez, és ismerkedjen meg az adattárra jellemző típusok tulajdonságaival. <br/><br/> A támogatott számítási típusok és a hozzájuk tartozó típusok tulajdonságai a következő témakörben találhatók: [számítási társított szolgáltatások](compute-linked-services.md). | Igen |
-Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem
+name | A társított szolgáltatás neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
+típus | A társított szolgáltatás típusa. Például: Azure Storage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Yes |
+typeProperties | A típus tulajdonságai különbözőek az egyes adattárokhoz vagy számításokhoz. <br/><br/> A támogatott adattár-típusok és a típusuk tulajdonságai a jelen cikk [adatkészlet típusa](concepts-datasets-linked-services.md#dataset-type) táblázatában találhatók. Navigáljon az adattár-összekötő cikkhez, és ismerkedjen meg az adattárra jellemző típusok tulajdonságaival. <br/><br/> A támogatott számítási típusok és a hozzájuk tartozó típusok tulajdonságai a következő témakörben találhatók: [számítási társított szolgáltatások](compute-linked-services.md). | Yes |
+Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No
 
 ## <a name="linked-service-example"></a>Társított szolgáltatás – példa
 
@@ -95,7 +94,10 @@ A következő társított szolgáltatás egy Azure Storage-beli társított szol
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
-Társított szolgáltatásokat a következő eszközök vagy SDK-k egyikével hozhat létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal
+A társított szolgáltatások a Azure Data Factory UX-ben hozhatók létre a [felügyeleti központban](author-management-hub.md) , valamint a rájuk hivatkozó tevékenységek, adatkészletek vagy adatfolyamatok használatával.
+
+A társított szolgáltatásokat a következő eszközök vagy SDK-k egyikével hozhatja létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal.
+
 
 ## <a name="data-store-linked-services"></a>Adattárhoz társított szolgáltatások
 

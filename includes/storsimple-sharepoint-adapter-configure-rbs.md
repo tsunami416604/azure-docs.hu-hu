@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179159"
 ---
 > [!NOTE]
@@ -55,7 +55,7 @@ ms.locfileid: "67179159"
    
    1. Dokumentum feltöltése a SharePointba. 
    2. Keresse meg a konfigurált UNC elérési utat. Győződjön meg arról, hogy az RBS-címtár szerkezete létrejött, és hogy tartalmazza a feltöltött objektumot.
-6. Választható A SharePoint részét képező Microsoft `Migrate()` RBS PowerShell-parancsmag használatával áttelepítheti a meglévő blob-tartalmakat a StorSimple-eszközre. További információkért lásd: [tartalom migrálása az RBS-be vagy abból a sharepoint 2013][6] -be, illetve [tartalom áttelepítése az RBS-be vagy onnan kívülre (SharePoint Foundation 2010)][7].
+6. Választható A `Migrate()` SharePoint részét képező Microsoft RBS PowerShell-parancsmag használatával áttelepítheti a meglévő blob-tartalmakat a StorSimple-eszközre. További információkért lásd: [tartalom migrálása az RBS-be vagy abból a sharepoint 2013][6] -be, illetve [tartalom áttelepítése az RBS-be vagy onnan kívülre (SharePoint Foundation 2010)][7].
 7. Választható A tesztelési telepítésekben ellenőrizheti, hogy a Blobok kikerültek-e a tartalom-adatbázisból a következőképpen: 
    
    1. Indítsa el az SQL Management Studio.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 124aac96550b5d462c0794053452ed28dba27452
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413161"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -22,7 +22,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Leírás |
+| Kifejezés vagy fogalom | Description |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -43,7 +43,7 @@ A régió a késés által meghatározott kerületen belül üzembe helyezett ad
 
 A rendelkezésre állási zóna egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében minden engedélyezett régióban legalább három elkülönített zóna található. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében. Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
-Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
+Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, így biztosítva, hogy a különböző zónákba tartozó virtuális gépek nem frissülnek egyszerre.
 
 Magas rendelkezésre állást építhet ki az alkalmazás-architektúrába a számítási, tárolási, hálózatkezelési és adaterőforrások egy zónán belüli és más zónákban való replikálásával. A rendelkezésre állási zónákat támogató Azure-szolgáltatások két kategóriába sorolhatók:
 
@@ -119,7 +119,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Virtual Machines: DSv3 sorozat | Azure Red Hat OpenShift | Spatial Anchors |
 > | Virtual Machines: Dv2 sorozat | Azure Site Recovery | StorSimple |
 > | Virtual Machines: Dv3 sorozat | Azure Spring Cloud szolgáltatás | Video Indexer |
-> | Virtual Machines: ESv3 sorozat | Azure Stack hub | Virtual Machines: A8-A11 (nagy számítási igényű) |
+> | Virtual Machines: ESv3 sorozat | Azure Stack Hub | Virtual Machines: A8-A11 (nagy számítási igényű) |
 > | Virtual Machines: Ev3 sorozat | Azure Stream Analytics | Virtual Machines: DASv4 sorozat |
 > | Virtual Machines: F sorozat | Azure Synapse Analytics | Virtual Machines: DAv4 sorozat |
 > | Virtual Machines: FS sorozat | Azure SignalR szolgáltatás | Virtual Machines: DCsv2 sorozat |
@@ -132,7 +132,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1 sorozat |
 > |  | Cognitive Services: Speech Services | Virtual Machines: H sorozat |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: LS-sorozat |
-> |  | Tárolópéldányok | Virtual Machines: LSv2 sorozat |
+> |  | Container Instances | Virtual Machines: LSv2 sorozat |
 > |  | Container Registry | Virtual Machines: Mv2 sorozat |
 > |  | Data Factory | Virtual Machines: NC sorozat |
 > |  | Event Grid | Virtual Machines: NCv2 sorozat |
@@ -148,7 +148,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Ultra Disk Storage |  |
 > |  | Virtual Machines: Fsv2 sorozat |  |
 > |  | Virtual Machines: M sorozat |  |
-> |  | Virtuális WAN |  |
+> |  | Virtual WAN |  |
 
 ###  <a name="services-resiliency"></a>Szolgáltatások rugalmassága
 

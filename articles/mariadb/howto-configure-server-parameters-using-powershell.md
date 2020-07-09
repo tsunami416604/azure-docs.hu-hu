@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: d7a6f87b704a2e366e0a4e1fc647e83ed88c486c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4ee0e5bd0d9d1fa941af245ecc6182ba1608eef0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104962"
 ---
-# <a name="customize-azure-database-for-mariadb-server-parameters-using-powershell"></a>Azure Database for MariaDB kiszolgáló paramétereinek testreszabása a PowerShell használatával
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MariaDB a PowerShell használatával
 
 Egy Azure Database for MariaDB kiszolgáló konfigurációs paramétereit a PowerShell használatával listázhatja, megjelenítheti és frissítheti. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
 
@@ -65,7 +65,7 @@ A **lassú \_ lekérdezési \_ napló** kiszolgáló-konfigurációs paraméter�
 Update-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A tároló automatikus növekedése Azure Database for MariaDB-kiszolgálón a PowerShell használatával](howto-auto-grow-storage-powershell.md).

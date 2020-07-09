@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60860517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514325"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>A 4-es frissítés telepítése a StorSimple-eszközön
 
@@ -74,16 +74,16 @@ A gyorsjavítási módszer a következő három lépést foglalja magában:
 
 A következő gyorsjavításokat le kell töltenie és telepítenie kell az előírt sorrendben és a javasolt mappákban:
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Rendelés | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Szoftverfrissítés |Hagyományos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 | 2a. |KB4011841 <br> KB4011842 |LSI-illesztőprogram és belső vezérlőprogram frissítései <br> USM belső vezérlőprogram frissítése (3,38-es verzió) |Hagyományos <br></br>Nem zavaró |~ 3 óra <br> (tartalmazza a következőt: 2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2b. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Operációs rendszer biztonsági frissítései csomag <br> A Windows Server 2012 R2 letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 | 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Operációs rendszer frissítési csomagja <br> A Windows Server 2012 R2 letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
-Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A `Get-HcsFirmwareVersion` parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire. Ha a következő belső vezérlőprogram-verziókat `XMGJ`futtatja `KZ50`: `F6C2` `VR08` `N002` `0106` `XGEG`,,,,,, akkor nem kell telepítenie ezeket a frissítéseket.
+Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire `Get-HcsFirmwareVersion` . Ha a következő belső vezérlőprogram-verziókat futtatja:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` akkor nem kell telepítenie ezeket a frissítéseket.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
+| Rendelés | KB | Description | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 

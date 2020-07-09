@@ -3,12 +3,12 @@ title: Azure Migrate replikációs berendezés
 description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate replikációs berendezését.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122098"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
 
@@ -58,8 +58,8 @@ TLS | A TLS 1,2-et engedélyezni kell.
 MySQL | A MySQL-t telepíteni kell a készülékre.<br/> Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti a készülék telepítése során.
 Egyéb alkalmazások | Ne futtasson más alkalmazásokat a replikációs berendezésen.
 Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V
-Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése
+Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
+IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) engedélyezése <br> – [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -beállítás engedélyezése
 **Hálózati beállítások** |
 IP-cím típusa | Statikus
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)
@@ -69,7 +69,7 @@ Hálózati adapter típusa | VMXNET3
 
 A MySQL-t telepíteni kell a replikációs berendezést futtató gépre. Ezt a metódusok egyikével telepítheti.
 
-**Módszer** | **Részletek**
+**Metódus** | **Részletek**
 --- | ---
 Manuális letöltés és telepítés | Töltse le a MySQL-alkalmazást & helyezze a mappába a C:\Temp\ASRSetup, majd telepítse manuálisan.<br/> A készülék a MySQL beállítása után már telepítve lesz.
 Online letöltés nélkül | Helyezze a MySQL Installer alkalmazást a C:\Temp\ASRSetup. mappába. Ha telepíti a készüléket, és rákattint a MySQL letöltésére és telepítésére, a telepítő a hozzáadott telepítőt fogja használni.
@@ -79,7 +79,7 @@ Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a r
 
 A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez az Azure nyilvános felhőben.
 
-**URL** | **Részletek**
+**URL-cím** | **Részletek**
 --- | ---
 \*.backup.windowsazure.com | A replikált adatátvitelhez és a koordinációhoz használatos
 \*.store.core.windows.net | A replikált adatátvitelhez és a koordinációhoz használatos
@@ -88,15 +88,15 @@ A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez az A
 https:\//management.azure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
 *.services.visualstudio.com | Telemetria célra használatos (opcionális)
 time.windows.com | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.Live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.Live.com <br/> https:\//www.microsoft.com  | A készülék beállításához hozzá kell férnie az URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory
-https:\//dev.mysql.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.Live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.microsoft.com  | A készülék beállításához hozzá kell férnie az URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
 
 
 ## <a name="azure-government-url-access"></a>URL-hozzáférés Azure Government
 
 A replikációs berendezésnek hozzá kell férnie Azure Government-beli URL-címekhez.
 
-**URL** | **Részletek**
+**URL-cím** | **Részletek**
 --- | ---
 \*. backup.windowsazure.us | A replikált adatátvitelhez és a koordinációhoz használatos
 \*.store.core.windows.net | A replikált adatátvitelhez és a koordinációhoz használatos
@@ -105,8 +105,8 @@ A replikációs berendezésnek hozzá kell férnie Azure Government-beli URL-cí
 https:\//management.usgovcloudapi.net | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
 *.services.visualstudio.com | Telemetria célra használatos (opcionális)
 time.nist.gov | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.Live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.Live.com <br/> https:\//www.microsoft.com  | A készüléknek a PETESEJTekkel való beállításához hozzáféréssel kell rendelkeznie az URL-címekhez. A hozzáférés-vezérléshez és az identitáskezeléshoz használják Azure Active Directory.
-https:\//dev.mysql.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.Live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.microsoft.com  | A készüléknek a PETESEJTekkel való beállításához hozzáféréssel kell rendelkeznie az URL-címekhez. A hozzáférés-vezérléshez és az identitáskezeléshoz használják Azure Active Directory.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
 
 ## <a name="port-access"></a>Port-hozzáférés
 
@@ -139,7 +139,7 @@ A készüléket manuálisan frissítheti az Azure Migrate hub-ból. Javasoljuk, 
 2. A **konfigurációs kiszolgálók**területen megjelenik egy hivatkozás az **ügynök verziójában** , ha a replikációs berendezés új verziója érhető el. 
 3. Töltse le a telepítőt a replikációs berendezést végző gépre, és telepítse a frissítést. A telepítő észleli a készüléken futó aktuális verziót.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést az ügynök-alapú VMWare virtuális gépek áttelepítéséhez.
 - [Ismerje meg, hogyan](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést a fizikai kiszolgálók számára.

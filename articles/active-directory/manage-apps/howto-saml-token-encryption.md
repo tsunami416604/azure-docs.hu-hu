@@ -3,9 +3,8 @@ title: SAML-jogkivonat titkosítása Azure Active Directory
 description: Ismerje meg, hogyan konfigurálhatja Azure Active Directory SAML-jogkivonat titkosítását.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-editor: ''
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,15 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79365866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763346"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Útmutató: az Azure AD SAML-jogkivonat titkosításának konfigurálása
 
@@ -147,7 +145,7 @@ Amikor a Graph, a PowerShell vagy az Application manifest használatával konfig
 
 1. Az alkalmazás oldalán válassza a **jegyzékfájl** lehetőséget az [alkalmazás jegyzékfájljának](../develop/reference-app-manifest.md)szerkesztéséhez.
 
-1. Állítsa be az `tokenEncryptionKeyId` attribútum értékét.
+1. Állítsa be az attribútum értékét `tokenEncryptionKeyId` .
 
     A következő példa egy olyan alkalmazás-jegyzékfájlt mutat be, amely két titkosítási tanúsítvánnyal van konfigurálva, a második pedig a tokenEnryptionKeyId használatával.
 

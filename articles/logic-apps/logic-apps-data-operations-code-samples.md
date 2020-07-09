@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712445"
 ---
-# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatműveleti kód mintái Azure Logic Apps
+# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatművelet-kódminták az Azure Logic Appshez
 
 Az alábbi kódrészletek a cikkben szereplő adatművelet-definíciók esetében az adatműveletek [elvégzésére](../logic-apps/logic-apps-perform-data-operations.md)szolgálnak. Ezeket a mintákat akkor használhatja, ha a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját, Azure-előfizetését és API-kapcsolatait szeretné kipróbálni. Csak másolja és illessze be ezeket a műveleti definíciókat a logikai alkalmazás munkafolyamat-definíciójának kód nézet szerkesztőjébe, majd módosítsa az adott munkafolyamathoz tartozó definíciókat. 
 

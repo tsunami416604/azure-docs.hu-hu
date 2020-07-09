@@ -1,18 +1,18 @@
 ---
 title: Gyakori problémák a VHD létrehozásakor (GYIK)
 description: Gyakori kérdések a virtuális merevlemezek (VHD-k) létrehozásakor előforduló gyakori problémákról.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
+author: emuench
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2b6ab5d36cd5a1f66badc79d1b2d42e464d028f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724717"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110742"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Gyakori problémák a VHD létrehozása során
 
@@ -20,7 +20,7 @@ Ezek a gyakori kérdések (GYIK) a virtuális merevlemez (VHD) Azure-beli virtu�
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Hogyan hozzon létre egy virtuális gépet a Azure Portal egy Premium Storage-beli virtuális merevlemez használatával?
 
-Az Azure Marketplace jelenleg nem támogatja virtuálisgép-ajánlatok létrehozását a felügyelt tárolón vagy az Azure Premium Storage-ból származó képekből. Részletekért lásd: az [Azure Managed Disks áttekintése](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+Az Azure Marketplace jelenleg nem támogatja virtuálisgép-ajánlatok létrehozását a felügyelt tárolón vagy az Azure Premium Storage-ból származó képekből. Részletekért lásd: az [Azure Managed Disks áttekintése](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Használhatok 2. generációs virtuális gépeket az ajánlatokhoz?
 
@@ -45,9 +45,9 @@ A tanúsítványok létrehozása az Azure-beli virtuálisgép- [rendszerkép min
 
 Ha a Azure Resource Manager üzembe helyezési modellt használja, három lehetőség közül választhat:
 
-* [Route-alapú VPN-átjáró létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [Route-alapú VPN-átjáró létrehozása Azure PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [Route-alapú VPN-átjáró létrehozása a parancssori felület használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [Route-alapú VPN-átjáró létrehozása a Azure Portal használatával](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [Route-alapú VPN-átjáró létrehozása Azure PowerShell használatával](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [Route-alapú VPN-átjáró létrehozása a parancssori felület használatával](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Mik a Microsoft-kiszolgálói szoftverek Azure-alapú virtuális gépeken való futtatására vonatkozó Microsoft-támogatási szabályzatok?
 
@@ -65,7 +65,7 @@ További információ az egyéni szkriptek bővítmény használatáról a Azure
 
 Általában nem. Az Azure-beli virtuális gépekhez támogatott operációs rendszerek és standard szolgáltatások mind 64 bitesek. Bár a legtöbb 64 bites operációs rendszer támogatja az alkalmazások 32 bites verzióit a visszamenőleges kompatibilitás érdekében, az 32 bites alkalmazások a virtuálisgép-megoldás részeként való használata nem támogatott és nem ajánlott. Hozza létre újra az alkalmazást 64 bites projektként.
 
-További információval a következő cikkek szolgálnak:
+További információért lásd a következő cikkeket:
 
 * [32 bites alkalmazások futtatása](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 * [32 bites operációs rendszerek támogatása az Azure-beli virtuális gépeken](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
@@ -75,4 +75,4 @@ További információval a következő cikkek szolgálnak:
 
 Minden alkalommal, amikor megpróbálok létrehozni egy rendszerképet a virtuális merevlemezekről, a következő hibaüzenet jelenik meg: "a VHD már regisztrálva van a rendszerkép-tárházban erőforrásként" a Azure PowerShellban. Nem hoztam létre a képet, és nem találtam ilyen nevű képet az Azure-ban. Hogyan oldhatom meg ezt?
 
-Ez a probléma általában akkor jelenik meg, ha olyan virtuális merevlemezről hozta létre a virtuális gépet, amelynek van zárolása. Győződjön meg arról, hogy nincs lefoglalva virtuális gép a virtuális merevlemezről, majd próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, nyisson meg egy támogatási jegyet. Lásd: [a partner Center támogatása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Ez a probléma általában akkor jelenik meg, ha olyan virtuális merevlemezről hozta létre a virtuális gépet, amelynek van zárolása. Győződjön meg arról, hogy nincs lefoglalva virtuális gép a virtuális merevlemezről, majd próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, nyisson meg egy támogatási jegyet. Lásd: [a partner Center támogatása](support.md).

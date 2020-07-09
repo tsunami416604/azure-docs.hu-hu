@@ -3,12 +3,12 @@ title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854791"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ A Service Fabric-futtatókörnyezet és az SDK telepítése nem támogatott a Li
 
 A fejlesztéshez a következő operációsrendszer-verziók támogatottak.
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16,04 ( `Xenial Xerus` ), 18,04 ( `Bionic Beaver` )
 
     Győződjön meg róla, hogy az `apt-transport-https` csomag telepítve van.
          
@@ -60,46 +60,40 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
 ### <a name="ubuntu"></a>Ubuntu
 
 1. Nyisson meg egy terminált.
-2. Adja hozzá a Service Fabric-adattárat a források listájához.
+
+2. Adja hozzá a `dotnet` tárházat a források listájához a disztribúciónak megfelelően.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. Adja hozzá a(z) `dotnet`-adattárat a források listájához.
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. Adja hozzá az új Gnu Privacy Guard- (GnuPG- vagy GPG-) kulcsot az APT-kulcstárhoz.
+3. Adja hozzá az új MS Open Tech GNU Privacy Guard (GnuPG vagy GPG) kulcsot az APT kulcstartóhoz.
 
     ```bash
-    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. Adja hozzá a hivatalos Docker GPG-kulcsot az APT-kulcstárhoz.
+4. Adja hozzá a hivatalos Docker GPG-kulcsot az APT-kulcstárhoz.
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. Állítsa be a Docker-tárházat.
+5. Állítsa be a Docker-tárházat.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Adja hozzá az Azul JDK-kulcsot az APT-kulcstartóhoz, és állítsa be az adattárát.
+6. Adja hozzá az Azul JDK-kulcsot az APT-kulcstartóhoz, és állítsa be az adattárát.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. Frissítse a csomaglistákat az újonnan hozzáadott adattárak szerint.
+7. Frissítse a csomaglistákat az újonnan hozzáadott adattárak szerint.
 
     ```bash
     sudo apt-get update
@@ -179,7 +173,7 @@ Ha a telepítés befejeződött, indítson egy helyi fürtöt.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Nyisson meg egy webböngészőt, **Service Fabric Explorer** és lépjen`http://localhost:19080/Explorer`a Service Fabric Explorer () webhelyre. A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
+2. Nyisson meg egy webböngészőt, és lépjen a **Service Fabric Explorer** () webhelyre `http://localhost:19080/Explorer` . A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
 
     ![Service Fabric Explorer Linuxon][sfx-linux]
 
@@ -261,13 +255,13 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 > 
 > Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. Telepítheti a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-t.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verziójának megtekintéséhez válassza az**Eclipse** > -**telepítés részleteinek** **súgóját** > . A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verziójának megtekintéséhez válassza az **Help**  >  **Eclipse**-  >  **telepítés részleteinek**súgóját. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
-2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó** > **új szoftver telepítése**lehetőséget.
+2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó**  >  **új szoftver telepítése**lehetőséget.
 
-3. A **Work with (munka** ) mezőben adja meg a **https\/:/dl.microsoft.com/Eclipse**értéket.
+3. A **Work with (munka** ) mezőben adja meg a **https: \/ /dl.microsoft.com/Eclipse**értéket.
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
     ![Az Available Software (Elérhető szoftver) lap][sf-eclipse-plugin]
 
@@ -275,7 +269,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 
 6. Hajtsa végre a telepítés lépéseit. Ezután fogadja el a végfelhasználói licencszerződést.
 
-Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Jelölje be az**Eclipse** > -**telepítés részleteinek** **súgóját** > . Ezután keressen rá Service Fabric a telepített beépülő modulok listájában. Válassza a **frissítés** lehetőséget, ha újabb verzió érhető el.
+Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Jelölje be az **Help**  >  **Eclipse**-  >  **telepítés részleteinek**súgóját. Ezután keressen rá Service Fabric a telepített beépülő modulok listájában. Válassza a **frissítés** lehetőséget, ha újabb verzió érhető el.
 
 További információ: [Service Fabric beépülő modul az Eclipse-alapú Java-alkalmazásfejlesztéshez](service-fabric-get-started-eclipse.md).
 

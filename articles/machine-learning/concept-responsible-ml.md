@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920367"
 ---
 # <a name="responsible-machine-learning-ml"></a>Felelős Machine Learning (ML)
 
@@ -36,7 +35,7 @@ Mivel a mesterséges intelligencia és az autonóm rendszerek egyre inkább inte
 
 ## <a name="interpret-and-explain-model-behavior"></a>A modell viselkedésének értelmezése és magyarázata
 
-A nehezen érthető vagy a fekete dobozos rendszerek problematikusak lehetnek, mivel az érintett felek, például a rendszerfejlesztők, a szabályozók, a felhasználók és az üzleti döntéshozók megértik, hogy a rendszer miért tesz bizonyos döntéseket. Néhány AI-rendszer jobban megmagyarázható, mint a többinél, és néha egy kompromisszumos rendszer, amely nagyobb pontossággal rendelkezik, és az egyik még magyarázható.
+A nehezen érthető vagy átlátszatlan rendszerek problémái lehetnek, mert az érintett felek, például a rendszerfejlesztők, a szabályozók, a felhasználók és az üzleti döntéshozók megtudhatják, hogy a rendszer miért tesz bizonyos döntéseket. Néhány AI-rendszer jobban megmagyarázható, mint a többinél, és néha egy kompromisszumos rendszer, amely nagyobb pontossággal rendelkezik, és az egyik még magyarázható.
 
 A értelmezhető AI-rendszerek létrehozásához használja a [InterpretML](https://github.com/interpretml/interpret)-t, amely a Microsoft által készített nyílt forráskódú csomag. A InterpretML a gépi tanulási modellek, például az [automatizált gépi tanulási modellek](how-to-machine-learning-interpretability-automl.md) [értelmezése és magyarázata](how-to-machine-learning-interpretability-aml.md) [Azure Machine learning belül is használható](how-to-machine-learning-interpretability.md) .
 
@@ -61,11 +60,14 @@ A hagyományos helyzetekben a nyers adatok tárolása a fájlokban és az adatb�
 
 A differentially privát rendszereinek megvalósítása nehéz feladat. A [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) egy nyílt forráskódú projekt, amely különböző összetevőket tartalmaz a globális differentially-alapú privát rendszerek létrehozásához. Ha többet szeretne megtudni a differenciált adatvédelemről és a WhiteNoise projektről, tekintse meg az adatvédelem [megőrzése a különbözeti adatvédelem és a WhiteNoise című cikkben leírtakat](./concept-differential-privacy.md) .
 
+> [!NOTE]
+> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>A gépi tanulási életciklus dokumentálása az adatlapokkal
 
 A megfelelő információk dokumentálása a gépi tanulási folyamat során kulcsfontosságú a felelős döntések meghozatalához az egyes fázisokban. Az adatlapokon dokumentálhatja a gépi tanulási életciklus részeként használt és létrehozott gépi tanulási eszközöket.
 
-A modellek általában úgy gondolják, mint a "fekete dobozok", és gyakran kevés információ áll rendelkezésre róluk. Mivel a gépi tanulási rendszerek egyre átfogóbbak, és a döntéshozatalhoz használják őket, az adatlapok használata egy lépés a felelősségteljesebb gépi tanulási rendszerek fejlesztése felé.
+A modellek általában úgy gondolják, hogy "átlátszatlan dobozok", és gyakran kevés információ áll rendelkezésre róluk. Mivel a gépi tanulási rendszerek egyre átfogóbbak, és a döntéshozatalhoz használják őket, az adatlapok használata egy lépés a felelősségteljesebb gépi tanulási rendszerek fejlesztése felé.
 
 Néhány modell-információ, amelyet egy adatlap részeként szeretne dokumentálni:
 
@@ -80,4 +82,5 @@ Tekintse meg az alábbi mintát, amelyből megtudhatja, hogyan hozhatja létre a
 
 ## <a name="additional-resources"></a>További források
 
+- A homomorphic titkosítás használatával [helyezzen üzembe egy titkosított következtetési webszolgáltatás-szolgáltatást](how-to-homomorphic-encryption-seal.md).
 - További információ a Machine learning-rendszer dokumentációjának a [ml](https://www.partnershiponai.org/about-ml/) -készletéről.

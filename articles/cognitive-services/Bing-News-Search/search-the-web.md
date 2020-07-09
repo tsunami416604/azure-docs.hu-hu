@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448448"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602754"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
@@ -40,10 +40,8 @@ Noha a Bing News Search API elsődlegesen megkeresi és visszaadja a kapcsolód�
 
 A Bing News Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatás a REST API vagy az SDK segítségével használható.
 
-1. Hozzon létre egy Cognitive Services API-fiókot, amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api).
-
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
 2. Küldjön egy kérést az API-ra egy érvényes keresési lekérdezéssel.
-
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
 ## <a name="next-steps"></a>További lépések

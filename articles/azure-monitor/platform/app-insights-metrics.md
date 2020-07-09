@@ -8,10 +8,9 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664915"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
@@ -180,9 +179,9 @@ A **hibák** mérőszámai a kérelmek feldolgozásával, a függőségi hívás
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Böngészőbeli kivételek (kivételek/böngésző)
 
-Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivételek számát mutatja. A metrika csak a ```trackException()``` Application Insights API-hívással követett kivételeket tartalmazza.
+Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivételek számát mutatja. ```trackException()```A metrika csak a Application INSIGHTS API-hívással követett kivételeket tartalmazza.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
 |Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -197,7 +196,7 @@ exceptions
 
 A sikertelen függőségi hívások száma.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
 |Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -212,7 +211,7 @@ dependencies
 
 Minden alkalommal, amikor kivételt naplóz Application Insights, az SDK [trackException () metódusát](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) hívja meg. A kivételek mérőszáma a naplózott kivételek számát jeleníti meg.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
 |Darabszám|Darabszám|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány, eszköz típusa|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -226,7 +225,7 @@ exceptions
 
 A *sikertelenként*megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy, hogy módosítja a kérelem telemetria-eleme *sikerességi* tulajdonságát egy [Egyéni telemetria-inicializálásban](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
 |Darabszám|Darabszám|Felhőbeli szerepkör-példány, Felhőbeli szerepkör neve, valós vagy szintetikus forgalom, kérelmek teljesítménye, válasz kódja|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -241,7 +240,7 @@ requests
 
 Ez a metrika a kiszolgálói kivételek számát jeleníti meg.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
 |Darabszám|Darabszám|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány|A log-alapú verzió a **Sum** összesítést használja.|
 

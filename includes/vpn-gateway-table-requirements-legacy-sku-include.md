@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5b9e036816aa532d32b1b4305ef6ae646ae05bae
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179008"
 ---
 A következő táblázat a házirendalapú és a Útvonalalapú VPN-átjárók követelményeit sorolja fel. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes. A klasszikus modell esetében a házirendalapú VPN-átjárók ugyanazok, mint a statikus átjárók, és az útválasztó-alapú átjárók ugyanazok, mint a dinamikus átjárók.

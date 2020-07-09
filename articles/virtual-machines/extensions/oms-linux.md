@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 34dbde25106dbb82fb9548ad53f368230f2c728c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736653"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -43,7 +43,7 @@ Az alábbi táblázat a Log Analytics virtuálisgép-bővítmény és a Log Anal
 
 | Log Analytics linuxos virtuálisgép-bővítmény verziója | Log Analytics ügynök csomagjának verziója | 
 |--------------------------------|--------------------------|
-| 1.13.9 | 1.13.3 – 3 |
+| 1.13.13 | [1.13.7 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
 | 1.12.25 | [1.12.15 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0 – 1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -202,7 +202,7 @@ A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és jelentéseik
 
-| Hibakód | Jelentés | Lehetséges művelet |
+| Hibakód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
 | 9 | Az engedélyezés idő előtt megszakadt | [Frissítse az Azure Linux-ügynököt](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) a legújabb elérhető verzióra. |
 | 10 | A virtuális gép már csatlakoztatva van egy Log Analytics munkaterülethez | Ha a virtuális gépet a bővítmény sémájában megadott munkaterülethez szeretné kapcsolni, állítsa a stopOnMultipleConnections hamis értékre a nyilvános beállításokban, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép minden munkaterülethez, amelyhez kapcsolódik, egyszer kell fizetnie. |

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887325"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Forgatókönyv: `hbase hbck` a parancs inkonzisztencia-értéket ad vissza az Azure HDInsight
@@ -20,7 +19,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="issue-region-is-not-in-hbasemeta"></a>Probléma: a régió nincs a (z)`hbase:meta`
 
-Az XXX régiója a HDFS-on, `hbase:meta` de nem szerepel a régióban, vagy nincs telepítve egyetlen régió-kiszolgálón sem.
+Az XXX régiója a HDFS-on, de nem szerepel a `hbase:meta` régióban, vagy nincs telepítve egyetlen régió-kiszolgálón sem.
 
 ### <a name="cause"></a>Ok
 
@@ -43,7 +42,7 @@ Változik.
 
 ## <a name="issue-region-is-offline"></a>Probléma: a régió offline állapotban van
 
-A (z) xxx régió nincs telepítve egyetlen RegionServer sem. Ez azt jelenti `hbase:meta`, hogy a régió, de offline állapotban van.
+A (z) xxx régió nincs telepítve egyetlen RegionServer sem. Ez azt jelenti, hogy a régió `hbase:meta` , de offline állapotban van.
 
 ### <a name="cause"></a>Ok
 
@@ -67,7 +66,7 @@ Változik.
 
 ### <a name="resolution"></a>Megoldás:
 
-Egyesítse az átfedésben lévő régiókat manuálisan. Nyissa meg a HBase HMaster webes felület tábla szakaszát, és válassza ki a tábla hivatkozást, amely a probléma. Ekkor megjelenik a táblázathoz tartozó egyes régiók indítási kulcs/vége kulcsa. Ezután egyesítse az átfedésben lévő régiókat. A HBase-rendszerhéjban `merge_region 'xxxxxxxx','yyyyyyy', true`tegye a t. Például:
+Egyesítse az átfedésben lévő régiókat manuálisan. Nyissa meg a HBase HMaster webes felület tábla szakaszát, és válassza ki a tábla hivatkozást, amely a probléma. Ekkor megjelenik a táblázathoz tartozó egyes régiók indítási kulcs/vége kulcsa. Ezután egyesítse az átfedésben lévő régiókat. A HBase-rendszerhéjban tegye a t `merge_region 'xxxxxxxx','yyyyyyy', true` . Például:
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -83,7 +82,7 @@ Ebben az esetben egyesíteni kell a régiót és a RegionC, és a régiót ugyan
 
 ## <a name="issue-cant-load-regioninfo"></a>Probléma: nem tölthető be`.regioninfo`
 
-Nem tölthető `.regioninfo` be a `/hbase/data/default/tablex/regiony`régió.
+Nem tölthető be `.regioninfo` a régió `/hbase/data/default/tablex/regiony` .
 
 ### <a name="cause"></a>Ok
 
@@ -93,7 +92,7 @@ Ez valószínűleg a régió részleges törlése miatt RegionServer összeomlik
 
 A fennmaradó fájlok és mappák manuális törlése:
 
-1. Végrehajtásával `hdfs dfs -ls /hbase/data/default/tablex/regiony` győződjön meg arról, hogy a mappák/fájlok még mindig alá vannak tartva.
+1. Végrehajtásával `hdfs dfs -ls /hbase/data/default/tablex/regiony` Győződjön meg arról, hogy a mappák/fájlok még mindig alá vannak tartva.
 
 1. Végrehajtás `hdfs dfs -rmr /hbase/data/default/tablex/regiony/filez` az összes gyermekobjektum és mappa törléséhez
 

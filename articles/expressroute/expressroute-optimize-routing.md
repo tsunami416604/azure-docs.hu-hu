@@ -4,15 +4,15 @@ description: Ez az oldal részletesen ismerteti, hogyan optimalizálható az út
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: charwen
-ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3a658d4b02501994437691308810ffb9cabcb6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74080139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738855"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879122"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322282"
 ---
-# <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
-Az Azure bejárati ajtó lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését azáltal, hogy optimalizálja a legjobb teljesítményt és azonnali globális feladatátvételt a magas rendelkezésre állás érdekében. A bejárati ajtó révén a globális (többrégiós) fogyasztói és nagyvállalati alkalmazásokat robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokkal, API-kkal és olyan tartalommal alakíthatja át, amely az Azure-ban globális közönséget ér el.
+# <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
+Az Azure bevezető ajtaja lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését azáltal, hogy optimalizálja a legjobb teljesítményt és gyors globális feladatátvételt a magas rendelkezésre állás érdekében. A bejárati ajtó révén a globális (többrégiós) fogyasztói és nagyvállalati alkalmazásokat robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokkal, API-kkal és olyan tartalommal alakíthatja át, amely az Azure-ban globális közönséget ér el.
 
 A Front Door a 7. rétegben, a HTTP/HTTPS rétegben működik, és szétválasztott TCP-alapú anycast protokollal és a Microsoft globális hálózatával javítja a globális összekapcsolhatóságot. Így minden kiválasztott útválasztási metódus esetén biztosíthatja, hogy a Front Door a lehető leggyorsabb és a legnagyobb rendelkezésre állású alkalmazás-háttérrendszerre irányítsa ügyfélkérelmeit. Az alkalmazás-háttérrendszer egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A Front Door számos különböző [forgalom-útválasztási módszert](front-door-routing-methods.md) és [háttérrendszer-állapotfigyelési lehetőséget](front-door-health-probes.md) biztosít, hogy megfeleljen a különböző alkalmazások igényeinek és az automatikus feladatátvételi modelleknek. A [Traffic Managerhez](../traffic-manager/traffic-manager-overview.md) hasonlóan, a Front Door is ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 
@@ -36,7 +36,7 @@ A Front Door szétválasztott TCP-alapú anycast protokollal biztosítja, hogy a
 
 ## <a name="increase-application-availability-with-smart-health-probes"></a>Alkalmazás rendelkezésre állásának növelése intelligens állapotmintákkal
 
-A Front Door lehetővé teszi a kritikus fontosságú alkalmazások magas rendelkezésre állását azáltal, hogy intelligens állapotmintákat használ, hogy a háttérrendszereket egyszerre figyeli késleltetés és rendelkezésre állás szempontjából, és hogy azonnali automatikus feladatátvételt biztosít, ha egy háttérrendszer leáll. Így állásidő nélkül futtathat tervezett karbantartási műveleteket az alkalmazásokon. A Front Door alternatív háttérrendszerekre irányítja a forgalmat, amíg a karbantartás folyamatban van.
+A bevezető ajtó biztosítja a magas rendelkezésre állást a kritikus fontosságú alkalmazások számára az intelligens állapotú tesztek használatával, a háttérrendszer figyelését a késés és a rendelkezésre állás érdekében, valamint gyors automatikus feladatátvételt biztosít, ha a háttér leáll. Így állásidő nélkül futtathat tervezett karbantartási műveleteket az alkalmazásokon. A Front Door alternatív háttérrendszerekre irányítja a forgalmat, amíg a karbantartás folyamatban van.
 
 ## <a name="url-based-routing"></a>URL-alapú útválasztás
 Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-cím alapján irányítsa a forgalmat a háttérrendszer-készletekhez. Az egyik forgatókönyv az, hogy a különböző típusú tartalmakra vonatkozó kéréseket különböző háttérrendszer-készlethez irányítja.

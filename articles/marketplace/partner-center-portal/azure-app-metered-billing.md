@@ -1,18 +1,16 @@
 ---
 title: A felügyelt alkalmazások díjas számlázása a piactér-mérési szolgáltatás használatával | Azure piactér
 description: Ez a dokumentáció az Azure-alkalmazások rugalmas számlázási modellekkel való közzétételéhez nyújt útmutatást.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736174"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118936"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
 
@@ -125,8 +123,8 @@ A támogatási jegy beküldéséhez kövesse az alábbi lépéseket:
 4. A "probléma leírása, amely a legjobban leírja a problémát" területen válassza a **mért számlázás**lehetőséget.
 5. A Next ( **tovább** ) gombra kattintva átirányítjuk a **probléma részletei** lapra, ahol további részleteket adhat meg a hibáról.
 
-További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](support.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

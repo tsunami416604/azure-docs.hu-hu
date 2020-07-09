@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az első ML-kísérlet létrehozása'
-titleSuffix: Azure Machine Learning
+title: 'Oktatóanyag: kísérletezés a Jupyter-jegyzetfüzetekben (Python)'
+titleSuffix: Machine Learning - Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK-t.  Az 1. részben létrehoz egy munkaterületet, amelyben a kísérleteket és a ML-modelleket fogja kezelni.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: c0df2459b09eca472c833be2865232c0247210dd
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655445"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106606"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,13 +100,13 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
     1.  Válassza ki a virtuális gép méretét a rendelkezésre álló lehetőségek közül.
 
-    1. Ezután válassza a **Létrehozás**lehetőséget. A virtuális gép beállítása körülbelül 5 percet vesz igénybe.
+    1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása körülbelül 5 percet vesz igénybe.
 
 1. Miután a virtuális gép elérhetővé válik, megjelenik a felső eszköztáron.  Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a jegyzetfüzet kódjának **SHIFT + ENTER** billentyűkombinációjának használatával.
 
 Ha egyéni widgetekkel rendelkezik, vagy inkább a Jupyter/JupyterLab-t használja, válassza a jobb szélen a **Jupyter** legördülő listát, majd válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

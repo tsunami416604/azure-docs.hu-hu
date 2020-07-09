@@ -4,15 +4,15 @@ description: Az ügyfél-konfigurációs beállítások megismerése az Azure Co
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850207"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Java SDK v4-hez
 
@@ -20,7 +20,8 @@ ms.locfileid: "83677701"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java SDK v2](performance-tips-async-java.md)
 > * [Sync Java SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -90,7 +91,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés >50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-    ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
 
     Egy többrégiós Azure Cosmos DB fiókkal kommunikáló alkalmazásnak az [előnyben részesített helyeket](tutorial-global-distribution-sql-api.md#preferred-locations) kell konfigurálnia, hogy a kérések közös elhelyezésű régióba lépjenek.
 
@@ -137,33 +138,21 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     A következő kódrészletek bemutatják, hogyan inicializálhatja Azure Cosmos DB ügyfelet az aszinkron API-vagy szinkronizálási API-művelethez:
 
-    #### <a name="async"></a>[Aszinkron](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-async-client"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+    # <a name="async"></a>[Aszinkron](#tab/api-async)
 
-    ```java
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOSTNAME)
-        .setKey(MASTERKEY)
-        .setConnectionPolicy(CONNECTIONPOLICY)
-        .setConsistencyLevel(CONSISTENCY)
-        .buildAsyncClient();
-    ```
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    #### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
- 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-sync-client"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientAsync)]
 
-    ```java
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOSTNAME)
-        .setKey(MASTERKEY)
-        .setConnectionPolicy(CONNECTIONPOLICY)
-        .setConsistencyLevel(CONSISTENCY)
-        .buildClient();
-    ```    
+    # <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
-    ---
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientSync)]
+
+    --- 
 
 * **ConnectionPolicy finomhangolása**
 
@@ -173,7 +162,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     * ***Közvetlen üzemmód áttekintése***
 
-        ![A közvetlen módú architektúra ábrája](./media/performance-tips-async-java/rntbdtransportclient.png)
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="A közvetlen módú architektúra ábrája" border="false":::
 
         A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen módú architektúra legfeljebb 10 **csatornát** foglal le az ügyféloldali replikán. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
 
@@ -247,36 +236,13 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
     Például az alábbi kód egy CPU-igényes munkát hajt végre az Event loop IO-szálon:
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-noscheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    ```java
-    Mono<CosmosAsyncItemResponse<CustomPOJO>> createItemPub = asyncContainer.createItem(item);
-    createItemPub.subscribe(
-        itemResponse -> {
-            //this is executed on eventloop IO netty thread.
-            //the eventloop thread is shared and is meant to return back quickly.
-            //
-            // DON'T do this on eventloop IO netty thread.
-            veryCpuIntensiveWork();                
-        });
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNeedsSchedulerAsync)]
 
-    Ha az eredmény megérkezik, ha a CPU-igényes munkát szeretné elvégezni az eredményen, kerülje az Event loop IO-szálon végzett műveletét. Ehelyett a saját ütemező használatával biztosíthatja a saját szálát a munka futtatásához az alább látható módon.
+    Ha az eredmény megérkezik, ha a CPU-igényes munkát szeretné elvégezni az eredményen, kerülje az Event loop IO-szálon végzett műveletét. Ehelyett a saját ütemező használatával biztosíthatja a saját szálát a munka futtatásához, ahogy azt a lent látható (szükséges `import reactor.core.scheduler.Schedulers` ).
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    ```java
-    import reactor.core.scheduler.Schedulers;
-    Mono<CosmosAsyncItemResponse<CustomPOJO>> createItemPub = asyncContainer.createItem(item);
-    createItemPub
-        .subscribeOn(Schedulers.elastic())
-        .subscribe(
-        itemResponse -> {
-            //this is executed on eventloop IO netty thread.
-            //the eventloop thread is shared and is meant to return back quickly.
-            //
-            // DON'T do this on eventloop IO netty thread.
-            veryCpuIntensiveWork();                
-        });
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddSchedulerAsync)]
 
     A munkája típusától függően a megfelelő meglévő reaktor-ütemező használatával kell használnia a munkát. Itt olvashat [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html) .
 
@@ -324,43 +290,35 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     A pontok írásának teljesítményének növeléséhez az alábbi ábrán látható módon írja be az elem partíciós kulcsát az írási API-hívásba:
 
-    #### <a name="async"></a>[Aszinkron](#tab/api-async)
+    # <a name="async"></a>[Aszinkron](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-good-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    ```java
-    asyncContainer.createItem(item,new PartitionKey(pk),new CosmosItemRequestOptions()).block();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNoPKAsync)]
 
-    #### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+    # <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-createitem-good-sync"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
 
-    ```java
-    syncContainer.createItem(item,new PartitionKey(pk),new CosmosItemRequestOptions());
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceNoPKSync)]
 
-    ---
+    --- 
 
     Ahelyett, hogy csak az elem példányát adja meg, az alább látható módon:
 
-    #### <a name="async"></a>[Aszinkron](#tab/api-async)
+    # <a name="async"></a>[Aszinkron](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-bad-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    ```java
-    asyncContainer.createItem(item).block();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddPKAsync)]
 
-    #### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+    # <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-createitem-bad-sync"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
 
-    ```java
-    syncContainer.createItem(item);
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceAddPKSync)]
 
-    ---
+    --- 
 
     Az utóbbi támogatott, de késleltetést fog adni az alkalmazáshoz; Az SDK-nak elemezni kell az elemeket, és ki kell bontania a partíciós kulcsot.
 
@@ -393,29 +351,21 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. Az egyenértékű RequestCharge tulajdonságot a ResourceResponse \< T> vagy a FeedResponse \< t>ban is megtekintheti.
+    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. A ResourceResponse vagy a FeedResponse egyenértékű RequestCharge tulajdonságát is megtekintheti \<T> \<T> .
 
-    #### <a name="async"></a>[Aszinkron](#tab/api-async)
+    # <a name="async"></a>[Aszinkron](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-request-charge-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    ```java
-    CosmosAsyncItemResponse<CustomPOJO> response = asyncContainer.createItem(item).block();
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceRequestChargeAsync)]
 
-    response.getRequestCharge();
-    ```     
+    # <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
-    #### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-request-charge-sync"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API    
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceRequestChargeSync)]
 
-    ```java
-    CosmosItemResponse<CustomPOJO> response = syncContainer.createItem(item);
-
-    response.getRequestCharge();
-    ```     
-
-    ---
+    --- 
 
     Az ebben a fejlécben visszaadott kérelem díja a kiépített átviteli sebesség töredéke. Ha például 2000 RU/s van kiépítve, és ha az előző lekérdezés a 1000 1KB-dokumentumokat adja vissza, a művelet díja 1000. Mint ilyen, egy másodpercen belül a kiszolgáló csak két ilyen kérést értékel ki a későbbi kérelmek korlátozása előtt. További információ: a [kérelmek egységei](request-units.md) és a [kérési egység kalkulátora](https://www.documentdb.com/capacityplanner).
 
@@ -424,9 +374,11 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló megelőző jelleggel a kérést a RequestRateTooLarge (429-es HTTP-állapotkód), és visszaküldi az [x-MS-újrapróbálkozás-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet, jelezve azt az időtartamot (ezredmásodpercben), ameddig a felhasználónak meg kell várnia a kérés ismételt megkísérlése előtt.
 
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
+    ```
 
     Az SDK-k minden implicit módon elkapják ezt a választ, tiszteletben tartsák a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem éri el, a következő újrapróbálkozás sikeres lesz.
 

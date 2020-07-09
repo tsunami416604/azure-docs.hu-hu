@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759516"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
@@ -34,9 +33,9 @@ Ha Azure Active Directoryt szeretne használni a hitelesítéshez, először lé
 Ezek a lépések az Azure CLI használatával hozhatják létre az alkalmazás regisztrációját és a grafikus felhasználói felületet (portál) az engedélyek megadásához. Az alkalmazás regisztrációjának létrehozásához a következő öt információra van szüksége:
 
 - Megjelenítendő név: alkalmazás regisztrációs neve (például OCPAzureAD)
-- Kezdőlap: OpenShift-konzol URL-címe (például `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Azonosító URI: OpenShift-konzol URL-címe ( `https://masterdns343khhde.westus.cloudapp.azure.com/console`például)
-- Válasz URL-címe: fő nyilvános URL-cím és az alkalmazás regisztrációs neve `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`(például)
+- Kezdőlap: OpenShift-konzol URL-címe (például `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Azonosító URI: OpenShift-konzol URL-címe (például `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Válasz URL-címe: fő nyilvános URL-cím és az alkalmazás regisztrációs neve (például `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` )
 - Password (jelszó): biztonságos jelszó (erős jelszó használata)
 
 Az alábbi példa az előző információk alapján létrehoz egy alkalmazást:
@@ -69,7 +68,7 @@ Jegyezze fel a parancs által visszaadott appId tulajdonságot egy későbbi lé
 
 Az Azure Portalon:
 
-1. Válassza ki **Azure Active Directory** > az**alkalmazás regisztrációját**.
+1. Válassza ki **Azure Active Directory**az  >  **alkalmazás regisztrációját**.
 2. Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
 3. Az eredmények között kattintson az alkalmazás regisztrációja elemre.
 4. A **Beállítások**területen válassza a **szükséges engedélyek**lehetőséget.
@@ -197,7 +196,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 Az Azure-ban vagy a OSBA-ben megnyitott Service Broker lehetővé teszi, hogy közvetlenül a OpenShift hozzon létre Azure-Cloud Services. A OSBA egy nyílt Service Broker API-implementáció az Azure-hoz. A nyílt Service Broker API egy spec, amely közös nyelvet definiál a felhőalapú szolgáltatók számára, amelyekkel a Felhőbeli natív alkalmazások kezelhetik a felhőalapú szolgáltatásokat a zárolás nélkül.
 
-A OSBA a OpenShift-on való telepítéséhez kövesse az itt található https://github.com/Azure/open-service-broker-azure#openshift-project-templateutasításokat:. 
+A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasításokat: https://github.com/Azure/open-service-broker-azure#openshift-project-template . 
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 

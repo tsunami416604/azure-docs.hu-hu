@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerteti a projekt előkészítését az Azure dev Spaces működésével
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80241633"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projekt előkészítése az Azure dev Spaces működéséhez
@@ -26,24 +26,24 @@ Ahhoz, hogy az alkalmazás egy fejlesztői térben fusson, a tárolónak kell le
 azds prep --enable-ingress
 ```
 
-A `prep` parancs megtekinti a projektben lévő fájlokat, és megpróbálja létrehozni a Docker és a Helm diagramot az alkalmazás futtatásához a Kubernetes-ben. A `prep` parancs jelenleg a következő nyelvekkel hoz majd Docker és Helm diagramot:
+A `prep` parancs megtekinti a projektben lévő fájlokat, és megpróbálja létrehozni a Docker és a Helm diagramot az alkalmazás futtatásához a Kubernetes-ben. A parancs jelenleg a `prep` következő nyelvekkel hoz majd Docker és Helm diagramot:
 
 * Java
 * Node.js
 * .NET Core
 
-A *must* `prep` parancsot olyan könyvtárból kell futtatnia, amely forráskódot tartalmaz. Ha a `prep` parancsot a megfelelő könyvtárból futtatja, lehetővé teszi, hogy az ügyféloldali eszköz azonosítsa a nyelvet, és megfelelő Docker hozzon létre az alkalmazás tárolóba helyezése. A `prep` parancsot egy olyan könyvtárból is futtathatja, amely egy *Pom. XML* fájlt tartalmaz a Java-projektekhez.
+A *must* `prep` parancsot olyan könyvtárból kell futtatnia, amely forráskódot tartalmaz. Ha a `prep` parancsot a megfelelő könyvtárból futtatja, lehetővé teszi, hogy az ügyféloldali eszköz azonosítsa a nyelvet, és megfelelő Docker hozzon létre az alkalmazás tárolóba helyezése. A `prep` parancsot egy olyan könyvtárból is futtathatja, amely a Java-projektekhez *pom.xml* fájlt tartalmaz.
 
-Ha olyan könyvtárból `prep` futtatja a parancsot, amely nem tartalmaz forráskódot, az ügyféloldali eszközkészlet nem hoz majd Docker. Emellett a következő hibaüzenetet is megjeleníti: *a Docker nem hozható létre a nem támogatott nyelv miatt*. Ez a hiba akkor is előfordulhat, ha az ügyféloldali eszközkészlet nem ismeri fel a projekt típusát.
+Ha olyan könyvtárból futtatja a `prep` parancsot, amely nem tartalmaz forráskódot, az ügyféloldali eszközkészlet nem hoz majd Docker. Emellett a következő hibaüzenetet is megjeleníti: *a Docker nem hozható létre a nem támogatott nyelv miatt*. Ez a hiba akkor is előfordulhat, ha az ügyféloldali eszközkészlet nem ismeri fel a projekt típusát.
 
-A `prep` parancs futtatásakor lehetősége van megadnia a `--enable-ingress` jelzőt. Ez a jelző arra utasítja a vezérlőt, hogy hozzon létre egy internetről elérhető végpontot ehhez a szolgáltatáshoz. Ha nem adja meg ezt a jelzőt, a szolgáltatás csak a fürtön belülről, vagy az ügyféloldali eszközök által létrehozott localhost-alagút használatával érhető el. A `prep` parancs futtatása után engedélyezheti vagy letilthatja ezt a viselkedést a generált Helm diagram frissítésével.
+A parancs futtatásakor lehetősége `prep` van megadnia a `--enable-ingress` jelzőt. Ez a jelző arra utasítja a vezérlőt, hogy hozzon létre egy internetről elérhető végpontot ehhez a szolgáltatáshoz. Ha nem adja meg ezt a jelzőt, a szolgáltatás csak a fürtön belülről, vagy az ügyféloldali eszközök által létrehozott localhost-alagút használatával érhető el. A parancs futtatása után engedélyezheti vagy letilthatja ezt a viselkedést `prep` a generált Helm diagram frissítésével.
 
-A `prep` parancs nem cseréli le a projektben meglévő Dockerfiles-vagy Helm-diagramokat. Ha egy meglévő Docker-vagy Helm-diagram ugyanazt az elnevezési konvenciót használja, mint `prep` a parancs által `prep` generált fájlok, akkor a parancs kihagyja a fájlok generálását. Ellenkező esetben a `prep` parancs létrehozza a saját Docker vagy Helm-diagramot a meglévő fájlok oldalára.
+A `prep` parancs nem cseréli le a projektben meglévő Dockerfiles-vagy Helm-diagramokat. Ha egy meglévő Docker-vagy Helm-diagram ugyanazt az elnevezési konvenciót használja, mint a parancs által generált fájlok `prep` , `prep` akkor a parancs kihagyja a fájlok generálását. Ellenkező esetben a `prep` parancs létrehozza a saját Docker vagy Helm-diagramot a meglévő fájlok oldalára.
 
 > [!IMPORTANT]
 > Az Azure dev Spaces a Docker és Helm diagramot használja a projekthez a kód létrehozásához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
-A `prep` parancs a projekt gyökerében `azds.yaml` is létrehozza a fájlt. Az Azure dev Spaces ezt a fájlt használja az alkalmazás létrehozásához, telepítéséhez, konfigurálásához és futtatásához. Ez a konfigurációs fájl felsorolja a Docker és a Helm diagram helyét, valamint további konfigurációkat is biztosít ezen összetevők felett.
+A `prep` parancs a `azds.yaml` projekt gyökerében is létrehozza a fájlt. Az Azure dev Spaces ezt a fájlt használja az alkalmazás létrehozásához, telepítéséhez, konfigurálásához és futtatásához. Ez a konfigurációs fájl felsorolja a Docker és a Helm diagram helyét, valamint további konfigurációkat is biztosít ezen összetevők felett.
 
 Íme egy példa az azds. YAML fájlra, amelyet a [.net Core Sample Application](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)használatával hoztak létre:
 
@@ -92,7 +92,7 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-A `azds.yaml` `prep` parancs által generált fájl célja, hogy egyszerű, egyetlen projekt-fejlesztési forgatókönyvhöz működjön. Ha az adott projektnek nagyobb a bonyolultsága, akkor előfordulhat, hogy a `prep` parancs futtatása után frissítenie kell ezt a fájlt. Előfordulhat például, hogy a projektnek a fejlesztési vagy hibakeresési igények alapján módosítania kell a Build vagy a Launch folyamatát. Több alkalmazás is lehet a projektben, amelyhez több fordítási folyamat vagy más Build-tartalom szükséges.
+A `azds.yaml` parancs által generált fájl `prep` célja, hogy egyszerű, egyetlen projekt-fejlesztési forgatókönyvhöz működjön. Ha az adott projektnek nagyobb a bonyolultsága, akkor előfordulhat, hogy a parancs futtatása után frissítenie kell ezt a fájlt `prep` . Előfordulhat például, hogy a projektnek a fejlesztési vagy hibakeresési igények alapján módosítania kell a Build vagy a Launch folyamatát. Több alkalmazás is lehet a projektben, amelyhez több fordítási folyamat vagy más Build-tartalom szükséges.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -102,7 +102,7 @@ Az Azure dev Spaces használatának megkezdéséhez az Azure fejlesztői tárhel
 
 * [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
 * [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a Node. js-sel][quickstart-node]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és Node.js][quickstart-node]
 * [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
 * [Alkalmazás fejlesztése a Kubernetes-on a CLI használatával][quickstart-cli]
 

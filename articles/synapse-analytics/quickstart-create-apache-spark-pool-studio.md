@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01b85f937516f24aeb50f76c71c89bc47e52abf0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666431"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194958"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Rövid útmutató: Apache Spark-készlet létrehozása (előzetes verzió) a szinapszis Studio használatával
 
@@ -43,7 +43,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics**nevű munkaterületet fogunk használni.
 ![A contoso nevet tartalmazó szinapszis-munkaterületek listázása.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
-## <a name="launch-synapse-studio"></a>A szinapszis Studio elindítása 
+## <a name="launch-synapse-studio"></a>A Synapse Studio indítása 
 
 1. A munkaterület áttekintés területén válassza a **szinapszis Studio elindítása** lehetőséget a Apache Spark-készlet létrehozási helyének megnyitásához. Írja be a szolgáltatás nevét vagy az erőforrás nevét közvetlenül a keresősávba.
 ![Azure Portal szinapszis-munkaterület áttekintése](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
@@ -102,7 +102,7 @@ Ha törölni szeretné a Apache Spark-készletet, tegye a következőket:
  ![Megerősítő párbeszédpanel a kiválasztott Apache Spark-készlet törléséhez.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-30.png)
 1. Ha a folyamat sikeresen befejeződik, a Apache Spark-készlet többé nem jelenik meg a munkaterület erőforrásaiban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557232"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrálása Azure Monitor for VMs Térkép funkcióval
 
@@ -29,7 +29,7 @@ Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az
 
 ## <a name="install-the-service-map-management-pack"></a>A Service Map felügyeleti csomag telepítése
 
-A Microsoft. SystemCenter. ServiceMap felügyeleti csomag (Microsoft. SystemCenter. ServiceMap. MPB) importálásával engedélyezheti a Operations Manager és a Térkép funkció közötti integrációt. A felügyeleti csomag csomagját a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=55763)töltheti le. A csomag a következő felügyeleti csomagokat tartalmazza:
+A Operations Manager és a Térkép funkció közötti integrációt a Microsoft.SystemCenter. ServiceMap felügyeleti csomag csomagjának (Microsoft.SystemCenter. ServiceMap. MPB) importálásával engedélyezheti. A felügyeleti csomag csomagját a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=55763)töltheti le. A csomag a következő felügyeleti csomagokat tartalmazza:
 
 * A Microsoft Service Map alkalmazás nézetei
 * A Microsoft System Center Service Map belső
@@ -117,7 +117,7 @@ Ebben az aktuális kiadásban csak egy Log Analytics munkaterületet lehet konfi
 
 ## <a name="configure-rules-and-overrides"></a>Szabályok és felülbírálások konfigurálása
 
-A szabály, a *Microsoft. SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat Azure monitor for VMS Térkép szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes**paraméter értékét.
+Egy szabály, *Microsoft.SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat Azure monitor for VMS Térkép szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes**paraméter értékét.
 
 ![A Operations Manager felülbírálások tulajdonságai ablak](media/service-map-scom/scom-overrides.png)
 
@@ -142,5 +142,6 @@ Az egyszerű szolgáltatásnév létrehozásával kapcsolatos hivatalos Azure-do
 * [Egyszerű szolgáltatásnév létrehozása az Azure CLI használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>Visszajelzés
+### <a name="suggestions"></a>Javaslatok
+
 Van-e visszajelzése a Azure Monitor for VMs Map szolgáltatással való integrációról vagy a dokumentációról? Látogasson el a [felhasználói hang oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy szavazhat a meglévő javaslatokról.

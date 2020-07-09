@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645735"
 ---
 # <a name="eventstore-overview"></a>A EventStore áttekintése
@@ -44,17 +43,17 @@ A EventStore szolgáltatás lekérdezhető olyan eseményekhez, amelyek elérhet
 * Partíciók: az összes partíció eseményei
 * Partition: a által azonosított adott partíció eseményei`partitionId`
 * Partíciós replikák: az adott partíción belüli összes replika/példány eseményei`partitionId`
-* Partíciós replika: a és a által `replicaId` azonosított adott replika/példány eseményei`partitionId`
+* Partíciós replika: a és a által azonosított adott replika/példány eseményei `replicaId``partitionId`
 
 Ha többet szeretne megtudni az API-ról, tekintse meg a [EVENTSTORE API-referenciát](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
-A EventStore szolgáltatásnak lehetősége van a fürt eseményeinek összekapcsolására is. Ha olyan eseményeket vizsgál meg, amelyek a különböző entitásokból származnak, amelyek hatással lehetnek egymásra, a EventStore szolgáltatás össze tudja kapcsolni ezeket az eseményeket, hogy a fürt tevékenységeinek azonosításához segítséget nyújtson. Ha például az egyik alkalmazás nem megfelelő állapotba kerül, és az indukált változások nélkül is megtörténik, akkor a EventStore a platform által közzétett egyéb eseményeket is megtekintheti, és ezzel egy `Error` vagy `Warning` több eseménnyel is korrelálhat. Ez segít a gyorsabb hibák észlelésében és a kiváltó okok elemzésében.
+A EventStore szolgáltatásnak lehetősége van a fürt eseményeinek összekapcsolására is. Ha olyan eseményeket vizsgál meg, amelyek a különböző entitásokból származnak, amelyek hatással lehetnek egymásra, a EventStore szolgáltatás össze tudja kapcsolni ezeket az eseményeket, hogy a fürt tevékenységeinek azonosításához segítséget nyújtson. Ha például az egyik alkalmazás nem megfelelő állapotba kerül, és az indukált változások nélkül is megtörténik, akkor a EventStore a platform által közzétett egyéb eseményeket is megtekintheti, és ezzel egy vagy több eseménnyel is korrelálhat `Error` `Warning` . Ez segít a gyorsabb hibák észlelésében és a kiváltó okok elemzésében.
 
 ## <a name="enable-eventstore-on-your-cluster"></a>EventStore engedélyezése a fürtön
 
 ### <a name="local-cluster"></a>Helyi fürt
 
-A [fürt fabricSettings. JSON](service-fabric-cluster-fabric-settings.md)fájljában adja hozzá a EventStoreService-t addOn-szolgáltatásként, és végezze el a fürt frissítését.
+A [fürtfabricSettings.jsjában](service-fabric-cluster-fabric-settings.md)adja hozzá a EventStoreService addOn-szolgáltatásként, és hajtson végre egy fürt frissítését.
 
 ```json
     "addOnFeatures": [
@@ -65,7 +64,7 @@ A [fürt fabricSettings. JSON](service-fabric-cluster-fabric-settings.md)fájlj�
 ### <a name="azure-cluster-version-65"></a>Azure-fürt 6.5-ös vagy újabb verziója
 Ha az Azure-fürt a 6,5-es vagy újabb verzióra frissül, a EventStore automatikusan engedélyezve lesz a fürtön. A letiltáshoz frissítenie kell a fürtöt a következővel:
 
-* `2019-03-01` Vagy újabb API-verzió használata 
+* `2019-03-01`Vagy újabb API-verzió használata 
 * Adja hozzá a következő kódot a tulajdonságok szakaszához a fürtben
   ```json  
     "fabricSettings": [
@@ -76,7 +75,7 @@ Ha az Azure-fürt a 6,5-es vagy újabb verzióra frissül, a EventStore automati
 
 ### <a name="azure-cluster-version-64"></a>Azure-fürt 6,4-es verziója
 
-Ha a 6,4-es verziót használja, szerkesztheti Azure Resource Manager-sablonját, hogy bekapcsolja a EventStore szolgáltatást. Ez a [fürt konfigurációs frissítésének](service-fabric-cluster-config-upgrade-azure.md) végrehajtásával és a következő kód hozzáadásával végezhető el, a PlacementConstraints segítségével a EventStore szolgáltatás replikáit egy adott NodeType helyezheti el, például a rendszerszolgáltatásokhoz dedikált NodeType. A `upgradeDescription` (z) szakasz a konfiguráció frissítését konfigurálja úgy, hogy újraindítást indítson a csomópontokon. A szakasz egy másik frissítésből is eltávolítható.
+Ha a 6,4-es verziót használja, szerkesztheti Azure Resource Manager-sablonját, hogy bekapcsolja a EventStore szolgáltatást. Ez a [fürt konfigurációs frissítésének](service-fabric-cluster-config-upgrade-azure.md) végrehajtásával és a következő kód hozzáadásával végezhető el, a PlacementConstraints segítségével a EventStore szolgáltatás replikáit egy adott NodeType helyezheti el, például a rendszerszolgáltatásokhoz dedikált NodeType. A (z `upgradeDescription` ) szakasz a konfiguráció frissítését konfigurálja úgy, hogy újraindítást indítson a csomópontokon. A szakasz egy másik frissítésből is eltávolítható.
 
 ```json
     "fabricSettings": [

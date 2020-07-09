@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482411"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MediusFlow konfigurálása
 
@@ -52,14 +52,14 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>2. lépés MediusFlow konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>Az Office 365-alkalmazás aktiválása a MediusFlow-n belül
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>Aktiválja a Microsoft 365 alkalmazást a MediusFlow-n belül
 Először engedélyezze az Azure AD-bejelentkezés és az Azure AD konfigurációs funkciójának a MediusFlow-n belüli elérését az alábbi lépések végrehajtásával:
 
 #### <a name="user-login"></a>Felhasználói bejelentkezés
-Ahhoz, hogy engedélyezze az Office 365/Azure AD-ba való bejelentkezést, tekintse át a következőt: [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) cikk.
+Ha engedélyezni szeretné a bejelentkezést Microsoft 365/Azure AD-re, tekintse át a következőt: [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) cikk.
 
 #### <a name="user-transfer-configuration"></a>Felhasználói átvitel konfigurációja
-A alkalmazásban az Azure AD-ből való kiépítési felhasználók konfigurációs portáljának engedélyezéséhez tekintse meg [ezt](
+Ha engedélyezni szeretné az Azure AD-ből való kiépítési felhasználók konfigurációs portálját, olvassa el [ezt](
 https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) a cikket.
 
 #### <a name="configure-user-provisioning"></a>Felhasználók átadásának konfigurálása
@@ -169,7 +169,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |név. familyName|Sztring|
    |név. formázott|Sztring|
    |externalID|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Hivatkozás|
 
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MediusFlow**lehetőséget.
@@ -180,7 +180,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |---|---|
       |displayName|Sztring|
       |externalID|Sztring|
-      |tagok|Referencia|
+      |tagok|Hivatkozás|
 
 12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

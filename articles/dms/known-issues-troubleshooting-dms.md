@@ -11,16 +11,21 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609437"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
 Ez a cikk néhány olyan gyakori problémát és hibát ismertet, amelyekkel Azure Database Migration Service felhasználók származhatnak. A cikk a problémák és hibák megoldásával kapcsolatos információkat is tartalmaz.
+
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 ## <a name="migration-activity-in-queued-state"></a>Áttelepítési tevékenység várólistán lévő állapotban
 
@@ -32,7 +37,7 @@ Amikor új tevékenységeket hoz létre egy Azure Database Migration Service pro
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Az áttelepítéshez kiválasztott adatbázisok maximális száma
 
-A következő hiba akkor fordul elő, amikor egy adatbázis-áttelepítési projekthez hoz létre tevékenységeket Azure SQL Databasere vagy egy Azure SQL Database felügyelt példányra való áthelyezéshez:
+A következő hiba fordul elő, amikor egy adatbázis-áttelepítési projekthez hoz létre egy tevékenységet Azure SQL Databasere vagy egy Azure SQL felügyelt példányra való áthelyezéshez:
 
 * **Hiba**: az áttelepítési beállítások érvényesítési hibája "," errorDetail ":" az "adatbázisok" több mint maximális száma "4" objektum lett kiválasztva áttelepítésre. "
 
@@ -58,7 +63,7 @@ A Azure Database Migration Service példány leállításakor a következő hiba
 
 | Ok         | Megoldás: |
 | ------------- | ------------- |
-| Ez a hiba akkor jelenik meg, ha a leállítani próbált szolgáltatási példány olyan tevékenységeket tartalmaz, amelyek továbbra is futnak, vagy amelyek az áttelepítési projektekben szerepelnek. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek olyan tevékenységek, amelyek a leállítani kívánt Azure Database Migration Service példányán futnak. A szolgáltatás leállításának megkísérlése előtt törölheti a tevékenységeket vagy a projekteket is. Az alábbi lépések bemutatják, hogyan távolíthat el projekteket az áttelepítési szolgáltatás példányának tisztításához az összes futó feladat törlésével:<br>1. install-Module-Name AzureRM. DataMigration <br>2. bejelentkezés – AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName "\<alnév>" <br> 4. remove-AzureRmDataMigrationProject- \<Name projektnév>- \<ResourceGroupName rgName>- \<szolgáltatásnév szolgáltatásnév>-DeleteRunningTask |
+| Ez a hiba akkor jelenik meg, ha a leállítani próbált szolgáltatási példány olyan tevékenységeket tartalmaz, amelyek továbbra is futnak, vagy amelyek az áttelepítési projektekben szerepelnek. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek olyan tevékenységek, amelyek a leállítani kívánt Azure Database Migration Service példányán futnak. A szolgáltatás leállításának megkísérlése előtt törölheti a tevékenységeket vagy a projekteket is. Az alábbi lépések bemutatják, hogyan távolíthat el projekteket az áttelepítési szolgáltatás példányának tisztításához az összes futó feladat törlésével:<br>1. install-Module-Name AzureRM. DataMigration <br>2. bejelentkezés – AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -szolgáltatásnév \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Hiba történt a Azure Database Migration Service indításakor
 
@@ -72,13 +77,13 @@ A Azure Database Migration Service példány indításakor a következő hibaüz
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Hiba történt az adatbázis visszaállításakor az SQL Azure SQL DB felügyelt példányra történő áttelepítése közben
 
-Ha SQL Serverról Azure SQL Database felügyelt példányra végez online áttelepítést, a átváltás a következő hiba miatt meghiúsul:
+Ha SQL Serverról az Azure SQL felügyelt példányára végez online áttelepítést, a átváltás a következő hiba miatt meghiúsul:
 
 * **Hiba**: a visszaállítási művelet nem sikerült a (z) "operationId" műveleti azonosítóhoz. "AuthorizationFailed", "a (z)" objectId "azonosítójú" ügyfél "clientId" üzenetnek nincs engedélye a (z) "Microsoft. SQL/Locations/managedDatabaseRestoreAzureAsyncOperation/Read" művelet végrehajtására a (z) "/subscriptions/subscriptionId" hatókörben.
 
 | Ok         | Megoldás:    |
 | ------------- | ------------- |
-| Ez a hiba azt jelzi, hogy a SQL Serverról Azure SQL Database felügyelt példányra való online áttelepítéshez használt egyszerű alkalmazás nem járul hozzá az előfizetéshez. A felügyelt példányokkal rendelkező bizonyos API-hívások esetében ez az engedély szükséges a visszaállítási művelet előfizetéséhez. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | A hibaüzenetben `Get-AzureADServicePrincipal` `-ObjectId` elérhető PowerShell-parancsmag használatával jelenítse meg a használt alkalmazás-azonosító megjelenítendő nevét.<br><br> Érvényesítse az alkalmazás engedélyeit, és győződjön meg arról, hogy az előfizetés szintjén szerepel a [közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . <br><br> A Azure Database Migration Service mérnöki csapat azon dolgozik, hogy korlátozza a jelenlegi hozzájárulási szerepkör szükséges hozzáférését az előfizetéshez. Ha olyan üzleti követelménye van, amely nem engedélyezi a hozzájárulási szerepkör használatát, további segítségért forduljon az Azure támogatási szolgálatához. |
+| Ez a hiba azt jelzi, hogy az SQL Serverról az SQL felügyelt példányára való online áttelepítéshez használt egyszerű alkalmazás nem járul hozzá az előfizetéshez. A felügyelt példányokkal rendelkező bizonyos API-hívások esetében ez az engedély szükséges a visszaállítási művelet előfizetéséhez. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | A `Get-AzureADServicePrincipal` hibaüzenetben elérhető PowerShell-parancsmag használatával `-ObjectId` jelenítse meg a használt alkalmazás-azonosító megjelenítendő nevét.<br><br> Érvényesítse az alkalmazás engedélyeit, és győződjön meg arról, hogy az előfizetés szintjén szerepel a [közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . <br><br> A Azure Database Migration Service mérnöki csapat azon dolgozik, hogy korlátozza a jelenlegi hozzájárulási szerepkör szükséges hozzáférését az előfizetéshez. Ha olyan üzleti követelménye van, amely nem engedélyezi a hozzájárulási szerepkör használatát, további segítségért forduljon az Azure támogatási szolgálatához. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Hiba történt a Azure Database Migration Servicehoz társított NIC törlésekor
 

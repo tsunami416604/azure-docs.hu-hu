@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058152"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Tárolási erőforrások törlésével kapcsolatos hibák elhárítása
@@ -24,9 +24,9 @@ Bizonyos esetekben előfordulhat, hogy a következő hibák valamelyikét tapasz
 
 > **Nem sikerült törölni a (z) StorageAccountName Storage-fiókot. Hiba: a Storage-fiók nem törölhető, mert az összetevői használatban vannak.**
 > 
-> **Nem sikerült törölni a (z) # tárolók száma:<br>virtuális merevlemezek: a tárolón jelenleg bérlet található, és a kérelemben nincs megadva CÍMBÉRLET-azonosító.**
+> **Nem sikerült törölni a (z) # tárolók száma: <br> virtuális merevlemezek: a tárolón jelenleg bérlet található, és a kérelemben nincs megadva címbérlet-azonosító.**
 > 
-> **A # nem sikerült törölni a # Blobok<br>: BlobName. vhd fájlt: jelenleg van bérlet a blobon, és nincs megadva CÍMBÉRLET-azonosító a kérelemben.**
+> **A # nem sikerült törölni a # Blobok: <br> BlobName. vhd fájlt: jelenleg van bérlet a blobon, és nincs megadva címbérlet-azonosító a kérelemben.**
 
 Az Azure-beli virtuális gépeken használt virtuális merevlemezek az Azure standard vagy Premium Storage-fiókjában blobként tárolt VHD-fájlok. További információ az Azure-lemezekről: [Bevezetés a Managed Disks](../linux/managed-disks-overview.md)szolgáltatásba.
 
@@ -43,7 +43,7 @@ A lépések végrehajtása után próbálja meg újra törölni a Storage-fióko
 
 ### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>1. forgatókönyv: blob törlése – csatlakoztatott virtuális gép azonosítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A központi menüben válassza a **minden erőforrás**elemet. Nyissa meg a Storage-fiókot a **blob Service** elemnél válassza a **tárolók**lehetőséget, és keresse meg a törölni kívánt blobot.
+2. A központi menüben válassza a **Minden erőforrás** elemet. Nyissa meg a Storage-fiókot a **blob Service** elemnél válassza a **tárolók**lehetőséget, és keresse meg a törölni kívánt blobot.
 3. Ha a blob **címbérleti állapota** **bérletbe**kerül, kattintson a jobb gombbal, majd válassza a **metaadatok szerkesztése** lehetőséget a blob metaadatainak panel megnyitásához. 
 
     ![Képernyőkép a portálról, a Storage-fiók blobok és a jobb gombbal a "metaadatok szerkesztése" elemre > kattintva kiemelve](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
@@ -60,7 +60,7 @@ A lépések végrehajtása után próbálja meg újra törölni a Storage-fióko
 
 ### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>2. forgatókönyv: tároló törlése – a virtuális gépekhez csatlakoztatott tárolóban található összes blob azonosítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A központi menüben válassza a **minden erőforrás**elemet. Nyissa meg a Storage-fiókot a **blob Service** - **tárolók**területen, és keresse meg a törölni kívánt tárolót.
+2. A központi menüben válassza a **Minden erőforrás** elemet. Nyissa meg a Storage-fiókot a **blob Service** - **tárolók**területen, és keresse meg a törölni kívánt tárolót.
 3. Kattintson ide a tároló megnyitásához és a benne található Blobok listájának megjelenítéséhez. Azonosítsa az összes blobot a blob Type = **Page blob** **és a bérlet állapota = a** listából. Kövesse az 1. forgatókönyvet az egyes blobokhoz társított virtuális gép azonosításához.
 
     ![Képernyőkép a portálról, a Storage-fiók Blobokkal és a "bérlet állapota" értékkel kiemelve](./media/troubleshoot-vhds/utd-disks-sm.png)
@@ -69,7 +69,7 @@ A lépések végrehajtása után próbálja meg újra törölni a Storage-fióko
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>3. forgatókönyv: Storage-fiók törlése – a virtuális gépekhez csatolt, a Storage-fiókban található összes blob (ok) azonosítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A központi menüben válassza a **minden erőforrás**elemet. Nyissa meg a Storage-fiókot a **blob Service** alatt, **majd válassza a Blobok**elemet.
+2. A központi menüben válassza a **Minden erőforrás** elemet. Nyissa meg a Storage-fiókot a **blob Service** alatt, **majd válassza a Blobok**elemet.
 3. A **tárolók** ablaktáblán azonosítsa az összes olyan tárolót, amelyben a **címbérleti állapotot** **bérbe** adja, és kövesse a [2. forgatókönyvet](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) az egyes **bérelt** tárolók esetében
 4. Kövesse a [2. lépést](#step-2-delete-vm-to-detach-os-disk) és a 3. [lépést](#step-3-detach-data-disk-from-the-vm) a virtuális gép (ek) **OSDisk** és leválasztási **adatlemez**való törléséhez. 
 

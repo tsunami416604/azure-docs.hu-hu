@@ -4,10 +4,9 @@ description: Csökkentse a telemetria forgalmat úgy, hogy kiszűri azokat az es
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659917"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetria szűrése a Java-webalkalmazásban
@@ -27,7 +26,7 @@ A beépített szűrők a következők:
 
 ## <a name="setting-filters"></a>Szűrők beállítása
 
-A ApplicationInsights. xml fájlban adjon hozzá `TelemetryProcessors` egy, az alábbi példához hasonló szakaszt:
+A ApplicationInsights.xmlban vegyen fel egy `TelemetryProcessors` szakaszt a következő példához hasonlóan:
 
 
 ```XML
@@ -109,7 +108,7 @@ A ApplicationInsights. xml fájlban adjon hozzá `TelemetryProcessors` egy, az a
 
 * `DurationThresholdInMS`– Az időtartam a lap betöltéséhez szükséges időt jelenti. Ha ez a beállítás be van állítva, a rendszer nem adja meg az adott időpontnál gyorsabban betöltött lapokat.
 * `NotNeededNames`– A lapok neveinek vesszővel tagolt listája.
-* `NotNeededUrls`-URL-töredékek vesszővel tagolt listája. `"home"` Kiszűri például az összes olyan oldalt, amely az URL-ben "Home" (Kezdőlap).
+* `NotNeededUrls`-URL-töredékek vesszővel tagolt listája. `"home"`Kiszűri például az összes olyan oldalt, amely az URL-ben "Home" (Kezdőlap).
 
 
 ### <a name="request-telemetry-filter"></a>Telemetria-szűrő kérése
@@ -190,7 +189,7 @@ Szűri a naplók nyomkövetéseit (a [TrackTrace ()](../../azure-monitor/app/api
 
 ### <a name="1-code-your-filter"></a>1. a szűrő kódja
 
-A kódban hozzon létre egy olyan osztályt, `TelemetryProcessor`amely megvalósítja a következőket:
+A kódban hozzon létre egy olyan osztályt, amely megvalósítja a `TelemetryProcessor` következőket:
 
 ```Java
 
@@ -229,7 +228,7 @@ A kódban hozzon létre egy olyan osztályt, `TelemetryProcessor`amely megvalós
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. a szűrő meghívása a konfigurációs fájlban
 
-A ApplicationInsights. xml fájlban:
+ApplicationInsights.xml:
 
 ```XML
 

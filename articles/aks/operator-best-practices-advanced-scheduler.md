@@ -5,12 +5,12 @@ description: Ismerje meg a fürt operátorának ajánlott eljárásait a speciá
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617529"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077847"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes Service (ak) speciális ütemező funkcióiról
 
@@ -42,7 +42,7 @@ Ha a pod-t egy AK-fürtön helyezi üzembe, a Kubernetes csak azokat a csomópon
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-A csomópontokra alkalmazott szennyező adatokkal meghatározható a pod-specifikációban a csomópontok ütemezését lehetővé tevő tolerancia. A következő példa meghatározza a `sku: gpu` és `effect: NoSchedule` az általa az előző lépésben a csomópontra alkalmazott adatszennyezettség eltűriét:
+A csomópontokra alkalmazott szennyező adatokkal meghatározható a pod-specifikációban a csomópontok ütemezését lehetővé tevő tolerancia. A következő példa meghatározza a `sku: gpu` és az `effect: NoSchedule` általa az előző lépésben a csomópontra alkalmazott adatszennyezettség eltűriét:
 
 ```yaml
 kind: Pod
@@ -67,7 +67,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-A hüvely üzembe helyezésekor, például a használatával `kubectl apply -f gpu-toleration.yaml`a Kubernetes sikeresen ütemezhetik a pod-t a csomópontokon az alkalmazott szennyező adataival. Ez a logikai elkülönítés lehetővé teszi a fürtön belüli erőforrásokhoz való hozzáférés szabályozását.
+A hüvely üzembe helyezésekor, például a használatával a `kubectl apply -f gpu-toleration.yaml` Kubernetes sikeresen ütemezhetik a pod-t a csomópontokon az alkalmazott szennyező adataival. Ez a logikai elkülönítés lehetővé teszi a fürtön belüli erőforrásokhoz való hozzáférés szabályozását.
 
 Ha a szennyező adatait alkalmazza, együttműködik az alkalmazás-fejlesztővel és a tulajdonosokkal, hogy meghatározza a szükséges megtartásokat az üzemelő példányokban.
 
@@ -101,10 +101,10 @@ A szennyező anyagok és a tolerálás a nehezen kivágott erőforrások logikai
 Tekintsük át a nagy mennyiségű memóriával rendelkező csomópontok példáját. Ezek a csomópontok előnyt biztosíthatnak a nagy mennyiségű memóriát igénylő hüvelyek számára. Győződjön meg arról, hogy az erőforrások nem tétlenek, hanem más hüvelyek futtatását is lehetővé teszik.
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
-A pod-specifikáció ezt követően `nodeSelector` hozzáadja a tulajdonságot olyan csomópont-választó definiálásához, amely megfelel a csomóponton beállított címkének:
+A pod-specifikáció ezt követően hozzáadja a `nodeSelector` tulajdonságot olyan csomópont-választó definiálásához, amely megfelel a csomóponton beállított címkének:
 
 ```yaml
 kind: Pod
@@ -122,7 +122,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 

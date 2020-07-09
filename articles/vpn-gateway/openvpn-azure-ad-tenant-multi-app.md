@@ -5,16 +5,15 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 118ea21cbdd2e0527659c7c1beb40d8e42fa1d10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0ef0c7d3a269753067e53a69b9da680db969e25d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77485728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414426"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
 A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hitelesítést használhat. Ha azonban a nyílt VPN protokollt használja, akkor Azure Active Directory hitelesítést is használhat. Ha azt szeretné, hogy a különböző felhasználók a különböző VPN-átjárókkal csatlakozhassanak, több alkalmazást is regisztrálhat az AD-ben, és különböző VPN-átjárókkal kapcsolhat össze. Ebből a cikkből megtudhatja, hogyan állíthat be egy Azure AD-bérlőt az P2S OpenVPN-hitelesítéshez, és hogyan hozhat létre és regisztrálhat több alkalmazást az Azure AD-ben a különböző felhasználók és csoportok hozzáférésének engedélyezéséhez.
 
@@ -26,34 +25,22 @@ A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hit
 
 ## <a name="6-enable-authentication-on-the-gateway"></a><a name="enable-authentication"></a>6. hitelesítés engedélyezése az átjárón
 
-Ebben a lépésben engedélyezi az Azure AD-hitelesítést a VPN-átjárón.
+Ebben a lépésben engedélyezni fogja az Azure AD-hitelesítést a VPN-átjárón.
 
-1. Engedélyezze az Azure AD-hitelesítést a VPN-átjárón az alábbi parancsok futtatásával. Ügyeljen arra, hogy a parancsokat a saját környezetének megfelelően módosítsa:
+1. Engedélyezze az Azure AD-hitelesítést a VPN-átjárón, ha a **pont – hely konfigurációhoz** navigál, és az **OpenVPN (SSL)** lehetőséget **adja meg bújtatási típusként**. A **hitelesítési típusként** válassza a **Azure Active Directory** lehetőséget, majd adja meg a **Azure Active Directory** szakaszban található információkat.
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "application ID from previous section" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24
-    ```
+    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-ad-auth-portal.png)
+
     > [!NOTE]
-    > Ne használja az Azure VPN-ügyfél alkalmazás-AZONOSÍTÓját a fenti parancsokban: az összes felhasználó számára hozzáférést biztosít a VPN-átjáróhoz. Használja a regisztrált alkalmazás (ok) AZONOSÍTÓját.
+    > Ne használja az Azure VPN-ügyfél alkalmazás-AZONOSÍTÓját: minden felhasználónak hozzáférést biztosít a VPN-átjáróhoz. Használja a regisztrált alkalmazás (ok) AZONOSÍTÓját.
 
-2. Hozza létre és töltse le a profilt a következő parancsok futtatásával. Módosítsa a-ResourcGroupName és a-name értékeket a saját igényeinek megfelelően.
+2. A **VPN-ügyfél letöltése** hivatkozásra kattintva hozza létre és töltse le a profilt.
 
-    ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
-    $PROFILE.VpnProfileSASUrl
-    ```
+3. Bontsa ki a letöltött zip-fájlt.
 
-3. A parancsok futtatása után az alábbihoz hasonló eredményt láthat. Másolja ki az eredmény URL-címét a böngészőbe a profil zip-fájljának letöltéséhez.
+4. Tallózással keresse meg a kibontott "AzureVPN" mappát.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/profile.png)
-
-4. Bontsa ki a letöltött zip-fájlt.
-
-5. Tallózással keresse meg a kibontott "AzureVPN" mappát.
-
-6. Jegyezze fel a "azurevpnconfig. xml" fájl helyét. A azurevpnconfig. XML a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
+5. Jegyezze fel a "azurevpnconfig.xml" fájl helyét. A azurevpnconfig.xml a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

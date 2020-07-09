@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585107"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez
 
-Miután az [adatforrásokat](quickstart-onboard.md) az Azure sentinelhez csatlakoztatta, létrehozhat olyan egyéni szabályokat, amelyek meghatározott feltételeket kereshetnek a környezetében, és incidenseket hozhatnak létre, amikor a feltételek teljesülnek, így kivizsgálhatja azokat. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával észlelt fenyegetések észleléséhez.
+Miután az [adatforrásokat](quickstart-onboard.md)   Az Azure sentinelhez csatlakoztatta, létrehozhat olyan egyéni szabályokat, amelyek meghatározott feltételeket kereshetnek a környezetében, és incidenseket hozhatnak létre, amikor a feltételek teljesülnek, így kivizsgálhatja azokat. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával észlelt fenyegetések észleléséhez.
 
 Ez az oktatóanyag segítséget nyújt az Azure Sentinel-fenyegetések észlelésében.
 > [!div class="checklist"]
@@ -59,7 +58,7 @@ Egyéni analitikai szabályokat hozhat létre, amelyek segítségével megkeresh
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > A lekérdezés hosszának 1 és 10 000 karakter közöttinek kell lennie, és \*nem tartalmazhat "Search \*" vagy "Union" karaktert.
+      > A lekérdezés hosszának 1 és 10 000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \* " vagy "Union \* " karaktert.
 
     1. A **leképezési entitások** szakasz segítségével a lekérdezési eredményekből származó paramétereket kapcsolhat az Azure Sentinel által elismert entitásokhoz. Ezek az entitások a további elemzés alapjául szolgálnak, beleértve az incidensek **beállításai** lapon lévő riasztások csoportosítását.
     1. A **lekérdezés ütemezése** szakaszban adja meg a következő paramétereket:

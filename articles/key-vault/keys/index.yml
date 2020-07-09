@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: d5394200164d4f254ceca7a18035df95cc401747
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 580f1982478c996d5a9d0406a73df6aa200d3000
+  ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423360"
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84193647"
 landingContent:
 - title: Kulcsok
   linkLists:
@@ -40,10 +40,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: HSM által védett kulcsok importálása a Key Vaultba
+    - text: HSM által védett kulcsok importálása (áttekintés)
       url: hsm-protected-keys.md
-    - text: Szállítófüggetlen HSM által védett kulcsok importálása
-      url: hsm-protected-keys-vendor-agnostic-byok.md
 - title: További információ a Key Vaultról
   linkLists:
   - linkListType: overview

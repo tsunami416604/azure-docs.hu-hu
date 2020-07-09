@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870734"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
@@ -54,7 +53,7 @@ A [Select záradék](sql-query-select.md) támogatja a skaláris kifejezéseket.
   
 - `input_alias`  
   
-   A `input_alias` `FROM` záradékban bemutatott értéket jelöli.  
+   A `input_alias` záradékban bemutatott értéket jelöli `FROM` .  
   Ez az érték nem **meghatározatlan** – a bemenetben nem**definiált** értékek vannak kihagyva.  
   
 - `<scalar_expression>.property_name`  
@@ -63,7 +62,7 @@ A [Select záradék](sql-query-select.md) támogatja a skaláris kifejezéseket.
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Egy tömb indexével `property_name` `array_index` rendelkező Name vagy Array elemet tartalmazó tulajdonság értékét jelöli. Ha a tulajdonság/tömb indexe nem létezik, vagy a tulajdonság/tömb indexe nem objektum/tömb értékre hivatkozik, a kifejezés kiértékelése nem definiált értékre történik.  
+   Egy `property_name` tömb indexével rendelkező Name vagy Array elemet tartalmazó tulajdonság értékét jelöli `array_index` . Ha a tulajdonság/tömb indexe nem létezik, vagy a tulajdonság/tömb indexe nem objektum/tömb értékre hivatkozik, a kifejezés kiértékelése nem definiált értékre történik.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -95,7 +94,7 @@ A [Select záradék](sql-query-select.md) támogatja a skaláris kifejezéseket.
   
 - `parameter_name`  
   
-   A megadott paraméter nevének értékét jelöli. A paraméterek nevének első karakterének \@ egyetlennek kell lennie.  
+   A megadott paraméter nevének értékét jelöli. A paraméterek nevének első karakterének egyetlennek kell lennie \@ .  
   
 ## <a name="remarks"></a>Megjegyzések
   
@@ -143,4 +142,4 @@ Az eredmény a következő:
 
 - [Bevezetés a Azure Cosmos DBba](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Allekérdezéseket](sql-query-subquery.md)
+- [Segédlekérdezések](sql-query-subquery.md)

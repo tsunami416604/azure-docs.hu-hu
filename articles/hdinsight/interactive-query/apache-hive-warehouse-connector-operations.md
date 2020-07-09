@@ -5,14 +5,14 @@ author: nis-goel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 999c58871ed811d91fd96d158ea6f65db6c718f3
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: ed3dbe4cb5b9d8b50c028a68feeded170130bfb8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853840"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085837"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>A kaptár Warehouse-összekötő által támogatott Apache Spark műveletek az Azure HDInsight
 
@@ -142,6 +142,6 @@ A **CTRL + C** billentyűkombinációval állítsa le a netcat a második SSH-mu
 
 ## <a name="next-steps"></a>További lépések
 
-* [ÜZEMELTETHETŐ WEBMAG-integráció Apache Spark és Apache Hive](./apache-hive-warehouse-connector.md)
+* [HWC-integráció az Apache Sparkkal és az Apache Hive-val](./apache-hive-warehouse-connector.md)
 * [Az interaktív lekérdezés használata HDInsighttal](./apache-interactive-query-get-started.md)
-* [ÜZEMELTETHETŐ WEBMAG-integráció az Apache Zeppelin-vel](./apache-hive-warehouse-connector-zeppelin.md)
+* [HWC-integráció az Apache Zeppelinnel](./apache-hive-warehouse-connector-zeppelin.md)

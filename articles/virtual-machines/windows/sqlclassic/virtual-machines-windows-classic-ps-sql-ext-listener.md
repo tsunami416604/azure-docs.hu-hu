@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4517a600acaf581ad240d634e89bba3984f835db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978180"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087333"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Külső figyelő konfigurálása a rendelkezésre állási csoportokhoz az Azure SQL Server virtuális gépeken
 > [!div class="op_single_selector"]
@@ -62,22 +62,26 @@ Minden Azure-replikát üzemeltető virtuális géphez létre kell hoznia egy el
 5. **Azure PowerShell**elindítása. A rendszer új PowerShell-munkamenetet nyit meg az Azure felügyeleti modulok betöltésével.
 6. Futtassa a **Get-AzurePublishSettingsFile**parancsot. Ez a parancsmag arra utasítja a böngészőt, hogy töltsön le egy közzétételi beállítási fájlt egy helyi könyvtárba. Előfordulhat, hogy a rendszer felszólítja az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokra.
 7. Futtassa az **import-AzurePublishSettingsFile** parancsot a letöltött közzétételi beállítások fájljának elérési útjával:
-   
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
+
     A közzétételi beállítások fájljának importálása után a PowerShell-munkamenetben kezelheti az Azure-előfizetését.
     
 1. Másolja az alábbi PowerShell-szkriptet egy szövegszerkesztőbe, és állítsa be a változó értékeit a környezetének megfelelően (az alapértelmezett beállítások bizonyos paraméterekhez lettek megadva). Vegye figyelembe, hogy ha a rendelkezésre állási csoport felöleli az Azure-régiókat, akkor egyszer kell futtatnia a parancsfájlt a felhőalapú szolgáltatás és az adatközpontban található csomópontok minden adatközpontjában.
+
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
    
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-   
-        # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 2. A változók beállítása után másolja a szkriptet a szövegszerkesztőből a Azure PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra is >>, írja be újra az ENTER billentyűt a szkript futtatásának megkezdéséhez.
 
@@ -98,18 +102,21 @@ Hozza létre a rendelkezésre állási csoport figyelőjét két lépésben. El�
 1. A külső terheléselosztáshoz be kell szereznie a replikákat tartalmazó felhőalapú szolgáltatás nyilvános virtuális IP-címét. Jelentkezzen be az Azure Portalra. Navigáljon ahhoz a felhőalapú szolgáltatáshoz, amely a rendelkezésre állási csoport virtuális gépet tartalmazza. Nyissa meg az **irányítópult** nézetet.
 2. Jegyezze fel a **nyilvános virtuális IP-cím (VIP)** alatt látható címet. Ha a megoldás virtuális hálózatok-ra terjed ki, ismételje meg ezt a lépést minden olyan felhőalapú szolgáltatás esetében, amely egy replikát futtató virtuális gépet tartalmaz.
 3. Az egyik virtuális gépen másolja az alábbi PowerShell-szkriptet egy szövegszerkesztőbe, és állítsa be a változókat a korábban feljegyzett értékekre.
+
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
    
-        # Define variables
-        $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
+    Import-Module FailoverClusters
    
-        Import-Module FailoverClusters
+    # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
    
-        # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
-   
-        # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
-        # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
+    # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    ```
+
 4. Miután beállította a változókat, nyisson meg egy emelt szintű Windows PowerShell-ablakot, majd másolja a szkriptet a szövegszerkesztőből, és illessze be a Azure PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra is >>, írja be újra az ENTER billentyűt a szkript futtatásának megkezdéséhez.
 5. Ismételje meg ezt minden egyes virtuális gépen. Ez a parancsfájl konfigurálja az IP-cím erőforrást a Cloud Service IP-címével, és más paramétereket állít be, például a mintavételi portot. Ha az IP-cím-erőforrás online állapotba kerül, az ebben az oktatóanyagban korábban létrehozott terheléselosztási végponton keresztül válaszolhat a mintavételi port lekérdezésére.
 
@@ -125,7 +132,9 @@ Hozza létre a rendelkezésre állási csoport figyelőjét két lépésben. El�
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>A rendelkezésre állási csoport figyelője (az interneten keresztül) tesztelése
 Ha a figyelőt a virtuális hálózaton kívülről szeretné elérni, a ILB helyett külső/nyilvános terheléselosztást kell használnia (lásd a témakört), amely csak ugyanazon a VNet belül érhető el. A kapcsolatok karakterláncában adja meg a felhőalapú szolgáltatás nevét. Ha például a *mycloudservice*nevű Cloud Service-t használta, a Sqlcmd utasítás a következő lesz:
 
-    sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```console
+sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```
 
 Az előző példától eltérően az SQL-hitelesítést kell használni, mivel a hívó nem használhatja a Windows-hitelesítést az interneten keresztül. További információ [: always on rendelkezésre állási csoport az Azure-beli virtuális gépen: ügyfél-csatlakozási forgatókönyvek](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). SQL-hitelesítés használatakor győződjön meg arról, hogy ugyanazt a bejelentkezést hozza létre mindkét replikán. A rendelkezésre állási csoportokkal való bejelentkezések hibaelhárításával kapcsolatos további információkért lásd: [bejelentkezések leképezése vagy SQL Database-felhasználó használata más replikához való kapcsolódáshoz, valamint a rendelkezésre állási adatbázisok leképezése](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 

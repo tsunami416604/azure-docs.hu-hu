@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a4d52ee3f39daef0e89ccb08cf5ab6a4ebfb735
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140793"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331534"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -56,7 +56,7 @@ Azure AD B2C különböző típusú felhasználói fiókokat határoz meg. Azure
 
 A következő identitási típusokhoz rendelhető fogyasztói fiók:
 
-* **Helyi** identitás a Azure ad B2C könyvtárban helyileg tárolt felhasználónévvel és jelszóval. Gyakran hivatkozunk ezekre az identitásokra, mint a "helyi fiókok" kifejezésre.
+* **Helyi** identitás a Azure ad B2C könyvtárban helyileg tárolt felhasználónévvel és jelszóval. Gyakran hivatkozunk ezekre az identitásokra "helyi fiókokként".
 * **Közösségi** vagy **vállalati** identitások, ahol a felhasználó identitását egy összevont identitás-szolgáltató felügyeli, például Facebook, Microsoft, ADFS vagy Salesforce.
 
 A felhasználói fiókkal rendelkező felhasználók több identitással is bejelentkezhetnek, például Felhasználónév, e-mail, alkalmazotti azonosító, kormányzati azonosító és egyebek. Egyetlen fióknak több identitása is lehet, helyi és közösségi is.

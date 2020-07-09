@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610512"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Bejelentkezéssel kapcsolatos problémák elhárítása feltételes hozzáféréssel
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>A feltételes hozzáféréssel kapcsolatos bejelentkezési problémák elhárítása
 
 A cikkben található információk segítségével a feltételes hozzáféréssel kapcsolatos váratlan bejelentkezési eredmények a hibaüzenetek és az Azure AD bejelentkezési naplójának használatával is orvosolhatók.
 
@@ -41,7 +41,7 @@ A problémáról további információt a kezdeti hiba oldalon található **Tov
 Annak megállapítása, hogy milyen feltételes hozzáférési szabályzatot vagy házirendeket alkalmaztak, és miért nem az alábbiakat.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy globális olvasóként.
-1. Tallózással keresse meg **Azure Active Directory** > a**bejelentkezéseket**.
+1. Tallózással keresse meg **Azure Active Directory**a  >  **bejelentkezéseket**.
 1. Keresse meg az eseményt, amelyről át szeretné tekinteni a bejelentkezést. Szűrők és oszlopok hozzáadása vagy eltávolítása a szükségtelen információk kiszűréséhez.
    1. Szűrők hozzáadása a hatókör szűkítéséhez:
       1. **Korrelációs azonosító** , ha egy konkrét eseményt kell kivizsgálni.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066855"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045909"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -150,7 +150,7 @@ Az alábbi példa a Microsoft antimalware bővítmény telepítését mutatja be
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON-t egy Resource Manager-sablon telepíti, amely elosztott terhelésű virtuális gépeket és egy Azure SQL Database-adatbázist telepít, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
+A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON egy Resource Manager-sablonból van üzembe helyezve egy elosztott terhelésű virtuális gép és egy Azure SQL Database, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
 
 További információ: [teljes Resource Manager-sablon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
@@ -355,7 +355,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Windows vendég ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a *C:\WindowsAzure\Logs\WaAppAgent.log* -ben
 
-2. További részletek a *\<C:\WindowsAzure\Logs\Plugins extensionName>*
+2. A *C:\WindowsAzure\Logs\Plugins \<extensionName> * kapcsolatos további részletekért olvassa el a tényleges kiterjesztési naplókat
 
 3. Tekintse meg a bővítmények specifikus dokumentációjának hibaelhárítási szakaszt a hibakódok, ismert problémák stb. esetében.
 
@@ -421,7 +421,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás**lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

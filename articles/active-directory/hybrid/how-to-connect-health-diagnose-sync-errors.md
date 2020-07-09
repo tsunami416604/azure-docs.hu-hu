@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359092"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
 
@@ -34,7 +34,7 @@ Az Azure AD-vel kapcsolatos további információkért lásd: [identitásszinkro
 
 ## <a name="problems"></a>Problémák
 ### <a name="a-common-scenario"></a>Gyakori forgatókönyv
-Ha a **QuarantinedAttributeValueMustBeUnique** és a **AttributeValueMustBeUnique** szinkronizálási hibák történnek, gyakori, hogy a **userPrincipalName** vagy a **proxy címe** ütközik az Azure ad-ben. A szinkronizálási hibák megoldásához frissítse az ütköző forrásoldali objektumot a helyszíni oldalról. A szinkronizálási hiba a következő szinkronizálás után lesz feloldva. Ez a rendszerkép például azt jelzi, hogy két felhasználó ütközik a **userPrincipalName**. Mindkettő **Joe. J\@contoso.com**. Az ütköző objektumok az Azure AD-ben vannak karanténba helyezve.
+Ha a **QuarantinedAttributeValueMustBeUnique** és a **AttributeValueMustBeUnique** szinkronizálási hibák történnek, gyakori, hogy a **userPrincipalName** vagy a **proxy címe** ütközik az Azure ad-ben. A szinkronizálási hibák megoldásához frissítse az ütköző forrásoldali objektumot a helyszíni oldalról. A szinkronizálási hiba a következő szinkronizálás után lesz feloldva. Ez a rendszerkép például azt jelzi, hogy két felhasználó ütközik a **userPrincipalName**. Mindkettő **Joe. J \@ contoso.com**. Az ütköző objektumok az Azure AD-ben vannak karanténba helyezve.
 
 ![Szinkronizálási hiba diagnosztizálása – gyakori forgatókönyv](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -68,7 +68,7 @@ Kövesse a Azure Portal lépéseit, és Szűkítse le a szinkronizálási hiba r
 A Azure Portal hajtson végre néhány lépést az egyes javítható helyzetek azonosításához:  
 1.  Keresse meg a **Diagnosztizálás állapota** oszlopot. Az állapot azt mutatja, hogy lehetséges-e a szinkronizálási hiba kijavítása közvetlenül a Azure Active Directoryról. Ez azt jelenti, hogy létezik egy hibaelhárítási folyamat, amely leszűkítheti a hiba esetét, és esetleg javíthatja azt.
 
-| status | Mit jelent? |
+| Állapot | Mit jelent? |
 | ------------------ | -----------------|
 | Nincs elindítva | Nem látogatta meg ezt a diagnosztikai folyamatot. A diagnosztikai eredményektől függően lehetőség van arra, hogy a szinkronizálási hibát közvetlenül a portálról javítsa ki. |
 | Manuális javítás szükséges | A hiba nem felel meg a portálon elérhető javítások feltételeinek. Az ütköző objektumtípusok nem a felhasználók, vagy már elvégezte a diagnosztikai lépéseket, és a portálon nem érhető el javítás. Az utóbbi esetben a helyszíni oldalról származó javítás még mindig az egyik megoldás. [További információ a helyszíni javításokról](https://support.microsoft.com/help/2647098). | 

@@ -1,24 +1,13 @@
 ---
 title: Végpontok közötti nyomkövetés és diagnosztika Azure Service Bus | Microsoft Docs
 description: Az Service Bus-ügyfél diagnosztika és a végpontok közötti nyomkövetés áttekintése (ügyfél a feldolgozásban részt vevő összes szolgáltatáson keresztül)
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340724"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetés és korreláció Service Bus üzenetkezelésen keresztül
 
@@ -30,7 +19,7 @@ Amikor egy gyártó üzenetet küld egy várólistán keresztül, általában eg
 Microsoft Azure Service Bus üzenetkezelés olyan adattartalom-tulajdonságokat adott meg, amelyeket a gyártóknak és a felhasználóknak az ilyen nyomkövetési környezet továbbítására kell használniuk.
 A protokoll a [http korrelációs protokollon](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)alapul.
 
-| Tulajdonság neve        | Leírás                                                 |
+| Tulajdonság neve        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnosztikai azonosító       | Egy külső hívás egyedi azonosítója a termelőről a várólistára. A logika, a szempontok és a formátum érdekében olvassa el a [HTTP protokollon keresztüli kérelem-azonosítót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Korreláció – környezet | A műveleti környezet, amelyet a rendszer a művelet-feldolgozásban részt vevő összes szolgáltatás között propagál. További információ: [korrelációs környezet a http protokollban](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -81,7 +70,7 @@ async Task ProcessAsync(Message message)
 ```
 
 Ebben a példában `RequestTelemetry` minden feldolgozott üzenetről jelentés készül, amely időbélyeggel, időtartammal és eredménnyel (sikeres) rendelkezik. A telemetria korrelációs tulajdonságokkal is rendelkezik.
-Az üzenetek feldolgozásakor jelentett beágyazott nyomkövetéseket és kivételeket a `RequestTelemetry`rendszer "Children"-ként jelképező korrelációs tulajdonságokkal is lepecsételi.
+Az üzenetek feldolgozásakor jelentett beágyazott nyomkövetéseket és kivételeket a rendszer "Children"-ként jelképező korrelációs tulajdonságokkal is lepecsételi `RequestTelemetry` .
 
 Ha az üzenetek feldolgozása során kezdeményezi a támogatott külső összetevőket, azokat a rendszer automatikusan nyomon követi és korrelálja is. A manuális nyomon követéshez és korrelációhoz tekintse meg az [Egyéni műveletek nyomon követését Application Insights .net SDK-val](../azure-monitor/app/custom-operations-tracking.md) .
 
@@ -96,7 +85,7 @@ Ha a nyomkövetési rendszer nem támogatja az automatikus Service Bus a hívás
 
 Service Bus .NET-ügyfél a .NET nyomkövetési primitívek [System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) és [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)használatával lett kialakítva.
 
-`Activity`nyomkövetési kontextusként szolgál, `DiagnosticSource` miközben egy értesítési mechanizmus. 
+`Activity`nyomkövetési kontextusként szolgál, miközben `DiagnosticSource` egy értesítési mechanizmus. 
 
 Ha nincs figyelő a DiagnosticSource eseményekhez, a rendszer kikapcsolja a rendszerállapot-figyelési költségeket. A DiagnosticSource minden vezérlést biztosít a figyelőnek:
 - a figyelő vezérli, hogy mely forrásokhoz és eseményekhez kell figyelni
@@ -155,7 +144,7 @@ Az összes esemény "Entity" és "Endpoint" tulajdonságokkal is rendelkezik, ez
   * `string Entity`– Az entitás neve (Üzenetsor, témakör stb.)
   * `Uri Endpoint`– Service Bus végpont URL-címe
 
-Minden "Leállítás" eseménynek `Status` van olyan `TaskStatus` tulajdonsága, amely aszinkron művelettel fejeződött be, és az egyszerűség kedvéért a következő táblázatban is kimarad.
+Minden "Leállítás" eseménynek van olyan `Status` tulajdonsága, `TaskStatus` amely aszinkron művelettel fejeződött be, és az egyszerűség kedvéért a következő táblázatban is kimarad.
 
 Itt látható a műszeres műveletek teljes listája:
 
@@ -183,15 +172,15 @@ Itt látható a műszeres műveletek teljes listája:
 | Microsoft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`– Az üzenetekben megtalálható munkamenet-azonosító. |
 | Microsoft. Azure. ServiceBus. Exception | bármilyen műszeres API| `Exception Exception`– Kivétel példánya |
 
-Minden esetben elérheti `Activity.Current` a jelenlegi műveleti környezetet.
+Minden esetben elérheti a `Activity.Current` jelenlegi műveleti környezetet.
 
 #### <a name="logging-additional-properties"></a>További tulajdonságok naplózása
 
 `Activity.Current`részletes kontextust biztosít a jelenlegi művelet és a szülei számára. További információt a [tevékenység dokumentációjában](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) talál.
-Service Bus a rendszerállapot-kialakítás további információkat `Activity.Current.Tags` biztosít a- `MessageId` ban `SessionId` , és ha elérhetővé válik.
+Service Bus a rendszerállapot-kialakítás további információkat biztosít a `Activity.Current.Tags` -ban `MessageId` , és `SessionId` Ha elérhetővé válik.
 
-A "Receive", "Peek" és "ReceiveDeferred" eseményt nyomon követő tevékenységek `RelatedTo` címkével is rendelkezhetnek. A szolgáltatás az eredményként `Diagnostic-Id`kapott üzenetek különböző listáját tartalmazza.
-Ez a művelet több nem kapcsolódó üzenetet is eredményezhet. Emellett a nem `Diagnostic-Id` ismeri a művelet elindulását, így a "Receive" művelet korrelálhat a "Process" műveletekkel, csak ezt a címkét használva. A teljesítménnyel kapcsolatos problémák elemzésekor hasznos, hogy meggyőződjön arról, hogy mennyi ideig tartott az üzenet fogadása.
+A "Receive", "Peek" és "ReceiveDeferred" eseményt nyomon követő tevékenységek címkével is rendelkezhetnek `RelatedTo` . A `Diagnostic-Id` szolgáltatás az eredményként kapott üzenetek különböző listáját tartalmazza.
+Ez a művelet több nem kapcsolódó üzenetet is eredményezhet. Emellett a `Diagnostic-Id` nem ismeri a művelet elindulását, így a "Receive" művelet korrelálhat a "Process" műveletekkel, csak ezt a címkét használva. A teljesítménnyel kapcsolatos problémák elemzésekor hasznos, hogy meggyőződjön arról, hogy mennyi ideig tartott az üzenet fogadása.
 
 A címkék naplózásának hatékony módja, ha megismétli őket, így a fenti példához hasonló címkéket adhat hozzá. 
 
@@ -211,25 +200,25 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Szűrés és mintavételezés
 
 Bizonyos esetekben érdemes az események egy részét naplózni, hogy csökkentse a teljesítmény terhelését vagy a tárterület felhasználását. A "Leállítás" eseményeket csak (az előző példában látható módon) vagy az események mintájának százalékában állíthatja be. 
-`DiagnosticSource`a `IsEnabled` predikátummal való megvalósításának módja. További információ: [környezetfüggő szűrés a DiagnosticSource-ben](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+`DiagnosticSource`a predikátummal való megvalósításának módja `IsEnabled` . További információ: [környezetfüggő szűrés a DiagnosticSource-ben](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
 `IsEnabled`a teljesítményre gyakorolt hatás csökkentése érdekében többször is meghívható egyetlen műveletre.
 
 `IsEnabled`a következő sorba van meghívva:
 
-1. `IsEnabled(<OperationName>, string entity, null)`például: `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Vegye figyelembe, hogy a végén nincs "Start" vagy "stop". Használatával kiszűrheti az adott műveleteket vagy várólistákat. Ha visszahívást ad vissza `false`, a rendszer nem küldi el az eseményeket a művelethez.
+1. `IsEnabled(<OperationName>, string entity, null)`például: `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Vegye figyelembe, hogy a végén nincs "Start" vagy "stop". Használatával kiszűrheti az adott műveleteket vagy várólistákat. Ha visszahívást ad vissza `false` , a rendszer nem küldi el az eseményeket a művelethez.
 
-   * A "Process" és a "ProcessSession" műveletekhez visszahívást `IsEnabled(<OperationName>, string entity, Activity activity)` is kap. Használatával szűrheti az eseményeket a vagy a `activity.Id` címkék tulajdonságai alapján.
+   * A "Process" és a "ProcessSession" műveletekhez `IsEnabled(<OperationName>, string entity, Activity activity)` visszahívást is kap. Használatával szűrheti az eseményeket a vagy a `activity.Id` címkék tulajdonságai alapján.
   
-2. `IsEnabled(<OperationName>.Start)`például: `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Ellenőrzi, hogy a "Start" eseményt el kell-e indítani. Az eredmény csak a "Start" eseményt érinti, azonban a további rendszerállapotok nem függenek tőle.
+2. `IsEnabled(<OperationName>.Start)`például: `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Ellenőrzi, hogy a "Start" eseményt el kell-e indítani. Az eredmény csak a "Start" eseményt érinti, azonban a további rendszerállapotok nem függenek tőle.
 
-A "Stop `IsEnabled` " esemény nem érhető el.
+`IsEnabled`A "stop" esemény nem érhető el.
 
 Ha valamilyen művelet eredménye kivétel, `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` a rendszer meghívja a metódust. Csak a "kivétel" eseményekre fizethet elő, és megakadályozhatja a kiépítés további részét. Ebben az esetben továbbra is az ilyen kivételeket kell kezelnie. Mivel más rendszerállapotok le vannak tiltva, nem várható, hogy a nyomkövetési környezet a fogyasztótól a termelő felé irányuló üzenetekkel áramlik.
 
-`IsEnabled` Emellett mintavételi stratégiákat is alkalmazhat. Mintavétel az alapján, `Activity.Id` vagy `Activity.RootId` biztosítja az egységes mintavételezést az összes gumiabroncson belül (feltéve, hogy a rendszert a rendszer vagy a saját kód nyomon követésével propagálja).
+`IsEnabled`Emellett mintavételi stratégiákat is alkalmazhat. Mintavétel az alapján, `Activity.Id` vagy `Activity.RootId` biztosítja az egységes mintavételezést az összes gumiabroncson belül (feltéve, hogy a rendszert a rendszer vagy a saját kód nyomon követésével propagálja).
 
-Több `DiagnosticSource` figyelő jelenléte ugyanazon a forrásnál elég ahhoz, hogy csak egy figyelő fogadja el az eseményt, ezért `IsEnabled` nem biztos, hogy meghívja,
+Több figyelő jelenléte `DiagnosticSource` ugyanazon a forrásnál elég ahhoz, hogy csak egy figyelő fogadja el az eseményt, ezért `IsEnabled` nem biztos, hogy meghívja,
 
 ## <a name="next-steps"></a>További lépések
 

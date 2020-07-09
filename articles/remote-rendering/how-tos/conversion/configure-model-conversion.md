@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84147943"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
@@ -279,7 +278,7 @@ Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel
 * A Ray-öntvények általában az alkalmazás szerves részét képezik, ezért az ütközési hálókat kell létrehozni.
 * A kivágott síkok jobban kitűnnek a `opaqueMaterialDefaultSidedness` jelzővel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)

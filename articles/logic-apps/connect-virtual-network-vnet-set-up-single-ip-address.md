@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927139"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Egyetlen IP-cím beállítása egy vagy több integrációs szolgáltatási környezethez Azure Logic Apps
@@ -21,7 +20,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-tűzfal, amely ugyanabban a virtuális hálózaton fut, mint az ISE. Ha nem rendelkezik tűzfallal, először `AzureFirewallSubnet` [adjon hozzá egy nevű alhálózatot](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) a virtuális hálózathoz. Ezután [létrehozhatja és üzembe helyezheti a tűzfalat](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) a virtuális hálózaton.
+* Egy Azure-tűzfal, amely ugyanabban a virtuális hálózaton fut, mint az ISE. Ha nem rendelkezik tűzfallal, először [adjon hozzá egy nevű alhálózatot](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) `AzureFirewallSubnet` a virtuális hálózathoz. Ezután [létrehozhatja és üzembe helyezheti a tűzfalat](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) a virtuális hálózaton.
 
 * Egy Azure- [útválasztási táblázat](../virtual-network/manage-route-table.md). Ha még nem rendelkezik ilyennel, először [hozzon létre egy útválasztási táblázatot](../virtual-network/manage-route-table.md#create-a-route-table). További információ az útválasztásról: [virtuális hálózati forgalom útválasztása](../virtual-network/virtual-networks-udr-overview.md).
 
@@ -31,7 +30,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    ![Válassza ki az útválasztási tábla szabályt a kimenő forgalom irányításához](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
 
-1. [Új útvonal hozzáadásához](../virtual-network/manage-route-table.md#create-a-route)az útválasztási táblázat menüben válassza az **útvonalak** > **Hozzáadás**lehetőséget.
+1. [Új útvonal hozzáadásához](../virtual-network/manage-route-table.md#create-a-route)az útválasztási táblázat menüben válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
 
    ![Útvonal hozzáadása a kimenő forgalom irányításához](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
@@ -49,7 +48,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    ![Szabály beállítása a kimenő forgalom irányításához](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Érték | Description |
    |----------|-------|-------------|
    | **Útvonal neve** | <*egyedi-útvonal-név*> | Az útvonal egyedi neve az útválasztási táblában |
    | **Címzési előtag** | <*cél – címe*> | Annak a célhelynek a címe, ahol a kimenő forgalmat el szeretné járni. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli tartományok közötti útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. Ebben a példában ez a memóriacím egy SFTP-kiszolgálóhoz tartozik, amely a következő szakaszban található: [hálózati szabály beállítása](#set-up-network-rule). |
@@ -61,13 +60,13 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
 ## <a name="set-up-network-rule"></a>Hálózati szabály beállítása
 
-1. A Azure Portal keresse meg és válassza ki a tűzfalat. A tűzfal menü **Beállítások**területén válassza a **szabályok**elemet. A szabályok ablaktáblán válassza a **hálózati szabályok gyűjtemény** > **hálózati szabálygyűjtemény hozzáadása**elemet.
+1. A Azure Portal keresse meg és válassza ki a tűzfalat. A tűzfal menü **Beállítások**területén válassza a **szabályok**elemet. A szabályok ablaktáblán válassza a **hálózati szabályok gyűjtemény**  >  **hálózati szabálygyűjtemény hozzáadása**elemet.
 
    ![Hálózati szabálygyűjtemény hozzáadása a tűzfalhoz](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
 1. A gyűjteményben adjon hozzá egy szabályt, amely engedélyezi a forgalmat a célként megadott rendszer felé.
 
-   Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy ISE-ben fut, és az SFTP-kiszolgálóval kommunikálni kell. Létrehoz egy nevű hálózati szabálygyűjtemény `LogicApp_ISE_SFTP_Outbound`-gyűjteményt, amely egy nevű `ISE_SFTP_Outbound`hálózati szabályt tartalmaz. Ez a szabály minden olyan alhálózat IP-címéről engedélyezi a forgalmat, amelynél az ISE a virtuális hálózatban fut a cél SFTP-kiszolgálón a tűzfal magánhálózati IP-címének használatával.
+   Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy ISE-ben fut, és az SFTP-kiszolgálóval kommunikálni kell. Létrehoz egy nevű hálózati szabálygyűjtemény-gyűjteményt `LogicApp_ISE_SFTP_Outbound` , amely egy nevű hálózati szabályt tartalmaz `ISE_SFTP_Outbound` . Ez a szabály minden olyan alhálózat IP-címéről engedélyezi a forgalmat, amelynél az ISE a virtuális hálózatban fut a cél SFTP-kiszolgálón a tűzfal magánhálózati IP-címének használatával.
 
    ![Hálózati szabály beállítása a tűzfalhoz](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -75,17 +74,17 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | <*hálózati-szabály-gyűjtemény-név*> | A hálózati szabály gyűjteményének neve |
-   | **Prioritású** | <*prioritás – szint*> | A szabály gyűjteményének futtatásához használandó prioritási sorrend. További információ: [Mi a Azure Firewall fogalmak](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
-   | **Művelet** | **Lehetővé** | A szabályhoz végrehajtandó Művelettípus |
+   | **Name (Név)** | <*hálózati-szabály-gyűjtemény-név*> | A hálózati szabály gyűjteményének neve |
+   | **Prioritás** | <*prioritás – szint*> | A szabály gyűjteményének futtatásához használandó prioritási sorrend. További információ: [Mi a Azure Firewall fogalmak](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
+   | **Művelet** | **Engedélyezés** | A szabályhoz végrehajtandó Művelettípus |
    |||
 
    **Hálózati szabály tulajdonságai**
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | <*hálózati szabály neve*> | A hálózati szabály neve |
-   | **Protocol (Protokoll)** | <*kapcsolatok – protokollok*> | A használandó kapcsolódási protokollok. Ha például NSG-szabályokat használ, válassza a **TCP** és az **UDP**beállítást, nem csak a **TCP protokollt**. |
+   | **Name (Név)** | <*hálózati szabály neve*> | A hálózati szabály neve |
+   | **Protokoll** | <*kapcsolatok – protokollok*> | A használandó kapcsolódási protokollok. Ha például NSG-szabályokat használ, válassza a **TCP** és az **UDP**beállítást, nem csak a **TCP protokollt**. |
    | **Forrásoldali címek** | <*ISE-alhálózat – címek*> | Az alhálózati IP-címek, amelyeken az ISE fut, és a logikai alkalmazásból származó forgalom |
    | **Cél címei** | <*cél-IP-cím*> | Annak a célhelynek az IP-címe, amelyen a kimenő forgalmat el szeretné járni. Ebben a példában ez az IP-cím az SFTP-kiszolgáló. |
    | **Célportok** | <*cél – portok*> | A célként megadott rendszer által a bejövő kommunikációhoz használt portok |

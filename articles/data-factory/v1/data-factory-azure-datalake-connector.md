@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281599"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása Data Lake Storage Gen1ba és onnan a Data Factory használatával
@@ -71,8 +70,8 @@ A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgy
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **típusa** | A Type tulajdonságot **AzureDataLakeStore**értékre kell beállítani. | Igen |
-| **dataLakeStoreUri** | Információ a Azure Data Lake Store fiókról. Ez az információ a következő formátumok egyikét veszi `https://[accountname].azuredatalakestore.net/webhdfs/v1` figyelembe `adl://[accountname].azuredatalakestore.net/`: vagy. | Igen |
+| **típusa** | A Type tulajdonságot **AzureDataLakeStore**értékre kell beállítani. | Yes |
+| **dataLakeStoreUri** | Információ a Azure Data Lake Store fiókról. Ez az információ a következő formátumok egyikét veszi figyelembe: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/` . | Yes |
 | **subscriptionId** | Az Azure-előfizetés azonosítója, amelyhez a Data Lake Store fiók tartozik. | A fogadóhoz szükséges |
 | **resourceGroupName** | Az Azure-erőforráscsoport neve, amelyhez a Data Lake Store fiók tartozik. | A fogadóhoz szükséges |
 
@@ -92,9 +91,9 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
-| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Igen |
-| **Bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
+| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
+| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Yes |
+| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Yes |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -119,8 +118,8 @@ Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Igen |
-| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Igen |
+| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Yes |
+| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Yes |
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy a felhasználó megfelelő jogosultságot ad a Azure Data Lake Storeban:
@@ -154,7 +153,7 @@ A következő táblázat a különböző típusú felhasználói fiókok lejára
 
 | Felhasználó típusa | Lejárat után lejár |
 |:--- |:--- |
-| A Azure Active Directory által *nem* felügyelt felhasználói fiókok (például @hotmail.com vagy @live.com) |12 óra |
+| A Azure Active Directory által *nem* felügyelt felhasználói fiókok (például @hotmail.com vagy @live.com ) |12 óra |
 | A Azure Active Directory által kezelt felhasználói fiókok |14 nappal az utolsó szelet futtatása után <br/><br/>90 nap, ha egy OAuth-alapú társított szolgáltatáson alapuló szelet 14 naponta legalább egyszer fut |
 
 Ha a jogkivonat lejárati ideje előtt módosítja a jelszavát, a jogkivonat azonnal lejár. Ekkor megjelenik a szakasz korábbi részében említett üzenet.
@@ -186,7 +185,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), a [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)és a [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakört. Adja hozzá a- `2.9.10826.1824` verzióra `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` mutató hivatkozást `WindowsFormsWebAuthenticationDialog` a kódban használt osztályhoz.
+A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), a [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)és a [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakört. Adja hozzá a-verzióra mutató hivatkozást a `2.9.10826.1824` `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` `WindowsFormsWebAuthenticationDialog` kódban használt osztályhoz.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
@@ -198,12 +197,12 @@ A kódban használt Data Factory osztályok részleteiért tekintse meg a [Azure
 
 **Alapvető ok:** 2 lehetséges ok:
 
-1. A `resourceGroupName` Azure Data Lake Store társított szolgáltatásban szereplő és/vagy `subscriptionId` megadott érték helytelen;
+1. A `resourceGroupName` `subscriptionId` Azure Data Lake Store társított szolgáltatásban szereplő és/vagy megadott érték helytelen;
 2. A felhasználó vagy az egyszerű szolgáltatásnév nem rendelkezik a szükséges engedélyekkel.
 
 **Felbontás**
 
-1. Győződjön meg arról `subscriptionId` , `resourceGroupName` hogy a és a társított szolgáltatásban `typeProperties` megadott érték valóban az, hogy a saját adatközpont-fiókja tartozik hozzá.
+1. Győződjön meg arról, hogy a `subscriptionId` és a `resourceGroupName` társított szolgáltatásban megadott érték `typeProperties` valóban az, hogy a saját adatközpont-fiókja tartozik hozzá.
 
 2. Ügyeljen arra, hogy legalább **olvasói** szerepkört adjon a felhasználónak vagy az egyszerű szolgáltatásnak a (z) adat-Lake-fiókban. A következőképpen teheti meg:
 
@@ -238,17 +237,17 @@ A **AzureDataLakeStore** típusú adatkészlet **typeProperties** szakasza a kö
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store tárolójának és mappájának elérési útja. |Igen |
-| **fileName** |A fájl neve Azure Data Lake Storeban. A **filename** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. <br/><br/>Ha megadja a **fájlnevet**, a tevékenység (beleértve a másolást is) az adott fájlon működik.<br/><br/>Ha nincs megadva a **fájlnév** , a másolás a bemeneti adatkészletben a **folderPath** összes fájlját tartalmazza.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység-fogadóban, a generált fájl neve a következő `Data._Guid_.txt`formátumban jelenik meg:. Például: a. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt fájl. |Nem |
-| **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Ezzel a beállítással megadhatja a dinamikus elérési utat és a fájlnevet az idősorozat-értékekhez. A **folderPath** például minden egyes órányi adatértékhez paraméterként lehet megadni. További részletekért és példákért tekintse meg a partitionedBy tulajdonságot. |Nem |
-| **formátumban** | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a **Format** értékre a következő értékek egyikére. További információ: a [szöveg formátuma](data-factory-supported-file-and-compression-formats.md#text-format), a [JSON formátuma](data-factory-supported-file-and-compression-formats.md#json-format), a [Avro formátuma](data-factory-supported-file-and-compression-formats.md#avro-format), az [ork formátuma](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta](data-factory-supported-file-and-compression-formats.md#parquet-format) formátuma [Azure Data Factory cikk által támogatott fájl-és tömörítési](data-factory-supported-file-and-compression-formats.md) formátumokban. <br><br> Ha a fájlokat a fájl alapú tárolók között (bináris másolás) szeretné másolni, ugorja át a bemeneti és a `format` kimeneti adatkészlet-definíciók szakaszát. |Nem |
-| **tömörítés** | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a **gzip**, a **deflate**, a **BZip2**és a **ZipDeflate**. A támogatott szintek **optimálisak** és **leggyorsabbak**. További információ: [Azure Data Factory által támogatott fájl-és Tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| **folderPath** |Data Lake Store tárolójának és mappájának elérési útja. |Yes |
+| **fileName** |A fájl neve Azure Data Lake Storeban. A **filename** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. <br/><br/>Ha megadja a **fájlnevet**, a tevékenység (beleértve a másolást is) az adott fájlon működik.<br/><br/>Ha nincs megadva a **fájlnév** , a másolás a bemeneti adatkészletben a **folderPath** összes fájlját tartalmazza.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység-fogadóban, a generált fájl neve a következő formátumban jelenik meg: `Data._Guid_.txt` . Például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
+| **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Ezzel a beállítással megadhatja a dinamikus elérési utat és a fájlnevet az idősorozat-értékekhez. A **folderPath** például minden egyes órányi adatértékhez paraméterként lehet megadni. További részletekért és példákért tekintse meg a partitionedBy tulajdonságot. |No |
+| **formátumban** | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a **Format** értékre a következő értékek egyikére. További információ: a [szöveg formátuma](data-factory-supported-file-and-compression-formats.md#text-format), a [JSON formátuma](data-factory-supported-file-and-compression-formats.md#json-format), a [Avro formátuma](data-factory-supported-file-and-compression-formats.md#avro-format), az [ork formátuma](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta](data-factory-supported-file-and-compression-formats.md#parquet-format) formátuma [Azure Data Factory cikk által támogatott fájl-és tömörítési](data-factory-supported-file-and-compression-formats.md) formátumokban. <br><br> Ha a fájlokat a fájl alapú tárolók között (bináris másolás) szeretné másolni, ugorja át a `format` bemeneti és a kimeneti adatkészlet-definíciók szakaszát. |No |
+| **tömörítés** | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a **gzip**, a **deflate**, a **BZip2**és a **ZipDeflate**. A támogatott szintek **optimálisak** és **leggyorsabbak**. További információ: [Azure Data Factory által támogatott fájl-és Tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="the-partitionedby-property"></a>A partitionedBy tulajdonság
 Megadhatja az idősoros adatok dinamikus **folderPath** és **fájlnevének** tulajdonságait a **partitionedBy** tulajdonsággal, Data Factory függvényekkel és a rendszerváltozókkal. További részletekért tekintse meg a [Azure Data Factory-functions és a rendszerváltozók](data-factory-functions-variables.md) című cikket.
 
 
-A következő példában `{Slice}` a rendszer a Data Factory rendszerváltozó `SliceStart` értékével helyettesíti a megadott formátumban (`yyyyMMddHH`). A név `SliceStart` a szelet kezdő időpontjára hivatkozik. A `folderPath` tulajdonság az egyes szeletekhez hasonlóan eltérő, mint `wikidatagateway/wikisampledataout/2014100103` a `wikidatagateway/wikisampledataout/2014100104`vagy a esetében.
+A következő példában a `{Slice}` rendszer a Data Factory rendszerváltozó értékével helyettesíti a `SliceStart` megadott formátumban ( `yyyyMMddHH` ). A név a `SliceStart` szelet kezdő időpontjára hivatkozik. A `folderPath` tulajdonság az egyes szeletekhez hasonlóan eltérő, mint a vagy a esetében `wikidatagateway/wikisampledataout/2014100103` `wikidatagateway/wikisampledataout/2014100104` .
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -258,7 +257,7 @@ A következő példában `{Slice}` a rendszer a Data Factory rendszerváltozó `
 ],
 ```
 
-A következő példában a (z) `SliceStart` `folderPath` és a (z) és a (z) és a (z) tulajdonságban a ( `fileName` z) és a (z) és a (z) tulajdonságok által használt
+A következő példában a (z) és a (z) és a (z) és a (z) tulajdonságban a (z) és a (z) és a (z) `SliceStart` Tulajdonságok által használt `folderPath` `fileName`
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -282,13 +281,13 @@ A **AzureDataLakeStoreSource** a következő tulajdonságot támogatja a **typeP
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **rekurzív** |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. |True (alapértelmezett érték), hamis |Nem |
+| **rekurzív** |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. |True (alapértelmezett érték), hamis |No |
 
 A **AzureDataLakeStoreSink** a következő tulajdonságokat támogatja a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **copyBehavior** |Megadja a másolási viselkedést. |<b>PreserveHierarchy</b>: megőrzi a fájl hierarchiáját a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><br/><b>FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén jön létre. A célfájl automatikusan létrehozott névvel lett létrehozva.<br/><br/><b>MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben a fájl neve automatikusan létrejön. |Nem |
+| **copyBehavior** |Megadja a másolási viselkedést. |<b>PreserveHierarchy</b>: megőrzi a fájl hierarchiáját a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><br/><b>FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén jön létre. A célfájl automatikusan létrehozott névvel lett létrehozva.<br/><br/><b>MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben a fájl neve automatikusan létrejön. |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>rekurzív és copyBehavior példák
 Ez a szakasz a rekurzív és copyBehavior értékek különböző kombinációinak másolási műveletének eredményét írja le.
@@ -358,7 +357,7 @@ A példák azt mutatják be, hogy az Azure Blob Storage idősoros adatai hogyan 
 
 **Azure blobbemeneti adatkészlet**
 
-A következő példában az adatok minden órában (`"frequency": "Hour", "interval": 1`) egy új blobból kerülnek felvételre. A blob mappa elérési útját és fájlnevét a feldolgozás alatt álló szelet kezdési időpontja alapján dinamikusan értékeli a rendszer. A mappa elérési útja a kezdési időpont év, hónap és nap részét használja. A fájlnév a kezdési idő óra részét használja. A `"external": true` beállítás arról tájékoztatja a Data Factory szolgáltatást, hogy a tábla kívül esik az adatgyárban, és nem az adatelőállító tevékenysége.
+A következő példában az adatok minden órában () egy új blobból kerülnek felvételre `"frequency": "Hour", "interval": 1` . A blob mappa elérési útját és fájlnevét a feldolgozás alatt álló szelet kezdési időpontja alapján dinamikusan értékeli a rendszer. A mappa elérési útja a kezdési időpont év, hónap és nap részét használja. A fájlnév a kezdési idő óra részét használja. A `"external": true` beállítás arról tájékoztatja a Data Factory szolgáltatást, hogy a tábla kívül esik az adatgyárban, és nem az adatelőállító tevékenysége.
 
 ```JSON
 {
@@ -442,7 +441,7 @@ Az alábbi példa a Data Lake Storeba másolja az adatfájlokat. Az új Adatmás
 
 **Másolási tevékenység egy blob-forrást és egy Data Lake Store fogadót tartalmazó folyamatban**
 
-A következő példában a folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva. A másolási tevékenység óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a `source` típus értékre van `BlobSource`állítva, és `sink` a típus értéke: `AzureDataLakeStoreSink`.
+A következő példában a folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva. A másolási tevékenység óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a `source` típus értékre van állítva, `BlobSource` és a `sink` típus értéke: `AzureDataLakeStoreSink` .
 
 ```json
 {
@@ -539,7 +538,7 @@ A kód óránként másolja az idősoros adatok Data Lake Storeről egy Azure-bl
 ```
 **Bemeneti adatkészlet Azure Data Lake**
 
-Ebben a példában úgy kell `"external"` `true` beállítani a Data Factory szolgáltatást, hogy a tábla az adatelőállítón kívül esik, és nem az adatelőállító tevékenysége.
+Ebben a példában `"external"` úgy kell beállítani `true` a Data Factory szolgáltatást, hogy a tábla az adatelőállítón kívül esik, és nem az adatelőállító tevékenysége.
 
 ```json
 {
@@ -574,7 +573,7 @@ Ebben a példában úgy kell `"external"` `true` beállítani a Data Factory szo
 ```
 **Azure-Blob kimeneti adatkészlete**
 
-A következő példában a rendszer óránként`"frequency": "Hour", "interval": 1`egy új blobba írja az adatbevitelt. A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési időpont év, hónap, nap és óra részét használja.
+A következő példában a rendszer óránként egy új blobba írja az adatbevitelt `"frequency": "Hour", "interval": 1` . A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési időpont év, hónap, nap és óra részét használja.
 
 ```JSON
 {
@@ -634,7 +633,7 @@ A következő példában a rendszer óránként`"frequency": "Hour", "interval":
 
 **Egy Azure Data Lake Store forrással és egy blob-fogadóval rendelkező folyamat másolási tevékenysége**
 
-A következő példában a folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva. A másolási tevékenység óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a `source` típus értékre van `AzureDataLakeStoreSource`állítva, és `sink` a típus értéke: `BlobSink`.
+A következő példában a folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva. A másolási tevékenység óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a `source` típus értékre van állítva, `AzureDataLakeStoreSource` és a `sink` típus értéke: `BlobSink` .
 
 ```json
 {

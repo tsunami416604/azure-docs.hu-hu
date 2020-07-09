@@ -8,12 +8,11 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b997942fd8d8a90b4bd395c2afa7d99b64a97ad8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188293"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037749"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Azure pont – hely kapcsolati problémák
 
@@ -44,7 +43,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     | AzureClient. pfx  | Aktuális User\Personal\Certificates |
     | AzureRoot. cer    | Helyi tárolóba legfelső szintű hitelesítésszolgáltatók|
 
-3. Lépjen a C:\Users\<Felhasználónév> \appdata\roaming\microsoft\network\connections\cm\<GUID>, manuálisan telepítse a tanúsítványt (*. cer fájlt) a felhasználó és a számítógép tárolóján.
+3. Nyissa meg a C:\Users \<UserName> \AppData\Roaming\Microsoft\Network\Connections\Cm \<GUID> , telepítse manuálisan a tanúsítványt (*. cer fájlt) a felhasználó és a számítógép tárolóján.
 
 Az ügyféltanúsítvány telepítésével kapcsolatos további információkért lásd: [tanúsítványok létrehozása és exportálása pont – hely kapcsolatokhoz](vpn-gateway-certificates-point-to-site.md).
 
@@ -78,7 +77,7 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
    | Windows 10 1709-es verzió | Március 22.2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. Adja meg a beállításkulcs értékét. Hozzon létre `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` vagy állítson be REG_DWORD kulcsot a beállításjegyzékben 1 értékre.
+2. Adja meg a beállításkulcs értékét. Hozzon létre vagy állítson be `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD kulcsot a beállításjegyzékben 1 értékre.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-ügyfél hiba: a kapott üzenet váratlan vagy helytelen formátumú volt.
 
@@ -165,10 +164,10 @@ Egy további tanúsítványra van szükség a virtuális hálózat VPN-átjáró
 
 Bontsa ki a VPN-ügyfél konfigurációs csomagját, és keresse meg a. cer fájlt. A tanúsítvány telepítéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az MMC. exe fájlt.
+1. Nyissa meg mmc.exe.
 2. Adja hozzá a **tanúsítványok** beépülő modult.
 3. Válassza ki **a helyi számítógép számítógépfiókját.**
-4. Kattintson a jobb gombbal a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontra. Kattintson a **minden tevékenység** > **importálása**lehetőségre, és keresse meg a VPN-ügyfél konfigurációs csomagjából kinyert. cer fájlt.
+4. Kattintson a jobb gombbal a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontra. Kattintson a **minden tevékenység**  >  **importálása**lehetőségre, és keresse meg a VPN-ügyfél konfigurációs csomagjából kinyert. cer fájlt.
 5. Indítsa újra a számítógépet. 
 6. Próbálja meg telepíteni a VPN-ügyfelet.
 
@@ -178,7 +177,7 @@ Bontsa ki a VPN-ügyfél konfigurációs csomagját, és keresse meg a. cer fáj
 
 Ha a Azure Portal a VPN-átjáró módosításait próbálja menteni, a következő hibaüzenet jelenik meg:
 
-**Nem sikerült menteni a virtuális hálózati &lt;átjáró *átjárójának nevét*&gt;. A tanúsítvány &lt;- *tanúsítvány azonosítójának azonosítója* &gt; érvénytelen.**
+**Nem sikerült menteni a virtuális hálózati átjáró &lt; *átjárójának nevét* &gt; . A tanúsítvány- &lt; *tanúsítvány azonosítójának azonosítója* &gt; érvénytelen.**
 
 ### <a name="cause"></a>Ok 
 
@@ -188,24 +187,26 @@ Ez a probléma akkor fordulhat elő, ha a főtanúsítványban feltöltött nyil
 
 Győződjön meg arról, hogy a tanúsítványban szereplő adatok nem tartalmaznak érvénytelen karaktereket, például sortöréseket (kocsivissza). A teljes értéknek egy hosszú sornak kell lennie. A következő szöveg a tanúsítvány mintája:
 
-    -----BEGIN CERTIFICATE-----
-    MIIC5zCCAc+gAwIBAgIQFSwsLuUrCIdHwI3hzJbdBjANBgkqhkiG9w0BAQsFADAW
-    MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzA2MTUwMjU4NDZaFw0xODA2MTUw
-    MzE4NDZaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF
-    AAOCAQ8AMIIBCgKCAQEAz8QUCWCxxxTrxF5yc5uUpL/bzwC5zZ804ltB1NpPa/PI
-    sa5uwLw/YFb8XG/JCWxUJpUzS/kHUKFluqkY80U+fAmRmTEMq5wcaMhp3wRfeq+1
-    G9OPBNTyqpnHe+i54QAnj1DjsHXXNL4AL1N8/TSzYTm7dkiq+EAIyRRMrZlYwije
-    407ChxIp0stB84MtMShhyoSm2hgl+3zfwuaGXoJQwWiXh715kMHVTSj9zFechYd7
-    5OLltoRRDyyxsf0qweTFKIgFj13Hn/bq/UJG3AcyQNvlCv1HwQnXO+hckVBB29wE
-    sF8QSYk2MMGimPDYYt4ZM5tmYLxxxvGmrGhc+HWXzMeQIDAQABozEwLzAOBgNVHQ8B
-    Af8EBAMCAgQwHQYDVR0OBBYEFBE9zZWhQftVLBQNATC/LHLvMb0OMA0GCSqGSIb3
-    DQEBCwUAA4IBAQB7k0ySFUQu72sfj3BdNxrXSyOT4L2rADLhxxxiK0U6gHUF6eWz
-    /0h6y4mNkg3NgLT3j/WclqzHXZruhWAXSF+VbAGkwcKA99xGWOcUJ+vKVYL/kDja
-    gaZrxHlhTYVVmwn4F7DWhteFqhzZ89/W9Mv6p180AimF96qDU8Ez8t860HQaFkU6
-    2Nw9ZMsGkvLePZZi78yVBDCWMogBMhrRVXG/xQkBajgvL5syLwFBo2kWGdC+wyWY
-    U/Z+EK9UuHnn3Hkq/vXEzRVsYuaxchta0X2UNRzRq+o706l+iyLTpe6fnvW6ilOi
-    e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
-    -----END CERTIFICATE-----
+```text
+-----BEGIN CERTIFICATE-----
+MIIC5zCCAc+gAwIBAgIQFSwsLuUrCIdHwI3hzJbdBjANBgkqhkiG9w0BAQsFADAW
+MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzA2MTUwMjU4NDZaFw0xODA2MTUw
+MzE4NDZaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEAz8QUCWCxxxTrxF5yc5uUpL/bzwC5zZ804ltB1NpPa/PI
+sa5uwLw/YFb8XG/JCWxUJpUzS/kHUKFluqkY80U+fAmRmTEMq5wcaMhp3wRfeq+1
+G9OPBNTyqpnHe+i54QAnj1DjsHXXNL4AL1N8/TSzYTm7dkiq+EAIyRRMrZlYwije
+407ChxIp0stB84MtMShhyoSm2hgl+3zfwuaGXoJQwWiXh715kMHVTSj9zFechYd7
+5OLltoRRDyyxsf0qweTFKIgFj13Hn/bq/UJG3AcyQNvlCv1HwQnXO+hckVBB29wE
+sF8QSYk2MMGimPDYYt4ZM5tmYLxxxvGmrGhc+HWXzMeQIDAQABozEwLzAOBgNVHQ8B
+Af8EBAMCAgQwHQYDVR0OBBYEFBE9zZWhQftVLBQNATC/LHLvMb0OMA0GCSqGSIb3
+DQEBCwUAA4IBAQB7k0ySFUQu72sfj3BdNxrXSyOT4L2rADLhxxxiK0U6gHUF6eWz
+/0h6y4mNkg3NgLT3j/WclqzHXZruhWAXSF+VbAGkwcKA99xGWOcUJ+vKVYL/kDja
+gaZrxHlhTYVVmwn4F7DWhteFqhzZ89/W9Mv6p180AimF96qDU8Ez8t860HQaFkU6
+2Nw9ZMsGkvLePZZi78yVBDCWMogBMhrRVXG/xQkBajgvL5syLwFBo2kWGdC+wyWY
+U/Z+EK9UuHnn3Hkq/vXEzRVsYuaxchta0X2UNRzRq+o706l+iyLTpe6fnvW6ilOi
+e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
+-----END CERTIFICATE-----
+```
 
 ## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure Portal hiba: nem sikerült menteni a VPN-átjárót, és az erőforrás neve érvénytelen.
 
@@ -213,7 +214,7 @@ Győződjön meg arról, hogy a tanúsítványban szereplő adatok nem tartalmaz
 
 Ha a Azure Portal a VPN-átjáró módosításait próbálja menteni, a következő hibaüzenet jelenik meg: 
 
-**Nem sikerült menteni a virtuális hálózati &lt;átjáró *átjárójának nevét*&gt;. A&gt; *feltölteni kívánt* erőforrás &lt;neve nem érvényes**.
+**Nem sikerült menteni a virtuális hálózati átjáró &lt; *átjárójának nevét* &gt; . &lt;A *feltölteni kívánt* erőforrás neve &gt; nem érvényes**.
 
 ### <a name="cause"></a>Ok
 
@@ -261,7 +262,7 @@ Az ügyfélnek csak akkor kell megadnia a hitelesítő adatokat, ha érvényes t
 
 A probléma megoldásához tiltsa le a tartományi hitelesítő adatok gyorsítótárazását a következő beállításkulcs alapján: 
 
-    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1 
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1`
 
 
 ## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>Nem található a pont – hely VPN-kapcsolat a Windowsban a VPN-ügyfél újratelepítése után
@@ -272,7 +273,7 @@ Távolítsa el a pont – hely VPN-kapcsolatát, majd telepítse újra a VPN-üg
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához törölje a régi VPN-ügyfél konfigurációs fájljait **a\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId>**, majd futtassa újra a VPN-ügyfél telepítőjét.
+A probléma megoldásához törölje a régi VPN-ügyfél konfigurációs fájljait **a \<VirtualNetworkId> C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections**-ből, majd futtassa újra a VPN-ügyfél telepítőjét.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Pont – hely típusú VPN-ügyfél nem tudja feloldani a helyi tartományban lévő erőforrások teljes tartománynevét.
 
@@ -301,11 +302,11 @@ A probléma megoldásához [állítsa alaphelyzetbe az Azure VPN Gatewayt](vpn-g
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavonás funkció nem tudta megnézni a visszavonást, mert a visszavonási kiszolgáló offline állapotban volt. (Hiba 0x80092013) "
 
 ### <a name="causes"></a>Okok
-Ez a hibaüzenet akkor jelenik meg, ha az http://crl3.digicert.com/ssca-sha2-g1.crl ügyfél http://crl4.digicert.com/ssca-sha2-g1.crlnem fér hozzá és.  A visszavonási vizsgálathoz hozzáféréssel kell rendelkeznie ehhez a két helyhez.  Ez a probléma általában a proxykiszolgálót futtató ügyfélen történik. Bizonyos környezetekben, ha a kérések nem a proxykiszolgálón keresztül mennek át, a rendszer megtagadja a hozzáférést a peremhálózati tűzfalon.
+Ez a hibaüzenet akkor jelenik meg, ha az ügyfél nem fér hozzá http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.crl .  A visszavonási vizsgálathoz hozzáféréssel kell rendelkeznie ehhez a két helyhez.  Ez a probléma általában a proxykiszolgálót futtató ügyfélen történik. Bizonyos környezetekben, ha a kérések nem a proxykiszolgálón keresztül mennek át, a rendszer megtagadja a hozzáférést a peremhálózati tűzfalon.
 
 ### <a name="solution"></a>Megoldás
 
-Ellenőrizze a proxykiszolgáló beállításait, és győződjön meg arról, hogy az ügyfél http://crl3.digicert.com/ssca-sha2-g1.crl hozzáférhet http://crl4.digicert.com/ssca-sha2-g1.crla és a rendszerhez.
+Ellenőrizze a proxykiszolgáló beállításait, és győződjön meg arról, hogy az ügyfél hozzáférhet a és a rendszerhez http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crl .
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-ügyfél hiba: a kapcsolat megakadályozása a RAS/VPN-kiszolgálón konfigurált házirend miatt megszakadt. (812-es hiba)
 
@@ -339,9 +340,9 @@ A hálózati adapter illesztőprogramjának frissítése:
 4. Ha a Windows nem talál új illesztőprogramot, akkor próbáljon meg egyet az eszköz gyártójának webhelyén, és kövesse az utasításokat.
 5. Indítsa újra a számítógépet, majd próbálja megismételni a műveletet.
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-ügyfél hiba: a VPN- <VPN Connection Name>kapcsolat tárcsázása, állapot = a VPN-platform nem aktiválta a kapcsolatot
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-ügyfél hiba: a VPN-kapcsolat tárcsázása <VPN Connection Name> , állapot = a VPN-platform nem aktiválta a kapcsolatot
 
-A következő hibaüzenetet is láthatja Eseménynapló a RasClient: "a felhasználó <User> olyan nevű <VPN Connection Name> kapcsolatot tárcsázott, amely nem sikerült. A hibával visszaadott hibakód 1460. "
+A következő hibaüzenetet is láthatja Eseménynapló a RasClient: "a felhasználó <User> olyan nevű kapcsolatot tárcsázott, <VPN Connection Name> amely nem sikerült. A hibával visszaadott hibakód 1460. "
 
 ### <a name="cause"></a>Ok
 
@@ -370,7 +371,7 @@ Ezt a problémát az előző VPN-ügyfél telepítése okozhatta.
 
 ### <a name="solution"></a>Megoldás
 
-Törölje a régi VPN-ügyfél konfigurációs fájljait a **\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId>** , majd futtassa újra a VPN-ügyfél telepítőjét. 
+Törölje a régi VPN-ügyfél konfigurációs fájljait a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> ** -ből, majd futtassa újra a VPN-ügyfél telepítőjét. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>A VPN-ügyfél egy kis idő elteltével hibernálja vagy alvó állapotba lép
 

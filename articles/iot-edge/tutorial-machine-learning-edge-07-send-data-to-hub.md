@@ -4,23 +4,23 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a fejl
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74706911"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610080"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
 
 > [!NOTE]
 > Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ebben a cikkben ismét szimulált eszközként használjuk a fejlesztői gépet, de ahelyett, hogy közvetlenül a IoT Hub küldenek adatokat, az eszköz átküldi az adatokat a IoT Edge eszközre, amelyet transzparens átjáróként konfigurált.
+Ebben a cikkben ismét szimulált eszközként használjuk a fejlesztői virtuális gépet. Azonban ahelyett, hogy közvetlenül a IoT Hub küld adatokat, az eszköz átküldi az adatokat a IoT Edge eszközre, amely transzparens átjáróként van konfigurálva.
 
 A IoT Edge eszköz működését a szimulált eszköz adatküldése közben Figyeljük. Ha az eszköz futása befejeződött, tekintse meg a Storage-fiókban tárolt információt, és ellenőrizze, hogy minden a várt módon működik-e.
 
@@ -30,22 +30,22 @@ Ezt a lépést általában egy felhő vagy egy eszköz fejlesztője hajtja végr
 
 Használja újra a [DeviceHarness projektet](tutorial-machine-learning-edge-03-generate-data.md) az alsóbb rétegbeli (vagy levél) eszköz szimulálásához. Az átlátszó átjáróhoz való csatlakozáshoz két további dolog szükséges:
 
-* Regisztrálja a tanúsítványt, hogy az alsóbb rétegbeli eszköz (ebben az esetben a fejlesztői számítógép) megbízzon a IoT Edge futtatókörnyezet által használt hitelesítésszolgáltatóban.
+* Regisztrálja a tanúsítványt, hogy az alsóbb rétegbeli IoT eszköz megbízzon a IoT Edge futtatókörnyezet által használt hitelesítésszolgáltatóban. Ebben az esetben az alsóbb rétegbeli eszköz a fejlesztői virtuális gép.
 * Adja hozzá a peremhálózati átjáró teljes tartománynevét (FQDN) az eszköz kapcsolódási karakterláncához.
 
 Tekintse meg a kódot, és figyelje meg, hogy a két elem hogyan lett implementálva.
 
 1. Nyissa meg a fejlesztői gépen a Visual Studio Code-ot.
 
-2. A **fájl** > **megnyitása mappát...** nyissa meg a\\C\\:\\Source IoTEdgeAndMlSample DeviceHarness.
+1. A **fájl**  >  **megnyitása mappát...** nyissa meg a C: \\ Source \\ IoTEdgeAndMlSample \\ DeviceHarness.
 
-3. Tekintse meg a InstallCertificate () metódust a Program.cs-ben.
+1. Tekintse meg a InstallCertificate () metódust a Program.cs-ben.
 
-4. Vegye figyelembe, hogy ha a kód megkeresi a tanúsítvány elérési útját, meghívja a CertificateManager. InstallCACert metódust a tanúsítvány telepítéséhez a gépen.
+1. Vegye figyelembe, hogy ha a kód megkeresi a tanúsítvány elérési útját, meghívja a CertificateManager. InstallCACert metódust a tanúsítvány telepítéséhez a gépen.
 
-5. Most tekintse meg a GetIotHubDevice metódust a TurbofanDevice osztályban.
+1. Most tekintse meg a GetIotHubDevice metódust a TurbofanDevice osztályban.
 
-6. Ha a felhasználó a "-g" kapcsoló használatával adja meg az átjáró teljes tartománynevét, ez az érték a gatewayFqdn, amely az eszköz kapcsolódási karakterláncához lesz hozzáfűzve.
+1. Ha a felhasználó a "-g" kapcsoló használatával adja meg az átjáró teljes tartománynevét, a rendszer ezt az értéket adja át a `gatewayFqdn` változónak, amely az eszköz kapcsolódási karakterláncához lesz hozzáfűzve.
 
    ```csharp
    connectionString = $"{connectionString};GatewayHostName={gatewayFqdn.ToLower()}";
@@ -53,21 +53,23 @@ Tekintse meg a kódot, és figyelje meg, hogy a két elem hogyan lett implement�
 
 ## <a name="build-and-run-leaf-device"></a>Leaf-eszköz létrehozása és futtatása
 
-1. Ha a DeviceHarness projekt továbbra is meg van nyitva a Visual Studio Code-ban, hozza létre a projektet (CTRL + SHIFT + B vagy **Terminal** > **Run Build feladat...**), majd válassza a **Létrehozás** lehetőséget a párbeszédpanelről.
+1. Ha a DeviceHarness projekt továbbra is meg van nyitva a Visual Studio Code-ban, hozza létre a projektet. A **terminál** menüben válassza a **Build feladat futtatása** és a **Létrehozás**lehetőséget.
 
-2. Keresse meg a peremhálózati átjáró teljes tartománynevét (FQDN) úgy, hogy megkeresi az IoT Edge eszköz virtuális gépét a portálon, és a **DNS-név** értékét másolja az áttekintésből.
+1. Keresse meg a peremhálózati átjáró teljes tartománynevét (FQDN) úgy, hogy megkeresi a IoT Edge eszközét (Linux rendszerű virtuális gépet) a Azure Portal, és a **DNS-név** értékét az Áttekintés lapról másolja.
 
-3. Nyissa meg a Visual Studio Code**Terminalt (** > az**új terminált**), és futtassa `<edge_device_fqdn>` a következő parancsot, és cserélje le a elemet a virtuális gépről másolt DNS-névre:
+1. Ha még nem fut, indítsa el a IoT-eszközt (Linux rendszerű virtuális gép).
+
+1. Nyissa meg a Visual Studio Code Terminalt. A **terminál** menüben válassza az **új terminál** lehetőséget, majd futtassa a következő parancsot, és cserélje le `<edge_device_fqdn>` az IOT Edge eszközről másolt DNS-névre (linuxos virtuális gép):
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
    ```
 
-4. Az alkalmazás megkísérli a tanúsítvány telepítését a fejlesztői gépre. Ha igen, fogadja el a biztonsági figyelmeztetést.
+1. Az alkalmazás megkísérli a tanúsítvány telepítését a fejlesztői gépre. Ha igen, fogadja el a biztonsági figyelmeztetést.
 
-5. Ha a rendszer a IoT Hub kapcsolódási karakterláncra kéri, kattintson a három pontra (**..**.) az Azure IoT hub-eszközök panelen, majd válassza a **Másolás IoT hub a kapcsolódási karakterlánc**lehetőséget. Illessze be az értéket a terminálba.
+1. Amikor a rendszer kéri a IoT Hub kapcsolódási karakterláncot, kattintson a három pontra (**..**.) az Azure IoT hub eszközök paneljén, majd válassza a **Másolás IoT hub a kapcsolódási karakterlánc**lehetőséget. Illessze be az értéket a terminálba.
 
-6. A következőhöz hasonló kimenetet fog látni:
+1. A következőhöz hasonló kimenetet fog látni:
 
    ```output
    Found existing device: Client_001
@@ -89,13 +91,13 @@ A avroFileWriter modul kimenete könnyen megfigyelhető a IoT Edge eszköz megke
 
 1. SSH-t a IoT Edge virtuális gépre.
 
-2. Keresse meg a lemezre írt fájlokat.
+1. Keresse meg a lemezre írt fájlokat.
 
    ```bash
    find /data/avrofiles -type f
    ```
 
-3. A parancs kimenete az alábbi példához hasonlóan fog kinézni:
+1. A parancs kimenete az alábbi példához hasonlóan fog kinézni:
 
    ```output
    /data/avrofiles/2019/4/18/22/10.avro
@@ -103,49 +105,49 @@ A avroFileWriter modul kimenete könnyen megfigyelhető a IoT Edge eszköz megke
 
    A Futtatás időzítésének függvényében több fájl is lehet.
 
-4. Figyeljen az időbélyegekre. A avroFileWriter modul feltölti a fájlokat a felhőbe, ha az utolsó módosítás ideje több mint 10 percet vesz igénybe (lásd a\_uploader.py\_-ben a avroFileWriter modul módosított fájljának időtúllépését).
+1. Figyeljen az időbélyegekre. A avroFileWriter modul feltölti a fájlokat a felhőbe, ha az utolsó módosítás ideje több mint 10 percet vesz igénybe (lásd \_ \_ a uploader.py-ben a AVROFILEWRITER modul módosított fájljának időtúllépését).
 
-5. A 10 perc eltelte után a modulnak fel kell töltenie a fájlokat. Ha a feltöltés sikeres, törli a fájlokat a lemezről.
+1. A 10 perc eltelte után a modulnak fel kell töltenie a fájlokat. Ha a feltöltés sikeres, törli a fájlokat a lemezről.
 
-### <a name="azure-storage"></a>Azure Storage tárterület
+### <a name="azure-storage"></a>Azure Storage
 
 Megfigyelheti a levélben tárolt adatok eredményét a Storage-fiókok megtekintésével, ahol az adatok továbbítása várható.
 
 1. A fejlesztői gépen nyissa meg a Visual Studio Code-ot.
 
-2. A Tallózás ablak "AZURE STORAGE" paneljén navigáljon a fában, és keresse meg a Storage-fiókját.
+1. A Tallózás ablak "AZURE STORAGE" paneljén navigáljon a fában, és keresse meg a Storage-fiókját.
 
-3. Bontsa ki a **blob-tárolók** csomópontot.
+1. Bontsa ki a **blob-tárolók** csomópontot.
 
-4. Az oktatóanyag előző részében elvégzett munkából azt várjuk, hogy az **ruldata** -tárolónak tartalmaznia kell az RUL-val rendelkező üzeneteket. Bontsa ki a **ruldata** csomópontot.
+1. Az oktatóanyag előző részében elvégzett munkából azt várjuk, hogy az **ruldata** -tárolónak tartalmaznia kell az RUL-val rendelkező üzeneteket. Bontsa ki a **ruldata** csomópontot.
 
-5. Egy vagy több, a következőhöz hasonló blob-fájl `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`jelenik meg:.
+1. Egy vagy több, a következőhöz hasonló blob-fájl jelenik meg: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>` .
 
-6. Kattintson a jobb gombbal az egyik fájlra, és válassza a **blob letöltése** lehetőséget a fájl a fejlesztői gépre való mentéséhez.
+1. Kattintson a jobb gombbal az egyik fájlra, és válassza a **blob letöltése** lehetőséget a fájl a fejlesztői gépre való mentéséhez.
 
-7. Ezután bontsa ki a **uploadturbofanfiles** csomópontot. Az előző cikkben ezt a helyet a avroFileWriter modul által feltöltött fájlok céljának kell beállítani.
+1. Ezután bontsa ki a **uploadturbofanfiles** csomópontot. Az előző cikkben ezt a helyet a avroFileWriter modul által feltöltött fájlok céljának kell beállítani.
 
-8. Kattintson a jobb gombbal a fájlokra, majd válassza a **blob letöltése** elemet a fejlesztői gépre való mentéshez.
+1. Kattintson a jobb gombbal a fájlokra, majd válassza a **blob letöltése** elemet a fejlesztői gépre való mentéshez.
 
 ### <a name="read-avro-file-contents"></a>Avro-fájl tartalmának olvasása
 
 Egy egyszerű parancssori segédprogramot tartalmazott egy Avro-fájl olvasásához és a fájlban lévő üzenetek JSON-karakterláncának visszaküldéséhez. Ebben a szakaszban a telepítését és futtatását fogjuk telepíteni.
 
-1. Nyisson meg egy terminált a Visual Studio Code-ban (**terminál** > **új terminál**).
+1. Nyisson meg egy terminált a Visual Studio Code-ban (**terminál**  >  **új terminál**).
 
-2. A hubavroreader telepítése:
+1. A hubavroreader telepítése:
 
    ```cmd
    pip install c:\source\IoTEdgeAndMlSample\HubAvroReader
    ```
 
-3. A hubavroreader használatával olvassa el a **ruldata**-ból letöltött Avro-fájlt.
+1. A hubavroreader használatával olvassa el a **ruldata**-ból letöltött Avro-fájlt.
 
    ```cmd
    hubavroreader <avro file with ath> | more
    ```
 
-4. Vegye figyelembe, hogy az üzenet törzse a várt módon jelenik meg az eszköz azonosítója és az előre jelzett RUL alapján.
+1. Vegye figyelembe, hogy az üzenet törzse a várt módon jelenik meg az eszköz azonosítója és az előre jelzett RUL alapján.
 
    ```json
    {
@@ -176,9 +178,9 @@ Egy egyszerű parancssori segédprogramot tartalmazott egy Avro-fájl olvasásá
    }
    ```
 
-5. Futtassa ugyanezt a parancsot a **uploadturbofanfiles**-ből letöltött Avro-fájl átadásával.
+1. Futtassa ugyanezt a parancsot a **uploadturbofanfiles**-ből letöltött Avro-fájl átadásával.
 
-6. A várt módon ezek az üzenetek az eredeti üzenet összes érzékelő-és működési beállítását tartalmazzák. Ezeket az adattípusokat felhasználhatja a RUL modell fejlesztésére a peremhálózati eszközön.
+1. A várt módon ezek az üzenetek az eredeti üzenet összes érzékelő-és működési beállítását tartalmazzák. Ezeket az adattípusokat felhasználhatja a RUL modell fejlesztésére a peremhálózati eszközön.
 
    ```json
    {
@@ -217,21 +219,21 @@ Egy egyszerű parancssori segédprogramot tartalmazott egy Avro-fájl olvasásá
    }
    ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha azt tervezi, hogy vizsgálja meg a teljes körű oktatóanyag által használt erőforrásokat, várjon, amíg meg nem történik a létrehozott erőforrások tisztítása. Ha nem folytatja a műveletet, a következő lépésekkel törölheti őket:
+Ha azt tervezi, hogy vizsgálja meg a teljes körű oktatóanyag által használt erőforrásokat, várjon, amíg meg nem történik a létrehozott erőforrások tisztítása. Ellenkező esetben a következő lépésekkel törölheti őket:
 
-1. Törölje a fejlesztői virtuális gép tárolásához létrehozott erőforráscsoportot (ka) t, IoT Edge VM, IoT Hub, Storage-fiók, Machine learning Workspace szolgáltatás (és létrehozott erőforrások: tároló-beállításjegyzék, Application bepillantást, Key Vault, Storage-fiók).
+1. Törölje a fejlesztői virtuális gép tárolására létrehozott erőforráscsoportot (ka) t, IoT Edge VM, IoT Hub, Storage-fiók, Machine learning Workspace szolgáltatás (és létrehozott erőforrások: tároló-beállításjegyzék, Application Insights, kulcstartó, Storage-fiók).
 
-2. Törölje a Machine learning-projektet az [Azure jegyzetfüzetek](https://notebooks.azure.com)szolgáltatásban.
+1. Törölje a Machine learning-projektet az [Azure jegyzetfüzetek](https://notebooks.azure.com)szolgáltatásban.
 
-3. Ha helyileg klónozotta a tárházat, akkor a helyi tárházra hivatkozó PowerShell-vagy VS Code-alapú Windows-t zárjuk le, majd töröljük a tárház könyvtárat.
+1. Ha helyileg klónozotta a tárházat, akkor a helyi tárházra hivatkozó PowerShell-vagy VS Code-alapú Windows-t zárjuk le, majd töröljük a tárház könyvtárat.
 
-4. Ha helyileg hozott létre tanúsítványokat, törölje a c:\\edgeCertificates mappát.
+1. Ha helyileg hozott létre tanúsítványokat, törölje a c: \\ edgeCertificates mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben a fejlesztői gépet használtuk arra, hogy az érzékelőt és a működési adatokat a peremhálózati eszközön küldő levélben szimuláljuk. A rendszer ellenőrizte, hogy az eszközön lévő modulok a peremhálózati eszköz valós idejű működésének vizsgálatával, majd a Storage-fiókba feltöltött fájlok megtekintésével átirányították, besorolták, megtartották és feltöltötték az adatforrásokat.
+Ebben a cikkben azt használtuk, hogy fejlesztési virtuális gépe szimulálja az érzékelőt és a működési adatokat a IoT Edge eszközre küldött levélben. A rendszer ellenőrizte, hogy az eszköz moduljai a peremhálózati eszköz valós idejű működésének vizsgálatával és a Storage-fiókba feltöltött fájlok megtekintésével irányították, besorolták, megtartották és feltöltötték az adatforrásokat.
 
 További információt a következő lapokon talál:
 

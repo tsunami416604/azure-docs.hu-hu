@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360095"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság Azure AD általi kezelése az Azure AD Connect használatával
 
@@ -39,7 +39,7 @@ A Azure AD Connect felügyelheti a helyszíni Active Directory összevonási szo
 
 A Azure AD Connect **csak** az Azure ad-megbízhatósághoz kapcsolódó beállításokat kezeli. A Azure AD Connect nem módosítja a többi függő entitás megbízhatóságának beállításait AD FSban. A következő táblázat a Azure AD Connect által vezérelt beállításokat tartalmazza.
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | :--- | :--- |
 | Jogkivonat-aláíró tanúsítvány | Azure AD Connect segítségével alaphelyzetbe állíthatja és újból létrehozhatja a megbízhatóságot az Azure AD-vel. Azure AD Connect a jogkivonat-aláíró tanúsítványok egyszeri azonnali átváltását AD FS és frissíti az Azure AD-tartomány összevonási beállításait.|
 | Jogkivonat-aláírási algoritmus | A Microsoft az SHA-256 használatát javasolja jogkivonat-aláírási algoritmusként. A Azure AD Connect képes megállapítani, hogy a jogkivonat-aláíró algoritmus az SHA-256-nél kevésbé biztonságos értékre van-e beállítva. A következő lehetséges konfigurációs művelet során frissíti a beállítást az SHA-256 értékre. Az új jogkivonat-aláíró tanúsítvány használatához frissíteni kell a függő entitás megbízhatóságát. |
@@ -77,7 +77,7 @@ Minden olyan művelet során, amelyben minden beállítás módosul, Azure AD Co
 
 Azure AD Connect biztosítja, hogy az Azure AD-megbízhatóság mindig a javasolt jogcím-szabályok megfelelő készletével legyen konfigurálva. A Microsoft az Azure AD-kapcsolat használatát javasolja az Azure AD-megbízhatóság kezeléséhez. Ez a szakasz felsorolja a kiállítási átalakítási szabályokat és azok leírását.
 
-| Szabály neve | Leírás |
+| Szabály neve | Description |
 | --- | --- |
 | UPN-probléma | Ez a szabály a userPrincipalName értékét kérdezi le a userPrincipalName szinkronizálási beállításaiban konfigurált attribútum alapján.|
 | Egyéni ImmutableId-jogcím ObjectGUID és msdsconsistencyguid lekérdezése | Ez a szabály egy ideiglenes értéket helyez el a folyamatban a ObjectGUID és a msdsconsistencyguid értékhez, ha létezik |
@@ -103,14 +103,14 @@ Azure AD Connect biztosítja, hogy az Azure AD-megbízhatóság mindig a javasol
 
 ## <a name="restore-issuance-transform-rules"></a>Kiállítási átalakítási szabályok visszaállítása
 
-Azure AD Connect a 1.1.873.0 vagy újabb verziója biztonsági másolatot készít az Azure AD megbízhatósági beállításairól, amikor frissítést végez az Azure AD megbízhatósági beállításaiban. Az Azure AD-megbízhatósági beállítások biztonsági mentése a következő helyen történik: **%ProgramData%\AADConnect\ADFS**. A Fájlnév formátuma a következő:&lt;AadTrust&gt;-&lt;&gt;. txt, például: AadTrust-20180710-150216. txt
+Azure AD Connect a 1.1.873.0 vagy újabb verziója biztonsági másolatot készít az Azure AD megbízhatósági beállításairól, amikor frissítést végez az Azure AD megbízhatósági beállításaiban. Az Azure AD-megbízhatósági beállítások biztonsági mentése a következő helyen történik: **%ProgramData%\AADConnect\ADFS**. A fájl neve a következő formátumú: AadTrust &lt; &gt; - &lt; &gt; . txt, például: AadTrust-20180710-150216.txt
 
 ![Képernyőkép az Azure AD-beli megbízható biztonsági mentésről](./media/how-to-connect-azure-ad-trust/backup.png)
 
 A kiadás átalakítási szabályait a javasolt lépések alapján állíthatja vissza
 
 1. A Kiszolgálókezelő AD FS felügyeleti felhasználói felületének megnyitása
-2. Nyissa meg az Azure AD-megbízhatósági tulajdonságokat **AD FS &gt; függő entitás &gt; megbízhatóságai Microsoft Office 365 Identity &gt; platform szerkesztési jogcímek kiállítási szabályzata**
+2. Nyissa meg az Azure AD-megbízhatósági tulajdonságokat **AD FS &gt; függő entitás megbízhatóságai &gt; Microsoft Office 365 Identity platform &gt; szerkesztési jogcímek kiállítási szabályzata**
 3. Kattintson a **szabály hozzáadása** elemre.
 4. A jogcím szabály sablonjában válassza a jogcímek küldése egyéni szabállyal elemet, és kattintson a **tovább** gombra.
 5. Másolja a jogcím-szabály nevét a biztonságimásolat-fájlból, és illessze be a mezőbe a **jogcím-szabály nevében** .

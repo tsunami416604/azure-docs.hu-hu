@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: 44f1a2cd3336eeae87878c333fb05d2e6b1f88e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 92e224448d26c24c073bd81b7f9e001fa8a09898
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605388"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044685"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Python Device SDK-val
 
@@ -87,15 +87,17 @@ Ez a cikk az egyéni regisztrációkat mutatja be.
 
 3. A kimeneti ablakba írja be a következőt az egyéni beléptetéshez: `i`. A kimeneti ablakban megjelenik egy helyileg létrehozott X.509-tanúsítvány a szimulált eszközhöz. 
     
-    Másolja az első tanúsítványt a vágólapra. Kezdje a következő első előfordulásával:
+    ```output
+    Copy the first certificate to clipboard. Begin with the first occurrence of:
     
         -----BEGIN CERTIFICATE----- 
         
-    Fejezze be a másolást a következő első előfordulása után:
+    End you copying after the first occurrence of:
     
         -----END CERTIFICATE-----
         
-    Győződjön meg róla, hogy azt a két sort is belefoglalta. 
+    Make sure to include both of those lines as well.
+    ``` 
 
     ![Dice eszközregisztrációs alkalmazás](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  
@@ -167,7 +169,7 @@ Ez a cikk az egyéni regisztrációkat mutatja be.
 > Ha módosította az *Eszköz kezdeti ikerállapota* alapértelmezett értékét az eszköz beléptetési bejegyzésében, az lekérheti és felhasználhatja a kívánt ikerállapotot a központból. További információ: [Eszközök ikerállapotának megismerése és használata az IoT hubon](../iot-hub/iot-hub-devguide-device-twins.md).
 >
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 

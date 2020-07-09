@@ -1,18 +1,18 @@
 ---
 title: Szoftverek vásárlása a AppSource-on | Azure piactér
 description: A szoftver megvásárlásának lépései a AppSource-on | Az Azure Marketplace-en.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e3faad025a794b0ae9905fa73b090b55799f3279
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103038"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
 
@@ -63,6 +63,6 @@ Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [kül
 
 Üzleti termékek esetén [forduljon az ügyfélszolgálathoz](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információért tekintse meg a [kereskedelmi piactér dokumentációját](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) .
+- További információért tekintse meg a [kereskedelmi piactér dokumentációját](partner-center-portal/commercial-marketplace-overview.md) .

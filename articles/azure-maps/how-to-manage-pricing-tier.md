@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 35e23d4d5babccb4507473826237997afec5f2cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335500"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>A Azure Maps-fiók díjszabási szintjeinek kezelése
@@ -25,13 +25,13 @@ További információ [a Azure Maps megfelelő díjszabási szintjéről](https:
 
 A választott díjszabási csomag megtekintéséhez navigáljon a beállítások menü **díjszabási** csomag elemére.
 
-[![Kiválasztott díjszabási](./media/how-to-manage-pricing-tier/view-pricing-tier.png) csomag megtekintése](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
+[![Kiválasztott díjszabási ](./media/how-to-manage-pricing-tier/view-pricing-tier.png) csomag megtekintése](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
 
 ## <a name="change-a-pricing-tier"></a>Árképzési szintek módosítása
 
 A Azure Maps-fiók létrehozása után frissítheti vagy visszaminősítheti Azure Maps-fiókja díjszabási szintjét. A frissítéshez vagy a visszalépéshez lépjen a beállítások menü **díjszabási** csomag elemére. Válassza ki a nem Kiemelt árképzési szintet. Kattintson a **Save (Mentés** ) gombra a kiválasztott díjszabási csomag mentéséhez.
 
-[![Árképzési szintek](./media/how-to-manage-pricing-tier/change-pricing-tier.png) módosítása](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
+[![Árképzési szintek ](./media/how-to-manage-pricing-tier/change-pricing-tier.png) módosítása](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
 
 > [!NOTE]
 > Ha a Azure Maps-fiók díjszabási szintjét frissíti vagy visszaminősíti, nem kell új előfizetési kulcsot vagy ügyfél-azonosítót (Azure AD-hitelesítéshez) előkészítenie.

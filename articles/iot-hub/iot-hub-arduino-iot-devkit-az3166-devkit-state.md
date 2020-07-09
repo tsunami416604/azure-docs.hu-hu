@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73483945"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -40,7 +40,7 @@ Ezt a példát követve figyelheti a MXChip IoT fejlesztői készlet WiFi-inform
 
 ## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
-1. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása... lehetőséget.**  -  **felhő – kiépítés**.
+1. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása...**  -  lehetőséget. **felhő – kiépítés**.
 
 2. A folyamat megjelenik az **üdvözlő** panel **terminál** lapján.
 
@@ -59,7 +59,7 @@ Ezt a példát követve figyelheti a MXChip IoT fejlesztői készlet WiFi-inform
 
 ## <a name="deploy-function-app"></a>függvényalkalmazás üzembe helyezése
 
-1. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása... lehetőséget.**  -  **Felhőbeli üzembe helyezés**.
+1. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása...**  -  lehetőséget. **Felhőbeli üzembe helyezés**.
 
 2. Várjon, amíg befejeződik a Function app Code feltöltési folyamata. megjelenik az üzenetküldési *funkció alkalmazás telepítése: kész* üzenet.
 
@@ -67,7 +67,7 @@ Ezt a példát követve figyelheti a MXChip IoT fejlesztői készlet WiFi-inform
 
 1. Kapcsolódjon a MXChip IoT fejlesztői készlet a számítógéphez.
 
-2. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása... lehetőséget.**  -  **konfiguráció – eszköz – kapcsolatok**
+2. Kattintson a **feladatok** legördülő menüre a Visual Studio Code-ban, és válassza a **feladat futtatása...**  -  lehetőséget. **konfiguráció – eszköz – kapcsolatok**
 
 3. A MXChip IoT fejlesztői készlet kattintson **a gombra,** és tartsa lenyomva a gombot, nyomja le az **Alaphelyzetbe állítás** gombot, majd az **a** gombra kattintva állítsa be a DekKit a konfigurációs módba.
 
@@ -106,7 +106,7 @@ A MXChip IoT fejlesztői készlet csatlakozik a számítógéphez:
 ![Példa tesztelési eljárásra](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Megtekintheti a Azure Portal: IoT hub-\> IoT eszközök –\> * \<az\> *  - \> eszköz két példányának nyers adatait.
+> A Azure Portal: IoT hub- \> IoT Devices- \> *\<your device\>*  - \> Device Twin-eszközökön láthatók a Twin eszközök nyers adatkészletei.
 
 ## <a name="next-steps"></a>További lépések
 

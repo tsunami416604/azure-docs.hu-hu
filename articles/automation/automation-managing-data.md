@@ -1,20 +1,44 @@
 ---
-title: Azure Automation-adatok kezelése
-description: Ez a cikk a Azure Automation adatkezelésének fogalmait tartalmazza, beleértve az adatmegőrzést és a biztonsági mentést.
+title: Adatbiztonság Azure Automation
+description: Ebből a cikkből megtudhatja, hogyan védi a Azure Automation az adatvédelmet, és gondoskodik az adatok védelméről.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835206"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343054"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
-Ez a cikk számos témakört tartalmaz az adatAzure Automation-környezetekben történő kezeléséhez.
+Ez a cikk számos olyan témakört tartalmaz, amelyekből megtudhatja, hogyan védi és biztosítja az adatvédelmet egy Azure Automation környezetben.
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>TLS 1,2 kényszerítés a Azure Automation
+
+A Azure Automation felé irányuló adatforgalom biztosításához határozottan javasoljuk, hogy konfigurálja a Transport Layer Security (TLS) 1,2 használatát. Az alábbi lista azokat a módszereket vagy ügyfeleket sorolja fel, amelyek HTTPS protokollon keresztül kommunikálnak az Automation szolgáltatással:
+
+* Webhook-hívások
+
+* Hibrid Runbook-feldolgozók, beleértve a Update Management és a Change Tracking és a leltár által felügyelt gépeket.
+
+* DSC-csomópontok
+
+A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. A 2020. szeptembertől kezdődően megkezdjük a TLS 1,2 és a titkosítási protokoll újabb verzióinak betartatását.
+
+Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 1,2-et használja, kivéve, ha ez nem feltétlenül szükséges, mivel ez a platform szintű biztonsági funkciókat is lehetővé teszi, amelyekkel automatikusan észlelhetők és kihasználhatják az elérhetővé váló újabb biztonságosabb protokollokat, például a TLS 1,3.
+
+További információ a Windows és Linux rendszerhez készült Log Analytics ügynökkel való TLS 1,2-támogatásról, amely a hibrid Runbook-feldolgozói szerepkörtől függ: [log Analytics ügynök áttekintése – TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+
+### <a name="platform-specific-guidance"></a>Platform-specifikus útmutató
+
+|Platform/nyelv | Támogatás | További információ |
+| --- | --- | --- |
+|Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához.  | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
+| Windows 8,0 – 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
+| Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
+| Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
@@ -25,7 +49,7 @@ A következő táblázat összefoglalja a különböző erőforrások adatmegőr
 | Adatok | Szabályzat |
 |:--- |:--- |
 | Fiókok |Egy fiók a felhasználó törlése után 30 nappal véglegesen el lesz távolítva. |
-| Eszközök |Egy eszköz a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy egy felhasználó töröl egy olyan fiókot, amely tartalmazza az adategységet. |
+| Objektumok |Egy eszköz a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy egy felhasználó töröl egy olyan fiókot, amely tartalmazza az adategységet. |
 | DSC-csomópontok |A DSC-csomópontok véglegesen el lettek távolítva egy Automation-fiókból a Windows PowerShellben Azure Portal vagy a [Regisztráció törlése-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) parancsmag használatával. Egy csomópontot is véglegesen eltávolít 30 nappal azután, hogy a felhasználó törli a csomópontot tároló fiókot. |
 | Feladatok |A rendszer töröl egy feladatot, és véglegesen eltávolítja azt a módosítás után 30 nappal, például a feladatok befejeződése után, leáll vagy felfüggesztve. |
 | Modulok |Egy modul a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy a felhasználó törli a modult tartalmazó fiókot. |
@@ -47,22 +71,22 @@ A runbookok a Windows PowerShell Azure Portal vagy a [Get-AzureAutomationRunbook
 
 Azure Automationból nem exportálhatja az integrációs modulokat. Ezeket az Automation-fiókon kívül is elérhetővé kell tenni.
 
-### <a name="assets"></a>Eszközök
+### <a name="assets"></a>Objektumok
 
 Azure Automation-eszközök nem exportálhatók: tanúsítványok, kapcsolatok, hitelesítő adatok, ütemtervek és változók. Ehelyett a Azure Portal és az Azure-parancsmagokkal is megjegyezheti az eszközök részleteit. Ezután ezekkel az adatokkal létrehozhat olyan eszközöket, amelyeket egy másik Automation-fiókba importált runbookok használ.
 
 A titkosított változók vagy a hitelesítő adatok jelszava mezők a parancsmagok használatával nem olvashatók be. Ha nem ismeri ezeket az értékeket, lekérheti őket egy runbook. A változók értékeinek lekéréséhez lásd: [változó eszközök Azure Automationban](shared-resources/variables.md). A hitelesítő adatok értékének beolvasásával kapcsolatos további tudnivalókért tekintse meg a [hitelesítő adatok a Azure Automationban](shared-resources/credentials.md)című témakört.
 
- ### <a name="dsc-configurations"></a>DSC-konfigurációk
+### <a name="dsc-configurations"></a>DSC-konfigurációk
 
 A DSC-konfigurációkat a Windows PowerShell Azure Portal vagy [export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
 ) parancsmagjának használatával is exportálhatja a parancsfájlok fájljaiba. Ezeket a konfigurációkat egy másik Automation-fiókban is importálhatja és használhatja.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geo-replikálás Azure Automation
 
-A Geo-replikáció a Azure Automation fiókokban szabványos. A fiók beállításakor ki kell választania egy elsődleges régiót. A belső Automation geo-Replication szolgáltatás automatikusan hozzárendel egy másodlagos régiót a fiókhoz. A szolgáltatás ezután folyamatosan biztonsági mentést készít az elsődleges régióból a másodlagos régióba. Az elsődleges és másodlagos régiók teljes listája megtalálható az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)között. 
+A Geo-replikáció a Azure Automation fiókokban szabványos. A fiók beállításakor ki kell választania egy elsődleges régiót. A belső Automation geo-Replication szolgáltatás automatikusan hozzárendel egy másodlagos régiót a fiókhoz. A szolgáltatás ezután folyamatosan biztonsági mentést készít az elsődleges régióból a másodlagos régióba. Az elsődleges és másodlagos régiók teljes listája megtalálható az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](../best-practices-availability-paired-regions.md)között.
 
-Az Automation geo-Replication szolgáltatás által létrehozott biztonsági másolat az Automation-eszközök, konfigurációk és hasonlók teljes másolata. Ez a biztonsági másolat akkor használható, ha az elsődleges régió leáll, és elveszíti az adatvesztést. Abban az esetben, ha az elsődleges régió adatainak elvesztése nem valószínű, a Microsoft megkísérli a helyreállítást. Ha a vállalat nem tudja helyreállítani az elsődleges adatokat, automatikus feladatátvételt használ, és az Azure-előfizetésén keresztül tájékoztatja Önt a helyzetről. 
+Az Automation geo-Replication szolgáltatás által létrehozott biztonsági másolat az Automation-eszközök, konfigurációk és hasonlók teljes másolata. Ez a biztonsági másolat akkor használható, ha az elsődleges régió leáll, és elveszíti az adatvesztést. Abban az esetben, ha az elsődleges régió adatainak elvesztése nem valószínű, a Microsoft megkísérli a helyreállítást. Ha a vállalat nem tudja helyreállítani az elsődleges adatokat, automatikus feladatátvételt használ, és az Azure-előfizetésén keresztül tájékoztatja Önt a helyzetről.
 
 Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a külső ügyfelek számára, ha van regionális hiba. Ha az Automation-konfigurációt és a runbookok a regionális hibák során szeretné fenntartani:
 
@@ -74,7 +98,8 @@ Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a kü
 
 4. Importálja a runbookok az Automation-fiókjába a másodlagos régióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a Azure Automation található biztonságos eszközökről, tekintse meg a biztonságos adategységek [titkosítása Azure Automation-ben](automation-secure-asset-encryption.md)című témakört.
-* További információ a Geo-replikációról: [Active geo-replikáció létrehozása és használata](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).
+
+* További információ a Geo-replikációról: [Active geo-replikáció létrehozása és használata](../sql-database/sql-database-active-geo-replication.md).

@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72753319"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Több régióban való üzemeltetés költségeinek optimalizálása az Azure Cosmos DB-ben
 
-Bármikor hozzáadhat és eltávolíthat régiókat az Azure Cosmos-fiókjához. A különböző Azure Cosmos-adatbázisokhoz és-tárolóhoz konfigurált átviteli sebesség a fiókhoz társított minden régióban le van foglalva. Ha az óránként kiépített átviteli sebesség az Azure Cosmos-fiók összes adatbázisán és tárolóján konfigurált RU/s összege, `T` valamint az adatbázis-fiókhoz társított Azure-régiók száma `N`, akkor a Cosmos-fiók teljes kiosztott átviteli sebessége az adott órában egyenlő:
+Bármikor hozzáadhat és eltávolíthat régiókat az Azure Cosmos-fiókjához. A különböző Azure Cosmos-adatbázisokhoz és-tárolóhoz konfigurált átviteli sebesség a fiókhoz társított minden régióban le van foglalva. Ha az óránként kiépített átviteli sebesség az Azure Cosmos-fiók összes adatbázisán és tárolóján konfigurált RU/s összege, `T` valamint az adatbázis-fiókhoz társított Azure-régiók száma `N` , akkor a Cosmos-fiók teljes kiosztott átviteli sebessége az adott órában egyenlő:
 
 1. `T x N RU/s`Ha az Azure Cosmos-fiókja egyetlen írási régióval van konfigurálva. 
 
@@ -25,13 +25,13 @@ A kiosztott átviteli sebesség költsége egy írási régió esetén: 0,008 US
 
 ## <a name="costs-for-multiple-write-regions"></a>Több írási régió díja
 
-A több főkiszolgálós rendszerekben az írási műveletekhez rendelkezésre álló, a `N` net számára `N` elérhető, az írási régiók száma növekszik. Az egyrégiós írásokkal ellentétben az egyes régiók már írhatók, és támogatniuk kell az ütközés feloldását. Az írók munkaterhelésének mennyisége nőtt. A költségmegtakarítás szempontjából, ha `M` ru/s értékre van szükség a globális írásokhoz, az M `RUs` -t egy tárolóban vagy adatbázis szintjén kell kiépíteni. Ezt követően annyi régiót adhat hozzá, amennyit csak szeretne, és ezeket az írásokhoz is `M` felhasználhatja a globális írási műveletek elvégzéséhez. 
+A több főkiszolgálós rendszerekben az írási műveletekhez rendelkezésre álló, a net számára elérhető, az `N` `N` írási régiók száma növekszik. Az egyrégiós írásokkal ellentétben az egyes régiók már írhatók, és támogatniuk kell az ütközés feloldását. Az írók munkaterhelésének mennyisége nőtt. A költségmegtakarítás szempontjából, ha `M` ru/s értékre van szükség a globális írásokhoz, az M-t `RUs` egy tárolóban vagy adatbázis szintjén kell kiépíteni. Ezt követően annyi régiót adhat hozzá, amennyit csak szeretne, és ezeket az írásokhoz is felhasználhatja a globális írási műveletek elvégzéséhez `M` . 
 
 ### <a name="example"></a>Példa
 
 Vegye figyelembe, hogy az USA nyugati régiójában a (z) 10K RU/s-vel lett kiépítve, és ebben a hónapban 1 TB-nyi adat van tárolva. Tegyük fel, hogy három régiót vesz fel – az USA keleti régiója, Észak-Európa és Kelet-Ázsia, amelyek mindegyike ugyanazzal a tárolóval és adatátvitelsel rendelkezik, és a globálisan elosztott alkalmazásokból mind a négy régióban szeretné írni a tárolókat. Havonta a havi számla (feltéve, hogy 31 nap) a következő:
 
-|**Elem**|**Használat (havi)**|**Rate (Egységár)**|**Havi költség**|
+|**Item**|**Használat (havi)**|**Rate (Egységár)**|**Havi költség**|
 |----|----|----|----|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (több írási régió) |10K RU/s * 24 * 31 |$0,016/100 RU/s óránként |$1 190,40 |
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia (több írási régió) |(3 + 1) * 10K RU/s * 24 * 31 |$0,016/100 RU/s óránként |$4 761,60 |

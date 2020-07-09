@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 79e9551650866e5f5fc28b123c1259e2a5fb6f20
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 7d34b54349a681061f80798a19ce65d2266f589d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559471"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
@@ -84,11 +84,11 @@ A folyamatok megoldja ezt a problémát. Azure Machine Learning automatikusan ö
 
 Emellett előfordulhat, hogy a lépés kimenetét újra fel kell használni. Ha az újbóli használat lehetőséget választja, és nincsenek az újraszámítást kiváltó felsőbb rétegbeli függőségek, a folyamat szolgáltatás a lépés eredményeinek gyorsítótárazott verzióját fogja használni. Az ilyen újrafelhasználás jelentősen csökkentheti a fejlesztési időt. Ha összetett adat-előkészítési feladattal rendelkezik, valószínűleg gyakrabban újra kell futtatnia, mint amennyire feltétlenül szükség van. A folyamatok lecsillapítják Önt, hogy ha szükséges, a lépés futtatása sikertelen lesz.
 
-A rendszer az összes függőségi elemzést, összehangolást és aktiválást Azure Machine Learning kezeli, amikor egy [folyamat](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) -objektumot hoz létre, átadja azt `Experiment`egy, és `submit()`meghívja. 
+A rendszer az összes függőségi elemzést, összehangolást és aktiválást Azure Machine Learning kezeli, amikor egy [folyamat](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) -objektumot hoz létre, átadja azt egy `Experiment` , és meghívja `submit()` . 
 
 ### <a name="coordinating-the-steps-involved"></a>Az érintett lépések koordinálása
 
-Egy `Pipeline` objektum létrehozásakor és futtatásakor a következő magas szintű lépések történnek:
+Egy objektum létrehozásakor és futtatásakor `Pipeline` a következő magas szintű lépések történnek:
 
 + Az egyes lépésekhez a szolgáltatás a következő követelményeket számítja ki:
     + Hardveres számítási erőforrások
@@ -98,7 +98,7 @@ Egy `Pipeline` objektum létrehozásakor és futtatásakor a következő magas s
 + A szolgáltatás meghatározza a lépések közötti függőségeket, ami dinamikus végrehajtási gráfot eredményez.
 + A végrehajtási gráf egyes csomópontjai a következőket futtatják:
     + A szolgáltatás konfigurálja a szükséges hardver-és szoftver-környezetet (például meglévő erőforrások újrafelhasználása)
-    + A lépés futtatása, naplózási és figyelési információk biztosítása a `Experiment` tartalmazó objektumhoz
+    + A lépés futtatása, naplózási és figyelési információk biztosítása a tartalmazó `Experiment` objektumhoz
     + Ha a lépés befejeződik, a kimenetei a következő lépéshez és/vagy a Storage-ba írt bemenetként készülnek.
     + A már nem szükséges erőforrások véglegesítése és leválasztása
 
@@ -106,7 +106,7 @@ Egy `Pipeline` objektum létrehozásakor és futtatásakor a következő magas s
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Folyamatok fejlesztése a Python SDK-val
 
-A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-ban a folyamat egy Python-objektum, amely a `azureml.pipeline.core` modulban van definiálva. A [folyamat](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objektum egy vagy több [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) -objektum rendezett sorrendjét tartalmazza. Az `PipelineStep` osztály absztrakt, és a tényleges lépések alosztályok lesznek, például [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)vagy [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). A [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) osztály a folyamatok között megosztható lépések újrafelhasználható szakaszát tartalmazza. Egy `Pipeline` fut az a részeként `Experiment`.
+A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-ban a folyamat egy Python-objektum, amely a `azureml.pipeline.core` modulban van definiálva. A [folyamat](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objektum egy vagy több [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) -objektum rendezett sorrendjét tartalmazza. Az `PipelineStep` osztály absztrakt, és a tényleges lépések alosztályok lesznek, például [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)vagy [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). A [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) osztály a folyamatok között megosztható lépések újrafelhasználható szakaszát tartalmazza. Egy `Pipeline` fut az a részeként `Experiment` .
 
 Egy Azure Machine Learning munkaterülethez egy Azure ML-folyamat van társítva, és egy folyamat lépés társítva van egy, az adott munkaterületen belül elérhető számítási célhoz. További információ: Azure Machine Learning- [munkaterületek létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) , illetve [Mik a Azure Machine learning számítási céljai?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)
 
@@ -124,14 +124,14 @@ A folyamatok vizuális megtervezése során láthatók a lépések bemenetei és
 
 A folyamat lépései más lépésekkel is függőségekkel rendelkezhetnek. Az Azure ML-adatcsatorna szolgáltatás ezen függőségek elemzésével és összehangolásával dolgozik. Az eredményül kapott "végrehajtási gráf" csomópontjai a feldolgozási lépések. Az egyes lépések magukban foglalhatják a hardverek és szoftverek adott kombinációjának létrehozását vagy újbóli felhasználását, a gyorsítótárazott eredmények újrafelhasználását stb. A szolgáltatás előkészítési és optimalizálási folyamata jelentősen felgyorsíthatja az ML-fázist, és csökkentheti a költségeket. 
 
-Mivel a lépések egymástól függetlenül futnak, a bemeneti és kimeneti adatokat tároló objektumokat külsőleg kell definiálni. Ez az [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)és a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)szerepe, objektumok. Ezek az adatobjektumok egy [adattár](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) -objektumhoz vannak társítva, amely magában foglalja a tárolási konfigurációját. Az `PipelineStep` alaposztályt a rendszer mindig egy `name` sztringtel, egy listával `inputs`és egy listával `outputs`hozza létre. Általában az is szerepel a listán, `arguments` és gyakran is megjelenik a listája. `resource_inputs` Az alosztályok általában további argumentumokkal is rendelkeznek (például a futtatásához a parancsfájl fájlnevét és elérési útját kell `PythonScriptStep` megadni). 
+Mivel a lépések egymástól függetlenül futnak, a bemeneti és kimeneti adatokat tároló objektumokat külsőleg kell definiálni. Ez az [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)és a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)szerepe, objektumok. Ezek az adatobjektumok egy [adattár](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) -objektumhoz vannak társítva, amely magában foglalja a tárolási konfigurációját. Az `PipelineStep` alaposztályt a rendszer mindig egy `name` sztringtel, egy listával `inputs` és egy listával hozza létre `outputs` . Általában az is szerepel a listán, `arguments` és gyakran is megjelenik a listája `resource_inputs` . Az alosztályok általában további argumentumokkal is rendelkeznek (például `PythonScriptStep` a futtatásához a parancsfájl fájlnevét és elérési útját kell megadni). 
 
 A végrehajtási gráf aciklikus, de a folyamatok ismétlődő ütemterv szerint futtathatók, és futtathatnak olyan Python-parancsfájlokat, amelyek állapotinformációkat írhatnak a fájlrendszerbe, így összetett profilok hozhatók létre. Ha úgy tervezi a folyamatot, hogy bizonyos lépések párhuzamosan vagy aszinkron módon fussanak, Azure Machine Learning transzparens módon kezeli a függőségi elemzést és a ventilátorok és ventilátorok koordinálását. Általában nem kell foglalkoznia a végrehajtási gráf részleteivel, de a [folyamat. Graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) attribútumán keresztül érhető el. 
 
 
 ### <a name="a-simple-python-pipeline"></a>Egy egyszerű Python-folyamat
 
-Ez a kódrészlet az alapszintű `Pipeline`létrehozásához és futtatásához szükséges objektumokat és hívásokat mutatja be:
+Ez a kódrészlet az alapszintű létrehozásához és futtatásához szükséges objektumokat és hívásokat mutatja be `Pipeline` :
 
 ```python
 ws = Workspace.from_config() 
@@ -161,7 +161,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-A kódrészlet a Common Azure Machine Learning Objects, `Workspace`a, `Datastore`a, a [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)és a `Experiment`() karakterrel kezdődik. Ezután a kód létrehozza a tárolni `input_data` kívánt objektumokat. `output_data` A tömb `steps` egyetlen elemet `PythonScriptStep` tartalmaz, amely az adatobjektumokat fogja használni, és futtatja a `compute_target`parancsot. Ezután a kód maga hozza létre az `Pipeline` objektumot, és átadja a munkaterületet és a Steps tömböt. Az Azure ML `experiment.submit(pipeline)` -folyamat futtatásának megkezdésére irányuló hívás. A folyamat befejeződéséig a `wait_for_completion()` blokkoló hívás. 
+A kódrészlet a Common Azure Machine Learning Objects, a, a `Workspace` `Datastore` , a [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)és a () karakterrel kezdődik `Experiment` . Ezután a kód létrehozza a tárolni kívánt objektumokat `input_data` `output_data` . A tömb `steps` egyetlen elemet `PythonScriptStep` tartalmaz, amely az adatobjektumokat fogja használni, és futtatja a parancsot `compute_target` . Ezután a kód maga hozza létre az `Pipeline` objektumot, és átadja a munkaterületet és a Steps tömböt. Az `experiment.submit(pipeline)` Azure ml-folyamat futtatásának megkezdésére irányuló hívás. A `wait_for_completion()` folyamat befejeződéséig a blokkoló hívás. 
 
 Ha többet szeretne megtudni a folyamat adataihoz való csatlakoztatásáról, tekintse meg az [adathozzáférés a Azure Machine Learningban](concept-data.md) és az adatáthelyezés a következőbe: [ml-folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md)című cikk adatait. 
 
@@ -183,7 +183,7 @@ Könnyűvé válik a gyorsítótárazott eredmények újrafelhasználása, a sz�
 
 * Nagy mennyiségű kapcsolódás a folyamat lépései között. Ha egy függő lépést gyakran kell módosítani az előző lépés kimenetének módosítására, akkor valószínű, hogy a különálló lépések jelenleg több, mint egy előnyben részesülnek. Egy másik nyom, hogy a lépések túl vannak párosítva, olyan lépés argumentumai, amelyek nem adat, hanem a feldolgozás vezérlésére szolgáló jelzők. 
 
-* A számítási erőforrások idő előtti optimalizálása. Előfordulhat például, hogy az adatok előkészítésének több szakasza is van, és az egyik gyakran "ó, itt van egy olyan hely, ahol `MpiStep` párhuzamos programozást használhatok, de itt van egy olyan hely, ahol `PythonScriptStep` egy kevésbé hatékony számítási célt használhatok," és így tovább. És lehet, hogy hosszú távon olyan részletes lépéseket hoz létre, mint például az, ami érdemes lehet, különösen, ha a gyorsítótárazott eredményeket nem mindig az újraszámítással szeretné használni. A folyamatok azonban nem helyettesíthetik a Python natív `multiprocessing` modulját. 
+* A számítási erőforrások idő előtti optimalizálása. Előfordulhat például, hogy az adatok előkészítésének több szakasza is van, és az egyik gyakran "ó, itt van egy olyan hely, ahol `MpiStep` párhuzamos programozást használhatok, de itt van egy olyan hely, ahol egy `PythonScriptStep` kevésbé hatékony számítási célt használhatok," és így tovább. És lehet, hogy hosszú távon olyan részletes lépéseket hoz létre, mint például az, ami érdemes lehet, különösen, ha a gyorsítótárazott eredményeket nem mindig az újraszámítással szeretné használni. A folyamatok azonban nem helyettesíthetik a Python natív `multiprocessing` modulját. 
 
 Amíg egy projekt nagy vagy közel kerül a központi telepítéshez, a folyamatoknak durvábbnak kell lenniük, nem pedig a részletesen. Ha úgy gondolja, hogy a ML-projekt a _szakaszokat_ és a folyamatokat is felhasználva teljes munkafolyamatot biztosít, amely egy adott fázison halad át, akkor a megfelelő elérési úton van. 
 
@@ -191,9 +191,9 @@ Amíg egy projekt nagy vagy közel kerül a központi telepítéshez, a folyamat
 
 A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a következők:
 
-|Kulcs előnye|Leírás|
+|Kulcs előnye|Description|
 |:-------:|-----------|
-|**Felügyelet nélküli&nbsp;futtatások**|A lépéseket párhuzamosan vagy egymás után, megbízható és felügyelet nélküli módon történő futtatásra ütemezze. Az adatok előkészítése és modellezése az elmúlt napokban vagy hetekben is elvégezhető, és a folyamatok lehetővé teszik, hogy a folyamat futása közben más feladatokra összpontosítson. |
+|**Felügyelet nélküli &nbsp; futtatások**|A lépéseket párhuzamosan vagy egymás után, megbízható és felügyelet nélküli módon történő futtatásra ütemezze. Az adatok előkészítése és modellezése az elmúlt napokban vagy hetekben is elvégezhető, és a folyamatok lehetővé teszik, hogy a folyamat futása közben más feladatokra összpontosítson. |
 |**Különböző számítás**|Több folyamat is használható, amelyek megbízhatóan vannak összehangolva a heterogén és skálázható számítási erőforrások és a tárolási hely között. A rendelkezésre álló számítási erőforrások hatékony felhasználása a különböző számítási célokon, például a HDInsight, a GPU-adatelemzési virtuális gépeken és a Databricks futó egyes folyamatok lépéseinek futtatásával.|
 |**Újrafelhasználhatóság**|Hozzon létre folyamat-sablonokat bizonyos forgatókönyvekhez, például az újraképzéshez és a Batch-pontozáshoz. A külső rendszerekből származó közzétett folyamatokat egyszerű REST-hívásokkal aktiválhatja.|
 |**Nyomon követés és verziószámozás**|Az adatok és az eredmények elérési útjának manuális nyomon követése helyett használja a folyamatok SDK-t az adatforrások, bemenetek és kimenetek explicit elnevezéséhez és verziójának megkereséséhez. A szkriptek és az információk külön is kezelhetők a hatékonyság növelése érdekében.|
@@ -202,9 +202,9 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 
 ### <a name="choosing-the-proper-pipelinestep-subclass"></a>A megfelelő PipelineStep alosztály kiválasztása
 
-`PythonScriptStep` A az absztrakt `PipelineStep`legrugalmasabb alosztálya. Más alosztályok, például `EstimatorStep` alosztályok, és `DataTransferStep` kevesebb kóddal rendelkező konkrét feladatokat is elvégezhetnek. Például létrehozhat egy `EstimatorStep` csak egy nevet a lépéshez, egy `Estimator`és egy számítási célra. Vagy felülbírálhatja a bemeneteket és kimeneteket, a folyamat paramétereit és az argumentumokat. További információ: a [modellek Betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md). 
+A az `PythonScriptStep` absztrakt legrugalmasabb alosztálya `PipelineStep` . Más alosztályok, például `EstimatorStep` alosztályok, és `DataTransferStep` kevesebb kóddal rendelkező konkrét feladatokat is elvégezhetnek. Például `EstimatorStep` létrehozhat egy csak egy nevet a lépéshez, egy `Estimator` és egy számítási célra. Vagy felülbírálhatja a bemeneteket és kimeneteket, a folyamat paramétereit és az argumentumokat. További információ: a [modellek Betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md). 
 
-A `DataTransferStep` lehetővé teszi az adatforrások és a mosdók közötti adatáthelyezést. Az átvitelhez szükséges kód egyszerű, de ismétlődő. Ehelyett egyszerűen létrehozhat `DataTransferStep` egy nevet, egy adatforrásra és egy adatfogadóra mutató hivatkozásokat, valamint egy számítási célt. A notebook [Azure Machine learning a DataTransferStep folyamata](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) ezt a rugalmasságot mutatja be.
+A `DataTransferStep` lehetővé teszi az adatforrások és a mosdók közötti adatáthelyezést. Az átvitelhez szükséges kód egyszerű, de ismétlődő. Ehelyett egyszerűen létrehozhat egy `DataTransferStep` nevet, egy adatforrásra és egy adatfogadóra mutató hivatkozásokat, valamint egy számítási célt. A notebook [Azure Machine learning a DataTransferStep folyamata](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) ezt a rugalmasságot mutatja be.
 
 ## <a name="modules"></a>Modulok
 

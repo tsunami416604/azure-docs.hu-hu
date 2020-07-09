@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653621"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure fejlett fenyegetésészlelés
@@ -344,9 +343,9 @@ A Cloud App Security eszközeivel könnyebb az informatikai árnyék-infrastrukt
 |---|---|
 | Felderítés | Felfedheti az informatikai árnyék-infrastruktúrát a Cloud App Security használatával. A felhőalapú környezet alkalmazásainak, tevékenységeinek, felhasználóinak, adatainak és fájljainak felderítésével nagyobb láthatóságot érhet el. Felderítheti a felhőhöz csatlakoztatott harmadik féltől származó alkalmazásokat.|
 |Vizsgálat | Megvizsgálhatja a felhőalkalmazásait felhőalapú nyomkereső eszközökkel, és részletesen megismerheti a hálózatban lévő kockázatos alkalmazásokat, meghatározott felhasználókat és fájlokat. Mintákat kereshet a felhőből gyűjtött adatokban. Jelentéseket hozhat létre a felhő figyelésére. |
-| Szabályozás | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 | Védelem | A Cloud App Security használatával szankcionálhatja vagy tilthatja le az alkalmazásokat, kényszerítheti az adatvesztés megelőzését, szabályozhatja az engedélyeket és a megosztást, valamint egyéni jelentéseket és riasztásokat hozhat elő. |
-| Szabályozás | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 | | |
 
 

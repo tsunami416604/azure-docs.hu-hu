@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747765"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212904"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazási tűzfal az Azure Application Gateway
 
 Az Azure-Application Gateway Azure webalkalmazási tűzfala (WAF) lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadásokkal és biztonsági rések ellen. A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az SQL-injektálás és a helyek közötti parancsfájlkezelés a leggyakoribb támadások közé tartozik.
 
-A WAF on Application Gateway az Open Web Application Security Project (OWASP) [alapszintű szabálykészlet (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 vagy 2.2.9 alapul. A WAF automatikusan frissíti az új biztonsági rések elleni védelmet, és nincs szükség további konfigurálásra. 
+A WAF on Application Gateway az Open Web Application Security Project (OWASP) [alapszintű szabálykészlet (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3,1, 3,0 vagy 2.2.9 alapul. A WAF automatikusan frissíti az új biztonsági rések elleni védelmet, és nincs szükség további konfigurálásra. 
 
 Az alább felsorolt WAF-funkciók egy WAF szabályzaton belül találhatók. Több házirend is létrehozható, és társítható egy Application Gatewayhoz, az egyes figyelőkhöz vagy egy Application Gateway elérésiút-alapú útválasztási szabályaihoz. Így szükség esetén külön házirendeket hozhat a Application Gateway mögött lévő helyekhez. A WAF-szabályzatokkal kapcsolatos további információkért lásd: [WAF szabályzat létrehozása](create-waf-policy-ag.md).
 

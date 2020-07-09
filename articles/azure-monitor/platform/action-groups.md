@@ -3,15 +3,14 @@ title: Műveleti csoportok létrehozása és kezelése a Azure Portal
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465252"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -72,7 +71,7 @@ A műveleti csoport létrehozása után megtekintheti a **műveleti csoportokat*
 > [!NOTE]
 > Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
 
-### <a name="automation-runbook"></a>Automation-Runbook
+### <a name="automation-runbook"></a>Automation-runbook
 Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-resource-manager/management/azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
 
 A műveleti csoportban korlátozott számú Runbook művelet lehet. 
@@ -217,7 +216,12 @@ A műveleti csoportban korlátozott számú hangművelet lehet.
 A támogatott országok/régiók díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
 
 ### <a name="webhook"></a>Webhook
-A webhookok a következő szabályok alapján lesznek újrapróbálkozva. A webhook hívása legfeljebb 2 alkalommal próbálkozik a következő HTTP-állapotkódok visszaadásakor: 408, 429, 503, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozás 100 másodperc után történik. Két hiba után a műveleti csoport 30 percig nem fogja hívni a végpontot. 
+A webhookok feldolgozása a következő szabályok alapján történik
+- A webhook hívása legfeljebb 3 alkalommal próbálkozik.
+- A rendszer újrapróbálkozik a hívással, ha nem érkezik válasz az időtúllépési időszakon belül, vagy a következő HTTP-állapotkódok egyike érkezik: 408, 429, 503 vagy 504.
+- Az első hívás 10 másodpercet vár a válaszra.
+- A második és a harmadik próbálkozás 30 másodpercet vár a válaszra.
+- Miután a 3 kísérlet a webhook meghívására nem sikerült, a műveleti csoport 15 percig nem fogja hívni a végpontot.
 
 Forrás IP-címtartományok
  - 13.72.19.232
@@ -242,7 +246,7 @@ Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művel
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az [SMS-riasztás viselkedéséről](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](../../azure-monitor/platform/itsmc-overview.md).

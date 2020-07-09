@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906220"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,7 +17,7 @@ Parancsok Service Fabric fürtök és entitások kezeléséhez. Ez a verzió Ser
 A parancsok a főnévi művelet mintáját követik. További információért tekintse meg az alcsoportokat.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Leírás|
+|Alcsoport|Description|
 | --- | --- |
 | [alkalmazás](service-fabric-sfctl-application.md) | Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Indítsa el, állítsa le és jelentse a Chaos test Service-t. |

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857209"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
@@ -66,7 +66,7 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
     Ha olyan app Management-feladatot szeretne végrehajtani, amely ebben az ablakban nem hajtható végre, kattintson a **Megnyitás itt felügyeleti portál** lehetőségre egy böngészőablaknak a Azure Portal való megnyitásához.
 
 ## <a name="access-app-files-in-server-explorer"></a><a name="remoteview"></a>Alkalmazások fájljainak elérése a Server Explorerben
-Általában a `customErrors` web. config fájlban a jelölővel rendelkező webes projektet telepít `On` `RemoteOnly` , amely azt jelenti, hogy nem kap hasznos hibaüzenetet, ha valami hiba lép fel. Sok hiba esetén az alábbihoz hasonló oldal jelenik meg:
+Általában egy webes projektet helyez üzembe a `customErrors` jelölővel a Web.config fájlban a vagy a értékre `On` `RemoteOnly` , ami azt jelenti, hogy nem kap hasznos hibaüzenetet, ha valami hiba lép fel. Sok hiba esetén az alábbihoz hasonló oldal jelenik meg:
 
 **Kiszolgálóhiba a következő alkalmazásban: "/".**
 
@@ -80,28 +80,28 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
 
 ![Nem hasznos hiba lap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-A hiba okának megállapításához gyakran a legegyszerűbb módszer a részletes hibaüzenetek engedélyezése, amely az előző képernyőképek első lépéseit ismerteti. Ehhez szükség van a telepített web. config fájl módosítására. Szerkesztheti a *web. config* fájlt a projektben, és újból üzembe helyezheti a projektet, vagy létrehozhat egy [web. config átalakítót](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) , és üzembe helyezhet egy hibakeresési buildet, de gyorsabb módja van: a **megoldáskezelő**a távoli alkalmazásban található fájlokat közvetlenül megtekintheti és szerkesztheti a *távoli nézet* funkció használatával.
+A hiba okának megállapításához gyakran a legegyszerűbb módszer a részletes hibaüzenetek engedélyezése, amely az előző képernyőképek első lépéseit ismerteti. Ehhez szükség van az üzembe helyezett Web.config fájl módosítására. Szerkesztheti a *Web.config* fájlt a projektben, és újból üzembe helyezheti a projektet, vagy létrehozhat egy [Web.config átalakítót](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) és üzembe helyezhet egy hibakeresési buildet, de gyorsabb módja van: a **Megoldáskezelőben**közvetlenül megtekintheti és szerkesztheti a távoli alkalmazás fájljait a *távoli nézet* funkció használatával.
 
 1. A **Server Explorerben**bontsa ki az **Azure**elemet, bontsa ki a **app Service**elemet, bontsa ki azt az erőforráscsoportot, amelyben az alkalmazás található, majd bontsa ki a csomópontot az alkalmazáshoz.
 
     Olyan csomópontok jelennek meg, amelyek hozzáférést biztosítanak az alkalmazás tartalmi fájljaihoz és naplófájljaihoz.
-2. Bontsa ki a **fájlok** csomópontot, majd kattintson duplán a *web. config* fájlra.
+2. Bontsa ki a **fájlok** csomópontot, majd kattintson duplán a *Web.config* fájlra.
 
-    ![A web. config megnyitása](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Web.config megnyitása](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
-    A Visual Studio megnyitja a web. config fájlt a távoli alkalmazásból, és a címsorban a fájlnév mellett [távoli] is megjeleníti a fájl nevét.
+    A Visual Studio megnyitja a Web.config fájlt a távoli alkalmazásból, és a címsorban a fájlnév mellett a [távoli] ikont jeleníti meg.
 3. Adja hozzá a következő sort a `system.web` elemhez:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Web. config szerkesztése](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Web.config szerkesztése](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Frissítse a böngészőt, amely a nem hasznos hibaüzenetet jeleníti meg, és most egy részletes hibaüzenetet kap, például a következő példát:
 
     ![Részletes hibaüzenet](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
     (A megjelenő hiba a pirosról *Views\Home\Index.cshtml*-ra mutatott sor hozzáadásával jött létre.)
 
-A web. config fájl szerkesztése csak egy példa arra az esetre, amikor a App Service alkalmazásban található fájlok olvasásának és szerkesztésének lehetősége megkönnyíti a hibaelhárítást.
+A Web.config fájl szerkesztése csak egy példa arra, hogy a App Service alkalmazásban található fájlok olvasása és szerkesztése megkönnyítse a hibaelhárítást.
 
 ## <a name="remote-debugging-apps"></a><a name="remotedebug"></a>Távoli hibakeresési alkalmazások
 Ha a részletes hibaüzenet nem tartalmaz elegendő információt, és nem tudja helyileg létrehozni a hibát, a hibaelhárítás egy másik módja a hibakeresési mód távoli futtatása. Megadhatja a töréspontokat, megváltoztathatja a memóriát közvetlenül, beléphet a kód fölé, és akár módosíthatja is a kód elérési útját.
@@ -233,7 +233,7 @@ Ha a függvény [naplókat írt](https://github.com/Azure/azure-webjobs-sdk/wiki
 * Az éles környezetben való futtatás hibakeresési módban nem ajánlott. Ha az éles alkalmazás nem méretezhető több kiszolgálópéldány számára, a hibakeresés megakadályozza, hogy a webkiszolgáló válaszoljon más kérelmekre. Ha több webkiszolgáló-példánya is van, a hibakeresőhöz való csatoláskor véletlenszerű példányt kap, és nem biztosíthatja, hogy a következő böngésző-kérelmek ugyanarra a példányra lépjenek. Azt is megteheti, hogy a hibakeresési buildet általában nem helyezi üzembe éles környezetben, és a fordítói optimalizálások nem tudták megmutatni, hogy mi történik sorban a forráskódban. Az éles környezetben felmerülő problémák elhárításához a legjobb erőforrás az alkalmazás-nyomkövetés és a webkiszolgáló-naplók.
 * A távoli hibakeresés során Kerülje a töréspontok hosszú leállását. Az Azure egy olyan folyamatot kezel, amely egy nem válaszoló folyamatnál hosszabb ideig leállt, és leállítja azt.
 * A hibakeresés során a kiszolgáló adatokat küld a Visual Studiónak, ami hatással lehet a sávszélességre. A sávszélesség díjszabásával kapcsolatos információkért lásd: az [Azure díjszabása](https://azure.microsoft.com/pricing/calculator/).
-* Győződjön meg arról, hogy a `debug` `compilation` *web. config* fájlban lévő elem attribútuma igaz értékre van állítva. A hibakeresési Build konfigurációjának közzétételekor alapértelmezés szerint igaz értékre van állítva.
+* Győződjön meg arról, hogy a `debug` `compilation` *Web.config* fájlban lévő elem attribútuma True (igaz) értékű. A hibakeresési Build konfigurációjának közzétételekor alapértelmezés szerint igaz értékre van állítva.
 
     ```xml
     <system.web>
@@ -243,7 +243,7 @@ Ha a függvény [naplókat írt](https://github.com/Azure/azure-webjobs-sdk/wiki
     ```
 * Ha úgy találja, hogy a hibakereső nem lép be a hibakereséshez használni kívánt kódra, előfordulhat, hogy módosítania kell a Saját kód beállítást.  További információ: [annak megadása, hogy csak a felhasználói kódokat kell-e hibakeresést végezni a Visual studióban saját kód használatával](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * A Távoli hibakeresési funkció engedélyezésekor egy időzítő indul el a kiszolgálón, és 48 óra elteltével a szolgáltatás automatikusan ki lesz kapcsolva. Ez a 48 órás korlát biztonsági és teljesítménybeli okokból történik. A funkció egyszerűen visszakapcsolható, ahányszor csak szeretné. Azt javasoljuk, hogy a rendszer letiltsa a letiltást, ha nem aktívan végzi a hibakeresést.
-* Manuálisan is csatlakoztathatja a hibakeresőt bármely folyamathoz, nem csak az alkalmazás folyamatához (w3wp. exe). További információ a hibakeresési mód a Visual Studióban történő használatáról: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio).
+* Manuálisan is csatlakoztathatja a hibakeresőt bármely folyamathoz, nem csak az alkalmazás folyamatához (w3wp.exe). További információ a hibakeresési mód a Visual Studióban történő használatáról: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio).
 
 ## <a name="diagnostic-logs-overview"></a><a name="logsoverview"></a>Diagnosztikai naplók – áttekintés
 Egy App Service alkalmazásban futó ASP.NET-alkalmazás a következő típusú naplókat tudja létrehozni:
@@ -312,7 +312,7 @@ További információ az alkalmazások naplóinak a webjobs-ben való létrehoz�
     ![Nyomkövetés a hibakeresési ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
     A következő lépések bemutatják, hogyan tekintheti meg a nyomkövetési kimenetet egy weblapon a hibakeresési módban való fordítás nélkül.
-1. Nyissa meg az alkalmazás Web. config fájlját (amely a projekt mappájában található), és adjon hozzá egy `<system.diagnostics>` elemet a fájl végén közvetlenül a záró `</configuration>` elem előtt:
+1. Nyissa meg az alkalmazás Web.config fájlt (amely a projekt mappájában található), és adjon hozzá egy `<system.diagnostics>` elemet a fájl végén közvetlenül a záró `</configuration>` elem előtt:
 
     ``` xml
     <system.diagnostics>
@@ -330,7 +330,7 @@ További információ az alkalmazások naplóinak a webjobs-ben való létrehoz�
     ```
 
 A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintését `/trace.axd` .
-1. Vegyen fel egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elemet</a> `<system.web>` a web. config fájlban, például a következő példában:
+1. Vegyen fel egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elemet</a> `<system.web>` a Web.config fájlban, például a következő példában:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -346,9 +346,11 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    Alapértelmezés szerint `trace.axd` csak helyileg érhető el. Ha azt szeretné, hogy elérhető legyen egy távoli alkalmazásból, akkor `localOnly="false"` `trace` a *web. config* fájlban lévő elemhez hozzáadhatja azt a következő példában látható módon:
+    Alapértelmezés szerint `trace.axd` csak helyileg érhető el. Ha azt szeretné, hogy elérhető legyen egy távoli alkalmazásból, a `localOnly="false"` `trace` *Web.config* fájlban lévő elemhez hozzáadhatja az elemet a következő példában látható módon:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```
 
     Az `trace.axd` éles alkalmazásokban való engedélyezés azonban biztonsági okokból nem ajánlott. A következő részekben könnyebben beolvashatja a nyomkövetési naplókat egy App Service alkalmazásban.
 
@@ -386,7 +388,7 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
 
     ![Részletes nyomkövetési kimenet](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
 
-    Ebben a szakaszban engedélyezte és letiltotta a naplózást az Alkalmazásbeállítások használatával. A nyomkövetési figyelőket a web. config fájl módosításával is engedélyezheti és tilthatja le. A web. config fájl módosítása azonban azt eredményezi, hogy az alkalmazás tartománya újrahasznosítható, míg az alkalmazás-konfiguráción keresztül történő naplózás engedélyezése nem teszi ezt. Ha a probléma hosszabb időt vesz igénybe, vagy időszakosan történik, az alkalmazás-tartomány újrahasznosítása a "javítás", és a várakozási idő elteltével megvárja a műveletet. A diagnosztika engedélyezése az Azure-ban lehetővé teszi, hogy azonnal elindítsa a hibák rögzítését az alkalmazás tartományának újrahasznosítása nélkül.
+    Ebben a szakaszban engedélyezte és letiltotta a naplózást az Alkalmazásbeállítások használatával. A nyomkövetési figyelőket a Web.config fájl módosításával is engedélyezheti és tilthatja le. A Web.config fájl módosítása azonban az alkalmazás tartományának újrahasznosítását eredményezi, miközben az alkalmazás konfigurációjának használatával nem teszi lehetővé a naplózást. Ha a probléma hosszabb időt vesz igénybe, vagy időszakosan történik, az alkalmazás-tartomány újrahasznosítása a "javítás", és a várakozási idő elteltével megvárja a műveletet. A diagnosztika engedélyezése az Azure-ban lehetővé teszi, hogy azonnal elindítsa a hibák rögzítését az alkalmazás tartományának újrahasznosítása nélkül.
 
 ### <a name="output-window-features"></a>A kimeneti ablak funkciói
 A **kimeneti** ablak **Microsoft Azure naplók** lapján több gomb és egy szövegmező látható:

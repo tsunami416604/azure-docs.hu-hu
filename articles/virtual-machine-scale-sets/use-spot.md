@@ -9,12 +9,11 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84310563"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot virtuális gépek virtuálisgép-méretezési csoportokhoz 
 
@@ -44,7 +43,7 @@ A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Direktszínű virtuális gépek üzembe helyezése méretezési csoportokban
 
 A helyszíni virtuális gépek méretezési csoportokon történő üzembe helyezéséhez beállíthatja az új *prioritás* jelzőt a *helyszínen*. A méretezési csoport összes virtuális gépe a következőre lesz beállítva:. A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásához használja az alábbi módszerek egyikét:
-- [Azure Portal](#portal)
+- [Azure Portalra](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager-sablonok](#resource-manager-templates)
@@ -156,11 +155,11 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 | Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
+| Nagyvállalati Szerződés         | Yes                               |
+| Használatalapú fizetés                | Yes                               |
 | Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Előnyök                     | Nem érhető el                     |
-| Szponzorált                    | Nem érhető el                     |
+| Szponzorált                    | Yes                               |
 | Ingyenes próbaverzió                   | Nem érhető el                     |
 
 

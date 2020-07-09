@@ -10,12 +10,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40285c811cd6f407c20c40bf3a90ec5b779a9c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84297904"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -35,9 +34,9 @@ Azure AD B2C nem használható a felhasználók Microsoft Office 365-hez való h
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Mik a Azure AD B2C helyi fiókjai? Miben különböznek a munkahelyi vagy iskolai fiókok az Azure AD-ben?
 
-Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók az űrlap `<xyz>@<tenant domain>`e-mail-címével rendelkeznek. A `<tenant domain>` a bérlő vagy a kezdeti `<...>.onmicrosoft.com` tartomány ellenőrzött tartományainak egyike. Ez a fióktípus munkahelyi vagy iskolai fiók.
+Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók az űrlap e-mail-címével rendelkeznek `<xyz>@<tenant domain>` . A a `<tenant domain>` bérlő vagy a kezdeti tartomány ellenőrzött tartományainak egyike `<...>.onmicrosoft.com` . Ez a fióktípus munkahelyi vagy iskolai fiók.
 
-Egy Azure ad B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be ( joe@comcast.netpéldául bob@gmail.com sarah@contoso.com,,, jim@live.comvagy). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
+Egy Azure ad B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be (például,,, joe@comcast.net bob@gmail.com sarah@contoso.com vagy jim@live.com ). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
 
 Az alkalmazásokhoz tartozó felhasználói fiókok létrehozhatók egy regisztrációs felhasználói folyamaton, a regisztrációs vagy bejelentkezési felhasználói folyamaton, a Microsoft Graph API-n vagy a Azure Portal.
 
@@ -134,21 +133,20 @@ Jelenleg nincs. Ez a funkció az ütemterven található. A tartomány ellenőrz
 
 A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket.
 
-Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Törölje a Azure AD B2C bérlő összes **felhasználói folyamatát (szabályzatát)** .
-1. Törölje az Azure AD B2C-bérlőben regisztrált összes **alkalmazást** .
-1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. A **Kezelés** alatt válassza a **Felhasználókat**.
+1. Törölje az összes **felhasználói folyamatot (szabályzatot)** a Azure ad B2C-bérlőben.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza a **minden alkalmazás** lapot.
+1. Az összes regisztrált alkalmazás törlése.
+1. A **B2C-Extensions-app**törlése.
+1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
-1. A **kezelés**területen válassza a **Alkalmazásregisztrációk** (vagy **Alkalmazásregisztrációk (örökölt)** lehetőséget.
-1. Válassza **az összes alkalmazás megtekintése** lehetőséget
-1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
@@ -157,18 +155,19 @@ Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmaz�
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Törölje az összes **felhasználói folyamatot (szabályzatot)** a Azure ad B2C-bérlőben.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **minden alkalmazás** lapot.
-1. Az összes regisztrált alkalmazás törlése.
-1. A **B2C-Extensions-app**törlése.
-1. A **Kezelés** alatt válassza a **Felhasználókat**.
-1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
+1. Törölje a Azure AD B2C bérlő összes **felhasználói folyamatát (szabályzatát)** .
+1. Törölje az Azure AD B2C-bérlőben regisztrált összes **alkalmazást (örökölt)** .
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
+1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
+1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza **az összes alkalmazás megtekintése** lehetőséget
+1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.

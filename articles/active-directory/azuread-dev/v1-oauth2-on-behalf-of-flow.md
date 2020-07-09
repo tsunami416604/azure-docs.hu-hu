@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551678"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
 
@@ -79,7 +79,7 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Konfigurálja az alkalmazás engedélyeit. Az **API-engedélyek**területen válassza az **engedély hozzáadása** , majd **az API**-k elemet.
 1. Írja be a középső rétegbeli szolgáltatás nevét a szövegmezőbe.
-1. Válassza az **engedélyek kiválasztása** , majd a **hozzáférési \< szolgáltatás neve>** elemet.
+1. Válassza az **engedélyek kiválasztása** , majd **a \<service name> hozzáférés **lehetőséget.
 
 ### <a name="configure-known-client-applications"></a>Ismert ügyfélalkalmazások konfigurálása
 
@@ -105,7 +105,7 @@ Az ügyfélalkalmazás védelmét egy közös titok vagy egy tanúsítvány véd
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Description |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Description |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
 | állítás |kötelező | A kérelemben használt jogkivonat értéke. |
@@ -177,7 +177,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel:
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 | --- | --- |
 | token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg a [OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |A jogkivonatban megadott hozzáférési hatókör. |
@@ -249,7 +249,7 @@ Néhány OAuth-alapú webszolgáltatásnak hozzá kell férnie más webszolgált
 
 Az SAML-állítások szolgáltatás-szolgáltatásra irányuló kérelme a következő paramétereket tartalmazza:
 
-| Paraméter |  | Description |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**értékűnek kell lennie. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke.|
@@ -268,7 +268,7 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 
 ### <a name="response-with-saml-assertion"></a>SAML-kijelentéssel kapcsolatos válasz
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 | --- | --- |
 | token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért lásd [: OAuth 2,0 engedélyezési keretrendszer: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |A jogkivonatban megadott hozzáférési hatókör. |
@@ -283,9 +283,9 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - erőforrás`https://api.contoso.com`
-- access_token: \< SAML-kijelentés\>
+- access_token:\<SAML assertion\>
 - issued_token_type: urn: IETF: params: OAuth: token-Type: egy saml2
-- refresh_token: \< token frissítése\>
+- refresh_token:\<Refresh token\>
 
 ## <a name="client-limitations"></a>Ügyfél korlátozásai
 

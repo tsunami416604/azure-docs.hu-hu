@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671647"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles alkalmazások az Azure-ban Application Insights
@@ -53,19 +52,19 @@ A Microsoft Service Profiler a mintavételi módszerek és a rendszerállapotok 
 
 Az idősor nézetben megjelenő hívási verem a mintavételezés és a kivezetés eredménye. Mivel mindegyik minta rögzíti a szál teljes hívási veremét, Microsoft .NET-keretrendszerből származó kódot, valamint az Ön által hivatkozott egyéb keretrendszereket is tartalmazza.
 
-### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Objektum kiosztása (CLR! JIT\_új vagy CLR! JIT\_Newarr1)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Objektum kiosztása (CLR! JIT \_ új vagy CLR! JIT \_ Newarr1)
 
-**CLR! JIT\_új** és **CLR! A\_JIT Newarr1** olyan segítő függvények a .net-keretrendszerben, amelyek memóriát foglalnak le egy felügyelt halomból. **CLR! Egy\_** objektum lefoglalásakor a rendszer meghívja az új JIT-t. **CLR! A\_** rendszer meghívja a JIT Newarr1, amikor egy objektum-tömböt foglal le. Ez a két függvény általában gyors, és viszonylag kis mennyiségű időt vesz igénybe. Ha **CLR! JIT\_új** vagy **CLR! A\_JIT-Newarr1** sok időt vesz igénybe az idővonalban, a kód több objektumot is lefoglalhat, és jelentős mennyiségű memóriát is igénybe vehet.
+**CLR! JIT \_ új** és **CLR! A JIT \_ Newarr1** olyan segítő függvények a .net-keretrendszerben, amelyek memóriát foglalnak le egy felügyelt halomból. **CLR! Egy \_ ** objektum lefoglalásakor a rendszer meghívja az új JIT-t. **CLR! A \_ ** rendszer meghívja a JIT Newarr1, amikor egy objektum-tömböt foglal le. Ez a két függvény általában gyors, és viszonylag kis mennyiségű időt vesz igénybe. Ha **CLR! JIT \_ új** vagy **CLR! A JIT- \_ Newarr1** sok időt vesz igénybe az idővonalban, a kód több objektumot is lefoglalhat, és jelentős mennyiségű memóriát is igénybe vehet.
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Kód betöltése (CLR! ThePreStub)
 
 **CLR! A ThePreStub** a .NET-keretrendszer egyik segítő funkciója, amely előkészíti a kódot az első alkalommal történő végrehajtásra. Ez a végrehajtás általában magában foglalja az igény szerinti (JIT) fordítást, de nem kizárólagosan. Minden C#-metódushoz **CLR! A ThePreStub** a folyamat során legfeljebb egyszer kell meghívni.
 
-Ha **CLR! A ThePreStub** hosszú időt vesz igénybe, a kérelem az első, amely végrehajtja ezt a metódust. A .NET-keretrendszer futtatókörnyezetének az első módszer betöltéséhez szükséges ideje jelentős. Érdemes lehet olyan bemelegedési folyamatot használni, amely végrehajtja a kód azon részét, mielőtt a felhasználók hozzáférnek hozzá, vagy érdemes lehet natív rendszerkép-generátort (Ngen. exe) futtatni a szerelvényeken.
+Ha **CLR! A ThePreStub** hosszú időt vesz igénybe, a kérelem az első, amely végrehajtja ezt a metódust. A .NET-keretrendszer futtatókörnyezetének az első módszer betöltéséhez szükséges ideje jelentős. Érdemes lehet olyan bemelegedési folyamatot használni, amely végrehajtja a kód azon részét, mielőtt a felhasználók hozzáférnek hozzá, vagy érdemes lehet natív rendszerkép-generátort (ngen.exe) futtatni a szerelvényeken.
 
-### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Zárolás feloldása (CLR! JITutil\_MonContention vagy CLR! JITutil\_MonEnterWorker)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Zárolás feloldása (CLR! JITutil \_ MonContention vagy CLR! JITutil \_ MonEnterWorker)
 
-**CLR! JITutil\_MonContention** vagy **CLR! A\_JITutil MonEnterWorker** azt jelzi, hogy az aktuális szál zárolás felszabadítására vár. Ez a szöveg gyakran jelenik meg C# **zárolási** utasítás végrehajtásakor, a figyelő meghívásával **. adja meg** a metódust, vagy hívja meg a metódust a **MethodImplOptions. szinkronizált** attribútummal. A zárolási tartalom általában akkor fordul elő, ha a _szál egy zárolást szerez be_ , és a _B_ szál megpróbálja ugyanazt a zárolást megnyerni, mielőtt elkezdené _a kiadást_ .
+**CLR! JITutil \_ MonContention** vagy **CLR! A JITutil \_ MonEnterWorker** azt jelzi, hogy az aktuális szál zárolás felszabadítására vár. Ez a szöveg gyakran jelenik meg C# **zárolási** utasítás végrehajtásakor, a figyelő meghívásával **. adja meg** a metódust, vagy hívja meg a metódust a **MethodImplOptions. szinkronizált** attribútummal. A zárolási tartalom általában akkor fordul elő, ha a _szál egy zárolást szerez be_ , és a _B_ szál megpróbálja ugyanazt a zárolást megnyerni, mielőtt elkezdené _a kiadást_ .
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>Kód betöltése ([hideg])
 
@@ -79,11 +78,11 @@ A **HttpClient. Send** metódusok például azt jelzik, hogy a kód a HTTP-kére
 
 ### <a name="database-operation"></a><a id="sqlcommand"></a>Adatbázis-művelet
 
-A **SqlCommand. Execute** metódusok például azt jelzik, hogy a kód arra vár, hogy egy adatbázis-művelet befejeződik.
+Az olyan metódusok, mint például a **SqlCommand.Exearanyosak** , azt jelzik, hogy a kód egy adatbázis-művelet befejezésére vár.
 
-### <a name="waiting-await_time"></a><a id="await"></a>Várakozás (várakozási\_idő)
+### <a name="waiting-await_time"></a><a id="await"></a>Várakozás (várakozási \_ idő)
 
-A várakozási **\_idő** azt jelzi, hogy a kód egy másik feladat befejeződésére vár. Ez a késleltetés általában a C# **várakozási** utasítással történik. Ha a kód egy C#-t **vár**, a szál felteker, és visszaadja a vezérlést a szál készletnek, és nincs olyan szál, **amely a várakozás befejezésére vár.** Logikusan azonban a **várt** szál "Letiltva", és a művelet befejezésére vár. A várakozási **\_idő** utasítás azt a letiltott időt jelzi, amíg a feladat befejeződik.
+**Várakozás \_ Az idő** azt jelzi, hogy a kód egy másik feladat befejeződésére vár. Ez a késleltetés általában a C# **várakozási** utasítással történik. Ha a kód egy C#-t **vár**, a szál felteker, és visszaadja a vezérlést a szál készletnek, és nincs olyan szál, **amely a várakozás befejezésére vár.** Logikusan azonban a **várt** szál "Letiltva", és a művelet befejezésére vár. A várakozási ** \_ idő** utasítás azt a letiltott időt jelzi, amíg a feladat befejeződik.
 
 ### <a name="blocked-time"></a><a id="block"></a>Letiltott idő
 

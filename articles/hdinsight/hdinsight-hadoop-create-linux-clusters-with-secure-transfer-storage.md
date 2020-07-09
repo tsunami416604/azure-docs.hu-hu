@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43abe6a827af668f2b756e5f00497fbfe1698413
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560082"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083236"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű Storage-fiókkal rendelkező fürtök Apache Hadoop az Azure HDInsight
 
@@ -32,13 +32,13 @@ Ha Azure Portal használatával szeretne frissíteni egy meglévő Storage-fiók
 
 ### <a name="powershell"></a>PowerShell
 
-A [New-AzStorageAccount PowerShell-](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)parancsmag esetén győződjön meg `-EnableHttpsTrafficOnly` arról, hogy `1`a paraméter értéke.
+A [New-AzStorageAccount PowerShell-](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)parancsmag esetén győződjön meg arról, hogy a paraméter értéke `-EnableHttpsTrafficOnly` `1` .
 
 Egy meglévő Storage-fiók PowerShell-lel való frissítéséhez lásd: [biztonságos átvitel megkövetelése a PowerShell](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)-lel.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-parancs az [Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), győződjön meg `--https-only` róla, hogy `true`a paraméter értéke.
+Az Azure CLI-parancs az [Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), győződjön meg róla, hogy a paraméter értéke `--https-only` `true` .
 
 Meglévő Storage-fiók Azure CLI-vel való frissítéséhez lásd: [biztonságos átvitel megkövetelése az Azure CLI-vel](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 

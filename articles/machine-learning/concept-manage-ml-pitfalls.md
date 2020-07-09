@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210184"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
 
@@ -31,7 +31,7 @@ Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolód
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
-| C | 99.9% | 45% |
+| C# | 99.9% | 45% |
 
 Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
 
@@ -79,8 +79,6 @@ A többszörös **ellenőrzés (CV)** a teljes betanítási adat több részhalm
 
 A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában az adatokon alapuló, nem kiegyensúlyozott adatokra hivatkozik, és olyan adatokra utal, amelyek az egyes osztályokba tartozó megfigyelések aránytalan arányát tartalmazzák. Ez az egyensúlyhiány a modell pontosságának hamisan érzékelt pozitív hatását eredményezheti, mivel a bemeneti adatok az egyik osztályhoz képest elfogultak, ami azt eredményezi, hogy a betanított modell a torzítást utánozza. 
 
-Mivel a besorolási algoritmusokat általában pontossággal értékelik ki, a modell pontossági pontszámának ellenőrzése jó módszer annak azonosítására, hogy az érintett adatok nem egyensúlyban vannak-e. Valóban nagy pontossággal vagy nagyon alacsony pontossággal rendelkezett bizonyos osztályok esetében?
-
 Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
 
 Diagram| Description
@@ -91,17 +89,19 @@ Diagram| Description
 
 ## <a name="handle-imbalanced-data"></a>Kiegyensúlyozatlan adatmennyiség kezelése 
 
-A Machine learning-munkafolyamatok egyszerűsítésének céljaként az automatikus ML beépített képességekkel rendelkezik, amelyek segítenek a kiegyensúlyozatlan adatmennyiségek, például a 
+A Machine learning-munkafolyamatok egyszerűsítésének céljaként az **automatikus ml beépített képességekkel rendelkezik** , amelyek segítenek a kiegyensúlyozatlan adatmennyiségek, például a 
 
-- Egy **súlyozási oszlop**: az automatikus ml a súlyozott oszlopot bemenetként támogatja, ami az adatokban lévő sorok súlyozását eredményezi, ami akár több vagy kevesebb "fontos" osztályt is tehet.
+- A **Weight oszlop**: az automatikus ml a súlyok oszlopát támogatja bemenetként, ami az adatokban lévő sorok súlyozását eredményezi, ami felhasználható egy osztály további vagy kisebb "fontos" értékének elvégzésére.
 
 - Az automatikus ML által használt algoritmusok megfelelően kezelhetik az akár 20:1-es egyensúlyhiányt, ami azt jelenti, hogy a leggyakoribb osztály 20 alkalommal több sort tartalmaz az adatmennyiségnél, mint a legkisebb közös osztály.
 
-Az alábbi módszerek további lehetőségeket biztosítanak az automatikus ML-n kívüli, kiegyensúlyozatlan adatmennyiség kezelésére. 
+- Használjon olyan teljesítmény-mérőszámot, amely jobban bánik a kiegyensúlyozatlan adatokkal. Például az AUC_weighted egy elsődleges metrika, amely az osztályt jelképező minták relatív száma alapján kiszámítja az egyes osztályok hozzájárulását, ezért a rendszer sokkal megbízhatóbb az egyensúlyhiány ellen.
+
+Az alábbi módszerek további lehetőségeket biztosítanak az **automatikus ml-n kívüli**, kiegyensúlyozatlan adatmennyiség kezelésére. 
 
 - Újramintavételezés még az osztályra is, akár a kisebb osztályok mintavételezésével vagy a nagyobb osztályok mintavételezésével. Ezek a módszerek szaktudást igényelnek a feldolgozáshoz és az elemzéshez.
 
-- Használjon olyan teljesítmény-mérőszámot, amely jobban bánik a kiegyensúlyozatlan adatokkal. Az F1 pontszám például a precizitás és a visszahívás súlyozott átlaga. A pontosság mértéke az osztályozó pontossága – az alacsony pontosság azt jelzi, hogy a téves pozitív érték nagy számú hamis pozitív--,, míg a visszahívási mérték egy osztályozó teljessége – az alacsony visszahívás nagy számú hamis negatív értéket jelez. 
+- Tekintse át a teljesítmény mérőszámait a kiegyensúlyozatlan adatokhoz. Az F1 pontszám például a precizitás és a visszahívás súlyozott átlaga. A pontosság mértéke az osztályozó pontossága – az alacsony pontosság azt jelzi, hogy a téves pozitív érték nagy számú hamis pozitív--,, míg a visszahívási mérték egy osztályozó teljessége – az alacsony visszahívás nagy számú hamis negatív értéket jelez.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160222"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak 
@@ -86,7 +86,7 @@ A Media Services kétféle lokátort támogat: a OnDemandOrigin-lokátorokat (p�
 ### <a name="storage-account"></a>Tárfiók
 Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A Media Service-fiókok egy vagy több Storage-fiókkal is társíthatók. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méretük 500TB alatt van.  A Media Services SDK-szintű eszközöket biztosít, amelyekkel több Storage-fiókot kezelhet, és terheléselosztást végez az adategységek elosztása során, a metrikák és a véletlenszerű eloszlás alapján. További információ: az [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)használata. 
 
-## <a name="jobs-and-tasks"></a>Feladatok és feladatok
+## <a name="jobs-and-tasks"></a>Feladatok és tevékenységek
 A [feladatok](https://docs.microsoft.com/rest/api/media/operations/job) általában egy hang-vagy videó-bemutató feldolgozására (például indexre vagy kódolásra) használatosak. Ha több videót dolgoz fel, hozzon létre egy feladatot minden egyes videó kódolásához.
 
 A feladatok a végrehajtandó feldolgozással kapcsolatos metaadatokat tartalmaznak. Minden feladat egy vagy több olyan [feladatot](https://docs.microsoft.com/rest/api/media/operations/task)tartalmaz, amelyek egy atomi feldolgozási feladatot, a hozzá tartozó bemeneti eszközöket, kimeneti eszközöket, egy adathordozó-processzort és a hozzájuk tartozó beállításokat határoznak meg. Egy adott feladaton belüli feladatok összekapcsolhatók, ahol egy adott tevékenység kimeneti eszköze a bemeneti eszköz a következő feladathoz. Ily módon az egyik feladattípus tartalmazhatja a Media-bemutatóhoz szükséges összes feldolgozást.
@@ -154,7 +154,7 @@ A tartalmi kulcs engedélyezési házirendje rendelkezhet egy vagy több engedé
 
 A jogkivonat korlátozott házirendjének konfigurálásakor meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyhez a jogkivonat be lett jelentkezve, a kibocsátó pedig a tokent kiállító biztonságos jogkivonat-szolgáltatás. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services Key Delivery Service ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 - [Tartalom – áttekintés](media-services-content-protection-overview.md)
 - [Védelem AES-128](media-services-protect-with-aes128.md)
 - [Védelem a PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
@@ -208,25 +208,25 @@ A következő lista különböző streaming formátumokat tartalmaz, és példá
 
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
 
 * MPEG DASH
 
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-Time-CSF)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-Time-CSF)
 
 * Apple HTTP Live Streaming (HLS) v4
 
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL)
 
 * Apple HTTP Live Streaming (HLS) v3
 
 {streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = m3u8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL-v3)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL-v3)
 
 ## <a name="additional-notes"></a>További megjegyzések
 

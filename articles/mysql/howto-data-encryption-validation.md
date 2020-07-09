@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan ellenőrizheti a Azure Database for MySQL-adatt
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: ee80f50e925bf4545f885d701e70bc21208f1d1f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 9cd1db0365cdc4f834516fd4efb0d80dacc75eca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515403"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118528"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>Az Azure Database for MySQL adattitkosításának ellenőrzése
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
 1. Ha szeretné ellenőrizni, hogy az ügyfél kulcsát használja-e a rendszer a titkosításhoz, kövesse az alábbi lépéseket:
 
-    * A Azure Portal navigáljon a **Azure Key Vault** -> **kulcsaihoz**
+    * A Azure Portal navigáljon a **Azure Key Vault**  ->  **kulcsaihoz**
     * Válassza ki a kiszolgáló titkosításához használt kulcsot.
     * Állítsa **a kulcs állapotát** a **nem**értékre.
   
@@ -53,6 +53,6 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
 A [naplózási jelentések](https://servicetrust.microsoft.com) is megtekinthetők, amelyek információkat biztosítanak az adatvédelmi szabványoknak és a jogszabályi követelményeknek való megfelelésről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adattitkosítással kapcsolatos további tudnivalókért tekintse meg az [adattitkosítás Azure Database for MySQL az ügyfél által felügyelt kulccsal](concepts-data-encryption-mysql.md)című témakört.

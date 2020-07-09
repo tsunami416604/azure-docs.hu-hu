@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: ef3813840b1ecb3ad091a5b420ff8cfff9f6059a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 72ace8a94d16b79f756c83393db2b39a1c0df714
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800197"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134861"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása Resource Manager-sablonnal
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása ARM-sablonnal
 
-A Azure Database for MySQL felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MySQL-adatbázisokat. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre egy Azure Database for MySQL-kiszolgálót virtuális hálózati integrációval. A kiszolgálót a Azure Portalban, az Azure CLI-ben vagy a Azure PowerShellban hozhatja létre.
+A Azure Database for MySQL felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MySQL-adatbázisokat. Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy Azure Database for MySQL-kiszolgáló virtuális hálózati integrációval való létrehozásához. A kiszolgálót a Azure Portalban, az Azure CLI-ben vagy a Azure PowerShellban hozhatja létre.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,20 +35,18 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](htt
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Ha a kódot helyileg szeretné futtatni, [Azure PowerShell](/powershell/azure/).
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Ha a kódot helyileg szeretné futtatni, az [Azure CLI](/cli/azure/)-t.
 
 ---
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
+## <a name="review-the-template"></a>A sablon áttekintése
 
 A MySQL-kiszolgálóhoz való Azure-adatbázist számítási és tárolási erőforrások egy meghatározott készletével együtt fogja létrehozni. További információ: [Azure Database for MySQL díjszabási szintek](concepts-pricing-tiers.md). A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 
@@ -120,7 +122,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 A sablon használatával hozzon létre egy új Azure Database for MySQL-kiszolgálót a következő interaktív kóddal. A kód az új kiszolgálónév, egy új erőforráscsoport nevének és helyének, valamint egy rendszergazdai fiók nevének és jelszavának megadását kéri.
 
@@ -165,7 +167,7 @@ Get-AzResource -ResourceType "Microsoft.DBforMySQL/servers" -Name $serverName | 
 Write-Host "Press [ENTER] to continue..."
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 Futtassa a következő interaktív kódot a Azure Database for MySQL-kiszolgáló részleteinek megtekintéséhez. Meg kell adnia az új kiszolgáló nevét és erőforrás-csoportját.
 
@@ -201,7 +203,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -214,7 +216,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Következő lépések
 
-A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
+Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

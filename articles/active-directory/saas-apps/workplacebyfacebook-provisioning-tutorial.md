@@ -15,34 +15,15 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99103c9994b240e2f45b66acf269b320c90e5135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718602"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
 Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Facebook és Azure Active Directory (Azure AD) munkahelyén kell elvégezni a felhasználók automatikus kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a [Facebook](https://work.workplace.com/) számára az Azure ad kiépítési szolgáltatásával. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
-
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrálás az új munkahelyre Facebook-alkalmazással
-Ha a Facebook használatával már rendelkezik munkahelyi integrációval, tekintse meg a következő szakaszt a változásokról. Ha a Facebook első indításakor beállítja a munkahelyet, kihagyhatja ezt a szakaszt, és átléphet a támogatott képességekre. 
-
-#### <a name="whats-changing"></a>Mi változik?
-* Változások az Azure AD-oldalon: a felhasználók munkahelyi üzembe helyezésének engedélyezési módszere történelmileg hosszú élettartamú titkos token volt. Hamarosan megjelenik az engedélyezési módszer, amely a OAuth engedélyezési engedélyre módosult. 
-* Változások a munkahelyi oldalon: korábban az Azure AD-alkalmazás volt a Facebook-beli egyéni integráció a munkahelyen. Most az Azure AD-t a munkahelyi integrációs könyvtárban tekintheti meg harmadik féltől származó alkalmazásként. 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mit kell tennem a meglévő egyéni integráció új alkalmazásba való átállításához?
-Ha van meglévő munkahelyi integrációja egy érvényes jogkivonattal, nincs szükség beavatkozásra. **A 04/28/2020-es verzióban az érvénytelen hitelesítő adatok miatt a rendszer automatikusan áttelepítette az összes olyan alkalmazást, amely nincs karanténba helyezve.**
- 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Honnan tudhatom meg, hogy az alkalmazás migrálása megtörtént-e? 
-* Az Azure Portalon: az alkalmazás áttelepítésekor a rendszer eltávolítja az engedélyezési szakaszban lévő szalagcímet a közelgő változásokról, és a titkos jogkivonat mezőt egy kék Engedélyezés gombra cseréli. 
-* A munkahelyen a Facebook-portálon: Tekintse át az Azure AD-alkalmazást, és győződjön meg róla, hogy jóváhagyták.  
-
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>A rendszergazdai hitelesítő adatok szakasz szürkén jelenik meg az alkalmazáson, és nem lehet menteni. Hogy miért?
-Zárolta a rendszergazdai hitelesítő adatok szakaszt a nem migrált munkahelyi ügyfelek számára. Használja a következő URL-címet, ha a rendszergazdai hitelesítő adatok szakasz szürkén jelenik meg, és újra engedélyeznie kell a hozzáférést. **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = True** (https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)
-
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
@@ -175,7 +156,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 *  Ha egy felhasználót nem sikerült létrehozni, és egy "1789003" kóddal rendelkező naplózási esemény van, akkor a felhasználó nem ellenőrzött tartományból származik.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

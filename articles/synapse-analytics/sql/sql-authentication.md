@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7295bb2e87373a80c6b105ab7284a43e6f0804da
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 280fea29b79db58d0974aaba961db9c7a7df3dad
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020772"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045790"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -45,7 +45,7 @@ A **kiszolgálói rendszergazda** és az **Azure ad-rendszergazdai** fiókok jel
 - Az egyetlen olyan fiók, amely képes automatikusan csatlakozni bármely SQL Database a kiszolgálón. (Felhasználói adatbázishoz történő csatlakozáshoz a többi fióknak vagy az adatbázis tulajdonosának kell lennie, vagy felhasználói fiókkal kell rendelkeznie az adatbázisban.)
 - Ezek a fiókok `dbo`-felhasználóként lépnek be a felhasználói adatbázisokba, és minden engedéllyel rendelkeznek az adatbázison belül. (A felhasználói adatbázis tulajdonosa szintén `dbo`-felhasználóként jelentkezik be.)
 - Ne adja meg az `master` adatbázist `dbo` felhasználóként, és korlátozott engedélyekkel rendelkezzen a főkiszolgálón.
-- **Nem** tagjai a standard SQL Server `sysadmin` rögzített kiszolgálói szerepkörnek, amely nem érhető el az SQL Database-ben.  
+- **Nem** tagjai a standard SQL Server `sysadmin` rögzített kiszolgálói szerepkörnek, amely nem érhető el a SQL Databaseban.  
 - Adatbázisok, bejelentkezések, főkiszolgálók és kiszolgálói szintű IP-tűzfalszabályok létrehozására, módosítására és eldobására is képes.
 - Tagokat adhat hozzá és távolíthat el a `dbmanager` és a `loginmanager` szerepkörökhöz.
 - Megtekintheti a `sys.sql_logins` rendszertáblát.

@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208552"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>A Striim Azure SQL DW Marketplace-ajánlat telepítési útmutatója
 
@@ -30,11 +30,11 @@ Konfigurálja a Striim virtuális gépet a megadott tulajdonságokkal, és jegye
 
 ![Striim konfigurálása][configure]
 
-Az üzembe helyezést követően kattintson \<a virtuális gép neve>-masternode elemre a Azure Portalban, kattintson a kapcsolat lehetőségre, és másolja a bejelentkezést a virtuális gép helyi fiókjával 
+Az üzembe helyezést követően kattintson a masternode elemre \<VM Name> a Azure Portal, kattintson a kapcsolat lehetőségre, és másolja a bejelentkezést a VM helyi fiók használatával. 
 
 ![A Striim SQL Data Warehousehoz való kapcsolódása][connect]
 
-Töltse le a sqljdbc42. jar <https://www.microsoft.com/en-us/download/details.aspx?id=54671> fájlt a számítógépről a helyi gépre. 
+Töltse le a sqljdbc42. jar fájlt a számítógépről <https://www.microsoft.com/en-us/download/details.aspx?id=54671> a helyi gépre. 
 
 Nyisson meg egy parancssori ablakot, és változtassa meg a könyvtárakat a JDBC jar letöltésére. SCP a jar-fájlt a Striim virtuális géphez, és a Azure Portal címről és jelszaváról
 
@@ -56,7 +56,7 @@ A következő parancsok végrehajtásával helyezze át a JDBC jar-fájlt a Stri
 
 ![A Striim-fürt elindítása][start-striim]
 
-Most nyissa meg a kedvenc böngészőjét, \<és lépjen a DNS-név>:9080
+Most nyissa meg a kedvenc böngészőjét, és navigáljon ide \<DNS Name> : 9080
 
 ![Lépjen a bejelentkezési képernyőre][navigate]
 

@@ -3,15 +3,15 @@ title: StorSimple 8000 Series támogatási csomag létrehozása
 description: Megtudhatja, hogyan hozhat létre, fejtheti ki és szerkesztheti a StorSimple 8000 Series-eszköz támogatási csomagját.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514047"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Támogatási csomag létrehozása és kezelése a StorSimple 8000 sorozathoz
 
@@ -43,7 +43,7 @@ A manuálisan létrehozott támogatási csomagot megoszthatja Microsoft ügyfél
    2. A megnyíló párbeszédpanelen adja meg az eszköz rendszergazdai jelszavát. Az alapértelmezett jelszó a _jelszó1_.
      
       ![PowerShell hitelesítő adatai párbeszédpanel](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. Kattintson az **OK** gombra.
+   3. Válassza az **OK** lehetőséget.
    4. A parancssorba írja be a következőt:
      
       `Enter-PSSession $MS`
@@ -64,14 +64,14 @@ A manuálisan létrehozott támogatási csomagot megoszthatja Microsoft ügyfél
 
 A következő paraméterek használhatók az export-Hcssupportpackage futtatásával parancsmaggal.
 
-| Paraméter | Kötelező vagy nem kötelező | Leírás |
+| Paraméter | Kötelező vagy nem kötelező | Description |
 | --- | --- | --- |
 | `-Path` |Kötelező |A használatával megadhatja annak a hálózati megosztott mappának a helyét, amelyben a támogatási csomag el van helyezve. |
 | `-EncryptionPassphrase` |Kötelező |A használatával adjon meg egy jelszót a támogatási csomag titkosításához. |
-| `-Credential` |Optional |A használatával adja meg a hálózati megosztott mappához tartozó hozzáférési hitelesítő adatokat. |
-| `-Force` |Optional |Ezzel a paranccsal átugorhatja a titkosítási jelszó megerősítésének lépését. |
-| `-PackageTag` |Optional |Ezzel a paranccsal adhatja meg a könyvtárat a támogatási csomag elhelyezésének *elérési útja* alatt. Az alapértelmezett érték [eszköznév] – [aktuális dátum és idő: ÉÉÉÉ-HH-NN-HH-hh-SS]. |
-| `-Scope` |Optional |Válassza a **fürtként** (alapértelmezett) lehetőséget egy támogatási csomag létrehozásához mindkét vezérlőhöz. Ha csak az aktuális vezérlőhöz szeretne csomagot létrehozni, akkor a **vezérlőt**kell megadnia. |
+| `-Credential` |Választható |A használatával adja meg a hálózati megosztott mappához tartozó hozzáférési hitelesítő adatokat. |
+| `-Force` |Választható |Ezzel a paranccsal átugorhatja a titkosítási jelszó megerősítésének lépését. |
+| `-PackageTag` |Választható |Ezzel a paranccsal adhatja meg a könyvtárat a támogatási csomag elhelyezésének *elérési útja* alatt. Az alapértelmezett érték [eszköznév] – [aktuális dátum és idő: ÉÉÉÉ-HH-NN-HH-hh-SS]. |
+| `-Scope` |Választható |Válassza a **fürtként** (alapértelmezett) lehetőséget egy támogatási csomag létrehozásához mindkét vezérlőhöz. Ha csak az aktuális vezérlőhöz szeretne csomagot létrehozni, akkor a **vezérlőt**kell megadnia. |
 
 ## <a name="edit-a-support-package"></a>Támogatási csomag szerkesztése
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 436367ede4f4be323b5334a201b1c9fb8f7f28e8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997512"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981761"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Adatvédelmi irányelvek a hangasszisztensekhez Windows rendszeren
 
@@ -24,42 +24,42 @@ Fontos, hogy a felhasználók egyértelmű információkat kapjanak a hangadatok
 A Windowsban a hangasszisztenseket létrehozó fejlesztőknek tartalmazniuk kell a felhasználói felület azon elemeit, amelyek a Segéd figyelési képességeit tükrözik.
 
 > [!NOTE]
-> A Segéd-alkalmazás megfelelő nyilvánosságra hozatalának és beleegyezésének hiánya, beleértve az alkalmazások frissítéseinek megadását, az asszisztens nem lesz elérhető a hangalapú aktiváláshoz, amíg az adatvédelmi problémák megoldódik. 
+> A Segéd-alkalmazás megfelelő nyilvánosságra hozatalának és beleegyezésének hiánya, beleértve az alkalmazások frissítéseinek megadását, az asszisztens nem lesz elérhető a hangalapú aktiváláshoz, amíg az adatvédelmi problémák megoldódik.
 
 ## <a name="minimum-requirements-for-feature-inclusion"></a>A funkciók felvételének minimális követelményei
 
-A Windows-felhasználók láthatják és szabályozhatják a Segéd-alkalmazásaik **`Settings > Privacy > Voice activation`** rendelkezésre állását a alkalmazásban.
+A Windows-felhasználók láthatják és szabályozhatják a Segéd-alkalmazásaik rendelkezésre állását a alkalmazásban **`Settings > Privacy > Voice activation`** .
 
  > [!div class="mx-imgBorder"]
  > [![Adatvédelem – alkalmazás – Listázás](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Egy segéd-alkalmazás Windows Voice Activate adatvédelmi beállítási bejegyzése")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
-Ahhoz, hogy jogosult legyen a listára való felvételre, egy alkalmazásnak a következőket kell tennie:
+A listában való részvételre való jogosultság kiválasztásához forduljon a Microsofthoz a winvoiceassistants@microsoft.com kezdéshez. Alapértelmezés szerint a felhasználóknak explicit módon engedélyeznie kell a hangaktiválást egy új asszisztens számára a **`Settings > Privacy > Voice Activation`** alkalmazásban `ms-settings:privacy-voiceactivation` . Az engedélyezett alkalmazások a listában jelennek meg, miután futtatták és használták az `Windows.ApplicationModel.ConversationalAgent` API-kat. A hangaktiválási beállítások módosítható, ha az alkalmazás mikrofonos beleegyezést kapott a felhasználótól.
 
-1. Kiemelten tájékoztathatja a felhasználókat arról, hogy egy kulcsszót figyelnek, még akkor is, ha az alkalmazás nem fut, és mi a kulcsszó
-1. Adja meg a felhasználó hangalapú adatainak felhasználásának leírását, beleértve a hivatkozást vagy a kapcsolódó adatvédelmi szabályzatokra mutató hivatkozást is.
-1. Tájékoztassa a felhasználókat arról, hogy az alkalmazáson belüli beállításokon kívül a felhasználók megtekinthetik és módosíthatják **`Settings > Privacy > Voice activation`** az adatvédelmi beállításokat a alkalmazásban, opcionálisan megadhatják a közvetlen hozzáférésre `ms-settings:privacy-voiceactivation` szolgáló protokollt is
+Mivel a Windows adatvédelmi beállításai tartalmazzák a Hangaktiválás működésével kapcsolatos információkat, valamint az engedélyek vezérlésére szolgáló szabványos felhasználói felületet, a közzététel és a hozzájárulás egyaránt teljesül. A Segéd ebben az engedélyezési listán marad, amíg nem:
 
-A követelmények teljesítése és a Microsoft jóváhagyásának megkezdése után a hangaktiválási alkalmazások listájában megjelenik egy segéd-alkalmazás, miután `Windows.ApplicationModel.ConversationalAgent` regisztrált az API-kkal, és a felhasználók engedélyt kaphatnak az alkalmazásnak a kulcsszó aktiválására. Alapértelmezés szerint mindkét beállítás, `Off` és a felhasználónak manuálisan kell megkeresnie a beállítások lapot az engedélyezéshez.
+* A felhasználó megtévesztése vagy informálása a Segéd hang-és hangkezelési szolgáltatásával
+* Nem megfelelő beavatkozás egy másik asszisztenssel
+* Egyéb releváns Microsoft-szabályzatok kibontása
+
+Ha a fentiek bármelyikét felderítik, a Microsoft eltávolíthat egy asszisztenst az engedélyezési listáról, amíg a problémák nem oldhatók fel.
 
 > [!NOTE]
 > A hangaktiválási engedélyhez minden esetben mikrofon-engedély szükséges. Ha egy segéd-alkalmazáshoz nem tartozik mikrofon-hozzáférés, nem jogosult a hangaktiválásra, és a rendszer letiltott állapotban fogja megjeleníteni a Hangaktiválás adatvédelmi beállításait.
 
 ## <a name="additional-requirements-for-inclusion-in-microphone-consent"></a>A mikrofon belefoglalásával kapcsolatos további követelmények
 
-Az asszisztens szerzők, akik könnyebben és simábban szeretnék megtenni a felhasználók számára a hangaktiválást, ehhez a fentiekhez néhány további követelményt kell benyújtani. A fentieknek való megfelelést követően a Segéd alkalmazás standard, eszköz által zárolt hangaktiválási `On` beállítása alapértelmezés szerint egyszer (és csak egyszer) a mikrofonhoz való hozzáférést kapja meg az alkalmazás számára. Ezzel a művelettel a Segéd aktiválása előtt nem kell további utat megadnia a beállításokhoz.
+Az asszisztens szerzők, akik könnyebben és simábban szeretnék megtenni a felhasználók számára a hangaktiválást, a további követelmények betartásával is megtehetik a közzétételt és a jóváhagyást anélkül, hogy további utat kellene megadniuk a beállítások lapon. A jóváhagyást követően a Hangaktiválás azonnal elérhetővé válik, ha a felhasználó mikrofon engedélyt ad a Segéd alkalmazásnak. Ennek elvégzéséhez a Segéd-alkalmazásnak a következőket kell tennie a mikrofon jóváhagyásának megkérdezése **előtt** (például az `AppCapability.RequestAccessAsync` API használatával):
 
-A további követelmények az, hogy a Segéd-alkalmazásnak a következőket kell tennie:
+1. Egyértelmű és jól látható módon jelzi, hogy az alkalmazás szeretne-e hallgatni egy kulcsszót a felhasználó hangjára, *még akkor is, ha az alkalmazás nem fut*, és szeretné, ha a felhasználó beleegyezik
+1. Az adathasználattal és az adatvédelmi szabályzatokkal kapcsolatos releváns információk, például a hivatalos adatvédelmi nyilatkozatra mutató hivatkozás
+1. Kerülje az irányelvek vagy a vezető megfogalmazás elkerülését (például "kattintson az Igen elemre a következő üzenetben") az élmény folyamatában, amely kizárja a hangrögzítési viselkedést
 
-1. A mikrofon jóváhagyásának **megkezdése előtt** (például az `AppCapability.RequestAccessAsync` API használatával) adja meg azt a felhasználót, akit a Segéd-alkalmazás szeretne hallgatni egy kulcsszót felhasználó hangján, még akkor is, ha az alkalmazás nem fut, és szeretné, ha a felhasználó beleegyezik
-2. A mikrofon elérésének vagy az API-k használatának **megkezdése előtt** adja meg az adatfelhasználással és az `Windows.ApplicationModel.ConversationalAgent` adatvédelmi szabályzatokkal kapcsolatos összes releváns információt
-3. Kerülje az irányelvek vagy a vezető megfogalmazás elkerülését (például "kattintson az Igen gombra a következő üzenetnél") az élmény folyamatában a hangrögzítési viselkedés kihagyása és az engedély kérelmezése érdekében
-
-Ha ezek a követelmények teljesülnek, egy jogosult segéd-alkalmazás jelenik meg a hangaktiválásra `enabled` jogosult alkalmazások listájában a mikrofonos hozzáférés engedélyezése után.
+Ha egy alkalmazás végrehajtja a fentieket, a hangaktiválási funkciót és a mikrofon belefoglalását is lehetővé teszi. További információért forduljon a szolgáltatáshoz, winvoiceassistants@microsoft.com és tekintse át az első használat élményét.
 
 > [!NOTE]
 > A zárolás feletti Hangaktiválás nem jogosult a mikrofonos hozzáférés automatikus engedélyezésére, és továbbra is szükség van a felhasználóra, hogy meglátogassa a Hangaktiválás adatvédelmi lapját, amely lehetővé teszi a fenti zárolási hozzáférés engedélyezését egy asszisztens számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a Windows hangalapú asszisztensekkel kapcsolatos ajánlott eljárásokról](windows-voice-assistants-best-practices.md)

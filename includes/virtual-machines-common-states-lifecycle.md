@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: shandilvarun
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179058"
 ---
 Az Azure Virtual Machines (VM-EK) különböző állapotokon haladnak át, amelyek beoszthatók *kiépítés* és *energiaellátási* állapotba. Ennek a cikknek a célja, hogy leírja ezeket az állapotokat, és kiemelje, hogy mikor kell kiszámítani az ügyfeleket a példányok használatáért. 
@@ -29,7 +29,7 @@ A következő táblázat ismerteti az egyes példányok állapotát, és azt jel
 <table>
 <tr>
 <th>
-Állapot
+Állam
 </th>
 <th>
 Leírás
@@ -40,7 +40,7 @@ Példány használati számlázása
 </tr>
 <tr>
 <td>
-<p><b>Indítása</b></p>
+<p><b>Indítás</b></p>
 </td>
 <td>
 <p>A virtuális gép elindul.</p>
@@ -210,7 +210,7 @@ Az alábbi átmeneti művelet azt jelzi, hogy a platform elfogadta a felhasznál
 </tr>
 <tr>
 <td width="162">
-<p><b>Törlése</b></p>
+<p><b>Törlés</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -228,7 +228,7 @@ Az alábbi átmeneti művelet azt jelzi, hogy a platform elfogadta a felhasznál
 </td>
 <td width="366">
 <p>Ha egy virtuális gépet operációs rendszer rendszerképével hoztak létre, és nem speciális képpel, akkor a következő alállapotok figyelhetők meg:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; , hogy a virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. <p /> 
+<p>1. <b>OSProvisioningInprogress</b> &ndash; A virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Az alábbi átmeneti művelet azt jelzi, hogy a platform elfogadta a felhasznál
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; rövid életű állapot. A virtuális gép gyorsan átvált a **sikerre** , kivéve, ha a bővítményeket telepíteni kell. A bővítmények telepítése időt vehet igénybe. <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; Rövid életű állapot. A virtuális gép gyorsan átvált a **sikerre** , kivéve, ha a bővítményeket telepíteni kell. A bővítmények telepítése időt vehet igénybe. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>

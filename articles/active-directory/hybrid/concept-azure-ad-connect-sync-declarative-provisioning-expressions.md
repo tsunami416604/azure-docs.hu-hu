@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245507"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítési kifejezések ismertetése
@@ -72,19 +72,19 @@ A rendszer a következő paramétert adja meg, amely a jelenleg futó összeköt
 A következő operátorok használhatók:
 
 * **Összehasonlítás**: <, <=,  <>, =, >, >=
-* **Matematika**: +,-, \*,-
+* **Matematika**: +,-, \* ,-
 * **Karakterlánc**: & (összefűzés)
 * **Logikai**:  &&  (és), | | vagy
 * **Kiértékelési sorrend**: ()
 
-A kezelők kiértékelése balról jobbra történik, és ugyanaz a kiértékelési prioritás. Vagyis a (szorzó \* ) nem lesz kiértékelve a-(kivonási) előtt. 2\*(5 + 3) nem ugyanaz, mint 2\*5 + 3. A szögletes zárójelek () a kiértékelési sorrend módosítására szolgálnak, ha a jobb oldali kiértékelési sorrend nem megfelelő.
+A kezelők kiértékelése balról jobbra történik, és ugyanaz a kiértékelési prioritás. Vagyis a \* (szorzó) nem lesz kiértékelve a-(kivonási) előtt. 2 \* (5 + 3) nem ugyanaz, mint 2 \* 5 + 3. A szögletes zárójelek () a kiértékelési sorrend módosítására szolgálnak, ha a jobb oldali kiértékelési sorrend nem megfelelő.
 
 ## <a name="multi-valued-attributes"></a>Többértékű attribútumok
 A függvények egyértékű és több értékű attribútumokon is működhetnek. A többértékű attribútumok esetében a függvény minden értéknél működik, és minden értékhez ugyanazt a függvényt alkalmazza.
 
 Például:  
 `Trim([proxyAddresses])`Végezze el a proxyAddress attribútum minden értékének vágását.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`A @-sign-val minden értéknél cserélje le a tartományt @contoso.coma következőre:.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`A-val minden értéknél @-sign cserélje le a tartományt a következőre: @contoso.com .  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Keresse meg a SIP-címeket, és távolítsa el az értékek közül.
 
 ## <a name="next-steps"></a>További lépések

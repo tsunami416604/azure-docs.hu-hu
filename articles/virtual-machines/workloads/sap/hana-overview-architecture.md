@@ -14,10 +14,9 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616953"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
@@ -57,5 +56,5 @@ A HANA nagyméretű példányok különböző dokumentumai a következő terüle
 - [Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
 - [Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
-**További lépések**
+**Következő lépések**
 - Tekintse át [a feltételeket](hana-know-terms.md)

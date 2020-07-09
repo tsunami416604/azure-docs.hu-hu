@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b352458b768c997f295596a7cbd5e8c02f843a9f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84342986"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge"></a>Számítási hálózat engedélyezése a Azure Stack Edge-ben
 
@@ -62,7 +61,7 @@ A következő lépésekkel adhat hozzá egy webkiszolgáló-alkalmazás-modult a
 3. A **IoT Edge egyéni modulok** panelen:
 
     1. Adja meg a telepíteni kívánt webkiszolgáló-modul **nevét** .
-    2. Adjon meg egy **rendszerkép-URI** -t a modul rendszerképéhez. A megadott névvel és címkékkel egyező modul beolvasása. Ebben az esetben egy `nginx:stable` stabil Nginx-rendszerképet fog lekérni a nyilvános [Docker-tárházból](https://hub.docker.com/_/nginx/).
+    2. Adjon meg egy **rendszerkép-URI** -t a modul rendszerképéhez. A megadott névvel és címkékkel egyező modul beolvasása. Ebben az esetben `nginx:stable` egy stabil Nginx-rendszerképet fog lekérni a nyilvános [Docker-tárházból](https://hub.docker.com/_/nginx/).
     3. Illessze be a következő mintakód a **tároló létrehozási beállításai**között:  
 
         ```

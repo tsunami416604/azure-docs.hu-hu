@@ -9,12 +9,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 3a3d3b990c750e96b840676097bb3677606bf68b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187277"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -83,11 +82,11 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 
 -    A projektek/csomagok SSIS-adatbázisának (SSISDB) üzemeltetéséhez a Azure SQL Database három további konfigurációjának/változatának támogatása:
 -    SQL Database virtuális hálózati szolgáltatásbeli végpontokkal
--    SQL Managed Instance
+-    Felügyelt SQL-példány
 -    Rugalmas készlet
 -    Egy klasszikus virtuális hálózatra épülő Azure Resource Manager virtuális hálózat támogatása a jövőben elavulttá válik, ami lehetővé teszi az Azure-SSIS integrációs modul beléptetését vagy csatlakoztatását egy, a virtuális hálózati szolgáltatás végpontokkal/MI/helyszíni adateléréssel SQL Database konfigurált virtuális hálózathoz. További információkért lásd még: [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Azure Active Directory-(Azure AD-) hitelesítés és SQL-hitelesítés támogatása a SSISDB való kapcsolódáshoz, az Azure AD-hitelesítés engedélyezése a Data Factory felügyelt identitásával az Azure-erőforrásokhoz
--    A saját helyszíni SQL Server licencének támogatásával jelentős költségmegtakarítást érhet el az Azure Hybrid Benefit lehetőséggel
+-    A meglévő SQL Server licencének támogatásával jelentős költségmegtakarítást érhet el az Azure Hybrid Benefit lehetőséggel
 -    Az Azure-SSIS integrációs modul Enterprise kiadásának támogatása, amely lehetővé teszi a speciális/prémium funkciók használatát, egy egyéni telepítési felületet a további összetevők/bővítmények és a partnerek ökoszisztémájának telepítéséhez. További információ: [Enterprise Edition, Custom Setup és harmadik féltől származó bővíthetőség a SSIS-hez az ADF-ben](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
 -    A SSIS mélyebb integrációja Data Factoryban, amely lehetővé teszi az első osztályú SSIS-csomagok elindítását/aktiválását Data Factory folyamatokban, és a SSMS keresztül ütemezhetik azokat. További információ: az [ETL/elt-munkafolyamatok modernizálása és kiterjesztése SSIS-tevékenységekkel az ADF](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)-folyamatokban.
 
@@ -126,7 +125,7 @@ A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amel
 
 A társított szolgáltatásoknak két célja van Data Factoryban:
 
-- Egy olyan *adattár* képviseletére, amely tartalmazza, de nem korlátozódik a helyszíni SQL Server példányra, egy Oracle Database-példányra, egy fájlmegosztás vagy egy Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
+- Egy olyan *adattár* képviseletére, amely tartalmaz, de nem korlátozódik a SQL Server példányra, egy Oracle-adatbázis példányára, egy fájlmegosztás vagy egy Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
 - Olyan *számítási erőforrás* jelölésére, amely egy tevékenység végrehajtását képes tárolni. A HDInsight struktúra tevékenység például egy HDInsight Hadoop-fürtön fut. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd: az [adatok átalakítása Azure Data Factoryban](transform-data.md).
 
 ### <a name="triggers"></a>Triggerek
@@ -266,7 +265,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * bigint
 * hosszú
 * szöveg
-* date
+* dátum
 * dátum/idő
 * datetime2
 * idő adattípusúra

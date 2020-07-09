@@ -3,8 +3,8 @@ title: Magas rendelkezésre állás és terheléselosztás – Azure AD Applicat
 description: A Traffic Distribution működése az alkalmazásproxy üzembe helyezésével. Az összekötők teljesítményének optimalizálására és a háttér-kiszolgálók terheléselosztásának használatára vonatkozó tippeket tartalmaz.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764587"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-összekötők és-alkalmazások magas rendelkezésre állása és terheléselosztása
 

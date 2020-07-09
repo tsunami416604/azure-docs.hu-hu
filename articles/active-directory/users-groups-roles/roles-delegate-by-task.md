@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117879"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -38,7 +38,7 @@ Alkalmazásproxy letiltása | Alkalmazás-rendszergazda |
 Összekötő szolgáltatás letöltése | Alkalmazás-rendszergazda | 
 Az összes konfiguráció olvasása | Alkalmazás-rendszergazda | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>Külső identitások/B2C
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ B2C-alkalmazások létrehozása | Globális rendszergazda |
 Vállalati alkalmazások létrehozása | Felhőalkalmazás-rendszergazda | alkalmazás-rendszergazda
 B2C-szabályzatok létrehozása, olvasása, frissítése és törlése | B2C IEF házirend rendszergazdája | 
 Identitás-szolgáltatók létrehozása, olvasása, frissítése és törlése | Külső identitás-szolgáltató rendszergazdája | 
-Jelszó-visszaállítási felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat rendszergazdája | 
-Profil-szerkesztési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat rendszergazdája | 
-Bejelentkezési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat rendszergazdája | 
-Regisztrációs felhasználói folyamat létrehozása, olvasása, frissítése és törlése |B2C felhasználói folyamat rendszergazdája | 
-Felhasználói attribútumok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat attribútumának rendszergazdája | 
+Jelszó-visszaállítási felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Külső azonosító – felhasználói folyamat rendszergazdája | 
+Profil-szerkesztési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Külső azonosító – felhasználói folyamat rendszergazdája | 
+Bejelentkezési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Külső azonosító – felhasználói folyamat rendszergazdája | 
+Regisztrációs felhasználói folyamat létrehozása, olvasása, frissítése és törlése |Külső azonosító – felhasználói folyamat rendszergazdája | 
+Felhasználói attribútumok létrehozása, olvasása, frissítése és törlése | Külső azonosító felhasználói flow-attribútumának rendszergazdája | 
 Felhasználók létrehozása, olvasása, frissítése és törlése | Felhasználói rendszergazda
 Az összes konfiguráció olvasása | Globális olvasó | 
 B2C-naplók olvasása | Globális olvasó ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 Vállalati tulajdonságok konfigurálása | Globális rendszergazda | 
 
 ## <a name="connect"></a>Kapcsolódás
+
+Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
+---- | --------------------- | ----------------
+Továbbító hitelesítés | Globális rendszergazda  | 
+Az összes konfiguráció olvasása | Globális olvasó | Globális rendszergazda  |
+Zökkenőmentes egyszeri bejelentkezés | Globális rendszergazda  | 
+
+## <a name="cloud-provisioning"></a>Felhőbeli kiépítés
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ Az összes konfiguráció olvasása | Directory-olvasók | Alapértelmezett felh
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Azure AD Domain Services példány létrehozása | Globális rendszergazda | 
-Az összes Azure AD Domain Services feladat végrehajtása | Azure AD DC-rendszergazdák csoport ([lásd a dokumentációt](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Az összes Azure AD Domain Services feladat végrehajtása | Azure AD DC-rendszergazdák csoport ([lásd a dokumentációt](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Az összes konfiguráció olvasása | AD DS szolgáltatást tartalmazó Azure-előfizetés olvasója | 
 
 ## <a name="devices"></a>Eszközök
@@ -153,17 +161,18 @@ SharePoint Online-webhelyek hozzáadása a katalógushoz | Globális rendszergaz
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Licenc hozzárendelése | Felhasználói rendszergazda | 
-Csoport létrehozása | Felhasználói rendszergazda | 
+Csoport létrehozása | Csoportok rendszergazdája | Felhasználói rendszergazda
 Csoport vagy alkalmazás hozzáférési felülvizsgálatának létrehozása, frissítése vagy törlése | Felhasználói rendszergazda | 
 Csoport lejáratának kezelése | Felhasználói rendszergazda | 
 Csoportbeállítások kezelése | Csoportok rendszergazdája | Felhasználói rendszergazda | 
 Az összes konfiguráció olvasása (kivéve a rejtett tagságot) | Directory-olvasók | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Rejtett tagság olvasása | Csoporttag | Csoport tulajdonosa, jelszó-rendszergazda, Exchange-rendszergazda, SharePoint-rendszergazda, csapat rendszergazdája, felhasználói rendszergazda
 Rejtett tagsággal rendelkező csoportok tagságának olvasása | Segélyszolgálat rendszergazdája | Felhasználói rendszergazda, csapat rendszergazdája
-Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc visszavonása | Licencek rendszergazdája | Felhasználói rendszergazda
 Csoporttagság frissítése | Csoport tulajdonosa ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói rendszergazda
 Csoport tulajdonosainak frissítése | Csoport tulajdonosa ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói rendszergazda
 Csoport tulajdonságainak frissítése | Csoport tulajdonosa ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói rendszergazda
+Csoport törlése | Csoportok rendszergazdája | Felhasználói rendszergazda
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -184,10 +193,10 @@ Biztonsági rések beolvasása | Biztonsági olvasó |
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc hozzárendelése | Licencek rendszergazdája | Felhasználói rendszergazda
 Az összes konfiguráció olvasása | Directory-olvasók | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
-Előfizetés kipróbálása vagy megvásárlása | Számlázási rendszergazda | 
+Licenc visszavonása | Licencek rendszergazdája | Felhasználói rendszergazda
+Előfizetés kipróbálása vagy megvásárlása | Számlázási adminisztrátor | 
 
 
 ## <a name="monitoring---audit-logs"></a>Figyelés – naplók
@@ -273,6 +282,8 @@ Az összes konfiguráció olvasása | Alapértelmezett felhasználói szerepkör
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Hitelesítési módszerek konfigurálása | Globális rendszergazda | 
+Jelszavas védelem konfigurálása | Biztonsági rendszergazda
+Az intelligens zárolás konfigurálása | Biztonsági rendszergazda
 Az összes konfiguráció olvasása | Globális olvasó | 
 
 ## <a name="security---conditional-access"></a>Biztonság – feltételes hozzáférés
@@ -324,7 +335,7 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Felhasználó hozzáadása a címtárbeli szerepkörhöz | Kiemelt szerepkörű rendszergazda | 
 Felhasználó felvétele a csoportba | Felhasználói rendszergazda | 
-Licenc hozzárendelése | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc hozzárendelése | Licencek rendszergazdája | Felhasználói rendszergazda
 Vendég felhasználó létrehozása | Vendég meghívója | Felhasználói rendszergazda
 Felhasználó létrehozása | Felhasználói rendszergazda | 
 Felhasználók törlése | Felhasználói rendszergazda | 
@@ -335,7 +346,7 @@ Alapszintű konfiguráció olvasása | Alapértelmezett felhasználói szerepkö
 Korlátozott rendszergazdák jelszavának alaphelyzetbe állítása (lásd: dokumentáció) | Felhasználói rendszergazda | 
 Nem rendszergazdák jelszavának alaphelyzetbe állítása (lásd: dokumentáció) | Jelszókezelő | Felhasználói rendszergazda
 Emelt szintű rendszergazdák jelszavának alaphelyzetbe állítása | Kiemelt jogosultságú hitelesítés rendszergazdája | 
-Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc visszavonása | Licencek rendszergazdája | Felhasználói rendszergazda
 Az összes tulajdonság frissítése az egyszerű felhasználónév kivételével | Felhasználói rendszergazda | 
 Egyszerű felhasználónevek frissítése korlátozott rendszergazdák számára (lásd: dokumentáció) | Felhasználói rendszergazda | 
 Az egyszerű felhasználónév tulajdonság frissítése a Kiemelt rendszergazdáknál (lásd: dokumentáció) | Globális rendszergazda | 

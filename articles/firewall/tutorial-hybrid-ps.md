@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálh
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 37bb28419f23fee2c179171a2e5c0e4e851ac9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611186"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -71,7 +71,7 @@ Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című 
 
 A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell-referenciát](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
 
@@ -464,7 +464,7 @@ Az Azure Portalról csatlakozzon a **VM-Onprem** virtuális géphez.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse\<meg a http://VM-küllő-\>01 magánhálózati IP-címét.
+Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse meg a http:// \<VM-spoke-01 private IP\> .
 
 Az Internet Information Services alapértelmezett oldalának kell megjelennie.
 
@@ -489,7 +489,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kell lennie. A módosított szabályok ellenőrzése előtt zárja be a meglévő távoli asztalokat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 

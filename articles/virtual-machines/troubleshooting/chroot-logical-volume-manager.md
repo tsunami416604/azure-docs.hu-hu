@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74684134"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linux rendszerű virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzolhoz, és a lemez elrendezése az LVM (logikai kötet kezelője) használatával történik.
@@ -143,7 +142,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 A parancsok segítségével telepítheti, eltávolíthatja és frissítheti a szoftvereket. A virtuális gépek hibaelhárítása a hibák elhárítása érdekében.
 
 
-Futtassa a lsblk parancsot, és a/Rescue most/és/Rescue/boot van/boot ![](./media/chroot-logical-volume-manager/chrooted.png)
+Futtassa a lsblk parancsot, és a/Rescue most/és/Rescue/boot ![ van/boot](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Javítások végrehajtása
 
@@ -171,13 +170,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 A **grep** -parancs felsorolja azokat a kerneleket, amelyekkel a **grub. cfg** tisztában van.
 ![Kernelek](./media/chroot-logical-volume-manager/kernels.png)
 
-**GRUB2 – a editenv listája** megjeleníti, hogy melyik kernel lesz betöltve ![a következő rendszerindítási kernel alapértelmezett beállításakor](./media/chroot-logical-volume-manager/kernel-default.png)
+**GRUB2 – a editenv listája** megjeleníti, hogy melyik kernel lesz betöltve a következő rendszerindítási ![ kernel alapértelmezett beállításakor](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**GRUB2 – az alapértelmezett** érték egy másik kernel ![GRUB2-készletre való váltásra szolgál](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**GRUB2 – az alapértelmezett** érték egy másik kernel GRUB2-készletre való váltásra szolgál ![](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-**GRUB2 – a editenv** listája megjeleníti, melyik kernel lesz betöltve a ![következő rendszerindításkor: új kernel](./media/chroot-logical-volume-manager/kernel-new.png)
+**GRUB2 – a editenv** listája megjeleníti, melyik kernel lesz betöltve a következő rendszerindításkor: ![ új kernel](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**GRUB2-mkconfig** újraépíti a grub. cfg-t a ![szükséges GRUB2-mkconfig használatával](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**GRUB2-mkconfig** újraépíti a grub. cfg-t a szükséges ![ GRUB2-mkconfig használatával](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
@@ -190,7 +189,7 @@ Futtassa a **LVS** parancsot annak ellenőrzéséhez, hogy mely **LVS** érhető
 
 Kilépés a **kromát** -környezetből a szükséges **lv** -vel
 
-![Speciális](./media/chroot-logical-volume-manager/advanced.png)
+![Felsőfokú](./media/chroot-logical-volume-manager/advanced.png)
 
 Most futtassa ismét a **kromát** -környezetet
 
@@ -198,14 +197,14 @@ Most futtassa ismét a **kromát** -környezetet
 
 Minden LVs csatlakoztatott partícióként kell látni
 
-![Speciális](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Felsőfokú](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 A telepített **kernel** lekérdezése
 
-![Speciális](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Felsőfokú](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-Ha szükséges, távolítsa el vagy frissítse a speciális **kernelt**
-![](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+Ha szükséges, távolítsa el vagy frissítse a speciális **kernelt** 
+ ![](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>3. példa – soros konzol engedélyezése
@@ -252,15 +251,15 @@ umount /rescue
 
 Válassza le a lemezt a mentési virtuális gépről, és hajtson végre egy lapozófájlt.
 
-Válassza ki a virtuális gépet a **portálon** , **és válassza**a lemez leválasztása lehetőséget
-![.](./media/chroot-logical-volume-manager/detach-disk.png) 
+Válassza ki a virtuális gépet a **portálon** , **és válassza a** 
+ lemez leválasztása lehetőséget. ![](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-A módosítások ![mentése leválasztás mentése](./media/chroot-logical-volume-manager/save-detach.png) 
+A módosítások mentése ![ Leválasztás mentése](./media/chroot-logical-volume-manager/save-detach.png) 
 
 A lemez mostantól elérhetővé válik, amely lehetővé teszi, hogy a rendszer megcserélje az érintett virtuális gép eredeti operációsrendszer-lemezét.
 
-Navigáljon a Azure Portal a hibát okozó virtuális géphez, és válassza a **lemezeket** -> **felcserélő operációsrendszer-lemez**
-![cseréje lemezt](./media/chroot-logical-volume-manager/swap-disk.png) 
+Navigáljon a Azure Portal a hibát okozó virtuális géphez, és válassza a **lemezeket**  ->  **felcserélő operációsrendszer-lemez** 
+ ![ cseréje lemezt](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 Hajtsa végre a mezőket a **kiválasztott lemez** az előző lépésben leválasztott pillanatkép-lemez. Az érintett virtuális gép virtuálisgép-nevét is meg kell adni, majd kattintson az **OK gombra** .
 

@@ -1,21 +1,13 @@
 ---
 title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus használatával
 description: Ismerteti, hogyan optimalizálható a teljesítmény a Service Bus használatával a felügyelt üzenetek cseréjekor.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 03/12/2020
-ms.author: aschhab
-ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: e0a6e54c1e941d7b7ff244ac40066a564e2ebbc4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341108"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
 
@@ -53,11 +45,11 @@ További információ a .NET Standard szintű platform támogatásáról: [.net-
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Service Bus az ügyfélalkalmazások, például a [`IQueueClient`][QueueClient] vagy [`IMessageSender`][MessageSender]a implementációját, regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott). Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat vagy üzenetsor-kezelést, témakört és előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Service Bus az ügyfélalkalmazások, például a vagy a implementációját, [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott). Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat vagy üzenetsor-kezelést, témakört és előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Service Bus-objektumok, például a `QueueClient` vagy `MessageSender`a egy [MessagingFactory][MessagingFactory] objektumon keresztül jönnek létre, amely a kapcsolatok belső felügyeletét is biztosítja. Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat vagy üzenetsor-kezelést, témakört és előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Service Bus-objektumok, például `QueueClient` a vagy a `MessageSender` egy [MessagingFactory][MessagingFactory] objektumon keresztül jönnek létre, amely a kapcsolatok belső felügyeletét is biztosítja. Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat vagy üzenetsor-kezelést, témakört és előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
 
 ---
 
@@ -115,7 +107,7 @@ Az alábbi kód egy aszinkron fogadási műveletre mutat példát.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-A teljes <a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">forráskódra vonatkozó példákat <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>a GitHub-tárházban tekintheti meg:
+A teljes <a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">forráskódra vonatkozó példákat <span class="docon docon-navigate-external x-hidden-focus"></span> </a>a GitHub-tárházban tekintheti meg:
 
 ```csharp
 var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
@@ -143,7 +135,7 @@ Az `MessageReceiver` objektum példánya a következő: a kapcsolatok karakterl�
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-A teljes <a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">forráskódra vonatkozó példákat <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>a GitHub-tárházban tekintheti meg:
+A teljes <a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">forráskódra vonatkozó példákat <span class="docon docon-navigate-external x-hidden-focus"></span> </a>a GitHub-tárházban tekintheti meg:
 
 ```csharp
 var factory = MessagingFactory.CreateFromConnectionString(connectionString);
@@ -163,15 +155,15 @@ receiver.OnMessageAsync(
     });
 ```
 
-A `MessagingFactory` létrehoz egy `factory` objektumot a kapcsolatok sztringből. A példányt `factory` a példánya `MessageReceiver` hozza létre. Ezután a `receiver` példány az üzenetkezelő kezelő regisztrálására szolgál.
+A `MessagingFactory` létrehoz egy `factory` objektumot a kapcsolatok sztringből. A `factory` példányt a példánya hozza `MessageReceiver` létre. Ezután a `receiver` példány az üzenetkezelő kezelő regisztrálására szolgál.
 
 ---
 
 ## <a name="receive-mode"></a>Fogadási mód
 
-Üzenetsor vagy előfizetési ügyfél létrehozásakor megadhat egy fogadási módot: *betekintés zárolás* vagy *fogadás és törlés*. Az alapértelmezett fogadási mód a `PeekLock`. Ha az alapértelmezett módban működik, az ügyfél kérést küld, hogy üzenetet kapjon Service Busról. Miután az ügyfél megkapta az üzenetet, elküld egy kérést az üzenet végrehajtásához.
+Üzenetsor vagy előfizetési ügyfél létrehozásakor megadhat egy fogadási módot: *betekintés zárolás* vagy *fogadás és törlés*. Az alapértelmezett fogadási mód a `PeekLock` . Ha az alapértelmezett módban működik, az ügyfél kérést küld, hogy üzenetet kapjon Service Busról. Miután az ügyfél megkapta az üzenetet, elküld egy kérést az üzenet végrehajtásához.
 
-A fogadási mód `ReceiveAndDelete`beállításakor mindkét lépés egyetlen kérelemben van egyesítve. Ezek a lépések csökkentik a műveletek teljes számát, és javítják az üzenetek teljes átviteli sebességét. Ez a teljesítmény az üzenetek elvesztésének kockázatával jár.
+A fogadási mód beállításakor `ReceiveAndDelete` mindkét lépés egyetlen kérelemben van egyesítve. Ezek a lépések csökkentik a műveletek teljes számát, és javítják az üzenetek teljes átviteli sebességét. Ez a teljesítmény az üzenetek elvesztésének kockázatával jár.
 
 A Service Bus nem támogatja a fogadási és törlési műveletek tranzakcióit. Emellett a betekintés-zárolás szemantikai követelménye minden olyan esetben szükséges, amikor az ügyfél késleltetni vagy [kézbesíteni](service-bus-dead-letter-queues.md) kívánja az üzenetet.
 
@@ -203,7 +195,7 @@ var factory = MessagingFactory.Create(namespaceUri, settings);
 A kötegelt feldolgozás nem befolyásolja a számlázható üzenetkezelési műveletek számát, és csak a [Microsoft. ServiceBus. Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) függvénytár használatával érhető el a Service Bus ügyfél protokollja számára. A HTTP protokoll nem támogatja a kötegelt feldolgozást.
 
 > [!NOTE]
-> A `BatchFlushInterval` beállítás biztosítja, hogy a kötegelt feldolgozás implicit legyen az alkalmazás szemszögéből. i.e. az alkalmazás kezdeményez `SendAsync` és `CompleteAsync` hív, és nem hajt végre konkrét batch-hívásokat.
+> A beállítás `BatchFlushInterval` biztosítja, hogy a kötegelt feldolgozás implicit legyen az alkalmazás szemszögéből. i.e. az alkalmazás kezdeményez `SendAsync` és `CompleteAsync` hív, és nem hajt végre konkrét batch-hívásokat.
 >
 > A explicit ügyféloldali kötegelt feldolgozást az alábbi metódus hívásával lehet megvalósítani:
 > ```csharp
@@ -226,7 +218,7 @@ Az ezen intervallumban megjelenő további tárolási műveletek hozzáadódnak 
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-A kötegelt tárolás hozzáférésének letiltásához szüksége lesz egy példányára `ManagementClient`. Hozzon létre egy üzenetsor-leírást, amely a `EnableBatchedOperations` tulajdonságot `false`állítja be.
+A kötegelt tárolás hozzáférésének letiltásához szüksége lesz egy példányára `ManagementClient` . Hozzon létre egy üzenetsor-leírást, amely a `EnableBatchedOperations` tulajdonságot állítja be `false` .
 
 ```csharp
 var queueDescription = new QueueDescription(path)
@@ -243,7 +235,7 @@ További információkat a következő cikkekben talál:
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-A kötegelt tárolás hozzáférésének letiltásához szüksége lesz egy példányára `NamespaceManager`. Hozzon létre egy üzenetsor-leírást, amely a `EnableBatchedOperations` tulajdonságot `false`állítja be.
+A kötegelt tárolás hozzáférésének letiltásához szüksége lesz egy példányára `NamespaceManager` . Hozzon létre egy üzenetsor-leírást, amely a `EnableBatchedOperations` tulajdonságot állítja be `false` .
 
 ```csharp
 var queueDescription = new QueueDescription(path)
@@ -264,7 +256,7 @@ A batchd Store-hozzáférés nem befolyásolja a számlázható üzenetkezelési
 
 ## <a name="prefetching"></a>Prefetching
 
-A [beolvasás](service-bus-prefetch.md) lehetővé teszi, hogy a várólista vagy az előfizetési ügyfél további üzeneteket töltsön be a szolgáltatásból, amikor fogadási műveletet hajt végre. Az ügyfél helyi gyorsítótárban tárolja ezeket az üzeneteket. A gyorsítótár méretét a vagy `QueueClient.PrefetchCount` `SubscriptionClient.PrefetchCount` a tulajdonságok határozzák meg. Minden olyan ügyfél, amely lehetővé teszi, hogy az előhívások saját gyorsítótárat tároljanak. A rendszer nem osztja meg a gyorsítótárat az ügyfelek között. Ha az ügyfél fogadási műveletet kezdeményez, és a gyorsítótára üres, a szolgáltatás egy köteg üzenetet küld. A köteg mérete megegyezik a gyorsítótár vagy a 256 KB-os méretével, attól függően, hogy melyik a kisebb. Ha az ügyfél fogadási műveletet kezdeményez, és a gyorsítótár egy üzenetet tartalmaz, a rendszer az üzenetet a gyorsítótárból veszi át.
+A [beolvasás](service-bus-prefetch.md) lehetővé teszi, hogy a várólista vagy az előfizetési ügyfél további üzeneteket töltsön be a szolgáltatásból, amikor fogadási műveletet hajt végre. Az ügyfél helyi gyorsítótárban tárolja ezeket az üzeneteket. A gyorsítótár méretét a vagy a tulajdonságok határozzák `QueueClient.PrefetchCount` meg `SubscriptionClient.PrefetchCount` . Minden olyan ügyfél, amely lehetővé teszi, hogy az előhívások saját gyorsítótárat tároljanak. A rendszer nem osztja meg a gyorsítótárat az ügyfelek között. Ha az ügyfél fogadási műveletet kezdeményez, és a gyorsítótára üres, a szolgáltatás egy köteg üzenetet küld. A köteg mérete megegyezik a gyorsítótár vagy a 256 KB-os méretével, attól függően, hogy melyik a kisebb. Ha az ügyfél fogadási műveletet kezdeményez, és a gyorsítótár egy üzenetet tartalmaz, a rendszer az üzenetet a gyorsítótárból veszi át.
 
 Egy üzenet előhívásakor a szolgáltatás zárolja az előhívott üzenetet. A zárolással az előhívott üzenetet nem lehet egy másik fogadótól fogadni. Ha a fogadó nem tudja befejezni az üzenetet a zárolás lejárta előtt, az üzenet elérhetővé válik más fogadók számára. Az üzenet előre beolvasott másolata a gyorsítótárban marad. A lejárt gyorsítótárazott példányt használó fogadó kivételt fog kapni, amikor megpróbálja befejezni az üzenetet. Alapértelmezés szerint az üzenet zárolása 60 másodperc után lejár. Ez az érték 5 percre bővíthető. A lejárt üzenetek felhasználásának megakadályozásához a gyorsítótár méretének mindig kisebbnek kell lennie, mint az ügyfél által a zárolási időkorlát intervallumában felhasználható üzenetek száma.
 
@@ -297,13 +289,13 @@ További információkért lásd a következő `PrefetchCount` tulajdonságokat:
 > [!NOTE]
 > Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus SDK nem tesz elérhetővé batch-függvényeket.
 
-Habár a több üzenet előhívásával kapcsolatos fogalmak hasonló szemantikai jellemzőkkel rendelkeznek a Batch (`ReceiveBatch`) üzeneteinek feldolgozásához, néhány kisebb eltérést kell szem előtt tartania, amikor ezeket együtt használják.
+Habár a több üzenet előhívásával kapcsolatos fogalmak hasonló szemantikai jellemzőkkel rendelkeznek a Batch () üzeneteinek feldolgozásához `ReceiveBatch` , néhány kisebb eltérést kell szem előtt tartania, amikor ezeket együtt használják.
 
-A kiküldés egy konfiguráció (vagy mód) az`QueueClient` ügyfélen `SubscriptionClient`(és `ReceiveBatch` ), és egy művelet (amely a kérés-válasz szemantikagal rendelkezik).
+A kiküldés egy konfiguráció (vagy mód) az ügyfélen ( `QueueClient` és `SubscriptionClient` ), és `ReceiveBatch` egy művelet (amely a kérés-válasz szemantikagal rendelkezik).
 
 Ha ezeket együtt használja, vegye figyelembe a következő eseteket:
 
-* A prefektusnak nagyobbnak vagy egyenlőnek kell lennie, mint a várt üzenetek száma `ReceiveBatch`.
+* A prefektusnak nagyobbnak vagy egyenlőnek kell lennie, mint a várt üzenetek száma `ReceiveBatch` .
 * A kiállítók akár n/3-szor is lehetnek a feldolgozott üzenetek másodpercenkénti száma, ahol n az alapértelmezett zárolási időtartam.
 
 Vannak olyan kihívások, amelyek kapzsi megközelítéssel rendelkeznek (azaz a visszahívások száma nagyon magas), mert ez azt jelenti, hogy az üzenet egy adott fogadó számára van zárolva. A javaslat célja, hogy kipróbálja a fenti küszöbértékek közötti kiugró értékeket, és empirikusan azonosítsa, hogy mi illik hozzá.
@@ -317,9 +309,9 @@ Ha a várt terhelést egyetlen üzenetsor vagy témakör nem tudja kezelni, töb
 > [!NOTE]
 > Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus SDK nem teszi elérhetővé ezt a funkciót.
 
-Service Bus rendelkezik egy, a fejlesztéshez használt funkcióval, amelyet **soha nem szabad éles konfigurációban használni**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering].
+Service Bus rendelkezik egy, a fejlesztéshez használt funkcióval, amelyet **soha nem szabad éles konfigurációban használni**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
-Ha új szabályok vagy szűrők vannak hozzáadva a témakörhöz, [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] a segítségével ellenőrizheti, hogy az új szűrő kifejezés a várt módon működik-e.
+Ha új szabályok vagy szűrők vannak hozzáadva a témakörhöz, a segítségével [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] ellenőrizheti, hogy az új szűrő kifejezés a várt módon működik-e.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -355,7 +347,7 @@ Cél: a várólista vagy témakör végpontok közötti késésének csökkenté
 
 Cél: egy üzenetsor vagy témakör maximális átviteli sebessége nagy számú küldővel. Mindegyik feladó mérsékelt sebességgel küld üzeneteket. A fogadók száma kicsi.
 
-Service Bus lehetővé teszi akár 1000 egyidejű kapcsolatot egy üzenetküldési entitással (vagy 5000 a AMQP használatával). Ez a korlát a névtér szintjén van kikényszerítve, és a várólisták/témakörök/előfizetések maximális száma a névtér egyidejű kapcsolatainak korlátja. A várólisták esetében ez a szám a küldők és a fogadók között van megosztva. Ha az összes 1000-kapcsolat szükséges a küldők számára, cserélje le a várólistát egy témakörre és egy előfizetésre. A témakörök legfeljebb 1000 egyidejű kapcsolatot fogadnak el a küldők között, míg az előfizetés további 1000 egyidejű kapcsolatokat fogad el a fogadók között. Ha több mint 1000 egyidejű küldőre van szükség, a küldőknek HTTP-n keresztül kell üzeneteket küldeniük a Service Bus protokollnak.
+A Service Bus akár 1000 egyidejű kapcsolatot tesz lehetővé egy üzenetküldési entitással. Ez a korlát a névtér szintjén van kikényszerítve, és a várólisták/témakörök/előfizetések maximális száma a névtér egyidejű kapcsolatainak korlátja. A várólisták esetében ez a szám a küldők és a fogadók között van megosztva. Ha az összes 1000-kapcsolat szükséges a küldők számára, cserélje le a várólistát egy témakörre és egy előfizetésre. A témakörök legfeljebb 1000 egyidejű kapcsolatot fogadnak el a küldők között, míg az előfizetés további 1000 egyidejű kapcsolatokat fogad el a fogadók között. Ha több mint 1000 egyidejű küldőre van szükség, a küldőknek HTTP-n keresztül kell üzeneteket küldeniük a Service Bus protokollnak.
 
 Az átviteli sebesség maximalizálása érdekében hajtsa végre a következő lépéseket:
 

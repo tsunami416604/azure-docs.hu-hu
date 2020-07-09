@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727687"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>A csoportok problémáinak elhárítása és megoldása
 
@@ -35,7 +34,7 @@ A nem rendszergazda felhasználók csoport létrehozásának letiltása a PowerS
    ```
 
   
-2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
+2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True` , akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
   
 
    ``` 
@@ -68,7 +67,7 @@ Jelenleg nem lehet automatikusan elindítani a csoportot a feldolgozás igény s
 | --- | --- | --- |
 | Hiba: az attribútum nem támogatott. |(User. invalidProperty-EQ "value") |(User. Department-EQ "value")<br/><br/>Győződjön meg arról, hogy az attribútum a [támogatott tulajdonságok listáján](groups-dynamic-membership.md#supported-properties)található. |
 | Hiba: az operátor nem támogatott az attribútumon. |(User. accountEnabled – igaz értéket tartalmaz) |(User. accountEnabled – EQ true)<br/><br/>A használt operátor nem támogatott a tulajdonság típusaként (ebben a példában a-tartalmazza a logikai típus nem használható). A tulajdonság típusához használja a megfelelő operátorokat. |
-| Hiba: a lekérdezés fordítási hibája. | 1. (felhasználó. részleg – EQ "értékesítés") (felhasználó. részleg – EQ "marketing")<br>2. (User. userPrincipalName-Match "*@domain.ext") | 1. hiányzó operátor. A és a vagy a két illesztési predikátum használata<br>(felhasználó. részleg – EQ "értékesítés") – vagy (User. Department-EQ "marketing")<br>2. hiba a-egyezéssel használt reguláris kifejezésben<br>(User. userPrincipalName-Match ". *@domain.ext")<br>vagy másik lehetőségként: (User. userPrincipalName-@domain.extMatch "$") |
+| Hiba: a lekérdezés fordítási hibája. | 1. (felhasználó. részleg – EQ "értékesítés") (felhasználó. részleg – EQ "marketing")<br>2. (User. userPrincipalName-Match "* @domain.ext ") | 1. hiányzó operátor. A és a vagy a két illesztési predikátum használata<br>(felhasználó. részleg – EQ "értékesítés") – vagy (User. Department-EQ "marketing")<br>2. hiba a-egyezéssel használt reguláris kifejezésben<br>(User. userPrincipalName-Match ". * @domain.ext ")<br>vagy másik lehetőségként: (User. userPrincipalName-Match " @domain.ext $") |
 
 ## <a name="next-steps"></a>További lépések
 

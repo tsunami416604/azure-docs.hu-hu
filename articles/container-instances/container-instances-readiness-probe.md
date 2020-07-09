@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárol
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935686"
 ---
 # <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
@@ -63,9 +62,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Start parancs
 
-Az üzemelő példány `command` egy olyan tulajdonságot határoz meg, amely a tároló első indításakor futtatott indítási parancsot határozza meg. Ez a tulajdonság karakterláncok tömbjét fogadja el. Ez a parancs egy olyan időpontot szimulál, amikor a webalkalmazás fut, de a tároló nem áll készen. 
+Az üzemelő példány egy olyan `command` tulajdonságot határoz meg, amely a tároló első indításakor futtatott indítási parancsot határozza meg. Ez a tulajdonság karakterláncok tömbjét fogadja el. Ez a parancs egy olyan időpontot szimulál, amikor a webalkalmazás fut, de a tároló nem áll készen. 
 
-Először indít el egy rendszerhéj-munkamenetet, és `node` futtat egy parancsot a webalkalmazás elindításához. Egy parancsot is elkezd 240 másodpercig alvó állapotba, amely után létrejön egy nevű `ready` fájl a `/tmp` címtárban:
+Először indít el egy rendszerhéj-munkamenetet, és futtat egy `node` parancsot a webalkalmazás elindításához. Egy parancsot is elkezd 240 másodpercig alvó állapotba, amely után létrejön egy nevű fájl `ready` a `/tmp` címtárban:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -73,9 +72,9 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>Készültségi parancs
 
-Ez a YAML-fájl `readinessProbe` meghatározza a készültségi vizsgálatként szolgáló `exec` készültségi parancsot. Ez a példa a készültségi parancs tesztelését vizsgálja a `ready` fájl meglétét `/tmp` a könyvtárban.
+Ez a YAML-fájl meghatározza a készültségi `readinessProbe` `exec` vizsgálatként szolgáló készültségi parancsot. Ez a példa a készültségi parancs tesztelését vizsgálja a fájl meglétét a `ready` `/tmp` könyvtárban.
 
-Ha a `ready` fájl nem létezik, a készültségi parancs nem nulla értékkel kilép. a tároló továbbra is fut, de nem érhető el. Ha a parancs sikeresen kilép a 0. kilépési kóddal, a tároló készen áll a hozzáférésre. 
+Ha a `ready` fájl nem létezik, a készültségi parancs nem nulla értékkel kilép, a tároló tovább fut, de nem érhető el. Ha a parancs sikeresen kilép a 0. kilépési kóddal, a tároló készen áll a hozzáférésre. 
 
 A `periodSeconds` tulajdonság kijelöli a készültségi parancsot 5 másodpercenként. A készültségi mintavétel a tároló csoport élettartamára fut.
 
@@ -91,7 +90,7 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 Ebben a példában az első 240 másodpercben a készültségi parancs meghiúsul, amikor ellenőrzi a `ready` fájl létezését. A visszaadott állapotkód azt jelzi, hogy a tároló nem áll készen.
 
-Ezek az események a Azure Portal vagy az Azure CLI-ből is megtekinthetők. A portálon például a következő típusú `Unhealthy` események jelennek meg, amikor a készültségi parancs sikertelen lesz. 
+Ezek az események a Azure Portal vagy az Azure CLI-ből is megtekinthetők. A portálon például a következő típusú események `Unhealthy` jelennek meg, amikor a készültségi parancs sikertelen lesz. 
 
 ![Portál sérült eseménye][portal-unhealthy]
 

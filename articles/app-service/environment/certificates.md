@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831879"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és a App Service Environment 
 
@@ -41,13 +41,16 @@ A bekészítés nem hozható létre, és nem tölthető fel a tanúsítvány egy
 
 Ha gyorsan szeretne létrehozni egy önaláírt tanúsítványt a teszteléshez, használhatja a következő PowerShell-t:
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 Önaláírt tanúsítvány létrehozásakor meg kell győződnie arról, hogy a tulajdonos nevének a CN = {ASE_NAME_HERE} _InternalLoadBalancingASE formátumúnak kell lennie.
 
 ## <a name="application-certificates"></a>Alkalmazás-tanúsítványok 
@@ -80,15 +83,18 @@ A tanúsítvány feltöltése az alkalmazásba a szolgáltatásban:
 
 A tanúsítvány minden olyan alkalmazás számára elérhető lesz, amely ugyanabban az App Service-csomagban van, mint az adott beállítás. Ha azt szeretné, hogy a különböző App Service-csomagban lévő alkalmazásokhoz is elérhető legyen, akkor meg kell ismételnie az alkalmazás-beállítási műveletet egy alkalmazásban az adott App Service tervben. A tanúsítvány beállításának megadásához nyissa meg a kudu-konzolt, és adja ki a következő parancsot a PowerShell hibakeresési konzolján:
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 A tesztelés végrehajtásához létrehozhat egy önaláírt tanúsítványt, és létrehozhatja a *. cer* fájlt a következő PowerShell-lel: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

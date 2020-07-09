@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653356"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS-sel való használathoz Windows Serveren
@@ -84,8 +83,8 @@ Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy va
 A MultiFactorAuthenticationAdfsAdapter.config fájl szerkesztéséhez kövesse az alábbi lépéseket:
 
 1. Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.  
-2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: *https:\/\/contoso.com/\<certificatename>/multifactorauthwebservicesdk/pfwssdk.asmx*, ahol * \<a certificatename>* a tanúsítvány neve.  
-3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter. ps1 parancsfájlt `-ConfigurationFilePath &lt;path&gt;` úgy, hogy hozzáadja a `Register-AdfsAuthenticationProvider` parancs végéhez, ahol * &lt;a Path&gt; * a MultiFactorAuthenticationAdfsAdapter. config fájl teljes elérési útja.
+2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: *https: \/ \/ contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, ahol a a *\<certificatename>* tanúsítvány neve.  
+3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 szkriptet úgy `-ConfigurationFilePath &lt;path&gt;` , hogy hozzáadja a `Register-AdfsAuthenticationProvider` parancs végéhez, ahol a * &lt; &gt; path* a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útja.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>A Web Service SDK konfigurálása felhasználónévvel és jelszóval
 

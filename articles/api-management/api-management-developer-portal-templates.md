@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430793"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Az Azure API Management fejlesztői portál testreszabása sablonok használatával
@@ -103,7 +102,7 @@ Az előző példában két olyan termék jelenik meg a fejlesztői portálon, am
 }
 ```
 
-A **Terméklista** sablonban szereplő jelölés feldolgozza az adatokat, hogy a termékek gyűjteményén keresztül megismételve adja meg a kívánt kimenetet, valamint az egyes termékekre mutató hivatkozást. Jegyezze fel `<search-control>` a `<page-control>` és a Markup elemeit. Ezek vezérlik a keresés és a lapozás vezérlőelem megjelenítését az oldalon. `ProductsStrings|PageTitleProducts`egy honosított karakterlánc-hivatkozás, amely tartalmazza `h2` az oldal fejlécének szövegét. A fejlesztői portál sablonjaiban használható karakterlánc-erőforrások, oldal-vezérlőelemek és ikonok listáját itt tekintheti meg: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
+A **Terméklista** sablonban szereplő jelölés feldolgozza az adatokat, hogy a termékek gyűjteményén keresztül megismételve adja meg a kívánt kimenetet, valamint az egyes termékekre mutató hivatkozást. Jegyezze `<search-control>` fel a és a `<page-control>` Markup elemeit. Ezek vezérlik a keresés és a lapozás vezérlőelem megjelenítését az oldalon. `ProductsStrings|PageTitleProducts`egy honosított karakterlánc-hivatkozás, amely tartalmazza az `h2` oldal fejlécének szövegét. A fejlesztői portál sablonjaiban használható karakterlánc-erőforrások, oldal-vezérlőelemek és ikonok listáját itt tekintheti meg: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>

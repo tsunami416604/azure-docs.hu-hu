@@ -10,11 +10,10 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700365"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Apache Storm az Azure HDInsight használatával – problémamegoldás
 
@@ -46,9 +45,9 @@ Ha az Azure Event Hubsból beolvasott topológiákat fejleszt az HDInsight Storm
 
 Az eltolások ellenőrzőpont-értékeit az Event hub kiöntő ZooKeeper tárolja két fő elérési úton:
 
-- A nem tranzakciós kiöntő ellenőrzőpontok a `/eventhubspout`ben tárolódnak.
+- A nem tranzakciós kiöntő ellenőrzőpontok a ben tárolódnak `/eventhubspout` .
 
-- A tranzakciós kiöntő ellenőrzőpont-adatkészletek tárolása a-ben `/transactional`történik.
+- A tranzakciós kiöntő ellenőrzőpont-adatkészletek tárolása a-ben történik `/transactional` .
 
 ### <a name="how-to-restore"></a>Visszaállítás
 
@@ -65,7 +64,7 @@ Az export parancs a metaadatokat egy Apache Hadoop elosztott fájlrendszer (HDFS
 #### <a name="export-offset-metadata"></a>Eltolási metaadatok exportálása
 
 1. Az SSH használatával nyissa meg a ZooKeeper-fürtöt azon a fürtön, amelyről az ellenőrzőpont-eltolást exportálni kívánja.
-2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy exportálja a `/stormmetadta/zkdata` ZooKeeper eltolási értékeit a HDFS elérési útjába:
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy exportálja a ZooKeeper eltolási értékeit a `/stormmetadta/zkdata` HDFS elérési útjába:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +73,7 @@ Az export parancs a metaadatokat egy Apache Hadoop elosztott fájlrendszer (HDFS
 #### <a name="import-offset-metadata"></a>Eltolási Metaadatok importálása
 
 1. Az SSH használatával nyissa meg a ZooKeeper-fürtöt azon a fürtön, amelyről az ellenőrzőpont-eltolást importálni kell.
-2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy az ZooKeeper-eltolási `/stormmetadata/zkdata` adatok importálása a HDFS elérési útjáról a cél fürt ZooKeeper-kiszolgálójára:
+2. Futtassa a következő parancsot (miután frissítette a HDP-verzió sztringjét), hogy az ZooKeeper-eltolási adatok importálása a HDFS elérési útjáról `/stormmetadata/zkdata` a cél fürt ZooKeeper-kiszolgálójára:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +90,9 @@ Az export parancs a metaadatokat egy Apache Hadoop elosztott fájlrendszer (HDFS
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hogyan megkeresni a Storm bináris fájljait egy fürtön?
 
-Az aktuális HDP-verem Storm bináris fájljai a `/usr/hdp/current/storm-client`következőben találhatók:. A hely ugyanaz, mint a fő csomópontok és a munkavégző csomópontok esetében.
+Az aktuális HDP-verem Storm bináris fájljai a következőben találhatók: `/usr/hdp/current/storm-client` . A hely ugyanaz, mint a fő csomópontok és a munkavégző csomópontok esetében.
 
-Több bináris fájl is lehet a/usr/HDP adott HDP-verzióihoz (például `/usr/hdp/2.5.0.1233/storm`). A `/usr/hdp/current/storm-client` mappa a fürtön futó legújabb verzióra van összekapcsolva.
+Több bináris fájl is lehet a/usr/HDP adott HDP-verzióihoz (például `/usr/hdp/2.5.0.1233/storm` ). A `/usr/hdp/current/storm-client` mappa a fürtön futó legújabb verzióra van összekapcsolva.
 
 További információ: [Kapcsolódás HDInsight-fürthöz SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/)használatával.
 
@@ -157,13 +156,13 @@ A Storm Services [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) konfigu
 
 ### <a name="on-head-nodes"></a>A fő csomópontokon
 
-A rendszer `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`beolvassa a Nimbus Log4J konfigurációját.
+A rendszer beolvassa a Nimbus Log4J konfigurációját `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
 ### <a name="on-worker-nodes"></a>Munkavégző csomópontokon
 
-A felügyelő Log4J- `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`konfigurációjának beolvasása.
+A felügyelő Log4J-konfigurációjának beolvasása `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
-A Worker Log4J konfigurációs fájljának olvasása: `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`.
+A Worker Log4J konfigurációs fájljának olvasása: `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
 Példák`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
@@ -172,9 +171,9 @@ Példák`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 
 ## <a name="not-a-leader-exception"></a>Nem vezető kivétel
 
-A topológia elküldésekor a felhasználó a következőhöz hasonló hibaüzenetet kaphat: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
+A topológia elküldésekor a felhasználó a következőhöz hasonló hibaüzenetet kaphat: `Topology submission exception, cause not a leader, the current leader is NimbusInfo` .
 
-A megoldáshoz előfordulhat, hogy a felhasználónak be kell állítania egy jegyet, hogy a csomópontok újraindulnak vagy újraindulnak. További információ: [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+A megoldáshoz előfordulhat, hogy a felhasználónak be kell állítania egy jegyet, hogy a csomópontok újraindulnak vagy újraindulnak. További információ: [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) .
 
 ---
 

@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus – áttelepítés közös hozzáférésű aláírás engedélyezésére
 description: Tudnivalók a Azure Active Directory Access Control Service áttelepítéséről a közös hozzáférésű aláírás engedélyezésére.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340122"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – Migrálás Azure Active Directory Access Control Serviceról a közös hozzáférésű aláírás engedélyezésére
 
@@ -29,11 +20,11 @@ Az SAS azzal az előnnyel jár, hogy az nem függ azonnal egy másik szolgáltat
 
 Az ACS-től függő összes meglévő alkalmazás esetében arra buzdítjuk az ügyfeleket, hogy az alkalmazásokat az SAS-re támaszkodva használják.
 
-## <a name="migration-scenarios"></a> Áttelepítési forgatókönyvek
+## <a name="migration-scenarios"></a>Migrálási forgatókönyvek
 
 Az ACS és a Service Bus az *aláírási kulcs*megosztott ismerete révén integrálhatók. Az aláíró kulcsot egy ACS-névtér használja az engedélyezési jogkivonatok aláírásához, és a Service Bus használja annak ellenőrzéséhez, hogy a tokent a párosított ACS-névtér adta-e ki. Az ACS-névtér a szolgáltatás identitásait és engedélyezési szabályait tartalmazza. Az engedélyezési szabályok határozzák meg, hogy melyik szolgáltatás-identitás vagy a külső Identitáskezelő által kiállított jogkivonat milyen típusú hozzáférést kap a Service Bus névtér-gráf egy részéhez, egy leghosszabb előtagú egyezés formájában.
 
-Egy ACS-szabály például megadhatja a **küldési** jogcímet az `/` elérési út előtagjaként egy szolgáltatás identitásának, ami azt jelenti, hogy az ACS által az adott szabály alapján kiadott jogkivonat megadja az ügyfél jogosultságait a névtérben lévő összes entitásnak való küldéshez. Ha az elérési út `/abc`előtagja, az identitás csak az előtagja alatt `abc` elnevezett vagy az előtag alá rendezett entitások küldésére korlátozódik. Feltételezzük, hogy az áttelepítési útmutató olvasói már ismerik ezeket a fogalmakat.
+Egy ACS-szabály például megadhatja a **küldési** jogcímet az elérési út előtagjaként `/` egy szolgáltatás identitásának, ami azt jelenti, hogy az ACS által az adott szabály alapján kiadott jogkivonat megadja az ügyfél jogosultságait a névtérben lévő összes entitásnak való küldéshez. Ha az elérési út előtagja `/abc` , az identitás csak az `abc` előtagja alatt elnevezett vagy az előtag alá rendezett entitások küldésére korlátozódik. Feltételezzük, hogy az áttelepítési útmutató olvasói már ismerik ezeket a fogalmakat.
 
 Az áttelepítési forgatókönyvek három széles kategóriába sorolhatók:
 

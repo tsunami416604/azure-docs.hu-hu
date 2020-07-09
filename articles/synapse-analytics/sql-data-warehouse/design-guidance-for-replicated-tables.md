@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201701"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Tervezési útmutató a replikált táblák használatához a szinapszis SQL-készletben
 
@@ -126,7 +126,7 @@ A rendszer újból létrehozta `DimDate` `DimSalesTerritory` a és a replikált 
 
 Az SQL-készlet egy replikált táblát valósít meg a tábla főverziójának megtartásával. A főverziót az összes számítási csomóponton az első terjesztési adatbázisba másolja. Ha módosul a változás, a rendszer először frissíti a főverziót, majd az egyes számítási csomópontokon lévő táblákat újraépíti. A replikált tábla újraépítése magában foglalja a tábla másolását az egyes számítási csomópontokra, majd az indexek összeállítását.  Egy DW2000c replikált táblájának például 5 másolata van az adatmennyiségről.  Egy fő másolat és egy teljes másolat az egyes számítási csomópontokon.  A rendszer minden adatforrást a terjesztési adatbázisokban tárol. Az SQL-készlet ezt a modellt használja a gyorsabb adatmódosítási utasítások és a rugalmas skálázási műveletek támogatásához.
 
-Az Újraépítés a következő után szükséges:
+Az aszinkron újraépítéseket az első lekérdezés indítja el a replikált táblán a következő után:
 
 - Az adatfeltöltés vagy módosítás
 - A szinapszis SQL-példánya más szintre van méretezve

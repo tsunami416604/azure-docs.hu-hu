@@ -1,19 +1,14 @@
 ---
 title: Saját kulcs konfigurálása az Azure-Event Hubs inaktív adatok titkosításához
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az Azure Event Hubs-adatok titkosításához.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: spelluru
-ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479827"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -41,7 +36,7 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
 1. A Event Hubs névtér **Beállítások** lapján válassza a **titkosítás**lehetőséget. 
 1. Válassza ki az **ügyfél által felügyelt kulcs titkosítását a nyugalmi** állapotban, ahogy az az alábbi képen is látható. 
 
-    ![Ügyfél által felügyelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Felhasználó által kezelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Key Vault beállítása kulcsokkal
 Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelnie az ügyfél által felügyelt kulcsot az Azure Event Hubs-névtérhez. A Event Hubs csak Azure Key Vault használatát támogatja. Ha az előző szakaszban az **ügyfél által felügyelt kulcs** beállítással engedélyezi a titkosítást, a kulcsot Azure Key Vaultba kell importálnia. Emellett a kulcsoknak is rendelkeznie kell a **Soft delete** szolgáltatással, és **nem szabad kiüríteni** a kulcsot. Ezeket a beállításokat a [PowerShell](../key-vault/general/soft-delete-powershell.md) vagy a [parancssori](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)felület használatával lehet konfigurálni.
@@ -71,7 +66,7 @@ Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelni
 
 
 ## <a name="rotate-your-encryption-keys"></a>A titkosítási kulcsok elforgatása
-A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgathatja el a kulcsot. További információkért lásd: a [kulcs rotációjának és naplózásának beállítása](../key-vault/secrets/key-rotation-log-monitoring.md). Az aktiválási és a lejárati dátumok is megadhatók a kulcs elforgatásának automatizálására. A Event Hubs szolgáltatás felderíti az új kulcs-verziókat, és automatikusan elkezdi használni őket.
+A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgathatja el a kulcsot. Az aktiválási és a lejárati dátumok is megadhatók a kulcs elforgatásának automatizálására. A Event Hubs szolgáltatás felderíti az új kulcs-verziókat, és automatikusan elkezdi használni őket.
 
 ## <a name="revoke-access-to-keys"></a>Kulcsok elérésének visszavonása
 A titkosítási kulcsokhoz való hozzáférés visszavonása nem törli az Event Hubsból származó adatok törlését. Azonban az adatok nem érhetők el a Event Hubs névtérből. A titkosítási kulcsot a hozzáférési házirendben vagy a kulcs törlésével vonhatja vissza. További információ a hozzáférési házirendekről és a Key Vault biztonságossá [tételéről a kulcstartó biztonságos eléréséről](../key-vault/general/secure-your-key-vault.md).
@@ -99,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél 
 ## <a name="log-schema"></a>Napló sémája 
 Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely az alábbi táblázatban ismertetett formátumot használja. 
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---- | ----------- | 
 | Feladatnév | A sikertelen feladat leírása. |
 | Tevékenységazonosító | A nyomon követéshez használt belső azonosító. |
@@ -155,7 +150,7 @@ Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure R
 ### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Event Hubs-fürt és-névtér létrehozása felügyelt szolgáltatás identitásával
 Ebből a szakaszból megtudhatja, hogyan hozhat létre egy felügyelt szolgáltatás-identitással rendelkező Azure Event Hubs névteret egy Azure Resource Manager sablonnal és a PowerShell használatával. 
 
-1. Hozzon létre egy Azure Resource Manager sablont egy felügyelt szolgáltatás identitásával rendelkező Event Hubs névtér létrehozásához. Nevezze el a fájlt: **CreateEventHubClusterAndNamespace. JSON**: 
+1. Hozzon létre egy Azure Resource Manager sablont egy felügyelt szolgáltatás identitásával rendelkező Event Hubs névtér létrehozásához. Nevezze el a következő fájlt: **CreateEventHubClusterAndNamespace.js**: 
 
     ```json
     {
@@ -224,7 +219,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy felügyelt szolgálta
        }
     }
     ```
-2. Hozzon létre egy sablon-paraméter nevű fájlt: **CreateEventHubClusterAndNamespaceParams. JSON**. 
+2. Hozzon létre egy sablon-paraméter nevű fájlt: **CreateEventHubClusterAndNamespaceParams.js**. 
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
@@ -250,7 +245,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy felügyelt szolgálta
     }
     
     ```
-3. Futtassa a következő PowerShell-parancsot a sablon üzembe helyezéséhez Event Hubs névtér létrehozásához. Ezután kérje le a Event Hubs névtér AZONOSÍTÓját, hogy később használhassa. A `{MyRG}` parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére.  
+3. Futtassa a következő PowerShell-parancsot a sablon üzembe helyezéséhez Event Hubs névtér létrehozásához. Ezután kérje le a Event Hubs névtér AZONOSÍTÓját, hogy később használhassa. `{MyRG}`A parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -289,7 +284,7 @@ A következő lépéseket eddig végrehajtotta:
 
 Ebben a lépésben frissíteni fogja a Event Hubs névteret a Key Vault-információkkal. 
 
-1. Hozzon létre egy **CreateEventHubClusterAndNamespace. JSON** nevű JSON-fájlt a következő tartalommal: 
+1. Hozzon létre egy **CreateEventHubClusterAndNamespace.js** nevű JSON-fájlt a következő tartalommal: 
 
     ```json
     {
@@ -361,7 +356,7 @@ Ebben a lépésben frissíteni fogja a Event Hubs névteret a Key Vault-informá
     }
     ``` 
 
-2. Hozzon létre egy sablon-paramétert tartalmazó fájlt: **UpdateEventHubClusterAndNamespaceParams. JSON**. 
+2. Hozzon létre egy sablon-paramétert tartalmazó fájlt: **UpdateEventHubClusterAndNamespaceParams.json**. 
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
@@ -394,7 +389,7 @@ Ebben a lépésben frissíteni fogja a Event Hubs névteret a Key Vault-informá
        }
     }
     ```             
-3. Futtassa a következő PowerShell-parancsot a Resource Manager-sablon üzembe helyezéséhez. A `{MyRG}` parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére. 
+3. Futtassa a következő PowerShell-parancsot a Resource Manager-sablon üzembe helyezéséhez. `{MyRG}`A parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
@@ -423,7 +418,7 @@ A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 - [Event Hubs áttekintése](event-hubs-about.md)
-- [A Key Vault áttekintése](../key-vault/general/overview.md)
+- [Key Vault áttekintése](../key-vault/general/overview.md)
 
 
 

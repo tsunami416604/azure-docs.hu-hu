@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154899"
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
@@ -34,16 +34,16 @@ A bérlői specifikus végpontok egy adott bérlő számára lettek kialakítva.
 A bérlői független végpontok az összes Azure AD-Bérlővel közös információt biztosítanak. Ez az információ a *login.microsoftonline.com* -on üzemeltetett bérlők esetében érvényes, és a bérlők között van megosztva. A bérlői független végpontok használata több-bérlős alkalmazások esetén ajánlott, mivel ezek nincsenek egy adott bérlőhöz társítva.
 
 ## <a name="federation-metadata-endpoints"></a>Összevonási metaadatok végpontjai
-Az Azure AD az összevonási metaadatokat `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`a következő címen teszi közzé:.
+Az Azure AD az összevonási metaadatokat a következő címen teszi közzé: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` .
 
-A **bérlői specifikus végpontok**esetében az `TenantDomainName` a következő típusok egyike lehet:
+A **bérlői specifikus végpontok**esetében az a `TenantDomainName` következő típusok egyike lehet:
 
-* Egy Azure AD-bérlő regisztrált tartományneve, például: `contoso.onmicrosoft.com`.
-* A tartomány nem módosítható bérlői azonosítója, például: `72f988bf-86f1-41af-91ab-2d7cd011db45`.
+* Egy Azure AD-bérlő regisztrált tartományneve, például: `contoso.onmicrosoft.com` .
+* A tartomány nem módosítható bérlői azonosítója, például: `72f988bf-86f1-41af-91ab-2d7cd011db45` .
 
-A **bérlői független végpontok**esetében a `TenantDomainName` a `common`következő:. Ez a dokumentum csak azokat az összevonási metaadatokat sorolja fel, amelyek a login.microsoftonline.com-on üzemeltetett összes Azure AD-bérlő esetében közösek.
+A **bérlői független végpontok**esetében a a következő: `TenantDomainName` `common` . Ez a dokumentum csak azokat az összevonási metaadatokat sorolja fel, amelyek a login.microsoftonline.com-on üzemeltetett összes Azure AD-bérlő esetében közösek.
 
-Például a bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. A bérlőtől független végpont [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Az összevonási metaadatokat tartalmazó dokumentumot úgy tekintheti meg, ha beírja ezt az URL-címet egy böngészőben.
+Például a bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml` . A bérlőtől független végpont [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml) . Az összevonási metaadatokat tartalmazó dokumentumot úgy tekintheti meg, ha beírja ezt az URL-címet egy böngészőben.
 
 ## <a name="contents-of-federation-metadata"></a>Az összevonási metaadatok tartalma
 A következő szakasz az Azure AD által kiállított jogkivonatokat használó szolgáltatások számára szükséges információkat tartalmazza.
@@ -51,7 +51,7 @@ A következő szakasz az Azure AD által kiállított jogkivonatokat használó 
 ### <a name="entity-id"></a>Entitás azonosítója
 Az `EntityDescriptor` elem egy `EntityID` attribútumot tartalmaz. Az `EntityID` attribútum értéke a kiállítót jelöli, vagyis a tokent kiállító biztonságijogkivonat-szolgáltatást (STS). Fontos, hogy a kibocsátót a jogkivonat fogadásakor érvényesítse.
 
-A következő metaadatok egy példaként szolgáló, bérlőre jellemző `EntityDescriptor` elemet `EntityID` mutatnak be egy elemmel.
+A következő metaadatok egy példaként szolgáló, bérlőre jellemző elemet mutatnak be `EntityDescriptor` egy `EntityID` elemmel.
 
 ```
 <EntityDescriptor
@@ -61,7 +61,7 @@ entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
 A bérlői azonosító a bérlői független végponton, a bérlői AZONOSÍTÓval helyettesíthető a bérlő-specifikus `EntityID` érték létrehozásához. Az eredményül kapott érték megegyezik a jogkivonat-kiállítóval. A stratégia lehetővé teszi, hogy egy több-bérlős alkalmazás érvényesítse egy adott bérlő kiállítóját.
 
-A következő metaadatok egy példa bérlői független `EntityID` elemet mutatnak be. Vegye figyelembe, hogy az `{tenant}` a konstans, nem helyőrző.
+A következő metaadatok egy példa bérlői független elemet mutatnak be `EntityID` . Vegye figyelembe, hogy az a `{tenant}` konstans, nem helyőrző.
 
 ```
 <EntityDescriptor
@@ -71,11 +71,11 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Jogkivonat-aláíró tanúsítványok
-Ha egy szolgáltatás egy Azure AD-bérlő által kiadott jogkivonatot kap, a jogkivonat aláírását érvényesíteni kell egy, az összevonási metaadatokat tartalmazó dokumentumban közzétett aláíró kulccsal. Az összevonási metaadatok tartalmazzák a tanúsítványok azon nyilvános részét, amelyet a bérlők a jogkivonat-aláíráshoz használnak. A tanúsítvány nyers bájtjai a `KeyDescriptor` elemben jelennek meg. A jogkivonat-aláíró tanúsítvány csak akkor érvényes az aláírásra, ha az `use` attribútum értéke `signing`.
+Ha egy szolgáltatás egy Azure AD-bérlő által kiadott jogkivonatot kap, a jogkivonat aláírását érvényesíteni kell egy, az összevonási metaadatokat tartalmazó dokumentumban közzétett aláíró kulccsal. Az összevonási metaadatok tartalmazzák a tanúsítványok azon nyilvános részét, amelyet a bérlők a jogkivonat-aláíráshoz használnak. A tanúsítvány nyers bájtjai a elemben jelennek meg `KeyDescriptor` . A jogkivonat-aláíró tanúsítvány csak akkor érvényes az aláírásra, ha az `use` attribútum értéke `signing` .
 
 Az Azure AD által közzétett összevonási metaadatokat tartalmazó dokumentum több aláíró kulccsal is rendelkezhet, például amikor az Azure AD előkészíti az aláíró tanúsítvány frissítését. Ha egy összevonási metaadat-dokumentum több tanúsítványt is tartalmaz, a jogkivonatokat érvényesítő szolgáltatásnak támogatnia kell a dokumentum összes tanúsítványát.
 
-A következő metaadatok egy minta `KeyDescriptor` elemet mutatnak az aláíró kulccsal.
+A következő metaadatok egy minta elemet mutatnak az `KeyDescriptor` aláíró kulccsal.
 
 ```
 <KeyDescriptor use="signing">
@@ -89,19 +89,19 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 </KeyDescriptor>
   ```
 
-Az `KeyDescriptor` elem az összevonási metaadatok dokumentumának két helyén jelenik meg; a WS-Federation-specifikus szakaszban és az SAML-specifikus szakaszban. A két szakaszban közzétett tanúsítványok azonosak lesznek.
+Az `KeyDescriptor` elem az összevonási metaadatok dokumentumának két helyén jelenik meg, a WS-Federation-specifikus szakaszban és az SAML-specifikus szakaszban. A két szakaszban közzétett tanúsítványok azonosak lesznek.
 
-A WS-Federation-specifikus szakaszban a WS-Federation metaadat-olvasó a `RoleDescriptor` `SecurityTokenServiceType` típussal rendelkező elemből olvassa be a tanúsítványokat.
+A WS-Federation-specifikus szakaszban a WS-Federation metaadat-olvasó a `RoleDescriptor` típussal rendelkező elemből olvassa be a tanúsítványokat `SecurityTokenServiceType` .
 
-A következő metaadatok egy minta `RoleDescriptor` elemet mutatnak be.
+A következő metaadatok egy minta elemet mutatnak be `RoleDescriptor` .
 
 ```
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-Az SAML-specifikus szakaszban a WS-Federation metaadat-olvasó egy `IDPSSODescriptor` elemből olvassa be a tanúsítványokat.
+Az SAML-specifikus szakaszban a WS-Federation metaadat-olvasó egy elemből olvassa be a tanúsítványokat `IDPSSODescriptor` .
 
-A következő metaadatok egy minta `IDPSSODescriptor` elemet mutatnak be.
+A következő metaadatok egy minta elemet mutatnak be `IDPSSODescriptor` .
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -111,7 +111,7 @@ A bérlő-specifikus és a bérlői független tanúsítványok formátuma nem k
 ### <a name="ws-federation-endpoint-url"></a>WS-Federation végpont URL-címe
 Az összevonási metaadatok közé tartozik az Azure AD az egyszeri bejelentkezéshez és az egyszeri bejelentkezéshez használt URL-cím a WS-Federation protokollban. Ez a végpont a `PassiveRequestorEndpoint` elemben jelenik meg.
 
-A következő metaadatok egy adott bérlői végponthoz tartozó minta `PassiveRequestorEndpoint` elemet mutatnak be.
+A következő metaadatok egy adott `PassiveRequestorEndpoint` bérlői végponthoz tartozó minta elemet mutatnak be.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -135,11 +135,11 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>SAML-protokoll végpontjának URL-címe
-Az összevonási metaadatok tartalmazzák azt az URL-címet, amelyet az Azure AD az egyszeri bejelentkezéshez és az egyszeri bejelentkezéshez használ az SAML 2,0 protokollban. Ezek a végpontok a `IDPSSODescriptor` elemben jelennek meg.
+Az összevonási metaadatok tartalmazzák azt az URL-címet, amelyet az Azure AD az egyszeri bejelentkezéshez és az egyszeri bejelentkezéshez használ az SAML 2,0 protokollban. Ezek a végpontok a elemben jelennek meg `IDPSSODescriptor` .
 
-A bejelentkezési és a kijelentkezési URL-cím a és `SingleSignOnService` `SingleLogoutService` az elemekben jelenik meg.
+A bejelentkezési és a kijelentkezési URL-cím a `SingleSignOnService` és az `SingleLogoutService` elemekben jelenik meg.
 
-A következő metaadatok egy adott bérlői végponthoz tartozó mintát `PassiveResistorEndpoint` mutatnak be.
+A következő metaadatok egy adott `PassiveResistorEndpoint` bérlői végponthoz tartozó mintát mutatnak be.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

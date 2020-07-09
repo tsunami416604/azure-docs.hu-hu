@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019979"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
@@ -139,9 +138,9 @@ A következő táblázat összefoglalja a hálózat és a saját üzemeltetésű
 
 | Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
-| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ)           | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
-| Helyszíni követelmények | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (Microsoft-társ)            | A saját üzemeltetésű integrációs modult a helyszínen vagy egy Azure-beli virtuális gépen lehet telepíteni. |
+| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
+| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ)           | A saját üzemeltetésű integrációs modult egy Azure-beli virtuális gépre kell telepíteni a virtuális hálózaton.  |
+| Helyszíni | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (Microsoft-társ)            | A saját üzemeltetésű integrációs modult a helyszínen vagy egy Azure-beli virtuális gépen lehet telepíteni. |
 
 Az alábbi képek a saját üzemeltetésű integrációs modul használatát mutatják be a helyszíni adatbázis és az Azure-szolgáltatások közötti adatáthelyezéshez a ExpressRoute és az IPSec VPN használatával (Azure Virtual Network):
 
@@ -173,7 +172,7 @@ A következő táblázat a vállalati tűzfalak kimenő portokra és tartományo
 
 A következő táblázat a Windows tűzfal bejövő portokra vonatkozó követelményeit tartalmazza:
 
-| Bejövő portok | Leírás                              |
+| Bejövő portok | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | A PowerShell-titkosítási parancsmag szükséges a [helyi adattárakhoz tartozó hitelesítő adatok titkosítása Azure Data Factoryban](encrypt-credentials-self-hosted-integration-runtime.md), valamint a Hitelesítőadat-kezelő alkalmazás által a helyi adattárakhoz tartozó hitelesítő adatok biztonságos beállítása a saját üzemeltetésű integrációs modulban. |
 
@@ -185,7 +184,7 @@ A felhőben lévő egyes adattárakhoz az is szükséges, hogy engedélyezze az 
 A következő felhőalapú adattárakhoz a saját üzemeltetésű Integration Runtime-gép IP-címének engedélyezése szükséges. Az adattárak némelyike alapértelmezés szerint nem igényel engedélyezési listát. 
 
 - [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Az Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 

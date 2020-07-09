@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "64868101"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962679"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladatok értesítéseinek figyelése az Azure üzenetsor-tárolóval a .NET használatával 
 
@@ -47,13 +47,16 @@ A várólista-tárolót használó Media Services alkalmazások fejlesztésekor 
 Az ebben a szakaszban szereplő kódrészlet a következő műveleteket végzi el:
 
 1. Meghatározza a **EncodingJobMessage** osztályt, amely az értesítési üzenet formátumára van leképezve. A kód deszerializálja a sorból fogadott üzeneteket a **EncodingJobMessage** -típus objektumaiba.
-2. Betölti a Media Services és a Storage-fiók adatait az app. config fájlból. A kód példa ezt az információt használja a **csatlakozáshoz szükséges cloudmediacontext** és a **CloudQueue** objektumok létrehozásához.
+2. Betölti a Media Services és a Storage-fiók adatait a app.config fájlból. A kód példa ezt az információt használja a **csatlakozáshoz szükséges cloudmediacontext** és a **CloudQueue** objektumok létrehozásához.
 3. Létrehozza azt a várólistát, amely értesítési üzeneteket fogad a kódolási feladatokról.
 4. Létrehozza a várólistára leképezett értesítési végpontot.
 5. Csatolja az értesítés végpontját a feladatokhoz, és elküldi a kódolási feladatot. A feladatokhoz több értesítési végpont is tartozhat.
 6. A **NotificationJobState. FinalStatesOnly** átadja a **AddNew** metódusnak. (Ebben a példában csak a feladatok feldolgozásának végső állapota érdekli.)
 
-        job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```csharp
+    job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```
+
 7. Ha átadja a **NotificationJobState. All**-t, a következő állapotváltozás-értesítések mindegyike megjelenik: üzenetsor, ütemezett, feldolgozás és Befejezés. A korábban említettek szerint azonban a várólista-tároló nem garantálja a rendezett kézbesítést. Az üzenetek megrendeléséhez használja az **időbélyegző** tulajdonságot (az alábbi példában az **EncodingJobMessage** típusban van megadva). Ismétlődő üzenetek is lehetségesek. Az ismétlődések kereséséhez használja a **ETAG tulajdonságot** (a **EncodingJobMessage** típusban definiálva). Az is lehetséges, hogy egyes állapot-módosítási értesítések kimaradnak.
 8. Megvárja, amíg a feladatoknak kész állapotba kell jutnia a várólista 10 másodpercenkénti ellenőrzésével. A feldolgozás után törli az üzeneteket.
 9. Törli az üzenetsor és az értesítési végpontot.
@@ -67,11 +70,11 @@ Az ebben a szakaszban szereplő kódrészlet a következő műveleteket végzi e
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-1. Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+1. Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 2. Hozzon létre egy új mappát (a mappa bárhol lehet a helyi meghajtón), és másoljon egy. MP4-fájlt, amelyet szeretne kódolni és továbbítani vagy fokozatosan letölteni. Ebben a példában a "C:\Media" útvonalat használja a rendszer.
 3. Adjon hozzá egy hivatkozást a **System. Runtime. szerializálási** könyvtárhoz.
 
-### <a name="code"></a>Kód
+### <a name="code"></a>Code
 
 ```csharp
 using System;
@@ -344,31 +347,32 @@ namespace JobNotification
 
 Az előző példa a következő kimenetet hozta létre: az értékek eltérőek lesznek.
 
-    Created assetFile BigBuckBunny.mp4
-    Upload BigBuckBunny.mp4
-    Done uploading of BigBuckBunny.mp4
+```output
+Created assetFile BigBuckBunny.mp4
+Upload BigBuckBunny.mp4
+Done uploading of BigBuckBunny.mp4
 
-    EventType: NotificationEndPointRegistration
-    MessageVersion: 1.0
-    ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
-    TimeStamp: 2013-05-14T20:22:37
-        NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
-        State: Registered
-        Name: dde957b2-006e-41f2-9869-a978870ac620
-        Created: 2013-05-14T20:22:35
+EventType: NotificationEndPointRegistration
+MessageVersion: 1.0
+ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
+TimeStamp: 2013-05-14T20:22:37
+    NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
+    State: Registered
+    Name: dde957b2-006e-41f2-9869-a978870ac620
+    Created: 2013-05-14T20:22:35
 
-    EventType: JobStateChange
-    MessageVersion: 1.0
-    ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
-    TimeStamp: 2013-05-14T20:24:40
-        JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
-        NewState: Finished
-        OldState: Processing
-        AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
-    State: Finished
-
+EventType: JobStateChange
+MessageVersion: 1.0
+ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
+TimeStamp: 2013-05-14T20:24:40
+    JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
+    JobName: My MP4 to Smooth Streaming encoding job
+    NewState: Finished
+    OldState: Processing
+    AccountName: westeuropewamsaccount
+job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
+State: Finished
+```
 
 ## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.

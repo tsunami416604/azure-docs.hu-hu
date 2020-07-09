@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700946"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984270"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
-Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadói szolgáltatást a [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Microsoft [Dynamics 365](https://dynamics.microsoft.com/) -es és a AppSource-on futó Power platformon alapuló tanácsadói szolgáltatási ajánlatokat sorolja fel. Az Azure Marketplace-en Microsoft Azureon alapuló tanácsadói szolgáltatási ajánlatok listázása. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadói szolgáltatást a [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Microsoft [Dynamics 365](https://dynamics.microsoft.com/) -es és a AppSource-on futó Power platformon alapuló tanácsadói szolgáltatási ajánlatokat sorolja fel. Az Azure Marketplace-en Microsoft Azureon alapuló tanácsadói szolgáltatási ajánlatok listázása. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
-Az ajánlat létrehozása előtt tekintse át az előfeltételeket a [tanácsadási szolgáltatás előfeltételei](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)című cikkben.
+Az ajánlat létrehozása előtt tekintse át az előfeltételeket a [tanácsadási szolgáltatás előfeltételei](consulting-service-prerequisites.md)című cikkben.
 
 ## <a name="publishing-benefits"></a>Közzétételi előnyök
 
@@ -63,12 +63,12 @@ Ha az ajánlatot a piactéren, a partner centeren keresztül teszi közzé, csat
 
 1. Válassza a **Kapcsolódás** lehetőséget, és adja meg, hová szeretné elküldeni a felhasználói érdeklődőket. A partner Center a következő rendszereket támogatja:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
+    > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) vagy a [https-végpont](commercial-marketplace-lead-management-instructions-https.md) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
 
 2. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
 3. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben, érvényesítjük a kapcsolatot, és elküldünk egy tesztelési érdeklődőt. Miközben az ajánlat előzetes verziójának megtekintése előtt megtekinti az ajánlatot, tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja megvásárolni az ajánlatot.
@@ -76,9 +76,9 @@ Ha az ajánlatot a piactéren, a partner centeren keresztül teszi közzé, csat
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Az érdeklődők kezelése – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Az érdeklődők kezelése – áttekintés](commercial-marketplace-get-customer-leads.md)
+- [Érdeklődői felügyelet – gyakori kérdések](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Gyakori vezető konfigurációs hibák](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
@@ -96,10 +96,19 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - A **koncepció igazolása**: korlátozott hatókörű implementáció annak megállapítására, hogy A megoldás megfelel-e az ügyfél igényeinek.
     - **Workshop**: az ügyfél telephelyén folytatott interaktív részvétel. Olyan képzéseket, tájékoztatókat, felméréseket és bemutatókat is tartalmazhat, amelyek az ügyfél által tárolt adatszolgáltatásra vagy környezetre épülnek.
 
-3. Ha az **Azure**elsődleges termékét választotta, válasszon ki legfeljebb három **megoldási területet**. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
-4. Ha az Azure-tól _eltérő_ elsődleges terméket jelölt ki, válassza ki a legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Részletekért lásd: [Microsoft AppSource Consulting Service listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
-5. Válasszon ki legfeljebb hat **iparágat** , amelyre az ajánlat vonatkozik. Ez megkönnyíti az ügyfelek számára az ajánlat megtalálását.
-6. Akár három olyan **kompetenciát** is felvehet, amelyet a vállalat a tanácsadási szolgáltatás ajánlatában jelenít meg. Legalább egy kompetenciát meg kell adni, kivéve az Azure Expert MSP és az Azure hálózati MSP.
+3. Ha az **Azure** -t elsődleges termékként választotta, akkor legfeljebb három **megoldási területet**választhat ki. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
+
+    | Megoldási térség | | | |
+    | --- | --- | --- | --- |
+    | Elemzés | Backup | DevOps | Migrálás |
+    | Alkalmazások modernizálása | Big Data | Vészhelyreállítás | Hálózat |
+    | Archívum | Adatplatform | Identitás | Biztonság |
+    | AI + Machine Learning | Adatközpont-kezelés | Eszközök internetes hálózata | Storage |
+
+1. Ha az **Azure** -t elsődleges termékként választotta, lehetősége van legfeljebb hat **iparág**kiválasztására. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Tekintse meg az iparági listán az ajánlott [eljárásokat felsoroló](../gtm-offer-listing-best-practices.md)témakört. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
+1. Ha az Azure-tól *eltérő* elsődleges terméket jelölt ki, válassza ki a legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Részletekért lásd: [Microsoft AppSource Consulting Service listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+1. Ha az **Azure-tól** *eltérő* elsődleges terméket jelölt ki, akkor lehetősége van legfeljebb két iparág és két **vertikális** beállítás kiválasztására minden iparágban. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Tekintse meg az iparági és vertikális tudnivalókat az [ajánlott eljárások](../gtm-offer-listing-best-practices.md)listájában.
+1. Akár három olyan **kompetenciát** is felvehet, amelyet a vállalat a tanácsadási szolgáltatás ajánlatában jelenít meg. Legalább egy kompetenciát meg kell adni, kivéve az Azure Expert MSP és az Azure hálózati MSP.
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -109,6 +118,37 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a kifejezéssel kezdődik, &quot; Ez az alkalmazás csak [nem angol nyelven] érhető el. &quot; Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
+
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk az Azure Marketplace-en (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálják):
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Price
+3. Megoldási területek
+4. Ágazatok
+5. Ajánlat neve
+6. Összefoglalás
+7. Description
+8. Képernyőképek/videók
+
+<br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Price
+3. Termékek
+4. Ágazatok
+5. Ajánlat neve
+6. Összefoglalás
+7. Description
+8. Képernyőképek/videók
+9. Dokumentumok
 
 ### <a name="name"></a>Name
 
@@ -124,7 +164,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -199,8 +239,8 @@ Miután elvégezte az ajánlat összes szükséges részét, elküldheti ajánla
 4. Ha elkészült, válassza a **Küldés**lehetőséget.
 5. Az **ajánlat áttekintése** oldalon látható, hogy az ajánlat mely közzétételi fázisban található.
 
-Ha további információra van szüksége arról, hogy mennyi ideig számíthat az ajánlat az egyes közzétételi fázisokban való használatra, tekintse [meg a kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzését](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)ismertető szakaszt.
+Ha további információra van szüksége arról, hogy mennyi ideig számíthat az ajánlat az egyes közzétételi fázisokban való használatra, tekintse [meg a kereskedelmi Piactéri ajánlat közzétételi állapotának ellenőrzését](publishing-status.md)ismertető szakaszt.
 
 ## <a name="update-your-existing-consulting-service-offers"></a>Meglévő tanácsadói szolgáltatási ajánlatok frissítése
 
-- [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Meglévő ajánlat frissítése a kereskedelmi piactéren](update-existing-offer.md)

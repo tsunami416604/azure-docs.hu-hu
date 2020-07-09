@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b677821ae32d4d916b6235228ae2807397c9fc60
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078493"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>ILB-figyelő konfigurálása az Azure SQL Server virtuális gépek rendelkezésre állási csoportjaihoz
 > [!div class="op_single_selector"]
@@ -69,18 +69,26 @@ Hozzon létre egy elosztott terhelésű végpontot minden olyan virtuális géph
 
 7. Futtassa a következő `Import-AzurePublishSettingsFile` parancsot a letöltött közzétételi beállítások fájljának elérési útjával:
 
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
 
     A közzétételi beállítások fájljának importálása után a PowerShell-munkamenetben kezelheti az Azure-előfizetését.
 
 8. *ILB*esetén rendeljen hozzá egy statikus IP-címet. A következő parancs futtatásával vizsgálja meg az aktuális virtuális hálózat konfigurációját:
 
-        (Get-AzureVNetConfig).XMLConfiguration
+    ```powershell
+    (Get-AzureVNetConfig).XMLConfiguration
+    ```
+
 9. Jegyezze fel a replikákat futtató virtuális gépeket tartalmazó alhálózat *alhálózatának* nevét. A rendszer ezt a nevet használja a parancsfájl $SubnetName paraméterében.
 
 10. Jegyezze fel a *VirtualNetworkSite* nevét és a replikákat futtató virtuális gépeket tartalmazó alhálózat kezdő *AddressPrefix* . Keressen egy elérhető IP-címet úgy, hogy mindkét értéket átadja a `Test-AzureStaticVNetIP` parancsnak, és megvizsgálja a *AvailableAddresses*. Ha például a virtuális hálózat neve *MyVNet* , és rendelkezik egy alhálózati címmel, amely az *172.16.0.128*-on indul el, a következő parancs az elérhető címeket sorolja fel:
 
-        (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
+    ```powershell
+    (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
+    ```
+
 11. Válassza ki az egyik elérhető címet, majd használja a parancsfájl $ILBStaticIP paraméterében a következő lépésben.
 
 12. Másolja a következő PowerShell-szkriptet egy szövegszerkesztőbe, és állítsa be a változó értékeit a környezetének megfelelően. Egyes paramétereknél az alapértelmezett beállítások lettek megadva.  
@@ -89,21 +97,23 @@ Hozzon létre egy elosztott terhelésű végpontot minden olyan virtuális géph
 
     Ha a rendelkezésre állási csoport az Azure-régiókat is felöleli, akkor a parancsfájlt egyszer kell futtatnia a Cloud Service és az adatközpontban található csomópontok minden adatközpontjában.
 
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-        $SubnetName = "<MySubnetName>" # subnet name that the replicas use in the virtual network
-        $ILBStaticIP = "<MyILBStaticIPAddress>" # static IP address for the ILB in the subnet
-        $ILBName = "AGListenerLB" # customize the ILB name or use this default value
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
+    $SubnetName = "<MySubnetName>" # subnet name that the replicas use in the virtual network
+    $ILBStaticIP = "<MyILBStaticIPAddress>" # static IP address for the ILB in the subnet
+    $ILBName = "AGListenerLB" # customize the ILB name or use this default value
 
-        # Create the ILB
-        Add-AzureInternalLoadBalancer -InternalLoadBalancerName $ILBName -SubnetName $SubnetName -ServiceName $ServiceName -StaticVNetIPAddress $ILBStaticIP
+    # Create the ILB
+    Add-AzureInternalLoadBalancer -InternalLoadBalancerName $ILBName -SubnetName $SubnetName -ServiceName $ServiceName -StaticVNetIPAddress $ILBStaticIP
 
-        # Configure a load-balanced endpoint for each node in $AGNodes by using ILB
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load-balanced endpoint for each node in $AGNodes by using ILB
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 13. A változók beállítása után másolja a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra is megjelenik **>>** , az ENTER billentyű lenyomásával ellenőrizze, hogy a parancsfájl fut-e.
 
@@ -123,33 +133,39 @@ Hozza létre a rendelkezésre állási csoport figyelőjét két lépésben. El�
 ### <a name="configure-the-cluster-resources-in-powershell"></a>A fürt erőforrásainak konfigurálása a PowerShellben
 1. A ILB a korábban létrehozott ILB IP-címét kell használnia. Ha ezt az IP-címet a PowerShellben szeretné beszerezni, használja a következő parancsfájlt:
 
-        # Define variables
-        $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
-        (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
+    ```powershell
+    # Define variables
+    $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
+    (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
+    ```
 
 2. Az egyik virtuális gépen másolja az operációs rendszer PowerShell-parancsfájlját egy szövegszerkesztőbe, majd állítsa be a változókat a korábban feljegyzett értékekre.
 
     A Windows Server 2012-es vagy újabb verzióiban használja a következő parancsfájlt:
 
-        # Define variables
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP address resource name
+    $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
-        Import-Module FailoverClusters
+    Import-Module FailoverClusters
 
-        Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
 
     Windows Server 2008 R2 esetén használja a következő parancsfájlt:
 
-        # Define variables
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP address resource name
+    $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
-        Import-Module FailoverClusters
+    Import-Module FailoverClusters
 
-        cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+    cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+    ```
 
 3. A változók beállítása után nyisson meg egy emelt szintű Windows PowerShell-ablakot, illessze be a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra is megjelenik **>>** , nyomja le ismét az ENTER billentyűt, és győződjön meg arról, hogy a parancsfájl futása megkezdődik.
 

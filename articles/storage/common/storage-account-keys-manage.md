@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176624"
 ---
 # <a name="manage-storage-account-access-keys"></a>A Storage-fiók hozzáférési kulcsainak kezelése
@@ -42,7 +42,7 @@ A Storage-fiók hozzáférési kulcsainak vagy kapcsolati karakterláncának meg
 
 A fiók hozzáférési kulcsainak PowerShell-lel való lekéréséhez hívja meg a [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) parancsot.
 
-A következő példa az első kulcsot kéri le. A második kulcs lekéréséhez használja `Value[1]` a helyett `Value[0]`a következőt:. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+A következő példa az első kulcsot kéri le. A második kulcs lekéréséhez használja a helyett a következőt: `Value[1]` `Value[0]` . Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```powershell
 $storageAccountKey = `
@@ -108,7 +108,7 @@ A Storage-fiók hozzáférési kulcsainak elforgatása a PowerShell-lel:
     ```
 
 1. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
-1. Hasonló módon generálja újra a másodlagos elérési kulcsot. A másodlagos kulcs újbóli létrehozásához használja `key2` a nevet a helyett `key1`.
+1. Hasonló módon generálja újra a másodlagos elérési kulcsot. A másodlagos kulcs újbóli létrehozásához használja `key2` a nevet a helyett `key1` .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -125,7 +125,7 @@ A Storage-fiók hozzáférési kulcsainak elforgatása az Azure CLI-vel:
     ```
 
 1. Frissítse a kapcsolati sztringekat a kódban, hogy az új elsődleges tárelérési kulcsra hivatkozzanak.
-1. Hasonló módon generálja újra a másodlagos elérési kulcsot. A másodlagos kulcs újbóli létrehozásához használja `key2` a nevet a helyett `key1`.
+1. Hasonló módon generálja újra a másodlagos elérési kulcsot. A másodlagos kulcs újbóli létrehozásához használja `key2` a nevet a helyett `key1` .
 
 ---
 

@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növeked
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: ac32908fe20424b812487365ccbfd70d74a06b54
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8519d7e66ae57b00a96adc60cf09c953c6ee7114
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050862"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120024"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>Tároló automatikus növekedése Azure Database for MariaDB-kiszolgálón a PowerShell használatával
 
@@ -50,7 +50,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -StorageAutogrow Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a PowerShell használatával](howto-read-replicas-powershell.md).

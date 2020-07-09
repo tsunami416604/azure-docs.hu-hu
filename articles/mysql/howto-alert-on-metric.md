@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és érheti el az 
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: f91efb7f99b826b6c1db330fb480013ab2486bdc
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: c20177b3dceca3b32cf8f2e2f8f60fa4227e2082
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508258"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112717"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MySQL 
 
@@ -25,7 +25,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Webhook meghívása
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -38,7 +38,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 3. Válassza a **metrika hozzáadása riasztás** (+ ikon) lehetőséget.
 
-4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a szükséges információkat:
+4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
    ![Metrikus riasztási űrlap hozzáadása](./media/howto-alert-on-metric/4-add-rule-form.png)
 
@@ -84,6 +84,6 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

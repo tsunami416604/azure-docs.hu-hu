@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan biztosítja az Azure Cosmos DB az adatbázis-v�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4e028e7a5e7e7b8f747d7a1cfb36c553a8113544
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583735"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027018"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
 
@@ -35,7 +35,7 @@ A Azure Cosmos DB által támogatott beépített szerepkörök a következők:
 
 A Azure Portal hozzáférés-vezérlés **(iam)** ablaktáblája az Azure Cosmos-erőforrások szerepköralapú hozzáférés-vezérlésének konfigurálására szolgál. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat. Az alábbi képernyőfelvételen a Azure Portal hozzáférés-vezérlés (IAM) használatával Active Directory integráció (RBAC) látható:
 
-![Hozzáférés-vezérlés (IAM) a Azure Portal – az adatbázis biztonságának bemutatása](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – az adatbázis biztonságának bemutatása":::
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
 
@@ -43,14 +43,39 @@ A beépített szerepkörökön kívül a felhasználók [Egyéni szerepköröket
 
 ## <a name="preventing-changes-from-cosmos-sdk"></a>A Cosmos SDK változásainak megakadályozása
 
-A Cosmos erőforrás-szolgáltató zárolható úgy, hogy megakadályozza az erőforrások, például a Cosmos-fiók, az adatbázisok, a tárolók és az átviteli sebességek változását a fiók kulcsainak (például a Cosmos SDK-n keresztül csatlakozó alkalmazások) használatával csatlakozó ügyfelektől. Ha be van állítva, minden erőforrás módosítása csak a megfelelő RBAC szerepkörrel és hitelesítő adatokkal rendelkező felhasználótól lehet. Ez a képesség a Cosmos `disableKeyBasedMetadataWriteAccess` erőforrás-szolgáltató tulajdonság értékével van beállítva. Alább látható egy példa erre a tulajdonság-beállításra Azure Resource Manager sablonra.
+> [!WARNING]
+> A funkció engedélyezése veszélyes hatással lehet az alkalmazására. A funkció engedélyezése előtt alaposan olvassa el a következőt:.
+
+A Azure Cosmos DB erőforrás-szolgáltató zárolható úgy, hogy megakadályozza a fiók kulcsainak (például a Cosmos SDK-n keresztül csatlakozó alkalmazások) használatával létrehozott összes ügyféltől érkező erőforrások változását. Ez magában foglalja a Azure Portal által végzett módosítást is. Ez olyan felhasználók számára lehet hasznos, akik magasabb fokú irányítást és irányítást kívánnak az éles környezetekben, és lehetővé teszik olyan funkciók használatát, mint például az erőforrás-zárolások, valamint a vezérlési sík műveleteinek diagnosztikai naplóinak engedélyezése is. Az Cosmos DB SDK-val csatlakozó ügyfeleket a Cosmos-fiókok,-adatbázisok,-tárolók és az átviteli sebességek bármely tulajdonságának módosításával megakadályozhatja. Az adatok Cosmos-tárolóba való olvasását és írását magában foglaló műveletek nincsenek hatással a rendszerre.
+
+Ha be van állítva, bármely erőforrás módosítása csak a megfelelő RBAC szerepkörrel rendelkező felhasználótól és Azure Active Directory hitelesítő adatokkal, beleértve a felügyelt szolgáltatás identitásait is.
+
+### <a name="check-list-before-enabling"></a>Az engedélyezés előtt keresse meg a listát
+
+Ezzel a beállítással megakadályozható, hogy bármely Cosmos-erőforrás bármely, a fiók kulcsait, például a Cosmos DB SDK-t, a fiók kulcsain keresztül csatlakozó eszközöket, illetve a Azure Portal. A szolgáltatás engedélyezése után az alkalmazásokkal kapcsolatos problémák és hibák megelőzése érdekében ellenőrizze, hogy az alkalmazások vagy Azure Portal-felhasználók a következő műveletek bármelyikét végrehajtják-e a funkció engedélyezése előtt, beleértve a következőket:
+
+- A Cosmos-fiók bármilyen módosítása, beleértve a tulajdonságokat, illetve a régiók hozzáadását vagy eltávolítását.
+
+- Alárendelt erőforrások, például adatbázisok és tárolók létrehozása, törlése. Ide tartoznak a más API-k, például a Cassandra, a MongoDB, a Gremlin és a Table-erőforrások erőforrásai.
+
+- Adatbázis vagy tároló szintű erőforrások átviteli sebességének frissítése.
+
+- A tároló tulajdonságainak módosítása, beleértve az index szabályzatot, az ÉLETTARTAMot és az egyedi kulcsokat.
+
+- Tárolt eljárások, eseményindítók vagy felhasználó által definiált függvények módosítása.
+
+Ha az alkalmazások (vagy Azure Portalon keresztül a felhasználók) végrehajtják ezeket a műveleteket, azokat át kell telepíteni az ARM- [sablonok](manage-sql-with-resource-manager.md), a [PowerShell](manage-with-powershell.md), [Az Azure CLI](manage-with-cli.md), a [Rest](/rest/api/cosmos-db-resource-provider/) vagy az [Azure felügyeleti könyvtár](https://github.com/Azure-Samples/cosmos-management-net)használatával. Vegye figyelembe, hogy az Azure-felügyelet [több nyelven](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)is elérhető.
+
+### <a name="set-via-arm-template"></a>Beállítás ARM-sablonnal
+
+Ha ezt a tulajdonságot ARM-sablonnal szeretné beállítani, frissítse meglévő sablonját, vagy exportáljon egy új sablont a jelenlegi központi telepítéshez, majd adja meg a `"disableKeyBasedMetadataWriteAccess": true` databaseAccounts erőforrásainak tulajdonságait. Az alábbi példa egy Azure Resource Manager sablon alapszintű példája ennek a tulajdonságnak a beállításával.
 
 ```json
 {
     {
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "name": "[variables('accountName')]",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-04-01",
       "location": "[parameters('location')]",
       "kind": "GlobalDocumentDB",
       "properties": {
@@ -62,15 +87,29 @@ A Cosmos erőforrás-szolgáltató zárolható úgy, hogy megakadályozza az er�
     }
 }
 ```
-Ha egy meglévő Resource Manager-sablont exportál, és ezt a tulajdonságot frissíti, akkor teljes mértékben lecserélheti a sablon funkcióit. Ha tehát az összes érték nem szerepel, a rendszer alaphelyzetbe állítja az alapértelmezett értéket. A kulcs alapú metaadatok írási hozzáférésének letiltásának másik módja az Azure CLI használata az alábbi parancsban látható módon:
 
-```cli
-az cosmosdb update  --name CosmosDBAccountName --resource-group ResourceGroupName  --disable-key-based-metadata-write-access true
+> [!IMPORTANT]
+> Ügyeljen rá, hogy a fiókja és a gyermek erőforrásainak egyéb tulajdonságait is tartalmazza, ha redploying ezzel a tulajdonsággal. Ne telepítse a sablont úgy, hogy az az legyen, vagy alaphelyzetbe állítja az összes fiók tulajdonságait.
 
+### <a name="set-via-azure-cli"></a>Beállítás az Azure CLI-n keresztül
+
+Az Azure CLI használatának engedélyezéséhez használja az alábbi parancsot:
+
+```azurecli-interactive
+az cosmosdb update  --name [CosmosDBAccountName] --resource-group [ResourceGroupName]  --disable-key-based-metadata-write-access true
+
+```
+
+### <a name="set-via-powershell"></a>Beállítás a PowerShell használatával
+
+A Azure PowerShell használatának engedélyezéséhez használja az alábbi parancsot:
+
+```azurepowershell-interactive
+Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBAccountName] -DisableKeyBasedMetadataWriteAccess true
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz](../role-based-access-control/overview.md)
+- [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../role-based-access-control/overview.md)
 - [Egyéni szerepkörök Azure-erőforrásokhoz](../role-based-access-control/custom-roles.md)
 - [Erőforrás-szolgáltatói műveletek Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

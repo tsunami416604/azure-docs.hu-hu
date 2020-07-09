@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81381025"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Oktatóanyag: a Blink konfigurálása automatikus felhasználó-kiépítés esetén
@@ -54,7 +54,7 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 ## <a name="setup-blink-for-provisioning"></a>A telepítő villog a kiépítés során
 
-1. A SCIM-token igényléséhez jelentkezzen be support@joinblink.com a [támogatási esetre](https://support.joinblink.com) vagy az e-mailek **Blink-támogatására** . .
+1. A SCIM-token igényléséhez jelentkezzen be a [támogatási esetre](https://support.joinblink.com) vagy az e-mailek **Blink-támogatására** support@joinblink.com . .
 
 2.  Másolja a **scim hitelesítési tokent**. Ez az érték a Azure Portalban a Blink-alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében lesz megadva.
 
@@ -141,7 +141,7 @@ Ez a művelet elindítja a **Beállítások** szakaszban a **hatókörben** defi
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

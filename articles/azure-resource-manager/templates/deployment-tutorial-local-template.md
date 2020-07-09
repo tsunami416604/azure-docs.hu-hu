@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager sa
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714066"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118902"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Oktatóanyag: helyi Azure Resource Manager sablon üzembe helyezése
 
@@ -33,7 +33,7 @@ A Azure PowerShell vagy az Azure CLI telepítését követően ellenőrizze, hog
 
 ### <a name="editor-optional"></a>Szerkesztő (nem kötelező)
 
-A sablonok JSON-fájlok. A sablonok áttekintéséhez és szerkesztéséhez jó JSON-szerkesztőre van szükség. A Visual Studio Code-ot a Resource Manager-eszközök bővítménnyel ajánljuk. Ha telepítenie kell ezeket az eszközöket, tekintse meg [Azure Resource Manager sablonok létrehozásához használja a Visual Studio Code-](use-vs-code-to-create-template.md)ot.
+A sablonok JSON-fájlok. A sablonok áttekintéséhez és szerkesztéséhez jó JSON-szerkesztőre van szükség. A Visual Studio Code-ot a Resource Manager-eszközök bővítménnyel ajánljuk. Ha telepítenie kell ezeket az eszközöket, tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)használatával című témakört.
 
 ## <a name="review-template"></a>Sablon áttekintése
 
@@ -44,7 +44,7 @@ A sablon üzembe helyez egy Storage-fiókot, egy app Service-csomagot és egy we
 > [!IMPORTANT]
 > A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon. A névnek egyedinek kell lennie. A sablonban a Storage-fiók neve a projekt neve a "Store" hozzáfűzéssel, a projekt nevének pedig 3 – 11 karakterből kell állnia. Így a projekt nevének meg kell felelnie a Storage-fiók nevének, és kevesebb, mint 11 karakterből áll.
 
-Mentse a sablon egy példányát a helyi számítógépre a. JSON kiterjesztéssel, például: azuredeploy. JSON. Ezt a sablont később is üzembe helyezheti az oktatóanyagban.
+Mentse a sablon egy példányát a helyi számítógépre a. JSON kiterjesztéssel, például azuredeploy.jsbe. Ezt a sablont később is üzembe helyezheti az oktatóanyagban.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

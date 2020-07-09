@@ -2,21 +2,20 @@
 title: Az SCIM 2,0 protokoll megfelelőségével kapcsolatos ismert problémák – Azure AD
 description: A SCIM 2,0-et az Azure AD-t támogató nem katalógusbeli alkalmazások hozzáadásakor felmerülő általános protokoll-kompatibilitási problémák megoldása
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/03/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 00551eb6c9d5d6fab9dc1d698a7a25bb6872901b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594032"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782262"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
@@ -33,10 +32,10 @@ Ez a cikk az Azure AD-felhasználó kiépítési szolgáltatásának az SCIM 2,0
 
 | **SCIM 2,0 megfelelőségi probléma** |  **Rögzített?** | **Javítás dátuma**  |  
 |---|---|---|
-| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Igen  |  December 18., 2018 | 
-| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Igen  | December 18., 2018  | 
-|  A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Igen  |  December 18., 2018  | 
-|  A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Igen  |  December 18., 2018  |  
+| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Yes  |  December 18., 2018 | 
+| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Yes  | December 18., 2018  | 
+|  A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Yes  |  December 18., 2018  | 
+|  A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Yes  |  December 18., 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>A szolgáltatási javítások automatikusan érvénybe lépnek a meglévő SCIM-alkalmazáson?
 
@@ -53,10 +52,10 @@ Igen. Ha már használja ezt az alkalmazás-példányt az egyszeri bejelentkezé
 > [!NOTE]
 > Ha az alkalmazás még fejlesztés alatt áll, és még nincs telepítve az egyszeri bejelentkezéshez vagy a felhasználók üzembe helyezéséhez, a legegyszerűbb megoldás az alkalmazás bejegyzésének törlése a Azure Portal **Azure Active Directory > Enterprise Applications** szakaszában, és egyszerűen vegyen fel új bejegyzést az alkalmazáshoz az **alkalmazás létrehozása > nem** katalógus beállítással. Ez egy alternatív megoldás az alábbi eljárás futtatására.
  
-1. Jelentkezzen be Azure Portal a https://portal.azure.comkövetkező címen:.
+1. Jelentkezzen be Azure Portal a következő címen: https://portal.azure.com .
 2. A Azure Portal **Azure Active Directory > vállalati alkalmazások** szakaszában keresse meg és válassza ki a meglévő scim alkalmazást.
 3. A meglévő SCIM-alkalmazás **Tulajdonságok** szakaszában másolja át az **objektumazonosítót**.
-4. Egy új böngészőablakban nyissa meg https://developer.microsoft.com/graph/graph-explorer a következőt:, és jelentkezzen be rendszergazdaként az Azure ad-bérlőhöz, amelyhez az alkalmazás hozzá van adva.
+4. Egy új böngészőablakban nyissa meg a következőt:, https://developer.microsoft.com/graph/graph-explorer és jelentkezzen be rendszergazdaként az Azure ad-bérlőhöz, amelyhez az alkalmazás hozzá van adva.
 5. A Graph Explorerben futtassa az alábbi parancsot a kiépítési feladatok AZONOSÍTÓjának megkereséséhez. Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -93,10 +92,10 @@ Igen. Ha már használja ezt az alkalmazás-példányt az egyszeri bejelentkezé
 
 Igen. Ha az alkalmazást a javítások előtt meglévő régi viselkedéshez kódolta, és új példányt kell telepítenie, kövesse az alábbi eljárást. Ez az eljárás azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer egy olyan SCIM-létesítési feladat létrehozásához, amely a régi viselkedést mutatja.
  
-1. Jelentkezzen be Azure Portal a https://portal.azure.comkövetkező címen:.
+1. Jelentkezzen be Azure Portal a következő címen: https://portal.azure.com .
 2. a **Azure Active Directory > vállalati alkalmazások > alkalmazás létrehozása** című Azure Portal szakaszában hozzon létre egy új, **nem** katalógusbeli alkalmazást.
 3. Az új egyéni alkalmazás **Tulajdonságok** szakaszában másolja ki az **objektumazonosítót**.
-4. Egy új böngészőablakban nyissa meg https://developer.microsoft.com/graph/graph-explorer a következőt:, és jelentkezzen be rendszergazdaként az Azure ad-bérlőhöz, amelyhez az alkalmazás hozzá van adva.
+4. Egy új böngészőablakban nyissa meg a következőt:, https://developer.microsoft.com/graph/graph-explorer és jelentkezzen be rendszergazdaként az Azure ad-bérlőhöz, amelyhez az alkalmazás hozzá van adva.
 5. A Graph Explorerben futtassa az alábbi parancsot az alkalmazás létesítési konfigurációjának inicializálásához.
    Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
 

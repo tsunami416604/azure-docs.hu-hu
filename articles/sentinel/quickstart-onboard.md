@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Bevezetés az Azure Sentinelbe'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan gyűjthet adatokat az Azure Sentinelben.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan teheti elérhetővé az Azure Sentinelt először a Sentinel engedélyezésével, majd az adatforrások összekapcsolásával.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4e7077c338586298c5e7f0805c3d47b08a7a108
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184333"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564540"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Gyors útmutató: Azure Sentinel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja ki a fedélzeten az Azure Sentinel szolgáltatást. 
 
-Ahhoz, hogy a fedélzeti Azure Sentinel elérhető legyen, először engedélyeznie kell az Azure Sentinelt, majd össze kell kapcsolni az adatforrásokat. Az Azure Sentinel számos, a Microsoft-megoldások számára elérhető összekötővel rendelkezik, és valós idejű integrációt biztosít, beleértve a Microsoft veszélyforrások elleni védelmi megoldásait, Microsoft 365 forrásait, például az Office 365, az Azure AD, az Azure ATP és a Microsoft Cloud App Security stb. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. A Common Event Format, a syslog vagy a REST-API használatával is összekapcsolhatók az adatforrások az Azure Sentinel szolgáltatással.  
+Ahhoz, hogy a fedélzeti Azure Sentinel elérhető legyen, először engedélyeznie kell az Azure Sentinelt, majd össze kell kapcsolni az adatforrásokat. Az Azure Sentinel számos összekötőt kínál a Microsoft-megoldások számára, és lehetővé teszi a valós idejű integrációt, beleértve a Microsoft Threat Protection-megoldásokat, Microsoft 365 forrásait (beleértve az Office 365-et), az Azure AD-t, az Azure ATP-t, a Microsoft Cloud App Security és egyebeket. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. A Common Event Format (CEF), a syslog vagy a REST-API használatával is összekapcsolhatók az adatforrások az Azure Sentinel szolgáltatással.  
 
 Az adatforrások összekapcsolását követően válasszon egy, az adatok alapján felszínre felkészített munkafüzetekből álló gyűjteményt. Ezek a munkafüzetek könnyen testreszabhatók az igényei szerint.
 
@@ -57,6 +57,9 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
    > - A Azure Security Center által létrehozott alapértelmezett munkaterületek nem jelennek meg a listában; Az Azure Sentinel nem telepíthető rajtuk.
    > - Az Azure Sentinel [log Analytics bármely GA régiójában](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) futtatható munkaterületeken, kivéve a kínai és a németországi (szuverén) régiókat. Az Azure Sentinel által létrehozott adatok (például az incidensek, a könyvjelzők és a riasztási szabályok, amelyek tartalmazhatnak néhány ügyfél-adatforrást az adott munkaterületről) Európa (az Európai munkaterületek számára), Ausztráliában (az Ausztráliában található munkaterületek esetében) vagy az USA keleti régiójában (a más régiókban található munkaterületek esetében) mentik.
 
+   >[!IMPORTANT]
+   > - Miután az Azure Sentinel engedélyezve lett egy munkaterületen, a munkaterület áthelyezése más erőforráscsoportok vagy előfizetések között nem támogatott. Ha át kell helyeznie a munkaterületet, forduljon az [Azure sentinelhez](mailto:AzureSentinel@microsoft.com).
+
 1. Válassza az **Azure Sentinel hozzáadása**lehetőséget.
   
 
@@ -65,7 +68,7 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
 Az Azure Sentinel a szolgáltatáshoz való csatlakozással és az események és naplók Azure Sentinelbe való továbbításával hozza létre a kapcsolatot a szolgáltatásokkal és az alkalmazásokkal. A gépek és a virtuális gépek esetében telepítheti az Azure Sentinel-ügynököt, amely összegyűjti a naplókat, és továbbítja azokat az Azure Sentinelnek. Tűzfalak és proxyk esetén az Azure Sentinel egy Linux syslog-kiszolgálót használ. Az ügynök telepítve van, és az ügynök összegyűjti a naplófájlokat, és továbbítja azokat az Azure Sentinelnek. 
  
 1. Kattintson **az adatösszekötők**elemre.
-2. A csatlakoztatott adatforrások csempéi is megtalálhatók.<br>
+1. A csatlakoztatott adatforrások csempéi is megtalálhatók.<br>
 Kattintson például a **Azure Active Directory**elemre. Ha ezt az adatforrást kapcsolja össze, az Azure AD-ból származó összes naplót az Azure Sentinelbe továbbíthatja. Kiválaszthatja, hogy milyen típusú naplókat szeretne beolvasni a bejelentkezési naplókba és/vagy a naplókba. <br>
 Alul az Azure Sentinel olyan javaslatokat tartalmaz, amelyekkel az egyes összekötők esetében telepíteni kell a munkafüzeteket, így azonnal megismerheti az összes adatelemzést. <br> További információért kövesse a telepítési utasításokat, vagy [tekintse meg a megfelelő kapcsolódási útmutatót](connect-data-sources.md) . További információ az adatösszekötők használatáról: a [Microsoft szolgáltatásainak összekapcsolása](connect-data-sources.md).
 

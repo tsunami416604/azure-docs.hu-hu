@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84235551"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problémák azonosítása és diagnosztizálása
 
@@ -161,7 +160,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 
 |Numerikus kód|Hibakód|Javasolt megoldás|
 |---|---|---|
-|– 2147467259|ConnectionFailedAdErrorNoSuchMember|A felhasználó nem tagja Azure Active Directorynak. A hozzáadásához kövesse a [Active Directory felügyeleti központ](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) útmutatását.|
+|– 2147467259|ConnectionFailedAdErrorNoSuchMember|A felhasználó nem tagja Active Directorynak. A hozzáadásához kövesse a [Active Directory felügyeleti központ](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) útmutatását.|
 |– 2147467259|ConnectionFailedAdTrustedRelationshipFailure|A munkamenet-gazdagép nem megfelelően van csatlakoztatva a Active Directoryhoz.|
 |– 2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|A kapcsolatok sikertelenek voltak, mert a munkamenet-gazdagép nem érhető el. Keresse meg a munkamenet-gazdagép állapotát.|
 |– 2146233088|ConnectionFailedClientDisconnect|Ha gyakran látja ezt a hibát, győződjön meg arról, hogy a felhasználó számítógépe csatlakozik a hálózathoz.|
@@ -172,6 +171,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 |8|ConnectionBroken|Az ügyfél és az átjáró vagy a kiszolgáló közötti kapcsolat megszakadt. Nincs szükség beavatkozásra, kivéve, ha váratlanul történik.|
 |14|UnexpectedNetworkDisconnect|A hálózattal létesített kapcsolódás megszakadt. Kérje meg a felhasználót, hogy kapcsolódjon újra.|
 |24|ReverseConnectFailed|A gazdagép virtuális gépe nem rendelkezik közvetlen RD-átjárói vonallal. Győződjön meg arról, hogy az átjáró IP-címe oldható fel.|
+|1322|ConnectionFailedNoMappingOfSIDinAD|A felhasználó nem tagja Active Directorynak. A hozzáadásához kövesse a [Active Directory felügyeleti központ](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) útmutatását.|
 
 ## <a name="next-steps"></a>További lépések
 

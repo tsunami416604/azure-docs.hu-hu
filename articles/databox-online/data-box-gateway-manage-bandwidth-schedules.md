@@ -5,29 +5,28 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339144"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway sávszélesség-ütemezési beállításait az Azure Portalon keresztül kezelheti  
 
-Ez a cikk bemutatja, hogyan történik a felhasználók kezelése az Azure Data Box Gatewayben. A sávszélesség-ütemezéssel napi szinten szabályozható a hálózati sávszélesség felhasználása. Ezek az ütemezések az eszköz és a felhő közötti összes fel- és letöltési műveletre alkalmazhatók. 
+Ez a cikk bemutatja, hogyan történik a felhasználók kezelése az Azure Data Box Gatewayben. A sávszélesség-ütemezéssel napi szinten szabályozható a hálózati sávszélesség felhasználása. Ezek az ütemezések az eszköz és a felhő közötti összes fel- és letöltési műveletre alkalmazhatók.
 
 A Data Box Gatewayre vonatkozó sávszélesség-ütemezéseket az Azure Portalon lehet hozzáadni, módosítani és törölni.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Ütemezés hozzáadása
 > * Ütemezés módosítása
-> * Ütemezés törlése 
-
+> * Ütemezés törlése
 
 ## <a name="add-a-schedule"></a>Ütemezés hozzáadása
 

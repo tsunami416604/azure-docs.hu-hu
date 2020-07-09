@@ -3,25 +3,25 @@ title: Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panelen | 
 description: A hozzáférési panelen nem jelenik meg az alkalmazások
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69f5196484b841e8f0de72ce52ae48e00963f6f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67272744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760995"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panelen.
 
@@ -135,7 +135,7 @@ Az alkalmazások egyszeri bejelentkezésének konfigurálásához kövesse az al
 
     2. kattintson a **Mentés gombra.** Megjelenik az új attribútum a táblán.
 
-13. kattintson **az &lt;alkalmazás nevének&gt; konfigurálása** elemre az alkalmazásban az egyszeri bejelentkezés konfigurálásához szükséges dokumentáció eléréséhez. Emellett a metaadatok URL-címei és tanúsítványa is szükséges az egyszeri bejelentkezés az alkalmazással történő beállításához.
+13. kattintson **az &lt; alkalmazás nevének &gt; konfigurálása** elemre az alkalmazásban az egyszeri bejelentkezés konfigurálásához szükséges dokumentáció eléréséhez. Emellett a metaadatok URL-címei és tanúsítványa is szükséges az egyszeri bejelentkezés az alkalmazással történő beállításához.
 
 14. a konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -252,7 +252,7 @@ Az Azure AD-katalógusban nem szereplő alkalmazásokra vonatkozó egyszeri beje
 
     2. Kattintson a **Mentés gombra.** Megjelenik az új attribútum a táblán.
 
-14. kattintson **az &lt;alkalmazás nevének&gt; konfigurálása** elemre az alkalmazásban az egyszeri bejelentkezés konfigurálásához szükséges dokumentáció eléréséhez. Emellett az alkalmazáshoz az Azure AD URL-címei és tanúsítványai is szükségesek.
+14. kattintson **az &lt; alkalmazás nevének &gt; konfigurálása** elemre az alkalmazásban az egyszeri bejelentkezés konfigurálásához szükséges dokumentáció eléréséhez. Emellett az alkalmazáshoz az Azure AD URL-címei és tanúsítványai is szükségesek.
 
 #### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Válassza ki a felhasználói azonosítót, és adja hozzá az alkalmazáshoz küldendő felhasználói attribútumokat
 

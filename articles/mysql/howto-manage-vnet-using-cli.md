@@ -5,14 +5,14 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a859fea121296dc977d48712c35ea3dcff798f50
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 3c4dced2177252daedc36c5a78707e47cf194d77
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509278"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118749"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MySQL VNet-szolgáltatásbeli végpontok létrehozása és kezelése az Azure CLI-vel
 A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MySQL-kiszolgálóra. A kényelmes Azure parancssori felületi (CLI) parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet VNet szolgáltatási végpontokat és szabályokat a kiszolgáló kezeléséhez. Az Azure Database for MySQL VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for MySQL Server VNet Service-végpontok](concepts-data-access-and-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for MySQL összes támogatott régiójában elérhetők.
@@ -57,7 +57,7 @@ A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak
 > 
 
 ### <a name="sample-script-to-create-an-azure-database-for-mysql-database-create-a-vnet-vnet-service-endpoint-and-secure-the-server-to-the-subnet-with-a-vnet-rule"></a>Parancsfájl Azure Database for MySQL adatbázis létrehozásához, VNet létrehozásához, VNet szolgáltatás végpontjának biztonságossá tételéhez, valamint a kiszolgáló VNet-szabállyal való biztonságossá tétele az alhálózathoz
-A példaszkriptben módosítsa a kiemelt sorokat, és adja meg azokban a rendszergazdai felhasználónevét és jelszavát. Cserélje le a `az account set --subscription` parancsban használt SubscriptionID a saját előfizetés-azonosítójával.
+A példaszkriptben módosítsa a kiemelt sorokat, és adja meg azokban a rendszergazdai felhasználónevét és jelszavát. Cserélje le a parancsban használt SubscriptionID a `az account set --subscription` saját előfizetés-azonosítójával.
 [!code-azurecli-interactive[main](../../cli_scripts/mysql/create-mysql-server-vnet/create-mysql-server.sh?highlight=5,20 "Create an Azure Database for MySQL, VNet, VNet service endpoint, and VNet rule.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása

@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780436"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása nem sikerül a InvalidNetworkConfigurationErrorCode az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-Ha a "Virtual Network konfiguráció `InvalidNetworkConfigurationErrorCode` nem kompatibilis a HDInsight-követelménysel" leírásban látható hibakód jelenik meg, általában a fürt [virtuális hálózati konfigurációjával](../hdinsight-plan-virtual-network-deployment.md) kapcsolatos problémát jelez. A hiba további leírása alapján a probléma megoldásához kövesse az alábbi szakaszokat.
+Ha `InvalidNetworkConfigurationErrorCode` a "Virtual Network konfiguráció nem kompatibilis a HDInsight-követelménysel" leírásban látható hibakód jelenik meg, általában a fürt [virtuális hálózati konfigurációjával](../hdinsight-plan-virtual-network-deployment.md) kapcsolatos problémát jelez. A hiba további leírása alapján a probléma megoldásához kövesse az alábbi szakaszokat.
 
 ## <a name="hostname-resolution-failed"></a>"Az állomásnév feloldása sikertelen"
 
@@ -32,11 +32,11 @@ Ez a hiba az egyéni DNS-konfigurációval kapcsolatos problémára mutat. A vir
 
 ### <a name="resolution"></a>Megoldás:
 
-1. SSH-t a fürt részét képező virtuális gépre, és futtassa a parancsot `hostname -f`. Ezzel visszaadja a gazdagép teljes tartománynevét ( `<host_fqdn>` az alábbi útmutatásnak megfelelően).
+1. SSH-t a fürt részét képező virtuális gépre, és futtassa a parancsot `hostname -f` . Ezzel visszaadja a gazdagép teljes tartománynevét (az `<host_fqdn>` alábbi útmutatásnak megfelelően).
 
-1. Ezután futtassa a parancsot `nslookup <host_fqdn>` (például: `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Ha a parancs feloldja a nevet egy IP-címhez, az azt jelenti, hogy a DNS-kiszolgáló megfelelően működik. Ebben az esetben az HDInsight-mel támogatási esetet kell megvizsgálnia, és meg fogjuk vizsgálni a problémát. A támogatási esetben adja meg a végrehajtott hibaelhárítási lépéseket. Ez segít a probléma gyorsabb megoldásában.
+1. Ezután futtassa a parancsot `nslookup <host_fqdn>` (például: `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net` ). Ha a parancs feloldja a nevet egy IP-címhez, az azt jelenti, hogy a DNS-kiszolgáló megfelelően működik. Ebben az esetben az HDInsight-mel támogatási esetet kell megvizsgálnia, és meg fogjuk vizsgálni a problémát. A támogatási esetben adja meg a végrehajtott hibaelhárítási lépéseket. Ez segít a probléma gyorsabb megoldásában.
 
-1. Ha a fenti parancs nem ad vissza IP-címet, futtassa `nslookup <host_fqdn> 168.63.129.16` a parancsot (például `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`:). Ha ez a parancs képes az IP-cím feloldására, az azt jelenti, hogy a DNS-kiszolgáló nem továbbítja a lekérdezést az Azure DNS-be, vagy nem olyan virtuális gép, amely a fürthöz tartozó virtuális hálózat részét képezi.
+1. Ha a fenti parancs nem ad vissza IP-címet, futtassa a parancsot `nslookup <host_fqdn> 168.63.129.16` (például: `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16` ). Ha ez a parancs képes az IP-cím feloldására, az azt jelenti, hogy a DNS-kiszolgáló nem továbbítja a lekérdezést az Azure DNS-be, vagy nem olyan virtuális gép, amely a fürthöz tartozó virtuális hálózat részét képezi.
 
 1. Ha nem rendelkezik olyan Azure-beli virtuális géppel, amely egyéni DNS-kiszolgálóként működhet a fürt virtuális hálózatában, előbb hozzá kell adnia ezt. Hozzon létre egy virtuális GÉPET a virtuális hálózaton, amely DNS-továbbítóként lesz konfigurálva.
 
@@ -95,7 +95,7 @@ Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális h
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Hajtsa végre a következő parancsot:
+1. Futtassa a következő parancsot:
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
@@ -113,10 +113,10 @@ Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális h
 
 #### <a name="1686312916-is-not-in-this-list"></a>a 168.63.129.16 nem szerepel a listában
 
-**1. lehetőség**  
+**1\. lehetőség**  
 Adja hozzá a 168.63.129.16-t a virtuális hálózat első egyéni DNS-ként az [Azure HDInsight virtuális hálózatának megtervezése](../hdinsight-plan-virtual-network-deployment.md)című témakörben ismertetett lépések alapján. Ezek a lépések csak akkor érvényesek, ha az egyéni DNS-kiszolgáló Linux rendszeren fut.
 
-**2. lehetőség**  
+**2\. lehetőség**  
 Helyezzen üzembe egy DNS-kiszolgálói virtuális GÉPET a virtuális hálózathoz. Ez a következő lépéseket foglalja magában:
 
 * Hozzon létre egy virtuális GÉPET a virtuális hálózaton, amely DNS-továbbítóként lesz konfigurálva (ez lehet Linux vagy Windows rendszerű virtuális gép).

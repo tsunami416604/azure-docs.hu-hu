@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78298343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356882"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 A duplikált attribútum-rugalmasság a Azure Active Directory egyik funkciója, amely megszünteti a **userPrincipalName** és az SMTP- **ProxyAddress** ütközések okozta súrlódást a Microsoft szinkronizálási eszközeinek valamelyikének futtatásakor.
@@ -40,7 +40,7 @@ Ha egy olyan UPN-vagy ProxyAddress-értékkel rendelkező új objektum kiépít�
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Ismétlődő attribútum-rugalmasságot biztosító viselkedés
 A duplikált attribútummal rendelkező objektumok kiépítése és frissítése helyett a "karanténba helyezi" a duplikált attribútumot Azure Active Directory, amely nem sérti az egyediségi megkötést. Ha ez az attribútum szükséges a kiépítéshez, például a UserPrincipalName, a szolgáltatás helyőrző értéket rendel hozzá. Az ideiglenes értékek formátuma  
-_** \@ \<OriginalPrefix>+\<4DigitNumber>InitialTenantDomain>. onmicrosoft.com. \<**_
+_** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_.
 
 Az attribútum rugalmassági folyamata csak UPN-és SMTP- **ProxyAddress** -értékeket kezel.
 
@@ -116,7 +116,7 @@ A széles sztringek kereséséhez használja a **-KeresendoString** jelzőt. Ez 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>Korlátozott mennyiségű vagy az összes
-1. **A \<MaxResults int>** használatával a lekérdezés meghatározott számú értékre korlátozható.
+1. **MaxResults \<Int> ** a lekérdezés meghatározott számú értékre való korlátozására használható.
 2. Az **összes eredmény** beolvasása a következő esetekben lehetséges, hogy nagy számú hiba létezik.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
@@ -147,9 +147,9 @@ Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatás
 1. Az adott attribútum-konfigurációval rendelkező objektumok továbbra is megkapják az exportálási hibákat a karanténba helyezett attribútum (ok) helyett.  
    Például:
    
-    a. Új felhasználó jön létre az AD-ben a **joe\@contoso.com** és a ProxyAddress SMTP UPN-vel **: Joe\@contoso.com**
+    a. Új felhasználó jön létre az AD-ben a **joe \@ contoso.com** és a ProxyAddress SMTP UPN-vel **: Joe \@ contoso.com**
    
-    b. Az objektum tulajdonságai ütköznek egy meglévő csoporttal, ahol a ProxyAddress **SMTP: Joe\@contoso.com**.
+    b. Az objektum tulajdonságai ütköznek egy meglévő csoporttal, ahol a ProxyAddress **SMTP: Joe \@ contoso.com**.
    
     c. Exportáláskor a rendszer **ProxyAddress ütközési hibát okoz** a karanténba helyezett ütközési attribútumok helyett. A rendszer újrapróbálkozik a művelettel minden további szinkronizálási cikluson, mivel a rugalmassági funkció engedélyezése előtt lenne.
 2. Ha két csoport jön létre a helyszínen ugyanazzal az SMTP-címekkel, az egyik nem tudja kiépíteni az első kísérletet a standard ismétlődő **ProxyAddress** hibával. Az ismétlődő érték azonban megfelelően Karanténba kerül a következő szinkronizálási ciklusra.
@@ -159,20 +159,20 @@ Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatás
 1. Az UPN-ütközőben lévő két objektum részletes hibaüzenete ugyanaz. Ez azt jelzi, hogy mindkét esetben az UPN-t módosították/karanténba helyezte, ha valójában csak az egyikük módosította az adatmennyiséget.
 2. Az egyszerű felhasználónévi ütközés részletes hibaüzenete egy olyan felhasználó helytelen displayName-üzenetét jeleníti meg, aki az UPN-t módosította/karanténba helyezte. Például:
    
-    a. **A felhasználó** elsőként szinkronizál az **UPN =\@user contoso.com**.
+    a. **A felhasználó** elsőként szinkronizál az **UPN = User \@ contoso.com**.
    
-    b. A **B felhasználó** szinkronizálása az **UPN\@= user contoso.com**mellett történt.
+    b. A **B felhasználó** szinkronizálása az **UPN = User \@ contoso.com**mellett történt.
    
-    c. **B felhasználó** Az egyszerű felhasználónév **User1234\@contoso.onmicrosoft.com** , a **felhasználói\@contoso.com** pedig a **DirSyncProvisioningErrors**.
+    c. **B felhasználó** Az egyszerű felhasználónév **User1234 \@ contoso.onmicrosoft.com** , a **felhasználói \@ contoso.com** pedig a **DirSyncProvisioningErrors**.
    
-    d. A "B" **felhasználó** hibaüzenete azt jelzi **, hogy a felhasználó már** rendelkezik UPN-ként a **felhasználó\@contoso.com** , de a **b felhasználó** saját DisplayName.
+    d. A "B" **felhasználó** hibaüzenete azt jelzi **, hogy a felhasználó már** rendelkezik UPN-ként a **felhasználó \@ contoso.com** , de a **b felhasználó** saját DisplayName.
 
 **Identitásszinkronizálás hibajelentés**:
 
 A *probléma megoldásához szükséges lépések* hivatkozása helytelen:  
     ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktív felhasználók")  
 
-A [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)következőre kell mutatnia:.
+A következőre kell mutatnia: [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) .
 
 ## <a name="see-also"></a>Lásd még
 * [Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)

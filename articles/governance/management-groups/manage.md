@@ -3,12 +3,11 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259405"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 

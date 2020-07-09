@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/29/2020
+ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75977538"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955812"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben 
 
@@ -28,18 +28,18 @@ A kiépített átviteli sebesség ( [kérési egység](request-units.md) /másod
 
 További információkért tekintse meg a [Azure Cosmos db díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) , és [Ismerkedjen meg a Azure Cosmos db számlával](understand-your-bill.md).
 
-A Azure Cosmos DB díjszabási modellje konzisztens az összes API-ban. További információ: [How Azure Cosmos db díjszabási modell költséghatékony az ügyfelek számára](total-cost-ownership.md). Egy adatbázison vagy tárolón legalább egy adatátviteli sebesség szükséges az SLA-k biztosításához, és a kiépített átviteli sebesség $6-ig növelhető és csökkenthető minden 100 RU/s esetében.
+A Azure Cosmos DB díjszabási modellje konzisztens az összes API-ban. További információ: [How Azure Cosmos db díjszabási modell költséghatékony az ügyfelek számára](total-cost-ownership.md). Egy adatbázison vagy tárolón legalább egy átviteli sebesség szükséges, amely biztosítja a SLA-kat, és növelheti vagy csökkentheti az egyes 100 RU/s-k kiépített átviteli sebességét.
 
-Jelenleg az adatbázis és a tároló-alapú átviteli sebesség minimális díja $24/hó (a legfrissebb információk a [Azure Cosmos db díjszabási oldalán](https://azure.microsoft.com/pricing/details/cosmos-db/) olvashatók. Ha a számítási feladat több tárolót használ, az adatbázis-szintű átviteli sebességre is optimalizálható, mert az adatbázis-szintű átviteli sebesség lehetővé teszi, hogy a tárolók között tetszőleges számú tárolót osszon meg egy adatbázisban. A következő táblázat összefoglalja a kiosztott átviteli sebességet és a különböző entitások költségeit:
+Ha az Egyesült államokbeli nem kormányzati régióba helyezi üzembe a Azure Cosmos DB-fiókját, akkor a két adatbázis és a tároló-alapú átviteli sebesség esetében jelenleg a minimális díj körülbelül 24 USD/hó. A díjszabás a használt régiótól függ, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . Ha a számítási feladat több tárolót használ, az adatbázis-szintű átviteli sebességre is optimalizálható, mert az adatbázis-szintű átviteli sebesség lehetővé teszi, hogy a tárolók között tetszőleges számú tárolót osszon meg egy adatbázisban. A következő táblázat összefoglalja a kiosztott átviteli sebességet és a különböző entitások költségeit:
 
-|**Entitás**  | **Minimális átviteli sebesség &i díja** |**Méretezési növekmények & Cost** |**Kiépítési hatókör** |
+|**Entitás**  | **Minimális átviteli sebesség** |**Méretezési növekmények** |**Kiépítési hatókör** |
 |---------|---------|---------|-------|
-|Adatbázis    | 400 RU/s ($ 24/hó)    | 100 RU/s ($ 6/hó)   |Az átviteli sebesség az adatbázis számára van fenntartva, és a tárolók az adatbázison belül vannak megosztva |
-|Tároló     | 400 RU/s ($ 24/hó)    | 100 RU/s ($ 6/hó)  |Az átviteli sebesség egy adott tároló számára van fenntartva |
+|Adatbázis    | 400 RU/s    | 100 RU/s   |Az átviteli sebesség az adatbázis számára van fenntartva, és a tárolók az adatbázison belül vannak megosztva |
+|Tároló     | 400 RU/s   | 100 RU/s  |Az átviteli sebesség egy adott tároló számára van fenntartva |
 
-Ahogy az előző táblázatban is látható, a Azure Cosmos DB minimális átviteli sebessége $24/hó. Ha a minimális átviteli sebesség és az idő múlásával növeli az éles számítási feladatok támogatását, a költségek a $6/hó-onként növekednek. A Azure Cosmos DB díjszabási modellje rugalmas, és a vertikális fel-vagy leskálázás során az ár zökkenőmentesen növekszik vagy csökken.
+Ahogy az előző táblázatban is látható, a Azure Cosmos DB minimális átviteli sebessége körülbelül $24/hó. Ha a minimális átviteli sebesség és az idő múlásával növeli az éles számítási feladatok támogatását, a költségek körülbelül 6 USD/hó-onként növekednek. A díjszabás a használt régiótól függ, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . A Azure Cosmos DB díjszabási modellje rugalmas, és a vertikális fel-vagy leskálázás során az ár zökkenőmentesen növekszik vagy csökken.
 
-## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása 
+## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
 
 Azure Cosmos DB számos lehetőséget kínál a fejlesztők számára ingyenesen. Ezek a lehetőségek a következők:
 

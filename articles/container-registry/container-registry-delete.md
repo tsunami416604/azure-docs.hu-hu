@@ -4,10 +4,9 @@ description: A beállításjegyzék méretének hatékony kezeléséről a táro
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403337"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure Container Registry tároló lemezképének törlése az Azure CLI használatával
@@ -38,7 +37,7 @@ A következő Azure CLI-parancs törli az "ACR-HelloWorld" tárházat és az ada
 
 Az egyes lemezképeket törölheti egy adattárból, ha megadja az adattár nevét és a címkét a törlési műveletben. Ha a címke alapján törli a címkét, akkor a rendszerképben lévő egyedi rétegek által használt tárolóhelyet is helyreállítja
 
-A címke alapján történő törléshez használja az [az ACR adattár törlése][az-acr-repository-delete] lehetőséget, és adja meg `--image` a rendszerkép nevét a paraméterben. A rendszer minden, a képhez egyedi réteget töröl, és a képhez társított egyéb címkéket is törli.
+A címke alapján történő törléshez használja az [az ACR adattár törlése][az-acr-repository-delete] lehetőséget, és adja meg a rendszerkép nevét a `--image` paraméterben. A rendszer minden, a képhez egyedi réteget töröl, és a képhez társított egyéb címkéket is törli.
 
 Például törölje az "ACR-HelloWorld: Latest" rendszerképet a "myregistry" beállításjegyzékből:
 
@@ -107,14 +106,14 @@ A `acr-helloworld:v2` rendszer törli a rendszerképet a beállításjegyzékbő
 
 A tárház vagy a beállításjegyzék méretének megőrzése érdekében előfordulhat, hogy rendszeres időközönként törölni kell az adott dátumnál régebbi jegyzékfájl-kivonatokat.
 
-A következő Azure CLI-parancs felsorolja az összes manifest-kivonatot egy megadott időbélyegnél régebbi tárházban, növekvő sorrendben. Cserélje `<acrName>` le `<repositoryName>` a és a értéket a környezetének megfelelő értékekre. Az időbélyeg lehet egy teljes dátum-idő kifejezés vagy egy dátum, ahogy az ebben a példában is látható.
+A következő Azure CLI-parancs felsorolja az összes manifest-kivonatot egy megadott időbélyegnél régebbi tárházban, növekvő sorrendben. Cserélje le a `<acrName>` és `<repositoryName>` a értéket a környezetének megfelelő értékekre. Az időbélyeg lehet egy teljes dátum-idő kifejezés vagy egy dátum, ahogy az ebben a példában is látható.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Az elavult jegyzékfájl-kivonatok azonosítása után a következő bash-szkripttel törölheti a megadott időbélyegnél régebbi jegyzékfájl-kivonatokat. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `ENABLE_DELETE` törlésének `true` engedélyezéséhez módosítsa az értéket.
+Az elavult jegyzékfájl-kivonatok azonosítása után a következő bash-szkripttel törölheti a megadott időbélyegnél régebbi jegyzékfájl-kivonatokat. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A `ENABLE_DELETE` `true` rendszerkép törlésének engedélyezéséhez módosítsa az értéket.
 
 > [!WARNING]
 > A következő minta-parancsfájlt körültekintően kell használni – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne futtassa ezeket a parancsfájlokat. A jegyzékfájl-kivonatok törlésével megakadályozhatja, hogy ezek a rendszerek a lemezképeket a beállításjegyzékből húzza. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md). 
@@ -199,11 +198,11 @@ Ahogy azt a [manifest Digest](container-registry-concepts.md#manifest-digest) sz
    ]
    ```
 
-Ahogy az a sorozatban az utolsó lépés kimenetében is látható, már létezik egy árva jegyzékfájl, amelynek `"tags"` a tulajdonsága egy üres lista. Ez a jegyzékfájl továbbra is létezik a beállításjegyzékben, valamint az általa hivatkozott egyedi rétegbeli adatokkal együtt. **Az ilyen árva rendszerképek és a hozzájuk tartozó adatrétegek törléséhez a manifest Digest utasítással kell törölnie**.
+Ahogy az a sorozatban az utolsó lépés kimenetében is látható, már létezik egy árva jegyzékfájl, amelynek a `"tags"` tulajdonsága egy üres lista. Ez a jegyzékfájl továbbra is létezik a beállításjegyzékben, valamint az általa hivatkozott egyedi rétegbeli adatokkal együtt. **Az ilyen árva rendszerképek és a hozzájuk tartozó adatrétegek törléséhez a manifest Digest utasítással kell törölnie**.
 
 ## <a name="delete-all-untagged-images"></a>Az összes címkézetlen rendszerkép törlése
 
-Az adattár összes címkézetlen lemezképét az alábbi Azure CLI-paranccsal listázhatja. Cserélje `<acrName>` le `<repositoryName>` a és a értéket a környezetének megfelelő értékekre.
+Az adattár összes címkézetlen lemezképét az alábbi Azure CLI-paranccsal listázhatja. Cserélje le a `<acrName>` és `<repositoryName>` a értéket a környezetének megfelelő értékekre.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
@@ -216,7 +215,7 @@ Ha ezt a parancsot egy parancsfájlban használja, törölheti az összes címk�
 
 **Azure CLI a Bashben**
 
-A következő bash-szkript törli az összes címkézetlen lemezképet egy adattárból. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `ENABLE_DELETE` törlésének `true` engedélyezéséhez módosítsa az értéket.
+A következő bash-szkript törli az összes címkézetlen lemezképet egy adattárból. Ehhez az Azure CLI és a **xargs**szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A `ENABLE_DELETE` `true` rendszerkép törlésének engedélyezéséhez módosítsa az értéket.
 
 ```bash
 #!/bin/bash
@@ -246,7 +245,7 @@ fi
 
 **Azure CLI a PowerShellben**
 
-A következő PowerShell-szkript törli az összes címkézetlen lemezképet egy adattárból. Ehhez a PowerShell és az Azure CLI szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A rendszerkép `$enableDelete` törlésének `$TRUE` engedélyezéséhez módosítsa az értéket.
+A következő PowerShell-szkript törli az összes címkézetlen lemezképet egy adattárból. Ehhez a PowerShell és az Azure CLI szükséges. Alapértelmezés szerint a parancsfájl nem végez törlést. A `$enableDelete` `$TRUE` rendszerkép törlésének engedélyezéséhez módosítsa az értéket.
 
 ```powershell
 # WARNING! This script deletes data!

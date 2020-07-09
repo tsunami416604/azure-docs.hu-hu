@@ -4,15 +4,15 @@ description: Ez a cikk az Azure-Application Gateway létrehozásával és a HTTP
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806439"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application Gateway létrehozása és a HTTP-fejlécek újraírása
 
@@ -30,11 +30,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Application Gateway létrehozása
 > * Az alkalmazásátjáró tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a cikkhez Azure PowerShell helyileg kell futtatnia. Az az modul Version 1.0.0 vagy újabb verziójának telepítve kell lennie. Futtassa `Import-Module Az` a parancsot`Get-Module Az` , majd keresse meg a verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez a cikkhez Azure PowerShell helyileg kell futtatnia. Az az modul Version 1.0.0 vagy újabb verziójának telepítve kell lennie. Futtassa `Import-Module Az` a parancsot, majd `Get-Module Az` Keresse meg a verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -167,7 +167,7 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Először vizsgálja meg az Application Gateway használatával létrehozott erőforrásokat. Ezután, ha már nincs rá szükség, az `Remove-AzResourceGroup` paranccsal eltávolíthatja az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást.
 

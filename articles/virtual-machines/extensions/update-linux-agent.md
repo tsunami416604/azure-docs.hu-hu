@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82112048"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Az Azure Linux-ügynök frissítése egy virtuális gépen
@@ -352,7 +352,7 @@ sudo systemctl restart walinuxagent.service
 
 ## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 és Oracle Linux 7
 
-Oracle Linux esetén győződjön meg arról, hogy `Addons` az adattár engedélyezve van. `/etc/yum.repos.d/public-yum-ol6.repo`Szerkessze a fájlt (Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), és módosítsa a sort `enabled=0` `enabled=1` a következőre: **[ol6_addons]** vagy **[ol7_addons]** .
+Oracle Linux esetén győződjön meg arról, hogy az `Addons` adattár engedélyezve van. Szerkessze a fájlt `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux), és módosítsa a sort a következőre `enabled=0` `enabled=1` : **[ol6_addons]** vagy **[ol7_addons]** .
 
 Ezután az Azure Linux-ügynök legújabb verziójának telepítéséhez írja be a következőt:
 
@@ -390,15 +390,15 @@ Ezután írja be a következőt:
 sudo yum update WALinuxAgent
 ```
 
-Általában ez minden, amire szüksége van, de ha valamilyen okból nem kell https://github.com közvetlenül telepítenie, kövesse az alábbi lépéseket.
+Általában ez minden, amire szüksége van, de ha valamilyen okból nem kell közvetlenül telepítenie https://github.com , kövesse az alábbi lépéseket.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>A Linux-ügynök frissítése, ha nem létezik ügynök-csomag a terjesztéshez
 
-A wget telepítése (vannak olyan disztribúciók, amelyek nem telepítik alapértelmezés szerint, például a Red Hat, a CentOS és a Oracle Linux 6,4-es és 6,5 `sudo yum install wget` -es verziókat) a parancssorba való beírásával.
+A wget telepítése (vannak olyan disztribúciók, amelyek nem telepítik alapértelmezés szerint, például a Red Hat, a CentOS és a Oracle Linux 6,4-es és 6,5-es verziókat) a parancssorba való beírásával `sudo yum install wget` .
 
 ### <a name="1-download-the-latest-version"></a>1. Töltse le a legújabb verziót
-Nyissa meg [Az Azure Linux Agent kiadását a githubon](https://github.com/Azure/WALinuxAgent/releases) egy weblapon, és keresse meg a legújabb verziószámot. (Az aktuális verziót megkeresheti a beírásával `waagent --version`.)
+Nyissa meg [Az Azure Linux Agent kiadását a githubon](https://github.com/Azure/WALinuxAgent/releases) egy weblapon, és keresse meg a legújabb verziószámot. (Az aktuális verziót megkeresheti a beírásával `waagent --version` .)
 
 #### <a name="for-version-22x-or-later-type"></a>A 2.2. x vagy újabb verziónál írja be a következőt:
 ```bash
@@ -418,7 +418,7 @@ cd WALinuxAgent-2.2.14
 ### <a name="2-install-the-azure-linux-agent"></a>2. az Azure Linux-ügynök telepítése
 
 #### <a name="for-version-22x-use"></a>A 2.2. x verzióhoz használja a következőt:
-Előfordulhat, hogy először telepítenie kell `setuptools` a csomagot – lásd [itt](https://pypi.python.org/pypi/setuptools). Majd futtassa ezt:
+Előfordulhat, hogy először telepítenie kell a csomagot `setuptools` – lásd [itt](https://pypi.python.org/pypi/setuptools). Majd futtassa ezt:
 
 ```bash
 sudo python setup.py install

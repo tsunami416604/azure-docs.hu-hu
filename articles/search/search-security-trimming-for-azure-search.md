@@ -1,27 +1,27 @@
 ---
 title: Az eredmények kivágására szolgáló biztonsági szűrők
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search-tartalmak hozzáférés-vezérlése biztonsági szűrőkkel és felhasználói identitásokkal.
+description: Biztonsági jogosultságok a dokumentum szintjén az Azure Cognitive Search keresési eredmények, biztonsági szűrők és felhasználói identitások használatával.
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553141"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Az Azure Cognitive Search az eredmények kivágására szolgáló biztonsági szűrők
 
 Biztonsági szűrőket alkalmazhat a keresési eredmények az Azure-Cognitive Search a felhasználói identitás alapján történő körülvágásához. Ez a keresési élmény általában ahhoz szükséges, hogy össze lehessen hasonlítani azt az identitást, aki egy olyan mezőre kéri a keresést, amely tartalmazza a dokumentum engedélyeivel rendelkező alapelveket. Ha egyezést talál, a felhasználó vagy a rendszerbiztonsági tag (például egy csoport vagy szerepkör) hozzáfér ehhez a dokumentumhoz.
 
-A biztonsági szűrés elérésének egyik módja az egyenlőségi kifejezések összetett kiválasztásán keresztül történik: például `Id eq 'id1' or Id eq 'id2'`, és így tovább. Ez a megközelítés a hibákra hajlamos, nehezen karbantartható, és olyan esetekben, amikor a lista több száz vagy több ezer értéket tartalmaz, lelassítja a lekérdezés válaszideje több másodpercen belül. 
+A biztonsági szűrés elérésének egyik módja az egyenlőségi kifejezések összetett kiválasztásán keresztül történik: például, `Id eq 'id1' or Id eq 'id2'` és így tovább. Ez a megközelítés a hibákra hajlamos, nehezen karbantartható, és olyan esetekben, amikor a lista több száz vagy több ezer értéket tartalmaz, lelassítja a lekérdezés válaszideje több másodpercen belül. 
 
-Az egyszerűbb és gyorsabb megközelítés a `search.in` függvényen keresztül történik. Ha egyenlőségi `search.in(Id, 'id1, id2, ...')` kifejezés helyett használja, akkor várható, hogy a rendszer a második másodpercben válaszol.
+Az egyszerűbb és gyorsabb megközelítés a `search.in` függvényen keresztül történik. Ha `search.in(Id, 'id1, id2, ...')` Egyenlőségi kifejezés helyett használja, akkor várható, hogy a rendszer a második másodpercben válaszol.
 
 Ez a cikk bemutatja, hogyan hajthatja végre a biztonsági szűrést a következő lépések végrehajtásával:
 > [!div class="checklist"]
@@ -40,9 +40,9 @@ Ez a cikk feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.m
 
 A dokumentumoknak tartalmazniuk kell egy mezőt, amely meghatározza, hogy mely csoportok férhetnek hozzá. Ezek az információk azokra a szűrési feltételekre vonatkoznak, amelyek alapján a rendszer kijelöli vagy elutasítja a kiállítói eredményhalmaz által visszaadott dokumentumokat.
 Tegyük fel, hogy a védett fájlok indexét használjuk, és minden fájlhoz egy másik felhasználó férhet hozzá.
-1. Mező `group_ids` hozzáadása (itt választhat nevet) `Collection(Edm.String)`. Győződjön meg arról, hogy a `filterable` mezőhöz egy `true` attribútum van beállítva, hogy a keresési eredmények szűrve legyenek a felhasználó hozzáférése alapján. Ha például a `["group_id1, group_id2"]` (z) `file_name` " `group_ids` secured_file_b" nevű dokumentumra állítja be a mezőt, csak a "group_id1" vagy "group_id2" csoport-azonosítóhoz tartozó felhasználók rendelkeznek olvasási hozzáféréssel a fájlhoz.
-   Győződjön meg arról, hogy `retrievable` a mező attribútuma `false` úgy van beállítva, hogy a rendszer ne adja vissza a keresési kérelem részeként.
-2. A példa `file_id` kedvéért `file_name` adja hozzá a és a mezőket is.  
+1. Mező hozzáadása `group_ids` (itt választhat nevet) `Collection(Edm.String)` . Győződjön meg arról, hogy a mezőhöz egy `filterable` attribútum van beállítva, `true` hogy a keresési eredmények szűrve legyenek a felhasználó hozzáférése alapján. Ha például a (z) `group_ids` `["group_id1, group_id2"]` "secured_file_b" nevű dokumentumra állítja be a mezőt `file_name` , csak a "group_id1" vagy "group_id2" csoport-azonosítóhoz tartozó felhasználók rendelkeznek olvasási hozzáféréssel a fájlhoz.
+   Győződjön meg arról, hogy a mező `retrievable` attribútuma úgy van beállítva, `false` hogy a rendszer ne adja vissza a keresési kérelem részeként.
+2. `file_id` `file_name` A példa kedvéért adja hozzá a és a mezőket is.  
 
 ```JSON
 {
@@ -60,7 +60,7 @@ Tegyük fel, hogy a védett fájlok indexét használjuk, és minden fájlhoz eg
 Adjon ki egy HTTP POST-kérelmet az index URL-címének végpontjának. A HTTP-kérelem törzse egy JSON-objektum, amely tartalmazza a hozzáadandó dokumentumokat:
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -92,7 +92,7 @@ A kérelem törzsében adja meg a dokumentumok tartalmát:
 }
 ```
 
-Ha egy meglévő dokumentumot kell frissítenie a csoportok listájával, a vagy `merge` `mergeOrUpload` a műveletet használhatja:
+Ha egy meglévő dokumentumot kell frissítenie a csoportok listájával, a `merge` vagy a `mergeOrUpload` műveletet használhatja:
 
 ```JSON
 {
@@ -110,15 +110,15 @@ A dokumentumok hozzáadásával vagy frissítésével kapcsolatos részletes inf
    
 ## <a name="apply-the-security-filter"></a>A biztonsági szűrő alkalmazása
 
-A dokumentumok `group_ids` hozzáférés alapján történő kivágásához egy `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` szűrővel rendelkező keresési lekérdezést kell kiadnia, ahol "group_id1 group_id2,..." azok a csoportok, amelyekhez a keresési kérelem kiállítója tartozik.
-Ez a szűrő minden olyan dokumentumra illeszkedik `group_ids` , amelynek a mezője tartalmazza a megadott azonosítók egyikét.
+A dokumentumok hozzáférés alapján történő kivágásához egy `group_ids` szűrővel rendelkező keresési lekérdezést kell kiadnia `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` , ahol "group_id1 group_id2,..." azok a csoportok, amelyekhez a keresési kérelem kiállítója tartozik.
+Ez a szűrő minden olyan dokumentumra illeszkedik, amelynek a `group_ids` mezője tartalmazza a megadott azonosítók egyikét.
 A dokumentumok Azure Cognitive Search használatával történő keresésével kapcsolatos részletes információkért olvassa el a [keresési dokumentumokat](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet dokumentumokat a POST-kérések használatával.
 
 A HTTP POST-kérelem kiadása:
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```
@@ -131,7 +131,7 @@ Határozza meg a szűrőt a kérelem törzsében:
 }
 ```
 
-A dokumentumokat vissza kell olvasnia, `group_ids` ahol a "group_id1" vagy a "group_id2" szerepel. Más szóval azokat a dokumentumokat kapja meg, amelyekre a kérelem kiállítójának olvasási hozzáférése van.
+A dokumentumokat vissza kell olvasnia, ahol a `group_ids` "group_id1" vagy a "group_id2" szerepel. Más szóval azokat a dokumentumokat kapja meg, amelyekre a kérelem kiállítójának olvasási hozzáférése van.
 
 ```JSON
 {

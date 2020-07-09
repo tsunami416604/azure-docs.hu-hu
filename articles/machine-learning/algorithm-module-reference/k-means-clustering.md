@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
 ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921164"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
@@ -101,7 +100,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
 
 8.  Válassza a **funkciók normalizálása** lehetőséget, ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
   
-     Ha a normalizálás alkalmazása előtt betanítást alkalmaz, az adatpontokat a `[0,1]` MinMaxNormalizer szerint normalizálja a rendszer.
+     Ha a normalizálás alkalmazása előtt betanítást alkalmaz, az adatpontokat a MinMaxNormalizer szerint normalizálja a rendszer `[0,1]` .
 
 10. A modell betanítása.  
   

@@ -8,17 +8,16 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: bb90858f7e87e31b8b6028a30a6000bbed4d3e4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7ec33a70e96ac9aa989eb898ca450696c589ef1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80421095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702977"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure Virtual Networkben – parancssori felület
 
@@ -28,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.49 vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.49 vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -362,7 +361,7 @@ Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti me
 
   ![IPv6-alapú kettős verem virtuális hálózata az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 

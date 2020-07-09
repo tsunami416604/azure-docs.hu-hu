@@ -11,14 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: b2ba1d07983021e376a950fba789db0b51c11d4b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344577"
 ---
-# <a name="performing-disaster-recovery-drill"></a>Vész-helyreállítási részletezés végrehajtása
+# <a name="performing-disaster-recovery-drills"></a>Vész-helyreállítási gyakorlatok végrehajtása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A helyreállítási munkafolyamatok alkalmazás-készültségének ellenőrzése rendszeresen történik. Az alkalmazás viselkedésének, valamint az adatvesztés következményeinek és/vagy a feladatátvétel által okozott fennakadásnak az ellenőrzése jó mérnöki gyakorlat. Emellett a legtöbb iparági szabvány követelménye az üzletmenet folytonossági minősítésének része.

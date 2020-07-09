@@ -4,11 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AK-fürt 
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691934"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókhoz készült Azure Monitorral való monitorozásának leállítása
 
@@ -37,7 +36,7 @@ Ha nem ismeri az erőforrások sablon használatával történő központi telep
 >A sablont a fürt azonos erőforráscsoporthoz kell telepíteni. Ha a sablon használatakor kihagyja a többi tulajdonságot vagy bővítményt, akkor azt eredményezheti a fürtből való eltávolításuk. Például *enableRBAC* a fürtben MEGVALÓSÍTott RBAC-házirendekhez, vagy *aksResourceTagValues* , ha címkéket adtak meg az AK-fürthöz.  
 >
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version`parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-template"></a>Sablon létrehozása
 
@@ -89,7 +88,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
     }
     ```
 
-2. Mentse ezt a fájlt **OptOutTemplate. JSON** néven egy helyi mappába.
+2. Mentse ezt a fájlt **OptOutTemplate.jsként** egy helyi mappába.
 
 3. Illessze be a következő JSON-szintaxist a fájlba:
 
@@ -123,7 +122,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 
     Szerkessze a **aksResourceTagValues** értékeit, hogy azok megfeleljenek az AK-fürthöz megadott meglévő címkék értékének.
 
-5. Mentse ezt a fájlt **OptOutParam. JSON** néven egy helyi mappába.
+5. Mentse ezt a fájlt **OptOutParam.jsként** egy helyi mappába.
 
 6. Készen áll a sablon üzembe helyezésére.
 

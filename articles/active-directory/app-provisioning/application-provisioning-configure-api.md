@@ -2,21 +2,20 @@
 title: Microsoft Graph API-k használata a kiépítés konfigurálásához – Azure Active Directory | Microsoft Docs
 description: Be kell állítania egy alkalmazás több példányának kiépítés beállítását? Megtudhatja, hogyan takaríthat meg időt a Microsoft Graph API-k használatával az automatikus kiépítés konfigurációjának automatizálásához.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 585cafc548b3458c6e9cc0ef91c44f163fb7fa2f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782058"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Kiépítés konfigurálása Microsoft Graph API-k használatával
 

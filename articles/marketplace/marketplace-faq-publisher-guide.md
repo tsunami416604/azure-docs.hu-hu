@@ -1,18 +1,18 @@
 ---
 title: Microsoft kereskedelmi Marketplace-közzétevő – GYIK
 description: Választ kaphat az Azure Marketplace-re és a Microsoft AppSourcera vonatkozó gyakori kérdésekre.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800653"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121163"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -67,7 +67,7 @@ Az ügyfelek által a kereskedelmi Marketplace-ajánlat használatának módja a
 
 A regisztráció és a kiadói szerződés elfogadását követően hozzáférhet a kereskedelmi piactér oldalához a partner Centerben. Itt hozhat létre és kezelhet ajánlatokat, és itt tekintheti meg az elemzési jelentéseket. Microsoft 365 alkalmazások esetében az Office áruház programját is aktiválni kell a partner centeren belül.
 
-További információ: [Üdvözöljük a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/) , és az [Office 365-bővítményt a Microsoft kereskedelmi Piactéren keresztül teheti meg](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+További információ: [Üdvözöljük a kereskedelmi piactéren](index.yml) , és az [Office 365-bővítményt a Microsoft kereskedelmi Piactéren keresztül teheti meg](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Hogyan támogatási támogatást kaphat a kereskedelmi piactéren?
 
@@ -77,7 +77,7 @@ Az [aktív közösségi fórumot is csatlakoztathatja](https://www.microsoftpart
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Milyen elemzések érhetők el a cégem számára a kereskedelmi piactéren?
 
-Az ajánlatokról a kereskedelmi piactéren biztosítunk jelentéskészítést. Az ügyfelekre, a rendelésekre, az áruházbeli engagement-re és egyebekre vonatkozó információ eléréséhez keresse fel a [következőt: Analytics a kereskedelmi piactéren a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics).
+Az ajánlatokról a kereskedelmi piactéren biztosítunk jelentéskészítést. Az ügyfelekre, a rendelésekre, az áruházbeli engagement-re és egyebekre vonatkozó információ eléréséhez keresse fel a [következőt: Analytics a kereskedelmi piactéren a partner Centerben](partner-center-portal/analytics.md).
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Mi a Microsoft és az ügyfelek közötti kapcsolat?
 
@@ -89,7 +89,7 @@ Közzétevőként beállíthatja a szoftveres megoldás használati feltételeit
 
 Létrehozhat olyan módosításokat, amelyek az összes ügyfélre érvényesek, vagy a módosításokat bizonyos ügyfelek számára is elvégezheti. A használati feltételek teljes mértékben testre szabhatók, amelyek beírhatók egy szövegmezőbe, vagy egy webhelyre, amely webcímeként fog megjelenni.
 
-További információ: [standard szintű szerződés a Microsoft kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/standard-contract).
+További információ: [standard szintű szerződés a Microsoft kereskedelmi piactéren](standard-contract.md).
 
 ### <a name="is-azure-marketplace-available-in-azure-government"></a>Elérhető az Azure Marketplace Azure Government?
 
@@ -126,7 +126,7 @@ Ha nagyon alacsony áron szeretné elvégezni a vásárlást, javasoljuk, hogy a
 
 Mivel az ügyfelek az ajánlatokat a Microsoft AppSource és az Azure piactéren kirakatokban használják, az adatok rögzítése megtörténik. Miután az ügyfelek elég érdeklődést mutattak, a rendszer létrehoz egy érdeklődőt, és lehetőséget kap az Ön által választott rendszerre. A kereskedelmi piactérről sikeresen megjelenő kiadók gyakran vezetnek be érdeklődőket, kapcsolatokat fejlesztenek, és a kamatot az ajánlatokra fordítjuk.
 
-További információkért tekintse [meg a Piactéri ajánlat ügyfeleinek vezetőit](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads).
+További információkért tekintse [meg a Piactéri ajánlat ügyfeleinek vezetőit](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Miért nem tükrözik a módosítások a Microsoft AppSource vagy az Azure Marketplace ajánlatában?
 
@@ -146,7 +146,7 @@ A Microsoft AppSource az üzleti és ipari megoldások célja, az Azure Marketpl
 
 A globális viszonteladói hálózatok több tízezer szervezetet foglalnak magukban, akik részt vesznek a Cloud Solution Provider programban. A CSP program lehetővé teszi a szervezetek számára, hogy termékeiket és ajánlatait értékesítsék a kereskedelmi piactéren, és az eszközöket a sikeres végrehajtás érdekében biztosítjuk.
 
-További információ: [felhőalapú megoldás-szolgáltatók](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+További információ: [felhőalapú megoldás-szolgáltatók](cloud-solution-providers.md).
 
 ### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>Hogyan találhatok viszonteladókat a partnerségek létrehozásához?
 
@@ -156,7 +156,7 @@ A megoldás- [szolgáltatói címtár](https://www.microsoft.com/solution-provid
 
 Igen, elérhetővé teheti az ajánlatokat a Cloud Solution Provider program összes viszonteladója számára, vagy csak a megadott személyeknek.
 
-További információ: [felhőalapú megoldás-szolgáltatók](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+További információ: [felhőalapú megoldás-szolgáltatók](cloud-solution-providers.md).
 
 ### <a name="how-can-i-pay-margin-to-resellers"></a>Hogyan fizethetek le árrést a viszonteladók számára?
 
@@ -229,7 +229,7 @@ A felhasználói fióknak *tulajdonosi* vagy *közreműködői* engedélyekkel k
 
 Az ügyfelek az 141-es helyszíneken szerezhetik be a kereskedelmi piactér megoldásait világszerte.
 
-A helyszínek listájának áttekintéséhez nyissa meg a [kereskedelmi piactér-közzétevők adózási adatait](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
+A helyszínek listájának áttekintéséhez nyissa meg a [kereskedelmi piactér-közzétevők adózási adatait](partner-center-portal/tax-details-paid-transactions.md).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Milyen pénznemek támogatottak a kereskedelmi piactéren?
 
@@ -252,7 +252,7 @@ A tranzakciók a következő 17 pénznemben kezelhetők:
 - TWD
 - USD
 
-A pénznemek listájának áttekintéséhez nyissa meg a [földrajzi elérhetőséget, és a kereskedelmi piactéren a pénznemek támogatását](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+A pénznemek listájának áttekintéséhez nyissa meg a [földrajzi elérhetőséget, és a kereskedelmi piactéren a pénznemek támogatását](marketplace-geo-availability-currencies.md).
 
 ### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>Az ügyfelek megváltoztathatják az előfizetéseket vagy a licencek mennyiségét a középtávú időszakban?
 
@@ -274,29 +274,32 @@ Az ügyfeleket általában havonta kell fizetni az előző számlázási ciklusb
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Milyen gyakran kapok kifizetéseket a kereskedelmi piactéren?
 
-A kifizetések havonta történnek. Az előző hónapban feldolgozott gyűjtemények kifizetése egyszerre történik, és az értékesítésnek legalább $50,00-es összesített értékkel kell rendelkeznie.
+A kifizetések havonta történnek. A fizetési ütemtervekkel kapcsolatos részletekért, a soron következő kifizetések megkereséséhez a partner Centerben, valamint az ügyfelek nem teljesített fizetések kezelésével kapcsolatban lásd a [kifizetési szabályzat részleteit](partner-center-portal/payout-policy-details.md).
 
-A bankkártyás előfizetések és a vásárlások számlázása havonta történik, és a Microsoft ügyfél-szerződéssel vagy Nagyvállalati Szerződésával kapcsolatos számlák kevésbé gyakoriak. Az ügyfelek számlázásának időpontjában 30 napot adunk ki. A befizetés után a hitelkártya-tranzakciók 30 napos letéti időszakra kerülnek.
+- Azon tranzakciók esetében, amelyekben az ügyfél a Nagyvállalati Szerződés használta, a kifizetések a következő kifizetési ciklusban lesznek kiadva az ügyfél-számlázás után. 
+- Azon tranzakciók esetében, amelyekben az ügyfél bankkártyát használt, további 30 napos letéti időszakra van szükség, miután megkapta a kifizetést, és nincsenek jóváírások vagy csalás gyanúja.
 
-További információ: [fizetési küszöbértékek, metódusok és időbeli keretek](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
+A kifizetések csak akkor jelennek meg, ha a Sales szolgáltatás elérte az $50,00-os minimális összesített értéket.
+
+További információ: [fizetési küszöbértékek, metódusok és időbeli keretek](partner-center-portal/payment-thresholds-methods-timeframes.md).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>Milyen országokban/régiókban történik az adók kezelése az Ön nevében?
 
 Az ügyfelek a világ számos pontján találhatják meg a kereskedelmi piactéren elérhető megoldásokat, és több helyen kezeljük az adókat. 
 
-A helyszínek teljes listájának áttekintéséhez tekintse meg a [kereskedelmi piactér-közzétevők adózási adatait](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
+A helyszínek teljes listájának áttekintéséhez tekintse meg a [kereskedelmi piactér-közzétevők adózási adatait](partner-center-portal/tax-details-paid-transactions.md).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Hol találom a kereskedelmi piactéren a kifizetési jelentéseket?
 
 A partner centeren belül a *tulajdonosi* vagy *pénzügyi közreműködői* engedélyekkel rendelkező felhasználó megtekintheti a kifizetési jelentéseket. Ezek a felhasználók a jobb felső sarokban érhetik el a jelentéseket, ha kijelöli a számlát betöltő kéz ikonját.
 
-További információ: [kifizetési jelentéskészítés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary).
+További információ: [kifizetési jelentéskészítés](partner-center-portal/payout-summary.md).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Hogyan a kifizetési módszer és a cél konfigurálása?
 
 A partneri központban a *tulajdonosi* engedélyekkel rendelkező felhasználók beállíthatja a kifizetési fiókot és az adózási űrlapokat. A felhasználók ezt úgy teheti meg, hogy a jobb felső sarokban lévő **Beállítások** gombra (fogaskerék ikon) kattint.
 
-További információért lépjen a [kifizetési fiók és a Tax Forms](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms)elemre.
+További információért lépjen a [kifizetési fiók és a Tax Forms](partner-center-portal/set-up-your-payout-account-tax-forms.md)elemre.
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>A visszaadja és a kereskedelmi piactéren támogatott visszatérítéseket?
 
@@ -310,7 +313,7 @@ A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül 
 
 - [A Microsoft kereskedelmi piactér bemutatása](/azure/marketplace/marketplace-publishers-guide)
 - [Microsoft kereskedelmi piactér – partneri központ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Üdvözöljük a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/)
+- [Üdvözöljük a kereskedelmi piactéren](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Hogyan vehetek részt a Microsoft és más partnerek között?
 
@@ -322,7 +325,7 @@ A következő erőforrásokat javasoljuk:
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Hol tudhatok meg többet a partner Center szolgáltatásról?
 
 - [A partner Center dokumentációja](https://docs.microsoft.com/partner-center/)
-- [Üdvözöljük a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/)
+- [Üdvözöljük a kereskedelmi piactéren](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Hol tudhatok meg többet a Microsoft felügyeleti központról?
 
@@ -330,14 +333,14 @@ A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [kü
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Hol tudhatok meg többet az Azure-számlázásról?
 
-- [Az Azure Cost Management + Billing dokumentációja](https://docs.microsoft.com/azure/cost-management-billing/)
-- [Az Azure Marketplace-díjak megismerése az Azure-számlán](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
-- [Azure-előfizetés átalakítása számlázásra](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
+- [Az Azure Cost Management + Billing dokumentációja](../cost-management-billing/index.yml)
+- [Az Azure Marketplace-díjak megismerése az Azure-számlán](../cost-management-billing/understand/understand-azure-marketplace-charges.md)
+- [Azure-előfizetés átalakítása számlázásra](../cost-management-billing/manage/pay-by-invoice.md)
 
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Hol tudhatok meg többet a Azure Governmentról és a Azure Government Marketplace-ről?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
 - [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center)
-- [Azure Government dokumentáció](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Government piactér](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
-- [Azure Government megfelelőség](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
+- [Azure Government dokumentáció](../azure-government/index.yml)
+- [Azure Government piactér](../azure-government/documentation-government-manage-marketplace.md)
+- [Azure Government megfelelőség](../azure-government/documentation-government-plan-compliance.md)

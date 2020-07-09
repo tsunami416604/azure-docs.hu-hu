@@ -7,16 +7,15 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: dac1d66242dc88c1b2d96c7af1930e36f225ff4e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638574"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040503"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -36,10 +35,10 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 ##  <a name="create-a-resource-owner-policy"></a>Erőforrás-tulajdonosi szabályzat létrehozása
 
-1. Nyissa meg a *TrustFrameworkExtensions. XML* fájlt.
+1. Nyissa meg a *TrustFrameworkExtensions.xml* fájlt.
 2. Ha még nem létezik, vegyen fel egy **ClaimsSchema** elemet és annak alárendelt elemeit az **BuildingBlocks** elem alatti első elemként:
 
-    ```XML
+    ```xml
     <ClaimsSchema>
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -62,7 +61,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 3. **ClaimsSchema**után adjon hozzá egy **ClaimsTransformations** elemet és annak alárendelt elemeit a **BuildingBlocks** elemhez:
 
-    ```XML
+    ```xml
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateSubjectClaimFromObjectID" TransformationMethod="CreateStringClaim">
         <InputParameters>
@@ -88,7 +87,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 4. Keresse meg azt a **ClaimsProvider** -elemet, amely a **DisplayName** paraméterrel rendelkezik, `Local Account SignIn` és adja hozzá a következő technikai profilt:
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
       <DisplayName>Local Account SignIn</DisplayName>
       <Protocol Name="OpenIdConnect" />
@@ -110,8 +109,8 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
         <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
         <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
         <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="00000000-0000-0000-0000-000000000000" />
-        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="00000000-0000-0000-0000-000000000000" />
+        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppId" />
+        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppId" />
       </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
@@ -128,7 +127,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 5. Adja hozzá a következő **ClaimsProvider** elemeket a technikai profiljaihoz a **ClaimsProviders** elemhez:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -182,7 +181,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 6. Adjon hozzá egy **UserJourneys** elemet és annak alárendelt elemeit a **TrustFrameworkPolicy** elemhez:
 
-    ```XML
+    ```xml
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
       <OrchestrationSteps>
@@ -218,19 +217,19 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     ```
 
 7. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
-8. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
+8. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
 9. Kattintson a **Feltöltés** gombra.
 
 ## <a name="create-a-relying-party-file"></a>Függő entitás fájljának létrehozása
 
 Következő lépésként frissítse a függő entitás fájlját, amely kezdeményezi a létrehozott felhasználói utat:
 
-1. Készítsen másolatot a *SignUpOrSignin. XML* fájlról a munkakönyvtárban, és nevezze át *ROPC_Auth. XML*fájlba.
+1. Készítsen másolatot *SignUpOrSignin.xml* fájlról a munkakönyvtárában, és nevezze át *ROPC_Auth.xmlre *.
 2. Nyissa meg az új fájlt, és módosítsa a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékre. A házirend-azonosító a szabályzat neve. Például **B2C_1A_ROPC_Auth**.
 3. Módosítsa a **DefaultUserJourney** **ReferenceId** attribútum értékét a következőre: `ResourceOwnerPasswordCredentials` .
 4. Módosítsa a **OutputClaims** elemet úgy, hogy csak a következő jogcímeket tartalmazza:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
     <OutputClaim ClaimTypeReferenceId="displayName" DefaultValue="" />
@@ -239,7 +238,7 @@ Következő lépésként frissítse a függő entitás fájlját, amely kezdemé
     ```
 
 5. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
-6. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *ROPC_Auth. XML* fájlt.
+6. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *ROPC_Auth.xml* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
 ## <a name="test-the-policy"></a>A szabályzat tesztelése
@@ -267,7 +266,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 
 A tényleges POST-kérelem a következő példához hasonlóan néz ki:
 
-```HTTPS
+```https
 POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -277,7 +276,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Az offline-hozzáférés sikeres válasza a következő példához hasonlóan néz ki:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
     "token_type": "Bearer",
@@ -309,7 +308,7 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 
 A sikeres válasz a következő példához hasonlít:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhT...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQn...",

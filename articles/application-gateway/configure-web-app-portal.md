@@ -5,21 +5,21 @@ description: Ez a cikk útmutatást nyújt ahhoz, hogyan konfigurálhatja az Azu
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808104"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
 
 Mivel az App Service egy több-bérlős szolgáltatás, amely a központi telepítés helyett a gazdagép fejlécét használja a bejövő kérelemben a megfelelő app Service-végpontra irányuló kérés feloldásához. Az alkalmazás DNS-neve általában az App Service-hez kapcsolódó Application Gateway-hez társított DNS-név, amely eltér a háttér-alkalmazás szolgáltatás tartománynevétől. Ezért az Application Gateway által fogadott eredeti kérelemben szereplő állomásfejléc nem egyezik meg a háttér-szolgáltatás állomásneve nevével. Emiatt, ha az Application Gateway-ből a háttérbe irányuló kérelemben szereplő állomásfejléc nem változik a háttérrendszer állomásneve, a több-bérlős háttérrendszer nem tudja feloldani a kérést a megfelelő végpontra.
 
-A Application Gateway egy nevű `Pick host name from backend address` kapcsolót biztosít, amely felülbírálja a kérelemben található állomásfejléc állomásnevét, ha a kérést a Application Gateway a háttérbe irányítja. Ez a funkció lehetővé teszi a több-bérlős back-végpontok támogatását, például az Azure app Service és az API Management használatát. 
+A Application Gateway egy nevű kapcsolót biztosít `Pick host name from backend address` , amely felülbírálja a kérelemben található állomásfejléc állomásnevét, ha a kérést a Application Gateway a háttérbe irányítja. Ez a funkció lehetővé teszi a több-bérlős back-végpontok támogatását, például az Azure app Service és az API Management használatát. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -59,13 +59,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 3. Használati esetként válassza a protokollt HTTP-ként vagy HTTPS-ként. 
 
    > [!NOTE]
-   > Ha a HTTPS lehetőséget választja, nem kell feltöltenie semmilyen hitelesítési tanúsítványt vagy megbízható főtanúsítványt az App Service-háttér engedélyezési listájára, mivel az App Service egy megbízható Azure-szolgáltatás.
+   > Ha a HTTPS lehetőséget választja, nincs szükség semmilyen hitelesítési tanúsítvány vagy megbízható főtanúsítvány feltöltésére az App Service-háttér engedélyezése óta, mivel az App Service egy megbízható Azure-szolgáltatás.
 
-4. Jelölje be a jelölőnégyzetet a **app Service használatához** . Vegye figyelembe, hogy `Create a probe with pick host name from backend address` a `Pick host name from backend address` kapcsolók és a automatikusan engedélyezve lesz.`Pick host name from backend address` felülírja a kérelemben szereplő állomásfejléc-fejlécet, ha a kérést a Application Gateway a háttérbe irányítja a rendszer.  
+4. Jelölje be a jelölőnégyzetet a **app Service használatához** . Vegye figyelembe, hogy a kapcsolók `Create a probe with pick host name from backend address` és a `Pick host name from backend address` automatikusan engedélyezve lesz.`Pick host name from backend address` felülírja a kérelemben szereplő állomásfejléc-fejlécet, ha a kérést a Application Gateway a háttérbe irányítja a rendszer.  
 
-   `Create a probe with pick host name from backend address`a automatikusan létrehoz egy állapot-mintavételt, és hozzárendeli azt ehhez a HTTP-beállításhoz. Ehhez a HTTP-beállításhoz nem kell más állapot-mintavételt létrehoznia. Azt is megteheti, hogy egy új, a <HTTP Setting name> <Unique GUID> névvel ellátott mintavétel hozzá lett adva az állapot-mintavételek listájában, és `Pick host name from backend http settings enabled`már rendelkezik a kapcsolóval.
+   `Create a probe with pick host name from backend address`a automatikusan létrehoz egy állapot-mintavételt, és hozzárendeli azt ehhez a HTTP-beállításhoz. Ehhez a HTTP-beállításhoz nem kell más állapot-mintavételt létrehoznia. Azt is megteheti, hogy egy új, a névvel ellátott mintavétel <HTTP Setting name> <Unique GUID> hozzá lett adva az állapot-mintavételek listájában, és már rendelkezik a kapcsolóval `Pick host name from backend http settings enabled` .
 
-   Ha már rendelkezik egy vagy több olyan HTTP-beállítással, amelyet az App Service használ, és ha ezek a HTTP-beállítások ugyanazt a protokollt használják, mint amelyet a létrehozott, akkor a `Create a probe with pick host name from backend address` kapcsoló helyett a legördülő listából választhatja ki az egyik egyéni mintavételt. Ennek az az oka, hogy mivel már létezik egy HTTP-beállítás az App Service-szel, ezért a kapcsolóval `Pick host name from backend http settings enabled` rendelkező állapot-mintavétel is létezik. Válassza ki az egyéni mintavételt a legördülő listából.
+   Ha már rendelkezik egy vagy több olyan HTTP-beállítással, amelyet az App Service használ, és ha ezek a HTTP-beállítások ugyanazt a protokollt használják, mint amelyet a létrehozott, akkor a kapcsoló helyett a `Create a probe with pick host name from backend address` legördülő listából választhatja ki az egyik egyéni mintavételt. Ennek az az oka, hogy mivel már létezik egy HTTP-beállítás az App Service-szel, ezért a kapcsolóval rendelkező állapot-mintavétel is létezik `Pick host name from backend http settings enabled` . Válassza ki az egyéni mintavételt a legördülő listából.
 
 5. A HTTP-beállítás létrehozásához kattintson **az OK** gombra.
 

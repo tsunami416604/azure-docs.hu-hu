@@ -3,16 +3,16 @@ title: Az Azure Cosmos DB tömeges végrehajtói kódtárának áttekintése
 description: Tömeges műveleteket hajthat végre Azure Cosmos DB a tömeges importálási és tömeges frissítési API-k használatával, amelyet a tömeges végrehajtó függvénytár kínál.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260610"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Az Azure Cosmos DB tömeges végrehajtói kódtárának áttekintése
  
@@ -42,7 +42,7 @@ A tömeges végrehajtói kódtár segít kihasználni ezt a hatalmas átviteli s
 
 Ha a dokumentumok importálására vagy frissítésére szolgáló tömeges művelet az entitások egy kötegével aktiválódik, a rendszer először a Azure Cosmos DB partíciós tartományának megfelelő gyűjtőbe rendezi azokat. A partíciós kulcs tartományának megfelelő gyűjtőn belül a rendszer lebontja a mini-batchs szolgáltatást, és minden egyes mini Batch a kiszolgálón véglegesített adattartalomként működik. A tömeges végrehajtó függvénytár a következő mini-kötegek egyidejű végrehajtásához a partíciós kulcs-tartományokon belül és azok között is beépített optimalizációkat tartalmaz. Az alábbi ábra azt szemlélteti, hogy a tömeges végrehajtó hogyan hajtja végre az adatok különböző partíciós kulcsokban való feldolgozását:  
 
-![Tömeges végrehajtó architektúrája](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="Tömeges végrehajtó architektúrája" :::
 
 A tömeges végrehajtó könyvtára gondoskodik a gyűjteményhez lefoglalt átviteli sebesség maximális kihasználásáról. Egy [AIMD stílusú torlódás-vezérlési mechanizmust](https://tools.ietf.org/html/rfc5681) használ minden Azure Cosmos db partíciós kulcs tartományához, így hatékonyan kezelheti a díjszabást és az időtúllépéseket. 
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416268"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>A Service Fabric-fürt kiegyensúlyozása
@@ -33,7 +33,7 @@ A fürterőforrás-kezelő különböző típusú helyesbítéseit egy másik id
 
 Az időzítők szabályozásának példái a következők:
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -44,7 +44,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [
@@ -83,7 +83,7 @@ A kiegyensúlyozás kiváltásának fő vezérlője a kiegyensúlyozó küszöb�
 
 Az egyensúlyi küszöbértékek meghatározása a fürt definíciójának részeként, metrikus alapon történik. A metrikákkal kapcsolatos további információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -92,7 +92,7 @@ ClusterManifest. XML
     </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [
@@ -144,7 +144,7 @@ Tegyük fel, hogy megtartjuk a jelen metrika három értékének kiegyensúlyoz�
 
 Az elosztási küszöbértékekhez hasonlóan a tevékenység küszöbértékei a fürt definíciója szerint vannak definiálva a metrikán keresztül:
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -152,7 +152,7 @@ ClusterManifest. XML
     </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [

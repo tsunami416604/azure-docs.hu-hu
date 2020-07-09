@@ -3,15 +3,15 @@ title: Azure HDInsight-fürtök létrehozása Data Lake Storage Gen1-Portalon
 description: A Azure Portal használatával HDInsight-fürtöket hozhat létre és használhat Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856814"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1ekkel a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre egy HDInsight-fürtöt 
 
 Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő követelményeket:
 
-* **Azure-előfizetés**. Nyissa meg az [Azure ingyenes próbaverzióját](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Nyissa meg az [Azure ingyenes próbaverzióját](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Létre kell hoznia egy legfelső szintű mappát is a fiókban.  Ebben a cikkben egy __/Clusters__ nevű gyökérmappa van használatban.
 * **Egy Azure Active Directory egyszerű szolgáltatás**. Ez a útmutató útmutatást nyújt egy egyszerű szolgáltatásnév létrehozásához Azure Active Directory (Azure AD). Egyszerű szolgáltatásnév létrehozásához azonban Azure AD-rendszergazdának kell lennie. Ha Ön rendszergazda, akkor kihagyhatja ezt az előfeltételt, és folytathatja.
 
@@ -170,7 +170,9 @@ Ha Data Lake Storage Gen1-fiókban található adattal dolgozik, néhány karakt
 
 Ha például az Data Lake Storage Gen1 elsődleges tárolóként létrehozott fürtöt használja, az adatelérési út a következő: *adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/Path/to/file*. A Data Lake Storage Gen1-fiókban tárolt mintaadatok táblázatának létrehozására szolgáló kaptár-lekérdezés a következő utasításhoz hasonlít:
 
-    CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```console
+CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```
 
 Leírások
 

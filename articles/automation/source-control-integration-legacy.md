@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828933"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>A verziókövetés integrációjának használata Azure Automation örökölt
@@ -64,7 +63,7 @@ Ha már rendelkezik egy GitHub-fiókkal és egy Azure Automationhoz csatolni kí
      |:--- |:--- |
      | `Name`  |Microsoft. Azure. Automation. SourceControl.-kapcsolatok |
      | `Type`  |Sztring |
-     | `Value` |{"Ág": \< *Az ág neve*>, "RunbookFolderPath": \< *Runbook mappa elérési útja*>, "ProviderType": \< *1 érték a GitHub*> "adattár": a \< *tárház neve*>, "username": \< *a GitHub-Felhasználónév*>} |
+     | `Value` |{"Ág": \<*Your branch name*> , "RunbookFolderPath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "adattár": \<*Name of your repository*> , "username": \<*Your GitHub user name*> } |
 
    * A **Microsoft. Azure. Automation. SourceControl. OAuthToken**változó a OAuthToken biztonságos titkosított értékét tartalmazza.  
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126212"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
@@ -140,7 +140,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 
 ### <a name="the-data-model-of-the-schema"></a>A séma adatmodellje
 
-|Mező|Leírás|
+|Mező|Description|
 |----|----|
 |**csatornák**|Állandó, "művelet"|
 |**correlationId**|A Azure Security Center riasztás azonosítója|
@@ -149,8 +149,8 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 |**eventName**|Az érték és a localizedValue almező tartalmazza a riasztás megjelenítendő nevét.|
 |**Kategória**|Az érték és a localizedValue almező állandó – "biztonság"|
 |**eventTimestamp**|UTC-időbélyeg a riasztás generálásakor|
-|**id**|A teljesen minősített riasztás azonosítója|
-|**szintű**|Állandó, "tájékoztató"|
+|**ID**|A teljesen minősített riasztás azonosítója|
+|**szint**|Állandó, "tájékoztató"|
 |**operationId**|Lásd: correlationId|
 |**operationName**|Az érték mező állandó – "Microsoft. Security/Locations/Alerts/Activate/Action", a honosított érték pedig "riasztás aktiválása" lesz (potenciálisan honosítható a felhasználó területi beállítása)|
 |**resourceGroupName**|Tartalmazni fogja az erőforráscsoport nevét|
@@ -171,7 +171,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 
 ### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-A Microsoft Graph az adatokhoz és az intelligenciához tartozó átjáró a Microsoft 365ban. Egy egységesített programozható modellt biztosít, amellyel a nagy mennyiségű, az Office 365-es, a Windows 10-es és a Enterprise Mobility + Security-beli adatmennyiséget érheti el. A Microsoft Graphban található adatmennyiség használatával olyan szervezeteknek és fogyasztóknak készült alkalmazásokat hozhat létre, amelyek több millió felhasználóval működnek.
+A Microsoft Graph az adatokhoz és az intelligenciához tartozó átjáró a Microsoft 365ban. Egy egységesített programozható modellt biztosít, amellyel a Microsoft 365, a Windows 10 és a Enterprise Mobility + Security rengeteg adatmennyiségét érheti el. A Microsoft Graphban található adatmennyiség használatával olyan szervezeteknek és fogyasztóknak készült alkalmazásokat hozhat létre, amelyek több millió felhasználóval működnek.
 
 Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)érhető el.
 

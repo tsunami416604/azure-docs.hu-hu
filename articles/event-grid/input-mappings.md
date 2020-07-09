@@ -1,19 +1,14 @@
 ---
 title: Egyéni mező leképezése Azure Event Grid sémára
 description: Ez a cikk azt ismerteti, hogyan alakíthatja át az egyéni sémát a Azure Event Grid sémára, ha az esemény adatai nem egyeznek Event Grid sémával.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721659"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105523"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Egyéni mezők leképezése Event Grid-sémára
 
@@ -47,9 +42,9 @@ Egyéni témakör létrehozásakor adja meg, hogyan kívánja leképezni a mező
 
 * A **bemeneti séma** értéke határozza meg a séma típusát. Az elérhető lehetőségek a CloudEvents séma, az egyéni esemény sémája vagy a Event Grid séma. Az alapértelmezett érték Event Grid séma. Ha egyéni leképezést hoz létre a séma és az Event Grid-séma között, használja az egyéni esemény sémáját. Ha az események a CloudEvents sémában vannak, használja a Cloudevents sémát.
 
-* Az **alapértelmezett értékek leképezése** tulajdonság a Event Grid séma mezőinek alapértelmezett értékeit adja meg. Megadhatja a, `subject` `eventtype`a és `dataversion`az alapértelmezett értékeit. Ezt a paramétert általában akkor használja, ha az egyéni séma nem tartalmaz olyan mezőt, amely megfelel az adott három mező egyikének. Megadhatja például, hogy az adatverzió mindig **1,0**-re legyen állítva.
+* Az **alapértelmezett értékek leképezése** tulajdonság a Event Grid séma mezőinek alapértelmezett értékeit adja meg. Megadhatja a, a és az alapértelmezett értékeit `subject` `eventtype` `dataversion` . Ezt a paramétert általában akkor használja, ha az egyéni séma nem tartalmaz olyan mezőt, amely megfelel az adott három mező egyikének. Megadhatja például, hogy az adatverzió mindig **1,0**-re legyen állítva.
 
-* A **leképezési mezők** érték leképezi a sémában található mezőket az Event Grid sémába. Az értékeket szóközzel tagolt kulcs/érték párokban kell megadni. A kulcsnév esetében használja az Event Grid mező nevét. Az értéknél használja a mező nevét. A `id`, `topic` `eventtime` `dataversion`,,, és rendszerhez is használhatja a kulcs nevét. `subject` `eventtype`
+* A **leképezési mezők** érték leképezi a sémában található mezőket az Event Grid sémába. Az értékeket szóközzel tagolt kulcs/érték párokban kell megadni. A kulcsnév esetében használja az Event Grid mező nevét. Az értéknél használja a mező nevét. A,,,, és rendszerhez is használhatja a kulcs nevét `id` `topic` `eventtime` `subject` `eventtype` `dataversion` .
 
 Egyéni témakör az Azure CLI-vel való létrehozásához használja a következőt:
 
@@ -205,7 +200,7 @@ A második előfizetés a bemeneti esemény sémáját használta. A kézbesít�
 
 Figyelje meg, hogy az eredeti mezők kézbesítése megtörtént.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

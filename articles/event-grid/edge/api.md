@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841829"
 ---
 # <a name="rest-api"></a>REST API
@@ -164,7 +163,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 **Válasz**: http 200, üres hasznos adat
 
 ## <a name="manage-event-subscriptions"></a>Esemény-előfizetések kezelése
-Az ebben a szakaszban szereplő `EndpointType=Webhook;`minták a következőt használják:. A JSON-minták `EndpointType=EdgeHub / EndpointType=EventGrid` a következő szakaszban találhatók. 
+Az ebben a szakaszban szereplő minták a következőt használják: `EndpointType=Webhook;` . A JSON-minták a `EndpointType=EdgeHub / EndpointType=EventGrid` következő szakaszban találhatók. 
 
 ### <a name="put-event-subscription-create--update"></a>Esemény-előfizetés elhelyezése (létrehozás/frissítés)
 
@@ -572,7 +571,7 @@ Egy olyan témakört állít be, amely az események **eventgridschema**való k�
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Témakör beállítása egyéni sémával
-Egy olyan témakört állít be, amely az események közzétételét kéri a alkalmazásban `customschema`.
+Egy olyan témakört állít be, amely az események közzétételét kéri a alkalmazásban `customschema` .
 
 ```json
     {
@@ -585,7 +584,7 @@ Egy olyan témakört állít be, amely az események közzétételét kéri a al
 ```
 
 ### <a name="set-up-topic-with-cloud-event-schema"></a>Témakör beállítása a Cloud Event Schema szolgáltatással
-Egy olyan témakört állít be, amely az események közzétételét kéri a alkalmazásban `cloudeventschema`.
+Egy olyan témakört állít be, amely az események közzétételét kéri a alkalmazásban `cloudeventschema` .
 
 ```json
     {
@@ -617,13 +616,13 @@ Ennek a célhelynek a használatával minden más modulba (amely egy HTTP-végpo
 }
 ```
 
-Megkötések `endpointUrl` az attribútumon:
+Megkötések az `endpointUrl` attribútumon:
 - Nem null értékűnek kell lennie.
 - Abszolút URL-címnek kell lennie.
 - Ha outbound__webhook__httpsOnly értéke TRUE (igaz) értékre van állítva a EventGridModule-beállításokban, csak HTTPS-nek kell lennie.
 - Ha outbound__webhook__httpsOnly hamis értékre van állítva, akkor HTTP vagy HTTPS lehet.
 
-A `eventDeliverySchema` tulajdonságra vonatkozó megkötések:
+A tulajdonságra vonatkozó megkötések `eventDeliverySchema` :
 - Meg kell egyeznie a feliratkozási témakör bemeneti sémájával.
 - Ez lehet null értékű. Alapértelmezés szerint a témakör bemeneti sémája.
 
@@ -672,8 +671,8 @@ Ezen a célhelyen küldhet eseményeket a felhőbe (Azure) Event Gridba. Elősz�
 EndpointUrl
 - Nem null értékűnek kell lennie.
 - Abszolút URL-címnek kell lennie.
-- Az elérési utat `/api/events` meg kell adni a kérelem URL-címének elérési útjában.
-- A lekérdezési `api-version=2018-01-01` karakterláncban kell szerepelnie.
+- Az elérési utat meg kell `/api/events` adni a kérelem URL-címének elérési útjában.
+- `api-version=2018-01-01`A lekérdezési karakterláncban kell szerepelnie.
 - Ha outbound__eventgrid__httpsOnly True értékre van állítva a EventGridModule-beállításokban (alapértelmezés szerint igaz), csak HTTPS-ként kell megadni.
 - Ha outbound__eventgrid__httpsOnly hamis értékre van állítva, akkor HTTP vagy HTTPS lehet.
 - Ha a outbound__eventgrid__allowInvalidHostnames hamis értékre van állítva (alapértelmezés szerint False), akkor a következő végpontok egyikét kell megcéloznia:
@@ -690,7 +689,7 @@ TopicName:
 
 ## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs beállítása célként
 
-Az Event hub-ban való közzétételhez állítsa `endpointType` be `eventHub` a következőt:
+Az Event hub-ban való közzétételhez állítsa be a következőt `endpointType` `eventHub` :
 
 * connectionString: az adott esemény központhoz tartozó kapcsolati karakterlánc, amelyet egy megosztott elérési házirend használatával generált.
 
@@ -712,7 +711,7 @@ Az Event hub-ban való közzétételhez állítsa `endpointType` be `eventHub` a
 
 ## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus várólisták beállítása célhelyként
 
-Service Bus üzenetsor közzétételéhez állítsa be a `endpointType` `serviceBusQueue` következőt:
+Service Bus üzenetsor közzétételéhez állítsa be a következőt `endpointType` `serviceBusQueue` :
 
 * connectionString: a megadott Service Bus-várólista kapcsolati karakterlánca, amelyet egy megosztott elérési házirend használatával generált.
 
@@ -734,7 +733,7 @@ Service Bus üzenetsor közzétételéhez állítsa be a `endpointType` `service
 
 ## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus témakörök beállítása célhelyként
 
-Service Bus témakör közzétételéhez állítsa be a `endpointType` `serviceBusTopic` következőt:
+Service Bus témakör közzétételéhez állítsa be a következőt `endpointType` `serviceBusTopic` :
 
 * connectionString: a megadott Service Bus témakör kapcsolati karakterlánca, amelyet egy megosztott elérési házirend használatával generált.
 
@@ -756,7 +755,7 @@ Service Bus témakör közzétételéhez állítsa be a `endpointType` `serviceB
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Tárolási várólisták beállítása célhelyként
 
-A Storage-üzenetsor közzétételéhez állítsa be a `endpointType` `storageQueue` következőt:
+A Storage-üzenetsor közzétételéhez állítsa be a következőt `endpointType` `storageQueue` :
 
 * queueName: az a tárolási várólista neve, amelyet közzé szeretne tennie.
 * connectionString: a Storage-fiókhoz tartozó kapcsolati sztring a tárolási üzenetsor.

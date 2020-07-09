@@ -6,16 +6,15 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659712"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime létrehozása és konfigurálása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,7 +28,7 @@ Ez a dokumentum bemutatja, hogyan hozhat létre és konfigurálhat Azure Integra
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>Alapértelmezett Azure IR
-Alapértelmezés szerint minden egyes adatfeldolgozó Azure IR rendelkezik a háttérben, amely támogatja a Felhőbeli adattárakon és a nyilvános hálózatban lévő számítási szolgáltatásokban végzett műveleteket. A Azure IR helye automatikusan feloldásra kerül. Ha a **connectvia tulajdonsággal** tulajdonság nincs megadva a társított szolgáltatás definíciójában, a rendszer az alapértelmezett Azure IR használja. Csak explicit módon kell létrehoznia egy Azure IR, ha explicit módon meg szeretné határozni az IR helyét, vagy ha azt szeretné, hogy gyakorlatilag a tevékenység-végrehajtásokat a különböző IRs felügyeleti célokra lehessen csoportosítani. 
+Alapértelmezés szerint minden egyes adatfeldolgozó Azure IR rendelkezik a háttérben, amely támogatja a Felhőbeli adattárakon és a nyilvános hálózatban lévő számítási szolgáltatásokban végzett műveleteket. A Azure IR helye az autooldják. Ha a **connectvia tulajdonsággal** tulajdonság nincs megadva a társított szolgáltatás definíciójában, a rendszer az alapértelmezett Azure IR használja. Csak explicit módon kell létrehoznia egy Azure IR, ha explicit módon meg szeretné határozni az IR helyét, vagy ha azt szeretné, hogy gyakorlatilag a tevékenység-végrehajtásokat a különböző IRs felügyeleti célokra lehessen csoportosítani. 
 
 ## <a name="create-azure-ir"></a>Azure IR létrehozása
 
@@ -48,13 +47,13 @@ A set-AzDataFactoryV2IntegrationRuntime PowerShell-parancsmag használatával me
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure IR létrehozása Azure Data Factory felhasználói felületen
 A következő lépések végrehajtásával hozhat létre Azure IR a Azure Data Factory felhasználói felületen.
 
-1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a **Szerző** fület a bal oldali ablaktáblán.
+1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal szélső ablaktáblán.
 
-   ![A Kezdőlap létrehozás gombja](media/doc-common-process/get-started-page-author-button.png)
+   ![A Kezdőlap kezelés gombja](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Válassza a **kapcsolatok** elemet a bal oldali ablaktábla alján, és válassza az **Integration Runtimes** elemet a **kapcsolatok** ablakban. Válassza az **+ új**lehetőséget.
+1. Válassza az **integrációs** modulok lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új**lehetőséget.
 
-   ![Integrációs modul létrehozása](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![Integrációs modul létrehozása](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra. 
 

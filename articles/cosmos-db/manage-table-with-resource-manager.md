@@ -3,15 +3,15 @@ title: Resource Manager-sablonok a Azure Cosmos DB Table API
 description: Azure Cosmos DB-Table API létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5e4e514a8d39679e5a1d07b0ea7100cf4837072e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684754"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028142"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Table API erőforrások kezelése Azure Resource Manager sablonok használatával
 
@@ -36,7 +36,7 @@ Az alábbi Azure Cosmos DB-erőforrások létrehozásához másolja a következ�
 
 Ez a sablon egy Azure Cosmos-fiókot hoz létre Table API egy, az automatikusan méretezhető átviteli sebességgel rendelkező táblával. Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
 
-[![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-table-autoscale/azuredeploy.json":::
 
@@ -46,7 +46,7 @@ Ez a sablon egy Azure Cosmos-fiókot hoz létre Table API egy, az automatikusan 
 
 Ez a sablon egy Azure Cosmos-fiókot hoz létre a Table APIhoz, és egy táblázatot a standard átviteli sebességgel. Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
 
-[![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-table/azuredeploy.json":::
 

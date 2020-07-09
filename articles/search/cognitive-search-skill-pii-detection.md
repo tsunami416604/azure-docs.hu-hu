@@ -7,13 +7,12 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 1/27/2020
-ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080752"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>Személyes adatok észlelése – kognitív képességek
 
@@ -25,40 +24,40 @@ A személyes adatok **észlelése** funkció beolvassa a személyazonosításra 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://azure.microsoft.com/pricing/details/search/)találja.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. Skills. Text. PIIDetectionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szüntetnie az adatokat, mielőtt elküldené a szakértelmet, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szüntetnie az adatokat, mielőtt elküldené a szakértelmet, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
 A paraméterek megkülönböztetik a kis-és nagybetűket, és az összes nem kötelező.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
-| defaultLanguageCode |    A bemeneti szöveg nyelvi kódja Egyelőre csak `en` a támogatott. |
-| minimumPrecision | 0,0 és 1,0 közötti érték. Ha a megbízhatósági pontszám (a `piiEntities` kimenetben) kisebb, mint a `minimumPrecision` beállított érték, akkor az entitás nem lesz visszaadva vagy maszkolt. Az alapértelmezett érték a 0,0. |
-| maskingMode | Egy paraméter, amely különböző módokon teszi lehetővé az észlelt személyes adatok maszkolását a bemeneti szövegben. A következő lehetőségek támogatottak: <ul><li>`none`(alapértelmezett): Ez azt jelenti, hogy a rendszer nem végez maszkolást `maskedText` , és a rendszer nem adja vissza a kimenetet. </li><li> `redact`: Ezzel a beállítással a rendszer eltávolítja az észlelt entitásokat a bemeneti szövegből, és nem cseréli azokat semmire. Vegye figyelembe, hogy ebben az esetben a `piiEntities` kimenet eltolása az eredeti szöveggel lesz összefüggésben, nem a maszkolt szöveggel. </li><li> `replace`: Ez a beállítás felülírja az észlelt entitásokat a `maskingCharacter` paraméterben megadott karakterrel.  A rendszer megismétli a karaktert az észlelt entitás hosszára, hogy az eltolások megfelelően megfeleljenek a bemeneti szövegnek és a kimenetnek `maskedText`.</li></ul> |
-| maskingCharacter | A szöveg maszkolására szolgáló karakter, ha a `maskingMode` paraméter értéke. `replace` A következő lehetőségek támogatottak: `*` (alapértelmezett), `#`, `X`. Ezt a paramétert csak `null` akkor `maskingMode` lehet megadni, ha `replace`a értéke nem. |
+| `defaultLanguageCode` |    A bemeneti szöveg nyelvi kódja Egyelőre csak a `en` támogatott. |
+| `minimumPrecision` | 0,0 és 1,0 közötti érték. Ha a megbízhatósági pontszám (a `piiEntities` kimenetben) kisebb, mint a beállított `minimumPrecision` érték, akkor az entitás nem lesz visszaadva vagy maszkolt. Az alapértelmezett érték a 0,0. |
+| `maskingMode` | Egy paraméter, amely különböző módokon teszi lehetővé az észlelt személyes adatok maszkolását a bemeneti szövegben. A következő lehetőségek támogatottak: <ul><li>`none`(alapértelmezett): Ez azt jelenti, hogy a rendszer nem végez maszkolást, és a `maskedText` rendszer nem adja vissza a kimenetet. </li><li> `redact`: Ezzel a beállítással a rendszer eltávolítja az észlelt entitásokat a bemeneti szövegből, és nem cseréli azokat semmire. Vegye figyelembe, hogy ebben az esetben a kimenet eltolása az `piiEntities` eredeti szöveggel lesz összefüggésben, nem a maszkolt szöveggel. </li><li> `replace`: Ez a beállítás felülírja az észlelt entitásokat a paraméterben megadott karakterrel `maskingCharacter` .  A rendszer megismétli a karaktert az észlelt entitás hosszára, hogy az eltolások megfelelően megfeleljenek a bemeneti szövegnek és a kimenetnek `maskedText` .</li></ul> |
+| `maskingCharacter` | A szöveg maszkolására szolgáló karakter, ha a `maskingMode` paraméter értéke `replace` . A következő lehetőségek támogatottak: `*` (alapértelmezett), `#` , `X` . Ezt a paramétert csak akkor lehet `null` megadni, ha `maskingMode` a értéke nem `replace` . |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
-| languageCode    | Választható. Az alapértelmezett szint a `en`.  |
-| szöveg          | Az elemezni kívánt szöveg.          |
+| `languageCode`    | Választható. Az alapértelmezett szint a `en`.  |
+| `text`          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve      | Leírás                   |
+| Kimenet neve      | Description                   |
 |---------------|-------------------------------|
-| piiEntities | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>szöveg (a tényleges személyes adatok kinyerése)</li> <li>type</li><li>Altípus</li><li>pontszám (a magasabb érték azt jelenti, hogy nagyobb a valószínűsége, hogy valódi entitás lesz)</li><li>eltolás (a bemeneti szövegbe)</li><li>hossz</li></ul> </br> [Itt megtalálhatja a lehetséges típusokat és altípusokat.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | Ha `maskingMode` a értéke nem `none`a (z) értékre van állítva, akkor ez a kimenet lesz a bemenő szövegen a kiválasztott `maskingMode`módon végrehajtott maszkolás karakterláncának eredménye.  Ha `maskingMode` a értéke `none`, akkor ez a kimenet nem jelenik meg. |
+| `piiEntities` | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>szöveg (a tényleges személyes adatok kinyerése)</li> <li>típus</li><li>Altípus</li><li>pontszám (a magasabb érték azt jelenti, hogy nagyobb a valószínűsége, hogy valódi entitás lesz)</li><li>eltolás (a bemeneti szövegbe)</li><li>hossz</li></ul> </br> [Itt megtalálhatja a lehetséges típusokat és altípusokat.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `maskedText` | Ha a értéke nem a (z) `maskingMode` értékre van állítva `none` , akkor ez a kimenet lesz a bemenő szövegen a kiválasztott módon végrehajtott maszkolás karakterláncának eredménye `maskingMode` .  Ha a `maskingMode` értéke `none` , akkor ez a kimenet nem jelenik meg. |
 
 ##    <a name="sample-definition"></a>Minta definíciója
 
@@ -134,7 +133,7 @@ Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer figyelmeztet
 Ha a szöveg üres, a rendszer figyelmeztetést készít.
 Ha a szöveg 50 000 karakternél nagyobb, akkor csak az első 50 000 karakter lesz elemezve, és a rendszer figyelmeztetést ad ki.
 
-Ha a szakértelem figyelmeztetést ad vissza, lehet `maskedText` , hogy a kimenet üres.  Ez azt jelenti, hogy ha azt szeretné, hogy a kimenet a későbbi készségekbe való bevitelhez is rendelkezésre áll, nem fog megfelelően működni. Tartsa szem előtt ezt a készségkészlet-definíció írásakor.
+Ha a szakértelem figyelmeztetést ad vissza, lehet, hogy a kimenet `maskedText` üres.  Ez azt jelenti, hogy ha azt szeretné, hogy a kimenet a későbbi készségekbe való bevitelhez is rendelkezésre áll, nem fog megfelelően működni. Tartsa szem előtt ezt a készségkészlet-definíció írásakor.
 
 ## <a name="see-also"></a>Lásd még
 

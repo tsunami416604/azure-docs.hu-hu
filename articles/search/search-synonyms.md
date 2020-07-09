@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563450"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Az Azure Cognitive Search szinonimái
 
@@ -51,7 +51,7 @@ A szinonima Maps-nek Apache Solr formátumban kell lennie, amely alább láthat�
 
 A HTTP POST használatával új szinonimákat hozhat létre, ahogy az alábbi példában is látható:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -64,7 +64,7 @@ A HTTP POST használatával új szinonimákat hozhat létre, ahogy az alábbi p�
 
 Azt is megteheti, hogy a PUT elemre kattint, és megadja a szinonimák megfeleltetésének nevét az URI-n. Ha a szinonimák leképezése nem létezik, a rendszer létrehozza.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -90,24 +90,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>A szolgáltatáshoz tartozó szinonimák listázása.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>A szolgáltatáshoz tartozó szinonima-Térkép beszerzése.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>A szolgáltatáshoz tartozó szinonimák leképezésének törlése.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Egy kereshető mező beállítása a szinonimák leképezésének használatára az index definíciójában.
 
 A **synonymMaps** új mező tulajdonsága egy kereshető mezőhöz használandó szinonima-leképezés megadására használható. A szinonima-térképek szolgáltatási szintű erőforrások, és a szolgáltatásban lévő index bármely mezője hivatkozhat rá.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -152,7 +152,7 @@ A szinonima funkció a keresési lekérdezésekre vonatkozik, és nem vonatkozik
 
 A szinonimák bővítései nem érvényesek a helyettesítő karakteres keresési kifejezésekre; az előtag, a fuzzy és a regex kifejezések nincsenek kibontva.
 
-Ha egyetlen lekérdezést kell végrehajtania, amely szinonimákat, valamint helyettesítő karaktereket, regexeket vagy fuzzy kereséseket alkalmaz, a lekérdezéseket a vagy a szintaxis használatával kombinálhatja. Ha például a szinonimákat az egyszerű lekérdezési szintaxishoz helyettesítő karakterekkel kombinálja, a kifejezés `<query> | <query>*`a következő lesz:.
+Ha egyetlen lekérdezést kell végrehajtania, amely szinonimákat, valamint helyettesítő karaktereket, regexeket vagy fuzzy kereséseket alkalmaz, a lekérdezéseket a vagy a szintaxis használatával kombinálhatja. Ha például a szinonimákat az egyszerű lekérdezési szintaxishoz helyettesítő karakterekkel kombinálja, a kifejezés a következő lesz: `<query> | <query>*` .
 
 Ha meglévő indexe van egy fejlesztési (nem éles) környezetben, kísérletezzen egy kisméretű szótárral, és nézze meg, hogy a szinonimák hozzáadása hogyan módosítja a keresési élményt, beleértve a pontozási profilok, a kiemelések és a javaslatok hatását.
 

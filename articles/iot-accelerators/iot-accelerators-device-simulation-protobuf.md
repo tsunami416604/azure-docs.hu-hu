@@ -12,10 +12,9 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683990"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
@@ -65,14 +64,14 @@ Töltse le és csomagolja ki az [eszköz szimulációs szolgáltatását](https:
 
 A Visual Studio Code-ban nyissa meg a **Remote-Monitoring-Services-DotNet-master\storage-adapter** mappát. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **. vscode/Launch. JSON** fájlt, és rendelje hozzá Cosmos db kapcsolódási karakterláncot a **számítógépek\_STORAGEADAPTER\_\_DOCUMENTDB CONNSTRING** környezeti változóhoz.
+Nyissa meg a **. vscode/launch.js** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **számítógépek \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** környezeti változóhoz.
 
 > [!NOTE]
 > Ha helyileg futtatja a szolgáltatást a gépen, akkor továbbra is szükség van egy Cosmos DB példányra az Azure-ban, hogy megfelelően működjön.
 
 Ha helyileg szeretné futtatni a Storage-adaptert, kattintson a hibakeresés ** \> megkezdése**elemre.
 
-A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL <http://127.0.0.1:9022/v1/status>-címét:. Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
+A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL-címét: <http://127.0.0.1:9022/v1/status> . Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
 
 A következő lépések elvégzése után a Visual Studio Code ezen példányán ne futtassa a Storage-adapter-szolgáltatást.
 
@@ -82,9 +81,9 @@ Nyissa meg a GitHubról letöltött **Device-szimulációs-DotNet-Master** mapp�
 
 Ebben a útmutatóban egy új eszközt hoz létre egy eszköz követéséhez:
 
-1. Hozzon létre egy új, **assettracker-01. JSON** nevű eszközt a **Services\data\devicemodels** mappában.
+1. Hozzon létre egy új, **assettracker-01.js** nevű eszköz-modellt a **Services\data\devicemodels** mappában.
 
-1. Adja meg az eszköz funkcióit az **assettracker-01. JSON** fájlban. A Protopuf-modell telemetria szakaszának a következőket kell tennie:
+1. Adja meg az eszköz funkcióit az eszköz modellje **assettracker-01.js** fájlban. A Protopuf-modell telemetria szakaszának a következőket kell tennie:
 
    * Adja meg az eszközhöz generált Protopuf osztály nevét. A következő szakasz bemutatja, hogyan hozhatja elő ezt az osztályt.
    * A Protopuf megadásához írja be az üzenet formátumát.
@@ -168,7 +167,7 @@ Ha rendelkezik egy eszköz modellel, és meghatározta az üzenet formátumát, 
     }
     ```
 
-A `=1`, `=2` az egyes elemek jelölői egy egyedi címkét határoznak meg, amelyet a mező a bináris kódolásban használ. A 1-15 számnál kevesebb bájtra van szükség a nagyobb számú kódoláshoz.
+A `=1` , az `=2` egyes elemek jelölői egy egyedi címkét határoznak meg, amelyet a mező a bináris kódolásban használ. A 1-15 számnál kevesebb bájtra van szükség a nagyobb számú kódoláshoz.
 
 ## <a name="generate-the-protobuf-class"></a>A Protopuf osztály előállítása
 
@@ -190,17 +189,17 @@ Ebben a szakaszban a korábban az előző szakaszokban létrehozott Asset Tracke
 
 ### <a name="run-the-device-simulation-microservice"></a>Az eszköz szimulációs szolgáltatásának futtatása
 
-Nyissa meg a **. vscode/Launch. JSON** fájlt, és rendelje hozzá a következőket:
+Nyissa meg a **. vscode/launch.js** fájlt, és rendelje hozzá a következőt:
 
-* IoT Hub a kapcsolódási karakterláncot a **\_számítógépek IOTHUB\_CONNSTRING** környezeti változóhoz.
-* A Storage-fiók kapcsolódási karakterlánca a **számítógépek\_\_Azure Storage\_-fiók** környezeti változóhoz.
-* Cosmos DB a kapcsolódási karakterláncot a **számítógépek\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
+* IoT Hub a kapcsolódási karakterláncot a **számítógépek \_ IOTHUB \_ CONNSTRING** környezeti változóhoz.
+* A Storage-fiók kapcsolódási karakterlánca a **számítógépek \_ Azure \_ Storage- \_ fiók** környezeti változóhoz.
+* Cosmos DB a kapcsolódási karakterláncot a **számítógépek \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** környezeti változóhoz.
 
-Nyissa meg a **webszolgáltatás/tulajdonságok/launchSettings. JSON** fájlt, és rendelje hozzá a következőket:
+Nyissa meg a **webszolgáltatást/tulajdonságokat/launchSettings.jsa** fájlon, és rendelje hozzá a következőt:
 
-* IoT Hub a kapcsolódási karakterláncot a **\_számítógépek IOTHUB\_CONNSTRING** környezeti változóhoz.
-* A Storage-fiók kapcsolódási karakterlánca a **számítógépek\_\_Azure Storage\_-fiók** környezeti változóhoz.
-* Cosmos DB a kapcsolódási karakterláncot a **számítógépek\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** környezeti változóhoz.
+* IoT Hub a kapcsolódási karakterláncot a **számítógépek \_ IOTHUB \_ CONNSTRING** környezeti változóhoz.
+* A Storage-fiók kapcsolódási karakterlánca a **számítógépek \_ Azure \_ Storage- \_ fiók** környezeti változóhoz.
+* Cosmos DB a kapcsolódási karakterláncot a **számítógépek \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** környezeti változóhoz.
 
 Nyissa meg a **WebService\appsettings.ini** fájlt, és módosítsa a beállításokat a következőképpen:
 
@@ -249,9 +248,9 @@ Poster beállítása:
 
 1. Nyissa meg a Poster szolgáltatást a helyi gépen.
 
-1. Kattintson **a \> fájl importálása**elemre. Ezután kattintson a **fájlok kiválasztása**elemre.
+1. Kattintson a **fájl \> importálása**elemre. Ezután kattintson a **fájlok kiválasztása**elemre.
 
-1. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító\_. Poster Collection** és az **Azure IoT Device szimulációs megoldás\_gyorsító. Poster-környezet** lehetőséget, és kattintson a **Megnyitás**gombra.
+1. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító. Poster \_ Collection** és az **Azure IoT Device szimulációs megoldás gyorsító. Poster- \_ környezet** lehetőséget, és kattintson a **Megnyitás**gombra.
 
 1. Bontsa ki az **Azure IoT-eszköz szimulációs megoldásának Gyorssegédjét** a küldendő kérések megtekintéséhez.
 
@@ -267,9 +266,9 @@ A szimuláció konfigurálása és futtatása:
 
 A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-A két helyileg futó Service-t a Visual Studio Code-példányaiban állíthatja le (**hibakeresési \> leállítás hibakeresése**).
+A két helyileg futó Service-t a Visual Studio Code-példányaiban állíthatja le (**hibakeresési \> Leállítás hibakeresése**).
 
 Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azokat az Azure-előfizetésből a szükségtelen költségek elkerülése érdekében.
 

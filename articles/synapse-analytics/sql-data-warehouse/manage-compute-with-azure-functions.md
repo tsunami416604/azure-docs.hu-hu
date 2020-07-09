@@ -6,17 +6,17 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9d680283250cc323c833f388f6b20d7fe6fa132d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211051"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 

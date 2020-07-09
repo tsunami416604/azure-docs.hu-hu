@@ -4,13 +4,12 @@ description: Megtudhatja, hogyan állíthatja be manuálisan a tárolók csoport
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74533430"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Tárolók manuális leállítása vagy elindítása Azure Container Instances
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Tárolók manuális leállítása vagy indítása az Azure Container Instancesben
 
 A tároló-csoport [Újraindítási házirend](container-instances-restart-policy.md) beállítása határozza meg, hogy a tároló példányai alapértelmezés szerint hogyan kezdődnek vagy álljanak le. Az alapértelmezett beállítás felülbírálható egy tároló csoport manuális leállításával vagy indításával.
 

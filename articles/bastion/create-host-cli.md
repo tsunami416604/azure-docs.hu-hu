@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet 
 services: bastion
 author: mialdrid
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mialdrid
-ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7f80bb7f9be2e01aa24090d7305b1a5d882da04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255514"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure-beli megerősített gazdagép létrehozása az Azure CLI-vel
 
@@ -26,7 +26,7 @@ Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs A
 
 [!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion-gazdagép létrehozása
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Megerősített gazdagép létrehozása
 
 Ez a szakasz segítséget nyújt egy új Azure Bastion-erőforrás létrehozásában az Azure CLI használatával.
 
@@ -39,7 +39,7 @@ Ez a szakasz segítséget nyújt egy új Azure Bastion-erőforrás létrehozás�
 2. Hozzon létre egy nyilvános IP-címet az Azure Bastion számára. A nyilvános IP-cím a nyilvános IP-cím, amely az RDP/SSH elérésére használt megerősített erőforrás (az 443-as porton keresztül). A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak.
 
    ```azurecli-interactive
-   az network public-ip create -g MyResourceGroup -n MyIp
+   az network public-ip create -g MyResourceGroup -n MyIp --sku Standard
    ```
 
 3. Hozzon létre egy új Azure Bastion-erőforrást a virtuális hálózat AzureBastionSubnet. A megerősített erőforrás létrehozása és üzembe helyezése körülbelül 5 percet vesz igénybe.

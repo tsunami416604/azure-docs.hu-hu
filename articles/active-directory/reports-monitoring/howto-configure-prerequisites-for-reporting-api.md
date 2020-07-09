@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608262"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
@@ -53,7 +53,7 @@ Ha a jelentéskészítési adathoz az API-n keresztül szeretne hozzáférni, a 
 A bérlőhöz tartozó bejelentkezési jelentések eléréséhez az Azure AD-bérlőnek hozzá kell rendelnie prémium szintű Azure AD-licencet. Prémium szintű Azure AD P1 (vagy újabb) licencre van szükség az Azure AD-bérlők bejelentkezési jelentéseinek eléréséhez. Ha a könyvtár típusa Azure AD B2C, a bejelentkezési jelentések az API-n keresztül érhetők el, további licencfeltételek nélkül. 
 
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
 A regisztrációra akkor is szükség van, ha parancsfájl használatával éri el a jelentéskészítési API-t. A regisztráció egy alkalmazás- **azonosítót**ad meg, amely az engedélyezési hívásokhoz szükséges, és lehetővé teszi a kód számára a jogkivonatok fogadását.
 
@@ -81,11 +81,11 @@ Ha úgy szeretné konfigurálni a címtárat, hogy hozzáférhessen az Azure AD 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. A **név** szövegmezőbe írja be `Reporting API application`a következőt:.
+    a. A **név** szövegmezőbe írja be a következőt: `Reporting API application` .
 
     b. A **támogatott fiókok típusa**beállításnál válassza a **fiókok csak ebben a szervezetiben**lehetőséget.
 
-    c. Az **átirányítási URL-cím** kijelölése **webes** szövegmezőbe írja be a következőt `https://localhost`:.
+    c. Az **átirányítási URL-cím** kijelölése **webes** szövegmezőbe írja be a következőt: `https://localhost` .
 
     d. Kattintson a **Register** (Regisztrálás) elemre. 
 
@@ -184,7 +184,7 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 5. Az **ügyfél titkos kulcsának hozzáadása** lapon adja hozzá a következőt:
 
-    a. A **Leírás** szövegmezőbe írja be `Reporting API`a következőt:.
+    a. A **Leírás** szövegmezőbe írja be a következőt: `Reporting API` .
 
     b. Ahogy **lejár**, válassza **a 2 év**lehetőséget.
 

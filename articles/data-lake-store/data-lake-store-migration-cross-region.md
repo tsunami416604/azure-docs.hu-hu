@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60518463"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake Storage Gen1 migrálása régiók között
@@ -25,7 +25,7 @@ Ahogy az Azure Data Lake Storage Gen1 elérhetővé válik az új régiókban, d
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. További információkért tekintse [meg az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/)című témakört.
+* **Egy Azure-előfizetés**. További információkért tekintse [meg az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/)című témakört.
 * **Data Lake Storage Gen1 fiók két különböző régióban**. További információ: [Bevezetés a Azure Data Lake Storage Gen1 használatába](data-lake-store-get-started-portal.md).
 * **Azure Data Factory**. További információkért lásd: [Az Azure Data Factory bemutatása](../data-factory/introduction.md).
 

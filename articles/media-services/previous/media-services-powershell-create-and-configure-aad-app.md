@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 02cc2ddc793906ff79cbb8619a43d54d696b42ed
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594083"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>A PowerShell használatával hozzon létre egy Azure AD-alkalmazást a Azure Media Services API-val való használatra
@@ -58,7 +58,7 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 }
 ```
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 - [Szerepköralapú Access Control kezelése Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)

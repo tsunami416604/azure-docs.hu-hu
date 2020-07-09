@@ -10,19 +10,18 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884344"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB-verziószámozás engedélyezése és kezelése
 
 A Storage-fiókhoz bármikor engedélyezheti vagy letilthatja a blob verziószámozását (előzetes verzió) a Azure Portal vagy egy Azure Resource Manager sablon használatával.
 
-## <a name="enable-blob-versioning"></a>BLOB verziószámozásának engedélyezése
+## <a name="enable-blob-versioning"></a>Blob verziószámozásának engedélyezése
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 A blob verziószámozásának engedélyezése a Azure Portalban:
 
@@ -37,9 +36,9 @@ A blob verziószámozásának engedélyezése a Azure Portalban:
 A Blobok verziószámozásának engedélyezéséhez sablon használatával hozzon létre egy sablont a **IsVersioningEnabled** tulajdonsággal az **igaz**értékre. A következő lépések azt ismertetik, hogyan lehet sablont létrehozni a Azure Portalban.
 
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
-1. A **Keresés a Marketplace-en** mezőbe írja be a **template deployment** kifejezést, majd nyomja le az **ENTER** billentyűt.
+1. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
 1. Válassza a **template Deployment**lehetőséget, válassza a **Létrehozás**lehetőséget, majd **a szerkesztőben válassza a saját sablon**létrehozása lehetőséget.
-1. A sablon szerkesztőjében illessze be a következő JSON-t. Cserélje le `<accountName>` a helyőrzőt a Storage-fiók nevére.
+1. A sablon szerkesztőjében illessze be a következő JSON-t. Cserélje le a `<accountName>` helyőrzőt a Storage-fiók nevére.
 1. Mentse a sablont.
 1. Adja meg a fiókhoz tartozó erőforráscsoportot, majd válassza a **vásárlás** gombot a sablon telepítéséhez és a blob verziószámozásának engedélyezéséhez.
 

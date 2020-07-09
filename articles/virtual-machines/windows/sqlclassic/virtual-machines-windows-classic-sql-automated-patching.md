@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 555bd26ac894a3e06aa46eb0c51e20a35d21a9e7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014655"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078071"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Az Azure Virtual Machines SQL Server automatikus javítása (klasszikus)
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 ## <a name="settings"></a>Beállítások
 Az alábbi táblázat az automatikus javításhoz konfigurálható beállításokat ismerteti. A klasszikus virtuális gépek esetében a PowerShell használatával kell konfigurálni ezeket a beállításokat.
 
-| Beállítás | Lehetséges értékek | Leírás |
+| Beállítás | Lehetséges értékek | Description |
 | --- | --- | --- |
 | **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja az Azure-beli virtuális gépek automatikus javítását. |
 | **Karbantartási ütemezés** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális géphez tartozó Windows-, SQL Server-és Microsoft-frissítések letöltésének és telepítésének ütemterve. |
@@ -76,9 +76,11 @@ Az alábbi táblázat az automatikus javításhoz konfigurálható beállításo
 ## <a name="configuration-with-powershell"></a>Konfigurálás a PowerShell-lel
 A következő példában a PowerShell segítségével konfigurálhatja az automatikus javítást egy meglévő SQL Server VMon. A **New-AzureVMSqlServerAutoPatchingConfig** parancs új karbantartási időszakot konfigurál az automatikus frissítésekhez.
 
-    $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+```azurepowershell
+$aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
+```
 
 A jelen példa alapján a következő táblázat ismerteti a cél Azure-beli virtuális gép gyakorlati hatását:
 

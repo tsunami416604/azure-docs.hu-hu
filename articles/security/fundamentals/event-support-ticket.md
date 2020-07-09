@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548589"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Útmutató a biztonsági eseményekről szóló támogatási jegyek naplózásához
@@ -32,7 +32,7 @@ ms.locfileid: "80548589"
 
     i. Mi a probléma és/vagy a biztonsági rés?
 
-    ii. Biztonsági rések esetén adja meg a következőt: CVE (mitre.org) vagy kitöltött CVSS3https://www.first.org/cvss/calculator/3.0)v3 kalkulátor (.
+    ii. Biztonsági rések esetén adja meg a következőt: CVE (mitre.org) vagy kitöltött CVSS3 v3 kalkulátor ( https://www.first.org/cvss/calculator/3.0) .
 
     iii. Van megoldás vagy mérséklés? Ha igen, adja meg a szervizelés lépéseit.
 

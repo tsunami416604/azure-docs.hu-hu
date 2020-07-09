@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/7/2020
+ms.openlocfilehash: b5751bdccde33fa16d5f09cfbe9a411a351518b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537227"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086551"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Az üzletmenet folytonosságának megismerése Azure Database for MySQL
 
@@ -23,7 +23,7 @@ A Azure Database for MySQL olyan üzletmenet-folytonossági funkciókat biztosí
 
 A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
 
-| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
+| **Képesség** | **Alapszintű** | **általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |
@@ -47,6 +47,10 @@ A másik lehetőség a Azure Database for MySQL geo-visszaállítási funkciój�
 
 > [!IMPORTANT]
 > A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített. Ha szeretné, hogy a helyileg redundáns biztonsági mentést a meglévő kiszolgálókon, akkor a meglévő kiszolgáló mysqldump használatával készítsen memóriaképet, és állítsa vissza egy, a Geo-redundáns biztonsági mentéssel konfigurált, újonnan létrehozott kiszolgálóra.
+
+## <a name="cross-region-read-replicas"></a>Régiók közötti olvasási replikák
+
+Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a MySQL bináris naplójának replikációs technológiájának használatával. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
 
 ## <a name="next-steps"></a>További lépések
 

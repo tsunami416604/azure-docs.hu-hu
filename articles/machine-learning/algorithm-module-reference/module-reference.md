@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 53cfb983579c8a02ed6c1d80ff4821efa5950298
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1996f607d05cb84a80acbb105504ce0b5d3bb0c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856904"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>A Azure Machine Learning Designer (előzetes verzió) & modul-hivatkozásának algoritmusa
 
@@ -32,16 +32,16 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 ## <a name="data-preparation-modules"></a>Adatelőkészítési modulok
 
 
-| Funkció | Leírás | Modul |
+| Funkció | Description | Modul |
 | --- |--- | --- |
-| Adatok bevitele és kimenete | A Felhőbeli forrásokból származó adatok áthelyezése a folyamatba. Megírhatja az eredményeket vagy köztes adatait az Azure Storage-ba, egy SQL-adatbázisba vagy-struktúrába egy folyamat futtatása közben, vagy a Felhőbeli tároló használatával átválthatja az adatátviteli folyamatokat.  | [Manuális adatbevitel](enter-data-manually.md) <br/> [Adatexportálás](export-data.md) <br/> [Adatimportálás](import-data.md) |
-| Adatátalakítás | A gépi tanuláshoz egyedi adatokon alapuló műveletek, például a normalizálás vagy a dobozolási, a dimenzióját csökkentése és az adatok konvertálása különböző fájlformátumok között.| [Oszlopok hozzáadása](add-columns.md) <br/> [Sorok hozzáadása](add-rows.md) <br/> [Matematikai művelet alkalmazása](apply-math-operation.md) <br/> [SQL-átalakítás alkalmazása](apply-sql-transformation.md) <br/> [Hiányzó adatok törlése](clean-missing-data.md) <br/> [Értékek levágása](clip-values.md) <br/> [Konvertálás CSV formátumba](convert-to-csv.md) <br/> [Átalakítás adathalmazzá](convert-to-dataset.md) <br/> [Átalakítás mutatóértékekké](convert-to-indicator-values.md) <br/> [Metaadatok szerkesztése](edit-metadata.md) <br/> [Adatcsoportosítás a raktárhelyekre](group-data-into-bins.md) <br/> [Adatok összekapcsolása](join-data.md) <br/> [Adatok normalizálása](normalize-data.md) <br/> [Partíció és minta](partition-and-sample.md)  <br/> [Ismétlődő sorok eltávolítása](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Oszlopok kiválasztása átalakításhoz](select-columns-transform.md) <br/> [Oszlopok kiválasztása az adathalmazban](select-columns-in-dataset.md) <br/> [Adatok felosztása](split-data.md) |
+| Adatok bevitele és kimenete | A Felhőbeli forrásokból származó adatok áthelyezése a folyamatba. Megírhatja az eredményeket vagy köztes adatait az Azure Storage-ba, a SQL Databaseba vagy a kaptárba, egy folyamat futtatása közben, vagy a Felhőbeli tároló használatával átválthatja az adatátviteli folyamatokat.  | [Manuális adatbevitel](enter-data-manually.md) <br/> [Adatok exportálása](export-data.md) <br/> [Adatok importálása](import-data.md) |
+| Adatátalakítás | A gépi tanuláshoz egyedi adatokon alapuló műveletek, például a normalizálás vagy a dobozolási, a dimenzióját csökkentése és az adatok konvertálása különböző fájlformátumok között.| [Oszlopok hozzáadása](add-columns.md) <br/> [Sorok hozzáadása](add-rows.md) <br/> [Matematikai művelet alkalmazása](apply-math-operation.md) <br/> [SQL-átalakítás alkalmazása](apply-sql-transformation.md) <br/> [Hiányzó adatok törlése](clean-missing-data.md) <br/> [Értékek levágása](clip-values.md) <br/> [Konvertálás CSV formátumba](convert-to-csv.md) <br/> [Átalakítás adathalmazzá](convert-to-dataset.md) <br/> [Átalakítás mutatóértékekké](convert-to-indicator-values.md) <br/> [Metaadatok szerkesztése](edit-metadata.md) <br/> [Adatok csoportosítása intervallumokba](group-data-into-bins.md) <br/> [Adatok összekapcsolása](join-data.md) <br/> [Adatok normalizálása](normalize-data.md) <br/> [Partíció és minta](partition-and-sample.md)  <br/> [Ismétlődő sorok eltávolítása](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Oszlopok kiválasztása átalakításhoz](select-columns-transform.md) <br/> [Oszlopok kiválasztása az adathalmazban](select-columns-in-dataset.md) <br/> [Adatok felosztása](split-data.md) |
 | Szolgáltatás kiválasztása | Válassza ki a megfelelő, hasznos funkciók egy részhalmazát, amelyet az analitikai modell létrehozásához kíván használni. | [Szűrőalapú szolgáltatásválasztás](filter-based-feature-selection.md) <br/> [A permutáció funkció fontossága](permutation-feature-importance.md) |
 | Statisztikai függvények | Az adatelemzéshez kapcsolódó statisztikai módszerek széles skáláját adja meg. | [Adatok összegzése](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>Gépi tanulási algoritmusok
 
-| Funkció | Leírás | Modul |
+| Funkció | Description | Modul |
 | --- |--- | --- |
 | Regresszió | Egy érték előrejelzése. | [Súlyozott döntési fa típusú regresszió](boosted-decision-tree-regression.md) <br/> [Döntési erdő típusú regresszió](decision-forest-regression.md) <br/> [Lineáris regresszió](linear-regression.md)  <br/> [Neurális hálózat típusú regresszió](neural-network-regression.md)  <br/> |
 | Fürtözés | Csoportosítsa az adathalmazokat.| [K-közép csoportosítás](k-means-clustering.md)
@@ -49,14 +49,15 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Modellek létrehozásához és kiértékeléséhez használható modulok
 
-| Funkció | Leírás | Modul |
+| Funkció | Description | Modul |
 | --- |--- | --- |
-| Modell betanítása | Adatfuttatás az algoritmuson keresztül. |  [Csoportosítási modell betanítása](train-clustering-model.md) <br/> [Modell betanítása](train-model.md)  <br/> [Modell-hiperparaméterek hangolása](tune-model-hyperparameters.md) |
-| Modell pontozása és kiértékelése | Mérje fel a betanított modell pontosságát. | [Átalakítás alkalmazása](apply-transformation.md) <br/> [Adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md) <br/> [Modell keresztellenőrzése](cross-validate-model.md) <br/> [Modell értékelése](evaluate-model.md) <br/> [Relevanciamodell](score-model.md) |
+| Modell betanítása | Adatfuttatás az algoritmuson keresztül. |  [Csoportosítási modell betanítása](train-clustering-model.md) <br/> [Modell betanítása](train-model.md) <br/> [Pytorch-modell betanítása](train-pytorch-model.md) <br/> [Modell-hiperparaméterek hangolása](tune-model-hyperparameters.md) |
+| Modell pontozása és kiértékelése | Mérje fel a betanított modell pontosságát. | [Átalakítás alkalmazása](apply-transformation.md) <br/> [Adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md) <br/> [Modell keresztellenőrzése](cross-validate-model.md) <br/> [Modell értékelése](evaluate-model.md) <br/> [Képmodell pontozása](score-image-model.md) <br/> [Relevanciamodell](score-model.md) |
 | Python-nyelv | Kód írása és beágyazása modulba a Python és a folyamat integrálásához. | [Python-modell létrehozása](create-python-model.md) <br/> [Python-szkript futtatása](execute-python-script.md) |
 | R nyelv | Kód írása és beágyazása egy modulba az R és a folyamat integrálásához. | [R-szkript végrehajtása](execute-r-script.md) |
-| Szövegelemzés | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. |  [A Word konvertálása vektorra](convert-word-to-vector.md) <br/> [N-Gram-funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Funkciókivonatolás](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) <br/> [Rejtett Dirichlet-lefoglalás](latent-dirichlet-allocation.md) |
-| Ajánlás | Build-javaslatok modelljei. | [Ajánló értékelése](evaluate-recommender.md) <br/> [SVD-ajánló pontozása](score-svd-recommender.md) <br/> [SVD-ajánló betanítása](train-SVD-recommender.md) |
+| Szövegelemzés | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. |  [Szó konvertálása vektorrá](convert-word-to-vector.md) <br/> [N-Gram-funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Funkciókivonatolás](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) <br/> [Rejtett Dirichlet-lefoglalás](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit modell pontozása](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit modell betanítása](train-vowpal-wabbit-model.md)|
+| Computer Vision | Rendszerkép-adatok előfeldolgozása és rendszerkép-felismeréssel kapcsolatos modulok. |  [Képátalakítás alkalmazása](apply-image-transformation.md) <br/> [Átalakítás képkönyvtárrá](convert-to-image-directory.md) <br/> [Képátalakítás indítása](init-image-transformation.md) <br/> [Képkönyvtár felosztása](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
+| Ajánlás | Build-javaslatok modelljei. | [Ajánló értékelése](evaluate-recommender.md) <br/> [SVD-ajánló pontozása](score-svd-recommender.md) <br/> [Wide and Deep ajánló pontozása](score-wide-and-deep-recommender.md)<br/> [SVD-ajánló betanítása](train-SVD-recommender.md) <br/> [Wide and Deep ajánló betanítása](train-wide-and-deep-recommender.md)|
 | Rendellenességek észlelése | Hozzon létre anomáliák észlelési modelljeit. | [PCA-alapú rendellenesség-észlelés](pca-based-anomaly-detection.md) <br/> [Rendellenesség-észlelési modell betanítása](train-anomaly-detection-model.md) |
 
 

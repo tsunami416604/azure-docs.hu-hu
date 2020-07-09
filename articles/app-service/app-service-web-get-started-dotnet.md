@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086045"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205794"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -26,8 +26,8 @@ Ha elkészült, egy App Service üzemeltetési csomagból és egy üzembe helyez
 
   Ha már telepítette a Visual Studio 2019-et:
 
-  - A**frissítések keresése**lehetőség **kiválasztásával** > telepítse a legújabb frissítéseket a Visual Studióban.
-  - A számítási feladat hozzáadásához **válassza az eszközök** > **beolvasása eszközök és szolgáltatások**lehetőséget.
+  - A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
+  - A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások**lehetőséget.
 
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
@@ -42,11 +42,11 @@ Hozzon létre egy ASP.NET Core webalkalmazást a Visual Studióban a következő
 
    ![A webalkalmazás-projekt konfigurálása](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Bármilyen típusú ASP.NET Core webalkalmazást üzembe helyezhet az Azure-ban, de ebben a rövid útmutatóban a **webalkalmazás** sablont is kiválaszthatja. Győződjön meg arról, hogy a **hitelesítés** **Nincs hitelesítés**, és nincs más lehetőség kiválasztva. Ezután kattintson a **Létrehozás** elemre.
+1. Bármilyen típusú ASP.NET Core webalkalmazást üzembe helyezhet az Azure-ban, de ebben a rövid útmutatóban a **webalkalmazás** sablont is kiválaszthatja. Győződjön meg arról, hogy a **hitelesítés** **Nincs hitelesítés**, és nincs más lehetőség kiválasztva. Ezután válassza a **Létrehozás**lehetőséget.
 
    ![Új ASP.NET Core Webalkalmazás létrehozása](./media/app-service-web-get-started-dotnet/create-aspnet-core-web-app.png) 
    
-1. A Visual Studio menüjében válassza a **hibakeresés** > **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
 
    ![Helyileg futó webalkalmazás](./media/app-service-web-get-started-dotnet/web-app-running-locally.png)
 
@@ -67,7 +67,7 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
    ![Közzétételi cél kiválasztása](./media/app-service-web-get-started-dotnet/pick-publish-target-vs2019.png)
 
-1. A **app Service: hozzon létre új** párbeszédpanelt, adjon meg egy globálisan egyedi **nevet** az alkalmazásnak az alapértelmezett név elfogadásával vagy egy új név megadásával. Az érvényes karakterek a `a-z`következők `A-Z`: `0-9`,, `-`és. A rendszer ezt a **nevet** használja a webalkalmazáshoz tartozó URL-előtagként `http://<app_name>.azurewebsites.net`a következő formátumban:.
+1. A **app Service: hozzon létre új** párbeszédpanelt, adjon meg egy globálisan egyedi **nevet** az alkalmazásnak az alapértelmezett név elfogadásával vagy egy új név megadásával. Az érvényes karakterek a következők: `a-z` ,, `A-Z` `0-9` és `-` . A rendszer ezt a **nevet** használja a webalkalmazáshoz tartozó URL-előtagként a következő formátumban: `http://<app_name>.azurewebsites.net` .
 
 1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
@@ -99,17 +99,17 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
    ![Az Azure-ban futó közzétett ASP.NET-webalkalmazás](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
-**Gratulálok!** A ASP.NET Core webalkalmazása Azure App Serviceon fut.
+**Gratulálunk!** A ASP.NET Core webalkalmazása Azure App Serviceon fut.
 
 ## <a name="update-the-app-and-redeploy"></a>Az alkalmazás frissítése és ismételt üzembe helyezése
 
 A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. **Megoldáskezelő**a projekt alatt nyissa meg a **Pages** > **index. cshtml**lapot.
+1. **Megoldáskezelő**a projekt alatt nyissa meg a **Pages**  >  **index. cshtml**lapot.
 
-1. Cserélje le a `<div>` teljes címkét a következő kódra:
+1. Cserélje le a teljes `<div>` címkét a következő kódra:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -150,3 +150,6 @@ A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást,
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core és SQL Database](app-service-web-tutorial-dotnetcore-sqldb.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core alkalmazás konfigurálása](configure-language-dotnetcore.md)

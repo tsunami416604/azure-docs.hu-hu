@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386062"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
 
@@ -93,13 +93,13 @@ Azure AD B2C bérlőhöz kapcsolódó előfizetés használható Azure AD B2C ha
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a használni kívánt Azure-előfizetést tartalmazza (*nem* pedig a Azure ad B2C bérlőt tartalmazó könyvtár).
-1. Válassza az **erőforrás létrehozása**lehetőséget, `Active Directory B2C` írja be a **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
-1. **Létrehozás** kiválasztása
+1. Válassza az **erőforrás létrehozása**lehetőséget, írja be a `Active Directory B2C` **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
+1. Kattintson a **Létrehozás** elemre.
 1. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel**lehetőséget.
 1. Válasszon ki egy **Azure ad B2C bérlőt** a legördülő listából. Csak azok a bérlők jelennek meg, amelyekhez Ön globális rendszergazda, és amelyek még nem kapcsolódnak előfizetéshez. A **Azure ad B2C erőforrás neve** mező a kiválasztott Azure ad B2C-bérlő tartománynevével van feltöltve.
 1. Válasszon ki egy aktív Azure- **előfizetést** , amelynek Ön a rendszergazdája.
 1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, majd adja meg az **erőforráscsoport helyét**. Az erőforráscsoport beállításai nincsenek hatással a Azure AD B2C bérlői helyére, teljesítményére vagy számlázási állapotára.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
     ![A Azure Portal Azure AD B2C erőforrás-létrehozási lapja](./media/billing/portal-01-create-b2c-resource-page.png)
 
 Miután elvégezte ezeket a lépéseket egy Azure AD B2C bérlő számára, az Azure-előfizetését az Azure Direct-ban vagy Nagyvállalati Szerződés-on alapuló adatok alapján számítjuk fel, ha van ilyen.

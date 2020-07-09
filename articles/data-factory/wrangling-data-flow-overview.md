@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921525"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Mik azok az huzavona-adatforgalom?
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 A szervezeteknek adatelőkészítést és huzavona kell végezniük az olyan összetett adatmennyiségek pontos elemzéséhez, amelyek napról napra folyamatosan növekednek. Az adatelőkészítésre azért van szükség, hogy a szervezetek különböző üzleti folyamatok során használhassák az adatmennyiséget, és csökkentsék az időt az értékre.
 
@@ -25,6 +25,9 @@ A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli ada
 A huzavona adatáramlási folyamata az Power Query online mashup-szerkesztő által generált, a Felhőbeli méretezés végrehajtásához készült Spark-kódra.
 
 A huzavona adatforgalmai különösen hasznosak az adatmérnökök vagy a Citizen-adatintegrátorok számára.
+
+> [!NOTE]
+> A huzavona-adatfolyam jelenleg nyilvános előzetes verzióban avilable
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -44,7 +47,7 @@ Az adatokat kód nélküli módon vizsgálhatja, hogy eltávolítsa a kiugró é
 
 | Összekötő | Adatformátum | Hitelesítés típusa |
 | -- | -- | --|
-| [Azure-Blob Storage](connector-azure-blob-storage.md) | CSV, parketta | Fiók kulcsa |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, parketta | Fiók kulcsa |
 | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | CSV | Szolgáltatásnév |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, parketta | Fiók kulcsa, egyszerű szolgáltatásnév |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-hitelesítés |

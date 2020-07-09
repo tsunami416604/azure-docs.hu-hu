@@ -13,10 +13,9 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70881008"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure dedikált HSM-támogatás
@@ -41,7 +40,7 @@ A HSM-eszközök konfigurációjában különféle szoftver-összetevők haszná
 * SDK
 * Eszközök
 
-### <a name="guidance"></a>Útmutatás
+### <a name="guidance"></a>Útmutató
 
 A Gemalto az [ügyfélszolgálati portálon](https://supportportal.gemalto.com/csm/)keresztül teszi elérhetővé az adminisztrációs és konfigurációs útmutatást. Az érvényes ügyfél-AZONOSÍTÓval való bejelentkezés után ezek a dokumentumok letölthetők. A Gemalto számos integrációs útmutatót is biztosít, amelyek segítségével az ügyfelek különböző forgatókönyvekkel és szoftveres integrációval segítik a felhasználókat. További információkért tekintse meg a [Microsoft Gemalto partner webhelyét](https://safenet.gemalto.com/partners/microsoft/).
 

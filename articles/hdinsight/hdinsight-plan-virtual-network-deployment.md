@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82786614"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
@@ -71,7 +71,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
 
     * Network security groups (Hálózati biztonsági csoportok)
 
-        Cserélje `RESOURCEGROUP` le a helyére a virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
+        Cserélje le a helyére a `RESOURCEGROUP` virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
 
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
 
     * Felhasználó által megadott útvonalak
 
-        Cserélje `RESOURCEGROUP` le a helyére a virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
+        Cserélje le a helyére a `RESOURCEGROUP` virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -136,7 +136,7 @@ Ha engedélyezni szeretné a névfeloldást a virtuális hálózat és az össze
 
 2. Konfigurálja a virtuális hálózatot az egyéni DNS-kiszolgáló használatára.
 
-3. Keresse meg az Azure-beli hozzárendelt DNS-utótagot a virtuális hálózathoz. Ez az érték hasonló a `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`következőhöz:. A DNS-utótag megkeresésével kapcsolatos információkért tekintse meg a következő [példát: egyéni DNS](hdinsight-create-virtual-network.md#example-dns) szakasz.
+3. Keresse meg az Azure-beli hozzárendelt DNS-utótagot a virtuális hálózathoz. Ez az érték hasonló a következőhöz: `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` . A DNS-utótag megkeresésével kapcsolatos információkért tekintse meg a következő [példát: egyéni DNS](hdinsight-create-virtual-network.md#example-dns) szakasz.
 
 4. Konfigurálja a DNS-kiszolgálók közötti továbbítást. A konfiguráció a távoli hálózat típusától függ.
 
@@ -168,13 +168,13 @@ További információ: a [virtuális gépek és a szerepkör példányainak név
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Közvetlen kapcsolódás Apache Hadoop szolgáltatásokhoz
 
-A fürthöz a következő helyen csatlakozhat `https://CLUSTERNAME.azurehdinsight.net`:. Ez a cím egy nyilvános IP-címet használ, amely nem érhető el, ha a NSG használatával korlátozza a bejövő forgalmat az internetről. Emellett, ha a fürtöt egy VNet helyezi üzembe, a magánhálózati végponton `https://CLUSTERNAME-int.azurehdinsight.net`keresztül is elérheti azt. Ez a végpont egy magánhálózati IP-címhez lett feloldva a VNet a fürt eléréséhez.
+A fürthöz a következő helyen csatlakozhat: `https://CLUSTERNAME.azurehdinsight.net` . Ez a cím egy nyilvános IP-címet használ, amely nem érhető el, ha a NSG használatával korlátozza a bejövő forgalmat az internetről. Emellett, ha a fürtöt egy VNet helyezi üzembe, a magánhálózati végponton keresztül is elérheti azt `https://CLUSTERNAME-int.azurehdinsight.net` . Ez a végpont egy magánhálózati IP-címhez lett feloldva a VNet a fürt eléréséhez.
 
 Az Apache Ambari és más weboldalakhoz a virtuális hálózaton keresztül történő kapcsolódáshoz kövesse az alábbi lépéseket:
 
 1. A HDInsight-fürtcsomópontok belső teljes tartománynevének (FQDN) felderítéséhez használja az alábbi módszerek egyikét:
 
-    Cserélje `RESOURCEGROUP` le a helyére a virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
+    Cserélje le a helyére a `RESOURCEGROUP` virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}

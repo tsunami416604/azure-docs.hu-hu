@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122365"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions diagnosztika áttekintése
@@ -49,7 +49,7 @@ A parancsfájl-alapú függvények esetében a **függvény végrehajtása és a
 
 :::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Kivétel részleteinek megtekintése." border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérdéseket tehet fel, és visszajelzést küldhet Azure Functions diagnosztikát a következő címen: [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Belefoglalás a `[Diag]` visszajelzés címébe.
 

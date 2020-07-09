@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csomagolhat egy meglévő alkalmazást vendég 
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80520486"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl becsomagolása és üzembe helyezése Service Fabric
@@ -22,18 +22,18 @@ Egy meglévő végrehajtható fájl [vendégként](service-fabric-guest-executab
 
 A Visual Studio egy Service Fabric szolgáltatási sablont biztosít, amely segítséget nyújt a vendég végrehajtható fájlok Service Fabric fürtön való üzembe helyezésében.
 
-1. Válassza a **fájl** > **új projekt**elemet, és hozzon létre egy Service Fabric alkalmazást.
+1. Válassza a **fájl**  >  **új projekt**elemet, és hozzon létre egy Service Fabric alkalmazást.
 2. Válassza a **vendég végrehajtható fájl** lehetőséget a szolgáltatás sablonként.
 3. Kattintson a **Tallózás** gombra a végrehajtható fájl kiválasztásához, majd adja meg a többi paramétert a szolgáltatás létrehozásához.
    * A *kód csomagjainak viselkedése*. Beállítható úgy, hogy a mappa összes tartalmát a Visual Studio-projektbe másolja, ami akkor hasznos, ha a végrehajtható fájl nem változik. Ha a végrehajtható fájl módosítására vár, és szeretné, hogy az új buildek dinamikusan legyenek kiválasztva, akkor a mappára is hivatkozhat. A Visual Studióban az alkalmazás projekt létrehozásakor használhat csatolt mappákat. Ez a forrás helyéről a projekten belülre mutat, így a vendégek a forrás célhelyén frissíthetik a vendég végrehajtható fájlt. Ezek a frissítések a Build-alkalmazáscsomag részévé válnak.
    * A *program* meghatározza azt a végrehajtható fájlt, amelyet futtatni kell a szolgáltatás elindításához.
    * Az *argumentumok* a végrehajtható fájlnak átadandó argumentumokat határozzák meg. Az argumentumokkal rendelkező paraméterek listája lehet.
    * A *WorkingFolder* meghatározza az elindítani kívánt folyamat munkakönyvtárát. Három értéket is megadhat:
-     * `CodeBase`Megadja, hogy a munkakönyvtár az alkalmazáscsomag kódjának könyvtárába lesz állítva (`Code` az előző adatstruktúrában látható könyvtár).
-     * `CodePackage`azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva (`GuestService1Pkg` az előző fájl struktúrában látható).
+     * `CodeBase`Megadja, hogy a munkakönyvtár az alkalmazáscsomag kódjának könyvtárába lesz állítva ( `Code` az előző adatstruktúrában látható könyvtár).
+     * `CodePackage`azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrában látható).
      * `Work`Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
 4. Nevezze el a szolgáltatást, és kattintson az **OK** gombra.
-5. Ha a szolgáltatásnak szüksége van egy végpontra a kommunikációhoz, most hozzáadhatja a protokollt, a portot és a típust a ServiceManifest. xml fájlhoz. Például: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
+5. Ha a szolgáltatásnak szüksége van egy végpontra a kommunikációhoz, most hozzáadhatja a protokollt, a portot és a típust a ServiceManifest.xml fájlhoz. Példa: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Mostantól a csomagot és a közzétételi műveletet a helyi fürtön is használhatja a Visual Studióban található megoldás hibakeresésével. Ha elkészült, közzéteheti az alkalmazást egy távoli fürtön, vagy bejelölheti a megoldást a forrás vezérlőelemre.
 7. Olvassa el a [futó alkalmazás](#check-your-running-application) megtekintését, és tekintse meg, hogyan tekintheti meg Service Fabric Explorer futó vendég végrehajtható szolgáltatását.
 
@@ -82,7 +82,7 @@ Első lépésként hozza létre a címtár-struktúrát az [Azure Service Fabric
 
 Miután létrehozta a címtár-struktúrát, felveheti az alkalmazás kódját és konfigurációs fájljait a kód és a konfiguráció könyvtáraiba. További címtárakat vagy alkönyvtárakat is létrehozhat a kód vagy a konfigurációs könyvtárak alatt.
 
-`xcopy` Service Fabric az alkalmazás gyökérkönyvtárának tartalmát használja, így nincs előre definiált struktúra, amely nem két legfelső szintű könyvtárat, kódot és beállítást hoz létre. (Ha szeretné, különböző neveket is választhat. További részletek a következő szakaszban olvashatók.)
+Service Fabric az `xcopy` alkalmazás gyökérkönyvtárának tartalmát használja, így nincs előre definiált struktúra, amely nem két legfelső szintű könyvtárat, kódot és beállítást hoz létre. (Ha szeretné, különböző neveket is választhat. További részletek a következő szakaszban olvashatók.)
 
 > [!NOTE]
 > Győződjön meg arról, hogy az alkalmazás által igényelt összes fájl és függőség szerepel. Service Fabric az alkalmazáscsomag tartalmát a fürt minden olyan csomópontján átmásolja, ahol az alkalmazás szolgáltatásai lesznek telepítve. A csomagnak tartalmaznia kell az alkalmazás futtatásához szükséges összes kódot. Ne Tételezzük fel, hogy a függőségek már telepítve vannak.
@@ -137,7 +137,7 @@ A következő részek a fájl különböző részeire mutatnak, amelyeket friss�
 </ServiceTypes>
 ```
 
-* Kiválaszthatja a kívánt nevet `ServiceTypeName`. Az érték a `ApplicationManifest.xml` fájlban a szolgáltatás azonosítására szolgál.
+* Kiválaszthatja a kívánt nevet `ServiceTypeName` . Az érték a `ApplicationManifest.xml` fájlban a szolgáltatás azonosítására szolgál.
 * Adja meg a következőt: `UseImplicitHost="true"`. Ez az attribútum azt jelzi, Service Fabric, hogy a szolgáltatás egy önálló alkalmazáson alapul, ezért az összes Service Fabric kell tennie, hogy folyamatként indítsa el, és figyelje az állapotát.
 
 #### <a name="update-codepackage"></a>CodePackage frissítése
@@ -162,7 +162,7 @@ A SetupEntryPoint elem a szolgáltatás kódjának elindítása előtt végrehaj
 
 Csak egy SetupEntryPoint létezik, ezért a telepítési parancsfájlokat egyetlen batch-fájlban kell csoportosítani, ha az alkalmazás telepítője több parancsfájlt igényel. A SetupEntryPoint bármilyen típusú fájlt futtathat: végrehajtható fájlokat, batch-fájlokat és PowerShell-parancsmagokat. További részleteket a [SetupEntryPoint konfigurálása](service-fabric-application-runas-security.md)című témakörben talál.
 
-Az előző példában a SetupEntryPoint egy nevű `LaunchConfig.cmd` batch- `scripts` fájlt futtat, amely a kód könyvtárának alkönyvtárában található (feltéve, hogy a WorkingFolder elem a következőre van állítva).
+Az előző példában a SetupEntryPoint egy nevű batch-fájlt futtat, `LaunchConfig.cmd` amely a `scripts` kód könyvtárának alkönyvtárában található (feltéve, hogy a WorkingFolder elem a következőre van állítva).
 
 #### <a name="update-entrypoint"></a>BelépésiPont frissítése
 
@@ -178,13 +178,13 @@ Az előző példában a SetupEntryPoint egy nevű `LaunchConfig.cmd` batch- `scr
 
 A `EntryPoint` szolgáltatás jegyzékfájljának eleme a szolgáltatás indításának megadására szolgál.
 
-Az `ExeHost` elem meghatározza a szolgáltatás elindításához használandó végrehajtható fájlt (és argumentumokat). Az `IsExternalExecutable="true"` attribútum `ExeHost` hozzáadásával azt jelezheti, hogy a program külső végrehajtható fájl a kód csomagján kívül. Például: `<ExeHost IsExternalExecutable="true">`.
+Az `ExeHost` elem meghatározza a szolgáltatás elindításához használandó végrehajtható fájlt (és argumentumokat). Az attribútum hozzáadásával `IsExternalExecutable="true"` `ExeHost` azt jelezheti, hogy a program külső végrehajtható fájl a kód csomagján kívül. Például: `<ExeHost IsExternalExecutable="true">`.
 
 * `Program`annak a végrehajtható fájlnak a nevét adja meg, amelynek el kell indítania a szolgáltatást.
 * `Arguments`meghatározza a végrehajtható fájlnak átadandó argumentumokat. Az argumentumokkal rendelkező paraméterek listája lehet.
 * `WorkingFolder`meghatározza az elindítani kívánt folyamat munkakönyvtárát. Három értéket is megadhat:
-  * `CodeBase`azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag (`Code` az előző fájl struktúrában található könyvtár) kódjának könyvtárába lesz állítva.
-  * `CodePackage`Megadja, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva (`GuestService1Pkg` az előző fájl struktúrájában).
+  * `CodeBase`azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag ( `Code` az előző fájl struktúrában található könyvtár) kódjának könyvtárába lesz állítva.
+  * `CodePackage`Megadja, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrájában).
     * `Work`Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
 
 A WorkingFolder hasznos a megfelelő munkakönyvtár beállítása, hogy a relatív elérési utakat az alkalmazás-vagy inicializálási parancsfájlok is felhasználhatják.
@@ -198,12 +198,12 @@ A WorkingFolder hasznos a megfelelő munkakönyvtár beállítása, hogy a relat
 
 ```
 
-Az előző példában az `Endpoint` elem meghatározza azokat a végpontokat, amelyeket az alkalmazás figyelni tud. Ebben a példában a Node. js-alkalmazás a 3000-as porton figyeli a http-t.
+Az előző példában az `Endpoint` elem meghatározza azokat a végpontokat, amelyeket az alkalmazás figyelni tud. Ebben a példában a Node.js alkalmazás a 3000-es porton a http-t figyeli.
 
 Emellett megkérheti Service Fabric, hogy tegye közzé ezt a végpontot a elnevezési szolgáltatás, hogy más szolgáltatások is felderítsék a szolgáltatás végpontjának címeit. Ez lehetővé teszi, hogy képes legyen kommunikálni a vendég végrehajtható fájlok között.
-A közzétett végpont címe űrlap `UriScheme://IPAddressOrFQDN:Port/PathSuffix`. `UriScheme`és `PathSuffix` opcionális attribútumok. `IPAddressOrFQDN`annak a csomópontnak az IP-címe vagy teljes tartományneve, amelybe a végrehajtható fájl kerül, és amelyet a rendszer kiszámít.
+A közzétett végpont címe űrlap `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme`és `PathSuffix` opcionális attribútumok. `IPAddressOrFQDN`annak a csomópontnak az IP-címe vagy teljes tartományneve, amelybe a végrehajtható fájl kerül, és amelyet a rendszer kiszámít.
 
-A következő példában a szolgáltatás üzembe helyezését követően a Service Fabric Explorer egy, a szolgáltatási példányhoz `http://10.1.4.92:3000/myapp/` közzétett végpont jelenik meg. Ha ez egy helyi gép, akkor a következőt `http://localhost:3000/myapp/`látja:.
+A következő példában a szolgáltatás üzembe helyezését követően a Service Fabric Explorer egy, `http://10.1.4.92:3000/myapp/` a szolgáltatási példányhoz közzétett végpont jelenik meg. Ha ez egy helyi gép, akkor a következőt látja: `http://localhost:3000/myapp/` .
 
 ```xml
 <Endpoints>
@@ -215,7 +215,7 @@ Ezeket a címeket [fordított proxyval](service-fabric-reverseproxy.md) használ
 
 ### <a name="edit-the-application-manifest-file"></a>Az alkalmazás jegyzékfájljának szerkesztése
 
-A `Servicemanifest.xml` fájl konfigurálása után módosítania kell a `ApplicationManifest.xml` fájlt, hogy a megfelelő szolgáltatástípus és név legyen használatban.
+A fájl konfigurálása után módosítania kell `Servicemanifest.xml` a `ApplicationManifest.xml` fájlt, hogy a megfelelő szolgáltatástípus és név legyen használatban.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -228,7 +228,7 @@ A `Servicemanifest.xml` fájl konfigurálása után módosítania kell a `Applic
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
 
-A `ServiceManifestImport` elemben megadhat egy vagy több olyan szolgáltatást, amelyet fel szeretne venni az alkalmazásba. A szolgáltatásokra a `ServiceManifestName`(z) hivatkozik, amely megadja annak a `ServiceManifest.xml` könyvtárnak a nevét, ahol a fájl található.
+A `ServiceManifestImport` elemben megadhat egy vagy több olyan szolgáltatást, amelyet fel szeretne venni az alkalmazásba. A szolgáltatásokra a (z) hivatkozik `ServiceManifestName` , amely megadja annak a könyvtárnak a nevét, ahol a `ServiceManifest.xml` fájl található.
 
 ```xml
 <ServiceManifestImport>
@@ -239,7 +239,7 @@ A `ServiceManifestImport` elemben megadhat egy vagy több olyan szolgáltatást,
 ## <a name="set-up-logging"></a>Naplózás beállítása
 
 A vendég végrehajtható fájlok esetében hasznos lehet megtekinteni a konzol naplófájljait, hogy az alkalmazás és a konfigurációs parancsfájlok milyen hibákat jelenítenek meg.
-A konzol átirányítását az `ServiceManifest.xml` `ConsoleRedirection` elem használatával lehet konfigurálni a fájlban.
+A konzol átirányítását az elem használatával lehet konfigurálni a `ServiceManifest.xml` fájlban `ConsoleRedirection` .
 
 > [!WARNING]
 > Soha ne használja a konzol átirányítási házirendjét az éles környezetben üzembe helyezett alkalmazásokban, mivel ez hatással lehet az alkalmazás feladatátvételére. Ezt *csak* helyi fejlesztési és hibakeresési célokra használhatja.  
@@ -286,12 +286,12 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt, ha a csomag nagyméretű vagy sok fájllal rendelkezik. [Itt](service-fabric-deploy-remove-applications.md#upload-the-application-package)olvashat bővebben.
+> [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt, ha a csomag nagyméretű vagy sok fájllal rendelkezik. További tudnivalók [itt](service-fabric-deploy-remove-applications.md#upload-the-application-package).
 >
 
 A Service Fabric szolgáltatás különböző konfigurációkon telepíthető. Például egyetlen vagy több példányban is üzembe helyezhető, vagy olyan módon telepíthető, hogy a szolgáltatás egy példánya a Service Fabric fürt minden egyes csomópontján megtalálható legyen.
 
-A `InstanceCount` `New-ServiceFabricService` parancsmag paraméterének segítségével megadható, hogy a szolgáltatás hány példánya legyen elindítható a Service Fabric-fürtben. Az `InstanceCount` értéket az üzembe helyezett alkalmazás típusától függően állíthatja be. A két leggyakoribb forgatókönyv a következők:
+A `InstanceCount` parancsmag paraméterének segítségével `New-ServiceFabricService` megadható, hogy a szolgáltatás hány példánya legyen elindítható a Service Fabric-fürtben. Az `InstanceCount` értéket az üzembe helyezett alkalmazás típusától függően állíthatja be. A két leggyakoribb forgatókönyv a következők:
 
 * `InstanceCount = "1"`. Ebben az esetben a szolgáltatásnak csak egy példánya van telepítve a fürtben. Service Fabric ütemező határozza meg, hogy a szolgáltatás melyik csomóponton lesz telepítve.
 * `InstanceCount ="-1"`. Ebben az esetben a szolgáltatás egy példánya van telepítve a Service Fabric fürt minden csomópontján. Ennek eredményeképpen a szolgáltatásnak egy (és csak egy) példánya van a fürt minden csomópontja számára.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d224f8fa5d696cd55b4f214111280d9210f836e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f7cdc8dce8a4b30b543c4e332207354697a9e0d
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159115"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Oktatóanyag: Azure Active Directory integráció a Halosys
 
@@ -111,7 +111,7 @@ Az Azure AD egyszeri bejelentkezés Halosys való konfigurálásához hajtsa vé
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company-name>.halosys.com/<instance name>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Halosys ügyfélszolgálati [csapatához](https://halosys.com/halosys#contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Halosys ügyfélszolgálati [csapatához](https://www.sonata-software.com/form/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés Halosys való konfigurálásához hajtsa vé
 
 ### <a name="configure-halosys-single-sign-on"></a>Halosys egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Halosys** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Halosys támogatási csapatának](https://halosys.com/halosys#contact). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **Halosys** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Halosys támogatási csapatának](https://www.sonata-software.com/form/contact). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -149,12 +149,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -184,7 +184,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-halosys-test-user"></a>Halosys-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Halosys-ben. Együttműködik a [Halosys támogatási csapatával](https://halosys.com/halosys#contact) , hogy hozzáadja a felhasználókat a Halosys platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Halosys-ben. Együttműködik a [Halosys támogatási csapatával](https://www.sonata-software.com/form/contact) , hogy hozzáadja a felhasználókat a Halosys platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

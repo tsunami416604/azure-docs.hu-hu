@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 871ff0fe7fdf92e82b30b1c93867d753ce9a82b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048524"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956899"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentés
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,45 +64,53 @@ Ezek a szegmenses Térkép kezelőjéhez és a szegmensekhez való kapcsolódás
 1. Nyissa meg SQL Server Management Studio vagy SQL Server Data Tools a Visual Studióban.
 2. Kapcsolódjon a ElasticDBQuery adatbázishoz, és hajtsa végre a következő T-SQL-parancsokat:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';
+    ```
 
     a "username" és a "password" utasításnak meg kell egyeznie a (z) szakasz 3. lépésében használt bejelentkezési adatokkal, és a **Elastic Database eszközök első lépései** című cikkben ismertetett módon [futtathatja a minta alkalmazást](elastic-scale-get-started.md#download-and-run-the-sample-app) .
 
 ### <a name="external-data-sources"></a>Külső adatforrások
 Külső adatforrás létrehozásához hajtsa végre a következő parancsot a ElasticDBQuery-adatbázisban:
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-      (TYPE = SHARD_MAP_MANAGER,
-      LOCATION = '<server_name>.database.windows.net',
-      DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
-      CREDENTIAL = ElasticDBQueryCred,
-       SHARD_MAP_NAME = 'CustomerIDShardMap'
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = SHARD_MAP_MANAGER,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
+    CREDENTIAL = ElasticDBQueryCred,
+    SHARD_MAP_NAME = 'CustomerIDShardMap'
+) ;
+```    
 
  A "CustomerIDShardMap" a szegmens Térkép neve, ha a szegmensek közötti térképet és a szegmens Térkép kezelőjét a rugalmas adatbázis-eszközök használatával hozta létre. Ha azonban az egyéni beállítást használta ehhez a mintához, akkor az alkalmazásban kiválasztott szegmenses leképezési nevet kell megadni.
 
 ### <a name="external-tables"></a>Külső táblák
 Hozzon létre egy külső táblát, amely megegyezik a szegmensek ügyfelek táblájával a következő parancs ElasticDBQuery-adatbázison való végrehajtásával:
 
-    CREATE EXTERNAL TABLE [dbo].[Customers]
-    ( [CustomerId] [int] NOT NULL,
-      [Name] [nvarchar](256) NOT NULL,
-      [RegionId] [int] NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc,
-      DISTRIBUTION = SHARDED([CustomerId])
-    ) ;
+```tsql
+CREATE EXTERNAL TABLE [dbo].[Customers]
+( [CustomerId] [int] NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    [RegionId] [int] NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc,
+    DISTRIBUTION = SHARDED([CustomerId])
+) ;
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Minta rugalmas adatbázis-lekérdezés végrehajtása T-SQL-lekérdezés
 Miután meghatározta a külső adatforrást és a külső táblázatokat, mostantól teljes T-SQL-T használhat a külső táblákon.
 
 A lekérdezés végrehajtása a ElasticDBQuery-adatbázisban:
 
-    select count(CustomerId) from [dbo].[Customers]
+```tsql
+select count(CustomerId) from [dbo].[Customers]
+```
 
 Figyelje meg, hogy a lekérdezés összesíti az összes szegmens eredményét, és a következő kimenetet adja:
 
@@ -130,7 +138,7 @@ A Elastic Database lekérdezési funkció használata nem díjköteles.
 
 A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](elastic-query-overview.md).
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).

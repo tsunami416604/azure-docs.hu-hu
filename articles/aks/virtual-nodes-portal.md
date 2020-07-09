@@ -4,12 +4,13 @@ description: Megtudhatja, hogyan használhatja a Azure Portalt olyan Azure Kuber
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7fa547ca8a3907669c9e7671b11fe3a6307d97f4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: references_regions
+ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389819"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára a Azure Portalban
 
@@ -58,7 +59,7 @@ A virtuális csomópontok központi telepítése a következő régiókat támog
 * USA 2. nyugati régiója (westus2)
 
 ## <a name="known-limitations"></a>Ismert korlátozások
-A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciójának. A virtuális csomópontok esetében a következő forgatókönyvek még nem támogatottak
+A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciójának. A [Azure Container instances kvótái és korlátai](../container-instances/container-instances-quotas.md)mellett a virtuális csomópontok még nem támogatják a következő forgatókönyveket:
 
 * Egyszerű szolgáltatásnév használata az ACR-lemezképek lekéréséhez. [Megkerülő megoldás](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) a [Kubernetes-titkok](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) használata
 * [Virtual Network korlátozásokat](../container-instances/container-instances-vnet.md) , beleértve a VNet-társítást, a Kubernetes hálózati házirendeket és az internetre irányuló kimenő adatforgalmat hálózati biztonsági csoportokkal.
@@ -66,7 +67,7 @@ A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciój�
 * [Gazdagép-aliasok](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * A exec [argumentumai](../container-instances/container-instances-exec.md#restrictions) az ACI-ban
 * A [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem helyezi üzembe a hüvelyeket a virtuális csomóponton.
-* A virtuális csomópontok támogatják a Linux-hüvelyek ütemezését. Manuálisan is telepítheti a nyílt forráskódú [virtuális KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -szolgáltatót a Windows Server-tárolók ACI-ra való beosztásához. 
+* A virtuális csomópontok támogatják a Linux-hüvelyek ütemezését. Manuálisan is telepítheti a nyílt forráskódú [virtuális KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -szolgáltatót a Windows Server-tárolók ACI-ra való beosztásához.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

@@ -1,18 +1,14 @@
 ---
 title: Azure-jelző Event Grid forrásaként
 description: Az Azure Signaler eseményeihez megadott tulajdonságok ismertetése Azure Event Grid
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.author: babanisa
-ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 2ac391f366c4b9a82741a1b6b3135f5d7b5fe331
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133718"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106651"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>A Signaler szolgáltatáshoz tartozó Azure Event Grid esemény sémája
 
@@ -76,20 +72,20 @@ Az ügyfélkapcsolati kapcsolat megszakadt eseményének sémája hasonló:
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | A jelző szolgáltatás eseményeinek adattípusa. |
+| adatok | objektum | A jelző szolgáltatás eseményeinek adattípusa. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | időbélyeg | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | hubName | sztring | Az az elosztó, amelyhez az Ügyfélkapcsolat tartozik. |
@@ -103,7 +99,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Az Azure Signaler szolgáltatás eseményeire való reagálás Event Grid használatával](../azure-signalr/signalr-concept-event-grid-integration.md) | Az Azure Signaler szolgáltatás és a Event Grid integrálásának áttekintése. |
 | [Az Azure szignáló szolgáltatás eseményeinek küldése Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Bemutatja, hogyan küldhetők az Azure Signaler szolgáltatás eseményei egy alkalmazásnak Event Gridon keresztül. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

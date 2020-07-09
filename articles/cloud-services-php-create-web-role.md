@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70d48ba9519c627addf58939866633cdcc43049e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919828"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Webes és feldolgozói PHP-szerepkörök létrehozása
 
@@ -40,22 +40,28 @@ A PHP webes vagy feldolgozói szerepkör létrehozásának első lépése egy Az
 
 Új Azure-szolgáltatási projekt létrehozásához futtassa a Azure PowerShell rendszergazdaként, és hajtsa végre a következő parancsot:
 
-    PS C:\>New-AzureServiceProject myProject
+```powershell
+PS C:\>New-AzureServiceProject myProject
+```
 
-Ezzel a paranccsal létrehozhat egy új könyvtárat (`myProject`), amelyhez webes és feldolgozói szerepköröket adhat hozzá.
+Ezzel a paranccsal létrehozhat egy új könyvtárat ( `myProject` ), amelyhez webes és feldolgozói szerepköröket adhat hozzá.
 
 ## <a name="add-php-web-or-worker-roles"></a>PHP webes vagy feldolgozói Szerepkörök hozzáadása
 
 PHP webes szerepkör projekthez való hozzáadásához futtassa a következő parancsot a projekt gyökérkönyvtárában:
 
-    PS C:\myProject> Add-AzurePHPWebRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWebRole roleName
+```
 
 Feldolgozói szerepkör esetén használja a következő parancsot:
 
-    PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```
 
 > [!NOTE]
-> A `roleName` paraméter megadása nem kötelező. Ha nincs megadva, a rendszer automatikusan létrehozza a szerepkör nevét. Ekkor létrejön az első webes szerepkör `WebRole1`, a második `WebRole2`pedig a következő lesz:. Az első feldolgozói szerepkör a `WorkerRole1`következő lesz, a második `WorkerRole2`pedig a következő lesz:.
+> A `roleName` paraméter megadása nem kötelező. Ha nincs megadva, a rendszer automatikusan létrehozza a szerepkör nevét. Ekkor létrejön az első webes szerepkör, a második pedig a következő lesz: `WebRole1` `WebRole2` . Az első feldolgozói szerepkör a következő lesz, a második pedig a következő lesz: `WorkerRole1` `WorkerRole2` .
 >
 >
 
@@ -68,11 +74,14 @@ Bizonyos esetekben előfordulhat, hogy a beépített PHP-futtatókörnyezet kiv�
 Ha egy webes szerepkört úgy szeretne konfigurálni, hogy az Ön által megadott PHP-futtatókörnyezetet használja, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy Azure-szolgáltatási projektet, és adjon hozzá egy PHP-alapú webes szerepkört a témakörben korábban ismertetett módon.
-2. Hozzon `php` létre egy mappát `bin` a webes szerepkör gyökérkönyvtárában található mappában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) `php` a mappához.
-3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet a [Windowshoz készült Microsoft-illesztőprogramokat használja a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a webes szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés során. Ehhez adja hozzá a [sqlncli. msi x64 telepítőt] a `bin` webes szerepkör gyökérkönyvtárában található mappához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
+2. Hozzon létre egy `php` mappát a `bin` webes szerepkör gyökérkönyvtárában található mappában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) a `php` mappához.
+3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet a [Windowshoz készült Microsoft-illesztőprogramokat használja a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a webes szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés során. Ehhez adja hozzá a [sqlncli.msi x64 telepítőt] a `bin` webes szerepkör gyökérkönyvtárában lévő mappához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definiáljon egy indítási feladatot, amely úgy konfigurálja [Internet Information Services (IIS)][iis.net] , hogy a PHP-futtatókörnyezetet `.php` használja a lapokra vonatkozó kérelmek kezeléséhez. Ehhez nyissa meg a `setup_web.cmd` fájlt ( `bin` a webes szerepkör gyökérkönyvtárában) a szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
+4. Definiáljon egy indítási feladatot, amely úgy konfigurálja [Internet Information Services (IIS)][iis.net] , hogy a PHP-futtatókörnyezetet használja a lapokra vonatkozó kérelmek kezeléséhez `.php` . Ehhez nyissa meg a `setup_web.cmd` fájlt (a `bin` webes szerepkör gyökérkönyvtárában) a szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
 
     ```cmd
     @ECHO ON
@@ -95,7 +104,7 @@ Ha egy webes szerepkört úgy szeretne konfigurálni, hogy az Ön által megadot
 6. Tegye közzé az alkalmazást az alábbi, az [alkalmazás közzététele](#publish-your-application) című szakaszban leírtak szerint.
 
 > [!NOTE]
-> A `download.ps1` parancsfájl ( `bin` a webes szerepkör gyökérkönyvtárában) a saját php-futtatókörnyezet használatára vonatkozó fenti lépéseket követve törölhető.
+> A `download.ps1` parancsfájl (a `bin` webes szerepkör gyökérkönyvtárában) a saját php-futtatókörnyezet használatára vonatkozó fenti lépéseket követve törölhető.
 >
 >
 
@@ -104,11 +113,14 @@ Ha egy webes szerepkört úgy szeretne konfigurálni, hogy az Ön által megadot
 Ha egy feldolgozói szerepkört úgy szeretne konfigurálni, hogy az Ön által megadott PHP-futtatókörnyezetet használja, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy Azure-szolgáltatási projektet, és adjon hozzá egy PHP-feldolgozói szerepkört a témakörben korábban ismertetett módon.
-2. Hozzon `php` létre egy mappát a feldolgozói szerepkör gyökérkönyvtárában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) a `php` mappához.
-3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet [Microsoft-illesztőprogramokat használ a PHP-hez a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a feldolgozói szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés után. Ehhez adja hozzá a [sqlncli. msi x64-telepítőt] a feldolgozói szerepkör gyökérkönyvtárához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
+2. Hozzon létre egy `php` mappát a feldolgozói szerepkör gyökérkönyvtárában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) a `php` mappához.
+3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet [Microsoft-illesztőprogramokat használ a PHP-hez a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a feldolgozói szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés után. Ehhez adja hozzá a [sqlncli.msi x64 telepítőt] a feldolgozói szerepkör gyökérkönyvtárához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definiáljon egy indítási feladatot, amely `php.exe` hozzáadja a végrehajtható fájlt a feldolgozói szerepkör PATH környezeti változóhoz a szerepkör kiépítés során. Ehhez nyissa meg a `setup_worker.cmd` fájlt (a feldolgozói szerepkör gyökérkönyvtárában) egy szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
+4. Definiáljon egy indítási feladatot, amely hozzáadja a `php.exe` végrehajtható fájlt a feldolgozói SZEREPKÖR PATH környezeti változóhoz a szerepkör kiépítés során. Ehhez nyissa meg a `setup_worker.cmd` fájlt (a feldolgozói szerepkör gyökérkönyvtárában) egy szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
 
     ```cmd
     @echo on
@@ -147,20 +159,26 @@ Vegye figyelembe, hogy a PHP-t helyileg kell telepíteni a Compute Emulator hasz
 
 A projekt emulátorokban való futtatásához hajtsa végre a következő parancsot a projekt gyökérkönyvtárában:
 
-    PS C:\MyProject> Start-AzureEmulator
+```powershell
+PS C:\MyProject> Start-AzureEmulator
+```
 
 A következőhöz hasonló kimenet jelenik meg:
 
-    Creating local package...
-    Starting Emulator...
-    Role is running at http://127.0.0.1:81
-    Started
+```output
+Creating local package...
+Starting Emulator...
+Role is running at http://127.0.0.1:81
+Started
+```
 
-Az emulátorban futó alkalmazást úgy tekintheti meg, ha megnyit egy webböngészőt, és megkeresi a kimenetben`http://127.0.0.1:81` megjelenített helyi címeket (a fenti példában szereplő kimenetben).
+Az emulátorban futó alkalmazást úgy tekintheti meg, ha megnyit egy webböngészőt, és megkeresi a kimenetben megjelenített helyi címeket ( `http://127.0.0.1:81` a fenti példában szereplő kimenetben).
 
 Az emulátorok leállításához hajtsa végre a következő parancsot:
 
-    PS C:\MyProject> Stop-AzureEmulator
+```powershell
+PS C:\MyProject> Stop-AzureEmulator
+```
 
 ## <a name="publish-your-application"></a>Az alkalmazás közzététele
 
@@ -176,4 +194,4 @@ További információ: [php fejlesztői központ](https://azure.microsoft.com/de
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
-[sqlncli. msi x64 telepítő]: https://go.microsoft.com/fwlink/?LinkID=239648
+[sqlncli.msi x64-es telepítő]: https://go.microsoft.com/fwlink/?LinkID=239648

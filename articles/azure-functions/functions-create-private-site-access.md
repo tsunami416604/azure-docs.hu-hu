@@ -1,17 +1,17 @@
 ---
 title: Privát hely elérésének engedélyezése Azure Functions
 description: Megtudhatja, hogyan állíthatja be az Azure-beli virtuális hálózat saját webhelyhez való hozzáférését Azure Functionshoz.
-author: mcollier
-ms.author: mcollier
+author: craigshoemaker
+ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 02/15/2020
-ms.openlocfilehash: ada08de182791c6ecb2b83ef3b924bf40975e1ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/17/2020
+ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851284"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390278"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
 
@@ -53,106 +53,107 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
 
 1. Válassza az **erőforrás létrehozása** gombot.
 
-2. A Keresés mezőbe írja be `Windows Server`a kifejezést, majd a keresési eredmények között válassza a **Windows Server** elemet.
+1. A Keresés mezőbe írja be a **Windows Server**kifejezést, majd a keresési eredmények között válassza a **Windows Server** elemet.
 
-3. Válassza a **Windows server 2019 Datacenter** lehetőséget a Windows Server beállításai közül, majd kattintson a **Létrehozás** gombra.
+1. Válassza a **Windows server 2019 Datacenter** lehetőséget a Windows Server beállításai közül, majd kattintson a **Létrehozás** gombra.
 
-4. Az **alapvető** beállítások lapon használja a virtuális gép beállításait az alábbi táblázatban megadott módon:
+1. Az _alapvető_ beállítások lapon használja a virtuális gép beállításait az alábbi táblázatban megadott módon:
 
     >[!div class="mx-imgBorder"]
     >![Az új Windowsos virtuális gép alapjai lap](./media/functions-create-private-site-access/create-vm-3.png)
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
-    | [**Erőforráscsoport**](../azure-resource-manager/management/overview.md) | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ugyanezen erőforráscsoport használatával egyszerűbbé válik az erőforrások törlése, amikor ezzel az Oktatóanyaggal végzett. |
-    | **Virtuális gép neve** | myVM | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
-    | [**Régió**](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
-    | **Nyilvános bejövő portok** | None | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
+    | _Előfizetés_ | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
+    | [_Erőforráscsoport_](../azure-resource-manager/management/overview.md) | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ugyanezen erőforráscsoport használatával egyszerűbbé válik az erőforrások törlése, amikor ezzel az Oktatóanyaggal végzett. |
+    | _Virtuális gép neve_ | myVM | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
+    | [_Régió_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
+    | _Nyilvános bejövő portok_ | None | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
 
-5. Válassza a **hálózatkezelés** fület, és válassza az **új létrehozása** lehetőséget az új virtuális hálózat konfigurálásához.
+1. Válassza a _hálózatkezelés_ fület, és válassza az **új létrehozása** lehetőséget az új virtuális hálózat konfigurálásához.
 
     >[!div class="mx-imgBorder"]
     >![Új virtuális hálózat létrehozása az új virtuális GÉPHEZ](./media/functions-create-private-site-access/create-vm-networking.png)
 
-6. A **virtuális hálózat létrehozása**területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
+1. A _virtuális hálózat létrehozása_területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
 
     >[!div class="mx-imgBorder"]
     >![Új virtuális hálózat létrehozása az új virtuális GÉPHEZ](./media/functions-create-private-site-access/create-vm-vnet-1.png)
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Név** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
-    | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
-    | **Alhálózat neve** | Oktatóanyag | Az alhálózat neve. |
-    | **Címtartomány** (alhálózat) | 10.10.1.0/24 | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a virtuális gép használja. Az `/24` alhálózat 254 gazdagép-címet biztosít. |
+    | _Name (Név)_ | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
+    | _Címtartomány_ | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
+    | _Alhálózat neve_ | Oktatóanyag | Az alhálózat neve. |
+    | _Címtartomány_ (alhálózat) | 10.10.1.0/24 | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a virtuális gép használja. A/24 alhálózat 254 gazdagép-címeket biztosít. |
 
-7. A virtuális hálózat létrehozásához kattintson **az OK gombra** .
-8. A **hálózatkezelés** lapon ellenőrizze, hogy **nincs** -e kiválasztva a **nyilvános IP-cím**beállítás.
-9. Válassza a **felügyelet** fület, majd a **diagnosztikai Storage-fiók**területen válassza az **új létrehozása** lehetőséget egy új Storage-fiók létrehozásához.
-10. Hagyja meg az **identitás**, az **automatikus leállítás**és a **biztonsági mentési** csoportok alapértelmezett értékeit.
-11. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
+1. A virtuális hálózat létrehozásához kattintson **az OK gombra** .
+1. A _hálózatkezelés_ lapon ellenőrizze, hogy **nincs** -e kiválasztva a _nyilvános IP-cím_beállítás.
+1. Válassza a _felügyelet_ fület, majd a _diagnosztikai Storage-fiók_területen válassza az **új létrehozása** lehetőséget egy új Storage-fiók létrehozásához.
+1. Hagyja meg az _identitás_, az _automatikus leállítás_és a _biztonsági mentési_ csoportok alapértelmezett értékeit.
+1. Válassza az _Áttekintés + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
 
 ## <a name="configure-azure-bastion"></a>Az Azure Bastion konfigurálása
 
 Az [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) egy teljes körűen felügyelt Azure-szolgáltatás, amely biztonságos RDP-és SSH-hozzáférést biztosít a virtuális gépekhez közvetlenül a Azure Portal. Az Azure Bastion szolgáltatás használatával nem kell konfigurálnia az RDP-hozzáféréshez kapcsolódó hálózati beállításokat.
 
 1. A portálon válassza a **Hozzáadás** lehetőséget az erőforráscsoport nézet tetején.
-2. A keresőmezőbe írja be a "Bastion" kifejezést.  Válassza a "bástya" lehetőséget.
-3. A **Létrehozás** gombra kattintva megkezdheti egy új Azure Bastion-erőforrás létrehozásának folyamatát. A **virtuális hálózat** szakaszban egy hibaüzenet jelenik meg, mivel még nincs `AzureBastionSubnet` alhálózat. Az alhálózat a következő lépésekben jön létre. Használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
+1. A keresőmezőbe írja be a következőt: **Bastion**.
+1. A keresési eredmények között válassza a **Bastion** lehetőséget.
+1. A **Létrehozás** gombra kattintva megkezdheti egy új Azure Bastion-erőforrás létrehozásának folyamatát. A _Virtual Network (virtuális hálózat_ ) szakaszban egy hibaüzenet jelenik meg, mivel még nincs AzureBastionSubnet alhálózat. Az alhálózat a következő lépésekben jön létre. Használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
 
     >[!div class="mx-imgBorder"]
     >![Az Azure Bastion létrehozásának megkezdése](./media/functions-create-private-site-access/create-bastion-basics-1.png)
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Név** | myBastion | Az új megerősített erőforrás neve |
-    | **Régió** | USA északi középső régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
-    | **Virtuális hálózat** | myResourceGroup – vnet | Az a virtuális hálózat, amelyben a megerősített erőforrás létre lesz hozva |
-    | **Alhálózat** | AzureBastionSubnet | Annak a virtuális hálózatnak az alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a `AzureBastionSubnet`Name érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Legalább `/27` vagy nagyobb (`/27`, `/26`, stb.) alhálózatot kell használnia. |
+    | _Name (Név)_ | myBastion | Az új megerősített erőforrás neve |
+    | _Régió_ | USA északi középső régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
+    | _Virtuális hálózat_ | myResourceGroup – vnet | Az a virtuális hálózat, amelyben a megerősített erőforrás létre lesz hozva |
+    | _Alhálózat_ | AzureBastionSubnet | Annak a virtuális hálózatnak az alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a **AzureBastionSubnet**név érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Legalább **/27** vagy nagyobb (/27,/26 stb.) alhálózatot kell használnia. |
 
     > [!NOTE]
     > Az Azure megerősített erőforrás létrehozásával kapcsolatos részletes útmutatóért tekintse meg az [Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md) oktatóanyagot.
 
-4. Hozzon létre egy alhálózatot, amelyben az Azure kiépítheti az Azure-beli megerősített gazdagépet. Az **alhálózati konfiguráció kezelése** lehetőség megnyit egy új ablaktáblát, ahol megadhat egy új alhálózatot.  Válassza a **+ alhálózat** lehetőséget egy új alhálózat létrehozásához.
-5. Az alhálózatnak a névnek `AzureBastionSubnet` kell lennie, és az alhálózati előtagnak legalább `/27`a következőnek kell lennie:.  Az alhálózat létrehozásához kattintson **az OK gombra** .
+1. Hozzon létre egy alhálózatot, amelyben az Azure kiépítheti az Azure-beli megerősített gazdagépet. Az **alhálózati konfiguráció kezelése** lehetőség megnyit egy új ablaktáblát, ahol megadhat egy új alhálózatot.  Válassza a **+ alhálózat** lehetőséget egy új alhálózat létrehozásához.
+1. Az alhálózatnak a **AzureBastionSubnet** névvel kell rendelkeznie, és az alhálózati előtagnak legalább **/27-** nek kell lennie.  Az alhálózat létrehozásához kattintson **az OK gombra** .
 
     >[!div class="mx-imgBorder"]
     >![Alhálózat létrehozása az Azure Bastion-gazdagéphez](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
 
-6. A **bástya létrehozása** lapon válassza ki az újonnan létrehozott `AzureBastionSubnet` elemet az elérhető alhálózatok listájából.
+1. A _bástya létrehozása_ lapon válassza ki az újonnan létrehozott **AzureBastionSubnet** az elérhető alhálózatok listájából.
 
     >[!div class="mx-imgBorder"]
     >![Egy adott alhálózattal rendelkező Azure Bastion-gazdagép létrehozása](./media/functions-create-private-site-access/create-bastion-basics-2.png)
 
-7. Válassza a **felülvizsgálat & létrehozás**lehetőséget. Az érvényesítés befejeződése után válassza a **Létrehozás**lehetőséget. Az Azure Bastion-erőforrás létrehozása eltarthat néhány percig.
+1. Válassza a **felülvizsgálat & létrehozás**lehetőséget. Az érvényesítés befejeződése után válassza a **Létrehozás**lehetőséget. Az Azure Bastion-erőforrás létrehozása eltarthat néhány percig.
 
 ## <a name="create-an-azure-functions-app"></a>Azure Functions-alkalmazás létrehozása
 
 A következő lépés egy Function-alkalmazás létrehozása az Azure-ban a [felhasználási terv](functions-scale.md#consumption-plan)használatával. Az oktatóanyag későbbi részében üzembe helyezi a függvény kódját erre az erőforrásra.
 
 1. A portálon válassza a **Hozzáadás** lehetőséget az erőforráscsoport nézet tetején.
-2. Válassza ki a **számítási > függvényalkalmazás**
-3. Az **alapismeretek** szakaszban használja az alábbi táblázatban megadott Function App-beállításokat.
+1. Válassza ki a **számítási > függvényalkalmazás**
+1. Az _alapismeretek_ szakaszban használja az alábbi táblázatban megadott Function App-beállításokat.
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Erőforráscsoport** | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ha a Function alkalmazáshoz ugyanazt az erőforráscsoportot használja, és a virtuális gép megkönnyíti az erőforrások törlését, amikor ezzel az Oktatóanyaggal végzett. |
-    | **függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: a – z (kis-és nagybetűk megkülönböztetése), 0-9 és –. |
-    | **Közzététel** | Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
-    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. |
-    | **Régió** | USA északi középső régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
+    | _Erőforráscsoport_ | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ha a Function alkalmazáshoz ugyanazt az erőforráscsoportot használja, és a virtuális gép megkönnyíti az erőforrások törlését, amikor ezzel az Oktatóanyaggal végzett. |
+    | _függvényalkalmazás neve_ | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: a – z (kis-és nagybetűk megkülönböztetése), 0-9 és –. |
+    | _Közzététel_ | Code | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
+    | _Futtatókörnyezet verme_ | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. |
+    | _Régió_ | USA északi középső régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
 
     Válassza a **következő: >üzemeltetése** gombot.
-4. Az **üzemeltetés** szakaszban válassza ki a megfelelő **Storage-fiókot**, **operációs rendszert**, és **tervezze** meg a következő táblázatban leírt lépéseket.
+1. A _hoszting_ szakaszban válassza ki a megfelelő _Storage-fiókot_, _operációs rendszert_és _tervet_ a következő táblázatban leírtak szerint.
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Tárfiók** | Globálisan egyedi név | Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](./functions-scale.md#storage-account-requirements). |
-    | **Operációs rendszer** | Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
-    | **Felkészülés** | Használat | A [üzemeltetési terv](./functions-scale.md) azt diktálja, hogy a függvény alkalmazás hogyan méretezhető, és az erőforrások elérhetők legyenek az egyes példányok számára. |
-5. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
-6. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
+    | _Storage-fiók_ | Globálisan egyedi név | Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](./functions-scale.md#storage-account-requirements). |
+    | _Operációs rendszer_ | Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
+    | _Terv_ | Használat | A [üzemeltetési terv](./functions-scale.md) azt diktálja, hogy a függvény alkalmazás hogyan méretezhető, és az erőforrások elérhetők legyenek az egyes példányok számára. |
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
+1. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 
 ## <a name="configure-access-restrictions"></a>Hozzáférési korlátozások konfigurálása
 
@@ -160,26 +161,32 @@ A következő lépés a [hozzáférési korlátozások](../app-service/app-servi
 
 A [privát hely](functions-networking-options.md#private-site-access) elérését az Azure Virtual Network [szolgáltatás végpontjának](../virtual-network/virtual-network-service-endpoints-overview.md) létrehozásával engedélyezheti a Function alkalmazás és a megadott virtuális hálózat között. A hozzáférési korlátozások a szolgáltatási végpontokon keresztül valósíthatók meg. A szolgáltatási végpontok biztosítják, hogy csak a megadott virtuális hálózaton belülről származó forgalom férhessenek hozzá a kijelölt erőforráshoz. Ebben az esetben a kijelölt erőforrás az Azure-függvény.
 
-1. A Function alkalmazásban folytassa a **platform szolgáltatásai** lapot. a hálózati szolgáltatás állapota szakasz megnyitásához válassza **a hálózatkezelési hivatkozást a** *hálózat szakasz fejléc* alatt.
-2. A **hálózati szolgáltatások állapota** lap a kiindulási pont, amely az Azure bejárati ajtó, a Azure CDN és a hozzáférés korlátozásait konfigurálja. Válassza a **hozzáférési korlátozások konfigurálása** lehetőséget a privát hely elérésének konfigurálásához.
-3. A **hozzáférési korlátozások** lapon csak az alapértelmezett korlátozás jelenik meg. Az alapértelmezett érték nem korlátozza a Function alkalmazáshoz való hozzáférést.  Válassza a **szabály hozzáadása** lehetőséget a privát hely hozzáférés-korlátozási konfigurációjának létrehozásához.
-4. A **hozzáférés-korlátozás hozzáadása** panelen válassza ki a **Virtual Network** elemet a **típus** legördülő listából, majd válassza ki a korábban létrehozott virtuális hálózatot és alhálózatot.
-5. A **hozzáférési korlátozások** lap most már azt mutatja, hogy van új korlátozás. Eltarthat néhány másodpercig, amíg a **végpont állapota** a-tól `Disabled` `Provisioning` a- `Enabled`ig változik.
+1. A Function alkalmazásban válassza a **hálózatkezelés** hivatkozást a _Beállítások_ szakasz fejlécében.
+1. A _hálózatkezelés_ lap a kiindulási pont, amely az Azure bejárati ajtót, a Azure CDNt és a hozzáférés korlátozásait is beállítja.
+1. Válassza a **hozzáférési korlátozások konfigurálása** lehetőséget a privát hely elérésének konfigurálásához.
+1. A _hozzáférési korlátozások_ lapon csak az alapértelmezett korlátozás jelenik meg. Az alapértelmezett érték nem korlátozza a Function alkalmazáshoz való hozzáférést.  Válassza a **szabály hozzáadása** lehetőséget a privát hely hozzáférés-korlátozási konfigurációjának létrehozásához.
+1. A _hozzáférés-korlátozás hozzáadása_ panelen adja meg az új szabály _nevét_, _prioritását_és _leírását_ .
+1. Válassza ki a **Virtual Network** elemet a _típus_ legördülő listából, majd válassza ki a korábban létrehozott virtuális hálózatot, majd válassza ki az **oktatóanyag** -alhálózatot. 
+    > [!NOTE]
+    > A szolgáltatás végpontjának engedélyezése több percet is igénybe vehet.
+1. A _hozzáférési korlátozások_ lap most már azt mutatja, hogy van új korlátozás. Eltarthat néhány másodpercig, amíg a _végpont állapota_ le lesz tiltva a kiépítés útján, hogy engedélyezve legyen.
 
     >[!IMPORTANT]
-    > Minden Function alkalmazáshoz egy [speciális eszköz-(kudu-) hely](../app-service/app-service-ip-restrictions.md#scm-site) tartozik, amely a Function app üzemelő példányának kezelésére szolgál. A webhely a következőhöz hasonló URL-címről érhető `<FUNCTION_APP_NAME>.scm.azurewebsites.net`el:. Mivel ezen a telepítési helyen nem engedélyezték a hozzáférési korlátozásokat, továbbra is telepítheti a projekt kódját egy helyi fejlesztői munkaállomásról vagy Build szolgáltatásból anélkül, hogy ügynököt kellene létesítenie a virtuális hálózaton.
+    > Minden Function alkalmazáshoz egy [speciális eszköz-(kudu-) hely](../app-service/app-service-ip-restrictions.md#scm-site) tartozik, amely a Function app üzemelő példányának kezelésére szolgál. A webhely a következőhöz hasonló URL-címről érhető el: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . A hozzáférési korlátozások engedélyezése a kudu-helyen megakadályozza a projekt kódjának helyi fejlesztői munkaállomásról történő telepítését, majd az üzembe helyezés elvégzéséhez a virtuális hálózaton belül ügynökre van szükség.
 
 ## <a name="access-the-functions-app"></a>A functions alkalmazás elérése
 
-1. Térjen vissza az előzőleg létrehozott Function alkalmazáshoz.  Az **Áttekintés** szakaszban másolja az URL-címet.
+1. Térjen vissza az előzőleg létrehozott Function alkalmazáshoz.  Az _Áttekintés_ szakaszban másolja az URL-címet.
 
     >[!div class="mx-imgBorder"]
     >![A függvény alkalmazás URL-címének beolvasása](./media/functions-create-private-site-access/access-function-overview.png)
 
-2. Ha most a virtuális hálózaton kívülről próbál hozzáférni a Function alkalmazáshoz, a rendszer egy HTTP 403-lapot fog kapni, amely jelzi, hogy az alkalmazás le van állítva.  Az alkalmazás nincs leállítva. A válasz valójában egy HTTP 403 IP tiltott állapot.
-3. Most elérheti a függvényt a korábban létrehozott virtuális gépről, amely csatlakozik a virtuális hálózathoz. Ahhoz, hogy a virtuális gépről hozzáférhessen a webhelyhez, az Azure megerősített szolgáltatáson keresztül kell csatlakoznia a virtuális géphez.  Először válassza a **kapcsolat** lehetőséget, majd válassza a **Bastion**lehetőséget.
-4. Adja meg a virtuális géphez való bejelentkezéshez szükséges felhasználónevet és jelszót.  Kattintson a **Csatlakozás** gombra. Egy új böngészőablak jelenik meg, amely lehetővé teszi a virtuális gép interakcióját.
-5. Mivel ez a virtuális gép a virtuális hálózaton keresztül éri el a függvényt, lehetséges, hogy a virtuális GÉPEN lévő webböngészőből fér hozzá a webhelyhez.  Fontos megjegyezni, hogy amíg a Function alkalmazás csak a kijelölt virtuális hálózatról érhető el, a nyilvános DNS-bejegyzés marad. Ahogy a fentiekben is látható, a webhely elérésére tett kísérlet egy HTTP 403-választ eredményez.
+    Ha a Function app alkalmazást a virtuális hálózatán kívüli számítógépről próbálja elérni, egy HTTP 403-lapot fog kapni, amely azt jelzi, hogy a hozzáférés tiltott.
+1. Térjen vissza az erőforráscsoporthoz, és válassza ki a korábban létrehozott virtuális gépet. Ahhoz, hogy a virtuális gépről hozzáférhessen a webhelyhez, az Azure megerősített szolgáltatáson keresztül kell csatlakoznia a virtuális géphez.
+1. Válassza a **kapcsolat** lehetőséget, majd válassza a **Bastion**lehetőséget.
+1. Adja meg a virtuális géphez való bejelentkezéshez szükséges felhasználónevet és jelszót.
+1. Kattintson a **Csatlakozás** gombra. Egy új böngészőablak jelenik meg, amely lehetővé teszi a virtuális gép interakcióját.
+A webhely a virtuális GÉPEN található webböngészőből érhető el, mert a virtuális gép a virtuális hálózaton keresztül éri el a helyet.  Amíg a hely csak a kijelölt virtuális hálózatról érhető el, a nyilvános DNS-bejegyzés marad.
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
@@ -192,23 +199,20 @@ Az oktatóanyag következő lépése egy HTTP-triggerű Azure-függvény létreh
     * [Parancssor](./functions-create-first-azure-function-azure-cli.md)
     * [Maven (Java)](./functions-create-first-java-maven.md)
 
-2. Azure Functions projekt közzétételekor válassza ki az oktatóanyag során korábban létrehozott Function app-erőforrást.
-3. Ellenőrizze, hogy a függvény telepítve van-e.
+1. Azure Functions projekt közzétételekor válassza ki az oktatóanyag során korábban létrehozott Function app-erőforrást.
+1. Ellenőrizze, hogy a függvény telepítve van-e.
 
     >[!div class="mx-imgBorder"]
     >![Üzembe helyezett függvény a függvények listájában](./media/functions-create-private-site-access/verify-deployed-function.png)
 
 ## <a name="invoke-the-function-directly"></a>A függvény közvetlen meghívása
 
-1. A függvényhez való hozzáférés teszteléséhez át kell másolnia a függvény URL-címét. Válassza ki az üzembe helyezett függvényt, majd válassza a **</> a függvény URL-címének beolvasása**elemet. Ezután a **Másolás** gombra kattintva másolja az URL-címet a vágólapra.
+1. A függvényhez való hozzáférés teszteléséhez át kell másolnia a függvény URL-címét. Válassza ki az üzembe helyezett függvényt, majd kattintson a **függvény URL-címének beolvasása**elemre. Ezután a **Másolás** gombra kattintva másolja az URL-címet a vágólapra.
 
     >[!div class="mx-imgBorder"]
     >![A függvény URL-címének másolása](./media/functions-create-private-site-access/get-function-url.png)
 
-    > [!NOTE]
-    > A függvény futtatásakor egy futásidejű hiba jelenik meg a portálon, amely azt jelzi, hogy a függvény futtatókörnyezete nem indul el. Az üzenet szövege ellenére a Function alkalmazás ténylegesen fut. A hiba az új hozzáférési korlátozások eredménye, ami megakadályozza, hogy a portál lekérdezze a futtatókörnyezetet.
-
-2. Illessze be az URL-címet egy webböngészőbe. Ha most megpróbál hozzáférni a Function alkalmazáshoz egy, a virtuális hálózaton kívüli számítógépről, megjelenik egy HTTP 403-válasz, amely jelzi az alkalmazás leállítását.
+1. Illessze be az URL-címet egy webböngészőbe. Ha most megpróbál hozzáférni a Function alkalmazáshoz egy, a virtuális hálózaton kívüli számítógépről, akkor az alkalmazáshoz való hozzáférést jelző HTTP 403-válasz tiltott.
 
 ## <a name="invoke-the-function-from-the-virtual-network"></a>A függvény meghívása a virtuális hálózatról
 
@@ -219,7 +223,7 @@ A függvény elérése egy webböngészőn keresztül (az Azure Bastion szolgál
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 > [!div class="nextstepaction"]

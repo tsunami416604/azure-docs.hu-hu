@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201331"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322770"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
-
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány aspektusa változhat az általános elérhetősége előtt.
 
 Ez az oktatóanyag azt mutatja be, hogyan használható a szögletes egyoldalas alkalmazás (SPA):
 - Jelentkezzen be személyes fiókjaiba, munkahelyi fiókjaiba vagy iskolai fiókjaiba.
@@ -341,7 +338,7 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha most ismerkedik az identitás-és hozzáférés-kezeléssel, számos cikk segít a modern hitelesítési fogalmak megismerésében, a hitelesítés és az [Engedélyezés](authentication-vs-authorization.md)megkezdése előtt.
 

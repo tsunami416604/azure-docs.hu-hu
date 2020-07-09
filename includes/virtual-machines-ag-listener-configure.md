@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75467096"
 ---
 A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állási csoport által figyelt IP-cím és hálózati név. A rendelkezésre állási csoport figyelő létrehozásához tegye a következőket:
@@ -28,7 +28,7 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
 
     a. Bontsa ki a fürt nevét, majd kattintson a **szerepkörök**elemre.
 
-    b. A **szerepkörök** ablaktáblán kattintson a jobb gombbal a rendelkezésre állási csoport nevére, majd válassza az **erőforrás** > -**ügyfél-hozzáférési pont**hozzáadása lehetőséget.
+    b. A **szerepkörök** ablaktáblán kattintson a jobb gombbal a rendelkezésre állási csoport nevére, majd válassza az **erőforrás**-  >  **ügyfél-hozzáférési pont**hozzáadása lehetőséget.
 
    ![Ügyfél-hozzáférési pont](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
@@ -46,7 +46,7 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
 
    ![Ügyfél-hozzáférési pont](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Kattintson a jobb gombbal az IP-erőforrásra, majd kattintson a Tulajdonságok elemre. Jegyezze fel az IP-cím nevét, és használja azt a PowerShell `$IPResourceName` -parancsfájlban található változóban.
+    b. Kattintson a jobb gombbal az IP-erőforrásra, majd kattintson a Tulajdonságok elemre. Jegyezze fel az IP-cím nevét, és használja azt a `$IPResourceName` PowerShell-parancsfájlban található változóban.
 
     c. Az **IP-cím**területen kattintson a **statikus IP-cím**elemre. Állítsa be az IP-címet ugyanazzal a címmel, amelyet a terheléselosztó címének a Azure Portal való beállításakor használt.
 
@@ -106,7 +106,7 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
    b. Állítsa be a fürt paramétereit úgy, hogy futtatja a PowerShell-parancsfájlt az egyik fürtcsomóponton.  
 
    > [!NOTE]
-   > Ha a SQL Server példányai különálló régiókban találhatók, akkor kétszer kell futtatnia a PowerShell-szkriptet. Az első alkalommal használja a `$ListenerILBIP` és `$ListenerProbePort` az első régiót. A második alkalommal használja a `$ListenerILBIP` és `$ListenerProbePort` a elemet a második régióból. A fürt hálózati neve és a fürt IP-erőforrásának neve is eltérő az egyes régiókban.
+   > Ha a SQL Server példányai különálló régiókban találhatók, akkor kétszer kell futtatnia a PowerShell-szkriptet. Az első alkalommal használja a `$ListenerILBIP` és az `$ListenerProbePort` első régiót. A második alkalommal használja a `$ListenerILBIP` és a `$ListenerProbePort` elemet a második régióból. A fürt hálózati neve és a fürt IP-erőforrásának neve is eltérő az egyes régiókban.
 
 1. A rendelkezésre állási csoport fürt szerepkörének online állapotba hozása. **Feladatátvevőfürt-kezelő** a **szerepkörök**területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör indítása**lehetőséget.
 
@@ -116,7 +116,7 @@ Ha szükséges, ismételje meg a fenti lépéseket a WSFC-fürt IP-címéhez tar
 
 1. Kattintson a jobb gombbal az **IP-cím**elemre, majd válassza a **Tulajdonságok**lehetőséget.
 
-1. Másolja ki az IP-cím **nevét** . Lehetséges, hogy `Cluster IP Address`. 
+1. Másolja ki az IP-cím **nevét** . Lehetséges, hogy `Cluster IP Address` . 
 
 1. <a name="setwsfcparam"></a>A fürt paramétereinek beállítása a PowerShellben.
   

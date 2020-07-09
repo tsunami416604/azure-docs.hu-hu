@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205260"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045858"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Az Apache Oozie hibáinak megoldása az Azure HDInsight
 
@@ -30,13 +30,15 @@ A következő konkrét hibák merülhetnek fel, és elháríthatja azokat.
 
 ### <a name="issue"></a>Probléma
 
-A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek `RunHiveScript` az állapotot **START_MANUALként**jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
+A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek az `RunHiveScript` állapotot **START_MANUALként**jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
 
-    JA009: Cannot initialize Cluster. Please check your configuration for map
+```output
+JA009: Cannot initialize Cluster. Please check your configuration for map
+```
 
 ### <a name="cause"></a>Ok
 
-A **job. XML** fájlban használt Azure Blob Storage-címek nem tartalmazzák a Storage-tárolót vagy a Storage-fiók nevét. A blob Storage-címnek a formátumnak kell lennie `wasbs://containername@storageaccountname.blob.core.windows.net`.
+Az **job.xml** fájlban használt Azure Blob Storage-címek nem tartalmazzák a tároló-vagy a Storage-fiók nevét. A blob Storage-címnek a formátumnak kell lennie `wasbs://containername@storageaccountname.blob.core.windows.net` .
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -44,13 +46,15 @@ Módosítsa a feladatok által használt BLOB Storage-címeket.
 
 ---
 
-## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: a Oozie nem jogosult megszemélyesíteni &lt;a felhasználót&gt;
+## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: a Oozie nem jogosult megszemélyesíteni a &lt; felhasználót&gt;
 
 ### <a name="issue"></a>Probléma
 
-A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek `RunHiveScript` az állapotot **START_MANUALként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
+A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek az `RunHiveScript` állapotot **START_MANUALként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
-    JA002: User: oozie is not allowed to impersonate <USER>
+```output
+JA002: User: oozie is not allowed to impersonate <USER>
+```
 
 ### <a name="cause"></a>Ok
 
@@ -58,9 +62,11 @@ Az aktuális engedélyezési beállítások nem teszik lehetővé, hogy a Oozie 
 
 ### <a name="resolution"></a>Megoldás:
 
-A Oozie megszemélyesítheti a **`users`** csoport felhasználóit. A használatával `groups USERNAME` megtekintheti azokat a csoportokat, amelyeknek a felhasználói fiók tagja. Ha a felhasználó nem tagja a **`users`** csoportnak, akkor a következő paranccsal adhatja hozzá a felhasználót a csoporthoz:
+A Oozie megszemélyesítheti a csoport felhasználóit **`users`** . A használatával `groups USERNAME` megtekintheti azokat a csoportokat, amelyeknek a felhasználói fiók tagja. Ha a felhasználó nem tagja a **`users`** csoportnak, akkor a következő paranccsal adhatja hozzá a felhasználót a csoporthoz:
 
-    sudo adduser USERNAME users
+```bash
+sudo adduser USERNAME users
+```
 
 > [!NOTE]  
 > Több percet is igénybe vehet, mielőtt a HDInsight észleli, hogy a felhasználó hozzá lett adva a csoporthoz.
@@ -71,9 +77,11 @@ A Oozie megszemélyesítheti a **`users`** csoport felhasználóit. A használat
 
 ### <a name="issue"></a>Probléma
 
-A feladatok állapotának **leölése**megtörtént. A feladathoz tartozó részletek `RunSqoopExport` az állapotot **hibaként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
+A feladatok állapotának **leölése**megtörtént. A feladathoz tartozó részletek az `RunSqoopExport` állapotot **hibaként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```output
+Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```
 
 ### <a name="cause"></a>Ok
 
@@ -81,7 +89,7 @@ A Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha a Sqoop-t egy Oozie-feladatokból használja, az adatbázis-illesztőprogramot a többi erőforrással együtt kell szerepeltetni, például a Workflow. xml fájlt, amelyet a rendszer a feladatokhoz használ. Továbbá hivatkozzon arra az archívumra, amely az adatbázis-illesztőprogramot `<sqoop>...</sqoop>` tartalmazza a Workflow. xml fájl szakaszában.
+Ha a Sqoop-t egy Oozie-feladatokból használja, akkor az adatbázis-illesztőt is fel kell vennie a többi erőforrással, például a workflow.xml, a feladatokhoz. A workflow.xml szakaszának adatbázis-illesztőprogramját tartalmazó archívumra is hivatkozhat `<sqoop>...</sqoop>` .
 
 Például a [Hadoop Oozie-munkafolyamatok használata](hdinsight-use-oozie-linux-mac.md)a következő lépésekkel végezhető el:
 
@@ -91,7 +99,7 @@ Például a [Hadoop Oozie-munkafolyamatok használata](hdinsight-use-oozie-linux
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
     ```
 
-2. Módosítsa a `workflow.xml` t a következő XML-kód hozzáadásához a fenti `</sqoop>`új sorban:
+2. Módosítsa a `workflow.xml` t a következő XML-kód hozzáadásához a fenti új sorban `</sqoop>` :
 
     ```xml
     <archive>mssql-jdbc-7.0.0.jre8.jar</archive>

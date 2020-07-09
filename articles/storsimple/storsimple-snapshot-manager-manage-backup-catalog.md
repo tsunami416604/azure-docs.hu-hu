@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: 38ef7774263e4b28b7c316fd0870ca8f7b89d6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515466"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>A StorSimple Snapshot Manager használata a biztonsági mentési katalógus kezeléséhez
 
@@ -93,7 +92,7 @@ Az alábbi eljárással hozhat létre duplikált (klónt) kötet-vagy kötet-cso
    1. A **név** szövegmezőbe írja be a klónozott kötet nevét. Ez a név jelenik meg a **kötetek** csomópontban. 
    2. (Nem kötelező) válassza a **meghajtó**lehetőséget, majd válasszon egy meghajtóbetűjelet a legördülő listából.
    3. (Nem kötelező) válassza a **mappa (NTFS)** lehetőséget, és írja be a mappa elérési útját, vagy kattintson a Tallózás gombra, és válasszon egy helyet a mappához. 
-   4. Kattintson a **Létrehozás**gombra.
+   4. Kattintson a **Létrehozás** lehetőségre.
 5. Ha a klónozási folyamat elkészült, inicializálnia kell a klónozott kötetet. Indítsa el a Kiszolgálókezelő alkalmazást, majd indítsa el a Lemezkezelés segédprogramot. Részletes útmutatást a [kötetek csatlakoztatása](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)című témakörben talál. Az inicializálás után a kötet a **hatókör** ablaktábla **kötetek** csomópontjában jelenik meg. Ha nem látja a felsorolt kötetet, frissítse a kötetek listáját (kattintson a jobb gombbal a **kötetek** csomópontra, majd kattintson a **frissítés**parancsra).
 
 ## <a name="delete-a-backup"></a>Biztonsági másolat törlése
@@ -126,7 +125,7 @@ Mielőtt elkezdené, ellenőrizze, hogy van-e aktuális biztonsági másolata a 
    1. A **név** szövegmezőbe írja be a klónozott kötet nevét. Ez a név jelenik meg a **kötetek** csomópontban. 
    2. Választható Válassza a **meghajtó**lehetőséget, majd válasszon egy meghajtóbetűjelet a legördülő listából. 
    3. Választható Válassza a **mappa (NTFS)** lehetőséget, és írja be a mappa elérési útját, vagy kattintson a **Tallózás** gombra, és válassza ki a mappa helyét. 
-   4. Kattintson a **Létrehozás**gombra. 
+   4. Kattintson a **Létrehozás** lehetőségre. 
 5. Ha a klónozási folyamat elkészült, inicializálnia kell a klónozott kötetet. Indítsa el a Kiszolgálókezelő alkalmazást, majd indítsa el a Lemezkezelés segédprogramot. Részletes útmutatást a [kötetek csatlakoztatása](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)című témakörben talál. Az inicializálás után a kötet a **hatókör** ablaktábla **kötetek** csomópontjában jelenik meg. 
    
     Ha nem látja a felsorolt kötetet, frissítse a kötetek listáját (kattintson a jobb gombbal a **kötetek** csomópontra, majd kattintson a **frissítés**parancsra).

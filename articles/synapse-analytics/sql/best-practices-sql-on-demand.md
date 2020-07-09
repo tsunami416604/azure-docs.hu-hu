@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79318ab67ec58ed10520365a366785ea0de41666
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476274"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -52,7 +52,7 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Helyettesítő karakterek leküldése az elérési út alacsonyabb szintjeire
 
-Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](develop-storage-files-overview.md#query-multiple-files-or-folders). Az SQL on-demand listázza a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
+Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](query-data-storage.md#query-multiple-files-or-folders). Az SQL on-demand listázza a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
 
 ## <a name="use-appropriate-data-types"></a>Megfelelő adattípusok használata
 
@@ -113,7 +113,7 @@ FROM
 
 Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez csökkenti a fájlok számát és a lekérdezés által beolvasott és feldolgozandó adatmennyiséget. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
 
-További információért olvassa el a [filename](develop-storage-files-overview.md#filename-function) és a [filepath](develop-storage-files-overview.md#filepath-function) függvényt, és tekintse meg az [adott fájlok lekérdezésének](query-specific-files.md)példáit.
+További információért olvassa el a [filename](query-data-storage.md#filename-function) és a [filepath](query-data-storage.md#filepath-function) függvényt, és tekintse meg az [adott fájlok lekérdezésének](query-specific-files.md)példáit.
 
 > [!TIP]
 > A filepath és a filename függvények eredményét mindig a megfelelő adattípusokra konvertálja. Ha karakteres adattípusokat használ, ügyeljen arra, hogy a megfelelő hosszúságot használja.
@@ -141,6 +141,6 @@ Az SQL on-demand lehetővé teszi a tárolóban lévő fájlok elérését Azure
 
 Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készletek helyett SQL-készleteket használ, tekintse meg az [ajánlott eljárásokat az SQL-készletekhez](best-practices-sql-pool.md) az adott útmutatáshoz.

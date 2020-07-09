@@ -3,17 +3,17 @@ title: A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Manage
 description: Ez a cikk segítséget nyújt a felhővel kapcsolatos befektetések leghatékonyabb kihasználásához, a költségek csökkentéséhez és annak kiértékeléséhez, mire költ pénzt.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791612"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142418"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -131,14 +131,39 @@ További információ: [Azure Migrate](https://docs.microsoft.com/azure/migrate/
 
 Kövesse figyelemmel, hogyan változnak a szervezet költségei az idő múlásával. Használja az alábbi technikákat a költségek megfelelő értelmezéséhez és kezeléséhez.
 
-### <a name="organize-and-tag-your-resources"></a>Erőforrások rendszerezése és címkézése
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>Erőforrások rendszerezése a költségmegállapítások és az elszámoltathatóság maximalizálásához
 
-Rendszerezze költségtudatosan az erőforrásokat. Az előfizetések és erőforráscsoportok létrehozásakor gondoljon a kapcsolódó költségekért felelős csapatokra. Ügyeljen rá, hogy a jelentéskészítés során érvényesüljenek a szervezet szempontjai. Az előfizetések és az erőforráscsoportok kiválóan használható gyűjtők a költségek szervezeten belüli rendszerezéséhez és elosztásához. A címkék jó módszert kínálnak a költségek elosztására. A címkéket szűrőként is lehet használni. A címkéket csoportosításra is használhatja az adatok elemzésekor és a költségek vizsgálatakor. A Nagyvállalati Szerződéssel rendelkező ügyfelek részlegeket is létrehozhatnak, és előfizetéseket rendelhetnek azokhoz. Az Azure-beli költségalapú szervezés segít abban, hogy a szervezet megfelelő személyei folyamatosan elszámoltathatók maradjanak a csapataik költéseiért.
+Ha sikerül jól megtervezni az Azure számlázási és erőforrás-hierarchiáinak szervezeti struktúráját, az segít a költségek áttekintésében és felügyeletében a felhőalapú infrastruktúra létrehozása során. Tekintse meg az [entitás-hierarchiák beállításával](https://www.youtube.com/watch?v=n3TLRaYJ1NY) foglalkozó videót, hogy jobban megértse a rendelkezésre álló szervezeti eszközöket és azok előnyeit. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
-Ha meg szeretné tudni, milyen eszközök állnak a rendelkezésére, ha ki szeretné kényszeríteni a méretezhető erőforrás-címkézést a cégén vagy szervezetén belül, tekintse meg a [címkeszabályzatok Azure Cost Managementtel történő áttekintésével](https://www.youtube.com/watch?v=nHQYcYGKuyw) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+Az igényeinek megfelelő hierarchia kiértékelése és létrehozása során tegye fel magának a következő kérdéseket.
+
+*Milyen számlázási hierarchia áll a rendelkezésemre, és milyen különböző hatóköröket használhatok?*
+
+Azonosítsa a cég vagy szervezet számlázási rendszerét az Azure-ajánlat típusának meghatározásával. Az Azure számlázási rendszereihez elérhető hatóköröket [A hatókörök ismertetése és használata](understand-work-scopes.md) témakör ismerteti.
+
+*Ha több csapatom is van, hogyan érdemes elrendezni az előfizetéseket és az erőforráscsoportokat?*
+
+Az általános gyakorlat az, hogy minden egyes csoportnak külön kell létrehozni előfizetést vagy erőforráscsoportot. Ez segít a költségek elkülönítésében és a csapatok elszámoltatásában. A költségek azonban így az előfizetésekhez vagy erőforráscsoportokhoz kötődnek.
+
+Ha vannak olyan csapatai, amelyek több előfizetéssel is rendelkeznek, érdemes lehet felügyeleti csoportokba rendezni az előfizetéseket, hogy együtt elemezhesse a költségeiket. A felügyeleti csoportok, az előfizetések és az erőforráscsoportok mind az Azure RBAC-hierarchia tagjai. Használja őket együttesen a csapata hozzáférés-vezérléséhez.
+
+Az erőforrások több hatókörre is kiterjedhetnek, különösen akkor, ha több csapat vagy számítási feladat osztozik rajtuk. Érdemes megfontolni az erőforrások azonosítását címkék használatával. A címkékkel a következő szakasz foglalkozik.
+
+*Rendelkezem fejlesztői és éles környezetekkel?*
+
+A csökkentett díjszabási lehetőségek kihasználása érdekében érdemes lehet fejlesztési/tesztelési előfizetéseket létrehozni a fejlesztői környezetekhez. Ha a számítási feladatok több csapatra vagy Azure-hatókörre is kiterjednek, hasznos lehet címkéket használni az azonosításukhoz.
+
+### <a name="tag-shared-resources"></a>Megosztott erőforrások címkézése
+
+A címkék használata hatékony módszer a több csapatra és Azure-hatókörre kiterjedő költségek jobb megismeréséhez. Rendelkezhet például olyan erőforrásokkal, amelyeket több csapat is használ, például egy levelezési kiszolgálóval. A megosztott erőforrásokat, köztük a levelezési kiszolgálót, elhelyezheti egy külön a megosztott erőforrásokhoz dedikált vagy egy már meglévő előfizetésben. Ha egy meglévő előfizetésben helyezi őket el, előfordulhat, hogy az előfizetés tulajdonosa nem szeretné, ha a költségük minden hónapban a csapatára terhelődne. Ilyen esetben használhat címkét a megosztott erőforrás azonosítására.
+
+Olyan webalkalmazásokkal vagy környezetekkel is rendelkezhet – például tesztelési vagy éles környezettel –, amelyek különböző csapatok által birtokolt több előfizetésben használják az erőforrásokat. A számítási feladatok teljes költségének áttekinthetőbbé tételéhez címkézze fel az általuk használt erőforrásokat. Ha a címkéket megfelelően alkalmazza, a trendek behatóbb megismeréséhez a költségelemzés szűrőjeként is használhatja őket.
+
+Miután megtervezte az erőforrások felcímkézését, konfigurálhat egy Azure-szabályzatot, amely kikényszeríti az erőforrások címkézését. Ha meg szeretné tudni, milyen eszközök állnak a rendelkezésére, ha ki szeretné kényszeríteni a méretezhető erőforrás-címkézést a cégén vagy szervezetén belül, tekintse meg a [címkeszabályzatok Azure Cost Managementtel történő áttekintésével](https://www.youtube.com/watch?v=nHQYcYGKuyw) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>Költségelemzés használata
 

@@ -1,24 +1,24 @@
 ---
 title: Beépített szabályzat-definíciók az Azure app Configuration szolgáltatáshoz
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure-alkalmazások konfigurációjában. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 1758fb9073c860021081fa905ba3c54b5773044a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2d430bbe718981f9a4f258d70efcd1d218da8283
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648879"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316326"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-app-configuration"></a>Az Azure app Configuration beépített szabályzat-definícióinak Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Az Azure app Configuration Azure Policy beépített definíciói
 
 Ez az oldal az Azure app Configuration [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-app-configuration"></a>Azure App Configuration
 

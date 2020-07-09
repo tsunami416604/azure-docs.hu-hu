@@ -14,11 +14,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690319"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -53,9 +52,9 @@ A `cross-domain` szabályzat segítségével elérhetővé teheti az API-t az Ad
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Igen|
+|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -88,7 +87,7 @@ A CORS lehetővé teszi, hogy a böngésző és a kiszolgáló interakcióba lé
 ```
 
 ### <a name="example"></a>Példa
-Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelmeket, például az egyéni fejlécekkel vagy a GET és a POST metódustól eltérő módszerekkel. Az egyéni fejlécek és a további HTTP-műveletek támogatásához `allowed-methods` használja `allowed-headers` a és a szakaszt az alábbi példában látható módon.
+Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelmeket, például az egyéni fejlécekkel vagy a GET és a POST metódustól eltérő módszerekkel. Az egyéni fejlécek és a további HTTP-műveletek támogatásához használja a `allowed-methods` és a `allowed-headers` szakaszt az alábbi példában látható módon.
 
 ```xml
 <cors allow-credentials="true">
@@ -122,23 +121,23 @@ Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelme
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|CORS|Gyökérelem.|Igen|N/A|
-|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins`tartalmazhat egy olyan `origin` elemet, amely engedélyezi bármely `*` forrás használatát, vagy egy vagy több `origin` URI-t tartalmazó elemet.|Igen|N/A|
-|forrás (origin)|Az érték `*` lehet az összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Igen|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
-|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. A `method` támogatott http-műveleteket megadó elemeket tartalmazza. Az érték `*` az összes metódust jelzi.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
-|method|HTTP-műveletet ad meg.|Ha a `allowed-methods` szakasz `method` jelen van, legalább egy elem megadása kötelező.|N/A|
-|engedélyezett – fejlécek|Ez az elem `header` olyan elemeket tartalmaz, amelyek megadják a kérésben szerepeltethető fejlécek nevét.|Nem|N/A|
-|fejlécek közzététele|Ez az elem `header` olyan elemeket tartalmaz, amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|Nem|N/A|
-|header|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` ha a szakasz jelen van.|N/A|
+|CORS|Gyökérelem.|Yes|N.A.|
+|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins`tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Yes|N.A.|
+|forrás (origin)|Az érték lehet az `*` összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Yes|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
+|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. `method`A támogatott http-műveleteket megadó elemeket tartalmazza. Az érték az `*` összes metódust jelzi.|No|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
+|method|HTTP-műveletet ad meg.|`method`Ha a szakasz jelen van, legalább egy elem megadása kötelező `allowed-methods` .|N.A.|
+|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|No|N.A.|
+|fejlécek közzététele|Ez az elem olyan elemeket tartalmaz, `header` amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|No|N.A.|
+|fejléc|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` Ha a szakasz jelen van.|N.A.|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|hitelesítő adatok engedélyezése|Az `Access-Control-Allow-Credentials` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben.|Nem|hamis|
-|Elővizsgálat – eredmény-Max-Age|Az `Access-Control-Max-Age` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására.|Nem|0|
+|hitelesítő adatok engedélyezése|Az `Access-Control-Allow-Credentials` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben.|No|hamis|
+|Elővizsgálat – eredmény-Max-Age|Az `Access-Control-Max-Age` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására.|No|0|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -163,19 +162,19 @@ A `jsonp` szabályzat egy művelet vagy egy API számára lehetővé teszi a JSO
 
 Ha a metódust a visszahívási paraméter nélkül hívja meg? CB = XXX – egyszerű JSON-t ad vissza (függvényhívás burkolója nélkül).
 
-Ha hozzáadja a visszahívási `?cb=XXX` paramétert, a visszaadja a jsnop támogatással eredményét, és becsomagolja az eredeti JSON-eredményeket a visszahívási függvény köré, például:`XYZ('<json result goes here>');`
+Ha hozzáadja a visszahívási paramétert `?cb=XXX` , a visszaadja a jsnop támogatással eredményét, és becsomagolja az eredeti JSON-eredményeket a visszahívási függvény köré, például:`XYZ('<json result goes here>');`
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|jsnop támogatással|Gyökérelem.|Igen|
+|jsnop támogatással|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Igen|N/A|
+|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.

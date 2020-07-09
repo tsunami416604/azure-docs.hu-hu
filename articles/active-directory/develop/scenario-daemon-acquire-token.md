@@ -12,19 +12,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868998"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
-A bizalmas ügyfélalkalmazás létrehozása után megkeresheti az alkalmazás jogkivonatát, ha meghívja `AcquireTokenForClient`, átadja a hatókört, és igény szerint kényszeríti a token frissítését.
+A bizalmas ügyfélalkalmazás létrehozása után megkeresheti az alkalmazás jogkivonatát, ha meghívja, átadja `AcquireTokenForClient` a hatókört, és igény szerint kényszeríti a token frissítését.
 
 ## <a name="scopes-to-request"></a>Kérelmekre vonatkozó hatókörök
 
-Az ügyfél-hitelesítő adatokra vonatkozó kérelem hatóköre az erőforrás neve, majd a `/.default`. Ez a jelölés azt mutatja Azure Active Directory (Azure AD) számára, hogy az alkalmazás regisztrálása során statikusan deklarált *alkalmazási szintű engedélyeket* használjon. Emellett a bérlői rendszergazdának is meg kell adni ezeket az API-engedélyeket.
+Az ügyfél-hitelesítő adatokra vonatkozó kérelem hatóköre az erőforrás neve, majd a `/.default` . Ez a jelölés azt mutatja Azure Active Directory (Azure AD) számára, hogy az alkalmazás regisztrálása során statikusan deklarált *alkalmazási szintű engedélyeket* használjon. Emellett a bérlői rendszergazdának is meg kell adni ezeket az API-engedélyeket.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -53,15 +52,15 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ### <a name="azure-ad-v10-resources"></a>Azure AD-erőforrások (v 1.0)
 
-Az ügyfél hitelesítő adataihoz használt hatókörnek mindig az erőforrás-AZONOSÍTÓnak `/.default`kell lennie, amelyet követően.
+Az ügyfél hitelesítő adataihoz használt hatókörnek mindig az erőforrás-AZONOSÍTÓnak kell lennie, amelyet követően `/.default` .
 
 > [!IMPORTANT]
 > Ha a MSAL hozzáférési jogkivonatot kér egy olyan erőforráshoz, amely 1,0 hozzáférési tokent fogad el, akkor az Azure AD a kért hatókörből elemezi a kívánt célközönséget, ha az utolsó perjel előtt mindent megtesz, és erőforrás-azonosítóként használja azt.
-> Tehát ha például Azure SQL Database (**https:\//Database.Windows.net**), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/`), akkor a hatókörét kell kérnie `https://database.windows.net//.default`. (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Tehát ha például Azure SQL Database (**https: \/ /Database.Windows.net**), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/` ), akkor a hatókörét kell kérnie `https://database.windows.net//.default` . (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
-Az alkalmazáshoz tartozó token beszerzéséhez a platformtól `AcquireTokenForClient` függően a vagy annak megfelelőt kell használnia.
+Az alkalmazáshoz tartozó token beszerzéséhez `AcquireTokenForClient` a platformtól függően a vagy annak megfelelőt kell használnia.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -167,7 +166,7 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 ---
 
-### <a name="protocol"></a>Protocol (Protokoll)
+### <a name="protocol"></a>Protokoll
 
 Ha még nem rendelkezik a választott nyelvhez tartozó könyvtárral, érdemes lehet közvetlenül a protokollt használni:
 
@@ -202,7 +201,7 @@ További információkért tekintse meg a protokoll dokumentációját: [Microso
 
 ## <a name="application-token-cache"></a>Alkalmazás-jogkivonat gyorsítótára
 
-A MSAL.NET- `AcquireTokenForClient` ben az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken*XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) A hívás `AcquireTokenSilent` `AcquireTokenForClient`előtt ne telefonáljon, `AcquireTokenSilent` mert a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient`ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
+A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken*XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent`A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient`ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

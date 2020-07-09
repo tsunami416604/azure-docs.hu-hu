@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176789"
 ---
 # <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai
@@ -37,7 +37,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
     -   [Művelet](api-management-api-templates.md#Product)  
     -   [Kódminták](api-management-api-templates.md#CodeSamples)  
         -   [Curl](api-management-api-templates.md#Curl)  
-        -   [C #](api-management-api-templates.md#CSharp)  
+        -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
         -   [C célkitűzés](api-management-api-templates.md#ObjectiveC)  
@@ -46,7 +46,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Termékek](api-management-product-templates.md)  
     -   [Terméklista](api-management-product-templates.md#ProductList)  
-    -   [Termék](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product)  
 -   [Alkalmazások](api-management-application-templates.md)  
     -   [Alkalmazások listája](api-management-application-templates.md#ProductList)  
     -   [Alkalmazás](api-management-application-templates.md#Application)  

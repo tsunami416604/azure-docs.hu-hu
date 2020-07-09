@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6dfcd8d56232f893f881f310b33f3f849e2364a7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231917"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475951"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
+# <a name="immersive-reader-javascript-sdk-reference-v11"></a>Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)
 
 A lebilincselő olvasó SDK egy JavaScript-függvénytárat tartalmaz, amely lehetővé teszi a magával ragadó olvasó integrálását az alkalmazásba.
 
@@ -33,7 +33,7 @@ Az SDK a függvényeket teszi elérhetővé:
 
 ## <a name="launchasync"></a>launchAsync
 
-Elindítja az olvasót a webalkalmazáson belül `iframe` .
+Elindítja az olvasót a `iframe` webalkalmazáson belül. Vegye figyelembe, hogy a tartalom mérete legfeljebb 50 MB-ra van korlátozva.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,20 +41,20 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Paraméterek
 
-| Name (Név) | Típus | Leírás |
+| Name (Név) | Típus | Description |
 | ---- | ---- |------------ |
 | `token` | sztring | Az Azure AD hitelesítési jogkivonata. |
 | `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
 | `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 
-### <a name="returns"></a>Visszatérési érték
+### <a name="returns"></a>Válaszok
 
-A egy `Promise<LaunchResponse>`értéket ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` feloldás egy [`LaunchResponse`](#launchresponse) objektumra.
+A egy értéket ad vissza `Promise<LaunchResponse>` , amely feloldja a magával ragadó olvasó betöltését. A `Promise` feloldás egy [`LaunchResponse`](#launchresponse) objektumra.
 
 ### <a name="exceptions"></a>Kivételek
 
-A visszaadott `Promise` [`Error`](#error) objektum akkor kerül elutasításra, ha a magával ragadó olvasó nem töltődik be. További információ: [hibakódok](#error-codes).
+A visszaadott objektum akkor kerül `Promise` elutasításra, [`Error`](#error) Ha a magával ragadó olvasó nem töltődik be. További információ: [hibakódok](#error-codes).
 
 ## <a name="close"></a>bezárás
 
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Ez a függvény stílusokat és frissítéseket frissít a dokumentum az olvasó gombjának elemeivel. Ha ```options.elements``` meg van adni, a függvény megjeleníti a gombokat ```options.elements```a következőn belül:. Ellenkező esetben a gombok a dokumentum azon elemein belül jelennek meg, amelyeknek az ```immersive-reader-button```osztálya van.
+Ez a függvény stílusokat és frissítéseket frissít a dokumentum az olvasó gombjának elemeivel. Ha meg ```options.elements``` van adni, a függvény megjeleníti a gombokat a következőn belül: ```options.elements``` . Ellenkező esetben a gombok a dokumentum azon elemein belül jelennek meg, amelyeknek az osztálya van ```immersive-reader-button``` .
 
 Az SDK automatikusan ezt a függvényt hívja meg, amikor az ablak betöltődik.
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Paraméterek
 
-| Name (Név) | Típus | Leírás |
+| Name (Név) | Típus | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
@@ -109,25 +109,6 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 }
 ```
 
-### <a name="launchresponse"></a>LaunchResponse
-
-A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync`.
-
-```typescript
-{
-    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
-    sessionId: string;            // Globally unique identifier for this session, used for debugging
-}
-```
-
-### <a name="cookiepolicy-enum"></a>CookiePolicy enumerálása
-
-Az olvasó cookie-k használatára vonatkozó szabályzat beállítására szolgáló enumerálás. Lásd: [Beállítások](#options).
-
-```typescript
-enum CookiePolicy { Disable, Enable }
-```
-
 #### <a name="supported-mime-types"></a>Támogatott MIME-típusok
 
 | MIME-típus | Leírás |
@@ -135,17 +116,7 @@ enum CookiePolicy { Disable, Enable }
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
 | Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](./how-to/display-math.md).
-| Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
-
-### <a name="html-support"></a>HTML-támogatás
-
-| HTML | Támogatott tartalom |
-| --------- | ----------- |
-| Betűstílusok | Félkövér, dőlt, aláhúzás, kód, áthúzott, felső, alsó index |
-| Rendezetlen listák | Lemez, kör, négyzet |
-| Rendezett felsorolások | Decimális, felső-alfa, alsó-alfa, felső-római, alsó-római |
-
-A nem támogatott címkék hasonlóan lesznek megjelenítve. A képek és a táblázatok jelenleg nem támogatottak.
+| alkalmazás/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="options"></a>Beállítások
 
@@ -155,26 +126,64 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 {
     uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
     timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000)
+    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000).
     useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
-    onExit?: () => any;        // Executes when the Immersive Reader exits
+    onExit?: () => any;        // Executes when the Immersive Reader exits.
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
     cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
+    disableFirstRun?: boolean; // Disable the first run experience.
+    readAloudOptions?: ReadAloudOptions; // Options to configure Read Aloud.
+    translationOptions?: TranslationOptions; // Options to configure translation.
+    displayOptions?: DisplayOptions; // Options to configure text size, font, etc.
+    preferences?: string; // String returned from onPreferencesChanged representing the user's preferences in the Immersive Reader.
+    onPreferencesChanged?: (value: string) => any; // Executes when the user's preferences have changed.
 }
 ```
 
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
 
-A magával ragadó olvasó gombok megjelenítésének lehetőségei.
+```typescript
+type ReadAloudOptions = {
+    voice?: string;      // Voice, either 'male' or 'female'. Note that not all languages support both genders.
+    speed?: number;      // Playback speed, must be between 0.5 and 2.5, inclusive.
+    autoplay?: boolean;  // Automatically start Read Aloud when the Immersive Reader loads.
+};
+```
+
+> [!NOTE]
+> A böngésző korlátozásai miatt a Safari nem támogatja az Automatikus lejátszást.
+
+```typescript
+type TranslationOptions = {
+    language: string;                         // Set the translation language, e.g. fr-FR, es-MX, zh-Hans-CN. Required to automatically enable word or document translation.
+    autoEnableDocumentTranslation?: boolean;  // Automatically translate the entire document.
+    autoEnableWordTranslation?: boolean;      // Automatically enable word translation.
+};
+```
+
+```typescript
+type DisplayOptions = {
+    textSize?: number;          // Valid values are 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96.
+    increaseSpacing?: boolean;  // Set whether increased spacing is enabled.
+    fontFamily?: string;        // Valid values are 'Calibri', 'ComicSans', and 'Sitka'.
+};
+```
+
+### <a name="launchresponse"></a>LaunchResponse
+
+A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync` . Vegye figyelembe, hogy a `iframe` magával ragadó olvasót tartalmazó hivatkozás a használatával érhető el `container.firstChild` .
 
 ```typescript
 {
-    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
 }
 ```
-
+ 
 ### <a name="error"></a>Hiba
 
 A hibával kapcsolatos információkat tartalmaz.
@@ -188,12 +197,22 @@ A hibával kapcsolatos információkat tartalmaz.
 
 #### <a name="error-codes"></a>Hibakódok
 
-| Kód | Leírás |
+| Code | Leírás |
 | ---- | ----------- |
-| BadArgument | A megadott argumentum érvénytelen. a `message` részletekért tekintse meg a következőt:. |
-| Időkorlát | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
+| BadArgument | A megadott argumentum érvénytelen `message` . a részletekért tekintse meg a következőt:. |
+| Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired | A megadott jogkivonat lejárt. |
 | Szabályozott | Túllépte a hívási sebesség korlátját. |
+
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+
+A magával ragadó olvasó gombok megjelenítésének lehetőségei.
+
+```typescript
+{
+    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
+}
+```
 
 ## <a name="launching-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
@@ -209,9 +228,19 @@ A gomb megjelenésének és működésének konfigurálásához használja a kö
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| `data-button-style` | Beállítja a gomb stílusát. Lehet `icon`, `text`, vagy `iconAndText`. Alapértelmezett értéke `icon`. |
-| `data-locale` | Beállítja a területi beállítást. Például `en-US` vagy `fr-FR`. Az alapértelmezett érték az `en`angol. |
+| `data-button-style` | Beállítja a gomb stílusát. Lehet `icon` , `text` , vagy `iconAndText` . Alapértelmezett értéke `icon` . |
+| `data-locale` | Beállítja a területi beállítást. Például `en-US` vagy `fr-FR`. Az alapértelmezett érték az angol `en` . |
 | `data-icon-px-size` | Beállítja az ikon méretét képpontban megadva. Az alapértelmezett érték a 20px. |
+
+## <a name="html-support"></a>HTML-támogatás
+
+| HTML | Támogatott tartalom |
+| --------- | ----------- |
+| Betűstílusok | Félkövér, dőlt, aláhúzás, kód, áthúzott, felső, alsó index |
+| Rendezetlen listák | Lemez, kör, négyzet |
+| Rendezett felsorolások | Decimális, felső-alfa, alsó-alfa, felső-római, alsó-római |
+
+A nem támogatott címkék hasonlóan lesznek megjelenítve. A képek és a táblázatok jelenleg nem támogatottak.
 
 ## <a name="browser-support"></a>Böngészőtámogatás
 
@@ -226,4 +255,4 @@ Használja az alábbi böngészők legújabb verzióit a legjobb élmény érdek
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
-* [Rövid útmutató: hozzon létre egy webalkalmazást, amely elindítja a részletes olvasót (C#)](./quickstart.md)
+* [Rövid útmutató: hozzon létre egy webalkalmazást, amely elindítja a részletes olvasót (C#)](./quickstarts/client-libraries.md?pivots=programming-language-csharp)

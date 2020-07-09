@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557579"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
@@ -37,7 +37,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 1. Engedélyezze a Service Map megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) -en, vagy használja a [figyelési megoldások hozzáadása a Solutions Galleryból](solutions.md)című témakörben ismertetett eljárást.
 1. [Telepítse a függőségi ügynököt a Windows rendszerre](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) , vagy [telepítse a függőségi ügynököt Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) rendszeren minden olyan számítógépen, amelyen le szeretné kérni az adatgyűjtést. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
 
-Service Map a Log Analytics munkaterületen található Azure Portal, és a bal oldali panelen válassza a **megoldások** lehetőséget.<br><br> ![Válassza a megoldások lehetőséget a](./media/service-map/select-solution-from-workspace.png)munkaterületen.<br> A megoldások listájában válassza a **ServiceMap (workspaceName)** lehetőséget, majd a Service Map megoldás áttekintése lapon kattintson a Service Map összefoglaló csempére.<br><br> ![Service Map összefoglaló csempe](./media/service-map/service-map-summary-tile.png)
+Service Map a Log Analytics munkaterületen található Azure Portal, és a bal oldali panelen válassza a **megoldások** lehetőséget.<br><br> ![Válassza a megoldások lehetőséget a munkaterületen ](./media/service-map/select-solution-from-workspace.png) .<br> A megoldások listájában válassza a **ServiceMap (workspaceName)** lehetőséget, majd a Service Map megoldás áttekintése lapon kattintson a Service Map összefoglaló csempére.<br><br> ![Service Map ](./media/service-map/service-map-summary-tile.png) Összefoglaló csempe
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Használati esetek: az informatikai folyamatok függőségének elkészítése
 
@@ -113,7 +113,7 @@ Miután létrehozott néhány csoportot, megtekintheti őket a csoportok lapon.
 ![Csoportok lap](media/service-map/machine-groups-tab.png)
 
 Ezután válassza ki a csoport nevét az adott számítógépcsoport térképének megtekintéséhez.
-![Számítógépcsoport](media/service-map/machine-group.png) a csoporthoz tartozó gépek a térképen fehéren jelennek meg.
+![Számítógépcsoport ](media/service-map/machine-group.png) a csoporthoz tartozó gépek a térképen fehéren jelennek meg.
 
 A csoport kibontásakor a rendszer felsorolja a számítógépcsoport alkotó gépeket.
 
@@ -154,7 +154,7 @@ Kattintson a csoport neve melletti három pont menüre a csoport listában.
 
 Bizonyos folyamatok adott szerepköröket szolgálnak ki a gépeken: webkiszolgálók, alkalmazáskiszolgáló, adatbázis stb. A Service Map megjegyzésekkel láthatja el a folyamatokat és a számítógépeket a szerepkörök ikonjaival, így könnyebben azonosíthatja a folyamat vagy a kiszolgáló szerepét.
 
-| Szerepkör ikonja | Leírás |
+| Szerepkör ikonja | Description |
 |:--|:--|
 | ![Webkiszolgáló](media/service-map/role-web-server.png) | Webkiszolgáló |
 | ![Alkalmazáskiszolgáló](media/service-map/role-application-server.png) | Alkalmazáskiszolgáló |
@@ -273,16 +273,16 @@ A **gép teljesítménye** ablaktábla a kiválasztott kiszolgálóhoz tartozó 
 A teljesítményadatok megjelenítéséhez szükség lehet [a megfelelő log Analytics teljesítményszámlálók engedélyezésére](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Az engedélyezni kívánt számlálók:
 
 Windows:
-- Processzor (*)\\processzoridő (%)
-- Memória\\%-ban előjegyzett bájtok használatban
-- Hálózati adapter (*)\\elküldési sebesség (bájt/s)
-- Hálózati adapter (*)\\másodpercenként fogadott bájtok száma
+- Processzor (*) \\ processzoridő (%)
+- Memória \\ %-ban előjegyzett bájtok használatban
+- Hálózati adapter (*) \\ elküldési sebesség (bájt/s)
+- Hálózati adapter (*) másodpercenként \\ fogadott bájtok száma
 
 Linux:
-- Processzor (*)\\processzoridő (%)
-- Memória (*)\\%-ban használt memória
-- Hálózati adapter (*)\\elküldési sebesség (bájt/s)
-- Hálózati adapter (*)\\másodpercenként fogadott bájtok száma
+- Processzor (*) \\ processzoridő (%)
+- Memória (*) \\ %-ban használt memória
+- Hálózati adapter (*) \\ elküldési sebesség (bájt/s)
+- Hálózati adapter (*) másodpercenként \\ fogadott bájtok száma
 
 A hálózati teljesítményadatok beszerzéséhez az Wire Data 2.0 megoldást is engedélyeznie kell a munkaterületen.
  
@@ -485,7 +485,7 @@ ServiceMapProcess_CL | ahol MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d
 
 ### <a name="list-all-computers-running-sql"></a>Az összes SQL-t futtató számítógép listázása
 
-ServiceMapComputer_CL | hol ResourceName_s a (z) ((Search in (\*ServiceMapProcess_CL\*) "sql" | DISTINCT MachineResourceName_s)) | eltérő ComputerName_s
+ServiceMapComputer_CL | hol ResourceName_s a következőben: ((Search in (ServiceMapProcess_CL) " \* SQL \* " | DISTINCT MachineResourceName_s)) | különálló ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>A curl összes egyedi termék-verziójának listázása az adatközpontban
 
@@ -554,52 +554,52 @@ További információ a Log Analytics [naplóbeli keresésekről](../../azure-mo
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha problémája van Service Map telepítésekor vagy futtatásakor, ez a szakasz segítséget nyújt. Ha továbbra sem tudja megoldani a problémát, forduljon a Microsoft ügyfélszolgálatahoz.
+Ha problémája van Service Map telepítésekor vagy futtatásakor, ez a szakasz segítséget nyújt. Ha továbbra sem sikerül megoldania a problémát, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
 
 ### <a name="dependency-agent-installation-problems"></a>Függőségi ügynök telepítési problémái
 
-#### <a name="installer-prompts-for-a-reboot"></a>A telepítő kéri az újraindítást
+#### <a name="installer-prompts-for-a-reboot"></a>A telepítő újraindítást kér
 A függőségi ügynök *általában* nem igényel újraindítást a telepítés vagy az eltávolítás után. Bizonyos ritka esetekben azonban a Windows Server újraindítást igényel a telepítés folytatásához. Ez akkor fordulhat elő, ha egy függőség, általában a Microsoft Visual C++ újraterjeszthető könyvtára egy zárolt fájl miatt újraindítást igényel.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Üzenet: "nem sikerült telepíteni a függőségi ügynököt: a Visual Studio futásidejű kódtárainak telepítése sikertelen volt (code = [code_number])"
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>„A függőségi ügynök nem telepíthető: A Visual Studio futásidejű kódtárainak telepítése sikertelen (code = [code_number])” üzenet jelenik meg
 
-A Microsoft függőségi ügynök a Microsoft Visual Studio futásidejű könyvtáraira épül. Üzenet jelenik meg, ha probléma merül fel a kódtárak telepítésekor. 
+A Microsoft függőségi ügynök a Microsoft Visual Studio futásidejű kódtáraira épül. Ha probléma merül fel a kódtárak telepítése közben, egy üzenet jelenik meg. 
 
-A futásidejű függvénytár-telepítők létrehozzák a naplókat a%LOCALAPPDATA%\temp mappában. A fájl az `dd_vcredist_arch_yyyymmddhhmmss.log`, ahol *arch* az Arch `x86` vagy `amd64` a, a *yyyymmddhhmmss* pedig az a dátum és idő (24 órás óra), amikor a napló létrejött. A napló a telepítést blokkoló problémával kapcsolatos adatokat tartalmaz.
+A futásidejű kódtár telepítői a %LOCALAPPDATA%\temp mappában hozzák létre a naplóikat. A fájl az `dd_vcredist_arch_yyyymmddhhmmss.log` , ahol az *Arch* vagy a, a `x86` `amd64` *yyyymmddhhmmss* pedig az a dátum és idő (24 órás óra), amikor a napló létrejött. A napló a telepítést blokkoló problémával kapcsolatos adatokat tartalmaz.
 
-Hasznos lehet először telepíteni a [legújabb futásidejű kódtárakat](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
+Érdemes lehet először telepítenie a [legújabb futásidejű kódtárakat](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
 A következő táblázat felsorolja a kódok számát és a javasolt megoldásokat.
 
-| Kód | Leírás | Megoldás: |
+| Code | Description | Megoldás: |
 |:--|:--|:--|
-| 0x17 | A függvénytár-telepítőhöz olyan Windows Update szükséges, amely még nincs telepítve. | Tekintse meg a legújabb könyvtár-telepítési naplót.<br><br>Ha egy hivatkozást `Windows8.1-KB2999226-x64.msu` egy olyan vonal `Error 0x80240017: Failed to execute MSU package,` követ, amely nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [univerzális C futtatókörnyezet](https://support.microsoft.com/kb/2999226) előfeltételek szakaszának útmutatásait a Windows-cikkben. Előfordulhat, hogy az előfeltételek telepítéséhez több alkalommal kell futtatnia Windows Update és újra kell indítania az újraindítást.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
+| 0x17 | A kódtártelepítőhöz olyan Windows-frissítés szükséges, amely még nincs telepítve. | Tekintse meg a legutóbbi kódtártelepítői naplót.<br><br>Ha egy hivatkozást egy olyan `Windows8.1-KB2999226-x64.msu` vonal követ, amely `Error 0x80240017: Failed to execute MSU package,` nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [Universal C-futtatókörnyezet a Windowsban](https://support.microsoft.com/kb/2999226) című cikk előfeltételekről szóló szakaszában foglalt utasításokat. Lehetséges, hogy az előfeltételek telepítéséhez futtatnia kell a Windows Update-et, és többször újra kell indítania a számítógépet.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
 
 ### <a name="post-installation-issues"></a>Telepítés utáni problémák
 
 #### <a name="server-doesnt-appear-in-service-map"></a>A kiszolgáló nem jelenik meg Service Map
 
 Ha a függőségi ügynök telepítése sikeres volt, de nem látja a gépet a Service Map megoldásban:
-* A függőségi ügynök telepítése sikeresen megtörtént? Ezt úgy ellenőrizheti, hogy ellenőrzi, hogy a szolgáltatás telepítve van-e és fut-e.<br><br>
+* Sikeres volt a függőségi ügynök telepítése? Ennek ellenőrzéséhez tekintse meg, hogy a szolgáltatás telepítve van és fut-e.<br><br>
 **Windows**: keresse meg a **Microsoft függőségi ügynök**nevű szolgáltatást.
 **Linux**: keresse meg a futó folyamatot a **Microsoft-függőség-ügynöknek**.
 
-* A [log Analytics ingyenes szintet](https://azure.microsoft.com/pricing/details/monitor/)választja? Az ingyenes csomag legfeljebb öt egyedi Service Map gépet tesz lehetővé. Minden további gép nem jelenik meg Service Mapban, még akkor sem, ha az előző öt már nem küld adatokat.
+* A [log Analytics ingyenes szintet](https://azure.microsoft.com/pricing/details/monitor/)választja? Az ingyenes csomag legfeljebb öt egyedi Service Map-gépet tartalmaz. A további gépek még akkor sem jelennek meg a Service Mapben, ha az előző öt már nem küld adatokat.
 
-* A kiszolgáló napló-és teljesítményadatok-adatokat küld Azure Monitor naplókba? Nyissa meg az Azure Monitor\Logs, és futtassa a következő lekérdezést a számítógépen: 
+* A kiszolgáló napló-és teljesítményadatok-adatokat küld Azure Monitor naplókba? Nyissa meg az Azure Monitor\Logs helyet, és futtassa az alábbi lekérdezést a számítógépről: 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Számos eseményt kapott az eredmények között? A legutóbbi adatszolgáltatások? Ha igen, a Log Analytics ügynök megfelelően működik, és kommunikál a munkaterülettel. Ha nem, ellenőrizze az ügynököt a gépen: [log Analytics ügynök a Windows hibaelhárításához](../platform/agent-windows-troubleshoot.md) , vagy [log Analytics ügynök a Linux rendszerhez – hibaelhárítás](../platform/agent-linux-troubleshoot.md).
+Számos eseményt kapott az eredmények között? Frissek az adatok? Ha igen, akkor a Log Analytics-ügynök megfelelően működik és kommunikál a munkaterülettel. Ha nem, ellenőrizze az ügynököt a gépen: [Log Analytics-ügynök Windows-hibaelhárításhoz](../platform/agent-windows-troubleshoot.md) vagy [Log Analytics-ügynök Linux-hibaelhárításhoz](../platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>A kiszolgáló Service Mapban jelenik meg, de nem rendelkezik folyamatokkal
 
 Ha a gép Service Mapban jelenik meg, de nem rendelkezik folyamat-vagy adatforrással, az azt jelzi, hogy a függőségi ügynök telepítve van és fut, de a kernel-illesztőprogram nem töltődött be. 
 
-Győződjön meg `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` a (Windows) `/var/opt/microsoft/dependency-agent/log/service.log file` vagy (Linux) rendszerről. A fájl utolsó soraiban jelezni kell, hogy miért nem töltődött be a kernel. Előfordulhat például, hogy a kernelt nem támogatja a Linux, ha frissítette a kernelt.
+Győződjön meg a `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) vagy `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) rendszerről. A fájl utolsó sorai jelzik, hogy a kernel miért nem töltődött be. Előfordulhat például, hogy a Linux nem támogatja a kernelt, ha frissítette a kernelt.
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="suggestions"></a>Javaslatok
 
 Visszajelzést szeretne kapni a Service Mapről vagy a dokumentációról?  Látogasson el a felhasználói hangvételi [oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy megszavazhatja a meglévő javaslatokat.

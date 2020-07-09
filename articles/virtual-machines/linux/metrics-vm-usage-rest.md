@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944751"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Virtuális gépek használati metrikáinak beolvasása a REST API használatával
@@ -40,14 +39,14 @@ A következő fejlécek megadása kötelező:
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
-| Name (Név) | Leírás |
+| Name | Description |
 | :--- | :---------- |
 | subscriptionId | Az Azure-előfizetést azonosító előfizetés azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. |
 | resourceGroupName | Az erőforráshoz társított Azure-erőforráscsoport neve. Ezt az értéket a Azure Resource Manager API, a CLI vagy a portál használatával szerezheti be. |
 | vmname | Az Azure-beli virtuális gép neve. |
 | metricnames | Az érvényes [Load Balancer metrikák](/azure/load-balancer/load-balancer-standard-diagnostics)vesszővel tagolt listája. |
-| api-verzió | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum a fenti URL `2018-01-01`-cím részét képező API-verziót tartalmazza.  |
-| időtartomány | Karakterlánc a következő formátumban `startDateTime_ISO/endDateTime_ISO` , amely meghatározza a visszaadott metrikák időtartományát. Ez a választható paraméter úgy van beállítva, hogy a példában egy nap értékű adatot adja vissza. |
+| api-verzió | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum `2018-01-01` a fenti URL-cím részét képező API-verziót tartalmazza.  |
+| időtartomány | Karakterlánc a következő formátumban, `startDateTime_ISO/endDateTime_ISO` amely meghatározza a visszaadott metrikák időtartományát. Ez a választható paraméter úgy van beállítva, hogy a példában egy nap értékű adatot adja vissza. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse

@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426443"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044583"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása Stream Analytics használatával
 
@@ -43,7 +43,7 @@ Ez a megoldás két adatfolyammal működik. A díjköteles állomások belépte
 ### <a name="entry-data-stream"></a>Bejegyzés adatfolyama
 A belépési adatfolyam tartalmazza az autókra vonatkozó információkat, amikor autópályadíj-állomásokat visznek be. A kilépési adatok eseményei a minta alkalmazásban található webalkalmazásból áramlanak egy Event hub-várólistába.
 
-| TollID | EntryTime | LicensePlate | Állapot | Gyártmány | Modell | VehicleType | VehicleWeight | Autópályadíj | Címke |
+| TollID | EntryTime | LicensePlate | Állapot | Gyártó | Modell | VehicleType | VehicleWeight | Autópályadíj | Címke |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -54,13 +54,13 @@ A belépési adatfolyam tartalmazza az autókra vonatkozó információkat, amik
 
 Itt látható az oszlopok rövid leírása:
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 | --- | --- |
 | TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
 | EntryTime |A járműnek az autópályadíj-kezelőbe való belépésének dátuma és időpontja (UTC) |
 | LicensePlate |A jármű rendszámtábla-száma |
 | Állapot |Egyesült Államok állapot |
-| Gyártmány |A személygépkocsi gyártója |
+| Gyártó |A személygépkocsi gyártója |
 | Modell |Az autó modelljének száma |
 | VehicleType |1 a személyszállító járművek vagy a 2 kereskedelmi járművek számára |
 | WeightType |A jármű súlya tonnában kifejezve; 0 személyszállító járművek esetében |
@@ -81,7 +81,7 @@ A kilépési adatfolyam az autópályadíj-állomást elhagyó autókkal kapcsol
 
 Itt látható az oszlopok rövid leírása:
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 | --- | --- |
 | TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
 | ExitTime |A jármű kilépésének dátuma és időpontja az autópályadíj-kezelőből UTC szerint |
@@ -101,7 +101,7 @@ A megoldás egy kereskedelmi jármű regisztrációs adatbázisának statikus pi
 
 Itt látható az oszlopok rövid leírása:
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 | --- | --- |
 | LicensePlate |A jármű rendszámtábla-száma |
 | Regisztrációban |A jármű regisztrációs azonosítója |
@@ -113,7 +113,7 @@ A megoldás végrehajtásához Microsoft Azure előfizetésre van szükség. Ha 
 Ügyeljen arra, hogy a cikk végén található "az Azure-fiók tisztítása" című szakaszban ismertetett lépéseket követve az Azure-kreditek lehető legjobb használatát végezze el.
 
 ## <a name="deploy-the-sample"></a>A minta üzembe helyezése
-Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőforráscsoporthoz, néhány kattintással együtt. A megoldás definícióját a GitHub-adattár tárolja [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)a következő helyen:.
+Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőforráscsoporthoz, néhány kattintással együtt. A megoldás definícióját a GitHub-adattár tárolja a következő helyen: [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) .
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>A TollApp-sablon üzembe helyezése a Azure Portal
 1. A TollApp-környezet Azure-ba történő üzembe helyezéséhez használja ezt a hivatkozást az [TollApp Azure-sablon üzembe helyezéséhez](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -122,7 +122,7 @@ Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőfo
 
 3. Válassza ki azt az előfizetést, amelyben a különböző erőforrások számlázása történik.
 
-4. Adjon meg egy új erőforráscsoportot, amely egy egyedi név, például `MyTollBooth`:.
+4. Adjon meg egy új erőforráscsoportot, amely egy egyedi név, például: `MyTollBooth` .
 
 5. Válasszon egy Azure-beli helyet.
 
@@ -168,7 +168,7 @@ Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőfo
 3. Vizsgálja meg a TollApp-minta feladatának bemeneteit. A jelenlegi lekérdezésben csak a EntryStream-bevitelt használja a rendszer.
    - A **EntryStream** -bemenet egy olyan Event hub-kapcsolat, amely minden alkalommal, amikor egy autó egy Tollbooth belép az autópályán. A minta részét képező webalkalmazás létrehozza az eseményeket, és ezek az események várólistára kerülnek ebben az Event hub-ban. Vegye figyelembe, hogy ezt a bemenetet a streaming lekérdezés FROM záradékában kérdezi le a rendszer.
    - A **ExitStream** -bemenet egy olyan Event hub-kapcsolat, amely minden egyes alkalommal, amikor egy autó kilép egy Tollbooth az autópályán. Ez a folyamatos átviteli bemenet a lekérdezés szintaxisának későbbi változataiban használatos.
-   - A **regisztrációs** bemenet egy Azure Blob Storage-kapcsolódás, amely egy statikus regisztrációs. JSON-fájlra mutat, amelyet igény szerint keres. Ez a hivatkozási adat a lekérdezés szintaxisának későbbi változataiban használatos.
+   - A **regisztrációs** bemenet egy Azure Blob Storage-csatlakozás, amely a fájl statikus registration.jsmutat, és szükség esetén a keresésekhez használható. Ez a hivatkozási adat a lekérdezés szintaxisának későbbi változataiban használatos.
 
 4. Vizsgálja meg a TollApp-minta feladatainak kimeneteit.
    - A **Cosmos db** output egy Cosmos adatbázis-tároló, amely megkapja a kimeneti fogadó eseményeit. Vegye figyelembe, hogy ezt a kimenetet a streaming lekérdezés INTO záradékában kell használni.
@@ -185,11 +185,11 @@ A folyamatos átviteli feladat elindításához kövesse az alábbi lépéseket:
 ## <a name="review-the-cosmosdb-output-data"></a>A CosmosDB kimeneti adatai áttekintése
 1. Keresse meg a TollApp erőforrásokat tartalmazó erőforráscsoportot.
 
-2. Válassza ki a **tollapp\<\>véletlenszerű-Cosmos**nevű Azure Cosmos db fiókot.
+2. Válassza ki a **tollapp \<random\> -Cosmos**nevű Azure Cosmos db fiókot.
 
 3. Válassza ki a **adatkezelő** fejlécet a adatkezelő lap megnyitásához.
 
-4. Bontsa ki a **tollAppDatabase** > **tollAppCollection** > **dokumentumait**.
+4. Bontsa ki a **tollAppDatabase**  >  **tollAppCollection**  >  **dokumentumait**.
 
 5. Az azonosítók listájában számos dokumentum jelenik meg, amint a kimenet elérhetővé válik.
 

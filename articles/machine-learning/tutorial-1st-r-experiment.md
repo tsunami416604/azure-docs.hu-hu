@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684753"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483380"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben az oktatóanyagban a Azure Machine Learning R SDK-t használja egy logisztikai regressziós modell létrehozásához, amely előrejelzést készít egy autóbaleset valószínűségéről. Megtudhatja, hogyan működik a Azure Machine Learning felhő erőforrásai az R-vel, hogy méretezhető környezetet biztosítson a modell betanításához és üzembe helyezéséhez.  
+Ebben az oktatóanyagban a Azure Machine Learning R SDK-t (előzetes verzió) használja egy logisztikai regressziós modell létrehozásához, amely előrejelzést készít egy autóbaleset valószínűségéről. Megtudhatja, hogyan működik a Azure Machine Learning felhő erőforrásai az R-vel, hogy méretezhető környezetet biztosítson a modell betanításához és üzembe helyezéséhez.  
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > [!div class="checklist"]
@@ -73,7 +73,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 1. A mappák listája megjeleníti a munkaterülethez hozzáférő összes felhasználót.  Válassza ki a mappát, amelybe a **matricákat** tartalmazó mappát el szeretné klónozott.
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">RStudio megnyitása
+## <a name="open-rstudio"></a><a name="open"></a>RStudio megnyitása
 
 Az oktatóanyag futtatásához használja az RStudio-t egy számítási példányon vagy egy notebook virtuális gépen.  
 
@@ -124,7 +124,7 @@ library(azuremlsdk)
 A betanítási és pontozási szkriptek ( `accidents.R` és `accident_predict.R` ) további függőségekkel rendelkeznek. Ha a parancsfájlok helyi futtatását tervezi, győződjön meg arról, hogy rendelkezik a szükséges csomagokkal is.
 
 ### <a name="load-your-workspace"></a>Munkaterület betöltése
-Munkaterület-objektum példányának létrehozása a meglévő munkaterületről. A következő kód betölti a munkaterület részleteit a **config. JSON** fájlból. A munkaterületet a használatával is lekérheti [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
+Munkaterület-objektum példányának létrehozása a meglévő munkaterületről. A következő kód betölti a munkaterület részleteit a fájl **config.js** . A munkaterületet a használatával is lekérheti [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
 
 ```R
 ws <- load_workspace_from_config()
@@ -384,7 +384,7 @@ A webszolgáltatás HTTP-végpontját is beolvashatja, amely fogadja a REST-ügy
 aci_service$scoring_uri
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, törölje az erőforrásokat. Ne töröljön olyan erőforrást, amelyet még használni szeretne. 
 
@@ -409,7 +409,7 @@ delete_compute(compute)
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
 

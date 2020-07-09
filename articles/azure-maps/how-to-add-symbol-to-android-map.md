@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335589"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
@@ -27,7 +27,7 @@ A cikkben szereplő lépések teljes körű követéséhez telepítenie kell [Az
 
 Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképhez, kövesse az alábbi lépéseket:
 
-1. Szerkessze a **res** > **layout** > **activity_main. XML** fájlt úgy, hogy az a következő XML-fájlhoz hasonlítson:
+1. Szerkessze a **res**  >  **layout**  >  **activity_main.xml** , hogy a következő XML-fájlhoz hasonlítson:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképh
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -74,7 +74,7 @@ Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképh
     
     A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ezután hozzáadja a pont geometriáját tartalmazó **funkciót** . Ezután egy piros jelölő képe ikonként van beállítva a szimbólumhoz. A **szimbólum-réteg** szöveggel vagy ikonokkal jeleníti meg az adatforrásban lévő pont-alapú adatfeliratokat a térképen. Ekkor létrejön egy szimbólum-réteg, és a rendszer átadja az adatforrást a rendereléshez, majd hozzáadja a Térkép rétegeihez.
     
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;

@@ -2,19 +2,19 @@
 title: Adatok szinkronizálása az Azure SQL Edge-ből (előzetes verzió) Azure Data Factory használatával
 description: Tudnivalók az Azure SQL Edge (előzetes verzió) és az Azure Blob Storage közötti adatszinkronizálásról
 keywords: SQL Edge, adatok szinkronizálása az SQL Edge-ből, az SQL Edge-adatgyárból
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1238505a10214c315bd5f2ceb428cf097b3ef5c6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599660"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255432"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
 
@@ -25,10 +25,10 @@ Ebben az oktatóanyagban az Azure Blob Storage-példányban lévő adatok növek
 Ha még nem hozott létre adatbázist vagy táblát az Azure SQL Edge-telepítésben, akkor az alábbi módszerek egyikével hozhat létre egyet:
 
 * Az SQL Edge-hez való kapcsolódáshoz használjon [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) vagy [Azure Data Studio](/sql/azure-data-studio/download/) . Futtasson egy SQL-szkriptet az adatbázis és a tábla létrehozásához.
-* Hozzon létre egy SQL-adatbázist és-táblázatot a [Sqlcmd](/sql/tools/sqlcmd-utility/) használatával az SQL Edge-modulhoz való közvetlen csatlakozással. További információ: [Kapcsolódás az adatbázismotor számára a Sqlcmd használatával](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* A SQLPackage. exe használatával helyezzen üzembe egy DAC-csomagfájl az SQL Edge-tárolón. Ezt a folyamatot automatizálhatja a SqlPackage fájl URI azonosítójának megadásával a modul kívánt tulajdonságainak konfigurációjának részeként. A SqlPackage. exe-ügyfél eszközt közvetlenül is használhatja a DAC-csomagok SQL Edge-ben történő üzembe helyezéséhez.
+* Hozzon létre egy adatbázist és egy táblázatot a [Sqlcmd](/sql/tools/sqlcmd-utility/) használatával az SQL Edge-modulhoz való közvetlen csatlakozással. További információ: [Kapcsolódás az adatbázismotor számára a Sqlcmd használatával](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* A SQLPackage.exe használatával helyezzen üzembe egy DAC-csomagfájl az SQL Edge-tárolón. Ezt a folyamatot automatizálhatja a SqlPackage fájl URI azonosítójának megadásával a modul kívánt tulajdonságainak konfigurációjának részeként. Közvetlenül a SqlPackage.exe-ügyfél eszközzel is üzembe helyezhet egy DAC-csomagot az SQL Edge-ben.
 
-    További információ a SqlPackage. exe fájl letöltéséről: [SqlPackage letöltése és telepítése](/sql/tools/sqlpackage-download/). A következő néhány példa a SqlPackage. exe parancsra. További információt a SqlPackage. exe dokumentációjában talál.
+    További információ a SqlPackage.exe letöltéséről: [Sqlpackage letöltése és telepítése](/sql/tools/sqlpackage-download/). A következőkben néhány példa a SqlPackage.exera. További információ: SqlPackage.exe dokumentáció.
 
     **DAC-csomag létrehozása**
 
@@ -179,7 +179,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     1. A **fájl elérési útja**területen adja meg a *asdedatasync/incrementalcopy*nevet, ahol a *asdedatasync* a blob-tároló neve, a *incrementalcopy* pedig a mappa neve. Ha nem létezik, hozza létre a tárolót, vagy használjon egy meglévőt. Azure Data Factory automatikusan létrehozza a kimeneti mappa *incrementalcopy* , ha az nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
 
-    2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a ** @CONCAT következőt: (növekményes, folyamat (). RunId, '. txt ')** a megnyíló ablakban. Válassza a **Finish** (Befejezés) elemet. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
+    2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a ** @CONCAT következőt: (növekményes, folyamat (). RunId, '. txt ')** a megnyíló ablakban. Válassza a **Befejezés** gombot. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
 
 28. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával.
 

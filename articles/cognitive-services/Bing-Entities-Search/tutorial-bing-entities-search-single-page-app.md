@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943137"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800057"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
@@ -58,7 +58,12 @@ Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz és a Bing Maps API-hoz. Ha nem rendelkezik ezekkel, használhat egy [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és egy [alapszintű Bing Maps-kulcsot](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz és a Bing Maps API-hoz. 
+
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel:
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Hozzon létre egy Bing Search erőforrás "  target="_blank"> létrehozásához Bing Search erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Hozzon létre egy Computer Vision-erőforrást, "  target="_blank"> és hozzon létre egy Bing Maps-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
 
@@ -86,7 +91,7 @@ A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekbe
 ## <a name="managing-subscription-keys"></a>Előfizetői kulcsok kezelése
 
 > [!NOTE]
-> Az alkalmazáshoz a Bing Search API és a Bing Térképek API előfizetési kulcsaira is szükség van. Használhatja a [Bing Search próbaverziós kulcsát](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és a [Bing Térképek alapszintű kulcsát](https://www.microsoft.com/maps/create-a-bing-maps-key) is.
+> Az alkalmazáshoz a Bing Search API és a Bing Térképek API előfizetési kulcsaira is szükség van.
 
 Annak érdekében, hogy a Bing Search és a Bing Térképek API előfizetői kulcsait ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk a kulcsokat. Ha a rendszer nem tárolta valamelyik kulcsot, akkor rákérdezünk, és tároljuk későbbi használatra. Ha az API később elutasítja a kulcsot, akkor érvénytelenítjük a tárolt kulcsot, ezért a következő keresésnél újra rá kell kérdeznünk a felhasználónál.
 
@@ -394,7 +399,7 @@ A hibák kezelése a `renderErrorMessage()` meghívásával történik a hibáva
 
 ## <a name="displaying-search-results"></a>Keresési eredmények megjelenítése
 
-A Bing Entity Search API számára [adott sorrendben kell megjelenítenie az eredményeket](use-display-requirements.md). Mivel az API két különböző típusú választ adhat vissza, nem elég, ha végighalad a JSON-válasz legfelső szintű `Entities` elemein vagy a `Places` gyűjteményen, és megjeleníti ezeket az eredményeket. (Ha csak egy típusú eredményt szeretne megkapni, használja a `responseFilter` lekérdezési paramétert.)
+A Bing Entity Search API számára [adott sorrendben kell megjelenítenie az eredményeket](use-display-requirements.md). Mivel az API két különböző választ adhat vissza, nem elég, ha a JSON-válasz legfelső szintjén `Entities` vagy `Places` gyűjteményén keresztül ismétli meg ezeket az eredményeket. (Ha csak egy típusú eredményt szeretne megkapni, használja a `responseFilter` lekérdezési paramétert.)
 
 Ehelyett a `rankingResponse` gyűjteményt használjuk a keresési eredményeknél a megjelenített eredmények rendezéséhez. Ez az objektum az `Entitiess` és/vagy a `Places` gyűjtemények elemeire mutat.
 
@@ -520,7 +525,7 @@ Az entitásleképező függvény:
 
 A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
 
-Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egymáshoz társítsák a felhasználó összes keresését, amelynek két fontos előnye van.
+A `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k az összes felhasználó keresését hozzárendelik, amelyek két fontos előnnyel rendelkeznek.
 
 Egyrészt lehetővé teszi, hogy a Bing keresőmotorja korábbi kontextusokat is alkalmazzon a keresésekhez olyan találatok megjelenítése érdekében, amelyek jobban megfelelnek a felhasználó igényeinek. Ha például a felhasználó korábban vitorlázáshoz kapcsolódó kifejezésekre keresett rá, egy későbbi keresés a „dokkok” kifejezésre nagy valószínűséggel a vitorlások kikötésére alkalmas dokkokkal kapcsolatos információkat fog eredményezni.
 
@@ -531,19 +536,22 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz `Access-Control-Expose-Headers` fejléce lehetővé teszi, hogy a felsorolja a válasz fejléceit, és elérhetővé tegye azokat a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Ezután módosítsa a HTML-fájlban lévő Bing Web Search végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 

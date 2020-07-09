@@ -1,18 +1,16 @@
 ---
 title: A partner Center beküldési API-ját az Azure-alkalmazások előkészítéséhez a Microsoft kereskedelmi piactéren
 description: Ismerje meg, hogy milyen előfeltételeket kell használni a partner Center beküldési API Azure-alkalmazásokhoz való használatához a kereskedelmi piactéren a Microsoft partner Centerben.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c8343f0954f02423fc48347911f10cf5b9ddee96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770057"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121996"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>A partner Center beküldési API-ját az Azure Apps szolgáltatásba a partner Centerben
 
@@ -29,7 +27,7 @@ Néhány programozott eszközre van szükség ahhoz, hogy használni lehessen a 
 
 Mielőtt elkezdené a kód írását a partner Center beküldési API meghívásához, győződjön meg arról, hogy végrehajtotta a következő előfeltételeket.
 
-- Önnek (vagy szervezetének) rendelkeznie kell egy Azure AD-címtárral, és [globális rendszergazdai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) engedéllyel kell rendelkeznie a címtárhoz. Ha már használja az Office 365-et vagy a Microsoft egyéb üzleti szolgáltatásait, akkor már rendelkezik Azure AD-címtárral. Ellenkező esetben [új Azure ad-t hozhat létre a partner Centerben](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) , külön díj nélkül.
+- Önnek (vagy szervezetének) rendelkeznie kell egy Azure AD-címtárral, és [globális rendszergazdai](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) engedéllyel kell rendelkeznie a címtárhoz. Ha már használja a Microsoft Microsoft 365 vagy más üzleti szolgáltatásait, akkor már rendelkezik Azure AD-címtárral. Ellenkező esetben [új Azure ad-t hozhat létre a partner Centerben](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) , külön díj nélkül.
 
 - Hozzá kell [rendelnie egy Azure ad-alkalmazást a partner Center-fiókjához](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) , és meg kell szereznie a bérlő azonosítóját, ügyfél-azonosítóját és kulcsát. Ezekre az értékekre szüksége lesz az Azure AD hozzáférési token beszerzéséhez, amelyet a Microsoft Store beküldési API-hoz tartozó hívásokban fog használni.
 
@@ -71,7 +69,7 @@ Az Azure AD hozzáférési jogkivonattal metódusokat hívhat a partner Center b
 
 https://apidocs.microsoft.com/services/partneringestion/
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan hozhat létre egy Azure-beli [virtuális gép technikai eszközét](create-azure-container-technical-assets.md)
 * Ismerje meg, hogyan hozhat létre [Azure Container-ajánlatot](create-azure-container-offer.md)

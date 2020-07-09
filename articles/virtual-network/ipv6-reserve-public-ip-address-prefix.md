@@ -7,17 +7,16 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711493"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Nyilvános IPv6-cím előtagjának foglalása
 Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban IPv6-és IPv4-kapcsolaton keresztül is üzemeltetheti az alkalmazásokat a virtuális hálózaton belül és az internetről. Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is fenntarthatja a használatra. Ez a cikk bemutatja, hogyan hozhat létre IPv6 nyilvános IP-címeket és címtartományt a Azure PowerShell és a parancssori felület használatával.
@@ -87,7 +86,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
- Egy fenntartott előtaggal rendelkező statikus IPv6 nyilvános IP-címet úgy hozhat `-PublicIpPrefix` létre, hogy hozzáadja az argumentumot a nyilvános IP-cím a Azure PowerShell használatával történő létrehozásakor. Az alábbi példa azt feltételezi, hogy egy előtag létrehozása és tárolása egy nevű PowerShell-változóban történik: *$MyOwnIPv 6prefix*.
+ Egy fenntartott előtaggal rendelkező statikus IPv6 nyilvános IP-címet úgy hozhat létre, hogy hozzáadja az `-PublicIpPrefix` argumentumot a nyilvános IP-cím a Azure PowerShell használatával történő létrehozásakor. Az alábbi példa azt feltételezi, hogy egy előtag létrehozása és tárolása egy nevű PowerShell-változóban történik: *$MyOwnIPv 6prefix*.
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \

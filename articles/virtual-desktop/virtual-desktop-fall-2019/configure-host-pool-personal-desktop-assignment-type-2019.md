@@ -4,16 +4,16 @@ description: A hozzárendelés típusának konfigurálása a Windows rendszerű 
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827471"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204863"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali címkészlet-hozzárendelés típusának konfigurálása
 
@@ -31,7 +31,7 @@ Az automatikus hozzárendelés az alapértelmezett hozzárendelési típus a Win
 
 A felhasználók automatikus hozzárendeléséhez először rendelje hozzá azokat a személyes asztali gazdagéphez, hogy azok a hírcsatornában lássák az asztalt. Amikor egy hozzárendelt felhasználó elindítja az asztalt a hírcsatornájában, a rendszer egy rendelkezésre álló munkamenet-gazdagépet igényel, ha még nem csatlakoztak a gazdagéphez, amely befejezi a hozzárendelési folyamatot.
 
-Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/) , ha még nem tette meg. 
+Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/) , ha még nem tette meg.
 
 > [!NOTE]
 > Az utasítások követése előtt győződjön meg arról, hogy telepítette a Windows rendszerű virtuális asztali PowerShell-modul 1.0.1534.2001 vagy újabb verzióját.

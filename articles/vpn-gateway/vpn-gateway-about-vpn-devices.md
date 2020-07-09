@@ -7,12 +7,11 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343149"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -45,7 +44,7 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |Támogatott |Támogatott |
 | Cisco | CSR | Útvonalalapú: IOS-XE 16,10 | (nincs tesztelve) | [Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú*: IOS 15.1 |Támogatott |Támogatott |
-| Cisco |Meraki |N/A |Nem kompatibilis |Nem kompatibilis |
+| Cisco |Meraki |N.A. |Nem kompatibilis |Nem kompatibilis |
 | Cisco | vEdge (Viptela operációs rendszer) | 18.4.0 (aktív/passzív mód)<br><br>19,2 (aktív/aktív mód) | Nem kompatibilis |  [Manuális konfiguráció (aktív/passzív)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Felhőbeli Onramp konfigurációja (aktív/aktív)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1-es vagy újabb verzió |[Konfigurációs útmutató](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nem kompatibilis |
 | F5 |BIG-IP sorozat |12.0 |[Konfigurációs útmutató](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurációs útmutató](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -58,7 +57,7 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Juniper |SSG |ScreenOS 6.2 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOs 12. x|Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |Támogatott |
-| Open Systems AG |Mission Control biztonsági átjáró |N/A |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nem kompatibilis |
+| Open Systems AG |Mission Control biztonsági átjáró |N.A. |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |Támogatott |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (fejlesztői) | VyOS | VyOS 1.2.2 | (nincs tesztelve) | [Konfigurációs útmutató](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Következő generációs UTM (NU sorozat) | 9.0.1.3 | Nem kompatibilis | [Konfigurációs útmutató](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -66,7 +65,7 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Sophos | XG Next Gen tűzfal | XG v17 | (nincs tesztelve) | [Konfigurációs útmutató](https://community.sophos.com/kb/127546)<br><br>[Konfigurációs útmutató – több SAs](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer – 1.2.0 | (nincs tesztelve) | [Konfigurációs útmutató](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v 1.10 | (nincs tesztelve) | [BGP over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI IKEv2/IPsec protokollon keresztül](https://help.ubnt.com/hc/en-us/articles/115012305347)
-| WatchGuard |Összes |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| WatchGuard |Mind |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | ZyXEL |ZyWALL ÁLLAMIGAZGATÁSBAN sorozat<br>ZyWALL ATP-sorozat<br>ZyWALL VPN-sorozat | ZLD v 4.32 + | (nincs tesztelve) | [VTI IKEv2/IPsec protokollon keresztül](https://businessforum.zyxel.com/discussion/2648/)<br><br>[BGP over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
@@ -141,8 +140,8 @@ A következő táblázatokban:
 | IKE verziószám                   |IKEv1          |IKEv1 és IKEv2                              |
 | Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
 | SA élettartama (Idő)            |3 600 másodperc  |27 000 másodperc                               |
-| SA élettartama (bájt)           |102 400 000 kB | -                                           |
-| Sérülés utáni titkosságvédelem (PFS) |Nem             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
+| SA élettartama (bájt)           |102 400 000 kB |102 400 000 kB                               |
+| Sérülés utáni titkosságvédelem (PFS) |No             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
 | Kapcsolat megszakadásának észlelése (DPD)     |Nem támogatott  |Támogatott                                    |
 
 

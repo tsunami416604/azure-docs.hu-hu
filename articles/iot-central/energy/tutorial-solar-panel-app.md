@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Solar büntetőjogi monitorozási alkalmazás létrehozása IoT Central'
+title: 'Oktatóanyag: napelemes figyelési alkalmazás létrehozása IoT Central'
 description: 'Oktatóanyag: Ismerje meg, hogyan hozhat létre napelem-alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
 author: op-ravi
 ms.author: omravi
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77025775"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310002"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Oktatóanyag: létrehozás és útmutató a napelemek figyelésére szolgáló alkalmazás sablonja 
 
@@ -110,4 +110,3 @@ Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alk
 * A napelemes alkalmazások architektúrájának megismerése tekintse meg [a koncepciót ismertető cikket.](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
 * Solar panel-alkalmazások sablonjainak létrehozása ingyen: [napelemes](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) alkalmazás
 * További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)
-

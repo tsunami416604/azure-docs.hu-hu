@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650382"
 ---
 # <a name="custom-resource-cache-reference"></a>Egyéni erőforrás-gyorsítótár referenciája
@@ -42,11 +41,11 @@ Példa egyéni erőforrás-szolgáltatóra:
 
 ## <a name="building-proxy-resource-endpoint"></a>Proxy erőforrás-végpont kiépítése
 
-A "proxy, gyorsítótár" erőforrás- **végpontot** implementáló **végpontnak** az új API-ra vonatkozó kérést és választ kell kezelnie az Azure-ban. Ebben az esetben a **resourceType** új Azure Resource API- `PUT`t fog kiszolgálni `GET`a, `DELETE` a és a szifilisz egyetlen erőforráson való végrehajtásához, `GET` valamint az összes meglévő erőforrás lekéréséhez:
+A "proxy, gyorsítótár" erőforrás- **végpontot** implementáló **végpontnak** az új API-ra vonatkozó kérést és választ kell kezelnie az Azure-ban. Ebben az esetben a **resourceType** új Azure Resource API-t fog kiszolgálni a `PUT` , a és a `GET` `DELETE` szifilisz egyetlen erőforráson való végrehajtásához, valamint az `GET` összes meglévő erőforrás lekéréséhez:
 
 > [!NOTE]
-> `PUT`Az Azure API létrehozza a kérések metódusait `GET`, a `DELETE`és a-t, de a gyorsítótár- `PUT` **végpontnak** csak a és `DELETE`a kell kezelnie.
-> Azt javasoljuk, hogy a **végpont** is implementálja `GET`.
+> Az Azure API létrehozza a kérések metódusait, a `PUT` `GET` és `DELETE` a-t, de a gyorsítótár- **végpontnak** csak a és a kell kezelnie `PUT` `DELETE` .
+> Azt javasoljuk, hogy a **végpont** is implementálja `GET` .
 
 ### <a name="create-a-custom-resource"></a>Egyéni erőforrás létrehozása
 
@@ -88,8 +87,8 @@ Hasonlóképpen a **végpont** válasza is vissza lesz továbbítva az ügyféln
 
 - Egy érvényes JSON-objektum dokumentuma. Az összes tömböt és karakterláncot egy felső objektum alá kell ágyazni.
 - A `Content-Type` fejlécet az "Application/JSON;" értékre kell beállítani. charset = UTF-8 ".
-- Az egyéni erőforrás-szolgáltató felülírja `name`a `type`kéréshez `id` tartozó, és mezőket.
-- Az egyéni erőforrás-szolgáltató csak a gyorsítótár-végpont `properties` objektumában lévő mezőket fogja visszaadni.
+- Az egyéni erőforrás-szolgáltató felülírja `name` a `type` kéréshez tartozó, és `id` mezőket.
+- Az egyéni erőforrás-szolgáltató csak a `properties` gyorsítótár-végpont objektumában lévő mezőket fogja visszaadni.
 
 **Végpont** Válasz
 
@@ -107,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-A `name`, `id`a és `type` a mezők automatikusan létrejönnek az egyéni erőforráshoz az egyéni erőforrás-szolgáltató alapján.
+A `name` , a `id` és a `type` mezők automatikusan létrejönnek az egyéni erőforráshoz az egyéni erőforrás-szolgáltató alapján.
 
 Azure egyéni erőforrás-szolgáltató válasza:
 

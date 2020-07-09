@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76766271"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Egyéni összehangolás állapota a Durable Functionsban (Azure Functions)
 
-Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a [http-GetStatus API](durable-functions-http-api.md#get-instance-status) -n vagy a koordináló ügyfél [ `GetStatusAsync` API](durable-functions-instance-management.md#query-instances) -jával biztosítjuk.
+Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a [http-GETSTATUS API](durable-functions-http-api.md#get-instance-status) -n vagy a koordináló ügyfél [ `GetStatusAsync` API](durable-functions-instance-management.md#query-instances) -jával biztosítjuk.
 
 ## <a name="sample-use-cases"></a>Példa használati esetekre
 
@@ -24,7 +23,7 @@ Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értéké
 
 Az ügyfelek lekérdezik az állapot végpontját, és megjelenítenek egy folyamatjelző FELÜLETET, amely megjeleníti az aktuális végrehajtási szakaszt. Az alábbi példa a folyamat megosztását mutatja be:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -83,9 +82,9 @@ module.exports = async function(context, name) {
 
 ---
 
-Ezután a-ügyfél csak akkor kapja meg a koordinálás kimenetét, ha `CustomStatus` a mező értéke "London":
+Ezután a-ügyfél csak akkor kapja meg a koordinálás kimenetét, ha a `CustomStatus` mező értéke "London":
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -148,7 +147,7 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> A JavaScriptben a `customStatus` következő `yield` vagy `return` művelet ütemezésekor a mező lesz beállítva.
+> A JavaScriptben a `customStatus` következő `yield` vagy művelet ütemezésekor a mező lesz beállítva `return` .
 
 ---
 
@@ -156,7 +155,7 @@ module.exports = async function(context, req) {
 
 Egy másik érdekes forgatókönyv a felhasználók szegmentálása úgy, hogy egyedi tulajdonságok vagy interakciók alapján testreszabott kimenetet ad vissza. Az egyéni előkészítési állapot segítségével az ügyféloldali kód általános marad. Az összes fő módosítás a kiszolgálóoldali oldalon fog történni, ahogy az a következő mintában látható:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -233,7 +232,7 @@ module.exports = df.orchestrator(function*(context) {
 
 A Orchestrator egyéni állapoton keresztül egyedi utasításokat adhat az ügyfeleknek. Az egyéni állapotra vonatkozó utasításokat a rendszer a koordináló kód lépéseihez rendeli hozzá:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -294,7 +293,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Az alábbi példában az egyéni állapot beállítása először van megadva.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)

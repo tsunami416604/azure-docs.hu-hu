@@ -1,35 +1,33 @@
 ---
 title: Marketplace-mérési szolgáltatás hitelesítési stratégiái | Azure piactér
 description: Az Azure Marketplace-en támogatott mérési szolgáltatás-hitelesítési stratégiák.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/13/2020
-ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: e24dcdc2de94fe73f6bb83dcc03bbd1139503784
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642313"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120755"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace-mérési szolgáltatás hitelesítési stratégiái
 
 A Marketplace-mérési szolgáltatás két hitelesítési stratégiát támogat:
 
-* [Azure AD biztonsági jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Azure AD biztonsági jogkivonat](../../active-directory/develop/access-tokens.md)
+* [Felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 Megmagyarázjuk, hogy mikor és hogyan használhatók a különböző hitelesítési stratégiák az egyéni mérőszámok biztonságos beküldéséhez a piactér-mérési szolgáltatás használatával.
 
 ## <a name="using-the-azure-ad-security-token"></a>Az Azure AD biztonsági jogkivonat használata
 
-A megfelelő ajánlat típusok: SaaS-és Azure-alkalmazások felügyelt alkalmazási csomag típussal.  
+A kapcsolódó ajánlati típusok a felügyelhető SaaS-és Azure-alkalmazások, amelyek felügyelt alkalmazáscsomag-típussal rendelkeznek.  
 
-Egyéni mérőszámok elküldése egy előre meghatározott rögzített alkalmazás-azonosító használatával a hitelesítéshez.
+Egyéni mérőszámok elküldése egy előre meghatározott rögzített Azure AD-alkalmazás-azonosító használatával a hitelesítéshez.
 
-Az SaaS-ajánlatok esetében az Azure AD az egyetlen elérhető megoldás.
+SaaS-ajánlatok esetén ez az egyetlen elérhető lehetőség. Az SaaS-ajánlatok közzétételének kötelező lépése az [SaaS-alkalmazás regisztrálása](./pc-saas-registration.md)című témakörben leírtak szerint.
 
 A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokhoz a következő esetekben érdemes megfontolni a stratégia használatát:
 
@@ -38,7 +36,7 @@ A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokhoz a követk
 
 Az alkalmazás regisztrálását követően programozott módon kérhet Azure AD biztonsági jogkivonatot. A közzétevőnek a tokent kell használnia, és el kell végeznie a feloldását.
 
-További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](../../active-directory/develop/access-tokens.md).
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Token beszerzése az Azure AD-alkalmazás alapján
 
@@ -68,15 +66,15 @@ További információ ezekről a jogkivonatokról: [Azure Active Directory hozz�
 
 |  **Tulajdonság neve**  |  **Szükséges**  |  **Leírás**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True (Igaz)         | Adja meg a típust. Az alapértelmezett érték `client_credentials`. |
+|  `Grant_type`       |   True (Igaz)         | Adja meg a típust. A `client_credentials` címet használja. |
 |  `Client_id`        |   True (Igaz)         | Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító.|
-|  `client_secret`    |   True (Igaz)         | Az Azure AD-alkalmazáshoz társított jelszó.  |
-|  `Resource`         |   True (Igaz)         | A célként megadott erőforrás, amelyre a tokent kérték. Az alapértelmezett érték `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`.  |
+|  `client_secret`    |   True (Igaz)         | Az Azure AD-alkalmazáshoz társított titkos kulcs.  |
+|  `Resource`         |   True (Igaz)         | A célként megadott erőforrás, amelyre a tokent kérték. A `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` címet használja. |
 | | | |
 
 #### <a name="response"></a>*Válasz*
 
-|  **Név**    |  **Típus**  |  **Leírás**          |
+|  **Name (Név)**    |  **Típus**  |  **Leírás**          |
 |  ------------------ |--------------- | ----------------------  |
 |  `200 OK`     |   `TokenResponse`    | A kérelem sikeres volt.  |
 | | | |
@@ -106,17 +104,17 @@ Ezzel a módszerrel engedélyezheti, hogy az üzembe helyezett erőforrások ide
 >[!Note]
 >A közzétevőnek biztosítania kell, hogy a használatot kibocsátó erőforrások zárolva legyenek, így nem kerül illetéktelen módosításra.
 
-A felügyelt alkalmazás a Virtual Machinestól a Azure Functionsig különböző típusú erőforrásokat is tartalmazhat.  A különböző szolgáltatások felügyelt identitások használatával történő hitelesítésével kapcsolatos további információkért lásd: [felügyelt identitások használata az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources).
+A felügyelt alkalmazás a Virtual Machinestól a Azure Functionsig különböző típusú erőforrásokat is tartalmazhat.  A különböző szolgáltatások felügyelt identitások használatával történő hitelesítésével kapcsolatos további információkért lásd: [felügyelt identitások használata az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources).
 
 Az alábbi lépéseket követve például Windows rendszerű virtuális gép használatával végezheti el a hitelesítést,
 
 1. Győződjön meg arról, hogy a felügyelt identitás konfigurálva van a metódusok egyikének használatával:
-    * [Azure Portal felhasználói felület](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Azure SDK-k](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure Portal felhasználói felület](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [Parancssori felület](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Azure Resource Manager sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
+    * [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. Szerezzen be egy hozzáférési jogkivonatot a piactér-mérési szolgáltatásalkalmazás AZONOSÍTÓjának ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) a rendszeridentitás, az RDP és a virtuális gép között, nyissa meg a PowerShell-konzolt, és futtassa az alábbi parancsot
 
@@ -145,7 +143,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -153,6 +151,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
 1. Használja a [piactér-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -ját a használat kibocsátása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-alkalmazásajánlat létrehozása](./create-new-azure-apps-offer.md)
+* [Az SaaS-ajánlat létrehozása](./offer-creation-checklist.md)

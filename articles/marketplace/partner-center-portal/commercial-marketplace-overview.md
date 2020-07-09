@@ -1,18 +1,18 @@
 ---
 title: A kereskedelmi piactér-portáljának áttekintése a Partnerközpontban
 description: További információk a kereskedelmi piactér portálról a partner Centerben, valamint az ajánlatok listázása és értékesítése az Azure Marketplace-en, a AppSource és a Cloud Solution Provider (CSP) programon keresztül.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116692"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi piactér portál áttekintése a partner Centerben
 
@@ -34,7 +34,7 @@ Azok a meglévő közzétevők, akik korábban a Cloud Partner Portal használt�
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>A közzétételi és az ajánlat-kezelési felhasználói élmény fejlesztése
 
-A partneri központba való áttéréssel új funkciók érhetők el a kiadók számára, a felhasználói élmény fejlesztése mellett.  Részletekért lásd: a [Cloud Partner Portalról a partneri központba való Migrálás gyakori kérdései](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq).
+A partneri központba való áttéréssel új funkciók érhetők el a kiadók számára, a felhasználói élmény fejlesztése mellett.  Részletekért lásd: a [Cloud Partner Portalról a partneri központba való Migrálás gyakori kérdései](../cloud-partner-portal-migration-faq.md).
 
 ### <a name="account-and-user-management-updates"></a>Fiók-és felhasználói felügyeleti frissítések
 
@@ -50,10 +50,10 @@ A partner Center Analytics áttekintést nyújt az ajánlatok teljesítményér�
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>Tekintse meg az ütemtervet, és csatlakozzon a beszélgetéshez
 
-További információ a legújabb és jövőbeli kiadásokról: a [Microsoft kereskedelmi Marketplace-útitervének](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)meglátogatása, vagy a [Microsoft partner Közösségen](https://www.microsoftpartnercommunity.com/)belüli beszélgetés.
+További információ a legújabb és jövőbeli kiadásokról: a [Microsoft kereskedelmi Marketplace-útitervének](../marketplace-roadmap.md)meglátogatása, vagy a [Microsoft partner Közösségen](https://www.microsoftpartnercommunity.com/)belüli beszélgetés.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az új Microsoft-partnereknek, akik érdeklődnek az ajánlat közzétételére a piactéren, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)című témakört.
-- Azon meglévő partnerek esetében, akik korábban közzétett ajánlatokat Cloud Partner Portalban, [a kereskedelmi Marketplace-fiókot a partner Centerben kezelheti](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+- Az új Microsoft-partnereknek, akik érdeklődnek az ajánlat közzétételére a piactéren, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](create-account.md)című témakört.
+- Azon meglévő partnerek esetében, akik korábban közzétett ajánlatokat Cloud Partner Portalban, [a kereskedelmi Marketplace-fiókot a partner Centerben kezelheti](manage-account.md).
 - Tudjon meg többet a felhőalapú piactér-felügyeletről a partneri központba való áttérésről ebben a [partner Community blogbejegyzésben](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), amely tartalmaz egy bemutató videót.

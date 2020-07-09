@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672378"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
@@ -76,8 +75,8 @@ A Windows 10 november 2015-es vagy újabb kiadásaiban Enterprise State Roaming 
 
 Ha a különböző Azure AD-bérlők több Azure AD-fiókja ugyanazon az eszközön található, frissítenie kell az eszköz beállításjegyzékét az Azure Rights Management szolgáltatással való kommunikációra minden egyes Azure AD-bérlő esetében.  
 
-1. Keresse meg az egyes Azure AD-bérlők GUID azonosítóját. Nyissa meg a Azure Portal, és válasszon ki egy Azure AD-bérlőt. A bérlő GUID-azonosítója a kiválasztott bérlő tulajdonságlapján található (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)a címkével ellátott CÍMTÁR- **azonosítóval**. 
-2. A GUID azonosítójának megadása után hozzá kell adnia a **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc\<-bérlői azonosító GUID->** beállításkulcsot.
+1. Keresse meg az egyes Azure AD-bérlők GUID azonosítóját. Nyissa meg a Azure Portal, és válasszon ki egy Azure AD-bérlőt. A bérlő GUID-azonosítója a kiválasztott bérlő tulajdonságlapján található (a https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) címkével ellátott **CÍMTÁR-azonosítóval**. 
+2. A GUID azonosító megadása után hozzá kell adnia a **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **beállításkulcsot.
    A **bérlői azonosító GUID** kulcsában hozzon létre egy új, **AllowedRMSServerUrls**nevű Multi-String értéket (reg-multi-sz). Az adatmennyiség beállításnál határozza meg az eszköz által használt többi Azure-bérlő licencelési terjesztési pontjának URL-címeit.
 3. A licencelési terjesztési pontok URL-címei a **Get-AadrmConfiguration** parancsmagnak a AADRM modulból való futtatásával találhatók meg. Ha a **LicensingIntranetDistributionPointUrl** és a **LicensingExtranetDistributionPointUrl** értéke eltérő, akkor mindkét értéket meg kell adni. Ha az értékek megegyeznek, csak egyszer kell megadnia az értéket.
 
@@ -112,7 +111,7 @@ A Windows 10 rendszerben nincs MDM vagy Csoportházirend beállítás a barangol
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>Hogyan engedélyezhető vagy tiltható le a barangolás?
 
-A **Beállítások** alkalmazásban lépjen a **fiókok** > **szinkronizálása beállítások menüpontra**. Ezen a lapon megtekintheti, hogy melyik fiókot használja a rendszer a barangolási beállításokhoz, és engedélyezheti vagy letilthatja a barangolni kívánt beállítások egyedi csoportjait.
+A **Beállítások** alkalmazásban lépjen a **fiókok**  >  **szinkronizálása beállítások menüpontra**. Ezen a lapon megtekintheti, hogy melyik fiókot használja a rendszer a barangolási beállításokhoz, és engedélyezheti vagy letilthatja a barangolni kívánt beállítások egyedi csoportjait.
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Mi a Microsoft javaslata a barangolás engedélyezésére a Windows 10 rendszerben?
 

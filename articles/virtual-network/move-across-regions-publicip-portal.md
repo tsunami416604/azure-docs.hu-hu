@@ -1,24 +1,23 @@
 ---
-title: Azure-beli nyilvános IP-cím áthelyezése egy másik Azure-régióba a Azure Portal használatával
-description: Azure Resource Manager sablonnal áthelyezheti az Azure nyilvános IP-címét az egyik Azure-régióból a másikba a Azure Portal használatával.
+title: Azure nyilvános IP-konfiguráció áthelyezése másik Azure-régióba Azure Portal
+description: Egy sablon használatával áthelyezheti az Azure nyilvános IP-konfigurációját egyik Azure-régióból a másikba a Azure Portal használatával.
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711476"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Azure-beli nyilvános IP-cím áthelyezése másik régióba a Azure Portal használatával
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Azure nyilvános IP-konfiguráció áthelyezése másik régióba a Azure Portal használatával
 
-Különböző helyzetekben érdemes áthelyezni a meglévő Azure nyilvános IP-címeket az egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy nyilvános IP-címet ugyanazzal a konfigurációval és SKU-val a teszteléshez. Előfordulhat, hogy a vész-helyreállítási tervezés részeként egy nyilvános IP-címet is át szeretne helyezni egy másik régióba.
+Különböző helyzetekben érdemes áthelyezni a meglévő Azure nyilvános IP-konfigurációkat az egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy nyilvános IP-címet ugyanazzal a konfigurációval és SKU-val a teszteléshez. Előfordulhat, hogy a vész-helyreállítási tervezés részeként egy nyilvános IP-konfigurációt is át szeretne helyezni egy másik régióba.
 
-Az Azure nyilvános IP-címei régió-specifikusak, és nem helyezhetők át egyik régióból a másikba. A nyilvános IP-címek meglévő konfigurációjának exportálásához azonban használhat egy Azure Resource Manager sablont is.  Az erőforrást egy másik régióban is elvégezheti, ha a nyilvános IP-címet egy sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban.  A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
+**Az Azure nyilvános IP-címei régió-specifikusak, és nem helyezhetők át egyik régióból a másikba.** A nyilvános IP-címek meglévő konfigurációjának exportálásához azonban használhat egy Azure Resource Manager sablont is.  Az erőforrást egy másik régióban is elvégezheti, ha a nyilvános IP-címet egy sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban.  A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -41,12 +40,12 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Sablon exportálása és üzembe helyezése parancsfájlból
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com)  >  **erőforráscsoporthoz**.
 2. Keresse meg a forrás nyilvános IP-címet tartalmazó erőforráscsoportot, és kattintson rá.
-3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
-5. Kattintson a **sablon** > **szerkesztése paraméterek** lehetőségre a **Parameters. JSON** fájl megnyitásához az online szerkesztőben.
-8. A nyilvános IP-cím paraméterének szerkesztéséhez módosítsa a forrás nyilvános IP-címe **paraméter** > **értéke** alatt található tulajdonságot a cél nyilvános IP-címére, és győződjön meg arról, hogy a név idézőjelek közé esik:
+5. Kattintson a **sablon**  >  **szerkesztése paraméterek** lehetőségre, hogy megnyissa a **parameters.js** fájlt az online szerkesztőben.
+8. A nyilvános IP-cím paraméterének szerkesztéséhez módosítsa a forrás nyilvános IP-címe **paraméter**értéke alatt található tulajdonságot a  >  **value** cél nyilvános IP-címére, és győződjön meg arról, hogy a név idézőjelek közé esik:
 
     ```json
             {
@@ -62,7 +61,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
     ```
 8.  Kattintson a **Mentés** gombra a szerkesztőben.
 
-9.   > Kattintson **a sablon****szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben.
+9.  Kattintson **a sablon**  >  **szerkesztése** gombra a **template.js** fájl megnyitásához az online szerkesztőben.
 
 10. A nyilvános IP-címet áthelyező cél régió szerkesztéséhez módosítsa a **Location (hely** ) tulajdonságot az **erőforrások**területen.
 
@@ -90,11 +89,11 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
              ]
     ```
 
-11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
+11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS**.
 
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
 
-    * **SKU** – a konfigurációban a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható a **sablon. JSON** fájljának **SKU** > **Name** tulajdonságának megváltoztatásával:
+    * **SKU** – a konfigurációban a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható úgy, hogy az **SKU**  >  **Name** tulajdonságát a fájl **template.js** módosítja:
 
         ```json
           "resources": [
@@ -140,11 +139,11 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 
 13. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
 
-14. Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, ahol a cél nyilvános IP-címet telepíteni fogja. **BASICS** > 
+14. **BASICS**  >  Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, ahol a cél nyilvános IP-címet telepíteni fogja.
 
-15. Az alapszintű**erőforráscsoport** elemre kattintva kiválaszthatja azt az erőforráscsoportot, amelyben a célként megadott nyilvános IP-címet telepíteni fogja. **BASICS** >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a célként megadott nyilvános IP-címhez.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás nyilvános IP-cím forrás-erőforráscsoport.
+15. Az alapszintű erőforráscsoport **elemre**kattintva  >  **Resource group** kiválaszthatja azt az erőforráscsoportot, amelyben a célként megadott nyilvános IP-címet telepíteni fogja.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a célként megadott nyilvános IP-címhez.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás nyilvános IP-cím forrás-erőforráscsoport.
 
-16. Győződjön meg arról, hogy az **alapvető beállítások** > **helye** arra a célhelyre van beállítva, ahol a nyilvános IP-címet telepíteni kívánja.
+16. Győződjön meg arról, hogy az **alapvető beállítások**  >  **helye** arra a célhelyre van beállítva, ahol a nyilvános IP-címet telepíteni kívánja.
 
 17. Ellenőrizze a **Beállítások** területen, hogy a név megegyezik-e a fenti Parameters Editorban megadott névvel.
 

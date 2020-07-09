@@ -4,10 +4,9 @@ description: Ismerje meg az Azure monitoring Services, a metrikák, a diagnoszti
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723527"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
@@ -58,7 +57,7 @@ A Batch-alkalmazásokban a Batch API-k segítségével figyelheti vagy lekérdez
 * A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre. Opcionálisan konfigurálhatja a Batch-megoldást úgy, hogy az Application Insights adatait, például a virtuális gépek teljesítményszámlálói a Batch Explorerben [jelenjenek meg](https://github.com/Azure/batch-insights) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * További információ a Batch szolgáltatással történő [diagnosztikai naplózásról](batch-diagnostics.md) .

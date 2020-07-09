@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 05/15/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 96828a854c340b89c26023ce60f9c85dd1bb4cdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: 8a3de37f6442900f600f3c6a3efaf75141d151bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80473917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808992"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
@@ -170,7 +170,7 @@ Ha törölni szeretne egy várólistát és a benne található összes üzenete
 Remove-AzStorageQueue –Name $queueName –Context $ctx
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az ebben a gyakorlatban létrehozott összes eszköz eltávolításához távolítsa el az erőforráscsoportot. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott Storage-fiókot és magát az erőforráscsoportot.
 

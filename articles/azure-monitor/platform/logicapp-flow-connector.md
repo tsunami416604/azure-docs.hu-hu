@@ -7,17 +7,25 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248736"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor a naplók összekötőjét a Logic Apps és a flow számára
 A [Azure Logic apps](/azure/logic-apps/) és a [Power automatizálása](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
 
 Létrehozhat például egy logikai alkalmazást, amellyel Azure Monitor naplózhatja az adatait az Office 365 e-mail értesítésében, létrehozhat egy hibát az Azure DevOps, vagy közzétehet egy Slack-üzenetet.  A munkafolyamatot egy egyszerű vagy egy csatlakoztatott szolgáltatás egyes műveleteiből is elindíthatja, például e-mail vagy Tweet érkezésekor. 
+
+## <a name="connector-limits"></a>Összekötő korlátai
+A Azure Monitor naplók összekötője a következő korlátozásokkal rendelkezik:
+* Maximális adatméret: 16 MB
+* Maximális lekérdezési válasz mérete 100 MB
+* Rekordok maximális száma: 500 000
+* A lekérdezés maximális időtúllépése 110 másodperc.
+
+Az adat méretétől és a használt lekérdezéstől függően előfordulhat, hogy az összekötő eléri a korlátait, és sikertelen lesz. Ilyen eseteket is használhat, amikor az eseményindító ismétlődését úgy állítja be, hogy gyakrabban fusson, és kevesebb adattal Kérdezzen le. Az adatokat összesítő lekérdezések használatával kevesebb rekordot és oszlopot adhat vissza.
 
 ## <a name="actions"></a>Műveletek
 A következő táblázat ismerteti a Azure Monitor naplók összekötőhöz tartozó műveleteket. Mindkettő lehetővé teszi, hogy naplózási lekérdezést futtasson Log Analytics munkaterületen vagy Application Insights alkalmazáson. A különbség az, ahogy az adatvisszaadás történik.
@@ -26,7 +34,7 @@ A következő táblázat ismerteti a Azure Monitor naplók összekötőhöz tart
 > A Azure Monitor naplók összekötő helyettesíti az [azure log Analytics-összekötőt](https://docs.microsoft.com/connectors/azureloganalytics/) és az [Azure Application Insights-összekötőt](https://docs.microsoft.com/connectors/applicationinsights/). Ez az összekötő ugyanazokat a funkciókat biztosítja, mint a többi, és az előnyben részesített módszer egy Log Analytics-munkaterületre vagy egy Application Insights alkalmazásra vonatkozó lekérdezés futtatásához.
 
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |:---|:---|
 | [Lekérdezési és listázási eredmények futtatása](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Az egyes sorok visszaadása saját objektumként. Akkor használja ezt a műveletet, ha az egyes sorokat a munkafolyamat többi részén külön szeretné használni. A műveletet általában az [egyes tevékenységek esetében](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)követi. |
 | [Lekérdezés futtatása és eredmények megjelenítése](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Az eredményhalmaz összes sorát adja vissza egyetlen formázott objektumként. Akkor használja ezt a műveletet, ha az eredmény-készletet a munkafolyamat többi részén együtt szeretné használni, például az eredményeket egy levélben küldje el.  |

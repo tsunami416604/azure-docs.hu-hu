@@ -1,10 +1,9 @@
 ---
-title: Rendelkezésre állási csoport konfigurálása különböző régiók között
-description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni egy SQL Server rendelkezésre állási csoportot az Azure-beli virtuális gépeken egy másik régióban lévő replikával.
+title: SQL Server always on rendelkezésre állási csoport konfigurálása különböző régiók között
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a SQL Server always on rendelkezésre állási csoport az Azure-beli virtuális gépeken egy másik régióban lévő replikával.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
@@ -15,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 996b5a59c5c79a045cd396a24778fe0928682c5a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 8ab62a93546719e172eec34168a0692daccf281a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669307"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Rendelkezésre állási csoport konfigurálása az Azure SQL Server-beli virtuális gépeken különböző régiókban
+# <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>SQL Server always on rendelkezésre állási csoport konfigurálása különböző Azure-régiók között
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk azt ismerteti, hogyan konfigurálható a SQL Server always on rendelkezésre állási csoport replikája az Azure-beli virtuális gépeken egy távoli Azure-helyen. Ezt a konfigurációt használhatja a vész-helyreállítás támogatásához.
@@ -113,7 +112,7 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
 1. Adjon hozzá egy IP-cím erőforrást a fürt rendelkezésre állási csoport szerepköréhez. 
 
-   Kattintson a jobb gombbal a rendelkezésre állási csoport szerepkörre a Feladatátvevőfürt-kezelő, majd válassza az **erőforrás hozzáadása**, **További erőforrások**, majd az **IP-cím**lehetőséget.
+   Kattintson a jobb gombbal a rendelkezésre állási csoport szerepkörre a Feladatátvevőfürt-kezelőban, majd válassza az **erőforrás hozzáadása**, **További erőforrások**, majd az **IP-cím**lehetőséget.
 
    ![IP-cím létrehozása](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -133,7 +132,7 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
 1. [A fürt paramétereinek beállítása a PowerShellben](availability-group-manually-configure-tutorial.md#setparam).
 
-Futtassa a PowerShell-parancsfájlt az új régióban a terheléselosztó által konfigurált fürthálózat-névvel, IP-címmel és mintavételi porttal.
+   Futtassa a PowerShell-parancsfájlt az új régióban a terheléselosztó által konfigurált fürthálózat-névvel, IP-címmel és mintavételi porttal.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -170,16 +169,16 @@ Ha nem tudja módosítani a kapcsolatok karakterláncait, beállíthatja a névf
 Ha tesztelni szeretné a figyelőt a távoli régióval, feladatátvételt hajthat végre a távoli régióban. Amíg a replika aszinkron, a feladatátvétel sebezhető a lehetséges adatvesztéssel szemben. Az adatvesztés nélküli feladatátvételhez módosítsa a rendelkezésre állási módot szinkron értékre, és állítsa a feladatátvételi módot automatikusra. Ehhez a következő lépések szükségesek:
 
 1. **Object Explorer**az elsődleges replikát futtató SQL Server példányához kapcsolódjon.
-1. A **AlwaysOn rendelkezésre állási csoportok**, **rendelkezésre állási csoportok**területen kattintson a jobb gombbal a rendelkezésre állási csoportra, majd kattintson a **Tulajdonságok**elemre.
+1. A **AlwaysOn rendelkezésre állási csoportok**, **rendelkezésre állási csoportok**területen kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza a **Tulajdonságok**lehetőséget.
 1. Az **általános** lapon, a **rendelkezésre állási replikák**területen állítsa a Dr hely másodlagos replikáját **szinkron véglegesítő** rendelkezésre állási mód és **automatikus** feladatátvételi mód használatára.
 1. Ha a magas rendelkezésre állás érdekében az elsődleges replikával azonos helyen található másodlagos replika, állítsa ezt a replikát **aszinkron véglegesítés** és **manuális**értékre.
 1. Kattintson az OK gombra.
-1. **Object Explorer**kattintson a jobb gombbal a rendelkezésre állási csoportra, majd kattintson az **irányítópult megjelenítése**lehetőségre.
+1. **Object Explorer**kattintson a jobb gombbal a rendelkezésre állási csoportra, majd válassza az **irányítópult megjelenítése**elemet.
 1. Az irányítópulton ellenőrizze, hogy a DR helyen lévő replika szinkronizálva van-e.
-1. A **Object Explorer**kattintson a jobb gombbal a rendelkezésre állási csoportra, majd kattintson a **feladatátvétel.**.. elemre. SQL Server felügyeleti stúdiók megnyitnak egy varázslót, amely feladatátvételt SQL Server.  
-1. Kattintson a **tovább**gombra, és válassza ki a SQL Server példányt a Dr webhelyén. Kattintson ismét a **Next** (Tovább) gombra.
+1. A **Object Explorer**kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza a **feladatátvétel...** lehetőséget. SQL Server felügyeleti stúdiók megnyitnak egy varázslót, amely feladatátvételt SQL Server.  
+1. Válassza a **tovább**lehetőséget, majd válassza ki a SQL Server példányt a Dr helyen. Válassza a **tovább** gombot.
 1. Kapcsolódjon a DR-hely SQL Server-példányához, és kattintson a **tovább**gombra.
-1. Az **Összefoglalás** lapon ellenőrizze a beállításokat, majd kattintson a **Befejezés**gombra.
+1. Az **Összefoglalás** lapon ellenőrizze a beállításokat, majd válassza a **Befejezés**lehetőséget.
 
 A kapcsolat tesztelése után helyezze vissza az elsődleges replikát az elsődleges adatközpontba, és állítsa vissza a rendelkezésre állási módot a normál működési beállításokra. A következő táblázat a jelen dokumentumban ismertetett architektúra normál működési beállításait mutatja be:
 
@@ -197,9 +196,9 @@ További információkért tekintse át a következők témaköröket:
 - [Rendelkezésre állási csoport tervezett manuális feladatátvételének végrehajtása (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Egy rendelkezésre állási csoport kényszerített manuális feladatátvételének végrehajtása (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>További hivatkozások
+## <a name="next-steps"></a>További lépések
 
 * [Always On rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure-Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Azure rendelkezésre állási készletek](../../../virtual-machines/linux/manage-availability.md)

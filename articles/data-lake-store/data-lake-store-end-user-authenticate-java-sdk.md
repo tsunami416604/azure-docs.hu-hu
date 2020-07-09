@@ -3,15 +3,15 @@ title: Végfelhasználói hitelesítés – Java és Data Lake Storage Gen1 – 
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést a Azure Data Lake Storage Gen1 használatával a Azure Active Directory Javával
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1e03ad657fd40dce22a17f2fff5b67a65eb3eb52
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d5396b6fa45f8af3d2f20a6c2425e99a4e36db0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691761"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984998"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 a Javával
 > [!div class="op_single_selector"]
@@ -36,37 +36,43 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Java SDK-t a végfelhaszn�
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm).
 
-2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Adja hozzá a következő kódrészletet a ** \</Project>** címke előtt:
+2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Adja hozzá a következő kódrészletet a **\</project>** címke elé:
    
-        <dependencies>
-          <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-          </dependency>
-        </dependencies>
+    ```xml
+    <dependencies>
+      <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-data-lake-store-sdk</artifactId>
+        <version>2.2.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.21</version>
+      </dependency>
+    </dependencies>
+    ```
    
-    Az első függőség a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) használata a Maven adattárból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Storage Gen1 SDK a [SLF4J](https://www.slf4j.org/) -naplózási homlokzatot használja, amely számos népszerű naplózási keretrendszer közül választhat, például Log4j, Java-naplózás, Logback stb., vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
+    Az első függőség a Data Lake Storage Gen1 SDK () használata a `azure-data-lake-store-sdk` Maven adattárból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Storage Gen1 SDK a [SLF4J](https://www.slf4j.org/) -naplózási homlokzatot használja, amely számos népszerű naplózási keretrendszer közül választhat, például Log4j, Java-naplózás, Logback stb., vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 
-        import com.microsoft.azure.datalake.store.ADLException;
-        import com.microsoft.azure.datalake.store.ADLStoreClient;
-        import com.microsoft.azure.datalake.store.DirectoryEntry;
-        import com.microsoft.azure.datalake.store.IfExists;
-        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
-        import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
+    ```java
+    import com.microsoft.azure.datalake.store.ADLException;
+    import com.microsoft.azure.datalake.store.ADLStoreClient;
+    import com.microsoft.azure.datalake.store.DirectoryEntry;
+    import com.microsoft.azure.datalake.store.IfExists;
+    import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+    import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
+    ```
 
-4. A Java-alkalmazásban az alábbi kódrészlettel szerezheti be a korábban a `DeviceCodeTokenProvider`használatával létrehozott Active Directory natív alkalmazás jogkivonatát. Cserélje le a **Fill-in-here** értéket a Azure Active Directory natív alkalmazás tényleges értékeire.
+4. A Java-alkalmazásban az alábbi kódrészlettel szerezheti be a korábban a használatával létrehozott Active Directory natív alkalmazás jogkivonatát `DeviceCodeTokenProvider` . Cserélje le a **Fill-in-here** értéket a Azure Active Directory natív alkalmazás tényleges értékeire.
 
-        private static String nativeAppId = "FILL-IN-HERE";
+    ```java
+    private static String nativeAppId = "FILL-IN-HERE";
             
-        AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
+    AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
+    ```
 
 A Data Lake Storage Gen1 SDK kényelmes módszereket biztosít a Data Lake Storage Gen1-fiókkal való kommunikációhoz szükséges biztonsági jogkivonatok kezeléséhez. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
 

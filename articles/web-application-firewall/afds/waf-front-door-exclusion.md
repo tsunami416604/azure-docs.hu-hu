@@ -8,10 +8,9 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925929"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Webalkalmazási tűzfal (WAF) a bejárati ajtó szolgáltatás kizárási listájával 
@@ -20,10 +19,10 @@ Előfordulhat, hogy a webalkalmazási tűzfal (WAF) blokkolni kívánja az alkal
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Kizárási listák konfigurálása a Azure Portal használatával
 A **kizárások kezelése** a WAF-portálról a **felügyelt szabályok** területen érhető el
 
-![Kizárások](../media/waf-front-door-exclusion/exclusion1.png)
-![kezelése exclusion_add kezelése](../media/waf-front-door-exclusion/exclusion2.png)
+![Kizárások ](../media/waf-front-door-exclusion/exclusion1.png)
+ ![ kezelése exclusion_add kezelése](../media/waf-front-door-exclusion/exclusion2.png)
 
- Példa kizárási listára ![: exclusion_define kezelése](../media/waf-front-door-exclusion/exclusion3.png)
+ Példa kizárási listára: ![ exclusion_define kezelése](../media/waf-front-door-exclusion/exclusion3.png)
 
 Ez a példa a *felhasználói* fejléc mezőben lévő értéket zárja ki. Egy érvényes kérelem tartalmazhatja az SQL-injektálási szabályt kiváltó karakterláncot tartalmazó *felhasználói* mezőt is. Ebben az esetben kizárhatja a *felhasználói* paramétereket, így a WAF-szabály nem értékel semmit a mezőben.
 

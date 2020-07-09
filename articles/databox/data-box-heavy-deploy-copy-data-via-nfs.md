@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238985"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711255"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Oktatóanyag: az Adatmásolás Azure Data Box Heavy NFS-en keresztül
 
@@ -33,7 +33,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 1. Elvégezte az [oktatóanyagot: Azure Data Box Heavy beállítása](data-box-heavy-deploy-set-up.md).
 2. Megkapta a Data Box Heavyt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
 3. Rendelkezik egy gazdagéppel, amelyen a Data Box Heavyre másolni kívánt adatok találhatók. A gazdaszámítógépen:
-    - Futtasson egy [támogatott operációs rendszert](data-box-heavy-system-requirements.md).
+    - egy [támogatott operációs rendszernek](data-box-heavy-system-requirements.md) kell futnia;
     - egy nagy sebességű hálózathoz kell csatlakoznia. A legnagyobb másolási sebesség érdekében két 40 GbE sebességű kapcsolat (csomópontonként egy) használható egyidejűleg. Ha nem rendelkezik 40 GbE sebességű kapcsolattal, javasoljuk, hogy legalább két 10 GbE sebességű kapcsolattal (csomópontonként eggyel) rendelkezzen. 
 
 ## <a name="connect-to-data-box-heavy"></a>Csatlakozás a Data Box Heavyhez
@@ -77,7 +77,7 @@ Ha Linux rendszerű gazdagépet használ, a következő lépésekkel konfigurál
 
     `sudo mount <Data Box Heavy device IP>:/<NFS share on Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Az alábbi példa bemutatja, hogyan csatlakozhat NFS-en keresztül egy Data Box Heavy-megosztáshoz. A Data Box Heavy IP- `10.161.23.130`cím: a `Mystoracct_Blob` megosztás a ubuntuVM, a csatlakoztatási ponthoz `/home/databoxheavyubuntuhost/databoxheavy`van csatlakoztatva.
+    Az alábbi példa bemutatja, hogyan csatlakozhat NFS-en keresztül egy Data Box Heavy-megosztáshoz. A Data Box Heavy IP-cím: `10.161.23.130` a megosztás a `Mystoracct_Blob` ubuntuVM, a csatlakoztatási ponthoz van csatlakoztatva `/home/databoxheavyubuntuhost/databoxheavy` .
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
     
@@ -100,7 +100,7 @@ Ha csatlakozott a Data Box Heavy-megosztásokhoz, a következő lépés az Adatm
     - Az eset a névben marad.
     - A fájlok kis-és nagybetűk megkülönböztetése nélkül.
     
-    Ha például a másolás `SampleFile.txt` és `Samplefile.Txt`a, akkor a rendszer a nevet az eszközre való másoláskor megőrzi, de a második fájl felülírja az elsőt, mivel ezek ugyanaz a fájlnak tekintendők.
+    Ha például a másolás és a, akkor a rendszer a `SampleFile.txt` nevet az `Samplefile.Txt` eszközre való másoláskor megőrzi, de a második fájl felülírja az elsőt, mivel ezek ugyanaz a fájlnak tekintendők.
 
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  

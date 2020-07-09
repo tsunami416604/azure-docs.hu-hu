@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
 ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792539"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT-dokumentumok kezelése UNH 2.5-es szegmensekkel Azure Logic Apps
 
-Ha egy UNH 2.5-ös szegmens létezik egy EDIFACT-dokumentumban, a rendszer a szegmenst használja a séma kereséséhez. Ebben a példában a EDIFACT-üzenetben a UNH mező a következő `EAN008`:
+Ha egy UNH 2.5-ös szegmens létezik egy EDIFACT-dokumentumban, a rendszer a szegmenst használja a séma kereséséhez. Ebben a példában a EDIFACT-üzenetben a UNH mező a következő `EAN008` :
 
 `UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
 
@@ -29,7 +28,7 @@ Az üzenet kezeléséhez kövesse az alábbi lépéseket:
 
 ## <a name="update-the-schema"></a>A séma frissítése
 
-Az üzenet feldolgozásához olyan sémát kell központilag telepíteni, amely rendelkezik a UNH 2.5-ös gyökértartomány-névvel. A minta UNH mezőjében például a séma gyökerének neve szerepel `EFACT_D03B_ORDERS_EAN008`. Mindegyikhez `D03B_ORDERS` eltérő unh 2.5-es szegmenssel kell telepítenie egy különálló sémát.
+Az üzenet feldolgozásához olyan sémát kell központilag telepíteni, amely rendelkezik a UNH 2.5-ös gyökértartomány-névvel. A minta UNH mezőjében például a séma gyökerének neve szerepel `EFACT_D03B_ORDERS_EAN008` . Mindegyikhez `D03B_ORDERS` eltérő unh 2.5-es szegmenssel kell telepítenie egy különálló sémát.
 
 ## <a name="add-schema-to-edifact-agreement"></a>Séma hozzáadása a EDIFACT-szerződéshez
 

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: b53e37384ba85770b445f834c440075cd35b6eb2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041874"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Ügyféloldali kódtár Elastic Database Entity Framework
@@ -191,7 +190,7 @@ Annak szabályozására van szükség, hogy az átmeneti kivételek milyen mért
 
 A fenti kód a fenti példák szemléltetik az alkalmazáshoz szükséges alapértelmezett konstruktorok újraírásait, hogy az Adatfüggő útválasztást a Entity Framework használatával használhassa. A következő táblázat általánosítja ezt a megközelítést más konstruktorok számára.
 
-| Aktuális konstruktor | Újraírható konstruktor az adatforgalomhoz | Alapkonstruktor | Megjegyzések |
+| Aktuális konstruktor | Újraírható konstruktor az adatforgalomhoz | Alapkonstruktor | Jegyzetek |
 | --- | --- | --- | --- |
 | MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kapcsolódásnak a szegmens Térkép és az Adatfüggő útválasztási kulcs függvényének kell lennie. Az EF használatával kell átadnia az automatikus kapcsolódást, és ehelyett a szegmenses leképezést kell használnia a kapcsolatok közvetítéséhez. |
 | MyContext (karakterlánc) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kötés a szegmens Térkép és az Adatfüggő útválasztási kulcs függvénye. A rögzített adatbázis-név vagy a kapcsolatok karakterlánca nem működik, mert a szegmenses Térkép átadja az ellenőrzést. |

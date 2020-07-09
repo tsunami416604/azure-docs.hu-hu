@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: b70db03e03ce914ea1d81d94cd2803a36eccfc88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418218"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Adatok másolása az Impala-ből Azure Data Factory használatával
@@ -39,7 +39,7 @@ A Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedél
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -51,7 +51,7 @@ Az Impala társított szolgáltatás a következő tulajdonságokat támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot az **Impala**értékre kell beállítani. | Igen |
+| típus | A Type tulajdonságot az **Impala**értékre kell beállítani. | Igen |
 | gazda | Az Impala-kiszolgáló IP-címe vagy állomásneve (azaz 192.168.222.160).  | Igen |
 | port | Az a TCP-port, amelyet az Impala-kiszolgáló az ügyfélkapcsolatok figyelésére használ. Az alapértelmezett érték a 21050.  | Nem |
 | authenticationType | A használni kívánt hitelesítési típus. <br/>Az engedélyezett értékek a **Névtelen**, a **SASLUsername**és a **UsernameAndPassword**. | Igen |
@@ -64,7 +64,7 @@ Az Impala társított szolgáltatás a következő tulajdonságokat támogatja.
 | allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték: **hamis**.  | Nem |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -97,12 +97,12 @@ Az adatok Impala-ból való másolásához állítsa az adatkészlet Type (típu
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ImpalaObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ImpalaObject** | Igen |
 | séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. A `schema` és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -129,10 +129,10 @@ Az adatok Impala-ből való másolásához állítsa a forrás típusát a máso
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **ImpalaSource**értékre kell állítani. | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát **ImpalaSource**értékre kell állítani. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

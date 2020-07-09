@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: c36d651fde4c10157979e12fda12604153aefdfc
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 713e4e162ff16b674df88036adbaba6fa210c815
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561879"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106058"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -110,7 +110,7 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információ: [az Microsoft Azure megfelelőségének áttekintése][compliance-doc].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS üzembe helyezéséről és felügyeletéről.
 
@@ -140,6 +140,6 @@ Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS ü
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md

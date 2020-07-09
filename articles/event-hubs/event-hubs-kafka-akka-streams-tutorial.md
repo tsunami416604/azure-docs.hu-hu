@@ -1,22 +1,14 @@
 ---
 title: A Apache Kafka-Azure Event Hubs-hoz készült beadási streamek használata | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók az Azure Event hub-ba a kiszolgált adatfolyamok.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320207"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Akka Streams használata az Apache Kafkához készült Event Hubs szolgáltatással
 Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja a kisegítő adatfolyamokat egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Kafka Azure-Event Hubs [Apache Kafka 1,0-es verzióval támogatott.](https://kafka.apache.org/10/documentation.html)
@@ -51,7 +43,7 @@ Bármely Event Hubs szolgáltatásból történő küldéshez vagy fogadáshoz E
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
-Most, hogy rendelkezik egy Event Hubs kapcsolódási karakterlánccal, klónozott az Azure-Event Hubs a Kafka-tárházhoz `akka` , és navigáljon az almappába:
+Most, hogy rendelkezik egy Event Hubs kapcsolódási karakterlánccal, klónozott az Azure-Event Hubs a Kafka-tárházhoz, és navigáljon az `akka` almappába:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -66,7 +58,7 @@ A megadott beadási streamek gyártói példájának használatával üzeneteket
 
 #### <a name="producer-applicationconf"></a>Producer Application. conf
 
-A `bootstrap.servers` és `sasl.jaas.config` a értékének `producer/src/main/resources/application.conf` frissítésével irányítsa a gyártót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
+A `bootstrap.servers` és a `sasl.jaas.config` értékének frissítésével `producer/src/main/resources/application.conf` irányítsa a gyártót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
 
 ```xml
 akka.kafka.producer {
@@ -93,7 +85,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-A gyártó megkezdi az események küldését az Event `test`hub számára a témakörben, és kinyomtatja az eseményeket az stdout-ba.
+A gyártó megkezdi az események küldését az Event hub számára a témakörben `test` , és kinyomtatja az eseményeket az stdout-ba.
 
 ## <a name="run-akka-streams-consumer"></a>A bevezetési streamek fogyasztójának futtatása
 
@@ -103,7 +95,7 @@ A megadott fogyasztói példa használatával fogadhat üzeneteket az Event hub-
 
 #### <a name="consumer-applicationconf"></a>Consumer Application. conf
 
-A `bootstrap.servers` és `sasl.jaas.config` a értékének `consumer/src/main/resources/application.conf` frissítésével irányítsa a fogyasztót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
+A `bootstrap.servers` és a `sasl.jaas.config` értékének frissítésével `consumer/src/main/resources/application.conf` irányítsa a fogyasztót a Event Hubs Kafka-végpontra a megfelelő hitelesítéssel.
 
 ```xml
 akka.kafka.consumer {
@@ -133,7 +125,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Ha az Event hub eseményeivel rendelkezik (például ha a gyártó is fut), akkor a fogyasztó megkezdi az események fogadását `test`a témakörből. 
+Ha az Event hub eseményeivel rendelkezik (például ha a gyártó is fut), akkor a fogyasztó megkezdi az események fogadását a témakörből `test` . 
 
 Tekintse meg a bevezetési [Streams Kafka-útmutatót](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) , ahol részletesebb információkat találhat a bevezető streamekről.
 

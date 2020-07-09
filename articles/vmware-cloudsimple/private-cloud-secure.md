@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4541874a9e8fc4111e5c65d02f07535c4d14f9f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829873"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Saját felhőalapú környezet biztonságossá tétele
 
@@ -29,16 +29,16 @@ A CloudSimple szolgáltatás létrehozásához **tulajdonosi** vagy **közreműk
 
 Csak azok a felhasználók láthatják a CloudSimple szolgáltatást, akik **tulajdonosi** vagy **közreműködői** jogosultsággal rendelkeznek az erőforráscsoport számára, és elindítják a CloudSimple-portált.
 
-További információ a RBAC: [Mi az Azure-erőforrások szerepköralapú hozzáférés-vezérlése (RBAC)](../role-based-access-control/overview.md).
+További információ: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md).
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC a saját felhőalapú vCenter
 
-A rendszer létrehoz `CloudOwner@cloudsimple.local` egy alapértelmezett felhasználót a vCenter SSO-tartományban a saját felhő létrehozásakor.  A CloudOwner-felhasználó jogosultságokkal rendelkezik a vCenter kezeléséhez. A rendszer további identitási forrásokat ad hozzá a vCenter SSO-hoz a különböző felhasználókhoz való hozzáférés biztosítása érdekében.  Az előre definiált szerepkörök és csoportok a vCenter vannak beállítva, amelyek további felhasználók hozzáadására használhatók.
+A rendszer létrehoz egy alapértelmezett felhasználót `CloudOwner@cloudsimple.local` a VCENTER SSO-tartományban a saját felhő létrehozásakor.  A CloudOwner-felhasználó jogosultságokkal rendelkezik a vCenter kezeléséhez. A rendszer további identitási forrásokat ad hozzá a vCenter SSO-hoz a különböző felhasználókhoz való hozzáférés biztosítása érdekében.  Az előre definiált szerepkörök és csoportok a vCenter vannak beállítva, amelyek további felhasználók hozzáadására használhatók.
 
 ### <a name="add-new-users-to-vcenter"></a>Új felhasználók hozzáadása a vCenter
 
-1. A **CloudOwner\@cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
-2. Jelentkezzen be a **vCenter\@CloudOwner cloudsimple. local** használatával
+1. A **CloudOwner \@ cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
+2. Jelentkezzen be a vCenter **CloudOwner \@ cloudsimple. local** használatával
 3. [VCenter egyszeri bejelentkezési felhasználók hozzáadása](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Felhasználók hozzáadása az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
@@ -51,8 +51,8 @@ További identitás-szolgáltatókat is hozzáadhat a privát felhő vCenter SSO
 * A [Active Directory identitás-szolgáltatóként használhatja](set-vcenter-identity.md) a saját Felhőbeli vCenter.
 * Az [Azure ad használata identitás-szolgáltatóként](azure-ad.md) a saját felhőalapú vCenter
 
-1. A **CloudOwner\@cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
-2. Jelentkezzen be a **vCenter\@CloudOwner cloudsimple. local** használatával
+1. A **CloudOwner \@ cloudsimple. local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
+2. Jelentkezzen be a vCenter **CloudOwner \@ cloudsimple. local** használatával
 3. Adja hozzá a felhasználókat az identitás-szolgáltatótól az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>Biztonságos hálózat a saját felhőalapú környezetében

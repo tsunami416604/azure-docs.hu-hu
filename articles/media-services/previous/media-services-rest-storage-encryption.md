@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773602"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása a Storage encryption szolgáltatással 
@@ -46,7 +45,7 @@ A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a
 
 ### <a name="storage-side-encryption"></a>Tárolási oldal titkosítása
 
-|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
 |[Inaktív adatok Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél felügyel|Támogatott|Támogatott|
@@ -113,9 +112,9 @@ A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, a
 
     A tárolási titkosításhoz a következő tulajdonságokat kell tartalmaznia a kérés törzsében.
 
-    Kérelem törzsének tulajdonsága    | Leírás
+    Kérelem törzsének tulajdonsága    | Description
     ---|---
-    Azonosító | A ContentKey azonosítója a következő formátumban jön létre: "NB: Kid: UUID:\<NEW GUID>".
+    Azonosító | A ContentKey azonosítója a következő formátumban jön létre: "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | A tartalmi kulcs típusa egy egész szám, amely meghatározza a kulcsot. A tárolási titkosítási formátum értéke 1.
     EncryptedContentKey | Létrehozunk egy új, 256 bites (32 bájt) értékű tartalmi kulcs értéket. A kulcs titkosítása a Microsoft Azure Media Services által lekért Storage encryption X. 509 tanúsítvánnyal történik a GetProtectionKeyId és a GetProtectionKey metódusok HTTP GET kérelmének végrehajtásával. Példaként tekintse meg a következő .NET-kódot: az [itt](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiált **EncryptSymmetricKeyData** metódus.
     ProtectionKeyId | Ez a védelmi kulcs azonosítója a tartalmi kulcs titkosításához használt Storage encryption X. 509 tanúsítványhoz.
@@ -242,7 +241,7 @@ Válasz:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="create-an-asset"></a>Eszköz létrehozása
+## <a name="create-an-asset"></a>Adategység létrehozása
 Az alábbi példa bemutatja, hogyan hozhat létre egy eszközt.
 
 **HTTP-kérés**

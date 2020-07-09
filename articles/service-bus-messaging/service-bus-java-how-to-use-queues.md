@@ -1,26 +1,16 @@
 ---
 title: Azure Service Bus Queues használata Javával
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Java-alkalmazásokat egy Azure Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f701439c-553e-402c-94a7-64400f997d59
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 224a5ce0a2c8a7fc031f1ad3314e4d8889966433
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 86097603b8b17b0e474cef4b57171bb51d5a1420
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788297"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338081"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Gyors útmutató: Azure Service Bus-várólisták használata a Javával üzenetek küldéséhez és fogadásához
 
@@ -48,7 +38,7 @@ Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t 
 ![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse-projekthez](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 
-Adja hozzá a `import` következő utasításokat a Java-fájl elejéhez:
+Adja hozzá a következő `import` utasításokat a Java-fájl elejéhez:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -129,7 +119,7 @@ Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás 
 
 **PeekLock** módban a fogadás kétlépéses művelet lesz, ami lehetővé teszi olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a beérkezett üzenetben meghívja a **Complete ()** függvényt a fogadási folyamat második szakaszával. Ha Service Bus látja a **Complete ()** hívást, a rendszer felhasználja az üzenetet, és eltávolítja azt a várólistából. 
 
-Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a **PeekLock** mód használatával (nem az alapértelmezett mód). Az alábbi példa a visszahívási modellt használja egy regisztrált üzenetkezelővel, és feldolgozza az üzeneteket `TestQueue`, ahogy azok beérkeznek. Ez a mód automatikusan meghívja a **Complete ()** metódust, mivel a visszahívás a szokásos módon tér vissza, és a **lemondás ()** hívásával a visszahívás kivételt jelez 
+Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a **PeekLock** mód használatával (nem az alapértelmezett mód). Az alábbi példa a visszahívási modellt használja egy regisztrált üzenetkezelővel, és feldolgozza az üzeneteket, ahogy azok beérkeznek `TestQueue` . Ez a mód automatikusan meghívja a **Complete ()** metódust, mivel a visszahívás a szokásos módon tér vissza, és a **lemondás ()** hívásával a visszahívás kivételt jelez 
 
 ```java
     public void run() throws Exception {

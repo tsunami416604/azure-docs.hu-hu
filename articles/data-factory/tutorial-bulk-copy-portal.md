@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/27/2020
-ms.openlocfilehash: fd14945069b2786fa4acb994c37c17d3b434893e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/22/2020
+ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118283"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081638"
 ---
-# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
+# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a Azure Portal
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -58,7 +58,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázis összes tábláját egy Azure szinapszis Analyticsre (korábban SQL DW) másolja.
+Hozzon létre egy adatbázist SQL Database az Adventure Works LT mintaadatok alapján, és [hozzon létre egy adatbázist a Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag az ebből a mintaadatbázisból származó összes táblázatot egy Azure szinapszis Analytics (korábban SQL DW) adatbázisba másolja.
 
 **A fogadó Azure szinapszis Analytics (korábban SQL DW) előkészítése**:
 
@@ -82,7 +82,9 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgáló
  
    Az Azure-beli adatgyár nevének **globálisan egyedinek**kell lennie. Ha a névmezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialBulkCopyDF). A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
-       `Data factory name "ADFTutorialBulkCopyDF" is not available`
+    ```text
+    Data factory name "ADFTutorialBulkCopyDF" is not available
+    ```
 1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 1. Az **erőforráscsoport**esetében hajtsa végre az alábbi lépések egyikét:
      
@@ -92,7 +94,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgáló
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
    
 1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
@@ -106,26 +108,29 @@ Társított szolgáltatásokat hoz létre az adattárak és a számítási erőf
 Ebben az oktatóanyagban összekapcsolja az Azure SQL Database, az Azure szinapszis Analytics (korábban SQL DW) és az Azure Blob Storage adattárakat az adatgyárba. Az Azure SQL Database a forrásadattár. Az Azure szinapszis Analytics (korábbi nevén SQL DW) a fogadó/rendeltetési adattár. Az Azure Blob Storage az adatok előkészítését, mielőtt az adatok betöltődik az Azure szinapszis Analyticsbe (korábbi nevén SQL DW) a Base használatával. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>A forrás Azure SQL Database-beli társított szolgáltatás létrehozása
-Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja. 
+Ebben a lépésben létrehoz egy társított szolgáltatást, amely összekapcsolja az adatbázist Azure SQL Databaseban az adatgyárban. 
 
-1. Az ablak alján kattintson a **kapcsolatok** elemre, majd az eszköztáron kattintson az **+ új** elemre (a**kapcsolatok** gomb a bal oldali oszlop alján található a **gyári erőforrások**alatt). 
+1. Nyissa meg a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal oldali ablaktáblán.
 
+1. A társított szolgáltatások lapon válassza az **+ új** lehetőséget egy új társított szolgáltatás létrehozásához.
+
+   ![Új társított szolgáltatás](./media/doc-common-process/new-linked-service.png)
 1. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
 1. Az **új társított szolgáltatás (Azure SQL Database)** ablakban végezze el a következő lépéseket: 
 
     a. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet.
-    
+
     b. **Kiszolgáló kiválasztása** a kiszolgálónévhez
     
-    c. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
+    c. Válassza ki az adatbázis **nevét**. 
     
-    d. Adja meg az Azure SQL-adatbázishoz csatlakoztatni kívánt **felhasználó nevét**. 
+    d. Adja meg **a felhasználó nevét** az adatbázishoz való kapcsolódáshoz. 
     
     e. Adja meg a felhasználóhoz tartozó **jelszót**. 
 
-    f. Ha tesztelni szeretné az Azure SQL-adatbázissal létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
+    f. Ha tesztelni szeretné az adatbázishoz való kapcsolódást a megadott információval, kattintson a **Kapcsolódás tesztelése**gombra.
   
-    g. A társított szolgáltatás mentéséhez kattintson a **Létrehozás** gombra.
+    : A társított szolgáltatás mentéséhez kattintson a **Létrehozás** gombra.
 
 
 ### <a name="create-the-sink-azure-synapse-analytics-formerly-sql-dw-linked-service"></a>A fogadó Azure szinapszis Analytics (korábban SQL DW) társított szolgáltatás létrehozása
@@ -138,15 +143,15 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-
      
     b. **Kiszolgáló kiválasztása** a kiszolgálónévhez
      
-    c. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
+    c. Válassza ki az adatbázis **nevét**. 
      
-    d. Adja meg a **felhasználónevet** az Azure SQL Database-hez való kapcsolódáshoz. 
+    d. Adja meg a **felhasználónevet** az adatbázishoz való kapcsolódáshoz. 
      
     e. Adja meg a felhasználó **jelszavát** . 
      
-    f. Ha tesztelni szeretné az Azure SQL-adatbázissal létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
+    f. Ha tesztelni szeretné az adatbázishoz való kapcsolódást a megadott információval, kattintson a **Kapcsolódás tesztelése**gombra.
      
-    g. Kattintson a **Létrehozás**gombra.
+    : Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Az átmeneti Azure Storage-beli társított szolgáltatás létrehozása
 Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure Blob Storage-ot átmeneti területként használja a PolyBase engedélyezéséhez.
@@ -158,8 +163,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     a. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.                                                 
     b. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
     
-    c. Kattintson a **Létrehozás**gombra.
-
+    c. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben az oktatóanyagban létrehozza a forrás- és fogadó-adatkészletet, amelyek meghatározzák az adatok tárolásának helyét. 
@@ -179,7 +183,7 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
     
 1. A **készlet tulajdonságai** ablakban, a név mezőben adja meg a **AzureSqlDatabaseDataset** **nevet**. A **társított szolgáltatás**területen válassza a **AzureSqlDatabaseLinkedService**lehetőséget. Ezt követően kattintson az **OK** gombra.
 
-1. Váltson a **kapcsolatok** lapra, és válassza **a tábla bármelyik tábláját.** Ez a tábla egy helyőrző tábla. Egy folyamat létrehozásakor meghatározhat egy lekérdezést a forrásadatkészlethez. A lekérdezés segítségével adatok nyerhetők ki az Azure SQL Database-ből. Azt is megteheti, hogy a **Szerkesztés** jelölőnégyzetre kattint, majd a **dbo. dummyName** nevet adja meg a táblázat neveként. 
+1. Váltson a **kapcsolatok** lapra, és válassza **a tábla bármelyik tábláját.** Ez a tábla egy helyőrző tábla. Egy folyamat létrehozásakor meghatározhat egy lekérdezést a forrásadatkészlethez. A lekérdezés az adatok adatbázisból való kinyerésére szolgál. Azt is megteheti, hogy a **Szerkesztés** jelölőnégyzetre kattint, majd a **dbo. dummyName** nevet adja meg a táblázat neveként. 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>Adatkészlet létrehozása a fogadó Azure szinapszis Analyticshez (korábban SQL DW)
@@ -187,17 +191,18 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson az **Adatkészlet** elemre. 
 1. Az **új adatkészlet** ablakban válassza az **Azure szinapszis Analytics (korábban SQL DW)** elemet, majd kattintson a **Continue (folytatás**) gombra.
 1. A **készlet tulajdonságai** ablakban, a név mezőben adja meg a **AzureSqlDWDataset** **nevet**. A **társított szolgáltatás**területen válassza a **AzureSqlDWLinkedService**lehetőséget. Ezt követően kattintson az **OK** gombra.
-1. Váltson a **Paraméterek** lapra, és kattintson az **+ Új** elemre, majd adja meg a **DWTableName** értéket a paraméter neveként. Ha ezt a nevet másolja vagy beilleszti az oldalról, ügyeljen arra, hogy a **DWTableName**végén ne legyen **szóköz karakter** .
+1. Váltson a **Paraméterek** lapra, és kattintson az **+ Új** elemre, majd adja meg a **DWTableName** értéket a paraméter neveként. Kattintson ismét az **+ új** elemre, majd írja be a **DWSchema** nevet a paraméter neveként. Ha ezt a nevet másolja/illeszti be az oldalról, ügyeljen arra, hogy a *DWTableName* és a *DWSchema*végén ne legyen **szóköz karakter** . 
 1. Lépjen a **Kapcsolat** lapra. 
 
-    a. A **tábla**mezőben keresse meg a **Szerkesztés** lehetőséget. Adja meg a **dbo** az első táblázat neve beviteli mezőben. Ezután válassza ki a második beviteli mezőt, majd kattintson a **dinamikus tartalom hozzáadása** hivatkozásra. 
+    1. A **tábla**mezőben keresse meg a **Szerkesztés** lehetőséget. Válassza ki az első beviteli mezőt, majd kattintson a **dinamikus tartalom hozzáadása** hivatkozásra. A **dinamikus tartalom hozzáadása** lapon kattintson a **DWSchema** elemre a **Paraméterek**területen, amely automatikusan kitölti a felső kifejezés szövegmezőjét `@dataset().DWSchema` , majd kattintson a **Befejezés**gombra.  
+    
+        ![Adatkészlet-kapcsolatok táblanév](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![Adatkészlet-kapcsolatok táblanév](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. Válassza ki a második beviteli mezőt, majd kattintson a **dinamikus tartalom hozzáadása** hivatkozásra. A **dinamikus tartalom hozzáadása** lapon kattintson a **DWTAbleName** elemre a **Paraméterek**területen, amely automatikusan kitölti a felső kifejezés szövegmezőjét `@dataset().DWTableName` , majd kattintson a **Befejezés**gombra. 
+    
+    1. Az adatkészlet **Táblanév** tulajdonsága a **DWSchema** és a **DWTableName** paraméterek argumentumként átadott értékekre van beállítva. A ForEach tevékenység végighalad egy táblalistán, és egyesével továbbítja azokat a másolási tevékenységnek. 
+    
 
-    b. A **dinamikus tartalom hozzáadása** lapon kattintson a **DWTAbleName** elemre a **Paraméterek**területen, amely automatikusan feltölti a felső kifejezés szövegmezőjét `@dataset().DWTableName` , majd kattintson a **Befejezés**gombra. Az adatkészlet **tableName** tulajdonságához beállított értéket továbbítja a rendszer argumentumként a **DWTableName** paraméterhez. A ForEach tevékenység végighalad egy táblalistán, és egyesével továbbítja azokat a másolási tevékenységnek. 
-
-    ![Adatkészlet paramétereinek szerkesztője](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>Folyamatok létrehozása
 Ebben az oktatóanyagban a következő két folyamatot hozza létre: **IterateAndCopySQLTables** és **GetTableListAndTriggerCopyData**. 
 
@@ -213,7 +218,8 @@ A **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paraméte
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
 
     ![Új folyamat menü](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. Az **Általános** lapon adja meg az **IterateAndCopySQLTables** nevet. 
+ 
+1. A **Tulajdonságok**terület általános paneljén adja meg **IterateAndCopySQLTables** a IterateAndCopySQLTables **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. Váltson a **Paraméterek** lapra, és hajtsa végre a következőket: 
 
@@ -254,7 +260,8 @@ A **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paraméte
 1. Váltson a **Fogadó** lapra, és végezze el az alábbi lépéseket: 
 
     1. **Fogadó-adatkészletnek** válassza a következőt: **AzureSqlDWDataset**.
-    1. Kattintson a beviteli mezőre a DWTableName paraméter ÉRTÉKEként – > válassza a **dinamikus tartalom hozzáadása** lehetőséget, írja be a `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` kifejezést parancsfájlként, > válassza a **Befejezés**gombot.
+    1. Kattintson a beviteli mezőre a DWTableName paraméter ÉRTÉKEként – > válassza a **dinamikus tartalom hozzáadása** lehetőséget, írja be a `@item().TABLE_NAME` kifejezést parancsfájlként, > válassza a **Befejezés**gombot.
+    1. Kattintson a beviteli mezőre a DWSchema paraméter ÉRTÉKEként – > válassza a **dinamikus tartalom hozzáadása** lehetőséget, írja be a `@item().TABLE_SCHEMA` kifejezést parancsfájlként, > válassza a **Befejezés**gombot.
     1. A másolási módszer beállításnál válassza a **alapszintű**lehetőséget. 
     1. Törölje az **alapértelmezett típus használata** beállítást. 
     1. Kattintson a **Másolás előtti szkript** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg szkriptként a következő kifejezést, majd kattintson a **Befejezés** gombra. 
@@ -279,12 +286,12 @@ Ez a folyamat két műveletet végez:
 * Elindítja az „IterateAndCopySQLTables” folyamatot, amely elvégezi a tényleges adatmásolást.
 
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
-1. Az **általános** lapon módosítsa a folyamat nevét a **GetTableListAndTriggerCopyData**értékre. 
+1. A **Tulajdonságok**területen található általános panelen módosítsa a folyamat nevét a **GetTableListAndTriggerCopyData**értékre. 
 
 1. A **tevékenységek** eszközkészletben bontsa ki az **általános**elemet, majd húzza a **keresési** tevékenységet a folyamat-tervező felületre, és hajtsa végre a következő lépéseket:
 
     1. A **Név** mezőbe írja be a **LookupTableList** nevet. 
-    1. A **Leírásnál** adja meg a következőt: **A táblalista lekérése az Azure SQL-adatbázisból**.
+    1. Adja meg **az adatbázisból a tábla listájának lekérése** **leírást**.
 
 1. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket:
 
@@ -307,10 +314,8 @@ Ez a folyamat két műveletet végez:
 1. Váltson a **Beállítások** lapra a **folyamat végrehajtása** tevékenységnél, és hajtsa végre a következő lépéseket: 
 
     1. A **Meghívott folyamat** elemnél válassza az **IterateAndCopySQLTables** lehetőséget. 
-    1. Bontsa ki a **speciális** szakaszt, és törölje a jelet a **várakozás befejezéséhez**jelölőnégyzetből.
-    1. Kattintson az **+ Új** elemre a **Paraméterek** szakaszban. 
-    1. Adja meg a **tableList** paraméter **nevét**.
-    1. Kattintson a VALUE beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg a `@activity('LookupTableList').output.value` értéket a táblanév értékeként, majd kattintson a **Befejezés** gombra. A keresési tevékenység eredményeinek listáját a második folyamat bemenetének állítja be. Az eredménylista tartalmazza azokat a táblákat, amelyeknek az adatait a célhelyre kell másolni. 
+    1. Törölje a jelet a **várakozás befejezéséhez**jelölőnégyzetből.
+    1. A **Parameters (paraméterek** ) szakaszban kattintson a beviteli mezőre a VALUE-> alatt, válassza a **dinamikus tartalom hozzáadása** a következőhöz – > adja meg a `@activity('LookupTableList').output.value` tábla neve értéket – > válassza a **Befejezés**lehetőséget. A keresési tevékenység eredményeinek listáját a második folyamat bemenetének állítja be. Az eredménylista tartalmazza azokat a táblákat, amelyeknek az adatait a célhelyre kell másolni. 
 
         ![Folyamat végrehajtása tevékenység – beállítások lap](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 
@@ -389,7 +394,7 @@ Ez a folyamat két műveletet végez:
 
 1. Győződjön meg róla, hogy az adatgyűjtés az oktatóanyagban használt Azure szinapszis Analytics (korábban SQL DW) célra lett másolva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

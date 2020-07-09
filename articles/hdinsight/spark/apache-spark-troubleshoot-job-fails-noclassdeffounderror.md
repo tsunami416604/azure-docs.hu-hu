@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894344"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Kafka adatokat olvasó Apache Spark folyamatos átviteli feladattal nem sikerül a NoClassDefFoundError a HDInsight-ben
@@ -32,7 +31,7 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>Ok
 
-Ez a hiba oka lehet a futtatott Kafka-fürt verziójától eltérő `spark-streaming-kafka` jar-fájl verziójának megadásával.
+Ez a hiba oka lehet a `spark-streaming-kafka` futtatott Kafka-fürt verziójától eltérő jar-fájl verziójának megadásával.
 
 Ha például egy Kafka-fürt 0.10.1 verzióját futtatja, a következő parancs hibát eredményez:
 

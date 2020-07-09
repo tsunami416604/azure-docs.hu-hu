@@ -4,10 +4,9 @@ description: A Docker-teljesítményszámlálók, az események és a kivételek
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669607"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-alkalmazások figyelése Application Insightsban (elavult)
@@ -54,7 +53,7 @@ Most, hogy elvégezte a telemetria megjelenítését, beállíthatja a begyűjt�
 Docker-gazdagépen csak egy Application Insights rendszerkép szükséges. Ha az alkalmazás több Docker-gazdagépre van telepítve, akkor minden gazdagépen ismételje meg a parancsot.
 
 ## <a name="update-your-app"></a>Alkalmazás frissítése
-Ha az alkalmazása a [Javához készült Application INSIGHTS SDK](../../azure-monitor/app/java-get-started.md)-val van ellátva, adja hozzá a következő sort a projekt ApplicationInsights. XML fájljához a `<TelemetryInitializers>` elem alatt:
+Ha az alkalmazása a [Javához készült Application INSIGHTS SDK](../../azure-monitor/app/java-get-started.md)-val van ellátva, adja hozzá a következő sort a projektben lévő ApplicationInsights.xml-fájlhoz a `<TelemetryInitializers>` elem alatt:
 
 ```xml
 

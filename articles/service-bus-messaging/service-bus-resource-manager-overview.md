@@ -1,25 +1,17 @@
 ---
 title: Azure Service Bus-erőforrások létrehozása sablonok használatával
 description: Service Bus erőforrások létrehozásának automatizálása Azure Resource Manager-sablonok használatával
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 09/11/2018
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336608"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -137,7 +129,7 @@ A tárház klónozása vagy a [201-servicebus-Create-várólista](https://github
 
 ### <a name="create-a-parameters-file-optional"></a>Parameters fájl létrehozása (nem kötelező)
 
-Ha nem kötelező paramétert szeretne használni, másolja a [201-servicebus-Create-üzenetsor](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) fájlt. Cserélje le az értéket `serviceBusNamespaceName` az ebben a központi telepítésben létrehozni kívánt Service Bus névtér nevére, és cserélje le a értéket `serviceBusQueueName` a létrehozni kívánt várólista nevére.
+Ha nem kötelező paramétert szeretne használni, másolja a [201-servicebus-Create-üzenetsor](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) fájlt. Cserélje le az értéket az `serviceBusNamespaceName` ebben a központi telepítésben létrehozni kívánt Service Bus névtér nevére, és cserélje le a értéket a `serviceBusQueueName` létrehozni kívánt várólista nevére.
 
 ```json
 {
@@ -173,7 +165,7 @@ A rendszer felszólítja, hogy jelentkezzen be az Azure-fiókjába. A bejelentke
 Get-AzSubscription
 ```
 
-Ez a parancs az elérhető Azure-előfizetések listáját adja vissza. A következő parancs futtatásával válasszon egy előfizetést az aktuális munkamenethez. Cserélje `<YourSubscriptionId>` le a helyére a használni kívánt Azure-előfizetés GUID azonosítóját:
+Ez a parancs az elérhető Azure-előfizetések listáját adja vissza. A következő parancs futtatásával válasszon egy előfizetést az aktuális munkamenethez. Cserélje le a helyére a `<YourSubscriptionId>` használni kívánt Azure-előfizetés GUID azonosítóját:
 
 ```powershell
 Set-AzContext -SubscriptionID <YourSubscriptionId>

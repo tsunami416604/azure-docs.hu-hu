@@ -1,18 +1,18 @@
 ---
 title: Kereskedelmi Piactéri fiók kezelése a Microsoft partner Centerben
 description: Ismerje meg, hogyan kezelhetők a kereskedelmi piactér-fiókok a Microsoft partner Centerben.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800222"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112850"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben
 
@@ -128,7 +128,7 @@ Ha egy terméket sablon alapján telepít, és az Azure piactéren és a GitHubo
 
 A jelentéskészítést a partner értéke (Microsoft partner azonosítója) és a GUID-azonosítók végzik. A GUID-azonosítókat részletesebben is nyomon követheti az ajánlaton belüli egyes csomagokhoz igazítva.
 
-További információ: az Azure- [ügyfelek használatának nyomon követése a GUID-ban – gyakori kérdések](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
+További információkért lásd: az [Azure-ügyfelek használatának nyomon követése a guidokkal – gyakori kérdések](../azure-partner-customer-usage-attribution.md#faq).
 
 ## <a name="create-a-billing-profile"></a>Számlázási profil létrehozása
 
@@ -138,7 +138,7 @@ A számlázási cím előre ki van töltve a jogi személyből, és később is 
 
 ## <a name="multi-user-account-management"></a>Többfelhasználós fiókok felügyelete
 
-A partner Center [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure ad) használatát teszi lehetővé a többfelhasználós fiókok hozzáféréséhez és felügyeletéhez. A beléptetési folyamat részeként a szervezet Azure AD-fiókja automatikusan társítva lesz a partner Center-fiókjához.
+A partner Center [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) használatát teszi lehetővé a többfelhasználós fiókok hozzáféréséhez és felügyeletéhez. A beléptetési folyamat részeként a szervezet Azure AD-fiókja automatikusan társítva lesz a partner Center-fiókjához.
 
 ## <a name="manage-users"></a>Felhasználók kezelése
 
@@ -168,7 +168,7 @@ Felhasználók hozzáadása a partner Center-fiókhoz, amely már szerepel a vá
 
 ### <a name="create-new-users"></a>Új felhasználók létrehozása
 
-Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) jogosultságokkal rendelkező fiókkal kell rendelkeznie. 
+Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie. 
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**, majd az **új felhasználók létrehozása**lehetőséget.
 1. Adja meg az összes új felhasználó utónevét, vezetéknevét és felhasználónevét. 
@@ -182,7 +182,7 @@ Ha új felhasználót hoz létre a partner Centerben, az adott felhasználóhoz 
 
 ### <a name="invite-new-users-by-email"></a>Új felhasználók meghívása e-mailben
 
-Ha olyan felhasználókat szeretne meghívni, akik jelenleg nem részei a munkahelyi munkahelyi fióknak (Azure AD-bérlőnek) e-mailben, [**globális rendszergazdai**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
+Ha olyan felhasználókat szeretne meghívni, akik jelenleg nem részei a munkahelyi munkahelyi fióknak (Azure AD-bérlőnek) e-mailben, [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**lehetőséget, majd válassza **a felhasználók meghívása e-mailben**lehetőséget.
 2. Írjon be egy vagy több e-mail-címet (legfeljebb tíz), vesszővel vagy pontosvesszővel elválasztva.
@@ -202,7 +202,7 @@ Ha el szeretne távolítani egy felhasználót a munkahelyi fiókjából (Azure 
 
 ### <a name="change-a-user-password"></a>Felhasználói jelszó módosítása
 
-Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Vegye figyelembe, hogy ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
+Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Vegye figyelembe, hogy ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
 
 1. A **felhasználók** lapon ( **Fiókbeállítások**alatt) válassza ki a szerkeszteni kívánt felhasználói fiók nevét.
 2. A lap alján kattintson a **jelszó alaphelyzetbe állítása** gombra.
@@ -264,7 +264,7 @@ Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Közp
 1. A **felhasználók** lapon (a **Fiókbeállítások**alatt) válassza az **Azure ad-alkalmazások hozzáadása**lehetőséget.
 2. A következő lapon válassza az **új Azure ad-alkalmazás**lehetőséget.
 3. Adja meg az új Azure AD **-alkalmazás válaszának URL-címét** . Ez az URL-cím, ahol a felhasználók bejelentkezhetnek és használhatják az Azure AD-alkalmazást (más néven az alkalmazás URL-címe vagy bejelentkezési URL-címe). A **Válasz URL-címe** nem lehet hosszabb 256 karakternél, és a címtárban egyedinek kell lennie.
-4. Adja meg az új Azure AD-alkalmazáshoz tartozó **alkalmazás-azonosító URI** -t. Ez az Azure AD-alkalmazáshoz tartozó logikai azonosító, amely akkor jelenik meg, ha egy egyszeri bejelentkezésre vonatkozó kérést küld az Azure AD-nek. Vegye figyelembe, hogy az **alkalmazás-azonosító URI** -nak egyedinek kell lennie minden egyes Azure ad-alkalmazáshoz a címtárban. Ez az azonosító nem lehet hosszabb 256 karakternél. Az alkalmazás-azonosító URI-val kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorysal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
+4. Adja meg az új Azure AD-alkalmazáshoz tartozó **alkalmazás-azonosító URI** -t. Ez az Azure AD-alkalmazáshoz tartozó logikai azonosító, amely akkor jelenik meg, ha egy egyszeri bejelentkezésre vonatkozó kérést küld az Azure AD-nek. Vegye figyelembe, hogy az **alkalmazás-azonosító URI** -nak egyedinek kell lennie minden egyes Azure ad-alkalmazáshoz a címtárban. Ez az azonosító nem lehet hosszabb 256 karakternél. Az alkalmazás-azonosító URI-val kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorytel](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)).
 5. A **szerepkörök** szakaszban megadhatja az Azure ad-alkalmazáshoz tartozó szerepkör (eke) t vagy testreszabott engedélyeket.
 6. Kattintson a **Mentés** gombra.
 
@@ -328,7 +328,7 @@ Ha a társítás sikeres, akkor készen áll a fiók felhasználóinak hozzáad�
 3. A **Létrehozás** gombra kattintva erősítse meg az új tartomány és fiókadatok adatait.
 4. A [felhasználók hozzáadásának és kezelésének](#manage-users)megkezdéséhez jelentkezzen be az új Azure ad globális rendszergazdai felhasználónevével és jelszavával.
 
-Ha további információt szeretne arról, hogyan hozhat létre új bérlőket a Azure Portal belül, és nem a partneri központ portálon keresztül, tekintse meg a következő cikket: [új bérlő létrehozása a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+Ha további információt szeretne arról, hogyan hozhat létre új bérlőket a Azure Portal belül, és nem a partneri központ portálon keresztül, tekintse meg a következő cikket: [új bérlő létrehozása a Azure Active Directoryban](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 ### <a name="remove-a-tenant"></a>Bérlő eltávolítása
 

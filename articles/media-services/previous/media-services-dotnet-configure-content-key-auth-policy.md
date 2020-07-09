@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712394"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
 
@@ -38,7 +37,7 @@ A Media Services szolgáltatásban több különböző módot is beállíthat, a
 
 Media Services nem biztosít STS-t. Létrehozhat egy egyéni STS-t, vagy használhatja az Azure Access Control Service a jogkivonatok kibocsátására. Az STS-t úgy kell konfigurálni, hogy a megadott kulccsal aláírt tokent hozzon létre, és kiadja a jogkivonat-korlátozási konfigurációban megadott jogcímeket (a jelen cikkben leírtak szerint). Ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a tartalmi kulcshoz konfigurált jogcímekkel, a Media Services Key Delivery Service visszaadja a titkosítási kulcsot az ügyfélnek.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [JWT jogkivonat-hitelesítés](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Azure Media Services OWIN MVC-alapú alkalmazás integrálása Azure Active Directory és a JWT-jogcímek alapján történő kézbesítés korlátozása](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
@@ -51,7 +50,7 @@ További információkért tekintse át a következő cikkeket:
 * A Key Delivery szolgáltatás 15 percig gyorsítótárazza a ContentKeyAuthorizationPolicy és kapcsolódó objektumait (házirend-beállítások és korlátozások). Létrehozhat ContentKeyAuthorizationPolicy, és megadhatja a jogkivonat-korlátozást, tesztelheti, majd frissítheti a szabályzatot a nyitott korlátozással. Ez a folyamat nagyjából 15 percet vesz igénybe, mielőtt a házirend a házirend nyílt verziójára vált.
 * Az objektumhoz tartozó továbbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell minden meglévő lokátort, majd létre kell hoznia egy újat.
 * Jelenleg nem titkosíthatja a progresszív letöltéseket.
-* A Media Services streaming-végpontok az elővizsgálati válaszban a CORS "hozzáférés-vezérlés-engedélyezés-eredet" fejlécének értékét állítja\*be a következő helyettesítő karakterként: "". Ez az érték jól működik a legtöbb játékossal, beleértve a Azure Media Player, a Roku és a JWPlayer és egyebeket. Az dashjs-t használó játékosok azonban nem működnek, mivel a hitelesítő adatok mód "include" értékre van állítva, az XMLHttpRequest a dashjs nem engedélyezi a\*"" hozzáférés-vezérlés-engedélyezés-forrás "karaktert. Ha az ügyfelet egyetlen tartományból futtatja, megkerülő megoldásként ezt a korlátozást dashjs, Media Services az elővizsgálati válasz fejlécében megadhatja az adott tartományt. Segítségért nyisson meg egy támogatási jegyet a Azure Portalon keresztül.
+* A Media Services streaming-végpontok az elővizsgálati válaszban a CORS "hozzáférés-vezérlés-engedélyezés-eredet" fejlécének értékét állítja be a következő helyettesítő karakterként: " \* ". Ez az érték jól működik a legtöbb játékossal, beleértve a Azure Media Player, a Roku és a JWPlayer és egyebeket. Az dashjs-t használó játékosok azonban nem működnek, mivel a hitelesítő adatok mód "include" értékre van állítva, az XMLHttpRequest a dashjs nem engedélyezi a " \* " hozzáférés-vezérlés-engedélyezés-forrás "karaktert. Ha az ügyfelet egyetlen tartományból futtatja, megkerülő megoldásként ezt a korlátozást dashjs, Media Services az elővizsgálati válasz fejlécében megadhatja az adott tartományt. Segítségért nyisson meg egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dinamikus titkosítás
 ### <a name="open-restriction"></a>Nyitott korlátozás

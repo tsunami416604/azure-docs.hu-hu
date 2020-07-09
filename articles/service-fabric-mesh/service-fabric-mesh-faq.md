@@ -5,10 +5,9 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252492"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric Mesh kérdésekről
@@ -42,7 +41,7 @@ Igen. Az egyes előfizetések kvótái a következők:
 
 Az alkalmazások élettartama jelenleg két napra korlátozódik. Ez az előzetes verzióhoz lefoglalt ingyenes magok használatának maximalizálása érdekében. Ennek eredményeképpen csak a 48 órán át folyamatosan futtathat egy adott üzembe helyezést, amely után a rendszer leállítja a leállítási időt.
 
-Ha ez megtörténik, ellenőrizheti, hogy a rendszer le van-e állítva az Azure CLI `az mesh app show` -ben a parancs futtatásával. Ellenőrizze, hogy visszaadja-e a függvényt`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Ha ez megtörténik, ellenőrizheti, hogy a rendszer le van-e állítva az `az mesh app show` Azure CLI-ben a parancs futtatásával. Ellenőrizze, hogy visszaadja-e a függvényt`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Például: 
 
@@ -107,7 +106,7 @@ A tárolóból a Service Fabric DNS szolgáltatásba küldött kimenő DNS-leké
 
 - Használja a Windows Fall Creators Update (1709-es verzió) vagy újabb verzióját az alaptároló rendszerképének használatával.
 - Ha a szolgáltatás neve nem működik, próbálja meg a teljes nevet: szolgáltatásnév. ApplicationName.
-- A szolgáltatás Docker-fájljában adja `EXPOSE <port>` meg, hogy a port melyik porton teszi elérhetővé a szolgáltatást. Például:
+- A szolgáltatás Docker-fájljában adja meg, hogy a `EXPOSE <port>` port melyik porton teszi elérhetővé a szolgáltatást. Például:
 
 ```Dockerfile
 EXPOSE 80
@@ -117,7 +116,7 @@ EXPOSE 80
 
 Előfordulhat, hogy a helyi fejlesztési fürtön eltérő szolgáltatásokat kell használnia, mint az Azure Meshban.
 
-A helyi fejlesztési fürtben használja `{serviceName}.{applicationName}`a t. Az Azure Service Fabric Mesh szolgáltatásban `{servicename}`használja a t. 
+A helyi fejlesztési fürtben használja a t `{serviceName}.{applicationName}` . Az Azure Service Fabric Mesh szolgáltatásban használja a t `{servicename}` . 
 
 Az Azure Mesh jelenleg nem támogatja a DNS-feloldást az alkalmazások között.
 
@@ -127,7 +126,7 @@ A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával ka
 
 Előfordulhat, hogy a ServiceFabric hálózati NAT eltűnnek az alkalmazás helyi gépen való futtatásakor. Annak diagnosztizálásához, hogy ez történt-e, futtassa a következő parancsot egy parancssorból:
 
-`docker network ls`Figyelje meg, `servicefabric_nat` hogy szerepel-e a lista.  Ha nem, futtassa a következő parancsot:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`Figyelje meg, hogy szerepel-e `servicefabric_nat` a lista.  Ha nem, futtassa a következő parancsot:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Ez akkor is problémát jelent, ha az alkalmazás már helyileg és nem kifogástalan állapotban van telepítve.
 
@@ -135,7 +134,7 @@ Ez akkor is problémát jelent, ha az alkalmazás már helyileg és nem kifogás
 
 Előfordulhat, hogy a CPU rendelkezésre állása és a korlátozások az összes alkalmazásban rögzítettek. Az alábbiak enyhítése:
 - Hozzon létre egy öt csomópontos fürtöt.
-- A szolgáltatások CPU-használatának csökkentése a telepített alkalmazások között. A szolgáltatás Service. YAML fájljában például a következőre váltson `cpu: 1.0` :`cpu: 0.5`
+- A szolgáltatások CPU-használatának csökkentése a telepített alkalmazások között. A szolgáltatás Service. YAML fájljában `cpu: 1.0` például a következőre váltson:`cpu: 0.5`
 
 Több alkalmazás nem telepíthető egyetlen csomópontos fürtre. Az alábbiak enyhítése:
 - Használjon öt csomópontos fürtöt, ha több alkalmazást helyez üzembe egy helyi fürtön.

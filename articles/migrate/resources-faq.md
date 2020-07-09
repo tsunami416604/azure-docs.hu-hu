@@ -4,10 +4,10 @@ description: Választ kaphat a Azure Migrate szolgáltatással kapcsolatos gyako
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81530317"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
@@ -19,7 +19,7 @@ Ez a cikk a Azure Migrateával kapcsolatos gyakori kérdésekre ad választ. Ha 
 
 ## <a name="what-is-azure-migrate"></a>Mi az az Azure Migrate?
 
-Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információ](migrate-services-overview.md).
+Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információk](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Mire használhatom a Azure Migrate?
 
@@ -53,7 +53,7 @@ Válassza ki az eszközt a kívánt műveletek alapján:
 
 ## <a name="which-geographies-are-supported"></a>Mely földrajzi területek támogatottak?
 
-Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
+Tekintse át a [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és a [Government-felhők](migrate-support-matrix.md#supported-geographies-azure-government) támogatott régióit.
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 

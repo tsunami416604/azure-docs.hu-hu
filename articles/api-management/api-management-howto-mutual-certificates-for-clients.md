@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76713149"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az API Managementben
@@ -51,8 +50,8 @@ Az alábbi házirendek konfigurálhatók a kiállító és az ügyféltanúsítv
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) [uploaded](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
+> A tanúsítvány-visszavonási lista használatának ellenőrzésének letiltása a `context.Request.Certificate.VerifyNoRevocation()` helyett `context.Request.Certificate.Verify()` .
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) t fel kell [tölteni](api-management-howto-ca-certificates.md) a API Managementre `context.Request.Certificate.Verify()` és `context.Request.Certificate.VerifyNoRevocation()` a működésre.
 
 ## <a name="checking-the-thumbprint"></a>Az ujjlenyomat ellenőrzése
 
@@ -69,8 +68,8 @@ Az alábbi házirendek konfigurálhatók az ügyféltanúsítvány ujjlenyomatá
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) [uploaded](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
+> A tanúsítvány-visszavonási lista használatának ellenőrzésének letiltása a `context.Request.Certificate.VerifyNoRevocation()` helyett `context.Request.Certificate.Verify()` .
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) t fel kell [tölteni](api-management-howto-ca-certificates.md) a API Managementre `context.Request.Certificate.Verify()` és `context.Request.Certificate.VerifyNoRevocation()` a működésre.
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Ujjlenyomat ellenőrzése a API Management feltöltött tanúsítványokkal szemben
 
@@ -88,11 +87,11 @@ Az alábbi példa bemutatja, hogyan ellenőrizhető az ügyféltanúsítvány uj
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) [uploaded](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
+> A tanúsítvány-visszavonási lista használatának ellenőrzésének letiltása a `context.Request.Certificate.VerifyNoRevocation()` helyett `context.Request.Certificate.Verify()` .
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) t fel kell [tölteni](api-management-howto-ca-certificates.md) a API Managementre `context.Request.Certificate.Verify()` és `context.Request.Certificate.VerifyNoRevocation()` a működésre.
 
 > [!TIP]
-> A jelen [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-alapú holtpont-probléma többféleképpen is megnyilvánulhat, például a kérések lefagyása után az időtúllépés után `403 Forbidden` `context.Request.Certificate` a kérések állapotkódot eredményeznek. `null` Ez a probléma általában `POST` `PUT` a tartalom hossza körülbelül 60KB vagy nagyobb.
+> A jelen [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-alapú holtpont-probléma többféleképpen is megnyilvánulhat, például a kérések lefagyása után az időtúllépés után a kérések állapotkódot eredményeznek `403 Forbidden` `context.Request.Certificate` `null` . Ez a probléma általában `POST` a `PUT` tartalom hossza körülbelül 60KB vagy nagyobb.
 > Ha meg szeretné akadályozni, hogy ez a probléma ne jelenjen meg, kapcsolja be az "ügyfél-tanúsítvány egyeztetése" beállítást az "egyéni tartományok" panelen az alábbi ábrán látható módon. Ez a funkció nem érhető el a felhasználási szinten.
 
 ![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)

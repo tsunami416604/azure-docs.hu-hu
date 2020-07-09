@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789717"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050367"
 ---
 A eszközök internetes hálózata (IoT) egyedi biztonsági, adatvédelmi és megfelelőségi kihívásokat jelent a vállalkozások számára világszerte. A hagyományos számítógépes technológiától eltérően, ahol ezek a problémák a szoftvereket és azok megvalósítását tárgyalják, IoT, hogy mi történik, ha a Cyber és a fizikai világ konvergál. A IoT-megoldások védelme megköveteli az eszközök biztonságos kihelyezését, az eszközök és a felhő közötti biztonságos csatlakozást, valamint a Felhőbeli adatvédelem védelmét a feldolgozás és a tárolás során. Az ilyen funkciókkal való munka azonban erőforrás-korlátozott eszközök, a központi telepítések földrajzi eloszlása és a megoldáson belüli számos eszköz.
 
@@ -89,7 +89,7 @@ A Azure Active Directory (HRE) használata a felhasználói hitelesítéshez és
 
 Ha az adatfelhőben van, akkor a felhasználó által definiált munkafolyamatokban feldolgozható és tárolható. Az egyes részekhez való hozzáférést a használt tárolási szolgáltatástól függően Azure Active Directory szabályozza.
 
-A IoT-infrastruktúra által használt összes kulcsot a felhőben tároljuk a biztonságos tárolóban, és a kulcsokat át kell helyezni a kulcsok újraépítésének lehetőségével. Az adatmennyiséget [Azure Cosmos db](../articles/cosmos-db/introduction.md) vagy SQL- [adatbázisban](../articles/sql-database/sql-database-faq.md)tárolhatja, így lehetővé válik a kívánt biztonsági szint definíciójának megadása. Emellett az Azure lehetővé teszi az adataihoz való összes hozzáférés monitorozását és naplózását, hogy riasztást küldjön bármilyen behatolási vagy jogosulatlan hozzáférésről.
+A IoT-infrastruktúra által használt összes kulcsot a felhőben tároljuk a biztonságos tárolóban, és a kulcsokat át kell helyezni a kulcsok újraépítésének lehetőségével. Az [Azure Cosmos db](../articles/cosmos-db/introduction.md) vagy [SQL Database](../articles/sql-database/sql-database-faq.md)tárolt adatmennyiséget a kívánt biztonsági szint definíciójának engedélyezésével lehet tárolni. Emellett az Azure lehetővé teszi az adataihoz való összes hozzáférés monitorozását és naplózását, hogy riasztást küldjön bármilyen behatolási vagy jogosulatlan hozzáférésről.
 
 ## <a name="conclusion"></a>Összegzés
 
@@ -107,7 +107,7 @@ Minden megoldás-gyorsító az Azure-szolgáltatások példányait hozza létre,
 
 * [**Azure stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): valós idejű adatfolyam-feldolgozás a felhőben, amely lehetővé teszi, hogy gyorsan fejlesszen és helyezzen üzembe egy alacsony költséghatékonyságú elemzési megoldást az eszközökről, érzékelőkről, infrastruktúrából és alkalmazásokból származó valós idejű elemzések felfedéséhez. A teljes körűen felügyelt szolgáltatásból származó adatok bármilyen kötetre méretezhetők, miközben továbbra is nagy átviteli sebességet, kis késést és rugalmasságot biztosítanak.
 
-* [**Azure app Services**](https://azure.microsoft.com/services/app-service/): felhőalapú platform olyan hatékony webes és mobil alkalmazások létrehozásához, amelyek bárhonnan csatlakozhatnak az adatkapcsolatokhoz; a felhőben vagy a helyszínen. Vonzó mobil alkalmazások készítése iOS, Android és Windows rendszerre. A szolgáltatásként (SaaS) és nagyvállalati alkalmazásokkal is integrálható, és a beépített kapcsolattal több tucat felhőalapú szolgáltatáshoz és nagyvállalati alkalmazáshoz is csatlakozhat. A kód a kedvenc nyelvén és IDE – .NET, Node. js, PHP, Python vagy Java – használatával minden eddiginél gyorsabban hozhat létre webalkalmazásokat és API-kat.
+* [**Azure app Services**](https://azure.microsoft.com/services/app-service/): felhőalapú platform olyan hatékony webes és mobil alkalmazások létrehozásához, amelyek bárhonnan csatlakozhatnak az adatkapcsolatokhoz; a felhőben vagy a helyszínen. Vonzó mobil alkalmazások készítése iOS, Android és Windows rendszerre. A szolgáltatásként (SaaS) és nagyvállalati alkalmazásokkal is integrálható, és a beépített kapcsolattal több tucat felhőalapú szolgáltatáshoz és nagyvállalati alkalmazáshoz is csatlakozhat. A kód a kedvenc nyelvén és IDE – .NET, Node.js, PHP, Python vagy Java – használatával minden eddiginél gyorsabban hozhat létre webalkalmazásokat és API-kat.
 
 * [**Logic apps**](https://azure.microsoft.com/services/app-service/logic/): a Azure app Service Logic apps szolgáltatása segít a IoT-megoldás integrálásában a meglévő üzletági rendszerekre, és automatizálni a munkafolyamatok folyamatait. Logic Apps lehetővé teszi a fejlesztők számára, hogy olyan munkafolyamatokat tervezzenek, amelyek egy eseményindítóból kezdődnek, majd végrehajtanak egy sor lépést – olyan szabályokat és műveleteket, amelyek hatékony összekötőket használnak az üzleti folyamatokkal való integrációhoz. A Logic Apps a SaaS-, felhőalapú és helyszíni alkalmazások hatalmas ökoszisztémájának megfelelő kapcsolattal rendelkezik.
 

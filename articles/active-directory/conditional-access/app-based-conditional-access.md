@@ -4,19 +4,18 @@ description: Megtudhatja, hogyan igényelhet jóváhagyott ügyfélalkalmazások
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a215e2bb7d9d1cf9013414037383590456296cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253392"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Útmutató: jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -41,37 +40,37 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 **1. lépés: az Android-és iOS-alapú modern hitelesítési ügyfelekre vonatkozó szabályzat, amely a jóváhagyott ügyfélalkalmazás használatát igényli az Exchange Online-hoz való hozzáféréskor.**
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy** > **a**műveletek területen válassza az **Office 365 (előzetes verzió)** lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 (előzetes verzió)** lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
    1. **Android** és **iOS**is.
 1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
    1. Állítsa **az** **Igen**értékre.
    1. Válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
 **2. lépés: Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online-hoz az ActiveSync (EAS) segítségével**
 
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy** > **a**műveletek területen válassza az **Office 365 Exchange Online**lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
 1. **Feltételek**:
    1. **Ügyfélalkalmazások (előzetes verzió)**:
       1. Állítsa **az** **Igen**értékre.
       1. Válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
@@ -88,37 +87,37 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 **1. lépés: az Android-és iOS-alapú modern hitelesítési ügyfelekre vonatkozó szabályzat, amely a jóváhagyott ügyfélalkalmazás használatát igényli az Exchange Online-hoz és a SharePoint Online-hoz való hozzáféréshez.**
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy** > **a**műveletek területen válassza az **Office 365 Exchange Online** és az **Office 365 SharePoint Online**lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online** és az **Office 365 SharePoint Online**lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
    1. **Android** és **iOS**is.
 1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
    1. Állítsa **az** **Igen**értékre.
    1. Válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
 **2. lépés: a jóváhagyott ügyfélalkalmazás használatát igénylő Exchange ActiveSync-ügyfelek házirendje.**
 
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy** > **a**műveletek területen válassza az **Office 365 Exchange Online**lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
 1. **Feltételek**:
    1. **Ügyfélalkalmazások (előzetes verzió)**:
       1. Állítsa **az** **Igen**értékre.
       1. Válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **jóváhagyott ügyfélalkalmazás megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
@@ -128,8 +127,8 @@ Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzáre
 
 ## <a name="next-steps"></a>További lépések
 
-[Mit jelent a feltételes hozzáférés?](overview.md)
+[Mi az a feltételes hozzáférés?](overview.md)
 
 [Feltételes hozzáférési összetevők](concept-conditional-access-policies.md)
 
-[Gyakori feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
+[Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)

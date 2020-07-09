@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726400"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965246"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch renderelés használata
 
@@ -19,8 +19,8 @@ A Azure Batch renderelés többféleképpen is használható:
 * API-k:
   * Kód írása a Batch API-k bármelyikének használatával.  A fejlesztők a meglévő alkalmazásokhoz vagy munkafolyamatokhoz, akár a felhőben, akár a helyszínen is integrálhatja Azure Batch képességeit.
 * Parancssori eszközök:
-  * Az [Azure-parancssor](https://docs.microsoft.com/cli/azure/) vagy a [PowerShell](https://docs.microsoft.com/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
-  * Különösen a [Batch CLI-sablon támogatása](https://docs.microsoft.com/azure/batch/batch-cli-templates) sokkal egyszerűbbé teszi a készletek létrehozását és a feladatok elküldését.
+  * Az [Azure-parancssor](/cli/azure/) vagy a [PowerShell](/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
+  * Különösen a [Batch CLI-sablon támogatása](./batch-cli-templates.md) sokkal egyszerűbbé teszi a készletek létrehozását és a feladatok elküldését.
 * Batch Explorer felhasználói felület:
   * A [Batch Explorer](https://github.com/Azure/BatchLabs) egy platformfüggetlen ügyfél-eszköz, amely lehetővé teszi a Batch-fiókok felügyeletét és figyelését is.
   * Az egyes renderelési alkalmazások esetében számos készletet és feladattípust biztosítunk, amelyek segítségével egyszerűen hozhat létre készleteket, és elküldheti a feladatokat.  A sablonok egy halmaza szerepel az alkalmazás felhasználói felületén, és megtalálhatók a GitHubról elérhető sablonfájlok.
@@ -32,7 +32,7 @@ A legjobb módszer arra, hogy kipróbálja Azure Batch renderelést és legegysz
 
 ## <a name="using-batch-explorer"></a>Batch Explorer használata
 
-A következő témakörben talál részletes oktatóanyagot a renderelés végrehajtásához Batch Explorer használatával: [Blender oktatóanyag](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+A következő témakörben talál részletes oktatóanyagot a renderelés végrehajtásához Batch Explorer használatával: [Blender oktatóanyag](./tutorial-rendering-batchexplorer-blender.md).
 
 ### <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -61,9 +61,9 @@ Néhány ügyfélalkalmazás számára elérhetők a beépülő modulok.  A beé
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Batch rendering példái között próbálja ki a két oktatóanyagot:
 
-* [Megjelenítés az Azure CLI használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Renderelés a Batch Explorer használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Megjelenítés az Azure CLI használatával](./tutorial-rendering-cli.md)
+* [Renderelés a Batch Explorer használatával](./tutorial-rendering-batchexplorer-blender.md)

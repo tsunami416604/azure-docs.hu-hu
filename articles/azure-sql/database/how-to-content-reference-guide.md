@@ -11,22 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f7c90791025f14e743a83693503fe235792c603
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324393"
 ---
-# <a name="configure--manage-content-reference---azure-sql-database"></a>A & a tartalmi hivatkozás kezelése – Azure SQL Database
+# <a name="configure-and-manage-content-reference---azure-sql-database"></a>Tartalmi referenciák konfigurálása és kezelése – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázatokra mutató hivatkozásokat talál, amelyek segíthetnek a Azure SQL Database kezelésében és konfigurálásában. 
 
 ## <a name="load-data"></a>Adatok betöltése
 
-- [Migrálás SQL Databasere](migrate-to-database-from-sql-server.md)
-- Ismerje meg, hogyan [kezelheti az SQL Database](manage-data-after-migrating-to-database.md)-t az áttelepítés után.
+- [Migrálás az SQL Database-be](migrate-to-database-from-sql-server.md)
+- Megtudhatja, hogyan [kezelheti SQL Database az áttelepítés után](manage-data-after-migrating-to-database.md).
 - [Adatbázis másolása](database-copy.md)
 - [Adatbázis importálása BACPAC-ból](database-import.md)
 - [Adatbázis exportálása BACPAC-ba](database-export.md)
@@ -35,10 +34,10 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 
 ## <a name="configure-features"></a>Funkciók konfigurálása
 
-- [Azure AD-hitelesítés konfigurálása](authentication-aad-configure.md)
+- [Azure Active Directory (Azure AD) hitelesítésének konfigurálása](authentication-aad-configure.md)
 - [Feltételes hozzáférés konfigurálása](conditional-access-configure.md)
-- [Többtényezős AAD-hitelesítés](authentication-mfa-ssms-overview.md)
-- [Többtényezős hitelesítés konfigurálása](authentication-mfa-ssms-configure.md)
+- [Multi-Factor Azure AD-hitelesítés](authentication-mfa-ssms-overview.md)
+- [Multi-Factor Authentication konfigurálása](authentication-mfa-ssms-configure.md)
 - [Ideiglenes adatmegőrzési szabály konfigurálása](temporal-tables-retention-policy.md)
 - [A TDE konfigurálása BYOK megoldással](transparent-data-encryption-byok-configure.md)
 - [TDE BYOK-kulcsok váltása](transparent-data-encryption-byok-key-rotation.md)
@@ -111,7 +110,7 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 
-- [Kapcsolatok](connect-query-content-reference-guide.md#libraries)
+- [Kapcsolódás](connect-query-content-reference-guide.md#libraries)
 - [Spark-összekötő használata](spark-connector.md)
 - [Alkalmazás hitelesítése](application-authentication-get-client-id-keys.md)
 - [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](../performance-improve-use-batching.md)
@@ -128,11 +127,12 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 - [Tervezés rugalmas készletekhez](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Tervezés alkalmazásfrissítésekhez](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Több-bérlős SaaS-alkalmazások tervezése
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>Több-bérlős szoftveres (SaaS) alkalmazások tervezése
 
 - [SaaS-kialakítási minták](saas-tenancy-app-design-patterns.md)
 - [SaaS-videóindexelő](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a [felügyelt SQL-példányokkal kapcsolatos útmutatókról](../managed-instance/how-to-content-reference-guide.md)
+## <a name="next-steps"></a>További lépések
+
+- További információ [Az Azure SQL felügyelt példányaival kapcsolatos útmutatókról](../managed-instance/how-to-content-reference-guide.md)

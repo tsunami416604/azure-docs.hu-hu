@@ -8,14 +8,13 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968805"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Gazdagépek létrehozása az Azure-ban a Docker Machine használatával
-Ebből a cikkből megtudhatja, hogyan hozhat létre gazdagépeket az Azure-ban a [Docker Machine](https://docs.docker.com/machine/) használatával. A `docker-machine` parancs létrehoz egy linuxos virtuális GÉPET (VM) az Azure-ban, majd telepíti a Docker-t. Ezután az Azure-beli Docker-gazdagépeket ugyanazzal a helyi eszközökkel és munkafolyamatokkal kezelheti. A Windows 10-es Docker-Machine használatához Linux bash-t kell használnia.
+Ebből a cikkből megtudhatja, hogyan hozhat létre gazdagépeket az Azure-ban a [Docker Machine](https://docs.docker.com/machine/) használatával. A `docker-machine` parancs létrehoz egy linuxos virtuális gépet (VM) az Azure-ban, majd telepíti a Docker-t. Ezután az Azure-beli Docker-gazdagépeket ugyanazzal a helyi eszközökkel és munkafolyamatokkal kezelheti. A Windows 10-es Docker-Machine használatához Linux bash-t kell használnia.
 
 ## <a name="create-vms-with-docker-machine"></a>Virtuális gépek létrehozása Docker-géppel
 Először szerezze be az Azure-előfizetés AZONOSÍTÓját az [az Account show](/cli/azure/account) paranccsal az alábbiak szerint:
@@ -24,7 +23,7 @@ Először szerezze be az Azure-előfizetés AZONOSÍTÓját az [az Account show]
 sub=$(az account show --query "id" -o tsv)
 ```
 
-Az Azure-ban az *Azure* -t kell `docker-machine create` megadnia illesztőprogramként a Docker-gazdagépek létrehozásához. További információt a [Docker Azure-illesztőprogram dokumentációjában](https://docs.docker.com/machine/drivers/azure/) talál.
+Az Azure-ban `docker-machine create` az *Azure* -t kell megadnia illesztőprogramként a Docker-gazdagépek létrehozásához. További információt a [Docker Azure-illesztőprogram dokumentációjában](https://docs.docker.com/machine/drivers/azure/) talál.
 
 Az alábbi példa egy *myVM*nevű virtuális gépet hoz létre a "standard D2 v2" csomag alapján, létrehoz egy *azureuser*nevű felhasználói fiókot, és megnyitja a *80* -as portot a gazdagép virtuális gépén. Az Azure-fiókba való bejelentkezéshez és az erőforrások létrehozásához és kezeléséhez a Docker Machine-engedélyek megadásához kövesse az utasításokat.
 
@@ -88,7 +87,7 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-A kapcsolódási beállítások megadásához futtassa a javasolt konfigurációs parancsot (`eval $(docker-machine env myvm)`), vagy manuálisan is beállíthatja a környezeti változókat. 
+A kapcsolódási beállítások megadásához futtassa a javasolt konfigurációs parancsot ( `eval $(docker-machine env myvm)` ), vagy manuálisan is beállíthatja a környezeti változókat. 
 
 ## <a name="run-a-container"></a>Tároló futtatása
 Ha működés közben szeretné megtekinteni egy tárolót, lehetővé teszi egy alapszintű NGINX-webkiszolgáló futtatását. Az alábbiak szerint hozzon létre egy tárolót, `docker run` és tegye elérhetővé a 80-as portot a webes forgalom számára:
@@ -110,7 +109,7 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-Futó tárolók megtekintése `docker ps`a rel. A következő példa kimenetében a 80-as porton futó NGINX-tároló látható:
+Futó tárolók megtekintése a rel `docker ps` . A következő példa kimenetében a 80-as porton futó NGINX-tároló látható:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES

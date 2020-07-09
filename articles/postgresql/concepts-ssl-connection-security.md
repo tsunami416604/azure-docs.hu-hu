@@ -1,17 +1,17 @@
 ---
-title: TLS – Azure Database for PostgreSQL – egyetlen kiszolgáló
+title: SSL/TLS – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Útmutatás és információk a TLS-kapcsolat konfigurálásához Azure Database for PostgreSQL – egyetlen kiszolgáló esetén.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: d0482e5205b97b5c57c41e0ba98fb9ca819e5d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141748"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043835"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-kapcsolat konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón
 
@@ -39,7 +39,7 @@ A beállítás megerősítéséhez tekintse meg az **Áttekintés** lapot az SSL
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-Az **SSL-kényszerítési** paramétert engedélyezheti vagy letilthatja az Azure CLI-ben, illetve `Enabled` `Disabled` az értékek használatával.
+Az **SSL-kényszerítési** paramétert engedélyezheti vagy letilthatja az `Enabled` Azure CLI-ben, illetve az `Disabled` értékek használatával.
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
@@ -51,7 +51,7 @@ Néhány alkalmazás-keretrendszer, amely a PostgreSQL-t használja az adatbázi
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
 
-Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pemtalálható:. Töltse le a tanúsítványfájl, és mentse a kívánt helyre.
+Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl által létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen található: https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Töltse le a tanúsítványfájl, és mentse a kívánt helyre. (Tekintse meg a következő hivatkozásokat a szuverén felhőkben található kiszolgálók tanúsítványainak esetében: [Azure Government](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)és [Azure Germany](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).) 
 
 ### <a name="connect-using-psql"></a>Összekapcsolás a psql használatával
 
@@ -64,8 +64,35 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 ```
 
 > [!TIP]
-> Ellenőrizze, hogy az átadott `sslrootcert` érték megegyezik-e a mentett tanúsítvány elérési útjával.
+> Ellenőrizze, hogy az átadott érték megegyezik-e a `sslrootcert` mentett tanúsítvány elérési útjával.
+
+## <a name="tls-enforcement-in-azure-database-for-postgresql-single-server"></a>TLS-kényszerítés Azure Database for PostgreSQL egyetlen kiszolgálón
+
+Azure Database for PostgreSQL – az egyetlen kiszolgáló támogatja a titkosítást az adatbázis-kiszolgálóhoz Transport Layer Security (TLS) használatával csatlakozó ügyfelek számára. A TLS egy iparági szabványnak megfelelő protokoll, amely gondoskodik az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti biztonságos hálózati kapcsolatokról, ami lehetővé teszi a megfelelőségi követelmények betartását.
+
+### <a name="tls-settings"></a>TLS-beállítások
+
+Azure Database for PostgreSQL egyetlen kiszolgáló lehetővé teszi az ügyfélkapcsolatok TLS-verziójának betartatását. A TLS-verzió érvénybe léptetéséhez használja a **TLS-verzió minimális** beállítását. Ehhez a beállításhoz a következő értékek engedélyezettek:
+
+|  Minimális TLS-beállítás             | Az ügyfél TLS-verziója támogatott                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (alapértelmezett) | Nincs szükség TLS-re                      |
+| TLS1_0                           | TLS 1,0, TLS 1,1, TLS 1,2 és újabb |
+| TLS1_1                           | TLS 1,1, TLS 1,2 és újabb          |
+| TLS1_2                           | TLS 1,2-es és újabb verzió           |
+
+
+Ha például ezt a TLS-beállítást a TLS 1,0 értékre állítja be, akkor a kiszolgáló engedélyezi a TLS 1,0, 1,1 és 1.2 + protokollt használó ügyfelek kapcsolódását. Azt is megteheti, hogy a 1,2 értékre állítja azt, hogy csak a TLS 1.2 + protokollt használó ügyfelek kapcsolatait engedélyezzük, és a TLS 1,0 és a TLS 1,1 összes kapcsolata el lesz utasítva.
+
+> [!Note] 
+> Alapértelmezés szerint a Azure Database for PostgreSQL nem érvényesíti a minimális TLS-verziót (a beállítás `TLSEnforcementDisabled` ).
+>
+> Miután kikényszeríti a TLS minimális verzióját, később nem tilthatja le a minimális verzió-kényszerítést.
+
+Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for PostgreSQL egyetlen kiszolgálóhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
 
 ## <a name="next-steps"></a>További lépések
 
 Tekintse át a [Azure Database for PostgreSQLhoz tartozó kapcsolódási könyvtárak](concepts-connection-libraries.md)különböző alkalmazás-csatlakozási lehetőségeit.
+
+- Útmutató a [TLS konfigurálásához](howto-tls-configurations.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 3b270b8ae4e9729d2c0f8ae99a3c19c68561df95
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 46d0a21ac1461b2553b8262b913aada3fa2a1b6f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119250"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081302"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 
@@ -205,7 +205,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)
 

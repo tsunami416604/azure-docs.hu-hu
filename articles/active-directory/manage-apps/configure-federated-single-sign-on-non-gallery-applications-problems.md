@@ -3,24 +3,24 @@ title: Probléma van az összevont egyszeri bejelentkezés konfigurálásával e
 description: Az összevont egyszeri bejelentkezés az Azure AD Application Galleryben nem szereplő egyéni SAML-alkalmazáshoz való konfigurálása során felmerülő gyakori problémák némelyike.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84a8ee8ca29046d26d200aaf853a3efe25f15768
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76711875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763567"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Probléma az összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz
 

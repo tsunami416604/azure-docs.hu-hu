@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426251"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043427"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Valós idejű IoT-adatfolyamok feldolgozása Azure Stream Analytics
 
@@ -57,10 +57,10 @@ A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató val�
 ## <a name="create-an-azure-stream-analytics-query"></a>Azure Stream Analytics-lekérdezés létrehozása
 A következő lépés a feladatok létrehozása után egy lekérdezés írása. A mintaadatok lekérdezése a feladathoz való csatlakozás nélkül is tesztelhető.
 
-Töltse le a [HelloWorldASA-InputStream. JSON](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
-) fájlt a githubról. Ezután navigáljon a Azure Stream Analytics feladatokhoz a Azure Portal.
+Töltse le a [HelloWorldASA-InputStream.jst](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+) a githubról. Ezután navigáljon a Azure Stream Analytics feladatokhoz a Azure Portal.
 
-A bal oldali menüben válassza a **lekérdezés** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **minta bemenet feltöltése**lehetőséget. Töltse fel `HelloWorldASA-InputStream.json` a fájlt, majd kattintson **az OK gombra**.
+A bal oldali menüben válassza a **lekérdezés** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **minta bemenet feltöltése**lehetőséget. Töltse fel a `HelloWorldASA-InputStream.json` fájlt, majd kattintson **az OK gombra**.
 
 ![Stream Analytics irányítópult-lekérdezés csempe](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 

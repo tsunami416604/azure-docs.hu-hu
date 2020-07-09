@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361955"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása Azure Monitor
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.
@@ -90,7 +90,7 @@ Kövesse a diagnosztikai beállítások [létrehozása a platform-naplók és-me
  A legtöbb Azure-erőforrás figyelési adatait a Azure Portal erőforrás menüjéből érheti el. Így egyetlen erőforrás adataihoz férhet hozzá a standard Azure Monitor eszközök használatával. Bizonyos Azure-szolgáltatások különböző lehetőségeket biztosítanak, ezért további információkat a szolgáltatás dokumentációjában talál. Az összes figyelt erőforrásból származó adatok elemzéséhez használja a **Azure monitor** menüt. 
 
 ### <a name="overview"></a>Áttekintés
-Számos szolgáltatás a működésük gyors áttekintése érdekében az **áttekintő** oldalon található megfigyelési információkat is tartalmazza. Ez általában a Azure Monitor Mérőszámokban tárolt platform-mérőszámok egy részhalmazán alapul. A szolgáltatások **figyelési** szakaszában általában további figyelési lehetőségek is elérhetők. menüben.
+Számos szolgáltatás a működésük gyors áttekintése érdekében az **áttekintő** oldalon található megfigyelési információkat is tartalmazza. Ez általában a Azure Monitor Mérőszámokban tárolt platform-mérőszámok egy részhalmazán alapul. Az egyéb megfigyelési lehetőségek általában a szolgáltatás menüjének **figyelés** szakaszában lesznek elérhetők.
 
 ![Áttekintő lap](media/monitor-azure-resource/overview-page.png)
 

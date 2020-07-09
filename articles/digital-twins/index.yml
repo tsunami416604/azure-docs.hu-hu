@@ -1,75 +1,81 @@
 ### YamlMime:Landing
 title: Az Azure Digital Twins előzetes verziójának dokumentációja
-summary: Útmutató az Azure Digital Twins használatához személyek, helyek és dolgok összekapcsolására és térbeli intelligenciával rendelkező IoT-megoldások létrehozására. A rövid útmutató és az oktatóanyagok során megismerkedhet egy képzeletbeli okosépület monitorozásának módjával és a kapcsolódó alapelvek részleteivel, és létrehozhat egy következő generációs, a fizikai környezetét modellező IoT-megoldást.
+summary: Megtudhatja, hogyan hozhatja létre az eszközei, környezetei és üzleti rendszerei digitális ábrázolását az Azure Digital Twins platform segítségével, a valós világot modellező, következő generációs IoT-megoldások létrehozásához.
 metadata:
   title: Az Azure Digital Twins előzetes verziójának dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: Útmutató az Azure Digital Twins használatához személyek, helyek és dolgok összekapcsolására és térbeli intelligenciával rendelkező IoT-megoldások létrehozására.
-  services: digital-twins
   ms.service: digital-twins
-  ms.subservice: digital-twins
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 02/07/2020
-  ms.openlocfilehash: e5d66ffb35cb0ce50aa7898cad30bf9fd0bf57ac
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  author: philmea
+  ms.author: philmea
+  ms.date: 02/12/2020
+  ms.openlocfilehash: 105a9de63f13a7a6460638ad967be40edd0783a4
+  ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77110574"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85392148"
 landingContent:
 - title: Az Azure Digital Twins bemutatása
   linkLists:
   - linkListType: overview
     links:
     - text: Mi az az Azure Digital Twins?
-      url: about-digital-twins.md
-  - linkListType: concept
-    links:
-    - text: A Digital Twins-objektummodell és a térbeliintelligencia-diagram ismertetése
-      url: concepts-objectmodel-spatialgraph.md
-  - linkListType: video
-    links:
-    - text: Bevezetés az Azure Digital Twins használatába
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
-- title: Első lépések
+      url: overview.md
+- title: Ismerkedés az oktatóanyagokkal
   linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Szabad szobák keresése
-      url: quickstart-view-occupancy-dotnet.md
   - linkListType: tutorial
     links:
-    - text: Üzembe helyezés és konfigurálás
-      url: tutorial-facilities-setup.md
-    - text: Kiépítés és az állapot monitorozása
-      url: tutorial-facilities-udf.md
-    - text: Értesítések küldése a Logic Apps használatával
-      url: tutorial-facilities-events.md
-    - text: Események megjelenítése a Time Series Insights használatával
-      url: tutorial-facilities-analyze.md
-- title: Fejlesztés az Azure Digital Twins használatával
+    - text: Ügyfélalkalmazás kódolása
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Az alapok megismerése egy minta-ügyfélalkalmazással
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Teljes körű megoldás csatlakoztatása
+      url: tutorial-end-to-end.md
+- title: Tanulás
   linkLists:
   - linkListType: concept
     links:
-    - text: Eszközkapcsolatok és bemenő telemetriaadatok
-      url: concepts-device-ingress.md
-    - text: Adatfeldolgozás és felhasználó által definiált függvények
-      url: concepts-user-defined-functions.md
+    - text: Egyéni modellek
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digitális ikermodellek és az ikergráf
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Lekérdezés nyelve
+      url: concepts-query-language.md
+- title: Fejlesztés
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: A Postman beállítása
-      url: how-to-configure-postman.md
-    - text: Felhasználó által meghatározott függvények létrehozása
-      url: how-to-user-defined-functions.md
+    - text: Az Azure Digital Twins CLI használata
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Digital Twins-példány létrehozása
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ügyfélalkalmazás hitelesítése
+      url: how-to-authenticate-client.md
 - title: API-referencia
   linkLists:
-  - linkListType: reference
-    links:
-    - text: Felhasználó által meghatározott függvények ügyfélkódtára
-      url: reference-user-defined-functions-client-library.md
   - linkListType: how-to-guide
     links:
-    - text: A Digital Twins Swagger használata
-      url: how-to-use-swagger.md
+    - text: Az Azure Digital Twins API-k és SDK-k használata
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni SDK-k létrehozása az AutoRest használatával
+      url: how-to-create-custom-sdks.md
+  - linkListType: reference
+    links:
+    - text: REST API-k
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721744"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085310"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
 Ebből a dokumentumból megtudhatja, hogyan hozhatja ki az Azure-beli SQL Server VM tárolt adatok szolgáltatásait, amelyek segítségével az algoritmusok hatékonyabban megismerhetik az adatokból. Ezt a feladatot SQL vagy programozási nyelv (például Python) használatával hajthatja végre. Mindkét módszert itt mutatjuk be.
@@ -49,21 +49,25 @@ Ebben a szakaszban az SQL-t használó szolgáltatások létrehozásának módja
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>Darabszám-alapú szolgáltatás létrehozása
 Ez a dokumentum két módszert mutat be a Count-funkciók létrehozásához. Az első metódus feltételes összeget használ, a második metódus pedig a "WHERE" záradékot használja. Ezek az új funkciók ezután csatlakoztathatók az eredeti táblához (az elsődleges kulcs oszlopainak használatával), hogy az eredeti adatértékekkel együtt is megszámolják a szolgáltatásokat.
 
-    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
+```sql
+select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
-    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
-    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
+where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+```
 
 ### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>Dobozolási szolgáltatás létrehozása
 Az alábbi példa azt szemlélteti, hogyan hozhatók dobozolni-funkciók a dobozolási (öt raktárhely használatával) egy numerikus oszlop, amely szolgáltatásként használható.
 
-    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
+```sql
+SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>
+```
 
 
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>A funkciók kimutatása egyetlen oszlopból
 Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát további funkciók létrehozásához. A példa azt feltételezi, hogy a táblázatban a szélesség vagy hosszúság oszlop szerepel, amelyből a szolgáltatásokat kívánja előállítani.
 
-Íme egy rövid ismertető a szélességi és a hosszúsági hely adatainak áttekintéséről (a StackOverflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`-ből származnak). Íme néhány hasznos tudnivaló arról, hogy a szolgáltatások a mezőből való létrehozása előtt hogyan kell megismerni a helyadatok adatait:
+Íme egy rövid ismertető a szélességi és a hosszúsági hely adatainak áttekintéséről (a StackOverflow-ből származnak `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude` ). Íme néhány hasznos tudnivaló arról, hogy a szolgáltatások a mezőből való létrehozása előtt hogyan kell megismerni a helyadatok adatait:
 
 * A jel azt jelzi, hogy a világ északi vagy déli régiója, illetve Kelet-vagy nyugati régiója.
 * A nullától eltérő száz számjegy azt jelzi, hogy a földrajzi szélesség nem lesz használatban.
@@ -76,18 +80,20 @@ Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát 
 * Az ötödik tizedes tört érték 1,1 m-re van beállítva: megkülönbözteti a fákat egymástól. Az ehhez a szinthez tartozó pontosságot a kereskedelmi GPS-egységekkel csak különbözeti korrekcióval lehet megvalósítani.
 * A hatodik tizedes tört érték 0,11 m-re van korlátozva: ezt a szintet részletesen, a Tájképek kialakításához, az utak létrehozásához használhatja. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt a célt úgy érheti el, ha a GPS-szel, például a differentially korrigált GPS-sel kapcsolatos fáradságos mértékeket használ.
 
-A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Ha egyszer is meghívhat egy REST-végpontot, például a Bing Maps `https://msdn.microsoft.com/library/ff701710.aspx` API-t (lásd: a régió/kerület információinak beszerzése).
+A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Ha egyszer is meghívhat egy REST-végpontot, például a Bing Maps API-t (lásd: `https://msdn.microsoft.com/library/ff701710.aspx` a régió/kerület információinak beszerzése).
 
-    select
-        <location_columnname>
-        ,round(<location_columnname>,0) as l1        
-        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
-        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
-        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
-        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
-        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
-        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
-    from <tablename>
+```sql
+select
+    <location_columnname>
+    ,round(<location_columnname>,0) as l1        
+    ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+    ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+    ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+    ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+    ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+    ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+from <tablename>
+```
 
 Ezek a hely-alapú funkciók további, a korábban leírtaknak megfelelően további Count-funkciók létrehozásához használhatók.
 
@@ -107,14 +113,18 @@ A Python használatával olyan szolgáltatásokat hozhatnak elő, amelyekben az 
 
 A következő kapcsolati karakterlánc-formátum használható egy SQL Server-adatbázishoz való kapcsolódáshoz a Pythonból a pyodbc használatával (a kiszolgálónév, a dbname, a Felhasználónév és a jelszó lecserélése a megadott értékekkel):
 
-    #Set up the SQL Azure connection
-    import pyodbc
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 A Pythonban található [Panda Library](https://pandas.pydata.org/) számos adatstruktúrát és adatelemzési eszközt biztosít a Python programozási funkciók adatkezeléséhez. A következő kód beolvassa a SQL Server-adatbázisból a Panda adatkeretbe visszaadott eredményeket:
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 Most már dolgozhat a Panda adatkerettel, ahogy az az [Azure Blob Storage-hoz készült szolgáltatások létrehozása a Panda használatával](create-features-blob.md)című témakörben leírtak szerint.
 

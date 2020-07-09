@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509202"
 ---
 # <a name="entities"></a>Entitások
 
@@ -25,6 +24,33 @@ Maga az entitás legfontosabb aspektusa a hierarchia és a létrejövő hierarch
 Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a `Entity.Destroy()` -t, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja a `Destroy` modellt, amelyet a vagy az SAS- `AzureSession.Actions.LoadModelAsync()` variánsa ad vissza `AzureSession.Actions.LoadModelFromSASAsync()` .
 
 Az entitások akkor jönnek létre, amikor a kiszolgáló tartalmat tölt be, vagy amikor a felhasználó hozzá szeretne adni egy objektumot a jelenethez. Ha például egy felhasználó egy kivágási síkot szeretne felvenni egy rácsvonal belsejének megjelenítéséhez, akkor a felhasználó létrehozhat egy entitást, ahol a sík léteznie kell, majd hozzá kell adnia a kivágási sík összetevőt.
+
+## <a name="create-an-entity"></a>Entitás létrehozása
+
+Ha új entitást szeretne felvenni a színtérbe, például a modellek betöltéséhez, illetve összetevők csatolásához, használja a következő kódot:
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>Lekérdezési függvények
 

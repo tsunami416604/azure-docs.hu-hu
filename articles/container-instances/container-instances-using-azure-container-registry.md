@@ -7,13 +7,13 @@ ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81453523"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés a Azure Container Instances Azure Container Registry
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés az Azure Container Instancesben az Azure Container Registryből
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) egy Azure-alapú, felügyelt tároló beállításjegyzék-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez a cikk azt ismerteti, hogyan hívhat le egy Azure Container registryben tárolt tároló-lemezképet a Azure Container Instances üzembe helyezése során. A beállításjegyzék-hozzáférés konfigurálásának ajánlott módja egy Azure Active Directory egyszerű szolgáltatásnév és jelszó létrehozása, és a bejelentkezési hitelesítő adatok tárolása egy Azure Key vaultban.
 
@@ -40,7 +40,7 @@ Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](../key-vault/general
 
 Frissítse a `RES_GROUP` változót egy meglévő erőforráscsoport nevével, amelyben létrehozza a kulcstárolót, valamint `ACR_NAME` a tároló-beállításjegyzék nevét. A rövidség kedvéért a cikkben szereplő parancsok azt feltételezik, hogy a beállításjegyzék, a kulcstartó és a tároló példányok mindegyike ugyanabban az erőforráscsoporthoz lett létrehozva.
 
- Adja meg az új kulcstartó nevét a alkalmazásban `AKV_NAME`. A tár nevének egyedinek kell lennie az Azure-on belül, és 3-24 alfanumerikus karakterből kell állnia, betűvel kell kezdődnie, betűvel vagy számmal kell végződnie, és nem tartalmazhat egymást követő kötőjeleket.
+ Adja meg az új kulcstartó nevét a alkalmazásban `AKV_NAME` . A tár nevének egyedinek kell lennie az Azure-on belül, és 3-24 alfanumerikus karakterből kell állnia, betűvel kell kezdődnie, betűvel vagy számmal kell végződnie, és nem tartalmazhat egymást követő kötőjeleket.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -92,7 +92,7 @@ Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy a
 
 Most, hogy az egyszerű szolgáltatás hitelesítő adatai Azure Key Vault titkos kulcsokban vannak tárolva, az alkalmazások és a szolgáltatások használhatják őket a privát beállításjegyzék eléréséhez.
 
-Először kérje le a beállításjegyzék bejelentkezési kiszolgálójának nevét az az [ACR show][az-acr-show] parancs használatával. A bejelentkezési kiszolgáló neve minden kisbetűs, és hasonló a `myregistry.azurecr.io`következőhöz:.
+Először kérje le a beállításjegyzék bejelentkezési kiszolgálójának nevét az az [ACR show][az-acr-show] parancs használatával. A bejelentkezési kiszolgáló neve minden kisbetűs, és hasonló a következőhöz: `myregistry.azurecr.io` .
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)

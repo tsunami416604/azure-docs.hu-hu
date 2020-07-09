@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 842a69c27ceb0d56df5a7b49eb9922b88d8d4b32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206937"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>A LocalConfiguration.json fájl ismertetése – C-ügynök
 
@@ -55,7 +55,7 @@ A konfigurációs fájl módosításai az ügynök újraindításakor lépnek é
 
 ## <a name="security-agent-configurations-code-example"></a>Biztonsági ügynök konfigurációjának kódja – példa
 
-```JSON
+```json
 {
     "Configuration" : {
         "AgentId" : "b97faf0a-0f57-471f-9dab-46a8e1764946",

@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462051"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Mesh számára
@@ -45,7 +44,7 @@ A letöltés után a Visual Studio 2017-es verziójában nyissa meg a **Containe
  
 Adja hozzá a Container-előkészítési támogatást egy meglévő ASP.NET-vagy konzol-projekthez az Service Fabric Mesh Tools használatával a következőképpen:
 
-A Visual Studio Solution Explorerben kattintson a jobb gombbal a projekt nevére (a példában a **eShopLegacyWebForms**), majd válassza a tároló **hozzáadása** > **Orchestrator-támogatás**lehetőséget.
+A Visual Studio Solution Explorerben kattintson a jobb gombbal a projekt nevére (a példában a **eShopLegacyWebForms**), majd válassza a tároló **hozzáadása**  >  **Orchestrator-támogatás**lehetőséget.
 Megjelenik a **Container Orchestrator-támogatás hozzáadása** párbeszédpanel.
 
 ![A Visual Studio tároló-Orchestrator hozzáadása párbeszédpanel](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)

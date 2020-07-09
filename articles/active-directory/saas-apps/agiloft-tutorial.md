@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3283695c42c5bccf00ca43274d120409646c380f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 719f93db15b72d20120568e87bfd67f0464a9752
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73153966"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Oktatóanyag: Azure Active Directory integráció a Agiloft
 
@@ -109,19 +109,17 @@ Az Azure AD egyszeri bejelentkezés Agiloft való konfigurálásához hajtsa vé
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |-|-|
-    | `https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>` |
-    | `https://<subdomain>.agiloft.com/project/<KB_NAME>` |
-    | |
+    ```http
+    https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>
+    https://<subdomain>.agiloft.com/project/<KB_NAME>
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |-|-|
-    | `https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>` |
-    | `https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>` |
-    | |
+    ```http
+    https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>
+    https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>
+    ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -129,11 +127,10 @@ Az Azure AD egyszeri bejelentkezés Agiloft való konfigurálásához hajtsa vé
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |-|-|
-    | `https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>` |
-    | `https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>` |
-    | |
+    ```http
+    https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>
+    https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a Agiloft ügyfélszolgálati [csapatához](https://www.agiloft.com/support-login.htm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -196,12 +193,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

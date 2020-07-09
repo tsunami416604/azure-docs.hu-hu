@@ -1,6 +1,6 @@
 ---
 title: Fortinet-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat a Fortinet-adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
+description: A Fortinet készülék az Azure Sentinelhez való összekapcsolásával megtekintheti az irányítópultokat, létrehozhat egyéni riasztásokat, és javíthatja a vizsgálatot. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555961"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>A Fortinet és az Azure Sentinel összekötése
 
@@ -50,7 +50,7 @@ Konfigurálja a Fortinet a syslog-üzenetek CEF formátumban való továbbítás
    > [!NOTE] 
    > További információért keresse fel a [Fortinet dokumentumtárat](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és a **napló üzenetének hivatkozását**.
 
-1. Ha a megfelelő sémát szeretné használni Azure Monitor Log Analytics a Fortinet-eseményekhez, `CommonSecurityLog`keresse meg a következőt:.
+1. Ha a megfelelő sémát szeretné használni Azure Monitor Log Analytics a Fortinet-eseményekhez, keresse meg a következőt: `CommonSecurityLog` .
 
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 

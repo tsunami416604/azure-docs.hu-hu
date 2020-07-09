@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514441"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-alapú megoldás kiválasztása adatátvitelhez
 
@@ -35,7 +35,7 @@ Az adatáthelyezés a következő típusúak lehetnek:
 
     - **Grafikus felület** – ha alkalmanként csak néhány fájlt továbbít, és nem kell automatizálnia az adatátvitelt, kiválaszthat egy grafikus kezelőfelületi eszközt, például Azure Storage Explorer vagy webalapú feltárási eszközt a Azure Portal.
     - **Parancsfájlos vagy programozott átvitel** – használhat optimalizált szoftvereket, amelyeket a REST API-k/SDK-k közvetlen használatával biztosítanak vagy meghívhatnak. A rendelkezésre álló parancsfájl-előkészítő eszközök a következők: AzCopy, Azure PowerShell és Azure CLI. Programozási felületen a .NET, a Java, a Python, a Node/JS, a C++, a go, a PHP vagy a Ruby egyik SDK-t használhatja.
-    - Helyszíni **eszközök** – biztosítunk Önnek egy fizikai vagy virtuális eszközt, amely az adatközpontban található, és optimalizálja a hálózaton keresztüli adatátvitelt. Ezek az eszközök a gyakran használt fájlok helyi gyorsítótárát is tartalmazzák. A fizikai eszköz a Data Box Edge, a virtuális eszköz pedig a Data Box Gateway. Mindkettő véglegesen fut a helyszínen, és csatlakozik az Azure-hoz a hálózaton keresztül.
+    - Helyszíni **eszközök** – biztosítunk Önnek egy fizikai vagy virtuális eszközt, amely az adatközpontban található, és optimalizálja a hálózaton keresztüli adatátvitelt. Ezek az eszközök a gyakran használt fájlok helyi gyorsítótárát is tartalmazzák. A fizikai eszköz az Azure Stack Edge, a virtuális eszköz pedig a Data Box Gateway. Mindkettő véglegesen fut a helyszínen, és csatlakozik az Azure-hoz a hálózaton keresztül.
     - **Felügyelt adatfolyamat** – beállíthatja, hogy egy felhőalapú folyamat rendszeresen továbbítson fájlokat több Azure-szolgáltatás, a helyszíni vagy kettő kombinációja között. Az adatfolyamatok beállításához és kezeléséhez, valamint az elemzéshez az adatátvitelhez és az átalakításhoz használja a Azure Data Factory.
 
 A következő vizualizáció bemutatja az irányelveket, amelyekkel kiválaszthatja a különböző Azure-adatátviteli eszközöket az átvitelhez rendelkezésre álló hálózati sávszélességtől, az átvitelre szánt adatok méretétől és az átvitel gyakoriságának megfelelően.
@@ -77,7 +77,7 @@ Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja
 - Ismerkedjen meg a következőkkel:
 
     - [Az offline átvitelek Azure Data Box, Azure Data Box Disk és Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).
-    - [Online átvitelek Azure Data Box Gateway és Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/).
+    - [Online átvitelek Azure Data Box Gateway és Azure stack Edge](https://docs.microsoft.com/azure/databox-online/).
 - [Ismerje meg, mi az Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
 - Adatok átvitele a REST API-k használatával
 

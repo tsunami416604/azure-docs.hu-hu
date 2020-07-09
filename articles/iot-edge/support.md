@@ -4,16 +4,15 @@ description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/12/2020
+ms.date: 06/19/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ec143fbca94c5423ca67e09fa2932e55c06f418e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 097826a24cb2de17b603ff5fe3113d715e079697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807400"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -90,6 +89,7 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![A Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 20,04 <sup>2</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
 <sup>1</sup> a Debian 10 rendszer, köztük a Raspian Buster, az OpenSSL olyan verzióját használja, IoT Edge nem támogatja. A következő parancs használatával telepítsen egy korábbi verziót a IoT Edge telepítése előtt:
 
@@ -97,19 +97,21 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 sudo apt-get install libssl1.0.2
 ```
 
+<sup>2</sup> a [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) tárházból származó Debian 9 csomagoknak az Ubuntu 20,04-mel kell működniük a dobozban.
+
 ## <a name="releases"></a>Kiadások
 
 A kiadási eszközök és a kibocsátási megjegyzések az [Azure-iotedge kiadások](https://github.com/Azure/azure-iotedge/releases) oldalon érhetők el. IoT Edge Ez a szakasz a kibocsátási megjegyzések információit mutatja be, így könnyebben ábrázolhatja az egyes verziók összetevőit.
 
 IoT Edge összetevőket külön lehet telepíteni vagy frissíteni, és visszamenőlegesen kompatibilisek a régebbi verziójú összetevőkkel. A következő táblázat felsorolja az egyes kiadásokban található összetevőket:
 
-| Kiadás   | Biztonsági démon  | Peremhálózati hub<br>Edge-ügynök | Libiothsm | Moby  |
-| --------- | ---------------- | ---------------------- | --------- | ----- |
-| **1.0.9** | 1.0.9.1<br>1.0.9            | 1.0.9.1<br>1.0.9                  | 1.0.9.1<br>1.0.9     |       |
-| **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
-| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
-| **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+| Kiadás | Biztonsági démon | Peremhálózati hub<br>Edge-ügynök | Libiothsm | Moby |
+|--|--|--|--|--|
+| **1.0.9** | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
+| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
 IoT Edge a Microsoft. Azure. Device. Client SDK-t használja. További információkért tekintse meg az [Azure IoT C# SDK GitHub](https://github.com/Azure/azure-iot-sdk-csharp) -tárházat vagy a [.net-hez készült Azure SDK-referenciát](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet). Az alábbi lista az ügyfél SDK azon verzióját mutatja be, amelyet az egyes kiadások a következővel teszteltek:
 

@@ -4,15 +4,15 @@ description: A Data Lake Storage Gen1 (korábbi nevén Azure Data Lake Store) é
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67118807"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508554"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Mi az Azure Data Lake Storage Gen1?
 
@@ -78,7 +78,7 @@ A Data Lake Storage Gen1 kompatibilis a Hadoop-ökoszisztémában található le
 
 A Data Lake Storage Gen1 a Hadoop-környezetekben elérhető fájlrendszer Azuredatalakefilesystemet (adl://) keresztül érhető el (a HDInsight-fürttel érhető el). A adl://-t használó alkalmazások és szolgáltatások kihasználhatják a WebHDFS-ben jelenleg nem elérhető további teljesítmény-optimalizálást. Ennek eredményeképpen a Data Lake Storage Gen1 rugalmasságot biztosít a legjobb teljesítmény kihasználásához a adl://használatának javasolt beállításával vagy a meglévő kódok fenntartásával, ha továbbra is a WebHDFS API-t használja közvetlenül. Az Azure HDInsight teljes mértékben kihasználja a Azuredatalakefilesystemet, hogy a lehető legjobb teljesítményt nyújtsa Data Lake Storage Gen1on.
 
-Az adatai Data Lake Storage Gen1 használatával `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`érhetők el. További információ a Data Lake Storage Gen1 lévő adatok eléréséről: [a tárolt adatok tulajdonságainak megtekintése](data-lake-store-get-started-portal.md#properties).
+Az adatai Data Lake Storage Gen1 használatával érhetők el `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net` . További információ a Data Lake Storage Gen1 lévő adatok eléréséről: [a tárolt adatok tulajdonságainak megtekintése](data-lake-store-get-started-portal.md#properties).
 
 ## <a name="next-steps"></a>További lépések
 

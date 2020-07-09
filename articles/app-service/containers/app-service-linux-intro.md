@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046417"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557895"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -21,7 +21,7 @@ A [Azure app Service](../overview.md) egy teljes körűen felügyelt számítás
 
 ## <a name="languages"></a>Nyelvek
 
-Az Linuxon futó App Service számos beépített rendszerképet támogat a fejlesztői termelékenység növelése érdekében. A nyelvek közé tartozik a Node. js, a Java (JRE 8 & JRE 11), a PHP, a Python, a .NET Core és a Ruby. A [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) Futtatás gombra kattintva megtekintheti a legújabb nyelveket és a támogatott verziókat. Ha a beépített rendszerképek nem támogatják az alkalmazás számára szükséges futtatókörnyezetet, akkor a [saját Docker rendszerkép felépítésére](tutorial-custom-docker-image.md) vonatkozó utasításokkal üzembe helyezheti azt a Web App for Containers szolgáltatásban.
+Az Linuxon futó App Service számos beépített rendszerképet támogat a fejlesztői termelékenység növelése érdekében. A nyelvek közé tartoznak a következők: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core és Ruby. [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)A Futtatás gombra kattintva megtekintheti a legújabb nyelveket és a támogatott verziókat. Ha a beépített rendszerképek nem támogatják az alkalmazás számára szükséges futtatókörnyezetet, akkor a [saját Docker rendszerkép felépítésére](tutorial-custom-docker-image.md) vonatkozó utasításokkal üzembe helyezheti azt a Web App for Containers szolgáltatásban.
 
 ## <a name="deployments"></a>Központi telepítés
 
@@ -54,7 +54,7 @@ Ellenőrizze az [Azure állapot-irányítópultját](https://azure.microsoft.com
 
 Az Azure Portal megjeleníti a Web App for Containers szolgáltatással jelenleg működő funkciókat. A további funkciók engedélyezésével azok megjelennek a portálon.
 
-A Linuxon App Service csak [ingyenes, alapszintű, standard és prémium szintű](https://azure.microsoft.com/pricing/details/app-service/plans/) app Service-csomagokkal támogatott, és nem rendelkezik [megosztott](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre linuxos webalkalmazást olyan App Service-csomagban, amely már nem Linux-Web Apps üzemeltet.  
+A Linuxon való App Service csak az [ingyenes, az alapszintű, a standard, a prémium és az elkülönített](https://azure.microsoft.com/pricing/details/app-service/plans/) app Service-csomagokkal támogatott, és nem rendelkezik [megosztott](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre linuxos webalkalmazást olyan App Service-csomagban, amely már nem Linux-Web Apps üzemeltet.  
 
 Az egyazon erőforráscsoporthoz tartozó jelenlegi korlátozás alapján nem keverheti össze a Windows és Linux rendszerű alkalmazásokat ugyanabban a régióban.
 
@@ -65,7 +65,7 @@ Az egyazon erőforráscsoporthoz tartozó jelenlegi korlátozás alapján nem ke
 >
 >
 
-Ellenőrizze a LogFiles könyvtár Docker naplóit, ha az alkalmazás nem indul el, vagy ha meg szeretné tekinteni az alkalmazás naplózását. A könyvtárhoz az SCM-webhelyen vagy FTP-n keresztül férhet hozzá. `stdout` A és `stderr` a tárolóból való bejelentkezéshez engedélyeznie kell az **alkalmazás naplózását** **app Service naplók**területen. A beállítás azonnal érvénybe lép. App Service észleli a változást, és automatikusan újraindítja a tárolót.
+Ellenőrizze a LogFiles könyvtár Docker naplóit, ha az alkalmazás nem indul el, vagy ha meg szeretné tekinteni az alkalmazás naplózását. A könyvtárhoz az SCM-webhelyen vagy FTP-n keresztül férhet hozzá. A és a `stdout` tárolóból való bejelentkezéshez `stderr` engedélyeznie kell az **alkalmazás naplózását** **app Service naplók**területen. A beállítás azonnal érvénybe lép. App Service észleli a változást, és automatikusan újraindítja a tárolót.
 
 Az SCM-webhelyet a **Fejlesztési eszközök** menüben található** Haladó eszközök** oldalon érheti el.
 

@@ -6,12 +6,11 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 09fe1455f0dba57fd23aeeb66acb1f99fc2513d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b605d63db09b81bfe73eca8f4abd7a38d2325004
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650204"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056021"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Felügyelt alkalmazás definíciójának létrehozása a PowerShell-lel
 
@@ -30,12 +29,12 @@ Ez a szkript közzéteszi egy felügyelt alkalmazás definícióját egy szolgá
 
 A szkript a következő parancsot használja a felügyelt alkalmazás definíciójának létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
-| [Új – AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Létrehozza egy felügyelt alkalmazás definícióját. Megadja a szükséges fájlokat tartalmazó csomagot. |
+| [Új – AzManagedApplicationDefinition](/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Létrehozza egy felügyelt alkalmazás definícióját. Megadja a szükséges fájlokat tartalmazó csomagot. |
 
 
 ## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
-* A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](/powershell/azure/get-started-azureps).

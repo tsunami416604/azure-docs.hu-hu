@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747005"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083457"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -22,9 +22,17 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 | | |
 |---------|---------|
 |**MSI letöltése**|[Microsoft letöltőközpont](https://aka.ms/cosmosdb-emulator)|
-|**Bevezetés**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
+|**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+
+- Ez a kiadás megváltoztatja a Cosmos-emulátor hibaelhárításakor szükséges ETL-nyomkövetési adatokat. A WPR (Windows teljesítmény-futtatókörnyezet eszközei) mostantól az ETL-alapú Nyomkövetések rögzítésének alapértelmezett eszközei, míg a régi LOGMAN-alapú rögzítés elavult. Ez a módosítás azért szükséges, mert a legújabb Windows-biztonsági frissítések váratlan hatással voltak arra, hogy a LOGMAN hogyan működik, amikor a Cosmos emulatoron keresztül hajtja végre.
+
+### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
+
+- Ez a kiadás javít néhány, az Emulator Adatkezelőával kapcsolatos hibát. Bizonyos esetekben, amikor egy webböngészőn keresztül Adatkezelő emulátort, nem tud csatlakozni a Cosmos Emulator-végponthoz, és az összes kapcsolódó művelet, például egy adatbázis vagy egy tároló létrehozása hibát jelez. A második probléma kijavítva van, hogy egy JSON-fájlból Adatkezelő feltöltési művelettel hozzon létre egy elemet.
 
 ### <a name="2110"></a>2.11.0
 

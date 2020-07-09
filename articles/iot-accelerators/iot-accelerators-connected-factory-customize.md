@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67080486"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Annak testreszabása, hogy a csatlakoztatott gyári megoldás hogyan jelenítse meg az OPC UA-kiszolgálók adatait
@@ -71,9 +71,9 @@ További információ az adatok leképezéséről és összesítéséről a konk
 
 ## <a name="deploy-the-changes"></a>A módosítások központi telepítése
 
-Ha befejezte a **ContosoTopologyDescription. JSON** fájl módosítását, újra kell telepítenie a csatlakoztatott gyári megoldást az Azure-fiókjába.
+Ha végzett a **ContosoTopologyDescription.js** fájlon végzett módosításával, újra kell telepítenie a csatlakoztatott gyári megoldást az Azure-fiókjába.
 
-Az **Azure-IOT-Connected-Factory** adattár tartalmaz egy **Build. ps1** PowerShell-szkriptet, amelyet a megoldás újraépítéséhez és üzembe helyezéséhez használhat.
+Az **Azure-IOT-Connected-Factory** adattár tartalmaz egy **build.ps1** PowerShell-szkriptet, amely segítségével újraépítheti és telepítheti a megoldást.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -81,7 +81,7 @@ Az alábbi cikkekben további információt talál a csatlakoztatott gyári mego
 
 * [Engedélyek a azureiotsolutions.com webhelyen][lnk-permissions]
 * [Csatlakoztatott gyár – gyakori kérdések](iot-accelerators-faq-cf.md)
-* [GYIK][lnk-faq]
+* [Gyakori kérdések][lnk-faq]
 
 
 [img-oee-kpi]: ./media/iot-accelerators-connected-factory-customize/oeenadkpi.png

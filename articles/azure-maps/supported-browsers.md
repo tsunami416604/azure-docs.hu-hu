@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988787"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
@@ -40,7 +39,7 @@ A Azure Maps web SDK a következő asztali böngészőket támogatja:
 
 Lásd még: [korábbi böngészők megcélzása](#Target-Legacy-Browsers) a cikk későbbi részében.
 
-## <a name="mobile"></a>Mobiltelefon
+## <a name="mobile"></a>Mobil
 
 A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
@@ -57,18 +56,18 @@ A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
 ## <a name="nodejs"></a>Node.js
 
-A Node. js-ben a következő web SDK-modulok is támogatottak:
+A következő web SDK-modulok is támogatottak a Node.jsban:
 
-- Szolgáltatások modul ([dokumentációs](how-to-use-services-module.md) | [NPM modul](https://www.npmjs.com/package/azure-maps-rest))
+- Szolgáltatások modul ([dokumentációs](how-to-use-services-module.md)  |  [NPM modul](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cél örökölt böngészők
 
-Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek nem támogatják a WebGL, vagy csak korlátozott támogatással rendelkeznek. Ilyen esetekben javasoljuk, hogy Azure Maps-szolgáltatásokat, valamint egy nyílt forráskódú Térkép vezérlőelemet, például a [betegtájékoztatót](https://leafletjs.com/)használja. Például:
+Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek nem támogatják a WebGL, vagy csak korlátozott támogatással rendelkeznek. Ilyen esetekben javasoljuk, hogy Azure Maps-szolgáltatásokat, valamint egy nyílt forráskódú Térkép vezérlőelemet, például a [betegtájékoztatót](https://leafletjs.com/)használja. Íme egy példa:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + szórólap" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + prospektust</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + prospektust</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

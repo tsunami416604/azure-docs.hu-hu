@@ -7,17 +7,16 @@ author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725055"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Csomagok ellenőrzése az Azure Network Watcher
 
@@ -41,7 +40,7 @@ Ebben a forgatókönyvben bemutatjuk, hogyan lehet megtekinteni a két végpont 
 
 TCP-kapcsolatok létrehozásakor a rendszer az első három, a csatlakozás során küldött csomagot követ egy, a háromutas kézfogásnak nevezett mintát. Ha megvizsgálja az ebben a kézfogásban elküldött első két csomagot, az ügyféltől érkező első kérést és a kiszolgáló válaszát, a kapcsolat létrejötte után kiszámíthatja a késést. Ezt a késést a kerekítési idő (RTT) nevezik. A TCP protokollal és a háromutas kézfogással kapcsolatos további információkért tekintse meg a következő erőforrást. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 WireShark elindítása
 
@@ -75,9 +74,9 @@ Az Azure-ban üzembe helyezett virtuálisgép-példányon több alkalmazás is f
 
 Ebben a példában áttekintjük a nem kívánt protokollok korábban futtatott csomagjainak rögzítését, amely arra utalhat, hogy jogosulatlan kommunikációt jelez a gépen futó alkalmazástól.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
-Ha ugyanazt a rögzítést használja az előző forgatókönyvben, kattintson a **statisztika** > **protokoll-hierarchia** elemre.
+Ha ugyanazt a rögzítést használja az előző forgatókönyvben, kattintson a **statisztika**  >  **protokoll-hierarchia** elemre.
 
 ![protokoll-hierarchia menü][2]
 
@@ -91,9 +90,9 @@ Ahogy az alábbi képernyőfelvételen is látható, a BitTorrent protokollt has
 
 A forgalom, a végpontok és az átadott portok megértése fontos a hálózatban lévő alkalmazások és erőforrások figyelése és hibaelhárítása során. A csomag rögzítési fájlját a fentiek alapján gyorsan megtudhatja, hogy a virtuális gép mely célállomásokkal kommunikál, és milyen portokat használ.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
-Ugyanazon rögzítés használata az előző forgatókönyvben kattintson a **statisztika** > **IPv4 statisztikai** > **Célhelyek és portok** elemre.
+Ugyanazon rögzítés használata az előző forgatókönyvben kattintson a **statisztika**  >  **IPv4 statisztikai**  >  **Célhelyek és portok** elemre.
 
 ![csomag rögzítése ablak][4]
 

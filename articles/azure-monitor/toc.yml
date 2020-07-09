@@ -12,6 +12,13 @@
   items:
     - name: Azure-erőforrás monitorozása
       href: learn/quick-monitor-azure-resource.md
+    - name: Tevékenységnapló küldése munkaterületre
+      items:
+        - name: Azure Portal
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: learn/quick-collect-activity-log-arm.md
     - name: Virtuális gépek figyelése
       items:
         - name: Azure-beli virtuális gépek
@@ -114,6 +121,8 @@
         - name: Naplóadatok feldolgozási ideje
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Adatok streamelése az Event Hubsra
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: Insights
       href: insights/insights-overview.md
     - name: Adatbiztonság
@@ -155,6 +164,8 @@
           displayname: VM
     - name: Kezelés és konfigurálás
       items:
+        - name: Nagy léptékű üzembe helyezés
+          href: platform/deploy-scale.md
         - name: Szerepköri engedélyek és biztonság
           href: platform/roles-permissions-security.md
         - name: IP-címek
@@ -195,7 +206,7 @@
             - name: Áttekintés
               href: platform/agents-overview.md
             - name: GYIK
-              href: 'faq.md#agents'
+              href: faq.md#agents
             - name: Azure Diagnostics bővítmény
               items:
                 - name: Áttekintés
@@ -230,7 +241,7 @@
                     - name: Verzióelőzmények
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON-sorok erőforrásnapló-formátuma
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: Hibaelhárítás
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -297,36 +308,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: Tevékenységnapló
-          items:
-            - name: Megtekintés az Azure Portalon
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: Összegyűjtés és elemzés
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: Exportálás (örökölt)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Küldés a Log Analytics-munkaterületre
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Küldés az Azure Storage-ba
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Küldés az Event Hubsba
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: Diagnosztikai beállítások létrehozása
+          href: platform/activity-log.md
+        - name: Erőforrásnaplók
+          href: platform/resource-logs.md
+        - name: Diagnosztikai beállítások
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Diagnosztikai beállítások létrehozása Resource Managerrel
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: Exportálás Blob Storage formátumba
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Adatok streamelése az Event Hubsra
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: Naplólekérdezések áttekintése
@@ -402,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: Példák és útmutatás
           items:
+            - name: Példa a lekérdezésekre
+              href: log-query/saved-queries.md
             - name: Példák naplólekérdezésekre
               href: log-query/examples.md
             - name: Példák intelligens elemzésre
@@ -464,6 +453,8 @@
               href: platform/alerts-metric-logs.md
             - name: Resource Manager-sablon használata
               href: platform/alerts-metric-create-templates.md
+            - name: Metrikariasztások hibaelhárítása
+              href: platform/alerts-troubleshoot-metric.md
         - name: Naplóriasztási szabályok
           items:
             - name: Riasztások konfigurálása elemzési lekérdezésekhez
@@ -473,7 +464,7 @@
             - name: Webhook-műveletek
               href: platform/alerts-log-webhook.md
             - name: Naplóriasztások hibaelhárítása
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: Tevékenységnapló-riasztási szabályok
           items:
             - name: Riasztás tevékenységnapló-eseményhez
@@ -524,6 +515,8 @@
           href: platform/api-alerts.md
         - name: Riasztások hibaelhárítása
           href: platform/alerts-troubleshoot.md
+        - name: Riasztások és régióáthelyezések
+          href: platform/alerts-resource-move.md
         - name: Informatikai szolgáltatásfelügyelet
           items:
             - name: Informatikai szolgáltatásfelügyeleti összekötő
@@ -620,6 +613,10 @@
                   href: app/javascript.md
                 - name: Forrástérkép JavaScripthez
                   href: app/source-map-support.md
+                - name: Hibaelhárítás
+                  items:
+                    - name: SDK-betöltési hiba
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights API összefoglalója
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -629,6 +626,8 @@
               href: app/remove-application-insights.md
         - name: Kód nélküli monitorozás
           items:
+            - name: Áttekintés
+              href: app/codeless-overview.md
             - name: És Azure-beli virtuális gép és méretezési csoport
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service
@@ -741,6 +740,8 @@
               href: app/profiler-settings.md
             - name: Profilkészítési kérések nyomon követése
               href: app/profiler-trackrequests.md
+            - name: BYOS (saját tároló használata) konfigurálása
+              href: app/profiler-bring-your-own-storage.md
             - name: Profilkészítő hibaelhárítása
               href: app/profiler-troubleshooting.md
         - name: Pillanatkép-hibakereső
@@ -754,6 +755,8 @@
               href: app/snapshot-debugger-vm.md
             - name: A Snapshot Debugger frissítése
               href: app/snapshot-debugger-upgrade.md
+            - name: BYOS (saját tároló használata) konfigurálása
+              href: app/profiler-bring-your-own-storage.md
             - name: A pillanatkép-hibakereső hibaelhárítása
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md
@@ -893,7 +896,7 @@
         - name: Általános rendelkezésre állás – gyakori kérdések
           href: insights/vminsights-ga-release-faq.md
         - name: GYIK
-          href: 'faq.md#azure-monitor-for-vms'
+          href: faq.md#azure-monitor-for-vms
         - name: Monitorozás engedélyezése
           items:
             - name: Monitorozás engedélyezésének áttekintése
@@ -925,7 +928,7 @@
         - name: Áttekintés
           href: insights/container-insights-overview.md
         - name: GYIK
-          href: 'faq.md#azure-monitor-for-containers'
+          href: faq.md#azure-monitor-for-containers
         - name: Monitorozás engedélyezése
           items:
             - name: Monitorozás engedélyezésének áttekintése
@@ -934,6 +937,8 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: Engedélyezés meglévő AKS-fürtön
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Engedélyezés Arc-kompatibilis fürtön
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Engedélyezés hibrid fürtön
               href: insights/container-insights-hybrid-setup.md
             - name: Engedélyezés Azure Red Hat OpenShift v3-on
@@ -972,6 +977,8 @@
           href: insights/container-insights-update-metrics.md
         - name: Állapotmonitorozás konfigurációja
           href: insights/container-insights-health-monitors-config.md
+        - name: A költségek és a használat kezelése
+          href: insights/container-insights-cost.md
         - name: Monitorozás letiltása
           items:
             - name: AKS monitorozásának letiltása
@@ -990,15 +997,17 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
-        - name: Key Vault
-          href: insights/key-vault-insights-overview.md
         - name: Hálózatok
           href: insights/network-insights-overview.md
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
         - name: Storage
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md
         - name: Erőforráscsoportok
           href: insights/resource-group-insights.md
+        - name: Megállapítások hibaelhárítása
+          href: insights/troubleshoot-workbooks.md
     - name: Megoldások
       items:
         - name: Áttekintés
@@ -1077,23 +1086,10 @@
               href: platform/view-designer-parts.md
             - name: Szűrők
               href: platform/view-designer-filters.md
-        - name: Egyéni megoldások
-          items:
-            - name: Tervezés és felépítés
-              href: insights/solutions-creating.md
-            - name: Megoldásfájl
-              href: insights/solutions-solution-file.md
-            - name: Automation-erőforrások
-              href: insights/solutions-resources-automation.md
-            - name: Naplókeresések és riasztások
-              href: insights/solutions-resources-searches-alerts.md
-            - name: Nézetek
-              href: insights/solutions-resources-views.md
-            - name: Ajánlott eljárások
-              href: insights/solutions-best-practices.md
     - name: Munkafüzetek
       items:
         - name: Áttekintés
+          displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Vizualizációk
           href: platform/workbooks-visualizations.md
@@ -1131,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: Alkalmazásadatokat használó irányítópult
               href: learn/tutorial-app-dashboards.md
+            - name: Log Analytics-irányítópult frissítése
+              href: log-query/dashboard-upgrade.md
         - name: Adatok küldése a Grafana számára
           href: platform/grafana-plugin.md
     - name: Egyéni adatgyűjtés és -elemzés
@@ -1182,10 +1180,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platformnaplók
       items:
-        - name: Erőforrásnaplók sémái
-          href: platform/diagnostic-logs-schema.md
         - name: Tevékenységnapló sémája
           href: platform/activity-log-schema.md
+        - name: Erőforrásnaplók sémái
+          href: platform/resource-logs-schema.md
+        - name: Támogatott erőforrásnapló-kategóriák
+          href: platform/resource-logs-categories.md
     - name: Diagnosztikai bővítmények sémái
       items:
         - name: Diagnosztikai bővítmény Windows rendszeren
@@ -1204,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: Kibocsátási megjegyzések
+          items:
+            - name: Webalkalmazás-bővítmény
+              href: app/web-app-extension-release-notes.md
         - name: Adatmodell
           items:
             - name: Áttekintés
@@ -1272,6 +1276,9 @@
           href: platform/oms-portal-transition.md
         - name: Lemezmetrikák elavulása
           href: platform/portal-disk-metrics-deprecation.md
+        - name: Exportálás Blob Storage formátumba
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: További források
   items:
     - name: Azure-ütemterv

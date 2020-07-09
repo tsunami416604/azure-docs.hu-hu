@@ -3,20 +3,19 @@ title: Figyelő Azure File Sync | Microsoft Docs
 description: A Azure File Sync figyelése.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515199"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
-A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
+A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
 
 Ez a cikk azt ismerteti, hogyan figyelheti Azure File Sync üzembe helyezését a Azure Monitor, a Storage Sync Service és a Windows Server használatával.
 
@@ -34,7 +33,7 @@ Azure Monitor Azure File Sync metrikáinak megtekintéséhez válassza ki a **St
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
@@ -68,7 +67,7 @@ A regisztrált kiszolgáló állapotának, a kiszolgálói végpont állapotána
 ### <a name="registered-server-health"></a>Regisztrált kiszolgáló állapota
 
 - Ha a **regisztrált kiszolgáló** állapota **online**, a kiszolgáló sikeresen kommunikál a szolgáltatással.
-- Ha a **regisztrált kiszolgáló** állapota **kapcsolat nélküli üzemmódban jelenik meg**, ellenőrizze, hogy a kiszolgálón fut-e a Storage Sync monitor (AzureStorageSyncMonitor. exe) folyamata. Ha a kiszolgáló tűzfal vagy proxy mögött található, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) a tűzfal és a proxy konfigurálásához.
+- Ha a **regisztrált kiszolgáló** állapota **kapcsolat nélküli üzemmódban jelenik meg**, ellenőrizze, hogy a kiszolgálón fut-e a Storage Sync monitor (AzureStorageSyncMonitor.exe) folyamata. Ha a kiszolgáló tűzfal vagy proxy mögött található, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) a tűzfal és a proxy konfigurálásához.
 
 ### <a name="server-endpoint-health"></a>Kiszolgálói végpont állapota
 
@@ -79,7 +78,7 @@ A regisztrált kiszolgáló állapotának, a kiszolgálói végpont állapotána
 
 - A következő metrikai diagramok láthatók a Storage Sync szolgáltatás portálon:
 
-  | Metrika neve | Leírás | Lap neve |
+  | Metrika neve | Description | Lap neve |
   |-|-|-|
   | Szinkronizált bájtok száma | Átvitt adatok mérete (feltöltés és letöltés) | Szinkronizálási csoport, kiszolgálói végpont |
   | Felhőbeli rétegek felidézése | Visszahívott adatmennyiség | Regisztrált kiszolgálók |
@@ -132,11 +131,11 @@ Felhő-rétegek állapota:
 
 A szinkronizálási tevékenység figyeléséhez használja a kiszolgáló Azure File Sync teljesítményszámlálói.
 
-A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyissa meg a Teljesítményfigyelőt (Perfmon. exe). A számlálók a **továbbított AFS-bájtok** és az **AFS-szinkronizációs** objektumok alatt találhatók.
+A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyissa meg a Teljesítményfigyelőt (Perfmon.exe). A számlálók a **továbbított AFS-bájtok** és az **AFS-szinkronizációs** objektumok alatt találhatók.
 
 A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesítményfigyelőben:
 
-| Teljesítmény Object\Counter neve | Leírás |
+| Teljesítmény Object\Counter neve | Description |
 |-|-|
 | AFS bájtok Transferred\Downloaded sebessége (bájt/s) | A másodpercenként letöltött bájtok száma. |
 | AFS bájtok Transferred\Uploaded sebessége (bájt/s) | A másodpercenként feltöltött bájtok száma. |

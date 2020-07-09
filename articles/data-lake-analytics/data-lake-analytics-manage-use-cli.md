@@ -6,14 +6,14 @@ author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2e77e31049e2643f1488eb3f6be906de735ad2b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454363"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121418"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure Data Lake Analytics kezelése az Azure parancssori felületével (CLI)
 
@@ -22,7 +22,7 @@ ms.locfileid: "79454363"
 Ismerje meg, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatforrásokat, felhasználókat és feladatokat az Azure CLI használatával. Ha más eszközökkel szeretné megtekinteni a felügyeleti témákat, kattintson a fenti fülre.
 
 
-**Előfeltételek**
+## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt a következő erőforrásokkal kell rendelkeznie:
 
@@ -30,9 +30,9 @@ Az oktatóanyag megkezdése előtt a következő erőforrásokkal kell rendelkez
 
 * Azure CLI-vel. Lásd: [Install and configure Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (Az Azure parancssori felület telepítése és konfigurálása).
 
-   * Töltse le és telepítse az **előzetes kiadású** [Azure parancssori felületi eszközöket](https://github.com/MicrosoftBigData/AzureDataLake/releases) a bemutató elvégzéséhez.
+  * Töltse le és telepítse az **előzetes kiadású** [Azure parancssori felületi eszközöket](https://github.com/MicrosoftBigData/AzureDataLake/releases) a bemutató elvégzéséhez.
 
-* A `az login` parancsot használva végezze el a hitelesítést, és válassza ki a használni kívánt előfizetést. További információ a munkahelyi vagy iskolai fiók segítségével történő hitelesítésről: [Connect to an Azure subscription from the Azure CLI](/cli/azure/authenticate-azure-cli) (Csatlakozás Azure-előfizetéshez az Azure parancssori felületről).
+* A parancsot használva végezze el `az login` a hitelesítést, és válassza ki a használni kívánt előfizetést. További információ a munkahelyi vagy iskolai fiók segítségével történő hitelesítésről: [Connect to an Azure subscription from the Azure CLI](/cli/azure/authenticate-azure-cli) (Csatlakozás Azure-előfizetéshez az Azure parancssori felületről).
 
    ```azurecli
    az login
@@ -97,7 +97,7 @@ Analytics-fiók létrehozásakor ki kell jelölnie egy Azure Data Lake Storage f
 
 ### <a name="find-the-default-data-lake-store-account"></a>Az alapértelmezett Data Lake Store fiók megkeresése
 
-Megtekintheti a `az dla account show` parancs futtatásával használt alapértelmezett Data Lake Store fiókot. Az alapértelmezett fióknév a defaultDataLakeStoreAccount tulajdonság alatt jelenik meg.
+Megtekintheti a parancs futtatásával használt alapértelmezett Data Lake Store fiókot `az dla account show` . Az alapértelmezett fióknév a defaultDataLakeStoreAccount tulajdonság alatt jelenik meg.
 
    ```azurecli
    az dla account show --account "<Data Lake Analytics account name>"
@@ -111,7 +111,7 @@ Megtekintheti a `az dla account show` parancs futtatásával használt alapérte
 
 > [!NOTE]
 > Csak a blob Storage-beli rövid nevek támogatottak. Ne használja a teljes tartománynevet (például "myblob.blob.core.windows.net").
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>További Data Lake Store fiókok hozzáadása
 
@@ -146,6 +146,7 @@ A blob Storage-fiók listázása:
 ![Data Lake Analytics adatforrások listázása](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>Adatforrások törlése:
+
 Data Lake Store fiók törlése:
 
    ```azurecli
@@ -159,6 +160,7 @@ BLOB Storage-fiók törlése:
    ```
 
 ## <a name="manage-jobs"></a>Feladatok kezelése
+
 Ahhoz, hogy feladatot lehessen létrehozni, Data Lake Analytics fiókkal kell rendelkeznie.  További információ: Data Lake Analytics- [fiókok kezelése](#manage-accounts).
 
 ### <a name="list-jobs"></a>Feladatok listázása
@@ -179,7 +181,7 @@ Ahhoz, hogy feladatot lehessen létrehozni, Data Lake Analytics fiókkal kell re
 
 > [!NOTE]
 > A feladat alapértelmezett prioritása 1000, a feladathoz tartozó alapértelmezett párhuzamossági fok pedig 1.
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,7 +195,7 @@ A LIST parancs használatával keresse meg a feladat azonosítóját, majd a Mé
 
 ## <a name="pipelines-and-recurrences"></a>Folyamatok és ismétlődések
 
-**Folyamatok és ismétlődések adatainak lekérése**
+### <a name="get-information-about-pipelines-and-recurrences"></a>Folyamatok és ismétlődések adatainak lekérése
 
 A korábban elküldött feladatok folyamatadatait az `az dla job pipeline` paranccsal tekintheti meg.
 
@@ -211,9 +213,8 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
 * [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
 * [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-

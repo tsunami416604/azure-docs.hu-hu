@@ -10,19 +10,18 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: e5af2a0b88ba46dd1c4751a8aeee4c118ca1b8ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 2f4e9841a44252829fae283a12ba804219204022
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321546"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Az összetett veszélyforrások elleni védelem konfigurálása Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A Azure SQL Database komplex [veszélyforrások elleni védelme](threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL-injektálásokat**, **a szokatlan helyről vagy adatközpontból való hozzáférést**, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatokat** . További részletek a komplex [veszélyforrások elleni védelmi riasztásokban](threat-detection-overview.md#alerts).
 
-Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](threat-detection-overview.md#explore-detection-of-a-suspicious-event) vagy a [Azure Portal](threat-detection-overview.md#explore-alerts-in-azure-portal) használatával
+Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](threat-detection-overview.md#explore-detection-of-a-suspicious-event) vagy a [Azure Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) használatával
 
 A komplex [veszélyforrások elleni védelem](threat-detection-overview.md) a fejlett [adatbiztonsági](advanced-data-security.md) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. A komplex veszélyforrások elleni védelem a központi SQL Advanced Security portálon keresztül érhető el és kezelhető.
 

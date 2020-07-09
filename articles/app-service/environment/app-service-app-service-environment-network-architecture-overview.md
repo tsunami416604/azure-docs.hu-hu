@@ -8,11 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701813"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service környezetek hálózati architektúrájának áttekintése
 App Service környezetek mindig egy [virtuális hálózat][virtualnetwork] alhálózatán belül jönnek létre – a app Service Environmentban futó alkalmazások képesek kommunikálni az azonos virtuális hálózati topológián belül található privát végpontokkal.  Mivel az ügyfelek lefoglalhatják a virtuális hálózati infrastruktúrájuk egyes részeit, fontos megérteni, hogy milyen típusú hálózati kommunikációs folyamatok történnek egy App Service Environment.

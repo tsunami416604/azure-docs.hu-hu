@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251244"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956713"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard-beállításkészletek testreszabása  
 
@@ -36,11 +36,11 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre a készletet a [H264 töb
 
 ### <a name="original-preset"></a>Eredeti beállításkészlet
 
-Mentse a JSON [több bitráta 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -cikkben definiált JSON-fájlt egy. JSON kiterjesztésű fájlban. Például **CustomPreset_JSON. JSON**.
+Mentse a JSON [több bitráta 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -cikkben definiált JSON-fájlt egy. JSON kiterjesztésű fájlban. **CustomPreset_JSON.js**például:.
 
 ### <a name="customized-preset"></a>Testreszabott beállításkészlet
 
-Nyissa meg a **CustomPreset_JSON. JSON** fájlt, és távolítsa el az első három réteget a **H264Layers** , így a fájl így néz ki.
+Nyissa meg a **CustomPreset_JSON.js** fájlt, és távolítsa el az első három réteget a **H264Layers** , így a fájl így néz ki.
 
 ```json 
     {  
@@ -120,9 +120,11 @@ A következő kódrészlet a Media Services .NET SDK-t használja a következő 
 - Hozzon létre egy kódolási feladatot.
 - A Media Encoder Standard kódolóra mutató hivatkozás beszerzése.
 - Töltse be az előző szakaszban létrehozott egyéni JSON-készletet. 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - Kódolási feladat hozzáadása a feladathoz. 
 - Adja meg a kódolni kívánt bemeneti objektumot.
@@ -132,7 +134,7 @@ A következő kódrészlet a Media Services .NET SDK-t használja a következő 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa   
 

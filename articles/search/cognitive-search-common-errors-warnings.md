@@ -8,12 +8,11 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 00494a4e071cb3e8b18f04ad7f201935e20c6b3d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84221321"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -34,7 +33,7 @@ Az API-verziótól kezdődően az `2019-05-06` elemszintű indexelő hibái és 
 
 | Tulajdonság | Leírás | Példa |
 | --- | --- | --- |
-| key | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https: \/ /coromsearch.blob.Core.Windows.net/JFK-1k/docid-32112954.pdf |
+| kulcs | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName vetítés. KnowledgeStore. table. myTableName |
 | message | A hiba vagy figyelmeztetés magas szintű leírása. | A képesség nem hajtható végre, mert a webes API-kérelem sikertelen volt. |
 | Részletek | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... fennmaradó verem nyomkövetése... |
@@ -71,7 +70,7 @@ Az indexelő beolvassa a dokumentumot az adatforrásból, de hiba történt a do
 
 | Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
-| A dokumentum kulcsa hiányzik | A dokumentum kulcsa nem lehet hiányzik vagy üres. | Győződjön meg arról, hogy minden dokumentum rendelkezik érvényes dokumentum-kulcsokkal |
+| A dokumentum kulcsa hiányzik | A dokumentum kulcsa nem lehet hiányzik vagy üres. | Győződjön meg arról, hogy az összes dokumentum rendelkezik érvényes dokumentum-kulcsokkal. A dokumentum kulcsa úgy van meghatározva, hogy a "Key" tulajdonságot az [index definíciójának](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body)részeként állítja be. Az indexelő ezt a hibát fogja kibocsátani, ha a "kulcs" jelölésű tulajdonság nem található egy adott dokumentumban. |
 | A dokumentum kulcsa érvénytelen | A dokumentum kulcsa nem lehet hosszabb 1024 karakternél | Módosítsa a dokumentum kulcsát az érvényesítési követelmények teljesítéséhez. |
 | A mező leképezése nem alkalmazható egy mezőre | A leképezési függvény nem alkalmazható `'functionName'` a mezőre `'fieldName'` . A tömb nem lehet null. Paraméter neve: bájtok | Ellenőrizze az indexelő által definiált [mező-hozzárendeléseket](search-indexer-field-mappings.md) , és hasonlítsa össze a hibás dokumentum megadott mezőjének értékével. Előfordulhat, hogy módosítania kell a mező-hozzárendeléseket vagy a dokumentum-adattípust. |
 | Nem olvasható be a mező értéke | Nem lehetett beolvasni az oszlop értékét az `'fieldName'` indexnél `'fieldIndex'` . Átviteli szintű hiba történt a kiszolgáló eredményeinek fogadása során. (szolgáltató: TCP-szolgáltató, hiba: 0 – a távoli gazdagép kényszerített módon lezárta a meglévő kapcsolatokat.) | Ezek a hibák általában az adatforrás mögöttes szolgáltatásával kapcsolatos váratlan kapcsolódási problémák miatt jelentkeznek. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |

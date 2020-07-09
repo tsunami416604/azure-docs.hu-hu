@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869568"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
@@ -66,7 +65,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Sablon
-A Resource Manager-sablonokon belül meg kell `licenseType` adni egy további paramétert. További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
+A Resource Manager-sablonokon belül meg kell adni egy további paramétert `licenseType` . További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -162,7 +161,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Virtuálisgép-méretezési csoport üzembe helyezése Azure Hybrid Benefit a Windows Serverhez
-A virtuálisgép-méretezési csoport Resource Manager-sablonjain belül egy `licenseType` további paramétert is meg kell adni a VirtualMachineProfile tulajdonságban. Ezt a méretezési csoport létrehozása vagy frissítése során a ARM-sablon, a PowerShell, az Azure CLI vagy a REST használatával teheti meg.
+A virtuálisgép-méretezési csoport Resource Manager-sablonjain belül egy további paramétert is meg kell `licenseType` adni a VirtualMachineProfile tulajdonságban. Ezt a méretezési csoport létrehozása vagy frissítése során a ARM-sablon, a PowerShell, az Azure CLI vagy a REST használatával teheti meg.
 
 Az alábbi példa egy ARM-sablont használ egy Windows Server 2016 Datacenter-lemezképpel:
 ```json

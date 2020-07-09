@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588178"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Adatok összekapcsolása a Microsoft webalkalmazási tűzfallal
@@ -34,7 +33,7 @@ Miután telepítette és beolvasta a Microsoft webalkalmazási tűzfalát, a ria
     
 1. Az Azure Sentinel portálon válassza az **adatösszekötők**lehetőséget.
 1. Az adatösszekötők lapon válassza a **WAF** csempét.
-1. Nyissa meg [Application Gateway erőforrást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) , és válassza ki a WAF.
+1. Nyissa meg [Application Gateway erőforrást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)   , és válassza ki a WAF.
     1. Válassza a **diagnosztikai beállítások**lehetőséget.
     1. Válassza a **+ diagnosztikai beállítások hozzáadása** lehetőséget a tábla alatt.
     1. A **diagnosztikai beállítások** lapon adja meg a **nevet** , és válassza a **Küldés log Analytics**lehetőséget.

@@ -7,13 +7,12 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987468"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
 
@@ -36,27 +35,27 @@ Microsoft. Skills. Text. CustomEntityLookupSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
-| entitiesDefinitionUri    | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
-|inlineEntitiesDefinition | Beágyazott JSON-entitások definíciói. Ez a paraméter felülírja a entitiesDefinitionUri paramétert, ha van ilyen. Legfeljebb 10 KB konfigurációt lehet megadni. A várt JSON-sémáért lásd alább az [egyéni entitások definícióját](#custom-entity-definition-format) . |
-|defaultLanguageCode |    Választható A bemeneti szöveg tokenize és körülhatárolása során használt szövegbeviteli szöveg nyelvi kódja. A következő nyelvek támogatottak: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol`en`(). Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.  |
+| `entitiesDefinitionUri`    | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
+|`inlineEntitiesDefinition` | Beágyazott JSON-entitások definíciói. Ez a paraméter felülírja a entitiesDefinitionUri paramétert, ha van ilyen. Legfeljebb 10 KB konfigurációt lehet megadni. A várt JSON-sémáért lásd alább az [egyéni entitások definícióját](#custom-entity-definition-format) . |
+|`defaultLanguageCode` |    Választható A bemeneti szöveg tokenize és körülhatárolása során használt szövegbeviteli szöveg nyelvi kódja. A következő nyelvek támogatottak: `da, de, en, es, fi, fr, it, ko, pt` . Az alapértelmezett érték az angol ( `en` ). Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.  |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
-| szöveg          | Az elemezni kívánt szöveg.          |
-| languageCode    | Választható. Az alapértelmezett szint a `"en"`.  |
+| `text`          | Az elemezni kívánt szöveg.          |
+| `languageCode`    | Választható. Az alapértelmezett szint a `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 
-| Kimenet neve      | Leírás                   |
+| Kimenet neve      | Description                   |
 |---------------|-------------------------------|
-| szervezetek | Olyan objektumok tömbje, amelyek tartalmazzák a talált egyezésekre vonatkozó információkat, valamint a kapcsolódó metaadatokat. Az azonosított entitások mindegyike a következő mezőket tartalmazza:  <ul> <li> *Name (név*): a legfelső szintű entitás azonosítva. Az entitás a "normalizált" űrlapot jelöli. </li> <li> *azonosító*: az entitás egyedi azonosítója, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *Leírás*: az entitások leírása a felhasználó által az "egyéni entitás definíciójának formátuma" kifejezésben meghatározott módon. </li> <li> *írja be a következőt:* Az entitás típusa, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *altípus:* Az entitás altípusa a felhasználó által az "egyéni entitás definíciójának formátuma" beállításban meghatározott.</li>  <li> *egyezések*: gyűjtemény, amely leírja az adott entitáshoz tartozó összes egyezést a forrás szövegén. Minden egyezés a következő tagokkal fog rendelkezni: </li> <ul> <li> *text (szöveg*): a forrás dokumentum szövege megegyezik a nyers szöveggel. </li> <li> *eltolás*: az a hely, ahol a egyezés megtalálható a szövegben. </li> <li> *length (hossz*): az egyező szöveg hossza. </li> <li> *matchDistance*: a megfeleltetéstől eltérő karakterek száma az eredeti entitás neve vagy aliasa volt.  </li> </ul> </ul>
+| `entities` | Olyan objektumok tömbje, amelyek tartalmazzák a talált egyezésekre vonatkozó információkat, valamint a kapcsolódó metaadatokat. Az azonosított entitások mindegyike a következő mezőket tartalmazza:  <ul> <li> *Name (név*): a legfelső szintű entitás azonosítva. Az entitás a "normalizált" űrlapot jelöli. </li> <li> *azonosító*: az entitás egyedi azonosítója, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *Leírás*: az entitások leírása a felhasználó által az "egyéni entitás definíciójának formátuma" kifejezésben meghatározott módon. </li> <li> *írja be a következőt:* Az entitás típusa, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *altípus:* Az entitás altípusa a felhasználó által az "egyéni entitás definíciójának formátuma" beállításban meghatározott.</li>  <li> *egyezések*: gyűjtemény, amely leírja az adott entitáshoz tartozó összes egyezést a forrás szövegén. Minden egyezés a következő tagokkal fog rendelkezni: </li> <ul> <li> *text (szöveg*): a forrás dokumentum szövege megegyezik a nyers szöveggel. </li> <li> *eltolás*: az a hely, ahol a egyezés megtalálható a szövegben. </li> <li> *length (hossz*): az egyező szöveg hossza. </li> <li> *matchDistance*: a megfeleltetéstől eltérő karakterek száma az eredeti entitás neve vagy aliasa volt.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Egyéni entitás definíciós formátuma
@@ -143,24 +142,24 @@ A JSON-definíció összetettebb példája opcionálisan megadhatja az egyes ent
 
 Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs paramétereket, amelyekkel meghatározhatja az entitások egyeztetését:
 
-|  Mező neve  |        Leírás  |
+|  Mező neve  |        Description  |
 |--------------|----------------------|
-| név | A legfelső szintű entitás leírója A képzettségi kimenetben szereplő egyezések ezen név szerint vannak csoportosítva, és a talált szöveg "normalizált" formáját jelölik.  |
-| leírás  | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
-| type | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
-| altípus | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
-| id | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
-| caseSensitive | Választható Az alapértelmezett érték a false. Logikai érték, amely azt jelzi, hogy az entitás nevével való összehasonlításnak érzékenynek kell lennie a karakterkészletre. Példa a kis-és nagybetűket megkülönböztető "Microsoft" találatokra: Microsoft, microSoft, MICROSOFT |
-| fuzzyEditDistance | Választható Az alapértelmezett érték 0. A maximális érték 5. Annak az eltérő karaktereknek az elfogadható számát jelöli, amelyek továbbra is egyeznek az entitás nevével. A rendszer a megadott egyezések legkisebb lehetséges bizonytalanság adja vissza.  Ha például a szerkesztési távolság értéke 3, a "Windows 10" továbbra is egyezik a "Windows", a "Windows10" és a "Windows 7" értékkel. <br/> Ha a kis-és nagybetűk megkülönböztetése hamis értékre van állítva, a kis-és nagybetűk nem számítanak bele a bizonytalanság-tűrésbe, de máskülönben |
-| defaultCaseSensitive | Választható Az entitás alapértelmezett érzékenységi értékének módosítása. Az összes alias caseSensitive értékének alapértelmezett értékének módosítására szolgál. |
-| defaultFuzzyEditDistance | Választható Megváltoztatja az entitás alapértelmezett homályos szerkesztési távolságának értékét. Az összes alias fuzzyEditDistance alapértelmezett értékének módosítására használható. |
-| aliasok | Választható Összetett objektumok tömbje, amellyel alternatív helyesírásokat vagy szinonimákat adhat meg a gyökér entitás nevéhez. |
+| `name` | A legfelső szintű entitás leírója A képzettségi kimenetben szereplő egyezések ezen név szerint vannak csoportosítva, és a talált szöveg "normalizált" formáját jelölik.  |
+| `description`  | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| `type` | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| `subtype` | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| `id` | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| `caseSensitive` | Választható Az alapértelmezett érték a false. Logikai érték, amely azt jelzi, hogy az entitás nevével való összehasonlításnak érzékenynek kell lennie a karakterkészletre. Példa a kis-és nagybetűket megkülönböztető "Microsoft" találatokra: Microsoft, microSoft, MICROSOFT |
+| `fuzzyEditDistance` | Választható Az alapértelmezett érték 0. A maximális érték 5. Annak az eltérő karaktereknek az elfogadható számát jelöli, amelyek továbbra is egyeznek az entitás nevével. A rendszer a megadott egyezések legkisebb lehetséges bizonytalanság adja vissza.  Ha például a szerkesztési távolság értéke 3, a "Windows 10" továbbra is egyezik a "Windows", a "Windows10" és a "Windows 7" értékkel. <br/> Ha a kis-és nagybetűk megkülönböztetése hamis értékre van állítva, a kis-és nagybetűk nem számítanak bele a bizonytalanság-tűrésbe, de máskülönben |
+| `defaultCaseSensitive` | Választható Az entitás alapértelmezett érzékenységi értékének módosítása. Az összes alias caseSensitive értékének alapértelmezett értékének módosítására szolgál. |
+| `defaultFuzzyEditDistance` | Választható Megváltoztatja az entitás alapértelmezett homályos szerkesztési távolságának értékét. Az összes alias fuzzyEditDistance alapértelmezett értékének módosítására használható. |
+| `aliases` | Választható Összetett objektumok tömbje, amellyel alternatív helyesírásokat vagy szinonimákat adhat meg a gyökér entitás nevéhez. |
 
-| Alias tulajdonságai | Leírás |
+| Alias tulajdonságai | Description |
 |------------------|-------------|
-| szöveg  | Egy megcélzott entitás nevének alternatív helyesírása vagy ábrázolása.  |
-| caseSensitive | Választható Ugyanaz, mint a legfelső szintű "caseSensitive" paraméter, de csak erre az aliasra vonatkozik. |
-| fuzzyEditDistance | Választható Ugyanaz, mint a legfelső szintű "fuzzyEditDistance" paraméter, de csak erre az aliasra vonatkozik. |
+| `text`  | Egy megcélzott entitás nevének alternatív helyesírása vagy ábrázolása.  |
+| `caseSensitive` | Választható Ugyanaz, mint a legfelső szintű "caseSensitive" paraméter, de csak erre az aliasra vonatkozik. |
+| `fuzzyEditDistance` | Választható Ugyanaz, mint a legfelső szintű "fuzzyEditDistance" paraméter, de csak erre az aliasra vonatkozik. |
 
 
 ### <a name="inline-format"></a>Beágyazott formátum
@@ -188,7 +187,7 @@ Az alábbi példa egy beágyazott formátumot használó minta-képzettségi def
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +207,7 @@ Az alábbi példa egy beágyazott formátumot használó minta-képzettségi def
     ]
   }
 ```
-Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a entitiesDefinitionUri formátumot használó minta-képzettségi definíciót alább látható:
+Ha úgy dönt, hogy az entitások definíciós fájljára mutató mutatót ad meg, akkor az alábbi formátumot használó minta-képzettségi definíció `entitiesDefinitionUri` látható:
 
 ```json
   {
@@ -240,7 +239,7 @@ Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a en
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }

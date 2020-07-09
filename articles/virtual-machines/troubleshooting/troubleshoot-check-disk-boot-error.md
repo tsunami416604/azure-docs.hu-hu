@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 86938c582745cb0759eda9cd0693f407471a0529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f80fbd803cbe4ae5c4ac381c8cdb2f72d0ede316
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921487"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132939"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "fájlrendszer ellenőrzése" állapotot jeleníti meg
 
@@ -26,7 +26,7 @@ Ez a cikk a "fájlrendszer ellenőrzése" hibaüzenetet ismerteti, amely akkor f
 
 ## <a name="symptom"></a>Hibajelenség 
 
-Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](boot-diagnostics.md)rendszerindítási funkcióit, láthatja, hogy a lemez ellenőrzése folyamat (chkdsk. exe) a következő üzenetek egyikével fut:
+Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](boot-diagnostics.md)rendszerindító pillanatképét, láthatja, hogy a lemez ellenőrzése folyamat (chkdsk.exe) a következő üzenetek egyikével fut:
 
 - Meghajtó (C:) ellenőrzése és javítása
 - Fájlrendszer ellenőrzése a C-ben:
@@ -38,9 +38,12 @@ Ha NTFS-hiba található a fájlrendszerben, a Windows a következő újraindít
 ## <a name="solution"></a>Megoldás 
 
 A Windows a lemez-ellenőrzési folyamat befejezése után általában elindul. Ha a virtuális gép beragadt a lemez-ellenőrzési folyamatba, próbálja meg futtatni a következőt a virtuális gépen lévő ellenőrzési lemezről:
-1.  Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
-2.  [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).  
-3.  A helyreállítási virtuális gépen futtassa a lemez-ellenőrzési lemezt a csatlakoztatott operációsrendszer-lemezen. A következő példában a csatolt operációsrendszer-lemez illesztőprogram-betűjele E: 
-        
-        chkdsk E: /f
-4.  A lemezellenőrzés befejezése után válassza le a lemezt a helyreállítási virtuális gépről, majd csatlakoztassa újra a lemezt az érintett virtuális géphez operációsrendszer-lemezként. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával](troubleshoot-recovery-disks-portal-windows.md).
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).  
+3. A helyreállítási virtuális gépen futtassa a lemez-ellenőrzési lemezt a csatlakoztatott operációsrendszer-lemezen. A következő példában a csatolt operációsrendszer-lemez illesztőprogram-betűjele E: 
+
+    ```console
+    chkdsk E: /f
+    ```
+
+4. A lemezellenőrzés befejezése után válassza le a lemezt a helyreállítási virtuális gépről, majd csatlakoztassa újra a lemezt az érintett virtuális géphez operációsrendszer-lemezként. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával](troubleshoot-recovery-disks-portal-windows.md).

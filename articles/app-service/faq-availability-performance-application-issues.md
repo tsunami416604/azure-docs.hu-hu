@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159983"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
@@ -46,20 +46,20 @@ A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App 
 
 A webalkalmazás eseménynaplóinak megtekintése:
 
-1. Jelentkezzen be a **kudu webhelyére** (`https://*yourwebsitename*.scm.azurewebsites.net`).
-2. A menüben válassza a **Debug konzol** > **cmd**elemet.
+1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
+2. A menüben válassza a **Debug konzol**  >  **cmd**elemet.
 3. Válassza a **naplófájlok** mappát.
-4. Az eseménynaplók megtekintéséhez válassza az **Eseménynapló. XML**melletti ceruza ikont.
-5. A naplók letöltéséhez futtassa a PowerShell-parancsmagot `Save-AzureWebSiteLog -Name webappname`.
+4. Az eseménynaplók megtekintéséhez válassza a **eventlog.xml**melletti ceruza ikont.
+5. A naplók letöltéséhez futtassa a PowerShell-parancsmagot `Save-AzureWebSiteLog -Name webappname` .
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Hogyan a webalkalmazás felhasználói módú memóriaképének rögzítése?
 
 A webalkalmazás felhasználói módú memóriaképének rögzítése:
 
-1. Jelentkezzen be a **kudu webhelyére** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Válassza a **Process Explorer** menüt.
-3. Kattintson a jobb gombbal a **W3wp. exe** folyamatra vagy a webjobs folyamatra.
-4. Válassza a memóriakép **letöltése** > **teljes memóriakép**lehetőséget.
+3. Kattintson a jobb gombbal a **w3wp.exe** folyamatra vagy a webjobs folyamatra.
+4. Válassza a memóriakép **letöltése**  >  **teljes memóriakép**lehetőséget.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hogyan megtekintheti a webalkalmazás folyamat-szintű adatait?
 
@@ -67,11 +67,11 @@ A webalkalmazáshoz tartozó folyamat-szintű információk megtekintésére ké
 
 *   Az Azure Portalon:
     1. Nyissa meg a webalkalmazáshoz tartozó **Process Explorert** .
-    2. A részletek megtekintéséhez válassza ki a **W3wp. exe** folyamatot.
+    2. A részletek megtekintéséhez válassza ki a **w3wp.exe** folyamatot.
 *   A kudu-konzolon:
-    1. Jelentkezzen be a **kudu webhelyére** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+    1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
     2. Válassza a **Process Explorer** menüt.
-    3. A **W3wp. exe** folyamatnál válassza a **Tulajdonságok**lehetőséget.
+    3. A **w3wp.exe** folyamatnál válassza a **Tulajdonságok**lehetőséget.
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Amikor megkeresem az alkalmazást, "hiba 403 – ez a webalkalmazás leállt" hibaüzenet jelenik meg. Hogyan oldhatom meg ezt?
 
@@ -101,14 +101,14 @@ Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy megha
 A sikertelen kérelmek nyomkövetésének bekapcsolása:
 
 1. A Azure Portal nyissa meg a webalkalmazást.
-3. Válassza **a minden beállítás** > **diagnosztikai naplók**lehetőséget.
+3. Válassza **a minden beállítás**  >  **diagnosztikai naplók**lehetőséget.
 4. A **Sikertelen kérelmek nyomkövetéséhez**válassza **a be**lehetőséget.
 5. Kattintson a **Mentés** gombra.
 6. A Web App (webalkalmazás) panelen válassza az **eszközök**lehetőséget.
 7. Válassza a **Visual Studio online**lehetőséget.
 8. Ha a beállítás nincs **bekapcsolva**, válassza **a be**lehetőséget.
 9. Válassza az **Indítás**lehetőséget.
-10. Válassza a **web. config**lehetőséget.
+10. Válassza a **Web.config**lehetőséget.
 11. A System. webserverben adja hozzá ezt a konfigurációt (egy adott URL-cím rögzítéséhez):
 
     ```xml
@@ -142,8 +142,8 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
     </tracing>
     ```
 13. A sikertelen kérelmek nyomkövetésének letöltéséhez nyissa meg a webhelyet a [portálon](https://portal.azure.com).
-15. Válassza az **eszközök** > **kudu** > **Go**lehetőséget.
-18. A menüben válassza a **Debug konzol** > **cmd**elemet.
+15. Válassza az **eszközök**  >  **kudu**  >  **Go**lehetőséget.
+18. A menüben válassza a **Debug konzol**  >  **cmd**elemet.
 19. Jelölje ki a **naplófájlok** mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC**karakterlánccal kezdődik.
 20. Az XML-fájl megtekintéséhez válassza a ceruza ikont.
 
@@ -174,7 +174,7 @@ Ez a probléma a vércse 1.0.2-es verziójában van kijavítva. Ez a verzió a A
 
 Ha a App Service helyi gyorsítótár szolgáltatását használja, a rendszer a App Service-példányhoz tartozó LogFiles és adatmappák mappastruktúrát fogja érinteni. Helyi gyorsítótár használata esetén az almappák a Storage-naplófájlokban és az adatmappákban jönnek létre. Az almappákban az "egyedi azonosító" + időbélyegző szerepel. Minden almappa olyan virtuálisgép-példánynak felel meg, amelyben a webalkalmazás fut vagy fut.
 
-Annak megállapításához, hogy a helyi gyorsítótárat használja-e, ellenőrizze az App Service **Alkalmazásbeállítások** lapot. Ha a helyi gyorsítótár használatban van, az alkalmazás `WEBSITE_LOCAL_CACHE_OPTION` beállítása a következőre van beállítva: `Always`.
+Annak megállapításához, hogy a helyi gyorsítótárat használja-e, ellenőrizze az App Service **Alkalmazásbeállítások** lapot. Ha a helyi gyorsítótár használatban van, az alkalmazás beállítása a következőre `WEBSITE_LOCAL_CACHE_OPTION` van beállítva: `Always` .
 
 Ha nem helyi gyorsítótárat használ, és ezt a problémát tapasztalja, küldjön egy támogatási kérést.
 

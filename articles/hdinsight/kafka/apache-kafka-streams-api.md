@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850567"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Oktatóanyag: Apache Kafka Streams API használata az Azure HDInsight
 
@@ -47,7 +47,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A példaként szolgáló alkalmazás a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)(z) `Streaming` alkönyvtárban található. Az alkalmazás két fájlt tartalmaz:
+A példaként szolgáló alkalmazás a (z) [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) `Streaming` alkönyvtárban található. Az alkalmazás két fájlt tartalmaz:
 
 * `pom.xml`: Ez a fájl határozza meg a projektfüggőségeket, a Java-verziót és a csomagolási módszereket.
 * `Stream.java`: Ez a fájl valósítja meg a streamelési logikát.
@@ -153,13 +153,13 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Telepítse a [jQ](https://stedolan.github.io/jq/)parancssori JSON-processzort. Az Open SSH-kapcsolatban adja meg a következő parancsot a `jq`telepítéséhez:
+2. Telepítse a [jQ](https://stedolan.github.io/jq/)parancssori JSON-processzort. Az Open SSH-kapcsolatban adja meg a következő parancsot a telepítéséhez `jq` :
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Jelszó-változó beállítása. Cserélje `PASSWORD` le a nevet a fürt bejelentkezési jelszavára, majd írja be a parancsot:
+3. Jelszó-változó beállítása. Cserélje le a `PASSWORD` nevet a fürt bejelentkezési jelszavára, majd írja be a parancsot:
 
     ```bash
     export password='PASSWORD'
@@ -172,7 +172,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     ```
 
     > [!Note]  
-    > Ha ezt a folyamatot a fürtön kívülről hajtja végre, a fürt nevének tárolására eltérő eljárás szükséges. A fürt nevének lekérése kisbetűvel a Azure Portalból. Ezután helyettesítse `<clustername>` be a fürt nevét a következő parancsban, és hajtsa `export clusterName='<clustername>'`végre:.  
+    > Ha ezt a folyamatot a fürtön kívülről hajtja végre, a fürt nevének tárolására eltérő eljárás szükséges. A fürt nevének lekérése kisbetűvel a Azure Portalból. Ezután helyettesítse be a fürt nevét `<clustername>` a következő parancsban, és hajtsa végre: `export clusterName='<clustername>'` .  
 
 5. A Kafka-közvetítő gazdagépek és az Apache Zookeeper gazdagépek beszerzéséhez használja a következő parancsokat. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
 
@@ -232,19 +232,21 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
 
     A kimenet az alábbi szöveghez hasonló:
 
-        dwarfs  13635
-        ago     13664
-        snow    13636
-        dwarfs  13636
-        ago     13665
-        a       13803
-        ago     13666
-        a       13804
-        ago     13667
-        ago     13668
-        jumped  13640
-        jumped  13641
-   
+    ```output
+    dwarfs  13635
+    ago     13664
+    snow    13636
+    dwarfs  13636
+    ago     13665
+    a       13803
+    ago     13666
+    a       13804
+    ago     13667
+    ago     13668
+    jumped  13640
+    jumped  13641
+    ```
+
     A `--from-beginning` paraméter arra konfigurálja a fogyasztót, hogy a témakörben tárolt rekordok elején kezdjen. A számláló minden egyes szó beolvasásával nő, így a témakör az egyes szavakhoz több bejegyzést is tartalmaz, növekvő számlálóval.
 
 4. A __Ctrl + C__ billentyűparanccsal zárhatja be az előállítót. A __Ctrl + C__ billentyűparancs ismételt lenyomásával zárhatja be az alkalmazást és a fogyasztót is.
@@ -258,7 +260,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 

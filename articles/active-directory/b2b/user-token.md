@@ -12,15 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08dbb81b91def2fd464ecc85c2d2eaf45ed189d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74271780"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Felhasználói jogkivonatok megismerése az Azure AD B2B együttműködésben
 
-Ha tudni szeretné, hogy a jogkivonat hogyan néz ki egy B2B csoportmunka-felhasználó számára, akkor itt látható a tulajdonosi jogkivonat részletei és a token tartalma egy Azure Active Directory (Azure AD) vendégnek és egy Microsoft-fiók vendégnek az erőforrás-bérlőben (tenantid 04dcc6ab-388a-4559-b527-fbec656300ea). A JSON Web Token (JWT) tartalmának megtekintéséhez használja [https://jwt.io/](https://jwt.io/) a vagy [https://jwt.ms/](https://jwt.ms/)a következőt:.
+Ha tudni szeretné, hogy a jogkivonat hogyan néz ki egy B2B csoportmunka-felhasználó számára, akkor itt látható a tulajdonosi jogkivonat részletei és a token tartalma egy Azure Active Directory (Azure AD) vendégnek és egy Microsoft-fiók vendégnek az erőforrás-bérlőben (tenantid 04dcc6ab-388a-4559-b527-fbec656300ea). A JSON Web Token (JWT) tartalmának megtekintéséhez használja a vagy a következőt: [https://jwt.io/](https://jwt.io/) [https://jwt.ms/](https://jwt.ms/) .
 
 ## <a name="azure-ad-guest-token"></a>Azure AD-vendég token
 ```

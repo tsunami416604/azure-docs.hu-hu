@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
 ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83798350"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban Application Gateway
@@ -59,7 +58,7 @@ További információ: [OWASP Top-10 biztonsági rések](https://owasp.org/www-p
 Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - További információ az [Azure bejáratáról](../../frontdoor/front-door-overview.md).

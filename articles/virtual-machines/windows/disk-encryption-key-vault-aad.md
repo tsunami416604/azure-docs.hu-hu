@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8610beb8903c979f0d5f5e71bd6710a3ccb49bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcd0bbad41964e09665552a716d2577b1ccc0856
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081982"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080329"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)
 
@@ -106,7 +106,7 @@ A következő parancsok végrehajtásához szerezze be és használja az [Azure 
      $servicePrincipal = New-AzADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
      ```
 
-3. A $azureAdApplication. ApplicationId az Azure AD-ClientID, a $aadClientSecret pedig az ügyfél titkos kulcsa, amelyet később a Azure Disk Encryption engedélyezéséhez fog használni. Az Azure AD-ügyfél titkos kulcsának megfelelő védelme. A `$azureAdApplication.ApplicationId` Futtatás megjeleníti a ApplicationID.
+3. A $azureAdApplication. ApplicationId az Azure AD-ClientID, a $aadClientSecret pedig az ügyfél titkos kulcsa, amelyet később a Azure Disk Encryption engedélyezéséhez fog használni. Az Azure AD-ügyfél titkos kulcsának megfelelő védelme. `$azureAdApplication.ApplicationId`A Futtatás megjeleníti a ApplicationID.
 
 
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a>Azure AD-alkalmazás és egyszerű szolgáltatás beállítása az Azure CLI-vel
@@ -123,10 +123,10 @@ Az az [ad SP](/cli/azure/ad/sp) parancsaival kezelheti az egyszerű szolgáltat�
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a>Azure AD-alkalmazás és egyszerű szolgáltatásnév beállítása, ha a Azure Portal
 A használati portál lépéseivel [létrehozhat egy Azure Active Directory alkalmazást és egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz, és](../../active-directory/develop/howto-create-service-principal-portal.md) létrehoz egy Azure ad-alkalmazást. Az alább felsorolt lépések végrehajtásához közvetlenül a cikk szakasza kerül. 
 
-1. [Szükséges engedélyek ellenőrzése](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [Azure Active Directory-alkalmazás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [Szükséges engedélyek ellenőrzése](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
+2. [Azure Active Directory-alkalmazás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - Az alkalmazás létrehozásakor bármilyen nevet és bejelentkezési URL-címet használhat.
-3. [Kérje le az alkalmazás azonosítóját és a hitelesítési kulcsot](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
+3. [Kérje le az alkalmazás azonosítóját és a hitelesítési kulcsot](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). 
      - A hitelesítési kulcs az ügyfél titka, és a set-AzVMDiskEncryptionExtension AadClientSecret használatos. 
         - A hitelesítési kulcsot az alkalmazás hitelesítő adatként használja az Azure AD-be való bejelentkezéshez. A Azure Portalban a titkos kulcs neve kulcsok, de a kulcstartók nem állnak kapcsolatban. A titkos kulcs megfelelő védelme. 
      - Az alkalmazás AZONOSÍTÓját később a set-AzVMDiskEncryptionExtension AadClientId fogja használni a set-AzKeyVaultAccessPolicy ServicePrincipalName. 
@@ -153,10 +153,10 @@ Az Azure AD-alkalmazásnak jogosultságokkal kell rendelkeznie a tárolóban tal
 A hozzáférési házirend beállításához használja az [az Key Vault set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) beállítást. További információ: [Key Vault kezelése a CLI 2,0 használatával](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 Adja meg az Azure CLI-hozzáféréssel létrehozott egyszerű szolgáltatásnevet a titkok és a sortörési kulcsok beszerzéséhez a következő paranccsal:
- 
-     ```azurecli-interactive
-     az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
-     ```
+
+```azurecli-interactive
+az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
+```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a>A Key Vault hozzáférési szabályzatának beállítása az Azure AD-alkalmazáshoz a portálon
 

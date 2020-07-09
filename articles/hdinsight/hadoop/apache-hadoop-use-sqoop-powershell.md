@@ -1,25 +1,25 @@
 ---
 title: Apache Sqoop-feladatok futtatása a PowerShell és az Azure HDInsight használatával
-description: Megtudhatja, hogyan használhatja a Azure PowerShell egy munkaállomásról az Apache Sqoop importálásának és exportálásának futtatására egy Apache Hadoop-fürt és egy Azure SQL Database között.
+description: Megtudhatja, hogyan használhatja a Azure PowerShell egy munkaállomásról az Apache Sqoop importálására és exportálására egy Apache Hadoop-fürt és a Azure SQL Database között.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 87077eacd607acf4efbd660a1926daf15db7f7e5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd0918da2a1bf6d953eb6006dc71f0611d3ed1c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653576"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076096"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight Azure PowerShell
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Megtudhatja, hogyan használhatja a Azure PowerShellt az Apache Sqoop-feladatok Azure HDInsight való futtatásához egy HDInsight-fürt és egy Azure SQL Database vagy SQL Server adatbázis közötti adatok importálásához és exportálásához.  Ez a cikk az [Apache Sqoop és a Hadoop HDInsight-ben való használatának](./hdinsight-use-sqoop.md)folytatása.
+Megtudhatja, hogyan használhatja a Azure PowerShellt az Apache Sqoop-feladatok Azure HDInsight való futtatásához egy HDInsight-fürt és a Azure SQL Database vagy SQL Server közötti adatok importálásához és exportálásához.  Ez a cikk az [Apache Sqoop és a Hadoop HDInsight-ben való használatának](./hdinsight-use-sqoop.md)folytatása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,9 +31,9 @@ Megtudhatja, hogyan használhatja a Azure PowerShellt az Apache Sqoop-feladatok 
 
 ## <a name="sqoop-export"></a>Sqoop-exportálás
 
-A kaptárból a SQL Serverba.
+A kaptárból az SQL-be.
 
-Ez a példa a struktúra táblából exportálja az adatait a `hivesampletable` `mobiledata` SQL Database lévő táblába. Állítsa be az alábbi változók értékeit, majd hajtsa végre a parancsot.
+Ez a példa a kaptár táblából exportálja az adatait `hivesampletable` az `mobiledata` SQL-táblába. Állítsa be az alábbi változók értékeit, majd hajtsa végre a parancsot.
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +96,7 @@ Ha a hibaüzenet jelenik meg, `The specified blob does not exist.` néhány perc
 
 ## <a name="sqoop-import"></a>Sqoop importálása
 
-SQL Server az Azure Storage-ba. Ez a példa a SQL Database lévő táblából importálja az adatait a `mobiledata` `wasb:///tutorials/usesqoop/importeddata` HDInsight található könyvtárba. Az adatokban található mezőket tabulátor karakter választja el egymástól, a vonalakat pedig egy új sor karaktere állítja le. Ez a példa feltételezi, hogy végrehajtotta az előző példát.
+Az SQL-ből az Azure Storage-ba. Ez a példa az SQL-táblából importálja az adatait a `mobiledata` `wasb:///tutorials/usesqoop/importeddata` HDInsight lévő könyvtárba. Az adatokban található mezőket tabulátor karakter választja el egymástól, a vonalakat pedig egy új sor karaktere állítja le. Ez a példa feltételezi, hogy végrehajtotta az előző példát.
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -128,7 +128,7 @@ Get-AzHDInsightJobOutput `
 
 Ez egy robusztus példa arra `/tutorials/usesqoop/data/sample.log` , hogy az alapértelmezett Storage-fiókból exportálja az adatait, majd importálja egy `log4jlogs` SQL Server-adatbázisban nevű táblába. Ez a példa nem függ az előző példáktól.
 
-A következő PowerShell-parancsfájl előre feldolgozza a forrásfájlt, majd exportálja egy Azure SQL Databaseba a táblába `log4jlogs` . Cserélje le a `CLUSTERNAME` , `CLUSTERPASSWORD` , és `SQLPASSWORD` értéket az előfeltételként használt értékekre.
+A következő PowerShell-parancsfájl előre feldolgozza a forrásfájlt, majd exportálja a táblába `log4jlogs` . Cserélje le a `CLUSTERNAME` , `CLUSTERPASSWORD` , és `SQLPASSWORD` értéket az előfeltételként használt értékekre.
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -219,7 +219,7 @@ $writeStream.Flush()
 $memStream.Seek(0, "Begin")
 $destBlob.UploadFromStream($memStream)
 
-#export the log file from the cluster to the SQL database
+#export the log file from the cluster to SQL
 Write-Host "Exporting the log file ..." -ForegroundColor Green
 
 $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
@@ -271,7 +271,7 @@ Get-AzHDInsightJobOutput `
 
 A Linux-alapú HDInsight a következő korlátozásokat mutatja be:
 
-* Tömeges exportálás: a Sqoop-összekötő, amely az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
+* Tömeges exportálás: a Sqoop-összekötő, amely az SQL-adatbázisba való exportáláshoz használatos, jelenleg nem támogatja a tömeges beszúrásokat.
 
 * Kötegelt feldolgozás: `-batch` Ha a kapcsolót a beszúrások végrehajtásakor használja, a Sqoop több beszúrást hajt végre az INSERT művelet végrehajtása helyett.
 

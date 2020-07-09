@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan hozhat létre Azure Private link Service-t a Az
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89269fe8c291a0c5303ff58cd728e02d4907be0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76932082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737308"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával
 Ez a cikk bemutatja, hogyan hozhat létre egy privát link szolgáltatást az Azure-ban Azure PowerShell használatával.
@@ -115,7 +115,7 @@ A következő lépésben bemutatjuk, hogyan képezhető le a szolgáltatás a k�
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy *vnetPE* nevű virtuális hálózatot az erőforráscsoport nevű *myResourceGroup*:
+Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy *vnetPE*nevű virtuális hálózatot   az erőforráscsoport nevű *myResourceGroup*:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Privát végpont beszerzése
-Szerezze be a privát végpont `Get-AzPrivateEndpoint` IP-címét a következő módon:
+Szerezze be a privát végpont IP-címét a `Get-AzPrivateEndpoint` következő módon:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

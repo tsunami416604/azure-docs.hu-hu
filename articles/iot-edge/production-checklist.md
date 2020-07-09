@@ -11,12 +11,11 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431924"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -129,9 +128,9 @@ A timeToLiveSecs paraméter alapértelmezett értéke 7200 másodperc, amely ké
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>A modul rendszerképeinek hibakeresési verzióját ne használja
 
-Ha tesztelési forgatókönyveket éles környezetbe helyez át, ne felejtse el eltávolítani az üzembe helyezési jegyzékből a hibakeresési konfigurációkat. Győződjön meg arról, hogy az üzembe helyezési jegyzékekben egyik modul rendszerképe sem rendelkezik ** \.hibakeresési** utótaggal. Ha hozzáadta a létrehozási beállításokat a modulok számára a hibakereséshez, távolítsa el ezeket a létrehozási beállításokat is.
+Ha tesztelési forgatókönyveket éles környezetbe helyez át, ne felejtse el eltávolítani az üzembe helyezési jegyzékből a hibakeresési konfigurációkat. Győződjön meg arról, hogy az üzembe helyezési jegyzékekben egyik modul rendszerképe sem rendelkezik ** \. hibakeresési** utótaggal. Ha hozzáadta a létrehozási beállításokat a modulok számára a hibakereséshez, távolítsa el ezeket a létrehozási beállításokat is.
 
-## <a name="container-management"></a>Tárolók kezelése
+## <a name="container-management"></a>Tárolókezelés
 
 * **Fontos**
   * A tároló-beállításjegyzékhez való hozzáférés kezelése
@@ -151,7 +150,7 @@ Egyszerű szolgáltatásnév létrehozásához futtassa az [egyszerű szolgálta
 
 * Az első parancsfájl létrehozza az egyszerű szolgáltatásnevet. A szolgáltatás az egyszerű szolgáltatásnév AZONOSÍTÓját és az egyszerű szolgáltatásnév jelszavát adja eredményül. Ezeket az értékeket biztonságosan tárolja a rekordokban.
 
-* A második parancsfájl szerepkör-hozzárendeléseket hoz létre, amelyeket az egyszerű szolgáltatásnév számára biztosít, amely szükség esetén később is futtatható. Javasoljuk, hogy a **acrPull** `role` paraméterhez alkalmazza a acrPull felhasználói szerepkört. A szerepkörök listáját itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](../container-registry/container-registry-roles.md).
+* A második parancsfájl szerepkör-hozzárendeléseket hoz létre, amelyeket az egyszerű szolgáltatásnév számára biztosít, amely szükség esetén később is futtatható. Javasoljuk, hogy a paraméterhez alkalmazza a **acrPull** felhasználói szerepkört `role` . A szerepkörök listáját itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](../container-registry/container-registry-roles.md).
 
 Az egyszerű szolgáltatásnév használatával történő hitelesítéshez adja meg az első parancsfájlból beszerzett egyszerű szolgáltatásnév AZONOSÍTÓját és jelszavát. Ezeket a hitelesítő adatokat az üzembe helyezési jegyzékben adhatja meg.
 
@@ -181,7 +180,7 @@ Szerezze be a lemezképeket a Docker pull paranccsal a privát beállításjegyz
 | [Azure IoT Edge ügynök](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Ezután frissítse a rendszerkép hivatkozásait a edgeAgent és a edgeHub rendszermodulok telepítési. template. JSON fájljában. Cserélje `mcr.microsoft.com` le a-t a beállításjegyzék nevére és a kiszolgáló mindkét modulra.
+Ezután frissítse a képhivatkozásokat a fájl deployment.template.jsa edgeAgent és a edgeHub rendszer-modulok esetében. Cserélje le a `mcr.microsoft.com` -t a beállításjegyzék nevére és a kiszolgáló mindkét modulra.
 
 * edgeAgent:
 
@@ -210,13 +209,13 @@ Ha a hálózatkezelés beállítása megköveteli, hogy explicit módon engedél
 * **IoT Edge hub** egyetlen állandó AMQP-kapcsolatot nyit meg, vagy több MQTT-kapcsolatot hoz IoT hub, valószínűleg a websocketek felett.
 * **IoT Edge démon** időszakos HTTPS-hívásokat végez IoT hub.
 
-Mindhárom esetben a DNS-név megegyezik a minta \*. Azure-Devices.net.
+Mindhárom esetben a DNS-név megegyezik a minta \* . Azure-Devices.net.
 
 Emellett a **Container Engine** a tároló-BEÁLLÍTÁSJEGYZÉKek HTTPS-kapcsolaton keresztüli hívását is lehetővé teszi. A IoT Edge Runtime-tároló lemezképének lekéréséhez a DNS-név mcr.microsoft.com. A tároló motor az üzemelő példányban konfigurált többi beállításjegyzékhez csatlakozik.
 
 Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
 
-   | URL-\* cím (= helyettesítő karakter) | Kimenő TCP-portok | Használat |
+   | URL-cím ( \* = helyettesítő karakter) | Kimenő TCP-portok | Használat |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS-hozzáférés (nem kötelező) |
@@ -226,6 +225,10 @@ Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
    | \*. docker.io  | 443 | Docker hub-hozzáférés (nem kötelező) |
 
 A tűzfalszabályok némelyike a Azure Container Registry örököl. További információkért lásd: [szabályok konfigurálása Azure Container Registry eléréséhez tűzfal mögött](../container-registry/container-registry-firewall-access-rules.md).
+
+> [!NOTE]
+> Ha konzisztens teljes tartománynevet szeretne biztosítani a REST és az adatvégpontok között, **2020** a Microsoft Container Registry adatvégponttól kezdve a következőre változik: `*.cdn.mscr.io``*.data.mcr.microsoft.com`  
+> További információ: a [Microsoft Container Registry-ügyfél tűzfalszabályok konfigurálása](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
 
 Ha nem szeretné beállítani a tűzfalat, hogy engedélyezze a hozzáférést a nyilvános tároló-beállításjegyzékekhez, a saját tárolójában tárolt rendszerképeket a privát [beállításjegyzékben tárolt futtatókörnyezeti](#store-runtime-containers-in-your-private-registry)tárolók című témakörben leírtak szerint is tárolhatja.
 
@@ -241,7 +244,7 @@ Ha az eszközök egy proxykiszolgálót használó hálózaton lesznek telepítv
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A Daemon-naplókat a parancssori eszköz `journalctl` használatával kérdezheti le. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. A `Get-IoTEdgeLog` paranccsal a démonokból kérdezheti le a naplókat. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
+Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A Daemon-naplókat a parancssori eszköz használatával `journalctl` kérdezheti le. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. `Get-IoTEdgeLog`A paranccsal a démonokból kérdezheti le a naplókat. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -255,7 +258,7 @@ Alapértelmezés szerint a Moby Container Engine nem állítja be a tároló nap
 
 #### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>Lehetőség: az összes tároló modulra érvényes globális korlátok megadása
 
-Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor naplójának beállításaiban. A következő példa a log illesztőprogramot a `json-file` (javasolt) értékre állítja be, amely korlátozza a méretet és a fájlok számát:
+Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor naplójának beállításaiban. A következő példa a log illesztőprogramot a (javasolt) értékre állítja be, `json-file` amely korlátozza a méretet és a fájlok számát:
 
 ```JSON
 {
@@ -267,7 +270,7 @@ Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor napló
 }
 ```
 
-Adja hozzá (vagy fűzze hozzá) ezt az információt egy `daemon.json` nevű fájlhoz, és helyezze el a megfelelő helyet az eszköz platformjának.
+Adja hozzá (vagy fűzze hozzá) ezt az információt egy nevű fájlhoz `daemon.json` , és helyezze el a megfelelő helyet az eszköz platformjának.
 
 | Platform | Hely |
 | -------- | -------- |
@@ -296,7 +299,7 @@ Ezt megteheti az egyes modulok **createOptions** . Például:
 
 #### <a name="additional-options-on-linux-systems"></a>További beállítások Linux rendszereken
 
-* Konfigurálja úgy a tároló motort, hogy `systemd` az alapértelmezett naplózási illesztőprogram beállításával `journald` [küldje el a naplókat](https://docs.docker.com/config/containers/logging/journald/) a naplókba.
+* Konfigurálja úgy a tároló motort, hogy `systemd` az alapértelmezett naplózási illesztőprogram beállításával [küldje el a naplókat](https://docs.docker.com/config/containers/logging/journald/) a naplókba `journald` .
 
 * A logrotate eszköz telepítésével rendszeresen távolítsa el a régi naplókat az eszközről. Használja a következő fájl-specifikációt:
 

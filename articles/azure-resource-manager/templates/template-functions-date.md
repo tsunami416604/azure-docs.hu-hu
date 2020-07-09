@@ -2,13 +2,13 @@
 title: Sablon functions – dátum
 description: A Azure Resource Manager-sablonban a dátumokkal végzett munkához használandó függvényeket ismerteti.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192297"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058044"
 ---
 # <a name="date-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Date functions
 
@@ -25,13 +25,13 @@ Az időtartamot adja hozzá egy alapértékhez. Az ISO 8601 formátuma várható
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| base | Igen | sztring | A Hozzáadás kezdő datetime értéke. Az [ISO 8601 timestamp formátumot](https://en.wikipedia.org/wiki/ISO_8601)használja. |
-| duration | Igen | sztring | Az alaphoz hozzáadandó idő érték. Ez lehet negatív érték. Az [ISO 8601 időtartam formátuma](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formátumban | Nem | sztring | A dátum és idő eredményének kimeneti formátuma Ha nincs megadva, a rendszer az alapérték formátumát használja. Használjon [szabványos formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Yes | sztring | A Hozzáadás kezdő datetime értéke. Az [ISO 8601 timestamp formátumot](https://en.wikipedia.org/wiki/ISO_8601)használja. |
+| duration | Yes | sztring | Az alaphoz hozzáadandó idő érték. Ez lehet negatív érték. Az [ISO 8601 időtartam formátuma](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formátumban | No | sztring | A dátum és idő eredményének kimeneti formátuma Ha nincs megadva, a rendszer az alapérték formátumát használja. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A DateTime érték, amely az időtartam értékének az alapértékhez való hozzáadását eredményezi.
 
@@ -72,9 +72,9 @@ Az alábbi példában az időértékek hozzáadásának különböző módjai l�
 }
 ```
 
-Ha az előző sablon üzembe helyezése alapidővel történik `2020-04-07 14:53:14Z`, a kimenet a következőket eredményezi:
+Ha az előző sablon üzembe helyezése alapidővel történik `2020-04-07 14:53:14Z` , a kimenet a következőket eredményezi:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | add3Years | Sztring | 4/7/2023 2:53:14 PM |
 | subtract9Days | Sztring | 3/29/2020 2:53:14 PM |
@@ -142,19 +142,19 @@ Az aktuális (UTC) dátum és idő értéket adja vissza a megadott formátumban
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| formátumban |Nem |sztring |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formátumban |No |sztring |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Megjegyzések
 
 Ezt a függvényt csak egy paraméter alapértelmezett értékére használhatja egy kifejezésen belül. Ha ezt a funkciót a sablonban bárhol máshol használja, hibaüzenetet ad vissza. A függvény nem engedélyezett a sablon más részeiben, mert minden egyes híváskor más értéket ad vissza. Ugyanazon sablon ugyanazon paraméterekkel való üzembe helyezése nem eredményezi megbízhatóan ugyanazt az eredményt.
 
-Ha a [korábbi sikeres központi telepítés újbóli üzembe helyezését](rollback-on-error.md)használja, és a korábbi telepítés utcNow-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
+Ha a hibát egy korábbi sikeres központi telepítésre történő [visszaállításra](rollback-on-error.md) használja, és a korábbi központi telepítés tartalmaz egy utcNow-t használó paramétert, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
 
 Ügyeljen arra, hogy egy alapértelmezett érték esetén a utcNow függvényre támaszkodó sablont telepítse újra. Ha újratelepíti, és nem ad meg értéket a paraméterhez, a függvény újraértékelése megtörténik. Ha egy meglévő erőforrást nem új létrehozása helyett szeretne frissíteni, adja át a paraméter értékét a korábbi telepítésből.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az aktuális UTC datetime érték.
 
@@ -164,7 +164,7 @@ A következő példa sablon a DateTime érték különböző formátumait jelen�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcValue": {
@@ -201,7 +201,7 @@ A következő példa sablon a DateTime érték különböző formátumait jelen�
 
 Az előző példa kimenete az egyes központi telepítések esetében változik, de a következőhöz hasonló lesz:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | utcOutput | sztring | 20190305T175318Z |
 | utcShortOutput | sztring | 03/05/2019 |

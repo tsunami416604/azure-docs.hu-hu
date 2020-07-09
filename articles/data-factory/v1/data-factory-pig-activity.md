@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703195"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
@@ -41,7 +40,7 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 > [!NOTE] 
 > Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) . 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```JSON
 {
@@ -84,15 +83,15 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név |A tevékenység neve |Igen |
-| leírás |A tevékenység által használt szöveg leírása |Nem |
-| type |HDinsightPig |Igen |
-| bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |Nem |
-| kimenetek |A Pig tevékenység által előállított egy vagy több kimenet |Igen |
-| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
-| szkriptet. |Adja meg a Pig-szkriptet beágyazottként |Nem |
-| scriptPath |Tárolja a Pig-szkriptet egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
-| meghatározza |Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz |Nem |
+| name |A tevékenység neve |Yes |
+| leírás |A tevékenység által használt szöveg leírása |No |
+| típus |HDinsightPig |Yes |
+| bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |No |
+| kimenetek |A Pig tevékenység által előállított egy vagy több kimenet |Yes |
+| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Yes |
+| parancsfájl |Adja meg a Pig-szkriptet beágyazottként |No |
+| scriptPath |Tárolja a Pig-szkriptet egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |No |
+| meghatározza |Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz |No |
 
 ## <a name="example"></a>Példa
 Vegyünk például egy példa a game logs analyticsre, ahol a játékosok által a vállalat által elindított játékokkal töltött időt szeretné azonosítani.

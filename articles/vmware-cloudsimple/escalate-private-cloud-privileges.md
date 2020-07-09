@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870478"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Saját Felhőbeli vCenter jogosultságok kiemelése a CloudSimple-portálról
@@ -63,7 +62,7 @@ A jogosultságok eszkalációja megkezdődik, és a kijelölt intervallum végé
 
 Ha további időre van szüksége a feladatok elvégzéséhez, kiterjesztheti a jogosultság-eszkalációs időszakot.  Válassza ki a további eszkalációs időszakot, amely lehetővé teszi a felügyeleti feladatok végrehajtását.
 
-1. A CloudSimple-portál **erőforrások** > **privát felhők** területén válassza ki azt a privát felhőt, amelynek ki szeretné terjeszteni a jogosultságok eszkalációját.
+1. A **Resources**  >  CloudSimple-portál erőforrások**privát felhők** területén válassza ki azt a privát felhőt, amelynek ki szeretné terjeszteni a jogosultságok eszkalációját.
 
 2. Az összefoglalás lap alján kattintson a **jogosultságok kiterjesztésének kiterjesztése**elemre.
 
@@ -77,7 +76,7 @@ Ha további időre van szüksége a feladatok elvégzéséhez, kiterjesztheti a 
 
 A rendszergazdai feladatok elvégzése után meg kell szüntetnie a jogosultságok kiterjesztését.  
 
-1. A CloudSimple-portál **erőforrások** > **privát felhők** területén válassza ki azt a privát felhőt, amelynek a jogosultságait ki szeretné bővíteni.
+1. A CloudSimple-portál **erőforrások**  >  **privát felhők** területén válassza ki azt a privát felhőt, amelynek a jogosultságait ki szeretné bővíteni.
 
 2. Kattintson a **deeszkaláció**elemre.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: eb5e15f5387628fea293c767202ece77b14f656c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753566"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -30,6 +30,8 @@ Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által h
 - **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
 
 A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás vagy tevékenység hivatkozik rá, és megadja azt a számítási környezetet, ahol a tevékenység vagy a szolgáltatás fut, vagy amelyről elküldi a szolgáltatást. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
+
+Az integrációs modulokat a Azure Data Factory UX-ben hozhatja létre a [felügyeleti központban](author-management-hub.md) , valamint a rájuk hivatkozó tevékenységeket, adatkészleteket vagy adatfolyamatokat.
 
 ## <a name="integration-runtime-types"></a>Integrációsmodul-típusok
 
@@ -56,8 +58,8 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 Az Azure Integration Runtime a következőket teheti:
 
 - Adatfolyamatok futtatása az Azure-ban 
-- Másolási tevékenység futtatása felhőalapú adattárak között
-- A következő átalakítási tevékenységek elküldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, Machine Learning kötegelt végrehajtási tevékenység, Machine Learning frissítési erőforrás tevékenység, tárolt eljárás tevékenység, Data Lake Analytics U-SQL tevékenység, .NET egyéni tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- Másolási tevékenység futtatása a felhőalapú adattárak között
+- A következő átalakítási tevékenységek elküldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight-struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, Machine Learning kötegelt végrehajtási tevékenység, Machine Learning frissítési erőforrás tevékenység, tárolt eljárás tevékenység, Data Lake Analytics U-SQL tevékenység, .NET egyéni tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
 

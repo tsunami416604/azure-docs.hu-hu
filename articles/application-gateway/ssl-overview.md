@@ -4,15 +4,15 @@ description: Ez a cikk áttekintést nyújt a Application Gateway végpontok kö
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: adaf3dea5855a4af75977cb820ae12675c7f2ced
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648132"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962101"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>A TLS-lezárás és a végpontok közötti TLS áttekintése Application Gateway
 
@@ -68,7 +68,7 @@ A Application Gateway és a WAF v1 SKU esetében a TLS-házirend a felületi és
 
 A Application Gateway és a WAF v2 SKU esetében a TLS-házirend csak a előtér-forgalomra vonatkozik, és minden titkosítás a háttér-kiszolgáló számára érhető el, amely az adott titkosítási és TLS-verzió kiválasztását szabályozza a kézfogás során.
 
-Application Gateway csak azokkal a háttér-kiszolgálókkal kommunikál, amelyeknek a tanúsítványát engedélyezték a Application Gateway, vagy amelyek tanúsítványait jól ismert HITELESÍTÉSSZOLGÁLTATÓI hatóságok írták alá, és a tanúsítvány CN megfelel az állomásnévnek a HTTP-háttér beállításai között. Ezek közé tartoznak a megbízható Azure-szolgáltatások, például a Azure App Service/Web Apps és az Azure API Management.
+Application Gateway csak azokkal a háttér-kiszolgálókkal kommunikál, amelyek engedélyezik a tanúsítványt a Application Gateway vagy a tanúsítványokat jól ismert HITELESÍTÉSSZOLGÁLTATÓI hatóságok írták alá, és a tanúsítvány CN-je megegyezik a HTTP-háttér beállításai között szereplő állomásnévvel. Ezek közé tartoznak a megbízható Azure-szolgáltatások, például a Azure App Service/Web Apps és az Azure API Management.
 
 Ha a háttér-készlet tagjainak tanúsítványait nem a jól ismert HITELESÍTÉSSZOLGÁLTATÓI hatóságok írják alá, akkor a háttérrendszer összes példányát, a végpontok közötti TLS-t engedélyezve kell lennie egy tanúsítvánnyal, hogy engedélyezze a biztonságos kommunikációt. A tanúsítvány hozzáadásával biztosítható, hogy az Application Gateway csak az ismert háttérbeli példányokkal kommunikáljon. Ez tovább biztosítja a végpontok közötti kommunikációt.
 
@@ -80,9 +80,9 @@ Ha a háttér-készlet tagjainak tanúsítványait nem a jól ismert HITELESÍT�
 
 Ebben a példában a TLS 1.2-t használó kérelmeket a rendszer a Pool1 háttér-kiszolgálókra irányítja a végpontok közötti TLS protokoll használatával.
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>Végpontok közötti TLS és a tanúsítványok engedélyezési listája
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>Végpontok közötti TLS és a tanúsítványok listázásának engedélyezése
 
-Application Gateway csak olyan ismert háttérbeli példányokkal kommunikál, amelyeknek a tanúsítványát az Application Gateway tartalmazta. A végpontok közötti TLS-telepítési folyamat néhány eltérést mutat a használt Application Gateway verziójának tekintetében. A következő szakasz ezeket egyenként ismerteti.
+Application Gateway csak olyan ismert háttérbeli példányokkal kommunikál, amelyek lehetővé teszik, hogy a tanúsítványát az Application Gateway tartalmazza. A végpontok közötti TLS-telepítési folyamat néhány eltérést mutat a használt Application Gateway verziójának tekintetében. A következő szakasz ezeket egyenként ismerteti.
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>Végpontok közötti TLS a v1 SKU-val
 
@@ -90,7 +90,7 @@ Ha engedélyezni szeretné a végpontok közötti TLS-t a háttér-kiszolgálók
 
 A HTTPS-állapotú Szondák esetében a Application Gateway v1 SKU a HTTP-beállításokba való feltöltéshez a (háttér-kiszolgáló tanúsítványának nyilvános kulcsa és nem a főtanúsítvány) pontos egyezését használja.
 
-Ezután kizárólag az ismert és engedélyezett háttérkiszolgálókkal való kapcsolódás engedélyezett. A fennmaradó hátterek állapota nem kifogástalan. Az önaláírt tanúsítványok csupán tesztelési célokat szolgálnak, és nem ajánlottak éles számítási feladatokra. Ezeket a tanúsítványokat az Application Gatewaynek kell megadnia az előző lépésekben leírtak szerint, mielőtt használni tudnák őket.
+Ezután csak az ismert és az engedélyezett háttérrel rendelkező kapcsolatok engedélyezettek. A fennmaradó hátterek állapota nem kifogástalan. Az önaláírt tanúsítványok csupán tesztelési célokat szolgálnak, és nem ajánlottak éles számítási feladatokra. Az ilyen tanúsítványoknak engedélyezni kell az Application Gateway használatát az előző lépésekben leírtak szerint.
 
 > [!NOTE]
 > A megbízható Azure-szolgáltatások, például a Azure App Service esetében nem szükséges a hitelesítés és a megbízható főtanúsítványok beállítása. Alapértelmezés szerint megbízhatónak tekintendők.
@@ -111,7 +111,7 @@ A hitelesítési tanúsítványok elavultak, és a megbízható főtanúsítván
 
 - A főtanúsítvány egyeztetése mellett a Application Gateway v2 is ellenőrzi, hogy a háttérbeli http-beállításban megadott gazdagép-beállítás megegyezik-e a háttér-kiszolgáló TLS/SSL-tanúsítványa által megjelenített köznapi névvel (CN). Amikor TLS-kapcsolatot próbál létesíteni a háttérrel, Application Gateway v2 beállítja a Kiszolgálónév jelzése (SNI) bővítményt a háttérbeli http-beállításban megadott gazdagépre.
 
-- Ha a háttérbeli http-beállításban a gazdagép mező helyett a **kiválasztó állomásnév elemet** választja, akkor a SNI fejléc mindig a háttérrendszer-készlet teljes tartománynevére van beállítva, és a háttér-kiszolgáló TLS/SSL-tanúsítványához tartozó CN-nek meg kell egyeznie a teljes tartománynevével. Ebben a forgatókönyvben nem támogatottak a háttérbeli készlet tagjai az IP-címekkel.
+- Ha a **kiválasztó állomásnév a háttérbeli célhelyről** elemre van kiválasztva a háttérbeli http-beállításban a gazdagép mező helyett, akkor a SNI fejléc mindig a háttérrendszer-készlet teljes tartománynevére van beállítva, a háttér-kiszolgáló TLS/SSL-tanúsítványa pedig csak a teljes tartománynevet adja meg Ebben a forgatókönyvben nem támogatottak a háttérbeli készlet tagjai az IP-címekkel.
 
 - A főtanúsítvány a háttér-kiszolgálói tanúsítványok Base64 kódolású főtanúsítványa.
 
@@ -138,10 +138,10 @@ Forgatókönyv | v1 | v2 |
 Forgatókönyv | v1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) fejléc a TLS-kézfogás során FQDN-ként | Állítsa be FQDN-ként a háttér-készletből. Az [RFC 6066](https://tools.ietf.org/html/rfc6066)-es verzióban a SNI állomásnév nem engedélyezi a literális IPv4-és IPv6-címeket. <br> **Megjegyzés:** A háttér-készlet teljes tartománynevének a DNS-t kell feloldania a háttér-kiszolgáló IP-címére (nyilvános vagy privát) | A SNI fejléce (server_name) a HTTP-beállításokhoz csatolt egyéni mintavétel állomásneve (ha be van állítva), más néven a HTTP-beállításokban említett állomásnév, ellenkező esetben a háttér-készletben említett teljes tartománynév. A sorrend sorrendje egyéni mintavételi > HTTP-beállítások > háttér-készlet. <br> **Megjegyzés:** Ha a HTTP-beállításokban és az egyéni mintavételben konfigurált állomásnevek eltérnek, akkor a prioritás szerint a SNI az egyéni mintavétel állomásneveként lesz beállítva.
-| Ha a háttér-készlet címe IP-cím (v1), vagy ha az egyéni mintavételi állomásnév IP-címként van konfigurálva (v2) | A SNI (server_name) nem állítható be. <br> **Megjegyzés:** Ebben az esetben a háttér-kiszolgálónak képesnek kell lennie egy alapértelmezett/tartalék tanúsítvány visszaadására, és ezt a hitelesítési tanúsítvány alatt lévő HTTP-beállításokban kell megadni. Ha nincs beállítva alapértelmezett/tartalék tanúsítvány a háttér-kiszolgálón, és a SNI várható, a kiszolgáló alaphelyzetbe állíthatja a kapcsolódást, és mintavételi hibákhoz vezethet. | A korábban említett elsőbbségi sorrendben, ha az IP-címe állomásnév, akkor a SNI nem lesz beállítva [RFC 6066](https://tools.ietf.org/html/rfc6066)-ként. <br> **Megjegyzés:** A SNI szintén nem állítható be v2-mintavétel esetén, ha nincs beállítva egyéni mintavétel, és nincs beállítva állomásnév a HTTP-beállítások vagy a háttér-készlet számára. |
+| Ha a háttér-készlet címe IP-cím (v1), vagy ha az egyéni mintavételi állomásnév IP-címként van konfigurálva (v2) | A SNI (server_name) nem állítható be. <br> **Megjegyzés:** Ebben az esetben a háttér-kiszolgálónak képesnek kell lennie egy alapértelmezett/tartalék tanúsítvány visszaadására, és ezt engedélyezni kell a hitelesítési tanúsítvány alatt a HTTP-beállítások között. Ha nincs beállítva alapértelmezett/tartalék tanúsítvány a háttér-kiszolgálón, és a SNI várható, a kiszolgáló alaphelyzetbe állíthatja a kapcsolódást, és mintavételi hibákhoz vezethet. | A korábban említett elsőbbségi sorrendben, ha az IP-címe állomásnév, akkor a SNI nem lesz beállítva [RFC 6066](https://tools.ietf.org/html/rfc6066)-ként. <br> **Megjegyzés:** A SNI szintén nem állítható be v2-mintavétel esetén, ha nincs beállítva egyéni mintavétel, és nincs beállítva állomásnév a HTTP-beállítások vagy a háttér-készlet számára. |
 
 > [!NOTE] 
-> Ha nincs konfigurálva egyéni mintavétel, akkor Application Gateway az alapértelmezett mintavételt a következő formátumban küldi el \< \> :://127.0.0.1: \< port \> /. Alapértelmezett HTTPS-mintavétel esetén például a rendszer a következőként küldi el: https://127.0.0.1:443/ . Vegye figyelembe, hogy az itt említett 127.0.0.1-t csak a HTTP-állomásfejléc használja, és az RFC 6066-ként nem fogja használni a SNI-fejlécet. Az állapot-mintavételi hibákkal kapcsolatos további információkért tekintse meg a [háttér állapotával kapcsolatos hibaelhárítási útmutatót](application-gateway-backend-health-troubleshooting.md).
+> Ha nincs konfigurálva egyéni mintavétel, akkor Application Gateway az alapértelmezett mintavételt a következő formátumban küldi el \<protocol\> :://127.0.0.1: \<port\> /. Alapértelmezett HTTPS-mintavétel esetén például a rendszer a következőként küldi el: https://127.0.0.1:443/ . Vegye figyelembe, hogy az itt említett 127.0.0.1-t csak a HTTP-állomásfejléc használja, és az RFC 6066-ként nem fogja használni a SNI-fejlécet. Az állapot-mintavételi hibákkal kapcsolatos további információkért tekintse meg a [háttér állapotával kapcsolatos hibaelhárítási útmutatót](application-gateway-backend-health-troubleshooting.md).
 
 #### <a name="for-live-traffic"></a>Élő forgalom esetén
 

@@ -3,7 +3,7 @@ title: Automatikus feladatátvételi csoportok
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Az automatikus feladatátvételi csoportok lehetővé teszik a kiszolgálók vagy a felügyelt példányok összes adatbázisának replikálását, valamint az automatikus/koordinált feladatátvétel kezelését.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,28 +12,28 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: 106487c5483a50756f6eb402ff49f1d39a0e8981
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043799"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982979"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Az automatikus feladatátvételi csoportok lehetővé teszik, hogy kezelje az adatbázisok egy csoportjának replikálását és feladatátvételét egy kiszolgálón vagy egy felügyelt példány összes adatbázisán egy másik régióban. A meglévő [aktív geo-replikálási](active-geo-replication-overview.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja az Azure-szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy végzetes hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az elsődleges régióban az SQL Database vagy az SQL felügyelt példányok szolgáltatásának teljes vagy részleges elvesztését eredményezi. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. Az automatikus feladatátvételi csoportok támogatják a csoport összes adatbázisának replikálását egyetlen másodlagos kiszolgálóra vagy példányra egy másik régióban.
+Az automatikus feladatátvételi csoportok lehetővé teszik, hogy kezelje az adatbázisok egy csoportjának replikálását és feladatátvételét egy kiszolgálón vagy egy felügyelt példány összes adatbázisán egy másik régióban. A meglévő [aktív geo-replikálási](active-geo-replication-overview.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja az Azure-szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy súlyos hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az elsődleges régióban a SQL Database vagy az SQL felügyelt példányának teljes vagy részleges elvesztését eredményezi. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. Az automatikus feladatátvételi csoportok támogatják a csoport összes adatbázisának replikálását egyetlen másodlagos kiszolgálóra vagy példányra egy másik régióban.
 
 > [!NOTE]
 > Ha több Azure SQL Database formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](active-geo-replication-overview.md).
 
-Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Ezek általában olyan incidensek, amelyeket a beépített automatikus magas rendelkezésre állású műveletek nem képesek önállóan elhárítani. A feladatátvételi eseményindítók példái közé tartozik az SQL-bérlői kör vagy a vezérlési kör okozta incidens, mert egy operációsrendszer-kernel memóriavesztés miatt több számítási csomóponton van, vagy egy vagy több bérlői csengetés okozta incidens, mert a hardver leszerelése során rossz hálózati kábel lett kiosztva.  További információ: [SQL Database magas rendelkezésre állás](high-availability-sla.md).
+Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Ezek általában olyan incidensek, amelyeket a beépített automatikus magas rendelkezésre állású műveletek nem képesek önállóan elhárítani. A feladatátvételi eseményindítók példái közé tartozik egy SQL Database bérlői kör vagy vezérlési kör okozta incidens, mert egy operációsrendszer-kernel memóriavesztés miatt több számítási csomóponton van, vagy egy vagy több bérlői csengetés okozta incidens, mert a hardver leszerelése során helytelen hálózati kábel lett kivágva.  További információ: [SQL Database magas rendelkezésre állás](high-availability-sla.md).
 
 Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási figyelőket is biztosítanak, amelyek változatlanok maradnak a feladatátvételek során. Akár kézi, akár automatikus feladatátvételi aktiválást használ, a feladatátvétel a csoportban lévő összes másodlagos adatbázist elsődlegesre váltja. Az adatbázis-feladatátvétel befejeződése után a rendszer automatikusan frissíti a DNS-rekordot, hogy átirányítsa a végpontokat az új régióba. Az adott RPO-és RTO-információk esetében lásd: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a kiszolgálók vagy a felügyelt példányok adatbázisait érintő kimaradások automatikus feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportot az alábbiak szerint kezelheti:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure Portalra](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: feladatátvételi csoport](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: feladatátvételi csoport](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: feladatátvételi csoport](/rest/api/sql/failovergroups).
@@ -46,7 +46,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Feladatátvételi csoport (köd)**
 
-  A feladatátvételi csoport egyetlen kiszolgáló vagy egy felügyelt példány által kezelt adatbázisok névvel ellátott csoportja, amely egy egységként egy másik régióba helyezi át a feladatátvételt, ha az összes vagy néhány elsődleges adatbázis elérhetetlenné válik az elsődleges régió meghibásodása miatt. Az SQL felügyelt példányaihoz való létrehozáskor a feladatátvételi csoport a példány összes felhasználói adatbázisát tartalmazza, ezért csak egy feladatátvételi csoport konfigurálható egy példányon.
+  A feladatátvételi csoport egyetlen kiszolgáló vagy egy felügyelt példány által kezelt adatbázisok névvel ellátott csoportja, amely egy egységként egy másik régióba helyezi át a feladatátvételt, ha az összes vagy néhány elsődleges adatbázis elérhetetlenné válik az elsődleges régió meghibásodása miatt. Az SQL felügyelt példányhoz való létrehozásakor a feladatátvételi csoport a példány összes felhasználói adatbázisát tartalmazza, ezért csak egy feladatátvételi csoport konfigurálható egy példányon.
   
   > [!IMPORTANT]
   > A feladatátvételi csoport nevének globálisan egyedinek kell lennie a `.database.windows.net` tartományon belül.
@@ -68,7 +68,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
   Ugyanazon a kiszolgálón több önálló adatbázis is elhelyezhető ugyanarra a feladatátvételi csoportba. Ha egyetlen adatbázist ad hozzá a feladatátvételi csoporthoz, a automatikusan létrehoz egy másodlagos adatbázist ugyanazzal a kiadással és számítási mérettel a másodlagos kiszolgálón.  A kiszolgálót a feladatátvételi csoport létrehozásakor adta meg. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal a másodlagos kiszolgálón, a csoport örökli a földrajzi replikálási hivatkozást. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal egy olyan kiszolgálón, amely nem része a feladatátvételi csoportnak, akkor a rendszer egy új másodlagost hoz létre a másodlagos kiszolgálón.
 
   > [!IMPORTANT]
-  > Győződjön meg arról, hogy a másodlagos kiszolgálónak nincs azonos nevű adatbázisa, kivéve, ha egy meglévő másodlagos adatbázis. Az SQL felügyelt példányának feladatátvételi csoportjaiban minden felhasználói adatbázis replikálódik. A feladatátvételi csoportban nem választhat felhasználói adatbázisok egy részhalmazát.
+  > Győződjön meg arról, hogy a másodlagos kiszolgálónak nincs azonos nevű adatbázisa, kivéve, ha egy meglévő másodlagos adatbázis. Az SQL felügyelt példányának feladatátvételi csoportjaiban az összes felhasználói adatbázis replikálódik. A feladatátvételi csoportban nem választhat felhasználói adatbázisok egy részhalmazát.
 
 - **Adatbázisok hozzáadása rugalmas készletből a feladatátvételi csoportba**
 
@@ -89,7 +89,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Feladatátvételi csoport írási-olvasási figyelője**
 
-  DNS-CNAME rekord, amely az aktuális elsődleges URL-címre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi az írható és olvasható SQL-feladatok transzparens újracsatlakozását az elsődleges adatbázishoz, amikor az elsődleges módosítások a feladatátvételt követően változnak. Ha a feladatátvételi csoport egy kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.database.windows.net` . Ha a feladatátvételi csoportot egy SQL felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.zone_id.database.windows.net` .
+  DNS-CNAME rekord, amely az aktuális elsődleges URL-címre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi, hogy az olvasási és írási feladat transzparens módon újrakapcsolódjon az elsődleges adatbázishoz, amikor az elsődleges módosítások a feladatátvételt követően változnak. Ha a feladatátvételi csoport egy kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.database.windows.net` . Ha a feladatátvételi csoportot egy SQL felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.zone_id.database.windows.net` .
 
 - **Feladatátvételi csoport írásvédett figyelője**
 
@@ -139,13 +139,13 @@ A feladatátvételi csoport engedélyei a [szerepköralapú hozzáférés-vezér
 
 ### <a name="create-failover-group"></a>Feladatátvételi csoport létrehozása
 
-A feladatátvételi csoport létrehozásához írási hozzáféréssel kell rendelkeznie az elsődleges és a másodlagos kiszolgálókhoz, valamint a feladatátvételi csoport összes adatbázisához is RBAC kell. SQL felügyelt példány esetén az elsődleges és a másodlagos SQL felügyelt példányhoz is írási hozzáféréssel kell rendelkeznie, de az egyes adatbázisokra vonatkozó engedélyek nem relevánsak, mert az egyes SQL felügyelt példány-adatbázisok nem vehetők fel és nem távolíthatók el egy feladatátvételi csoportból a RBAC.
+A feladatátvételi csoport létrehozásához írási hozzáféréssel kell rendelkeznie az elsődleges és a másodlagos kiszolgálókhoz, valamint a feladatátvételi csoport összes adatbázisához is RBAC kell. SQL felügyelt példány esetén az elsődleges és másodlagos SQL felügyelt példányhoz is írási hozzáférésre van szükség, de az egyes adatbázisokra vonatkozó engedélyek nem relevánsak, mert az egyes SQL felügyelt példány-adatbázisok nem vehetők fel és nem távolíthatók el egy feladatátvételi csoportból a RBAC.
 
 ### <a name="update-a-failover-group"></a>Feladatátvételi csoport frissítése
 
 A feladatátvételi csoport frissítéséhez írási hozzáféréssel kell rendelkeznie a feladatátvételi csoporthoz, és az aktuális elsődleges kiszolgálón vagy felügyelt példányon lévő összes adatbázishoz RBAC kell.  
 
-### <a name="failover-a-failover-group"></a>Feladatátvételi csoport feladatátvétele
+### <a name="fail-over-a-failover-group"></a>Feladatátvételi csoport feladatátvétele
 
 A feladatátvételi csoport feladatátvételéhez írási hozzáféréssel kell rendelkeznie a feladatátvételi csoporthoz az új elsődleges kiszolgálón vagy a felügyelt példányon RBAC.
 
@@ -156,7 +156,7 @@ Az automatikus feladatátvételi csoportot az elsődleges kiszolgálón kell kon
 ![automatikus feladatátvétel](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
-> A SQL Database feladatátvételi csoportba való felvételével kapcsolatos részletes oktatóanyagért lásd: [SQL Database hozzáadása feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md) .
+> Lásd: [SQL Database hozzáadása egy feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md) , amely részletesen ismerteti, hogyan adhat hozzá egy adatbázist a SQL Database egy feladatátvételi csoporthoz.
 
 Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irányelvek szerint járjon el:
 
@@ -181,7 +181,7 @@ Egy tipikus Azure-alkalmazás több Azure-szolgáltatást használ, és több ö
 
 ### <a name="preparing-for-data-loss"></a>Adatvesztés előkészítése
 
-Ha a rendszer kimaradást észlel, az SQL megvárja a által megadott időszakot `GracePeriodWithDataLossHours` . Az alapértelmezett érték 1 óra. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a `GracePeriodWithDataLossHours` megfelelő számú, például 24 órás értéket állítsa be. A manuális csoport feladatátvételi szolgáltatásával visszatérhet a másodlagosról az elsődlegesre.
+Ha a rendszer kimaradást észlel, az Azure a által megadott időszakra vár `GracePeriodWithDataLossHours` . Az alapértelmezett érték 1 óra. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a `GracePeriodWithDataLossHours` megfelelő számú, például 24 órás értéket állítsa be. A manuális csoport feladatátvételi szolgáltatásával visszatérhet a másodlagosról az elsődlegesre.
 
 > [!IMPORTANT]
 > A 800-es vagy kevesebb DTU és több mint 250 adatbázissal rendelkező, Geo-replikációt használó rugalmas készletek olyan problémákba ütközhet, mint a hosszabb tervezett feladatátvétel és a csökkentett teljesítmény.  Ezek a problémák nagyobb valószínűséggel fordulnak elő az írási igényű munkaterhelések esetében, ha a Geo-replikációs végpontok földrajzilag széles körben elkülönülnek, vagy ha az egyes adatbázisokhoz több másodlagos végpont is használatos.  Ezeknek a problémáknak a tünetei akkor jelennek meg, ha a földrajzi replikálási késés idővel növekszik.  Ez a késés figyelhető a [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)használatával.  Ha ezek a problémák lépnek fel, a mérséklések közé tartozik a készlet DTU számának növelése vagy a Geo-replikált adatbázisok számának csökkentése ugyanabban a készletben.
@@ -229,9 +229,9 @@ Ha az alkalmazás az SQL felügyelt példányát használja adatcsomagként, kö
 Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példányok feladatátvétele ne legyen megszakítva az elsődleges SQL felügyelt példányhoz, mind ugyanabban a DNS-zónában kell lennie. A szolgáltatás garantálja, hogy ugyanaz a többtartományos (SAN) tanúsítvány használható az ügyfélkapcsolatok hitelesítésére a feladatátvételi csoport két példányának egyikén. Ha az alkalmazás készen áll az éles környezetben való üzembe helyezésre, hozzon létre egy másodlagos SQL felügyelt példányt egy másik régióban, és ellenőrizze, hogy a DNS-zónát megosztja-e az elsődleges SQL felügyelt példánnyal. Ezt megteheti a választható paraméter megadásával `DNS Zone Partner` a Azure Portal, a PowerShell vagy a REST API használatával.
 
 > [!IMPORTANT]
-> Az alhálózat első, az alhálózatban létrehozott felügyelt példánya határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példányhoz. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.
+> Az alhálózatban létrehozott első felügyelt példány határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példányhoz. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.
 
-További információ a másodlagos SQL felügyelt példány létrehozásáról az elsődleges példánnyal azonos DNS-zónában: [másodlagos felügyelt példány létrehozása](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-sql-managed-instance).
+További információ a másodlagos SQL felügyelt példány létrehozásáról az elsődleges példánnyal azonos DNS-zónában: [másodlagos felügyelt példány létrehozása](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>A replikálási forgalom engedélyezése két példány között
 
@@ -271,7 +271,7 @@ Egy tipikus Azure-alkalmazás több Azure-szolgáltatást használ, és több ö
 
 ### <a name="preparing-for-data-loss"></a>Adatvesztés előkészítése
 
-Ha a rendszer áramszünetet észlel, az SQL automatikusan elindítja az írási és olvasási feladatátvételt, ha a lehető legjobb ismerete nulla adatvesztést okoz. Ellenkező esetben a által megadott időszakra vár `GracePeriodWithDataLossHours` . Ha meg van adva `GracePeriodWithDataLossHours` , fel kell készülnie az adatvesztésre. Általánosságban elmondható, hogy az Azure továbbra is rendelkezésre áll. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a GracePeriodWithDataLossHours megfelelően nagy számú, például 24 óráig állítsa be.
+Ha a rendszer áramszünetet észlel, akkor a rendszer egy írható és olvasható feladatátvételt indít el, ha nulla adatvesztés áll fenn a legjobb tudomásuk szerint. Ellenkező esetben a által megadott időszakra vár. Ellenkező esetben a által megadott időszakra vár `GracePeriodWithDataLossHours` . Ha meg van adva `GracePeriodWithDataLossHours` , fel kell készülnie az adatvesztésre. Általánosságban elmondható, hogy az Azure továbbra is rendelkezésre áll. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a GracePeriodWithDataLossHours megfelelően nagy számú, például 24 óráig állítsa be.
 
 Az írható-olvasható figyelő DNS-frissítése a feladatátvétel megkezdése után azonnal megtörténik. Ez a művelet nem eredményez adatvesztést. Az adatbázis-szerepkörök váltásának folyamata azonban normál körülmények között akár 5 percet is igénybe vehet. Amíg a művelet be nem fejeződik, az új elsődleges példány egyes adatbázisai továbbra is írásvédettek maradnak. Ha a feladatátvételt a PowerShell használatával kezdeményezik, a teljes művelet szinkronban van. Ha a Azure Portal használatával kezdeményezik, akkor a felhasználói felület a befejezési állapotot jelzi. Ha a REST API használatával kezdeményezik, a végrehajtás figyeléséhez használja a standard Azure Resource Manager lekérdezési mechanizmusát.
 
@@ -306,13 +306,21 @@ Tegyük fel, hogy az a példány az elsődleges példány, a B példány a megl�
 > [!IMPORTANT]
 > A feladatátvételi csoport törlésekor a figyelő végpontok DNS-rekordjai is törlődnek. Ezen a ponton nem nulla a valószínűsége annak, hogy valaki más feladatátvételi csoportot vagy kiszolgálói aliast hozzon létre ugyanazzal a névvel, ami megakadályozza, hogy újra használja. A kockázat minimalizálásához ne használja az általános feladatátvételi csoportok nevét.
 
+### <a name="enable-scenarios-dependent-on-objects-from-the-system-databases"></a>A rendszeradatbázisok objektumaitól függő forgatókönyvek engedélyezése
+A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ha olyan forgatókönyveket szeretne engedélyezni, amelyek a rendszeradatbázisokból származó objektumtól függenek, a másodlagos példányon győződjön meg arról, hogy ugyanazokat az objektumokat hozza létre a másodlagos kiszolgálón. Ha például ugyanazokat a bejelentkezéseket kívánja használni a másodlagos példányon, ügyeljen arra, hogy az azonos biztonsági azonosítóval hozza létre őket. 
+```SQL
+-- Code to create login on the secondary instance
+CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
+``` 
+
+
 ## <a name="failover-groups-and-network-security"></a>Feladatátvételi csoportok és hálózati biztonság
 
 Egyes alkalmazásokhoz a biztonsági szabályok megkövetelik, hogy az adatcsomaghoz való hálózati hozzáférés egy adott összetevőhöz vagy összetevőkhöz, például egy virtuális géphez, egy webszolgáltatáshoz, stb. van korlátozva. Ez a követelmény az üzletmenet folytonosságának kialakítására és a feladatátvételi csoportok használatára vonatkozó kihívásokat mutatja be. Az ilyen korlátozott hozzáférés megvalósításakor vegye figyelembe az alábbi beállításokat.
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>Feladatátvételi csoportok és virtuális hálózati szabályok használata
 
-Ha [Virtual Network szolgáltatási végpontokat és szabályokat](vnet-service-endpoint-rule-overview.md) használ az SQL-adatbázishoz vagy az SQL felügyelt példányához való hozzáférés korlátozására, vegye figyelembe, hogy minden egyes virtuális hálózati szolgáltatás végpontja csak egy Azure-régióra vonatkozik. A végpont nem teszi lehetővé más régiók számára, hogy fogadják a kommunikációt az alhálózatból. Ezért csak az ugyanabban a régióban üzembe helyezett ügyfélalkalmazások csatlakozhatnak az elsődleges adatbázishoz. Mivel a feladatátvétel az SQL-ügyfél munkameneteinek egy másik (másodlagos) régióban lévő kiszolgálóra való átirányítását eredményezi, akkor ezek a munkamenetek sikertelenek lesznek, ha az adott régión kívüli ügyféltől származik. Emiatt az automatikus feladatátvételi házirend nem engedélyezhető, ha a résztvevő kiszolgálók vagy példányok szerepelnek a Virtual Network szabályokban. A manuális feladatátvétel támogatásához kövesse az alábbi lépéseket:
+Ha [Virtual Network szolgáltatási végpontokat és szabályokat](vnet-service-endpoint-rule-overview.md) használ az adatbázishoz való hozzáférés korlátozására SQL Database vagy SQL felügyelt példányon, vegye figyelembe, hogy minden egyes virtuális hálózati szolgáltatás végpontja csak egy Azure-régióra vonatkozik. A végpont nem teszi lehetővé más régiók számára, hogy fogadják a kommunikációt az alhálózatból. Ezért csak az ugyanabban a régióban üzembe helyezett ügyfélalkalmazások csatlakozhatnak az elsődleges adatbázishoz. Mivel a feladatátvétel a SQL Database-ügyfél munkameneteit egy másik (másodlagos) régióban lévő kiszolgálóra irányítja át, ezek a munkamenetek sikertelenek lesznek, ha az adott régión kívüli ügyféltől származik. Emiatt az automatikus feladatátvételi házirend nem engedélyezhető, ha a résztvevő kiszolgálók vagy példányok szerepelnek a Virtual Network szabályokban. A manuális feladatátvétel támogatásához kövesse az alábbi lépéseket:
 
 1. Az alkalmazás előtér-összetevőinek (webszolgáltatás, virtuális gépek stb.) redundáns másolatainak kiépítése a másodlagos régióban
 2. A [virtuális hálózati szabályok](vnet-service-endpoint-rule-overview.md) konfigurálása egyenként az elsődleges és a másodlagos kiszolgáló számára
@@ -322,16 +330,16 @@ Ha [Virtual Network szolgáltatási végpontokat és szabályokat](vnet-service-
 > [!NOTE]
 > Ha az írásvédett **figyelőt** a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
 
-### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Feladatátvételi csoportok és SQL Database-tűzfalszabályok használata
+### <a name="use-failover-groups-and-firewall-rules"></a>Feladatátvevő csoportok és tűzfalszabályok használata
 
-Ha az üzletmenet-folytonossági terv automatikus feladatátvételi csoportokkal történő feladatátvételt igényel, akkor a hagyományos tűzfalszabályok használatával korlátozhatja a hozzáférést a SQL Database vagy az SQL felügyelt példányához. Az automatikus feladatátvétel támogatásához kövesse az alábbi lépéseket:
+Ha az üzletmenet-folytonossági terv automatikus feladatátvételi csoportokkal való feladatátvételt igényel, akkor a hagyományos tűzfalszabályok használatával korlátozhatja a hozzáférést az adatbázishoz SQL Database. Az automatikus feladatátvétel támogatásához kövesse az alábbi lépéseket:
 
 1. [Nyilvános IP-cím létrehozása](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [Hozzon létre egy nyilvános Load balancert](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) , és rendelje hozzá a nyilvános IP-címet.
 3. [Hozzon létre egy virtuális hálózatot és a virtuális gépeket](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) az előtér-összetevőkhöz
 4. [Hozzon létre egy hálózati biztonsági csoportot](../../virtual-network/security-overview.md) , és konfigurálja a bejövő kapcsolatokat.
 5. Győződjön meg arról, hogy a kimenő kapcsolatok Azure SQL Database az "SQL" [szolgáltatás címkével](../../virtual-network/security-overview.md#service-tags).
-6. Hozzon létre egy [SQL Database-tűzfalszabály](firewall-configure.md) , amely engedélyezi a bejövő forgalmat az 1. lépésben létrehozott nyilvános IP-címről.
+6. Hozzon létre egy [SQL Database tűzfalszabály](firewall-configure.md) , amely engedélyezi az 1. lépésben létrehozott nyilvános IP-címről érkező bejövő forgalmat.
 
 A kimenő hozzáférés konfigurálásával és a tűzfalszabályok által használt IP-címekkel kapcsolatos további információkért lásd: terheléselosztó [kimenő kapcsolatai](../../load-balancer/load-balancer-outbound-connections.md).
 
@@ -344,10 +352,10 @@ A fenti konfiguráció biztosítja, hogy az automatikus feladatátvétel ne blok
 
 Ha egy feladatátvételi csoportot állít be az elsődleges és a másodlagos SQL felügyelt példányok között két különböző régióban, az egyes példányok különálló virtuális hálózattal vannak elkülönítve. A virtuális hálózatok közötti replikációs forgalom engedélyezéséhez ellenőrizze, hogy teljesülnek-e az előfeltételek:
 
-- A két SQL felügyelt példánynak különböző Azure-régiókban kell lennie.
-- A két SQL felügyelt példánynak azonos szolgáltatási rétegnek kell lennie, és azonos a tárolási méretével.
-- A másodlagos SQL felügyelt példányának üresnek kell lennie (nincs felhasználói adatbázis).
-- Az SQL felügyelt példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül kapcsolódik, győződjön meg arról, hogy nincs tűzfalszabály blokkolja a 5022-es és a 11000-11999-es portot. A globális VNet-társítás nem támogatott.
+- Az SQL által felügyelt példány két példányának különböző Azure-régiókban kell lennie.
+- A felügyelt SQL-példányok két példányának azonos szolgáltatási szintnek kell lennie, és ugyanazzal a tárolási mérettel kell rendelkeznie.
+- A felügyelt SQL-példány másodlagos példányának üresnek kell lennie (nincs felhasználói adatbázis).
+- Az SQL felügyelt példány példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül kapcsolódik, győződjön meg arról, hogy nincs tűzfalszabály blokkolja a 5022-es és a 11000-11999-es portot. A globális VNet-társítás nem támogatott.
 - A két felügyelt SQL-példány virtuális hálózatok nem rendelkezhet átfedésben lévő IP-címekkel.
 - Be kell állítania a hálózati biztonsági csoportokat (NSG) úgy, hogy a 5022-es és a 11000 ~ 12000-as tartomány a másik felügyelt példány alhálózatában lévő kapcsolatokhoz nyitott bejövő és kimenő. Ez lehetővé teszi a példányok közötti replikációs forgalmat.
 
@@ -386,6 +394,7 @@ Vegye figyelembe a következő korlátozásokat:
 - Nem hozhatók létre feladatátvételi csoportok két kiszolgáló vagy példány között ugyanabban az Azure-régióban.
 - A feladatátvételi csoportokat nem lehet átnevezni. Törölnie kell a csoportot, majd újra létre kell hoznia egy másik névvel.
 - A feladatátvételi csoportban lévő példányok nem támogatják az adatbázis átnevezését. Az adatbázisok átnevezéséhez átmenetileg törölnie kell a feladatátvételi csoportot.
+- A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.
 
 ## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
 
@@ -395,7 +404,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 | [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -406,7 +415,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [az SQL feladatátvétel-csoport törlése](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -416,7 +425,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -433,7 +442,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 | [Új – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és a másodlagos példányokon is.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Feladatátvételi csoport konfigurációjának módosítása|
@@ -444,7 +453,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [az SQL feladatátvétel-csoport törlése](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -454,7 +463,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Feladatátvételi csoport konfigurációjának létrehozása vagy frissítése |
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Feladatátvételi csoport eltávolítása a példányból |

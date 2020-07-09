@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74978202"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A tartalomvédelem házirendjeinek konfigurálása a Azure Portal használatával
@@ -38,7 +37,7 @@ Ha a portált a globális tartalomvédelem konfigurálására szeretné használ
 
 1. A [portálon](https://portal.azure.com/)válassza ki a Media Services fiókját.
 
-1. Válassza a **Beállítások** > **tartalomvédelem**lehetőséget.
+1. Válassza a **Beállítások**  >  **tartalomvédelem**lehetőséget.
 
     ![Tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -73,10 +72,10 @@ Ha állandóként konfigurálja a licencet, a rendszer az ügyfél állandó tá
 ## <a name="widevine-license-template"></a>Widevine-licencsablon
 A Widevine-licenc sablonja beállítja a Widevine-licenceken engedélyezett funkciókat.
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Alapszintű
 Ha az **alapszintű**lehetőséget választja, a sablon minden alapértelmezett értékkel jön létre.
 
-### <a name="advanced"></a>Speciális
+### <a name="advanced"></a>Felsőfokú
 A Widevine Rights sablonnal kapcsolatos további információkért tekintse meg a [Widevine-sablon áttekintése](media-services-widevine-license-template-overview.md)című témakört.
 
 ![Speciális tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection005.png)
@@ -90,7 +89,7 @@ A FairPlay titkosításának engedélyezéséhez válassza a **Fairplay konfigur
 A dinamikus titkosítás kihasználásához kódolja a forrásfájlt egy adaptív sávszélességű MP4-fájlba.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Válasszon ki egy titkosítani kívánt eszközt
-Az összes eszköz megjelenítéséhez válassza a **Beállítások** > **eszközök**elemet.
+Az összes eszköz megjelenítéséhez válassza a **Beállítások**  >  **eszközök**elemet.
 
 ![Eszközök lehetőség](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 

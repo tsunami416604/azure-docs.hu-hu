@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116842"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
@@ -24,7 +24,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
+- **Egy Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
 - A **Visual studio 2019 16,3** -es vagy újabb verziója, vagy a **visual Studio 2017 15,7** -es verziója, amelyen telepítve van a **webes fejlesztési** feladat. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - A Visual Studio 2017 esetében a ASP.NET (nem Core) esetében a .NET-keretrendszer 4.7.1 vagy újabb fejlesztői eszközeire van szükség, amelyek alapértelmezés szerint nem települnek. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**lehetőséget, majd válassza az **egyes összetevők**lehetőséget, majd a jobb oldalon bontsa ki a **ASP.net és a webes fejlesztés**elemet, és válassza a **.NET-keretrendszer 4.7.1-fejlesztői eszközök**lehetőséget.
 - Egy ASP.NET 4.7.1 vagy újabb, vagy ASP.NET Core 2,0 vagy újabb webes projekt nyitva van.
@@ -33,7 +33,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual studióba. Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure-előfizetéséhez használ. Ezután nyisson meg egy ASP.NET 4.7.1 vagy újabb verziót, vagy ASP.NET Core 2,0 webes projektet, és hajtsa végre a következő lépéseket:
 
-1. **Megoldáskezelőban**kattintson a jobb gombbal arra a projektre, amelyhez hozzá kívánja adni a Key Vault-támogatást, majd válassza a**csatlakoztatott szolgáltatás** **hozzáadása** > elemet.
+1. **Megoldáskezelőban**kattintson a jobb gombbal arra a projektre, amelyhez hozzá kívánja adni a Key Vault-támogatást **Add**, majd válassza a  >  **csatlakoztatott szolgáltatás**hozzáadása elemet.
    Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 1. Az elérhető szolgáltatások menüben válassza a **biztonságos titkok Azure Key Vault**lehetőséget.
 
@@ -41,7 +41,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual st
 
 1. Válassza ki a használni kívánt előfizetést, majd válasszon ki egy új vagy meglévő Key Vault. Ha az új Key Vault választja, megjelenik egy **szerkesztési** hivatkozás. Válassza ki az új Key Vault konfigurálásához.
 
-   ![Válassza ki előfizetését.](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Az előfizetés kiválasztása](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 1. A **szerkesztés Azure Key Vault**mezőben adja meg a Key Vault használni kívánt nevet.
 
@@ -67,7 +67,7 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
 
 1. Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és telepítse a következő két NuGet-csomagot: [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és .net Core 2, a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó vagy a .net Core 3 esetében adja hozzá a[Microsoft. Azure. kulcstartó. Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)parancsot.
 
-1. A .NET Core 2 esetében válassza a `Program.cs` fület, és `BuildWebHost` módosítsa a program osztály definícióját a következőre:
+1. A .NET Core 2 esetében válassza a `Program.cs` fület, és módosítsa a `BuildWebHost` program osztály definícióját a következőre:
 
    ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
     ```
 
 1. Ezután nyissa meg az egyik lapozófájlt, például a *index.cshtml.cs* , és írja be a következő kódot:
-   1. Adjon meg `Microsoft.Extensions.Configuration` egy hivatkozást a következő direktíva használatával:
+   1. Adjon meg egy hivatkozást a `Microsoft.Extensions.Configuration` következő direktíva használatával:
 
        ```csharp
        using Microsoft.Extensions.Configuration;
@@ -146,7 +146,7 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
        }
        ```
 
-   1. Ha szeretné megerősíteni az értéket futásidőben, adja hozzá `ViewData["Message"]` a *. cshtml* fájlhoz megjelenítendő kódot, hogy megjelenjen a titok egy üzenetben.
+   1. Ha szeretné megerősíteni az értéket futásidőben, adja hozzá a `ViewData["Message"]` *. cshtml* fájlhoz megjelenítendő kódot, hogy megjelenjen a titok egy üzenetben.
 
       ```cshtml
           <p>@ViewData["Message"]</p>
@@ -156,15 +156,15 @@ Az alkalmazást helyileg futtatva ellenőrizheti, hogy a titkos kulcs beszerzés
 
 ## <a name="access-your-secrets-aspnet"></a>Hozzáférés a titkokhoz (ASP.NET)
 
-Beállíthatja a konfigurációt úgy, hogy a web. config fájl egy olyan, a (z `appSettings` ) elemben lévő, a valós értékkel lecserélt elemet tartalmazó elemhez tartozó dummy értéket tartalmaz. Ezt az `ConfigurationManager.AppSettings` adatstruktúra segítségével érheti el.
+Beállíthatja a konfigurációt úgy, hogy az web.config-fájlnak a `appSettings` valós értékkel lecserélt elemében lévő dummy érték legyen. Ezt az adatstruktúra segítségével érheti el `ConfigurationManager.AppSettings` .
 
-1. Szerkessze a web. config fájlt.  Keresse meg a appSettings címkét, adjon `configBuilders="AzureKeyVault"`hozzá egy attribútumot, és adjon hozzá egy sort:
+1. Szerkessze web.config-fájlját.  Keresse meg a appSettings címkét, adjon hozzá egy attribútumot `configBuilders="AzureKeyVault"` , és adjon hozzá egy sort:
 
    ```xml
       <add key="mysecret" value="dummy"/>
    ```
 
-1. Szerkessze `About` a metódust a *HomeController.cs*-ben a megerősítés értékének megjelenítéséhez.
+1. Szerkessze a `About` metódust a *HomeController.cs*-ben a megerősítés értékének megjelenítéséhez.
 
    ```csharp
    public ActionResult About()
@@ -174,7 +174,7 @@ Beállíthatja a konfigurációt úgy, hogy a web. config fájl egy olyan, a (z 
    ```
 1. Futtassa az alkalmazást helyileg a hibakereső alatt, váltson a **Névjegy** lapra, és ellenőrizze, hogy megjelenik-e az érték a Key Vault.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a Key Vault és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
 
@@ -190,10 +190,10 @@ Ha a Key Vault a Visual studióba bejelentkezett másik Microsoft-fiók fut (pé
 
 1. Válassza a **hozzáférési szabályzatok**, majd a **hozzáférési házirend hozzáadása**lehetőséget, és válassza ki azt a fiókot, amelyet a rendszerbiztonsági tagként jelentkezett be.
 
-1. A Visual Studióban válassza **a** > **Fiókbeállítások**lehetőséget.
+1. A Visual Studióban válassza **a**  >  **Fiókbeállítások**lehetőséget.
 Válassza a **fiók hozzáadása** lehetőséget a **minden fiók** szakaszban. Jelentkezzen be azzal a fiókkal, amelyet a hozzáférési szabályzatának elsődlegesen választott.
 
-1. Válassza az **eszközök** > **lehetőséget**, és keresse meg az **Azure-szolgáltatás hitelesítése**elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
+1. Válassza az **eszközök**  >  **lehetőséget**, és keresse meg az **Azure-szolgáltatás hitelesítése**elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
 
 Az alkalmazás hibakeresése után a Visual Studio csatlakozik ahhoz a fiókhoz, amelyen a Key Vault található.
 
@@ -215,9 +215,9 @@ A Project file .NET-referenciákat és a NuGet-csomagok hivatkozásait érinti.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>A Project fájl módosításai ASP.NET Core
 
-- Hozzáadta a csatlakoztatott szolgáltatások ItemGroup `ConnectedServices.json` és fájlját.
+- Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és `ConnectedServices.json` fájlját.
 
-### <a name="launchsettingsjson-changes-for-aspnet-core"></a>a ASP.NET Core launchsettings. JSON módosításai
+### <a name="launchsettingsjson-changes-for-aspnet-core"></a>A ASP.NET Core változásainak launchsettings.js
 
 - A következő környezeti változó bejegyzéseket adta hozzá a IIS Express profilhoz és a webes projekt nevével egyező profilhoz:
 
@@ -239,7 +239,7 @@ Ez a szakasz egy ASP.NET-projekt pontos módosításait mutatja be, amikor hozz�
 
 ### <a name="added-references-for-aspnet-framework"></a>A ASP.NET-keretrendszerhez hozzáadott referenciák
 
-A Project file .NET-referenciákat `packages.config` és a (NuGet-hivatkozásokat) érinti.
+A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásokat) érinti.
 
 | Típus | Referencia |
 | --- | --- |
@@ -254,10 +254,10 @@ A Project file .NET-referenciákat `packages.config` és a (NuGet-hivatkozásoka
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>A Project fájl változásai a ASP.NET-keretrendszerben
 
-- Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és a ConnectedServices. JSON fájlt.
+- Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.jsa fájlhoz.
 - A [hozzáadott hivatkozások](#added-references-for-aspnet-framework) szakaszban leírt .net-szerelvényekre mutató hivatkozások.
 
-### <a name="webconfig-or-appconfig-changes"></a>a web. config vagy az app. config módosítása
+### <a name="webconfig-or-appconfig-changes"></a>web.config vagy app.config módosítása
 
 - A következő konfigurációs bejegyzések lettek hozzáadva:
 

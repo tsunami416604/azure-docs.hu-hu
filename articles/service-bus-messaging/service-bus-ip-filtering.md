@@ -1,22 +1,13 @@
 ---
 title: A Azure Service Bus IP-tűzfalszabályok konfigurálása
 description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2020
-ms.author: aschhab
-ms.openlocfilehash: fdd3540248c5210e2f6fc47f439641c007a793d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341448"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>A Azure Service Bus IP-tűzfalszabályok konfigurálása
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.

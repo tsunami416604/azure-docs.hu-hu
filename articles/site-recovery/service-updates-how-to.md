@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629371"
 ---
 # <a name="service-updates-in-site-recovery"></a>Szolgáltatási frissítések a Site Recovery
 
@@ -48,7 +47,7 @@ Site Recovery értesíti Önt a lejárt összetevőkről (vagy hamarosan lejár)
 
 Az e-mail-értesítések küldése a következőképpen történik.
 
-**Time** | **Gyakoriság**
+**Idő** | **Gyakoriság**
 --- | ---
 60 nappal az összetevő lejárata előtt | Hetente egyszer
 Következő 53 nap | Hetente egyszer
@@ -90,14 +89,13 @@ Ebben az esetben erősen ajánlott [engedélyezni az automatikus frissítéseket
 - A replikálás engedélyezése folyamatban van.
 - A bővítmény frissítési beállításainak a tárolón belüli beállításával.
 
-Ha manuálisan szeretné kezelni a frissítéseket, tegye a következőket:
+Ha manuálisan szeretné kezelni a frissítéseket, az alábbi lehetőségek közül választhat:
 
-1. A tárolóban > **replikált elemek**területen kattintson az értesítésre a képernyő tetején: 
+1. Ha egy új ügynök frissítése elérhetővé válik, Site Recovery a lap tetején lévő értesítéseket biztosít a tárolóban. A tárolóban > **replikált elemek**területen kattintson az értesítésre a képernyő tetején: 
     
-    **Az új Site Recovery replikációs ügynök frissítése elérhető. Kattintson ide a következő telepítéséhez: >**
+    **Az új Site Recovery replikációs ügynök frissítése elérhető. Kattintson ide a következő telepítéséhez: >** <br/><br/>Válassza ki azokat a virtuális gépeket, amelyekre alkalmazni kívánja a frissítést, majd kattintson **az OK**gombra.
 
-4. Válassza ki azokat a virtuális gépeket, amelyekre alkalmazni kívánja a frissítést, majd kattintson **az OK**gombra.
-
+2. A virtuális gép vész-helyreállítási áttekintése lapon megtalálja az "ügynök állapota" mezőt, amely a "kritikus frissítés" lehetőséget fogja kimutatni, ha az ügynök lejár. Kattintson rá, és kövesse a következő utasításokat a virtuális gép manuális frissítéséhez.
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>VMware virtuális gép/fizikai kiszolgáló vész-helyreállítás az Azure-ba
 

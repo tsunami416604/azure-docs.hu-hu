@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360792"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Felhőalapú kiépítés – hibaelhárítás
 
@@ -22,7 +22,7 @@ A Felhőbeli kiépítés számos különböző dolgot érint, és számos külö
 
 ## <a name="common-troubleshooting-areas"></a>Gyakori hibaelhárítási területek
 
-|Name (Név)|Leírás|
+|Name|Description|
 |-----|-----|
 |[Ügynökkel kapcsolatos problémák](#agent-problems)|Ellenőrizze, hogy az ügynök megfelelően lett-e telepítve, és hogy a Azure Active Directory (Azure AD) szolgáltatással kommunikál-e.|
 |[Objektum-szinkronizálási problémák](#object-synchronization-problems)|Az objektumok szinkronizálásával kapcsolatos problémák elhárításához használjon kiépítési naplókat.|
@@ -44,7 +44,7 @@ Ezek az elemek ellenőrizhetők a Azure Portal és az ügynököt futtató helyi
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az Azure-ban és kifogástalan állapotban van-e.
 
 1. Jelentkezzen be az Azure portálra.
-1. A bal oldalon válassza a **Azure Active Directory** > **Azure ad Connect**lehetőséget. A központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
+1. A bal oldalon válassza a **Azure Active Directory**  >  **Azure ad Connect**lehetőséget. A központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 1. Az **Azure ad-kiépítés (előzetes verzió)** képernyőn válassza az **összes ügynök áttekintése**lehetőséget.
 
    ![Az összes ügynök áttekintése](media/how-to-install/install7.png)</br>
@@ -67,7 +67,7 @@ Ez a teszt ellenőrzi, hogy az ügynökök az 443-as porton keresztül kommunik�
 
 Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
 
-1. A kiszolgálón, amelyen telepítve van az ügynök, nyissa meg a **szolgáltatásokat** vagy navigáljon**a szolgáltatáshoz** > , vagy **indítsa el** > a**Services. msc**parancsot.
+1. A kiszolgálón, amelyen telepítve van az ügynök, nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatáshoz, vagy **indítsa el**a  >  **Run**  >  **Services. msc**parancsot.
 1. Győződjön meg arról, hogy a **szolgáltatások**területen **Microsoft Azure ad a összekapcsolási ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van, és az állapota *fut*.
 
    ![Szolgáltatások képernyő](media/how-to-troubleshoot/troubleshoot1.png)
@@ -82,12 +82,12 @@ Előfordulhat, hogy a következő hibaüzenet jelenik meg:
 
 **Nem sikerült elindítani a (z) "Microsoft Azure AD kapcsolódási kiépítési ügynök" szolgáltatást. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultsággal a rendszerszolgáltatások elindításához.** 
 
-Ezt a problémát általában egy olyan csoportházirend okozta, amely megakadályozta, hogy az engedélyek a telepítő (NT SERVICE\AADConnectProvisioningAgent) által létrehozott helyi NT szolgáltatásbeli bejelentkezési fiókra legyenek alkalmazva. Ezek az engedélyek a szolgáltatás indításához szükségesek.
+Ezt a problémát általában egy olyan csoportházirend okozta, amely megakadályozta, hogy az engedélyek a telepítő (NT SERVICE\AADConnectProvisioningAgent) által létrehozott helyi NT szolgáltatásbeli bejelentkezési fiókra legyenek alkalmazva. Ezek az engedélyek szükségesek a szolgáltatás elindításához.
 
 A probléma megoldásához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal.
-1. Nyissa meg a **szolgáltatásokat** vagy navigáljon**a szolgáltatásba** > , vagy **indítsa el** > a**Services. msc**parancsot.
+1. Nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatásba, vagy **indítsa el**a  >  **Run**  >  **Services. msc**parancsot.
 1. A **szolgáltatások**területen kattintson duplán **Microsoft Azure ad a kiépítési ügynök összekapcsolására**.
 1. A **Bejelentkezés** lapon módosítsa a **fiókot** egy tartományi rendszergazdára. Ezután indítsa újra a szolgáltatást. 
 
@@ -99,10 +99,10 @@ Előfordulhat, hogy az alábbi hibaüzenet jelenik meg, amikor megkísérli regi
 
 ![Időtúllépési hibaüzenet](media/how-to-troubleshoot/troubleshoot4.png)
 
-Ezt a problémát általában az okozza, hogy az ügynök nem tud csatlakozni a hibrid identitási szolgáltatáshoz, és konfigurálnia kell egy HTTP-proxyt. A probléma megoldásához állítson be egy kimenő proxyt. 
+Ezt a problémát általában az okozza, hogy az ügynök nem tud csatlakozni a hibrid identitásszolgáltatáshoz, és konfigurálnia kell egy HTTP-proxyt. A probléma megoldásához konfiguráljon egy kimenő proxyt. 
 
 A kiépítési ügynök támogatja a kimenő proxy használatát. A konfigurálásához módosítsa az ügynök konfigurációs fájljának *C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config*. Adja hozzá a következő sorokat a fájl végéhez közvetlenül a záró `</configuration>` címke előtt.
-Cserélje le a `[proxy-server]` változókat és `[proxy-port]` a proxykiszolgáló nevét és portszámát.
+Cserélje le a változókat `[proxy-server]` és a `[proxy-port]` proxykiszolgáló nevét és portszámát.
 
 ```xml
     <system.net>
@@ -126,13 +126,13 @@ A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatai
 
 ### <a name="log-files"></a>Naplófájlok
 
-Alapértelmezés szerint az ügynök minimális hibaüzeneteket és verem-nyomkövetési adatokat bocsát ki. Ezeket a nyomkövetési naplókat az AD- *kapcsolat létesítési Agent\Trace*mappájában találja meg C:\ProgramData\Microsoft\Azure.
+Alapértelmezés szerint az ügynök minimális hibaüzeneteket és hívásláncadatokat bocsát ki. Ezeket a nyomkövetési naplókat az AD- *kapcsolat létesítési Agent\Trace*mappájában találja meg C:\ProgramData\Microsoft\Azure.
 
 Az ügynökkel kapcsolatos problémák elhárításához kövesse az alábbi lépéseket.
 
 1. Állítsa le a szolgáltatás Microsoft Azure AD a létesítési **ügynök összekapcsolását**.
 1. Hozza létre az eredeti konfigurációs fájl másolatát: *C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config*.
-1. Cserélje le a `<system.diagnostics>` meglévő szakaszt a következőre, és az összes nyomkövetési üzenet a *ProvAgentTrace. log*fájlra lép.
+1. Cserélje le a meglévő `<system.diagnostics>` szakaszt a következőre, és az összes nyomkövetési üzenet a *ProvAgentTrace. log*fájlra lép.
 
    ```xml
      <system.diagnostics>

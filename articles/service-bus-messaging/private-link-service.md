@@ -1,18 +1,16 @@
 ---
 title: Azure Service Bus integrálása az Azure Private link Service szolgáltatással
 description: Ismerje meg, hogyan integrálható Azure Service Bus az Azure Private link Service használatával
-services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
-ms.date: 03/13/2020
-ms.service: service-bus-messaging
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340448"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus integrálása az Azure Private-hivatkozással
 
@@ -173,7 +171,7 @@ Négy kiépítési állapot létezik:
 
 | Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
 |--|--|--|
-| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |

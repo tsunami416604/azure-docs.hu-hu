@@ -10,12 +10,11 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921149"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Kérelmek küldése a Bing Autosuggest APInak.
 
@@ -27,7 +26,7 @@ A **Bing AutoSuggest API** egy végpontot tartalmaz, amely egy részleges keres�
 
 Ha a Bing API használatával szeretne felvenni a javasolt lekérdezéseket, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
 
-**Végpont:** A keresési javaslatokat adja vissza JSON-eredményekként, amelyek az által definiált felhasználó `?q=""`által megadott bemenetre vonatkoznak.
+**Végpont:** A keresési javaslatokat adja vissza JSON-eredményekként, amelyek az által definiált felhasználó által megadott bemenetre vonatkoznak `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -68,15 +67,21 @@ Ennek megoldásához a Bing Autosuggest API kérelmet egy CORS-proxyn keresztül
 
 Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](../tutorials/autosuggest.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Ezután módosítsa a HTML-fájlban lévő Bing Autosuggest API végpontot a következőre:
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```http
+http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
@@ -95,11 +100,11 @@ A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja 
 
 Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosító fejlécét, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-A következő webes javaslati csoport a fenti kérelemre adott válasz. A csoport a keresési lekérdezési javaslatok listáját tartalmazza, és minden javaslatot tartalmaz, `displayText`beleértve `query`a, `url` a és a mezőt is.
+A következő webes javaslati csoport a fenti kérelemre adott válasz. A csoport a keresési lekérdezési javaslatok listáját tartalmazza, és minden javaslatot tartalmaz, beleértve a `displayText` , a `query` és a mezőt is `url` .
 
 A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.  
 
-Ha a felhasználó egy lekérdezést választ ki a legördülő listából, használhatja a [Bing Search API-k](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) egyikének meghívására, és saját maga is megtekintheti az eredményeket, vagy a visszaadott `url` mező használatával elküldheti a felhasználót a Bing eredmények oldalára.
+Ha a felhasználó egy lekérdezést választ ki a legördülő listából, használhatja a [Bing Search API-k](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) egyikének meghívására, és saját maga is megtekintheti az eredményeket, vagy a visszaadott mező használatával elküldheti a felhasználót a Bing eredmények oldalára `url` .
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

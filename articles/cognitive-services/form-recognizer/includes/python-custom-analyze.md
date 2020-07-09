@@ -5,21 +5,20 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 0644dad9e8e6f2999acfa24ea1088207f6d5e692
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446442"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028060"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>A kulcs-érték párok és táblák űrlapjainak elemzése
 
-Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. A következő kód egy új Python-parancsfájlban történő futtatásával hívja meg az elemzési **[űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API-ját. A szkript futtatása előtt végezze el a következő módosításokat:
+Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. A következő kód egy új Python-parancsfájlban történő futtatásával hívja meg az elemzési **[űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API-ját. A szkript futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<file path>` le az értékét az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ez egy távoli fájl URL-címe is lehet. Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
-1. Cserélje `<model_id>` le az t az előző szakaszban kapott modell-azonosítóra.
-1. Cserélje `<endpoint>` le az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje `<file type>` le a értéket a fájl típusára. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. Cserélje le az értékét `<file path>` az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ez egy távoli fájl URL-címe is lehet. Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
+1. Cserélje le az `<model_id>` t az előző szakaszban kapott modell-azonosítóra.
+1. Cserélje le `<endpoint>` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le `<file type>` a értéket a fájl típusára. Támogatott típusok: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
     ```python
@@ -32,7 +31,7 @@ Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzés
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.0/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True
@@ -62,7 +61,7 @@ Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzés
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognizer-analyze.py`.
 
-Az elemzési **űrlap** API meghívásakor a `201 (Success)` rendszer választ küld egy **műveleti hely** fejlécére. Ennek a fejlécnek az értéke egy azonosító, amelyet az elemzési művelet eredményeinek nyomon követéséhez fog használni. A fenti szkript kinyomtatja a fejléc értékét a konzolra.
+Az elemzési **űrlap** API meghívásakor a rendszer választ küld egy `201 (Success)` **műveleti hely** fejlécére. Ennek a fejlécnek az értéke egy azonosító, amelyet az elemzési művelet eredményeinek nyomon követéséhez fog használni. A fenti szkript kinyomtatja a fejléc értékét a konzolra.
 
 ## <a name="get-the-analyze-results"></a>Az elemzés eredményeinek beolvasása
 

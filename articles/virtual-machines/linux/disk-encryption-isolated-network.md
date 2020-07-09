@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460120"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption izolált hálózaton
@@ -45,9 +45,9 @@ Ha az [Azure Disk Encryptiont az Azure ad-vel (előző verzió)](disk-encryption
 
 Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-linux-aad.md), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
 
-### <a name="azure-instance-metadata-service"></a>Azure-Instance Metadata Service 
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás 
 
-A virtuális gépnek képesnek kell lennie az [Azure-példány metaadatainak szolgáltatás](instance-metadata-service.md) -végpontjának elérésére, amely egy jól ismert, nem irányítható IP`169.254.169.254`-címet () használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
+A virtuális gépnek képesnek kell lennie az [Azure-példány metaadatainak szolgáltatás](instance-metadata-service.md) -végpontjának elérésére, amely egy jól ismert, nem irányítható IP-címet () használ, `169.254.169.254` amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,17 +4,15 @@ description: Ez a cikk segít megérteni, hogy Traffic Manager alhálózat felü
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
-ms.topic: article
+ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
-ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3b58a0aef4df71649e657c04b44c31b6bbfe019c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689571"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Alhálózat Traffic Manager felülbírálása az Azure PowerShell-lel
 
@@ -39,7 +37,7 @@ Traffic Manager alhálózat felülbírálásának létrehozásához használhatj
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0-ra vagy az újabb verzióra. A futtatásával `Get-Module -ListAvailable Az` megkeresheti a telepített verziót. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, az Azure-ba `Login-AzAccount` való bejelentkezéshez is futtatnia kell.
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0-ra vagy az újabb verzióra. A futtatásával `Get-Module -ListAvailable Az` megkeresheti a telepített verziót. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, az Azure-ba való bejelentkezéshez is futtatnia kell `Login-AzAccount` .
 
 
 1. **Traffic Manager végpont beolvasása:**

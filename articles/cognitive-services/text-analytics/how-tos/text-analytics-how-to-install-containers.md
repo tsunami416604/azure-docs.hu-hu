@@ -9,20 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109000"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
 > [!NOTE]
 > * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kinyerési és nyelvfelismerés-tárolók kulcsfontosságú kifejezésként elérhető nyilvános előzetes verzióként érhetők el.
 > * Az entitások összekapcsolása és megtekintő szolgáltatás jelenleg nem érhető el tárolóként.
+> * Jelenleg nem számítunk fel díjat a Text Analytics állapotának az állapotfigyelő tároló használata esetén.
 
 A tárolók lehetővé teszik a szöveges elemzési API-k futtatását a saját környezetében, és kiválóan használhatók az adott biztonsági és adatirányítási követelményekhez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. 
 
@@ -39,7 +40,7 @@ A Text Analytics tárolók futtatásához rendelkeznie kell a gazdagép és a t�
 
 Text Analytics tárolók használata előtt meg kell felelnie a következő előfeltételeknek:
 
-|Kötelező|Cél|
+|Kötelező|Szerep|
 |--|--|
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.| 
@@ -59,6 +60,8 @@ Az alábbi táblázat a Text Analytics tárolók minimális és ajánlott specif
 |---|---------|-------------|--|--|
 | **Nyelvfelismerés, fő kifejezés kibontása**   | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15 | 30|
 | **Hangulatelemzés v3**   | 1 mag, 2 GB memória | 4 mag, 8 GB memória |15 | 30|
+| **Text Analytics Health-1 dokumentumhoz/kérelemhez**   |  4 mag, 10 GB memória | 6 mag, 12GB memória |15 | 30|
+| **Text Analytics a Health-10 Documents/Request**   |  6 mag, 16GB memória | 8 mag, 20 GB memória |15 | 30|
 
 A CPU-mag és a memória `--cpus` a `--memory` parancs részeként használt és beállításoknak felel meg `docker run` .
 
@@ -80,6 +83,10 @@ A Text Analytics tároló lemezképei a Microsoft Container Registry érhetők e
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
+# <a name="text-analytics-for-health-preview"></a>[Text Analytics for Health (előzetes verzió)](#tab/healthcare)
+
+[!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
+
 ***
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
@@ -92,13 +99,6 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
 A tárolók futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A tároló továbbra is futni fog, amíg le nem állítja.
-
-Cserélje le az alábbi helyőrzőket a saját értékeire:
-
-| Helyőrző | Érték | Formátum vagy példa |
-|-------------|-------|---|
-| **{API_KEY}** | A Text Analytics erőforrás kulcsa. A Azure Portal az erőforrás **kulcs és végpont** lapján található. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | A Text Analytics API elérésére szolgáló végpont. A Azure Portal az erőforrás **kulcs és végpont** lapján található. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 > [!IMPORTANT]
 > * A következő részben található Docker-parancsok a háttér perjelet használják `\` , mint a sor folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. 
@@ -116,6 +116,10 @@ Cserélje le az alábbi helyőrzőket a saját értékeire:
 # <a name="language-detection-preview"></a>[Nyelvfelismerés (előzetes verzió)](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+# <a name="text-analytics-for-health-preview"></a>[Text Analytics for Health (előzetes verzió)](#tab/healthcare)
+
+[!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
 ***
 
@@ -161,8 +165,8 @@ Ebben a cikkben megtanulta Text Analytics tárolók letöltésére, telepítés�
    * *Hangulatelemzés*
    * *Kulcsszókeresés (előzetes verzió)* 
    * *Nyelvfelismerés (előzetes verzió)*
-   
-* A rendszer letölti a tároló lemezképeit a Microsoft Container Registry (MCR) szolgáltatásból az Azure-ban.
+   * *Text Analytics for Health (előzetes verzió)*
+* A rendszer letölti a tároló lemezképeit a Microsoft Container Registry (MCR) vagy az előzetes verziójú tároló adattárból.
 * A tároló lemezképei a Docker-ben futnak.
 * A REST API vagy az SDK használatával meghívhatja a műveleteket Text Analytics tárolókban a tároló gazdagép URI azonosítójának megadásával.
 * A tárolók létrehozásakor számlázási adatokat kell megadnia.
@@ -170,7 +174,7 @@ Ebben a cikkben megtanulta Text Analytics tárolók letöltésére, telepítés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](../text-analytics-resource-container-config.md) áttekintése konfigurációs beállításokhoz
 * A funkciókkal kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md) című témakört.

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79285148"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Az Azure IoT Hub Device Provisioning Servicehoz való hozzáférés szabályozása
@@ -75,16 +74,16 @@ A biztonsági jogkivonat formátuma a következő:
 
 A várt értékek a következők:
 
-| Érték | Leírás |
+| Érték | Description |
 | --- | --- |
-| aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához.|
+| aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry` . **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához.|
 | lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
 | {URL-kódolt-resourceURI} | Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása. A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), a IoT-eszköz kiépítési szolgáltatásának állomásneve (nincs protokoll). Például: `mydps.azure-devices-provisioning.net`. |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. |
 
-**Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` egy előtag, `/a/b/c` de nem. `/a/bc`
+**Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` egy előtag, `/a/b/c` de nem `/a/bc` .
 
-A következő Node. js-kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja `resourceUri, signingKey, policyName, expiresInMins`a tokent a bemeneti adatokból. A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
+A következő Node.js kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja a tokent a bemenetekben `resourceUri, signingKey, policyName, expiresInMins` . A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -150,9 +149,9 @@ Itt láthatók a végpontokon elérhető szolgáltatási függvények:
 
 Például egy **enrollmentread** nevű, előre létrehozott megosztott hozzáférési házirend használatával generált szolgáltatás létrehoz egy jogkivonatot a következő paraméterekkel:
 
-* erőforrás URI- `{mydps}.azure-devices-provisioning.net`ja:,
-* aláíró kulcs: a `enrollmentread` szabályzat egyik kulcsa,
-* Házirend neve: `enrollmentread`,
+* erőforrás URI-ja: `{mydps}.azure-devices-provisioning.net` ,
+* aláíró kulcs: a szabályzat egyik kulcsa `enrollmentread` ,
+* Házirend neve: `enrollmentread` ,
 * bármely lejárati idő. backn
 
 ![Megosztott hozzáférési szabályzat létrehozása az eszköz kiépítési szolgáltatásának példányához a portálon][img-add-shared-access-policy]
@@ -177,7 +176,7 @@ A következő témakörök további információkat nyújtanak a IoT-eszközök 
 
 A következő táblázat felsorolja azokat az engedélyeket, amelyek segítségével szabályozhatja a IoT-eszközök kiépítési szolgáltatásának elérését.
 
-| Engedély | Megjegyzések |
+| Engedély | Jegyzetek |
 | --- | --- |
 | **ServiceConfig** |Hozzáférést biztosít a szolgáltatás konfigurációinak módosításához. <br/>Ezt az engedélyt a háttérbeli Cloud Services használja. |
 | **EnrollmentRead** |Olvasási hozzáférést biztosít az eszközök regisztrálásához és a beléptetési csoportokhoz. <br/>Ezt az engedélyt a háttérbeli Cloud Services használja. |

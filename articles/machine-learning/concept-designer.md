@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517370"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az az Azure Machine Learning Designer (előzetes verzió)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ A Azure Machine Learning Designer lehetővé teszi, hogy vizuálisan összekapcs
 A tervező a Azure Machine Learning [munkaterületet](concept-workspace.md) használja a megosztott erőforrások rendszerezéséhez, például:
 
 + [Pipelines](#pipeline)
-+ [Adathalmazok](#datasets)
++ [Adatkészletek](#datasets)
 + [Számítási erőforrások](#compute)
 + [Regisztrált modellek](concept-azure-machine-learning-architecture.md#models)
 + [Közzétett folyamatok](#publish)
@@ -81,7 +81,8 @@ A modulok az adatokon végezhető algoritmusok. A tervező több modult is tarta
 
 A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a Tulajdonságok panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen. A tervezőben beállíthatja az egyes modulok számítási erőforrásait. 
 
-![Modul tulajdonságai](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="Modul tulajdonságai":::
+
 
 Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, tekintse át a következő témakört: [algoritmus & modul-hivatkozás áttekintése](algorithm-module-reference/module-reference.md). Az algoritmus kiválasztásával kapcsolatos segítségért tekintse meg a [Azure Machine learning algoritmust ismertető lapot](algorithm-cheat-sheet.md).
 
@@ -134,7 +135,7 @@ A meglévő vizuális felületi kísérleteket és webszolgáltatásokat átalak
 [!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
 * Megtudhatja, hogyan módosíthatja a meglévő [tervezői mintákat](samples-designer.md) az igényeinek megfelelően.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361489"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
@@ -24,7 +24,7 @@ Azure Analysis Services támogatja az [Azure ad B2B-együttműködést](../activ
 
 ## <a name="authentication"></a>Hitelesítés
 
-Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyféloldali kódtárat](analysis-services-data-providers.md) (amo, MSOLAP, ADOMD) használ a kiszolgálóhoz való kapcsolódáshoz. 
+Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyféloldali kódtárat](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) használ a kiszolgálóhoz való kapcsolódáshoz. 
 
 Mindhárom ügyfél-függvénytár támogatja az Azure AD interaktív folyamatot és a nem interaktív hitelesítési módszereket. A AMOMD-t és MSOLAP-t használó alkalmazásokban a két nem interaktív módszer, Active Directory jelszó és a Active Directory integrált hitelesítési módszer is használható. Ez a két módszer soha nem eredményez előugró párbeszédpanelt.
 
@@ -76,7 +76,7 @@ Az ezen a szinten lévő szerepkörök azokra a felhasználókra vagy fiókokra 
   
  Alapértelmezés szerint, amikor új táblázatos modell-projektet hoz létre, a modell projektnek nincsenek szerepkörei. A szerepkörök a Visual Studióban a szerepkör-kezelő párbeszédpanel használatával definiálhatók. Ha a szerepkörök a modell tervezése során vannak meghatározva, csak a modell munkaterület-adatbázisra lesznek alkalmazva. A modell telepítésekor ugyanazok a szerepkörök lesznek alkalmazva az üzembe helyezett modellre. A modell telepítése után a kiszolgáló-és adatbázis-rendszergazdák a SSMS használatával kezelhetik a szerepköröket és a tagokat. További információ: az [adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md).
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory csoportokkal](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  

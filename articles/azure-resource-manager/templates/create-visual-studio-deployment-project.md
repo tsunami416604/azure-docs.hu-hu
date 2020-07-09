@@ -4,10 +4,9 @@ description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-proj
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76152731"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
@@ -20,7 +19,7 @@ Ez a cikk bemutatja, hogyan használható [a Visual Studio 2019-es vagy újabb v
 
 Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webalkalmazás** -sablonnal.
 
-1. A Visual Studióban válassza a **fájl**>**új**>**projekt**lehetőséget.
+1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
 1. Válassza ki az **Azure erőforráscsoport** -projekt sablonját, és kattintson a **Tovább gombra**.
 
     ![Projekt létrehozása](./media/create-visual-studio-deployment-project/create-project.png)
@@ -41,11 +40,11 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
     A webalkalmazás-sablon választása óta a következő fájlok láthatók:
 
-   | Fájlnév | Leírás |
+   | Fájlnév | Description |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |PowerShell-parancsfájl, amely PowerShell-parancsokat futtat az Azure Resource Manager üzembe helyezéséhez. A Visual Studio ezt a PowerShell-parancsfájlt használja a sablon üzembe helyezéséhez. |
-   | Webhely. JSON |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
-   | Webhely. Parameters. JSON |Paraméterfájl, amely a sablonhoz szükséges értékeket tartalmazza. Megadhat paraméterértékeket, amelyekkel testre szabhatóak az egyes telepítések. |
+   | WebSite.jsbekapcsolva |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
+   | WebSite.parameters.jsbekapcsolva |Paraméterfájl, amely a sablonhoz szükséges értékeket tartalmazza. Megadhat paraméterértékeket, amelyekkel testre szabhatóak az egyes telepítések. |
 
     Mindegyik erőforráscsoport-telepítési projekt tartalmazza ezeket az alapvető fájlokat. Más projektek további fájlokat is tartalmazhatnak egyéb funkciók támogatásához.
 
@@ -53,7 +52,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
 A központi telepítési projektet testreszabhatja úgy, hogy módosítja a telepíteni kívánt erőforrásokat leíró Resource Manager-sablont. A Resource Manager-sablon elemeivel kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](template-syntax.md).
 
-1. A sablonon való működéshez nyissa meg a **webhely. JSON**fájlt.
+1. A sablonon való működéshez nyissa meg **aWebSite.jst a**következőn:.
 
 1. A Visual Studio szerkesztő eszközöket biztosít a Resource Manager-sablon szerkesztéséhez. A **JSON-vázlat** ablak segítségével könnyen áttekinthetőek a sablonban meghatározott elemek.
 
@@ -103,7 +102,7 @@ A központi telepítési projektet testreszabhatja úgy, hogy módosítja a tele
    }
    ```
 
-1. Nyissa meg a **webhely. Parameters. JSON** fájlt. A parameters (paraméterek) fájl segítségével adja át az értékeket a központi telepítés során, amely testreszabja az üzembe helyezett erőforrást. Adja meg az üzemeltetési csomag nevét, és mentse a fájlt.
+1. Nyissa meg a **WebSite.parameters.js** fájlt. A parameters (paraméterek) fájl segítségével adja át az értékeket a központi telepítés során, amely testreszabja az üzembe helyezett erőforrást. Adja meg az üzemeltetési csomag nevét, és mentse a fájlt.
 
    ```json
    {
@@ -121,9 +120,9 @@ A központi telepítési projektet testreszabhatja úgy, hogy módosítja a tele
 
 Most már készen áll a projekt egy erőforráscsoporthoz való üzembe helyezésére.
 
-Alapértelmezés szerint a projektben található PowerShell-szkript (Deploy-AzureResourceGroup. ps1) a AzureRM modult használja. Ha még mindig telepítette a AzureRM modult, és szeretné tovább használni, használhatja ezt az alapértelmezett parancsfájlt. Ezzel a parancsfájllal a Visual Studio felületén üzembe helyezheti a megoldást.
+Alapértelmezés szerint a projektben található PowerShell-szkript (Deploy-AzureResourceGroup.ps1) a AzureRM modult használja. Ha még mindig telepítette a AzureRM modult, és szeretné tovább használni, használhatja ezt az alapértelmezett parancsfájlt. Ezzel a parancsfájllal a Visual Studio felületén üzembe helyezheti a megoldást.
 
-Ha azonban áttelepítette az új az [modult](/powershell/azure/new-azureps-module-az), új parancsfájlt kell hozzáadnia a projekthez. Az az modult használó parancsfájl hozzáadásához másolja a [Deploy-AzTemplate. ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) parancsfájlt, és adja hozzá a projekthez. Ha ezt a parancsfájlt a központi telepítéshez szeretné használni, a Visual Studio telepítési felületének használata helyett egy PowerShell-konzolból kell futtatnia.
+Ha azonban áttelepítette az új az [modult](/powershell/azure/new-azureps-module-az), új parancsfájlt kell hozzáadnia a projekthez. Az az modult használó parancsfájl hozzáadásához másolja a [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) -parancsfájlt, és adja hozzá a projekthez. Ha ezt a parancsfájlt a központi telepítéshez szeretné használni, a Visual Studio telepítési felületének használata helyett egy PowerShell-konzolból kell futtatnia.
 
 Ebben a cikkben mindkét megközelítés látható. Ez a cikk az alapértelmezett parancsfájlra hivatkozik, amely az AzureRM modul parancsfájlja, az új parancsfájl pedig az az Module script.
 
@@ -139,7 +138,7 @@ Az az Module script esetében nyisson meg egy PowerShell-konzolt, és futtassa a
 
 A AzureRM modul parancsfájlhoz használja a Visual studiót:
 
-1. A központi telepítési projekt csomópontjának helyi menüjében válassza az **Deploy** > **új**telepítése lehetőséget.
+1. A központi telepítési projekt csomópontjának helyi menüjében válassza az **Deploy**  >  **új**telepítése lehetőséget.
 
     ![Új központi telepítési menüelem](./media/create-visual-studio-deployment-project/deploy.png)
 
@@ -167,7 +166,7 @@ Vizsgáljuk meg az eredményeket.
 
 Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges kód azonban még nincs telepítve a projekttel.
 
-1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, majd válassza az**új projekt** **hozzáadása** > lehetőséget.
+1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, **Add**majd válassza az  >  **új projekt**hozzáadása lehetőséget.
 
     ![Projekt hozzáadása](./media/create-visual-studio-deployment-project/add-project.png)
 
@@ -199,7 +198,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
    ![Lásd: hivatkozás](./media/create-visual-studio-deployment-project/see-reference.png)
 
-1. Lépjen vissza a sablonhoz (webhely. JSON), és adjon hozzá egy erőforrást a sablonhoz.
+1. Térjen vissza a sablonhoz (WebSite.json), és adjon hozzá egy erőforrást a sablonhoz.
 
     ![Erőforrás hozzáadása](./media/create-visual-studio-deployment-project/add-resource-2.png)
 
@@ -211,7 +210,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
 1. A sablonban néhány új paraméter szerepel. Ezek az előző lépésben lettek hozzáadva. Nem kell megadnia **_artifactsLocation** vagy **_artifactsLocationSasToken** értékét, mivel ezek az értékek automatikusan létrejönnek. A mappát és a fájlnevet azonban a központi telepítési csomagot tartalmazó elérési útra kell beállítania. Ezeknek a paramétereknek a nevei a **PackageFolder** és a **PackageFileName**végződéssel rendelkeznek. A név első része a hozzáadott webes üzembe helyezési erőforrás neve. Ebben a cikkben a **ExampleAppPackageFolder** és a **ExampleAppPackageFileName**nevet kapta.
 
-   Nyissa meg a **webhely. Parameters. JSON** fájlt, és állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között megjelenő értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
+   Nyissa megWebsite.parameters.jsbe, majd állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között **megjelenő** értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
 
    ```json
    {
@@ -237,7 +236,7 @@ Mivel programkódot adott hozzá a projekthez, az üzemelő példány egy kicsit
 
 ### <a name="az-module-script"></a>Az Module script
 
-Ha az az Module parancsfájlt használja, egy kis módosítást kell végeznie a sablonban. Ez a szkript egy perjelet szúr be az összetevők helyére, de a sablon nem vár erre a perjelre. Nyissa meg a webhely. JSON fájlt, és keresse meg a MSDeploy-bővítmény tulajdonságait. Rendelkezik egy **packageUri**nevű tulajdonsággal. Távolítsa el az összetevők helye és a csomag mappája közötti perjelet.
+Ha az az Module parancsfájlt használja, egy kis módosítást kell végeznie a sablonban. Ez a szkript egy perjelet szúr be az összetevők helyére, de a sablon nem vár erre a perjelre. Nyissa meg a WebSite.jst, és keresse meg a MSDeploy-bővítmény tulajdonságait. Rendelkezik egy **packageUri**nevű tulajdonsággal. Távolítsa el az összetevők helye és a csomag mappája közötti perjelet.
 
 Ennek így kell kinéznie:
 
@@ -245,7 +244,7 @@ Ennek így kell kinéznie:
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Figyelje meg, hogy az előző példában `'/',` nincs **paraméter ("_artifactsLocation")** és **paraméter ("ExampleAppPackageFolder")**.
+Figyelje meg, hogy az előző példában nincs `'/',` **paraméter ("_artifactsLocation")** és **paraméter ("ExampleAppPackageFolder")**.
 
 Hozza létre újra a projektet. A projekt létrehozása biztosítja, hogy a telepíteni kívánt fájlok hozzá legyenek adva az átmeneti mappához.
 
@@ -281,7 +280,7 @@ A AzureRM modul parancsfájlhoz használja a Visual studiót:
 
 Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat használhatja. Az üzemelő példány testreszabásához adjon egyéni erőforrást a sablonhoz. Az erőforrás hozzáadásának megjelenítéséhez műveleti irányítópultot kell hozzáadnia az üzembe helyezett erőforrás kezelése érdekében.
 
-1. Nyissa meg a webhely. JSON fájlt, és adja hozzá a következő JSON-t a Storage- `]` fiók erőforrása után, de az erőforrások szakasz bezárása előtt.
+1. Nyissa meg a WebSite.jsfájlt, és adja hozzá a következő JSON-t a Storage-fiók erőforrása után, de az `]` erőforrások szakasz bezárása előtt.
 
    ```json
     ,{
@@ -372,7 +371,7 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
 
 RBAC-csoportokkal kezelheti az irányítópult hozzáférését. Az irányítópult kinézetét is testreszabhatja az üzembe helyezése után. Ha azonban újból üzembe helyezi az erőforráscsoportot, az irányítópult visszaáll a sablonban szereplő alapértelmezett állapotba. Az irányítópultok létrehozásával kapcsolatos további információkért lásd az [Azure-irányítópultok szoftveres létrehozásával](../../azure-portal/azure-portal-dashboards-create-programmatically.md) foglalkozó témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 

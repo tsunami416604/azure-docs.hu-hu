@@ -10,17 +10,17 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73744362"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310308"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API-hoz
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
+> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 

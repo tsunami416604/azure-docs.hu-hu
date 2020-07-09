@@ -11,12 +11,11 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aa26b0c6e30413366e06673a0890b21434fc842b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345274"
 ---
 # <a name="in-memory-sample"></a>Memóriában tárolt minta
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -47,9 +46,9 @@ A memóriabeli OLTP egyszerűbb, de vizuálisan vonzó teljesítmény-bemutatój
 
 ### <a name="installation-steps"></a>A telepítés lépései
 
-1. A [Azure Portalban](https://portal.azure.com/)hozzon létre egy prémium vagy üzletileg kritikus adatbázist egy kiszolgálón. Állítsa a **forrást** a AdventureWorksLT mintaadatbázis értékre. Részletes útmutatás: [az első Azure SQL-adatbázis létrehozása](database/single-database-create-quickstart.md).
+1. A [Azure Portalban](https://portal.azure.com/)hozzon létre egy prémium vagy üzletileg kritikus adatbázist egy kiszolgálón. Állítsa a **forrást** a AdventureWorksLT mintaadatbázis értékre. Részletes útmutatás: [az első adatbázis létrehozása Azure SQL Databaseban](database/single-database-create-quickstart.md).
 
-2. Kapcsolódjon az adatbázishoz SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx)használatával.
+2. Kapcsolódjon az adatbázishoz SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)használatával.
 
 3. Másolja a [memóriában tárolt OLTP Transact-SQL-szkriptet](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL-szkript létrehozza a szükséges memóriában lévő objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
 
@@ -109,18 +108,18 @@ A következő két *tárolt eljárás* között az egyetlen különbség az, hog
 - SalesLT **.** usp_InsertSalesOrder **_inmem**
 - SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
-Ebből a szakaszból megtudhatja, hogyan használhatja a Handy **ostress. exe** segédprogramot úgy, hogy a két tárolt eljárást felhasználja stresszes szinten. Összehasonlíthatja, hogy mennyi ideig tart a két stressz futtatása.
+Ebből a szakaszból megtudhatja, hogyan használhatja a Handy **ostress.exe** segédprogramot a két tárolt eljárás a stresszes szinteken való végrehajtásához. Összehasonlíthatja, hogy mennyi ideig tart a két stressz futtatása.
 
-A ostress. exe futtatásakor javasoljuk, hogy a következőhöz tartozó paraméterek értékeit adja át:
+ostress.exe futtatásakor azt javasoljuk, hogy a következőhöz tartozó paraméterek értékét adja át:
 
 - Nagy számú egyidejű kapcsolat futtatása a-N100 használatával.
 - A-R500 használatával a kapcsolatok mindegyike több százszor.
 
 Azonban érdemes lehet sokkal kisebb értékekkel kezdeni, mint például a-N10 és a-R50, hogy minden megfelelően működjön.
 
-### <a name="script-for-ostressexe"></a>A ostress. exe parancsfájlja
+### <a name="script-for-ostressexe"></a>Parancsfájl a ostress.exehoz
 
-Ez a szakasz a ostress. exe parancssorba ágyazott T-SQL-parancsfájlt jeleníti meg. A parancsfájl a korábban telepített T-SQL-parancsfájl által létrehozott elemeket használja.
+Ez a szakasz a ostress.exe parancssorba ágyazott T-SQL-parancsfájlt jeleníti meg. A parancsfájl a korábban telepített T-SQL-parancsfájl által létrehozott elemeket használja.
 
 A következő szkript egy példaként szolgáló értékesítési rendelést szúr be öt sorral a következő memóriára optimalizált *táblákba*:
 
@@ -150,19 +149,19 @@ begin;
 end
 ```
 
-Ha a ostress. exe előző T-SQL-parancsfájljának *_ondisk* verzióját szeretné megtenni, akkor a *_inmem* alsztring mindkét előfordulását a *_ondisk*értékre kell cserélni. Ezek a cserék a táblák és a tárolt eljárások nevét érintik.
+Ha az előző T-SQL-parancsfájl *_ondisk* verzióját szeretné ostress.exe, akkor a *_inmem* alsztring mindkét előfordulását a *_ondisk*értékre kell cserélni. Ezek a cserék a táblák és a tárolt eljárások nevét érintik.
 
 #### <a name="install-rml-utilities-and-ostress"></a>RML segédprogramok telepítése és`ostress`
 
-Ideális esetben azt tervezi, hogy a ostress. exe fájlt egy Azure-beli virtuális gépen (VM) szeretné futtatni. Hozzon létre egy [Azure-beli virtuális gépet](https://azure.microsoft.com/documentation/services/virtual-machines/) ugyanabban az Azure földrajzi régióban, ahol a AdventureWorksLT-adatbázis található. Ehelyett a ostress. exe fájlt is futtathatja a laptopon.
+Ideális esetben a ostress.exe Azure-beli virtuális gépen (VM) való futtatását tervezi. Hozzon létre egy [Azure-beli virtuális gépet](https://azure.microsoft.com/documentation/services/virtual-machines/) ugyanabban az Azure földrajzi régióban, ahol a AdventureWorksLT-adatbázis található. Ehelyett a ostress.exe futtatható a laptopon.
 
-A virtuális gépen vagy a választott gazdagépen telepítse a Replay Markup Language (RML) segédprogramokat. A segédprogramok közé tartoznak a ostress. exe.
+A virtuális gépen vagy a választott gazdagépen telepítse a Replay Markup Language (RML) segédprogramokat. A segédprogramok közé tartoznak a ostress.exe.
 
 További információkért lásd:
 
-- A ostress. exe vitafórum a [memóriában tárolt OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- A ostress.exe-vitafórum a [memóriában tárolt OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Mintaadatbázis a memóriában tárolt OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- A [ostress. exe telepítésének blogja](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
+- A [ostress.exetelepítéséhez szükséges blog ](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
 dn511655.aspx is for SQL 2014,
@@ -176,7 +175,7 @@ whereas for SQL 2016+
 
 #### <a name="run-the-_inmem-stress-workload-first"></a>Először futtassa az *_inmem* Stress munkaterhelés-t
 
-A ostress. exe parancssorának futtatásához használhatja a *RML* parancssori ablakát. A közvetlen parancssori paraméterek `ostress` :
+A ostress.exe parancssorának futtatásához használhatja a *RML* parancssori ablakát. A közvetlen parancssori paraméterek `ostress` :
 
 - Az 100-es kapcsolatok párhuzamos futtatása (-N100).
 - Minden egyes kapcsolatban futtassa a T-SQL-szkriptet 50-szor (-R50).
@@ -185,7 +184,7 @@ A ostress. exe parancssorának futtatásához használhatja a *RML* parancssori 
 ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
 ```
 
-A fenti ostress. exe parancssor futtatása:
+Az előző ostress.exe parancssorának futtatása:
 
 1. Az adatbázis-adattartalom alaphelyzetbe állításához futtassa a következő parancsot a SSMS, és törölje az összes korábbi Futtatás által beszúrt adatokat:
 
@@ -193,7 +192,7 @@ A fenti ostress. exe parancssor futtatása:
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. Másolja az előző ostress. exe parancssori szöveget a vágólapra.
+2. Másolja az előző ostress.exe parancssor szövegét a vágólapra.
 
 3. A `<placeholders>` megfelelő valós értékekkel cserélje le a paramétert a-S-U-P-d paraméterekre.
 
@@ -215,9 +214,9 @@ Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a köve
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Szerkessze a ostress. exe parancssort, hogy az összes *_inmem* lecserélje a *_ondisk*.
+2. Szerkessze az ostress.exe parancssort az összes *_inmem* lecserélése a *_ondiskre*.
 
-3. Futtassa újra a ostress. exe fájlt a második alkalommal, és rögzítse az időtartam eredményét.
+3. Futtassa újra ostress.exe a második alkalommal, és rögzítse az időtartam eredményét.
 
 4. Ismét állítsa alaphelyzetbe az adatbázist (a felelősségteljes törléshez, ami nagy mennyiségű tesztelési adattal rendelkezhet).
 
@@ -365,7 +364,7 @@ A P2 díjszabási csomaggal rendelkező adatbázisban a lekérdezés teljesítm�
 
 #### <a name="tools"></a>Eszközök
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure Portalra](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

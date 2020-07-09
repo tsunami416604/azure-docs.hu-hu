@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608366"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](/azure/security-center/)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -39,7 +38,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 ## <a name="data-collected"></a>Összegyűjtött adatok
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | [Windows-eseménynaplók](data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Rendszernapló](data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
@@ -70,7 +69,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. Az alábbi táblázat az egyes módszereket ismerteti, amelyekkel meghatározhatja, hogy melyik működik a legjobban a szervezetében.
 
-|Forrás | Metódus | Leírás|
+|Forrás | Metódus | Description|
 |-------|-------------|-------------|
 |Azure VM| [Manuálisan a Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | A Log Analytics munkaterületről telepítendő virtuális gépek meghatározása. |
 | | Log Analytics virtuálisgép-bővítmény Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) az Azure CLI használatával vagy egy Azure Resource Manager sablonnal | A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Azure Monitor-munkaterületre regisztrálja őket. |
@@ -114,6 +113,24 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 >[!NOTE]
 >Ha olyan disztribúciót vagy verziót használ, amely jelenleg nem támogatott, és nem a támogatási modellhez igazodik, javasoljuk, hogy a tárházat elágazással lássa el, és tudomásul veszi, hogy a Microsoft támogatási szolgálata nem nyújt segítséget a villás ügynök verzióihoz.
 
+
+### <a name="python-2-requirement"></a>Python 2 követelmény
+ A Log Analytics ügynökhöz a Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.
+
+ - Red Hat, CentOS, Oracle:`yum install -y python2`
+ - Ubuntu, Debian:`apt-get install -y python2`
+ - SUSE`zypper install -y python2`
+
+A python2 végrehajtható fájljának a "Python" aliashoz kell tartoznia a következő parancs használatával:
+
+```
+alternatives --set python /usr/sbin/python2
+```
+
+### <a name="supported-distros"></a>Támogatott disztribúciók
+
+A Linux-ügynök a Linux operációs rendszer következő verzióit támogatja hivatalosan:
+
 * Amazon Linux 2017,09 (x64)
 * CentOS Linux 6 (x64) és 7 (x64)  
 * Oracle Linux 6 és 7 (x64) 
@@ -130,7 +147,7 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 
 A következő táblázat a támogatott Linux-disztribúciók számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Leírás |Minimális verzió |
+|Szükséges csomag |Description |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
@@ -170,10 +187,10 @@ A következő táblázat a Linux-és Windows-ügynökök Azure Monitor naplókka
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-es port |Kimenő|Igen |
-|*.azure-automation.net |443-es port |Kimenő|Igen |
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.blob.core.windows.net |443-es port |Kimenő|Yes |
+|*.azure-automation.net |443-es port |Kimenő|Yes |
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
@@ -210,4 +227,3 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
 * Tekintse át az [adatforrásokat](agent-data-sources.md) , és Ismerje meg, hogy milyen adatforrások érhetők el az adatok Windows vagy Linux rendszerből való gyűjtéséhez. 
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
 * Ismerkedjen meg azokkal a [figyelési megoldásokkal](../insights/solutions.md) , amelyek a Azure monitor funkciókat bővítik, és adatokat gyűjtenek a log Analytics munkaterületen.
-

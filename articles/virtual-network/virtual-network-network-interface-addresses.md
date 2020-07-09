@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 8ff958b7bab7be3124452c1206baf64d0f8ccb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82142500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711000"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címének hozzáadása, módosítása vagy eltávolítása
 
@@ -36,9 +35,9 @@ Ha egy hálózati adaptert kell létrehoznia, módosítania vagy törölnie, olv
 A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a következő feladatokat:
 
 - Ha még nem rendelkezik Azure-fiókkal, regisztráljon az [ingyenes próbaverziós fiókra](https://azure.microsoft.com/free).
-- Ha a portált használja, https://portal.azure.comnyissa meg, majd jelentkezzen be az Azure-fiókjával.
+- Ha a portált használja, nyissa meg https://portal.azure.com , majd jelentkezzen be az Azure-fiókjával.
 - Ha a cikkben szereplő feladatok végrehajtásához PowerShell-parancsokat használ, futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy a PowerShellt a számítógépről futtatva. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia `az login` kell, hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia kell, `az login` hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 
 A fiókkal, amelybe bejelentkezik, vagy az Azure-hoz csatlakozik, hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a [hálózati adapter engedélyeiben](virtual-network-network-interface.md#permissions)felsorolt megfelelő műveletekhez van rendelve.
 
@@ -54,10 +53,10 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
-   |Name (Név)|Igen|Egyedinek kell lennie a hálózati adapterhez|
-   |Típus|Igen|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
-   |Magánhálózati IP-cím hozzárendelési módszere|Igen|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
-   |Nyilvános IP-cím|Nem|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
+   |Name|Yes|Egyedinek kell lennie a hálózati adapterhez|
+   |Típus|Yes|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
+   |Magánhálózati IP-cím hozzárendelési módszere|Yes|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
+   |Nyilvános IP-cím|No|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
 6. Manuálisan adja hozzá a másodlagos magánhálózati IP-címeket a virtuális gép operációs rendszeréhez a [több IP-cím társítása a virtuális gép operációs](virtual-network-multiple-ip-addresses-portal.md#os-config) rendszeréhez című cikk utasításait követve. Az IP-címek virtuális gépi operációs rendszerhez való manuális hozzáadása előtt tekintse meg a [magánhálózati](#private) IP-címek című témakört. Ne adjon meg nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
 
 **Parancsok**
@@ -169,7 +168,7 @@ A nyilvános és magánhálózati IP-címeket a következő hozzárendelési mó
 A dinamikus magánhálózati IPv4-és IPv6-(opcionális) címek alapértelmezés szerint vannak hozzárendelve.
 
 - **Csak nyilvános**: az Azure az egyes Azure-régiókban egyedi tartományhoz rendeli a címeket. Az egyes régiókhoz rendelt tartományok megismeréséhez tekintse meg [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A címek megváltozhatnak a virtuális gép leállításakor (fel van foglalva), majd újra elindítva. Nyilvános IPv6-cím nem rendelhető hozzá IP-konfigurációhoz vagy hozzárendelési módszer használatával.
-- **Csak privát**: az Azure fenntartja az első négy címet az egyes alhálózati címtartományok között, és nem rendeli hozzá a címeket. Az Azure az alhálózat címtartományának egyik erőforrásához rendeli hozzá a következő elérhető címet. Például, ha az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.0.4-10.0.0.14 közötti címek már hozzá lettek rendelve (a .0–.3 címek fenn vannak tartva), az Azure az erőforráshoz rendeli a 10.0.0.15 címet. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet. 
+- **Csak privát**: az Azure fenntartja az első négy címet az egyes alhálózati címtartományok között, és nem rendeli hozzá a címeket. Az Azure az alhálózat címtartományának egyik erőforrásához rendeli hozzá a következő elérhető címet. Ha például az alhálózat címtartománye 10.0.0.0/16, és a 10.0.0.4-10.0.0.14 már hozzá vannak rendelve (. 0-.3 van fenntartva), az Azure 10.0.0.15 rendel hozzá az erőforráshoz. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet. 
 
 ### <a name="static"></a>Statikus
 

@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791792"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -27,7 +26,7 @@ A Microsoft azt javasolja, hogy az Azure szerepköralapú hozzáférés-vezérl�
 
 Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörök hozzáadását és módosítását, valamint a fiók rendszergazdájának megtekintését ismerteti.
 
-## <a name="add-a-co-administrator"></a>Társ-rendszergazda hozzáadása
+## <a name="add-a-co-administrator"></a>Társadminisztrátor hozzáadása
 
 > [!TIP]
 > Csak akkor kell hozzáadnia egy társ-rendszergazdát, ha a felhasználónak az [Azure Service Management PowerShell-modul](https://docs.microsoft.com/powershell/module/servicemanagement/azure)használatával kell kezelnie a klasszikus Azure-telepítést. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.
@@ -44,7 +43,7 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
     ![A klasszikus rendszergazdákat megnyitó képernyőkép](./media/classic-administrators/classic-administrators.png)
 
-1. Kattintson a **Hozzáadás** > a**társ-rendszergazda** hozzáadásához elemre a közös rendszergazdák hozzáadása panel megnyitásához.
+1. Kattintson a **Hozzáadás**  >  a**társ-rendszergazda** hozzáadásához elemre a közös rendszergazdák hozzáadása panel megnyitásához.
 
     Ha a társ-rendszergazda hozzáadása lehetőség le van tiltva, akkor nem rendelkezik a megfelelő engedélyekkel.
 
@@ -125,10 +124,10 @@ Azure-előfizetések esetében csak egy szolgáltatás-rendszergazda lehet. A sz
 
 | Fiók-rendszergazdai fiók | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik Microsoft-fiók? | Megváltoztathatja a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra, amely ugyanabban a címtárban van? | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik címtárban lévő Azure AD-fiókra? |
 | --- | --- | --- | --- |
-| Microsoft-fiók | Igen | Nem | Nem |
+| Microsoft-fiók | Yes | Nem | Nem |
 | Azure AD-fiók | Igen | Igen | No |
 
-Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. Például abby@contoso.com megváltoztathatja a szolgáltatás-rendszergazdát bob@contoso.com, de nem módosíthatja a szolgáltatás-rendszergazdát john@notcontoso.com , hogy a contoso.com-címtárban ne legyen john@notcontoso.com jelen.
+Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. Például abby@contoso.com megváltoztathatja a szolgáltatás-rendszergazdát bob@contoso.com , de nem módosíthatja a szolgáltatás-rendszergazdát, hogy a john@notcontoso.com john@notcontoso.com contoso.com-címtárban ne legyen jelen.
 
 A Microsoft-fiókokkal és az Azure AD-fiókokkal kapcsolatos további információkért lásd: [Mi az Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md)
 
@@ -152,4 +151,4 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
 * [A különböző szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
-* [Azure-előfizetési rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md)
+* [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md)

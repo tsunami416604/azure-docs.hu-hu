@@ -4,15 +4,14 @@ description: Egymáshoz csatlakoztathatja a virtuális hálózatokat a virtuáli
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75860520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987093"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -21,7 +20,7 @@ Ez a cikk bemutatja, hogyan lehet virtuális hálózatokat csatlakoztatni virtu�
 A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak és a PowerShellt használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)

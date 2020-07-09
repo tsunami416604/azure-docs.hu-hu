@@ -4,12 +4,12 @@ description: Az intelligens szerződések integrációs mintáinak áttekintése
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254633"
 ---
 # <a name="smart-contract-integration-patterns"></a>Intelligens szerződések integrációs mintái
 
@@ -31,7 +31,7 @@ Az Azure Blockchain Workbench által generált webalkalmazáson belüli képess�
 
 A REST API elsődlegesen olyan interaktív ügyfelekhez használják, mint a webes, mobil és bot-alkalmazások.
 
-Ez a szakasz a REST API azon szempontjaira összpontosít, amelyek tranzakciókat küldenek egy elosztott főkönyvbe, valamint olyan mintákat, amelyek az Azure Blockchain Workbench *off Chain* SQL Database-ből származó tranzakciók adatait kérdezik le.
+Ez a szakasz a REST API azon szempontjaira összpontosít, amelyek tranzakciókat küldenek egy elosztott főkönyvbe, valamint olyan mintákat, amelyek az Azure Blockchain Workbench *off Chain* adatbázisából származó tranzakciók adatait kérdezik le.
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Tranzakciók küldése egy elosztott főkönyvnek egy külső rendszerből
 
@@ -204,7 +204,7 @@ Az Adatintegráció jól ismert:
 
 -   Az Azure Blockchain Workbench az alkalmazásokkal, munkafolyamatokkal, szerződésekkel és tranzakciókkal kapcsolatos metaadatokat tárolja a szokásos működési működésük részeként.
 -   A külső rendszerek vagy eszközök egy vagy több párbeszédpanelt biztosítanak, amelyek megkönnyítik az adatbázissal kapcsolatos információk gyűjtését, például az adatbázis-kiszolgáló nevét, az adatbázis nevét, a hitelesítés típusát, a bejelentkezési hitelesítő adatokat, valamint a használni kívánt adatbázis-nézeteket.
--   A lekérdezések az SQL Database nézeteivel vannak írva, hogy a külső rendszerek, a szolgáltatások, a jelentéskészítés, a fejlesztői eszközök és a vállalati hatékonyságnövelő eszközök segítségével elősegítsék az alsóbb szintű felhasználást.
+-   A lekérdezések az adatbázis nézeteivel vannak írva, hogy a külső rendszerek, a szolgáltatások, a jelentéskészítés, a fejlesztői eszközök és a nagyvállalati hatékonyságnövelő eszközök segítségével elősegítsék az alárendelt felhasználást
 
 ## <a name="storage-integration"></a>Tárterület-integráció
 

@@ -1,26 +1,26 @@
 ---
 title: 'Oktatóanyag: a New York-i taxik-adatbázis betöltése'
-description: Az oktatóanyag a Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy globális Azure-blobból a szinapszis SQL-hez.
+description: Az oktatóanyag Azure Portal és SQL Server Management Studio használatával tölti be a New York-i taxik adatait egy Azure-blobból a szinapszis SQL-hez.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 02/04/2020
+ms.subservice: sql-dw
+ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f3d4a14f92aa9271f094db5e2315b64b0fe3151
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207549"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
 
-Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait egy globális Azure Blob Storage-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
+Ez az oktatóanyag a [copy utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) használatával tölti be a New York taxik adatkészletet egy Azure Blob Storage-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
 
 > [!div class="checklist"]
 >
@@ -28,10 +28,9 @@ Ez az oktatóanyag a Base használatával tölti be a New York-i taxik adatait e
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 > * Csatlakozás az adattárházhoz az SSMS használatával
 > * Adatok betöltésére kijelölt felhasználó létrehozása
-> * Külső táblák létrehozása az Azure Blob Storage-ban található adatokhoz
-> * Adatok betöltése az adattárházba a CTAS T-SQL-utasítás használatával
+> * A minta adatkészlethez tartozó táblák létrehozása 
+> * Az adatok betöltése az adattárházba a T-SQL-utasítás MÁSOLÁSával
 > * Az adatok állapotának megtekintése betöltés közben
-> * Statisztikák készítése az újonnan betöltött adatokról
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -85,7 +84,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
     ![teljesítmény konfigurálása](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Kattintson az **Alkalmaz** elemre.
+8. Kattintson az **Alkalmaz** gombra.
 9. A kiépítés panelen válasszon ki egy **rendezést** az üres adatbázishoz. A jelen oktatóanyag esetében használja az alapértelmezett értéket. A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 10. Most, hogy elvégezte az űrlapot, válassza a **Létrehozás** lehetőséget az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
@@ -147,7 +146,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
     | Beállítás        | Ajánlott érték                            | Leírás                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Kiszolgáló típusa    | Adatbázismotor                            | Kötelezően megadandó érték                                       |
-    | Kiszolgálónév    | A teljes kiszolgálónév            | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
+    | Kiszolgáló neve    | A teljes kiszolgálónév            | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
     | Hitelesítés | SQL Server-hitelesítés                  | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés          | A kiszolgálói rendszergazdafiók                   | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
     | Jelszó       | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
@@ -211,9 +210,9 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
     ![Sikeres csatlakozás](./media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-external-tables-for-the-sample-data"></a>Külső táblák létrehozása a mintaadatokhoz
+## <a name="create-tables-for-the-sample-data"></a>Táblák létrehozása a mintaadatok számára
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Ebből az oktatóanyagból megtudhatja, hogyan használhatja a külső táblákat a New York-i taxi-adatok Azure Storage-blobból való betöltésére. Ha szeretné megtudni, hogyan érheti el adatait az Azure Blob Storage-ba, vagy hogyan töltheti be közvetlenül a forrásból, tekintse meg a [Betöltés áttekintését](design-elt-data-loading.md).
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag ezen része bemutatja, hogyan töltheti be a New York-i taxi-adatkészletet egy Azure Storage-blobból a COPY utasítás használatával. Ha szeretné megtudni, hogyan érheti el adatait az Azure Blob Storage-ba, vagy hogyan töltheti be közvetlenül a forrásból, tekintse meg a [Betöltés áttekintését](design-elt-data-loading.md).
 
 Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt adatokra vonatkozó információkat. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója.
 
@@ -223,58 +222,10 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
 
 2. Hasonlítsa össze a lekérdezési ablakot az előző képpel.  Győződjön meg arról, hogy az új lekérdezési ablak LoaderRC20-ként fut, és a MySampleDataWarehouse adatbázison hajt végre lekérdezéseket. A betöltés összes lépését ebben a lekérdezési ablakban végezze el.
 
-3. Hozzon létre egy főkulcsot a MySampleDataWarehouse adatbázishoz. Adatbázisonként csak egyszer kell főkulcsot létrehoznia.
+7. A következő T-SQL-utasítások futtatásával hozza létre a táblákat:
 
     ```sql
-    CREATE MASTER KEY;
-    ```
-
-4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást az Azure blob helyének meghatározásához. Ez a külső taxiadatok helye.  A lekérdezési ablakhoz fűzött parancs futtatásához jelölje ki a futtatni kívánt parancsokat, és válassza a **végrehajtás**lehetőséget.
-
-    ```sql
-    CREATE EXTERNAL DATA SOURCE NYTPublic
-    WITH
-    (
-        TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
-    );
-    ```
-
-5. Futtassa a következő [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást a külső adatfájl formázási jellemzőinek és beállításainak megadásához. Ez az utasítás adja meg, hogy a külső adatok szövegként legyenek tárolva, továbbá azt is, hogy az értékeket függőleges vonal („|”) karakter válassza el egymástól. A külső fájl tömörítése a Gzip használatával történik.
-
-    ```sql
-    CREATE EXTERNAL FILE FORMAT uncompressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS (
-            FIELD_TERMINATOR = ',',
-            STRING_DELIMITER = '',
-            DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        )
-    );
-    CREATE EXTERNAL FILE FORMAT compressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
-            STRING_DELIMITER = '',
-        DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        ),
-        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-    );
-    ```
-
-6. Futtassa a következő [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást egy séma létrehozásához a külső fájlformátum számára. A séma lehetővé teszi a létrehozni kívánt külső táblák rendszerezését.
-
-    ```sql
-    CREATE SCHEMA ext;
-    ```
-
-7. Hozza létre a külső táblákat. A táblázat definíciói az adattárházban tárolódnak, de a táblázatok az Azure Blob Storage-ban tárolt adathivatkozásokat használják. A következő T-SQL parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
-
-    ```sql
-    CREATE EXTERNAL TABLE [ext].[Date]
+    CREATE TABLE [dbo].[Date]
     (
         [DateID] int NOT NULL,
         [Date] datetime NULL,
@@ -311,13 +262,11 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'Date',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Geography]
+    
+    CREATE TABLE [dbo].[Geography]
     (
         [GeographyID] int NOT NULL,
         [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -329,13 +278,11 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'Geography',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[HackneyLicense]
+    
+    CREATE TABLE [dbo].[HackneyLicense]
     (
         [HackneyLicenseID] int NOT NULL,
         [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -343,13 +290,11 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'HackneyLicense',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Medallion]
+    
+    CREATE TABLE [dbo].[Medallion]
     (
         [MedallionID] int NOT NULL,
         [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -357,14 +302,11 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'Medallion',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;  
-    CREATE EXTERNAL TABLE [ext].[Time]
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+    
+    CREATE TABLE [dbo].[Time]
     (
         [TimeID] int NOT NULL,
         [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -378,13 +320,11 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'Time',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Trip]
+    
+    CREATE TABLE [dbo].[Trip]
     (
         [DateID] int NOT NULL,
         [MedallionID] int NOT NULL,
@@ -412,13 +352,11 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'Trip2013',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = compressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Weather]
+    
+    CREATE TABLE [dbo].[Weather]
     (
         [DateID] int NOT NULL,
         [GeographyID] int NOT NULL,
@@ -427,127 +365,123 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
     )
     WITH
     (
-        LOCATION = 'Weather',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
     ```
-
-8. Az Object Explorerben bontsa ki a mySampleDataWarehouse elemet az imént létrehozott külső táblák listájának megtekintéséhez.
-
-    ![Külső táblák megtekintése](./media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
+    
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az adattárházba
 
-Ez a szakasz az imént definiált külső táblákat használja a mintaadatok Azure Storage Blobból való betöltéséhez.  
+Ez a szakasz a [másolási utasítás használatával tölti be](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) a mintaadatok Azure Storage Blobból való betöltéséhez.  
 
 > [!NOTE]
-> Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Éles környezetben általában a CREATE TABLE AS SELECT utasítás használatával végez betöltést egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. Az előkészítési táblában lévő adatok éles táblához való hozzáfűzéséhez használhatja az INSERT...SELECT utasítást. További információkért lásd: [Adatok beszúrása egy éles táblába](guidance-for-loading-data.md#inserting-data-into-a-production-table).
+> Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Az éles számítási feladatokhoz általában betöltődik egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. 
 
-A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Ha a SELECT utasítást kiválasztja egy külső táblából, az adatok az adatraktárban található, egy rokon táblába kerülnek importálásra.
-
-1. Futtassa a következő szkriptet az adatok betöltéséhez az adattárházban található új táblákba.
+1. Az alábbi utasítások futtatásával töltse be az adatokat:
 
     ```sql
-    CREATE TABLE [dbo].[Date]
+    COPY INTO [dbo].[Date]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Date'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Date]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
-    ;
-    CREATE TABLE [dbo].[Geography]
+    OPTION (LABEL = 'COPY : Load [dbo].[Date] - Taxi dataset');
+    
+    
+    COPY INTO [dbo].[Geography]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Geography'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS
-    SELECT * FROM [ext].[Geography]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
-    ;
-    CREATE TABLE [dbo].[HackneyLicense]
+    OPTION (LABEL = 'COPY : Load [dbo].[Geography] - Taxi dataset');
+    
+    COPY INTO [dbo].[HackneyLicense]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/HackneyLicense'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[HackneyLicense]
-    OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
-    ;
-    CREATE TABLE [dbo].[Medallion]
+    OPTION (LABEL = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset');
+    
+    COPY INTO [dbo].[Medallion]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Medallion'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Medallion]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
-    ;
-    CREATE TABLE [dbo].[Time]
+    OPTION (LABEL = 'COPY : Load [dbo].[Medallion] - Taxi dataset');
+    
+    COPY INTO [dbo].[Time]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Time'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Time]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
-    ;
-    CREATE TABLE [dbo].[Weather]
+    OPTION (LABEL = 'COPY : Load [dbo].[Time] - Taxi dataset');
+    
+    COPY INTO [dbo].[Weather]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Weather'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A'
     )
-    AS SELECT * FROM [ext].[Weather]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
-    ;
-    CREATE TABLE [dbo].[Trip]
+    OPTION (LABEL = 'COPY : Load [dbo].[Weather] - Taxi dataset');
+    
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
     )
-    AS SELECT * FROM [ext].[Trip]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Trip]')
-    ;
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 
 2. A betöltés közben megtekintheti az adatokat. Több GB-nyi adat betöltése és tömörítése nagy teljesítményű fürtözött oszlopcentrikus indexekre. Futtassa az alábbi lekérdezést, amely dinamikus felügyeleti nézetekkel (DMV-k) jeleníti meg a töltés állapotát.
 
     ```sql
-    SELECT
-        r.command,
-        s.request_id,
-        r.status,
-        count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
-    FROM
-        sys.dm_pdw_exec_requests r
-        INNER JOIN sys.dm_pdw_dms_external_work s
-        ON r.request_id = s.request_id
-    WHERE
-        r.[label] = 'CTAS : Load [dbo].[Date]' OR
-        r.[label] = 'CTAS : Load [dbo].[Geography]' OR
-        r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
-        r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
-        r.[label] = 'CTAS : Load [dbo].[Time]' OR
-        r.[label] = 'CTAS : Load [dbo].[Weather]' OR
-        r.[label] = 'CTAS : Load [dbo].[Trip]'
-    GROUP BY
-        r.command,
-        s.request_id,
-        r.status
-    ORDER BY
-        nbr_files desc,
-        gb_processed desc;
+    SELECT  r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command
+    ,       sum(bytes_processed) AS bytes_processed
+    ,       sum(rows_processed) AS rows_processed
+    FROM    sys.dm_pdw_exec_requests r
+                  JOIN sys.dm_pdw_dms_workers w
+                         ON r.[request_id] = w.request_id
+    WHERE [label] = 'COPY : Load [dbo].[Date] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Geography] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Medallion] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Time] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Weather] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Trip] - Taxi dataset' 
+    and session_id <> session_id() and type = 'WRITER'
+    GROUP BY r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command;
     ```
-
+    
 3. Tekintse meg az összes rendszerlekérdezést.
 
     ```sql
@@ -557,55 +491,6 @@ A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-a
 4. Láthatja, ahogy adatai szépen betöltődnek az adattárházba.
 
     ![A betöltött táblák megtekintése](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
-
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Hitelesítés felügyelt identitások használatával a betöltéshez (nem kötelező)
-
-A legbiztonságosabb módszer a virtuális hálózati szolgáltatásbeli végpontok kihasználása és a felügyelt identitások használatával történő betöltés.
-
-### <a name="prerequisites"></a>Előfeltételek
-
-1. Azure PowerShell telepítése az [útmutató](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
-2. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)használatával kell frissítenie az általános célú v2-re.
-3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) .
-
-#### <a name="steps"></a>Lépések
-
-1. A PowerShellben **regisztrálja a kiszolgálót** Azure Active Directory (HRE) használatával:
-
-   ```powershell
-   Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-   ```
-
-2. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
-
-   > [!NOTE]
-   > Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
-
-3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen hozzá **tároló blob-adatközreműködői** RBAC szerepkört a kiszolgálóhoz.
-
-   > [!NOTE]
-   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-  
-**Alapszintű kapcsolat az Azure Storage-fiókkal:**
-
-1. Hozza létre az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat az **Identity = ' Managed Service Identity '** használatával:
-
-   ```SQL
-   CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-   ```
-
-   > [!NOTE]
-   >
-   > * Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) használ a borítók alatt.
-   > * Az identitás nevének **"Managed Service Identity"** kell lennie az Azure Storage-fiókkal való együttműködéshez.
-
-2. Hozza létre a külső adatforrást, amely megadja az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatokat a Managed Service Identity.
-
-3. Lekérdezés normál módon [külső táblák](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával.
-
-Ha az Azure szinapszis Analytics szolgáltatáshoz virtuális hálózati szolgáltatási végpontokat szeretne beállítani, tekintse meg az alábbi [dokumentációt](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
@@ -630,7 +515,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Külső táblákat hozott létre, hogy definiálhassa az Azure Storage-blobban tárolt adatok struktúráját, majd a PolyBase CREATE TABLE AS SELECT utasításával adatokat töltött be az adattárházába.
+Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Az egyszerű [másolási utasítást](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) használta az adatok adattárházba való betöltéséhez.
 
 A következőket hajtotta végre:
 > [!div class="checklist"]
@@ -639,12 +524,17 @@ A következőket hajtotta végre:
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 > * Csatlakozás az adattárházhoz az SSMS használatával
 > * Adatok betöltésére kijelölt felhasználó létrehozása
-> * Külső táblák létrehozása az Azure Storage-blobban található adatokhoz
-> * Adatok betöltése az adattárházba a CTAS T-SQL-utasítás használatával
+> * A mintaadatok tábláinak létrehozása
+> * A COPY T-SQL-utasítás használata az adatok adattárházba való betöltéséhez
 > * Az adatok állapotának megtekintése betöltés közben
-> * Statisztikák készítése az újonnan betöltött adatokról
 
-Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure szinapszis Analytics szolgáltatásba.
+Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az Azure szinapszis Analytics szolgáltatásba:
 
 > [!div class="nextstepaction"]
 > [Megtervezheti a meglévő adatbázisok Azure szinapszis Analytics szolgáltatásba való átépítésének döntéseit](sql-data-warehouse-overview-develop.md)
+
+További példákat és referenciákat a következő dokumentációban talál:
+
+- [A COPY utasítás referenciájának dokumentációja](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Példák másolása az egyes hitelesítési módszerekhez](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
+- [Rövid útmutató másolása egyetlen táblához](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)

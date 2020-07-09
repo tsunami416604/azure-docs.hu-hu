@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: d13d349978df30b3e2aa7a8646223c37ba272241
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403219"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985642"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és a Python használatával
 
@@ -23,12 +24,15 @@ Ebben a rövid útmutatóban az Azure Face REST API a Python használatával ism
 
 ![Egy férfi és egy nő, egy téglalapot rajzolt az arcaik körül, és a képen látható kor és szex jelenik meg](../images/labelled-faces-python.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="run-the-jupyter-notebook"></a>A Jupyter notebook futtatása
 
@@ -43,7 +47,7 @@ Ezt a rövid útmutatót a parancssorból is futtathatja a következő lépések
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
 1. Szükség szerint hajtsa végre a következő módosításokat a kódban:
     1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
-    1. A értékének `face_api_url` szerkesztésével belefoglalhatja a Face API erőforrás végponti URL-címét.
+    1. A értékének szerkesztésével `face_api_url` belefoglalhatja a Face API erőforrás végponti URL-címét.
     1. Ha szeretné, cserélje le az `image_url` értéket egy másik elemzendő kép URL-címére.
 1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `detect-face.py`.
 1. Nyisson meg egy parancsablakot.

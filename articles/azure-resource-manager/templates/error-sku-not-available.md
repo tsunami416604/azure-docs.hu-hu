@@ -4,10 +4,9 @@ description: Ismerteti, hogyan lehet elhárítani az SKU nem elérhető hibájá
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78942728"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Nem elérhető termékváltozattal kapcsolatos hibák elhárítása
@@ -40,7 +39,7 @@ Egy adott régióban vagy zónában elérhető SKU-ket a [Get-AzComputeResourceS
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-Az eredmények közé tartozik a helyhez tartozó SKU-lista és az adott SKU korlátozásai. Figyelje meg, hogy az SKU szerepel a `NotAvailableForSubscription`-ben.
+Az eredmények közé tartozik a helyhez tartozó SKU-lista és az adott SKU korlátozásai. Figyelje meg, hogy az SKU szerepel a-ben `NotAvailableForSubscription` .
 
 ```output
 ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
@@ -62,7 +61,7 @@ A "FC" hozzáfűzése a végén további részleteket ad vissza.
 
 ## <a name="solution-2---azure-cli"></a>2. megoldás – Azure CLI
 
-Az adott régióban elérhető SKU-ket a `az vm list-skus` paranccsal állapíthatja meg. A `--location` paraméter használatával szűrheti a kimenetet a használt helyre. A `--size` paraméter használatával a részleges méret neve alapján kereshet.
+Az adott régióban elérhető SKU-ket a paranccsal állapíthatja meg `az vm list-skus` . A `--location` paraméter használatával szűrheti a kimenetet a használt helyre. A paraméter használatával a `--size` részleges méret neve alapján kereshet.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table

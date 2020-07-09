@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73479655"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981948"
 ---
 # <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
@@ -29,25 +29,25 @@ Microsoft. Skills. Text. SplitSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
-| textSplitMode      | Vagy "Pages" vagy "mondatok" | 
-| maximumPageLength | Ha a textSplitMode "Pages" (lapok `String.Length`) értékre van állítva, ez az oldal maximális hosszára vonatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
-| defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint például a kínai, a japán és a koreai nyelv.</li><li>Ha nem ismeri a nyelvet (azaz a szöveget a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)való bevitelre kell bontania), az alapértelmezett angol (en) értéknek elegendőnek kell lennie. </li></ul>  |
+| `textSplitMode`    | Vagy "Pages" vagy "mondatok" | 
+| `maximumPageLength` | Ha a textSplitMode "Pages" (lapok) értékre van állítva, ez az oldal maximális hosszára vonatkozik `String.Length` . A minimális érték 300.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
+| `defaultLanguageCode` | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt` . Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint például a kínai, a japán és a koreai nyelv.</li><li>Ha nem ismeri a nyelvet (azaz a szöveget a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)való bevitelre kell bontania), az alapértelmezett angol (en) értéknek elegendőnek kell lennie. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Paraméter neve       | Leírás      |
+| Paraméter neve       | Description      |
 |----------------------|------------------|
-| szöveg  | Az alsztringbe feldarabolt szöveg |
-| languageCode  | Választható A dokumentumhoz tartozó nyelvi kód. Ha nem ismeri a nyelvet (azaz a szöveget fel kell osztania a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), akkor a rendszer biztonságosan eltávolítja a bemenetet.  |
+| `text`    | Az alsztringbe feldarabolt szöveg |
+| `languageCode`    | Választható A dokumentumhoz tartozó nyelvi kód. Ha nem ismeri a nyelvet (azaz a szöveget fel kell osztania a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), akkor a rendszer biztonságosan eltávolítja a bemenetet.  |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei 
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
-| textItems | A kinyert alsztringek tömbje. |
+| `textItems`   | A kinyert alsztringek tömbje. |
 
 
 ##  <a name="sample-definition"></a>Minta definíciója

@@ -4,15 +4,14 @@ description: Ismerkedjen meg a tanúsítványfájl Service Fabric Container Serv
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: da4babd8f9d1a25a8514d0c6f1526b43a9723854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614111"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Tanúsítványfájl importálása Service Fabricon futó tárolóba
 
-Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információit az alkalmazás jegyzékfájljában, a `ContainerHostPolicies` címke alatt, a következő kódrészlet mutatja:
+Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információit az alkalmazás jegyzékfájljában, a címke alatt, a `ContainerHostPolicies` következő kódrészlet mutatja:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -37,7 +36,7 @@ Ha már rendelkezik a tanúsítványokkal a szükséges űrlapon, és a tároló
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-A tároló szolgáltatás vagy folyamat feladata a tanúsítványfájl tárolóba való importálása. A tanúsítvány importálásához parancsfájlokat használhat `setupentrypoint.sh` , vagy egyéni kódot futtathat a tároló folyamatán belül. Az alábbi mintakód a PFX-fájl importálásához használható C# nyelven:
+A tároló szolgáltatás vagy folyamat feladata a tanúsítványfájl tárolóba való importálása. A tanúsítvány importálásához parancsfájlokat használhat, `setupentrypoint.sh` vagy egyéni kódot futtathat a tároló folyamatán belül. Az alábbi mintakód a PFX-fájl importálásához használható C# nyelven:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");

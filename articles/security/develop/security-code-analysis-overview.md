@@ -1,7 +1,7 @@
 ---
 title: A Microsoft biztonsági kód elemzésének dokumentációja – áttekintés
 description: Ez a cikk áttekintést nyújt a Microsoft biztonsági kód elemzése bővítményről
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74851468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361319"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 
@@ -65,15 +65,11 @@ A kártevő-elhárító képolvasó felépítési feladata mostantól a Microsof
 
 ### <a name="binskim"></a>BinSkim
 
-A BinSkim egy hordozható végrehajtható fájl (PE), amely a fordítóprogram beállításait, a kapcsolati beállításokat és a bináris fájlok egyéb biztonsági jellemzőit ellenőrzi. Ez a Build feladat egy parancssori burkolót biztosít a binskim. exe konzol alkalmazás köré. A BinSkim egy nyílt forráskódú eszköz. További információ: [BinSkim a githubon](https://github.com/Microsoft/binskim).
+A BinSkim egy hordozható végrehajtható fájl (PE), amely a fordítóprogram beállításait, a kapcsolati beállításokat és a bináris fájlok egyéb biztonsági jellemzőit ellenőrzi. Ez a felépítési feladat parancssori burkolót biztosít a binskim.exe Console alkalmazás köré. A BinSkim egy nyílt forráskódú eszköz. További információ: [BinSkim a githubon](https://github.com/Microsoft/binskim).
 
 ### <a name="credential-scanner"></a>Hitelesítőadat-olvasó
 
 A forráskódban tárolt jelszavak és egyéb titkos kódok jelentős problémát jelentenek. A hitelesítő adatok szkennere egy szabadalmaztatott statikus elemzési eszköz, amely segít a probléma megoldásában. Az eszköz a forráskódban és a Build kimenetében észleli a hitelesítő adatokat, a titkos kulcsokat, a tanúsítványokat és a bizalmas tartalmakat.
-
-### <a name="microsoft-security-risk-detection"></a>Microsoft biztonsági kockázatok észlelése
-
-A Microsoft biztonsági kockázatok észlelése (MSRD) egy felhőalapú szolgáltatás a fuzz Testing rendszerhez. Azonosíthatja a szoftverben található kihasználható biztonsági hibákat. A szolgáltatáshoz külön előfizetés és aktiválás szükséges. További információ: [MSRD fejlesztői központ](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>-Elemzők
 

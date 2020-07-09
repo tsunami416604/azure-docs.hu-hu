@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
 ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982139"
 ---
 # <a name="programmatically-manage-workbooks"></a>Munkafüzetek programozott kezelése
@@ -34,12 +33,12 @@ A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
 
 1. Nyisson meg egy olyan munkafüzetet, amelyet programozott módon kíván üzembe helyezni.
 2. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
-3. Nyissa _Advanced Editor_ meg a speciális szerkesztő _</>_ az eszköztáron található gomb használatával.
+3. Nyissa meg a _speciális szerkesztő_ az _</>_ eszköztáron található gomb használatával.
 4. Győződjön meg arról, hogy a katalógus _sablonja_ lapon van.
 
     ![Galéria sablonja lap](./media/workbooks-automate/gallery-template.png)
 1. Másolja a JSON-t a katalógus sablonjában a vágólapra.
-2. Alább látható egy példa Azure Resource Manager sablon, amely egy munkafüzet-sablont helyez üzembe Azure Monitor munkafüzet-gyűjteménybe. Illessze be a helyére másolt JSON- `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`t. [Itt](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)található egy hivatkozás Azure Resource Manager sablon, amely létrehoz egy munkafüzet-sablont.
+2. Alább látható egy példa Azure Resource Manager sablon, amely egy munkafüzet-sablont helyez üzembe Azure Monitor munkafüzet-gyűjteménybe. Illessze be a helyére másolt JSON-t `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` . [Itt](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)található egy hivatkozás Azure Resource Manager sablon, amely létrehoz egy munkafüzet-sablont.
 
     ```json
     {
@@ -77,12 +76,12 @@ A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
         ]
     }
     ```
-1. Az `galleries` objektumban töltse ki az `name` értékeket `category` a és a kulcsokkal. További információ a [paraméterekről](#parameters) a következő szakaszban.
+1. Az `galleries` objektumban töltse ki az `name` értékeket a és a `category` kulcsokkal. További információ a [paraméterekről](#parameters) a következő szakaszban.
 2. Telepítse ezt a Azure Resource Manager sablont a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), a [parancssori felület](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)stb. használatával.
 3. Nyissa meg a Azure Portalt, és navigáljon a Azure Resource Manager sablonban kiválasztott munkafüzet-gyűjteményhez. A példa sablonban navigáljon a Azure Monitor munkafüzet-gyűjteményhez:
     1. Nyissa meg a Azure Portal, és navigáljon a Azure Monitor
     2. Megnyitás `Workbooks` a tartalomjegyzékből
-    3. Keresse meg a sablont a katalógusban a `Deployed Templates` kategória alatt (a következő lesz a lila elemek egyike).
+    3. Keresse meg a sablont a katalógusban a kategória alatt `Deployed Templates` (a következő lesz a lila elemek egyike).
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -98,7 +97,7 @@ A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
 | `gallery.category`       | A gyűjteményben lévő csoport a sablon elhelyezéséhez.                                                     |
 | `gallery.order`          | Egy szám, amely egy kategórián belüli sablon megjelenítését határozza meg a katalógusban. Az alacsonyabb sorrend nagyobb prioritást jelent. |
 | `gallery.resourceType`   | A gyűjteményhez tartozó erőforrástípus. Ez általában az erőforrás típusának megfelelő karakterlánc (például Microsoft. operationalinsights/workspaces). |
-|`gallery.type`            | Ez egy olyan egyedi kulcs, amely megkülönbözteti a katalógust egy adott erőforrás-típuson belül. Application Insights például a különböző munkafüzet-gyűjteményekhez tartozó típusokkal `workbook` és `tsg` azokkal. |
+|`gallery.type`            | Ez egy olyan egyedi kulcs, amely megkülönbözteti a katalógust egy adott erőforrás-típuson belül. Application Insights például a `workbook` `tsg` különböző munkafüzet-gyűjteményekhez tartozó típusokkal és azokkal. |
 
 ### <a name="galleries"></a>Katalógusok
 
@@ -120,7 +119,7 @@ A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
 
 1. Nyisson meg egy olyan munkafüzetet, amelyet programozott módon szeretne üzembe helyezni.
 2. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
-3. Nyissa _Advanced Editor_ meg a speciális szerkesztő _</>_ az eszköztáron található gomb használatával.
+3. Nyissa meg a _speciális szerkesztő_ az _</>_ eszköztáron található gomb használatával.
 4. A szerkesztőben váltson a _sablon típusára_ _Resource Manager-sablonra_.
 5. A létrehozáshoz használt Resource Manager-sablon megjelenik a szerkesztőben. Másolja a tartalmat, és használja a as-t, vagy egyesítse egy nagyobb sablonnal, amely a célként megadott erőforrást is telepíti.
 
@@ -193,7 +192,7 @@ Ez a sablon bemutatja, hogyan helyezhet üzembe egy egyszerű munkafüzetet, ame
 | Paraméter | Magyarázat |
 | :------------- |:-------------|
 | `workbookDisplayName` | A katalógusban vagy a mentett listán használt munkafüzet rövid neve. Egyedinek kell lennie az erőforráscsoport és a forrás hatókörében |
-| `workbookType` | A katalógus, amelyben a munkafüzet megjelenik. A támogatott értékek a következők `tsg`: munkafüzet,, Azure monitor stb. |
+| `workbookType` | A katalógus, amelyben a munkafüzet megjelenik. A támogatott értékek a következők: munkafüzet, `tsg` , Azure monitor stb. |
 | `workbookSourceId` | Annak az erőforrás-példánynak az azonosítója, amelyhez a munkafüzet társítva lesz. Az új munkafüzet megjelenik az adott erőforrás-példánnyal kapcsolatban – például az erőforrás tartalomjegyzékében a _munkafüzetben_. Ha azt szeretné, hogy a munkafüzet megjelenjen a Azure Monitor munkafüzet-katalógusában, használja az erőforrás-azonosító helyett _Azure monitor_ karakterláncot. |
 | `workbookId` | A munkafüzet-példány egyedi GUID azonosítója. A _[newGuid ()]_ használatával hozzon létre automatikusan egy új GUID azonosítót. |
 | `kind` | Annak megadására szolgál, hogy a létrehozott munkafüzet megosztott vagy privát. A megosztott munkafüzetekhez és a _felhasználókhoz_ _megosztott_ értéket használjon magánjellegűként. |
@@ -210,7 +209,7 @@ A munkafüzetek típusai határozzák meg, hogy melyik munkafüzet-gyűjteményb
 | `usage` | A _további_ katalógus a _használat_ alatt Application Insights |
 
 ### <a name="limitations"></a>Korlátozások
-Technikai okokból ez a mechanizmus nem használható munkafüzet-példányok létrehozására a Application Insights _munkafüzetek_ galériájában. Dolgozunk ennek a korlátozásnak a kezelésén. Addig is javasoljuk, hogy a hibaelhárítási útmutató (workbookType: `tsg`) használatával Application Insights kapcsolódó munkafüzeteket telepítsen.
+Technikai okokból ez a mechanizmus nem használható munkafüzet-példányok létrehozására a Application Insights _munkafüzetek_ galériájában. Dolgozunk ennek a korlátozásnak a kezelésén. Addig is javasoljuk, hogy a hibaelhárítási útmutató (workbookType: `tsg` ) használatával Application Insights kapcsolódó munkafüzeteket telepítsen.
 
 ## <a name="next-steps"></a>További lépések
 

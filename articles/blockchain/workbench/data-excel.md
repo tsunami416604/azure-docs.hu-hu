@@ -2,14 +2,14 @@
 title: Azure Blockchain Workbench-adatok használata a Microsoft Excelben
 description: Ismerje meg, hogyan tölthető be és tekinthető meg az Azure Blockchain Workbench előzetes verziójú SQL-ADATBÁZISa a Microsoft Excelben.
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: a84858ead83782cc9b6ef1b1d7f905172600fb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74326054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253545"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Azure Blockchain Workbench-adatok megtekintése a Microsoft Excelben
 
@@ -27,7 +27,7 @@ A Blockchain Workbench adatbázisához való csatlakozáshoz:
 2. Válassza az **Adatok** lapon az **Adatok lekérése** gombot.
 3. Válassza az **Azure-ból**, majd az **Azure SQL Database-ből** lehetőséget.
 
-   ![Kapcsolódás az Azure SQL Database szolgáltatáshoz](./media/data-excel/connect-sql-db.png)
+   ![Kapcsolódás az Azure SQL Database-hez](./media/data-excel/connect-sql-db.png)
 
 4. Az **SQL Server-adatbázis** párbeszédpanelen:
 

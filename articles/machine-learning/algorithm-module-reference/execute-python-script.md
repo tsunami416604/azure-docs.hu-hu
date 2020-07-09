@@ -6,28 +6,29 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/16/2020
+ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907550"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designerben (előzetes verzió) lévő Python parancsfájl-futtatási modult ismerteti.
 
-Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [a következő cikket](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
+Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
-A Python használatával olyan feladatokat hajthat végre, amelyeket jelenleg nem támogat a meglévő modulok, például a következők:
+A Python használatával olyan feladatokat hajthat végre, amelyeket a meglévő modulok nem támogatnak, például a következőket:
 
-+ Adatmegjelenítés az használatával`matplotlib`
-+ A Python-kódtárak használata a munkaterületen található adatkészletek és modellek számbavételéhez
-+ Az adatok [importálása](./import-data.md) modul által nem támogatott forrásokból származó adatok olvasása, betöltése és módosítása
-+ Saját mély tanulási kód futtatása 
++ Az adatmegjelenítés a használatával `matplotlib` .
++ Python-kódtárak használata az adatkészletek és modellek enumerálásához a munkaterületen.
++ Az adatok [importálása](./import-data.md) modul által nem támogatott forrásokból származó adatok olvasása, betöltése és módosítása.
++ Futtasson saját mély tanulási kódot. 
 
 
 A Azure Machine Learning a Python anaconda-eloszlását használja, amely számos gyakori segédprogramot tartalmaz az adatfeldolgozáshoz. Az anaconda verzióját automatikusan frissíteni fogjuk. A jelenlegi verzió:
@@ -144,26 +145,37 @@ Az előre telepített csomagok a következők:
 -    Werkzeug = = 0.16.1
 -    Wheel = = 0.34.2
 
- Ha az előre telepített listában nem szereplő egyéb csomagokat szeretne telepíteni, például *scikit-misc*, adja hozzá a következő kódot a szkripthez: 
+ Ha olyan csomagokat szeretne telepíteni, amelyek nincsenek az előre telepített listában (például *scikit-misc*), adja hozzá a következő kódot a parancsfájlhoz: 
 
  ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+A következő kód használatával telepíthet csomagokat a jobb teljesítmény érdekében, különösen a következtetéshez:
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
-> Ha a folyamat több végrehajtható Python parancsfájl-modult tartalmaz, és ugyanazokat a csomagokat kell megadnia, amelyek nem szerepelnek az előre telepített listában, akkor telepítse a csomagokat az egyes modulokban. 
+> Ha a folyamat több olyan Python parancsfájl-modult tartalmaz, amelyek olyan csomagokat igényelnek, amelyek nem az előre telepített listában vannak, telepítse a csomagokat az egyes modulokban.
 
 ## <a name="upload-files"></a>Fájlok feltöltése
-A **Python-szkript végrehajtása** támogatja a fájlok feltöltését [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
+A Python parancsfájl végrehajtása modul támogatja a fájlok feltöltését a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
 
-Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt a **Python parancsfájl végrehajtása** modulban:
+Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt a Python parancsfájl végrehajtása modulban:
 
 ```Python
 
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# imports up here can be used to
+# Imports up here can be used to
 import pandas as pd
 
 # The entry point function must have two input arguments:
@@ -185,70 +197,70 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     run.upload_file(f"graphics/{img_file}", img_file)
 
     # Return value must be of a sequence of pandas.DataFrame
-    # E.g.
+    # For example:
     #   -  Single return value: return dataframe1,
     #   -  Two return values: return dataframe1, dataframe2
     return dataframe1,
 }
 ```
 
-A folyamat futásának befejezése után a rendszerképet a modul jobb oldali paneljén tekintheti meg
+A folyamat futásának befejezése után a rendszerképet a modul jobb oldali paneljén tekintheti meg.
 
 > [!div class="mx-imgBorder"]
-> ![Feltöltött – rendszerkép](media/module/upload-image-in-python-script.png)
+> ![Feltöltött rendszerkép előnézete](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>A Python-szkript végrehajtásának konfigurálása
 
-A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, amelyet kiindulási pontként használhat. A **Python parancsfájl-végrehajtási** moduljának konfigurálásához adja meg az Inputs és a Python-kód futtatására szolgáló bemeneteket és a Python- **szkriptek** szövegmezőjét.
+A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amelyet kiindulási pontként használhat. A Python parancsfájl-végrehajtási moduljának konfigurálásához adjon meg egy bemeneti és Python-kódot a Python- **szkript** szövegmezőben való futtatáshoz.
 
 1. Adja hozzá a **Python-szkript végrehajtása** modult a folyamathoz.
 
 2. Adja hozzá a (z) elemet a **DataSet1 elemet** bármely olyan adatkészlethez, amelyet a bemenethez szeretne használni. Hivatkozzon erre az adatkészletre a Python-szkriptben **DataFrame1**néven.
 
-    Az adatkészletek használata nem kötelező, ha a Python használatával szeretne adatokat előállítani, vagy Python-kód használatával importálja az adatokat közvetlenül a modulba.
+    Az adatkészlet használata nem kötelező. Akkor használja, ha a Python használatával kívánja előállítani az adatgyűjtést, vagy a Python-kód használatával importálja az adategységeket közvetlenül a modulba.
 
-    Ez a modul a **Dataset2**-on található második adatkészlet hozzáadását támogatja. Hivatkozzon a Python-szkript második adatkészletére DataFrame2.
+    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2**-on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2**.
 
-    Az Azure Machine Learningban tárolt adatkészletek automatikusan a **pandák** adatba lesznek konvertálva. a rendszer az ezzel a modullal tölti be a kereteket.
+    Az Azure Machine Learningban tárolt adatkészletek automatikusan a Panda adatkeretbe lesznek konvertálva, ha a modul betöltődik.
 
     ![Python bemeneti térképének végrehajtása](media/module/python-module.png)
 
-4. Új Python-csomagok vagy-kódok felvételéhez adja hozzá az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-csomagban**. A **parancsfájlba** való bevitelnek a munkaterületre fájltípus-adatkészletként feltöltött tömörített fájlnak kell lennie. Feltöltheti az adatkészletet az **adatkészletek** eszköz lapján, és az adatkészletek modulját áthelyezheti **a bal** oldali modul konzolfáján a tervező szerzői műveletek lapján. 
+4. Új Python-csomagok vagy-kódok felvételéhez adja hozzá az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-csomagban**. A **parancsfájlba** való bevitelnek a munkaterületre fájltípus-adatkészletként feltöltött tömörített fájlnak kell lennie. Feltöltheti az adatkészletet az **adatkészletek** eszköz lapján. Az adatkészlet modulját a tervező szerzői műveletek oldal bal oldali modul fájának **saját adatkészletek** listájából lehet áthúzni. 
 
     A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát, de egy **src** nevű könyvtárat kell megadnia az elérési útra.
 
 5. A **Python-szkript** szövegmezőbe írja be vagy illessze be az érvényes Python-szkriptet.
 
     > [!NOTE]
-    > Kérjük, legyen nagyon körültekintő a parancsfájl írásakor, és győződjön meg róla, hogy nincs szintaktikai hiba, például nem deklarált objektumok vagy nem importált modulok használata. Az előre telepített modulok listájára is külön figyelmet kell fordítani. A nem felsorolt modulok importálásához telepítse a megfelelő csomagokat a parancsfájlba, például:
+    >  A szkript írásakor körültekintően járjon el. Győződjön meg arról, hogy nincsenek szintaktikai hibák, például nem deklarált változók vagy nem importált modulok vagy függvények használata. Ügyeljen az előre telepített modulok listájára. A nem felsorolt modulok importálásához telepítse a megfelelő csomagokat a parancsfájlba, például:
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    A **Python-szkript** szövegmezője előre ki van töltve a megjegyzésekben található utasításokkal, és az adathozzáféréshez és a kimenethez tartozó mintakód. Szerkesztenie vagy cserélnie kell ezt a kódot. Ügyeljen arra, hogy kövesse a behúzással és a burkolattal kapcsolatos Python-konvenciókat.
+    A **Python-szkript** szövegmezője előre fel van töltve a megjegyzésekben található utasításokkal, és az adathozzáféréshez és a kimenethez tartozó mintakód. Szerkesztenie vagy cserélnie kell ezt a kódot. A behúzással és a burkolattal kapcsolatos Python-konvenciók követése:
 
-    + A szkriptnek tartalmaznia kell egy nevű `azureml_main` függvényt, amely a modul belépési pontja.
-    + A belépési pont függvénynek két bemeneti argumentummal `Param<dataframe1>` kell `Param<dataframe2>`rendelkeznie: és, még akkor is, ha ezek az argumentumok nem használatosak a parancsfájlban.
-    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban `.\Script Bundle`történik, amely a Pythonhoz `sys.path`is hozzá van adva. 
+    + A szkriptnek tartalmaznia kell egy nevű függvényt `azureml_main` , amely a modul belépési pontja.
+    + A belépési pont függvénynek két bemeneti argumentummal kell rendelkeznie, `Param<dataframe1>` és `Param<dataframe2>` akkor is, ha ezek az argumentumok nem használatosak a parancsfájlban.
+    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban `.\Script Bundle` történik, amely a Pythonhoz is hozzá van adva `sys.path` . 
 
-    Ezért ha a zip-fájlja `mymodule.py`tartalmaz, importálja `import mymodule`azt a használatával.
+    Ha a. zip fájl tartalmaz `mymodule.py` , importálja azt a használatával `import mymodule` .
 
-    + Két adatkészletet lehet visszaadni a tervezőnek, amelynek típusú `pandas.DataFrame`sorozatot kell megadni. A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
+    Két adatkészletet lehet visszaadni a tervezőnek, amelynek típusú sorozatot kell megadni `pandas.DataFrame` . A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
 
-6. Küldje el a folyamatot, vagy válassza ki a modult, és kattintson a **kijelölt futtatása** lehetőségre, hogy csak a Python-szkriptet futtassa.
+6. Küldje el a folyamatot, vagy válassza ki a modult, és válassza a **kijelölt futtatása** lehetőséget, hogy csak a Python-szkriptet futtassa.
 
     Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
 
 ## <a name="results"></a>Results (Eredmények)
 
-A beágyazott Python-kód által végrehajtott számítások eredményét pandákként kell megadni. A DataFrame, amelyet a rendszer automatikusan a Azure Machine Learning adatkészlet formátumára konvertál, így az eredményeket a folyamat más moduljaival is használhatja.
+A beágyazott Python-kód alapján történő számítások eredményeit a következőként kell megadni `pandas.DataFrame` , amely automatikusan a Azure Machine learning adatkészlet formátumára lesz konvertálva. Ezután az eredményeket a folyamat más moduljaival is használhatja.
 
 A modul két adatkészletet ad vissza:  
   
-+ **Eredmények adatkészlet 1**, a Python-szkriptben az első visszaadott pandák dataframe által definiált
++ Az **eredmények adatkészlet 1**, a Python-szkriptek első visszaadott pandák adatkerete által definiált érték.
 
-+ A **2. eredmény adatkészlete**, amelyet a második visszaadott Panda Dataframe a Python-parancsfájlban definiált
++ A **2. eredmény adatkészlete**, amelyet a második visszaadott pandák adatkeret definiál egy Python-parancsfájlban.
 
 
 ## <a name="next-steps"></a>További lépések

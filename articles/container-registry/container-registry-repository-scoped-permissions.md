@@ -1,14 +1,13 @@
 ---
 title: Engedélyek a Azure Container Registry adattárakhoz
-description: Hozzon létre egy jogkivonatot, amely a beállításjegyzék adott tárházára vonatkozik a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához.
+description: Hozzon létre egy jogkivonatot, amely a prémium szintű beállításjegyzék adott tárházára vonatkozik a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához.
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8534c62db862f5c929d0145948fc4049c036d412
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509406"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Token létrehozása adattárral hatókörrel rendelkező engedélyekkel
 
@@ -20,7 +19,7 @@ Tokenek létrehozásához a következő forgatókönyvek tartoznak:
 * Adjon meg egy olyan külső szervezetet, amely rendelkezik engedélyekkel egy adott tárházhoz 
 * Korlátozza a tárház hozzáférését a szervezet különböző felhasználói csoportjaihoz. Adjon meg például írási és olvasási hozzáférést azoknak a fejlesztőknek, akik adott adattárakra irányuló képeket készítenek, és olvasási hozzáférést biztosítanak az ezekből a tárházból üzembe helyezett csapatokhoz.
 
-Ez a funkció a **Premium** Container-nyilvántartásokban érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
+Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -30,7 +29,7 @@ Ez a funkció a **Premium** Container-nyilvántartásokban érhető el. További
 * Jelenleg nem rendelhet hozzá tárház hatókörű engedélyeket egy Azure Active Directory identitáshoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
 * Nem hozhat létre hatókör-leképezést egy olyan beállításjegyzékben, amelyen engedélyezve van a [Névtelen lekéréses hozzáférés](container-registry-faq.md#how-do-i-enable-anonymous-pull-access).
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 A tárház hatókörű engedélyeinek konfigurálásához hozzon létre egy *jogkivonatot* egy társított *hatókör-térképpel*. 
 
@@ -261,7 +260,7 @@ Az Azure Portalon:
 1. Navigáljon a tároló-beállításjegyzékhez.
 1. A **tárház engedélyei**területen válassza a **hatókör-térképek (előzetes verzió)** lehetőséget, majd válassza ki a frissíteni kívánt hatókör-leképezést.
 1. A **Tárházak**területen adja meg a `samples/alpine` és az **engedélyek**területen a és a elemet `content/read` `content/write` . Ezután válassza a **+ Hozzáadás**lehetőséget.
-1. A **Tárházak**területen válassza az `samples/hello-world` **engedélyek**, majd a kijelölés elemet `content/write` . Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A **Tárházak**területen válassza az `samples/hello-world` **engedélyek**, majd a kijelölés elemet `content/write` . Kattintson a **Mentés** gombra.
 
 A hatókör-hozzárendelés frissítése után a következő leküldése sikeres:
 
@@ -423,7 +422,7 @@ az acr token delete --name MyToken --registry myregistry
 
 A portálon válassza ki a tokent a **jogkivonatok (előzetes verzió)** képernyőn, és válassza az **Elvetés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hatóköri térképek és tokenek kezeléséhez használja az az [ACR scope-Map][az-acr-scope-map] és [az ACR token][az-acr-token] Command groups további parancsait.
 * Az Azure Container Registry szolgáltatással történő hitelesítéssel kapcsolatos további beállításokért tekintse meg a [hitelesítés áttekintését](container-registry-authentication.md) , beleértve a Azure Active Directory identitást, egy szolgáltatásnevet vagy egy rendszergazdai fiókot.

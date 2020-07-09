@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8d3ddffc52bd351b21351b53e8a1be5a674fe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562868"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköz típusának definiálása az Azure IoT Central-alkalmazásban
 
@@ -66,7 +66,7 @@ Az eszköz sablonjai A következőket tartalmazzák:
 Eszköz sablonjának létrehozása a IoT Centralban:
 
 1. Nyissa meg az IoT Central alkalmazás **eszköz sablonok** lapját.
-1. Válassza az **+ új** > **Egyéni**lehetőséget.
+1. Válassza az **+ új**  >  **Egyéni**lehetőséget.
 1. Adja meg a sablon nevét, például a **környezeti érzékelőt**.
 1. Nyomja le az **ENTER**billentyűt. IoT Central létrehoz egy üres sablont.
 
@@ -116,19 +116,19 @@ A telemetria az eszközről küldött értékek streamje, jellemzően egy érzé
 
 A következő táblázat a telemetria képesség konfigurációs beállításait mutatja be:
 
-| Mező | Leírás |
+| Mező | Description |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt telemetria érték megjelenítendő neve. |
-| Name (Név) | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Name | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Telemetria. |
 | Szemantikai típus | A telemetria szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A telemetria adattípus, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
 | Severity | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ**vagy **Figyelmeztetés**. |
 | Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
-| Unit (Egység) | A telemetria értékének (például: **mph**, **%**, vagy ** &deg;C**) egysége. |
+| Unit (Egység) | A telemetria értékének (például: **mph**, **%** , vagy ** &deg; C**) egysége. |
 | Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A telemetria képességgel kapcsolatos megjegyzések. |
-| Leírás | A telemetria képesség leírása. |
+| Description | A telemetria képesség leírása. |
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -136,20 +136,20 @@ A tulajdonságok a pont – idő értékeket jelölik. Egy eszköz használhat p
 
 A következő táblázat a tulajdonságok funkciójának konfigurációs beállításait mutatja be:
 
-| Mező | Leírás |
+| Mező | Description |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve. |
-| Name (Név) | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Name | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Tulajdonság. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
 | Írható | Ha a tulajdonság nem írható, az eszköz jelentést készíthet IoT Central. Ha a tulajdonság írható, az eszköz jelentést készíthet IoT Central, és IoT Central a tulajdonságok frissítését is elküldheti az eszköznek.
 | Severity | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ**vagy **Figyelmeztetés**. |
 | Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
-| Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%**, vagy ** &deg;C**. |
+| Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%** , vagy ** &deg; C**. |
 | Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A tulajdonság képességével kapcsolatos megjegyzések. |
-| Leírás | A tulajdonság funkciójának leírása. |
+| Description | A tulajdonság funkciójának leírása. |
 
 ### <a name="commands"></a>Parancsok
 
@@ -157,14 +157,14 @@ A IoT Central eszköz parancsai hívhatók. A parancsok opcionálisan továbbít
 
 A következő táblázat a parancs funkciójának konfigurációs beállításait mutatja be:
 
-| Mező | Leírás |
+| Mező | Description |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt parancs megjelenítendő neve. |
-| Name (Név) | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Name | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Parancs. |
 | Parancs | `SynchronousExecutionType`. |
 | Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
-| Leírás | A parancs funkciójának leírása. |
+| Description | A parancs funkciójának leírása. |
 | Kérés | Ha engedélyezve van, a kérelem paraméterének definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 | Válasz | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 
@@ -180,10 +180,10 @@ A felhő tulajdonságai a IoT Central lévő eszközök adatainak tárolására 
 
 A következő táblázat a Cloud Property konfigurációs beállításait mutatja be:
 
-| Mező | Leírás |
+| Mező | Description |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt Cloud Property érték megjelenítendő neve. |
-| Name (Név) | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Name | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A Felhőbeli tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. |
 

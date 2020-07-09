@@ -5,9 +5,7 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: leküldéses értesítés, leküldéses értesítések, iOS leküldéses értesítések, Android leküldéses értesítések, iOS leküldés, Android leküldése
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -17,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255126"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
@@ -56,7 +54,7 @@ Az alapszintű és a standard szintű Notification Hubs-csomagok esetében a meg
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hogyan a hubot vagy a névteret egy másik szintre?
 
-Nyissa meg a **[Azure Portal]** > **Notification Hubs névterek** vagy **Notification Hubs**. Válassza ki a frissíteni kívánt erőforrást, és nyissa meg a **díjszabási szintet**. Vegye figyelembe a következő követelményeket:
+Nyissa meg a **[Azure Portal]**  >  **Notification Hubs névterek** vagy **Notification Hubs**. Válassza ki a frissíteni kívánt erőforrást, és nyissa meg a **díjszabási szintet**. Vegye figyelembe a következő követelményeket:
 
 * A frissített díjszabási csomag a névtérben lévő *összes* olyan hubhoz vonatkozik, amelyen dolgozik.
 * Ha az eszközök száma meghaladja a küszöbértéket, akkor a visszalépés előtt törölnie kell az eszközöket.
@@ -65,11 +63,11 @@ Nyissa meg a **[Azure Portal]** > **Notification Hubs névterek** vagy **Notific
 
 ### <a name="which-server-side-platforms-do-you-support"></a>Mely kiszolgálóoldali platformokat támogatja?
 
-A kiszolgálói SDK-k .NET, Java, Node. js, PHP és Python rendszerekhez érhetők el. Notification Hubs API-k REST-felületeken alapulnak, így közvetlenül a REST API-kkal dolgozhat, ha különböző platformokat használ, vagy nem szeretne további függőséget használni. További információért látogasson el a [Notification HUBS REST API] -k oldalára.
+A kiszolgálói SDK-k .NET-, Java-, Node.js-, PHP-és Python-kiszolgálókon érhetők el. Notification Hubs API-k REST-felületeken alapulnak, így közvetlenül a REST API-kkal dolgozhat, ha különböző platformokat használ, vagy nem szeretne további függőséget használni. További információért látogasson el a [Notification HUBS REST API] -k oldalára.
 
 ### <a name="which-client-platforms-do-you-support"></a>Mely ügyfélszoftvereket támogatja?
 
-A leküldéses értesítések [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone-telefon](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és Android, valamint [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)) esetén támogatottak. További információért látogasson el a [Notification Hubs első lépések oktatóanyagok] oldalára.
+A leküldéses értesítések [iOS](ios-sdk-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone-telefon](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)rendszerű eszközökön, illetve [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)rendszeren támogatottak. További információkért tekintse meg a [Notification Hubs első lépések oktatóanyagok](ios-sdk-get-started.md) lapot.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Támogatja a szöveges üzenetet, az e-maileket vagy a webes értesítéseket?
 
@@ -79,7 +77,7 @@ Notification Hubs értesítéseket küld a Mobile Apps szolgáltatást futtató 
 
 A támogatott eszközök számával kapcsolatos részletekért tekintse meg a [Notification Hubs díjszabási] oldalát.
 
-Ha több mint 10 000 000 regisztrált eszköz támogatására van szüksége, több hubhoz kell particionálnia az eszközöket.
+Ha több mint 10 000 000 regisztrált eszköz támogatására van szüksége, az eszközöket több névtér között kell particionálnia.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Hány leküldéses Értesítés küldhető el?
 
@@ -193,7 +191,7 @@ Az Azure Notification Hubs számos funkciót kínál a hibaelhárításhoz, kül
 
 Az Azure Notification Hubs lehetővé teszi a [Azure Portal]telemetria-beli megtekintését. A metrikák részletei a [Notification Hubs metrikák] lapon érhetők el.
 
-Programozott módon is elérheti a metrikákat. További információkért tekintse át a következő cikkeket:
+Programozott módon is elérheti a metrikákat. További információért tekintse át a következő cikkeket:
 
 - [Azure monitor mérőszámok beolvasása a .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)-tel. Ez a példa a felhasználónevet és a jelszót használja. Ha tanúsítványt szeretne használni, a FromServicePrincipal metódust a [jelen példában](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)látható módon kell megadnia a tanúsítvány megadásához. 
 - [Erőforrások metrikáinak és tevékenységi naplóinak beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
@@ -202,11 +200,10 @@ Programozott módon is elérheti a metrikákat. További információkért tekin
 > [!NOTE]
 > A sikeres értesítések egyszerűen leküldéses értesítéseket küldenek a külső PNS (például iOS-re, macOS-re vagy FCM-re Android-eszközök esetén). A PNS feladata az értesítések továbbítása az eszközök számára. A PNS jellemzően nem tesznek elérhetővé kézbesítési metrikákat harmadik félnek.  
 
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com
 [Díjszabás Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Notification Hubs REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Notification Hubs Első lépések oktatóanyagok]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Háttérbeli regisztrációs útmutató]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Háttérbeli regisztrációs útmutató 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
@@ -215,6 +212,6 @@ Programozott módon is elérheti a metrikákat. További információkért tekin
 [Hibaelhárítás Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metrikák]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Regisztráció Exportálás/Importálás]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

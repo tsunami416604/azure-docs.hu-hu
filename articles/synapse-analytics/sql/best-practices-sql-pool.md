@@ -6,16 +6,15 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834985"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958421"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL-készletekhez az Azure szinapszis Analyticsben
 
@@ -59,7 +58,7 @@ A PolyBase-betöltések a CTAS vagy az INSERT INTO paranccsal futtathatók. A CT
 
 A gzip szövegfájlok használatakor az átviteli sebesség maximalizálása érdekében bontsa a fájlokat 60 vagy több fájlba, hogy maximalizálja a terhelés párhuzamosságát. A gyorsabb teljes átviteli teljesítmény érdekében érdemes lehet egy időben betölteni az adatokat. Az ehhez a szakaszhoz kapcsolódó témakörökkel kapcsolatos további információkat a következő cikkek tartalmaznak:
 
-- [Adatok betöltése](data-loading-overview.md)
+- [Adatok betöltése](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Útmutató a PolyBase használatához](data-loading-best-practices.md)
 - [Az Azure SQL Pool betöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Az adatterhelés Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

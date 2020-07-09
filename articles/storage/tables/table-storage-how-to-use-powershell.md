@@ -8,10 +8,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545953"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-műveletek végrehajtása a Azure PowerShell 
@@ -31,16 +31,16 @@ Ez a cikk a közös Azure Table Storage-műveletekre vonatkozik. Az alábbiak v�
 
 Ez a cikk bemutatja, hogyan hozhat létre új Azure Storage-fiókot egy új erőforráscsoporthoz, így egyszerűen eltávolíthatja azt, ha elkészült. Ha inkább meglévő Storage-fiókot használ, ezt megteheti.
 
-A példákhoz a PowerShell- `Az.Storage (1.1.0 or greater)` modulok `Az.Resources (1.2.0 or greater)`és a szükségesek. Egy PowerShell-ablakban futtassa a `Get-Module -ListAvailable Az*` parancsot a verzió megkereséséhez. Ha semmi sem jelenik meg, vagy frissítenie kell, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című témakört.
+A példákhoz a PowerShell-modulok és a szükségesek `Az.Storage (1.1.0 or greater)` `Az.Resources (1.2.0 or greater)` . Egy PowerShell-ablakban futtassa a parancsot a `Get-Module -ListAvailable Az*` verzió megkereséséhez. Ha semmi sem jelenik meg, vagy frissítenie kell, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című témakört.
 
 > [!IMPORTANT]
-> Ha ezt az Azure-szolgáltatást a PowerShell használatával szeretné használni `Az` , telepítenie kell a modult. A jelenlegi verziója `AzTable` nem kompatibilis a régebbi AzureRM modullal.
+> Ha ezt az Azure-szolgáltatást a PowerShell használatával szeretné használni, `Az` telepítenie kell a modult. A jelenlegi verziója `AzTable` nem kompatibilis a régebbi AzureRM modullal.
 > Szükség esetén kövesse az az [modul telepítéséhez szükséges legújabb telepítési útmutatót](/powershell/azure/install-az-ps) .
 
 Azure PowerShell telepítését vagy frissítését követően telepítenie kell a **AzTable**modult, amely az entitások kezelésére szolgáló parancsokat tartalmaz. A modul telepítéséhez futtassa a PowerShellt rendszergazdaként, és használja az **install-Module** parancsot.
 
 > [!IMPORTANT]
-> A modul neve kompatibilitási okokból továbbra is ugyanezt a modult tesszük közzé a `AzureRmStorageTables` régi néven PowerShell-Galéria. Ez a dokumentum csak az új névre hivatkozik.
+> A modul neve kompatibilitási okokból továbbra is ugyanezt a modult tesszük közzé a régi néven `AzureRmStorageTables` PowerShell-Galéria. Ez a dokumentum csak az új névre hivatkozik.
 
 ```powershell
 Install-Module AzTable
@@ -91,7 +91,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
-Tábla létrehozásához használja a [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) parancsmagot. Ebben a példában a tábla neve `pshtesttable`.
+Tábla létrehozásához használja a [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) parancsmagot. Ebben a példában a tábla neve `pshtesttable` .
 
 ```powershell
 $tableName = "pshtesttable"
@@ -138,7 +138,7 @@ Remove-AzStorageTable –Name $tableName –Context $ctx
 Get-AzStorageTable –Context $Ctx | select Name
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha létrehozta az új erőforráscsoportot és a Storage-fiókot a jelen útmutató elején, eltávolíthatja az ebben a gyakorlatban létrehozott összes eszközt az erőforráscsoport eltávolításával. Ez a parancs törli a csoporton belül található összes erőforrást, valamint magát az erőforráscsoportot is.
 

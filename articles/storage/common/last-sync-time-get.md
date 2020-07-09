@@ -6,16 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 02f7d7e2735717a7a6e7a56273551197c16b77aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 4309f1dc63ac7dd96e22f4564a32aae6ed59ad84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195806"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése
 
@@ -37,13 +36,7 @@ A PowerShell vagy az Azure CLI használatával kérheti le a **Legutóbbi szinkr
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha a Storage-fiók utolsó szinkronizálási idejét szeretné lekérni a PowerShell-lel, telepítse az az. Storage modul egy olyan verzióját, amely támogatja a Geo-replikálási statisztikák beszerzését. Például:
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.14.0 –AllowClobber –Force
-```
-
-Ezután keresse meg a Storage-fiók **GeoReplicationStats. LastSyncTime** tulajdonságát. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
+Ha a Storage-fiók utolsó szinkronizálási idejét szeretné lekérni a PowerShell-lel, telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modul 1.11.0 vagy újabb verzióját. Ezután keresse meg a Storage-fiók **GeoReplicationStats. LastSyncTime** tulajdonságát. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `

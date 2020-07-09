@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598436"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások kezelése a Visual Studióval
@@ -115,7 +115,7 @@ A logikai alkalmazásokat letöltheti a [Azure Portalból](https://portal.azure.
 
 1. Amikor a rendszer megkéri a helyet, keresse meg a helyet, és mentse a logikai alkalmazás definíciójának Resource Manager-sablonját JSON-formátumban (. JSON).
 
-   A logikai alkalmazás definíciója a Resource `resources` Manager-sablon alszakaszában jelenik meg. Most már szerkesztheti a Logic app-definíciót és a Resource Manager-sablont a Visual Studióval. A sablont [Azure erőforráscsoport-projektként](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) is hozzáadhatja egy Visual Studio-megoldáshoz. Ismerkedjen meg a [Visual Studióban található Logic apps-projektekkel kapcsolatos Azure Resource Group-projektekkel](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   A logikai alkalmazás definíciója a `resources` Resource Manager-sablon alszakaszában jelenik meg. Most már szerkesztheti a Logic app-definíciót és a Resource Manager-sablont a Visual Studióval. A sablont [Azure erőforráscsoport-projektként](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) is hozzáadhatja egy Visual Studio-megoldáshoz. Ismerkedjen meg a [Visual Studióban található Logic apps-projektekkel kapcsolatos Azure Resource Group-projektekkel](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
@@ -125,7 +125,7 @@ A vállalatok közötti (B2B) vállalati integrációs forgatókönyvek logikai 
 
 1. A Visual Studióban nyissa meg az Azure erőforráscsoport-projektet, amely tartalmazza a logikai alkalmazást.
 
-1. A Megoldáskezelőban nyissa meg a **<Logic-app-name>. JSON** fájl helyi menüjét, és válassza a **Megnyitás a Logic app Designerben**lehetőséget. (Billentyűzet: CTRL + L)
+1. Megoldáskezelő a fájl helyi menüjében nyissa meg a **<Logic-app-Name # C1.js** fájlt, és válassza a **Megnyitás a Logic app designerrel**lehetőséget. (Billentyűzet: CTRL + L)
 
    ![Logikai alkalmazás. JSON fájljának megnyitása a Logic app Designerrel](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -160,7 +160,7 @@ Ha módosítani szeretné a logikai alkalmazás helyének típusát vagy helyét
 
 1. A Visual Studióban nyissa meg az Azure erőforráscsoport-projektet, amely tartalmazza a logikai alkalmazást.
 
-1. A Megoldáskezelőban nyissa `<logic-app-name>.json` meg a fájl helyi menüjét, és válassza a **Megnyitás a Logic app Designerben**lehetőséget. (Billentyűzet: CTRL + L)
+1. A Megoldáskezelőban nyissa meg a `<logic-app-name>.json` fájl helyi menüjét, és válassza a **Megnyitás a Logic app Designerben**lehetőséget. (Billentyűzet: CTRL + L)
 
    ![Logikai alkalmazás. JSON fájljának megnyitása a Logic app Designerrel](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -202,7 +202,7 @@ Ha a Azure Portal módosítja a logikai alkalmazást, és szeretné megtartani e
 
 * A Visual Studióban, a Logic app Designer eszköztárán válassza a **frissítés**lehetőséget.
 
-  – vagy –
+  -vagy-
 
 * A Visual Studio Cloud Explorerben nyissa meg a logikai alkalmazás helyi menüjét, és válassza a **frissítés**lehetőséget.
 

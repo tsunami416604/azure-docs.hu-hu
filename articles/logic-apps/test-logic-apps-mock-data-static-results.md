@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74790278"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logic Apps-alkalmazások tesztelése statikus eredmények beállításával
@@ -54,7 +53,7 @@ Ha például az Outlook 365 küldési műveletének statikus eredményeit állí
 
       ![Válassza a "statikus eredmény engedélyezése" lehetőséget.](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      Ha JavaScript Object Notation (JSON) formátumban szeretné megadni az ál-értéket, válassza a **váltás JSON módra** lehetőséget (![válassza a "váltás JSON](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)-módra" lehetőséget).
+      Ha JavaScript Object Notation (JSON) formátumban szeretné megadni az ál-értéket, válassza a **váltás JSON módra** lehetőséget ( ![ válassza a "váltás JSON-módra" lehetőséget ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) ).
 
    1. A választható tulajdonságok lapon nyissa meg a **Választható mezők kiválasztása** listát, és válassza ki a kipróbálni kívánt tulajdonságokat.
 
@@ -62,7 +61,7 @@ Ha például az Outlook 365 küldési műveletének statikus eredményeit állí
 
 1. Ha készen áll a mentésre, válassza a **kész**lehetőséget.
 
-   A művelet jobb felső sarkában a címsor most egy teszt főzőpohár ikont jelenít meg (![statikus eredmények](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)ikonja), amely azt jelzi, hogy engedélyezte a statikus eredményeket.
+   A művelet jobb felső sarkában a címsor most egy teszt főzőpohár ikont jelenít meg ( ![ statikus eredmények ikonja ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ), amely azt jelzi, hogy engedélyezte a statikus eredményeket.
 
    ![Az engedélyezett statikus eredményeket mutató ikon](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
@@ -90,7 +89,7 @@ Ha a logikai alkalmazás rendelkezik egy korábbi futtatással, és a kimenetek 
 
 1. A **statikus eredmény** mező megnyitása után válassza az egyik lépést:
 
-   * A teljes JSON-objektum beillesztéséhez válassza a **váltás JSON** -módra![lehetőséget (válassza a "váltás JSON](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)-módra" lehetőséget):
+   * A teljes JSON-objektum beillesztéséhez válassza a **váltás JSON-módra** lehetőséget ( ![ válassza a "váltás JSON-módra" lehetőséget ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) ):
 
      ![A teljes objektumhoz válassza a "váltás JSON-módra" lehetőséget.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
@@ -102,7 +101,7 @@ Ha a logikai alkalmazás rendelkezik egy korábbi futtatással, és a kimenetek 
 
    ![JSON-mód](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Ha elkészült, válassza a **Kész** lehetőséget. Vagy ha vissza szeretne térni a tervezőhöz, válassza a **váltás szerkesztő üzemmódot** (![válassza a "](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)szerkesztési mód" lehetőséget).
+1. Ha elkészült, válassza a **Kész** lehetőséget. Vagy ha vissza szeretne térni a tervezőhöz, válassza a **váltás szerkesztő üzemmódot** ( ![ válassza a "szerkesztési mód" lehetőséget ](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) ).
 
 <a name="find-runs-mock-data"></a>
 
@@ -120,7 +119,7 @@ A logikai alkalmazás futtatási előzményei azonosítják azokat a futtatások
 
 1. A statikus eredményeket használó műveletek megtekintéséhez válassza ki azt a futtatást, ahol a **statikus eredmények** oszlop **engedélyezve**értékre van állítva.
 
-   A statikus eredményeket használó műveletek a teszt főzőpohár (![statikus eredmények](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)ikonja) ikont jelenítenek meg, például:
+   A statikus eredményeket használó műveletek a teszt főzőpohár ( ![ statikus eredmények ikonja ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ) ikont jelenítenek meg, például:
 
    ![Futtatási előzmények – statikus eredményeket használó műveletek](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
@@ -128,15 +127,15 @@ A logikai alkalmazás futtatási előzményei azonosítják azokat a futtatások
 
 A statikus eredmények kikapcsolása nem dobja el az utolsó beállítás értékeit. Így ha a következő alkalommal kapcsolja be a statikus eredményeket, továbbra is használhatja az előző értékeket.
 
-1. Keresse meg azt a műveletet, ahol le szeretné tiltani a statikus kimeneteket. A művelet jobb felső sarkában válassza a teszt főzőpohár ikont (![statikus eredmények](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)ikonja).
+1. Keresse meg azt a műveletet, ahol le szeretné tiltani a statikus kimeneteket. A művelet jobb felső sarkában válassza a teszt főzőpohár ikont ( ![ statikus eredmények ikonja ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ).
 
    ![Statikus eredmények letiltása](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Válassza a **statikus eredmény** > letiltása**lehetőséget.**
+1. Válassza a **statikus eredmény letiltása**lehetőséget  >  **Done**.
 
    ![Statikus eredmények letiltása](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Hivatkozás
 
 További információ erről a beállításról a mögöttes munkafolyamat-definíciókban: [statikus eredmények – séma-hivatkozás a munkafolyamat-definíciós nyelvhez](../logic-apps/logic-apps-workflow-definition-language.md#static-results) és [runtimeConfiguration. staticResult – futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 

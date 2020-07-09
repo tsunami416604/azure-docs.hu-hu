@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fdf298357370415c1b3af95dd9ed22ad8539786
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278128"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125480"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben
 
@@ -31,7 +31,7 @@ Ez a cikk elsősorban az osztályon alapuló szintaxisra összpontosít, mivel a
  
 ## <a name="defining-entity-classes"></a>Entitás-osztályok definiálása
 
-A következő példa `Counter` egy olyan entitás implementációja, amely egy egész szám típusú értéket tárol, és négy műveletet `Add` `Reset` `Get`kínál:, és. `Delete`
+A következő példa egy olyan entitás implementációja, `Counter` amely egy egész szám típusú értéket tárol, és négy műveletet kínál: `Add` , `Reset` `Get` és `Delete` .
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -67,10 +67,10 @@ public class Counter
 }
 ```
 
-A `Run` függvény tartalmazza az osztály-alapú szintaxis használatának kötelezővé tételét. *Statikus* Azure-függvénynek kell lennie. Egyszer végrehajtja az entitás által feldolgozott összes műveleti üzenet esetében. Ha `DispatchAsync<T>` a hívása megtörtént, és az entitás még nincs a memóriában, egy típusú `T` objektumot hoz létre, és feltölti a mezőket a tárolóban található utolsó megőrzött JSON-ből (ha van ilyen). Ezután meghívja a metódust a megfelelő névvel.
+A `Run` függvény tartalmazza az osztály-alapú szintaxis használatának kötelezővé tételét. *Statikus* Azure-függvénynek kell lennie. Egyszer végrehajtja az entitás által feldolgozott összes műveleti üzenet esetében. Ha `DispatchAsync<T>` a hívása megtörtént, és az entitás még nincs a memóriában, egy típusú objektumot hoz létre, `T` és feltölti a mezőket a tárolóban található utolsó megőrzött JSON-ből (ha van ilyen). Ezután meghívja a metódust a megfelelő névvel.
 
 > [!NOTE]
-> Az osztály-alapú entitások állapota **implicit módon jön létre** , mielőtt az entitás feldolgozza a műveletet, és a hívásával `Entity.Current.DeleteState()` **explicit módon törölhető** egy műveletben.
+> Az osztály-alapú entitások állapota **implicit módon jön létre** , mielőtt az entitás feldolgozza a műveletet, és a hívásával **explicit módon törölhető** egy műveletben `Entity.Current.DeleteState()` .
 
 ### <a name="class-requirements"></a>Osztályra vonatkozó követelmények
  
@@ -82,14 +82,14 @@ Az entitás-osztályok a POCOs (egyszerű CLR-objektumok), amelyek nem igényeln
 Emellett a műveletnek meghívott bármely módszernek meg kell felelnie a további követelményeknek:
 
 - Egy műveletnek legfeljebb egy argumentummal kell rendelkeznie, és nem tartalmazhat túlterhelést vagy általános típusú argumentumot.
-- Egy olyan művelet, amely egy illesztőfelületnek a felülettel való meghívásához `Task` szükséges `Task<T>`, vagy a-t kell visszaadnia.
+- Egy olyan művelet, amely egy illesztőfelületnek a felülettel való meghívásához szükséges, vagy a-t kell visszaadnia `Task` `Task<T>` .
 - Az argumentumoknak és a visszatérési értékeknek szerializálható értékeknek vagy objektumoknak kell lenniük.
 
 ### <a name="what-can-operations-do"></a>Milyen műveleteket végezhetnek el?
 
 Az entitások összes művelete képes olvasni és frissíteni az entitás állapotát, és az állapot változásai automatikusan megmaradnak a tárolóban. Emellett a műveletek külső I/O-vagy egyéb számításokat is végezhetnek az általános korlátokon belül az összes Azure Functions.
 
-A műveletek a `Entity.Current` környezet által biztosított funkciókhoz is hozzáférnek:
+A műveletek a környezet által biztosított funkciókhoz is hozzáférnek `Entity.Current` :
 
 * `EntityName`: az aktuálisan végrehajtó entitás neve.
 * `EntityKey`: az aktuálisan végrehajtó entitás kulcsa.
@@ -103,9 +103,9 @@ Például módosíthatjuk a számláló entitást, hogy elindítson egy előkés
 ```csharp
     public void Add(int amount) 
     {
-        if (this.Value < 100 && this.Value + amount > 100)
+        if (this.Value < 100 && this.Value + amount >= 100)
         {
-            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId)
+            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId);
         }
         this.Value += amount;      
     }
@@ -153,7 +153,7 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> A által `ReadEntityStateAsync` visszaadott objektum csak egy helyi másolat, azaz az entitás állapotának pillanatképe néhány korábbi időpontból. Különösen előfordulhat, hogy elavult, és ennek az objektumnak a módosítása nem befolyásolja az aktuális entitást. 
+> A által visszaadott objektum `ReadEntityStateAsync` csak egy helyi másolat, azaz az entitás állapotának pillanatképe néhány korábbi időpontból. Különösen előfordulhat, hogy elavult, és ennek az objektumnak a módosítása nem befolyásolja az aktuális entitást. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity"></a>Példa: első jelek, majd az entitás meghívása
 
@@ -203,7 +203,7 @@ A típusok ellenőrzésének biztosításán kívül a felületek hasznosak lehe
 
 ### <a name="example-client-signals-entity-through-interface"></a>Példa: ügyfél-jeleket kezelő entitás kapcsolaton keresztül
 
-Az ügyfél kódja a `SignalEntityAsync<TEntityInterface>` használatával jeleket küldhet a megvalósítás `TEntityInterface`alatt álló entitásoknak. Például:
+Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` a használatával jeleket küldhet a megvalósítás alatt álló entitásoknak `TEntityInterface` . Például:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -218,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-Ebben a példában a `proxy` paraméter a dinamikusan generált példánya `ICounter`, amely belsőleg lefordítja a hívást `Delete` egy jellé.
+Ebben a példában a `proxy` paraméter a dinamikusan generált példánya `ICounter` , amely belsőleg lefordítja a hívást `Delete` egy jellé.
 
 > [!NOTE]
-> Az `SignalEntityAsync` API-kat csak egyirányú műveletekhez lehet használni. Még ha egy művelet is `Task<T>`visszaadja, a `T` paraméter értéke mindig NULL lesz, vagy `default`nem a tényleges eredmény.
-Nem érdemes például jelezni a műveletet, mivel a `Get` rendszer nem ad vissza értéket. Ehelyett az ügyfelek közvetlenül is `ReadStateAsync` hozzáférhetnek a számláló állapotához, vagy elindíthatnak egy Orchestrator-függvényt, `Get` amely meghívja a műveletet. 
+> Az `SignalEntityAsync` API-kat csak egyirányú műveletekhez lehet használni. Még ha egy művelet is visszaadja `Task<T>` , a `T` paraméter értéke mindig NULL lesz, vagy `default` nem a tényleges eredmény.
+Nem érdemes például jelezni a `Get` műveletet, mivel a rendszer nem ad vissza értéket. Ehelyett az ügyfelek `ReadStateAsync` közvetlenül is hozzáférhetnek a számláló állapotához, vagy elindíthatnak egy Orchestrator-függvényt, amely meghívja a `Get` műveletet. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Példa: első jelek, majd az entitás meghívása proxyn keresztül
 
-Ha egy entitást egy előkészítésen belül szeretne meghívni vagy `CreateEntityProxy` jelezni, a használható a csatoló típusával együtt az entitáshoz tartozó proxy létrehozásához. Ez a proxy ezután a következő műveletekkel hívható meg vagy jelezheti a műveleteket:
+Ha egy entitást egy előkészítésen belül szeretne meghívni vagy jelezni, a használható a `CreateEntityProxy` csatoló típusával együtt az entitáshoz tartozó proxy létrehozásához. Ez a proxy ezután a következő műveletekkel hívható meg vagy jelezheti a műveleteket:
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -246,7 +246,7 @@ public static async Task<int> Run(
 }
 ```
 
-Implicit módon a visszaadott műveletek `void` , illetve a visszaadott `Task` vagy `Task<T>` meghívott műveletek. Az egyik megváltoztathatja ezt az alapértelmezett viselkedést, és a műveleteket, még akkor is, `SignalEntity<IInterfaceType>` ha az adott feladatot a metódus explicit módon használva.
+Implicit módon a visszaadott műveletek, illetve a visszaadott `void` `Task` vagy `Task<T>` meghívott műveletek. Az egyik megváltoztathatja ezt az alapértelmezett viselkedést, és a műveleteket, még akkor is, ha az adott feladatot a `SignalEntity<IInterfaceType>` metódus explicit módon használva.
 
 ### <a name="shorter-option-for-specifying-the-target"></a>A cél megadásának rövidebb beállítása
 
@@ -267,12 +267,12 @@ Néhány további szabályt is érvénybe léptetett:
 * Az entitás-illesztőfelületeknek csak metódusokat kell meghatározniuk.
 * Az entitás-illesztőfelületek nem tartalmazhatnak általános paramétereket.
 * Az entitás-illesztőfelületi metódusok nem rendelkezhetnek egynél több paraméterrel.
-* Az entitás-illesztőfelületi `void`metódusoknak vissza kell térniük, `Task`vagy`Task<T>` 
+* Az entitás-illesztőfelületi metódusoknak vissza kell térniük `void` , `Task` vagy`Task<T>` 
 
-Ha a szabályok bármelyike meg `InvalidOperationException` `SignalEntity` van sértve, a rendszer futásidőben, amikor a felületet a vagy `CreateProxy`a típus argumentumként használja. A kivételt jelző üzenet ismerteti, hogy melyik szabály lett megszakítva.
+Ha a szabályok bármelyike meg van sértve, a `InvalidOperationException` rendszer futásidőben, amikor a felületet a vagy a típus argumentumként használja `SignalEntity` `CreateProxy` . A kivételt jelző üzenet ismerteti, hogy melyik szabály lett megszakítva.
 
 > [!NOTE]
-> A visszaadott `void` illesztőfelület-metódusok csak egyirányú (egyirányú), nem más néven (kétirányú) lehet. A visszaadott `Task` vagy `Task<T>` hívható illesztőfelület-metódusok. Ha a hívása megtörténik, a művelet eredményét visszaállítják, vagy a művelet által eldobott kivételeket. Ha azonban a jelezve van, nem adják vissza a művelet tényleges eredményét vagy kivételét, de csak az alapértelmezett értéket.
+> A visszaadott illesztőfelület-metódusok `void` csak egyirányú (egyirányú), nem más néven (kétirányú) lehet. A visszaadott vagy hívható illesztőfelület-metódusok `Task` `Task<T>` . Ha a hívása megtörténik, a művelet eredményét visszaállítják, vagy a művelet által eldobott kivételeket. Ha azonban a jelezve van, nem adják vissza a művelet tényleges eredményét vagy kivételét, de csak az alapértelmezett értéket.
 
 ## <a name="entity-serialization"></a>Entitás szerializálása
 
@@ -310,8 +310,8 @@ public class User
 ### <a name="serialization-attributes"></a>Szerializálási attribútumok
 
 A fenti példában úgy döntöttünk, hogy több attribútumot is tartalmaz, amelyek láthatóvá teszik a mögöttes szerializálást:
-- A osztályt megjegyzésekkel `[JsonObject(MemberSerialization.OptIn)]` láthatjuk el, hogy emlékeztessenk, hogy az osztálynak szerializálható kell lennie, és csak olyan tagokat kell megőriznie, amelyek kifejezetten JSON-tulajdonságokkal vannak megjelölve.
--  A megőrzött mezőket `[JsonProperty("name")]` megjegyzésekkel láthatjuk, hogy egy mező a megőrzött entitás állapotának részét képezi-e, és meg kell határozni a JSON-ábrázolásban használandó tulajdonságnév nevét.
+- A osztályt megjegyzésekkel láthatjuk `[JsonObject(MemberSerialization.OptIn)]` el, hogy emlékeztessenk, hogy az osztálynak szerializálható kell lennie, és csak olyan tagokat kell megőriznie, amelyek kifejezetten JSON-tulajdonságokkal vannak megjelölve.
+-  A megőrzött mezőket megjegyzésekkel láthatjuk `[JsonProperty("name")]` , hogy egy mező a megőrzött entitás állapotának részét képezi-e, és meg kell határozni a JSON-ábrázolásban használandó tulajdonságnév nevét.
 
 Ezek az attribútumok azonban nem szükségesek; más konvenciók vagy attribútumok akkor is engedélyezettek, ha a Json.NET-mel működnek. Előfordulhat például, hogy az egyik `[DataContract]` attribútumot vagy egyetlen attribútumot sem használ:
 
@@ -331,11 +331,11 @@ public class Counter
 }
 ```
 
-Alapértelmezés szerint az osztály neve *nem* a JSON- `TypeNameHandling.None` ábrázolás részeként van tárolva: ez az alapértelmezett beállítás. Ez az alapértelmezett viselkedés felülbírálható a vagy `JsonObject` `JsonProperty` attribútumok használatával.
+Alapértelmezés szerint az osztály neve *nem* a JSON-ábrázolás részeként van tárolva: ez az `TypeNameHandling.None` alapértelmezett beállítás. Ez az alapértelmezett viselkedés felülbírálható a `JsonObject` vagy `JsonProperty` attribútumok használatával.
 
 ### <a name="making-changes-to-class-definitions"></a>Az osztályok definícióinak módosítása
 
-Némi gondra van szükség, amikor egy alkalmazás futtatása után módosítja az osztály definícióját, mert a tárolt JSON-objektum már nem felel meg az új osztály definíciójának. Az adatformátumok módosítása azonban gyakran lehetséges, ha az egyik ismeri a által `JsonConvert.PopulateObject`használt deszerializálás folyamatát.
+Némi gondra van szükség, amikor egy alkalmazás futtatása után módosítja az osztály definícióját, mert a tárolt JSON-objektum már nem felel meg az új osztály definíciójának. Az adatformátumok módosítása azonban gyakran lehetséges, ha az egyik ismeri a által használt deszerializálás folyamatát `JsonConvert.PopulateObject` .
 
 Íme néhány példa a változásokra és azok hatására:
 
@@ -345,7 +345,7 @@ Némi gondra van szükség, amikor egy alkalmazás futtatása után módosítja 
 1. Ha a tulajdonság típusa módosítva lett, és a rendszer már nem tudja deszerializálni a tárolt JSON-ből, kivétel keletkezik.
 1. Ha a tulajdonság típusa módosítva van, de továbbra is deszerializálható a tárolt JSON-ból, akkor azt.
 
-Számos lehetőség áll rendelkezésre a Json.NET viselkedésének testreszabásához. Ha például egy kivételt szeretne kényszeríteni, ha a tárolt JSON olyan mezőt tartalmaz, amely nem szerepel a osztályban, akkor az `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`attribútumot kell megadnia. Egyéni kódot is írhat a deszerializálás számára, amely tetszőleges formátumban tárolhatja a JSON-t.
+Számos lehetőség áll rendelkezésre a Json.NET viselkedésének testreszabásához. Ha például egy kivételt szeretne kényszeríteni, ha a tárolt JSON olyan mezőt tartalmaz, amely nem szerepel a osztályban, akkor az attribútumot kell megadnia `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)` . Egyéni kódot is írhat a deszerializálás számára, amely tetszőleges formátumban tárolhatja a JSON-t.
 
 ## <a name="entity-construction"></a>Entitások kialakítása
 
@@ -353,7 +353,7 @@ Néha azt szeretnénk, hogy jobban szabályozzák az entitás-objektumok kialak�
 
 ### <a name="custom-initialization-on-first-access"></a>Egyéni inicializálás az első hozzáféréskor
 
-Időnként néhány speciális inicializálást kell végrehajtania, mielőtt egy műveletet egy soha nem elért vagy törölt entitásra hajtanak végre. Ennek a viselkedésnek a megadásához egy feltételes feltételt adhat hozzá a `DispatchAsync`következőhöz:
+Időnként néhány speciális inicializálást kell végrehajtania, mielőtt egy műveletet egy soha nem elért vagy törölt entitásra hajtanak végre. Ennek a viselkedésnek a megadásához egy feltételes feltételt adhat hozzá a következőhöz `DispatchAsync` :
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -369,9 +369,9 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="bindings-in-entity-classes"></a>Kötések az Entity classs szolgáltatásban
 
-A normál függvényektől eltérően az Entity Class metódusok nem rendelkeznek közvetlen hozzáféréssel a bemeneti és kimeneti kötésekhez. Ehelyett a kötési adatrögzítést a belépési pont függvény deklarációjában kell rögzíteni, majd át kell `DispatchAsync<T>` adni a metódusnak. A `DispatchAsync<T>` rendszer az összes átadott objektumot argumentumként automatikusan átadja az entitás osztály konstruktorának.
+A normál függvényektől eltérően az Entity Class metódusok nem rendelkeznek közvetlen hozzáféréssel a bemeneti és kimeneti kötésekhez. Ehelyett a kötési adatrögzítést a belépési pont függvény deklarációjában kell rögzíteni, majd át kell adni a `DispatchAsync<T>` metódusnak. A rendszer az összes átadott objektumot `DispatchAsync<T>` argumentumként automatikusan átadja az entitás osztály konstruktorának.
 
-Az alábbi példa azt szemlélteti, `CloudBlobContainer` hogyan lehet elérhetővé tenni egy, a [blob bemeneti kötésből](../functions-bindings-storage-blob-input.md) származó hivatkozást egy osztály alapú entitás számára.
+Az alábbi példa azt szemlélteti, hogyan lehet `CloudBlobContainer` elérhetővé tenni egy, a [blob bemeneti kötésből](../functions-bindings-storage-blob-input.md) származó hivatkozást egy osztály alapú entitás számára.
 
 ```csharp
 public class BlobBackedEntity
@@ -450,7 +450,7 @@ public class HttpEntity
 > A szerializálással kapcsolatos problémák elkerülése érdekében ügyeljen arra, hogy kizárjon mezőket a befecskendezett értékek tárolásához a szerializálásból.
 
 > [!NOTE]
-> A normál .NET-Azure Functions konstruktorának használatakor a függvények belépési pontjának metódusát be kell jelenteni `static`az osztály alapú entitásokhoz. *must* A nem statikus függvény belépési pontjának deklarálása ütközést okozhat a normál Azure Functions objektum-inicializáló és a tartós entitások objektum-inicializáló között.
+> A normál .NET-Azure Functions konstruktorának használatakor a függvények belépési pontjának metódusát be kell jelenteni az osztály *alapú entitásokhoz* `static` . A nem statikus függvény belépési pontjának deklarálása ütközést okozhat a normál Azure Functions objektum-inicializáló és a tartós entitások objektum-inicializáló között.
 
 ## <a name="function-based-syntax"></a>Függvény-alapú szintaxis
 
@@ -482,7 +482,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="the-entity-context-object"></a>Az entitás környezeti objektuma
 
-Az entitás-specifikus funkciók egy típusú `IDurableEntityContext`környezeti objektumon keresztül érhetők el. Ez a környezeti objektum az Entity függvény paramétereként és az aszinkron helyi tulajdonságon `Entity.Current`keresztül érhető el.
+Az entitás-specifikus funkciók egy típusú környezeti objektumon keresztül érhetők el `IDurableEntityContext` . Ez a környezeti objektum az Entity függvény paramétereként és az aszinkron helyi tulajdonságon keresztül érhető el `Entity.Current` .
 
 A következő tagok információt nyújtanak az aktuális műveletről, és lehetővé teszik a visszatérési érték megadását. 
 
@@ -500,7 +500,7 @@ A következő tagok kezelik az entitás állapotát (létrehozás, olvasás, fri
 * `SetState(arg)`: az entitás állapotának létrehozása vagy frissítése.
 * `DeleteState()`: törli az entitás állapotát, ha az létezik. 
 
-Ha az által `GetState` visszaadott állapot egy objektum, akkor közvetlenül módosítható az alkalmazás kódjával. A végén nem kell újból meghívni `SetState` (de nem árt). Ha `GetState<TState>` többször is meghívva van, ugyanazt a típust kell használni.
+Ha az által visszaadott állapot `GetState` egy objektum, akkor közvetlenül módosítható az alkalmazás kódjával. A végén nem kell újból meghívni `SetState` (de nem árt). Ha `GetState<TState>` többször is meghívva van, ugyanazt a típust kell használni.
 
 Végezetül a következő tagok más entitások jelzésére vagy új összehangolás indítására használhatók:
 

@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453496"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Kódrészletek hozzáadása és futtatása beágyazott kód használatával Azure Logic Apps
@@ -21,10 +20,10 @@ Ha egy kódrészletet szeretne futtatni a logikai alkalmazásban, akkor a logika
 * A futás öt másodperc vagy kevesebb idő alatt fejeződik be.
 * Legfeljebb 50 MB méretű adatkezelést tesz elérhetővé.
 * Nem szükséges a [ **változók** műveletekkel](../logic-apps/logic-apps-create-variables-store-values.md)dolgozni, amelyek még nem támogatottak.
-* A Node. js 8.11.1 verzióját használja. További információ: [standard beépített objektumok](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+* A Node.js 8.11.1 verzióját használja. További információ: [standard beépített objektumok](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
 
   > [!NOTE]
-  > Ezt `require()` a függvényt nem támogatja a **beágyazott kód** művelet a JavaScript futtatásához.
+  > `require()`Ezt a függvényt nem támogatja a **beágyazott kód** művelet a JavaScript futtatásához.
 
 Ez a művelet futtatja a kódrészletet, és visszaadja az adott kódrészlet kimenetét az **eredmény**nevű tokennek, amelyet a logikai alkalmazás későbbi műveleteiben használhat. Olyan esetekben, amikor egy függvényt szeretne létrehozni a kódhoz, próbálkozzon [egy Azure-függvény létrehozásával és meghívásával](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazásban.
 
@@ -53,7 +52,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
    * A munkafolyamat végén található művelet hozzáadásához válassza az **új lépés**lehetőséget.
 
-   * A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé. Válassza a pluszjelet (**+**), és válassza a **művelet hozzáadása**lehetőséget.
+   * A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé. Válassza a pluszjelet ( **+** ), és válassza a **művelet hozzáadása**lehetőséget.
 
    Ez a példa hozzáadja a **beágyazott kód** műveletet az Office 365 Outlook trigger alatt.
 
@@ -79,7 +78,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
    Ahhoz, hogy a trigger és a korábbi műveletek eredményei könnyebben használhatók legyenek, a dinamikus tartalmak listája jelenik meg, miközben a kurzor a **kód** mezőben található. Ebben a példában a lista az triggerből származó elérhető eredményeket jeleníti meg, beleértve a **szövegtörzs** tokenjét is, amelyet most kiválaszthat.
 
-   Miután kiválasztotta a **törzs** jogkivonatát, a beágyazott kód művelet feloldja a tokent egy `workflowContext` olyan objektumra, amely hivatkozik az e-mailek `Body` tulajdonságának értékére:
+   Miután kiválasztotta a **törzs** jogkivonatát, a beágyazott kód művelet feloldja a tokent egy olyan `workflowContext` objektumra, amely hivatkozik az e-mailek `Body` tulajdonságának értékére:
 
    ![Eredmény kiválasztása](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
@@ -97,7 +96,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
    > `workflowContext.actions.my.action.name.body`
 
    A beágyazott kód művelethez nem szükséges `return` utasítás, de az eredmények egy `return` utasításból az **eredmény** -tokenen keresztül is elérhetők a későbbi műveletekben. 
-   Például a kódrészlet visszaadja az eredményt a `match()` függvény meghívásával, amely megkeresi az e-mail-szövegtörzsben szereplő egyezéseket a reguláris kifejezéssel. Az **összeállítás** művelet az **eredmény** -token használatával hivatkozik a beágyazott kód művelet eredményeire, és egyetlen eredményt hoz létre.
+   Például a kódrészlet visszaadja az eredményt a függvény meghívásával `match()` , amely megkeresi az e-mail-szövegtörzsben szereplő egyezéseket a reguláris kifejezéssel. Az **összeállítás** művelet az **eredmény** -token használatával hivatkozik a beágyazott kód művelet eredményeire, és egyetlen eredményt hoz létre.
 
    ![Befejezett logikai alkalmazás](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -107,7 +106,7 @@ Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail ér
 
 ### <a name="reference-trigger-and-action-results-in-your-code"></a>Az trigger és a művelet eredményei a kódban
 
-Az `workflowContext` objektum rendelkezik ezzel a szerkezettel, amely `actions`tartalmazza `trigger`a, `workflow` a és az altulajdonságot:
+Az `workflowContext` objektum rendelkezik ezzel a szerkezettel, amely tartalmazza a `actions` , a `trigger` és az `workflow` altulajdonságot:
 
 ```json
 {
@@ -128,9 +127,9 @@ Az `workflowContext` objektum rendelkezik ezzel a szerkezettel, amely `actions`t
 
 Ez a tábla további információkat tartalmaz ezekről az altulajdonságokról:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |----------|------|-------|
-| `actions` | Objektum gyűjtése | A kódrészlet futtatása előtt futtatott műveletek eredményének objektumai. Minden objektumhoz tartozik egy *kulcs-érték* pár, amelyben a kulcs egy művelet neve, és az érték megegyezik a [műveletek () függvénynek](../logic-apps/workflow-definition-language-functions-reference.md#actions) a használatával történő meghívásával `@actions('<action-name>')`. A művelet neve ugyanazt a műveleti nevet használja, mint amelyet a rendszer az alapul szolgáló munkafolyamat-definícióban használ, amely a művelet nevében a szóközöket ("") váltja fel aláhúzással (_). Ez az objektum hozzáférést biztosít a műveleti tulajdonságok értékeihez az aktuális munkafolyamat-példány futtatásával. |
+| `actions` | Objektum gyűjtése | A kódrészlet futtatása előtt futtatott műveletek eredményének objektumai. Minden objektumhoz tartozik egy *kulcs-érték* pár, amelyben a kulcs egy művelet neve, és az érték megegyezik a [műveletek () függvénynek](../logic-apps/workflow-definition-language-functions-reference.md#actions) a használatával történő meghívásával `@actions('<action-name>')` . A művelet neve ugyanazt a műveleti nevet használja, mint amelyet a rendszer az alapul szolgáló munkafolyamat-definícióban használ, amely a művelet nevében a szóközöket ("") váltja fel aláhúzással (_). Ez az objektum hozzáférést biztosít a műveleti tulajdonságok értékeihez az aktuális munkafolyamat-példány futtatásával. |
 | `trigger` | Objektum | A trigger [() függvény](../logic-apps/workflow-definition-language-functions-reference.md#trigger)meghívására szolgáló eredmény objektum az triggerből és azzal egyenértékű. Ez az objektum hozzáférést biztosít a tulajdonságértékek az aktuális munkafolyamat-példányból való futtatásához. |
 | `workflow` | Objektum | A munkafolyamat-objektum és az azzal egyenértékű, hogy meghívja a [workflow () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#workflow). Ez az objektum hozzáférést biztosít a munkafolyamat-tulajdonságértékek (például a munkafolyamat neve, a futtatási azonosító stb.) számára az aktuális munkafolyamat-példány futtatásához. |
 |||
@@ -246,7 +245,7 @@ Ha a **műveletek**lehetőséget választja, a rendszer kéri, hogy adja meg a h
 
   `My.Action.Name`
 
-1. A tervező eszköztárán kattintson a **kód nézet**elemre, és keressen `actions` rá a művelet nevére a (z) attribútumon belül.
+1. A tervező eszköztárán kattintson a **kód nézet**elemre, és keressen rá a `actions` művelet nevére a (z) attribútumon belül.
 
    Például `Send_approval_email_` a **jóváhagyás küldése e-mailben** művelet JSON-neve.
 
@@ -260,7 +259,7 @@ Ha a **műveletek**lehetőséget választja, a rendszer kéri, hogy adja meg a h
 
 1. Egy másik művelet hozzáadásához válassza az **új elem hozzáadása**lehetőséget.
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Hivatkozás
 
 További információ a JavaScript- **kód végrehajtása** művelet szerkezetéről és szintaxisáról a logikai alkalmazás mögöttes munkafolyamat-definíciójában a munkafolyamat-definíciós nyelv használatával: Ez a művelet [hivatkozási szakasza](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code).
 

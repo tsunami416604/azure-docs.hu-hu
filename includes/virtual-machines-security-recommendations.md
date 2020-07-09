@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f852f1bf4994f525ccb65c3827af8f8ae02f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838982"
 ---
 Ez a cikk az Azure Virtual Machines biztonsági javaslatait tartalmazza. Kövesse ezeket az ajánlásokat a modellben ismertetett biztonsági kötelezettségek teljesítéséhez a közös felelősség érdekében. A javaslatok a webalkalmazás-megoldások általános biztonságának javításához is segítséget nyújtanak. További információ arról, hogy a Microsoft miként teljesíti a szolgáltatói felelősségeket, lásd: [a felhőalapú számítástechnika megosztott feladatai](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
@@ -38,7 +38,7 @@ A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi 
 | Operációs rendszer lemezek titkosítása. | A [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) segítségével titkosíthatja Windows-és Linux-IaaS VM-lemezeit. A szükséges kulcsok nélkül a titkosított lemezek tartalma nem olvasható. A lemezes titkosítás védi a tárolt adatok jogosulatlan hozzáférését, amely egyébként a lemez másolásakor lenne lehetséges.| [Igen](../articles/security-center/security-center-apply-disk-encryption.md) |
 | Adatlemezek titkosítása. | A [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) segítségével titkosíthatja Windows-és Linux-IaaS VM-lemezeit. A szükséges kulcsok nélkül a titkosított lemezek tartalma nem olvasható. A lemezes titkosítás védi a tárolt adatok jogosulatlan hozzáférését, amely egyébként a lemez másolásakor lenne lehetséges.| -  |
 | A telepített szoftverek korlátozása. | A telepített szoftverek korlátozása a megoldás sikeres alkalmazásához szükséges értékre. Ez az útmutató segít csökkenteni a megoldás támadási felületét. | - |
-| Vírusirtó vagy antimalware használata. | Az Azure-ban olyan biztonsági gyártóktól származó kártevő szoftvereket is használhat, mint például a Microsoft, a Symantec, a Trend Micro és a Kaspersky. Ez a szoftver segít megvédeni a virtuális gépeket a kártékony fájlokkal, a reklámprogramokkal és más fenyegetésekkel szemben. Az alkalmazás munkaterhelései alapján telepítheti a Microsoft antimalware-t. Használja az alapszintű biztonságos vagy a speciális egyéni konfigurációt. További információ: [Microsoft antimalware for Azure Cloud Services és Virtual Machines](../articles/security/azure-security-antimalware.md). | - |
+| Vírusirtó vagy antimalware használata. | Az Azure-ban olyan biztonsági gyártóktól származó kártevő szoftvereket is használhat, mint például a Microsoft, a Symantec, a Trend Micro és a Kaspersky. Ez a szoftver segít megvédeni a virtuális gépeket a kártékony fájlokkal, a reklámprogramokkal és más fenyegetésekkel szemben. Az alkalmazás munkaterhelései alapján telepítheti a Microsoft antimalware-t. A Microsoft antimalware csak Windows rendszerű gépeken érhető el. Használja az alapszintű biztonságos vagy a speciális egyéni konfigurációt. További információ: [Microsoft antimalware for Azure Cloud Services és Virtual Machines](../articles/security/azure-security-antimalware.md). | - |
 | Kulcsok és titkos kódok biztonságos tárolása. | Egyszerűbbé teheti a titkok és kulcsok felügyeletét azáltal, hogy az alkalmazás tulajdonosait biztonságos, központilag felügyelt lehetőséggel látja el. Ez a kezelés csökkenti a véletlen sérülés vagy szivárgás kockázatát. Azure Key Vault biztonságosan tárolhatók a kulcsokat hardveres biztonsági modulokban (HSM), amelyek a 2. szintű FIPS 140-2-es szintre vannak hitelesítve. Ha a kulcsokat és titkos kulcsokat az FIPs 140,2 3. szintű használatával szeretné tárolni, használhatja az [Azure DEDIKÁLT HSM](../articles/dedicated-hsm/overview.md)-et. | - |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés 

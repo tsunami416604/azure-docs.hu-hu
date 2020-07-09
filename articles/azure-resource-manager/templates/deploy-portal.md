@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése Azure Portal
 description: A Azure Portal és az Azure Erőforrás-kezelés használatával az erőforrásokat üzembe helyezheti az előfizetésében található erőforráscsoporthoz.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255262"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal
 
@@ -82,11 +82,11 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
    ![Sablon központi telepítésének keresése](./media/deploy-portal/search-template.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A sablonok létrehozásához több lehetőség is megjelenik:
 
     - **Saját sablon készítése a szerkesztőben**: sablon létrehozása a portál sablon szerkesztőjével.  A szerkesztő képes az erőforrás-sablon sémájának hozzáadására.
-    - **Gyakori sablonok**: a linuxos virtuális gépek, a Windows-alapú virtuális gépek, a webalkalmazások és az Azure SQL Database-adatbázisok létrehozásához négy gyakori sablon áll rendelkezésre.
+    - **Gyakori sablonok**: a Linux rendszerű virtuális gépek, a Windows rendszerű virtuális gépek, a webalkalmazások és a Azure SQL Database adatbázisok létrehozásához négy gyakori sablon áll rendelkezésre.
     - **GitHub-gyorsindítási sablon betöltése**: meglévő rövid útmutató- [sablonok](https://azure.microsoft.com/resources/templates/)használata.
 
    ![Beállítások megtekintése](./media/deploy-portal/see-options.png)

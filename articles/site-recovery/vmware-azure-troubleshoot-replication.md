@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836413"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135360"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és a fizikai kiszolgálók replikációs problémáinak elhárítása
 
@@ -71,13 +71,13 @@ Lehetséges okok:
 - A virtuális gép listázott lemezén lévő adatváltozási sebesség (bájt/s) nagyobb, mint a replikációs cél Storage-fióktípus [Azure site Recovery támogatott korlátai](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) .
 - Az elváltozási arány hirtelen megszeghető, mivel a feltöltésre váró nagy mennyiségű adatok.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 - Győződjön meg arról, hogy a célként megadott Storage-fiók típusa (standard vagy prémium) a forrásnál az adatforgalom arányára vonatkozó követelményként van kiépítve.
 - Ha már rendelkezik egy prémium szintű felügyelt lemezre (asrseeddisk-típus), győződjön meg arról, hogy a lemez mérete támogatja a megfigyelt adatforgalom mértékét Site Recovery korlátként. Szükség esetén növelheti a asrseeddisk méretét. Kövesse az alábbi lépéseket:
     - Navigáljon az érintett replikált gép lemezek paneljére, és másolja a replika lemez nevét
     - Navigáljon a replika felügyelt lemezéhez
     - Előfordulhat, hogy megjelenik egy szalagcím az Áttekintés panelen, amely azt jelzi, hogy egy SAS URL-cím lett létrehozva. Kattintson erre a szalagcímre, és szakítsa meg az exportálást. Ha nem látja a szalagcímet, hagyja figyelmen kívül ezt a lépést.
-    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy az ASR támogassa a forrás lemezen megfigyelt adatforgalom mértékét.
+    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy a Azure Site Recovery támogassa a megfigyelt adatforgalom mértékét a forrásoldali lemezen
 - Ha a megfigyelt forgalom ideiglenes, várjon néhány órát, amíg a függőben lévő adatok feltöltése megtörténik, és létre kell hozni a helyreállítási pontokat.
 - Ha a lemez olyan nem kritikus fontosságú adatokhoz is tartalmaz, mint például az ideiglenes naplók, az adatok tesztelése stb., érdemes lehet máshová áthelyezni ezeket az adatfájlokat, vagy teljes mértékben kizárni ezt a lemezt
 - Ha a probléma továbbra is fennáll, az Site Recovery [Deployment Planner](site-recovery-deployment-planner.md#overview) segítségével tervezze meg a replikálást.
@@ -95,16 +95,16 @@ A probléma megoldásához kövesse az alábbi lépéseket a forrás virtuális 
    - InMage Scout Application Service
 4. A forrásoldali gépen vizsgálja meg a naplófájlokat a következő helyen:
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files (x86) \Microsoft Azure-hely Recovery\agent\svagents \* . log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Kiszolgáló feldolgozása szívverés nélkül [806-es hiba]
 Ha a Process Server (PS) nem rendelkezik szívveréssel, akkor a következőt kell ellenőriznie:
 1. A PS virtuális gép működése folyamatban van
 2. A hiba részleteiért olvassa el a következő naplókat a PS-ben:
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager \* . log*\
+    és
+    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* . log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Fő célkiszolgáló szívverés nélkül [hiba 78022]
 
@@ -117,7 +117,7 @@ A probléma megoldásához kövesse az alábbi lépéseket a szolgáltatás áll
     - Ellenőrizze, hogy a svagents szolgáltatás fut-e. Ha fut, indítsa újra a szolgáltatást.
     - A hiba részleteinek megtekintéséhez keresse meg a naplófájlokat a következő helyen:
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files (x86) \Microsoft Azure-hely Recovery\agent\svagents \* . log*
 3. A fő cél a konfigurációs kiszolgálóval való regisztrálásához navigáljon a mappa **%PROGRAMDATA%\ASR\Agent**, és futtassa a következő parancsot a parancssorban:
    ```
    cmd
@@ -146,24 +146,26 @@ A leggyakoribb problémák némelyike alább látható
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3. ok: ismert probléma SQL Server 2016 és 2017
 **Javítási útmutató** [: tudásbáziscikk](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>4. ok: az alkalmazás-konzisztencia nincs engedélyezve a Linux-kiszolgálókon
+**Javítás** : a Linux operációs rendszer Azure site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az egyéni parancsfájl előtti és utáni beállításokat a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazás-konzisztencia érdekében. Az [alábbi lépéseket](./site-recovery-faq.md#replication) követve engedélyezheti.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>További okok a VSS-vel kapcsolatos problémák miatt:
 
 A további hibaelhárításhoz tekintse meg a forrás gépen található fájlokat a hiba pontos hibakódjának lekéréséhez:
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files (x86) \Microsoft Azure site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 Hogyan lehet megtalálni a hibákat a fájlban?
 Keresse meg a "vacpError" karakterláncot a vacp. log fájl egy szerkesztőben való megnyitásával
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 A fenti példában a **2147754994** a hibakód, amely az alább látható hibával kapcsolatos információkat mutatja
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>A VSS-író nincs telepítve – 2147221164-es hiba
 
 *Javítás*: az alkalmazás konzisztencia-címkézésének létrehozásához Azure site Recovery a Microsoft Kötet árnyékmásolata szolgáltatást (VSS) használja. Telepíti a VSS-szolgáltatót a működéséhez, hogy az alkalmazás konzisztencia-pillanatképeket készítsen. Ez a VSS-szolgáltató szolgáltatásként van telepítve. Ha a VSS-szolgáltató szolgáltatás nincs telepítve, az alkalmazás konzisztencia-pillanatképének létrehozása sikertelen lesz, mert a 0x80040154 "osztály nincs regisztrálva" érték jelenik meg. </br>
-[A VSS-író telepítésével kapcsolatos hibaelhárításról szóló cikkben](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) olvashat
+[A VSS-író telepítésével kapcsolatos hibaelhárításról szóló cikkben](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures) olvashat
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>A VSS-író le van tiltva – 2147943458-es hiba
 
@@ -191,6 +193,6 @@ Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **autom
         - Azure Site Recovery VSS-szolgáltató
         - VDS szolgáltatás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). Aktív közösségünk van, és az egyik mérnökeink segítenek Önnek.
+Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). Aktív közösségünk van, és az egyik mérnökeink segítenek Önnek.

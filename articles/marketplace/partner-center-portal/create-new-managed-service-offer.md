@@ -1,23 +1,22 @@
 ---
 title: Felügyelt szolgáltatási ajánlat létrehozása a Microsoft kereskedelmi piactéren
 description: Új felügyelt szolgáltatási ajánlat létrehozása az Azure Marketplace-en való listázáshoz a partner Center kereskedelmi piactér portáljának használatával.
-author: JnHs
-ms.author: jenhayes
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: JnHs
+ms.author: jenhayes
+ms.date: 07/07/2020
+ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121792"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
-A felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse](../../lighthouse/overview.md) -forgatókönyvek engedélyezéséhez. Ha egy ügyfél felügyelt szolgáltatási ajánlatot fogad, akkor az Azure-beli [delegált erőforrás-kezelésre](../../lighthouse/concepts/azure-delegated-resource-management.md)képes erőforrásokat bevezetni. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+A felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse](../../lighthouse/overview.md) -forgatókönyvek engedélyezéséhez. Ha egy ügyfél felügyelt szolgáltatási ajánlatot fogad, akkor az Azure-beli [delegált erőforrás-kezelésre](../../lighthouse/concepts/azure-delegated-resource-management.md)képes erőforrásokat bevezetni. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 A felügyelt szolgáltatások ajánlatának közzétételéhez [ezüst vagy arany szintű Cloud platform kompetenciával](https://partner.microsoft.com/membership/cloud-platform-competency) kell rendelkeznie, vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -nek kell lennie.
 
@@ -80,6 +79,17 @@ Ezen a lapon megadhatja az ajánlathoz tartozó piactér adatait (például az a
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek és a használati feltételek) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
+
+:::image type="content" source="media/example-managed-services.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Cím
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek
+
 ### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
@@ -127,9 +137,9 @@ Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az 
 
 Adja meg ajánlata emblémáját négy képpontos méretben:
 
-- **Kicsi** (40 x 40)
+- **Kicsi** (48 x 48)
 - **Közepes** (90 x 90)
-- **Nagyméretű** (115 x 115)
+- **Nagyméretű** (216 x 216)
 - **Széles** (255 x 115)
 
 Kövesse az alábbi irányelveket a logókhoz:
@@ -151,7 +161,7 @@ Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezek
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
-- [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Ajánlott eljárások a piactér ajánlati listáihoz](../gtm-offer-listing-best-practices.md)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -220,7 +230,7 @@ Minden egyes **engedélyezéshez**meg kell adnia a következőket. Ezután több
 
 - **Azure ad-objektum azonosítója**: egy felhasználó, felhasználói csoport vagy alkalmazás Azure ad-azonosítója, amely bizonyos engedélyeket (a szerepkör-definícióban meghatározott módon) biztosít az ügyfelek erőforrásai számára.
 - Az **Azure ad-objektum megjelenített neve**: egy rövid név, amely segítségével az ügyfél megismerheti az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
-- **Szerepkör-definíció**: válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. A szerepkörök leírását lásd: [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) és [szerepkör-támogatás az Azure-beli delegált erőforrás-kezeléshez](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management).
+- **Szerepkör-definíció**: válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. A szerepkörök leírását lásd: [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) és [szerepkör-támogatás az Azure Lighthouse szolgáltatáshoz](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
   > [!NOTE]
   > Ahogy a megfelelő új beépített szerepköröket hozzáadjuk az Azure-hoz, itt lesznek elérhetők, de a megjelenésük előtt némi késés is előfordulhat.
 - **Hozzárendelhető szerepkörök**: Ez a beállítás csak akkor jelenik meg, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a szerepköröket a [felügyelt identitásokhoz](../../active-directory/managed-identities-azure-resources/overview.md), ami a [szervizelhető házirendek telepítéséhez](../../lighthouse/how-to/deploy-policy-remediation.md)szükséges. Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra.
@@ -253,7 +263,7 @@ Amikor egy ügyfél üzembe helyezi az ajánlatot, az Azure-beli [delegált erő
 
 Bármikor [közzéteheti az ajánlat frissített verzióját](update-existing-offer.md) . Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni egy korábban közzétett ajánlathoz. Ha így tesz, a már hozzáadott ügyfelek egy ikont láthatnak a Azure Portal [**szolgáltatók**](../../lighthouse/how-to/view-manage-service-providers.md) lapján, amely lehetővé teszi, hogy a frissítés elérhető legyen. Minden ügyfél áttekintheti a módosításokat, és eldöntheti, hogy szeretné-e frissíteni az új verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)
 - [További tudnivalók az Azure Lighthouse-ról](../../lighthouse/overview.md)

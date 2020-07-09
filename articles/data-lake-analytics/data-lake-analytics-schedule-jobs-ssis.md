@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cafb657bbb981edddf9d6bbcfc8d390a519804b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672891"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121299"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-feladatok ütemezett SQL Server Integration Services (SSIS) használatával
 
@@ -77,11 +77,11 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 2. A **mappa** beállítása a **számbavételi konfigurációs** csoportba a letöltött U-SQL-parancsfájlokat tartalmazó ideiglenes mappába.
 
-3. Állítsa be a **fájlokat** a **számbavételi konfiguráció** területen `*.usql` úgy, hogy a hurok tárolója csak a- `.usql`val végződő fájlokat kapja meg.
+3. Állítsa be a **fájlokat** a **számbavételi konfiguráció** területen `*.usql` úgy, hogy a hurok tárolója csak a-val végződő fájlokat kapja meg `.usql` .
 
     ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. A **változó-hozzárendelések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekéréséhez. Állítsa az **indexet** 0-ra a fájl nevének lekéréséhez. Ebben a példában a nevű `User::FileName`változót definiáljuk. Ez a változó a U-SQL parancsfájl-kapcsolódás dinamikus beszerzésére és az U-SQL-feladat nevének Azure Data Lake Analytics feladatban való beállítására szolgál.
+4. A **változó-hozzárendelések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekéréséhez. Állítsa az **indexet** 0-ra a fájl nevének lekéréséhez. Ebben a példában a nevű változót definiáljuk `User::FileName` . Ez a változó a U-SQL parancsfájl-kapcsolódás dinamikus beszerzésére és az U-SQL-feladat nevének Azure Data Lake Analytics feladatban való beállítására szolgál.
 
     ![A foreach hurok tárolójának konfigurálása a fájl nevének beolvasásához](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -93,14 +93,14 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
     
     A kapcsolatfájl létrehozása:
 
-   1. Válassza az ** \<új kapcsolatok... >** lehetőséget a FileConnection beállításban.
+   1. Válassza **\<New Connection...>** a FileConnection beállítást.
    2. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa a **fájlt** bármely létező fájl elérési útjára.
 
        ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. A **Csatlakozáskezelő** nézetben kattintson a jobb gombbal a most létrehozott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
 
-   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések**elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált `@[User::FileName]`változóra, például:.
+   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések**elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált változóra, például: `@[User::FileName]` .
 
        ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -111,7 +111,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 5. **Kifejezések** használata a U-SQL-feladatok nevének dinamikus beállításához:
 
     1. A **kifejezések** lapon adjon hozzá egy új Expression kulcs-érték párokat a **JobName**.
-    2. Állítsa be a JobName értékét a foreach loop-tárolóban definiált változóra, például `@[User::FileName]`:.
+    2. Állítsa be a JobName értékét a foreach loop-tárolóban definiált változóra, például: `@[User::FileName]` .
     
         ![SSIS kifejezés konfigurálása U-SQL-feladatokhoz](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 
@@ -166,7 +166,7 @@ Bizonyos esetekben érdemes lehet dinamikusan beállítani az U-SQL változó é
 
 [További információ a U-SQL-szkript paramétereinek megadásáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SSIS-csomagok futtatása az Azure-ban](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Azure Feature Pack integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)

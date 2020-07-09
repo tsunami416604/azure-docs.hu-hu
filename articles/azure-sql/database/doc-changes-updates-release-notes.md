@@ -1,22 +1,22 @@
 ---
 title: Újdonságok
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Ismerje meg a Azure SQL Database & SQL felügyelt példány-szolgáltatás és dokumentáció új funkcióit és tökéletesítéseit
+description: Ismerkedjen meg a Azure SQL Database & SQL felügyelt példányának új szolgáltatásaival és dokumentációs funkcióival.
 services: sql-database
 author: stevestein
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 07af9fa20fd6a331313050d3ba2cfbbe9c3fe7e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050302"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981373"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,9 +27,9 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető, Azure SQL Datab
 
 A Azure SQL Database és az Azure SQL felügyelt példányának dokumentációja külön szakaszokra oszlik. Azt is frissítettük, hogyan hivatkozunk felügyelt példányra *Azure SQL Database felügyelt példányról* az *Azure SQL felügyelt*példányára.
 
-Ezt azért hajtottuk végre, mert bizonyos funkciók és funkciók nagy mértékben változnak egyetlen adatbázis és felügyelt példány között, és egyre nagyobb kihívást jelent az Azure SQL Database és az Azure SQL felügyelt példánya között az egyes "megosztott" cikkekbe foglalt összetett árnyalatok ismertetése.
+Ezt azért hajtottuk végre, mert bizonyos funkciók és funkciók nagy mértékben változnak egyetlen adatbázis és egy felügyelt példány között, és egyre nagyobb kihívást jelent a Azure SQL Database és az Azure SQL felügyelt példánya között az egyes megosztott cikkekben található összetett árnyalatok ismertetése.
 
-A különböző Azure SQL-termékek közötti pontosítás egyszerűsíti és egyszerűsíti az Azure-beli SQL Server adatbázismotor használatának folyamatát, függetlenül attól, hogy egyetlen felügyelt adatbázis a Azure SQL Databaseban, egy teljes körűen felhasználható felügyelt példány, amely több adatbázist üzemeltet az Azure SQL felügyelt példányain, illetve a jól ismert helyszíni SQL Server termékben, de az Azure-beli virtuális gépen üzemel.
+A különböző Azure SQL-termékek közötti pontosítás egyszerűsíti és egyszerűsíti az Azure-beli SQL Server adatbázismotor használatának folyamatát, függetlenül attól, hogy egyetlen felügyelt adatbázis a Azure SQL Databaseban, egy teljes körűen felügyelt példány, amely több adatbázist üzemeltet az Azure SQL felügyelt példányain, vagy az ismerős helyszíni SQL Server terméket, amely az Azure-beli virtuális gépen üzemel.
 
 Vegye figyelembe, hogy ez a folyamat folyamatban van, és nem minden cikket frissítették még. Például a Transact-SQL (T-SQL) utasítások, a tárolt eljárások és a Azure SQL Database és az Azure SQL felügyelt példánya között megosztott számos szolgáltatás dokumentációja még nem fejeződött be, ezért köszönjük türelmét, hogy továbbra is tisztázza a tartalmat. 
 
@@ -48,52 +48,48 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | Új Fsv2 és M-sorozatú hardveres generációk| További információ: [Hardware Generations](service-tiers-vcore.md#hardware-generations).|
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md).|
-|Megközelítőleg eltérő számú|További információkért lásd: [eltérők megközelítő darabszáma](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
-|Batch mód a Sortárindex létrehozását (a 150-es kompatibilitási szint alatt)|További információ: [Batch Mode on sortárindex létrehozását](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
 | Adatfelderítés és besorolás  |További információ: [Azure SQL Database és az Azure szinapszis Analytics adatfelderítési & besorolása](data-discovery-and-classification-overview.md).|
 | Rugalmas adatbázis-feladatok | További információ: [rugalmas feladatok létrehozása, konfigurálása és kezelése](elastic-jobs-overview.md). |
 | Rugalmas lekérdezések | További információ: [rugalmas lekérdezés áttekintése](elastic-query-overview.md). |
 | Rugalmas tranzakciók | [Elosztott tranzakciók felhőalapú adatbázisok között](elastic-transactions-overview.md). |
-|Memória-engedélyezési visszajelzés (sor mód) (a 150-es kompatibilitási szint alatt)|További információ: [memória-engedélyezési visszajelzés (sor mód)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | A Azure Portal lekérdezés-szerkesztője |További információ: [a Azure Portal SQL Query Editor használata az adatok összekapcsolásához és lekérdezéséhez](connect-query-portal.md).|
 | R-szolgáltatások/gépi tanulás önálló adatbázisokkal és rugalmas készletekkel |További információ: [Machine Learning Services Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 |SQL Analytics|További információ: [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).|
-|Táblázat változó késleltetett fordítása (a 150-es kompatibilitási szint alatt)|További információ: [Table változó késleltetett fordítása](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
 
 ### <a name="azure-sql-managed-instance"></a>[Felügyelt Azure SQL-példány](#tab/managed-instance)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
-| <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">a Create login utasítás használatával a külső szolgáltató</a> utasításban. |
-| [Tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) | A táblák módosításait replikálja más, SQL felügyelt példányokra, SQL-adatbázisokra vagy SQL Server példányokra helyezett adatbázisokra, vagy frissítheti a táblázatokat, ha egyes sorok módosulnak más SQL felügyelt példányokban vagy SQL Server példányban. További információ: [replikáció konfigurálása az Azure SQL felügyelt példányában](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
+| <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket a <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső szolgáltatói utasítás létrehozási azonosítójával</a> . |
+| [Tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) | Replikálja a táblák módosításait a felügyelt SQL-példányok, SQL Database vagy SQL Server más adatbázisaiba. Vagy frissítse a táblázatokat, ha egyes sorok módosulnak az SQL felügyelt példányának más példányain vagy SQL Server. További információ: [replikáció konfigurálása az Azure SQL felügyelt példányában](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Fenyegetések észlelése |További információ: [a veszélyforrások észlelésének konfigurálása az Azure SQL felügyelt példányában](../managed-instance/threat-detection-configure.md).|
 | Biztonsági mentés hosszú távú megőrzése | További információ: a [hosszú távú biztonsági mentések megőrzésének konfigurálása az Azure SQL felügyelt példányain](../managed-instance/long-term-backup-retention-configure.md), amely jelenleg korlátozott nyilvános előzetes verzióban érhető el. | 
 
 ---
 
-## <a name="sql-managed-instance---new-features-and-known-issues"></a>SQL felügyelt példány – új funkciók és ismert problémák
+## <a name="sql-managed-instance-new-features-and-known-issues"></a>SQL felügyelt példány új funkciók és ismert problémák
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL felügyelt példány H2 2019-frissítések
 
-- [Szolgáltatással segített alhálózat konfigurációja](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/) Biztonságos és kényelmes mód az alhálózati konfiguráció kezelésére, ahol az adatforgalom szabályozása mellett az SQL felügyelt példány biztosítja a felügyeleti forgalom zavartalan áramlását.
-- Az [transzparens adattitkosítás (TDE) és bring your own Key (BYOK)](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) lehetővé teszi a saját kulcsú (BYOK) környezet használatát a REST-alapú adatvédelem érdekében, és lehetővé teszi a szervezetek számára a kulcsok és adatok elkülönítését a felügyeleti feladatok elvégzéséhez.
+- A [szolgáltatással segített alhálózat-konfiguráció](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/) biztonságos és kényelmes módszer az alhálózati konfiguráció kezelésére, ahol az adatforgalom szabályozása mellett az SQL felügyelt példány biztosítja a felügyeleti forgalom zavartalan áramlását.
+- Az [transzparens adattitkosítás (TDE) és bring your own Key (BYOK)](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) lehetővé teszi a REST-alapú adatvédelem (BYOK) használatát, és lehetővé teszi a szervezetek számára a kulcsok és adatok elkülönítését a felügyeleti feladatok elvégzéséhez.
 - Az [automatikus feladatátvételi csoportok](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) lehetővé teszik, hogy az elsődleges példány összes adatbázisát egy másik régió másodlagos példányára replikálja.
-- Konfigurálja az SQL felügyelt példányának viselkedését a [globális nyomkövetési jelzők](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)segítségével.
+- A [globális nyomkövetési jelzők](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/) lehetővé teszik az SQL felügyelt példányok viselkedésének konfigurálását.
 
 ### <a name="sql-managed-instance-h1-2019-updates"></a>SQL felügyelt példány H1 2019 frissítése
 
 A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe helyezési modelljében a H1 2019-ben:
   - <a href="https://aka.ms/sql-mi-visual-studio-subscribers">Azure havi Kredittel</a> rendelkező előfizetések támogatása a Visual Studio-előfizetőknek és a megnövekedett [regionális korlátoknak](../managed-instance/resource-limits.md#regional-resource-limitations)megfelelően.
-  - A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 és SharePoint 2019 </a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> támogatása
-  - Hozzon létre SQL felügyelt példányokat az Ön által választott <a href="https://aka.ms/managed-instance-collation">példány-szintű rendezéssel</a> és <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">időzónával</a> .
-  - Az SQL felügyelt nstances már védett a [beépített tűzfallal](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Konfigurálja a felügyelt SQL-példányokat [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) kapcsolatban a hálózati teljesítmény növeléséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , vagy <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurálja a biztonsági másolatok megőrzését 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
+  - A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">sharepoint 2016 és a sharepoint 2019</a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central támogatása.</a>
+  - Hozzon létre egy felügyelt példányt <a href="https://aka.ms/managed-instance-collation">példány szintű rendezéssel</a> és tetszőleges <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">időzónával</a> .
+  - A felügyelt példányok már védettek a [beépített tűzfallal](../managed-instance/management-endpoint-verify-built-in-firewall.md).
+  - Az SQL felügyelt példányának konfigurálása [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) csatlakozás a jobb hálózati teljesítmény eléréséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , illetve a <a href="https://aka.ms/managed-instance-configurable-backup-retention">biztonsági másolatok megőrzésének beállítása akár 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#sql-managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
   - Az új funkciók lehetővé teszik, hogy az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázist egy másik adatközpontba állítsa be a PowerShell használatával</a>, az [adatbázis átnevezésével](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), a [virtuális fürt törlésével](../managed-instance/virtual-cluster-delete.md).
   - Az új beépített [példány-közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) lehetővé teszi a vám (SOD) megfelelőségének a biztonsági elvekkel való elválasztását, valamint a vállalati szabványoknak való megfelelést.
   - Az SQL felügyelt példánya a következő Azure Government régiókban érhető el a GA (US Gov Texas, US Gov Arizona), valamint a Észak-Kína 2 és Kelet-Kína 2 között. A következő nyilvános régiókban érhető el: Közép-Ausztrália, Közép-Ausztrália, Dél-Brazília, Dél-Franciaország, Egyesült Arab Emírségek, Észak-Európa, Dél-Afrika, Dél-Afrika, Nyugat-Európa.
@@ -108,13 +104,13 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |[Feladatátvételi csoportok manuális feladatátvételének korlátozása a portálon keresztül](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Megkerülő megoldás||
 |[Az SQL-ügynök szerepköreinek kifejezett EXECUTE engedélyekre van szükségük a nem sysadmin (nem rendszergazdai) bejelentkezésekhez](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Megkerülő megoldás||
 |[Az SQL-ügynök feladatait az ügynök folyamatának újraindítása okozhatja](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Feloldva|Mar 2020|
-|[A HRE-bejelentkezések és a felhasználók nem támogatottak a SSDT](#aad-logins-and-users-are-not-supported-in-ssdt)|November 2019|Nincs Áthidaló megoldás||
+|[Az Azure AD-bejelentkezések és a felhasználók nem támogatottak a SSDT](#azure-ad-logins-and-users-are-not-supported-in-ssdt)|November 2019|Nincs Áthidaló megoldás||
 |[A memóriában tárolt OLTP-korlátok nincsenek alkalmazva](#in-memory-oltp-memory-limits-are-not-applied)|TOT 2019|Megkerülő megoldás||
 |[Helytelen hiba történt a nem üres fájl eltávolítására tett kísérlet során.](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|TOT 2019|Megkerülő megoldás||
 |[A szolgáltatási szintek módosítása és a példány-létrehozási műveletek blokkolva vannak az adatbázis-visszaállítás folyamatban](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Sep 2019|Megkerülő megoldás||
 |[Előfordulhat, hogy a üzletileg kritikus szolgáltatási szinten újra kell konfigurálni a Resource Governor a feladatátvétel után](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|Megkerülő megoldás||
 |[A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|Augusztus 2019|Megkerülő megoldás||
-|[Az Azure AD bejelentkezési típusok megszemélyesítése nem támogatott](#impersonification-of-azure-ad-login-types-is-not-supported)|Jul 2019|Nincs Áthidaló megoldás||
+|[Az Azure AD bejelentkezési típusok megszemélyesítése nem támogatott](#impersonation-of-azure-ad-login-types-is-not-supported)|Jul 2019|Nincs Áthidaló megoldás||
 |[@querya paraméter nem támogatott sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Nincs Áthidaló megoldás||
 |[A tranzakciós replikációt újra kell konfigurálni a Geo-feladatátvétel után](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Nincs Áthidaló megoldás||
 |[A VISSZAÁLLÍTÁSi művelet során a rendszer ideiglenes adatbázist használ](#temporary-database-is-used-during-restore-operation)||Megkerülő megoldás||
@@ -126,37 +122,37 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |[A CLR-modulok és a csatolt kiszolgálók időnként nem hivatkozhatnak helyi IP-címekre.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Megkerülő megoldás||
 |Az adatbázis konzisztencia-ellenőrzése a DBCC CHECKDB UTASÍTÁST használatával nem történt meg az Azure-beli Blob Storage adatbázis visszaállítása után.||Feloldva|November 2019|
 |Az adott időponthoz tartozó adatbázis-visszaállítás üzletileg kritikus rétegről általános célú szintjére nem lesz sikeres, ha a forrásadatbázis memóriában tárolt OLTP objektumokat tartalmaz.||Feloldva|TOT 2019|
-|Database Mail funkció külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával||Feloldva|TOT 2019|
+|Az adatbázis levelezési funkciója külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával||Feloldva|TOT 2019|
 |A felügyelt SQL-példányok nem támogatják a foglalt adatbázisokat.||Feloldva|Augusztus 2019|
 
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet
 
-Bizonyos körülmények között a felügyelt példányon az ELLENŐRZŐÖSSZEG nélkül létrehozott adatbázisok manuális biztonsági mentését nem lehet visszaállítani. Ilyen esetekben próbálja meg újra visszaállítani a biztonsági mentést, amíg a művelet nem sikerült.
+Bizonyos körülmények között a felügyelt példányon az ELLENŐRZŐÖSSZEG nélküli használatával készített adatbázisok manuális biztonsági mentését nem lehet visszaállítani. Ilyen esetekben próbálja meg újra visszaállítani a biztonsági mentést, amíg nem sikerül.
 
-**Megkerülő megoldás**: manuális biztonsági mentést készíthet a felügyelt példányon tárolt adatbázisokról az ellenőrzőösszeg engedélyezésével.
+**Megkerülő megoldás**: a felügyelt példányokon lévő adatbázisok manuális biztonsági mentését az ellenőrzőösszeg szolgáltatással engedélyezheti.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén
 
-Bizonyos körülmények között, ha egy meglévő feladatot módosítanak, letiltják vagy engedélyezik, az ügynök nem válaszol. A probléma automatikusan az ügynök folyamatának újraindítását eredményező észleléskor lesz enyhítve.
+Bizonyos esetekben a meglévő feladatok módosítása, letiltása vagy engedélyezése miatt az ügynök nem válaszol. A probléma automatikusan az észleléskor lesz enyhítve, ami az ügynök folyamatának újraindítását eredményezi.
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>Nem az SQL felügyelt példányára vonatkozó engedélyek vannak alkalmazva az erőforráscsoporthoz
 
-Az SQL felügyelt példány közreműködői RBAC szerepköre nem lett alkalmazva az SQL felügyelt példányára, és nincs hatása.
+Ha az SQL felügyelt példány közreműködői RBAC szerepköre egy erőforráscsoport (RG) esetében van alkalmazva, a rendszer nem alkalmazza az SQL felügyelt példányra, és nincs hatással.
 
-**Áthidaló megoldás**: állítsa be az SQL felügyelt példány közreműködői szerepkört a felhasználók számára az előfizetés szintjén.
+**Megkerülő megoldás**: állítson be egy SQL felügyelt példány közreműködői szerepkört a felhasználók számára az előfizetési szinten.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Feladatátvételi csoportok manuális feladatátvételének korlátozása a portálon keresztül
 
-Ha a feladatátvételi csoport különböző Azure-előfizetések vagy-erőforráscsoportok példányai között kiterjed, a manuális feladatátvétel nem indítható el a feladatátvételi csoport elsődleges példányáról.
+Ha egy feladatátvételi csoport különböző Azure-előfizetések vagy-erőforráscsoportok példányain terjed ki, a manuális feladatátvétel nem indítható el a feladatátvételi csoport elsődleges példányán.
 
-**Áthidaló megoldás**: kezdeményezzen feladatátvételt a portálon keresztül a Geo-másodlagos példányon keresztül.
+**Áthidaló megoldás**: kezdeményezzen feladatátvételt a portálon keresztül a Geo-másodlagos példányon.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>Az SQL-ügynök szerepköreinek kifejezett EXECUTE engedélyekre van szükségük a nem sysadmin (nem rendszergazdai) bejelentkezésekhez
 
-Ha nem sysadmin bejelentkezési adatokat ad hozzá az [SQL Agent rögzített adatbázis-szerepköreihez](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), létezik egy olyan probléma, amelyben a bejelentkezési adatok működéséhez meg kell adni explicit végrehajtási engedélyeket a fő tárolt eljárásokhoz. A probléma előfordulásakor a "végrehajtás engedély megtagadva az objektumon <object_name> (Microsoft SQL Server, hiba: 229)" hibaüzenet jelenik meg.
+Ha nem sysadmin bejelentkezési adatokat ad hozzá bármely [SQL Agent rögzített adatbázis-szerepkörhöz](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), létezik egy olyan probléma, amelyben explicit végrehajtási engedélyeket kell adni a bejelentkezések fő tárolt eljárásaihoz. A probléma előfordulásakor a "végrehajtás engedély megtagadva az objektumon <object_name> (Microsoft SQL Server, hiba: 229)" hibaüzenet jelenik meg.
 
-**Megkerülő megoldás**: Miután hozzáadta a bejelentkezéseket az SQL Agent rögzített adatbázis-szerepköreihez: SQLAgentUserRole, SQLAgentReaderRole vagy sqlagentoperatorrole indíthatják, a szerepkörökhöz hozzáadott összes bejelentkezéshez hajtsa végre az alábbi T-SQL-szkriptet, hogy explicit módon adjon végrehajtási engedélyeket a felsorolt tárolt eljárásoknak.
+**Megkerülő megoldás**: Miután hozzáadta a bejelentkezéseket egy SQL Agent rögzített adatbázis-szerepkörhöz (SQLAgentUserRole, SQLAgentReaderRole vagy sqlagentoperatorrole indíthatják), a szerepkörökhöz hozzáadott összes bejelentkezéshez hajtsa végre az alábbi T-SQL-parancsfájlt, hogy explicit módon adjon végrehajtási engedélyeket a felsorolt tárolt eljárásoknak.
 
 ```tsql
 USE [master]
@@ -174,39 +170,41 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>A memóriában tárolt OLTP-korlátok nincsenek alkalmazva
 
-Üzletileg kritikus a szolgáltatási réteg nem fogja megfelelően alkalmazni [a memóriára optimalizált objektumok maximális memóriára vonatkozó korlátozásait](../managed-instance/resource-limits.md#in-memory-oltp-available-space) bizonyos esetekben. A felügyelt SQL-példányok lehetővé tehetik, hogy a számítási feladatok nagyobb memóriát használjanak a memóriában tárolt OLTP-műveletekhez, ami hatással lehet a példány rendelkezésre állására és stabilitására. Előfordulhat, hogy a korlátokat elérő memóriabeli OLTP-lekérdezések nem lesznek azonnal sikertelenek. Ezt a problémát hamarosan megjavítja a rendszer. A memóriában lévő OLTP memóriát használó lekérdezések hamarabb sikertelenek lesznek, ha elérik a [határértékeket](../managed-instance/resource-limits.md#in-memory-oltp-available-space).
+A üzletileg kritikus szolgáltatási réteg bizonyos esetekben nem fogja helyesen alkalmazni a [memóriára optimalizált objektumok maximális memóriára vonatkozó korlátozásait](../managed-instance/resource-limits.md#in-memory-oltp-available-space) . A felügyelt SQL-példányok lehetővé tehetik, hogy a számítási feladatok nagyobb memóriát használjanak a memóriában tárolt OLTP-műveletekhez, ami hatással lehet a példány rendelkezésre állására és stabilitására. Előfordulhat, hogy a korlátokat elérő memóriabeli OLTP-lekérdezések nem lesznek azonnal sikertelenek. Ezt a problémát hamarosan megjavítja a rendszer. A memóriában lévő OLTP memóriát használó lekérdezések hamarabb sikertelenek lesznek, ha elérik a [határértékeket](../managed-instance/resource-limits.md#in-memory-oltp-available-space).
 
-**Áthidaló megoldás:** [figyelje a MEMÓRIÁban tárolt OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitor-space) a [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) használatával, hogy a számítási feladatok ne használják a rendelkezésre álló memóriát. Növelje a memória korlátait, amelyek a virtuális mag számától függenek, vagy optimalizálja a számítási feladatokat kevesebb memória használatára.
+**Áthidaló megoldás**: [figyelje a MEMÓRIÁban tárolt OLTP](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-monitor-space) a [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) használatával, hogy a munkaterhelés ne használja a rendelkezésre álló memóriát. Növelje a memória korlátait, amelyek a virtuális mag számától függenek, vagy optimalizálja a számítási feladatokat kevesebb memória használatára.
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Helytelen hiba történt a nem üres fájl eltávolítására tett kísérlet során.
 
-SQL Server/SQL felügyelt példány nem [engedélyezi a felhasználó számára, hogy ne ejtsen el olyan fájlt, amely nem üres](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Ha nem üres adatfájlt próbál meg eltávolítani `ALTER DATABASE REMOVE FILE` az utasítás használatával, a `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` rendszer nem küldi el azonnal a hibát. Az SQL felügyelt példánya továbbra is megpróbálja eldobni a fájlt, és a művelet 30 perc után sikertelen lesz `Internal server error` .
+A SQL Server és az SQL felügyelt példánya nem [engedi, hogy a felhasználó eldobjon egy nem üres fájlt](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Ha nem üres adatfájlt próbál meg eltávolítani egy utasítás használatával `ALTER DATABASE REMOVE FILE` , a `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` rendszer nem küldi el azonnal a hibát. Az SQL felügyelt példánya továbbra is megpróbálja eldobni a fájlt, és 30 perc elteltével sikertelen lesz a művelet `Internal server error` .
 
-**Áthidaló megoldás**: távolítsa el a fájl tartalmát a `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` parancs használatával. Ha ez az egyetlen fájl a fájlcsoportja, akkor törölnie kell az ehhez a fájlcsoportja tartozó táblából vagy partícióból származó adatait a fájl zsugorítása előtt, és opcionálisan be kell töltenie ezeket az adatok egy másik táblába/partícióba.
+**Áthidaló megoldás**: távolítsa el a fájl tartalmát a `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` parancs használatával. Ha ez az egyetlen fájl a fájlkiszolgálón, akkor törölnie kell az ehhez a fájlhoz társított táblából vagy partícióból származó adatokból a fájl zsugorítása előtt, és szükség esetén be kell töltenie ezeket az adatok egy másik táblába/partícióba.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>A szolgáltatási szintek módosítása és a példány-létrehozási műveletek blokkolva vannak az adatbázis-visszaállítás folyamatban
 
-`RESTORE`A folyamatos utasítás, az adatáttelepítési szolgáltatás áttelepítési folyamata és a beépített idővisszaállítási funkció letiltja a meglévő példány frissítési vagy átméretezését, valamint új példányok létrehozását, amíg a visszaállítási folyamat be nem fejeződik. A visszaállítási folyamat letiltja ezeket a műveleteket a felügyelt példányokon és példány-készleteken ugyanabban az alhálózatban, ahol a visszaállítási folyamat fut. A példányok példányai nem érintettek. A szolgáltatási réteg műveleteinek létrehozása vagy módosítása nem fog sikerülni vagy időtúllépés – a visszaállítási folyamat befejeződése vagy megszakítása után folytatódni fog.
+A folyamatos `RESTORE` utasítás, az adatáttelepítési szolgáltatás áttelepítési folyamata és az időponthoz tartozó beépített visszaállítás letiltja a szolgáltatási szintek vagy a meglévő példány átméretezésének frissítését, és új példányokat hoz létre, amíg a visszaállítási folyamat be nem fejeződik. 
 
-**Áthidaló megoldás**: Várjon, amíg a visszaállítási folyamat befejeződik, vagy szakítsa meg a visszaállítási folyamatot, ha a Service-réteg létrehozása vagy frissítése magasabb prioritással rendelkezik.
+A visszaállítási folyamat letiltja ezeket a műveleteket a felügyelt példányokon és példány-készleteken abban az alhálózatban, amelyben a visszaállítási folyamat fut. A példányok példányai nem érintettek. A szolgáltatási rétegbeli műveletek létrehozása vagy módosítása nem fog sikerülni vagy időtúllépés miatt. A visszaállítási folyamat befejezése vagy megszakítása után folytatódnak.
+
+**Áthidaló megoldás**: Várjon, amíg a visszaállítási folyamat befejeződik, vagy szakítsa meg a visszaállítási folyamatot, ha a létrehozási vagy frissítési szolgáltatási rétegbeli művelet magasabb prioritással rendelkezik.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Előfordulhat, hogy a üzletileg kritikus szolgáltatási szinten újra kell konfigurálni a Resource Governor a feladatátvétel után
 
-[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) funkció, amely lehetővé teszi a felhasználói munkaterheléshez rendelt erőforrások korlátozását, előfordulhat, hogy a feladatátvétel vagy a felhasználó által kezdeményezett változás miatt helytelenül osztályoz bizonyos felhasználói munkaterheléseket (például a maximális virtuális mag vagy a példányok maximális tárolási méretének módosítása).
+A [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) funkció, amely lehetővé teszi a felhasználói munkaterheléshez rendelt erőforrások korlátozását, a feladatátvétel vagy a felhasználó által kezdeményezett változás (például a maximális virtuális mag vagy a példányok maximális mérete) módosítását helytelenül osztályozhatja.
 
-**Megkerülő megoldás**: `ALTER RESOURCE GOVERNOR RECONFIGURE` időnként vagy az SQL-ügynök feladatának részeként futtassa az SQL-feladatot, amikor a példány elindul, ha [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)használ.
+**Megkerülő megoldás**: futtassa `ALTER RESOURCE GOVERNOR RECONFIGURE` rendszeresen vagy egy SQL-ügynök feladatának részeként, amely VÉGREHAJTja az SQL-feladatot, amikor a példány elindul, ha [Resource Governort](/sql/relational-databases/resource-governor/resource-governor)használ.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.
 
-Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhetővé az üzeneteket más adatbázisokban lévő szolgáltatásoknak a szolgáltatási réteg módosítása után. Az üzenetek **nem vesznek** el, és a küldő várólistáján találhatók. A virtuális mag vagy a példány tárolási méretének változása az SQL felügyelt példányában a `service_broke_guid` [sys. Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézet értékét fogja megváltoztatni az összes adatbázis esetében. A `DIALOG` más adatbázisban található Service Broker szolgáltatásra hivatkozó [BEGIN Dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) utasítással létrehozott minden egyes létrehozott üzenet nem fog üzeneteket kézbesíteni a célként megadott szolgáltatásnak.
+Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhetővé az üzeneteket más adatbázisokban lévő szolgáltatásoknak a szolgáltatási réteg módosítása után. Az üzenetek *nem vesznek*el, és a küldő várólistáján találhatók. Az SQL felügyelt példányaiban a virtuális mag vagy a példány tárolási méretének változása esetén a `service_broke_guid` [sys. Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézetet fogja megváltoztatni az összes adatbázisra vonatkozóan. A `DIALOG` más adatbázisban található Service Broker szolgáltatásra hivatkozó [BEGIN Dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) utasítással létrehozott minden olyan üzenet, amely nem kézbesíti az üzeneteket a célként megadott szolgáltatásnak.
 
-**Áthidaló megoldás:** A szolgáltatási réteg frissítése előtt állítson le minden olyan tevékenységet, amely több adatbázison Service Broker párbeszéd-beszélgetést használ, majd az újrainicializálása után. Ha a szolgáltatási szintek változása után még nem elérhető üzenetek vannak, olvassa el a forrás-üzenetsor üzeneteit, és küldje el újra a cél várólistára.
+**Megkerülő megoldás**: állítson le minden olyan tevékenységet, amely több adatbázison Service Broker párbeszédet használ a szolgáltatási réteg frissítése előtt, majd újrainicializálja őket. Ha a szolgáltatási rétegek megváltozása után megmaradnak a fennmaradó üzenetek, olvassa el a forrás-üzenetsor üzeneteit, és küldje el újra a cél várólistára.
 
-### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Az Azure AD bejelentkezési típusok megszemélyesítése nem támogatott
+### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>Az Azure AD bejelentkezési típusok megszemélyesítése nem támogatott
 
-A `EXECUTE AS USER` `EXECUTE AS LOGIN` következő HRE-rendszerbiztonsági tag vagy a használatával történő megszemélyesítés nem támogatott:
--    Alias HRE-felhasználók. Ebben az esetben a következő hibaüzenetet adja vissza `15517` .
-- HRE-bejelentkezések és felhasználók HRE-alkalmazások vagy egyszerű szolgáltatások alapján. Ebben az esetben a következő hibákat adja vissza: `15517` és `15406` .
+`EXECUTE AS USER` `EXECUTE AS LOGIN` A következő Azure Active Directory-(Azure ad-) rendszerbiztonsági tag vagy a használatával történő megszemélyesítés nem támogatott:
+-   Aliast használó Azure AD-felhasználók. Ebben az esetben a következő hibaüzenetet adja vissza: `15517` .
+- Azure AD-alapú bejelentkezések és felhasználók Azure AD-alkalmazásokon vagy-egyszerű szolgáltatásokon alapuló felhasználók. Ebben az esetben a következő hibaüzeneteket adja vissza: `15517` és `15406` .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querya paraméter nem támogatott sp_send_db_mail
 
@@ -214,15 +212,19 @@ A `@query` [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>A tranzakciós replikációt újra kell konfigurálni a Geo-feladatátvétel után
 
-Ha a tranzakciós replikáció engedélyezve van egy automatikus feladatátvételi csoportban lévő adatbázison, akkor az SQL felügyelt példányának rendszergazdájának törölnie kell a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően egy másik régióba. További részletekért lásd: [replikáció](../managed-instance/transact-sql-tsql-differences-sql-server.md#replication) .
+Ha a tranzakciós replikáció engedélyezve van egy automatikus feladatátvételi csoportban lévő adatbázison, akkor az SQL felügyelt példányának rendszergazdájának törölnie kell a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően egy másik régióba. További információ: [replikáció](../managed-instance/transact-sql-tsql-differences-sql-server.md#replication).
 
-### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>A HRE-bejelentkezések és a felhasználók nem támogatottak a SSDT
+### <a name="azure-ad-logins-and-users-are-not-supported-in-ssdt"></a>Az Azure AD-bejelentkezések és a felhasználók nem támogatottak a SSDT
 
-SQL Server Data Tools nem támogatja teljes mértékben az Azure Active Directory-bejelentkezéseket és-felhasználókat.
+SQL Server Data Tools nem támogatja teljes mértékben az Azure AD-bejelentkezéseket és-felhasználókat.
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>A VISSZAÁLLÍTÁSi művelet során a rendszer ideiglenes adatbázist használ
 
-Ha egy adatbázis a felügyelt SQL-példányon van helyreállítva, a visszaállítási szolgáltatás először egy üres adatbázist hoz létre a kívánt névvel a példányon a név lefoglalásához. Némi idő elteltével ez az adatbázis el lesz dobva, és a rendszer elindítja a tényleges adatbázis visszaállítását. A *visszaállítási* állapotban lévő adatbázis neve helyett véletlenszerű GUID-értékkel fog rendelkezni. Az ideiglenes név az utasításban megadott kívánt névre változik a `RESTORE` visszaállítási folyamat befejeződése után. A kezdeti fázisban a felhasználó hozzáférhet az üres adatbázishoz, és akár táblákat is létrehozhat, vagy betöltheti az adatbázist. Ezt az ideiglenes adatbázist a rendszer elveti, ha a visszaállítási szolgáltatás elindítja a második fázist.
+Ha egy adatbázis a felügyelt SQL-példányban van helyreállítva, a visszaállítási szolgáltatás először egy üres adatbázist hoz létre a kívánt névvel a példányon a név lefoglalásához. Némi idő elteltével ez az adatbázis el lesz dobva, és a rendszer elindítja a tényleges adatbázis visszaállítását. 
+
+A *visszaállítási* állapotban lévő adatbázis neve helyett véletlenszerű GUID-értékkel fog rendelkezni. A visszaállítási folyamat befejeződése után az ideiglenes név az utasításban megadott kívánt névre lesz módosítva `RESTORE` . 
+
+A kezdeti fázisban a felhasználók hozzáférhetnek az üres adatbázishoz, és akár táblákat is létrehozhatnak, vagy betölthetnek egy adatkészletet ebben az adatbázisban. Ezt az ideiglenes adatbázist a rendszer elveti, ha a visszaállítási szolgáltatás elindítja a második fázist.
 
 **Megkerülő megoldás**: ne nyissa meg a visszaállítani kívánt adatbázist, amíg nem látja, hogy a visszaállítás befejeződött.
 
@@ -234,14 +236,14 @@ Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete 
 
 `CREATE DATABASE`a, `ALTER DATABASE ADD FILE` és `RESTORE DATABASE` az utasítások sikertelenek lehetnek, mert a példány elérheti az Azure Storage-korlátot.
 
-Minden általános célú SQL felügyelt példány legfeljebb 35 TB tárterülettel rendelkezik, amely az Azure Premium lemezterület számára van fenntartva. Minden adatbázisfájl külön fizikai lemezre kerül. A lemezek mérete 128 GB, 256 GB, 512 GB, 1 TB vagy 4 TB lehet. A lemez nem használt lemezterülete nem számít fel díjat, de az Azure Premium-lemezek teljes mérete nem haladhatja meg a 35 TB-ot. Bizonyos esetekben előfordulhat, hogy egy olyan SQL felügyelt példány, amely nem igényel 8 TB-ot, a belső töredezettség miatt túllépheti a 35 TB-os Azure-korlátot a tárterület méretétől függően.
+A felügyelt SQL-példányok minden általános célú példánya akár 35 TB tárterületet foglal le az Azure Premium lemezterülethez. Minden adatbázisfájl külön fizikai lemezre kerül. A lemezek mérete 128 GB, 256 GB, 512 GB, 1 TB vagy 4 TB lehet. A lemez nem használt lemezterülete nem számít fel díjat, de az Azure Premium-lemezek teljes mérete nem haladhatja meg a 35 TB-ot. Bizonyos esetekben előfordulhat, hogy egy felügyelt példány, amely nem igényel 8 TB-ot, a belső töredezettség miatt túllépheti a 35 TB-os Azure-korlátot a tárterületen.
 
-Előfordulhat például, hogy egy általános célú SQL felügyelt példányon egy 4 TB-os lemezre helyezett 1,2 TB méretű fájl található. Az is előfordulhat, hogy a 248-es fájlok mindegyike 1 GB méretű, és mindegyik külön 128 GB-os lemezre van helyezve. Ebben a példában:
+Előfordulhat például, hogy az SQL felügyelt példány általános célú példánya egy 4 TB-os lemezre helyezett, 1,2 TB-os méretű fájllal rendelkezik. Az is előfordulhat, hogy a 248-es fájlok mindegyike 1 GB, amely külön 128 GB-os lemezekre van helyezve. Ebben a példában:
 
 - A lefoglalt tárterület teljes mérete 1 x 4 TB + 248 x 128 GB = 35 TB.
 - A példányon lévő adatbázisok teljes lefoglalt területe 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
 
-Ez a példa azt szemlélteti, hogy bizonyos körülmények között a fájlok adott eloszlása miatt egy SQL-felügyelt példány elérheti a csatolt Azure Premium-lemez számára fenntartott 35 TB-os korlátot, ha nem várható.
+Ez a példa azt szemlélteti, hogy bizonyos körülmények között a fájlok adott eloszlása miatt a felügyelt SQL-példányok egy példánya elérheti a csatolt Azure Premium-lemez számára fenntartott 35 TB-os korlátot, ha nem várható.
 
 Ebben a példában a meglévő adatbázisok továbbra is működőképesek maradnak, és bármilyen probléma nélkül növekednek, amíg új fájlok nem lettek hozzáadva. Új adatbázisok nem hozhatók létre és nem állíthatók vissza, mert nincs elég hely az új lemezmeghajtók számára, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretkorlát-korlátját. Az ebben az esetben visszaadott hiba nem egyértelmű.
 
@@ -251,7 +253,7 @@ Ebben a példában a meglévő adatbázisok továbbra is működőképesek marad
 
 A rendszernézetek, a teljesítményszámlálók, a hibaüzenetek, a Xevent típusú eseményekhez és a hibanapló-bejegyzések a tényleges adatbázis neve helyett GUID-adatbázis-azonosítókat jelenítenek meg. Ne használja ezeket a GUID azonosítókat, mert azokat a rendszer a későbbiekben a tényleges adatbázis-nevekkel cseréli le.
 
-**Megkerülő megoldás**: a sys. Databases nézetet használva oldja fel a tényleges adatbázis nevét a fizikai adatbázis nevéből, a GUID adatbázis-azonosítók formájában megadva.
+**Megkerülő megoldás**: a sys. Databases nézetet használva oldja fel a tényleges adatbázis nevét a fizikai adatbázis nevéből, a GUID adatbázis-azonosítók formájában megadva:
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -290,13 +292,13 @@ using (var scope = new TransactionScope())
 
 ```
 
-**Áthidaló megoldás (2020 márciusa óta nem szükséges):** A [SqlConnection. ChangeDatabase (string)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) használatával használjon másik adatbázist kapcsolati környezetben a két kapcsolat használata helyett.
+**Áthidaló megoldás (2020 márciusa óta nem szükséges)**: a [SqlConnection. ChangeDatabase (string)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) használatával használjon másik adatbázist kapcsolati környezetben ahelyett, hogy két kapcsolatot kellene használnia.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>A CLR-modulok és a csatolt kiszolgálók időnként nem hivatkozhatnak helyi IP-címekre.
 
-A felügyelt SQL-példányba helyezett CLR-modulok és a társított kiszolgálók vagy az aktuális példányra hivatkozó elosztott lekérdezések néha nem tudják feloldani a helyi példányok IP-címét. Ez a hiba átmeneti probléma.
+Az SQL felügyelt példányában lévő CLR-modulok és a társított kiszolgálók vagy az aktuális példányra hivatkozó elosztott lekérdezések néha nem tudják feloldani a helyi példányok IP-címét. Ez a hiba átmeneti probléma.
 
-**Áthidaló megoldás:** Ha lehetséges, használjon egy CLR-modul környezeti kapcsolatait.
+**Megkerülő megoldás**: ha lehetséges, használjon egy CLR-modul környezeti kapcsolatait.
 
 ## <a name="updates"></a>Frissítések
 

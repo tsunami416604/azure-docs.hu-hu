@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873526"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187544"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon
 
-Ebben a rövid útmutatóban a Azure Portal használatával hozza létre Azure Database Migration Service példányát.  A példány létrehozása után a segítségével áttelepítheti SQL Server a helyszíni adatokból a Azure SQL Databaseba.
+Ebben a rövid útmutatóban a Azure Portal használatával hozza létre Azure Database Migration Service példányát.  A példány létrehozása után a segítségével áttelepítheti az adatok SQL Serverból a Azure SQL Databaseba.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -71,11 +71,11 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
     ![Létrehozott migrálási szolgáltatás](media/quickstart-create-data-migration-service-portal/dms-service-created.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A rövid útmutató során létrehozott erőforrásokat az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) törlésével távolíthatja el. Az erőforráscsoport törléséhez keresse meg a létrehozott Azure Database Migration Service-példányt. Válassza ki az **Erőforráscsoport** nevét, majd válassza az **Erőforráscsoport törlése** elemet. A művelettel az erőforráscsoport összes elemét és magát a csoportot is törli.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Helyi SQL Server migrálása az Azure SQL Database-be](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server migrálása Azure SQL Database-re](tutorial-sql-server-to-azure-sql.md)

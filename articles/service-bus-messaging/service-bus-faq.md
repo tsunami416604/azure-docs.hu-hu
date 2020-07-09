@@ -1,20 +1,13 @@
 ---
 title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341466"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -51,7 +44,7 @@ Az üzenetek küldéséhez és fogadásához a következő protokollokat haszná
 
 Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
 
-| Protocol (Protokoll) | Portok | Részletek | 
+| Protokoll | Portok | Részletek | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -63,23 +56,23 @@ Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsola
 1. Futtassa a következő parancsot egy parancssorból: 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.cloudapp.net
     ```
-2. Jegyezze fel `Non-authoritative answer`a VISSZAADOTT IP-címet. Ez az IP-cím statikus. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ez az IP-cím statikus. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
 
 Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
 1. Először futtassa az nslookupt a névtéren.
 
     ```
-    nslookup <yournamespace>.servicebus.windows.net
+    nslookup <yournamespace>.cloudapp.net
     ```
 2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
@@ -123,25 +116,18 @@ Fontos megjegyezni, hogy ezek nem új díjak, azaz az előző számlázási mode
 
 Service Bus korlátok és kvóták listáját a [Service Bus kvóták áttekintésében][Quotas overview]találhatja meg.
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>Van Service Bus használati kvótája?
-Alapértelmezés szerint bármely felhőalapú szolgáltatás esetében a Microsoft egy összesített havi használati kvótát állít be, amelyet az ügyfél összes előfizetése alapján számítunk fel. Ha ennél több korlátra van szüksége, bármikor felveheti a kapcsolatot az ügyfélszolgálattal, hogy megértse az igényeit, és megfelelően módosítsa ezeket a korlátokat. Service Bus esetében az összesített használati kvóta 5 000 000 000 üzenet havonta.
-
-Míg a Microsoft fenntartja a jogot arra, hogy letiltsa a használati kvótákat egy adott hónapban, a rendszer elküldje az e-mailes értesítéseket, és a művelet végrehajtása előtt több kísérletet Kérjen a felhasználótól. Az ezen kvótákat meghaladó ügyfelek továbbra is felelősek a kvótákat túllépő díjakért.
-
-Az Azure-ban más szolgáltatásokhoz hasonlóan a Service Bus meghatározott kvótákat kényszerít ki annak biztosítására, hogy az erőforrások valós kihasználtsága legyen. Ezekről a kvótákkal kapcsolatban a [Service Bus-kvóták áttekintésében][Quotas overview]talál további információt.
-
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>1 MB méretű üzenetek kezelése >
 Service Bus Messaging Services (várólisták és témakörök/előfizetések) lehetővé teszik, hogy az alkalmazás legfeljebb 256 KB-os (standard szintű) vagy 1 MB (prémium szint) méretű üzeneteket küldjön. Ha 1 MB-nál nagyobb méretű üzeneteket használ, használja az [ebben a blogbejegyzésben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)leírt jogcím-ellenőrzési mintát.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem lehet névteret létrehozni egy másik előfizetésből való törlés után? 
-Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists`. 
+Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Melyek a Azure Service Bus API-k által generált kivételek és a javasolt műveletek?
 A lehetséges Service Bus kivételek listáját lásd: [kivételek áttekintése][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Mi a közös hozzáférési aláírás, és milyen nyelveket támogat az aláírás létrehozása?
-A közös hozzáférésű aláírások az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmusok. További információ a saját aláírások létrehozásáról a Node. js, a PHP, a Java, a Python és a C# nyelveken: [közös hozzáférésű aláírások][Shared Access Signatures] című cikk.
+A közös hozzáférésű aláírások az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmusok. További információ a saját aláírások létrehozásáról Node.js, PHP, Java, Python és C# nyelven: [közös hozzáférésű aláírások][Shared Access Signatures] című cikk.
 
 ## <a name="subscription-and-namespace-management"></a>Előfizetés és névtér kezelése
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan áttelepíteni egy névteret egy másik Azure-előfizetésbe?

@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: adatbázis hozzáadása automatikus feladatátvételi csoporthoz'
-description: Azure PowerShell parancsfájlt egy Azure SQL Database létrehozásához, egy automatikus feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
+description: Azure PowerShell-parancsfájl használatával hozzon létre egy adatbázist a Azure SQL Databaseban, vegye fel azt egy automatikus feladatátvételi csoportba, és tesztelje a feladatátvételt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,27 +11,28 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 0283c31cee4f2bc1bc3b4cd2f78f816286017e3d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6750d7bf4d5593807a35c38fe92b568d1bc06bd7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053380"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197000"
 ---
-# <a name="use-powershell-to-add-an-azure-sql-database-to-a-failover-group"></a>Azure SQL Database hozzáadása feladatátvételi csoporthoz a PowerShell használatával
+# <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>Adatbázis hozzáadása feladatátvételi csoporthoz a PowerShell használatával
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez a PowerShell-parancsfájl egy önálló adatbázist hoz létre, létrehoz egy feladatátvételi csoportot, hozzáadja az adatbázist, és teszteli a feladatátvételt.
+Ez a PowerShell-parancsfájl például egyetlen adatbázist hoz létre a Azure SQL Databaseban, létrehoz egy feladatátvételi csoportot, hozzáadja az adatbázist, és teszteli a feladatátvételt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-scripts"></a>Mintaparancsfájlok
 
-[!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
+[!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add a database to a failover group")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -60,6 +61,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../powershell-script-content-guide.md).

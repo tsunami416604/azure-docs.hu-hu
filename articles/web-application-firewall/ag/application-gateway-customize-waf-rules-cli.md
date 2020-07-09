@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74048536"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Webalkalmazási tűzfalszabályok testreszabása az Azure CLI használatával
@@ -116,7 +115,7 @@ A következő kimenet egy csonkolt válasz az előző példából:
 
 ## <a name="disable-rules"></a>Szabályok letiltása
 
-A következő példa letiltja a `910018` szabályokat `910017` és az Application Gateway-t:
+A következő példa letiltja a szabályokat `910018` és az `910017` Application Gateway-t:
 
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017

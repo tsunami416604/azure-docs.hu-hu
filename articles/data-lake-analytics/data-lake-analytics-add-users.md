@@ -7,19 +7,19 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16ec54bb2a41927a92d953586af59ae3653a29c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672728"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117457"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Felhasználó hozzáadása az Azure Portalon
 
 ## <a name="start-the-add-user-wizard"></a>A felhasználó hozzáadása varázsló elindítása
-1. Nyissa meg a https://portal.azure.comAzure Data Lake Analyticst a használatával.
+1. Nyissa meg a Azure Data Lake Analyticst a használatával https://portal.azure.com .
 2. Kattintson a **felhasználó hozzáadása varázsló**elemre.
 3. A **felhasználó kiválasztása** lépésben keresse meg azt a felhasználót, akit hozzá kíván adni. Kattintson a **Kiválasztás** gombra.
 4. a **szerepkör kiválasztása lépésben válassza ki** **Data Lake Analytics fejlesztőt**. Ez a szerepkör az U-SQL-feladatok elküldéséhez/figyeléséhez vagy kezeléséhez szükséges engedélyek minimális készletét határozza meg. Rendeljen hozzá ehhez a szerepkörhöz, ha a csoport nem az Azure-szolgáltatások kezelésére szolgál.
@@ -43,7 +43,7 @@ Szükség szerint "R-X" vagy "RWX" megadása a bemeneti adatokat és a kimeneti 
 ## <a name="adding-a-user-using-powershell"></a>Felhasználó hozzáadása a PowerShell használatával
 
 1. Kövesse a jelen útmutató utasításait: [Azure PowerShell telepítése és konfigurálása](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-2. Töltse le a [Add-AdlaJobUser. ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell-szkriptet.
+2. Töltse le a [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell-szkriptet.
 3. Futtassa a PowerShell-szkriptet. 
 
 Az a minta parancs, amellyel felhasználói hozzáférést biztosíthat a feladatok elküldéséhez, megtekintheti az új feladatok metaadatait, és megtekintheti a régi metaadatokat:
@@ -51,7 +51,7 @@ Az a minta parancs, amellyel felhasználói hozzáférést biztosíthat a felada
 `Add-AdlaJobUser.ps1 -Account myadlsaccount -EntityToAdd 546e153e-0ecf-417b-ab7f-aa01ce4a7bff -EntityType User -FullReplication`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)

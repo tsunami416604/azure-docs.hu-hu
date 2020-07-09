@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714236"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259252"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rövid útmutató: az első statikus webalkalmazás felépítése
 
@@ -31,25 +31,25 @@ Ez a cikk a GitHub-sablonok tárházait használja, így egyszerűen létrehozha
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- Új tárház létrehozásához navigáljon a következő helyre
+- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
   - https://github.com/staticwebdev/angular-basic/generate
 - Nevezze el az adattárat **az első-statikus-Web-App**
 
 # <a name="react"></a>[Reagálni](#tab/react)
 
-- Új tárház létrehozásához navigáljon a következő helyre
+- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
   - https://github.com/staticwebdev/react-basic/generate
 - Nevezze el az adattárat **az első-statikus-Web-App**
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- Új tárház létrehozásához navigáljon a következő helyre
+- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
   - https://github.com/staticwebdev/vue-basic/generate
 - Nevezze el az adattárat **az első-statikus-Web-App**
 
 # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
-- Új tárház létrehozásához navigáljon a következő helyre
+- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
   - https://github.com/staticwebdev/vanilla-basic/generate
 - Nevezze el az adattárat **az első-statikus-Web-App**
 
@@ -159,7 +159,7 @@ A statikus Web Apps áttekintése ablak a webalkalmazással való interakciót s
 
 2. Miután befejeződött a GitHub-műveletek munkafolyamata, az _URL_ hivatkozásra kattintva megnyithatja a webhelyet az új lapon.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure statikus Web Apps példányát:
 
@@ -169,7 +169,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Kattintson a **Törlés** gombra
 1. A törlési művelet megerősítéséhez kattintson az **Igen** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

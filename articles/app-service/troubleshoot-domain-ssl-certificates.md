@@ -9,10 +9,9 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80668022"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>A tartományok és a TLS/SSL-tanúsítványok problémáinak elhárítása Azure App Service
@@ -90,7 +89,7 @@ Ez a probléma a következő okok bármelyike miatt fordulhat elő:
 
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     2. Lépjen **app Service a tanúsítványok**elemre, és válassza ki a tanúsítványt.
-    3. A **tanúsítvány konfigurációjának** > kiválasztása**2. lépés:** > a**tartomány ellenőrzésének**ellenőrzése. Ez a lépés e-mailben értesítést küld az Azure-tanúsítvány szolgáltatójának a probléma megoldásához.
+    3. A **tanúsítvány konfigurációjának**kiválasztása  >  **2. lépés:** a  >  **tartomány ellenőrzésének**ellenőrzése. Ez a lépés e-mailben értesítést küld az Azure-tanúsítvány szolgáltatójának a probléma megoldásához.
 
 ## <a name="custom-domain-problems"></a>Egyéni tartományi problémák
 
@@ -120,7 +119,7 @@ Előfordulhat, hogy az internetböngésző továbbra is gyorsítótárazza a tar
 
 **Megoldás a 2. okból**
 
-Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ipconfig /flushdns`. A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. 
+Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ipconfig /flushdns` . A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. 
 
 ### <a name="you-cant-add-a-subdomain"></a>Nem adhat hozzá altartományt 
 

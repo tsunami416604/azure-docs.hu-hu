@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652345"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. OptionsGroup felhasználói felületi elem
@@ -55,7 +54,7 @@ Az elérhető lehetőségek sorát tartalmazó kiválasztási vezérlő.
 ## <a name="remarks"></a>Megjegyzések
 
 - A címkéje `constraints.allowedValues` az elem megjelenített szövege, a értéke pedig az elem kimeneti értéke, ha ki van választva.
-- Ha meg van adva, az alapértelmezett értéknek szerepelnie kell `constraints.allowedValues`a címkében. Ha nincs megadva, alapértelmezés szerint az első `constraints.allowedValues` elem van kiválasztva. Az alapértelmezett érték **Null**.
+- Ha meg van adva, az alapértelmezett értéknek szerepelnie kell a címkében `constraints.allowedValues` . Ha nincs megadva, alapértelmezés szerint az első elem `constraints.allowedValues` van kiválasztva. Az alapértelmezett érték **Null**.
 - `constraints.allowedValues`legalább egy elemmel kell rendelkeznie.
 
 ## <a name="next-steps"></a>További lépések

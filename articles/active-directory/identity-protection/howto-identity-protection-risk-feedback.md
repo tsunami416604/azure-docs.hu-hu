@@ -4,19 +4,18 @@ description: Hogyan és miért érdemes visszajelzést adni az Identity Protecti
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4be8290f12d64f0c556100c63ec159bd414c6fcb
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 03b06d46cb35346580070f1739fd43128fa7a7fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463926"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Útmutató: kockázati visszajelzés küldése Azure AD Identity Protection
 
@@ -45,7 +44,7 @@ Az Azure AD a Visszajelzésével frissíti az alapul szolgáló felhasználó é
 
 Az alábbi forgatókönyvek és mechanizmusok az Azure AD-re vonatkozó kockázati visszajelzéseket biztosítanak.
 
-| Forgatókönyv | Hogyan adhat visszajelzést? | Mi történik a motorháztető alatt? | Megjegyzések |
+| Forgatókönyv | Hogyan adhat visszajelzést? | Mi történik a motorháztető alatt? | Jegyzetek |
 | --- | --- | --- | --- |
 | **Bejelentkezés nem sérült (hamis pozitív)** <br> A "kockázatos bejelentkezések" jelentésben a kockázatos bejelentkezés [kockázati állapot = veszélyeztetett] látható, de a bejelentkezés nem sérült meg. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés biztonságos megerősítése" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, hogy egyik sem [kockázati állapot = megerősített biztonság; Kockázati szint (aggregált) =-], és megfordítja a felhasználói kockázatra gyakorolt hatását. | Jelenleg a "bejelentkezési biztonság megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |
 | **Bejelentkezés feltört (igaz pozitív)** <br> A "kockázatos bejelentkezések" jelentés a kockázatos bejelentkezési [kockázati állapot = kockázat] értéket jeleníti meg, alacsony kockázatú [kockázati szint (aggregált) = alacsony], és a bejelentkezés valóban sérült. | Válassza ki a bejelentkezést, és kattintson a "Bejelentkezés megerősítése – feltört" elemre. | Az Azure AD áthelyezi a bejelentkezés összesített kockázatát, és a kockázat a magas [kockázat állapot = megerősítve: sérült; Kockázati szint = magas]. | Jelenleg a "megerősítő bejelentkezés megerősítése" beállítás csak a "kockázatos bejelentkezések" jelentésben érhető el. |

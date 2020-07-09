@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80348854"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856530"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
 
-ASP.NET Core olyan csatlakoztatható konfigurációs rendszerrel rendelkezik, amely különböző forrásokból származó konfigurációs adatok olvasására képes. A módosításokat dinamikusan képes kezelni anélkül, hogy az alkalmazás újraindul. ASP.NET Core támogatja a konfigurációs beállítások kötését a .NET-osztályokhoz. A különböző `IOptions<T>` minták használatával beinjektálja őket a kódban. Az egyik ilyen minta, különösen `IOptionsSnapshot<T>`a automatikusan újratölti az alkalmazás konfigurációját, amikor az alapul szolgáló adat megváltozik. `IOptionsSnapshot<T>` Az alkalmazásban lévő vezérlőkbe beillesztheti az Azure-alkalmazás konfigurációjában tárolt legújabb konfiguráció elérését.
+ASP.NET Core olyan csatlakoztatható konfigurációs rendszerrel rendelkezik, amely különböző forrásokból származó konfigurációs adatok olvasására képes. A módosításokat dinamikusan képes kezelni anélkül, hogy az alkalmazás újraindul. ASP.NET Core támogatja a konfigurációs beállítások kötését a .NET-osztályokhoz. A különböző minták használatával beinjektálja őket a kódban `IOptions<T>` . Az egyik ilyen minta, különösen a `IOptionsSnapshot<T>` automatikusan újratölti az alkalmazás konfigurációját, amikor az alapul szolgáló adat megváltozik. Az `IOptionsSnapshot<T>` alkalmazásban lévő vezérlőkbe beillesztheti az Azure-alkalmazás konfigurációjában tárolt legújabb konfiguráció elérését.
 
 Emellett beállíthatja az alkalmazás konfigurációját ASP.NET Core ügyfél-függvénytárat, hogy dinamikusan frissítse a konfigurációs beállításokat egy middleware használatával. A konfigurációs beállítások minden alkalommal frissülnek a konfigurációs tárolóval, amíg a webalkalmazás fogadja a kéréseket.
 
@@ -60,13 +60,13 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
-1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
+1. Adja hozzá a NuGet- `Microsoft.Azure.AppConfiguration.AspNetCore` csomagra mutató hivatkozást a következő parancs futtatásával:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Nyissa meg a *program.cs*, `CreateWebHostBuilder` és frissítse a metódust a `config.AddAzureAppConfiguration()` metódus hozzáadásához.
+1. Nyissa meg a *program.cs*, és frissítse a `CreateWebHostBuilder` metódust a metódus hozzáadásához `config.AddAzureAppConfiguration()` .
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -122,7 +122,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
     A frissítési művelet tényleges kiváltásához konfigurálnia kell egy, az alkalmazásra vonatkozó frissítést, amely a konfigurációs adatai frissítését eredményezi. Ezt egy későbbi lépésben láthatja.
 
-2. Adjon hozzá *Settings.cs* egy új `Settings` osztályt definiáló és megvalósító Settings.cs-fájlt.
+2. Adjon hozzá egy új osztályt definiáló és megvalósító *Settings.cs* -fájlt `Settings` .
 
     ```csharp
     namespace TestAppConfig
@@ -137,7 +137,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     }
     ```
 
-3. Nyissa meg a *Startup.cs* `IServiceCollection.Configure<T>` , és `ConfigureServices` használja a metódust a konfigurációs `Settings` adatosztályhoz való kötéshez.
+3. Nyissa meg a *Startup.cs*, és használja `IServiceCollection.Configure<T>` a `ConfigureServices` metódust a konfigurációs `Settings` adatosztályhoz való kötéshez.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -160,7 +160,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     ```
     ---
 
-4. Frissítse a `Configure` metódust, és `UseAzureAppConfiguration` adja hozzá a middleware-t, hogy a frissítéshez regisztrált konfigurációs beállítások frissüljenek, miközben a ASP.net Core webalkalmazás továbbra is fogadja a kéréseket.
+4. Frissítse a `Configure` metódust, és adja hozzá a `UseAzureAppConfiguration` middleware-t, hogy a frissítéshez regisztrált konfigurációs beállítások frissüljenek, miközben a ASP.net Core webalkalmazás továbbra is fogadja a kéréseket.
 
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
@@ -217,11 +217,11 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     ```
     ---
     
-    A middleware a `AddAzureAppConfiguration` metódusában `Program.cs` megadott frissítési konfigurációt használja az ASP.net Core webalkalmazás által fogadott minden kérelem frissítésének elindításához. Minden kérelem esetében egy frissítési művelet aktiválódik, és az ügyféloldali kódtár ellenőrzi, hogy a regisztrált konfigurációs beállítás gyorsítótárazott értéke lejárt-e. Ha lejárt, frissül.
+    A middleware a metódusában megadott frissítési konfigurációt használja az `AddAzureAppConfiguration` `Program.cs` ASP.net Core webalkalmazás által fogadott minden kérelem frissítésének elindításához. Minden kérelem esetében egy frissítési művelet aktiválódik, és az ügyféloldali kódtár ellenőrzi, hogy a regisztrált konfigurációs beállítás gyorsítótárazott értéke lejárt-e. Ha lejárt, frissül.
 
 ## <a name="use-the-latest-configuration-data"></a>A legújabb konfigurációs adatértékek használata
 
-1. Nyissa meg a *HomeController.cs* a vezérlők könyvtárban, és adjon hozzá egy `Microsoft.Extensions.Options` hivatkozást a csomaghoz.
+1. Nyissa meg a *HomeController.cs* a vezérlők könyvtárban, és adjon hozzá egy hivatkozást a `Microsoft.Extensions.Options` csomaghoz.
 
     ```csharp
     using Microsoft.Extensions.Options;
@@ -310,12 +310,17 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
 1. Ha az alkalmazást a a .NET Core parancssori felülete használatával szeretné felépíteni, futtassa a következő parancsot a parancs-rendszerhéjban:
 
+```console
         dotnet build
+```
 
 1. A létrehozás sikeres befejezése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
+```console
         dotnet run
-1. Nyisson meg egy böngészőablakot, és keresse meg a `dotnet run` kimenetben látható URL-címet.
+```
+
+1. Nyisson meg egy böngészőablakot, és keresse meg a kimenetben látható URL-címet `dotnet run` .
 
     ![Gyorsindítás alkalmazás helyi indítása](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
@@ -334,7 +339,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
     ![Frissített gyors útmutató alkalmazás helyi indítása](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

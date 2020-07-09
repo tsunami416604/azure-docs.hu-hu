@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73242464"
 ---
 # <a name="event-schemas"></a>Eseménysémák
@@ -56,14 +56,14 @@ Minden esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Kötelező | Leírás |
 | -------- | ---- | ----------- |-----------
-| témakör | sztring | Nem | Meg kell egyeznie azzal a témával, amelyen közzé lett téve. Event Grid feltölti azt a témakör nevével, amelyen közzé van téve, ha nincs meghatározva. |
+| témakör | sztring | No | Meg kell egyeznie azzal a témával, amelyen közzé lett téve. Event Grid feltölti azt a témakör nevével, amelyen közzé van téve, ha nincs meghatározva. |
 | tulajdonos | sztring | Igen | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Igen | Az eseményforrás eseménytípus, például BlobCreated. |
 | eventTime | sztring | Igen | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| ID (Azonosító) | sztring | Nem | Az esemény egyedi azonosítója. |
-| data | objektum | Nem | A közzétételi entitásra jellemző esemény-adatmennyiség rögzítésére szolgál. |
+| ID | sztring | No | Az esemény egyedi azonosítója. |
+| adatok | objektum | Nem | A közzétételi entitásra jellemző esemény-adatmennyiség rögzítésére szolgál. |
 | dataVersion | sztring | Igen | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
-| metadataVersion | sztring | Nem | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+| metadataVersion | sztring | No | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 ### <a name="example--eventgrid-schema-event"></a>Példa: EventGrid-séma esemény
 

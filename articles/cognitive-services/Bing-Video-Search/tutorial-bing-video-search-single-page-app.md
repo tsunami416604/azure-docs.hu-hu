@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c6e36bdbb3d58878e6afa28610ab2b214f47de20
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988260"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800725"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
 A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-Egy tényleges API- `SafeSearch` hívás paramétere például lehet `strict`, vagy `moderate` `moderate` az alapértelmezett.
+`SafeSearch`Egy tényleges API-hívás paramétere például lehet `strict` , vagy az `moderate` `moderate` alapértelmezett.
 
 ## <a name="performing-the-request"></a>A kérés végrehajtása
 A lekérdezés, a beállítási sztring és az API-kulcs ismeretében a `BingWebSearch` függvény egy `XMLHttpRequest` objektumot használ arra, hogy kérést intézzen a Bing Search-végponthoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
@@ -393,15 +393,18 @@ Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztü
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Ezután módosítsa a HTML-fájlban lévő Bing Web Search végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 

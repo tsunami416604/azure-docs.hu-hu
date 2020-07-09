@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 312c58a7df09ebe3e0bdf0749f902199723a331b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429004"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Táblázat adattípusai a szinapszis SQL-ben
@@ -65,7 +65,7 @@ A következő lista azokat az adattípusokat tartalmazza, amelyeket a szinapszis
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Oszlop felosztása több erősen gépelt oszlopba. |
 | [tábla](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Ha az SQL-készletet használja, az ideiglenes táblákra válthat. SQL (előzetes verzió) használata esetén érdemes lehet az [CETAS](../sql/develop-tables-cetas.md)használatával tárolni az adattárolást. |
 | [időbélyeg](/sql/t-sql/data-types/date-and-time-types) |A [datetime2](/sql/t-sql/data-types/datetime2-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) és a [CURRENT_TIMESTAMP](/sql/t-sql/functions/current-timestamp-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvény használatára vonatkozó kód újradolgozása. Alapértelmezés szerint csak állandók támogatottak, ezért current_timestamp nem definiálható alapértelmezett korlátozásként. Ha a sor verziószámát egy időbélyeg típusú oszlopból kell áttelepítenie, akkor a [bináris](/sql/t-sql/data-types/binary-and-varbinary-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)(8) vagy a [VARBINARY](/sql/t-sql/data-types/binary-and-varbinary-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)(8) értéket használja a not NULL vagy a null értékű sor verziószámához. |
-| [xml](/sql/t-sql/xml/xml-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
+| [XML](/sql/t-sql/xml/xml-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | [felhasználó által definiált típus](/sql/relational-databases/native-client/features/using-user-defined-types) |Ha lehetséges, váltson vissza a natív adattípusra. |
 | alapértelmezett értékek | Az alapértelmezett értékek csak a literálokat és az állandókat támogatják. |
 

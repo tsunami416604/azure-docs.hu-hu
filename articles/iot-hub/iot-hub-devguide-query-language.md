@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632934"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-lekérdezési nyelv az ikereszközökhöz - és modulokhoz, feladatokhoz, valamint az üzenetirányításhoz
@@ -112,7 +111,7 @@ SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Gyakran szükséges azonosítani az összes olyan eszközt, amely egy adott tulajdonságot tartalmaz. IoT Hub támogatja a függvényt `is_defined()` erre a célra. Ha például a `connectivity` tulajdonságot meghatározó eszköz-ikreket szeretné lekérni, használja a következő lekérdezést:
+Gyakran szükséges azonosítani az összes olyan eszközt, amely egy adott tulajdonságot tartalmaz. IoT Hub támogatja a függvényt `is_defined()` erre a célra. Ha például a tulajdonságot meghatározó eszköz-ikreket szeretné lekérni, `connectivity` használja a következő lekérdezést:
 
 ```SQL
 SELECT * FROM devices
@@ -201,9 +200,9 @@ A **lekérdezési** objektum egy Oldalméret (legfeljebb 100) létrehozásával 
 
 A lekérdezési objektum több **következő** értéket tesz elérhetővé a lekérdezés által igényelt deszerializálási beállítástól függően. Például a Device Twin vagy a Job Objects vagy a Plain JSON a vetítések használatakor.
 
-### <a name="nodejs-example"></a>Node. js-példa
+### <a name="nodejs-example"></a>Node.js példa
 
-A lekérdezési funkciót a [Node. js-hez készült Azure IoT Service SDK](iot-hub-devguide-sdks.md) teszi elérhetővé a **beállításjegyzék** -objektumban.
+A lekérdezési funkciót az [Azure IoT Service SDK](iot-hub-devguide-sdks.md) teszi elérhetővé Node.jsszámára a **beállításjegyzék** -objektumban.
 
 Íme egy példa egy egyszerű lekérdezésre:
 
@@ -235,7 +234,7 @@ A lekérdezési objektum több **következő** értéket tesz elérhetővé a le
 > [!IMPORTANT]
 > A lekérdezési eredmények néhány percet is igénybe vehetnek az eszközökre vonatkozó legfrissebb értékekkel kapcsolatban. Ha az egyedi eszközökről származó ikreket az azonosító alapján kérdezi le, használja a [Get twin REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Ez az API mindig a legújabb értékeket adja vissza, és magasabb szabályozási korlátokat tartalmaz. A REST API közvetlenül, vagy az egyik [Azure IoT hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)-ban is használhatja az egyenértékű funkciókat.
 
-Az `... WHERE properties.desired.config = properties.reported.config` összehasonlítások jelenleg csak az egyszerű típusok (nincsenek objektumok) között támogatottak, például csak akkor támogatott, ha ezek a tulajdonságok primitív értékeket tartalmaznak.
+Az összehasonlítások jelenleg csak az egyszerű típusok (nincsenek objektumok) között támogatottak, például `... WHERE properties.desired.config = properties.reported.config` csak akkor támogatott, ha ezek a tulajdonságok primitív értékeket tartalmaznak.
 
 ## <a name="get-started-with-jobs-queries"></a>Ismerkedés a feladatok lekérdezésekkel
 
@@ -273,7 +272,7 @@ A [feladatok](iot-hub-devguide-jobs.md) eszközök készletén végeznek művele
 Ez a gyűjtemény jelenleg a IoT Hub lekérdezési nyelvben **Devices.Jobs** kérdezhető le.
 
 > [!IMPORTANT]
-> Jelenleg a feladatok tulajdonságot a rendszer soha nem adja vissza az eszközökhöz tartozó ikrek lekérdezése során. Ez a "FROM Devices" karaktert tartalmazó lekérdezések. A feladatok tulajdonság csak a használatával `FROM devices.jobs`érhető el közvetlenül a lekérdezésekkel.
+> Jelenleg a feladatok tulajdonságot a rendszer soha nem adja vissza az eszközökhöz tartozó ikrek lekérdezése során. Ez a "FROM Devices" karaktert tartalmazó lekérdezések. A feladatok tulajdonság csak a használatával érhető el közvetlenül a lekérdezésekkel `FROM devices.jobs` .
 >
 >
 
@@ -309,7 +308,7 @@ SELECT * FROM devices.jobs
 
 A **Devices.Jobs** -lekérdezések jelenleg nem támogatják a következőket:
 
-* A kivetítések ezért `SELECT *` csak lehetségesek.
+* A kivetítések ezért csak `SELECT *` lehetségesek.
 * Azok a feltételek, amelyek a feladatok tulajdonságai mellett a Twin eszközre hivatkoznak (lásd az előző szakaszt).
 * Összesítések végrehajtása, például darabszám, átlag, csoportosítás:.
 
@@ -392,7 +391,7 @@ GROUP BY <group_by_element>
 A GROUP BY záradék jelenleg csak az eszközök ikrek lekérdezése esetén támogatott.
 
 > [!IMPORTANT]
-> A kifejezés `group` jelenleg speciális kulcsszóként van kezelve a lekérdezésekben. Abban az esetben, ha `group` a tulajdonság nevét használja, érdemes megfontolnia, hogy dupla zárójelek között legyen szó a hibák `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`elkerüléséről, például:.
+> A kifejezés `group` jelenleg speciális kulcsszóként van kezelve a lekérdezésekben. Abban az esetben, ha `group` a tulajdonság nevét használja, érdemes megfontolnia, hogy dupla zárójelek között legyen szó a hibák elkerüléséről, például: `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'` .
 >
 
 ## <a name="expressions-and-conditions"></a>Kifejezések és kikötések
@@ -434,14 +433,14 @@ A kifejezések szintaxisa a következő:
 
 Ha meg szeretné tudni, hogy a kifejezések szintaxisa milyen szimbólumokat képvisel, tekintse meg a következő táblázatot:
 
-| Szimbólum | Meghatározás |
+| Szimbólum | Definíció |
 | --- | --- |
 | attribute_name | A **from** gyűjtemény JSON-dokumentumának bármely tulajdonsága. |
 | binary_operator | A [operátorok](#operators) szakaszban felsorolt bináris operátorok. |
 | function_name| A [függvények](#functions) szakaszban felsorolt függvények. |
 | decimal_literal |Decimális jelöléssel kifejezett lebegőpontos. |
 | hexadecimal_literal |A (z) "0x" karakterláncban kifejezett szám, amelyet hexadecimális számjegyek karakterlánca követ. |
-| string_literal |A karakterlánc-literálok olyan Unicode-karakterláncok, amelyek nulla vagy több Unicode-karakter vagy Escape-kódrészletek sorozatából állnak. A karakterlánc-literálok szimpla idézőjelek vagy idézőjelek közé vannak lefoglalva. Engedélyezett Escapes: `\'`, `\"`, `\\`, `\uXXXX` , 4 hexadecimális számjegyek által definiált Unicode-karakterek esetén. |
+| string_literal |A karakterlánc-literálok olyan Unicode-karakterláncok, amelyek nulla vagy több Unicode-karakter vagy Escape-kódrészletek sorozatából állnak. A karakterlánc-literálok szimpla idézőjelek vagy idézőjelek közé vannak lefoglalva. Engedélyezett Escapes: `\'` ,,, `\"` `\\` , `\uXXXX` 4 hexadecimális számjegyek által definiált Unicode-karakterek esetén. |
 
 ### <a name="operators"></a>Operátorok
 
@@ -459,7 +458,7 @@ Az ikrek és a feladatok lekérdezése az egyetlen támogatott függvény:
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| IS_DEFINED (tulajdonság) | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz `null`hozzá van-e rendelve érték (beleértve a következőt) |
+| IS_DEFINED (tulajdonság) | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték (beleértve a `null` következőt) |
 
 Az útvonalakra vonatkozó feltételekben a következő matematikai függvények támogatottak:
 
@@ -478,14 +477,14 @@ Az útvonalakra vonatkozó feltételekben a következő típusú ellenőrzési �
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| AS_NUMBER | A bemeneti karakterláncot számmá alakítja. `noop`Ha a bemenet egy szám; `Undefined` ha a sztring nem egy számot jelöl.|
+| AS_NUMBER | A bemeneti karakterláncot számmá alakítja. `noop`Ha a bemenet egy szám; `Undefined`Ha a sztring nem egy számot jelöl.|
 | IS_ARRAY | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa tömb-e. |
 | IS_BOOL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa logikai. |
-| IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean `null`, numerikus vagy. A DateTime, az Objektumtípusok és a tömbök nem támogatottak. |
+| IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean, numerikus vagy `null` . A DateTime, az Objektumtípusok és a tömbök nem támogatottak. |
 | IS_NULL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa NULL-e. |
 | IS_NUMBER | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa szám-e. |
 | IS_OBJECT | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa JSON-objektum-e. |
-| IS_PRIMITIVE | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa primitív (karakterlánc, logikai, numerikus vagy `null`). |
+| IS_PRIMITIVE | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa primitív (karakterlánc, logikai, numerikus vagy `null` ). |
 | IS_STRING | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa sztring-e. |
 
 Az útvonalakra vonatkozó feltételekben a következő karakterlánc-függvények támogatottak:

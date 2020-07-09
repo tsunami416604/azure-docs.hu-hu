@@ -8,12 +8,11 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6f8431bfd3be75651f3a08fe9b07fc3902436331
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 6dcfdc63946bcc2a9ffe4c5c767e81ca3b32107b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657298"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025284"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 
@@ -32,7 +31,7 @@ Ez a Java-webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan tárolhat
 
 Ez a Java-alkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan hozhat létre egy webalapú feladatkezelő alkalmazást, amellyel feladatokat hozhat létre, kérhet le, valamint „kész” jelöléssel láthatja el azokat, ahogyan azt az alábbi illusztráció is mutatja. A rendszer a teendőlistában szereplő összes feladatot JSON-dokumentumként tárolja az Azure Cosmos DB-ben.
 
-![Saját teendőlista Java-alkalmazása](./media/sql-api-java-application/image1.png)
+:::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
 > [!TIP]
 > Ez az alkalmazásfejlesztési oktatóanyag feltételezi, hogy rendelkezik korábbi tapasztalattal a Java használatát illetően. Ha még nem ismeri a Javát vagy az [előfeltételt jelentő eszközöket](#Prerequisites), ajánlott letölteni a teljes [teendők](https://github.com/Azure-Samples/documentdb-java-todo-app) projektet a GitHubról, majd lefordítani azt a [jelen cikk végén található utasítások](#GetProject) segítségével. A projekt lefordítása után a cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.  
@@ -66,7 +65,7 @@ JSP-alkalmazás létrehozása:
 
 1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl**menü **új**elemére, majd a **projekt**..., a **web**elemre, végül a **dinamikus webes projekt**elemre, és kattintson a **tovább**gombra.
    
-    ![JSP Java-alkalmazások fejlesztése](./media/sql-api-java-application/image10.png)
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java-alkalmazások fejlesztése":::
 
 1. Adja meg a projekt nevét a **Project name** (Projekt neve) mezőben, majd a **Target Runtime** (Tervezett futásidő) legördülő menüben válasszon ki egy értéket (pl. Apache Tomcat v7.0) (nem kötelező), és kattintson a **Finish** (Befejezés) gombra. A tervezett futásidő megadása lehetővé teszi, hogy helyileg, az Eclipse-ben is futtathassa projektjét.
 
@@ -74,11 +73,11 @@ JSP-alkalmazás létrehozása:
 
 1. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp**. A szülőmappa neve maradjon **WebContent**, ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
    
-    ![Új JSP-fájl létrehozása – Java-alkalmazásokra vonatkozó oktatóanyag](./media/sql-api-java-application/image11.png)
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Új JSP-fájl létrehozása – Java-alkalmazásokra vonatkozó oktatóanyag":::
 
 1. A **Select JSP Template** (JSP-sablon kiválasztása) párbeszédablakban, a jelen oktatóanyag céljából válassza a **New JSP File (html)** (Új JSP-fájl (html)) lehetőséget, majd kattintson a **Finish** (Befejezés) lehetőségre.
 
-1. Ha az *index. jsp* fájl az Eclipse-ben nyílik meg, szöveg hozzáadásával jelenítheti meg **"Helló világ!" alkalmazás!** a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
+1. Ha a *index.jsp* -fájl az Eclipse-ben nyílik meg, szöveg hozzáadásával jelenítheti meg a **"Helló világ!" alkalmazás!** a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
 
    ```html
    <body>
@@ -86,11 +85,11 @@ JSP-alkalmazás létrehozása:
    </body>
    ```
 
-1. Mentse az *index. jsp* fájlt.
+1. Mentse a *index.jsp* fájlt.
 
 1. Ha megadta a tervezett futásidőt a 2. lépésben, most rákattinthat a **Project** (Projekt), majd a **Run** (Futtatás) elemre a JSP-alkalmazás helyileg történő futtatásához.
 
-  ![Hello World – Java-alkalmazásokra vonatkozó oktatóanyag](./media/sql-api-java-application/image12.png)
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – Java-alkalmazásokra vonatkozó oktatóanyag":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>Az SQL Java SDK telepítése
 
@@ -110,7 +109,7 @@ Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Mave
    * Az összetevő- **azonosító** mezőben adja meg a értéket `azure-cosmos` .
    * A **verzió** mezőbe írja be a értéket `4.0.1-beta.1` .
   
-   Vagy hozzáadhatja a függőségi XML-t a csoport azonosítója és az összetevő azonosítója számára közvetlenül a *Pom. XML* fájlhoz:
+   Vagy hozzáadhatja a függőségi XML-t a csoport AZONOSÍTÓhoz és az összetevő-AZONOSÍTÓhoz közvetlenül a *pom.xml* fájlhoz:
 
    ```xml
    <dependency>
@@ -120,7 +119,7 @@ Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Mave
    </dependency>
    ```
 
-1. Kattintson az **OK gombra** , és a Maven telepíti az SQL Java SDK-t, vagy mentse a Pom. xml fájlt.
+1. Kattintson az **OK** gombra, és a Maven telepíti az SQL Java SDK-t, vagy mentse a pom.xml fájlt.
 
 ## <a name="use-the-azure-cosmos-db-service-in-your-java-application"></a><a id="UseService"></a>A Azure Cosmos DB szolgáltatás használata Java-alkalmazásokban
 
@@ -174,7 +173,7 @@ Ezután hozzon létre egy servletet a HTTP-kérések továbbításához a vezér
 
 Most, hogy elvégezte a mókás biteket, csak egy gyors felhasználói felületet kell létrehoznia, és csatlakoztatnia kell a DAO-hez.
 
-1. Szüksége lesz egy webes felhasználói felületre a felhasználó számára való megjelenítéshez. Írja át újra az *index. jsp* -t, amelyet korábban a következő kóddal hoztunk létre:
+1. Szüksége lesz egy webes felhasználói felületre a felhasználó számára való megjelenítéshez. Írja át újra a korábban létrehozott *index.jsp* -t a következő kóddal:
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/index.jsp":::
 
@@ -248,7 +247,7 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. A projekt Azure-webhelyre történő üzembe helyezéséhez lásd: [6. lépés. Az alkalmazás üzembe helyezése az Azure webhelyek szolgáltatásban](#Deploy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Node. js-alkalmazás létrehozása Azure Cosmos DB](sql-api-nodejs-application.md)
+> [Hozzon létre egy node.js alkalmazást Azure Cosmos DB](sql-api-nodejs-application.md)

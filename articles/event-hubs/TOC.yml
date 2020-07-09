@@ -213,14 +213,20 @@
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:
-        - name: Hibaelhárítási útmutató
+        - name: Kapcsolati problémák hibaelhárítása
           href: troubleshooting-guide.md
+        - name: Hitelesítési és engedélyezési hibák elhárítása
+          href: troubleshoot-authentication-authorization.md
+        - name: Kafka hibaelhárítási útmutató az Event Hubshoz
+          href: apache-kafka-troubleshooting-guide.md
         - name: .NET-kivételek
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager-kivételek
           href: resource-manager-exceptions.md
 - name: Referencia
   items:
+    - name: SDK-k
+      href: sdks.md
     - name: .NET
       items:
         - name: Ügyfélkódtár
@@ -271,6 +277,12 @@
               href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: Felügyeleti könyvtár
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+    - name: Indítás
+      items:
+        - name: Ügyfélkódtár
+          href: 'https://pkg.go.dev/github.com/Azure/azure-event-hubs-go?tab=doc'
+        - name: Felügyeleti könyvtár
+          href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub?tab=doc'
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager-sablon

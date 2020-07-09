@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82778260"
 ---
-# <a name="hdinsight-management-ip-addresses"></a>HDInsight-felügyeleti IP-címek
+# <a name="hdinsight-management-ip-addresses"></a>HDInsight kezelése – IP-címek
 
 > [!Important]
 > A legtöbb esetben mostantól használhatja a hálózati biztonsági csoportokhoz tartozó [Service tag](hdinsight-service-tags.md) funkciót az IP-címek manuális hozzáadása helyett. Az új régiók csak a szolgáltatási címkékhez lesznek hozzáadva, és a statikus IP-címek végül elavultak lesznek.

@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: ec117172a367d014f634106b5d2405892b80ffa7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689265"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>DPDK beállítása Linux rendszerű virtuális gépen
 
@@ -251,7 +250,7 @@ A következő parancsok időnként kinyomtatják a csomagokat másodpercenkénti
 
 Ha az előző parancsokat egy virtuális gépen futtatja, a fordítás előtt módosítsa *IP_SRC_ADDR* és *IP_DST_ADDR* , `app/test-pmd/txonly.c` hogy az megfeleljen a virtuális gépek tényleges IP-címének. Ellenkező esetben a rendszer eldobja a csomagokat, mielőtt elérné a továbbítót. Nem lesz lehetősége arra, hogy egy harmadik gép kapjon továbbított forgalmat, mert a *testpmd* -továbbító nem módosítja a 3. rétegbeli címeket, hacsak nem módosít valamilyen programkódot.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [EAL-beállítások](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd parancsok](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

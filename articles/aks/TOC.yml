@@ -24,27 +24,6 @@
       items:
         - name: Fejlesztés Helm használatával
           href: quickstart-helm.md
-        - name: Azure Dev Spaces
-          expanded: true
-          items:
-            - name: Az Azure Dev Spaces használata csoportos fejlesztéshez
-              href: ../dev-spaces/quickstart-team-development.md
-              maintainContext: true
-            - name: A Visual Studio Code használata
-              href: ../dev-spaces/quickstart-netcore.md
-              maintainContext: true
-            - name: A Visual Studio használata
-              href: ../dev-spaces/quickstart-netcore-visualstudio.md
-              maintainContext: true
-            - name: A parancssori felület (CLI) használata
-              href: ../dev-spaces/quickstart-cli.md
-              maintainContext: true
-            - name: Az Azure Dev Spaces használata – Java
-              href: ../dev-spaces/quickstart-java.md
-              maintainContext: true
-            - name: Az Azure Dev Spaces használata – Node.js
-              href: ../dev-spaces/quickstart-nodejs.md
-              maintainContext: true
 - name: Oktatóanyagok
   items:
     - name: 1 – Alkalmazás előkészítése az AKS-hez
@@ -116,7 +95,27 @@
     - name: Kvóták és regionális korlátok
       href: quotas-skus-regions.md
     - name: Migrálás az AKS-be
-      href: aks-migration.md
+      items:
+        - name: Migrálás megtervezése és végrehajtása
+          href: aks-migration.md
+        - name: Spring Boot
+          href: /azure/developer/java/migration/migrate-spring-boot-to-azure-kubernetes-service
+          maintainContext: false
+        - name: Tomcat
+          href: /azure/developer/java/migration/migrate-tomcat-to-containers-on-azure-kubernetes-service
+          maintainContext: false
+        - name: Wildfly
+          href: /azure/developer/java/migration/migrate-wildfly-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
+        - name: WebLogic
+          href: /azure/developer/java/migration/migrate-weblogic-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
+        - name: WebSphere
+          href: /azure/developer/java/migration/migrate-websphere-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
+        - name: JBoss EAP
+          href: /azure/developer/java/migration/migrate-jboss-eap-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
     - name: Támogatott Kubernetes-verzió
       href: supported-kubernetes-versions.md
     - name: A biztonság megerősítése a gazda operációs rendszeren
@@ -133,6 +132,10 @@
           href: upgrade-cluster.md
         - name: Használati üzemidőre vonatkozó SLA
           href: uptime-sla.md
+        - name: Közelségi elhelyezési csoportok használata (előzetes verzió)
+          href: reduce-latency-ppg.md
+        - name: Csomópont rendszerképének frissítése (előzetes verzió)
+          href: node-image-upgrade.md
         - name: Folyamatcsomópont operációsrendszer-frissítései
           href: node-updates-kured.md
         - name: AKS-fürt konfigurálása
@@ -200,6 +203,9 @@
               href: http-application-routing.md
             - name: Belső hálózat használata
               href: ingress-internal-ip.md
+            - name: Az AGIC-bővítmény engedélyezés meglévő AKS-fürtön
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
             - name: TLS használata saját tanúsítványokkal
               href: ingress-own-tls.md
             - name: TLS használata Let's Encrypt szolgáltatással
@@ -222,6 +228,8 @@
           href: control-kubeconfig-access.md
         - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal
           href: use-network-policies.md
+        - name: Podok biztonságossá tétele az Azure Policyval (előzetes verzió)
+          href: use-pod-security-on-azure-policy.md
         - name: Podbiztonsági szabályzatok használata
           href: use-pod-security-policies.md
         - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása
@@ -234,12 +242,12 @@
           href: limit-egress-traffic.md
         - name: Azure Active Directory-integráció engedélyezése
           items:
-            - name: Az Azure AD integrálása (előzetes verzió)
+            - name: AKS által kezelt AAD (előzetes verzió)
               href: managed-aad.md
             - name: Az Azure parancssori felületének használata
               href: azure-ad-integration-cli.md
-            - name: Az Azure Portal használata
-              href: azure-ad-integration.md
+        - name: Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
+          href: manage-azure-rbac.md
         - name: Kubernetes RBAC használata Azure AD-integrációval
           href: azure-ad-rbac.md
           maintainContext: true
@@ -279,54 +287,10 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Alkalmazások fejlesztése és futtatása
       items:
-        - name: Fejlesztés a Dev Spaces használatával
-          href: ../dev-spaces/azure-dev-spaces.md
-          maintainContext: true
-          items:
-            - name: Java (VS Code és CLI)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-java.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-java.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-java.md
-                  maintainContext: true
-            - name: .NET Core (VS Code és parancssori felület)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-netcore.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-netcore.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-netcore.md
-                  maintainContext: true
-            - name: .NET Core (Visual Studio 2017)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-netcore-visualstudio.md
-                  maintainContext: true
-            - name: Node.js (VS Code és parancssori felület)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-nodejs.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-nodejs.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-nodejs.md
-                  maintainContext: true
+        - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
+          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+        - name: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
+          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Meglévő alkalmazások telepítése Helm használatával
           href: kubernetes-helm.md
         - name: Az OpenFaaS használata
@@ -396,7 +360,7 @@
     - name: REST
       href: /rest/api/aks
     - name: PowerShell
-      href: '/powershell/module/az.aks#aks'
+      href: /powershell/module/az.aks#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python

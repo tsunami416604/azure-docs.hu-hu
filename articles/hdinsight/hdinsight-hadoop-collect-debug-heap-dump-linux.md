@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75658797"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962203"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight
 
@@ -37,21 +37,21 @@ A térképhez is engedélyezheti a kupacbeli memóriaképeket, és csökkentheti
 
 A heap-memóriaképek a szolgáltatás indításakor a JVM (más néven a kiválasztások vagy paraméterek) átadásával engedélyezhetők. A legtöbb [Apache Hadoop](https://hadoop.apache.org/) szolgáltatás esetében módosíthatja a szolgáltatás elindításához használt rendszerhéj-parancsfájlt, hogy átadja ezeket a beállításokat.
 
-Minden parancsfájlban van egy ** \* \_exportálás, amely**a JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** szkriptben például a kezdetű sor `export HADOOP_NAMENODE_OPTS=` tartalmazza a NameNode szolgáltatás beállításait.
+Minden parancsfájlban van egy exportálás, amely a ** \* \_ **JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** szkriptben például a kezdetű sor `export HADOOP_NAMENODE_OPTS=` tartalmazza a NameNode szolgáltatás beállításait.
 
-A leképezés és a folyamatok csökkentése némileg eltér, mivel ezek a műveletek a MapReduce szolgáltatás alárendelt folyamatai. A rendszer minden egyes térképet vagy csökkentési folyamatot egy gyermek tárolóban futtat, és két bejegyzést tartalmaz, amelyek tartalmazzák a JVM beállításait. Mindkettő a **mapred-site. xml fájlban**található:
+A leképezés és a folyamatok csökkentése némileg eltér, mivel ezek a műveletek a MapReduce szolgáltatás alárendelt folyamatai. A rendszer minden egyes térképet vagy csökkentési folyamatot egy gyermek tárolóban futtat, és két bejegyzést tartalmaz, amelyek tartalmazzák a JVM beállításait. Mindkettő a **mapred-site.xmlban **szerepel:
 
 * **MapReduce. admin. map. Child. Java. dönt**
 * **MapReduce. admin. csökkentse. Child. Java. dönt**
 
 > [!NOTE]  
-> Javasoljuk, hogy az [Apache Ambari](https://ambari.apache.org/) használatával módosítsa a szkripteket és a mapred-site. xml-beállításokat is, mivel a Ambari kezeli a módosításokat a fürt csomópontjai között. Az [Apache Ambari használata](#using-apache-ambari) című szakaszban talál konkrét lépéseket.
+> Javasoljuk, hogy az [Apache Ambari](https://ambari.apache.org/) használatával módosítsa a parancsfájlok és a mapred-site.xml beállításait is, mivel a Ambari a fürt csomópontjai között replikálja a módosításokat. Az [Apache Ambari használata](#using-apache-ambari) című szakaszban talál konkrét lépéseket.
 
 ### <a name="enable-heap-dumps"></a>Halomürítések engedélyezése
 
 A következő beállítás lehetővé teszi a halom memóriaképét, ha működése OutOfMemoryError történik:
 
-    -XX:+HeapDumpOnOutOfMemoryError
+`-XX:+HeapDumpOnOutOfMemoryError`
 
 Az **+** azt jelzi, hogy ez a beállítás engedélyezve van. Ez a beállítás alapértelmezés szerint le van tiltva.
 
@@ -62,26 +62,26 @@ Az **+** azt jelzi, hogy ez a beállítás engedélyezve van. Ez a beállítás 
 
 A memóriakép fájljának alapértelmezett helye az aktuális munkakönyvtár. A következő beállítással szabályozhatja a fájl tárolási helyét:
 
-    -XX:HeapDumpPath=/path
+`-XX:HeapDumpPath=/path`
 
-A használatával `-XX:HeapDumpPath=/tmp` például a rendszer a/tmp könyvtárban tárolja a memóriaképeket.
+A használatával például a rendszer a `-XX:HeapDumpPath=/tmp` /tmp könyvtárban tárolja a memóriaképeket.
 
 ### <a name="scripts"></a>Scripts
 
 **Működése OutOfMemoryError** esetén is aktiválhat parancsfájlt. Például egy értesítés elindításával megtudhatja, hogy a hiba történt. A következő kapcsoló használatával aktiválhat egy parancsfájlt egy __működése OutOfMemoryError__:
 
-    -XX:OnOutOfMemoryError=/path/to/script
+`-XX:OnOutOfMemoryError=/path/to/script`
 
 > [!NOTE]  
 > Mivel Apache Hadoop egy elosztott rendszer, a használt parancsfájlokat a fürt összes olyan csomópontján el kell helyezni, amelyen a szolgáltatás fut.
 > 
-> A parancsfájlnak olyan helyen kell lennie, amelyet a szolgáltatás által futtatott fiók is elérhet, és meg kell adnia a végrehajtás engedélyeit. Előfordulhat például, hogy a `/usr/local/bin` és a használatával `chmod go+rx /usr/local/bin/filename.sh` szeretne parancsfájlokat tárolni az olvasási és végrehajtási engedélyek megadásához.
+> A parancsfájlnak olyan helyen kell lennie, amelyet a szolgáltatás által futtatott fiók is elérhet, és meg kell adnia a végrehajtás engedélyeit. Előfordulhat például, hogy a és a használatával szeretne parancsfájlokat tárolni az `/usr/local/bin` `chmod go+rx /usr/local/bin/filename.sh` olvasási és végrehajtási engedélyek megadásához.
 
 ## <a name="using-apache-ambari"></a>Az Apache Ambari használata
 
 Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi lépéseket:
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
 2. A bal oldali lista használatával válassza ki a módosítani kívánt szolgáltatási területét. Például: **HDFS**. A középső területen válassza a **konfigurációk** lapot.
 
@@ -91,7 +91,7 @@ Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi l�
 
     ![Apache Ambari-konfiguráció szűrt listája](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Keresse meg azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja meg az engedélyezni kívánt beállításokat. ** \* \_** Az alábbi ábrán `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` a **HADOOP\_NAMENODE\_** :
+4. Keresse meg azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja meg az engedélyezni kívánt beállításokat. ** \* \_ ** Az alábbi ábrán a `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ NAMENODE \_ ** :
 
     ![Apache Ambari Hadoop-namenode – dönt](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

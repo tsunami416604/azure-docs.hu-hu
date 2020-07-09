@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905433"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Alkalmazások és megoldások migrálása BizTalk Servicesról Azure Logic Apps
@@ -32,7 +31,7 @@ BizTalk Services két alszolgáltatásból áll:
 
 Ez a táblázat a Logic Apps BizTalk Services képességeit képezi le.
 
-| BizTalk Services   | Logic Apps            | Cél                      |
+| BizTalk Services   | Logic Apps            | Szerep                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Összekötő          | Összekötő             | Az adatküldés és fogadás   |
 | Bridge             | Logikai alkalmazás             | Folyamat processzora           |
@@ -99,7 +98,7 @@ A Logic Apps kifinomult logikai képességeket, valamint speciális vezérlési 
 
 ### <a name="enrich"></a>Bővítését
 
-BizTalk Services feldolgozás során a dúsítási szakasz tulajdonságokat hoz létre a kapott adatmennyiséghez társított üzenet környezetében. Például egy adatbázis-kereséssel való útválasztáshoz használandó tulajdonság előléptetése, vagy egy érték kibontása egy XPath-kifejezés használatával. A Logic Apps hozzáférést biztosít az előző műveletek összes környezetfüggő adatkimenetéhez, így egyszerűvé válik az azonos viselkedés replikálása. Ha például az `Get Row` SQL-kapcsolat műveletet használja, egy SQL Server adatbázisból ad vissza egy adatforrást, és az útválasztásra vonatkozó döntési műveletben szereplő adatok használatával. Hasonlóképpen, a beérkező Service Bus várólistán lévő üzenetek egy megcímezhető, valamint az XPath-munkafolyamat-definíció nyelvét használó XPath-tulajdonságok.
+BizTalk Services feldolgozás során a dúsítási szakasz tulajdonságokat hoz létre a kapott adatmennyiséghez társított üzenet környezetében. Például egy adatbázis-kereséssel való útválasztáshoz használandó tulajdonság előléptetése, vagy egy érték kibontása egy XPath-kifejezés használatával. A Logic Apps hozzáférést biztosít az előző műveletek összes környezetfüggő adatkimenetéhez, így egyszerűvé válik az azonos viselkedés replikálása. Ha például az SQL- `Get Row` kapcsolat műveletet használja, egy SQL Server adatbázisból ad vissza egy adatforrást, és az útválasztásra vonatkozó döntési műveletben szereplő adatok használatával. Hasonlóképpen, a beérkező Service Bus várólistán lévő üzenetek egy megcímezhető, valamint az XPath-munkafolyamat-definíció nyelvét használó XPath-tulajdonságok.
 
 ### <a name="run-custom-code"></a>Egyéni kód futtatása
 

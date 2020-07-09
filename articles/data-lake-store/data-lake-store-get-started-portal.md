@@ -3,15 +3,15 @@ title: Első lépések a Azure Data Lake Storage Gen1-Portalon
 description: A Azure Portal használatával hozzon létre egy Data Lake Storage Gen1-fiókot, és hajtson végre alapszintű műveleteket a fiókban.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509200"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>A Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal
 
@@ -30,7 +30,7 @@ Megtudhatja, hogyan hozhat létre Data Lake Storage Gen1-fiókot a Azure Portal 
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
 
@@ -56,7 +56,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
         További információ: az [adatok titkosítása Azure Data Lake Storage Gen1ban](./data-lake-store-encryption.md).
 
-4. Kattintson a **Létrehozás**gombra. Ha úgy döntött, hogy rögzíti a fiókot az irányítópulton, visszakerül az irányítópultra, és megtekintheti a Data Lake Storage Gen1 fiók üzembe helyezésének folyamatát. A Data Lake Storage Gen1 fiók üzembe helyezése után megjelenik a fiók panel.
+4. Kattintson a **Létrehozás** lehetőségre. Ha úgy döntött, hogy rögzíti a fiókot az irányítópulton, visszakerül az irányítópultra, és megtekintheti a Data Lake Storage Gen1 fiók üzembe helyezésének folyamatát. A Data Lake Storage Gen1 fiók üzembe helyezése után megjelenik a fiók panel.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>Engedélyek hozzárendelése az Azure Key Vaulthoz
 

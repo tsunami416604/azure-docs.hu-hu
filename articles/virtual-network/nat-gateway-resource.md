@@ -7,19 +7,20 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to learn more about how to design virtual networks with NAT gateway resources.
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82182480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549635"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -236,7 +237,7 @@ Az egyes NAT-átjárók a hozzárendelt kimenő IP-címek alapján 64 000-es kap
 
 A forrás hálózati címfordítás (SNAT) egy másik IP-címről származó folyamat forrását írja le.  A NAT-átjáró erőforrásai a SNAT gyakran hivatkoznak a port címfordítás (PAT) használatára. A PAT újraírja a forrás és a forrás portját. A SNAT nem rendelkezik rögzített kapcsolattal a privát címek száma és a lefordított nyilvános címek között.  
 
-### <a name="fundamentals"></a>Alapok
+### <a name="fundamentals"></a>Alapismeretek
 
 Lássunk egy példát négy folyamatra, hogy megismertesse az alapvető koncepciót.  A NAT-átjáró a nyilvános IP-cím erőforrás-65.52.0.2 használja.
 
@@ -324,8 +325,7 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 - A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 - A NAT nem tud több virtuális hálózatot kifogni.
 
-
-## <a name="feedback"></a>Visszajelzés
+## <a name="suggestions"></a>Javaslatok
 
 Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Hiányzik egy képesség? Tegyük fel, hogy mi a következő lépés a [UserVoice for NAT](https://aka.ms/natuservoice)esetében.
 

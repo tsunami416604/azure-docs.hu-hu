@@ -6,8 +6,6 @@
   items:
     - name: Mi az a Data Science Virtual Machine (DSVM)?
       href: overview.md
-    - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
-      href: geo-ai-dsvm-overview.md
     - name: Az adatelemzési virtuális géphez mellékelt eszközök
       href: tools-included.md
 - name: Rövid útmutatók
@@ -17,8 +15,9 @@
       href: provision-vm.md
     - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
       href: dsvm-ubuntu-intro.md
-    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
-      href: provision-geo-ai-dsvm.md
+    - name: DSVM létrehozása ARM-sablonnal
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: Alapelvek
   items:
     - name: Mély tanulás és mesterségesintelligencia-keretrendszerek
@@ -45,8 +44,6 @@
       href: vm-do-ten-things.md
     - name: Linux rendszerű adatelemzési virtuális gép használata
       href: linux-dsvm-walkthrough.md
-    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép használata
-      href: use-geo-ai-dsvm.md
     - name: Automatikus skálázású adatelemzési virtuálisgép-készlet létrehozása
       href: dsvm-pools.md
     - name: Az integrációt az Active Directoryval.

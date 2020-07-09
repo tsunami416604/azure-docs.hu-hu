@@ -1,19 +1,16 @@
 ---
 title: Service Bus üzenetsor létrehozásához használja a Azure Portal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus-várólistát a Azure Portal használatával. Ezt követően egy minta ügyfélalkalmazás használatával üzeneteket küldhet és fogadhat üzeneteket a várólistából.
-services: service-bus-messaging
 author: spelluru
-ms.service: service-bus-messaging
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 01/16/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0753259f76c46c5df4246008f3f80ffa5bf35747
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240645"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337337"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozása a Azure Portal használatával
 Ebből a rövid útmutatóból megismerheti, hogyan használhatja az [Azure Portalt][Azure portal] egy Service Bus-üzenetsorral való üzenetváltásra egy üzenetküldési névtér és egy azon belüli üzenetsor létrehozásával, valamint az adott névsor hitelesítő adatainak lekérésével. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
@@ -40,8 +37,8 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 > Az üzenetek különböző programozási nyelvekkel történő küldésével és fogadásával kapcsolatos részletes utasításokért tekintse meg a következő rövid útmutatót:
 > - [.NET](service-bus-dotnet-get-started-with-queues.md)
 > - [Java](service-bus-java-how-to-use-queues.md)
-> - [Node. js az Azure/Service-Bus csomag használatával](service-bus-nodejs-how-to-use-queues-new-package.md)
-> - [Node. js az Azure-SB-csomag használatával](service-bus-nodejs-how-to-use-queues.md)
+> - [Node.js az Azure/Service-Bus csomag használatával](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node.js az Azure-SB-csomag használatával](service-bus-nodejs-how-to-use-queues.md)
 > - [PHP](service-bus-php-how-to-use-queues.md)
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
@@ -82,7 +79,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A rendszer a `Main()` metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
+A rendszer a metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét `Main()` parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +116,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű `RegisterOnMessageHandlerAndReceiveMessages()`üzenet-kezelőt, és elküldi az üzenetek készletét:
+A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű üzenet-kezelőt `RegisterOnMessageHandlerAndReceiveMessages()` , és elküldi az üzenetek készletét:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

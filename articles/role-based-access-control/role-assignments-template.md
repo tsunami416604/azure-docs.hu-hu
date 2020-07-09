@@ -7,18 +7,17 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392454"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
 
@@ -68,7 +67,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 Az Azure RBAC a hozzáférés biztosításához hozzá kell adnia egy szerepkör-hozzárendelést.
 
-### <a name="resource-group-without-parameters"></a>Erőforráscsoport (paraméterek nélkül)
+### <a name="resource-group-scope-without-parameters"></a>Erőforráscsoport hatóköre (paraméterek nélkül)
 
 A következő sablon alapszintű módszert mutat a szerepkör-hozzárendelés hozzáadásához. Néhány érték a sablonban van megadva. A következő sablon a következőket mutatja be:
 
@@ -111,7 +110,7 @@ Az alábbi példa az olvasói szerepkör hozzárendelését mutatja be egy erőf
 
 ![Szerepkör-hozzárendelés erőforrás-csoport hatókörében](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>Erőforráscsoport vagy előfizetés
+### <a name="resource-group-or-subscription-scope"></a>Erőforráscsoport vagy előfizetés hatóköre
 
 Az előző sablon nem túl rugalmas. A következő sablon paramétereket használ, és különböző hatókörökben használható. A következő sablon a következőket mutatja be:
 
@@ -195,7 +194,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>Erőforrás
+### <a name="resource-scope"></a>Erőforrás hatóköre
 
 Ha egy erőforrás szintjén hozzá kell adnia egy szerepkör-hozzárendelést, a szerepkör-hozzárendelés formátuma eltérő. Adja meg annak az erőforrás-szolgáltatónak a névterét és erőforrás-típusát, amelyhez hozzá szeretné rendelni a szerepkört. A szerepkör-hozzárendelés neve tartalmazza az erőforrás nevét is.
 
@@ -363,7 +362,7 @@ Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be eg
 
 Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést. Nem lehet eltávolítani egy szerepkör-hozzárendelést sablon használatával. A szerepkör-hozzárendelés eltávolításához más eszközöket kell használnia, például:
 
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure Portalra](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
 - [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)

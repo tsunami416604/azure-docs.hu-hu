@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan futtathat egy gyors diagnosztikai parancsot az 
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456415"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry állapotának megtekintése
@@ -18,7 +17,7 @@ Első diagnosztikai lépésként futtassa az az [ACR renézz-Health][az-acr-chec
 
 ## <a name="run-az-acr-check-health"></a>Futtatás az ACR ellenõrzés-Health
 
-A következő példák a `az acr check-health` parancs futtatásának különböző módjait mutatják be.
+A következő példák a parancs futtatásának különböző módjait mutatják be `az acr check-health` .
 
 > [!NOTE]
 > Ha Azure Cloud Shellban futtatja a parancsot, a helyi környezet nincs bejelölve. Megtekintheti azonban a cél beállításjegyzékhez való hozzáférést.
@@ -43,7 +42,7 @@ az acr check-health --name myregistry
 
 A parancs adatokat naplóz a standard kimenetre. Ha a rendszer problémát észlel, hibakódot és leírást is tartalmaz. További információ a kódokról és a lehetséges megoldásokról: a [hiba leírása](container-registry-health-error-reference.md).
 
-Alapértelmezés szerint a parancs leáll, amikor hibát talál. Futtathatja is a parancsot úgy, hogy az minden állapot-ellenőrzés kimenetét megadja, még akkor is, ha a rendszer hibákat talál. Adja hozzá `--ignore-errors` a paramétert az alábbi példákban látható módon:
+Alapértelmezés szerint a parancs leáll, amikor hibát talál. Futtathatja is a parancsot úgy, hogy az minden állapot-ellenőrzés kimenetét megadja, még akkor is, ha a rendszer hibákat talál. Adja hozzá a `--ignore-errors` paramétert az alábbi példákban látható módon:
 
 ```azurecli
 # Check environment only

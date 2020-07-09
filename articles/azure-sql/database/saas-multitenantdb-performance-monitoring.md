@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e4f26b21ad7458b4f5bcad9a902f4e048d726f1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042434"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Több-bérlős SaaS-alkalmazásban lévő többbérlős Azure SQL Databaseek teljesítményének figyelése és kezelése
@@ -64,7 +63,7 @@ Ahhoz, hogy a teljesítmény monitorozása és kezelése nagy léptékben műkö
 
 Ha egy korábbi oktatóanyagban már kiépített bérlők kötegét, ugorjon a [használat szimulálása az összes bérlői adatbázison](#simulate-usage-on-all-tenant-databases) szakaszra.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Learning \\ -modulok teljesítményének figyelése és kezelése \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. **$DemoScenario**  =  **1**beállítása, _bérlők kötegének kiépítése_
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
@@ -74,9 +73,9 @@ A *New-TenantBatch* szkript új bérlőket hoz létre a több-bérlős adatbázi
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 
-A *demo-PerformanceMonitoringAndManagement. ps1* parancsfájlt a több-bérlős adatbázison futó számítási feladatok szimulálása teszi elérhetővé. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
+A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl a több-bérlős adatbázison futó számítási feladatok szimulálására szolgál. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
 
-| Bemutató | Eset |
+| Bemutató | Forgatókönyv |
 |:--|:--|
 | 2 | Normál intenzitású terhelés előállítása (körülbelül 30 DTU) |
 | 3 | Terhelés kiváltása a bérlők száma alapján|
@@ -85,7 +84,7 @@ A *demo-PerformanceMonitoringAndManagement. ps1* parancsfájlt a több-bérlős 
 
 A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A betöltési szintek (DTU), az időtartam és az intervallumok az összes adatbázisban változatosak, a nem kiszámítható bérlői tevékenységek szimulálása.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Learning \\ -modulok teljesítményének figyelése és kezelése \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. **$DemoScenario**  =  **2**beállítása, _normál intenzitású terhelés létrehozása_
 1. Az **F5** billentyű lenyomásával alkalmazhatja a betöltést az összes bérlőre.
 
@@ -154,7 +153,7 @@ A több-bérlős többbérlős modell lehetővé teszi, hogy új bérlőt épít
 
 Ha már kiépített egy új bérlőt a saját adatbázisában, ugorja át a következő néhány lépést.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Learning-modulok \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1*. 
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1*. 
 1. Modify **$TenantName = "Salix salsa"** és **$VenueType = "Dance"**
 1. **$Scenario**  =  **2**beállítása, _bérlő kiépítése egy új, egybérlős adatbázisban_
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
@@ -167,7 +166,7 @@ Ha a több-bérlős adatbázison belüli egyetlen bérlő tartósan magas terhel
 
 Ez a gyakorlat szimulálja a Salix salsa hatását, amely nagy terhelést tapasztal, amikor a jegyek egy népszerű eseményre kerülnek.
 
-1. Nyissa meg a.. \\ . *Demo-PerformanceMonitoringAndManagement. ps1* parancsfájl.
+1. Nyissa meg a.. \\ . *Demo-PerformanceMonitoringAndManagement.ps1* szkript.
 1. Állítsa be **$DemoScenario = 5**, _normál terhelés létrehozása, valamint egy adott bérlő nagy terhelését (körülbelül 90 DTU)._
 1. Set **$SingleTenantName = Salix salsa**
 1. Futtassa a szkriptet az **F5** billentyűvel.

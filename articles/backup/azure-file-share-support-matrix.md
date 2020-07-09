@@ -3,12 +3,12 @@ title: Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási beállítások és korlátozások összegzését tartalmazza.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 09ca5264280c990db8f57400aef1a876f842a210
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806871"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
@@ -22,7 +22,7 @@ Az Azure-fájlmegosztás biztonsági mentése minden régióban elérhető, **ki
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>A véletlen törlés elleni védelem támogatott régiói
 
-USA nyugati középső régiója
+USA nyugati középső régiója, Kelet-Ausztrália, Közép-Kanada
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
@@ -30,7 +30,8 @@ USA nyugati középső régiója
 | ------------------------ | ------------------------------------------------------------ |
 | Fiók típusa            | A Azure Backup támogatja az általános célú v1, általános célú v2 és file Storage típusú Storage-fiókokban lévő Azure-fájlmegosztás használatát |
 | Teljesítmény              | A Azure Backup a standard és a Premium Storage fiókban egyaránt támogatja a fájlmegosztást |
-| Replikáció              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure Files-megosztás támogatott |
+| Replikáció              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure-fájlmegosztás támogatott |
+| Tűzfal engedélyezve         | Az Azure-fájlmegosztás olyan tűzfalszabályok esetében támogatott, amelyek lehetővé teszik Microsoft Azure szolgáltatások elérését a Storage-fiókhoz.|
 
 ## <a name="supported-file-shares"></a>Támogatott fájlmegosztás
 
@@ -45,14 +46,16 @@ USA nyugati középső régiója
 
 | Beállítás                                                      | Korlát |
 | ------------------------------------------------------------ | ----- |
-| A felhasználónként naponta védhető fájlmegosztás maximális száma | 200   |
+| A naponta védetté tehető fájlmegosztás maximális száma| 200   |
 | A tár naponta regisztrálható tárolási fiókok maximális száma | 50    |
+| A tár által védhető fájlmegosztás maximális száma | 2000   |
+| A tár által regisztrálható tárolási fiókok maximális száma | 200   |
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok
 
 | Beállítás                                      | Korlát |
 | -------------------------------------------- | ----- |
-| Igény szerinti biztonsági másolatok maximális száma naponta | 4     |
+| Igény szerinti biztonsági másolatok maximális száma naponta | 10   |
 | Ütemezett biztonsági mentések maximális száma naponta | 1     |
 
 ## <a name="restore-limits"></a>Visszaállítási korlátok

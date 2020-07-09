@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 7d91348b727c1c43f010ec9f60ae9abd33978ce8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780589"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257516"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
 
@@ -21,7 +21,7 @@ Az aspektusok a navigáláshoz nyújtanak segítséget azáltal, hogy a felhaszn
 
 Ez az oktatóanyag a C# oktatóanyagban létrehozott lapozási projektre épül [: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Modell tulajdonságainak beállítása _IsFacetable_
 > * Face-Navigálás hozzáadása az alkalmazáshoz
@@ -109,7 +109,7 @@ Szükség van a vezérlőre, hogy átadja az aspektusok listáját a nézetnek. 
 
 A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van szüksége a meglévő **index** és **Page** műveletekhez, valamint a **RunQueryAsync** metódus frissítéseihez.
 
-1. Nyissa meg a Kezdőlap vezérlő fájlt, és adja hozzá a **using** utasítást a **List&lt;string&gt; ** -összeállítás engedélyezéséhez.
+1. Nyissa meg a Kezdőlap vezérlő fájlt, és adja hozzá a **using** utasítást a **List &lt; String &gt; ** -összeállítás engedélyezéséhez.
 
     ```cs
     using System.Collections.Generic;
@@ -344,7 +344,7 @@ A nézet jelentős változásokat fog igényelni.
     }
     ```
 
-2. A nézet esetében a kimenetet egy táblázatba rendezjük, hogy a bal oldali dimenziók listáit szépen igazítsa, a jobb oldalon pedig az eredményeket. Nyissa meg az index. cshtml fájlt. Cserélje le a HTML &lt;törzs&gt; címkék teljes tartalmát a következő kódra.
+2. A nézet esetében a kimenetet egy táblázatba rendezjük, hogy a bal oldali dimenziók listáit szépen igazítsa, a jobb oldalon pedig az eredményeket. Nyissa meg az index. cshtml fájlt. Cserélje le a HTML törzs címkék teljes tartalmát a &lt; &gt; következő kódra.
 
     ```cs
     <body>

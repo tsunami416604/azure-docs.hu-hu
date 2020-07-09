@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: Útmutatás a virtuális gépek üzembe helyezéséhez
   items:
+    - name: Frissítés az SLES 15 SP1 rendszerre
+      href: linux-upgrade-suse-15sp1.md
     - name: Új virtuális gépek üzembe helyezése
       items:
         - name: Linux
@@ -67,6 +69,8 @@
       items:
         - name: Rendszerindítási diagnosztika
           href: boot-diagnostics.md
+        - name: Rendszerindítási hiba – Lemezolvasási hiba történt
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker-hibák
           href: troubleshoot-bitlocker-boot-error.md
         - name: Kék képernyős hibák
@@ -87,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Windows Update-problémák
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Váratlan újraindulás vagy hiba
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: A virtuális gép indítása elakadt
           href: troubleshoot-vm-boot-configure-update.md
         - name: A virtuális gép nem indítható el a Windows Rendszertöltés-vezérlő miatt
@@ -95,6 +101,10 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: A virtuális gép nem válaszol a csoportszabályzat alkalmazásakor
           href: unresponsive-vm-apply-group-policy.md
+        - name: A virtuális gép nem válaszol a biztonsági szabályzat alkalmazásakor
+          href: unresponsive-vm-apply-security-policy.md
+        - name: Windows leállási hiba – „nincs memória” állapot
+          href: troubleshoot-windows-stop-error.md
 - name: Nem tudok csatlakozni a virtuális gépemhez
   items:
     - name: RDP
@@ -190,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: Klasszikus tárerőforrások törlésekor jelentkező hibák
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: A virtuális merevlemez nem támogatott a virtuális gépek Azure-ban való létrehozásakor
+      href: vhd-not-supported-vm-azure.md
     - name: Beágyazott virtualizálás használata
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Virtuális gép teljesítményével kapcsolatos problémák

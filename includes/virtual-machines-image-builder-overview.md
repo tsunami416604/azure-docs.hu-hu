@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83821497"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
@@ -70,9 +70,9 @@ Az Azure rendszerkép-szerkesztő egy teljes körűen felügyelt Azure-szolgált
 ![Az Azure rendszerkép-készítő folyamatának elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Hozza létre a rendszerkép sablonját. JSON-fájlként. Ez a. JSON fájl a rendszerkép forrásával, testreszabásával és terjesztésével kapcsolatos információkat tartalmaz. Az [Azure rendszerkép-készítő GitHub-tárházban](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)több példa is van.
-1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_ \< DestinationResourceGroup>_ \< TemplateName>. 
-1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (alapértelmezett méret: Standard_D1_v2), a hálózat, a nyilvános IP-cím, a NSG és a tárterületet a IT_ \< DestinationResourceGroup>_ \< TemplateName> erőforráscsoporthoz.
-1. A rendszerkép létrehozásának részeként a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a \< folyamathoz létrehozott IT_ DestinationResourceGroup>_ \< TemplateName> erőforráscsoporthoz.
+1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_ \<DestinationResourceGroup> _ \<TemplateName> . 
+1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérkép-szerkesztőben a sablon és a forrásfájlok használatával hozzon létre egy virtuális gépet (alapértelmezett méret: Standard_D1_v2), a hálózat, a nyilvános IP-cím, a NSG és a tárterületet a IT_ \<DestinationResourceGroup> _ \<TemplateName> erőforráscsoporthoz.
+1. A rendszerkép létrehozásának részeként a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a \<DestinationResourceGroup> folyamathoz létrehozott IT_ _ erőforráscsoport további erőforrásait \<TemplateName> .
 
 
 ## <a name="permissions"></a>Engedélyek

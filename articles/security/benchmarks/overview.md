@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82606874"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt áttekintése
@@ -46,7 +46,7 @@ Minden javaslat a következő információkat tartalmazza:
 - **Felelősség**: azt, hogy az ügyfél vagy a szolgáltató (vagy mindkettő) felelős-e a javaslat végrehajtásáért. A biztonsági kötelezettségek a nyilvános felhőben vannak megosztva. Bizonyos biztonsági vezérlők csak a felhőalapú szolgáltató számára érhetők el, ezért a szolgáltató felelős az ilyen problémák kezeléséhez. Ezek általános megfigyelések – egyes szolgáltatások esetében a felelősség nem fog megjelenni, mint az Azure biztonsági Teljesítménytesztben. Ezeket a különbségeket az egyes szolgáltatásokra vonatkozó alapkövetelmények írják le. 
 - **Részletek**: a javaslat indoklása és a megvalósításával kapcsolatos útmutatásra mutató hivatkozások. Ha Azure Security Center támogatja az ajánlást, a rendszer ezeket az információkat is felsorolja.
 
-Örömmel vesszük a részletes visszajelzéseket és az aktív részvételt az Azure biztonsági teljesítményteszttel kapcsolatos erőfeszítésekben. Ha meg szeretné adni az Azure Security teljesítményteszt csapatának közvetlen bemenetét, töltse ki az űrlapot a következő [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)címen:.
+Örömmel vesszük a részletes visszajelzéseket és az aktív részvételt az Azure biztonsági teljesítményteszttel kapcsolatos erőfeszítésekben. Ha meg szeretné adni az Azure Security teljesítményteszt csapatának közvetlen bemenetét, töltse ki az űrlapot a következő címen: [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) .
 
 ## <a name="next-steps"></a>Következő lépések
 

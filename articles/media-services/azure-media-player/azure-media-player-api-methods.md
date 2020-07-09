@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727267"
 ---
 # <a name="api"></a>API #
@@ -19,7 +18,7 @@ A Azure Media Player API lehetővé teszi, hogy a JavaScript használatával kom
 
 ## <a name="referencing-the-player"></a>Hivatkozás a lejátszóra ##
 
-Az API functions használatához hozzáféréssel kell rendelkeznie a Player objektumhoz. Szerencsére egyszerűen lekérhető. Csak meg kell győződnie arról, hogy a videó címkéje rendelkezik AZONOSÍTÓval. A példában szereplő beágyazási kódnak van egy `vid1`azonosítója. Ha egy oldalon több videó található, győződjön meg róla, hogy minden videó címkéhez egyedi azonosító tartozik.
+Az API functions használatához hozzáféréssel kell rendelkeznie a Player objektumhoz. Szerencsére egyszerűen lekérhető. Csak meg kell győződnie arról, hogy a videó címkéje rendelkezik AZONOSÍTÓval. A példában szereplő beágyazási kódnak van egy azonosítója `vid1` . Ha egy oldalon több videó található, győződjön meg róla, hogy minden videó címkéhez egyedi azonosító tartozik.
 
 `var myPlayer = amp('vid1');`
 

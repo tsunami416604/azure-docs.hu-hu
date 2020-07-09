@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e06d7d73230b17710d8c667ab89d5ead522e6de1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732898"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254259"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -31,10 +31,10 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
 
-A következő Maven-parancs végrehajtásával hozzon létre egy nevű `helloworld`új alkalmazást a Cloud Shell promptban:
+A következő Maven-parancs végrehajtásával hozzon létre egy nevű új alkalmazást a Cloud Shell promptban `helloworld` :
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" "-Dversion=1.0-SNAPSHOT"
 ```
 Ezután módosítsa a munkakönyvtárat a projekt mappájába:
 
@@ -44,13 +44,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-A Azure App Service üzembe helyezési folyamata a fiók hitelesítő adatait használja az Azure CLI-ből. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+Az üzembe helyezés folyamata Azure App Service az Azure CLI-vel automatikusan felveheti az Azure-beli hitelesítő adatait. Ha nem telepítette az Azure CLI-t, a Maven beépülő modul bejelentkezik a OAuth vagy az eszköz bejelentkezésével. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) részleteit.
 
-```azurecli
-az login
-```
-
-Ezután konfigurálhatja a központi telepítést, futtathatja a Maven parancsot a parancssorban, és az alapértelmezett konfigurációkat az **ENTER** billentyű lenyomásával állíthatja be, amíg meg nem kapja a **Confirm (i/N)** kérést, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült. 
+A központi telepítés konfigurálásához futtassa a Maven parancsot a parancssorban, és használja az alapértelmezett konfigurációkat az **ENTER** billentyű lenyomásával, amíg meg nem jelenik a **Confirm (y/N)** üzenet, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült. 
 ```cmd
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
@@ -93,11 +89,17 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Ha szeretné `pom.xml` megtekinteni a beépülő modul konfigurációját, navigáljon újra, és szükség esetén módosítsa a app Service egyéb konfigurációit is, ha szükséges, néhány gyakori elem az alábbi listában látható:
+A Megnyitás gombra `pom.xml` kattintva megtekintheti a frissített konfigurációt.
+
+```bash
+code pom.xml
+```
+
+Szükség esetén közvetlenül a Pom-fájlban módosíthatja a App Service konfigurációit, néhány gyakori érték az alábbiak szerint jelenik meg:
 
  Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
-`<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a `v1`következők `v2`:,. | 1.5.2
+`<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1` , `v2` . | 1.5.2
 `<resourceGroup>` | igaz | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | igaz | A webalkalmazás neve. | 0.1.0 +
 `<region>` | igaz | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
@@ -120,12 +122,12 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ![Azure App Service futó minta alkalmazás](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gratulálok!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
+**Gratulálunk!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portálról, vagy futtassa a következő parancsot a Cloud Shellban:
 
@@ -138,7 +140,7 @@ A parancs futtatása egy percig is eltarthat.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Kapcsolódás Azure SQL Database Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás a MySQL-hez készült Azure DB-hez a Javával](/azure/mysql/connect-java)
@@ -147,7 +149,7 @@ A parancs futtatása egy percig is eltarthat.
 > [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Java-alkalmazás konfigurálása](configure-custom-container.md)
+> [Java-alkalmazás konfigurálása](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [CI/CD – Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)

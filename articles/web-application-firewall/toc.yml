@@ -77,6 +77,8 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: GYIK
           href: ./afds/waf-faq.md
+    - name: WAF és Azure Policy
+      href: ./shared/waf-azure-policy.md
 - name: Útmutatók
   items:
     - name: Application Gateway

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261392"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -39,6 +39,25 @@ További információ a díjszabásról: [Security Center díjszabása](https://
 > A Security Center által létrehozott munkaterületek log Analytics árképzési szintje nem befolyásolja Security Center számlázást.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>Mi a Log Analytics ügynök?
+
+A biztonsági rések és fenyegetések figyeléséhez Azure Security Center a [log Analytics ügynöktől](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) függ – ez ugyanaz az ügynök, amelyet a Azure monitor szolgáltatás használ. 
+
+Az ügynököt más néven Microsoft monitoring agentnek (vagy "MMA") nevezzük. 
+
+Az ügynök különböző biztonsággal kapcsolatos konfigurációs adatokat és eseménynaplókat gyűjt a csatlakoztatott gépekről, majd átmásolja az adatokat a Log Analytics munkaterületre további elemzés céljából. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
+
+Győződjön meg arról, hogy a gépek az ügynök által támogatott operációs rendszerek egyikét futtatják az alábbi lapokon leírtak szerint:
+
+* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+További információ az [log Analytics-ügynök által gyűjtött adatokról](security-center-enable-data-collection.md).
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Mi minősíti a virtuális gépet az Log Analytics ügynök telepítésének automatikus kiépítéséhez?

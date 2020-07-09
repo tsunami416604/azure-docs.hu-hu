@@ -7,12 +7,11 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84233371"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure-beli virtuális hálózatok általános PowerShell-parancsai
 
@@ -31,7 +30,7 @@ Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül
 | ---- | ------- |
 | Alhálózat-konfigurációk létrehozása |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" – AddressPrefix XX. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2" – AddressPrefix XX. X. X. X/XX<BR><BR>Egy tipikus hálózat rendelkezhet alhálózattal az [internetkapcsolattal rendelkező terheléselosztó](../../load-balancer/load-balancer-internet-overview.md) és egy különálló alhálózat számára a [belső terheléselosztó](../../load-balancer/load-balancer-internal-overview.md)számára. |
 | Virtuális hálózat létrehozása |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix XX. X. X. X/XX – alhálózat $subnet 1, $subnet 2 |
-| Egyedi tartománynév tesztelése |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -Domainnamelabel értékkel "myDNS" – hely $Location<BR><BR>Megadhat egy DNS-tartománynevet egy [nyilvános IP-erőforráshoz](../../virtual-network/virtual-network-ip-addresses-overview-arm.md), amely létrehoz egy leképezést a nyilvános IP-címhez az Azure által FELÜGYELt DNS-kiszolgálók domainname.location.cloudapp.Azure.com. A név csak betűket, számokat és kötőjelet tartalmazhat. Az első és az utolsó karakternek betűnek vagy számnak kell lennie, és a tartománynévnek egyedinek kell lennie az Azure-helyen belül. Ha a függvény **igaz** értéket ad vissza, a javasolt név globálisan egyedi. |
+| Egyedi tartománynév tesztelése |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -Domainnamelabel értékkel "myDNS" – hely $Location<BR><BR>Megadhat egy DNS-tartománynevet egy [nyilvános IP-erőforráshoz](../../virtual-network/public-ip-addresses.md), amely létrehoz egy leképezést a nyilvános IP-címhez az Azure által FELÜGYELt DNS-kiszolgálók domainname.location.cloudapp.Azure.com. A név csak betűket, számokat és kötőjelet tartalmazhat. Az első és az utolsó karakternek betűnek vagy számnak kell lennie, és a tartománynévnek egyedinek kell lennie az Azure-helyen belül. Ha a függvény **igaz** értéket ad vissza, a javasolt név globálisan egyedi. |
 | Hozzon létre egy nyilvános IP-címet |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp"-ResourceGroupName $MyResourceGroup-Domainnamelabel értékkel "myDNS" – location $Location – AllocationMethod Dynamic<BR><BR>A nyilvános IP-cím a korábban tesztelt tartománynevet használja, amelyet a terheléselosztó előtér-konfigurációja használ. |
 | Előtér-IP-konfiguráció létrehozása |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP"-PublicIpAddress $pip<BR><BR>A előtér-konfiguráció tartalmazza azt a nyilvános IP-címet, amelyet korábban a bejövő hálózati forgalomhoz hozott létre. |
 | Hátércímkészlet létrehozása |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<BR><BR>Belső címeket biztosít a terheléselosztó olyan hátteréhez, amely hálózati adapteren keresztül érhető el. |

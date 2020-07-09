@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c7a29ebb355a5733201ff01af9e38f371def1cf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476706"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962815"
 ---
 # <a name="publish-media-services-content-using-net"></a>Media Services tartalom közzététele a .NET használatával  
 > [!div class="op_single_selector"]
@@ -99,13 +99,12 @@ Streaming URL-címek összeállítása
 
 A kimenetek:
 
-    URL to manifest for client streaming using Smooth Streaming protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
-    URL to manifest for client streaming using HLS protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
-    URL to manifest for client streaming using MPEG DASH protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
-
+- Az ügyfél-adatfolyam Smooth Streaming protokollon keresztüli továbbításának jegyzékfájlja: \
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
+- Az ügyfél-adatfolyam HLS protokollal való továbbításának jegyzékfájlja: \
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
+- Az ügyfél adatfolyam-továbbítási URL-címe az MPEG DASH protokoll használatával: \
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 > [!NOTE]
 > A tartalmat TLS-kapcsolaton keresztül is továbbíthatja. Ehhez a megközelítéshez győződjön meg arról, hogy a streaming URL-címek a HTTPS protokollal kezdődnek. Az AMS jelenleg nem támogatja a TLS-t egyéni tartományokkal.
@@ -145,10 +144,10 @@ Progresszív letöltési URL-címek készítése
 ```
 A kimenetek:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4`
 
     . . . 
 

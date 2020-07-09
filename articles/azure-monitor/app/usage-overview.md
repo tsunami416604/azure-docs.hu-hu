@@ -4,10 +4,9 @@ description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmaz
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797789"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
@@ -18,7 +17,7 @@ A webes vagy mobil alkalmazások mely funkciói a legnépszerűbbek? A felhaszn�
 
 A legjobb megoldás a Application Insights telepítésével érhető el az App Server kódjában és a weblapjain. Az alkalmazás ügyfél-és kiszolgáló-összetevői telemetria küldenek a Azure Portalnak elemzés céljából.
 
-1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](../../azure-monitor/app/asp-net.md), az [Azure](../../azure-monitor/app/app-insights-overview.md), a [Java](../../azure-monitor/app/java-get-started.md), a [Node. js](../../azure-monitor/app/nodejs.md)vagy [más](../../azure-monitor/app/platforms.md) alkalmazáshoz.
+1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](../../azure-monitor/app/asp-net.md), az [Azure](../../azure-monitor/app/app-insights-overview.md)-ra, a [Java](../../azure-monitor/app/java-get-started.md)-ra, a [Node.jsra ](../../azure-monitor/app/nodejs.md)vagy [más](../../azure-monitor/app/platforms.md) alkalmazásra.
 
     * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
 
@@ -170,7 +169,7 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
    - [Tölcsérek](usage-funnels.md)
    - [Megőrzés](usage-retention.md)

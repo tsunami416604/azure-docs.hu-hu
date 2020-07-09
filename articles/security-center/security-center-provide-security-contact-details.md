@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
 ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204100"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Biztonsági kapcsolattartási adatok megadása Azure Security Center
@@ -57,7 +57,7 @@ Ha például egy RDP-támadásról már kapott e-mail-üzenetet, RDP-támadások
 
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés**lehetőséget.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.

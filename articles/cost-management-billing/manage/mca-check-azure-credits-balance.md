@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199687"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361506"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
@@ -21,13 +21,16 @@ A Microsoft-ügyfélszerződés számlázási fiókjához tartozó Azure-kredite
 
 A Microsoft-ügyfélszerződéshez tartozó számlázási fiókok esetében a kreditek egy számlázási profilhoz vannak hozzárendelve. Mindegyik számlázási profil saját kreditekkel rendelkezik, amelyeket automatikusan alkalmaz a számlán található díjakra. Egy számlázási profil Azure-kreditegyenlegének megtekintéséhez tulajdonosi, közreműködői, olvasói, illetve számlakezelői szerepkörrel kell rendelkeznie a számlázási profilra, illetve tulajdonosi, közreműködői vagy olvasói szerepkörrel a számlázási fiókra vonatkozóan. Ha többet szeretne megtudni a szerepkörökről, tekintse meg[A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban](understand-mca-roles.md) című szakaszt.
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+> [!NOTE]
+> Akár 24 órába is telhet, amíg az új jóváírás megjelenik az Azure Portalon. Ha új jóváírást kap, amely nem jelenik meg a Portalon, várjon 24 órát, hogy a jóváírás megjelenjen.
+
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>A kreditegyenleg ellenőrzése
 
 ### <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -391,7 +394,7 @@ a megkeresett krediteket egy számlázási profilhoz rendeli. A számla számlá
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Microsoft-ügyfélszerződéshez tartozó számlázási fiók ismertetése](../understand/mca-overview.md)
 - [A Microsoft-ügyfélszerződéshez tartozó számlán szereplő kifejezések értelmezése](../understand/mca-understand-your-invoice.md)

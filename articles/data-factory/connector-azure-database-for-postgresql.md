@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
 ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410463"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Adatok másolása Azure Database for PostgreSQLba és onnan a Azure Data Factory használatával
@@ -49,11 +49,11 @@ A Azure Database for PostgreSQL társított szolgáltatás a következő tulajdo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AzurePostgreSql**. | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzurePostgreSql**. | Igen |
 | connectionString | Az Azure Database for PostgreSQLhoz való kapcsolódáshoz használandó ODBC-kapcsolati karakterlánc.<br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok karakterláncáról. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . | Igen |
 | Connectvia tulajdonsággal | Ez a tulajdonság az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modult jelöli. Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-Egy tipikus kapcsolatok karakterlánca `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`:. Az alábbiakban több tulajdonságot is beállíthat:
+Egy tipikus kapcsolatok karakterlánca: `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . Az alábbiakban több tulajdonságot is beállíthat:
 
 | Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
@@ -106,7 +106,7 @@ Az adatok Azure Database for PostgreSQLból való másolásához állítsa az ad
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát **AzurePostgreSqlTable** értékre kell beállítani. | Igen |
+| típus | Az adatkészlet Type tulajdonságát **AzurePostgreSqlTable** értékre kell beállítani. | Igen |
 | tableName | A tábla neve | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**:
@@ -135,7 +135,7 @@ Az adatok Azure Database for PostgreSQLból való másolásához állítsa a for
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **AzurePostgreSqlSource** értékre kell állítani. | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát **AzurePostgreSqlSource** értékre kell állítani. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például:`"SELECT * FROM MyTable"` | Nem (ha az adatkészlet táblanév tulajdonsága meg van adva) |
 
 **Példa**:
@@ -176,7 +176,7 @@ Az adatAzure Database for PostgreSQLba való másoláshoz a másolási tevékeny
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadójának Type tulajdonságát **AzurePostgreSQLSink**értékre kell állítani. | Igen |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát **AzurePostgreSQLSink**értékre kell állítani. | Igen |
 | preCopyScript | Adja meg azt az SQL-lekérdezést, amelyet végre szeretne hajtani a másolási tevékenységhez, mielőtt az egyes futtatások Azure Database for PostgreSQLba írna. Ennek a tulajdonságnak a használatával törölheti az előre feltöltött adatkészleteket. | Nem |
 | writeBatchSize | Az Azure Database for PostgreSQL táblázatba szúrja be az adatmennyiséget, amikor a puffer mérete eléri a writeBatchSize.<br>Az engedélyezett érték egy egész szám, amely a sorok számát jelöli. | Nem (az alapértelmezett érték 10 000) |
 | writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br>Az engedélyezett értékek a TimeSpan karakterláncok. Például 00:30:00 (30 perc). | Nem (az alapértelmezett érték 00:00:30) |

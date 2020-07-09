@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: davba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a15a25ce4fbe1a43c2a5065bf88f5c40c5865721
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360690"
 ---
 # <a name="transformations"></a>Átalakítások
 
@@ -34,7 +34,7 @@ Egyéni attribútumok hozzárendelésének hozzáadásához kövesse az alábbi 
 1. Keresse meg a sémában frissíteni kívánt objektumot.
 
    ![Objektum a sémában](media/how-to-transformation/transform1.png)</br>
-1. Keresse meg a felhasználói `ExtensionAttribute3` objektum alatt található kódot.
+1. Keresse meg a `ExtensionAttribute3` felhasználói objektum alatt található kódot.
 
     ```
                             {
@@ -62,7 +62,7 @@ Egyéni attribútumok hozzárendelésének hozzáadásához kövesse az alábbi 
                                 }
                             },
     ```
-1. Szerkessze a kódot úgy, hogy a vállalati attribútum le `ExtensionAttribute3`legyen képezve.
+1. Szerkessze a kódot úgy, hogy a vállalati attribútum le legyen képezve `ExtensionAttribute3` .
 
    ```
                                     {
@@ -98,7 +98,7 @@ Egyéni attribútumok hozzárendelésének hozzáadásához kövesse az alábbi 
 
     ![Kiépítés újraindítása](media/how-to-transformation/transform3.png)
 
- 1. Egy kis idő elteltével ellenőrizze, hogy az attribútumok feltöltése a következő lekérdezés futtatásával történik-e a Graph Explorerben `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`:.
+ 1. Egy kis idő elteltével ellenőrizze, hogy az attribútumok feltöltése a következő lekérdezés futtatásával történik-e a Graph Explorerben: `https://graph.microsoft.com/beta/users/{Azure AD user UPN}` .
  1. Ekkor az értéknek kell megjelennie.
 
     ![Az érték jelenik meg](media/how-to-transformation/transform4.png)

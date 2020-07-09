@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131308"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
@@ -67,7 +67,7 @@ Windows:
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
-Mindkét tanúsítványra szükség van a IoT Edge eszközön. Ha egyéni regisztrációt fog használni a DPS-ben, akkor fel kell töltenie a. CERT. PEM fájlt. Ha a DPS szolgáltatásban csoportos regisztrációt fog használni, akkor a feltöltéshez ugyanahhoz a tanúsítványlánchez is szüksége lesz egy közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra. Ha bemutató tanúsítványokat használ, használja a `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` tanúsítványt a csoportos regisztrációhoz.
+Mindkét tanúsítványra szükség van a IoT Edge eszközön. Ha egyéni regisztrációt fog használni a DPS-ben, akkor fel kell töltenie a. CERT. PEM fájlt. Ha a DPS szolgáltatásban csoportos regisztrációt fog használni, akkor a feltöltéshez ugyanahhoz a tanúsítványlánchez is szüksége lesz egy közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra. Ha bemutató tanúsítványokat használ, használja a tanúsítványt a `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` csoportos regisztrációhoz.
 
 ## <a name="create-a-dps-individual-enrollment"></a>Egyéni DPS-regisztráció létrehozása
 
@@ -241,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Cserélje le a (z `scope_id`) `identity_cert`, `identity_pk` , és a hatókör-azonosító értékét a (z), és az URI-k között a tanúsítvány-láncra és a kulcsfájl helyére az eszközön. Ha szeretné `registration_id` , adjon meg egy eszközt az eszközhöz, vagy hagyja meg ezt a sort, hogy regisztrálja az eszközt az identitási tanúsítvány CN-nevével.
+Cserélje le a (z),, és a hatókör-azonosító értékét a (z `scope_id` `identity_cert` ), `identity_pk` és az URI-k között a tanúsítvány-láncra és a kulcsfájl helyére az eszközön. `registration_id`Ha szeretné, adjon meg egy eszközt az eszközhöz, vagy hagyja meg ezt a sort, hogy regisztrálja az eszközt az identitási tanúsítvány CN-nevével.
 
 A config. YAML fájl frissítése után mindig indítsa újra a biztonsági démont.
 
@@ -266,9 +266,9 @@ A IoT Edge Windows rendszeren való telepítésével kapcsolatos további inform
 
 1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
 
-1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a manuális kiépítés, kivéve, ha `-Dps` a jelzőt használja az automatikus kiépítés használatára.
+1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a manuális kiépítés, kivéve, ha a `-Dps` jelzőt használja az automatikus kiépítés használatára.
 
-   Cserélje le a `{scope_id}`, `{identity cert chain path}`a és `{identity key path}` a érték helyőrzőjét a DPS-példány megfelelő értékeire, valamint az eszköz fájlelérési útjaira. Ha a regisztrációs azonosítót is meg szeretné adni, `-RegistrationId {registration_id}` akkor a helyőrzőt a megfelelő módon cserélje le.
+   Cserélje le a, a és a érték helyőrzőjét a `{scope_id}` `{identity cert chain path}` DPS- `{identity key path}` példány megfelelő értékeire, valamint az eszköz fájlelérési útjaira. Ha a regisztrációs azonosítót is meg szeretné adni, akkor `-RegistrationId {registration_id}` a helyőrzőt a megfelelő módon cserélje le.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

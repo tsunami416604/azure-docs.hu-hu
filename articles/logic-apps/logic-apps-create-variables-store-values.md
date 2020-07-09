@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753253"
 ---
-# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és kezelése a Azure Logic Apps változók használatával
+# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és felügyelete változók használatával az Azure Logic Appsben
 
 Ez a cikk bemutatja, hogyan hozhatók létre és használhatók a logikai alkalmazásban található értékek tárolására használt változók. A változók segítségével például nyomon követheti, hogy hány alkalommal fut a hurok. Ha egy tömböt szeretne megismételni, vagy egy adott elem tömbjét szeretné megtekinteni, használhat egy változót az egyes tömbökhöz tartozó indexek hivatkozási számának megadásához.
 
@@ -22,7 +22,7 @@ Létrehozhat változókat olyan adattípusokhoz, mint például az Integer, az f
 * A változó értékének beolvasása vagy hivatkozása.
 * Növelje vagy csökkentse a változót egy konstans értékkel, más néven *növekményt* és *csökkentéset*.
 * Rendeljen egy másik értéket a változóhoz.
-* A változó értékének beszúrása vagy *hozzáfűzése* a karakterlánc vagy tömb utolsó időpontjában.
+* Szúrja be vagy *fűzze hozzá* a változó értékét a karakterlánc vagy tömb utolsó elemeként.
 
 A változók léteznek, és globálisak, csak a létrehozásuk során létrehozott Logic app-példányon belül. Emellett a Logic app-példányon belül minden hurok-iterációban megmaradnak. Ha egy változóra hivatkozik, használja a változó nevét tokenként, nem pedig a művelet nevét, amely a szokásos módon hivatkozik a művelet kimenetére.
 
@@ -57,7 +57,7 @@ Létrehozhat egy változót, és deklarálhatja az adattípusát és a kezdeti �
 
      ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel (**+**). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen, a keresőmezőbe írja be `variables` szűrőként a kifejezést. A műveletek listából válassza a **változó inicializálása**elemet.
 
@@ -67,9 +67,9 @@ Létrehozhat egy változót, és deklarálhatja az adattípusát és a kezdeti �
 
    | Tulajdonság | Kötelező | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | **Név** | Igen | <*változó – név*> | A növekményes változó neve |
-   | **Típus** | Igen | <*változó típusa*> | A változó adattípusa |
-   | **Érték** | Nem | <*kezdő érték*> | A változó kezdeti értéke <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó indítási értékét. |
+   | **Name (Név)** | Yes | <*változó – név*> | A növekményes változó neve |
+   | **Típus** | Yes | <*változó típusa*> | A változó adattípusa |
+   | **Érték** | No | <*kezdő érték*> | A változó kezdeti értéke <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó indítási értékét. |
    |||||
 
    Például:
@@ -97,7 +97,7 @@ Ha a tervezőből a kód nézet szerkesztőjére vált, a **változó inicializ�
 ```
 
 > [!NOTE]
-> Bár az **inicializálási változó** művelet egy tömbként strukturált `variables` szakaszt tartalmaz, a művelet egyszerre csak egy változót tud létrehozni. Minden új változóhoz egyéni **inicializálási változó** szükséges.
+> Bár az **inicializálási változó** művelet egy `variables` tömbként strukturált szakaszt tartalmaz, a művelet egyszerre csak egy változót tud létrehozni. Minden új változóhoz egyéni **inicializálási változó** szükséges.
 
 Néhány példa más változó típusokra:
 
@@ -207,8 +207,8 @@ Egy változó állandó értékkel *való növeléséhez vagy* növeléséhez ad
 
    | Tulajdonság | Kötelező | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | **Név** | Igen | <*változó – név*> | A növekményes változó neve |
-   | **Érték** | Nem | <*növekmény – érték*> | A változó növeléséhez használt érték. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó növelésének adott értékét. |
+   | **Name (Név)** | Yes | <*változó – név*> | A növekményes változó neve |
+   | **Érték** | No | <*növekmény – érték*> | A változó növeléséhez használt érték. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó növelésének adott értékét. |
    ||||
 
    Például:
@@ -247,7 +247,7 @@ A változók általában a hurok futási idejének megszámlálásához használ
 
    ![Mellékletek keresése és belefoglalása](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Adja hozzá az [ **inicializálási változó** műveletet](#create-variable). Hozzon létre egy nevű `Count` egész szám típusú változót, amely nulla indítási értékkel rendelkezik.
+1. Adja hozzá az [ **inicializálási változó** műveletet](#create-variable). Hozzon létre egy nevű egész szám típusú változót `Count` , amely nulla indítási értékkel rendelkezik.
 
    ![Művelet hozzáadása a "változó inicializálása"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -255,7 +255,7 @@ A változók általában a hurok futási idejének megszámlálásához használ
 
    1. Az **inicializálási változó inicializálása** műveletnél válassza az **új lépés**lehetőséget.
 
-   1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `for each` a keresési szűrőt, és válassza **az egyesekhez**lehetőséget.
+   1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `for each` keresési szűrőt, és válassza **az egyesekhez**lehetőséget.
 
       !["For each" ciklus hozzáadása](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -328,8 +328,8 @@ Itt láthatók a **változó csökkentése** művelet tulajdonságai:
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Név** | Igen | <*változó – név*> | A csökkentő változó neve | 
-| **Érték** | Nem | <*növekmény – érték*> | A változó csökkentésének értéke. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tisztában legyen a változó csökkentése érdekében megadott értékkel. |
+| **Name (Név)** | Yes | <*változó – név*> | A csökkentő változó neve | 
+| **Érték** | No | <*növekmény – érték*> | A változó csökkentésének értéke. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tisztában legyen a változó csökkentése érdekében megadott értékkel. |
 ||||| 
 
 Ha a tervezőből a kód nézet szerkesztőjére vált, a **változó csökkentése** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú.
@@ -361,8 +361,8 @@ Az alábbi tulajdonságok a **set változóra** vonatkozó művelet tulajdonság
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Név** | Igen | <*változó – név*> | A módosítandó változó neve |
-| **Érték** | Igen | <*új érték*> | Az érték, amelyet hozzá kíván rendelni a változóhoz. Mindkettőnek azonos adattípussal kell rendelkeznie. |
+| **Name (Név)** | Yes | <*változó – név*> | A módosítandó változó neve |
+| **Érték** | Yes | <*új érték*> | Az érték, amelyet hozzá kíván rendelni a változóhoz. Mindkettőnek azonos adattípussal kell rendelkeznie. |
 ||||| 
 
 > [!NOTE]
@@ -374,7 +374,7 @@ Az alábbi tulajdonságok a **set változóra** vonatkozó művelet tulajdonság
 >
 > 3. Húzza a **párhuzamossági fok** csúszkát **1-re**.
 
-Ha a tervezőből a kód nézet szerkesztőjére vált, a **set változó** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú. Ez a példa megváltoztatja `Count` a változó aktuális értékét egy másik értékre.
+Ha a tervezőből a kód nézet szerkesztőjére vált, a **set változó** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú. Ez a példa megváltoztatja a `Count` változó aktuális értékét egy másik értékre.
 
 ```json
 "actions": {
@@ -419,8 +419,8 @@ A Hozzáfűzés a következőhöz: **...** műveletekhez tartozó tulajdonságok
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Név** | Igen | <*változó – név*> | A módosítandó változó neve |
-| **Érték** | Igen | <*Hozzáfűzés – érték*> | A hozzáfűzni kívánt érték, amely bármilyen típusú lehet |
+| **Name (Név)** | Yes | <*változó – név*> | A módosítandó változó neve |
+| **Érték** | Yes | <*Hozzáfűzés – érték*> | A hozzáfűzni kívánt érték, amely bármilyen típusú lehet |
 |||||
 
 Ha a tervezőből a kód nézet szerkesztőjére vált, a **Hozzáfűzés a tömbhöz változó** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú. Ez a példa egy tömb változót hoz létre, és egy másik értéket helyez el a tömb utolsó elemeként. Az eredmény egy olyan frissített változó, amely tartalmazza ezt a tömböt:`[1,2,3,"red"]`

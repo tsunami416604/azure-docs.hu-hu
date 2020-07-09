@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757689"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
@@ -106,7 +105,7 @@ Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági men
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Azt is vegye figyelembe, hogy a legjobb teljesítmény akkor érhető el, ha az I/O-t közvetlenül a particionálás nélküli, a fájlrendszer nélküli, a RAID 0 konfigurációval nem rendelkező NVMe-eszközökön hajtja végre. A tesztelési munkamenet megkezdése előtt győződjön meg arról, hogy a konfiguráció ismert, friss/ `blkdiscard` tiszta állapotban van, és mindegyik NVMe-eszközön fut.
+   Azt is vegye figyelembe, hogy a legjobb teljesítmény akkor érhető el, ha az I/O-t közvetlenül a particionálás nélküli, a fájlrendszer nélküli, a RAID 0 konfigurációval nem rendelkező NVMe-eszközökön hajtja végre. A tesztelési munkamenet megkezdése előtt győződjön meg arról, hogy a konfiguráció ismert, friss/tiszta állapotban van, `blkdiscard` és mindegyik NVMe-eszközön fut.
    
 ## <a name="next-steps"></a>További lépések
 

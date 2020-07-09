@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732939"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
@@ -24,9 +23,9 @@ Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapc
 
 Ha a DLL-fájlok bármelyike megtalálható a bin könyvtárban, a figyelés sikertelen lehet:
 
-- Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Ezek a DLL-fájlok a Visual Studio alapértelmezett alkalmazás-sablonjaiba tartoznak, még akkor is, ha az alkalmazás nem használja őket.
 A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
@@ -42,7 +41,7 @@ A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- Az IISReset és az alkalmazás terhelése (telemetria nélkül). Vizsgálat a Sysinternals-szel (Handle. exe és ListDLLs. exe):
+- Az IISReset és az alkalmazás terhelése (telemetria nélkül). Vizsgálat a Sysinternals-szel (Handle.exe és ListDLLs.exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -60,7 +59,7 @@ A HttpModule nem lehet beinjektálni ebbe a megosztott konfigurációba.
 Futtassa az Enable parancsot az összes webkiszolgálón a DLL-fájlnak az egyes kiszolgálók GAC-ba történő telepítéséhez.
 
 Az enable parancs futtatása után végezze el a következő lépéseket:
-1. Nyissa meg a megosztott konfigurációs könyvtárat, és keresse meg a applicationHost. config fájlt.
+1. Nyissa meg a megosztott konfigurációs könyvtárat, és keresse meg a applicationHost.config fájlt.
 2. Adja hozzá ezt a sort a konfiguráció modulok szakaszához:
     ```
     <modules>
@@ -89,13 +88,13 @@ Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/is
 A `Get-Module -ListAvailable` parancs használatával meghatározhatja, hogy mely modulok vannak telepítve.
 
 #### <a name="import-a-module-into-the-current-session"></a>Modul importálása az aktuális munkamenetbe
-Ha egy modult nem töltöttek be egy PowerShell-munkamenetbe, manuálisan is betöltheti `Import-Module <path to psd1>` azt a parancs használatával.
+Ha egy modult nem töltöttek be egy PowerShell-munkamenetbe, manuálisan is betöltheti azt a `Import-Module <path to psd1>` parancs használatával.
 
 
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>Az Application Insights Agent modul hibaelhárítása
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>A Application Insights Agent modulban elérhető parancsok listázása
-Futtassa a parancsot `Get-Command -Module Az.ApplicationMonitor` az elérhető parancsok beszerzéséhez:
+Futtassa a parancsot az `Get-Command -Module Az.ApplicationMonitor` elérhető parancsok beszerzéséhez:
 
 ```
 CommandType     Name                                               Version    Source
@@ -133,8 +132,8 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
 #### <a name="setup"></a>Telepítés
 
-1. Töltse le a Perfview eszköz. exe és a PerfView64. exe fájlt a [githubról](https://github.com/Microsoft/perfview/releases).
-2. Indítsa el a PerfView64. exe fájlt.
+1. Töltse le PerfView.exe és PerfView64.exe a [githubról](https://github.com/Microsoft/perfview/releases).
+2. PerfView64.exe elindítása.
 3. Bontsa ki a **Speciális beállítások elemet**.
 4. Törölje a jelet a következő jelölőnégyzetekből:
     - **Zip**

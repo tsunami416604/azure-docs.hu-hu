@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: networking
 author: anavinahar
 ms.service: networking
@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82096005"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
@@ -72,7 +72,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati adapterek szabályai (a hálózati adapter összes IP-címe között) | 300                           |
 | Előtér-IP-konfigurációk              | 600                           |
 | Háttérbeli készlet mérete                       | 1 000 IP-konfiguráció, egyetlen virtuális hálózat |
-| Háttérbeli erőforrások száma <sup>Load Balancer 1<sup> | 150                   |
+| Háttérbeli erőforrások száma Load Balancer <sup> 1<sup> | 150                   |
 | Magas rendelkezésre állású portok                 | 1/belső előtér       |
 | Kimenő szabályok száma Load Balancer        | 600                           |
 | [TCP Üresjárati időkorlát](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 perc/30 perc          |

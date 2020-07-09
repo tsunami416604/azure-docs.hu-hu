@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 0428f9a4a2330fded9cb05d0ab7ae395b9216582
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8dcaecb1e4eb91ee01e3ccb39000e087b3455ba2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048531"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832355"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentéskészítés
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,10 +49,12 @@ Ezek az utasítások a rugalmas lekérdezési adatbázisban létrehozzák a szil
 
 A rugalmas lekérdezés a hitelesítő adatokat használja a távoli adatbázisokhoz való kapcsolódáshoz.  
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
-    CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
-    SECRET = '<password>'
-    [;]
+```sql
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
+CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
+SECRET = '<password>'
+[;]
+```
 
 > [!NOTE]
 > Győződjön meg arról, hogy a " * \<username\> "* nem tartalmazza a *" \@ servername"* utótagot.
@@ -61,30 +63,36 @@ A rugalmas lekérdezés a hitelesítő adatokat használja a távoli adatbáziso
 
 Szintaxis:
 
-    <External_Data_Source> ::=
+```sql
+<External_Data_Source> ::=
     CREATE EXTERNAL DATA SOURCE <data_source_name> WITH
-            (TYPE = SHARD_MAP_MANAGER,
-                       LOCATION = '<fully_qualified_server_name>',
-            DATABASE_NAME = ‘<shardmap_database_name>',
-            CREDENTIAL = <credential_name>,
-            SHARD_MAP_NAME = ‘<shardmapname>’
-                   ) [;]
+        (TYPE = SHARD_MAP_MANAGER,
+                   LOCATION = '<fully_qualified_server_name>',
+        DATABASE_NAME = ‘<shardmap_database_name>',
+        CREDENTIAL = <credential_name>,
+        SHARD_MAP_NAME = ‘<shardmapname>’
+               ) [;]
+```
 
 ### <a name="example"></a>Példa
 
-    CREATE EXTERNAL DATA SOURCE MyExtSrc
-    WITH
-    (
-        TYPE=SHARD_MAP_MANAGER,
-        LOCATION='myserver.database.windows.net',
-        DATABASE_NAME='ShardMapDatabase',
-        CREDENTIAL= SMMUser,
-        SHARD_MAP_NAME='ShardMap'
-    );
+```sql
+CREATE EXTERNAL DATA SOURCE MyExtSrc
+WITH
+(
+    TYPE=SHARD_MAP_MANAGER,
+    LOCATION='myserver.database.windows.net',
+    DATABASE_NAME='ShardMapDatabase',
+    CREDENTIAL= SMMUser,
+    SHARD_MAP_NAME='ShardMap'
+);
+```
 
 Az aktuális külső adatforrások listájának beolvasása:
 
-    select * from sys.external_data_sources;
+```sql
+select * from sys.external_data_sources;
+```
 
 A külső adatforrás a szegmens térképre hivatkozik. A rugalmas lekérdezés ezután a külső adatforrást és a mögöttes szegmenses térképet használja az adatrétegben részt vevő adatbázisok enumerálásához.
 Ugyanazokat a hitelesítő adatokat használja a rendszer, hogy beolvassa a szegmensek térképét, és egy rugalmas lekérdezés feldolgozása során hozzáférjen a szegmensekhez tartozó adatokhoz.
@@ -93,47 +101,55 @@ Ugyanazokat a hitelesítő adatokat használja a rendszer, hogy beolvassa a szeg
 
 Szintaxis:  
 
-    CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name  
-        ( { <column_definition> } [ ,...n ])
-        { WITH ( <sharded_external_table_options> ) }
-    ) [;]  
+```sql
+CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name  
+    ( { <column_definition> } [ ,...n ])
+    { WITH ( <sharded_external_table_options> ) }
+) [;]  
 
-    <sharded_external_table_options> ::=
-      DATA_SOURCE = <External_Data_Source>,
-      [ SCHEMA_NAME = N'nonescaped_schema_name',]
-      [ OBJECT_NAME = N'nonescaped_object_name',]
-      DISTRIBUTION = SHARDED(<sharding_column_name>) | REPLICATED |ROUND_ROBIN
+<sharded_external_table_options> ::=
+  DATA_SOURCE = <External_Data_Source>,
+  [ SCHEMA_NAME = N'nonescaped_schema_name',]
+  [ OBJECT_NAME = N'nonescaped_object_name',]
+  DISTRIBUTION = SHARDED(<sharding_column_name>) | REPLICATED |ROUND_ROBIN
+```
 
 **Példa**
 
-    CREATE EXTERNAL TABLE [dbo].[order_line](
-         [ol_o_id] int NOT NULL,
-         [ol_d_id] tinyint NOT NULL,
-         [ol_w_id] int NOT NULL,
-         [ol_number] tinyint NOT NULL,
-         [ol_i_id] int NOT NULL,
-         [ol_delivery_d] datetime NOT NULL,
-         [ol_amount] smallmoney NOT NULL,
-         [ol_supply_w_id] int NOT NULL,
-         [ol_quantity] smallint NOT NULL,
-         [ol_dist_info] char(24) NOT NULL
-    )
+```sql
+CREATE EXTERNAL TABLE [dbo].[order_line](
+     [ol_o_id] int NOT NULL,
+     [ol_d_id] tinyint NOT NULL,
+     [ol_w_id] int NOT NULL,
+     [ol_number] tinyint NOT NULL,
+     [ol_i_id] int NOT NULL,
+     [ol_delivery_d] datetime NOT NULL,
+     [ol_amount] smallmoney NOT NULL,
+     [ol_supply_w_id] int NOT NULL,
+     [ol_quantity] smallint NOT NULL,
+      [ol_dist_info] char(24) NOT NULL
+)
 
-    WITH
-    (
-        DATA_SOURCE = MyExtSrc,
-         SCHEMA_NAME = 'orders',
-         OBJECT_NAME = 'order_details',
-        DISTRIBUTION=SHARDED(ol_w_id)
-    );
+WITH
+(
+    DATA_SOURCE = MyExtSrc,
+     SCHEMA_NAME = 'orders',
+     OBJECT_NAME = 'order_details',
+    DISTRIBUTION=SHARDED(ol_w_id)
+);
+```
 
 A külső táblák listájának beolvasása az aktuális adatbázisból:
 
-    SELECT * from sys.external_tables;
+```sql
+SELECT * from sys.external_tables;
+```
 
 Külső táblák eldobása:
 
-    DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
+```sql
+DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
+```
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -206,7 +222,7 @@ Az alkalmazáshoz, a BI-hoz és az adatintegrációs eszközökhöz a külső t�
 * A rugalmas lekérdezés jelenleg nem hajtja végre a szegmensek eltávolítását, ha az predikátumok a horizontális Felskálázási kulcs során lehetővé teszik, hogy biztonságosan kizárjon bizonyos szegmenseket a feldolgozásból.
 * A rugalmas lekérdezés a legjobb megoldás, ha a számítások többsége a szegmenseken végezhető el. A legjobb lekérdezési teljesítményt általában a szelektív szűrési predikátumokkal lehet kiértékelni, amelyek kiértékelése a szegmenseken vagy az összekapcsolások a particionálási kulcsokon keresztül történik, amelyek az összes szegmensen elvégezhető partícióra igazított módon hajthatók végre. Előfordulhat, hogy más lekérdezési minták nagy mennyiségű adat betöltését végzik a szegmensek és a fő csomópont között, és nem megfelelően
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](elastic-query-overview.md).
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).

@@ -7,10 +7,10 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80146887"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>A APNS VOIP használata Notification Hubson keresztül (hivatalosan nem támogatott)
@@ -21,15 +21,15 @@ A APNS VOIP-értesítéseket az Azure Notification Hubs használatával lehet ha
 
 Ha továbbra is APNS VOIP-értesítéseket küld Notification Hubson keresztül, vegye figyelembe a következő korlátozásokat:
 
-- A VOIP-értesítések küldése megköveteli `apns-topic` , hogy a fejléc az alkalmazáscsomag azonosítójának és az `.voip` utótagnak legyen beállítva. Például a Bundle ID `com.microsoft.nhubsample`-vel rendelkező minta alkalmazás esetében a `apns-topic` fejlécet a következőre kell beállítani:`com.microsoft.nhubsample.voip.`
+- A VOIP-értesítések küldése megköveteli `apns-topic` , hogy a fejléc az ALKALMAZÁSCSOMAG azonosítójának és az `.voip` utótagnak legyen beállítva. Például a Bundle ID-vel rendelkező minta alkalmazás esetében `com.microsoft.nhubsample` a fejlécet a következőre `apns-topic` kell beállítani:`com.microsoft.nhubsample.voip.`
 
-   Ez a módszer nem működik megfelelően az Azure Notification Hubsban, mert az alkalmazás köteg-AZONOSÍTÓját a hub APNS hitelesítő adatainak részeként kell konfigurálni, és az érték nem módosítható. Emellett a Notification Hubs nem teszi lehetővé a `apns-topic` fejléc értékének felülbírálását futásidőben.
+   Ez a módszer nem működik megfelelően az Azure Notification Hubsban, mert az alkalmazás köteg-AZONOSÍTÓját a hub APNS hitelesítő adatainak részeként kell konfigurálni, és az érték nem módosítható. Emellett a Notification Hubs nem teszi lehetővé a fejléc értékének `apns-topic` felülbírálását futásidőben.
 
-   A VOIP-értesítések küldéséhez külön értesítési központot kell konfigurálnia az `.voip` ALKALMAZÁSCSOMAG-azonosítóval.
+   A VOIP-értesítések küldéséhez külön értesítési központot kell konfigurálnia az alkalmazáscsomag- `.voip` azonosítóval.
 
-- A VOIP-értesítések küldése megköveteli `apns-push-type` , hogy a fejléc az értékre `voip`legyen állítva.
+- A VOIP-értesítések küldése megköveteli `apns-push-type` , hogy a fejléc az értékre legyen állítva `voip` .
 
-   Annak érdekében, hogy az ügyfelek az iOS 13 rendszerre való áttéréssel segítsenek, Notification Hubs megkísérli `apns-push-type` a fejléc helyes értékének következtetését. A következtetési logika szándékosan egyszerű, a szabványos értesítések megszakításának elkerülése érdekében. Sajnos ez a módszer a VOIP-értesítésekkel kapcsolatos problémákat okoz, mivel az Apple a VOIP-értesítéseket olyan speciális esetként kezeli, amely nem ugyanazokat a szabályokat követi, mint a normál értesítések.
+   Annak érdekében, hogy az ügyfelek az iOS 13 rendszerre való áttéréssel segítsenek, Notification Hubs megkísérli a fejléc helyes értékének következtetését `apns-push-type` . A következtetési logika szándékosan egyszerű, a szabványos értesítések megszakításának elkerülése érdekében. Sajnos ez a módszer a VOIP-értesítésekkel kapcsolatos problémákat okoz, mivel az Apple a VOIP-értesítéseket olyan speciális esetként kezeli, amely nem ugyanazokat a szabályokat követi, mint a normál értesítések.
 
    A VOIP-értesítések küldéséhez explicit értéket kell megadnia a `apns-push-type` fejléchez.
 
@@ -41,7 +41,7 @@ Ha továbbra is APNS VOIP-értesítéseket küld Notification Hubson keresztül,
 
 További információk az alábbi hivatkozásokra kattintva érhetők el:
 
-- [Dokumentáció `apns-topic` `apns-push-type` és fejlécek és értékek, beleértve a VoIP-értesítések speciális eseteit](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns).
+- [Dokumentáció `apns-topic` és `apns-push-type` fejlécek és értékek, beleértve a VoIP-értesítések speciális eseteit](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns).
 
 - [Dokumentáció a hasznos adatok méretének korlátozásához](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
 

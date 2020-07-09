@@ -36,9 +36,27 @@
       href: manage-dhcp.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
+    - name: Virtuálisgép üzembe helyezése a tartalomtáron keresztül
+      href: deploy-vm-content-library.md
+    - name: Azure Backup Server AVS-hez
+      items:
+        - name: Azure Backup Server beállítása az AVS-hez
+          href: set-up-mabs-for-avs.md
+        - name: AVS-virtuálisgépek biztonsági mentése az Azure Backup Serverrel
+          href: backup-avs-vms-with-mabs.md
+    - name: Azure natív integrációja
+      items:
+        - name: API Management
+          href: concepts-api-management.md
+        - name: Küllős modell
+          href: concepts-avs-hub-and-spoke-integration.md
 - name: Referencia
   items: null
 - name: További források
   items:
+    - name: Hibaelhárítás
+      items:
+        - name: Segítségkérés az AVS üzembehelyezési vagy kiépítési hibáival kapcsolatban
+          href: fix-deployment-provisioning-failures.md
     - name: GYIK
       href: faq.md

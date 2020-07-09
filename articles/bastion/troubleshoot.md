@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan oldhatja meg az Azure Bastion
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 749d7125c013f419197ef8243d2475e612dc81b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831930"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Az Azure Bastion hibaelhárítása
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan lehet elhárítani az Azure Bastion-t.
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Nem hozható létre NSG a AzureBastionSubnet
 
-**K:** Amikor megpróbálok létrehozni egy NSG az Azure-beli megerősített alhálózaton, a következő hibaüzenet jelenik meg: *"a <NSG name> hálózati biztonsági csoport nem rendelkezik az Azure-beli megerősített alhálózat AzureBastionSubnet szükséges szabályokkal"*.
+**K:** Amikor megpróbálok létrehozni egy NSG az Azure-beli megerősített alhálózaton, a következő hibaüzenet jelenik meg: *"a hálózati biztonsági csoport <NSG name> nem rendelkezik az Azure-beli megerősített alhálózat AzureBastionSubnet szükséges szabályokkal"*.
 
 **A:** Ha NSG hoz létre és alkalmaz *AzureBastionSubnet*, győződjön meg arról, hogy az alábbi szabályokat adta hozzá a NSG. Ha nem adja hozzá ezeket a szabályokat, a NSG létrehozása/frissítése sikertelen lesz.
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan lehet elhárítani az Azure Bastion-t.
 2. A diagnosztikai naplózás és egyebek – a AzureCloud a 443-es kimenő forgalom (a szolgáltatási címkén belüli regionális címkék még nem támogatottak.)
 3. Cél virtuális gép – 3389-es és 22-es VirtualNetwork
 
-A NSG-szabályokra például a gyors útmutató [sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)van lehetőség.
+A NSG-szabályokra például a gyors útmutató [sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)van lehetőség.
 További információ: [NSG útmutató az Azure Bastion-hez](bastion-nsg.md).
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Az SSH-kulcs nem használható az Azure Bastion használatával
@@ -39,7 +39,7 @@ További információ: [NSG útmutató az Azure Bastion-hez](bastion-nsg.md).
 
 Például a következő paranccsal hozhat létre egy új RSA SSH-kulcsot:
 
-**ssh-keygen-t RSA-b 4096-C "email@domain.com"**
+**ssh-keygen-t RSA-b 4096-C " email@domain.com "**
 
 Kimenet:
 
@@ -71,7 +71,7 @@ The key's randomart image is:
 
 **K:** Nem tudok csatlakozni a Windows rendszerű virtuális géphez, amely a tartományhoz csatlakozik.
 
-**A:** Az Azure Bastion támogatja a tartományhoz csatlakoztatott virtuális gépek bejelentkezését a Felhasználónév-jelszó alapú tartományba való bejelentkezéshez. A tartományi hitelesítő adatoknak a Azure Portal való megadásakor a bejelentkezéshez ausername@domaintartomány *\ Felhasználónév* formátuma helyett az UPN () formátumot használja. Ez a tartományhoz csatlakoztatott vagy a hibrid csatlakozású (tartományhoz csatlakoztatott, valamint az Azure AD-hez csatlakoztatott) virtuális gépek esetében támogatott. Az Azure AD-hez csatlakoztatott virtuális gépek nem támogatottak.
+**A:** Az Azure Bastion támogatja a tartományhoz csatlakoztatott virtuális gépek bejelentkezését a Felhasználónév-jelszó alapú tartományba való bejelentkezéshez. A tartományi hitelesítő adatoknak a Azure Portal való megadásakor a username@domain bejelentkezéshez a tartomány *\ Felhasználónév* formátuma helyett az UPN () formátumot használja. Ez a tartományhoz csatlakoztatott vagy a hibrid csatlakozású (tartományhoz csatlakoztatott, valamint az Azure AD-hez csatlakoztatott) virtuális gépek esetében támogatott. Az Azure AD-hez csatlakoztatott virtuális gépek nem támogatottak.
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Fájlátviteli problémák
 

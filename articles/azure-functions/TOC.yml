@@ -22,6 +22,9 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Parancssor
           href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
     - name: Csatlakozás a tárolóhoz
       items:
         - name: Visual Studio Code
@@ -62,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure-minták
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -109,11 +112,11 @@
       items:
         - name: Támogatott nyelvek
           href: supported-languages.md
-        - name: 'C# (osztálytár)'
+        - name: C# (osztálytár)
           href: functions-dotnet-class-library.md
-        - name: 'C#-szkript (.csx)'
+        - name: C#-szkript (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -124,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: Biztonság
       items:
         - name: Biztonsági áttekintés
@@ -341,6 +344,12 @@
   items:
     - name: API-referenciák
       items:
+        - name: ARM-sablon
+          href: /azure/templates/microsoft.web/2018-11-01/sites/functions
+        - name: Azure CLI
+          href: /cli/azure/functionapp
+        - name: Azure PowerShell
+          href: /powershell/module/az.functions
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
         - name: Python
@@ -368,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x és újabb
               displayName: Azure Cosmos DB
               items:
                 - name: Áttekintés
@@ -462,6 +471,9 @@
             - name: Áttekintés
               href: functions-bindings-signalr-service.md
               displayName: SignalR Service
+            - name: Eseményindító
+              href: functions-bindings-signalr-service-trigger.md
+              displayName: SignalR Service
             - name: Input (Bemenet)
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
@@ -495,7 +507,7 @@
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Kvótákra vonatkozó információk
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Videók

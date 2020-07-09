@@ -9,12 +9,11 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: e9abb2ded5465d4b245f4c9bcfab921444d41fa2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684923"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960214"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Az Azure Storage figyelési adatreferenciája
 
@@ -32,11 +31,15 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="account-level"></a>Fiók szintje
 
+Ez a táblázat a [fiók szintű metrikákat](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)jeleníti meg.
+
 | Metric | Leírás |
 | ------------------- | ----------------- |
 | UsedCapacity | A Storage-fiók által használt tárterület mennyisége. Standard szintű tárfiókok esetében ez a blob, a tábla, a fájl és a várólista által használt kapacitás összege. Prémium szintű és Blob Storage-fiókok esetében a BlobCapacity értékével azonos. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
 #### <a name="blob-storage"></a>Blob Storage
+
+Ez a táblázat a [blob Storage metrikáit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)mutatja be.
 
 | Metric | Leírás |
 | ------------------- | ----------------- |
@@ -47,6 +50,8 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="table-storage"></a>Table Storage
 
+Ez a táblázat a [táblázatos tároló metrikáit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)jeleníti meg.
+
 | Metric | Leírás |
 | ------------------- | ----------------- |
 | TableCapacity | A Storage-fiók által használt Table Storage mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
@@ -55,13 +60,17 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="queue-storage"></a>Queue Storage
 
+Ez a táblázat a [várólista-tároló metrikáit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)jeleníti meg.
+
 | Metric | Leírás |
 | ------------------- | ----------------- |
 | QueueCapacity | A Storage-fiók által használt üzenetsor-tároló mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 | QueueCount   | A Storage-fiókban lévő várólisták száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
-| QueueMessageCount | A nem lejárt üzenetsor-üzenetek száma a Storage-fiókban. <br/><br/>Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| QueueMessageCount | A tárolási fiók Queue szolgáltatásban lévő üzenetsor-üzenetek hozzávetőleges száma. <br/><br/>Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
 #### <a name="file-storage"></a>File Storage
+
+Ez a táblázat a [file Storage mérőszámait](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)jeleníti meg.
 
 | Metric | Leírás |
 | ------------------- | ----------------- |
@@ -84,7 +93,7 @@ Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Mo
 | SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Egység: ezredmásodperc <br/> Összesítés típusa: átlag <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
 | Rendelkezésre állás | A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás az összes számlázható kérelem értékének és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik. <br/><br/> Egység: százalék <br/> Összesítés típusa: átlag <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 99,99 |
 
-<a id="metrics-dimensions" />
+<a id="metrics-dimensions"></a>
 
 ## <a name="metrics-dimensions"></a>Metrikák méretei
 
@@ -128,7 +137,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 }
 ```
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 |:--- |:---|
 |**idő** | Az az egyezményes világidő (UTC), amikor a kérést a tároló fogadta. Példa: `2018/11/08 21:09:36.6900118`.|
 |**resourceId** | A Storage-fiók erőforrás-azonosítója. Például:`/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
@@ -176,7 +185,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 
 ```
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 |:--- |:---|
 |**identitás/típus** | A kérelem elvégzéséhez használt hitelesítés típusa. Például: `OAuth` ,, `SAS Key` `Account Key` , vagy`Anonymous` |
 |**identitás/tokenHash**|Ez a mező csak belső használatra van fenntartva. |
@@ -231,7 +240,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 }
 ```
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 |:--- |:---|
 |**accountName** | A Storage-fiók neve. Példa: `mystorageaccount`.  |
 |**requestUrl** | A kért URL-cím. Példa: `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10`.|

@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d3568e3869415a3223154af30b22d85c8104199
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660239"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087622"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások az Azure HDInsight ML-szolgáltatásaihoz
 
@@ -41,7 +41,7 @@ Ha több Storage-fiókot adott meg a ML-szolgáltatások fürtjének létrehozá
 
 1. Egy SSH-ügyfél használatával csatlakozzon a fürt peremhálózati csomópontjához. Az SSH HDInsight-fürtökkel való használatával kapcsolatban lásd: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
-2. Másolja a mysamplefile. csv fájlt a/Share könyvtárba.
+2. Másolja a mysamplefile.csv a/Share könyvtárba.
 
     ```bash
     hadoop fs –mkdir /share
@@ -70,11 +70,11 @@ Ha több Storage-fiókot adott meg a ML-szolgáltatások fürtjének létrehozá
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-A könyvtár és a fájl összes hivatkozása a Storage- `wasbs://container1@storage1.blob.core.windows.net`fiókra mutat. Ez az **alapértelmezett Storage-fiók** , amely a HDInsight-fürthöz van társítva.
+A könyvtár és a fájl összes hivatkozása a Storage-fiókra mutat `wasbs://container1@storage1.blob.core.windows.net` . Ez az **alapértelmezett Storage-fiók** , amely a HDInsight-fürthöz van társítva.
 
 ### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>A kiegészítő tároló használata a HDInsight ML-szolgáltatásaival
 
-Most tegyük fel, hogy feldolgozza a mysamplefile1. csv nevű fájlt, amely a **storage2** **container2** /Private könyvtárában található.
+Most tegyük fel, hogy egy mysamplefile1.csv nevű fájlt szeretne feldolgozni a **storage2**-ben található **container2** /Private könyvtárban.
 
 Az R-kódban mutasson a név csomópontra hivatkozás a **storage2** Storage-fiókra.
 
@@ -98,7 +98,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-Az összes címtár-és fájl-hivatkozás most a Storage-fiókra `wasbs://container2@storage2.blob.core.windows.net`mutat. Ez a **név megadott csomópontja** .
+Az összes címtár-és fájl-hivatkozás most a Storage-fiókra mutat `wasbs://container2@storage2.blob.core.windows.net` . Ez a **név megadott csomópontja** .
 
 Konfigurálja a `/user/RevoShare/<SSH username>` könyvtárat a **storage2** a következő módon:
 

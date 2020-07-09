@@ -17,11 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689214"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect Sync: az architektúra megismerése
 Ez a témakör a Azure AD Connect Sync alapszintű architektúráját ismerteti. Számos szempontból hasonló az előzőekhez MIIS 2003, ILM 2007 és FIM 2010. Azure AD Connect szinkronizálás a technológiák fejlődése. Ha ismeri a korábbi technológiák bármelyikét, a jelen témakör tartalma is ismerős lesz. Ha még nem ismeri a szinkronizálást, akkor ez a témakör Önnek szól. Azonban nem kell tudnia, hogy a témakör részletei sikeresek legyenek ahhoz, hogy a testreszabások Azure AD Connect szinkronizálást (ez a témakör szinkronizálási motornak hívják).

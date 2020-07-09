@@ -4,21 +4,21 @@ description: Ismerje meg, hogyan használhatja a Azure Firewall a Windows rendsz
 author: vhorne
 ms.service: firewall
 services: firewall
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 86b30b644da929f10f5d7c9642d5f89fbd29a7fa
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611135"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>A Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Az Azure Firewall használata a Windows Virtual Desktop üzemelő példányainak védelméhez
 
 A Windows Virtual Desktop egy Azure-on futó asztali és app Virtualization szolgáltatás. Amikor a végfelhasználó egy Windows rendszerű virtuális asztali környezethez csatlakozik, a munkamenetet egy gazdagép futtatja. A címkészlet olyan Azure-beli virtuális gépek gyűjteménye, amelyek munkamenet-gazdagépként regisztrálják a Windows rendszerű virtuális asztalt. Ezek a virtuális gépek a virtuális hálózaton futnak, és a virtuális hálózat biztonsági ellenőrzése alá esnek. A Windows Virtual Desktop szolgáltatás megfelelő működéséhez kimenő internet-hozzáférésre van szükségük, és a végfelhasználók számára is szükség lehet a kimenő internet-hozzáférésre. Azure Firewall segíthet a környezet zárolásában és a kimenő forgalom szűrésében.
 
-[![Windows rendszerű virtuális](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) asztali architektúra](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[![Windows rendszerű virtuális asztali architektúra ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
 A jelen cikkben található irányelvek alapján további védelmet biztosíthat a Windows rendszerű virtuális asztali címkészlet számára a Azure Firewall használatával.
 

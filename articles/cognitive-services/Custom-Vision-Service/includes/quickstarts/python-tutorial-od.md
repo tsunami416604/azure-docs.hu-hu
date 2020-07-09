@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: b339749a5c09bd1ddcdd4226e507ce3e01eee200
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: dd587279e05b00304eda6edd763ecda9bd6e3c8f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806370"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805907"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Custom Vision SDK és a Python használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
 
@@ -44,7 +44,7 @@ A projekt létrehozásakor további beállítások megadásához tekintse meg a 
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry, Region
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
 from msrest.authentication import ApiKeyCredentials
 
 ENDPOINT = "<your API endpoint>"
@@ -162,7 +162,7 @@ for file_name in scissors_image_regions.keys():
     with open(base_image_url + "images/scissors/" + file_name + ".jpg", mode="rb") as image_contents:
         tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
 
-upload_result = trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
+upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=tagged_images_with_regions))
 if not upload_result.is_batch_successful:
     print("Image batch upload failed.")
     for image in upload_result.images:
@@ -222,7 +222,7 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. A következő képzési útmutató a képbesorolással foglalkozik, de az alapelvei hasonlóak az objektumok észleléséhez.
 

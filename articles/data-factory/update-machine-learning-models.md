@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927394"
 ---
 # <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>ML Studio (klasszikus) v modellek frissítése az erőforrás frissítése tevékenység használatával
@@ -61,13 +60,13 @@ A következő JSON-kódrészlet egy ML Studio (klasszikus) batch-végrehajtási 
 
 | Tulajdonság                      | Leírás                              | Kötelező |
 | :---------------------------- | :--------------------------------------- | :------- |
-| név                          | A folyamatban szereplő tevékenység neve     | Igen      |
-| leírás                   | A tevékenység működését leíró szöveg  | Nem       |
-| type                          | Azure Machine Learning frissítési erőforrás tevékenység esetén a tevékenység típusa **AzureMLUpdateResource**. | Igen      |
-| linkedServiceName             | Azure Machine Learning társított szolgáltatás, amely a updateResourceEndpoint tulajdonságot tartalmazza. | Igen      |
-| trainedModelName              | A frissítendő webszolgáltatási kísérletben szereplő betanított modell modul neve | Igen      |
-| trainedModelLinkedServiceName | Az Azure Storage társított szolgáltatás neve, amely a frissítési művelettel feltöltött ilearner fájlt tartja | Igen      |
-| trainedModelFilePath          | A trainedModelLinkedService relatív fájljának elérési útja, amely a frissítési művelet által feltöltött ilearner-fájlt jelöli. | Igen      |
+| name                          | A folyamatban szereplő tevékenység neve     | Yes      |
+| leírás                   | A tevékenység működését leíró szöveg  | No       |
+| típus                          | Azure Machine Learning frissítési erőforrás tevékenység esetén a tevékenység típusa **AzureMLUpdateResource**. | Yes      |
+| linkedServiceName             | Azure Machine Learning társított szolgáltatás, amely a updateResourceEndpoint tulajdonságot tartalmazza. | Yes      |
+| trainedModelName              | A frissítendő webszolgáltatási kísérletben szereplő betanított modell modul neve | Yes      |
+| trainedModelLinkedServiceName | Az Azure Storage társított szolgáltatás neve, amely a frissítési művelettel feltöltött ilearner fájlt tartja | Yes      |
+| trainedModelFilePath          | A trainedModelLinkedService relatív fájljának elérési útja, amely a frissítési művelet által feltöltött ilearner-fájlt jelöli. | Yes      |
 
 ## <a name="end-to-end-workflow"></a>Teljes körű munkafolyamat
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan konfigurálhatja az Azure dev Spaces-t egyéni traefik bemenő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 ms.openlocfilehash: fd11b3bbd3f90b75203084ff0753c1485d57a35b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155429"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Egyéni bejövő traefik-vezérlő használata és HTTPS konfigurálása
@@ -47,7 +47,7 @@ Adja hozzá a [hivatalos stabil Helm-tárházat][helm-stable-repo], amely tartal
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Hozzon létre egy Kubernetes-névteret a traefik beáramló vezérlőhöz, és telepítse azt a használatával `helm`.
+Hozzon létre egy Kubernetes-névteret a traefik beáramló vezérlőhöz, és telepítse azt a használatával `helm` .
 
 > [!NOTE]
 > Ha az AK-fürtön nincs engedélyezve a RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
@@ -58,7 +58,7 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> A fenti példa egy nyilvános végpontot hoz létre a bejövő vezérlőhöz. Ha ehelyett privát végpontot kell használnia a bejövő adatvezérlőhöz, adja hozzá a *--set Service. Megjegyzések kifejezést. " Service\\. Beta\\. kubernetes\\. IO/Azure-Load-Balancer-belső "= true* paraméter a *Helm install* parancshoz.
+> A fenti példa egy nyilvános végpontot hoz létre a bejövő vezérlőhöz. Ha ehelyett privát végpontot kell használnia a bejövő adatvezérlőhöz, adja hozzá a *--set Service. Megjegyzések kifejezést. " Service \\ . Beta \\ . kubernetes \\ . IO/Azure-Load-Balancer-belső "= true* paraméter a *Helm install* parancshoz.
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
@@ -102,7 +102,7 @@ Nyissa meg a [Values. YAML][values-yaml] , és végezze el a következő frissí
 * Cserélje le a *<REPLACE_ME_WITH_HOST_SUFFIX>* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. 
 * Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: traefik # Custom beáramló*. 
 
-Az alábbi példa egy frissített `values.yaml` fájlt mutat be:
+Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
 
 ```yaml
 # This is a YAML-formatted file.
@@ -125,13 +125,13 @@ gateway:
 
 Mentse a módosításokat, és zárjuk be a fájlt.
 
-Hozza létre a *fejlesztői* területet a minta alkalmazással `azds space select`a használatával.
+Hozza létre a *fejlesztői* területet a minta alkalmazással a használatával `azds space select` .
 
 ```console
 azds space select -n dev -y
 ```
 
-Telepítse a minta alkalmazást a `helm install`használatával.
+Telepítse a minta alkalmazást a használatával `helm install` .
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -139,13 +139,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 A fenti példa telepíti a minta alkalmazást a *fejlesztői* névtérbe.
 
-Jelenítse meg az URL-címeket, amelyekkel elérheti a minta alkalmazást a használatával `azds list-uris`.
+Jelenítse meg az URL-címeket, amelyekkel elérheti a minta alkalmazást a használatával `azds list-uris` .
 
 ```console
 azds list-uris
 ```
 
-Az alábbi kimenet a példákban szereplő URL `azds list-uris`-címeket mutatja.
+Az alábbi kimenet a példákban szereplő URL-címeket mutatja `azds list-uris` .
 
 ```console
 Uri                                                  Status
@@ -154,7 +154,7 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-A `azds list-uris` parancsból nyissa meg a nyilvános URL-címet a *bikesharingweb* szolgáltatáshoz. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a következő: `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+A parancsból nyissa meg a nyilvános URL-címet a *bikesharingweb* szolgáltatáshoz `azds list-uris` . A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a következő: `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
 > Ha a *bikesharingweb* szolgáltatás helyett hibaüzenet jelenik meg, ellenőrizze, hogy a *kubernetes.IO/ingress.Class* jegyzetét és a gazdagépet **is** frissítette-e a *Values. YAML* fájlban.
@@ -166,7 +166,7 @@ azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Az alábbi kimenet a példaként `azds list-uris` szolgáló URL-címeket mutatja be a *azureuser1* gyermek-fejlesztési térben található minta alkalmazás eléréséhez.
+Az alábbi kimenet a példaként szolgáló URL-címeket mutatja be a `azds list-uris` *azureuser1* gyermek-fejlesztési térben található minta alkalmazás eléréséhez.
 
 ```console
 Uri                                                  Status
@@ -175,11 +175,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Nyissa meg a *bikesharingweb* szolgáltatást a *azureuser1* gyermekének fejlesztői területén, és nyissa meg `azds list-uris` a paranccsal a nyilvános URL-címet. A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a *azureuser1* gyermekének fejlesztői területén `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+Nyissa meg a *bikesharingweb* szolgáltatást a *azureuser1* gyermekének fejlesztői területén, és nyissa meg a paranccsal a nyilvános URL-címet `azds list-uris` . A fenti példában a *bikesharingweb* szolgáltatás nyilvános URL-címe a *azureuser1* gyermekének fejlesztői területén `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>A traefik bejövő forgalom-vezérlő konfigurálása HTTPS használatára
 
-A [tanúsítvány-kezelő][cert-manager] segítségével automatizálhatja a TLS-tanúsítvány felügyeletét, amikor konfigurálja a traefik bejövő adatvezérlőt a https használatára. A `helm` paranccsal telepítheti a *certmanager* -diagramot.
+A [tanúsítvány-kezelő][cert-manager] segítségével automatizálhatja a TLS-tanúsítvány felügyeletét, amikor konfigurálja a traefik bejövő adatvezérlőt a https használatára. `helm`A paranccsal telepítheti a *certmanager* -diagramot.
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
@@ -189,7 +189,7 @@ helm repo update
 helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Hozzon `letsencrypt-clusterissuer.yaml` létre egy fájlt, és frissítse az e-mail mezőt az e-mail-címével.
+Hozzon létre egy `letsencrypt-clusterissuer.yaml` fájlt, és frissítse az e-mail mezőt az e-mail-címével.
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -211,13 +211,13 @@ spec:
 > [!NOTE]
 > Teszteléshez egy [átmeneti kiszolgáló][letsencrypt-staging-issuer] is használható a *ClusterIssuer*.
 
-Az `kubectl` alkalmazással `letsencrypt-clusterissuer.yaml`használható.
+`kubectl`Az alkalmazással használható `letsencrypt-clusterissuer.yaml` .
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Távolítsa el az előző *traefik* *ClusterRole* és *ClusterRoleBinding*, majd frissítse a traefik a `helm`HTTPS használatára a használatával.
+Távolítsa el az előző *traefik* *ClusterRole* és *ClusterRoleBinding*, majd frissítse a traefik a https használatára a használatával `helm` .
 
 > [!NOTE]
 > Ha az AK-fürtön nincs engedélyezve a RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
@@ -261,7 +261,7 @@ az network dns record-set a remove-record \
 
 A fenti példa frissíti a *MY_CUSTOM_DOMAIN* DNS-zónában *lévő rekordot a* *PREVIOUS_EXTERNAL_IP*használatára.
 
-Frissítse a [Values. YAML][values-yaml] , és adja meg a *CERT-Manager* és a https használatának részleteit. Az alábbi példa egy frissített `values.yaml` fájlt mutat be:
+Frissítse a [Values. YAML][values-yaml] , és adja meg a *CERT-Manager* és a https használatának részleteit. Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
 
 ```yaml
 # This is a YAML-formatted file.
@@ -292,7 +292,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-A minta alkalmazás frissítése a `helm`használatával:
+A minta alkalmazás frissítése a használatával `helm` :
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -322,7 +322,7 @@ A hiba kijavításához frissítse a [BikeSharingWeb/azds. YAML][azds-yaml] -t a
 ...
 ```
 
-Frissítse a [BikeSharingWeb/Package. JSON][package-json] fájlt az *URL-* csomagra vonatkozó függőséggel.
+A [BikeSharingWeb/package.js][package-json] frissítése az *URL-* csomagra vonatkozó függőséggel.
 
 ```json
 {
@@ -334,7 +334,7 @@ Frissítse a [BikeSharingWeb/Package. JSON][package-json] fájlt az *URL-* csoma
 ...
 ```
 
-Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/Helpers. js][helpers-js] fájlban a https használatára:
+Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/helpers.jsban][helpers-js] a https használatára:
 
 ```javascript
 ...
@@ -351,7 +351,7 @@ Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/Helpers. js][help
 ...
 ```
 
-Navigáljon a `BikeSharingWeb` címtárhoz, `azds up` és a használatával futtassa a frissített BikeSharingWeb szolgáltatást.
+Navigáljon a `BikeSharingWeb` címtárhoz, és a használatával `azds up` futtassa a frissített BikeSharingWeb szolgáltatást.
 
 ```console
 cd ../BikeSharingWeb/

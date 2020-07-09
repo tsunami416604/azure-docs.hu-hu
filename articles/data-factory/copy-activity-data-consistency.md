@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610219"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben (előzetes verzió)
 
@@ -83,19 +82,18 @@ Az alábbi példa egy JSON-definíciót biztosít az adatkonzisztencia-ellenőrz
 } 
 ```
 
-Tulajdonság | Description | Megengedett értékek | Kötelező
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | Ha a tulajdonság értéke TRUE (igaz), akkor a másolási tevékenység a forrás és a cél tároló közötti adatkonzisztencia biztosítása érdekében a forrásról a célhelyre másolt összes objektum esetében a fájl méretét, a lastModifiedDate és az MD5 ellenőrzőösszeget fogja ellenőrizni. Vegye figyelembe, hogy a másolási teljesítmény a beállítás engedélyezésével lesz hatással.  | True (Igaz)<br/>False (alapértelmezett) | Nem
-dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a inkonzisztens adatmennyiséget.<br/> -True (igaz): az inkonzisztens adatok kihagyásával szeretné átmásolni a REST-et.<br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a rendszer inkonzisztens adathalmazt talált.<br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha a validateDataConsistency értéke TRUE (igaz).  | True (Igaz)<br/>False (alapértelmezett) | Nem
-logStorageSettings | Olyan tulajdonságok csoportja, amelyekkel engedélyezhető a munkamenet-napló kihagyott objektumainak naplózása. | | Nem
-linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | Nem
-path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+validateDataConsistency | Ha a tulajdonság értéke TRUE (igaz), akkor a másolási tevékenység a forrás és a cél tároló közötti adatkonzisztencia biztosítása érdekében a forrásról a célhelyre másolt összes objektum esetében a fájl méretét, a lastModifiedDate és az MD5 ellenőrzőösszeget fogja ellenőrizni. Vegye figyelembe, hogy a másolási teljesítmény a beállítás engedélyezésével lesz hatással.  | True (Igaz)<br/>False (alapértelmezett) | No
+dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a inkonzisztens adatmennyiséget.<br/> -True (igaz): az inkonzisztens adatok kihagyásával szeretné átmásolni a REST-et.<br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a rendszer inkonzisztens adathalmazt talált.<br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha a validateDataConsistency értéke TRUE (igaz).  | True (Igaz)<br/>False (alapértelmezett) | No
+logStorageSettings | Olyan tulajdonságok csoportja, amelyekkel engedélyezhető a munkamenet-napló kihagyott objektumainak naplózása. | | No
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | No
+path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No
 
 >[!NOTE]
 >- Az átmeneti másolási forgatókönyv nem támogatja az adatkonzisztencia használatát. 
->- Ha a bináris fájlokat bármilyen tárolóból az Azure-ba Blob Storage vagy Azure Data Lake Storage Gen2 másolja, a másolási tevékenység a fájl mérete és az MD5 ellenőrzőösszeg-ellenőrzés használatával gondoskodik a forrás-és a célhelyek közötti adatkonzisztencia biztosításáról. 
->- A bináris fájlok bármely tárolóból az Azure Blob Storage vagy Azure Data Lake Storage Gen2tól eltérő tárolóhelyekre való másolása esetén a másolási tevékenység a fájl mérete ellenőrzésével biztosítja a forrás-és a célhelyek közötti adatkonzisztencia biztosítását.
-
+>- Amikor fájlokat másol a vagy az Azure Blobba vagy Azure Data Lake Storage Gen2ba, az ADF az [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) -t és a [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)-t kihasználva blokkolja a szintű MD5 ellenőrzőösszeg-ellenőrzést. Ha az Azure blobon vagy Azure Data Lake Storage Gen2 adatforrásként ContentMD5 vannak, az ADF a fájlok elolvasása után a fájl szintű MD5 ellenőrzőösszeg-ellenőrzést is támogatja. Miután fájlokat másol az Azure Blobba vagy Azure Data Lake Storage Gen2 adatcélhelyként, az ADF az Azure Blobba vagy Azure Data Lake Storage Gen2ba írja az ContentMD5, amelyet az alárendelt alkalmazások tovább használhatnak adatkonzisztencia-ellenőrzés céljából.
+>- Az ADF a fájlok tárolási tárolók közötti másolásakor a fájl méretének ellenőrzését végzi.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -150,7 +148,7 @@ A naplófájl példája a következő:
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-A fenti naplófájlban láthatja, hogy a sample1. csv fájl ki lett hagyva, mert nem sikerült ellenőrizni, hogy konzisztens-e a forrás-és a célhely-tároló között. További részleteket tudhat meg arról, hogy a sample1. csv miért inkonzisztens lesz, mert más alkalmazások is módosították, amikor az ADF másolási tevékenysége egyidejű másolást végez. 
+A fenti naplófájlban láthatja, sample1.csv ki lett hagyva, mert nem sikerült ellenőrizni, hogy konzisztens-e a forrás-és a célhely-tároló között. További részleteket tudhat meg arról, hogy miért inkonzisztensek az sample1.csv, mert más alkalmazások is módosították, amikor az ADF másolási tevékenysége egy időben történik. 
 
 
 

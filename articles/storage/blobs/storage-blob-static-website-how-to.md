@@ -7,12 +7,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 020c25dfb17f733359e596100cfd24cfa3f68036
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609930"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -34,11 +33,11 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
 4. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
 
-5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index. html*). 
+5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index.html*). 
 
    Az alapértelmezett index lap akkor jelenik meg, ha a felhasználó a statikus webhely gyökerére navigál.  
 
-6. A **hiba-dokumentum elérési útja** mezőben írjon be egy alapértelmezett hibaüzenetet (például: *404. html*). 
+6. A **hiba-dokumentum elérési útja** mezőben válasszon egy alapértelmezett hibaüzenetet (például: *404.html*). 
 
    Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
 
@@ -48,7 +47,7 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-<a id="cli" />
+<a id="cli"></a>
 
 A statikus webhely üzemeltetését az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával engedélyezheti.
 
@@ -72,11 +71,11 @@ A statikus webhely üzemeltetését az [Azure parancssori felületének (CLI)](h
 
    * Cserélje le a `<error-document-name>` helyőrzőt a felhasználók számára megjelenő hibaüzenet nevére, ha egy böngésző olyan oldalt kér a webhelyen, amely nem létezik.
 
-   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index. html".
+   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index.html".
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-<a id="powershell" />
+<a id="powershell"></a>
 
 A Azure PowerShell modul használatával engedélyezheti a statikus webhely üzemeltetését.
 
@@ -124,7 +123,7 @@ A Azure PowerShell modul használatával engedélyezheti a statikus webhely üze
 
    * Cserélje le a `<error-document-name>` helyőrzőt a felhasználók számára megjelenő hibaüzenet nevére, ha egy böngésző olyan oldalt kér a webhelyen, amely nem létezik.
 
-   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index. html".
+   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index.html".
 
 ---
 
@@ -153,13 +152,10 @@ Ezek az utasítások bemutatják, hogyan tölthet fel fájlokat a Azure Portalba
 
 Objektumok feltöltése a *$web* tárolóba egy forrás könyvtárából.
 
-> [!NOTE]
-> Ha Azure Cloud Shell használ, ügyeljen arra, hogy `\` a tárolóra hivatkozó Escape-karaktert vegyen fel `$web` (például: `\$web` ). Ha az Azure CLI helyi telepítését használja, akkor nem kell használni az Escape-karaktert.
-
 Ez a példa feltételezi, hogy Azure Cloud Shell-munkamenetből futtat parancsokat.
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 
@@ -195,7 +191,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 ---
 
-<a id="portal-find-url" />
+<a id="portal-find-url"></a>
 
 ## <a name="find-the-website-url"></a>Webhely URL-címének megkeresése
 
@@ -234,7 +230,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ---
 
-<a id="metrics" />
+<a id="metrics"></a>
 
 ## <a name="enable-metrics-on-static-website-pages"></a>Metrikák engedélyezése a statikus webhelyek oldalain
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60723306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508044"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>A StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást
 
@@ -37,7 +37,7 @@ A cikk elolvasása után a következőket fogja megtanulni:
 A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple-eszközhöz csatlakozik. Az eszközök kezeléséhez egy böngészőben futó központi Microsoft Azure Portal fog használni. A StorSimple Eszközkezelő szolgáltatáshoz való kapcsolódáshoz tegye a következőket.
 
 #### <a name="to-connect-to-the-service"></a>Kapcsolódás a szolgáltatáshoz
-1. Navigáljon [https://portal.azure.com/](https://portal.azure.com/)a következőhöz:.
+1. Navigáljon a következőhöz: [https://portal.azure.com/](https://portal.azure.com/) .
 2. A Microsoft-fiók hitelesítő adataival jelentkezzen be a Microsoft Azure Portalba (a panel jobb felső sarkában található).
 3. Görgessen le a bal oldali navigációs ablaktáblán a StorSimple Eszközkezelő szolgáltatás eléréséhez.
 

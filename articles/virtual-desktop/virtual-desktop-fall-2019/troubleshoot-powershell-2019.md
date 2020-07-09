@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82615499"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop – PowerShell
@@ -62,7 +62,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **OK:** -TenantName paraméter
 
-**Javítás:** Probléma a Get-RdsDiagnosticActivities és a \<-TenantName TenantName>ával.
+**Javítás:** A Get-RdsDiagnosticActivities és a-TenantName problémáinak kijavítása \<TenantName> .
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: Get-RdsDiagnosticActivities--a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 
@@ -72,7 +72,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **OK:** A-Deployment kapcsoló használata.
 
-**Javítás:** – a központi telepítési kapcsolót csak a telepítési rendszergazdák használhatják. Ezek a rendszergazdák általában a Távoli asztali szolgáltatások/Windows virtuális asztali csapat tagjai. Cserélje le a-Deployment kapcsolót a \<-TenantName TenantName>.
+**Javítás:** – a központi telepítési kapcsolót csak a telepítési rendszergazdák használhatják. Ezek a rendszergazdák általában a Távoli asztali szolgáltatások/Windows virtuális asztali csapat tagjai. Cserélje le a-Deployment kapcsolót a-TenantName \<TenantName> .
 
 ### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: New-RdsRoleAssignment--a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 

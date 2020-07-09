@@ -1,7 +1,7 @@
 ---
-title: Leküldéses értesítések küldése az Azure Notification Hubs és a Node. js-sel
-description: Megtudhatja, hogyan küldhet leküldéses értesítéseket a Node. js-alkalmazásokból a Notification Hubs használatával.
-keywords: leküldéses értesítés, leküldéses értesítések, Node. js leküldéses, iOS Leküldéses
+title: Leküldéses értesítések küldése az Azure Notification Hubs és Node.js
+description: Megtudhatja, hogyan küldhet leküldéses értesítéseket egy Node.js alkalmazásból a Notification Hubs használatával.
+keywords: leküldéses értesítés, leküldéses értesítések, node.js leküldés, iOS leküldés
 services: notification-hubs
 documentationcenter: nodejs
 author: sethmanheim
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592009"
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a Node. js-sel
+# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és Node.js
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "82592009"
 > [!IMPORTANT]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nem rendelkezik fiókkal, hozzon létre egy ingyenes próbaverziós fiókot néhány percen belül az [ingyenes Azure-próbaidőszakon](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)keresztül.
 
-Ez az útmutató bemutatja, hogyan küldhet leküldéses értesítéseket az Azure Notification Hubs segítségével közvetlenül egy [Node. js](https://nodejs.org) -alkalmazásból.
+Ez az útmutató bemutatja, hogyan küldhet leküldéses értesítéseket az Azure Notification Hubs segítségével közvetlenül egy [Node.js](https://nodejs.org) alkalmazásból.
 
 A tárgyalt forgatókönyvek között leküldéses értesítések küldése az alkalmazásoknak a következő platformokon:
 
@@ -46,26 +46,26 @@ A tárgyalt forgatókönyvek között leküldéses értesítések küldése az a
 
 Az Azure Notification Hubs egy könnyen használható, többplatformos, méretezhető infrastruktúrát biztosít a leküldéses értesítések mobileszközök számára történő küldéséhez. A szolgáltatási infrastruktúrával kapcsolatos részletekért tekintse meg az [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) oldalát.
 
-## <a name="create-a-nodejs-application"></a>Node. js-alkalmazás létrehozása
+## <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
 
-Az oktatóanyag első lépése egy új, üres Node. js-alkalmazás létrehozása. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-alkalmazás létrehozása és üzembe helyezése az Azure-webhelyhez][nodejswebsite], [Node. js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy [webhelyről a WebMatrix][webmatrix].
+Az oktatóanyag első lépése egy új, üres Node.js alkalmazás létrehozása. Node.js alkalmazás létrehozásával kapcsolatos utasításokért lásd: [Node.js alkalmazás létrehozása és telepítése az Azure-webhelyre][nodejswebsite], [Node.js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy [webhelyről a WebMatrix][webmatrix].
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Az alkalmazás konfigurálása Notification Hubs használatára
 
-Az Azure Notification Hubs használatához le kell töltenie és használnia kell a Node. js [Azure-csomagot](https://www.npmjs.com/package/azure), amely tartalmazza a leküldéses értesítési Rest-szolgáltatásokkal kommunikáló, beépített segéd-kódtárakat.
+Az Azure Notification Hubs használatához le kell töltenie és használnia kell a Node.js [Azure-csomagot](https://www.npmjs.com/package/azure), amely a leküldéses értesítési Rest-szolgáltatásokkal kommunikáló beépített segítő könyvtárakat tartalmaz.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>A csomag beszerzéséhez használja a Node Package Managert (NPM)
 
 1. Használjon parancssori felületet (például **PowerShell** (Windows), **Terminal** (Mac) vagy **bash** (Linux)), és navigáljon ahhoz a mappához, ahová az üres alkalmazást létrehozta.
 2. Végrehajtás `npm install azure-sb` a parancsablakban.
-3. A vagy `ls` `dir` a parancs manuális futtatásával ellenőrizheti, hogy létrejött `node_modules` -e a mappa.
+3. A vagy a parancs manuális futtatásával `ls` `dir` ellenőrizheti, hogy létrejött-e a `node_modules` mappa.
 4. A mappában keresse meg azt az **Azure** -csomagot, amely az értesítési központ eléréséhez szükséges kódtárakat tartalmazza.
 
 > [!NOTE]
 > A NPM telepítésével kapcsolatos további információkért olvassa el a hivatalos [NPM blogját](https://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 ### <a name="import-the-module"></a>A modul importálása
-Szövegszerkesztő használatával adja hozzá a következőt az alkalmazás `server.js` fájljának elejéhez:
+Szövegszerkesztő használatával adja hozzá a következőt az `server.js` alkalmazás fájljának elejéhez:
 
 ```javascript
 var azure = require('azure-sb');
@@ -73,7 +73,7 @@ var azure = require('azure-sb');
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>Azure Notification hub-kapcsolatok beállítása
 
-Az `NotificationHubService` objektum lehetővé teszi az értesítési központok működését. A következő kód létrehoz egy `NotificationHubService` objektumot a nevű `hubname`értesítési hubhoz. Adja hozzá a `server.js` fájlt a fájl elejéhez, majd az Azure-modul importálására szolgáló utasítás után:
+Az `NotificationHubService` objektum lehetővé teszi az értesítési központok működését. A következő kód létrehoz egy `NotificationHubService` objektumot a nevű értesítési hubhoz `hubname` . Adja hozzá a fájlt a fájl elejéhez `server.js` , majd az Azure-modul importálására szolgáló utasítás után:
 
 ```javascript
 var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
@@ -83,7 +83,7 @@ Szerezze be a `connectionstring` [Azure Portal] a kapcsolatok értékét a köve
 
 1. A bal oldali navigációs panelen kattintson a **Tallózás**gombra.
 2. Válassza a **Notification Hubs**lehetőséget, majd keresse meg azt a hubot, amelyet a mintához használni kíván. Ha segítségre van szüksége egy új értesítési központ létrehozásához, tekintse meg a [Windows áruház első lépések oktatóanyagát](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
-3. Válassza a **Beállítások**lehetőséget.
+3. Válassza a **Beállítások** lehetőséget.
 4. Kattintson a **hozzáférési házirendek**elemre. Megtekintheti a megosztott és a teljes hozzáférésű kapcsolati karakterláncokat is.
 
 ![Azure Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -110,7 +110,7 @@ Az `GcmService` objektum egy `send` metódust biztosít, amellyel leküldéses �
 
 A hasznos adatok formátumával kapcsolatos további információkért tekintse meg a hasznos adatokat ismertető [dokumentációt](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
 
-A következő kód a által `GcmService` `NotificationHubService` közzétett példányt használja a leküldéses értesítés küldésére az összes regisztrált ügyfélnek.
+A következő kód a `GcmService` által közzétett példányt használja a `NotificationHubService` leküldéses értesítés küldésére az összes regisztrált ügyfélnek.
 
 ```javascript
 var payload = {
@@ -127,7 +127,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>Útmutató: leküldéses értesítések küldése iOS-alkalmazásokba
 
-Ugyanaz, mint a fent ismertetett Android- `ApnsService` alkalmazásokban, `send` az objektum egy metódust biztosít, amellyel leküldéses értesítéseket küldhet iOS-alkalmazásokba. A `send` metódus a következő paramétereket fogadja el:
+Ugyanaz, mint a fent ismertetett Android-alkalmazásokban, az `ApnsService` objektum egy metódust biztosít, amellyel `send` leküldéses értesítéseket küldhet iOS-alkalmazásokba. A `send` metódus a következő paramétereket fogadja el:
 
 - **Címkék** – a címke azonosítója. Ha nincs megadva címke, a rendszer az értesítést az összes ügyfélnek küldi el.
 - **Hasznos** adatok – az üzenet JSON-vagy karakterlánc-adattartalma.
@@ -135,7 +135,7 @@ Ugyanaz, mint a fent ismertetett Android- `ApnsService` alkalmazásokban, `send`
 
 További információ a hasznos adatok formátumáról: a [UserNotifications útmutatójának](https://developer.apple.com/documentation/usernotifications) **értesítési tartalma** szakasza.
 
-A következő kód a által `ApnsService` elérhetővé tett példányt `NotificationHubService` használja a által küldött riasztási üzenet küldéséhez az összes ügyfélnek:
+A következő kód a `ApnsService` által elérhetővé tett példányt használja a által `NotificationHubService` küldött riasztási üzenet küldéséhez az összes ügyfélnek:
 
 ```javascript
 var payload={
@@ -154,14 +154,14 @@ Az `MpnsService` objektum olyan `send` metódust biztosít, amellyel leküldése
 
 - **Címkék** – a címke azonosítója. Ha nincs megadva címke, a rendszer az értesítést az összes ügyfélnek küldi el.
 - **Hasznos** adatok – az üzenet XML-adattartalma.
-- **TargetName** -  TargetName`toast` a bejelentési értesítésekhez. `token`csempe értesítéseihez.
+- **TargetName**  -  TargetName `toast` bejelentési értesítésekhez. `token`csempe értesítéseihez.
 - **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói dokumentum leküldéses értesítéseinek http-](https://msdn.microsoft.com/library/hh221551.aspx) **fejléc elemei** című szakaszát.
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.
 
 Az érvényes `TargetName` `NotificationClass` és a fejléc beállítások listájáért tekintse meg a [kiszolgálói lapról leküldéses értesítéseket](https://msdn.microsoft.com/library/hh221551.aspx) .
 
-A következő mintakód a `MpnsService` által a `NotificationHubService` által elérhetővé tett példányt használja a (z) által a Toast leküldéses értesítés küldéséhez:
+A következő mintakód a `MpnsService` által a által elérhetővé tett példányt használja a (z) által a `NotificationHubService` Toast leküldéses értesítés küldéséhez:
 
 ```javascript
 var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
@@ -184,7 +184,7 @@ Az `WnsService` objektum olyan `send` metódust biztosít, amellyel leküldéses
 
 Az érvényes típusok és a kérelmek fejlécek listáját a [leküldéses értesítési szolgáltatás kérése és a válasz fejlécei](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)című témakörben tekintheti meg.
 
-A következő kód a által `WnsService` elérhetővé tett példányt `NotificationHubService` használja a UWP-alkalmazáshoz való leküldéses értesítés küldéséhez:
+A következő kód a `WnsService` által elérhetővé tett példányt használja a `NotificationHubService` UWP-alkalmazáshoz való leküldéses értesítés küldéséhez:
 
 ```javascript
 var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
@@ -197,7 +197,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 ## <a name="next-steps"></a>Következő lépések
 
-A fenti kódrészletek lehetővé teszik a szolgáltatás-infrastruktúra egyszerű kiépítését, hogy leküldéses értesítéseket nyújtson a legkülönbözőbb eszközökhöz. Most, hogy megismerte az Notification Hubs a Node. js használatával való használatának alapjait, kövesse az alábbi hivatkozásokat, és tájékozódjon arról, hogyan bővíthetők tovább ezek a képességek.
+A fenti kódrészletek lehetővé teszik a szolgáltatás-infrastruktúra egyszerű kiépítését, hogy leküldéses értesítéseket nyújtson a legkülönbözőbb eszközökhöz. Most, hogy megismerte a Notification Hubs és a node.js használatának alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál a képességek további kibővítéséről.
 
 - Tekintse meg az [Azure Notification HUBS](https://msdn.microsoft.com/library/azure/jj927170.aspx)MSDN-referenciáját.
 - További minták és megvalósítási részletekért látogasson el az [Azure SDK for Node] adattárba a githubon.

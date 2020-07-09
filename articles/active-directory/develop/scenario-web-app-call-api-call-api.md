@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559880"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: webes API meghívása
@@ -28,7 +28,7 @@ A védett webes API-k meghívása a választott nyelvtől és keretrendszertől 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Íme a művelethez tartozó egyszerűsített kód `HomeController`. Ez a kód lekéri a Microsoft Graph meghívására szolgáló tokent. A kód hozzá lett adva, hogy megmutassa, hogyan hívhatja meg Microsoft Graph REST APIként. A Microsoft Graph API URL-címe a appSettings. JSON fájlban van megadva, és a következő nevű `webOptions`változóban olvasható:
+Íme a művelethez tartozó egyszerűsített kód `HomeController` . Ez a kód lekéri a Microsoft Graph meghívására szolgáló tokent. A kód hozzá lett adva, hogy megmutassa, hogyan hívhatja meg Microsoft Graph REST APIként. A Microsoft Graph API URL-címe megtalálható a fájl appsettings.jsjában, és a következő nevű változóban olvasható `webOptions` :
 
 ```json
 {
@@ -117,4 +117,4 @@ def graphcall():
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Átállás éles üzemre](scenario-web-app-call-api-production.md)
+> [Áthelyezés éles környezetbe](scenario-web-app-call-api-production.md)

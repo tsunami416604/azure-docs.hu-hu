@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969201"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
@@ -22,7 +21,7 @@ Az Azure-ban alapértelmezés szerint az Ubuntu Gallery-lemezképek nem hoznak l
 
 ## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Swap-partíció létrehozása a Red Hat és a CentOS-alapú rendszerképekhez
 
-Hozzon létre egy fájlt a *cloud_init_swappart. txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_swappart.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
+Hozzon létre egy fájlt a *cloud_init_swappart.txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_swappart.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
 
 ```yaml
 #cloud-config
@@ -47,7 +46,7 @@ A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot a
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a `--custom-data cloud_init_swappart.txt` Cloud-init fájlt a következő módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a Cloud-init fájlt a `--custom-data cloud_init_swappart.txt` következő módon:
 
 ```azurecli-interactive 
 az vm create \

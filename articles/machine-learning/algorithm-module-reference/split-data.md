@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455893"
 ---
 # <a name="split-data-module"></a>Adategység felosztása
@@ -87,7 +86,7 @@ Az alábbi példák bemutatják, hogyan oszthat meg egy adatkészletet a **regul
 
 ### <a name="single-whole-word"></a>Egyetlen egész szó 
 
-Ez a példa az első adatkészlet minden olyan sorát tartalmazza, amely `Gryphon` az oszlopban `Text`lévő szöveget tartalmazza. Más sorokat helyez el a **felosztott adatokat**tartalmazó második kimenetbe.
+Ez a példa az első adatkészlet minden olyan sorát tartalmazza, amely az oszlopban lévő szöveget tartalmazza `Gryphon` `Text` . Más sorokat helyez el a **felosztott adatokat**tartalmazó második kimenetbe.
 
 ```text
     \"Text" Gryphon  
@@ -101,7 +100,7 @@ Ez a példa a megadott karakterláncot az adatkészlet második oszlopában tal�
 (\1) ^[a-f]
 ```
 
-Az első eredmény adatkészlet minden olyan sort tartalmaz, amelyben az index oszlop a következő karakterek egyikével `a`kezdődik `b`: `c`, `d`, `e`, `f`,,. Minden más sor a második kimenetre lesz irányítva.
+Az első eredmény adatkészlet minden olyan sort tartalmaz, amelyben az index oszlop a következő karakterek egyikével kezdődik:,,,,, `a` `b` `c` `d` `e` `f` . Minden más sor a második kimenetre lesz irányítva.
 
 ## <a name="select-a-relative-expression"></a>Relatív kifejezés kiválasztása
 
@@ -114,12 +113,12 @@ Az első eredmény adatkészlet minden olyan sort tartalmaz, amelyben az index o
    **Numerikus oszlop**esetén:
    - Az oszlop a numerikus adattípusok számát tartalmazza, beleértve a dátum-és időtípusokat is.
    - A kifejezés legfeljebb egy oszlop nevét hivatkozhat.
-   - A és a művelethez `&`használja a jel karaktert. A vagy a művelethez `|`használja a pipe karaktert.
-   - A következő operátorok támogatottak `<`: `>`, `<=`, `>=`, `==`, `!=`,.
-   - A és `(` `)`a használatával nem csoportosíthatjuk a műveleteket.
+   - A és a művelethez használja a jel karaktert `&` . A vagy a művelethez használja a pipe karaktert `|` .
+   - A következő operátorok támogatottak:,,, `<` `>` `<=` `>=` , `==` , `!=` .
+   - A és a használatával nem csoportosíthatjuk a műveleteket `(` `)` .
    
    **Karakterlánc-oszlop**esetén:
-   - A következő operátorok támogatottak `==`: `!=`,.
+   - A következő operátorok támogatottak: `==` , `!=` .
 
 1. A folyamat elküldése.
 
@@ -129,7 +128,7 @@ Az alábbi példák bemutatják, hogyan oszthat meg egy adatkészletet a **relat
 
 ### <a name="calendar-year"></a>Naptári év
 
-Gyakori forgatókönyv, hogy az adatkészletet évek szerint osztják el. A következő kifejezés kiválasztja azokat a sorokat, amelyekben az oszlopban `Year` szereplő értékek nagyobbak, mint `2010`.
+Gyakori forgatókönyv, hogy az adatkészletet évek szerint osztják el. A következő kifejezés kiválasztja azokat a sorokat, amelyekben az oszlopban szereplő értékek `Year` nagyobbak, mint `2010` .
 
 ```text
 \"Year" > 2010
@@ -137,7 +136,7 @@ Gyakori forgatókönyv, hogy az adatkészletet évek szerint osztják el. A köv
 
 A Date kifejezésnek az adatoszlopban szereplő összes dátumérték szerepelnie kell. Az adatok oszlopban szereplő dátumok formátumának konzisztensnek kell lennie. 
 
-Például a formátumot `mmddyyyy`használó Date (dátum) oszlopban a kifejezésnek a következőhöz hasonlónak kell lennie:
+Például a formátumot használó Date (dátum) oszlopban `mmddyyyy` a kifejezésnek a következőhöz hasonlónak kell lennie:
 
 ```text
 \"Date" > 1/1/2010

@@ -1,32 +1,32 @@
 ---
 title: Felügyelt identitások konfigurálása a virtuálisgép-méretezési csoporton – Azure CLI – Azure AD
-description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálásához egy Azure virtuálisgép-méretezési csoporton az Azure CLI használatával.
+description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálásához egy Azure-beli virtuálisgép-méretezési csoporton az Azure CLI használatával.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: MarkusVi
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2832a8c584c0fbe707f22501809d772c6ffb970b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 969307070d23f9892105b2f620ee839356f46330
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609172"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
+Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory automatikusan felügyelt identitással. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
 
 Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő felügyelt identitásokat Azure-beli virtuálisgép-méretezési csoportokon az Azure CLI használatával:
 - A rendszer által hozzárendelt felügyelt identitás engedélyezése és letiltása egy Azure virtuálisgép-méretezési csoporton
@@ -35,9 +35,9 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő felügyelt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A cikkben szereplő felügyeleti műveletek végrehajtásához a fióknak a következő Azure-beli szerepköralapú hozzáférés-vezérlési hozzárendelésekre van szüksége:
+- A cikkben szereplő felügyeleti műveletek végrehajtásához a fióknak a következő Azure szerepköralapú hozzáférés-vezérlési hozzárendelésekre van szüksége:
 
     > [!NOTE]
     > Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
@@ -75,7 +75,7 @@ Virtuálisgép-méretezési csoport létrehozása a rendszerhez rendelt felügye
    az group create --name myResourceGroup --location westus
    ```
 
-3. Hozzon létre egy virtuálisgép-méretezési készletet [az az vmss Create](/cli/azure/vmss/#az-vmss-create) paranccsal. A következő példában egy *myVMSS* nevű virtuálisgép-méretezési csoport jön létre egy rendszer által hozzárendelt felügyelt identitással, `--assign-identity` a paraméter által kért módon. Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
+3. [Hozzon létre](/cli/azure/vmss/#az-vmss-create) egy virtuálisgép-méretezési készletet. A következő példában egy *myVMSS* nevű virtuálisgép-méretezési csoport jön létre egy rendszer által hozzárendelt felügyelt identitással, a paraméter által kért módon `--assign-identity` . Az `--admin-username` és `--admin-password` paraméterek adják meg a virtuális gép bejelentkeztetéséhez tartozó rendszergazdanevet és -jelszót. A környezetnek megfelelően frissítse ezeket az értékeket: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -91,7 +91,7 @@ Ha egy meglévő Azure virtuálisgép-méretezési csoporton kell engedélyeznie
    az login
    ```
 
-2. Az [az vmss Identity assign](/cli/azure/vmss/identity/#az-vmss-identity-assign) paranccsal engedélyezheti a rendszerhez rendelt felügyelt identitást egy meglévő virtuális géphez:
+2. Rendszerhez rendelt felügyelt identitás [engedélyezése](/cli/azure/vmss/identity/#az-vmss-identity-assign) meglévő virtuális géphez:
 
    ```azurecli-interactive
    az vmss identity assign -g myResourceGroup -n myVMSS
@@ -108,7 +108,7 @@ az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 Ha olyan virtuális géppel rendelkezik, amelyhez már nincs szükség a rendszerhez rendelt felügyelt identitásra, és nincs felhasználó által hozzárendelt felügyelt identitása, használja a következő parancsot:
 
 > [!NOTE]
-> Az érték `none` megkülönbözteti a kis-és nagybetűket. Kisbetűnek kell lennie. 
+> Az érték megkülönbözteti a kis-és nagybetűket `none` . Kisbetűnek kell lennie. 
 
 ```azurecli-interactive
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
@@ -137,7 +137,7 @@ Ez a szakasz végigvezeti egy virtuálisgép-méretezési csoport létrehozásá
    ```azurecli-interactive
    az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
    ```
-   A válasz a következőhöz hasonló, felhasználó által hozzárendelt felügyelt identitás részleteit tartalmazza. A felhasználó `id` által hozzárendelt felügyelt identitáshoz rendelt erőforrás-értéket a következő lépésben kell használni.
+   A válasz a következőhöz hasonló, felhasználó által hozzárendelt felügyelt identitás részleteit tartalmazza. A `id` felhasználó által hozzárendelt felügyelt identitáshoz rendelt erőforrás-értéket a következő lépésben kell használni.
 
    ```json
    {
@@ -154,7 +154,7 @@ Ez a szakasz végigvezeti egy virtuálisgép-méretezési csoport létrehozásá
    }
    ```
 
-3. Hozzon létre egy virtuálisgép-méretezési készletet [az az vmss Create](/cli/azure/vmss/#az-vmss-create)paranccsal. A következő példa létrehoz egy virtuálisgép-méretezési készletet, amely az új, felhasználó által hozzárendelt felügyelt identitáshoz van társítva, a `--assign-identity` paraméterben meghatározottak szerint. A `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` és `<USER ASSIGNED IDENTITY>` paraméterek értékét mindenképp helyettesítse be a saját értékeivel. 
+3. [Hozzon létre](/cli/azure/vmss/#az-vmss-create) egy virtuálisgép-méretezési készletet. A következő példa létrehoz egy virtuálisgép-méretezési készletet, amely az új, felhasználó által hozzárendelt felügyelt identitáshoz van társítva, a paraméterben meghatározottak szerint `--assign-identity` . A `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` és `<USER ASSIGNED IDENTITY>` paraméterek értékét mindenképp helyettesítse be a saját értékeivel. 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -184,7 +184,7 @@ Ez a szakasz végigvezeti egy virtuálisgép-méretezési csoport létrehozásá
    }
    ```
 
-2. Rendelje hozzá a felhasználóhoz rendelt felügyelt identitást a virtuálisgép-méretezési csoporthoz az [az vmss Identity assign](/cli/azure/vmss/identity)paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<VIRTUAL MACHINE SCALE SET NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY>` a felhasználó által hozzárendelt identitás erőforrás `name` -tulajdonsága az előző lépésben létrehozott módon:
+2. [Rendelje hozzá](/cli/azure/vmss/identity) a felhasználóhoz rendelt felügyelt identitást a virtuálisgép-méretezési csoporthoz. Ne felejtse el a `<RESOURCE GROUP>` és `<VIRTUAL MACHINE SCALE SET NAME>` paraméterek értékeit a saját értékeire cserélni. A a `<USER ASSIGNED IDENTITY>` felhasználó által hozzárendelt identitás erőforrás `name` -tulajdonsága az előző lépésben létrehozott módon:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
@@ -192,7 +192,7 @@ Ez a szakasz végigvezeti egy virtuálisgép-méretezési csoport létrehozásá
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása egy Azure virtuálisgép-méretezési csoportból
 
-Ha egy felhasználó által hozzárendelt felügyelt identitást szeretne eltávolítani egy virtuálisgép-méretezési csoportból, használja [az az vmss Identity Remove](/cli/azure/vmss/identity#az-vmss-identity-remove)parancsot. Ha ez az egyetlen, a virtuálisgép-méretezési csoporthoz rendelt, felhasználó által hozzárendelt `UserAssigned` felügyelt identitás, a rendszer eltávolítja az azonosító típusú értékből.  Ne felejtse el a `<RESOURCE GROUP>` és `<VIRTUAL MACHINE SCALE SET NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY>` lesz a felhasználó által hozzárendelt felügyelt identitás `name` tulajdonsága, amely a virtuálisgép-méretezési csoport identitás szakaszában található a következő használatával `az vmss identity show`:
+Felhasználó által hozzárendelt felügyelt identitás [eltávolítása](/cli/azure/vmss/identity#az-vmss-identity-remove) egy virtuálisgép-méretezési csoport használatával `az vmss identity remove` . Ha ez az egyetlen, a virtuálisgép-méretezési csoporthoz rendelt, felhasználó által hozzárendelt felügyelt identitás, a `UserAssigned` rendszer eltávolítja az azonosító típusú értékből.  Ne felejtse el a `<RESOURCE GROUP>` és `<VIRTUAL MACHINE SCALE SET NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY>` lesz a felhasználó által hozzárendelt felügyelt identitás `name` tulajdonsága, amely a virtuálisgép-méretezési csoport identitás szakaszában található a következő használatával `az vmss identity show` :
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
@@ -201,7 +201,7 @@ az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> 
 Ha a virtuálisgép-méretezési csoport nem rendelkezik rendszerhez rendelt felügyelt identitással, és el szeretné távolítani az összes felhasználó által hozzárendelt felügyelt identitást, használja a következő parancsot:
 
 > [!NOTE]
-> Az érték `none` megkülönbözteti a kis-és nagybetűket. Kisbetűnek kell lennie.
+> Az érték megkülönbözteti a kis-és nagybetűket `none` . Kisbetűnek kell lennie.
 
 ```azurecli-interactive
 az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null

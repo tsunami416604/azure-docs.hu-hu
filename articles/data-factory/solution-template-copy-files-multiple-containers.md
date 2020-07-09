@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629048"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Több tárolóból származó fájlok másolása Azure Data Factory
@@ -37,10 +37,10 @@ A sablon három tevékenységet tartalmaz:
 - **Másolja** az egyes tárolókat a forrásként szolgáló tárolóból a célhelyre.
 
 A sablon a következő paramétereket definiálja:
-- A *SourceFileFolder* az adatforrás-tároló mappa elérési útja, ahol lekérheti a tárolók listáját. Az elérési út a gyökérkönyvtár, amely több tároló-mappát tartalmaz. A paraméter alapértelmezett értéke a következő: `sourcefolder`.
-- A *SourceFileDirectory* az adatforrás-tároló gyökérkönyvtára alatti almappa elérési útja. A paraméter alapértelmezett értéke a következő: `subfolder`.
-- A *DestinationFileFolder* az a mappa elérési útja, ahová a rendszer a fájlokat másolja a célhely-tárolóba. A paraméter alapértelmezett értéke a következő: `destinationfolder`.
-- A *DestinationFileDirectory* az az almappa elérési útja, ahová a rendszer a fájlokat másolja a célhely-tárolóba. A paraméter alapértelmezett értéke a következő: `subfolder`.
+- A *SourceFileFolder* az adatforrás-tároló mappa elérési útja, ahol lekérheti a tárolók listáját. Az elérési út a gyökérkönyvtár, amely több tároló-mappát tartalmaz. A paraméter alapértelmezett értéke a következő: `sourcefolder` .
+- A *SourceFileDirectory* az adatforrás-tároló gyökérkönyvtára alatti almappa elérési útja. A paraméter alapértelmezett értéke a következő: `subfolder` .
+- A *DestinationFileFolder* az a mappa elérési útja, ahová a rendszer a fájlokat másolja a célhely-tárolóba. A paraméter alapértelmezett értéke a következő: `destinationfolder` .
+- A *DestinationFileDirectory* az az almappa elérési útja, ahová a rendszer a fájlokat másolja a célhely-tárolóba. A paraméter alapértelmezett értéke a következő: `subfolder` .
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 

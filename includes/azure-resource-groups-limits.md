@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424735"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334690"
 | Címke kulcsának hossza |512 |
 | Címke értékének hossza |256 |
 
-<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. További információ: a [hiba elhárítása, ha a központi telepítés száma meghaladja a 800](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md)-at.
+<sup>1</sup> A 2020. júniustól kezdődően az üzembe helyezéseket a rendszer automatikusan törli az előzményekből a korlát közelében. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. További információ: [automatikus törlések az üzembe helyezési előzményekből](../articles/azure-resource-manager/templates/deployment-history-deletions.md).
 
 #### <a name="template-limits"></a>Sablonok korlátai
 

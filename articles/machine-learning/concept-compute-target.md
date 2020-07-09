@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/26/2020
+ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483278"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -52,21 +52,23 @@ Létrehozhat Azure Machine Learning számítási példányokat (előzetes verzi�
 * Azure Machine Learning Studio
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) osztályok
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (előzetes verzió)
 * Resource Manager-sablon
-
-Számítási fürtöket az [Azure CLI Machine learning bővítménnyel](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)is létrehozhat.
+* Machine learning- [bővítmény az Azure CLI-hez](reference-azure-machine-learning-cli.md#resource-management).  
 
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, más típusú számítási céloktól eltérően.
 
-### <a name="compute-clusters"></a>Számítási fürtök
 
-Azure Machine Learning számítási fürtöket a betanításhoz és a Batch-következtetésekhez (előzetes verzió) is használhatja.  Ezzel a számítási erőforrással a következőket teheti:
+|Képesség  |Számítási fürt  |Számítási példány  |
+|---------|---------|---------|
+|Egy vagy több csomópontos fürt     |    **&check;**       |         |
+|Minden alkalommal, amikor elküld egy futtatást     |     **&check;**      |         |
+|Fürt automatikus kezelése és feladatütemezés     |   **&check;**        |     **&check;**      |
+|A processzor-és a GPU-erőforrások támogatása     |  **&check;**         |    **&check;**       |
 
-* Egy vagy több csomópontos fürt
-* Automatikus skálázás minden egyes futtatásakor 
-* Fürt automatikus kezelése és feladatütemezés 
-* A processzor-és a GPU-erőforrások támogatása
+
+> [!NOTE]
+> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) a többletköltség elkerülése érdekében.
 
 ### <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
 
@@ -80,17 +82,17 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| D | Nincs |
-| Dv2 | Nincs |  
-| DSv2 | Nincs |  
-| FSv2 | Nincs |  
+| D | None |
+| Dv2 | None |  
+| DSv2 | None |  
+| FSv2 | None |  
 | M | Jóváhagyást igényel |
-| NC | Nincs |    
+| NC | None |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | Nincs |
+| NV | None |
 | NVv3 | Jóváhagyást igényel | 
 
 

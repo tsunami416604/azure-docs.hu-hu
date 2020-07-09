@@ -2,21 +2,20 @@
 title: Az Azure AD-kiépítés működésének megismerése | Microsoft Docs
 description: Az Azure AD-kiépítés működésének megismerése
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781650"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -172,7 +171,7 @@ A felhasználói kiépítési szolgáltatás által futtatott összes művelet r
 
 Az Azure AD-kiépítési szolgáltatás megőrzi a forrás-és a megcélzott rendszereket a kiépítési fiókok szinkronizálásával, ha a felhasználóknak többé nem férnek hozzá. 
 
-Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót az alkalmazásban, ha az alkalmazás suupports a Soft deletes (Update Request with Active = false), és az alábbi események bármelyike előfordul:
+Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót egy alkalmazásban, ha az alkalmazás támogatja a Soft deletes (Update Request with Active = false) és az alábbi események bármelyikét:
 
 * A felhasználói fiók törlődik az Azure AD-ben
 *   A felhasználó nincs kiosztva az alkalmazásból

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684016"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
@@ -101,7 +100,7 @@ Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. 
 
 **API-kérelmek**
 
-REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, vagy PUT) metódust, az API szolgáltatás URL-címét, a Uniform Resource Identifier (URI) egy erőforráshoz a lekérdezéshez, az adatküldés frissítéséhez vagy törléséhez, valamint egy vagy több HTTP-kérelem fejlécéhez. Az API-szolgáltatás URL-címe az Ön által megadott API-végpont. Íme egy példa: https:// \< yourdatahub-websites-name>. azurewebsites.net
+REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, vagy PUT) metódust, az API szolgáltatás URL-címét, a Uniform Resource Identifier (URI) egy erőforráshoz a lekérdezéshez, az adatküldés frissítéséhez vagy törléséhez, valamint egy vagy több HTTP-kérelem fejlécéhez. Az API-szolgáltatás URL-címe az Ön által megadott API-végpont. Példa: https:// \<yourdatahub-website-name> . azurewebsites.net
 
 Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korlátozhatja az adatok méretét, és rendezheti a válaszokat.
 

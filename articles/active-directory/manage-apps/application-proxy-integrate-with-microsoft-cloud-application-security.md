@@ -1,22 +1,21 @@
 ---
 title: Helyszíni alkalmazások integrálása Cloud App Security-Azure AD-vel
 description: Helyszíni alkalmazás konfigurálása Azure Active Directoryban a Microsoft Cloud App Security (MCAS) szolgáltatással való együttműködéshez. A MCAS feltételes hozzáférést biztosító alkalmazás-vezérlő segítségével valós időben figyelheti és irányíthatja a munkameneteket a feltételes hozzáférési szabályzatok alapján. Ezeket a házirendeket alkalmazhatja a Azure Active Directory (Azure AD) alkalmazásproxy használatát használó helyszíni alkalmazásokra.
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275497"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764570"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>A valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud App Security és Azure Active Directory
 Azure Active Directory (Azure AD) helyszíni alkalmazásának konfigurálása a Microsoft Cloud App Security (MCAS) valós idejű figyeléshez való használatához. A MCAS a feltételes hozzáférést biztosító alkalmazás-vezérlő a feltételes hozzáférési házirendek alapján valós időben figyeli és vezérli a munkameneteket. Ezeket a házirendeket alkalmazhatja a Azure Active Directory (Azure AD) alkalmazásproxy használatát használó helyszíni alkalmazásokra.

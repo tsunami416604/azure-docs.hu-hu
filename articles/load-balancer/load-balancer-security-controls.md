@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: allensu
 ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74214904"
 ---
 # <a name="security-controls-for-azure-load-balancer"></a>A Azure Load Balancer biztonsági vezérlői
@@ -23,43 +22,43 @@ Ez a cikk a Azure Load Balancer beépített biztonsági vezérlőket dokumentál
 
 ## <a name="network"></a>Network (Hálózat)
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
-| Szolgáltatás végpontjának támogatása| N/A | |
-| VNet-befecskendezés támogatása| N/A | |
-| Hálózati elkülönítés és tűzfalak támogatása| N/A |  |
-| Kényszerített bújtatás támogatása| N/A | |
+| Szolgáltatás végpontjának támogatása| N.A. | |
+| VNet-befecskendezés támogatása| N.A. | |
+| Hálózati elkülönítés és tűzfalak támogatása| N.A. |  |
+| Kényszerített bújtatás támogatása| N.A. | |
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
-| Adatsíkok naplózása és naplózása | N/A |  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Yes | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Yes | Lásd: [Azure monitor naplók a nyilvános Alapszintű Load Balancerhoz](load-balancer-monitor-log.md). |
+| Adatsíkok naplózása és naplózása | N.A. |  |
 
 ## <a name="identity"></a>Identitás
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Hitelesítés| N/A |  |
-| Engedélyezés| N/A |  |
+| Hitelesítés| N.A. |  |
+| Engedélyezés| N.A. |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | N/A | |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| N/A | |
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | N/A | |
-| Oszlop szintű titkosítás (Azure Data Services)| N/A | |
-| Titkosított API-hívások| Igen | A [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | N.A. | |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| N.A. | |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | N.A. | |
+| Oszlop szintű titkosítás (Azure Data Services)| N.A. | |
+| Titkosított API-hívások| Yes | A [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| N/A |  | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| N.A. |  | 
 
 ## <a name="next-steps"></a>További lépések
 

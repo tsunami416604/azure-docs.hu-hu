@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78967776"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078416"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag önálló felülvizsgálata az Azure AD-jogosultságok kezelésében
 
@@ -37,7 +36,7 @@ A hozzáférési felülvizsgálat elvégzéséhez először meg kell nyitnia a h
 
 1. Kattintson a **hozzáférés áttekintése** hivatkozásra.
 
-1. Ha nem kap e-mailt https://myaccess.microsoft.com , közvetlenül is megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.  (Az USA kormányzati szervei számára `https://myaccess.microsoft.us` használja helyette.)
+1. https://myaccess.microsoft.comHa nem kap e-mailt, közvetlenül is megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.  (Az USA kormányzati szervei számára használja `https://myaccess.microsoft.us` helyette.)
 
 1. A bal oldali navigációs sávon kattintson a **hozzáférési felülvizsgálatok** lehetőségre az Önhöz rendelt hozzáférési felülvizsgálatok listájának megtekintéséhez.
 

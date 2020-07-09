@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be206b312394eab6367f179872c8c36b7f4f3d44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529352"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083219"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-fürtök testreszabása a bootstrap használatával
 
@@ -27,21 +27,21 @@ A HDInsight-fürt létrehozásakor három módszer van a konfigurációs fájlok
 
 Ilyen programozási módszerek használatával például a következő fájlokban konfigurálhatja a beállításokat:
 
-* clusterIdentity. XML
-* Core-site. XML
-* Gateway. XML
-* hbase-env. XML
-* hbase-site. XML
-* hdfs-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred – hely
-* oozie-site. XML
-* oozie-env. XML
-* Storm-site. XML
-* Tez-site. XML
-* webhcat-site. XML
-* yarn-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 * Server. Properties (Kafka-Broker konfiguráció)
 
 További információ a HDInsight-fürt további összetevőinek a létrehozás ideje alatt történő telepítéséről: [HDInsight-fürtök testreszabása parancsfájl-művelettel (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
@@ -55,7 +55,7 @@ További információ a HDInsight-fürt további összetevőinek a létrehozás 
 A következő PowerShell-kód testreszab egy [Apache Hive](https://hive.apache.org/) konfigurációt:
 
 > [!IMPORTANT]  
-> Lehetséges, `Spark2Defaults` hogy a paramétert a [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)használatával kell használni. Az alábbi kódrészletben látható üres értékeket adhat át a paraméternek.
+> Lehetséges, hogy a paramétert a `Spark2Defaults` [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)használatával kell használni. Az alábbi kódrészletben látható üres értékeket adhat át a paraméternek.
 
 ```powershell
 # hive-site.xml configuration
@@ -85,8 +85,8 @@ A [függelékben](#appendix-powershell-sample)található egy teljes körűen m�
 
 **A módosítás ellenőrzése:**
 
-1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/` a `CLUSTERNAME` helyére, ahol a a fürt neve.
-1. A bal oldali menüben navigáljon a **struktúra** > -**konfigurációk** > **speciális**elemre.
+1. Navigáljon a helyére, ahol a a `https://CLUSTERNAME.azurehdinsight.net/` `CLUSTERNAME` fürt neve.
+1. A bal oldali menüben navigáljon a **struktúra**-  >  **konfigurációk**  >  **speciális**elemre.
 1. Bontsa ki a **speciális kaptár-site**elemet.
 1. Keresse meg a **kaptár. metaadattár. Client. socket. timeout** értéket, és erősítse meg, hogy az érték **90-es**.
 
@@ -147,7 +147,7 @@ Példa Resource Manager-sablonra a spark2 konfigurációjának váltásához –
 
 ## <a name="appendix-powershell-sample"></a>Függelék: PowerShell-minta
 
-Ez a PowerShell-szkript létrehoz egy HDInsight-fürtöt, és testreszabja a kaptár beállításait. Ügyeljen arra, hogy a, `$nameToken`a `$httpPassword`és `$sshPassword`a értékeket adja meg.
+Ez a PowerShell-szkript létrehoz egy HDInsight-fürtöt, és testreszabja a kaptár beállításait. Ügyeljen arra, hogy a, a és a értékeket adja meg `$nameToken` `$httpPassword` `$sshPassword` .
 
 ```powershell
 ####################################

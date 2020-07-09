@@ -3,25 +3,24 @@ title: SAML egyszeri bejelentkezés a helyi alkalmazásokhoz Azure AD alkalmazá
 description: Ismerje meg, hogyan biztosíthat egyszeri bejelentkezést az SAML-hitelesítéssel védett helyszíni alkalmazásokhoz. Távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz alkalmazásproxy használatával.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764825"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
@@ -74,7 +73,7 @@ A helyszíni alkalmazásokhoz való egyszeri bejelentkezés biztosítása előtt
 
 2. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az **alapszintű SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Győződjön meg arról, hogy az alkalmazásproxy-ban konfigurált **külső URL** -cím fel van töltve az **azonosító**, a **Válasz URL-cím**és a **kijelentkezési URL-cím** mezőkbe. Ezek az URL-címek szükségesek ahhoz, hogy az alkalmazásproxy megfelelően működjön. 
 
-3. Szerkessze a korábban konfigurált **Válasz URL-címet** , hogy a tartomány elérhető legyen az interneten az alkalmazásproxy használatával. Ha például a **külső URL** -cím `https://contosotravel.com/acs`, `https://contosotravel-f128.msappproxy.net` és az eredeti **Válasz URL-címe** , akkor frissítenie kell az eredeti **Válasz URL** - `https://contosotravel-f128.msappproxy.net/acs`címét a következőre:.
+3. Szerkessze a korábban konfigurált **Válasz URL-címet** , hogy a tartomány elérhető legyen az interneten az alkalmazásproxy használatával. Ha például a **külső URL** -cím `https://contosotravel-f128.msappproxy.net` , és az eredeti **Válasz URL-címe** `https://contosotravel.com/acs` , akkor frissítenie kell az eredeti **Válasz URL-címét** a következőre: `https://contosotravel-f128.msappproxy.net/acs` .
 
     ![Alapszintű SAML-konfigurációs adatok megadása](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

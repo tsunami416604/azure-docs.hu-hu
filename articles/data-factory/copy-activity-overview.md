@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84187673"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -55,7 +54,7 @@ Az adatok forrásról fogadóba való másolásához a másolási tevékenysége
 
 A másolási tevékenységgel fájlok másolását végezheti el két fájl alapú adattár között, ebben az esetben az Adatmásolást a szerializálás vagy a deszerializálás nélkül is hatékonyan másolja a rendszer. Emellett egy adott formátumból is elemezheti vagy létrehozhatja a fájlokat, például az alábbiakat is elvégezheti:
 
-* Adatok másolása helyszíni SQL Server-adatbázisból, és a Azure Data Lake Storage Gen2ba való írás parketta formátumban.
+* Adatok másolása SQL Server-adatbázisból és a Azure Data Lake Storage Gen2ba való írás parketta formátumban.
 * Szövegfájlok (CSV) formátumának másolása helyszíni fájlrendszerből és az Azure Blob Storage-ba való írás Avro formátumban.
 * Másolhatja a tömörített fájlokat egy helyszíni fájlrendszerből, kibonthatja azokat menet közben, és kibontott fájlokat írhat a Azure Data Lake Storage Gen2ba.
 * Adatok másolása gzip tömörített szövegfájlba (CSV) az Azure Blob Storage-ból, és a Azure SQL Databasebe írás.
@@ -65,7 +64,7 @@ A másolási tevékenységgel fájlok másolását végezheti el két fájl alap
 
 A másolási tevékenységet engedélyező szolgáltatás globálisan elérhető az [Azure Integration Runtime helyein](concepts-integration-runtime.md#integration-runtime-location)felsorolt régiókban és földrajzi területeken. A globálisan elérhető topológia biztosítja a hatékony adatáthelyezést, amely általában elkerüli a régiók közötti ugrásokat. A [termékek régiónként](https://azure.microsoft.com/regions/#services) való megtekintésével ellenőrizze, hogy rendelkezésre áll-e a Data Factory és az adatáthelyezés egy adott régióban.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -75,7 +74,7 @@ A másolási tevékenységet engedélyező szolgáltatás globálisan elérhető
 2. **Hozzon létre adatkészleteket a forráshoz és a fogadóhoz.** A konfigurációs információkat és a támogatott tulajdonságokat a forrás és a fogadó összekötő cikkek "adatkészlet tulajdonságai" szakaszában találja.
 3. **Hozzon létre egy folyamatot a másolási tevékenységgel.** A következő szakasz egy példát mutat be.
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 A másolási tevékenység következő sablonja a támogatott tulajdonságok teljes listáját tartalmazza. Adja meg a forgatókönyvnek megfelelőket.
 
@@ -129,18 +128,18 @@ A másolási tevékenység következő sablonja a támogatott tulajdonságok tel
 
 | Tulajdonság | Leírás | Kötelező? |
 |:--- |:--- |:--- |
-| type | Másolási tevékenység esetén állítsa a következőre:`Copy` | Igen |
-| bemenetek | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Igen |
-| kimenetek | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Igen |
-| typeProperties | A másolási tevékenység konfigurálásához adja meg a tulajdonságokat. | Igen |
-| source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| Translator | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | Nem |
-| dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/>További információ: [adatintegrációs egységek](copy-activity-performance-features.md#data-integration-units). | Nem |
-| parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/>További információ: [párhuzamos másolás](copy-activity-performance-features.md#parallel-copy). | Nem |
-| Preserve | Itt adhatja meg, hogy szeretné-e megőrizni a metaadatokat vagy az ACL-eket az adatok másolása <br/>További információ: a [metaadatok megőrzése](copy-activity-preserve-metadata.md). |Nem |
-| enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance-features.md#staged-copy). | Nem |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | Nem |
+| típus | Másolási tevékenység esetén állítsa a következőre:`Copy` | Yes |
+| bemenetek | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Yes |
+| kimenetek | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Yes |
+| typeProperties | A másolási tevékenység konfigurálásához adja meg a tulajdonságokat. | Yes |
+| source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Yes |
+| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Yes |
+| Translator | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | No |
+| dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/>További információ: [adatintegrációs egységek](copy-activity-performance-features.md#data-integration-units). | No |
+| parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/>További információ: [párhuzamos másolás](copy-activity-performance-features.md#parallel-copy). | No |
+| Preserve | Itt adhatja meg, hogy szeretné-e megőrizni a metaadatokat vagy az ACL-eket az adatok másolása <br/>További információ: a [metaadatok megőrzése](copy-activity-preserve-metadata.md). |No |
+| enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance-features.md#staged-copy). | No |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | No |
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -200,9 +199,9 @@ Programozott módon történő konfigurálásához adja hozzá a `additionalColu
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A `additionalColumns` tömb alá tartozó minden objektum egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a `value` pedig jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`**– a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **Kifejezés**<br>- **Statikus érték** | Nem |
+| additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A tömb alá tartozó minden objektum `additionalColumns` egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a pedig `value` jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`**– a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **Kifejezés**<br>- **Statikus érték** | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -250,4 +249,4 @@ Tekintse meg az alábbi rövid útmutatókat, oktatóanyagokat és mintákat:
 
 - [Adatok másolása az egyik helyről egy másik helyre ugyanazon Azure Blob Storage-fiókban](quickstart-create-data-factory-dot-net.md)
 - [Adatok másolása az Azure Blob Storage-ból a Azure SQL Databaseba](tutorial-copy-data-dot-net.md)
-- [Adatok másolása helyszíni SQL Server-adatbázisból az Azure-ba](tutorial-hybrid-copy-powershell.md)
+- [Adatok másolása SQL Server-adatbázisból az Azure-ba](tutorial-hybrid-copy-powershell.md)

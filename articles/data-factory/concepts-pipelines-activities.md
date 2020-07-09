@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: ad4ffa71480a5af06c31872cbafcaab7719c55e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c71e4120d127277e8b46f59bfef7fca403847c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253761"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 
@@ -28,7 +28,7 @@ Ennek a cikknek a segítségével megismerheti az Azure Data Factory folyamatait
 ## <a name="overview"></a>Áttekintés
 A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek naplózzák és megtisztítják a naplózási adatot, majd elindítanak egy leképezési adatfolyamot a naplófájlok elemzéséhez. A folyamat lehetővé teszi, hogy a tevékenységeket egy készletként kezelje, külön helyett. A folyamatokat egymástól függetlenül helyezheti üzembe és ütemezhet.
 
-A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. A másolási tevékenység használatával például egy helyszíni SQL Serverből egy Azure Blob Storage-tárolóba másolhatja az adatokat. Ezt követően egy adatfolyam-tevékenység vagy egy Databricks-jegyzetfüzet tevékenység használatával feldolgozhatja és átalakíthatja a blob Storage-ból származó adatok egy olyan Azure-beli szinapszis Analytics-készletbe való feldolgozását, amely az üzleti intelligencia jelentéskészítési megoldásaira épül.
+A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy másolási tevékenységet használ az adatok SQL Serverból egy Azure-Blob Storageba való másolásához. Ezt követően egy adatfolyam-tevékenység vagy egy Databricks-jegyzetfüzet tevékenység használatával feldolgozhatja és átalakíthatja a blob Storage-ból származó adatok egy olyan Azure-beli szinapszis Analytics-készletbe való feldolgozását, amely az üzleti intelligencia jelentéskészítési megoldásaira épül.
 
 Data Factory három tevékenységgel rendelkezik: az [adattovábbítási tevékenységek](copy-activity-overview.md), [az Adatátalakítási tevékenységek](transform-data.md)és a [vezérlési tevékenységek](control-flow-web-activity.md). Minden tevékenység nulla vagy több bemeneti [adatkészletet](concepts-datasets-linked-services.md) képes fogadni, és egy vagy több kimeneti [adatkészletet](concepts-datasets-linked-services.md) képes előállítani. Az alábbi ábrán a folyamat, a tevékenység és az adat-előállító adatkészlete közötti kapcsolat látható:
 
@@ -69,7 +69,7 @@ További információkért tekintse meg az [adatátalakítási tevékenységekr�
 ## <a name="control-flow-activities"></a>Vezérlési folyamat tevékenységei
 A támogatott átvitelvezérlési tevékenységek a következők:
 
-Vezérlési tevékenység | Leírás
+Vezérlési tevékenység | Description
 ---------------- | -----------
 [Változó hozzáfűzése](control-flow-append-variable-activity.md) | Adjon hozzá egy értéket egy meglévő tömb változóhoz.
 [Folyamat végrehajtása](control-flow-execute-pipeline-activity.md) | A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
@@ -106,14 +106,14 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 }
 ```
 
-Címke | Leírás | Típus | Kötelező
+Címke | Description | Típus | Kötelező
 --- | ----------- | ---- | --------
-név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" </li></ul> | Sztring | Igen
-leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
-tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
-paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
-Egyidejűség | A folyamat egyidejű futtatások maximális száma. Alapértelmezés szerint nincs maximum. Ha elérte a párhuzamossági korlátot, a rendszer a folyamatban lévő további folyamatokat várólistára helyezi, amíg a korábbi verziók befejeződik. | Szám | Nem 
-Széljegyzetek | A folyamathoz társított címkék listája | Tömb | Nem
+name | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" </li></ul> | Sztring | Yes
+leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | No
+tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Yes
+paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | No
+Egyidejűség | A folyamat egyidejű futtatások maximális száma. Alapértelmezés szerint nincs maximum. Ha elérte a párhuzamossági korlátot, a rendszer a folyamatban lévő további folyamatokat várólistára helyezi, amíg a korábbi verziók befejeződik. | Szám | No 
+Széljegyzetek | A folyamathoz társított címkék listája | Tömb | No
 
 ## <a name="activity-json"></a>Tevékenység JSON-fájlja
 A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A következő két fő tevékenységtípust különböztetjük meg: végrehajtási és vezérlési tevékenységek.
@@ -141,15 +141,15 @@ A végrehajtási tevékenységek közé az [adatáthelyezési](#data-movement-ac
 
 Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonságok szerepelnek:
 
-Címke | Leírás | Kötelező
+Címke | Description | Kötelező
 --- | ----------- | ---------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás (\_) karakterrel kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Igen</li></ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
-type | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Igen
+name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betű-szám vagy aláhúzás () karakterrel kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Yes</li></ul>
+leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Yes
+típus | A tevékenység típusa. Tekintse meg az [adattovábbítási tevékenységeket](#data-movement-activities), az [Adatátalakítási tevékenységeket](#data-transformation-activities)és a [vezérlési tevékenységek](#control-flow-activities) szakaszt a különböző típusú tevékenységekhez. | Yes
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
-typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
-szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ez a tulajdonság egy időtúllépési és újrapróbálkozási viselkedést tartalmaz. Ha nincs megadva, a rendszer az alapértelmezett értékeket használja. További információkat a [Tevékenységszabályzat](#activity-policy) szakaszban talál. | Nem
-dependsOn | Ez a tulajdonság a tevékenységfüggőségek, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [Tevékenységfüggőség](#activity-dependency) | Nem
+typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | No
+szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ez a tulajdonság egy időtúllépési és újrapróbálkozási viselkedést tartalmaz. Ha nincs megadva, a rendszer az alapértelmezett értékeket használja. További információkat a [Tevékenységszabályzat](#activity-policy) szakaszban talál. | No
+dependsOn | Ez a tulajdonság a tevékenységfüggőségek, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [Tevékenységfüggőség](#activity-dependency) | No
 
 ### <a name="activity-policy"></a>Tevékenységszabályzat
 A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolják, beállíthatósági lehetőségeket biztosítva. A tevékenységszabályzatok kizárólag végrehajtási tevékenységek esetében állnak rendelkezésre.
@@ -182,7 +182,7 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
 }
 ```
 
-JSON-név | Leírás | Megengedett értékek | Kötelező
+JSON-név | Description | Megengedett értékek | Kötelező
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Időtartomány | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
@@ -206,13 +206,13 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 }
 ```
 
-Címke | Leírás | Kötelező
+Címke | Description | Kötelező
 --- | ----------- | --------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Igen</li><ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
-type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Igen
-typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
-dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információ: tevékenység- [függőség](#activity-dependency). | Nem
+name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\" | Yes</li><ul>
+leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Yes
+típus | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-flow-activities). | Yes
+typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | No
+dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információ: tevékenység- [függőség](#activity-dependency). | No
 
 ### <a name="activity-dependency"></a>Tevékenységfüggőség
 A tevékenység függősége határozza meg, hogy a későbbi tevékenységek milyen mértékben függenek az előző tevékenységektől, és meghatározza, hogy a következő feladat végrehajtása továbbra is fennáll-e. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet.
@@ -268,7 +268,7 @@ Ha például egy folyamat A tevékenység -> B tevékenység formában valósul 
 `"
 
 ## Sample copy pipeline
-In the following sample pipeline, there is one activity of type **Copy** in the **activities** section. In this sample, the [copy activity](copy-activity-overview.md) copies data from an Azure Blob storage to an Azure SQL database.
+In the following sample pipeline, there is one activity of type **Copy** in the **activities** section. In this sample, the [copy activity](copy-activity-overview.md) copies data from an Azure Blob storage to a database in Azure SQL Database.
 
 ```json
 {
@@ -358,7 +358,7 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **HDInsightHi
 Vegye figyelembe a következő szempontokat:
 
 - A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa****HDInsightHive** értékre van beállítva.
-- A rendszer a **partitionweblogs. HQL**nevű kaptár-parancsfájlt az Azure Storage-fiókban tárolja (a scriptlinkedservice szolgáltatás, az úgynevezett AzureStorageLinkedService), a tárolóban `adfgetstarted`pedig a script mappában.
+- A rendszer a **partitionweblogs. HQL**nevű kaptár-parancsfájlt az Azure Storage-fiókban tárolja (a scriptlinkedservice szolgáltatás, az úgynevezett AzureStorageLinkedService), a tárolóban pedig a script mappában `adfgetstarted` .
 - A `defines` szakasz meghatározza a futásidő beállításait, amelyek Hive konfigurációs értékekként (például $`{hiveconf:inputtable}`, `${hiveconf:partitionedtable}`) lesznek átadva a Hive-parancsfájlnak.
 
 A **typeProperties** szakasz eltérő az egyes átalakítási tevékenységek esetében. Ahhoz, hogy megismerkedhessen az egyes átalakítási tevékenységek által támogatott típustulajdonságokkal, kattintson az adott átalakítási tevékenységre az [Adatátalakítási tevékenységek](#data-transformation-activities) szakaszban.

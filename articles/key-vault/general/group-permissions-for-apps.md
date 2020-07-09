@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652216"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126229"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -60,10 +60,10 @@ Az alkalmazások objectId a társított egyszerű szolgáltatásnak felel meg. A
 
 Az alkalmazások objectId kétféleképpen szerezhetők be.  Az első az, hogy regisztrálja az alkalmazást Azure Active Directory. Ehhez kövesse az [alkalmazás regisztrálása a Microsoft Identity platformon](../../active-directory/develop/quickstart-register-app.md)című útmutató lépéseit. A regisztráció befejezésekor a objectID "Application (ügyfél-) AZONOSÍTÓként" jelenik meg.
 
-A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban. Az Azure CLI-vel használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot, és adjon meg egy egyedi szolgáltatásnév nevet az-n jelzőhöz a "http:// &lt; My-Unique-Service-elven-Name" formátumban &gt; .
+A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban. Az Azure CLI-vel használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot, és adjon meg egy egyedi egyszerű szolgáltatásnevet az-n jelzőhöz a "http:// &lt; My-Unique-Service-principal-name" formátumban &gt; .
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 A objectId a kimenetben jelenik meg `clientID` .
@@ -72,7 +72,7 @@ A Azure PowerShell használatával használja a [New-AzADServicePrincipal](/powe
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 A objectId a kimenetben `Id` (nem) jelenik meg `ApplicationId` .
@@ -226,7 +226,7 @@ Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt ide
 > [!WARNING]
 > A felügyelt identitásokkal rendelkező Azure AD-csoportok a token frissítéséhez és a 8hr szükségesek lehetnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
 - [App Service felügyelt identitással rendelkező Key Vault hitelesítés megadása](managed-identity.md)

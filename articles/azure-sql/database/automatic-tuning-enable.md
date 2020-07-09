@@ -2,7 +2,7 @@
 title: Automatikus hangolás engedélyezése
 description: A Azure Portal használatával egyszerűen engedélyezheti az adatbázis automatikus finomhangolását.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 02a6bba2dd4162a1cd9f05249174c2174a85b931
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043687"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982786"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,6 @@ ms.locfileid: "84043687"
 A Azure SQL Database automatikusan kezeli azokat az adatszolgáltatásokat, amelyek folyamatosan figyelik a lekérdezéseket, és azonosítják a munkaterhelés teljesítményének növelése érdekében végrehajtható műveleteket. Áttekintheti az ajánlásokat, és manuálisan alkalmazhatja őket, vagy engedélyezheti Azure SQL Database a javítási műveletek automatikus alkalmazását – ezt az **Automatikus hangolási módot**nevezzük.
 
 Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélyezhető a következő módon:
-
 
 - A [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) hívások
@@ -42,7 +41,7 @@ Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélye
 A kiszolgáló szintjén dönthet úgy, hogy az "Azure Defaults" értékről örökli az Automatikus hangolási konfigurációt, vagy nem örökli a konfigurációt. Az Azure alapértelmezett értékei FORCE_LAST_GOOD_PLAN engedélyezve vannak, CREATE_INDEX le van tiltva, és a DROP_INDEX le van tiltva.
 
 > [!IMPORTANT]
-> Március 2020 az automatikus hangoláshoz használt Azure alapértelmezett értékei a következők:
+> Márciustól a 2020 új Azure alapértékek az automatikus hangoláshoz a következők:
 >
 > - FORCE_LAST_GOOD_PLAN = engedélyezve, CREATE_INDEX = letiltva és DROP_INDEX = letiltva.
 > - Az Automatikus hangolási beállításokat nem tartalmazó meglévő kiszolgálók automatikusan konfigurálva vannak az Azure alapértelmezett beállításainak ÖRÖKLÉSére. Ez minden olyan ügyfélre vonatkozik, amely jelenleg nem definiált állapotban van az Automatikus hangolási kiszolgáló beállításaival.

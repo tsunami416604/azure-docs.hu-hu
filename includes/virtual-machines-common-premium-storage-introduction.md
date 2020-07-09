@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74005557"
 ---
 Ez a cikk útmutatást nyújt a nagy teljesítményű alkalmazások létrehozásához az Azure Premium Storage használatával. A jelen dokumentumban ismertetett útmutatást az alkalmazás által használt technológiákra vonatkozó legjobb teljesítményű gyakorlattal kombinálva is használhatja. Az irányelvek szemléltetése érdekében a jelen dokumentumban SQL Server a Premium Storage-on való futtatását használták példaként.

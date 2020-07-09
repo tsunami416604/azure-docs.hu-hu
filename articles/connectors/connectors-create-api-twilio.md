@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: bb7be1815364b3def9b22e50454dceabd17e6150
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829647"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Üzenetek kezelése a Twilio-ben Azure Logic Apps
@@ -72,6 +72,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

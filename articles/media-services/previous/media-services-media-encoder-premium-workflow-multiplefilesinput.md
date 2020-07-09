@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
-ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a51a67200ec411f0f9362bc92bf7926f221b1f2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250997"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056803"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájl és összetevő tulajdonságainak használata prémium szintű kódolóval
 ## <a name="overview"></a>Áttekintés
@@ -97,7 +97,7 @@ Példa:
 ```
 
 ### <a name="property-with-an-xml-value"></a>XML-értéket tartalmazó tulajdonság
-Egy XML-értéket megadó tulajdonság beállításához használja `<![CDATA[ and ]]>`a következőt:.
+Egy XML-értéket megadó tulajdonság beállításához használja a következőt: `<![CDATA[ and ]]>` .
 
 Példa:
 
@@ -131,7 +131,7 @@ Példa:
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy a kocsit csak utána `<![CDATA[`helyezi vissza.
+> Győződjön meg arról, hogy a kocsit csak utána helyezi vissza `<![CDATA[` .
 
 ### <a name="propertypath-value"></a>Propertypath szintaxisnak érték
 Az előző példákban a Propertypath szintaxisnak "/Media file input/filename" vagy "/inactiveTimeout" vagy "clipListXml" volt.
@@ -272,10 +272,10 @@ További keretek – pontos vágás:
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>1. példa: képek átfedése a videó fölé
 
 ### <a name="presentation"></a>Megjelenítés
-Vegyünk egy példát arra, hogy a videó kódolásakor a bemeneti videóban lévő embléma képét szeretné átfedőként használni. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24. mp4", és az embléma neve "logo. png". A következő lépéseket kell végrehajtania:
+Vegyünk egy példát arra, hogy a videó kódolásakor a bemeneti videóban lévő embléma képét szeretné átfedőként használni. Ebben a példában a bemeneti videó neve "Microsoft_HoloLens_Possibilities_816p24.mp4", és a logó neve "logo.png". A következő lépéseket kell végrehajtania:
 
 * Hozzon létre egy munkafolyamat-objektumot a munkafolyamat-fájllal (lásd a következő példát).
-* Hozzon létre egy Media-objektumot, amely két fájlt tartalmaz: MyInputVideo. MP4, mint az elsődleges fájl és a MyLogo. png.
+* Hozzon létre egy olyan adathordozó-objektumot, amely két fájlt tartalmaz: MyInputVideo.mp4 elsődleges fájlként, és MyLogo.png.
 * Küldjön egy feladatot a Media Encoder Premium Workflow adathordozó-feldolgozónak a fenti bemeneti eszközökkel, és adja meg a következő konfigurációs karakterláncot.
 
 Konfigurálás:
@@ -299,7 +299,7 @@ A fenti példában a videofájl neve a Media file input összetevőbe és a prim
 ### <a name="step-by-step-workflow-creation"></a>Lépésről lépésre a munkafolyamat létrehozása
 A következő lépésekkel hozhat létre egy olyan munkafolyamatot, amely két fájlt bemenetként fogad: egy videót és egy képet. A képet a videó tetején fogja átfedőként ábrázolni.
 
-Nyissa meg a **munkafolyamat-tervezőt** , és válassza a **fájl** > **Új munkaterület** > **átkódoló tervezet**lehetőséget.
+Nyissa meg a **munkafolyamat-tervezőt** , és válassza a **fájl**  >  **Új munkaterület**  >  **átkódoló tervezet**lehetőséget.
 
 Az új munkafolyamat három elemet mutat be:
 
@@ -366,7 +366,7 @@ Most adja hozzá az **ISO MPEG-4 multiplexer** és a **fájl kimeneti** összete
 
 Be kell állítania a kimeneti fájl nevét. Kattintson a **fájl kimeneti** összetevőjére, és szerkessze a kifejezést a fájlhoz:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4`
 
 ![Fájl kimeneti neve](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 
@@ -442,7 +442,7 @@ A kódoláshoz kövesse az alábbi lépéseket:
 * Hozzon létre egy Media Services objektumot a MXF-fájllal és a hangfájlokkal (0 – 18 hangfájl).
 * Győződjön meg arról, hogy a MXF-fájl elsődleges fájlként van beállítva.
 * Hozzon létre egy feladatot és egy feladatot a prémium szintű munkafolyamat-kódoló processzor használatával. Használja a megadott munkafolyamatot (MultiMP4-1080p-19audio-v1. workflow).
-* Adja át a setruntime. XML-adatoknak a feladatnak (ha Azure Media Services Explorert használ, használja az "XML-adatok átadása a munkafolyamatnak" gombot).
+* Adja át a setruntime.xml adatoknak a feladatnak (ha Azure Media Services Explorert használ, használja az "XML-adatok átadása a munkafolyamatnak" gombot).
   * Az XML-adatok frissítésével adja meg a megfelelő fájlneveket és nyelveket.
   * A munkafolyamathoz audio-összetevők vannak elnevezve: hang 1 – audio 18.
   * A RFC5646 a Language címke esetében támogatott.

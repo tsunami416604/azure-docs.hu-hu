@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 388f05c2af1516a0477392f37763a0480c7ad413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751265"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Speciális szabályzatok
 
@@ -61,7 +61,7 @@ A `choose` szabályzat a logikai kifejezések kiértékelésének eredménye ala
 </choose>
 ```
 
-A vezérlési folyamat házirendjének legalább egy `<when/>` elemet tartalmaznia kell. Az `<otherwise/>` elem nem kötelező. Az `<when/>` elemekben lévő feltételek kiértékelése a szabályzaton belüli megjelenésük sorrendjében történik. A `<when/>` `true` rendszer az első elemben, a Condition attribútummal együtt csatolt házirend-utasítást alkalmazza. A `<otherwise/>` elemen belül foglalt szabályzatok, ha vannak `<when/>` `false`, akkor lesznek alkalmazva, ha az összes elem feltétel attribútuma.
+A vezérlési folyamat házirendjének legalább egy elemet tartalmaznia kell `<when/>` . Az `<otherwise/>` elem nem kötelező. Az `<when/>` elemekben lévő feltételek kiértékelése a szabályzaton belüli megjelenésük sorrendjében történik. A rendszer az első `<when/>` elemben, a Condition attribútummal együtt csatolt házirend-utasítást `true` alkalmazza. A `<otherwise/>` elemen belül foglalt szabályzatok, ha vannak, akkor lesznek alkalmazva, ha az összes `<when/>` elem feltétel attribútuma `false` .
 
 ### <a name="examples"></a>Példák
 
@@ -69,11 +69,11 @@ A vezérlési folyamat házirendjének legalább egy `<when/>` elemet tartalmazn
 
 Az alábbi példa egy [set-változó](api-management-advanced-policies.md#set-variable) házirendet és két vezérlési folyamat-szabályzatot mutat be.
 
-A set változó házirend a bejövő szakaszban található, és `isMobile` egy logikai [környezeti](api-management-policy-expressions.md#ContextVariables) változót hoz létre, amely értéke TRUE ( `User-Agent` igaz), ha a `iPad` kérelem `iPhone`fejlécében a szöveg vagy a szerepel.
+A set változó házirend a bejövő szakaszban található, és egy `isMobile` logikai [környezeti](api-management-policy-expressions.md#ContextVariables) változót hoz létre, amely értéke TRUE (igaz), ha a `User-Agent` kérelem fejlécében a szöveg vagy a szerepel `iPad` `iPhone` .
 
-Az első vezérlési folyamat a bejövő szakaszban is szerepel, és a `isMobile` környezeti változó értékétől függően a két [beállított lekérdezési karakterlánc](api-management-transformation-policies.md#SetQueryStringParameter) -házirend egyikét alkalmazza.
+Az első vezérlési folyamat a bejövő szakaszban is szerepel, és a környezeti változó értékétől függően a két [beállított lekérdezési karakterlánc](api-management-transformation-policies.md#SetQueryStringParameter) -házirend egyikét alkalmazza `isMobile` .
 
-A második vezérlési folyamat a kimenő szakaszban található, és az [XML konvertálása JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) -szabályzatra vonatkozik, ha `isMobile` a értéke `true`.
+A második vezérlési folyamat a kimenő szakaszban található, és az [XML konvertálása JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) -szabályzatra vonatkozik, ha a értéke `isMobile` `true` .
 
 ```xml
 <policies>
@@ -106,7 +106,7 @@ A második vezérlési folyamat a kimenő szakaszban található, és az [XML ko
 
 #### <a name="example"></a>Példa
 
-Ez a példa azt mutatja be, hogyan hajtható végre a tartalom szűrése, ha eltávolít egy adatelemet a háttér `Starter` -szolgáltatástól kapott válaszból a termék használatakor. A szabályzat konfigurálásának és használatának bemutatását lásd: a [Cloud Cover 177-es epizódja: további API Management szolgáltatások a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30-es gyors előretekeréssel. Indítsa el a 31:50-at a bemutatóhoz használt [Dark Sky előrejelzési API](https://developer.forecast.io/) áttekintéséhez.
+Ez a példa azt mutatja be, hogyan hajtható végre a tartalom szűrése, ha eltávolít egy adatelemet a háttér-szolgáltatástól kapott válaszból a termék használatakor `Starter` . A szabályzat konfigurálásának és használatának bemutatását lásd: a [Cloud Cover 177-es epizódja: további API Management szolgáltatások a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30-es gyors előretekeréssel. Indítsa el a 31:50-at a bemutatóhoz használt [Dark Sky előrejelzési API](https://developer.forecast.io/) áttekintéséhez.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -126,17 +126,17 @@ Ez a példa azt mutatja be, hogyan hajtható végre a tartalom szűrése, ha elt
 
 ### <a name="elements"></a>Elemek
 
-| Elem   | Leírás                                                                                                                                                                                                                                                               | Kötelező |
+| Elem   | Description                                                                                                                                                                                                                                                               | Kötelező |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| Válassza    | Gyökérelem.                                                                                                                                                                                                                                                             | Igen      |
-| mikor      | A `if` `choose` szabályzat vagy `ifelse` részeihez használandó feltétel. Ha a `choose` házirend több `when` szakaszt tartalmaz, a rendszer sorrendben értékeli ki őket. Ha az `condition` elem kiértékelése megtörtént `true`, nem kerül sor `when` további feltételek kiértékelésére. | Igen      |
-| Ellenkező esetben | Azt a házirend-kódrészletet tartalmazza, amelyet akkor kell `when` használni, ha `true`egyik feltétel sincs kiértékelve.                                                                                                                                                                               | Nem       |
+| Válassza    | Gyökérelem.                                                                                                                                                                                                                                                             | Yes      |
+| mikor      | A `if` szabályzat vagy részeihez használandó feltétel `ifelse` `choose` . Ha a `choose` házirend több `when` szakaszt tartalmaz, a rendszer sorrendben értékeli ki őket. Ha az `condition` elem kiértékelése megtörtént `true` , nem kerül sor további `when` feltételek kiértékelésére. | Yes      |
+| Ellenkező esetben | Azt a házirend-kódrészletet tartalmazza, amelyet akkor kell használni, ha egyik `when` feltétel sincs kiértékelve `true` .                                                                                                                                                                               | No       |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum                                              | Leírás                                                                                               | Kötelező |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| Condition = "boolean kifejezés &#124; Boolean konstans" | A `when` vonatkozó házirend-utasítás kiértékelése után kiértékelt logikai kifejezés vagy konstans. | Igen      |
+| Condition = "boolean kifejezés &#124; Boolean konstans" | A `when` vonatkozó házirend-utasítás kiértékelése után kiértékelt logikai kifejezés vagy konstans. | Yes      |
 
 ### <a name="usage"></a><a name="ChooseUsage"></a>Használati
 
@@ -183,7 +183,7 @@ A következő API-szintű házirend az összes API-kérést továbbítja a hátt
 
 #### <a name="example"></a>Példa
 
-Ez a műveleti szintű házirend az `base` elemet használja a háttér-házirend öröklésére a szülő API-szint hatókörből.
+Ez a műveleti szintű házirend az `base` elemet használja a háttér-házirend öröklésére a SZÜLŐ API-szint hatókörből.
 
 ```xml
 <!-- operation level -->
@@ -244,18 +244,18 @@ Ez a műveleti szintű házirend nem továbbítja a kéréseket a háttér-szolg
 
 ### <a name="elements"></a>Elemek
 
-| Elem         | Leírás   | Kötelező |
+| Elem         | Description   | Kötelező |
 | --------------- | ------------- | -------- |
-| továbbítás – kérelem | Gyökérelem. | Igen      |
+| továbbítás – kérelem | Gyökérelem. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum                                     | Leírás                                                                                                                                                                                                                                                                                                    | Kötelező | Alapértelmezett |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout = "egész"                             | Az az időtartam másodpercben, ameddig a háttér-szolgáltatás visszaadja a HTTP-válasz fejléceit, mielőtt időtúllépési hibát észlelt. A minimális érték 0 másodperc. A 240 másodpercnél nagyobb értékeket nem lehet megbecsülni, mivel a mögöttes hálózati infrastruktúra ezen idő elteltével el tudja dobni az üresjárati kapcsolatokat. | Nem       | None    |
-| az átirányítások követése = "false &#124; true"          | Megadja, hogy a rendszer az átjárót követi-e a háttér-szolgáltatásból, vagy visszaadja-e a hívónak.                                                                                                                                                                                                    | Nem       | hamis   |
-| puffer-Request-Body = "false &#124; true"       | Ha a "true" (igaz) értékre van állítva, a rendszer pufferbe állítja, és újból felhasználja az [újrapróbálkozáskor](api-management-advanced-policies.md#Retry).                                                                                                                                                                                               | Nem       | hamis   |
-| sikertelen művelet – hiba-állapot-kód = "false &#124; true" | Ha a True (igaz) értékre van állítva, a [hibakódok](api-management-error-handling-policies.md) értéke a 400 és 599 közötti tartományba esik.                                                                                                                                                                      | Nem       | hamis   |
+| timeout = "egész"                             | Az az időtartam másodpercben, ameddig a háttér-szolgáltatás visszaadja a HTTP-válasz fejléceit, mielőtt időtúllépési hibát észlelt. A minimális érték 0 másodperc. A 240 másodpercnél nagyobb értékeket nem lehet megbecsülni, mivel a mögöttes hálózati infrastruktúra ezen idő elteltével el tudja dobni az üresjárati kapcsolatokat. | No       | None    |
+| az átirányítások követése = "false &#124; true"          | Megadja, hogy a rendszer az átjárót követi-e a háttér-szolgáltatásból, vagy visszaadja-e a hívónak.                                                                                                                                                                                                    | No       | hamis   |
+| puffer-Request-Body = "false &#124; true"       | Ha a "true" (igaz) értékre van állítva, a rendszer pufferbe állítja, és újból felhasználja az [újrapróbálkozáskor](api-management-advanced-policies.md#Retry).                                                                                                                                                                                               | No       | hamis   |
+| sikertelen művelet – hiba-állapot-kód = "false &#124; true" | Ha a True (igaz) értékre van állítva, a [hibakódok](api-management-error-handling-policies.md) értéke a 400 és 599 közötti tartományba esik.                                                                                                                                                                      | No       | hamis   |
 
 ### <a name="usage"></a>Használat
 
@@ -266,7 +266,7 @@ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.c
 
 ## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a>Egyidejűség korlátozása
 
-A `limit-concurrency` házirend megakadályozza, hogy a befoglalt szabályzatok a megadott számú kérelemnél többször is végrehajtás alatt legyenek. Ezen szám meghaladása után az új kérések azonnal meghiúsulnak, mert a 429 túl sok kérést tartalmazó állapotkód jelenik meg.
+A házirend megakadályozza, hogy a befoglalt `limit-concurrency` szabályzatok a megadott számú kérelemnél többször is végrehajtás alatt legyenek. Ezen szám meghaladása után az új kérések azonnal meghiúsulnak, mert a 429 túl sok kérést tartalmazó állapotkód jelenik meg.
 
 ### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>Szabályzati utasítás
 
@@ -288,7 +288,7 @@ Az alábbi példa bemutatja, hogyan korlátozható a háttérbe továbbított k�
   <backend>
     <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
-    <limit-concurrency/>
+    </limit-concurrency>
   </backend>
   <outbound>…</outbound>
 </policies>
@@ -296,16 +296,16 @@ Az alábbi példa bemutatja, hogyan korlátozható a háttérbe továbbított k�
 
 ### <a name="elements"></a>Elemek
 
-| Elem           | Leírás   | Kötelező |
+| Elem           | Description   | Kötelező |
 | ----------------- | ------------- | -------- |
-| korlátozás – Egyidejűség | Gyökérelem. | Igen      |
+| korlátozás – Egyidejűség | Gyökérelem. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum | Leírás                                                                                        | Kötelező | Alapértelmezett |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| kulcs       | Egy karakterlánc. A kifejezés engedélyezett. Megadja a Egyidejűség hatókörét. Több házirend is megosztható. | Igen      | N/A     |
-| maximális darabszám | Egész szám. Megadja a szabályzat megadására jogosult kérelmek maximális számát.           | Igen      | N/A     |
+| kulcs       | Egy karakterlánc. A kifejezés engedélyezett. Megadja a Egyidejűség hatókörét. Több házirend is megosztható. | Yes      | N.A.     |
+| maximális darabszám | Egész szám. Megadja a szabályzat megadására jogosult kérelmek maximális számát.           | Yes      | N.A.     |
 
 ### <a name="usage"></a>Használat
 
@@ -333,7 +333,7 @@ A `log-to-eventhub` házirend a megadott formátumban küldi az üzeneteket egy 
 
 ### <a name="example"></a>Példa
 
-Bármely karakterlánc használható a Event Hubsba való bejelentkezéshez. Ebben a példában a dátum és idő, a központi telepítési szolgáltatás neve, a kérelem azonosítója, az IP-cím és a `contoso-logger` művelet neve az összes bejövő híváshoz az azonosítóval regisztrált Event hub Logger naplóba kerül.
+Bármely karakterlánc használható a Event Hubsba való bejelentkezéshez. Ebben a példában a dátum és idő, a központi telepítési szolgáltatás neve, a kérelem azonosítója, az IP-cím és a művelet neve az összes bejövő híváshoz az azonosítóval regisztrált Event hub Logger naplóba kerül. `contoso-logger`
 
 ```xml
 <policies>
@@ -349,15 +349,15 @@ Bármely karakterlánc használható a Event Hubsba való bejelentkezéshez. Ebb
 
 ### <a name="elements"></a>Elemek
 
-| Elem         | Leírás                                                                     | Kötelező |
+| Elem         | Description                                                                     | Kötelező |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
-| eventhub | Gyökérelem. Az elem értéke az Event hub-ba való bejelentkezéshez használandó karakterlánc. | Igen      |
+| eventhub | Gyökérelem. Az elem értéke az Event hub-ba való bejelentkezéshez használandó karakterlánc. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum     | Leírás                                                               | Kötelező                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| naplózó – azonosító     | A API Management szolgáltatásban regisztrált naplózó azonosítója.         | Igen                                                                  |
+| naplózó – azonosító     | A API Management szolgáltatásban regisztrált naplózó azonosítója.         | Yes                                                                  |
 | Partition-ID  | Meghatározza az üzeneteket küldő partíció indexét.             | Választható. Ez az attribútum nem használható, ha `partition-key` használatban van. |
 | partíció – kulcs | Megadja az üzenetek küldésekor a partíció-hozzárendeléshez használt értéket. | Választható. Ez az attribútum nem használható, ha `partition-id` használatban van.  |
 
@@ -371,7 +371,7 @@ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.c
 
 ## <a name="mock-response"></a><a name="mock-response"></a>Mintául szolgáló válasz
 
-A `mock-response`, ahogy a neve is mutatja, az API-k és a műveletek modellezésére szolgál. Megszakítja a folyamat normál végrehajtását, és egy kigúnyolt választ ad vissza a hívónak. A szabályzat mindig a legmagasabb szintű megbízhatósági válaszokat próbálja visszaadni. Ez inkább a válaszok tartalmi példáit részesíti előnyben, ha elérhető. A sémák alapján hoz létre példákat, és a sémákat is megadja, és nem. Ha nem találhatók példák vagy sémák, a rendszer visszaadja a tartalom nélküli válaszokat.
+A `mock-response` , ahogy a neve is mutatja, az API-k és a műveletek modellezésére szolgál. Megszakítja a folyamat normál végrehajtását, és egy kigúnyolt választ ad vissza a hívónak. A szabályzat mindig a legmagasabb szintű megbízhatósági válaszokat próbálja visszaadni. Ez inkább a válaszok tartalmi példáit részesíti előnyben, ha elérhető. A sémák alapján hoz létre példákat, és a sémákat is megadja, és nem. Ha nem találhatók példák vagy sémák, a rendszer visszaadja a tartalom nélküli válaszokat.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -394,16 +394,16 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>Elemek
 
-| Elem       | Leírás   | Kötelező |
+| Elem       | Description   | Kötelező |
 | ------------- | ------------- | -------- |
-| modell – válasz | Gyökérelem. | Igen      |
+| modell – válasz | Gyökérelem. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum    | Leírás                                                                                           | Kötelező | Alapértelmezett |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| állapot kódja  | Megadja a válasz állapotkódot, és a megfelelő példa vagy séma kiválasztására szolgál.                 | Nem       | 200     |
-| Content-Type | Megadja `Content-Type` a válasz fejlécének értékét, és a megfelelő példa vagy séma kiválasztására szolgál. | Nem       | None    |
+| állapot kódja  | Megadja a válasz állapotkódot, és a megfelelő példa vagy séma kiválasztására szolgál.                 | No       | 200     |
+| Content-Type | Megadja a `Content-Type` Válasz fejlécének értékét, és a megfelelő példa vagy séma kiválasztására szolgál. | No       | None    |
 
 ### <a name="usage"></a>Használat
 
@@ -415,7 +415,7 @@ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.c
 
 ## <a name="retry"></a><a name="Retry"></a>Próbálja megismételni
 
-A `retry` házirend egyszer végrehajtja az alárendelt házirendeket, majd újrapróbálkozik a végrehajtással `condition` , `false` amíg az `count` újrapróbálkozási kísérlet el nem válik, vagy az újbóli próbálkozás megszakad.
+A `retry` házirend egyszer végrehajtja az alárendelt házirendeket, majd újrapróbálkozik a végrehajtással, amíg az újrapróbálkozási kísérlet el `condition` `false` nem válik, vagy az újbóli próbálkozás `count` megszakad.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -435,7 +435,7 @@ A `retry` házirend egyszer végrehajtja az alárendelt házirendeket, majd újr
 
 ### <a name="example"></a>Példa
 
-A következő példában a kérelmek továbbítása egy exponenciális újrapróbálkozási algoritmus használatával tízszer próbálkozik újra. Mivel `first-fast-retry` a értéke false (hamis), az összes újrapróbálkozási kísérlet az exponenciális újrapróbálkozási algoritmusra vonatkozik.
+A következő példában a kérelmek továbbítása egy exponenciális újrapróbálkozási algoritmus használatával tízszer próbálkozik újra. Mivel a értéke `first-fast-retry` false (hamis), az összes újrapróbálkozási kísérlet az exponenciális újrapróbálkozási algoritmusra vonatkozik.
 
 ```xml
 
@@ -453,25 +453,25 @@ A következő példában a kérelmek továbbítása egy exponenciális újrapró
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás                                                         | Kötelező |
+| Elem | Description                                                         | Kötelező |
 | ------- | ------------------------------------------------------------------- | -------- |
-| retry   | Gyökérelem. Más szabályzatokat is tartalmazhat, amelyek alárendelt elemei. | Igen      |
+| retry   | Gyökérelem. Más szabályzatokat is tartalmazhat, amelyek alárendelt elemei. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum        | Leírás                                                                                                                                           | Kötelező | Alapértelmezett |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| feltétel        | Logikai literál vagy [kifejezés](api-management-policy-expressions.md) , amely meghatározza, hogy az újrapróbálkozásokat le`false`kell-e állítani`true`() vagy a folytatást ().      | Igen      | N/A     |
-| count            | Egy pozitív szám, amely megadja a kísérlethez szükséges újrapróbálkozások maximális számát.                                                                                | Igen      | N/A     |
-| interval         | Az újrapróbálkozási kísérletek közötti várakozási időközt másodpercben kifejezett pozitív szám.                                                                 | Igen      | N/A     |
-| maximális időköz     | Az újrapróbálkozási kísérletek közötti maximális várakozási időközt megadó pozitív szám másodpercben. Egy exponenciális újrapróbálkozási algoritmus megvalósítására szolgál. | Nem       | N/A     |
-| különbözeti            | A várakozási időköz növekményét megadó pozitív szám másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmusok megvalósítására szolgál.             | Nem       | N/A     |
-| első – gyors újrapróbálkozás | Ha a értékre `true` van állítva, a rendszer azonnal végrehajtja az első újrapróbálkozási kísérletet.                                                                                  | Nem       | `false` |
+| feltétel        | Logikai literál vagy [kifejezés](api-management-policy-expressions.md) , amely meghatározza, hogy az újrapróbálkozásokat le kell-e állítani ( `false` ) vagy a folytatást ( `true` ).      | Yes      | N.A.     |
+| count            | Egy pozitív szám, amely megadja a kísérlethez szükséges újrapróbálkozások maximális számát.                                                                                | Yes      | N.A.     |
+| interval         | Az újrapróbálkozási kísérletek közötti várakozási időközt másodpercben kifejezett pozitív szám.                                                                 | Yes      | N.A.     |
+| maximális időköz     | Az újrapróbálkozási kísérletek közötti maximális várakozási időközt megadó pozitív szám másodpercben. Egy exponenciális újrapróbálkozási algoritmus megvalósítására szolgál. | No       | N.A.     |
+| különbözeti            | A várakozási időköz növekményét megadó pozitív szám másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmusok megvalósítására szolgál.             | No       | N.A.     |
+| első – gyors újrapróbálkozás | Ha a értékre `true` van állítva, a rendszer azonnal végrehajtja az első újrapróbálkozási kísérletet.                                                                                  | No       | `false` |
 
 > [!NOTE]
 > Ha csak a `interval` érték van megadva, a **rögzített** intervallum-újrapróbálkozások lesznek elvégezve.
-> Ha csak a `interval` és `delta` a van megadva, a rendszer egy **lineáris** intervallum újrapróbálkozási algoritmust használ, ahol az újrapróbálkozások közötti várakozási idő `interval + (count - 1)*delta`a következő képlet szerint számítható ki:.
-> Ha a `interval` `max-interval` és `delta` a `interval` meg van adva, az **exponenciális** intervallum újrapróbálkozási algoritmusa lesz alkalmazva, ahol az újrapróbálkozások közötti várakozási idő exponenciálisan növekszik az `max-interval` értéktől a következő képletnek megfelelően `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
+> Ha csak a `interval` és a `delta` van megadva, a rendszer egy **lineáris** intervallum újrapróbálkozási algoritmust használ, ahol az újrapróbálkozások közötti várakozási idő a következő képlet szerint számítható ki: `interval + (count - 1)*delta` .
+> Ha a `interval` `max-interval` és a `delta` meg van adva, az **exponenciális** intervallum újrapróbálkozási algoritmusa lesz alkalmazva, ahol az újrapróbálkozások közötti várakozási idő exponenciálisan növekszik az értéktől a `interval` `max-interval` következő képletnek megfelelően `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)` .
 
 ### <a name="usage"></a>Használat
 
@@ -510,18 +510,18 @@ A `return-response` házirend megszakítja a folyamat végrehajtását, és egy 
 
 ### <a name="elements"></a>Elemek
 
-| Elem         | Leírás                                                                               | Kötelező |
+| Elem         | Description                                                                               | Kötelező |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
-| visszatérési válasz | Gyökérelem.                                                                             | Igen      |
-| fejléc beállítása      | Egy [set-header](api-management-transformation-policies.md#SetHTTPheader) Policy utasítás. | Nem       |
-| törzs beállítása        | Egy [set-test](api-management-transformation-policies.md#SetBody) Policy utasítás.         | Nem       |
-| állapot beállítása      | Egy [beállított állapotra](api-management-advanced-policies.md#SetStatus) vonatkozó házirend-utasítás.           | Nem       |
+| visszatérési válasz | Gyökérelem.                                                                             | Yes      |
+| fejléc beállítása      | Egy [set-header](api-management-transformation-policies.md#SetHTTPheader) Policy utasítás. | No       |
+| törzs beállítása        | Egy [set-test](api-management-transformation-policies.md#SetBody) Policy utasítás.         | No       |
+| állapot beállítása      | Egy [beállított állapotra](api-management-advanced-policies.md#SetStatus) vonatkozó házirend-utasítás.           | No       |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum              | Leírás                                                                                                                                                                          | Kötelező  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
-| Válasz-változó – név | A (z) által hivatkozott környezeti változó neve, például egy felsőbb rétegbeli [küldési kérelmekre](api-management-advanced-policies.md#SendRequest) vonatkozó házirend, `Response` amely tartalmaz egy objektumot. | Választható. |
+| Válasz-változó – név | A (z) által hivatkozott környezeti változó neve, például egy felsőbb rétegbeli [küldési kérelmekre](api-management-advanced-policies.md#SendRequest) vonatkozó házirend, amely tartalmaz egy `Response` objektumot. | Választható. |
 
 ### <a name="usage"></a>Használat
 
@@ -550,7 +550,7 @@ A `send-one-way-request` házirend a megadott URL-címre küldi el a megadott k�
 
 ### <a name="example"></a>Példa
 
-Ez a példa egy olyan példát mutat be, `send-one-way-request` amely a házirend használatával üzenetet küld egy Slack chat-szobájába, ha a http-válasz kódja nagyobb vagy egyenlő, mint 500. A mintával kapcsolatos további információkért lásd: [külső szolgáltatások használata az Azure API Management szolgáltatásból](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Ez a példa egy olyan példát mutat be, amely a `send-one-way-request` házirend használatával üzenetet küld egy Slack chat-szobájába, ha a http-válasz kódja nagyobb vagy egyenlő, mint 500. A mintával kapcsolatos további információkért lásd: [külső szolgáltatások használata az Azure API Management szolgáltatásból](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
 
 ```xml
 <choose>
@@ -580,22 +580,22 @@ Ez a példa egy olyan példát mutat be, `send-one-way-request` amely a háziren
 
 ### <a name="elements"></a>Elemek
 
-| Elem                    | Leírás                                                                                                 | Kötelező                        |
+| Elem                    | Description                                                                                                 | Kötelező                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| egyirányú küldési kérelem       | Gyökérelem.                                                                                               | Igen                             |
+| egyirányú küldési kérelem       | Gyökérelem.                                                                                               | Yes                             |
 | url                        | A kérelem URL-címe.                                                                                     | Nem if Mode = másolás; Ellenkező esetben igen. |
 | method                     | A kérelem HTTP-metódusa.                                                                            | Nem if Mode = másolás; Ellenkező esetben igen. |
-| header                     | Kérelem fejléce Több fejléc elemet is használhat több kérelem fejlécéhez.                                  | Nem                              |
-| body (Törzs)                       | A kérelem törzse.                                                                                           | Nem                              |
-| hitelesítés – tanúsítvány | [Az ügyfél-hitelesítéshez használandó tanúsítvány](api-management-authentication-policies.md#ClientCertificate) | Nem                              |
+| fejléc                     | Kérelem fejléce Több fejléc elemet is használhat több kérelem fejlécéhez.                                  | No                              |
+| body (Törzs)                       | A kérelem törzse.                                                                                           | No                              |
+| hitelesítés – tanúsítvány | [Az ügyfél-hitelesítéshez használandó tanúsítvány](api-management-authentication-policies.md#ClientCertificate) | No                              |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum     | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| Mode = "string" | Meghatározza, hogy ez egy új kérelem vagy az aktuális kérelem másolata. Kimenő módban a Mode = Copy nem inicializálja a kérelem törzsét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
-| név          | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | N/A      |
-| létező – művelet | Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van `override` beállítva, hogy több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben. | Nem       | felülbírálás |
+| Mode = "string" | Meghatározza, hogy ez egy új kérelem vagy az aktuális kérelem másolata. Kimenő módban a Mode = Copy nem inicializálja a kérelem törzsét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | Új      |
+| name          | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | N.A.      |
+| létező – művelet | Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van beállítva, hogy `override` több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben. | No       | felülbírálás |
 
 ### <a name="usage"></a>Használat
 
@@ -664,25 +664,25 @@ Ez a példa egy hivatkozási token engedélyezési kiszolgálóval való ellenő
 
 ### <a name="elements"></a>Elemek
 
-| Elem                    | Leírás                                                                                                 | Kötelező                        |
+| Elem                    | Description                                                                                                 | Kötelező                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| kérelem küldése               | Gyökérelem.                                                                                               | Igen                             |
+| kérelem küldése               | Gyökérelem.                                                                                               | Yes                             |
 | url                        | A kérelem URL-címe.                                                                                     | Nem if Mode = másolás; Ellenkező esetben igen. |
 | method                     | A kérelem HTTP-metódusa.                                                                            | Nem if Mode = másolás; Ellenkező esetben igen. |
-| header                     | Kérelem fejléce Több fejléc elemet is használhat több kérelem fejlécéhez.                                  | Nem                              |
-| body (Törzs)                       | A kérelem törzse.                                                                                           | Nem                              |
-| hitelesítés – tanúsítvány | [Az ügyfél-hitelesítéshez használandó tanúsítvány](api-management-authentication-policies.md#ClientCertificate) | Nem                              |
+| fejléc                     | Kérelem fejléce Több fejléc elemet is használhat több kérelem fejlécéhez.                                  | No                              |
+| body (Törzs)                       | A kérelem törzse.                                                                                           | No                              |
+| hitelesítés – tanúsítvány | [Az ügyfél-hitelesítéshez használandó tanúsítvány](api-management-authentication-policies.md#ClientCertificate) | No                              |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| Mode = "string"                   | Meghatározza, hogy ez egy új kérelem vagy az aktuális kérelem másolata. Kimenő módban a Mode = Copy nem inicializálja a kérelem törzsét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
-| Response-változó-Name = "string" | A válasz objektumot fogadó környezeti változó neve. Ha a változó nem létezik, akkor a szabályzat sikeres végrehajtása után jön létre, és a gyűjteményen keresztül [`context.Variable`](api-management-policy-expressions.md#ContextVariables) lesz elérhető.                                                                                                                                                                                                                                                                                                                          | Igen      | N/A      |
-| timeout = "egész"               | Az URL-cím meghívása előtti időtúllépési időköz (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nem       | 60       |
-| Mellőzés – hiba                    | Ha az értéke TRUE (igaz), és a kérelem hibát eredményez:<br /><br /> – Ha a Response-változó neve meg lett adva, akkor null értéket fog tartalmazni.<br />-If válasz-változó – a név nincs megadva, kontextus. A kérelmet nem frissíti a rendszer.                                                                                                                                                                                                                                                                                                                                                                                   | Nem       | hamis    |
-| név                            | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | N/A      |
-| létező – művelet                   | Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van `override` beállítva, hogy több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben. | Nem       | felülbírálás |
+| Mode = "string"                   | Meghatározza, hogy ez egy új kérelem vagy az aktuális kérelem másolata. Kimenő módban a Mode = Copy nem inicializálja a kérelem törzsét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | Új      |
+| Response-változó-Name = "string" | A válasz objektumot fogadó környezeti változó neve. Ha a változó nem létezik, akkor a szabályzat sikeres végrehajtása után jön létre, és a gyűjteményen keresztül lesz elérhető [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Yes      | N.A.      |
+| timeout = "egész"               | Az URL-cím meghívása előtti időtúllépési időköz (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | No       | 60       |
+| Mellőzés – hiba                    | Ha az értéke TRUE (igaz), és a kérelem hibát eredményez:<br /><br /> – Ha a Response-változó neve meg lett adva, akkor null értéket fog tartalmazni.<br />-If válasz-változó – a név nincs megadva, kontextus. A kérelmet nem frissíti a rendszer.                                                                                                                                                                                                                                                                                                                                                                                   | No       | hamis    |
+| name                            | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | N.A.      |
+| létező – művelet                   | Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van beállítva, hogy `override` több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben. | No       | felülbírálás |
 
 ### <a name="usage"></a>Használat
 
@@ -714,17 +714,17 @@ Figyelje meg, hogy a [Tulajdonságok](api-management-howto-properties.md) a Felh
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás  | Kötelező |
+| Elem | Description  | Kötelező |
 | ------- | ------------ | -------- |
-| proxy   | Gyökérelem | Igen      |
+| proxy   | Gyökérelem | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum         | Leírás                                            | Kötelező | Alapértelmezett |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "karakterlánc"      | A proxy URL-címe a http://host:portformájában.             | Igen      | N/A     |
-| username = "string" | A proxyval történő hitelesítéshez használandó Felhasználónév. | Nem       | N/A     |
-| password = "string" | A proxyval történő hitelesítéshez használandó jelszó. | Nem       | N/A     |
+| URL = "karakterlánc"      | A proxy URL-címe a formájában http://host:port .             | Yes      | N.A.     |
+| username = "string" | A proxyval történő hitelesítéshez használandó Felhasználónév. | No       | N.A.     |
+| password = "string" | A proxyval történő hitelesítéshez használandó jelszó. | No       | N.A.     |
 
 ### <a name="usage"></a>Használat
 
@@ -777,9 +777,9 @@ A `set-method` házirendet használó minta-szabályzat egy példát mutat be ar
 
 ### <a name="elements"></a>Elemek
 
-| Elem    | Leírás                                                       | Kötelező |
+| Elem    | Description                                                       | Kötelező |
 | ---------- | ----------------------------------------------------------------- | -------- |
-| set-Method | Gyökérelem. Az elem értéke a HTTP-metódust adja meg. | Igen      |
+| set-Method | Gyökérelem. Az elem értéke a HTTP-metódust adja meg. | Yes      |
 
 ### <a name="usage"></a>Használat
 
@@ -820,16 +820,16 @@ Ez a példa azt szemlélteti, hogyan lehet visszaadni egy 401-es választ, ha az
 
 ### <a name="elements"></a>Elemek
 
-| Elem    | Leírás   | Kötelező |
+| Elem    | Description   | Kötelező |
 | ---------- | ------------- | -------- |
-| állapot beállítása | Gyökérelem. | Igen      |
+| állapot beállítása | Gyökérelem. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum       | Leírás                                                | Kötelező | Alapértelmezett |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| code = "egész_szám"  | A visszaadni kívánt HTTP-állapotkód.                            | Igen      | N/A     |
-| OK = "string" | Az állapotkód visszaküldési okának leírása. | Igen      | N/A     |
+| code = "egész_szám"  | A visszaadni kívánt HTTP-állapotkód.                            | Yes      | N.A.     |
+| OK = "string" | Az állapotkód visszaküldési okának leírása. | Yes      | N.A.     |
 
 ### <a name="usage"></a>Használat
 
@@ -840,7 +840,7 @@ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.c
 
 ## <a name="set-variable"></a><a name="set-variable"></a>Változó beállítása
 
-A `set-variable` szabályzat deklarál egy [környezeti](api-management-policy-expressions.md#ContextVariables) változót, és egy [kifejezésen](api-management-policy-expressions.md) vagy egy szövegkonstans-karakterláncon keresztül megadott értéket rendel hozzá. Ha a kifejezésben literál szerepel, a rendszer karakterlánccá alakítja át, és az érték típusa lesz `System.String`.
+A `set-variable` szabályzat deklarál egy [környezeti](api-management-policy-expressions.md#ContextVariables) változót, és egy [kifejezésen](api-management-policy-expressions.md) vagy egy szövegkonstans-karakterláncon keresztül megadott értéket rendel hozzá. Ha a kifejezésben literál szerepel, a rendszer karakterlánccá alakítja át, és az érték típusa lesz `System.String` .
 
 ### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>Szabályzati utasítás
 
@@ -850,7 +850,7 @@ A `set-variable` szabályzat deklarál egy [környezeti](api-management-policy-e
 
 ### <a name="example"></a><a name="set-variableExample"></a>Például
 
-Az alábbi példa egy set változó szabályzatot mutat be a bejövő szakaszban. Ez a set változó házirend egy `isMobile` logikai [környezeti](api-management-policy-expressions.md#ContextVariables) változót hoz létre, amelynek értéke true `User-Agent` (igaz), ha `iPad` a `iPhone`kérelem fejlécében a szöveg vagy a szerepel.
+Az alábbi példa egy set változó szabályzatot mutat be a bejövő szakaszban. Ez a set változó házirend egy `isMobile` logikai [környezeti](api-management-policy-expressions.md#ContextVariables) változót hoz létre, amelynek értéke TRUE (igaz), ha a `User-Agent` kérelem fejlécében a szöveg vagy a szerepel `iPad` `iPhone` .
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -858,16 +858,16 @@ Az alábbi példa egy set változó szabályzatot mutat be a bejövő szakaszban
 
 ### <a name="elements"></a>Elemek
 
-| Elem      | Leírás   | Kötelező |
+| Elem      | Description   | Kötelező |
 | ------------ | ------------- | -------- |
-| változó beállítása | Gyökérelem. | Igen      |
+| változó beállítása | Gyökérelem. | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum | Leírás                                                              | Kötelező |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| név      | A változó neve.                                                | Igen      |
-| érték     | A változó értéke. Ez lehet egy kifejezés vagy egy literális érték. | Igen      |
+| name      | A változó neve.                                                | Yes      |
+| value     | A változó értéke. Ez lehet egy kifejezés vagy egy literális érték. | Yes      |
 
 ### <a name="usage"></a>Használat
 
@@ -878,7 +878,7 @@ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.c
 
 ### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a>Engedélyezett típusok
 
-A `set-variable` szabályzatban használt kifejezéseknek a következő alapvető típusok egyikét kell visszaadniuk.
+A szabályzatban használt kifejezéseknek `set-variable` a következő alapvető típusok egyikét kell visszaadniuk.
 
 -   System. Boolean
 -   System. sbyte érték
@@ -916,8 +916,8 @@ A `set-variable` szabályzatban használt kifejezéseknek a következő alapvet�
 
 A `trace` házirend egy egyéni nyomkövetést ad az API Inspector kimenetéhez, Application Insights telemetriáiról és/vagy erőforrás-naplókhoz.
 
--   A házirend egy egyéni nyomkövetést ad hozzá az [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) kimenetéhez a nyomkövetés indításakor, azaz a `Ocp-Apim-Trace` kérelem fejléce létezik, és igaz értékre `Ocp-Apim-Subscription-Key` van állítva, és a kérelem fejléce tartalmaz egy érvényes kulcsot, amely lehetővé teszi a nyomkövetést.
--   A házirend [nyomkövetési](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetria hoz létre Application Insightsban, amikor a [Application Insights integráció](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) engedélyezve van `severity` , és a házirendben megadott szint a diagnosztikai beállításban `verbosity` megadott szintnél vagy annál nagyobb.
+-   A házirend egy egyéni nyomkövetést ad hozzá az [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) kimenetéhez a nyomkövetés indításakor, azaz a `Ocp-Apim-Trace` kérelem fejléce létezik, és igaz értékre van állítva, és `Ocp-Apim-Subscription-Key` a kérelem fejléce tartalmaz egy érvényes kulcsot, amely lehetővé teszi a nyomkövetést.
+-   A házirend [nyomkövetési](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetria hoz létre Application Insightsban, amikor a [Application Insights integráció](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) engedélyezve van, és a `severity` házirendben megadott szint a `verbosity` diagnosztikai beállításban megadott szintnél vagy annál nagyobb.
 -   A házirend egy tulajdonságot ad a naplóbejegyzés számára, ha az [erőforrás-naplók](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) engedélyezve vannak, és a házirendben megadott súlyossági szint a diagnosztikai beállításban megadott részletességi szintnél vagy annál nagyobb.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -942,20 +942,20 @@ A `trace` házirend egy egyéni nyomkövetést ad az API Inspector kimenetéhez,
 
 ### <a name="elements"></a>Elemek
 
-| Elem  | Leírás                                                                                                                                          | Kötelező |
+| Elem  | Description                                                                                                                                          | Kötelező |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| nyomkövetési    | Gyökérelem.                                                                                                                                        | Igen      |
-| message  | A naplózni kívánt karakterlánc vagy kifejezés.                                                                                                                 | Igen      |
-| metaadatok | Egyéni tulajdonságot adhat hozzá a Application Insights [nyomkövetési](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetria. | Nem       |
+| nyomkövetési    | Gyökérelem.                                                                                                                                        | Yes      |
+| message  | A naplózni kívánt karakterlánc vagy kifejezés.                                                                                                                 | Yes      |
+| metaadatok | Egyéni tulajdonságot adhat hozzá a Application Insights [nyomkövetési](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetria. | No       |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum | Leírás                                                                                                               | Kötelező | Alapértelmezett |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| source    | A nyomkövetési megjelenítőnek megfelelő karakterlánc, amely az üzenet forrását határozza meg.                                   | Igen      | N/A     |
-| súlyosság  | Meghatározza a nyomkövetés súlyossági szintjét. Az engedélyezett értékek `verbose` `information`:, `error` (a legalacsonyabbtól a legmagasabbig). | Nem       | Részletes |
-| név      | A tulajdonság neve.                                                                                                     | Igen      | N/A     |
-| érték     | A tulajdonság értéke.                                                                                                    | Igen      | N/A     |
+| source    | A nyomkövetési megjelenítőnek megfelelő karakterlánc, amely az üzenet forrását határozza meg.                                   | Yes      | N.A.     |
+| súlyosság  | Meghatározza a nyomkövetés súlyossági szintjét. Az engedélyezett értékek:, `verbose` `information` `error` (a legalacsonyabbtól a legmagasabbig). | No       | Részletes |
+| name      | A tulajdonság neve.                                                                                                     | Yes      | N.A.     |
+| value     | A tulajdonság értéke.                                                                                                    | Yes      | N.A.     |
 
 ### <a name="usage"></a>Használat
 
@@ -981,7 +981,7 @@ A `wait` házirend párhuzamosan hajtja végre az azonnali alárendelt házirend
 
 ### <a name="example"></a>Példa
 
-A következő példában két `choose` házirend van, mint a `wait` szabályzat közvetlen alárendelt házirendjei. Ezek `choose` a házirendek párhuzamosan futnak. Minden `choose` szabályzat megkísérli beolvasni a gyorsítótárazott értéket. Ha hiányzik a gyorsítótár, a rendszer a háttér-szolgáltatást hívja meg az érték megadásához. Ebben a példában a `wait` házirend addig nem fejeződik be, amíg az összes azonnali alárendelt házirend nem fejeződött be `for` , mert az attribútum `all`a következőre van beállítva:. Ebben a példában a környezeti változók (`execute-branch-one`, `value-one`, `execute-branch-two`, és `value-two`) a jelen példa házirend hatókörén kívül vannak deklarálva.
+A következő példában két házirend van `choose` , mint a szabályzat közvetlen alárendelt házirendjei `wait` . Ezek a `choose` házirendek párhuzamosan futnak. Minden `choose` szabályzat megkísérli beolvasni a gyorsítótárazott értéket. Ha hiányzik a gyorsítótár, a rendszer a háttér-szolgáltatást hívja meg az érték megadásához. Ebben a példában a `wait` házirend addig nem fejeződik be, amíg az összes azonnali alárendelt házirend nem fejeződött be, mert az attribútum a következőre `for` van beállítva: `all` . Ebben a példában a környezeti változók ( `execute-branch-one` , `value-one` ,, `execute-branch-two` és `value-two` ) a jelen példa házirend hatókörén kívül vannak deklarálva.
 
 ```xml
 <wait for="all">
@@ -1017,15 +1017,15 @@ A következő példában két `choose` házirend van, mint a `wait` szabályzat 
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás                                                                                                   | Kötelező |
+| Elem | Description                                                                                                   | Kötelező |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| várj    | Gyökérelem. Csak `send-request`alárendelt elemek, `cache-lookup-value`és `choose` szabályzatok szerepelhetnek benne. | Igen      |
+| várj    | Gyökérelem. Csak alárendelt elemek `send-request` , `cache-lookup-value` és szabályzatok szerepelhetnek benne `choose` . | Yes      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum | Leírás                                                                                                                                                                                                                                                                                                                                                                                                            | Kötelező | Alapértelmezett |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| a következőhöz:       | Meghatározza, hogy `wait` a házirend megvárja-e az összes azonnali alárendelt házirend befejeződését, vagy csak egyet. Az engedélyezett értékek a következők:<br /><br /> - `all`– Várjon, amíg az összes azonnali alárendelt házirend befejeződik<br />– bármely azonnali alárendelt házirend befejezésére való várakozás. Miután az első azonnali gyermek házirend befejeződik, a `wait` szabályzat befejeződik, és minden más azonnali alárendelt házirend végrehajtása leáll. | Nem       | összes     |
+| a következőhöz:       | Meghatározza, hogy a `wait` házirend megvárja-e az összes azonnali alárendelt házirend befejeződését, vagy csak egyet. Az engedélyezett értékek a következők:<br /><br /> - `all`– Várjon, amíg az összes azonnali alárendelt házirend befejeződik<br />– bármely azonnali alárendelt házirend befejezésére való várakozás. Miután az első azonnali gyermek házirend befejeződik, a szabályzat befejeződik, `wait` és minden más azonnali alárendelt házirend végrehajtása leáll. | No       | összes     |
 
 ### <a name="usage"></a>Használat
 

@@ -4,16 +4,16 @@ description: Ismerje meg, hogy miként javítható az Azure import/export szolg�
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10e209228ad12b377b729bc251eb761b51ff5378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74978015"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514376"
 ---
 # <a name="repairing-an-export-job"></a>Exportálási feladat javítása
 Az exportálási feladatok befejezése után a helyszíni Microsoft Azure Import/Export eszközt a következő helyre futtathatja:  

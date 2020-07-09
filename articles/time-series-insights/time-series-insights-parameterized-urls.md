@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417001"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
@@ -29,11 +29,11 @@ A Time Series Insights Explorer támogatja az URL-lekérdezési paramétereket, 
 
 ## <a name="environment-id"></a>Környezetazonosító
 
-A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. Ez az adatelérési teljes tartománynév összetevője, és a Azure Portal környezetének jobb felső sarkában található. Ez minden, ami megelőzi `env.timeseries.azure.com`.
+A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. Ez az adatelérési teljes tartománynév összetevője, és a Azure Portal környezetének jobb felső sarkában található. Ez minden, ami megelőzi `env.timeseries.azure.com` .
 
 Példa környezetazonosító paraméterre: `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Idő
 
 Paraméteres URL-cím esetében abszolút vagy relatív időértékeket is megadhat.
 
@@ -49,7 +49,7 @@ Abszolút időértékek megadásához használja a következő paramétereket: `
 
 ### <a name="relative-time-values"></a>Relatív időértékek
 
-A relatív idő értékéhez használja `relativeMillis=<value>`a értéket, ahol az *érték* a JavaScript ezredmásodpercben az API-ból kapott legutóbbi időbélyegtől.
+A relatív idő értékéhez használja a `relativeMillis=<value>` értéket, ahol az *érték* a JavaScript EZREDMÁSODPERCben az API-ból kapott legutóbbi időbélyegtől.
 
 A `&relativeMillis=3600000` például a legutóbbi 60 perc adatait jeleníti meg.
 
@@ -87,9 +87,9 @@ A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan prediká
 
 | Pár (ok) | Leírás |
 | --- | --- |
-| `multiChartStack=false` | `true`Alapértelmezés szerint engedélyezve van, ezért `false` adja át a stack-nek. |
-| `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  `false` Alapértelmezés szerint ez a funkció `true` lehetővé teszi ezt a funkciót. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egység = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Az egység nevét mindig nagybetűvel írja. </br> Adja meg az egységek számát az **timeBucketSize**kívánt egész számának átadásával.  |
+| `multiChartStack=false` | `true`Alapértelmezés szerint engedélyezve van, ezért adja át `false` a stack-nek. |
+| `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  Alapértelmezés szerint ez a `false` `true` funkció lehetővé teszi ezt a funkciót. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egység = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Az egység nevét mindig nagybetűvel írja. </br> Adja meg az egységek számát az **timeBucketSize**kívánt egész számának átadásával.  |
 | `timezoneOffset=-<integer>` | Az egész számot mindig ezredmásodpercben kell megadnia. |
 
 > [!NOTE]

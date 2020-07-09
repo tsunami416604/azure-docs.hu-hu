@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887223"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Forgatókönyv: tárolási kivétel az Azure HDInsight-beli kapcsolatok visszaállítása után
@@ -26,13 +25,13 @@ Nem hozható létre új Apache HBase tábla.
 
 Egy tábla csonkítása során probléma merült fel a tárolási kapcsolatban. A tábla bejegyzése törölve lett a HBase metaadat-táblában. Egyetlen blob-fájl sem lett törölve.
 
-Bár a tárolóban nem található a `/hbase/data/default/ThatTable` mappa nevű blob. A WASB illesztőprogramja megtalálta a fenti blob-fájl létezését, és nem teszi lehetővé, hogy `/hbase/data/default/ThatTable` a létrehozott Blobok létre legyenek hozva, mert feltételezte, hogy a szülő mappák is megtalálhatók, így a tábla létrehozása sikertelen lesz.
+Bár a tárolóban nem található a mappa nevű blob `/hbase/data/default/ThatTable` . A WASB illesztőprogramja megtalálta a fenti blob-fájl létezését, és nem teszi lehetővé, hogy a létrehozott Blobok létre legyenek hozva `/hbase/data/default/ThatTable` , mert feltételezte, hogy a szülő mappák is megtalálhatók, így a tábla létrehozása sikertelen lesz.
 
 ## <a name="resolution"></a>Megoldás:
 
 1. Az Apache Ambari felhasználói felületén indítsa újra az aktív HMaster. Ez lehetővé teszi, hogy a két készenléti HMaster az aktív legyen, és az új aktív HMaster újra betölti a metaadatok táblázatának adatait. Így nem fogja látni a `already-deleted` táblázatot a HMaster felhasználói felületén.
 
-1. Az árva blob-fájlt a felhasználói felületi eszközökről, például a Cloud Explorer böngészőből vagy a hasonló `hdfs dfs -ls /xxxxxx/yyyyy`parancs futtatásával találhatja meg. Futtassa `hdfs dfs -rmr /xxxxx/yyyy` a parancsot a blob törléséhez. Például: `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. Az árva blob-fájlt a felhasználói felületi eszközökről, például a Cloud Explorer böngészőből vagy a hasonló parancs futtatásával találhatja meg `hdfs dfs -ls /xxxxxx/yyyyy` . Futtassa `hdfs dfs -rmr /xxxxx/yyyy` a parancsot a blob törléséhez. Például: `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
 Most létrehozhat egy azonos nevű új táblát a HBase-ben.
 

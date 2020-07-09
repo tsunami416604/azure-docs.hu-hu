@@ -4,10 +4,10 @@ description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helye
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195884"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric alkalmazás frissítése a PowerShell használatával
@@ -29,7 +29,7 @@ Service Fabric figyelt működés közbeni frissítésekkel az alkalmazás rends
 Hozza létre és tegye közzé az alkalmazást úgy, hogy a jobb gombbal az alkalmazás projektre, a **VisualObjectsApplication,** majd a **közzétételi** parancsra kattint.  További információ: [Service Fabric alkalmazás-frissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md).  Azt is megteheti, hogy a PowerShell használatával helyezi üzembe az alkalmazást.
 
 > [!NOTE]
-> Mielőtt bármelyik Service Fabric parancs használható a PowerShellben, először a `Connect-ServiceFabricCluster` parancsmag használatával kell csatlakoznia a fürthöz. Hasonlóképpen feltételezhető, hogy a fürt már be van állítva a helyi gépen. Tekintse meg a [Service Fabric fejlesztői környezet beállítását](service-fabric-get-started.md)ismertető cikket.
+> Mielőtt bármelyik Service Fabric parancs használható a PowerShellben, először a parancsmag használatával kell csatlakoznia a fürthöz `Connect-ServiceFabricCluster` . Hasonlóképpen feltételezhető, hogy a fürt már be van állítva a helyi gépen. Tekintse meg a [Service Fabric fejlesztői környezet beállítását](service-fabric-get-started.md)ismertető cikket.
 > 
 > 
 
@@ -40,9 +40,9 @@ Most [a Service Fabric Explorer használatával megtekintheti a fürtöt és az 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: a vizuális objektumok mintájának frissítése
 Észreveheti, hogy az 1. lépésben üzembe helyezett verziónál a vizualizációs objektumok nem forognak. Frissítjük az alkalmazást arra a szintre, ahol a vizualizáció objektumok is forognak.
 
-Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a StatefulVisualObjectActor.cs fájlt. A fájlon belül navigáljon a metódushoz `MoveObject`, a `this.State.Move()`megjegyzésekhez és a `this.State.Move(true)`megjegyzésekhez. Ez a módosítás a szolgáltatás frissítése után elforgatja az objektumokat.
+Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a StatefulVisualObjectActor.cs fájlt. A fájlon belül navigáljon a metódushoz `MoveObject` , a megjegyzésekhez `this.State.Move()` és a megjegyzésekhez `this.State.Move(true)` . Ez a módosítás a szolgáltatás frissítése után elforgatja az objektumokat.
 
-Emellett frissítenie kell a *ServiceManifest. XML* fájlt (a PackageRoot alatt) a projekt **VisualObjects. ActorService**. Frissítse a *CodePackage* és a szolgáltatás verzióját 2,0-re, valamint a *ServiceManifest. XML* fájl megfelelő soraira.
+Emellett frissítenie kell a **VisualObjects. ActorService**projekthez tartozó *ServiceManifest.xml* fájlt (a PackageRoot alatt). Frissítse a *CodePackage* és a szolgáltatás verzióját 2,0-re, valamint a *ServiceManifest.xml* fájl megfelelő soraira.
 A jegyzékfájl szerkesztése lehetőségre kattintva használhatja a Visual Studio- *fájlok* módosítása lehetőséget, miután a jobb gombbal a megoldásra kattint, hogy megváltoztassa a jegyzékfájlt.
 
 A módosítások elvégzése után a jegyzékfájlnak a következőhöz hasonlóan kell kinéznie (a Kiemelt részek a módosításokat mutatják):
@@ -53,7 +53,7 @@ A módosítások elvégzése után a jegyzékfájlnak a következőhöz hasonló
 <CodePackageName="Code" Version="2.0">
 ```
 
-Most a *ApplicationManifest. XML* fájlt (a **VisualObjects** -megoldás alatt található **VisualObjects** -projekt alatt) frissíti a **VisualObjects. ActorService** projekt 2,0-es verziójára. Emellett az alkalmazás verziószáma a 1.0.0.0 2.0.0.0 frissül. A *ApplicationManifest. xml fájlnak* a következő kódrészlethez hasonlóan kell kinéznie:
+Most a **VisualObjects** -megoldás alatt található **VisualObjects** -projekt alatt található *ApplicationManifest.xml* fájl frissítve lett a **VisualObjects. ActorService** projekt 2,0-es verziójára. Emellett az alkalmazás verziószáma a 1.0.0.0 2.0.0.0 frissül. A *ApplicationManifest.xmlnak* a következő kódrészlethez hasonlóan kell kinéznie:
 
 ```xml
 <ApplicationManifestxmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -83,7 +83,7 @@ Az alkalmazás már elkészült, és készen áll a frissítésre. Ha rendszerga
 
 Az alkalmazáscsomag a következő relatív elérési úton tárolódik, ahol kibonthatja a Service Fabric SDK- *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. Meg kell keresnie egy "csomag" mappát abban a könyvtárban, ahol az alkalmazáscsomag tárolva van. Ellenőrizze az időbélyegeket, és győződjön meg arról, hogy a legújabb build (Előfordulhat, hogy az elérési utakat is megfelelően kell módosítania).
 
-Most másolja át a frissített alkalmazáscsomag Service Fabric Lemezképtárolóba (ahol az alkalmazáscsomag tárolása Service Fabric). A *ApplicationPackagePathInImageStore* paraméter tájékoztatja Service Fabric, hogy hol található az alkalmazáscsomag. A frissített alkalmazást a "VisualObjects\_v2"-ben tesszük a következő paranccsal (Előfordulhat, hogy az elérési utakat megfelelően újra módosítani kell).
+Most másolja át a frissített alkalmazáscsomag Service Fabric Lemezképtárolóba (ahol az alkalmazáscsomag tárolása Service Fabric). A *ApplicationPackagePathInImageStore* paraméter tájékoztatja Service Fabric, hogy hol található az alkalmazáscsomag. A frissített alkalmazást a "VisualObjects v2"-ben tesszük a \_ következő paranccsal (Előfordulhat, hogy az elérési utakat megfelelően újra módosítani kell).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
@@ -111,7 +111,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 ```
 
 
-Az alkalmazás neve megegyezik a *ApplicationManifest. XML* fájlban leírt névvel. Service Fabric ezt a nevet használja a frissítendő alkalmazás azonosítására. Ha úgy állítja be az időtúllépést, hogy túl rövidek legyenek, a probléma állapotára utaló hibaüzenet jelenhet meg. Tekintse át a hibaelhárítási szakaszt, vagy növelje az időtúllépést.
+Az alkalmazás neve megegyezik a *ApplicationManifest.xml* fájlban leírt névvel. Service Fabric ezt a nevet használja a frissítendő alkalmazás azonosítására. Ha úgy állítja be az időtúllépést, hogy túl rövidek legyenek, a probléma állapotára utaló hibaüzenet jelenhet meg. Tekintse át a hibaelhárítási szakaszt, vagy növelje az időtúllépést.
 
 Most, ahogy az alkalmazás frissítése folytatódik, a Service Fabric Explorer használatával vagy a [Get-ServiceFabricApplicationUpgrade PowerShell-](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) paranccsal figyelheti azt: 
 

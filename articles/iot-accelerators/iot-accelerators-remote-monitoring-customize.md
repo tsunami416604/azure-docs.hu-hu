@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68608004"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldáshoz tartozó gyorssegéd testreszabása
@@ -23,7 +23,7 @@ Ez a cikk tájékoztatást nyújt arról, hogyan érheti el a forráskódot, és
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Helyi fejlesztési környezet előkészítése a felhasználói felületen
 
-A távoli figyelési megoldás gyorsított felhasználói felületének kódja a Resolution. js keretrendszer használatával valósítható meg. A forráskódot az [Azure-IOT-PCs-Remote-Monitoring-WebUI](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub-tárházban találja.
+A távoli figyelési megoldás gyorsított felhasználói felületének kódja a React.js keretrendszer használatával valósul meg. A forráskódot az [Azure-IOT-PCs-Remote-Monitoring-WebUI](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub-tárházban találja.
 
 Ha módosítani szeretné a felhasználói felületet, helyileg is futtathatja a példányt. Az olyan műveletek végrehajtásához, mint például a telemetria beolvasása, a helyi másolat a megoldás egy telepített példányához csatlakozik.
 
@@ -64,7 +64,7 @@ Az alábbi lépések ismertetik a helyi környezet beállításának folyamatát
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. A parancssorban navigáljon a `azure-iot-pcs-remote-monitoring-webui` mappa helyi példányára.
+1. A parancssorban navigáljon a mappa helyi példányára `azure-iot-pcs-remote-monitoring-webui` .
 
 1. A szükséges kódtárak telepítéséhez és a felhasználói felület helyi futtatásához futtassa a következő parancsokat:
 
@@ -73,13 +73,13 @@ Az alábbi lépések ismertetik a helyi környezet beállításának folyamatát
     npm start
     ```
 
-1. Az előző parancs helyileg futtatja a felhasználói felületet a\/http:/localhost: 3000/irányítópulton. A kód szerkeszthető a hely futása közben, és a frissítés dinamikusan megtekinthető.
+1. Az előző parancs helyileg futtatja a felhasználói felületet a http: \/ /localhost: 3000/irányítópulton. A kód szerkeszthető a hely futása közben, és a frissítés dinamikusan megtekinthető.
 
 ## <a name="customize-the-layout"></a>Az elrendezés testreszabása
 
 A távoli figyelési megoldás minden lapja olyan vezérlőkből áll, amelyeket a forráskód *panelnek* nevezünk. Az **irányítópult** -oldal öt panelből áll: áttekintés, Térkép, riasztások, telemetria és elemzések. Megtalálhatja az egyes lapokat és a hozzá tartozó paneleket meghatározó forráskódot a [számítógépek – távoli figyelés – WebUI GitHub-](https://github.com/Azure/pcs-remote-monitoring-webui) tárházban. Például az **irányítópult** oldalát, elrendezését és a lapon lévő paneleket definiáló kód a [src/Components/Pages/Dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappában található.
 
-Mivel a panelek a saját elrendezését és méretezését kezelik, egyszerűen módosíthatók a lapok elrendezése. Végezze el a következő módosításokat **PageContent** a `src/components/pages/dashboard/dashboard.js` fájl PageContent eleme számára:
+Mivel a panelek a saját elrendezését és méretezését kezelik, egyszerűen módosíthatók a lapok elrendezése. Végezze el a következő módosításokat a fájl **PageContent** eleme `src/components/pages/dashboard/dashboard.js` számára:
 
 * Cserélje le a Térkép és a telemetria panelek pozícióit.
 * Módosítsa a Térkép és az elemzési panel relatív szélességét.
@@ -154,7 +154,7 @@ Mivel a panelek a saját elrendezését és méretezését kezelik, egyszerűen 
 
 ![Panel elrendezésének módosítása](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
-Hozzáadhat egy panel több példányát is, vagy akár több verziót is, ha [duplikálja és testreszabja a panelt](#duplicate-and-customize-an-existing-control). Az alábbi példa bemutatja, hogyan adhat hozzá két példányt a telemetria panelhez. A módosítások elvégzéséhez szerkessze `src/components/pages/dashboard/dashboard.js` a következő fájlt:
+Hozzáadhat egy panel több példányát is, vagy akár több verziót is, ha [duplikálja és testreszabja a panelt](#duplicate-and-customize-an-existing-control). Az alábbi példa bemutatja, hogyan adhat hozzá két példányt a telemetria panelhez. A módosítások elvégzéséhez szerkessze a következő `src/components/pages/dashboard/dashboard.js` fájlt:
 
 ```javascript
 <PageContent className="dashboard-container">
@@ -245,7 +245,7 @@ A következő lépések azt ismertetik, hogyan lehet duplikálni egy meglévő p
 
 1. A tárház helyi példányán készítsen másolatot a **riasztások** mappáról a `src/components/pages/dashboard/panels` mappában. Nevezze el az új másolási **cust_alerts**.
 
-1. A **cust_alerts** mappában található **alertsPanel. js** fájlban szerkessze a **CustAlertsPanel**osztály nevét:
+1. A **cust_alerts** mappában található **alertsPanel.js** fájlban szerkessze a **CustAlertsPanel**osztály nevét:
 
     ```javascript
     export class CustAlertsPanel extends Component {
@@ -257,7 +257,7 @@ A következő lépések azt ismertetik, hogyan lehet duplikálni egy meglévő p
     export * from './cust_alerts';
     ```
 
-1. `CustAlertsPanel` Cserélje `alertsPanel` le a `src/components/pages/dashboard/dashboard.js` fájlt a fájlba:
+1. Cserélje le a `alertsPanel` `CustAlertsPanel` fájlt a `src/components/pages/dashboard/dashboard.js` fájlba:
 
     ```javascript
     import {
@@ -308,7 +308,7 @@ Az alábbi képernyőfelvételen a **riasztások** panel új verziója látható
 
 ## <a name="customize-the-telemetry-chart"></a>A telemetria diagram testreszabása
 
-A `src/components/pages/dashboard/panels/telemtry` mappában lévő fájlok a telemetria diagramot az **irányítópult** lapon határozzák meg. A felhasználói felület lekéri a telemetria a `src/services/telemetryService.js` fájlból a megoldás hátterének végéről. A következő lépések bemutatják, hogyan módosíthatja a telemetria diagramon megjelenő időszakot 15 és 5 perc között:
+A mappában lévő fájlok a `src/components/pages/dashboard/panels/telemtry` telemetria diagramot az **irányítópult** lapon határozzák meg. A felhasználói felület lekéri a telemetria a fájlból a megoldás hátterének végéről `src/services/telemetryService.js` . A következő lépések bemutatják, hogyan módosíthatja a telemetria diagramon megjelenő időszakot 15 és 5 perc között:
 
 1. A `src/services/telemetryService.js` fájlban keresse meg a **getTelemetryByDeviceIdP15M**nevű függvényt. Készítsen másolatot a függvényről, és módosítsa a másolást a következőképpen:
 
@@ -323,7 +323,7 @@ A `src/components/pages/dashboard/panels/telemtry` mappában lévő fájlok a te
     }
     ```
 
-1. Ha ezt az új függvényt szeretné használni az telemetria diagram feltöltéséhez, `src/components/pages/dashboard/dashboard.js` nyissa meg a fájlt. Keresse meg azt a sort, amely inicializálja a telemetria-streamet, és módosítsa a következőképpen:
+1. Ha ezt az új függvényt szeretné használni az telemetria diagram feltöltéséhez, nyissa meg a `src/components/pages/dashboard/dashboard.js` fájlt. Keresse meg azt a sort, amely inicializálja a telemetria-streamet, és módosítsa a következőképpen:
 
     ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
@@ -335,7 +335,7 @@ A telemetria diagramon most már a telemetria-adatmennyiség öt perce látható
 
 ## <a name="add-a-new-kpi"></a>Új KPI hozzáadása
 
-Az **irányítópult** lap a KPI-ket jeleníti meg az **elemzési** panelen. Ezeket a KPI-ket a `src/components/pages/dashboard/dashboard.js` fájl számítja ki. A KPI-k a `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` fájl alapján jelennek meg. A következő lépések azt ismertetik, hogyan számítható ki és jeleníthető meg egy új KPI-érték az **irányítópult** lapon. A következő példa egy új százalékos változás hozzáadása a figyelmeztetési riasztások KPI-ben:
+Az **irányítópult** lap a KPI-ket jeleníti meg az **elemzési** panelen. Ezeket a KPI-ket a fájl számítja ki `src/components/pages/dashboard/dashboard.js` . A KPI-k a fájl alapján jelennek meg `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` . A következő lépések azt ismertetik, hogyan számítható ki és jeleníthető meg egy új KPI-érték az **irányítópult** lapon. A következő példa egy új százalékos változás hozzáadása a figyelmeztetési riasztások KPI-ben:
 
 1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa úgy a **initialState** objektumot, hogy az a következőképpen tartalmazzon **warningAlertsChange** tulajdonságot:
 
@@ -435,7 +435,7 @@ Az **irányítópult** lap a KPI-ket jeleníti meg az **elemzési** panelen. Eze
       t={t} />
     ```
 
-Ezzel befejezte a `src/components/pages/dashboard/dashboard.js` fájl módosításait. A következő lépések azt írják le, hogy milyen módosításokat `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` kell végezni a fájlban az új KPI megjelenítéséhez:
+Ezzel befejezte a fájl módosításait `src/components/pages/dashboard/dashboard.js` . A következő lépések azt írják le, hogy milyen módosításokat kell végezni a `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` fájlban az új KPI megjelenítéséhez:
 
 1. Módosítsa a következő kódrészletet az új KPI-érték lekéréséhez a következő módon:
 

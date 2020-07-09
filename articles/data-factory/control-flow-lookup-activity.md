@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417999"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
@@ -32,7 +32,7 @@ A keresési tevékenység a következő adatforrásokat támogatja. A keresési 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -54,7 +54,7 @@ A keresési tevékenység a következő adatforrásokat támogatja. A keresési 
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Name (Név) | Leírás | Típus | Kötelező?
+Name | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
 adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
 source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
@@ -68,9 +68,9 @@ firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>A keresési tevékenység eredményének használata egy későbbi tevékenységben
 
-A keresési eredmény a tevékenység futtatási `output` eredményének szakaszában lesz visszaadva.
+A keresési eredmény a `output` tevékenység futtatási eredményének szakaszában lesz visszaadva.
 
-* **Ha `firstRowOnly` a értéke `true` (alapértelmezett)**, a kimeneti formátum a következő kódban látható. A keresési eredmény egy rögzített `firstRow` kulcs alatt található. Ha a következő tevékenység eredményét szeretné használni, használja a mintázatát `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Ha a `firstRowOnly` értéke `true` (alapértelmezett)**, a kimeneti formátum a következő kódban látható. A keresési eredmény egy rögzített kulcs alatt található `firstRow` . Ha a következő tevékenység eredményét szeretné használni, használja a mintázatát `@{activity('MyLookupActivity').output.firstRow.TableName}` .
 
     ```json
     {
@@ -82,7 +82,7 @@ A keresési eredmény a tevékenység futtatási `output` eredményének szakasz
     }
     ```
 
-* Ha a értéke, a kimeneti formátum a következő kódban látható. ** `firstRowOnly` `false` ** Egy `count` mező jelzi, hogy a rendszer hány rekordot ad vissza. A részletes értékek egy rögzített `value` tömb alatt jelennek meg. Ilyen esetben a keresési tevékenységet egy [foreach-tevékenység](control-flow-for-each-activity.md)követi. A `value` tömböt a foreach tevékenység `items` mezőjébe kell átadni a mintázatának `@activity('MyLookupActivity').output.value`használatával. A `value` tömb elemeinek eléréséhez használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Például: `@{activity('lookupActivity').output.value[0].tablename}`.
+* Ha a értéke, a kimeneti formátum a következő kódban látható. ** `firstRowOnly` `false` ** Egy `count` mező jelzi, hogy a rendszer hány rekordot ad vissza. A részletes értékek egy rögzített tömb alatt jelennek meg `value` . Ilyen esetben a keresési tevékenységet egy [foreach-tevékenység](control-flow-for-each-activity.md)követi. A `value` tömböt a foreach tevékenység mezőjébe kell átadni `items` a mintázatának használatával `@activity('MyLookupActivity').output.value` . A tömb elemeinek eléréséhez `value` használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Például: `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -166,7 +166,7 @@ Ez a folyamat két tevékenységet tartalmaz: keresés és másolás.
 ```
 
 ### <a name="lookup-dataset"></a>Keresési adatkészlet
-A **keresési** adatkészlet a **AzureStorageLinkedService** típus által megadott Azure Storage keresési mappában található **SourceTable forrástábla neveként. JSON** fájl. 
+A **keresési** adatkészlet a **AzureStorageLinkedService** típus által megadott Azure Storage keresési mappában található fájl **sourcetable.js** . 
 
 ```json
 {
@@ -209,7 +209,7 @@ A **forrás** -adatkészlet a keresési tevékenység kimenetét használja, ame
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>Másolási tevékenység fogadó **adatkészlete**
-A másolási tevékenység átmásolja az adatait az SQL-táblából az Azure Storage **CSV** -mappájában található **filebylookup. csv** fájlba. A fájlt a **AzureStorageLinkedService** tulajdonság határozza meg. 
+A másolási tevékenység átmásolja az adatait az SQL-táblából az Azure Storage **CSV** -mappájában lévő **filebylookup.csv** fájlba. A fájlt a **AzureStorageLinkedService** tulajdonság határozza meg. 
 
 ```json
 {
@@ -262,7 +262,7 @@ Ez a Azure SQL Database-példány tartalmazza a blob Storage-ba másolandó adat
 }
 ```
 
-### <a name="sourcetablejson"></a>SourceTable forrástábla neveként. JSON
+### <a name="sourcetablejson"></a>sourcetable.jsbekapcsolva
 
 #### <a name="set-of-objects"></a>Objektumok halmaza
 

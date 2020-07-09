@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó | Microsoft Docs
-description: Ez a cikk az Azure Front Doorról nyújt áttekintést. Megtudhatja, hogy a megfelelő választás-e a felhasználói forgalom terheléselosztásához az alkalmazáshoz.
+title: Azure Front Door
+description: Ez a cikk az Azure bejárati szabályainak motorjában elérhető különböző egyeztetési feltételek listáját tartalmazza.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 77c0d68f507e09b315c912d1d91fdf9cf63db6fa
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515530"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321994"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
 
-A [AFD-szabályok motorjában](front-door-rules-engine.md) a szabály nulla vagy több egyeztetési feltételt és egy műveletet tartalmaz. Ez a cikk részletes leírást tartalmaz a AFD-szabályok motorjában használható egyeztetési feltételekről. 
+A [AFD-szabályok motorjában](front-door-rules-engine.md) a szabály nulla vagy több egyeztetési feltételt és egy műveletet tartalmaz. Ez a cikk részletes leírást tartalmaz a AFD-szabályok motorjában használható egyeztetési feltételekről.
 
-A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez definiált műveletek vannak végrehajtva. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva. A több értéket támogató összes egyeztetési feltétel esetében (lásd az alábbi "szóközzel tagolt"), a "vagy" operátort feltételezi. 
+A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez definiált műveletek vannak végrehajtva. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva. A több értéket támogató összes egyeztetési feltétel esetében (lásd az alábbi "szóközzel tagolt"), a "vagy" operátort feltételezi.
 
 Az egyeztetési feltételt például a következőre használhatja:
 
@@ -39,7 +39,7 @@ A mobileszköz vagy asztali eszköz által küldött kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | Mobil, asztali
 
@@ -49,7 +49,7 @@ A kérésben használt POST kérelem metódusa által megadott argumentumok alap
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Argumentum neve | Művelet | Argumentum értéke | Eset átalakítása
+Argumentum neve | Operátor | Argumentum értéke | Eset átalakítása
 --------------|----------|----------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -59,7 +59,7 @@ A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azono
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Lekérdezési sztring | Eset átalakítása
+Operátor | Lekérdezési sztring | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -69,7 +69,7 @@ A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|-----------------
 Földrajzi egyezés | Országhívószám
 IP-egyeztetés | IP-cím (szóközzel tagolt)
@@ -92,7 +92,7 @@ A kérések törzsében megjelenő megadott szöveg alapján azonosítja a kére
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | A kérés törzse | Eset átalakítása
+Operátor | A kérés törzse | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -102,7 +102,7 @@ A kérelemben megadott fejlécet használó kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Fejléc neve | Művelet | Fejléc értéke | Eset átalakítása
+Fejléc neve | Operátor | Fejléc értéke | Eset átalakítása
 ------------|----------|--------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -112,7 +112,7 @@ A megadott kérési módszert használó kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | LETÖLTÉS, KÖZZÉTÉTEL, PUT, TÖRLÉS, FEJ, BEÁLLÍTÁSOK, NYOMKÖVETÉS
 
@@ -126,23 +126,23 @@ Azokat a kérelmeket azonosítja, amelyek a megadott protokollt használják.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott értékek
+Operátor | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | HTTP, HTTPS
 
-## <a name="request-url"></a>Kérés URL-címe
+## <a name="request-url"></a>URL-cím kérése
 
 A megadott URL-címnek megfelelő kérelmeket azonosítja.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Kérés URL-címe | Eset átalakítása
+Operátor | URL-cím kérése | Eset átalakítása
 ---------|-------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
 #### <a name="key-information"></a>Legfontosabb információk
 
-- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: *https://www.\<yourdomain\>.com*.
+- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: * https://www . \<yourdomain\> . com*.
 
 ## <a name="request-file-extension"></a>Fájl kiterjesztésének kérése
 
@@ -150,7 +150,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlkiterjes
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Mellék | Eset átalakítása
+Operátor | Mellék | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -164,7 +164,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlnevet a 
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Fájlnév | Eset átalakítása
+Operátor | Fájlnév | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -178,7 +178,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott elérési uta
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Érték | Eset átalakítása
+Operátor | Érték | Eset átalakítása
 ---------|-------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -191,7 +191,7 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 - Contains 
 - Kezdete 
 - Végződik 
-- Kisebb mint
+- Kisebb, mint
 - Kisebb vagy egyenlő
 - Nagyobb, mint
 - Nagyobb vagy egyenlő

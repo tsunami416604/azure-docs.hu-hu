@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bdb76954b1db8135d8a36d6658bb7fff274ac126
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c25e48bd46f0d37330f693cb4d6538e7bc29c4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367240"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2. lépés: a biztonsági megoldás konfigurálása CEF-üzenetek küldésére
 
@@ -29,10 +29,11 @@ Ebben a lépésben a szükséges konfigurációs módosításokat fogja végreha
 
 Ha a biztonsági megoldás már rendelkezik egy meglévő összekötővel, használja az összekötő-specifikus utasításokat az alábbiak szerint:
 
+- [AI Vectra Detect](connect-ai-vectra-detect.md)
 - [Ellenőrzőpont](connect-checkpoint.md)
 - [Cisco](connect-cisco.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
-- [F5 billentyűt](connect-f5.md)  
+- [F5 ASM](connect-f5.md)  
 - [Fortinet](connect-fortinet.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
@@ -40,6 +41,7 @@ Ha a biztonsági megoldás már rendelkezik egy meglévő összekötővel, haszn
 - [Zscaler](connect-zscaler.md)   
 
 ## <a name="configure-any-other-solution"></a>Bármely más megoldás konfigurálása
+
 Ha nem létezik összekötő az adott biztonsági megoldáshoz, a következő általános útmutatást követve továbbíthatja a naplókat a CEF-ügynöknek.
 
 1. A CEF-üzenetek küldésére vonatkozó megoldás konfigurálásának lépéseihez lépjen az adott konfigurációs cikkhez. Ha a megoldás nem szerepel a listáján, akkor a készüléken meg kell adnia ezeket az értékeket, hogy a berendezés a szükséges formátumú naplókat a szükséges formátumban küldje el az Azure Sentinel syslog-ügynöknek a Log Analytics ügynök alapján. Ezeket a paramétereket módosíthatja a berendezésben, ha az Azure Sentinel-ügynök syslog démonán is módosítja őket.
@@ -51,13 +53,12 @@ Ha nem létezik összekötő az adott biztonsági megoldáshoz, a következő á
    > [!NOTE]
    > Ez a megoldás a syslog RFC 3164 vagy az RFC 5424 szolgáltatást támogatja.
 
-
-1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a következőt `CommonSecurityLog`:.
+1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a következőt: `CommonSecurityLog` .
 
 1. Folytassa a 3. LÉPÉSsel: a [kapcsolat ellenőrzése](connect-cef-verify.md).
 
 ## <a name="next-steps"></a>További lépések
+
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
-

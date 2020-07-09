@@ -1,9 +1,9 @@
 ---
 title: Kapcsolati architektúra
 titleSuffix: Azure SQL Managed Instance
-description: Ismerje meg az Azure SQL felügyelt példányának kommunikációs és kapcsolati architektúráját, valamint azt, hogy az összetevők hogyan irányítsák át az SQL felügyelt példány forgalmát.
+description: Ismerje meg az Azure SQL felügyelt példányának kommunikációs és kapcsolati architektúráját, valamint azt, hogy az összetevők hogyan irányítják át a felügyelt példányok forgalmát.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
@@ -12,97 +12,96 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e0a16ac8b52907f5ce27d0d186172725e8536423
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706205"
 ---
-# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának kapcsolati architektúrája
+# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány kapcsolati architektúrája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ez a cikk az Azure SQL felügyelt példányain folytatott kommunikációt ismerteti. Emellett leírja a kapcsolati architektúrát, valamint azt is, hogy az összetevők hogyan irányítják át a forgalmat az SQL felügyelt példányára.  
+Ez a cikk a felügyelt Azure SQL-példányon folytatott kommunikációt ismerteti. Ismerteti továbbá a kapcsolati architektúrát, valamint azt, hogy az összetevők hogyan irányítják át a felügyelt példányok forgalmát.  
 
-Az SQL felügyelt példánya az Azure-beli virtuális hálózaton belül található, és az SQL felügyelt példányaihoz dedikált alhálózat. Ez az üzembe helyezés a következőket biztosítja:
+Az SQL felügyelt példánya az Azure-beli virtuális hálózaton és a felügyelt példányokhoz dedikált alhálózaton belül helyezkedik el. Ez az üzembe helyezés a következőket biztosítja:
 
 - Biztonságos magánhálózati IP-cím.
-- Helyszíni hálózat egy SQL-felügyelt példányhoz való összekapcsolásának lehetősége.
-- SQL felügyelt példány csatolása egy csatolt kiszolgálóhoz vagy egy másik helyszíni adattárhoz.
-- SQL felügyelt példányok Azure-erőforrásokhoz való összekapcsolásának lehetősége.
+- Helyszíni hálózat és a felügyelt SQL-példányok összekapcsolása.
+- Az SQL felügyelt példányának csatolása egy csatolt kiszolgálóhoz vagy egy másik helyszíni adattárhoz.
+- Az SQL felügyelt példányának Azure-erőforrásokhoz való kapcsolódásának lehetősége.
 
 ## <a name="communication-overview"></a>Kommunikáció áttekintése
 
-A következő ábrán a felügyelt SQL-példányokhoz kapcsolódó entitások láthatók. Emellett az SQL felügyelt példánnyal való kommunikációhoz szükséges erőforrásokat is megjeleníti. A diagram alján található kommunikációs folyamat azokat az ügyfeleket és eszközöket jelöli, amelyek adatforrásként csatlakoznak az SQL felügyelt példányához.  
+A következő ábrán az SQL felügyelt példányhoz kapcsolódó entitások láthatók. A felügyelt példányokkal való kommunikációhoz szükséges erőforrásokat is megjeleníti. A diagram alján található kommunikációs folyamat azokat az ügyfeleket és eszközöket jelöli, amelyek adatforrásként csatlakoznak az SQL felügyelt példányához.  
 
 ![A kapcsolati architektúrában lévő entitások](./media/connectivity-architecture-overview/connectivityarch001.png)
 
-A felügyelt SQL-példányok szolgáltatásként nyújtott platformként nyújtott szolgáltatások. Az Azure a szolgáltatás telemetria-adatfolyamok alapján történő kezeléséhez automatizált ügynököket (felügyelet, üzembe helyezés és karbantartás) használ. Mivel az Azure felelős a felügyeletért, az ügyfelek nem férhetnek hozzá az SQL felügyelt példányok virtuális fürtjéhez RDP protokoll (RDP) használatával.
+Az SQL felügyelt példánya egy szolgáltatásként nyújtott platform. Az Azure a szolgáltatás telemetria-adatfolyamok alapján történő kezeléséhez automatizált ügynököket (felügyelet, üzembe helyezés és karbantartás) használ. Mivel az Azure felelős a felügyeletért, az ügyfelek nem férhetnek hozzá az SQL felügyelt példányok virtuális fürtjéhez RDP protokoll (RDP) használatával.
 
-A végfelhasználók vagy alkalmazások által indított egyes műveletekhez szükség lehet az SQL felügyelt példányaira a platformmal való interakcióhoz. Az egyik esetben egy SQL felügyelt példány-adatbázis létrehozása. Ezt az erőforrást a Azure Portal, a PowerShell, az Azure CLI és a REST API teszi elérhetővé.
+A végfelhasználók vagy az alkalmazások által indított egyes műveletekhez szükség lehet arra, hogy az SQL felügyelt példány működjön a platformmal. Az egyik esetben egy SQL felügyelt példány-adatbázis létrehozása. Ezt az erőforrást a Azure Portal, a PowerShell, az Azure CLI és a REST API teszi elérhetővé.
 
-Az SQL felügyelt példányai olyan Azure-szolgáltatásoktól függenek, mint az Azure Storage biztonsági mentések, Azure-Event Hubs telemetria, Azure Active Directory a hitelesítéshez, a Azure Key Vault for transzparens adattitkosítás (TDE) és néhány Azure platform-szolgáltatás, amely biztonsági és támogatási funkciókat biztosít. Az SQL felügyelt példányai kapcsolatot létesít ezekkel a szolgáltatásokkal.
+Az SQL felügyelt példánya olyan Azure-szolgáltatásoktól függ, mint például az Azure Storage for Backups, az Azure Event Hubs for telemetria, a Azure Active Directory (Azure AD) hitelesítéshez, a Azure Key Vault for transzparens adattitkosítás (TDE), valamint néhány olyan Azure platform-szolgáltatás, amely biztonsági és támogatási funkciókat biztosít. Az SQL felügyelt példánya kapcsolatot létesít ezekkel a szolgáltatásokkal.
 
-Minden kommunikáció titkosítva van, és a tanúsítványokkal van aláírva. A kommunikáló felek megbízhatóságának ellenőrzéséhez az SQL felügyelt példányai folyamatosan ellenőrzik ezeket a tanúsítványokat a visszavont tanúsítványok listájáról. Ha visszavonják a tanúsítványokat, az SQL felügyelt példánya bezárja a kapcsolatokat az adatvédelemhez.
+Minden kommunikáció titkosítva van, és a tanúsítványokkal van aláírva. A kommunikáló felek megbízhatóságának ellenőrzéséhez az SQL felügyelt példánya folyamatosan ellenőrzi ezeket a tanúsítványokat a visszavont tanúsítványok listája alapján. Ha visszavonják a tanúsítványokat, az SQL felügyelt példánya lezárja a kapcsolatokat az adatvédelemhez.
 
 ## <a name="high-level-connectivity-architecture"></a>Magas szintű kapcsolati architektúra
 
 A felügyelt SQL-példányok magas szinten a szolgáltatás-összetevők készletét jelentik. Ezek az összetevők az ügyfél virtuális hálózati alhálózatán belül futó elkülönített virtuális gépek dedikált készletén futnak. Ezek a gépek virtuális fürtöt alkotnak.
 
-A virtuális fürtök több SQL felügyelt példányt is tárolhatnak. Ha szükséges, a fürt automatikusan kibontja a vagy a szerződést, amikor az ügyfél megváltoztatja az alhálózat kiépített példányainak számát.
+A virtuális fürtök több felügyelt példányt is tárolhatnak. Ha szükséges, a fürt automatikusan kibontja a vagy a szerződést, amikor az ügyfél megváltoztatja az alhálózat kiépített példányainak számát.
 
-Az ügyfélalkalmazások csatlakozhatnak az SQL felügyelt példányaihoz, és lekérhetik és frissíthetik az adatbázisokat a virtuális hálózaton, a kihelyezett virtuális hálózaton vagy a VPN-vagy Azure-ExpressRoute csatlakoztatott hálózaton belül. A hálózatnak végpontot és magánhálózati IP-címet kell használnia.  
+Az ügyfélalkalmazások csatlakozhatnak a felügyelt SQL-példányokhoz, és a virtuális hálózaton, a megosztott virtuális hálózaton vagy a VPN-vagy az Azure-ExpressRoute csatlakoztatott hálózaton belül is lekérhetik és frissíthetik az adatbázisokat. A hálózatnak végpontot és magánhálózati IP-címet kell használnia.  
 
 ![Kapcsolati architektúra diagramja](./media/connectivity-architecture-overview/connectivityarch002.png)
 
-Az Azure felügyeleti és központi telepítési szolgáltatásai a virtuális hálózaton kívül futnak. A felügyelt SQL-példányok és az Azure-szolgáltatások a nyilvános IP-címekkel rendelkező végpontokon csatlakoznak. Ha egy felügyelt SQL-példány kimenő kapcsolatokat hoz létre, a hálózati címfordítás (NAT) fogadásakor a rendszer a kapcsolódást a nyilvános IP-címről érkezőnek tekinti.
+Az Azure felügyeleti és központi telepítési szolgáltatásai a virtuális hálózaton kívül futnak. A felügyelt SQL-példány és az Azure-szolgáltatások a nyilvános IP-címekkel rendelkező végpontokon keresztül csatlakoznak. Ha az SQL felügyelt példánya kimenő kapcsolatokat hoz létre, a fogadó végpont hálózati címfordításán (NAT) keresztül a Kapcsolódás a következő nyilvános IP-címről fog kinézni.
 
 A felügyeleti forgalom az ügyfél virtuális hálózatán keresztül folyik. Ez azt jelenti, hogy a virtuális hálózat infrastruktúrájának elemei a példány meghibásodása és elérhetetlenné válása miatt kárt okozhatnak a felügyeleti forgalomban.
 
 > [!IMPORTANT]
-> A felhasználói élmény és a szolgáltatás rendelkezésre állásának javítása érdekében az Azure hálózati leképezési házirendet alkalmaz az Azure Virtual Network infrastruktúra elemeire. A házirend hatással lehet az SQL felügyelt példányának működésére. Ez a platform-mechanizmus transzparens módon kommunikál a felhasználók hálózati követelményeivel. A szabályzat fő célja, hogy megakadályozza a hálózati helytelen konfigurálást, és gondoskodjon az SQL felügyelt példányok szokásos műveleteiről. Ha töröl egy SQL-felügyelt példányt, a rendszer eltávolítja a hálózati leképezési házirendet is.
+> A felhasználói élmény és a szolgáltatás rendelkezésre állásának javítása érdekében az Azure hálózati leképezési házirendet alkalmaz az Azure Virtual Network infrastruktúra elemeire. A házirend hatással lehet az SQL felügyelt példányainak működésére. Ez a platform-mechanizmus transzparens módon kommunikál a felhasználók hálózati követelményeivel. A szabályzat fő célja, hogy megakadályozza a hálózati helytelen konfigurálást, és gondoskodjon az SQL felügyelt példányok szokásos műveleteiről. Felügyelt példány törlésekor a hálózati leképezési házirend is törlődik.
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>Virtuális fürt kapcsolati architektúrája
 
-Ismerkedjen meg a kapcsolati architektúrával a felügyelt SQL-példányok esetében. Az alábbi ábrán a virtuális fürt fogalmi elrendezése látható.
+Vessünk egy mélyebb betekintést az SQL felügyelt példányának kapcsolati architektúrába. Az alábbi ábrán a virtuális fürt fogalmi elrendezése látható.
 
 ![A virtuális fürt kapcsolati architektúrája](./media/connectivity-architecture-overview/connectivityarch003.png)
 
-Az ügyfelek egy SQL-alapú felügyelt példányhoz csatlakoznak az űrlapot tartalmazó állomásnév használatával `<mi_name>.<dns_zone>.database.windows.net` . Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos SQL felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
+Az ügyfelek az SQL által felügyelt példányhoz az űrlapot tartalmazó állomásnév használatával csatlakoznak `<mi_name>.<dns_zone>.database.windows.net` . Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
-Ez a magánhálózati IP-cím az SQL felügyelt példányának belső terheléselosztó része. A terheléselosztó átirányítja a forgalmat az SQL felügyelt példány átjárójának. Mivel több SQL felügyelt példány futhat ugyanazon a fürtön belül, az átjáró a felügyelt SQL-példány állomásneve használatával irányítja át a forgalmat a megfelelő SQL Engine szolgáltatásba.
+Ez a magánhálózati IP-cím az SQL felügyelt példányának belső terheléselosztó része. A terheléselosztó átirányítja a forgalmat az SQL felügyelt példány átjárójának. Mivel több felügyelt példány futhat ugyanazon a fürtön belül, az átjáró az SQL felügyelt példány állomásneve használatával irányítja át a forgalmat a megfelelő SQL Engine-szolgáltatásba.
 
-A felügyeleti és központi telepítési szolgáltatások egy felügyelt SQL-példányhoz csatlakoznak [, amely egy](#management-endpoint) külső terheléselosztó számára van leképezve. A rendszer csak akkor irányítja a forgalmat a csomópontokhoz, ha egy előre meghatározott porton érkezik, amely csak az SQL felügyelt példány felügyeleti összetevői által használt. A csomópontokon a beépített tűzfal úgy van beállítva, hogy csak a Microsoft IP-címtartományok forgalmát engedélyezze. A tanúsítványok kölcsönösen hitelesítik a felügyeleti összetevők és a felügyeleti sík közötti összes kommunikációt.
+A felügyeleti és központi telepítési szolgáltatások az SQL felügyelt példányához kapcsolódnak egy olyan [felügyeleti végpont](#management-endpoint) használatával, amely egy külső terheléselosztó számára van leképezve. A rendszer csak akkor irányítja a forgalmat a csomópontokhoz, ha egy előre meghatározott porton érkezik, amely csak a felügyelt SQL-példányok felügyeleti összetevőit használja. A csomópontokon a beépített tűzfal úgy van beállítva, hogy csak a Microsoft IP-címtartományok forgalmát engedélyezze. A tanúsítványok kölcsönösen hitelesítik a felügyeleti összetevők és a felügyeleti sík közötti összes kommunikációt.
 
 ## <a name="management-endpoint"></a>Felügyeleti végpont
 
-Az Azure felügyeleti végpont használatával kezeli az SQL felügyelt példányát. Ez a végpont a példány virtuális fürtjén belül van. A felügyeleti végpontot egy beépített tűzfal védi a hálózati szinten. Az alkalmazás szintjén a kölcsönös tanúsítvány-ellenőrzés védi. A végpont IP-címének megkereséséhez tekintse meg [a felügyeleti végpont IP-címének megállapítása](management-endpoint-find-ip-address.md)című témakört.
+Az Azure felügyeleti végpont használatával kezeli az SQL felügyelt példányát. Ez a végpont egy példány virtuális fürtjén belül van. A felügyeleti végpontot egy beépített tűzfal védi a hálózati szinten. Az alkalmazás szintjén a kölcsönös tanúsítvány-ellenőrzés védi. A végpont IP-címének megkereséséhez tekintse meg [a felügyeleti végpont IP-címének megállapítása](management-endpoint-find-ip-address.md)című témakört.
 
-Ha a kapcsolatok a felügyelt SQL-példányon belül kezdődnek (mint a biztonsági mentések és a naplók), a forgalom úgy tűnik, hogy a felügyeleti végpont nyilvános IP-címéről indul el. A nyilvános szolgáltatásokhoz való hozzáférést egy felügyelt SQL-példányon korlátozhatja, ha a tűzfalszabályok beállításával csak az SQL felügyelt példány IP-címét engedélyezi. További információ: [az SQL felügyelt példány beépített tűzfalának ellenőrzése](management-endpoint-verify-built-in-firewall.md).
+Ha a kapcsolatok a felügyelt SQL-példányon belül kezdődnek (mint a biztonsági mentések és a naplók), a forgalom úgy tűnik, hogy a felügyeleti végpont nyilvános IP-címéről indul el. A nyilvános szolgáltatásokhoz való hozzáférést korlátozhatja az SQL felügyelt példányáról úgy, hogy a tűzfalszabályok beállításával csak az SQL felügyelt példány IP-címét engedélyezi. További információ: [az SQL felügyelt példány beépített tűzfalának ellenőrzése](management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Az SQL felügyelt példány régiójában található Azure-szolgáltatásokra áthaladó forgalom optimalizált, ezért a felügyeleti végpont nyilvános IP-címére nem. Ezért ha IP-alapú tűzfalszabályok használatát kell használnia, általában a tároláshoz, a szolgáltatásnak a felügyelt SQL-példánytól eltérő régióban kell lennie.
+> A felügyelt SQL-példányok régiójába tartozó Azure-szolgáltatásokra áthaladó forgalom optimalizálva van, ezért a felügyeleti végponthoz tartozó nyilvános IP-címhez nem. Emiatt, ha az IP-alapú tűzfalszabályok használatát igényli, általában a tároláshoz, a szolgáltatásnak egy másik régióban kell lennie a felügyelt SQL-példánytól.
 
 ## <a name="service-aided-subnet-configuration"></a>Szolgáltatással segített alhálózat-konfiguráció
 
 Az ügyfél biztonsági és kezelhetőségi követelményeinek kezeléséhez az SQL felügyelt példánya a manuálistól a szolgáltatással támogatott alhálózat-konfigurációra vált.
 
-A szolgáltatással segített alhálózat-konfiguráció felhasználója teljes mértékben felügyeli az adatok (TDS) forgalmát, miközben az SQL felügyelt példánya felelősséget vállal a felügyeleti forgalom zavartalan áramlásának biztosításához az SLA teljesítése érdekében.
+A szolgáltatással segített alhálózat konfigurálásával a felhasználó teljes mértékben felügyeli az adatok (TDS) forgalmát, míg az SQL felügyelt példány feladata, hogy biztosítsa a felügyeleti forgalom zavartalan áramlását az SLA teljesítése érdekében.
 
-A szolgáltatással segített alhálózat-konfiguráció a virtuális hálózat [alhálózati delegálás](../../virtual-network/subnet-delegation-overview.md) funkciójának segítségével biztosítja az automatikus hálózati konfiguráció felügyeletét és a szolgáltatásvégpontok engedélyezését. A szolgáltatásvégpontok használhatók a biztonsági mentéseket/auditnaplókat tároló tárfiókok virtuális hálózati tűzfalszabályainak konfigurálására.
+A szolgáltatással segített alhálózat konfigurációja a virtuális hálózati alhálózati [delegálási](../../virtual-network/subnet-delegation-overview.md) szolgáltatásra épül, és lehetővé teszi az automatikus hálózati konfiguráció felügyeletét és a szolgáltatási végpontok engedélyezését. A szolgáltatás-végpontok a virtuális hálózati tűzfalszabályok konfigurálására használhatók a biztonsági mentéseket és naplókat tároló fiókoknál.
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
-Helyezzen üzembe egy SQL felügyelt példányt egy dedikált alhálózatban a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
+Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
 
-- **Dedikált alhálózat:** Az SQL felügyelt példány alhálózata nem tartalmazhat más, hozzá társított felhőalapú szolgáltatást, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrásokat, de az SQL felügyelt példányát, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
-- **Alhálózat delegálása:** Az SQL felügyelt példány alhálózatát delegálni kell az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatóhoz.
-- **Hálózati biztonsági csoport (NSG):** Egy NSG kell társítani az SQL felügyelt példány alhálózatához. A NSG használatával szabályozhatja az SQL felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha az SQL felügyelt példánya átirányítási kapcsolatok használatára van konfigurálva. A szolgáltatás automatikusan kiépíti és megtartja a jelenlegi, a felügyeleti forgalom zavartalan áramlását lehetővé tevő [szabályokat](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration).
+- **Dedikált alhálózat:** Az SQL felügyelt példány alhálózata nem tartalmazhat más, hozzá társított felhőalapú szolgáltatást, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrást, de az SQL felügyelt példányát, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
+- **Alhálózat delegálása:** Az SQL felügyelt példányának alhálózatát delegálni kell az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatóhoz.
+- **Hálózati biztonsági csoport (NSG):** Egy NSG kell társítani az SQL felügyelt példány alhálózatához. A NSG használatával szabályozhatja az SQL felügyelt példány adatvégponthoz való hozzáférést úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha az SQL felügyelt példánya átirányítási kapcsolatok használatára van konfigurálva. A szolgáltatás automatikusan kiépíti és megtartja a felügyeleti forgalom zavartalan áramlását lehetővé tevő aktuális [szabályokat](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) .
 - **Felhasználó által megadott útvonal (UDR) tábla:** UDR táblát kell társítani az SQL felügyelt példány alhálózatához. Hozzáadhat bejegyzéseket az útválasztási táblához, hogy a virtuális hálózati átjárón vagy a virtuális hálózati berendezésen (NVA) keresztül átirányítsa a helyszíni magánhálózati IP-tartományokkal rendelkező forgalmat. A szolgáltatás automatikusan kiépíti és megtartja a jelenlegi, a felügyeleti forgalom zavartalan áramlását lehetővé tevő [bejegyzéseket](#user-defined-routes-with-service-aided-subnet-configuration).
-- **Elegendő IP-cím:** Az SQL felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. A javasolt minimális mennyiség 32 IP-cím. További információ: az [alhálózat méretének meghatározása az SQL felügyelt példányaihoz](vnet-subnet-determine-size.md). Az SQL felügyelt példányai [a meglévő hálózatban](vnet-existing-add-subnet.md) telepíthetők az [SQL-felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítése érdekében. Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](virtual-network-subnet-create-arm-template.md).
+- **Elegendő IP-cím:** Az SQL felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. A javasolt minimális mennyiség 32 IP-cím. További információ: az [alhálózat méretének meghatározása az SQL felügyelt példányhoz](vnet-subnet-determine-size.md). Miután konfigurálta a felügyelt példányokat [a meglévő hálózatban](vnet-existing-add-subnet.md) , a konfigurálása után meg kell felelnie [az SQL felügyelt példányának hálózati követelményeinek](#network-requirements). Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> SQL felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
+> Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
@@ -302,27 +301,27 @@ Ha a virtuális hálózat egyéni DNS-t tartalmaz, az egyéni DNS-kiszolgálóna
 
 ### <a name="networking-constraints"></a>Hálózati megkötések
 
-**A tls 1,2 a kimenő kapcsolatokon van kikényszerítve**: a január 2020 Microsoft által kényszerített TLS 1,2 az összes Azure-szolgáltatáson belüli forgalomhoz. Az Azure SQL felügyelt példányai esetében ez a TLS 1,2-t eredményezte a replikáláshoz használt kimenő kapcsolatokon és a SQL Serverhoz csatolt kiszolgáló kapcsolatain. Ha a SQL Server 2016 régebbi verzióit használja, és az SQL felügyelt példánnyal rendelkezik, győződjön meg arról, hogy a [TLS 1,2-specifikus frissítések](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) lettek alkalmazva.
+**A tls 1,2 a kimenő kapcsolatokon van kikényszerítve**: a január 2020 Microsoft által kényszerített TLS 1,2 az összes Azure-szolgáltatáson belüli forgalomhoz. Az Azure SQL felügyelt példányai esetében ez a TLS 1,2-t eredményezte a replikáláshoz használt kimenő kapcsolatokon és a SQL Serverhoz csatolt kiszolgáló kapcsolatain. Ha 2016-nál régebbi, SQL felügyelt példánnyal rendelkező SQL Server-verziót használ, győződjön meg arról, hogy a [TLS 1,2-specifikus frissítések](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) lettek alkalmazva.
 
-A következő virtuális hálózati funkciók jelenleg nem támogatottak az SQL felügyelt példányain:
+A következő virtuális hálózati szolgáltatások jelenleg nem támogatottak a felügyelt SQL-példányok esetében:
 
-- **Microsoft-partneri**kapcsolat: a [Microsoft-társak](../../expressroute/expressroute-faqs.md#microsoft-peering) Express Route-áramkörökhöz való közvetlen vagy tranzitívnak való engedélyezése a virtuális hálózattal, ahol az SQL felügyelt példánya a virtuális hálózaton és a szolgáltatásokon belüli SQL felügyelt példány-összetevők közötti forgalmat befolyásolja, a rendelkezésre állási problémáktól függ. A felügyelt példányok virtuális hálózatra való központi telepítése már engedélyezve van a Microsoft társközi szolgáltatásával.
+- **Microsoft-partneri**kapcsolat: a [Microsoft-partneri](../../expressroute/expressroute-faqs.md#microsoft-peering) kapcsolatok engedélyezése a ExpressRoute-áramkörökhöz közvetlenül vagy tranzitívnak olyan virtuális hálózattal, amelyben az SQL felügyelt példánya a virtuális hálózatban található SQL felügyelt példány-összetevők, valamint a rendelkezésre állási problémák okozta szolgáltatások közötti forgalmat érinti. Az SQL felügyelt példányok virtuális hálózatra való központi telepítése már engedélyezve van a Microsoft társközi szolgáltatásával.
 - **Globális virtuális hálózati**társítás: az Azure-régiók közötti [virtuális hálózati](../../virtual-network/virtual-network-peering-overview.md) társítási kapcsolat nem működik az SQL felügyelt példánya esetében, mert [dokumentált](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)terheléselosztó-korlátozások vannak érvényben.
-- **AzurePlatformDNS**: a AzurePlatformDNS [szolgáltatás címkéjének](../../virtual-network/service-tags-overview.md) használata a platform DNS-feloldásának letiltásához az SQL felügyelt példánya nem érhető el. Habár a felügyelt SQL-példány támogatja az ügyfél által meghatározott DNS-t a DNS-feloldáshoz a motoron belül, a platformhoz tartozó DNS-függőség függ.
-- **NAT-átjáró**: [Virtual Network NAT](../../virtual-network/nat-overview.md) használata az adott nyilvános IP-címmel rendelkező kimenő kapcsolatok vezérléséhez az SQL felügyelt példánya nem érhető el. A felügyelt SQL-példányok szolgáltatás jelenleg olyan alapszintű terheléselosztó használatára korlátozódik, amely nem biztosítja a bejövő és kimenő adatforgalom Virtual Network NAT-vel való egymással való létezését.
+- **AzurePlatformDNS**: a AzurePlatformDNS [szolgáltatás címkéjének](../../virtual-network/service-tags-overview.md) használata a platform DNS-feloldásának letiltásához az SQL felügyelt példánya nem érhető el. Bár az SQL felügyelt példánya támogatja az ügyfél által meghatározott DNS-feloldást a motoron belül, a platformon futó DNS-függőség függ a platform működéséhez.
+- **NAT-átjáró**: az [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) használata az adott nyilvános IP-címmel rendelkező kimenő kapcsolatok vezérléséhez az SQL felügyelt példánya nem érhető el. A felügyelt SQL-példány szolgáltatás jelenleg olyan alapszintű terheléselosztó használatára korlátozódik, amely nem biztosítja a bejövő és kimenő folyamatok egyidejű használatát Virtual Network NAT-ban.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Elavult A hálózati követelmények Service-alapú alhálózat-konfiguráció nélkül
 
-Helyezzen üzembe egy SQL felügyelt példányt egy dedikált alhálózatban a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
+Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
 
-- **Dedikált alhálózat:** Az SQL felügyelt példány alhálózata nem tartalmazhat más, hozzá társított felhőalapú szolgáltatást, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrásokat, de az SQL felügyelt példányát, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
-- **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG minden más szabály előtt meg kell határoznia a [bejövő biztonsági szabályokat](#mandatory-inbound-security-rules) és a [kimenő biztonsági szabályokat](#mandatory-outbound-security-rules) . A NSG használatával szabályozhatja az SQL felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha az SQL felügyelt példánya átirányítási kapcsolatok használatára van konfigurálva.
+- **Dedikált alhálózat:** Az SQL felügyelt példány alhálózata nem tartalmazhat más, hozzá társított felhőalapú szolgáltatást, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrást, de az SQL felügyelt példányát, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
+- **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG minden más szabály előtt meg kell határoznia a [bejövő biztonsági szabályokat](#mandatory-inbound-security-rules) és a [kimenő biztonsági szabályokat](#mandatory-outbound-security-rules) . A NSG használatával szabályozhatja az SQL felügyelt példány adatvégponthoz való hozzáférést úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha az SQL felügyelt példánya átirányítási kapcsolatok használatára van konfigurálva.
 - **Felhasználó által megadott útvonal (UDR) tábla:** A virtuális hálózathoz társított UDR-táblának konkrét [bejegyzéseket](#user-defined-routes)kell tartalmaznia.
 - **Nincsenek szolgáltatási végpontok:** Nincs hozzárendelve szolgáltatási végpont az SQL felügyelt példány alhálózatához. Győződjön meg arról, hogy a szolgáltatás-végpontok beállítás le van tiltva a virtuális hálózat létrehozásakor.
-- **Elegendő IP-cím:** Az SQL felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. A javasolt minimális mennyiség 32 IP-cím. További információ: az [alhálózat méretének meghatározása az SQL felügyelt példányaihoz](vnet-subnet-determine-size.md). Az SQL felügyelt példányai [a meglévő hálózatban](vnet-existing-add-subnet.md) telepíthetők az [SQL-felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítése érdekében. Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](virtual-network-subnet-create-arm-template.md).
+- **Elegendő IP-cím:** Az SQL felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. A javasolt minimális mennyiség 32 IP-cím. További információ: az [alhálózat méretének meghatározása az SQL felügyelt példányhoz](vnet-subnet-determine-size.md). Miután konfigurálta a felügyelt példányokat [a meglévő hálózatban](vnet-existing-add-subnet.md) , a konfigurálása után meg kell felelnie [az SQL felügyelt példányának hálózati követelményeinek](#network-requirements). Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> Nem telepíthet új SQL felügyelt példányt, ha a célként megadott alhálózat nem rendelkezik ezekkel a jellemzőkkel. SQL felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
+> Nem telepíthet új felügyelt példányt, ha a célként megadott alhálózat nem rendelkezik ezekkel a jellemzőkkel. Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
@@ -340,7 +339,7 @@ Helyezzen üzembe egy SQL felügyelt példányt egy dedikált alhálózatban a v
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440, 1452 és egy kimenő szabály számára a következő portokhoz: 443 12000. A felügyelt SQL-példányok Azure Resource Manager központi telepítéseken keresztüli kiépítése meghiúsul, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz, hibakód:`VnetSubnetConflictWithIntendedPolicy`
+> Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440 és 1452 portokhoz, valamint egy kimenő szabályt a következő portokhoz: 443 és 12000. A felügyelt SQL-példányok Azure Resource Manager központi telepítéseken keresztüli kiépítése meghiúsul, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz a hibakód miatt `VnetSubnetConflictWithIntendedPolicy` .
 
 \*A MI ALHÁLÓZAT az alhálózat IP-címtartományt jelöli x. x. x. x/y formátumban. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
 
@@ -348,7 +347,7 @@ Helyezzen üzembe egy SQL felügyelt példányt egy dedikált alhálózatban a v
 > Habár a kötelező bejövő biztonsági szabályok engedélyezik a forgalmat a 9000, 9003, 1438, 1440 és 1452 portok _bármely_ forrásáról, ezeket a portokat egy beépített tűzfal védi. További információ: [a felügyeleti végponti címek meghatározása](management-endpoint-find-ip-address.md).
 
 > [!NOTE]
-> Ha tranzakciós replikálást használ egy SQL felügyelt példányban, és ha bármely példány-adatbázist közzétevőként vagy terjesztőként használ, nyissa meg az alhálózat biztonsági szabályaiban az 445 (TCP kimenő) portot. Ez a port lehetővé teszi az Azure-fájlmegosztás elérését.
+> Ha tranzakciós replikálást használ a felügyelt SQL-példányban, és ha bármely példány-adatbázist közzétevőként vagy terjesztőként használ, nyissa meg az alhálózat biztonsági szabályaiban az 445 (TCP kimenő) portot. Ez a port lehetővé teszi az Azure-fájlmegosztás elérését.
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
@@ -526,9 +525,9 @@ Helyezzen üzembe egy SQL felügyelt példányt egy dedikált alhálózatban a v
 ## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
-- Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](virtual-network-subnet-create-arm-template.md) vagy egy [meglévő Azure-beli virtuális hálózatot](vnet-existing-add-subnet.md) , AMELYEN telepítheti az SQL felügyelt példányait.
-- A felügyelt SQL-példányok üzembe helyezéséhez használandó [alhálózat méretének kiszámítása](vnet-subnet-determine-size.md) .
-- Ismerje meg, hogyan hozhat létre SQL-alapú felügyelt példányt:
+- Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](virtual-network-subnet-create-arm-template.md) vagy egy [meglévő Azure-beli virtuális hálózatot](vnet-existing-add-subnet.md) , ahol telepítheti az SQL felügyelt példányát.
+- A felügyelt SQL-példány telepítéséhez használandó [alhálózat méretének kiszámítása](vnet-subnet-determine-size.md) .
+- Ismerje meg, hogyan hozhat létre felügyelt példányt:
   - A [Azure Portal](instance-create-quickstart.md).
   - A [PowerShell](scripts/create-configure-managed-instance-powershell.md)használatával.
   - [Azure Resource Manager sablon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)használatával.

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186634"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure-HDInsight: fürtök létrehozásával kapcsolatos hibák
@@ -26,7 +26,7 @@ Ez a cikk a fürtök létrehozásakor esetlegesen előforduló hibák megoldása
 
 ### <a name="error"></a>Hiba
 
-"A parancsfájl-művelet helye nem érhető el URI\<: parancsfájl műveleti\>URL-címe"
+"A parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
 
 #### <a name="error-message"></a>Hibaüzenet
 
@@ -48,11 +48,11 @@ A HDInsight szolgáltatás nem fér hozzá a fürt létrehozása kérelem része
 
 ### <a name="error"></a>Hiba
 
-"A parancsfájl műveleti helye nem érhető el URI: \<SCRIPT_ACTION_URL\>"
+"A parancsfájl műveleti helye nem érhető el URI: \<SCRIPT_ACTION_URL\> "
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"A megadott parancsfájl- \<URI\> SCRIPT_URI a ADLS, de a fürthöz nem tartozik a (z)"
+"A megadott parancsfájl URI \<SCRIPT_URI\> -ja a ADLS, de a fürthöz nem tartozik a (z)"
 
 ### <a name="cause"></a>Ok
 
@@ -68,7 +68,7 @@ Adja hozzá a megfelelő Azure Data Lake Storage 1. generációs fiókot a fürt
 
 ### <a name="error"></a>Hiba
 
-A kérelemben megadott\<"\>virtuálisgép-méret" CUSTOMER_SPECIFIED_VM_SIZE érvénytelen, vagy a szerepkör\<\>szerepköre nem támogatott. Az érvényes értékek a \<következők\>: VALID_VM_SIZE_FOR_ROLE. "
+\<CUSTOMER_SPECIFIED_VM_SIZE\>A kérelemben megadott "virtuálisgép-méret" érvénytelen vagy nem támogatott a (z) "" szerepkörben \<ROLE\> . Az érvényes értékek a következők: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
 ### <a name="cause"></a>Ok
 
@@ -84,7 +84,7 @@ A hibaüzenet felsorolja a virtuális gép méretének érvényes értékeit. V�
 
 ### <a name="error"></a>Hiba
 
-"A VirtualNetworkId érvénytelen. VirtualNetworkId "\<USER_VIRTUALNETWORKID\>" * "
+"A VirtualNetworkId érvénytelen. VirtualNetworkId ' \<USER_VIRTUALNETWORKID\> ' * '
 
 ### <a name="cause"></a>Ok
 
@@ -108,11 +108,11 @@ Győződjön meg arról, hogy a **VirtualNetworkId** és az alhálózati érték
 
 ### <a name="error"></a>Hiba
 
-"A fürt központi telepítése nem sikerült, mert hiba történt az egyéni parancsfájl műveletében. Sikertelen műveletek: \<SCRIPT_NAME\>, lépjen a Ambari felhasználói felületén a hiba további hibakereséséhez. "
+"A fürt központi telepítése nem sikerült, mert hiba történt az egyéni parancsfájl műveletében. Sikertelen műveletek: \<SCRIPT_NAME\> , lépjen a Ambari felhasználói felületén a hiba további hibakereséséhez. "
 
 ### <a name="cause"></a>Ok
 
-A fürt létrehozásakor megadott egyéni parancsfájl végrehajtása a fürt sikeres telepítése után történik. Ez a hibakód azt jelzi, hogy hiba történt a SCRIPT_NAME \<\>nevű egyéni parancsfájl végrehajtása során.
+A fürt létrehozásakor megadott egyéni parancsfájl végrehajtása a fürt sikeres telepítése után történik. Ez a hibakód azt jelzi, hogy hiba történt a nevű egyéni parancsfájl végrehajtása során \<SCRIPT_NAME\> .
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -124,7 +124,7 @@ Mivel a szkript az egyéni szkript, javasoljuk, hogy hárítsa el a problémát,
 
 ### <a name="error"></a>Hiba
 
-"A \<META_STORE_TYPE\> metaadattár-séma \<METASTORE_MAJOR_VERSION\> az adatbázisban \<DATABASE_NAME\> nem kompatibilis a fürt verziójával \<CLUSTER_VERSION\>"
+"A \<META_STORE_TYPE\> metaadattár-séma verziója az \<METASTORE_MAJOR_VERSION\> adatbázisban \<DATABASE_NAME\> nem kompatibilis a fürt verziójával \<CLUSTER_VERSION\> "
 
 ### <a name="cause"></a>Ok
 
@@ -161,7 +161,7 @@ Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom s
 
 ### <a name="error"></a>Hiba
 
-"A felügyelt identitásnak nincs engedélye a Storage-fiókra. Ellenőrizze, hogy a "Storage blob-adatok tulajdonosa" szerepkör hozzá van-e rendelve a Storage-fiók felügyelt identitásához. Storage:/Subscriptions/ \<előfizetés azonosítója\> /resourceGroups/\< erőforráscsoport neve\> \</Providers/Microsoft.Storage/storageAccounts/\>, felügyelt identitás:/Subscriptions/ \<előfizetés-azonosító\> /resourceGroups//\< erőforráscsoport neve\> /Providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<felhasználó által felügyelt identitás neve "\>
+"A felügyelt identitásnak nincs engedélye a Storage-fiókra. Ellenőrizze, hogy a "Storage blob-adatok tulajdonosa" szerepkör hozzá van-e rendelve a Storage-fiók felügyelt identitásához. Storage:/Subscriptions/ \<Subscription ID\> /ResourceGroups/ \< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\> , felügyelt identitás:/Subscriptions/ \<Subscription ID\> /resourceGroups// \< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\> "
 
 ### <a name="cause"></a>Ok
 
@@ -182,7 +182,7 @@ További információ: az [Data Lake Storage Gen2 fiókban található felügyel
 
 ### <a name="error"></a>Hiba
 
-"A biztonsági\<szabályok a hálózati biztonsági csoport/Subscriptions/SubscriptionID\>/resourceGroups/<erőforráscsoport neve\> default/Providers/Microsoft. Network/networkSecurityGroups/\<hálózati biztonsági csoport neve\> alhálózat/Subscriptions/\<SubscriptionID\>/resourceGroups/\<erőforráscsoport neve\> RG-westeurope-vnet-TomTom-default/Providers/Microsoft. Network/virtualNetworks/\<Virtual Network name\>/Subnets/\<alhálózat neve\> nem engedélyezi a szükséges bejövő és/vagy kimenő kapcsolatokat. További információért látogasson el [a virtuális hálózat megtervezése az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), vagy forduljon az ügyfélszolgálathoz. "
+"A biztonsági szabályok a hálózati biztonsági csoport/Subscriptions/ \<SubscriptionID\> /resourceGroups/<az erőforráscsoport neve \> default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> subnet/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-TomTom-default/Providers/Microsoft. Network/virtualNetworks//Subnets/ \<Virtual Network Name\> nem \<Subnet Name\> engedélyezik a szükséges bejövő és/vagy kimenő kapcsolatokat. További információért látogasson el [a virtuális hálózat megtervezése az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), vagy forduljon az ügyfélszolgálathoz. "
 
 ### <a name="cause"></a>Ok
 
@@ -230,7 +230,7 @@ Ha az egyéni VNet hálózati biztonsági csoportot (NSG) és a felhasználó á
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hibakód: az üzemelő példányok házirend megsértése miatt sikertelenek: a<Resource URI>(z) erőforrást a szabályzat nem engedélyezte. Házirend-azonosítók: "[{" policyAssignment ": {" Name ":<Policy Name> " "," id ":"<Management Group Name> /Providers/Microsoft.Management/managementGroups/Providers/Microsoft. Authorization/<Policy Name>policyAssignments/"}," policyDefinition ":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hibakód: az üzemelő példányok házirend megsértése miatt sikertelenek: a (z) erőforrást <Resource URI> a szabályzat nem engedélyezte. Házirend-azonosítók: "[{" policyAssignment ": {" Name ":" <Policy Name> "," id ":"/Providers/Microsoft.Management/managementGroups/ <Management Group Name> providers/Microsoft. Authorization/policyAssignments/ <Policy Name> "}," policyDefinition ":<Policy Definition>
 
 ### <a name="cause"></a>Ok
 

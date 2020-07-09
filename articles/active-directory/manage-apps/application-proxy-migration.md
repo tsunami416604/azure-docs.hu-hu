@@ -3,8 +3,8 @@ title: Frissítés az Azure AD Application Proxyra | Microsoft Docs
 description: Válassza ki, hogy melyik proxy-megoldás a legjobb, ha a Microsoft Forefront-vagy Unified Access-átjáróról frissít.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ef1ffb5ec0b39c5331afbc55d99268d9a3997e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764451"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
 
@@ -38,17 +37,17 @@ Ebből a táblázatból megtudhatja, hogyan hasonlíthatja össze a veszélyforr
 | Böngészőalapú alkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
 | Előhitelesítés és egyszeri bejelentkezés | Igen | Igen | Igen | Igen | 
 | Réteg 2/3 tűzfal | Igen | Igen | - | - |
-| Proxy-képességek továbbítása | Igen | - | - | - |
+| Proxy-képességek továbbítása | Yes | - | - | - |
 | VPN-képességek | Igen | Igen | - | - |
-| Sokoldalú protokollok támogatása | - | Igen | Igen, ha HTTP-n keresztül fut | Igen, ha HTTP-n vagy Távoli asztali átjáróon keresztül fut |
+| Sokoldalú protokollok támogatása | - | Yes | Igen, ha HTTP-n keresztül fut | Igen, ha HTTP-n vagy Távoli asztali átjáróon keresztül fut |
 | ADFS-proxy kiszolgálóként szolgál | - | Igen | Igen | - |
 | Egy portál alkalmazás-hozzáféréshez | - | Igen | - | Igen |
 | Válasz törzséhez tartozó hivatkozás fordítása | Igen | Igen | - | Igen | 
-| Hitelesítés fejlécekkel | - | Igen | - | Igen, a PingAccess | 
-| Felhőbeli biztonság | - | - | - | Igen | 
+| Hitelesítés fejlécekkel | - | Yes | - | Igen, a PingAccess | 
+| Felhőbeli biztonság | - | - | - | Yes | 
 | Feltételes hozzáférés | - | Igen | - | Igen |
-| Nincsenek összetevők a vagy demilitarizált zónában (DMZ) | - | - | - | Igen |
-| Nincsenek bejövő kapcsolatok | - | - | - | Igen |
+| Nincsenek összetevők a vagy demilitarizált zónában (DMZ) | - | - | - | Yes |
+| Nincsenek bejövő kapcsolatok | - | - | - | Yes |
 
 A legtöbb esetben ajánlott az Azure AD Application Proxyt a modern megoldásként ajánlani. A webalkalmazás-proxyt csak olyan helyzetekben érdemes használni, amelyekhez proxykiszolgáló szükséges a AD FShoz, és nem használhat egyéni tartományokat a Azure Active Directoryban. 
 

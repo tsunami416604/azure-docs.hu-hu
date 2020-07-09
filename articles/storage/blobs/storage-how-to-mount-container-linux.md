@@ -4,16 +4,15 @@ description: Azure Blob Storage-tároló csatlakoztatása a Linux-alapú BIZTOS�
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465473"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel
 
@@ -43,7 +42,7 @@ Példa egy vállalati Linux 6 disztribúcióra:
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Hasonlóképpen módosítsa az URL-címet `.../rhel/7/...` úgy, hogy az a nagyvállalati Linux 7 disztribúcióra mutasson.
+Hasonlóképpen módosítsa az URL-címet úgy, hogy az a `.../rhel/7/...` nagyvállalati Linux 7 disztribúcióra mutasson.
 
 Egy másik példa Ubuntu 14,04-disztribúcióra:
 ```bash
@@ -52,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Hasonlóképpen módosítsa az URL-címet `.../ubuntu/16.04/...` a `.../ubuntu/18.04/...` vagy a értékre egy másik Ubuntu-verzióra való hivatkozáshoz.
+Hasonlóképpen módosítsa az URL-címet a `.../ubuntu/16.04/...` vagy `.../ubuntu/18.04/...` a értékre egy másik Ubuntu-verzióra való hivatkozáshoz.
 
 ### <a name="install-blobfuse"></a>A blobfuse telepítése
 
@@ -98,7 +97,7 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-A `accountName` a Storage-fiók előtagja – nem a teljes URL-cím.
+A a `accountName` Storage-fiók előtagja – nem a teljes URL-cím.
 
 Fájl létrehozása a következő használatával:
 
@@ -112,7 +111,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Ha a Windowson létrehozta a konfigurációs fájlt, futtassa a parancsot `dos2unix` a fájl megtisztításához és a UNIX formátumba való átalakításához. 
+> Ha a Windowson létrehozta a konfigurációs fájlt, futtassa a parancsot a fájl megtisztításához `dos2unix` és a UNIX formátumba való átalakításához. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Üres könyvtár létrehozása a csatlakoztatáshoz
@@ -132,7 +131,7 @@ A blobfuse csatlakoztatásához futtassa a következő parancsot a felhasználó
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Most már hozzáférhet a blokk blobokhoz a normál fájlrendszerű API-kon keresztül. Az a felhasználó, aki csatlakoztatja a könyvtárat, alapértelmezés szerint az egyetlen olyan személy, aki hozzáférést biztosít a hozzáféréshez. Ha engedélyezni szeretné az összes felhasználó hozzáférését, a kapcsolón ```-o allow_other```keresztül is csatlakoztathatja. 
+Most már hozzáférhet a blokk blobokhoz a normál fájlrendszerű API-kon keresztül. Az a felhasználó, aki csatlakoztatja a könyvtárat, alapértelmezés szerint az egyetlen olyan személy, aki hozzáférést biztosít a hozzáféréshez. Ha engedélyezni szeretné az összes felhasználó hozzáférését, a kapcsolón keresztül is csatlakoztathatja ```-o allow_other``` . 
 
 ```bash
 cd ~/mycontainer

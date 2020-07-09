@@ -10,37 +10,40 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7e7eb9ba942cd29db824388c02b2933c533c4b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a0ec14448df91aa49e7140e608c65e216773c57d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403021"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987031"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és a cURL használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API és a cURL használatával ismeri fel az emberi arcokat egy képben.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="write-the-command"></a>A parancs írása
  
-A következőhöz hasonló parancsot kell használnia a Face API meghívásához és a Face attribútum adatainak a rendszerképből való lekéréséhez. Először másolja a kódot egy&mdash;szövegszerkesztőbe, hogy a Futtatás előtt módosítania kell a parancs egyes részeit.
+A következőhöz hasonló parancsot kell használnia a Face API meghívásához és a Face attribútum adatainak a rendszerképből való lekéréséhez. Először másolja a kódot egy szövegszerkesztőbe, hogy &mdash; a Futtatás előtt módosítania kell a parancs egyes részeit.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Előfizetői azonosító
-A `<Subscription Key>` helyére írja be az érvényes Face előfizetési kulcsot.
+A helyére írja `<Subscription Key>` be az érvényes Face előfizetési kulcsot.
 
 ### <a name="face-endpoint-url"></a>Szembenéző végpont URL-címe
 
-Az URL `https://<My Endpoint String>.com/face/v1.0/detect` -cím a lekérdezni kívánt Azure Face-végpontot jelzi. Előfordulhat, hogy módosítania kell az URL első részét, hogy az megfeleljen az előfizetési kulcsnak megfelelő végpontnak.
+Az URL-cím `https://<My Endpoint String>.com/face/v1.0/detect` a lekérdezni kívánt Azure Face-végpontot jelzi. Előfordulhat, hogy módosítania kell az URL első részét, hogy az megfeleljen az előfizetési kulcsnak megfelelő végpontnak.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

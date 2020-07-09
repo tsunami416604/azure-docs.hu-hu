@@ -1,18 +1,14 @@
 ---
 title: Kézbesítetlen levelek és újrapróbálkozási házirendek – Azure Event Grid
 description: Leírja, hogyan lehet testre szabni a Event Grid esemény-kézbesítési beállításait. Állítsa be a kézbesítetlen levél célját, és adja meg, hogy mennyi ideig próbálkozzon a kézbesítéssel.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: spelluru
-ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 07/07/2020
+ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72794034"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105506"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
@@ -26,7 +22,7 @@ A kézbesítetlen levelek helyének beállításához olyan tárolási fiókra v
 
 > [!NOTE]
 > - A cikkben szereplő parancsok futtatása előtt hozzon létre egy Storage-fiókot és egy BLOB-tárolót a tárolóban.
-> - A Event Grid szolgáltatás blobokat hoz létre ebben a tárolóban. A Blobok nevei a Event Grid-előfizetés nevét fogják tartalmazni a nagybetűvel rendelkező összes betűvel. Ha például az előfizetés neve a My-blob-előfizetés, a kézbesítetlen levelek blobjának neve a saját BLOB-előfizetés (myblobcontainer/MY-BLOB-előfizetés/2019/8/8/5/111111111-1111-1111-1111 -111111111111. JSON) lesz. Ez a viselkedés a különböző Azure-szolgáltatások közötti adatfeldolgozások elleni védelem.
+> - A Event Grid szolgáltatás blobokat hoz létre ebben a tárolóban. A Blobok nevei a Event Grid-előfizetés nevét fogják tartalmazni a nagybetűvel rendelkező összes betűvel. Ha például az előfizetés neve a My-blob-előfizetés, a kézbesítetlen levelek blobjának neve a saját BLOB-előfizetés (myblobcontainer/MY-BLOB-előfizetés/2019/8/8/5/111111111-1111-1111-1111-111111111111.json) lesz. Ez a viselkedés a különböző Azure-szolgáltatások közötti adatfeldolgozások elleni védelem.
 
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -44,7 +40,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-A kézbesítetlen levelek kikapcsolásához futtassa újra a parancsot az esemény-előfizetés létrehozásához, de ne adjon meg `deadletter-endpoint`értéket a következőhöz:. Nem kell törölnie az esemény-előfizetést.
+A kézbesítetlen levelek kikapcsolásához futtassa újra a parancsot az esemény-előfizetés létrehozásához, de ne adjon meg értéket a következőhöz: `deadletter-endpoint` . Nem kell törölnie az esemény-előfizetést.
 
 > [!NOTE]
 > Ha az Azure CLI-t használja a helyi gépen, használja az Azure CLI 2.0.56 vagy újabb verzióját. Az Azure CLI legújabb verziójának telepítésével kapcsolatos utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
@@ -64,7 +60,7 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-A kézbesítetlen levelek kikapcsolásához futtassa újra a parancsot az esemény-előfizetés létrehozásához, de ne adjon meg `DeadLetterEndpoint`értéket a következőhöz:. Nem kell törölnie az esemény-előfizetést.
+A kézbesítetlen levelek kikapcsolásához futtassa újra a parancsot az esemény-előfizetés létrehozásához, de ne adjon meg értéket a következőhöz: `DeadLetterEndpoint` . Nem kell törölnie az esemény-előfizetést.
 
 > [!NOTE]
 > Ha az Azure bővítményén-t használja a helyi gépen, használja a Azure PowerShell 1.1.0-es vagy újabb verzióját. Töltse le és telepítse a legújabb Azure PowerShell az [Azure downloads](https://azure.microsoft.com/downloads/)szolgáltatásból.
@@ -99,7 +95,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Ha a és `max-deliver-attempts`a `event-ttl` lehetőséget is beállítja, Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
+Ha a és a lehetőséget is beállítja `event-ttl` `max-deliver-attempts` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,9 +123,9 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Ha a és `MaxDeliveryAttempt`a `EventTtl` lehetőséget is beállítja, Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
+Ha a és a lehetőséget is beállítja `EventTtl` `MaxDeliveryAttempt` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A kézbesítetlen levelek eseményeinek feldolgozására szolgáló Azure Function alkalmazást használó minta alkalmazáshoz lásd: [Azure Event Grid a .net-hez készült kézbesítetlen levelek mintáit](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).

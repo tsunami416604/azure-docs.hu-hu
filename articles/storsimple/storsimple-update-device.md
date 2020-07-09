@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
 ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170086"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz frissítése
@@ -119,7 +118,7 @@ A következő eljárások azt ismertetik, hogyan használhatók a Windows PowerS
 ## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>Mi történik a frissítésekkel, ha az eszköz gyári alaphelyzetbe állítását végzi?
 Ha egy eszköz visszaáll a gyári beállításokra, akkor az összes frissítés elvész. A gyári beállítások visszaállítása után az eszköz regisztrálása és konfigurálása után manuálisan kell telepítenie a frissítéseket a klasszikus Azure portálon és/vagy Windows PowerShell StorSimple-bővítménye. A gyári beállítások visszaállításával kapcsolatos további információkért lásd: [az eszköz visszaállítása a gyári alapértékekre](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [StorSimple-eszköz felügyeletének Windows PowerShell StorSimple-bővítménye használatáról](storsimple-windows-powershell-administration.md).
 * További információ [a StorSimple Manager szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-manager-service-administration.md).
 

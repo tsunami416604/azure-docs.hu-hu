@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253832"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888541"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus hely gyorsítás Azure CDNon keresztül
 
@@ -117,7 +117,7 @@ A TCP *lassú indítás* a TCP protokoll algoritmusa, amely megakadályozza a h�
 
 A CDN használatával kevesebb egyedi gép csatlakozik a forrás-kiszolgálóhoz közvetlenül a forráshoz csatlakozó felhasználókhoz képest. A Azure CDN a felhasználói kérések összevonásával kevesebb kapcsolatot létesít a forrással.
 
-Ahogy korábban említettük, több kézfogási kérelemre van szükség a TCP-kapcsolat létrehozásához. A `Keep-Alive` HTTP-fejléc által megvalósított állandó kapcsolatok, a meglévő TCP-kapcsolatok újbóli használata több HTTP-kérelem esetében, az átállási idő és a továbbítás felgyorsításának megtakarítása érdekében. 
+Ahogy korábban említettük, több kézfogási kérelemre van szükség a TCP-kapcsolat létrehozásához. A HTTP-fejléc által megvalósított állandó kapcsolatok, a `Keep-Alive` meglévő TCP-kapcsolatok újbóli használata több HTTP-kérelem esetében, az átállási idő és a továbbítás felgyorsításának megtakarítása érdekében. 
 
 A **Verizon Azure CDN** is rendszeres életben tartási csomagokat küld a TCP-kapcsolaton keresztül, hogy megakadályozza a nyitott kapcsolat lezárását.
 
@@ -149,7 +149,7 @@ JPEG-tömörítés | . jpg,. jpeg,. JPE,. sablon,. jgig,. JGI
 
 ## <a name="caching"></a>Gyorsítótárazás
 
-A DSA használatával a gyorsítótárazás alapértelmezés szerint ki van kapcsolva a CDN-ben, még akkor is `Cache-Control` , `Expires` ha a válaszban szerepel a forrás vagy a fejléc. A DSA általában olyan dinamikus eszközökhöz használatos, amelyeket nem szabad gyorsítótárazni, mivel azok egyediek az egyes ügyfelek számára. A gyorsítótárazás megszüntetheti ezt a viselkedést.
+A DSA használatával a gyorsítótárazás alapértelmezés szerint ki van kapcsolva a CDN-ben, még akkor is, ha a válaszban szerepel a forrás `Cache-Control` vagy a `Expires` fejléc. A DSA általában olyan dinamikus eszközökhöz használatos, amelyeket nem szabad gyorsítótárazni, mivel azok egyediek az egyes ügyfelek számára. A gyorsítótárazás megszüntetheti ezt a viselkedést.
 
 Ha olyan webhellyel rendelkezik, amely a statikus és a dinamikus eszközök kombinációját használja, a legjobb megoldás a legjobb teljesítmény érdekében. 
 
@@ -183,7 +183,7 @@ A szabályok motor elérése:
 
 Azt is megteheti, hogy két CDN-végpontot is használhat: egy DSA-val optimalizált végpontot, amely dinamikus eszközöket és egy statikus optimalizálási típussal optimalizált másik végpontot (például általános webes kézbesítés) biztosít a gyorsítótárazható eszközök kézbesítéséhez. Módosítsa a weblap URL-címeit, hogy közvetlenül a használni kívánt CDN-végponton lévő eszközre hivatkozzon. 
 
-Például: `mydynamic.azureedge.net/index.html` egy dinamikus lap, és betöltődik a DSA-végpontból.A HTML-oldal több olyan statikus objektumra hivatkozik, mint például a JavaScript-kódtárak vagy a statikus CDN- `mystatic.azureedge.net/banner.jpg` végpontról betöltött képek, például a és `mystatic.azureedge.net/scripts.js`a. 
+Például: `mydynamic.azureedge.net/index.html` egy dinamikus lap, és betöltődik a DSA-végpontból.A HTML-oldal több olyan statikus objektumra hivatkozik, mint például a JavaScript-kódtárak vagy a statikus CDN-végpontról betöltött képek, például a `mystatic.azureedge.net/banner.jpg` és a `mystatic.azureedge.net/scripts.js` . 
 
 
 

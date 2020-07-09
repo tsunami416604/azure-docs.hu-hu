@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855899"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -167,7 +167,7 @@ A kétlépéses ellenőrzés engedélyezésének lehetőségei és előnyei a k�
 * MFA-kihívás megkövetelése Microsoft Authenticatoron keresztül az összes felhasználó számára
 * Örökölt hitelesítési protokollok korlátozása.
 
-Ez a módszer minden licencelési szinten elérhető, de nem keverhető a meglévő feltételes hozzáférési szabályzatokkal. További információt az Azure AD biztonsági alapértelmezései című témakörben talál.
+Ez a módszer minden licencelési szinten elérhető, de nem keverhető a meglévő feltételes hozzáférési szabályzatokkal. További információt az [Azure ad biztonsági alapértelmezései](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) című témakörben talál.
 
 **2. lehetőség**: [a multi-Factor Authentication engedélyezése a felhasználói állapot módosításával](../../active-directory/authentication/howto-mfa-userstates.md).   
 **Előnyök**: Ez a hagyományos módszer a kétlépéses ellenőrzés megkövetelésére. [Az azure multi-Factor Authentication a felhőben és az azure multi-Factor Authentication-kiszolgáló](/azure/active-directory/authentication/concept-mfa-whichversion)is működik. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük minden alkalommal, amikor bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
@@ -189,7 +189,7 @@ Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének en
 Ez a módszer a Azure AD Identity Protection kockázatértékelés használatával határozza meg, hogy szükséges-e kétlépéses ellenőrzés a felhasználói és bejelentkezési kockázatok alapján minden felhőalapú alkalmazás esetében. Ehhez a módszerhez Azure Active Directory P2 licencelés szükséges. A metódussal kapcsolatban a [Azure Active Directory Identity Protectionban](/azure/active-directory/identity-protection/overview)talál további információt.
 
 > [!Note]
-> 1. lehetőség, a Multi-Factor Authentication engedélyezése a felhasználói állapot módosításával, felülbírálja a feltételes hozzáférési szabályzatokat. Mivel a 2. és a 3. lehetőség feltételes hozzáférési házirendeket használ, nem használhatja az 1. lehetőséget.
+> 2. lehetőség: Multi-Factor Authentication engedélyezése a felhasználói állapot módosításával, felülbírálja a feltételes hozzáférési szabályzatokat. Mivel a 3. és a 4. lehetőség feltételes hozzáférési házirendeket használ, nem használhatja a 2. lehetőséget.
 
 Azok a szervezetek, amelyek nem vesznek fel az Identity Protection további rétegeit, például a kétlépéses ellenőrzést, hajlamosabbak a hitelesítő adatok ellopására irányuló támadásokra. A hitelesítő adatok ellopására irányuló támadás adatsérülést eredményezhet.
 

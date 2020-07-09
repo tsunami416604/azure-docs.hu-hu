@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849660"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -64,11 +64,11 @@ A fürt interneten keresztüli elérését nyilvános átjárón keresztül bizt
 
 A nyilvános átjárón keresztüli hozzáférés a 443 (HTTPS), a 22 és a 23 portra korlátozódik.
 
-|Port |Leírás |
+|Port |Description |
 |---|---|
 |443|A fő csomópontokon üzemeltetett Ambari és egyéb webes felhasználói felület vagy REST API-k elérésére szolgál.|
 |22|Az elsődleges fej csomópontjának vagy peremhálózati csomópontjának az SSH-val való elérésére szolgál.|
-|23|A másodlagos fej csomópontjának SSH-val való elérésére szolgál. Például `ssh username@mycluster-ssh.azurehdinsight.net` csatlakozik a **mycluster**nevű fürt elsődleges fő csomópontjára.|
+|23|A másodlagos fej csomópontjának SSH-val való elérésére szolgál. Például csatlakozik a `ssh username@mycluster-ssh.azurehdinsight.net` **mycluster**nevű fürt elsődleges fő csomópontjára.|
 
 Az SSH használatával kapcsolatos további információkért tekintse meg az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) -mel című dokumentumot.
 
@@ -85,7 +85,7 @@ export clusterName="CLUSTERNAME"
 curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 ```
 
-A parancs a következőhöz hasonló értéket ad vissza, amely tartalmazza a `oozie` parancshoz használandó belső URL-címet:
+A parancs a következőhöz hasonló értéket ad vissza, amely tartalmazza a parancshoz használandó belső URL-címet `oozie` :
 
 ```output
 "oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
@@ -97,7 +97,7 @@ További információ a Ambari REST API használatáról: a [HDInsight figyelés
 
 A következő módszerekkel csatlakozhat olyan csomópontokhoz, amelyek nem érhetők el közvetlenül az interneten keresztül:
 
-|Módszer |Leírás |
+|Metódus |Description |
 |---|---|
 |SSH|Miután az SSH-val csatlakozott egy Head csomóponthoz, a fő csomóponton található SSH használatával csatlakozhat a fürt más csomópontjaihoz. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |SSH-alagút|Ha az egyik olyan csomóponton üzemeltetett webszolgáltatáshoz kell hozzáférni, amely nem érhető el az interneten, SSH-alagutat kell használnia. További információ: [SSH-alagút használata HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) -dokumentummal.|
@@ -109,7 +109,7 @@ A fő csomópontokon futó szolgáltatások állapotának megtekintéséhez hasz
 
 ### <a name="ambari-web-ui"></a>Ambari webes felhasználói felület
 
-A Ambari webes felhasználói felülete a `https://CLUSTERNAME.azurehdinsight.net`következő címen tekinthető meg:. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a fürt HTTP-felhasználói hitelesítő adatait. Az alapértelmezett HTTP-Felhasználónév a **rendszergazda** , a jelszó pedig a fürt létrehozásakor megadott jelszó.
+A Ambari webes felhasználói felülete a következő címen tekinthető meg: `https://CLUSTERNAME.azurehdinsight.net` . Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a fürt HTTP-felhasználói hitelesítő adatait. Az alapértelmezett HTTP-Felhasználónév a **rendszergazda** , a jelszó pedig a fürt létrehozásakor megadott jelszó.
 
 Amikor megérkezik a Ambari lapra, a telepített szolgáltatások megjelennek a lap bal oldalán.
 
@@ -119,7 +119,7 @@ Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A s
 
 A következő riasztások segítik a fürt rendelkezésre állásának figyelését:
 
-| Riasztás neve                               | Leírás                                                                                                                                                                                  |
+| Riasztás neve                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metrikus figyelő állapota                    | Ez a riasztás a mérőszámok figyelő folyamatának állapotát jelzi a figyelő állapotának parancsfájlja alapján.                                                                                   |
 | Ambari-ügynök szívverése                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot egy ügynökkel.                                                                                                                        |
@@ -241,14 +241,16 @@ Minden egyes főcsomópont egyedi naplóbejegyzést tartalmazhat, ezért mindké
 
 Az SSH File Transfer Protocol vagy a Secure File Transfer Protocol (SFTP) használatával is csatlakozhat a fő csomóponthoz, és közvetlenül is letöltheti a naplófájlokat.
 
-Az SSH-ügyfelekhez hasonlóan a fürthöz való csatlakozáskor meg kell adnia a fürt SSH-felhasználói fiókjának nevét és SSH-címeit. Például: `sftp username@mycluster-ssh.azurehdinsight.net`. Ha a rendszer kéri, adja meg a fiók jelszavát, vagy adjon meg egy nyilvános `-i` kulcsot a paraméter használatával.
+Az SSH-ügyfelekhez hasonlóan a fürthöz való csatlakozáskor meg kell adnia a fürt SSH-felhasználói fiókjának nevét és SSH-címeit. Például: `sftp username@mycluster-ssh.azurehdinsight.net`. Ha a rendszer kéri, adja meg a fiók jelszavát, vagy adjon meg egy nyilvános kulcsot a `-i` paraméter használatával.
 
 A csatlakozás után megjelenik egy `sftp>` üzenet. Ebből a kérésből megváltoztathatja a címtárakat, a feltöltési és a letöltési fájlokat. Az alábbi parancsok például megváltoztatják a címtárakat a **/var/log/Hadoop/hdfs** könyvtárba, majd az összes fájlt letöltik a címtárból.
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
-Az elérhető parancsok listáját a `help` `sftp>` parancssorba írja be.
+Az elérhető parancsok listáját `help` a `sftp>` parancssorba írja be.
 
 > [!NOTE]  
 > Vannak olyan grafikus felületek is, amelyek lehetővé teszik a fájlrendszer megjelenítését az SFTP használatával való csatlakozáskor. Például a [MobaXTerm](https://mobaxterm.mobatek.net/) lehetővé teszi a fájlrendszer tallózását a Windows Intézőhöz hasonló felület használatával.
@@ -272,9 +274,9 @@ Fürt létrehozásakor megadhatja a csomópontok méretét. A következő inform
 
     ![A fürt létrehozási varázslójának képe a csomópontok méretének kiválasztásával](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI**: a [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) parancs használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper-csomópontok méretét a `--headnode-size`, `--workernode-size`, és `--zookeepernode-size` paraméterek használatával.
+* **Azure CLI**: a parancs használatakor beállíthatja a [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) fej, a feldolgozó és a ZooKeeper-csomópontok méretét a `--headnode-size` , `--workernode-size` , és paraméterek használatával `--zookeepernode-size` .
 
-* **Azure PowerShell**: a [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper csomópont méretét a `-HeadNodeSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paraméterek használatával.
+* **Azure PowerShell**: a [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper csomópont méretét a `-HeadNodeSize` , `-WorkerNodeSize` , és `-ZookeeperNodeSize` paraméterek használatával.
 
 ## <a name="next-steps"></a>További lépések
 

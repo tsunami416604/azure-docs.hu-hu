@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60632463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514595"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön
 ## <a name="overview"></a>Áttekintés
@@ -61,7 +60,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
    
      **1. ábra** Az eszköz előlapja  
    
-   | Címke | Leírás |
+   | Címke | Description |
    |:--- |:--- |
    | 1 |Némítás gomb |
    | 2 |Rendszerteljesítmény |
@@ -74,7 +73,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
    
      **2. ábra** A PCM hátoldala kijelző LED-ekkel
    
-   | Címke | Leírás |
+   | Címke | Description |
    |:--- |:--- |
    | 1 |AC áramszünet |
    | 2 |Ventilátor meghibásodása |
@@ -88,7 +87,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
    
      **3. ábra** Eszköz hátoldala beépülő modulokkal 
    
-   | Címke | Leírás |
+   | Címke | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |

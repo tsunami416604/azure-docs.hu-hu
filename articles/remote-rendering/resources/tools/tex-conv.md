@@ -6,20 +6,19 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680023"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv – textúra átalakító eszköz
 
 A TexConv egy parancssori eszköz, amely a szokásos bemeneti formátumokból, például a PNG, a TGA, a JPEG és a DDS használatával dolgozza fel a textúrákat a futásidejű felhasználáshoz optimalizált formátumba.
-Habár a leggyakoribb forgatókönyv egy bemeneti fájl `A.xxx` optimalizált formátumba `B.yyy`konvertálása, az eszköz számos további lehetőséget kínál a speciális használatra.
+Habár a leggyakoribb forgatókönyv egy bemeneti fájl `A.xxx` optimalizált formátumba konvertálása `B.yyy` , az eszköz számos további lehetőséget kínál a speciális használatra.
 
 ## <a name="command-line-help"></a>Parancssori Súgó
 
-Ha a TexConv. exe fájlt `--help` a paraméterrel futtatja, az összes elérhető lehetőség megjelenik. Emellett a TexConv kinyomtatja a használatban lévő beállításokat a végrehajtás során, hogy segítsen megérteni, hogy mi történik. További részletekért olvassa el ezt a kimenetet.
+TexConv.exe futtatása a (z `--help` ) paraméterrel az összes elérhető beállítást felsorolja. Emellett a TexConv kinyomtatja a használatban lévő beállításokat a végrehajtás során, hogy segítsen megérteni, hogy mi történik. További részletekért olvassa el ezt a kimenetet.
 
 ## <a name="general-usage"></a>Általános használat
 
@@ -37,13 +36,13 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="multiple-input-files"></a>Több bemeneti fájl
 
-Ha több bemeneti fájlból kívánja összeállítani a kimenetet, adja meg az `-in` összes bemeneti fájlt a beállítással növekvő számmal:
+Ha több bemeneti fájlból kívánja összeállítani a kimenetet, adja meg az összes bemeneti fájlt a `-in` beállítással növekvő számmal:
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-Cubemap 2D-textúrákból való összegyűjtésekor az egyik a következőt `-left`is `-top`használhatja `-bottom` `-front` `-right`:, `-back` , `-px`, `-nx`, `-py`vagy `-ny`, `-pz`, `-nz`,,,.
+Cubemap 2D-textúrákból való összegyűjtésekor az egyik a következőt is használhatja:,,,, `-right` `-left` `-top` `-bottom` `-front` `-back` vagy `-px` , `-nx` `-py` `-ny` `-pz` `-nz` ,,,,.
 
 Ha ezeket a bemeneteket a kimeneti fájlba szeretné képezni, megfelelő csatorna-megfeleltetésre van szükség.
 
@@ -67,7 +66,7 @@ Az egyes csatornák leképezésének megadása külön biztosítja a legnagyobb 
 
 A következő csatorna-leképezési lehetőségek érhetők el:
 
-- `-r`, `-g`, `-b`, `-a` : Az egycsatornás hozzárendelések meghatározása
+- `-r`, `-g` , `-b` , `-a` : Az egycsatornás hozzárendelések meghatározása
 - `-rg`: A vörös és a zöld csatorna hozzárendeléseinek meghatározása.
 - `-rgb`: A vörös, zöld és kék csatorna hozzárendeléseinek meghatározása.
 - `-rgba`: Megadja mind a négy csatorna hozzárendelését.
@@ -89,7 +88,7 @@ A csatornákat feketével vagy fehérrel is kitöltheti:
 
 ## <a name="common-options"></a>Gyakori beállítások
 
-A legérdekesebb lehetőségek alább láthatók. A további lehetőségek a következők `TexConv --help`:.
+A legérdekesebb lehetőségek alább láthatók. A további lehetőségek a következők: `TexConv --help` .
 
 ### <a name="output-type"></a>Kimenet típusa
 
@@ -111,7 +110,7 @@ Alapértelmezés szerint a TexConv a Mipmap hozza létre, ha a kimeneti formátu
 
 ### <a name="usage-srgb--gamma-correction"></a>Használat (sRGB/gamma-javítás)
 
-Ez `-usage` a beállítás határozza meg a kimenet célját, és így közli a TexConv, hogy a bemeneti és a kimeneti fájlok esetében a gamma-korrekciót kell-e alkalmazni. A használat csak az RGB-csatornákat érinti. Az alfa-csatorna mindig "lineáris" értékeket tartalmaz. Ha nincs megadva a használat, az "automatikus" mód megpróbálja észlelni a használatot az első bemeneti rendszerkép formátuma és fájlneve alapján. Például a single és a Dual Channel kimeneti formátum mindig lineáris. Tekintse meg a kimenetet, és tekintse meg, hogy milyen TexConv hozott létre.
+Ez a `-usage` beállítás határozza meg a kimenet célját, és így közli a TexConv, hogy a bemeneti és a kimeneti fájlok esetében a gamma-korrekciót kell-e alkalmazni. A használat csak az RGB-csatornákat érinti. Az alfa-csatorna mindig "lineáris" értékeket tartalmaz. Ha nincs megadva a használat, az "automatikus" mód megpróbálja észlelni a használatot az első bemeneti rendszerkép formátuma és fájlneve alapján. Például a single és a Dual Channel kimeneti formátum mindig lineáris. Tekintse meg a kimenetet, és tekintse meg, hogy milyen TexConv hozott létre.
 
 - `-usage Linear`: A kimeneti rendszerkép olyan értékeket tartalmaz, amelyek nem képviselnek színeket. Ez általában a fémes és a durva textúrák, valamint a különböző maszkok esetében van.
 

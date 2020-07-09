@@ -10,14 +10,13 @@ ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 3f2456370d6f74e5d34c6b387247a6de442acea7
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705865"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás paramétereinek használata
 
@@ -61,7 +60,7 @@ Tegyük fel például, hogy egy olyan [adatexportálási][writer] modullal kís�
    
    A Tulajdonságok ablaktábla alján található **webszolgáltatás-paraméterek** alatt egy bejegyzést adnak hozzá, amelynek a neve "a tárolótól kezdve a blobhoz" nevű elérési út. Ez az a webszolgáltatás-paraméter, amely most már társítva van ehhez az [adatexportálási][writer] modul-paraméterhez.
 4. A webszolgáltatás paraméterének átnevezéséhez kattintson a névre, írja be a "blob elérési útja" kifejezést, majd nyomja le az **ENTER** billentyűt. 
-5. A webszolgáltatás paraméter alapértelmezett értékének megadásához kattintson a név jobb oldalán látható ikonra, válassza az "alapértelmezett érték megadása" lehetőséget, adjon meg egy értéket (például "container1/output1. csv"), és nyomja le az **ENTER** billentyűt.
+5. A webszolgáltatás paraméter alapértelmezett értékének megadásához kattintson a név jobb oldalán látható ikonra, válassza az "alapértelmezett érték megadása" lehetőséget, adjon meg egy értéket (például "container1/output1.csv"), és nyomja le az **ENTER** billentyűt.
    
    ![Webszolgáltatás paraméter](./media/web-service-parameters/parameter.png)
 6. Kattintson a **Futtatás**gombra. 

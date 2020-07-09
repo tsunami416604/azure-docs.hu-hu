@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884868"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132721"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -20,7 +20,7 @@ Ahhoz, hogy Site Recovery replikáció működjön, az adott URL-címekhez vagy 
 
 | URL-cím | Részletek |
 |---|---|
-| `*.blob.core.windows.net` | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a `*.blob.core.windows.net`helyett. |
+| `*.blob.core.windows.net` | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
 | `login.microsoftonline.com` | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez. |
 | `*.hypervrecoverymanager.windowsazure.com` | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. A megfelelő _site Recovery IP-címet_ használhatja, ha a tűzfal proxyja támogatja az IP-címeket. |
 | `*.servicebus.windows.net` | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő _site Recovery figyelési IP-címet_ . |
@@ -51,7 +51,7 @@ Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha a DNS-kiszo
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>2. probléma: Site Recovery konfiguráció nem sikerült (151196)
 
 > [!NOTE]
-> Ha a virtuális gépek **szabványos** belső terheléselosztó mögött vannak, alapértelmezés szerint nem férnek hozzá az Office 365 IP-címeihez, például a `login.microsoftonline.com`következőhöz:. Módosítsa az **alapszintű** belső terheléselosztó típusára, vagy hozzon létre kimenő hozzáférést a [standard Load Balancer terheléselosztás és kimenő szabályok konfigurálása az Azure CLI használatával](/azure/load-balancer/configure-load-balancer-outbound-cli)című cikkben említettek szerint.
+> Ha a virtuális gépek **szabványos** belső terheléselosztó mögött vannak, alapértelmezés szerint nem férnek hozzá az Office 365 IP-címeihez, például a következőhöz: `login.microsoftonline.com` . Módosítsa az **alapszintű** belső terheléselosztó típusára, vagy hozzon létre kimenő hozzáférést a [standard Load Balancer terheléselosztás és kimenő szabályok konfigurálása az Azure CLI használatával](../load-balancer/configure-load-balancer-outbound-cli.md)című cikkben említettek szerint.
 
 #### <a name="possible-cause"></a>Lehetséges ok
 
@@ -60,7 +60,7 @@ Nem hozhatók összefüggésbe az Office 365-hitelesítés és az Identity IP4-v
 #### <a name="resolution"></a>Megoldás:
 
 - A Azure Site Recovery hozzáférést igényel az Office 365 IP-tartományokhoz a hitelesítéshez.
-- Ha az Azure hálózati biztonsági csoport (NSG) szabályait/tűzfal proxyját használja a kimenő hálózati kapcsolat vezérléséhez a virtuális gépen, ügyeljen arra, hogy az Office 365 IP-tartományokhoz való kommunikációt engedélyezze. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](/azure/virtual-network/security-overview#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
+- Ha az Azure hálózati biztonsági csoport (NSG) szabályait/tűzfal proxyját használja a kimenő hálózati kapcsolat vezérléséhez a virtuális gépen, ügyeljen arra, hogy az Office 365 IP-tartományokhoz való kommunikációt engedélyezze. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
 - Ha a jövőben új címeket adnak hozzá az Azure AD-hoz, létre kell hoznia új NSG-szabályokat.
 
 ### <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra
@@ -124,7 +124,7 @@ Az egyéni proxybeállítások érvénytelenek, és a Azure Site Recovery mobili
 
 #### <a name="resolution"></a>Megoldás:
 
-1. A mobilitási szolgáltatás ügynöke észleli a proxybeállításokat az IE-ből `/etc/environment` a Windows és Linux rendszeren.
+1. A mobilitási szolgáltatás ügynöke észleli a proxybeállításokat az IE-ből a Windows és `/etc/environment` Linux rendszeren.
 1. Ha inkább a proxyt szeretné beállítani Azure Site Recovery mobilitási szolgáltatáshoz, a proxy részleteit a _ProxyInfo. conf fájlban_ találja a következő helyen:
 
    - **Linux**:`/usr/local/InMage/config/`
@@ -143,8 +143,8 @@ Az egyéni proxybeállítások érvénytelenek, és a Azure Site Recovery mobili
 
 ### <a name="fix-the-problem"></a>A probléma javítása
 
-[A szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-tartományok](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)engedélyezéséhez kövesse a [hálózatkezelési útmutató dokumentum](site-recovery-azure-to-azure-networking-guidance.md)lépéseit.
+[A szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-tartományok](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)engedélyezéséhez kövesse a [hálózatkezelési útmutató dokumentum](./azure-to-azure-about-networking.md)lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-beli virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)

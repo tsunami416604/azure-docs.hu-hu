@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921598"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Hozzárendelési hibák elhárítása a Cloud Services telepítése során az Azure szolgáltatásban
 ## <a name="summary"></a>Összefoglalás
@@ -41,7 +41,7 @@ Ha egy foglalási kérelem egy fürtre van rögzítve, nagyobb eséllyel nem tal
 ### <a name="error-message"></a>Hibaüzenet
 A következő hibaüzenet jelenik meg:
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+> "A (z) {Operation ID} Azure-művelet meghiúsult a Code számítás. ConstrainedAllocationFailed. Részletek: a foglalás nem sikerült; nem lehet kielégíteni a megkötéseket a kérelemben. A kért új szolgáltatás üzembe helyezése egy affinitáscsoporthoz van kötve, egy virtuális hálózatot céloz, vagy már van egy üzemelő példány az üzemeltetett szolgáltatásban. Ezen feltételek bármelyike korlátozza az új üzembe helyezést bizonyos Azure-erőforrásokra. Próbálkozzon újra később, vagy próbálja meg csökkenteni a virtuális gép méretét vagy a szerepkörpéldányok számát. Ha lehetséges, távolítsa el a fenti korlátozásokat, vagy próbálja meg egy másik régióba telepíteni. "
 
 ### <a name="common-issues"></a>Gyakori problémák
 Az alábbi gyakori foglalási forgatókönyvek azt okozzák, hogy a foglalási kérelmek egyetlen fürthöz legyenek rögzítve.

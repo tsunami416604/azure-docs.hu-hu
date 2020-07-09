@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360310"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása
@@ -27,7 +26,7 @@ Az indítási feladatok olyan műveletek, amelyek a szerepkörök megkezdése el
 
 A környezeti változók egy indítási feladatba adják át az adatokat, a helyi tárterület pedig az indítási feladatokból származó információk továbbítására használható. Egy környezeti változó például megadhatja a telepíteni kívánt program elérési útját, és a fájlok megírhatók a helyi tárolóba, amelyet később a szerepkörök is elolvashatnak.
 
-Az indítási feladat adatokat és hibákat tud naplózni a **temp** környezeti változó által megadott könyvtárba. Az indítási feladat során a **temp** környezeti változó a *\\C:\\Resources Temp\\[GUID] értékre van feloldva. [ rolename]\\RoleTemp* -címtár a felhőben való futtatáskor.
+Az indítási feladat adatokat és hibákat tud naplózni a **temp** környezeti változó által megadott könyvtárba. Az indítási feladat során a **temp** környezeti változó a *C: \\ Resources \\ temp \\ [GUID] értékre van feloldva. [ rolename] \\ RoleTemp* -címtár a felhőben való futtatáskor.
 
 Az indítási feladatok két újraindítás között többször is végrehajthatók. Például az indítási feladat a szerepkör minden egyes újraindításakor fut, és a szerepkör-újraindítás pedig nem feltétlenül jár újraindítással. Az indítási feladatokat úgy kell megírni, hogy a több alkalommal is fussanak a problémák nélkül.
 
@@ -68,7 +67,7 @@ Ebben a példában egy **MyVersionNumber**nevű környezeti változó jön létr
 </Startup>
 ```
 
-A következő példában a **Startup. cmd** batch-fájl az "aktuális verzió 1.0.0.0" sort írja a StartupLog. txt fájlba a TEMP környezeti változó által megadott könyvtárban. A `EXIT /B 0` sor biztosítja, hogy az indítási tevékenység nulla **errorlevel** értékkel végződik.
+A következő példában a **Startup. cmd** batch-fájl az "aktuális verzió 1.0.0.0" sort írja a StartupLog.txt fájlba a TEMP környezeti változó által megadott könyvtárban. A `EXIT /B 0` sor biztosítja, hogy az indítási tevékenység nulla **errorlevel** értékkel végződik.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,7 +75,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> A Visual Studióban az indítási batch-fájl **Másolás a kimeneti könyvtárba** tulajdonságának úgy kell beállítania, hogy **mindig a másoláskor** ellenőrizze, hogy az indítási batch-fájl megfelelően van-e telepítve a projekthez az Azure-ban (**AppRoot\\bin** webes szerepkörökhöz, és **AppRoot** a feldolgozói szerepkörökhöz).
+> A Visual Studióban az indítási batch-fájl **Másolás a kimeneti könyvtárba** tulajdonságának úgy kell beállítania, hogy **mindig a másoláskor** ellenőrizze, hogy az indítási batch-fájl megfelelően van-e telepítve a projekthez az Azure-ban (**AppRoot \\ bin** webes szerepkörökhöz, és **AppRoot** a feldolgozói szerepkörökhöz).
 > 
 > 
 
@@ -87,7 +86,7 @@ Az alábbiakban a [ServiceDefinition. csdef] fájlban található **Task** elem 
 
 * A parancs a parancssori paraméterekkel, amely megkezdi az indítási feladatot.
 * Gyakran ez egy. cmd vagy. bat nevű batch-fájl fájlneve.
-* A feladat az üzemelő példány AppRoot\\bin mappájához képest. A környezeti változók nincsenek kibontva a feladat elérési útjának és fájljának meghatározásához. Ha a környezet bővítése kötelező, létrehozhat egy kis. cmd parancsfájlt, amely meghívja az indítási feladatot.
+* A feladat az üzemelő példány AppRoot \\ bin mappájához képest. A környezeti változók nincsenek kibontva a feladat elérési útjának és fájljának meghatározásához. Ha a környezet bővítése kötelező, létrehozhat egy kis. cmd parancsfájlt, amely meghívja az indítási feladatot.
 * Lehet egy konzolos alkalmazás vagy egy olyan batch-fájl, amely egy [PowerShell-parancsfájlt](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)indít el.
 
 **executionContext** – megadja az indítási feladat jogosultsági szintjét. A jogosultsági szint korlátozott vagy emelt szintű lehet:

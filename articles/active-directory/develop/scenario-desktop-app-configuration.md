@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558845"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó asztali alkalmazás: kód konfigurálása
 
@@ -26,7 +25,7 @@ Most, hogy létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a k
 
 A következő Microsoft Authentication librarys (MSALs) támogatja az asztali alkalmazásokat.
 
-  Microsoft Authentication Library | Leírás
+  Microsoft Authentication Library | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások több platformon, például a Linux, a Windows és a macOS rendszerben történő létrehozását.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását.
@@ -39,7 +38,7 @@ A kód szempontjából az asztali alkalmazások nyilvános ügyfélalkalmazások
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Létre kell hoznia és módosítania kell a `IPublicClientApplication`MSAL.net.
+Létre kell hoznia és módosítania kell a MSAL.NET `IPublicClientApplication` .
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -103,16 +102,16 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Részletek
+### <a name="learn-more"></a>Tudjon meg többet
 
 További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 
-- Az összes elérhető módosító listájának megtekintéséhez tekintse `PublicClientApplicationBuilder`meg a Reference dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- A alkalmazásban `PublicClientApplicationOptions`elérhető összes beállítás leírását lásd a [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) című témakörben.
+- Az összes elérhető módosító listájának `PublicClientApplicationBuilder` megtekintéséhez tekintse meg a Reference dokumentáció [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- A alkalmazásban elérhető összes beállítás leírását `PublicClientApplicationOptions` lásd a [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) című témakörben.
 
 ### <a name="complete-example-with-configuration-options"></a>Példa teljes konfigurációs beállításokkal
 
-Képzeljünk el egy .NET Core Console-alkalmazást, amely `appsettings.json` a következő konfigurációs fájllal rendelkezik:
+Képzeljünk el egy .NET Core Console-alkalmazást, amely a következő `appsettings.json` konfigurációs fájllal rendelkezik:
 
 ```json
 {
@@ -180,7 +179,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-A `.Build()` metódus hívása előtt felülbírálhatja a konfigurációt metódusok hívásával, `.WithXXX` ahogy azt korábban is láttuk.
+A metódus hívása előtt `.Build()` felülbírálhatja a konfigurációt `.WithXXX` metódusok hívásával, ahogy azt korábban is láttuk.
 
 # <a name="java"></a>[Java](#tab/java)
 

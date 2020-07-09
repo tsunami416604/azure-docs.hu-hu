@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: tamram
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 726fc9cc0e4eb5a8f9bed5cca8dd4d3df588ac7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371552"
 ---
 Az Azure Storage számos különböző típusú Storage-fiókot kínál. Mindegyik típus támogatja a különböző funkciókat, és saját díjszabási modellel rendelkezik. Vegye figyelembe ezeket a különbségeket, mielőtt létrehoz egy Storage-fiókot az alkalmazások számára legmegfelelőbb fiók típusának megállapításához. A Storage-fiókok típusai a következők:
@@ -28,9 +28,9 @@ Az alábbi táblázat a Storage-fiókok és azok képességeinek típusait ismer
 | Tárfiók típusa | Támogatott szolgáltatások                       | Támogatott teljesítményszint      | Támogatott hozzáférési szintek         | Replikációs lehetőségek               | Üzemi modell<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Titkosítás<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
 | Általános célú v2   | BLOB, fájl, üzenetsor, tábla, lemez és Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard, prémium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Gyors elérésű, ritka elérésű Archívum<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (előzetes verzió), RA-GZRS (előzetes verzió)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Titkosított              |
-| Általános célú v1   | BLOB, fájl, üzenetsor, tábla és lemez       | Standard, prémium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | N/A                            | LRS, GRS, RA-GRS                  | Resource Manager, klasszikus    | Titkosított              |
-| BlockBlobStorage   | BLOB (csak a Blobok letiltása és a Blobok hozzáfűzése) | Prémium                       | N/A                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Titkosított              |
-| FileStorage   | Csak fájl | Prémium                       | N/A                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Titkosított              |
+| Általános célú v1   | BLOB, fájl, üzenetsor, tábla és lemez       | Standard, prémium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | N.A.                            | LRS, GRS, RA-GRS                  | Resource Manager, klasszikus    | Titkosított              |
+| BlockBlobStorage   | BLOB (csak a Blobok letiltása és a Blobok hozzáfűzése) | Prémium                       | N.A.                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Titkosított              |
+| FileStorage   | Csak fájl | Prémium                       | N.A.                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Titkosított              |
 | BlobStorage         | BLOB (csak a Blobok letiltása és a Blobok hozzáfűzése) | Standard                      | Gyors elérésű, ritka elérésű Archívum<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Titkosított              |
 
 <div id="deployment-model"><sup>1</sup> A Azure Resource Manager üzembe helyezési modell használata ajánlott. A klasszikus üzemi modellt használó Storage-fiókok bizonyos helyszíneken is létrehozhatók, és a meglévő klasszikus fiókok továbbra is támogatottak. További információkért lásd: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager a klasszikus üzembe helyezéssel kapcsolatban: az üzembe helyezési modellek és az erőforrások állapotának ismertetése</a>.</div><br/>

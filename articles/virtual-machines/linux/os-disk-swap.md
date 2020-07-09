@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: a8c879ae56eb22d9817841667d33e37109a4f63d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759406"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Azure-beli virtuális gép által használt operációsrendszer-lemez módosítása a parancssori felület használatával
@@ -46,7 +45,7 @@ az vm stop \
 ```
 
 
-Használja az az [VM Update](/cli/azure/vm#az-vm-update) -t a `--osdisk` paraméter új lemezének teljes erőforrás-azonosítójával. 
+Használja az az [VM Update](/cli/azure/vm#az-vm-update) -t a paraméter új lemezének teljes erőforrás-azonosítójával. `--osdisk` 
 
 ```azurecli-interactive 
 az vm update \
@@ -64,6 +63,6 @@ az vm start \
 ```
 
    
-**További lépések**
+**Következő lépések**
 
 Lemez másolatának létrehozásához tekintse meg a [lemez pillanatképe](snapshot-copy-managed-disk.md)című témakört.

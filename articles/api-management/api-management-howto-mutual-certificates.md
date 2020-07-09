@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80347107"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Háttérszolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az Azure API Managementben
@@ -46,7 +46,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgálta
 3. Kattintson a **+ Hozzáadás** gombra.
     ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Keresse meg a tanúsítványt, adja meg annak AZONOSÍTÓját és jelszavát.
-5. Kattintson a **Létrehozás**gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
 > [!NOTE]
 > A tanúsítványnak **. pfx** formátumúnak kell lennie. Az önaláírt tanúsítványok engedélyezettek.
@@ -86,7 +86,7 @@ Ha a tanúsítványt egy API használja, megjelenik egy figyelmeztető képerny�
 
 ## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
 
-Ha önaláírt tanúsítványokat használ, le kell tiltania a tanúsítványlánc érvényesítését annak érdekében, hogy a API Management kommunikálni tudjon a háttérrendszer-rendszerrel. Ellenkező esetben 500 hibakódot ad vissza. [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) Ennek konfigurálásához használhatja az (új háttérrendszer) vagy [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) a (meglévő háttérrendszer) PowerShell-parancsmagokat, és beállíthatja a `-SkipCertificateChainValidation` paramétert a `True`következőre:.
+Ha önaláírt tanúsítványokat használ, le kell tiltania a tanúsítványlánc érvényesítését annak érdekében, hogy a API Management kommunikálni tudjon a háttérrendszer-rendszerrel. Ellenkező esetben 500 hibakódot ad vissza. Ennek konfigurálásához használhatja az [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérrendszer) vagy a [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (meglévő háttérrendszer) PowerShell-parancsmagokat, és beállíthatja a paramétert a következőre: `-SkipCertificateChainValidation` `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

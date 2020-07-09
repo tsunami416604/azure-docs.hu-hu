@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245820"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
@@ -32,8 +32,8 @@ A [githubon](https://github.com/azure-app-service)található összes Docker-fá
 
 | Verem           | Várt érték                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | a JAR-alkalmazás elindítására szolgáló parancs (például `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat          | egy parancsfájl helye a szükséges konfigurációk végrehajtásához (például `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | a JAR-alkalmazás elindítására szolgáló parancs (például `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
+| Tomcat          | egy parancsfájl helye a szükséges konfigurációk végrehajtásához (például `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | a PM2 konfigurációs fájl vagy a parancsfájl                                |
 | .NET Core       | a lefordított DLL-név a következőképpen`dotnet <myapp>.dll`                                 |
 | Ruby            | a Ruby-parancsfájl, amelybe az alkalmazást inicializálni szeretné                     |
@@ -70,7 +70,7 @@ Igen.
 
 **A webalkalmazások üzembe helyezéséhez használhatom a web *Deploy/MSDeploy* szolgáltatást?**
 
-Igen, meg kell adnia egy *false (hamis*) `WEBSITE_WEBDEPLOY_USE_SCM` nevű alkalmazás-beállítást.
+Igen, meg kell adnia egy `WEBSITE_WEBDEPLOY_USE_SCM` *false (hamis*) nevű alkalmazás-beállítást.
 
 **Az alkalmazás git-telepítése meghiúsul a Linux-webalkalmazások használatakor. Hogyan lehet megkerülni a problémát?**
 
@@ -84,13 +84,13 @@ Ha a git-telepítés nem sikerül a linuxos webalkalmazáshoz, az alkalmazás k�
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Ha hibaüzenet jelenik meg, hogy a `curl` parancs nem található, győződjön meg róla, hogy az előző `apt-get install curl` `curl` parancs futtatása előtt telepíti a curlot.
+   Ha hibaüzenet jelenik meg, hogy a `curl` parancs nem található, győződjön meg róla, hogy az `apt-get install curl` előző parancs futtatása előtt telepíti a curlot `curl` .
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-**Webes szoftvercsatornát szeretnék használni a saját Node. js-alkalmazásban, a beállított speciális beállításokban vagy konfigurációkon?**
+**Webes szoftvercsatornát szeretnék használni a Node.js alkalmazásban, a beállítani kívánt speciális beállításokat vagy konfigurációkat?**
 
-Igen, tiltsa `perMessageDeflate` le a kiszolgálóoldali Node. js-kódot. Ha például a socket.io-t használja, használja a következő kódot:
+Igen, tiltsa le a `perMessageDeflate` kiszolgálóoldali Node.js kódot. Ha például a socket.io-t használja, használja a következő kódot:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -108,21 +108,21 @@ Igen, a git üzembe helyezése során a kudu meg kell állapítania, hogy egy PH
 
 ## <a name="custom-containers"></a>Egyéni tárolók
 
-**Saját egyéni tárolót használok. Szeretném, hogy a platform csatlakoztatjon egy SMB- `/home/` megosztást a címtárhoz.**
+**Saját egyéni tárolót használok. Szeretném, hogy a platform csatlakoztatjon egy SMB-megosztást a `/home/` címtárhoz.**
 
-Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás **nincs megadva** , vagy *igaz*értékre van `/home/` állítva, a **rendszer megosztja** a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között **megmaradnak** . Ha explicit módon `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítja a *Hamis értéket* , a rendszer letiltja a csatlakoztatást.
+Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás nincs **megadva** , vagy *igaz*értékre van állítva, a `/home/` **rendszer megosztja** a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között **megmaradnak** . Ha explicit módon beállítja a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *Hamis értéket* , a rendszer letiltja a csatlakoztatást.
 
 **Az egyéni tároló hosszú időt vesz igénybe, és a platform újraindítja a tárolót, mielőtt befejezi a kezdést.**
 
-Beállíthatja azt az időtartamot, ameddig a platform várakozik, mielőtt újraindítja a tárolót. Ehhez állítsa a kívánt értékre `WEBSITES_CONTAINER_START_TIME_LIMIT` az alkalmazás beállítását. Az alapértelmezett érték 230 másodperc, a maximális érték pedig 1800 másodperc.
+Beállíthatja azt az időtartamot, ameddig a platform várakozik, mielőtt újraindítja a tárolót. Ehhez állítsa a `WEBSITES_CONTAINER_START_TIME_LIMIT` kívánt értékre az alkalmazás beállítását. Az alapértelmezett érték 230 másodperc, a maximális érték pedig 1800 másodperc.
 
 **Mi a saját beállításjegyzék-kiszolgáló URL-címének formátuma?**
 
-Adja meg a beállításjegyzék teljes URL- `http://` címét `https://`, beleértve a vagy a-t.
+Adja meg a beállításjegyzék teljes URL-címét, beleértve a vagy a-t `http://` `https://` .
 
 **Mi a rendszerkép nevének formátuma a privát beállításjegyzékben?**
 
-Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name`használja a [ `az` parancssori eszközt](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name` használja a [ `az` parancssori eszközt](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Ki lehet-e tenni egynél több portot az egyéni tároló rendszerképén?**
 
@@ -153,7 +153,7 @@ Ahhoz, hogy az ACR-t több tárolóval is használhassa, az **összes tároló l
 Hozza létre az alábbi Alkalmazásbeállítások:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (teljes URL-cím, `https://<server-name>.azurecr.io`pl.:)
+- DOCKER_REGISTRY_SERVER_URL (teljes URL-cím, pl.: `https://<server-name>.azurecr.io` )
 - DOCKER_REGISTRY_SERVER_PASSWORD (rendszergazdai hozzáférés engedélyezése az ACR-beállításokban)
 
 A konfigurációs fájlon belül az alábbi példához hasonló módon hivatkozhat az ACR-képre:

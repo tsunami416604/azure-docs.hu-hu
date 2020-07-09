@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 25ad14ac8922a4284833cab28dc3e4aa8b478397
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81450207"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118338"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával
 
@@ -29,7 +29,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-KONZOLját](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használhatja a Gremlin API-adatokkal való együttműködéshez. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
-![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
+:::image type="content" source="./media/create-graph-gremlin-console/gremlin-console.png" alt-text="Azure Cosmos DB az Apache Gremlin-konzolból":::
 
 A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](https://tinkerpop.apache.org/downloads.html) tölthető le.
 
@@ -63,26 +63,31 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) tele
     kapcsolatkészlet|{enableSsl: true}|A TLS-hez tartozó kapcsolatok készletének beállítása.
     szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
-    A gazdagépek értékéhez másolja a **Gremlin URI** értéket az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
+   A gazdagépek értékéhez másolja a **GREMLIN URI** értékét az **Áttekintés** lapról:
 
-    A jelszó értékéhez másolja az **Elsődleges kulcs** értékét a **Kulcsok** lapról: ![Az Azure Portal Kulcsok lapján található elsődleges kulcs megtekintése és másolása](./media/create-graph-gremlin-console/keys.png)
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása":::
 
-A remote-secure.yaml fájlnak így kell kinéznie:
+   A jelszó értékéhez másolja az **elsődleges kulcsot** a **kulcsok** lapról:
 
-```
-hosts: [your_database_server.gremlin.cosmos.azure.com] 
-port: 443
-username: /dbs/your_database_account/colls/your_collection
-password: your_primary_key
-connectionPool: {
-  enableSsl: true
-}
-serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
-```
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Az elsődleges kulcs megtekintése és másolása a Azure Portal, kulcsok lapon":::
 
-Ügyeljen arra, hogy a gazdagépek paraméter értékét a szögletes zárójelben ([]) belül betakarja. 
+   A remote-secure.yaml fájlnak így kell kinéznie:
+
+   ```
+   hosts: [your_database_server.gremlin.cosmos.azure.com] 
+   port: 443
+   username: /dbs/your_database_account/colls/your_collection
+   password: your_primary_key
+   connectionPool: {
+     enableSsl: true
+   }
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.   ser.GraphSONMessageSerializerV2d0, config: {    serializeResultToString: true }}
+   ```
+
+   Ügyeljen arra, hogy a gazdagépek paraméter értékét a szögletes zárójelben ([]) belül betakarja. 
 
 1. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
+
 1. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
     > [!TIP]
@@ -93,7 +98,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
    > [!NOTE]
    > Ha nem futtatja a `:remote console` parancsot, azonban minden konzolparancsot a távoli kiszolgálóra szeretne irányítani, a parancs elé helyezze a(z) `:>` előtagot, tehát például a következőhöz hasonlóképp futtassa a parancsot: `:> g.V().count()`. Ez az előtag a parancs része, és fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál. Az előtag kihagyása arra utasítja a konzolt, hogy helyileg, gyakran egy, a memóriában tárolt gráfon hajtsa végre a parancsot. A(z) `:>` előtag alkalmazása távoli parancs végrehajtására utasítja a konzolt ebben az esetben az Azure Cosmos DB-n (a localhost emulátoron vagy egy Azure-példányon).
 
-Remek! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
+Nagyszerű! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
 
 Próbáljon ki egy egyszerű count() parancsot. Írja be a következőket a konzolon, amikor a rendszer kéri:
 
@@ -309,7 +314,7 @@ Gratulálunk! Az Azure Cosmos DB: Gremlin API-oktatóanyag végére ért.
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

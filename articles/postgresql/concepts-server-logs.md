@@ -5,13 +5,12 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/25/2020
+ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392811"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -41,11 +40,11 @@ Az alapértelmezett naplózási formátum a Azure Database for PostgreSQL. log. 
 
 Azure Database for PostgreSQL rövid távú tárolási helyet biztosít a. log fájlok számára. Egy új fájl 1 óránként vagy 100 MB-ban kezdődik, attól függően, hogy melyik érkezik először. A rendszer a naplófájlokat a postgres-ből kibocsátva az aktuális fájlhoz fűzi.  
 
-A rövid távú naplófájl megőrzési időtartamát a `log_retention_period` paraméter használatával állíthatja be. Az alapértelmezett érték 3 nap, a megadható legnagyobb érték a 7 nap. A rövid távú tárolási hely legfeljebb 1 GB naplófájlt tud tárolni. 1 GB után a rendszer törli a legrégebbi fájlokat a megőrzési időtartamtól függetlenül, hogy helyet szabadítson fel az új naplók számára. 
+A rövid távú naplófájl megőrzési időtartamát a paraméter használatával állíthatja be `log_retention_period` . Az alapértelmezett érték 3 nap, a megadható legnagyobb érték a 7 nap. A rövid távú tárolási hely legfeljebb 1 GB naplófájlt tud tárolni. 1 GB után a rendszer törli a legrégebbi fájlokat a megőrzési időtartamtól függetlenül, hogy helyet szabadítson fel az új naplók számára. 
 
 A naplók és a napló-elemzések hosszú távú megőrzése érdekében letöltheti a. log fájlokat, és áthelyezheti azokat egy külső szolgáltatásba. A fájlokat a [Azure Portal](howto-configure-server-logs-in-portal.md), az [Azure CLI](howto-configure-server-logs-using-cli.md)használatával töltheti le. Azt is megteheti, hogy Azure Monitor diagnosztikai beállításokat konfigurál, amelyek automatikusan kibocsátják a naplókat (JSON formátumban) a hosszú távú helyekre. Erről a lehetőségről az alábbi részben olvashat bővebben. 
 
-A. log fájlok létrehozásához állítsa a paramétert `logging_collector` kikapcsolva értékre. A kikapcsolás. a naplófájl létrehozása ajánlott, ha Azure Monitor diagnosztikai beállításokat használ. Ez a konfiguráció csökkenti a további naplózás teljesítményére gyakorolt hatást.
+A. log fájlok létrehozásához állítsa a paramétert `logging_collector` KIkapcsolva értékre. A kikapcsolás. a naplófájl létrehozása ajánlott, ha Azure Monitor diagnosztikai beállításokat használ. Ez a konfiguráció csökkenti a további naplózás teljesítményére gyakorolt hatást.
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
 
@@ -82,6 +81,7 @@ Egy adott kiszolgáló összes postgres-naplójának keresése az elmúlt nap so
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 

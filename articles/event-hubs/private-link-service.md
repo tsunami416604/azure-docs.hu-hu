@@ -1,18 +1,14 @@
 ---
 title: Az Azure Event Hubs integrálása az Azure Private link Service szolgáltatással
 description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
-services: event-hubs
-author: spelluru
-ms.author: spelluru
-ms.date: 03/12/2020
-ms.service: event-hubs
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312833"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Az Azure Event Hubs integrálása az Azure Private-hivatkozással
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -22,7 +18,7 @@ A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcso
 További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> Ez a funkció csak a **dedikált** szinten támogatott. További információ a dedikált platformról: [dedikált Event Hubs áttekintése](event-hubs-dedicated-overview.md). 
+> Ez a funkció mind a **standard** , mind a **dedikált** szint esetében támogatott. 
 
 >[!WARNING]
 > A privát végpontok engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
@@ -62,7 +58,7 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
 2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
 3. Válassza ki a listából azt a **névteret** , amelyhez privát végpontot szeretne hozzáadni.
 4. Válassza a **hálózatkezelés** fület a **Beállítások**területen.
-5. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. Ha nem a Event Hubs dedikált szintjét használja, egy üzenet jelenik meg: **a Event Hubson a magánhálózati végponti kapcsolatok csak a dedikált fürtben létrehozott névterek által támogatottak**.
+5. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. 
 6. A lap tetején kattintson a **+ privát végpont** gombra.
 
     ![Kép](./media/private-link-service/private-link-service-3.png)
@@ -200,7 +196,7 @@ Négy kiépítési állapot létezik:
 
 | Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
 |--|--|--|
-| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74903109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84346314"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az Egyéni IPsec/IKE-házirendet az alapszintű SKU kivételével az összes Azure-beli SKU támogatja.
@@ -104,7 +104,7 @@ Igen. A virtuális hálózatok közötti alagút két kapcsolati erőforrásból
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hogyan kapcsolatok létrehozása IKEv1 vagy IKEv2 protokoll-típussal?
-Az IKEv1-kapcsolatok az alapszintű SKU kivételével minden Útvonalalapú VPN-típusban létrehozhatók. Kapcsolatok létrehozásakor megadhatja a IKEv1 vagy a IKEv2 kapcsolati protokoll típusát is. Ha nem adja meg a kapcsolati protokoll típusát, a rendszer a IKEv2 alapértelmezett beállításként használja, ahol alkalmazható. További információt a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) dokumentációjában talál. Az SKU-típusok és a IKEv1/IKEv2 támogatásával kapcsolatban lásd: [átjárók csatlakoztatása házirend alapú VPN-eszközökhöz](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+Az IKEv1-kapcsolatok az összes Útvonalalapú VPN-típuson hozhatók létre, kivéve az alapszintű SKU, standard SKU és más [örökölt SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku)-ket. Kapcsolatok létrehozásakor megadhatja a IKEv1 vagy a IKEv2 kapcsolati protokoll típusát is. Ha nem adja meg a kapcsolati protokoll típusát, a rendszer a IKEv2 alapértelmezett beállításként használja, ahol alkalmazható. További információt a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) dokumentációjában talál. Az SKU-típusok és a IKEv1/IKEv2 támogatásával kapcsolatban lásd: [átjárók csatlakoztatása házirend alapú VPN-eszközökhöz](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Engedélyezett a IKEv1 és a IKEv2 közötti kapcsolatok közötti átvitel?
 Igen. A IKEv1 és a IKEv2 kapcsolatok közötti átvitel támogatott.

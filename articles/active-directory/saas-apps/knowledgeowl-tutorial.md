@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc7d481b757a76ba65e0c78a93bde1bc58ace7cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e3931baa8bab6f21d0edfefd17b95f7ecf3f7be
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72791639"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a KnowledgeOwl
 
@@ -86,34 +86,34 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | | |
-    |-|-|
-    | `https://app.knowledgeowl.com/sp`|
-    | `https://app.knowledgeowl.com/sp/id/<unique ID>`|
+    ```http
+    https://app.knowledgeowl.com/sp
+    https://app.knowledgeowl.com/sp/id/<unique ID>
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | | |
-    |-|-|
-    | `https://subdomain.knowledgeowl.com/help/saml-login`|
-    | `https://subdomain.knowledgeowl.com/docs/saml-login`|
-    | `https://subdomain.knowledgeowl.com/home/saml-login`|
-    | `https://privatedomain.com/help/saml-login`|
-    | `https://privatedomain.com/docs/saml-login`|
-    | `https://privatedomain.com/home/saml-login`|
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | | |
-    |-|-|
-    | `https://subdomain.knowledgeowl.com/help/saml-login`|
-    | `https://subdomain.knowledgeowl.com/docs/saml-login`|
-    | `https://subdomain.knowledgeowl.com/home/saml-login`|
-    | `https://privatedomain.com/help/saml-login`|
-    | `https://privatedomain.com/docs/saml-login`|
-    | `https://privatedomain.com/home/saml-login`|
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. A tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján frissítenie kell ezeket az értékeket, amelyeket az oktatóanyag későbbi részében ismertetünk.
@@ -124,7 +124,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a KnowledgeOwl alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum | Névtér |
+    | Name | Forrás attribútum | Névtér |
     | ------------ | -------------------- | -----|
     | ssoid | User. mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -144,9 +144,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -190,16 +190,16 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     f. A **identitásszolgáltató kijelentkezési URL-címe** szövegmezőbe illessze be a **KIjelentkezési URL** -értéket, amelyet a Azure Portal másolt
 
-    g. Töltse fel a letöltött tanúsítványt a Azure Portal a **identitásszolgáltató feltöltése tanúsítványra**kattintva.
+    : Töltse fel a letöltött tanúsítványt a Azure Portal a **identitásszolgáltató feltöltése tanúsítványra**kattintva.
 
     h. Kattintson a **Térkép SAML-attribútumok** elemre az attribútumok leképezéséhez, és hajtsa végre a következő lépéseket:
 
     ![KnowledgeOwl-konfiguráció](./media/knowledgeowl-tutorial/configure3.png)
 
-    * Adja `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` meg az **SSO-azonosító** szövegmezőt
-    * Adja `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` meg a **Felhasználónév/e-mail** szövegmezőt.
-    * Az `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` utónév szövegmezőbe írja be a **nevet** .
-    * Adja `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` meg az **utolsó név** szövegmezőt.
+    * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` az **SSO-azonosító** szövegmezőt
+    * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` a **Felhasználónév/e-mail** szövegmezőt.
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`Az utónév szövegmezőbe írja be a **nevet** .
+    * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` az **utolsó név** szövegmezőt.
     * Kattintson a **Mentés** gombra
 
     i. Kattintson a lap alján található **Mentés** gombra.
@@ -219,7 +219,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a KnowledgeOwl csempére kattint, automatikusan be kell jelentkeznie arra a KnowledgeOwl, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

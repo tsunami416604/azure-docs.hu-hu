@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
 ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80060664"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Egy sikertelen, hibát eredményező vagy elutasított Azure-beli Linux rendszerű virtuális gép SSH-kapcsolatainak hibaelhárítása
@@ -60,10 +60,10 @@ A kezdéshez válassza ki a virtuális gépet a Azure Portalban. Görgessen le a
 ![Az SSH-konfiguráció vagy a hitelesítő adatok alaphelyzetbe állítása a Azure Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />Az SSH-konfiguráció alaphelyzetbe állítása
-Az SSH-konfiguráció alaphelyzetbe `Reset configuration only` állításához válassza a **Mode (mód** ) szakaszt az előző képernyőképen, majd válassza a **frissítés**lehetőséget. Ha a művelet befejeződött, próbálja meg újra elérni a virtuális gépet.
+Az SSH-konfiguráció alaphelyzetbe állításához válassza a `Reset configuration only` **Mode (mód** ) szakaszt az előző képernyőképen, majd válassza a **frissítés**lehetőséget. Ha a művelet befejeződött, próbálja meg újra elérni a virtuális gépet.
 
 ### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />Egy felhasználó SSH hitelesítő adatainak visszaállítása
-Egy meglévő felhasználó hitelesítő adatainak alaphelyzetbe állításához válassza `Reset SSH public key` az `Reset password` előző képernyőképen, vagy a **mód** szakaszban. Adja meg a felhasználónevet és az SSH-kulcsot vagy az új jelszót, majd válassza a **frissítés**lehetőséget.
+Egy meglévő felhasználó hitelesítő adatainak alaphelyzetbe állításához válassza `Reset SSH public key` `Reset password` az előző képernyőképen, vagy a **mód** szakaszban. Adja meg a felhasználónevet és az SSH-kulcsot vagy az új jelszót, majd válassza a **frissítés**lehetőséget.
 
 Ezen a menüben létrehozhat egy sudo jogosultságokkal rendelkező felhasználót is a virtuális gépen. Adja meg az új felhasználónevet és a hozzá tartozó jelszót vagy SSH-kulcsot, majd válassza a **frissítés**lehetőséget.
 
@@ -108,21 +108,21 @@ Ha létrehozta és feltöltött egy egyéni linuxos lemezképet, győződjön me
 
 ### <a name="reset-ssh-configuration"></a>SSH-konfiguráció visszaállítása
 Először próbálja meg alapértékre állítani az SSH-konfigurációt, és indítsa újra az SSH-kiszolgálót a virtuális gépen. Ez nem változtatja meg a felhasználói fiók nevét, jelszavát vagy SSH-kulcsát.
-Az alábbi példa az az [VM User reset-SSH](/cli/azure/vm/user) használatával állítja vissza az SSH- `myVM` `myResourceGroup`konfigurációt a (z) nevű virtuális gépen. A saját értékeit a következőképpen használhatja:
+Az alábbi példa az az [VM User reset-SSH](/cli/azure/vm/user) használatával állítja vissza az SSH-konfigurációt a (z) nevű virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Egy felhasználó SSH hitelesítő adatainak visszaállítása
-Az alábbi példa az az [VM User Update paranccsal](/cli/azure/vm/user) állítja vissza a hitelesítő `myUsername` adatokat a (z `myPassword` `myResourceGroup`) rendszerben megadott értékre a `myVM` (z) nevű virtuális gépen. A saját értékeit a következőképpen használhatja:
+Az alábbi példa az az [VM User Update paranccsal](/cli/azure/vm/user) állítja vissza a hitelesítő adatokat a (z `myUsername` ) rendszerben megadott értékre a (z `myPassword` ) nevű virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
      --username myUsername --password myPassword
 ```
 
-Ha SSH-kulcsos hitelesítést használ, alaphelyzetbe állíthatja egy adott felhasználó SSH-kulcsát. Az alábbi példa az az **VM Access set-Linux-User** `~/.ssh/id_rsa.pub` paranccsal frissíti a nevű `myUsername`felhasználónál tárolt SSH-kulcsot a nevű virtuális gépen. `myVM` `myResourceGroup` A saját értékeit a következőképpen használhatja:
+Ha SSH-kulcsos hitelesítést használ, alaphelyzetbe állíthatja egy adott felhasználó SSH-kulcsát. Az alábbi példa az az **VM Access set-Linux-User** paranccsal frissíti a nevű felhasználónál tárolt SSH-kulcsot a nevű `~/.ssh/id_rsa.pub` `myUsername` virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -133,7 +133,7 @@ az vm user update --resource-group myResourceGroup --name myVM \
 A Linux rendszerhez készült virtuálisgép-hozzáférési bővítmény egy olyan JSON-fájlban olvas be, amely meghatározza a végrehajtandó műveleteket. Ezek a műveletek közé tartozik az SSHD alaphelyzetbe állítása, az SSH-kulcs alaphelyzetbe állítása vagy a felhasználó hozzáadása. Továbbra is használhatja az Azure CLI-t a VMAccess-bővítmény meghívásához, de szükség esetén újra felhasználhatja a JSON-fájlokat több virtuális gépen. Ez a módszer lehetővé teszi a JSON-fájlok tárházának létrehozását, amely az adott forgatókönyvekhez hívható.
 
 ### <a name="reset-sshd"></a>Az SSHD alaphelyzetbe állítása
-Hozzon létre egy `settings.json` nevű fájlt a következő tartalommal:
+Hozzon létre egy nevű fájlt `settings.json` a következő tartalommal:
 
 ```json
 {
@@ -141,7 +141,7 @@ Hozzon létre egy `settings.json` nevű fájlt a következő tartalommal:
 }
 ```
 
-Az Azure CLI használatával a JSON-fájl megadásával meghívja a `VMAccessForLinux` bővítményt, hogy alaphelyzetbe állítsa az sshd-kapcsolatokat. Az alábbi példa az [az VM Extension set](/cli/azure/vm/extension) paranccsal állítja vissza az sshd- `myVM` `myResourceGroup`t a (z) nevű virtuális gépen. A saját értékeit a következőképpen használhatja:
+Az Azure CLI használatával a `VMAccessForLinux` JSON-fájl megadásával meghívja a bővítményt, hogy alaphelyzetbe állítsa az sshd-kapcsolatokat. Az alábbi példa az [az VM Extension set](/cli/azure/vm/extension) paranccsal állítja vissza az sshd-t a (z) nevű virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -149,7 +149,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Egy felhasználó SSH hitelesítő adatainak visszaállítása
-Ha az SSHD úgy tűnik, hogy megfelelően működjön, alaphelyzetbe állíthatja egy adakozó felhasználó hitelesítő adatait. Egy felhasználó jelszavának alaphelyzetbe állításához hozzon létre `settings.json`egy nevű fájlt. A következő példa visszaállítja a hitelesítő adatokat `myUsername` a alkalmazásban `myPassword`megadott értékre. Adja meg a következő sorokat a `settings.json` fájlba a saját értékeinek használatával:
+Ha az SSHD úgy tűnik, hogy megfelelően működjön, alaphelyzetbe állíthatja egy adakozó felhasználó hitelesítő adatait. Egy felhasználó jelszavának alaphelyzetbe állításához hozzon létre egy nevű fájlt `settings.json` . A következő példa visszaállítja a hitelesítő adatokat a `myUsername` alkalmazásban megadott értékre `myPassword` . Adja meg a következő sorokat a `settings.json` fájlba a saját értékeinek használatával:
 
 ```json
 {
@@ -157,7 +157,7 @@ Ha az SSHD úgy tűnik, hogy megfelelően működjön, alaphelyzetbe állíthatj
 }
 ```
 
-Vagy egy felhasználó SSH-kulcsának alaphelyzetbe állításához először hozzon `settings.json`létre egy nevű fájlt. Az alábbi `myUsername` példa alaphelyzetbe állítja a hitelesítő adatokat a alkalmazásban `myPassword`megadott értékre a ( `myVM` z `myResourceGroup`) nevű virtuális gépen. Adja meg a következő sorokat a `settings.json` fájlba a saját értékeinek használatával:
+Vagy egy felhasználó SSH-kulcsának alaphelyzetbe állításához először hozzon létre egy nevű fájlt `settings.json` . Az alábbi példa alaphelyzetbe állítja a hitelesítő adatokat a alkalmazásban `myUsername` megadott értékre a (z `myPassword` ) nevű virtuális gépen `myVM` `myResourceGroup` . Adja meg a következő sorokat a `settings.json` fájlba a saját értékeinek használatával:
 
 ```json
 {
@@ -165,7 +165,7 @@ Vagy egy felhasználó SSH-kulcsának alaphelyzetbe állításához először ho
 }
 ```
 
-A JSON-fájl létrehozása után az Azure CLI használatával hívja meg a `VMAccessForLinux` bővítményt az SSH-felhasználói hitelesítő adatok alaphelyzetbe állításához a JSON-fájl megadásával. Az alábbi példa alaphelyzetbe állítja a hitelesítő adatokat `myVM` a `myResourceGroup`(z) nevű virtuális gépen. A saját értékeit a következőképpen használhatja:
+A JSON-fájl létrehozása után az Azure CLI használatával hívja meg a `VMAccessForLinux` bővítményt az SSH-felhasználói hitelesítő adatok alaphelyzetbe állításához a JSON-fájl megadásával. Az alábbi példa alaphelyzetbe állítja a hitelesítő adatokat a (z) nevű virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -184,7 +184,7 @@ Ha létrehozta és feltöltött egy egyéni linuxos lemezképet, győződjön me
 ### <a name="reset-ssh-configuration"></a>SSH-konfiguráció visszaállítása
 Előfordulhat, hogy az SSHD-konfiguráció hibásan van konfigurálva, vagy a szolgáltatás hibát észlelt. Alaphelyzetbe állíthatja az SSHD-t, hogy az SSH-konfiguráció érvényes legyen. Az SSHD alaphelyzetbe állításához az első hibaelhárítási lépésnek kell lennie.
 
-A következő példa alaphelyzetbe állítja az SSHD `myVM` -t a nevű `myResourceGroup`erőforráscsoport egyik virtuális gépén. A következő módon használhatja saját virtuálisgép-és erőforráscsoport-nevét:
+A következő példa alaphelyzetbe állítja az SSHD-t a nevű erőforráscsoport egyik virtuális gépén `myVM` `myResourceGroup` . A következő módon használhatja saját virtuálisgép-és erőforráscsoport-nevét:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -192,14 +192,14 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Egy felhasználó SSH hitelesítő adatainak visszaállítása
-Ha az SSHD úgy tűnik, hogy megfelelően működjön, alaphelyzetbe állíthatja egy adakozó felhasználó jelszavát. Az alábbi `myUsername` példa alaphelyzetbe állítja a hitelesítő adatokat a alkalmazásban `myPassword`megadott értékre a ( `myVM` z `myResourceGroup`) nevű virtuális gépen. A saját értékeit a következőképpen használhatja:
+Ha az SSHD úgy tűnik, hogy megfelelően működjön, alaphelyzetbe állíthatja egy adakozó felhasználó jelszavát. Az alábbi példa alaphelyzetbe állítja a hitelesítő adatokat a alkalmazásban `myUsername` megadott értékre a (z `myPassword` ) nevű virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
      --user-name myUsername --password myPassword
 ```
 
-Ha SSH-kulcsos hitelesítést használ, alaphelyzetbe állíthatja egy adott felhasználó SSH-kulcsát. Az alábbi példa `~/.ssh/id_rsa.pub` frissíti a nevű `myUsername`felhasználóhoz tartozó SSH-kulcsot a nevű virtuális gépen. `myVM` `myResourceGroup` A saját értékeit a következőképpen használhatja:
+Ha SSH-kulcsos hitelesítést használ, alaphelyzetbe állíthatja egy adott felhasználó SSH-kulcsát. Az alábbi példa frissíti a nevű felhasználóhoz tartozó SSH-kulcsot a nevű `~/.ssh/id_rsa.pub` `myUsername` virtuális gépen `myVM` `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -215,7 +215,7 @@ Ha a Azure Portal használatával szeretne újraindítani egy virtuális gépet,
 ![Virtuális gép újraindítása a Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Az alábbi példa az az [VM restart](/cli/azure/vm) paranccsal indítja újra a `myVM` nevű virtuális gépet a named `myResourceGroup`Resource csoportban. A saját értékeit a következőképpen használhatja:
+Az alábbi példa az az [VM restart](/cli/azure/vm) paranccsal indítja újra a `myVM` nevű virtuális gépet a named Resource csoportban `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -225,7 +225,7 @@ az vm restart --resource-group myResourceGroup --name myVM
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-A következő példa újraindítja a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoporthoz. A saját értékeit a következőképpen használhatja:
+A következő példa újraindítja a nevű virtuális gépet `myVM` a nevű erőforráscsoporthoz `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```console
 azure vm restart --resource-group myResourceGroup --name myVM
@@ -245,7 +245,7 @@ Ha a Azure Portal használatával szeretné újratelepíteni a virtuális gépet
 ![Virtuális gép újbóli üzembe helyezése a Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Az alábbi példa az az [VM redeploy](/cli/azure/vm) paranccsal helyezi üzembe a nevű `myVM` virtuális gépet a nevű `myResourceGroup`erőforráscsoporthoz. A saját értékeit a következőképpen használhatja:
+Az alábbi példa az az [VM redeploy](/cli/azure/vm) paranccsal helyezi üzembe a nevű virtuális gépet `myVM` a nevű erőforráscsoporthoz `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM
@@ -253,7 +253,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 ### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-A következő példa újból üzembe helyezi a nevű `myVM` virtuális gépet a nevű `myResourceGroup`erőforráscsoporthoz. A saját értékeit a következőképpen használhatja:
+A következő példa újból üzembe helyezi a nevű virtuális gépet `myVM` a nevű erőforráscsoporthoz `myResourceGroup` . A saját értékeit a következőképpen használhatja:
 
 ```console
 azure vm redeploy --resource-group myResourceGroup --name myVM
@@ -277,9 +277,9 @@ Próbálja ki ezeket a lépéseket a klasszikus üzemi modell használatával l�
   * Hozzon létre egy *sudo* felhasználói fiókot.
   * Állítsa alaphelyzetbe az SSH-konfigurációt.
 * Keresse meg a virtuális gép erőforrás-állapotát bármilyen platformra vonatkozó probléma esetén.<br>
-     Válassza ki a virtuális gépet, és görgessen le a **Beállítások** > **állapotának**megtekintése elemre.
+     Válassza ki a virtuális gépet, és görgessen le a **Beállítások**  >  **állapotának**megtekintése elemre.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 * Ha továbbra sem tud SSH-t létesíteni a virtuális géppel a következő lépések után, tekintse meg a [részletes hibaelhárítási lépéseket](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a probléma megoldásához szükséges további lépések áttekintéséhez.
 * Az alkalmazás-hozzáférés hibaelhárításával kapcsolatos további információkért lásd: Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * A klasszikus üzemi modellel létrehozott virtuális gépek hibaelhárításával kapcsolatos további információkért lásd: [jelszó vagy SSH alaphelyzetbe állítása Linux-alapú virtuális gépekhez](../linux/classic/reset-access-classic.md).

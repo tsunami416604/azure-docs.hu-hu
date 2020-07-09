@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 82edee84317b5d542bf65e29514286f96c18bbcc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf2dbf501b5cd3b6cd0ab6b0e9bbbc2208c98a58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478450"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Az SQL on-demand (előzetes verzió) használata az Azure szinapszis Analytics szolgáltatásban a parketta beágyazott típusainak lekérdezése
 
@@ -41,7 +41,9 @@ FROM
 
 ## <a name="access-elements-from-nested-columns"></a>Elemek elérése beágyazott oszlopokból
 
-A következő lekérdezés beolvassa a *structExample. Parque* fájlt, és bemutatja, hogyan lehet egy beágyazott oszlop Surface elemeit:
+A következő lekérdezés beolvassa a *structExample. Parque* fájlt, és bemutatja, hogyan lehet egy beágyazott oszlop felületi elemeit beolvasni. A beágyazott értékekre kétféleképpen hivatkozhat:
+- A beágyazott érték elérési útjának kifejezésének megadása a típus megadása után.
+- Az oszlopnév formázása beágyazott elérési úttal a do "." paranccsal a mezőkre való hivatkozáshoz.
 
 ```sql
 SELECT
@@ -53,15 +55,15 @@ FROM
         FORMAT='PARQUET'
     )
     WITH (
-        -- you can see original n"sted columns values by uncommenting lines below
+        -- you can see original nested columns values by uncommenting lines below
         --DateStruct VARCHAR(8000),
-        [DateStruct.Date] DATE,
+        [DateValue] DATE '$.DateStruct.Date',
         --TimeStruct VARCHAR(8000),
         [TimeStruct.Time] TIME,
         --TimestampStruct VARCHAR(8000),
         [TimestampStruct.Timestamp] DATETIME2,
         --DecimalStruct VARCHAR(8000),
-        [DecimalStruct.Decimal] DECIMAL(18, 5),
+        DecimalValue DECIMAL(18, 5) '$.DecimalStruct.Decimal',
         --FloatStruct VARCHAR(8000),
         [FloatStruct.Float] FLOAT
     ) AS [r];
@@ -97,6 +99,39 @@ FROM
         DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
+```
+
+Explicit módon hivatkozhat a záradékban visszaadni kívánt oszlopokra is `WITH` :
+
+```sql
+SELECT DocId,
+    MapOfPersons,
+    JSON_QUERY(MapOfPersons, '$."John Doe"') AS [John]
+FROM
+    OPENROWSET(
+        BULK 'parquet/nested/mapExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) 
+    WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
+```
+
+A struktúra `MakOfPersons` oszlopként lesz visszaadva, `VARCHAR` és JSON-sztringként van formázva.
+
+## <a name="projecting-values-from-repeated-columns"></a>Értékek kivetítése ismétlődő oszlopokból
+
+Ha egyes oszlopokban skaláris értékek (például) tömbje van `[1,2,3]` , egyszerűen kibonthatja őket, és a fő sorral csatlakoztathatja őket a következő parancsfájl használatával:
+
+```sql
+SELECT
+    SimpleArray, Element
+FROM
+    OPENROWSET(
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) AS arrays
+    CROSS APPLY OPENJSON (SimpleArray) WITH (Element int '$') as array_values
 ```
 
 ## <a name="next-steps"></a>További lépések

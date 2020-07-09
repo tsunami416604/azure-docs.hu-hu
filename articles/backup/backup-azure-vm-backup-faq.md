@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800651"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
@@ -65,7 +64,7 @@ Igen. A biztonsági mentések a gép leállításakor futnak. A helyreállítás
 
 Igen. A biztonsági mentési feladatot megszakíthatja a **Pillanatképek állapotának megkezdéséhez** . Nem lehet megszakítani egy feladatot, ha a pillanatképből való adatátvitel folyamatban van.
 
-### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Engedélyeztem a Azure Backup szolgáltatás által létrehozott erőforráscsoport zárolását (például: `AzureBackupRG_<geo>_<number>`). A biztonsági mentések továbbra is működni fognak?
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Engedélyeztem a Azure Backup szolgáltatás által létrehozott erőforráscsoport zárolását (például: `AzureBackupRG_<geo>_<number>` ). A biztonsági mentések továbbra is működni fognak?
 
 Ha zárolja az Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek, mivel a rendszer legfeljebb 18 visszaállítási pontot tud megkezdeni.
 
@@ -166,9 +165,9 @@ A virtuális gép biztonsági mentése a módosított vagy az új szabályzatban
 2. Azure Backup konfigurált virtuális gépek áthelyezéséhez hajtsa végre a következő lépéseket:
 
    1. Keresse meg a virtuális gép helyét.
-   2. Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<location of your VM>_1`. Például *AzureBackupRG_westus2_1*
+   2. Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<location of your VM>_1` . Például *AzureBackupRG_westus2_1*
    3. A Azure Portalban tekintse meg a **rejtett típusok megjelenítése**részt.
-   4. Keresse meg a **Microsoft. számítás/restorePointCollections** típusú erőforrást, amely az elnevezési `AzureBackup_<name of your VM that you're trying to move>_###########`mintával rendelkezik.
+   4. Keresse meg a **Microsoft. számítás/restorePointCollections** típusú erőforrást, amely az elnevezési mintával rendelkezik `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
    6. A törlési művelet befejezése után áthelyezheti a virtuális gépet.
 

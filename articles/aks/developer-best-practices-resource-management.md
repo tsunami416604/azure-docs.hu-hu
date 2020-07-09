@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976065"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -23,7 +23,7 @@ Ez az ajánlott eljárás a fürt és a számítási feladatok alkalmazások fej
 > [!div class="checklist"]
 > * Mik a pod-erőforrásokra vonatkozó kérelmek és korlátozások
 > * Alkalmazások fejlesztésének és üzembe helyezésének módjai a fejlesztői és a Visual Studio Code használatával
-> * Az `kube-advisor` eszköz használata az üzemelő példányokkal kapcsolatos problémák kereséséhez
+> * Az eszköz használata az üzemelő `kube-advisor` példányokkal kapcsolatos problémák kereséséhez
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod-erőforrásokra vonatkozó kérelmek és korlátok meghatározása
 
@@ -76,9 +76,7 @@ További információ az erőforrás-mérésekről és a hozzárendelésekről: 
 
 Ajánlott **eljárási útmutató** – a fejlesztési csapatoknak egy AK-fürtön kell üzembe helyezniük és hibakeresést végezniük a dev Spaces használatával. Ez a fejlesztői modell gondoskodik arról, hogy a szerepköralapú hozzáférés-vezérlés, a hálózat vagy a tárolási igények az alkalmazás éles környezetben történő üzembe helyezése előtt legyenek implementálva.
 
-Az Azure dev Spaces révén közvetlenül egy AK-fürtön fejlesztheti, hibakeresést és tesztelheti az alkalmazásokat. A csapaton belüli fejlesztők együttműködve készítenek és tesztelnek az alkalmazások életciklusa során. Továbbra is használhatja a meglévő eszközöket, például a Visual studiót vagy a Visual Studio Code-ot. A dev Spaces szolgáltatáshoz olyan bővítmény van telepítve, amely lehetőséget ad az alkalmazás futtatására és hibakeresésére egy AK-fürtben:
-
-![Alkalmazások hibakeresése egy AK-fürtön a dev Spaces szolgáltatással](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+Az Azure dev Spaces révén közvetlenül egy AK-fürtön fejlesztheti, hibakeresést és tesztelheti az alkalmazásokat. A csapaton belüli fejlesztők együttműködve készítenek és tesztelnek az alkalmazások életciklusa során. Továbbra is használhatja a meglévő eszközöket, például a Visual studiót vagy a Visual Studio Code-ot. A dev Spaces szolgáltatáshoz olyan bővítmény van telepítve, amely lehetőséget ad az alkalmazás futtatására és hibakeresésére egy AK-fürtben.
 
 Ez az integrált fejlesztési és tesztelési folyamat a fejlesztői terekkel csökkenti a helyi tesztelési környezetek, például a [minikube][minikube]szükségességét. Ehelyett egy AK-fürtön fejlesztheti és tesztelheti. A fürt biztonságossá tétele és elkülönítése a fürt logikai elkülönítése érdekében a névterek használatáról szóló előző szakaszban látható. Ha alkalmazásai készen állnak az éles környezetbe való üzembe helyezésre, akkor magabiztosan üzembe helyezheti a fejlesztést egy valós AK-fürtön.
 
@@ -94,7 +92,7 @@ A [Kubernetes készült Visual Studio Code-bővítmény][vscode-kubernetes] seg�
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Az Kube-Advisor alkalmazással kapcsolatos problémák rendszeres keresése
 
-**Ajánlott eljárások – útmutató** – rendszeresen futtassa a `kube-advisor` nyílt forráskódú eszköz legújabb verzióját a fürtben felmerülő problémák észlelése érdekében. Ha egy meglévő AK-fürthöz erőforrás-kvótát alkalmaz `kube-advisor` , először futtassa a parancsot az erőforrás-kérelmeket és korlátozásokat nem tartalmazó hüvelyek kereséséhez.
+**Ajánlott eljárások – útmutató** – rendszeresen futtassa a `kube-advisor` nyílt forráskódú eszköz legújabb verzióját a fürtben felmerülő problémák észlelése érdekében. Ha egy meglévő AK-fürthöz erőforrás-kvótát alkalmaz, `kube-advisor` először futtassa a parancsot az erőforrás-kérelmeket és korlátozásokat nem tartalmazó hüvelyek kereséséhez.
 
 A [Kube-Advisor][kube-advisor] eszköz egy kapcsolódó, AK-beli nyílt forráskódú projekt, amely egy Kubernetes-fürtöt és a megtalált problémákkal kapcsolatos jelentéseket keres. Az egyik hasznos lehetőség az, hogy azonosítsa azokat a hüvelyeket, amelyek nem rendelkeznek erőforrás-kérelmekkel és korlátokkal.
 
@@ -119,7 +117,7 @@ Az ajánlott eljárások némelyikének megvalósításához tekintse meg a köv
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

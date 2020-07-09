@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
 ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672242"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics-bővítmény (WAD) konfigurációs sémájának verziói és előzményei
@@ -48,7 +47,7 @@ Az Azure Diagnostics különböző verziói eltérő konfigurációs sémákat h
 A Azure Monitor-fogadó támogatása. Ez a fogadó csak a teljesítményszámlálók esetében alkalmazható. Lehetővé teszi a virtuális gépen, VMSS vagy Cloud Service-ben gyűjtött teljesítményszámlálók küldését egyéni metrikák Azure Monitor. A Azure Monitor fogadó a következőket támogatja:
 * A Azure Monitor eljuttatott teljesítményszámlálók beolvasása a [Azure monitor metrikák API](https://docs.microsoft.com/rest/api/monitor/metrics/list) -kon keresztül.
 * Riasztás a Azure Monitor elküldhető összes teljesítményszámlálók számára az új, [egyesített riasztások](../../azure-monitor/platform/alerts-overview.md) használatával Azure monitor
-* A helyettesítő karakterek kezelése a teljesítményszámlálók esetében a mérőszámban a "példány" dimenzió. Ha például összegyűjtötte a "LogicalDisk (\*)/DiskWrites/sec" számlálót, akkor az egyes logikai lemezek (C:, D: stb.) esetében a "példány" dimenzióra bontva vagy a riasztást is fel lehet osztani a lemezre, illetve a riasztásra.
+* A helyettesítő karakterek kezelése a teljesítményszámlálók esetében a mérőszámban a "példány" dimenzió. Ha például összegyűjtötte a "LogicalDisk ( \* )/DiskWrites/sec" számlálót, akkor az egyes logikai lemezek (C:, D: stb.) esetében a "példány" dimenzióra bontva vagy a riasztást is fel lehet osztani a lemezre, illetve a riasztásra.
 
 Azure Monitor definiálása új fogadóként a diagnosztikai bővítmény konfigurációjában
 ```json
@@ -160,14 +159,14 @@ Hozzáadta a mosogató elemet, és lehetővé teszi a diagnosztikai adataik kül
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 és diagnosztikai bővítmény 1,3
 A Visual Studióban a Cloud Service-projektek esetében a következő módosítások történnek. (Ezek a módosítások az Azure SDK újabb verzióira is érvényesek.)
 
-* A helyi emulátor mostantól támogatja a diagnosztikát. Ez a módosítás azt jelenti, hogy diagnosztikai adatokat gyűjthet, és biztosítja, hogy az alkalmazás a megfelelő nyomkövetést hozza létre a Visual Studióban történő fejlesztés és tesztelés során. A kapcsolati `UseDevelopmentStorage=true` karakterlánc lehetővé teszi a diagnosztikai adatgyűjtést, miközben a Cloud Service-projektet a Visual Studióban futtatja az Azure Storage Emulator használatával. Az összes diagnosztikai adatokat a (fejlesztői tároló) Storage-fiók gyűjti.
+* A helyi emulátor mostantól támogatja a diagnosztikát. Ez a módosítás azt jelenti, hogy diagnosztikai adatokat gyűjthet, és biztosítja, hogy az alkalmazás a megfelelő nyomkövetést hozza létre a Visual Studióban történő fejlesztés és tesztelés során. A kapcsolati karakterlánc `UseDevelopmentStorage=true` lehetővé teszi a diagnosztikai adatgyűjtést, miközben a Cloud Service-projektet a Visual Studióban futtatja az Azure Storage Emulator használatával. Az összes diagnosztikai adatokat a (fejlesztői tároló) Storage-fiók gyűjti.
 * A diagnosztika Storage-fiók kapcsolati karakterláncát (Microsoft. WindowsAzure. plugins. Diagnostics. ConnectionString) a szolgáltatás konfigurációs (. cscfg) fájljában ismét tárolja a rendszer. Az Azure SDK 2,5-as verziójában a Diagnostics Storage-fiók meg lett adva a Diagnostics. wadcfgx fájlban.
 
 A kapcsolati karakterlánc az Azure SDK 2,4-es és korábbi verzióiban, illetve az Azure SDK 2,6-es és újabb verzióiban is működik.
 
 * Az Azure SDK 2,4-es és korábbi verzióiban a diagnosztika beépülő modul a következőhöz használta a kapcsolódási karakterláncot a diagnosztikai naplók átadásához szükséges Storage-fiók adatainak lekéréséhez:.
 * Az Azure SDK 2,6-as és újabb verzióiban a Visual Studio a diagnosztika-kapcsolódási karakterlánc használatával konfigurálja a diagnosztika bővítményt a közzététel során a megfelelő Storage-fiók adataival. A kapcsolódási karakterlánc lehetővé teszi különböző tárolási fiókok definiálását különböző szolgáltatási konfigurációkhoz, amelyeket a Visual Studio a közzétételkor használni fog. Mivel azonban a diagnosztikai beépülő modul már nem érhető el (az Azure SDK 2,5 után), a. cscfg fájl önmagában nem tudja engedélyezni a diagnosztikai bővítményt. A bővítményt külön kell engedélyeznie, például a Visual Studióban vagy a PowerShellben.
-* A diagnosztikai bővítmény PowerShell-lel való konfigurálásának egyszerűbbé tétele érdekében a Visual studióból származó csomag kimenete tartalmazza az egyes szerepkörökhöz tartozó diagnosztikai bővítmény nyilvános konfigurációs XML-fájlját is. A Visual Studio a diagnosztikai kapcsolódási karakterlánc használatával tölti fel a nyilvános konfigurációban lévő Storage-fiók adatait. A nyilvános konfigurációs fájlok a Extensions mappában jönnek létre, és követik `PaaSDiagnostics.<RoleName>.PubConfig.xml`a mintát. A PowerShell-alapú telepítések ezt a mintát használhatják az egyes konfigurációknak egy szerepkörhöz való leképezéséhez.
+* A diagnosztikai bővítmény PowerShell-lel való konfigurálásának egyszerűbbé tétele érdekében a Visual studióból származó csomag kimenete tartalmazza az egyes szerepkörökhöz tartozó diagnosztikai bővítmény nyilvános konfigurációs XML-fájlját is. A Visual Studio a diagnosztikai kapcsolódási karakterlánc használatával tölti fel a nyilvános konfigurációban lévő Storage-fiók adatait. A nyilvános konfigurációs fájlok a Extensions mappában jönnek létre, és követik a mintát `PaaSDiagnostics.<RoleName>.PubConfig.xml` . A PowerShell-alapú telepítések ezt a mintát használhatják az egyes konfigurációknak egy szerepkörhöz való leképezéséhez.
 * A. cscfg fájlban található kapcsolati karakterláncot a Azure Portal is használja a diagnosztikai információ eléréséhez, hogy az megjelenjen a **figyelés** lapon. A kapcsolati karakterlánc szükséges ahhoz, hogy a szolgáltatás beállítható legyen a portálon a részletes monitorozási adatai megjelenítéséhez.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Projektek migrálása az Azure SDK 2,6-es és újabb verzióiba
@@ -181,7 +180,7 @@ Ha az Azure SDK 2,5-ból az Azure SDK 2,6-es vagy újabb verziójára végez át
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>Mit jelent a "fejlesztési tárolói kapcsolatok frissítése karakterláncok..." jelölőnégyzetet?
 A **diagnosztikai és gyorsítótárazási Microsoft Azure a Storage-fiók hitelesítő adataival történő Microsoft Azure közzétételkor a frissítési fejlesztési tárolóhoz való kapcsolódáshoz használt karakterláncok** jelölőnégyzetének megadásával egyszerűen frissítheti a fejlesztői fiók kapcsolódási karakterláncait a közzététel során megadott Azure Storage-fiókkal.
 
-Tegyük fel például, hogy bejelöli ezt a jelölőnégyzetet, `UseDevelopmentStorage=true`és a diagnosztikai kapcsolatok karakterlánca határozza meg. Amikor közzéteszi a projektet az Azure-ban, a Visual Studio automatikusan frissíti a diagnosztikai kapcsolódási karakterláncot a Közzétételi varázslóban megadott Storage-fiókkal. Ha azonban valódi Storage-fiókot adott meg diagnosztikai kapcsolatok karakterláncként, akkor a rendszer ezt a fiókot használja helyette.
+Tegyük fel például, hogy bejelöli ezt a jelölőnégyzetet, és a diagnosztikai kapcsolatok karakterlánca határozza meg `UseDevelopmentStorage=true` . Amikor közzéteszi a projektet az Azure-ban, a Visual Studio automatikusan frissíti a diagnosztikai kapcsolódási karakterláncot a Közzétételi varázslóban megadott Storage-fiókkal. Ha azonban valódi Storage-fiókot adott meg diagnosztikai kapcsolatok karakterláncként, akkor a rendszer ezt a fiókot használja helyette.
 
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Az Azure SDK 2,4-es és korábbi verziói, valamint az Azure SDK 2,5-es és újabb verziói közötti diagnosztikai funkciók
 Ha az Azure SDK 2,4-ból az Azure SDK 2,5-es vagy újabb verziójára frissíti a projektet, vegye figyelembe a következő diagnosztikai funkciók különbségeit.

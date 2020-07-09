@@ -15,10 +15,10 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60733317"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódolás automatikusan generált bitráta-létrával
@@ -37,7 +37,7 @@ Ha szeretné megtekinteni a készlet használatának módját, tekintse meg [a f
 
 Ez a szakasz három példát mutat be a Media Services kódoló által előállított kimeneti videó rétegekre, a **AdaptiveStreaming** -készlettel való kódolás eredményeképpen. A kimenet minden esetben tartalmaz egy csak hangot tartalmazó MP4-fájlt, amely 128 kbps-nál kódolt sztereó hanggal rendelkezik.
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó réteget hoz létre:
 
 |Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
@@ -49,7 +49,7 @@ A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó rét
 |5|270|480|720|
 |6|180|320|380|
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réteget állít elő:
 
 |Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
@@ -60,7 +60,7 @@ A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réte
 |4|270|480|600|
 |5|180|320|320|
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 A "360" magasságú és "29,970" framerátát tartalmazó forrás 3 videó réteget hoz létre:
 
 |Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|

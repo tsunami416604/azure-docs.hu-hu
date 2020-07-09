@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128959"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>A Kubernetes főcsomópont-naplóinak engedélyezése és áttekintése az Azure Kubernetes Service-ben (AKS)
@@ -39,7 +39,7 @@ A következő példa-portálon a *diagnosztikai beállítások* ablak látható:
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Tesztelési Pod-t ütemezhet az AK-fürtön
 
-A naplók létrehozásához hozzon létre egy új Pod-t az AK-fürtben. Az alábbi példa YAML-jegyzék használatával hozhat létre alapszintű NGINX-példányt. Hozzon létre egy `nginx.yaml` nevű fájlt egy tetszőleges szerkesztőben, és illessze be az alábbi tartalmat:
+A naplók létrehozásához hozzon létre egy új Pod-t az AK-fürtben. Az alábbi példa YAML-jegyzék használatával hozhat létre alapszintű NGINX-példányt. Hozzon létre egy nevű fájlt `nginx.yaml` egy tetszőleges szerkesztőben, és illessze be az alábbi tartalmat:
 
 ```yaml
 apiVersion: v1

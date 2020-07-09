@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e47440a54d733d0b5d849123633bf7e067fcd81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805697"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Olyan fiók létrehozása, amely támogatja az ügyfél által felügyelt kulcsokat a táblákhoz és a várólistákhoz
 
@@ -61,7 +61,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -93,7 +93,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -119,7 +119,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -138,8 +138,8 @@ Ha a PowerShell használatával szeretne létrehozni egy olyan Storage-fiókot, 
 
 Ezután hozzon létre egy általános célú v2 Storage-fiókot a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancs meghívásával a megfelelő paraméterekkel:
 
-- Adja meg `-EncryptionKeyTypeForQueue` a kapcsolót, és állítsa `Account` be annak értékét úgy, hogy a fiók titkosítási kulcsát használja a várólista-tárolóban tárolt adattitkosításhoz.
-- Adja meg `-EncryptionKeyTypeForTable` a kapcsolót, és állítsa `Account` be annak értékét úgy, hogy a fiók titkosítási kulcsát használja a Table Storage-ban tárolt adattitkosításhoz.
+- Adja `-EncryptionKeyTypeForQueue` meg a kapcsolót, és állítsa be annak értékét úgy `Account` , hogy a fiók titkosítási kulcsát használja a várólista-tárolóban tárolt adattitkosításhoz.
+- Adja `-EncryptionKeyTypeForTable` meg a kapcsolót, és állítsa be annak értékét úgy `Account` , hogy a fiók titkosítási kulcsát használja a Table Storage-ban tárolt adattitkosításhoz.
 
 Az alábbi példa bemutatja, hogyan hozhat létre olyan általános célú v2-es Storage-fiókot, amely olvasási hozzáférésű geo-redundáns tárolóhoz (RA-GRS) van konfigurálva, és amely a fiók titkosítási kulcsát használja az üzenetsor és a tábla tárolásához szükséges adat titkosítására. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -159,8 +159,8 @@ Ha az Azure CLI-t szeretné használni egy olyan Storage-fiók létrehozásához
 
 Ezután hozzon létre egy általános célú v2-es Storage-fiókot az az [Storage Account Create](/cli/azure/storage/account#az-storage-account-create) parancs meghívásával a megfelelő paraméterekkel:
 
-- Adja meg `--encryption-key-type-for-queue` a kapcsolót, és állítsa `Account` be annak értékét úgy, hogy a fiók titkosítási kulcsát használja a várólista-tárolóban tárolt adattitkosításhoz.
-- Adja meg `--encryption-key-type-for-table` a kapcsolót, és állítsa `Account` be annak értékét úgy, hogy a fiók titkosítási kulcsát használja a Table Storage-ban tárolt adattitkosításhoz.
+- Adja `--encryption-key-type-for-queue` meg a kapcsolót, és állítsa be annak értékét úgy `Account` , hogy a fiók titkosítási kulcsát használja a várólista-tárolóban tárolt adattitkosításhoz.
+- Adja `--encryption-key-type-for-table` meg a kapcsolót, és állítsa be annak értékét úgy `Account` , hogy a fiók titkosítási kulcsát használja a Table Storage-ban tárolt adattitkosításhoz.
 
 Az alábbi példa bemutatja, hogyan hozhat létre olyan általános célú v2-es Storage-fiókot, amely olvasási hozzáférésű geo-redundáns tárolóhoz (RA-GRS) van konfigurálva, és amely a fiók titkosítási kulcsát használja az üzenetsor és a tábla tárolásához szükséges adat titkosítására. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -222,11 +222,11 @@ Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsára támaszk
 
 ## <a name="verify-the-account-encryption-key"></a>A fiók titkosítási kulcsának ellenőrzése
 
-Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg az Azure CLI az [Storage Account](/cli/azure/storage/account#az-storage-account-show) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az `keyType` egyes szolgáltatások mezőjét a titkosítási tulajdonságon belül, és ellenőrizze, hogy az `Account`a értékre van-e állítva.
+Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg az Azure CLI az [Storage Account](/cli/azure/storage/account#az-storage-account-show) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az `keyType` egyes szolgáltatások mezőjét a titkosítási tulajdonságon belül, és ellenőrizze, hogy az a értékre van-e állítva `Account` .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az `KeyType` egyes szolgáltatásokhoz tartozó mezőt a `Encryption` tulajdonságon belül, és ellenőrizze, hogy `Account`az értéke a következő:.
+Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az `KeyType` egyes szolgáltatásokhoz tartozó mezőt a `Encryption` tulajdonságon belül, és ellenőrizze, hogy az értéke a következő: `Account` .
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -237,7 +237,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg az az [Storage Account](/cli/azure/storage/account#az-storage-account-show) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az `keyType` egyes szolgáltatások mezőjét a titkosítási tulajdonságon belül, és ellenőrizze, hogy az `Account`a értékre van-e állítva.
+Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg az az [Storage Account](/cli/azure/storage/account#az-storage-account-show) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az `keyType` egyes szolgáltatások mezőjét a titkosítási tulajdonságon belül, és ellenőrizze, hogy az a értékre van-e állítva `Account` .
 
 ```azurecli
 az storage account show /
@@ -247,11 +247,11 @@ az storage account show /
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md) 
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md) 
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

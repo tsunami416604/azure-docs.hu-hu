@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945494"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor megismerése
 
 A Azure Cosmos DB Azure Monitor az egységes interaktív felhasználói felület összes Azure Cosmos DB erőforrásának teljes teljesítményét, hibáit, kapacitását és működési állapotát jeleníti meg. Ez a cikk segítséget nyújt az új figyelési élmény előnyeinek megismeréséhez, valamint arról, hogy miként módosíthatja és igazíthatja a felhasználói élményt a szervezet egyedi igényeinek megfelelően.   
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A tapasztalatok megismerése előtt meg kell ismernie, hogyan jeleníti meg és jeleníti meg az információkat. 
 
@@ -88,7 +88,7 @@ Válassza ki a **kapacitás** elemet az oldal tetején, és megnyílik a munkaf�
 
 Az áttekintő munkafüzethez hasonlóan az **előfizetés** oszlopban egy Azure Cosmos db erőforrás melletti legördülő lista is megjelenik, amely az adatbázist alkotó egyes tárolók részletezését mutatja.
 
-### <a name="operations"></a>Üzemeltetés 
+### <a name="operations"></a>Műveletek 
 
 Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Lehetővé teszi, hogy a kérések típusa szerinti bontásban megtekintse a kérelmeket. 
 
@@ -120,7 +120,11 @@ A munkafüzetek egy erőforráscsoporthoz lesznek mentve, vagy az Ön számára 
 
 ![A munkafüzet-katalógus indítása a parancssáv alapján](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
+
+## <a name="next-steps"></a>További lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
 

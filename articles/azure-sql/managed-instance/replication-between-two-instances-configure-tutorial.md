@@ -1,9 +1,9 @@
 ---
-title: Két Azure SQL felügyelt példány közötti replikáció konfigurálása
+title: A felügyelt példányok közötti replikáció konfigurálása
 titleSuffix: Azure SQL Managed Instance
 description: Ez az oktatóanyag bemutatja, hogyan konfigurálhatja a tranzakciós replikációt egy Azure SQL felügyelt példány közzétevője/terjesztője és egy SQL felügyelt példány előfizetője között.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,52 +12,52 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 5603c6a828eb27bec43cf1fcb1924ad3ec430685
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708476"
 ---
-# <a name="tutorial-configure-replication-between-two-azure-sql-managed-instances"></a>Oktatóanyag: két Azure SQL felügyelt példány közötti replikáció konfigurálása
+# <a name="tutorial-configure-replication-between-two-managed-instances"></a>Oktatóanyag: két felügyelt példány közötti replikáció konfigurálása
+
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-A tranzakciós replikáció lehetővé teszi, hogy az egyik adatbázisból egy másikba replikálja az adatait SQL Server vagy [Azure SQL felügyelt példányon](sql-managed-instance-paas-overview.md) (nyilvános előzetes verzió). SQL felügyelt példány lehet közzétevő, terjesztő vagy előfizető a replikációs topológiában. Lásd: [tranzakciós replikációs konfigurációk](replication-transactional-overview.md#common-configurations) az elérhető konfigurációkhoz.
+A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik adatbázisból egy másikba SQL Server vagy az [Azure SQL felügyelt példányain](sql-managed-instance-paas-overview.md) (nyilvános előzetes verzió). Az SQL felügyelt példánya lehet közzétevő, terjesztő vagy előfizető a replikációs topológiában. Lásd: [tranzakciós replikációs konfigurációk](replication-transactional-overview.md#common-configurations) az elérhető konfigurációkhoz.
 
 > [!NOTE]
 > Ez a cikk a [tranzakciós replikáció](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását.
 
-Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy SQL felügyelt példányt közzétevőként és terjesztőként, majd egy második SQL felügyelt példányt az előfizetőként.  
+Ez az oktatóanyag azt ismerteti, hogyan konfigurálhat egy felügyelt példányt közzétevőként és terjesztőként, majd egy második felügyelt példányt az előfizetőként.  
 
 ![Replikálás két felügyelt példány között](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
   > [!NOTE]
-  > - Ebből a cikkből megtudhatja, hogyan konfigurálhat egy speciális felhasználót a replikáció konfigurálásához egy SQL-alapú felügyelt példánnyal a végponttól a végéig, kezdve az erőforráscsoport létrehozásával. Ha már telepítette a felügyelt példányokat, ugorjon a [4. lépésre](#4---create-a-publisher-database) a közzétevői adatbázis létrehozásához, vagy a [6. lépést](#6---configure-distribution) , ha már rendelkezik közzétevői és előfizetői adatbázissal, és készen áll a replikáció konfigurálására.  
-  > - Ez a cikk a közzétevőt és a terjesztőt konfigurálja ugyanazon a felügyelt példányon. Ha a terjesztőt különálló, összekapcsolt példányra szeretné helyezni, tekintse meg az oktatóanyag a [mi közzétevő és a mi terjesztő közötti replikáció konfigurálása](replication-two-instances-and-sql-server-configure-tutorial.md)című témakört. 
+  > - Ebből a cikkből megtudhatja, hogyan konfigurálhat egy speciális felhasználót a replikáció és az SQL felügyelt példányok végpontok közötti, az erőforráscsoport létrehozásával történő konfigurálásának megkezdéséhez. Ha már telepítette a felügyelt példányokat, ugorjon a [4. lépésre](#4---create-a-publisher-database) a közzétevői adatbázis létrehozásához, vagy a [6. lépést](#6---configure-distribution) , ha már rendelkezik közzétevői és előfizetői adatbázissal, és készen áll a replikáció konfigurálására.  
+  > - Ez a cikk a közzétevőt és a terjesztőt konfigurálja ugyanazon a felügyelt példányon. Ha a terjesztőt külön felügyelt példányra kívánja helyezni, tekintse meg a [tranzakciós replikáció konfigurálása az Azure SQL felügyelt példány és a SQL Server között](replication-two-instances-and-sql-server-configure-tutorial.md)című oktatóanyagot. 
 
 ## <a name="requirements"></a>Követelmények
 
-A felügyelt SQL-példányok közzétevőként és/vagy terjesztőként való konfigurálásához a következők szükségesek:
+Ha úgy konfigurálja az SQL felügyelt példányt, hogy közzétevőként és/vagy terjesztőként működjön, a következők szükségesek:
 
-- A közzétevő SQL felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [vNet](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) -társítás a mindhárom entitás virtuális hálózatai között van konfigurálva. 
+- A közzétevő felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [virtuális](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) hálózatok közötti kapcsolat a mindhárom entitás virtuális hálózatai között lett konfigurálva. 
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között.
 - Egy Azure Storage-fiók megosztása a replikációs munkakönyvtárhoz.
-- A 445-es port (TCP kimenő) a NSG biztonsági szabályaiban van megnyitva az SQL felügyelt példányai számára az Azure-fájlmegosztás eléréséhez.  Ha hibát tapasztal `failed to connect to azure storage \<storage account name> with os error 53` , hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.
+- Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez.  Ha hibát tapasztal `failed to connect to azure storage \<storage account name> with os error 53` , hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.
 
 ## <a name="1---create-a-resource-group"></a>1 – erőforráscsoport létrehozása
 
 A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy erőforráscsoportot a névvel `SQLMI-Repl` .  
 
-## <a name="2---create-sql-managed-instances"></a>2 – felügyelt SQL-példányok létrehozása
+## <a name="2---create-managed-instances"></a>2 – felügyelt példányok létrehozása
 
-A [Azure Portal](https://portal.azure.com) használatával hozzon létre két [SQL felügyelt példányt](instance-create-quickstart.md) ugyanazon a virtuális hálózaton és alhálózaton. Adja meg például a két SQL felügyelt példány nevét:
+A [Azure Portal](https://portal.azure.com) használatával hozzon létre két [SQL felügyelt példányt](instance-create-quickstart.md) ugyanazon a virtuális hálózaton és alhálózaton. Nevezze el például a két felügyelt példányt:
 
 - `sql-mi-pub`(a véletlenszerűség néhány karakterrel együtt)
 - `sql-mi-sub`(a véletlenszerűség néhány karakterrel együtt)
 
-[Egy Azure-beli virtuális gépet is konfigurálnia](connect-vm-instance-configure.md) kell az SQL felügyelt példányaihoz való kapcsolódáshoz. 
+A felügyelt példányokhoz való [kapcsolódáshoz konfigurálnia kell egy Azure-beli virtuális gépet](connect-vm-instance-configure.md) is. 
 
-## <a name="3---create-azure-storage-account"></a>3 – Azure Storage-fiók létrehozása
+## <a name="3---create-an-azure-storage-account"></a>3 – Azure Storage-fiók létrehozása
 
 [Hozzon létre egy Azure Storage-fiókot](/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül. 
 
@@ -73,7 +73,7 @@ További információ: a [Storage-fiók elérési kulcsainak kezelése](../../st
 
 ## <a name="4---create-a-publisher-database"></a>4 – közzétevő adatbázis létrehozása
 
-Kapcsolódjon az `sql-mi-pub` SQL felügyelt példányához SQL Server Management Studio segítségével, és futtassa a következő Transact-SQL (T-SQL) kódot a közzétevő adatbázis létrehozásához:
+Kapcsolódjon a `sql-mi-pub` felügyelt példányhoz SQL Server Management Studio használatával, és futtassa a következő Transact-SQL (T-SQL) kódot a közzétevő adatbázis létrehozásához:
 
 ```sql
 USE [master]
@@ -107,7 +107,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5 – előfizetői adatbázis létrehozása
 
-Kapcsolódjon az `sql-mi-sub` SQL felügyelt példányához SQL Server Management Studio segítségével, és futtassa az alábbi T-SQL-kódot az üres előfizetői adatbázis létrehozásához:
+Kapcsolódjon a `sql-mi-sub` felügyelt példányhoz SQL Server Management Studio használatával, és futtassa az alábbi T-SQL-kódot az üres előfizetői adatbázis létrehozásához:
 
 ```sql
 USE [master]
@@ -128,7 +128,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6 – eloszlás konfigurálása
 
-Kapcsolódjon az `sql-mi-pub` SQL felügyelt példányához SQL Server Management Studio segítségével, és futtassa az alábbi T-SQL-kódot a terjesztési adatbázis konfigurálásához.
+Kapcsolódjon a `sql-mi-pub` felügyelt példányhoz SQL Server Management Studio segítségével, és futtassa az alábbi T-SQL-kódot a terjesztési adatbázis konfigurálásához.
 
 ```sql
 USE [master]
@@ -165,7 +165,7 @@ EXEC sp_adddistpublisher
    > [!NOTE]
    > Ügyeljen arra, hogy csak fordított perjelet ( `\` ) használjon a file_storage paraméterhez. A Forward perjel ( `/` ) használata hibát okozhat a fájlmegosztáshoz való csatlakozáskor.
 
-Ez a parancsfájl egy helyi közzétevőt konfigurál az SQL felügyelt példányán, hozzáadja a csatolt kiszolgálót, és létrehoz egy feladatot a SQL Server Agent számára.
+Ez a parancsfájl egy helyi közzétevőt konfigurál a felügyelt példányon, hozzáadja a csatolt kiszolgálót, és létrehoz egy feladatot a SQL Server ügynökhöz.
 
 ## <a name="8---create-publication-and-subscriber"></a>8 – kiadvány és előfizető létrehozása
 

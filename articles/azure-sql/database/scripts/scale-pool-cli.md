@@ -1,6 +1,6 @@
 ---
-title: 'Az CL: rugalmas készlet méretezése'
-description: Azure CLI-példa parancsfájl egy rugalmas készlet méretezéséhez Azure SQL Database
+title: 'Az Azure CLI: rugalmas készlet méretezése'
+description: Egy rugalmas készlet méretezése Azure SQL Databaseban egy Azure CLI-parancsfájl használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 04736fbfeef9cf0584cf7c1f1a5daf91813ecbc7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 30862a85796fbe4373a88d80d9a6d26c8cf98901
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053944"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196741"
 ---
-# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Rugalmas készlet méretezése a CLI használatával Azure SQL Database
+# <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Rugalmas készlet méretezése az Azure CLI használatával Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 Ez az Azure CLI-parancsfájl rugalmas készleteket hoz létre Azure SQL Database, áthelyezi a készletezett adatbázisokat, és módosítja a rugalmas készlet számítási méreteit.
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2,0-es vagy újabb verziójának kell futnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 

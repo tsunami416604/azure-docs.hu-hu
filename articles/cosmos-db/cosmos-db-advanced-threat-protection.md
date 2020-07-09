@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119270"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
 
@@ -48,7 +48,7 @@ A komplex veszélyforrások elleni védelem a következő szakaszokban ismertete
 
 2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
 
-    ![ATP beállítása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="ATP beállítása":::
 
 3. A **speciális biztonsági** beállítások panelen:
 
@@ -81,16 +81,16 @@ A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez hasz
 
 1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot, és keressen rá a Cosmos db házirend komplex **veszélyforrások elleni védelmének üzembe helyezése** lehetőségre.
 
-    ![Keresési szabályzat](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Keresési szabályzat"::: 
 
 1. Kattintson a komplex **veszélyforrások elleni védelem telepítése CosmosDB** házirendre, majd kattintson a **hozzárendelés**elemre.
 
-    ![Előfizetés vagy csoport kiválasztása](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Előfizetés vagy csoport kiválasztása":::
 
 
 1. A **hatókör** mezőben kattintson a három pontra, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **kiválasztás**elemre.
 
-    ![Házirend-definíciók lap](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Házirend-definíciók lap":::
 
 
 1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés**elemre.
@@ -104,11 +104,11 @@ Ha Azure Cosmos DB tevékenység anomália történik, a rendszer egy biztonság
 
  Azure Security Center az aktuális [biztonsági riasztásokat](../security-center/security-center-alerts-overview.md)áttekintheti és kezelheti.  Kattintson egy adott riasztásra [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) a lehetséges okok és az ajánlott műveletek megtekintéséhez és a lehetséges fenyegetések enyhítéséhez. Az alábbi képen egy példa látható a Security Centerban megadott riasztási adatokra.
 
- ![Fenyegetés részletei](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Fenyegetés részletei":::
 
 A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-mail-értesítést is küld. Az alábbi képen egy riasztási e-mail látható.
 
- ![Riasztás részletei](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Riasztás részletei":::
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP-riasztások Cosmos DB
 

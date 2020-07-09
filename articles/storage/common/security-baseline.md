@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751636"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -218,7 +218,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
-**Útmutató**: az Azure Storage-naplók áttekintéséhez léteznek a szokásos lehetőségek, például a log Analytics ajánlaton keresztüli lekérdezések, valamint a naplófájlok közvetlen megtekintésének egyedi lehetősége. Az Azure Storage-ban a naplófájlok olyan blobokban vannak tárolva, amelyeket közvetlenül http://accountname.blob.core.windows.net/$logs kell elérni (a naplózási mappa alapértelmezés szerint rejtve marad, ezért közvetlenül kell navigálnia. Nem jelenik meg a lista parancsaiban) 
+**Útmutató**: az Azure Storage-naplók áttekintéséhez léteznek a szokásos lehetőségek, például a log Analytics ajánlaton keresztüli lekérdezések, valamint a naplófájlok közvetlen megtekintésének egyedi lehetősége. Az Azure Storage-ban a naplófájlok olyan blobokban vannak tárolva, amelyeket közvetlenül http://accountname.blob.core.windows.net/ $logs kell elérni (a naplózási mappa alapértelmezés szerint rejtve marad, ezért közvetlenül kell navigálnia. Nem jelenik meg a lista parancsaiban) 
 
 Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak Azure Security Centerekkel, és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt. 
 
@@ -785,7 +785,10 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. Storage" névtérben egyéni szabályzatok létrehozásához a Storage-fiókok példányainak konfigurálásához vagy érvényesítéséhez. Az Azure Storage-fiókokhoz beépített Azure Policy-definíciókat is használhat, például: 
 
-Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz a komplex veszélyforrások elleni védelem telepítése a Storage-fiókok tárolási fiókjain át kell telepíteni az új Azure Resource Manager erőforrásokra való biztonságos átvitelt a Storage-fiókokra. 
+Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz  
+Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon  
+A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra  
+Engedélyezni kell a tárfiókokba történő biztonságos átvitelt  
 
 A Azure Security Center javaslatainak használata biztonságos alapkonfigurációként a Storage-fiókok számára. 
 

@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771672"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076946"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Paraméter |  | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | ID | Kötelező | Az Azure AD ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
 | Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
@@ -86,6 +86,8 @@ Ha `NameIDPolicy` meg van adni, a választható attribútumot is megadhatja `For
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Ez az érték engedélyezi Azure Active Directory számára a jogcím formátumának kiválasztását. Azure Active Directory a NameID páros-azonosítóként adja ki a problémát.
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory a NameID-jogcímet véletlenszerűen generált értékként adja ki, amely egyedi az aktuális egyszeri bejelentkezési művelethez. Ez azt jelenti, hogy az érték ideiglenes, és nem használható a hitelesítő felhasználó azonosítására.
 
+Ha `SPNameQualifier` meg van adva, az Azure ad a válaszban megegyező értéket fog tartalmazni `SPNameQualifier` .
+
 Az Azure AD figyelmen kívül hagyja az `AllowCreate` attribútumot.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -97,7 +99,7 @@ Az `Scoping` identitás-szolgáltatók listáját tartalmazó elem nem kötelez�
 Ha meg van adni, ne adja meg az `ProxyCount` attribútumot `IDPListOption` vagy az `RequesterID` elemet, mivel azok nem támogatottak.
 
 ### <a name="signature"></a>Aláírás
-Elemek nem tartalmazhatnak `Signature` elemet `AuthnRequest` . Az Azure AD nem érvényesíti az aláírt hitelesítési kérelmeket. A kérelmező általi ellenőrzést csak a regisztrált jogcímek fogyasztói szolgáltatásának URL-címeire válaszolva biztosítjuk.
+`Signature`Elemek elemének `AuthnRequest` megadása nem kötelező. Az Azure AD nem érvényesíti az aláírt hitelesítési kérelmeket, ha van ilyen aláírás. A kérelmező általi ellenőrzést csak a regisztrált jogcímek fogyasztói szolgáltatásának URL-címeire válaszolva biztosítjuk.
 
 ### <a name="subject"></a>Tárgy
 Ne tartalmazzon egy `Subject` elemet. Az Azure AD nem támogatja a kérelem tárgyának megadását, és hibaüzenetet ad vissza, ha van ilyen.
@@ -157,7 +159,7 @@ Az `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azur
 
 ### <a name="issuer"></a>Kiállító
 
-Az Azure AD az `Issuer` elemet arra az esetre állítja be, `https://sts.windows.net/<TenantIDGUID>/` ahol a \< TenantIDGUID> az Azure ad-bérlő bérlői azonosítója.
+Az Azure AD az `Issuer` elemet arra az esetre állítja be, ahol az az `https://sts.windows.net/<TenantIDGUID>/` \<TenantIDGUID> Azure ad-bérlő bérlői azonosítója.
 
 A kiállítói elemmel kapcsolatos válasz például a következő mintához hasonlóan néz ki:
 
@@ -192,7 +194,7 @@ A `ID` `IssueInstant` és az Azure ad mellett a `Version` Válasz elemében a k�
 
 #### <a name="issuer"></a>Kiállító
 
-Erre a beállításra akkor kerül sor, `https://sts.windows.net/<TenantIDGUID>/` Ha a \< TenantIDGUID> az Azure ad-bérlő bérlői azonosítója.
+Ez az a érték, ahol az az `https://sts.windows.net/<TenantIDGUID>/` \<TenantIDGUID> Azure ad-bérlő bérlői azonosítója.
 
 ```
 <Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>

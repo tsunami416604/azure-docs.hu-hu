@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803966"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Naplók lekérdezése Azure Monitor for VMs
 
@@ -26,7 +26,7 @@ Az egyedi folyamatok és számítógépek azonosításához belsőleg generált 
 - Számítógép: a *ResourceId* vagy a *ResourceName_s* használatával egyedileg azonosíthatja a számítógépeket egy log Analytics munkaterületen belül.
 - Folyamat: a *ResourceId* használatával egyedileg azonosíthatja a folyamatokat egy log Analytics munkaterületen belül. *ResourceName_s* a folyamat futása alatt álló számítógép kontextusában (MachineResourceName_s) egyedi. 
 
-Mivel a megadott időtartományban több rekord is létezhet egy adott folyamat és számítógép esetében, a lekérdezések több rekordot is visszaadhatnak ugyanahhoz a számítógéphez vagy folyamathoz. Ha csak a legújabb rekordot szeretné felvenni, `| summarize arg_max(TimeGenerated, *) by ResourceId` adja hozzá a lekérdezéshez.
+Mivel a megadott időtartományban több rekord is létezhet egy adott folyamat és számítógép esetében, a lekérdezések több rekordot is visszaadhatnak ugyanahhoz a számítógéphez vagy folyamathoz. Ha csak a legújabb rekordot szeretné felvenni, adja hozzá `| summarize arg_max(TimeGenerated, *) by ResourceId` a lekérdezéshez.
 
 ### <a name="connections-and-ports"></a>Kapcsolatok és portok
 
@@ -55,7 +55,7 @@ A költségeket és a bonyolultságot a kapcsolati rekordok nem jelölik az egye
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél IP-címe |
 |DestinationPort |A célhely portszáma |
-|Protocol (Protokoll) |A kapcsolathoz használt protokoll.  Az értékek a *TCP*. |
+|Protokoll |A kapcsolathoz használt protokoll.  Az értékek a *TCP*. |
 
 A csoportosítás hatásának kiszámításához a csoportosított fizikai kapcsolatok számával kapcsolatos információk a rekord következő tulajdonságaiban vannak megadva:
 
@@ -112,7 +112,7 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
-|Leírás |A megfigyelt fenyegetés leírása. |
+|Description |A megfigyelt fenyegetés leírása. |
 |TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga*és a *vörös*. |
 |Megbízhatóság |Az értékek *0 – 100*. |
 |Severity |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
@@ -133,7 +133,7 @@ A VMBoundPort összes rekordját a következő mezők azonosítják:
 |Folyamat | Azon folyamat (vagy folyamatok csoportjai) identitása, amelyekhez a port társítva van.|
 |IP | Port IP-címe (lehet helyettesítő IP-cím, *0.0.0.0*) |
 |Port |A portszám |
-|Protocol (Protokoll) | A protokoll.  Példa: *TCP* vagy *UDP* (csak a *TCP* jelenleg támogatott).|
+|Protokoll | A protokoll.  Példa: *TCP* vagy *UDP* (csak a *TCP* jelenleg támogatott).|
  
 Az identitás egy port a fenti öt mezőből származik, és a PortId tulajdonságban tárolódik. Ezzel a tulajdonsággal gyorsan megtalálhatja az adott port rekordjait az idő során. 
 
@@ -233,7 +233,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Csoport | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
 |FirstPid | A folyamat első PID-je |
-|Leírás | A folyamat leírása |
+|Description | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
 |TermékNév | A termék neve |
@@ -442,7 +442,7 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 |Computer | A számítógép teljes tartományneve | 
 |Forrás | *vm.azm.ms* |
 |Névtér | A teljesítményszámláló kategóriája | 
-|Name (Név) | A teljesítményszámláló neve |
+|Name | A teljesítményszámláló neve |
 |Headdel | Összegyűjtött érték | 
 |Címkék | A rekorddal kapcsolatos részletek. Az alábbi táblázatban láthatja a különböző bejegyzéstípusokkal használt címkéket.  |
 |Ügynökazonosító | Az egyes számítógépek ügynökének egyedi azonosítója |
@@ -451,10 +451,10 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 
 A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlálók az alábbi táblázatban láthatók:
 
-| Névtér | Name (Név) | Leírás | Unit (Egység) | Címkék |
+| Névtér | Name | Description | Unit (Egység) | Címkék |
 |:---|:---|:---|:---|:---|
 | Computer    | Szívverés             | Számítógép szívverése                        | | |
-| Memory (Memória)      | AvailableMB           | Rendelkezésre álló memória bájtjai                    | Bájt          | memorySizeMB – teljes memória mérete|
+| Memory (Memória)      | AvailableMB           | Rendelkezésre álló memória bájtjai                    | Megabájtban      | memorySizeMB – teljes memória mérete|
 | Network (Hálózat)     | WriteBytesPerSecond   | Hálózati írási bájtok másodpercenként            | BytesPerSecond | NetworkDeviceId – az eszköz azonosítója<br>bájtok – elküldési bájtok összesen |
 | Network (Hálózat)     | ReadBytesPerSecond    | Hálózati olvasási bájtok másodpercenként             | BytesPerSecond | networkDeviceId – az eszköz azonosítója<br>bájtok – fogadott bájtok összesen |
 | Processzor   | UtilizationPercentage | Processzor kihasználtsága (%)          | Százalék        | totalCpus – processzorok összesen |
@@ -467,7 +467,7 @@ A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlá
 | LogicalDisk | ReadLatencyMs         | Logikai lemez olvasási késése (ezredmásodperc)     | Ezredmásodpercben   | az eszköz mountId-csatlakoztatási azonosítója |
 | LogicalDisk | ReadBytesPerSecond    | Logikai lemez olvasási bájtjai másodpercenként        | BytesPerSecond | az eszköz mountId-csatlakoztatási azonosítója |
 | LogicalDisk | FreeSpacePercentage   | Logikai lemez – szabad terület százalékos aránya        | Százalék        | az eszköz mountId-csatlakoztatási azonosítója |
-| LogicalDisk | FreeSpaceMB           | Logikai lemez – szabad terület bájtjai             | Bájt          | az eszköz mountId-csatlakoztatási azonosítója<br>diskSizeMB – teljes lemez mérete |
+| LogicalDisk | FreeSpaceMB           | Logikai lemez – szabad terület bájtjai             | Megabájtban      | az eszköz mountId-csatlakoztatási azonosítója<br>diskSizeMB – teljes lemez mérete |
 | LogicalDisk | BytesPerSecond        | Logikai lemez bájtjai másodpercenként             | BytesPerSecond | az eszköz mountId-csatlakoztatási azonosítója |
 
 

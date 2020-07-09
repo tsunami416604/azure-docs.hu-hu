@@ -1,14 +1,14 @@
 ---
 title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
-ms.date: 04/21/2020
+ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097370"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044192"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -82,7 +82,7 @@ Ha egyik beépített szerepkör sem tartalmazza a szükséges engedélyeket, hoz
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy által érintett erőforrások
 
-Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/key-vault-overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
+Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/general/overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Javaslatok a szabályzatok kezeléséhez
 
@@ -158,6 +158,8 @@ Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdem�
 
 Ha egy kezdeményezési definícióban értéket hoz létre, nem adhat meg más értéket a kezdeményezési hozzárendelés során, mert nem része a listának.
 
+Ha többet szeretne megtudni a kezdeményezési definíciók struktúrájáról, tekintse át a [kezdeményezési definíció szerkezetét](./concepts/initiative-definition-structure.md).
+
 ### <a name="assignments"></a>Hozzárendelések
 
 A hozzárendelés olyan házirend-definíció vagy kezdeményezés, amely egy adott hatókörön belülre van rendelve. Ez a hatókör egy [felügyeleti csoportból](../management-groups/overview.md) egy adott erőforrásra terjedhet. A _hatókör_ kifejezés az összes olyan erőforrásra, erőforrás-csoportra, előfizetésre vagy felügyeleti csoportra vonatkozik, amelyhez a definíció hozzá van rendelve. A hozzárendeléseket az összes alárendelt erőforrás örökli. Ez a kialakítás azt jelenti, hogy az erőforráscsoporthoz alkalmazott definíció az adott erőforráscsoport erőforrásaira is vonatkozik. Kihagyhat azonban egy alhatókört a hozzárendelésből.
@@ -166,7 +168,7 @@ Az előfizetés hatókörében például hozzárendelhet egy olyan definíciót,
 
 Egy másik példában előfordulhat, hogy a felügyeleti csoport szintjén hozzá kell rendelnie egy erőforrástípus engedélyezési lista definícióját. Ezután rendeljen hozzá egy engedékenyebb szabályzatot (több erőforrástípus engedélyezése) alárendelt felügyeleti csoportban, vagy akár közvetlenül előfizetésekben is. Ez a példa azonban nem fog működni, mert Azure Policy egy explicit megtagadási rendszer. Ehelyett ki kell zárnia a alárendelt felügyeleti csoportot vagy előfizetést a felügyeleti csoport szintű hozzárendelésből. Ezután rendelje hozzá a további engedékenység definícióját a alárendelt felügyeleti csoport vagy az előfizetés szintjén. Ha bármely hozzárendelés egy erőforrás megtagadását eredményezi, akkor az erőforrás csak úgy engedélyezhető, hogy módosítsa a megtagadási hozzárendelést.
 
-A hozzárendelések portálon keresztüli beállításával kapcsolatos további információkért lásd: [szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához az Azure-környezetben](assign-policy-portal.md). A [PowerShellhez](assign-policy-powershell.md) és az [Azure CLI-hez](assign-policy-azurecli.md) is elérhetők lépések.
+A hozzárendelések portálon keresztüli beállításával kapcsolatos további információkért lásd: [szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához az Azure-környezetben](./assign-policy-portal.md). A [PowerShellhez](./assign-policy-powershell.md) és az [Azure CLI-hez](./assign-policy-azurecli.md) is elérhetők lépések. A hozzárendelési struktúrával kapcsolatos információkért lásd: [hozzárendelések szerkezete](./concepts/assignment-structure.md).
 
 ## <a name="maximum-count-of-azure-policy-objects"></a>Azure Policy objektumok maximális száma
 

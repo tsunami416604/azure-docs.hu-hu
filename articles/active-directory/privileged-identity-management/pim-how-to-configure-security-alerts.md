@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6273a5b62e5b84e53d5e54fdb840f32646939066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253311"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743898"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management
 
@@ -120,7 +120,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 | **Miért kapok ez a riasztás?** | Ugyanazon felhasználó több aktiválást is ugyanazzal a jogosultsági szinttel rendelkező szerepkörbe kapcsol egy támadás jeleként. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és győződjön meg arról, hogy a Kiemelt szerepkör [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy elvégezze a feladatait. |
 | **Megelőzés** | Győződjön meg arról, hogy a Kiemelt szerepkörök [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy a felhasználók elvégezzék a feladataikat.</br>[Többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) olyan Kiemelt szerepkörökhöz, amelyek több rendszergazda által megosztott fiókkal rendelkeznek. |
-| **A portálon belüli kockázatcsökkentő művelet** | N/A |
+| **A portálon belüli kockázatcsökkentő művelet** | N.A. |
 | **Eseményindító** | Akkor aktiválódik, ha egy felhasználó egy adott időszakon belül többször aktiválja ugyanazt a Kiemelt szerepkört. Beállíthatja az időtartamot és az aktiválások számát is. |
 | **Aktiválás megújítási időkerete** | Ez a beállítás a gyanús megújítások nyomon követéséhez használni kívánt időszakot adja meg napokban, órában, percben és másodpercben. |
 | **Az aktiválás megújításának száma** | Ezzel a beállítással adható meg az aktiválások száma 2 és 100 között, amelyekről értesítést szeretne kapni a választott időkereten belül. A beállítás módosításához mozgassa a csúszkát, vagy írjon be egy számot a szövegmezőbe. |
@@ -219,7 +219,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 | **Miért kapok ez a riasztás?** | Ugyanazon felhasználó több aktiválást is ugyanazzal a jogosultsági szinttel rendelkező szerepkörbe kapcsol egy támadás jeleként. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és győződjön meg arról, hogy a Kiemelt szerepkör [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy elvégezze a feladatait. |
 | **Megelőzés** | Győződjön meg arról, hogy a Kiemelt szerepkörök [aktiválási időtartama](pim-how-to-change-default-settings.md) elég hosszú ahhoz, hogy a felhasználók elvégezzék a feladataikat.</br>[Többtényezős hitelesítés megkövetelése](pim-how-to-change-default-settings.md) olyan Kiemelt szerepkörökhöz, amelyek több rendszergazda által megosztott fiókkal rendelkeznek. |
-| **A portálon belüli kockázatcsökkentő művelet** | N/A |
+| **A portálon belüli kockázatcsökkentő művelet** | N.A. |
 | **Eseményindító** | Akkor aktiválódik, ha egy felhasználó egy adott időszakon belül többször aktiválja ugyanazt a Kiemelt szerepkört. Beállíthatja az időtartamot és az aktiválások számát is. |
 | **Aktiválás megújítási időkerete** | Ez a beállítás a gyanús megújítások nyomon követéséhez használni kívánt időszakot adja meg napokban, órában, percben és másodpercben. |
 | **Az aktiválás megújításának száma** | Ezzel a beállítással adható meg az aktiválások száma 2 és 100 között, amelyekről értesítést szeretne kapni a választott időkereten belül. A beállítás módosításához mozgassa a csúszkát, vagy írjon be egy számot a szövegmezőbe. |

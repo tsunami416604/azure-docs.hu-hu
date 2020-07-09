@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó | Microsoft Docs
-description: Ez a cikk az Azure Front Doorról nyújt áttekintést. Megtudhatja, hogy a megfelelő választás-e a felhasználói forgalom terheléselosztásához az alkalmazáshoz.
+title: Azure Front Door
+description: Ez a cikk az Azure-előtérben zajló legutóbbi változások listáját tartalmazza.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 009891d16d3acf5db2e344bcc2c917ecee9eed5b
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321520"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Újdonságok az Azure-beli bejárati ajtón?
 
@@ -32,6 +32,7 @@ Az Azure bejárati ajtaja folyamatosan frissül. A legfrissebb fejlesztésekkel 
 
 |Szolgáltatás  |Leírás  |Hozzáadás dátuma  |
 |---------|---------|---------|
+| Szabályok motor GA | Testreszabhatja a HTTP-kérelmek kezelését a peremhálózat szélén. További információt a [szabályok motor áttekintése](front-door-rules-engine.md)című témakörben talál. |2020. június |
 | Szabályok motor (előzetes verzió) | Testreszabhatja a HTTP-kérelmek kezelését a peremhálózat szélén. További információt a [szabályok motor áttekintése](front-door-rules-engine.md)című témakörben talál. |2020. április |
 
 

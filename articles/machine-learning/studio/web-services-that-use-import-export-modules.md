@@ -9,20 +9,20 @@ editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118410"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076657"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
 
 Prediktív kísérlet létrehozásakor általában egy webszolgáltatás bemenetét és kimenetét kell hozzáadnia. A kísérlet telepítésekor a felhasználók adatokat küldhetnek és fogadhatnak a webszolgáltatástól a bemeneteken és kimeneteken keresztül. Egyes alkalmazások esetében előfordulhat, hogy a fogyasztó adatait adatcsatornán keresztül vagy egy külső adatforrásban, például az Azure Blob Storage-ban tárolja. Ezekben az esetekben nem szükséges az adatok olvasása és írása a webszolgáltatás-bemenetek és-kimenetek használatával. Ehelyett a Batch-végrehajtási szolgáltatás (BES) használatával olvashatnak az adatforrásból az adatok importálásával, és a pontozási eredményeket egy másik adatterületre írhatja az exportálási adatok modul használatával.
 
-Az adatok importálása és az adatexportálási modulok a különböző adatterületek, például webes URL-cím HTTP-n keresztül, egy struktúra-lekérdezés, egy Azure SQL Database-adatbázis, az Azure Table Storage, az Azure Blob Storage, az adatcsatorna vagy egy helyszíni SQL-adatbázis használatával olvashatók és írhatók.
+Az adatok importálása és az adatexportálási modulok beolvasása és írása különböző adatterületekre, például weburl-címekre HTTP-n keresztül, egy struktúra-lekérdezés, egy Azure SQL Database, az Azure Table Storage, az Azure Blob Storage, az adatcsatorna vagy egy SQL Server-adatbázis használatával végezhető el.
 
 Ebben a témakörben az "5. példa: Train, test, reértékelés a bináris besorolás: felnőtt adatkészlet" mintát használja, és azt feltételezi, hogy az adatkészlet már be van töltve egy censusdata nevű Azure SQL-táblába.
 
@@ -41,8 +41,8 @@ Az Azure SQL-táblából származó adatok beolvasása:
 6. Az adatbázis- **kiszolgáló neve**, az **adatbázis neve**, a **Felhasználónév**és a **jelszó** mezőben adja meg az adatbázishoz szükséges adatokat.
 7. Az adatbázis-lekérdezés mezőben adja meg a következő lekérdezést.
 
-     Válassza a [kor] lehetőséget,
-
+    ```tsql
+     select [age],
         [workclass],
         [fnlwgt],
         [education],
@@ -57,7 +57,8 @@ Az Azure SQL-táblából származó adatok beolvasása:
         [hours-per-week],
         [native-country],
         [income]
-     a következőből: dbo. censusdata;
+     from dbo.censusdata;
+    ```
 8. A kísérlet vászon alján kattintson a **Futtatás**elemre.
 
 ## <a name="create-the-predictive-experiment"></a>A prediktív kísérlet létrehozása
@@ -105,13 +106,15 @@ A klasszikus webszolgáltatásként való üzembe helyezéshez és a használatb
 8. Frissítse a *apiKey* változó értékét a korábban mentett API-kulccsal.
 9. Keresse meg a kérelem deklarációját, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. Futtassa az alkalmazást.
 
 A Futtatás befejezésekor új tábla kerül a pontozási eredményeket tartalmazó adatbázisba.
@@ -133,15 +136,17 @@ A Futtatás befejezésekor új tábla kerül a pontozási eredményeket tartalma
 8. Frissítse a *apiKey* változó értékét az **alapszintű felhasználás adatai** szakaszban található **elsődleges kulccsal** .
 9. Keresse meg a *scoreRequest* -deklarációt, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. Futtassa az alkalmazást.
 

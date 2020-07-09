@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: mimart
 ms.openlocfilehash: ef08f1adc15475cd5dd38548ed39dc57532c0ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185835"
 ---
 ## <a name="guidelines-for-using-javascript"></a>Útmutató a JavaScript használatához
@@ -28,6 +28,6 @@ Kövesse az alábbi irányelveket, amikor testreszabja az alkalmazás felületé
     - Azure AD B2C a jQuery egy adott verzióját használja. Ne adja meg a jQuery egy másik verzióját. Ha egynél több verziót használ ugyanazon a lapon, problémákat okoz.
     - A RequireJS használata nem támogatott.
     - Azure AD B2C nem támogatja a legtöbb JavaScript-keretrendszert.
-- Azure ad B2C beállítások a következő módon olvashatók `window.SETTINGS`: `window.CONTENT` hívás, objektumok, például az aktuális felhasználói felület nyelve. Ne módosítsa az objektumok értékét.
+- Azure AD B2C beállítások a következő módon olvashatók: hívás `window.SETTINGS` , `window.CONTENT` objektumok, például az aktuális felhasználói felület nyelve. Ne módosítsa az objektumok értékét.
 - A Azure AD B2C-hibaüzenet testreszabásához használjon honosítást egy házirendben.
 - Ha bármilyen adat egy szabályzat használatával érhető el, általában az ajánlott módszer.

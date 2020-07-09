@@ -1,24 +1,24 @@
 ---
 title: Az Azure Cognitive Search beépített szabályzat-definíciói
 description: Az Azure Cognitive Search beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-samples
-ms.openlocfilehash: fe8ed12f85dcd0dedbec5369ed9ad6dcf4e4628a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a5d33b9305446bd2db059c90939a860286a42afe
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658959"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318546"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-search"></a>Azure Policy beépített szabályzat-definíciók az Azure Cognitive Search
+# <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Az Azure Cognitive Search beépített definíciói Azure Policy
 
 Ez az oldal az Azure Cognitive Search beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a th Azure Portal házirend-definícióra mutató hivatkozásokat tartalmaz. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a th Azure Portal házirend-definícióra mutató hivatkozásokat tartalmaz. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 

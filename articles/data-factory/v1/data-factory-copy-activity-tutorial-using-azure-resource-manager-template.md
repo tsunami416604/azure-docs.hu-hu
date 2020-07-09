@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: folyamat létrehozása Resource Manager-sablonnal '
-description: Ebben az oktatóanyagban egy egyszerű Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével. A folyamat adatokat másol az Azure Blob Storage-ból egy Azure SQL-adatbázisba.
+description: Ebben az oktatóanyagban egy egyszerű Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével. Ez a folyamat az Azure Blob Storage-ból Azure SQL Databaseba másolja az adatait.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3800460c7b17adf1a10c1efc3adc12d65bbeb670
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 549c85f92434504b931f0325959beb17ae92afba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021987"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254888"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
@@ -56,11 +56,11 @@ Ebben az oktatóanyagban az alábbi Data Factory-entitásokkal rendelkező adat-
 
 | Entitás | Leírás |
 | --- | --- |
-| Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Az Azure Storage az oktatóanyagban alkalmazott másolási tevékenység forrásadattára, az Azure SQL-adatbázis pedig a fogadó adattára. Meghatározza a másolási tevékenység bemeneti adatait tartalmazó tárfiókot. |
-| Azure SQL Database társított szolgáltatás |Társítja az Azure SQL-adatbázist az adat-előállítóhoz. Meghatározza a másolási tevékenység kimeneti adatait tartalmazó Azure SQL-adatbázist. |
+| Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Az Azure Storage a forrás adattár, a Azure SQL Database pedig az oktatóanyag másolási tevékenységének fogadó adattára. Meghatározza a másolási tevékenység bemeneti adatait tartalmazó tárfiókot. |
+| Azure SQL Database társított szolgáltatás |Összekapcsolja Azure SQL Database adatbázisát az adatgyárban. Meghatározza azt az adatbázist, amely a másolási tevékenység kimeneti adatokat tárolja. |
 | Azure Blob bemeneti adatkészlet |Az Azure Storage társított szolgáltatásra vonatkozik. A társított szolgáltatás egy Azure Storage-fiókra hivatkozik, az Azure-blob adatkészlet pedig meghatározza a bemeneti adatokat tartalmazó tárban lévő tárolót, mappát és fájlnevet. |
 | Az Azure SQL kimeneti adatkészlete |Az Azure SQL társított szolgáltatásra vonatkozik. Az Azure SQL társított szolgáltatás egy logikai SQL-kiszolgálóra hivatkozik, az Azure SQL-adatkészlet pedig meghatározza a kimeneti adatokat tartalmazó tábla nevét. |
-| Adatfolyamat |A folyamat egyetlen másolás típusú tevékenységgel rendelkezik, amely Azure Blob-adatkészletet bemenetként, az Azure SQL-adatkészletet pedig kimenetként használja. A másolási tevékenység adatokat másol egy Azure-blobból az Azure SQL-adatbázis egyik táblájába. |
+| Adatfolyamat |A folyamat egyetlen másolás típusú tevékenységgel rendelkezik, amely Azure Blob-adatkészletet bemenetként, az Azure SQL-adatkészletet pedig kimenetként használja. A másolási tevékenység egy Azure-blobból másol át egy Azure SQL Database lévő táblába. |
 
 A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Kétféle típusú tevékenység létezik: az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) és az [adatátalakítási tevékenységek](data-factory-data-transformation-activities.md). Az oktatóanyag során létrehoz egy egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot.
 
@@ -302,8 +302,8 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
         "sqlServerName": { "value": "<Name of the logical SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "databaseName": { "value": "<Name of the database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
         "targetSQLTable": { "value": "emp" }
     }
@@ -351,7 +351,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
    
     ![Az adat-előállító kezdőlapja](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
 6. Az [Adatkészletek és folyamatok figyelése](data-factory-monitor-manage-pipelines.md) című cikk útmutatásait követve monitorozhatja az oktatóanyagban létrehozott folyamatot és adatkészleteket. A Visual Studio jelenleg nem támogatja a Data Factory-folyamatok monitorozását.
-7. Ha a szelet **Kész** állapotban van, ellenőrizze, hogy az adatok az Azure SQL-adatbázis **emp** táblájába vannak-e másolva.
+7. Ha a szelet **kész** állapotban van, ellenőrizze, hogy az adatmásolás a Azure SQL Database **EMP** táblájába történik-e.
 
 
 A [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) (Adatkészletek és folyamatok figyelése) című cikkben útmutatást találhat arról, hogy hogyan használhatja az Azure Portal paneleit az oktatóanyagban létrehozott folyamatok és adatkészletek monitorozásához.
@@ -413,7 +413,7 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
 A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName. 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
-Az AzureSqlLinkedService az Azure SQL-adatbázist társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban. Ebben a szakaszban a logikai SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót kell megadnia. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  
+A AzureSqlLinkedService összekapcsolja az adatbázist Azure SQL Database az adatgyárban. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban. Ebben a szakaszban a logikai SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót kell megadnia. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  
 
 ```json
 {
@@ -478,7 +478,7 @@ Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati szt
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL-adatkészlet
-Megadhatja az Azure SQL-adatbázisban található tábla nevét, amely az Azure Blob Storage-tárból másolt adatokat tartalmazza. Az Azure SQL-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL-adatkészlet tulajdonságai](data-factory-azure-sql-connector.md#dataset-properties) című szakaszt. 
+Itt adhatja meg az Azure Blob Storage-ból másolt adatok tárolására szolgáló Azure SQL Databaseban található tábla nevét. Az Azure SQL-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL-adatkészlet tulajdonságai](data-factory-azure-sql-connector.md#dataset-properties) című szakaszt. 
 
 ```json
 {
@@ -572,7 +572,7 @@ Definiálhat egy folyamatot, amely adatokat másol az Azure Blob-adatkészletbő
 ```
 
 ## <a name="reuse-the-template"></a>A sablon ismételt felhasználása
-Az oktatóanyagban létrehozott egy sablont a Data Factory-entitások definiálásához, illetve egy másikat a paraméterek értékeinek átadásához. A folyamat adatokat másol az Azure Storage-fiókokból a paramétereken keresztül megadott Azure SQL-adatbázisba. Ha ugyanazt a sablont szeretné használni a Data Factory-entitások különböző környezetekben történő üzembe helyezéséhez, hozzon létre egy paraméterfájlt az egyes környezetekhez, és használja azt az adott környezetben történő üzembe helyezéskor.     
+Az oktatóanyagban létrehozott egy sablont a Data Factory-entitások definiálásához, illetve egy másikat a paraméterek értékeinek átadásához. A folyamat egy Azure Storage-fiókból másolja át az adatait, hogy Azure SQL Database a paramétereken keresztül megadott értéket. Ha ugyanazt a sablont szeretné használni a Data Factory-entitások különböző környezetekben történő üzembe helyezéséhez, hozzon létre egy paraméterfájlt az egyes környezetekhez, és használja azt az adott környezetben történő üzembe helyezéskor.     
 
 Példa:  
 
@@ -591,7 +591,7 @@ Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztk
 Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Ilyen eset például, ha több olyan, egy vagy több folyamattal rendelkező adat-előállítót is létre kell hoznia, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Storage- és SQL Database-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal az adat-előállítók létrehozásához.   
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag egy olyan másolási műveletet mutatott be, amelynek a forrásadattára egy Azure Blob Storage-tár, a céladattára pedig egy Azure SQL-adatbázis volt. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
+Ebben az oktatóanyagban az Azure Blob Storage-t forrás adattárként használta, és a másolási művelet során Azure SQL Database célként megadott adattárként. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

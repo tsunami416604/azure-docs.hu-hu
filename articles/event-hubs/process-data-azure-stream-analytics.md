@@ -1,19 +1,14 @@
 ---
 title: Adatok feldolgozása Event Hubs Azure-ból Stream Analytics használatával | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan dolgozhatja fel az Azure Event hub adatait egy Azure Stream Analytics feladatokkal.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 07/09/2019
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69991952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312895"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Az Event hub adatainak feldolgozása Azure Stream Analytics használatával 
 A Azure Stream Analytics szolgáltatással könnyedén betöltheti, feldolgozhatja és elemezheti az Azure Event Hubs adatfolyamait, így hatékony elemzéseket készíthet a valós idejű műveletek elvégzéséhez. Ez az integráció lehetővé teszi, hogy gyorsan létrehozzon egy gyors elérésű elemzési folyamatot. A Azure Portal használatával megjelenítheti a bejövő és a Stream Analytics lekérdezéseket. Ha a lekérdezés elkészült, csak néhány kattintással áthelyezheti az éles környezetbe. 
@@ -49,7 +44,7 @@ Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei:
     - A bejövő adatértékeket táblázatos formátumban vagy nyers formátumban is megtekintheti. 
     - Ha a megjelenített adatai nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez. 
 
-        Íme egy példa a **táblázat formátumára**: a táblázat formátumát eredményezi. ![](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Íme egy példa a **táblázat formátumára**: ![ a táblázat formátumát eredményezi.](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Íme egy példa a **nyers formátumban**tárolt adatmennyiségre: 
 

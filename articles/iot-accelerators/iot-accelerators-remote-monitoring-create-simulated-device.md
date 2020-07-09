@@ -10,10 +10,9 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682009"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
@@ -31,9 +30,9 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 *Tulajdonságok*
 
-| Name (Név)                     | Értékek                      |
+| Name                     | Értékek                      |
 | ------------------------ | --------------------------- |
-| Color                    | Fehér, piros, kék            |
+| Szín                    | Fehér, piros, kék            |
 | Fényerő               | 0 – 100                    |
 | Becsült hátralévő élettartam | Visszaszámlálás 10 000 órával |
 
@@ -41,9 +40,9 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a villanykörte jelent a felhőnek:
 
-| Name (Név)   | Értékek      |
+| Name   | Értékek      |
 | ------ | ----------- |
-| status | "on", "off" |
+| Állapot | "on", "off" |
 | Hőmérséklet | Fok F |
 | online | igaz, hamis |
 
@@ -54,7 +53,7 @@ Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a
 
 A következő táblázat az új eszköz által támogatott műveleteket mutatja be:
 
-| Name (Név)        |
+| Name        |
 | ----------- |
 | Bekapcsolás   |
 | Kikapcsolás  |
@@ -63,7 +62,7 @@ A következő táblázat az új eszköz által támogatott műveleteket mutatja 
 
 Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 
-| Name (Név)                     | Értékek |
+| Name                     | Értékek |
 | ------------------------ | -------|
 | Kezdeti szín            | Fehér  |
 | Kezdeti fényerő       | 75     |
@@ -73,7 +72,7 @@ Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 
 A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -108,11 +107,11 @@ Töltse le és csomagolja ki az [eszköz szimulációs szolgáltatását](https:
 
 Nyissa meg a **Remote-Monitoring-Services-DotNet-master\storage-adapter** mappát a Visual Studio Code-ban. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **Storage-adapter/webszolgáltatás/appSettings. ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentDBConnectionString** változóhoz.
+Nyissa meg a **Storage-adapter/webszolgáltatás/appsettings.ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentDBConnectionString** változóhoz.
 
 Ha helyileg szeretné futtatni a szolgáltatást, kattintson a **hibakeresés > a hibakeresés indítása**elemre.
 
-A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)-címét:. Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
+A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL-címét: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) . Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
 
 A következő lépések elvégzése után a Visual Studio Code ezen példányán ne futtassa a Storage-adapter-szolgáltatást.
 
@@ -126,14 +125,14 @@ Ebben a szakaszban új **belső hőmérséklet** -telemetria-típust ad hozzá a
 
     | Forrás | Cél |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\chiller-01.jsbekapcsolva | C:\temp\devicemodels\chiller-01.jsbekapcsolva |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
     | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
     | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Nyissa meg a **C:\temp\devicemodels\chiller-01.JSON** fájlt.
+1. Nyissa meg a **C:\temp\devicemodels\chiller-01.js** fájlt.
 
 1. A **InitialState** szakaszban adja hozzá a következő két definíciót:
 
@@ -159,9 +158,9 @@ Ebben a szakaszban új **belső hőmérséklet** -telemetria-típust ad hozzá a
     },
     ```
 
-1. Mentse a **C:\temp\devicemodels\chiller-01.JSON** fájlt.
+1. Mentse a **C:\temp\devicemodels\chiller-01.js** fájlt.
 
-1. Nyissa meg a **C:\temp\devicemodels\scripts\chiller-01-State.js** fájlt.
+1. Nyissa meg a **C:\temp\devicemodels\scripts\chiller-01-state.js** fájlt.
 
 1. Adja hozzá a következő mezőket az **állapot** változóhoz:
 
@@ -202,13 +201,13 @@ Ebben a szakaszban új **belső hőmérséklet** -telemetria-típust ad hozzá a
     }
     ```
 
-1. Mentse a **C:\temp\devicemodels\scripts\chiller-01-State.js** fájlt.
+1. Mentse a **C:\temp\devicemodels\scripts\chiller-01-state.js** fájlt.
 
 ## <a name="create-the-lightbulb"></a>A villanykörte létrehozása
 
 Ebben a szakaszban egy új **villanykörte** -eszköz típusát adja meg:
 
-1. Hozzon létre egy fájlt **C:\temp\devicemodels\lightbulb-01.JSON** , és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\lightbulb-01.jsbe** , és adja hozzá a következő tartalmat:
 
     ```json
     {
@@ -272,9 +271,9 @@ Ebben a szakaszban egy új **villanykörte** -eszköz típusát adja meg:
     }
     ```
 
-    Mentse a módosításokat a **C:\temp\devicemodels\lightbulb-01.JSON**.
+    Mentse a **C:\temp\devicemodels\lightbulb-01.js**módosításait.
 
-1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\lightbulb-01-State.js** , és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\lightbulb-01-state.js** és adja hozzá a következő tartalmat:
 
     ```javascript
     "use strict";
@@ -361,9 +360,9 @@ Ebben a szakaszban egy új **villanykörte** -eszköz típusát adja meg:
     }
     ```
 
-    Mentse a módosításokat a **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
+    Mentse **C:\temp\devicemodels\scripts\lightbulb-01-state.js**módosításait.
 
-1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\SwitchOn-Method.js** , és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\SwitchOn-method.js** és adja hozzá a következő tartalmat:
 
     ```javascript
     "use strict";
@@ -387,9 +386,9 @@ Ebben a szakaszban egy új **villanykörte** -eszköz típusát adja meg:
     }
     ```
 
-    Mentse a módosításokat a **C:\temp\devicemodels\scripts\SwitchOn-Method.js**.
+    Mentse **C:\temp\devicemodels\scripts\SwitchOn-method.js**módosításait.
 
-1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\SwitchOff-Method.js** , és adja hozzá a következő tartalmat:
+1. Hozzon létre egy fájlt **C:\temp\devicemodels\scripts\SwitchOff-method.js** és adja hozzá a következő tartalmat:
 
     ```javascript
     "use strict";
@@ -413,7 +412,7 @@ Ebben a szakaszban egy új **villanykörte** -eszköz típusát adja meg:
     }
     ```
 
-    Mentse a módosításokat a **C:\temp\devicemodels\scripts\SwitchOff-Method.js**.
+    Mentse **C:\temp\devicemodels\scripts\SwitchOff-method.js**módosításait.
 
 Ezzel létrehozta a **Chiller** -eszköz típusának testreszabott verzióját, és létrehozott egy új **villanykörte** típusú eszközt.
 
@@ -425,7 +424,7 @@ Ebben a szakaszban az előző szakaszokban létrehozott típusú eszközök hely
 
 Nyissa meg a GitHubról letöltött **Device-szimulációs-DotNet-Master** mappát a Visual Studio Code új példányán. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **webszolgáltatási/appSettings. ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentdb_connstring** változóhoz, és módosítsa a beállításokat a következőképpen:
+Nyissa meg a **webszolgáltatási/appsettings.ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentdb_connstring** változóhoz, és módosítsa a beállításokat a következőképpen:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -493,7 +492,7 @@ A szimuláció konfigurálása és futtatása:
 
 A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A két helyileg futó Service-t leállíthatja a Visual Studio Code-példányaiban (**hibakeresés > hibakeresés leállítása**).
 

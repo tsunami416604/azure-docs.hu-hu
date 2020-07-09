@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981919"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
@@ -23,7 +22,7 @@ A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biz
 
 A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
 
-| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
+| **Képesség** | **Alapszintű** | **általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |

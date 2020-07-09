@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613268"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
@@ -27,7 +27,7 @@ Mielőtt folytatná ezt a cikket, győződjön meg arról, hogy telepítette a F
 
 Engedélyeznie kell a partner-integrációt az Azure FarmBeats-példányához. Ez a lépés egy olyan ügyfelet hoz létre, amely hozzáfér az Azure FarmBeats-példányhoz az eszköz partnereként, és a következő lépésekben szükséges értékeket biztosítja:
 
-- API-végpont: Ez a Datahub URL-cím, például https://\<Datahub>. azurewebsites.net
+- API-végpont: Ez a Datahub URL-cím, például https:// \<datahub> . azurewebsites.net
 - Bérlőazonosító
 - Ügyfél-azonosító
 - Titkos ügyfélkulcs
@@ -42,7 +42,7 @@ Kövesse az alábbi lépéseket:
 
 2. **Ha a FarmBeats 1.2.7 vagy újabb verzióval rendelkezik, hagyja ki az a, b és c lépést, és folytassa a 3. lépéssel.** A FarmBeats-verziót a FarmBeats felhasználói felület jobb felső sarkában található **Beállítások** ikonra kattintva tekintheti meg.
 
-      a.  **Azure Active Directory** > **alkalmazás regisztrációjának** megugrása
+      a.  **Azure Active Directory**  >  **alkalmazás regisztrációjának** megugrása
 
       b. Válassza ki a FarmBeats-telepítés részeként létrehozott **alkalmazás-regisztrációt** . Ez a neve megegyezik a FarmBeats datahub.
 
@@ -70,7 +70,7 @@ Kövesse az alábbi lépéseket:
 
     ```
 
-7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory** > **áttekintő** oldalról kérhető le.
+7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory**  >  **áttekintő** oldalról kérhető le.
 
     ```azurepowershell-interactive 
 
@@ -140,7 +140,7 @@ További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDat
 
 ### <a name="api-request-to-create-metadata"></a>Metaadatok létrehozására szolgáló API-kérelem
 
-API-kérelem létrehozásához össze kell kapcsolni a HTTP-(POST-) metódust, az API szolgáltatás URL-címét és az erőforráshoz tartozó URI-t, amely lekérdezi, beküldi a kérelmet, létrehoz vagy töröl egy kérést. Ezután adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz a Datahub URL-cím (\<https://yourdatahub>. azurewebsites.net).
+API-kérelem létrehozásához össze kell kapcsolni a HTTP-(POST-) metódust, az API szolgáltatás URL-címét és az erőforráshoz tartozó URI-t, amely lekérdezi, beküldi a kérelmet, létrehoz vagy töröl egy kérést. Ezután adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz a Datahub URL-cím (https:// \<yourdatahub> . azurewebsites.net).
 
 ### <a name="authentication"></a>Hitelesítés
 

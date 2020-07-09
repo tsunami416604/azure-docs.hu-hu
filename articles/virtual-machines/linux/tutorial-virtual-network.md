@@ -14,12 +14,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8e5c03876de8ca078c6e89b8ca101602e4e4cf52
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460443"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045739"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI-vel
 
@@ -38,7 +37,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="vm-networking-overview"></a>Virtuális gépek hálózatkezelése – áttekintés
 
-Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
+Az Azure Virtual Networks lehetővé teszi a virtuális gépek, az Internet és más Azure-szolgáltatások, például a Azure SQL Database közötti biztonságos hálózati kapcsolatok létrehozását. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
 
 Az oktatóanyag végéig a következő virtuális hálózati erőforrások jönnek létre:
 

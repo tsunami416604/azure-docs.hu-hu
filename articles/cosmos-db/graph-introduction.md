@@ -7,20 +7,20 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75500001"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118117"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
 
-[A Azure Cosmos db](introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. A Azure Cosmos DB Gremlin API egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatás gráf-adattárolására és üzemeltetésére szolgál.  
+[Azure Cosmos db](introduction.md)   a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. A Azure Cosmos DB Gremlin API egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatás gráf-adattárolására és üzemeltetésére szolgál.  
 
-![Az Azure Cosmos DB gráfarchitektúrája](./media/graph-introduction/cosmosdb-graph-architecture.png)
+:::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Az Azure Cosmos DB gráfarchitektúrája" border="false":::
 
-A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyedén fejlesztheti a gráf szerkezetét. A Azure Cosmos db Gremlin API-t az [Apache TinkerPop](https://tinkerpop.apache.org) Graph Database standard alapján kell használni, és a Gremlin lekérdezési nyelvet használja. 
+A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyedén fejlesztheti a gráf szerkezetét. A Azure Cosmos DB Gremlin API-t az [Apache TinkerPop](https://tinkerpop.apache.org)   Graph Database standard alapján kell használni, és a Gremlin lekérdezési nyelvet használja. 
 
 Azure Cosmos DB Gremlin API-ját nagy mértékben skálázható, felügyelt infrastruktúrával ötvözi a Graph adatbázis-algoritmusok előnyeit, hogy egyedi, rugalmas megoldást nyújtson a rugalmasság és a kapcsolatok hiánya miatti leggyakoribb adatproblémákra. 
 
@@ -101,7 +101,7 @@ A Graph-adatbázisok gyakran beletartoznak a NoSQL vagy a nem kapcsolódó adatb
 ### <a name="gremlin-by-example"></a>Példa a Gremlin használatára
 Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekérdezések a Gremlinben. Az alábbi ábrán egy üzleti alkalmazás látható, amely felhasználókkal, érdeklődési körökkel és eszközökkel kapcsolatos adatokat kezel egy gráf formájában.  
 
-![Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis](./media/gremlin-support/sample-graph.png) 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis" border="false"::: 
 
 Ez a gráf a következő *csúcs* -típusokkal rendelkezik (a Gremlin "label" néven szerepel):
 

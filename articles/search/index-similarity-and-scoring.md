@@ -8,12 +8,11 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679656"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806635"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Hasonlóság és pontozás az Azure Cognitive Search
 
@@ -38,7 +37,7 @@ A pontozási profil az index definíciójának részét képezi, amely a súlyoz
 
 <a name="scoring-statistics"></a>
 
-## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Pontozási statisztika és Sticky Sessions (előzetes verzió)
+## <a name="scoring-statistics-and-sticky-sessions"></a>Pontozási statisztika és Sticky-munkamenetek
 
 A méretezhetőség érdekében az Azure Cognitive Search horizontálisan osztja el az egyes indexeket egy horizontális Felskálázási folyamaton keresztül, ami azt jelenti, hogy az index részei fizikailag elkülönítve vannak.
 
@@ -47,14 +46,14 @@ Alapértelmezés szerint a rendszer a dokumentum pontszámát a szegmensen *bel�
 Ha az összes szegmens statisztikai tulajdonságai alapján szeretné kiszámítani a pontszámot, ezt a *scoringStatistics = Global* [lekérdezési paraméterként](https://docs.microsoft.com/rest/api/searchservice/search-documents) való hozzáadásával teheti meg (vagy a *"scoringStatistics": "Global"* értéket adja hozzá a [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)törzsének paraméteréhez).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
 A scoringStatistics használatával biztosítható, hogy az azonos replika összes szegmense ugyanazt az eredményt adja. Ez azt jelentette, hogy a különböző replikák némileg eltérőek lehetnek egymástól, mivel mindig frissülnek az index legutóbbi változásaival. Bizonyos esetekben előfordulhat, hogy a felhasználók több konzisztens eredményt kapnak a "lekérdezési munkamenet" során. Ilyen esetekben a lekérdezések részeként is megadható `sessionId` . Az egy egyedi `sessionId` karakterlánc, amelyet a rendszer egy egyedi felhasználói munkamenetre való hivatkozással hoz létre.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
@@ -72,6 +71,37 @@ Egyelőre megadhatja, hogy melyik hasonlósági rangsorolási algoritmust szeret
 A következő videó szegmense gyorsan továbbítható az Azure Cognitive Search-ban használt rangsorolási algoritmusok magyarázatával. További háttérként tekintse meg a teljes videót.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+
+<a name="featuresMode-param"></a>
+
+## <a name="featuresmode-parameter-preview"></a>featuresMode paraméter (előzetes verzió)
+
+A [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) egy új [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) -paraméterrel rendelkeznek, amely további részleteket biztosít a mező szintű relevancia vonatkozásában. Míg a `@searchScore` teljes dokumentum kiszámításának alapja (ez a dokumentum a lekérdezés kontextusában található), a featuresMode-on keresztül az egyes mezőkre vonatkozó információkat az adott struktúrában látható módon lehet lekérdezni `@search.features` . A struktúra tartalmazza a lekérdezésben használt összes mezőt (vagy egy lekérdezés **searchFields** keresztül adott mezőket, vagy az összes olyan mezőt, amely az indexben **kereshető** ). Az egyes mezőknél a következő értékeket kapja:
+
++ A mezőben található egyedi tokenek száma
++ Hasonlósági pontszám vagy a mező tartalmához hasonló mérték, a lekérdezési kifejezéshez viszonyítva
++ A kifejezés gyakorisága, illetve a lekérdezési kifejezésnek a mezőben található száma
+
+Egy olyan lekérdezéshez, amely a "Leírás" és a "title" mezőket célozza meg, a következőkhöz `@search.features` hasonló válasz jelenhet meg:
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+Ezeket az adatpontokat [Egyéni pontozási megoldásokban](https://github.com/Azure-Samples/search-ranking-tutorial) is felhasználhatja, vagy az adatokat felhasználhatja a kereséssel kapcsolatos problémák hibakereséséhez.
 
 ## <a name="see-also"></a>Lásd még
 

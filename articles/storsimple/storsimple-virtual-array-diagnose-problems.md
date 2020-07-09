@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61408438"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515187"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple Virtual Array hibaelhárítása a StorSimple-eszközkezelő szolgáltatással
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +37,7 @@ Megtekintheti a StorSimple virtuális tömbökkel kapcsolatos gyakori problémá
 
 2. **Bontsa ki** azt a problémát, amellyel kapcsolatban a probléma elhárítása érdekében az **ajánlott lépések** áttekintésével foglalkozunk. Ha szeretné, tekintse át a részletes dokumentációs hivatkozásokat is, amelyek további hivatkozásokat tartalmaznak.
    
-    ![Probléma megoldása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
+    ![Hiba elhárítása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
 3. Ha nem talál hivatkozást a problémára, vagy nem oldja meg, forduljon Microsoft ügyfélszolgálata további segítségért.
 

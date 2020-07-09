@@ -1,22 +1,14 @@
 ---
 title: Diagnosztikai naplók a Hibrid kapcsolatokhoz
 description: Ez a cikk a Azure Relay számára elérhető összes tevékenység-és diagnosztikai napló áttekintését tartalmazza.
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: b7ac5f1da70352115bf05df1a61120f46a85ec5d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314902"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Diagnosztikai naplók engedélyezése Azure Relay Hibrid kapcsolatok
 A Azure Relay Hibrid kapcsolatok használatának megkezdése után érdemes figyelni, hogy a figyelők és a küldők hogyan és mikor legyenek megnyitva és lezárva, valamint hogyan történik a Hibrid kapcsolatok létrehozása és az üzenetek küldése. Ez a cikk áttekintést nyújt a Azure Relay szolgáltatás által biztosított tevékenység-és diagnosztikai naplókról. 
@@ -60,7 +52,7 @@ Az új beállítások körülbelül 10 percen belül lépnek érvénybe. A napl�
 ## <a name="schema-for-hybrid-connections-events"></a>Séma hibrid kapcsolati eseményekhez
 A hibrid kapcsolatok eseménynaplójának JSON-karakterláncai közé tartoznak az alábbi táblázatban felsorolt elemek:
 
-| Name | Leírás |
+| Name | Description |
 | ------- | ------- |
 | ResourceId | Erőforrás-azonosító Azure Resource Manager |
 | Tevékenységazonosító | A megadott művelet azonosítására szolgáló belső azonosító. A "TrackingId" néven is ismert |
@@ -88,7 +80,7 @@ Itt látható egy hibrid kapcsolati esemény JSON formátumban.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>A diagnosztikai naplókban rögzített események és műveletek
 
-| Művelet | Leírás | 
+| Művelet | Description | 
 | --------- | ----------- | 
 | AuthorizationFailed | Az engedélyezés sikertelen.|
 | InvalidSasToken | Érvénytelen SAS-jogkivonat. | 

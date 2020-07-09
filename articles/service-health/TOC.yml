@@ -4,10 +4,15 @@
   items:
     - name: Azure Service Health szolgáltatás
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure Portal
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: alerts-activity-log-service-notifications-arm.md
 - name: Alapelvek
   items:
     - name: Az Azure állapota oldal
@@ -16,7 +21,7 @@
       href: service-health-overview.md
     - name: Resource Health
       href: resource-health-overview.md
-- name: 'Útmutató:'
+- name: Útmutató
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
       href: alerts-activity-log-service-notifications.md
@@ -30,9 +35,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: Riasztások küldése az OpsGenie-nek
       href: service-health-alert-webhook-opsgenie.md
-    - name: Állapotesemények lekérése a REST használatával
-      href: service-health-rest.md
-    - name: Erőforrások állapoteseményeire vonatkozó riasztások beállítása
+    - name: Resource Health-riasztások konfigurálása az Azure Portal használatával
+      href: resource-health-alert-monitor-guide.md
+    - name: Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával
       href: resource-health-alert-arm-template-guide.md
 - name: Referencia
   items:

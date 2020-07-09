@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945409"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
 
@@ -79,7 +79,7 @@ Ha a kék színnel jelölt Redis-erőforráshoz az Azure cache elemet választja
 - **Gyorsítótár-tévesztések**
 - **Hibák (max.)**
 
-### <a name="operations"></a>Üzemeltetés
+### <a name="operations"></a>Műveletek
 
 Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkafüzet sablonjának **műveleti** táblázata. Ezeket az oszlopokat jeleníti meg:
 
@@ -179,6 +179,10 @@ A munkafüzetek a **saját jelentések** szakaszban vagy a **megosztott jelenté
 Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust.
 
 ![Egy, a katalógust kiemelő parancssáv](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
 
 ## <a name="next-steps"></a>További lépések
 

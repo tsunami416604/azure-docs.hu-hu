@@ -1,26 +1,14 @@
 ---
 title: Metrikák a Azure Monitor-ban – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk tájékoztatást nyújt arról, hogyan használható az Azure monitoring az Azure-Event Hubs figyeléséhez
-services: event-hubs
-documentationcenter: .NET
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 09/18/2019
-ms.author: shvija
-ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314590"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-metrikák az Azure Monitorban
 
@@ -62,23 +50,23 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 | Bejövő kérelmek  | Az Azure Event Hubs szolgáltatásnak küldött kérések száma egy adott időszakban. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName |
-| Sikeres kérések    | Az Azure Event Hubs szolgáltatásnak küldött sikeres kérések száma egy adott időszakban. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName |
+| Sikeres kérelmek    | Az Azure Event Hubs szolgáltatásnak küldött sikeres kérések száma egy adott időszakban. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName |
 | Kiszolgálói hibák  | Az Azure Event Hubs szolgáltatás hibája miatt nem feldolgozott kérelmek száma egy adott időszakban. <br/><br/>Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName |
 |Felhasználói hibák |A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |A kvóta túllépte a hibákat |A kérések száma túllépte a rendelkezésre álló kvótát. A Event Hubs kvótákkal kapcsolatos további információkért tekintse meg [ezt a cikket](event-hubs-quotas.md) .<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
 ## <a name="throughput-metrics"></a>Átviteli sebesség mérőszámai
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |Szabályozott kérelmek |Az átviteli egység felhasználási korlátjának túllépése miatt szabályozott kérések száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
 ## <a name="message-metrics"></a>Üzenet metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |Bejövő üzenetek |A megadott időszakban Event Hubs küldött események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Kimenő üzenetek |A Event Hubsból beolvasott események vagy üzenetek száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -87,9 +75,9 @@ Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
-|Aktív kapcsolatai |A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Aktív kapcsolatok |A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Lezárt kapcsolatok |A lezárt kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
@@ -97,17 +85,17 @@ Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
 Az Event hubok rögzítési funkciójának engedélyezésével figyelheti Event Hubs rögzítési metrikáit. A következő mérőszámok leírják, hogy a rögzítés engedélyezve legyen.
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
-|Várakozó fájlok rögzítése |A kiválasztott célhoz még nem rögzített bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Rögzítési hátralék |A kiválasztott célhoz még nem rögzített bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Rögzített üzenetek |A kiválasztott célhelyre rögzített üzenetek vagy események száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Rögzített bájtok száma |A kiválasztott célhelyre a megadott időszakban rögzített bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Rögzített bájtok |A kiválasztott célhelyre a megadott időszakban rögzített bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikák méretei
 
 Az Azure Event Hubs a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs támogatja az Event hub-entitásokat a névtér alatt.|
 

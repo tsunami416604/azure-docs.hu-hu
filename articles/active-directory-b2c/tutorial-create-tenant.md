@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/28/2019
+ms.topic: tutorial
+ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806850"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -31,7 +31,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Megtudhatja, hogyan regisztrálhat egy alkalmazást a következő oktatóanyagban.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő létrehozása
 
@@ -49,27 +49,20 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
     ![Új Azure AD B2C bérlő létrehozása Azure Portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-1. Adja meg a **szervezet nevét** és a **kezdeti tartománynevet**. Válassza ki az **országot vagy régiót** (ez később nem módosítható), majd válassza a **Létrehozás**lehetőséget.
+1. A **címtár létrehozása** lapon adja meg a következőket:
 
-    A tartománynév a teljes bérlői tartománynév részeként használatos. Ebben a példában a bérlő neve *contosob2c.onmicrosoft.com*:
+   - **Szervezet neve** – adja meg a Azure ad B2C bérlő nevét.
+   - **Kezdeti tartománynév** – adja meg a Azure ad B2C-bérlő tartománynevét.
+   - **Ország vagy régió** – válassza ki az országot vagy régiót a listából. Ezt a kijelölést később nem lehet módosítani.
+   - **Előfizetés** – válassza ki az előfizetését a listából.
+   - **Erőforráscsoport** – válasszon ki egy erőforráscsoportot, amely a bérlőt fogja tartalmazni. Vagy válassza az **új létrehozása**lehetőséget, adja meg az erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét**, majd kattintson **az OK gombra**.
 
-    ![Bérlői űrlap létrehozása a példákban szereplő értékekkel Azure Portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
+    ![Bérlői űrlap létrehozása a példákban szereplő értékekkel Azure Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
-1. Miután befejeződött a bérlő létrehozása, válassza az **új B2C-bérlő létrehozása vagy** a bérlői Létrehozás lap tetején található meglévő bérlő hivatkozásra mutató hivatkozást.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Tekintse át a címtár beállításait. Ezután kattintson a **Létrehozás** elemre.
 
-    ![A bérlői navigációs hivatkozás kiemelése Azure Portal](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
-
-1. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel**lehetőséget.
-
-   ![Meglévő előfizetés összekapcsolása Azure Portal](media/tutorial-create-tenant/portal-05-link-subscription.png)
-
-1. Válassza ki a létrehozott **Azure ad B2C bérlőt** , majd válassza ki az **előfizetését**.
-
-    Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget. Adja meg a bérlőt tartalmazó erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét**, majd válassza a **Létrehozás**lehetőséget.
-
-    ![Az előfizetési beállítások űrlapjának csatolása Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
-
-    Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra.
+Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra. Bérlő összekapcsolásához rendszergazdai jogosultsággal kell rendelkeznie a Azure AD B2C bérlőben, és az Azure-előfizetésben legalább egy közreműködő szerepkört hozzá kell rendelni. Lásd: [Azure ad B2C bérlő összekapcsolása egy előfizetéssel](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
 ## <a name="select-your-b2c-tenant-directory"></a>A B2C-bérlő címtárának kiválasztása
 

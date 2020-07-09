@@ -12,13 +12,12 @@ ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76699546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558632"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL for Pythonban
 
@@ -35,7 +34,7 @@ A AD FSon általában kétféleképpen lehet hitelesíteni:
 
 Az alábbiak azt jelzik, hogy közvetlenül a Active Directory összevonási szolgáltatások (AD FS) (AD FS) vagy a Active Directoryon keresztül csatlakoznak-e.
 
-A hívásakor `acquire_token_by_authorization_code` `acquire_token_by_device_flow`a felhasználói élmény általában a következő:
+A hívásakor `acquire_token_by_authorization_code` `acquire_token_by_device_flow` a felhasználói élmény általában a következő:
 
 1. A felhasználó megadja a fiók AZONOSÍTÓját.
 2. Az Azure AD röviden megjeleníti a "saját szervezet lapja" üzenetet, és a felhasználó átirányítja az azonosító bejelentkezési oldalára. A bejelentkezési oldal általában a szervezet emblémájának megfelelően van testreszabva.
@@ -49,7 +48,7 @@ Az összevont forgatókönyvben támogatott AD FS verziók a következők:
 
 Az alábbiak azt jelzik, hogy közvetlenül a Active Directory összevonási szolgáltatások (AD FS) (AD FS) vagy a Active Directoryon keresztül csatlakoznak-e.
 
-Ha a használatával `acquire_token_by_username_password`szerez be tokent, a MSAL Python beolvassa az identitás-szolgáltatót a Felhasználónév alapján. A MSAL Python [SAML 1,1-tokent](reference-saml-tokens.md) kap az identitás-szolgáltatótól, amelyet ezután az Azure ad-nek küld, amely visszaadja a JSON web token (JWT).
+Ha a használatával szerez be tokent, a MSAL Python beolvassa `acquire_token_by_username_password` az identitás-szolgáltatót a Felhasználónév alapján. A MSAL Python [SAML 1,1-tokent](reference-saml-tokens.md) kap az identitás-szolgáltatótól, amelyet ezután az Azure ad-nek küld, amely visszaadja a JSON web token (JWT).
 
 ## <a name="connecting-directly-to-ad-fs"></a>Közvetlen csatlakozás AD FS
 

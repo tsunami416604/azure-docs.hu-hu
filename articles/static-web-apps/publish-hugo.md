@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870694"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297941"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
-Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új Azure-beli statikus Web Apps a kapcsolódó GitHub-műveletekkel, amelyek segítségével szabályozhatja az alkalmazás felépítésének és közzétételének módját.
+Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új, a kapcsolódó GitHub-műveletekkel rendelkező Azure-beli statikus webalkalmazás, amely lehetővé teszi az alkalmazás felépítésének és közzétételének vezérlését.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -109,7 +109,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Az _erőforráscsoport_területen válassza az **új**lehetőséget. Az _Új erőforráscsoport neve_mezőbe írja be a **Hugo-static-app** nevet, majd kattintson **az OK gombra**.
 
-1. Ezután adjon meg egy globálisan egyedi nevet az alkalmazásnak a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` . Ezt az értéket használja a statikus alkalmazás URL-előtagja a következő formátumban: `https://<APP_NAME>....` .
+1. Ezután adja meg az alkalmazás nevét a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` .
 
 1. A _régió_területen válasszon ki egy elérhető régiót.
 
@@ -133,9 +133,9 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
 
-1. Az _alkalmazás helyének_ beállítása **nyilvánosra**.
+1. Az _alkalmazás helyének_ beállítása a következőre: **/** .
 
-1. Hagyja üresen az alkalmazás-összetevő _helyét_ .
+1. Az _alkalmazás-összetevő helyének_ beállítása **nyilvánosra**.
 
    Az API-k _helyének_ értéke nem szükséges, mivel jelenleg nem TELEPÍTenek API-t.
 
@@ -144,38 +144,6 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 1. A részletek helyességének ellenőrzéséhez kattintson a **felülvizsgálat + létrehozás** gombra.
 
 1. Kattintson a Létrehozás gombra az Azure statikus Web Apps létrehozásához, és **hozzon létre** egy GitHub-műveletet az üzembe helyezéshez.
-
-1. Miután az üzembe helyezés befejeződött, navigáljon a terminálhoz, és a GitHub művelettel töltse le a commit a gépre.
-
-   ```bash
-   git pull
-   ```
-
-1. Nyissa meg a Hugo alkalmazást egy szövegszerkesztőben, és nyissa meg a _. GitHub/munkafolyamatok/Azure-Pages-<WORKFLOW_NAME>. YML_ fájlt.
-
-1. A `- uses: actions/checkout@v2` Hugo-alkalmazás létrehozásához cserélje le a sort (18. sor) a következőre.
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.8
-     with:
-       hugo-version: "latest"
-
-   - name: Build
-     run: hugo
-   ```
-
-1. Véglegesítse a frissített munkafolyamatot, és küldje el a GitHubnak.
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. Várjon, amíg a GitHub-művelet befejeződik.
 

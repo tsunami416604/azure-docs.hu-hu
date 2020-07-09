@@ -4,33 +4,32 @@ description: Minta Azure Container Registry feladatok (ACR-feladatok) a tároló
 ms.topic: article
 ms.date: 11/14/2019
 ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456082"
 ---
 # <a name="acr-tasks-samples"></a>ACR-feladatok mintái
 
-Ez a cikk több `task.yaml` [Azure Container Registry feladat](container-registry-tasks-overview.md) (ACR-feladat) esetében a fájlokra és a kapcsolódó Dockerfiles mutató hivatkozásokat tartalmaz. 
+Ez a cikk `task.yaml` több [Azure Container Registry feladat](container-registry-tasks-overview.md) (ACR-feladat) esetében a fájlokra és a kapcsolódó Dockerfiles mutató hivatkozásokat tartalmaz. 
 
 További példákért tekintse meg az [Azure Samples][task-examples] tárházat.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-* **Rendszerkép** - létrehozása[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Rendszerkép létrehozása**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Tároló** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml) futtatása
+* **Tároló futtatása**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
 
-* **Rendszerkép** - létrehozása és leküldése[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* Rendszerkép létrehozása és **leküldése**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Rendszerkép** - létrehozása és futtatása[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* Rendszerkép létrehozása és **futtatása**  -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Több rendszerkép** -  létrehozása és leküldése[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Több rendszerkép**  -   létrehozása és leküldése [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Lemezképek létrehozása és tesztelése párhuzamos** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* **Képek létrehozása és tesztelése párhuzamosan**  -   [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **Képek létrehozása és leküldése több** - beállításjegyzékbe[YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
+* **Képek létrehozása és leküldése több**  -  beállításjegyzékbe [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
 
 
 ## <a name="next-steps"></a>További lépések

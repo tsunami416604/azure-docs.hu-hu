@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826604"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: a jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
@@ -39,7 +38,7 @@ A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasz
     - Az DontDisplayLastUserName értéke engedélyezve vagy 1
     - Az NoLockScreen értéke engedélyezve vagy 1
     - A EnableLostMode be van állítva az eszközön
-    - Az Explorer. exe helyére egyéni rendszerhéj van lecserélve
+    - A Explorer.exe helyére egyéni rendszerhéj van lecserélve
 - A következő adott három beállítás kombinációja miatt a funkció nem működik.
     - Interaktív bejelentkezés: nem szükséges a CTRL + ALT + DEL = letiltva
     - DisableLockScreenAppNotifications = 1 vagy engedélyezve
@@ -128,8 +127,8 @@ Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről �
 
 #### <a name="silent-installation"></a>Csendes telepítés
 
-- A beavatkozás nélküli telepítéshez használja az "msiexec/i SsprWindowsLogon. PROD. msi/Qn" parancsot.
-- A beavatkozás nélküli eltávolításhoz használja az "msiexec/x SsprWindowsLogon. PROD. msi/Qn" parancsot.
+- A beavatkozás nélküli telepítéshez használja az "msiexec/i SsprWindowsLogon.PROD.msi/Qn" parancsot.
+- Csendes eltávolításhoz használja az "msiexec/x SsprWindowsLogon.PROD.msi/Qn" parancsot.
 
 #### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Windows 7, 8 és 8,1 jelszó-visszaállítás hibaelhárítása
 

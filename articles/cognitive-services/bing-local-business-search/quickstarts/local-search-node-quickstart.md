@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – lekérdezés küldése az API-nak a Node. js használatával – Bing helyi üzleti keresés
+title: Gyors útmutató – lekérdezés küldése az API-nak a Node.js-Bing helyi üzleti keresés használatával
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
@@ -10,24 +10,25 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 3bb31c36e8c614a72b86f95cb7e7d1c588692f97
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 2b5de1c5bf99ff2516a0eb836d540fc2833d99cb
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873082"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611254"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak a Node. js használatával
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak a Node.js használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan küldhet kéréseket a Bing helyi üzleti keresési API-nak, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás a Node. js-ben van megírva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
+Ebből a rövid útmutatóból megtudhatja, hogyan küldhet kéréseket a Bing helyi üzleti keresési API-nak, amely egy Azure kognitív szolgáltatás. Bár ez az egyszerű alkalmazás Node.jsban van megírva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
 Ez a példában szereplő alkalmazás helyi válaszüzeneteket olvas be az API-ból egy keresési lekérdezéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
 * A [JavaScript-kérelem könyvtára](https://github.com/request/request).
-* Egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , Bing Search API-k. Ebben a rövid útmutatóban az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő. Mentse az ingyenes próbaverzió aktiválásához megadott API-kulcsot. További információ: [Cognitive Services díjszabása-BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
 
 
 ## <a name="code-scenario"></a>Kódforgatókönyv

@@ -4,14 +4,14 @@ description: Tűzfalszabályok létrehozása és kezelése Azure Database for Po
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 887b450c88e8d9d06e86cd7dc7725c7538522aa5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74770305"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102123"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgáló számára a Azure Portal használatával
 A kiszolgálói szintű tűzfalszabályok egy adott IP-címről vagy IP-címtartományból származó Azure Database for PostgreSQL kiszolgáló elérésének kezelésére használhatók.
@@ -58,7 +58,7 @@ Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
 * Meglévő szabály módosításához kattintson a szabály valamelyik mezőjére, és adja meg a módosításokat. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pont [...] elemre, majd a szabály eltávolításához kattintson a **Törlés** gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ehhez hasonlóan parancsfájlokat is [létrehozhat Azure Database for PostgreSQL tűzfalszabályok létrehozásához és kezeléséhez az Azure CLI használatával](howto-manage-firewall-using-cli.md).
 - További biztonságos hozzáférés a kiszolgálóhoz [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével a Azure Portal használatával](howto-manage-vnet-using-portal.md).
 - Ha segítségre van a Azure Database for PostgreSQL-kiszolgálóhoz való csatlakozáshoz, tekintse meg a [Azure Database for PostgreSQL kapcsolódási kódtárait](concepts-connection-libraries.md).

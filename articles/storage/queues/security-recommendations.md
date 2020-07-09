@@ -11,10 +11,10 @@ ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
 ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086616"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Biztonsági javaslatok a várólista-tároláshoz
@@ -46,7 +46,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Visszavonási tervvel kell rendelkeznie minden olyan SAS számára, amelyet az ügyfelek számára ad ki | Ha egy SAS biztonsága sérül, a lehető leghamarabb vissza kell vonnia az SAS-t. Ha vissza szeretne vonni egy felhasználói delegálási SAS-t, vonja vissza a felhasználói delegálási kulcsot, hogy gyorsan érvénytelenítse a kulcshoz társított összes aláírást. Egy tárolt hozzáférési szabályzattal társított szolgáltatási SAS visszavonásához törölheti a tárolt hozzáférési szabályzatot, átnevezheti a szabályzatot, vagy módosíthatja annak lejárati idejét egy múltbeli időpontra. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).  | - |
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
@@ -64,5 +64,5 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Security dokumentációja](https://docs.microsoft.com//azure/security/)
+- [Az Azure biztonsági dokumentációja](https://docs.microsoft.com//azure/security/)
 - [Biztonságos fejlesztői dokumentáció](https://docs.microsoft.com/azure/security/develop/).

@@ -3,12 +3,11 @@ title: Speciális alkalmazás-frissítési témakörök
 description: Ez a cikk a Service Fabric alkalmazások frissítésével kapcsolatos néhány speciális témakört ismerteti.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84263091"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric alkalmazás frissítése: speciális témakörök
 
@@ -20,21 +19,21 @@ Hasonlóképpen, a szolgáltatások típusai a frissítés részeként eltávol�
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Az állapot nélküli szolgáltatás tervezett leállási idejének elkerülése
 
-A tervezett állapot nélküli példányok esetében – például az alkalmazás/fürt verziófrissítése vagy a csomópont inaktiválása esetén – a rendszer eltávolítja a kapcsolatokat a megjelenő végpont eltávolítása után, ami kényszerített kapcsolat bezárását eredményezi.
+A tervezett állapot nélküli leállások esetében, például az alkalmazás/fürt frissítése vagy a csomópont inaktiválása esetén a kapcsolatok eltűnnek, mivel a rendszer eltávolítja a megjelenő végpontot a példány leállása után, ami erőteljes kapcsolat bezárását eredményezi.
 
-Ennek elkerüléséhez konfigurálja a *RequestDrain* (előzetes verzió) szolgáltatást úgy, hogy a szolgáltatás konfigurációjában egy *példány záró késleltetési időtartamát* adja hozzá, amely lehetővé teszi a kiürítést, miközben a fürt más szolgáltatásaitól érkező kéréseket fogad, és fordított proxyt használ, vagy az API feloldása az értesítési modellel a végpontok frissítéséhez. Ez biztosítja, hogy a rendszer eltávolítja az állapot nélküli példány által hirdetett végpontot, *mielőtt* a késleltetés a példány bezárása előtt elindul. Ez a késleltetés lehetővé teszi, hogy a meglévő kérések zökkenőmentesen le legyenek ürítve, mielőtt a példány ténylegesen leáll. Az ügyfelek értesítést kapnak a végpont változásáról egy visszahívási függvény által a késés megkezdésének időpontjában, hogy újra fel tudják oldani a végpontot, és ne küldjön új kéréseket a lekérdezett példányra.
+Ennek elkerüléséhez konfigurálja a *RequestDrain* szolgáltatást úgy, hogy a szolgáltatás konfigurációjában egy *példányhoz tartozó késleltetési idő* hozzáadásával engedélyezi a meglévő kérelmeket a fürtből a kihelyezett végpontokon való leeresztéshez. Ez úgy érhető el, mert a rendszer eltávolítja az állapot nélküli példány által hirdetett végpontot, *mielőtt* a késleltetés a példány bezárása előtt elindul. Ez a késleltetés lehetővé teszi, hogy a meglévő kérések zökkenőmentesen le legyenek ürítve, mielőtt a példány ténylegesen leáll. Az ügyfelek értesítést kapnak a végpont változásáról egy visszahívási függvény által a késés megkezdésének időpontjában, hogy újra fel tudják oldani a végpontot, és ne küldjön új kéréseket a lekérdezett példányra. Ezek a kérelmek olyan ügyfelektől származnak, amelyek [fordított proxyt](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) használnak, vagy a szolgáltatási végpont feloldási API-ját az értesítési modellel ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) használják a végpontok frissítéséhez.
 
 ### <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
 A késést többféleképpen is konfigurálhatja a szolgáltatás oldalán.
 
- * **Új szolgáltatás létrehozásakor**a `-InstanceCloseDelayDuration`következőket kell megadnia:
+ * **Új szolgáltatás létrehozásakor**a következőket kell megadnia `-InstanceCloseDelayDuration` :
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
- * A **szolgáltatásnak az alkalmazás jegyzékfájljának Alapértelmezések szakaszában megadott meghatározása során**rendelje `InstanceCloseDelayDurationSeconds` hozzá a (z) tulajdonságot:
+ * A **szolgáltatásnak az alkalmazás jegyzékfájljának Alapértelmezések szakaszában megadott meghatározása során**rendelje hozzá a (z) `InstanceCloseDelayDurationSeconds` tulajdonságot:
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,10 +41,37 @@ A késést többféleképpen is konfigurálhatja a szolgáltatás oldalán.
           </StatelessService>
     ```
 
- * **Meglévő szolgáltatás frissítésekor**a `-InstanceCloseDelayDuration`következőket kell megadnia:
+ * **Meglévő szolgáltatás frissítésekor**a következőket kell megadnia `-InstanceCloseDelayDuration` :
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **Meglévő szolgáltatás ARM-sablonon keresztüli létrehozásakor vagy frissítésekor**a következőt kell megadnia: `InstanceCloseDelayDuration` (a támogatott API-verzió minimális verziója: 2019-11-01-előnézet):
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>Ügyfél-konfiguráció
@@ -55,7 +81,7 @@ A változási értesítés arra utal, hogy a végpontok megváltoztak, az ügyf�
 
 ### <a name="optional-upgrade-overrides"></a>Választható frissítési felülbírálások
 
-A szolgáltatás alapértelmezett késleltetési időtartamának beállítása mellett a késést is felülbírálhatja az alkalmazás/fürt frissítése során ugyanazzal a (`InstanceCloseDelayDurationSec`) kapcsolóval:
+A szolgáltatás alapértelmezett késleltetési időtartamának beállítása mellett a késést is felülbírálhatja az alkalmazás/fürt frissítése során ugyanazzal a ( `InstanceCloseDelayDurationSec` ) kapcsolóval:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -63,15 +89,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-A késleltetés időtartama csak a meghívott frissítési példányra vonatkozik, és más módon nem változtatja meg az egyes szolgáltatás-késleltetési konfigurációkat. Ezzel a beállítással például késleltetheti `0` az előre konfigurált frissítési késések kihagyása érdekében.
+A felülbírált késleltetési időtartam csak a meghívott frissítési példányra vonatkozik, és más módon nem változtatja meg az egyes szolgáltatás-késleltetési konfigurációkat. Ezzel a beállítással például késleltetheti az `0` előre konfigurált frissítési késések kihagyása érdekében.
 
 > [!NOTE]
-> Az Azure Load balancertől érkező kérések nem teljesítik a kérelmek kiürítésének beállítását. A beállítás nem teljesül, ha a hívó szolgáltatás a panasztételi megoldáson alapuló feloldást használ.
+> * A lecsapolt kérések beállításai nem fogják tudni megakadályozni, hogy az Azure Load Balancer új kéréseket küldjön a leeresztő végpontoknak.
+> * A panasz-alapú megoldási mechanizmus nem eredményezi a kérések zökkenőmentes kiürítését, mivel hiba után kivált egy szolgáltatás feloldására. A korábban leírtaknak megfelelően a [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)használatával kell kijavítani a végpontok módosítására vonatkozó értesítésekre való előfizetést.
+> * A beállítások nem teljesülnek, ha a frissítés egy negatív hatással van, azaz Ha a rendszer nem indít le replikákat a frissítés során.
 >
 >
 
 > [!NOTE]
-> Ez a funkció a fentiekben említett, Update-ServiceFabricService parancsmagot használó meglévő szolgáltatásokban konfigurálható, ha a 7.1.XXX vagy annál újabb a fürt kódjának verziója.
+> Ez a funkció az Update-ServiceFabricService parancsmag vagy a fentiekben említett ARM-sablon használatával konfigurálható a meglévő szolgáltatásokban, ha a 7.1.XXX vagy annál újabb a fürt kódjának verziója.
 >
 >
 

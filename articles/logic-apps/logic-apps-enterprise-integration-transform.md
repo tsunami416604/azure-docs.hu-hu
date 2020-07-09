@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792390"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Hozzon létre olyan térképeket, amelyek átalakítja az XML-t a Azure Logic Apps formátumai között Enterprise Integration Pack
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Leképezések létrehozása, amelyek az XML-t különböző formátumokká alakítják át az Azure Logic Appsben az Enterprise Integration Packkel
 
-A vállalati integrációs átalakító összekötő az adatok formátumát egy másik formátumba konvertálja. Előfordulhat például, hogy van egy bejövő üzenete, amely az aktuális dátumot tartalmazza a YearMonthDay formátumban. Az átalakítással újraformázhatja a dátumot MonthDayYear formátumban.
+A vállalati integráció Átalakítás összekötője egy adott formátumból más formátumba konvertálja az adatokat. Előfordulhat például, hogy van egy bejövő üzenete, amely az aktuális dátumot tartalmazza az ÉvHónapNap formátumban. A dátumot átalakítással formázhatja át a HónapNapÉv formátumra.
 
 ## <a name="what-does-a-transform-do"></a>Mit tesz az átalakítás?
 A térképként is ismert átalakítás egy forrás XML-sémából (a bemenetből) és egy célként megadott XML-sémából (a kimenetből) áll. A különböző beépített függvények segítségével kezelheti vagy szabályozhatja az adatok kezelését, beleértve a karakterlánc-manipulációkat, a feltételes hozzárendeléseket, a aritmetikai kifejezéseket, a dátum-és időformázó szerkezeteket, valamint a hurkokat is.
@@ -84,7 +83,7 @@ Az átalakítási művelet a leképezéseket és az átalakításokat is támoga
     * a **név** az egyéni szerelvény neve.
     * a **névtér** a szerelvényben található névtér, amely tartalmazza az egyéni kódot.
 
-  Ez a példa egy olyan Térképet mutat be, amely egy "XslUtilitiesLib" nevű szerelvényre hivatkozik, és a `circumreference` metódust hívja meg a szerelvényből.
+  Ez a példa egy olyan Térképet mutat be, amely egy "XslUtilitiesLib" nevű szerelvényre hivatkozik, és a metódust hívja meg a `circumreference` szerelvényből.
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -111,7 +110,7 @@ Az átalakítási művelet a leképezéseket és az átalakításokat is támoga
 
 
 ### <a name="byte-order-mark"></a>Byte Order Mark
-Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karakterrel kezdődik. Ezt a funkciót csak a Code View Editor használata során érheti el. A funkció letiltásához a `disableByteOrderMark` `transformOptions` következő tulajdonságot kell megadnia:
+Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karakterrel kezdődik. Ezt a funkciót csak a Code View Editor használata során érheti el. A funkció letiltásához `disableByteOrderMark` a következő tulajdonságot kell megadnia `transformOptions` :
 
 ```json
 "Transform_XML": {
@@ -133,7 +132,7 @@ Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karak
 
 
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 * [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
 * [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md "További tudnivalók a vállalati integrációs térképekről")  
 

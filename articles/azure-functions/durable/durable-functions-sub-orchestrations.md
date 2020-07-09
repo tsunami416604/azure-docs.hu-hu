@@ -4,25 +4,29 @@ description: A Azure Functionshoz Durable Functions-bővítményben lévő elők
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5625bc2ddfa4b6f527ca16f19f33d257a1834d4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340818"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
 
 A Orchestrator függvények más Orchestrator-függvényeket is hívhatnak. Létrehozhat például egy kisebb Orchestrator-függvények könyvtárainak nagyobb előkészítését. Vagy egy Orchestrator függvény több példányát is futtathatja párhuzamosan.
 
-Egy Orchestrator függvény meghívhat egy másik Orchestrator-függvényt `CallSubOrchestratorAsync` a `CallSubOrchestratorWithRetryAsync` .net- `callSubOrchestrator` `callSubOrchestratorWithRetry` ben lévő metódusok vagy a JavaScript-metódusok használatával. A [& Compensation](durable-functions-error-handling.md#automatic-retry-on-failure) szolgáltatással kapcsolatos hiba további információkat tartalmaz az automatikus Újrapróbálkozással kapcsolatban.
+Egy Orchestrator függvény meghívhat egy másik Orchestrator-függvényt a `CallSubOrchestratorAsync` `CallSubOrchestratorWithRetryAsync` .net-ben lévő metódusok vagy a `callSubOrchestrator` JavaScript-metódusok használatával `callSubOrchestratorWithRetry` . A [& Compensation](durable-functions-error-handling.md#automatic-retry-on-failure) szolgáltatással kapcsolatos hiba további információkat tartalmaz az automatikus Újrapróbálkozással kapcsolatban.
 
 Az Orchestrator függvények a hívó szemszögéből hasonlóan működnek a tevékenységi funkciókkal. Egy értéket adhatnak vissza, kivételt jeleznek, és a szülő Orchestrator függvénytől is megtekinthetők. 
+
+> [!NOTE]
+> A .NET és a JavaScript jelenleg támogatja a alfolyamatokat.
+
 ## <a name="example"></a>Példa
 
 Az alábbi példa egy IoT ("eszközök internetes hálózata") forgatókönyvet mutat be, ahol több eszközt kell kiépíteni. A következő függvény az egyes eszközökön végrehajtandó kiépítési munkafolyamatot jelöli:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -66,11 +70,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Ez a Orchestrator függvény használható az egyszeri eszköz kiosztásához, vagy egy nagyobb előkészítés része lehet. Az utóbbi esetben a szülő Orchestrator függvény a (.net) vagy `DeviceProvisioningOrchestration` `CallSubOrchestratorAsync` `callSubOrchestrator` a (JavaScript) API használatával is ütemezhet példányokat.
+Ez a Orchestrator függvény használható az egyszeri eszköz kiosztásához, vagy egy nagyobb előkészítés része lehet. Az utóbbi esetben a szülő Orchestrator függvény `DeviceProvisioningOrchestration` a `CallSubOrchestratorAsync` (.net) vagy a `callSubOrchestrator` (JavaScript) API használatával is ütemezhet példányokat.
 
 Íme egy példa, amely bemutatja, hogyan futtathat párhuzamosan több Orchestrator-függvényt.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,7 +98,7 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> Az előző C#-példák a Durable Functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-példák a Durable Functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

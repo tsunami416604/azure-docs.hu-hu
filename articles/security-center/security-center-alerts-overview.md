@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: a77e75caf836c4f7d142b0b5c23327d73afa6a77
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b639b382e69be30c2f04471e0a253ef5d7c7b4e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125770"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -53,7 +53,7 @@ A valós fenyegetések észlelése és a téves pozitív állapotok csökkentés
 
 A Security Center olyan fejlett biztonsági elemzéseket alkalmaz, amelyek messze túlmutatnak az aláírás-alapú megközelítéseken. A big data és a [gépi tanulási](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technológiák áttörést jelentő eredményeinek felhasználásával értékelhetők ki az események a teljes felhőalapú hálóban, és így olyan fenyegetések is észlelhetők, amelyeket manuális módszerekkel lehetetlen volna azonosítani, és lehetőség van a támadások fejlődésének előrejelzésére. Ezek a biztonsági elemzések a következők:
 
-* **Integrált veszélyforrások felderítése**: a Microsoft óriási mennyiségű globális fenyegetési intelligenciával rendelkezik. A telemetria több forrásból, például az Azure-ból, az Office 365-ból, a Microsoft CRM Online-ból, a Microsoft Dynamics AX-ből, a outlook.com, a MSN.com, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Center (MSRC) szolgáltatásból zajlik. A kutatók emellett a jelentős felhőalapú szolgáltatók és más harmadik féltől származó adatcsatornák között megosztott veszélyforrások felderítésére vonatkozó információkat is kapnak. Az Azure Security Center mindezeket az adatokat fel tudja használni arra, hogy értesítse Önt az ismert kártékony elemektől eredő fenyegetésekről.
+* **Integrált veszélyforrások felderítése**: a Microsoft óriási mennyiségű globális fenyegetési intelligenciával rendelkezik. A telemetria több forrásból, például az Azure-ból, Microsoft 365ból, a Microsoft CRM Online-ból, a Microsoft Dynamics AX-ból, a outlook.com, a MSN.com, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Center (MSRC) szolgáltatásból áramlik. A kutatók emellett a jelentős felhőalapú szolgáltatók és más harmadik féltől származó adatcsatornák között megosztott veszélyforrások felderítésére vonatkozó információkat is kapnak. Az Azure Security Center mindezeket az adatokat fel tudja használni arra, hogy értesítse Önt az ismert kártékony elemektől eredő fenyegetésekről.
 
 * **Viselkedési elemzés**: a viselkedési elemzés olyan módszer, amely az adatelemzést és az azokhoz való összevetését ismert minták gyűjteményéhez hasonlítja össze. Ezek a minták azonban nem csak egyszerű aláírások. Meghatározásuk hatalmas adatkészletekre alkalmazott összetett gépi tanulási algoritmusokkal történt. Ezenkívül szakértő elemzők mélyrehatóan elemezték a kártékony működést a meghatározásukhoz. A Azure Security Center a működés elemzésével azonosíthatja a feltört erőforrásokat a virtuális gépek naplói, a virtuális hálózati eszközök naplói, a háló naplói és más források elemzése alapján.
 

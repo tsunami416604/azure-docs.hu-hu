@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/02/2019
 ms.openlocfilehash: 5340b1c7a6510595376789bc5777e6fb6f07dd4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895635"
 ---
 # <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>Forgatókönyv: az Apache Ambari felhasználói felülete a gazdagépeket és szolgáltatásokat mutatja be az Azure HDInsight
@@ -26,7 +25,7 @@ Az Apache Ambari felhasználói felülete elérhető, de a felhasználói felül
 
 A legtöbb esetben ez az a probléma, hogy a Ambari-kiszolgáló nem fut az aktív átjárócsomóponthoz. Ellenőrizze, hogy melyik átjárócsomóponthoz az aktív átjárócsomóponthoz, és győződjön meg arról, hogy a ambari-kiszolgáló fut a jobb oldalon. Ne indítsa el kézzel a ambari, hagyja, hogy a feladatátvételi vezérlő szolgáltatás felelős a ambari a megfelelő átjárócsomóponthoz való indításához. Indítsa újra az aktív átjárócsomóponthoz a feladatátvétel kényszerítéséhez.
 
-A hálózati problémák is okozhatják ezt a problémát. A fürt minden csomópontján ellenőrizze, hogy tud- `headnodehost`e pingelni. Ritka helyzet van, ha egy fürtcsomópont nem tud csatlakozni a `headnodehost`következőhöz:
+A hálózati problémák is okozhatják ezt a problémát. A fürt minden csomópontján ellenőrizze, hogy tud-e pingelni `headnodehost` . Ritka helyzet van, ha egy fürtcsomópont nem tud csatlakozni a következőhöz `headnodehost` :
 
 ```
 $>telnet headnodehost 8440

@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a0a2f703d9224b8b9dd77c80b2b6a7faee70f5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538103"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT hub-esemény forrásának hozzáadása a Time Series Insights-környezethez
@@ -102,7 +101,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. Adja hozzá az IoT hub-hoz hozzáadott dedikált Time Series Insights fogyasztói csoport nevét.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Az eseményforrás létrehozása után a Time Series Insights automatikusan elindítja az adatfolyamot a környezetbe.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583206"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024452"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -28,7 +28,7 @@ Egy feltételes hozzáférési szabályzaton belül a rendszergazda a hozzáfér
 
 A blokk figyelembe veszi az összes hozzárendelést, és megakadályozza a hozzáférést a feltételes hozzáférési házirend konfigurációja alapján.
 
-A Block egy hatékony vezérlő, amelyet megfelelő ismeretekkel kell megforgatni. Az engedélyezés előtt a rendszergazdáknak [csak jelentési módot](concept-conditional-access-report-only.md) kell használniuk a teszteléshez.
+A Block egy hatékony vezérlő, amelyet megfelelő ismeretekkel kell megforgatni. A blokk-utasításokkal rendelkező szabályzatok nem kívánt mellékhatással rendelkezhetnek. A méretezés engedélyezése előtt elengedhetetlen a megfelelő tesztelés és ellenőrzés. A rendszergazdáknak olyan eszközöket kell használniuk, mint például a [feltételes hozzáférés jelentésének módja](concept-conditional-access-report-only.md) és [a What if eszköz feltételes hozzáféréssel a](what-if-tool.md) módosítások végrehajtásakor.
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
@@ -39,6 +39,7 @@ A rendszergazdák dönthetnek úgy, hogy egy vagy több vezérlőt kényszeríte
 - [Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése](../devices/concept-azure-ad-join-hybrid.md)
 - [Jóváhagyott ügyfélalkalmazás megkövetelése](app-based-conditional-access.md)
 - [Alkalmazásvédelmi szabályzat megkövetelése](app-protection-based-conditional-access.md)
+- [Jelszó módosításának megkövetelése](#require-password-change)
 
 Ha a rendszergazdák úgy döntenek, hogy kombinálják ezeket a beállításokat, a következő módszereket választhatják ki:
 
@@ -62,6 +63,8 @@ Az eszközöknek regisztrálva kell lenniük az Azure AD-ben, mielőtt azok megf
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése
 
 A szervezetek dönthetnek úgy, hogy az eszköz identitását használják a feltételes hozzáférési szabályzat részeként. A szervezeteknek meg kell követelniük, hogy az eszközök hibrid Azure AD-hez legyenek csatlakoztatva ezzel a jelölőnégyzettel. Az eszközök identitásával kapcsolatos további információkért tekintse meg a [Mi az eszköz identitása?](../devices/overview.md)című cikket.
+
+Az [OAuth folyamat](../develop/v2-oauth2-device-code.md)használatakor a felügyelt eszközök engedélyezési vezérlésének vagy az eszköz állapotának megkövetelése nem támogatott. Ennek az az oka, hogy a hitelesítést végző eszköz nem tudja megadni az eszköz állapotát a kódot biztosító eszköz számára, és a tokenben lévő eszköz állapota zárolva van a hitelesítést végző eszközön. Használja helyette a multi-Factor Authentication engedélyezésének megkövetelése vezérlőt.
 
 ### <a name="require-approved-client-app"></a>Jóváhagyott ügyfélalkalmazás megkövetelése
 
@@ -132,6 +135,21 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
     - Az eszköz regisztrálásához egy Broker-alkalmazás szükséges. IOS rendszeren a közvetítő alkalmazás Microsoft Authenticator és Android rendszeren, Intune Céges portál alkalmazás.
 
 Tekintse meg a következő cikket [: How to: app Protection-házirend és egy jóváhagyott ügyfélalkalmazás a Cloud app Accesshez feltételes hozzáféréssel](app-protection-based-conditional-access.md) a konfigurációs példákhoz.
+
+### <a name="require-password-change"></a>Jelszó módosításának megkövetelése 
+
+Ha a rendszer felhasználói kockázatot észlel, a felhasználói kockázati házirend feltételeit használva a rendszergazdák az Azure AD önkiszolgáló jelszó-visszaállítási funkciójával biztonságosan módosíthatják a jelszót. Ha a rendszer a felhasználói kockázatot észleli, a felhasználók önkiszolgáló jelszó-visszaállítást végezhetnek el önkiszolgáló megoldásként, ez a felhasználó kockázati eseményét fogja letiltani, hogy megakadályozza a rendszergazdák számára a szükségtelen zajt. 
+
+Amikor a rendszer kéri a felhasználótól, hogy változtassa meg a jelszavát, először a többtényezős hitelesítés végrehajtásához szükséges. Győződjön meg arról, hogy az összes felhasználó regisztrálva van a többtényezős hitelesítéshez, így azok a fiókhoz tartozó kockázat észlelése esetén is felkészültek.  
+
+> [!WARNING]
+> A felhasználói kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell magukat az önkiszolgáló jelszó-visszaállításhoz. 
+
+Ha a jelszó-módosítási vezérlő használatával konfigurál egy házirendet, a rendszer néhány korlátozást is tartalmaz.  
+
+1. A szabályzatot hozzá kell rendelni az "összes felhőalapú alkalmazáshoz". Ez megakadályozza, hogy egy másik alkalmazás használatával a támadók megváltoztassák a felhasználó jelszavát, és a fiók kockázatának visszaállítását. Ehhez egyszerűen egy másik alkalmazásba kell bejelentkeznie. 
+1. A jelszó megkövetelése nem használható más vezérlőkkel, például megfelelő eszköz megkövetelésével.  
+1. A jelszó-módosítási vezérlő csak a felhasználó-és csoport-hozzárendelési feltétellel, a Cloud app-hozzárendelési feltétellel (amely az összes értékre kell állítani) és a felhasználói kockázati feltételekkel használható. 
 
 ### <a name="terms-of-use"></a>Használati feltételek
 

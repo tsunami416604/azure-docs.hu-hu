@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3197ac3033c6550b72bdfdf39fd23c55dda20d90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134233"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Oktatóanyag: új ereklye beállítása szervezet szerint automatikus felhasználó-kiépítés esetén
@@ -157,7 +157,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

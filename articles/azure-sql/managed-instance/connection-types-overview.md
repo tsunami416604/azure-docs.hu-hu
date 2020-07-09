@@ -3,19 +3,19 @@ title: Kapcsolattípusok
 titleSuffix: Azure SQL Managed Instance
 description: Tudnivalók az Azure SQL felügyelt példányok kapcsolatainak típusairól
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: cee913e846ebfef174a3cd6383401eace89187f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517320"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL felügyelt példányok kapcsolatainak típusai
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,24 +31,28 @@ Az Azure SQL felügyelt példánya a következő két kapcsolattípus használat
 
 ## <a name="redirect-connection-type"></a>A kapcsolattípus átirányítása
 
-A kapcsolat átirányítása azt jelenti, hogy a TCP-munkamenet az SQL-motorhoz való létrehozása után az ügyfél-munkamenet a terheléselosztó virtuális fürtjének célként megadott virtuális IP-címét szerzi be. A következő csomagok közvetlenül a virtuális fürt csomópontjára áramlanak, és megkerülik az átjárót. A következő ábra szemlélteti ezt a forgalmat.
+Az átirányítás kapcsolat típusa beállításnál a TCP-munkamenet SQL-motorhoz való létrehozása után az ügyfél-munkamenet a terheléselosztó virtuális fürtjének célként megadott virtuális IP-címét szerzi be. A következő csomagok közvetlenül a virtuális fürt csomópontjára áramlanak, és megkerülik az átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
-![átirányítás. png](./media/connection-types-overview/redirect.png)
+![redirect.png](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
-> Az átirányítási kapcsolattípus jelenleg csak privát végponton működik. A kapcsolat típusának beállításától függetlenül a nyilvános végponton keresztül érkező kapcsolatok egy proxyn keresztül történnek.
+> Az átirányítási kapcsolattípus jelenleg csak privát végpont esetén működik. A kapcsolat típusának beállításától függetlenül a nyilvános végponton keresztül érkező kapcsolatok egy proxyn keresztül történnek.
 
 ## <a name="proxy-connection-type"></a>Proxy kapcsolattípus
 
-A proxy kapcsolat típusa azt jelenti, hogy a TCP-munkamenet az átjáróval és az azt követő összes további csomaggal lesz létrehozva. A következő ábra szemlélteti ezt a forgalmat.
+A proxy kapcsolati típusában a TCP-munkamenet az átjáróval és az azt követő összes további csomaggal lesz létrehozva. A következő ábra szemlélteti ezt a forgalmat.
 
-![proxy. png](./media/connection-types-overview/proxy.png)
+![proxy.png](./media/connection-types-overview/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>A kapcsolattípus beállításainak a PowerShell használatával történő módosítására szolgáló parancsfájl
+## <a name="changing-connection-type"></a>Kapcsolattípus módosítása
+
+- **A portál használata:** A kapcsolattípus a Azure Portal használatával történő módosításához nyissa meg a Virtual Network lapot, és a **kapcsolattípus** beállítással módosítsa a kapcsolattípus, és mentse a módosításokat.
+
+- **A kapcsolattípus beállításainak a PowerShell használatával történő módosítására szolgáló parancsfájl:**
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A következő PowerShell-parancsfájl azt mutatja be, hogyan lehet módosítani az SQL felügyelt példányainak kapcsolódási típusát `Redirect` .
+A következő PowerShell-szkript bemutatja, hogyan módosíthatja a felügyelt példányok kapcsolattípus-típusát `Redirect` .
 
 ```powershell
 Install-Module -Name Az
@@ -60,13 +64,13 @@ Connect-AzAccount
 Get-AzSubscription
 # Use your SubscriptionId in place of {subscription-id} below
 Select-AzSubscription -SubscriptionId {subscription-id}
-# Replace {rg-name} with the resource group for your SQL Managed Instance, and replace {mi-name} with the name of your SQL Managed Instance
+# Replace {rg-name} with the resource group for your managed instance, and replace {mi-name} with the name of your managed instance
 $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Adatbázis visszaállítása egy felügyelt SQL-példányra](restore-sample-database-quickstart.md)
+- [Adatbázis visszaállítása SQL felügyelt példányra](restore-sample-database-quickstart.md)
 - Megtudhatja, hogyan [konfigurálhat nyilvános végpontot az SQL felügyelt példányain](public-endpoint-configure.md)
 - További információ az [SQL felügyelt példányának kapcsolati architektúráról](connectivity-architecture-overview.md)

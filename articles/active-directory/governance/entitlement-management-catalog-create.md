@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffa6f2fbdcde41d81e268779c3a0586bd8310792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339568"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -53,11 +53,11 @@ A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell h
 
 ### <a name="creating-a-catalog-programmatically"></a>Katalógus létrehozása programozott módon
 
-Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageCatalog létrehozására](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog létrehozására](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
 
 ## <a name="add-resources-to-a-catalog"></a>Erőforrások hozzáadása egy katalógushoz
 
-Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőforrásoknak léteznie kell egy katalógusban. A felvehető erőforrások típusai: csoportok, alkalmazások és SharePoint Online-webhelyek. A csoportok lehetnek felhőben létrehozott Office 365-csoportok vagy felhőalapú Azure AD-alapú biztonsági csoportok. Az alkalmazások lehetnek az Azure ad vállalati alkalmazások, például az SaaS-alkalmazások és az Azure AD-ben összevont saját alkalmazások is. A webhelyek lehetnek SharePoint Online-webhelyek vagy SharePoint Online-webhelycsoportok.
+Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőforrásoknak léteznie kell egy katalógusban. A felvehető erőforrások típusai: csoportok, alkalmazások és SharePoint Online-webhelyek. A csoportok lehetnek felhőben létrehozott Microsoft 365 csoportok vagy felhőalapú Azure AD-alapú biztonsági csoportok. Az alkalmazások lehetnek az Azure ad vállalati alkalmazások, például az SaaS-alkalmazások és az Azure AD-ben összevont saját alkalmazások is. A webhelyek lehetnek SharePoint Online-webhelyek vagy SharePoint Online-webhelycsoportok.
 
 **Előfeltételként szükséges szerepkör:** [Erőforrások katalógusba való felvételéhez szükséges szerepkörök](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
@@ -155,7 +155,7 @@ A katalógust törölheti, de csak akkor, ha nincs hozzáférési csomagja.
 
 ### <a name="deleting-a-catalog-programmatically"></a>Katalógus programozott törlése
 
-A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageCatalog törlésére](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog törlésére](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>További lépések
 

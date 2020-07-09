@@ -2,16 +2,16 @@
 title: Egy művelet teljesítménybeli használatának figyelése Azure Cosmos DB
 description: Megtudhatja, hogyan figyelheti a művelet átviteli sebességét vagy a kérések egység általi használatát Azure Cosmos DBban. Egy Azure Cosmos DB fiók tulajdonosai megtudhatják, hogy mely műveletek vesznek igénybe több kérési egységet.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: 4ea195dfbf9eddbf10680196c9c75646b45380ae
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260746"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Az átviteli sebesség figyelése vagy a művelet kérése Azure Cosmos DB
 
@@ -38,15 +38,15 @@ Ha észreveszi, hogy bizonyos lekérdezések több kérési egységet vesznek ig
 
 1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
 
-   ![Metrikák ablaktábla Azure Monitor](./media/monitor-request-unit-usage/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
 
-   ![Válassza ki a Azure Cosmos DB fiókot a metrikák megtekintéséhez](./media/monitor-request-unit-usage/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Válassza ki a Azure Cosmos DB fiókot a metrikák megtekintéséhez":::
 
 1. Ezután válassza ki a **teljes kérelmek egységének** metrikáját az elérhető metrikák listájából. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **teljes kérelmeket** és az **átlagot** adja meg az összesítési értékként. Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiválasztott időszakra vonatkozóan percenként felhasználható kérelmek átlagos számát láthatja.  
 
-   ![Metrika kiválasztása a Azure Portal](./media/monitor-request-unit-usage/request-unit-usage-metric.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Metrika kiválasztása a Azure Portal":::
 
 ## <a name="filters-for-request-unit-usage"></a>A kérések egységének használatára vonatkozó szűrők
 
@@ -54,11 +54,11 @@ A mérőszámokat szűrheti, és megtekintheti az adott **CollectionName**, **da
 
 Ha az egyes műveletek esetében az összes művelethez az összeg (Sum) vagy az átlag lehetőséget választja, válassza a **felosztás alkalmazása** elemet, és válassza a **művelet típusát** és a szűrő értékét a következő képen látható módon:
 
-   ![Az Azure monitoron végzett műveletekhez Cosmos DB kérelmek egységei](./media/monitor-request-unit-usage/request-unit-usage-operations.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Az Azure monitoron végzett műveletekhez Cosmos DB kérelmek egységei":::
 
 Ha meg szeretné tekinteni a kérési egység használatát gyűjtemény szerint, válassza a **felosztás alkalmazása** lehetőséget, és válassza ki a gyűjtemény nevét szűrőként. A következőhöz hasonló csevegés jelenik meg, az irányítópulton található gyűjtemények közül választhat. Ezt követően kiválaszthat egy adott gyűjtemény nevét a további részletek megtekintéséhez:
 
-   ![A gyűjtemény által az Azure monitoron végzett összes művelethez Cosmos DB kérelmek egységei](./media/monitor-request-unit-usage/request-unit-usage-collection.png)
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="A gyűjtemény által az Azure monitoron végzett összes művelethez Cosmos DB kérelmek egységei":::
 
 ## <a name="next-steps"></a>További lépések
 

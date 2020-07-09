@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018395"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101885"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code a Resource Manager Tools bővítménnyel. Lásd: [ARM-sablonok létrehozása a Visual Studio Code használatával](./use-vs-code-to-create-template.md).
+* Visual Studio Code a Resource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 * A biztonság növeléséhez használjon generált jelszót a kiszolgálói rendszergazdai fiókhoz. Az alábbi példa segítségével hozhatja meg a jelszót:
 
     ```console
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-bacpac-file"></a>A BACPAC-fájl előkészítése
 
-Egy BACPAC-fájl meg van osztva a [githubon](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). További információ saját fájl létrehozásához: [Azure SQL-adatbázis exportálása BACPAC-fájlba](../../azure-sql/database/database-export.md). Ha egy saját helyen kívánja közzétenni a fájlt, frissítenie kell a sablont az oktatóanyag egy későbbi részében.
+Egy BACPAC-fájl meg van osztva a [githubon](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Saját létrehozásához lásd: [adatbázis exportálása Azure SQL Databaseból egy BACPAC-fájlba](../../azure-sql/database/database-export.md). Ha egy saját helyen kívánja közzétenni a fájlt, frissítenie kell a sablont az oktatóanyag egy későbbi részében.
 
 A BACPAC-fájlt egy ARM-sablon használatával kell tárolni egy Azure Storage-fiókban. A következő PowerShell-szkript előkészíti a BACPAC-fájlt az alábbi lépésekkel:
 
@@ -112,11 +112,11 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
     A sablonban két erőforrás van definiálva:
 
-   * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * `Microsoft.SQL.servers/databases`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.sql/servers).
+   * `Microsoft.SQL.servers/databases`. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.sql/servers/databases).
 
         A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
-1. Válassza a **fájl**  >  **Mentés másként** lehetőséget, hogy mentse a fájl egy másolatát a helyi számítógépre a *azuredeploy. JSON*néven.
+1. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre *azuredeploy.js*a következő néven:.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -194,9 +194,9 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
         ![Sablon SQL Database bővítménnyel](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
+        További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
 
-        * **dependsOn**: A bővítményerőforrást az SQL Database létrehozása után kell létrehozni.
+        * **dependsOn**: az adatbázis létrehozása után létre kell hozni a bővítmény erőforrását.
         * **storageKeyType**: adja meg a használandó tárolási kulcs típusát. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Ebben `StorageAccessKey` az oktatóanyagban használható.
         * **storageKey**: a BACPAC-fájlt tároló tárolási fiók kulcsát határozza meg. Ha a tárolási kulcs típusa `SharedAccessKey` , akkor meg kell előznie a következőt: "?".
         * **storageUri**: a Storage-fiókban tárolt BACPAC-fájl URL-címét határozza meg.
@@ -241,7 +241,7 @@ Használjon generált jelszót. Lásd: [Előfeltételek](#prerequisites).
 
 Ha az ügyfélszámítógépről szeretné elérni a kiszolgálót, hozzá kell adnia egy további tűzfalszabály-szabályt. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)foglalkozó témakörben talál.
 
-A Azure Portal válassza ki az újonnan telepített erőforráscsoport SQL-adatbázisát. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Ekkor két, az adatbázisba importált tábla jelenik meg.
+A Azure Portal válassza ki az adatbázist az újonnan telepített erőforráscsoporthoz. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Ekkor két, az adatbázisba importált tábla jelenik meg.
 
 ![Lekérdezés-szerkesztő (előzetes verzió)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
@@ -254,7 +254,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Válassza ki az erőforráscsoport nevét. Az erőforráscsoport összesen hat erőforrást fog látni.
 1. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy kiszolgálót és egy adatbázist, és importált egy BACPAC-fájlt. A sablonok telepítésével kapcsolatos hibák megismeréséhez lásd:
 

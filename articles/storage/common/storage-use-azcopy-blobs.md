@@ -3,44 +3,44 @@ title: Adatok átvitele az Azure Blob Storage-ba vagy onnan az AzCopy v10 haszn�
 description: Ez a cikk AzCopy-példákat tartalmaz, amelyek segítenek a tárolók létrehozásában, a fájlok másolásában és a könyvtárak szinkronizálásában a helyi fájlrendszerek és tárolók között.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513781"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
 A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-ból vagy a Storage-fiókok között. Ez a cikk a blob Storage-hoz használható példaként szolgáló parancsokat tartalmaz.
 
 > [!TIP]
-> A cikkben szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
+> A cikkben szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
 
 ## <a name="get-started"></a>Bevezetés
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
 > [!NOTE]
-> A cikkben szereplő példák azt feltételezik, hogy a `AzCopy login` parancs használatával hitelesítette a személyazonosságát. A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
+> A cikkben szereplő példák azt feltételezik, hogy a parancs használatával hitelesítette a személyazonosságát `AzCopy login` . A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
 >
 > Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban.
 >
-> Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Példa: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Tároló létrehozásához használhatja a [azcopy make](storage-ref-azcopy-make.md) parancsot. Az ebben a szakaszban szereplő példák egy nevű `mycontainer`tárolót hoznak létre.
+Tároló létrehozásához használhatja a [azcopy make](storage-ref-azcopy-make.md) parancsot. Az ebben a szakaszban szereplő példák egy nevű tárolót hoznak létre `mycontainer` .
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
-| **Például** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
+| **Syntax** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
+| **Példa** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
 | **Példa** (hierarchikus névtér) | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
 
 A részletes dokumentációt a következő témakörben tekintheti meg: [azcopy make](storage-ref-azcopy-make.md).
@@ -62,8 +62,8 @@ Ez a szakasz a következő példákat tartalmazza:
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Fájlok feltöltése hozzáfűzési Blobként vagy Blobként.|**--BLOB típusú**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |Feltöltés egy adott hozzáférési szintre (például az archiválási szintre).|**--Block-blob-réteg**=\[nincs\|gyors\|elérésű\|Archívum\]|
+> |Fájlok feltöltése hozzáfűzési Blobként vagy Blobként.|**– blob típusú** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
+> |Feltöltés egy adott hozzáférési szintre (például az archiválási szintre).|**--Block-blob-réteg** = \[ Nincs \| gyors elérésű \| \| Archívum\]|
 > 
 > A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
@@ -71,11 +71,11 @@ Ez a szakasz a következő példákat tartalmazza:
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
-| **Például** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+| **Syntax** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
+| **Példa** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-A fájl elérési útja vagy fájlneve tetszőleges helyettesítő karakter (*) használatával is feltölthet egy fájlt. Például: `'C:\myDirectory\*.txt'`, vagy `C:\my*\*.txt`.
+A fájl elérési útja vagy fájlneve tetszőleges helyettesítő karakter (*) használatával is feltölthet egy fájlt. Például: `'C:\myDirectory\*.txt'` , vagy `C:\my*\*.txt` .
 
 ### <a name="upload-a-directory"></a>Könyvtár feltöltése
 
@@ -83,15 +83,15 @@ Ez a példa egy könyvtárat (és az abban a könyvtárban található összes f
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
-| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Syntax** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
+| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
 
 A tárolóban lévő könyvtárba való másoláshoz csak adja meg a könyvtár nevét a parancs karakterláncában.
 
 |    |     |
 |--------|-----------|
-| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
+| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 
 Ha egy olyan könyvtár nevét adja meg, amely nem szerepel a tárolóban, a AzCopy létrehoz egy új könyvtárat a név alapján.
@@ -102,12 +102,12 @@ A könyvtár tartalmát feltöltheti anélkül, hogy a benne foglalt könyvtára
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
-| **Például** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
+| **Syntax** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
+| **Példa** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> Fűzze hozzá `--recursive` a jelölőt az összes alkönyvtárban található fájlok feltöltéséhez.
+> Fűzze hozzá a `--recursive` jelölőt az összes alkönyvtárban található fájlok feltöltéséhez.
 
 ### <a name="upload-specific-files"></a>Adott fájlok feltöltése
 
@@ -115,31 +115,31 @@ Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesít
 
 #### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Az egyes fájlneveket pontosvesszővel (`;`) válassza el egymástól.
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Az egyes fájlneveket pontosvesszővel () válassza el egymástól `;` .
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
-| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
+| **Syntax** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
+| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-Ebben a példában a AzCopy átviszi a `C:\myDirectory\photos` könyvtárat `C:\myDirectory\documents\myFile.txt` és a fájlt. Meg kell adnia a `--recursive` `C:\myDirectory\photos` könyvtárban található összes fájl átvitelének lehetőségét.
+Ebben a példában a AzCopy átviszi a `C:\myDirectory\photos` könyvtárat és a `C:\myDirectory\documents\myFile.txt` fájlt. Meg kell adnia a `--recursive` könyvtárban található összes fájl átvitelének lehetőségét `C:\myDirectory\photos` .
 
-A fájlokat a `--exclude-path` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a lehetőség használatával is kizárhatja `--exclude-path` . További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin (`;`) használatával válassza el. 
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin () használatával válassza el `;` . 
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Syntax** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a lehetőség használatával is kizárhatja `--exclude-pattern` . További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` és `--exclude-pattern` a beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a és a `–include-pattern` érték megadásával `*.txt` töltse le az összes szövegfájlt.
+A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a `–include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
 
 ## <a name="download-files"></a>Fájlok letöltése
 
@@ -159,31 +159,31 @@ Ez a szakasz a következő példákat tartalmazza:
 > |Forgatókönyv|Jelző|
 > |---|---|
 > |Fájlok automatikus kibontása.|**– Kibontás**|
-> |Adja meg, hogy a másolással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– a naplózási szintű**=\[\|figyelmeztetési\|hiba\|információja nincs\]|
-> |Itt adhatja meg, hogy miként írja felül az ütköző fájlokat és blobokat a célhelyen.|**–**=\[igaz\|hamis\|ifSourceNewer\|-kérés felülírása\]|
+> |Adja meg, hogy a másolással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– naplózási szint** = \[ FIGYELMEZTETÉSi \| hiba – \| \| nincs\]|
+> |Itt adhatja meg, hogy miként írja felül az ütköző fájlokat és blobokat a célhelyen.|**– felülírás** = \[ igaz \| hamis \| ifSourceNewer- \| kérés\]|
 > 
 > A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
 > [!NOTE]
-> Ha egy `Content-md5` blob tulajdonság értéke kivonatot tartalmaz, a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a blob `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés meghiúsul, ha a hozzáfűzéssel `--check-md5=NoCheck` vagy `--check-md5=LogOnly` a másolási paranccsal felülbírálja ezt a viselkedést.
+> Ha `Content-md5` egy blob tulajdonság értéke kivonatot tartalmaz, a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a blob tulajdonságában tárolt MD5-kivonat megegyezik-e `Content-md5` a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés meghiúsul, ha a hozzáfűzéssel `--check-md5=NoCheck` vagy a másolási paranccsal felülbírálja ezt a viselkedést `--check-md5=LogOnly` .
 
 ### <a name="download-a-file"></a>Fájl letöltése
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
-| **Például** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
+| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 
 ### <a name="download-a-directory"></a>Könyvtár letöltése
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
-| **Például** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
+| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
-Ez a példa egy nevű `C:\myDirectory\myBlobDirectory` könyvtárat eredményez, amely az összes letöltött fájlt tartalmazza.
+Ez a példa egy nevű könyvtárat eredményez, `C:\myDirectory\myBlobDirectory` amely az összes letöltött fájlt tartalmazza.
 
 ### <a name="download-the-contents-of-a-directory"></a>Könyvtár tartalmának letöltése
 
@@ -194,11 +194,11 @@ A könyvtár tartalmát letöltheti anélkül, hogy a benne foglalt könyvtárat
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
-| **Például** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
+| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
 
 > [!NOTE]
-> Az összes `--recursive` alkönyvtárban lévő fájlok letöltéséhez fűzze hozzá a jelölőt.
+> Az `--recursive` összes alkönyvtárban lévő fájlok letöltéséhez fűzze hozzá a jelölőt.
 
 ### <a name="download-specific-files"></a>Adott fájlok letöltése
 
@@ -206,43 +206,43 @@ Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesít
 
 #### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Különálló fájlnevek elkülönítése semicolin (`;`) használatával.
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Különálló fájlnevek elkülönítése semicolin () használatával `;` .
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
-| **Például** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
+| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-Ebben a példában a AzCopy átviszi a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtárat `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` és a fájlt. Meg kell adnia a `--recursive` `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtárban található összes fájl átvitelének lehetőségét.
+Ebben a példában a AzCopy átviszi a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtárat és a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` fájlt. Meg kell adnia a `--recursive` könyvtárban található összes fájl átvitelének lehetőségét `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` .
 
-A fájlokat a `--exclude-path` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a lehetőség használatával is kizárhatja `--exclude-path` . További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin (`;`) használatával válassza el.
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin () használatával válassza el `;` .
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Például** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a lehetőség használatával is kizárhatja `--exclude-pattern` . További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` és `--exclude-pattern` a beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a és a `–include-pattern` érték megadásával `*.txt` töltse le az összes szövegfájlt.
+A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a `–include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
 
 ## <a name="copy-blobs-between-storage-accounts"></a>Blobok másolása tárfiókok között
 
-A AzCopy a Blobok más Storage-fiókba való másolására is használható. A másolási művelet szinkronban van, így amikor a parancs visszatér, ez azt jelzi, hogy az összes fájl másolása megtörtént. 
+Az AzCopyval blobokat másolhat át más tárfiókokba. A másolási művelet szinkron módon megy végbe, ezért a parancs visszatérése azt jelzi, hogy a fájlok másolása megtörtént. 
 
-A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. A `AZCOPY_CONCURRENCY_VALUE` környezeti változó értékének megadásával növelheti a műveletek átviteli sebességét. További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
+A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. A környezeti változó értékének megadásával növelheti a műveletek átviteli sebességét `AZCOPY_CONCURRENCY_VALUE` . További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
 
 > [!NOTE]
 > Ez a forgatókönyv a jelenlegi kiadásban a következő korlátozásokkal rendelkezik.
 >
-> - Minden forrás URL-címhez hozzá kell fűzni egy SAS-tokent. Ha Azure Active Directory (AD) hitelesítő adatokat ad meg, kihagyhatja az SAS-tokent csak a cél URL-címről.
->-  A prémium szintű blokk blob Storage-fiókok nem támogatják a hozzáférési szinteket. Hagyja ki a blob hozzáférési szintjét a másolási műveletből a (z `s2s-preserve-access-tier` ) `false` értékre való beállításával (például: `--s2s-preserve-access-tier=false`).
+> - Minden forrás URL-címhez hozzá kell fűzni egy SAS-tokent. Ha Azure Active Directory (AD) hitelesítő adatokat ad meg, kihagyhatja az SAS-tokent csak a cél URL-címről. Győződjön meg arról, hogy beállította a megfelelő szerepköröket a célkiszolgálón. Lásd [az 1. lehetőséget: Azure Active Directory használata](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory).
+>-  A prémium szintű blokk blob Storage-fiókok nem támogatják a hozzáférési szinteket. Hagyja ki a blob hozzáférési szintjét a másolási műveletből a (z `s2s-preserve-access-tier` ) értékre való beállításával `false` (például: `--s2s-preserve-access-tier=false` ).
 
 Ez a szakasz a következő példákat tartalmazza:
 
@@ -252,57 +252,57 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Tároló másolása másik Storage-fiókba
 > * Minden tároló, könyvtár és fájl másolása egy másik Storage-fiókba
 
-Ezek a példák olyan fiókokkal is működnek, amelyek hierarchikus névtérrel rendelkeznek. A [több protokollon keresztüli hozzáférés Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé teszi, hogy ugyanazt az URL`blob.core.windows.net`-szintaxist () használja a fiókokon.
+Ezek a példák olyan fiókokkal is működnek, amelyek hierarchikus névtérrel rendelkeznek. A [több protokollon keresztüli hozzáférés Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé teszi, hogy ugyanazt az URL-szintaxist () használja a `blob.core.windows.net` fiókokon.
 
 > [!TIP]
 > A másolási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Fájlok másolása hozzáfűzési Blobként vagy Blobként.|**--BLOB típusú**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |Másolás adott hozzáférési szintre (például az archív szintre).|**--Block-blob-réteg**=\[nincs\|gyors\|elérésű\|Archívum\]|
-> |Fájlok automatikus kibontása.|**--**=\[a gzip\|deflate kibontása\]|
+> |Fájlok másolása hozzáfűzési Blobként vagy Blobként.|**– blob típusú** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
+> |Másolás adott hozzáférési szintre (például az archív szintre).|**--Block-blob-réteg** = \[ Nincs \| gyors elérésű \| \| Archívum\]|
+> |Fájlok automatikus kibontása.|**– Kibontás** = \[ gzip- \| kiengedés\]|
 > 
 > A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>BLOB másolása másik Storage-fiókba
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
-| **Például** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
+| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>Könyvtár másolása másik Storage-fiókba
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Például** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Példa** (hierarchikus névtér)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-a-container-to-another-storage-account"></a>Tároló másolása másik Storage-fiókba
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Például** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Példa** (hierarchikus névtér)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Minden tároló, könyvtár és blob másolása egy másik Storage-fiókba
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
-| **Például** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
+| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 | **Példa** (hierarchikus névtér)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
 ## <a name="synchronize-files"></a>Fájlok szinkronizálása
@@ -314,19 +314,19 @@ A helyi fájlrendszer tartalmát egy blob-tárolóval szinkronizálhatja. A tár
 
 A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és az utolsó módosítás időbélyegét. Állítsa a `--delete-destination` választható jelzőt értékre, `true` vagy `prompt` törölje a fájlokat a célhely könyvtárában, ha ezek a fájlok már nem léteznek a forrás-címtárban.
 
-Ha a jelzőt `--delete-destination` úgy állítja `true` be, hogy a AzCopy törölje a fájlokat, a kérés megadása nélkül. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a `--delete-destination` jelölőt `prompt`a következőre:.
+Ha a `--delete-destination` jelzőt úgy állítja be, hogy a `true` AzCopy törölje a fájlokat, a kérés megadása nélkül. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a jelölőt a következőre: `--delete-destination` `prompt` .
 
 > [!NOTE]
-> A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a `--delete-destination=prompt|true` jelző használata előtt engedélyezze a [Soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkciót.
+> A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a jelző használata előtt engedélyezze a [Soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkciót `--delete-destination=prompt|true` .
 
 > [!TIP]
 > A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--pipa**=\[\|bejelentkezéses\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--ellenőrzési-MD5** = \[ Nincs \| bejelentkezett bejelentkezési \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
-> |Adja meg, hogy a szinkronizálással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– a naplózási szintű**=\[\|figyelmeztetési\|hiba\|információja nincs\]|
+> |Adja meg, hogy a szinkronizálással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– naplózási szint** = \[ FIGYELMEZTETÉSi \| hiba – \| \| nincs\]|
 > 
 > A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-sync.md#options).
 
@@ -336,8 +336,8 @@ Ebben az esetben a tároló a cél, a helyi fájlrendszer pedig a forrás.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Például** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Syntax** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Példa** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Helyi fájlrendszer frissítése egy tároló módosításaival
 
@@ -345,8 +345,8 @@ Ebben az esetben a helyi fájlrendszer a cél, és a tároló a forrás.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
-| **Például** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+| **Syntax** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
+| **Példa** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>Tároló frissítése egy másik tároló módosításaival
 
@@ -354,8 +354,8 @@ A parancsban megjelenő első tároló a forrás. A második a cél.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **Például** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+| **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Könyvtár frissítése egy másik fájlmegosztás könyvtárának módosításaival
 
@@ -363,8 +363,8 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **Például** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+| **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
+| **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>További lépések
 

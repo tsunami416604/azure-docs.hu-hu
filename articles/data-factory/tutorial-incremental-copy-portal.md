@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: b1660c3a6d3bfe262493722c5aad0a08778b1964
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/10/2020
+ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119147"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082658"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a Azure Portal használatával
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure SQL Database adatok növekményes betöltése az Azure Blob Storage-ba a Azure Portal használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba.
+Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -65,7 +65,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket.
+* **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Databaseben](../azure-sql/database/single-database-create-quickstart.md) a létrehozásához szükséges lépések.
 * **Azure Storage**. A blobtárolót használjuk majd fogadóadattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg a [tárfiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket. Hozzon létre egy tárolót adftutorial néven. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Adatforrástábla létrehozása az SQL-adatbázisban
@@ -103,6 +103,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az SQL-adatbázisban a felső küszöbértékek tárolására
+
 1. Futtassa a következő SQL-parancsot az SQL-adatbázison egy `watermarktable` nevű, a küszöbértékek tárolására szolgáló tábla létrehozásához:  
 
     ```sql
@@ -160,7 +161,7 @@ END
 
    Az Azure-beli adatgyár nevének **globálisan egyedinek**kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
-       `Data factory name "ADFIncCopyTutorialDF" is not available`
+    *A "ADFIncCopyTutorialDF" nevű adatgyár nem érhető el*
 4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 5. Az **erőforráscsoport**esetében hajtsa végre az alábbi lépések egyikét:
 
@@ -169,8 +170,8 @@ END
          
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
-7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás**gombra.      
+7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. A HDInsight adattárak (Azure Storage, Azure SQL Database, Azure SQL felügyelt példány stb.) és a (z) és a (z) és a (z) adatfeldolgozó által használt számítási erőforrások (stb.) más régiókban is lehetnek.
+8. Kattintson a **Létrehozás** lehetőségre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -182,7 +183,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 1. A Data Factory felhasználói felületének **első lépéseket ismertető** oldalán kattintson a **Folyamat létrehozása** csempére.
 
    ![A Data Factory felhasználói felületének első lépéseket ismertető oldala](./media/doc-common-process/get-started-page.png)    
-3. A folyamat **tulajdonságait** tartalmazó ablak **általános** lapján adja meg az **IncrementalCopyPipeline** nevet.
+3. A **Tulajdonságok**terület általános paneljén adja meg **IncrementalCopyPipeline** a IncrementalCopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 4. Adja meg az első keresési tevékenységet a régi küszöbérték lekéréséhez. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Változtassa a tevékenység nevét a következőre: **LookupOldWaterMarkActivity**.
 
@@ -199,7 +200,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     2. Válassza ki a kiszolgálót **a kiszolgálónévhez.**
     3. Válassza ki az **adatbázis nevét** a legördülő listából.
     4. Adja meg a **felhasználóneve**  &  **jelszavát**.
-    5. Az Azure SQL-adatbázis kapcsolatának teszteléséhez kattintson a **Kapcsolat tesztelése** elemre.
+    5. Az SQL Database-adatbázishoz való kapcsolódás teszteléséhez kattintson a **Kapcsolódás tesztelése**gombra.
     6. Kattintson a **Befejezés** gombra.
     7. Ellenőrizze, hogy a **AzureSqlDatabaseLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**.
 
@@ -277,7 +278,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Sztring | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **folyamatérvényesítési jelentés** ablakának bezárásához kattintson a >> gombra.   
 
 28. Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** elem kiválasztásával teheti közzé az Azure Data Factory szolgáltatásban. Várjon, amíg megjelenik a sikeres közzétételt jelző üzenet.
@@ -290,9 +291,9 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
+1. Váltson a bal oldali **Monitorozás** lapra. A folyamat futási állapotát egy manuális trigger váltja ki. A **folyamat neve** oszlopban található hivatkozások használatával megtekintheti a futtatási adatokat, és újra futtathatja a folyamatot.
 
-2. A folyamatfuttatáshoz társított tevékenységfuttatások megtekintéséhez kattintson az első hivatkozásra (**Tevékenységfuttatások megtekintése**) a **Műveletek** oszlopban. A fenti **Folyamatok** elemre kattintva visszaválthat az előző nézetre. A lista frissítéséhez kattintson a **Frissítés** gombra.
+2. A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a **folyamat neve** oszlop alatt található hivatkozást. A tevékenység futtatásával kapcsolatos részletekért kattintson a **tevékenység neve** oszlop **részletek** hivatkozására (szemüveg ikon). Válassza a felül található **összes folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
 
 ## <a name="review-the-results"></a>Az eredmények áttekintése
@@ -322,7 +323,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
 ## <a name="add-more-data-to-source"></a>További adatok hozzáadása a forráshoz
 
-Szúrjon be új adatokat az SQL-adatbázisba (forrásadattár).
+Szúrjon be új adatforrást az adatbázisba (adatforrás-tárolóba).
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-Az SQL-adatbázis a következő frissített adatokat tartalmazza:
+A frissített adatai az adatbázisban:
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>Még egy folyamatfuttatás aktiválása
+
 1. Váltson a **Szerkesztés** lapra. kattintson a folyamatra a fanézetben, ha az nincs megnyitva a tervezőben.
 
 2. Kattintson az **trigger hozzáadása** elemre az eszköztáron, majd az **aktiválás most**elemre.
@@ -355,9 +356,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>A folyamat második futtatásának monitorozása.
 
-1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
+1. Váltson a bal oldali **Monitorozás** lapra. A folyamat futási állapotát egy manuális trigger váltja ki. A **folyamat neve** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
-2. A folyamatfuttatáshoz társított tevékenységfuttatások megtekintéséhez kattintson az első hivatkozásra (**Tevékenységfuttatások megtekintése**) a **Műveletek** oszlopban. A fenti **Folyamatok** elemre kattintva visszaválthat az előző nézetre. A lista frissítéséhez kattintson a **Frissítés** gombra.
+2. A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a **folyamat neve** oszlop alatt található hivatkozást. A tevékenység futtatásával kapcsolatos részletekért kattintson a **tevékenység neve** oszlop **részletek** hivatkozására (szemüveg ikon). Válassza a felül található **összes folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
 
 ## <a name="verify-the-second-output"></a>A második kimenet ellenőrzése
@@ -381,7 +382,7 @@ PersonID | Name | LastModifytime
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]
@@ -398,7 +399,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * A folyamat második futtatásának monitorozása.
 > * A második futtatás eredményeinek ellenőrzése.
 
-Ebben az oktatóanyagban a folyamat egy SQL-adatbázisban lévő egyetlen táblából másolt adatokat egy blobtárolóba. Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat egy helyszíni SQL Server adatbázis több táblájából egy SQL-adatbázisba.
+Ebben az oktatóanyagban a folyamat a blob Storage-ba SQL Database egyetlen táblából másolta az adatait. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan másolhat egy SQL Server-adatbázis több táblájából származó adatok SQL Databaseba.
 
 > [!div class="nextstepaction"]
 >[Adatok növekményes betöltése az SQL Server több táblájából az Azure SQL-adatbázisba](tutorial-incremental-copy-multiple-tables-portal.md)

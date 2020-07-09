@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82191736"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között
@@ -67,10 +67,10 @@ Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti ka
 |---------|---------|---------|---------|---------|
 |1|Egy vagy több főkiszolgáló|Bármely konzisztencia-szint|< 240 perc|<1 hét|
 |>1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
-|>1|Egyetlen főkiszolgáló|Kötött elavulás|*K* & *T*|< 15 perc|
+|>1|Egyetlen főkiszolgáló|Kötött elavulás|*K*  &  *T*|< 15 perc|
 |>1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
 |>1|Több főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
-|>1|Több főkiszolgáló|Kötött elavulás|*K* & *T*|0|
+|>1|Több főkiszolgáló|Kötött elavulás|*K*  &  *T*|0|
 
 *K* = egy elem *"k"* verziója (azaz frissítései) száma.
 

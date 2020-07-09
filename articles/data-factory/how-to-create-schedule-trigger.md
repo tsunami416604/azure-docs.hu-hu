@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641532"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560795"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamat ütemezett futtatását futtató trigger létrehozása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -80,7 +80,7 @@ Létrehozhat egy **ütemezett triggert** egy folyamat rendszeres időközönkén
 
 Ebből a szakaszból megtudhatja, hogyan használhatja a Azure PowerShellt az ütemterv-triggerek létrehozásához, elindításához és figyeléséhez. A minta működésének megtekintéséhez először tekintse át a gyors üzembe helyezési útmutatót [: hozzon létre egy adatgyárat Azure PowerShell használatával](quickstart-create-data-factory-powershell.md). Ezután adja hozzá a következő kódot a Main metódushoz, amely egy 15 percenként futó ütemezett triggert hoz létre és indít el. Az trigger társítva van egy **Adfv2QuickStartPipeline** nevű folyamattal, amelyet a rövid útmutató részeként hoz létre.
 
-1. Hozzon létre egy **MyTrigger. JSON** nevű JSON-fájlt a C:\ADFv2QuickStartPSH\ mappában a következő tartalommal:
+1. Hozzon létre egy **MyTrigger.js** nevű JSON-fájlt a C:\ADFv2QuickStartPSH\ mappában a következő tartalommal:
 
     > [!IMPORTANT]
     > A JSON-fájl mentése előtt állítsa be az időponthoz **tartozó elem értékét** az aktuális UTC-időre. Állítsa a **befejezési** elem értékét egy órára az aktuális UTC időpontnál.
@@ -206,7 +206,7 @@ Ez a szakasz bemutatja, hogyan lehet triggert létrehozni, elindítani és figye
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
-Egy trigger futtatásának figyeléséhez adja hozzá a következő kódot a minta `Console.WriteLine` utolsó utasítása előtt:
+Egy trigger futtatásának figyeléséhez adja hozzá a következő kódot a `Console.WriteLine` minta utolsó utasítása előtt:
 
 ```csharp
             // Check that the trigger runs every 15 minutes
@@ -319,7 +319,7 @@ A következő JSON-definíció bemutatja, hogyan hozhat létre ütemezési és i
 ### <a name="schema-overview"></a>Séma áttekintése
 Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
-| JSON-tulajdonság | Leírás |
+| JSON-tulajdonság | Description |
 |:--- |:--- |
 | **startTime** | Dátum-idő érték. Egyszerű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. |
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. Ez a tulajdonság nem kötelező. |
@@ -334,11 +334,11 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Sztring | Igen | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **megismétlődésének** | Objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Sztring | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **menetrend** | Objektum | Nem | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | Sztring | Yes | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **megismétlődésének** | Objektum | Yes | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Szám | No | 1 | 1–1000 | `"interval":10` |
+| **endTime** | Sztring | Yes | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **menetrend** | Objektum | No | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
@@ -366,12 +366,12 @@ Ha több **schedule** elem is meg van adva, a kiértékelési sorrend a legnagyo
 A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 
-| JSON-elem | Leírás | Érvényes értékek |
+| JSON-elem | Description | Érvényes értékek |
 |:--- |:--- |:--- |
 | **perc** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
 | **óra** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
 | **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg. | <ul><li>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap)</li><li>A nap értékek tömbje (a tömb maximális értéke 7)</li><li>A nap értékek nem tesznek különbséget a kis- és nagybetű között</li></ul> |
-| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. | <ul><li>**MonthlyOccurrence** objektumok tömbje: `{ "day": day,  "occurrence": occurrence }`.</li><li>A **day** attribútum a hét azon napja, amelyen az eseményindító fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.</li><li>Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.</li></ul> |
+| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. | <ul><li>**MonthlyOccurrence** objektumok tömbje: `{ "day": day,  "occurrence": occurrence }` .</li><li>A **day** attribútum a hét azon napja, amelyen az eseményindító fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.</li><li>Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.</li></ul> |
 | **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. | <ul><li>Bármilyen érték -1 és -31 között</li><li>Bármilyen érték 1 és 31 között</li><li>Értékek tömbje</li></ul> |
 
 
@@ -380,7 +380,7 @@ Ez a szakasz az ismétlődésütemezésekre mutat példákat, és a **schedule**
 
 Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **frequency** értéke helyes, az ütemezés meghatározása szerint. Nem lehet például a **frequency** értéke „day”, ha a **schedule** objektum „monthDays” értékre lett módosítva. Ez és az ehhez hasonló korlátozások az előző szakaszban található táblázatban szerepelnek.
 
-| Példa | Leírás |
+| Példa | Description |
 |:--- |:--- |
 | `{"hours":[5]}` | Minden nap 05:00-kor fut le. |
 | `{"minutes":[15], "hours":[5]}` | Minden nap 05:15-kor fut le. |

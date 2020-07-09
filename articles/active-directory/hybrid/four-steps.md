@@ -14,10 +14,9 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74206779"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Négy lépés egy erős identitás-alaprendszer számára a Azure Active Directory
@@ -229,7 +228,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="today"></a>Today
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||A kísérleti önkiszolgáló jelszó-visszaállítás (SSPR) egy csoport számára|
 ||Hibrid összetevők monitorozása Azure AD Connect Health használatával|
@@ -239,7 +238,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="next-two-weeks"></a>Következő két hét
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||Alkalmazás elérhetővé tétele a felhasználók számára|
 ||Azure AD-kiépítés kipróbálása a választható SaaS-alkalmazásokhoz|
@@ -249,7 +248,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="next-month"></a>Következő hónap
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||Az alkalmazások használatának figyelése az adatok átvezetéséhez|
 ||Biztonságos távoli hozzáférés az alkalmazásokhoz|
@@ -258,7 +257,7 @@ Javasoljuk, hogy az alábbi ellenőrzőlistát nyomtassa ki a szervezete egy szi
 
 ### <a name="next-three-months"></a>Következő három hónap
 
-|Bejelentkezett?|Elem|
+|Bejelentkezett?|Item|
 |:-|:-|
 ||Önkiszolgáló alkalmazások felügyeletének engedélyezése|
 ||Önkiszolgáló csoportok felügyeletének engedélyezése|

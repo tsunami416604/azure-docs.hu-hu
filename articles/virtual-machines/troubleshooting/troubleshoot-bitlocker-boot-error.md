@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201346"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132947"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -136,11 +136,15 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
 
     - A védelem felfüggesztésével ideiglenesen kapcsolja ki a BitLockert a következő futtatásával:
 
-                    manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa az alábbi parancsot:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>Kulcs titkosítási kulcsának forgatókönyve
 
@@ -237,17 +241,17 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
 
 4. A szkript elkezdése után a következő kimenet jelenik meg:
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    A GAC verziójának helye                                                                              
+    ---    -------        --------                                                                              
+    Hamis v 4.0.30319 elemet C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. ..  Hamis v 4.0.30319 elemet C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. ..
 
     A szkript befejezésekor a következő kimenet jelenik meg:
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. A csatolt lemez a BEK-fájllal való feloldásához futtassa a következő parancsot:
 
@@ -265,11 +269,16 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
 
     - A védelem felfüggesztésével ideiglenesen kapcsolja ki a BitLockert a következő parancs futtatásával:
 
-             manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa az alábbi parancsot:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
+
 ## <a name="script-troubleshooting"></a>Parancsfájlok hibaelhárítása
 
 **Hiba: nem sikerült betölteni a fájlt vagy a szerelvényt**

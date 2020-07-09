@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240349"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Kommunikáció a edgeAgent a beépített közvetlen módszerek használatával
@@ -34,7 +34,7 @@ Például:
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-A Azure Portalban hívja meg a metódust a metódus nevével `ping` és egy üres JSON `{}`-adattartalommal.
+A Azure Portalban hívja meg a metódust a metódus nevével `ping` és egy üres JSON-adattartalommal `{}` .
 
 ![Közvetlen "ping" metódus meghívása Azure Portal](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 

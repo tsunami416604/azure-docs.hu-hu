@@ -2,14 +2,14 @@
 title: A Ethereum Blockchain-összekötő használata a Azure Logic Apps-Azure Blockchain szolgáltatással
 description: A Ethereum Blockchain-összekötővel a Azure Logic Apps használatával aktiválhatja az intelligens szerződési funkciókat, és reagálhat az intelligens szerződési eseményekre.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200732"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
 
@@ -114,7 +114,7 @@ Például a következő lépések egy REST-alapú, a gyors üzembe helyezési **
     A Logic app-konfiguráció és a kód fájljai a **generatedLogicApp** könyvtárban jönnek létre.
 
 1. Tekintse meg a **generatedLogicApp/HelloBlockchain** könyvtárat. Minden egyes intelligens szerződési funkció, esemény és tulajdonság esetében létezik egy logikai alkalmazás JSON-fájlja.
-1. Nyissa meg a **generatedLogicApp/HelloBlockchain/szolgáltatás/tulajdonságot. RequestMessage. logicapp. JSON** fájlt, és másolja a tartalmat.
+1. Nyissa meg a **generatedLogicApp/HelloBlockchain/Service/property.RequestMessage.logicapp.js** fájlt, és másolja a tartalmat.
 
     ![A másolandó kódot tartalmazó JSON-fájl](./media/ethereum-logic-app/requestmessage.png)
 
@@ -132,7 +132,7 @@ Például a következő lépések egy REST-alapú, a gyors üzembe helyezési **
 
     ![Logic Apps Designer panel a HTTP POST URL-címmel](./media/ethereum-logic-app/post-url.png)
 
-1. Hozzon létre egy HTTP POST-kérelmet a cURL használatával. Cserélje le a helyőrző szöveg * \<http post\> URL-címét* az előző lépés URL-címére.
+1. Hozzon létre egy HTTP POST-kérelmet a cURL használatával. Cserélje le a helyőrző szövegét az *\<HTTP POST URL\>* előző lépés URL-címére.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -181,7 +181,7 @@ Az Azure Blockchain szolgáltatás RPC-végpontjának címe Blockchain hálózat
 
     ![Tranzakciós csomópontok lap (alapértelmezett csomópont) kijelölése](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. Válassza a **kapcsolati karakterláncok** > **hozzáférési kulcsok**elemet.
+1. Válassza a **kapcsolati karakterláncok**  >  **hozzáférési kulcsok**elemet.
 1. Másolja a végponti címeket a https-ről **(1. hozzáférési kulcs)** vagy a https-re **(2. hozzáférési kulcs)**.
 
     ![Azure Portal a kapcsolati karakterlánc elérési kulcsaival](./media/ethereum-logic-app/connection-string.png)
@@ -261,7 +261,7 @@ Ha a fejlesztői készletet vagy a szarvasgombát használta az intelligens szer
 
 **A szilárdtest-fordító használata:**
 
-A parancs `solc --bin <smart contract>.sol` használatával létrehozza a szerződés bytecode.
+A parancs használatával `solc --bin <smart contract>.sol` létrehozza a szerződés bytecode.
 
 ## <a name="get-the-contract-address"></a>A szerződési címnek beszerzése
 

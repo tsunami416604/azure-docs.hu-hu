@@ -5,26 +5,29 @@ services: iot-dps
 author: wesmc7777
 ms.service: iot-dps
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/18/2020
 ms.author: wesmc
-ms.openlocfilehash: 285832d80d37c8553ffc8e37c6f6eab5d7f6d943
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 9a90180fa606b14b06c94d3211fdf492add0350d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564966"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>TLS-támogatás az Azure IoT Hub Device Provisioning Serviceban (DPS)
 
-A DPS Transport Layer Security (TLS) protokollt használ a IoT-eszközök közötti kapcsolatok biztonságossá tételéhez. A TLS protokoll három verziója jelenleg támogatott, azaz a 1,0, 1,1 és 1,2 verziókat.
+A DPS [Transport Layer Security (TLS)](http://wikipedia.org/wiki/Transport_Layer_Security) protokollt használ a IoT-eszközök közötti kapcsolatok biztonságossá tételéhez. 
 
-A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). Erősen ajánlott a TLS 1,2 használata elsődleges TLS-verzióként a DPS-hez való csatlakozáskor.
+A DPS által támogatott jelenlegi TLS protokoll-verziók a következők: 
+* TLS 1.2
+
+A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). 
 
 ## <a name="restrict-connections-to-tls-12"></a>A TLS 1,2-kapcsolat korlátozása
 
 A további biztonság érdekében javasoljuk, hogy konfigurálja a DPS-példányokat úgy, hogy *csak* az 1,2-es TLS-t használó eszközök ügyfélkapcsolatait engedélyezze, és kényszerítse az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát.
 
-Ehhez hozzon létre egy új DPS-erőforrást bármelyik [támogatott régióban](#supported-regions) , és állítsa be a `minTlsVersion` tulajdonságot `1.2` a Azure Resource Manager sablon DPS erőforrás-specifikációjában. A következő példában szereplő sablon JSON egy `minTlsVersion` új DPS-példány tulajdonságát határozza meg.
+Ehhez hozzon létre egy új DPS-erőforrást, amely a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon DPS erőforrás-specifikációjában állítja be. A következő példában szereplő sablon JSON `minTlsVersion` egy új DPS-példány tulajdonságát határozza meg.
 
 ```json
 {
@@ -35,7 +38,7 @@ Ehhez hozzon létre egy új DPS-erőforrást bármelyik [támogatott régióban]
             "type": "Microsoft.Devices/ProvisioningServices",
             "apiVersion": "2020-01-01",
             "name": "<provide-a-valid-DPS-resource-name>",
-            "location": "<any-of-supported-regions-below>",
+            "location": "<any-region>",
             "properties": {
                 "minTlsVersion": "1.2"
             },
@@ -61,24 +64,44 @@ Az ezzel a konfigurációval létrehozott DPS-erőforrás elutasítja azokat az 
 > [!NOTE]
 > A `minTlsVersion` tulajdonság csak olvasható, és a DPS-erőforrás létrehozása után nem módosítható. Ezért fontos, hogy megfelelően ellenőrizze és ellenőrizze, hogy az *összes* IoT-eszköz kompatibilis-e a TLS 1,2-mel és az [ajánlott titkosítási](#recommended-ciphers) megoldásokkal.
 
-## <a name="supported-regions"></a>Támogatott régiók
-
-A TLS 1,2 használatát igénylő IoT DPS-példányok a következő régiókban hozhatók létre:
-
-* USA-beli államigazgatás – Arizona
-* USA-beli államigazgatás – Virginia
 
 > [!NOTE]
 > Feladatátvétel esetén a `minTlsVersion` DPS tulajdonsága továbbra is érvényben marad a feladatátvételt követően a Geo-párosítási régióban.
 
 ## <a name="recommended-ciphers"></a>Ajánlott titkosítási algoritmusok
 
-A csak a TLS 1,2 használatára konfigurált DPS-példányok a következő ajánlott titkosítási algoritmusok használatát is kikényszerítik:
+A csak a TLS 1,2 használatára konfigurált DPS-példányok a következő titkosítási csomagok használatát is kikényszerítik:
 
-* `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
-* `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
-* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
-* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+### <a name="tls-12-cipher-suites"></a>TLS 1,2 titkosítási csomagok
+
+| Minimális sáv |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384` |
+
+| Kiválósági lehetőség |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256` |
+
+### <a name="cipher-suite-ordering-prior-to-windows-10"></a>Titkosítási csomag megrendelése a Windows 10 előtt
+
+| Minimális sáv |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384` |
+
+| Kiválósági lehetőség |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256` |
+
+### <a name="legacy-cipher-suites"></a>Örökölt titkosítási csomagok 
+
+| #1 lehetőség (jobb biztonság) |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
+
+| Option #2 (jobb teljesítmény) |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
+
 
 ## <a name="use-tls-12-in-the-iot-sdks"></a>A TLS 1,2 használata a IoT SDK-k használatával
 
@@ -92,7 +115,10 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | 1.12.2 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
 
+## <a name="use-tls-12-with-iot-hub"></a>A TLS 1,2 használata IoT Hub
+
+A IoT Hub konfigurálható úgy, hogy a TLS 1,2-et használja az eszközökkel való kommunikációhoz. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md).
 
 ## <a name="use-tls-12-with-iot-edge"></a>A TLS 1,2 használata IoT Edge
 
-IoT Edge eszközök a TLS 1,2 használatára konfigurálhatók a IoT Hub és a DPS szolgáltatással való kommunikáció során. Erre a célra használja a [IoT Edge dokumentációs oldalát](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
+IoT Edge eszközök a TLS 1,2 használatára konfigurálhatók a IoT Hub és a DPS szolgáltatással való kommunikáció során. További információ: [IoT Edge dokumentációs oldal](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

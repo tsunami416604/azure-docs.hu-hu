@@ -4,15 +4,14 @@ description: Ebben a képzési tervben a DNS-zónák és-rekordhalmazok védelme
 services: dns
 author: asudbring
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 89a945f146601084795b2e12a721a03a1b96aaea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 81a58657a4ab8f7403006ce02fb8f585feea86b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711272"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és -rekordok védelme
 

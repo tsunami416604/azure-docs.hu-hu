@@ -3,12 +3,11 @@ title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299230"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
@@ -16,11 +15,12 @@ Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági m
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Az Azure-fájlmegosztás biztonsági mentésének főbb előnyei
 
-* Nulla infrastruktúra: nincs szükség központi telepítésre a fájlmegosztás védelmének konfigurálásához.
-* Testreszabott megőrzés: a biztonsági mentéseket a követelményeinek megfelelően napi/heti/havi/éves megőrzéssel állíthatja be.
-* Beépített felügyeleti képességek: ütemezheti a biztonsági mentéseket, és megadhatja a kívánt megőrzési időtartamot az adatok további terhelése nélkül.
-* Azonnali visszaállítás: az Azure fájlmegosztás biztonsági mentése fájlmegosztási pillanatképeket használ, így egyszerűen kiválaszthatja azokat a fájlokat, amelyeket azonnal vissza szeretne állítani.
-* Riasztások és jelentéskészítés: beállíthatja a riasztásokat a biztonsági mentési és visszaállítási hibákhoz, és a Azure Backup által biztosított jelentéskészítési megoldás használatával bepillantást nyerhet a fájlok megosztásainak biztonsági másolatából.
+* **Nulla infrastruktúra**: nincs szükség központi telepítésre a fájlmegosztás védelmének konfigurálásához.
+* **Testreszabott megőrzés**: a biztonsági mentéseket a követelményeinek megfelelően napi/heti/havi/éves megőrzéssel állíthatja be.
+* **Beépített felügyeleti képességek**: ütemezheti a biztonsági mentéseket, és megadhatja a kívánt megőrzési időtartamot az adatok további terhelése nélkül.
+* **Azonnali visszaállítás**: az Azure fájlmegosztás biztonsági mentése fájlmegosztási pillanatképeket használ, így egyszerűen kiválaszthatja azokat a fájlokat, amelyeket azonnal vissza szeretne állítani.
+* **Riasztások és jelentéskészítés**: beállíthatja a riasztásokat a biztonsági mentési és visszaállítási hibákhoz, és a Azure Backup által biztosított jelentéskészítési megoldás használatával bepillantást nyerhet a fájlok megosztásainak biztonsági másolatából.
+* **Fájlmegosztás véletlen törlésével szembeni védelem**: Azure Backup engedélyezi a helyreállítható [törlési funkciót](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) a Storage-fiók szintjén egy 14 napos megőrzési időtartammal. Még ha rosszindulatú színész is törli a fájlmegosztást, a fájlmegosztás tartalmát és a helyreállítási pontokat (pillanatképeket) a rendszer megőrzi egy konfigurálható megőrzési időszakra, amely lehetővé teszi a forrás tartalmának és pillanatképének sikeres és teljes helyreállítását adatvesztés nélkül.
 
 ## <a name="architecture"></a>Architektúra
 

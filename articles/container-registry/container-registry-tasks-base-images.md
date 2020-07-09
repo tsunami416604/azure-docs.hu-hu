@@ -3,12 +3,12 @@ title: Alapszintű rendszerkép frissítései – feladatok
 description: Tudnivalók az alkalmazás-tárolók rendszerképeinek alapképeiről, valamint arról, hogy az alapszintű lemezképek frissítése hogyan indíthat el Azure Container Registry feladatot.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918501"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Az ACR-feladatok alaprendszerképének frissítései
 
@@ -37,13 +37,20 @@ A Docker származó lemezképek esetében az ACR-feladat az alábbi helyekről �
 * Nyilvános tárház a Docker hub-ban 
 * Nyilvános tárház a Microsoft Container Registryban
 
-Ha az `FROM` utasításban megadott alaprendszerkép az egyik helyen található, az ACR-feladat hozzáadja a horgot, hogy a rendszerkép újra legyen építve, amikor az alapja frissül.
+Ha az utasításban megadott alaprendszerkép az `FROM` egyik helyen található, az ACR-feladat hozzáadja a horgot, hogy a rendszerkép újra legyen építve, amikor az alapja frissül.
+
+## <a name="base-image-notifications"></a>Alapszintű rendszerkép értesítései
+
+Az alaprendszerkép frissítésének és a függő feladat indításának időpontja közötti idő az alaprendszerkép helyétől függ:
+
+* **Nyilvános tárházból származó alaplemezképek a Docker hub-ban vagy a MCR** – a nyilvános adattárakban lévő alaplemezképek esetében egy ACR-feladat 10 és 60 perc közötti véletlenszerű időközönként ellenőrzi a lemezképek frissítéseit. A függő feladatok futtatása ennek megfelelően történik.
+* Alaplemezképek az **Azure Container registryből** – az alaplemezképek az Azure Container-jegyzékekben, az ACR-feladatok azonnal elindítja a futtatást, amikor az alaprendszerképe frissül. Előfordulhat, hogy az alaprendszerkép ugyanabban az ACR-ben található, ahol a feladat fut, vagy más ACR-régiókban.
 
 ## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
 * **Alkalmazási lemezképek alaprendszerképei** – jelenleg egy ACR-feladat csak az alkalmazás-(*futtatókörnyezet*-) lemezképek alaprendszerkép-frissítéseinek nyomon követésére használható. Nem követ nyomon a többfázisú Dockerfiles használt közbenső (*buildtime*) lemezképek alaprendszerkép-frissítéseit.  
 
-* **Alapértelmezés szerint engedélyezve** – ha egy ACR-feladatot hoz létre az az [ACR Task Create][az-acr-task-create] paranccsal, alapértelmezés szerint a feladat *engedélyezve* van az alaprendszerkép frissítésével. Vagyis a `base-image-trigger-enabled` tulajdonság értéke TRUE (igaz). Ha le szeretné tiltani ezt a viselkedést egy feladatban, frissítse a tulajdonságot hamis értékre. Futtassa például a következő az [ACR Task Update][az-acr-task-update] parancsot:
+* **Alapértelmezés szerint engedélyezve** – ha egy ACR-feladatot hoz létre az az [ACR Task Create][az-acr-task-create] paranccsal, alapértelmezés szerint a feladat *engedélyezve* van az alaprendszerkép frissítésével. Vagyis a tulajdonság értéke `base-image-trigger-enabled` true (igaz). Ha le szeretné tiltani ezt a viselkedést egy feladatban, frissítse a tulajdonságot hamis értékre. Futtassa például a következő az [ACR Task Update][az-acr-task-update] parancsot:
 
   ```azurecli
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
@@ -51,7 +58,7 @@ Ha az `FROM` utasításban megadott alaprendszerkép az egyik helyen található
 
 * A **függőségek nyomon követése** – egy ACR-feladat engedélyezéséhez, amely meghatározza és nyomon követheti a tárolók rendszerképének függőségeit – ez tartalmazza az alaprendszerképét is – először a feladat elindítását kell elindítania, hogy **legalább egyszer**felkészítse a rendszerképet. Például a feladat manuális elindításához használja az az [ACR Task Run][az-acr-task-run] parancsot.
 
-* **Az alaprendszerkép stabil címkéje** – az alaprendszerkép frissítésére vonatkozó feladat elindításához az alapképnek *stabil* címkével kell rendelkeznie, `node:9-alpine`például:. Ez a címkézés jellemző olyan alaplemezképek esetében, amelyek az operációs rendszer és a keretrendszer javításával frissítve lettek egy legújabb stabil kiadásra. Ha az alaprendszerkép új verzió címkével frissül, nem indít el feladatot. A képcímkézéssel kapcsolatos további információkért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](container-registry-image-tag-version.md). 
+* **Az alaprendszerkép stabil címkéje** – az alaprendszerkép frissítésére vonatkozó feladat elindításához az alapképnek *stabil* címkével kell rendelkeznie, például: `node:9-alpine` . Ez a címkézés jellemző olyan alaplemezképek esetében, amelyek az operációs rendszer és a keretrendszer javításával frissítve lettek egy legújabb stabil kiadásra. Ha az alaprendszerkép új verzió címkével frissül, nem indít el feladatot. A képcímkézéssel kapcsolatos további információkért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](container-registry-image-tag-version.md). 
 
 * **Egyéb feladat-eseményindítók** – az alaprendszerkép frissítései által aktivált feladatok esetében engedélyezheti a [forráskód](container-registry-tutorial-build-task.md) -végrehajtás vagy [az ütemterv](container-registry-tasks-scheduled.md)alapján történő eseményindítókat is. Egy alapszintű rendszerkép frissítése [több lépésből álló feladatot](container-registry-tasks-multi-step.md)is indíthat.
 

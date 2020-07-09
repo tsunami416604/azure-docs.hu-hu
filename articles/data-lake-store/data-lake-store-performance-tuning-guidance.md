@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73904623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855908"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 teljesítményének hangolása
 
@@ -65,15 +65,11 @@ Időnként az adatfolyamatok korlátozott mértékben szabályozzák a sok kis f
 
 A kaptár-és ADLA számítási feladataihoz az idősoros adatok partícióinak metszése segíthet néhány lekérdezésnek az adatok egy részhalmazát olvasni, ami javítja a teljesítményt.
 
-Azok a folyamatok, amelyek idősoros adatot töltenek be, gyakran a fájlok és mappák strukturált elnevezésével helyezik el a fájljaikat. A következő gyakori példa a dátum szerint strukturált adatokra mutat:
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+Azok a folyamatok, amelyek idősoros adatot töltenek be, gyakran a fájlok és mappák strukturált elnevezésével helyezik el a fájljaikat. A következő gyakori példa a dátum: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. TSV*alapján strukturált adatok esetében látható.
 
 Figyelje meg, hogy a DateTime információ a mappák és a fájlnév között is megjelenik.
 
-A dátum és idő esetében az alábbi gyakori minta
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+A dátum és idő esetében a következő gyakori minta: *\dataset\yyyy\mm\dd\hh\mm\ datafile_YYYY_MM_DD_HH_mm. TSV*.
 
 A mappa és a fájl szervezetének megválasztásakor a nagyobb fájlméretet és az egyes mappákban lévő fájlok ésszerű számú fájljának optimalizálását is érdemes megtenni.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70071703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205747"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management-szabályzatok beállítása és szerkesztése
 
@@ -41,7 +41,7 @@ A szabályzatok beállításához vagy szerkesztéséhez kövesse az alábbi lé
 7. Válassza a **</>** (Kódszerkesztő) ikont a **bejövő feldolgozás** vagy a **kimenő feldolgozás** szakaszban.
 8. Illessze be a kívánt szabályzat kódját az egyik megfelelő blokkba.
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />
@@ -69,7 +69,7 @@ A házirend-hatókörök kiértékelése a következő sorrendben történik:
 3. API-hatókör
 4. Művelet hatóköre
 
-A szabályzatokon belüli utasítások kiértékelése az `base` elem elhelyezése szerint történik, ha van ilyen. A globális házirend nem rendelkezik szülő-házirenddel, `<base>` és nem befolyásolja az elem használatát.
+A szabályzatokon belüli utasítások kiértékelése az elem elhelyezése szerint történik `base` , ha van ilyen. A globális házirend nem rendelkezik szülő-házirenddel, és nem `<base>` befolyásolja az elem használatát.
 
 Ha meg szeretné tekinteni az aktuális hatókör házirendjeit a házirend-szerkesztőben, kattintson a hatályos **házirend újraszámítása a kijelölt hatókörhöz**elemre.
 

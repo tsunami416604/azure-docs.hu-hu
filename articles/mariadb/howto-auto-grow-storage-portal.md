@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezheti az automatikus növ
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 7ec4c7a61725fa02f00bf38048182d640666ae8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b0df05cf42215e9af42e6b13435dd8c11188c0a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528897"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120041"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>A tároló automatikus növekedése Azure Database for MariaDB a Azure Portal használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MariaDB-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
@@ -40,6 +40,6 @@ Az alábbi lépéseket követve állíthatja be a MariaDB-kiszolgáló tárterü
 
     ![Azure Database for MariaDB – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md).

@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392188"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Jel leíró hangsávok
@@ -48,7 +48,7 @@ A következő függvény ezeket a műveleteket hajtja végre:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Ha a létrehozott bemeneti eszköz nevét más módszerekre kell átadnia, ügyeljen arra, hogy a (z `Name` ) tulajdonságot használja a visszaadott `CreateInputAssetAsync`objektumhoz, például inputAsset.name. 
+Ha a létrehozott bemeneti eszköz nevét más módszerekre kell átadnia, ügyeljen arra, hogy a (z `Name` ) tulajdonságot használja a visszaadott objektumhoz `CreateInputAssetAsync` , például inputAsset.name. 
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kimeneti eszköz létrehozása a kódolási feladatok eredményének tárolásához
 
@@ -56,9 +56,9 @@ A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Ha a létrehozott kimeneti eszköz nevét más módszerekre kell átadnia, ügyeljen arra, hogy a (z `Name` ) tulajdonságot használja a visszaadott `CreateIOutputAssetAsync`objektumhoz, például outputAsset.name. 
+Ha a létrehozott kimeneti eszköz nevét más módszerekre kell átadnia, ügyeljen arra, hogy a (z `Name` ) tulajdonságot használja a visszaadott objektumhoz `CreateIOutputAssetAsync` , például outputAsset.name. 
 
-A jelen cikk esetében adja át az `outputAsset.Name` értéket a és `SubmitJobAsync` `UploadAudioIntoOutputAsset` a függvénynek.
+A jelen cikk esetében adja át az `outputAsset.Name` értéket a `SubmitJobAsync` és a `UploadAudioIntoOutputAsset` függvénynek.
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Hozzon létre egy átalakítót és egy olyan feladatot, amely kódolja a feltöltött fájlt
 
@@ -127,7 +127,7 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-Íme egy példa a `UpoadAudioIntoOutputAsset` függvény hívására:
+Íme egy példa a függvény hívására `UpoadAudioIntoOutputAsset` :
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
@@ -142,7 +142,7 @@ Ha elkészült a kódolási feladatokkal, a kimeneti eszköz fogja tartalmazni a
 1. A tárolóban keresse meg az. ISM fájlt, és kattintson a jobb oldali ablakban található **blob szerkesztése** elemre. 
 1. Szerkessze az. ISM-fájlt úgy, hogy felveszi a deformatív hanganyagot tartalmazó feltöltött, csak hangalapú MP4-fájl (AAC kodek) adatait, és a **Mentés** gombra kattint.
 
-    A leíró hangsávok megjelenítéséhez hozzá kell adnia a "kisegítő adatok" és a "szerepkör" paramétereket az. ISM-fájlhoz. Az Ön felelőssége, hogy ezeket a paramétereket helyesen adja meg, hogy hangvételt jelezzen a hanganyagok leírásaként. Például az alábbi példában `<param name="accessibility" value="description" />` látható `<param name="role" value="alternate" />` módon vegyen fel egy adott hangsávhoz tartozó. ISM-fájlt, és adjon hozzá egy adott hangsávot.
+    A leíró hangsávok megjelenítéséhez hozzá kell adnia a "kisegítő adatok" és a "szerepkör" paramétereket az. ISM-fájlhoz. Az Ön felelőssége, hogy ezeket a paramétereket helyesen adja meg, hogy hangvételt jelezzen a hanganyagok leírásaként. Például az `<param name="accessibility" value="description" />` `<param name="role" value="alternate" />` alábbi példában látható módon vegyen fel egy adott hangsávhoz tartozó. ISM-fájlt, és adjon hozzá egy adott hangsávot.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -233,7 +233,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 > [!NOTE]
 > Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
 
-1. Nyisson meg egy webböngészőt, [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)és navigáljon a következőhöz:.
+1. Nyisson meg egy webböngészőt, és navigáljon a következőhöz: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL:** mezőben illessze be az alkalmazásból kapott streaming URL-értékeket. 
  
      Az URL-címet HLS, Dash vagy Smooth formátumban is beillesztheti, és a Azure Media Player a megfelelő folyamatos átviteli protokollra vált az eszközön való automatikus lejátszás érdekében.

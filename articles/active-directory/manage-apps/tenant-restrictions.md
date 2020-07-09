@@ -3,8 +3,8 @@ title: A bérlői korlátozások használata az SaaS-alkalmazásokhoz való hozz
 description: A bérlői korlátozások használata annak kezeléséhez, hogy mely felhasználók férhetnek hozzá az alkalmazásokhoz az Azure AD-bérlőn alapuló módon.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763023"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -74,7 +74,7 @@ A login.microsoftonline.com, login.microsoft.com és login.windows.net minden be
 
 A fejléceknek tartalmazniuk kell a következő elemeket:
 
-- A *hozzáférés és a bérlők korlátozásához*használja az \< engedélyezett bérlői lista értékét \> , amely a felhasználók számára elérhetővé tenni kívánt bérlők vesszővel tagolt listája. A Bérlővel regisztrált bármely tartomány felhasználható a bérlő azonosítására ezen a listán. Például a contoso és a fabrikam bérlők elérésének engedélyezéséhez a név/érték párok a következőképpen néznek ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- A *hozzáférés és a bérlők korlátozásához*használja a értéket \<permitted tenant list\> , amely a bérlők vesszővel tagolt listája, amely számára engedélyezni szeretné a felhasználók számára a hozzáférést. A Bérlővel regisztrált bármely tartomány felhasználható a bérlő azonosítására ezen a listán. Például a contoso és a fabrikam bérlők elérésének engedélyezéséhez a név/érték párok a következőképpen néznek ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - A *korlátozás-hozzáférés-kontextushoz*használjon egy egyedi CÍMTÁR-azonosító értékét, amely deklarálja, hogy melyik bérlő állítja be a bérlői korlátozásokat. Ha például a contoso-t a bérlői korlátozási szabályzatot beállító bérlőként szeretné deklarálni, a név/érték párok a következőképpen néznek ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -113,7 +113,7 @@ A Azure Portal többi jelentéséhez hasonlóan szűrőket is használhat a jele
 - **Felhasználó**
 - **Alkalmazás**
 - **Állapot**
-- **Dátum**
+- **Date**
 - **Dátum (UTC)** (az UTC egyezményes világidő)
 - **MFA hitelesítési módszer** (többtényezős hitelesítési módszer)
 - **MFA** -hitelesítés részletei (többtényezős hitelesítés részletei)
@@ -155,7 +155,7 @@ A Hegedűs egy ingyenes webes hibakeresési proxy, amely a HTTP/HTTPS-forgalom r
 
    1. A Hegedűs webes hibakereső eszközében válassza a **szabályok** menüt, és válassza a **szabályok testreszabása...** lehetőséget. a CustomRules-fájl megnyitásához.
 
-   2. Adja hozzá a következő sorokat a függvény elejéhez `OnBeforeRequest` . Cserélje le a \< bérlői tartományt a \> Bérlővel regisztrált tartománnyal (például: `contoso.onmicrosoft.com` ). Cserélje le \< a címtár-azonosítót \> a bérlő Azure ad GUID-azonosítójával.
+   2. Adja hozzá a következő sorokat a függvény elejéhez `OnBeforeRequest` . Cserélje le a \<tenant domain\> -t a Bérlővel regisztrált tartományra (például: `contoso.onmicrosoft.com` ). Cserélje le a helyére a \<directory ID\> bérlő Azure ad GUID azonosítóját.
 
       ```JScript.NET
       if (

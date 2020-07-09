@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79274683"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
@@ -21,7 +20,7 @@ A Windows-eseménynaplók a leggyakoribb [adatforrások](agent-data-sources.md) 
 ## <a name="configuring-windows-event-logs"></a>Windows-eseménynaplók konfigurálása
 Konfigurálja a Windows-eseménynaplókat a [Speciális beállítások adatok menüjéből](agent-data-sources.md#configuring-data-sources).
 
-Azure Monitor csak a beállításokban megadott Windows-eseménynaplókban lévő eseményeket gyűjti.  Eseménynapló hozzáadásához írja be a napló nevét, majd kattintson a elemre **+**.  Minden napló esetében csak a kijelölt megszakításokkal rendelkező események lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt naplóhoz tartozó megszakításokat.  Az események szűréséhez nem adhat meg további feltételeket.
+Azure Monitor csak a beállításokban megadott Windows-eseménynaplókban lévő eseményeket gyűjti.  Eseménynapló hozzáadásához írja be a napló nevét, majd kattintson a elemre **+** .  Minden napló esetében csak a kijelölt megszakításokkal rendelkező események lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt naplóhoz tartozó megszakításokat.  Az események szűréséhez nem adhat meg további feltételeket.
 
 Amikor beírja az Eseménynapló nevét, Azure Monitor a gyakori Eseménynapló-nevekre vonatkozó javaslatokat is tartalmaz. Ha a hozzáadni kívánt napló nem jelenik meg a listában, akkor a napló teljes nevének beírásával továbbra is hozzáadhatja azt. A napló teljes nevét az Eseménynapló használatával találja. Az eseménynaplóban nyissa meg a napló *Tulajdonságok* lapját, és másolja a karakterláncot a *teljes név* mezőből.
 
@@ -60,7 +59,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 ## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
 Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:---|:---|
 | Esemény |Minden Windows-esemény. |
 | Az Event &#124;, ahol a EventLevelName = = "Error" |Minden Windows-esemény, amelynek súlyossága a hiba. |

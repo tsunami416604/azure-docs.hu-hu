@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan használható a hírcsatornák a ki
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263007"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
 
@@ -28,7 +28,7 @@ Az első lépések megkezdése előtt tekintse meg a megoldásról szóló vide�
 ## <a name="solution-components"></a>Megoldás-összetevők
 A következő ábra a megoldásban részt vevő adatfolyamot és összetevőket mutatja be:
 
-![Projekt vizualizációja](./media/changefeed-ecommerce-solution/project-visual.png)
+:::image type="content" source="./media/changefeed-ecommerce-solution/project-visual.png" alt-text="Projekt vizualizációja" border="false":::
  
 1. **Adatgenerálás:** A adatszimulátor használatával olyan kiskereskedelmi adatforgalom hozhatók forgalomba, amelyek olyan eseményeket jelentenek, mint például egy felhasználó, egy elem hozzáadása a kosárhoz, és egy elem vásárlása. Az adatgenerátor használatával nagy mennyiségű mintaadatok hozhatók létre. A generált mintaadatok a következő formátumban tartalmazzák a dokumentumokat:
    
@@ -78,9 +78,9 @@ Hozza létre az Azure-erőforrásokat – Azure Cosmos DB, a Storage-fiókot, az
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Az előző lépésben letöltött GitHub-tárházból lépjen a **Azure Resource Manager** mappára, és nyissa meg a **Parameters. JSON** fájl nevű fájlt.  
+2. Az előző lépésben letöltött GitHub-tárházból lépjen a **Azure Resource Manager** mappára, és nyissa meg a fájl **parameters.js** nevű fájlt.  
 
-3. Adja meg cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name és paraméterek értékét a **Parameters. JSON** fájlban jelzett módon. Az egyes erőforrásokhoz később megadott neveket kell használnia.  
+3. Adja meg a cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name és paraméterek értékét a fájl **parameters.js** . Az egyes erőforrásokhoz később megadott neveket kell használnia.  
 
 4. A **Windows PowerShellben**navigáljon a **Azure Resource Manager** mappára, és futtassa a következő parancsot:
 
@@ -149,7 +149,7 @@ Amikor új dokumentumot hoznak létre, vagy egy aktuális dokumentumot módosít
 
 2. Kattintson a jobb gombbal a **ChangeFeedLabSolution. SLN** nevű fájlra, majd válassza a **Megnyitás a Visual Studióval**lehetőséget.  
 
-3. Navigáljon a **Local. Settings. JSON** fájlhoz a Visual Studióban. Ezután használja a korábban feljegyzett értékeket az üres értékek kitöltéséhez.  
+3. Navigáljon **local.settings.jsa** Visual Studióban. Ezután használja a korábban feljegyzett értékeket az üres értékek kitöltéséhez.  
 
 4. Navigáljon a **ChangeFeedProcessor.cs**. A **Run** függvény paraméterei a következő műveleteket hajtják végre:  
 
@@ -165,11 +165,11 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
 
 1. Térjen vissza az adattárhoz a Fájlkezelőben, majd kattintson a jobb gombbal a **ChangeFeedFunction. SLN** elemre, és nyissa meg újra egy új Visual Studio-ablakban.  
 
-2. Navigáljon az **app. config** fájlhoz. A `<appSettings>` blokkon belül adja hozzá a korábban lekért Azure Cosmos db-fiókhoz tartozó végpontot és egyedi **elsődleges kulcsot** .  
+2. Navigáljon a **App.config** fájlhoz. A `<appSettings>` blokkon belül adja hozzá a korábban lekért Azure Cosmos db-fiókhoz tartozó végpontot és egyedi **elsődleges kulcsot** .  
 
 3. Adja hozzá a **gyűjtemény** és az **adatbázis** nevét. (Ezek a nevek csak akkor **changefeedlabcollection** és **changefeedlabdatabase** , ha úgy dönt, hogy másképpen nevezi el.)
 
-   ![A kapcsolatok karakterláncának frissítése](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="A kapcsolatok karakterláncának frissítése":::
  
 4. Mentse a módosításokat az összes szerkesztett fájlon.  
 
@@ -179,7 +179,7 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
 
 7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő**, akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
  
-   ![A portálon létrehozott adatértékek](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="A portálon létrehozott adatértékek":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics-feladatok beállítása
 
@@ -189,7 +189,7 @@ A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltat
 
 2. Válassza ki az alább látható **bemeneteket** .  
 
-   ![Bemenet létrehozása](./media/changefeed-ecommerce-solution/create-input.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Bemenet létrehozása":::
 
 3. Válassza a **+ stream-bemenet hozzáadása**elemet. Ezután válassza ki az **Event hub** elemet a legördülő menüből.  
 
@@ -221,7 +221,7 @@ A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltat
 
 8. Ezután lépjen vissza a **streamjob1** , és válassza a **lekérdezés szerkesztése**lehetőséget.
 
-   ![Lekérdezés szerkesztése](./media/changefeed-ecommerce-solution/edit-query.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Lekérdezés szerkesztése":::
  
 9. Illessze be a következő lekérdezést a lekérdezési ablakba. Az **átlagos ár** lekérdezés kiszámítja a felhasználók által megtekintett elemek átlagos árát, a felhasználók kosarahoz hozzáadott összes elem átlagos árát, valamint a felhasználók által megvásárolt összes elem átlagos árát. Ez a mérőszám segítséget nyújt az e-kereskedelmi vállalatoknak, hogy eldöntsék, milyen árakat kell értékesíteni a-ben, és hogy milyen leltárt kell a Ha például a megtekintett elemek átlagos díja jóval meghaladja a megvásárolt elemek átlagát, akkor a vállalat dönthet úgy, hogy olcsóbb elemeket ad hozzá a leltárhoz.
 
@@ -314,7 +314,7 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
    A minta irányítópult a következő diagramokat keresi:
 
-   ![vizualizációk](./media/changefeed-ecommerce-solution/visualizations.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="vizualizációk":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Nem kötelező: megjelenítés E-kereskedelmi webhellyel
 
@@ -322,19 +322,19 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 1. Térjen vissza a [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjába**, majd **adatkezelő**.  
 
-   Adjon hozzá két gyűjteményt a **changefeedlabdatabase** - -**termékek** és- **Kategóriák** területen rögzített tárolókapacitással.
+   Adjon hozzá két gyűjteményt a **changefeedlabdatabase**  -  -**termékek** és- **Kategóriák** területen rögzített tárolókapacitással.
 
    Adjon hozzá egy másik gyűjteményt a **topItems** és a **/cikkengedm** nevű **changefeedlabdatabase** a partíció kulcsaként.
 
 2. Válassza ki a **topItems** gyűjteményt, és a **skála és beállítások** területen állítsa be az **élettartamot** **30 másodpercre** , hogy a topItems 30 másodpercenként frissítsen.
 
-   ![Élettartam](./media/changefeed-ecommerce-solution/time-to-live.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Élettartam":::
 
 3. Ahhoz, hogy a **topItems** -gyűjteményt a leggyakrabban megvásárolt elemekkel töltse fel, térjen vissza a **streamjob1** , és adjon hozzá egy új **kimenetet**. Válassza a **Cosmos db**lehetőséget.
 
 4. Töltse ki a kötelező mezőket az alábbi képen látható módon.
 
-   ![Cosmos-kimenet](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos-kimenet":::
  
 5. Ha a labor előző részében a nem kötelező első 5 lekérdezést adta hozzá, folytassa a következő résszel: 5a. Ha nem, folytassa az 5b. résszel.
 
@@ -374,13 +374,13 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
    FROM arrayselect
    ```
 
-6. Nyissa meg a **EcommerceWebApp. SLN** fájlt, és navigáljon a **web. config** fájlhoz a **megoldáskezelő**.  
+6. Nyissa meg a **EcommerceWebApp. SLN** fájlt, és navigáljon a **megoldáskezelő** **Web.config** fájljához.  
 
 7. A `<appSettings>` blokkon belül adja hozzá az **URI** -t és az **elsődleges kulcsot** , amelyet korábban mentett, ahol az **URI itt** és **az elsődleges kulcs itt**látható. Ezután adja hozzá az **adatbázis nevét** és a **gyűjtemény nevét** a jelzett módon. (Ezek a nevek csak akkor **changefeedlabdatabase** és **changefeedlabcollection** , ha úgy dönt, hogy másképpen nevezi el.)
 
    Adja meg a **termékek gyűjteményének nevét**, a **Kategóriák gyűjteményének nevét**és a **legfontosabb elemek gyűjteményének nevét** a jelzett módon. (Ezeknek a névnek **termékeknek, kategóriáknak és topItems** kell lennie, kivéve, ha úgy döntött, hogy másképpen nevezi el.)  
 
-8. Navigáljon a **EcommerceWebApp. SLN** **mappában található pénztár mappához** , és nyissa meg a következőt:. Ezután nyissa meg a **web. config** fájlt a mappán belül.  
+8. Navigáljon a **EcommerceWebApp. SLN** **mappában található pénztár mappához** , és nyissa meg a következőt:. Ezután nyissa meg a **Web.config** fájlt a mappán belül.  
 
 9. A `<appSettings>` blokkon belül adja hozzá azt az **URI** -t és **elsődleges kulcsot** , amelyet a jelzettnél korábban mentett. Ezután adja hozzá az **adatbázis nevét** és a **gyűjtemény nevét** a jelzett módon. (Ezek a nevek csak akkor **changefeedlabdatabase** és **changefeedlabcollection** , ha úgy dönt, hogy másképpen nevezi el.)  
 

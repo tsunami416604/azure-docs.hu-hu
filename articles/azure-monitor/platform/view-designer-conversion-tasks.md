@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658744"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Designerek megtekintése a munkafüzetek átalakításához – gyakori feladatok
@@ -40,7 +39,7 @@ Az oldalsáv menüjében, a **paraméter neve** szövegmezőbe írja be a követ
 
 Mentse a paramétert az oldalsáv menüjének bal felső sarkában. Alapértelmezés *szerint a* legördülő lista nem törölhető, vagy kiválaszthat egy alapértelmezett **TimeRange** értéket (például *24 óra*). Válassza a **Szerkesztés kész**lehetőséget.
 
-A paraméterek használhatók a lekérdezésekben kapcsos zárójelek hozzáadásával a paraméter neve {} körül. A paraméterekkel kapcsolatos további részleteket a [munkafüzetek dokumentációjában](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)találhat.
+A paraméterek használhatók a lekérdezésekben kapcsos zárójelek hozzáadásával {} a paraméter neve körül. A paraméterekkel kapcsolatos további részleteket a [munkafüzetek dokumentációjában](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)találhat.
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>Lekérdezések frissítése a TimeRange paraméterrel
 
@@ -50,7 +49,7 @@ A paraméterek használhatók a lekérdezésekben kapcsos zárójelek hozzáadá
 
 ### <a name="option-2-update-your-log-queries"></a>2. lehetőség: a napló lekérdezésének frissítése
 
-A lekérdezésben adja hozzá a sort `| where TimeGenerated {TimeRange}` : az alábbi példában látható módon:
+A lekérdezésben adja hozzá a sort: az `| where TimeGenerated {TimeRange}` alábbi példában látható módon:
 
 Eredeti lekérdezés
 ```KQL
@@ -118,7 +117,7 @@ Az **oszlop megjelenítő** legördülő lista frissítése Spark- *területekk�
 
 Mentse a beállításokat, majd futtassa újra a lekérdezést a tábla frissítéséhez, hogy tartalmazzon egy értékgörbe-t is.
 
-Az eredményül kapott rács a következőhöz hasonlóan ![fog kinézni: értékgörbék példa](media/view-designer-conversion-tasks/sparkline-example.png)
+Az eredményül kapott rács a következőhöz hasonlóan fog kinézni: ![ értékgörbék példa](media/view-designer-conversion-tasks/sparkline-example.png)
 
 ## <a name="advanced-cell-settings"></a>Speciális cella beállításai
 A nézet Designer tükrözéséhez olyan feladatokat hajthat végre, mint például a munkafüzet cellái méretének módosítása vagy a PIN-kódok és külső hivatkozások hozzáadása a naplókhoz.

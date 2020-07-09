@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233125"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Go-hoz az Azure DevOps Starter használatával
@@ -40,7 +40,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza ki a **Go** minta alkalmazást, majd kattintson a **tovább**gombra.  
     
-1. Az alapértelmezett keretrendszer az **Egyszerű Go-alkalmazás**. Kattintson a **Tovább** gombra.  Az alkalmazás-keretrendszer, amelyet korábban választott, megdiktálja az üzembe helyezéshez elérhető Azure-szolgáltatások telepítési céljainak típusát. 
+1. Az alapértelmezett keretrendszer az **Egyszerű Go-alkalmazás**. Válassza a **Tovább** lehetőséget.  Az alkalmazás-keretrendszer, amelyet korábban választott, megdiktálja az üzembe helyezéshez elérhető Azure-szolgáltatások telepítési céljainak típusát. 
     
 1. Hagyja meg az alapértelmezett Azure-szolgáltatást, és kattintson a **Tovább gombra**.
 
@@ -64,7 +64,7 @@ A DevOps Starter egy git-tárházat hoz létre az Azure Reposben vagy a GitHubba
 
 1. A tárház klónozási URL-címének megtekintéséhez válassza a jobb felső sarokban található **klónozás** elemet. A git-tárházat a kedvenc IDE-ben is klónozott. A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
 
-1. A bal oldalon nyissa meg a *views/index.html* fájlt, majd válassza a **Szerkesztés**lehetőséget.
+1. A bal oldalon lépjen a *views/index.html* fájlra, majd válassza a **Szerkesztés**lehetőséget.
 
 1. Módosítsa a fájlt. Például módosítsa a div-címkék egyikének szövegét.
 
@@ -114,7 +114,7 @@ A DevOps Starter automatikusan beállítja a teljes CI/CD-folyamatot az Azure Re
 
 1. Válassza a **naplók**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölheti az Azure App Service példányt és az ebben a rövid útmutatóban létrehozott kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 

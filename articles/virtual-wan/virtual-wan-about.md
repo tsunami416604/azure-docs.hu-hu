@@ -5,15 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 05/14/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657010"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027205"
 ---
 # <a name="about-azure-virtual-wan"></a>Tudnivalók az Azure Virtual WAN-ról
 
@@ -64,7 +63,7 @@ Végpontok közötti virtuális WAN konfigurálásához a következő erőforrá
 
 **További virtuális WAN-erőforrások**
 
-  * **Webhely:** Ez az erőforrás csak a helyek közötti kapcsolatokhoz használatos. A hely erőforrása **vpnsite**. Ez a helyszíni VPN-eszközt és a hozzá tartozó beállításokat jelenti. A Virtual WAN-partnerekkel együttműködve olyan beépített megoldásokhoz fér hozzá, amelyekkel automatikusan exportálhatók ezek az adatok az Azure-ba.
+* **Webhely:** Ez az erőforrás csak a helyek közötti kapcsolatokhoz használatos. A hely erőforrása **vpnsite**. Ez a helyszíni VPN-eszközt és a hozzá tartozó beállításokat jelenti. A Virtual WAN-partnerekkel együttműködve olyan beépített megoldásokhoz fér hozzá, amelyekkel automatikusan exportálhatók ezek az adatok az Azure-ba.
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>Csatlakozási típusok
 
@@ -72,21 +71,9 @@ A virtuális WAN a következő típusú kapcsolatokat teszi lehetővé: helyek k
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>Webhelyek közötti VPN-kapcsolatok
 
-![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan.png)
+A helyek közötti IPsec-/IKE-(IKEv2-) kapcsolaton keresztül kapcsolódhat az Azure-beli erőforrásokhoz. További információ: [helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md). 
 
-Ha virtuális WAN-helyek közötti kapcsolatot hoz létre, akkor dolgozhat egy elérhető partnerrel. Ha nem szeretne partnert használni, manuálisan is konfigurálhatja a kapcsolatot. További információ: [helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md).
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Virtuális WAN-partner munkafolyamata
-
-Ha virtuális WAN-partnerrel dolgozik, a munkafolyamat a következőket teszi:
-
-1. A fiókirodai (VPN/SDWAN) vezérlőt hitelesítettük a hely-központú információk Azure-ba való exportálásához egy [Azure-szolgáltatásnév](../active-directory/develop/howto-create-service-principal-portal.md)használatával.
-2. Az ágeszköz (VPN/SDWAN) vezérlője kéri le az Azure-kapcsolat konfigurációját, és frissíti a helyi eszközt. Ez automatizálja a konfiguráció letöltését, szerkesztését és frissítését a helyszíni VPN-eszközön.
-3. Miután az eszköz a megfelelő Azure-konfigurációval rendelkezik, a helyek közötti kapcsolat (két aktív alagút) felépül az Azure WAN irányába. Az Azure az IKEv1 és az IKEv2 támogatására is képes. A BGP használata nem kötelező.
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>Helyek közötti virtuális WAN-kapcsolatokhoz tartozó partnerek
-
-Az elérhető partnerek és helyszínek listáját a [virtuális WAN-partnerek és-helyszínek](virtual-wan-locations-partners.md) című cikkben találja.
+Az ilyen típusú kapcsolathoz VPN-eszköz vagy virtuális WAN-partner eszköz szükséges. A virtuális WAN-partnerek automatizálást biztosítanak a kapcsolódáshoz, amely lehetővé teszi az eszköz adatainak az Azure-ba való exportálását, az Azure-konfiguráció letöltését és az Azure-beli virtuális WAN-hubhoz való kapcsolat létesítését. Az elérhető partnerek és helyszínek listáját a [virtuális WAN-partnerek és-helyszínek](virtual-wan-locations-partners.md) című cikkben találja. Ha a VPN/SD-WAN-eszköz szolgáltatója nem szerepel az említett hivatkozásban, akkor a kapcsolat beállításához leegyszerűsítheti a helyek közötti [kapcsolat virtuális WAN használatával történő létrehozását](virtual-wan-site-to-site-portal.md) .
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Felhasználói VPN (pont – hely) kapcsolatok
 
@@ -95,9 +82,50 @@ Az Azure-beli erőforrásokhoz IPsec/IKE (IKEv2) vagy OpenVPN-kapcsolat használ
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute-kapcsolatok
 A ExpressRoute lehetővé teszi a helyszíni hálózat csatlakoztatását az Azure-hoz egy privát kapcsolaton keresztül. A kapcsolat létrehozásával kapcsolatban lásd: [ExpressRoute-kapcsolat létrehozása virtuális WAN használatával](virtual-wan-expressroute-portal.md).
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>VNet kapcsolatok
+
+Egy Azure-beli virtuális hálózatot csatlakoztathat egy virtuális hubhoz. További információ: [a VNet összekötése egy hubhoz](virtual-wan-site-to-site-portal.md#vnet).
+
+### <a name="transit-connectivity"></a><a name="transit"></a>Átviteli kapcsolat
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>Átviteli kapcsolat a virtuális hálózatok között
+
+A virtuális WAN lehetővé teszi az átvitelt a virtuális hálózatok között. A virtuális hálózatok virtuális hálózati kapcsolaton keresztül csatlakozhat egy virtuális hubhoz. A **standard virtuális WAN** virtuális hálózatok közötti tranzit-kapcsolat engedélyezve van az útválasztók jelenléte esetén minden virtuális központban. Ez az útválasztó a virtuális központ első létrehozásakor jön létre.
+
+Az útválasztó négy útválasztási állapottal rendelkezhet: kiépített, kiépítés, sikertelen vagy nincs. Az **útválasztási állapot** a Azure Portal található a virtuális központ lapra való navigálással.
+
+* A **none** állapot azt jelzi, hogy a virtuális központ nem tudta kiépíteni az útválasztót. Ez akkor fordulhat *elő, ha*a virtuális WAN alaptípusú, vagy ha a virtuális hub üzembe helyezése az elérhető szolgáltatás előtt megtörtént.
+* A **sikertelen** állapot azt jelzi, hogy hiba történt A példány létrehozásakor. Az útválasztó létrehozásához vagy alaphelyzetbe állításához keresse meg az **útválasztó alaphelyzetbe állítása** lehetőséget, és navigáljon a Azure Portal virtuális központ áttekintés lapjára.
+
+Minden virtuális központ útválasztója legfeljebb 50 GB/s-os összesített átviteli sebességet támogat. A virtuális hálózati kapcsolatok közötti kapcsolat a virtuális WAN összes virtuális hálózatok összesen 2000 virtuális gép terhelését feltételezi.
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Átviteli kapcsolat VPN-és ExpressRoute között
+
+A virtuális WAN lehetővé teszi a VPN-és a ExpressRoute közötti átviteli kapcsolatot. Ez azt jelenti, hogy a VPN-kapcsolattal rendelkező helyek vagy a távoli felhasználók kommunikálhatnak a ExpressRoute-kapcsolattal rendelkező webhelyekkel. A rendszer implicit feltételezést is feltételez, hogy az **ág-ág jelző** engedélyezve van. Ez a jelző a Azure Portal Azure virtuális WAN-beállításai között található. Az összes útválasztási kezelést a virtuális központ útválasztója biztosítja, amely a virtuális hálózatok közötti átvitelt is lehetővé teszi.
+
+### <a name="custom-routing"></a><a name="routing"></a>Egyéni Útválasztás
+
+A Virtual WAN speciális útválasztási fejlesztéseket biztosít. Lehetőség van egyéni útválasztási táblázatok beállítására, a virtuális hálózati útválasztás optimalizálására az Útválasztás társításával és a propagálással, logikailag csoportosítva az útválasztási táblázatokat címkékkel, és egyszerűbbé teszi számos hálózati virtuális berendezés vagy megosztott szolgáltatások útválasztási forgatókönyveit.
+
+### <a name="global-vnet-peering"></a><a name="global"></a>Globális VNet-társítás
+
+A globális VNet-társítás egy mechanizmust biztosít két virtuális hálózatok különböző régiókban való összekapcsolásához. A virtuális WAN-ban a virtuális hálózati kapcsolatok virtuális hálózatok csatlakoznak a virtuális hubokhoz. A felhasználónak nem kell explicit módon beállítania a globális VNet-társítást. A virtuális központhoz csatlakoztatott virtuális hálózatok ugyanaz a régió VNet. Egy másik régióban lévő virtuális központhoz csatlakoztatott virtuális hálózatok globális VNet-megterhelési díjat von maga után.
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute-forgalom titkosítása
+
+Az Azure Virtual WAN lehetővé teszi a ExpressRoute-forgalom titkosítását. A technika titkosított átvitelt biztosít a helyszíni hálózatok és az Azure-beli virtuális hálózatok között a ExpressRoute keresztül, a nyilvános interneten keresztül vagy nyilvános IP-címek használata nélkül. További információ: [IPSec over ExpressRoute for Virtual WAN](vpn-over-expressroute.md).
+
 ## <a name="locations"></a><a name="locations"></a>Helyek
 
 A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-locations-partners.md) című cikkben talál további információt.
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Alapszintű és standard szintű virtuális WAN-hálózatok útválasztási táblái
+
+Az útválasztási táblák mostantól társítási és propagálási funkciókkal rendelkeznek. A már meglévő útválasztási táblázat olyan útválasztási táblázat, amely nem rendelkezik ezekkel a funkciókkal. Ha már meglévő útvonalak vannak a hub-útválasztásban, és az új képességeket szeretné használni, vegye figyelembe a következőket:
+
+* **Standard szintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd kísérletet kell készítenie az új útválasztási táblák létrehozásához (az Azure Portal-ben lévő központ útválasztási táblázatok szakaszában érhető el).
+
+* **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>GYIK
 

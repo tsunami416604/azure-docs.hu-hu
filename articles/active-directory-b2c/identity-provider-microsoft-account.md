@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 375c83445bb559efe5c797e583129cb1b0c2fb65
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ad4b08a12e63b4ae3eed0eb09e295d9730de97bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388000"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Ha Microsoft-fiók [identitás-szolgáltatóként](openid-connect.md) szeretné 
 1. **Regisztráció** kiválasztása
 1. Jegyezze fel az alkalmazás – Áttekintés lapon megjelenő **alkalmazást (ügyfél-azonosítót)** . Erre akkor van szükség, amikor a következő szakaszban konfigurálja az identitás-szolgáltatót.
 1. **Tanúsítványok kiválasztása & Secrets**
-1. Kattintson az **új ügyfél titka** elemre.
+1. Kattintson az **Új titkos ügyfélkód** elemre.
 1. Adja meg a titok **leírását** , például az *1. alkalmazás jelszava*, majd kattintson a **Hozzáadás**gombra.
 1. Jegyezze fel az **érték** oszlopban látható alkalmazás jelszavát. Erre akkor van szükség, amikor a következő szakaszban konfigurálja az identitás-szolgáltatót.
 

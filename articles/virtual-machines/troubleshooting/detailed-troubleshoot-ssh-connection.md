@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920127"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH-hibaelhárítási lépések Linux rendszerű virtuális gépekhez való csatlakozáskor fellépő problémákhoz az Azure-ban
@@ -33,7 +32,7 @@ Az alábbi ábrán az érintett összetevők láthatók.
 A következő lépések segítségével elkülönítheti a hiba forrását, és kiderítheti a megoldásokat és a megkerülő megoldásokat.
 
 1. Keresse meg a virtuális gép állapotát a portálon.
-   A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek virtuális gép** > *neve*elemet.
+   A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek virtuális gép**  >  *neve*elemet.
 
    A virtuális gép állapotjelző paneljének **futnia**kell. Görgessen le a számítási, tárolási és hálózati erőforrások legutóbbi tevékenységének megjelenítéséhez.
 
@@ -71,7 +70,7 @@ Ha az alábbi feltételek valamelyike teljesül, átmenetileg tiltsa le a szoftv
 Ha tanúsítványalapú hitelesítést használ, ellenőrizze, hogy rendelkezik-e az alábbi engedélyekkel a saját könyvtárában található. ssh mappához:
 
 * Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*. pub
+* Chmod 644 ~/.ssh/ \* . pub
 * Chmod 600 ~/.ssh/id_rsa (vagy bármely más, saját titkos kulccsal rendelkező fájl)
 * Chmod 644 ~/.ssh/known_hosts (az SSH-n keresztül csatlakozott gazdagépeket tartalmazza)
 
@@ -105,7 +104,7 @@ Ha nem rendelkezik másik virtuális géppel ugyanabban a virtuális hálózatba
 
 Ha az azonos virtuális hálózatban lévő virtuális géppel is létrehozhat SSH-kapcsolatokat, ellenőrizze a következő területeket:
 
-* **A cél virtuális gépen lévő SSH-forgalom végpont-konfigurációja.** A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gépen futó SSH-szolgáltatás figyel. (Az alapértelmezett port a 22). Ellenőrizze az SSH TCP-port számát a Azure Portal a **virtuális gépek** > virtuálisgép-*név* > **beállításai** > **végpontok**kiválasztásával.
+* **A cél virtuális gépen lévő SSH-forgalom végpont-konfigurációja.** A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gépen futó SSH-szolgáltatás figyel. (Az alapértelmezett port a 22). Ellenőrizze az SSH TCP-port számát a Azure Portal a **virtuális gépek virtuálisgép**-  >  *név*  >  **beállításai**  >  **végpontok**kiválasztásával.
 * **Az SSH-forgalom végpontjának hozzáférés-vezérlési listája a cél virtuális gépen.** Az ACL lehetővé teszi, hogy a forrás IP-címe alapján megadhatja az internetről engedélyezett vagy megtagadott bejövő forgalmat. A helytelenül konfigurált ACL-ek megakadályozhatják a bejövő SSH-forgalmat a végponthoz. Ellenőrizze az ACL-eket, hogy a proxy vagy más peremhálózati kiszolgáló nyilvános IP-címeiről érkező bejövő forgalom engedélyezett-e. További információ: [a hálózati hozzáférés-vezérlési listák (ACL-ek)](../../virtual-network/virtual-networks-acl.md).
 
 Ha el szeretné távolítani a végpontot a probléma forrásaként, távolítsa el az aktuális végpontot, hozzon létre egy másik végpontot, és adja meg az SSH-nevet (a nyilvános és a magánhálózati portszám esetében a 22-es TCP-port). További információ: [végpontok beállítása egy virtuális gépen az Azure-ban](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -132,5 +131,5 @@ Próbálkozzon újra a számítógépről való csatlakozással. Ha a probléma 
 * A célként megadott virtuális gépen a helyi tűzfal olyan szabályokkal rendelkezik, amelyek megakadályozzák a bejövő vagy kimenő SSH-forgalmat.
 * Az Azure-beli virtuális gépen futó behatolás-észlelési vagy Hálózatfigyelő szoftver megakadályozza az SSH-kapcsolatokat.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 Az alkalmazás-hozzáférés hibaelhárításával kapcsolatos további információkért lásd: Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](../linux/troubleshoot-app-connection.md)

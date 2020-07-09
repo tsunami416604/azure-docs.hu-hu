@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan csatlakozhat Azure-beli virtu
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 290a20fcd827841c24983f3bdd54b6db8e154462
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3dc7ce36e773b5a615b1abf4f50406fcb07826b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744306"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Kapcsolódás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával
 
@@ -24,7 +24,7 @@ Győződjön meg arról, hogy beállította a virtuálisgép-méretezési csopor
 
 ## <a name="connect-using-rdp"></a><a name="rdp"></a>Kapcsolat RDP használatával
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Navigáljon ahhoz a virtuálisgép-méretezési csoporthoz, amelyhez csatlakozni szeretne.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Navigáljon ahhoz a virtuálisgép-méretezési csoporthoz, amelyhez csatlakozni szeretne.
 
    ![navigate](./media/bastion-connect-vm-scale-set/1.png)
 2. Keresse meg a virtuálisgép-méretezési csoport azon példányát, amelyhez csatlakozni szeretne, majd válassza a **Kapcsolódás**lehetőséget. RDP-kapcsolat használata esetén a virtuálisgép-méretezési csoportnak Windows virtuálisgép-méretezési csoportnak kell lennie.

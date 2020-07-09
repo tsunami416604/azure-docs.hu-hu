@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.custom: seodec18~~~~
 ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838518"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
@@ -64,17 +63,17 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
    - Illessze be az adatfájlokat a szövegszerkesztőbe. Ezután válassza a **hivatkozási adatelemzés** gomb lehetőséget.
    - Kattintson a **Fájl választása** gombra, ha helyi szövegfájlból kívánja felvenni az adatforrást.
 
-   Másolja például a CSV-adathalmazt: [ ![beillesztett CSV-fájl](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+   Másolja például a CSV-adathalmazt: [ ![ BEillesztett CSV-fájl](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   Például illessze be a JSON-tömböt, és [ ![illessze be a JSON-adatlapokat.](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
+   Például illessze be a JSON-tömböt, és [ ![ illessze be a JSON-adatlapokat](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox) .
 
-   Ha hiba történik az adatértékek elemzésekor, a hiba az oldal alján piros színnel jelenik meg, például: `CSV parsing error, no rows extracted`.
+   Ha hiba történik az adatértékek elemzésekor, a hiba az oldal alján piros színnel jelenik meg, például: `CSV parsing error, no rows extracted` .
 
 1. Az adatgyűjtés sikeres elemzése után egy adatrács jelenik meg, amely megjeleníti az adatoszlopokat és az azokat jelképező sorokat. A pontosság érdekében tekintse át az adatrácsot.
 
    [![Hivatkozási adatai áttekintése](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Tekintse át az egyes oszlopokat, hogy megértse a feltételezett adattípust, és szükség esetén módosítsa az adattípust.  Válassza ki az adattípus szimbólumát az oszlop fejlécében **#** : dupla (numerikus), **T | F** logikai vagy **ABC** karakterlánchoz.
+1. Tekintse át az egyes oszlopokat, hogy megértse a feltételezett adattípust, és szükség esetén módosítsa az adattípust.  Válassza ki az adattípus szimbólumát az oszlop fejlécében: **#** dupla (numerikus), **T | F** logikai vagy **ABC** karakterlánchoz.
 
    [![Válassza az oszlopok fejlécek adattípusok elemét.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: 947f224426b3a70c39cbf94ee888c5c353b3993b
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d73f3a37bb084533733b27b49ac171747cee814c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321888"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken
 
@@ -25,7 +25,7 @@ Ez a cikk a Azure IoT Edge futtatókörnyezet x64-, ARM32-vagy ARM64-alapú Linu
 > [!NOTE]
 > A linuxos szoftverek tárházában lévő csomagokat az egyes csomagokban található licencfeltételek (/usr/share/doc/*-csomag neve*) alapján kell megvizsgálni. A csomag használata előtt olvassa el a licencfeltételeket. A csomag telepítése és használata jelenti a jelen feltételek elfogadását. Ha nem fogadja el a licencfeltételeket, ne használja a csomagot.
 
-## <a name="install-the-latest-runtime-version"></a>A legújabb futtatókörnyezet-verzió telepítése
+## <a name="install-iot-edge-and-container-runtimes"></a>IoT Edge-és tároló-futtatókörnyezetek telepítése
 
 Az alábbi részekben a Azure IoT Edge Runtime legújabb verzióját telepítheti az eszközre.
 
@@ -62,14 +62,14 @@ Másolja a generált listát.
    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
    ```
 
-A Microsoft GPG nyilvános kulcsának telepítése
+Telepítse a Microsoft GPG nyilvános kulcsot.
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
 
-### <a name="install-the-container-runtime"></a>A tároló futtatókörnyezetének telepítése
+### <a name="install-a-container-runtime"></a>Tároló-futtatókörnyezet telepítése
 
 Azure IoT Edge egy [OCI-kompatibilis tároló-](https://www.opencontainers.org/) futtatókörnyezetre támaszkodik. Az éles környezetekben ajánlott az alább ismertetett [Moby-alapú](https://mobyproject.org/) motort használni. A Moby motor az egyetlen tároló motor, amelyet hivatalosan támogat a Azure IoT Edge. A Docker CE/EE tároló lemezképei kompatibilisek a Moby Runtime szolgáltatással.
 
@@ -97,73 +97,39 @@ Ha hibaüzenet jelenik meg a Moby Container Runtime telepítésekor, kövesse a 
 
 A **IoT Edge biztonsági démon** a IoT Edge eszközön biztosít és tart fenn biztonsági szabványokat. A démon minden rendszerindításkor elindul, és elindítja az eszközt a IoT Edge futtatókörnyezet további részének elindításával.
 
-A telepítési parancs a **libiothsm** standard verzióját is telepíti, ha még nem létezik.
-
 Frissítési csomagok listája az eszközön.
 
    ```bash
    sudo apt-get update
    ```
 
-Telepítse a biztonsági démont. A csomag telepítve van a `/etc/iotedge/`következő helyen:.
+Ellenőrizze, hogy a IoT Edge mely verziói érhetők el.
+
+   ```bash
+   apt list -a iotedge
+   ```
+
+Ha a biztonsági démon legújabb verzióját szeretné telepíteni, használja a következő parancsot, amely a **libiothsm-STD** csomag legújabb verzióját is telepíti:
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-A IoT Edge sikeres telepítése után a kimenet rákérdez a konfigurációs fájl frissítésére. A Device kiépítés befejezéséhez kövesse a [biztonsági démon konfigurálása](#configure-the-security-daemon) című szakaszban ismertetett lépéseket.
+Ha a biztonsági démon egy adott verzióját szeretné telepíteni, adja meg a verziót az apt List kimenetből. Ugyanezt a verziót is meg kell adni a **libiothsm-STD** csomaghoz, amely egyébként a legújabb verzióját telepíti. A következő parancs például a 1.0.8 kiadás legújabb verzióját telepíti:
 
-## <a name="install-a-specific-runtime-version"></a>Egy adott futtatókörnyezet-verzió telepítése
+   ```bash
+   sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+   ```
 
-Ha a legújabb verziók használata helyett a Moby és a Azure IoT Edge futtatókörnyezet egy adott verzióját szeretné telepíteni, közvetlenül IoT Edge a GitHub-tárházból is megcélozhatja az összetevők fájljait. A következő lépésekkel szerezheti be az összes IoT Edge-összetevőt az eszközre: a Moby Engine és a CLI, a libiothsm, végül pedig a IoT Edge biztonsági démon. Ugorjon a következő szakaszra, [konfigurálja a biztonsági démont](#configure-the-security-daemon), ha nem szeretne egy adott futtatókörnyezet-verzióra váltani.
+Ha a telepíteni kívánt verzió nem szerepel a listáján, kövesse a [futtatókörnyezet telepítése a kiadási eszközök használatával](#install-runtime-using-release-assets)című témakör lépéseit. Ez a szakasz bemutatja, hogyan célozhatja meg a IoT Edge biztonsági démon vagy a Release Candidate verziójának korábbi verzióját.
 
-1. Navigáljon a [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokhoz, és keresse meg a célként használni kívánt kiadási verziót.
-
-2. Bontsa ki az **eszközök** szakaszt az adott verzióhoz.
-
-3. Előfordulhat, hogy az adott kiadásban nem lehet frissíteni a Moby motort. Ha olyan fájlokat lát, amelyek a **Moby-Engine** és a **Moby-CLI**használatával kezdődnek, az alábbi parancsokkal frissítheti ezeket az összetevőket. Ha nem lát Moby-fájlokat, lépjen vissza a régebbi kiadási eszközökre, amíg meg nem találja a legújabb verziót.
-
-   1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **Moby-Engine-** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
-
-   2. A következő parancsban található másolt hivatkozás használatával telepítse a Moby Engine adott verzióját:
-
-      ```bash
-      curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
-      ```
-
-   3. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **Moby-CLI-** fájlt. A Moby CLI egy választható összetevő, de a fejlesztés során hasznos lehet. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
-
-   4. A következő parancsban található másolt hivatkozás használatával telepítse a Moby CLI adott verzióját:
-
-      ```bash
-      curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
-      ```
-
-4. Minden kiadásnak új fájlokkal kell rendelkeznie a IoT Edge biztonsági démonhoz és a hsmlib. Ezen összetevők frissítéséhez használja az alábbi parancsokat.
-
-   1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **libiothsm-STD-** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
-
-   2. A következő parancsban található másolt hivatkozásra kattintva telepítheti a hsmlib adott verzióját:
-
-      ```bash
-      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
-      ```
-
-   3. A IoT Edge eszköz architektúrájának megfelelő **iotedge** -fájl megkeresése. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
-
-   4. A következő parancsban található másolt hivatkozásra kattintva telepítse a IoT Edge biztonsági démon adott verzióját.
-
-      ```bash
-      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
-      ```
-
-A IoT Edge sikeres telepítése után a kimenet rákérdez a konfigurációs fájl frissítésére. Az eszközök kiépítés befejezéséhez kövesse a következő szakaszban ismertetett lépéseket.
+IoT Edge sikeres telepítése után `/etc/iotedge/` a kimenet a konfigurációs fájl frissítését kéri. Folytassa a következő szakasszal az eszközök üzembe helyezésének befejezéséhez.
 
 ## <a name="configure-the-security-daemon"></a>A biztonsági démon konfigurálása
 
 Konfigurálja a IoT Edge futtatókörnyezetet úgy, hogy az Azure IoT hub-ban található eszköz identitásával összekapcsolja a fizikai eszközt.
 
-A démon a következő konfigurációs fájllal konfigurálható: `/etc/iotedge/config.yaml`. A fájl alapértelmezés szerint írásvédett, ezért a szerkesztéshez emelt szintű engedélyekre lehet szükség.
+A démon a következő konfigurációs fájllal konfigurálható: `/etc/iotedge/config.yaml` . A fájl alapértelmezés szerint írásvédett, ezért a szerkesztéshez emelt szintű engedélyekre lehet szükség.
 
 Egy IoT Edge eszköz manuálisan is kiépíthető a IoT Hub által biztosított eszköz-kapcsolati karakterlánc használatával. Vagy az eszköz kiépítési szolgáltatásával automatikusan kiépítheti az eszközöket, ami hasznos lehet, ha sok eszközt kell kiépíteni. A kiépítési döntéstől függően válassza ki a megfelelő telepítési parancsfájlt.
 
@@ -186,7 +152,7 @@ provisioning:
   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
 ```
 
-A vágólap tartalmának a Nanoba `Shift+Right Click` vagy `Shift+Insert`a sajtóba való beillesztéséhez.
+A vágólap tartalmának a Nanoba vagy a sajtóba való beillesztéséhez `Shift+Right Click` `Shift+Insert` .
 
 Mentse és zárja be a fájlt.
 
@@ -200,7 +166,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>2. lehetőség: automatikus kiépítés
 
-IoT Edge eszközök automatikusan üzembe helyezhetők az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)használatával. A IoT Edge jelenleg két igazolási mechanizmust támogat az automatikus kiépítés használatakor, de a hardverre vonatkozó követelmények befolyásolhatják a választásait. A málna PI-eszközök például nem rendelkeznek alapértelmezett platformmegbízhatósági modul (TPM) csiptel. További információkért tekintse át a következő cikkeket:
+IoT Edge eszközök automatikusan üzembe helyezhetők az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)használatával. A IoT Edge jelenleg három igazolási mechanizmust támogat az automatikus kiépítés használatakor, de a hardverre vonatkozó követelmények befolyásolhatják a választásait. A málna PI-eszközök például nem rendelkeznek alapértelmezett platformmegbízhatósági modul (TPM) csiptel. További információért tekintse át a következő cikkeket:
 
 * [Virtuális TPM-sel rendelkező IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű virtuális GÉPEN](how-to-auto-provision-simulated-device-linux.md)
 * [IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával](how-to-auto-provision-x509-certs.md)
@@ -258,7 +224,7 @@ provisioning:
     symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-A vágólap tartalmának a Nanoba `Shift+Right Click` vagy `Shift+Insert`a sajtóba való beillesztéséhez.
+A vágólap tartalmának a Nanoba vagy a sajtóba való beillesztéséhez `Shift+Right Click` `Shift+Insert` .
 
 Mentse és zárja be a fájlt. `CTRL + X`, `Y`, `Enter`
 
@@ -302,7 +268,7 @@ A IoT Edge telepítését követően az eszközön az egyetlen modulnak kell **e
 
 ## <a name="tips-and-troubleshooting"></a>Tippek és hibaelhárítás
 
-Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. A futtatókörnyezet telepítése után jelentkezzen ki a gépről, és jelentkezzen be ismét az engedélyek automatikus frissítéséhez. Addig is használja `iotedge` a **sudo** -t a parancsok előtt.
+Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. A futtatókörnyezet telepítése után jelentkezzen ki a gépről, és jelentkezzen be ismét az engedélyek automatikus frissítéséhez. Addig is használja a **sudo** -t a `iotedge` parancsok előtt.
 
 Az erőforrás által korlátozott eszközök esetében erősen ajánlott a *OptimizeForPerformance* környezeti változót *hamis* értékre állítani a [hibaelhárítási útmutató](troubleshoot.md)utasításai szerint.
 
@@ -318,7 +284,55 @@ Számos beágyazott eszköz gyártója olyan eszközöket biztosít, amelyek egy
    ./check-config.sh
    ```
 
-Ez a parancs egy részletes kimenetet tartalmaz, amely a Moby Runtime által használt kernel-funkciók állapotát tartalmazza. Győződjön meg arról, hogy a és `Generally Necessary` `Network Drivers` a alá tartozó összes elem engedélyezve van, hogy a kernel teljes mértékben kompatibilis legyen a Moby Runtime szolgáltatással.  Ha azonosította a hiányzó funkciókat, engedélyezze őket a kernel forrásból való újraépítésével, majd a megfelelő kernel. config fájlban való felvételhez kapcsolódó modulok kiválasztásával.  Hasonlóképpen, ha olyan kernel-konfigurációs generátort használ `defconfig` , `menuconfig`mint a vagy a, megkeresheti és engedélyezheti a megfelelő szolgáltatásokat, és ennek megfelelően újjáépítheti a kernelt.  Miután telepítette az újonnan módosított kernelt, futtassa újra a bejelentkezést ellenőrző parancsfájlt annak ellenőrzéséhez, hogy az összes szükséges funkció engedélyezve lett-e.
+Ez a parancs egy részletes kimenetet tartalmaz, amely a Moby Runtime által használt kernel-funkciók állapotát tartalmazza. Győződjön meg arról, hogy a és a alá tartozó összes elem engedélyezve van, hogy `Generally Necessary` `Network Drivers` a kernel teljes mértékben kompatibilis legyen a Moby Runtime szolgáltatással.  Ha azonosította a hiányzó funkciókat, engedélyezze őket a kernel forrásból való újraépítésével, majd a megfelelő kernel. config fájlban való felvételhez kapcsolódó modulok kiválasztásával.  Hasonlóképpen, ha olyan kernel-konfigurációs generátort használ `defconfig` , mint a vagy a `menuconfig` , megkeresheti és engedélyezheti a megfelelő szolgáltatásokat, és ennek megfelelően újjáépítheti a kernelt.  Miután telepítette az újonnan módosított kernelt, futtassa újra a bejelentkezést ellenőrző parancsfájlt annak ellenőrzéséhez, hogy az összes szükséges funkció engedélyezve lett-e.
+
+## <a name="install-runtime-using-release-assets"></a>Futtatókörnyezet telepítése a kiadási eszközök használatával
+
+A jelen szakaszban ismertetett lépéseket követve telepítse a Moby egy adott verzióját és a nem elérhető Azure IoT Edge futtatókörnyezetet `apt-get install` . A Microsoft-csomagok listája csak korlátozott számú közelmúltbeli verziót és azok alverzióit tartalmazza, ezért ezek a lépések mindazok számára szükségesek, akik egy régebbi verziót vagy egy kiadásra jelölt verziót kívánnak telepíteni.
+
+A curl-parancsok használatával közvetlenül a IoT Edge GitHub-tárházból is megcélozhatja az összetevők fájljait. A következő lépésekkel szerezheti be az összes IoT Edge-összetevőt az eszközre: a Moby Engine és a CLI, a libiothsm, végül pedig a IoT Edge biztonsági démon.
+
+1. Navigáljon a [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokhoz, és keresse meg a célként használni kívánt kiadási verziót.
+
+2. Bontsa ki az **eszközök** szakaszt az adott verzióhoz.
+
+3. Előfordulhat, hogy az adott kiadásban nem lehet frissíteni a Moby motort. Ha olyan fájlokat lát, amelyek a **Moby-Engine** és a **Moby-CLI**használatával kezdődnek, az alábbi parancsokkal frissítheti ezeket az összetevőket. Ha nem lát Moby-fájlokat, lépjen vissza a régebbi kiadási eszközökre, amíg meg nem találja a legújabb verziót.
+
+   1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **Moby-Engine-** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
+
+   2. A következő parancsban található másolt hivatkozás használatával telepítse a Moby Engine adott verzióját:
+
+      ```bash
+      curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
+      ```
+
+   3. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **Moby-CLI-** fájlt. A Moby CLI egy választható összetevő, de a fejlesztés során hasznos lehet. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
+
+   4. A következő parancsban található másolt hivatkozás használatával telepítse a Moby CLI adott verzióját:
+
+      ```bash
+      curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
+      ```
+
+4. Minden kiadásnak új fájlokkal kell rendelkeznie a IoT Edge biztonsági démonhoz és a hsmlib. Ezen összetevők frissítéséhez használja az alábbi parancsokat.
+
+   1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **libiothsm-STD-** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
+
+   2. A következő parancsban található másolt hivatkozásra kattintva telepítheti a hsmlib adott verzióját:
+
+      ```bash
+      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+      ```
+
+   3. A IoT Edge eszköz architektúrájának megfelelő **iotedge** -fájl megkeresése. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
+
+   4. A következő parancsban található másolt hivatkozásra kattintva telepítse a IoT Edge biztonsági démon adott verzióját.
+
+      ```bash
+      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+      ```
+
+IoT Edge sikeres telepítése után `/etc/iotedge` a kimenet a konfigurációs fájl frissítését kéri. A Device kiépítés befejezéséhez kövesse a [biztonsági démon konfigurálása](#configure-the-security-daemon) című szakaszban ismertetett lépéseket.
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge eltávolítása
 

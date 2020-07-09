@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026984"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Privát végpontok használata az Azure app Configuration szolgáltatáshoz
 
@@ -24,7 +24,7 @@ Az alkalmazás konfigurációs tárolójához saját végpontok használata lehe
 - Biztonságosan csatlakozhat az alkalmazás-konfigurációs tárolóhoz a helyszíni hálózatokról, amelyek a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) -en vagy a [expressroute](../expressroute/expressroute-locations.md) -en keresztül csatlakoznak a VNet.
 
 > [!NOTE]
-> Az Azure-alkalmazás konfigurációja nyilvános előzetes verzióként kínálja a privát végpontok használatát. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.
+> A Private Endpoint funkció mostantól általánosan elérhető minden régióban, *kivéve* a közép-indiai régiót. A **Közép-indiai** régióban az Azure-alkalmazás konfigurációja nyilvános előzetesként kínálja a privát végpontok használatát. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.
 
 ## <a name="conceptual-overview"></a>Fogalmi áttekintés
 
@@ -44,22 +44,18 @@ Privát végpont létrehozásakor meg kell adnia azt az alkalmazás-konfiguráci
 
 ### <a name="connecting-to-private-endpoints"></a>Csatlakozás privát végpontokhoz
 
-Az Azure DNS-feloldásra támaszkodik, hogy a VNet és a konfigurációs tároló közötti kapcsolatokat egy privát kapcsolaton keresztül irányítsa. A Azure Portal található kapcsolati karakterláncok gyorsan megtalálhatók az alkalmazás konfigurációs tárolójának kiválasztásával, majd a **Beállítások** > **hozzáférési kulcsok lehetőség**kiválasztásával.  
+Az Azure DNS-feloldásra támaszkodik, hogy a VNet és a konfigurációs tároló közötti kapcsolatokat egy privát kapcsolaton keresztül irányítsa. A Azure Portal található kapcsolati karakterláncok gyorsan megtalálhatók az alkalmazás konfigurációs tárolójának kiválasztásával, majd a **Beállítások**  >  **hozzáférési kulcsok lehetőség**kiválasztásával.  
 
 > [!IMPORTANT]
-> Ugyanazzal a kapcsolati karakterlánccal csatlakozhat az alkalmazás konfigurációs tárolójához privát végpontok használatával, ahogyan azt egy nyilvános végponthoz kívánja használni. Ne kapcsolódjon a Storage-fiókhoz `privatelink` az altartomány URL-címének használatával.
+> Ugyanazzal a kapcsolati karakterlánccal csatlakozhat az alkalmazás konfigurációs tárolójához privát végpontok használatával, ahogyan azt egy nyilvános végponthoz kívánja használni. Ne kapcsolódjon az áruházhoz az `privatelink` altartomány URL-címének használatával.
 
 ## <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
 
-Amikor létrehoz egy privát végpontot, a konfigurációs tárolóhoz tartozó DNS CNAME-erőforrásrekord az előtaggal `privatelink`rendelkező altartományban található aliasra frissül. Az Azure emellett létrehoz egy [saját DNS-zónát](../dns/private-dns-overview.md) is, amely az `privatelink` altartományhoz tartozik, és a DNS a saját végpontokhoz tartozó erőforrásrekordokat is.
+Amikor létrehoz egy privát végpontot, a konfigurációs tárolóhoz tartozó DNS CNAME-erőforrásrekord az előtaggal rendelkező altartományban található aliasra frissül `privatelink` . Az Azure emellett létrehoz egy [saját DNS-zónát](../dns/private-dns-overview.md) is, amely az `privatelink` altartományhoz tartozik, és a DNS a saját végpontokhoz tartozó erőforrásrekordokat is.
 
-Ha a végponti URL-címet a VNet kívülről oldja fel, az a tároló nyilvános végpontját oldja fel. Ha a privát végpontot futtató VNet megoldódik, a végpont URL-címe feloldódik a magánhálózati végpontra.
+Amikor a végponti URL-címet a privát végpontot futtató VNet oldja fel, a rendszer az áruház privát végpontját oldja fel. Ha a VNet kívülről oldódik meg, a végpont URL-címe feloldódik a nyilvános végpontra. Privát végpont létrehozásakor a nyilvános végpont le van tiltva.
 
-A VNet kívüli ügyfelek hozzáférését a Azure Firewall szolgáltatás használatával szabályozhatja a nyilvános végponton keresztül.
-
-Ez a megközelítés lehetővé teszi, hogy az áruházhoz **ugyanazt a kapcsolati karakterláncot használja** , mint a privát végpontokat üzemeltető VNet és a VNet kívüli ügyfelek számára.
-
-Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek kell lenniük a szolgáltatási végpont teljes tartománynevének (FQDN) feloldására a magánhálózati végpont IP-címére. Konfigurálja a DNS-kiszolgálót úgy, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja `AppConfigInstanceA.privatelink.azconfig.io` a rekordokat a saját végpont IP-címével.
+Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek kell lenniük a szolgáltatási végpont teljes tartománynevének (FQDN) feloldására a magánhálózati végpont IP-címére. Konfigurálja a DNS-kiszolgálót úgy, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja a rekordokat a `AppConfigInstanceA.privatelink.azconfig.io` saját végpont IP-címével.
 
 > [!TIP]
 > Egyéni vagy helyszíni DNS-kiszolgáló használatakor a DNS-kiszolgálót úgy kell konfigurálni, hogy az altartományban lévő tároló nevét `privatelink` a magánhálózati végpont IP-címére oldja fel. Ezt úgy teheti meg, hogy delegálja az `privatelink` altartományt a VNet magánhálózati DNS-zónájához, vagy konfigurálja a DNS-zónát a DNS-kiszolgálón, és hozzáadja a DNS-rekordot.

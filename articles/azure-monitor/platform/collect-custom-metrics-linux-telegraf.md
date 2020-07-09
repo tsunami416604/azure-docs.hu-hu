@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186441"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
@@ -52,7 +52,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     ![Virtuálisgép-méret távíró-ügynök áttekintése](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. A **hálózati** > **hálózati biztonsági csoport** >  **Beállítások** lapján**válassza a nyilvános bejövő portok lehetőséget**, majd válassza a **http** és az **SSH (22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra. 
+1. A **Settings** **hálózati**  >  **hálózati biztonsági csoport**beállítások lapján  >  **válassza a nyilvános bejövő portok lehetőséget**, majd válassza a **http** és az **SSH (22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra. 
 
 1. Az Összefoglalás lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez. 
 
@@ -111,7 +111,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>A saját Graf metrikáinak ábrázolása a Azure Portalban 
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). 
 
 1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
 
@@ -131,7 +131,7 @@ Az előző útmutató arról nyújt tájékoztatást, hogyan konfigurálható a 
 
 Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üzembe helyezéséhez használt virtuális géppel kapcsolatos metrikák A Grafi ügynök más erőforrásokhoz tartozó mérőszámok gyűjtőként és továbbítóként is használható. Ha szeretné megtudni, hogyan konfigurálhatja az ügynököt más Azure-erőforrások metrikáinak kibocsátására, tekintse meg a [Azure monitor egyéni metrika kimenete a következőben](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md):.  
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
 

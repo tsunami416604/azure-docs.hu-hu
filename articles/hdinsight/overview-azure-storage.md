@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fc0af331dc6cb604847be9173c836e0b46ca40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851373"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Az Azure Storage áttekintése a HDInsight-ben
 
@@ -31,11 +31,11 @@ Az alábbi ábra az Azure Storage HDInsight architektúrájának absztrakt néze
 
 A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csatlakozó elosztott fájlrendszerhez. Ez a fájlrendszer a teljes URI használatával érhető el, például:
 
-    hdfs://<namenodehost>/<path>
+`hdfs://<namenodehost>/<path>`
 
 A HDInsight-on keresztül az Azure Storage-ban is elérhetők az adattárolók. A szintaxis a következő:
 
-    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 HDInsight-fürtökkel rendelkező Azure Storage-fiók használata esetén vegye figyelembe a következő alapelveket:
 
@@ -48,11 +48,11 @@ HDInsight-fürtökkel rendelkező Azure Storage-fiók használata esetén vegye 
 
 * A **fürthöz nem kapcsolódó Storage-fiókokban lévő privát tárolók:** A tárolóban lévő Blobok csak akkor érhetők el, ha a Webhcaten-feladatok elküldésekor a Storage-fiókot definiálja.
 
-A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. Alapértelmezés szerint a HDInsight a Core-site. xml fájlban meghatározott tárolási fiókokat használja. Ezt a beállítást az [Apache Ambari](./hdinsight-hadoop-manage-ambari.md)használatával lehet módosítani.
+A létrehozási folyamat során meghatározott tárfiókok és a kulcsaik a %HADOOP_HOME%/conf/core-site.xml fájlban találhatók a fürtcsomópontokon. A HDInsight alapértelmezés szerint a core-site.xml fájlban meghatározott tárolási fiókokat használja. Ezt a beállítást az [Apache Ambari](./hdinsight-hadoop-manage-ambari.md)használatával lehet módosítani.
 
 Több Webhcaten-feladat, beleértve a Apache Hive. A MapReduce, a Apache Hadoop streaming és az Apache Pig szolgáltatásban a Storage-fiókok és-metaadatok leírását is elvégezheti. (Ez a szempont jelenleg a Storage-fiókkal rendelkező Pig esetében igaz, a metaadatok esetében azonban nem.) További információ: [HDInsight-fürt használata másodlagos Storage-fiókokkal és-metaadattárak](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-A blobok a strukturált és strukturálatlan adatokhoz használhatók. A blob-tárolók az értékeket kulcs/érték párokként tárolják, és nem rendelkeznek címtár-hierarchiával. A kulcs neve azonban tartalmazhat perjel karaktert (/) úgy, hogy úgy jelenjen meg, mintha egy fájl egy könyvtár struktúráján belül tárolódik. A blob kulcsa például lehet `input/log1.txt`. Nem létezik `input` tényleges könyvtár, de a kulcs neve perjel karaktere miatt a kulcs egy fájl elérési útjára hasonlít.
+A blobok a strukturált és strukturálatlan adatokhoz használhatók. A blob-tárolók az értékeket kulcs/érték párokként tárolják, és nem rendelkeznek címtár-hierarchiával. A kulcs neve azonban tartalmazhat perjel karaktert (/) úgy, hogy úgy jelenjen meg, mintha egy fájl egy könyvtár struktúráján belül tárolódik. A blob kulcsa például lehet `input/log1.txt` . Nem `input` létezik tényleges könyvtár, de a kulcs neve perjel karaktere miatt a kulcs egy fájl elérési útjára hasonlít.
 
 ## <a name="benefits-of-azure-storage"></a>Az Azure Storage előnyei
 
@@ -73,7 +73,7 @@ Ha a HDFS helyett az Azure Storage-ban tárolja az adattárolást, számos előn
 Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak létre, amelyeket nem szeretne az Azure Storage-ban tárolni. Ebben az esetben dönthet úgy, hogy az adattárolást a helyi HDFS tárolja. A HDInsight az elosztott fájlrendszert használja több ilyen köztes eredményhez a kaptár-feladatokban és más folyamatokban.
 
 > [!NOTE]  
-> A legtöbb HDFS-parancs (például `ls` `copyFromLocal`,, és `mkdir`) a várt módon működik az Azure Storage-ban. Az Azure Storage-ban csak a natív HDFS-implementációra (azaz a DFS-re) `fschk` `dfsadmin`vonatkozó parancsok láthatók.
+> A legtöbb HDFS-parancs (például,, `ls` `copyFromLocal` és `mkdir` ) a várt módon működik az Azure Storage-ban. Az Azure Storage-ban csak a natív HDFS-implementációra (azaz a DFS-re) vonatkozó parancsok láthatók `fschk` `dfsadmin` .
 
 ## <a name="next-steps"></a>További lépések
 

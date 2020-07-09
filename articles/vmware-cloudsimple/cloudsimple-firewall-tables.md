@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025044"
 ---
 # <a name="firewall-tables-overview"></a>A tűzfal táblái – áttekintés
@@ -25,10 +24,10 @@ A következő táblázat a tűzfalszabály paramétereit ismerteti.
 
 | Tulajdonság | Részletek |
 | ---------| --------|
-| **Név** | A tűzfalszabály egyedi azonosítására szolgáló név. |
-| **Prioritású** | 100 és 4096 közötti szám, amelynek a legmagasabb prioritása a 100. A szabályok feldolgozása prioritási sorrendben történik. Ha a forgalom egy szabály egyezését tapasztalja, a szabályok feldolgozása leáll. Ennek eredményeképpen az alacsonyabb prioritású szabályok, amelyek ugyanazokkal az attribútumokkal rendelkeznek, mint a magasabb prioritású szabályok, nem kerülnek feldolgozásra.  Ügyeljen az ütköző szabályok elkerülésére. |
+| **Name (Név)** | A tűzfalszabály egyedi azonosítására szolgáló név. |
+| **Prioritás** | 100 és 4096 közötti szám, amelynek a legmagasabb prioritása a 100. A szabályok feldolgozása prioritási sorrendben történik. Ha a forgalom egy szabály egyezését tapasztalja, a szabályok feldolgozása leáll. Ennek eredményeképpen az alacsonyabb prioritású szabályok, amelyek ugyanazokkal az attribútumokkal rendelkeznek, mint a magasabb prioritású szabályok, nem kerülnek feldolgozásra.  Ügyeljen az ütköző szabályok elkerülésére. |
 | **Állapot követése** | A nyomon követés lehet állapot nélküli (privát felhő, Internet vagy VPN) vagy állapot-nyilvántartó (nyilvános IP).  |
-| **Protocol (Protokoll)** | A lehetőségek közé tartoznak a következők: any, TCP vagy UDP. Ha az ICMP-t igényli, használja a bármelyiket. |
+| **Protokoll** | A lehetőségek közé tartoznak a következők: any, TCP vagy UDP. Ha az ICMP-t igényli, használja a bármelyiket. |
 | **Irányba** | Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik. |
 | **Művelet** | A szabályban definiált forgalom típusának engedélyezése vagy letiltása. |
 | **Forrás** | IP-cím, osztály nélküli tartományok közötti útválasztási (CIDR) blokk (10.0.0.0/24, például) vagy bármely.  Egy tartomány, egy szolgáltatási címke vagy egy alkalmazás biztonsági csoport megadásával kevesebb biztonsági szabályt hozhat létre. |
@@ -53,7 +52,7 @@ A forgalom fordított irányú továbbításához további szabályokra lehet sz
 
 A következő alapértelmezett szabályok jönnek létre minden tűzfal-táblában.
 
-|Prioritás|Name (Név)|Állapot követése|Irány|Forgalom típusa|Protocol (Protokoll)|Forrás|Forrásport|Cél|Célport|Műveletek|
+|Prioritás|Name|Állapot követése|Irány|Forgalom típusa|Protokoll|Forrás|Forrásport|Cél|Célport|Műveletek|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|a-all-to-Internet engedélyezése|Állapotalapú alkalmazások és szolgáltatások|Kimenő|Nyilvános IP-cím vagy internetes forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Engedélyezés|
 |65001|internetről történő megtagadás|Állapotalapú alkalmazások és szolgáltatások|Bejövő|Nyilvános IP-cím vagy internetes forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Megtagadás|

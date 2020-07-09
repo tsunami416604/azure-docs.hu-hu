@@ -3,20 +3,20 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a felhőalkalmazás-kezelés és az egyszeri bejelentkezés?
+    - name: Mi az alkalmazáskezelés?
       href: what-is-application-management.md
-    - name: Mi a helyszíni alkalmazások alkalmazásproxyja?
-      href: what-is-application-proxy.md
-    - name: Gyakori alkalmazáskezelési forgatókönyvek
-      href: common-scenarios.md
-    - name: Mit jelent az alkalmazások üzembe helyezése?
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Rövid útmutatók
   items:
-    - name: Felhőalkalmazás hozzáadása a katalógusból
-      href: add-application-portal.md
-    - name: Vállalati alkalmazások megtekintése
+    - name: Az alkalmazásai megtekintése
       href: view-applications-portal.md
+    - name: Alkalmazás felvétele
+      href: add-application-portal.md
+    - name: Alkalmazás konfigurálása
+      href: add-application-portal-configure.md
+    - name: Egyszeri bejelentkezés beállítása
+      href: add-application-portal-setup-sso.md
+    - name: Alkalmazás törlése
+      href: delete-application-portal.md
 - name: Oktatóanyagok
   items:
     - name: 'Integrált katalógusalkalmazások (pl. ServiceNow, Salesforce, Dropbox)'
@@ -32,6 +32,8 @@
   items:
     - name: Ajánlott alkalmazáskezelési eljárások
       href: application-management-fundamentals.md
+    - name: Alkalmazáskezelések gyakori forgatókönyvei
+      href: common-scenarios.md
     - name: Felhőalkalmazások és egyszeri bejelentkezés
       items:
         - name: Felhőalkalmazás-integráció megtervezése
@@ -80,6 +82,8 @@
       items:
         - name: Alkalmazásproxy
           href: application-proxy.md
+        - name: Mi a helyszíni alkalmazások alkalmazásproxyja?
+          href: what-is-application-proxy.md
         - name: Alkalmazásproxy üzembe helyezésének megtervezése
           href: application-proxy-deployment-plan.md
         - name: Összekötők
@@ -101,12 +105,8 @@
       items:
         - name: Felhőalkalmazás hozzáadása
           items:
-            - name: Katalógusalkalmazás hozzáadása
-              href: add-gallery-app.md
             - name: Nem katalógusbeli alkalmazás hozzáadása
               href: add-non-gallery-app.md
-            - name: Alkalmazás nevének vagy emblémájának módosítása
-              href: change-name-or-logo-portal.md
         - name: Egyszeri bejelentkezés konfigurálása
           items:
             - name: SAML-alapú egyszeri bejelentkezés konfigurálása
@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Az alkalmazáslap hivatkozásai nem működnek
               href: application-proxy-page-links-broken-problem.md
-            - name: Milyen portokat nyissak meg az alkalmazáshoz?
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Az alkalmazás összekötőcsoportjában nem volt működő összekötő
               href: application-proxy-connectivity-no-working-connector.md
             - name: Konfigurálás a felügyeleti portálon

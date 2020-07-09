@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c57187ae15e5f15a601edbc74921b3c879abe715
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800675"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050265"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,6 +27,10 @@ Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telep
 3. Nyissa meg a `spx-zips` letöltésből kinyert gyökérkönyvtárat, és bontsa ki a szükséges alkönyvtárat ( `spx-net471` a .NET-keretrendszer 4,7-es verziójához, vagy a `spx-netcore-win-x64` .net Core 3,0 x64-es processzoron).
 
 A parancssorban módosítsa a könyvtárat erre a helyre, majd írja be a parancsot a `spx` beszédfelismerési parancssori felület súgójának megjelenítéséhez.
+
+> [!NOTE]
+> A PowerShell nem vizsgálja a helyi könyvtárat a parancs keresésekor. A PowerShellben váltson a könyvtár helyére, `spx` és hívja meg az eszközt a következő beírásával: `.\spx` .
+> Ha hozzáadja ezt a könyvtárat az elérési úthoz, a PowerShell és a Windows-parancssor `spx` bármely könyvtárból megkereshető, az `.\` előtagot nem beleértve.
 
 #### <a name="linux-install"></a>[Linux-telepítés](#tab/linuxinstall)
 

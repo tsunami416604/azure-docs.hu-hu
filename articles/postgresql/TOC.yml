@@ -15,6 +15,8 @@
           href: quickstart-create-server-database-azure-cli.md
         - name: DB létrehozása – Azure CLI „up” parancsa
           href: quickstart-create-server-up-azure-cli.md
+        - name: Adatbázis létrehozása – Azure PowerShell
+          href: quickstart-create-postgresql-server-database-using-azure-powershell.md
         - name: Adatbázis létrehozása – ARM-sablon
           href: quickstart-create-postgresql-server-database-using-arm-template.md
           displayName: deploy azure resource manager template
@@ -48,6 +50,8 @@
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
         - name: 2 – Webapptervezés – Python
           href: ../app-service/containers/tutorial-python-postgresql-app.md
           maintainContext: true
@@ -108,6 +112,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Adattitkosítás
               href: concepts-data-encryption-postgresql.md
+            - name: Infrastruktúra kettős titkosítása
+              href: concepts-infrastructure-double-encryption.md
             - name: Biztonsági alapkonfiguráció
               href: security-baseline.md
         - name: Az üzletmenet folytonossága
@@ -157,6 +163,10 @@
               href: concepts-read-replicas.md
             - name: Logikai dekódolás
               href: concepts-logical.md
+        - name: Áthelyezés régiók között
+          items:
+            - name: Azure Portal
+              href: howto-move-regions-portal.md
     - name: Rugalmas skálázás (Citus)
       items:
         - name: Csomópontok
@@ -189,6 +199,8 @@
           items:
             - name: Beállítási lehetőségek
               href: concepts-hyperscale-configuration-options.md
+            - name: Előre fizetés fenntartott kapacitásért
+              href: concepts-hyperscale-reserved-pricing.md
 - name: Útmutatók
   items:
     - name: Egyetlen kiszolgáló
@@ -227,6 +239,8 @@
               href: howto-restore-server-portal.md
             - name: Azure CLI
               href: howto-restore-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restore-server-powershell.md
         - name: Adatbázisok migrálása
           items:
             - name: Memóriakép és visszaállítás
@@ -235,18 +249,26 @@
               href: howto-migrate-using-export-and-import.md
             - name: Migrálás minimális állásidővel
               href: howto-migrate-online.md
+        - name: Alkalmazások csatlakoztatása
+          items:
+            - name: TLS konfigurálása
+              href: howto-tls-configurations.md
         - name: Kiszolgáló paramétereinek konfigurálása
           items:
             - name: Azure Portal
               href: howto-configure-server-parameters-using-portal.md
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
         - name: Tárterület automatikus növelése
           items:
             - name: Azure Portal
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
         - name: Hozzáférési naplók
           items:
             - name: Azure Portal
@@ -287,12 +309,18 @@
               href: howto-data-encryption-cli.md
             - name: Adattitkosítás ellenőrzése
               href: howto-data-encryption-validation.md
+        - name: Infrastruktúra kettős titkosítása
+          items:
+            - name: Infrastruktúra kettős titkosításának konfigurálása
+              href: howto-double-encryption.md
         - name: Kiszolgáló újraindítása
           items:
             - name: Azure Portal
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
         - name: Nyilvános hálózati hozzáférés megtagadása
           items:
             - name: Azure Portal
@@ -303,6 +331,8 @@
               href: howto-read-replicas-portal.md
             - name: Olvasási replikák kezelése – Azure CLI és REST API
               href: howto-read-replicas-cli.md
+            - name: Olvasási replikák kezelése – Azure PowerShell
+              href: howto-read-replicas-powershell.md
     - name: Rugalmas skálázás (Citus)
       items:
         - name: Felhasználók létrehozása

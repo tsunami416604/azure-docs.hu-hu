@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419374"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504865"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Gyors útmutató: adatfeldolgozó és-folyamat létrehozása a .NET SDK használatával
 
@@ -47,9 +47,9 @@ Töltse le és telepítse az [Azure .NET SDK](https://azure.microsoft.com/downlo
 
 A How to: című részből megtudhatja, *hogyan hozhat létre az erőforrásokhoz hozzáférő Azure ad-alkalmazást és egyszerű szolgáltatást*, a feladatok végrehajtásához kövesse az alábbi utasításokat:
 
-1. A [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)területen hozzon létre egy alkalmazást, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
-2. A beléptetési [értékek beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)területen szerezze be az **alkalmazás azonosítóját** és a **bérlő azonosítóját**, és jegyezze fel ezeket az értékeket, amelyeket az oktatóanyag későbbi részében használ. 
-3. A [tanúsítványok és titkok](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)területen szerezze be a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet az oktatóanyag későbbi részében használ.
+1. A [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)területen hozzon létre egy alkalmazást, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
+2. A beléptetési [értékek beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)területen szerezze be az **alkalmazás azonosítóját** és a **bérlő azonosítóját**, és jegyezze fel ezeket az értékeket, amelyeket az oktatóanyag későbbi részében használ. 
+3. A [tanúsítványok és titkok](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)területen szerezze be a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet az oktatóanyag későbbi részében használ.
 4. Az [alkalmazás szerepkörhöz való hozzárendeléséhez](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás létre tudja hozni az adat-előállítókat az előfizetésben.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
@@ -57,13 +57,13 @@ A How to: című részből megtudhatja, *hogyan hozhat létre az erőforrásokho
 Következő lépésként hozzon létre egy C# .NET-konzol alkalmazást a Visual Studióban:
 
 1. Indítsa el a **Visual Studiót**.
-2. A Start ablakban válassza az **új Project** > **Console-alkalmazás létrehozása (.NET-keretrendszer)** lehetőséget. A lépések elvégzéséhez a .NET 4.5.2-es vagy újabb verziója szükséges.
+2. A Start ablakban válassza az **új Project**  >  **Console-alkalmazás létrehozása (.NET-keretrendszer)** lehetőséget. A lépések elvégzéséhez a .NET 4.5.2-es vagy újabb verziója szükséges.
 3. A **Project Name (projekt neve**) mezőben adja meg a **ADFv2QuickStart**.
 4. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
+1. Válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
 2. A **Package Manager konzol** ablaktábláján futtassa a következő parancsokat a csomagok telepítéséhez. További információ: [Microsoft. Azure. Management. DataFactory nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
@@ -430,7 +430,7 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
 
-A folyamat automatikusan létrehozza a kimeneti mappát a **adftutorial** blob-tárolóban. Ezután átmásolja az **EMP. txt** fájlt a bemeneti mappából a kimeneti mappába. 
+A folyamat automatikusan létrehozza a kimeneti mappát a **adftutorial** blob-tárolóban. Ezután átmásolja a **emp.txt** fájlt a bemeneti mappából a kimeneti mappába. 
 
 1. A Azure Portal az **adftutorial** -tároló lapon, amelyet a fenti [blob-tárolóhoz tartozó bemeneti mappa és fájl hozzáadása](#add-an-input-folder-and-file-for-the-blob-container) szakaszban állított le, válassza a **frissítés** lehetőséget a kimeneti mappa megtekintéséhez. 
 2. A mappák listájában válassza a **kimenet**elemet.
@@ -445,6 +445,6 @@ Console.WriteLine("Deleting the data factory");
 client.Factories.Delete(resourceGroup, dataFactoryName);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md). 

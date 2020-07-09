@@ -7,12 +7,11 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84323671"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
 Ha egy [naplóbeli riasztást hoz létre az Azure-ban](alerts-log.md), akkor beállíthatja, hogy a [műveleti csoportok használatával](action-groups.md) egy vagy több műveletet végezzen. Ez a cikk az elérhető különböző webhook-műveleteket ismerteti, és bemutatja, hogyan konfigurálhat egyéni JSON-alapú webhookot.
@@ -37,26 +36,30 @@ A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok sz�
 A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmaznak, amelyet a külső szolgáltatásnak küldenek. Alapértelmezés szerint a hasznos adatok tartalmazzák az alábbi táblázatban szereplő értékeket. Dönthet úgy, hogy lecseréli ezt a hasznos adatot egy saját egyéni felhasználóval. Ebben az esetben használja az egyes paraméterekhez tartozó táblázatban szereplő változókat, hogy az egyéni adattartalomban szereplő értékeket is tartalmazzák.
 
 
-| Paraméter | Változó | Leírás |
+| Paraméter | Változó | Description |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |A riasztási szabály neve. |
 | *Súlyosság* |#severity |A kilőtt napló riasztásának súlyossági értéke. |
 | *AlertThresholdOperator* |#thresholdoperator |A riasztási szabály küszöbértékének operátora, amely nagyobb vagy kisebb, mint. |
 | *AlertThresholdValue* |#thresholdvalue |A riasztási szabály küszöbértéke. |
 | *LinkToSearchResults* |#linktosearchresults |Az Analytics-portálra mutató hivatkozás, amely a riasztást létrehozó lekérdezés rekordjait adja vissza. |
+| *LinkToSearchResultsAPI* |#linktosearchresultsapi |Az Analytics API-ra mutató hivatkozás, amely a riasztást létrehozó lekérdezés rekordjait adja vissza. |
+| *LinkToFilteredSearchResultsUI* |#linktofilteredsearchresultsui |Az elemzési portálra mutató hivatkozás, amely a riasztást létrehozó dimenzió érték kombinációk alapján szűrt rekordokat adja vissza. |
+| *LinkToFilteredSearchResultsAPI* |#linktofilteredsearchresultsapi |Az Analytics API-ra mutató hivatkozás, amely a riasztást létrehozó dimenzió érték kombinációk alapján szűrt rekordokat adja vissza. |
 | *ResultCount* |#searchresultcount |A keresési eredményekben szereplő rekordok száma. |
 | *Keresési időköz befejezési időpontja* |#searchintervalendtimeutc |A lekérdezés befejezési időpontja UTC szerint, hh/nn/éééé óó: PP: SS AM/du formátumban. |
 | *Keresési időköz* |#searchinterval |A riasztási szabály időablaka, a HH: PP: mm formátumban. |
 | *Keresési időköz kezdő időpont* |#searchintervalstarttimeutc |A lekérdezés kezdési időpontja UTC formátumban, hh/nn/éééé óó: PP: SS AM/du formátumban. 
 | *SearchQuery* |#searchquery |A riasztási szabály által használt napló keresési lekérdezése. |
-| *SearchResults* |"IncludeSearchResults": igaz|A lekérdezés által visszaadott, JSON-táblázatként visszaadott rekordok, amelyek az első 1 000-rekordra korlátozódnak, ha a "IncludeSearchResults": true (igaz) értéket adja hozzá egy egyéni JSON webhook-definícióban legfelső szintű tulajdonságként. |
+| *SearchResults* |"IncludeSearchResults": igaz|A lekérdezés által visszaadott rekordok JSON-táblázatként, az első 1 000-rekordokra korlátozódik. "IncludeSearchResults": az igaz érték egy egyéni JSON webhook-definícióban van hozzáadva legfelső szintű tulajdonságként. |
+| *Méretek* |"IncludeDimensions": igaz|Dimenzió érték kombinációk, amelyek a riasztást a JSON-szakaszként váltották ki. "IncludeDimensions": az igaz érték egy egyéni JSON webhook-definícióban van hozzáadva legfelső szintű tulajdonságként. |
 | *Riasztás típusa*| #alerttype | A [metrika mértékének](alerts-unified-log.md#metric-measurement-alert-rules) vagy az [eredmények számának](alerts-unified-log.md#number-of-results-alert-rules)megfelelően konfigurált log riasztási szabály típusa.|
 | *Munkaterület azonosítója* |#workspaceid |A Log Analytics munkaterület azonosítója. |
-| *Alkalmazás azonosítója* |#applicationid |A Application Insights alkalmazás azonosítója. |
+| *Alkalmazásazonosító* |#applicationid |A Application Insights alkalmazás azonosítója. |
 | *Előfizetés azonosítója* |#subscriptionid |A használt Azure-előfizetés azonosítója. 
 
 > [!NOTE]
-> A *LinkToSearchResults* átadja a paramétereket, például a *SearchQuery*, a *keresési időközt*és a *keresési intervallum befejezési idejét* a Azure Portal URL-címében az elemzési szakaszban való megtekintéshez. A Azure Portal egy körülbelül 2 000 karakterből álló URI-mérethatárt tartalmaz. A portál *nem* nyitja meg a riasztásokban megadott hivatkozásokat, ha a paraméterek értéke túllépi a korlátot. Manuálisan is beírhatja a részleteket az eredmények megtekintéséhez az elemzési portálon. A [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy a [log Analytics REST API](/rest/api/loganalytics/) használatával programozott módon is beolvashatja az eredményeket. 
+> A megadott hivatkozások olyan paramétereket adnak át, mint a *SearchQuery*, a *keresési időköz*és a *keresési intervallum befejezési ideje* a Azure Portal vagy API URL-címében.
 
 Például megadhatja a következő egyéni adattartalmat, amely egyetlen, *szöveg*nevű paramétert tartalmaz. A szolgáltatás, amelyhez ez a webhook meghívja ezt a paramétert várja.
 
@@ -88,9 +91,9 @@ A következő minta-adattartalom szabványos webhook-művelethez használható *
 
 ```json
 {
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule",
-    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName": "AcmeRule",
+    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -98,28 +101,56 @@ A következő minta-adattartalom szabványos webhook-művelethez használható *
     "ResultCount": 2,
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
     "Description": "log alert rule",
     "Severity": "Warning",
-    "SearchResult":
+    "AffectedConfigurationItems": [
+        "INC-Gen2Alert"
+    ],
+    "Dimensions": [
         {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
-                        [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
-                        ],
-                    "rows":
-                        [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
-                        ]
+            "name": "Computer",
+            "value": "INC-Gen2Alert"
+        }
+    ],
+    "SearchResult": {
+        "tables": [
+            {
+                "name": "PrimaryResult",
+                "columns": [
+                    {
+                        "name": "$table",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Computer",
+                        "type": "string"
+                    },
+                    {
+                        "name": "TimeGenerated",
+                        "type": "datetime"
                     }
+                ],
+                "rows": [
+                    [
+                        "Fabrikam",
+                        "33446677a",
+                        "2018-02-02T15:03:12.18Z"
+                    ],
+                    [
+                        "Contoso",
+                        "33445566b",
+                        "2018-02-02T15:16:53.932Z"
+                    ]
                 ]
-        },
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+            }
+        ]
+    },
+    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
- }
+}
  ```
 
 > [!NOTE]
@@ -131,39 +162,64 @@ A következő minta-adattartalom egy *Egyéni JSON-beállítás nélküli* szabv
     
 ```json
 {
-    "schemaId":"Microsoft.Insights/LogAlert","data":
-    { 
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule",
-    "SearchQuery":"requests | where resultCode == \"500\"",
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "SearchResult":
-        {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
+    "schemaId": "Microsoft.Insights/LogAlert",
+    "data": {
+        "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+        "AlertRuleName": "AcmeRule",
+        "SearchQuery": "requests | where resultCode == \"500\" | summarize AggregatedValue = Count by bin(Timestamp, 5m), IP",
+        "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+        "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+        "AlertThresholdOperator": "Greater Than",
+        "AlertThresholdValue": 0,
+        "ResultCount": 2,
+        "SearchIntervalInSeconds": 3600,
+        "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToFilteredSearchResultsUI": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "Description": null,
+        "Severity": "3",
+        "Dimensions": [
+            {
+                "name": "IP",
+                "value": "1.1.1.1"
+            }
+        ],
+        "SearchResult": {
+            "tables": [
+                {
+                    "name": "PrimaryResult",
+                    "columns": [
+                        {
+                            "name": "$table",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Timestamp",
+                            "type": "datetime"
+                        }
+                    ],
+                    "rows": [
                         [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
+                            "Fabrikam",
+                            "33446677a",
+                            "2018-02-02T15:03:12.18Z"
                         ],
-                    "rows":
                         [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
+                            "Contoso",
+                            "33445566b",
+                            "2018-02-02T15:16:53.932Z"
                         ]
-                    }
-                ]
+                    ]
+                }
+            ]
         },
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
-    "AlertType": "Number of results"
+        "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+        "AlertType": "Metric measurement"
     }
 }
 ```

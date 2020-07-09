@@ -1,6 +1,6 @@
 ---
 title: Always Encrypted konfigurálása Azure Key Vault használatával
-description: Ebből az oktatóanyagból megtudhatja, hogyan védheti meg a bizalmas adatokat egy adattitkosítással rendelkező Azure SQL Databaseban az SQL Server Management Studio Always Encrypted varázslójával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database adattitkosítással rendelkező adatbázisban az SQL Server Management Studio Always Encrypted varázslójának használatával.
 keywords: adattitkosítás, titkosítási kulcs, Felhőbeli titkosítás
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 8f828d11d5351565c112b7e4b9dccaaef4607056
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 46b899b1891a6759ea2b9501f43c687990198f1f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047698"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078017"
 ---
-# <a name="configure-always-encrypted-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
+# <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebből a cikkből megtudhatja, hogyan védheti meg az adatbázis bizalmas adatait Azure SQL Database vagy Azure SQL felügyelt példányban adattitkosítással az [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett útmutatást is tartalmaz, amely bemutatja, hogyan tárolhatja az egyes titkosítási kulcsokat a Azure Key Vaultban.
+Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database adattitkosítással rendelkező adatbázisban az [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett útmutatást is tartalmaz, amely bemutatja, hogyan tárolhatja az egyes titkosítási kulcsokat a Azure Key Vaultban.
 
 A Always Encrypted egy adattitkosítási technológia, amely segít a kiszolgálón tárolt bizalmas adatok védelme során, az ügyfél és a kiszolgáló közötti mozgás során, és az adatok használatban vannak. Always Encrypted biztosítja, hogy a bizalmas adatok soha ne jelenjenek meg egyszerű szövegként az adatbázis-rendszeren belül. Az adattitkosítás konfigurálása után csak a kulcsokhoz hozzáférő ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges információhoz. Részletes információ: [Always encrypted (adatbázismotor)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -48,7 +49,7 @@ Kövesse a cikkben ismertetett lépéseket, és Ismerje meg, hogyan állíthatja
 
 ## <a name="enable-client-application-access"></a>Ügyfélalkalmazások hozzáférésének engedélyezése
 
-Engedélyeznie kell az ügyfélalkalmazás számára SQL Database vagy SQL felügyelt példány elérését egy Azure Active Directory (HRE) alkalmazás beállításával és az alkalmazás hitelesítéséhez szükséges *alkalmazás-azonosító* és *kulcs* másolásával.
+A Azure Active Directory (Azure AD) alkalmazás beállításával és az alkalmazás hitelesítéséhez szükséges *alkalmazás-azonosító* és *kulcs* másolásával engedélyeznie kell az ügyfélalkalmazás számára, hogy SQL Database az adatbázis eléréséhez.
 
 Az *alkalmazás azonosítójának* és *kulcsának*beszerzéséhez kövesse az [erőforrásokhoz hozzáférő Azure Active Directory alkalmazás és egyszerű szolgáltatás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md)című témakör lépéseit.
 
@@ -88,7 +89,7 @@ Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceG
 $subscriptionName = '<subscriptionName>'
 $userPrincipalName = '<username@domain.com>'
 $applicationId = '<applicationId from AAD application>'
-$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your SQL Database below
+$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your database in Azure SQL Database below
 $location = '<datacenterLocation>'
 $vaultName = '<vaultName>'
 
@@ -103,12 +104,11 @@ az keyvault set-policy --name $vaultName --key-permissions create, get, list, si
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
-* * *
-
+---
 
 ## <a name="connect-with-ssms"></a>Csatlakozás SSMS segítségével
 
-Nyissa meg SQL Server Managed Studio (SSMS) alkalmazást, és kapcsolódjon a kiszolgálóhoz, vagy kezelje az adatbázisával.
+Nyissa meg SQL Server Management Studio (SSMS), és kapcsolódjon a kiszolgálóhoz, vagy kezelje az adatbázisával.
 
 1. Nyissa meg az SSMS-t. (Ugrás a **kapcsolódáshoz**  >  **Adatbázismotor** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, ha az nincs megnyitva.)
 
@@ -592,8 +592,9 @@ Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* param
    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     Most már megtekintheti a titkosított oszlopokban lévő egyszerű szöveges információt.
-     ![Új konzolos alkalmazás](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
+   Most már megtekintheti a titkosított oszlopokban lévő egyszerű szöveges információt.
+   
+   ![Új konzolos alkalmazás](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>További lépések
 

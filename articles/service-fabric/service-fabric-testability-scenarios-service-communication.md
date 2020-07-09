@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465559"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric tesztelési forgatókönyvek: szolgáltatás-kommunikáció
@@ -79,7 +78,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-Ebben a példában azt szeretnénk jelezni `QuorumLossMode` , `QuorumReplicas` hogy az összes replika leállása nélkül szeretnénk kiváltani a kvórum elvesztését. Így az olvasási műveletek továbbra is lehetségesek. Egy olyan forgatókönyv teszteléséhez, amelyben a teljes partíció nem érhető el, ezt a `AllReplicas`kapcsolót állíthatja be.
+Ebben a példában azt szeretnénk jelezni, hogy az `QuorumLossMode` `QuorumReplicas` összes replika leállása nélkül szeretnénk kiváltani a kvórum elvesztését. Így az olvasási műveletek továbbra is lehetségesek. Egy olyan forgatókönyv teszteléséhez, amelyben a teljes partíció nem érhető el, ezt a kapcsolót állíthatja be `AllReplicas` .
 
 ## <a name="next-steps"></a>További lépések
 [További információ a tesztelési műveletekről](service-fabric-testability-actions.md)

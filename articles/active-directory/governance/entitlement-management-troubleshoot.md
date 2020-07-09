@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338182"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
@@ -33,7 +32,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Ha hozzáférési csomagok létrehozásakor vagy megtekintésekor kap hozzáférés-megtagadási üzenetet, és Ön egy katalógus-létrehozó csoport tagja, létre kell [hoznia egy katalógust](entitlement-management-catalog-create.md) az első hozzáférési csomag létrehozása előtt.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 * Az alkalmazások szerepköreit maguk az alkalmazások határozzák meg, a kezelésük pedig az Azure AD-ben történik. Ha egy alkalmazás nem rendelkezik erőforrás-szerepkörökkel, a jogosultságok kezelése a felhasználókat egy **alapértelmezett hozzáférési** szerepkörhöz rendeli.
 
@@ -45,7 +44,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Ha vannak olyan felhasználók, amelyek már hozzá lettek rendelve egy hozzáférési csomaggal felügyelni kívánt erőforráshoz, akkor meg kell győződni arról, hogy a felhasználók megfelelő szabályzat használatával lettek-e hozzárendelve a hozzáférési csomaghoz. Például előfordulhat, hogy a hozzáférési csomagba belefoglalni kívánt csoportban már találhatók felhasználók. Ha az adott csoportban lévő felhasználók folyamatos hozzáférést igényelnek, akkor megfelelő szabályzattal kell rendelkezniük a hozzáférési csomagok esetében, hogy ne veszítsék el a csoporthoz való hozzáférésüket. A hozzáférési csomagok hozzárendeléséhez megkérheti a felhasználókat, hogy kérelmezzék az adott erőforrást tartalmazó hozzáférési csomagot, vagy közvetlenül hozzárendelheti őket a hozzáférési csomaghoz. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
 
-* Az eltávolított csapattagok az Office 365-csoportból is törlődnek. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Egy csoport tagjainak eltávolításakor a rendszer eltávolítja azokat a Microsoft 365 csoportból is. Előfordulhat, hogy a csapat csevegési funkciójából való eltávolítás késleltetve történik meg. További [információ: csoporttagság](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 * Győződjön meg arról, hogy a címtár nincs-e több földrajzi helyes használatra konfigurálva. A jogosultságkezelés jelenleg nem támogatja a Multi-Geo-helyeket a SharePoint Online esetében. A SharePoint Online-webhelyeknek az alapértelmezett földrajzi helyen kell lenniük a jogosultságkezeléssel történő szabályozáshoz. További információkért lásd: [a OneDrive és a SharePoint Online több földrajzi lehetőségei](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 

@@ -7,13 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635125"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -22,6 +21,8 @@ ms.locfileid: "82187851"
 Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure Data Factoryban. Az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az eredményül kapott adatfolyamatok a kibővített Apache Spark-fürtöket használó Azure Data Factory folyamatokon belüli tevékenységekként lesznek végrehajtva. Az adatfolyam-tevékenységek a meglévő Data Factory ütemezési, vezérlési, folyamat-és figyelési képességein keresztül is elvégezhetők.
 
 Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nincs szükség kódolásra. Az adatfolyamatok a végrehajtási fürtön futnak a kibővíthető adatfeldolgozáshoz. Azure Data Factory kezeli az adatáramlási feladatok összes fordítását, az elérési út optimalizálását és végrehajtását.
+
+![Architektúra](media/data-flow/adf-data-flows.png "Architektúra")
 
 ## <a name="getting-started"></a>Első lépések
 

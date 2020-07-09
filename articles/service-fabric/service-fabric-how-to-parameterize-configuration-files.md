@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644630"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Konfigurációs fájlok parametrizálja Service Fabric
@@ -20,7 +19,7 @@ Ez a cikk bemutatja, hogyan parametrizálja egy konfigurációs fájlt a Service
 
 Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalmazás telepítésében található paraméterek használatával.
 
-1. Nyissa meg a * \<MyService> \packageroot\config\settings.XML* fájlt a szolgáltatási projektben.
+1. Nyissa meg a * \<MyService>\PackageRoot\Config\Settings.xml* fájlt a szolgáltatási projektben.
 1. A következő XML-kód hozzáadásával állítsa be a konfigurációs paraméter nevét és értékét, például a gyorsítótár méretét 25-re:
 
    ```xml
@@ -30,15 +29,15 @@ Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalm
    ```
 
 1. Mentse és zárja be a fájlt.
-1. Nyissa meg a * \<MyApplication> \applicationpackageroot\applicationmanifest.XML* fájlt.
-1. A ApplicationManifest. xml fájlban deklaráljon egy paramétert és egy alapértelmezett értéket a `Parameters` elemben.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás nevét (például "MyService").
+1. Nyissa meg a * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
+1. A ApplicationManifest.xml fájlban deklaráljon egy paramétert és egy alapértelmezett értéket a `Parameters` elemben.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás nevét (például "MyService").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. A ApplicationManifest `ServiceManifestImport` . xml fájl szakaszában adjon hozzá egy és `ConfigOverrides` `ConfigOverride` egy elemet, amely a konfigurációs csomagra, a szakaszra és a paraméterre hivatkozik.
+1. A `ServiceManifestImport` ApplicationManifest.xml fájl szakaszában adjon hozzá egy `ConfigOverrides` és egy `ConfigOverride` elemet, amely a konfigurációs csomagra, a szakaszra és a paraméterre hivatkozik.
 
    ```xml
     <ConfigOverrides>

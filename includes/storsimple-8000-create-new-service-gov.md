@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6939553206fe223d8166368d2963f03b32d2629e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179173"
 ---
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 1. A Microsoft-fiók hitelesítő adataival jelentkezzen be a [Microsoft Azure Government portálra](https://portal.azure.us/).
-2. A kormányzati portálon kattintson **+** a piactérre, majd a **minden**megjelenítése lehetőségre. _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Másik lehetőségként a Government Portalon kattintson **+** a, majd a **tárolás**elemre, kattintson a **StorSimple fizikai eszközök sorozata**elemre.
+2. A kormányzati portálon kattintson a **+** piactérre, majd a **minden**megjelenítése lehetőségre. _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Másik lehetőségként a Government Portalon kattintson a, majd a tárolás elemre, **+** kattintson a **Storage** **StorSimple fizikai eszközök sorozata**elemre.
 3. Hajtsa végre a következő lépéseket a **StorSimple-eszközkezelő** paneljén:
    
    1. Adjon egy egyedi **Erőforrásnevet** a szolgáltatásnak. Ez a szolgáltatás azonosítására szolgáló valódi név. A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.

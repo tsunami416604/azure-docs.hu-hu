@@ -7,10 +7,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631467"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS használata az AK-on
@@ -28,7 +28,7 @@ A cikkben szereplő lépések végrehajtásához a következőkre lesz szükség
 
 ## <a name="add-the-openfaas-helm-chart-repo"></a>A OpenFaaS Helm chart-adattár hozzáadása
 
-[https://shell.azure.com](https://shell.azure.com) Nyissa meg a Azure Cloud shellt a böngészőben.
+[https://shell.azure.com](https://shell.azure.com)Nyissa meg a Azure Cloud shellt a böngészőben.
 
 A OpenFaaS megtartja a saját Helm-diagramjait, hogy naprakészek legyenek a legújabb módosításokkal.
 
@@ -58,7 +58,7 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-A titok értékét lekérheti a paranccsal `echo $PASSWORD`.
+A titok értékét lekérheti a paranccsal `echo $PASSWORD` .
 
 Az itt létrehozott jelszót a Helm diagram fogja használni az alapszintű hitelesítés engedélyezéséhez a OpenFaaS-átjárón, amely egy felhőalapú terheléselosztó keresztül elérhető az interneten.
 
@@ -108,7 +108,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-A OpenFaaS rendszer teszteléséhez keresse meg a külső IP-címet a 8080-as `http://52.186.64.52:8080` porton ebben a példában. A rendszer kérni fogja, hogy jelentkezzen be. A jelszó beolvasásához írja `echo $PASSWORD`be a következőt:.
+A OpenFaaS rendszer teszteléséhez keresse meg a külső IP-címet a 8080-as porton `http://52.186.64.52:8080` ebben a példában. A rendszer kérni fogja, hogy jelentkezzen be. A jelszó beolvasásához írja be a következőt: `echo $PASSWORD` .
 
 ![OpenFaaS felhasználói felület](media/container-service-serverless/openfaas.png)
 
@@ -118,7 +118,7 @@ Végül telepítse a OpenFaaS CLI-t. Ez a példa a brewt használta, további le
 brew install faas-cli
 ```
 
-Állítsa `$OPENFAAS_URL` be a fentiekben található nyilvános IP-címet.
+Állítsa be `$OPENFAAS_URL` a fentiekben található nyilvános IP-címet.
 
 Jelentkezzen be az Azure CLI-vel:
 
@@ -162,7 +162,7 @@ Először hozzon létre egy új erőforráscsoportot a Cosmos DB számára.
 az group create --name serverless-backing --location eastus
 ```
 
-Helyezzen üzembe egy CosmosDB-példányt `MongoDB`. A példánynak egyedi névnek kell lennie `openfaas-cosmos` , és frissítenie kell valami egyedire a környezetében.
+Helyezzen üzembe egy CosmosDB-példányt `MongoDB` . A példánynak egyedi névnek kell lennie, és frissítenie `openfaas-cosmos` kell valami egyedire a környezetében.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
@@ -180,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Most töltse ki a Cosmos DBt a tesztelési adatokkal. Hozzon létre egy `plans.json` nevű fájlt, és másolja a következő JSON-t.
+Most töltse ki a Cosmos DBt a tesztelési adatokkal. Hozzon létre egy nevű fájlt `plans.json` , és másolja a következő JSON-t.
 
 ```json
 {
@@ -215,7 +215,7 @@ Kimenet:
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-Futtassa a következő parancsot a függvény létrehozásához. Frissítse az `-g` argumentum értékét a OpenFaaS-átjáró címeként.
+Futtassa a következő parancsot a függvény létrehozásához. Frissítse az argumentum értékét a `-g` OpenFaaS-átjáró címeként.
 
 ```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS

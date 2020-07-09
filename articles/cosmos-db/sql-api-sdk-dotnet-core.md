@@ -8,28 +8,27 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 3738af6349a6f71f6100c601858b39c6329d0295
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: fdc3d4244daa1f3b3d12898d6de42128ae1670ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392046"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-hoz készült Azure Cosmos DB .NET Core SDK: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK v2 az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [.NET Standard](sql-api-sdk-dotnet-standard.md)
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * Rest (/rest/api
+> * [REST erőforrás-szolgáltató](/rest/apier/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -37,11 +36,11 @@ ms.locfileid: "83660398"
 |**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API-dokumentáció**|[.NET API-referenciák dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Példák**|[.NET-kód minták](sql-api-dotnet-samples.md)|
-|**Bevezetés**|[Ismerkedés a Azure Cosmos DB .NET-tel](sql-api-sdk-dotnet.md)|
+|**Első lépések**|[Ismerkedés a Azure Cosmos DB .NET-tel](sql-api-sdk-dotnet.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Jelenleg támogatott keretrendszer**|[.NET Standard 1,6 és .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 
-## <a name="release-notes"></a>Release Notes (Kibocsátási megjegyzések)
+## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 > [!NOTE]
 > Ha .NET Core-t használ, tekintse meg a .net-szabványt megcélzó [.net SDK](sql-api-sdk-dotnet-standard.md)legújabb 3. x verzióját. 

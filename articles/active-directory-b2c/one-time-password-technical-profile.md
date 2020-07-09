@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385722"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
@@ -26,17 +26,17 @@ A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az egyszeri jels
 
 Az egyszeri jelszóval kapcsolatos technikai profil a kód ellenőrzése során hibaüzenetet is jelez. Tervezze meg az integrációt az egyszeri jelszóval egy **érvényesítési technikai profil**használatával. Az érvényesítési technikai profil a kód ellenőrzéséhez az egyszeri jelszó-technikai profilt hívja meg. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
-A **protokoll** elem `Proprietary` **Name** attribútumát be kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure ad B2C által használt protokollkezelő-szerelvény teljesen minősített nevét:
+A **protokoll** elem **Name** attribútumát be kell állítani `Proprietary` . A **kezelő** attribútumnak tartalmaznia kell az Azure ad B2C által használt protokollkezelő-szerelvény teljesen minősített nevét:
 
-```XML
+```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
 Az alábbi példa egy egyszeri jelszóval rendelkező technikai profilt mutat be:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Validate user input verification code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -53,7 +53,7 @@ A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójá
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| azonosító | Igen | Az azonosító annak a felhasználónak a azonosításához, akinek később ellenőriznie kell a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
+| azonosító | Yes | Az azonosító annak a felhasználónak a azonosításához, akinek később ellenőriznie kell a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené az egyszeri jelszavas protokoll szolgáltatójának.
 
@@ -63,7 +63,7 @@ A **OutputClaims** elem az egyszeri jelszavas protokoll szolgáltatója által l
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| otpGenerated | Igen | Az a generált kód, amelynek a munkamenetét Azure AD B2C kezeli. |
+| otpGenerated | Yes | Az a generált kód, amelynek a munkamenetét Azure AD B2C kezeli. |
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
@@ -73,18 +73,18 @@ A kód generálási módjának konfigurálásához a következő beállításoka
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | No | A kód lejárati ideje másodpercben. Minimum: `60`; Maximum: `1200`; Alapértelmezett: `600`. |
+| CodeExpirationInSeconds | No | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . |
 | CodeLength | No | A kód hossza. Az alapértelmezett érték `6`. |
 | CharacterSet | No | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
 | NumRetryAttempts | No | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `GenerateCode`. |
+| Művelet | Yes | A végrehajtandó művelet. Lehetséges érték: `GenerateCode` . |
 | ReuseSameCode | No | Azt határozza meg, hogy egy ismétlődő kód megadása helyett új kód generálását kell-e megadni, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`. |
 
 ### <a name="example"></a>Példa
 
-A következő példa `TechnicalProfile` a kód generálására szolgál:
+A következő példa a `TechnicalProfile` kód generálására szolgál:
 
-```XML
+```xml
 <TechnicalProfile Id="GenerateCode">
   <DisplayName>Generate Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -115,8 +115,8 @@ A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójá
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| azonosító | Igen | Azon felhasználó azonosítására szolgáló azonosító, aki korábban létrehozta a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
-| otpToVerify | Igen | A felhasználó által megadott ellenőrző kód. |
+| azonosító | Yes | Azon felhasználó azonosítására szolgáló azonosító, aki korábban létrehozta a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
+| otpToVerify | Yes | A felhasználó által megadott ellenőrző kód. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené az egyszeri jelszavas protokoll szolgáltatójának.
 
@@ -132,7 +132,7 @@ A következő beállítások használhatók a kód-ellenőrzési mód használat
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `VerifyCode`. |
+| Művelet | Yes | A végrehajtandó művelet. Lehetséges érték: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
@@ -151,7 +151,7 @@ A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén m
 
 A következő példa `TechnicalProfile` egy kód ellenőrzéséhez használható:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -169,5 +169,5 @@ A következő példa `TechnicalProfile` egy kód ellenőrzéséhez használható
 
 A következő cikkből megtudhatja, hogyan használhatja az egyéni e-mail-ellenőrzéssel rendelkező egyszeri jelszavas technikai profilt:
 
-- [Egyéni e-mail-ellenőrzés Azure Active Directory B2C](custom-email.md)
+- Egyéni e-mail-ellenőrzés a Azure Active Directory B2Cban ([mailjet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md))
 

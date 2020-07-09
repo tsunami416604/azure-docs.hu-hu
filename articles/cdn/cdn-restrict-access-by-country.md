@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887034"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN tartalmának korlátozása ország/régió szerint
 
@@ -42,7 +42,7 @@ A Geo-szűrés funkció eléréséhez válassza ki a CDN-végpontot a portálon 
 
 Az **elérési út** mezőben határozza meg annak a helynek a relatív elérési útját, amelyhez a felhasználók engedélyezik vagy megtagadják a hozzáférést. 
 
-A földrajzi szűrést alkalmazhatja az összes fájlhoz egy továbbítási perjel (/) használatával, vagy kiválaszthat meghatározott mappákat a könyvtár elérési útjának megadásával (például */Pictures/*). A földrajzi szűrést egyetlen fájlba is alkalmazhatja (például */Pictures/City.png*). Több szabály is engedélyezett; a szabály megadása után egy üres sor jelenik meg, amely megadja a következő szabályt.
+A földrajzi szűrést alkalmazhatja az összes fájlhoz egy továbbítási perjel (/) használatával, vagy kiválaszthat meghatározott mappákat a könyvtár elérési útjának megadásával (például */Pictures/*). A földrajzi szűrést egyetlen fájlba is alkalmazhatja (például */pictures/city.png*). Több szabály is engedélyezett; a szabály megadása után egy üres sor jelenik meg, amely megadja a következő szabályt.
 
 A következő könyvtár-elérésiút-szűrők például érvényesek:   
 */*                                 
@@ -59,8 +59,8 @@ A **művelet** listából válassza az **Engedélyezés** vagy a **Letiltás**le
 - **Letiltás**: a megadott országokból/régiókból származó felhasználók nem férhetnek hozzá a rekurzív elérési útról kért eszközökhöz. Ha ezen a helyen nincs más ország/régió szerinti szűrési lehetőség konfigurálva, az összes többi felhasználó hozzáférése is engedélyezett lesz.
 
 Például a */photos/Strasbourg/* elérési út blokkolására szolgáló geo-szűrési szabály a következő fájlokat szűri:     
-*http\<:\//Endpoint>. azureedge.net/photos/Strasbourg/1000.jpg*
-*http:\//\<Endpoint>. azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
+*http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/1000.jpg* 
+ *http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>Országok/régiók meghatározása
 Az **országkódok** listából válassza ki azokat az országokat/régiókat, amelyeket le kíván tiltani, vagy engedélyezni kívánja az elérési utat. 
@@ -69,7 +69,7 @@ Miután befejezte az országok/régiók kijelölését, válassza a **Mentés** 
 
 ![Geo-szűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Egy szabály törléséhez válassza ki a listából a **geo-szűrés** lapon, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="azure-cdn-premium-from-verizon-profiles"></a>Prémium szintű Azure CDN Verizon-profilokból
@@ -95,7 +95,7 @@ A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrési 
 
     ![Geo-szűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Az ország/régió szűrési szabályok táblázatban válassza a törlés ikont egy szabály mellett a törléshez, vagy a Szerkesztés ikont a módosításhoz.
 
 ## <a name="considerations"></a>Megfontolandó szempontok

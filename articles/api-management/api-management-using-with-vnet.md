@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 92473dc7553286867a33100d7328dd0320d55823
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674278"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -117,16 +117,15 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 | */1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/SQL                 | **Hozzáférés az Azure SQL-végpontokhoz**                           | Külső & belső  |
 | */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az [Event hub-házirend](api-management-howto-log-event-hubs.md) és a figyelési ügynök közötti függőség | Külső & belső  |
 | */445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a [git](api-management-configuration-repository-git.md) -hez készült Azure-fájlmegosztástól                      | Külső & belső  |
-| */1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureCloud            | A Resource Health állapotának közzétételéhez szükséges.          | Külső & belső  |
-| */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Diagnosztikai naplók és mérőszámok](api-management-howto-use-azure-monitor.md) közzététele                       | Külső & belső  |
-| */25                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| */587                      | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| */25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| */6381 – 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | A Redis szolgáltatás elérése a számítógépek közötti [díjszabási korlátozási](api-management-access-restriction-policies.md#LimitCallRateByKey) házirendekhez         | Külső & belső  |
+| */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Állapot-és figyelési bővítmény         | Külső & belső  |
+| */1886, 443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Diagnosztikai naplók és mérőszámok](api-management-howto-use-azure-monitor.md) és [Resource Health](../service-health/resource-health-overview.md) közzététele                     | Külső & belső  |
+| */25, 587, 25028                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
+| */6381 – 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | A Redis szolgáltatás elérése a számítógépek közötti [gyorsítótárazási](api-management-caching-policies.md) házirendekhez         | Külső & belső  |
+| */4290              | Bejövő & kimenő | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Számlálók szinkronizálása a számítógépek között a [díjszabási korlátozási](api-management-access-restriction-policies.md#LimitCallRateByKey) házirendekhez         | Külső & belső  |
 | * / *                        | Bejövő            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure-infrastruktúra Load Balancer                          | Külső & belső  |
 
 >[!IMPORTANT]
-> Azok a portok, amelyekhez a *cél* **félkövér** , szükségesek ahhoz, hogy API Management szolgáltatás üzembe helyezése sikeres legyen. A többi port blokkolásával azonban romlást okozhat a futó szolgáltatás használatának és figyelésének képessége.
+> Azok a portok, amelyekhez a *cél* **félkövér** , szükségesek ahhoz, hogy API Management szolgáltatás üzembe helyezése sikeres legyen. A többi port blokkolása azonban **romlást** okoz a **futó szolgáltatás használatára és figyelésére, valamint az előjegyzett SLA biztosítására**.
 
 + **TLS-funkciók**: a TLS/SSL-tanúsítványlánc létrehozásának és ellenőrzésének engedélyezéséhez a API Management szolgáltatásnak kimenő hálózati kapcsolatra van szüksége a OCSP.msocsp.com, a mscrl.microsoft.com és a CRL.microsoft.com. Ez a függőség nem szükséges, ha a API Management feltöltött bármelyik tanúsítvány teljes láncot tartalmaz a HITELESÍTÉSSZOLGÁLTATÓ gyökeréhez.
 
@@ -265,7 +264,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Government| USA keleti régiója| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>Kapcsolódó tartalom
-* [Virtual Network csatlakoztatása a háttérben a VPN Gateway használatával](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [Virtual Network csatlakoztatása a háttérben a VPN Gateway használatával](../vpn-gateway/design.md#s2smulti)
 * [Virtual Network csatlakoztatása különböző üzembe helyezési modellből](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Az API Inspector használata a hívások nyomkövetéséhez az Azure-ban API Management](api-management-howto-api-inspector.md)
 * [Virtual Network gyakori kérdések](../virtual-network/virtual-networks-faq.md)

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80633956"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>A virtuális gép nem válaszol "C01A001D" hibaüzenettel Windows Update alkalmazása során
@@ -81,7 +81,7 @@ Ha a lemez még nem 1 TB, át kell méreteznie. Ha a lemez 1 TB méretű, hajtso
     ```
 3. Győződjön meg arról, hogy az operációsrendszer-lemez szabad területe eléri a virtuális gép memóriájának (RAM) méretét.
 
-    Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítsa a memóriakép fájljának helyét, és a virtuális géphez csatlakoztatott adatlemezre, valamint elegendő szabad területtel forduljon. A hely módosításához cserélje le `%SystemRoot%` az adatlemez betűjelét (például "F:") az alábbi parancsokban található adatlemezre:
+    Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítsa a memóriakép fájljának helyét, és a virtuális géphez csatlakoztatott adatlemezre, valamint elegendő szabad területtel forduljon. A hely módosításához cserélje le az `%SystemRoot%` adatlemez betűjelét (például "F:") az alábbi parancsokban található adatlemezre:
 
     **OPERÁCIÓSRENDSZER-memóriakép javasolt konfigurációjának engedélyezése:**
 

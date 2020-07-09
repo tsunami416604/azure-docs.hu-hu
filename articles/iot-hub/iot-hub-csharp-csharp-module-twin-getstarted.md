@@ -10,10 +10,9 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733395"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (.NET)
@@ -58,7 +57,7 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. A Visual Studióban vegyen fel egy új projektet a megoldásba a **fájl** > **új** > **projekt**lehetőség kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
+1. A Visual Studióban vegyen fel egy új projektet a megoldásba a **fájl**  >  **új**  >  **projekt**lehetőség kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
 
 1. Adja a projektnek az *UpdateModuleTwinReportedProperties* nevet. A **megoldás**mezőben válassza a **Hozzáadás a megoldáshoz**lehetőséget. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja.
 
@@ -66,7 +65,7 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
 1. Válassza a **Létrehozás** lehetőséget a projekt létrehozásához.
 
-1. A Visual Studióban nyissa meg az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
+1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
 
 1. Keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet, majd válassza a **telepítés**lehetőséget.
 
@@ -152,7 +151,7 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
     A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
-1. Ha szeretné, ezeket az utasításokat a **Main** metódushoz is hozzáadhatja, ha egy eseményt szeretne elküldeni IoT hub a modulból. Helyezze el ezeket a sorokat `try catch` a blokk alá.
+1. Ha szeretné, ezeket az utasításokat a **Main** metódushoz is hozzáadhatja, ha egy eseményt szeretne elküldeni IoT hub a modulból. Helyezze el ezeket a sorokat a `try catch` blokk alá.
 
     ```csharp
     Byte[] bytes = new Byte[2];

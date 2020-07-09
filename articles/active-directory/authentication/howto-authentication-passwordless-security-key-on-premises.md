@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550640"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
 
 Ez a dokumentum az **Azure ad** -hez csatlakoztatott és a **hibrid Azure ad-hez csatlakoztatott** Windows 10 rendszerű eszközökön a helyi erőforrásokhoz való jelszavas hitelesítés engedélyezését összpontosítja. Ez a funkció zökkenőmentes egyszeri bejelentkezést (SSO) biztosít a helyszíni erőforrásokhoz a Microsoft-kompatibilis biztonsági kulcsok használatával.
 
-|     |
-| --- |
-| A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Egyszeri bejelentkezés a helyszíni erőforrásokhoz FIDO2-kulcsok használatával
 
@@ -81,7 +79,7 @@ A rendszergazdák a Azure AD Connect kiszolgáló PowerShell-eszközeivel hozhat
 1. A következő PowerShell-parancsok futtatásával hozzon létre egy új Azure AD Kerberos-kiszolgálói objektumot a helyszíni Active Directory tartományban és Azure Active Directory bérlőben.
 
 > [!NOTE]
-> Cserélje `contoso.corp.com` le a következő példát a helyszíni Active Directory tartománynevére.
+> Cserélje le a `contoso.corp.com` következő példát a helyszíni Active Directory tartománynevére.
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -113,7 +111,7 @@ Ez a parancs kiírja az Azure AD Kerberos-kiszolgáló tulajdonságait. A tulajd
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ID (Azonosító) | Az AD DS tartományvezérlő objektum egyedi azonosítója. Ezt az azonosítót más néven "slot"-nak vagy "ág-AZONOSÍTÓnak" is nevezzük. |
+| ID | Az AD DS tartományvezérlő objektum egyedi azonosítója. Ezt az azonosítót más néven "slot"-nak vagy "ág-AZONOSÍTÓnak" is nevezzük. |
 | DomainDnsName | A Active Directory-tartomány DNS-tartományneve. |
 | ComputerAccount | Az Azure AD Kerberos-kiszolgáló objektum számítógépfiók-objektuma (a tartományvezérlő). |
 | Felhasználóifiók | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
@@ -148,7 +146,7 @@ Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -Domain
 
 Az Azure AD Kerberos-kiszolgáló objektum az Azure AD-ben *KerberosDomain* objektumként jelenik meg. Az egyes helyszíni Active Directory tartományok egyetlen *KerberosDomain* -objektumként jelennek meg az Azure ad-ben.
 
-Például a szervezet rendelkezik egy Active Directory erdővel, `contoso.com` és `fabrikam.com`két tartománnyal rendelkezik. Ha úgy dönt, hogy engedélyezi az Azure AD számára a teljes erdő Kerberos-TGT, két *KerberosDomain* objektum van az Azure ad-ben. Egy *KerberosDomain* -objektum `contoso.com`, és egyet a `fabrikam.com`következőhöz:. Ha több Active Directory erdővel rendelkezik, az egyes erdők mindegyik tartományához egy *KerberosDomain* objektum tartozik.
+Például a szervezet rendelkezik egy Active Directory erdővel, és két tartománnyal rendelkezik `contoso.com` `fabrikam.com` . Ha úgy dönt, hogy engedélyezi az Azure AD számára a teljes erdő Kerberos-TGT, két *KerberosDomain* objektum van az Azure ad-ben. Egy *KerberosDomain* -objektum `contoso.com` , és egyet a következőhöz: `fabrikam.com` . Ha több Active Directory erdővel rendelkezik, az egyes erdők mindegyik tartományához egy *KerberosDomain* objektum tartozik.
 
 Futtatnia kell a [Kerberos-kiszolgáló objektum létrehozásához](#create-kerberos-server-object) szükséges lépéseket a szervezet minden olyan tartományában és erdőben, amely tartalmazza az Azure ad-felhasználókat.
 
@@ -197,7 +195,7 @@ Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a ta
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Nem tudom beolvasni az SSO-t az NTLM hálózati erőforráshoz a parancssori felülettel való bejelentkezés után, és hitelesítő adatok kérése
 
-Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a kimenetét `nltest /dsgetdc:contoso /keylist /kdc`.
+Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a kimenetét `nltest /dsgetdc:contoso /keylist /kdc` .
 
 ## <a name="next-steps"></a>További lépések
 

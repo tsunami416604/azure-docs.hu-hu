@@ -5,35 +5,33 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362125"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Naplók naplózása Azure Database for MySQL
 
 A Azure Database for MySQL a napló a felhasználók számára érhető el. A napló az adatbázis szintű tevékenységek nyomon követésére használható, és általában a megfelelőséghez használatos.
 
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
-
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
-Alapértelmezés szerint a napló le van tiltva. Az engedélyezéséhez állítsa `audit_log_enabled` be ÉRTÉKre a következőre:.
+>[!IMPORTANT]
+> Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
+
+Alapértelmezés szerint a napló le van tiltva. Az engedélyezéséhez állítsa be értékre a következőre: `audit_log_enabled` .
 
 Az egyéb paraméterek a következők:
 
 - `audit_log_events`: a naplózandó események szabályozása. Tekintse meg az alábbi táblázatot az egyes naplózási eseményekhez.
-- `audit_log_include_users`: A MySQL-felhasználók bekerülnek a naplózásba. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ennek magasabb prioritása van `audit_log_exclude_users`. A paraméter maximális hossza 512 karakter.
-> [!Note]
-> `audit_log_include_users`magasabb prioritással rendelkezik `audit_log_exclude_users`. `audit_log_include_users`  =  Ha `demouser` `audit_log_exclude_users`  = például a és `demouser`a, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
+- `audit_log_include_users`: A MySQL-felhasználók bekerülnek a naplózásba. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ennek magasabb prioritása van `audit_log_exclude_users` . A paraméter maximális hossza 512 karakter.
 - `audit_log_exclude_users`: A rendszer kizárja a MySQL-felhasználókat a naplózásból. A paraméter maximális hossza 512 karakter.
 
-> [!Note]
-> A `sql_text`esetében a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
+> [!NOTE]
+> `audit_log_include_users`magasabb prioritással rendelkezik `audit_log_exclude_users` . Ha például `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` a és a, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
 
 | **Esemény** | **Leírás** |
 |---|---|
@@ -49,7 +47,7 @@ Az egyéb paraméterek a következők:
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
 
-A naplófájlok integrálva vannak Azure Monitor diagnosztikai naplókba. Miután engedélyezte a naplók használatát a MySQL-kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubsba vagy az Azure Storage szolgáltatásba. Ha szeretne többet megtudni arról, hogyan engedélyezheti a diagnosztikai naplókat a Azure Portalban, tekintse meg a [napló-portált ismertető cikket](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
+A naplók az Azure Monitor Diagnostic Logs szolgáltatással vannak integrálva. Miután engedélyezte a naplókat a MySQL-kiszolgálón, kibocsáthatja azokat az Azure Monitor-naplókba, az Event Hubsba vagy az Azure Storage-ba. Ha szeretne többet megtudni arról, hogyan engedélyezheti a diagnosztikai naplókat a Azure Portalban, tekintse meg a [napló-portált ismertető cikket](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
 ## <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
@@ -73,7 +71,7 @@ A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típus
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (csak MySQL 5,7 esetén érhető el) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (csak MySQL 5,7 esetén érhető el) |
 | `connection_id_d` | A MySQL által generált egyedi kapcsolatazonosító |
 | `host_s` | Blank |
 | `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
@@ -84,6 +82,9 @@ A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típus
 ### <a name="general"></a>Általános kérdések
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
+
+> [!NOTE]
+> A esetében a rendszer `sql_text` csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 | **Tulajdonság** | **Leírás** |
 |---|---|
@@ -101,7 +102,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (csak MySQL 5,6 esetén érhető el) |
+| `event_subclass_s` | `LOG`, `ERROR` , `RESULT` (csak MySQL 5,6 esetén érhető el) |
 | `event_time` | Lekérdezés kezdési időpontja (UTC) időbélyegzővel |
 | `error_code_d` | Hibakód, ha a lekérdezés nem sikerült. `0`nem jelent hibát |
 | `thread_id_d` | A lekérdezést futtató szál azonosítója |
@@ -114,7 +115,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 ### <a name="table-access"></a>Tábla-hozzáférés
 
 > [!NOTE]
-> A Table Access-naplók csak a MySQL 5,7 kimenete.
+> A Table Access-naplók csak a MySQL 5,7 kimenete.<br>A esetében a rendszer `sql_text` csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 | **Tulajdonság** | **Leírás** |
 |---|---|
@@ -132,7 +133,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, vagy`DELETE` |
+| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` , vagy`DELETE` |
 | `connection_id_d` | A MySQL által generált egyedi kapcsolatazonosító |
 | `db_s` | Az elért adatbázis neve |
 | `table_s` | Az elért tábla neve |

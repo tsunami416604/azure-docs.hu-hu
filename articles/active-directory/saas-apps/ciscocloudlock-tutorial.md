@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 397fe8c111870f4a1a6489e6502ff4365f80d1e3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70213607"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799581"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Oktatóanyag: a felhőalapú biztonsági háló integrálása a Azure Active Directory
 
@@ -85,17 +85,17 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
 
-    | |
-    |--|
-    | `https://platform.cloudlock.com` |
-    | `https://app.cloudlock.com` |
+      ```http
+      https://platform.cloudlock.com
+      https://app.cloudlock.com
+      ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
-    | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
+      ```http
+      https://platform.cloudlock.com/gate/saml/sso/<subdomain>
+      https://app.cloudlock.com/gate/saml/sso/<subdomain>
+      ```
 
     > [!NOTE]
     > Az azonosító értéke nem valódi. Frissítse az értéket a tényleges azonosítóval. Az érték beszerzéséhez vegye fel [a kapcsolatot a felhőalapú biztonsági háló ügyfél-támogatási csapatával](mailto:support@cloudlock.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -129,9 +129,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

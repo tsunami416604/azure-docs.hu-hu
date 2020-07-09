@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558551"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box blob Storage-hoz kapcsolódó problémák elhárítása
 
@@ -26,7 +26,7 @@ Ez a szakasz a Azure Storage Explorer Data Box blob Storage-ban való használat
 |Hibaüzenet  |Javasolt művelet |
 |---------|---------|
 |Nem sikerült beolvasni a gyermek erőforrásokat. A HTTP-fejlécek egyikének értéke nem megfelelő formátumú.|A **Szerkesztés** menüben válassza a **cél Azure stack API**-k elemet. <br>Azure Storage Explorer újraindítása.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Győződjön meg arról, hogy `<accountname>.blob.<serialnumber>.microsoftdatabox.com` a végpont neve hozzá van adva a gazdagépek fájljához ezen az elérési úton: <li>`C:\Windows\System32\drivers\etc\hosts`Windows rendszeren vagy </li><li> `/etc/hosts`Linux rendszeren.</li>|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a gazdagépek fájljához ezen az elérési úton: <li>`C:\Windows\System32\drivers\etc\hosts`Windows rendszeren vagy </li><li> `/etc/hosts`Linux rendszeren.</li>|
 |Nem sikerült beolvasni a gyermek erőforrásokat. <br>Részletek: önaláírt tanúsítvány |Importálja az eszköz TLS/SSL-tanúsítványát Azure Storage Explorerba: <li>Töltse le a tanúsítványt a Azure Portal. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>A **Szerkesztés** menüben válassza az **SSL-tanúsítványok** lehetőséget, majd válassza a **tanúsítványok importálása**lehetőséget.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>A Windows AzCopy által észlelt hibák
@@ -35,8 +35,8 @@ Ez a szakasz részletesen ismerteti a AzCopy for Windows és a Data Box blob Sto
 
 |Hibaüzenet  |Javasolt művelet |
 |---------|---------|
-|A AzCopy parancs úgy tűnik, hogy egy percen keresztül lefagy a hiba megjelenítése előtt: <br>A címtár https://enumerálása sikertelen... A távoli név nem oldható fel.`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Győződjön meg arról, hogy `<accountname>.blob.<serialnumber>.microsoftdatabox.com` a végpont neve hozzá van adva a Hosts fájlhoz a következő helyen: `C:\Windows\System32\drivers\etc\hosts`.|
-|A AzCopy parancs úgy tűnik, hogy egy percen keresztül lefagy a hiba megjelenítése előtt: <br>Hiba történt a forrás helyének elemzésekor. Az alapul szolgáló kapcsolat bezárult: nem hozható létre megbízhatósági kapcsolat az SSL/TLS biztonságos csatorna számára.|Importálja az eszköz TLS/SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt nem válaszol egy percre: <br>A címtár https://enumerálása sikertelen... A távoli név nem oldható fel.`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `C:\Windows\System32\drivers\etc\hosts` .|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt nem válaszol egy percre: <br>Hiba történt a forrás helyének elemzésekor. Az alapul szolgáló kapcsolat bezárult: nem hozható létre megbízhatósági kapcsolat az SSL/TLS biztonságos csatorna számára.|Importálja az eszköz TLS/SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).|
 
 
 ## <a name="errors-seen-in-azcopy-for-linux"></a>A Linux-AzCopy észlelt hibák
@@ -45,8 +45,8 @@ Ez a szakasz részletesen ismerteti a AzCopy for Linux és a Data Box blob Stora
 
 |Hibaüzenet  |Javasolt művelet |
 |---------|---------|
-|A AzCopy parancs úgy tűnik, hogy 20 percen belül lefagy a hiba megjelenítése előtt: <br>Hiba történt a forrás helyének `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`elemzésekor. Nincs ilyen eszköz vagy címe|Győződjön meg arról, hogy `<accountname>.blob.<serialnumber>.microsoftdatabox.com` a végpont neve hozzá van adva a Hosts fájlhoz a következő helyen: `/etc/hosts`.|
-|A AzCopy parancs úgy tűnik, hogy 20 percen belül lefagy a hiba megjelenítése előtt: <br>Hiba történt a forrás helyének elemzésekor... Nem lehet létrehozni az SSL-kapcsolatokat.|Importálja az eszköz TLS/SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt 20 perccel nem válaszol: <br>Hiba történt a forrás helyének elemzésekor `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>` . Nincs ilyen eszköz vagy címe|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `/etc/hosts` .|
+|A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt 20 perccel nem válaszol: <br>Hiba történt a forrás helyének elemzésekor... Nem lehet létrehozni az SSL-kapcsolatokat.|Importálja az eszköz TLS/SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>A Pythonhoz készült Azure Storage-függvénytárban észlelt hibák
 

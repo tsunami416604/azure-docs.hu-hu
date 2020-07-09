@@ -6,7 +6,7 @@
     - name: Mi az Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning és Studio
+    - name: Azure Machine Learning és Studio (klasszikus)
       displayName: 'AML, Studio, designer'
       href: compare-azure-ml-to-studio-classic.md
     - name: Architektúra és kifejezések
@@ -67,15 +67,18 @@
         - name: Az első ML-kísérlet létrehozása (R)
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: Betanítás és üzembe helyezés parancssori felülettel
+          href: tutorial-train-deploy-model-cli.md
+        - name: Munkaterületek létrehozása ARM-sablon használatával
+          displayName: Resource Manager
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning-bővítmény üzembe helyezése
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow képbesorolási modellek betanítása és üzembe helyezése
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: Munkaterület létrehozása Resource Manager-sablonnal
-      href: tutorial-resource-manager-workspace.md
 - name: Példák
   items:
     - name: Jupyter-notebookok
@@ -90,6 +93,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Alapelvek
   items:
+    - name: Enterprise és alapszintű kiadások
+      href: concept-editions.md
     - name: Költségtervezés és a költségek kezelése
       href: concept-plan-manage-cost.md
     - name: Tervező (áthúzásos ML)
@@ -125,6 +130,8 @@
           href: concept-data.md
         - name: Adatfeldolgozás
           href: concept-data-ingestion.md
+        - name: Adatfeldolgozás
+          href: concept-optimize-data-processing.md
     - name: A modell betanítása
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
@@ -143,7 +150,7 @@
       href: concept-ml-pipelines.md
     - name: Alkalmasság vállalati használatra és biztonság
       items:
-        - name: Vállalati biztonság
+        - name: Vállalati biztonság és irányítás
           items:
             - name: Vállalati biztonság áttekintése
               displayName: authorization authentication encryption aad azure active directory
@@ -157,14 +164,17 @@
               displayName: private endpoint
               href: how-to-configure-private-link.md
             - name: Webszolgáltatások biztonságossá tétele TLS használatával
-              href: how-to-secure-web-service.md
               displayName: ssl
+              href: how-to-secure-web-service.md
             - name: Az Azure AD Identity használata AKS-környezetekben
               href: how-to-use-azure-ad-identity.md
             - name: Tárelérési kulcsok újragenerálása
               href: how-to-change-storage-access-key.md
             - name: Az Azure Firewall használata
               href: how-to-access-azureml-behind-firewall.md
+            - name: Biztonságos kódolás
+              href: concept-secure-code-best-practice.md
+              displayName: security threat
         - name: Hitelesítés beállítása
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md
@@ -267,19 +277,16 @@
               href: how-to-differential-privacy.md
     - name: Modellek betanítása
       items:
+        - name: Betanítási környezetek beállítása
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-set-up-training-targets.md
         - name: Becslők használata gépi tanuláshoz
           items:
             - name: Becslők létrehozása a betanítás során
               href: how-to-train-ml-models.md
-            - name: Betanítási környezetek beállítása
-              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-              href: how-to-set-up-training-targets.md
             - name: Hiperparaméterek hangolása
               displayName: parameter
               href: how-to-tune-hyperparameters.md
-            - name: A Key Vault használata betanításhoz
-              displayName: secrets keyvault
-              href: how-to-use-secrets-in-runs.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -288,18 +295,36 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: Képzés nyomon követése és monitorozása
+          items:
+            - name: 'Futtatások indítása, monitorozása vagy megszakítása'
+              displayName: 'cancel, fail, status, child run'
+              href: how-to-manage-runs.md
+            - name: A betanítási futtatások mérőszámainak naplózása
+              href: how-to-track-experiments.md
+            - name: Kísérletek nyomon követése az MLflow használatával
+              displayName: 'log, monitor, metrics, Databricks'
+              href: how-to-use-mlflow.md
+            - name: Futtatások megjelenítése a TensorBoard használatával
+              displayName: 'log, monitor, metrics'
+              href: how-to-monitor-tensorboard.md
+        - name: Modellek értelmezése és ismertetése
+          displayName: interpretability
+          items:
+            - name: Gépi tanulási modellek értelmezése
+              displayName: 'SDK, interpret, explain, explanability, interpretability'
+              href: how-to-machine-learning-interpretability-aml.md
+            - name: Automatizált gépi tanulási modellek ismertetése
+              displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
+              href: how-to-machine-learning-interpretability-automl.md
+        - name: A modell semlegességének kiértékelése és problémaelhárítása
+          href: how-to-machine-learning-fairness-aml.md
+        - name: A Key Vault használata betanításhoz
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
         - name: Megerősítő tanulás
           href: how-to-use-reinforcement-learning.md
-    - name: Modellek értelmezése és ismertetése
-      displayName: interpretability
-      items:
-        - name: Gépi tanulási modellek értelmezése
-          displayName: 'SDK, interpret, explain, explanability, interpretability'
-          href: how-to-machine-learning-interpretability-aml.md
-        - name: Automatizált gépi tanulási modellek ismertetése
-          displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
-          href: how-to-machine-learning-interpretability-automl.md
-    - name: Gépi tanulás automatizálása
+    - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       items:
         - name: Automatizált gépi tanulás használata (Python)
@@ -310,30 +335,20 @@
         - name: Távoli számítógépcélok használata
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: Gépi tanulási feladatok meghatározása
-          displayName: 'machine learning, task type'
-          href: how-to-define-task-type.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Adatfelosztás és keresztvalidálás (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-cross-validation-data-splits.md
+        - name: A jellemzősítés az automatizált gépi tanulásban (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: Automatizált gépi tanulás használata a gépi tanulási folyamatokban (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md
         - name: Diagramok és metrikák értelmezése
           href: how-to-understand-automated-ml.md
-    - name: Kísérletek nyomon követése és monitorozása
-      items:
-        - name: 'Futtatások indítása, monitorozása vagy megszakítása'
-          displayName: 'cancel, fail, status, child run'
-          href: how-to-manage-runs.md
-        - name: A betanítási futtatások mérőszámainak naplózása
-          href: how-to-track-experiments.md
-        - name: Kísérletek nyomon követése az MLflow használatával
-          displayName: 'log, monitor, metrics, Databricks'
-          href: how-to-use-mlflow.md
-        - name: Futtatások megjelenítése a TensorBoard használatával
-          displayName: 'log, monitor, metrics'
-          href: how-to-monitor-tensorboard.md
     - name: Modellek üzembe helyezése és kiszolgálása
       items:
         - name: Az üzembe helyezés módja és helye
@@ -357,6 +372,8 @@
             - name: Azure Functions
               displayName: functions app
               href: how-to-deploy-functions.md
+            - name: Azure Cognitive Search
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure IoT Edge-eszközök
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA-következtetés
@@ -398,7 +415,6 @@
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Folyamatok hibakeresése az Application Insightsban
-          displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
         - name: Tervező – adatok átalakítása
           displayName: pipeline
@@ -449,8 +465,6 @@
     - name: Tervezőmodul-referencia
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: Nagy léptékű gépi tanulás
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: Adatreferencia monitorozása
       href: monitor-resource-reference.md
     - name: Machine Learning-folyamatok – YAML-referencia
@@ -470,7 +484,7 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: Felhasználói fórum
-      href: 'https://aka.ms/aml-forum-service'
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Machine Learning-termékeink összehasonlítása

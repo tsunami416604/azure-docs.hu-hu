@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66420603"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>StorSimple Virtual Array Update 1,2 kibocsátási megjegyzések
@@ -59,7 +59,7 @@ Az 1,2-es frissítésben nincsenek megjelent új problémák. Az összes kiadás
 
 Töltse le a KB4502035, és [alkalmazza a frissítést helyi webes felületen keresztül](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 Régebbi kiadási megjegyzést keres? Ugrás:
 * [StorSimple Virtual Array Update 1,1 kibocsátási megjegyzések](storsimple-virtual-array-update-11-release-notes.md)

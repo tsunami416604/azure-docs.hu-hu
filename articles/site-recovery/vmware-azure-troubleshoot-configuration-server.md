@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478303"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113071"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
 
@@ -43,15 +43,17 @@ A forrás számítógép a mobilitási ügynök telepítésekor regisztrálja a 
     4. Hálózati problémák megoldásakor próbálja megismételni a regisztrációt a [forráskiszolgáló regisztrálása a konfigurációs kiszolgálóval](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)című rész útmutatásait követve.
 
 6. Ha a string **post kérelem: (7) – nem sikerült csatlakozni a kiszolgálóhoz** , a naplófájlban keresse meg a következő karakterlánc- **kérelmet: (60) – a társ-tanúsítvány nem hitelesíthető a megadott hitelesítésszolgáltatói tanúsítványokkal**. Ez a hiba akkor fordulhat elő, ha a konfigurációs kiszolgáló tanúsítványa lejárt, vagy a forrásoldali gép nem támogatja a TLS 1,0-es vagy újabb protokollokat. Akkor is előfordulhat, ha a tűzfal blokkolja a TLS-kommunikációt a forrásoldali gép és a konfigurációs kiszolgáló között. Ha a karakterlánc megtalálható: 
-    1. A megoldáshoz kapcsolódjon a konfigurációs kiszolgáló IP-címéhez a forrásoldali gépen lévő webböngészővel. Használja az URI https:\/ \/<konfigurációs kiszolgáló IP-\>címét: 443/. Győződjön meg arról, hogy a forrásoldali számítógép elérheti a konfigurációs kiszolgálót a 443-es porton keresztül.
+    1. A megoldáshoz kapcsolódjon a konfigurációs kiszolgáló IP-címéhez a forrásoldali gépen lévő webböngészővel. Használja az URI https: \/ \/<konfigurációs kiszolgáló IP-címét \> : 443/. Győződjön meg arról, hogy a forrásoldali számítógép elérheti a konfigurációs kiszolgálót a 443-es porton keresztül.
     2. Győződjön meg arról, hogy a forrásoldali számítógépen lévő tűzfalszabályok hozzáadására vagy eltávolítására van szükség ahhoz, hogy a forrásszámítógép a konfigurációs kiszolgálóval kommunikáljon. Az esetlegesen használatban lévő tűzfal-szoftverek miatt nem lehet kilistázni az összes szükséges tűzfal-konfigurációt. A hálózati rendszergazdákkal együttműködve oldja fel a kapcsolódási problémákat.
     3. Győződjön meg arról, hogy az [site Recovery mappában](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) felsorolt mappák ki vannak zárva a víruskereső szoftverből.  
     4. A problémák megoldását követően próbálja megismételni a regisztrációt a [forráskiszolgáló regisztrálása a konfigurációs kiszolgálóval](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)című rész útmutatásait követve.
 
-7. Linux rendszeren, ha a <INSTALLATION_DIR\>/etc/drscout.conf megsérült a platform értéke, a regisztráció meghiúsul. A probléma azonosításához nyissa meg a/var/log/ua_install. log fájlt. Keresse meg a **konfigurációt megszakító karakterláncot, mert VM_PLATFORM érték vagy Null, vagy nem VMware/Azure**. A platformot **VMware** -re vagy **Azure**-ra kell beállítani. Ha a drscout. conf fájl sérült, javasoljuk, hogy [távolítsa el a mobilitási ügynököt](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) , majd telepítse újra a mobilitási ügynököt. Ha az Eltávolítás sikertelen, hajtsa végre a következő lépéseket: a. Nyissa meg a Installation_Directory/uninstall.sh fájlt, és véleményezze a **StopServices** függvény hívását.
+7. Linux rendszeren, ha a <INSTALLATION_DIR \> /etc/drscout.conf megsérült a platform értéke, a regisztráció meghiúsul. A probléma azonosításához nyissa meg a/var/log/ua_install. log fájlt. Keresse meg a **konfigurációt megszakító karakterláncot, mert VM_PLATFORM érték vagy Null, vagy nem VMware/Azure**. A platformot **VMware** -re vagy **Azure**-ra kell beállítani. Ha a drscout. conf fájl sérült, javasoljuk, hogy [távolítsa el a mobilitási ügynököt](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) , majd telepítse újra a mobilitási ügynököt. Ha az Eltávolítás sikertelen, hajtsa végre a következő lépéseket: a. Nyissa meg a Installation_Directory/uninstall.sh fájlt, és véleményezze a **StopServices** függvény hívását.
     b. Nyissa meg a Installation_Directory/VX/bin/uninstall.sh fájlt, és véleményezze a **stop_services** függvény hívását.
     c. Nyissa meg a Installation_Directory/FX/uninstall.sh fájlt, és tegye megjegyzésbe az FX szolgáltatás leállítására tett kísérlet teljes szakaszát.
     d. [Távolítsa el](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a mobilitási ügynököt. A sikeres eltávolítást követően indítsa újra a rendszerét, majd próbálja meg újra telepíteni a mobilitási ügynököt.
+
+8. Győződjön meg arról, hogy a többtényezős hitelesítés nincs engedélyezve a felhasználói fiókhoz. A Azure Site Recovery jelenleg nem támogatja a többtényezős hitelesítést a felhasználói fiókhoz. Regisztrálja a konfigurációs kiszolgálót a többtényezős hitelesítés engedélyezett felhasználói fiókja nélkül.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Telepítési hiba: nem sikerült betölteni a fiókokat
 
@@ -62,10 +64,10 @@ Ez a hiba akkor fordul elő, ha a szolgáltatás nem tudja beolvasni az adatátv
 A vCenter-felderítési hibák elhárításához adja hozzá a vCenter-kiszolgálót a mellőzési lista proxybeállításait. 
 
 - Töltse [le a PsExec eszközt innen a](https://aka.ms/PsExec) rendszerfelhasználói tartalmak eléréséhez.
-- Nyissa meg az Internet Explorert a rendszerfelhasználói tartalomban a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" parancs futtatásával
+- Az Internet Explorer rendszerfelhasználói tartalomban való megnyitásához futtassa a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 - Adja hozzá a proxybeállításokat az IE-ben, és indítsa újra a tmanssvc szolgáltatást.
 - A DRA-proxybeállítások konfigurálásához futtassa a CD C:\Program Files\Microsoft Azure Site Recovery Providert
-- Következő lépésként hajtsa végre a DRCONFIGURATOR. EXE/configure/AddBypassUrls [adja hozzá a [konfigurációs kiszolgáló üzembe helyezése](vmware-azure-deploy-configuration-server.md#configure-settings)során **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása** során megadott vCenter Server IP-cím/teljes tartománynevet.
+- Következő lépésként hajtsa végre DRCONFIGURATOR.EXE/configure/AddBypassUrls [adja hozzá vCenter Server IP-címét/teljes tartománynevét az **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása** a [konfigurációs kiszolgáló üzembe helyezése](vmware-azure-deploy-configuration-server.md#configure-settings)során]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>A konfigurációs kiszolgáló IP-címének módosítása
 
@@ -97,7 +99,7 @@ Futtassa a következő parancsot a forrásoldali gépen:
 
 Beállítás | Részletek
 --- | ---
-Használat | UnifiedAgentConfigurator. exe/CSEndPoint <konfigurációs kiszolgáló IP-\> címének/PassphraseFilePath <a hozzáférési kód elérési útja\>
+Használat | UnifiedAgentConfigurator.exe/CSEndPoint <konfigurációs kiszolgáló IP-címének \> /PassphraseFilePath <a hozzáférési kód elérési útja\>
 Ügynök konfigurációs naplói | A%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log. alatt található
 /CSEndPoint | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 /PassphraseFilePath |  Kötelező. A jelszó helye. Használjon bármely érvényes UNC-vagy helyi elérési útvonalat.
@@ -112,7 +114,7 @@ Futtassa a következő parancsot a forrásoldali gépen:
 
 Beállítás | Részletek
 --- | ---
-Használat | CD-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i <konfigurációs kiszolgáló IP-\> címe – P <hozzáférési fájl elérési útja\>
+Használat | CD-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i <konfigurációs kiszolgáló IP \> -címe – P <hozzáférési fájl elérési útja\>
 -i | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 – P |  Kötelező. A fájl teljes elérési útja, amelyben a rendszer menti a jelszót. Bármilyen érvényes mappát használjon.
 
@@ -160,18 +162,20 @@ A konfigurációs kiszolgáló frissítése meghiúsul, ha bizonyos szolgáltat�
 
 A probléma azonosításához keresse meg a C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile a konfigurációs kiszolgálón. Ha a következő hibákat keresi, a probléma megoldásához kövesse az alábbi lépéseket: 
 
-    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-    2018-06-28 14:28:12.944   Stopping svagents service.
-    2018-06-28 14:31:32.949   Unable to stop svagents service.
-    2018-06-28 14:31:32.949   Stopping svagents service.
-    2018-06-28 14:34:52.960   Unable to stop svagents service.
-    2018-06-28 14:34:52.960   Stopping svagents service.
-    2018-06-28 14:38:12.971   Unable to stop svagents service.
-    2018-06-28 14:38:12.971   Rolling back the install changes.
-    2018-06-28 14:38:12.971   Upgrade has failed.
+```output
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
+```
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Állítsa le manuálisan a következő szolgáltatásokat:
 
@@ -191,7 +195,7 @@ Nem rendelkezik megfelelő engedélyekkel ahhoz, hogy alkalmazásokat hozzon lé
 A probléma megoldásához jelentkezzen be a Azure Portalba, és tegye a következők egyikét:
 
 - Kérje meg az alkalmazás fejlesztői szerepkörét a HRE-ben. Az alkalmazás fejlesztői szerepkörével kapcsolatos további információkért tekintse meg a [rendszergazdai szerepkörre vonatkozó engedélyeket Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Győződjön meg arról, hogy a **felhasználó létrehozhat** -e alkalmazás-jelölőt *true* értékre a HRE-ben. További információkért lásd [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Győződjön meg arról, hogy a **felhasználó létrehozhat** -e alkalmazás-jelölőt *true* értékre a HRE-ben. További információkért lásd [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>A Process Server/fő cél nem tud kommunikálni a konfigurációs kiszolgálóval 
 
@@ -203,18 +207,20 @@ Ezt jellemzően a 443-es port hibája okozza. A következő lépésekkel oldja f
 
 Annak ellenőrzéséhez, hogy a fő célként megadott ügynök létrehozhat-e TCP-munkamenetet a konfigurációs kiszolgáló IP-címéhez, keresse meg az alábbihoz hasonló nyomkövetést a fő célkiszolgáló naplófájljaiban:
 
-TCP \<cserélje le az IP-címet a CS IP \<-címmel>:52739 IP-cím helyett a CS ip-címet itt>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here> : 52739 \<Replace IP with CS IP here> : 443 SYN_SENT 
 
 TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//cserélje le az IP-címet CS IP-címmel
 
 Ha az MT-ügynök naplóiban az alábbihoz hasonló nyomkövetéseket talál, az MT-ügynök a 443-as porton hibát jelez:
 
-    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
-    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```output
+#~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+#~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```
  
 Ez a hiba akkor fordulhat elő, ha más alkalmazások is a 443-es portot használják, vagy egy tűzfal a portot blokkoló beállítások miatt.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 - Ellenőrizze, hogy a tűzfal nem blokkolja-e a 443-es portot.
 - Ha a port egy másik, a portot használó alkalmazás miatt nem érhető el, állítsa le és távolítsa el az alkalmazást.
@@ -226,7 +232,7 @@ A probléma megoldásához:
 
 Ez a hiba akkor fordulhat elő, ha több konfigurációs kiszolgáló (CS) példány UUID-bejegyzés van az adatbázisban. A probléma gyakran előfordul a konfigurációs kiszolgáló virtuális gépe klónozásakor.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 1. Távolítsa el az elavult/régi CS virtuális gépet a vCenter-ből. További információ: [kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md).
 2. Jelentkezzen be a konfigurációs kiszolgáló virtuális gépre, és kapcsolódjon a MySQL svsdb1-adatbázishoz. 
@@ -249,7 +255,7 @@ Miután megadta a megfelelő felhasználónevet és jelszót a konfigurációs k
 
 Ez a probléma akkor fordulhat elő, ha a rendszer ideje helytelen.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Állítsa be a megfelelő időt a számítógépen, majd próbálja megismételni a bejelentkezést. 
  

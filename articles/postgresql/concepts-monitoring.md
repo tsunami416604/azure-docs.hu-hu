@@ -5,28 +5,28 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: 99c8d4e7e5263b8a7caf30833a899976d3cc829b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133707"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970994"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL figyelése és finomhangolása – egyetlen kiszolgáló
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. Azure Database for PostgreSQL különböző figyelési lehetőségeket biztosít a kiszolgáló működésének áttekintéséhez.
 
 ## <a name="metrics"></a>Mérőszámok
-Azure Database for PostgreSQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a PostgreSQL-kiszolgálót támogató erőforrások viselkedésére. Minden metrika egy egyperces gyakorisággal van kibocsátva, és akár 30 napig is eltarthat. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
+Azure Database for PostgreSQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a PostgreSQL-kiszolgálót támogató erőforrások viselkedésére. Minden metrika egyperces gyakorisággal van kibocsátva, és akár [93 napig](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)is eltarthat. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
 
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for PostgreSQL számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
-|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya.|
+|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya. (Nem alkalmazható az alapszintű kiszolgálók esetében.)|
 |storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális száma által felhasznált tárterület százalékos aránya.|
 |storage_used|Felhasznált tárterület|Bájt|A használatban lévő tárterület mennyisége. A szolgáltatás által használt tárterület magában foglalhatja az adatbázisfájlok, a tranzakciós naplók és a kiszolgáló naplófájljait is.|
 |storage_limit|Tárolási korlát|Bájt|A kiszolgáló maximális tárterülete.|
@@ -74,7 +74,7 @@ A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztáso
 A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el
+> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
 
 ## <a name="next-steps"></a>További lépések
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.

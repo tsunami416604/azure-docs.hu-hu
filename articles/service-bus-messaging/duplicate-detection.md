@@ -1,24 +1,13 @@
 ---
 title: Ismétlődő üzenetek észlelésének Azure Service Busa | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan észlelhetők az ismétlődő elemek Azure Service Bus üzenetekben. Az ismétlődő üzenet figyelmen kívül hagyható, és eldobása is lehetséges.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337913"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451667"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java ügyféloldali API-k
@@ -62,7 +61,7 @@ Kövesse az alábbi lépéseket az Service Fabric Java-ügyfél kódjának az au
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   A következő parancs a ``servicefabric.json`` specifikációs fájlt bemenetként veszi fel, és Java ``java-rest-api-     code`` -ügyfélprogramot hoz létre a mappában ``servicefabricrest`` , és a kódot a névtérbe foglalja. Ennek a lépésnek a megkeresése ``models``után ``implementation`` két mappát, ``ServiceFabricClientAPIs.java`` a ``package-info.java`` ``java-rest-api-code`` mappában pedig két fájlt fog létrehozni.
+   A következő parancs a ``servicefabric.json`` specifikációs fájlt bemenetként veszi fel, és Java-ügyfélprogramot hoz létre a ``java-rest-api-     code`` mappában, és a kódot a ``servicefabricrest`` névtérbe foglalja. Ennek a lépésnek a megkeresése után két mappát ``models`` , ``implementation`` a mappában pedig két fájlt fog ``ServiceFabricClientAPIs.java`` ``package-info.java`` létrehozni ``java-rest-api-code`` .
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>A generált ügyfél belefoglalása és használata a projektben
@@ -114,14 +113,14 @@ Kövesse az alábbi lépéseket az Service Fabric Java-ügyfél kódjának az au
         ```
 
 ## <a name="understanding-the-generated-code"></a>A generált kód ismertetése
-Minden API-hoz négy túlterhelést talál a megvalósításhoz. Ha választható paraméterek vannak, akkor négy további változatot talál, beleértve a választható paramétereket is. Vegyük például az API ``removeReplica``-t.
+Minden API-hoz négy túlterhelést talál a megvalósításhoz. Ha választható paraméterek vannak, akkor négy további változatot talál, beleértve a választható paramétereket is. Vegyük például az API-t ``removeReplica`` .
  1. **nyilvános Void removeReplica (karakterlánc csomópontnév, UUID partitionId, karakterlánc replicaId, logikai forceRemove, hosszú időkorlát)**
     * Ez a removeReplica API-hívás szinkron változata
- 2. **nyilvános ServiceFuture\<Void> RemoveReplicaAsync (karakterlánc CSOMÓPONTNÉV, UUID PartitionID, karakterlánc ReplicaId, logikai ForceRemove, hosszú időkorlát, végleges ServiceCallback\<Void> ServiceCallback)**
+ 2. **nyilvános ServiceFuture \<Void> removeReplicaAsync (karakterlánc csomópontnév, UUID partitionId, karakterlánc replicaId, logikai forceRemove, hosszú időkorlát, végső ServiceCallback \<Void> ServiceCallback)**
     * Az API-hívás ezen változata akkor használható, ha a jövőbeli aszinkron programozást szeretné használni, és visszahívásokat használ
- 3. **nyilvánosan megfigyelhető\<Void> RemoveReplicaAsync (string CSOMÓPONTNÉV, UUID PartitionID, string replicaId)**
+ 3. **nyilvános megfigyelhető \<Void> removeReplicaAsync (karakterlánc csomópontnév, UUID partitionId, karakterlánc replicaId)**
     * Az API-hívás ezen változata akkor használható, ha reaktív aszinkron programozást szeretne használni
- 4. **nyilvános\<megfigyelhető\<ServiceResponse Void>> removeReplicaWithServiceResponseAsync (string csomópontnév, UUID partitionId, string replicaId)**
+ 4. **nyilvános megfigyelhető \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (string csomópontnév, UUID partitionId, karakterlánc replicaId)**
     * Az API-hívás ezen változata akkor használható, ha reaktív aszinkron programozást szeretne használni, és a nyers Rest-választal foglalkozik.
 
 ## <a name="next-steps"></a>További lépések

@@ -6,19 +6,18 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651461"
 ---
 # <a name="reference-deployment-template-artifact"></a>Hivatkozás: telepítési sablon összetevő
 
-Ez a cikk a Azure Managed Applications *mainTemplate. JSON* összetevőjét ismerteti. További információ a központi telepítési sablon létrehozásáról: [Azure Resource Manager sablonok](../templates/template-syntax.md).
+Ez a cikk a Azure Managed Applications összetevőn belüli *mainTemplate.jsra* mutat. További információ a központi telepítési sablon létrehozásáról: [Azure Resource Manager sablonok](../templates/template-syntax.md).
 
 ## <a name="deployment-template"></a>Üzembehelyezési sablon
 
-A következő JSON a Azure Managed Applications *mainTemplate. JSON* fájljának példáját mutatja be:
+A következő JSON-példa a Azure Managed Applications *mainTemplate.js* fájlját mutatja be:
 
 ```json
 {

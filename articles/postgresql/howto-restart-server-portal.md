@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Data
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 52ffb3943e6e3f209fd236216cc44026dff59dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bd5b2d3715376aaca689c4589c3aab41a78f514
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74770084"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120908"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure Database for PostgreSQL újraindítása – egyetlen kiszolgáló a Azure Portal használatával
 Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for PostgreSQL-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
@@ -46,6 +46,6 @@ A következő lépések újraindítják a PostgreSQL-kiszolgálót:
 
    ![Azure Database for PostgreSQL – sikeres újraindítás](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [Paraméterek beállításához a Azure Database for PostgreSQL](howto-configure-server-parameters-using-portal.md)

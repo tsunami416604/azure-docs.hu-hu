@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483601"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése Azure NetApp Files használatával
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
 A Azure NetApp Files használatával manuálisan hozhat létre egy kötetre vonatkozó igény szerinti pillanatképet, vagy visszaállíthat egy pillanatképből egy új kötetre. A Azure NetApp Files szolgáltatás nem hoz létre automatikusan kötet-pillanatképeket.  
 

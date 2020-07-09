@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477680"
 ---
 # <a name="convert-to-csv-module"></a>Konvertálás CSV-modulba
@@ -50,7 +49,7 @@ A jobb oldali panelen válassza a **kimenetek** fület a CSV-re való **konvert�
 
 + **Adatkészlet regisztrálása**: válassza ki az ikont, és mentse a CSV-fájlt az Azure ml-munkaterületre külön adatkészletként. Az adatkészletet modulként is megtalálhatja a modul fájában a **saját adatkészletek** szakaszban.
 
- + **Kimenet megtekintése**: válassza ki a szem ikont, és kövesse az utasításokat a **Results_dataset** mappa tallózásához, majd töltse le az adat. csv fájlt.
+ + **Kimenet megtekintése**: válassza ki a szem ikont, és kövesse az utasításokat a **Results_dataset** mappa tallózásához, majd töltse le a data.csv fájlt.
 
 ## <a name="next-steps"></a>További lépések
 

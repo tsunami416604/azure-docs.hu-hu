@@ -6,12 +6,13 @@ ms.date: 11/27/2018
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- tracking-python
+ms.openlocfilehash: 5c4f8a90a43d19f3bc94da04681d9d690dc33e70
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117199"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561779"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Gyors útmutató: Azure Batch feladatok futtatása a Python API használatával
 
@@ -41,7 +42,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Nyissa meg a Python-szkriptet `python_quickstart_client.py`tartalmazó könyvtárat.
+Nyissa meg a Python-szkriptet tartalmazó könyvtárat `python_quickstart_client.py` .
 
 A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip` segítségével.
 
@@ -220,13 +221,13 @@ for task in tasks:
     print(file_text)
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az alkalmazás automatikusan törli a létrehozott Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A készletért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. 
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez a Azure Portal válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy, a Batch Python API-val létrehozott kisméretű alkalmazást futtatott, és létrehozott vele egy Batch-készletet és egy Batch-feladatot. A feladat mintatevékenységeket futtatott, és letöltötte a csomópontokon létrehozott kimeneteket. Most, hogy megismerkedett a Batch szolgáltatás fő fogalmaival, készen áll a Batch szolgáltatás realisztikusabb számítási feladatokkal, nagyobb léptékben történő kipróbálására. Ha többet szeretne megtudni az Azure Batchről, és végig szeretne nézni egy párhuzamos számítási feladatot egy valós alkalmazással, folytassa a Batch Python oktatóanyaggal.
 

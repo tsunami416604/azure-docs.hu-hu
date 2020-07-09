@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241443"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707463"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Virtuális hálózat létrehozása a PowerShell használatával
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Ha ehelyett a PowerShell helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz Azure PowerShell-modul 1.0.0-es vagy újabb verzióját kell használnia. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) a telepítéshez és a frissítéshez.
 
-Végül, ha helyileg futtatja a PowerShellt, a parancsot is futtatnia `Connect-AzAccount`kell. Ez a parancs létrehozza az Azure-hoz való hozzáférést.
+Végül, ha helyileg futtatja a PowerShellt, a parancsot is futtatnia kell `Connect-AzAccount` . Ez a parancs létrehozza az Azure-hoz való hozzáférést.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Erőforráscsoport és virtuális hálózat létrehozása
 
@@ -132,7 +132,7 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Nyisson meg egy parancssort a helyi számítógépen. Futtassa a következő parancsot: `mstsc`. Cserélje `<publicIpAddress>` le az elemet az utolsó lépésből visszaadott nyilvános IP-címhez:
+Nyisson meg egy parancssort a helyi számítógépen. Futtassa a következő parancsot: `mstsc`. Cserélje le az `<publicIpAddress>` elemet az utolsó lépésből visszaadott nyilvános IP-címhez:
 
 > [!NOTE]
 > Ha ezeket a parancsokat egy PowerShell-parancssorból futtatta a helyi számítógépen, és az az PowerShell-modul 1,0-es vagy újabb verzióját használja, akkor folytathatja a felületet.
@@ -145,9 +145,9 @@ mstsc /v:<publicIpAddress>
 1. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
     > [!NOTE]
-    > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+    > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -209,7 +209,7 @@ mstsc /v:<publicIpAddress>
 
 1. Zárja be a *myVm2* virtuális géppel létesített távoli asztali kapcsolatot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett a virtuális hálózattal és a virtuális gépekkel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a hozzá tartozó összes erőforrást:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag`:` : felügyelt identitás használata az Azure Storage sas-hitelesítő adatokkal való eléréséhez – Azure ad'
+title: 'Oktatóanyag: `:` felügyelt identitás használata az Azure Storage sas-hitelesítő adatokkal való eléréséhez – Azure ad'
 description: Egy oktatóanyag, amely bemutatja, hogyan használható a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás az Azure Storage eléréséhez, a Storage-fiók elérési kulcsa helyett SAS hitelesítő adatok használatával.
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ editor: daveba
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74232165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608313"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure Storage SAS-hitelesítő adatokkal való eléréséhez
 
@@ -50,7 +50,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Kihagyhatja ezt a l�
 3. Nevezze el a tárfiókot, amelyet később fog használni.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -153,7 +153,7 @@ PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-Ezután létrehozunk egy „test.txt” nevű fájlt. Ezután használja az SAS hitelesítő adatait a `New-AzStorageContent` parancsmaggal való hitelesítéshez, töltse fel a fájlt a blob-tárolóba, majd töltse le a fájlt.
+Ezután létrehozunk egy „test.txt” nevű fájlt. Ezután használja az SAS hitelesítő adatait a parancsmaggal való hitelesítéshez `New-AzStorageContent` , töltse fel a fájlt a blob-tárolóba, majd töltse le a fájlt.
 
 ```bash
 echo "This is a test text file." > test.txt

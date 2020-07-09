@@ -9,30 +9,30 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7936b33c51897c35444a250d82e22870182ca1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608500"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory felügyelt identitásával. Ezt az identitást hitelesítheti az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene használnia a kódban. 
+Az Azure-erőforrások felügyelt identitásai biztosítják az Azure-szolgáltatásokat Azure Active Directory felügyelt identitással. Ezt az identitást hitelesítheti az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene használnia a kódban. 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre, listázhat, törölhet vagy rendelhet hozzá egy szerepkört egy felhasználóhoz rendelt felügyelt identitáshoz az Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
@@ -46,7 +46,7 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fi�
    - **Előfizetés**: válassza ki azt az előfizetést, amely a felhasználó által hozzárendelt felügyelt identitást hozza létre
    - **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, amely tartalmazza a felhasználóhoz rendelt felügyelt identitást, vagy válassza a **meglévő használata** lehetőséget a felhasználó által hozzárendelt felügyelt identitás létrehozásához egy meglévő erőforráscsoporthoz.
    - **Hely**: válasszon egy helyet a felhasználó által hozzárendelt felügyelt identitás telepítéséhez, például az **USA nyugati**régiójában.
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

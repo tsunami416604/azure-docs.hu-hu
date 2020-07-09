@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564023"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
@@ -53,14 +52,14 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 
 | **Beállítás** | **Leírás** |
 |------------|-----------------|
-| **Név** | Az Identity forrás neve. |
+| **Name (Név)** | Az Identity forrás neve. |
 | **A felhasználók alapszintű megkülönböztető neve** | A felhasználók alapszintű megkülönböztető neve. |
 | **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
 | **Tartomány aliasa** | A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
 | **A csoportok alapszintű megkülönböztető neve** | A csoportok alapszintű megkülönböztető neve. |
-| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot `ldap://hostname:port` használja `ldaps://hostname:port`. A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az elsődleges vagy másodlagos LDAP URL-cím használata `ldaps://` esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
+| **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot használja  `ldap://hostname:port`    `ldaps://hostname:port` . A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az  `ldaps://`   elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
 | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
-| **Tanúsítvány kiválasztása** | Ha LDAPS-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor az URL-cím `ldaps://` szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
+| **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor  `ldaps://`   az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
 | **Username** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
 | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 

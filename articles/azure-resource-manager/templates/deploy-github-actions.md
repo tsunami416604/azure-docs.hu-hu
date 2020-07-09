@@ -2,13 +2,13 @@
 title: Resource Manager-sablonok üzembe helyezése GitHub-műveletek használatával
 description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-műveletek használatával telepíteni.
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 07/02/2020
+ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854740"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -78,11 +78,11 @@ Vegyen fel egy Resource Manager-sablont a GitHub-tárházba. Ha még nem rendelk
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-A fájlt bárhová is elhelyezheti a tárházban. A következő szakaszban szereplő munkafolyamat-minta azt feltételezi, hogy a sablonfájl neve **azuredeploy. JSON**, és a rendszer a tárház gyökerében található **sablonok** nevű mappában tárolja.
+A fájlt bárhová is elhelyezheti a tárházban. A következő szakaszban szereplő munkafolyamat-minta azt feltételezi, hogy a sablonfájl neve **azuredeploy.json**, és a rendszer a tárház gyökerében található **sablonok** nevű mappában tárolja.
 
 ## <a name="create-workflow"></a>Munkafolyamat létrehozása
 
-A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolyamat** mappában kell tárolni. A munkafolyamat-fájlkiterjesztés lehet **. YML** vagy **. YAML**.
+A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolyamatok** mappában kell tárolni. A munkafolyamat-fájlkiterjesztés lehet **. YML** vagy **. YAML**.
 
 Létrehozhat egy munkafolyamat-fájlt, majd leküldheti vagy feltöltheti a fájlt a tárházba, vagy használhatja a következő eljárást:
 
@@ -152,6 +152,6 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 1. Válassza a bal oldali menüben a **telepítés – Storage – fiók – sablon** (feladatnév) elemet. A feladatok neve a munkafolyamatban van definiálva.
 1. Válassza ki az **ARM-sablon üzembe helyezése** (lépés neve) elemet a kibontásához. Az REST API választ láthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).

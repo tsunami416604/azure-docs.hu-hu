@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60456174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356151"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
@@ -44,7 +43,7 @@ Győződjön meg arról, hogy az átmenő hitelesítés funkció továbbra is **
 
 Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítés használatával, akkor az Azure AD bejelentkezési képernyőjén a következő, felhasználó által megjelenített hibák egyike jelenhet meg: 
 
-|Hiba|Leírás|Megoldás:
+|Hiba|Description|Megoldás:
 | --- | --- | ---
 |AADSTS80001|Nem lehet csatlakozni a Active Directory|Győződjön meg arról, hogy az ügynök-kiszolgálók ugyanahhoz az AD-erdőhöz tartoznak, mint azok a felhasználók, akiknek a jelszavát érvényesíteni kell, és képesek csatlakozni a Active Directoryhoz.  
 |AADSTS8002|Időtúllépés történt a Active Directoryhoz való csatlakozáskor|Győződjön meg arról, hogy a Active Directory elérhető, és válaszol az ügynökök kéréseire.
@@ -52,13 +51,40 @@ Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítés használatáv
 |AADSTS80005|Az ellenőrzés kiszámíthatatlan webkivételt észlelt|Átmeneti hiba. Próbálja megismételni a kérelmet. Ha a művelet továbbra is sikertelen, forduljon a Microsoft ügyfélszolgálatához.
 |AADSTS80007|Hiba történt a Active Directoryával folytatott kommunikáció során|További információkért tekintse meg az ügynök naplóit, és ellenőrizze, hogy a Active Directory a várt módon működik-e.
 
+### <a name="users-get-invalid-usernamepassword-error"></a>A felhasználók érvénytelen felhasználónevet vagy jelszót kapnak. 
+
+Ez akkor fordulhat elő, ha a felhasználó helyszíni UserPrincipalName (UPN) eltér a felhasználó Felhőbeli egyszerű felhasználónevétől.
+
+Annak ellenőrzéséhez, hogy ez a probléma, először ellenőrizze, hogy az áteresztő hitelesítési ügynök megfelelően működik-e:
+
+
+1. Hozzon létre egy teszt fiókot.  
+2. Importálja a PowerShell-modult az ügynök gépére:
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. Futtassa a PowerShell meghívása parancsot: 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. Amikor a rendszer a hitelesítő adatok megadását kéri, adja meg a bejelentkezéshez használt felhasználónevet és jelszót ( https://login.microsoftonline.com) ).
+
+Ha ugyanazzal a Felhasználónév/jelszóval kapcsolatos hibaüzenetet kap, ez azt jelenti, hogy az áteresztő hitelesítési ügynök megfelelően működik, és a probléma az lehet, hogy a helyszíni UPN nem irányítható. További tudnivalókért tekintse meg az [alternatív bejelentkezési azonosító konfigurálását]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)ismertető témakört.
+
+
+
+
+
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Bejelentkezési hibák okai a Azure Active Directory felügyeleti központban (prémium szintű licencre van szükség)
 
 Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejelentkezési tevékenységről szóló jelentést](../reports-monitoring/concept-sign-ins.md) is megtekintheti a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/).
 
 ![Azure Active Directory felügyeleti központ – bejelentkezési jelentés](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-**Azure Active Directory** -> **Jelentkezzen** be a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/) , és kattintson egy adott felhasználó bejelentkezési tevékenységére. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és feloldásának a következő táblázat használatával:
+**Azure Active Directory**  ->  **Jelentkezzen** be a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/) , és kattintson egy adott felhasználó bejelentkezési tevékenységére. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és feloldásának a következő táblázat használatával:
 
 |Bejelentkezési hibakód|Bejelentkezési hiba oka|Megoldás:
 | --- | --- | ---
@@ -123,7 +149,7 @@ Az esetlegesen felmerülő problémák típusától függően különböző hely
 
 ### <a name="azure-ad-connect-logs"></a>Naplók Azure AD Connect
 
-A telepítéssel kapcsolatos hibákért olvassa el a Azure AD Connect naplókat a **\*%ProgramData%\AADConnect\trace-. log**címen.
+A telepítéssel kapcsolatos hibákért olvassa el a Azure AD Connect naplókat a **%ProgramData%\AADConnect\trace- \* . log**címen.
 
 ### <a name="authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplói
 
@@ -133,7 +159,7 @@ A részletes elemzéshez engedélyezze a "munkamenet" naplót (kattintson a jobb
 
 ### <a name="detailed-trace-logs"></a>Részletes nyomkövetési naplók
 
-A felhasználók bejelentkezési hibáinak elhárításához keresse meg a nyomkövetési naplókat a **%PROGRAMDATA%\MICROSOFT\AZURE ad kapcsolódási hitelesítési Agent\Trace\\**. Ezek a naplók magukban foglalják, hogy egy adott felhasználói bejelentkezés miért nem sikerült az átmenő hitelesítés funkció használatával. Ezek a hibák az előző bejelentkezési hiba okainak táblázatában látható bejelentkezési hibák okaira is leképezhetők. A következő példa egy naplóbejegyzés:
+A felhasználók bejelentkezési hibáinak elhárításához keresse meg a nyomkövetési naplókat a **%PROGRAMDATA%\MICROSOFT\AZURE ad kapcsolódási hitelesítési Agent\Trace \\ **. Ezek a naplók magukban foglalják, hogy egy adott felhasználói bejelentkezés miért nem sikerült az átmenő hitelesítés funkció használatával. Ezek a hibák az előző bejelentkezési hiba okainak táblázatában látható bejelentkezési hibák okaira is leképezhetők. A következő példa egy naplóbejegyzés:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

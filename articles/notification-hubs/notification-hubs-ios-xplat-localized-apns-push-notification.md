@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72385661"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Oktatóanyag: honosított leküldéses értesítések küldése iOS-re az Azure Notification Hubs
@@ -82,7 +82,7 @@ A sablonokkal kapcsolatos további információkért lásd: [sablonok](notificat
 
 Ebben a szakaszban a következő témakörben létrehozott Breaking News-alkalmazást módosítja, amely a honosított híreket a sablonok használatával küldi el a honosított Hírek küldéséhez [Notification Hubs használatával] .
 
-A `MainStoryboard_iPhone.storyboard`-ben adjon hozzá egy szegmentált vezérlőelemet a három nyelvhez: angol, francia és mandarin.
+A `MainStoryboard_iPhone.storyboard` -ben adjon hozzá egy szegmentált vezérlőelemet a három nyelvhez: angol, francia és mandarin.
 
 ![Az iOS felhasználói felület létrehozása – történet][13]
 
@@ -92,7 +92,7 @@ Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen l�
 
 ## <a name="build-the-ios-app"></a>Az iOS-alkalmazás létrehozása
 
-1. `Notification.h`A alkalmazásban adja hozzá `retrieveLocale` a metódust, és módosítsa az áruház és az előfizetés metódusait az alábbi kódban látható módon:
+1. A alkalmazásban `Notification.h` adja hozzá a `retrieveLocale` metódust, és módosítsa az áruház és az előfizetés metódusait az alábbi kódban látható módon:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen l�
 
     - (int) retrieveLocale;
     ```
-    `Notification.m`A alkalmazásban módosítsa a `storeCategoriesAndSubscribe` metódust úgy, hogy `locale` hozzáadja a paramétert, és a felhasználói alapértelmezésekben tárolja azt:
+    A alkalmazásban `Notification.m` módosítsa a `storeCategoriesAndSubscribe` metódust úgy, hogy hozzáadja a `locale` paramétert, és a felhasználói alapértelmezésekben tárolja azt:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen l�
     }
     ```
 
-    A metódust `registerTemplateWithDeviceToken`használja a helyett `registerNativeWithDeviceToken`. Ha regisztrál egy sablont, meg kell adnia a JSON-sablont és a sablon nevét is (mivel az alkalmazásnak más sablonokat is regisztrálnia kell). Ügyeljen arra, hogy a kategóriákat címkékként regisztrálja, mivel szeretné megkapni az adott híreket érintő értesítéseket.
+    A metódust használja a `registerTemplateWithDeviceToken` helyett `registerNativeWithDeviceToken` . Ha regisztrál egy sablont, meg kell adnia a JSON-sablont és a sablon nevét is (mivel az alkalmazásnak más sablonokat is regisztrálnia kell). Ügyeljen arra, hogy a kategóriákat címkékként regisztrálja, mivel szeretné megkapni az adott híreket érintő értesítéseket.
 
     Adjon hozzá egy metódust a területi beállítás lekéréséhez a felhasználói alapértelmezett beállítások közül:
 
@@ -155,13 +155,13 @@ Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen l�
     }
     ```
 
-2. Most, hogy módosította `Notifications` az osztályt, meg kell győződnie arról `ViewController` , hogy az új `UISegmentControl`használatot tesz lehetővé. Adja hozzá a következő sort a `viewDidLoad` metódushoz, és győződjön meg arról, hogy az aktuálisan kiválasztott területi beállítás látható:
+2. Most, hogy módosította az `Notifications` osztályt, meg kell győződnie arról, hogy az `ViewController` új használatot tesz lehetővé `UISegmentControl` . Adja hozzá a következő sort a `viewDidLoad` metódushoz, és győződjön meg arról, hogy az aktuálisan kiválasztott területi beállítás látható:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Ezután a `subscribe` metódusban módosítsa a hívást `storeCategoriesAndSubscribe` a következő kódra:
+    Ezután a `subscribe` metódusban módosítsa a hívást a `storeCategoriesAndSubscribe` következő kódra:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -176,7 +176,7 @@ Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen l�
     }];
     ```
 
-3. Végül frissítenie kell a `didRegisterForRemoteNotificationsWithDeviceToken` metódust a AppDelegate. m-ben, hogy megfelelően frissítse a regisztrációt az alkalmazás indításakor. Változtassa meg az értesítések `subscribe` metódusának hívását a következő kóddal:
+3. Végül frissítenie kell a `didRegisterForRemoteNotificationsWithDeviceToken` metódust a AppDelegate. m-ben, hogy megfelelően frissítse a regisztrációt az alkalmazás indításakor. Változtassa meg az `subscribe` értesítések metódusának hívását a következő kóddal:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -194,7 +194,7 @@ Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen l�
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>választható Honosított sablon értesítéseinek küldése az eszközről
 
-Ha nincs hozzáférése a Visual studióhoz, vagy csak tesztelni szeretné a honosított sablon értesítéseinek küldését közvetlenül az eszközről az alkalmazásból. A honosított sablon paramétereit hozzáadhatja az előző `SendNotificationRESTAPI` oktatóanyagban megadott metódushoz.
+Ha nincs hozzáférése a Visual studióhoz, vagy csak tesztelni szeretné a honosított sablon értesítéseinek küldését közvetlenül az eszközről az alkalmazásból. A honosított sablon paramétereit hozzáadhatja az `SendNotificationRESTAPI` előző oktatóanyagban megadott metódushoz.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag

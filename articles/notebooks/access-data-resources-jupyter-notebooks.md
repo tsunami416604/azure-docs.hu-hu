@@ -3,22 +3,23 @@ title: Jupyter-jegyzetfüzetekben tárolt adathozzáférések – Azure Notebook
 description: Megtudhatja, hogyan érheti el a fájlokat, a REST API-kat, az adatbázisokat és a különböző Azure Storage-erőforrásokat egy Jupyter-jegyzetfüzetből.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646347"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833485"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Felhőbeli adatok elérése egy jegyzetfüzetben
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 A Jupyter-jegyzetfüzetben érdekes munkát kell végezni. Az adat valóban a jegyzetfüzetek éltető eleme.
 
-Az [adatfájlok természetesen egy projektbe is importálhatók](work-with-project-data-files.md), akár egy jegyzetfüzetből `curl` származó parancsok használatával is, közvetlenül a fájl letöltéséhez. Azonban valószínű, hogy a nem fájlokból, például a REST API-kkal, a rokon adatbázisokkal és a Felhőbeli tárolással, például az Azure Tables szolgáltatással elérhető, sokkal átfogóbb adatokkal kell dolgoznia.
+Az [adatfájlok természetesen egy projektbe is importálhatók](work-with-project-data-files.md), akár `curl` egy jegyzetfüzetből származó parancsok használatával is, közvetlenül a fájl letöltéséhez. Azonban valószínű, hogy a nem fájlokból, például a REST API-kkal, a rokon adatbázisokkal és a Felhőbeli tárolással, például az Azure Tables szolgáltatással elérhető, sokkal átfogóbb adatokkal kell dolgoznia.
 
 Ez a cikk röviden ismerteti ezeket a különböző lehetőségeket. Mivel az adathozzáférés a legjobb működésben látható, futtatható kódot talál a [Azure Notebooks-mintákban – hozzáférhet az adataihoz](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API-k
 
@@ -41,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL-adatbázisok
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database és az SQL felügyelt példánya
 
-SQL Server adatbázisokhoz a pyodbc vagy a pymssql függvénytárak segítségével férhet hozzá.
+A pyodbc-vagy pymssql-kódtárak segítségével elérheti SQL Database vagy SQL felügyelt példányban található adatbázisokat.
 
-A [Python használatával lekérdezheti az Azure SQL Database-t](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) , és útmutatást nyújt a AdventureWorks tartalmazó adatbázisok létrehozásához, és bemutatja, hogyan lehet lekérdezni ezeket az információkat. Ugyanez a kód jelenik meg a minta jegyzetfüzetben ehhez a cikkhez.
+A [Python használata Azure SQL Database-adatbázis lekérdezéséhez](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) útmutatást nyújt az adatbázisok létrehozásához a AdventureWorks-t tartalmazó SQL Databaseban, és bemutatja, hogyan lehet lekérdezni ezeket az információkat. Ugyanez a kód jelenik meg a minta jegyzetfüzetben ehhez a cikkhez.
 
 ## <a name="azure-storage"></a>Azure Storage
 

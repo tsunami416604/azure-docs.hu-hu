@@ -11,17 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: f6b705da74fc939cab5f72e6335278207b98dc1a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343319"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi a Azure SQL Database önálló adatbázisa?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Az önálló adatbázis erőforrástípus egy adatbázist hoz létre Azure SQL Database saját erőforrásaival, és a [kiszolgáló](logical-servers.md)használatával felügyeli. Egyetlen adatbázis esetében minden adatbázis el van különítve egymástól és hordozható számítógépektől, amelyek mindegyike saját szolgáltatási réteggel rendelkezik a [DTU-alapú vásárlási modellben](service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellben](service-tiers-vcore.md) , valamint egy garantált számítási méretet.
+Az önálló adatbázis erőforrástípus egy adatbázist hoz létre Azure SQL Database saját erőforrásaival, és a [kiszolgáló](logical-servers.md)használatával felügyeli. Egyetlen adatbázis esetében minden adatbázis elkülönített és hordozható. Mindegyik saját szolgáltatási réteggel rendelkezik a [DTU-alapú vásárlási modellen](service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellen](service-tiers-vcore.md) belül, valamint egy garantált számítási mérettel.
 
 > [!IMPORTANT]
 > Az önálló adatbázis az Azure SQL Database egyik erőforrás-típusa. A másik a [rugalmas készletek](elastic-pool-overview.md).
@@ -46,7 +45,7 @@ Az önálló adatbázisok és a rugalmas készletek számos rendelkezésre áll�
 
 Az alkalmazások által használt legtöbb Transact-SQL-szolgáltatás teljes mértékben támogatott Microsoft SQL Server és Azure SQL Database egyaránt. Például az alapvető SQL-összetevők, például az adattípusok, a operátorok, a karakterláncok, a aritmetikai, a logikai és a kurzor függvények azonos módon működnek SQL Server és SQL Database. Van azonban néhány, a DDL (adatdefiníciós nyelv) és a DML (adatmanipulációs nyelv) elemeinek néhány T-SQL-eltérése, ami csak részben támogatott T-SQL-utasításokat és-lekérdezéseket eredményez (amit a cikk későbbi részében tárgyalunk).
 
-Emellett vannak olyan szolgáltatások és szintaxisok is, amelyek nem támogatottak, mert Azure SQL Database úgy van kialakítva, hogy elkülönítse a szolgáltatásokat a főadatbázis és az operációs rendszer függőségeitől. Ennek megfelelően a legtöbb kiszolgálói szintű tevékenység nem megfelelő a SQL Database számára. A T-SQL-utasítások és-beállítások nem érhetők el, ha a kiszolgálói szintű beállításokat, az operációs rendszer összetevőit vagy a fájlrendszer konfigurációját konfigurálja. Ha ilyen képességekre van szükség, a megfelelő alternatíva gyakran elérhető más módon, SQL Database vagy egy másik Azure-szolgáltatásból vagy-szolgáltatásból.
+Emellett vannak olyan szolgáltatások és szintaxisok is, amelyek nem támogatottak, mert Azure SQL Database úgy van kialakítva, hogy elkülönítse a szolgáltatásokat a főadatbázis és az operációs rendszer függőségeitől. Ennek megfelelően a legtöbb kiszolgálói szintű tevékenység nem megfelelő a SQL Database számára. A T-SQL-utasítások és-beállítások nem érhetők el, ha kiszolgálói szintű beállításokat konfigurálnak, az operációs rendszer összetevőinek konfigurálását vagy a fájlrendszer konfigurációjának megadását. Ha ilyen képességekre van szükség, a megfelelő alternatíva gyakran elérhető más módon, SQL Database vagy egy másik Azure-szolgáltatásból vagy-szolgáltatásból.
 
 További információ: [Transact-SQL különbségek feloldása az áttelepítés során SQL Databasera](transact-sql-tsql-differences-sql-server.md).
 
@@ -55,7 +54,7 @@ További információ: [Transact-SQL különbségek feloldása az áttelepítés
 SQL Database számos [beépített biztonsági és megfelelőségi](security-overview.md) funkciót kínál, amelyek segítségével az alkalmazás megfelel a különböző biztonsági és megfelelőségi követelményeknek.
 
 > [!IMPORTANT]
-> A Azure SQL Database számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
+> A Azure SQL Database számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
 
 ## <a name="next-steps"></a>További lépések
 

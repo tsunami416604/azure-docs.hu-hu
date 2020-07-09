@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846670"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ A cikk a következő eszközöket használja:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager sablon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager-sablon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric platform eseményei
 Service Fabric beállítja a beépített [naplózási csatornákat](service-fabric-diagnostics-event-generation-infra.md), amelyek a következő csatornákat előre konfigurálták a bővítménnyel, hogy a figyelési és diagnosztikai adatait egy Storage-táblába vagy máshová küldje el:
@@ -63,12 +63,12 @@ Most, hogy az Azure Storage-ban összesíti az eseményeket, [állítson be Azur
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Hozzon létre egy fürtöt a diagnosztikai bővítménnyel
 Ha a Resource Manager használatával szeretne fürtöt létrehozni, hozzá kell adnia a diagnosztikai konfiguráció JSON-t a teljes Resource Manager-sablonhoz. A Resource Manager-sablonok mintáinak részeként egy öt virtuális gépre kiterjedő Resource Manager-sablont biztosítunk, amely diagnosztikai konfigurációval bővült. Ezt a helyet az Azure Samples katalógusában tekintheti meg: [öt csomópontos fürt diagnosztika Resource Manager-sablonnal](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
-A Resource Manager-sablon diagnosztikai beállításának megtekintéséhez nyissa meg a azuredeploy. JSON fájlt, és keressen rá a **IaaSDiagnostics**kifejezésre. Ha a sablon használatával szeretne fürtöt létrehozni, válassza az előző hivatkozáson elérhető **üzembe helyezés az Azure-** ban gombot.
+Ha a Resource Manager-sablonban szeretné megtekinteni a diagnosztikai beállítást, nyissa meg a azuredeploy.jsfájlt, és keresse meg a **IaaSDiagnostics**. Ha a sablon használatával szeretne fürtöt létrehozni, válassza az előző hivatkozáson elérhető **üzembe helyezés az Azure-** ban gombot.
 
-Azt is megteheti, hogy letölti a Resource Manager-mintát, módosítja azt, és létrehoz egy fürtöt a módosított sablonnal `New-AzResourceGroupDeployment` a paranccsal egy Azure PowerShell ablakban. Tekintse meg a következő kódot a parancshoz megadott paraméterekhez. Az erőforráscsoportok PowerShell használatával történő üzembe helyezésével kapcsolatos részletes információkért tekintse meg az [erőforráscsoport üzembe helyezése a Azure Resource Manager sablonnal](../azure-resource-manager/templates/deploy-powershell.md)című cikket.
+Azt is megteheti, hogy letölti a Resource Manager-mintát, módosítja azt, és létrehoz egy fürtöt a módosított sablonnal a `New-AzResourceGroupDeployment` paranccsal egy Azure PowerShell ablakban. Tekintse meg a következő kódot a parancshoz megadott paraméterekhez. Az erőforráscsoportok PowerShell használatával történő üzembe helyezésével kapcsolatos részletes információkért tekintse meg az [erőforráscsoport üzembe helyezése a Azure Resource Manager sablonnal](../azure-resource-manager/templates/deploy-powershell.md)című cikket.
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>A diagnosztikai bővítmény hozzáadása egy meglévő fürthöz
-Ha olyan meglévő fürttel rendelkezik, amelyen nincs telepítve a diagnosztika, a fürt sablonján keresztül is hozzáadhatja vagy frissítheti azt. Módosítsa a meglévő fürt létrehozásához használt Resource Manager-sablont, vagy töltse le a sablont a portálról a korábban leírtak szerint. Módosítsa a template. JSON fájlt a következő feladatok végrehajtásával:
+Ha olyan meglévő fürttel rendelkezik, amelyen nincs telepítve a diagnosztika, a fürt sablonján keresztül is hozzáadhatja vagy frissítheti azt. Módosítsa a meglévő fürt létrehozásához használt Resource Manager-sablont, vagy töltse le a sablont a portálról a korábban leírtak szerint. Módosítsa a fájl template.jsa következő feladatok végrehajtásával:
 
 Vegyen fel egy új tárolási erőforrást a sablonba az erőforrások szakasz hozzáadásával.
 
@@ -89,7 +89,7 @@ Vegyen fel egy új tárolási erőforrást a sablonba az erőforrások szakasz h
 },
 ```
 
- Ezután adja hozzá a paramétereket szakaszhoz közvetlenül a Storage-fiókok definíciói között `supportLogStorageAccountName`. Cserélje le a helyőrző szöveges *Storage-fiók nevét* a kívánt Storage-fiók nevére.
+ Ezután adja hozzá a paramétereket szakaszhoz közvetlenül a Storage-fiókok definíciói között `supportLogStorageAccountName` . Cserélje le a helyőrző szöveges *Storage-fiók nevét* a kívánt Storage-fiók nevére.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -111,7 +111,7 @@ Vegyen fel egy új tárolási erőforrást a sablonba az erőforrások szakasz h
       }
     },
 ```
-Ezután frissítse a Template `VirtualMachineProfile` . JSON fájl szakaszát úgy, hogy hozzáadja a következő kódot a bővítmények tömbben. Ügyeljen arra, hogy a beillesztés helyétől függően egy vesszőt adjon hozzá a kezdethez vagy a végéhez.
+Ezután frissítse a `VirtualMachineProfile` template.jsfájljának szakaszát úgy, hogy hozzáadja a következő kódot a bővítmények tömbben. Ügyeljen arra, hogy a beillesztés helyétől függően egy vesszőt adjon hozzá a kezdethez vagy a végéhez.
 
 ```json
 {
@@ -177,7 +177,7 @@ Ezután frissítse a Template `VirtualMachineProfile` . JSON fájl szakaszát ú
 }
 ```
 
-Miután módosította a template. JSON fájlt, tegye közzé újra a Resource Manager-sablont. Ha a sablon exportálása megtörtént, a Deploy. ps1 fájl futtatása újból közzéteszi a sablont. A telepítést követően győződjön meg arról, hogy a **ProvisioningState** **sikeres**volt.
+Miután a leírtak szerint módosította a template.jsfájlt, tegye közzé újra a Resource Manager-sablont. Ha a sablon exportálása megtörtént, a deploy.ps1 fájl futtatása újból közzéteszi a sablont. A telepítést követően győződjön meg arról, hogy a **ProvisioningState** **sikeres**volt.
 
 > [!TIP]
 > Ha tárolókat helyez üzembe a fürtön, engedélyezze a WAD-t a Docker-statisztika felvételéhez, ha hozzáadja ezt a **WadCfg > DiagnosticMonitorConfiguration** szakaszhoz.
@@ -193,7 +193,7 @@ Miután módosította a template. JSON fájlt, tegye közzé újra a Resource Ma
 
 ### <a name="update-storage-quota"></a>Tárolási kvóta frissítése
 
-Mivel a bővítmény által kitöltött táblák a kvóta megtalálata előtt növekednek, érdemes megfontolni a kvóta méretének csökkentését. Az alapértelmezett érték 50 GB, és a sablon alatt, a alatti `overallQuotaInMB` területen konfigurálható`DiagnosticMonitorConfiguration`
+Mivel a bővítmény által kitöltött táblák a kvóta megtalálata előtt növekednek, érdemes megfontolni a kvóta méretének csökkentését. Az alapértelmezett érték 50 GB, és a sablon alatt, a `overallQuotaInMB` alatti területen konfigurálható`DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -229,7 +229,7 @@ A további csatornákból származó naplók is elérhetők gyűjteményként, �
 >Ez a csatorna nagyon nagy mennyiségű eseményt tartalmaz, így a részletes csatornán keresztüli események gyűjtése lehetővé teszi a gyors nyomkövetést, és a tárolási kapacitást is felhasználhatja. Csak akkor kapcsolja be ezt a beállítást, ha feltétlenül szükséges.
 
 
-Ahhoz, hogy az **alapszintű operatív csatorna** a lehető legkevesebb zajjal rendelkező átfogó naplózásra legyen `EtwManifestProviderConfiguration` ajánlva `WadCfg` , a sablonban a következőhöz hasonlóan fog kinézni:
+Ahhoz, hogy az **alapszintű operatív csatorna** a lehető legkevesebb zajjal rendelkező átfogó naplózásra legyen ajánlva, a `EtwManifestProviderConfiguration` `WadCfg` sablonban a következőhöz hasonlóan fog kinézni:
 
 ```json
   "WadCfg": {
@@ -282,7 +282,7 @@ Ahhoz, hogy az **alapszintű operatív csatorna** a lehető legkevesebb zajjal r
 
 Ha frissíteni szeretné a diagnosztikát, hogy olyan új EventSource-csatornákból gyűjtse be a naplókat, amelyek új alkalmazást kívánnak telepíteni, hajtsa végre a meglévő fürthöz tartozó diagnosztika beállításához korábban ismertetett lépéseket.
 
-A sablon `EtwEventSourceProviderConfiguration` . JSON fájl szakaszának frissítésével adja hozzá a bejegyzéseket az új EventSource csatornákhoz, mielőtt alkalmazza a konfigurációs frissítést a `New-AzResourceGroupDeployment` PowerShell-parancs használatával. Az eseményforrás neve a kód részeként van definiálva a Visual Studio által generált ServiceEventSource.cs fájlban.
+A `EtwEventSourceProviderConfiguration` konfigurációs frissítés a PowerShell-paranccsal való alkalmazása előtt frissítse a fájl template.jsjának szakaszát az új EventSource-csatornák bejegyzéseinek hozzáadásához `New-AzResourceGroupDeployment` . Az eseményforrás neve a kód részeként van definiálva a Visual Studio által generált ServiceEventSource.cs fájlban.
 
 Ha például az eseményforrás neve My-EventSource, adja hozzá a következő kódot, amely az eseményeket a saját EventSource egy MyDestinationTableName nevű táblába helyezi.
 
@@ -300,7 +300,7 @@ A teljesítményszámlálók és az eseménynaplók összegyűjtéséhez módos�
 
 ## <a name="collect-performance-counters"></a>Teljesítményszámlálók gyűjtése
 
-A teljesítmény-mérőszámok fürtből való összegyűjtéséhez adja hozzá a teljesítményszámlálókat a "WadCfg > DiagnosticMonitorConfiguration" a fürt Resource Manager-sablonjában. Tekintse meg a [teljesítmény figyelése a wad](service-fabric-diagnostics-perf-wad.md) `WadCfg` -mel című témakört, amely az adott teljesítményszámlálók gyűjtésének módosítására szolgál. A begyűjtést javasolt teljesítményszámlálók listáját [Service Fabric teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) .
+A teljesítmény-mérőszámok fürtből való összegyűjtéséhez adja hozzá a teljesítményszámlálókat a "WadCfg > DiagnosticMonitorConfiguration" a fürt Resource Manager-sablonjában. Tekintse meg a [teljesítmény figyelése a wad](service-fabric-diagnostics-perf-wad.md) -mel című témakört, amely az `WadCfg` adott teljesítményszámlálók gyűjtésének módosítására szolgál. A begyűjtést javasolt teljesítményszámlálók listáját [Service Fabric teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) .
   
 Ha Application Insights fogadót használ az alábbi részben leírtak szerint, és szeretné, hogy ezek a metrikák megjelenjenek a Application Insightsban, akkor ügyeljen arra, hogy a fent látható módon adja hozzá a fogadó nevét a "mosogatók" szakaszban. Ez automatikusan elküldi a Application Insights erőforráshoz egyedileg konfigurált teljesítményszámlálókat.
 
@@ -324,7 +324,7 @@ Fürt létrehozásakor, ha a diagnosztika "bekapcsolva" értékre van kapcsolva,
 
 A Resource Manager-sablon "WadCfg" vegyen fel egy "fogadót" a következő két módosítással együtt:
 
-1. Adja hozzá a fogadó konfigurációt közvetlenül a deklarálása `DiagnosticMonitorConfiguration` után:
+1. Adja hozzá a fogadó konfigurációt közvetlenül a deklarálása után `DiagnosticMonitorConfiguration` :
 
     ```json
     "SinksConfig": {
@@ -338,7 +338,7 @@ A Resource Manager-sablon "WadCfg" vegyen fel egy "fogadót" a következő két 
 
     ```
 
-2. `DiagnosticMonitorConfiguration` A fogadót a következő sor `DiagnosticMonitorConfiguration` hozzáadásával adja meg a `WadCfg` (közvetlenül a `EtwProviders` deklarált előtt):
+2. A fogadót a `DiagnosticMonitorConfiguration` következő sor hozzáadásával adja meg a `DiagnosticMonitorConfiguration` `WadCfg` (közvetlenül a `EtwProviders` deklarált előtt):
 
     ```json
     "sinks": "applicationInsights"

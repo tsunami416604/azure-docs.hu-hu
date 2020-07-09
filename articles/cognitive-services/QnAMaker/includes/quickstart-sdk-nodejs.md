@@ -1,45 +1,39 @@
 ---
-title: 'Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár QnA Maker'
-description: Ez a rövid útmutató bemutatja, hogyan kezdheti meg a Node. js-hez készült QnA Maker ügyféloldali kódtárat.
+title: 'Gyors útmutató: QnA Maker ügyféloldali kódtár a Node.js'
+description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node.js QnA Maker ügyféloldali kódtár használatának első lépéseit.
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.openlocfilehash: 48038c8e7e8250190d79aba7901567e18881e912
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 06/18/2020
+ms.openlocfilehash: 7b3c5e69e820951896cb00b82295dc07ba698c94
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204019"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114533"
 ---
-A Node. js-hez készült QnA Maker ügyféloldali kódtár a következőhöz használható:
+A Node.js a QnA Maker ügyféloldali kódtár használatával:
 
 * Tudásbázis létrehozása
 * Tudásbázis frissítése
 * Tudásbázis közzététele
-* Közzétett végponti kulcs beolvasása
+* Előrejelzési futtatókörnyezet végponti kulcsának beolvasása
 * Várakozás a hosszan futó feladatra
+* Tudásbázis letöltése
+* Válasz kérése
 * Tudásbázis törlése
 
-[A dokumentációs](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [-csomagjához (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | tartozó[Node. js-minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Node. js](https://nodejs.org)jelenlegi verziója.
-* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy [QnA Maker erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) a Azure Portal a szerzői kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz**lehetőséget.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás QnA Maker APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag (`F0`) segítségével kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* A [Node.js](https://nodejs.org)aktuális verziója.
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy [QnA Maker erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) a Azure Portalban a szerzői kulcs és az erőforrás beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz**lehetőséget.
+    * Az alkalmazásnak a QnA Maker APIhoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcs-és erőforrás-nevére. A kulcs és az erőforrás nevét a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
-
-### <a name="create-a-qna-maker-azure-resource"></a>QnA Maker Azure-erőforrás létrehozása
-
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával.
-
-Miután beolvasta a kulcsot és a végpontot az erőforrásból, szerezze be az értékeket az új erőforráshoz tartozó Azure Portal, a rövid útmutató lapon.
-
-Hozza létre a és `QNAMAKER_ENDPOINT`a `QNAMAKER_AUTHORING_KEY` nevű [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication). Az [. env. Sample](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/.env.sample) fájlt átmásolhatja, `.env` és használhatja a fájl környezeti változóit.
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -49,7 +43,7 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir qnamaker_quickstart && cd qnamaker_quickstart
 ```
 
-Futtassa a `npm init -y` parancsot egy `package.json` Node-alkalmazás fájlhoz való létrehozásához.
+Futtassa a `npm init -y` parancsot egy Node-alkalmazás fájlhoz való létrehozásához `package.json` .
 
 ```console
 npm init -y
@@ -57,102 +51,147 @@ npm init -y
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a szükséges és választható NPM-csomagokat:
+Telepítse a következő NPM-csomagokat:
 
 ```console
-npm install @azure/cognitiveservices-qnamaker @azure/ms-rest-js dotenv
+npm install @azure/cognitiveservices-qnamaker
+npm install @azure/cognitiveservices-qnamaker-runtime
+npm install @azure/ms-rest-js
 ```
 
-Az alkalmazás `package.json` fájlját a rendszer a függőségekkel frissíti. A `dotenv` nem kötelező, és lehetővé teszi a környezeti változók szöveges fájlban való beállítását. Ne adja meg a `.env` forrás vezérlőelemet.
+Az alkalmazás `package.json` fájlját a rendszer a függőségekkel frissíti.
+
+Hozzon létre egy index.js nevű fájlt, és importálja a következő könyvtárakat:
+
+[!code-javascript[Dependencies](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Dependencies)]
+
+Hozzon létre egy változót az erőforrás Azure-kulcsához és az erőforrás nevéhez. A szerzői műveletek és az előrejelzési URL-címek altartományként is használják az erőforrás nevét.
+
+> [!IMPORTANT]
+> Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés**területen találhatók.
+> A Tudásbázis létrehozásához a teljes kulcsra van szükség. Csak az erőforrás nevére van szükség a végpontból. A formátum `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`.
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) például biztonságos kulcstároló-tárolót biztosít.
+
+[!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Resourcevariables)]
+
+## <a name="object-models"></a>Objektummodell
+
+QnA Maker két különböző objektummodell-modellt használ:
+* A **[QnAMakerClient](#qnamakerclient-object-model)** a Tudásbázis létrehozásához, kezeléséhez, közzétételéhez és letöltéséhez szükséges objektum.
+* A **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** a TUDÁSBÁZIS GenerateAnswer API-val való lekérdezésére szolgáló objektum, és új javasolt kérdések küldése a Train API használatával (az [aktív tanulás](../concepts/active-learning-suggestions.md)részeként).
 
 
-## <a name="object-model"></a>Objektummodell
+### <a name="qnamakerclient-object-model"></a>QnAMakerClient objektummodell
 
-A QnA Maker ügyfél egy [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) objektum, amely a kulcsot tartalmazó ServiceClientCredentials használatával hitelesíti az Azure-t.
+A szerzői QnA Maker ügyfél egy [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) objektum, amely hitelesíti az Azure-t a kulcsát tartalmazó hitelesítő adataival.
 
-Az ügyfél létrehozása után használja a tudásbázist [a Tudásbázis](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) létrehozásához, kezeléséhez és közzétételéhez.
+Miután létrehozta az ügyfelet [, a Tudásbázis használatával hozza](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) létre, kezelje és tegye közzé a tudásbázist.
 
-A tudásbázist egy JSON-objektum küldésével kezelheti. Az azonnali műveletekhez a metódus általában egy JSON-objektumot ad vissza, amely az állapotot jelzi. A hosszú ideig futó műveletek esetében a válasz a művelet azonosítója. Hívja meg az [ügyfelet. Operations. getDetails](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--servicecallback-operation--) metódus a műveleti azonosítóval a [kérelem állapotának](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operationstatetype?view=azure-node-latest)meghatározásához.
+A tudásbázist egy JSON-objektum küldésével kezelheti. Az azonnali műveletekhez a metódus általában egy JSON-objektumot ad vissza, amely az állapotot jelzi. A hosszú ideig futó műveletek esetében a válasz a művelet azonosítója. A [kérelem állapotának](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operation?view=azure-node-latest)meghatározásához hívja meg a [Client. Operations. getDetails](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--msrest-requestoptionsbase-) METÓDUSt a műveleti azonosítóval.
+
+### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient objektummodell
+
+Az előrejelzési QnA Maker ügyfél egy QnAMakerRuntimeClient objektum, amely a Microsoft. Rest. ServiceClientCredentials használatával hitelesíti az Azure-t, amely tartalmazza az előrejelzési futtatókörnyezet kulcsát, amelyet a szerzői ügyfél hívásakor, az [ügyféltől kapott vissza. EndpointKeys. getKeys](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys?view=azure-node-latest#getkeys-msrest-requestoptionsbase-) a Tudásbázis közzététele után.
 
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node. js-hez készült QnA Maker ügyféloldali kódtár használatával:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket az QnA Maker .NET-hez készült ügyféloldali kódtár használatával:
 
+* [A szerzői ügyfél hitelesítése](#authenticate-the-client-for-authoring-the-knowledge-base)
 * [Tudásbázis létrehozása](#create-a-knowledge-base)
 * [Tudásbázis frissítése](#update-a-knowledge-base)
+* [Tudásbázis letöltése](#download-a-knowledge-base)
 * [Tudásbázis közzététele](#publish-a-knowledge-base)
 * [Tudásbázis törlése](#delete-a-knowledge-base)
-* [Közzétett végpont beolvasása](#get-published-endpoint)
+* [Lekérdezés futásidejű kulcsának beolvasása](#get-query-runtime-key)
 * [Művelet állapotának beolvasása](#get-status-of-an-operation)
-
-## <a name="add-the-dependencies"></a>Függőségek hozzáadása
-
-Hozzon létre egy `index.js` nevű fájlt. Adja hozzá a QnA Maker könyvtárat és a függőségeket a fájlhoz.
-
-[!code-javascript[Require statements](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=dependencies)]
-
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
-
-|Környezeti változó|Node. js-változó|Példa|
-|--|--|--|
-|`QNAMAKER_AUTHORING_KEY`|`authoring_key`|A kulcs egy 32 karakterből álló karakterlánc, amely a Azure Portal QnA Maker erőforráson, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.|
-|`QNAMAKER_ENDPOINT`|`endpoint`| A szerzői végpont a formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.|
-||||
-
-[!code-javascript[Azure resource variables](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=resourceSettings)]
-
-## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
-
-Ezután hozzon létre egy ApiKeyCredentials objektumot a kulccsal, és használja a végpontján egy [QnAMakerClient](https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#qnamakerclient-serviceclientcredentials--string--msrest-serviceclientoptions-) objektum létrehozásához. Az ügyfél-objektum segítségével szerezzen be egy [Tudásbázis-ügyfél](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest) objektumot.
+* [A lekérdezési futtatókörnyezet ügyfelének hitelesítése](#authenticate-the-runtime-for-generating-an-answer)
+* [Válasz létrehozása a Tudásbázisból](#generate-an-answer-from-the-knowledge-base)
 
 
-[!code-javascript[Authorization to resource key](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=authorization)]
+
+## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Az ügyfél hitelesítése a Tudásbázis létrehozásához
+
+Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy ServiceClientCredentials objektumot a kulccsal, és használja a végpontján egy [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) objektum létrehozásához.
+
+[!code-javascript[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=AuthorizationAuthor)]
 
 ## <a name="create-a-knowledge-base"></a>Tudásbázis létrehozása
 
 A Tudásbázis a [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) objektumra vonatkozó kérdés-és válasz párokat három forrásból tárolja:
 
 * A **szerkesztői tartalomhoz**használja a [QnADTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest) objektumot.
-* **Fájlok**esetében használja a [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) objektumot.
-* **URL-címek**esetén használja a karakterláncok listáját.
+    * A metaadatok és a követő kérések használatához használja a szerkesztői környezetet, mivel ezeket az adatokat az egyes QnA pár szintjén adja hozzá a rendszer.
+* **Fájlok**esetében használja a [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) objektumot. A FileDTO tartalmazza a fájlnevet, valamint a fájl eléréséhez szükséges nyilvános URL-címet.
+* **URL-címek**esetében a karakterláncok listáját használhatja a nyilvánosan elérhető URL-címek ábrázolására.
+
+A létrehozási lépés a tudásbázishoz tartozó tulajdonságokat is tartalmazza:
+* `defaultAnswerUsedForExtraction`-Ha nem talál választ, a rendszer a visszaadott értéket adja vissza
+* `enableHierarchicalExtraction`-a kinyert QnA-párok közötti gyors kapcsolatok automatikus létrehozása
+* `language`– Amikor létrehoz egy erőforrás első tudásbázisát, állítsa be a nyelvet a Azure Search indexben való használatra.
 
 Hívja meg a [create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) metódust a Tudásbázis információi alapján. A Tudásbázis adatai alapvetően egy JSON-objektum.
 
-Ha a Create metódus visszatér, adja át a visszaadott művelet AZONOSÍTÓját a [wait_for_operation](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez. A wait_for_operation metódus a művelet befejeződése után tér vissza. Elemezheti `resourceLocation` a visszaadott művelet fejlécének értékét az új TUDÁSBÁZIS-azonosító lekéréséhez.
+Ha a Create metódus visszatér, adja át a visszaadott művelet AZONOSÍTÓját a [wait_for_operation](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez. A wait_for_operation metódus a művelet befejeződése után tér vissza. Elemezheti a `resourceLocation` visszaadott művelet fejlécének értékét az új Tudásbázis-azonosító lekéréséhez.
 
-[!code-javascript[Create a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=createKnowledgeBase&highlight=15,30)]
+[!code-javascript[Create a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=CreateKBMethod&highlight=39,46)]
 
-A Tudásbázis sikeres létrehozásához [`wait_for_operation`](#get-status-of-an-operation) győződjön meg arról, hogy a fenti kódban hivatkozott függvény belefoglalása.
+A [`wait_for_operation`](#get-status-of-an-operation) Tudásbázis sikeres létrehozásához győződjön meg arról, hogy a fenti kódban hivatkozott függvény belefoglalása.
 
 ## <a name="update-a-knowledge-base"></a>Tudásbázis frissítése
 
 A tudásbázist a Tudásbázis-azonosító és egy olyan [UpdateKbOperationDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest) használatával frissítheti, amely a DTO objektumok [hozzáadását](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#add), [frissítését](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#update)és [törlését](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#deleteproperty) tartalmazza a [frissítési](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#update-string--updatekboperationdto--msrest-requestoptionsbase-) metódushoz. A DTO is alapvetően JSON-objektumok. A [wait_for_operation](#get-status-of-an-operation) metódus használatával állapítsa meg, hogy a frissítés sikeres volt-e.
 
-[!code-javascript[Update a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=updateKnowledgeBase&highlight=28)]
+[!code-javascript[Update a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=UpdateKBMethod&highlight=74,81)]
 
-Győződjön meg arról, hogy [`wait_for_operation`](#get-status-of-an-operation) a fenti kódban hivatkozott függvény belefoglalása a Tudásbázis sikeres frissítéséhez.
+Győződjön meg arról, hogy a [`wait_for_operation`](#get-status-of-an-operation) fenti kódban hivatkozott függvény belefoglalása a Tudásbázis sikeres frissítéséhez.
+
+## <a name="download-a-knowledge-base"></a>Tudásbázis letöltése
+
+A [letöltési](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#download-string--models-environmenttype--msrest-requestoptionsbase-) módszer használatával letöltheti az adatbázist a [QnADocumentsDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadocumentsdto?view=azure-node-latest)listájára. Ez _nem_ felel meg a QnA Maker portál exportálásának a **Beállítások** lapról, mert ennek a módszernek az eredménye nem TSV-fájl.
+
+[!code-javascript[Download a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=DownloadKB&highlight=2)]
+
 
 ## <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
 Tegye közzé a tudásbázist a [közzétételi](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#publish-string--msrest-requestoptionsbase-) metódus használatával. Ez az aktuálisan mentett és betanított modellt veszi alapul, amelyet a Tudásbázis-azonosító hivatkozik, és egy végponton teszi közzé. A HTTP-válasz kódjának ellenőrzésével ellenőrizze, hogy a közzététel sikeres volt-e.
 
-[!code-javascript[Publish a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=publishKnowledgeBase&highlight=3)]
+[!code-javascript[Publish a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=PublishKB&highlight=3)]
 
 
-## <a name="get-published-endpoint"></a>Közzétett végpont beolvasása
+## <a name="get-query-runtime-key"></a>Lekérdezés futásidejű kulcsának beolvasása
 
-A Tudásbázis közzétételét követően a közzétett tudásbázist a lekérdezés előrejelzési futtatókörnyezetének "generateAnswer API" használatával érheti el. Ennek elvégzéséhez szüksége lesz a futtatókörnyezet végponti kulcsára. Ez nem ugyanaz, mint a szerzői kulcs.
+Miután közzétette a tudásbázist, szüksége lesz a lekérdezés futásidejű kulcsára a futtatókörnyezet lekérdezéséhez. Ez nem ugyanaz a kulcs, amely az eredeti ügyfél-objektum létrehozásához használatos.
 
-[!code-javascript[Get endpoint keys](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=getEndpointKeys&highlight=3)]
+A [EndpointKeysDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeysdto?view=azure-node-latest) osztály beszerzéséhez használja a [EndpointKeys. getKeys](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys?view=azure-node-latest) metódust.
 
-A rendszer két végponti kulcsot ad vissza a hívásból. Csak egy szükséges a futásidejű végpont eléréséhez.
+Használja az objektumban visszaadott kulcs-tulajdonságok egyikét a Tudásbázis lekérdezéséhez.
+
+[!code-javascript[Get query runtime key](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GetQueryEndpointKey&highlight=4)]
+
+## <a name="authenticate-the-runtime-for-generating-an-answer"></a>A futtatókörnyezet hitelesítése a válasz létrehozásához
+
+Hozzon létre egy QnAMakerRuntimeClient, amely lekérdezi a tudásbázist az aktív tanulásból kapott válasz vagy képzés létrehozásához.
+
+[!code-javascript[Authenticate the runtime](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=AuthorizationQuery)]
+
+A QnAMakerRuntimeClient segítségével választ kaphat az ismeretekből, vagy új, javasolt kérdéseket küldhet az [Active learning](../concepts/active-learning-suggestions.md)tudásbázisában.
+
+## <a name="generate-an-answer-from-the-knowledge-base"></a>Válasz létrehozása a Tudásbázisból
+
+Válasz létrehozása közzétett Tudásbázisból a RuntimeClient. Runtime. generateAnswer metódus használatával. Ez a metódus elfogadja a Tudásbázis AZONOSÍTÓját és a QueryDTO. Hozzáférés a QueryDTO további tulajdonságaihoz, például a legfelső és kontextushoz a csevegési robotban való használatra.
+
+[!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GenerateAnswer&highlight=3)]
+
+Ez egy egyszerű példa a Tudásbázis lekérdezésére. A speciális lekérdezési forgatókönyvek megismeréséhez tekintse át az [egyéb lekérdezési példákat](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md?pivots=url-test-tool-curl#use-curl-to-query-for-a-chit-chat-answer).
 
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
 Törölje a tudásbázist a [delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#deletemethod-string--msrest-requestoptionsbase-) metódus használatával a TUDÁSBÁZIS-azonosító paraméterével.
 
-[!code-javascript[Delete a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=deleteKnowledgeBase&highlight=3)]
+[!code-javascript[Delete a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=DeleteKB&highlight=3)]
 
 ## <a name="get-status-of-an-operation"></a>Művelet állapotának beolvasása
 
@@ -160,47 +199,14 @@ Bizonyos metódusok, például a létrehozás és a frissítés, elegendő időt
 
 Az újrapróbálkozási logikát az alábbi _delayTimer_ hívásával szimulálhatja. Cserélje le ezt a saját újrapróbálkozási logikára.
 
-[!code-javascript[Monitor an operation](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=monitorOperation&highlight=8,13)]
+[!code-javascript[Monitor an operation](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=MonitorOperation&highlight=8)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást a `node index.js` paranccsal az alkalmazás könyvtárából.
-
-A cikkben szereplő kódrészletek mindegyike [elérhető](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js) , és egyetlen fájlként is futtatható.
 
 ```console
 node index.js
 ```
 
-A program az állapotot a konzolra nyomtatja:
-
-```console
-qnamaker_quickstart@1.0.0 start C:\samples\cognitive-services-quickstart-code\javascript\QnAMaker\sdk> node index.js
-
-Operation state - Running
-Operation state - Running
-Operation state - Running
-Operation state - Running
-Operation state - Running
-Operation state - Succeeded
-Create operation 200, KB ID 99df758d-f23f-4931-ab83-e738fe978e69
-Operation state - Running
-Operation state - Running
-Operation state - Running
-Operation state - Succeeded
-Update operation state 200 - HTTP status 200
-Publish request succeeded - HTTP status 204
-GetEndpointKeys request succeeded - HTTP status 200 - primary key 8482830b-681e-400e-b8a3-4016278aba64
-QnA Maker FAQ stored in English language with 1 sources, last updated 2020-01-12T16:54:40Z
-New KB name stored in English language with 1 sources, last updated 2020-01-12T17:32:16Z
-New KB name stored in English language with 1 sources, last updated 2020-01-13T00:27:46Z
-Delete operation state succeeded - HTTP status 204
-done
-```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
-
-* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)található.

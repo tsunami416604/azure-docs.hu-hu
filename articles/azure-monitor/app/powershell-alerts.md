@@ -3,12 +3,12 @@ title: Riasztások beállítása a Application Insightsban a PowerShell használ
 description: Application Insights konfigurációjának automatizálása a metrikák változásairól szóló e-mailek lekéréséhez.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ea33ecfbc02bfed75a66e751ce1788474a6d0e8f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701829"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111303"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 
@@ -32,28 +32,35 @@ Telepítse az Azure PowerShell-modult arra a gépre, amelyen futtatni szeretné 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 Indítsa el Azure PowerShell és [kapcsolódjon az előfizetéséhez](/powershell/azure/overview):
 
-```powershell
-
-    Add-AzAccount
+```azurepowershell
+Add-AzAccount
 ```
 
 
 ## <a name="get-alerts"></a>Riasztások beolvasása
-    Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+
+```azurepowershell
+Get-AzAlertRule -ResourceGroup "Fabrikam" `
+  [-Name "My rule"] `
+  [-DetailedOutput]
+```
 
 ## <a name="add-alert"></a>Riasztás hozzáadása
-    Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
-     -ResourceGroup "{GROUP NAME}" `
-     -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
-     -MetricName "{METRIC NAME}" `
-     -Operator GreaterThan  `
-     -Threshold {NUMBER}   `
-     -WindowSize {HH:MM:SS}  `
-     [-SendEmailToServiceOwners] `
-     [-CustomEmails "EMAIL1@X.COM","EMAIL2@Y.COM" ] `
-     -Location "East US" // must be East US at present
-     -RuleType Metric
 
+```azurepowershell
+Add-AzMetricAlertRule -Name "{ALERT NAME}" `
+  -Description "{TEXT}" `
+  -ResourceGroup "{GROUP NAME}" `
+  -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
+  -MetricName "{METRIC NAME}" `
+  -Operator GreaterThan `
+  -Threshold {NUMBER}  `
+  -WindowSize {HH:MM:SS} `
+  [-SendEmailToServiceOwners] `
+  [-CustomEmails "EMAIL1@X.COM","EMAIL2@Y.COM"] `
+  -Location "East US" // must be East US at present `
+  -RuleType Metric
+```
 
 
 ## <a name="example-1"></a>1\. példa
@@ -61,35 +68,40 @@ Küldjön e-mailt, ha a kiszolgáló HTTP-kérésekre adott válasza 5 percen be
 
 A GUID az előfizetés azonosítója (nem az alkalmazás Instrumentation kulcsa).
 
-    Add-AzMetricAlertRule -Name "slow responses" `
-     -Description "email me if the server responds slowly" `
-     -ResourceGroup "Fabrikam" `
-     -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
-     -MetricName "request.duration" `
-     -Operator GreaterThan `
-     -Threshold 1 `
-     -WindowSize 00:05:00 `
-     -SendEmailToServiceOwners `
-     -Location "East US" -RuleType Metric
+```azurepowershell
+Add-AzMetricAlertRule -Name "slow responses" `
+  -ResourceGroup "Fabrikam" `
+  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -MetricName "request.duration" `
+  -Operator GreaterThan `
+  -Threshold 1 `
+  -WindowSize 00:05:00 `
+  -SendEmailToServiceOwners `
+  -Location "East US" `
+  -RuleType Metric
+```
 
 ## <a name="example-2"></a>2\. példa
 Olyan alkalmazással rendelkezem, amelyben a [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) kifejezést használjuk a "salesPerHour" nevű metrika jelentéséhez. E-mail küldése a munkatársainak, ha a "salesPerHour" a 100 alá esik, és 24 óra átlagot vesz igénybe.
 
-    Add-AzMetricAlertRule -Name "poor sales" `
-     -Description "slow sales alert" `
-     -ResourceGroup "Fabrikam" `
-     -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
-     -MetricName "salesPerHour" `
-     -Operator LessThan `
-     -Threshold 100 `
-     -WindowSize 24:00:00 `
-     -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
-     -Location "East US" -RuleType Metric
+```azurepowershell
+Add-AzMetricAlertRule -Name "poor sales" `
+  -Description "slow sales alert" `
+  -ResourceGroup "Fabrikam" `
+  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -MetricName "salesPerHour" `
+  -Operator LessThan `
+  -Threshold 100 `
+  -WindowSize 24:00:00 `
+  -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
+  -Location "East US" `
+  -RuleType Metric
+```
 
 Ugyanez a szabály használható egy másik nyomkövetési hívás (például TrackEvent vagy trackPageView) [mérési paramétere](../../azure-monitor/app/api-custom-events-metrics.md#properties) használatával jelentett metrika esetében.
 
 ## <a name="metric-names"></a>Metrikák nevei
-| Metrika neve | Képernyő neve | Description |
+| Metrika neve | Képernyő neve | Leírás |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
 | `basicExceptionServer.count` |Kiszolgálói kivételek |Az alkalmazás által eldobott kezeletlen kivételek száma |

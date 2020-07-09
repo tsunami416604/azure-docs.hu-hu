@@ -6,19 +6,19 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213346"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics használata az Azure szinapszis Analytics használatával
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Az Azure Stream Analytics használata az Azure Stream Analyticsszel
 
 A Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely kis késleltetésű, magasan elérhető, skálázható, összetett eseményt biztosít a felhőben tárolt adatfolyam-adatfeldolgozáshoz. Az alapvető tudnivalókat a [Azure stream Analytics bevezetésének](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)olvasásával ismerheti meg. Ezt követően megtudhatja, hogyan hozhat létre teljes körű megoldást a Stream Analytics az [Azure stream Analytics oktatóanyag használatának első lépéseivel](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja az adattárházat kimeneti f
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Adja meg az adatraktárra mutató folyamatos átviteli kimenetet
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 A Azure Portal lépjen a Stream Analytics feladatra, és kattintson a **kimenetek** elemre a **feladatok topológiai** menüjében.
 
@@ -102,7 +102,7 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 A Azure Portal Stream Analytics feladatokhoz kattintson a feladatokra.  Kattintson a ***teszt*** gombra a ***kimenet részletei*** ablaktáblán.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) Ha az adatbázishoz való csatlakozás sikeres volt, megjelenik egy értesítés a portálon.
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)Ha az adatbázishoz való csatlakozás sikeres volt, megjelenik egy értesítés a portálon.
 
 ### <a name="step-6"></a>6. lépés
 

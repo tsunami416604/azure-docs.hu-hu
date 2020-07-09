@@ -1,5 +1,5 @@
 ---
-title: Az Azure Data Factory-Team adatelemzési folyamattal SQL Azure SQL Server
+title: Az Azure Data Factory-Team adatelemzési folyamattal SQL Database SQL Server
 description: Állítson be egy olyan ADF-folyamatot, amely két olyan adatáttelepítési tevékenységet hoz létre, amelyek napi rendszerességgel helyezik át az adatátvitelt a helyszíni és a Felhőbeli adatbázisok között.
 services: machine-learning
 author: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aed35ec583af83e6ee6cb81c4e59e694cef493e1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722492"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086653"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése helyszíni SQL Server-kiszolgálóról SQL Azurera Azure Data Factory
+# <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Adatok áthelyezése SQL Server-adatbázisból a SQL Databaseba Azure Data Factory
 
-Ez a cikk bemutatja, hogyan helyezhetők át az adatok egy helyszíni SQL Server-adatbázisból egy SQL Azure-adatbázisba az Azure Blob Storage használatával a Azure Data Factory (ADF) használatával: Ez a módszer egy olyan támogatott örökölt megközelítés, amely a replikált átmeneti példányok előnyeivel rendelkezik, de [javasoljuk, hogy tekintse meg az adatáttelepítési oldalunkat a legújabb beállításokkal](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+Ez a cikk azt mutatja be, hogyan helyezhetők át adatok egy SQL Server-adatbázisból az Blob Storage Azure-on keresztüli Azure SQL Databasere az Azure Data Factory (ADF) használatával: Ez a módszer egy olyan támogatott örökölt megközelítés, amely a replikált átmeneti példány előnyeivel rendelkezik, de [javasoljuk, hogy tekintse meg az adatáttelepítési oldalunkat a legújabb beállításokkal](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Az adatAzure SQL Databaseba való áthelyezés különböző lehetőségeit összefoglaló táblázatért lásd: az [adatáthelyezés egy Azure SQL Databaseba Azure Machine learning](move-sql-azure.md).
 
@@ -37,13 +37,13 @@ Használjon ADF-et:
 Az ADF lehetővé teszi a feladatok ütemezését és figyelését olyan egyszerű JSON-parancsfájlokkal, amelyek rendszeres időközönként kezelik az adatok áthelyezését. Az ADF más képességekkel is rendelkezik, mint például az összetett műveletek támogatása. Az ADF-vel kapcsolatos további információkért tekintse meg a dokumentációt a következő helyen: [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 ## <a name="the-scenario"></a><a name="scenario"></a>A forgatókönyv
-Beállíthat egy ADF-folyamatot, amely két adatáttelepítési tevékenységet állít össze. A helyszíni SQL Database és a felhőben lévő Azure SQL Database között napi szinten helyezik át az adatátvitelt. A két tevékenység a következők:
+Beállíthat egy ADF-folyamatot, amely két adatáttelepítési tevékenységet állít össze. Az SQL Server-adatbázis és a Azure SQL Database közötti napi rendszerességgel együtt helyezik át az adatátvitelt. A két tevékenység a következők:
 
-* adatok másolása helyszíni SQL Server-adatbázisból egy Azure Blob Storage-fiókba
-* adatok másolása az Azure Blob Storage-fiókból egy Azure SQL Databaseba.
+* Adatok másolása SQL Server-adatbázisból egy Azure Blob Storage-fiókba
+* Adatok másolása az Azure Blob Storage-fiókból a Azure SQL Databaseba.
 
 > [!NOTE]
-> Az itt bemutatott lépéseket az ADF-csapat részletesebb oktatóanyaga alapján alakítottuk ki: [adatokat másolhat egy helyszíni SQL Server-adatbázisból az Azure Blob Storage-ra](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) az adott témakör megfelelő részeire, amennyiben szükséges.
+> Az itt bemutatott lépéseket az ADF-csapat által nyújtott részletesebb oktatóanyag alapján alakítottuk ki: [adatok másolása SQL Server-adatbázisból az Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) -ra az adott témakör megfelelő részeire való hivatkozással, ha szükséges.
 >
 >
 
@@ -60,10 +60,10 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>Töltse fel az adatait a helyszíni SQL Server
-A [New York-i taxi-adatkészletet](https://chriswhong.com/open-data/foil_nyc_taxi/) használjuk az áttelepítési folyamat bemutatására. A New York-i taxi adatkészlete az Azure Blob Storage [NYC](https://www.andresmh.com/nyctaxitrips/)-beli, a Poston megjelenő módon érhető el. Az adatoknak két fájlja van, a trip_data. csv fájl, amely tartalmazza az utazás részleteit, valamint a trip_far. csv fájlt, amely tartalmazza az egyes utazásokhoz fizetett viteldíj részleteit. Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Az adatok feltöltése a SQL Server-példányba
+A [New York-i taxi-adatkészletet](https://chriswhong.com/open-data/foil_nyc_taxi/) használjuk az áttelepítési folyamat bemutatására. A New York-i taxi adatkészlete az Azure Blob Storage [NYC](https://www.andresmh.com/nyctaxitrips/)-beli, a Poston megjelenő módon érhető el. Az adatoknak két fájlja van, a trip_data.csv fájl, amely tartalmazza az utazás részleteit, valamint a trip_far.csv fájlt, amely az egyes utakra fizetett viteldíj részleteit tartalmazza. Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
 
-Az itt megadott eljárást a saját adataihoz igazíthatja, vagy a New York-i taxi-adatkészletben leírt lépéseket követve hajthatja végre. A New York-i taxi-adatkészlet helyszíni SQL Server adatbázisba való feltöltéséhez kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban leírt eljárást. Ezek az utasítások az Azure-beli virtuális gépek SQL Serverére vonatkoznak, de a helyszíni SQL Server való feltöltésének eljárása azonos.
+Az itt megadott eljárást a saját adataihoz igazíthatja, vagy a New York-i taxi-adatkészletben leírt lépéseket követve hajthatja végre. Ha fel szeretné tölteni a New York-i taxi-adatkészletet a SQL Server-adatbázisába, kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban ismertetett eljárást.
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure Data Factory létrehozása
 Az új Azure Data Factory és egy erőforráscsoport létrehozásához szükséges útmutatást a [Azure Portal](https://portal.azure.com/) [hozzon létre Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Nevezze el az új ADF-példány *adfdsp* , és nevezze el a *adfdsprg*létrehozott erőforráscsoportot.
@@ -93,7 +93,7 @@ Olyan táblákat hozhat létre, amelyek a következő parancsfájl-alapú eljár
 
 A táblák JSON-alapú definíciói a következő neveket használják:
 
-* a helyszíni SQL Server-kiszolgáló **neve** *nyctaxi_data*
+* a SQL Server található **táblanév** *nyctaxi_data*
 * a **tároló neve** az Azure Blob Storage-fiókban *ContainerName*
 
 Ehhez az ADF-folyamathoz három táblázatos definíció szükséges:
@@ -108,7 +108,7 @@ Ehhez az ADF-folyamathoz három táblázatos definíció szükséges:
 >
 
 ### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>Helyszíni SQL-tábla
-A helyszíni SQL Server táblázatos definíciója a következő JSON-fájlban van megadva:
+A SQL Server tábla definíciója a következő JSON-fájlban van megadva:
 
 ```json
 {
@@ -138,9 +138,11 @@ A helyszíni SQL Server táblázatos definíciója a következő JSON-fájlban v
 
 Az oszlopnevek nem szerepelnek itt. Az oszlopnevek kiválasztásához adja meg azokat itt is (a részletekért tekintse meg az [ADF dokumentációs](../../data-factory/copy-activity-overview.md) témakört.
 
-Másolja a táblázat JSON-definícióját egy *onpremtabledef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\onpremtabledef.JSON*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *onpremtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\onpremtabledef.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
-    New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+```
 
 
 ### <a name="blob-table"></a><a name="adf-table-blob-store"></a>BLOB-tábla
@@ -171,9 +173,11 @@ A kimeneti blob helyéhez tartozó táblázat definíciója a következő (ez k�
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *bloboutputtabledef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\bloboutputtabledef.JSON*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *bloboutputtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\bloboutputtabledef.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
+```
 
 ### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure táblázat
 A SQL Azure kimenetéhez tartozó táblázat definíciója a következő (ez a séma képezi le a blobból érkező adatokat):
@@ -203,9 +207,11 @@ A SQL Azure kimenetéhez tartozó táblázat definíciója a következő (ez a s
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *tulajdonsága azuresqltable. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\AzureSqlTable.JSON*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *AzureSqlTable.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\AzureSqlTable.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
+```
 
 
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>A folyamat definiálása és létrehozása
@@ -226,12 +232,12 @@ A korábban megadott táblázat-definíciók használatával az ADF-hez tartozó
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
         "activities":
         [
             {
                 "name": "CopyFromSQLtoBlob",
-                "description": "Copy data from on-premises SQL server to blob",
+                "description": "Copy data from SQL Server to blob",
                 "type": "CopyActivity",
                 "inputs": [ {"name": "OnPremSQLTable"} ],
                 "outputs": [ {"name": "OutputBlobTable"} ],
@@ -288,15 +294,19 @@ A korábban megadott táblázat-definíciók használatával az ADF-hez tartozó
 }
 ```
 
-Másolja a folyamat JSON-definícióját egy *pipelinedef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\pipelinedef.JSON*). Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a folyamat JSON-definícióját egy *pipelinedef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\pipelinedef.jsbe*). Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell parancsmaggal:
 
-    New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+```azurepowershell
+New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+```
 
 
 ## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>A folyamat elindítása
 A folyamat mostantól a következő paranccsal futtatható:
 
-    Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+```azurepowershell
+Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+```
 
 A *StartDate* és a *EndDate* paraméter értékeit le kell cserélni azokra a tényleges dátumokra, amelyeknek a folyamatát futtatni kívánja.
 

@@ -4,10 +4,9 @@ description: A felhasználói műveletek és hibák áttekintéséhez használja
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478135"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Tevékenységek naplóinak megtekintése az erőforrásokon végzett műveletek figyeléséhez
@@ -20,7 +19,7 @@ A tevékenységnaplókból a következők állapíthatók meg:
 * a művelet állapota
 * más tulajdonságok értékei, amelyek segíthetnek a művelet megkutatásában
 
-A tevékenység naplója az erőforrások összes írási műveletét (PUT, POST, DELETE) tartalmazza. Olvasási műveleteket (GET) nem tartalmaz. Az erőforrás-műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat.
+A tevékenységnapló az erőforrások összes írási műveletét (PUT, POST, DELETE) tartalmazza. Olvasási műveleteket (GET) nem tartalmaz. Az erőforrás-műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat.
 
 A tevékenységnaplók 90 napig érhetők el. Bármilyen dátumtartományt lekérdezhet, amíg a kezdő dátum legfeljebb 90 nappal korábbra esik.
 
@@ -186,7 +185,7 @@ Az erőforrások változási előzményeit az erőforrás-gráf használatával 
 
 ## <a name="rest-api"></a>REST API
 
-A tevékenység naplójának működéséhez szükséges REST-műveletek a [bepillantást REST API](/rest/api/monitor/)részei. A műveletnapló eseményeinek lekéréséhez tekintse [meg az előfizetés felügyeleti eseményeinek listázása](/rest/api/monitor/activitylogs)című témakört.
+A tevékenységnaplóval végzett munka REST-műveletei az [Insights REST API](/rest/api/monitor/) részét képezik. A tevékenységnapló eseményeinek lekérésével kapcsolatban lásd: [A felügyeleti események listázása egy előfizetésben](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>További lépések
 

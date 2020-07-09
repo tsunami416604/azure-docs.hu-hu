@@ -1,6 +1,6 @@
 ---
 title: SQL-adatszinkronizálás figyelése Azure Monitor naplókkal
-description: Megtudhatja, hogyan figyelheti a SQL-adatszinkronizálásokat Azure Monitor naplók használatával
+description: Megtudhatja, hogyan figyelheti SQL-adatszinkronizálás Azure Monitor naplók használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 6aef6ea5881bbde8eb1c9287eafd3ebdc0f1d18e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343234"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-adatszinkronizálás figyelése Azure Monitor naplókkal 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A SQL-adatszinkronizálási tevékenység naplójának ellenőrzéséhez és a hibák és figyelmeztetések észleléséhez előzőleg ellenőriznie kell SQL-adatszinkronizálás manuálisan a Azure Portal, vagy a PowerShell vagy a REST API használatával. Az ebben a cikkben ismertetett lépéseket követve konfigurálhat egy egyéni megoldást, amely javítja az adatszinkronizálás figyelésének élményét. A megoldás testreszabható úgy, hogy illeszkedjen a forgatókönyvhöz.
 
@@ -80,13 +78,13 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
 1.  A Azure Automation fiók alatt válassza a **runbookok** lapot a folyamat automatizálása alatt.
 
-2.  Válassza a **Runbook hozzáadása** elemet a runbookok lap bal felső sarkában.
+2.  Válassza a **Runbook hozzáadása** lehetőséget a runbookok lap bal felső sarkában.
 
 3.  Válassza **a meglévő Runbook importálása**lehetőséget.
 
 4.  A **Runbook fájl**alatt használja a megadott `DataSyncLogPowerShellRunbook` fájlt. Állítsa a **Runbook típust a következőre** : `PowerShell` . Adja meg a runbook nevét.
 
-5.  Kattintson a **Létrehozás** gombra. Most már rendelkezik egy runbook.
+5.  Válassza a **Létrehozás** lehetőséget. Most már rendelkezik egy runbook.
 
 6.  A Azure Automation fiók alatt válassza a **változók** fület a megosztott erőforrások területen.
 
@@ -100,7 +98,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
     1.  Azure-információk.
 
-    2.  Szinkronizálási csoport adatai.
+    2.  szinkronizálási csoport adatai.
 
     3.  Azure Monitor naplózza az adatokat. Információk megkeresése Azure Portalban | Beállítások | Csatlakoztatott források. Az adatok Azure Monitor naplókba való küldésével kapcsolatos további információkért lásd: [adatok küldése Azure monitor naplókba a http-adatgyűjtő API-val (előzetes verzió)](../../azure-monitor/platform/data-collector-api.md).
 
@@ -124,7 +122,7 @@ A runbook ütemezhet:
 
 5.  Állítsa be az **ismétlődést** ismétlődőre, és állítsa be a kívánt időközt. Használja ugyanazt az intervallumot itt, a parancsfájlban és a Azure Monitor naplókban.
 
-6.  Kattintson a **Létrehozás** gombra.
+6.  Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="check-the-automation"></a>Az Automation ellenõrzése
 
@@ -203,7 +201,7 @@ További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több Felhőbeli és helyszíni adatbázison SQL-adatszinkronizálás az Azure-ban](sql-data-sync-data-sql-server-sql-database.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
     - A PowerShell-lel
         -  [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Azure SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

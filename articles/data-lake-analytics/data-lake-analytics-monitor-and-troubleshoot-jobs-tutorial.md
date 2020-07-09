@@ -6,45 +6,50 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 12/05/2016
-ms.openlocfilehash: 7fb85f179f1e1e1ac873fc7d6d937b34c1d48ada
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 08e14765b2b70f1e2567bd6a9cd2d67ee9aed83b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71316586"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121282"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Feladatok monitorozása az Azure Data Lake Analyticsben az Azure Portallal
 
-**Az összes feladat megjelenítéséhez**
+## <a name="to-see-all-the-jobs"></a>Az összes feladat megjelenítéséhez
 
 1. A Azure Portal kattintson a bal felső sarokban található **Microsoft Azure** elemre.
+
 2. Kattintson a Data Lake Analytics-fiókja nevével ellátott csempére.  A feladatok összegzése megjelenik a **Feladatkezelő** csempén.
 
-    ![Azure Data Lake Analytics feladatok kezelése](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
+   ![Azure Data Lake Analytics feladatok kezelése](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
     A Feladatkezelő áttekintést nyújt a feladatok állapotáról. Figyelje meg, hogy egy sikertelen feladatot észlelt a rendszer.
 3. A feladatok megtekintéséhez kattintson a **feladat-kezelés** csempére. A feladatok a **Futtatás**, a **várólista**és a **Befejezés**szerint vannak kategorizálva. A sikertelen feladatot a **befejezett** szakaszban tekintheti meg. A listában elsőként kell megadnia. Ha sok feladattal rendelkezik, a **szűrő** lehetőségre kattintva megkeresheti a feladatokat.
 
-    ![Azure Data Lake Analytics szűrési feladatok](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
+   ![Azure Data Lake Analytics szűrési feladatok](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
+
 4. Kattintson a sikertelen feladatra a listából a feladatok részleteinek megnyitásához:
 
-    ![Azure Data Lake Analytics sikertelen feladatot](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
+   ![Azure Data Lake Analytics sikertelen feladatot](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
     Figyelje meg az **Újraküldés** gombot. A probléma megoldását követően újra elküldheti a feladatot.
+
 5. A hiba részleteinek megnyitásához kattintson a Kiemelt részre az előző képernyőképen.  A következőhöz hasonlót kell látnia:
 
-    ![Azure Data Lake Analytics sikertelen feladatok részletei](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
+   ![Azure Data Lake Analytics sikertelen feladatok részletei](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    Azt jelzi, hogy a forrás mappája nem található.
+   Azt jelzi, hogy a forrás mappája nem található.
+
 6. Kattintson a **duplikált parancsfájl**elemre.
-7. Az elérési út frissítése a **következőre** :
 
-    /Samples/Data/SearchLog.TSV
+7. Az elérési út frissítése a **következőre** :`/Samples/Data/SearchLog.tsv`
+
 8. Kattintson a **Feladat elküldése** elemre.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
+
 * [Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)
 * [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)

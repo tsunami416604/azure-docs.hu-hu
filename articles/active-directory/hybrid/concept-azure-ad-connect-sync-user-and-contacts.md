@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245495"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése
@@ -47,15 +47,15 @@ Fontos tudnivalók a csoportok Active Directoryról Azure AD-re történő szink
 
     * Ha a csoport *proxyAddress* attribútuma üres, a *mail* -attribútumnak értékkel kell rendelkeznie
 
-    * Ha a csoport *proxyAddress* attribútuma nem üres, tartalmaznia kell legalább egy SMTP-proxy címe értéket. Néhány példa:
+    * Ha a csoport *proxyAddress* attribútuma nem üres, tartalmaznia kell legalább egy SMTP-proxy címe értéket. Az alábbiakban néhány példa következik:
     
       * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup"}* , nem lesz engedélyezve a levelezés az Azure ad-ben. Nincs SMTP-címe.
       
-      * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup", "SMTP\@: johndoe contoso.com"}* az Azure ad-ben levelezésre lesz engedélyezve.
+      * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup", "SMTP: johndoe \@ contoso.com"}* az Azure ad-ben levelezésre lesz engedélyezve.
       
-      * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup", "SMTP\@: johndoe contoso.com"}* az Azure ad-ben is levelezésre engedélyezett lesz.
+      * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup", "SMTP: johndoe \@ contoso.com"}* az Azure ad-ben is levelezésre engedélyezett lesz.
 
-## <a name="contacts"></a>Kapcsolatok
+## <a name="contacts"></a>Kapcsolattartók
 Ha egy másik erdőben lévő felhasználót képviselő kapcsolattartók közösek, az egyesítés & a beszerzést követően, amelyben egy GALSync-megoldás két vagy több Exchange-erdőt is Áthidal. A Contact objektum mindig az összekötő területéről csatlakozik a metaverse-hez a mail attribútum használatával. Ha már van olyan Contact objektum vagy felhasználói objektum, amely ugyanazzal a levelezési névvel rendelkezik, akkor az objektumok együtt csatlakoznak egymáshoz. Ez az **ad – Contact JOIN**elemben található szabályban van konfigurálva. Létezik egy nevű szabály is az **ad-ben – a közös** kapcsolattal együtt, amely a metaverse attribútumhoz tartozó **sourceObjectType** és az állandó **Kapcsolatfelvétel**. Ez a szabály nagyon alacsony prioritású, így ha bármelyik felhasználói objektum ugyanahhoz a metaverse-objektumhoz van csatlakoztatva, akkor a **from ad – User Common** szabály a felhasználó értékével járul hozzá ehhez az attribútumhoz. Ebben a szabályban ez az attribútum akkor fog megjelenni az értéknél, ha nincs felhasználó csatlakoztatva, és az érték felhasználó, ha legalább egy felhasználó található.
 
 Ha egy objektumot az Azure AD-be kíván kiépíteni, a Kimenő szabály a **HRE-hez – a Contact JOIN** egy Contact objektumot hoz létre, ha a metaverse attribútum **sourceObjectType** **kapcsolatra**van beállítva. Ha ez az attribútum a **felhasználó**értékre van állítva, akkor a szabály a **HRE – a felhasználó csatlakoztatása** helyett felhasználói objektumot fog létrehozni.

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062729"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler Beta konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
@@ -159,7 +158,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../active-directory-saas-provisioning-reporting.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

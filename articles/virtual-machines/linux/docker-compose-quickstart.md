@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970302"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a levélírás használatával többtárolós alkalmazások definiálásához és futtatásához az Azure-ban
@@ -27,7 +26,7 @@ Először hozzon létre egy erőforráscsoportot a Docker-környezethez az [az G
 az group create --name myDockerGroup --location eastus
 ```
 
-Hozzon létre egy *Cloud-init. txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. 
+Hozzon létre egy *cloud-init.txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. 
 
 ```yaml
 #include https://get.docker.com
@@ -69,9 +68,9 @@ sudo apt install docker-compose
 
 
 ## <a name="create-a-docker-composeyml-configuration-file"></a>Docker-compose. YML konfigurációs fájl létrehozása
-Hozzon `docker-compose.yml` létre egy konfigurációs fájlt, amely meghatározza a virtuális gépen futtatandó Docker-tárolókat. A fájl meghatározza az egyes tárolókban futtatandó rendszerképet, a szükséges környezeti változókat, a függőségeket, a portokat és a tárolók közötti kapcsolatokat. A YML-fájl szintaxisával kapcsolatos részletekért lásd a [fájl összeállításának leírása](https://docs.docker.com/compose/compose-file/)című témakört.
+Hozzon létre egy `docker-compose.yml` konfigurációs fájlt, amely meghatározza a virtuális gépen futtatandó Docker-tárolókat. A fájl meghatározza az egyes tárolókban futtatandó rendszerképet, a szükséges környezeti változókat, a függőségeket, a portokat és a tárolók közötti kapcsolatokat. A YML-fájl szintaxisával kapcsolatos részletekért lásd a [fájl összeállításának leírása](https://docs.docker.com/compose/compose-file/)című témakört.
 
-Hozzon létre egy *Docker-compose. YML* fájlt. A fájlhoz a kedvenc szövegszerkesztővel adhat hozzá adatfájlokat. A következő példa létrehoz egy fájlt, amely rákérdez `sensible-editor` , hogy kiválassza a használni kívánt szerkesztőt.
+Hozzon létre egy *Docker-compose. YML* fájlt. A fájlhoz a kedvenc szövegszerkesztővel adhat hozzá adatfájlokat. A következő példa létrehoz egy fájlt, amely rákérdez, `sensible-editor` hogy kiválassza a használni kívánt szerkesztőt.
 
 ```bash
 sensible-editor docker-compose.yml
@@ -94,7 +93,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>A tárolók elindítása összeállítással
-A *Docker-compose. YML* fájllal megegyező könyvtárban futtassa a következő parancsot (a környezettől függően előfordulhat, hogy a használatával `docker-compose` `sudo`kell futtatnia):
+A *Docker-compose. YML* fájllal megegyező könyvtárban futtassa a következő parancsot (a környezettől függően előfordulhat, hogy a használatával kell futtatnia `docker-compose` `sudo` ):
 
 ```bash
 sudo docker-compose up -d
@@ -109,7 +108,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-A tárolók előírásának ellenőrzéséhez írja `sudo docker-compose ps`be a következőt:. Ennek nagyjából a következőképpen kell kinéznie:
+A tárolók előírásának ellenőrzéséhez írja be a következőt: `sudo docker-compose ps` . Ennek nagyjából a következőképpen kell kinéznie:
 
 ```
         Name                       Command               State         Ports

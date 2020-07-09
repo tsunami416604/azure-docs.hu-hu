@@ -4,14 +4,14 @@ description: Ismerteti, hogyan lehet kibontani egy PostgreSQL-adatbázist egy me
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7ecdd110458c64be9890762d515ecebe3d67acd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146333"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112357"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL-adatbázis migrálása memóriakép és visszaállítás használatával
 A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és [Pg_restoreheti](https://www.postgresql.org/docs/current/static/app-pgrestore.html) a PostgreSQL-adatbázis visszaállítását egy pg_dump által létrehozott archív fájlból.
@@ -42,9 +42,9 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 A--No-Owner paraméterrel együtt a visszaállítás során létrehozott összes objektum tulajdonosa lesz a--username értékkel megadott felhasználó tulajdonában. További információkért tekintse meg a következőt: [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
 
 > [!NOTE]
-> Ha a PostgreSQL-kiszolgáló TLS/SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson `PGSSLMODE=require` be egy környezeti változót, hogy a pg_restore eszköz csatlakozzon a TLS-hez. A TLS nélkül a hiba is olvasható`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Ha a PostgreSQL-kiszolgáló TLS/SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson be egy környezeti változót, `PGSSLMODE=require` hogy a pg_restore eszköz csatlakozzon a TLS-hez. A TLS nélkül a hiba is olvasható`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
-> A Windows-parancssorban futtassa a parancsot `SET PGSSLMODE=require` a pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt `export PGSSLMODE=require` futtassa a parancsot a pg_restore parancs futtatása előtt.
+> A Windows-parancssorban futtassa a parancsot a `SET PGSSLMODE=require` pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt futtassa a parancsot a `export PGSSLMODE=require` pg_restore parancs futtatása előtt.
 >
 
 Ebben a példában a **testdb. dump** fájlból származó adatok visszaállítását a célkiszolgáló **mydemoserver.postgres.database.Azure.com**adatbázis- **mypgsqldb** . 
@@ -72,7 +72,7 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 
 - Alapértelmezés szerint már el kell végeznie, de meg kell nyitnia a memóriaképet annak ellenőrzéséhez, hogy a Create index utasítások az adatokat szúrják-e be. Ha nem ez a helyzet, helyezze át a Create index utasítást az adatbeszúrás után.
 
-- Restore with the switchs-FC és *#* -j kapcsolóval integrálással a visszaállítást. *#* a célkiszolgálón lévő magok száma. Azt is megteheti *#* , hogy a beállítás megadásával kétszer is megpróbálkozik a célkiszolgáló magok számával, hogy a hatás megjelenjen. Például:
+- Restore with the switchs-FC és-j kapcsolóval *#* integrálással a visszaállítást. *#* a célkiszolgálón lévő magok száma. Azt is megteheti, *#* hogy a beállítás megadásával kétszer is megpróbálkozik a célkiszolgáló magok számával, hogy a hatás megjelenjen. Például:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -83,12 +83,12 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 - A cél Azure Database for PostgreSQL kiszolgálón a visszaállítás előtt vegye figyelembe a következőket:
     - A lekérdezési teljesítmény nyomon követésének kikapcsolása, mivel ezek a statisztikák nem szükségesek az áttelepítés során. Ezt úgy teheti meg, hogy pg_stat_statements. Track, pg_qs. query_capture_mode és pgms_wait_sampling. query_capture_mode értéket állít be a NONE értékre.
 
-    - A Migrálás felgyorsításához használjon nagy számítási és magas memória-SKU-t, például 32 virtuális mag memóriát. A visszaállítás befejezése után egyszerűen méretezheti vissza az előnyben részesített SKU-ra. Minél nagyobb a SKU, annál több párhuzamosságot érhet el a pg_restore parancs megfelelő `-j` paraméterének növelésével. 
+    - A Migrálás felgyorsításához használjon nagy számítási és magas memória-SKU-t, például 32 virtuális mag memóriát. A visszaállítás befejezése után egyszerűen méretezheti vissza az előnyben részesített SKU-ra. Minél nagyobb a SKU, annál több párhuzamosságot érhet el a `-j` pg_restore parancs megfelelő paraméterének növelésével. 
 
     - A célkiszolgáló további IOPS javíthatják a visszaállítási teljesítményt. A kiszolgáló tárolási méretének növelésével több IOPS is kiépítheti. Ez a beállítás nem vonható vissza, azonban érdemes megfontolni, hogy egy magasabb IOPS a jövőben is hasznát veheti-e a tényleges munkaterhelésnek.
 
 Az éles környezetben való használat előtt ne felejtse el tesztelni és érvényesíteni ezeket a parancsokat tesztkörnyezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A PostgreSQL-adatbázis exportálással és importálással történő áttelepítésével kapcsolatban lásd: [a PostgreSQL-adatbázis migrálása az Exportálás és az importálás használatával](howto-migrate-using-export-and-import.md).
 - Az adatbázisok Azure Database for PostgreSQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).

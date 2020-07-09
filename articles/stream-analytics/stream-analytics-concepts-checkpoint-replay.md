@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020608"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Ellenőrzőpont-és visszajátszás-fogalmak a Azure Stream Analytics-feladatokban
@@ -67,7 +66,7 @@ A lekérdezési szintaxis egy folyamatos átviteli feladaton való szerkesztés�
 
 Ellenőrzőpont-adatok nem használhatók a felhasználó által kezdeményezett feladatok újraindításához. Az újraindításkor a kimenet késleltetésének megbecsléséhez használja ugyanazt az eljárást, mint az előző szakaszban leírtak szerint, és alkalmazzon hasonló mérséklést, ha a késés túl hosszú.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A megbízhatósággal és a méretezhetőséggel kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Oktatóanyag: riasztások beállítása Azure Stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md)
 - [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)

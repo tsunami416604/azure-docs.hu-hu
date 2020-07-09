@@ -10,16 +10,15 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
 ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696779"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Távoli asztali kapcsolat engedélyezése az Azure-beli szerepkörökhöz Cloud Services
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portalra](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -63,6 +62,6 @@ Ha Távoli asztal engedélyezve van a szerepkörökön, közvetlenül a Azure Po
 >[!NOTE]
 > Ha a felhőalapú szolgáltatás egy NSG mögött található, előfordulhat, hogy olyan szabályokat kell létrehoznia, amelyek engedélyezik a forgalmat a **3389** -es és a **20000**-es porton.  Távoli asztal a **3389**-es portot használja.  A Cloud Service-példányok terheléselosztás alatt állnak, így nem lehet közvetlenül szabályozni, hogy melyik példányt kívánja csatlakozni.  A *RemoteForwarder* és a *REMOTEACCESS* ügynök az RDP-forgalmat kezeli, és lehetővé teszi az ügyfél számára, hogy RDP-cookie-t küldjön, és megadhat egy egyedi példányt a kapcsolódáshoz.  A *RemoteForwarder* és a *remoteaccess* -ügynökök megkövetelik, hogy a **20000**-es port nyitva legyen, ami blokkolható, ha van NSG.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)

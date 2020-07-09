@@ -5,18 +5,17 @@ description: Ismerje meg, hogyan használható az adatkészletek legjobb verzió
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
-ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: e0b2d7abb378a6717eb4444882ede54debdb5968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555625"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +51,7 @@ Az adatkészletek regisztrálásával a kísérleteken és a munkatársakon is m
 
 ### <a name="register-a-dataset-version"></a>Adatkészlet verziójának regisztrálása
 
-A következő kód regisztrálja az `titanic_ds` adatkészlet új verzióját úgy, hogy a `create_new_version` paramétert a `True`értékre állítja be. Ha nincs regisztrálva létező `titanic_ds` adatkészlet a munkaterületen, a kód létrehoz egy új adatkészletet a `titanic_ds` névvel, és beállítja annak verzióját 1-re.
+A következő kód regisztrálja az adatkészlet új verzióját `titanic_ds` úgy, hogy a paramétert a értékre állítja `create_new_version` be `True` . Ha nincs `titanic_ds` regisztrálva létező adatkészlet a munkaterületen, a kód létrehoz egy új adatkészletet a névvel, `titanic_ds` és beállítja annak verzióját 1-re.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -63,9 +62,9 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Adatkészlet lekérése név szerint
 
-Alapértelmezés szerint a (z `Dataset` [) osztály get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) metódusa a munkaterületen regisztrált adatkészlet legújabb verzióját adja vissza. 
+Alapértelmezés szerint a [(z) osztály get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) metódusa a `Dataset` munkaterületen regisztrált adatkészlet legújabb verzióját adja vissza. 
 
-A következő kód az `titanic_ds` adatkészlet 1. verzióját kapja meg.
+A következő kód az adatkészlet 1. verzióját kapja meg `titanic_ds` .
 
 ```Python
 from azureml.core import Dataset
@@ -169,9 +168,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-A `input_datasets` from kísérletek a használatával https://ml.azure.com/is megtalálhatók. 
+A from kísérletek a használatával is megtalálhatók `input_datasets` https://ml.azure.com/ . 
 
-Az alábbi képen látható, hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studióban. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásának **Tulajdonságok** lapját `keras-mnist`.
+Az alábbi képen látható, hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studióban. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásának **Tulajdonságok** lapját `keras-mnist` .
 
 ![Bemeneti adatkészletek](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +182,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python használatával vagy a következővel https://ml.azure.com/:.
+A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python használatával vagy a következővel: https://ml.azure.com/ .
 
 A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
 

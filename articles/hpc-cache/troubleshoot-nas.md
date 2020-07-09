@@ -3,15 +3,15 @@ title: Az Azure HPC cache NFS tárolási céljaival kapcsolatos hibák megoldás
 description: Tippek a konfigurációs hibák és egyéb olyan problémák elkerüléséhez és javításához, amelyek meghibásodást okozhatnak az NFS-tárolási cél létrehozásakor
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515459"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>A NAS-konfiguráció és az NFS-tárolási cél problémáinak elhárítása
 
@@ -32,7 +32,7 @@ A portok eltérőek a különböző gyártóktól származó tárolási rendszer
 
 Általánosságban elmondható, hogy a gyorsítótárnak hozzá kell férnie a következő portokhoz:
 
-| Protocol (Protokoll) | Port  | Szolgáltatás  |
+| Protokoll | Port  | Szolgáltatás  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
@@ -48,7 +48,7 @@ Ezt a parancsot bármely olyan Linux-ügyfélről kiállíthatja, amelyen telep�
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-Győződjön meg arról, hogy a ``rpcinfo`` lekérdezés által visszaadott összes port engedélyezi az Azure HPC cache alhálózatának korlátozás nélküli forgalmát.
+Győződjön meg arról, hogy a lekérdezés által visszaadott összes port ``rpcinfo`` engedélyezi az Azure HPC cache alhálózatának korlátozás nélküli forgalmát.
 
 Ezeket a beállításokat a hálózati házirend-kiszolgáló és a tárolási rendszer és a gyorsítótár-alhálózat közötti összes tűzfalon is megtekintheti.
 
@@ -58,7 +58,7 @@ Az Azure HPC cache-nek hozzá kell férnie a tárolási rendszerek exportálás�
 
 A különböző tárolási rendszerek különböző módszereket használnak a hozzáférés engedélyezéséhez:
 
-* A Linux- ``/etc/exports``kiszolgálók ``no_root_squash`` általában az exportált elérési útra lesznek hozzáadva.
+* A Linux-kiszolgálók általában ``no_root_squash`` az exportált elérési útra lesznek hozzáadva ``/etc/exports`` .
 * A NetApp és az EMC rendszerek jellemzően a megadott IP-címekhez vagy hálózatokhoz kötött exportálási szabályokhoz való hozzáférést vezérlik.
 
 Exportálási szabályok használata esetén ne feledje, hogy a gyorsítótár több különböző IP-címet is használhat a gyorsítótár alhálózatáról. Engedélyezi a hozzáférést a lehetséges alhálózati IP-címek teljes tartományából.
@@ -79,17 +79,17 @@ Előfordulhat például, hogy egy rendszer három olyan exportálást mutat be, 
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-Az Exportálás ``/ifs/accounting/payroll`` a gyermeke ``/ifs/accounting``, és ``/ifs/accounting`` maga a gyermeke. ``/ifs``
+Az Exportálás a ``/ifs/accounting/payroll`` gyermeke ``/ifs/accounting`` , és ``/ifs/accounting`` maga a gyermeke ``/ifs`` .
 
-Ha az ``payroll`` exportálást HPC cache Storage-tárolóként adja hozzá, a gyorsítótár ténylegesen csatlakoztatja ``/ifs/`` és hozzáfér a bérszámfejtési címtárhoz. Így az Azure HPC ``/ifs`` -gyorsítótárnak rendszergazdai hozzáférésre van szüksége ahhoz ``/ifs/accounting/payroll`` , hogy hozzáférhessen az exportáláshoz.
+Ha az ``payroll`` exportálást HPC cache Storage-tárolóként adja hozzá, a gyorsítótár ténylegesen csatlakoztatja ``/ifs/`` és hozzáfér a bérszámfejtési címtárhoz. Így az Azure HPC-gyorsítótárnak rendszergazdai hozzáférésre van szüksége ahhoz, ``/ifs`` hogy hozzáférhessen az ``/ifs/accounting/payroll`` exportáláshoz.
 
 Ez a követelmény ahhoz kapcsolódik, ahogy a gyorsítótár indexeli a fájlokat, és elkerüli a fájlok ütközéseit a tárolási rendszer által biztosított fájlleíró használatával.
 
-A hierarchikus exportálást biztosító NAS-rendszer különböző fájlkezelőket biztosíthat ugyanahhoz a fájlhoz, ha a fájl különböző exportálásokból származik. Például egy ügyfél csatlakoztathatja ``/ifs/accounting`` és elérheti a fájlt. ``payroll/2011.txt`` Egy másik ügyfél csatlakoztatja ``/ifs/accounting/payroll`` és hozzáfér a fájlhoz. ``2011.txt`` Attól függően, hogy a tárolási rendszer hogyan rendeli hozzá a fájlkezelőket, ez a két ügyfél ugyanazt a fájlt kapja, amely különböző fájlkezelőket tartalmaz ``<mount2>/payroll/2011.txt`` ( ``<mount3>/2011.txt``egyet és egyet).
+A hierarchikus exportálást biztosító NAS-rendszer különböző fájlkezelőket biztosíthat ugyanahhoz a fájlhoz, ha a fájl különböző exportálásokból származik. Például egy ügyfél csatlakoztathatja ``/ifs/accounting`` és elérheti a fájlt ``payroll/2011.txt`` . Egy másik ügyfél csatlakoztatja ``/ifs/accounting/payroll`` és hozzáfér a fájlhoz ``2011.txt`` . Attól függően, hogy a tárolási rendszer hogyan rendeli hozzá a fájlkezelőket, ez a két ügyfél ugyanazt a fájlt kapja, amely különböző fájlkezelőket tartalmaz (egyet ``<mount2>/payroll/2011.txt`` és egyet ``<mount3>/2011.txt`` ).
 
 A háttérbeli tárolórendszer belső aliasokat tart fenn a Fájlkezelőben, de az Azure HPC-gyorsítótár nem tudja megállapítani, hogy az indexében melyik fájlkezelő hivatkozik ugyanarra az elemre. Így előfordulhat, hogy a gyorsítótár különböző írási műveleteket hajt végre ugyanazon a fájlon, és helytelenül alkalmazza a módosításokat, mert nem tudja, hogy ugyanaz a fájl.
 
-Ha el szeretné kerülni a fájlok ütközését több exportálási fájl esetében, az Azure HPC cache automatikusan csatlakoztatja a legsekélyebb elérhető exportálást az elérési útban (``/ifs`` a példában), és az adott exportálásból származó fájlleíró-t használja. Ha több exportálás ugyanazt az alapútvonalat használja, az Azure HPC-gyorsítótárnak rendszergazdai hozzáférésre van szüksége ehhez az elérési úthoz.
+Ha el szeretné kerülni a fájlok ütközését több exportálási fájl esetében, az Azure HPC cache automatikusan csatlakoztatja a legsekélyebb elérhető exportálást az elérési útban ( ``/ifs`` a példában), és az adott exportálásból származó fájlleíró-t használja. Ha több exportálás ugyanazt az alapútvonalat használja, az Azure HPC-gyorsítótárnak rendszergazdai hozzáférésre van szüksége ehhez az elérési úthoz.
 
 ## <a name="enable-export-listing"></a>Exportálási lista engedélyezése
 <!-- link in prereqs article -->
@@ -145,6 +145,6 @@ Ha a rendszer az "ACL" betűszó nélkül jelenti a biztonsági stílusát UNIX 
 
 Az ACL-eket használó rendszerek esetében az Azure HPC cache-nek további felhasználóspecifikus értékeket kell követnie a fájlokhoz való hozzáférés szabályozása érdekében. Ezt a hozzáférési gyorsítótár engedélyezésével teheti meg. Nincs egy felhasználó felé irányuló vezérlőelem a hozzáférési gyorsítótár bekapcsolásához, de egy támogatási jegyet is megnyitva kérheti, hogy engedélyezze az érintett tárolási célokat a gyorsítótár-rendszeren.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémája van, amely nem szerepel ebben a cikkben, [Nyisson meg egy támogatási jegyet](hpc-cache-support-ticket.md) a szakértői segítség kéréséhez.

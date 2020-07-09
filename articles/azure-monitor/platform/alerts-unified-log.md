@@ -6,16 +6,15 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609046"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
-Ez a cikk részletesen ismerteti a naplózási riasztásokat az [Azure-riasztásokban](../../azure-monitor/platform/alerts-overview.md) támogatott riasztási típusok közül, és lehetővé teszi a felhasználók számára, hogy riasztások alapján használják az Azure elemzési platformját.
+A naplózási riasztások az [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md)által támogatott riasztási típusok egyike. A riasztások naplózása lehetővé teszi a felhasználók számára, hogy az Azure Analytics platformot használják a riasztások alapjául.
 
 A naplózási riasztás a [Azure monitor naplókhoz](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insightshoz](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)létrehozott naplóbeli keresési szabályokból áll. További információ a használatáról: [log-riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
 
@@ -132,7 +131,7 @@ Lássuk ezt a viselkedést működés közben egy gyakorlati példával. Tegyük
 Az Azure riasztási rendszer az alábbi időközönként ellenőrzi a *contoso-log-riasztás*feltételeit.
 
 
-| Time    | Naplóbeli keresési lekérdezés által visszaadott rekordok száma | Naplózási feltétel evalution | Eredmény 
+| Idő    | Naplóbeli keresési lekérdezés által visszaadott rekordok száma | Naplózási feltétel evalution | Eredmény 
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0 rekord | 0 nem > 0, így hamis |  A riasztás nem tűz. Nincs hívott művelet.
 | 1:10 PM | 2 rekord | 2 > 0 igaz  | Riasztási tüzek és műveleti csoportok hívása. Riasztási állapot aktív.
@@ -147,15 +146,15 @@ A 1:15 PM Azure-riasztások nem tudják megállapítani, hogy a 1:10-kor észlel
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>A naplózási riasztások díjszabása és számlázása
 
-A naplózási riasztásokra vonatkozó díjszabás a [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/) oldalán található. Az Azure-számlákban a naplózási riasztások `microsoft.insights/scheduledqueryrules` típusa a következő:
+A naplózási riasztásokra vonatkozó díjszabás a [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/) oldalán található. Az Azure-számlákban a naplózási riasztások típusa `microsoft.insights/scheduledqueryrules` a következő:
 
 - Riasztások naplózása Application Insights megjelenített riasztások pontos neve mellett az erőforráscsoport és a riasztás tulajdonságaival együtt
 - Riasztások naplózása Log Analytics megjelenített riasztások pontos neve, az erőforráscsoport és a riasztás tulajdonságaival együtt. a [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) -val való létrehozáskor
 
-Az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) riasztási műveleteket és ütemterveket tartalmaz log Analytics mentett keresés részeként, és nem a megfelelő [Azure-erőforrásokat](../../azure-resource-manager/management/overview.md). Ezért az Azure-ban való számlázáshoz az [új API](../../azure-monitor/platform/alerts-log-api-switch.md) -ra való áttérés vagy az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) -Hidden pszeudo riasztási szabályok `microsoft.insights/scheduledqueryrules` segítségével a számlázást engedélyezni kell az log Analytics Azure Portal használatával létrehozott korábbi naplózási riasztásokhoz. **without** Az erőforrás-csoport és a riasztás tulajdonságai `microsoft.insights/scheduledqueryrules` `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` mellett a számlázáshoz létrehozott rejtett pszeudo-szabályok.
+Az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) riasztási műveleteket és ütemterveket tartalmaz log Analytics mentett keresés részeként, és nem a megfelelő [Azure-erőforrásokat](../../azure-resource-manager/management/overview.md). Ezért az Azure-ban való számlázáshoz az [új API](../../azure-monitor/platform/alerts-log-api-switch.md) -ra való áttérés vagy az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) -Hidden pszeudo riasztási szabályok segítségével a számlázást engedélyezni kell az **log Analytics Azure Portal használatával** létrehozott korábbi naplózási riasztásokhoz `microsoft.insights/scheduledqueryrules` . Az `microsoft.insights/scheduledqueryrules` `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` Erőforrás-csoport és a riasztás tulajdonságai mellett a számlázáshoz létrehozott rejtett pszeudo-szabályok.
 
 > [!NOTE]
-> Ha az érvénytelen karakterek, `<, >, %, &, \, ?, /` például a jelen vannak, a rendszer a `_` rejtett pszeudo-riasztási szabály nevével helyettesíti, és így az Azure-számlán is szerepel.
+> Ha az érvénytelen karakterek, például a `<, >, %, &, \, ?, /` jelen vannak, a rendszer a `_` rejtett pszeudo-riasztási szabály nevével helyettesíti, és így az Azure-számlán is szerepel.
 
 Ha el szeretné távolítani a riasztási szabályok számlázásához létrehozott rejtett scheduleQueryRules-erőforrásokat az [örökölt log Analytics API](api-alerts.md)-val, a felhasználó a következők bármelyikét végezheti el:
 

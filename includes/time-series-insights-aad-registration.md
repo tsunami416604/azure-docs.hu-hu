@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
@@ -10,13 +10,13 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
 ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76984569"
 ---
-1. A [Azure Portal](https://ms.portal.azure.com/)válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. A [Azure Portal](https://ms.portal.azure.com/)válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 
    [![Új alkalmazás regisztrálása Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
@@ -66,11 +66,11 @@ ms.locfileid: "76984569"
    > [!NOTE]
    > Lehetőség van egy tanúsítvány importálására. A fokozott biztonság érdekében ajánlott a tanúsítvány használata. A tanúsítvány használatához válassza a **tanúsítvány feltöltése**lehetőséget.
 
-1. A Azure Active Directory alkalmazásának Azure TIme Series-beli bepillantást kell rendelnie. Válassza **az API-engedélyek** > lehetőséget a**szervezetem által használt API**-k**hozzáadása** > lehetőségre. 
+1. A Azure Active Directory alkalmazásának Azure TIme Series-beli bepillantást kell rendelnie. Válassza az **API-engedélyek**lehetőséget a  >  **Add a permission**  >  **szervezetem által használt API**-k hozzáadása lehetőségre. 
 
     [![API hozzárendelése a Azure Active Directory-alkalmazáshoz](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
-   Írja `Azure Time Series Insights` be a keresősáv kifejezést, majd `Azure Time Series Insights`válassza a elemet.
+   Írja be `Azure Time Series Insights` a keresősáv kifejezést, majd válassza a elemet `Azure Time Series Insights` .
 
 1. Ezután adja meg az alkalmazás által igényelt API-engedélyt. Alapértelmezés szerint a **delegált engedélyek** ki lesznek emelve. Válassza ki az engedély típusát, majd válassza az **engedélyek hozzáadása**lehetőséget.
 

@@ -4,10 +4,9 @@ description: Ebből a cikkből megtudhatja, milyen problémák merülhetnek fel 
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75664748"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>A System Center Data Protection Manager hibaelhárítása
@@ -32,7 +31,7 @@ A probléma megoldásához hajtsa végre a következő műveleteket:
 - A inkonzisztens állapot eltávolításához futtassa manuálisan a konzisztencia-ellenőrzést, vagy ütemezzen egy napi konzisztencia-ellenőrzést.
 - Győződjön meg arról, hogy a Microsoft Azure Backup Server és Data Protection Manager legújabb verzióját használja.
 - Győződjön meg arról, hogy az **automatikus konzisztencia** -beállítás engedélyezve van.
-- Próbálja meg újraindítani a szolgáltatásokat a parancssorból. Használja a `net stop dpmra` parancsot, `net start dpmra`majd a parancsot.
+- Próbálja meg újraindítani a szolgáltatásokat a parancssorból. Használja a `net stop dpmra` parancsot, majd a parancsot `net start dpmra` .
 - Győződjön meg arról, hogy a hálózati kapcsolatra és a sávszélességre vonatkozó követelmények teljesítése folyamatban van.
 - Ellenőrizze, hogy a forrásszámítógép leállítása váratlanul megszakadt-e.
 - Győződjön meg arról, hogy a lemez kifogástalan állapotban van, és hogy van-e elegendő hely a replikához.
@@ -58,7 +57,7 @@ A probléma megoldásához hajtsa végre a következő műveleteket:
 
 - Győződjön meg arról, hogy a Azure Backup ügynök legújabb verzióját használja.
 - Ellenőrizze, hogy van-e kapcsolat (hálózati/tűzfal/proxy) a Data Protection Manager-kiszolgáló és a védett kiszolgáló között.
-- Ha az SQL Servert védi, győződjön meg arról, hogy a **bejelentkezési tulajdonságok** > **NT AUTHORITY\SYSTEM** tulajdonság a **sysadmin (rendszergazda** ) beállítást engedélyezi.
+- Ha az SQL Servert védi, győződjön meg arról, hogy a **bejelentkezési tulajdonságok**  >  **NT AUTHORITY\SYSTEM** tulajdonság a **sysadmin (rendszergazda** ) beállítást engedélyezi.
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Hiba: a kiszolgáló nincs regisztrálva a tároló hitelesítőadat-fájljában megadott módon
 

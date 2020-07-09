@@ -2,23 +2,22 @@
 title: AD FS-alkalmazások áthelyezése a tevékenység-jelentés használatával Azure Active Directory | Microsoft Docs "
 description: Az Active Directory összevonási szolgáltatások (AD FS) (AD FS) alkalmazási tevékenység jelentés segítségével gyorsan áttelepítheti az alkalmazásokat a AD FSról a Azure Active Directory (Azure AD) szolgáltatásba. Ez a AD FS áttelepítési eszköz azonosítja az Azure AD-vel való kompatibilitást, és áttelepítési útmutatót biztosít.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 01/14/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339169"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával
 
@@ -36,8 +35,9 @@ A AD FS alkalmazás tevékenységi adatai a következő rendszergazdai szerepkö
 
 * A szervezetnek jelenleg AD FS kell használnia az alkalmazások eléréséhez.
 * Az Azure AD Connect Health engedélyezni kell az Azure AD-bérlőben.
+* A AD FS-ügynök Azure AD Connect Health telepíteni kell.
    * [További információ a Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
-   * [Ismerkedés a Azure AD Connect Health beállításával](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+   * [Ismerkedés a Azure AD Connect Health beállításával és a AD FS-ügynök telepítésével](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Az áttelepíthető AD FS alkalmazások felderítése 
 
@@ -73,7 +73,7 @@ A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **haszná
 
 A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott összes konfigurációs tesztet.
 
-|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Leírás  |
+|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Description  |
 |---------|---------|---------|
 |Teszt – ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson az Azure MFA-re. [További információ a feltételes hozzáférésről](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).        |
 |Teszt – ADFSRPAdditionalWSFedEndpoint <br> A függő entitás AdditionalWSFedEndpoint értéke TRUE (igaz).       | Sikeres/sikertelen          | A AD FS függő entitása több WS-fed kiállítási végpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80891509"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia

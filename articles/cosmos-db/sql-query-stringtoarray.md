@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302916"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
@@ -37,7 +36,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti `StringToArray` , hogyan viselkedik a különböző típusok között. 
+  Az alábbi példa azt szemlélteti, hogyan viselkedik a `StringToArray` különböző típusok között. 
   
  Az alábbi példák érvényes bemenettel rendelkeznek.
 
@@ -59,7 +58,7 @@ Itt látható az eredményhalmaz.
 Az alábbi példa érvénytelen bemenetet mutat be. 
    
  A tömbben lévő szimpla idézőjelek nem érvényesek a JSON-ban.
-Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem fogják értelmezni az érvényes tömböket. A tömb sztringjét tartalmazó karakterláncoknak Escape-"[\\"\\"]" karakternek kell lenniük, vagy a környező idézőjelnek egyetlen "[" "]" értékűnek kell lennie.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem fogják értelmezni az érvényes tömböket. A tömb sztringjét tartalmazó karakterláncoknak Escape-"[" "]" karakternek kell lenniük \\ \\ , vagy a környező idézőjelnek egyetlen "[" "]" értékűnek kell lennie.
 
 ```sql
 SELECT

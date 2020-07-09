@@ -1,18 +1,16 @@
 ---
 title: Értékelések & a partner Center Analytics-irányítópultjának értékelésével
 description: Megtudhatja, hogyan férhet hozzá a Microsoft AppSource és az Azure Marketplace-en elérhető ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetéhez.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792921"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109229"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Értékelések & a partner Center Analytics-irányítópultjának értékelésével
 
@@ -52,7 +50,7 @@ A felülvizsgálatok időrendi sorrendben jelennek meg a közzétételkor. Az al
 
 ![A partner Center elemzi a felülvizsgálati megjegyzéseket](./media/analyze-reviews.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

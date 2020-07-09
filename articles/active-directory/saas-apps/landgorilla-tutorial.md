@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7c2f9b076d831f4d851a964ababb64930a7c7f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 452f06e1294fad64547e0b04003ae06f80c1d9f4
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68879994"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799802"
 ---
 # <a name="tutorial-integrate-land-gorilla-with-azure-active-directory"></a>Oktatóanyag: a Land gorilla integrálása Azure Active Directory
 
@@ -84,20 +84,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | | |
-    |-|-|
-    | `https://<customer domain>.landgorilla.com/`|
-    | `https://www.<customer domain>.landgorilla.com`|
-    | | |
+      ```http
+      https://<customer domain>.landgorilla.com/
+      https://www.<customer domain>.landgorilla.com
+      ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | | |
-    |-|-|
-    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
-    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
-    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
-    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
+      ```http
+      https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php
+      https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php
+      https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp
+      https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp
+      ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Itt javasoljuk, hogy a karakterlánc egyedi értékét használja az azonosítóban. Az értékek beszerzéséhez lépjen kapcsolatba a [Land gorilla-ügyfél támogatási csapatával](https://www.landgorilla.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -122,9 +121,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -154,7 +153,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Land gorilla csempére kattint, automatikusan be kell jelentkeznie arra a tartományi gorilla-területre, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

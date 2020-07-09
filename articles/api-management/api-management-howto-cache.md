@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4113205b47b4c6cab8b133d89c35520aa8505c1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75708355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851211"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
@@ -62,20 +62,24 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
 
 8. Az **inbound** elemben adja hozzá a következő szabályzatot:
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
 9. Az **outbound** elemben adja hozzá a következő szabályzatot:
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét. Ebben a példában az időköz **20** másodperc.
 
 > [!TIP]
-> Ha külső gyorsítótárat használ, a következő témakörben leírtak szerint: [külső Azure cache használata az Azure-beli Redis-API Management](api-management-howto-cache-external.md)esetén érdemes `caching-type` megadnia a gyorsítótárazási házirendek attribútumát. További részletekért tekintse meg [API Management gyorsítótárazási házirendeket](api-management-caching-policies.md) .
+> Ha külső gyorsítótárat használ, a következő témakörben leírtak szerint: [külső Azure cache használata az Azure-beli Redis-API Management](api-management-howto-cache-external.md)esetén érdemes megadnia a `caching-type` gyorsítótárazási házirendek attribútumát. További részletekért tekintse meg [API Management gyorsítótárazási házirendeket](api-management-caching-policies.md) .
 
 ## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>Művelet meghívása és a gyorsítótárazás tesztelése
 A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a műveletet a fejlesztői portálról.

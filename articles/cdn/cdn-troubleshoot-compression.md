@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888696"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
 Ez a cikk segítséget nyújt a [CDN-fájlok tömörítésével](cdn-improve-performance.md)kapcsolatos problémák elhárításában.
@@ -30,7 +30,7 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 A végpont tömörítése engedélyezve van, de a fájlok kibontása nem történik meg.
 
 > [!TIP]
-> Annak megállapításához, hogy a fájlok tömörítése folyamatban van-e, olyan eszközt kell használnia, mint a [Hegedűs](https://www.telerik.com/fiddler) vagy a böngésző [fejlesztői eszközei](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Győződjön meg arról, hogy a gyorsítótárazott CDN-tartalommal visszaadott HTTP-válasz fejlécei szerepelnek.  Ha a `Content-Encoding` fejlécben a **gzip**, a **bzip2**vagy a **deflate**érték szerepel, a rendszer tömöríti a tartalmat.
+> Annak megállapításához, hogy a fájlok tömörítése folyamatban van-e, olyan eszközt kell használnia, mint a [Hegedűs](https://www.telerik.com/fiddler) vagy a böngésző [fejlesztői eszközei](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Győződjön meg arról, hogy a gyorsítótárazott CDN-tartalommal visszaadott HTTP-válasz fejlécei szerepelnek.  Ha a fejlécben a `Content-Encoding` **gzip**, a **bzip2**vagy a **deflate**érték szerepel, a rendszer tömöríti a tartalmat.
 > 
 > ![Content-Encoding fejléc](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -53,7 +53,7 @@ Több lehetséges oka van, többek között a következők:
 ### <a name="verify-the-request"></a>A kérelem ellenőrzése
 Először is végre kell hajtania egy gyors józan ész-ellenőrzését a kérelemben.  A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) megtekintheti az elvégzett kérelmeket.
 
-* Ellenőrizze, hogy a rendszer elküldte-e a `<endpointname>.azureedge.net`kérést a végpont URL-címére, és ne a forrását.
+* Ellenőrizze, hogy a rendszer elküldte-e a kérést a végpont URL-címére, `<endpointname>.azureedge.net` és ne a forrását.
 * Ellenőrizze, hogy a kérelem tartalmazza-e az **Accept-Encoding** fejlécet, és a fejléc értéke **gzip**, **deflate**vagy **bzip2**.
 
 > [!NOTE]

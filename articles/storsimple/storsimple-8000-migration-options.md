@@ -8,17 +8,16 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514650"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatmigrálási lehetőségek a StorSimple 5000-7000-es sorozatból 
 
@@ -69,7 +68,7 @@ A Nasuni megkönnyíti a Migrálás megkönnyítését – kezdjen hozzá még m
 
 A Talon megkönnyíti a StorSimple 5000-7000 ügyfelei számára, hogy továbbra is kihasználják a StorSimple-platformon alapuló előnyöket (a korlátlan Felhőbeli erőforrások által támogatott kis helyszíni lábnyomot) még nagyobb funkciókkal.  A Talon gyors megoldásával az ügyfelek áttelepíthetik és megtarthatják az Azure-ban tárolt adatmennyiséget, miközben mostantól még a csak kis méretű szoftvereket is megtekinthetik, így például a globális fájlok zárolását, a globális névteret és a többhelyes együttműködést.  A Talon egy vezető Azure ökoszisztéma-megoldás, amely a globális ügyfelekkel együttműködve áttelepíti a helyszíni fájlkiszolgáló munkaterheléseit egy konszolidált, Azure-alapú lábnyomba anélkül, hogy a felhasználói munkafolyamatot vagy élményt veszélyeztetné.  
 
-Tudjon meg többet arról, hogyan fejlesztheti a felhőbe konszolidált vállalatokat a következő helyen: https://www.talonstorage.com/alliances/microsoft-storsimple.
+Tudjon meg többet arról, hogyan fejlesztheti a felhőbe konszolidált vállalatokat a következő helyen: https://www.talonstorage.com/alliances/microsoft-storsimple .
 
 
 ## <a name="migration---frequently-asked-questions"></a>Migrálás – gyakori kérdések

@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260904"
 ---
 # <a name="api-management-transformation-policies"></a>API Management-átalakítási szabályzatok
@@ -45,7 +44,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 -   [XML átalakítása XSLT használatával](api-management-transformation-policies.md#XSLTransform) – XSL-transzformációt alkalmaz a kérelem vagy válasz törzsében lévő XML formátumra.
 
 ##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a>JSON konvertálása XML-fájllá
- A `json-to-xml` szabályzat egy kérelem vagy válasz törzsét ÁTALAKÍTJA a JSON-ből az XML-be.
+ A `json-to-xml` szabályzat egy kérelem vagy válasz törzsét átalakítja a JSON-ből az XML-be.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -69,17 +68,17 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|JSON – XML|Gyökérelem.|Igen|
+|JSON – XML|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|apply|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -mindig – mindig alkalmazza a konverziót.<br />-Content-Type-JSON – csak akkor konvertálható, ha a válasz Content-Type fejléc a JSON jelenlétét jelzi.|Igen|N/A|
-|megfontolás – elfogadás – fejléc|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -True – átalakítás alkalmazása, ha a kérelem elfogadása fejlécben az XML-t kéri a rendszer.<br />-FALSE – mindig alkalmazza a konverziót.|Nem|igaz|
-|elemzés – dátum|Ha a Date `false` értékre van állítva, egyszerűen másolja a rendszer az átalakítás során|Nem|igaz|
+|apply|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -mindig – mindig alkalmazza a konverziót.<br />-Content-Type-JSON – csak akkor konvertálható, ha a válasz Content-Type fejléc a JSON jelenlétét jelzi.|Yes|N.A.|
+|megfontolás – elfogadás – fejléc|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -True – átalakítás alkalmazása, ha a kérelem elfogadása fejlécben az XML-t kéri a rendszer.<br />-FALSE – mindig alkalmazza a konverziót.|No|igaz|
+|elemzés – dátum|Ha a `false` Date értékre van állítva, egyszerűen másolja a rendszer az átalakítás során|No|igaz|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -113,17 +112,17 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|XML – JSON|Gyökérelem.|Igen|
+|XML – JSON|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|típusú|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -JavaScript-barát – az átalakított JSON a JavaScript-fejlesztőknek készült, felhasználóbarát formában.<br />-Direct – a konvertált JSON az eredeti XML-dokumentum struktúráját tükrözi.|Igen|N/A|
-|apply|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -mindig-Convert mindig.<br />-Content-Type-XML-Convert csak akkor, ha a válasz Content-Type fejléc jelzi az XML jelenlétét.|Igen|N/A|
-|megfontolás – elfogadás – fejléc|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -True – konverzió alkalmazása, ha a kérelem elfogadása fejlécben a JSON-t kéri a rendszer.<br />-FALSE – mindig alkalmazza a konverziót.|Nem|igaz|
+|típusú|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -JavaScript-barát – az átalakított JSON a JavaScript-fejlesztőknek készült, felhasználóbarát formában.<br />-Direct – a konvertált JSON az eredeti XML-dokumentum struktúráját tükrözi.|Yes|N.A.|
+|apply|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -mindig-Convert mindig.<br />-Content-Type-XML-Convert csak akkor, ha a válasz Content-Type fejléc jelzi az XML jelenlétét.|Yes|N.A.|
+|megfontolás – elfogadás – fejléc|Az attribútumot az alábbi értékek egyikére kell beállítani.<br /><br /> -True – konverzió alkalmazása, ha a kérelem elfogadása fejlécben a JSON-t kéri a rendszer.<br />-FALSE – mindig alkalmazza a konverziót.|No|igaz|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -149,16 +148,16 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|Keresés és csere|Gyökérelem.|Igen|
+|Keresés és csere|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|a|A keresendő sztring.|Igen|N/A|
-|erre:|A behelyettesítendő sztring. A keresési karakterlánc eltávolításához nulla hosszúságú helyettesítő karakterláncot kell megadni.|Igen|N/A|
+|a|A keresendő sztring.|Yes|N.A.|
+|erre:|A behelyettesítendő sztring. A keresési karakterlánc eltávolításához nulla hosszúságú helyettesítő karakterláncot kell megadni.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -168,10 +167,10 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 -   **Házirend-hatókörök:** az összes hatókör
 
 ##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a>URL-címek maszkolása a tartalomban
- `redirect-content-urls` A rewrites (maszkok) hivatkozások a válasz törzsében, hogy a megfelelő hivatkozásra mutassanak az átjárón keresztül. A kimenő szakaszban a válasz törzsére mutató hivatkozások újraírására használhatja, hogy azok az átjáróra mutassanak. Ellentétes hatásként használja a bejövő szakaszt.
+ A `redirect-content-urls` rewrites (maszkok) hivatkozások a válasz törzsében, hogy a megfelelő hivatkozásra mutassanak az átjárón keresztül. A kimenő szakaszban a válasz törzsére mutató hivatkozások újraírására használhatja, hogy azok az átjáróra mutassanak. Ellentétes hatásként használja a bejövő szakaszt.
 
 > [!NOTE]
->  Ez a szabályzat nem változtatja meg a fejlécek `Location` értékeit, például a fejléceket. A fejléc értékeinek módosításához használja a [set-header](api-management-transformation-policies.md#SetHTTPheader) házirendet.
+>  Ez a szabályzat nem változtatja meg a fejlécek értékeit, például a `Location` fejléceket. A fejléc értékeinek módosításához használja a [set-header](api-management-transformation-policies.md#SetHTTPheader) házirendet.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -187,9 +186,9 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|átirányítás – tartalom-URL-címek|Gyökérelem.|Igen|
+|átirányítás – tartalom-URL-címek|Gyökérelem.|Yes|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -238,9 +237,9 @@ vagy
 ```
 Ebben a példában a háttér-szolgáltatási házirend beállítása a kérelmeket a lekérdezési karakterláncban átadott verzió értéke alapján egy másik háttér-szolgáltatásra irányítja, mint az API-ban megadott érték.
 
-Kezdetben a háttérbeli szolgáltatás alap URL-címe az API-beállításokból származik. Így a kérelem URL `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` - `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` címe `http://contoso.com/api/10.4/` az API-beállításokban megadott háttér-szolgáltatás URL-címe lesz.
+Kezdetben a háttérbeli szolgáltatás alap URL-címe az API-beállításokból származik. Így a kérelem URL-címe az `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` API- `http://contoso.com/api/10.4/` beállításokban megadott háttér-szolgáltatás URL-címe lesz.
 
-Ha a [<válassza\> ](api-management-advanced-policies.md#choose) a házirend-utasítás alkalmazása beállítást, a háttérrendszer URL-címe a `http://contoso.com/api/8.2` Version `http://contoso.com/api/9.1`kérelem lekérdezési paraméterének értékétől függően újra megváltozhat. Ha például az érték `"2013-15"` a végső kérelem URL-címe lesz. `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`
+Ha a [<válassza \> ](api-management-advanced-policies.md#choose) a házirend-utasítás alkalmazása beállítást, a háttérrendszer URL-címe a `http://contoso.com/api/8.2` `http://contoso.com/api/9.1` Version kérelem lekérdezési paraméterének értékétől függően újra megváltozhat. Ha például az érték `"2013-15"` a végső kérelem URL-címe lesz `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef` .
 
 Ha a kérés további átalakítására van szükség, más [átalakítási házirendek](api-management-transformation-policies.md#TransformationPolicies) is használhatók. Ha például most el szeretné távolítani a lekérdezési paramétert, hogy a kérés egy adott verziójú háttérbe legyen irányítva, a [lekérdezési karakterlánc beállítása paraméter](api-management-transformation-policies.md#SetQueryStringParameter) -házirend használatával eltávolíthatja a most redundáns Version attribútumot.
 
@@ -260,21 +259,21 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|set-háttér-szolgáltatás|Gyökérelem.|Igen|
+|set-háttér-szolgáltatás|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|alap URL-cím|Új háttér-szolgáltatás alap URL-címe.|A vagy `base-url` `backend-id` az egyikének jelen kell lennie.|N/A|
-|háttér-azonosító|A háttérbeli útvonal azonosítója. (A háttérbeli entitásokat az [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) és a [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)használatával felügyeli.)|A vagy `base-url` `backend-id` az egyikének jelen kell lennie.|N/A|
-|SF-Partition-Key|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás, és a "háttér-azonosító" használatával van megadva. Egy adott partíció feloldására szolgál a névfeloldási szolgáltatásból.|Nem|N/A|
-|SF-replika típusú|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás, és a "háttér-azonosító" használatával van megadva. Azt szabályozza, hogy a kérésnek a partíció elsődleges vagy másodlagos replikájának kell-e lennie. |Nem|N/A|
-|SF-feloldási feltétel|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás. Annak a feltételnek a meghatározása, hogy Service Fabric háttérbeli hívást meg kell-e ismételni új feloldással.|Nem|N/A|
-|SF-szolgáltatás-példány-neve|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás. Lehetővé teszi a szolgáltatási példányok módosítását futásidőben. |Nem|N/A|
-|SF-figyelő – név|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás, és a "háttér-azonosító" használatával van megadva. Service Fabric Reliable Services lehetővé teszi, hogy több figyelőt hozzon létre egy szolgáltatásban. Ez az attribútum egy adott figyelő kiválasztására szolgál, ha a háttérbeli megbízható szolgáltatás több figyelővel rendelkezik. Ha nincs megadva ez az attribútum, a API Management neve nélkül kísérli meg a figyelő használatát. A név nélküli figyelő olyan Reliable Servicesra jellemző, amely csak egy figyelővel rendelkezik. |Nem|N/A|
+|alap URL-cím|Új háttér-szolgáltatás alap URL-címe.|A vagy az egyikének `base-url` `backend-id` jelen kell lennie.|N.A.|
+|háttér-azonosító|A háttérbeli útvonal azonosítója. (A háttérbeli entitásokat az [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) és a [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)használatával felügyeli.)|A vagy az egyikének `base-url` `backend-id` jelen kell lennie.|N.A.|
+|SF-Partition-Key|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás, és a "háttér-azonosító" használatával van megadva. Egy adott partíció feloldására szolgál a névfeloldási szolgáltatásból.|No|N.A.|
+|SF-replika típusú|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás, és a "háttér-azonosító" használatával van megadva. Azt szabályozza, hogy a kérésnek a partíció elsődleges vagy másodlagos replikájának kell-e lennie. |No|N.A.|
+|SF-feloldási feltétel|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás. Annak a feltételnek a meghatározása, hogy Service Fabric háttérbeli hívást meg kell-e ismételni új feloldással.|No|N.A.|
+|SF-szolgáltatás-példány-neve|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás. Lehetővé teszi a szolgáltatási példányok módosítását futásidőben. |No|N.A.|
+|SF-figyelő – név|Csak akkor alkalmazható, ha a háttérrendszer Service Fabric szolgáltatás, és a "háttér-azonosító" használatával van megadva. Service Fabric Reliable Services lehetővé teszi, hogy több figyelőt hozzon létre egy szolgáltatásban. Ez az attribútum egy adott figyelő kiválasztására szolgál, ha a háttérbeli megbízható szolgáltatás több figyelővel rendelkezik. Ha nincs megadva ez az attribútum, a API Management neve nélkül kísérli meg a figyelő használatát. A név nélküli figyelő olyan Reliable Servicesra jellemző, amely csak egy figyelővel rendelkezik. |No|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -284,19 +283,19 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 -   **Házirend-hatókörök:** az összes hatókör
 
 ##  <a name="set-body"></a><a name="SetBody"></a>Törzs beállítása
- A `set-body` házirend segítségével állítsa be az üzenettörzs a bejövő és a kimenő kérelmeket. Az üzenet törzsének eléréséhez használhatja a `context.Request.Body` tulajdonságot vagy a `context.Response.Body`(z) függvényt attól függően, hogy a házirend a bejövő vagy kimenő szakaszban van-e.
+ A `set-body` házirend segítségével állítsa be az üzenettörzs a bejövő és a kimenő kérelmeket. Az üzenet törzsének eléréséhez használhatja a `context.Request.Body` tulajdonságot vagy a (z `context.Response.Body` ) függvényt attól függően, hogy a házirend a bejövő vagy kimenő szakaszban van-e.
 
 > [!IMPORTANT]
->  Vegye figyelembe, hogy alapértelmezés szerint az üzenettörzs a vagy `context.Request.Body` `context.Response.Body`a használatával való elérésekor az eredeti üzenet törzse elvész, és úgy kell beállítani, hogy visszaadja a törzs vissza a kifejezésben. A törzs tartalmának megőrzéséhez állítsa a `preserveContent` paramétert `true` az üzenet elérésekor. Ha `preserveContent` a értéke értékre van állítva, `true` és egy másik törzset ad vissza a kifejezés, a rendszer a visszaadott törzset használja.
+>  Vegye figyelembe, hogy alapértelmezés szerint az üzenettörzs a vagy a használatával való elérésekor `context.Request.Body` `context.Response.Body` az eredeti üzenet törzse elvész, és úgy kell beállítani, hogy visszaadja a törzs vissza a kifejezésben. A törzs tartalmának megőrzéséhez állítsa a `preserveContent` paramétert az `true` üzenet elérésekor. Ha `preserveContent` a értéke értékre van állítva `true` , és egy másik törzset ad vissza a kifejezés, a rendszer a visszaadott törzset használja.
 >
->  A `set-body` szabályzat használatakor vegye figyelembe az alábbi szempontokat.
+>  A szabályzat használatakor vegye figyelembe az alábbi szempontokat `set-body` .
 >
 > - Ha a `set-body` szabályzatot egy új vagy frissített törzs visszaadására használja, nem kell beállítania `preserveContent` , `true` mert Ön explicit módon megadja az új szövegtörzs tartalmát.
 >   -   A bejövő folyamatban lévő válasz tartalmának megőrzése nem ésszerű, mert még nincs válasz.
 >   -   A kimenő folyamatban lévő kérelem tartalmának megőrzése nem ésszerű, mert a kérést már elküldték a háttérnek ezen a ponton.
 >   -   Ha ezt a házirendet akkor kell használni, ha nincs üzenettörzs, például egy bejövő GET esetében, kivétel keletkezik.
 
- További `context.Request.Body`információ: `context.Response.Body`, és a `IMessage` [környezeti változó](api-management-policy-expressions.md#ContextVariables) táblázatának részei.
+ További információ: `context.Request.Body` , `context.Response.Body` és a `IMessage` [környezeti változó](api-management-policy-expressions.md#ContextVariables) táblázatának részei.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -342,7 +341,7 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 ```
 
 #### <a name="filter-response-based-on-product"></a>Válasz szűrése termék alapján
- Ez a példa azt mutatja be, hogyan hajtható végre a tartalom szűrése, ha eltávolít egy adatelemet a háttér `Starter` -szolgáltatástól kapott válaszból a termék használatakor. A szabályzat konfigurálásának és használatának bemutatását lásd: a [Cloud Cover 177-es epizódja: további API Management szolgáltatások a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30-es gyors előretekeréssel. Indítsa el a 31:50-at a bemutatóhoz használt [Dark Sky előrejelzési API](https://developer.forecast.io/) áttekintéséhez.
+ Ez a példa azt mutatja be, hogyan hajtható végre a tartalom szűrése, ha eltávolít egy adatelemet a háttér-szolgáltatástól kapott válaszból a termék használatakor `Starter` . A szabályzat konfigurálásának és használatának bemutatását lásd: a [Cloud Cover 177-es epizódja: további API Management szolgáltatások a Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30-es gyors előretekeréssel. Indítsa el a 31:50-at a bemutatóhoz használt [Dark Sky előrejelzési API](https://developer.forecast.io/) áttekintéséhez.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -364,12 +363,12 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 A `set-body` házirend konfigurálható úgy, hogy a [folyékony](https://shopify.github.io/liquid/basics/introduction/) sablonos nyelvet használja a kérelem vagy válasz törzsének átalakításához. Ez nagyon hatékony lehet, ha teljes mértékben át kell alakítania az üzenet formátumát.
 
 > [!IMPORTANT]
-> A `set-body` házirendben használt folyadék implementációja C# módban van konfigurálva. Ez különösen fontos olyan dolgok esetében, mint a szűrés. A Dátumszűrő használatával például a Pascal ház és a C# dátum formázása szükséges, például:
+> A házirendben használt folyadék implementációja `set-body` C# módban van konfigurálva. Ez különösen fontos olyan dolgok esetében, mint a szűrés. A Dátumszűrő használatával például a Pascal ház és a C# dátum formázása szükséges, például:
 >
 > {{Body. foo. startDateTime | Dátum: "yyyyMMddTHH: PP: ddZ"}}
 
 > [!IMPORTANT]
-> Ahhoz, hogy a folyadék sablon használatával megfelelően lehessen kötni egy XML-törzset, `set-header` használjon egy szabályzatot a tartalom típusának beállításához az Application/XML, a Text/XML (vagy bármilyen, + XML végződésű típus) számára. JSON-törzs esetén az alkalmazásnak/JSON-nek, Text/JSON-nak (vagy bármilyen, + JSON-val végződő típusnak) kell lennie.
+> Ahhoz, hogy a folyadék sablon használatával megfelelően lehessen kötni egy XML-törzset, használjon egy szabályzatot, amely az `set-header` Application/XML, a Text/XML (vagy bármely más, + XML végződésű típus) esetében beállítja a tartalom típusát. JSON-törzs esetén az alkalmazásnak/JSON-nek, Text/JSON-nak (vagy bármilyen, + JSON-nak) kell lennie.
 
 #### <a name="convert-json-to-soap-using-a-liquid-template"></a>A JSON konvertálása SZAPPANba folyékony sablon használatával
 ```xml
@@ -396,15 +395,15 @@ A `set-body` házirend konfigurálható úgy, hogy a [folyékony](https://shopif
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|törzs beállítása|Gyökérelem. A törzs szövegét vagy egy törzset visszaadó kifejezést tartalmaz.|Igen|
+|törzs beállítása|Gyökérelem. A törzs szövegét vagy egy törzset visszaadó kifejezést tartalmaz.|Yes|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|sablon|A beállított szövegtörzs által futtatott sablon mód módosításához használatos. Jelenleg az egyetlen támogatott érték a:<br /><br />-Liquid – a beállított szövegtörzs a folyékony sablonrendszer motorját fogja használni |Nem||
+|sablon|A beállított szövegtörzs által futtatott sablon mód módosításához használatos. Jelenleg az egyetlen támogatott érték a:<br /><br />-Liquid – a beállított szövegtörzs a folyékony sablonrendszer motorját fogja használni |No||
 
 A kérelemmel és válaszsal kapcsolatos információkhoz való hozzáféréshez a likvid sablon a következő tulajdonságokkal rendelkező környezeti objektumhoz tud kötni: <br />
 <pre>context.
@@ -500,9 +499,9 @@ OriginalUrl.
 > Egy fejléc több értéke egy CSV-karakterlánchoz van fűzve, például:`headerName: value1,value2,value3`
 >
 > A kivételek közé tartoznak a szabványosított fejlécek, amelyek értékei:
-> - tartalmazhat vesszőket (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`),
-> - tartalmazhat dátumot (`Cookie`, `Set-Cookie`, `Warning`),
-> - a következőt`Date`tartalmazza `Expires`: `If-Modified-Since`dátum `If-Unmodified-Since`( `Last-Modified`, `Retry-After`,,,,).
+> - tartalmazhat vesszőket ( `User-Agent` , `WWW-Authenticate` , `Proxy-Authenticate` ),
+> - tartalmazhat dátumot ( `Cookie` , `Set-Cookie` , `Warning` ),
+> - a következőt tartalmazza: dátum ( `Date` ,,,, `Expires` `If-Modified-Since` `If-Unmodified-Since` `Last-Modified` , `Retry-After` ).
 >
 > A kivételek esetén több fejléc-érték nem lesz összefűzve egyetlen karakterláncban, és külön fejlécként lesznek átadva, például:`User-Agent: value1`
 >`User-Agent: value2`
@@ -510,17 +509,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|fejléc beállítása|Gyökérelem.|Igen|
-|érték|Megadja a beállítandó fejléc értékét. Több azonos nevű fejléchez további `value` elemek is hozzáadhatók.|Nem|
+|fejléc beállítása|Gyökérelem.|Yes|
+|value|Megadja a beállítandó fejléc értékét. Több azonos nevű fejléchez további elemek is hozzáadhatók `value` .|No|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|létező – művelet|Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van `override` beállítva, hogy több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben.|Nem|felülbírálás|
-|név|Megadja a beállítani kívánt fejléc nevét.|Igen|N/A|
+|létező – művelet|Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van beállítva, hogy `override` több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben.|No|felülbírálás|
+|name|Megadja a beállítani kívánt fejléc nevét.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -565,17 +564,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|set-Query-paraméter|Gyökérelem.|Igen|
-|érték|Megadja a beállítandó lekérdezési paraméter értékét. Az azonos nevű lekérdezési paraméterekhez további `value` elemek is hozzáadhatók.|Igen|
+|set-Query-paraméter|Gyökérelem.|Yes|
+|value|Megadja a beállítandó lekérdezési paraméter értékét. Az azonos nevű lekérdezési paraméterekhez további elemek is hozzáadhatók `value` .|Yes|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|létező – művelet|Megadja az elvégzendő műveletet, ha a lekérdezési paraméter már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő paraméter értékét.<br />-Skip-nem helyettesíti a lekérdezési paraméter meglévő értékét.<br />-append – hozzáfűzi az értéket a meglévő lekérdezési paraméter értékéhez.<br />-delete – eltávolítja a lekérdezési paramétert a kérelemből.<br /><br /> Ha úgy van `override` beállítva, hogy több bejegyzést is megadjon ugyanazzal a névvel, a lekérdezési paraméter az összes bejegyzésnek megfelelően be lesz állítva (amely többször szerepel); a rendszer csak a felsorolt értékeket adja meg az eredményben.|Nem|felülbírálás|
-|név|Megadja a beállítani kívánt lekérdezési paraméter nevét.|Igen|N/A|
+|létező – művelet|Megadja az elvégzendő műveletet, ha a lekérdezési paraméter már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő paraméter értékét.<br />-Skip-nem helyettesíti a lekérdezési paraméter meglévő értékét.<br />-append – hozzáfűzi az értéket a meglévő lekérdezési paraméter értékéhez.<br />-delete – eltávolítja a lekérdezési paramétert a kérelemből.<br /><br /> Ha úgy van beállítva, hogy `override` több bejegyzést is megadjon ugyanazzal a névvel, a lekérdezési paraméter az összes bejegyzésnek megfelelően van beállítva (amely többször is megjelenik); a rendszer csak a felsorolt értékeket adja meg az eredményben.|No|felülbírálás|
+|name|Megadja a beállítani kívánt lekérdezési paraméter nevét.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -644,16 +643,16 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|újraírás – URI|Gyökérelem.|Igen|
+|újraírás – URI|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Attribútum|Leírás|Kötelező|Alapértelmezett|
 |---------------|-----------------|--------------|-------------|
-|sablon|A tényleges webszolgáltatás URL-címe bármely lekérdezési karakterlánc paraméterrel. Kifejezések használatakor a teljes értéknek kifejezésnek kell lennie.|Igen|N/A|
-|másolás – nem egyező – paraméterek|Megadja, hogy az eredeti URL-sablonban nem szereplő lekérdezési paraméterek hozzáadódnak-e az Újraírási sablon által definiált URL-címhez.|Nem|igaz|
+|sablon|A tényleges webszolgáltatás URL-címe bármely lekérdezési karakterlánc paraméterrel. Kifejezések használatakor a teljes értéknek kifejezésnek kell lennie.|Yes|N.A.|
+|másolás – nem egyező – paraméterek|Megadja, hogy az eredeti URL-sablonban nem szereplő lekérdezési paraméterek hozzáadódnak-e az Újraírási sablon által definiált URL-címhez.|No|igaz|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -713,11 +712,11 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|XSL-átalakító|Gyökérelem.|Igen|
-|parameter|Az átalakításban használt változók definiálásához használatos|Nem|
-|xsl: stíluslap|Gyökér stíluslap eleme. Az összes, a szabványos [XSLT-specifikációban](https://www.w3.org/TR/xslt) definiált elem és attribútum|Igen|
+|XSL-átalakító|Gyökérelem.|Yes|
+|parameter|Az átalakításban használt változók definiálásához használatos|No|
+|xsl: stíluslap|Gyökér stíluslap eleme. Az összes, a szabványos [XSLT-specifikációban](https://www.w3.org/TR/xslt) definiált elem és attribútum|Yes|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.

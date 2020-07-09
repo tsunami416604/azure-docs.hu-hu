@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367971"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LucidChart konfigurálása
 
@@ -124,7 +124,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: costCenter|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Hivatkozás|
    |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a LucidChart**lehetőséget.
@@ -134,7 +134,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |Attribútum|Típus|
       |---|---|
       |displayName|Sztring|
-      |tagok|Referencia|
+      |tagok|Hivatkozás|
 
 12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -162,6 +162,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 ## <a name="change-log"></a>Változási napló
 
 * 04/30/2020 – a vállalati bővítmény attribútum és az egyéni "CanEdit" attribútum támogatása a felhasználók számára.
+* 06/15/2020 – a felhasználók ideiglenes törlése engedélyezve van (az [aktív](https://tools.ietf.org/html/rfc7643) attribútum támogatása).
 
 ## <a name="additional-resources"></a>További források
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
 ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415222"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
@@ -63,7 +63,7 @@ Az SAP Table Connector használatához a következőket kell tennie:
   - A Remote Function Call (RFC) célhelyek használatának engedélyezése.
   - A S_SDSAUTH engedélyezési objektum végrehajtási tevékenységének engedélyei.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -75,7 +75,7 @@ A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat tám
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot a következőre `SapTable`kell beállítani:. | Igen |
+| `type` | A tulajdonságot a következőre kell `type` beállítani: `SapTable` . | Igen |
 | `server` | Annak a kiszolgálónak a neve, amelyen az SAP-példány található.<br/>A használatával csatlakozhat egy SAP-alkalmazáskiszolgáló eléréséhez. | Nem |
 | `systemNumber` | Az SAP-szolgáltatás rendszerszáma.<br/>A használatával csatlakozhat egy SAP-alkalmazáskiszolgáló eléréséhez.<br/>Engedélyezett érték: egy kétszámjegyű decimális szám, amely karakterláncként van megadva. | Nem |
 | `messageServer` | Az SAP-üzenet kiszolgálójának állomásneve.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
@@ -83,14 +83,14 @@ A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat tám
 | `systemId` | Annak az SAP-rendszernek az azonosítója, amelyben a tábla található.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
 | `logonGroup` | Az SAP-rendszerhez tartozó bejelentkezési csoport.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
 | `clientId` | Az ügyfél azonosítója az SAP-rendszeren.<br/>Engedélyezett érték: egy háromjegyű decimális szám, amely karakterláncként van megadva. | Igen |
-| `language` | Az SAP-rendszer által használt nyelv.<br/>Az `EN`alapértelmezett érték:.| Nem |
+| `language` | Az SAP-rendszer által használt nyelv.<br/>Az alapértelmezett érték: `EN` .| Nem |
 | `userName` | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
 | `password` | A felhasználó jelszava. Adja meg ezt a mezőt `SecureString` úgy, hogy az biztonságosan tárolja Data Factoryban, vagy [hivatkozzon a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| `sncMode` | A SNC aktiválási jelzője annak az SAP-kiszolgálónak a eléréséhez, ahol a tábla található.<br/>Akkor használja, ha a SNC használatával szeretne csatlakozni az SAP-kiszolgálóhoz.<br/>Az engedélyezett értékek `0` : (kikapcsolva, alapértelmezett `1` ) vagy (bekapcsolva). | Nem |
+| `sncMode` | A SNC aktiválási jelzője annak az SAP-kiszolgálónak a eléréséhez, ahol a tábla található.<br/>Akkor használja, ha a SNC használatával szeretne csatlakozni az SAP-kiszolgálóhoz.<br/>Az engedélyezett értékek: `0` (kikapcsolva, alapértelmezett) vagy (bekapcsolva `1` ). | Nem |
 | `sncMyName` | A kezdeményező SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
 | `sncPartnerName` | A kommunikációs partner SNC-neve az SAP-kiszolgáló eléréséhez, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
 | `sncLibraryPath` | A külső biztonsági termék könyvtára, amely hozzáfér az SAP-kiszolgálóhoz, ahol a tábla található.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. | Nem |
-| `sncQop` | Az alkalmazni kívánt védelmi szint SNC-minőség.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. <br/>Az `1` engedélyezett értékek: (hitelesítés) `2` , (integritás) `3` , (adatvédelem) `8` , (alapértelmezett) `9` , (maximum). | Nem |
+| `sncQop` | Az alkalmazni kívánt védelmi szint SNC-minőség.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. <br/>Az engedélyezett értékek: `1` (hitelesítés), `2` (integritás), `3` (adatvédelem), `8` (alapértelmezett), `9` (maximum). | Nem |
 | `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. A saját üzemeltetésű integrációs modulra van szükség, ahogy azt az [Előfeltételekben](#prerequisites)korábban említettük. |Igen |
 
 **1. példa: Kapcsolódás SAP Application Serverhez**
@@ -183,7 +183,7 @@ Az adatoknak a és a SAP BW Open hub társított szolgáltatásba való másolá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot a következőre `SapTableResource`kell beállítani:. | Igen |
+| `type` | A tulajdonságot a következőre kell `type` beállítani: `SapTableResource` . | Igen |
 | `tableName` | Annak az SAP-táblának a neve, amelyből az adatok másolása megtörténjen. | Igen |
 
 ### <a name="example"></a>Példa
@@ -215,31 +215,31 @@ Az adatok SAP-táblából történő másolásához a következő tulajdonságok
 
 | Tulajdonság                         | Leírás                                                  | Kötelező |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | A `type` tulajdonságot a következőre `SapTableSource`kell beállítani:.         | Igen      |
+| `type`                             | A tulajdonságot a következőre kell `type` beállítani: `SapTableSource` .         | Igen      |
 | `rowCount`                         | A beolvasandó sorok száma.                              | Nem       |
 | `rfcTableFields`                   | Az SAP-táblából Másolandó mezők (oszlopok). Például: `column0, column1`. | Nem       |
 | `rfcTableOptions`                  | Az SAP-tábla sorainak szűrésére szolgáló beállítások. Például: `COLUMN0 EQ 'SOMEVALUE'`. Tekintse meg a jelen cikk későbbi, a SAP-lekérdezés operátora című táblázatot is. | Nem       |
-| `customRfcReadTableFunctionModule` | Egyéni RFC-függvény modul, amely az adatok SAP-táblából való beolvasására használható.<br>Egyéni RFC-függvények modullal meghatározhatja az adatok lekérésének módját az SAP-rendszerből, és visszaküldheti őket a Data Factorynak. Az egyéni függvény moduljának olyan felülettel kell rendelkeznie (importálás, exportálás, táblák) `/SAPDS/RFC_READ_TABLE2`, amely hasonló a (Data Factory) által használt alapértelmezett interfészhez. | Nem       |
-| `partitionOption`                  | Az SAP-táblázatból beolvasott partíciós mechanizmus. A támogatott lehetőségek a következők: <ul><li>`None`</li><li>`PartitionOnInt`(normál egész szám vagy egész érték nulla kitöltéssel a bal oldalon, például `0000012345`)</li><li>`PartitionOnCalendarYear`(4 számjegy a következő formátumban: "éééé")</li><li>`PartitionOnCalendarMonth`(6 számjegy a következő formátumban: "YYYYMM")</li><li>`PartitionOnCalendarDate`(8 számjegy a következő formátumban: "ÉÉÉÉHHNN")</li></ul> | Nem       |
+| `customRfcReadTableFunctionModule` | Egyéni RFC-függvény modul, amely az adatok SAP-táblából való beolvasására használható.<br>Egyéni RFC-függvények modullal meghatározhatja az adatok lekérésének módját az SAP-rendszerből, és visszaküldheti őket a Data Factorynak. Az egyéni függvény moduljának olyan felülettel kell rendelkeznie (importálás, exportálás, táblák), amely hasonló a ( `/SAPDS/RFC_READ_TABLE2` Data Factory) által használt alapértelmezett interfészhez. | Nem       |
+| `partitionOption`                  | Az SAP-táblázatból beolvasott partíciós mechanizmus. A támogatott lehetőségek a következők: <ul><li>`None`</li><li>`PartitionOnInt`(normál egész szám vagy egész érték nulla kitöltéssel a bal oldalon, például `0000012345` )</li><li>`PartitionOnCalendarYear`(4 számjegy a következő formátumban: "éééé")</li><li>`PartitionOnCalendarMonth`(6 számjegy a következő formátumban: "YYYYMM")</li><li>`PartitionOnCalendarDate`(8 számjegy a következő formátumban: "ÉÉÉÉHHNN")</li></ul> | Nem       |
 | `partitionColumnName`              | Az adatparticionáláshoz használt oszlop neve.                | Nem       |
-| `partitionUpperBound`              | A-ben `partitionColumnName` megadott oszlop maximális értéke a particionálás folytatásához lesz használva. | Nem       |
-| `partitionLowerBound`              | A-ben `partitionColumnName` megadott oszlop minimális értéke a particionálás folytatásához lesz használva. (Megjegyzés: `partitionLowerBound` nem lehet "0", ha a `PartitionOnInt`partíció lehetőség) | Nem       |
+| `partitionUpperBound`              | A-ben megadott oszlop maximális értéke a `partitionColumnName` particionálás folytatásához lesz használva. | Nem       |
+| `partitionLowerBound`              | A-ben megadott oszlop minimális értéke a `partitionColumnName` particionálás folytatásához lesz használva. (Megjegyzés: `partitionLowerBound` nem lehet "0", ha a partíció lehetőség `PartitionOnInt` ) | Nem       |
 | `maxPartitionsNumber`              | Az a partíciók maximális száma, amelybe az adatmennyiséget fel kell osztani.     | Nem       |
 
 >[!TIP]
->Ha az SAP-táblázat nagy mennyiségű adattal rendelkezik (például több milliárd sor), akkor `partitionOption` a `partitionSetting` és az az adatait kisebb partíciókra kell bontani. Ebben az esetben az adatok egy partíció alapján kerülnek beolvasásra, és az egyes adatpartíciók egyetlen RFC-hívással kérhetők le az SAP-kiszolgálóról.<br/>
+>Ha az SAP-táblázat nagy mennyiségű adattal rendelkezik (például több milliárd sor), akkor `partitionOption` `partitionSetting` a és az az adatait kisebb partíciókra kell bontani. Ebben az esetben az adatok egy partíció alapján kerülnek beolvasásra, és az egyes adatpartíciók egyetlen RFC-hívással kérhetők le az SAP-kiszolgálóról.<br/>
 <br/>
->`partitionOption` `partitionUpperBound` `partitionLowerBound``maxPartitionsNumber`Például az egyes partíciókban lévő sorok számát a következő képlettel számítjuk ki: (a és a közötti összes sor)/. `partitionOnInt`<br/>
+>`partitionOption` `partitionOnInt` Például az egyes partíciókban lévő sorok számát a következő képlettel számítjuk ki: (a és a közötti összes sor `partitionUpperBound` `partitionLowerBound` )/ `maxPartitionsNumber` .<br/>
 <br/>
->Ha párhuzamosan szeretné betölteni az adatpartíciókat a másolás felgyorsításához, a párhuzamos mértéket a másolási tevékenység [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) beállításai vezérlik. Ha például négyre van állítva `parallelCopies` , Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés az adatok egy részét kéri le az SAP-táblából. Javasoljuk, hogy `maxPartitionsNumber` a `parallelCopies` tulajdonság értékének többszörösét végezze el. Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
+>Ha párhuzamosan szeretné betölteni az adatpartíciókat a másolás felgyorsításához, a párhuzamos mértéket a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításai vezérlik. Ha például négyre van állítva `parallelCopies` , Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés az adatok egy részét kéri le az SAP-táblából. Javasoljuk, hogy a `maxPartitionsNumber` tulajdonság értékének többszörösét végezze el `parallelCopies` . Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
 
-A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezési operátorokkal szűrheti a sorokat:
+A alkalmazásban `rfcTableOptions` a következő általános SAP-lekérdezési operátorokkal szűrheti a sorokat:
 
-| Művelet | Leírás |
+| Operátor | Leírás |
 | :------- | :------- |
 | `EQ` | Egyenlő |
 | `NE` | Nem egyenlő |
-| `LT` | Kisebb mint |
+| `LT` | Kisebb, mint |
 | `LE` | Kisebb vagy egyenlő |
 | `GT` | Nagyobb, mint |
 | `GE` | Nagyobb vagy egyenlő |

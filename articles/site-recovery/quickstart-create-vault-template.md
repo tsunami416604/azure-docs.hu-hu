@@ -6,12 +6,12 @@ ms.custom: subject-armqs
 ms.date: 04/29/2020
 author: davidsmatlak
 ms.author: v-dasmat
-ms.openlocfilehash: 47c25ebd0fe18d470b04ccbcc85a8638c1ce0346
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598392"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217285"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Rövid útmutató: Recovery Services-tároló létrehozása Resource Manager-sablonnal
 
@@ -23,7 +23,7 @@ Ha nem rendelkezik aktív Azure-előfizetéssel, akkor a Kezdés előtt létreho
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincs.
+Nincsenek.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -35,7 +35,7 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-- [Microsoft. recoveryservices szolgáltatónál](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults)-tárolók: létrehozza a tárolót.
+- [Microsoft. recoveryservices szolgáltatónál](/azure/templates/microsoft.recoveryservices/vaults)-tárolók: létrehozza a tárolót.
 - [Microsoft. recoveryservices szolgáltatónál/Vaults/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): a tár biztonsági mentési redundancia-beállításainak konfigurálása.
 
 A sablon a tár biztonsági mentési konfigurációjához választható paramétereket tartalmaz. A tárolási redundancia-beállítások a helyileg redundáns tárolás (LRS) vagy a Geo-redundáns tárolás (GRS). További információ: [set Storage redundancia](../backup/backup-create-rs-vault.md#set-storage-redundancy).
@@ -71,7 +71,7 @@ A sablon üzembe helyezéséhez az **előfizetés**, az **erőforráscsoport**é
 
 A tár létrehozásának ellenőrzéséhez használja az Azure CLI-t vagy a Azure PowerShell.
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the resource group name:" &&
@@ -98,7 +98,7 @@ Write-Host "Press [ENTER] to continue..."
 
 A következő kimenet a tár információinak kivonata:
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```Output
 "id": "/subscriptions/<Subscription Id>/resourceGroups/myResourceGroup
@@ -132,7 +132,7 @@ GeoRedundant
 
 Ha azt tervezi, hogy az új erőforrásokat használja, nincs szükség beavatkozásra. Ellenkező esetben eltávolíthatja az ebben a rövid útmutatóban létrehozott erőforráscsoportot és tárat. Az erőforráscsoport és a hozzá tartozó erőforrások törléséhez használja az Azure CLI-t vagy a Azure PowerShell.
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the resource group name:" &&

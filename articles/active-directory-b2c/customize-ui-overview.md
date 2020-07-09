@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebf83807629cc56aa381c97a9ce36d90c94d61f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388901"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -100,7 +100,7 @@ A lényeg az, hogy a tartalmat egy nyilvánosan elérhető HTTPS-végponton üze
 
 A saját HTML és CSS használatának első lépései a felhasználói élmény oldalain az alábbi irányelvek alapján.
 
-- Hozzon létre jól formázott HTML-tartalmat egy `<div id="api"></div>` olyan üres elemmel, amely `<body>`valahol a-ben található. Ez az elem a Azure AD B2C tartalmának beszúrt helyét jelöli. Az alábbi példa egy minimális oldalt mutat be:
+- Hozzon létre jól formázott HTML-tartalmat egy olyan üres elemmel, amely `<div id="api"></div>` valahol a-ben található `<body>` . Ez az elem a Azure AD B2C tartalmának beszúrt helyét jelöli. Az alábbi példa egy minimális oldalt mutat be:
 
     ```html
     <!DOCTYPE html>
@@ -146,7 +146,7 @@ A saját HTML és CSS használatának első lépései a felhasználói élmény 
 
 ### <a name="html-fragments-from-azure-ad-b2c"></a>HTML-töredékek Azure AD B2C
 
-A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure AD B2C egyesít `<div id="api"></div>` a tartalomban található elembe.
+A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure AD B2C egyesít a `<div id="api"></div>` tartalomban található elembe.
 
 | Beszúrt oldal | HTML leírása |
 | ------------- | ------------------- |
@@ -202,7 +202,7 @@ Ez a jegyzett példa egy egyéni szalagcím emblémát és háttérképet mutat 
 
 ### <a name="use-company-branding-assets-in-custom-html"></a>Vállalati arculati eszközök használata egyéni HTML-kódban
 
-Ha a vállalati arculati eszközöket egyéni HTML-kódban szeretné használni, adja hozzá a `<div id="api">` következő címkéket a címkén kívül:
+Ha a vállalati arculati eszközöket egyéni HTML-kódban szeretné használni, adja hozzá a következő címkéket a `<div id="api">` címkén kívül:
 
 ```HTML
 <img data-tenant-branding-background="true" />
@@ -213,19 +213,19 @@ A képforrást a háttérkép és a szalagcím emblémája helyettesíti. Az [eg
 
 ## <a name="localize-content"></a>Tartalom honosítása
 
-A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](user-flow-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure AD B2C az OpenID Connect `ui-locales` paramétert továbbítsa a végpontnak. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
+A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](user-flow-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure AD B2C az OpenID Connect paramétert továbbítsa a `ui_locales` végpontnak. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
 
-A tartalmat a használt területi beállítás alapján különböző helyekről lehet kihúzni. A CORS-kompatibilis végponton beállíthatja, hogy a rendszer egy adott nyelvhez tartozó tartalmat működtessen. Ha a helyettesítő karaktert használja, hívja meg a megfelelőt `{Culture:RFC5646}`.
+A tartalmat a használt területi beállítás alapján különböző helyekről lehet kihúzni. A CORS-kompatibilis végponton beállíthatja, hogy a rendszer egy adott nyelvhez tartozó tartalmat működtessen. Ha a helyettesítő karaktert használja, hívja meg a megfelelőt `{Culture:RFC5646}` .
 
 Az egyéni oldal URI-ja például az alábbihoz hasonló lehet:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 A lapot francia nyelven is betöltheti, ha tartalmat húz a következő helyről:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 

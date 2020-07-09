@@ -4,13 +4,13 @@ description: A Azure Monitor zökkenőmentesen integrálható a Azure Functionso
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/20/2020
-ms.openlocfilehash: a936c77abb9aed5886fae8b2ec4a10bb076b7cb5
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 06/26/2020
+ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776740"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482105"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Functions figyelése Azure Monitor Application Insights
 
@@ -20,11 +20,10 @@ Application Insights gyűjti a napló-, a teljesítmény-és a hibák adatait, �
 
 A szükséges Application Insights rendszerállapot-kialakítás be van építve Azure Functionsba. A Function app Application Insights erőforráshoz való összekapcsolásához egyetlen szükséges dolog egy érvényes kialakítási kulcs. Ha a Function app-erőforrást az Azure-ban hozza létre, a kialakítási kulcsot hozzá kell adni az alkalmazás beállításaihoz. Ha a Function alkalmazás még nem rendelkezik ezzel a kulccsal, manuálisan is beállíthatja. További információért olvassa el a [Azure functions figyelését](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)ismertető témakört.
 
-## <a name="distributed-tracing-for-java-applications-public-preview"></a>Elosztott nyomkövetés Java-alkalmazásokhoz (nyilvános előzetes verzió)
-
+## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>A Java-alkalmazások elosztott nyomkövetése Windows rendszeren (nyilvános előzetes verzió)
 
 > [!IMPORTANT]
-> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el a Java-Azure Functions. A fogyasztási csomaghoz a 8-9 másodperces, hideg indítási következményekkel jár.
+> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el a Java-Azure Functions Windows rendszeren, a Java-Azure Functions elosztott nyomkövetése nem támogatott a Linux rendszeren. A fogyasztási csomaghoz a 8-9 másodperces használatú.
 
 Ha alkalmazásai Java nyelven íródtak, megtekintheti a függvények alkalmazásaiból származó gazdagabb adatokat, többek között a kérelmeket, a függőségeket, a naplókat és a metrikákat is. A további adatokat is megtekintheti és diagnosztizálhatja a végpontok közötti tranzakciókat, és megtekintheti az alkalmazás-hozzárendelést, amely összegzi számos tranzakciót, hogy a rendszer hogyan befolyásolja a rendszerek működését, és hogy az átlagos teljesítmény és a hibák milyen arányban jelennek meg.
 

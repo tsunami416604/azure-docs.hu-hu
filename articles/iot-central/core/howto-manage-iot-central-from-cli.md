@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
 ms.openlocfilehash: c3e0beb9a35b7888787d018b5e3b9c4ceea7e1c9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744541"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central kezelése az Azure CLI-vel
@@ -23,7 +23,7 @@ IoT Central alkalmazások az [azure IoT Central Application Manager](https://aka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -65,8 +65,8 @@ Ezek a parancsok először létrehoznak egy erőforráscsoportot az alkalmazásh
 | ----------------- | ----------- |
 | resource-group    | Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
 | location          | Alapértelmezés szerint ez a parancs az erőforráscsoport helyét használja. Jelenleg IoT Central alkalmazást hozhat létre **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**, **Európában**, **Egyesült Államokban**, az **Egyesült Királyságban**és a **japán** földrajzi területeken. |
-| név              | Az alkalmazás neve a Azure Portalban. |
-| altartomány         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe: `https://mysubdomain.azureiotcentral.com`. |
+| name              | Az alkalmazás neve a Azure Portalban. |
+| altartomány         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe: `https://mysubdomain.azureiotcentral.com` . |
 | SKU               | Jelenleg használhatja a **ST1** vagy a **ST2**. Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
 | sablon          | A használni kívánt alkalmazás sablonja. További információt az alábbi táblázat tartalmaz. |
 | megjelenítendő név      | Az alkalmazás neve, ahogy az a felhasználói felületen látható. |

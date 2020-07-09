@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671834"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetria adatmodell
@@ -30,11 +29,11 @@ Az alkalmazás végrehajtásának figyeléséhez a következő típusú telemetr
 
     A **művelet** a kérelmeket feldolgozó végrehajtási szálakat dolgozza fel. Más típusú műveletek figyelésére is [kódot írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) , például egy olyan webes feladat vagy függvény felébresztését, amely rendszeresen dolgozza fel az adatfeldolgozást.  Minden művelet rendelkezik AZONOSÍTÓval. Ez az azonosító a kérelem feldolgozásakor az alkalmazás által létrehozott összes telemetria [csoportosítására](../../azure-monitor/app/correlation.md) használható. Minden művelet sikeres vagy sikertelen, és időtartammal rendelkezik.
 * [**Kivétel**](data-model-exception-telemetry.md) – a művelet általában egy olyan kivételt jelöl, amely egy műveletet eredményez.
-* [**Függőség**](data-model-dependency-telemetry.md) – az alkalmazástól érkező hívást egy külső szolgáltatásra vagy tárhelyre, például egy REST API vagy SQL-példányra hívja. A ASP.NET-ben az SQL-függőségi hívások meghatározása `System.Data`a következő:. A HTTP-végpontokra irányuló hívásokat `System.Net`a határozza meg. 
+* [**Függőség**](data-model-dependency-telemetry.md) – az alkalmazástól érkező hívást egy külső szolgáltatásra vagy tárhelyre, például egy REST API vagy SQL-példányra hívja. A ASP.NET-ben az SQL-függőségi hívások meghatározása a következő: `System.Data` . A HTTP-végpontokra irányuló hívásokat a határozza meg `System.Net` . 
 
 A Application Insights három további adattípust biztosít az egyéni telemetria:
 
-* [Nyomkövetés](data-model-trace-telemetry.md) – közvetlenül, vagy adapteren keresztül, a diagnosztikai naplózás megvalósításához olyan rendszerállapot-keretrendszer használatával, amely ismerős, például `Log4Net` vagy. `System.Diagnostics`
+* [Nyomkövetés](data-model-trace-telemetry.md) – közvetlenül, vagy adapteren keresztül, a diagnosztikai naplózás megvalósításához olyan rendszerállapot-keretrendszer használatával, amely ismerős, például `Log4Net` vagy `System.Diagnostics` .
 * [Esemény](data-model-event-telemetry.md) – jellemzően a szolgáltatással való felhasználói interakció rögzítésére használatos a használati minták elemzése érdekében.
 * [Metrika](data-model-metric-telemetry.md) – az időszakos skaláris mérések jelentésére szolgál.
 

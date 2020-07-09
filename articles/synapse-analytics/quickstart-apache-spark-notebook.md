@@ -6,15 +6,15 @@ author: euangMS
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ec73c07d97a0e400e048e77ba6a30a6a12c0fc4
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656191"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194909"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával
 
@@ -119,7 +119,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
 7. Az Y tengely oszlop mezőjében válassza a "fizetés" lehetőséget.
 8. Az **Összesítés** mezőben válassza az "AVG" lehetőséget.
-9. Kattintson az **Alkalmaz** elemre.
+9. Kattintson az **Alkalmaz** gombra.
 
    ![Diagram kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Diagram kimenete az Azure szinapszis Sparkban")
 
@@ -139,7 +139,7 @@ Mivel a készlet díjai több időt vesznek igénybe, mint a tárterületre vona
 
 A Spark-példány leállításának biztosításához fejezze be a csatlakoztatott munkameneteket (jegyzetfüzeteket). A készlet leáll, amikor eléri a Apache Spark készletben megadott **üresjárati időt** . A **befejezési munkamenetet** a jegyzetfüzet alján található állapotsorból is kiválaszthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure szinapszis Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
 

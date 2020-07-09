@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81379814"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights Preview-környezetből C használatával #
@@ -23,7 +23,7 @@ ms.locfileid: "81379814"
 Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni az adatok [megtekintését az előzetes verziójú adathozzáférési API](https://docs.microsoft.com/rest/api/time-series-insights/preview) -kkal Azure Time Series Insights előzetes verziójú környezetekben.
 
 > [!TIP]
-> Tekintse meg a C#- [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)kód mintáit a címen.
+> Tekintse meg a C#-kód mintáit a címen [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -50,10 +50,10 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 
 1. [Előzetes verziójú Azure Time Series Insights-környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. 
-1. Futtassa a [GenerateCode. bat fájlt](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) a [readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) megadott módon a Time Series Insights előzetes verziójú ügyfél függőségeinek létrehozásához.
-1. Nyissa `TSIPreviewDataPlaneclient.sln` meg a megoldást `DataPlaneClientSampleApp` , és állítsa be alapértelmezett projektként a Visual Studióban.
-1. Telepítse a szükséges projekt-függőségeket az [alább](#project-dependencies) ismertetett lépésekkel, és állítsa össze a `.exe` példát egy végrehajtható fájlra.
-1. A `.exe` fájl futtatásához kattintson rá duplán.
+1. Futtassa a [readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) megadott [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) a Time Series Insights előzetes verziójú ügyfél függőségeinek létrehozásához.
+1. Nyissa meg a `TSIPreviewDataPlaneclient.sln` megoldást, és állítsa be `DataPlaneClientSampleApp` alapértelmezett projektként a Visual Studióban.
+1. Telepítse a szükséges projekt-függőségeket az [alább](#project-dependencies) ismertetett lépésekkel, és állítsa össze a példát egy végrehajtható `.exe` fájlra.
+1. A fájl futtatásához kattintson `.exe` rá duplán.
 
 ## <a name="project-dependencies"></a>Projekt függőségei
 
@@ -61,9 +61,9 @@ Javasoljuk, hogy a Visual Studio legújabb verzióját használja:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – 16.4.2 + verzió
 
-A mintakód több szükséges függőséggel rendelkezik, amelyek megtekinthetők a [packages. config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) fájlban.
+A mintakód több szükséges függőséggel rendelkezik, amelyek megtekinthetők a [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) fájlban.
 
-Töltse le a csomagokat a Visual Studio 2019-ban a **Build** > **Build megoldás** kiválasztásával. 
+Töltse le a csomagokat a Visual Studio 2019-ban a **Build**  >  **Build megoldás** kiválasztásával. 
 
 Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www.nuget.org/)használatával. Például:
 

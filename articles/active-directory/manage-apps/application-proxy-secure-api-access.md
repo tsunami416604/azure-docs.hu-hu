@@ -2,22 +2,21 @@
 title: Helyszíni API-k elérése az Azure AD Application Proxy
 description: Azure Active Directory alkalmazásproxy lehetővé teszi a natív alkalmazások számára a helyszíni vagy felhőalapú virtuális gépeken üzemeltetett API-k és üzleti logika biztonságos elérését.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: has-adal-ref
-ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206444"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-khoz az Azure AD Application Proxy
 
@@ -35,7 +34,7 @@ Az alábbi ábra bemutatja, hogyan használható az Azure AD Application Proxy a
 
 ![Azure AD Application Proxy API-hozzáférés](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Az Azure AD Application Proxy a megoldás gerincét képezi, amely nyilvános végpontként működik az API-hozzáféréshez, és biztosítja a hitelesítést és az engedélyezést. Az API-kat a platformok széles köréből érheti el a [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) -kódtárak használatával.
+Az Azure AD Application Proxy a megoldás gerincét képezi, amely nyilvános végpontként működik az API-hozzáféréshez, és biztosítja a hitelesítést és az engedélyezést. A [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) -kódtárak használatával a platformok széles köréhez férhet hozzá.
 
 Mivel az Azure AD Application Proxy hitelesítés és engedélyezés az Azure AD-re épül, az Azure AD feltételes hozzáférés használatával biztosíthatja, hogy csak a megbízható eszközök férhessenek hozzá az Application proxyn keresztül közzétett API-khoz. Az Azure AD JOIN vagy az Azure AD hibrid csatlakoztatása asztali számítógépekhez és az Intune által felügyelt eszközökhöz. Kihasználhatja az Azure-Multi-Factor Authentication, valamint az [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)gépi tanulásra képes biztonsági mentésével prémium szintű Azure Active Directory szolgáltatásokat is.
 
@@ -137,7 +136,7 @@ Most regisztrálta a AppProxyNativeAppSample alkalmazást a Azure Active Directo
 
 ## <a name="configure-the-native-app-code"></a>A natív alkalmazás kódjának konfigurálása
 
-Az utolsó lépés a natív alkalmazás konfigurálása. A NativeClient-minta alkalmazás *Form1.cs* fájljának következő kódrészlete azt eredményezi, hogy a ADAL-függvénytár szerzi be a tokent az API-hívás igényléséhez, és csatolja a tulajdonosként az alkalmazás fejlécébe.
+Az utolsó lépés a natív alkalmazás konfigurálása. A NativeClient-minta alkalmazás *Form1.cs* fájljának következő kódrészlete azt eredményezi, hogy a MSAL-függvénytár szerzi be a tokent az API-hívás igényléséhez, és csatolja a tulajdonosként az alkalmazás fejlécébe.
 
    ```
    // Acquire Access Token from AAD for Proxy Application
@@ -172,7 +171,7 @@ if (authResult != null)
  }
 ```
 
-Ha úgy szeretné konfigurálni a natív alkalmazást, hogy az Azure Active Directoryhoz kapcsolódjon, és meghívja az API app proxyt, frissítse a helyőrző értékeket a NativeClient-minta alkalmazás *app. config* fájljában az Azure ad-ből származó értékekkel:
+Ha úgy szeretné konfigurálni a natív alkalmazást, hogy az Azure Active Directoryhoz kapcsolódjon, és meghívja az API app proxyt, frissítse a helyőrző értékeket a NativeClient-minta alkalmazás *App.config* fájljában az Azure ad-beli értékekkel:
 
 - Illessze be a **könyvtár (bérlő) azonosítóját** a `<add key="ida:Tenant" value="" />` mezőbe. Ezt az értéket (GUID) a bármelyik alkalmazás **Áttekintés** lapjáról tekintheti meg és másolhatja.
 
@@ -188,7 +187,7 @@ A paraméterek konfigurálása után hozza létre és futtassa a natív alkalmaz
 
 ![Sikeres](./media/application-proxy-secure-api-access/success.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez](../develop/quickstart-configure-app-access-web-apis.md)

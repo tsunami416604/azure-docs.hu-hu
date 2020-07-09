@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74566280"
 ---
 Az írásgyorsító egy lemezes képesség az M-sorozatú Virtual Machines (VM) számára a Premium Storage Azure Managed Disks kizárólag. Ahogy a neve is jelzi, a funkció célja az, hogy javítsa az írások I/O-késését az Azure Premium Storage. A írásgyorsító ideális megoldás, ha a naplófájlok frissítései szükségesek a lemez nagy teljesítményű, modern adatbázisokhoz való megőrzéséhez.
@@ -112,7 +112,7 @@ A következő részekben látható módon két fő forgatókönyvet lehet megtek
 
 Ezt a szkriptet használva hozzáadhat egy új lemezt a virtuális géphez. Az ezzel a parancsfájllal létrehozott lemez írásgyorsítót használ.
 
-`myWAVMs`Cserélje `myVM`le a `log001`,,, és a lemez méretét, valamint a lemez LunID az adott telepítésnek megfelelő értékekkel.
+Cserélje le a,, `myVM` `myWAVMs` , és a lemez `log001` méretét, valamint a lemez LunID az adott telepítésnek megfelelő értékekkel.
 
 ```powershell
 # Specify your VM Name
@@ -135,7 +135,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>írásgyorsító engedélyezése meglévő Azure-lemezen a PowerShell használatával
 
-Ezt a parancsfájlt használhatja a írásgyorsító meglévő lemezeken való engedélyezéséhez. Cserélje `myVM`le `myWAVMs`a, `test-log001` , és értékeket az adott telepítéshez megfelelő értékekre. A parancsfájl írásgyorsítót hoz létre egy meglévő lemezhez, ahol a **$newstatus** értéke "$true". A (z) "$false" érték használatával a rendszer letiltja az adott lemezen lévő írásgyorsító.
+Ezt a parancsfájlt használhatja a írásgyorsító meglévő lemezeken való engedélyezéséhez. Cserélje le a `myVM` , `myWAVMs` , és `test-log001` értékeket az adott telepítéshez megfelelő értékekre. A parancsfájl írásgyorsítót hoz létre egy meglévő lemezhez, ahol a **$newstatus** értéke "$true". A (z) "$false" érték használatával a rendszer letiltja az adott lemezen lévő írásgyorsító.
 
 ```powershell
 #Specify your VM Name
@@ -179,19 +179,19 @@ Az Azure REST API-n keresztül történő üzembe helyezéshez telepítenie kell
 
 ### <a name="install-armclient"></a>A armclient telepítése
 
-A armclient futtatásához a chocolatey használatával kell telepítenie. A cmd. exe vagy a PowerShell használatával telepítheti. Emelt szintű jogosultságok használata ezekre a parancsokra ("Futtatás rendszergazdaként").
+A armclient futtatásához a chocolatey használatával kell telepítenie. A cmd.exe vagy a PowerShell használatával telepítheti. Emelt szintű jogosultságok használata ezekre a parancsokra ("Futtatás rendszergazdaként").
 
-Futtassa a következő parancsot a cmd. exe fájllal:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+A cmd.exe használatával futtassa a következő parancsot:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
 Futtassa a következő parancsot a Power Shell használatával:`Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-Most már telepítheti a armclient a következő paranccsal bármelyik cmd. exe vagy PowerShell használatával.`choco install armclient`
+Most már telepítheti a armclient a következő paranccsal a cmd.exe vagy a PowerShell használatával`choco install armclient`
 
 ### <a name="getting-your-current-vm-configuration"></a>A virtuális gép aktuális konfigurációjának beolvasása
 
 Ha módosítani szeretné a lemez konfigurációjának attribútumait, először le kell kérnie az aktuális konfigurációt egy JSON-fájlban. Az aktuális konfigurációt a következő parancs végrehajtásával érheti el:`armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 
-Cserélje le a "<<   >>" kifejezésre az adataival, beleértve a JSON-fájl fájlnevét is.
+Cserélje le a "<<   >>" kifejezésben lévő feltételeket az adataira, beleértve a JSON-fájl fájlnevét.
 
 A kimenet az alábbihoz hasonló:
 

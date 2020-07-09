@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan lehet áttanítani a modelleket, és hogyan fri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 877697893b377007c812def00858b7300356f5e4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: c1dd91a800c8e807d527f24a381262bde97d792c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080312"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasszikus Studio-webszolgáltatás újratanítása és üzembe helyezése
 
@@ -76,43 +76,45 @@ Most már a betanított modellt is használhatja a korábban létrehozott pontoz
 
 Az alábbi mintakód bemutatja, hogyan használhatja a *BaseLocation*, a *RelativeLocation*, a *SasBlobToken*és a patch URL-címet a végpont frissítéséhez.
 
-    private async Task OverwriteModel()
+```csharp
+private async Task OverwriteModel()
+{
+    var resourceLocations = new
     {
-        var resourceLocations = new
+        Resources = new[]
         {
-            Resources = new[]
+            new
             {
-                new
+                Name = "Census Model [trained model]",
+                Location = new AzureBlobDataReference()
                 {
-                    Name = "Census Model [trained model]",
-                    Location = new AzureBlobDataReference()
-                    {
-                        BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
-                    }
+                    BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
+                    RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                    SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                 }
-            }
-        };
-
-        using (var client = new HttpClient())
-        {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-
-            using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), endpointUrl))
-            {
-                request.Content = new StringContent(JsonConvert.SerializeObject(resourceLocations), System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    await WriteFailedResponse(response);
-                }
-
-                // Do what you want with a successful response here.
             }
         }
+    };
+
+    using (var client = new HttpClient())
+    {
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+
+        using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), endpointUrl))
+        {
+            request.Content = new StringContent(JsonConvert.SerializeObject(resourceLocations), System.Text.Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                await WriteFailedResponse(response);
+            }
+
+            // Do what you want with a successful response here.
+        }
     }
+}
+```
 
 A hívás *apiKey* és *endpointUrl* a végpont-irányítópultból szerezhető be.
 
@@ -130,7 +132,7 @@ Ha az SAS-jogkivonat lejár a végpont frissítése előtt, akkor a lekérést a
 
 A kód sikeres futtatása után az új végpontnak körülbelül 30 másodpercen belül el kell indulnia az átdolgozott modell használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a webszolgáltatások kezeléséről vagy több kísérlet futtatásának nyomon követéséről, tekintse meg a következő cikkeket:
 

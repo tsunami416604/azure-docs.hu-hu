@@ -15,10 +15,9 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83774338"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
@@ -126,7 +125,7 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
 
 4.  A módosítások elvégzése előtt hozzon létre egy másolatot a \Windows\System32\Config mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 
-5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe). 
+5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe). 
 
 6.  Ebben a hibaelhárítási eljárásban a struktúrákat BROKENSYSTEM és BROKENSOFTWARE-ként csatlakoztatjuk.
 

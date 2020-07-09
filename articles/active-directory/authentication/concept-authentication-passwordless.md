@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201720"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981855"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
 A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók gyakran frusztráltak a további biztonsági réteggel szemben, hogy emlékezzenek a jelszavára. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, vagy valamire, amit tud.
 
-|   | Valamilyen dolog | Amit Ön vagy ismer |
+| Hitelesítés  | Valamilyen dolog | Amit Ön vagy ismer |
 | --- | --- | --- |
 | Jelszó nélküli | Windows 10-es eszköz, telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
 
@@ -116,7 +116,7 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID fájlok | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
+| TrustKey-megoldások | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto (Thales csoport) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
@@ -125,7 +125,7 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 > [!NOTE]
 > Ha NFC-alapú biztonsági kulcsok megvásárlását és megtervezését tervezi, akkor a biztonsági kulcshoz támogatott NFC-olvasóra van szükség. Az NFC-olvasó nem Azure-követelmény vagy-korlátozás. A támogatott NFC-olvasók listáját az NFC-alapú biztonsági kulcs gyártójánál találja.
 
-Ha Ön szállító, és az eszközt a támogatott eszközök listáján szeretné beszerezni, forduljon [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)a következőhöz:.
+Ha Ön szállító, és az eszközt a támogatott eszközök listáján szeretné beszerezni, forduljon a következőhöz: [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) .
 
 ## <a name="what-scenarios-work-with-the-preview"></a>Milyen forgatókönyvek működnek az előzetes verzióban?
 
@@ -144,7 +144,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 ||**Vállalati Windows Hello**|**Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással**|**FIDO2 biztonsági kulcsok**|
 |:-|:-|:-|:-|
-|**Előfeltétel**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
+|**Előfeltételek**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
 |**Mód**|Platform|Szoftverek|Hardver|
 |**Rendszerek és eszközök**|Beépített platformmegbízhatósági modul (TPM) rendelkező számítógép<br>PIN-kód és biometriai felismerés |PIN-kód és biometriai felismerés telefonon|Microsoft-kompatibilis FIDO2 biztonsági eszközök|
 |**Felhasználó felület**|Bejelentkezés PIN-kód vagy biometrikus felismerés (arc, írisz vagy ujjlenyomat) használatával Windows-eszközökkel.<br>A Windows Hello-hitelesítés az eszközhöz van kötve; a felhasználónak az eszközre és egy bejelentkezési összetevőre is szüksége van, például PIN-kódot vagy biometrikus tényezőt a vállalati erőforrások eléréséhez.|Jelentkezzen be egy olyan mobiltelefonnal, amely ujjlenyomat-vizsgálatot, arc-vagy írisz-felismerést vagy PIN-kódot használ.<br>A felhasználók a SZÁMÍTÓGÉPRŐL vagy a mobiltelefonjára bejelentkezhetnek a munkahelyi vagy személyes fiókba.|Bejelentkezés a FIDO2 biztonsági eszközzel (biometria, PIN-kód és NFC)<br>A felhasználó a szervezeti vezérlők és a PIN-kód alapján végzett hitelesítés alapján képes hozzáférni az eszközhöz, például az USB biztonsági kulcsok és az NFC-kompatibilis intelligens kártyák, kulcsok vagy hordható eszközök használatával.|

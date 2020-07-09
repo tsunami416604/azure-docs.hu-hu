@@ -9,12 +9,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726973"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -22,7 +21,7 @@ ms.locfileid: "82735385"
 
 Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a leképezési adatfolyamatok használatával. Ha még nem ismeri az adatfolyamatokat, tekintse meg az [adatáramlás leképezése – áttekintés](concepts-data-flow-overview.md) című témakört.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -56,8 +55,8 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Igen
-integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. Csak a régiók automatikus feloldásának integrációs futtatókörnyezetei támogatottak. | IntegrationRuntimeReference | No
+adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Yes
+integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. | IntegrationRuntimeReference | No
 számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | No
 számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | No
 előkészítés. linkedService | Ha SQL DW-forrást vagy-fogadót használ, a rendszer a alapszintű előkészítéshez használt Storage-fiókot használja. | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
@@ -75,7 +74,7 @@ Az alapszám és a számítási típus tulajdonságainak beállítása dinamikus
 
 ### <a name="data-flow-integration-runtime"></a>Adatfolyam-integrációs modul
 
-Válassza ki, hogy melyik Integration Runtime szeretné használni az adatfolyam tevékenységének végrehajtásához. Alapértelmezés szerint a Data Factory az Azure Integration Runtime automatikus feloldását fogja használni négy munkavégző maggal, és nincs élettartam (TTL). Ez az IR általános célú számítási típussal rendelkezik, és ugyanabban a régióban fut, mint a gyár. Létrehozhat saját Azure-integrációs modulokat, amelyek meghatározott régiókat, számítási típusokat, alapszámokat és ÉLETTARTAMot határoznak meg az adatfolyam tevékenységének végrehajtásához. Jelenleg csak a régiók automatikus feloldásának integrációs futtatókörnyezetei támogatottak az adatfolyam tevékenységében.
+Válassza ki, hogy melyik Integration Runtime szeretné használni az adatfolyam tevékenységének végrehajtásához. Alapértelmezés szerint a Data Factory az Azure Integration Runtime automatikus feloldását fogja használni négy munkavégző maggal, és nincs élettartam (TTL). Ez az IR általános célú számítási típussal rendelkezik, és ugyanabban a régióban fut, mint a gyár. Létrehozhat saját Azure-integrációs modulokat, amelyek meghatározott régiókat, számítási típusokat, alapszámokat és ÉLETTARTAMot határoznak meg az adatfolyam tevékenységének végrehajtásához.
 
 A folyamatok végrehajtásához a fürt egy olyan fürt, amely a végrehajtás megkezdése előtt több percet vesz igénybe. Ha nem ad meg TTL-értéket, a rendszer ezt az indítási időt igényli minden folyamat futtatásához. Ha a TTL értéket adja meg, a meleg fürt a legutóbbi végrehajtás után megadott időre aktív marad, ami rövidebb indítási időt eredményez. Ha például 60 perc ÉLETTARTAMa van, és óránként egyszer futtat egy adatfolyamot, a fürtön marad aktív. További információ: [Azure Integration Runtime](concepts-integration-runtime.md).
 
@@ -120,7 +119,7 @@ Az adatfolyam-tevékenység speciális figyelési felülettel rendelkezik, ahol 
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Adatfolyam-tevékenységek eredményeinek használata egy későbbi tevékenységben
 
-Az adatfolyam tevékenység az egyes fogadók számára írt sorok számát és az egyes forrásokból beolvasott sorokra vonatkozó mérőszámokat jeleníti meg. Ezek az eredmények a tevékenység futtatási eredményének `output` szakaszában lesznek visszaadva. A visszaadott metrikák az alábbi JSON formátumban jelennek meg.
+Az adatfolyam tevékenység az egyes fogadók számára írt sorok számát és az egyes forrásokból beolvasott sorokra vonatkozó mérőszámokat jeleníti meg. Ezek az eredmények a `output` tevékenység futtatási eredményének szakaszában lesznek visszaadva. A visszaadott metrikák az alábbi JSON formátumban jelennek meg.
 
 ``` json
 {
@@ -148,12 +147,12 @@ Az adatfolyam tevékenység az egyes fogadók számára írt sorok számát és 
 }
 ```
 
-Ha például a "sink1" nevű fogadóba írt sorok számát szeretné lekérni egy "dataflowActivity" nevű tevékenységben, használja `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`a következőt:.
+Ha például a "sink1" nevű fogadóba írt sorok számát szeretné lekérni egy "dataflowActivity" nevű tevékenységben, használja a következőt: `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` .
 
-A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez használja `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`a következőt:.
+A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez használja a következőt: `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` .
 
 > [!NOTE]
-> Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a `contains` függvény használatával. Például megvizsgálhatja, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` hogy a sorok sink1-e.
+> Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a függvény használatával `contains` . Például `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` megvizsgálhatja, hogy a sorok sink1-e.
 
 ## <a name="next-steps"></a>További lépések
 

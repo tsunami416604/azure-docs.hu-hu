@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995345"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: MFA megkövetelése minden felhasználó számára
@@ -72,7 +71,7 @@ A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem ig
 1. Válassza a **Done** (Kész) lehetőséget.
 1. **Mentse** a szabályzat módosításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

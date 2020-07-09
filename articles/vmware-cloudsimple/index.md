@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple
-description: Az Azure VMware Solution by CloudSimple portálja.
+description: Az Azure VMware Solution by CloudSimple dokumentációjának keresése.
 author: sharaths-cs
 ms.author: b-mashar
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8866015fc4c9d054289a3eea2b9b8453ae39edcf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "77025214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116641"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 
@@ -52,7 +52,7 @@ Tudnivalók az alábbi fogalmakról
 * Felhasználói és rendszertevékenység naplóinak megtekintése a [tevékenységkezelési](cloudsimple-activity.md) képernyők használatával.
 * A különböző [Vmware-összetevők](vmware-components.md) megismerése.
 
-## <a name="tutorials"></a>oktatóanyagokat
+## <a name="tutorials"></a>Oktatóanyagok
 
 Megtudhatja, hogy hajthatja végre az alábbi gyakori feladatokat:
 

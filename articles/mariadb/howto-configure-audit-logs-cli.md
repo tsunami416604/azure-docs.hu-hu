@@ -4,21 +4,18 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja és érheti el a Azure
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: e9716f0fa8e0ae44d614bbb28ed6846105e683d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384193"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120058"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Eseménynaplók konfigurálása és elérése az Azure CLI-ben
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Az Azure Database for Maria DB-napló konfigurálása és elérése az Azure CLI-ben
 
 Az [Azure Database for MariaDB naplókat](concepts-audit-logs.md) az Azure CLI-ből is konfigurálhatja.
-
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,9 +26,12 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Ehhez az útmutatóhoz az Azure CLI 2,0-es vagy újabb verzióját kell használnia. A verzió megerősítéséhez az Azure CLI parancssorában adja meg `az --version`a következőt:. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+> Ehhez az útmutatóhoz az Azure CLI 2,0-es vagy újabb verzióját kell használnia. A verzió megerősítéséhez az Azure CLI parancssorában adja meg a következőt: `az --version` . A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
+
+>[!IMPORTANT]
+> Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 A naplózást a következő lépésekkel engedélyezheti és konfigurálhatja: 
 
@@ -40,7 +40,7 @@ A naplózást a következő lépésekkel engedélyezheti és konfigurálhatja:
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. Válassza ki a naplózni kívánt [események típusát](concepts-audit-logs.md#configure-audit-logging) a **audit_log_egitvents** paraméter frissítésével.
+1. Válassza ki a naplózni kívánt [események típusát](concepts-audit-logs.md#configure-audit-logging) a **audit_log_events** paraméter frissítésével.
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```
@@ -55,7 +55,7 @@ A naplózást a következő lépésekkel engedélyezheti és konfigurálhatja:
     az mariadb server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MariaDB [naplózási naplóiról](concepts-audit-logs.md)
 - Ismerje meg, hogyan konfigurálhatja a naplókat a [Azure Portal](howto-configure-audit-logs-portal.md)

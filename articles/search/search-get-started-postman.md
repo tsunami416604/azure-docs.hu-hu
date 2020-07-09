@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: c502886aac9d13f7a470a9b83f1fc12334913beb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c68c813c9c9ecdcb7c7b75102940aa1f1a57b4f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121630"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562186"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
@@ -29,7 +29,7 @@ Az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchs
 
 Ez a cikk bemutatja, hogyan lehet interaktív módon megfogalmazni a kérelmeket. Azt is megteheti, hogy [letölti és importálja a Poster-gyűjteményt](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) az előre meghatározott kérések használatára.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
 ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
@@ -55,11 +55,11 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 Ebben a szakaszban a saját webes eszközével állíthatja be az Azure Cognitive Search kapcsolatait. Minden eszköz megőrzi a kérelmek fejlécére vonatkozó információkat a munkamenethez, ami azt jelenti, hogy csak egyszer kell megadnia az API-kulcs és a Content-Type típust.
 
-Bármelyik eszközhöz ki kell választania egy parancsot (GET, POST, PUT stb.), meg kell adnia egy URL-végpontot, és egyes feladatokhoz meg kell adni a JSON-t a kérelem törzsében. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) érvényes értékre. A `$select=name` Hozzáadás gombra kattintva csak az egyes indexek nevét adja vissza. 
+Bármelyik eszközhöz ki kell választania egy parancsot (GET, POST, PUT stb.), meg kell adnia egy URL-végpontot, és egyes feladatokhoz meg kell adni a JSON-t a kérelem törzsében. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) érvényes értékre. A Hozzáadás `$select=name` gombra kattintva csak az egyes indexek nevét adja vissza. 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name
 
-Figyelje meg a HTTPS-előtagot, a szolgáltatás nevét, az objektum nevét (ebben az esetben az indexek gyűjteményét) és az [API-verziót](search-api-versions.md). Az API-Version egy kötelező, kisbetűs karakterlánc, amely a `?api-version=2019-05-06` jelenlegi verzióhoz hasonlóan van megadva. Az API-verziókat a rendszer rendszeresen frissíti. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
+Figyelje meg a HTTPS-előtagot, a szolgáltatás nevét, az objektum nevét (ebben az esetben az indexek gyűjteményét) és az [API-verziót](search-api-versions.md). Az API-Version egy kötelező, kisbetűs karakterlánc, amely `?api-version=2020-06-30` a jelenlegi verzióhoz hasonlóan van megadva. Az API-verziókat a rendszer rendszeresen frissíti. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
 A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusát, valamint az Azure-Cognitive Search hitelesítéséhez használt API-kulcsot. Cserélje le a felügyeleti API-kulcsot (az-AZURE-SEARCH-ADMIN-API-KEY) érvényes értékre. 
 
@@ -74,13 +74,13 @@ A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz has
 
 Az Azure Cognitive Search általában az indexet hozza létre az adatbevitel előtt. Ehhez a feladathoz a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban. 
 
-Az URL-cím kiterjeszthető, `hotels` hogy tartalmazza az index nevét.
+Az URL-cím kiterjeszthető, hogy tartalmazza az `hotels` index nevét.
 
 Ehhez tegye a következőket:
 
 1. Módosítsa a műveletet a **put**értékre.
 
-2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`-ben.
+2. Másolás ebben az URL-ben `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30` .
 
 3. Adja meg az index definícióját (a másolásra kész kód a lenti) a kérelem törzsében.
 
@@ -128,13 +128,13 @@ A kérelem elküldését követően megjelenik a 201-es HTTP-válasz, amely azt 
 
 Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Cognitive Searchban az index tartalmazza az összes kereshető, JSON-dokumentumként megadható adatelemet. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
 
-Az URL-cím kiterjeszthető a `docs` gyűjtemények és `index` a művelet belefoglalására.
+Az URL-cím kiterjeszthető a `docs` gyűjtemények és a művelet belefoglalására `index` .
 
 Ehhez tegye a következőket:
 
 1. Cserélje a parancsot a **POST** parancsra.
 
-2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`-ben.
+2. Másolás ebben az URL-ben `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30` .
 
 3. Adja meg a kérelem törzsében a JSON-dokumentumokat (a másolásra kész kód alatt).
 
@@ -247,7 +247,7 @@ Ehhez tegye a következőket:
 
 1. Módosítsa a **lekérdezni**kívánt műveletet.
 
-2. Másolás ebben az URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`-ben.
+2. Másolás ebben az URL-ben `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30` .
 
 3. Kattintson a **Küldés** gombra.
 
@@ -262,24 +262,24 @@ A jelenlegi URL-címet cserélje le az alábbira, majd kattintson a **Küldés**
 ```
 # Query example 1 - Search on restaurant and wifi
 # Return only the HotelName, Description, and Tags fields
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2020-06-30
 
 # Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2020-06-30
 
 # Query example 3 - Take the top two results, and show only HotelName and Category in the results
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2020-06-30
 
 # Query example 4 - Sort by a specific field (Address/City) in ascending order
-https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2020-06-30
 ```
 
 ## <a name="get-index-properties"></a>Index tulajdonságainak beolvasása
 A [lekérési statisztikákat](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) is használhatja a dokumentumok számának és az index méretének lekérdezéséhez: 
 
 ```
-https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30
 ```
 
 Az `/stats` URL-címhez való Hozzáadás az index adatait adja vissza. A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.

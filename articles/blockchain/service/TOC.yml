@@ -4,6 +4,8 @@
   items:
     - name: Tudnivalók az Azure Blockchain Service-ről
       href: overview.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -11,7 +13,8 @@
       href: create-member.md
     - name: Tag létrehozása a parancssori felület használatával
       href: create-member-cli.md
-    - name: Tag létrehozása sablon használatával
+    - name: Tag létrehozása ARM-sablon használatával
+      displayName: Resource Manager
       href: create-member-template.md
     - name: Csatlakozás tranzakciós csomóponthoz
       items:
@@ -59,6 +62,10 @@
       href: ethereum-logic-app.md
     - name: Az Azure Blockchain Service monitorozása
       href: monitor-azure-blockchain-service.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blockchain/blockchain
 - name: További források
   items:
     - name: Azure Blockchain fejlesztői készlet

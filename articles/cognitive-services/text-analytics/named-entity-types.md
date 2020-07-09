@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e36a69be19844a75562f87d3c195494e3ef148a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140926"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108495"
 ---
-# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>Támogatott entitások kategóriái a nevesített entitások felismerése v3
+# <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Támogatott entitások kategóriái a Text Analytics API v3-ban
 
-Ebből a cikkből megtudhatja, hogy mely entitás-kategóriákat lehet visszaadni, [névvel ellátott entitás-felismeréssel](how-tos/text-analytics-how-to-entity-linking.md) . Az Egypéldányos v 3.1 előzetes verziója is elérhető, amely magában foglalja a személyes ( `PII` ) és az állapotadatok ( `PHI` ) adatainak észlelését.
+Ebből a cikkből megtudhatja, hogy mely entitás-kategóriákat lehet visszaadni, [névvel ellátott entitás-felismeréssel](how-tos/text-analytics-how-to-entity-linking.md) . Az Egypéldányos v 3.1 előzetes verziója is elérhető, amely magában foglalja a személyes ( `PII` ) és az állapotadatok ( `PHI` ) adatainak észlelését. Emellett a **Health (állapot** ) lapra kattintva megtekintheti a támogatott kategóriák listáját a Text Analytics for Health szolgáltatásban.
 
 ## <a name="entity-categories"></a>Entitások kategóriái
 
@@ -27,9 +27,13 @@ Ebből a cikkből megtudhatja, hogy mely entitás-kategóriákat lehet visszaadn
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-and-health"></a>[Személyes és állapot](#tab/personal)
+#### <a name="personal"></a>[Személyes eszközök](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
+
+#### <a name="health"></a>[Egészségügy](#tab/health)
+
+[!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
 ***
 

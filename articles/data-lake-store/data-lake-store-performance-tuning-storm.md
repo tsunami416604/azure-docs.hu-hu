@@ -3,15 +3,14 @@ title: Teljesítmény-Finomhangolás – Storm és Azure Data Lake Storage Gen1
 description: Ismerje meg a Azure Data Lake Storage Gen1on futó Storm-fürt teljesítmény-hangolási irányelveit.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513796"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és Azure Data Lake Storage Gen1
 
@@ -126,8 +125,8 @@ Ha eléri a Data Lake Storage Gen1 által biztosított sávszélesség korlátai
 
 Ha szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, engedélyezze a hibakeresési naplózást az ügyféloldali oldalon:
 
-1. A **Ambari** > **Storm** > **Config**config > **Advanced Storm-Worker-log4j**, Change ** &lt;root level = "info&gt; "** a ** &lt;root level = "debug&gt;"**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
-2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon&gt;/&lt;(&gt;a/var/log/Storm/Worker-artifacts/&lt;TopologyName-port/Worker.log alatt) Data Lake Storage Gen1 szabályozási kivételek esetében.
+1. A **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Worker-log4j**, Change ** &lt; root level = "info &gt; "** a ** &lt; root level = "debug &gt; "**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
+2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon (a/var/log/Storm/Worker-artifacts/ &lt; TopologyName &gt; / &lt; &gt; -port/Worker.log alatt) Data Lake Storage Gen1 szabályozási kivételek esetében.
 
 ## <a name="next-steps"></a>További lépések
 A Storm további teljesítmény-finomhangolását ebben a [blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)lehet hivatkozni.

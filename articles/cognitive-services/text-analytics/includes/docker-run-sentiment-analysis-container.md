@@ -9,14 +9,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 253c391b222c757a367bd5cd39939052cc697b00
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 459ab7a254994929174e4f81ad25f0729f43fa0b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588391"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108980"
 ---
-A *Hangulatelemzés v3* tároló futtatásához hajtsa végre a következő `docker run` parancsot.
+A *Hangulatelemzés v3* tároló futtatásához hajtsa végre a következő `docker run` parancsot. Cserélje le az alábbi helyőrzőket a saját értékeire:
+
+| Helyőrző | Érték | Formátum vagy példa |
+|-------------|-------|---|
+| **{API_KEY}** | A Text Analytics erőforrás kulcsa. A Azure Portal az erőforrás **kulcs és végpont** lapján található. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | A Text Analytics API elérésére szolgáló végpont. A Azure Portal az erőforrás **kulcs és végpont** lapján található. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \

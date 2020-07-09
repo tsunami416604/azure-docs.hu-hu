@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437060"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958395"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
 
@@ -43,7 +42,7 @@ Biztonsági mentési pillanatkép létrehozásához kövesse a [lemez pillanatk�
 
 Ha távolról szeretne csatlakozni a virtuális géphez, használja az egyik módszert az [Azure-beli virtuális gépekkel kapcsolatos hibák elhárításához használható távoli eszközök használatával](remote-tools-troubleshoot-azure-vm-issues.md).
 
-## <a name="scenario-1"></a>1. példa
+## <a name="scenario-1"></a>1\. példa
 
 ### <a name="event-logs"></a>Eseménynaplók
 
@@ -138,8 +137,8 @@ A probléma elhárításához az alábbi lépéseket követve be kell állítani
 
 A parancsfájl futtatása után megtekintheti a következő fájlokat, amelyek az engedélyek problémáit tapasztalják:
 
-* c:\temp\ BeforeScript_permissions. txt
-* c:\temp\ AfterScript_permissions. txt
+* c:\temp\BeforeScript_permissions.txt
+* c:\temp\AfterScript_permissions.txt
 
 #### <a name="renew-rdp-self-signed-certificate"></a>RDP önaláírt tanúsítvány megújítása
 
@@ -206,7 +205,7 @@ Megpróbálhatja törölni a kulcsot úgy is, hogy az RDP az önaláírt tanús�
 reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
 ```
 
-## <a name="scenario-2"></a>2. példa
+## <a name="scenario-2"></a>2\. példa
 
 ### <a name="event-log"></a>Eseménynapló
 
@@ -237,7 +236,7 @@ Az RDP a TLS 1,0 protokollt használja alapértelmezett protokollként. Előford
 
 A probléma megoldásához lásd: [hitelesítési hibák elhárítása, amikor RDP használatával csatlakozik az Azure-beli virtuális géphez](troubleshoot-authentication-error-rdp-vm.md#tls-version).
 
-## <a name="scenario-3"></a>3. példa
+## <a name="scenario-3"></a>3\. példa
 
 Ha telepítette a **Távoli asztali kapcsolatszervező** szerepkört a virtuális gépen, ellenőrizze, hogy van-e az elmúlt 24 órában a 2056-es vagy a 1296-es esemény. Futtassa a következő parancsokat egy CMD-példányban: 
 

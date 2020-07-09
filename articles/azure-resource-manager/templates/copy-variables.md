@@ -3,12 +3,11 @@ title: Változó több példányának meghatározása
 description: A másolási művelettel Azure Resource Manager sablonban több alkalommal is megismételheti a változókat.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678443"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Változó iteráció az ARM-sablonokban
 
@@ -16,7 +15,7 @@ Ez a cikk bemutatja, hogyan hozhat létre több értéket egy változóhoz a Azu
 
 A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [kimenetekkel](copy-outputs.md)is elvégezheti.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A másolási elem a következő általános formátumú:
 
@@ -240,7 +239,7 @@ A következő példa bemutatja a másolás változókkal való használatának k
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {
@@ -314,7 +313,7 @@ A következő példa bemutatja a másolás változókkal való használatának k
 
 Az alábbi példák egy változó több értékének létrehozására vonatkozó gyakori forgatókönyveket mutatnak be.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 |[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Bemutatja a változók megismétlésének különböző módszereit. |
 |[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Több biztonsági szabályt telepít egy hálózati biztonsági csoportra. A biztonsági szabályokat egy paraméter alapján hozza létre. A paraméternél tekintse meg a [több NSG-paramétert tartalmazó fájlt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |

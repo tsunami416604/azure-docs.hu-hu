@@ -4,10 +4,9 @@ description: Személyre szabott értesítések beszerzése a ServiceNow-példán
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654103"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
@@ -26,7 +25,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
  
     ![Az "új megírt REST API" gomb a ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  Adjon hozzá egy **nevet** a REST APIhoz, és állítsa be az `azureservicehealth`API- **azonosítót** a következőre:.
+1.  Adjon hozzá egy **nevet** a REST APIhoz, és állítsa be az **API-azonosítót** a következőre: `azureservicehealth` .
 
 1.  Válassza a **Küldés** lehetőséget.
 
@@ -36,12 +35,12 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
     ![A ServiceNow erőforrás lapja](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  **Nevezze** el az új `event` erőforrást, és módosítsa a `POST` **http-metódust** a következőre:.
+1.  **Nevezze** el az új erőforrást `event` , és módosítsa a **http-metódust** a következőre: `POST` .
 
 1.  A **parancsfájl** szakaszban adja hozzá a következő JavaScript-kódot:
 
     >[!NOTE]
-    >Az alábbi szkriptben frissítenie`<group>`kell a `<email>` , a `<secret>`és a értéket.
+    >Az alábbi szkriptben frissítenie kell a `<secret>` , a `<group>` és a `<email>` értéket.
     >* `<secret>`véletlenszerű sztringnek kell lennie, mint például egy GUID
     >* `<group>`annak a ServiceNow-csoportnak kell lennie, amelyhez az incidenst hozzá szeretné rendelni
     >* `<email>`azon személynek kell lennie, akit hozzá kíván rendelni az incidenshez (nem kötelező)
@@ -187,7 +186,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
     BODY        <service health payload>
     ```
-1. Meg kell kapnia `200 OK` egy választ az "incidens létrehozva" üzenettel.
+1. Meg kell kapnia egy `200 OK` választ az "incidens létrehozva" üzenettel.
 
 1. Nyissa meg a [ServiceNow](https://www.servicenow.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 

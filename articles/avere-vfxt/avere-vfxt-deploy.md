@@ -3,15 +3,15 @@ title: Avere-vFXT üzembe helyezése az Azure-ban
 description: A avere vFXT-fürt üzembe helyezésének lépései az Azure-ban
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505647"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -87,7 +87,7 @@ A telepítési sablon második lapja lehetővé teszi a fürt méretének, a cso
 
 * **Avere vFXT-csomópontok** száma – válassza ki a fürt csomópontjainak számát. A minimum három csomópont, a maximum pedig tizenkét.
 
-* **Fürtfelügyelő jelszava** – hozza létre a fürt felügyeletének jelszavát. A rendszer ezt a jelszót használja a ```admin``` felhasználónévvel a fürt Vezérlőpultján való bejelentkezéshez, ahol nyomon követheti a fürtöt, és konfigurálhatja a fürt beállításait.
+* **Fürtfelügyelő jelszava** – hozza létre a fürt felügyeletének jelszavát. A rendszer ezt a jelszót használja a felhasználónévvel ```admin``` a fürt Vezérlőpultján való bejelentkezéshez, ahol nyomon követheti a fürtöt, és konfigurálhatja a fürt beállításait.
 
 * **Avere vFXT-fürt neve** – adjon egyedi nevet a fürtnek.
 

@@ -8,24 +8,21 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 742d716ecdfff6ab67dedc281aa6134020f57add
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655039"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040078"
 ---
-# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományban
+# <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure Active Directory Domain Services felügyelt tartományban
 
 Azure Active Directory Domain Services (Azure AD DS) felhasználói és számítógép-objektumainak beállításait a rendszer gyakran Csoportházirend objektumok (GPO-k) használatával kezeli. Az Azure AD DS beépített csoportházirend-objektumokat tartalmaz a *AADDC-felhasználók* és a *AADDC számítógép* -tárolók számára. Ezeket a beépített csoportházirend-objektumokat testreszabhatja úgy, hogy a környezetéhez szükség szerint konfigurálja Csoportházirend. Az *Azure ad DC-rendszergazdák* csoport tagjai csoportházirend rendszergazdai jogosultságokkal rendelkeznek az Azure AD DS tartományban, és egyéni csoportházirend-objektumokat és szervezeti egységeket (OU-ket) is létrehozhatnak. További információ a Csoportházirendről és annak működéséről: [csoportházirend Overview (áttekintés][group-policy-overview]).
 
 Hibrid környezetben a helyszíni AD DS környezetekben konfigurált csoportházirendek nem szinkronizálhatók az Azure AD DS. Az Azure AD DSban található felhasználók vagy számítógépek konfigurációs beállításainak megadásához szerkessze az egyik alapértelmezett csoportházirend-objektumot, vagy hozzon létre egy egyéni GPO-t.
 
 Ez a cikk bemutatja, hogyan telepítheti a Csoportházirend felügyeleti eszközöket, és hogyan szerkesztheti a beépített csoportházirend-objektumokat, és hogyan hozhat létre egyéni csoportházirend-objektumokat.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -36,17 +33,17 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services felügyelt tartomány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
     * Ha szükséges, fejezze be az oktatóanyagot [egy Windows Server rendszerű virtuális gép létrehozásához és egy felügyelt tartományhoz való csatlakoztatásához][create-join-windows-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
 
 > [!NOTE]
-> Csoportházirend Felügyeleti sablonok az új sablonok felügyeleti munkaállomásra másolásával is használhatja. Másolja az *. admx* fájlokat a `%SYSTEMROOT%\PolicyDefinitions` ba `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, és másolja a területi beállítások *. adml* fájlokat a re, `Language-CountryRegion` ahol a megegyezik a *. adml* fájlok nyelvével és régiójával.
+> Csoportházirend Felügyeleti sablonok az új sablonok felügyeleti munkaállomásra másolásával is használhatja. Másolja az *. admx* fájlokat a ba `%SYSTEMROOT%\PolicyDefinitions` , és másolja a területi beállítások *. adml* fájlokat a re `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]` , ahol a `Language-CountryRegion` megegyezik a *. adml* fájlok nyelvével és régiójával.
 >
 > Másolja például a *. adml* fájl angol, Egyesült Államok verzióját a `\en-us` mappába.
 >
-> Azt is megteheti, hogy központilag tárolja a Csoportházirend felügyeleti sablont az Azure AD DS felügyelt tartomány részét képező tartományvezérlőkön. További információ: [Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése a Windowsban](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+> Azt is megteheti, hogy központilag tárolja a Csoportházirend felügyeleti sablont a felügyelt tartomány részét képező tartományvezérlőkön. További információ: [Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése a Windowsban](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>Csoportházirend felügyeleti eszközök telepítése
 
@@ -68,17 +65,17 @@ Csoportházirend objektum (GPO-k) létrehozásához és konfigurálásához tele
 
 ## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>A Csoportházirend-kezelő konzol megnyitása és objektum szerkesztése
 
-Alapértelmezett csoportházirend-objektumok (GPO-k) léteznek az Azure AD DS felügyelt tartományában lévő felhasználók és számítógépek számára. Az előző szakaszban telepített Csoportházirend felügyeleti szolgáltatással megtekintheti és szerkesztheti a meglévő csoportházirend-objektumokat. A következő szakaszban létrehozhat egy egyéni csoportházirend-objektumot.
+Az alapértelmezett csoportházirend-objektumok (GPO-k) léteznek a felügyelt tartományokban lévő felhasználók és számítógépek számára. Az előző szakaszban telepített Csoportházirend felügyeleti szolgáltatással megtekintheti és szerkesztheti a meglévő csoportházirend-objektumokat. A következő szakaszban létrehozhat egy egyéni csoportházirend-objektumot.
 
 > [!NOTE]
-> A csoportházirend Azure AD DS felügyelt tartományban való felügyeletéhez be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportnak.
+> Ha felügyelt tartományban szeretné felügyelni a csoportházirendet, be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportnak.
 
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **csoportházirend felügyeletet** is.
 1. A Csoportházirend-kezelő konzol (GPMC) megnyitásához válassza a **csoportházirend felügyelet**lehetőséget.
 
     ![A Csoportházirend-kezelő konzol készen áll a csoportházirend-objektumok szerkesztésére](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-Két beépített Csoportházirend objektum (GPO) van egy Azure AD DS felügyelt tartományhoz – egyet a *AADDC számítógépek* tárolóhoz, egyet pedig a *AADDC-felhasználók* tárolóhoz. Ezeket a csoportházirend-objektumokat testreszabhatja úgy, hogy szükség szerint konfigurálja a csoportházirendet az Azure AD DS felügyelt tartományon belül.
+A felügyelt tartományokban két beépített Csoportházirend objektum (GPO) található – egyet a *AADDC számítógépek* tárolóhoz, egyet pedig a *AADDC Users* tárolóhoz. Ezeket a csoportházirend-objektumokat testreszabhatja úgy, hogy szükség szerint konfigurálja a csoportházirendet a felügyelt tartományon belül.
 
 1. A **csoportházirend felügyeleti** konzolon bontsa ki az **erdő: aaddscontoso.com** csomópontot. Ezután bontsa ki a **tartományok** csomópontokat.
 
@@ -86,7 +83,7 @@ Két beépített Csoportházirend objektum (GPO) van egy Azure AD DS felügyelt 
 
     ![Az alapértelmezett "AADDC Computers" és "AADDC Users" tárolók esetében alkalmazott beépített csoportházirend-objektumok](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Ezek a beépített csoportházirend-objektumok testreszabhatók meghatározott csoportházirendek konfigurálásához az Azure AD DS felügyelt tartományon. Kattintson a jobb gombbal valamelyik csoportházirend-objektumra, például a *AADDC számítógépek csoportházirend-objektumára*, majd válassza a **Szerkesztés...** lehetőséget.
+1. Ezek a beépített csoportházirend-objektumok testreszabhatók meghatározott csoportházirendek konfigurálásához a felügyelt tartományon. Kattintson a jobb gombbal valamelyik csoportházirend-objektumra, például a *AADDC számítógépek csoportházirend-objektumára*, majd válassza a **Szerkesztés...** lehetőséget.
 
     ![Válassza a beépített csoportházirend-objektumok egyikének szerkesztésére szolgáló lehetőséget.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
@@ -98,7 +95,7 @@ Két beépített Csoportházirend objektum (GPO) van egy Azure AD DS felügyelt 
 
 ## <a name="create-a-custom-group-policy-object"></a>Egyéni Csoportházirend objektum létrehozása
 
-A hasonló házirend-beállítások csoportosításához gyakran további csoportházirend-objektumokat kell létrehoznia, ahelyett, hogy az egyetlen, alapértelmezett GPO-ban alkalmazza az összes szükséges beállítást. Az Azure AD DS használatával létrehozhatja vagy importálhatja saját egyéni csoportházirend-objektumait, és összekapcsolhatja azokat egy egyéni szervezeti egységgel. Ha először létre kell hoznia egy egyéni szervezeti egységet, tekintse meg az [Egyéni szervezeti egység létrehozása Azure AD DS felügyelt tartományban](create-ou.md)című témakört.
+A hasonló házirend-beállítások csoportosításához gyakran további csoportházirend-objektumokat kell létrehoznia, ahelyett, hogy az egyetlen, alapértelmezett GPO-ban alkalmazza az összes szükséges beállítást. Az Azure AD DS használatával létrehozhatja vagy importálhatja saját egyéni csoportházirend-objektumait, és összekapcsolhatja azokat egy egyéni szervezeti egységgel. Ha először létre kell hoznia egy egyéni szervezeti egységet, tekintse meg az [Egyéni szervezeti egység létrehozása felügyelt tartományban](create-ou.md)című témakört.
 
 1. A **csoportházirend felügyeleti** konzolon válassza ki az egyéni szervezeti egységet (OU), például *MyCustomOU*. Kattintson a jobb gombbal a szervezeti egységre, majd válassza a **csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás itt...**:
 

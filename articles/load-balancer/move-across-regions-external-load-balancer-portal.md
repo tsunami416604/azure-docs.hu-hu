@@ -3,15 +3,15 @@ title: Azure külső terheléselosztó áthelyezése másik Azure-régióba a Az
 description: A Azure Portal használatával helyezzen át egy külső terheléselosztó egyik Azure-régióból a másikba egy Azure Resource Manager sablonnal.
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808716"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Külső Load Balancer áthelyezése másik régióba a Azure Portal használatával
 
@@ -43,9 +43,9 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 2. Keresse meg azt az erőforráscsoportot, amely a forrás nyilvános IP-címet tartalmazza, majd jelölje ki.
-3. Válassza a **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza a **Beállítások**  >  **Exportálás sablon**lehetőséget.
 4. Válassza a **telepítés** lehetőséget a **sablon exportálása**lehetőség alatt.
-5. Válassza a **sablon** > **szerkesztése paraméterek** lehetőséget, hogy megnyissa a Parameters. JSON fájlt az online szerkesztőben.
+5. Válassza a **sablon**  >  **szerkesztése paraméterek** lehetőséget, hogy megnyissa a parameters.jsfájlt az online szerkesztőben.
 8. A nyilvános IP-cím paraméterének szerkesztéséhez módosítsa az **Value** tulajdonságot a forrás nyilvános IP-címe **paraméterei** alatt a célként megadott nyilvános IP-cím nevére. Tegye a nevet idézőjelek közé.
 
     ```json
@@ -63,7 +63,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
     Válassza a **Mentés** lehetőséget a szerkesztőben.
 
-9.   > Válassza **a sablon****szerkesztése** lehetőséget a template. JSON fájl megnyitásához az online szerkesztőben.
+9.  Válassza **a sablon**  >  **szerkesztése** lehetőséget a template.jsfájl megnyitásához az online szerkesztőben.
 
 10. Annak a célcsoportnak a szerkesztéséhez, amelybe a nyilvános IP-cím át lesz helyezve, módosítsa a **Location (hely** ) tulajdonságot az **erőforrások**területen.
 
@@ -95,7 +95,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
     
 12. A sablon egyéb paramétereit is módosíthatja, ha a követelményektől függően a következőt kívánja használni:
 
-    * **SKU**. A konfigurációban lévő nyilvános IP-cím **SKU-jának** a standard és az alapszinttől az alapértéktől a standard értéktől az alapszinttől a standardig módosítható, ha a **Name (név** ) tulajdonságot a sablon. JSON fájl
+    * **SKU**. A konfigurációban lévő nyilvános IP-cím SKU-jának megváltoztatásához a standard és az alapszint közötti, illetve az alapszintű és a standard közötti értékre módosítja a **Name (név** ) tulajdonságot a template.jsfájljának **SKU** elemében
 
         ```json
           "resources": [
@@ -141,11 +141,11 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
  
 13. Válassza a **Mentés** lehetőséget az online szerkesztőben.
 
-14. Válassza az alapszintű**előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, amelyben a célként szolgáló nyilvános IP-címet telepíteni fogja. **BASICS** > 
+14. Válassza **BASICS**az alapszintű  >  **előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, amelyben a célként szolgáló nyilvános IP-címet telepíteni fogja.
 
-15. Válassza az alapszintű**erőforráscsoport** lehetőséget azon erőforráscsoport kiválasztásához, ahol a célként megadott nyilvános IP-címet telepíteni fogja. **BASICS** >  Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a cél nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás nyilvános IP-cím forrásoldali erőforráscsoport.
+15. Válassza az alapszintű erőforráscsoport **lehetőséget azon**  >  **Resource group** erőforráscsoport kiválasztásához, ahol a célként megadott nyilvános IP-címet telepíteni fogja. Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a cél nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás nyilvános IP-cím forrásoldali erőforráscsoport.
 
-16. Győződjön meg arról, hogy az **alapvető beállítások** > **helye** arra a célhelyre van beállítva, ahol a nyilvános IP-címet telepíteni szeretné.
+16. Győződjön meg arról, hogy az **alapvető beállítások**  >  **helye** arra a célhelyre van beállítva, ahol a nyilvános IP-címet telepíteni szeretné.
 
 17. A **Beállítások**területen ellenőrizze, hogy a név egyezik-e a korábban a paraméterek szerkesztőjében megadott névvel.
 
@@ -159,9 +159,9 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 2. Keresse meg azt az erőforráscsoportot, amely a forrás külső terheléselosztó elemet tartalmazza, majd jelölje ki.
-3. Válassza a **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza a **Beállítások**  >  **Exportálás sablon**lehetőséget.
 4. Válassza a **telepítés** lehetőséget a **sablon exportálása**lehetőség alatt.
-5. Válassza a **sablon** > **szerkesztése paraméterek** lehetőséget, hogy megnyissa a Parameters. JSON fájlt az online szerkesztőben.
+5. Válassza a **sablon**  >  **szerkesztése paraméterek** lehetőséget, hogy megnyissa a parameters.jsfájlt az online szerkesztőben.
 
 5. A külső terheléselosztó nevének a paraméterének szerkesztéséhez módosítsa a forrás külső terheléselosztó név **Value (érték** ) tulajdonságát a cél külső terheléselosztó nevére. Tegye a nevet idézőjelek közé.
 
@@ -178,11 +178,11 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
     ```
 
-6.  Az előző lépésekben áthelyezett cél nyilvános IP-cím értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell illesztenie a Parameters. JSON fájlba. Az azonosító beszerzése:
+6.  Az előző lépésekben áthelyezett cél nyilvános IP-cím értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell illesztenie a fájl parameters.jsba. Az azonosító beszerzése:
 
     1. Egy másik böngésző lapon vagy ablakban jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforráscsoportok**lehetőséget.
     2. Keresse meg azt a célként megadott erőforráscsoportot, amely az előző lépésekben áthelyezett nyilvános IP-címet tartalmazza. Válassza ki.
-    3. Válassza a **Beállítások** > **Tulajdonságok**lehetőséget.
+    3. Válassza a **Beállítások**  >  **Tulajdonságok**lehetőséget.
     4. A jobb oldali panelen jelölje ki az erőforrás- **azonosítót** , és másolja a vágólapra. Azt is megteheti, hogy kijelöli a **Másolás a vágólapra** lehetőséget az **erőforrás-azonosító** elérési útjának jobb oldalán.
     5. Illessze be az erőforrás-azonosítót a más böngészőablakban vagy lapon megnyitott **Parameters** Editor **Value (érték** ) tulajdonságba:
 
@@ -202,7 +202,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
     6. Válassza a **Mentés** lehetőséget az online szerkesztőben.
 
 
-7.  Ha a terheléselosztó kimenő NAT-és kimenő szabályait konfigurálta, akkor a fájl harmadik bejegyzése jelenik meg a kimenő nyilvános IP-cím külső AZONOSÍTÓJÁHOZ. A kimenő nyilvános IP-cím AZONOSÍTÓjának beszerzéséhez ismételje meg a **megcélzott régió** előző lépéseit. Illessze be az azonosítót a Parameters. JSON fájlba:
+7.  Ha a terheléselosztó kimenő NAT-és kimenő szabályait konfigurálta, akkor a fájl harmadik bejegyzése jelenik meg a kimenő nyilvános IP-cím külső AZONOSÍTÓJÁHOZ. A kimenő nyilvános IP-cím AZONOSÍTÓjának beszerzéséhez ismételje meg a **megcélzott régió** előző lépéseit. Illessze be az azonosítót a parameters.jsfájlba:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -223,8 +223,8 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
         },
     ```
 
-8.   > Válassza **a sablon****szerkesztése** lehetőséget a template. JSON fájl megnyitásához az online szerkesztőben.
-9.  A külső terheléselosztó konfigurációját áthelyező cél régió szerkesztéséhez módosítsa a **Location (hely** ) tulajdonságot a template. JSON fájlban található **erőforrások** területen:
+8.  Válassza **a sablon**  >  **szerkesztése** lehetőséget a template.jsfájl megnyitásához az online szerkesztőben.
+9.  Ha módosítani szeretné a külső terheléselosztó konfigurációját áthelyezni kívánt célpontot, módosítsa a Location ( **hely** ) tulajdonságot a template.jsfájljában található **erőforrások** területen:
 
     ```json
         "resources": [
@@ -243,7 +243,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
 11. A sablon egyéb paramétereit is módosíthatja, ha a követelményektől függően a következőt kívánja használni:
 
-    * **SKU**. Módosítsa a külső terheléselosztó SKU-jának konfigurációját a standard és az alap közötti értékről, illetve az alapszintű a standard értékre úgy, hogy megváltoztatja a **Name (név** ) tulajdonságot a sablon. JSON fájl **SKU** elemében:
+    * **SKU**. Módosítsa a külső terheléselosztó SKU-jának konfigurációját a standard és az alap közötti értékre, illetve az alapszintű a standard értékre úgy, hogy a **Name (név** ) tulajdonságot a fájl template.js**SKU** elemében módosítja:
 
         ```json
         "resources": [
@@ -259,7 +259,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
         ```
       Az alapszintű és standard SKU-terheléselosztó közötti különbségekről az [Azure standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)című témakörben olvashat bővebben.
 
-    * Terheléselosztási **szabályok**. A konfigurációban terheléselosztási szabályokat adhat hozzá vagy távolíthat el a template. JSON fájl **loadBalancingRules** szakaszában található bejegyzések hozzáadásával vagy eltávolításával:
+    * Terheléselosztási **szabályok**. A konfigurációban terheléselosztási szabályokat adhat hozzá vagy távolíthat el a template.jsfájljának **loadBalancingRules** szakaszában található bejegyzések hozzáadásával vagy eltávolításával:
 
         ```json
         "loadBalancingRules": [
@@ -291,7 +291,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
         ```
        További információ a terheléselosztási szabályokról: [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Mintavételek.** Hozzáadhat vagy eltávolíthat egy mintavételt a terheléselosztó számára a konfigurációban a sablon. JSON fájl mintavételek **szakaszában található** bejegyzések hozzáadásával vagy eltávolításával:
+    * **Mintavételek.** A Load Balancerhez tartozó mintavételt hozzáadhatja vagy eltávolíthatja a konfigurációban, ha bejegyzéseket ad hozzá vagy távolít **el a template.js** fájljának mintavételek szakaszában:
 
         ```json
         "probes": [
@@ -311,7 +311,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
         ```
        További információ: [Load Balancer Health probs](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-    * **Bejövő NAT-szabályok**. A terheléselosztó bejövő NAT-szabályait hozzáadhatja vagy eltávolíthatja a sablon. JSON fájljának **inboundNatRules** szakaszában található bejegyzések hozzáadásával vagy eltávolításával:
+    * **Bejövő NAT-szabályok**. A terheléselosztó bejövő NAT-szabályait hozzáadhatja vagy eltávolíthatja a template.jsfájljának **inboundNatRules** szakaszában található bejegyzések hozzáadásával vagy eltávolításával:
 
         ```json
         "inboundNatRules": [
@@ -333,7 +333,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
                     }
                 ]
         ```
-        Bejövő NAT-szabály hozzáadásának vagy eltávolításának befejezéséhez a szabálynak jelen kell lennie, vagy el kell távolítania a template. JSON fájl végén található **Type (típus** ) tulajdonsággal:
+        Egy bejövő NAT-szabály hozzáadásának vagy eltávolításának befejezéséhez a szabálynak jelen kell lennie, vagy el kell távolítania a template.jsfájl végén található **Type (típus** ) tulajdonsággal:
 
         ```json
         {
@@ -359,7 +359,7 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
         ```
         A bejövő NAT-szabályokról a [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)című témakörben olvashat bővebben.
 
-    * **Kimenő szabályok**. A konfigurációban kimenő szabályokat adhat hozzá vagy távolíthat el a sablon. JSON fájl **outboundRules** tulajdonságának szerkesztésével:
+    * **Kimenő szabályok**. A konfigurációban adhat hozzá vagy távolíthat el kimenő szabályokat a template.jsfájljának **outboundRules** tulajdonságának szerkesztésével:
 
         ```json
         "outboundRules": [
@@ -389,11 +389,11 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
 12. Válassza a **Mentés** lehetőséget az online szerkesztőben.
 
-13. Válassza az alapszintű**előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, ahol a cél külső terheléselosztó üzembe lesz helyezve. **BASICS** > 
+13. Válassza **BASICS**az alapszintű  >  **előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, ahol a cél külső terheléselosztó üzembe lesz helyezve.
 
-15. Válassza az alapszintű**erőforráscsoport** lehetőséget azon erőforráscsoport kiválasztásához, ahol a cél terheléselosztó üzembe lesz helyezve. **BASICS** >  Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a célként kijelölt külső terheléselosztó számára. Vagy kiválaszthatja azt a meglévő erőforráscsoportot, amelyet korábban hozott létre a nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás külső terheléselosztó forrás-erőforráscsoport.
+15. Válassza az alapszintű erőforráscsoport **lehetőséget azon**  >  **Resource group** erőforráscsoport kiválasztásához, ahol a cél terheléselosztó üzembe lesz helyezve. Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a célként kijelölt külső terheléselosztó számára. Vagy kiválaszthatja azt a meglévő erőforráscsoportot, amelyet korábban hozott létre a nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás külső terheléselosztó forrás-erőforráscsoport.
 
-16. Győződjön meg arról, hogy az **alapvető beállítások** > **helye** arra a célhelyre van beállítva, ahol a külső terheléselosztó üzembe helyezését szeretné.
+16. Győződjön meg arról, hogy az **alapvető beállítások**  >  **helye** arra a célhelyre van beállítva, ahol a külső terheléselosztó üzembe helyezését szeretné.
 
 17. A **Beállítások**területen ellenőrizze, hogy a név megegyezik-e a paraméterek szerkesztőjében korábban megadott névvel. Győződjön meg arról, hogy az erőforrás-azonosítók fel vannak töltve a konfigurációban lévő nyilvános IP-címekre.
 

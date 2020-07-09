@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
-ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2736d0cfe514252e36ba6d7e0d71efe09da15aae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75934704"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076300"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>A MapReduce használata a HDInsight-mel az SSH-val Apache Hadoop
 
@@ -42,7 +42,7 @@ Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehoz
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Ez a parancs elindítja `wordcount` az osztályt, amely a `hadoop-mapreduce-examples.jar` fájlban található. A `/example/data/gutenberg/davinci.txt` dokumentumot bemenetként használja, és a kimenetet a következő `/example/data/WordCountOutput`helyen tárolja:.
+    Ez a parancs elindítja az `wordcount` osztályt, amely a `hadoop-mapreduce-examples.jar` fájlban található. A `/example/data/gutenberg/davinci.txt` dokumentumot bemenetként használja, és a kimenetet a következő helyen tárolja: `/example/data/WordCountOutput` .
 
     > [!NOTE]
     > További információ erről a MapReduce-feladatról és a példában szereplő adatokról: a [MapReduce használata a HDInsight-on Apache Hadoop](hdinsight-use-mapreduce.md).
@@ -62,7 +62,7 @@ Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehoz
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Ez a parancs két fájlt jelenít `_SUCCESS` meg `part-r-00000`, és. A `part-r-00000` fájl tartalmazza a feladatokhoz tartozó kimenetet.
+    Ez a parancs két fájlt jelenít meg, `_SUCCESS` és `part-r-00000` . A `part-r-00000` fájl tartalmazza a feladatokhoz tartozó kimenetet.
 
     > [!NOTE]  
     > Egyes MapReduce-feladatok több **rész-r-#** # # # # fájlra oszthatják meg az eredményeket. Ha igen, használja a # # # # # utótagot, hogy jelezze a fájlok sorrendjét.
@@ -73,7 +73,7 @@ Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehoz
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Ez a parancs megjeleníti a **wasbs://example/Data/Gutenberg/DaVinci.txt** fájlban található szavak listáját, valamint az egyes szavak előfordulási idejét. A következő szöveg egy példa a fájlban található fájlokra:
+    Ez a parancs megjeleníti a **wasbs://example/data/gutenberg/davinci.txt** fájlban található szavak listáját, valamint az egyes szavak előfordulási idejét. A következő szöveg egy példa a fájlban található fájlokra:
 
     ```output
     wreathed        3

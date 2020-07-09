@@ -3,16 +3,16 @@ title: Ismerkedés az Azure Enterprise portállal
 description: Ez a cikk azt ismerteti, hogyan használják az Azure Nagyvállalati Szerződéssel (Azure EA) rendelkező ügyfelek az Azure Enterprise portált.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 647802ada8c8ca701c552749730b54bfce1e1651
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691557"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560364"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
@@ -471,6 +471,7 @@ Az Azure Enterprise portál kiszűri az inaktív regisztrációkat. Az inaktív 
 
 ### <a name="enrollment-statuses"></a>Regisztrációs állapotok
 
+- **Újdonság**: Ez az állapot egy 24 órán belül létrehozott regisztrációhoz van hozzárendelve, és 24 órán belül Függőben állapotba kerül.
 - **Függőben**: A regisztrációs rendszergazdának be kell jelentkeznie az Azure Enterprise portálra. Ha bejelentkezett, a regisztráció aktív állapotra vált.
 - **Aktív**: A regisztráció aktív, és az Azure Enterprise portálon fiókok és előfizetések hozhatók létre. A regisztráció a Nagyvállalati Szerződés záró dátumáig aktív marad.
 - **Határozatlan időre meghosszabbítva**: A határozatlan időre meghosszabbítva állapot a Nagyvállalati Szerződés záró dátuma után jelenik meg. Lehetővé teszi a meghosszabbított időszakot választó, Nagyvállalati Szerződéssel rendelkező Azure EA-ügyfelek számára, hogy a Nagyvállalati Szerződésük végén továbbra is határozatlan ideig használják az Azure-szolgáltatásokat.

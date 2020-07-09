@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497964"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Kiválóan elérhető Service Fabric megbízható lemez alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
@@ -25,7 +24,7 @@ Az `counterService` időnként beolvas egy számláló értékét egy fájlból,
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A feladat végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését. Ha az Azure CLI-t ehhez a cikkhez szeretné `az --version` használni, győződjön `azure-cli (2.0.43)`meg arról, hogy legalább a értéket adja vissza.  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
+A feladat végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését. Ha az Azure CLI-t ehhez a cikkhez szeretné használni, győződjön meg arról, hogy `az --version` legalább a értéket adja vissza `azure-cli (2.0.43)` .  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -38,7 +37,7 @@ az account set --subscription "<subscriptionID>"
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezheti. A következő parancs egy nevű `myResourceGroup` erőforráscsoportot hoz létre a keleti Egyesült Államok egy helyen. Ha megváltoztatja az erőforráscsoport nevét az alábbi parancsban, ne felejtse el módosítani az összes következő parancsban.
+Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezheti. A következő parancs egy nevű erőforráscsoportot hoz létre `myResourceGroup` a keleti Egyesült Államok egy helyen. Ha megváltoztatja az erőforráscsoport nevét az alábbi parancsban, ne felejtse el módosítani az összes következő parancsban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -46,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A következő parancs egy Linux-alkalmazást helyez üzembe a [Counter. sfreliablevolume. Linux. JSON sablonnal](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Windows-alkalmazás üzembe helyezéséhez használja a [Counter. sfreliablevolume. Windows. JSON sablont](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Vegye figyelembe, hogy a nagyobb méretű tárolók lemezképei hosszabb ideig tarthatnak.
+A következő parancs egy linuxos alkalmazást helyez üzembe a [sabloncounter.sfreliablevolume.linux.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)használatával. Windows-alkalmazás központi telepítéséhez használja a [counter.sfreliablevolume.windows.jsa sablonban](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Vegye figyelembe, hogy a nagyobb méretű tárolók lemezképei hosszabb ideig tarthatnak.
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json
@@ -58,7 +57,7 @@ A központi telepítés állapotát a paranccsal is megtekintheti
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Figyelje meg annak az átjáró-erőforrásnak a nevét, `Microsoft.ServiceFabricMesh/gateways`amelynek az erőforrástípus a típusa. Ezt fogja használni a rendszer az alkalmazás nyilvános IP-címének lekérése során.
+Figyelje meg annak az átjáró-erőforrásnak a nevét, amelynek az erőforrástípus a típusa `Microsoft.ServiceFabricMesh/gateways` . Ezt fogja használni a rendszer az alkalmazás nyilvános IP-címének lekérése során.
 
 ## <a name="open-the-application"></a>Az alkalmazás megnyitása
 
@@ -67,11 +66,11 @@ Az alkalmazás sikeres üzembe helyezése után szerezze be az alkalmazás átj�
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-A kimenetnek rendelkeznie kell egy `ipAddress` olyan tulajdonsággal, amely a szolgáltatás végpontjának nyilvános IP-címe. Nyissa meg egy böngészőben. Ekkor megjelenik egy weblap, amelyen a számláló értéke másodpercenként frissül.
+A kimenetnek rendelkeznie kell egy olyan tulajdonsággal, `ipAddress` amely a szolgáltatás végpontjának nyilvános IP-címe. Nyissa meg egy böngészőben. Ekkor megjelenik egy weblap, amelyen a számláló értéke másodpercenként frissül.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Annak ellenőrzése, hogy az alkalmazás képes-e a kötet használatára
 
-Az alkalmazás létrehoz egy nevű `counter.txt` fájlt a kötet belső `counter/counterService` mappájában. A fájl tartalma a weblapon megjelenő számláló értéke.
+Az alkalmazás létrehoz egy nevű fájlt `counter.txt` a kötet belső `counter/counterService` mappájában. A fájl tartalma a weblapon megjelenő számláló értéke.
 
 ## <a name="delete-the-resources"></a>Erőforrások törlése
 

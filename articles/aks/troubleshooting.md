@@ -3,13 +3,13 @@ title: Az Azure Kubernetes szolgáltatással kapcsolatos gyakori problémák elh
 description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata során felmerülő gyakori problémák elhárításához és megoldásához
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/20/2020
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724994"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054389"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -31,11 +31,34 @@ Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben 
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
-Ha az Azure CNI hálózati beépülő modult használja, a (z) "--Max-hüvely" érték alapján osztja ki az IP-címeket a Node paraméter alapján. Az alhálózat méretének nagyobbnak kell lennie, mint a csomópontok maximális száma csomópont-beállításnál. A következő egyenlet felvázolja:
+Ez a hiba azt jelzi, hogy a fürtben lévő alhálózatok már nem rendelkeznek a CIDR belüli elérhető IP-címekkel a sikeres erőforrás-hozzárendeléshez. A Kubenet-fürtök esetében a követelmény elegendő IP-terület a fürt minden csomópontja számára. Az Azure CNI-fürtök esetében a követelmény elegendő IP-terület a fürt minden egyes csomópontja és Pod számára.
+További információk az [Azure-CNI kialakításáról az IP-címek a hüvelyekhez való hozzárendeléséhez](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Az alhálózat mérete > a fürt csomópontjainak száma (figyelembe véve a jövőbeli skálázási követelményeket) * a csomópontok maximális száma.
+Ezeket a hibákat az [AK-diagnosztika](https://docs.microsoft.com/azure/aks/concepts-diagnostics) is felveszi, amely proaktív módon olyan problémákat okoz, mint például a nem megfelelő alhálózat mérete.
 
-További információt [a fürt IP-címzésének megtervezése](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)című témakörben talál.
+A következő három (3) eset nem megfelelő alhálózati méretet okoz:
+
+1. AK Scale vagy AK Nodepool skálázás
+   1. Ha Kubenet használ, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of new nodes requested` .
+   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
+
+1. AK-frissítés vagy AK-Nodepool frissítése
+   1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of buffer nodes needed to upgrade` .
+   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+   
+   Alapértelmezés szerint az AK-fürtök egy (1) maximális túllépési értéket állítanak be, de ez a frissítési viselkedés testreszabható úgy, hogy [egy csomópont-készlet maximális](upgrade-cluster.md#customize-node-surge-upgrade-preview) túllépését állítja be, ami növeli a frissítés befejezéséhez szükséges elérhető IP-címek számát.
+
+1. AK létrehozása vagy AK-Nodepool hozzáadása
+   1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of nodes requested for the node pool` .
+   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
+
+Az új alhálózatok létrehozásával a következő enyhítést lehet elvégezni. Az új alhálózat létrehozásához szükséges engedély a meglévő alhálózat CIDR-tartományának frissítése miatti nem lehetséges.
+
+1. Egy olyan új alhálózat újraépítése, amely a műveleti célokhoz elegendő CIDR-tartománnyal rendelkezik:
+   1. Hozzon létre egy új alhálózatot egy új kívánt, nem átfedésben lévő tartománnyal.
+   1. Hozzon létre egy új nodepool az új alhálózaton.
+   1. A lecserélni kívánt régi alhálózatban lévő régi nodepool kiüríti a hüvelyeket.
+   1. Törölje a régi alhálózatot és a régi nodepool.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A My Pod CrashLoopBackOff módban ragadt. Mit tegyek?
 
@@ -46,6 +69,19 @@ Előfordulhat, hogy a pod nem ragadja meg ezt a módot. A következőket tekinth
 
 A pod-problémák hibaelhárításával kapcsolatos további információkért lásd: [alkalmazások hibakeresése](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts` `kubectl` Az API-kiszolgálóhoz való csatlakozáskor vagy más, harmadik féltől származó eszközök használatakor Fogadok
+Az AK-ban a slo és a szolgáltatói szerződéseket (SLA-kat) biztosító magok száma alapján vertikálisan méretezhető vezérlési síkok vannak. Ha a kapcsolatok időtúllépését tapasztalja, ellenőrizze az alábbi lépéseket:
+
+- **Az API-parancsok konzisztensek, vagy csak néhányat?** Ha csak néhány, a `tunnelfront` Pod vagy a `aks-link` Pod, amely a csomópont-> vezérlési sík kommunikációjának felel meg, előfordulhat, hogy nem fut állapotban van. Győződjön meg arról, hogy a pod helyet adó csomópontok nem túlzott mértékben vannak kihasználva vagy stressz alatt. Érdemes áthelyezni a saját [ `system` Node-készletbe](use-system-pools.md).
+- **Megnyitotta az összes szükséges portot, teljes tartománynevet és IP-címet, amelyek a [kimenő forgalomra vonatkozó dokumentumokat korlátozzák](limit-egress-traffic.md)?** Ellenkező esetben több parancs hívása sikertelen lehet.
+- **Az aktuális IP-címe a [jóváhagyott API IP-címtartományok](api-server-authorized-ip-ranges.md)szerint van-e kiértékelve?** Ha ezt a funkciót használja, és az IP-címe nem szerepel a tartományokban, a hívások le lesznek tiltva. 
+- **Van ügyfél-vagy alkalmazás-visszaszivárgási hívása az API-kiszolgálónak?** Ügyeljen arra, hogy a gyakori Get hívások helyett az órákat használja, és hogy a harmadik féltől származó alkalmazások ne szivárognak ki ilyen hívásokat. A Istio keverőben például egy hiba okozza, hogy egy új API-kiszolgáló figyeli a kapcsolódást minden alkalommal, amikor a titkos kulcs beolvasása történik. Mivel ez a viselkedés rendszeres időközönként történik, figyelje a kapcsolatok gyors összegyűjtését, és végül az API-kiszolgáló túlterhelését eredményezheti a skálázási minta alapján. https://github.com/istio/istio/issues/19481
+- **Sok kiadása van a Helm üzemelő példányában?** Ez a forgatókönyv azt eredményezheti, hogy a kormányrúd túl sok memóriát használ a csomópontokon, és nagy mennyiségű `configmaps` , ami szükségtelen tüskéket okozhat az API-kiszolgálón. Érdemes lehet `--history-max` `helm init` az új Helm 3 konfigurálását és kihasználni. További részletek a következő problémákról: 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>A szerepköralapú Access Control (RBAC) szolgáltatást próbálom engedélyezni egy meglévő fürtön. Hogyan tehetem meg?
 
 A szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön való engedélyezése jelenleg nem támogatott, ezért az új fürtök létrehozásakor be kell állítani. A RBAC alapértelmezés szerint engedélyezve van, ha a parancssori felület, a portál vagy egy API-verziónál újabb verziót használ `2020-03-01` .
@@ -53,12 +89,6 @@ A szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön való
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehoztam egy olyan fürtöt, amelyen engedélyezve van a RBAC, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
 
 A figyelmeztetések oka, hogy a fürtön engedélyezve van a RBAC, és az irányítópulthoz való hozzáférés alapértelmezés szerint korlátozva van. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem lehet csatlakozni az irányítópulthoz. Mit tegyek?
-
-A szolgáltatásnak a fürtön kívülre való hozzáférésének legegyszerűbb módja a Futtatás, amelyet a rendszer a `kubectl proxy` localhost 8001-as portra küldött a KUBERNETES API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
-
-Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy a `kube-proxy` Pod fut-e `kube-system` a névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 
@@ -119,6 +149,7 @@ Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. H
 * Az AK-csomópont/*MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie, és 1-54 karakter közöttinek kell lennie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 * Az AK-csomópontok készletének neve csak kisbetűket tartalmazhat, és 1-11 karakter hosszúnak kell lennie a Linux-csomópontok és a 1-6 karakter Windows-csomópontok számára A névnek betűvel kell kezdődnie, és csak betűket és számokat tartalmazhat.
+* A Linux-csomópontok rendszergazdai felhasználónevét beállító rendszergazda *-username*betűvel kell kezdődnie, és csak betűket, számokat, kötőjeleket és aláhúzásokat tartalmazhat, és legfeljebb 64 karakter hosszú lehet.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
 
@@ -186,7 +217,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N/A |
+| 1,12 és újabb verziók | N.A. |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -243,7 +274,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -262,7 +293,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -371,7 +402,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N/A |
+| 1,14 és újabb verziók | N.A. |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 

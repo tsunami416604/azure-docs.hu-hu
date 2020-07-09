@@ -7,12 +7,11 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e2018f4d6f8e0813892a43c66975961356333bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801359"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Munkafolyamatok használata az Azure IoT Central alkalmazás integrálásához más felhőalapú szolgáltatásokkal
 
@@ -20,27 +19,36 @@ ms.locfileid: "83665004"
 
 Olyan IoT Central szabályokat hozhat létre, amelyek olyan műveleteket aktiválnak, mint például az e-mailek küldése a telemetria feltételekre adott válaszként, például az eszköz hőmérséklete meghaladja a küszöbértéket.
 
-A Power automatizálás és a Azure Logic Apps IoT Central-összekötője lehetővé teszi, hogy fejlettebb szabályokat hozzon létre a IoT Central műveletének automatizálásához:
+A Power automatizálás és a Azure Logic Apps Azure IoT Central v3-összekötője lehetővé teszi, hogy fejlettebb szabályokat hozzon létre a IoT Central-műveletek automatizálásához:
 
 - Ha egy szabály az Azure IoT Central-alkalmazásban következik be, akkor kiválthat egy munkafolyamatot a Power automatizálásban vagy Azure Logic Apps. Ezek a munkafolyamatok más felhőalapú szolgáltatásokban, például az Office 365-ben vagy egy harmadik féltől származó szolgáltatásokban is futtathatnak műveleteket.
 - Egy másik felhőalapú szolgáltatásban, például az Office 365-ben egy esemény aktiválhat egy munkafolyamatot az automatizálásban vagy Azure Logic Appsban. Ezek a munkafolyamatok futtathatják a műveleteket, vagy lekérhetik az adatok beolvasását a IoT Central alkalmazásból.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+A megoldás beállításához a 3. verziójú IoT Central alkalmazásra van szükség. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört. IoT Central alkalmazások létrehozásával kapcsolatos további információkért lásd: [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md).
+
+> [!NOTE]
+> Ha 2. verziójú IoT Central alkalmazást használ, tekintse meg a következő témakört: [munkafolyamatok létrehozása az IoT Central-összekötővel Azure Logic apps](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) az előző verziók dokumentációs webhelyén, és az Azure IoT Central v2-összekötő használata
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Munkafolyamat elindítása szabályból
 
 Mielőtt elindít egy munkafolyamatot az automatizálásban vagy Azure Logic Appsban, szüksége lesz egy szabályra a IoT Central alkalmazásban. További információ: [szabályok és műveletek konfigurálása az Azure IoT Centralban](./howto-configure-rules.md).
 
-Az **Azure IoT Central-Preview** összekötő hozzáadása triggerként a Power automatizálásban:
+Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása triggerként a Power automatizálásban:
 
 1. A Power automatizáló lapon válassza a **+ Létrehozás**lehetőséget, majd válassza az **Egyéni** lapot.
-1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central-Preview** összekötőt.
+1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. Az eseményindítók listájában válassza ki, hogy **Mikor indul el egy szabály (előzetes verzió)**.
 1. A **szabály indításakor** lépésnél válassza ki a IoT Central alkalmazást és a használni kívánt szabályt.
 
-Az **Azure IoT Central-Preview** összekötő hozzáadása triggerként a Azure Logic Appsban:
+Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása triggerként a Azure Logic Appsban:
 
 1. **Logic apps Designerben**válassza ki az **üres logikai alkalmazás** sablonját.
 1. A tervezőben válassza az **Egyéni** lapot.
-1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central-Preview** összekötőt.
+1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. Az eseményindítók listájában válassza ki, hogy **Mikor indul el egy szabály (előzetes verzió)**.
 1. A **szabály indításakor** lépésnél válassza ki a IoT Central alkalmazást és a használni kívánt szabályt.
 
@@ -50,27 +58,27 @@ Mostantól további lépéseket is hozzáadhat a munkafolyamathoz az integráci�
 
 ## <a name="run-an-action"></a>Művelet futtatása
 
-A IoT Central alkalmazásban műveleteket futtathat a Power automatizáló és a Azure Logic Apps munkafolyamatok használatával. Először hozza létre a munkafolyamatot, és használjon egy összekötőt a munkafolyamat elindításához. Ezután használja az **Azure IoT Central-Preview** összekötőt műveletként.
+A IoT Central alkalmazásban műveleteket futtathat a Power automatizáló és a Azure Logic Apps munkafolyamatok használatával. Először hozza létre a munkafolyamatot, és használjon egy összekötőt a munkafolyamat elindításához. Ezután használja az **Azure IoT Central v3 – Preview** összekötőt műveletként.
 
-Az **Azure IoT Central-Preview** összekötő hozzáadása műveletként a Power automatizálásban:
+Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása műveletként a Power automatizálásban:
 
 1. A energiagazdálkodás automatizálása területen a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
-1. Keresse meg *IoT Central* , és válassza ki az **Azure IoT Central-Preview** összekötőt.
+1. Keresse meg *IoT Central* , és válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
-1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
 
-Az **Azure IoT Central-Preview** összekötő hozzáadása műveletként a Azure Logic Appsban:
+Az **Azure IoT Central v3 – Preview** összekötő hozzáadása műveletként a Azure Logic Appsban:
 
 1. **Logic apps Designerben**a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
-1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central-Preview** összekötőt.
+1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
-1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central-előnézeti összekötőt, és válasszon egy műveletet":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central v3-összekötőt, és válasszon egy műveletet":::
 
 ## <a name="list-of-actions"></a>Műveletek listája
 
-A következő lista az **Azure IoT Central-Preview** összekötő és a konfigurációs beállításaiban elérhető összes IoT Central műveletet mutatja. Számos mezőhöz dinamikusan generált tartalom tartozhat. Egy korábbi lépés például meghatározhatja az eszköz AZONOSÍTÓját, amelyre az aktuális lépés érvényes.
+A következő lista az **Azure IoT Central v3 – előzetes** verziójú összekötőben elérhető IoT Central műveleteket és azok konfigurációs beállításait mutatja be. Számos mezőhöz dinamikusan generált tartalom tartozhat. Egy korábbi lépés például meghatározhatja az eszköz AZONOSÍTÓját, amelyre az aktuális lépés érvényes.
 
 ### <a name="create-or-update-a-device"></a>Eszköz létrehozása vagy frissítése
 

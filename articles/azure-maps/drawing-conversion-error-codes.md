@@ -9,13 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682006"
 ---
-# <a name="drawing-conversion-errors-and-warnings"></a>Átalakítási hibák és figyelmeztetések rajzolása
+# <a name="drawing-conversion-errors-and-warnings"></a>Rajz átalakítási hibái és figyelmeztetései
 
 A [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) lehetővé teszi a feltöltött rajzok leképezési adatként való átalakítását. A rajzolási csomagoknak meg kell felelniük a [rajzolási csomagok követelményeinek](drawing-requirements.md). Ha egy vagy több követelmény nem teljesül, az átalakítási szolgáltatás hibákat vagy figyelmeztetéseket ad vissza. Ez a cikk az átalakítási hibát és a figyelmeztetési kódokat sorolja fel, és javaslatokat tesz a megoldására. Emellett néhány példát is tartalmaz a rajzok számára, amelyek hatására az átalakítási szolgáltatás visszaadja ezeket a kódokat.
 
@@ -343,14 +342,14 @@ A **dwgError** akkor következik be, amikor a RAJZFÁJL olyan DWG-fájlt tartalm
 
 * A DWG-fájlok nem érvényes AutoCAD DWG fájlformátum-rajzok.
 * Egy DWG-fájl sérült.
-* Egy DWG-fájl szerepel a _manifest. JSON_ fájlban, de hiányzik BELŐLE a zip-archívumból.
+* A DWG-fájlok szerepelnek a _manifest.js_ fájlban, de a zip-archívumból hiányoznak.
 
 #### <a name="how-to-fix-dwgerror"></a>*A dwgError javítása*
 
-A **dwgError**kijavításához ellenőrizze a _manifest. JSON_ fájlt:
+A **dwgError**kijavításához tekintse meg a _manifest.jsa_ fájlban ellenőrizze, hogy:
 
 * A ZIP-archívumban található összes DWG-fájl érvényes AutoCAD DWG formátumú rajzok, amelyek mindegyikét az AutoCADben nyitják meg. Távolítsa el vagy javítsa ki az összes érvénytelen rajzot.
-* A _manifest. JSON_ FÁJLBAN található DWG-fájlok listája megegyezik a ZIP-archívumban található DWG-fájlokkal.
+* A _manifest.js_ található DWG-fájlok listája megegyezik a ZIP-archívumban található DWG-fájlokkal.
 
 ## <a name="manifest-errors"></a>Jegyzékfájl-hibák
 
@@ -358,9 +357,9 @@ A **dwgError**kijavításához ellenőrizze a _manifest. JSON_ fájlt:
 
 #### <a name="description-for-invalidjsonformat"></a>A invalidJsonFormat leírása
 
-**InvalidJsonFormat** hiba történik, ha a _manifest. JSON_ fájl nem olvasható.
+**InvalidJsonFormat** hiba történik, ha a fájl _manifest.js_ nem olvasható.
 
-A _manifest. json_file nem olvasható be JSON formátum vagy szintaktikai hiba miatt. További információ a JSON formátumáról és szintaxisáról: [JavaScript Object Notation (JSON) adatcsere formátuma](https://tools.ietf.org/html/rfc7159)
+A _manifest.json_file JSON-formázás vagy szintaktikai hiba miatt nem olvashatók. További információ a JSON formátumáról és szintaxisáról: [JavaScript Object Notation (JSON) adatcsere formátuma](https://tools.ietf.org/html/rfc7159)
 
 #### <a name="how-to-fix-invalidjsonformat"></a>*A invalidJsonFormat javítása*
 
@@ -370,7 +369,7 @@ A **invalidJsonFormat** hibáinak kijavításához használjon JSON-kisegítő h
 
 #### <a name="description-for-missingrequiredfield"></a>*A missingRequiredField leírása*
 
-**MissingRequiredField** hiba történik, ha a _manifest. JSON_ fájlhoz hiányzik a szükséges érték.
+**MissingRequiredField** hiba történik, ha a _manifest.js_ fájlból hiányzik a szükséges adatérték.
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*A missingRequiredField javítása*
 
@@ -380,23 +379,23 @@ A **missingRequiredField** hibáinak kijavításához ellenőrizze, hogy a jegyz
 
 #### <a name="description-for-missingmanifest"></a>*A missingManifest leírása*
 
-A **missingManifest** hiba akkor fordul elő, ha a _manifest. JSON_ fájl hiányzik a zip-archívumból.
+A **missingManifest** hiba akkor fordul elő, ha a fájl _manifest.js_ hiányzik a zip-archívumból.
 
 A **missingManifest** hiba a következő okok közül egy vagy több miatt fordul elő:
 
-* A _manifest. JSON_ fájl hibásan van megjelölve.
-* Hiányzik a _manifest. JSON_ fájl.
-* A _manifest. JSON_ nem a zip-archívum gyökérkönyvtárában található.
+* A fájl _manifest.js_ hibásan van írva.
+* Hiányzik a _manifest.js_ .
+* A _manifest.js_ nem a zip-archívum gyökérkönyvtárában található.
 
 #### <a name="how-to-fix-missingmanifest"></a>*A missingManifest javítása*
 
-A **missingManifest** hibáinak javításához győződjön meg arról, hogy az archívumban található egy _manifest. JSON_ nevű fájl a zip-archívum legfelső szintjén.
+A **missingManifest** hibáinak kijavításához ellenőrizze, hogy az archívumban van-e egy _manifest.js_ nevű fájl a zip-archívum legfelső szintjén.
 
 ### <a name="conflict"></a>**Ütközés**
 
 #### <a name="description-for-conflict"></a>*Ütközés leírása*
 
-Az **ütközési** hiba akkor fordul elő, ha a _manifest. JSON_ fájl ütköző információt tartalmaz.
+Az **ütközési** hiba akkor fordul elő, ha a fájl _manifest.js_ ütköző információt tartalmaz.
 
 #### <a name="example-scenario-for-conflict"></a>*Példa ütközésre*
 
@@ -422,13 +421,13 @@ Az átalakítási szolgáltatás **ütközési** hibát ad vissza, ha egynél t�
 
 #### <a name="how-to-fix-conflict"></a>*Az ütközés elhárítása*
 
-Az **ütközési** hibák elhárításához vizsgálja meg a _manifest. JSON_ fájlt, és távolítsa el az ütköző információkat.
+Az **ütközési** hibák elhárításához vizsgálja _meg amanifest.jst_ , és távolítsa el az ütköző információkat.
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 
 #### <a name="description-for-invalidgeoreference"></a>*A invalidGeoreference leírása*
 
-A **invalidGeoreference** hiba akkor fordul elő, ha egy _manifest. JSON_ fájl érvénytelen Georeference tartalmaz.
+A **invalidGeoreference** hiba akkor fordul elő, ha a fájl _manifest.js_ érvénytelen Georeference tartalmaz.
 
 A **invalidGeoreference** hiba a következő okok közül egy vagy több miatt fordul elő:
 

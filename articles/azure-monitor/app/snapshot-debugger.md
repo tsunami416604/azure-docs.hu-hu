@@ -5,14 +5,13 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692019"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
-Ha kivétel történik, automatikusan gyűjthet egy hibakeresési pillanatképet az élő webalkalmazásból. A pillanatkép a forráskód és a változók állapotát mutatja a kivétel eldobásának pillanatában. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger figyeli a webalkalmazás kivétel-telemetria. Pillanatképeket gyűjt a legfelső szintű kivételekről, így az éles környezetben felmerülő problémák diagnosztizálásához szükséges információkkal rendelkezik. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és opcionálisan konfigurálja a gyűjtemény paramétereit a [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](../../azure-monitor/app/asp-net-exceptions.md) között jelennek meg.
+Ha kivétel történik, automatikusan gyűjthet egy hibakeresési pillanatképet az élő webalkalmazásból. A pillanatkép a forráskód és a változók állapotát mutatja a kivétel eldobásának pillanatában. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger figyeli a webalkalmazás kivétel-telemetria. Pillanatképeket gyűjt a legfelső szintű kivételekről, így az éles környezetben felmerülő problémák diagnosztizálásához szükséges információkkal rendelkezik. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtemény paramétereit [ApplicationInsights.configban ](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](../../azure-monitor/app/asp-net-exceptions.md) között jelennek meg.
 
 A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ha hatékonyabb hibakeresési élményt szeretne kapni a forráskódtal, nyissa meg a pillanatképeket a Visual Studio 2019 Enterprise használatával. A Visual Studióban úgy is beállíthatja a Snappoints, hogy a rendszer kivétel nélkül is [interaktívan készítsen pillanatképeket](https://aka.ms/snappoint) .
 
@@ -43,7 +42,7 @@ A pillanatképek elérését szerepköralapú hozzáférés-vezérlés (RBAC) v�
 > [!NOTE]
 > A tulajdonosok és a közreműködők nem rendelkeznek automatikusan ehhez a szerepkörhöz. Ha szeretné megtekinteni a pillanatképeket, fel kell venni magukat a szerepkörbe.
 
-Az előfizetés tulajdonosának hozzá `Application Insights Snapshot Debugger` kell rendelnie a szerepkört azokhoz a felhasználókhoz, akik megvizsgálja a pillanatképeket. Ez a szerepkör egyéni felhasználókhoz vagy csoportokhoz rendelhető hozzá az előfizetések tulajdonosai számára a cél Application Insights erőforráshoz, illetve annak erőforráscsoporthoz vagy előfizetéséhez.
+Az előfizetés tulajdonosának hozzá kell rendelnie a `Application Insights Snapshot Debugger` szerepkört azokhoz a felhasználókhoz, akik megvizsgálja a pillanatképeket. Ez a szerepkör egyéni felhasználókhoz vagy csoportokhoz rendelhető hozzá az előfizetések tulajdonosai számára a cél Application Insights erőforráshoz, illetve annak erőforráscsoporthoz vagy előfizetéséhez.
 
 1. Navigáljon a Azure Portal Application Insights erőforráshoz.
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
@@ -70,12 +69,12 @@ A hibakeresési pillanatkép nézetben a hívási verem és a változók ablakt�
 
 ![Hibakeresési pillanatkép megtekintése a portálon](./media/snapshot-debugger/open-snapshot-portal.png)
 
-A pillanatképek bizalmas információkat tartalmazhatnak, és alapértelmezés szerint nem láthatók. A pillanatképek megtekintéséhez hozzá kell rendelnie `Application Insights Snapshot Debugger` a szerepkört.
+A pillanatképek bizalmas információkat tartalmazhatnak, és alapértelmezés szerint nem láthatók. A pillanatképek megtekintéséhez `Application Insights Snapshot Debugger` hozzá kell rendelnie a szerepkört.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Pillanatképek megtekintése a Visual Studio 2017 Enterprise vagy újabb verzióban
-1. Kattintson a **Pillanatkép letöltése** gombra egy `.diagsession` fájl letöltéséhez, amelyet a Visual Studio Enterprise is megnyithat.
+1. Kattintson a **Pillanatkép letöltése** gombra egy fájl letöltéséhez `.diagsession` , amelyet a Visual Studio Enterprise is megnyithat.
 
-2. A `.diagsession` fájl megnyitásához telepítenie kell a Snapshot Debugger Visual Studio összetevőt. A Snapshot Debugger összetevő a Visual Studióban a ASP.net számítási feladatának szükséges összetevője, és a Visual Studio telepítő egyes összetevők listájában is kiválasztható. Ha a Visual Studio 2017-es 15,5 verziójának korábbi verzióját használja, akkor telepítenie kell a bővítményt a [Visual Studio piactérről](https://aka.ms/snapshotdebugger).
+2. A fájl megnyitásához `.diagsession` telepítenie kell a Snapshot Debugger Visual Studio összetevőt. A Snapshot Debugger összetevő a Visual Studióban a ASP.net számítási feladatának szükséges összetevője, és a Visual Studio telepítő egyes összetevők listájában is kiválasztható. Ha a Visual Studio 2017-es 15,5 verziójának korábbi verzióját használja, akkor telepítenie kell a bővítményt a [Visual Studio piactérről](https://aka.ms/snapshotdebugger).
 
 3. A pillanatkép-fájl megnyitása után megjelenik a minidump hibakeresési lapja a Visual Studióban. A pillanatkép hibakeresésének megkezdéséhez kattintson a **felügyelt kód hibakeresése** elemre. A pillanatkép megnyílik a kód azon sorában, ahol a kivételt eldobta a rendszer, hogy a folyamat aktuális állapotát tudja-e debug.
 
@@ -114,7 +113,7 @@ A Visual Studio 2017 15,2-es vagy újabb verziója alapértelmezés szerint köz
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Az Azure-beli számítási és egyéb típusok esetében győződjön meg arról, hogy a szimbólumok a Main Application. dll (általában, `wwwroot/bin`) és az aktuális elérési úton elérhető mappában találhatók.
+Az Azure-beli számítási és egyéb típusok esetében győződjön meg arról, hogy a szimbólumok a Main Application. dll (általában,) és az `wwwroot/bin` aktuális elérési úton elérhető mappában találhatók.
 
 > [!NOTE]
 > Az elérhető különböző szimbólumokkal kapcsolatos további információkért tekintse meg a [Visual Studio dokumentációját](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output

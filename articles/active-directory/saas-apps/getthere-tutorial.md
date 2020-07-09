@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6dfe4a81a86ff6eb36f3b5eb164b3183193c86d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45fc683bb894fdafae7f88e112971d1c8378e50b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70163424"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799875"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-getthere"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GetThere
 
@@ -87,19 +87,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-    | |
-    |--|
-    | `getthere.com` |
-    | `http://idp.getthere.com` |
+    ```http
+    getthere.com
+    http://idp.getthere.com
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-    | |
-    |--|
-    | `https://wx1.getthere.net/login/saml/post.act` |
-    | `https://gtx2-gcte2.getthere.net/login/saml/post.act` |
-    | `https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act` |
-    | `https://wx1.getthere.net/login/saml/ssoaavalidate.act` |
+    ```http
+    https://wx1.getthere.net/login/saml/post.act
+    https://gtx2-gcte2.getthere.net/login/saml/post.act
+    https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act
+    https://wx1.getthere.net/login/saml/ssoaavalidate.act
+    ```
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -117,9 +117,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -153,7 +153,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a GetThere csempére kattint, automatikusan be kell jelentkeznie arra a GetThere, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

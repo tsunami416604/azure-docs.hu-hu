@@ -3,12 +3,11 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300926"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -75,11 +74,13 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 * Eltérő előfizetést kell megadni a csomópont-erőforráscsoport számára.
 * Módosítsa a csomópont-erőforráscsoport nevét a fürt létrehozása után.
 * A csomópont erőforráscsoporthoz tartozó felügyelt erőforrások nevének megadása.
-* A kezelt erőforrások címkéit módosíthatja vagy törölheti a csomópont-erőforráscsoport alatt. (További információt a következő szakaszban talál.)
+* Módosíthatja vagy törölheti az Azure-ban létrehozott, felügyelt erőforrások címkéit a csomópont-erőforráscsoporton belül. (További információt a következő szakaszban talál.)
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Módosíthatom a csomóponti erőforráscsoporthoz tartozó AK-erőforrások címkéit és egyéb tulajdonságait?
 
-Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb erőforrás-tulajdonságokat a csomópont-erőforráscsoport esetében, váratlan eredményekhez juthat, például a skálázási és a frissítési hibákhoz. Az AK lehetővé teszi egyéni címkék létrehozását és módosítását. Előfordulhat, hogy egyéni címkéket kíván létrehozni vagy módosítani, például egy üzleti egység vagy költséghely hozzárendeléséhez. Ha módosítja az AK-fürtben található csomópont-erőforráscsoport erőforrásait, megszakítja a szolgáltatási szint célkitűzését (SLO). További információkért lásd: az [AK-t kínáló szolgáltatás szintű szerződés?](#does-aks-offer-a-service-level-agreement)
+Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb erőforrás-tulajdonságokat a csomópont-erőforráscsoport esetében, váratlan eredményekhez juthat, például a skálázási és a frissítési hibákhoz. Az AK lehetővé teszi a végfelhasználók számára létrehozott egyéni címkék létrehozását és módosítását. Előfordulhat, hogy egyéni címkéket kíván létrehozni vagy módosítani, például egy üzleti egység vagy költséghely hozzárendeléséhez. Ezt úgy érheti el, ha az Azure-szabályzatokat a felügyelt erőforráscsoport hatókörével hozza létre.
+
+Ha azonban az AK-fürt csomópont-erőforráscsoport területén lévő erőforrásokra vonatkozó összes **Azure-beli címkét** módosítja, egy nem támogatott művelet, amely megszakítja a szolgáltatási szintű célkitűzést (SLO). További információkért lásd: az [AK-t kínáló szolgáltatás szintű szerződés?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes-beléptetési vezérlőket támogat az AK? Hozzáadhatók vagy eltávolíthatók a beléptetési vezérlők?
 

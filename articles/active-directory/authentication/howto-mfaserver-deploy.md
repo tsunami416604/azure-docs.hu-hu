@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653127"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
@@ -51,7 +50,7 @@ Amikor egy fő Azure MFA-kiszolgálónak megszakad az internetes kapcsolata, az 
 
 Győződjön meg róla, hogy az Azure Multi-Factor Authenticationhöz használt kiszolgáló megfelel a következő követelményeknek:
 
-| Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
+| Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Description |
 |:--- |:--- |
 | Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
 | Szoftverek |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
@@ -96,7 +95,7 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági** > **MFA**elemet.
+2. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági**  >  **MFA**elemet.
 3. A **kezelő MFA-kiszolgáló**területen válassza a **kiszolgáló beállításai**lehetőséget.
 4. Válassza a **Letöltés** lehetőséget, és kövesse a letöltési oldalon megjelenő utasításokat a telepítő mentéséhez. 
 

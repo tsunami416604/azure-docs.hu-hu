@@ -3,15 +3,14 @@ title: Azure Automation használata feladatok elindításához StorSimple Data M
 description: Megtudhatja, hogyan használhatja a Azure Automationt StorSimple Data Manager feladatok elindításához
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514935"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>A Azure Automation használata a feladatok elindításához
 
@@ -28,8 +27,8 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 *   Azure PowerShell telepítve van az ügyfélszámítógépen. [Azure PowerShell letöltése](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Egy adott erőforráscsoport egy StorSimple Data Manager szolgáltatásának megfelelően konfigurált feladatdefiníció.
-*   Töltse [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) le a fájlt a GitHub-adattárból. 
-*   Parancsfájl [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) letöltése a GitHub-adattárból.
+*   Töltse le [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) a fájlt a GitHub-adattárból. 
+*   [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)Parancsfájl letöltése a GitHub-adattárból.
 
 ## <a name="step-by-step-procedure"></a>Lépésről lépésre haladó eljárás
 
@@ -50,7 +49,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet**.
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás**gombra.
+   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 
       ![Futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -86,7 +85,7 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
 2. A **Runbook hozzáadása**területen kattintson a **meglévő runbook importálása**elemre.
 
-3. Mutasson a **Runbook fájl**Azure PowerShell `Trigger-DataTransformation-Job.ps1` parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás**gombra.
+3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl**Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
 
     ![2. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

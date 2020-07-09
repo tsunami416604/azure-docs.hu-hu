@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774864"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetria konfigurálása REST-tel
@@ -34,7 +33,7 @@ A jelen témakörben ismertetett lépések a következők:
 - Az értesítési végpontok beolvasása
 - Értesítési végpont létrehozása figyeléshez. 
 
-    Értesítési végpont létrehozásához állítsa a EndPointType a AzureTable (2) értékre, a endPontAddress pedig a Storage táblára (például https:\//telemetryvalidationstore.table.Core.Windows.net/).
+    Értesítési végpont létrehozásához állítsa a EndPointType a AzureTable (2) értékre, a endPontAddress pedig a Storage táblára (például https: \/ /telemetryvalidationstore.table.Core.Windows.net/).
   
 - A figyelési konfigurációk beolvasása
 
@@ -126,7 +125,7 @@ A jelen témakörben ismertetett lépések a következők:
     }
 
 > [!NOTE]
-> Ne felejtse el módosítani a "https\/:/telemetryvalidationstore.table.Core.Windows.net" értéket a Storage-fiókra.
+> Ne felejtse el módosítani a "https: \/ /telemetryvalidationstore.table.Core.Windows.net" értéket a Storage-fiókra.
 
 ### <a name="response"></a>Válasz
 

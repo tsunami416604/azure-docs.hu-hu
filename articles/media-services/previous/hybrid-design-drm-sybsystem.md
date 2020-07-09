@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159403"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése 
@@ -93,7 +93,7 @@ Az eszközök kézbesítési házirendjének konfigurálásával szabályozhatja
 
 ## <a name="scenarios-and-samples"></a>Forgatókönyvek és minták
 
-Az előző szakaszban ismertetett magyarázat alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcsú**-**eszközök kézbesítési szabályzatának** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
+Az előző szakaszban ismertetett magyarázat alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcsú** - **eszközök kézbesítési szabályzatának** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
 
 |**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Minta**|
 |---|---|---|---|---|---|

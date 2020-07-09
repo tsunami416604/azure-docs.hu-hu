@@ -1,18 +1,18 @@
 ---
 title: Microsoft kereskedelmi Marketplace-támogatás – Azure Marketplace
 description: Támogatási információk és hivatkozások az Azure Marketplace-hez és a AppSource-hez a partner Centerben
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828100"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121503"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piactér támogatása
 
@@ -43,10 +43,9 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 | E-mail[gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  
 | E-mail[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémákkal és-arculattal kapcsolatos használati kérdésekre. |  |  
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-* Látogasson el a [kereskedelmi piactér közzétevői útmutató oldalára](https://docs.microsoft.com/azure/marketplace/).
-* További információ [a kereskedelmi piactér program támogatásáról a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+* Látogasson el a [kereskedelmi piactér közzétevői útmutató oldalára](index.yml).
+* További információ [a kereskedelmi piactér program támogatásáról a partner Centerben](partner-center-portal/support.md).
 
 ---

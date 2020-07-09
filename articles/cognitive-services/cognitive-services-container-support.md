@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: f751aa947988544977f9baf2746191921c1aa9d4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 69984f9dbd94bcdca2e272a5bdebbb7fc1464dae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590662"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104408"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Tárolók támogatása az Azure Cognitive Services
 
@@ -28,7 +28,7 @@ A tárolók támogatása az Azure Cognitive Services lehetővé teszi a fejleszt
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Speech Service API][sp-containers]
-> * [Text Analytics][ta-containers]
+> * [Szövegelemzés][ta-containers]
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
@@ -60,9 +60,10 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 | [Speech Service API][sp-containers-cstt] | F0, S0 | **Custom Speech – szöveg** | A folyamatos valós idejű beszédet szövegbe helyezi egy egyéni modell használatával. |
 | [Speech Service API][sp-containers-tts] | F0, S0 | **Szövegfelolvasás** | Az írott szöveget természetesnek hangzó beszéddé alakítja. |
 | [Speech Service API][sp-containers-ctts] | F0, S0 | **Egyéni szöveg – beszéd** | Átalakítja a szöveget természetes hangú beszédre egyéni modell használatával. |
-| [Text Analytics][ta-containers-keyphrase] | F0, S | **Kulcsszókeresés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | A fő pontok azonosítására szolgáló legfontosabb kifejezések kibontása. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
-| [Text Analytics][ta-containers-language] | F0, S | **Nyelvfelismerés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | A legfeljebb 120 nyelv esetében azt észleli, hogy a bemeneti szöveg milyen nyelven íródott, és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
-| [Text Analytics][ta-containers-sentiment] | F0, S | **Hangulatelemzés v3** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | A nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az érzelmek elemzése ebben a verzióban az egyes dokumentumokhoz és mondatokhoz tartozó hangulati címkéket (például *pozitív* vagy *negatív*) adja vissza. |
+| [Szövegelemzés][ta-containers-keyphrase] | F0, S | **Kulcsszókeresés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | A fő pontok azonosítására szolgáló legfontosabb kifejezések kibontása. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
+| [Szövegelemzés][ta-containers-language] | F0, S | **Nyelvfelismerés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | A legfeljebb 120 nyelv esetében azt észleli, hogy a bemeneti szöveg milyen nyelven íródott, és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
+| [Szövegelemzés][ta-containers-sentiment] | F0, S | **Hangulatelemzés v3** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | A nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az érzelmek elemzése ebben a verzióban az egyes dokumentumokhoz és mondatokhoz tartozó hangulati címkéket (például *pozitív* vagy *negatív*) adja vissza. |
+| [Szövegelemzés][ta-containers-health] | F0, S | **Text Analytics állapota** | Orvosi adatok kinyerése és címkézése strukturálatlan klinikai szövegből. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -73,7 +74,7 @@ Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánla
 * Computer Vision
 * Face
 * LUIS
-* Text Analytics
+* Szövegelemzés
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 
@@ -99,7 +100,7 @@ Az egyes tárolók saját követelményeiket is magukban foglalhatják, beleért
 
 [!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Cognitive Services használható [tároló-receptek](containers/container-reuse-recipe.md) megismerése.
 
@@ -130,4 +131,5 @@ Telepítse és vizsgálja meg a tárolók által biztosított funkciókat az Azu
 [ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[ta-containers-health]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health
 [request-access]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u

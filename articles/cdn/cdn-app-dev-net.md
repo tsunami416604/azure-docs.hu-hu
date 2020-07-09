@@ -11,16 +11,16 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
-ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888422"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Nézzük meg a programunk alapszintű szerkezetét.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  A `Program` osztályban, de a `Main` metódus előtt adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a ** &lt;zárójeleket&gt;** is beleértve, szükség esetén a saját értékeivel.
+2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  A `Program` osztályban, de a metódus előtt `Main` adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a ** &lt; zárójeleket &gt; **is beleértve, szükség esetén a saját értékeivel.
 
     ```csharp
     //Tenant app constants
@@ -95,7 +95,7 @@ Nézzük meg a programunk alapszintű szerkezetét.
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. Cserélje le `Main` a metódust a következőképpen:
+4. Cserélje le a `Main` metódust a következőképpen:
 
    ```csharp
    static void Main(string[] args)
@@ -154,7 +154,7 @@ Nézzük meg a programunk alapszintű szerkezetét.
     }
     ```
 
-Most, hogy a program alapszintű szerkezete meg van írva, létre kell hoznia a `Main` metódus által hívott metódusokat.
+Most, hogy a program alapszintű szerkezete meg van írva, létre kell hoznia a metódus által hívott metódusokat `Main` .
 
 ## <a name="authentication"></a>Hitelesítés
 Ahhoz, hogy használhassa a Azure CDN felügyeleti könyvtárat, hitelesítenie kell az egyszerű szolgáltatásnevet, és be kell szereznie egy hitelesítési jogkivonatot.  Ez a metódus a ADAL használatával kéri le a tokent.
@@ -189,7 +189,7 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Ügyeljen arra, hogy `<redirect URI>` az alkalmazás Azure ad-ban való regisztrálása során megadott ÁTirányítási URI-t cserélje le.
+Ügyeljen arra, hogy `<redirect URI>` az alkalmazás Azure ad-ban való regisztrálása során megadott átirányítási URI-t cserélje le.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>CDN-profilok és-végpontok listázása
 Most már készen áll a CDN-műveletek végrehajtására.  A módszer első lépése az erőforráscsoport összes profiljának és végpontjának felsorolása, és ha az Állandókban megadott profilhoz és végponthoz tartozó nevek egyezést talál, akkor azt később is jegyezze fel, ezért nem próbálunk ismétlődéseket létrehozni.
@@ -271,7 +271,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> A fenti példa hozzárendeli a végpontot a *contoso* nevű forráshoz egy `www.contoso.com`állomásnévvel.  Ezt úgy kell módosítania, hogy a saját forrásához tartozó állomásnévre mutasson.
+> A fenti példa hozzárendeli a végpontot a *contoso* nevű forráshoz egy állomásnévvel `www.contoso.com` .  Ezt úgy kell módosítania, hogy a saját forrásához tartozó állomásnévre mutasson.
 >
 >
 
@@ -292,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> A fenti példában a karakterlánc `/*` azt jelöli, hogy a végpont elérési útjának gyökerében mindent törölni kívánok.  Ez egyenértékű az **összes törlés** ellenőrzésével a Azure Portal "Purge" párbeszédablakban. A `CreateCdnProfile` metódusban létrehoztam a profilt a Verizon-profilból **Azure CDN** a kóddal `Sku = new Sku(SkuName.StandardVerizon)`, így ez sikeres lesz.  A **Akamai-profiloktól való Azure CDN** azonban nem támogatja az **összes kiürítést**, így ha az oktatóanyaghoz Akamai-profilt használok, a törléshez konkrét elérési utakat is meg kell adni.
+> A fenti példában a karakterlánc azt `/*` jelöli, hogy a végpont elérési útjának gyökerében mindent törölni kívánok.  Ez egyenértékű az **összes törlés** ellenőrzésével a Azure Portal "Purge" párbeszédablakban. A `CreateCdnProfile` metódusban létrehoztam a profilt a **Verizon** -profilból Azure CDN a kóddal `Sku = new Sku(SkuName.StandardVerizon)` , így ez sikeres lesz.  A **Akamai-profiloktól való Azure CDN** azonban nem támogatja az **összes kiürítést**, így ha az oktatóanyaghoz Akamai-profilt használok, a törléshez konkrét elérési utakat is meg kell adni.
 >
 >
 

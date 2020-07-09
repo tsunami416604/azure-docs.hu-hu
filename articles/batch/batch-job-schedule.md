@@ -4,12 +4,12 @@ description: Feladatok kezelése feladatütemezés használatával.
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c75f635a937dcddd2c1c02cc717f96f1441efe81
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 89881808e48b3fbe44fbcd5352a15afc4eb427ef
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726638"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964345"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Feladatok ütemezése a hatékony végrehajtás érdekében
 
@@ -21,7 +21,7 @@ A feladatok ütemezésének előnye, hogy megadhat egy ütemezést a feladatok l
 
 ## <a name="use-the-portal-to-schedule-a-job"></a>Feladatok beütemezés a portál használatával
 
-   1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+   1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
 
    2. Válassza ki azt a Batch-fiókot, amelyben a feladatokat ütemezni szeretné.
 
@@ -67,9 +67,9 @@ Ha a **Mentés**gombra kattint, ha a bal oldali navigációs sávon a **feladato
 
 ## <a name="for-more-information"></a>További tudnivalók
 
-Ha az Azure CLI használatával szeretné kezelni a feladatokat, tekintse meg az [az batch Job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)című témakört.
+Ha az Azure CLI használatával szeretné kezelni a feladatokat, tekintse meg az [az batch Job-Schedule](/cli/azure/batch/job-schedule?view=azure-cli-latest)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feladat függőségeinek létrehozása olyan feladatok futtatásához, amelyek más feladatoktól függenek](batch-task-dependencies.md).
 

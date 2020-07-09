@@ -10,18 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 704f08bc4a41eb52789f8f28675332892d72a500
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710014"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Az Azure Virtual Network tárolóalapú hálózati adaptere beépülő moduljának üzembe helyezése
 
@@ -31,7 +30,7 @@ Az Azure Virtual Network tárolóalapú hálózati adapterének beépülő modul
 
 Az ACS-motor üzembe helyez egy Kubernetes-fürtöt az Azure Resource Manager-sablon használatával A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a [Microsoft Azure Container Service Engine – Fürtdefiníció](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md) című részt. Ez a beépülő modul az ACS-motor használatával létrehozott fürtök alapértelmezett hálózatkezelési beépülő modulja. A következő hálózatkonfigurációs beállítások fontosak a beépül modul konfigurálásakor:
 
-  | Beállítás                              | Leírás                                                                                                           |
+  | Beállítás                              | Description                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | A fő csomópontnak kiosztott IP-cím. Ez egy kötelező beállítás.                                     |
   | clusterSubnet a kubernetesConfig alatt | Annak a virtuális hálózati alhálózatnak a CIDR-je, amelyben a fürt üzembe lett helyezve, és amelyből az IP-címek ki lettek osztva a podok számára.   |
@@ -168,8 +167,8 @@ A CNI hálózati konfigurációs fájlja JSON formátumban van megadva. Alapért
 
 Töltse le a beépülő modult a [GitHubról](https://github.com/Azure/azure-container-networking/releases). Töltse le az Ön által használt platform legfrissebb verzióját:
 
-- **Linux**: [azure-vnet-cni-linux-amd64-\<verziószám\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
-- **Windows**: [azure-vnet-cni-windows-amd64-\<verziószám\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
+- **Linux**: [Azure-vnet-CNI-Linux-amd64- \<version no.\> . tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
+- **Windows**: [Azure-vnet-CNI-Windows-amd64- \<version no.\> . zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
 Másolja a [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) vagy [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) rendszerhez tartozó telepítési szkriptet a számítógépére. Mentse a szkriptet egy `scripts` könyvtárba a számítógépén. Linux esetén az `install-cni-plugin.sh`, Windows esetén pedig az `install-cni-plugin.ps1` nevet adja a fájlnak. A beépülő modul telepítéséhez futtassa a platformjának megfelelő szkriptet, és adja meg az Ön által használt beépülő modul verzióját. Például megadhatja a *v1.0.12-rc3* verziót:
 

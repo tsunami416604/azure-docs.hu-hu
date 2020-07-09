@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655794"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124459"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services 
 
@@ -46,7 +46,7 @@ Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítm�
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
 
-Hozzon létre egy szolgáltatási elvet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
+Hozzon létre egy egyszerű szolgáltatásnevet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
 
 - A bejelentkezési URL-címhez bármilyen URL-címet behelyezhet.  
 - Hozzon létre új ügyfél-titkos kulcsot ehhez az alkalmazáshoz.  

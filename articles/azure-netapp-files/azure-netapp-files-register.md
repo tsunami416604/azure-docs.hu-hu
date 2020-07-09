@@ -11,15 +11,14 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/06/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cdb96f08f78e22dd0e46070ab62bf9327e2d72a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274059"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956304"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 
@@ -30,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan regisztrálhat a Azure NetApp Files, hogy 
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Várólista-kérelem küldése a szolgáltatás eléréséhez
 
-1. A Azure NetApp Files szolgáltatás eléréséhez a [Azure NetApp Files várólista-beküldési lapon](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)keresztül küldje el a várólista-kérést. 
+1. A Azure NetApp Files szolgáltatás eléréséhez a [Azure NetApp Files várólista-beküldési lapon](https://aka.ms/azurenetappfiles)keresztül küldje el a várólista-kérést. 
 
     A várólista-regisztráció nem garantálja a szolgáltatás azonnali elérését. 
 
@@ -52,40 +51,52 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
 
 2. Ha több előfizetéssel rendelkezik az Azure-fiókjában, válassza ki a Azure NetApp Files engedélyezési listán szereplőt:
     
-        az account set --subscription <subscriptionId>
+    ```azurepowershell
+    az account set --subscription <subscriptionId>
+    ```
 
 3. A Azure Cloud Shell-konzolon adja meg a következő parancsot az előfizetés engedélyezési listájának ellenőrzéséhez:
     
-        az feature list | grep NetApp
+    ```azurepowershell
+    az feature list | grep NetApp
+    ```
 
    A parancs kimenete a következőképpen jelenik meg:
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
-       "name": "Microsoft.NetApp/ANFGA" 
+    ```output
+    "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+    "name": "Microsoft.NetApp/ANFGA" 
+    ```
        
    `<SubID>`az előfizetés-azonosítója.
 
-    Ha nem látja a szolgáltatás nevét `Microsoft.NetApp/ANFGA`, nem férhet hozzá a szolgáltatáshoz. Leállítás ebben a lépésben. A folytatás előtt kövesse a várólista-hozzáférés kérése a [szolgáltatáshoz](#waitlist) való hozzáféréshez szolgáltatás eléréséhez című témakör utasításait. 
+    Ha nem látja a szolgáltatás nevét `Microsoft.NetApp/ANFGA` , nem férhet hozzá a szolgáltatáshoz. Leállítás ebben a lépésben. A folytatás előtt kövesse a várólista-hozzáférés kérése a [szolgáltatáshoz](#waitlist) való hozzáféréshez szolgáltatás eléréséhez című témakör utasításait. 
 
 4. Az Azure Cloud Shell-konzolon adja meg a következő parancsot az Azure erőforrás-szolgáltató regisztrálásához: 
     
-        az provider register --namespace Microsoft.NetApp --wait
+    ```azurepowershell
+    az provider register --namespace Microsoft.NetApp --wait
+    ```
 
    A `--wait` paraméter arra utasítja a konzolt, hogy várjon, amíg a regisztráció befejeződik. A regisztrációs folyamat hosszabb időt is igénybe vehet.
 
 5. A Azure Cloud Shell-konzolon adja meg a következő parancsot az Azure-erőforrás-szolgáltató regisztrálásának ellenőrzéséhez: 
     
-        az provider show --namespace Microsoft.NetApp
+    ```azurepowershell
+    az provider show --namespace Microsoft.NetApp
+    ```
 
    A parancs kimenete a következőképpen jelenik meg:
    
-        {
-        "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
-        "namespace": "Microsoft.NetApp", 
-        "registrationState": "Registered", 
-        "resourceTypes": […. 
+    ```output
+    {
+     "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
+     "namespace": "Microsoft.NetApp", 
+     "registrationState": "Registered", 
+     "resourceTypes": […. 
+    ```
 
-   `<SubID>`az előfizetés-azonosítója.  A `state` paraméter értéke a `Registered`(z) értéket jelöli.
+   `<SubID>`az előfizetés-azonosítója.  A `state` paraméter értéke a (z) értéket jelöli `Registered` .
 
 6. A Azure Portal kattintson az **előfizetések** panelre.
 7. Az előfizetések panelen kattintson az előfizetés-AZONOSÍTÓra. 

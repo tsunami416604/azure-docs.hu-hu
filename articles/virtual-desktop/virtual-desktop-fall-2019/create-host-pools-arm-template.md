@@ -4,16 +4,16 @@ description: A Windows rendszerű virtuális asztalban lévő gazdagépek létre
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c24e212f901f0af38a24ab203070f637de860fc7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204761"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
 
@@ -46,7 +46,7 @@ Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az al�
 
 1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
 2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-3. Közvetlenül a "https://portal.azure.com/" után és a hashtag (#) előtt adja meg a (z) (@) jelet, amelyet a bérlői tartomány neve követ. Íme egy példa a használni kívánt formátumra: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`.
+3. Közvetlenül a " https://portal.azure.com/ " után és a hashtag (#) előtt adja meg a (z) (@) jelet, amelyet a bérlői tartomány neve követ. Íme egy példa a használni kívánt formátumra: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` .
 4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
 5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
 
@@ -70,7 +70,7 @@ Ezt követően adja hozzá a felhasználókat az asztali alkalmazás csoportjáh
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával Azure Active Directoryban ( user1@contoso.compéldául). Ha több felhasználót szeretne felvenni, minden felhasználóhoz futtatnia kell ezt a parancsmagot.
+A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával Azure Active Directoryban (például user1@contoso.com ). Ha több felhasználót szeretne felvenni, minden felhasználóhoz futtatnia kell ezt a parancsmagot.
 
 A lépések elvégzése után az asztali alkalmazás csoportba felvett felhasználók bejelentkezhetnek a Windows rendszerű virtuális asztalra a támogatott Távoli asztal ügyfelekkel, és megtekinthetik a munkamenet-asztal erőforrásait.
 

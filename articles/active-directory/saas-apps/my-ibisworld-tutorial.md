@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c2f74b8f8ed19fd73b67fdd0465cce81f89321
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c9ed9dd75f7119268c2d5971e05704e5a4eca4a0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736150"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798238"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az IBISWorld
 
@@ -96,14 +96,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a IBISWorld alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name (Név) |   |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | Részleg |  | felhasználó. részleg |
-    | language |  | User. preferredlanguage |
-    | telefon |  | User. telephoneNumber |
-    | cím |  | User. beosztás |
-    | userid |  | User. Alkalmazottkód |
-    | ország |  | felhasználó. ország |
+    | Name | Forrás attribútum|
+    | --------------- | --------- |
+    | Részleg | felhasználó. részleg |
+    | language | User. preferredlanguage |
+    | telefon | User. telephoneNumber |
+    | cím | User. beosztás |
+    | userid | User. Alkalmazottkód |
+    | ország | felhasználó. ország |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -116,9 +116,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -152,7 +152,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a saját IBISWorld csempére kattint, automatikusan be kell jelentkeznie arra a saját IBISWorld, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

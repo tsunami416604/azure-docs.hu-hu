@@ -3,15 +3,15 @@ title: Az Azure HPC gyorsítótár beállításainak konfigurálása
 description: Ez a cikk azt ismerteti, hogyan konfigurálhat további beállításokat a gyorsítótárhoz, például az MTU-t és a nem root-fallabda-t, valamint az expressz Pillanatképek elérését az Azure Blob Storage-célokból.
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505307"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 
@@ -22,6 +22,9 @@ Ez a cikk azt is ismerteti, hogyan használható az Azure Blob Storage-célok pi
 A beállítások megjelenítéséhez nyissa meg a gyorsítótár **konfigurációs** lapját a Azure Portal.
 
 ![képernyőkép a Azure Portal konfigurációs oldaláról](media/configuration.png)
+
+> [!TIP]
+> Az [Azure HPC cache-gyorsítótárának kezelése videó](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) megjeleníti a konfigurációs oldalt és annak beállításait.
 
 ## <a name="adjust-mtu-value"></a>MTU értékének módosítása
 <!-- linked from troubleshoot-nas article -->
@@ -48,7 +51,7 @@ Ha a root squash engedélyezve van, a rendszer automatikusan leképezi a felhasz
 
 Ha a root squash le van tiltva, a rendszer az ügyfél gyökérszintű felhasználójának (UID 0) kérelmét átadja egy háttérként szolgáló NFS Storage rendszernek. Ez a konfiguráció a nem megfelelő fájlok elérését is lehetővé teheti.
 
-A gyorsítótárban lévő legfelső szintű squash beállításával kompenzálhatja a ``no_root_squash`` szükséges beállítást a tárolási CÉLKÉNT használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prereqs.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
+A gyorsítótárban lévő legfelső szintű squash beállításával kompenzálhatja a szükséges ``no_root_squash`` beállítást a tárolási célként használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prereqs.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
 
 Az alapértelmezett beállítás az **Igen**. (A 2020 áprilisa előtt létrehozott gyorsítótárak esetében az alapértelmezett beállítás **nem**.)
 
@@ -73,4 +76,4 @@ Az Azure HPC cache napi, heti és havi pillanatképeket tárol, amíg újakat ne
 * legfeljebb 8 heti pillanatkép
 * legfeljebb 3 havi pillanatkép
 
-A pillanatképeket a blob `.snapshot` Storage-tároló névterében lévő könyvtárból érheti el.
+A pillanatképeket a `.snapshot` blob Storage-tároló névterében lévő könyvtárból érheti el.

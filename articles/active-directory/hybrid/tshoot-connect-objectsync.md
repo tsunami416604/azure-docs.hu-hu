@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356202"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektumszinkronizálás hibaelhárítása Azure AD Connect-szinkronizálással
 Ez a cikk az objektumok szinkronizálásával kapcsolatos hibák elhárításához nyújt lépéseket a hibaelhárítási feladat használatával. Ha szeretné megtudni, hogyan működik a hibaelhárítás Azure Active Directory (Azure AD) kapcsolódásban, tekintse meg [ezt a rövid videót](https://aka.ms/AADCTSVideo).
@@ -32,7 +32,7 @@ Az 1.1.749.0-s vagy újabb verziójú Azure AD Connect üzemelő példánya eset
 A hibaelhárítási feladat a varázslóban való futtatásához hajtsa végre a következő lépéseket:
 
 1.  Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a Futtatás rendszergazdaként beállítással.
-2.  Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
+2.  Futtassa a vagy a parancsot `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted` .
 3.  Indítsa el a Azure AD Connect varázslót.
 4.  Navigáljon a további feladatok lapra, válassza a hibakeresés lehetőséget, majd kattintson a Tovább gombra.
 5.  A hibaelhárítás lapon kattintson a Launch (indítás) elemre a PowerShell hibaelhárítási menüjének elindításához.
@@ -43,7 +43,7 @@ A hibaelhárítási feladat a varázslóban való futtatásához hajtsa végre a
 A hibaelhárítási feladat a következő bemeneti paramétereket igényli:
 1.  **Objektum megkülönböztető neve** – ez a hibaelhárítást igénylő objektum megkülönböztető neve
 2.  **Ad-összekötő neve** – ez annak az ad-erdőnek a neve, ahol a fenti objektum található.
-3.  Azure AD-bérlő globális rendszergazdai hitelesítő adatainak ![globális rendszergazdai hitelesítő adatai](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Azure AD-bérlő globális rendszergazdai hitelesítő adatainak ![ globális rendszergazdai hitelesítő adatai](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>A hibaelhárítási feladat eredményeinek megismerése
 A hibaelhárítási feladat a következő ellenőrzéseket hajtja végre:

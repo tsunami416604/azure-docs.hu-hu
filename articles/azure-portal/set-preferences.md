@@ -6,15 +6,14 @@ keywords: beállítások, időtúllépés, nyelv, regionális
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763958"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Az Azure Portal-beállítások megadása
 
@@ -79,7 +78,7 @@ A kiválasztott téma befolyásolja a Azure Portalban megjelenő háttér-és be
 
    ![A Kiemelt témákkal rendelkező Azure Portal beállításokat bemutató képernyőkép](./media/set-preferences/theme.png)
 
-Ehelyett kiválaszthatja a nagy kontrasztú témák egyikét. A kontrasztos beállítások a Azure Portal könnyebben olvashatók a gyengén látó felhasználók számára, és felülbírálják az összes többi téma kijelölését. További információt a [Kontrasztos megjelenítés bekapcsolása vagy a téma módosítása](azure-portal-change-theme-high-contrast.md)című témakörben talál.
+Ehelyett kiválaszthatja a nagy kontrasztú témák egyikét. A kontrasztos beállítások megadásával a Azure Portal könnyebben olvashatók azok számára, akik a vizualizációk és az összes többi téma kijelölését felülbírálják. További információt a [Kontrasztos megjelenítés bekapcsolása vagy a téma módosítása](azure-portal-change-theme-high-contrast.md)című témakörben talál.
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Előugró értesítések engedélyezése vagy letiltása
 

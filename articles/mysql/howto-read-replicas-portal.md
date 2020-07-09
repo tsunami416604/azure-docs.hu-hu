@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan állíthatja be és kezelheti az olvasási repl
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0aab6957f6078a59aafd0c9967b0d88e97e50cda
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: a3342a626a104dc5eb77ef4b01146a8943dae2d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849433"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108073"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a Azure Portal használatával
 
@@ -25,6 +25,9 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási repli
 > Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
 
 ## <a name="create-a-read-replica"></a>Olvasási replika létrehozása
+
+> [!IMPORTANT]
+> Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
 
 Az olvasási replika kiszolgáló a következő lépések segítségével hozható létre:
 
@@ -136,6 +139,6 @@ A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lé
 
    ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

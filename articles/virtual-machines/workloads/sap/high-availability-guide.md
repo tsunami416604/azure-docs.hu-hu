@@ -16,10 +16,9 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 742e1b54499e51fc791a659baaf7072272ef43a6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021415"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára
@@ -1260,7 +1259,7 @@ A .NET-keretrendszer 3,5 kétféleképpen adható hozzá:
 
   _**40. ábra:** Telepítési folyamatjelző sáv a .NET-keretrendszer 3,5-es verziójának a szerepkörök és szolgáltatások hozzáadása varázslóval történő telepítésekor_
 
-- Használja a DISM. exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Egy rendszergazda jogú parancssorba írja be a következőt:
+- Használja a dism.exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Egy rendszergazda jogú parancssorba írja be a következőt:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

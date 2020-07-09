@@ -1,32 +1,21 @@
 ---
 title: Azure Service Bus – üzenetek tallózása
 description: A Tallózás és betekintés Service Bus üzenetek lehetővé teszik, hogy egy Azure Service Bus ügyfél enumerálja az üzenetsor vagy előfizetés összes üzenetét.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77539365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341242"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
 
 Az üzenetek böngészése vagy betekintése lehetővé teszi, hogy egy Service Bus ügyfél enumerálja az összes várólistán vagy előfizetésen belüli üzenetet, jellemzően diagnosztikai és hibakeresési célokra.
 
-A betekintés művelet a várólista vagy az előfizetési üzenet naplójában található összes üzenetet visszaküldi, nem csak az azonnali `Receive()` beszerzéshez `OnMessage()` vagy a hurokhoz rendelkezésre álló üzeneteket. Az `State` egyes üzenetek tulajdonsága jelzi, hogy az üzenet aktív-e (elérhető), [késleltetve](message-deferral.md)vagy [ütemezve](message-sequencing.md).
+A betekintés művelet a várólista vagy az előfizetési üzenet naplójában található összes üzenetet visszaküldi, nem csak az azonnali beszerzéshez `Receive()` vagy a hurokhoz rendelkezésre álló üzeneteket `OnMessage()` . Az `State` egyes üzenetek tulajdonsága jelzi, hogy az üzenet aktív-e (elérhető), [késleltetve](message-deferral.md)vagy [ütemezve](message-sequencing.md).
 
-A felhasznált és a lejárt üzeneteket egy aszinkron "Garbage Collection" futtatja, és nem feltétlenül pontosan az üzenetek lejárata után, `Peek` ezért előfordulhat, hogy a már lejárt üzeneteket is visszaküldi, és a rendszer a várólistára vagy előfizetésre vonatkozóan a fogadási művelet következő meghívásakor eltávolítja vagy kézbesíti azt.
+A felhasznált és a lejárt üzeneteket egy aszinkron "Garbage Collection" futtatja, és nem feltétlenül pontosan az üzenetek lejárata után, ezért `Peek` Előfordulhat, hogy a már lejárt üzeneteket is visszaküldi, és a rendszer a várólistára vagy előfizetésre vonatkozóan a fogadási művelet következő meghívásakor eltávolítja vagy kézbesíti azt.
 
 Ez különösen fontos a késleltetett üzenetek várólistából történő helyreállítására tett kísérlet során. Egy üzenet, amely esetében a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) Instant átadása már nem jogosult a rendszeres lekérésre bármilyen más módon, még akkor is, ha azt a betekintés is visszaadja. Az üzenetek visszaküldése szándékosan történik, mivel a betekintés egy diagnosztikai eszköz, amely a napló aktuális állapotát tükrözi.
 

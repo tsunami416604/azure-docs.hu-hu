@@ -3,15 +3,15 @@ title: Azure Cosmos DB erőforrások kezelése az Azure CLI-vel
 description: Az Azure CLI használatával kezelheti Azure Cosmos DB-fiókját, adatbázisát és tárolóit.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/13/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3f86468bcafe3d7ce78827aba761bb4e1bf920fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe348c2bbd901934c6365be6efefafb44ef8d875
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262395"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-erőforrások kezelése az Azure CLI-vel
 
@@ -19,18 +19,33 @@ Az alábbi útmutató az Azure Cosmos DB-fiókok, -adatbázisok és -tárolók f
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.6.0 vagy újabb verziójának kell futnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
+## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
+
+Az alábbi szakaszban bemutatjuk, hogyan kezelheti az Azure Cosmos-fiókot, beleértve a következőket:
+
+* [Azure Cosmos-fiók létrehozása](#create-an-azure-cosmos-db-account)
+* [Régiók hozzáadása vagy eltávolítása](#add-or-remove-regions)
+* [Többrégiós írások engedélyezése](#enable-multiple-write-regions)
+* [Regionális feladatátvételi prioritás beállítása](#set-failover-priority)
+* [Automatikus feladatátvétel engedélyezése](#enable-automatic-failover)
+* [Manuális feladatátvétel indítása](#trigger-manual-failover)
+* [Fiók kulcsainak listázása](#list-account-keys)
+* [Csak olvasható fiókok kulcsainak listázása](#list-read-only-account-keys)
+* [Kapcsolatok karakterláncok listázása](#list-connection-strings)
+* [Fiók kulcsának újralétrehozása](#regenerate-account-key)
+
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
 Hozzon létre egy Azure Cosmos DB fiókot SQL API-val, munkamenet-konzisztencia az USA 2. nyugati régiójában és az USA 2. keleti régiójában:
 
 > [!IMPORTANT]
-> Az Azure Cosmos-fiók nevének kisbetűnek kell lennie, és 31 karakternél rövidebbnek kell lennie.
+> Az Azure Cosmos-fiók nevének kisbetűnek kell lennie, és 44 karakternél rövidebbnek kell lennie.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
-accountName='mycosmosaccount' #needs to be lower case and less than 31 characters
+accountName='mycosmosaccount' #needs to be lower case and less than 44 characters
 
 az cosmosdb create \
     -n $accountName \
@@ -40,18 +55,18 @@ az cosmosdb create \
     --locations regionName='East US 2' failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="add-or-remove-regions"></a>Régiók hozzáadása vagy eltávolítása
+### <a name="add-or-remove-regions"></a>Régiók hozzáadása vagy eltávolítása
 
 Hozzon létre egy Azure Cosmos-fiókot két régióval, adjon hozzá egy régiót, és távolítson el egy régiót.
 
 > [!NOTE]
-> Nem lehet egyszerre hozzáadni vagy eltávolítani a `locations` régiókat, és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani, mint a fiók erőforrásának egyéb módosításait.
+> Nem lehet egyszerre hozzáadni vagy eltávolítani a régiókat `locations` , és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani, mint a fiók erőforrásának egyéb módosításait.
 > [!NOTE]
 > Ezzel a paranccsal hozzáadhat és eltávolíthat régiókat, de nem teszi lehetővé a feladatátvételi prioritások módosítását, illetve manuális feladatátvételt is indíthat. Lásd: a [feladatátvételi prioritás beállítása](#set-failover-priority) és a [manuális feladatátvétel elindítása](#trigger-manual-failover).
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='mycosmosaccount' # must be lower case and <31 characters
+accountName='mycosmosaccount'
 
 # Create an account with 2 regions
 az cosmosdb create --name $accountName --resource-group $resourceGroupName \
@@ -70,7 +85,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
     --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>Több írási régió engedélyezése
+### <a name="enable-multiple-write-regions"></a>Több írási régió engedélyezése
 
 Több főkiszolgáló engedélyezése Cosmos-fiókhoz
 
@@ -85,7 +100,7 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>Feladatátvételi prioritás beállítása
+### <a name="set-failover-priority"></a>Feladatátvételi prioritás beállítása
 
 Az automatikus feladatátvételhez konfigurált Azure Cosmos-fiók feladatátvételi prioritásának beállítása
 
@@ -99,10 +114,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Make South Central US the next region to fail over to instead of East US 2
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'West US 2'=0 'South Central US'=1 'East US 2'=2
+    --failover-policies 'West US 2=0' 'South Central US=1' 'East US 2=2'
 ```
 
-## <a name="enable-automatic-failover"></a>Automatikus feladatátvétel engedélyezése
+### <a name="enable-automatic-failover"></a>Automatikus feladatátvétel engedélyezése
 
 ```azurecli-interactive
 # Enable automatic failover on an existing account
@@ -115,13 +130,13 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-automatic-failover true
 ```
 
-## <a name="trigger-manual-failover"></a>Manuális feladatátvétel indítása
+### <a name="trigger-manual-failover"></a>Manuális feladatátvétel indítása
 
 > [!CAUTION]
 > Ha a Priority = 0 prioritású régiót módosítja, manuális feladatátvételt indít egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
 
 ```azurecli-interactive
-# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+# Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -130,10 +145,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Trigger a manual failover to promote East US 2 as new write region
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
+    --failover-policies 'East US 2=0' 'South Central US=1' 'West US 2=2'
 ```
 
-## <a name="list-all-account-keys"></a><a id="list-account-keys"></a>Az összes fiók kulcsainak listázása
+### <a name="list-all-account-keys"></a><a id="list-account-keys"></a>Az összes fiók kulcsainak listázása
 
 Egy Cosmos-fiókhoz tartozó összes kulcs beolvasása.
 
@@ -147,7 +162,7 @@ az cosmosdb keys list \
    -g $resourceGroupName
 ```
 
-## <a name="list-read-only-account-keys"></a>Csak olvasható fiókok kulcsainak listázása
+### <a name="list-read-only-account-keys"></a>Csak olvasható fiókok kulcsainak listázása
 
 Egy Cosmos-fiók írásvédett kulcsainak beolvasása.
 
@@ -162,7 +177,7 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-## <a name="list-connection-strings"></a>Kapcsolatok karakterláncok listázása
+### <a name="list-connection-strings"></a>Kapcsolatok karakterláncok listázása
 
 A Cosmos-fiókhoz tartozó kapcsolatok karakterláncának beolvasása.
 
@@ -177,7 +192,7 @@ az cosmosdb keys list \
     --type connection-strings
 ```
 
-## <a name="regenerate-account-key"></a>Fiók kulcsának újralétrehozása
+### <a name="regenerate-account-key"></a>Fiók kulcsának újralétrehozása
 
 Új kulcs újralétrehozása Cosmos-fiókhoz.
 
@@ -190,7 +205,16 @@ az cosmosdb keys regenerate \
     --key-kind secondary
 ```
 
-## <a name="create-a-database"></a>Adatbázis létrehozása
+## <a name="azure-cosmos-db-database"></a>Adatbázis Azure Cosmos DB
+
+A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbázist, beleértve a következőket:
+
+* [Adatbázis létrehozása](#create-a-database)
+* [Megosztott átviteli sebességgel rendelkező adatbázis létrehozása](#create-a-database-with-shared-throughput)
+* [Adatbázis átviteli sebességének módosítása](#change-database-throughput)
+* [Egy adatbázis zárolásának kezelése](#manage-lock-on-a-database)
+
+### <a name="create-a-database"></a>Adatbázis létrehozása
 
 Hozzon létre egy Cosmos-adatbázist.
 
@@ -205,7 +229,7 @@ az cosmosdb sql database create \
     -n $databaseName
 ```
 
-## <a name="create-a-database-with-shared-throughput"></a>Megosztott átviteli sebességgel rendelkező adatbázis létrehozása
+### <a name="create-a-database-with-shared-throughput"></a>Megosztott átviteli sebességgel rendelkező adatbázis létrehozása
 
 Hozzon létre egy Cosmos-adatbázist közös átviteli sebességgel.
 
@@ -222,7 +246,7 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>Adatbázis átviteli sebességének módosítása
+### <a name="change-database-throughput"></a>Adatbázis átviteli sebességének módosítása
 
 Egy Cosmos-adatbázis átviteli sebességének növelése 1000 RU/s használatával.
 
@@ -248,7 +272,48 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-## <a name="create-a-container"></a>Tároló létrehozása
+### <a name="manage-lock-on-a-database"></a>Adatbázis zárolásának kezelése
+
+Helyezzen törlési zárolást egy adatbázisra. Ha többet szeretne megtudni a lásd: az SDK-k [módosításának megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+databaseLockName="$databaseName-Lock"
+
+# Create a delete lock on database
+az lock create --name $databaseLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/sqlDatabases \
+    --lock-type $lockType \
+    --parent $databaseParent \
+    --resource $databaseName
+
+# Delete lock on database
+lockid=$(az lock show --name $databaseLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/sqlDatabases \
+        --resource $databaseName \
+        --parent $databaseParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB tároló
+
+Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, beleértve a következőket:
+
+* [Tároló létrehozása](#create-a-container)
+* [Hozzon létre egy olyan tárolót, amelynek ÉLETTARTAMa engedélyezve van](#create-a-container-with-ttl)
+* [Egyéni index-házirenddel rendelkező tároló létrehozása](#create-a-container-with-a-custom-index-policy)
+* [Tároló átviteli sebességének módosítása](#change-container-throughput)
+* [Tárolók zárolásának kezelése](#manage-lock-on-a-container)
+
+### <a name="create-a-container"></a>Tároló létrehozása
 
 Hozzon létre egy Cosmos-tárolót az alapértelmezett index-házirenddel, a partíciós kulccsal és a 400-es RU/s-val.
 
@@ -267,7 +332,7 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-## <a name="create-a-container-with-ttl"></a>Hozzon létre egy tárolót az ÉLETTARTAMmal
+### <a name="create-a-container-with-ttl"></a>Hozzon létre egy tárolót az ÉLETTARTAMmal
 
 Hozzon létre egy Cosmos-tárolót, amelyen engedélyezve van az élettartam.
 
@@ -286,7 +351,7 @@ az cosmosdb sql container update \
     --ttl=86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>Egyéni index-házirenddel rendelkező tároló létrehozása
+### <a name="create-a-container-with-a-custom-index-policy"></a>Egyéni index-házirenddel rendelkező tároló létrehozása
 
 Hozzon létre egy Cosmos-tárolót egyéni index-házirenddel, térbeli indexszel, összetett indexszel, a 400-es partíciós kulccsal és RU/s-vel.
 
@@ -338,7 +403,7 @@ az cosmosdb sql container create \
 rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>Tároló átviteli sebességének módosítása
+### <a name="change-container-throughput"></a>Tároló átviteli sebességének módosítása
 
 Növelje egy Cosmos-tároló átviteli sebességét 1000 RU/s használatával.
 
@@ -364,6 +429,39 @@ az cosmosdb sql container throughput update \
     -d $databaseName \
     -n $containerName \
     --throughput $newRU
+```
+
+### <a name="manage-lock-on-a-container"></a>Tároló zárolásának kezelése
+
+Helyezzen törlési zárolást egy tárolón. Ha többet szeretne megtudni a lásd: az SDK-k [módosításának megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+containerName='myContainer'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+containerParent="databaseAccounts/$accountName/sqlDatabases/$databaseName"
+containerLockName="$containerName-Lock"
+
+# Create a delete lock on container
+az lock create --name $containerLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/containers \
+    --lock-type $lockType \
+    --parent $containerParent \
+    --resource $containerName
+
+# Delete lock on container
+lockid=$(az lock show --name $containerLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/containers \
+        --resource-name $containerName \
+        --parent $containerParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
 ```
 
 ## <a name="next-steps"></a>További lépések

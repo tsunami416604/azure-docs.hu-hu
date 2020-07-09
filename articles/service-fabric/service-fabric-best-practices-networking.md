@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551794"
 ---
 # <a name="networking"></a>Hálózat
@@ -51,7 +50,7 @@ Az infrastruktúra horizontális felskálázása szükséges a gyorsított hál�
 
 * Service Fabric fürtöket meglévő virtuális hálózatba lehet telepíteni a [Service Fabric hálózati mintákban](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)leírt lépések végrehajtásával.
 
-* A hálózati biztonsági csoportok (NSG-EK) olyan csomópont-típusokhoz ajánlottak, amelyek korlátozzák a bejövő és a kimenő forgalmat a fürtön. Győződjön meg arról, hogy a szükséges portok meg vannak nyitva a NSG. Példa: ![Service Fabric NSG-szabályok][NSGSetup]
+* A hálózati biztonsági csoportok (NSG-EK) olyan csomópont-típusokhoz ajánlottak, amelyek korlátozzák a bejövő és a kimenő forgalmat a fürtön. Győződjön meg arról, hogy a szükséges portok meg vannak nyitva a NSG. Példa: ![ Service FABRIC NSG-szabályok][NSGSetup]
 
 * A Service Fabric rendszerszolgáltatásokat tartalmazó elsődleges csomópont típusát nem kell a külső terheléselosztó használatával kitenni, és [belső](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer) terheléselosztó is elérhetővé teheti.
 

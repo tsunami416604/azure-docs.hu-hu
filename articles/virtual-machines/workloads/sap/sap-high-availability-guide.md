@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a881f1cbc93d4774e25833a5c57b4727cc2e4be
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557313"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
 
@@ -238,7 +237,7 @@ A Windows Server feladatátvételi fürtszolgáltatás használatakor négy kvó
 * **A csomópont és a lemez többsége**. Minden csomópont és egy kijelölt lemez (a tanúsító lemez) a fürt tárterületén szavazhat, ha elérhetők és a kommunikációban is. A fürt csak a szavazatok többségével működik, azaz a szavazatok több mint fele. Ez a mód egy fürtözött környezetben is működik, ahol páros számú csomópont van. Ha a csomópontok fele és a lemez online állapotban van, a fürt állapota Kifogástalan marad.
 * **A csomópont-és a fájlmegosztás többsége**. Minden csomópont és egy kijelölt fájlmegosztás (egy tanúsító fájlmegosztás), amelyet a rendszergazda hoz létre, szavazhat, függetlenül attól, hogy elérhetők-e a csomópontok és a fájlmegosztás. A fürt csak a szavazatok többségével működik, azaz a szavazatok több mint fele. Ez a mód egy fürtözött környezetben is működik, ahol páros számú csomópont van. Ez a csomópont és a lemez többségi módjához hasonló, de tanúsító lemez helyett egy tanúsító fájlmegosztást használ. Ez a mód könnyen megvalósítható, de ha maga a fájlmegosztás nem túl hosszú, akkor előfordulhat, hogy egy meghibásodási pont lehet.
 * **Nincs többség: csak lemez**. A fürt kvórumot tartalmaz, ha az egyik csomópont elérhető, és a fürt egy adott lemezével kommunikál. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek a lemezzel is kommunikálnak. Azt javasoljuk, hogy ne használja ezt a módot.
- 
+
 
 ## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Helyszíni Windows Server feladatátvételi fürtszolgáltatás
 Az 1. ábra két csomópontból álló fürtöt mutat be. Ha a csomópontok közötti hálózati kapcsolat meghiúsul, és mindkét csomópont megmarad és fut, a kvórum lemez vagy fájlmegosztás határozza meg, hogy melyik csomópont fogja továbbra is biztosítani a fürt alkalmazásait és szolgáltatásait. A kvórum lemezének vagy fájlmegosztás hozzáférését biztosító csomópont a csomópont, amely biztosítja a szolgáltatások folytatását.
@@ -377,7 +376,7 @@ _**9. ábra:** SAP magas rendelkezésre állású építészeti sablon 2, dedik�
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>Üzembe helyezési forgatókönyv 3. építészeti sablon használatával
 
-A 10. ábrán egy példa látható egy SAP NetWeaver magas rendelkezésre állású architektúrára az Azure-ban **két** SAP &lt;-&gt;rendszer számára, a SID1 &lt;&gt; és a SID2. Ez a forgatókönyv a következőképpen van beállítva:
+A 10. ábrán egy példa látható egy SAP NetWeaver magas rendelkezésre állású architektúrára az Azure-ban **két** SAP-rendszer számára, a &lt; SID1 &gt; és a &lt; SID2 &gt; . Ez a forgatókönyv a következőképpen van beállítva:
 
 - A rendszer egy dedikált fürtöt **használ az SAP** ASCS/SCS SID1-példányhoz *és* az SAP ASCS/SCS SID2-példányhoz (egy fürthöz).
 - A rendszer egy dedikált fürtöt használ az adatbázis-kezelő SID1, és egy másik dedikált fürtöt használ az adatbázis-kezelői SID2 (két fürt).
@@ -626,7 +625,7 @@ A DNS-kiszolgálón manuálisan is létrehozhatja a másik két virtuális gazda
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statikus IP-címek beállítása az SAP-beli virtuális gépekhez
 Miután telepítette a virtuális gépeket a fürtben való használatra, statikus IP-címeket kell megadnia az összes virtuális géphez. Ezt megteheti az Azure Virtual Network konfigurációjában, nem pedig a vendég operációs rendszeren.
 
-1. A Azure Portal válassza az **erőforráscsoport** > **hálózati kártya** > **beállításai** > **IP-cím**elemet.
+1. A Azure Portal válassza az **erőforráscsoport**  >  **hálózati kártya**  >  **beállításai**  >  **IP-cím**elemet.
 2. Az **IP-címek** panel **hozzárendelés**területén válassza a **statikus**lehetőséget. Az **IP-cím** mezőbe írja be a használni kívánt IP-címet.
 
    > [!NOTE]
@@ -737,7 +736,7 @@ _**15. ábra:** Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azur
 
 Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni, akkor a portok nevét és értékeit az alapértelmezett értékekkel kell módosítania.
 
-1. A Azure Portal válassza ** <a *SID*>-LB-ASCs terheléselosztó** > terheléselosztási**szabályokat**.
+1. A Azure Portal válassza a ** < *SID*>-LB-ASCs terheléselosztó**terheléselosztási  >  **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
    * Name
@@ -766,7 +765,7 @@ A Azure Load Balancer belső terheléselosztó zárja be a kapcsolatokat, ha a k
 
 Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, először adja hozzá ezeket a Windows-beállításjegyzékbeli bejegyzéseket az SAP ASCS/SCS-hez készült Windows-fürtcsomópontokon:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Elérési út | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
@@ -777,7 +776,7 @@ _**3. táblázat:** Az első TCP/IP-paraméter módosítása_
 
 Ezt követően adja hozzá ezt a Windows-beállításjegyzékbeli bejegyzést a Windows-fürtcsomópontokon az SAP ASCS/SCS-hez:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Elérési út | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
@@ -940,7 +939,7 @@ A fürt fájlmegosztás-megosztásának konfigurálása a következő feladatoka
 
    _**36. ábra:** Tanúsító fájlmegosztás kiválasztása_
 
-4. Adja meg a fájlmegosztás UNC elérési útját (példánkban: \\domcontr-0\FSW). Ha meg szeretné tekinteni az elvégezhető módosítások listáját, válassza a **tovább**lehetőséget.
+4. Adja meg a fájlmegosztás UNC elérési útját (példánkban: \\ domcontr-0\FSW). Ha meg szeretné tekinteni az elvégezhető módosítások listáját, válassza a **tovább**lehetőséget.
 
    ![37. ábra: a tanúsító megosztás fájlmegosztási helyének megadása][sap-ha-guide-figure-3026]
 
@@ -983,7 +982,7 @@ A .NET-keretrendszer 3,5 kétféleképpen adható hozzá:
 
   _**40. ábra:** Telepítési folyamatjelző sáv a .NET-keretrendszer 3,5-es verziójának a szerepkörök és szolgáltatások hozzáadása varázslóval történő telepítésekor_
 
-- Használja a DISM. exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Egy rendszergazda jogú parancssorba írja be a következőt:
+- Használja a dism.exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Egy rendszergazda jogú parancssorba írja be a következőt:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
@@ -1132,7 +1131,7 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
 1. A Windows DNS-kezelőben hozzon létre egy DNS-bejegyzést a ASCS/SCS-példány virtuális állomásnevét.
 
    > [!IMPORTANT]
-   > A ASCS/SCS-példány virtuális állomásnevét hozzárendelt IP-címnek meg kell egyeznie a Azure Load Balancerhoz rendelt IP-címmel (**<*SID*>-LB-ASCS**).  
+   > A ASCS/SCS-példány virtuális állomásnevét hozzárendelt IP-címnek meg kell egyeznie a Azure Load Balancerhoz rendelt IP-címmel (** < *SID*>-LB-ASCS**).  
    >
    >
 
@@ -1142,7 +1141,7 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
 
    _**56. ábra:** Adja meg a DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális neve és TCP/IP-címe számára._
 
-2. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő** > **tartomány**lehetőséget.
+2. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány**lehetőséget.
 
    ![57. ábra: új virtuális név és TCP/IP-cím az SAP ASCS/SCS-fürt konfigurációjához][sap-ha-guide-figure-3047]
 
@@ -1168,7 +1167,7 @@ A következő néhány feladat nem szerepel a szabványos SAP-telepítési dokum
 
 #### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Az ASCS/SCS-példány SAP-profiljának módosítása
 
-Új profil paramétert kell hozzáadnia. A profil paraméter megakadályozza a kapcsolódást az SAP-munkafolyamatok és a sorba helyezni-kiszolgáló között, ha túl sokáig tétlenek. Említettük a probléma forgatókönyvét a [beállításjegyzék-bejegyzések hozzáadása az SAP ASCS/SCS-példányon mindkét fürtcsomóponton][sap-ha-guide-8.11]. Ebben a szakaszban két módosítást is bevezetünk néhány Alapszintű TCP/IP-kapcsolódási paraméterre. Egy második lépésben be kell állítania a sorba helyezni-kiszolgálót egy `keep_alive` jel küldéséhez, hogy a kapcsolatok ne elérjenek az Azure belső terheléselosztó üresjárati küszöbértékét.
+Új profil paramétert kell hozzáadnia. A profil paraméter megakadályozza a kapcsolódást az SAP-munkafolyamatok és a sorba helyezni-kiszolgáló között, ha túl sokáig tétlenek. Említettük a probléma forgatókönyvét a [beállításjegyzék-bejegyzések hozzáadása az SAP ASCS/SCS-példányon mindkét fürtcsomóponton][sap-ha-guide-8.11]. Ebben a szakaszban két módosítást is bevezetünk néhány Alapszintű TCP/IP-kapcsolódási paraméterre. Egy második lépésben be kell állítania a sorba helyezni-kiszolgálót egy jel küldéséhez, `keep_alive` hogy a kapcsolatok ne elérjenek az Azure belső terheléselosztó üresjárati küszöbértékét.
 
 Az ASCS/SCS-példány SAP-profiljának módosítása:
 
@@ -1292,7 +1291,7 @@ A fürt csomópontjain egy Windows tűzfal mintavételi portot kell megnyitni. A
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-A **ProbePort** értéke **62000**. Most már elérheti a fájlmegosztás ** \\\ascsha-clsap\sapmnt** más gazdagépekről, például a következőről: **ascsha-adattervezők**.
+A **ProbePort** értéke **62000**. Most már elérheti a fájlmegosztás ** \\ \ascsha-clsap\sapmnt** más gazdagépekről, például a következőről: **ascsha-adattervezők**.
 
 ### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Az adatbázis-példány telepítése
 
@@ -1316,7 +1315,7 @@ Telepítse az elsődleges alkalmazáskiszolgáló (PAS) példányát <*SID*>-di-
 
 ### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>Az SAP további alkalmazáskiszolgáló telepítése
 
-Telepítsen egy SAP további alkalmazáskiszolgáló (AAS) szolgáltatást minden olyan virtuális gépre, amelyet az SAP Application Server-példány üzemeltetésére jelölt ki. Például <*sid*>-di-1 <*SID*>-di-&lt;n.&gt;
+Telepítsen egy SAP további alkalmazáskiszolgáló (AAS) szolgáltatást minden olyan virtuális gépre, amelyet az SAP Application Server-példány üzemeltetésére jelölt ki. Például <*sid*>-di-1 <*SID*>-di- &lt; n &gt; .
 
 > [!NOTE]
 > Ez befejezi a magas rendelkezésre állású SAP NetWeaver rendszer telepítését. Ezután folytassa a feladatátvételi teszttel.

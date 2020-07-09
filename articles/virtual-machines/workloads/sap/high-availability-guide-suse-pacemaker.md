@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368250"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 
@@ -34,9 +34,9 @@ ms.locfileid: "83800190"
 
 Az Azure-ban két lehetőség van egy pacemaker-fürt beállítására. Használhat egy kerítési ügynököt is, amely gondoskodik a meghibásodott csomópontok Azure API-kon keresztüli újraindításáról, vagy használhat egy SBD-eszközt.
 
-A SBD-eszközhöz legalább egy további virtuális gép szükséges, amely iSCSI-célkiszolgálóként működik, és SBD-eszközt biztosít. Ezek az iSCSI-célkiszolgáló azonban más pacemaker-fürtökkel is megoszthatók. A SBD-eszközök használatának előnye gyorsabb feladatátvételi idő, és ha helyszíni SBD-eszközöket használ, nem szükséges módosítania a pacemaker-fürt működését. Akár három SBD eszközt is használhat a pacemaker-fürthöz, hogy egy SBD-eszköz elérhetetlenné váljon, például az iSCSI-célkiszolgáló operációs rendszerének javítása során. Ha a SBD egynél több eszközt szeretne használni, győződjön meg arról, hogy több iSCSI-célkiszolgáló üzembe helyezése és egy SBD csatlakoztatása minden iSCSI-célkiszolgálón. Javasoljuk, hogy használjon egy SBD-eszközt vagy háromat. A pacemaker nem fogja tudni automatikusan elkeríteni a fürtcsomópont-csomópontot, ha csak két SBD-eszközt konfigurál, és ezek egyike nem érhető el. Ha azt szeretné, hogy az egyik iSCSI-célkiszolgáló leálljon, három SBD eszközt kell használnia, ezért három iSCSI-célkiszolgáló használatát.
+A SBD-eszközhöz legalább egy további virtuális gép szükséges, amely iSCSI-célkiszolgálóként működik, és SBD-eszközt biztosít. Ezek az iSCSI-célkiszolgáló azonban más pacemaker-fürtökkel is megoszthatók. Ha már használja a helyszíni SBD-eszközöket, a SBD-eszköz használatának előnye, hogy a pacemaker-fürt működését nem kell módosítania. Akár három SBD eszközt is használhat a pacemaker-fürthöz, hogy egy SBD-eszköz elérhetetlenné váljon, például az iSCSI-célkiszolgáló operációs rendszerének javítása során. Ha a SBD egynél több eszközt szeretne használni, győződjön meg arról, hogy több iSCSI-célkiszolgáló üzembe helyezése és egy SBD csatlakoztatása minden iSCSI-célkiszolgálón. Javasoljuk, hogy használjon egy SBD-eszközt vagy háromat. A pacemaker nem fogja tudni automatikusan elkeríteni a fürtcsomópont-csomópontot, ha csak két SBD-eszközt konfigurál, és ezek egyike nem érhető el. Ha azt szeretné, hogy az egyik iSCSI-célkiszolgáló leálljon, három SBD-eszközt kell használnia, ezért három iSCSI-célkiszolgáló, amely a legrugalmasabb konfiguráció a SBDs használatakor.
 
-Ha nem szeretne befektetni egy további virtuális gépre, akkor használhatja az Azure kerítés-ügynököt is. A hátránya, hogy a feladatátvétel 10 – 15 percet vesz igénybe, ha egy erőforrás leállítása sikertelen, vagy a fürtcsomópontok nem tudnak kommunikálni egymással.
+Az Azure kerítés ügynökének nem szükséges további virtuális gép (ek) telepítése.   
 
 ![Pacemaker on SLES – áttekintés](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,32 +413,36 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** kerítés-ügynökök telepítése
+1. **[A]** a kerítés ügynökök csomagjának telepítése, ha STONITH-eszközt használ az Azure kerítés ügynöke alapján.  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > Ha a SUSE Linux Enterprise Server for SAP 15 szolgáltatást használja, vegye figyelembe, hogy további modult kell aktiválnia, és telepítenie kell egy további összetevőt, amely az Azure kerítési ügynök használatának előfeltétele. Ha többet szeretne megtudni a SUSE modulok és bővítményekről, tekintse meg a [modulok és bővítmények magyarázatát](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Kövesse az alábbi utasításokat az Azure Python SDK telepítéséhez. 
+   > A csomagok **kerítésének** telepített verziójának legalább **4.4.0** kell lennie ahhoz, hogy kihasználhassa az Azure kerítés ügynökének gyorsabb feladatátvételi idejét, ha a fürtcsomópontok bekerítése szükséges. Javasoljuk, hogy frissítse a csomagot, ha alacsonyabb verziójú verziót futtat.  
 
-   Az Azure Python SDK telepítésével kapcsolatos alábbi utasítások csak a SUSE Enterprise Server for SAP **15**esetén alkalmazhatók.  
 
-    - Ha saját előfizetést használ, kövesse az alábbi utasításokat  
+1. **[A]** az Azure Python SDK telepítése 
+   - SLES 12 SP4 vagy SLES 12 SP5
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
 
-    <pre><code>
-    #Activate module PackageHub/15/x86_64
-    sudo SUSEConnect -p PackageHub/15/x86_64
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
-
-     - Ha utólagos elszámolású előfizetést használ, kövesse az alábbi utasításokat  
-
-    <pre><code>#Activate module PackageHub/15/x86_64
-    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
+   - 15-SLES és újabb verziók 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >A verziótól és a képtípustól függően előfordulhat, hogy az Azure Python SDK telepítése előtt aktiválnia kell az operációsrendszer-kiadás nyilvános Felhőbeli bővítményét.
+   >A bővítményt a SUSEConnect---listájának bővítményeinek futtatásával tekintheti meg.  
+   >A gyorsabb feladatátvételi idő elérése az Azure kerítés ügynökével:
+   > - a SLES 12 SP4 vagy a SLES 12 SP5 telepítse a Python-Azure-mgmt-számítás **4.6.2** vagy újabb verzióját  
+   > - a SLES 15-én telepítse a Python**3**csomag **4.6.2** vagy újabb verzióját – Azure-mgmt-számítás 
 
 1. **[A]** telepítési állomásnév feloldása
 
@@ -457,7 +461,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    </code></pre>
 
 1. **[1]** fürt telepítése
-
+- Ha SBD-eszközöket használ a kerítéshez
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -466,6 +470,19 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
    # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- Ha *nem használ* SBD-eszközöket a kerítéshez
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -528,8 +545,27 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>sudo service corosync restart
    </code></pre>
 
+## <a name="default-pacemaker-configuration-for-sbd"></a>Alapértelmezett pacemaker-konfiguráció a SBD
+
+Az ebben a szakaszban található konfiguráció csak a SBD STONITH használata esetén alkalmazható.  
+
+1. **[1]** STONITH-eszköz használatának engedélyezése és a kerítés késleltetésének beállítása
+
+<pre><code>sudo crm configure property stonith-timeout=144
+sudo crm configure property stonith-enabled=true
+
+# List the resources to find the name of the SBD device
+sudo crm resource list
+sudo crm resource stop stonith-sbd
+sudo crm configure delete <b>stonith-sbd</b>
+sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
+   params pcmk_delay_max="15" \
+   op monitor interval="15" timeout="15"
+</code></pre>
+
 ## <a name="create-azure-fence-agent-stonith-device"></a>Azure kerítés-ügynök STONITH-eszközének létrehozása
 
+A dokumentáció ezen szakasza csak akkor alkalmazható, ha az Azure kerítés-ügynökön alapuló STONITH használ.
 A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi a Microsoft Azure. Egy egyszerű szolgáltatásnév létrehozásához kövesse az alábbi lépéseket.
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
@@ -553,22 +589,26 @@ Használja az alábbi tartalmat a bemeneti fájlhoz. A tartalmat az előfizetés
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action" 
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -591,32 +631,23 @@ Ismételje meg a fenti lépéseket a második fürtcsomóponton.
 
 A virtuális gépek engedélyeinek szerkesztése után a fürtben konfigurálhatja a STONITH-eszközöket.
 
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
+
 </code></pre>
+
+> [!IMPORTANT]
+> A figyelési és a kerítési műveletek deszerializáltak. Ennek eredményeképpen, ha már futó figyelési művelet és egyidejű kerítési esemény van, akkor a fürt feladatátvétele a már futó figyelési művelet miatt nem jár késéssel.
 
 > [!TIP]
 >Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
-
-## <a name="default-pacemaker-configuration-for-sbd"></a>Alapértelmezett pacemaker-konfiguráció a SBD
-
-1. **[1]** STONITH-eszköz használatának engedélyezése és a kerítés késleltetésének beállítása
-
-<pre><code>sudo crm configure property stonith-timeout=144
-sudo crm configure property stonith-enabled=true
-
-# List the resources to find the name of the SBD device
-sudo crm resource list
-sudo crm resource stop stonith-sbd
-sudo crm configure delete <b>stonith-sbd</b>
-sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
-   params pcmk_delay_max="15" \
-   op monitor interval="15" timeout="15"
-</code></pre>
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-konfiguráció az Azure ütemezett eseményeihez
 
@@ -648,7 +679,7 @@ sudo crm configure property maintenance-mode=false
      Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>állomásnév</strong>" attribútum  
    > Ezek a figyelmeztető üzenetek figyelmen kívül hagyhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

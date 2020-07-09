@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 261bdedee56bb4de2dfbbef27358fae5ae8fdc3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416744"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Adatok másolása a Presto használatával Azure Data Factory (előzetes verzió)
@@ -49,7 +49,7 @@ A Presto társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Presto** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Presto** | Igen |
 | gazda | A Presto-kiszolgáló IP-címe vagy állomásneve. (pl. 192.168.222.160)  | Igen |
 | serverVersion | A Presto-kiszolgáló verziója. (például 0,148-t)  | Igen |
 | Katalógus | A kiszolgálóval kapcsolatos összes kérelem katalógusának kontextusa.  | Igen |
@@ -64,7 +64,7 @@ A Presto társított szolgáltatás a következő tulajdonságokat támogatja:
 | allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | Nem |
 | timeZoneID | A kapcsolatok által használt helyi időzóna. A beállítás érvényes értékeit az IANA időzóna-adatbázisa határozza meg. Az alapértelmezett érték a rendszer időzónája.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -96,12 +96,12 @@ Az adatok gyors másolásához állítsa az adatkészlet Type (típus) tulajdons
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PrestoObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PrestoObject** | Igen |
 | séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. A `schema` és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -128,10 +128,10 @@ Az adatok gyors másolásához állítsa a forrás típusát a másolás tevéke
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PrestoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PrestoSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

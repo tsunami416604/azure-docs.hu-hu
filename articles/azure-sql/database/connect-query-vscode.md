@@ -1,5 +1,5 @@
 ---
-title: A VS Code használata a kapcsolódáshoz és a lekérdezéshez
+title: A Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Ismerje meg, hogyan csatlakozhat Azure SQL Database vagy SQL felügyelt példányhoz az Azure-ban a Visual Studio Code használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz
@@ -12,32 +12,32 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: b67748a9bfb22eed4afb76c960f992a56c10e546
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054358"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267256"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rövid útmutató: a Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus Kódszerkesztő Linux, MacOS és Windows rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszis Analytics lekérdezéséhez. Ebben a rövid útmutatóban a Visual Studio Code használatával csatlakozik Azure SQL Database vagy az Azure SQL felügyelt példányához, majd Transact-SQL-utasítások futtatásával kérdezheti le, szúrhatja be, frissítheti és törölheti az adatokat.
+A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus Kódszerkesztő Linux, MacOS és Windows rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) SQL Server példány lekérdezéséhez, Azure SQL Database, egy Azure SQL felügyelt példányhoz és egy Azure szinapszis Analytics-adatbázishoz. Ebben a rövid útmutatóban a Visual Studio Code használatával csatlakozik Azure SQL Database vagy az Azure SQL felügyelt példányához, majd Transact-SQL-utasítások futtatásával kérdezheti le, szúrhatja be, frissítheti és törölheti az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure SQL Database vagy SQL felügyelt példánya. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
+- Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
-  || Azure SQL Database | SQL Managed Instance |
+  || Azure SQL Database | Felügyelt Azure SQL-példány |
   |:--- |:--- |:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) |
-  || [parancssori felület](scripts/create-and-configure-database-cli.md) | [parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md))| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Kapcsolódás a webhelyről](../managed-instance/point-to-site-p2s-configure.md)
+  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md))| [Kapcsolódás virtuális gépről (VM)](../managed-instance/connect-vm-instance-configure.md)|
+  |||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md)
   |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md)
-  |||Adventure Works visszaállítása vagy importálása a [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -45,7 +45,7 @@ A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus Kódszer
 
 ## <a name="install-visual-studio-code"></a>A Visual Studio Code telepítése
 
-Győződjön meg arról, hogy telepítette a legújabb [Visual Studio-kódot](https://code.visualstudio.com/Download) , és betöltötte az [MSSQL bővítményt](https://aka.ms/mssql-marketplace). Az MSSQL-bővítmény telepítésével kapcsolatos útmutatásért lásd: a [vs Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) és [az MSSQL telepítése a Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)-hoz.
+Győződjön meg arról, hogy telepítette a legújabb [Visual Studio-kódot](https://code.visualstudio.com/Download) , és betöltötte az [MSSQL bővítményt](https://aka.ms/mssql-marketplace). Az MSSQL bővítmény telepítésével kapcsolatos útmutatásért lásd: a [Visual](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) Studio Code és [az MSSQL telepítése a Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)-hoz.
 
 ## <a name="configure-visual-studio-code"></a>A Visual Studio Code konfigurálása
 
@@ -70,7 +70,7 @@ Nincs szükség különleges konfigurációra.
 
 Nincs szükség különleges konfigurációra.
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
+## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
 
 Szerezze be a Azure SQL Databasehoz való kapcsolódáshoz szükséges kapcsolati adatokat. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
@@ -193,6 +193,6 @@ Futtassa az alábbi [delete](https://docs.microsoft.com/sql/t-sql/statements/del
 
 ## <a name="next-steps"></a>További lépések
 
-- A SQL Server Management Studio használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a rövid útmutató [: SQL Server Management Studio használata a Azure SQL Databasehoz való kapcsolódáshoz és az adatlekérdezéshez](connect-query-ssms.md)című témakört.
+- A SQL Server Management Studio használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a rövid útmutató [: a SQL Server Management Studio használata az adatbázishoz való kapcsolódáshoz Azure SQL Database és a lekérdezési](connect-query-ssms.md)információit.
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a gyors útmutató [: az SQL-lekérdezési szerkesztő használata a Azure Portal a kapcsolódáshoz és az adatlekérdezéshez](connect-query-portal.md).
 - Az MSDN magazin Visual Studio Code használatáról szóló cikkéhez lásd az [Adatbázis IDE létrehozása az MSSQL bővítménnyel blogbejegyzést](https://msdn.microsoft.com/magazine/mt809115).

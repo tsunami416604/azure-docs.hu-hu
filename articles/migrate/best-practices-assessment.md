@@ -6,30 +6,39 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185982"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119973"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
-[Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
+[Azure Migrate](./migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
 
 Ez a cikk Az értékelések Azure Migrate Server Assessment eszközzel történő létrehozásával kapcsolatos ajánlott eljárásokat foglalja össze.
 
 ## <a name="about-assessments"></a>Az értékelések ismertetése
 
-Az Azure Migrate Server Assessmenttel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. A Azure Migrateban kétféle értékelés van.
+Az Azure Migrate Server Assessmenttel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. Kétféle értékelést hozhat létre Azure Migrate használatával: Server assessment:
 
-**Értékelés típusa** | **Részletek** | **Adatok**
+**Értékelés típusa** | **Részletek**
+--- | --- 
+**Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal. [További információ](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+
+
+### <a name="sizing-criteria"></a>Méretezési feltételek
+A kiszolgáló értékelése két méretezési feltétel beállítását biztosítja:
+
+**Méretezési feltételek** | **Részletek** | **Adatok**
 --- | --- | ---
-**Teljesítmény-alapú** | Az összegyűjtött teljesítményadatok alapján ajánlásokat tevő értékelések | A virtuálisgép-méretre vonatkozó javaslat a processzor-és memóriahasználat adatain alapul.<br/><br/> A lemez típusára vonatkozó javaslat (standard HDD/SSD vagy prémium szintű Managed Disks) a helyszíni lemezek IOPS és átviteli sebességén alapul.
-**Helyszíni** | Az olyan értékelések, amelyek nem használnak teljesítményadatokat, ajánlásokat tesznek. | A VM-méretre vonatkozó javaslat a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott lemez típusa az értékeléshez megadott tárolási típus beállításán alapul.
+**Teljesítmény-alapú** | Az összegyűjtött teljesítményadatok alapján ajánlásokat tevő értékelések | **Azure VM Assessment**: a virtuálisgép-méretre vonatkozó javaslat a CPU-és memória-kihasználtsági adatain alapul.<br/><br/> A lemez típusára vonatkozó javaslat (standard HDD/SSD vagy prémium szintű Managed Disks) a helyszíni lemezek IOPS és átviteli sebességén alapul.<br/><br/> **Azure VMware-megoldás (AVS) értékelése**: az AVS-csomópontok ajánlásai a processzor-és memóriahasználat adatain alapulnak.
+**Helyszíni** | Az olyan értékelések, amelyek nem használnak teljesítményadatokat, ajánlásokat tesznek. | **Azure VM Assessment**: a virtuális gépek méretére vonatkozó javaslat a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott lemez típusa az értékeléshez megadott tárolási típus beállításán alapul.<br/><br/> **Azure VMware-megoldás (AVS) értékelése**: az AVS-csomópontok ajánlásai a helyszíni virtuális gép méretétől függenek.
 
-### <a name="example"></a>Példa
-Ha például egy helyszíni virtuális gép négy maggal rendelkezik 20%-os kihasználtsággal, és 8 GB memóriát használ 10%-os kihasználtsággal, az értékelések a következők lesznek:
+#### <a name="example"></a>Példa
+Ha például egy helyszíni virtuális gép négy maggal rendelkezik 20%-os kihasználtsággal, és 8 GB memóriát használ 10%-os kihasználtsággal, az Azure-beli virtuális gép értékelése a következő lesz:
 
 - **Teljesítmény-alapú értékelés**:
     - A hatékony magok és memória azonosítása a mag (4 x 0,20 = 0,8) és a memória (8 GB x 0,10 = 0,8) kihasználtsága alapján.
@@ -38,6 +47,7 @@ Ha például egy helyszíni virtuális gép négy maggal rendelkezik 20%-os kiha
 
 - A **(helyszíni) felmérés**:
     -  Négy maggal rendelkező virtuális gépet javasol; 8 GB memória.
+
 
 ## <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -54,6 +64,19 @@ Kövesse az alábbi ajánlott eljárásokat a Azure Migrate-ba importált kiszol
 - **Create as-is assessments**: a (z)-as értékeléseket azonnal létrehozhatja, amint a gépek megjelennek a Azure Migrate portálon.
 - **Teljesítmény-alapú Értékelés létrehozása**: ez segít a jobb költségbecslés megszerzésében, különösen akkor, ha a helyszíni kiszolgáló kapacitása túl van kiépítve. A teljesítmény-alapú értékelés pontossága azonban a kiszolgálók által megadott teljesítményadatokat függ. 
 - **Értékelések újraszámítása**: mivel az értékelések időponthoz kötődő Pillanatképek, nem frissülnek automatikusan a legújabb adattal. Ha frissíteni szeretne egy értékelést a legújabb importált adattal, újra kell számítania.
+ 
+### <a name="ftt-sizing-parameters-for-avs-assessments"></a>Az adó-méretezési paraméterek az AVS-értékelésekhez
+
+Az AVS-ben használt vSAN. a vSAN tárolási házirendek meghatározzák a virtuális gépek tárolási követelményeit. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatási szintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális géphez. Ezek az elérhető TRANZAKCIÓs és RAID-kombinációk: 
+
+**Tolerálható (TRANZAKCIÓs) hibák** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek** | **Méretezési szempont**
+--- | --- | --- | --- 
+1 | RAID-1 (Tükrözés) | 3 | A 100 GB virtuális gép A 200GB-t használja.
+1 | RAID-5 (kitörlési kódolás) | 4 | A 100 GB virtuális gép A 133.33 GB-ot fogja használni
+2 | RAID-1 (Tükrözés) | 5 | A 100 GB virtuális gép A 300GB-t használja.
+2 | RAID-6 (kitörlési kódolás) | 6 | A 100 GB virtuális gép A 150GB-t használja.
+3 | RAID-1 (Tükrözés) | 7 | A 100 GB virtuális gép A 400GB-t használja.
+
 
 ## <a name="best-practices-for-confidence-ratings"></a>Ajánlott eljárások a megbízhatósági minősítéshez
 
@@ -83,7 +106,18 @@ Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létreh
 
 ### <a name="outdated-assessments"></a>Elavult értékelések
 
-Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként**van megjelölve. A módosítások tükrözéséhez futtassa újra az értékelést.
+Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként**van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
+
+- Processzor-magok száma
+- Lefoglalt memória
+- Rendszerindítási típus vagy belső vezérlőprogram
+- Operációs rendszer neve, verziója és architektúrája
+- Lemezek száma
+- Hálózati adapterek száma
+- Lemez méretének változása (GB lefoglalt)
+- A hálózati adapter tulajdonságainak frissítése. Például: Mac-cím módosítása, IP-cím hozzáadása stb.
+
+Futtassa újra az értékelést (**újraszámítva**), hogy tükrözze a módosításokat.
 
 ### <a name="low-confidence-rating"></a>Alacsony megbízhatósági minősítés
 
@@ -95,8 +129,14 @@ Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes ad
 
 - Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
+### <a name="migration-tool-guidance-for-avs-assessments"></a>Áttelepítési eszköz – útmutató az AVS-értékelésekhez
 
-## <a name="next-steps"></a>További lépések
+Az Azure VMware megoldással (AVS) kapcsolatos Azure-készültségi jelentésekben a következő javasolt eszközök láthatók: 
+- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
+- **Ismeretlen**: a CSV-fájlon keresztül importált gépek esetében az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ](concepts-assessment-calculation.md) az értékelések kiszámításáról.
 - [Megtudhatja](how-to-modify-assessment.md) , hogyan szabhatja testre az értékeléseket.

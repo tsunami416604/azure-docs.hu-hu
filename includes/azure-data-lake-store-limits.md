@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: twooley
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334876"
 ---
 A Azure Data Lake Storage Gen1 a big data analitikus számítási feladatokhoz használható, nagyvállalati szintű, Hyper-skála tárház. A Data Lake Storage Gen1 használatával bármilyen méretű, típusú és feldolgozási sebességű adatot rögzíthet egyetlen helyen az operatív és a felderítő elemzéshez. A Data Lake Storage Gen1-fiókban tárolható adatmennyiségnek nincs korlátja.

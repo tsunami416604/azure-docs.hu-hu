@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122297"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
@@ -67,7 +66,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-Amikor helyileg fejleszt egy Function-alkalmazást, a local. Settings. JSON projektfájl ezen értékeinek helyi másolatait kell fenntartania. További információ: [helyi beállítások fájl](functions-run-local.md#local-settings-file).
+Amikor helyileg fejleszt egy Function-alkalmazást, a Project fájl local.settings.jsjában meg kell őriznie ezeknek az értékeknek a helyi másolatát. További információ: [helyi beállítások fájl](functions-run-local.md#local-settings-file).
 
 ## <a name="platform-features"></a>Platform-funkciók
 
@@ -79,7 +78,7 @@ A alkalmazásban futtatott Function apps-t a Azure App Service platform tartja k
 A cikk további részében a következő, a függvények számára hasznos App Service Azure Portal-funkciókra összpontosít:
 
 + [App Service szerkesztő](#editor)
-+ [Konzol](#console)
++ [Console](#console)
 + [Speciális eszközök (kudu)](#kudu)
 + [Üzembe helyezési beállítások](#deployment)
 + [CORS](#cors)
@@ -95,7 +94,7 @@ A App Service szerkesztő egy olyan speciális portál szerkesztő, amely a JSON
 
 Javasoljuk, hogy vegye fontolóra a függvények fejlesztését a helyi számítógépen. Amikor helyben fejleszti és közzéteszi az Azure-ban, a projektfájlok csak olvashatók a portálon. További információ: [code and test Azure functions helyileg](functions-develop-local.md).
 
-### <a name="console"></a><a name="console"></a>Konzol
+### <a name="console"></a><a name="console"></a>Console
 
 ![Function app Console](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
@@ -149,4 +148,4 @@ Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hit
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

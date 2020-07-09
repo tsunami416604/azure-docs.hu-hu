@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 714fe5d1bdaddac2873194ab066f304e72bdde67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60244524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358871"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Első lépések az Azure AD Connecttel a gyorsbeállítások használatával
 Az Azure AD Connect **Express Settings** (Gyorsbeállítások) akkor használható, ha egyerdős topológiával rendelkezik, és a hitelesítéshez [jelszókivonat-szinkronizálást](how-to-connect-password-hash-synchronization.md) alkalmaz. Az **Express Settings** (Gyorsbeállítások) az alapértelmezett beállítás, és ez használatos a leggyakoribb üzembe helyezési forgatókönyvhöz. Csak pár rövid kattintásnyira van attól, hogy kiterjessze helyszíni címtárát a felhőre.

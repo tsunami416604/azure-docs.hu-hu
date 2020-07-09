@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201346"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509372"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Oktatóanyag: a Sage Intacct integrálása Azure Active Directory
 
@@ -88,13 +88,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![image](common/edit-attribute.png)
 
-1. A fentieken kívül a Sage Intacct alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+1. A fentieken kívül a Sage Intacct alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **felhasználói attribútumok & jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket az SAML-jogkivonat attribútum hozzáadásához az alábbi táblázatban látható módon:
 
-    | Name (Név)  |  Forrás attribútum|
+    | Attribútum neve  |  Forrás attribútum|
     | ---------------| --------------- |
     | Vállalat neve | **Sage Intacct vállalati azonosító** |
-    | név | Az értéknek meg kell egyeznie a Sage Intacct **felhasználói azonosítóval**, amelyet a **create Sage Intacct test User (bölcsek csoport létrehozása) felhasználói szakaszban**adhat meg, amelyet az oktatóanyag későbbi részében talál |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | Az értéknek meg kell egyeznie a Sage Intacct **összevont SSO felhasználói azonosítóval**, amelyet a **create Sage Intacct test User (zsálya létrehozása) felhasználói szakaszban**adhat meg, amelyet az oktatóanyag későbbi részében ismertetünk. |
+    | name | Az értéknek meg kell egyeznie a Sage Intacct **felhasználói azonosítóval**, amelyet a **create Sage Intacct test User (bölcsek csoport létrehozása) felhasználói szakaszban**adhat meg, amelyet az oktatóanyag későbbi részében talál |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
@@ -104,11 +103,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     d. Válassza a forrás **attribútumként**lehetőséget.
 
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+    e. A **forrás attribútum** listából írja be vagy válassza ki az adott sorhoz megjelenített attribútum értékét.
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Save** (Mentés) gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -126,7 +125,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -207,7 +206,7 @@ Ha be szeretné állítani az Azure AD-felhasználók számára, hogy bejelentke
     
     d. Az Azure AD-fiók tulajdonosa egy e-mailt kap, és egy hivatkozást követ, amely megerősíti a fiókját, mielőtt az aktívvá válna.
 
-1. Kattintson az **egyszeri bejelentkezés** fülre, és győződjön meg arról, hogy az **összevont egyszeri bejelentkezés felhasználói azonosítója** az alábbi képernyőképen, valamint a **forrás attribútum** értéke, amely a Azure Portal `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` **felhasználói attribútumok** szakaszában van leképezve, a következőnek kell lennie:.
+1. Kattintson az **egyszeri bejelentkezés** fülre, és győződjön meg arról, hogy az **összevont egyszeri bejelentkezés felhasználói azonosítója** az alábbi képernyőképen, valamint a **forrás attribútum** értéke, amely a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` Azure Portal **felhasználói attribútumok** szakaszában van leképezve, a következőnek kell lennie:.
 
     ![Felhasználói adatok](./media/intacct-tutorial/ic790044.png "Felhasználói adatok")
 

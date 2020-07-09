@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70842696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355862"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect SQL-kapcsolati problémáinak elhárítása
 Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure AD Connect és SQL Server közötti kapcsolódási problémákat. 
@@ -40,7 +39,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 Vagy telepítse [a PackageManagement PowerShell-modulok előzetes verzióját – március 2016 for PowerShell 3.0/4.0](/powershell/module/PackageManagement) 
 
 - **Az összes parancs megjelenítése**:`Get-Command -Module AdSyncTools` 
-- **Futtassa a PowerShell-függvényt**: `Connect-ADSyncDatabase` a következő paraméterekkel
+- **Futtassa a PowerShell-függvényt**: a `Connect-ADSyncDatabase` következő paraméterekkel
     - Server. A SQL Server neve.
     - Például. Választható A használni kívánt SQL Server-példány neve és opcionális portszáma. Ne határozza meg ezt a paramétert az alapértelmezett példány használatához.
     - UserName. Választható Az a felhasználói fiók, amelyhez kapcsolódni szeretne. Ha üresen hagyja, a rendszer a jelenleg bejelentkezett felhasználót fogja használni. Ha távoli SQL Server csatlakozik, akkor az Azure ADConnect SQL-kapcsolathoz létrehozott egyéni szolgáltatásfiókot kell létrehoznia. Azure AD Connect a Azure AD Connect Sync Service-fiókot használja a távoli SQL Server-hitelesítéshez.

@@ -1,25 +1,14 @@
 ---
 title: Azure Relay Hibrid kapcsolatok Protocol-útmutató | Microsoft Docs
 description: Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelyekkel az Hibrid kapcsolatok Relay csatlakozik az ügyfelekhez a figyelő és a küldő szerepköreiben.
-services: service-bus-relay
-documentationcenter: na
-author: clemensv
-manager: timlt
-editor: ''
-ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: clemensv
-ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316650"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hibrid kapcsolatok protokoll
 
@@ -146,14 +135,14 @@ A lekérdezési karakterlánc paraméterének beállításai a következők.
 
 | Paraméter        | Kötelező | Leírás
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Igen      | A figyelő szerepkörhöz a paraméternek **SB-HC-Action = figyeljnek** kell lennie.
-| `{path}`         | Igen      | Az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja a figyelő regisztrálásához. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
-| `sb-hc-token`    | igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
-| `sb-hc-id`       | Nem       | Ez az ügyfél által megadott opcionális azonosító lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést.
+| `sb-hc-action`   | Yes      | A figyelő szerepkörhöz a paraméternek **SB-HC-Action = figyeljnek** kell lennie.
+| `{path}`         | Yes      | Az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja a figyelő regisztrálásához. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
+| `sb-hc-token`    | Yes\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
+| `sb-hc-id`       | No       | Ez az ügyfél által megadott opcionális azonosító lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést.
 
 Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolati útvonal regisztrálása nem történik meg, vagy egy érvénytelen vagy hiányzó jogkivonat vagy valamilyen más hiba történt, a rendszer a hibaüzenetet a normál HTTP 1,1 állapot-visszajelzési modell használatával adja meg. Az állapot leírása olyan nyomkövetési azonosítót tartalmaz, amely az Azure-támogatási munkatársakkal is közölhető:
 
-| Kód | Hiba          | Leírás
+| Code | Hiba          | Description
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nem található      | A hibrid kapcsolatok elérési útja érvénytelen, vagy az alap URL-cím helytelen formátumú.
 | 401  | Nem engedélyezett   | A biztonsági jogkivonat hiányzik vagy helytelen formátumú vagy érvénytelen.
@@ -162,7 +151,7 @@ Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolati útvonal regisztr�
 
 Ha a WebSocket-kapcsolatot szándékosan leállítja a szolgáltatás a kezdeti beállítás után, akkor ennek oka a megfelelő WebSocket protokoll hibakódja, valamint egy leíró hibaüzenet, amely tartalmazza a követési azonosítót is. A szolgáltatás nem állítja le a vezérlési csatornát a hiba feltétele nélkül. Minden tiszta leállítás ügyfél által vezérelt.
 
-| WS állapota | Leírás
+| WS állapota | Description
 | --------- | -------------------------------------------------------------------------------
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.
 | 1008      | A biztonsági jogkivonat lejárt, ezért a rendszer megsértette az engedélyezési házirendet.
@@ -206,9 +195,9 @@ Az URL-címet a-ként kell használni az Accept szoftvercsatorna létrehozásáh
 
 | Paraméter      | Kötelező | Leírás
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Igen      | A szoftvercsatorna elfogadásához a paraméternek a következőnek kell lennie:`sb-hc-action=accept`
-| `{path}`       | Igen      | (lásd a következő bekezdést)
-| `sb-hc-id`     | Nem       | Lásd az **azonosító**korábbi leírását.
+| `sb-hc-action` | Yes      | A szoftvercsatorna elfogadásához a paraméternek a következőnek kell lennie:`sb-hc-action=accept`
+| `{path}`       | Yes      | (lásd a következő bekezdést)
+| `sb-hc-id`     | No       | Lásd az **azonosító**korábbi leírását.
 
 `{path}`az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
 
@@ -219,14 +208,14 @@ További információ: a következő "küldő protokoll" szakasz.
 
 Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
-| Kód | Hiba          | Leírás
+| Code | Hiba          | Description
 | ---- | -------------- | -----------------------------------
 | 403  | Forbidden      | Az URL-cím érvénytelen.
 | 500  | Belső hiba | Hiba történt a szolgáltatásban
 
  A kapcsolat létrejötte után a kiszolgáló leállítja a WebSocketet, amikor a küldő WebSocket leáll, vagy a következő állapottal:
 
-| WS állapota | Leírás                                                                     |
+| WS állapota | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | A küldő ügyfél leállítja a kapcsolódást.                                    |
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.                        |
@@ -243,14 +232,14 @@ Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
 | Param                   | Kötelező | Leírás                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-HC-statusCode        | Igen      | Numerikus HTTP-állapotkód.                |
-| SB-HC-statusDescription | Igen      | Az elutasítás emberi olvasási oka. |
+| SB-HC-statusCode        | Yes      | Numerikus HTTP-állapotkód.                |
+| SB-HC-statusDescription | Yes      | Az elutasítás emberi olvasási oka. |
 
 A rendszer a létrejövő URI-t használja a WebSocket-kapcsolat létrehozásához.
 
 A megfelelő végrehajtáskor ez a kézfogás szándékosan meghiúsul a 410-es HTTP-hibakód miatt, mert nem lett létrehozva WebSocket. Ha valami probléma merül fel, a következő kódok írják le a hibát:
 
-| Kód | Hiba          | Leírás                          |
+| Code | Hiba          | Description                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Forbidden      | Az URL-cím érvénytelen.                |
 | 500  | Belső hiba | Hiba történt a szolgáltatásban. |
@@ -378,11 +367,11 @@ A `address` (z) rendszerbeli URL-címet a `request` Rendezvous szoftvercsatorna 
 
 | Paraméter      | Kötelező | Leírás
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Igen      | A szoftvercsatorna elfogadásához a paraméternek a következőnek kell lennie:`sb-hc-action=request`
+| `sb-hc-action` | Yes      | A szoftvercsatorna elfogadásához a paraméternek a következőnek kell lennie:`sb-hc-action=request`
 
 Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
-| Kód | Hiba           | Leírás
+| Code | Hiba           | Description
 | ---- | --------------- | -----------------------------------
 | 400  | Érvénytelen kérelem | Ismeretlen művelet vagy URL-cím érvénytelen.
 | 403  | Forbidden       | Az URL-cím lejárt.
@@ -390,7 +379,7 @@ Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
  A kapcsolat létrejötte után a kiszolgáló leállítja a WebSocketet, ha az ügyfél HTTP-szoftvercsatorna leáll, vagy a következő állapottal rendelkezik:
 
-| WS állapota | Leírás                                                                     |
+| WS állapota | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | A küldő ügyfél leállítja a kapcsolódást.                                    |
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.                        |
@@ -415,7 +404,7 @@ Ha a figyelő token hamarosan lejár, lecserélheti azt úgy, hogy szöveges ker
 
 Ha a jogkivonat ellenőrzése nem sikerül, a hozzáférés megtagadva, és a Cloud Service hibával zárja be a vezérlési csatorna websocketjét. Ellenkező esetben nincs válasz.
 
-| WS állapota | Leírás                                                                     |
+| WS állapota | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1008      | A biztonsági jogkivonat lejárt, ezért a rendszer megsértette az engedélyezési házirendet. |
 
@@ -434,12 +423,12 @@ A kérés tetszőleges további HTTP-fejléceket tartalmazhat, beleértve az alk
 
 A lekérdezési karakterlánc paraméterének beállításai a következők:
 
-| Param          | Kötelező? | Leírás
+| Param          | Kötelező? | Description
 | -------------- | --------- | -------------------------- |
-| `sb-hc-action` | Igen       | A küldő szerepkör esetében a paraméternek a következőnek kell lennie: `sb-hc-action=connect` .
-| `{path}`       | Igen       | (lásd a következő bekezdést)
-| `sb-hc-token`  | igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
-| `sb-hc-id`     | Nem        | Egy opcionális azonosító, amely lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést, és elérhetővé válik a figyelő számára az elfogadási kézfogás során.
+| `sb-hc-action` | Yes       | A küldő szerepkör esetében a paraméternek a következőnek kell lennie: `sb-hc-action=connect` .
+| `{path}`       | Yes       | (lásd a következő bekezdést)
+| `sb-hc-token`  | Yes\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
+| `sb-hc-id`     | No        | Egy opcionális azonosító, amely lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést, és elérhetővé válik a figyelő számára az elfogadási kézfogás során.
 
  A az `{path}` előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A `path` kifejezés kiterjeszthető egy utótaggal és egy lekérdezési karakterlánc kifejezéssel a további kommunikációhoz. Ha a hibrid kapcsolatok az elérési úton vannak regisztrálva `hyco` , a `path` kifejezést `hyco/suffix?param=value&...` követheti az itt definiált lekérdezési karakterlánc paraméterei is. A teljes kifejezés a következő lehet:
 
@@ -451,7 +440,7 @@ A `path` kifejezés átkerül a figyelőbe az "elfogadás" vezérlő üzenetben 
 
 Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolat elérési útja nem regisztrálva van, érvénytelen vagy hiányzó jogkivonat vagy valamilyen más hiba történt, a rendszer a hibaüzenetet a normál HTTP 1,1 állapot-visszajelzési modell használatával adja meg. Az állapot leírása olyan nyomkövetési azonosítót tartalmaz, amely az Azure-támogatási munkatársakkal is közölhető:
 
-| Kód | Hiba          | Leírás
+| Code | Hiba          | Description
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nem található      | A hibrid kapcsolatok elérési útja érvénytelen, vagy az alap URL-cím helytelen formátumú.
 | 401  | Nem engedélyezett   | A biztonsági jogkivonat hiányzik vagy helytelen formátumú vagy érvénytelen.
@@ -460,7 +449,7 @@ Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolat elérési útja nem
 
 Ha a WebSocket-kapcsolatot szándékosan leállítja a szolgáltatás a kezdeti beállítás után, akkor ennek oka a megfelelő WebSocket protokoll hibakódja, valamint egy leíró hibaüzenet, amely tartalmazza a követési azonosítót is.
 
-| WS állapota | Leírás
+| WS állapota | Description
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | A figyelő leállítja a szoftvercsatornát.
 | 1001      | A hibrid kapcsolatok elérési útja törölve vagy letiltva.
@@ -482,23 +471,23 @@ A kérés tetszőleges további HTTP-fejléceket tartalmazhat, beleértve az alk
 
 A lekérdezési karakterlánc paraméterének beállításai a következők:
 
-| Param          | Kötelező? | Leírás
+| Param          | Kötelező? | Description
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
+| `sb-hc-token`  | Yes\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
 
 A jogkivonat a `ServiceBusAuthorization` vagy a HTTP-fejlécben is elvégezhető `Authorization` . A jogkivonat kihagyható, ha a hibrid kapcsolat úgy van konfigurálva, hogy engedélyezze a névtelen kérelmeket.
 
 Mivel a szolgáltatás hatékonyan működik proxyként, még akkor is, ha nem valódi HTTP-proxyként, egy `Via` fejlécet vagy jegyzeteket tesz a meglévő `Via` fejlécnek, amely megfelel a [RFC7230, a 5.7.1 szakasznak](https://tools.ietf.org/html/rfc7230#section-5.7.1).
 A szolgáltatás hozzáadja a továbbítási névtér állomásnevét a következőhöz: `Via` .
 
-| Kód | Üzenet  | Leírás                    |
+| Code | Üzenet  | Leírás                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | A kérést legalább egy figyelő kezeli.  |
 | 202  | Elfogadva | A kérést legalább egy figyelő fogadta el. |
 
 Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat. Azt jelzi, hogy a válasz a szolgáltatásból származik-e, vagy a figyelő a fejléc jelenlétében azonosítható-e `Via` . Ha a fejléc jelen van, a válasz a figyelőtől származik.
 
-| Kód | Hiba           | Leírás
+| Code | Hiba           | Description
 | ---- | --------------- |--------- |
 | 404  | Nem található       | A hibrid kapcsolatok elérési útja érvénytelen, vagy az alap URL-cím helytelen formátumú.
 | 401  | Nem engedélyezett    | A biztonsági jogkivonat hiányzik vagy helytelen formátumú vagy érvénytelen.

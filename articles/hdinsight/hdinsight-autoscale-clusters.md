@@ -1,21 +1,21 @@
 ---
-title: Azure HDInsight-fürtök automatikus méretezése
+title: Azure HDInsight-fürtök automatikus skálázása
 description: Az Azure HDInsight automatikus méretezési funkciója segítségével automatikusan Apache Hadoop a fürtök méretezése
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199738"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086432"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
 Az Azure HDInsight ingyenes automatikus méretezési funkciója a korábban beállított feltételek alapján automatikusan növelheti vagy csökkentheti a fürt munkavégző csomópontjainak számát. A fürt létrehozása során a csomópontok minimális és maximális számát állíthatja be, a méretezési feltételeket a napi ütemterv vagy a megadott teljesítmény-mérőszámok alapján kell meghatározni, és a HDInsight platform a REST-t használja.
 
@@ -39,7 +39,7 @@ Skálázási típus kiválasztásakor vegye figyelembe a következő tényezőke
 
 Az autoscale folyamatosan figyeli a fürtöt, és a következő metrikákat gyűjti össze:
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |---|---|
 |Függőben lévő CPU összesen|Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges magok teljes száma.|
 |Függőben lévő memória összesen|Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges teljes memória (MB).|
@@ -66,9 +66,9 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 ### <a name="cluster-compatibility"></a>Fürt kompatibilitása
 
 > [!Important]
-> Az Azure HDInsight autoscale funkciójának kiadása a Spark-és Hadoop-fürtökre vonatkozó 2019, november 7-én általánosan elérhető, és a szolgáltatás előzetes verziójában nem érhető el. Ha a Spark-fürtöt a 2019 november 7. előtt hozta létre, és szeretné használni az autoscale funkciót a fürtön, az ajánlott elérési út egy új fürt létrehozása, és az autoskálázás engedélyezése az új fürtön.
+> Az Azure HDInsight automatikus skálázási funkciója 2019. november 7. óta általánosan elérhető a Spark- és Hadoop-fürtökhöz, és olyan fejlesztéseket tartalmaz, amelyek a funkció előzetes verziójában nem voltak elérhetők. Ha a 2019. november 7. előtt létrehozott egy Spark-fürtöt, és használni szeretné rajta az automatikus skálázási funkciót, akkor azt az eljárást javasoljuk, hogy hozzon létre egy új fürtöt, és azon engedélyezze az automatikus skálázást.
 >
-> Az interaktív lekérdezés (LLAP) és a HBase-fürtök autoskálázása még előzetes verzióban érhető el. Az autoskálázás csak a Spark, a Hadoop, az interaktív lekérdezés és a HBase-fürtökön érhető el.
+> Az automatikus skálázás az Interactive Query- (LLAP) és HBase-fürtökhöz továbbra is előzetes verzióként érhető el. Az automatikus skálázás kizárólag a Spark-, Hadoop-, Interactive Query és HBase-fürtökhöz érhető el.
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
@@ -182,12 +182,12 @@ HDInsight-fürtöt úgy hozhat létre, `autoscale` hogy a `computeProfile`  >  s
             "minInstanceCount": 10,
             "maxInstanceCount": 10
           }
-        },
+        }
       ]
     }
   },
   "name": "workernode",
-  "targetInstanceCount": 4,
+  "targetInstanceCount": 4
 }
 ```
 
@@ -210,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 Használja a kérelem hasznos adatainak megfelelő paramétereket. Az alábbi JSON-adattartalom használatával engedélyezhető az autoskálázás. Az `{autoscale: null}` autoscale letiltásához használja a hasznos adatokat.
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 5 } } }
 ```
 
 Tekintse meg az előző szakaszt a [betöltési alapú automatikus skálázás engedélyezéséhez](#load-based-autoscaling) az összes hasznos adat paraméterének teljes leírásához.
@@ -225,7 +225,7 @@ A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevék
 
 Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
-| Fürt állapota | Leírás |
+| Fürt állapota | Description |
 |---|---|
 | Fut | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
@@ -243,7 +243,7 @@ A **figyelés**területen válassza a **metrikák** lehetőséget. Ezután vála
 
 ![A feldolgozói csomópont Schedule-alapú autoskálázási metrikájának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="other-considerations"></a>Egyéb szempontok
+## <a name="other-considerations"></a>További szempontok
 
 ### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Vegye figyelembe a vertikális Felskálázási vagy leskálázási műveletek késését
 

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759183"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628394"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt (előzetes verzió) létrehozása a többosztályos képek besorolásához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. Válassza a **+ projekt hozzáadása**elemet.
 
-    ![Projekt létrehozása](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Projekt létrehozása":::
 
 ### <a name="project-details"></a>Projekt részletei
 
@@ -110,6 +110,12 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. Kattintson a **tovább** gombra a projekt létrehozásának folytatásához.
 
+### <a name="incremental-refresh"></a>Növekményes frissítés
+
+Ha új lemezképeket szeretne hozzáadni az adatkészlethez, a Növekményes frissítés megkeresi ezeket az új képeket, és hozzáadja őket a projekthez.  Ha engedélyezi ezt a funkciót, a projekt rendszeresen ellenőrzi az új lemezképeket.  Ebben az oktatóanyagban nem fog új rendszerképeket hozzáadni az adattárhoz, ezért a funkció nincs bejelölve.
+
+A folytatáshoz kattintson a **Tovább** gombra.
+
 ### <a name="label-classes"></a>Címkézési osztályok
 
 1. A **címkézési osztályok** űrlapon írja be a címke nevét, majd válassza a **+ címke hozzáadása** lehetőséget a következő címke beírásához.  Ebben a projektben a címkék a következők: **Cat**, **Dog**és **bizonytalan**.
@@ -122,7 +128,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. A feladat rövid leírását közvetlenül is hozzáadhatja az űrlapon.  Írja be a **címkézési oktatóanyagot – macskák & kutyák.**
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 
 1. A **ml által támogatott címkéző** űrlapon ne jelölje be a jelölőnégyzetet. A ML által támogatott címkézés több olyan adattípust igényel, mint amit ebben az oktatóanyagban használ.
 
@@ -201,7 +207,7 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
 

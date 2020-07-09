@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064243"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965008"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
@@ -34,7 +34,7 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 + Oszlopok átnevezése.
   
- A metaadatok szerkesztése lehetőséggel bármikor módosíthatja az oszlopok definícióját, jellemzően egy alsóbb rétegbeli modul követelményeinek megfelelően. Egyes modulok például csak bizonyos adattípusokkal működnek, vagy jelölőket igényelnek az oszlopokon, például `IsFeature` vagy `IsCategorical`.  
+ A metaadatok szerkesztése lehetőséggel bármikor módosíthatja az oszlopok definícióját, jellemzően egy alsóbb rétegbeli modul követelményeinek megfelelően. Egyes modulok például csak bizonyos adattípusokkal működnek, vagy jelölőket igényelnek az oszlopokon, például `IsFeature` vagy `IsCategorical` .  
   
  A szükséges művelet elvégzése után visszaállíthatja a metaadatokat az eredeti állapotába.
   
@@ -55,7 +55,8 @@ A metaadatok tipikus változásai a következők lehetnek:
     + Az oszlop típusa és értékei a metaadatok szerkesztése művelet végrehajtása után változnak. Az oszlop adattípusának alaphelyzetbe állításához a metaadatok szerkesztése lehetőséggel bármikor helyreállíthatja az eredeti adattípust.  
 
     > [!NOTE]
-    > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.  
+    > A **datetime formátum** a [Python beépített datetime formátumát](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)követi.  
+    > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.
 
 1. Válassza a **kategorikus** lehetőséget annak megadásához, hogy a kijelölt oszlopokban szereplő értékeket kategóriákként kell kezelni.
 

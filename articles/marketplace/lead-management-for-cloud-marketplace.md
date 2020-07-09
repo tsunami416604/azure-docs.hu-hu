@@ -1,18 +1,18 @@
 ---
 title: Vezető felügyelet a kereskedelmi piactéren | Azure Marketplace és AppSource
 description: Az Azure Marketplace-en és a AppSource-on közzétett ajánlatokkal és technikai összetevőkkel kapcsolatos különböző témakörök áttekintése
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798594"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119446"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Vezető felügyelet a kereskedelmi piactéren
 
@@ -91,7 +91,7 @@ A dokumentációt az [ügyfelek beszerzése](./partner-center-portal/commercial-
 **Meg kell-e adni egy érdeklődői célhelyet, hogy közzé lehessen tenni egy ajánlatot a piactéren?**
 
 Igen, ha egy Contact me SaaS-alkalmazást vagy tanácsadói szolgáltatást tesz közzé.  
- 
+
 **Hogyan ellenőrizhető, hogy helyes-e az érdeklődő konfigurációja?**
 
 Az ajánlat beállítása és az érdeklődő céljának közzététele után tegye közzé ajánlatát. Az érdeklődő ellenőrzésének lépésein a piactér egy tesztet küld az ajánlatában konfigurált vezető célhelyre. 
@@ -100,80 +100,67 @@ Az ajánlat beállítása és az érdeklődő céljának közzététele után te
 
 Keressen rá a "MSFT_TEST" kifejezésre a vezető célhelyen, íme egy példa a teszt érdeklődői adataira: 
 
-Vállalat = MSFT_TEST_636573304831318844 
+```text
+company = MSFT_TEST_636573304831318844 
 
-ország = USA 
+country = US 
 
-Leírás = MSFT_TEST_636573304831318844 
+description = MSFT_TEST_636573304831318844 
 
-e-mail =MSFT_TEST_636573304831318844@test.com
+email = MSFT_TEST_636573304831318844@test.com
 
-kódolás = UTF-8 
+encoding = UTF-8 
 
-kódolás = UTF-8 
+encoding = UTF-8 
 
 first_name = MSFT_TEST_636573304831318844 
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Ajánlat neve> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
 
-OID = 00Do0000000ZHog 
+oid = 00Do0000000ZHog 
 
-telefon = 1234567890 
+phone = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
+```
 
 **Élő ajánlatom van, de nem látok semmilyen érdeklődőt?**
 
-Az egyes érdeklődők a kiválasztott érdeklődői célhely mezőiben átadott adattal rendelkeznek, az érdeklődők ebben a formátumban fognak megjelenni: **forrásoldali művelet | Ajánlat** 
+Az egyes érdeklődők a kiválasztott érdeklődői célhely mezőiben átadott adattal rendelkeznek, az érdeklődők ebben a formátumban fognak megjelenni: **forrásoldali művelet | Ajánlat**
 
-  *Adatforrások*
+- *Adatforrások*
+  - AzureMarketplace
+  - AzurePortal
+  - TestDrive  
+  - SPZA (AppSource-betűszó)
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- *Műveletek*
+  - "INS" – a telepítésre áll. Ez az Azure Marketplace-en vagy AppSource érhető el, amikor egy ügyfél megkeresi a gombot a termék megvásárlásához.
+  - "PLT" – a partner által vezetett próbaverzióra áll. Ez a AppSource akkor fordul elő, amikor egy ügyfél eléri a kapcsolatfelvétel gombot.
+  - "DNC –" – a (z) "nem" kapcsolatra vonatkozó. Ez a AppSource, amikor az alkalmazás oldalán megjelenő partnert kérik a kapcsolatfelvételre. Megosztjuk a vezetőket, hogy az ügyfél több mint az alkalmazásban szerepel, de nem kell kapcsolatba lépnie.
+  - "Létrehozás" – ez csak Azure Portalon belül történik, és minden alkalommal, amikor egy ügyfél megvásárolja az ajánlatát a fiókjához.
+  - "StartTestDrive" – csak tesztelési meghajtókra szolgál, és minden alkalommal, amikor egy ügyfél elindítja a tesztelési meghajtót.
 
-  *Műveletek*
+- *Kínál*
+  - "ellenőrzőpont. ellenőrzés-pont-r77-10sg-byol",
+  - "bitnami. openedxcypress",
+  - "docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a"
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+*Az ügyféladatok adatai*
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  *Kínál*
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  *Az ügyféladatok adatai*
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 További [információ a Lead info](./partner-center-portal/commercial-marketplace-get-customer-leads.md)alatt található. 
 

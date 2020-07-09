@@ -4,10 +4,9 @@ description: Azure Functions támogatja a futtatókörnyezet több verzióját. 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996720"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
@@ -27,7 +26,7 @@ A következő táblázat azt mutatja be, hogy mely programozási nyelvek támoga
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-További információk: [Támogatott nyelvek](supported-languages.md).
+További információ: [támogatott nyelvek](supported-languages.md).
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Futtatás adott verzión
 
@@ -43,7 +42,7 @@ Habár lehetséges, hogy a "helyben" történő frissítést manuálisan frissí
 
 A 2. x verziótól kezdődően telepítenie kell a bővítményeket az alkalmazás funkciói által használt egyes eseményindítók és kötések számára. Az egyetlen kivétel a HTTP-és időzítő-eseményindítók esetében, amelyek nem igényelnek kiterjesztést.  További információ: [kötési bővítmények regisztrálása és telepítése](./functions-bindings-register.md).
 
-A *function. JSON* vagy a függvény attribútumai a verziók között is módosulnak. Az Event hub `path` tulajdonság például most `eventHubName` . Az egyes kötésekhez kapcsolódó dokumentációra mutató hivatkozásokat a [meglévő kötési táblázat](#bindings) tartalmazza.
+A függvények *function.js* vagy attribútumai is módosulnak a verziók között. Az Event hub `path` tulajdonság például most `eventHubName` . Az egyes kötésekhez kapcsolódó dokumentációra mutató hivatkozásokat a [meglévő kötési táblázat](#bindings) tartalmazza.
 
 ### <a name="changes-in-features-and-functionality-after-version-1x"></a>A szolgáltatások és a funkciók változásai a 1. x verzió után
 
@@ -55,15 +54,15 @@ A 2. x verzióban a következő módosítások történtek:
 
 * A 2. x verziójú futtatókörnyezet nem tartalmaz beépített támogatást a webhook-szolgáltatók számára. Ez a változás a teljesítmény javítása érdekében történt. A HTTP-eseményindítók továbbra is használhatók webhookok végpontként.
 
-* A gazdagép konfigurációs fájljának (host. JSON) üresnek kell lennie, vagy tartalmaznia kell a karakterláncot `"version": "2.0"` .
+* A gazdagép konfigurációs fájljának (host.json) üresnek vagy sztringnek kell lennie `"version": "2.0"` .
 
 * A figyelés javítása érdekében a webjobs-irányítópultot a portálon, amely a beállítást használta, az [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) Azure Application Insights, amely a [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) beállítást használja. További információ: [Azure functions figyelése](functions-monitoring.md).
 
-* A Function alkalmazás összes függvényének ugyanazt a nyelvet kell megosztania. Function-alkalmazás létrehozásakor ki kell választania egy futásidejű veremet az alkalmazáshoz. A futásidejű verem [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) értékét az Alkalmazásbeállítások értéke határozza meg. Ez a követelmény a lábnyom és az indítási idő javítására lett hozzáadva. Helyi fejlesztés esetén ezt a beállítást a [Local. Settings. JSON fájlban](functions-run-local.md#local-settings-file)is fel kell venni.
+* A Function alkalmazás összes függvényének ugyanazt a nyelvet kell megosztania. Function-alkalmazás létrehozásakor ki kell választania egy futásidejű veremet az alkalmazáshoz. A futásidejű verem [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) értékét az Alkalmazásbeállítások értéke határozza meg. Ez a követelmény a lábnyom és az indítási idő javítására lett hozzáadva. Helyi fejlesztés esetén ezt a beállítást a [fájllocal.settings.js](functions-run-local.md#local-settings-file)is tartalmaznia kell.
 
-* Egy App Service csomagban lévő függvények alapértelmezett időtúllépése 30 percre módosul. A Host. JSON fájl [functionTimeout](functions-host-json.md#functiontimeout) beállításával manuálisan módosíthatja az időtúllépést a korlátlan értékre.
+* Egy App Service csomagban lévő függvények alapértelmezett időtúllépése 30 percre módosul. Manuálisan is módosíthatja az időtúllépést a host.js[functionTimeout](functions-host-json.md#functiontimeout) beállításával.
 
-* A HTTP-párhuzamosságok szabályozása alapértelmezés szerint a használati terv funkcióival valósul meg, alapértelmezés szerint a 100 egyidejű kérések száma. Ezt a [`maxConcurrentRequests`](functions-host-json.md#http) Host. JSON fájlban lévő beállításban módosíthatja.
+* A HTTP-párhuzamosságok szabályozása alapértelmezés szerint a használati terv funkcióival valósul meg, alapértelmezés szerint a 100 egyidejű kérések száma. Ezt a [`maxConcurrentRequests`](functions-host-json.md#http) host.jsfájljában lévő beállításban módosíthatja.
 
 * A [.net Core korlátozásai](https://github.com/Azure/azure-functions-host/issues/3414)miatt a F # script (. fsx) függvények támogatása el lett távolítva. A lefordított F # függvények (. FS) továbbra is támogatottak.
 
@@ -87,7 +86,7 @@ A 2. x alkalmazás 3. x verzióra való frissítése előtt a következő módos
 
 * A HTTP-kérések adattartalma már nem érhető el a-n keresztül `context.bindingData.req` .  Továbbra is elérhető bemeneti paraméterként, `context.req` és a-ben `context.bindings` .
 
-* A Node. js 8 már nem támogatott, és nem lesz végrehajtva 3. x függvényben.
+* A Node.js 8 már nem támogatott, és nem hajtható végre 3. x függvényben.
 
 #### <a name="net"></a>.NET
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67178794"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -27,7 +27,7 @@ Egy entitáshoz legfeljebb 252 egyéni tulajdonságot adhat meg.
 
 ### <a name="add-table-entities"></a>Tábla entitások hozzáadása
 
-Entitások hozzáadása egy táblához a **Add-AzTableRow**használatával. Ezek a példák az értékekkel `partition1` rendelkező partíciós kulcsokat használják `partition2`, és a sorok kulcsai megegyeznek az állapot rövidítésével. Az egyes entitások tulajdonságai a `username` következők `userid`: és. 
+Entitások hozzáadása egy táblához a **Add-AzTableRow**használatával. Ezek a példák az értékekkel rendelkező partíciós kulcsokat használják `partition1` `partition2` , és a sorok kulcsai megegyeznek az állapot rövidítésével. Az egyes entitások tulajdonságai a következők: `username` és `userid` . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -101,7 +101,7 @@ Get-AzTableRow -table $cloudTable `
 
 Ez a lekérdezés egy rekordot kérdez le.
 
-|mező|érték|
+|mező|value|
 |----|----|
 | userid | 1 |
 | felhasználónév | Chris |
@@ -118,7 +118,7 @@ Get-AzTableRow `
 
 Ez a lekérdezés egy rekordot kérdez le.
 
-|mező|érték|
+|mező|value|
 |----|----|
 | userid | 1 |
 | felhasználónév | Chris |
@@ -153,7 +153,7 @@ Get-AzTableRow -table $cloudTable `
 
 Az eredmények a Jessie2 rekordot mutatják.
 
-|mező|érték|
+|mező|value|
 |----|----|
 | userid | 2 |
 | felhasználónév | Jessie2 |

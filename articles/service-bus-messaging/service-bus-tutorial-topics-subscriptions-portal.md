@@ -1,20 +1,16 @@
 ---
 title: Leltár frissítése Azure Portal és témakörök/előfizetések használatával
 description: Ez az oktatóanyag bemutatja, hogyan küldhet és fogadhat témakörökhöz és előfizetésekhez tartozó üzeneteket, és hogyan adhat hozzá szűrési szabályokat a .NET használatával
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 01/21/2020
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76310118"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341694"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
 
@@ -55,7 +51,7 @@ Minden egyes [témakörre való előfizetés](service-bus-messaging-overview.md#
 
 Miután kiépítette a névteret és a témakört/előfizetéseket, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az előfizetések szűrési szabályainak létrehozására, majd az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
 
-### <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
+## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 
 A kód futtatásához tegye a következőt:
 

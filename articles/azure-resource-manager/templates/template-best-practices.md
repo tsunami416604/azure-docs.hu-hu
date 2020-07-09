@@ -2,25 +2,21 @@
 title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156412"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058061"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
-Ez a cikk a Azure Resource Manager-(ARM-) sablon létrehozásával kapcsolatos ajánlásokat ismerteti. Ezek a javaslatok segítenek elkerülni a gyakori problémákat, amikor egy ARM-sablont használ egy megoldás üzembe helyezéséhez.
-
-Az Azure-előfizetések szabályozásával kapcsolatos javaslatokért lásd [: az Azure Enterprise-állvány:](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)előfeltételként szükséges előfizetés szabályozása.
-
-Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.
+Ez a cikk bemutatja, hogyan használhatók az ajánlott eljárások az ARM-sablon összeállításakor. Ezek a javaslatok segítenek elkerülni a gyakori problémákat, amikor egy ARM-sablont használ egy megoldás üzembe helyezéséhez.
 
 ## <a name="template-limits"></a>Sablonok korlátai
 
-Korlátozza a sablon méretét 4 MB-ra, az egyes paramétereket pedig 64 KB-ra. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután az ismétlődő erőforrás-definíciókkal bővült, valamint a változók és paraméterek értékeit. 
+Korlátozza a sablon méretét 4 MB-ra, az egyes paramétereket pedig 64 KB-ra. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután az ismétlődő erőforrás-definíciókkal bővült, valamint a változók és paraméterek értékeit.
 
 A következőket is korlátozhatja:
 
@@ -93,7 +89,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 * Ne használjon paramétert az API-verzióhoz az erőforrástípus esetében. Az erőforrás-tulajdonságok és az értékek verziószáma eltérő lehet. Az IntelliSense egy szerkesztőprogramban nem tudja meghatározni a megfelelő sémát, ha az API-verzió értéke paraméter. Ehelyett a sablonban rögzített API-verziót kell használnia.
 
-* Használjon `allowedValues` takarékosan. Csak akkor használja, ha meg kell győződnie arról, hogy néhány érték nem szerepel az engedélyezett beállítások között. Ha túl széles `allowedValues` körben használja, letilthatja az érvényes központi telepítéseket, ha nem tartja naprakészen a listát.
+* Használjon `allowedValues` takarékosan. Csak akkor használja, ha meg kell győződnie arról, hogy néhány érték nem szerepel az engedélyezett beállítások között. Ha `allowedValues` túl széles körben használja, letilthatja az érvényes központi telepítéseket, ha nem tartja naprakészen a listát.
 
 * Ha a sablon egyik paramétere megegyezik a PowerShell üzembe helyezési parancsában szereplő paraméterekkel, az erőforrás-kezelő feloldja ezt az elnevezési ütközést úgy, hogy hozzáadja a Postfix **FromTemplate** a sablon paraméterhez. Ha például egy **ResourceGroupName** nevű paramétert tartalmaz a sablonban, az ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. Az üzembe helyezés során a rendszer kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**számára.
 
@@ -101,7 +97,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 * Mindig használja a felhasználónevek és jelszavak (vagy titkos kódok) paramétereit.
 
-* Minden `securestring` jelszóhoz és titokhoz használható. Ha bizalmas adatokat továbbít egy JSON-objektumban, használja a `secureObject` típust. A biztonságos karakterláncot vagy biztonságos objektumtípust tartalmazó sablon-paraméterek nem olvashatók be az erőforrás-telepítés után. 
+* `securestring`Minden jelszóhoz és titokhoz használható. Ha bizalmas adatokat továbbít egy JSON-objektumban, használja a `secureObject` típust. A biztonságos karakterláncot vagy biztonságos objektumtípust tartalmazó sablon-paraméterek nem olvashatók be az erőforrás-telepítés után. 
    
    ```json
    "parameters": {
@@ -114,13 +110,13 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
    }
    ```
 
-* Ne adja meg az alapértelmezett értékeket a felhasználónevek, jelszavak vagy bármely olyan érték számára `secureString` , amelyhez típus szükséges.
+* Ne adja meg az alapértelmezett értékeket a felhasználónevek, jelszavak vagy bármely olyan érték számára, amelyhez `secureString` típus szükséges.
 
 * Ne adja meg az alkalmazás támadási felületét növelő tulajdonságok alapértelmezett értékeit.
 
 ### <a name="location-recommendations-for-parameters"></a>Paraméterekre vonatkozó javaslatok
 
-* Egy paraméter használatával adja meg az erőforrások helyét, és állítsa be az alapértelmezett értéket `resourceGroup().location`. A Location paraméter megadása lehetővé teszi a sablon felhasználói számára, hogy olyan helyet adjon meg, amelyben a telepítésük engedéllyel rendelkezik.
+* Egy paraméter használatával adja meg az erőforrások helyét, és állítsa be az alapértelmezett értéket `resourceGroup().location` . A Location paraméter megadása lehetővé teszi a sablon felhasználói számára, hogy olyan helyet adjon meg, amelyben a telepítésük engedéllyel rendelkezik.
 
    ```json
    "parameters": {
@@ -134,7 +130,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
    },
    ```
 
-* Ne határozza `allowedValues` meg a Location paramétert. Előfordulhat, hogy a megadott webhelyek nem érhetők el az összes felhőben.
+* Ne határozza meg `allowedValues` a Location paramétert. Előfordulhat, hogy a megadott webhelyek nem érhetők el az összes felhőben.
 
 * Használja a Location paraméter értékét azon erőforrások esetében, amelyeknek valószínűleg ugyanazon a helyen kell lenniük. Ez a megközelítés lekicsinyíti a felhasználók számára a helyadatok megadására vonatkozó kérések számát.
 
@@ -164,7 +160,7 @@ A következő információk hasznosak lehetnek a [változók](template-variables
 
 A beállított [függőségek](define-resource-dependency.md) meghatározásakor kövesse az alábbi irányelveket:
 
-* Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. Ha már definiált `dependsOn` implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
+* Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. `dependsOn`Ha már definiált implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
 
 * Adja meg a gyermek erőforrást a szülő erőforrástól függőként.
 
@@ -174,7 +170,7 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 * Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 
@@ -234,9 +230,9 @@ A következő információk hasznosak lehetnek az [erőforrásokkal](template-sy
    * [WinRM-hozzáférés beállítása virtuális gépekhez Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a PowerShell használatával](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Külső hozzáférés engedélyezése linuxos virtuális géphez az Azure CLI használatával](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Külső hozzáférés engedélyezése linuxos virtuális géphez az Azure CLI használatával](../../virtual-machines/linux/nsg-quickstart.md)
 
-* A nyilvános IP-címek **domainnamelabel értékkel** tulajdonságának egyedinek kell lennie. A **domainnamelabel értékkel** értékének 3 és 63 karakter közöttinek kell lennie, és követnie kell az ebben a reguláris `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`kifejezésben megadott szabályokat:. Mivel a **uniqueString** függvény 13 karakter hosszúságú karakterláncot hoz létre, a **dnsPrefixString** paraméter 50 karakterre van korlátozva:
+* A nyilvános IP-címek **domainnamelabel értékkel** tulajdonságának egyedinek kell lennie. A **domainnamelabel értékkel** értékének 3 és 63 karakter közöttinek kell lennie, és követnie kell az ebben a reguláris kifejezésben megadott szabályokat: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Mivel a **uniqueString** függvény 13 karakter hosszúságú karakterláncot hoz létre, a **dnsPrefixString** paraméter 50 karakterre van korlátozva:
 
    ```json
    "parameters": {
@@ -275,7 +271,12 @@ A következő információk hasznosak lehetnek az [erőforrásokkal](template-sy
    > [!NOTE]
    > Annak biztosítása érdekében, hogy a titkos kódok titkosítva legyenek a virtuális gépek és bővítmények paraméterként való átadásakor, használja a megfelelő bővítmények **protectedsettingsfromkeyvault** tulajdonságát.
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>A test Toolkit használata
+
+Az ARM-sablon tesztelési eszközkészlete egy olyan parancsfájl, amely ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit segítségével megtudhatja, hogyan implementálhatja az ajánlott eljárásokat a sablonban.
+
+A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség az informatikai megvalósítás javítására. További információ: [ARM template test Toolkit](test-toolkit.md).
 
 ## <a name="next-steps"></a>További lépések
 

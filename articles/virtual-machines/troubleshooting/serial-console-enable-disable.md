@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451302"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Az Azure soros konzol engedélyezése és letiltása
@@ -34,7 +33,7 @@ A soros konzol le lehet tiltani egy adott virtuális gép vagy virtuálisgép-m�
 ## <a name="subscription-level-enabledisable"></a>Előfizetés szintű engedélyezés/letiltás
 
 > [!NOTE]
-> A parancs futtatása előtt győződjön meg arról, hogy a megfelelő felhőben (Azure Public Cloud, Azure USA Government Cloud) van. Megtekintheti a `az cloud list` -t, és beállíthatja a felhőt a `az cloud set -n <Name of cloud>`használatával.
+> A parancs futtatása előtt győződjön meg arról, hogy a megfelelő felhőben (Azure Public Cloud, Azure USA Government Cloud) van. Megtekintheti a `az cloud list` -t, és beállíthatja a felhőt a használatával `az cloud set -n <Name of cloud>` .
 
 ### <a name="azure-cli"></a>Azure CLI
 

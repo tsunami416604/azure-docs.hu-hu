@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339892"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge-ben való áthelyezéséhez
 
@@ -24,6 +23,7 @@ Az Azure-ba való áttelepítése során Azure IoT Edge modulokat használhat a 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Hozzon létre egy tároló-beállításjegyzéket a modulok tárolásához és kezeléséhez (Docker-lemezképek).
 > * Hozzon létre egy IoT Edge modult az Azure Stack Edge-eszközön való üzembe helyezéshez. 
 
@@ -63,7 +63,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker beállításjegyzék-szolgáltatás Azure Container Registry és a Docker hub. Ez a cikk a Container Registry használja.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás**gombra.
+2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 3. Nyújt
 
    1. Egy egyedi, az Azure-ban található, 5 – 50 alfanumerikus karaktert tartalmazó **beállításjegyzékbeli név** .
@@ -75,7 +75,7 @@ Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék 
 
       ![Tárolóregisztrációs adatbázis létrehozása](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 5. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet.
 
     ![Hozzáférési kulcsok beolvasása](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -107,7 +107,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
     5. Adja meg az előző szakaszban létrehozott tároló-beállításjegyzéket az első modul rendszerkép-tárháza. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére.
 
-        A végső sztring így néz `<Login server name>/<Module name>`ki. Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule`.
+        A végső sztring így néz ki `<Login server name>/<Module name>` . Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule` .
 
         ![3. új megoldás létrehozása](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -115,7 +115,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
     ![4. új megoldás létrehozása](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Tallózással keresse meg a korábban létrehozott **EdgeSolution** mappát, és mutasson rá. A VS Code ablak az öt legfelső szintű összetevővel tölti be IoT Edge megoldás munkaterületét. Ebben a cikkben nem módosítja a **. vscode** mappát, a **. gitignore** fájlt, az **. env** fájlt és a **Deployment. template. JSON** fájlt.
+5. Tallózással keresse meg a korábban létrehozott **EdgeSolution** mappát, és mutasson rá. A VS Code ablak az öt legfelső szintű összetevővel tölti be IoT Edge megoldás munkaterületét. A **. vscode** mappa, a **. gitignore** fájl, a **. env** fájl és a **deployment.template.js** nem módosítható ebben a cikkben.
     
     Az egyetlen módosítható összetevő a modulok mappa. Ez a mappa a modul és a Docker-fájlok C# kódját adja meg a modul tároló képként való felépítéséhez.
 
@@ -255,7 +255,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 2. Ha a rendszer jelszót kér, adja meg a jelszót. A bejelentkezési kiszolgáló, a Felhasználónév és a jelszó értékeit a Azure Portal tároló beállításjegyzékének **hozzáférési kulcsaiból** is lekérheti.
  
-3. A hitelesítő adatok megadása után leküldheti a modul rendszerképét az Azure Container registrybe. A VS Code Explorerben kattintson a jobb gombbal a **Module. JSON** fájlra, és válassza a **IoT Edge megoldás kiépítése és leküldése**lehetőséget.
+3. A hitelesítő adatok megadása után leküldheti a modul rendszerképét az Azure Container registrybe. A VS Code Explorerben kattintson a jobb gombbal a **module.js** fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget.
 
     ![IoT Edge-megoldás létrehozása és leküldése](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
@@ -272,7 +272,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
     *Program. cs (77, 44): figyelmeztetési CS1998: ez az aszinkron metódus nem rendelkezik "várakozási" operátorral, és szinkronban fog futni. Érdemes lehet a "várakozás" operátort használni, hogy a nem blokkoló API-hívásokat, vagy a "várakozási feladat. Run (...)" metódust használja a CPU-kötésű működéshez a háttérben futó szálon.*
 
-4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a Module. JSON fájlban található, formátummal `<repository>:<version>-<platform>`ellátott információ alapján építették. Ehhez a cikkhez hasonlóan `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`kell kinéznie.
+4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a rendszer a module.jsfájl formátumát tartalmazó információból épül fel `<repository>:<version>-<platform>` . Ehhez a cikkhez hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
 ## <a name="next-steps"></a>További lépések
 

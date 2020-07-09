@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213482"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE A SELECT (CTAS)
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Válassza a... lehetőséget. A-ben nem teszi lehetővé, hogy a művelet részeként módosítsa a terjesztési módszert vagy az index típusát. A létrehozásához `[dbo].[FactInternetSales_new]` használja a ROUND_ROBIN alapértelmezett terjesztési típusát, és a FÜRTÖZÖTT oszlopcentrikus index alapértelmezett felépítését.
+Válassza a... lehetőséget. A-ben nem teszi lehetővé, hogy a művelet részeként módosítsa a terjesztési módszert vagy az index típusát. A létrehozásához `[dbo].[FactInternetSales_new]` használja a ROUND_ROBIN alapértelmezett terjesztési típusát, és a FÜRTÖZÖTT OSZLOPCENTRIKUS index alapértelmezett felépítését.
 
 A CTAS segítségével azonban megadhatja a tábla és a tábla szerkezetének eloszlását is. Az előző példa átalakítása CTAS:
 
@@ -59,9 +59,9 @@ FROM    [dbo].[FactInternetSales];
 
 ## <a name="use-ctas-to-copy-a-table"></a>Táblázat másolása CTAS használatával
 
-A CTAS egyik leggyakoribb felhasználási célja, hogy a DDL módosításához létrehozza a tábla másolatát. Tegyük fel `ROUND_ROBIN`, hogy eredetileg létrehozta a táblát, és most módosítani szeretné egy oszlopra terjesztett táblára. A CTAS a terjesztési oszlop módosítása. A CTAS a particionálás, az indexelés vagy az oszlopok típusának módosítására is használhatja.
+A CTAS egyik leggyakoribb felhasználási célja, hogy a DDL módosításához létrehozza a tábla másolatát. Tegyük fel, hogy eredetileg létrehozta a táblát `ROUND_ROBIN` , és most módosítani szeretné egy oszlopra terjesztett táblára. A CTAS a terjesztési oszlop módosítása. A CTAS a particionálás, az indexelés vagy az oszlopok típusának módosítására is használhatja.
 
-Tegyük fel `ROUND_ROBIN`, hogy létrehozta ezt a táblázatot az alapértelmezett terjesztési típusával, és nem határoz meg terjesztési oszlopot a `CREATE TABLE`alkalmazásban.
+Tegyük fel, hogy létrehozta ezt a táblázatot az alapértelmezett terjesztési típusával `ROUND_ROBIN` , és nem határoz meg terjesztési oszlopot a alkalmazásban `CREATE TABLE` .
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-Most létre kell hoznia egy új példányt a táblából, amelynek segítségével `Clustered Columnstore Index`kihasználhatja a fürtözött oszlopcentrikus-táblák teljesítményét. Ezt a `ProductKey`táblázatot is el kell osztania, mert az az oszlophoz való csatlakozást tervezi, és el szeretné kerülni az adatáthelyezést `ProductKey`az illesztések során. Végül pedig a particionálást is fel kell vennie, `OrderDateKey`így a régi partíciók eldobásával gyorsan törölheti a régi adatbázisokat. Itt látható a CTAS utasítás, amely egy új táblába másolja a régi táblát.
+Most létre kell hoznia egy új példányt a táblából, amelynek segítségével `Clustered Columnstore Index` kihasználhatja a fürtözött oszlopcentrikus-táblák teljesítményét. Ezt a táblázatot is el kell osztania `ProductKey` , mert az az oszlophoz való csatlakozást tervezi, és el szeretné kerülni az adatáthelyezést az illesztések során `ProductKey` . Végül pedig a particionálást is fel kell vennie `OrderDateKey` , így a régi partíciók eldobásával gyorsan törölheti a régi adatbázisokat. Itt látható a CTAS utasítás, amely egy új táblába másolja a régi táblát.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-A `FROM` szinapszis SQL nem támogatja az ANSI-illesztéseket egy `UPDATE` utasítás záradékában, ezért módosítás nélkül nem használhatja az előző példát.
+A szinapszis SQL nem támogatja az ANSI-illesztéseket `FROM` egy `UPDATE` utasítás záradékában, ezért módosítás nélkül nem használhatja az előző példát.
 
 Az előző példát lecserélve egy CTAS és egy implicit illesztés kombinációját is használhatja:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI illesztés a DELETE utasításokhoz
 
-Előfordulhat, hogy az adattörlés legjobb módja az CTAS használata, különösen az `DELETE` olyan utasítások esetében, amelyek ANSI illesztési szintaxist használnak. Ennek az az oka, hogy a szinapszis SQL nem támogatja `FROM` az ANSI illesztéseket egy `DELETE` utasítás záradékában. Az adattörlés helyett válassza ki a megőrizni kívánt adatértékeket.
+Előfordulhat, hogy az adattörlés legjobb módja az CTAS használata, különösen az olyan utasítások esetében, `DELETE` amelyek ANSI illesztési szintaxist használnak. Ennek az az oka, hogy a szinapszis SQL nem támogatja az ANSI illesztéseket `FROM` egy utasítás záradékában `DELETE` . Az adattörlés helyett válassza ki a megőrizni kívánt adatértékeket.
 
 A következő példa egy konvertált `DELETE` utasítást mutat be:
 
@@ -232,9 +232,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 ## <a name="replace-merge-statements"></a>Egyesítési utasítások cseréje
 
-Az egyesítési utasítások (legalább részben) a CTAS használatával cserélhetők fel. A `INSERT` és a `UPDATE` egyetlen utasítást kombinálhatja. A törölt rekordokat az `SELECT` utasításból kell korlátozni, hogy kihagyják az eredményekből.
+Az egyesítési utasítások (legalább részben) a CTAS használatával cserélhetők fel. A `INSERT` és a `UPDATE` egyetlen utasítást kombinálhatja. A törölt rekordokat az utasításból kell korlátozni `SELECT` , hogy kihagyják az eredményekből.
 
-Az alábbi példa egy `UPSERT`:
+Az alábbi példa egy `UPSERT` :
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-A lekérdezés teljesen jól fut. A probléma a partíciós kapcsoló kipróbálásakor jön. A tábla definíciói nem egyeznek. Ahhoz, hogy a táblázat-definíciók megegyezzenek, módosítsa `ISNULL` a CTAS egy függvény hozzáadásához, amely az oszlop nullára vonatkozó attribútumának megőrzését végzi.
+A lekérdezés teljesen jól fut. A probléma a partíciós kapcsoló kipróbálásakor jön. A tábla definíciói nem egyeznek. Ahhoz, hogy a táblázat-definíciók megegyezzenek, módosítsa a CTAS egy függvény hozzáadásához, `ISNULL` amely az oszlop nullára vonatkozó attribútumának megőrzését végzi.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

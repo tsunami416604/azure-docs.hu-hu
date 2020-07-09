@@ -6,19 +6,19 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431045"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963886"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott eljárások az adattárházak betöltéséhez
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott adatbetöltési eljárások adatraktározáshoz
 
 Javaslatok és teljesítmény-optimalizálás az adat betöltéséhez
 
@@ -144,6 +144,6 @@ A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a PolyBase-ről és a kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](data-loading-overview.md).
+- További információ a PolyBase-ről és a kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Betöltési oktatóanyag: [Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Az adatbetöltések monitorozása: [A számítási feladat monitorozása DMV-kkel](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

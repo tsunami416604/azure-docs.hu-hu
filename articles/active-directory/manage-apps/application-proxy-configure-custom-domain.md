@@ -3,25 +3,24 @@ title: Egyéni tartományok az Azure AD Application Proxyban | Microsoft Docs
 description: Egyéni tartományok konfigurálása és kezelése az Azure AD Application Proxyban.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
-ms.reviewer: harshja
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764910"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
@@ -87,7 +86,7 @@ Az alkalmazás közzététele az Application proxyn keresztül egyéni tartomán
    
 4. A **külső URL-cím** mezőben adja le a listát, és válassza ki a használni kívánt egyéni tartományt.
    
-5. Válassza a **Hozzáadás** lehetőséget.
+5. Válassza a **Hozzáadás** elemet.
    
    ![Egyéni tartomány kiválasztása](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -138,7 +137,7 @@ Nem ajánlott privát legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT használni, 
 
 Az összes tanúsítványkezelő az egyes alkalmazások oldalain keresztül történik. Nyissa meg **az alkalmazás alkalmazásproxy lapját** a **tanúsítvány** mező eléréséhez.
 
-Ugyanazt a tanúsítványt több alkalmazáshoz is használhatja. Ha egy feltöltött tanúsítvány egy másik alkalmazással működik, a rendszer automatikusan alkalmazza. Az alkalmazás hozzáadásakor vagy konfigurálásakor a rendszer nem kéri újra a feltöltést. 
+A tanúsítvány feltöltése után a rendszer automatikusan alkalmazza azokat az **új** alkalmazásokra is, amelyek ugyanazt a tanúsítványt használják. A meglévő alkalmazásokhoz tartozó tanúsítványt újra fel kell töltenie a bérlőben.
 
 Egy tanúsítvány lejáratakor figyelmeztető üzenet jelenik meg, amely egy másik tanúsítvány feltöltését kéri. Ha a tanúsítványt visszavonják, a felhasználók biztonsági figyelmeztetést kaphatnak az alkalmazáshoz való hozzáféréskor. Egy alkalmazás tanúsítványának frissítéséhez navigáljon az **alkalmazás alkalmazásproxy** lapjára, válassza a **tanúsítvány**lehetőséget, és töltsön fel egy új tanúsítványt. Ha a régi tanúsítványt más alkalmazások nem használják, azt a rendszer automatikusan törli. 
 

@@ -4,10 +4,9 @@ description: Ez a cikk azt ismerteti, hogyan hozhatók létre egyéni riasztáso
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75730925"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémákkal kapcsolatos riasztások beállítása a tárolókhoz készült Azure Monitorban
@@ -100,7 +99,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->A következő lekérdezések a-cluster- \<Name> és \<a-Controller-Name> helyőrző értékeket használják a fürt és a vezérlő jelölésére. A riasztások beállításakor cserélje le őket a környezetre jellemző értékekre.
+>A következő lekérdezések a helyőrző értékeket használják, \<your-cluster-name> és a \<your-controller-name> fürtöt és a vezérlőt jelölik. A riasztások beállításakor cserélje le őket a környezetre jellemző értékekre.
 
 A következő lekérdezés kiszámítja a vezérlőben lévő összes tároló átlagos CPU-kihasználtságát a vezérlő minden tároló példányának átlagos CPU-kihasználtsága alapján percenként. A mérték a tárolóhoz beállított korlát százalékát adja meg.
 
@@ -248,7 +247,7 @@ let endDateTime = now();
 >[!NOTE]
 >Bizonyos Pod fázisok (például *függő*, *sikertelen*vagy *ismeretlen*) riasztásához módosítsa a lekérdezés utolsó sorát. Például a *FailedCount* való riasztáshoz használja a következőt: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-A következő lekérdezés a fürtcsomópontok lemezeit adja vissza, amelyek meghaladják a felhasznált 90%-os szabad területet. A fürt AZONOSÍTÓjának lekéréséhez először futtassa a következő lekérdezést, és másolja az értéket `ClusterId` a tulajdonságból:
+A következő lekérdezés a fürtcsomópontok lemezeit adja vissza, amelyek meghaladják a felhasznált 90%-os szabad területet. A fürt AZONOSÍTÓjának lekéréséhez először futtassa a következő lekérdezést, és másolja az értéket a `ClusterId` tulajdonságból:
 
 ```kusto
 InsightsMetrics
@@ -289,7 +288,7 @@ Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure M
 4. A bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezen a lapon Azure Log Analytics-lekérdezéseket írhat és futtathat.
 5. A **naplók** lapon illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe, majd kattintson a **Futtatás** elemre az eredmények ellenőrzéséhez. Ha nem hajtja végre ezt a lépést, a **+ új riasztási** lehetőség nem választható ki.
 6. A log-riasztás létrehozásához válassza az **+ új riasztás** elemet.
-7. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni \<naplóbeli keresés logika nélküli,>** előre definiált egyéni napló feltétele. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
+7. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni \<logic undefined> naplók keresése** előre definiált egyéni naplózási feltétel. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
 8. Illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe.
 9. A riasztást a következőképpen állíthatja be:
 

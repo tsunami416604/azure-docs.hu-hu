@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan csatlakozhat a GitHubhoz, és hogyan importálh
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ce65d316b8236b83435388d2c1883cb9b89b03a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262888"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Jegyzetfüzetek importálása egy GitHub-tárházból a Azure Cosmos DBba
 
@@ -29,7 +29,7 @@ A saját GitHub-adattárakhoz vagy más nyilvános GitHub-adattárakhoz is csatl
 
 1. Megnyílik egy lap, ahol dönthet úgy, hogy csak a **nyilvános** vagy **nyilvános és a privát**adattárakhoz tud csatlakozni.  A kötelező beállítás kiválasztása után válassza a **hozzáférés engedélyezése**lehetőséget. A GitHub-fiókban lévő adattárak eléréséhez Azure Cosmos DB szükséges a hitelesítés.
 
-   ![A GitHub-adattárakhoz való hozzáférés engedélyezése Azure Cosmos DB](./media/import-github-notebooks/authorize-access-github.png)
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="A GitHub-adattárakhoz való hozzáférés engedélyezése Azure Cosmos DB":::
 
 1. A rendszer átirányítja a "github.com" weblapra, ahol megerősítheti az engedélyt. Kattintson a **AzureCosmosDBNotebooks engedélyezése** gombra, és adja meg a GitHub-fiók jelszavát a parancssorban.
 
@@ -37,7 +37,7 @@ A saját GitHub-adattárakhoz vagy más nyilvános GitHub-adattárakhoz is csatl
 
 1. Miután kiválasztotta a szükséges tárházat, a tárház bejegyzése a nem **rögzített repók** szakaszból a **rögzített repók** szakaszba kerül. Ha szükséges, az adott tárház adott ágát is kiválaszthatja, hogy importálja a jegyzetfüzeteket a rendszerből.
 
-   ![Tárház és ág kiválasztása](./media/import-github-notebooks/choose-repo-branch.png)
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Tárház és ág kiválasztása":::
 
 1. Az importálási művelet befejezéséhez kattintson **az OK gombra** . A tárház kiválasztott ágában elérhető összes jegyzetfüzetet az Azure Cosmos-fiókjába importálja a rendszer.
 
@@ -53,7 +53,7 @@ A meglévő jegyzetfüzetek szerkesztését követően válassza a **Mentés**le
 
 A módosítások véglegesítése után a szokásos GitHub-folyamat során általában leküldi a módosításokat egy távoli rendszerbe. Ebben az esetben azonban a véglegesítési lehetőség a frissítések a GitHubra történő "előkészítését, véglegesítését és kitolását" szolgálja.
 
-![Jegyzetfüzetek szerkesztése és módosítások elvégzése a GitHubon](./media/import-github-notebooks/commit-changes-github.png)
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Jegyzetfüzetek szerkesztése és módosítások elvégzése a GitHubon":::
 
 ## <a name="next-steps"></a>További lépések
 

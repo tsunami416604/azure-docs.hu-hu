@@ -4,16 +4,16 @@ description: Felhasználói felületi eszköz telepítése Azure Resource Manage
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: abe9b060793983e42ab432924ca5d6d7f43d307d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514226"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
@@ -40,7 +40,7 @@ A felügyeleti eszköz telepítése előtt szüksége lesz egy Azure Active Dire
 
 - Az Azure Multi-Factor Authentication (MFA) le van tiltva
 - Engedéllyel rendelkezik erőforrások létrehozásához az Azure-előfizetésében
-- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a [szükséges engedélyek](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)utasításait követve.
+- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a [szükséges engedélyek](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)utasításait követve.
 
 A felügyeleti eszköz üzembe helyezése és konfigurálása után javasoljuk, hogy kérje meg a felhasználót, hogy indítsa el a felügyeleti felhasználói felületet, és győződjön meg róla, hogy minden működik. A felügyeleti felhasználói felületet indító felhasználónak szerepkör-hozzárendeléssel kell rendelkeznie, amely lehetővé teszi a Windows rendszerű virtuális asztali bérlő megtekintését vagy szerkesztését.
 
@@ -52,11 +52,11 @@ Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi u
 
 1. Nyissa meg a [GitHub Azure RDS-templates oldalt](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
 2. A sablon üzembe helyezése az Azure-ban.
-    - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget. 
+    - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget.
     - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
         1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
         2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-        3. Közvetlenül a <https://portal.azure.com/> hashtag (#) után és azt megelőzően adja meg a (z) (@) jelet a bérlői tartománynév után. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Közvetlenül <https://portal.azure.com/> a hashtag (#) után és azt megelőzően adja meg a (z) (@) jelet a bérlői tartománynév után. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/> .
         4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
         5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
 3. A paraméterek megadásakor tegye a következőket:
@@ -71,11 +71,13 @@ A GitHub-Azure Resource Manager sablon befejezése után egy olyan erőforráscs
 
 A bejelentkezés és a felügyeleti eszköz használata előtt meg kell adnia a felügyeleti eszközhöz társított új Azure AD-alkalmazáshoz való hozzájárulásukat. A belefoglalt engedély lehetővé teszi, hogy a felügyeleti eszköz a Windows virtuális asztali felügyeleti hívásokat a felhasználó nevében az eszközre bejelentkezett felhasználó nevében végezze el.
 
-![Képernyőkép, amely a felhasználói felületi felügyeleti eszközhöz való hozzáféréskor megadott engedélyeket mutatja.](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép, amely a felhasználói felületi felügyeleti eszközhöz való hozzáféréskor megadott engedélyeket mutatja.](../media/management-ui-delegated-permissions.png)
 
 Az eszközre való bejelentkezéshez használható felhasználó meghatározásához lépjen a [Azure Active Directory felhasználói beállítások lapra](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel, hogy a felhasználók milyen értékkel férhetnek hozzá a **vállalati adatokhoz a nevükben**.
 
-![Képernyőkép, amely azt mutatja, hogy a felhasználók megadhatnak-e jóváhagyást az alkalmazásoknak csak a felhasználó számára.](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép, amely azt mutatja, hogy a felhasználók megadhatnak-e jóváhagyást az alkalmazásoknak csak a felhasználó számára.](../media/management-ui-user-consent-allowed.png)
 
 - Ha az érték értéke **Igen**, akkor a Azure Active Directory bármely felhasználói fiókjával bejelentkezhet, és csak az adott felhasználó beleegyezett. Ha azonban később egy másik felhasználóval jelentkezik be a felügyeleti eszközre, akkor újra kell végrehajtania ugyanezt a hozzájárulásukat.
 - Ha a **nem**értékre van állítva, akkor a Azure Active Directory globális rendszergazdájaként kell bejelentkeznie, és rendszergazdai jogosultsággal kell rendelkeznie a címtár összes felhasználója számára. Más felhasználók nem fognak megjelenni a jóváhagyásban.
@@ -83,11 +85,12 @@ Az eszközre való bejelentkezéshez használható felhasználó meghatározás�
 
 Ha eldöntötte, hogy melyik felhasználót fogja használni a beleegyezikés megadásához, kövesse az alábbi utasításokat az eszköz beleegyezikének biztosításához:
 
-1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például: <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például: <https://rdmimgmtweb-210520190304.azurewebsites.net> .
 2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
 3. Ha globális rendszergazdai jogosultsággal rendelkezik, most bejelölheti a **szervezet nevében**való engedélyezéshez szükséges jelölőnégyzetet. Az **elfogadás** lehetőséget választva adja meg a beleegyező értéket.
-   
-   ![A felhasználó vagy a rendszergazda által megjelenő teljes körű beleegyezikés oldalra mutató képernyőkép.](../media/management-ui-consent-page.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![A felhasználó vagy a rendszergazda által megjelenő teljes körű beleegyezikés oldalra mutató képernyőkép.](../media/management-ui-consent-page.png)
 
 Ekkor a felügyeleti eszközre kerül.
 
@@ -97,11 +100,11 @@ Miután beleegyezett a szervezetbe vagy egy adott felhasználóhoz, bármikor ho
 
 Az eszköz elindításához kövesse az alábbi utasításokat:
 
-1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például: <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például: <https://rdmimgmtweb-210520190304.azurewebsites.net> .
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
 4. Amikor kiválasztja az **alapértelmezett bérlői csoportot**, egy menü jelenik meg az ablak bal oldalán. Ebben a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
-  
+
   > [!NOTE]
   > Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
 

@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: cde959d8e075b55cb6cbb37479ca49cdd8a8c0c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233737"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Ruby on Rails számára az Azure DevOps Starter használatával
@@ -67,7 +67,7 @@ Az Azure DevOps Starter létrehoz egy git-tárházat az Azure-folyamatokban vagy
 
 1. A tárház klónozási URL-címének megtekintéséhez válassza a jobb felső sarokban található **klónozás** elemet. A git-tárházat a kedvenc IDE-ben is klónozott. A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
 
-1. A bal oldalon nyissa meg az *app/views/Pages/Home. html. Erb* fájlt, majd válassza a **Szerkesztés**lehetőséget.
+1. A bal oldalon nyissa meg az *app/views/Pages/home.html. Erb* fájlt, majd válassza a **Szerkesztés**lehetőséget.
 
 1. Módosítsa a fájlt. Például módosítsa a div-címkék egyikének szövegét.
 
@@ -117,7 +117,7 @@ Az Azure DevOps Starter automatikusan beállítja az Azure DevOps-szervezet telj
 
 1. Válassza a **naplók**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölheti az Azure App Service példányt és az ebben a rövid útmutatóban létrehozott kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 

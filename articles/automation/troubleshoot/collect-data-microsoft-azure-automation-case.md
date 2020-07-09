@@ -14,13 +14,12 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684845"
 ---
-# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Az Microsoft Azure Automation esetében az eset megnyitásakor begyűjtött adatok
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Összegyűjtendő adatok egy Microsoft Azure Automation-eset megnyitásakor
 
 Ez a cikk néhány olyan információt ismertet, amelyet össze kell gyűjtenie, mielőtt megnyit egy esetet a Azure Automation Microsoft Azure-támogatással. Ez az információ nem szükséges az eset megnyitásához. Ugyanakkor a Microsoft segítséget nyújthat a probléma gyorsabb megoldásában. Emellett előfordulhat, hogy a támogatási mérnök ezt az adatkérést az eset megnyitása után is megkéri.
 

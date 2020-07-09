@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84717800"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszköz hitelesítése X.509-es hitelesítésszolgáltatói tanúsítványokkal
 
@@ -50,7 +49,7 @@ Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa kriptográfiai 
 
 ![IMG-Generic-CERT-Chain-of-Trust](./media/generic-cert-chain-of-trust.png)
 
-Az eszköz tanúsítványának (más néven levél tanúsítványának) a *tulajdonos nevét* kell beállítani a IoT-eszköz Azure-IoT hub való regisztrálása során használt **eszköz-azonosítóhoz** . Ez a beállítás a hitelesítéshez szükséges.
+Az eszköz tanúsítványának (más néven levél tanúsítványának) a *tulajdonos nevét* kell beállítania a IoT-eszköz Azure-IoT hub való regisztrálása során használt **eszköz-azonosítóra** ( `CN=deviceId` ). Ez a beállítás a hitelesítéshez szükséges.
 
 Itt megtudhatja, hogyan [hozhat létre egy tanúsítványláncot](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) az eszközök aláírása során.
 

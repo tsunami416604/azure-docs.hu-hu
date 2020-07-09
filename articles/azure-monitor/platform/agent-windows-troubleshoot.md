@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333507"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>A Windowshoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
@@ -20,7 +20,7 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 
 * A Premier szintű támogatási csomaggal rendelkező ügyfelek a [Premier](https://premier.microsoft.com/)szintű támogatási kérést is megnyithatják.
 * Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
-* Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) , vagy egy újat. 
+* Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat, [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy egy újat. 
 
 ## <a name="important-troubleshooting-sources"></a>Fontos hibaelhárítási források
 
@@ -44,7 +44,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
 
 - Engedélyezze az [Azure Log Analytics Agent Health értékelését](../insights/solution-agenthealth.md) a munkaterületen. A Agent Health irányítópulton tekintse meg a nem **válaszoló ügynökök száma** oszlopban, hogy gyorsan megjelenjen-e az ügynök listázása.  
 
-- A következő lekérdezés futtatásával erősítse meg, hogy az ügynök szívverést küld a munkaterületnek, amelyet a jelentéshez konfigurált. Cserélje `<ComputerName>` le a helyére a gép tényleges nevét.
+- A következő lekérdezés futtatásával erősítse meg, hogy az ügynök szívverést küld a munkaterületnek, amelyet a jelentéshez konfigurált. Cserélje le a helyére `<ComputerName>` a gép tényleges nevét.
 
     ```
     Heartbeat 
@@ -58,7 +58,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
 
     ![TestCloudConnection-eszköz végrehajtási eredményei](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Szűrje a *Operations Manager* eseménynaplót az **eseményforrás** - *állapotfigyelő szolgáltatás modulok*, a *HealthService*és a *szolgáltatás-összekötő* alapján, és a szűrés **eseményvezérelt** *figyelmeztetéssel* és *hibával* erősítse meg, hogy az alábbi táblázatban szereplő írásos események szerepelnek-e. Ha vannak, tekintse át az egyes lehetséges eseményekhez tartozó megoldási lépéseket.
+- Szűrje a *Operations Manager* eseménynaplót az **eseményforrás**  -  *állapotfigyelő szolgáltatás modulok*, a *HealthService*és a *szolgáltatás-összekötő* alapján, és a szűrés **eseményvezérelt** *figyelmeztetéssel* és *hibával* erősítse meg, hogy az alábbi táblázatban szereplő írásos események szerepelnek-e. Ha vannak, tekintse át az egyes lehetséges eseményekhez tartozó megoldási lépéseket.
 
     |Eseményazonosító |Forrás |Leírás |Megoldás: |
     |---------|-------|------------|-----------|
@@ -68,7 +68,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
     |2127 |Állapotfigyelő szolgáltatás modulok |Hiba történt az adatküldés során kapott hibakód miatt |Ha ez csak időnként történik a nap folyamán, akkor csak véletlenszerű anomália lehet, amely figyelmen kívül hagyható. Figyelje meg, hogy milyen gyakran történik. Ha gyakran fordulnak elő a nap folyamán, először ellenőrizze a hálózati konfigurációt és a proxybeállításokat. Ha a leírás tartalmazza a 404-es HTTP-hibakódot, és ez az első alkalom, amikor az ügynök megpróbál elküldeni egy adatküldés a szolgáltatásnak, a rendszer 500 hibát tartalmaz egy belső 404 hibakódtal. 404 nem található, ami azt jelzi, hogy az új munkaterület tárterülete még mindig kiépítve van. A következő próbálkozáskor a rendszer az elvárt módon fogja sikeresen írni a munkaterületet. Az 403-es HTTP-hiba az engedélyt vagy a hitelesítő adatokat is jelezheti. A probléma megoldásához a 403 hibával kapcsolatos további információ található.|
     |4000 |Szolgáltatás-összekötő |A DNS-névfeloldás nem sikerült |A gép nem tudja feloldani az adatok szolgáltatásba való küldésekor használt internetcímet. Ez lehet a DNS-feloldó beállítások a gépen, helytelen proxybeállítások vagy esetleg egy ideiglenes DNS-probléma a szolgáltatónál. Ha ez rendszeres időközönként történik, a hálózattal kapcsolatos átmeneti probléma okozhatja.|
     |4001 |Szolgáltatás-összekötő |Nem sikerült kapcsolódni a szolgáltatáshoz. |Ez a hiba akkor fordulhat elő, ha az ügynök nem tud közvetlenül kommunikálni, vagy tűzfalon vagy proxykiszolgálón keresztül a Azure Monitor szolgáltatáshoz. Ellenőrizze az ügynök proxyjának beállításait, illetve azt, hogy a hálózati tűzfal/proxy lehetővé teszi a TCP-forgalmat a számítógépről a szolgáltatásba.|
-    |4002 |Szolgáltatás-összekötő |A szolgáltatás a 403-as HTTP-állapotkódot adta vissza egy lekérdezésre válaszul. A szolgáltatás állapotáról érdeklődjön a szolgáltatás rendszergazdájánál. A lekérdezés később újra próbálkozik. |Ez a hiba az ügynök kezdeti regisztrációs fázisában íródik, és a következőhöz hasonló URL-címet fog látni: *https://\<munkaterület azonosítója>. OMS.opinsights.Azure.com/AgentService.SVC/AgentTopologyRequest*. Az 403-es hibakód tiltott, és a nem megfelelő típusú munkaterület-azonosító vagy-kulcs okozhatja, vagy helytelenek az adattípusok és az idő a számítógépen. Ha az idő +/-15 perc az aktuális időponttól, akkor a bevezetés sikertelen lesz. Ennek kijavítania a Windows-számítógép dátumát és/vagy időzónáját.|
+    |4002 |Szolgáltatás-összekötő |A szolgáltatás a 403-as HTTP-állapotkódot adta vissza egy lekérdezésre válaszul. A szolgáltatás állapotáról érdeklődjön a szolgáltatás rendszergazdájánál. A lekérdezés később újra próbálkozik. |Ez a hiba az ügynök kezdeti regisztrációs fázisában van írva, és egy, a következőhöz hasonló URL-címet fog látni: *https:// \<workspaceID> . OMS.opinsights.Azure.com/AgentService.SVC/AgentTopologyRequest*. Az 403-es hibakód tiltott, és a nem megfelelő típusú munkaterület-azonosító vagy-kulcs okozhatja, vagy helytelenek az adattípusok és az idő a számítógépen. Ha az idő +/-15 perc az aktuális időponttól, akkor a bevezetés sikertelen lesz. Ennek kijavítania a Windows-számítógép dátumát és/vagy időzónáját.|
 
 ## <a name="data-collection-issues"></a>Adatgyűjtés – problémák
 
@@ -91,7 +91,7 @@ Heartbeat
 
 Ha a lekérdezés az eredményeket adja vissza, akkor meg kell határoznia, hogy egy adott adattípus nem kerül begyűjtésre és továbbításra a szolgáltatásnak. Ezt az okozhatja, hogy az ügynök nem kap frissített konfigurációt a szolgáltatástól, vagy egy másik tünet, amely megakadályozza, hogy az ügynök rendesen működik. A további hibaelhárításhoz hajtsa végre az alábbi lépéseket.
 
-1. Nyisson meg egy rendszergazda jogú parancssort a számítógépen, és írja `net stop healthservice && net start healthservice`be a parancsot az ügynök szolgáltatás újraindításához.
+1. Nyisson meg egy rendszergazda jogú parancssort a számítógépen, és írja be a parancsot az ügynök szolgáltatás újraindításához `net stop healthservice && net start healthservice` .
 2. Nyissa meg az *Operations Manager* eseménynaplót, és keressen rá a *7023, 7024, 7025, 7028* és *1210* **eseményazonosító** az **eseményforrás** *HealthService*.  Ezek az események azt jelzik, hogy az ügynök sikeresen fogadta a konfigurációt Azure Monitor és aktívan figyeli a számítógépet. Az 1210-es azonosítójú esemény leírása az utolsó sorban is megadhatja az ügynök figyelési hatókörében található összes megoldást és elemzést.  
 
     ![1210-es azonosítójú esemény leírása](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)

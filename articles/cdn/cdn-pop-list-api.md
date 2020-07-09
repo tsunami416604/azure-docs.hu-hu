@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: a58fd7c6f50cd46ac3c34cd7e5bd329c0007e5f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668287"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>A Azure CDN aktuális POP IP-listájának beolvasása
 
@@ -39,7 +38,7 @@ Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a f
 * Azure CDN a Microsoft IPv4-háttér IP-területéről: 147.243.0.0/16
 * A Microsoft IPv6-háttér IP-címének Azure CDNe: 2a01:111:2050::/44
 
-Az IP-címtartományok és a Microsoft-szolgáltatásokhoz tartozó szolgáltatási címkék [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók
+Ha Azure CDN a Microsofttól szeretné használni a szolgáltatás címkéit, használja az Azure-beli bejárati ajtó címkéjét. Az IP-címtartományok és a Microsoft-szolgáltatásokhoz tartozó szolgáltatási címkék [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók
 
 
 ## <a name="typical-use-case"></a>Tipikus használati eset

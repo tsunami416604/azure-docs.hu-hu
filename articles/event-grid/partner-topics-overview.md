@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid partnerekkel kapcsolatos témakörök
 description: A harmadik féltől származó Event Grid SaaS-és Pásti-partnerektől származó eseményeket közvetlenül az Azure-szolgáltatásoknak küldheti el Azure Event Grid.
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: f47d63ce79846e94e992df93af1768aad3c17e67
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.date: 07/07/2020
+ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170953"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115995"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Partneri témakörök Azure Event Grid (előzetes verzió)
 A partneri témakörök segítségével közvetlenül a Azure Event Grid csatlakozhat a harmadik féltől származó eseményekhez. Ez az integráció lehetővé teszi, hogy az Azure-szolgáltatásokból származó eseményekre való előfizetéssel azonos módon fizessen elő a partnerek eseményeire. 

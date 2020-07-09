@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure A
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78193380"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
@@ -38,7 +37,7 @@ Az Azure AD Service Fabric-fürttel való konfigurálásának néhány lépésé
 
 A szkriptek segítségével két Azure AD-alkalmazást hozhat létre a fürthöz való hozzáférés vezérléséhez: egy webalkalmazást és egy natív alkalmazást. Miután létrehozta az alkalmazásokat a fürt képviseletére, a [Service Fabric által támogatott szerepkörökhöz](service-fabric-cluster-security-roles.md)hozza létre a felhasználókat: csak olvasható és rendszergazda.
 
-Futtassa `SetupApplications.ps1`a parancsot, és adja meg a bérlő azonosítóját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként.  Felhasználóneveket és jelszavakat is meg kell adnia a felhasználók számára. Például:
+Futtassa `SetupApplications.ps1` a parancsot, és adja meg a bérlő azonosítóját, a fürt nevét és a webalkalmazás válaszának URL-címét paraméterként.  Felhasználóneveket és jelszavakat is meg kell adnia a felhasználók számára. Például:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -49,18 +48,18 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > A nemzeti felhők (például Azure Government, Azure China, Azure Germany) esetében meg kell adnia a `-Location` paramétert is.
 
-A *TenantId* a PowerShell-parancs `Get-AzureSubscription`végrehajtásával találhatja meg. A parancs végrehajtása az összes előfizetés TenantId jeleníti meg.
+A *TenantId* a PowerShell-parancs végrehajtásával találhatja meg `Get-AzureSubscription` . A parancs végrehajtása az összes előfizetés TenantId jeleníti meg.
 
 A *ClusterName* a parancsfájl által létrehozott Azure ad-alkalmazások előtagját használja. Nem kell pontosan megegyeznie a fürt tényleges nevével. Kizárólag arra szolgál, hogy megkönnyítse az Azure AD-összetevők leképezését arra a Service Fabric-fürtre, amelyen a használatban van.
 
 A *WebApplicationReplyUrl* az az alapértelmezett végpont, amelyet az Azure ad visszaküld a felhasználóknak a bejelentkezés befejezését követően. Állítsa ezt a végpontot a fürt Service Fabric Explorer végpontjának. Ha egy meglévő fürtöt jelölő Azure AD-alkalmazásokat hoz létre, győződjön meg arról, hogy az URL-cím megfelel a meglévő fürt végpontjának. Ha új fürthöz hoz létre alkalmazásokat, tervezze meg a fürt által használt végpontot, és győződjön meg arról, hogy nem használja a meglévő fürt végpontját. Alapértelmezés szerint a Service Fabric Explorer végpont:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https:// &lt; cluster_domain &gt; : 19080/Explorer
 
 A rendszer felszólítja, hogy jelentkezzen be egy olyan fiókba, amely rendszergazdai jogosultságokkal rendelkezik az Azure AD-bérlőhöz. A bejelentkezést követően a parancsfájl létrehozza a webes és natív alkalmazásokat, hogy az Service Fabric-fürtöt képviseljék. Ha megtekinti a bérlő alkalmazásait a [Azure Portalban][azure-portal], két új bejegyzést kell látnia:
 
-   * *ClusterName*\_-fürt
-   * *ClusterName*\_-ügyfél
+   * *ClusterName* \_ Fürt
+   * *ClusterName* \_ Ügyfél
 
 A parancsfájl kinyomtatja a Azure Resource Manager sablon által a HRE- [kompatibilis fürt létrehozásakor](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)szükséges JSON-t, ezért érdemes megnyitnia a PowerShell ablakát.
 
@@ -85,7 +84,7 @@ Miután Service Fabric Explorer sikeresen bejelentkezett az Azure AD-be, a böng
 A felhasználó nem rendel hozzá szerepkört az Azure AD-fürt alkalmazásban. Így az Azure AD-hitelesítés meghiúsul Service Fabric fürtön. Service Fabric Explorer visszatér a tanúsítványalapú hitelesítéshez.
 
 #### <a name="solution"></a>Megoldás
-Kövesse az Azure AD beállításával és a felhasználói szerepkörök hozzárendelésével kapcsolatos utasításokat. Azt is javasoljuk, hogy kapcsolja be a "felhasználói hozzárendelés szükséges az alkalmazás eléréséhez" `SetupApplications.ps1` beállítást.
+Kövesse az Azure AD beállításával és a felhasználói szerepkörök hozzárendelésével kapcsolatos utasításokat. Azt is javasoljuk, hogy kapcsolja be a "felhasználói hozzárendelés szükséges az alkalmazás eléréséhez" beállítást `SetupApplications.ps1` .
 
 ### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>A PowerShell-lel való kapcsolat hibával meghiúsul: "a megadott hitelesítő adatok érvénytelenek"
 #### <a name="problem"></a>Probléma
@@ -96,7 +95,7 @@ Ez a megoldás megegyezik az előzővel.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>A Service Fabric Explorer a bejelentkezéskor hibát ad vissza: "AADSTS50011"
 #### <a name="problem"></a>Probléma
-Amikor Service Fabric Explorerban próbál bejelentkezni az Azure AD-be, a lap egy hibát ad vissza: "AADSTS50011: a Válaszcím &lt;URL&gt; -címe nem egyezik meg az alkalmazáshoz konfigurált válasz &lt;címével&gt;: GUID."
+Amikor Service Fabric Explorerban próbál bejelentkezni az Azure AD-be, a lap egy hibát ad vissza: "AADSTS50011: a Válaszcím &lt; URL-címe &gt; nem egyezik meg az alkalmazáshoz konfigurált válasz címével: &lt; GUID &gt; ."
 
 ![Az SFX-válasz címe nem egyezik][sfx-reply-address-not-match]
 
@@ -110,13 +109,13 @@ A fürthöz tartozó Azure AD-alkalmazás regisztrálása lapon válassza a **hi
 
 ### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Ha az Azure AD-hitelesítéssel a PowerShell használatával csatlakozik a fürthöz, hibaüzenetet ad a bejelentkezéskor: "AADSTS50011"
 #### <a name="problem"></a>Probléma
-Amikor egy Service Fabric-fürthöz próbál csatlakozni az Azure AD-vel a PowerShell használatával, a bejelentkezési oldal hibát jelez: "AADSTS50011: a kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel &lt;:&gt;GUID."
+Amikor egy Service Fabric-fürthöz próbál csatlakozni az Azure AD-vel a PowerShell használatával, a bejelentkezési oldal hibát jelez: "AADSTS50011: a kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: &lt; GUID &gt; ."
 
 #### <a name="reason"></a>Ok
 Az előző hibához hasonlóan a PowerShell megpróbálja hitelesíteni az Azure AD-t, amely egy átirányítási URL-címet ad meg, amely nem szerepel az Azure AD **-alkalmazás válaszának URL-címei** listán.  
 
 #### <a name="solution"></a>Megoldás
-Ugyanazt a folyamatot használja, mint az előző probléma, de az URL-címet a következőre kell beállítani `urn:ietf:wg:oauth:2.0:oob`: speciális átirányítás a parancssori hitelesítéshez.
+Ugyanazt a folyamatot használja, mint az előző probléma, de az URL-címet a `urn:ietf:wg:oauth:2.0:oob` következőre kell beállítani: speciális átirányítás a parancssori hitelesítéshez.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>A fürt összekötése az Azure AD-hitelesítéssel a PowerShell segítségével
 A Service Fabric-fürt összekapcsolásához használja a következő PowerShell-parancsot:

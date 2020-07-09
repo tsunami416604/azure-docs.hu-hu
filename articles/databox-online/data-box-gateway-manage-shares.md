@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561294"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079147"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway megosztási beállításait az Azure Portalon keresztül kezelheti 
 
@@ -92,23 +92,23 @@ A frissítési funkció lehetővé teszi a helyszíni megosztások tartalmának 
 
 Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
-1.   Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
+1. Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
 
-    ![Jelölje ki a megosztást](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Jelölje ki a megosztást](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   Kattintson a **Frissítés** gombra. 
+2. Kattintson a **Frissítés** gombra. 
 
-    ![Kattintson a Frissítés gombra](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![Kattintson a Frissítés gombra](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A rendszer ekkor egy feladatot indít a helyszíni megosztás tartalmának frissítésére. 
+3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A rendszer ekkor egy feladatot indít a helyszíni megosztás tartalmának frissítésére. 
 
-    ![Frissítés megerősítése](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![Frissítés megerősítése](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   Amíg folyamatban van a frissítés, a Frissítés lehetőség kiszürkítve jelenik meg a helyi menüben. A frissítési feladat állapotát a feladatértesítésre kattintva tekintheti meg.
 
-5.   A frissítés végrehajtásához szükséges idő az Azure-tárolón és az eszközön található fájlok számától függ. A frissítés sikeres befejezése után frissül a megosztás időbélyege. Ha a frissítés csak részben sikeres, maga a művelet akkor is sikeresnek tekintendő, és az időbélyeg frissülni fog. 
+5. A frissítés végrehajtásához szükséges idő az Azure-tárolón és az eszközön található fájlok számától függ. A frissítés sikeres befejezése után frissül a megosztás időbélyege. Ha a frissítés csak részben sikeres, maga a művelet akkor is sikeresnek tekintendő, és az időbélyeg frissülni fog. 
 
-    ![Frissített időbélyeg](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![Frissített időbélyeg](media/data-box-gateway-manage-shares/refresh-4.png)
  
 Hiba esetén a rendszer riasztást ad ki. A riasztás részletei között szerepel a hiba oka és a hibaelhárítási javaslat. A riasztás továbbá tartalmaz egy fájlra mutató hivatkozást is, amelyre rákattintva megtekintheti a teljes hibajegyzéket, azon fájlok listájával együtt, amelyek esetében a frissítési vagy törlési művelet meghiúsult.
 

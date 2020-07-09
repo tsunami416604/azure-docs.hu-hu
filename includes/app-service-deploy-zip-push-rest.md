@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75769666"
 ---
 ## <a name="deploy-zip-file-with-rest-apis"></a><a name="rest"></a>ZIP-fájl üzembe helyezése REST API-kkal 
@@ -19,13 +19,13 @@ Az egyszerű HTTP-hitelesítéshez szükség van a App Service központi telepí
 
 ### <a name="with-curl"></a>A cURLtal
 
-A következő példa a cURL eszközt használja egy. zip fájl üzembe helyezéséhez. Cserélje le a `<deployment_user>`helyőrzőket `<zip_file_path>`, és `<app_name>`. Ha a cURL rákérdez, írja be a jelszót.
+A következő példa a cURL eszközt használja egy. zip fájl üzembe helyezéséhez. Cserélje le a helyőrzőket, `<deployment_user>` `<zip_file_path>` és `<app_name>` . Ha a cURL rákérdez, írja be a jelszót.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-Ez a kérelem elindítja a leküldéses telepítést a feltöltött. zip fájlból. A jelenlegi és a korábbi üzemelő példányokat a `https://<app_name>.scm.azurewebsites.net/api/deployments` végpont használatával tekintheti át, ahogy az a következő curl-példában is látható. Ismét cserélje le `<app_name>` az alkalmazást az alkalmazás nevére és `<deployment_user>` a telepítési hitelesítő adatok felhasználónevére.
+Ez a kérelem elindítja a leküldéses telepítést a feltöltött. zip fájlból. A jelenlegi és a korábbi üzemelő példányokat a végpont használatával tekintheti át `https://<app_name>.scm.azurewebsites.net/api/deployments` , ahogy az a következő curl-példában is látható. Ismét cserélje le az `<app_name>` alkalmazást az alkalmazás nevére és `<deployment_user>` a telepítési hitelesítő adatok felhasználónevére.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments
@@ -33,7 +33,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>A PowerShell-lel
 
-A következő példa a [publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) feltölti a. zip fájlt. Cserélje le a `<group-name>`helyőrzőket `<app-name>`, és `<zip-file-path>`.
+A következő példa a [publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) feltölti a. zip fájlt. Cserélje le a helyőrzőket, `<group-name>` `<app-name>` és `<zip-file-path>` .
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
@@ -41,7 +41,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 Ez a kérelem elindítja a leküldéses telepítést a feltöltött. zip fájlból. 
 
-Az aktuális és a korábbi központi telepítések áttekintéséhez futtassa a következő parancsokat. Újra cserélje le a `<deployment-user>`, `<deployment-password>`, és `<app-name>` helyőrzőket.
+Az aktuális és a korábbi központi telepítések áttekintéséhez futtassa a következő parancsokat. Újra cserélje le a `<deployment-user>` , `<deployment-password>` , és `<app-name>` helyőrzőket.
 
 ```bash
 $username = "<deployment-user>"

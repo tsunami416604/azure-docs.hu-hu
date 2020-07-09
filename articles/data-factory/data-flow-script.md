@@ -6,13 +6,12 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298601"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
 
@@ -22,7 +21,7 @@ Az adatáramlási parancsfájl (DFS) a kódolási nyelvhez hasonló, alapul szol
 
 ![Parancsfájl gomb](media/data-flow/scriptbutton.png "Parancsfájl gomb")
 
-A forrás- `allowSchemaDrift: true,` átalakítás esetében például azt jelzi, hogy a szolgáltatás a forrás adatkészletből származó összes oszlopot tartalmazza, még akkor is, ha azokat nem tartalmazza a séma kivetítése.
+A `allowSchemaDrift: true,` forrás-átalakítás esetében például azt jelzi, hogy a szolgáltatás a forrás adatkészletből származó összes oszlopot tartalmazza, még akkor is, ha azokat nem tartalmazza a séma kivetítése.
 
 ## <a name="use-cases"></a>Használati esetek
 Az elosztott fájlrendszert automatikusan a felhasználói felület állítja elő. A parancsfájl gombra kattintva megtekintheti és testreszabhatja a parancsfájlt. Parancsfájlokat az ADF felhasználói felületén kívül is létrehozhat, majd átadhatja a PowerShell-parancsmagnak. Az összetett adatfolyamatok hibakeresése során könnyebben áttekintheti a szkript kódját – a folyamatok felhasználói felületi diagramjának megjelenítése helyett.
@@ -52,7 +51,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Ha úgy dönt, hogy hozzáad egy származtatott átalakítást, először létre kell hoznia az alaptranszformáció szövegét, amely egy egyszerű kifejezéssel adja hozzá az `upperCaseTitle`új nagybetűs oszlopot:
+Ha úgy dönt, hogy hozzáad egy származtatott átalakítást, először létre kell hoznia az alaptranszformáció szövegét, amely egy egyszerű kifejezéssel adja hozzá az új nagybetűs oszlopot `upperCaseTitle` :
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
@@ -71,7 +70,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-És most átirányítjuk a bejövő adatfolyamot úgy, hogy megismerjük, hogy melyik átalakítást szeretnénk az új átalakításra `source1`kitérni (ebben az esetben), és a stream nevét az új átalakításra másoljuk:
+És most átirányítjuk a bejövő adatfolyamot úgy, hogy megismerjük, hogy melyik átalakítást szeretnénk az új átalakításra kitérni (ebben az esetben `source1` ), és a stream nevét az új átalakításra másoljuk:
 ```
 source(output(
         movieId as string,
@@ -85,7 +84,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Végül azonosítjuk az új átalakítást követően szeretnénk átalakulást, és lecseréljük a bemeneti streamet (ebben az `sink1`esetben) az új átalakítás kimeneti stream-nevével:
+Végül azonosítjuk az új átalakítást követően szeretnénk átalakulást, és lecseréljük a bemeneti streamet (ebben az esetben `sink1` ) az új átalakítás kimeneti stream-nevével:
 ```
 source(output(
         movieId as string,
@@ -173,7 +172,7 @@ aggregate(groupBy(movie),
 ```
 
 ### <a name="create-row-hash-fingerprint"></a>Sor kivonatoló ujjlenyomatának létrehozása 
-Használja ezt a kódot az adatfolyam-parancsfájlban egy új származtatott oszlop létrehozásához ```DWhash``` , amely három ```sha1``` oszlop kivonatát állítja elő.
+Használja ezt a kódot az adatfolyam-parancsfájlban egy új származtatott oszlop létrehozásához ```DWhash``` , amely ```sha1``` három oszlop kivonatát állítja elő.
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -186,12 +185,22 @@ derive(DWhash = sha1(columns()))
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg egyenértékű
-Ez a kód úgy fog működni, mint a ```string_agg()``` T-SQL függvény, és összesíti a karakterlánc-értékeket egy tömbbe. Ezt követően a tömböt egy olyan sztringbe helyezheti, amely SQL-célhelyekkel használható.
+Ez a kód úgy fog működni, mint a T-SQL ```string_agg()``` függvény, és összesíti a karakterlánc-értékeket egy tömbbe. Ezt követően a tömböt egy olyan sztringbe helyezheti, amely SQL-célhelyekkel használható.
 
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Frissítések száma, upsert, beszúrások, törlés
+Módosítási sor átalakításának használatakor érdemes lehet megszámolni a frissítések számát, a upsert, a lapkákat, és törli a módosítási sor házirendjeiből származó eredményeket. Vegyen fel egy összesített átalakítást az Alter (módosítás) sor után, és illessze be az adatfolyamati parancsfájlt az összesített definícióba az alábbi számokhoz:
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>További lépések

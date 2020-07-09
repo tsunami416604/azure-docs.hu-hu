@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan rendelhet hozzá egy rendszerhez rendel
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415653"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Service Fabric alkalmazás központi telepítése rendszer által hozzárendelt felügyelt identitással
@@ -15,7 +15,7 @@ ms.locfileid: "81415653"
 Az Azure Service Fabric-alkalmazások felügyelt identitás funkciójának eléréséhez először engedélyeznie kell a felügyelt Identity token szolgáltatást a fürtön. Ez a szolgáltatás felelős a felügyelt identitások használatával Service Fabric alkalmazások hitelesítéséhez, valamint a hozzáférési jogkivonatok nevében való beszerzéséhez. Ha a szolgáltatás engedélyezve van, a bal oldali ablaktábla **System (rendszer** ) szakaszának Service Fabric Explorer alatt láthatja, hogy az egyéb rendszerszolgáltatások mellett a **háló:/System/ManagedIdentityTokenService** néven fut.
 
 > [!NOTE] 
-> Service Fabric alkalmazások felügyelt identitásokkal való üzembe helyezése az API-verziótól `"2019-06-01-preview"`kezdődően támogatott. Ugyanezt az API-verziót használhatja az alkalmazás típusa, az alkalmazás típusa és a szolgáltatás erőforrásai esetében is. A Service Fabric futtatókörnyezet minimálisan támogatott 6,5 CU2. A additoin-ben a Build/Package környezetnek az SF .net SDK-t is meg kell adni a CU2 vagy újabb verziónál
+> Service Fabric alkalmazások felügyelt identitásokkal való üzembe helyezése az API-verziótól kezdődően támogatott `"2019-06-01-preview"` . Ugyanezt az API-verziót használhatja az alkalmazás típusa, az alkalmazás típusa és a szolgáltatás erőforrásai esetében is. A Service Fabric futtatókörnyezet minimálisan támogatott 6,5 CU2. A additoin-ben a Build/Package környezetnek az SF .net SDK-t is meg kell adni a CU2 vagy újabb verziónál
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
@@ -43,7 +43,7 @@ Ha egy rendszer által hozzárendelt felügyelt identitással szeretné engedél
       }
     }
 ```
-Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt identitást és Service Fabric erőforrás-szolgáltatót, hogy az erőforrásnak implicit (`system assigned`) felügyelt identitással kell rendelkeznie.
+Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt identitást és Service Fabric erőforrás-szolgáltatót, hogy az erőforrásnak implicit ( `system assigned` ) felügyelt identitással kell rendelkeznie.
 
 ### <a name="application-and-service-package"></a>Alkalmazás-és szolgáltatáscsomag
 
@@ -72,9 +72,9 @@ Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt ide
         </ServiceManifestImport>
       ```
 
-    Ez az elem az alkalmazás identitását rendeli hozzá a szolgáltatáshoz. a hozzárendelés nélkül a szolgáltatás nem fogja tudni elérni az alkalmazás identitását. A fenti kódrészletben az `SystemAssigned` identitás (amely egy foglalt kulcsszó) a szolgáltatás definíciójában van leképezve a rövid név `WebAdmin`alatt.
+    Ez az elem az alkalmazás identitását rendeli hozzá a szolgáltatáshoz. a hozzárendelés nélkül a szolgáltatás nem fogja tudni elérni az alkalmazás identitását. A fenti kódrészletben az `SystemAssigned` identitás (amely egy foglalt kulcsszó) a szolgáltatás definíciójában van leképezve a rövid név alatt `WebAdmin` .
 
-3. Frissítse a szolgáltatás jegyzékfájlját egy **ManagedIdentity** elemnek az **erőforrások** szakaszban való hozzáadásához az alkalmazás jegyzékfájljának `ServiceIdentityRef` `IdentityBindingPolicy` definíciójában szereplő beállítás értékének megfelelő névvel:
+3. Frissítse a szolgáltatás jegyzékfájlját egy **ManagedIdentity** elemnek az **erőforrások** szakaszban való hozzáadásához az `ServiceIdentityRef` `IdentityBindingPolicy` alkalmazás jegyzékfájljának definíciójában szereplő beállítás értékének megfelelő névvel:
 
     **ServiceManifest.xml**
 
@@ -86,7 +86,7 @@ Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt ide
         </ManagedIdentities>
       </Resources>
     ```
-    Ez egy, a fentiekben leírtak szerint a szolgáltatás azonosságának megfelelő leképezése, de a szolgáltatás definíciójának szemszögéből. Az identitást itt tekintheti meg az alkalmazás jegyzékfájljában deklarált rövid névvel (`WebAdmin`).
+    Ez egy, a fentiekben leírtak szerint a szolgáltatás azonosságának megfelelő leképezése, de a szolgáltatás definíciójának szemszögéből. Az identitást itt `WebAdmin` tekintheti meg az alkalmazás jegyzékfájljában deklarált rövid névvel ().
 
 ## <a name="next-steps"></a>Következő lépések
 * [Felügyelt identitások támogatásának](./concepts-managed-identity.md) áttekintése az Azure Service Fabric

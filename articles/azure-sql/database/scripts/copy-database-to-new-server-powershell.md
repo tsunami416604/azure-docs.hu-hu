@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a361ce058c9bc54ab1e669faf1ca8c9870b54969
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ae2a4ce3c8c1b3760dc83d01def9694b1d20fea0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053740"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196939"
 ---
 # <a name="use-powershell-to-copy-a-database-to-a-new-server"></a>Adatbázis másolása új kiszolgálóra a PowerShell használatával
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez a PowerShell-példaszkript másolatot készít egy meglévő adatbázisról egy új kiszolgálón.
+Ez a Azure PowerShell szkript egy meglévő adatbázis másolatát hozza létre Azure SQL Database egy új kiszolgálón.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="copy-a-database-to-a-new-server"></a>Adatbázis másolása új kiszolgálóra
 
@@ -57,6 +57,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../powershell-script-content-guide.md).

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734996"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: az egyszerű szolgáltatások riasztásai a Azure Active Directory Domain Services
 
-Az [egyszerű szolgáltatások](../active-directory/develop/app-objects-and-service-principals.md) olyan alkalmazások, amelyeket az Azure platform egy Azure AD DS felügyelt tartomány felügyeletére, frissítésére és karbantartására használ. Ha töröl egy egyszerű szolgáltatást, a rendszer hatással van az Azure AD DS felügyelt tartományában lévő funkciókra.
+Az [egyszerű szolgáltatások](../active-directory/develop/app-objects-and-service-principals.md) olyan alkalmazások, amelyeket az Azure platform egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány felügyeletére, frissítésére és karbantartására használ. Ha töröl egy egyszerű szolgáltatást, a felügyelt tartomány funkcióit érinti a rendszer.
 
 Ez a cikk segítséget nyújt a szolgáltatással kapcsolatos egyszerű konfigurációs riasztások hibaelhárításához és megoldásához.
 
@@ -30,7 +30,7 @@ Ez a cikk segítséget nyújt a szolgáltatással kapcsolatos egyszerű konfigur
 
 *Az Azure AD-címtárból törölte a Azure AD Domain Services megfelelő működéséhez szükséges egyszerű szolgáltatást. Ez a konfiguráció befolyásolja a Microsoft képességét a felügyelt tartomány figyelésére, kezelésére, javítására és szinkronizálására.*
 
-Ha egy szükséges szolgáltatásnevet töröl, az Azure platform nem képes automatizált felügyeleti feladatok végrehajtására. Előfordulhat, hogy az Azure AD DS felügyelt tartománya nem alkalmazza megfelelően a frissítéseket, és nem készít biztonsági mentést.
+Ha egy szükséges szolgáltatásnevet töröl, az Azure platform nem képes automatizált felügyeleti feladatok végrehajtására. Előfordulhat, hogy a felügyelt tartomány nem alkalmazza megfelelően a frissítéseket, és nem készít biztonsági mentést.
 
 ### <a name="check-for-missing-service-principals"></a>Hiányzó egyszerű szolgáltatások keresése
 
@@ -64,18 +64,18 @@ Ha az alkalmazás-azonosító *2565bd9d-DA50-47d4-8B85-4c97f669dc36* hiányzik a
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
+A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>Regisztrálja újra a Microsoft HRE-névteret
 
 Ha az alkalmazás-azonosító *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*vagy *d87dcbc6-a371-462e-88e3-28ad15ec4e64* hiányzik az Azure ad-címtárból, hajtsa végre a következő lépéseket a *Microsoft. HRE* erőforrás-szolgáltató újbóli regisztrálásához:
 
 1. A Azure Portal keresse meg és válassza ki az **előfizetések**elemet.
-1. Válassza ki az Azure AD DS felügyelt tartományához társított előfizetést.
+1. Válassza ki a felügyelt tartományhoz társított előfizetést.
 1. A bal oldali navigációs sávon válassza az **erőforrás-szolgáltatók**lehetőséget.
 1. Keressen rá a *Microsoft. HRE*kifejezésre, majd válassza az **újbóli regisztráció**lehetőséget.
 
-Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
+A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Riasztás AADDS105: a jelszó-szinkronizálási alkalmazás elavult
 
@@ -105,7 +105,7 @@ A hitelesítő adatok szinkronizálásához használt Azure AD-alkalmazás újb�
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
-Miután mindkét alkalmazást törölte, az Azure platform automatikusan újra létrehozza őket, és megkísérli a jelszó-szinkronizálást. Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
+Miután mindkét alkalmazást törölte, az Azure platform automatikusan újra létrehozza őket, és megkísérli a jelszó-szinkronizálást. A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
 ## <a name="next-steps"></a>További lépések
 

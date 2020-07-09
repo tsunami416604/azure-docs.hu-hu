@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561040"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -22,11 +22,11 @@ Az Azure Blob Storage nem módosítható tárolója lehetővé teszi, hogy a fel
 
 A jogcímek beállításával és törlésével, illetve a Azure Portal, a PowerShell vagy az Azure CLI használatával történő időalapú adatmegőrzési szabályzat létrehozásával kapcsolatos további információkért lásd: [módosíthatatlansági házirendek beállítása és kezelése a blob Storage](storage-blob-immutability-policies-manage.md)-hoz.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>A nem változtatható blob Storage-ról
 
-A nem módosítható tárterület segíti az egészségügyi szervezetet, a pénzügyi&mdash;intézményeket és a kapcsolódó&mdash;iparágakat, különösen a közvetítő-kereskedő szervezeteket az adattárolás biztonságos tárolásához. A nem módosítható tárolók bármilyen forgatókönyvben is kihasználhatók a kritikus fontosságú adatmódosítások vagy Törlés elleni védelemhez.
+A nem módosítható tárterület segíti az egészségügyi szervezetet, a pénzügyi intézményeket és a kapcsolódó iparágakat, &mdash; különösen a közvetítő-kereskedő szervezeteket &mdash; az adattárolás biztonságos tárolásához. A nem módosítható tárolók bármilyen forgatókönyvben is kihasználhatók a kritikus fontosságú adatmódosítások vagy Törlés elleni védelemhez.
 
 Jellemző alkalmazási területek:
 
@@ -78,15 +78,15 @@ Az adatmegőrzési szabályokra az alábbi korlátozások vonatkoznak:
 
 A hozzáfűző Blobok adatblokkokból állnak, és a naplózási és naplózási forgatókönyvekhez szükséges adathozzáfűzési műveletekre vannak optimalizálva. A hozzáfűző Blobok csak az új blokkoknak a blob végéhez való hozzáadását teszik lehetővé. A módosíthatatlansági függetlenül a meglévő blokkok módosítása vagy törlése alapvetően nem engedélyezett a hozzáfűző blobokban. A Blobok hozzáfűzésével kapcsolatos további tudnivalókért tekintse meg [a hozzáfűző Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)című témakört.
 
-Csak az időalapú adatmegőrzési házirendek `allowProtectedAppendWrites` rendelkeznek olyan beállítással, amely lehetővé teszi, hogy új blokkokat írjon egy hozzáfűzési blobhoz a módosíthatatlansági-védelem és a megfelelőség megőrzése mellett. Ha engedélyezve van, létrehozhat egy hozzáfűzési blobot közvetlenül a szabályzat által védett tárolóban, és továbbra is hozzáadhat új adatblokkokat a meglévő hozzáfűzési Blobok végéhez a *AppendBlock* API használatával. Csak új blokkok vehetők fel, és minden meglévő blokk nem módosítható és nem törölhető. Az időmegőrzés módosíthatatlansági védelme továbbra is érvényes, így megelőzhető a hozzáfűző blob törlése, amíg a tényleges megőrzési időszak el nem telik. A beállítás engedélyezése nem befolyásolja a Blobok vagy módosíthatatlansági viselkedését.
+Csak az időalapú adatmegőrzési házirendek rendelkeznek olyan `allowProtectedAppendWrites` beállítással, amely lehetővé teszi, hogy új blokkokat írjon egy hozzáfűzési blobhoz a módosíthatatlansági-védelem és a megfelelőség megőrzése mellett. Ha engedélyezve van, létrehozhat egy hozzáfűzési blobot közvetlenül a szabályzat által védett tárolóban, és továbbra is hozzáadhat új adatblokkokat a meglévő hozzáfűzési Blobok végéhez a *AppendBlock* API használatával. Csak új blokkok vehetők fel, és minden meglévő blokk nem módosítható és nem törölhető. Az időmegőrzés módosíthatatlansági védelme továbbra is érvényes, így megelőzhető a hozzáfűző blob törlése, amíg a tényleges megőrzési időszak el nem telik. A beállítás engedélyezése nem befolyásolja a Blobok vagy módosíthatatlansági viselkedését.
 
 Mivel ez a beállítás egy időalapú adatmegőrzési szabályzat részét képezi, a hozzáfűző Blobok továbbra is megváltoztathatatlan állapotban maradnak a *hatályos* megőrzési időtartam alatt. Mivel az új adatok hozzáfűzhető a hozzáfűző blob kezdeti létrehozása után, némi különbség van a megőrzési időszak meghatározásakor. A tényleges megőrzés a blob **utolsó módosításának** és a felhasználó által megadott megőrzési időtartamnak a különbsége. Hasonlóképpen, ha a megőrzési időtartam ki van bővítve, a nem módosítható tároló a felhasználó által megadott megőrzési időtartam legutóbbi értékét használja a tényleges megőrzési időtartam kiszámításához.
 
-Tegyük fel például, hogy egy felhasználó létrehoz egy időalapú adatmegőrzési `allowProtectedAppendWrites` szabályzatot, amely engedélyezve van, és 90 nap megőrzési időtartammal rendelkezik. A tárolóban a _logblob1_-ben létrehozott hozzáfűző Blobok még ma is létrejönnek, az új naplók továbbra is a következő 10 napra lesznek hozzáadva a hozzáfűzési blobhoz; így a _logblob1_ érvényes megőrzési ideje 100 nap a mai naptól számítva (az utolsó hozzáfűzés + 90 nap időpontjában).
+Tegyük fel például, hogy egy felhasználó létrehoz egy időalapú adatmegőrzési szabályzatot, amely `allowProtectedAppendWrites` engedélyezve van, és 90 nap megőrzési időtartammal rendelkezik. A tárolóban a _logblob1_-ben létrehozott hozzáfűző Blobok még ma is létrejönnek, az új naplók továbbra is a következő 10 napra lesznek hozzáadva a hozzáfűzési blobhoz; így a _logblob1_ érvényes megőrzési ideje 100 nap a mai naptól számítva (az utolsó hozzáfűzés + 90 nap időpontjában).
 
-A zárolt időalapú adatmegőrzési `allowProtectedAppendWrites` házirendek lehetővé teszik a beállítás engedélyezését és letiltását. Az időalapú adatmegőrzési szabályzat zárolása után a `allowProtectedAppendWrites` beállítás nem módosítható.
+A zárolt időalapú adatmegőrzési házirendek lehetővé teszik a `allowProtectedAppendWrites` beállítás engedélyezését és letiltását. Az időalapú adatmegőrzési szabályzat zárolása után a `allowProtectedAppendWrites` beállítás nem módosítható.
 
-A jogi megtartási `allowProtectedAppendWrites` szabályzatok nem engedélyezhetik az "allowProtectedAppendWrites" tulajdonságot. Ha az `allowProtectedAppendWrites` engedélyezett időalapú adatmegőrzési szabályzat érvényes, akkor a *AppendBlock* API-t a rendszer addig nem hajtja végre, amíg meg nem szünteti a jogi megtartást.
+A jogi megtartási szabályzatok nem engedélyezhetik `allowProtectedAppendWrites` az "allowProtectedAppendWrites" tulajdonságot. Ha az engedélyezett időalapú adatmegőrzési szabályzat érvényes `allowProtectedAppendWrites` , akkor a *AppendBlock* API-t a rendszer addig nem hajtja végre, amíg meg nem szünteti a jogi megtartást.
 
 ## <a name="legal-holds"></a>Jogi célú visszatartások
 
@@ -112,7 +112,7 @@ A következő táblázat a blob Storage-műveletek azon típusait mutatja be, am
 
 <sup>1</sup> a blob szolgáltatás lehetővé teszi, hogy ezek a műveletek egyszer új blobot hozzanak létre. Egy nem módosítható tárolóban lévő blob elérési útban lévő összes további felülírási művelet nem engedélyezett.
 
-<sup>2</sup> a hozzáfűző blokk csak az `allowProtectedAppendWrites` engedélyezett tulajdonsággal rendelkező időalapú adatmegőrzési házirendek esetében engedélyezett. További információ: a [védett hozzáfűző Blobok írási engedélyezése](#allow-protected-append-blobs-writes) szakasz.
+<sup>2</sup> a hozzáfűző blokk csak az engedélyezett tulajdonsággal rendelkező időalapú adatmegőrzési házirendek esetében engedélyezett `allowProtectedAppendWrites` . További információ: a [védett hozzáfűző Blobok írási engedélyezése](#allow-protected-append-blobs-writes) szakasz.
 
 ## <a name="pricing"></a>Díjszabás
 

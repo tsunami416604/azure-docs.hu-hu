@@ -1,18 +1,18 @@
 ---
 title: Ország-és régiókódok közös értékesítése | Azure piactér
 description: Használja ezt a kétbetűs ország-/régiókódot, ha az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 08/27/2019
-ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8d952c76fa71cb57d2edd7c9aa361c7249e0622
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80277056"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105132"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Ország-és régiókódok közös értékesítése
 
@@ -129,7 +129,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Magyarország                             | HU        |
 | Izland                             | IS        |
 | India                               | IN        |
-| Indonézia                           | ID (Azonosító)        |
+| Indonézia                           | ID        |
 | Irán                                | IR        |
 | Irak                                | IQ        |
 | Írország                             | IE        |
@@ -262,11 +262,11 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Egyesült Királyság                      | GB        |
 | Egyesült Államok                       | USA        |
 | Uruguay                             | UY        |
-| Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
+| Az Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
 | Amerikai Virgin-szigetek                 | VI        |
 | Üzbegisztán                          | UZ        |
 | Vanuatu                             | JE        |
-| Vatikáni Városállam                        | VA        |
+| Vatikán                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
 | Wallis és Futuna                   | WF        |
@@ -275,6 +275,6 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Zimbabwe                            | ZW        |
 |   |   |   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).

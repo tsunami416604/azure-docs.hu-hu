@@ -14,13 +14,13 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
 ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611364"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory engedélyezési keretrendszer
+# <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory jóváhagyási keretrendszere
 
 A Azure Active Directory (Azure AD) engedélyezési keretrendszere megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztését. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést olyan Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Emellett a saját webes API-jai mellett olyan webes API-kat is el kell érniük, mint például a Microsoft Graph API (az Azure AD, az Intune és az Office 365-es szolgáltatások eléréséhez) és más Microsoft-szolgáltatások API-jai.
 
@@ -38,9 +38,9 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
 
     ![Engedélyek más alkalmazásokhoz](./media/consent-framework/permissions.png)
 
-1. Vegye figyelembe, hogy az alkalmazásra vonatkozó engedélyek frissítve lettek, az alkalmazás fut, és a felhasználó első alkalommal hamarosan használatba veszi azt. Először az alkalmazásnak meg `/authorize` kell szereznie egy engedélyezési kódot az Azure ad végpontján. Az engedélyezési kód ezután új hozzáférési és frissítési jogkivonat beszerzésére használható.
+1. Vegye figyelembe, hogy az alkalmazásra vonatkozó engedélyek frissítve lettek, az alkalmazás fut, és a felhasználó első alkalommal hamarosan használatba veszi azt. Először az alkalmazásnak meg kell szereznie egy engedélyezési kódot az Azure AD `/authorize` végpontján. Az engedélyezési kód ezután új hozzáférési és frissítési jogkivonat beszerzésére használható.
 
-1. Ha a felhasználó még nincs hitelesítve, az Azure AD `/authorize` -végpont felszólítja a felhasználót, hogy jelentkezzen be.
+1. Ha a felhasználó még nincs hitelesítve, az Azure AD- `/authorize` végpont felszólítja a felhasználót, hogy jelentkezzen be.
 
     ![Felhasználói vagy rendszergazdai bejelentkezés az Azure AD-be](./media/consent-framework/usersignin.png)
 
@@ -60,7 +60,7 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
       ![Engedélyek megadása explicit rendszergazdai jóváhagyáshoz](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > A ADAL. js-t használó egyoldalas alkalmazások (SPA) esetében jelenleg kötelező megadni a kifejezett jóváhagyást az **engedélyek megadása** gomb használatával. Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
+   > A explicit beleegyezés megadása az **engedélyek megadása** gomb használata jelenleg szükséges a ADAL.js használó egyoldalas alkalmazásokhoz (Spa). Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
 ## <a name="next-steps"></a>További lépések
 

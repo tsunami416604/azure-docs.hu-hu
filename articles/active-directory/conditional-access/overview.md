@@ -12,14 +12,14 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798245"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051944"
 ---
-# <a name="what-is-conditional-access"></a>Mit jelent a feltételes hozzáférés?
+# <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
 A modern biztonsági területet mostantól a szervezet hálózatán kívül is kiterjesztheti a felhasználók és az eszközök azonosítására. A szervezetek a hozzáférés-vezérlési döntéseik részeként használhatják ezeket az identitási jeleket. 
 
@@ -93,9 +93,9 @@ Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes h
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
+[Microsoft 365 vállalati verzió prémium szintű licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
 - [A feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md)

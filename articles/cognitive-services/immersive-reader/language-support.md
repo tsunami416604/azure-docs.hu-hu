@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538746"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309305"
 ---
 # <a name="language-support-for-immersive-reader"></a>Nyelvi támogatás a lebilincselő olvasó számára
 
@@ -27,24 +27,24 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Nyelv | Címke |
 |----------|-----|
 | Arab (egyiptomi) | AR – EG |
-| Arab (Szaúd-Arábiai) | ar-SA |
+| Arab (Szaúd-Arábia) | ar-SA |
 | Bolgár | BG |
 | Bolgár (Bulgária) | bg-BG |
 | Katalán | ca-ES |
 | Kínai | zh |
 | Kínai (Kína) | zh-CN |
-| Kínai (Hongkong) | ZH-HK |
-| Kínai (Makaó) | zh-MO |
+| Kínai (Hongkong KKT) | ZH-HK |
+| Kínai (Makaó KKT) | zh-MO |
 | Kínai (Szingapúr) | zh – SG |
 | Kínai (Tajvan) | zh-TW |
 | kínai (egyszerűsített) | zh-Hans |
 | Kínai (egyszerűsített) (Kína) | zh-Hans-CN |
 | Egyszerűsített kínai (Szingapúr) | zh-Hans-SG |
 | kínai (hagyományos) | zh-Hant-CN |
-| Hagyományos kínai (Hongkong) | zh-Hant-HK |
-| Kínai (hagyományos) (Makaó) | zh-Hant-MO |
+| Hagyományos kínai (Hongkong KKT) | zh-Hant-HK |
+| Hagyományos kínai (Makaó KKT) | zh-Hant-MO |
 | Kínai (hagyományos) (Tajvan) | zh-Hant-TW |
-| Horvát | hr |
+| Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
 | Cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
@@ -127,7 +127,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 |----------|-----|
 | búr | AF |
 | Arab (egyiptomi) | AR – EG |
-| Arab (Szaúd-Arábiai) | ar-SA |
+| Arab (Szaúd-Arábia) | ar-SA |
 | Bangla | Mrd USD |
 | boszniai | BS |
 | Bolgár | BG |
@@ -135,18 +135,18 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Katalán | ca-ES |
 | Kínai | zh |
 | Kínai (Kína) | zh-CN |
-| Kínai (Hongkong) | ZH-HK |
-| Kínai (Makaó) | zh-MO |
+| Kínai (Hongkong KKT) | ZH-HK |
+| Kínai (Makaó KKT) | zh-MO |
 | Kínai (Szingapúr) | zh – SG |
 | Kínai (Tajvan) | zh-TW |
 | kínai (egyszerűsített) | zh-Hans |
 | Kínai (egyszerűsített) (Kína) | zh-Hans-CN |
 | Egyszerűsített kínai (Szingapúr) | zh-Hans-SG |
 | kínai (hagyományos) | zh-Hant-CN |
-| Hagyományos kínai (Hongkong) | zh-Hant-HK |
-| Kínai (hagyományos) (Makaó) | zh-Hant-MO |
+| Hagyományos kínai (Hongkong KKT) | zh-Hant-HK |
+| Hagyományos kínai (Makaó KKT) | zh-Hant-MO |
 | Kínai (hagyományos) (Tajvan) | zh-Hant-TW |
-| Horvát | hr |
+| Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
 | Cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
@@ -258,7 +258,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Nyelv | Címke |
 |----------|-----|
 | Arab (egyiptomi) | AR – EG |
-| Arab (Szaúd-Arábiai) | ar-SA |
+| Arab (Szaúd-Arábia) | ar-SA |
 | Baszk | EU |
 | Bolgár | BG |
 | Bolgár (Bulgária) | bg-BG |
@@ -267,10 +267,10 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Kínai (egyszerűsített) (Kína) | zh-Hans-CN |
 | Egyszerűsített kínai (Szingapúr) | zh-Hans-SG |
 | kínai (hagyományos) | zh-Hant-CN |
-| Hagyományos kínai (Hongkong) | zh-Hant-HK |
-| Kínai (hagyományos) (Makaó) | zh-Hant-MO |
+| Hagyományos kínai (Hongkong KKT) | zh-Hant-HK |
+| Hagyományos kínai (Makaó KKT) | zh-Hant-MO |
 | Kínai (hagyományos) (Tajvan) | zh-Hant-TW |
-| Horvát | hr |
+| Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
 | Cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
@@ -366,7 +366,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Bolgár | BG |
 | Bolgár (Bulgária) | bg-BG |
 | Katalán | ca-ES |
-| Horvát | hr |
+| Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
 | Cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
@@ -488,7 +488,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Nyelv | Címke |
 |----------|-----|
 | Arab (egyiptomi) | AR – EG |
-| Arab (Szaúd-Arábiai) | ar-SA |
+| Arab (Szaúd-Arábia) | ar-SA |
 | Dán | da |
 | Dán (Dánia) | da-DK |
 | Holland | nl |

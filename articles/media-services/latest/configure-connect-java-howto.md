@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74888495"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Kapcsolódás a Media Services V3 API-hoz – Java
@@ -33,7 +32,7 @@ Ebben a cikkben a Visual Studio Code-ot használjuk a minta alkalmazás fejleszt
    - JDK
    - Apache Maven
    - Java kiterjesztési csomag
-- Ügyeljen rá, hogy `JAVA_HOME` a `PATH` és a környezeti változók legyenek beállítva.
+- Ügyeljen rá, hogy a `JAVA_HOME` és a környezeti változók legyenek beállítva `PATH` .
 - [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 - Kövesse az API-k [elérését](access-api-cli-how-to.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-azonosítót), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyre szüksége van egy későbbi lépésben.
 
@@ -53,7 +52,7 @@ Nyisson meg egy parancssori eszközt és `cd` egy olyan könyvtárat, amelyben l
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-A parancs futtatásakor a, `pom.xml` `App.java`a és más fájlok jönnek létre. 
+A parancs futtatásakor a, a `pom.xml` `App.java` és más fájlok jönnek létre. 
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
@@ -81,7 +80,7 @@ A parancs futtatásakor a, `pom.xml` `App.java`a és más fájlok jönnek létre
 
 ## <a name="connect-to-the-java-client"></a>Kapcsolódás a Java-ügyfélhez
 
-1. Nyissa `App.java` meg a `src\main\java\com\azure\ams` fájlt, és győződjön meg róla, hogy a csomag felül van:
+1. Nyissa meg a `App.java` fájlt `src\main\java\com\azure\ams` , és győződjön meg róla, hogy a csomag felül van:
 
     ```java
     package com.azure.ams;

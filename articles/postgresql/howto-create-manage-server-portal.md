@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan kezelheti Azure Database for PostgreSQL-kiszolg
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: bcddd64afca29ac9fdd5d284fc8f809ff9e2477d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6cdef248663504a674f47eea2a8031b643f68a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74535690"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102395"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Azure Database for PostgreSQL-kiszolgáló kezelése a Azure Portal használatával
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for PostgreSQL-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
@@ -102,6 +102,6 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 3. Válassza a **Törlés** elemet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A [biztonsági másolatok és a kiszolgáló-visszaállítás](howto-restore-server-portal.md) ismertetése
 - Ismerkedjen meg [a hangolási és figyelési lehetőségekkel Azure Database for PostgreSQL](concepts-monitoring.md)

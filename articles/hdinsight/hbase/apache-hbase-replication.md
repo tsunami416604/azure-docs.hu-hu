@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085611"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks szolgáltatásban
 
@@ -78,7 +78,7 @@ A sablonban a rögzített értékek némelyike:
 | Átjáró neve | vnet1gw |
 | Átjáró típusa | Vpn |
 | Átjáró VPN-típusa | Útvonalalapú |
-| Átjáró SKU | Basic |
+| Átjáró SKU | Alapszintű |
 | Átjáró IP-címe | vnet1gwip |
 
 **2. VNet**
@@ -95,7 +95,7 @@ A sablonban a rögzített értékek némelyike:
 | Átjáró neve | vnet2gw |
 | Átjáró típusa | Vpn |
 | Átjáró VPN-típusa | Útvonalalapú |
-| Átjáró SKU | Basic |
+| Átjáró SKU | Alapszintű |
 | Átjáró IP-címe | vnet1gwip |
 
 ## <a name="setup-dns"></a>DNS beállítása
@@ -104,7 +104,7 @@ Az utolsó szakaszban a sablon létrehoz egy Ubuntu-alapú virtuális gépet a k
 
 A kötés telepítéséhez a Yon-nek meg kell keresnie a két DNS virtuális gép nyilvános IP-címét.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 2. A DNS virtuális gép megnyitásához válassza az **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]** elemet.  Az erőforráscsoport neve az utolsó eljárásban létrehozott csoport. Az alapértelmezett DNS-beli virtuális gépek nevei a következők: *vnet1DNS* és *vnet2NDS*.
 3. Válassza a **Tulajdonságok** lehetőséget a virtuális hálózat Tulajdonságok lapjának megnyitásához.
 4. Jegyezze fel a **nyilvános IP-címet**, és ellenőrizze a **magánhálózati IP-címet**is.  A magánhálózati IP-címet a vnet2DNS vnet1DNS és **10.2.0.4** **10.1.0.4** kell megadni.  
@@ -118,10 +118,10 @@ A kötés telepítéséhez kövesse az alábbi eljárást:
     ssh sshuser@40.68.254.142
     ```
 
-    Cserélje `sshuser` le a értéket a DNS virtuális gép létrehozásakor megadott SSH-felhasználói fiókra.
+    Cserélje le a `sshuser` értéket a DNS virtuális gép létrehozásakor megadott SSH-felhasználói fiókra.
 
     > [!NOTE]  
-    > A `ssh` segédprogram beszerzésének számos módja van. Linux, UNIX és macOS rendszeren az operációs rendszer részeként van megadva. Ha Windows rendszert használ, vegye figyelembe a következő lehetőségek egyikét:
+    > A segédprogram beszerzésének számos módja van `ssh` . Linux, UNIX és macOS rendszeren az operációs rendszer részeként van megadva. Ha Windows rendszert használ, vegye figyelembe a következő lehetőségek egyikét:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
@@ -135,7 +135,7 @@ A kötés telepítéséhez kövesse az alábbi eljárást:
     sudo apt-get install bind9 -y
     ```
 
-3. Konfigurálja a kötést a névfeloldási kérelmek továbbításához a helyszíni DNS-kiszolgálóra. Ehhez használja a következő szöveget a `/etc/bind/named.conf.options` fájl tartalmaként:
+3. Konfigurálja a kötést a névfeloldási kérelmek továbbításához a helyszíni DNS-kiszolgálóra. Ehhez használja a következő szöveget a fájl tartalmaként `/etc/bind/named.conf.options` :
 
     ```
     acl goodclients {
@@ -162,7 +162,7 @@ A kötés telepítéséhez kövesse az alábbi eljárást:
     ```
     
     > [!IMPORTANT]  
-    > Cserélje le a `goodclients` szakasz értékeit a két virtuális hálózat IP-címének tartományára. Ez a szakasz azokat a címeket határozza meg, amelyekkel a DNS-kiszolgáló fogadja a kérelmeket.
+    > Cserélje le a szakasz értékeit a `goodclients` két virtuális hálózat IP-címének tartományára. Ez a szakasz azokat a címeket határozza meg, amelyekkel a DNS-kiszolgáló fogadja a kérelmeket.
 
     A fájl szerkesztéséhez használja a következő parancsot:
 
@@ -180,13 +180,15 @@ A kötés telepítéséhez kövesse az alábbi eljárást:
 
     Ez a parancs az alábbi szöveghez hasonló értéket ad vissza:
 
-        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```output
+    vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```
 
     A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a virtuális hálózat __DNS-utótagja__ . Mentse ezt az értéket, mivel később még használni fogjuk.
 
     A DNS-utótagot is meg kell találnia a másik DNS-kiszolgálóról. A következő lépésben szüksége lesz rá.
 
-5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a `/etc/bind/named.conf.local` fájl tartalmának használatával:
+5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a fájl tartalmának használatával `/etc/bind/named.conf.local` :
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -197,7 +199,7 @@ A kötés telepítéséhez kövesse az alábbi eljárást:
     ```
 
     > [!IMPORTANT]  
-    > A másik virtuális hálózat `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` DNS-utótagját le kell cserélnie. A továbbító IP pedig a másik virtuális hálózat DNS-kiszolgálójának magánhálózati IP-címe.
+    > A `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` másik virtuális hálózat DNS-utótagját le kell cserélnie. A továbbító IP pedig a másik virtuális hálózat DNS-kiszolgálójának magánhálózati IP-címe.
 
     A fájl szerkesztéséhez használja a következő parancsot:
 
@@ -221,13 +223,13 @@ A kötés telepítéséhez kövesse az alábbi eljárást:
     ```
 
     > [!IMPORTANT]  
-    > Cserélje `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` le a értéket a másik hálózatban található DNS virtuális gép teljes tartománynevére (FQDN).
+    > Cserélje le a értéket a `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` másik hálózatban található DNS virtuális gép teljes tartománynevére (FQDN).
     >
-    > Cserélje `10.2.0.4` le az értékét a másik virtuális hálózatban lévő egyéni DNS __-kiszolgáló belső IP-címére__ .
+    > Cserélje le az értékét a `10.2.0.4` másik virtuális hálózatban lévő egyéni DNS __-kiszolgáló belső IP-címére__ .
 
     A válasz az alábbi szöveghez hasonlóan jelenik meg:
 
-    ```
+    ```output
     Server:         10.2.0.4
     Address:        10.2.0.4#53
     
@@ -292,22 +294,22 @@ A következő lépések azt ismertetik, hogyan hívható meg a parancsfájl műv
 5. Válassza ki vagy adja meg a következő adatokat:
 
    1. **Név**: adja meg a **replikáció engedélyezése**értéket.
-   2. **Bash-parancsfájl URL-címe**: ENTER **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   2. **Bash-parancsfájl URL-címe**: ENTER **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
    3. **Head**: Győződjön meg róla, hogy ez be van jelölve. Törölje a többi csomópont típusát.
    4. **Paraméterek**: a következő minta paraméterek lehetővé teszik az összes létező tábla replikálását, majd az összes adatforrás másolását a fürtbe:
 
-          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+    `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
       > [!NOTE]
       > A forrás-és a célként megadott fürt DNS-neveként a teljes tartománynevet használja az állomásnév helyett.
       >
       > Ez az útmutató feltételezi, hogy az hn1 aktív átjárócsomóponthoz. Ellenőrizze, hogy a fürt azonosítsa-e az aktív fő csomópontot.
 
-6. Kattintson a **Létrehozás** gombra. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
+6. Válassza a **Létrehozás** lehetőséget. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
 
 Szükséges argumentumok:
 
-|Name (Név)|Leírás|
+|Name|Description|
 |----|-----------|
 |-s,--src-cluster | Megadja a forrás HBase-fürt DNS-nevét. Például:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Megadja a cél (replika) HBase-fürt DNS-nevét. Például:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -316,7 +318,7 @@ Szükséges argumentumok:
 
 Nem kötelező argumentumok:
 
-|Name (Név)|Leírás|
+|Name|Description|
 |----|-----------|
 |-Su,--src-ambari-User | A Ambari rendszergazdai felhasználónevét adja meg a forrás HBase-fürtön. Az alapértelmezett érték a **rendszergazda**. |
 |-du,--DST-ambari-User | A Ambari rendszergazdai felhasználónevét adja meg a cél HBase-fürtön. Az alapértelmezett érték a **rendszergazda**. |
@@ -336,19 +338,19 @@ A következő lista az általános használati eseteket és azok paraméter-beá
 
 - **Engedélyezze a replikációt a két fürt közötti összes táblán**. Ehhez a forgatókönyvhöz nem szükséges a táblákban meglévő adatok másolása vagy áttelepítése, és nem használja a Phoenix-táblákat. Használja a következő paramétereket:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
 - **Replikáció engedélyezése adott táblákon**. A Tábla1, a table2 és a Tábl3 replikációjának engedélyezéséhez használja a következő paramétereket:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
 - **Engedélyezze a replikációt bizonyos táblákon, és másolja a meglévőket**. A Tábla1, a table2 és a Tábl3 replikációjának engedélyezéséhez használja a következő paramétereket:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
 - **Engedélyezze a replikációt az összes táblán, és a Phoenix-metaadatokat replikálja a forrásról a célhelyre**. A Phoenix-metaadatok replikációja nem tökéletes. Körültekintően használja. Használja a következő paramétereket:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
 ## <a name="copy-and-migrate-data"></a>Az Adatmásolás és-Migrálás
 
@@ -360,7 +362,7 @@ Az adatok másolásához és áttelepítéséhez két külön parancsfájl-műve
 
 Ugyanezt az eljárást követve megtekintheti a [replikáció engedélyezése](#enable-replication) a parancsfájl-művelet meghívásához című szakaszt. Használja a következő paramétereket:
 
-    -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
+`-m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]`
 
 A `print_usage()` [szkript](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) szakasza részletes leírást tartalmaz a paraméterekről.
 
@@ -368,22 +370,21 @@ A `print_usage()` [szkript](https://github.com/Azure/hbase-utils/blob/master/rep
 
 - **Adott táblák (test1, teszt2 és test3) másolása a mai napig szerkesztett összes sorhoz (aktuális időbélyeg)**:
 
-        -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
+  `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
+
   Vagy
 
-        -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-
+  `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
 - **Megadott időtartományba tartozó táblák másolása**:
 
-        -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
-
+  `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
 ## <a name="disable-replication"></a>A replikálás letiltása
 
 A replikáció letiltásához használjon egy másik parancsfájl-műveleti parancsfájlt a [githubról](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Ugyanezt az eljárást követve megtekintheti a [replikáció engedélyezése](#enable-replication) a parancsfájl-művelet meghívásához című szakaszt. Használja a következő paramétereket:
 
-    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+`-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">`
 
 A `print_usage()` [szkript](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) szakasza részletesen ismerteti a paramétereket.
 
@@ -391,14 +392,15 @@ A `print_usage()` [szkript](https://raw.githubusercontent.com/Azure/hbase-utils/
 
 - **Replikáció letiltása az összes táblában**:
 
-        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
+  `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
+
   vagy
 
-        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+  `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
 - **Replikáció letiltása a megadott táblákon (Tábla1, table2 és Tábl3)**:
 
-        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 
 > [!NOTE]
 > Ha törölni kívánja a fürtöt, győződjön meg róla, hogy eltávolítja a forrás-fürt társ-listájából. Ezt úgy teheti meg, hogy a (z) remove_peer "1" parancsot futtatja a hbase-rendszerhéjban. Ha ez nem sikerül, akkor előfordulhat, hogy a fürterőforrás nem működik megfelelően.

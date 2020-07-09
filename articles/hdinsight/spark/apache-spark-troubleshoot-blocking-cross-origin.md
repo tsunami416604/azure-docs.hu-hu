@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: e241657186582955d21981f7dfe18856724aa692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894413"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Forgatókönyv: a Jupyter-kiszolgáló 404 "nem található" hibát okozott a "Cross Origin API blokkolása" miatt az Azure HDInsight
@@ -36,7 +35,7 @@ Ezt a hibát egy pár dolog okozhatja:
 
 - Ha konfigurálta a hálózati biztonsági csoport (NSG) szabályait, hogy korlátozza a hozzáférést a fürthöz. A NSG-szabályokkal való hozzáférés korlátozása továbbra is lehetővé teszi az Apache Ambari és más szolgáltatások közvetlen elérését a fürt neve helyett az IP-cím használatával. A Jupyter elérésekor azonban egy 404 "nem található" hibaüzenet jelenhet meg.
 
-- Ha a HDInsight-átjárót a standardtól `xxx.azurehdinsight.net`eltérő egyéni DNS-névvel adta meg.
+- Ha a HDInsight-átjárót a standardtól eltérő egyéni DNS-névvel adta meg `xxx.azurehdinsight.net` .
 
 ## <a name="resolution"></a>Megoldás:
 
@@ -47,11 +46,11 @@ Ezt a hibát egy pár dolog okozhatja:
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Keresse meg a következő sort, `NotebookApp.allow_origin='\"https://{2}.{3}\"'` és módosítsa a következőre `NotebookApp.allow_origin='\"*\"'`:.
+1. Keresse meg a következő sort, és módosítsa a következőre: `NotebookApp.allow_origin='\"https://{2}.{3}\"'` `NotebookApp.allow_origin='\"*\"'` .
 
 1. Indítsa újra a Jupyter szolgáltatást a Ambari.
 
-1. A `ps aux | grep jupyter` parancssorba való beíráskor meg kell jeleníteni, hogy bármely URL-cím lehetővé teszi a kapcsolódást.
+1. A parancssorba való beíráskor meg `ps aux | grep jupyter` kell jeleníteni, hogy bármely URL-cím lehetővé teszi a kapcsolódást.
 
 Ez kevésbé biztonságos, mint a már meglévő beállítás. A rendszer azonban feltételezi, hogy a fürthöz való hozzáférés korlátozott, és egy-egy kívülről csatlakozhat a fürthöz, mert NSG a helyükön.
 

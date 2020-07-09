@@ -4,20 +4,21 @@ description: Útmutatás a Azure Database for MySQL és a társított alkalmazá
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/7/2020
-ms.openlocfilehash: 18004ba474eb354f6723538a29f9eb90b23fbff2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: tracking-python
+ms.openlocfilehash: 3f2cb5cbc447dd0483517bef96dbcc7c58cf1af7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925864"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101392"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MySQLhoz való biztonságos csatlakozáshoz
 A Azure Database for MySQL támogatja a Azure Database for MySQL-kiszolgáló SSL (SSL) használatával történő ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerzése
-Töltse le az SSL protokollon keresztüli kommunikációhoz szükséges tanúsítványt a [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) Azure Database for MySQL-kiszolgálóról, és mentse a tanúsítványt a helyi meghajtóra (ez az oktatóanyag az c:\ssl-t használja például).
+Töltse le az SSL protokollon keresztüli kommunikációhoz szükséges tanúsítványt a Azure Database for MySQL-kiszolgálóról [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a tanúsítványt a helyi meghajtóra (ez az oktatóanyag az c:\ssl-t használja például).
 **A Microsoft Internet Explorer és a Microsoft Edge esetében:** A letöltés befejezése után nevezze át a tanúsítványt a BaltimoreCyberTrustRoot. CRT. PEM névre.
 
 ## <a name="step-2-bind-ssl"></a>2. lépés: SSL kötése
@@ -45,7 +46,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ```
 
 > [!NOTE]
-> A MySQL parancssori felület Windows rendszeren való használatakor hibaüzenetet `SSL connection error: Certificate signature check failed`kaphat. Ha ez történik, cserélje le `--ssl-mode=REQUIRED --ssl-ca={filepath}` a paramétereket `--ssl`a következőre:.
+> A MySQL parancssori felület Windows rendszeren való használatakor hibaüzenetet kaphat `SSL connection error: Certificate signature check failed` . Ha ez történik, cserélje le a paramétereket a következőre: `--ssl-mode=REQUIRED --ssl-ca={filepath}` `--ssl` .
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3. lépés: az SSL-kapcsolatok kényszerítése az Azure-ban 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
@@ -219,5 +220,5 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a különböző alkalmazás-csatlakozási lehetőségeket [a Azure Database for MySQLhoz tartozó kapcsolati kódtárak](concepts-connection-libraries.md) között

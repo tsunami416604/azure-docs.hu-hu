@@ -5,25 +5,27 @@ description: Ismerje meg, hogyan használhatja az adattárakat az Azure Storage-
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
-ms.custom: seodec18
-ms.openlocfilehash: 904738d73aaa0580773a085c70cd74f4240fc4b7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609265"
 ---
 # <a name="connect-to-azure-storage-services"></a>Kapcsolódás az Azure Storage-szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan csatlakozhat az Azure Storage-szolgáltatásokhoz Azure Machine Learning adattáron keresztül. Az adattár tárolja a kapcsolati adatokat, például az előfizetési azonosítót és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vaultban](https://azure.microsoft.com/services/key-vault/) , így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférésről](concept-data.md#data-workflow) szóló cikket.
+Ebből a cikkből megtudhatja, hogyan **csatlakozhat az Azure Storage-szolgáltatásokhoz Azure Machine learning adattáron keresztül**. Az adattár tárolja a kapcsolati adatokat, például az előfizetési azonosítót és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vaultban](https://azure.microsoft.com/services/key-vault/) , így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. 
 
-[Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](#matrix). A nem támogatott tárolási megoldások esetében, valamint az adatforgalom megtakarítása a gépi tanulási kísérletek során azt javasoljuk, hogy [Helyezze át az adatait](#move) a támogatott Azure Storage-megoldásokra. 
+A nem **támogatott tárolási megoldások esetében**, valamint az adatforgalomnak a ml-kísérletek során történő megtakarítása érdekében [Helyezze át az adatait](#move) egy támogatott Azure Storage-megoldásba.  [Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](#matrix). 
+
+Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférésről](concept-data.md#data-workflow) szóló cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +72,7 @@ Javasoljuk, hogy hozzon létre egy adattárt egy [Azure Blob-tárolóhoz](https:
 
 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) az Azure Blob Storage-ra épül, és nagyvállalati Big Data elemzésre lett tervezve. Data Lake Storage Gen2 alapvető része egy [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) hozzáadása a blob Storage-hoz. A hierarchikus névtér objektumokat vagy fájlokat rendez a címtárak hierarchiájában a hatékony adateléréshez.
 
-Munkaterületek létrehozásakor a rendszer automatikusan regisztrálja az Azure BLOB-tárolót és egy Azure-fájlmegosztást a munkaterületen. Ezek neve `workspaceblobstore` és `workspacefilestore` , illetve. `workspaceblobstore`a a munkaterület-összetevők és a Machine learning-kísérletek naplófájljainak tárolására szolgál. `workspacefilestore`a a [számítási példányon](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)keresztül engedélyezve lévő jegyzetfüzetek és R-parancsfájlok tárolására szolgál. A `workspaceblobstore` tároló alapértelmezett adattárként van beállítva.
+Munkaterületek létrehozásakor a rendszer automatikusan regisztrálja az Azure BLOB-tárolót és egy Azure-fájlmegosztást a munkaterületen. Ezek neve `workspaceblobstore` és `workspacefilestore` , illetve. `workspaceblobstore`a a munkaterület-összetevők és a Machine learning-kísérletek naplófájljainak tárolására szolgál. `workspacefilestore`a a [számítási példányon](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)keresztül engedélyezve lévő jegyzetfüzetek és R-parancsfájlok tárolására szolgál. A `workspaceblobstore` tároló alapértelmezett adattárként van beállítva, és nem törölhető a munkaterületről.
 
 > [!IMPORTANT]
 > A Azure Machine Learning Designer (előzetes verzió) automatikusan létrehoz egy **azureml_globaldatasets** nevű adattárat, amikor megnyit egy mintát a tervező kezdőlapján. Ez az adattár csak minta adatkészleteket tartalmaz. A bizalmas adatokhoz való hozzáféréshez **ne** használja ezt az adattárt.
@@ -91,17 +93,22 @@ Az adattár létrehozása után ezt az ellenőrzést csak olyan metódusok hajtj
 
 Az összes regisztrációs metódus az osztályban van [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) , és rendelkezik az űrlappal `register_azure_*` .
 > [!IMPORTANT]
-> Ha a Storage-fiókja egy virtuális hálózatban található, akkor csak **az SDK-n keresztüli** adattárolók létrehozását támogatja a rendszer.
+> Ha a virtuális hálózatban lévő Storage-fiókok adattárát tervezi létrehozni, tekintse meg a virtuális hálózat hozzáférési információit ismertető szakaszt.
 
 Itt megtalálhatja a `register_azure_*()` metódusnak a [Azure Portalon](https://portal.azure.com)való feltöltéséhez szükséges adatokat.
+
+* Az adattár neve csak kisbetűkből, számokból és aláhúzásokból állhat. 
 
 * Ha a hitelesítéshez fiókot vagy SAS-tokent szeretne használni, válassza ki a **Storage-fiókok** lehetőséget a bal oldali ablaktáblán, és válassza ki a regisztrálni kívánt Storage-fiókot. 
   * Az **áttekintő** oldal olyan információkat tartalmaz, mint például a fióknév, a tároló és a fájlmegosztás neve. 
       1. A fiókok kulcsai lapon lépjen a **hozzáférési kulcsok** elemre a **Beállítások** ablaktáblán. 
       1. SAS-tokenek esetén a beállítások ablaktáblán válassza a **közös hozzáférésű aláírások** **lehetőséget** .
 
-* Ha a hitelesítéshez a szolgáltatás elvét szeretné használni, lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. 
+* Ha egy egyszerű szolgáltatásnév használatát tervezi hitelesítésre, lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. 
     * A megfelelő **áttekintő** oldal tartalmazni fogja a szükséges információkat, például a bérlő azonosítóját és az ügyfél-azonosítót.
+
+> [!IMPORTANT]
+> Biztonsági okokból előfordulhat, hogy módosítania kell az Azure Storage-fiókhoz tartozó hozzáférési kulcsokat (a fiók kulcsát vagy SAS-tokenjét). Ha így tesz, szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárolókkal. Ismerje meg, hogyan szinkronizálhatja a frissített hitelesítő adatokat az [alábbi lépésekkel](how-to-change-storage-access-key.md). 
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy Azure BLOB-tárolót, egy Azure-fájlmegosztást és Azure Data Lake Storage 2. generációját adattárként. A példákban szereplő paraméterek az adattár létrehozásához és regisztrálásához **szükséges paraméterek** . 
 
@@ -109,7 +116,7 @@ Ha más tárolási szolgáltatások adattárolóit szeretné létrehozni, és az
 
 #### <a name="blob-container"></a>Blobtároló
 
-Az Azure Blob-tárolók adattárként való regisztrálásához használja a következőt: [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Az Azure Blob-tárolók adattárként való regisztrálásához használja a következőt: [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 A következő kód létrehozza és regisztrálja az `blob_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a `my-container-name` blob-tárolóhoz a `my-account-name` Storage-fiókban a megadott fiók-hozzáférési kulcs használatával.
 
@@ -125,7 +132,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
-Ha a blob-tároló virtuális hálózatban található, a paramétert is adja `skip_validation=True` meg a [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) metódusban. 
+Ha a blob-tároló virtuális hálózatban található, a paramétert is adja `skip_validation=True` meg a [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) metódusban. 
 
 #### <a name="file-share"></a>Fájlmegosztás
 
@@ -150,8 +157,6 @@ Ha a fájlmegosztás virtuális hálózatban található, a paramétert is adja 
 #### <a name="azure-data-lake-storage-generation-2"></a>2. generációs Azure Data Lake Storage
 
 Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Az egyszerű szolgáltatás használatához [regisztrálnia](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) kell az alkalmazást, és biztosítania kell az egyszerű szolgáltatásnév számára a *Storage blob adatolvasói* hozzáférését. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
-Az egyszerű szolgáltatás használatához [regisztrálnia](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) kell az alkalmazást, és a megfelelő adateléréssel kell megadnia az egyszerű szolgáltatásnevet. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 A következő kód létrehozza és regisztrálja az `adlsgen2_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a fájlrendszerhez a `test` `account_name` Storage-fiókban a megadott egyszerű szolgáltatás hitelesítő adataival.
 
@@ -180,20 +185,23 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Studióban:
 
 > [!IMPORTANT]
-> Ha a Storage-fiókja egy virtuális hálózatban található, akkor csak [az SDK-n keresztüli](#python-sdk) adattárolók létrehozását támogatja a rendszer. 
+> Ha az adattároló-fiók egy virtuális hálózaton található, további konfigurációs lépések szükségesek ahhoz, hogy a Studio hozzáférhessen az adataihoz. A megfelelő konfigurációs lépések biztosításához tekintse meg a [hálózati elkülönítés & adatvédelem] (útmutató – virtuális hálózat. MD # Machine-learning-Studio) című témakört. 
 
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 1. A **kezelés** **alatt kattintson a** bal oldali ablaktábla adattárolók elemére.
 1. Válassza az **+ új adattár**lehetőséget.
 1. Töltse ki az űrlapot egy új adattárhoz. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján.
   
-Itt megtalálhatja azokat az adatokat, amelyekre az űrlapot fel kell töltenie a [Azure Portal](https://portal.azure.com). Válassza ki a **Storage-fiókok** elemet a bal oldali ablaktáblán, és válassza ki a regisztrálni kívánt Storage-fiókot. Az **áttekintő** oldal olyan információkat tartalmaz, mint például a fióknév, a tároló és a fájlmegosztás neve. 
+Itt megtalálhatja azokat az adatokat, amelyekre az űrlapot fel kell töltenie a [Azure Portal](https://portal.azure.com). Válassza ki a **Storage-fiókok** elemet a bal oldali ablaktáblán, és válassza ki a regisztrálni kívánt Storage-fiókot. Az **áttekintő** oldal olyan információkat tartalmaz, mint például a fiók neve, a tároló és a fájlmegosztás neve. 
 
 * A hitelesítési elemek, például a fiók kulcsa vagy az SAS-token esetében lépjen a **Beállítások** ablaktábla **hozzáférési kulcsok** elemére. 
 
 * Az egyszerű szolgáltatások, például a bérlői azonosító és az ügyfél-azonosító esetében lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. A kapcsolódó **áttekintő** lap ezeket az elemeket fogja tartalmazni. 
 
-Az alábbi példa bemutatja, hogyan néz ki az űrlap az Azure Blob-adattár létrehozásakor: 
+> [!IMPORTANT]
+> Biztonsági okokból előfordulhat, hogy módosítania kell az Azure Storage-fiókhoz tartozó hozzáférési kulcsokat (a fiók kulcsát vagy SAS-tokenjét). Ha így tesz, szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárolókkal. Ismerje meg, hogyan szinkronizálhatja a frissített hitelesítő adatokat az [alábbi lépésekkel](how-to-change-storage-access-key.md). 
+
+Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár**létrehozásakor: 
     
 ![Űrlap új adattárhoz](media/how-to-access-data/new-datastore-form.png)
 
@@ -227,6 +235,7 @@ Az alapértelmezett adattár a következő kóddal is módosítható. Ez a képe
 ```Python
  ws.set_default_datastore(new_default_datastore)
 ```
+
 <a name="up-and-down"></a>
 ## <a name="upload-and-download-data"></a>Adatok feltöltése és letöltése
 
@@ -283,13 +292,18 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Leírás |
+| Metódus | Adattár-hozzáférés | Description |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |
 | [Azure IoT Edge modul](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése IoT Edge eszközökön. |
 
 Olyan helyzetekben, amikor az SDK nem biztosít hozzáférést az adattárolók számára, létrehozhat egyéni kódokat a megfelelő Azure SDK használatával az adateléréshez. A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) például egy ügyféloldali kódtár, amely a blobokban vagy fájlokban tárolt adateléréshez használható.
+
+
+## <a name="access-data-in-a-virtual-network"></a>Virtuális hálózatban tárolt adathozzáférés
+
+Ha a tárterület virtuális hálózat mögött van, további konfigurációs lépéseket kell végrehajtania a munkaterület és az adattár számára az adatok eléréséhez. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [hálózati elkülönítés a betanítás során & a privát virtuális hálózatokkal való következtetés](how-to-enable-virtual-network.md#use-datastores-and-datasets).
 
 <a name="move"></a>
 

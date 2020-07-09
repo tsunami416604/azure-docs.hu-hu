@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan konfigurálhat és érhet el metrikai r
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d381bd26405feeb5e4d4457197f290649907d3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74766837"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103160"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Riasztások beállítása Azure Database for PostgreSQL – egyetlen kiszolgáló esetén a Azure Portal használatával
 
@@ -25,7 +25,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Hívja meg a webhookot.
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -38,7 +38,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 3. Válassza a **metrika hozzáadása riasztás** (+ ikon) lehetőséget.
 
-4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a szükséges információkat:
+4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
    ![Metrikus riasztási űrlap hozzáadása](./media/howto-alert-on-metric/4-add-rule-form.png)
 
@@ -83,6 +83,6 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 * A riasztási szabály **szerkesztése** vagy **törlése** .
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

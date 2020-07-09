@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546184"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai
@@ -29,7 +29,7 @@ A modulok Twin-tartalma:
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent kívánt tulajdonságai
 
-A rendszer meghívja `$edgeAgent` a IoT Edge ügynökhöz tartozó modult, és összehangolja az eszközön futó IoT Edge ügynök és IoT hub közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket.
+A rendszer meghívja a IoT Edge ügynökhöz tartozó modult, `$edgeAgent` és összehangolja az eszközön futó IoT Edge ügynök és IoT hub közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket.
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
@@ -52,8 +52,8 @@ A rendszer meghívja `$edgeAgent` a IoT Edge ügynökhöz tartozó modult, és �
 | systemModules.edgeHub.configuration.id | A modult üzembe helyező központi telepítés azonosítója. | IoT Hub beállítja ezt a tulajdonságot, ha a jegyzékfájlt központi telepítés használatával alkalmazza a rendszer. Nem része az üzembe helyezési jegyzéknek. |
 | modulok. {moduleId}. verzió | A modul verzióját jelölő, felhasználó által definiált karakterlánc. | Igen |
 | modulok. {moduleId}. Type | A "Docker"-nek kell lennie | Igen |
-| modulok. {moduleId}. állapot | {"leállítva \| " "fut"} | Igen |
-| modulok. {moduleId}. restartPolicy | {"soha nem \| " "sikertelen \| " állapotú \| "" nem megfelelő "" "mindig"} | Igen |
+| modulok. {moduleId}. állapot | {"fut" \| "leállítva"} | Igen |
+| modulok. {moduleId}. restartPolicy | {"soha" \| "on-failure" " \| on-inhealth" " \| mindig"} | Igen |
 | modulok. {moduleId}. imagePullPolicy | {"on-create" \| "soha"} | Nem |
 | modulok. {moduleId}. env | A modulnak átadandó környezeti változók listája. A formátum`"<name>": {"value": "<value>"}` | Nem |
 | modulok. {moduleId}. Settings. rendszerkép | A modul rendszerképének URI-ja. | Igen |
@@ -78,22 +78,22 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságokból másolt a
 | Tulajdonság | Leírás |
 | -------- | ----------- |
 | lastDesiredVersion | Ez az egész szám a IoT Edge ügynök által feldolgozott kívánt tulajdonságok utolsó verziójára hivatkozik. |
-| lastDesiredStatus. code | Ez az állapotkód a IoT Edge ügynök által látott utolsó kívánt tulajdonságokra utal. Megengedett értékek: `200` sikeres, `400` Érvénytelen konfiguráció, `412` érvénytelen séma-verzió `417` , a kívánt tulajdonságok üresek `500` , nem sikerült |
+| lastDesiredStatus. code | Ez az állapotkód a IoT Edge ügynök által látott utolsó kívánt tulajdonságokra utal. Megengedett értékek: `200` sikeres, `400` Érvénytelen konfiguráció, `412` érvénytelen séma-verzió, `417` a kívánt tulajdonságok üresek, `500` nem sikerült |
 | lastDesiredStatus. Description | Az állapot szövegének leírása |
-| deviceHealth | `healthy`Ha az összes modul futtatókörnyezeti állapota `running` vagy vagy `stopped`, máskülönben `unhealthy` |
-| configurationHealth. {deploymentId}. Health | `healthy`Ha az üzemelő példány ({deploymentId}) által beállított összes modul futtatókörnyezeti `running` állapota `stopped`vagy `unhealthy` vagy, máskülönben |
+| deviceHealth | `healthy`Ha az összes modul futtatókörnyezeti állapota `running` vagy vagy `stopped` , `unhealthy` máskülönben |
+| configurationHealth. {deploymentId}. Health | `healthy`Ha az üzemelő példány ({deploymentId}) által beállított összes modul futtatókörnyezeti állapota vagy `running` vagy `stopped` , `unhealthy` máskülönben |
 | Runtime. platform. OS | Az eszközön futó operációs rendszer jelentése |
 | Runtime. platform. Architecture | A CPU architektúrájának jelentése az eszközön |
-| systemModules.edgeAgent.runtimeStatus | IoT Edge ügynök jelentett állapota: {"nem megfelelő" \| állapotú "" nem megfelelő "} |
+| systemModules.edgeAgent.runtimeStatus | IoT Edge ügynök jelentett állapota: {"nem megfelelő" állapotú "" nem megfelelő " \| } |
 | systemModules.edgeAgent.statusDescription | A IoT Edge ügynök jelentett állapotának szöveges leírása. |
-| systemModules.edgeHub.runtimeStatus | IoT Edge hub állapota: \| {"Running" "leállítva \| " "sikertelen" \| "leállítási" \| "nem megfelelő"} |
+| systemModules.edgeHub.runtimeStatus | IoT Edge hub állapota: {"Running" " \| Leállítva" "sikertelen" " \| leállítási" "nem megfelelő" \| \| } |
 | systemModules.edgeHub.statusDescription | IoT Edge hub állapotának szöveges leírása, ha a sérült. |
 | systemModules. edgeHub. exitCode | Az IoT Edge hub-tároló által jelentett kilépési kód, ha a tároló kilép |
 | systemModules.edgeHub.startTimeUtc | IoT Edge hub utolsó indításának ideje |
 | systemModules.edgeHub.lastExitTimeUtc | Az IoT Edge hub utolsó kilépésének időpontja |
 | systemModules.edgeHub.lastRestartTimeUtc | IoT Edge hub legutóbbi újraindításakor eltöltött idő |
 | systemModules.edgeHub.restartCount | A modul újraindításainak száma az újraindítási szabályzat részeként. |
-| modulok. {moduleId}. runtimeStatus | A modul állapota: \| {"Running" "leállítva \| " "sikertelen \| " "leállítási" \| "sérült"} |
+| modulok. {moduleId}. runtimeStatus | A modul állapota: {"Running" " \| Leállítva" "sikertelen" " \| \| leállítási" " \| sérült"} |
 | modulok. {moduleId}. statusDescription | A modul állapotának szöveges leírása, ha a sérült. |
 | modulok. {moduleId}. exitCode | A modul tárolója által jelentett kilépési kód, ha a tároló kilép |
 | modulok. {moduleId}. startTimeUtc | A modul utolsó indításának ideje |
@@ -103,7 +103,7 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságokból másolt a
 
 ## <a name="edgehub-desired-properties"></a>EdgeHub kívánt tulajdonságai
 
-Meghívja `$edgeHub` az IoT Edge hub-modult, és összehangolja az eszközön futó IoT Edge hub és a IoT hub közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket.
+Meghívja az IoT Edge hub-modult, `$edgeHub` és összehangolja az eszközön futó IoT Edge hub és a IoT hub közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket.
 
 | Tulajdonság | Leírás | Szükséges az üzembe helyezési jegyzékben |
 | -------- | ----------- | -------- |
@@ -118,7 +118,7 @@ Meghívja `$edgeHub` az IoT Edge hub-modult, és összehangolja az eszközön fu
 | lastDesiredVersion | Ez az egész szám az IoT Edge hub által feldolgozott kívánt tulajdonságok utolsó verziójára utal. |
 | lastDesiredStatus. code | Az IoT Edge hub által látott utolsó kívánt tulajdonságokra hivatkozó állapotkód. Megengedett értékek: `200` sikeres, `400` Érvénytelen konfiguráció, `500` sikertelen |
 | lastDesiredStatus. Description | Az állapot szövegének leírása. |
-| ügyfelek. {eszköz-vagy moduleId}. állapot | Az eszköz vagy modul kapcsolati állapota. Lehetséges értékek: {"Connected" \| "leválasztva"}. Csak a modul-identitások lehetnek leválasztott állapotban. Az IoT Edge hubhoz csatlakozó alsóbb rétegbeli eszközök csak akkor jelennek meg, ha csatlakoztatva vannak. |
+| ügyfelek. {eszköz-vagy moduleId}. állapot | Az eszköz vagy modul kapcsolati állapota. Lehetséges értékek: {"Connected" " \| leválasztva"}. Csak a modul-identitások lehetnek leválasztott állapotban. Az IoT Edge hubhoz csatlakozó alsóbb rétegbeli eszközök csak akkor jelennek meg, ha csatlakoztatva vannak. |
 | ügyfelek. {eszköz-vagy moduleId}. lastConnectTime | Az eszköz vagy modul csatlakozásának legutóbbi időpontja. |
 | ügyfelek. {eszköz-vagy moduleId}. lastDisconnectTime | Az eszköz vagy modul leválasztásának legutóbbi időpontja. |
 

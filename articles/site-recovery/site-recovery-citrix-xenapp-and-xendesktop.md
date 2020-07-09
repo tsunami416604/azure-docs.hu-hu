@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084556"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134836"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>vész-helyreállítás beállítása többrétegű Citrix-XenApp és XenDesktop-telepítéshez
 
@@ -30,8 +30,8 @@ Ez a dokumentum részletes útmutatást nyújt egy vész-helyreállítási megol
 
 A Kezdés előtt győződjön meg arról, hogy az alábbiakat ismeri fel:
 
-1. [Virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
-1. [Helyreállítási hálózat tervezése](site-recovery-network-design.md)
+1. [Virtuális gépek replikálása az Azure-ba](./vmware-azure-tutorial.md)
+1. [Helyreállítási hálózat tervezése](./concepts-on-premises-to-azure-networking.md)
 1. [Feladatátvételi teszt végrehajtása az Azure-ba](site-recovery-test-failover-to-azure.md)
 1. [Feladatátvétel az Azure-ba](site-recovery-failover.md)
 1. [Tartományvezérlő replikálása](site-recovery-active-directory.md)
@@ -96,7 +96,7 @@ A tartományvezérlők Azure-ban való replikálásának és konfigurálásának
 
 Az SQL Server-kiszolgálók védelmének ajánlott lehetőségeiről a [SQL Server védelme SQL Server vész-helyreállítással és Azure site Recovery](site-recovery-sql.md) című témakörben talál részletes technikai útmutatást.
 
-[Ezt az útmutatót](site-recovery-vmware-to-azure.md) követve megkezdheti a többi összetevő virtuális gépei az Azure-ba történő replikálását.
+[Ezt az útmutatót](./vmware-azure-tutorial.md) követve megkezdheti a többi összetevő virtuális gépei az Azure-ba történő replikálását.
 
 ![XenApp-összetevők védelme](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 
@@ -190,6 +190,6 @@ Kövesse [ezt az útmutatót](site-recovery-test-failover-to-azure.md) a feladat
 
 Ha feladatátvételt végez, kövesse [ezt az útmutatót](site-recovery-failover.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](https://aka.ms/citrix-xenapp-xendesktop-with-asr) információ a Citrix XenApp és a XenDesktop üzemelő példányok replikálásáról ebben a tanulmányban. Tekintse meg az útmutatást [más alkalmazások replikálásához](site-recovery-workload.md) site Recovery használatával.

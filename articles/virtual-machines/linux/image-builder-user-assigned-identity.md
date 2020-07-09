@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82930658"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Rendszerkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-beli fájlokhoz való hozzáféréshez 
@@ -60,7 +59,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni.
 

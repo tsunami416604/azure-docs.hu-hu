@@ -9,15 +9,14 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879173"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Speciális JSON-átalakítások elvégzése folyékony sablonokkal Azure Logic Apps
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Fejlett JSON-átalakítások elvégzése Liquid-sablonokkal az Azure Logic Appsben
 
-Alapszintű JSON-átalakításokat végezhet a logikai alkalmazásokban a natív adatműveletek műveleteivel, például az **összeállítás** vagy az **elemzés JSON**használatával. A speciális JSON-transzformációk elvégzéséhez létrehozhat olyan sablonokat vagy térképeket [, amelyek](https://shopify.github.io/liquid/)a rugalmas webalkalmazások nyílt forráskódú sablonjának nyelve. A folyékony sablon meghatározza, hogyan alakíthatja át a JSON-kimenetet, és támogatja az összetettebb JSON-átalakításokat, például az ismétléseket, a vezérlési folyamatokat és a változókat.
+Alapszintű JSON-átalakításokat végezhet a logikai alkalmazásokban a natív adatműveletek műveleteivel, például az **összeállítás** vagy az **elemzés JSON**használatával. A speciális JSON-transzformációk elvégzéséhez létrehozhat olyan sablonokat vagy térképeket [, amelyek](https://shopify.github.io/liquid/)a rugalmas webalkalmazások nyílt forráskódú sablonjának nyelve. A Liquid-sablon határozza meg, hogyan lehet átalakítani a JSON-kimenetet, emellett támogatja az olyan összetettebb JSON-átalakításokat, mint az iterációk, a vezérlési folyamok, a változók stb.
 
 A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell határoznia a JSON-t a JSON-hozzárendeléshez egy likvid sablonnal, és az integrációs fiókban tárolnia kell a leképezést. Ez a cikk bemutatja, hogyan hozhatja létre és használhatja ezt a likvid sablont vagy térképet.
 
@@ -57,7 +56,7 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
    }
    ```
 
-1. A [Azure Portal](https://portal.azure.com)az Azure Search mezőbe írja be `integration accounts`a kifejezést, majd válassza az **integrációs fiókok**elemet.
+1. A [Azure Portal](https://portal.azure.com)az Azure Search mezőbe írja be a kifejezést `integration accounts` , majd válassza az **integrációs fiókok**elemet.
 
    !["Integrációs fiókok" keresése](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -73,7 +72,7 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Név** | `JsonToJsonTemplate` | A Térkép neve, amely ebben a példában "JsonToJsonTemplate". | 
+   | **Name (Név)** | `JsonToJsonTemplate` | A Térkép neve, amely ebben a példában "JsonToJsonTemplate". | 
    | **Térkép típusa** | **folyékony** | A Térkép típusa A JSON-ből a JSON-átalakításhoz ki kell választania a **folyadék**elemet. | 
    | **Térkép** | `SimpleJsonToJsonTemplate.liquid` | Ebben a példában a "SimpleJsonToJsonTemplate. Liquid" nevű meglévő likvid sablon vagy leképezési fájl, amely az átalakításhoz használható. A fájl megkereséséhez használhatja a fájl-választót. A Térkép méretének korlátaival kapcsolatban lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
@@ -86,7 +85,7 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
 
 1. A Logic app Designerben adja hozzá a [kérelem-triggert](../connectors/connectors-native-reqres.md#add-request) a logikai alkalmazáshoz.
 
-1. Az trigger alatt válassza az **új lépés**lehetőséget. A keresőmezőbe írja be `liquid` szűrőként a kifejezést, majd válassza a következő műveletet: **JSON átalakítása JSON-Liquid**
+1. Az trigger alatt válassza az **új lépés**lehetőséget. A keresőmezőbe írja be szűrőként a kifejezést, `liquid` majd válassza a következő műveletet: **JSON átalakítása JSON-Liquid**
 
    ![Likvid művelet keresése és kiválasztása](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

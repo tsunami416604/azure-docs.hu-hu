@@ -4,15 +4,16 @@ description: Ismerkedjen meg Azure Analysis Servicesával, amely egy teljes kör
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 06/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 992aa8a4cb0ff31f7f1657be45fa1a64fdb27e7c
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: references_regions
+ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918943"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -64,14 +65,13 @@ Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokho
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
-|<sup> [1](#depr) . S8v2</sup>   |    640     |    200     |
-|<sup> [1](#depr) . S9v2</sup>    |    1280    |    400     |
+|S8 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>   |    320    |    200     |
+|S9 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
+|<sup> [1](#naar) . S8v2</sup>   |    640     |    200     |
+|<sup> [1](#naar) . S9v2</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> – nem érhető el minden régióban.   
-<a name="rec">2</a> – ez a csomag elavult. a v2 ajánlott.
-
+<a name="naar">1</a> – nem érhető el minden régióban.   
+<a name="rec">2</a> – v2 ajánlott.
 
 ## <a name="availability-by-region"></a>Rendelkezésre állás régiónként
 
@@ -85,15 +85,15 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA 2. keleti régiója     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
+|USA 2. keleti régiója     |     S8, S9, S8v2, S9v2   |    1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA nyugati régiója     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
+|USA nyugati régiója     |    S8, S9, S8v2, S9v2   |    2  |
 |USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA 2. nyugati régiója    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
+|USA 2. nyugati régiója    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Európa
 
@@ -103,17 +103,17 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Észak-Európa     |    S8v2, S9v2      |    3     |
 |Az Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Nyugat-Európa    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
+|Nyugat-Európa    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Kelet-Ausztrália     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
+|Kelet-Ausztrália     |    S8, S9, S8v2, S9v2    |    1     |
 |Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
+|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
@@ -132,15 +132,17 @@ A szint módosításához hasonlóan a lekérdezésreplikák is igény szerint b
 
 ## <a name="pricing"></a>Díjszabás
 
-A teljes költség számos tényezőtől (például a választott régiótól, szinttől, lekérdezésreplikáktól és a szüneteltetés/folytatás állapotától) függ. Az adott régióra jellemző díjszabást az [Azure Analysis Services díjszabását](https://azure.microsoft.com/pricing/details/analysis-services/) ismertető részben szereplő díjkalkulátorral határozhatja meg. Az eszköz egyetlen kiszolgálóra és régióra számolja ki a díjszabást. Vegye figyelembe, hogy a lekérdezésreplikák díjszabása megegyezik a kiszolgálóéval. 
+A teljes díj számos tényezőtől függ. Például a kiválasztott régió, a szintek, a lekérdezési replikák és a Szüneteltetés/folytatás. Az adott régióra jellemző díjszabást az [Azure Analysis Services díjszabását](https://azure.microsoft.com/pricing/details/analysis-services/) ismertető részben szereplő díjkalkulátorral határozhatja meg. Az eszköz egyetlen kiszolgálóra és régióra számolja ki a díjszabást. Vegye figyelembe, hogy a lekérdezésreplikák díjszabása megegyezik a kiszolgálóéval. 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Az SQL Server Analysis Servicesre épül
 
 Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A partíciók, a perspektívák, a sor szintű biztonság, a kétirányú kapcsolatok és a fordítások mind támogatottak \* . A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
 
-A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyaránt támogatják. A memóriában tárolt mód (alapértelmezett) táblázatos modelljei több adatforrás használatát is támogatják. Nagy mennyiségű adatok esetében ez a mód biztosítja a leggyorsabb lekérdezési választ, mivel a modell adatai nagymértékben tömörítettek, és a memóriában vannak gyorsítótárazva. Összetett adatkészletek és lekérdezések esetében szintén ez a mód biztosítja a legnagyobb rugalmasságot. A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure-szolgáltatás egyszerű támogatása, a PowerShell, a TOM, a TMSL és a REST használatával végzett felügyelet nélküli frissítési műveletekkel rugalmasan biztosítható, hogy a modell adatai mindig naprakészek legyenek. 
+A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyaránt támogatják. A memóriában tárolt mód (alapértelmezett) táblázatos modelljei több adatforrás használatát is támogatják. Nagy mennyiségű adatok esetében ez a mód biztosítja a leggyorsabb lekérdezési választ, mivel a modell adatai nagymértékben tömörítettek, és a memóriában vannak gyorsítótárazva. Összetett adatkészletek és lekérdezések esetében szintén ez a mód biztosítja a legnagyobb rugalmasságot. 
 
-A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a háttérbeli relációs adatbázist használja. A rendkívül nagy adathalmazok egyetlen SQL Serverban, SQL Server adattárházban, Azure SQL Databaseban, az Azure szinapszis Analytics (SQL Data Warehouse), az Oracle és az Teradata adatforrásokban támogatottak. A háttérbeli adatkészletek mérete meghaladhatja a rendelkezésre álló kiszolgálói erőforrás memóriájának méretét. Nincs szükség az összetett adatmodellek frissítésére. Vannak olyan korlátozások is, mint például a korlátozott adatforrások, a DAX-képlet korlátozásai, és egyes speciális adatmodellezési funkciók nem támogatottak. Az Ön számára legmegfelelőbb mód kiválasztása előtt tekintse át a [DirectQuery mód](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular) szakaszban leírtakat.
+A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure-szolgáltatás egyszerű támogatása, a PowerShell, a TOM, a TMSL és a REST használatával végzett felügyelet nélküli frissítési műveletekkel rugalmasan biztosítható, hogy a modell adatai mindig naprakészek legyenek. 
+
+A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a háttérbeli relációs adatbázist használja. A rendkívül nagy adathalmazok egyetlen SQL Serverban, SQL Server adattárházban, Azure SQL Databaseban, az Azure szinapszis Analyticsben (korábban SQL Data Warehouse), az Oracle-ben és az Teradata-adatforrásokban is támogatottak. A háttérbeli adatkészletek mérete meghaladhatja a rendelkezésre álló kiszolgálói erőforrás memóriájának méretét. Nincs szükség az összetett adatmodellek frissítésére. Vannak olyan korlátozások is, mint például a korlátozott adatforrások, a DAX-képlet korlátozásai, és egyes speciális adatmodellezési funkciók nem támogatottak. Az Ön számára legmegfelelőbb mód kiválasztása előtt tekintse át a [DirectQuery mód](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular) szakaszban leírtakat.
 
 \* A rendelkezésre álló funkciók köre a választott szinttől függ.
 
@@ -159,7 +161,7 @@ Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai szá
 
 A kiszolgáló szintjén a Analysis Services tűzfalat, Azure-hitelesítést, kiszolgálói rendszergazdai szerepköröket és kiszolgálóoldali titkosítást biztosít. Az adatmodell szintjén a felhasználói szerepkörök, a sorcsoport és az objektumorientált biztonság gondoskodik az adatai biztonságáról, és azokat csak azok a felhasználók látják, akik számára a célja.
 
-### <a name="firewall"></a>Tűzfal
+### <a name="firewall"></a>Firewall
 
 Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Alapértelmezés szerint a tűzfalbeállítások nincs engedélyezve az új kiszolgálókon. Az ajánlott tűzfalbeállítások engedélyezve van, és a szabályok konfigurálása a kiszolgáló létesítési parancsfájljának részeként vagy a portálon közvetlenül a kiszolgáló létrehozása után történik. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
 
@@ -244,7 +246,7 @@ Mivel a Azure Analysis Services táblázatos modelljei sokkal ugyanazok, mint a 
 
 ### <a name="contribute"></a>Számítunk közreműködésére!
 
-Az Analysis Services dokumentációja, ahogy ez a cikk is, nyílt hozzáférésű. Ha többet szeretne megtudni arról, Hogyan járulhat hozzá, tekintse meg a [docs közreműködői útmutatóját](https://docs.microsoft.com/contribute/). 
+Analysis Services dokumentáció, mint a jelen cikk, nyílt forráskódú. Ha többet szeretne megtudni arról, Hogyan járulhat hozzá, tekintse meg a [docs közreműködői útmutatóját](https://docs.microsoft.com/contribute/). 
 
 Az Analysis Services dokumentációja is használja a [GitHub-problémák](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) fogalmát. Visszajelzés adhat a termékről vagy a dokumentációról. Ehhez használja a cikk alján látható **Visszajelzés** gombot. A GitHub-problémák nincsenek engedélyezve a megosztott Analysis Services dokumentációjában. 
 

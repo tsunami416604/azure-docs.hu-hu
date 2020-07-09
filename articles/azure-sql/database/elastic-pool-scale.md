@@ -12,10 +12,9 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
 ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045717"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Rugalmas készlet erőforrásainak méretezése Azure SQL Database
@@ -95,6 +94,6 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](resource-limits-vcore-elastic-pools.md) és [SQL Database DTU-alapú erőforrás-korlátok – rugalmas készletek](resource-limits-dtu-elastic-pools.md).

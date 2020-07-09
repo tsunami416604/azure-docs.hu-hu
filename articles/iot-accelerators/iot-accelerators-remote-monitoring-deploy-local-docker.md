@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888837"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>A távoli figyelési megoldás-gyorsító üzembe helyezése helyileg – Docker
@@ -36,7 +35,7 @@ A helyi telepítés befejezéséhez a következő eszközökre van szükség a h
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/) – ha azt tervezi, hogy módosításokat hajt végre a Service-szolgáltatásokon.
-* [Node. js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node. js v10-et.
+* [Node.js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node.js v10-et.
 
 > [!NOTE]
 > Ezek az eszközök számos platformon elérhetők, például Windows, Linux és iOS rendszereken.
@@ -63,14 +62,14 @@ A helyi Docker-tárolókban futó szolgáltatásoknak hozzá kell férniük az A
 docker run --rm -ti library/alpine ping google.com
 ```
 
-A megoldás-gyorsító futtatásához navigáljon **a\\szolgáltatások\\parancsfájlok helyi** mappájához a parancssori környezetben, és futtassa a következő parancsot:
+A megoldás-gyorsító futtatásához navigáljon a **szolgáltatások \\ parancsfájlok \\ helyi** mappájához a parancssori környezetben, és futtassa a következő parancsot:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> A futtatása `docker-compose up`előtt győződjön meg arról, hogy [megosztja a helyi meghajtót](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) a Docker szolgáltatással.
+> A futtatása előtt győződjön meg arról, hogy [megosztja a helyi meghajtót](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) a Docker szolgáltatással `docker-compose up` .
 
 A parancs első futtatásakor a Docker letölti a Service-lemezképeket a Docker hub-ból a tárolók helyi létrehozásához. A következő futtatásakor a Docker azonnal futtatja a tárolókat.
 
@@ -83,7 +82,7 @@ docker rm <list_of_containers>
 docker rmi <list_of_images>
 ```
 
-Egy külön rendszerhéj használatával megtekintheti a tárolóban lévő naplókat. Először keresse meg a tároló AZONOSÍTÓját `docker ps` a parancs használatával. Ezután a `docker logs {container-id} --tail 1000` használatával megtekintheti a megadott tároló utolsó 1000 bejegyzését.
+Egy külön rendszerhéj használatával megtekintheti a tárolóban lévő naplókat. Először keresse meg a tároló AZONOSÍTÓját a `docker ps` parancs használatával. Ezután a használatával `docker logs {container-id} --tail 1000` megtekintheti a megadott tároló utolsó 1000 bejegyzését.
 
 ### <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladatok elindítása
 
@@ -96,7 +95,7 @@ A Stream Analytics feladat elindításához kövesse az alábbi lépéseket:
 
 ### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon `http://localhost:8080` a böngészőjében. Mostantól használhatja a webes felhasználói felületet és a helyi szolgáltatásait is.
+A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon a `http://localhost:8080` böngészőjében. Mostantól használhatja a webes felhasználói felületet és a helyi szolgáltatásait is.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

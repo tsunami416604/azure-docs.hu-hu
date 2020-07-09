@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334316"
 ---
 # <a name="use-the-drawing-tools-module"></a>A Rajzeszközök modul használata
@@ -23,7 +23,7 @@ A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönny�
 
 1. Hozzon létre egy új HTML-fájlt, és [a szokásos módon implementálja a térképet](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 2. Töltse be a Azure Maps rajzolási eszközök modulját. Kétféleképpen is betöltheti:
-    - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adja hozzá a JavaScript és a CSS stíluslap hivatkozását `<head>` a fájl eleméhez:
+    - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adja hozzá a JavaScript és a CSS stíluslap hivatkozását a `<head>` fájl eleméhez:
 
         ```html
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
@@ -43,7 +43,7 @@ A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönny�
 
 ## <a name="use-the-drawing-manager-directly"></a>A rajzolási kezelő közvetlen használata
 
-Miután betöltötte a rajzolási eszközök modult az alkalmazásba, engedélyezheti a rajzolási és szerkesztési funkciókat a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)használatával. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy `drawingManager.setOptions()` a függvényt használja.
+Miután betöltötte a rajzolási eszközök modult az alkalmazásba, engedélyezheti a rajzolási és szerkesztési funkciókat a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)használatával. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy a `drawingManager.setOptions()` függvényt használja.
 
 ### <a name="set-the-drawing-mode"></a>Rajzolási mód beállítása
 
@@ -61,7 +61,7 @@ Az alábbi kód egy teljes körű futtatási példát mutat be, amely bemutatja,
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög rajzolása" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>sokszög rajzolásával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>sokszög rajzolásával</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -73,7 +73,7 @@ A rajzolási kezelő három különböző módszert támogat a térképekkel val
 * `freehand `– A koordinátákat akkor adja hozzá a rendszer, amikor az egérmutatót a Térkép fölé húzza. 
 * `hybrid`– A koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés kattint, vagy húzza a húzást.
 
-A következő kód lehetővé teszi a sokszög rajzolási módját, és beállítja a rajzolási interakció típusát, amelyet a projektmenedzsernek `freehand`be kell tartania. 
+A következő kód lehetővé teszi a sokszög rajzolási módját, és beállítja a rajzolási interakció típusát, amelyet a projektmenedzsernek be kell tartania `freehand` . 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -88,17 +88,17 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Szabad oldali rajzolás" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> a tollat a Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) függvényt a <a href='https://codepen.io'>CodePen</a>-on.
+Tekintse meg <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> a tollat a Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) függvényt a <a href='https://codepen.io'>CodePen</a>-on.
 </iframe>
 
 
 ### <a name="customizing-drawing-options"></a>Rajzolási beállítások testreszabása
 
-Az előző példák azt mutatták be, hogyan lehet testre szabni a rajzolási beállításokat a rajzobjektum példányának összeállítása során. A rajzolási beállítások a `drawingManager.setOptions()` függvény használatával is megadhatók. Az alábbi eszköz segítségével kipróbálhatja a rajzolási beállítások testreszabását a setOptions függvénnyel.
+Az előző példák azt mutatták be, hogyan lehet testre szabni a rajzolási beállításokat a rajzobjektum példányának összeállítása során. A rajzolási beállítások a függvény használatával is megadhatók `drawingManager.setOptions()` . Az alábbi eszköz segítségével kipróbálhatja a rajzolási beállítások testreszabását a setOptions függvénnyel.
 
 <br/>
 
-<iframe height="685" title="A rajzolási kezelő testreszabása" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>a tollat</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="685" title="A rajzolási kezelő testreszabása" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>a tollat</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

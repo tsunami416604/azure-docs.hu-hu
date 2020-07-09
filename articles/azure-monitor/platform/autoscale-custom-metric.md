@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425119"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Ismerkedés az Azure-beli egyéni metrika automatikus méretezésével
@@ -23,7 +22,7 @@ Ez a cikk azt feltételezi, hogy van egy webalkalmazása, amelyen be van állít
 - [Azure Portal][2] megnyitása
 - Kattintson Azure Monitor ikonra a bal oldali navigációs ablaktáblán.
   ![Azure Monitor elindítása][3]
-- Az automatikus skálázás beállításra kattintva megtekintheti az összes olyan erőforrást, amelyhez az automatikus skálázás alkalmazható, valamint a jelenlegi ![automatikus méretezési állapotának felderítése az Azure monitorban][4]
+- Az automatikus skálázás beállításra kattintva megtekintheti az összes olyan erőforrást, amelyhez az automatikus skálázás alkalmazható, valamint a jelenlegi automatikus méretezési állapotának ![ felderítése az Azure monitorban][4]
 - Nyissa meg az "autoscale" panelt Azure Monitor, és válassza ki a méretezni kívánt erőforrást
   > Megjegyzés: az alábbi lépések egy app Service-csomaghoz társított app Service-csomagot használnak, amely az alkalmazás-felismerések konfigurálására szolgál.
 - Az erőforrás skálázási beállítás paneljén figyelje meg, hogy az aktuális példányszám 1. Kattintson az "autoscale engedélyezése" elemre.

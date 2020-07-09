@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: Architektúra
       items:
+        - name: Azure hálózattervezőknek
+          href: azure-for-network-engineers.md
         - name: Virtuális adatközpontok
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: Aszimmetrikus útválasztás több hálózati elérési úttal

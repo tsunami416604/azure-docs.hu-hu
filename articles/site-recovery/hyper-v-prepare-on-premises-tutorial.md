@@ -8,11 +8,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239839"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691101"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Helyszíni Hyper-V-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításhoz
 
@@ -84,8 +84,8 @@ Feladatátvételi forgatókönyv esetén előfordulhat, hogy csatlakozni szeretn
 
 Ha a feladatátvételt követően RDP használatával szeretne csatlakozni a Windows rendszerű virtuális gépekhez, engedélyezze a hozzáférést a következő módon:
 
-1. Ha internetes hozzáférést kíván használni, engedélyezze az RDP-t a helyszíni virtuális gépen a feladatátvétel előtt. Győződjön meg arról, hogy a TCP-és UDP-szabályok hozzá lettek adva a **nyilvános** profilhoz, és az RDP engedélyezve van a **Windows tűzfal** > **engedélyezett alkalmazásaiban** az összes profilhoz.
-2. Ha helyek közötti VPN-kapcsolatot kíván használni, engedélyezze az RDP-t a helyszíni gépen. Az RDP-t engedélyezni kell a **Windows tűzfal** -> **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára.
+1. Ha internetes hozzáférést kíván használni, engedélyezze az RDP-t a helyszíni virtuális gépen a feladatátvétel előtt. Győződjön meg arról, hogy a TCP-és UDP-szabályok hozzá lettek adva a **nyilvános** profilhoz, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban** az összes profilhoz.
+2. Ha helyek közötti VPN-kapcsolatot kíván használni, engedélyezze az RDP-t a helyszíni gépen. Az RDP-t engedélyezni kell a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára.
    Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információ](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 3. A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
@@ -94,5 +94,5 @@ A feladatátvételt követően az Azure-beli virtuális gépeket ugyanazzal az I
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A vész-helyreállítás beállítása az Azure-ba Hyper-v virtuális gépek](tutorial-hyper-v-to-azure.md)
-> számára a[VMM-felhőkben futó Hyper-v virtuális gépekre vonatkozó vész-helyreállítás beállítása az Azure-](tutorial-hyper-v-vmm-to-azure.md) ba
+> Vész [-helyreállítás beállítása az Azure-ba Hyper-V virtuális gépekhez](tutorial-hyper-v-to-azure.md) 
+>  Vész [-helyreállítás beállítása az Azure-ba Hyper-V virtuális gépek számára a VMM-felhőkben](tutorial-hyper-v-vmm-to-azure.md)

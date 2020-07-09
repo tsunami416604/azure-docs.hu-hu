@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3645b6752a49a0cf2544d170ac55a77cc8ae5e40
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75612291"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082012"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése a Apache Stormhez a Data Lake Tools for Visual Studio használatával
 
@@ -49,7 +49,7 @@ Ha a Visual studióból küld el egy Storm-topológiát, a SCP.NET létrehoz egy
 
 2. Állítsa a `JAVA_HOME` környezeti változót a Java-t tartalmazó könyvtárba.
 
-3. Állítsa be `PATH` a környezeti változót a `%JAVA_HOME%\bin` könyvtár belefoglalásához.
+3. Állítsa be a `PATH` környezeti változót a könyvtár belefoglalásához `%JAVA_HOME%\bin` .
 
 A következő C# Console-alkalmazás létrehozásával és futtatásával ellenőrizheti, hogy a Java és a JDK megfelelően van-e telepítve:
 
@@ -152,9 +152,9 @@ Ezután adja hozzá a kiöntő kódját, amely egy külső forrásból származ�
 
    * `Ack`(csak tranzakciós topológia): a kiöntőből elküldett rekordok topológiájában elindított más összetevők által megkezdett visszaigazolásokat kezeli. Egy rekord nyugtázása lehetővé teszi, hogy a kiöntő tudja, hogy az alsóbb rétegbeli összetevők sikeresen feldolgozták.
 
-   * `Fail`(csak tranzakciós topológia): olyan rekordok kezeli, amelyek nem képesek a topológia más összetevőinek feldolgozására. A `Fail` metódus implementálása lehetővé teszi a rekord újbóli kibocsátását, hogy újra feldolgozhatók legyenek.
+   * `Fail`(csak tranzakciós topológia): olyan rekordok kezeli, amelyek nem képesek a topológia más összetevőinek feldolgozására. A metódus implementálása `Fail` lehetővé teszi a rekord újbóli kibocsátását, hogy újra feldolgozhatók legyenek.
 
-2. Cserélje le az `Spout` osztály tartalmát a következő szövegre:
+2. Cserélje le az osztály tartalmát a `Spout` következő szövegre:
 
     ```csharp
     private Context ctx;
@@ -220,7 +220,7 @@ Most hozzon létre két Storm-csavart a következő példában:
 
 1. Törölje a meglévő *bolt.cs* -fájlt a projektből.
 
-2. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza az**új elem** **hozzáadása** > lehetőséget. A listából válassza a **Storm bolt**lehetőséget, majd adja meg a *Splitter.cs* nevet. Az új fájl kódjában módosítsa a névtér nevét a következőre `WordCount`:. Ezután ismételje meg a folyamatot egy *Counter.cs*nevű második bolt létrehozásához.
+2. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza **Add**az  >  **új elem**hozzáadása lehetőséget. A listából válassza a **Storm bolt**lehetőséget, majd adja meg a *Splitter.cs* nevet. Az új fájl kódjában módosítsa a névtér nevét a következőre: `WordCount` . Ezután ismételje meg a folyamatot egy *Counter.cs*nevű második bolt létrehozásához.
 
    * *Splitter.cs*: olyan boltot valósít meg, amely a mondatokat egyedi szavakkal osztja szét, és új szavakat bocsát ki.
 
@@ -229,9 +229,9 @@ Most hozzon létre két Storm-csavart a következő példában:
      > [!NOTE]  
      > Ezek a csavarok a streamek olvasására és írására szolgálnak, de egy olyan adatforrást is használhat, amely egy adatbázissal vagy szolgáltatással kommunikál.
 
-3. Nyissa meg a *Splitter.cs*. Alapértelmezés szerint csak egy metódussal rendelkezik: `Execute`. A `Execute` metódus akkor lesz meghívva, amikor a bolt egy rekordot kap a feldolgozáshoz. Itt elolvashatja és feldolgozhatja a bejövő rekordok, és kibocsáthatja a kimenő rekordok.
+3. Nyissa meg a *Splitter.cs*. Alapértelmezés szerint csak egy metódussal rendelkezik: `Execute` . A `Execute` metódus akkor lesz meghívva, amikor a bolt egy rekordot kap a feldolgozáshoz. Itt elolvashatja és feldolgozhatja a bejövő rekordok, és kibocsáthatja a kimenő rekordok.
 
-4. Cserélje le a `Splitter` osztály tartalmát a következő kódra:
+4. Cserélje le a osztály tartalmát a `Splitter` következő kódra:
 
     ```csharp
     private Context ctx;
@@ -341,7 +341,7 @@ A kiöntő kibocsátja azokat a mondatokat, amelyeket a rendszer az elosztói bo
 
 Mivel a számláló példány helyileg tárolja a szavak darabszámát, meg kell győződnie arról, hogy az adott szavak ugyanarra a Counter bolt-példányra kerülnek. Minden példány nyomon követi az egyes szavakat. Mivel az elosztói bolt nem tart fenn állapotot, valójában nem számít, hogy az elválasztó melyik példánya fogadja ezt a mondatot.
 
-Nyissa meg a *program.cs*. A fontos módszer `GetTopologyBuilder`, amely a Storm számára elküldött topológia definiálására szolgál. Cserélje le a tartalmát `GetTopologyBuilder` a következő kódra a korábban ismertetett topológia megvalósításához:
+Nyissa meg a *program.cs*. A fontos módszer `GetTopologyBuilder` , amely a Storm számára elküldött topológia definiálására szolgál. Cserélje le a tartalmát a `GetTopologyBuilder` következő kódra a korábban ismertetett topológia megvalósításához:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -405,7 +405,7 @@ return topologyBuilder;
 
 Most már készen áll arra, hogy elküldje a topológiát a HDInsight-fürtön.
 
-1. Navigáljon a**Server Explorer** **megtekintéséhez** > .
+1. Navigáljon **View**a  >  **Server Explorer**megtekintéséhez.
 
 1. Kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
@@ -418,7 +418,7 @@ Most már készen áll arra, hogy elküldje a topológiát a HDInsight-fürtön.
     ![Storm topológia nézet ablak, HDInsight-fürt, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure** > **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**parancsot.
+    > A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**parancsot.
 
     A topológiában található összetevők adatainak megtekintéséhez válasszon ki egy összetevőt a diagramon.
 
@@ -435,15 +435,15 @@ A tranzakciós topológiák a következő műveleteket hajtják végre az adatvi
 
 * **Metaadatok gyorsítótárazása**: a kifolyónak a kibocsátott adatokra vonatkozó metaadatokat kell tárolnia, hogy hiba esetén az adatok lekérése és újbóli kibocsátása is megtörténjen. Mivel a minta által kibocsátott adat kicsi, az egyes rekordok nyers adatát egy szótárban tárolja a rendszer a lejátszáshoz.
 
-* **ACK**: a topológiában lévő minden egyes bolt meghívja `this.ctx.Ack(tuple)` a nyugtát, hogy sikeresen feldolgozta a rekordot. Amikor az összes bolt elismerte a rekordot, meghívja a `Ack` kiöntő metódusát. A `Ack` metódus lehetővé teszi a kiöntő számára, hogy eltávolítsa az újrajátszás céljából gyorsítótárazott adatfájlokat.
+* **ACK**: a topológiában lévő minden egyes bolt meghívja `this.ctx.Ack(tuple)` a nyugtát, hogy sikeresen feldolgozta a rekordot. Amikor az összes bolt elismerte a rekordot, `Ack` meghívja a kiöntő metódusát. A `Ack` metódus lehetővé teszi a kiöntő számára, hogy eltávolítsa az újrajátszás céljából gyorsítótárazott adatfájlokat.
 
-* **Sikertelen**: minden egyes bolt meghívhatja `this.ctx.Fail(tuple)` azt, hogy egy rekord feldolgozása meghiúsult. A hiba a kiöntő `Fail` metódusára kerül, ahol a rekordot gyorsítótárazott metaadatok használatával lehet lejátszani.
+* **Sikertelen**: minden egyes bolt meghívhatja `this.ctx.Fail(tuple)` azt, hogy egy rekord feldolgozása meghiúsult. A hiba a `Fail` kiöntő metódusára kerül, ahol a rekordot gyorsítótárazott metaadatok használatával lehet lejátszani.
 
-* **Sorozatszám azonosítója**: rekord kibocsátásakor megadható egy egyedi sorszám. Ez az érték azonosítja az Ismétlési (`Ack` és `Fail`) feldolgozás rekordját. A **Storm Sample** projekt kiöntő például a következő metódust használja az adatkibocsátáskor:
+* **Sorozatszám azonosítója**: rekord kibocsátásakor megadható egy egyedi sorszám. Ez az érték azonosítja az Ismétlési ( `Ack` és `Fail` ) feldolgozás rekordját. A **Storm Sample** projekt kiöntő például a következő metódust használja az adatkibocsátáskor:
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  Ez a kód olyan rekordot bocsát ki, amely az alapértelmezett adatfolyamra vonatkozó mondatot tartalmaz, a következőben `lastSeqId`található sorszám-azonosító értékkel:. Ebben a példában `lastSeqId` a minden kibocsátott rekord esetében növekszik.
+  Ez a kód olyan rekordot bocsát ki, amely az alapértelmezett adatfolyamra vonatkozó mondatot tartalmaz, a következőben található sorszám-azonosító értékkel: `lastSeqId` . Ebben a példában a `lastSeqId` minden kibocsátott rekord esetében növekszik.
 
 Ahogy azt a **Storm Sample** projekt mutatja be, a konfiguráció alapján beállítható, hogy egy összetevő tranzakciós lehet-e futásidőben.
 
@@ -455,11 +455,11 @@ Hibrid topológia esetén például hozzon létre egy projektet, és válassza a
 
 * **Java kiöntő** és **C#-bolt**: az `HybridTopology_javaSpout_csharpBolt` osztályban definiálva.
 
-  A `HybridTopologyTx_javaSpout_csharpBolt` osztályban a tranzakciós verzió van definiálva.
+  A osztályban a tranzakciós verzió van definiálva `HybridTopologyTx_javaSpout_csharpBolt` .
 
 * **C# kiöntő** és **Java-bolt**: az `HybridTopology_csharpSpout_javaBolt` osztályban definiálva.
 
-  A `HybridTopologyTx_csharpSpout_javaBolt` osztályban a tranzakciós verzió van definiálva.
+  A osztályban a tranzakciós verzió van definiálva `HybridTopologyTx_csharpSpout_javaBolt` .
 
   > [!NOTE]  
   > Ez a verzió azt is bemutatja, hogyan használható a Clojure-kód egy szövegfájlban Java-összetevőként.
@@ -471,9 +471,9 @@ A projekt elküldésekor használt topológia átváltásához vigye az `[Active
 
 Hibrid topológia létrehozásakor és elküldésekor vegye figyelembe a következőket:
 
-* Ezzel `JavaComponentConstructor` a paranccsal hozhatja létre a Java-osztály egy példányát egy kiöntő vagy egy bolt számára.
+* Ezzel a paranccsal `JavaComponentConstructor` hozhatja létre a Java-osztály egy példányát egy kiöntő vagy egy bolt számára.
 
-* A `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` használatával a Java-objektumokból a JSON-be vagy onnan kifelé irányuló adatok szerializálására használható.
+* A használatával a Java- `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` objektumokból a JSON-be vagy onnan kifelé irányuló adatok szerializálására használható.
 
 * Ha a topológiát a kiszolgálóra küldi, a **további konfigurációk** lehetőséget kell használnia a **Java-fájlok elérési útjának**megadásához. A megadott elérési útnak a Java-osztályokat tartalmazó JAR-fájlokkal rendelkező könyvtárnak kell lennie.
 
@@ -486,7 +486,7 @@ A SCP.NET verziójának 0.9.4.203 egy új osztályt és metódust vezet be, amel
 * `TopologyBuilder.SetEventHubSpout`metódus: hozzáadja az Event hub kiöntő összetevőjét a topológiához.
 
 > [!NOTE]  
-> A kiöntő által létrehozott `CustomizedInteropJSONSerializer` adatszerializáláshoz továbbra is a-t kell használnia.
+> A `CustomizedInteropJSONSerializer` kiöntő által létrehozott adatszerializáláshoz továbbra is a-t kell használnia.
 
 ## <a name="use-configurationmanager"></a>ConfigurationManager használata
 
@@ -517,7 +517,7 @@ public class MyComponent : ISCPBolt
 }
 ```
 
-Ha az összetevő egy `Get` példányának visszaadására módszert használ, győződjön meg arról, hogy a és `Context` `Dictionary<string, Object>` a paramétereket is átadja a konstruktornak. A következő példa egy alapszintű `Get` módszer, amely megfelelő módon továbbítja ezeket az értékeket:
+Ha az összetevő egy `Get` példányának visszaadására módszert használ, győződjön meg arról, hogy a és a paramétereket is átadja `Context` `Dictionary<string, Object>` a konstruktornak. A következő példa egy alapszintű `Get` módszer, amely megfelelő módon továbbítja ezeket az értékeket:
 
 ```csharp
 public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
@@ -574,15 +574,15 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
    > [!NOTE]
    > Ne felejtse el módosítani a **kimeneti típust** az **osztály-tárba** , mielőtt telepítené a topológiát a fürtön.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az **Add** > **új elem hozzáadása elemet**. Válassza az **osztály**lehetőséget, majd adja meg az *LocalTest.cs* nevet. Végül válassza a **Hozzáadás**lehetőséget.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az **Add**  >  **új elem hozzáadása elemet**. Válassza az **osztály**lehetőséget, majd adja meg az *LocalTest.cs* nevet. Végül válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg a *LocalTest.cs*, és `using` adja hozzá a következő utasítást a felső részen:
+1. Nyissa meg a *LocalTest.cs*, és adja hozzá a következő `using` utasítást a felső részen:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-1. Használja a következő kódot a `LocalTest` osztály tartalmához:
+1. Használja a következő kódot a osztály tartalmához `LocalTest` :
 
     ```csharp
     // Drives the topology components
@@ -661,9 +661,9 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
     }
     ```
 
-    Szánjon egy kis időt a kód megjegyzésének beolvasására. Ez a kód `LocalContext` a fejlesztői környezetben lévő összetevők futtatására használja. A szolgáltatás az összetevők közötti adatfolyamot a helyi meghajtón lévő szövegfájlokra is megőrzi.
+    Szánjon egy kis időt a kód megjegyzésének beolvasására. Ez a kód a `LocalContext` fejlesztői környezetben lévő összetevők futtatására használja. A szolgáltatás az összetevők közötti adatfolyamot a helyi meghajtón lévő szövegfájlokra is megőrzi.
 
-1. Nyissa meg a *program.cs*, és adja hozzá a `Main` következő kódot a metódushoz:
+1. Nyissa meg a *program.cs*, és adja hozzá a következő kódot a `Main` metódushoz:
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -684,19 +684,19 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
     Console.ReadKey();
     ```
 
-1. Mentse a módosításokat, majd válassza az **F5 billentyűt** , vagy a projekt elindításához válassza a **hibakeresés** > **megkezdése** lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Amikor `Tests finished` megjelenik, válassza a bármelyik billentyűt az ablak bezárásához.
+1. Mentse a módosításokat, majd válassza az **F5 billentyűt** , vagy **Debug**  >  a projekt elindításához válassza a hibakeresés**megkezdése** lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Amikor `Tests finished` megjelenik, válassza a bármelyik billentyűt az ablak bezárásához.
 
-1. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. (Például: *C\\: Users\\\<your_user_name>\\Source\\Repos\\WordCount\\WordCount*.) Ezután ebben a könyvtárban nyissa meg a *bin*elemet, majd válassza a *hibakeresés*lehetőséget. A tesztek futtatásakor létrehozott szövegfájlokat a *mondatok. txt*, a *Counter. txt*és az *Splitter. txt*fájl tartalmazza. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
+1. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. (Például: *C: \\ felhasználói \\ \<your_user_name> \\ forrás \\ Repos \\ WordCount \\ WordCount*.) Ezután ebben a könyvtárban nyissa meg a *bin*elemet, majd válassza a *hibakeresés*lehetőséget. A tesztek futtatásakor létrehozott szövegfájlokat meg kell tekinteni: *sentences.txt*, *counter.txt*és *splitter.txt*. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
 
    > [!NOTE]  
-   > A karakterlánc-adatok az ezekben a fájlokban lévő decimális értékek tömbje is megmaradnak. Az elválasztó `[[97,103,111]]` **. txt** fájlban például a szó a következőt jelenti *:*.
+   > A karakterlánc-adatok az ezekben a fájlokban lévő decimális értékek tömbje is megmaradnak. A `[[97,103,111]]` **splitter.txt** fájlban például a szó a következőt jelenti *:*.
 
 > [!NOTE]  
 > A HDInsight-fürtön való üzembe helyezés előtt ügyeljen arra, hogy a projekt tulajdonságai között állítsa vissza a **Project Type** ( **osztály) függvénytárát** .
 
 ### <a name="log-information"></a>Napló adatai
 
-A használatával `Context.Logger`egyszerűen naplózhatja a topológiák összetevőinek adatait. A következő parancs például létrehoz egy tájékoztató naplóbejegyzést:
+A használatával egyszerűen naplózhatja a topológiák összetevőinek adatait `Context.Logger` . A következő parancs például létrehoz egy tájékoztató naplóbejegyzést:
 
 `Context.Logger.Info("Component started");`
 
@@ -725,7 +725,7 @@ Ha a topológia HDInsight való elküldésével kapcsolatos hibákba ütközik, 
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 
-Cserélje le a *sshuser* -t a fürthöz tartozó SSH-felhasználói fiókra. Cserélje le a *clustername* nevet a HDInsight-fürt nevére. A és `ssh` a HDInsight használatával `scp` kapcsolatos további információkért lásd: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Cserélje le a *sshuser* -t a fürthöz tartozó SSH-felhasználói fiókra. Cserélje le a *clustername* nevet a HDInsight-fürt nevére. A és a HDInsight használatával kapcsolatos további információkért `scp` `ssh` lásd: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A beadványok több okból is meghiúsulnak:
 
@@ -734,9 +734,9 @@ A beadványok több okból is meghiúsulnak:
 * A függőségek nem kompatibilisek.
 * A topológia nevei duplikálva vannak.
 
-Ha a *hdinsight-scpwebapi. out* naplófájl tartalmaz egy `FileNotFoundException`fájlt, a kivételt a következő feltételek okozhatják:
+Ha a *hdinsight-scpwebapi. out* naplófájl tartalmaz egy fájlt `FileNotFoundException` , a kivételt a következő feltételek okozhatják:
 
-* A JDK nem a fejlesztési környezet elérési útjában van. Ellenőrizze, hogy a JDK telepítve van-e a fejlesztői környezetben, `%JAVA_HOME%/bin` és az elérési úton van-e.
+* A JDK nem a fejlesztési környezet elérési útjában van. Ellenőrizze, hogy a JDK telepítve van-e a fejlesztői környezetben, és az `%JAVA_HOME%/bin` elérési úton van-e.
 * A Java-függőségek hiányoznak. Győződjön meg róla, hogy a beküldés részeként a szükséges. jar fájlokat is tartalmazza.
 
 ## <a name="next-steps"></a>További lépések

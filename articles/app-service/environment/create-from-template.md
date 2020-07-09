@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478326"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>BeAzure Resource Manageri sablon létrehozása
@@ -27,7 +27,7 @@ A beAzure Portal vagy egy Azure Resource Manager sablonnal hozhatók létre a ki
 Amikor létrehoz egy bevezetést a Azure Portalban, egyszerre létrehozhatja a VNet, vagy kiválaszthat egy már meglévő VNet a üzembe helyezéséhez. Ha sablonból hoz létre egy beadást, a következővel kell kezdődnie: 
 
 * Egy Resource Manager-VNet.
-* Egy alhálózat az adott VNet. A jövőbeli növekedési és méretezési igények `/24` kielégítése érdekében javasoljuk, hogy a rendszer 256-címmel rendelkező, a közszolgálati hálózatra vonatkozó előtagja legyen. A kisegítő lehetőség létrehozása után a méret nem módosítható.
+* Egy alhálózat az adott VNet. A `/24` jövőbeli növekedési és méretezési igények kielégítése érdekében javasoljuk, hogy a rendszer 256-címmel rendelkező, a közszolgálati hálózatra vonatkozó előtagja legyen. A kisegítő lehetőség létrehozása után a méret nem módosítható.
 * A VNet erőforrás-azonosítója. Ezt az információt a virtuális hálózat tulajdonságai között található Azure Portalból szerezheti be.
 * Az előfizetés, amelyet központilag telepíteni szeretne.
 * Az a hely, amelyet üzembe szeretne helyezni.
@@ -38,19 +38,19 @@ A kiegészítő környezet létrehozásának automatizálása:
 
 2. A ILB-előkészítés létrehozása után a rendszer feltölt egy TLS-/SSL-tanúsítványt, amely megfelel az ILB-előtagjai tartománynak.
 
-3. A feltöltött TLS/SSL-tanúsítvány az "alapértelmezett" TLS/SSL-tanúsítványként van hozzárendelve a ILB-alapú adatforráshoz.  Ez a tanúsítvány a ILB-központhoz tartozó, a központhoz rendelt általános gyökértartomány (például: `https://someapp.mycustomrootdomain.com`) használata esetén a TLS/SSL-alapú adatforgalomhoz használatos.
+3. A feltöltött TLS/SSL-tanúsítvány az "alapértelmezett" TLS/SSL-tanúsítványként van hozzárendelve a ILB-alapú adatforráshoz.  Ez a tanúsítvány a ILB-központhoz tartozó, a központhoz rendelt általános gyökértartomány (például:) használata esetén a TLS/SSL-alapú adatforgalomhoz használatos `https://someapp.mycustomrootdomain.com` .
 
 
 ## <a name="create-the-ase"></a>A bekészítés létrehozása
 Egy olyan Resource Manager-sablon, amely létrehoz egy bevezetőt és a hozzá tartozó paramétereket tartalmazó fájlt, a GitHubon [egy példán][quickstartasev2create] keresztül érhető el.
 
-Ha ILB-bevezetőt szeretne készíteni, használja a következő Resource Manager-sablonok [példáit][quickstartilbasecreate]. Ez a használati esetet is kielégíti. A *azuredeploy. Parameters. JSON* fájlban található paraméterek többsége közös a ILB ASE és a külső ASE létrehozásához. Az alábbi lista a speciális megjegyzések paramétereit hívja meg, vagy amelyek egyediek, amikor létrehoz egy ILB-bevezetést:
+Ha ILB-bevezetőt szeretne készíteni, használja a következő Resource Manager-sablonok [példáit][quickstartilbasecreate]. Ez a használati esetet is kielégíti. A *azuredeploy.parameters.js* fájljának legtöbb paramétere közös a ILB-ASE és a külső ASE létrehozásához. Az alábbi lista a speciális megjegyzések paramétereit hívja meg, vagy amelyek egyediek, amikor létrehoz egy ILB-bevezetést:
 
 * *internalLoadBalancingMode*: a legtöbb esetben ez a beállítás 3 értékre van állítva, ami azt jelenti, hogy a 80/443-as porton a HTTP/HTTPS-forgalom, valamint a szolgáltatón futó FTP-szolgáltatás által figyelt vezérlési/adatcsatorna-portok a ILB lefoglalt virtuális hálózat belső címeihez lesznek kötve. Ha ez a tulajdonság 2 értékre van állítva, akkor csak az FTP szolgáltatáshoz kapcsolódó portok (vezérlő-és adatcsatornák) vannak kötve egy ILB-címnek. A HTTP/HTTPS-forgalom a nyilvános VIP-en marad.
 * *dnsSuffix*: Ez a paraméter határozza meg a közirányhoz rendelt alapértelmezett gyökértartomány-tartományt. A Azure App Service nyilvános változatában az összes webalkalmazás alapértelmezett legfelső szintű tartománya a *azurewebsites.net*. Mivel a ILB-alapú adatközpont egy ügyfél virtuális hálózatán belül van, nem érdemes a nyilvános szolgáltatás alapértelmezett gyökértartomány-tartományát használni. Ehelyett egy ILB-szolgáltatónak rendelkeznie kell egy alapértelmezett gyökértartomány-tartománnyal, amely logikus a vállalat belső virtuális hálózatán belüli használatra. Előfordulhat például, hogy a contoso Corporation a *Internal-contoso.com* alapértelmezett gyökértartomány-tartományát használja olyan alkalmazások esetében, amelyek csak a contoso virtuális hálózatán belül lesznek feloldhatók és elérhetők. 
-* *ipSslAddressCount*: Ez a paraméter automatikusan alapértelmezett értéke a 0 érték a *azuredeploy. JSON* FÁJLBAN, mert a ILB ASE csak egyetlen ILB-címnek van. Nincsenek explicit IP-SSL-címek egy ILB-alapú beszabályozáshoz. Ezért a ILB-beadáshoz tartozó IP-SSL-címkészlet értéke csak nulla lehet. Ellenkező esetben kiépítési hiba történik. 
+* *ipSslAddressCount*: Ez a paraméter automatikusan alapértelmezett értéke a 0 érték a fájlban lévő *azuredeploy.jsban* , mert a ILB ASE csak egyetlen ILB-címnek van. Nincsenek explicit IP-SSL-címek egy ILB-alapú beszabályozáshoz. Ezért a ILB-beadáshoz tartozó IP-SSL-címkészlet értéke csak nulla lehet. Ellenkező esetben kiépítési hiba történik. 
 
-A *azuredeploy. Parameters. JSON* fájl kitöltése után hozza létre a beadást a PowerShell-kódrészlet használatával. Módosítsa a fájl elérési útját úgy, hogy az megfeleljen a számítógép Resource Manager-sablonjának helyeinek. Ne feledje, hogy a Resource Manager-alapú központi telepítési név és az erőforráscsoport neve számára adja meg a saját értékeit:
+A fájl *azuredeploy.parameters.jsának* kitöltése után hozza létre a kiegészítő szolgáltatást a PowerShell-kódrészlet használatával. Módosítsa a fájl elérési útját úgy, hogy az megfeleljen a számítógép Resource Manager-sablonjának helyeinek. Ne feledje, hogy a Resource Manager-alapú központi telepítési név és az erőforráscsoport neve számára adja meg a saját értékeit:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -62,7 +62,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Egy órát vesz igénybe a bevezetés létrehozásakor. Ezután a bevezető megjelenik a portálon a ASE az üzembe helyezést kiváltó előfizetéshez tartozó listájában.
 
 ## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Az "alapértelmezett" TLS/SSL-tanúsítvány feltöltése és konfigurálása
-TLS/SSL-tanúsítványt kell társítani a kiegészítő csomaghoz, amely az alkalmazások TLS-kapcsolatainak létrehozásához használt alapértelmezett TLS/SSL-tanúsítvány. Ha a *Internal-contoso.com*alapértelmezett DNS-utótagja a, a kapcsolathoz `https://some-random-app.internal-contoso.com` a **. internal-contoso.com*érvényes TLS/SSL-tanúsítványra van szükség. 
+TLS/SSL-tanúsítványt kell társítani a kiegészítő csomaghoz, amely az alkalmazások TLS-kapcsolatainak létrehozásához használt alapértelmezett TLS/SSL-tanúsítvány. Ha a *Internal-contoso.com*alapértelmezett DNS-utótagja a, a kapcsolathoz a `https://some-random-app.internal-contoso.com` **. internal-contoso.com*érvényes TLS/SSL-tanúsítványra van szükség. 
 
 Szerezzen be egy érvényes TLS/SSL-tanúsítványt belső hitelesítésszolgáltatók használatával, tanúsítvány vásárlása külső kiállítótól vagy önaláírt tanúsítvány használatával. A TLS/SSL-tanúsítvány forrástól függetlenül a következő tanúsítvány-attribútumokat megfelelően kell konfigurálni:
 
@@ -98,16 +98,16 @@ $fileContentEncoded | set-content ($fileName + ".b64")
 
 Miután a TLS/SSL-tanúsítvány sikeresen létrejött és át lett alakítva Base64 kódolású karakterlánccá, a példa Resource Manager-sablonnal [konfigurálja az alapértelmezett SSL-tanúsítványt][quickstartconfiguressl] a githubon. 
 
-A *azuredeploy. Parameters. JSON* fájlban található paraméterek itt láthatók:
+A *azuredeploy.parameters.js* fájljának paramétereit itt találja:
 
 * *appServiceEnvironmentName*: a konfigurált ILB-előállítók neve.
 * *existingAseLocation*: az a szöveges karakterlánc, amely azt az Azure-régiót tartalmazza, ahol a ILB-központot telepítették.  Például: "az USA déli középső régiója".
 * *pfxBlobString*: a. pfx fájl bementi-kódolású karakterláncának ábrázolása. Használja a korábban bemutatott kódrészletet, és másolja a "exportedcert. pfx. b64" fájlban található karakterláncot. Illessze be a értéket a *pfxBlobString* attribútum értékeként.
 * *Password (jelszó*): a. pfx fájl védelméhez használt jelszó.
 * *certificateThumbprint*: a Tanúsítvány ujjlenyomata. Ha ezt az értéket a PowerShellből kéri le (például *$Certificate. *A korábbi kódrészletből származó ujjlenyomatot), az értéket használhatja. Ha az értéket a Windows-tanúsítvány párbeszédpanelen másolja, ne felejtse el kihúzni a felesleges szóközöket. A *certificateThumbprint* hasonlóan kell kinéznie, mint a AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *certificateName*: a tanúsítvány azonosítására szolgáló, saját maga által választott, felhasználóbarát karakterlánc-azonosító. A nevet a rendszer a TLS/SSL-tanúsítványt képviselő *Microsoft. Web/Certificates* entitás egyedi Resource Manager-azonosítójának részeként használja. A névnek a következő utótaggal *kell* végződnie: \_yourASENameHere_InternalLoadBalancingASE. Az Azure Portal ezt az utótagot használja jelzőként, hogy a tanúsítvány egy ILB-kompatibilis bemutatók biztonságossá tételére szolgál.
+* *certificateName*: a tanúsítvány azonosítására szolgáló, saját maga által választott, felhasználóbarát karakterlánc-azonosító. A nevet a rendszer a TLS/SSL-tanúsítványt képviselő *Microsoft. Web/Certificates* entitás egyedi Resource Manager-azonosítójának részeként használja. A névnek a következő utótaggal *kell* végződnie: \_ yourASENameHere_InternalLoadBalancingASE. Az Azure Portal ezt az utótagot használja jelzőként, hogy a tanúsítvány egy ILB-kompatibilis bemutatók biztonságossá tételére szolgál.
 
-A *azuredeploy. Parameters. JSON* rövidített példája itt látható:
+Itt látható egy rövidített példa *azuredeploy.parameters.json* :
 
 ```json
 {
@@ -136,7 +136,7 @@ A *azuredeploy. Parameters. JSON* rövidített példája itt látható:
 }
 ```
 
-A *azuredeploy. Parameters. JSON* fájl kitöltése után konfigurálja az alapértelmezett TLS/SSL-tanúsítványt a PowerShell-kódrészlet használatával. Módosítsa a fájlelérési utakat úgy, hogy az megfeleljen a számítógépen található Resource Manager-Sablonfájlok helyének. Ne feledje, hogy a Resource Manager-alapú központi telepítési név és az erőforráscsoport neve számára adja meg a saját értékeit:
+A fájl *azuredeploy.parameters.jsának* kitöltése után konfigurálja az alapértelmezett TLS/SSL-tanúsítványt a PowerShell-kódrészlet használatával. Módosítsa a fájlelérési utakat úgy, hogy az megfeleljen a számítógépen található Resource Manager-Sablonfájlok helyének. Ne feledje, hogy a Resource Manager-alapú központi telepítési név és az erőforráscsoport neve számára adja meg a saját értékeit:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,7 +147,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 A módosítás alkalmazása körülbelül 40 percet vesz igénybe. Ha például egy alapértelmezett méretű, két előtéri végpontot használó, a sablon körülbelül egy óra, és 20 percet vesz igénybe. Amíg a sablon fut, a kiszolgáló nem méretezhető.  
 
-A sablon befejeződése után a ILB-beadási csomag alkalmazásai HTTPS-kapcsolaton keresztül érhetők el. A kapcsolatok az alapértelmezett TLS/SSL-tanúsítvány használatával biztonságosak. Az alapértelmezett TLS/SSL-tanúsítvány akkor használatos, ha az ILB-szolgáltatón lévő alkalmazások az alkalmazás neve és az alapértelmezett állomásnév együttes használatával vannak kezelve. Például a * `https://mycustomapp.internal-contoso.com` *. internal-contoso.com*alapértelmezett TLS/SSL-tanúsítványát használja.
+A sablon befejeződése után a ILB-beadási csomag alkalmazásai HTTPS-kapcsolaton keresztül érhetők el. A kapcsolatok az alapértelmezett TLS/SSL-tanúsítvány használatával biztonságosak. Az alapértelmezett TLS/SSL-tanúsítvány akkor használatos, ha az ILB-szolgáltatón lévő alkalmazások az alkalmazás neve és az alapértelmezett állomásnév együttes használatával vannak kezelve. Például `https://mycustomapp.internal-contoso.com` a **. internal-contoso.com*alapértelmezett TLS/SSL-tanúsítványát használja.
 
 Akárcsak a nyilvános több-bérlős szolgáltatáson futó alkalmazások esetében, a fejlesztők egyéni állomásnévket állíthatnak be az egyes alkalmazásokhoz. Emellett egyedi SNI TLS/SSL-tanúsítvány-kötéseket is beállíthat az egyes alkalmazásokhoz.
 

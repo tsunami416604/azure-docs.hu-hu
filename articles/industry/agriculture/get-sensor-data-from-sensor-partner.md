@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398233"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
@@ -46,7 +46,7 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
 2. **Ha a FarmBeats 1.2.7 vagy újabb verzióval rendelkezik, hagyja ki az a, b és c lépést, és folytassa a 3. lépéssel.** A FarmBeats-verziót a FarmBeats felhasználói felület jobb felső sarkában található **Beállítások** ikonra kattintva tekintheti meg.
 
-      a.  **Azure Active Directory** > **alkalmazás regisztrációjának** megugrása
+      a.  **Azure Active Directory**  >  **alkalmazás regisztrációjának** megugrása
 
       b. Válassza ki a FarmBeats-telepítés részeként létrehozott **alkalmazás-regisztrációt** . Ez a neve megegyezik a FarmBeats datahub.
 
@@ -74,7 +74,7 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
     ```
 
-7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory** > **áttekintő** oldalról kérhető le.
+7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory**  >  **áttekintő** oldalról kérhető le.
 
     ```azurepowershell-interactive 
 

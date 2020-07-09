@@ -2,19 +2,19 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforrások frissítését vagy törlését az összes felhasználó és szerepkör zárolásának alkalmazásával.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/17/2020
+ms.openlocfilehash: 7fe735cf523758f51fd9d6751de8507b2af46737
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847667"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057585"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
 Rendszergazdaként szüksége lehet egy előfizetés, erőforráscsoport vagy erőforrás zárolására annak érdekében, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
 
-* A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást. 
+* A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást.
 * A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
 
 ## <a name="how-locks-are-applied"></a>A zárolások alkalmazása
@@ -35,9 +35,11 @@ A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan m
 
 * Egy olyan **erőforráscsoport** írásvédett zárolása, amely egy **virtuális gépet** tartalmaz, megakadályozza, hogy minden felhasználó elindítsa vagy újraindítsa a virtuális gépet. Ezeknek a műveleteknek POST kérelemre van szükségük.
 
-* Az **előfizetés** írásvédett zárolása megakadályozza, hogy a **Azure Advisor** megfelelően működjön. Az Advisor nem tudja tárolni a lekérdezések eredményét.
+* Egy **erőforráscsoport** nem törölhető zárolása megakadályozza, hogy Azure Resource Manager az előzményekben lévő [központi telepítések automatikus törlését](../templates/deployment-history-deletions.md) . Ha az előzményekben eléri a 800-es üzemelő példányokat, az üzemelő példányok sikertelenek lesznek.
 
 * A **Azure Backup szolgáltatás** által létrehozott **erőforráscsoport** nem törölhető zárolása miatt a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. Zárolt állapotban a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.md).
+
+* Az **előfizetés** írásvédett zárolása megakadályozza, hogy a **Azure Advisor** megfelelően működjön. Az Advisor nem tudja tárolni a lekérdezések eredményét.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kik hozhatnak létre vagy törölhetnek zárolásokat
 
@@ -85,62 +87,63 @@ Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, eg
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "hostingPlanName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hostingPlanName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2019-08-01",
+      "name": "[parameters('hostingPlanName')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "tier": "Free",
+        "name": "f1",
+        "capacity": 0
+      },
+      "properties": {
+        "targetWorkerCount": 1
+      }
     },
-    "variables": {
-        "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2019-08-01",
+      "name": "[variables('siteName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[parameters('hostingPlanName')]"
+      }
     },
-    "resources": [
-        {
-            "apiVersion": "2016-09-01",
-            "type": "Microsoft.Web/serverfarms",
-            "name": "[parameters('hostingPlanName')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "tier": "Free",
-                "name": "f1",
-                "capacity": 0
-            },
-            "properties": {
-                "targetWorkerCount": 1
-            }
-        },
-        {
-            "apiVersion": "2016-08-01",
-            "name": "[variables('siteName')]",
-            "type": "Microsoft.Web/sites",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-            ],
-            "properties": {
-                "serverFarmId": "[parameters('hostingPlanName')]"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/providers/locks",
-            "apiVersion": "2016-09-01",
-            "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
-            ],
-            "properties": {
-                "level": "CanNotDelete",
-                "notes": "Site should not be deleted."
-            }
-        }
-    ]
+    {
+      "type": "Microsoft.Web/sites/providers/locks",
+      "apiVersion": "2016-09-01",
+      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
+      ],
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Site should not be deleted."
+      }
+    }
+  ]
 }
 ```
 
-Az erőforráscsoportok zárolásának beállítására példát a következő témakörben talál: [erőforráscsoport létrehozása és zárolása](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+Az erőforráscsoportok zárolásának beállítására példát a következő témakörben talál: [erőforráscsoport létrehozása és zárolása](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
+
 A [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) parancs használatával zárolja a telepített erőforrásokat a Azure PowerShell.
 
 Egy erőforrás zárolásához adja meg az erőforrás nevét, típusát és az erőforráscsoport nevét.
@@ -222,25 +225,30 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST API
-A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](https://docs.microsoft.com/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
+
+A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
 
 Zárolás létrehozásához futtassa a következő parancsot:
 
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```http
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```
 
 A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01**-es verziót.
 
 A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tulajdonságait.
 
-    {
-      "properties": {
-        "level": "CanNotDelete",
-        "notes": "Optional text notes."
-      }
-    } 
+```json
+{
+  "properties": {
+  "level": "CanNotDelete",
+  "notes": "Optional text notes."
+  }
+}
+```
 
 ## <a name="next-steps"></a>További lépések
+
 * Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
 * Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
-

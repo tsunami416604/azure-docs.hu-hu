@@ -1,38 +1,41 @@
 ---
-title: Az Azure üzenetsor-tároló használata a Node. js-ben – Azure Storage
-description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue szolgáltatás használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. Node. js-ben írt minták.
+title: Az Azure üzenetsor-tároló használata a Node.js-Azure Storage-ból
+description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue szolgáltatás használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. Node.jsban írt minták.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
+ms.topic: how-to
+ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b8f15831c02a74bbba85ca4327369af6a4dbb2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808795"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Várólisták létrehozása és törlése az Azure Queue Service-ben a Node. js használatával
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Várólisták létrehozása és törlése az Azure Queue Service használatával Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a Microsoft Azure Queue szolgáltatás használatával. A mintákat a Node. js API-val kell írni. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a **várólisták létrehozása és törlése**.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a Microsoft Azure Queue szolgáltatás használatával. A minták a Node.js API használatával íródnak. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a **várólisták létrehozása és törlése**.
+
+> [!IMPORTANT]
+> Ez a cikk a JavaScripthez készült Azure Storage ügyféloldali kódtár örökölt verziójára vonatkozik. A legújabb verzió használatának megkezdéséhez tekintse meg a következőt: gyors útmutató [: Azure üzenetsor Storage ügyféloldali kódtár a javascripthez](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Node. js-alkalmazás létrehozása
-Hozzon létre egy üres Node. js-alkalmazást. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-Webalkalmazás létrehozása Azure app Serviceban](../../app-service/app-service-web-get-started-nodejs.md), a [Node. js-alkalmazások kiépítése és üzembe helyezése egy Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) -ben a Windows PowerShell vagy a [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)használatával.
+## <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
+Hozzon létre egy üres Node.js alkalmazást. Node.js alkalmazás létrehozásával kapcsolatos utasításokért lásd: [Node.js-Webalkalmazás létrehozása a Azure app Service-ban](../../app-service/app-service-web-get-started-nodejs.md), [Node.js alkalmazás létrehozása és üzembe helyezése Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) -ben Windows PowerShell vagy [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)használatával.
 
 ## <a name="configure-your-application-to-access-storage"></a>Az alkalmazás konfigurálása a tároló elérésére
-Az Azure Storage használatához szüksége lesz a Node. js-hez készült Azure Storage SDK-ra, amely a tárolási REST-szolgáltatásokkal kommunikáló kényelmi könyvtárak készletét tartalmazza.
+Az Azure Storage használatához szüksége lesz a Node.js Azure Storage SDK-ra, amely a tárolási REST-szolgáltatásokkal kommunikáló kényelmi könyvtárakat tartalmaz.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>A csomag beszerzéséhez használja a Node Package Managert (NPM)
 1. Használjon parancssori felületet (például **PowerShell** -(Windows-) **terminál** (Mac) vagy **bash** (UNIX), Navigáljon arra a mappára, ahol létrehozta a minta alkalmazást.
@@ -51,17 +54,17 @@ Az Azure Storage használatához szüksége lesz a Node. js-hez készült Azure 
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Az **ls** parancs manuális futtatásával ellenőrizheti, hogy létrejött-e a **csomópont\_-modulok** mappája. A mappában található az **azure-storage** csomag, amely a tárhely eléréséhez szükséges kódtárakat tartalmazza.
+3. Az **ls** parancs manuális futtatásával ellenőrizheti, hogy létrejött-e a **csomópont- \_ modulok** mappája. A mappában található az **azure-storage** csomag, amely a tárhely eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-package"></a>A csomag importálása
-A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt annak az alkalmazásnak a **Server. js** fájljához, ahol a Storage-t használni szeretné:
+A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt annak az alkalmazásnak a legfelső **server.js** fájljához, amelyen a Storage-t használni szeretné:
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Azure Storage-beli kapcsolatok beállítása
-Az Azure-modul beolvassa a környezeti\_változókat az Azure\_Storage\_-\_\_fiók és az Azure\_Storage-hozzáférési kulcs, vagy az Azure Storage-\_kapcsolati\_karakterlánc az Azure Storage-fiókhoz való kapcsolódáshoz szükséges információkhoz. Ha ezek a környezeti változók nincsenek beállítva, a **createQueueService**meghívásakor meg kell adnia a fiók adatait.
+Az Azure-modul beolvassa a környezeti változókat az Azure Storage \_ \_ -fiók és az Azure \_ Storage- \_ hozzáférési \_ kulcs, vagy az Azure Storage- \_ \_ kapcsolati \_ karakterlánc az Azure Storage-fiókhoz való kapcsolódáshoz szükséges információkhoz. Ha ezek a környezeti változók nincsenek beállítva, a **createQueueService**meghívásakor meg kell adnia a fiók adatait.
 
 ## <a name="how-to-create-a-queue"></a>Útmutató: üzenetsor létrehozása
 A következő kód létrehoz egy **QueueService** objektumot, amely lehetővé teszi a várólistákkal való munkavégzést.
@@ -80,7 +83,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 });
 ```
 
-Ha a várólista létrejött, `result.created` igaz. Ha a várólista létezik, `result.created` a hamis.
+Ha a várólista létrejött, `result.created` igaz. Ha a várólista létezik, a `result.created` hamis.
 
 ### <a name="filters"></a>Szűrők
 A nem kötelező szűrési műveletek alkalmazhatók a **QueueService**használatával végrehajtott műveletekre. A szűrési műveletek magukban foglalhatják a naplózást, az automatikus újrapróbálkozásokat stb. A szűrők olyan objektumok, amelyek az aláírással ellátott metódust implementálják:
@@ -156,7 +159,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint az üzenet csak 30 másodpercig van elrejtve, ami azt jelzi, hogy más ügyfelek számára látható. A with `options.visibilityTimeout` **getMessages**használatával más értéket is megadhat.
+> Alapértelmezés szerint az üzenet csak 30 másodpercig van elrejtve, ami azt jelzi, hogy más ügyfelek számára látható. A with GetMessages használatával más értéket is megadhat `options.visibilityTimeout` . **getMessages**
 > 
 > [!NOTE]
 > A **getMessages** használata, ha a várólista nem ad vissza hibaüzenetet, de a rendszer nem ad vissza üzeneteket.
@@ -227,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Ha az összes várólistát nem lehet `result.continuationToken` visszaadni, a **listQueuesSegmented** első paramétereként vagy a **listQueuesSegmentedWithPrefix** második paramétereként is használható a további találatok lekéréséhez.
+Ha az összes várólistát nem lehet visszaadni, `result.continuationToken` a **listQueuesSegmented** első paramétereként vagy a **listQueuesSegmentedWithPrefix** második paramétereként is használható a további találatok lekéréséhez.
 
 ## <a name="how-to-delete-a-queue"></a>Útmutató: üzenetsor törlése
 Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **deleteQueue** metódust a várólista-objektumon.

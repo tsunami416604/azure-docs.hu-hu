@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 3d567ec4d760be24fdbb79ff85bd6db0eb4a66c8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82570069"
 ---
 # <a name="azure-stack-edge-security-and-data-protection"></a>Azure Stack peremhálózati biztonság és adatvédelem
@@ -64,7 +64,7 @@ A következőket teheti:
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - A [jelszó megváltoztatásához](azure-stack-edge-manage-access-power-connectivity-mode.md#manage-device-access)használja a helyi webes felhasználói felületet. Ha megváltoztatja a jelszót, ügyeljen arra, hogy értesítse az összes távelérési felhasználót, hogy ne legyenek a bejelentkezéssel kapcsolatos problémák.
 
-## <a name="protect-your-data"></a>Adatok védelme
+## <a name="protect-your-data"></a>Az adatok védelme
 
 Ez a szakasz azokat a Azure Stack peremhálózati biztonsági funkciókat ismerteti, amelyek a továbbítás és a tárolt adatforgalom védelmére használhatók.
 

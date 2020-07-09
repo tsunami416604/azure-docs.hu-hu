@@ -3,16 +3,16 @@ title: Azure nagyvállalati szerződések és a módosításaik
 description: Ez a cikk azt ismerteti, hogy milyen hatással vannak az Azure nagyvállalati szerződések és a módosításaik az Azure EA Portal használatára.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648180"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298142"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
 
@@ -43,7 +43,7 @@ A regisztrációk az alábbi állapotértékek egyikével rendelkeznek. Ezek az 
 
 **Lejárt** – Ha az EA-regisztráció eléri a nagyvállalati szerződés záró dátumát, a regisztráció lejár. Az EA-ügyfél nem kérte az időtartam meghosszabbítását, ezért az összes szolgáltatása le van tiltva.
 
-2019. augusztus 1-től a rendszer nem fogadja el az új lemondási űrlapokat az Azure kereskedelmi ügyfelek esetében. Ehelyett a regisztrációk határozatlan időre meg lesznek hosszabbítva. Ha abba szeretné hagyni az Azure-szolgáltatások használatát, szüntesse meg az előfizetését az [Azure EA Portalon](https://portal.azure.com). A partnere is benyújthat egy felmondási kérelmet a https://www.explore.ms webhelyen. A kormányzati szerződéstípussal rendelkező ügyfelek esetén nincs változás.
+2019. augusztus 1-től a rendszer nem fogadja el az új lemondási űrlapokat az Azure kereskedelmi ügyfelek esetében. Ehelyett a regisztrációk határozatlan időre meg lesznek hosszabbítva. Ha abba szeretné hagyni az Azure-szolgáltatások használatát, szüntesse meg az előfizetését az [Azure Portalon](https://portal.azure.com). A partnere is benyújthat egy felmondási kérelmet a https://www.explore.ms webhelyen. A kormányzati szerződéstípussal rendelkező ügyfelek esetén nincs változás.
 
 **Átvitt** – Az Átvitt állapotot a rendszer azokra a regisztrációkra alkalmazza, amelyeknek a társított fiókjait és szolgáltatásait átvitték egy új regisztrációba. A regisztrációk nem kerülnek át automatikusan, ha a megújítás során új regisztrációs szám jön létre. Az előző regisztrációs számnak szerepelnie kell az ügyfél automatikus átvitelre vonatkozó megújítási kérelmén.
 

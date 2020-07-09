@@ -4,20 +4,19 @@ titlesuffix: Azure Virtual Network
 description: Megtudhatja, hogyan hozhat létre virtuális hálózatokat a Resource Manageren keresztül létrehozott virtuális hálózatok között, amelyek különböző Azure-előfizetésekben találhatók ugyanazon vagy különböző Azure Active Directory-bérlőben.
 services: virtual-network
 documentationcenter: ''
-author: anavinahar
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
-ms.author: anavin
-ms.openlocfilehash: 242115ae454340fd0a8439b7b3c79b713409acc2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688780"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Hozzon létre egy virtuális hálózati társ-erőforrás-kezelőt, különböző előfizetéseket és Azure Active Directory bérlőket
 
@@ -246,7 +245,7 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
 ## <a name="create-peering---resource-manager-template"></a><a name="template"></a>Egyenrangú – Resource Manager-sablon létrehozása
 
 1. Virtuális hálózat létrehozásához és a megfelelő [engedélyek](virtual-network-manage-peering.md#permissions)kiosztásához hajtsa végre a jelen cikk [portálon](#portal), az [Azure CLI](#cli)-ben vagy a [PowerShellben](#powershell) ismertetett lépéseket.
-2. Mentse a következő szöveget a helyi számítógép egyik fájljába. Cserélje le `<subscription ID>` a felhasználót az előfizetés-azonosítóra. Előfordulhat, hogy a fájlt vnetpeeringA. JSON néven menti, például:.
+2. Mentse a következő szöveget a helyi számítógép egyik fájljába. Cserélje le `<subscription ID>` a felhasználót az előfizetés-azonosítóra. Előfordulhat, hogy a fájlt vnetpeeringA.jsként menti, például:.
 
    ```json
    {
@@ -305,7 +304,7 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
    ```
 
 2. Jelentkezzen ki az Azure-ból felhasználóként, és jelentkezzen be Felhasználób néven.
-3. Hajtsa végre a következő parancsot:
+3. Futtassa a következő parancsot:
 
    ```azurecli-interactive
    az group delete --name myResourceGroupB --yes
@@ -320,7 +319,7 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
    ```
 
 2. Jelentkezzen ki az Azure-ból felhasználóként, és jelentkezzen be Felhasználób néven.
-3. Hajtsa végre a következő parancsot:
+3. Futtassa a következő parancsot:
 
    ```powershell
    Remove-AzResourceGroup -Name myResourceGroupB -force

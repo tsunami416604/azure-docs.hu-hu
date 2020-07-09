@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104877"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
 
@@ -39,7 +39,7 @@ Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgálta
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>A Data Lake Storage Gen2 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 
-Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal > lévő Storage-fiókon **a tűzfal****engedélyezése (bekapcsolva)** > beállítással az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
+Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal lévő Storage-fiókon **a tűzfal**  >  **engedélyezése (bekapcsolva)**  >  beállítással az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
 
 Ha Azure Databricks szeretné elérni a Storage-fiókját, telepítse Azure Databricks a virtuális hálózatra, majd adja hozzá a virtuális hálózatot a tűzfalhoz. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -77,11 +77,11 @@ Az adatközpontba való kirakodáskor fontos, hogy előre tervezze az adat szerk
 
 A IoT számítási feladatokban nagy mennyiségű adat található az adattárban, amely számos termékre, eszközre, szervezetre és ügyfélre kiterjed. Fontos, hogy előzetesen tervezze meg a címtár-elrendezést a szervezet, a biztonság és a hatékony feldolgozás érdekében az adatátviteli sebességű felhasználók számára. A megfontolandó általános sablon a következő elrendezés lehet:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{SubjectMatter (s)}/{yyyy}/{MM}/{DD}/{hh}/*
 
 Például az Egyesült királyságbeli repülőgép-hajtóművek leszállási telemetria az alábbi struktúrához hasonló lehet:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+*Egyesült Királyság/repülőgépek/BA1293/Engine1/2017/08/11/12/*
 
 Fontos, hogy a címtár struktúrájának végére helyezze a dátumot. Ha bizonyos régiókat vagy felhasználókat vagy csoportokat szeretne zárolni, a POSIX-engedélyekkel egyszerűen elvégezheti a zárolást. Ellenkező esetben, ha korlátozni kell egy bizonyos biztonsági csoportot, hogy csak az Egyesült királyságbeli adatok vagy bizonyos síkok megtekintésére legyen szükség, a dátum struktúra előtt külön engedélyre lesz szükség az óránkénti címtárban számos könyvtárhoz. Emellett a kezdeti dátum szerkezete exponenciálisan megnövelheti a könyvtárak számát az idő múlásával.
 
@@ -91,13 +91,13 @@ A Batch-feldolgozás általánosan használt megközelítése az adatok egy "in"
 
 Az adatsérülés vagy váratlan formátumok miatt előfordulhat, hogy a fájlok feldolgozása nem sikerült. Ilyen esetekben a címtár szerkezete előnyt jelenthet a **/Bad** mappában, hogy további ellenőrzés céljából áthelyezze a fájlokat. Előfordulhat, hogy a Batch-feladatok manuális beavatkozás céljából is kezelhetik a *hibás* fájlok jelentéseit vagy értesítéseit. Vegye figyelembe a következő sablon struktúráját:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{SubjectMatter (s)}/in/{yyyy}/{MM}/{DD}/{hh}/*\
+*{Region}/{SubjectMatter (s)}/out/{yyyy}/{MM}/{DD}/{hh}/*\
+*{Region}/{SubjectMatter (s)}/Bad/{yyyy}/{MM}/{DD}/{hh}/*
 
 A marketing vállalat például az ügyfelek frissítéseinek napi adatkivonatát fogadja Észak-Amerika. A feldolgozás előtt és után a következő kódrészlethez hasonlónak tűnhet:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+*NA/szemelvények/ACMEPaperCo/in/2017/08/14/updates_08142017.csv*\
+*NA/szemelvények/ACMEPaperCo/out/2017/08/14/processed_updates_08142017.csv*
 
 A közvetlenül az adatbázisokba (például a kaptárba vagy a hagyományos SQL-adatbázisba) feldolgozott batch-adatokat nem kell **/in** vagy **/out** mappához adni, mivel a kimenet már egy különálló mappába kerül a kaptár-tábla vagy a külső adatbázis számára. Például az ügyfelek napi kinyerése a saját mappáiba kerül, és a Azure Data Factory, az Apache Oozie vagy az Apache légáram egy olyan napi struktúrát vagy Spark-feladatot indít el, amely feldolgozza és beírja az adatait egy kaptár-táblába.

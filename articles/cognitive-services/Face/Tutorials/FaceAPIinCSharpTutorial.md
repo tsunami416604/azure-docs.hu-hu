@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b4458920ec8b3e0c302f6e0654891b83ed07264f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 633404b59581a86dc3c115f132b06d8c8165d13a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402899"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986513"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
 
@@ -34,13 +34,17 @@ Ez az oktatóanyag a következőket mutatja be:
 
 A teljes mintakód elérhető a GitHubon a [kognitív Face csharp minta](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) adattárában.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `FACE_SUBSCRIPTION_KEY` karakterláncához, a nevet és `FACE_ENDPOINT`a-t.
-- A [Visual Studio 2015-es vagy 2017-](https://www.visualstudio.com/downloads/)es verziójának bármely kiadása.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a szolgáltatás végponti karakterláncához, illetve a nevet `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
+- A [Visual Studio](https://www.visualstudio.com/downloads/)bármely kiadása.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
@@ -57,7 +61,7 @@ Ebben a szakaszban az alkalmazás alapszintű keretrendszerét fogja hozzáadni 
 
 ### <a name="create-the-ui"></a>A felhasználói felület létrehozása
 
-Nyissa meg a *MainWindow. XAML* mappát, és cserélje le&mdash;a tartalmát a következő kódra. Ez a kód a felhasználói felület ablakát hozza létre. A `FacePhoto_MouseMove` és `BrowseButton_Click` metódusok olyan eseménykezelők, amelyeket később kell meghatározni.
+Nyissa meg a *MainWindow. XAML* mappát, és cserélje le a tartalmát a következő kódra &mdash; . Ez a kód a felhasználói felület ablakát hozza létre. A `FacePhoto_MouseMove` és `BrowseButton_Click` metódusok olyan eseménykezelők, amelyeket később kell meghatározni.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
@@ -113,7 +117,7 @@ Adja hozzá a következő metódust a **MainWindow** osztályhoz a **UploadAndDe
 
 ## <a name="display-the-face-description"></a>Az arc leírásának megjelenítése
 
-Adja hozzá a következő kódot a **FacePhoto_MouseMove** metódushoz. Ez az eseménykezelő a Face Description karakterláncot jeleníti meg, `faceDescriptionStatusBar` amikor a kurzor egy észlelt arc négyszög fölé mutat.
+Adja hozzá a következő kódot a **FacePhoto_MouseMove** metódushoz. Ez az eseménykezelő a Face Description karakterláncot jeleníti meg, `faceDescriptionStatusBar` Amikor a kurzor egy észlelt arc négyszög fölé mutat.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 

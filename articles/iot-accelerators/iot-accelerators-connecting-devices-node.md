@@ -1,6 +1,6 @@
 ---
-title: Eszközök kiépítése a távoli figyeléshez a Node. js-ben – Azure | Microsoft Docs
-description: Leírja, hogyan csatlakoztatható egy eszköz a távoli figyelési megoldáshoz a Node. js-ben írt alkalmazás használatával.
+title: Eszközök kiépítése a távoli monitorozáshoz a Node.js-Azure-ban | Microsoft Docs
+description: Ismerteti, hogyan csatlakoztatható egy eszköz a távoli figyelési megoldáshoz a Node.jsban írt alkalmazással.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,25 +10,24 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683976"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (node. js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Ebben az oktatóanyagban a Node. js-t használja, amely a minimális erőforrás-korlátozásokkal rendelkező környezetek számára megfelelő megoldás.
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Ebben az oktatóanyagban a Node.js-t használja, ami jó megoldás a minimális erőforrás-korlátozásokkal rendelkező környezetekhez.
 
 Ha inkább egy eszközt szeretne szimulálni, tekintse meg [az új szimulált eszköz létrehozását és tesztelését](iot-accelerators-remote-monitoring-create-simulated-device.md)ismertető témakört.
 
-## <a name="create-a-nodejs-solution"></a>Node. js-megoldás létrehozása
+## <a name="create-a-nodejs-solution"></a>Node.js megoldás létrehozása
 
-Győződjön meg arról, hogy a [Node. js](https://nodejs.org/) 4.0.0 vagy újabb verziója telepítve van a fejlesztői gépen. A parancsot a `node --version` parancssorban futtatva ellenőrizhető a verzió.
+Győződjön meg arról, hogy a [Node.js](https://nodejs.org/) 4.0.0 vagy újabb verzió van telepítve a fejlesztői gépen. A `node --version` parancsot a parancssorban futtatva ellenőrizhető a verzió.
 
-1. Hozzon létre egy `remotemonitoring` nevű mappát a fejlesztői gépen. Navigáljon ehhez a mappához a parancssori környezetben.
+1. Hozzon létre egy nevű mappát a `remotemonitoring` fejlesztői gépen. Navigáljon ehhez a mappához a parancssori környezetben.
 
 1. A minta alkalmazás végrehajtásához szükséges csomagok letöltéséhez és telepítéséhez futtassa a következő parancsokat:
 
@@ -37,9 +36,9 @@ Győződjön meg arról, hogy a [Node. js](https://nodejs.org/) 4.0.0 vagy újab
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. A `remotemonitoring` mappában hozzon létre egy **remote_monitoring. js**nevű fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
+1. A `remotemonitoring` mappában hozzon létre egy **remote_monitoring.js**nevű fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
 
-1. A **remote_monitoring. js** fájlban adja hozzá a következő `require` utasításokat:
+1. A **remote_monitoring.js** fájlban adja hozzá a következő `require` utasításokat:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -48,7 +47,7 @@ Győződjön meg arról, hogy a [Node. js](https://nodejs.org/) 4.0.0 vagy újab
     var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző `{device connection string}` értékét a távoli figyelési megoldásban kiépített eszközre feljegyzett értékre:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét a `{device connection string}` távoli figyelési megoldásban kiépített eszközre feljegyzett értékre:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -329,7 +328,7 @@ Győződjön meg arról, hogy a [Node. js](https://nodejs.org/) 4.0.0 vagy újab
       });
       ```
 
-1. Mentse a módosításokat a **remote_monitoring. js** fájlba.
+1. Mentse a módosításokat a **remote_monitoring.js** fájlba.
 
 1. A minta alkalmazás indításához futtassa a következő parancsot a parancssorban:
 

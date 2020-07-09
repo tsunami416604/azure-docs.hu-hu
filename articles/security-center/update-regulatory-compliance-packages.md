@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83873327"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
@@ -83,7 +83,7 @@ A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfe
 
     [![A korábbi és az új Azure CIS-t bemutató szabályozási megfelelőségi irányítópult](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi csomagokat** a megfelelőség további szabványokkal való figyeléséhez. 
 

@@ -4,15 +4,14 @@ description: Az ügyfél-konfigurációs beállítások megismerése az Azure Co
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 461602aee6d88f8d8f829fcf89e3433a8185e34d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 503af00cac298473acd1504ca7d04998e74c3538
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920536"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
 
@@ -20,8 +19,9 @@ ms.locfileid: "83658942"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java SDK v2](performance-tips-async-java.md)
 > * [Sync Java SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
-> 
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
+
 
 > [!IMPORTANT]  
 > Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [Performance tippek útmutatót](performance-tips-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
@@ -36,145 +36,140 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 ## <a name="networking"></a>Hálózat
 
 * **Csatlakoztatási mód: közvetlen mód használata**
-<a id="direct-connection"></a>
     
-    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A *ConnectionMode* az ügyfél *ConnectionPolicy*konfigurálásához rendelkezésre álló kulcsfontosságú konfigurációs beállítás. Azure Cosmos DB aszinkron Java SDK v2 esetén a két elérhető ConnectionModes a következők:  
+  Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A *ConnectionMode* az ügyfél *ConnectionPolicy*konfigurálásához rendelkezésre álló kulcsfontosságú konfigurációs beállítás. Azure Cosmos DB aszinkron Java SDK v2 esetén a két elérhető ConnectionModes a következők:  
       
-    * [Átjáró (alapértelmezett)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
-    * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+  * [Átjáró (alapértelmezett)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
+  * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+  
+  Az átjáró üzemmód minden SDK platformon támogatott, és alapértelmezés szerint a konfigurált beállítás. Ha az alkalmazásai szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül futnak, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ.   A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
+  
+  A *ConnectionMode* a *DocumentClient* -példány építése során, a *ConnectionPolicy* paraméterrel konfigurálható.
 
-    Az átjáró üzemmód minden SDK platformon támogatott, és alapértelmezés szerint a konfigurált beállítás. Ha az alkalmazásai szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül futnak, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
-    A *ConnectionMode* a *DocumentClient* -példány építése során, a *ConnectionPolicy* paraméterrel konfigurálható.
+```java
+    public ConnectionPolicy getConnectionPolicy() {
+        ConnectionPolicy policy = new ConnectionPolicy();
+        policy.setConnectionMode(ConnectionMode.Direct);
+        policy.setMaxPoolSize(1000);
+        return policy;
+    }
 
-    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+    DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
+```
 
-    ```java
-        public ConnectionPolicy getConnectionPolicy() {
-          ConnectionPolicy policy = new ConnectionPolicy();
-          policy.setConnectionMode(ConnectionMode.Direct);
-          policy.setMaxPoolSize(1000);
-          return policy;
-        }
+* **Az ügyfeleket ugyanabban az Azure-régióban helyezze el a jobb teljesítmény érdekében**
 
-        ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-        DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
-    ```
+  Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés >50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-* **Az ügyfeleket ugyanabban az Azure-régióban helyezze el a jobb teljesítmény érdekében** <a id="same-region"></a>
-
-    Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés >50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
-
-    ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
+  :::image type="content" source="./media/performance-tips/same-region.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
 
 ## <a name="sdk-usage"></a>SDK-használat
+
 * **A legújabb SDK telepítése**
 
-    A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény érdekében. Tekintse meg az Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzések](sql-api-sdk-async-java.md) oldalait a legújabb SDK-és felülvizsgálati eredmények meghatározásához.
+  A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény érdekében. Tekintse meg az Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzések](sql-api-sdk-async-java.md) oldalait a legújabb SDK-és felülvizsgálati eredmények meghatározásához.
 
 * **Egyedi Azure Cosmos DB-ügyfél használata az alkalmazás élettartama során**
 
-    Minden AsyncDocumentClient-példány szál-biztonságos, és hatékonyan kezeli a kapcsolatok kezelését és a címek gyorsítótárazását. A hatékony AsyncDocumentClient és a jobb teljesítmény érdekében ajánlott a AsyncDocumentClient/alkalmazástartomány egyetlen példányát használni az alkalmazás élettartamára.
-
-   <a id="max-connection"></a>
+  Minden AsyncDocumentClient-példány szál-biztonságos, és hatékonyan kezeli a kapcsolatok kezelését és a címek gyorsítótárazását. A hatékony AsyncDocumentClient és a jobb teljesítmény érdekében ajánlott a AsyncDocumentClient/alkalmazástartomány egyetlen példányát használni az alkalmazás élettartamára.
 
 * **ConnectionPolicy finomhangolása**
 
-    Alapértelmezés szerint a közvetlen üzemmódú Cosmos DB kérelmek TCP protokollon keresztül történnek a Azure Cosmos DB aszinkron Java SDK v2 használata esetén. Belsőleg az SDK egy speciális közvetlen üzemmódú architektúrát használ a hálózati erőforrások dinamikus kezeléséhez és a legjobb teljesítmény eléréséhez.
+  Alapértelmezés szerint a közvetlen üzemmódú Cosmos DB kérelmek TCP protokollon keresztül történnek a Azure Cosmos DB aszinkron Java SDK v2 használata esetén. Belsőleg az SDK egy speciális közvetlen üzemmódú architektúrát használ a hálózati erőforrások dinamikus kezeléséhez és a legjobb teljesítmény eléréséhez.
 
-    A Azure Cosmos DB aszinkron Java SDK v2-ben a legjobb választás az adatbázis teljesítményének növelése a legtöbb számítási feladattal. 
+  A Azure Cosmos DB aszinkron Java SDK v2-ben a legjobb választás az adatbázis teljesítményének növelése a legtöbb számítási feladattal. 
 
-    * ***Közvetlen üzemmód áttekintése***
+  * ***Közvetlen üzemmód áttekintése***
 
-        ![A közvetlen módú architektúra ábrája](./media/performance-tips-async-java/rntbdtransportclient.png)
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="A közvetlen módú architektúra ábrája" border="false":::
+  
+  A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen módú architektúra legfeljebb 10 **csatornát** foglal le az ügyféloldali replikán. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
 
-        A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen módú architektúra legfeljebb 10 **csatornát** foglal le az ügyféloldali replikán. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
+  * ***ConnectionPolicy-konfigurációs beállítások közvetlen módban***
 
-    * ***ConnectionPolicy-konfigurációs beállítások közvetlen módban***
+    Első lépésként használja az alábbi ajánlott konfigurációs beállításokat. Ha az adott témakörben problémákba ütközik, forduljon a [Azure Cosmos db csapatához](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
 
-        Első lépésként használja az alábbi ajánlott konfigurációs beállításokat. Ha az adott témakörben problémákba ütközik, forduljon a [Azure Cosmos db csapatához](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
-
-        Ha a Azure Cosmos DBt hivatkozási adatbázisként használja (azaz az adatbázist sok pont olvasási művelethez és kevés írási művelethez használja), akkor elfogadható lehet a *idleEndpointTimeout* 0 értékre (azaz nincs időkorlát) beállítani.
+    Ha a Azure Cosmos DBt hivatkozási adatbázisként használja (azaz az adatbázist sok pont olvasási művelethez és kevés írási művelethez használja), akkor elfogadható lehet a *idleEndpointTimeout* 0 értékre (azaz nincs időkorlát) beállítani.
 
 
-        | Konfigurációs beállítás       | Alapértelmezett    |
-        | :------------------:       | :-----:    |
-        | bufferPageSize             | 8192       |
-        | connectionTimeout          | "PT1M"     |
-        | idleChannelTimeout         | "PT0S"     |
-        | idleEndpointTimeout        | "PT1M10S"  |
-        | maxBufferCapacity          | 8388608    |
-        | maxChannelsPerEndpoint     | 10         |
-        | maxRequestsPerChannel      | 30         |
-        | receiveHangDetectionTime   | "PT1M5S"   |
-        | requestExpiryInterval      | "PT5S"     |
-        | requestTimeout             | "PT1M"     |
-        | requestTimerResolution     | "PT 0.5 S"   |
-        | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | "PT15S"    |
+    | Konfigurációs beállítás       | Alapértelmezett    |
+    | :------------------:       | :-----:    |
+    | bufferPageSize             | 8192       |
+    | connectionTimeout          | "PT1M"     |
+    | idleChannelTimeout         | "PT0S"     |
+    | idleEndpointTimeout        | "PT1M10S"  |
+    | maxBufferCapacity          | 8388608    |
+    | maxChannelsPerEndpoint     | 10         |
+    | maxRequestsPerChannel      | 30         |
+    | receiveHangDetectionTime   | "PT1M5S"   |
+    | requestExpiryInterval      | "PT5S"     |
+    | requestTimeout             | "PT1M"     |
+    | requestTimerResolution     | "PT 0.5 S"   |
+    | sendHangDetectionTime      | "PT10S"    |
+    | shutdownTimeout            | "PT15S"    |
 
-    * ***Programozási tippek közvetlen üzemmódhoz***
+* ***Programozási tippek közvetlen üzemmódhoz***
 
-        Az SDK-problémák megoldásához tekintse át az Azure Cosmos DB aszinkron Java SDK v2 [hibaelhárítási](troubleshoot-java-async-sdk.md) cikkét.
-
-        Néhány fontos programozási tipp közvetlen mód használata esetén:
-
-        + **Használjon többszálú működést az alkalmazásban a hatékony TCP-adatátvitel** érdekében – a kérések elvégzése után az alkalmazásnak elő kell fizetnie, hogy egy másik szálon fogadja az adatait. Ezzel nem kényszeríti a nem szándékolt "váltakozó kétirányú" műveletet, és az azt követő kérések blokkolva lesznek az előző kérelem válaszára.
-
-        + Nagy **számítási igényű munkaterhelések elvégzése dedikált szálon** – az előző tipphez hasonló okokból, például az összetett adatfeldolgozáshoz a legjobban egy külön szálban kell elhelyezni. Egy másik adattárból származó adatokra lekérő kérelem (például ha a szál Azure Cosmos DB-és Spark-adattárakat is használ) nagyobb késést tapasztalhat, és azt javasoljuk, hogy egy további szálat indítson el, amely a másik adattártól érkező választ vár.
-
-            + A Azure Cosmos DB aszinkron Java SDK v2-ben található alapul szolgáló hálózati IO-t a rendszer a nettó értékkel kezeli, ezekkel a [tippekkel elkerülhetők a nettó IO-szálakat blokkoló kódolási minták](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
-
-        + **Adatmodellezés** – a Azure Cosmos db SLA azt feltételezi, hogy a dokumentum mérete kisebb, mint 1KB. Ha optimalizálni szeretné az adatmodellt és a programozást, a kisebb méretű dokumentumok méretének csökkentése általában a késés csökkenését eredményezi. Ha a 1KB-nál nagyobb méretű dokumentumok tárolására és lekérésére lesz szüksége, az ajánlott módszer az Azure Blob Storageban lévő adatokra mutató dokumentumok használata.
-
+  Az SDK-problémák megoldásához tekintse át az Azure Cosmos DB aszinkron Java SDK v2 [hibaelhárítási](troubleshoot-java-async-sdk.md) cikkét.
+  
+  Néhány fontos programozási tipp közvetlen mód használata esetén:
+  
+  * **Használjon többszálú működést az alkalmazásban a hatékony TCP-adatátvitel** érdekében – a kérések elvégzése után az alkalmazásnak elő kell fizetnie, hogy egy másik szálon fogadja az adatait. Ezzel nem kényszeríti a nem szándékolt "váltakozó kétirányú" műveletet, és az azt követő kérések blokkolva lesznek az előző kérelem válaszára.
+  
+  * Nagy **számítási igényű munkaterhelések elvégzése dedikált szálon** – az előző tipphez hasonló okokból, például az összetett adatfeldolgozáshoz a legjobban egy külön szálban kell elhelyezni. Egy másik adattárból származó adatokra lekérő kérelem (például ha a szál Azure Cosmos DB-és Spark-adattárakat is használ) nagyobb késést tapasztalhat, és azt javasoljuk, hogy egy további szálat indítson el, amely a másik adattártól érkező választ vár.
+  
+    * A Azure Cosmos DB aszinkron Java SDK v2-ben található alapul szolgáló hálózati IO-t a rendszer a nettó értékkel kezeli, ezekkel a [tippekkel elkerülhetők a nettó IO-szálakat blokkoló kódolási minták](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
+  
+  * **Adatmodellezés** – a Azure Cosmos db SLA azt feltételezi, hogy a dokumentum mérete kisebb, mint 1KB. Ha optimalizálni szeretné az adatmodellt és a programozást, a kisebb méretű dokumentumok méretének csökkentése általában a késés csökkenését eredményezi. Ha a 1KB-nál nagyobb méretű dokumentumok tárolására és lekérésére lesz szüksége, az ajánlott módszer az Azure Blob Storageban lévő adatokra mutató dokumentumok használata.
 
 * **A particionált gyűjtemények párhuzamos lekérdezésének finomhangolása**
 
-    Azure Cosmos DB aszinkron Java SDK v2 támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
+  Azure Cosmos DB aszinkron Java SDK v2 támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
 
-    * ***SetMaxDegreeOfParallelism finomhangolása\:***
+  * ***SetMaxDegreeOfParallelism finomhangolása\:***
     
-        A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével működnek. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a setMaxDegreeOfParallelism használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg.
+    A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével működnek. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a setMaxDegreeOfParallelism használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg.
 
-        Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
+    Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-    * ***SetMaxBufferedItemCount finomhangolása\:***
+  * ***SetMaxBufferedItemCount finomhangolása\:***
     
-        A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. a setMaxBufferedItemCount korlátozza az előre beolvasott eredmények számát. A setMaxBufferedItemCount beállítása a visszaadott eredmények várt számához (vagy egy magasabb szám) lehetővé teszi a lekérdezés számára, hogy a lehető legtöbbet fogadja az előzetes lekéréstől.
+    A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. a setMaxBufferedItemCount korlátozza az előre beolvasott eredmények számát. A setMaxBufferedItemCount beállítása a visszaadott eredmények várt számához (vagy egy magasabb szám) lehetővé teszi a lekérdezés számára, hogy a lehető legtöbbet fogadja az előzetes lekéréstől.
 
-        Az előzetes lekérés ugyanúgy működik, mint a Maxanalyticsunits, és egyetlen puffer van az összes partícióból származó adatokhoz.
+    Az előzetes lekérés ugyanúgy működik, mint a Maxanalyticsunits, és egyetlen puffer van az összes partícióból származó adatokhoz.
 
 * **Leállítási megvalósítása getRetryAfterInMilliseconds időközönként**
 
-    A teljesítmény tesztelése során növelje a terhelést, amíg a kérelmek kis száma le nem kerül a szabályozásba. Ha szabályozva van, az ügyfélalkalmazás leállítási kell lennie a kiszolgáló által megadott újrapróbálkozási időköznek. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia.
+  A teljesítmény tesztelése során növelje a terhelést, amíg a kérelmek kis száma le nem kerül a szabályozásba. Ha szabályozva van, az ügyfélalkalmazás leállítási kell lennie a kiszolgáló által megadott újrapróbálkozási időköznek. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia.
 
 * **Az ügyfél felskálázása – munkaterhelés**
 
-    Ha magas átviteli sebességű (>50 000 RU/s) tesztelést végez, előfordulhat, hogy az ügyfélalkalmazás szűk keresztmetszetet okoz a processzor vagy a hálózat kihasználtsága miatt. Ha eléri ezt a pontot, továbbra is folytathatja a Azure Cosmos DB-fiók leküldését az ügyfélalkalmazások több kiszolgálón való skálázásával.
+  Ha magas átviteli sebességű (>50 000 RU/s) tesztelést végez, előfordulhat, hogy az ügyfélalkalmazás szűk keresztmetszetet okoz a processzor vagy a hálózat kihasználtsága miatt. Ha eléri ezt a pontot, továbbra is folytathatja a Azure Cosmos DB-fiók leküldését az ügyfélalkalmazások több kiszolgálón való skálázásával.
 
 * **Név alapú címzés használata**
 
-    Használjon név-alapú címzést, ahol a hivatkozások formátuma a `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` SelfLinks helyett ( \_ saját), amelynek formátuma a `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` hivatkozás létrehozásához használt összes erőforrás ResourceId: beolvasásának elkerülése. Továbbá, mivel ezek az erőforrások újra létre lettek (valószínűleg ugyanazzal a névvel), előfordulhat, hogy a gyorsítótárazás nem segít.
-
-   <a id="tune-page-size"></a>
+  Használjon név-alapú címzést, ahol a hivatkozások formátuma a `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` SelfLinks helyett ( \_ saját), amelynek formátuma a `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` hivatkozás létrehozásához használt összes erőforrás ResourceId: beolvasásának elkerülése. Továbbá, mivel ezek az erőforrások újra létre lettek (valószínűleg ugyanazzal a névvel), előfordulhat, hogy a gyorsítótárazás nem segít.
 
 * **A jobb teljesítmény érdekében a lekérdezések/olvasási hírcsatornák méretének finomhangolása**
 
-    A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például readDocuments) vagy SQL-lekérdezés kiállításakor az eredményeket szegmentált módon adja vissza, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
+  A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például readDocuments) vagy SQL-lekérdezés kiállításakor az eredményeket szegmentált módon adja vissza, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
 
-    Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör alakú utak számát, az [x-MS-Max-Item-](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) Request fejléc használatával növelheti az oldal méretét a legfeljebb 1000 értékre. Olyan esetekben, ahol csak néhány eredményt kell megjelenítenie, például ha a felhasználói felület vagy az Application API csak 10 eredményt ad vissza, az olvasási és lekérdezési teljesítmény csökkentése érdekében csökkentheti az oldal méretét is 10 értékre.
+  Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör alakú utak számát, az [x-MS-Max-Item-](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) Request fejléc használatával növelheti az oldal méretét a legfeljebb 1000 értékre. Olyan esetekben, ahol csak néhány eredményt kell megjelenítenie, például ha a felhasználói felület vagy az Application API csak 10 eredményt ad vissza, az olvasási és lekérdezési teljesítmény csökkentése érdekében csökkentheti az oldal méretét is 10 értékre.
 
-    Az oldalméret a setMaxItemCount metódussal is megadható.
+  Az oldalméret a setMaxItemCount metódussal is megadható.
 
 * **A megfelelő ütemező használata (az Event loop IO-szálak kilopásának elkerülése)**
 
-    A Azure Cosmos DB aszinkron Java SDK v2 a nem blokkoló IO- [t használja.](https://netty.io/) Az SDK az i/o-műveletekhez rögzített számú i/o-t használ (a gép számos CPU-magja). Az API által visszaadott megfigyelhető érték a megosztott i/o-eseményekhez tartozó többoldalas szálakat eredményezi. Ezért fontos, hogy ne tiltsa le a megosztott IO-esemény hurkos szálait. Ha CPU-igényes munkahelyi vagy letiltási műveletet hajt végre az IO-esemény hurkos szál szálán, a holtpontot okozhat, vagy jelentősen csökkentheti az SDK átviteli sebességét.
+  A Azure Cosmos DB aszinkron Java SDK v2 a nem blokkoló IO- [t használja.](https://netty.io/) Az SDK az i/o-műveletekhez rögzített számú i/o-t használ (a gép számos CPU-magja). Az API által visszaadott megfigyelhető érték a megosztott i/o-eseményekhez tartozó többoldalas szálakat eredményezi. Ezért fontos, hogy ne tiltsa le a megosztott IO-esemény hurkos szálait. Ha CPU-igényes munkahelyi vagy letiltási műveletet hajt végre az IO-esemény hurkos szál szálán, a holtpontot okozhat, vagy jelentősen csökkentheti az SDK átviteli sebességét.
 
-    Például az alábbi kód egy CPU-igényes munkát hajt végre az Event loop IO-szálon:
+  Például az alábbi kód egy CPU-igényes munkát hajt végre az Event loop IO-szálon:
 
-    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-noscheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+  **Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)**
 
-    ```java
+  ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
       collectionLink, document, null, true);
 
@@ -186,13 +181,13 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
         // DON'T do this on eventloop IO netty thread.
         veryCpuIntensiveWork();
       });
-    ```
+  ```
 
-    Ha az eredmény megérkezik, ha a CPU-igényes munkát szeretné elvégezni az eredményen, kerülje az Event loop IO-szálon végzett műveletét. Ehelyett saját ütemező használatával biztosíthatja a saját szálát a munka futtatásához.
+  Ha az eredmény megérkezik, ha a CPU-igényes munkát szeretné elvégezni az eredményen, kerülje az Event loop IO-szálon végzett műveletét. Ehelyett saját ütemező használatával biztosíthatja a saját szálát a munka futtatásához.
 
-    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+  **Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)**
 
-    ```java
+  ```java
     import rx.schedulers;
 
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -207,11 +202,11 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
         //   2. You are not doing blocking IO, thread sleep, etc. in this thread against other resources.
         veryCpuIntensiveWork();
       });
-    ```
+  ```
 
-    A munkája típusától függően a megfelelő meglévő RxJava ütemező használatával kell használnia a munkát. Itt olvashat [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html) .
+  A munkája típusától függően a megfelelő meglévő RxJava ütemező használatával kell használnia a munkát. Itt olvashat [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html) .
 
-    További információkért tekintse meg a [GitHub oldalt](https://github.com/Azure/azure-cosmosdb-java) Azure Cosmos db ASZINKRON Java SDK v2-hez.
+  További információkért tekintse meg a [GitHub oldalt](https://github.com/Azure/azure-cosmosdb-java) Azure Cosmos db ASZINKRON Java SDK v2-hez.
 
 * **A nettó naplózás letiltása**
 
@@ -285,8 +280,7 @@ Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasítás
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 
-## <a name="throughput"></a>Teljesítmény
-<a id="measure-rus"></a>
+## <a name="throughput"></a><a id="measure-rus"></a>Teljesítmény
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 
@@ -296,7 +290,7 @@ Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasítás
 
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. Az egyenértékű RequestCharge tulajdonságot a ResourceResponse \< T> vagy a FeedResponse \< t>ban is megtekintheti.
+    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. A ResourceResponse vagy a FeedResponse egyenértékű RequestCharge tulajdonságát is megtekintheti \<T> \<T> .
 
     ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
@@ -308,14 +302,15 @@ Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasítás
 
     Az ebben a fejlécben visszaadott kérelem díja a kiépített átviteli sebesség töredéke. Ha például 2000 RU/s van kiépítve, és ha az előző lekérdezés a 1000 1KB-dokumentumokat adja vissza, a művelet díja 1000. Mint ilyen, egy másodpercen belül a kiszolgáló csak két ilyen kérést értékel ki a későbbi kérelmek korlátozása előtt. További információ: a [kérelmek egységei](request-units.md) és a [kérési egység kalkulátora](https://www.documentdb.com/capacityplanner).
 
-<a id="429"></a>
 * **A kezelői sebesség korlátozása/kérelmek arányának aránya túl nagy**
 
     Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló megelőző jelleggel a kérést a RequestRateTooLarge (429-es HTTP-állapotkód), és visszaküldi az [x-MS-újrapróbálkozás-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet, jelezve azt az időtartamot (ezredmásodpercben), ameddig a felhasználónak meg kell várnia a kérés ismételt megkísérlése előtt.
 
-        HTTP Status 429,
-        Status Line: RequestRateTooLarge
-        x-ms-retry-after-ms :100
+   ```xml
+   HTTP Status 429,
+   Status Line: RequestRateTooLarge
+   x-ms-retry-after-ms :100
+   ```
 
     Az SDK-k minden implicit módon elkapják ezt a választ, tiszteletben tartsák a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem éri el, a következő újrapróbálkozás sikeres lesz.
 

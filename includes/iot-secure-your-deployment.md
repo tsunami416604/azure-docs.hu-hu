@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76748752"
 ---
 Ez a cikk az Azure IoT-alapú eszközök internetes hálózata (IoT) infrastruktúra biztonságossá tételének következő részletességi szintjét ismerteti. Az egyes összetevők konfigurálásának és telepítésének megvalósítási szintjére mutató hivatkozásokat tartalmaz. Emellett összehasonlításokat és választási lehetőségeket is biztosít a különböző versengő módszerek között.
@@ -51,9 +51,9 @@ Minden IoT Hub rendelkezik egy [azonosító-beállításjegyzékkel](../articles
 
 [A IoT hub olyan protokollokat támogat, mint például a MQTT, a AMQP és a http](../articles//iot-hub/iot-hub-devguide-security.md). A protokollok mindegyike biztonsági jogkivonatokat használ a IoT-eszközről, hogy IoT Hub másképpen:
 
-* AMQP: SASL PLAIN és AMQP (`{policyName}@sas.root.{iothubName}` IoT hub szintű jogkivonatokkal rendelkező) jogcímek alapú biztonság `{deviceId}` az eszközre vonatkozó hatókörű jogkivonatokkal).
+* AMQP: SASL PLAIN és AMQP ( `{policyName}@sas.root.{iothubName}` IoT hub-szintű jogkivonatokkal rendelkező) jogcímek alapú biztonság `{deviceId}` .
 
-* MQTT: a csomag a `{deviceId}` jelszó mezőben `{ClientId}`lévő `{IoThubhostname}/{deviceId}` , a **Felhasználónév** és a sas-token használatával kapcsolja **Password** össze a csomagot.
+* MQTT: a csomag a `{deviceId}` `{ClientId}` Jelszó mezőben lévő, a `{IoThubhostname}/{deviceId}` **Felhasználónév** és a sas-token **Password** használatával kapcsolja össze a csomagot.
 
 * HTTP: az érvényes jogkivonat az engedélyezési kérelem fejlécében található.
 
@@ -73,7 +73,7 @@ Magas szintű eszközök kiépítési folyamata:
 
 ### <a name="root-certificate-on-device"></a>Főtanúsítvány az eszközön
 
-A biztonságos TLS-kapcsolat IoT Hub használatával történő létrehozása közben a IoT-eszköz hitelesíti IoT Hub az eszköz SDK részét képező főtanúsítvánnyal. A c Client SDK esetében a tanúsítvány a tárház gyökerében található "\\C\\tanúsítványok" mappában található. Habár ezek a főtanúsítványok hosszú életűek, azok továbbra is lejárnak vagy visszavonhatók. Ha a tanúsítvány nem frissíthető az eszközön, előfordulhat, hogy az eszköz nem tud majd csatlakozni a IoT Hubhoz (vagy bármely más felhőalapú szolgáltatáshoz). Ha azt szeretné, hogy a IoT-eszköz üzembe helyezése után a főtanúsítványt frissíteni lehessen, a rendszer hatékonyan csökkenti ezt a kockázatot.
+A biztonságos TLS-kapcsolat IoT Hub használatával történő létrehozása közben a IoT-eszköz hitelesíti IoT Hub az eszköz SDK részét képező főtanúsítvánnyal. A C Client SDK esetében a tanúsítvány a tárház \\ gyökerében található "C \\ tanúsítványok" mappában található. Habár ezek a főtanúsítványok hosszú életűek, azok továbbra is lejárnak vagy visszavonhatók. Ha a tanúsítvány nem frissíthető az eszközön, előfordulhat, hogy az eszköz nem tud majd csatlakozni a IoT Hubhoz (vagy bármely más felhőalapú szolgáltatáshoz). Ha azt szeretné, hogy a IoT-eszköz üzembe helyezése után a főtanúsítványt frissíteni lehessen, a rendszer hatékonyan csökkenti ezt a kockázatot.
 
 ## <a name="securing-the-connection"></a>A kapcsolatok biztonságossá tétele
 
@@ -91,7 +91,7 @@ Az Azure IoT Hub lehetővé teszi az egyes biztonsági kulcsok [hozzáférés-ve
 
 * **DeviceConnect**. Hozzáférést biztosít az eszköz felé irányuló végpontokhoz. Engedélyt ad például az eszközről a felhőbe irányuló üzenetek küldésére és a felhőből az eszközre irányuló üzenetek fogadására. Ezt az engedélyt az eszközök használják.
 
-A **DeviceConnect** -engedélyeket kétféleképpen lehet megszerezni IoT hub [biztonsági jogkivonatokkal](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): eszköz-azonosító kulcs vagy megosztott elérési kulcs használatával. Azt is fontos megjegyezni, hogy az eszközökről elérhető összes funkció az előtaggal `/devices/{deviceId}`rendelkező végpontokon van kitéve.
+A **DeviceConnect** -engedélyeket kétféleképpen lehet megszerezni IoT hub [biztonsági jogkivonatokkal](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): eszköz-azonosító kulcs vagy megosztott elérési kulcs használatával. Azt is fontos megjegyezni, hogy az eszközökről elérhető összes funkció az előtaggal rendelkező végpontokon van kitéve `/devices/{deviceId}` .
 
 A szolgáltatás-összetevők csak a megfelelő engedélyeket biztosító megosztott hozzáférési szabályzatok segítségével hozhatnak [elő biztonsági jogkivonatokat](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) .
 
@@ -103,7 +103,7 @@ Az Azure IoT Hub által betöltött adatmennyiség számos szolgáltatás, péld
 
 * [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/): valós idejű adatfolyam-feldolgozás a felhőben, amely lehetővé teszi, hogy gyorsan fejlesszen és helyezzen üzembe egy alacsony költséghatékonyságú elemzési megoldást az eszközökről, érzékelőkről, infrastruktúrából és alkalmazásokból származó valós idejű elemzések felfedéséhez. A teljes körűen felügyelt szolgáltatásból származó adatok bármilyen kötetre méretezhetők, miközben továbbra is nagy átviteli sebességet, kis késést és rugalmasságot biztosítanak.
 
-* [Azure app Services](https://azure.microsoft.com/services/app-service/): felhőalapú platform olyan hatékony webes és mobil alkalmazások létrehozásához, amelyek bárhonnan csatlakozhatnak az adatkapcsolatokhoz; a felhőben vagy a helyszínen. Vonzó mobil alkalmazások készítése iOS, Android és Windows rendszerre. A szolgáltatásként (SaaS) és nagyvállalati alkalmazásokkal is integrálható, és a beépített kapcsolattal több tucat felhőalapú szolgáltatáshoz és nagyvállalati alkalmazáshoz is csatlakozhat. A kód a kedvenc nyelvén és az IDE (.NET, Node. js, PHP, Python vagy Java) használatával minden eddiginél gyorsabban hozhat létre webalkalmazásokat és API-kat.
+* [Azure app Services](https://azure.microsoft.com/services/app-service/): felhőalapú platform olyan hatékony webes és mobil alkalmazások létrehozásához, amelyek bárhonnan csatlakozhatnak az adatkapcsolatokhoz; a felhőben vagy a helyszínen. Vonzó mobil alkalmazások készítése iOS, Android és Windows rendszerre. A szolgáltatásként (SaaS) és nagyvállalati alkalmazásokkal is integrálható, és a beépített kapcsolattal több tucat felhőalapú szolgáltatáshoz és nagyvállalati alkalmazáshoz is csatlakozhat. A kód a kedvenc nyelvén és az IDE (.NET, Node.js, PHP, Python vagy Java) használatával minden eddiginél gyorsabban hozhat létre webalkalmazásokat és API-kat.
 
 * [Logic apps](https://azure.microsoft.com/services/app-service/logic/): a Azure app Service Logic apps szolgáltatása segít a IoT-megoldás integrálásában a meglévő üzletági rendszerekre, és automatizálni a munkafolyamatok folyamatait. Logic Apps lehetővé teszi a fejlesztők számára, hogy olyan munkafolyamatokat tervezzenek, amelyek egy eseményindítóból kezdődnek, majd végrehajtanak egy sor lépést – olyan szabályokat és műveleteket, amelyek hatékony összekötőket használnak az üzleti folyamatokkal való integrációhoz. A Logic Apps a SaaS-, felhőalapú és helyszíni alkalmazások hatalmas ökoszisztémájának megfelelő kapcsolattal rendelkezik.
 

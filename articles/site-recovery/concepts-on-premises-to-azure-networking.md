@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770492"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Kapcsolódás Azure-beli virtuális gépekhez a helyszíni feladatátvétel után 
 
@@ -149,11 +148,21 @@ A feladatátvétel előtt a célként megadott Azure-beli virtuális gép háló
 
 ## <a name="get-new-ip-addresses"></a>Új IP-címek beolvasása
 
-Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvétel után. DNS-frissítés a sikertelenül átadott gépek rekordjainak frissítéséhez, hogy az Azure-beli virtuális gép IP-címére mutasson.
+Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvétel után. A feladatátvételt követően létrehozott virtuális gép új IP-címének beállításához a következő lépéseket kell megadnia:
 
+1. Nyissa meg a **replikált elemeket**.
+2. Válassza ki a kívánt Azure-beli virtuális gépet.
+3. Válassza a **számítás és hálózat** lehetőséget, majd válassza a **Szerkesztés**lehetőséget.
 
+     ![A feladatátvételi hálózati konfigurációk testreszabása](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. A feladatátvételi hálózati beállítások frissítéséhez válassza a configure ( **Szerkesztés** ) lehetőséget a konfigurálni kívánt hálózati adapterhez. A megnyíló következő lapon adja meg a megfelelő előre létrehozott IP-címet a feladatátvételi teszt és a feladatátvételi hely között.
+
+    ![A NIC-konfiguráció szerkesztése](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. Válassza az **OK** lehetőséget.
+
+A Site Recovery mostantól tiszteletben tartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételen a virtuális gép a megfelelő IP-címen keresztül kapcsolódjon a kiválasztott erőforráshoz, ha az elérhető a cél IP-tartományban. Ebben az esetben nincs szükség a teljes alhálózat feladatátvételére. DNS-frissítésre lesz szükség a sikertelenül átadott gép rekordjainak frissítéséhez, hogy a virtuális gép új IP-címére mutasson.
 
 ## <a name="next-steps"></a>További lépések
 [Tudnivalók](site-recovery-active-directory.md) a helyszíni Active Directory és a DNS Azure-ba történő replikálásáról.
-
-

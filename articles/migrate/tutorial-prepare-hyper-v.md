@@ -4,46 +4,41 @@ description: Ismerje meg, hogyan készítheti elő a Hyper-V virtuális gépek �
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641634"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109620"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
-Ez a cikk azt ismerteti, hogyan lehet felkészülni a helyszíni Hyper-V virtuális gépek értékelésére a [Azure Migrate használatával: kiszolgáló értékelése](migrate-services-overview.md#azure-migrate-server-assessment-tool)és a Hyper-v virtuális gépek áttelepítése [Azure Migrate használatával: kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool).
+Ez a cikk segít felkészülni a helyszíni Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)és [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool)használatával.
 
 
-Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
-> * Helyszíni Hyper-V-gazdagépek és virtuális gépek előkészítése a kiszolgálók értékeléséhez. Előkészítheti egy konfigurációs parancsfájlt vagy manuálisan is.
-> * Felkészülés az Azure Migrate berendezés üzembe helyezésére. A berendezés a helyszíni virtuális gépek felderítésére és értékelésére szolgál.
-> * Helyszíni Hyper-V-gazdagépek és virtuális gépek előkészítése a kiszolgálók áttelepítéséhez.
-
+> * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
+> * Felkészülés a Hyper-V virtuális gépek értékelésére.
+> * A Hyper-V virtuális gépek áttelepítésének előkészítése 
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a Hyper-V felmérési és áttelepítési útmutatóit.
+> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út.
 
-
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
 
-### <a name="azure-permissions"></a>Azure-engedélyek
+A táblázat összefoglalja az Azure-ban elvégzendő feladatokat. Utasításokat követve a táblázat.
 
-Be kell állítania a Azure Migrate telepítéséhez szükséges engedélyeket.
-
-**Tevékenység** | **Részletek** 
---- | --- 
-**Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához. | 
-**Erőforrás-szolgáltatók regisztrálása** | Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli és értékeli a Hyper-V virtuális gépeket Azure Migrate Server Assessment használatával.<br/><br/> A készülék regisztrálása során az erőforrás-szolgáltatók regisztrálva vannak a berendezésben kiválasztott előfizetésben. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.
-**Azure AD alkalmazás létrehozása** | A berendezés regisztrálása során Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást, amely a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz használható. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Engedélyekre van szüksége az Azure AD-alkalmazások (az Application Developer) szerepkörben való létrehozásához.
-
+**Tevékenység** | **Részletek** | **Engedélyek**
+--- | --- | ---
+**Azure Migrate projekt létrehozása** | Az Azure Migrate projektek központi helyet biztosítanak a felmérések és áttelepítések előkészítéséhez és kezeléséhez Azure Migrate eszközökkel, Microsoft-eszközökkel és harmadik féltől származó ajánlatokkal. | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie abban az erőforráscsoportban, amelyben a projekt található.
+**Berendezés regisztrálása** | A Azure Migrate a Hyper-V virtuális gépek felderítésére és értékelésére egy könnyű Azure Migrate berendezést használ. [További információk](migrate-appliance-architecture.md#appliance-registration). | A készülék regisztrálásához az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az Azure-előfizetésben.
+**Azure AD alkalmazás létrehozása** | A készülék regisztrálása során Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást, amelyet a készüléken futó ügynökök és a Azure Migrate között használ a kommunikációhoz. | Az Azure-fióknak rendelkeznie kell az Azure AD-alkalmazások létrehozásához szükséges engedélyekkel.
+**Virtuális gép létrehozása** | Az erőforráscsoport és a virtuális hálózat létrehozásához, valamint az Azure-beli felügyelt lemezre való íráshoz engedélyek szükségesek. | Az Azure-fióknak szüksége van a virtuális gépi közreműködő szerepkörre.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
@@ -57,7 +52,7 @@ Győződjön meg arról, hogy rendelkezik Azure Migrate-projekt létrehozásáho
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
 
-### <a name="assign-permissions-to-register-the-appliance"></a>Engedélyek kiosztása a készülék regisztrálásához
+### <a name="assign-permissions-to-create-azure-ad-apps"></a>Engedélyek kiosztása Azure AD-alkalmazások létrehozásához
 
 Az Azure AD-alkalmazás létrehozásához az alábbi módszerek egyikének használatával rendelhet engedélyeket Azure Migrate számára:
 
@@ -73,48 +68,48 @@ Az Azure AD-alkalmazás létrehozásához az alábbi módszerek egyikének haszn
 
 A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket:
 
-1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory** > **felhasználók** > **felhasználói beállításait**.
+1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory**  >  **felhasználók**  >  **felhasználói beállításait**.
 2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** .
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása
 
-A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+
+### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyeinek kiosztása
+
+Rendelje hozzá a virtuális gépi közreműködő szerepkört a fiókhoz, hogy rendelkezzen a következő engedélyekkel:
+
+- Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
+- Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
+- Írás egy Azure-beli felügyelt lemezre. 
 
 
-## <a name="prepare-hyper-v-for-assessment"></a>A Hyper-V előkészítése az értékeléshez
+### <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
-A Hyper-V-t manuálisan is előkészítheti a virtuális gépek felméréséhez, vagy konfigurációs parancsfájl használatával. Az előkészítés lépései a következők:
-- [Ellenőrzés](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Hyper-V-gazdagép beállításai, és ellenőrizze, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#port-access) meg vannak-e nyitva a Hyper-v-gazdagépeken.
-- Állítsa be a PowerShell-távelérést minden gazdagépen, hogy az Azure Migrate készülék PowerShell-parancsokat futtasson a gazdagépen egy WinRM-kapcsolaton keresztül.
-- Hitelesítő adatok delegálása, ha a VM-lemezek távoli SMB-megosztásokon találhatók.
-- Állítson be egy fiókot, amelyet a berendezés a virtuális gépek felderítésére használ a Hyper-V-gazdagépeken.
-- Állítsa be a Hyper-V integrációs szolgáltatásokat minden felderíteni és értékelni kívánt virtuális gépen. Az integrációs szolgáltatások Azure Migratehoz való engedélyezésekor az alapértelmezett beállítások állnak rendelkezésre.
-
-    ![Integrációs szolgáltatások engedélyezése](./media/tutorial-prepare-hyper-v/integrated-services.png)
+[Hozzon létre egy Azure-hálózatot](../virtual-network/manage-virtual-network.md#create-a-virtual-network). A helyszíni gépek replikálódnak az Azure Managed Disks szolgáltatásba. Az Azure-ba történő áttelepítéskor az Azure-beli virtuális gépek ezekből a felügyelt lemezekről jönnek létre, és a beállított Azure-hálózathoz csatlakoznak.
 
 
-## <a name="prepare-with-a-script"></a>Előkészítés parancsfájlokkal
+## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 
-A szkript a következő műveleteket végzi el:
+A Hyper-V-t manuálisan is előkészítheti a virtuális gépek felméréséhez, vagy konfigurációs parancsfájl használatával. Ezek az előkészítési lépések. Ha parancsfájlt készít elő, ezeket a rendszer automatikusan konfigurálja.
 
-- Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e.
-- Ellenőrzi, hogy Ön (a parancsfájlt futtató felhasználó) rendelkezik-e rendszergazdai jogosultságokkal a Hyper-V-gazdagépen.
-- Lehetővé teszi, hogy olyan helyi felhasználói fiókot hozzon létre (nem rendszergazda), amelyet a Azure Migrate szolgáltatás a Hyper-V-gazdagépkel való kommunikációhoz használ. Ezt a felhasználói fiókot a rendszer a gazdagépen adja hozzá a következő csoportokhoz:
-    - Rendszerfelügyeleti felhasználók
-    - Hyper-V-rendszergazdák
-    - Teljesítményfigyelő felhasználói
-- Ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.
-- Engedélyezi a WinRM szolgáltatást, és megnyitja a 5985 (HTTP) és a 5986 (HTTPS) portot a gazdagépen (a metaadat-gyűjteményhez szükséges).
-- Engedélyezi a PowerShell távelérést a gazdagépen.
-- Ellenőrzi, hogy a Hyper-V integrációs szolgáltatások engedélyezve vannak-e a gazdagép által kezelt összes virtuális gépen.
-- Szükség esetén engedélyezi a CredSSP a gazdagépen.
+**Lépés** | **Parancsfájl** | **Kézi**
+--- | --- | ---
+**A Hyper-V gazdagépre vonatkozó követelmények ellenőrzése** | A parancsfájl ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.<br/><br/> Engedélyezi a WinRM szolgáltatást, és megnyitja a 5985 (HTTP) és a 5986 (HTTPS) portot a gazdagépen (a metaadat-gyűjteményhez szükséges). | Ellenőrizze a [Hyper-V gazdagépre vonatkozó követelményeket](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) a kiszolgálók értékeléséhez.<br/><br/> Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#port-access) meg vannak nyitva a Hyper-V-gazdagépeken.
+**PowerShell-verzió ellenőrzése** | Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e. | Győződjön meg arról, hogy a PowerShell 4,0-es vagy újabb verzióját futtatja a Hyper-V-gazdagépen.
+**Fiók létrehozása** | Ellenőrzi, hogy Ön (a parancsfájlt futtató felhasználó) rendelkezik-e rendszergazdai jogosultságokkal a Hyper-V-gazdagépen.<br/><br/>  Lehetővé teszi, hogy olyan helyi felhasználói fiókot hozzon létre (nem rendszergazda), amelyet a Azure Migrate szolgáltatás a Hyper-V-gazdagépkel való kommunikációhoz használ. Ezt a felhasználói fiókot a rendszer a gazdagépen adja hozzá a következő csoportokhoz:<br/><br/> -Távfelügyeleti felhasználók<br/><br/> -Hyper-V-rendszergazdák<br/><br/>– Teljesítményfigyelő felhasználók | Hozzon létre egy tartományi vagy helyi felhasználói fiókot rendszergazdai engedélyekkel a Hyper-V-gazdagépeken/-fürtön.<br/><br/> – A felderítésbe felvenni kívánt gazdagépekhez és fürtökhöz egyetlen fiókra van szükség.<br/><br/> – A fiók lehet helyi vagy tartományi fiók. Azt javasoljuk, hogy rendszergazdai engedélyekkel rendelkezik a Hyper-V-gazdagépeken vagy-fürtökön.<br/><br/> Ha nem szeretne rendszergazdai engedélyeket rendelni, akkor a következő engedélyek szükségesek: távfelügyeleti felhasználók; Hyper-V-rendszergazdák; Teljesítményfigyelő felhasználói.
+**A PowerShell távelérésének engedélyezése** | Engedélyezi a PowerShell távelérést a gazdagépen, így a Azure Migrate készülék PowerShell-parancsokat futtathat a gazdagépen egy WinRM-kapcsolaton keresztül.| A beállításhoz minden gazdagépen nyisson meg egy PowerShell-konzolt rendszergazdaként, és futtassa a következő parancsot:<br/><br/>``` Enable-PSRemoting -force ```
+**A Hyper-V integrációs szolgáltatások beállítása** | Ellenőrzi, hogy a Hyper-V integrációs szolgáltatások engedélyezve vannak-e a gazdagép által kezelt összes virtuális gépen. |  [Engedélyezze a Hyper-V integrációs szolgáltatásokat](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) minden egyes virtuális gépen.<br/><br/> Ha a Windows Server 2003-et futtatja, [kövesse az alábbi utasításokat](prepare-windows-server-2003-migration.md).
+**Hitelesítő adatok delegálása, ha a VM-lemezek távoli SMB-megosztásokon találhatók** | A parancsfájl delegálja a hitelesítő adatokat. | A hitelesítő adatok delegálásának [engedélyezése a CredSSP](#enable-credssp-to-delegate-credentials) számára.
+
+### <a name="run-the-script"></a>A szkript futtatása
 
 Futtassa a szkriptet a következő módon:
 
@@ -126,16 +121,15 @@ Futtassa a szkriptet a következő módon:
     ```
     Példa használata:
     ```
-    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
-    SHA256
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
 
-4.    A parancsfájl integritásának ellenőrzése után futtassa a parancsfájlt minden Hyper-V-gazdagépen a következő PowerShell-paranccsal:
+4. A parancsfájl integritásának ellenőrzése után futtassa a parancsfájlt minden Hyper-V-gazdagépen a következő PowerShell-paranccsal:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
-### <a name="hashtag-values"></a>Hashtag-értékek
+#### <a name="hashtag-values"></a>Hashtag-értékek
 
 A kivonatoló értékek a következők:
 
@@ -145,52 +139,8 @@ A kivonatoló értékek a következők:
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 
-## <a name="prepare-manually"></a>Manuális előkészítés
 
-Kövesse az ebben a szakaszban ismertetett eljárásokat a Hyper-V manuális előkészítéséhez a parancsfájl használata helyett.
-
-### <a name="verify-powershell-version"></a>PowerShell-verzió ellenőrzése
-
-Győződjön meg arról, hogy a PowerShell 4,0-es vagy újabb verziója telepítve van a Hyper-V-gazdagépen.
-
-
-
-### <a name="set-up-an-account-for-vm-discovery"></a>Fiók beállítása a virtuális gép felderítéséhez
-
-Azure Migrate a helyszíni virtuális gépek felderítéséhez szükséges engedélyekkel.
-
-- Hozzon létre egy tartományi vagy helyi felhasználói fiókot rendszergazdai engedélyekkel a Hyper-V-gazdagépeken/-fürtön.
-
-    - A felderítésbe felvenni kívánt gazdagépekhez és fürtökhöz egyetlen fiókra van szükség.
-    - A fiók lehet helyi vagy tartományi fiók is. Azt javasoljuk, hogy rendszergazdai engedélyekkel rendelkezik a Hyper-V-gazdagépeken vagy-fürtökön.
-    - Ha nem szeretne rendszergazdai engedélyeket rendelni, akkor a következő engedélyek szükségesek:
-        - Rendszerfelügyeleti felhasználók
-        - Hyper-V-rendszergazdák
-        - Teljesítményfigyelő felhasználói
-
-### <a name="verify-hyper-v-host-settings"></a>Hyper-V gazdagép beállításainak ellenőrzése
-
-1. Ellenőrizze a [Hyper-V gazdagépre vonatkozó követelményeket](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) a kiszolgálók értékeléséhez.
-2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#port-access) meg vannak nyitva a Hyper-V-gazdagépeken.
-
-### <a name="enable-powershell-remoting-on-hosts"></a>A PowerShell távelérés engedélyezése a gazdagépeken
-
-Állítsa be a PowerShell-távelérést az egyes gazdagépeken a következők szerint:
-
-1. Minden gazdagépen nyisson meg egy PowerShell-konzolt rendszergazdaként.
-2. Futtassa ezt a parancsot:
-
-    ```
-    Enable-PSRemoting -force
-    ```
-### <a name="enable-integration-services-on-vms"></a>Integrációs szolgáltatások engedélyezése a virtuális gépeken
-
-Az integrációs szolgáltatásokat minden virtuális gépen engedélyezni kell, hogy Azure Migrate az operációs rendszer adatait rögzítse a virtuális gépen.
-
-A felderíteni és értékelni kívánt virtuális gépeken engedélyezze a [Hyper-V integrációs szolgáltatásokat](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) minden egyes virtuális gépen.
-
-
-### <a name="enable-credssp-on-hosts"></a>CredSSP engedélyezése a gazdagépeken
+### <a name="enable-credssp-to-delegate-credentials"></a>Hitelesítő adatok delegálásának engedélyezése a CredSSP számára
 
 Ha a gazdagépen a lemezekkel rendelkező virtuális gépek találhatók az SMB-megosztásokon, hajtsa végre ezt a lépést a gazdagépen.
 
@@ -219,15 +169,17 @@ A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt
 4. [Tekintse át](migrate-appliance.md#collected-data---hyper-v) a készülékhez tartozó portok hozzáférési követelményeit.
 
 
-
-
 ## <a name="prepare-for-hyper-v-migration"></a>Felkészülés a Hyper-V áttelepítésére
 
-1. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) A Hyper-V gazdagépre vonatkozó követelmények az áttelepítéshez, valamint azon Azure URL-címek, amelyekhez a Hyper-V-gazdagépek és-fürtök hozzáférhetnek a virtuális gépek migrál
+1. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) A Hyper-V gazdagépre vonatkozó követelmények az áttelepítéshez, valamint azon Azure URL-címek, amelyekhez a Hyper-V-gazdagépek és-fürtök hozzáférhetnek a virtuális gépek migrál
 2. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
+3. Az Azure-ba történő Migrálás előtt néhány módosításra van szükség a virtuális gépeken.
+    - Az áttelepítés megkezdése előtt fontos, hogy elvégezze ezeket a módosításokat. Ha a módosítás előtt áttelepíti a virtuális gépet, előfordulhat, hogy a virtuális gép nem indul el az Azure-ban.
+    - Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux](prepare-for-migration.md#linux-machines) -módosításokat, amelyeket el kell végeznie.
 
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

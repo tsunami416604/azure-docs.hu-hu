@@ -4,28 +4,27 @@ description: Azure AD-bejelentkezés Windows rendszerű Azure-beli virtuális g�
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554894"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
 A szervezetek mostantól Azure Active Directory (AD) hitelesítést használhatnak a **Windows Server 2019 Datacenter Edition** vagy **Windows 10 1809** vagy újabb rendszert futtató Azure-beli virtuális gépek (VM-EK) számára. Az Azure AD használatával a virtuális gépek hitelesítése lehetővé teszi a házirendek központi felügyeletét és betartatását. Az olyan eszközök, mint az Azure szerepköralapú Access Control (RBAC) és az Azure AD feltételes hozzáférése lehetővé teszi, hogy ki férhet hozzá a virtuális géphez. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows Server 2019 rendszerű virtuális gépet az Azure AD-hitelesítés használatához.
 
-|     |
-| --- |
-| Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Windows rendszerű virtuális gépekre való bejelentkezéshez, beleértve a következőket:
 
@@ -63,10 +62,10 @@ A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók t
 
 Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli Windows rendszerű virtuális gépeken, biztosítania kell, hogy a virtuális gépek hálózati konfigurációja a 443-as TCP-porton keresztül engedélyezze a kimenő hozzáférést a következő végpontokhoz:
 
-- https:\//enterpriseregistration.Windows.net
+- https: \/ /enterpriseregistration.Windows.net
 - https:\//login.microsoftonline.com
-- https:\//Device.login.microsoftonline.com
-- https:\//Pas.Windows.net
+- https: \/ /Device.login.microsoftonline.com
+- https: \/ /Pas.Windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure AD-bejelentkezés engedélyezése a Windows rendszerű virtuális gépeken az Azure-ban
 
@@ -141,7 +140,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-`provisioningState` Ekkor megjelenik a (z), ha a bővítmény telepítve van a virtuális `Succeeded` gépen.
+Ekkor megjelenik a (z) `provisioningState` `Succeeded` , ha a bővítmény telepítve van a virtuális gépen.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
@@ -188,7 +187,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiókjához tartozó objektumazonosítót `--assignee-object-id`, nem csak a felhasználónevét. `--assignee` A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
+> Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiókjához tartozó objektumazonosítót `--assignee-object-id` , nem csak a felhasználónevét `--assignee` . A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
 
 Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -243,21 +242,21 @@ A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virt
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
 
    > [!NOTE]
-   > A hozzáférési token dekódolható egy olyan eszköz használatával, mint [http://calebb.net/](http://calebb.net/)a. Ellenőrizze, hogy a hozzáférési jogkivonat "AppID" egyezik-e a virtuális géphez hozzárendelt felügyelt identitással.
+   > A hozzáférési token dekódolható egy olyan eszköz használatával, mint a [http://calebb.net/](http://calebb.net/) . Ellenőrizze, hogy a hozzáférési jogkivonat "AppID" egyezik-e a virtuális géphez hozzárendelt felügyelt identitással.
 
 1. Győződjön meg arról, hogy a szükséges végpontok elérhetők a virtuális gépről a parancssor használatával:
    
-   - Curl https:\//login.microsoftonline.com/-D –
-   - Curl https:\//login.microsoftonline.com/`<TenantID>`/-D –
+   - Curl https: \/ /login.microsoftonline.com/-D –
+   - Curl https: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
 
    > [!NOTE]
-   > Cserélje `<TenantID>` le az t az Azure-előfizetéshez társított Azure ad-BÉRLŐi azonosítóra.
+   > Cserélje le az t az Azure- `<TenantID>` előfizetéshez társított Azure ad-bérlői azonosítóra.
 
-   - Curl https:\//Enterpriseregistration.Windows.net/-D-
-   - Curl https:\//Device.login.microsoftonline.com/-D-
-   - Curl https:\//Pas.Windows.net/-D-
+   - Curl https: \/ /enterpriseregistration.Windows.net/-D-
+   - Curl https: \/ /Device.login.microsoftonline.com/-D-
+   - Curl https: \/ /Pas.Windows.net/-D-
 
-1. Az eszköz állapotát a futtatásával `dsregcmd /status`lehet megtekinteni. A cél az eszköz állapotának megjelenítésére szolgál `AzureAdJoined : YES`.
+1. Az eszköz állapotát a futtatásával lehet megtekinteni `dsregcmd /status` . A cél az eszköz állapotának megjelenítésére szolgál `AzureAdJoined : YES` .
 
    > [!NOTE]
    > Az Azure AD JOIN tevékenység az eseménynaplóban, a felhasználói eszköz Registration\Admin naplójában rögzítve van.
@@ -278,26 +277,26 @@ Ez a kilépési kód DSREG_E_MSI_TENANTID_UNAVAILABLE, mert a bővítmény nem t
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>2. probléma: a AADLoginForWindows bővítmény nem telepíthető a következő kilépési kóddal:-2145648607
 
-Ez a kilépési kód lefordítja a DSREG_AUTOJOIN_DISC_FAILED, mert a bővítmény nem `https://enterpriseregistration.windows.net` tudja elérni a végpontot.
+Ez a kilépési kód lefordítja a DSREG_AUTOJOIN_DISC_FAILED, mert a bővítmény nem tudja elérni a `https://enterpriseregistration.windows.net` végpontot.
 
 1. Ellenőrizze, hogy a szükséges végpontok elérhetők-e a virtuális gépről a parancssor használatával:
 
-   - Curl https:\//login.microsoftonline.com/-D –
-   - Curl https:\//login.microsoftonline.com/`<TenantID>`/-D –
+   - Curl https: \/ /login.microsoftonline.com/-D –
+   - Curl https: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
    
    > [!NOTE]
-   > Cserélje `<TenantID>` le az t az Azure-előfizetéshez társított Azure ad-BÉRLŐi azonosítóra. Ha meg kell találnia a bérlő AZONOSÍTÓját, a fiók neve fölé helyezheti a címtár/bérlő AZONOSÍTÓját, vagy kiválaszthatja Azure Active Directory > tulajdonságok > Directory-azonosító a Azure Portalban.
+   > Cserélje le az t az Azure- `<TenantID>` előfizetéshez társított Azure ad-bérlői azonosítóra. Ha meg kell találnia a bérlő AZONOSÍTÓját, a fiók neve fölé helyezheti a címtár/bérlő AZONOSÍTÓját, vagy kiválaszthatja Azure Active Directory > tulajdonságok > Directory-azonosító a Azure Portalban.
 
-   - Curl https:\//Enterpriseregistration.Windows.net/-D-
-   - Curl https:\//Device.login.microsoftonline.com/-D-
-   - Curl https:\//Pas.Windows.net/-D-
+   - Curl https: \/ /enterpriseregistration.Windows.net/-D-
+   - Curl https: \/ /Device.login.microsoftonline.com/-D-
+   - Curl https: \/ /Pas.Windows.net/-D-
 
-1. Ha a parancsok bármelyike sikertelen "nem sikerült feloldani a `<URL>`gazdagépet", próbálja meg futtatni ezt a parancsot a virtuális gép által használt DNS-kiszolgáló meghatározásához.
+1. Ha a parancsok bármelyike sikertelen "nem sikerült feloldani a gazdagépet `<URL>` ", próbálja meg futtatni ezt a parancsot a virtuális gép által használt DNS-kiszolgáló meghatározásához.
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > Cserélje `<URL>` le a kifejezést a végpontok által használt teljes tartománynevek (például "login.microsoftonline.com") helyére.
+   > Cserélje le a kifejezést a `<URL>` végpontok által használt teljes tartománynevek (például "login.microsoftonline.com") helyére.
 
 1. Ezután ellenőrizze, hogy a nyilvános DNS-kiszolgáló meghatározása lehetővé teszi-e a parancs sikerességét:
 
@@ -315,7 +314,7 @@ A nyilvános előzetes verzióban a AADLoginForWindows-bővítmény csak Windows
 
 Az Azure AD-beli hitelesítő adatokkal való RDP-vel való kísérlet során előforduló gyakori hibák közé tartozik a RBAC-szerepkörök hozzárendelése, jogosulatlan ügyfél vagy 2FA bejelentkezési módszer. Az alábbi információk segítségével javítsa ki ezeket a problémákat.
 
-Az eszköz és az egyszeri bejelentkezés állapota a futtatásával `dsregcmd /status`tekinthető meg. A cél az eszköz állapotának megjelenítése `AzureAdJoined : YES` és `SSO State` megjelenítése. `AzureAdPrt : YES`
+Az eszköz és az egyszeri bejelentkezés állapota a futtatásával tekinthető meg `dsregcmd /status` . A cél az eszköz állapotának megjelenítése `AzureAdJoined : YES` és `SSO State` megjelenítése `AzureAdPrt : YES` .
 
 Emellett az Azure AD-fiókokat használó RDP-bejelentkezés az eseménynaplóban, a AAD\Operational-eseménynaplóban is rögzítve van.
 

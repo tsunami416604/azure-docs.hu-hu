@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847116"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple 8000 Series-eszközökön
 
@@ -134,7 +134,7 @@ Az eszköz rendszergazdája általában azt kéri, hogy a szolgáltatás rendsze
 
 Ezt a lépést a Azure Resource Manager-alapú parancsfájl használatával hajtja végre. A szolgáltatás-rendszergazda kijelölhet olyan eszközt, amely jogosult a hitelesítésre. Az eszköz ezután engedélyt kap a szolgáltatás adattitkosítási kulcsának módosítási folyamatának elindítására. 
 
-A parancsfájl használatával kapcsolatos további információkért nyissa meg a következőt: [Authorize-ServiceEncryptionRollover. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
+A parancsfájl használatával kapcsolatos további információkért nyissa meg a [Authorize-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
 
 #### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Mely eszközök számára lehet engedélyezni a szolgáltatás adattitkosítási kulcsainak módosítását?
 Az eszköznek meg kell felelnie a következő feltételeknek, mielőtt engedélyt kaphat a szolgáltatás adattitkosítási kulcsának megváltoztatására:
@@ -181,7 +181,7 @@ Hajtsa végre a következő lépéseket a szolgáltatás adattitkosításának f
 3. Adja meg a szolgáltatás adattitkosítási kulcsának [módosítását a 2. lépés: Windows PowerShell StorSimple-bővítménye használata című témakörben](#to-initiate-the-service-data-encryption-key-change)leírtak szerint.
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>A szolgáltatásban tárolt adattitkosítási kulcs frissítése a 8010/8020-es felhőalapú készülékeken
-1. Töltse le és állítsa be a [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell-szkriptet. 
+1. Töltse le és állítsa be [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell-szkriptet. 
 2. Nyissa meg a PowerShellt, és a parancssorba írja be a következőt:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Ez a szkript gondoskodik arról, hogy a Service-adattitkosítási kulcs az Eszközkezelőben az összes 8010/8020 felhőalapú készüléken be legyen állítva.
@@ -191,27 +191,27 @@ A Azure Portal csak a 5,0-es vagy újabb frissítést futtató StorSimple-eszkö
 
 | Művelet                                                                                                                       | Támogatott      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Eszköz regisztrálása                                                                                                               | Igen            |
-| Az eszközbeállítások, például az általános, a hálózat és a biztonság konfigurálása                                                                | Igen            |
-| Frissítések vizsgálata, letöltése és telepítése                                                                                             | Igen            |
-| Eszköz inaktiválása                                                                                                               | Igen            |
-| Eszköz törlése                                                                                                                   | Igen            |
-| Mennyiségi tároló létrehozása, módosítása és törlése                                                                                   | Nem             |
-| Kötet létrehozása, módosítása és törlése                                                                                             | Nem             |
-| Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | Nem             |
-| Manuális biztonsági mentés készítése                                                                                                            | Nem             |
-| Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
-| Visszaállítás egy biztonságimásolat                                                                                                        | Nem             |
-| Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Igen            |
-| Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | Nem             |
-| Feladatátvétel forrásként szolgáló eszközként <br> (egy, a 3,0-es frissítés előtt futó eszközről egy 3,0-es vagy újabb verziót futtató eszközre)                                                               | Igen            |
-| Feladatátvétel célként megadott eszközként <br> (a 3,0-es frissítés előtti verziót futtató eszközre)                                                                                   | Nem             |
-| Riasztás törlése                                                                                                                  | Igen            |
-| Biztonsági mentési szabályzatok, biztonsági mentési katalógus, kötetek, mennyiségi tárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
+| Eszköz regisztrálása                                                                                                               | Yes            |
+| Az eszközbeállítások, például az általános, a hálózat és a biztonság konfigurálása                                                                | Yes            |
+| Frissítések vizsgálata, letöltése és telepítése                                                                                             | Yes            |
+| Eszköz inaktiválása                                                                                                               | Yes            |
+| Eszköz törlése                                                                                                                   | Yes            |
+| Mennyiségi tároló létrehozása, módosítása és törlése                                                                                   | No             |
+| Kötet létrehozása, módosítása és törlése                                                                                             | No             |
+| Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | No             |
+| Manuális biztonsági mentés készítése                                                                                                            | No             |
+| Ütemezett biztonsági mentés készítése                                                                                                         | Nem értelmezhető |
+| Visszaállítás egy biztonságimásolat                                                                                                        | No             |
+| Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Yes            |
+| Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | No             |
+| Feladatátvétel forrásként szolgáló eszközként <br> (egy, a 3,0-es frissítés előtt futó eszközről egy 3,0-es vagy újabb verziót futtató eszközre)                                                               | Yes            |
+| Feladatátvétel célként megadott eszközként <br> (a 3,0-es frissítés előtti verziót futtató eszközre)                                                                                   | No             |
+| Riasztás törlése                                                                                                                  | Yes            |
+| Biztonsági mentési szabályzatok, biztonsági mentési katalógus, kötetek, mennyiségi tárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Yes            |
 | Az eszközök vezérlőinek be-és kikapcsolása                                                                                              | Igen            |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple üzembe helyezési folyamatáról](storsimple-8000-deployment-walkthrough-u2.md).
 * További információ [a StorSimple Storage-fiók kezeléséről](storsimple-8000-manage-storage-accounts.md).
 * További információ arról, hogyan [használható a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).

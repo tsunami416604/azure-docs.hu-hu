@@ -1,18 +1,14 @@
 ---
 title: Azure Relay hálózati biztonsága
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
-services: service-bus-relay
-author: spelluru
-ms.service: service-bus-relay
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.author: spelluru
-ms.openlocfilehash: d0a0d03680877ae78f5af939f8d47e4e426abadb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322168"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay hálózati biztonsága 
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Relay használatával: 

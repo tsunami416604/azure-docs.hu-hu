@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246109"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
@@ -23,7 +22,7 @@ Ha a vCenter-kiszolgálót a helyszíni munkaállomásokról származó CloudSim
 
 1. Jelentkezzen be a [CloudSimple-portálra](access-cloudsimple-portal.md).
 
-2. Navigáljon az **erőforrások** > **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
+2. Navigáljon az **erőforrások**  >  **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
 3. Az **alapszintű információ**területen található privát felhő **Összegzés** lapján másolja a saját Felhőbeli DNS-kiszolgáló IP-címét.
 

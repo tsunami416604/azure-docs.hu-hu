@@ -10,10 +10,10 @@ ms.date: 05/04/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 62f136eb1c2684bfd307a05ccbb4836739da6f3a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82789453"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
@@ -27,7 +27,7 @@ A megosztott képtárak lehetővé teszik a képek megosztását a RBAC használ
 
 ## <a name="create-a-vm-using-azure-cli"></a>Virtuális gép létrehozása az Azure CLI-vel
 
-Jelentkezzen be az 1. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és az 1. Bérlő AZONOSÍTÓjának használatával. Ha szükséges `az account show --query "tenantId"` , a segítségével kérheti le a bérlői azonosítókat.
+Jelentkezzen be az 1. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és az 1. Bérlő AZONOSÍTÓjának használatával. `az account show --query "tenantId"`Ha szükséges, a segítségével kérheti le a bérlői azonosítókat.
 
 ```azurecli-interactive
 az account clear

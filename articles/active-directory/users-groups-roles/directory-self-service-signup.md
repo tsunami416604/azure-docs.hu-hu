@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728826"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi a Azure Active Directory önkiszolgáló regisztrációja?
 
@@ -52,12 +52,12 @@ A rendszergazdák a következő Azure AD-parancsmagok Msolcompanysettings paranc
 A AllowEmailVerifiedUsers és a AllowAdHocSubscriptions olyan címtár-szintű beállítások, amelyek felügyelt vagy nem felügyelt címtárra alkalmazhatók. Íme egy példa:
 
 * A címtárat ellenőrzött tartománnyal (például contoso.com) felügyelheti
-* A VÁLLALATKÖZI együttműködés egy másik címtárból való használata olyan felhasználó meghívásához, amely még nemuserdoesnotexist@contoso.comlétezik () a contoso.com home könyvtárában
+* A VÁLLALATKÖZI együttműködés egy másik címtárból való használata olyan felhasználó meghívásához, amely még nem létezik ( userdoesnotexist@contoso.com ) a contoso.com home könyvtárában
 * A kezdőkönyvtár a AllowEmailVerifiedUsers be van kapcsolva
 
 Ha az előző feltételek teljesülnek, akkor a rendszer létrehoz egy tagot a kezdőlapon, és létrehoz egy B2B vendég felhasználót a meghívó címtárban.
 
-A flow és a PowerApps próbaverzióját nem a **AllowAdHocSubscriptions** beállítás vezérli. További információkért tekintse át a következő cikkeket:
+A flow és a PowerApps próbaverzióját nem a **AllowAdHocSubscriptions** beállítás vezérli. További információért tekintse át a következő cikkeket:
 
 * [Hogyan gátolható meg, hogy a meglévő felhasználók elkezdjék használni a Power BI-t?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [A Flow a munkahelyen – kérdések és válaszok](https://docs.microsoft.com/flow/organization-q-and-a)

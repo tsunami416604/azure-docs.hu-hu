@@ -12,10 +12,9 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: e91e59e8e8acbf76ed35cff6b2f654103bb763b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888560"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Virtuális gép kimenő és bejövő hálózati forgalmának szűrése
@@ -43,7 +42,7 @@ az group delete --name MyResourceGroup --yes
 
 Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy virtuális hálózatot és hálózati biztonsági csoportokat. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az network vnet create](/cli/azure/network/vnet) | Létrehoz egy Azure-beli virtuális hálózatot és előtérbeli alhálózatot. |

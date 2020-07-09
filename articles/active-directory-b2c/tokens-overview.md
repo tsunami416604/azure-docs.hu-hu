@@ -11,10 +11,9 @@ ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83757619"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
@@ -50,7 +49,7 @@ Az azonosító jogkivonatokban lévő jogcímeket nem adja vissza a rendszer ado
 
 A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosító jogkivonatok és a Azure AD B2C által kiállított hozzáférési jogkivonatok várhatnak.
 
-| Name | Jogcím | Példaérték | Leírás |
+| Name | Jogcím | Példaérték | Description |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Azonosítja a jogkivonat kívánt címzettjét. Azure AD B2C esetében a célközönség az alkalmazás azonosítója. Az alkalmazásnak érvényesíteni kell ezt az értéket, és el kell utasítania a tokent, ha az nem egyezik. A célközönség szinonimája az erőforrásnak. |
 | Kiállító | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Azonosítja a tokent létrehozó és visszaküldő biztonságijogkivonat-szolgáltatást (STS). Emellett azt a könyvtárat is azonosítja, amelyben a felhasználó hitelesítése megtörtént. Az alkalmazásnak ellenőriznie kell a kiállítói jogcímet, hogy ellenőrizze, a jogkivonat a megfelelő végpontból származik-e. |
@@ -62,7 +61,7 @@ A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosít
 | Hozzáférési jogkivonat kivonata | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Egy hozzáférési jogkivonat kivonata csak akkor szerepel egy azonosító jogkivonatban, ha a tokent egy OAuth 2,0 hozzáférési jogkivonattal együtt állították ki. A hozzáférési jogkivonat kivonata használható a hozzáférési token hitelességének ellenőrzéséhez. Az érvényesítés végrehajtásával kapcsolatos további információkért lásd az [OpenID Connect specifikációját](https://openid.net/specs/openid-connect-core-1_0.html) .  |
 | Egyszeri | `nonce` | `12345` | Egy alkalom a jogkivonat-újrajátszás elleni támadások enyhítésére szolgáló stratégia. Az alkalmazás a lekérdezési paraméter használatával megadhat egy egyszeres engedélyt egy engedélyezési kérelemben `nonce` . A kérelemben megadott értéket a rendszer nem módosítja `nonce` csak azonosító jogkivonat jogcímen. Ez a jogcím lehetővé teszi az alkalmazás számára, hogy ellenőrizze az értéket a kérelemben megadott értékkel. Az alkalmazásnak el kell végeznie ezt az ellenőrzést az azonosító jogkivonat érvényesítési folyamata során. |
 | Tárgy | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos elvégzésére használható, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. |
-| Hitelesítési környezet osztályának referenciája | `acr` | Nem alkalmazható | Csak régebbi házirendekkel használható. |
+| Hitelesítési környezet osztályának referenciája | `acr` | Nem értelmezhető | Csak régebbi házirendekkel használható. |
 | Megbízhatósági keretrendszer szabályzata | `tfp` | `b2c_1_signupsignin1` | Az azonosító jogkivonat beszerzéséhez használt szabályzat neve. |
 | Hitelesítési idő | `auth_time` | `1438535543` | Az az idő, amikor a felhasználó legutóbb megadta a hitelesítő adatokat. A hitelesítés nem jelent különbséget a friss bejelentkezés, az egyszeri bejelentkezési (SSO) munkamenet vagy egy másik bejelentkezési típus között. Az az `auth_time` utolsó alkalommal, amikor az alkalmazás (vagy felhasználó) hitelesítési kísérletet kezdeményezett Azure ad B2C. A hitelesítéshez használt metódus nincs megkülönböztetve. |
 | Hatókör | `scp` | `Read`| Az erőforráshoz hozzáférési jogkivonat számára megadott engedélyek. Több megadott engedély is szóközzel elválasztva. |

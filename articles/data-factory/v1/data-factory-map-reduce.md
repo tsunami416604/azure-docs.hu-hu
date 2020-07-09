@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703157"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-programok meghívása Data Factory
@@ -181,13 +180,13 @@ Az ebben a példában szereplő folyamat nem tesz elérhetővé semmilyen bemene
 ### <a name="pipeline"></a>Folyamat
 Az ebben a példában szereplő folyamathoz csak egy: HDInsightMapReduce típusú tevékenység tartozik. A JSON legfontosabb tulajdonságai a következők: 
 
-| Tulajdonság | Megjegyzések |
+| Tulajdonság | Jegyzetek |
 |:--- |:--- |
-| type |A típust **HDInsightMapReduce**értékre kell beállítani. |
+| típus |A típust **HDInsightMapReduce**értékre kell beállítani. |
 | className |Az osztály neve: **WordCount** |
 | jarFilePath |Az osztályt tartalmazó jar-fájl elérési útja. Ha a következő kódot másolja/illeszti be, ne felejtse el módosítani a fürt nevét. |
 | jarLinkedService |Az Azure Storage társított szolgáltatása, amely tartalmazza a jar-fájlt. Ez a társított szolgáltatás a HDInsight-fürthöz társított tárterületre hivatkozik. |
-| argumentumok |A WordCount program két argumentumot, egy bemenetet és egy kimenetet vesz igénybe. A bemeneti fájl a DaVinci. txt fájl. |
+| argumentumok |A WordCount program két argumentumot, egy bemenetet és egy kimenetet vesz igénybe. A bemeneti fájl a davinci.txt fájl. |
 | frequency/interval |A tulajdonságok értékei egyeznek a kimeneti adatkészlettel. |
 | linkedServiceName |a korábban létrehozott HDInsight társított szolgáltatásra hivatkozik. |
 

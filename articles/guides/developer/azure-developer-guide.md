@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829397"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -80,7 +80,7 @@ A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munk
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (kiszolgáló nélküli)
 
-Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatásához való kiépítésével és kezelésével kapcsolatban, mi a teendő, ha csak megírhatja a kódot, és az eseményekre adott válaszként vagy ütemterv szerint futtatja?  [Azure functions](../../azure-functions/functions-overview.md) egy "kiszolgáló nélküli" stílusú ajánlat, amely lehetővé teszi, hogy csak a szükséges kódot írja. A függvények lehetővé teszi a kód végrehajtását HTTP-kérésekkel, webhookokkal, Cloud Service-eseményekkel vagy ütemezett műveletekkel. Megadhatja az Ön által választott fejlesztői nyelvet, például C\#, F\#, Node. js, Python vagy php. A fogyasztáson alapuló számlázással csak a kód végrehajtásának idejére kell fizetnie, az Azure pedig igény szerint méretezhető.
+Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatásához való kiépítésével és kezelésével kapcsolatban, mi a teendő, ha csak megírhatja a kódot, és az eseményekre adott válaszként vagy ütemterv szerint futtatja?  [Azure functions](../../azure-functions/functions-overview.md) egy "kiszolgáló nélküli" stílusú ajánlat, amely lehetővé teszi, hogy csak a szükséges kódot írja. A függvények lehetővé teszi a kód végrehajtását HTTP-kérésekkel, webhookokkal, Cloud Service-eseményekkel vagy ütemezett műveletekkel. Az Ön által választott fejlesztési nyelvben (például C \# , F \# , Node.js, PYTHON vagy php) kódot is használhat. A fogyasztáson alapuló számlázással csak a kód végrehajtásának idejére kell fizetnie, az Azure pedig igény szerint méretezhető.
 
 > **Használat esetén**: Azure functions használata, ha olyan kódot használ, amelyet más Azure-szolgáltatások, webalapú események vagy ütemterv alapján aktiválnak. A függvényeket akkor is használhatja, ha nincs szüksége egy teljes körűen üzemeltetett projekt terhelésére, vagy ha csak a kód futási idejét szeretné kifizetni. További információ: [Azure functions Overview (áttekintés](../../azure-functions/functions-overview.md)).
 >
@@ -96,7 +96,7 @@ Az Azure Service Fabric egy elosztott rendszerek platformja. Ez a platform megk�
 * Telepítése
 * Figyelés
 * Frissítés/javítás
-* Törlése
+* Törlés
 
 Az olyan alkalmazások, amelyek egy megosztott készleten futnak, kis méretűek és akár több száz vagy akár több ezer gép számára is elindíthatók.
 
@@ -130,7 +130,7 @@ A legtöbb alkalmazásnak tárolnia kell az adatait, de úgy dönt, hogy az alka
 
   > **Mikor kell használni**: Ha az alkalmazás a hivatkozási integritással, a tranzakciós támogatással és a TSQL-lekérdezések támogatásával igényli az adattárolást.
   >
-  > Első **lépések**: [hozzon létre egy SQL-adatbázist percek alatt a Azure Portal használatával](../../sql-database/sql-database-get-started.md).
+  > Első **lépések**: [hozzon létre egy adatbázist Azure SQL Database percek alatt a Azure Portal használatával](../../sql-database/sql-database-get-started.md).
 
 
 A meglévő helyszíni és az Azure-ba történő áthelyezéséhez [Azure Data Factory](../../data-factory/introduction.md) is használhat. Ha nem áll készen az adatáthelyezésre a felhőbe, [hibrid kapcsolatok](../../app-service/app-service-hybrid-connections.md) a Azure app Service lehetővé teszi a app Service üzemeltetett alkalmazás helyszíni erőforrásokhoz való összekapcsolását. A helyszíni alkalmazásokból is kapcsolódhat az Azure-beli adatokhoz és a tárolási szolgáltatásokhoz.
@@ -255,7 +255,7 @@ Az Azure a Azure Portal felhasználói felületét támogató REST API-k készle
 A REST API-kkal együtt számos Azure-szolgáltatás is lehetővé teszi, hogy programozott módon kezelhesse az alkalmazások erőforrásait a platform-specifikus Azure SDK-k használatával, beleértve az alábbi fejlesztői platformokhoz készült SDK-kat:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -268,7 +268,7 @@ Az olyan szolgáltatások, mint például a [Mobile apps](../../app-service-mobi
 
 Az alkalmazás Azure-beli futtatása valószínűleg több Azure-szolgáltatással is működik. Ezek a szolgáltatások ugyanazt az életciklust követik, és logikai egységnek is tekinthetők. Előfordulhat például, hogy egy webalkalmazás használhatja a Web Apps, a SQL Database, a Storage, az Azure cache for Redis és az Azure Content Delivery Network Services szolgáltatást. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) lehetővé teszi, hogy az alkalmazásban lévő erőforrásokat csoportként működjön. Egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti az összes erőforrást.
 
-A kapcsolódó erőforrások logikai csoportosítása és kezelése mellett Azure Resource Manager olyan központi telepítési képességeket is tartalmaz, amelyek lehetővé teszik a kapcsolódó erőforrások üzembe helyezésének és konfigurálásának testreszabását. Használhatja például a Resource Manager alkalmazást az alkalmazások üzembe helyezéséhez és konfigurálásához. Ez az alkalmazás több virtuális gépről, egy terheléselosztóből és egy Azure SQL Database-adatbázisból állhat egyetlen egységként.
+A kapcsolódó erőforrások logikai csoportosítása és kezelése mellett Azure Resource Manager olyan központi telepítési képességeket is tartalmaz, amelyek lehetővé teszik a kapcsolódó erőforrások üzembe helyezésének és konfigurálásának testreszabását. Használhatja például a Resource Manager alkalmazást az alkalmazások üzembe helyezéséhez és konfigurálásához. Ez az alkalmazás több virtuális gépről, egy terheléselosztóból és Azure SQL Database egyetlen egységként elérhető adatbázisból állhat.
 
 Ezeket az üzembe helyezéseket egy Azure Resource Manager sablon használatával fejlesztheti, amely egy JSON-formátumú dokumentum. A sablonok lehetővé teszik, hogy a parancsfájlok helyett deklaratív sablonok használatával definiálja az alkalmazásokat, és kezelje az alkalmazásait. A sablonok különböző környezetekben, például tesztelési, átmeneti és éles környezetben is működhetnek. A sablonok használatával például hozzáadhat egy gombot egy GitHub-tárházhoz, amely egyetlen kattintással üzembe helyezi a tárházban lévő kódot egy Azure-szolgáltatásba.
 

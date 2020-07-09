@@ -8,12 +8,11 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84219968"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -99,9 +98,9 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |--|--|
-|--HRE-végpont|A használandó Azure Active Directory végpont. Az alapértelmezett (`https://login.microsoftonline.com`) helyes a nyilvános Azure-felhőben. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Lásd: [Azure ad-hitelesítési végpontok](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+|--HRE-végpont|A használandó Azure Active Directory végpont. Az alapértelmezett ( `https://login.microsoftonline.com` ) helyes a nyilvános Azure-felhőben. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Lásd: [Azure ad-hitelesítési végpontok](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Ez a jelző nem szükséges a Managed Service Identityhoz.|
 |--Application-ID karakterlánc|A felhasználó által hozzárendelt identitás alkalmazás-azonosítója. Az egyszerű szolgáltatás hitelesítéséhez szükséges.|
 |--Certificate-Path karakterlánc|A tanúsítvány elérési útja az SPN-hitelesítéshez. A tanúsítványalapú szolgáltatásnév hitelesítéséhez szükséges.|
@@ -110,15 +109,16 @@ Ez a jelző nem szükséges a Managed Service Identityhoz.|
 |--Identity-Client-ID karakterlánc|A felhasználó által hozzárendelt identitás ügyfél-azonosítója.|
 |--Identity-Object-ID karakterlánc|Felhasználó által hozzárendelt identitás objektum-azonosítója.|
 |--Identity-Resource-id karakterlánc|A felhasználó által hozzárendelt identitás erőforrás-azonosítója.|
-|--szolgáltatás – rendszerbiztonsági tag|Jelentkezzen be SPN-ben (egyszerű szolgáltatásnév) a tanúsítvány vagy a titkos kulcs használatával. Az ügyfél titkos vagy tanúsítványának jelszavát a megfelelő környezeti változóba kell helyezni. A `AzCopy env` környezeti változók nevének és leírásának megjelenítéséhez írja be a következőt:.|
+|--szolgáltatás – rendszerbiztonsági tag|Jelentkezzen be SPN-ben (egyszerű szolgáltatásnév) a tanúsítvány vagy a titkos kulcs használatával. Az ügyfél titkos vagy tanúsítványának jelszavát a megfelelő környezeti változóba kell helyezni. `AzCopy env`A környezeti változók nevének és leírásának megjelenítéséhez írja be a következőt:.|
 |--Bérlő-azonosító sztring| az OAuth-eszköz interaktív bejelentkezéséhez használandó Azure Active Directory-bérlői azonosító.|
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
+|--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
 ## <a name="see-also"></a>Lásd még
 

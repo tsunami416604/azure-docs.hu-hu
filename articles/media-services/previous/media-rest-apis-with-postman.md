@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76694990"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Poster konfigurálása Media Services v2 REST API hívásokhoz  
@@ -37,13 +36,13 @@ Ez a környezet és gyűjtemény olyan cikkekben használatos, amelyek bemutatj�
 
 ## <a name="configure-the-environment"></a>A környezet konfigurálása 
 
-1. Hozzon létre egy. JSON fájlt, amely tartalmazza az AMS oktatóanyagokban használt környezeti változókat. Nevezze el a fájlt (például **AzureMediaServices. postman_environment. JSON**). Nyissa meg a fájlt, és illessze be a Poster-környezetet meghatározó kódot a [kód listájából](postman-environment.md). 
+1. Hozzon létre egy. JSON fájlt, amely tartalmazza az AMS oktatóanyagokban használt környezeti változókat. Nevezze el a fájlt (például **AzureMediaServices.postman_environment.json**). Nyissa meg a fájlt, és illessze be a Poster-környezetet meghatározó kódot a [kód listájából](postman-environment.md). 
 2. Nyissa meg a **Postmant**.
 3. A képernyő jobb oldalán válassza a **Manage environment (Környezet felügyelete)** lehetőséget.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-env.png)
 4. A **Manage environment (Környezet felügyelete)** párbeszédablakban kattintson az **Import (Importálás)** gombra.
-5. Tallózással keresse meg és válassza ki a **AzureMediaServices. postman_environment. JSON** fájlt.
+5. Tallózással keresse meg és válassza ki a **AzureMediaServices.postman_environment.js** fájlt.
 6. A **AzureMedia** -környezet hozzá van adva.
 7. Zárja be a párbeszédpanelt.
 8. Válassza ki a **AzureMedia** -környezetet.
@@ -52,9 +51,9 @@ Ez a környezet és gyűjtemény olyan cikkekben használatos, amelyek bemutatj�
 
 ## <a name="configure-the-collection"></a>A gyűjtemény konfigurálása
 
-1. Hozzon létre egy. JSON-fájlt, amely tartalmazza a **Poster** -gyűjteményt az összes olyan művelettel, amely szükséges a fájlok Media Servicesba való feltöltéséhez. Nevezze el a fájlt (például **AzureMediaServicesOperations. postman_collection. JSON**). Nyissa meg a fájlt, és illessze be a **Poster** [-gyűjteményt meghatározó kódot a](postman-collection.md)listában.
+1. Hozzon létre egy. JSON-fájlt, amely tartalmazza a **Poster** -gyűjteményt az összes olyan művelettel, amely szükséges a fájlok Media Servicesba való feltöltéséhez. Nevezze el a fájlt (például **AzureMediaServicesOperations.postman_collection.json**). Nyissa meg a fájlt, és illessze be a **Poster** [-gyűjteményt meghatározó kódot a](postman-collection.md)listában.
 2. Kattintson az **Import (Importálás)** gombra a gyűjteményfájl importálásához.
-3. Válassza ki a **AzureMediaServicesOperations. postman_collection. JSON** fájlt.
+3. Válassza ki a **AzureMediaServicesOperations.postman_collection.js** fájlt.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-import-collection.png)
 

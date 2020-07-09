@@ -15,10 +15,9 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79251361"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Szabványos kódoló-formátumok és-kodekek
@@ -29,17 +28,17 @@ Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listá
 
 | Fájlformátum (fájlkiterjesztés) | Támogatott |
 | --- | --- |
-| FLV (H.264 és AAC kodekkel) (.flv) |Igen |
-| MXF (.mxf) |Igen |
-| MXF (.mxf) |Igen |
-| MPEG2 PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Igen |
-| Windows Media Video (WMV) / ASP (.wmv, .asf) |Igen |
-| AVI (8 bit-es/10 bit-es, tömörítettlen) (.avi) |Igen |
-| MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Igen |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Igen |
-| Matroska/WebM (.mkv) |Igen |
-| WAVE/WAV (.wav) |Igen |
-| QuickTime (.mov) |Igen |
+| FLV (H.264 és AAC kodekkel) (.flv) |Yes |
+| MXF (.mxf) |Yes |
+| MXF (.mxf) |Yes |
+| MPEG2 PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Yes |
+| Windows Media Video (WMV) / ASP (.wmv, .asf) |Yes |
+| AVI (8 bit-es/10 bit-es, tömörítettlen) (.avi) |Yes |
+| MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Yes |
+| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Yes |
+| Matroska/WebM (.mkv) |Yes |
+| WAVE/WAV (.wav) |Yes |
+| QuickTime (.mov) |Yes |
 
 ### <a name="audio-formats-in-input-containers"></a>Hangformátumok bemeneti tárolókban
 
@@ -55,41 +54,41 @@ vagy
 | Bemeneti videó codec-je | Támogatott |
 | --- | --- |
 | 8 bites/10 bites AVC, akár 4:2:2-esig, ideértve az AVCIntrát is |8 bites 4:2:0-es és 4:2:2-es |
-| Avid DNxHD (MXF-ben) |Igen |
-| DVCPro/DVCProHD (MXF-ben) |Igen |
-| Digital video (DV) (AVI-fájlokban) |Igen |
-| JPEG 2000 |Igen |
+| Avid DNxHD (MXF-ben) |Yes |
+| DVCPro/DVCProHD (MXF-ben) |Yes |
+| Digital video (DV) (AVI-fájlokban) |Yes |
+| JPEG 2000 |Yes |
 | MPEG-2 (akár a 422-es profilig és a magas szintig; az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 típusú változatokat is beleértve) |Akár 422-es profilig |
-| MPEG-1 |Igen |
-| VC-1/WMV9 |Igen |
-| Canopus HQ/HQX |Nem |
-| MPEG-4 Part 2 |Igen |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Igen |
-| Tömörítetlen YUV420 vagy mezzanine |Igen |
-| Apple ProRes 422 |Igen |
-| Apple ProRes 422 LT |Igen |
-| Apple ProRes 422 HQ |Igen |
-| Apple ProRes Proxy |Igen |
-| Apple ProRes 4444 |Igen |
-| Apple ProRes 4444 XQ |Igen |
+| MPEG-1 |Yes |
+| VC-1/WMV9 |Yes |
+| Canopus HQ/HQX |No |
+| MPEG-4 Part 2 |Yes |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
+| Tömörítetlen YUV420 vagy mezzanine |Yes |
+| Apple ProRes 422 |Yes |
+| Apple ProRes 422 LT |Yes |
+| Apple ProRes 422 HQ |Yes |
+| Apple ProRes Proxy |Yes |
+| Apple ProRes 4444 |Yes |
+| Apple ProRes 4444 XQ |Yes |
 | HEVC/H. 265| Fő profil|
 
 ## <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 | Bemeneti hangkodekek | Támogatott |
 | --- | --- |
-| AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1-esig) |Igen |
-| MPEG 2 réteg |Igen |
-| MP3 (MPEG-1, 3 hangréteg) |Igen |
-| Windows Media Audio |Igen |
-| WAV/PCM |Igen |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
-| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Igen |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |
-| AMR (adaptív többsebességű) |Igen |
-| AES (SMPTE 331M és 302 M, AES3-2003) |Nem |
-| Dolby® E |Nem |
-| Dolby® Digital (AC3) |Nem |
-| Dolby® Digital (E-AC3) |Nem |
+| AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1-esig) |Yes |
+| MPEG 2 réteg |Yes |
+| MP3 (MPEG-1, 3 hangréteg) |Yes |
+| Windows Media Audio |Yes |
+| WAV/PCM |Yes |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Yes |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
+| AMR (adaptív többsebességű) |Yes |
+| AES (SMPTE 331M és 302 M, AES3-2003) |No |
+| Dolby® E |No |
+| Dolby® Digital (AC3) |No |
+| Dolby® Digital (E-AC3) |No |
 
 ## <a name="output-formats-and-codecs"></a>Kimeneti formátumok és kodekek
 A következő táblázat az exportáláshoz támogatott kodekeket és fájlformátumokat sorolja fel.

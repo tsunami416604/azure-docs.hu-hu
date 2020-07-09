@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082118"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálási szolgáltatás: Az Azure Active Directoryval szinkronizált attribútumok
@@ -60,7 +60,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | authOrig |X |X |X | |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
+| co |X |X | | |
 | cég |X |X | | |
 | Országhívószám |X |X | | |
 | Részleg |X |X | | |
@@ -181,7 +181,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | authOrig |X |X |X | |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
+| co |X |X | | |
 | cég |X |X | | |
 | Országhívószám |X |X | | |
 | Részleg |X |X | | |
@@ -262,7 +262,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
+| co |X |X | | |
 | cég |X |X | | |
 | Részleg |X |X | | |
 | leírás |X |X |X | |
@@ -343,7 +343,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
 | CN |X | |X | |
-| Co |X |X | | |
+| co |X |X | | |
 | cég |X |X | | |
 | Országhívószám |X |X | | |
 | leírás |X |X |X | |

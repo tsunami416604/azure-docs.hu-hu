@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730108"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
@@ -30,7 +29,7 @@ Az Azure IoT Hub több építőelemet is lehetővé tesz, például az [eszköz�
 
 ## <a name="job-lifecycle"></a>Feladatok életciklusa
 
-A feladatokat a megoldás háttérbe állításával és IoT Hub tartja karban. Egy szolgáltatáshoz kapcsolódó URI-n (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) keresztül kezdeményezheti a feladatokat, és egy szolgáltatáshoz kapcsolódó URI-n (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`) keresztül végezheti el a végrehajtást egy végrehajtási feladatokon. Ha egy feladat elindítása után szeretné frissíteni a futó feladatok állapotát, futtassa a feladat lekérdezését.
+A feladatokat a megoldás háttérbe állításával és IoT Hub tartja karban. Egy szolgáltatáshoz kapcsolódó URI-n () keresztül kezdeményezheti a feladatokat `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` , és egy szolgáltatáshoz kapcsolódó URI-n () keresztül végezheti el a végrehajtást egy végrehajtási feladatokon `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` . Ha egy feladat elindítása után szeretné frissíteni a futó feladatok állapotát, futtassa a feladat lekérdezését.
 
 > [!NOTE]
 > Ha elindít egy feladatot, a tulajdonságok nevei és értékei csak az US-ASCII nyomtatható alfanumerikus karaktereket tartalmazhatják, kivéve a következő készletben lévőket:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
@@ -122,7 +121,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> A *updateTwin* tulajdonsághoz érvényes ETAG-egyezés szükséges; például: `etag="*"`.
+> A *updateTwin* tulajdonsághoz érvényes ETAG-egyezés szükséges; például: `etag="*"` .
 
 Az alábbi kódrészlet egy ütemezett feladatokra vonatkozó kérést és választ jelenít meg a test-Device kettős tulajdonságainak frissítéséhez a contoso-hub-1 eszközön:
 

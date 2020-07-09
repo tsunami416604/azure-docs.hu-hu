@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134014"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Másodlagos helyszíni helyre irányuló vészhelyreállítás beállítása Hyper-V virtuális gépekhez
 
@@ -48,10 +48,10 @@ A [hálózatleképezés](hyper-v-vmm-network-mapping.md) kapcsolatot hoz létre 
 
 A VMM előkészítését a következőképpen végezze el:
 
-1. Győződjön meg arról, hogy rendelkezik [VMM logikai hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás- és céloldali VMM-kiszolgálókon.
+1. Győződjön meg arról, hogy rendelkezik [VMM logikai hálózatokkal](/system-center/vmm/network-logical) a forrás- és céloldali VMM-kiszolgálókon.
     - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
     - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
-1. Győződjön meg arról, hogy rendelkezik [virtuálisgép-hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás- és céloldali VMM-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
+1. Győződjön meg arról, hogy rendelkezik [virtuálisgép-hálózatokkal](/system-center/vmm/network-virtual) a forrás- és céloldali VMM-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
 2. A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni. 
 
 
@@ -64,7 +64,7 @@ A VMM előkészítését a következőképpen végezze el:
 
 Válassza ki, hogy mit szeretne replikálni, és hova.
 
-1. Kattintson **site Recovery** > **1. lépés: az infrastruktúra** > előkészítése**védelmi cél**elemre.
+1. Kattintson **site Recovery**  >  **1. lépés: az infrastruktúra előkészítése**  >  **védelmi cél**elemre.
 2. Válassza a **Helyreállítási helyre**, valamint az **Igen, a következővel: Hyper-V** lehetőséget.
 3. Az **Igen** lehetőség kiválasztásával erősítse meg, hogy VMM-mel felügyeli a Hyper-V gazdagépeket.
 4. Válassza az **Igen** lehetőséget, ha rendelkezik másodlagos VMM-kiszolgálóval. Ha felhők közötti replikációt helyez üzembe egyetlen VMM-kiszolgálón, kattintson a **Nem** lehetőségre. Ezt követően kattintson az **OK** gombra.
@@ -74,7 +74,7 @@ Válassza ki, hogy mit szeretne replikálni, és hova.
 
 Telepítse az Azure Site Recovery Providert a VMM-kiszolgálókra, és keresse meg, majd regisztrálja a kiszolgálókat a tárolóban.
 
-1. Kattintson az **infrastruktúra** > előkészítése**forrás**elemre.
+1. Kattintson az **infrastruktúra előkészítése**  >  **forrás**elemre.
 2. A **forrás előkészítése**területen kattintson a **+ VMM** elemre a VMM-kiszolgáló hozzáadásához.
 3. A **Kiszolgáló hozzáadása** panelen ellenőrizze, hogy a **Kiszolgálótípus** mezőben a **System Center VMM-kiszolgáló** érték látható-e.
 4. Töltse le az Azure Site Recovery Provider telepítőfájlját.
@@ -98,21 +98,21 @@ Telepítse az Azure Site Recovery Providert a VMM-kiszolgálókra, és keresse m
 6. A **Tároló neve** résznél ellenőrizze a tároló nevét, amelyben a kiszolgálót regisztrálni fogja. Kattintson a **Tovább** gombra.
 7. A **Proxykapcsolat** lapon adja meg, hogy a VMM-kiszolgálón futó Provider hogyan csatlakozzon az Azure-hoz.
    - Megadhatja, hogy a Provider közvetlenül vagy proxyn keresztül csatlakozzon az internethez. Szükség szerint adja meg a proxybeállításokat.
-   - Ha proxyt használ, a rendszer automatikusan létrehoz egy, a megadott hitelesítő adatokat alkalmazó VMM RunAs-fiókot (DRAProxyAccount). Állítsa be úgy a proxykiszolgálót, hogy ez a fiók elvégezhesse a hitelesítést. A futtató fiók beállításai módosíthatók a VMM-konzolon > a **Beállítások** > **biztonsági** > **futtató fiókok**menüpontot.
+   - Ha proxyt használ, a rendszer automatikusan létrehoz egy, a megadott hitelesítő adatokat alkalmazó VMM RunAs-fiókot (DRAProxyAccount). Állítsa be úgy a proxykiszolgálót, hogy ez a fiók elvégezhesse a hitelesítést. A futtató fiók beállításai módosíthatók a VMM-konzolon > a **Beállítások**  >  **biztonsági**  >  **futtató fiókok**menüpontot.
    - Indítsa újra a VMM szolgáltatást a módosítások frissítéséhez.
 8. A **Regisztrációs kulcs** résznél válassza ki a letöltött, majd a VMM-kiszolgálóra másolt kulcsot.
 9. Ehhez a forgatókönyvhöz nem kell figyelembe venni a titkosítási beállítást. 
 10. A **Kiszolgáló neve** mezőben adjon meg egy, a tárolóban regisztrált VMM-kiszolgálót azonosító rövid nevet. Fürt használata esetén adja meg a VMM-fürtszerepkör nevét.
 11. A **Felhőmetaadatok szinkronizálása** mezőben válassza ki, hogy szeretné-e a VMM-kiszolgáló összes felhőjének metaadatait szinkronizálni. Ezt a műveletet kiszolgálónként csak egyszer szükséges elvégezni. Ha nem szeretné az összes felhőt szinkronizálni, ne jelölje be ezt a beállítást. A felhőket egyenként is szinkronizálhatja a VMM-konzolban, a felhők tulajdonságainál.
-12. A folyamat befejezéséhez kattintson a **Next** (Tovább) gombra. A regisztrációt követően a Recovery lekéri a metaadatokat VMM-kiszolgálóról. A kiszolgáló a tárolóban **található kiszolgálók** > **VMM** jelenik meg.
-13. Miután a kiszolgáló megjelenik a tárolóban, a **forrás** > **előkészítése forrás** lapon válassza ki a VMM-kiszolgálót, és válassza ki azt a felhőt, amelyben a Hyper-V-gazdagép található. Ezt követően kattintson az **OK** gombra.
+12. A folyamat befejezéséhez kattintson a **Next** (Tovább) gombra. A regisztrációt követően a Recovery lekéri a metaadatokat VMM-kiszolgálóról. A kiszolgáló a tárolóban **található kiszolgálók**  >  **VMM** jelenik meg.
+13. Miután a kiszolgáló megjelenik a tárolóban, a **forrás**  >  **előkészítése forrás** lapon válassza ki a VMM-kiszolgálót, és válassza ki azt a felhőt, amelyben a Hyper-V-gazdagép található. Ezt követően kattintson az **OK** gombra.
 
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
 
 Válassza ki a céloldali VMM-kiszolgálót és felhőt:
 
-1. Kattintson az **infrastruktúra** > előkészítése**cél**elemre, majd válassza ki a cél VMM-kiszolgálót.
+1. Kattintson az **infrastruktúra előkészítése**  >  **cél**elemre, majd válassza ki a cél VMM-kiszolgálót.
 2. Megjelennek a Site Recovery használatával szinkronizált VMM-felhők. Válassza ki a célfelhőt.
 
    ![Cél](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
@@ -122,7 +122,7 @@ Válassza ki a céloldali VMM-kiszolgálót és felhőt:
 
 Mielőtt hozzálátna, győződjön meg róla, hogy a szabályzatot használó összes gazdagép ugyanazzal az operációs rendszerrel rendelkezik. Ha a gazdagépek a Windows Server különböző verzióit futtatják, többféle replikációs szabályzatra van szükség.
 
-1. Új replikációs szabályzat létrehozásához kattintson az **infrastruktúra** > előkészítése**replikációs beállítások** > **+ Létrehozás és hozzárendelés**elemre.
+1. Új replikációs szabályzat létrehozásához kattintson az **infrastruktúra előkészítése**  >  **replikációs beállítások**  >  **+ Létrehozás és hozzárendelés**elemre.
 2. A **Házirend létrehozása és társítása** beállításnál adja meg a szabályzat nevét. A forrás és a cél típusa egyaránt a **Hyper-V** kell legyen.
 3. A **Hyper-V gazdagép verziója** elemnél válassza ki a gazdagépen futó operációs rendszer típusát.
 4. A **Hitelesítési típus** és **Hitelesítési port** beállításnál adja meg, hogy a forgalom hitelesítése hogyan történik az elsődleges és a helyreállítási Hyper-V gazdakiszolgálók között.
@@ -145,7 +145,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy a szabályzatot használó �
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-1. Kattintson az alkalmazás > **forrásának** **replikálása**elemre. 
+1. Kattintson az **alkalmazás**  >  **forrásának**replikálása elemre. 
 2. A **Forrás** területen válassza ki a VMM-kiszolgálót és a felhőt, amelyben a replikálni kívánt Hyper-V gazdagépek futnak. Ezt követően kattintson az **OK** gombra.
 3. A **Cél** területen ellenőrizze a másodlagos VMM-kiszolgálót és felhőt.
 4. A **Virtuális gépek** területen válassza ki a listából a védelemmel ellátni kívánt virtuális gépeket.
@@ -153,6 +153,6 @@ Mielőtt hozzálátna, győződjön meg róla, hogy a szabályzatot használó �
 
 A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeztével a kezdeti replikálás is befejeződik, a virtuális gép pedig készen áll a feladatátvételre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Vészhelyreállítási próba végrehajtása](hyper-v-vmm-test-failover.md)

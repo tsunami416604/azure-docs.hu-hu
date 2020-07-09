@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: rclaus
 ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969253"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Gyakori Azure CLI-parancsok az Azure-erőforrások kezeléséhez
@@ -20,7 +19,7 @@ Az Azure CLI használatával macOS, Linux és Windows rendszeren is létrehozhat
 Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. A böngészőből [Cloud Shell](/azure/cloud-shell/quickstart) is használhatja.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Alapszintű Azure Resource Manager-parancsok az Azure CLI-ben
-Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részletesebb segítségért írja `az <command> <subcommand> --help`be a következőt: az online parancs súgója és beállításai.
+Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részletesebb segítségért írja be a következőt: az online parancs súgója és beállításai `az <command> <subcommand> --help` .
 
 ### <a name="create-vms"></a>Virtuális gépek létrehozása
 | Tevékenység | Az Azure parancssori felület parancsai |

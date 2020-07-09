@@ -11,10 +11,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856037"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Az Azure Machine learning monitorozási adatreferenciája
@@ -73,7 +72,7 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | MinimumNodeCount | A fürt minimális csomópontjainak száma |
 | MaximumNodeCount | A fürt maximális csomópontjainak száma |
 | NodeDeallocationOption | A csomópont kiosztásának módja |
-| Közzétevő | A fürt típusának közzétevője |
+| Publisher | A fürt típusának közzétevője |
 | Ajánlat | Az ajánlat, amellyel a fürt létrejött |
 | SKU | A fürtön belül létrehozott csomópont/virtuális gép SKU-a |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
@@ -109,7 +108,7 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | VmSize | A csomópont virtuális gép mérete |
 | VmFamilyName | A virtuális gép családja, amelyhez a csomópont tartozik |
 | VmPriority | Dedikált/LowPriority létrehozott csomópont prioritása |
-| Közzétevő | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
+| Publisher | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
 | Ajánlat | A virtuális gép létrehozásával kapcsolatos ajánlat |
 | SKU | A létrehozott csomópont/virtuális gép SKU-jának száma |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
@@ -128,7 +127,7 @@ Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning g
 
 **Modell**
 
-| Metrika | Unit (Egység) | Leírás |
+| Metrika | Unit (Egység) | Description |
 | ----- | ----- | ----- |
 | A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
 | A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
@@ -140,7 +139,7 @@ Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning g
 
 A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
 
-| Metrika | Unit (Egység) | Leírás |
+| Metrika | Unit (Egység) | Description |
 | ----- | ----- | ----- |
 | Aktív magok | Darabszám | Az aktív számítási magok száma. |
 | Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
@@ -158,7 +157,7 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 
-| Dimenzió | Elérhető metrikák (k) | Leírás |
+| Dimenzió | Elérhető metrikák (k) | Description |
 | ---- | ---- | ---- |
 | Fürt neve | Az összes kvóta mérőszáma | A számítási példány neve. |
 | VM-család neve | Kvóta kihasználtsága (%) | A fürt által használt virtuálisgép-család neve. |
@@ -166,25 +165,25 @@ A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 
 **Erőforrás**
 
-| Metrika | Unit (Egység) | Leírás |
+| Metrika | Unit (Egység) | Description |
 | ----- | ----- | ----- |
 | CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
 | GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
 
 Az alábbi méretek használhatók az erőforrás-metrikák szűréséhez:
 
-| Dimenzió | Leírás |
+| Dimenzió | Description |
 | ----- | ----- |
 | CreatedTime | |
 | DeviceId | Az eszköz azonosítója (GPU). Csak a GpuUtilization esetében érhető el. |
 | NodeId | Annak a csomópontnak az azonosítója, amelybe a feladatot futtatja. |
 | RunId | A futtatási/feladatokhoz tartozó azonosító. |
 
-**Futtassa a következőt:**
+**Futtatás**
 
 A képzések futtatásával kapcsolatos információk.
 
-| Metrika | Unit (Egység) | Leírás |
+| Metrika | Unit (Egység) | Description |
 | ----- | ----- | ----- |
 | Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
 | Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
@@ -192,7 +191,7 @@ A képzések futtatásával kapcsolatos információk.
 
 A következő méretek használhatók a futtatási metrikák szűréséhez:
 
-| Dimenzió | Leírás |
+| Dimenzió | Description |
 | ---- | ---- |
 | ComputeType | A futtatáshoz használt számítási típus. |
 | PipelineStepType | A Futtatás során használt [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) típusa. |
@@ -201,7 +200,7 @@ A következő méretek használhatók a futtatási metrikák szűréséhez:
 
 A RunType dimenzió érvényes értékei a következők:
 
-| Érték | Leírás |
+| Érték | Description |
 | ----- | ----- |
 | Experiment | Nem folyamatban lévő futtatások. |
 | PipelineRun | Egy folyamat futtatása, amely egy StepRun szülője. |

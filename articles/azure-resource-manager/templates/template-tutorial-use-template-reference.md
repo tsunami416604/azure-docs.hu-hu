@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118511"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Oktatóanyag: a Resource Manager-sablonokra vonatkozó dokumentáció kihasználása
 
@@ -36,13 +36,13 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd: [ARM-sablonok létrehozása a Visual Studio Code használatával](use-vs-code-to-create-template.md).
+* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
 Az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templates/) az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
 
-1. A Visual Studio Code-ból válassza a **fájl**>**megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott**fájl elemet.
 1. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -50,7 +50,7 @@ Az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templa
     ```
 
 1. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-1. Válassza a **fájl**>**Mentés másként** lehetőséget, hogy mentse a fájlt **azuredeploy. JSON** néven a helyi számítógépre.
+1. Válassza a **fájl** > **Mentés másként** lehetőséget, hogy a fájlt **azuredeploy.jsa** helyi számítógépre mentse.
 
 ## <a name="understand-the-schema"></a>A séma bemutatása
 
@@ -75,7 +75,7 @@ Az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templa
 
 ## <a name="find-the-template-reference"></a>A sablonreferencia megkeresése
 
-1. Tallózással keresse meg az [Azure-sablonok referenciáját](https://docs.microsoft.com/azure/templates/).
+1. Tallózással keresse meg az [Azure-sablonok referenciáját](/azure/templates/).
 1. A **szűrés cím szerint** mezőben adja meg a **Storage-fiókok**nevet, majd válassza ki az első **Storage-fiókot** a **> Storage**szolgáltatásban.
 
     ![Resource Manager-sablonreferencia – tárfiók](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
@@ -112,7 +112,7 @@ A Visual Studio Code-ból adja hozzá a további Storage-fiókok típusait az al
 
 1. A Cloud Shell futtassa a következő parancsokat. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez.
 
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
+    # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
     ```azurecli
     echo "Enter a project name that is used to generate resource group name:" &&
@@ -139,7 +139,7 @@ A Visual Studio Code-ból adja hozzá a további Storage-fiókok típusait az al
 
  A sablon telepítésekor adja meg a **tárfióktípus** paramétert egy újonnan hozzáadott értékkel, például **Standard_RAGRS**. A telepítés sikertelen lesz, ha az eredeti Gyorsindítás sablont használja, mert **Standard_RAGRS** nem engedélyezett érték.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -148,7 +148,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt ismertette, hogyan használhatja a sablonreferenciát egy létező sablon testreszabására. Több tárfiókpéldány létrehozása:
 

@@ -14,10 +14,9 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616865"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához
@@ -31,7 +30,7 @@ Ez a dokumentum ismerteti az operációsrendszer-fájlok biztonsági mentéséne
 >[!NOTE]
 >Az operációs rendszer biztonsági mentési parancsfájljai a hátsó szoftvert használják, amely előre telepítve van a-kiszolgálón.  
 
-Miután a Microsoft `Service Management` csapata elvégezte a kiépítés befejezését, alapértelmezés szerint a kiszolgáló két biztonsági mentési ütemtervtel van konfigurálva, hogy biztonsági másolatot készítsen az operációs rendszer fájlrendszeri szintjéről. A biztonsági mentési feladatok ütemezett listáját a következő paranccsal tekintheti meg:
+Miután a Microsoft csapata elvégezte a kiépítés befejezését `Service Management` , alapértelmezés szerint a kiszolgáló két biztonsági mentési ütemtervtel van konfigurálva, hogy biztonsági másolatot készítsen az operációs rendszer fájlrendszeri szintjéről. A biztonsági mentési feladatok ütemezett listáját a következő paranccsal tekintheti meg:
 ```
 #crontab –l
 ```
@@ -69,7 +68,7 @@ A következő parancs egy fájl visszaállítását mutatja be a Backup *. tar. 
 
 A következő képernyőfelvétel a teljes biztonsági mentés visszaállítását mutatja be:
 
-![HowtoRestoreaBackup. PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Hogyan kell telepíteni a hátsó eszközt, és módosítani a konfigurációt? 
 
@@ -99,4 +98,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-A következő képernyőfelvétel a teljes biztonsági mentés visszaállítását mutatja be ![: REARTOOLCONFIGURATION. png](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+A következő képernyőképen a teljes biztonsági mentés visszaállítása látható: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

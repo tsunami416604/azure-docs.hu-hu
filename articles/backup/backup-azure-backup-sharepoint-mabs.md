@@ -3,12 +3,11 @@ title: SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 description: A SharePoint-adatai biztonsági mentését és visszaállítását Azure Backup Server használatával végezheti el. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234790"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 
@@ -52,9 +51,9 @@ További előfeltételek és korlátozások:
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
 
-A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét a ConfigureSharePoint. exe használatával, majd hozzon létre egy védelmi csoportot a MABS-ben.
+A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét a ConfigureSharePoint.exe használatával, majd hozzon létre egy védelmi csoportot a MABS-ben.
 
-1. **Futtassa a ConfigureSharePoint.exe fájlt** – Ez az eszköz konfigurálja a SharePoint VSS-író szolgáltatást \(WSS\), és ez biztosítja a védelmi ügynöknek a SharePoint-farm számára a szükséges hitelesítő adatokat. A védelmi ügynök üzembe helyezése után a ConfigureSharePoint. exe fájl az `<MABS Installation Path\>\bin` előtér- \- webkiszolgáló mappában található.  Ha több WFE-kiszolgálóval rendelkezik, akkor csak az egyikre kell telepítenie. A parancsokat a következő sorrendben futtassa le:
+1. **Futtassa a ConfigureSharePoint.exe fájlt** – Ez az eszköz konfigurálja a SharePoint VSS-író szolgáltatást \(WSS\), és ez biztosítja a védelmi ügynöknek a SharePoint-farm számára a szükséges hitelesítő adatokat. A védelmi ügynök üzembe helyezésekor a ConfigureSharePoint.exe fájl az `<MABS Installation Path\>\bin` előtér- \- webkiszolgáló mappában található.  Ha több WFE-kiszolgálóval rendelkezik, akkor csak az egyikre kell telepítenie. A parancsokat a következő sorrendben futtassa le:
 
     * A WFE-kiszolgálón a parancssorban navigáljon és futtassa a következőt `\<MABS installation location\>\\bin\\` `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` :
 
@@ -68,18 +67,17 @@ A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét
 
     * Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazdák csoportja tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, a következő engedélyeket kell megadnia a WFE-kiszolgálón:
 
-        * Adja meg a WSS \_ Admin \_ WPG csoport teljes hozzáférését a \( (z)% Program Files% \\ Data Protection Manager DPM MABS mappához \\ \) .
-            -A
+        * Adja meg a **WSS_Admin_WPG** csoport teljes hozzáférését a MABS mappához ( `%Program Files%\Data Protection Manager\DPM\` ).
 
-        * A WSS \_ Admin \_ WPG csoportjának olvasási hozzáférése a MABS beállításkulcs \( HKEY \_ helyi \_ gép \\ szoftver \\ Microsoft \\ Microsoft Data Protection Manager \) .
+        * Adjon olvasási hozzáférést a **WSS_Admin_WPG** csoportnak a MABS beállításkulcs ( `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` ) számára.
 
-        A ConfigureSharePoint. exe futtatása után újra kell futtatnia, ha módosul a SharePoint-farm rendszergazdai hitelesítő adatai.
+        ConfigureSharePoint.exe futtatása után újra kell futtatnia, ha módosul a SharePoint-farm rendszergazdai hitelesítő adatai.
 
 1. Védelmi csoport létrehozásához kattintson a **védelmi**  >  **műveletek**  >  **védelmi csoport létrehozása** elemre az **új védelmi csoport létrehozása** varázsló megnyitásához a MABS-konzolon.
 
 1. A **védelmi csoport típusának kiválasztása**lapon válassza a **kiszolgálók**elemet.
 
-1. A **csoporttagok kiválasztása**területen bontsa ki azt a kiszolgálót, amely a WFE szerepkört tárolja. Ha egynél több WFE-kiszolgáló található, válassza ki azt, amelyen a ConfigureSharePoint. exe fájlt telepítette.
+1. A **csoporttagok kiválasztása**területen bontsa ki azt a kiszolgálót, amely a WFE szerepkört tárolja. Ha egynél több WFE-kiszolgáló található, válassza ki a ConfigureSharePoint.exe telepített példányát.
 
     Ha kibontja a SharePoint Server MABS lekérdezi a VSS-t, hogy megtudja, milyen MABS tud védelemmel ellátni.  Ha a SharePoint-adatbázis távoli, a MABS csatlakozik hozzá. Ha a SharePoint-adatforrások nem jelennek meg, ellenőrizze, hogy a VSS-író fut-e a SharePoint-kiszolgálón és a távoli SQL Serveron, és győződjön meg arról, hogy a MABS-ügynök telepítve van a SharePoint-kiszolgálón és a távoli SQL Server is. Továbbá győződjön meg arról, hogy a SharePoint-adatbázisok nem védettek máshol SQL Server-adatbázisokként.
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969217"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>A Cloud-init használata bash-szkript futtatásához Linux rendszerű virtuális gépen az Azure-ban
@@ -34,7 +33,7 @@ A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot a
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és adja meg `--custom-data simple_bash.sh` a bash parancsfájlt a következő módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és adja meg a bash parancsfájlt a `--custom-data simple_bash.sh` következő módon:
 
 ```azurecli-interactive 
 az vm create \
@@ -51,7 +50,7 @@ SSH-t az előző parancs kimenetében látható virtuális gép nyilvános IP-c�
 ssh <publicIpAddress>
 ```
 
-Váltson a **/tmp** könyvtárra, és ellenőrizze, hogy létezik-e a myScript. txt fájl, és hogy van-e benne a megfelelő szöveg.  Ha nem, további részletekért tekintse meg a **/var/log/Cloud-init.log** .  Keresse meg a következő bejegyzést:
+Váltson át a **/tmp** könyvtárra, és ellenőrizze, hogy létezik-e myScript.txt fájl, és hogy rendelkezik-e benne a megfelelő szöveggel.  Ha nem, további részletekért tekintse meg a **/var/log/Cloud-init.log** .  Keresse meg a következő bejegyzést:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']

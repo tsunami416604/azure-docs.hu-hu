@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 05/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483703"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -45,7 +45,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
+    |    ICMPv4             |    N.A.       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -175,9 +175,6 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
     Megjelenik a létrehozott Active Directory-kapcsolatok.
 
     ![Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-> [!NOTE] 
-> A Felhasználónév és a jelszó mezőket a Active Directory-kapcsolatok mentése után szerkesztheti. A kapcsolatok mentése után a többi érték nem szerkeszthető. Ha bármilyen más értéket módosítania kell, először törölnie kell minden telepített SMB-kötetet, majd törölnie és újra létre kell hoznia a Active Directory-kapcsolatokat.
 
 ## <a name="add-an-smb-volume"></a>SMB-kötet hozzáadása
 

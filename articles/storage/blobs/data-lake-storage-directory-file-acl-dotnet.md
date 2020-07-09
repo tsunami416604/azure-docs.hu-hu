@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b83d0d2d765b60585832f1a3e7c610f05eac075c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bf21b8714554dcdc52ab6e34041c738ec2653f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061582"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105064"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A .NET használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet a .NET használatával könyvtárakat, fájlokat és engedélyeket olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
-[A Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API-referenciák](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [visszajelzést ad](https://github.com/Azure/azure-sdk-for-net/issues)
+[Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  |  [API-referenciák](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)  |  [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  |  [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -95,7 +95,7 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 A fájlrendszer tárolóként működik a fájlok számára. A [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) metódus meghívásával létrehozhat egyet.
 
-Ez a példa egy nevű `my-file-system`fájlrendszert hoz létre. 
+Ez a példa egy nevű fájlrendszert hoz létre `my-file-system` . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 Hozzon létre egy címtár-referenciát a [DataLakeFileSystemClient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) metódus meghívásával.
 
-Ez a példa egy nevű `my-directory` könyvtárat helyez el egy fájlrendszerhez, majd hozzáadja a nevű `my-subdirectory`alkönyvtárat. 
+Ez a példa egy nevű könyvtárat helyez `my-directory` el egy fájlrendszerhez, majd hozzáadja a nevű alkönyvtárat `my-subdirectory` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -129,7 +129,7 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 
 Nevezze át vagy helyezze át a könyvtárat úgy, hogy meghívja a [DataLakeDirectoryClient. RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) metódust. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
 
-Ez a példa átnevez egy alkönyvtárat a névre `my-subdirectory-renamed`.
+Ez a példa átnevez egy alkönyvtárat a névre `my-subdirectory-renamed` .
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -142,7 +142,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-Ez a példa egy nevű `my-subdirectory-renamed` könyvtárat helyez át egy nevű könyvtár alkönyvtárába. `my-directory-2` 
+Ez a példa egy nevű könyvtárat helyez át egy nevű `my-subdirectory-renamed` könyvtár alkönyvtárába `my-directory-2` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -159,7 +159,7 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 A [DataLakeDirectoryClient. Delete](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.delete) metódus meghívásával törölhet egy könyvtárat.
 
-Ez a példa törli a nevű `my-directory`könyvtárat.  
+Ez a példa törli a nevű könyvtárat `my-directory` .  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -178,7 +178,7 @@ A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja m
 > [!NOTE]
 > Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört. 
 
-Ez a példa lekérdezi és beállítja a nevű `my-directory`könyvtár ACL-listáját. A karakterlánc `user::rwx,group::r-x,other::rw-` megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
+Ez a példa lekérdezi és beállítja a nevű könyvtár ACL-listáját `my-directory` . A karakterlánc `user::rwx,group::r-x,other::rw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -201,11 +201,13 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
+Lekérheti és beállíthatja a fájlrendszer gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez adjon át egy üres karakterláncot ( `""` ) a [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) metódusba.
+
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
 Először hozzon létre egy fájlt a célhelyen a [DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) osztály egy példányának létrehozásával. Töltsön fel egy fájlt a [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) metódus meghívásával. Ügyeljen arra, hogy a feltöltést a [DataLakeFileClient. FlushAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync) metódus meghívásával végezze el.
 
-Ez a példa egy szövegfájlt tölt fel egy nevű `my-directory`könyvtárba.    
+Ez a példa egy szövegfájlt tölt fel egy nevű könyvtárba `my-directory` .    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -260,7 +262,7 @@ Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja me
 > [!NOTE]
 > Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört. 
 
-Ez a példa lekérdezi és beállítja a nevű `my-file.txt`fájl hozzáférés-vezérlési listáját. A karakterlánc `user::rwx,group::r-x,other::rw-` megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
+Ez a példa lekérdezi és beállítja a nevű fájl hozzáférés-vezérlési listáját `my-file.txt` . A karakterlánc `user::rwx,group::r-x,other::rw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -327,7 +329,7 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 A könyvtár tartalmának listázásához hívja meg a [FileSystemClient. GetPathsAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getpathsasync) metódust, majd az eredmények alapján sorolja fel azokat.
 
-Ez a példa kinyomtatja a nevű `my-directory`könyvtárban található egyes fájlok nevét.
+Ez a példa kinyomtatja a nevű könyvtárban található egyes fájlok nevét `my-directory` .
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)

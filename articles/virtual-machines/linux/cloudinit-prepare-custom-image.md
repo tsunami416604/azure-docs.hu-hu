@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
 ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792309"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Meglévő linuxos Azure VM-rendszerkép előkészítése a Cloud-init használatával
@@ -29,14 +28,14 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-A `cloud_init_modules` szakaszának `/etc/cloud/cloud.cfg` frissítésével a következő modulokat is tartalmazza:
+A `cloud_init_modules` szakaszának frissítésével `/etc/cloud/cloud.cfg` a következő modulokat is tartalmazza:
 
 ```bash
 - disk_setup
 - mounts
 ```
 
-Az alábbi példa egy általános célú `cloud_init_modules` szakaszt mutat be.
+Az alábbi példa egy általános célú szakaszt mutat be `cloud_init_modules` .
 
 ```bash
 cloud_init_modules:
@@ -55,7 +54,7 @@ cloud_init_modules:
  - ssh
 ```
 
-Az ideiglenes lemezek kiépítési és kezelési feladatait frissíteni kell a alkalmazásban `/etc/waagent.conf`. A megfelelő beállítások frissítéséhez futtassa a következő parancsokat.
+Az ideiglenes lemezek kiépítési és kezelési feladatait frissíteni kell a alkalmazásban `/etc/waagent.conf` . A megfelelő beállítások frissítéséhez futtassa a következő parancsokat.
 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
@@ -65,7 +64,7 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Csak az Azure-t engedélyezi az Azure Linux-ügynök számára, ha új fájlt `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` hoz létre az Ön által választott szerkesztővel a következő sorral:
+Csak az Azure-t engedélyezi az Azure Linux-ügynök számára, ha új fájlt hoz létre az `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` Ön által választott szerkesztővel a következő sorral:
 
 ```bash
 # Azure Data Source config
@@ -82,7 +81,7 @@ Ha a CentOS-lemezképek esetében engedélyezve van a swapfile, a következő pa
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Győződjön meg arról, hogy a swapfile `/etc/fstab` -hivatkozás el van távolítva a-ből, ezért a következő kimenethez hasonlóan kell kinéznie:
+Győződjön meg arról, hogy a swapfile-hivatkozás el van távolítva a-ből, ezért `/etc/fstab` a következő kimenethez hasonlóan kell kinéznie:
 
 ```output
 # /etc/fstab
@@ -119,7 +118,7 @@ sudo waagent -deprovision+user -force
 
 Az Azure Linux-ügynök megszüntetési parancsaival kapcsolatos további információkért tekintse meg az [Azure Linux-ügynököt](../extensions/agent-linux.md) . további részleteket a következő témakörben talál:.
 
-Lépjen ki az SSH-munkamenetből, majd a bash rendszerhéjból futtassa az alábbi AzureCLI-parancsokat az új Azure-beli virtuálisgép-rendszerkép felszabadításához, általánosításához és létrehozásához.  Cserélje `myResourceGroup` le `sourceVmName` a és a értékét a sourceVM tükröző megfelelő adatokra.
+Lépjen ki az SSH-munkamenetből, majd a bash rendszerhéjból futtassa az alábbi AzureCLI-parancsokat az új Azure-beli virtuálisgép-rendszerkép felszabadításához, általánosításához és létrehozásához.  Cserélje le `myResourceGroup` a és a értékét `sourceVmName` a sourceVM tükröző megfelelő adatokra.
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name sourceVmName

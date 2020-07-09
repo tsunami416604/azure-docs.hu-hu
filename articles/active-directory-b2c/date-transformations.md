@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202551"
 ---
 # <a name="date-claims-transformations"></a>A jogcímek átalakításának dátuma
 
@@ -27,7 +27,7 @@ Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Ident
 
 Ellenőrzi, hogy egy dátum-és időjogcím (karakterlánc adattípusa) későbbi-e, mint egy második dátum és idő jogcím (string adattípus), és kivételt dob.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | sztring | Az első jogcím típusa, amelynek a második jogcímnél későbbinek kell lennie. |
 | InputClaim | rightOperand | sztring | Második jogcím típusa, amelynek az első jogcímnél korábbinak kell lennie. |
@@ -39,9 +39,9 @@ Az **AssertDateTimeIsGreaterThan** jogcímek átalakítását mindig egy [önér
 
 ![AssertStringClaimsAreEqual-végrehajtás](./media/date-transformations/assert-execution.png)
 
-A következő példa összehasonlítja `currentDateTime` a jogcímet a `approvedDateTime` jogcímevel. A rendszer hibát jelez, `currentDateTime` ha a későbbi `approvedDateTime`, mint. Az átalakítás egyenlőként kezeli az értékeket, ha 5 percen belül (30000 ezredmásodperc) eltérnek.
+A következő példa összehasonlítja a `currentDateTime` jogcímet a `approvedDateTime` jogcímevel. A rendszer hibát jelez, ha `currentDateTime` a későbbi, mint `approvedDateTime` . Az átalakítás egyenlőként kezeli az értékeket, ha 5 percen belül (30000 ezredmásodperc) eltérnek.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -56,7 +56,7 @@ A következő példa összehasonlítja `currentDateTime` a jogcímet a `approved
 ```
 
 Az `login-NonInteractive` érvényesítési technikai profil meghívja a `AssertApprovedDateTimeLaterThanCurrentDateTime` jogcím-átalakítást.
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ Az `login-NonInteractive` érvényesítési technikai profil meghívja a `Assert
 
 Az önérvényesített technikai profil meghívja az érvényesítési **bejelentkezést nem interaktív** technikai profilt.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -89,14 +89,14 @@ Az önérvényesített technikai profil meghívja az érvényesítési **bejelen
 
 A **dátum** claimType egy **datetime** claimType alakítja át. A jogcím-átalakítás átalakítja az időformátumot, és hozzáadja a 12:00:00-as dátumot a dátumhoz.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | dátum | Az átalakítandó ClaimType. |
 | OutputClaim | outputClaim | dateTime | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 Az alábbi példa bemutatja a jogcím `dateOfBirth` (dátum adattípus) átalakítását egy másik jogcímre `dateOfBirthWithTime` (datetime adattípus).
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -118,14 +118,14 @@ Az alábbi példa bemutatja a jogcím `dateOfBirth` (dátum adattípus) átalak�
 
 Egy **datetime** claimType alakít át egy **dátum** -claimType. A jogcím-átalakítás eltávolítja az időformátumot a dátumból.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | dateTime | Az átalakítandó ClaimType. |
 | OutputClaim | outputClaim | dátum | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 Az alábbi példa bemutatja a jogcím `systemDateTime` (datetime adattípus) átalakítását egy másik jogcímre `systemDate` (dátum adattípus).
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
@@ -147,11 +147,11 @@ Az alábbi példa bemutatja a jogcím `systemDateTime` (datetime adattípus) át
 
 Az aktuális UTC dátum és idő lekérése és az érték hozzáadása egy ClaimType.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -166,9 +166,9 @@ Az aktuális UTC dátum és idő lekérése és az érték hozzáadása egy Clai
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Annak megállapítása, hogy egy dateTime később, korábban vagy egyenlő-e egy másikkal. Az eredmény egy új logikai ClaimType logikai érték, amelynek értéke `true` vagy. `false`
+Annak megállapítása, hogy egy dateTime később, korábban vagy egyenlő-e egy másikkal. Az eredmény egy új logikai ClaimType logikai érték, amelynek értéke `true` vagy `false` .
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | Az első dateTime érték, amely azt hasonlítja össze, hogy korábbi vagy későbbi, mint a második dateTime. A Null érték kivételt jelez. |
 | InputClaim | secondDateTime | dateTime | A második dátum és idő, amely azt hasonlítja össze, hogy az előbbi vagy későbbi, mint az első dateTime. A null értéket a rendszer az aktuális datetTime kezeli. |
@@ -179,7 +179,7 @@ Annak megállapítása, hogy egy dateTime később, korábban vagy egyenlő-e eg
 Ezzel a jogcím-átalakítással megállapíthatja, hogy két ClaimTypes egyenlő, később vagy korábban, mint egymást. Előfordulhat például, hogy a felhasználó az utolsó alkalommal fogadta el a szolgáltatási feltételeket (TOS). 3 hónap elteltével megkérheti a felhasználót, hogy ismét hozzáférjen a TSz-hez.
 A jogcím-átalakítás futtatásához először le kell kérnie az aktuális dateTime értéket, és az utolsó alkalommal a felhasználó elfogadja a TSz-ket.
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />

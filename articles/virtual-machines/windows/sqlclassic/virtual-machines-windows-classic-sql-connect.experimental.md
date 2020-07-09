@@ -16,12 +16,12 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a4b63735509c0d1c755eced8277d18b2a535457b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017650"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078442"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (klasszikus üzembe helyezési modell)
 > [!div class="op_single_selector"]
@@ -53,7 +53,9 @@ Ugyanabban a felhőalapú szolgáltatásban több virtuális gép is létrehozha
 
 Ebben az esetben a virtuális gép **neve** (a portálon **számítógépnév** vagy **állomásnév** ) használatával kapcsolódhat. A virtuális gép számára a létrehozás során megadott név. Ha például az SQL-alapú virtuális gép **mysqlvm**nevezte el, akkor az azonos felhőalapú szolgáltatásban lévő ügyfél virtuális gépe a következő kapcsolati karakterláncot használhatja a kapcsolódáshoz:
 
-    "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 ### <a name="connect-to-sql-server-over-the-internet"></a>Kapcsolódás SQL Server az interneten keresztül
 Ha az internetről szeretne csatlakozni a SQL Server adatbázis-motorhoz, létre kell hoznia egy virtuálisgép-végpontot a bejövő TCP-kommunikációhoz. Ez az Azure-konfigurációs lépés a TCP-port bejövő forgalmát egy olyan TCP-portra irányítja, amelyet elér a virtuális gép.
@@ -62,7 +64,9 @@ Az interneten keresztüli csatlakozáshoz a virtuális gép DNS-nevét és a vir
 
 Vegyünk például egy **mysqlvm** nevű klasszikus virtuális gépet a **Mysqlvm7777.cloudapp.net** DNS-nevével, valamint egy **57500**-es virtuálisgép-végpontot. Ha megfelelően konfigurált kapcsolatot használ, a következő kapcsolati karakterlánc használatával érheti el a virtuális gépet bárhonnan az interneten:
 
-    "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 Bár ez a kapcsolati karakterlánc lehetővé teszi az ügyfelek számára az interneten keresztüli kapcsolódást, ez nem jelenti azt, hogy bárki csatlakozhat a SQL Serverhoz. Az ügyfeleken kívül a helyes felhasználónévvel és jelszóval kell rendelkeznie. A további biztonság érdekében ne használja a jól ismert 1433-as portot a nyilvános virtuális gép végpontja számára. Ha lehetséges, érdemes lehet egy ACL-t hozzáadni a végponthoz, hogy csak az Ön által engedélyezett ügyfelekre korlátozza a forgalmat. Az ACL-ek végpontokkal való használatával kapcsolatos utasításokért lásd: [az ACL kezelése egy végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
@@ -78,7 +82,9 @@ A virtuális hálózatok lehetővé teszik az Azure-beli virtuális gépek tarto
 
 Ha tartományi környezet és Windows-hitelesítés konfigurálását tervezi, nem kell konfigurálnia a nyilvános végpontot vagy az SQL-hitelesítést és a bejelentkezéseket. Ebben az esetben a kapcsolati karakterláncban a SQL Server VM nevének megadásával csatlakozhat a SQL Server-példányhoz. Az alábbi példa azt feltételezi, hogy a Windows-hitelesítés konfigurálva van, és a felhasználó hozzáférést kapott a SQL Server-példányhoz.
 
-    "Server=mysqlvm;Integrated Security=true"
+```config
+"Server=mysqlvm;Integrated Security=true"
+```
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>A SQL Server-kapcsolat Azure-beli virtuális gépen való konfigurálásának lépései
 A következő lépések bemutatják, hogyan csatlakozhat az interneten keresztül az SQL Server-példányhoz SQL Server Management Studio (SSMS) használatával. Ugyanezek a lépések érvényesek arra, hogy a SQL Server virtuális gépet elérhetővé tegye az alkalmazásai számára, a helyszíni és az Azure-ban egyaránt.

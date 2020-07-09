@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019672"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-megoldás figyelése CloudSimple-tevékenység alapján
@@ -46,15 +45,15 @@ A riasztások elfogadásához és a listából való eltávolításához válass
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 ------------ | ------------- |
 | Riasztás típusa | A riasztás kategóriája.|
-| Time | A riasztás ideje. |
+| Idő | A riasztás ideje. |
 | Severity | A riasztás jelentősége.|
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Leírás | A riasztást kiváltó esemény leírása. |
+| Description | A riasztást kiváltó esemény leírása. |
 | Nyugtázva | Annak jelzése, hogy a riasztás igazolva van-e. |
 
 ## <a name="events"></a>Események
@@ -63,14 +62,14 @@ Az események a CloudSimple-portál felhasználói és rendszertevékenységeit 
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 ------------ | ------------- |
-| Time | Az esemény dátuma és időpontja. |
+| Idő | Az esemény dátuma és időpontja. |
 | Eseménytípus | Az eseményt azonosító numerikus kód. |
 | Severity | Esemény súlyossága.|
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
-| Leírás | A riasztást kiváltó esemény leírása. |
+| Description | A riasztást kiváltó esemény leírása. |
 
 ## <a name="tasks"></a>Feladatok
 
@@ -78,7 +77,7 @@ A feladatok olyan magánjellegű felhőalapú tevékenységek, amelyek várható
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 ------------ | ------------- |
 | Feladat azonosítója | A feladat egyedi azonosítója. |
 | Művelet | A feladat által végrehajtott művelet. |
@@ -88,9 +87,9 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Indítás | A feladat kezdési időpontja. |
 | Befejezés | A feladat befejezési időpontja. |
-| status | Aktuális feladat állapota. |
+| Állapot | Aktuális feladat állapota. |
 | Eltelt idő | Az az idő, ameddig a feladat befejeződik (ha elkészült) vagy éppen folyamatban van (ha folyamatban van). |
-| Leírás | Feladat leírása. |
+| Description | Feladat leírása. |
 
 ## <a name="audit"></a>Naplózás
 
@@ -98,9 +97,9 @@ A naplók nyomon követhetik a felhasználói tevékenységeket. A naplók segí
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Oszlop | Description |
 ------------ | ------------- |
-| Time | A naplóbejegyzés időpontja. |
+| Idő | A naplóbejegyzés időpontja. |
 | Művelet | A feladat által végrehajtott művelet. |
 | Felhasználó | A feladathoz hozzárendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
@@ -108,7 +107,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Eredmény | A tevékenység eredménye, például **sikeres**. |
 | Igénybe vett idő | A feladat elvégzéséhez szükséges idő. |
-| Leírás | A művelet leírása. |
+| Description | A művelet leírása. |
 
 ## <a name="next-steps"></a>További lépések
 

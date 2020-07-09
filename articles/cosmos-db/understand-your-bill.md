@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647723"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964583"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
 
 Teljes körűen felügyelt natív adatbázis-szolgáltatásként Azure Cosmos DB leegyszerűsíti a számlázást, mivel csak a kiosztott átviteli sebességért és a felhasznált tárterületért kell megszámolni. A helyszíni vagy a IaaS által üzemeltetett alternatívákhoz képest nincsenek további licencek, hardverek, használati költségek vagy létesítmények költségei. Ha figyelembe veszi a Azure Cosmos DB több régióra kiterjedő képességeit, az adatbázis-szolgáltatás jelentős mértékben csökkenti a költségeket a meglévő helyszíni vagy IaaS-megoldásokkal szemben.
 
-A Azure Cosmos DB a kiosztott átviteli sebesség és a felhasznált tárterület alapján óradíjat számítunk fel. A kiépített átviteli sebesség esetében a számlázási egység 100 RU/s/óra, $0,008/óra díj ellenében, a szokásos nyilvános díjszabást feltételezve, a [díjszabást ismertető oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)talál. A felhasználható tárterület esetében havonta 1 GB-nyi tárterületet számolunk fel, a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)pedig a $0,25. 
+A Azure Cosmos DB a kiosztott átviteli sebesség és a felhasznált tárterület alapján óradíjat számítunk fel. A kiépített átviteli sebesség esetében a számlázási egység 100 RU/s/óra, a legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) . A felhasználható tárterület esetében havonta 1 GB tárterületet számolunk fel, a legfrissebb díjszabási információkért lásd a [díjszabást ismertető oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
-Ez a cikk néhány példán keresztül elmagyarázza, mit jelentenek a havi számla különböző részei. A példákban szereplő számok az Önétől eltérőek lehetnek, ha az Ön Azure Cosmos-tárolói számára kiosztott átviteli sebesség eltérő, ha több régióra kiterjednek, vagy eltérő hosszúságú időszakban futnak havonta.
+Ez a cikk néhány példán keresztül elmagyarázza, mit jelentenek a havi számla különböző részei. A példákban szereplő számok az Önétől eltérőek lehetnek, ha az Ön Azure Cosmos-tárolói számára kiosztott átviteli sebesség eltérő, ha több régióra kiterjednek, vagy eltérő hosszúságú időszakban futnak havonta. A jelen cikkben szereplő összes példa a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) látható díjszabási információk alapján számítja ki a számlát.
 
 > [!NOTE]
-> A számlázás a fali óra bármely részén, nem 60 perces időtartamban történik.
+> A számlázás a fali óra bármely részén, nem 60 perces időtartamban történik. Az ebben a dokumentációban látható összes példa az USA-ban nem kormányzati régióban üzembe helyezett Azure Cosmos-fiók díjszabásán alapul. A díjszabás és a számítás a használt régiótól függően változhat, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
 ## <a name="billing-examples"></a>Számlázási példák
 
@@ -73,7 +73,7 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 * 720 óra (24 óra * 30 nap), ha 500 óra kiépített átviteli sebesség volt a 1 200 RU/s, a fennmaradó 220 óra kiépített átviteli sebesség pedig 22 200 RU/s, a havi számla a következőket mutatja be: 500 x $0.096/Hour + 220 x $1.776/óra = $438.72/month.
 
-![Dedikált átviteli sebesség – példa](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Dedikált átviteli sebesség – példa":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Számlázási példa: megosztott átviteli sebességű tárolók
 
@@ -87,7 +87,7 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 * 720 óra alatt, ha 300 óra kiépített átviteli sebesség volt a 120-K RU/s, és a fennmaradó 420 óra kiépített átviteli sebesség a következő volt: 155-K RU/s, a havi számla az alábbiak szerint fog megjelenni: 300 x $9.60/Hour + 420 x $12.40/óra = $2 880 + $5 208 = $8088/month. 
 
-![Megosztott átviteli sebesség – példa](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Megosztott átviteli sebesség – példa":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Számlázási példák a Geo-replikációval és a több főkiszolgálóval  
 
@@ -177,11 +177,11 @@ Tekintsük át a következő példát, ahol egy többrégiós Azure Cosmos-fiók
 
 Az alábbi ábrán látható, hogy a teljes kiépített átviteli sebesség változásai a hónapban 720 óra alatt jelennek meg: 
 
-![Valós élet – példa](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Valós élet – példa":::
 
 A teljes havi számla (feltéve, hogy a havi 30 nap/720 óra) a következőképpen lesz kiszámítva:
 
-|**Óra**  |**RU/s** |**Item** |**Használat (óránként)** |**Költségek** |
+|**Órák**  |**RU/s** |**Item** |**Használat (óránként)** |**Költségek** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20000 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Átviteli sebesség 2 további régióban: USA keleti régiója, Észak-Európa (az összes régió írható)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
@@ -234,19 +234,18 @@ Ez a példa a 2019 december 1. után létrehozott fiókok [több főkiszolgáló
 
 Vegyünk egy másik példát, amelyben a hónap végéig proaktívan kell megbecsülni a számlát. A számlát a következőképpen becsülheti meg:
 
-|**Tárolási díj** | |
-|----|----|
-|Átlagos rekord mérete (KB) |1 |
-|Rekordok száma  |100 000 000  |
-|Teljes tárterület (GB)  |100 |
-|Havi költség GB-onként  |$0,25  |
-|A tárolás várható havi díja   |$25,00  |
+**Tárolási költség**
 
-<br>
+* Átlagos rekord mérete (KB) = 1 
+* Rekordok száma = 100 000 000 
+* Teljes tárterület (GB) = 100 
+* Havi költség GB-onként = $0,25 
+* A tárolási díj várható havi díja = $25,00 
 
-|**Átviteli sebesség** | | | |
+**Átviteli sebesség**
+
+|Művelettípus| Kérelmek/másodperc| AVG. RU/kérelem| RUs szükséges|
 |----|----|----|----|
-|Művelet típusa| Kérelmek/másodperc| AVG. RU/kérelem| RUs szükséges|
 |Írás| 100 | 5 | 500|
 |Olvasás| 400| 1| 400|
 

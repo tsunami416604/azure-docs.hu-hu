@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76719993"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026049"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
 Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure HDInsight-struktúra tábláiban tárolt adatmintákat a kaptár-lekérdezések használatával, hogy az elemzéshez könnyebben kezelhető méretre csökkentse. Három népszerű használatú mintavételi módszert foglal magában:
@@ -38,66 +38,71 @@ Az egységes véletlenszerű mintavételezés azt jelenti, hogy az adatkészletb
 
 Itt láthat egy példalekérdezést:
 
-    SET sampleRate=<sample rate, 0-1>;
+```python
+SET sampleRate=<sample rate, 0-1>;
+select
+    field1, field2, …, fieldN
+from
+    (
     select
-        field1, field2, …, fieldN
-    from
-        (
-        select
-            field1, field2, …, fieldN, rand() as samplekey
-        from <hive table name>
-        )a
-    where samplekey<='${hiveconf:sampleRate}'
+        field1, field2, …, fieldN, rand() as samplekey
+    from <hive table name>
+    )a
+where samplekey<='${hiveconf:sampleRate}'
+```
 
-Itt adhatja `<sample rate, 0-1>` meg a rekordok azon hányadát, amelyet a felhasználók szeretne felvenni.
+Itt `<sample rate, 0-1>` adhatja meg a rekordok azon hányadát, amelyet a felhasználók szeretne felvenni.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a>Véletlenszerű mintavételezés csoportok szerint
 A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy "*State*" kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
 
 Íme egy példa a Group:
 
-    SET sampleRate=<sample rate, 0-1>;
+```python
+SET sampleRate=<sample rate, 0-1>;
+select
+    b.field1, b.field2, …, b.catfield, …, b.fieldN
+from
+    (
     select
-        b.field1, b.field2, …, b.catfield, …, b.fieldN
+        field1, field2, …, catfield, …, fieldN
+    from <table name>
+    )b
+join
+    (
+    select
+        catfield
     from
         (
         select
-            field1, field2, …, catfield, …, fieldN
+            catfield, rand() as samplekey
         from <table name>
-        )b
-    join
-        (
-        select
-            catfield
-        from
-            (
-            select
-                catfield, rand() as samplekey
-            from <table name>
-            group by catfield
-            )a
-        where samplekey<='${hiveconf:sampleRate}'
-        )c
-    on b.catfield=c.catfield
+        group by catfield
+        )a
+    where samplekey<='${hiveconf:sampleRate}'
+    )c
+on b.catfield=c.catfield
+```
 
 ## <a name="stratified-sampling"></a><a name="stratified"></a>Rétegzett mintavételezés
 A véletlenszerű mintavételezés egy kategorikus változóra vonatkozik, ha a beszerzett minták olyan kategorikus értékekkel rendelkeznek, amelyek ugyanabban az arányban találhatók, mint a szülő populációban. Ha ugyanezt a példát használja, tegyük fel, hogy az adatai a következő állapotok szerint jelennek meg: NJ 100 észrevételt tartalmaz, a NY 60 megfigyelésekkel rendelkezik, és a WA rendelkezik 300-megjegyzésekkel. Ha azt adja meg, hogy a rétegzett mintavételezés sebessége 0,5, akkor a beszerzett minta a NJ, NY és WA megközelítőleg 50, 30 és 150 megfigyeléssel rendelkezik.
 
 Itt láthat egy példalekérdezést:
 
-    SET sampleRate=<sample rate, 0-1>;
+```hiveql
+SET sampleRate=<sample rate, 0-1>;
+select
+    field1, field2, field3, ..., fieldN, state
+from
+    (
     select
-        field1, field2, field3, ..., fieldN, state
-    from
-        (
-        select
-            field1, field2, field3, ..., fieldN, state,
-            count(*) over (partition by state) as state_cnt,
-              rank() over (partition by state order by rand()) as state_rank
-          from <table name>
-        ) a
-    where state_rank <= state_cnt*'${hiveconf:sampleRate}'
-
+        field1, field2, field3, ..., fieldN, state,
+        count(*) over (partition by state) as state_cnt,
+          rank() over (partition by state order by rand()) as state_rank
+      from <table name>
+    ) a
+where state_rank <= state_cnt*'${hiveconf:sampleRate}'
+```
 
 További információ a kaptárban elérhető fejlettebb mintavételi módszerekről: [LanguageManual mintavétel](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
 

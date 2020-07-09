@@ -4,15 +4,14 @@ description: Ez a cikk segít megismerni az SSTP 128 egyidejű kapcsolódási ko
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983347"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2
 
@@ -22,7 +21,7 @@ A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsol
 
 A pont – hely típusú VPN a következő protokollok egyikét használhatja:
 
-* **OpenVPN&reg; protokoll**, SSL/TLS-alapú VPN protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az OpenVPN az Android, az iOS (11,0-es és újabb verziók), a Windows, a Linux és a Mac rendszerű eszközök (OSX 10,13-es és újabb verziók) használatával való kapcsolódásra használható.
+* **OpenVPN &reg; Protokoll**, SSL/TLS-alapú VPN protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az OpenVPN az Android, az iOS (11,0-es és újabb verziók), a Windows, a Linux és a Mac rendszerű eszközök (OSX 10,13-es és újabb verziók) használatával való kapcsolódásra használható.
 
 * A **Secure Socket Tunneling Protocol (SSTP)** egy saját SSL-alapú VPN-protokoll. Az SSL VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-es TCP-portot nyitja meg, amelyet az SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure a Windows összes olyan verzióját támogatja, amely SSTP-t (Windows 7 és újabb) tartalmaz. **Az SSTP legfeljebb 128 egyidejű kapcsolatot támogat, függetlenül az ÁTJÁRÓ SKU**-tól.
 
@@ -64,7 +63,7 @@ Ha Windows 10 rendszert használ, használhatja a [Windows rendszerhez készült
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-### <a name="what-are-the-client-configuration-requirements"></a>Mik az ügyfél-konfigurációs követelmények?
+### <a name="what-are-the-client-configuration-requirements"></a>Milyen követelmények vonatkoznak az ügyfél-konfigurációra?
 
 >[!NOTE]
 >Windows-ügyfelek esetén rendszergazdai jogosultságokkal kell rendelkeznie az ügyfélszámítógépen ahhoz, hogy kezdeményezzen VPN-kapcsolat az ügyfél-eszközről az Azure-ba.

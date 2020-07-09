@@ -5,17 +5,16 @@ description: Azure Machine Learning Studio (klasszikus) használatához Machine 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: d8e8e9ec7a0a5c502e3046b0c6ddb3a7da064739
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: ede84fefed7db9d2afcc0ad65833ab2c0fefbc03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696524"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
 
@@ -43,7 +42,7 @@ Ha Machine Learning Studio (klasszikus) munkaterületet szeretne megnyitni, be k
 
      ![Új Studio (klasszikus) munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
-5. Kattintson a **Létrehozás**gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
    Machine Learning jelenleg korlátozott számú régióban érhető el. Ha az előfizetése nem tartalmaz ilyen régiókat, a következő hibaüzenet jelenhet meg: "nincsenek előfizetések az engedélyezett régiókban."  Ha egy régiót szeretne felvenni az előfizetésbe, hozzon létre egy új Microsoft-támogatási kérelmet a Azure Portal, válassza a **számlázás** lehetőséget a probléma típusaként, és kövesse az utasításokat a kérelem elküldéséhez.
 

@@ -3,15 +3,23 @@ title: A pod biztonsági szabályzatok használata az Azure Kubernetes szolgált
 description: Megtudhatja, hogyan vezérelheti a pod-felvételeket az Azure Kubernetes Service (ak) PodSecurityPolicy használatával
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998359"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077626"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
+
+<!--
+> [!WARNING]
+> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
+> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
+
+**This document and feature are set for deprecation.**
+-->
 
 Az AK-fürt biztonságának növelése érdekében korlátozhatja, hogy a hüvelyek hogyan ütemezhetők. A nem engedélyezett erőforrásokat kérő hüvelyek nem futhatnak az AK-fürtben. Ezt a hozzáférést a pod biztonsági szabályzatok használatával határozhatja meg. Ez a cikk bemutatja, hogyan használhatja a pod biztonsági házirendeket a hüvelyek AK-ban való üzembe helyezésének korlátozására.
 
@@ -25,7 +33,7 @@ Az AK-fürt biztonságának növelése érdekében korlátozhatja, hogy a hüvel
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
@@ -42,9 +50,6 @@ az extension update --name aks-preview
 ### <a name="register-pod-security-policy-feature-provider"></a>A pod biztonsági házirend szolgáltatás-szolgáltató regisztrálása
 
 Ha AK-t tartalmazó fürtöt szeretne létrehozni vagy frissíteni a pod biztonsági házirendek használatára, először engedélyezzen egy funkció-jelölőt az előfizetésén. A *PodSecurityPolicyPreview* szolgáltatás jelzőjét a következő példában látható módon regisztrálja az az [Feature Register][az-feature-register] parancs használatával:
-
-> [!CAUTION]
-> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -109,7 +114,7 @@ A *Privileged* Pod biztonsági szabályzatot az AK-fürt bármely hitelesített 
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-Ahogy az a következő tömörített kimenetben látható, a *PSP: korlátozott* ClusterRole bármely rendszerhez van rendelve *: hitelesített* felhasználók. Ez a képesség alapvető szintű korlátozásokat biztosít a saját szabályzatok meghatározása nélkül.
+Ahogy az a következő tömörített kimenetben látható, a *PSP: Privileged* ClusterRole bármely rendszerhez van rendelve *: hitelesített* felhasználók. Ez a képesség alapvető szintű jogosultságot biztosít a saját szabályzatok meghatározása nélkül.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -153,7 +158,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Alias-parancsok létrehozása a rendszergazda és a nem rendszergazda felhasználók számára
 
-Hozzon létre két parancssori aliast a normál rendszergazda felhasználó `kubectl` és az előző lépésben létrehozott nem rendszergazda felhasználó közötti különbség kiemeléséhez:
+`kubectl`Hozzon létre két parancssori aliast a normál rendszergazda felhasználó és az előző lépésben létrehozott nem rendszergazda felhasználó közötti különbség kiemeléséhez:
 
 * A **kubectl-rendszergazdai** alias a normál rendszergazda felhasználóhoz tartozik, és a *PSP-Kabai* névtérre van kiterjedően.
 * Az **kubectl-nonadminuser** alias az előző lépésben létrehozott nem *rendszergazda felhasználóhoz* tartozik, és a *PSP-Kabai* névtérre van korlátozva.
@@ -167,9 +172,9 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Emelt szintű Pod létrehozásának tesztelése
 
-Első lépésként tesztelje, mi történik, ha egy Pod-t a biztonsági `privileged: true`környezetével ütemezhet. Ez a biztonsági környezet a pod jogosultságait bővíti. Az előző szakaszban, amely az alapértelmezett AK Pod biztonsági házirendeket mutatta, a *korlátozott* szabályzatnak meg kell tagadnia ezt a kérést.
+Első lépésként tesztelje, mi történik, ha egy Pod-t a biztonsági környezetével ütemezhet `privileged: true` . Ez a biztonsági környezet a pod jogosultságait bővíti. Az előző szakaszban, amely az alapértelmezett AK Pod biztonsági házirendeket mutatta, a *jogosultsági* szabályzatnak meg kell tagadnia ezt a kérést.
 
-Hozzon létre egy `nginx-privileged.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Hozzon létre egy nevű fájlt `nginx-privileged.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 apiVersion: v1
@@ -202,9 +207,9 @@ A pod nem éri el az ütemezési szakaszt, ezért nincs szükség a törlendő e
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>Nem privilegizált Pod-létrehozási teszt létrehozása
 
-Az előző példában a pod specifikáció a Kiemelt jogosultságok kiterjesztését kérte. Ezt a kérést az alapértelmezett *korlátozott* Pod biztonsági házirend elutasította, így a pod nem ütemezhető. Most próbáljon meg ugyanezt a NGINX Pod-t futtatni a jogosultság-eszkalációs kérelem nélkül.
+Az előző példában a pod specifikáció a Kiemelt jogosultságok kiterjesztését kérte. Ezt a kérést az alapértelmezett *jogosultsági* Pod biztonsági házirend elutasítja, így a pod nem ütemezhető. Most próbáljon meg ugyanezt a NGINX Pod-t futtatni a jogosultság-eszkalációs kérelem nélkül.
 
-Hozzon létre egy `nginx-unprivileged.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Hozzon létre egy nevű fájlt `nginx-unprivileged.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 apiVersion: v1
@@ -235,9 +240,9 @@ A pod nem éri el az ütemezési szakaszt, ezért nincs szükség a törlendő e
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>A pod egy adott felhasználói környezettel való létrehozásának tesztelése
 
-Az előző példában a tároló képe automatikusan megpróbálta a root használatával kötni a NGINX-et a 80-es portra. Ezt a kérést az alapértelmezett *korlátozott* Pod biztonsági házirend megtagadta, így a pod nem indul el. Most próbálja meg ugyanezt az NGINX Pod-t `runAsUser: 2000`egy adott felhasználói környezettel, például:.
+Az előző példában a tároló képe automatikusan megpróbálta a root használatával kötni a NGINX-et a 80-es portra. Ezt a kérelmet megtagadta az alapértelmezett *Privilege* Pod biztonsági házirend, így a pod nem indul el. Most próbálja meg ugyanezt az NGINX Pod-t egy adott felhasználói környezettel, például: `runAsUser: 2000` .
 
-Hozzon létre egy `nginx-unprivileged-nonroot.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Hozzon létre egy nevű fájlt `nginx-unprivileged-nonroot.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 apiVersion: v1
@@ -274,7 +279,7 @@ Most, hogy megismerte az alapértelmezett Pod biztonsági szabályzatok viselked
 
 Hozzunk létre egy szabályzatot, amely elutasítja az emelt szintű hozzáférést kérő hüvelyeket. Az egyéb beállítások, például a *runAsUser* vagy az engedélyezett *kötetek*nincsenek explicit módon korlátozva. Ez a típusú szabályzat megtagadja a jogosultsági szintű hozzáférés kérését, de más módon lehetővé teszi, hogy a fürt futtassa a kért hüvelyt.
 
-Hozzon létre egy `psp-deny-privileged.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Hozzon létre egy nevű fájlt `psp-deny-privileged.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -301,7 +306,7 @@ Hozza létre a szabályzatot a [kubectl Apply][kubectl-apply] paranccsal, és ad
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Az elérhető szabályzatok megtekintéséhez használja a [kubectl Get PSP][kubectl-get] parancsot az alábbi példában látható módon. Hasonlítsa össze a *PSP-megtagadás jogosultságokkal* rendelkező szabályzatot az előző példákban kikényszerített alapértelmezett *korlátozott* házirenddel a pod létrehozásához. A szabályzat csak a *priv* -eszkaláció használatát utasítja el. A *PSP-megtagadási jogosultságú* szabályzathoz nem tartoznak korlátozások a felhasználóra vagy a csoportra vonatkozóan.
+Az elérhető szabályzatok megtekintéséhez használja a [kubectl Get PSP][kubectl-get] parancsot az alábbi példában látható módon. Hasonlítsa össze a *PSP-megtagadás jogosultságokkal* rendelkező szabályzatot az előző példákban a pod létrehozásához kényszerített alapértelmezett *jogosultsági* szabályzattal. A szabályzat csak a *priv* -eszkaláció használatát utasítja el. A *PSP-megtagadási jogosultságú* szabályzathoz nem tartoznak korlátozások a felhasználóra vagy a csoportra vonatkozóan.
 
 ```console
 $ kubectl get psp
@@ -315,7 +320,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 Az előző lépésben létrehozott egy Pod biztonsági szabályzatot, amely elutasítja a privilegizált hozzáférést kérő hüvelyeket. A szabályzat használatának engedélyezéséhez hozzon létre egy *szerepkört* vagy egy *ClusterRole*. Ezt követően rendeljen hozzá egyet ezekhez a szerepkörökhöz egy *RoleBinding* vagy *ClusterRoleBinding*használatával.
 
-Ehhez a példához hozzon létre egy ClusterRole, amely lehetővé teszi az előző lépésben létrehozott *PSP-megtagadás-privilegizált* szabályzat *használatát* . Hozzon létre egy `psp-deny-privileged-clusterrole.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Ehhez a példához hozzon létre egy ClusterRole, amely lehetővé teszi az előző lépésben létrehozott *PSP-megtagadás-privilegizált* szabályzat *használatát* . Hozzon létre egy nevű fájlt `psp-deny-privileged-clusterrole.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 kind: ClusterRole
@@ -339,7 +344,7 @@ Hozza létre a ClusterRole a [kubectl Apply][kubectl-apply] parancs használatá
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Most hozzon létre egy ClusterRoleBinding az előző lépésben létrehozott ClusterRole használatára. Hozzon létre egy `psp-deny-privileged-clusterrolebinding.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Most hozzon létre egy ClusterRoleBinding az előző lépésben létrehozott ClusterRole használatára. Hozzon létre egy nevű fájlt `psp-deny-privileged-clusterrolebinding.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -367,7 +372,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>A nem privilegizált Pod létrehozásának tesztelése
 
-Ha az egyéni Pod biztonsági szabályzatot alkalmazta, és a felhasználói fiókra vonatkozó kötést használ a szabályzat használatára, próbálkozzon újra egy nem védett Pod létrehozásával. Használja ugyanazt `nginx-privileged.yaml` a jegyzékfájlt a pod létrehozásához a [kubectl Apply][kubectl-apply] parancs használatával:
+Ha az egyéni Pod biztonsági szabályzatot alkalmazta, és a felhasználói fiókra vonatkozó kötést használ a szabályzat használatára, próbálkozzon újra egy nem védett Pod létrehozásával. Használja ugyanazt a `nginx-privileged.yaml` jegyzékfájlt a pod létrehozásához a [kubectl Apply][kubectl-apply] parancs használatával:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -390,7 +395,7 @@ A [kubectl delete][kubectl-delete] paranccsal törölje az NGINX unprivilegizál
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A pod biztonsági szabályzat letiltásához használja újra az az [AK Update][az-aks-update] parancsot. A következő példa letiltja a pod biztonsági házirendet a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* található fürt neve elemnél:
 

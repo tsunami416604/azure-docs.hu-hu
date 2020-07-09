@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797705"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése Application Insights
@@ -55,7 +54,7 @@ A felhasználók, munkamenetek vagy események jelentésében tárolt adatmásol
 
 A **felhasználók** betartása szakasz az aktuális lekérdezéssel megegyező öt minta felhasználó adatait jeleníti meg. Az összesítések mellett figyelembe kell venni és meg kell vizsgálni az egyének viselkedését, és betekintést nyerhet arról, hogy a felhasználók miként használják ténylegesen az alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.

@@ -12,16 +12,16 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419017"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Adat átalakítása Databricks-jegyzetfüzet futtatásával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A [Data Factory folyamat](concepts-pipelines-activities.md) Azure Databricks notebook tevékenysége egy Databricks-jegyzetfüzetet futtat a Azure Databricks munkaterületen. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.A Azure Databricks felügyelt platform a Apache Spark futtatásához.
+A [Data Factory folyamat](concepts-pipelines-activities.md) Azure Databricks notebook tevékenysége egy Databricks-jegyzetfüzetet futtat a Azure Databricks munkaterületen. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md)szóló   cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.A Azure Databricks felügyelt platform a Apache Spark futtatásához.
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks-jegyzetfüzet tevékenységének definíciója
 
@@ -59,13 +59,13 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 
 |Tulajdonság|Leírás|Kötelező|
 |---|---|---|
-|név|A folyamatban szereplő tevékenység neve.|Igen|
+|name|A folyamatban szereplő tevékenység neve.|Igen|
 |leírás|A tevékenység működését leíró szöveg|Nem|
-|type|A Databricks notebook tevékenység esetén a DatabricksNotebook a tevékenység típusa.|Igen|
-|linkedServiceName|Azon Databricks társított szolgáltatás neve, amelyen a Databricks-jegyzetfüzet fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
+|típus|A Databricks notebook tevékenység esetén a DatabricksNotebook a tevékenység típusa.|Igen|
+|linkedServiceName|Azon Databricks társított szolgáltatás neve, amelyen a Databricks-jegyzetfüzet fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md)   cikk.|Igen|
 |notebookPath|A Databricks-munkaterületen futtatandó jegyzetfüzetek abszolút elérési útja. Ezt az elérési utat perjeltel kell kezdeni.|Igen|
 |baseParameters|Kulcs-érték párok tömbje. Az alapparaméterek az egyes tevékenységek futtatásához használhatók. Ha a jegyzetfüzet nem megadott paramétert használ, a rendszer a jegyzetfüzet alapértelmezett értékét fogja használni. További információ a Databricks- [jegyzetfüzetekben](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)található paraméterekről.|Nem|
-|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. \<Karakterláncok tömbje lehet,>.|Nem|
+|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. A tömbje lehet \<string, object> .|Nem|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a Databricks-tevékenységekhez
@@ -120,7 +120,7 @@ Bizonyos esetekben szükség lehet arra, hogy bizonyos értékeket továbbítson
 
 1. A jegyzetfüzetben hívhatja a [dbutils. notebook. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) és a megfelelő "ReturnValue" értéket a rendszer a adat-előállítónak.
 
-2. A kimenetet az adatgyárban használhatja kifejezés (például `'@activity('databricks notebook activity name').output.runOutput'`) használatával. 
+2. A kimenetet az adatgyárban használhatja kifejezés (például) használatával `'@activity('databricks notebook activity name').output.runOutput'` . 
 
    > [!IMPORTANT]
    > Ha JSON-objektumot továbbít, az értékeket a tulajdonságok nevének hozzáfűzésével kérheti le. Például: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`

@@ -4,7 +4,6 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Window
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: quickstart
@@ -13,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f775f93313a1a9a62d66a1a27a8d0f84de2c44aa
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054550"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667641"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: SQL Server 2017 létrehozása Windows rendszerű virtuális gépen a Azure Portal
 
@@ -134,7 +133,7 @@ A géphez való hozzáférés lehetővé teszi, hogy igény szerint közvetlenü
 Ha nem szükséges, hogy az SQL virtuális gép folyamatosan fusson, a szükségtelen költségeket elkerülendő leállíthatja az épp használaton kívüli gépet. Emellett véglegesen törölheti a virtuális géppel társított erőforrásokat, ha törli a társított erőforráscsoportot a portálon. Ez véglegesen törli magát a virtuális gépet is, ezért ezt a parancsot körültekintően alkalmazza. További információk: [Azure-erőforrások kezelése a portálon keresztül](../../../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy SQL Server 2017 virtuális gépet a Azure Portalban. Az adatok az új SQL Serverre való migrálásával kapcsolatos további információkért lásd a következő cikket.
 

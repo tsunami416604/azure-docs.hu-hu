@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476439"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040333"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hogyan működik a megbízhatósági kapcsolatok a Azure Active Directory Domain Services erőforrás-erdőkön
 
@@ -26,6 +25,10 @@ A megbízhatósági kapcsolat kereséséhez a Windows biztonsági rendszer a ké
 A AD DS és a Windows elosztott biztonsági modellje által biztosított hozzáférés-vezérlési mechanizmusok biztosítják a tartomány-és erdőszintű megbízhatósági kapcsolatok működtetésének környezetét. Ahhoz, hogy ezek a megbízhatósági kapcsolatok megfelelően működjenek, minden erőforrásnak vagy számítógépnek közvetlen megbízhatósági úttal kell rendelkeznie a tartományvezérlőhöz abban a tartományban, amelyben található.
 
 A megbízhatósági útvonalat a Net Logon szolgáltatás valósítja meg a megbízható tartományi szolgáltatónak hitelesített távoli eljáráshívás (RPC) kapcsolaton keresztül. A biztonságos csatornák a tartományok közötti megbízhatósági kapcsolatokon keresztül is kiterjeszthetők más AD DS tartományokra. Ez a biztonságos csatorna a biztonsági információk, például a felhasználók és csoportok biztonsági azonosítóinak (SID-ek) beszerzésére és ellenőrzésére szolgál.
+
+Az Azure AD DS-beli megbízhatósági kapcsolatok alkalmazásáról az erőforrás- [erdővel kapcsolatos fogalmak és szolgáltatások][create-forest-trust]című cikk nyújt tájékoztatást.
+
+A megbízhatósági kapcsolatok Azure AD DSban való használatának megkezdéséhez [hozzon létre egy olyan felügyelt tartományt, amely erdőszintű megbízhatósági kapcsolatot használ][tutorial-create-advanced].
 
 ## <a name="trust-relationship-flows"></a>Megbízhatósági kapcsolatok folyamatai
 
@@ -58,7 +61,7 @@ A tranzitivitás meghatározza, hogy a megbízhatóság kiterjeszthető-e azon k
 
 Minden alkalommal, amikor új tartományt hoz létre egy erdőben, a rendszer automatikusan létrehoz egy kétirányú, tranzitív megbízhatósági kapcsolatot az új tartomány és a szülő tartománya között. Ha a gyermektartomány hozzá lett adva az új tartományhoz, a megbízhatósági útvonal felfelé halad a tartományi hierarchián keresztül, és kiterjeszti az új tartomány és a szülőtartomány tartománya között létrejött kezdeti megbízhatósági útvonalat. A tranzitív megbízhatósági kapcsolatok a tartomány fáján keresztül haladnak át, így tranzitív megbízhatósági kapcsolatot hoznak létre a tartományfa összes tartománya között.
 
-A hitelesítési kérelmek követik ezeket a megbízhatósági útvonalakat, így az erdő bármely tartományának fiókjait az erdő bármely másik tartománya hitelesítheti. Egyetlen bejelentkezési folyamat esetén a megfelelő engedélyekkel rendelkező fiókok hozzáférhetnek az erdőben található bármely tartomány erőforrásaihoz.
+A hitelesítési kérelmek követik ezeket a megbízhatósági útvonalakat, így az erdő bármely tartományának fiókjait az erdő bármely másik tartománya hitelesítheti. Egyszeri bejelentkezési folyamat esetén a megfelelő engedélyekkel rendelkező fiókok hozzáférhetnek az erdőben található bármely tartomány erőforrásaihoz.
 
 ## <a name="forest-trusts"></a>Erdőszintű megbízhatóságok
 
@@ -70,7 +73,7 @@ Erdőszintű megbízhatósági kapcsolat csak az egyik erdőben lévő erdő gy�
 
 A következő ábra két különálló erdőszintű megbízhatósági kapcsolatot mutat be egyetlen szervezet három AD DS erdője között.
 
-![Az erdőszintű megbízhatósági kapcsolatok diagramja egyetlen szervezeten belül](./media/concepts-forest-trust/forest-trusts.png)
+![Az erdőszintű megbízhatósági kapcsolatok diagramja egyetlen szervezeten belül](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 A példában szereplő konfiguráció a következő hozzáférést biztosítja:
 
@@ -128,7 +131,7 @@ Ha az ügyfél Kerberos V5 protokollt használ a hitelesítéshez, a fiók tarto
 
 2. Létezik tranzitív megbízhatósági kapcsolat az aktuális tartomány és a következő tartomány között a megbízhatósági útvonalon?
     * Ha igen, küldje el az ügyfelet a megbízhatósági útvonalon a következő tartományra.
-    * Ha nem, küldjön egy bejelentkezési üzenetet az ügyfélnek.
+    * Ha nem, küldje el az ügyfelet a bejelentkezési üzenetet megtagadó üzenetben.
 
 ### <a name="ntlm-referral-processing"></a>NTLM-hivatkozó feldolgozása
 
@@ -152,7 +155,7 @@ Ha két erdőt erdőszintű megbízhatósági kapcsolat köti össze, a Kerberos
 
 Amikor először létrehoznak egy erdőszintű megbízhatósági kapcsolatot, az egyes erdők összegyűjtik a partner erdőben lévő összes megbízható névteret, és egy [megbízható tartomány objektumban](#trusted-domain-object)tárolják az adatokat. A megbízható névterek közé tartoznak a tartományfa neve, az egyszerű felhasználónév (UPN) utótagok, az egyszerű szolgáltatásnév (SPN) utótagok és a másik erdőben használt biztonsági azonosító (SID) névterek. A rendszer replikálja a TDO objektumokat a globális katalógusba.
 
-Ahhoz, hogy a hitelesítési protokollok követni tudják az erdőszintű megbízhatósági kapcsolatot, az erőforrás-számítógép egyszerű szolgáltatásnév (SPN) fel kell oldani a másik erdőben található helyre. Az egyszerű szolgáltatásnév a következők egyike lehet:
+Ahhoz, hogy a hitelesítési protokollok követni tudják az erdőszintű megbízhatósági kapcsolatot, az erőforrás-számítógép egyszerű szolgáltatásnév (SPN) fel kell oldani a másik erdőben található helyre. Az egyszerű szolgáltatásnév a következő nevek egyike lehet:
 
 * Egy gazdagép DNS-neve.
 * Egy tartomány DNS-neve.
@@ -162,9 +165,9 @@ Ha az egyik erdőben lévő munkaállomás egy másik erdőben lévő erőforrá
 
 A következő ábra és lépések részletes leírást nyújtanak a Kerberos hitelesítési folyamatról, amelyet akkor használ a rendszer, ha a Windows rendszert futtató számítógépek erőforrásokat próbálnak elérni egy másik erdőben található számítógépről.
 
-![A Kerberos-folyamat diagramja erdőszintű megbízhatósági kapcsolaton keresztül](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![A Kerberos-folyamat diagramja erdőszintű megbízhatósági kapcsolaton keresztül](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
-1. A *Felhasználó1* bejelentkezik a *Munkaallomas1 nevű munkaállomásnak* a *Europe.tailspintoys.com* tartomány hitelesítő adatainak használatával. A felhasználó ezután megpróbál hozzáférni egy megosztott erőforráshoz a *USA.wingtiptoys.com* erdőben található *Fajlkiszolgalo1 nevű kiszolgálónak* .
+1. A *Felhasználó1* bejelentkezik a *Munkaallomas1 nevű munkaállomásnak* -be a *Europe.tailspintoys.com* tartomány hitelesítő adatainak használatával. A felhasználó ezután megpróbál hozzáférni egy megosztott erőforráshoz a *USA.wingtiptoys.com* erdőben található *Fajlkiszolgalo1 nevű kiszolgálónak* .
 
 2. A *Munkaallomas1 nevű munkaállomásnak* megkeresi a Kerberos KDC-t a tartományában lévő tartományvezérlőn, *GyermekTV1*, és a *Fajlkiszolgalo1 nevű kiszolgálónak* SPN-re vonatkozó szolgáltatási jegyet kér.
 
@@ -276,7 +279,7 @@ A rendszergazdák *Active Directory tartományokat és megbízhatóságokat*, *N
 
 További információ az erőforrás-erdőkről: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
-Az Azure AD DS felügyelt tartomány erőforrás-erdővel való létrehozásának megkezdéséhez tekintse meg [az azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
+A felügyelt tartomány erőforrás-erdővel való létrehozásának első lépéseiért tekintse meg [Az Azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

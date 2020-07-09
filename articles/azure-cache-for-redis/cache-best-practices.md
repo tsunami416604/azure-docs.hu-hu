@@ -6,12 +6,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84457303"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
 Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
@@ -38,6 +37,8 @@ Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljes�
  * **Kerülje a költséges műveleteket** – bizonyos Redis műveletek, például a [Keys](https://redis.io/commands/keys) parancs *nagyon* drágák, és el kell kerülni őket.  További információ: néhány megfontolandó szempont a [hosszan futó parancsokról](cache-troubleshoot-server.md#long-running-commands)
 
  * **TLS titkosítás használata** – az Azure cache for Redis ALAPÉRTELMEZÉS szerint TLS titkosítású kommunikációt igényel.  A TLS 1,0, 1,1 és 1,2 verziók jelenleg támogatottak.  Azonban a TLS 1,0 és a 1,1 egy olyan útvonalon van, amely az iparágra kiterjedő elavult, ezért a TLS 1,2-et használja, ha ez egyáltalán lehetséges.  Ha az ügyféloldali kódtár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése [a Azure Portal vagy a](cache-configure.md#access-ports) [felügyeleti API](https://docs.microsoft.com/rest/api/redis/redis/update)-kon keresztül végezhető el.  Olyan esetekben, ahol a titkosított kapcsolatok nem lehetségesek, ajánlott a gyorsítótár és az ügyfélalkalmazás virtuális hálózatra helyezése.  A virtuális hálózati gyorsítótár-forgatókönyvben használt portokkal kapcsolatos további információkért tekintse meg ezt a [táblázatot](cache-how-to-premium-vnet.md#outbound-port-requirements).
+ 
+ * **Üresjárat időkorlátja** – az Azure Redis jelenleg 10 perces üresjárati időtúllépést biztosít a kapcsolatok esetében, ezért ezt 10 percnél rövidebb értékre kell állítani.
  
 ## <a name="memory-management"></a>Memória kezelése
 A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet érdemes figyelembe venni.  Íme néhány:
@@ -67,7 +68,7 @@ Sajnos nincs egyszerű válasz.  Minden alkalmazásnak el kell döntenie, hogy m
 Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehet az [Újraindítás funkciót](cache-administration.md#reboot)használni. Az újraindítás lehetővé teszi, hogy megtekintse, hogyan befolyásolja a kapcsolódási visszavertség az alkalmazást.
 
 ## <a name="performance-testing"></a>Teljesítménytesztelés
- * **Kezdje a használatával `redis-benchmark.exe` ** , és tapasztalja meg a lehetséges átviteli sebességet/késést a saját Perf-tesztek írása előtt.  Redis – a teljesítményteszt dokumentációja [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a Redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a portálon](cache-configure.md#access-ports) .  [Itt található a Redis-benchmark. exe Windows-kompatibilis verziója.](https://github.com/MSOpenTech/redis/releases)
+ * **Kezdés a használatával `redis-benchmark.exe` ** a saját Perf-tesztek írása előtt a lehetséges átviteli sebesség/késés érdekében.  Redis – a teljesítményteszt dokumentációja [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a Redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a portálon](cache-configure.md#access-ports) .  [A redis-benchmark.exe Windows-kompatibilis verziója itt található](https://github.com/MSOpenTech/redis/releases)
  * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis cache-példánynak.
  * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
@@ -81,10 +82,10 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  
 ### <a name="redis-benchmark-examples"></a>Redis – teljesítményteszt-példák
 **Tesztelés előtti beállítás**: Készítse elő a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-yourAccesskey-t SET-n 10-d 1024 
 
 **A késés tesztelése**: a Get-kérések tesztelése egy 1k hasznos adat használatával.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-yourAccesskey-t GET-d 1024-P 50-c 4
 
 **Az átviteli sebesség tesztelése:** A folyamattal rendelkező GET-kérések 1k hasznos adatokkal rendelkeznek.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

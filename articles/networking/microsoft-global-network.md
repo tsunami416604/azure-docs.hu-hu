@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125821"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 
@@ -38,7 +38,7 @@ Akár Londonból Tokióba, akár Washington D.C.-ből Los Angelesbe, a hálózat
 
 Ha például egy londoni felhasználó megpróbál hozzáférni egy szolgáltatáshoz Tokióban, akkor az internetes forgalom bekerül Londonban, a Microsoft WAN-on keresztül Franciaországon keresztül, a transz-arábiai útvonalakat Európa és India között, majd pedig Japánba, ahol a szolgáltatást üzemeltetik. A válasz forgalma szimmetrikus. Ezt úgy is hívják, mint a " [hideg burgonya](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) " típusú útválasztás, ami azt jelenti, hogy a forgalom a lehető leghosszabb ideig marad a Microsoft hálózaton.  
   
-Igen, ez minden forgalmat jelent a Microsoft szolgáltatásainak használatakor? Igen, az adatközpontok közötti, Microsoft Azureon belüli vagy a Microsoft-szolgáltatások, például a Virtual Machines, az Office 365, az XBox, az SQL-adatbázisok, a tárolók és a virtuális hálózatok közötti adatforgalom a globális hálózaton belül, és soha nem a nyilvános interneten keresztül történik, így biztosítva az optimális teljesítményt és integritást.  
+Igen, ez minden forgalmat jelent a Microsoft szolgáltatásainak használatakor? Igen, az adatközpontok közötti, Microsoft Azureon belüli vagy a Microsoft-szolgáltatások, például a Virtual Machines, a Microsoft 365, az XBox, az SQL-adatbázisok, a tárolók és a virtuális hálózatok közötti forgalom a globális hálózaton belül, és soha nem a nyilvános interneten keresztül történik, így biztosítva az optimális teljesítményt és integritást.  
  
 A nagy teljesítményű és a Felhőbeli, a földi és a tengeralattjárós útvonalak terén bekövetkező jelentős beruházások elengedhetetlenek számunkra, hogy konzisztens és magas színvonalú szolgáltatást biztosítsanak, miközben a felhő és a online szolgáltatások rendkívüli növekedését táplálják. Globális hálózatunk legújabb kiegészítései: [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) tengeralattjáró-kábel, az iparág első nyitott vonalrendszer (Subsea) a Bilbao, Spanyolország és Virginia Beach, Virginia, USA, valamint a New York-i, USA és Dublin, Írország és az [új, csendes-óceáni (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) [környezet között,](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) a Tokió, Japán és Portland, Oregon, USA. 
  

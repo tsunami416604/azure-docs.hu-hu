@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507925"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Az 1,1-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -66,7 +66,7 @@ Az alábbi lépések végrehajtásával töltse le a 1,1-es frissítést a Micro
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert, [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Ha első alkalommal használja a Microsoft Update-katalógust ezen a számítógépen, kattintson a **telepítés** gombra, amikor a rendszer felszólítja az Microsoft Update Catalog bővítmény telepítésére.
 
@@ -85,8 +85,8 @@ Az alábbi lépések végrehajtásával töltse le a 1,1-es frissítést a Micro
     ![A csomagban található fájlok](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     Két fájl jelenik meg:
-    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64`. Ez a fájl az eszköz szoftverének frissítésére szolgál.
-    - A júniusi `Windows8.1-KB4284815-x64`összesítő frissítéseket tartalmazó fájl. További információ a jelen összesítésben található adatokról: [június havi biztonsági összesítés](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
+    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64` . Ez a fájl az eszköz szoftverének frissítésére szolgál.
+    - A júniusi összesítő frissítéseket tartalmazó fájl `Windows8.1-KB4284815-x64` . További információ a jelen összesítésben található adatokról: [június havi biztonsági összesítés](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
 
 ### <a name="install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
@@ -99,7 +99,7 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. **Csak akkor folytassa ezt a frissítést, ha az 1. frissítést (10.0.10296.0) futtatja. Ha a 0,6-es frissítést futtatja, először [telepítse az 1. frissítést](storsimple-virtual-array-install-update-1.md) az eszközre, majd alkalmazza a 1,1-es frissítést.**
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. **Csak akkor folytassa ezt a frissítést, ha az 1. frissítést (10.0.10296.0) futtatja. Ha a 0,6-es frissítést futtatja, először [telepítse az 1. frissítést](storsimple-virtual-array-install-update-1.md) az eszközre, majd alkalmazza a 1,1-es frissítést.**
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
@@ -115,14 +115,14 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási** > **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10307** kell lennie az 1,1-es frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10307** kell lennie az 1,1-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10307** és a Azure Portal jelentések **10.0.10307.0** ugyanazt a verziót jelenti.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Ismételje meg a 2-4 lépést a Windows biztonsági javítás fájl `Windows8.1-KB4284815-x64`használatával történő telepítéséhez. A virtuális tömb a telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
+6. Ismételje meg a 2-4 lépést a Windows biztonsági javítás fájl használatával történő telepítéséhez `Windows8.1-KB4284815-x64` . A virtuális tömb a telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
 
 
 ## <a name="next-steps"></a>További lépések

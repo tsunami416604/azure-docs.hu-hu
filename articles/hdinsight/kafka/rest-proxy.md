@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: has-adal-ref
+ms.topic: how-to
+ms.custom: has-adal-ref, tracking-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 5e46e50da67559f69302357804f6f98fee70d4ad
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 3050062a80e253d0e63f6d20a8c8de31e9866ea1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773304"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082556"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -49,7 +49,7 @@ Ha saját VNet használ, és hálózati biztonsági csoportokkal vezérli a hál
 
 1. Alkalmazás regisztrálása az Azure AD-ben. A Kafka REST-proxyval való interakcióra írt ügyfélalkalmazások az alkalmazás AZONOSÍTÓját és titkos kulcsát fogják használni az Azure-ban való hitelesítéshez.
 
-1. Hozzon létre egy Azure AD biztonsági csoportot. Adja hozzá az Azure AD-ben regisztrált alkalmazást a csoport **tagjaként** a biztonsági csoporthoz. Ezzel a biztonsági csoporttal szabályozhatja, hogy mely alkalmazások használhatják a REST-proxyt. Az Azure AD-csoportok létrehozásával kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+1. Hozzon létre biztonsági csoportot az Azure AD-ben. Adja hozzá az Azure AD-ben regisztrált alkalmazást a csoport **tagjaként** a biztonsági csoporthoz. Ezzel a biztonsági csoporttal szabályozhatja, hogy mely alkalmazások használhatják a REST-proxyt. Az Azure AD-csoportok létrehozásával kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     Ellenőrizze, hogy a csoport **Biztonság**típusú-e.
     ![Biztonsági csoport](./media/rest-proxy/rest-proxy-group.png)

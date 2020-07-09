@@ -1,23 +1,14 @@
 ---
 title: Azure Event Hubs – Resource Manager-kivételek | Microsoft Docs
 description: A Azure Resource Manager és a javasolt műveletek által felszínben lévő Azure Event Hubs-kivételek listája.
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/08/2019
-ms.author: spelluru
-ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74936086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312525"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – Resource Manager-kivételek
 Ez a cikk azokat a kivételeket sorolja fel, amelyeket az Azure Event Hubs a Azure Resource Manager-sablonokkal vagy közvetlen hívásokkal való interakció során generáltak.
@@ -29,7 +20,7 @@ A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Re
 
 ## <a name="error-code-conflict"></a>Hibakód: ütközés
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Ütközés | 40300 | Elérte vagy túllépte a EventHub típusú erőforrások maximális számát. Tényleges: #, Max megengedett: # | A névtér elérte a [kvótáját](event-hubs-quotas.md) a benne foglalt Event Hubs számára. | Törölje a fel nem használt vagy idegen típusú esemény-hubokat a névtérből, vagy vegye fontolóra a [dedikált fürtre](event-hubs-dedicated-overview.md)való frissítését. |
 | Ütközés | Nincs | Nem lehet törölni a vész-helyreállítási (DR) konfigurációt, mert a replikáció folyamatban van. A DR-konfiguráció törlésének megkísérlése előtt hajtsa végre a feladatátvételt, vagy szakítsa meg a párosítást. | A [GeoDR replikációja](event-hubs-geo-dr.md) folyamatban van, így a konfiguráció jelenleg nem törölhető. | A konfiguráció törlésének feloldásához várjon, amíg a replikáció befejeződik, indítson el egy feladatátvételt, vagy szüntesse meg a GeoDR párosítását. |
@@ -37,14 +28,14 @@ A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Re
 
 ## <a name="error-code-429"></a>Hibakód: 429
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | Nincs | Névtér kiépítés átmenet alatt | Jelenleg folyamatban van egy másik művelet végrehajtása ezen a névtéren. | Várjon, amíg a jelenlegi művelet befejeződik, majd próbálkozzon újra. |
 | 429 | Nincs | A vész-helyreállítási művelet folyamatban van. | Folyamatban van egy [GeoDR](event-hubs-geo-dr.md) művelet végrehajtása ezen a névtéren vagy párosításon. | Várjon, amíg a jelenlegi GeoDR művelet befejeződik, majd próbálkozzon újra. |
 
 ## <a name="error-code-badrequest"></a>Hibakód: BadRequest
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | BadRequest | 40000 | A PartitionCount nem módosítható az Event hub esetében. | Az Azure Event Hubs alapszintű vagy standard szintje nem támogatja a partíciók módosítását. | Hozzon létre egy új Event hub-t a kívánt számú partícióval az alapszintű vagy standard szintű névtérben. A particionálási felskálázás a [dedikált fürtök](event-hubs-dedicated-overview.md)esetében támogatott. |
 | BadRequest | 40000 | A MessageRetentionInDays "#" értéke nem érvényes az alapszintű csomag esetében. az érték nem lehet nagyobb, mint 1 nap. | Az alapszintű Event Hubs névterek csak legfeljebb 1 napig támogatják az üzenetek megőrzését. | Ha a rendszer több mint egy nappal az üzenetek megőrzését szeretné megtartani, [hozzon létre egy standard Event Hubs névteret](event-hubs-create.md). | 
@@ -59,6 +50,6 @@ A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Re
 
 ## <a name="error-code-internal-server-error"></a>Hibakód: belső kiszolgálóhiba
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkódja | Hibaüzenet | Description | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Belső kiszolgálóhiba | Nincs | Belső kiszolgálóhiba. | A Event Hubs szolgáltatás belső hibával rendelkezett. | Próbálja megismételni a sikertelen műveletet. Ha a művelet továbbra is sikertelen, forduljon az ügyfélszolgálathoz. |

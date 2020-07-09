@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c159e78d0aa065b53b1164e01309e770302fb1ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389020"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó módosításának konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 ## <a name="add-the-elements"></a>Elemek hozzáadása
 
-1. Nyissa meg a *TrustframeworkExtensions. XML* fájlt, és adja hozzá a következő **claimType** elemet `oldPassword` egy azonosítóval a [ClaimsSchema](claimsschema.md) elemhez:
+1. Nyissa meg *TrustframeworkExtensions.xml* fájlt, és adja hozzá a következő **claimType** elemet egy azonosítóval `oldPassword` a [ClaimsSchema](claimsschema.md) elemhez:
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 2. A [ClaimsProvider](claimsproviders.md) elem tartalmazza azt a technikai profilt, amely hitelesíti a felhasználót. Adja hozzá a következő jogcím-szolgáltatókat a **ClaimsProviders** elemhez:
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -121,11 +121,11 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </ClaimsProviders>
     ```
 
-    A `IdentityExperienceFrameworkAppId` helyére írja be az előfeltételként megadott oktatóanyagban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítóját. Cserélje `ProxyIdentityExperienceFrameworkAppId` le a helyére a korábban létrehozott ProxyIdentityExperienceFramework-alkalmazás alkalmazás-azonosítóját.
+    A helyére írja `IdentityExperienceFrameworkAppId` be az előfeltételként megadott oktatóanyagban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítóját. Cserélje le a helyére a `ProxyIdentityExperienceFrameworkAppId` korábban létrehozott ProxyIdentityExperienceFramework-alkalmazás alkalmazás-azonosítóját.
 
-3. A [UserJourney](userjourneys.md) elem azt az elérési utat határozza meg, amelyet a felhasználó az alkalmazással való interakció során használ. Adja hozzá a **UserJourneys** elemet, ha az nem létezik **UserJourney** a következőképpen `PasswordChange`azonosított UserJourney:
+3. A [UserJourney](userjourneys.md) elem azt az elérési utat határozza meg, amelyet a felhasználó az alkalmazással való interakció során használ. Adja hozzá a **UserJourneys** elemet, ha az nem létezik a következőképpen azonosított **UserJourney** `PasswordChange` :
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
@@ -151,17 +151,17 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </UserJourneys>
     ```
 
-4. Mentse a *TrustFrameworkExtensions. XML* házirend-fájlt.
-5. Másolja az alapszintű csomaggal letöltött *ProfileEdit. XML* fájlt, és nevezze el a *ProfileEditPasswordChange. XML*néven.
+4. Mentse a *TrustFrameworkExtensions.xml* házirend-fájlt.
+5. Másolja az alapszintű csomaggal letöltött *ProfileEdit.xml* fájlt, és nevezze el *ProfileEditPasswordChange.xml*.
 6. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútumot egyedi értékkel. Ez az érték a szabályzat neve. Például *B2C_1A_profile_edit_password_change*.
-7. Módosítsa a **ReferenceId** attribútumát `<DefaultUserJourney>` , hogy az megfeleljen a létrehozott új felhasználói út azonosítójának. Például: *PasswordChange*.
+7. Módosítsa a **ReferenceId** attribútumát, `<DefaultUserJourney>` hogy az megfeleljen a létrehozott új felhasználói út azonosítójának. Például: *PasswordChange*.
 8. Mentse a módosításokat.
 
 [Itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)megtekintheti a minta szabályzatot.
 
 ## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure AD B2C token visszaadja `https://jwt.ms` a jogcímeket, hogy áttekintse a benne lévő jogcímeket.
+Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure AD B2C token visszaadja a `https://jwt.ms` jogcímeket, hogy áttekintse a benne lévő jogcímeket.
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
@@ -170,14 +170,14 @@ Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy 
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **identitási élmény keretrendszert**.
 5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
-6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions. XML* fájlt.
+6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustframeworkExtensions.xml* fájlt.
 7. Kattintson a **Feltöltés** gombra.
-8. Ismételje meg az 5 – 7. lépést a függő entitás fájljánál (például *ProfileEditPasswordChange. XML*).
+8. Ismételje meg az 5 – 7. lépést a függő entitás fájljánál, például *ProfileEditPasswordChange.xml*.
 
 ### <a name="run-the-policy"></a>A házirend futtatása
 
 1. Nyissa meg a módosított szabályzatot. Például *B2C_1A_profile_edit_password_change*.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 3. Kattintson a **Futtatás most** parancsra. Jelentkezzen be a korábban létrehozott acouunt. Most lehetősége van a jelszó módosítására.
 
 ## <a name="next-steps"></a>További lépések

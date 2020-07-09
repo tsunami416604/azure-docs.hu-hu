@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453940"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
@@ -77,7 +76,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 3. A Azure Cloud Shell használatával hozza létre a **contoso kenyérpirítók Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Az IoT hub hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
 
-    Az alábbi példa egy *contoso-kenyérpirítós-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098**helyett. Az egyéni kiosztási szabályzathoz tartozó példa `-toasters-` programkódjának a hub nevében kell lennie.
+    Az alábbi példa egy *contoso-kenyérpirítós-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098**helyett. Az egyéni kiosztási szabályzathoz tartozó példa programkódjának `-toasters-` a hub nevében kell lennie.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -87,7 +86,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 4. A Azure Cloud Shell használatával hozza létre a **contoso Heat szivattyúk Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Ez az IoT hub a *contoso-US-Resource-Group*-hoz is hozzá lesz adva.
 
-    A következő példa egy *contoso-heatpumps-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098**helyett. Az egyéni kiosztási szabályzathoz tartozó példa `-heatpumps-` programkódjának a hub nevében kell lennie.
+    A következő példa egy *contoso-heatpumps-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098**helyett. Az egyéni kiosztási szabályzathoz tartozó példa programkódjának `-heatpumps-` a hub nevében kell lennie.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -122,7 +121,7 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
 4. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a Function alkalmazás létrehozásához. Az üzembe helyezés eltarthat néhány percig. Ha befejeződik, válassza **az Ugrás erőforráshoz**lehetőséget.
 
-5. Az új függvény hozzáadásához az Function app **– Áttekintés** lap bal **+** oldali panelén kattintson a **funkciók** elem melletti gombra.
+5. Az új függvény hozzáadásához az Function app **– Áttekintés** lap bal oldali panelén kattintson a **+** **funkciók** elem melletti gombra.
 
     ![Függvény hozzáadása a függvényalkalmazás](./media/how-to-use-custom-allocation-policies/create-function.png)
 
@@ -413,7 +412,7 @@ Ez a szakasz a Windows-alapú munkaállomás irányába mutat. Linux-példaként
 
 2. Keresse meg az SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
+3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a paraméter értékeként `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -456,7 +455,7 @@ Ez a szakasz a Windows-alapú munkaállomás irányába mutat. Linux-példaként
 
 ## <a name="simulate-the-devices"></a>Az eszközök szimulálása
 
-Ebben a szakaszban egy, a korábban beállított Azure IoT C SDK-ban található **prov\_\_dev Client\_minta** nevű kiépítési mintát frissít.
+Ebben a szakaszban egy, a korábban beállított Azure IoT C SDK-ban található **prov \_ dev \_ Client \_ minta** nevű kiépítési mintát frissít.
 
 Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a kiépítési kérést az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat azt eredményezi, hogy a kenyérpirító eszköz fel lesz ismerve, és hozzá lesz rendelve az IoT hub-hoz az egyéni kiosztási házirend használatával.
 
@@ -491,7 +490,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 ### <a name="simulate-the-contoso-toaster-device"></a>A contoso kenyérpirító eszközének szimulálása
 
-1. A kenyérpirító eszköz szimulálásához keresse meg a " **prov\_dev\_Client\_sample. c** " hívását `prov_dev_set_symmetric_key_info()` , amely kommentálva van.
+1. A kenyérpirító eszköz szimulálásához keresse meg a " `prov_dev_set_symmetric_key_info()` **prov \_ dev \_ Client \_ sample. c** " hívását, amely kommentálva van.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -507,7 +506,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
     Mentse a fájlt.
 
-2. A Visual Studio menüjében válassza a **hibakeresés** > **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésének megadásához válassza az **Igen**lehetőséget, ha a Futtatás előtt szeretné újraépíteni a projektet.
+2. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésének megadásához válassza az **Igen**lehetőséget, ha a Futtatás előtt szeretné újraépíteni a projektet.
 
     A következő kimenet egy példa arra, hogy a szimulált kenyérpirító eszköz sikeresen elindult-e, és csatlakozik a kiépítési szolgáltatáshoz, amelyet az egyéni kiosztási szabályzat rendel hozzá a IoT hub-hoz:
 
@@ -527,7 +526,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 ### <a name="simulate-the-contoso-heat-pump-device"></a>A contoso hőszivattyú eszköz szimulálása
 
-1. A hőszivattyús eszköz szimulálásához frissítse a `prov_dev_set_symmetric_key_info()` **prov\_dev\_Client\_sample. c** -ben megjelenő hívást, és a hőszivattyú regisztrációs azonosítóját és a korábban létrehozott származtatott eszköz kulcsát. A **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** alább látható kulcs értéke szintén csak példaként van megadva.
+1. A hőszivattyús eszköz szimulálásához frissítse a `prov_dev_set_symmetric_key_info()` **prov \_ dev \_ Client \_ sample. c** -ben megjelenő HÍVÁST, és a hőszivattyú regisztrációs azonosítóját és a korábban létrehozott származtatott eszköz kulcsát. A **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** alább látható kulcs értéke szintén csak példaként van megadva.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -536,7 +535,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
     Mentse a fájlt.
 
-2. A Visual Studio menüjében válassza a **hibakeresés** > **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésének megadásához válassza az **Igen** lehetőséget a projekt újraépítéséhez a futtatása előtt.
+2. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésének megadásához válassza az **Igen** lehetőséget a projekt újraépítéséhez a futtatása előtt.
 
     Az alábbi kimenet egy példa arra, hogy a szimulált hőszivattyús eszköz sikeresen elindult-e, és csatlakozik a kiépítési szolgáltatáshoz, amelyet a contoso Heat pumps IoT hubhez rendel hozzá az egyéni kiosztási szabályzat szerint:
 
@@ -567,7 +566,7 @@ Az alábbi táblázat a várt forgatókönyveket és az eredményül kapott hiba
 | A webhook a következő hibakódot adja vissza: >= 429 | A DPS-előkészítés számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg a következőket hajtja végre:<br><br>&nbsp;&nbsp;-Újrapróbálkozás száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;– Növekmény: 9-es | Az SDK figyelmen kívül hagyja a hibát, és egy másik lekérési állapotjelző üzenetet küld a megadott időn belül |
 | A webhook bármely más állapotkódot ad vissza | Eredmény állapota: sikertelen<br><br>Hibakód: CustomAllocationFailed (400207) | Az SDK visszaadja PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy folytatja a jelen cikkben létrehozott erőforrásokkal való munkát, meghagyhatja őket. Ha nem tervezi tovább használni az erőforrásokat, a következő lépésekkel törölheti az ebben a cikkben létrehozott összes erőforrást a szükségtelen költségek elkerülése érdekében.
 

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b68bc2eca25c35395d9a31f3a80e45d1595815bf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448837"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601972"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
 
@@ -29,13 +29,13 @@ Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a B
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Bing Autosuggest API egy REST-alapú webszolgáltatás, amely bármilyen programozási nyelvről meghívható, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. 
+A Bing Autosuggest API egy REST-alapú webszolgáltatás, amely bármilyen programozási nyelvről meghívható, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t.
 
-1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
 2. Kérés küldése erre az API-ra minden alkalommal, amikor egy felhasználó új karaktert kér az alkalmazás keresési mezőjében.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-Ezt az API-t általában minden alkalommal meg kell hívnia, amikor a felhasználó új karaktert keres az alkalmazás keresési mezőjében. Ahogy egyre több karakter van megadva, az API több releváns javasolt keresési lekérdezést fog visszaadni. Előfordulhat `s` például, hogy az API által visszaadott javaslatok valószínűleg kevésbé lesznek érvényesek, mint a esetében `sail`.
+Ezt az API-t általában minden alkalommal meg kell hívnia, amikor a felhasználó új karaktert keres az alkalmazás keresési mezőjében. Ahogy egyre több karakter van megadva, az API több releváns javasolt keresési lekérdezést fog visszaadni. Előfordulhat például, hogy az API által visszaadott javaslatok `s` valószínűleg kevésbé lesznek érvényesek, mint a esetében `sail` .
 
 A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest API javasolt lekérdezési kifejezéssel.
 

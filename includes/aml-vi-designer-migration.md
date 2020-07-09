@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75541802"
 ---
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
@@ -26,7 +26,7 @@ ms.locfileid: "75541802"
     
 1. A folyamat Piszkozatok listájának megtekintéséhez nyissa meg a munkaterület tervező szakaszát. 
     
-    A konvertált webszolgáltatások megtalálhatók a **végpontok** > **valós idejű végpontjának**navigálásával.
+    A konvertált webszolgáltatások megtalálhatók a **végpontok**  >  **valós idejű végpontjának**navigálásával.
 
 1. Válassza ki a folyamat piszkozatát a megnyitásához.
 

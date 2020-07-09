@@ -9,23 +9,22 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 466b0853648fab078af89f01a9aea157205e81d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608483"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure Resource Manager használatával
 
 
-Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory felügyelt identitásával. Ezt az identitást hitelesítheti az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene használnia a kódban. 
+Az Azure-erőforrások felügyelt identitásai biztosítják az Azure-szolgáltatásokat Azure Active Directory felügyelt identitással. Ezt az identitást hitelesítheti az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene használnia a kódban. 
 
 Ebben a cikkben egy felhasználó által hozzárendelt felügyelt identitást hoz létre egy Azure Resource Manager használatával.
 
@@ -35,7 +34,7 @@ Felhasználó által hozzárendelt felügyelt identitást nem lehet listázni é
 - [Felhasználó által hozzárendelt felügyelt identitás törlése](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="template-creation-and-editing"></a>Sablonok létrehozása és szerkesztése
@@ -51,7 +50,7 @@ A Azure Portal és a parancsfájlok futtatásához hasonlóan Azure Resource Man
 
 Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelésével.
 
-Felhasználó által hozzárendelt felügyelt identitás létrehozásához használja a következő sablont. Cserélje le `<USER ASSIGNED IDENTITY NAME>` az értéket a saját értékeire:
+Felhasználó által hozzárendelt felügyelt identitás létrehozásához használja a következő sablont. Cserélje le az `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

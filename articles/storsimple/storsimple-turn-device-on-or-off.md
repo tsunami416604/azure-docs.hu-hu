@@ -4,16 +4,15 @@ description: Elmagyarázza, hogyan kapcsolhatja be az új StorSimple eszközt, b
 author: alkohli
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2906c947e24bf5053760e9b83429ae7c6ecd3f4
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515272"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz bekapcsolása vagy kikapcsolása
 
@@ -165,6 +164,6 @@ Miután elvégezte a Windows PowerShell StorSimple-bővítménye vagy a Azure Po
 > [!NOTE]
 > A EBOD-ház az elsődleges házba való csatlakoztatásához használt SAS-kábelek nem távolíthatók el a rendszer leállítása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a StorSimple-eszköz bekapcsolása vagy leállítása során problémák merülnek [fel, forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) .
 

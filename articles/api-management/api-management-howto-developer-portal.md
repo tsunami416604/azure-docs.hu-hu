@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207889"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -34,7 +34,7 @@ Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felüg
 
 A fejlesztői portált kétféleképpen is létrehozhatja:
 
-- **Felügyelt verzió** – a portál szerkesztésével és testreszabásával, amely a API Management-példányba van beépítve, `<your-api-management-instance-name>.developer.azure-api.net`és az URL-címen keresztül érhető el. A [jelen dokumentációs cikkből](api-management-howto-developer-portal-customize.md) megtudhatja, hogyan érheti el és szabhatja testre a felügyelt portált.
+- **Felügyelt verzió** – a portál szerkesztésével és testreszabásával, amely a API Management-példányba van beépítve, és az URL-címen keresztül érhető el `<your-api-management-instance-name>.developer.azure-api.net` . A [jelen dokumentációs cikkből](api-management-howto-developer-portal-customize.md) megtudhatja, hogyan érheti el és szabhatja testre a felügyelt portált.
 - **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapfunkciókat – például egyéni widgeteket valósíthat meg a külső rendszerekkel való integrációhoz. Ebben az esetben Ön a portál karbantartója, és Ön felelős a portál legújabb verzióra való frissítéséhez. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódját][1] és [a widget megvalósítását ismertető oktatóanyagot][3]. A [felügyelt verzióhoz tartozó oktatóanyag](api-management-howto-developer-portal-customize.md) végigvezeti a portál felügyeleti paneljén, amely a felügyelt és a saját üzemeltetésű verziók esetében gyakori.
 
 ## <a name="portal-architectural-concepts"></a>Portál építészeti fogalmak
@@ -68,7 +68,7 @@ A portál a [Paperbits-keretrendszer](https://paperbits.io/)adaptált villáján
 
 Ebben a szakaszban a fejlesztői portál általános jellegű kérdéseit választjuk. A saját üzemeltetésű verzióra vonatkozó kérdésekért tekintse meg a [GitHub-adattár wiki szakaszát](https://github.com/Azure/api-management-developer-portal/wiki).
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/>Hogyan lehet áttérni a portál előzetes verziójáról?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>Hogyan lehet áttérni a portál előzetes verziójáról?
 
 A fejlesztői portál előzetes verziójának használatával kiépített egy előnézeti tartalmat a API Management szolgáltatásban. Az alapértelmezett tartalom jelentősen módosult az általánosan elérhető verzióban a jobb felhasználói élmény érdekében. Emellett új widgeteket is tartalmaz.
 
@@ -76,7 +76,7 @@ Ha felügyelt verziót használ, állítsa alaphelyzetbe a portál tartalmát az
 
 ![Portál tartalmának visszaállítása](media/api-management-howto-developer-portal/reset-content.png)
 
-Ha a saját üzemeltetésű verziót használja, a `scripts/cleanup.bat` és `scripts/generate.bat` a GitHub-tárházból távolítsa el a meglévő tartalmakat, és hozzon létre új tartalmat. Győződjön meg róla, hogy a legújabb kiadásra frissíti a portál kódját a GitHub-adattárból.
+Ha a saját üzemeltetésű verziót használja, a `scripts/cleanup.bat` és a GitHub- `scripts/generate.bat` tárházból távolítsa el a meglévő tartalmakat, és hozzon létre új tartalmat. Győződjön meg róla, hogy a legújabb kiadásra frissíti a portál kódját a GitHub-adattárból.
 
 Ha nem szeretné alaphelyzetbe állítani a portál tartalmát, érdemes lehet az újonnan elérhető widgeteket használni az összes oldalon. A meglévő widgetek automatikusan frissültek a legújabb verzióra.
 
@@ -116,7 +116,7 @@ Nem.
 
 A legtöbb esetben – nem.
 
-Ha a API Management szolgáltatás belső VNet található, a fejlesztői portál csak a hálózaton belülről érhető el. A felügyeleti végpont állomásneve fel kell oldania a szolgáltatás belső VIP-címére a portál felügyeleti felületének elérésére használt gépről. Győződjön meg arról, hogy a felügyeleti végpont regisztrálva van a DNS-ben. Helytelen konfiguráció esetén a következő hibaüzenet jelenik meg: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+Ha a API Management szolgáltatás belső VNet található, a fejlesztői portál csak a hálózaton belülről érhető el. A felügyeleti végpont állomásneve fel kell oldania a szolgáltatás belső VIP-címére a portál felügyeleti felületének elérésére használt gépről. Győződjön meg arról, hogy a felügyeleti végpont regisztrálva van a DNS-ben. Helytelen konfiguráció esetén a következő hibaüzenet jelenik meg: `Unable to start the portal. See if settings are specified correctly in the configuration (...)` .
 
 Ha a API Management szolgáltatás belső VNet van, és az internetről Application Gateway keresztül fér hozzá, ügyeljen arra, hogy engedélyezze a kapcsolatot a fejlesztői portálon és a API Management felügyeleti végpontján.
 
@@ -151,7 +151,7 @@ A CORS is engedélyezheti manuálisan is.
 1. Kattintson a **manuálisan alkalmazza a globális szinten** hivatkozásra a generált szabályzat megjelenítéséhez.
 2. A Azure Portal a API Management szolgáltatás **API** -k szakaszában navigáljon az **összes API** -hoz.
 3. Kattintson az **</>** ikonra a **bejövő feldolgozás** szakaszban.
-4. Szúrja be a szabályzatot az XML-fájl **<inbound>** szakaszában. Győződjön meg arról **<origin>** , hogy az érték megegyezik a fejlesztői portál tartományával.
+4. Szúrja be a szabályzatot az **<inbound>** XML-fájl szakaszában. Győződjön meg arról, hogy az **<origin>** érték megegyezik a fejlesztői portál tartományával.
 
 > [!NOTE]
 > 
@@ -165,11 +165,11 @@ A CORS is engedélyezheti manuálisan is.
 
 Ha úgy látja a `Oops. Something went wrong. Please try again later.` hibát, amikor a portált felügyeleti módban nyitja meg, előfordulhat, hogy nem rendelkezik a szükséges engedélyekkel (RBAC).
 
-Az örökölt portáloknak a `Microsoft.ApiManagement/service/getssotoken/action` szolgáltatás hatókörében (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) kell megadniuk az engedélyt ahhoz, hogy a felhasználói rendszergazda hozzáférjen a portálokhoz. Az új portálon engedély `Microsoft.ApiManagement/service/users/token/action` szükséges a hatókörben `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1`.
+Az örökölt portáloknak a `Microsoft.ApiManagement/service/getssotoken/action` szolgáltatás hatókörében () kell megadniuk az engedélyt `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` ahhoz, hogy a felhasználói rendszergazda hozzáférjen a portálokhoz. Az új portálon engedély szükséges a `Microsoft.ApiManagement/service/users/token/action` hatókörben `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` .
 
-A következő PowerShell-parancsfájl használatával létrehozhat egy szerepkört a szükséges engedélyekkel. Ne felejtse el `<subscription-id>` módosítani a paramétert. 
+A következő PowerShell-parancsfájl használatával létrehozhat egy szerepkört a szükséges engedélyekkel. Ne felejtse el módosítani a `<subscription-id>` paramétert. 
 
-```PowerShell
+```powershell
 #New Portals Admin Role 
 Import-Module Az 
 Connect-AzAccount 
@@ -187,15 +187,15 @@ New-AzRoleDefinition -Role $customRole
  
 A szerepkör létrehozása után bármely felhasználó számára megadható a Azure Portal **Access Control (iam)** szakasza. Ha ezt a szerepkört hozzárendeli a felhasználóhoz, az engedélyt a szolgáltatás hatókörében kell kiosztania. A felhasználó a szolgáltatás *bármely* felhasználója nevében képes sas-jogkivonatokat előállítani. Legalább ezt a szerepkört a szolgáltatás rendszergazdájához kell rendelni. A következő PowerShell-parancs bemutatja, hogyan rendelhető hozzá a szerepkör a `user1` legalacsonyabb hatókörű felhasználóhoz, hogy ne kelljen felesleges engedélyeket biztosítani a felhasználónak: 
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
 Miután megadta az engedélyeket egy felhasználó számára, a felhasználónak ki kell jelentkeznie, majd újra be kell jelentkeznie a Azure Portal az új engedélyek érvénybe léptetéséhez.
 
-### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>`Unable to start the portal. See if settings are specified correctly (...)` Hibaüzenetet látok
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>`Unable to start the portal. See if settings are specified correctly (...)`Hibaüzenetet látok
 
-Ez a hiba akkor jelenik meg `GET` , `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` ha sikertelen hívás történik. A hívást a böngésző a portál felügyeleti felülete adja ki.
+Ez a hiba akkor jelenik `GET` meg, ha `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` sikertelen hívás történik. A hívást a böngésző a portál felügyeleti felülete adja ki.
 
 Ha a API Management szolgáltatás VNet található – tekintse meg a fenti VNet-kapcsolat kérdését.
 
@@ -208,7 +208,7 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 | Apple Safari                | Igen<sup>1</sup> |
 | Google Chrome               | Igen<sup>1</sup> |
 | Microsoft Edge              | Igen<sup>1</sup> |
-| Microsoft Internet Explorer | Nem              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Igen<sup>1</sup> |
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>

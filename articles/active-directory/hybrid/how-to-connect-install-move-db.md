@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77019281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358956"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
 
@@ -42,7 +42,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
 8. Az adatbázis csatolása után lépjen vissza az Azure AD Connect-kiszolgálóhoz, és telepítse az Azure AD Connectet.
 9. Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
    ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db1.png)
-10. Indítson új parancssort vagy PowerShell-munkamenetet. Navigáljon a \<mappa meghajtó> \program files\microsoft Azure ad Connect. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
+10. Indítson új parancssort vagy PowerShell-munkamenetet. Lépjen a \<drive>\program files\Microsoft Azure AD Connect mappához. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
 14. A **címtárak csatlakozására** szolgáló képernyőn a címtár-szinkronizáláshoz konfigurált meglévő AD-erdő mellett egy piros kereszt ikon látható. Helyszíni AD-erdőből származó módosítások szinkronizálásához AD DS-fiók szükséges. Az Azure AD Connect varázslója nem tudja lekérni az ADSync-adatbázisban tárolt AD DS-fiók hitelesítő adatait, mert azok titkosítva vannak, és a titkosítás kizárólag az előző Azure AD Connect-kiszolgálóval oldható fel. Kattintson a **hitelesítő adatok módosításának** lehetőségére az AD-erdőhöz tartozó AD DS-fiók megadásához.
     ![Címtárak](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. Az előugró párbeszédpanelen a következő lehetőségek közül választhat: (i) megad vállalati rendszergazdai hitelesítő adatokat, és engedi, hogy az Azure AD Connect hozza létre az AD DS-fiókot, vagy (ii) létrehozza az AD DS-fiókot, és megadja annak hitelesítő adatait az Azure AD Connectnek. Miután kiválasztotta az egyik lehetőséget és megadta a szükséges hitelesítő adatokat, kattintson az **OK** gombra az előugró párbeszédpanel bezáráshoz.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **Tovább** gombra.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
 ## <a name="next-steps"></a>További lépések

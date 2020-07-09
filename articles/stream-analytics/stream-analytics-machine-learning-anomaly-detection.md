@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525532"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044379"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliák észlelése Azure Stream Analytics
 
@@ -117,7 +117,7 @@ Ezeknek a modelleknek a teljesítménye az előzmények méretétől, az időtar
 * **Előzmények mérete** – ezek a modellek lineárisan, az **Előzmények méretével**végezhetők el. Minél hosszabb az előzmények mérete, annál hosszabb lesz a modell egy új esemény kiértékeléséhez. Ennek az az oka, hogy a modellek összehasonlítják az új eseményt az előzmények pufferben lévő összes korábbi eseménysel.
 * **Ablak időtartama** – az **ablak időtartamának** tükröznie kell, hogy mennyi időt vesz igénybe az előzmények mérete által meghatározott számú esemény fogadása. Az ablakban számos esemény nélkül Azure Stream Analytics a hiányzó értékeket. Ezért a CPU-felhasználás az előzmények méretének függvénye.
 * **Esemény betöltése** – minél nagyobb az **esemény terhelése**, annál több munka van, amelyet a modellek végeznek, ami hatással van a CPU-felhasználásra. A feladatot zavaróan párhuzamosan lehet kibővíteni, feltételezve, hogy az üzleti logika több bemeneti partíció használatát teszi lehetővé.
-* **A függvények szintjének particionálásához** - használt ```PARTITION BY``` függvények**szintjének particionálását** az anomáliák észlelése függvény hívásával végezheti el. Ez a particionálási típus felveszi a terhelést, mivel az állapotot egyszerre több modell esetében is fenn kell tartani. A függvények szintjének particionálását olyan forgatókönyvek használják, mint az eszközök szintjének particionálás.
+* **Függvény szintű particionálás**  -  A **függvények szintjének particionálását** ```PARTITION BY``` az anomáliák észlelése függvény hívásával végezheti el. Ez a particionálási típus felveszi a terhelést, mivel az állapotot egyszerre több modell esetében is fenn kell tartani. A függvények szintjének particionálását olyan forgatókönyvek használják, mint az eszközök szintjének particionálás.
 
 ### <a name="relationship"></a>Kapcsolat
 Az előzmények mérete, az ablak időtartama és az összes esemény terhelése a következő módon kapcsolódik:

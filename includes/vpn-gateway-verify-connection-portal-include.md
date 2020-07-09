@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1626d6f86dcfefd094f325f1f10296d01d4bad93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73523004"
 ---
 Az Azure Portalon a kapcsolatra lépve tekintheti meg a Resource Manager VPN-átjárók kapcsolati állapotát. Az alábbi lépések a kapcsolat megkeresését és ellenőrzését mutatják be.

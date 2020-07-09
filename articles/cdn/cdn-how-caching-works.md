@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253713"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
@@ -60,7 +59,7 @@ A gyorsítótárazás olyan módon működik, mint a CDN, amely felgyorsítja a 
 
 A gyorsítótárazás egy webböngészőben való implementálása hasonlóan azt is szabályozhatja, hogyan történjen a gyorsítótárazás a CDN-ben a gyorsítótár-direktíva fejlécek elküldésével. A cache-direktíva fejlécek a HTTP-fejlécek, amelyeket általában a forráskiszolgáló ad hozzá. Bár a fejlécek többségét eredetileg az ügyféloldali böngészők gyorsítótárazására tervezték, mostantól az összes köztes gyorsítótár, például a CDNs is használja őket. 
 
-A gyorsítótár frissességének meghatározásához két fejléc használható: `Cache-Control` és. `Expires` `Cache-Control`több aktuális, és elsőbbséget élvez `Expires`, ha mindkettő létezik. Az érvényesítéshez (ún. validatorok) két típusú fejléc is használatos: `ETag` és `Last-Modified`. `ETag`több aktuális, és elsőbbséget élvez `Last-Modified`, ha mindkettő definiálva van.  
+A gyorsítótár frissességének meghatározásához két fejléc használható: `Cache-Control` és `Expires` . `Cache-Control`több aktuális, és elsőbbséget élvez `Expires` , ha mindkettő létezik. Az érvényesítéshez (ún. validatorok) két típusú fejléc is használatos: `ETag` és `Last-Modified` . `ETag`több aktuális, és elsőbbséget élvez `Last-Modified` , ha mindkettő definiálva van.  
 
 ## <a name="cache-directive-headers"></a>Cache-direktíva fejlécek
 
@@ -70,43 +69,43 @@ A gyorsítótár frissességének meghatározásához két fejléc használható
 Azure CDN támogatja a következő HTTP-gyorsítótár-direktívák fejléceit, amelyek meghatározzák a gyorsítótár időtartamát és a gyorsítótár megosztását.
 
 **Gyorsítótár-vezérlő:**
-- A HTTP 1,1-ben jelent meg, hogy a webkiadók nagyobb mértékben szabályozzák a tartalmukat `Expires` és a fejléc korlátozásait.
-- Felülbírálja a `Expires` fejlécet, ha mind `Cache-Control` a, mind a definiálva van.
-- Ha az ügyféltől a CDN-POP-hoz tartozó HTTP-kérelemben használja, `Cache-Control` a rendszer alapértelmezés szerint figyelmen kívül hagyja az összes Azure CDN-profilt.
+- A HTTP 1,1-ben jelent meg, hogy a webkiadók nagyobb mértékben szabályozzák a tartalmukat és a fejléc korlátozásait `Expires` .
+- Felülbírálja a `Expires` fejlécet, ha mind a, mind `Cache-Control` a definiálva van.
+- Ha az ügyféltől a CDN-POP-hoz tartozó HTTP-kérelemben használja, a `Cache-Control` rendszer alapértelmezés szerint figyelmen kívül hagyja az összes Azure CDN-profilt.
 - Ha az ügyféltől a CDN-POP-hoz tartozó HTTP-válaszban használja:
-     - A Verizon és **a Azure CDN standard** `Cache-Control` **/prémium Azure CDN** a Microsoft támogatási szolgálatának minden direktíva.
-     - **Azure CDN standard from Akamai** csak a következő `Cache-Control` irányelveket támogatja: az összes többi figyelmen kívül marad:
+     - A Verizon és **a Azure CDN standard** **/prémium Azure CDN** a Microsoft támogatási szolgálatának minden `Cache-Control` direktíva.
+     - **Azure CDN a standard from Akamai** csak a következő `Cache-Control` irányelveket támogatja, a többi figyelmen kívül marad:
          - `max-age`: A gyorsítótár a megadott időtartamig tárolja a tartalmat. Például: `Cache-Control: max-age=5`. Ez az irányelv azt a maximális időtartamot határozza meg, ameddig a tartalom frissnek tekintendő.
-         - `no-cache`: Gyorsítótárazza a tartalmat, de minden alkalommal érvényesíti a tartalmat, mielőtt a gyorsítótárból adná azt. Egyenértékű a `Cache-Control: max-age=0`következővel:.
+         - `no-cache`: Gyorsítótárazza a tartalmat, de minden alkalommal érvényesíti a tartalmat, mielőtt a gyorsítótárból adná azt. Egyenértékű a következővel: `Cache-Control: max-age=0` .
          - `no-store`: Soha ne gyorsítótárazza a tartalmat. Távolítsa el a tartalmat, ha korábban már tárolva van.
 
 **Lejár**
 - A HTTP 1,0-ben bevezetett örökölt fejléc visszamenőleges kompatibilitás esetén támogatott.
 - Dátum-alapú lejárati időt használ második pontossággal. 
-- Hasonló a `Cache-Control: max-age`következőhöz:.
+- Hasonló a következőhöz: `Cache-Control: max-age` .
 - Akkor használatos, ha `Cache-Control` nem létezik.
 
 **Sorpragmákat**
    - A Azure CDN alapértelmezés szerint nem tartja tiszteletben.
    - A HTTP 1,0-ben bevezetett örökölt fejléc visszamenőleges kompatibilitás esetén támogatott.
-   - Ügyfél-kérelem fejlécként használatos az alábbi direktívával `no-cache`:. Ez az irányelv arra utasítja a kiszolgálót, hogy az erőforrás új verzióját kézbesítse.
-   - `Pragma: no-cache`egyenértékű a `Cache-Control: no-cache`következővel:.
+   - Ügyfél-kérelem fejlécként használatos az alábbi direktívával: `no-cache` . Ez az irányelv arra utasítja a kiszolgálót, hogy az erőforrás új verzióját kézbesítse.
+   - `Pragma: no-cache`egyenértékű a következővel: `Cache-Control: no-cache` .
 
 ## <a name="validators"></a>Érvényesítőket
 
-Ha a gyorsítótár elavult, a HTTP-gyorsítótár-érvényesítő használatával hasonlíthatja össze a fájl gyorsítótárazott verzióját a forrás-kiszolgálón lévő verzióval. **Azure CDN a Verizon standard/Premium** verziója alapértelmezés `ETag` szerint `Last-Modified` mind a, mind a validatorokat támogatja, míg a **Microsofttól Azure CDN standard** , a `Last-Modified` **Akamai pedig a standard szintű Azure CDN** csak alapértelmezés szerint támogatja.
+Ha a gyorsítótár elavult, a HTTP-gyorsítótár-érvényesítő használatával hasonlíthatja össze a fájl gyorsítótárazott verzióját a forrás-kiszolgálón lévő verzióval. **Azure CDN a Verizon standard/Premium** verziója alapértelmezés szerint mind a, mind a `ETag` `Last-Modified` validatorokat támogatja, míg a **Microsofttól Azure CDN standard** , a **Akamai pedig a standard szintű Azure CDN** csak `Last-Modified` alapértelmezés szerint támogatja.
 
 **ETAG**
-- Alapértelmezés szerint a Verizon által támogatott `ETag` **standard/prémium szintű Azure CDN** , míg a **Microsofttól Azure CDN standard** , a **Akamai pedig Azure CDN standard** .
+- Alapértelmezés szerint a Verizon által támogatott **standard/prémium szintű Azure CDN** `ETag` , míg a **Microsofttól Azure CDN standard** , a **Akamai pedig Azure CDN standard** .
 - `ETag`egy olyan karakterláncot határoz meg, amely minden fájl és verzió esetében egyedi. Például: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
-- A HTTP 1,1-ben lett bevezetve `Last-Modified`, és a jelenleginél nagyobb. Akkor hasznos, ha az utolsó módosítás dátuma nehéz megállapítani.
+- A HTTP 1,1-ben lett bevezetve, és a jelenleginél nagyobb `Last-Modified` . Akkor hasznos, ha az utolsó módosítás dátuma nehéz megállapítani.
 - Az erős érvényesítést és a gyenge ellenőrzést is támogatja; Azure CDN azonban csak erős ellenőrzést támogat. Erős ellenőrzés esetén a két erőforrás-ábrázolásnak azonos bájt-bájtnak kell lennie. 
-- A gyorsítótár egy olyan fájlt érvényesít, amely `ETag` egy vagy több `If-None-Match` `ETag` érvényesítő utasítással elküld egy fejlécet a kérelemben. Például: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Ha a kiszolgáló verziószáma megegyezik a `ETag` listán szereplő validatorokkal, a válaszában a 304 (nem módosított) állapotkódot küldi el. Ha a verzió eltérő, a kiszolgáló a 200-as (OK) állapotkódot és a frissített erőforrást válaszolja meg.
+- A gyorsítótár egy olyan fájlt érvényesít, amely egy `ETag` vagy több érvényesítő utasítással elküld egy `If-None-Match` fejlécet `ETag` a kérelemben. Például: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Ha a kiszolgáló verziószáma megegyezik `ETag` a listán szereplő validatorokkal, a válaszában a 304 (nem módosított) állapotkódot küldi el. Ha a verzió eltérő, a kiszolgáló a 200-as (OK) állapotkódot és a frissített erőforrást válaszolja meg.
 
 **Utolsó módosítás:**
-- A csak a Verizon esetében a **standard/prémium szintű Azure CDN** akkor használatos, `Last-Modified` ha `ETag` az nem része a http-válasznak. 
+- A csak a Verizon esetében a **standard/prémium szintű Azure CDN** `Last-Modified` akkor használatos, ha az `ETag` nem része a http-válasznak. 
 - Meghatározza azt a dátumot és időpontot, ameddig a forráskiszolgáló meghatározta az erőforrás utolsó módosítását. Például: `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
-- A gyorsítótár egy olyan fájlt `Last-Modified` érvényesít, amely a kérelemben megadott dátummal és idővel elküld egy `If-Modified-Since` fejlécet. A forráskiszolgáló összehasonlítja ezt a dátumot a `Last-Modified` legújabb erőforrás fejlécével. Ha az erőforrást a megadott idő óta nem módosították, a kiszolgáló a válaszban visszaadja a 304 (nem módosított) állapotkódot. Ha az erőforrás módosult, a kiszolgáló a 200 (OK) állapotkódot és a frissített erőforrást adja vissza.
+- A gyorsítótár egy olyan fájlt érvényesít, amely a `Last-Modified` `If-Modified-Since` kérelemben megadott dátummal és idővel elküld egy fejlécet. A forráskiszolgáló összehasonlítja ezt a dátumot a `Last-Modified` legújabb erőforrás fejlécével. Ha az erőforrást a megadott idő óta nem módosították, a kiszolgáló a válaszban visszaadja a 304 (nem módosított) állapotkódot. Ha az erőforrás módosult, a kiszolgáló a 200 (OK) állapotkódot és a frissített erőforrást adja vissza.
 
 ## <a name="determining-which-files-can-be-cached"></a>A gyorsítótárazható fájlok meghatározása
 
@@ -126,12 +125,12 @@ Az alábbi táblázat a Azure CDN termékek alapértelmezett gyorsítótárazás
 
 |    | Microsoft: általános webes kézbesítés | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagyméretű fájl letöltése | Akamai: általános vagy VOD média streaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **A becsület forrása**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Igen    |
+| **A becsület forrása**       | Igen    | Igen   | Nem   | Yes    | Nem   | Igen   | Igen    |
 | **CDN gyorsítótárának időtartama** | 2 nap |7 nap | None | 7 nap | None | 1 nap | 1 év |
 
 **Becsület forrása**: Megadja, hogy a rendszer a támogatott gyorsítótár-direktíva fejléceket adja-e meg, ha azok szerepelnek a forráskiszolgáló http-válaszában.
 
-**CDN-gyorsítótár időtartama**: azt határozza meg, hogy mennyi ideig legyen gyorsítótárazva az erőforrás a Azure CDN. Ha azonban a **becsület forrása** igen, és a forráskiszolgáló http-válasza tartalmazza a gyorsítótár-direktíva `Expires` fejlécét `Cache-Control: max-age`, vagy a Azure CDN a fejlécben megadott időtartam értéket használja. 
+**CDN-gyorsítótár időtartama**: azt határozza meg, hogy mennyi ideig legyen gyorsítótárazva az erőforrás a Azure CDN. Ha azonban a **becsület forrása** igen, és a forráskiszolgáló http-válasza tartalmazza a gyorsítótár-direktíva fejlécét `Expires` , vagy a `Cache-Control: max-age` Azure CDN a fejlécben megadott időtartam értéket használja. 
 
 ## <a name="next-steps"></a>További lépések
 

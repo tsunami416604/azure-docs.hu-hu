@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e5cc6bbe363e111f5c39147010d6a3d00cb45c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604607"
 ---
 # <a name="what-are-baseline-policies"></a>Mik azok az alapkonfigurációs házirendek?
 
@@ -25,7 +24,7 @@ Az alapkonfigurációs házirendek olyan előre definiált szabályzatok, amelye
 A testreszabott feltételes hozzáférési szabályzatok kezeléséhez prémium szintű Azure AD licenc szükséges.
 
 > [!IMPORTANT]
-> Az alaptervek házirendjei elavultak. További információt a [Azure Active Directory újdonságai](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) című témakörben talál.
+> Az alaptervek házirendjei elavultak. További információért lásd a [Azure Active Directory újdonságait ismertető archívumot](../fundamentals/whats-new-archive.md#replacement-of-baseline-policies-with-security-defaults) .
 
 ## <a name="baseline-policies"></a>Alapvető szabályzatok
 
@@ -56,7 +55,7 @@ Az MFA a rendszergazdák számára (előzetes verzió) olyan alapszintű szabál
 * Feltételes hozzáférésű rendszergazda
 * Biztonsági rendszergazda
 * Segélyszolgálat rendszergazdája/jelszó-rendszergazda
-* Számlázási rendszergazda
+* Számlázási adminisztrátor
 * Felhasználói rendszergazda
 
 Ha a szervezete ezeket a fiókokat parancsfájlokban vagy kódban használja, érdemes lehet a [felügyelt identitásokkal](../managed-identities-azure-resources/overview.md)helyettesíteni őket.

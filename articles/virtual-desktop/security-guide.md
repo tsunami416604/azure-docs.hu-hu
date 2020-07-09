@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5330c427088734b049b2cb4f7735ac0099a52b47
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966674"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736672"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -31,16 +31,16 @@ A Windows rendszerű virtuális asztali környezetében a következő biztonság
 
 | Biztonsági igények | Az ügyfél felelős erre? |
 |---------------|:-------------------------:|
-|Identitás|Igen|
-|Felhasználói eszközök (mobil és PC)|Igen|
-|Alkalmazás biztonsága|Igen|
-|Munkamenet-gazda operációs rendszer|Igen|
-|Központi telepítés konfigurálása|Igen|
-|Hálózati vezérlők|Igen|
-|Virtualizációs vezérlő síkja|Nem|
-|Fizikai gazdagépek|Nem|
-|Fizikai hálózat|Nem|
-|Fizikai adatközpont|Nem|
+|Identitás|Yes|
+|Felhasználói eszközök (mobil és PC)|Yes|
+|Alkalmazás biztonsága|Yes|
+|Munkamenet-gazda operációs rendszer|Yes|
+|Központi telepítés konfigurálása|Yes|
+|Hálózati vezérlők|Yes|
+|Virtualizációs vezérlő síkja|No|
+|Fizikai gazdagépek|No|
+|Fizikai hálózat|No|
+|Fizikai adatközpont|No|
 
 Az ügyfél nem felelős a Microsoft által kezelt biztonsági követelményeknek.
 
@@ -62,7 +62,7 @@ A Azure Security Center Standard csomaggal a következőket teheti:
 
 További információ: Azure- [előfizetése Security Center Standard](../security-center/security-center-get-started.md).
 
-### <a name="improve-your-secure-score"></a>A biztonságos pontszám javítása
+### <a name="improve-your-secure-score"></a>A biztonsági pontszám javítása
 
 A biztonságos pontszám ajánlásokat és gyakorlati tanácsokat tartalmaz a teljes biztonság javítására. Ezek a javaslatok prioritást élveznek a legfontosabb elemek kiválasztásához, és a gyors javítási lehetőségek segítenek a lehetséges sebezhetőségek gyors megoldásában. Ezek az ajánlások az idő múlásával is frissülnek, és naprakészen tartanak a környezet biztonságának legjobb módjaival. További információ: [a biztonságos pontszám javítása Azure Security Centerban](../security-center/security-center-secure-score.md).
 

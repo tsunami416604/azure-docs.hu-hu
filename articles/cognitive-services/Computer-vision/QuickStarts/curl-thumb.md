@@ -11,23 +11,24 @@ ms.topic: quickstart
 ms.date: 05/20/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d6b55a7f3df7657e2b6b0b23b797d36788658f32
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 77850de4f2582c86281c58c32e1689fd8741126e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745161"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987403"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a cURL használatával
 
 Ebben a rövid útmutatóban létrehoz egy miniatűrt a rendszerképből a Computer Vision REST API használatával. Megadhatja a kívánt magasságot és szélességet, ami eltérő lehet a bemeneti kép oldalarányának arányában. A Computer Vision az intelligens levágás használatával intelligens módon azonosítja az érdeklődési területet, és az adott régió körüli koordinátákat állít elő.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Rendelkeznie kell a [cURL-lel](https://curl.haxx.se/windows).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/) 
+* [cURL](https://curl.haxx.se/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+  * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+  * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="create-and-run-the-sample-command"></a>A mintaparancs létrehozása és futtatása
 

@@ -7,12 +7,12 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: aef8c026fad631396e58716e65640f5792ad07c8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: c832634a4b9154ec800da8c8ff25c6d81c620e9f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116789"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610151"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault integrálása az Azure Private-hivatkozással
 
@@ -104,7 +104,7 @@ az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZU
 ```
 ### <a name="turn-on-key-vault-firewall"></a>Key Vault tűzfal bekapcsolása
 ```console
-az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
+az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --default-action deny
 ```
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 ```console
@@ -225,13 +225,16 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
 
+> [!NOTE]
+> Az előfizetések által engedélyezett privát végpontokkal rendelkező kulcstartók száma állítható korlát. Az alább látható korlát az alapértelmezett korlát. Ha korlátozni szeretné a szolgáltatás korlátozását, küldjön e-mailt a címre akv-privatelink@microsoft.com . Ezeket a kéréseket eseti alapon kell jóváhagyni.
+
 **Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
 **Korlátozások**: a Azure Key Vault magánhálózati végpontja csak az Azure nyilvános régióiban érhető el.
 
 **Privát végpontok maximális száma Key Vault**: 64.
 
-**A privát végpontok által előfizetett kulcstartók maximális száma**: 64.
+**A privát végpontok által előfizetett kulcstartók alapértelmezett száma**: 400.
 
 További információ [: Azure Private link Service: korlátozások](../../private-link/private-link-service-overview.md#limitations)
 

@@ -1,20 +1,14 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése a Storage-üzenetsor számára – Event Grid, Azure CLI'
 description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A rendszer tárolási üzenetsort használ végpontként.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 44ffa570cfda39c186966866ee5755ab090083a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18f2bf42941ddd8f71f70b132ad52a47a62fc854
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721446"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112102"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba az Azure CLI-vel és a Event Grid
 
@@ -124,14 +118,14 @@ A Portalon lépjen a Queue Storage-tárolóhoz, és figyelje meg, hogy az Event 
 ![Az üzenetek megjelenítése](./media/custom-event-to-queue-storage/messages.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

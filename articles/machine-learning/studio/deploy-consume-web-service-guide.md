@@ -5,17 +5,17 @@ description: A gépi tanulási munkafolyamatok és modellek webszolgáltatáské
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 9104470a2346052ed17c670ccc39215ff77ef51f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118416"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985533"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
 
@@ -53,7 +53,9 @@ A parancsmagok használatához először be kell jelentkeznie az Azure-fiókjáb
 
 A prediktív kísérlet exportálásához használja [ezt a mintakód-kódot](https://github.com/ritwik20/AzureML-WebServices). Miután létrehozta az. exe fájlt a kódból, beírhatja a következőt:
 
-    C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```azurepowershell
+C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```
 
 Az alkalmazás futtatása webszolgáltatási JSON-sablont hoz létre. Ha a sablont egy webszolgáltatás üzembe helyezéséhez szeretné használni, a következő információkat kell felvennie:
 
@@ -68,13 +70,15 @@ Adja hozzá őket a JSON-sablonhoz a *Tulajdonságok* csomópont gyermekeiként 
 
 Íme egy példa:
 
-    "StorageAccount": {
-            "name": "YourStorageAccountName",
-            "key": "YourStorageAccountKey"
-    },
-    "CommitmentPlan": {
-        "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
-    }
+```json
+"StorageAccount": {
+        "name": "YourStorageAccountName",
+        "key": "YourStorageAccountKey"
+},
+"CommitmentPlan": {
+    "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
+}
+```
 
 További részletekért tekintse meg a következő cikkeket és mintakód-kódot:
 

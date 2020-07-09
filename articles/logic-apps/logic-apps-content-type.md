@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666873"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Tartalomtípusok kezelése Azure Logic Appsban
 
 A különböző tartalomtípusok egy logikai alkalmazáson keresztül, például JSON-, XML-, egyszerű és bináris adatokat is elhelyezhetnek. Míg a Logic Apps támogatja az összes tartalomtípust, néhány natív támogatással rendelkezik, és nem igényel öntést vagy átalakítást a logikai alkalmazásokban. Más típusok esetén szükség lehet a castingra vagy a konverzióra. Ez a cikk azt ismerteti, hogyan kezeli a Logic Apps a tartalomtípusokat, és hogy miként lehet ezeket a típusokat megfelelően feldolgozni vagy átalakítani, ha szükséges.
 
-A tartalomtípusok kezelésére szolgáló megfelelő módszer meghatározásához Logic Apps a HTTP-hívások `Content-Type` fejlécének értékére támaszkodik, például:
+A tartalomtípusok kezelésére szolgáló megfelelő módszer meghatározásához Logic Apps a `Content-Type` http-hívások fejlécének értékére támaszkodik, például:
 
 * [alkalmazás/JSON](#application-json) (natív típus)
 * [szöveg/egyszerű](#text-plain) (natív típus)
@@ -28,7 +27,7 @@ A tartalomtípusok kezelésére szolgáló megfelelő módszer meghatározásáh
 
 ## <a name="applicationjson"></a>application/json
 
-A Logic Apps az *Application/JSON* tartalomtípusú kérelmeket JavaScript-jelölésű (JSON) objektumként tárolja és kezeli. Alapértelmezés szerint a JSON-tartalom elemzése nélkül is elemezhető. Egy "Application/JSON" típusú fejléctel rendelkező kérelem elemzéséhez használhat kifejezést. Ez a példa a `dog` `animal-type` tömb értékét adja vissza a casting nélkül: 
+A Logic Apps az *Application/JSON* tartalomtípusú kérelmeket JavaScript-jelölésű (JSON) objektumként tárolja és kezeli. Alapértelmezés szerint a JSON-tartalom elemzése nélkül is elemezhető. Egy "Application/JSON" típusú fejléctel rendelkező kérelem elemzéséhez használhat kifejezést. Ez a példa a tömb értékét adja vissza a `dog` `animal-type` Casting nélkül: 
  
 `@body('myAction')['animal-type'][0]` 
   
@@ -99,7 +98,7 @@ A Logic Apps lehetővé teszi a JSON-tartalomban szereplő tulajdonságokat jelk
      }
      ```
 
-  3. A kérelemben győződjön meg róla, hogy tartalmaz `Content-Type` egy fejlécet, és állítsa be a `application/json`fejléc értékét a következőre:.
+  3. A kérelemben győződjön meg róla, hogy tartalmaz egy `Content-Type` fejlécet, és állítsa be a fejléc értékét a következőre: `application/json` .
 
 * **JSON-művelet elemzése**
 
@@ -113,14 +112,14 @@ A Logic Apps lehetővé teszi a JSON-tartalomban szereplő tulajdonságokat jelk
 
 ## <a name="textplain"></a>szöveg/egyszerű
 
-Ha a logikai alkalmazás olyan HTTP `Content-Type` `text/plain`-üzeneteket kap, amelyeken a fejléc van beállítva, a logikai alkalmazás ezeket az üzeneteket nyers formában tárolja. Ha ezeket az üzeneteket a következő műveletekben a casting nélkül is felveszi, `Content-Type` a kérések `text/plain`a fejlécre vannak beállítva. 
+Ha a logikai alkalmazás olyan HTTP-üzeneteket kap, amelyeken a `Content-Type` fejléc van beállítva `text/plain` , a logikai alkalmazás ezeket az üzeneteket nyers formában tárolja. Ha ezeket az üzeneteket a következő műveletekben a casting nélkül is felveszi, a kérések a `Content-Type` fejlécre vannak beállítva `text/plain` . 
 
-Ha például egy egyszerű fájllal dolgozik, HTTP-kérést kap, amelynek a fejléce `Content-Type` `text/plain` a következő:
+Ha például egy egyszerű fájllal dolgozik, HTTP-kérést kap, amelynek a `Content-Type` fejléce a `text/plain` következő:
 
 `Date,Name,Address`</br>
 `Oct-1,Frank,123 Ave`
 
-Ha ezt követően egy későbbi műveletben elküldi ezt a kérést, `@body('flatfile')`mint egy másik kérelem törzse, akkor a második kéréshez egy `Content-Type` fejléc is tartozik, amely `text/plain`a következőre van beállítva:. Ha egyszerű szöveggel dolgozik, de nem adott meg fejlécet, manuálisan is elvégezheti az adat szövegbe írását a [karakterlánc () függvény](../logic-apps/workflow-definition-language-functions-reference.md#string) használatával, például a következő kifejezéssel: 
+Ha ezt követően egy későbbi műveletben elküldi ezt a kérést, mint egy másik kérelem törzse, akkor a `@body('flatfile')` második kéréshez egy fejléc is tartozik, amely a következőre van `Content-Type` beállítva: `text/plain` . Ha egyszerű szöveggel dolgozik, de nem adott meg fejlécet, manuálisan is elvégezheti az adat szövegbe írását a [karakterlánc () függvény](../logic-apps/workflow-definition-language-functions-reference.md#string) használatával, például a következő kifejezéssel: 
 
 `@string(triggerBody())`
 
@@ -128,11 +127,11 @@ Ha ezt követően egy későbbi műveletben elküldi ezt a kérést, `@body('fla
 
 ## <a name="applicationxml-and-applicationoctet-stream"></a>alkalmazás/XML és alkalmazás/oktett – Stream
 
-Logic Apps mindig megőrzi a `Content-Type` kapott HTTP-kérést vagy választ. Így ha a logikai alkalmazás a készlettel `Content-Type` együtt fogadja a tartalmat `application/octet-stream`, és egy későbbi műveletbe belefoglalja a tartalmat, a kimenő kérelem `Content-Type` is be `application/octet-stream`van állítva. Így a Logic Apps garantálhatja, hogy az adatvesztés a munkafolyamaton keresztül nem vész el. A műveleti állapotot, a bemeneteket és a kimeneteket azonban egy JSON-objektum tárolja, miközben az állapot áthalad a munkafolyamaton. 
+Logic Apps mindig megőrzi a `Content-Type` kapott HTTP-kérést vagy választ. Így ha a logikai alkalmazás a készlettel együtt fogadja a tartalmat `Content-Type` `application/octet-stream` , és egy későbbi műveletbe belefoglalja a tartalmat, a kimenő kérelem is `Content-Type` be van állítva `application/octet-stream` . Így a Logic Apps garantálhatja, hogy az adatvesztés a munkafolyamaton keresztül nem vész el. A műveleti állapotot, a bemeneteket és a kimeneteket azonban egy JSON-objektum tárolja, miközben az állapot áthalad a munkafolyamaton. 
 
 ## <a name="converter-functions"></a>Átalakító függvények
 
-Egyes adattípusok megőrzése érdekében Logic Apps átalakítja a tartalmat egy bináris Base64 kódolású karakterlánccá a megfelelő metaadatokkal, amelyek megőrzik mind `$content` a hasznos adatokat `$content-type`, mind a-t, amelyeket a rendszer automatikusan konvertál. 
+Egyes adattípusok megőrzése érdekében Logic Apps átalakítja a tartalmat egy bináris Base64 kódolású karakterlánccá a megfelelő metaadatokkal, amelyek megőrzik mind a `$content` hasznos adatokat, mind a-t `$content-type` , amelyeket a rendszer automatikusan konvertál. 
 
 Ez a lista leírja, hogyan alakítja át a Logic Apps tartalmakat a [függvények](../logic-apps/workflow-definition-language-functions-reference.md)használatakor:
 
@@ -147,20 +146,20 @@ Ez a lista leírja, hogyan alakítja át a Logic Apps tartalmakat a [függvénye
 * `dataUriToBinary()`: Az adaturi-t bináris karakterlánccá alakítja
 * `dataUriToString()`: Az adaturi-t karakterlánccá alakítja át.
 
-Ha például olyan HTTP-kérést kap `Content-Type` `application/xml`, ahol a be van állítva, például a következő tartalom:
+Ha például olyan HTTP-kérést kap, ahol a `Content-Type` be van állítva `application/xml` , például a következő tartalom:
 
 ```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomerName>Frank</CustomerName>
 ```
 
-Ezt a tartalmat a és `@xml(triggerBody())` `xml()` `triggerBody()` a függvények kifejezés használatával is elvégezheti, majd később is használhatja ezt a tartalmat. Vagy használhatja a `@xpath(xml(triggerBody()), '/CustomerName')` kifejezést a és `xpath()` `xml()` a függvényekkel. 
+Ezt a tartalmat a és a függvények kifejezés használatával is elvégezheti `@xml(triggerBody())` `xml()` `triggerBody()` , majd később is használhatja ezt a tartalmat. Vagy használhatja a `@xpath(xml(triggerBody()), '/CustomerName')` kifejezést a `xpath()` és a `xml()` függvényekkel. 
 
 ## <a name="other-content-types"></a>Egyéb tartalomtípusok
 
-A Logic Apps együttműködik a szolgáltatással, és támogatja a többi tartalomtípust is, de előfordulhat, hogy manuálisan kell lekérnie az üzenet törzsét a `$content` változó dekódolásával.
+A Logic Apps együttműködik a szolgáltatással, és támogatja a többi tartalomtípust is, de előfordulhat, hogy manuálisan kell lekérnie az üzenet törzsét a változó dekódolásával `$content` .
 
-Tegyük fel például, hogy a logikai alkalmazás egy, a `application/x-www-url-formencoded` tartalomtípussal ellátott kérelemben aktiválódik. Az összes adat megőrzése érdekében a `$content` kérelem törzsében lévő változó egy Base64-karakterláncként kódolt adattartalmat tartalmaz:
+Tegyük fel például, hogy a logikai alkalmazás egy, a tartalomtípussal ellátott kérelemben aktiválódik `application/x-www-url-formencoded` . Az összes adat megőrzése érdekében a `$content` kérelem törzsében lévő változó egy Base64-karakterláncként kódolt adattartalmat tartalmaz:
 
 `CustomerName=Frank&Address=123+Avenue`
 
@@ -184,4 +183,4 @@ Vagy manuálisan is elérheti az adatelérést egy kifejezéssel, például a k�
 
 `@string(body('formdataAction'))` 
 
-Ha azt szeretné, hogy a kimenő kérelem ugyanazzal `application/x-www-url-formencoded` a tartalomtípus-fejléccel rendelkezzen, a kérést felveheti a művelet törzsébe anélkül, hogy olyan kifejezést kellene használnia, amely `@body('formdataAction')`például a következő:. Ez a módszer azonban csak akkor működik, ha a törzs az egyetlen paraméter a `body` bemenetben. Ha egy `application/json` kérelemben megpróbálja használni `@body('formdataAction')` a kifejezést, futásidejű hibaüzenetet kap, mert a törzs küldése kódolt.
+Ha azt szeretné, hogy a kimenő kérelem ugyanazzal a `application/x-www-url-formencoded` tartalomtípus-fejléccel rendelkezzen, a kérést felveheti a művelet törzsébe anélkül, hogy olyan kifejezést kellene használnia, amely például a következő: `@body('formdataAction')` . Ez a módszer azonban csak akkor működik, ha a törzs az egyetlen paraméter a `body` bemenetben. Ha `@body('formdataAction')` egy kérelemben megpróbálja használni a kifejezést `application/json` , futásidejű hibaüzenetet kap, mert a törzs küldése kódolt.

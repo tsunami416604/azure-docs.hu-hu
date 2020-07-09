@@ -5,15 +5,15 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835495"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043444"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyelet .NET SDK: elemzési feladatok beállítása és futtatása a .NET-hez készült Azure Stream Analytics API-val
 Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat a .NET Stream Analytics API-val a felügyeleti .NET SDK használatával. Projekt beállítása, bemeneti és kimeneti források, átalakítások, valamint indítási és leállítási feladatok létrehozása. Az elemzési feladatokhoz blob Storage-ból vagy Event hub-ból továbbíthatja az adatait.
@@ -59,7 +59,7 @@ Elemzési feladatok létrehozásához használja a .NET-hez készült Stream Ana
    Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
    ```
 
-3. Adja hozzá a következő **appSettings** szakaszt az app. config fájlhoz:
+3. Adja hozzá a következő **appSettings** szakaszt a App.config fájlhoz:
    
    ```powershell
    <appSettings>
@@ -287,7 +287,7 @@ A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőfo
 ## <a name="get-support"></a>Támogatás kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK használatával. További információt a következő cikkekben talál:
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

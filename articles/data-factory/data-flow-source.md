@@ -7,13 +7,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/05/2020
+ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610183"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
 
@@ -23,22 +22,36 @@ A forrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Az adatf
 
 Minden adatfolyamhoz szükség van legalább egy forrás-átalakításra, de az adatátalakítások végrehajtásához tetszőleges számú forrást adhat hozzá. Ezeket a forrásokat összekapcsolhatja a csatlakozással, a kereséssel vagy a Union-transzformációval együtt.
 
-Minden forrás-átalakítás pontosan egy Data Factory adatkészlethez van társítva. Az adatkészlet határozza meg az adatokat, amelyeket írni vagy olvasni szeretne. Ha file-alapú adatkészletet használ, a forrás helyettesítő karaktereit és listáját használva egyszerre több fájllal is dolgozhat.
+Minden forrás-átalakítás pontosan egy adatkészlethez vagy egy társított szolgáltatáshoz van társítva. Az adatkészlet határozza meg az adatokat, amelyeket írni vagy olvasni szeretne. Ha file-alapú adatkészletet használ, a forrás helyettesítő karaktereit és listáját használva egyszerre több fájllal is dolgozhat.
 
-## <a name="supported-source-connectors-in-mapping-data-flow"></a>Támogatott forrás-összekötők a leképezési adatfolyamban
+## <a name="inline-datasets"></a>Beágyazott adatkészletek
+
+A forrás-átalakítás létrehozásakor létrehozott első döntés az, hogy a forrásadatok definiálva vannak-e egy adatkészlet-objektumban vagy a forrás-átalakításon belül. A legtöbb formátum csak az egyikben vagy a másikban érhető el. Adja meg a megfelelő összekötő-dokumentumot, amelyből megtudhatja, hogyan használhat egy adott összekötőt.
+
+Ha egy formátum a beágyazott és egy adatkészlet objektumban is támogatott, akkor mindkettőnek van előnye. Az adatkészlet-objektumok újrafelhasználható entitások, amelyek más adatfolyamatokban és tevékenységekben, például másolásban is kihasználhatók. Ezek különösen akkor hasznosak, ha megerősített sémát használ. Az adatkészletek nem a Spark-alapúak, és esetenként előfordulhat, hogy felül kell bírálni bizonyos beállításokat vagy séma-kivetítést a forrás-átalakításban.
+
+A beágyazott adatkészletek használata rugalmas sémák, egyszeri forrásoldali példányok vagy paraméteres források használata esetén ajánlott. Ha a forrás erősen paraméteres, a beágyazott adatkészletek lehetővé teszik, hogy ne hozzon létre egy "dummy" objektumot. A beágyazott adatkészletek a Spark szolgáltatáson alapulnak, és a tulajdonságaik az adatfolyamok számára natívak.
+
+Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt formátumot a **forrás típusa** választóban. A forrás-adatkészlet kiválasztása helyett válassza ki azt a társított szolgáltatást, amelyhez csatlakozni szeretne.
+
+![Beágyazott adatkészlet](media/data-flow/inline-selector.png "Beágyazott adatkészlet")
+
+##  <a name="supported-source-types"></a><a name="supported-sources"></a>Támogatott források típusai
 
 Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure-CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Az ezen összekötők beállításai a **forrás beállításai** lapon találhatók. ezekkel a beállításokkal kapcsolatos információk az összekötő dokumentációjában találhatók. 
+| Összekötő | Formátum | Adatkészlet/beágyazott |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common adatmodell (előzetes verzió)](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
-Azure Data Factory több mint [90 natív összekötőhöz](connector-overview.md)férhet hozzá. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenységet az adatok betöltéséhez az egyik támogatott átmeneti területre.
+Az ezekhez az összekötőhöz tartozó beállítások a **forrás beállításai** lapon találhatók. az információ-és adatfolyam-parancsfájlok példái a beállításokban az összekötő dokumentációjában találhatók. 
+
+Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenységet az adatok betöltéséhez az egyik támogatott átmeneti területre.
 
 ## <a name="source-settings"></a>Forrásbeállítások
 
@@ -46,6 +59,10 @@ Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beá
 
 ![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
 
+**Kimeneti adatfolyam neve:** A forrás-átalakítás neve.
+
+**Forrás típusa:** Válassza ki, hogy egy beágyazott adatkészletet vagy egy meglévő adatkészlet-objektumot szeretne használni.
+ 
 A **kapcsolatok tesztelése:** Annak ellenőrzése, hogy az adatfolyam Spark-szolgáltatása sikeresen tud-e csatlakozni a forrás-adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
 
 **Séma drift:** a [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
@@ -60,12 +77,14 @@ A **kapcsolatok tesztelése:** Annak ellenőrzése, hogy az adatfolyam Spark-szo
 
 **Mintavételezés:** A mintavétel engedélyezése a forrás sorainak számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
 
-**Többsoros sorok:** Válassza a többsoros sorok lehetőséget, ha a forrás szövegfájl olyan karakterlánc-értékeket tartalmaz, amelyek több sorra kiterjednek, azaz egy értéken belül sortöréseket. Ez a beállítás csak DelimitedText adatkészletekben érhető el.
-
 Ha ellenőrizni szeretné, hogy a forrás megfelelően van-e konfigurálva, kapcsolja be a hibakeresési módot, és olvassa be az adatelőnézett. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
 > Ha a hibakeresési mód be van kapcsolva, a hibakeresési beállításokban szereplő sorok korlátozása beállítás felülírja a forrás mintavételi beállításait az adatelőnézet során.
+
+## <a name="source-options"></a>Forrás beállításai
+
+A forrás beállításai lap az összekötőre és a választott formátumra vonatkozó beállításokat tartalmazza. További információkat és példákat a kapcsolódó [Összekötők dokumentációjában talál](#supported-sources).
 
 ## <a name="projection"></a>Vetület
 
@@ -83,26 +102,18 @@ Módosíthatja az oszlop adattípusait egy lefelé irányuló adatfolyamból sz�
 
 A **leképezés** lapon a **séma importálása** gomb lehetővé teszi, hogy egy aktív hibakeresési fürttel hozzon létre egy séma-kivetítést. Minden Forrástípus esetében elérhető, a séma importálásakor a rendszer felülírja az adatkészletben definiált leképezést. Az adatkészlet-objektum nem lesz módosítva.
 
-Ez olyan adatkészletekben hasznos, mint az összetett adatstruktúrákat támogató Avro és CosmosDB, és nem igénylik a séma-definíciókat az adatkészletben.
+Ez olyan adatkészletekben hasznos, mint az összetett adatstruktúrákat támogató Avro és CosmosDB, és nem igénylik a séma-definíciókat az adatkészletben. A beágyazott adatkészletek esetében ez az egyetlen módszer az oszlop metaadatainak a séma-eltolódás nélküli hivatkozására.
 
 ## <a name="optimize-the-source-transformation"></a>A forrás átalakítás optimalizálása
 
-A forrás-átalakítás **optimalizálása** lapján megjelenhet a **forrás** partíció típusa. Ez a beállítás csak akkor érhető el, ha a forrás Azure SQL Database. Ennek az az oka, hogy Data Factory párhuzamosan próbálkozik a csatlakozással, hogy nagy lekérdezéseket futtasson a SQL Database-forráson.
+Az **optimalizálás** lapon megadhatja a partíciók adatainak szerkesztését az egyes átalakítási lépésekben. A legtöbb esetben az **aktuális particionálás használata** optimalizálja a forrás ideális particionálási struktúráját.
+
+Ha Azure SQL Database forrásból olvassa be az olvasást, az egyéni **forrás** -particionálás valószínűleg a leggyorsabb adatok olvasását fogja végezni. Az ADF a nagyméretű lekérdezések olvasásával párhuzamosan csatlakozik az adatbázishoz. Ez a forrás particionálás egy oszlopon vagy egy lekérdezés használatával végezhető el.
 
 ![Forrás partíció beállításai](media/data-flow/sourcepart3.png "particionálás")
-
-Nem kell particionálnia az SQL Database-forrás adatait, de a partíciók nagy lekérdezések esetén hasznosak. A partíciót egy oszlopra vagy egy lekérdezésre alapozhatja.
-
-### <a name="use-a-column-to-partition-data"></a>Oszlop használata az adatparticionáláshoz
-
-A forrás táblából válassza ki a particionálni kívánt oszlopot. Állítsa be a partíciók számát is.
-
-### <a name="use-a-query-to-partition-data"></a>Adatparticionálásra szolgáló lekérdezés használata
-
-Dönthet úgy is, hogy egy lekérdezés alapján particionálja a kapcsolatokat. Adja meg egy WHERE predikátum tartalmát. Adja meg például a következőt: év > 1980.
 
 További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>További lépések
 
-Egy [származtatott oszlop átalakításának](data-flow-derived-column.md) és egy [kiválasztott átalakítás](data-flow-select.md)létrehozásának megkezdése.
+Megkezdheti az adatforgalom kiépítése egy [származtatott oszlopos átalakítással](data-flow-derived-column.md) és egy [kiválasztott átalakítással](data-flow-select.md).

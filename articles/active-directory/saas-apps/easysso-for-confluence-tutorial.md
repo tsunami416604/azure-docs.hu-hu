@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a0ac6d86c1ef4fb8f2f5b75ac47f1a25e2cda0b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c7570a21d8135e98024486372aaa49587b0d052
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749451"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a EasySSO for torkolatánál
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a EasySSO a Azure Active Directory (Azure AD) összefolyásánál. Ha integrálja az EasySSO-t az Azure AD-nal való összevonáshoz, a következőket teheti:
 
-* Vezérlés az Azure AD-ben, aki hozzáfér a EasySSO for torkolatánál.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a EasySSO az Azure AD-fiókjával való összefolyásánál.
+* Vezérlés az Azure AD-ben, aki hozzáfér a torkolatánál.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Azure AD-fiókjával való összefolyásánál.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
@@ -57,6 +57,7 @@ A EasySSO az Azure AD-be való összefolyásánál való integrálásának konfi
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **EasySSO for torkolatánál** kifejezést a keresőmezőbe.
 1. Válassza ki a **EasySSO az eredmények panelen való összefolyásánál** , majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-confluence"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a EasySSO for torkolatánál
 
@@ -89,29 +90,32 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/login.jsp`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot [az EasySSO for torkolatánál ügyfél-támogatási csapatával](mailto:support@techtime.co.nz) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ha kétségei vannak, lépjen kapcsolatba a [EasySSO támogatási csapatával](mailto:support@techtime.co.nz) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az EasySSO for torkolatánál alkalmazás megadott formátumban várja az SAML-kikötéseket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
 1. A fentieken kívül az EasySSO for torkolatánál alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
-
-    | Name |  Forrás attribútum|
-    | --------------- | --------- |
+    
+    | Name | Forrás attribútum|
+    | ---------------| --------- |
+    | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | User. mail |
     | urn: OID: 2.16.840.1.113730.3.1.241 | felhasználó. DisplayName |
-    | urn: OID: 2.5.4.42 | User. givenName |
     | urn: OID: 2.5.4.4 | felhasználó. vezetéknév |
-    | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName|
-    | urn: OID: 0.9.2342.19200300.100.1.3 | User. userPrincipalName |
-    | | |
+    | urn: OID: 2.5.4.42 | User. givenName |
+    
+    Abban az esetben, ha az Azure AD-felhasználók **sAMAccountName** konfigurálva van, le kell képeznie az **urn: OID: 0.9.2342.19200300.100.1.1** alakzatot a **sAMAccountName** attribútumra.
+    
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a tanúsítványok **letöltése** a **tanúsítványhoz (Base64)** vagy az **összevonási metaadatok XML-** beállításai elemre, és mentse a számítógépére a vagy az összes beállítást. Később szüksége lesz rá a torkolatánál EasySSO konfigurálásához.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
-
-    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
+    ![A tanúsítvány letöltési hivatkozása](./media/easysso-for-confluence-tutorial/certificate.png)
+    
+    Ha azt tervezi, hogy a EasySSO-t manuálisan kívánja végrehajtani a tanúsítvány használatával, a **bejelentkezési URL-címet** és az **Azure ad-azonosítót** is át kell másolnia az alábbi szakaszból, és el kell mentenie azokat a számítógépen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -123,7 +127,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -145,60 +149,80 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-easysso-for-confluence-sso"></a>EasySSO konfigurálása a torkolati egyszeri bejelentkezéshez
 
-1. Jelentkezzen be a EasySSO a összefolyásánál példányra rendszergazdai jogosultságokkal, és navigáljon az **Alkalmazások kezelése** szakaszhoz.
+1. Jelentkezzen be a Atlassian-összefolyásánál-példányba rendszergazdai jogosultságokkal, és navigáljon az **Alkalmazások kezelése** szakaszhoz. 
 
-    ![Alkalmazások kezelése](./media/easysso-for-confluence-tutorial/jira-admin-1.png)
+    ![Alkalmazások kezelése](./media/easysso-for-confluence-tutorial/confluence-admin-1.png)
 
-1. Kattintson a **EasySSO**elemre.
+2. A bal oldalon keresse meg a **EasySSO** , és kattintson rá. Ezután kattintson a **Konfigurálás** gombra.
 
-    ![Egyszerű egyszeri bejelentkezés](./media/easysso-for-confluence-tutorial/jira-admin-2.png)
+    ![Egyszerű egyszeri bejelentkezés](./media/easysso-for-confluence-tutorial/confluence-admin-2.png)
 
-1. Válassza az **SAML** lehetőséget. Ekkor megjelenik az SAML konfigurációs szakasza.
+3. Válassza az **SAML** lehetőséget. Ekkor megjelenik az SAML konfigurációs szakasza.
 
-    ![SAML](./media/easysso-for-confluence-tutorial/jira-admin-3.png)
+    ![SAML](./media/easysso-for-confluence-tutorial/confluence-admin-3.png)
 
-1. Válassza a legfelül a **tanúsítványok** fület, és megjelenik a következő képernyő, és keresse meg a **tanúsítvány (Base64)** vagy a **metaadat-fájlt** , amelyet az **Azure ad SSO** konfiguráció korábbi lépéseiben mentett. A folytatáshoz a következő lehetőségek állnak rendelkezésre:
+4. Válassza a fenti **tanúsítványok** fület, és a következő képernyő jelenik meg: 
 
-    ![Metaadatok URL-címe](./media/easysso-for-confluence-tutorial/jira-admin-4.png)
+    ![Metaadatok URL-címe](./media/easysso-for-confluence-tutorial/confluence-admin-4.png)
+
+5. Most keresse meg az **Azure ad SSO** -konfiguráció korábbi lépéseiben mentett **tanúsítvány (Base64)** vagy **metaadat-fájlt** . A folytatáshoz a következő lehetőségek állnak rendelkezésre:
 
     a. Használja a számítógép helyi fájljába letöltött alkalmazás-összevonási **metaadat-fájlt** . Válassza a Radio **feltöltése** gombot, és kövesse a fájl feltöltése párbeszédpanelt, amely az operációs rendszerre jellemző.
 
     **VAGY**
 
     b. Nyissa meg az alkalmazás-összevonási **metaadatokat tartalmazó fájlt** , és tekintse meg a fájl tartalmát (bármilyen egyszerű szövegszerkesztőben), és másolja a vágólapra. Válassza a **beviteli** beállítás lehetőséget, majd illessze be a vágólap tartalmát a szövegmezőbe.
-
+ 
     **VAGY**
 
     c. Teljesen manuális konfiguráció. Az alkalmazás-összevonási **tanúsítvány (Base64)** megnyitásával tekintse meg a fájl tartalmát (bármilyen egyszerű szövegszerkesztőben), és másolja a vágólapra. Illessze be a **identitásszolgáltató jogkivonat-aláíró tanúsítványok** szövegmezőbe. Ezután navigáljon az **általános** lapra, és töltse ki a **kötési URL-címet** és az entitás- **azonosító** mezőket a **bejelentkezési URL-cím** és a korábban mentett **Azure ad-azonosító** megfelelő értékeivel.
+ 
+6. Kattintson a lap alján található **Save (Mentés** ) gombra. Ekkor megjelenik a metaadatok vagy a tanúsítványfájl tartalmának elemzése a konfigurációs mezőkbe. A EasySSO for torkolatánál konfiguráció befejeződött.
 
-1. Kattintson a lap alján található **Save (Mentés** ) gombra. Ekkor megjelenik a metaadatok vagy a tanúsítványfájl tartalmának elemzése a konfigurációs mezőkbe. A EasySSO for torkolatánál konfiguráció befejeződött.
+7. A legjobb tesztelési élmény érdekében keresse meg **& a Feel (nézet** ) fület, és ellenőrizze az **SAML bejelentkezési gombját** . Ezzel a lehetőséggel külön gomb jelenik meg a torkolatánál a bejelentkező bejelentkezési képernyőn, hogy az Azure AD SAML-integráció teljes körűen tesztelve legyen. Ezt a gombot bekapcsolhatja, és beállíthatja az elhelyezését, színét és fordítását is az éles üzemmódra.
 
-1. A legjobb tesztelési élmény érdekében keresse meg **& a Feel (nézet** ) fület, és ellenőrizze az **SAML bejelentkezési gombját** . Ez a funkció lehetővé teszi, hogy az Azure AD SAML-integráció teljes körű teszteléséhez a JIRA bejelentkezési képernyőjén külön gomb legyen kiválasztva. Ezt a gombot bekapcsolhatja, és beállíthatja az elhelyezését, színét és fordítását is az éles üzemmódra.
-
-    ![Look & Feel](./media/easysso-for-confluence-tutorial/jira-admin-5.png)
+    ![Look & Feel](./media/easysso-for-confluence-tutorial/confluence-admin-5.png)
 
     > [!NOTE]
     > Ha bármilyen problémája van, forduljon a [EasySSO támogatási csapatához](mailto:support@techtime.co.nz).
 
 ### <a name="create-easysso-for-confluence-test-user"></a>EasySSO létrehozása az összefolyásánál tesztelő felhasználó számára
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a EasySSO for torkolatánál. A EasySSO for torkolatánál az igény szerinti felhasználói üzembe helyezést is támogatja, ami alapértelmezés szerint **le van tiltva** . A felhasználók üzembe helyezésének engedélyezéséhez explicit módon ellenőriznie kell, hogy a EasySSO beépülő modul konfigurációjának általános szakaszában be van-e **kapcsolva a felhasználó létrehozása a sikeres bejelentkezés** lehetőségnél. Ha egy felhasználó még nem létezik a EasySSO for torkolatánál, a hitelesítés után létrejön egy újat.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a torkolatánál. A EasySSO for torkolatánál az igény szerinti felhasználói üzembe helyezést is támogatja, ami alapértelmezés szerint **le van tiltva** . A felhasználók üzembe helyezésének engedélyezéséhez explicit módon ellenőriznie kell, hogy a EasySSO beépülő modul konfigurációjának általános szakaszában be van-e **kapcsolva a felhasználó létrehozása a sikeres bejelentkezés** lehetőségnél. Ha egy felhasználó még nem létezik a torkolatánál, a hitelesítés után létrejön egy újat.
 
-Ha azonban nem kívánja engedélyezni az automatikus felhasználó-kiépítés használatát a felhasználó első bejelentkezésekor, a felhasználóknak léteznie kell a háttérbeli felhasználói könyvtárakban a EasySSO for torkolatánál-példány a (z), például az LDAP vagy a Atlassian Crowd szolgáltatást használja.
+Ha azonban nem kívánja engedélyezni az automatikus felhasználó-kiépítés használatát a felhasználó első bejelentkezésekor, a felhasználóknak léteznie kell a háttérbeli felhasználói könyvtárakban, amelyek az összefolyásánál példányt használják, például LDAP vagy Atlassian Crowd.
 
-![Felhasználók átadása](./media/easysso-for-confluence-tutorial/jira-admin-6.png)
+![Felhasználók átadása](./media/easysso-for-confluence-tutorial/confluence-admin-6.png)
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+
+### <a name="idp-initiated-workflow"></a>Identitásszolgáltató által kezdeményezett munkafolyamat
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a EasySSO for torkolatánál csempére kattint, automatikusan be kell jelentkeznie a EasySSO olyan összefolyásánál, amelyhez be van állítva az egyszeri bejelentkezés. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a EasySSO for torkolatánál csempe elemre kattint, automatikusan be kell jelentkeznie arra az összefolyásánál-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="sp-initiated-workflow"></a>Az SP által kezdeményezett munkafolyamat
+
+Ebben a szakaszban tesztelheti az Azure AD egyszeri bejelentkezési konfigurációját a összefolyásánál **SAML bejelentkezési** gomb használatával.
+
+![Felhasználói SAML-bejelentkezés](./media/easysso-for-confluence-tutorial/confluence-admin-7.png)
+
+Ez a forgatókönyv feltételezi, hogy engedélyezte az **SAML-bejelentkezési gomb** megjelenését a EasySSO-konfiguráció lapjának **megjelenés & működés** lapján (lásd fent). A meglévő munkamenetek zavarásának elkerüléséhez nyissa meg az összefolyásánál bejelentkezési URL-címét böngésző inkognitóban módban. Kattintson az **SAML-bejelentkezési** gombra, és a rendszer átirányítja az Azure ad felhasználói hitelesítési folyamatára. A sikeres befejezést követően a rendszer átirányítja az összefolyásánál lévő példányra az SAML-n keresztül hitelesített felhasználóként.
+
+Az Azure AD-ből való átirányítást követően lehetséges, hogy a következő képernyővel találkozhat:
+
+![EasySSO-meghibásodási képernyő](./media/easysso-for-confluence-tutorial/confluence-admin-8.png)
+
+Ebben az esetben az [oldalon található utasításokat]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) követve hozzáférhet a **Atlassian-Confluence. log** fájlhoz. A hiba részleteit a EasySSO-hiba oldalon található hivatkozási azonosító fogja tartalmazni.
+
+Ha problémák merülnek fel a naplóüzenetek kivonatolásával kapcsolatban, lépjen kapcsolatba a [EasySSO támogatási csapatával](mailto:support@techtime.co.nz).
 
 ## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -207,4 +231,3 @@ Ha a hozzáférési panelen a EasySSO for torkolatánál csempére kattint, auto
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [A EasySSO elleni védelem speciális láthatósággal és vezérlőkkel való összefolyásánál](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ca3f4b1e1061b0ca86cc836849499b83ee055fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826519"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének hibaelhárítása
@@ -284,7 +284,7 @@ A megfelelő segítség érdekében kérjük, hogy az esetek megnyitásakor a le
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "A Azure AD-szinkronizáló szolgáltatás újraindítása"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "A támogatási kód az ablak jobb alsó sarkában található."
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek további információkat nyújtanak az Azure AD-n keresztüli jelszó-visszaállításról:
 

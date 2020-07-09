@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85297069"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Hitelesítés és engedélyezés az Azure statikus Web Apps előzetes verziójában
+# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Az Azure Static Web Apps előzetes verziójának hitelesítése és engedélyezése
 
 Az Azure statikus Web Apps a következő szolgáltatók hitelesítésének kezelésével egyszerűsíti a hitelesítési élményt:
 
@@ -24,7 +24,7 @@ Az Azure statikus Web Apps a következő szolgáltatók hitelesítésének kezel
 - Google<sup>1</sup>
 - Twitter
 
-A szolgáltatóra vonatkozó [meghívások](#invitations) társítják a felhasználókat a szerepkörökhöz, és az engedéllyel rendelkező felhasználók a _Routes. JSON_ fájlban meghatározott szabályok szerint kapnak hozzáférést az [útvonalakhoz](routes.md) .
+A szolgáltatóra vonatkozó [meghívások](#invitations) társítják a felhasználókat a szerepkörökhöz, és az engedéllyel rendelkező felhasználók hozzáférést kapnak az [útvonalakhoz](routes.md) a fájl _routes.jsban_ meghatározott szabályok szerint.
 
 Alapértelmezés szerint minden hitelesítő szolgáltató engedélyezve van. A hitelesítési szolgáltató korlátozásához tiltsa le a [hozzáférést](#block-an-authorization-provider) egy egyéni útválasztási szabállyal.
 
@@ -37,13 +37,13 @@ Minden olyan felhasználó, aki egy statikus webalkalmazáshoz fér hozzá, egy 
 - **Névtelen**: minden felhasználó automatikusan a _Névtelen_ szerepkörhöz tartozik.
 - **hitelesített**: a bejelentkezett összes felhasználó a _hitelesített_ szerepkörbe tartozik.
 
-A beépített szerepkörökön kívül új szerepköröket is létrehozhat, amelyeket meghívókkal rendelhet hozzá a felhasználókhoz, és hivatkozhat rájuk az _Routes. JSON_ fájlban.
+A beépített szerepkörökön kívül új szerepköröket is létrehozhat, amelyeket meghívókkal rendelhet hozzá a felhasználókhoz, és hivatkozhat rájuk a fájl _routes.js_ .
 
 ## <a name="role-management"></a>Szerepkör-kezelés
 
 ### <a name="add-a-user-to-a-role"></a>Felhasználó hozzáadása szerepkörhöz
 
-Ha felhasználókat szeretne hozzáadni a webhelyhez, olyan meghívókat hoz létre, amelyek lehetővé teszik a felhasználók adott szerepkörökhöz való hozzárendelését. A szerepkörök meghatározása és karbantartása az _Routes. JSON_ fájlban történik.
+Ha felhasználókat szeretne hozzáadni a webhelyhez, olyan meghívókat hoz létre, amelyek lehetővé teszik a felhasználók adott szerepkörökhöz való hozzárendelését. A szerepkörök meghatározása és karbantartása a fájl _routes.js_ .
 
 <a name="invitations" id="invitations"></a>
 
@@ -192,6 +192,10 @@ A szolgáltató letiltásához [útválasztási szabályokat](routes.md) hozhat 
   "statusCode": "404"
 }
 ```
+
+## <a name="restrictions"></a>Korlátozások
+
+Az általános korlátozásokról és korlátozásokról a [kvóták című cikkben](quotas.md) olvashat.
 
 ## <a name="next-steps"></a>További lépések
 

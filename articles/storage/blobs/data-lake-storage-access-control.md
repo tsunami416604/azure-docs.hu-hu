@@ -8,18 +8,17 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193522"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
 Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). Ez a cikk a Data Lake Storage Gen2 hozzáférés-vezérlési modelljének alapjait összegzi.
 
-<a id="azure-role-based-access-control-rbac" />
+<a id="azure-role-based-access-control-rbac"></a>
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
@@ -76,7 +75,7 @@ A fájl-és könyvtári szintű engedélyek megadásához tekintse meg a követk
 |REST API |[Elérési út – frissítés](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Ha a rendszerbiztonsági tag egy egyszerű *szolgáltatásnév* , fontos, hogy használja az egyszerű szolgáltatásnév objektum-azonosítóját, nem pedig a kapcsolódó alkalmazás regisztrációs OBJEKTUMának azonosítóját. Az egyszerű szolgáltatásnév objektum-AZONOSÍTÓjának lekéréséhez nyissa meg az Azure CLI-t, majd `az ad sp show --id <Your App ID> --query objectId`használja a következő parancsot:. Ügyeljen arra, hogy a `<Your App ID>` helyőrzőt cserélje le az alkalmazás-regisztrációhoz tartozó alkalmazás-azonosítóra.
+> Ha a rendszerbiztonsági tag egy egyszerű *szolgáltatásnév* , fontos, hogy használja az egyszerű szolgáltatásnév objektum-azonosítóját, nem pedig a kapcsolódó alkalmazás regisztrációs OBJEKTUMának azonosítóját. Az egyszerű szolgáltatásnév objektum-AZONOSÍTÓjának lekéréséhez nyissa meg az Azure CLI-t, majd használja a következő parancsot: `az ad sp show --id <Your App ID> --query objectId` . Ügyeljen arra, hogy a `<Your App ID>` helyőrzőt cserélje le az alkalmazás-regisztrációhoz tartozó alkalmazás-azonosítóra.
 
 ### <a name="types-of-access-control-lists"></a>Hozzáférés-vezérlési listák típusai
 
@@ -123,12 +122,12 @@ Az Data Lake Storage Gen2 által használt POSIX stílusú modellben az elemhez 
 
 A következő táblázat felsorolja azokat a gyakori forgatókönyveket, amelyekkel megtudhatja, hogy mely engedélyek szükségesek bizonyos műveletek elvégzéséhez egy Storage-fiókon.
 
-|    Művelet             |    /    | Oregon | Portland | A. txt fájl     |
+|    Művelet             |    /    | Oregon | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Az adatgyűjtés. txt fájl olvasása            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Hozzáfűzés az adat. txt fájlhoz       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| A. txt fájl törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Adatfájl létrehozása. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Olvasási Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Hozzáfűzés Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Data.txt törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt létrehozása          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Listáját                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | /Oregon/listázása           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | /Oregon/Portland/listázása  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -251,7 +250,7 @@ Fájl vagy könyvtár létrehozásakor a rendszer a umask használatával módos
 
 A umask, amely a 007-re beállított állandó érték Azure Data Lake Storage Gen2. Ez az érték a következőre van lefordítva:
 
-| umask-összetevő     | Numerikus alak | Rövid alak | Jelentés |
+| umask-összetevő     | Numerikus alak | Rövid alak | Értelmezés |
 |---------------------|--------------|------------|---------|
 | umask. owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask. owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 

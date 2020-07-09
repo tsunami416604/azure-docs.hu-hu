@@ -3,12 +3,11 @@ title: Azure Resource Manager sablon mintái
 description: Azure Container Instances különböző konfigurációkban való üzembe helyezéséhez Azure Resource Manager sablon mintáinak megkeresése
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299757"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances Azure Resource Manager sablonjai
 
@@ -26,11 +25,11 @@ Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#
 | **Kötetek** ||
 | [emptyDir][vol-emptydir] | Két Linux-tárolót telepít, amelyek osztoznak egy emptyDir-köteten. |
 | [gitRepo][vol-gitrepo] | Üzembe helyez egy GitHub-tárházat klónozott Linux-tárolót, és kötetként csatlakoztatja azt. |
-| [titkos kód][vol-secret] | Egy Linux-tárolót helyez üzembe egy titkos kötetként csatlakoztatott PFX-tanúsítványsal. |
+| [titkos][vol-secret] | Egy Linux-tárolót helyez üzembe egy titkos kötetként csatlakoztatott PFX-tanúsítványsal. |
 | **Hálózat** ||
 | [UDP-vel feltett tároló][net-udp] | Egy olyan Windows vagy Linux rendszerű tároló üzembe helyezése, amely egy UDP-portot tesz elérhetővé. |
 | [Linux-tároló nyilvános IP-címmel][net-publicip] | Egyetlen linuxos tárolót helyez üzembe egy nyilvános IP-címen keresztül. |
-| [Tároló-csoport üzembe helyezése virtuális hálózattal (előzetes verzió)][net-vnet] | Üzembe helyez egy új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot. |
+| [Tároló-csoport üzembe helyezése virtuális hálózattal][net-vnet] | Üzembe helyez egy új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot. |
 | **Azure-erőforrások** ||
 | [Azure Storage-fiók és-fájlmegosztás létrehozása][az-files] | Az Azure CLI-t használja egy tároló példányban egy Storage-fiók és egy Azure Files-megosztás létrehozásához.
 
@@ -42,7 +41,7 @@ Az erőforrások Resource Manager-sablonokkal való üzembe helyezésének szám
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Azure Portalra][deploy-portal]
 
 [REST API][deploy-rest]
 

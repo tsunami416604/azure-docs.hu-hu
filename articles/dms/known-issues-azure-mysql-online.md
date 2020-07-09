@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235281"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Az online áttelepítéssel kapcsolatos problémák & a MySQL-hez készült Azure-ADATBÁZISra vonatkozó korlátozásokat Azure Database Migration Service
@@ -33,9 +33,9 @@ A MySQL-ről Azure Database for MySQLre való online áttelepítéssel kapcsolat
   - MySQL Community Edition
   - InnoDB motor
 - Azonos verziójú áttelepítés. A MySQL 5,6 áttelepítése Azure Database for MySQL 5,7-re nem támogatott.
-- Bináris naplózás engedélyezése a My. ini (Windows) vagy a My. cnf (UNIX) rendszeren
+- Bináris naplózás engedélyezése my.ini (Windows) vagy My. cnf (UNIX) rendszeren
   - Server_id tetszőleges számú vagy egyenlő értékre állítja, például Server_id = 1 (csak MySQL 5,6 esetén)
-  - A log-bin = \<Path> beállítása (csak MySQL 5,6 esetén)
+  - Log-bin = \<path> (csak MySQL 5,6) beállítása
   - Binlog_format = sor beállítása
   - Expire_logs_days = 5 (csak a MySQL 5,6 esetén ajánlott)
 - A felhasználónak rendelkeznie kell a ReplicationAdmin szerepkörrel.
@@ -93,7 +93,7 @@ A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek mérete nagy m�
 
 Ha az AWS RDS MySQL-ről a Azure Database for MySQLra próbál online áttelepítést végezni, akkor a következő hibák merülhetnek fel.
 
-- **Hiba:** A ({0}z) "" adatbázis külső kulcsa a cél. Javítsa a célt, és indítson új adatmigrálási tevékenységet. Futtassa az alábbi szkriptet a célhelyen a külső kulcs (ok) listázásához
+- **Hiba:** A ( {0} z) "" adatbázis külső kulcsa a cél. Javítsa a célt, és indítson új adatmigrálási tevékenységet. Futtassa az alábbi szkriptet a célhelyen a külső kulcs (ok) listázásához
 
   **Korlátozás**: Ha a sémában idegen kulcsok vannak, az áttelepítés kezdeti terhelése és folyamatos szinkronizálása sikertelen lesz.
   **Áthidaló megoldás**: hajtsa végre a következő szkriptet a MySQL workbenchben a drop Foreign Key parancsfájl kinyeréséhez és a külső kulcshoz tartozó parancsfájl hozzáadásához:
@@ -102,7 +102,7 @@ Ha az AWS RDS MySQL-ről a Azure Database for MySQLra próbál online áttelepí
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **Hiba:** A ({0}z) "" adatbázis nem létezik a kiszolgálón. A megadott MySQL-forráskiszolgáló esetében különbözőnek számítanak a kis- és nagybetűk. Ellenőrizze az adatbázis nevét.
+- **Hiba:** A (z {0} ) "" adatbázis nem létezik a kiszolgálón. A megadott MySQL-forráskiszolgáló esetében különbözőnek számítanak a kis- és nagybetűk. Ellenőrizze az adatbázis nevét.
 
   **Korlátozás**: Ha MySQL-adatbázist telepít át az Azure-ba a parancssori felületen (CLI), akkor a felhasználók ezt a hibát érhetik el. A szolgáltatás nem találta meg az adatbázist a forráskiszolgálón, mert lehetséges, hogy helytelen adatbázisnevet adott meg, vagy az adatbázis nem létezik a felsorolt kiszolgálón. Megjegyzés: az adatbázisok nevei megkülönböztetik a kis-és nagybetűket.
 

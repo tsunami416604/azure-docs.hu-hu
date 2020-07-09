@@ -1,18 +1,18 @@
 ---
 title: Azure-alkalmazások által felügyelt alkalmazás-ajánlat – közzétételi útmutató – Azure Marketplace
 description: Ez a cikk ismerteti a felügyelt alkalmazások Azure Marketplace-en való közzétételének követelményeit.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
 ms.date: 04/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 5bd89e406c3067585595479dc1d8351e9ea7eea8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856113"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119820"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Közzétételi útmutató az Azure által felügyelt alkalmazásokhoz
 
@@ -34,7 +34,7 @@ Használja a felügyelt alkalmazás ajánlat típusát a következő feltételek
 |---------|---------|
 |Azure-előfizetés | A felügyelt alkalmazásokat az ügyfél előfizetéséhez kell telepíteni, de egy harmadik fél is felügyelheti. |
 |Számlázás és mérés    |  Az erőforrások az ügyfél Azure-előfizetésében érhetők el. Az utólagos elszámolású fizetési modellt használó virtuális gépeket a Microsofton keresztül, az ügyfél Azure-előfizetésén keresztül számlázzák. <br><br> A saját licencű virtuális gépekhez a Microsoft az ügyfél-előfizetésben felmerülő összes infrastrukturális költséget számláz, de a szoftveres licencelési díjakat közvetlenül az ügyféllel együtt kell lebonyolítani.        |
-|Azure-kompatibilis virtuális merevlemez (VHD)    |   A virtuális gépeket Windows vagy Linux rendszerre kell építeni.<br><br>A linuxos virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Az Azure-ban támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).<br><br>A Windows virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Azure-alkalmazási ajánlat létrehozása](./partner-center-portal/create-new-azure-apps-offer.md). |
+|Azure-kompatibilis virtuális merevlemez (VHD)    |   A virtuális gépeket Windows vagy Linux rendszerre kell építeni.<br><br>A linuxos virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Az Azure-ban támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md).<br><br>A Windows virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Azure-alkalmazási ajánlat létrehozása](./partner-center-portal/create-new-azure-apps-offer.md). |
 
 ---
 
@@ -44,7 +44,7 @@ Használja a felügyelt alkalmazás ajánlat típusát a következő feltételek
 > [!Note]
 > Már elérhető egy felhőalapú megoldás-szolgáltató (CSP) partneri csatorna. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

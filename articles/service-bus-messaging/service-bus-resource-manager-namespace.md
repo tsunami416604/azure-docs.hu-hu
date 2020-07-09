@@ -1,25 +1,17 @@
 ---
 title: Azure Service Bus névtér létrehozása sablon használatával
 description: Service Bus üzenetküldési névtér létrehozása Azure Resource Manager sablon használatával
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 5febdd63ab6f854ca3244f8449f6f715a75e735f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336832"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Service Bus névtér létrehozása Azure Resource Manager sablon használatával
 
@@ -86,7 +78,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál ebben az oktatóanyag
 * [Az Azure CLI használatával](../azure-resource-manager/templates/deploy-cli.md).
 * [REST API használatával](../azure-resource-manager/templates/deploy-rest.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud Shell továbbra is nyitva van, nem kell másolni/futtatnia a következő parancsfájl első és második sorát.
 

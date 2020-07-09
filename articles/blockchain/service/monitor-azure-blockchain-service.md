@@ -2,14 +2,13 @@
 title: Az Azure Blockchain Service (ABS) figyelése
 description: Az Azure Blockchain szolgáltatás monitorozása Azure Monitor
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214043"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Az Azure Blockchain szolgáltatás monitorozása Azure Monitor  
 
@@ -79,7 +78,7 @@ Minden erőforrás-napló egy legfelső szintű közös sémát használ a block
 A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonságait sorolja fel Azure Monitor-naplókba vagy Azure Storage-ba gyűjtve.  
 
 
-| Tulajdonság neve  | Leírás |
+| Tulajdonság neve  | Description |
 |:---|:---|
 | time | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | resourceID  | Az Azure Blockchain Service-erőforrás, amely számára engedélyezve vannak a naplók.  |
@@ -89,8 +88,8 @@ A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonsá
 | NodeLocation  | Az az Azure-régió, ahol a blockchain-tag telepítve van.  |
 | BlockchainNodeName  | Az Azure Blockchain-szolgáltatás azon csomópontjának neve, amelyen a műveletet végzi.   |
 | EthMethod  | A metódust, amelyet az alapul szolgáló blockchain protokoll hív meg kvórumként, eth_sendTransactions, eth_getBlockByNumber stb.  |
-| Ügynök  | A felhasználó nevében eljáró felhasználói ügynök, például böngésző Mozilla, Edge stb. Az értékek például a következők: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
-| Kód   | HTTP-hibakódok. A 4XX és a 5XX általában a hibákra vonatkoznak.  |
+| Ügynök  | A felhasználó nevében eljáró felhasználói ügynök, például böngésző Mozilla, Edge stb. Az értékek például a következők: "Mozilla/5.0 (Linux x64) node.js/8.16.0 V8/6.2.414.77"  |
+| Code   | HTTP-hibakódok. A 4XX és a 5XX általában a hibákra vonatkoznak.  |
 | NodeHost  | A csomópont DNS-neve.   |
 | RequestMethodName | A HTTP-metódus neve, a lehetséges értékek itt a létrehozási tag, a meglévő tag részleteinek beolvasása, törlés a tag törlésére, a frissítés a tagok frissítése érdekében.   |
 | BlockchainMemberName  | A felhasználó által megadott Azure Blockchain-szolgáltatási tag neve.  |
@@ -105,7 +104,7 @@ A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonsá
 Az alábbi táblázat az Azure Blockchain-alkalmazások naplóihoz tartozó tulajdonságokat sorolja fel.
 
 
-| Tulajdonság neve  | Leírás |
+| Tulajdonság neve  | Description |
 |:---|:---|
 | time | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | resourceID  | Az Azure Blockchain Service-erőforrás, amely számára engedélyezve vannak a naplók.|
@@ -115,7 +114,7 @@ Az alábbi táblázat az Azure Blockchain-alkalmazások naplóihoz tartozó tula
 | NodeLocation  | Az az Azure-régió, ahol a blockchain-tag telepítve van.  |
 | BlockchainNodeName  | Az Azure Blockchain-szolgáltatás azon csomópontjának neve, amelyen a műveletet végzi.   |
 | BlockchainMessage    | Ez a mező tartalmazza a Blockchain, amely az adategyszerű naplók. Az ABS-kvórum esetében ez kvórum naplókat tartalmaz. Információkkal szolgál arról, hogy milyen típusú naplóbejegyzés van a tájékoztatás, a hiba, a figyelmeztetés és egy olyan karakterlánc, amely további információkat nyújt a végrehajtott műveletről.   |
-| TenantID    | Az Azure Blockchain szolgáltatás régió-specifikus bérlője. A mező formátuma: https://westlake-rp-prod. <region>. cloudapp.Azure.com, ahol a régió a központilag telepített tag Azure-régióját adja meg.       |
+| TenantID    | Az Azure Blockchain szolgáltatás régió-specifikus bérlője. A mező formátuma: https://westlake-rp-prod . <region> . cloudapp.azure.com, ahol a régió a központilag telepített tag Azure-régióját adja meg.       |
 | SourceSystem   | A rendszer feltölti a naplókat, ebben az esetben ez az **Azure**.    |
 
 
@@ -131,7 +130,7 @@ Az összes Azure Monitor támogatott mérőszám (beleértve az Azure Blockchain
 A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforrásához összegyűjtött mérőszámok listáját tartalmazza.
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Leírás   |
+| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description   |
 |---|---|---|---|
 | Függőben lévő tranzakciók   | Darabszám  |  Átlag | A bányászra váró tranzakciók száma.   |
 | Feldolgozott blokkok   | Darabszám  | Összeg  |  Az egyes időintervallumokban feldolgozott blokkok száma. Jelenleg a blokk mérete 5 másodperc, ezért egy percen belül minden egyes csomópont 5 perc alatt feldolgozza 12 blokkot és 60 blokkot.   |
@@ -143,7 +142,7 @@ A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforr�
 A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erőforrásához összegyűjtött különböző kapcsolatok mérőszámait. Ezek az NGINX proxy metrikái.
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Leírás |
+| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description |
 |---|---|---|---|
 | Elfogadott kapcsolatok   | Darabszám  |  Összeg | Az elfogadott ügyfélkapcsolatok teljes száma.   |
 | Aktív kapcsolatok  | Darabszám  | Átlag  |  Az aktív ügyfélkapcsolatok aktuális száma, beleértve a várakozási kapcsolatokat.    |
@@ -156,7 +155,7 @@ A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erő
 A következő táblázat felsorolja az Azure Blockchain-tag erőforrásának egyes csomópontjain összegyűjtött teljesítménymutatókat.  
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Leírás   |
+| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description   |
 |---|---|---|---|
 | CPU-használat százaléka   | Százalék  |  Max | A CPU-használat százalékos aránya.     |
 | IO olvasási bájtok   | Kilobájtban   | Összeg  |  Az IO olvasási bájtjainak összege az blockchain-tag erőforrásának összes csomópontján.      |

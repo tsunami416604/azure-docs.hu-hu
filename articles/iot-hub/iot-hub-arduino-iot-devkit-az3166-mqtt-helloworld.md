@@ -11,10 +11,9 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733495"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
@@ -49,11 +48,11 @@ Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-
 Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > MQTT**, és válassza a **MQTTClient**lehetőséget. Megnyílik egy új VS Code ablak a projekt mappájával.
 
 > [!NOTE]
-> Megnyithatja például a parancssorból is. A `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+> Megnyithatja például a parancssorból is. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Az Arduino-vázlat felépítése és feltöltése a fejlesztői készlet
 
-A `Ctrl+P` futtatáshoz `task device-upload`írja `Cmd+P`be a (MacOS:) parancsot. A feltöltés befejezése után a fejlesztői készlet újraindítja és futtatja a vázlatot.
+`Ctrl+P`A futtatáshoz írja be a (MacOS: `Cmd+P` ) parancsot `task device-upload` . A feltöltés befejezése után a fejlesztői készlet újraindítja és futtatja a vázlatot.
 
 ![eszköz – feltöltés](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
@@ -64,11 +63,11 @@ A `Ctrl+P` futtatáshoz `task device-upload`írja `Cmd+P`be a (MacOS:) parancsot
 
 A VS Code-ban kövesse ezt az eljárást a soros figyelő megnyitásához és beállításához:
 
-1. Kattintson az `COM[X]` állapotsorban található szóra a megfelelő com-port beállításához `STMicroelectronics`a ![következővel: set-com-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Kattintson az `COM[X]` állapotsorban található szóra a megfelelő com-port beállításához a következővel `STMicroelectronics` : ![ set-com-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Kattintson az állapotsorban található Power plugin ikonra a soros figyelő megnyitásához: ![soros figyelő](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Kattintson az állapotsorban található Power plugin ikonra a soros figyelő megnyitásához: ![ soros figyelő](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Az állapotsoron kattintson a Baud-arányt jelölő számra, és állítsa be a `115200`következőre: ![set-Baud-Rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Az állapotsoron kattintson a Baud-arányt jelölő számra, és állítsa be a következőre `115200` : ![ set-Baud-Rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 A soros figyelő megjeleníti a minta vázlat által küldött összes üzenetet. A vázlat csatlakoztatja a fejlesztői készlet a Wi-Fi-hez. A Wi-Fi-kapcsolat sikeressége után a vázlat üzenetet küld a MQTT-közvetítőnek. Ezután a minta ismételten két "iot.eclipse.org" üzenetet küld a QoS 0 és a QoS 1 használatával.
 

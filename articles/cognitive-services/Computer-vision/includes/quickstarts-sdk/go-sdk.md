@@ -10,36 +10,31 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d8f40ab57ee2569b2cb5bf62f391919476b8ab17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 40796951fe356fcf950b83c6ac771a0ca98ffd5a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80136013"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073215"
 ---
 <a name="HOLTop"></a>
 
-[Útmutató a dokumentáció](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision) | -[csomagjához](https://github.com/Azure/azure-sdk-for-go)
+[Dokumentáció](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)  |  [Csomag](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Go](https://golang.org/dl/) legújabb verziója
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="setting-up"></a>Beállítás
 
-### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure-erőforrás létrehozása
-
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Computer Vision a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
-
-* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
-
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs `COMPUTER_VISION_ENDPOINT`és a végpont URL-címéhez, amelynek neve és.
-
 ### <a name="create-a-go-project-directory"></a>Go-projekt könyvtárának létrehozása
 
-A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt `my-app`számára, és keresse meg a nevet.
+A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt számára, `my-app` és keresse meg a nevet.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -48,12 +43,12 @@ cd my-app
 
 A munkaterület három mappát fog tartalmazni:
 
-* **src** – ez a könyvtár a forráskódot és a csomagokat fogja tartalmazni. A `go get` paranccsal telepített csomagok ebben a könyvtárban lesznek.
-* **pkg** – ez a könyvtár tartalmazni fogja a lefordított go Package objektumokat. Ezek a fájlok mindegyike `.a` rendelkezik bővítménnyel.
-* **bin** – ez a könyvtár fogja tartalmazni a futtatásakor `go install`létrehozott bináris végrehajtható fájlokat.
+* **src** – ez a könyvtár a forráskódot és a csomagokat fogja tartalmazni. A paranccsal telepített csomagok `go get` ebben a könyvtárban lesznek.
+* **pkg** – ez a könyvtár tartalmazni fogja a lefordított go Package objektumokat. Ezek a fájlok mindegyike rendelkezik `.a` bővítménnyel.
+* **bin** – ez a könyvtár fogja tartalmazni a futtatásakor létrehozott bináris végrehajtható fájlokat `go install` .
 
 > [!TIP]
-> Ha többet szeretne megtudni a go-munkaterület struktúrájáról, tekintse meg a [Go Language dokumentációját](https://golang.org/doc/code.html#Workspaces). Ez az útmutató a és `$GOPATH` `$GOROOT`a beállításával kapcsolatos információkat tartalmaz.
+> Ha többet szeretne megtudni a go-munkaterület struktúrájáról, tekintse meg a [Go Language dokumentációját](https://golang.org/doc/code.html#Workspaces). Ez az útmutató a és a beállításával kapcsolatos információkat tartalmaz `$GOPATH` `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>Az ügyféloldali kódtár telepítése a Go-hoz
 
@@ -71,14 +66,14 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go-alkalmazás létrehozása
 
-Következő lépésként hozzon létre egy **src** fájlt a ( `sample-app.go`z) nevű src könyvtárban:
+Következő lépésként hozzon létre egy fájlt a (z) nevű **src** könyvtárban `sample-app.go` :
 
 ```bash
 cd src
 touch sample-app.go
 ```
 
-Nyissa meg `sample-app.go` az előnyben részesített ide-vagy szövegszerkesztőben. Ezután adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
+Nyissa meg az `sample-app.go` előnyben részesített ide-vagy szövegszerkesztőben. Ezután adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_imports)]
 
@@ -92,7 +87,7 @@ Ezután megkezdheti a kód hozzáadását a különböző Computer Vision művel
 
 A következő osztályok és felületek a Computer Vision go SDK főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Name|Leírás|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Ez az osztály az összes Computer Vision funkcióhoz szükséges, például a képek elemzéséhez és a szöveges olvasáshoz. Ezt az előfizetési adatokkal hozza létre, és a legtöbb képművelet végrehajtásához használja.|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Ez a típus egy **AnalyzeImage** függvény hívásának eredményét tartalmazza. A kategória-specifikus függvények hasonló típusúak.|
@@ -110,9 +105,9 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a lépés azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Computer Vision kulcshoz `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT` a végponthoz, a nevet és a-t.
+> Ez a lépés azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Computer Vision kulcshoz és a végponthoz, a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` és a-t `COMPUTER_VISION_ENDPOINT` .
 
-Hozzon `main` létre egy függvényt, és adja hozzá a következő kódot egy ügyfél létrehozásához a végponttal és a kulccsal.
+Hozzon létre egy `main` függvényt, és adja hozzá a következő kódot egy ügyfél létrehozásához a végponttal és a kulccsal.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_client)]
 
@@ -122,7 +117,7 @@ A következő kód a Client objektum használatával elemzi a távoli rendszerk�
 
 ### <a name="set-up-test-image"></a>Tesztelési rendszerkép beállítása
 
-Először mentse a hivatkozást az elemezni kívánt rendszerkép URL-címére. Ezt a függvényen `main` belül helyezheti el.
+Először mentse a hivatkozást az elemezni kívánt rendszerkép URL-címére. Ezt a függvényen belül helyezheti el `main` .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
 
@@ -203,15 +198,15 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő függvény adatokat nyomtat ki a kép&mdash;típusáról, legyen szó ClipArt vagy vonalas rajzról.
+A következő függvény adatokat nyomtat ki a kép típusáról, &mdash; legyen szó ClipArt vagy vonalas rajzról.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
-A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Az ebben a szakaszban szereplő kód egy olyan függvényt `RecognizeTextReadAPIRemoteImage`határoz meg, amely az ügyfél objektumával azonosítja és Kinyeri a nyomtatott vagy kézírásos szöveget a képen.
+A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Az ebben a szakaszban szereplő kód egy olyan függvényt határoz meg, `RecognizeTextReadAPIRemoteImage` amely az ügyfél objektumával azonosítja és Kinyeri a nyomtatott vagy kézírásos szöveget a képen.
 
-Adja hozzá a minta rendszerkép-referenciát és a `main` függvény hívását a függvényhez.
+Adja hozzá a minta rendszerkép-referenciát és a függvény hívását a `main` függvényhez.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
@@ -220,7 +215,7 @@ Adja hozzá a minta rendszerkép-referenciát és a `main` függvény hívását
 
 ### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
-Adja meg az új függvényt a szöveg `RecognizeTextReadAPIRemoteImage`olvasásához. Adja hozzá az alábbi kódot, amely meghívja a **BatchReadFile** metódust az adott képhez. Ez a metódus egy műveleti azonosítót ad vissza, és egy aszinkron folyamatot indít el a rendszerkép tartalmának olvasásához.
+Adja meg az új függvényt a szöveg olvasásához `RecognizeTextReadAPIRemoteImage` . Adja hozzá az alábbi kódot, amely meghívja a **BatchReadFile** metódust az adott képhez. Ez a metódus egy műveleti azonosítót ad vissza, és egy aszinkron folyamatot indít el a rendszerkép tartalmának olvasásához.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_call)]
 
@@ -236,7 +231,7 @@ Adja hozzá a következő kódot a beolvasott szöveges adat elemzéséhez és m
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_display)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `go run` paranccsal.
 
@@ -244,7 +239,7 @@ Futtassa az alkalmazást az alkalmazás könyvtárából a `go run` paranccsal.
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

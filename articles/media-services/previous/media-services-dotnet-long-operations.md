@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 43d9a6adc935010eab6e5e52d73f2019c8afcf5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887158"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Élő közvetítés továbbítása Azure Media Services
@@ -30,7 +29,7 @@ A Microsoft Azure Media Services olyan API-kat kínál, amelyek kérelmeket kül
 A Media Services .NET SDK olyan API-kat biztosít, amelyek elküldik a kérést, és megvárja, amíg a művelet befejeződik (belsőleg, az API-k bizonyos időközönként lekérdezik a művelet előrehaladását). Például a csatorna hívásakor. A Start () függvény a metódust a csatorna elindítása után adja vissza. Használhatja az aszinkron verziót is: várakozási csatorna. StartAsync () (a feladat-alapú aszinkron mintázattal kapcsolatos információkért lásd: [Koppintson](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Azok az API-k, amelyek műveleti kérelmet küldenek, majd lekérdezik az állapotot, amíg a művelet befejeződik, "lekérdezési módszereknek" nevezzük. Ezeket a metódusokat (különösen az aszinkron verziót) a gazdag ügyfélalkalmazások és/vagy állapot-nyilvántartó szolgáltatások esetében ajánlott használni.
 
 Vannak olyan helyzetek, amikor egy alkalmazás nem várhat hosszú ideig futó HTTP-kérést, és manuálisan szeretné lekérdezni a művelet folyamatát. Egy tipikus példa egy állapot nélküli webszolgáltatást használó böngésző: Ha a böngésző a csatorna létrehozására kéri, a webszolgáltatás hosszan futó műveletet kezdeményez, és visszaadja a művelet AZONOSÍTÓját a böngészőnek. A böngésző ezután megkérheti a webszolgáltatást, hogy a művelet állapotát az azonosító alapján kapja meg. A Media Services .NET SDK olyan API-kat biztosít, amelyek ehhez a forgatókönyvhöz hasznosak. Ezeket az API-kat "nem lekérdezési módszereknek" nevezzük.
-A "nem lekérdezési módszerek" a következő elnevezési mintával rendelkeznek:*OperationName*művelet küldése (például SendCreateOperation). A*OperationName*művelet-metódusok küldése a **IOperation** objektumot visszaküldi. a visszaadott objektum a művelet nyomon követéséhez használható adatokat tartalmaz. A Send*OperationName*OperationAsync metódus visszaküldi a **feladat\<IOperation>**.
+A "nem lekérdezési módszerek" a következő elnevezési mintával rendelkeznek:*OperationName*művelet küldése (például SendCreateOperation). A*OperationName*művelet-metódusok küldése a **IOperation** objektumot visszaküldi. a visszaadott objektum a művelet nyomon követéséhez használható adatokat tartalmaz. A Send*OperationName*OperationAsync metódusok visszatérési **feladata \<IOperation> **.
 
 Jelenleg a következő osztályok támogatják a nem lekérdezési módszereket: **Channel**, **streamvégpontok**és **program**.
 
@@ -38,7 +37,7 @@ A műveleti állapot lekérdezéséhez használja a **getoperation hívásnál**
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel.
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel.
 
 ## <a name="example"></a>Példa
 

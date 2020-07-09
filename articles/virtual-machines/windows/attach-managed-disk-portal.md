@@ -3,16 +3,15 @@ title: Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez –
 description: Felügyelt adatlemez csatlakoztatása Windows rendszerű virtuális géphez a Azure Portal használatával.
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e8fd330fdb6e0c7d857ea99f6d51b05436c17d1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84657167"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez a Azure Portal használatával
 
@@ -26,7 +25,7 @@ Ez a cikk bemutatja, hogyan csatolhat új felügyelt adatlemezt egy Windows rend
 3. A **virtuális gép** lapon válassza a **lemezek**lehetőséget.
 4. A **lemezek** oldalon válassza az **adatlemez hozzáadása**elemet.
 5. Az új lemez legördülő menüjében válassza a **lemez létrehozása**lehetőséget.
-6. A **felügyelt lemez létrehozása** lapon írja be a lemez nevét, és szükség szerint módosítsa a többi beállítást. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+6. A **felügyelt lemez létrehozása** lapon írja be a lemez nevét, és szükség szerint módosítsa a többi beállítást. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 7. A **lemezek** lapon válassza a **Mentés** lehetőséget a virtuális gép új lemez-konfigurációjának mentéséhez.
 8. Miután az Azure létrehozta a lemezt, és csatolja a virtuális géphez, az új lemez megjelenik a virtuális gép lemez-beállításaiban az **adatlemezek**területen.
 
@@ -42,7 +41,7 @@ Ez a cikk bemutatja, hogyan csatolhat új felügyelt adatlemezt egy Windows rend
 6. A **Lemezkezelés**ablak bezárásához.
 7. Megjelenik egy előugró ablak, amely értesíti, hogy az új lemezt a használata előtt kell formázni. Válassza a **lemez formázása**lehetőséget.
 8. Az **új lemez formázása** ablakban jelölje be a beállításokat, majd kattintson a **Start**gombra.
-9. Megjelenik egy figyelmeztetés, amely értesíti, hogy a lemezek formázása minden adat törlődik. Kattintson az **OK** gombra.
+9. Megjelenik egy figyelmeztetés, amely értesíti, hogy a lemezek formázása minden adat törlődik. Válassza az **OK** lehetőséget.
 10. Ha a formázás elkészült, kattintson **az OK gombra**.
 
 ## <a name="next-steps"></a>További lépések

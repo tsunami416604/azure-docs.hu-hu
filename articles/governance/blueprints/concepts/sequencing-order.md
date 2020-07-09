@@ -3,12 +3,12 @@ title: Az üzembe helyezési sorrend sorrendjének megismerése
 description: Ismerje meg az alapértelmezett sorrendet, amelyet a tervrajz-összetevők üzembe helyezése a tervrajz-hozzárendelés során és a telepítési sorrend testreszabásával kapcsolatban tartalmaz.
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864521"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970620"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az üzembe helyezési folyamat ismertetése az Azure-tervezetekben
 
@@ -28,30 +28,30 @@ Ha a terv meghatározása nem tartalmaz irányelvet az összetevők üzembe hely
 
 - Előfizetés szintű **szerepkör-hozzárendelési** összetevők az összetevő neve szerint rendezve
 - Az előfizetési szint **házirendjének hozzárendelési** összetevői az összetevő neve szerint rendezve
-- Az előfizetési szint **Azure Resource Manager a sablon** az összetevő neve alapján rendezve
+- Előfizetési szint **Azure Resource Manager sablon** (ARM-sablonok) az összetevők neve alapján rendezve
 - **Erőforráscsoport** -összetevők (beleértve a gyermekeket is) helyőrző név szerint rendezve
 
 Minden **erőforráscsoport** -összetevőn belül a következő sorrendet használja a rendszer az adott erőforráscsoport-beli összetevők létrehozásához:
 
 - Erőforráscsoport alárendelt **szerepkör-hozzárendelési** összetevői az összetevő neve szerint rendezve
 - Erőforráscsoport-alárendelt **házirend-hozzárendelési** összetevők az összetevő neve alapján rendezve
-- Erőforráscsoport-gyermek **Azure Resource Manager sablon** -összetevők az összetevő neve alapján rendezve
+- Erőforráscsoport-gyermek **Azure Resource Manager sablon** (ARM-sablonok) az összetevők neve alapján rendezve
 
 > [!NOTE]
 > Az összetevők használata [()](../reference/blueprint-functions.md#artifacts) egy implicit függőséget hoz létre a hivatkozott összetevőtől.
 
 ## <a name="customizing-the-sequencing-order"></a>Az előkészítési sorrend testreszabása
 
-Nagyméretű tervrajzok meghatározásakor szükség lehet arra, hogy az erőforrások egy adott sorrendben jöjjenek létre. Ennek a forgatókönyvnek a leggyakoribb felhasználási módja az, amikor a terv definíciója több Azure Resource Manager sablont tartalmaz. Az Azure-tervrajzok ezt a mintát úgy kezelik, hogy lehetővé teszik az előkészítési sorrend meghatározását.
+Nagyméretű tervrajzok meghatározásakor szükség lehet arra, hogy az erőforrások egy adott sorrendben jöjjenek létre. Ennek a forgatókönyvnek a leggyakoribb felhasználási módja, ha a terv definíciója több ARM-sablont is tartalmaz. Az Azure-tervrajzok ezt a mintát úgy kezelik, hogy lehetővé teszik az előkészítési sorrend meghatározását.
 
-A rendelés a JSON-ban található `dependsOn` tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. `dependsOn`egy olyan karakterlánc-tömb, amelyben az adott összetevőt létre kell hozni a létrehozás előtt.
+A rendelés a `dependsOn` JSON-ban található tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. `dependsOn`egy olyan karakterlánc-tömb, amelyben az adott összetevőt létre kell hozni a létrehozás előtt.
 
 > [!NOTE]
 > A tervrajzi objektumok létrehozásakor minden összetevő-erőforrás megkapja a nevét a fájlnévből, ha a [PowerShellt](/powershell/module/az.blueprint/new-azblueprintartifact)használja, vagy az URL-végpontot, ha [REST API](/rest/api/blueprints/artifacts/createorupdate)használ. az összetevőkben található _resourceGroup_ -hivatkozásoknak meg kell egyezniük a terv definíciójában definiált értékekkel.
 
 ### <a name="example---ordered-resource-group"></a>Példa szerint rendezett erőforráscsoport
 
-Ebben a példában a terv definíciója egy olyan erőforráscsoportot tartalmaz `dependsOn`, amely egyéni sorrendi sorrendet definiált egy érték beírásával, valamint egy szabványos erőforráscsoporthoz. Ebben az esetben a **assignPolicyTags** nevű összetevő feldolgozása a **rendezett-RG** erőforráscsoport előtt történik.
+Ebben a példában a terv definíciója egy olyan erőforráscsoportot tartalmaz, amely egyéni sorrendi sorrendet definiált egy érték `dependsOn` beírásával, valamint egy szabványos erőforráscsoporthoz. Ebben az esetben a **assignPolicyTags** nevű összetevő feldolgozása a **rendezett-RG** erőforráscsoport előtt történik.
 a **standard-RG** az alapértelmezett sorrend szerint lesz feldolgozva.
 
 ```json
@@ -81,7 +81,7 @@ a **standard-RG** az alapértelmezett sorrend szerint lesz feldolgozva.
 
 ### <a name="example---artifact-with-custom-order"></a>Példa – egyéni sorrendű összetevő
 
-Ez a példa olyan házirend-összetevő, amely egy Azure Resource Manager sablontól függ. Alapértelmezés szerint a rendszer egy házirend-összetevőt hoz létre a Azure Resource Manager sablon előtt. Ez a rendezés lehetővé teszi, hogy a házirend-összetevő megvárja a Azure Resource Manager sablon létrehozását.
+Ez a példa egy ARM-sablontól függő házirend-összetevő. Alapértelmezés szerint a rendszer egy házirend-összetevőt hoz létre az ARM-sablon előtt. Ez a rendezés lehetővé teszi a házirend-összetevő számára, hogy megvárja az ARM-sablon létrehozását.
 
 ```json
 {
@@ -100,7 +100,7 @@ Ez a példa olyan házirend-összetevő, amely egy Azure Resource Manager sablon
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Példa – az előfizetés szintű sablon összetevő az erőforráscsoport függvényében
 
-Ez a példa egy olyan Resource Manager-sablonra vonatkozik, amely az előfizetés szintjén van üzembe helyezve, hogy az erőforráscsoport függjön. Az alapértelmezett rendezés során a rendszer az előfizetési szint összetevőit minden erőforráscsoport és alárendelt összetevő előtt hozza létre. Az erőforráscsoport a terv definíciójában van definiálva, például a következőhöz:
+Ez a példa egy előfizetési szinten üzembe helyezett ARM-sablonra vonatkozik, hogy az erőforráscsoport függjön. Az alapértelmezett rendezés során a rendszer az előfizetési szint összetevőit minden erőforráscsoport és alárendelt összetevő előtt hozza létre. Az erőforráscsoport a terv definíciójában van definiálva, például a következőhöz:
 
 ```json
 "resourceGroups": {

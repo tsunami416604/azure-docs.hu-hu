@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929825"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125804"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -22,7 +22,7 @@ A Windows virtuális asztal egy felhőben futó asztali és app Virtualization s
 A következő műveleteket végezheti el a Windows rendszerű virtuális asztalok Azure-beli futtatásakor:
 
 * Többmunkamenetes Windows 10-es telepítés beállítása, amely teljes körű Windows 10-es rendszert biztosít a méretezhetőséggel
-* Az Office 365 virtualizálása ProPlus, és a többfelhasználós virtuális forgatókönyvek futtatásának optimalizálása
+* A vállalati alkalmazások virtualizálása és a többfelhasználós virtuális forgatókönyvek futtatásának optimalizálása Microsoft 365
 * Ingyenes bővített biztonsági frissítésekkel rendelkező Windows 7 rendszerű virtuális asztalok biztosítása
 * Meglévő Távoli asztali szolgáltatások (RDS) és Windows Server rendszerű asztali számítógépek és alkalmazások bármely számítógépre
 * Az asztali számítógépek és az alkalmazások virtualizálása
@@ -109,11 +109,11 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 
 |Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
 |---|---|---|---|
-|*.microsoftonline.com|443|Hitelesítés MS online-szolgáltatásokhoz|Nincs|
+|*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|Nincs|
 |*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincs|
 |www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
 |*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
-|login.windows.net|443|Jelentkezzen be az MS online Servicesbe, az Office 365-be|Nincs|
+|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|Nincs|
 |*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|Nincs|
 |*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincs|
 
@@ -126,7 +126,7 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 >A szolgáltatás forgalmát tartalmazó URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem kívánja használni az ügynökkel kapcsolatos forgalmat, a következő módon keresheti meg az URL-címeket helyettesítő karakterek nélkül:
 >
 >1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
->2. Nyissa meg az **eseménynaplót** , és keresse meg a **Windows-naplók** > **Application** > **WVD-Agent** alkalmazást, és keresse meg a 3702-es azonosítójú eseményt.
+>2. Nyissa meg az **eseménynaplót** , és keresse meg a **Windows-naplók**  >  **Application**  >  **WVD-Agent** alkalmazást, és keresse meg a 3702-es azonosítójú eseményt.
 >3. Az 3702-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3702-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az engedélyezési folyamatot meg kell ismételnie minden olyan régióhoz tartozó URL-címmel, amelybe telepíteni kívánja a virtuális gépeket.
 
 A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok. Ez adatátvitelt eredményezhet a Egyesült Államokba.
@@ -157,12 +157,12 @@ A Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a következő
 
 |Cím|Kimenő TCP-port|Cél|Ügyfél (ek)|
 |---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Összes|
-|*.servicebus.windows.net|443|Hibaelhárítási hibák|Összes|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Összes|
-|aka.ms|443|Microsoft URL-rövidített|Összes|
-|docs.microsoft.com|443|Dokumentáció|Összes|
-|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Összes|
+|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|
+|*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|
+|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|
+|aka.ms|443|Microsoft URL-rövidített|Mind|
+|docs.microsoft.com|443|Dokumentáció|Mind|
+|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|
 |query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|
 
 >[!IMPORTANT]
@@ -186,15 +186,15 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|
+|Windows 10 multi-session, 1809-es verzió|Igen|Igen|No|Nem|
 |Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|
-|Windows 7 Enterprise|Igen|Igen|Nem|Nem|
-|Windows Server 2019|Igen|Igen|Nem|Nem|
+|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|No|Nem|
+|Windows 7 Enterprise|Igen|Igen|No|Nem|
+|Windows Server 2019|Igen|Igen|No|Nem|
 |Windows Server 2016|Igen|Igen|Igen|Igen|
-|Windows Server 2012 R2|Igen|Igen|Nem|Nem|
+|Windows Server 2012 R2|Igen|Igen|No|Nem|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a Windows rendszerű virtuális asztali számítógép 2019-as verzióját használja, megkezdheti az oktatóanyagot a [bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című részében.
 

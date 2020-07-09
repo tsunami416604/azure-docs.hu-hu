@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255228"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -104,9 +104,9 @@ A következő szakaszban konfigurálhatja a megoldást az Azure felhőbeli erőf
 Az alkalmazás felhőben való futtatásához az alábbi lépéseket kell végrehajtania:
 
 * Hozzon létre egy Azure-felhőszolgáltatást.
-* Hozzon létre egy Azure SQL-adatbázist.
+* Hozzon létre egy adatbázist a Azure SQL Databaseban.
 * Hozzon létre egy Azure-tárfiókot.
-* Konfigurálja a megoldást arra, hogy az Azure-ban való futáskor az Azure SQL-adatbázist használja.
+* Konfigurálja a megoldást az adatbázis használatára az Azure-ban való futtatáskor.
 * Konfigurálja a megoldást arra, hogy az Azure-ban való futáskor az Azure-tárfiókot használja.
 * Telepítse a projektet az Azure-felhőszolgáltatásában.
 
@@ -124,13 +124,13 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás**gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
     ![Új felhőszolgáltatás](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Azure SQL-adatbázis létrehozása
+### <a name="create-a-database-in-azure-sql-database"></a>Adatbázis létrehozása Azure SQL Database
 Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása > Adatbázisok > SQL Database** elemre.
@@ -153,7 +153,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás**gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -176,14 +176,15 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Létrehozás**gombra.
+7. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
     Az alábbi képen egy `csvccontosoads.core.windows.net` URL-címmel ellátott tárfiók lesz létrehozva.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>A megoldás konfigurálása arra, hogy az Azure-ban való futáskor az Azure SQL-adatbázist használja
-A webes projekt és a feldolgozói szerepkör is saját adatbázis-kapcsolati sztringgel rendelkezik, és mindkettőnek az Azure SQL-adatbázisra kell mutatnia az alkalmazás Azure-ban való futásakor.
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>A megoldás konfigurálása az adatbázis használatára Azure SQL Database az Azure-ban való futtatáskor
+
+A webes projekt és a feldolgozói szerepkör-projekt mindegyike saját adatbázis-kapcsolati karakterlánccal rendelkezik, és mindegyiknek a Azure SQL Database adatbázisára kell mutatnia, amikor az alkalmazás az Azure-ban fut.
 
 A webes szerepkör esetében [Web.config transzformálása](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations), a feldolgozói szerepkör esetében pedig felhőszolgáltatás környezeti beállítást kell alkalmaznia.
 
@@ -530,7 +531,7 @@ A *Views\Home\Index.cshtml* fájl kategóriahivatkozásokat jelenít meg a kezd�
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
 A *AdController.cs* fájlban a konstruktor meghívja a `InitializeStorage` metódust olyan Azure Storage ügyféloldali függvénytár-objektumok létrehozásához, amelyek API-t biztosítanak a blobok és a várólisták használatához.
 
-Ezután a kód lekér egy hivatkozást a *képek* blobtárolóra, ahogy azt korábban a *Global.asax.cs* esetében is láthatta. Mindeközben beállít egy webalkalmazásokhoz használható alapértelmezett [újrapróbálkozási házirendet](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling). Az alapértelmezett exponenciális leállítási újrapróbálkozási házirend egy átmeneti hiba miatti ismételt próbálkozás esetén egy percnél hosszabb időre állíthatja le a webalkalmazást. Az itt megadott újrapróbálkozási szabályzat minden próbálkozás után három másodpercet vár, legfeljebb három alkalommal.
+Ezután a kód lekér egy hivatkozást a *képek* blobtárolóra, ahogy azt korábban a *Global.asax.cs* esetében is láthatta. Mindeközben beállít egy webalkalmazásokhoz használható alapértelmezett [újrapróbálkozási házirendet](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling). Az alapértelmezett exponenciális leállítási újrapróbálkozási szabályzata azt eredményezheti, hogy a webalkalmazás nem válaszol egy percnél hosszabb ideig az átmeneti hibák ismételt újrapróbálkozásakor. Az itt megadott újrapróbálkozási szabályzat minden próbálkozás után három másodpercet vár, legfeljebb három alkalommal.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -776,6 +777,3 @@ További információkért lásd a következőket:
 * [Cloud Services kezelése](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Felhőszolgáltató kiválasztása](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-

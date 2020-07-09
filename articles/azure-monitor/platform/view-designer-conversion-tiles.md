@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658626"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor View Designer csempe konverziók
@@ -23,13 +22,13 @@ A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetőv�
 A fánk & listájának a munkafüzetekbe való újbóli létrehozása két különálló vizualizációt is magában foglal. A fánk résznél két lehetőség közül választhat.
 Mindkét kezdéshez válassza a **lekérdezés hozzáadása** lehetőséget, majd illessze be az eredeti lekérdezést a tervezőből a cellába.
 
-**1. lehetőség:** **Kördiagram** kiválasztása a **vizualizáció** legördülő menüből: ![tortadiagram vizualizációs menüjéből](media/view-designer-conversion-tiles/pie-chart.png)
+**1. lehetőség:** **Kördiagram** kiválasztása a **vizualizáció** legördülő menüből: ![ tortadiagram vizualizációs menüjéből](media/view-designer-conversion-tiles/pie-chart.png)
 
-**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő `| render piechart` menüből, és adja hozzá a lekérdezéshez:
+**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő menüből, és adja hozzá `| render piechart` a lekérdezéshez:
 
  ![Vizualizáció menü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Például**
+**Példa**
 
 Eredeti lekérdezés
 ```KQL
@@ -75,11 +74,11 @@ A vonalas diagram megjelenítéséhez két lehetőség közül választhat.
  
  ![Vonalas diagram menü](media/view-designer-conversion-tiles/line-visualization.png)
 
-**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő `| render linechart` menüből, és adja hozzá a lekérdezéshez:
+**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő menüből, és adja hozzá `| render linechart` a lekérdezéshez:
 
  ![Vizualizáció menü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Például**
+**Példa**
 
 ```KQL
 search * 
@@ -146,9 +145,9 @@ search *
 
 A lekérdezés sávdiagramként való megjelenítésének két lehetősége van:
 
-**1. lehetőség:** **Sávdiagram** kiválasztása a **vizualizáció** legördülő menüjéből ![: Barchart vizualizáció](media/view-designer-conversion-tiles/bar-visualization.png)
+**1. lehetőség:** **Sávdiagram** kiválasztása a **vizualizáció** legördülő menüjéből: ![ Barchart vizualizáció](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő `| render barchart` menüből, és adja hozzá a lekérdezéshez:
+**2. lehetőség:** Válassza a **beállítás lekérdezés szerint** lehetőséget a **vizualizáció** legördülő menüből, és adja hozzá `| render barchart` a lekérdezéshez:
 
  ![Vizualizáció menü](media/view-designer-conversion-tiles/set-by-query.png)
 

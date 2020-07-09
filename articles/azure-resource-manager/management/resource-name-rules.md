@@ -3,16 +3,18 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554350"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
 Ez a cikk az Azure-erőforrások elnevezési szabályait és korlátozásait foglalja össze. Az erőforrások elnevezésével kapcsolatos javaslatokért lásd: [ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+
+Ez a cikk erőforrás-szolgáltatói névtér alapján sorolja fel az erőforrásokat. Az erőforrás-szolgáltatók Azure-szolgáltatásokkal való egyezésének listáját az [Azure-szolgáltatások erőforrás-szolgáltatói](azure-services-resource-providers.md)című témakörében tekintheti meg.
 
 Az erőforrásnevek nem megkülönböztetik a kis-és nagybetűket, kivéve, ha kifejezetten az érvényes karaktereket tartalmazó oszlopban vannak feltüntetve.
 
@@ -34,7 +36,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | szolgáltatás | globális | 1-50 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
+> | szolgáltatás | globális | 1-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel, és az alfanumerikus karakterrel végződik. |
 > | szolgáltatás/API-k | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/API-k/problémák | api-t | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/API-k/problémák/mellékletek | kérdés | 1-256 | Nem használható:<br> `*#&+:<>?` |
@@ -172,8 +174,8 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | galériák/lemezképek/verziók | image | 32 bites egész szám | Számok és időszakok. |
 > | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
 > | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/""[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
-> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/""[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
 
 > [!NOTE]
 > Az Azure-beli virtuális gépek két különböző névvel rendelkeznek: az erőforrás neve és az állomásnév. Amikor létrehoz egy virtuális gépet a portálon, ugyanazt az értéket használja mindkét névhez. Az előző táblázatban szereplő korlátozások az állomásnévre vonatkoznak. A tényleges erőforrásnév legfeljebb 64 karakterből állhat.
@@ -341,7 +343,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | laborok/képletek | Lab | 1–80 | Alfanumerikus karakterek, aláhúzások, kötőjelek és zárójelek. |
 > | Labor/virtualmachines | Lab | 1-15 (Windows)<br>1-64 (Linux) | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. Nem lehet az összes szám. |
 
-## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
@@ -522,7 +524,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdje a betűvel. Alfanumerikus karakterrel végződik. |
 > | névterek/engedélyezési szabályok | névtér | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
 > | névterek/notificationHubs | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
 > | névterek/notificationHubs/engedélyezési szabályok | értesítési központ | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
@@ -540,7 +542,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | megoldások | munkaterület | N/A | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
+> | megoldások | munkaterület | N.A. | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -700,6 +702,6 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!NOTE]
 > A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások elnevezésével kapcsolatos ajánlásokat a [Ready: ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben talál.

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: data-factory
 author: memildin
 ms.service: data-factory
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80272846"
 ---
 ```json
@@ -58,7 +58,7 @@ ms.locfileid: "80272846"
 
 ### <a name="the-data-model-of-the-schema"></a>A séma adatmodellje
 
-|Mező|Adattípus|Leírás|
+|Mező|Adattípus|Description|
 |----|----|----|
 |**AlertDisplayName**|Sztring|A riasztás megjelenítendő neve.|
 |**AlertType**|Sztring|A riasztás típusa. Az azonos típusú riasztásoknak ugyanazzal az értékkel kell rendelkezniük. Ez a mező egy olyan karakterlánc, amely a riasztás típusát jelöli, nem pedig a riasztási példányokat. Az azonos észlelési logikában/analitikusban található összes riasztási példánynak ugyanazzal az értékkel kell rendelkeznie a riasztás típusához.|
@@ -67,15 +67,15 @@ ms.locfileid: "80272846"
 |**EndTimeUtc**|DateTime|A riasztásban szereplő utolsó esemény vagy tevékenység időpontja.  A mezőnek olyan karakterláncnak kell lennie, amely megfelel a ISO8601 formátumának, beleértve az UTC időzónára vonatkozó információkat is.|
 |**Entitások**|IEnumerable (IEntity)|A riasztáshoz kapcsolódó entitások listája. Ez a lista különböző típusú entitások keverékét képes tárolni. Az entitások típusa az entitások szakaszban meghatározott típusok bármelyike lehet. Az alábbi listán nem szereplő entitásokat is el lehet juttatni, azonban nem garantált, hogy a rendszer feldolgozza őket (a riasztás nem fog meghiúsulni az új típusú entitások érvényesítésével).|
 |**Extendedproperties példányt paraméterként**|Szótár (karakterlánc, karakterlánc)|Előfordulhat, hogy a szolgáltatók (opcionálisan) egyéni mezőket tartalmaznak.|
-|**Szándék**|Felsorolás|A riasztás mögötti, a kill lánchoz kapcsolódó szándék. A támogatott értékek listáját, valamint a Azure Security Center támogatott kill Chain-leképezésének magyarázatait lásd: [szándékok](../articles/security-center/alerts-reference.md#intentions).<br/>Ennek a mezőnek több értéke is lehet (vesszővel elválasztva).|
+|**Szándék**|Enumeráció|A riasztás mögötti, a kill lánchoz kapcsolódó szándék. A támogatott értékek listáját, valamint a Azure Security Center támogatott kill Chain-leképezésének magyarázatait lásd: [szándékok](../articles/security-center/alerts-reference.md#intentions).<br/>Ennek a mezőnek több értéke is lehet (vesszővel elválasztva).|
 |**IsIncident**|Logikai|Ez a mező határozza meg, hogy a riasztás incidens-e (több riasztás összetett csoportosítása) vagy egyetlen riasztás. A mező alapértelmezett értéke "false" (azaz egyetlen riasztás).|
 |**ProcessingEndTime**|DateTime|Az az idő, ameddig a riasztás elérhető volt a végfelhasználónak a riasztást birtokló eredeti termékben.|
 |**ProductName**|Sztring|A riasztást közzétevő termék neve (Azure Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS stb.).|
-|**RemediationSteps**|Listáját<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
+|**RemediationSteps**|Lista<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
 |**ResourceIdentifiers**|Lista (erőforrás-azonosítók)|A riasztáshoz tartozó erőforrás-azonosítók, amelyek segítségével a riasztást a megfelelő termék-expozíciós csoportba (bérlő, munkaterület, előfizetés stb.) lehet irányítani. A riasztások több különböző típusú azonosítóval is rendelkezhetnek.|
-|**Súlyosság**|Felsorolás|A szolgáltató által jelentett riasztás súlyossága. Lehetséges értékek: tájékoztató, alacsony, közepes és magas.|
+|**Súlyosság**|Enumeráció|A szolgáltató által jelentett riasztás súlyossága. Lehetséges értékek: tájékoztató, alacsony, közepes és magas.|
 |**StartTimeUtc**|DateTime|A riasztásban szereplő első esemény vagy tevékenység időpontja. A mezőnek olyan karakterláncnak kell lennie, amely megfelel a ISO8601 formátumának, beleértve az UTC időzónára vonatkozó információkat is.|
-|**Állapot**|Felsorolás|A riasztás életciklusának állapota.<br/>A támogatott állapotok a következők: új, megoldott, elutasított, ismeretlen.<br/>A támogatott beállításoktól eltérő értéket megadó riasztás a "Unknown" állapothoz van rendelve.<br/>Egy olyan riasztás, amely nem ad meg értéket, a rendszer az "új" állapotot rendeli hozzá.|
+|**Állapot**|Enumeráció|A riasztás életciklusának állapota.<br/>A támogatott állapotok a következők: új, megoldott, elutasított, ismeretlen.<br/>A támogatott beállításoktól eltérő értéket megadó riasztás a "Unknown" állapothoz van rendelve.<br/>Egy olyan riasztás, amely nem ad meg értéket, a rendszer az "új" állapotot rendeli hozzá.|
 |**SystemAlertId**|Sztring|A riasztás azonosítója.|
 |**TimeGenerated**|DateTime|A riasztási szolgáltató által generált riasztás időpontja. Ha a belső riasztási szolgáltatók nem jelentettek jelentést, a termék kiválaszthatja, hogy a termék általi feldolgozáshoz milyen időt vett igénybe.  A mezőnek olyan karakterláncnak kell lennie, amely megfelel a ISO8601 formátumának, beleértve az UTC időzónára vonatkozó információkat is.|
 |**Szállítónév**|Sztring|A riasztást kiváltó szállító neve.|

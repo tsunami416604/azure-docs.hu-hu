@@ -2,13 +2,13 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 06/26/2020
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609306"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056684"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -16,7 +16,7 @@ ms.locfileid: "82609306"
 
 Kis-és közepes megoldások esetében az egyetlen sablon könnyebben érthető és karbantartható. Egyetlen fájlban láthatja az összes erőforrást és értéket. A speciális forgatókönyvek esetében a csatolt sablonok lehetővé teszik a megoldás megkeresését a célként megadott összetevőkre. Ezeket a sablonokat könnyedén újra felhasználhatja más forgatókönyvek esetében is.
 
-Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](template-tutorial-create-linked-templates.md).
+Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Csatolt vagy beágyazott sablonok esetében csak [növekményes](deployment-modes.md) telepítési módot használhat.
@@ -34,9 +34,9 @@ Sablon beágyazásához vegyen fel egy [központi telepítési erőforrást](/az
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,13 +63,13 @@ A következő példa egy Storage-fiókot helyez üzembe egy beágyazott sablonon
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -96,7 +96,7 @@ A következő példa egy Storage-fiókot helyez üzembe egy beágyazott sablonon
 
 Beágyazott sablon használatakor megadhatja, hogy a rendszer kiértékelje-e a sablon kifejezéseit a fölérendelt sablon vagy a beágyazott sablon hatókörén belül. A hatókör határozza meg, Hogyan oldhatók meg a paraméterek, a változók és a függvények, például a [resourceGroup](template-functions-resource.md#resourcegroup) és az [előfizetés](template-functions-resource.md#subscription) .
 
-A hatókört a `expressionEvaluationOptions` tulajdonságon keresztül állíthatja be. Alapértelmezés szerint a `expressionEvaluationOptions` tulajdonság értékre van állítva `outer`, ami azt jelenti, hogy a szülő sablon hatókörét használja. Állítsa be úgy a `inner` értéket, hogy a kifejezések kiértékelése a beágyazott sablon hatókörén belül történjen.
+A hatókört a tulajdonságon keresztül állíthatja be `expressionEvaluationOptions` . Alapértelmezés szerint a tulajdonság értékre `expressionEvaluationOptions` van állítva `outer` , ami azt jelenti, hogy a szülő sablon hatókörét használja. Állítsa be úgy a értéket, hogy a `inner` kifejezések kiértékelése a beágyazott sablon hatókörén belül történjen.
 
 ```json
 {
@@ -110,7 +110,7 @@ A hatókört a `expressionEvaluationOptions` tulajdonságon keresztül állítha
   ...
 ```
 
-A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései a hatókörnek megfelelően. Tartalmaz egy nevű `exampleVar` változót, amely a fölérendelt sablonban és a beágyazott sablonban is definiálva van. A változó értékét adja vissza.
+A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései a hatókörnek megfelelően. Tartalmaz egy nevű változót, `exampleVar` amely a fölérendelt sablonban és a beágyazott sablonban is definiálva van. A változó értékét adja vissza.
 
 ```json
 {
@@ -132,7 +132,7 @@ A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései 
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -158,18 +158,18 @@ A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései 
 }
 ```
 
-A (z `exampleVar` `scope` `expressionEvaluationOptions`) tulajdonságának értékétől függően változik a változás értéke. Az alábbi táblázat mindkét hatókör eredményét tartalmazza.
+A (z `exampleVar` ) tulajdonságának értékétől függően változik a változás értéke `scope` `expressionEvaluationOptions` . Az alábbi táblázat mindkét hatókör eredményét tartalmazza.
 
 | `expressionEvaluationOptions` `scope` | Kimenet |
 | ----- | ------ |
 | belső | beágyazott sablonból |
 | külső (vagy alapértelmezett) | fölérendelt sablonból |
 
-Az alábbi példa egy SQL Servert telepít, és lekéri a jelszóhoz használandó Key Vault titkos kulcsot. A hatókör úgy van beállítva `inner` , hogy dinamikusan létrehozza a Key Vault-azonosítót ( `adminPassword.reference.keyVault` lásd a külső sablonokban `parameters`), és paraméterként adja át a beágyazott sablonnak.
+Az alábbi példa egy SQL Servert telepít, és lekéri a jelszóhoz használandó Key Vault titkos kulcsot. A hatókör úgy van beállítva, hogy `inner` dinamikusan létrehozza a Key Vault-azonosítót (lásd `adminPassword.reference.keyVault` a külső sablonokban `parameters` ), és paraméterként adja át a beágyazott sablonnak.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ Az alábbi példa egy SQL Servert telepít, és lekéri a jelszóhoz használand
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -277,7 +277,7 @@ Az alábbi példa egy SQL Servert telepít, és lekéri a jelszóhoz használand
 
 > [!NOTE]
 >
-> Ha a hatókör értékre `outer`van állítva, nem használhat `reference` beágyazott sablon kimenetek szakaszában lévő függvényt a beágyazott sablonban üzembe helyezett erőforráshoz. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez használja `inner` a hatókört, vagy alakítsa át a beágyazott sablont egy csatolt sablonra.
+> Ha a hatókör értékre van állítva `outer` , nem használhat `reference` beágyazott sablon kimenetek szakaszában lévő függvényt a beágyazott sablonban üzembe helyezett erőforráshoz. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez használja a `inner` hatókört, vagy alakítsa át a beágyazott sablont egy csatolt sablonra.
 
 ## <a name="linked-template"></a>Csatolt sablon
 
@@ -308,13 +308,11 @@ Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azur
 }
 ```
 
-Csatolt sablonra hivatkozó érték `uri` esetén a nem lehet helyi fájl vagy olyan fájl, amely csak a helyi hálózaton érhető el. Olyan URI-értéket kell megadnia, amely **http** -vagy **https**-fájlként letölthető. 
+Csatolt sablonra hivatkozó érték esetén a `uri` nem lehet helyi fájl vagy olyan fájl, amely csak a helyi hálózaton érhető el. Olyan URI-értéket kell megadnia, amely **http** -vagy **https**-fájlként letölthető.
 
 > [!NOTE]
 >
-> A sablonok olyan paraméterekkel is hivatkozhatnak, amelyek végső soron **http** vagy **https**protokollt használó, például a `_artifactsLocation` következő paramétert használják:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
-
-
+> A sablonok olyan paraméterekkel is hivatkozhatnak, amelyek végső soron **http** vagy **https**protokollt használó, például a következő `_artifactsLocation` paramétert használják:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja.
 
@@ -358,18 +356,18 @@ A paraméterek értékének megadásához használja a **Parameters** tulajdons�
       "contentVersion":"1.0.0.0"
      },
      "parameters": {
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }
 ]
 ```
 
-Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutató hivatkozást. Az üzemelő példány hibát jelez, ha `parametersLink` mindkettő `parameters` és a meg van adva.
+Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutató hivatkozást. Az üzemelő példány hibát jelez, ha mindkettő `parametersLink` és `parameters` a meg van adva.
 
 ## <a name="contentversion"></a>contentVersion
 
-Nem kell megadnia a `contentVersion` tulajdonságot a `templateLink` vagy `parametersLink` tulajdonsághoz. Ha nem ad meg a `contentVersion`-t, a rendszer a sablon aktuális verzióját telepíti. Ha értéket ad meg a tartalom verziójához, akkor annak meg kell egyeznie a csatolt sablonban található verzióval. Ellenkező esetben a telepítés hibát jelez.
+Nem kell megadnia a `contentVersion` tulajdonságot a `templateLink` vagy `parametersLink` tulajdonsághoz. Ha nem ad meg a `contentVersion` -t, a rendszer a sablon aktuális verzióját telepíti. Ha értéket ad meg a tartalom verziójához, akkor annak meg kell egyeznie a csatolt sablonban található verzióval. Ellenkező esetben a telepítés hibát jelez.
 
 ## <a name="using-variables-to-link-templates"></a>Változók használata a sablonok összekapcsolásához
 
@@ -393,7 +391,7 @@ Az [üzembe helyezés ()](template-functions-deployment.md#deployment) használa
 }
 ```
 
-Végső soron a változót egy `uri` `templateLink` tulajdonság tulajdonságában fogja használni.
+Végső soron a változót `uri` egy tulajdonság tulajdonságában fogja használni `templateLink` .
 
 ```json
 "templateLink": {
@@ -425,7 +423,7 @@ Az alábbi példa bemutatja, hogyan használható a másolás beágyazott sablon
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -453,7 +451,7 @@ Az alábbi példa bemutatja, hogyan használható a másolás beágyazott sablon
 
 ## <a name="get-values-from-linked-template"></a>Értékek lekérése összekapcsolt sablonból
 
-Egy csatolt sablon kimeneti értékének lekéréséhez a tulajdonság értékét a következő szintaxissal kell lekérni, például: `"[reference('deploymentName').outputs.propertyName.value]"`.
+Egy csatolt sablon kimeneti értékének lekéréséhez a tulajdonság értékét a következő szintaxissal kell lekérni, például: `"[reference('deploymentName').outputs.propertyName.value]"` .
 
 Ha egy kimeneti tulajdonságot egy csatolt sablonból olvas be, a tulajdonság neve nem tartalmazhat kötőjelet.
 
@@ -461,7 +459,7 @@ Az alábbi példák bemutatják, hogyan hivatkozhat egy csatolt sablonra, és ho
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +477,7 @@ A fő sablon telepíti a csatolt sablont, és lekéri a visszaadott értéket. F
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +510,7 @@ A következő példa egy olyan sablont mutat be, amely nyilvános IP-címet tele
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -543,11 +541,11 @@ A következő példa egy olyan sablont mutat be, amely nyilvános IP-címet tele
 }
 ```
 
-Ha az előző sablonból a terheléselosztó telepítésekor a nyilvános IP-címet szeretné használni, csatolja a sablont, és állapítsa meg az `Microsoft.Resources/deployments` erőforrás függőségét. A terheléselosztó nyilvános IP-címe a kimeneti értékre van állítva a társított sablonban.
+Ha az előző sablonból a terheléselosztó telepítésekor a nyilvános IP-címet szeretné használni, csatolja a sablont, és állapítsa meg az erőforrás függőségét `Microsoft.Resources/deployments` . A terheléselosztó nyilvános IP-címe a kimeneti értékre van állítva a társított sablonban.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +618,7 @@ Ezeket a különálló bejegyzéseket használhatja az előzményekben a kimenet
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +656,7 @@ Az alábbi sablon az előző sablonra hivatkozik. Három nyilvános IP-címet ho
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +723,7 @@ Az alábbi példa bemutatja, hogyan lehet átadni egy SAS-tokent egy sablonhoz v
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }
@@ -787,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 
-|Fő sablon  |Csatolt sablon |Leírás  |
+|Fő sablon  |Csatolt sablon |Description  |
 |---------|---------| ---------|
 |["Helló világ!" alkalmazás](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Karakterláncot ad vissza csatolt sablonból. |
 |[Load Balancer nyilvános IP-címmel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |A társított sablonból származó nyilvános IP-címet adja vissza, és beállítja a terheléselosztó értékét. |
@@ -795,7 +793,7 @@ Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](template-tutorial-create-linked-templates.md).
+* Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./deployment-tutorial-linked-template.md).
 * Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](define-resource-dependency.md).
 * Ha meg szeretné tudni, hogyan határozhat meg egy erőforrást, de több példányt is létrehozhat, tekintse meg az [erőforrások több példányának létrehozása Azure Resource Manager](copy-resources.md).
 * A sablonok Storage-fiókban való beállításával és az SAS-token létrehozásával kapcsolatos lépésekért lásd: [erőforrások üzembe helyezése Resource manager Azure PowerShell-sablonokkal és](deploy-powershell.md) [az erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](deploy-cli.md).

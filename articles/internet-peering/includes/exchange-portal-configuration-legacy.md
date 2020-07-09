@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678550"
 ---
 1. A társítás **létrehozása** lap **konfiguráció** lapján adja meg az itt látható mezőket.

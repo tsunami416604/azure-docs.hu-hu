@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024846"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS konfigurálása alkalmazáshoz az Azure-ban
@@ -34,7 +33,7 @@ A tanúsítványnak meg kell felelnie az Azure-beli TLS/SSL-tanúsítványok kö
 
 * A tanúsítványnak tartalmaznia kell egy nyilvános kulcsot.
 * A tanúsítványt létre kell hozni a személyes információcsere (. pfx) fájlba exportálható kulcscsere-fájlhoz.
-* A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománnyal. Nem szerezhet be TLS/SSL-tanúsítványt a cloudapp.net tartományhoz tartozó hitelesítésszolgáltatótól (CA). A szolgáltatáshoz való hozzáféréskor egyéni tartománynevet kell megadnia. Amikor tanúsítványt kér egy HITELESÍTÉSSZOLGÁLTATÓTÓL, a tanúsítvány tulajdonosának nevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az Egyéni tartománynév a **contoso.com** , akkor a (z **) *. contoso.com** vagy a **www\.contoso.com**tanúsítványt kér a hitelesítésszolgáltatótól.
+* A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománnyal. Nem szerezhet be TLS/SSL-tanúsítványt a cloudapp.net tartományhoz tartozó hitelesítésszolgáltatótól (CA). A szolgáltatáshoz való hozzáféréskor egyéni tartománynevet kell megadnia. Amikor tanúsítványt kér egy HITELESÍTÉSSZOLGÁLTATÓTÓL, a tanúsítvány tulajdonosának nevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az Egyéni tartománynév a **contoso.com** , akkor a (z **) *. contoso.com** vagy a **www \. contoso.com**tanúsítványt kér a hitelesítésszolgáltatótól.
 * A tanúsítványnak legalább 2048 bites titkosítást kell használnia.
 
 Tesztelési célból [létrehozhat](cloud-services-certs-create.md) és használhat önaláírt tanúsítványokat. Az önaláírt tanúsítványokat a rendszer nem hitelesíti a HITELESÍTÉSSZOLGÁLTATÓn keresztül, és a cloudapp.net tartományt használhatja a webhely URL-címéhez. A következő feladat például egy önaláírt tanúsítványt használ, amelyben a tanúsítványban használt köznapi név (CN) **sslexample.cloudapp.net**.
@@ -74,9 +73,9 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
 
    A **tanúsítványok** szakasz a tanúsítvány nevét és helyét, valamint annak az áruháznak a nevét határozza meg, ahol az található.
 
-   Az engedélyek`permissionLevel` (attribútumok) a következő értékek egyikére állíthatók be:
+   Az engedélyek ( `permissionLevel` attribútumok) a következő értékek egyikére állíthatók be:
 
-   | Engedély értéke | Leírás |
+   | Engedély értéke | Description |
    | --- | --- |
    | limitedOrElevated |**(Alapértelmezett)** Az összes szerepkör-folyamat hozzáfér a titkos kulcshoz. |
    | emelt szintű |Csak emelt szintű folyamatok férhetnek hozzá a titkos kulcshoz. |
@@ -139,7 +138,7 @@ Kapcsolódás a Azure Portalhoz és...
 
     ![A felhőalapú szolgáltatás közzététele](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. Kattintson a **tanúsítványok**elemre.
+2. Kattintson a **Tanúsítványok** gombra.
 
     ![Kattintson a tanúsítványok ikonra](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 

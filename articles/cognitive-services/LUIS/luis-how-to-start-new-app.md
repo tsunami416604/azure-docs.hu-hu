@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3d6b2b5896242ff85c6fb96071b747083893b03a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653912"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343166"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
 A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
@@ -75,6 +75,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 * Végponti naplók exportálása `.csv` Offline elemzéshez
 * Alkalmazás törlése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha az alkalmazás kialakítása magában foglalja a szándék észlelését, [hozzon létre új leképezéseket](luis-how-to-add-intents.md), és adja hozzá például a hosszúságú kimondott szöveg. Ha az alkalmazás kialakítása csak az kibontást tartalmazza, adjon hozzá például hosszúságú kimondott szöveg a none szándékhoz, majd [hozzon létre entitásokat](luis-how-to-add-example-utterances.md), és címkézze fel a példát a hosszúságú kimondott szöveg.

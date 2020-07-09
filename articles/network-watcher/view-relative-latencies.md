@@ -6,18 +6,18 @@ documentationcenter: ''
 author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737903"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Adott helyek és Azure-régiók közötti relatív késés megtekintése
 
@@ -59,10 +59,10 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Az előző parancsban megadott régiónak nem kell megegyeznie a Network Watcher beolvasásakor megadott régióval. Az előző parancshoz egyszerűen meg kell adnia egy meglévő hálózati figyelőt. A Network Watcher bármely régióban lehet. Ha a és `-Country` `-State`a értékeit is megadja, érvényesnek kell lennie. Az értékek megkülönböztetik a kis-és nagybetűket. Az adatmennyiség korlátozott számú országban, régióban, államban és városban is elérhető. Futtassa a parancsokat az [elérhető országok/régiók, Államok, városok és szolgáltatók nézetben](#view-available) , és tekintse meg az előző paranccsal használni kívánt országok/régiók, városok és Államok listáját. 
+> Az előző parancsban megadott régiónak nem kell megegyeznie a Network Watcher beolvasásakor megadott régióval. Az előző parancshoz egyszerűen meg kell adnia egy meglévő hálózati figyelőt. A Network Watcher bármely régióban lehet. Ha a és a értékeit `-Country` `-State` is megadja, érvényesnek kell lennie. Az értékek megkülönböztetik a kis-és nagybetűket. Az adatmennyiség korlátozott számú országban, régióban, államban és városban is elérhető. Futtassa a parancsokat az [elérhető országok/régiók, Államok, városok és szolgáltatók nézetben](#view-available) , és tekintse meg az előző paranccsal használni kívánt országok/régiók, városok és Államok listáját. 
 
 > [!WARNING]
-> A és `-StartTime` `-EndTime`a esetében az elmúlt 30 napban kell megadnia a dátumot. Egy korábbi dátum megadásával a rendszer nem ad vissza adatvesztést.
+> A és a esetében az elmúlt 30 napban kell megadnia a dátumot `-StartTime` `-EndTime` . Egy korábbi dátum megadásával a rendszer nem ad vissza adatvesztést.
 
 Az előző parancs kimenete a következő:
 
@@ -108,7 +108,7 @@ A visszaadott kimenetben a **pontszám** értéke a különböző régiók és s
 
 ## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Relatív hálózati késések összehasonlítása az Azure-régiók között egy adott helyről
 
-Ha egy adott hely és egy adott Azure-régió közötti relatív késések meghatározása helyett a-t `-Location`használja, akkor azt is megteheti, hogy az adott fizikai helyről az összes Azure-régióhoz viszonyított késést meghatározta. Például a következő parancs segítségével kiértékelheti, hogy milyen Azure-régiót kell üzembe helyezni a szolgáltatásban, ha az elsődleges felhasználók a Washington államban található Comcast-felhasználók:
+Ha egy adott hely és egy adott Azure-régió közötti relatív késések meghatározása helyett a-t használja `-Location` , akkor azt is megteheti, hogy az adott fizikai helyről az összes Azure-régióhoz viszonyított késést meghatározta. Például a következő parancs segítségével kiértékelheti, hogy milyen Azure-régiót kell üzembe helyezni a szolgáltatásban, ha az elsődleges felhasználók a Washington államban található Comcast-felhasználók:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `

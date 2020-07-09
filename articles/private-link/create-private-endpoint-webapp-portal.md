@@ -3,17 +3,17 @@ title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint has
 description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
-ms.date: 03/12/2020
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737393"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával
 
@@ -23,7 +23,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy webalka
 További információ: [privát végpontok használata az Azure Web App][privatenedpointwebapp]szolgáltatáshoz.
 
 > [!Note]
->Az előzetes verzió az USA keleti régiójában és az USA 2. nyugati régiójában érhető el az összes Windows-és Linux-Web Apps PremiumV2. 
+>Az előzetes verzió nyilvános régiókban érhető el a Windows-és Linux-Web Apps PremiumV2 és a rugalmas prémium szintű funkciókhoz. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -37,7 +37,7 @@ Ebben a szakaszban a virtuális hálózatot és az alhálózatot fogja létrehoz
 
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot.
 
-1. A képernyő bal felső részén válassza az **erőforrás** > **létrehozása hálózati** > **virtuális hálózat** vagy a **virtuális hálózat** keresése lehetőséget a keresőmezőbe.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **virtuális hálózat** vagy a **virtuális hálózat** keresése lehetőséget a keresőmezőbe.
 
 1. A **virtuális hálózat létrehozása**területen adja meg vagy válassza ki ezt az információt az alapok lapon:
 
@@ -60,7 +60,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**számítási** > **virtuális gép** lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** lehetőséget.
 
 1. A virtuális gép létrehozása – alapismeretek területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -89,7 +89,7 @@ Ebben a szakaszban egy magánhálózati webalkalmazást hoz létre egy privát v
 
 ### <a name="web-app"></a>Webalkalmazás
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**webes** > **webes alkalmazás** lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **webes**  >  **webes alkalmazás** lehetőséget.
 
 1. A webalkalmazás létrehozása – alapok lapon adja meg vagy válassza ki az alábbi adatokat:
 
@@ -102,7 +102,7 @@ Ebben a szakaszban egy magánhálózati webalkalmazást hoz létre egy privát v
 
 ### <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása
 
-1. A webalkalmazás tulajdonságainál válassza a **Beállítások** > **hálózatkezelés** elemet, majd kattintson a **"privát végponti kapcsolatok konfigurálása"** elemre.
+1. A webalkalmazás tulajdonságainál válassza a **Beállítások**  >  **hálózatkezelés** elemet, majd kattintson a **"privát végponti kapcsolatok konfigurálása"** elemre.
 
    > [!div class="mx-imgBorder"]
    >![Webalkalmazás hálózatkezelése][7]
@@ -120,8 +120,8 @@ Ebben a szakaszban egy magánhálózati webalkalmazást hoz létre egy privát v
 1. A magánhálózati végpont létrehozásának áttekintése
 
    > [!div class="mx-imgBorder"]
-   >![A][10]
-   >![privát végpont végső nézetének áttekintése][11]
+   >![][10]
+   > ![ A privát végpont végső nézetének áttekintése][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
@@ -198,7 +198,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a webalkalmaz
 
 1. A privát végponton keresztül fér hozzá a webalkalmazáshoz
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a privát végponttal, a webalkalmazással és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 

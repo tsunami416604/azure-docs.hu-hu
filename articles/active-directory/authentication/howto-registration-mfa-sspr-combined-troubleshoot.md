@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450938"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>A kombinált biztonsági információk regisztrációjának hibaelhárítása
 
 A cikkben található információk arra szolgálnak, hogy miként lehet a felhasználók által a kombinált regisztrációs élményben jelentett problémákkal kapcsolatos hibaelhárítást végző rendszergazdákat irányítani.
 
-## <a name="audit-logs"></a>Naplók
+## <a name="audit-logs"></a>Auditnaplók
 
 A kombinált regisztrációhoz naplózott események az Azure AD-naplók hitelesítési módszerek kategóriájában találhatók.
 
@@ -30,7 +30,7 @@ A kombinált regisztrációhoz naplózott események az Azure AD-naplók hiteles
 
 A következő táblázat felsorolja a kombinált regisztráció által generált összes naplózási eseményt:
 
-| Tevékenység | status | Ok | Leírás |
+| Tevékenység | Állapot | Ok | Leírás |
 | --- | --- | --- | --- |
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Sikeres | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálását. | Ez az esemény akkor következik be, amikor egy felhasználó megszakítja a regisztrációt a megszakítási módból.|
@@ -60,7 +60,7 @@ Amikor egy felhasználó egy telefonszámot és/vagy egy Mobile-alkalmazást reg
 
 Ha egy rendszergazda engedélyezte az előzetes verziót, a felhasználók regisztrálhatnak az új felhasználói felületre, majd a rendszergazda letiltja az előzetes verziót, és előfordulhat, hogy a felhasználók nem tudnak regisztrálni Multi-Factor Authentication is.
 
-Ha az egyesített regisztrációt befejező felhasználó az aktuális önkiszolgáló jelszó-visszaállítási (SSPR) regisztrációs oldalra kerül [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), a rendszer a felhasználótól a laphoz való hozzáférés előtt megkéri a multi-Factor Authentication elvégzésére. Ez a lépés technikai szempontból várható, de olyan felhasználók számára is új, akik korábban csak SSPR voltak regisztrálva. Bár ez az extra lépés javítja a felhasználó biztonsági állapotát azáltal, hogy egy másik biztonsági szintet biztosít, a rendszergazdák visszaállíthatják a felhasználókat, hogy már ne tudják végrehajtani a Multi-Factor Authentication.  
+Ha az egyesített regisztrációt befejező felhasználó az aktuális önkiszolgáló jelszó-visszaállítási (SSPR) regisztrációs oldalra kerül [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) , a rendszer a felhasználótól a laphoz való hozzáférés előtt megkéri a multi-Factor Authentication elvégzésére. Ez a lépés technikai szempontból várható, de olyan felhasználók számára is új, akik korábban csak SSPR voltak regisztrálva. Bár ez az extra lépés javítja a felhasználó biztonsági állapotát azáltal, hogy egy másik biztonsági szintet biztosít, a rendszergazdák visszaállíthatják a felhasználókat, hogy már ne tudják végrehajtani a Multi-Factor Authentication.  
 
 ### <a name="how-to-roll-back-users"></a>Felhasználók visszaállítása
 
@@ -150,7 +150,7 @@ A PowerShell-ablakban futtassa a következő parancsot, amely biztosítja a para
 A frissített felhasználói élmény letiltásához hajtsa végre az alábbi lépéseket:
 
 1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként.
-2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > **kezelése beállítások a hozzáférési panel előzetes verziójának funkcióit**.
+2. Nyissa meg **Azure Active Directory**  >  **felhasználói beállítások**  >  **kezelése beállítások a hozzáférési panel előzetes verziójának funkcióit**.
 3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez az előzetes verziójú funkciókat használhatják**, a választót a **none**értékre állíthatja, majd a **Save (Mentés**) lehetőséget is választhatja.
 
 A rendszer a továbbiakban nem fogja tudni regisztrálni a felhasználókat a frissített felhasználói élmény használatával.

@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68834583"
 ---
 # <a name="ibm-workloads-on-azure"></a>IBM számítási feladatok az Azure-ban
@@ -35,7 +34,7 @@ Ezen kívül az IBM-szoftverek, például a WebSphere és az MQ, már az Azure p
 
 Egy kiterjedt partneri ökoszisztéma segíti az IBM mainframe rendszerek áttelepíthetők az Azure-ba. A legtöbb esetben az újraírás vagy az alkalmazások cseréjének fokozatos üzembe helyezése előtt a lehető legalkalmasabb módszert kell alkalmazni az újrafelhasználásra. További útmutatást és segítséget nyújt a partnereknek az [Azure mainframe Migration Centerben](https://azure.microsoft.com/migration/mainframe/).
 
-**További lépések**
+**Következő lépések**
 
 - [Mainframe-áttelepítés: mítoszok és tények](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Az IBM&T fejlesztési és tesztelési környezet telepítése az Azure-ban](./install-ibm-z-environment.md)

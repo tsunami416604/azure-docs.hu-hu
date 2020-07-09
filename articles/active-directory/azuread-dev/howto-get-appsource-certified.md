@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383852"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>A Azure Active Directory minősítésének beszerzése a AppSource
 
@@ -37,8 +37,8 @@ Ha szeretné megtudni, hogyan integrálhatja alkalmazásait az Azure AD-vel az O
 A *több-bérlős alkalmazások* olyan alkalmazások, amelyek bármely olyan cég vagy szervezet felhasználóitól fogadnak bejelentkezést, amely külön példány, konfiguráció vagy központi telepítés nélkül rendelkezik az Azure ad-vel. A AppSource javasolja, hogy az alkalmazások több-bérlőt alkalmazzanak *az ingyenes* próbaidőszakos felhasználói élmény érdekében.
 
 Az alkalmazáson belüli több-bérlő engedélyezéséhez kövesse az alábbi lépéseket:
-1. Állítsa `Multi-Tenanted` be a `Yes` tulajdonságot az alkalmazás regisztrációjának adataira a [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások *[egybérlős](#single-tenant-applications)* konfigurációként vannak konfigurálva.
-1. Frissítse a kódot a kérelmeknek a `common` végpontba való küldéséhez. Ehhez frissítse a végpontot `https://login.microsoftonline.com/{yourtenant}` a verzióról a `https://login.microsoftonline.com/common*`verzióra.
+1. Állítsa be a `Multi-Tenanted` tulajdonságot az `Yes` alkalmazás regisztrációjának adataira a [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások *[egybérlős](#single-tenant-applications)* konfigurációként vannak konfigurálva.
+1. Frissítse a kódot a kérelmeknek a végpontba való küldéséhez `common` . Ehhez frissítse a végpontot a verzióról a verzióra `https://login.microsoftonline.com/{yourtenant}` `https://login.microsoftonline.com/common*` .
 1. Egyes platformok, például az ASP .NET esetében frissíteni kell a kódot, hogy több kiállító is el legyen fogadva.
 
 A több-bérlős alkalmazással kapcsolatos további információkért lásd: [Hogyan lehet bejelentkezni bármelyik Azure Active Directory (Azure ad) felhasználót a több-bérlős alkalmazás mintájának használatával](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: 7d631698f7c00a838f28d55b6b26055e686d27db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119390"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976999"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -95,8 +95,8 @@ A Logic Apps beépített eseményindítókat és műveleteket biztosít, így ü
 |   |   |   |   |
 |---|---|---|---|
 | [![API-ikon ][schedule-icon]<br> **ütemterve**][schedule-doc] | – Futtasson egy logikai alkalmazást egy megadott ismétlődésen, amely az alapszintű és a speciális ütemezések között az [ **ismétlődési** eseményindítóval][schedule-recurrence-doc]. <p>– Futtasson egy logikai alkalmazást, amely folyamatos adattömbökben lévő, a [ **csúszó ablakos** triggerrel][schedule-sliding-window-doc]való adatkezelésre szorul. <p>– Szüneteltetheti a logikai alkalmazást egy adott időtartamra a [ **késleltetési** művelettel][schedule-delay-doc]. <p>– Szüneteltetheti a logikai alkalmazást, amíg a [művelet **nem** ][schedule-delay-until-doc]lesz a megadott dátummal és időponttal. | [![API-ikon ][batch-icon]<br> **köteg**][batch-doc] | – A Batch **üzenetek** triggerrel rendelkező kötegekben lévő üzenetek feldolgozása. <p>– Olyan logikai alkalmazásokat hívhat meg, amelyek meglévő batch-eseményindítókkal rendelkeznek az **üzenetek küldése kötegelt** művelettel. |
-| [![API-ikon ][http-icon]<br> **http**][http-doc] | HTTP-vagy HTTPS-végpontok hívása a HTTP-alapú eseményindítókkal és műveletekkel. Más beépített HTTP-eseményindítók és műveletek a következők: [http + hencegés][http-swagger-doc] és [http + webhook][http-webhook-doc]. | [![API-ikon ][http-request-icon]<br> **kérése**][http-request-doc] | – Meghívhatja a logikai alkalmazást más alkalmazásokból vagy szolgáltatásokból, kiválthatja Event Grid erőforrás-eseményeit, vagy aktiválhatja a válaszokat a **kérések** triggerével Azure Security Center riasztásokra. <p>– Válaszok küldése egy alkalmazásnak vagy szolgáltatásnak a **Válasz** művelettel. |
-| [![API-ikon ][azure-api-management-icon]<br> **Azure API <br> Management**][azure-api-management-doc] | Meghívja a saját API-k által definiált eseményindítókat és műveleteket, amelyeket az Azure API Management felügyel és tesz közzé. | [![API-ikon ][azure-app-services-icon]<br> **Azure app <br> Services**][azure-app-services-doc] | Hívja meg az Azure API Apps vagy Web Appst, amely Azure App Serviceon üzemel. Az alkalmazások által definiált eseményindítók és műveletek úgy jelennek meg, mint bármely más, az első osztályú eseményindító és művelet, amikor a kivágás bekerül.|
+| [![API-ikon ][http-icon]<br> **http**][http-doc] | HTTP- vagy HTTPS-végpontok meghívása HTTP-triggerekkel vagy -műveletekkel. Más beépített HTTP-eseményindítók és műveletek a következők: [http + hencegés][http-swagger-doc] és [http + webhook][http-webhook-doc]. | [![API-ikon ][http-request-icon]<br> **kérése**][http-request-doc] | – Meghívhatja a logikai alkalmazást más alkalmazásokból vagy szolgáltatásokból, kiválthatja Event Grid erőforrás-eseményeit, vagy aktiválhatja a válaszokat a **kérések** triggerével Azure Security Center riasztásokra. <p>– Válaszok küldése egy alkalmazásnak vagy szolgáltatásnak a **Válasz** művelettel. |
+| [![API-ikon ][azure-api-management-icon]<br> **Azure API <br> Management**][azure-api-management-doc] | Saját, Azure API Managementtel felügyelt és közzétett API-jaival definiált triggereket és műveleteket hívhat meg. | [![API-ikon ][azure-app-services-icon]<br> **Azure app <br> Services**][azure-app-services-doc] | Az Azure App Service-en keresztül üzemeltetett Azure API Apps vagy Web Apps meghívása. Az alkalmazások által definiált eseményindítók és műveletek úgy jelennek meg, mint bármely más, az első osztályú eseményindító és művelet, amikor a kivágás bekerül.|
 | [![API-ikon ][azure-logic-apps-icon]<br> **Azure Logic <br> apps**][nested-logic-app-doc] | Hívjon fel más Logic apps-alkalmazásokat, amelyek a **kérelem** -triggerrel kezdődnek. |
 |||||
 
@@ -106,7 +106,7 @@ A Logic Apps beépített műveleteket biztosít a saját kód futtatásához a l
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API-ikon ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Hívja meg az Azure functions szolgáltatást, amely egyéni kódrészleteket (C# vagy Node. js) futtat a logikai alkalmazásokból. | [![API-ikon ][inline-code-icon]<br> **beágyazott kódja**][inline-code-doc] | JavaScript-kódrészletek hozzáadása és futtatása a logikai alkalmazásokból. |
+| [![API-ikon ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Hívja meg az Azure functions szolgáltatást, amely egyéni kódrészleteket (C# vagy Node.js) futtat a logikai alkalmazásokból. | [![API-ikon ][inline-code-icon]<br> **beágyazott kódja**][inline-code-doc] | JavaScript-kódrészletek hozzáadása és futtatása a logikai alkalmazásokból. |
 |||||
 
 ### <a name="control-workflow"></a>Vezérlési munkafolyamat
@@ -144,8 +144,8 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 | [![API ][sftp-ssh-icon]<br> **-ikon SFTP – SSH**][sftp-ssh-doc] | Olyan SFTP-kiszolgálókhoz csatlakozhat, amelyek az internetről az SSH használatával érhetők el, hogy a fájlok és mappák is működjenek. | [![API-ikon ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Kapcsolódjon a SharePoint Online-hoz, hogy kezelje a fájlokat, a mellékleteket, a mappákat és egyebeket. | 
 | [![API-ikon ][dynamics-365-icon]<br> **Dynamics <br> 365**][dynamics-365-doc] | Kapcsolódjon a Dynamics 365-fiókjához, hogy rekordokat, elemeket és egyebeket lehessen létrehozni és kezelni. | [![API-ikon ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc] | Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni |
 | [![API-ikon ][ftp-icon]<br> **FTP**][ftp-doc] | Csatlakozhat az internetről elérhető FTP-kiszolgálókhoz, így a fájlokkal és mappákkal is dolgozhat. | [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc] | Kapcsolódjon a helyszíni fájlmegosztás számára, hogy fájlokat lehessen létrehozni és kezelni. |
-| [![API-ikon ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Események felhasználása és közzététele az Event hub használatával. Például lekérheti a logikai alkalmazás kimenetét Event Hubs, majd elküldheti a kimenetet egy valós idejű elemzési szolgáltatónak. | [![API-ikon ][azure-event-grid-icon]<br> **Azure Event** <br> **Grid**][azure-event-grid-doc] | Egy Event Grid által közzétett események figyelése, például amikor az Azure-erőforrások vagy a külső gyártók erőforrásai változnak. |
-| [![API-ikon ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kapcsolódjon a Salesforce-fiókhoz, így olyan elemeket hozhat létre és kezelhet, mint a rekordok, a feladatok, az objektumok stb. | [![API-ikon ][twitter-icon]<br> **Twitter**][twitter-doc] | Csatlakozhat a Twitter-fiókjához, hogy kezelje a tweeteket, a követőiket, az idővonalat és egyebeket. Mentse a tweeteket az SQL, az Excel vagy a SharePoint szolgáltatásba. |
+| [![API-ikon ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Események felhasználása és közzététele az Event hub használatával. Az Event Hubs szolgáltatással például lekérheti a logikai alkalmazások kimenetét, majd elküldheti a kimenetet valamely valós idejű elemzési szolgáltatónak. | [![API-ikon ][azure-event-grid-icon]<br> **Azure Event** <br> **Grid**][azure-event-grid-doc] | Egy Event Grid által közzétett események figyelése, például amikor az Azure-erőforrások vagy a külső gyártók erőforrásai változnak. |
+| [![API-ikon ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kapcsolódjon a Salesforce-fiókhoz, így olyan elemeket hozhat létre és kezelhet, mint a rekordok, a feladatok, az objektumok stb. | [![API-ikon ][twitter-icon]<br> **Twitter**][twitter-doc] | Csatlakozhat a Twitter-fiókjához, hogy kezelje a tweeteket, a követőiket, az idővonalat és egyebeket. A tweeteket az SQL-be, az Excelbe vagy a SharePointba mentheti. |
 |||||
 
 <a name="on-premises-connectors"></a>
@@ -243,6 +243,12 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 > Az ISE-n belül létrehozott egyéni összekötők nem működnek a helyszíni adatátjáróval. Ezek az összekötők azonban közvetlenül hozzáférhetnek a helyszíni adatforrásokhoz, amelyek az ISE-t üzemeltető Azure-beli virtuális hálózathoz csatlakoznak. Ezért az ISE-ben a Logic apps valószínűleg nincs szüksége az adatátjáróra az ilyen erőforrásokkal való kommunikáció során.
 >
 > A ISEs létrehozásával kapcsolatos további információkért lásd: [Kapcsolódás Azure-beli virtuális hálózatokhoz a Azure Logic Appsból](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>Kapcsolatok létrehozásának tiltása
+
+Ha a szervezete nem engedélyezi a kapcsolódást bizonyos erőforrásokhoz a Azure Logic Apps összekötői segítségével, [letilthatja, hogy a](../logic-apps/block-connections-connectors.md) logikai alkalmazások munkafolyamataiban lévő összekötők a [Azure Policy](../governance/policy/overview.md)használatával képesek legyenek a kapcsolatok létrehozására. További információ: [adott összekötők által létrehozott kapcsolatok blokkolása a Azure Logic Appsban](../logic-apps/block-connections-connectors.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -476,4 +482,3 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 protokollt használó üzenetek kódolása"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML-üzenetek átalakítása"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML-üzenetek ellenőrzése"
-

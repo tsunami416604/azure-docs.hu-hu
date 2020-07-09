@@ -10,10 +10,9 @@ ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197355"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
@@ -58,7 +57,7 @@ Ha egyetlen zónában hoz létre méretezési készletet, akkor szabályozhatja,
 
 Availability Zones használatához a méretezési csoportnak egy [támogatott Azure-régióban](../availability-zones/az-region.md)kell létrehoznia. Availability Zonest használó méretezési csoport létrehozása az alábbi módszerek egyikével végezhető el:
 
-- [Azure Portal](#use-the-azure-portal)
+- [Azure Portalra](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)

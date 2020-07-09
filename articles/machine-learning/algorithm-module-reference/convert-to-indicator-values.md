@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477663"
 ---
 # <a name="convert-to-indicator-values"></a>Átalakítás mutatóértékekké
@@ -63,7 +62,7 @@ Az átalakítás működése:
 
 -   A kockázatokat leíró **hiba pontszám** oszlopban csak három lehetséges érték létezik (magas, közepes és alacsony), és nincs hiányzó érték. Tehát pontosan három új oszlop jön létre.  
 
--   Az új jelző oszlopok a forrás oszlop fejlécei és értékei alapján vannak elnevezve, a következő mintával: * \<forrás oszlop> – \<adatérték>*.  
+-   A rendszer az új jelző oszlopokat a forrás oszlop fejlécei és értékei alapján nevezi el a következő minta használatával: *\<source column>- \<data value>* .  
 
 -   Az egyes kiszolgálók csak egyetlen kockázati minősítéssel rendelkezhetnek, és az összes többi kijelző oszlopában 0 értéknek kell lennie.  
 
@@ -98,17 +97,17 @@ Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a
 
 -   Csak a kategorikusként megjelölt oszlopok alakíthatók át jelző oszlopokra. Ha a következő hibaüzenet jelenik meg, akkor valószínű, hogy az egyik kiválasztott oszlop nem kategorikus:  
 
-     0056-es hiba: \<az oszlop neve nevű oszlop neve> nem engedélyezett kategóriába tartozik.  
+     0056-es hiba: a nevű oszlop \<column name> nem engedélyezett kategóriába tartozik.  
 
      Alapértelmezés szerint a legtöbb karakterlánc-oszlop karakterlánc-szolgáltatásként van kezelve, ezért explicit módon meg kell jelölnie azokat kategorikusként a [metaadatok szerkesztése](edit-metadata.md)lehetőség használatával.  
 
 -   A mutatók oszlopaiba konvertálható oszlopok száma nincs korlátozva. Mivel azonban az értékek egyes oszlopai több kijelzőt is tartalmazhatnak, érdemes lehet csak néhány oszlopot konvertálni és áttekinteni.  
 
--   Ha az oszlop hiányzó értékeket tartalmaz, a rendszer külön jelző oszlopot hoz létre a hiányzó kategóriához, a következő névvel: * \<forrás oszlop> – hiányzik*  
+-   Ha az oszlop hiányzó értékeket tartalmaz, a rendszer külön jelző oszlopot hoz létre a hiányzó kategóriához, a következő névvel: * \<source column> -missing*  
 
 -   Ha a kijelző értékre konvertált oszlop számokat tartalmaz, akkor azokat kategorikusként kell megjelölni, mint bármely más szolgáltatás oszlopát. Miután ezt megtette, a rendszer diszkrét értékként kezeli a számokat. Ha például egy numerikus oszlop, amely 25 és 30 közötti értéket tartalmaz, egy új jelző oszlop jön létre minden egyes különálló értékhez:  
 
-    | Gyártmány       | Highway mpg-25 | Highway mpg-26 | Highway mpg-27 | Highway mpg-28 | Highway mpg-29 | Highway mpg-30 |
+    | Gyártó       | Highway mpg-25 | Highway mpg-26 | Highway mpg-27 | Highway mpg-28 | Highway mpg-29 | Highway mpg-30 |
     | ---------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
     | Contoso-autók | 0               | 0               | 0               | 0               | 0               | 1               |
 

@@ -6,14 +6,14 @@ ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71309680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110470"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>A U-SQL futtatása és tesztelése Azure Data Lake U-SQL SDK-val
 
@@ -36,7 +36,9 @@ A Data Lake U-SQL SDK a következő függőségeket igényli:
 
     ![A Visual Studio helyi Data Lake eszközei – Windows 10 SDK futtatása](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Telepítse [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)alkalmazást. Az előre csomagolt Visual C++ és Windows SDK fájlok a következő helyen találhatók: C:\Program Files (x86) \Microsoft Visual Studio 14.0 \ Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. Ebben az esetben a U-SQL helyi fordító nem találja a függőségeket automatikusan. Meg kell adnia a CppSDK elérési útját. Másolhatja a fájlokat egy másik helyre, vagy használhatja azt.
+  - Telepítse [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)alkalmazást. Az előre csomagolt Visual C++ és Windows SDK fájlok a következő címen találhatók:`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+
+    Ebben az esetben a U-SQL helyi fordító nem találja a függőségeket automatikusan. Meg kell adnia a CppSDK elérési útját. Másolhatja a fájlokat egy másik helyre, vagy használhatja azt.
 
 ## <a name="understand-basic-concepts"></a>Az alapvető fogalmak ismertetése
 
@@ -55,52 +57,54 @@ A U-SQL-parancsfájlokban relatív elérési utat és helyi abszolút elérési 
 
 |Relatív elérési út|Abszolút elérési út|
 |-------------|-------------|
-|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|ABC/def/input. csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/ABC/def/input. csv |D:\abc\def\input.csv|
+|/ABC/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
+|ABC/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
+|D:/ABC/def/input.csv |D:\abc\def\input.csv|
 
 ### <a name="working-directory"></a>Munkakönyvtár
 
 Ha a U-SQL-parancsfájlt helyileg futtatja, a rendszer létrehoz egy munkakönyvtárat a fordítás során a jelenlegi futó könyvtár alatt. A fordítási kimeneteken kívül a helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékolva lesznek a munkakönyvtárba. A munkakönyvtár gyökérkönyvtárának neve "ScopeWorkDir", és a munkakönyvtárban található fájlok a következők:
 
-|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Meghatározás|Leírás|
+|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Leírás|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Futtatókörnyezet-verzió kivonatoló karakterlánca|A helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékmásolata|
 | |Script_66AE4909AA0ED06C| |Parancsfájl neve + szkript elérési útjának kivonat-karakterlánca|Fordítási kimenetek és végrehajtási lépés naplózása|
-| | |\_script\_. ABR|Fordítóprogram kimenete|Algebra-fájl|
-| | |\_ScopeCodeGen\_. *|Fordítóprogram kimenete|Létrehozott felügyelt kód|
-| | |\_ScopeCodeGenEngine\_. *|Fordítóprogram kimenete|Generált natív kód|
+| | |\_script \_ . ABR|Fordítóprogram kimenete|Algebra-fájl|
+| | |\_ScopeCodeGen \_ . *|Fordítóprogram kimenete|Létrehozott felügyelt kód|
+| | |\_ScopeCodeGenEngine \_ . *|Fordítóprogram kimenete|Generált natív kód|
 | | |hivatkozott szerelvények|Szerelvény leírása|Hivatkozott szerelvények fájljai|
 | | |deployed_resources|Erőforrás központi telepítése|Erőforrás-telepítési fájlok|
-| | |XXXXXXXX. xxx [1.. n]\_\*. *|Végrehajtási napló|Végrehajtási lépések naplózása|
-
+| | |XXXXXXXX. xxx [1.. n] \_ \* . *|Végrehajtási napló|Végrehajtási lépések naplózása|
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Az SDK használata a parancssorból
 
 ### <a name="command-line-interface-of-the-helper-application"></a>A segítő alkalmazás parancssori felülete
 
-Az SDK directory\build\runtime alatt a LocalRunHelper. exe a parancssori segítő alkalmazás, amely felületet biztosít a leggyakrabban használt helyi futtatási függvények többségéhez. Vegye figyelembe, hogy a parancs és az argumentum kapcsolók is megkülönböztetik a kis-és nagybetűket. A következő meghívása:
+Az SDK-directory\build\runtime alatt a LocalRunHelper.exe a parancssori segítő alkalmazás, amely a leggyakrabban használt helyi futtatási függvények többségéhez biztosít felületet. Vegye figyelembe, hogy a parancs és az argumentum kapcsolók is megkülönböztetik a kis-és nagybetűket. A következő meghívása:
 
-    LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```console
+LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```
 
-Futtassa a LocalRunHelper. exe parancsot argumentumok nélkül, vagy a **Súgó** kapcsolóval jelenítse meg a Súgó adatait:
+LocalRunHelper.exe futtatása argumentumok nélkül vagy a **Súgó** kapcsolóval a Súgó információinak megjelenítéséhez:
 
-    > LocalRunHelper.exe help
-
-        Command 'help' :  Show usage information
-        Command 'compile' :  Compile the script
-        Required Arguments :
-            -Script param
-                    Script File Path
-        Optional Arguments :
-            -Shallow [default value 'False']
-                    Shallow compile
+```console
+> LocalRunHelper.exe help
+    Command 'help' :  Show usage information
+    Command 'compile' :  Compile the script
+    Required Arguments :
+        -Script param
+                Script File Path
+    Optional Arguments :
+        -Shallow [default value 'False']
+                Shallow compile
+```
 
 A Súgó adataiban:
 
--  A **parancs a parancs nevét adja meg** .  
--  A **kötelező argumentum** felsorolja az argumentumokat, amelyeket meg kell adni.  
--  A nem **kötelező argumentum** a választható argumentumokat listázza alapértelmezett értékekkel.  A nem kötelező logikai argumentumok nem rendelkeznek paraméterekkel, és a megjelenésük negatív az alapértelmezett értékük.
+- A **parancs a parancs nevét adja meg** .  
+- A **kötelező argumentum** felsorolja az argumentumokat, amelyeket meg kell adni.  
+- A nem **kötelező argumentum** a választható argumentumokat listázza alapértelmezett értékekkel.  A nem kötelező logikai argumentumok nem rendelkeznek paraméterekkel, és a megjelenésük negatív az alapértelmezett értékük.
 
 ### <a name="return-value-and-logging"></a>Visszatérési érték és naplózás
 
@@ -112,19 +116,19 @@ A U-SQL helyi futtatásához meg kell adni egy megadott adatgyökerét helyi tá
 
 - Állítsa be a **SCOPE_CPP_SDK** környezeti változót.
 
-    Ha beolvassa a Microsoft Visual C++ és a Windows SDK Data Lake Tools for Visual Studio telepítésével, ellenőrizze, hogy rendelkezik-e a következő mappával:
+  Ha beolvassa a Microsoft Visual C++ és a Windows SDK Data Lake Tools for Visual Studio telepítésével, ellenőrizze, hogy rendelkezik-e a következő mappával:
 
-        C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK
+    `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 
-    Adjon meg egy új környezeti változót, amelynek neve **SCOPE_CPP_SDK** , hogy erre a könyvtárra mutasson. Vagy másolja a mappát a másik helyre, és a **SCOPE_CPP_SDKként** válassza a következőt:.
+  Adjon meg egy új környezeti változót, amelynek neve **SCOPE_CPP_SDK** , hogy erre a könyvtárra mutasson. Vagy másolja a mappát a másik helyre, és a **SCOPE_CPP_SDKként** válassza a következőt:.
 
-    A környezeti változó beállítása mellett a **-CppSDK** argumentumot is megadhatja a parancssor használatakor. Ez az argumentum felülírja az alapértelmezett CppSDK környezeti változót.
+  A környezeti változó beállítása mellett a **-CppSDK** argumentumot is megadhatja a parancssor használatakor. Ez az argumentum felülírja az alapértelmezett CppSDK környezeti változót.
 
 - Állítsa be a **LOCALRUN_DATAROOT** környezeti változót.
 
-    Definiáljon egy új környezeti változót, amelynek neve **LOCALRUN_DATAROOT** , amely az adatgyökérre mutat.
+  Definiáljon egy új környezeti változót, amelynek neve **LOCALRUN_DATAROOT** , amely az adatgyökérre mutat.
 
-    A környezeti változó beállítása mellett a **-DataRoot** argumentumot is megadhatja az adatgyökér elérési úttal, ha parancssort használ. Ez az argumentum felülírja az alapértelmezett adatgyökér környezeti változót. Ezt az argumentumot minden futtatott parancssorhoz hozzá kell adnia, hogy felülírja az alapértelmezett adatgyökér környezeti változót az összes művelethez.
+  A környezeti változó beállítása mellett a **-DataRoot** argumentumot is megadhatja az adatgyökér elérési úttal, ha parancssort használ. Ez az argumentum felülírja az alapértelmezett adatgyökér környezeti változót. Ezt az argumentumot minden futtatott parancssorhoz hozzá kell adnia, hogy felülírja az alapértelmezett adatgyökér környezeti változót az összes művelethez.
 
 ### <a name="sdk-command-line-usage-samples"></a>SDK parancssori használati minták
 
@@ -132,10 +136,11 @@ A U-SQL helyi futtatásához meg kell adni egy megadott adatgyökerét helyi tá
 
 A **Run** parancs a parancsfájl fordítására, majd lefordított eredményeinek végrehajtására szolgál. A parancssori argumentumok kombinációja a **fordítás** és a **végrehajtás**során.
 
-    LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```
 
 A **Futtatás**nem kötelező argumentumai a következők:
-
 
 |Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
@@ -153,10 +158,9 @@ A **Futtatás**nem kötelező argumentumai a következők:
 |-ScopeCEPTempPath|ideiglenes|Az adatfolyam-továbbításhoz használandó ideiglenes útvonal|
 |-OptFlags| |Az optimalizáló jelzők vesszővel tagolt listája|
 
+Íme egy példa:
 
-Például:
-
-    LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose
+`LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
 A **fordítás** és a **végrehajtás**kombinációja mellett külön is lefordíthatja és végrehajthatja a lefordított végrehajtható fájlokat.
 
@@ -164,10 +168,11 @@ A **fordítás** és a **végrehajtás**kombinációja mellett külön is leford
 
 A **fordítási** paranccsal egy U-SQL-szkriptet állíthat össze a végrehajtható fájlok számára.
 
-    LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```
 
 A **fordítás**nem kötelező argumentumai a következők:
-
 
 |Argumentum|Leírás|
 |--------|-----------|
@@ -184,26 +189,33 @@ A **fordítás**nem kötelező argumentumai a következők:
 | -ScopeCEPTempPath [alapértelmezett érték: "Temp"]|Az adatfolyam-továbbításhoz használandó ideiglenes útvonal|
 | -OptFlags [alapértelmezett érték: ""]|Az optimalizáló jelzők vesszővel tagolt listája|
 
-
 Íme néhány felhasználási példa.
 
 Egy U-SQL-szkript fordítása:
 
-    LocalRunHelper compile -Script d:\test\test1.usql
+```console
+LocalRunHelper compile -Script d:\test\test1.usql
+```
 
 Állítson össze egy U-SQL-parancsfájlt, és állítsa be az adatgyökér mappát. Vegye figyelembe, hogy ez felülírja a Set környezeti változót.
 
-    LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```console
+LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```
 
 Állítson össze egy U-SQL-parancsfájlt, és állítson be egy munkakönyvtárat, egy hivatkozási szerelvényt és egy adatbázist:
 
-    LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```console
+LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```
 
 #### <a name="execute-compiled-results"></a>Lefordított eredmények végrehajtása
 
-A **végrehajtás** parancs a lefordított eredmények végrehajtásához használatos.   
+A **végrehajtás** parancs a lefordított eredmények végrehajtásához használatos.
 
-    LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```console
+LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```
 
 A **végrehajtás**nem kötelező argumentumai a következők:
 
@@ -216,27 +228,28 @@ A **végrehajtás**nem kötelező argumentumai a következők:
 
 Példa a használati példákra:
 
-    LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
-
+```console
+LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
+```
 
 ## <a name="use-the-sdk-with-programming-interfaces"></a>Az SDK használata programozási felületek használatával
 
-A programozási felületek mind a LocalRunHelper. exe mappában találhatók. A u-SQL SDK és a C# tesztelési keretrendszer funkcióinak integrálásához használhatja a U-SQL-parancsfájlok helyi tesztelését. Ebben a cikkben a Standard C# Unit test Project használatával mutatjuk be, hogyan használhatók ezek a felületek a U-SQL-szkriptek teszteléséhez.
+A programozási felületek mind a LocalRunHelper.exe találhatók. A u-SQL SDK és a C# tesztelési keretrendszer funkcióinak integrálásához használhatja a U-SQL-parancsfájlok helyi tesztelését. Ebben a cikkben a Standard C# Unit test Project használatával mutatjuk be, hogyan használhatók ezek a felületek a U-SQL-szkriptek teszteléséhez.
 
 ### <a name="step-1-create-c-unit-test-project-and-configuration"></a>1. lépés: C# egység tesztelési projekt és konfiguráció létrehozása
 
 - Hozzon létre egy C# egységnyi tesztelési projektet a fájl > új > Project > Visual C# > test > Unit test Project használatával.
-- Adja hozzá a LocalRunHelper. exe fájlt a projektre mutató hivatkozásként. A LocalRunHelper. exe a következő helyen található: \build\runtime\LocalRunHelper.exe in Nuget Package.
+- LocalRunHelper.exe hozzáadása hivatkozásként a projekthez. A LocalRunHelper.exe a Nuget csomagban \build\runtime\LocalRunHelper.exe található.
 
-    ![Azure Data Lake U-SQL SDK-hozzáadási hivatkozás](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
+   ![Azure Data Lake U-SQL SDK-hozzáadási hivatkozás](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
 - Az U-SQL SDK **csak** az x64-es környezetet támogatja, ügyeljen arra, hogy x64-ként állítsa be a Build-platform célját. Beállíthatja, hogy a Project tulajdonságon keresztül > Build > platform célját.
 
-    ![A U-SQL SDK Azure Data Lake az x64-projekt konfigurálása](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
+   ![A U-SQL SDK Azure Data Lake az x64-projekt konfigurálása](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
 - Győződjön meg arról, hogy a tesztkörnyezet x64-ként van beállítva. A Visual Studióban beállíthatja a teszt > tesztelési beállítások > az alapértelmezett processzor-architektúra > x64.
 
-    ![A U-SQL SDK Azure Data Lake az x64-tesztkörnyezet konfigurálása](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
+   ![A U-SQL SDK Azure Data Lake az x64-tesztkörnyezet konfigurálása](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
 
 - Ügyeljen arra, hogy az összes függőségi fájlt a NugetPackage\build\runtime\ alá másolja a projekt munkakönyvtárra, amely általában a ProjectFolder\bin\x64\Debug. alatt van
 
@@ -244,91 +257,78 @@ A programozási felületek mind a LocalRunHelper. exe mappában találhatók. A 
 
 Alább látható a U-SQL-szkriptek tesztelésének mintája. Teszteléshez a parancsfájlokat, a bemeneti fájlokat és a várt kimeneti fájlokat kell előkészítenie.
 
-    using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.IO;
-    using System.Text;
-    using System.Security.Cryptography;
-    using Microsoft.Analytics.LocalRun;
-
-    namespace UnitTestProject1
+```usql
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Text;
+using System.Security.Cryptography;
+using Microsoft.Analytics.LocalRun;
+namespace UnitTestProject1
+{
+    [TestClass]
+    public class USQLUnitTest
     {
-        [TestClass]
-        public class USQLUnitTest
+        [TestMethod]
+        public void TestUSQLScript()
         {
-            [TestMethod]
-            public void TestUSQLScript()
-            {
-                //Specify the local run message output path
-                StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
-
-                LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
-
-                //Configure the DateRoot path, Script Path and CPPSDK path
-                localrun.DataRoot = "../../../";
-                localrun.ScriptPath = "../../../Script/Script.usql";
-                localrun.CppSdkDir = "../../../CppSDK";
-
-                //Run U-SQL script
-                localrun.DoRun();
-
-                //Script output 
-                string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
-
-                //Expected script output
-                string ExpectedResult = "../../../ExpectedOutput/result.csv";
-
-                Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
-
-                //Don't forget to close MessageOutput to get logs into file
-                MessageOutput.Close();
-            }
+            //Specify the local run message output path
+            StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
+            LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
+            //Configure the DateRoot path, Script Path and CPPSDK path
+            localrun.DataRoot = "../../../";
+            localrun.ScriptPath = "../../../Script/Script.usql";
+            localrun.CppSdkDir = "../../../CppSDK";
+            //Run U-SQL script
+            localrun.DoRun();
+            //Script output
+            string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
+            //Expected script output
+            string ExpectedResult = "../../../ExpectedOutput/result.csv";
+            Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
+            //Don't forget to close MessageOutput to get logs into file
+            MessageOutput.Close();
         }
     }
-
-    namespace Test.Helpers
+}
+namespace Test.Helpers
+{
+    public static class FileAssert
     {
-        public static class FileAssert
+        static string GetFileHash(string filename)
         {
-            static string GetFileHash(string filename)
+            Assert.IsTrue(File.Exists(filename));
+            using (var hash = new SHA1Managed())
             {
-                Assert.IsTrue(File.Exists(filename));
-
-                using (var hash = new SHA1Managed())
-                {
-                    var clearBytes = File.ReadAllBytes(filename);
-                    var hashedBytes = hash.ComputeHash(clearBytes);
-                    return ConvertBytesToHex(hashedBytes);
-                }
-            }
-
-            static string ConvertBytesToHex(byte[] bytes)
-            {
-                var sb = new StringBuilder();
-
-                for (var i = 0; i < bytes.Length; i++)
-                {
-                    sb.Append(bytes[i].ToString("x"));
-                }
-                return sb.ToString();
-            }
-
-            public static void AreEqual(string filename1, string filename2)
-            {
-                string hash1 = GetFileHash(filename1);
-                string hash2 = GetFileHash(filename2);
-
-                Assert.AreEqual(hash1, hash2);
+                var clearBytes = File.ReadAllBytes(filename);
+                var hashedBytes = hash.ComputeHash(clearBytes);
+                return ConvertBytesToHex(hashedBytes);
             }
         }
+        static string ConvertBytesToHex(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x"));
+            }
+            return sb.ToString();
+        }
+        public static void AreEqual(string filename1, string filename2)
+        {
+            string hash1 = GetFileHash(filename1);
+            string hash2 = GetFileHash(filename2);
+            Assert.AreEqual(hash1, hash2);
+        }
     }
+}
+```
 
+### <a name="programming-interfaces-in-localrunhelperexe"></a>Programozási felületek LocalRunHelper.exe
 
-### <a name="programming-interfaces-in-localrunhelperexe"></a>Programozási felületek a LocalRunHelper. exe alkalmazásban
+A LocalRunHelper.exe az U-SQL helyi fordításához, futtatásához stb. programozási felületeket biztosít. A felületek a következő módon vannak felsorolva.
 
-A LocalRunHelper. exe az U-SQL helyi fordításához, futtatásához stb. programozási felületeket biztosít. A felületek a következő módon vannak felsorolva.
-
-**Konstruktor**
+### <a name="constructor"></a>Konstruktor
 
 nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
@@ -336,7 +336,7 @@ nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|a kimeneti üzenetek esetében állítsa a null értéket a konzol használatához|
 
-**Tulajdonságok**
+### <a name="properties"></a>Tulajdonságok
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
@@ -361,32 +361,30 @@ nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 |UseDataBase|sztring|Az ideiglenes szerelvény-regisztráció mögötti kódokhoz használandó adatbázis megadása, alapértelmezés szerint a főkiszolgáló|
 |WorkDir|sztring|Előnyben részesített munkakönyvtár|
 
+### <a name="method"></a>Metódus
 
-**Módszer**
-
-|Módszer|Leírás|Visszatérési|Paraméter|
+|Metódus|Leírás|Visszatérési|Paraméter|
 |------|-----------|------|---------|
 |nyilvános Boole DoCompile ()|Az U-SQL-szkript fordítása|Igaz siker esetén| |
 |nyilvános Boole DoExec ()|A lefordított eredmény végrehajtása|Igaz siker esetén| |
 |nyilvános Boole DoRun ()|Az U-SQL-szkript futtatása (fordítás + végrehajtás)|Igaz siker esetén| |
 |nyilvános Boole IsValidRuntimeDir (karakterlánc elérési útja)|Ellenőrizze, hogy a megadott elérési út érvényes futtatókörnyezet-elérési út-e|Igaz érvényes|A futásidejű könyvtár elérési útja|
 
-
 ## <a name="faq-about-common-issue"></a>Gyakori problémák
 
-### <a name="error-1"></a>1. hiba:
-E_CSC_SYSTEM_INTERNAL: belső hiba! Nem tölthető be a (z) "ScopeEngineManaged. dll" fájl vagy szerelvény egyik függősége. A megadott modul nem található.
+### <a name="error-1"></a>1. hiba
+
+E_CSC_SYSTEM_INTERNAL: belső hiba! Nem tölthető be a (z) "ScopeEngineManaged.dll" fájl vagy szerelvény vagy annak valamelyik függősége. A megadott modul nem található.
 
 Ellenőrizze a következőket:
 
 - Győződjön meg arról, hogy rendelkezik x64-környezettel. A Build cél platformnak és a tesztkörnyezetben x64-nek kell lennie, az **1. lépés: C# egység tesztelési projekt és a fenti konfiguráció létrehozása című témakörben** talál.
 - Győződjön meg arról, hogy az összes függőségi fájlt átmásolta a NugetPackage\build\runtime\ a Project Working könyvtárba.
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-* A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
-* A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.
-* Összetettebb lekérdezés megjelenítéséhez tekintse meg a [webhelyek naplófájljainak elemzése Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md)című témakört.
-* A feladat részleteinek megtekintéséhez lásd: [Azure Data Lake Analytics feladatok böngésző és feladat nézetének használata](data-lake-analytics-data-lake-tools-view-jobs.md).
-* A csúcspont-végrehajtási nézet használatához lásd: [a Data Lake Tools for Visual Studio csúcs-végrehajtási nézetének használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+- A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
+- A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.
+- Összetettebb lekérdezés megjelenítéséhez tekintse meg a [webhelyek naplófájljainak elemzése Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md)című témakört.
+- A feladat részleteinek megtekintéséhez lásd: [Azure Data Lake Analytics feladatok böngésző és feladat nézetének használata](data-lake-analytics-data-lake-tools-view-jobs.md).
+- A csúcspont-végrehajtási nézet használatához lásd: [a Data Lake Tools for Visual Studio csúcs-végrehajtási nézetének használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

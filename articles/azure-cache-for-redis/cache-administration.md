@@ -6,12 +6,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dfb760477fc528575212d79d929661c2276effbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079074"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .
@@ -36,8 +35,8 @@ A gyorsítótár egy vagy több csomópontjának újraindításához válassza k
 Az ügyfélalkalmazások hatása attól függően változik, hogy melyik csomópontokat kívánja újraindítani.
 
 * **Főkiszolgáló** – a főcsomópont újraindításakor a Redis-hez készült Azure cache feladatátvételt hajt végre a replika csomóponton, és a főkiszolgálót is támogatja. A feladatátvétel során előfordulhat, hogy egy rövid időszak, amelyben a kapcsolatok sikertelenek lesznek a gyorsítótárban.
-* **Slave** – a Slave csomópont újraindításakor általában nincs hatással a gyorsítótár-ügyfelekre.
-* **Mind a Master** , mind a Slave – ha a gyorsítótár-csomópontok is újraindulnak, az összes adat elvész a gyorsítótárban, és a gyorsítótárhoz való csatlakozás meghiúsul, amíg az elsődleges csomópont ismét online állapotba nem kerül. Ha beállította az [adatmegőrzést](cache-how-to-premium-persistence.md), a legutóbbi biztonsági mentés visszakerül, ha a gyorsítótár online állapotba kerül, de a legutóbbi biztonsági mentést követően történt gyorsítótár-írások elvesznek.
+* **Replika** – a replika csomópontjának újraindításakor általában nincs hatással a gyorsítótár-ügyfelekre.
+* **Főkiszolgáló és replika** – ha a gyorsítótár-csomópontok is újraindulnak, az összes adat elvész a gyorsítótárban, és a gyorsítótárhoz való kapcsolódás meghiúsul, amíg az elsődleges csomópont ismét online állapotba nem kerül. Ha beállította az [adatmegőrzést](cache-how-to-premium-persistence.md), a legutóbbi biztonsági mentés visszakerül, ha a gyorsítótár online állapotba kerül, de a legutóbbi biztonsági mentést követően történt gyorsítótár-írások elvesznek.
 * **Prémium szintű gyorsítótár csomópontja** , amelyen engedélyezve van a fürtözés. Ha egy prémium szintű gyorsítótár egy vagy több csomópontját a fürtözés engedélyezése után újraindítja, a kiválasztott csomópontok viselkedése megegyezik a nem fürtözött gyorsítótár megfelelő csomópontjának vagy csomópontjainak újraindításával.
 
 ## <a name="reboot-faq"></a>Újraindítással kapcsolatos gyakori kérdések
@@ -47,7 +46,7 @@ Az ügyfélalkalmazások hatása attól függően változik, hogy melyik csomóp
 * [Újraindíthatom a gyorsítótárat a PowerShell, a CLI vagy más felügyeleti eszközök használatával?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Melyik csomópontot kell újraindítani az alkalmazás teszteléséhez?
-Az alkalmazás rugalmasságának teszteléséhez a gyorsítótár elsődleges csomópontjának meghibásodása esetén indítsa újra a **fő** csomópontot. Ha tesztelni szeretné az alkalmazás rugalmasságát a másodlagos csomópont meghibásodása miatt, indítsa újra a **Slave** csomópontot. Ha tesztelni szeretné az alkalmazás rugalmasságát a gyorsítótár teljes meghibásodása ellen, indítsa újra **mindkét** csomópontot.
+Az alkalmazás rugalmasságának teszteléséhez a gyorsítótár elsődleges csomópontjának meghibásodása esetén indítsa újra a **fő** csomópontot. Ha tesztelni szeretné az alkalmazás rugalmasságát a másodlagos csomópont meghibásodása miatt, indítsa újra a **replika** csomópontot. Ha tesztelni szeretné az alkalmazás rugalmasságát a gyorsítótár teljes meghibásodása ellen, indítsa újra **mindkét** csomópontot.
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Újra lehet indítani a gyorsítótárat az ügyfélkapcsolatok törléséhez?
 Igen, ha újraindítja a gyorsítótárat, az összes ügyfél-kapcsolat törlődik. Az újraindítás hasznos lehet abban az esetben, ha az összes ügyfélkapcsolatot a rendszer logikai hiba vagy az ügyfélalkalmazás hibája miatt használja fel. Az egyes díjszabási szintek eltérő [ügyfélkapcsolati korlátokkal](cache-configure.md#default-redis-server-configuration) rendelkeznek a különböző méretekhez, és a határértékek elérésekor a rendszer nem fogad el több ügyfélkapcsolatot. A gyorsítótár újraindítása lehetővé teszi az összes ügyfélkapcsolat törlését.
@@ -58,7 +57,7 @@ Igen, ha újraindítja a gyorsítótárat, az összes ügyfél-kapcsolat törlő
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Elveszítem az adatok a gyorsítótárból, ha újraindítást végezek?
-Ha a **fő** -és a **alárendelt** csomópontok is újraindulnak, akkor a gyorsítótárban lévő összes adat (vagy abban a szegmensben, ha a fürtön engedélyezve van a prémium szintű gyorsítótár használata) elvesznek, ez azonban nem garantált. Ha beállította az [adatmegőrzést](cache-how-to-premium-persistence.md), a rendszer visszaállítja a legutóbbi biztonsági mentést, ha a gyorsítótár online állapotba kerül, de a biztonsági mentés után történt gyorsítótár-írások elvesznek.
+Ha a **fő** -és a **replika** -csomópontokat is újraindítja, akkor a gyorsítótárban lévő összes adat (vagy abban az esetben, ha egy prémium szintű gyorsítótár használata engedélyezve van a fürtözéssel) elveszik, de ez nem garantált. Ha beállította az [adatmegőrzést](cache-how-to-premium-persistence.md), a rendszer visszaállítja a legutóbbi biztonsági mentést, ha a gyorsítótár online állapotba kerül, de a biztonsági mentés után történt gyorsítótár-írások elvesznek.
 
 Ha csak az egyik csomópontot újraindítja, a rendszer általában nem veszíti el az adatvesztést, de az is lehetséges. Ha például a főcsomópontot újraindították, és a gyorsítótár írása folyamatban van, a gyorsítótárból származó adatok elvesznek. Az adatvesztés egy másik forgatókönyve az egyik csomópont újraindítása, a másik csomópont pedig egy hiba miatt leáll. Az adatvesztés lehetséges okaival kapcsolatos további információkért lásd: [Mi történt az Redis-beli adatokkal?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
@@ -66,7 +65,7 @@ Ha csak az egyik csomópontot újraindítja, a rendszer általában nem veszíti
 Igen, a PowerShell-utasításokért lásd: az [Azure cache újraindítása a Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
 ## <a name="schedule-updates"></a>Frissítések ütemezése
-A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár-példány karbantartási időszakát. Ha a karbantartási időszak meg van adva, a rendszer minden Redis-kiszolgáló frissítést végez ebben az ablakban. 
+A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár-példány karbantartási időszakát. A karbantartási időszak lehetővé teszi a hét azon napjának és időpontjának szabályozását, amely alatt a gyorsítótárat üzemeltető virtuális gépek (ek) frissíthetők. Az Azure cache for Redis az Ön által megadott időszakon belül a Redis-kiszolgáló szoftverének megkezdéséhez és befejezéséhez szükséges legjobb megoldás.
 
 > [!NOTE] 
 > A karbantartási időszak csak a Redis-kiszolgáló frissítéseire vonatkozik, és nem a gyorsítótárat üzemeltető virtuális gépek operációs rendszerének összes Azure-frissítésére vagy frissítésére.

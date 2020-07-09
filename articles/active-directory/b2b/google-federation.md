@@ -4,7 +4,7 @@ description: A Google összevonása lehetővé teszi a vendég felhasználók sz
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1a743f313ca4159ce4ef03413a94ec25bb8fae
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387116"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -81,7 +81,7 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
 
    ![A jóváhagyott átirányítási URI-k szakaszt ábrázoló képernyőkép](media/google-federation/google-create-oauth-client-id.png)
 
-10. Kattintson a **Létrehozás** gombra. Másolja ki az ügyfél-azonosítót és az ügyfél titkát, amelyet akkor fog használni, amikor hozzáadja az identitás-szolgáltatót az Azure AD-portálon.
+10. Válassza a **Létrehozás** lehetőséget. Másolja ki az ügyfél-azonosítót és az ügyfél titkát, amelyet akkor fog használni, amikor hozzáadja az identitás-szolgáltatót az Azure AD-portálon.
 
    ![A OAuth ügyfél-AZONOSÍTÓját és az ügyfél titkát ábrázoló képernyőkép](media/google-federation/google-auth-client-id-secret.png)
 

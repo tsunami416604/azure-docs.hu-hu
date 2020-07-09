@@ -1,15 +1,14 @@
 ---
 title: Ügyfél által felügyelt kulccsal történő titkosítás
-description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
+description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a prémium szintű beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 393e51e687e95c1ff4c6a50429dd342005aad296
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509542"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -33,7 +32,7 @@ A cikkben szereplő Azure CLI-lépések használatához az Azure CLI-es vagy új
 
 ## <a name="enable-customer-managed-key---cli"></a>Ügyfél által felügyelt kulcs engedélyezése – parancssori felület
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Szükség esetén futtassa az az [Group Create][az-group-create] parancsot egy erőforráscsoport létrehozásához a kulcstartó, a tároló-beállításjegyzék és az egyéb szükséges erőforrások létrehozásához.
 

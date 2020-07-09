@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789273"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése az Azure Logic Apps használatával
@@ -57,8 +56,8 @@ Az SFTP-eseményindítók az SFTP fájlrendszer lekérdezésével és a legutób
 
 | SFTP-ügyfél | Műveletek |
 |-------------|--------|
-| WinSCP | Ugrás a **Beállítások** > **Beállítások** > **átvitel** > **Edit**szerkesztési > **megőrzési időbélyegének** > **letiltása** |
-| Filezillát | Ugrás az **Transfer** >  > **átvitt fájlok adatmegőrzési időbélyegére –****Letiltás** |
+| WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
+| Filezillát | Ugrás az **Transfer**  >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
 |||
 
 Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elkészült-e, és nem részlegesen van-e írva. Előfordulhat például, hogy egy fájl változása folyamatban van, amikor az trigger ellenőrzi a fájlkiszolgálón. Egy részlegesen megírt fájl visszaadásának elkerüléséhez az trigger megállapítja a legutóbbi módosításokat tartalmazó fájl időbélyegét, de nem adja vissza azonnal a fájlt. Az trigger csak akkor adja vissza a fájlt, ha újra kérdezi le a kiszolgálót. Előfordulhat, hogy ez a viselkedés egy késleltetést okoz, amely akár kétszer is meghaladhatja az aktiválás lekérdezési időközét.
@@ -71,11 +70,11 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
 1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a "SFTP" kifejezést a szűrő mezőbe. Válassza ki a kívánt eseményindítót az eseményindítók listából.
 
-   – vagy –
+   -vagy-
 
    Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be az "SFTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. Adja meg a kapcsolathoz szükséges adatokat.
 
@@ -84,13 +83,13 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
    > Ha megadja az SSH titkos kulcsát az **SSH titkos kulcs** tulajdonságában, kövesse ezeket a további lépéseket, amelyekkel biztosíthatja, hogy a tulajdonság teljes és megfelelő értékét adja meg. 
    > Érvénytelen kulcs miatt a kapcsolódás sikertelen lesz.
 
-   Habár használhat bármely szövegszerkesztőt, itt láthatók azok a lépések, amelyek bemutatják, hogyan lehet helyesen másolni és beilleszteni a kulcsot a Notepad. exe használatával példaként.
+   Habár bármilyen szövegszerkesztőt használhat, az alábbi példákban bemutatjuk, hogyan lehet helyesen másolni és beilleszteni a kulcsot Notepad.exe példaként.
 
    1. Nyissa meg az SSH titkos kulcs fájlját egy szövegszerkesztőben. Ezek a lépések példaként használják a jegyzettömböt.
 
    1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése**lehetőséget.
 
-   1. Válassza a**Másolás** **szerkesztése** > lehetőséget.
+   1. Válassza **Edit**a  >  **Másolás**szerkesztése lehetőséget.
 
    1. Az SFTP-triggerben vagy a hozzáadott műveletben illessze be az **SSH titkos kulcs** tulajdonságba másolt *teljes* kulcsot, amely több sort is támogat. ***Ügyeljen rá, hogy illessze be*** a kulcsot. ***Ne adja meg manuálisan a kulcsot, vagy szerkessze***azt.
 

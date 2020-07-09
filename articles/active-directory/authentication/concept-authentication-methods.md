@@ -12,13 +12,12 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83770959"
 ---
-# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el Azure Active Directoryban?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
 A Azure Active Directory (Azure AD) fiókjaihoz tartozó bejelentkezési élmény részeként különböző módokon végezheti el a felhasználók hitelesítését. A Felhasználónév és a jelszó a leggyakoribb módszer a felhasználók számára a hitelesítő adatok megadására. Az Azure AD modern hitelesítési és biztonsági funkcióival az alapszintű jelszavak további hitelesítési módszerekkel kiegészíthetők vagy cserélhetők le.
 
@@ -35,16 +34,16 @@ Az alábbi táblázat ismerteti, hogy milyen metódusok érhetők el az elsődle
 
 | Metódus | Elsődleges hitelesítés | Másodlagos hitelesítés |
 | --- | --- | --- |
-| [Jelszó](#password) | Igen | |
+| [Jelszó](#password) | Yes | |
 | [A Microsoft Authenticator alkalmazás](#microsoft-authenticator-app) | Igen (előzetes verzió) | MFA és SSPR |
-| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Igen | Csak MFA |
-| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | Nem | MFA |
-| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Igen | MFA |
+| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Yes | Csak MFA |
+| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | No | MFA |
+| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Yes | MFA |
 | [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
-| [Hanghívás](#phone-options) | Nem | MFA és SSPR |
-| [Biztonsági kérdések](#security-questions) | Nem | Csak SSPR |
-| [E-mail cím](#email-address) | Nem | Csak SSPR |
-| [Alkalmazásjelszavak](#app-passwords). | Nem | MFA csak bizonyos esetekben |
+| [Hanghívás](#phone-options) | No | MFA és SSPR |
+| [Biztonsági kérdések](#security-questions) | No | Csak SSPR |
+| [E-mail cím](#email-address) | No | Csak SSPR |
+| [Alkalmazásjelszavak](#app-passwords). | No | MFA csak bizonyos esetekben |
 
 Ez a cikk az Azure AD-ben elérhető különböző hitelesítési és ellenőrzési módszereket, valamint az adott korlátozásokat és korlátozásokat ismerteti.
 

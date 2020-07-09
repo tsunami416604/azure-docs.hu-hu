@@ -1,25 +1,14 @@
 ---
 title: 'Oktatóanyag: REST-oktatóanyag a Azure Relay használatával'
 description: 'Oktatóanyag: Azure Relay gazdagép-alkalmazás létrehozása, amely egy REST-alapú felületet tesz elérhetővé.'
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/05/2019
-ms.author: spelluru
-ms.openlocfilehash: a9c2837315bde2684cbcefa5a603268a450bfba9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204699"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316637"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Oktatóanyag: Azure WCF Relay REST-oktatóanyag
 
@@ -71,7 +60,7 @@ A WCF-szerződések és a REST-stílusú szerződések közötti elsődleges kü
 1. **Megoldáskezelő**kattintson a jobb gombbal a **ImageListener** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 1. Válassza a **Tallózás**elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus**elemet. Válassza a **telepítés**lehetőséget, és fogadja el a használati feltételeket.
 
-    Ez a lépés a Service Bus és a *System. ServiceModel. dll*fájlokra mutató hivatkozásokat is hozzáadja. Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a WCF-re mutató hivatkozásokat `System.ServiceModel` .
+    Ez a lépés Service Bus és *System.ServiceModel.dll*hivatkozásait adja hozzá. Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a WCF-re mutató hivatkozásokat `System.ServiceModel` .
 
 1. Explicit módon adjon hozzá egy hivatkozást `System.ServiceModel.Web.dll` a projekthez. A **megoldáskezelő**kattintson a jobb gombbal a Project mappában található **referenciák** elemre, majd válassza a **hivatkozás hozzáadása**elemet.
 1. A **hivatkozás hozzáadása**lapon válassza a **keretrendszer** lehetőséget, majd írja be a *System. ServiceModel. Web* **kifejezést a keresés**mezőbe. Jelölje be a **System.ServiceModel.Web** jelölőnégyzetet, majd kattintson az **OK** lehetőségre.
@@ -179,7 +168,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="implement-the-rest-based-wcf-service-contract"></a>A REST-alapú WCF szolgáltatási szerződés implementálása
 
-REST-stílusú WCF Relay szolgáltatás létrehozásához először hozzon létre egy kapcsolatot egy felület használatával. A következő lépés a felület megvalósítása. Ez az eljárás magában foglalja egy nevű osztály létrehozását `ImageService` , amely megvalósítja a felhasználó által definiált `IImageContract` felületet. A szerződés megvalósítása után egy *app. config* fájl segítségével konfigurálhatja a felületet. A konfigurációs fájl az alkalmazáshoz szükséges információkat tartalmazza. Ez az információ tartalmazza a szolgáltatás nevét, a szerződés nevét, valamint a továbbítási szolgáltatással való kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód az eljárást követő példában látható.
+REST-stílusú WCF Relay szolgáltatás létrehozásához először hozzon létre egy kapcsolatot egy felület használatával. A következő lépés a felület megvalósítása. Ez az eljárás magában foglalja egy nevű osztály létrehozását `ImageService` , amely megvalósítja a felhasználó által definiált `IImageContract` felületet. A szerződés megvalósítása után a felületet egy *App.config* fájl segítségével konfigurálhatja. A konfigurációs fájl az alkalmazáshoz szükséges információkat tartalmazza. Ez az információ tartalmazza a szolgáltatás nevét, a szerződés nevét, valamint a továbbítási szolgáltatással való kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód az eljárást követő példában látható.
 
 Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay szerződések megvalósítása között kis különbség van.
 
@@ -212,11 +201,11 @@ Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay sz
    1. Ezután válassza a **meglévő elemet**.
    1. A **meglévő elem hozzáadása** lehetőséggel tallózással keresse meg a megfelelő. jpg-et, majd válassza a **Hozzáadás**lehetőséget. A fájl hozzáadásakor a **fájl neve**melletti legördülő listából válassza a **minden fájl** elemet.
 
-   Az oktatóanyag további része azt feltételezi, hogy a rendszerkép neve. *jpg*. Ha más fájllal rendelkezik, át kell neveznie a képet, vagy módosítania kell a kódot a kompenzálására.
+   Az oktatóanyag többi része azt feltételezi, hogy a rendszerkép neve *image.jpg*. Ha más fájllal rendelkezik, át kell neveznie a képet, vagy módosítania kell a kódot a kompenzálására.
 
 1. Győződjön meg arról, hogy a futó szolgáltatás megtalálja a képfájlt, **megoldáskezelő** kattintson a jobb gombbal a képfájlra, majd válassza a **Tulajdonságok parancsot**. A **Tulajdonságok**területen állítsa a **Másolás a kimeneti könyvtárba** a másolás, **Ha újabb**lehetőséget.
 
-1. A alkalmazással [hozzon létre egy szerződést egy felülettel](#to-create-a-contract-with-an-interface) , és adjon hozzá egy hivatkozást a *System. Drawing. dll* szerelvényhez a projekthez.
+1. A alkalmazásban a eljárással [hozzon létre egy szerződést egy felülettel](#to-create-a-contract-with-an-interface) , amely az *System.Drawing.dll* szerelvényre mutató hivatkozást ad hozzá a projekthez.
 
 1. Adja hozzá a következő társított `using` utasításokat:
 
@@ -264,9 +253,9 @@ Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay sz
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>A konfiguráció meghatározása a webszolgáltatás Service Buson való futtatásához
 
-1. A **megoldáskezelő**kattintson duplán az **app. config** fájlra, és nyissa meg a fájlt a Visual Studio szerkesztőjében.
+1. A **megoldáskezelő**kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
 
-    Az *app. config* fájl tartalmazza a szolgáltatás nevét, végpontját és kötését. A végpont az a hely, Azure Relay az ügyfelek és a gazdagépek számára lehetővé teszi az egymással való kommunikációt. A kötés a kommunikációhoz használt protokoll típusa. A fő különbség az, hogy a konfigurált szolgáltatási végpont egy [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) kötésre hivatkozik.
+    A *App.config* fájl tartalmazza a szolgáltatás nevét, végpontját és kötését. A végpont az a hely, Azure Relay az ügyfelek és a gazdagépek számára lehetővé teszi az egymással való kommunikációt. A kötés a kommunikációhoz használt protokoll típusa. A fő különbség az, hogy a konfigurált szolgáltatási végpont egy [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) kötésre hivatkozik.
 
 1. A `<system.serviceModel>` XML-elem egy WCF-elem, amely egy vagy több szolgáltatást határoz meg. Itt a szolgáltatás nevének és végpontjának definiálására szolgál. A elem alján `<system.serviceModel>` , de továbbra is a `<system.serviceModel>` `<bindings>` következő tartalommal rendelkező elemet vegyen fel:
 
@@ -325,7 +314,7 @@ Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay sz
     </behaviors>
     ```
 
-1. Még mindig az *app. config fájlban*, az `<appSettings>` elemben cserélje le a teljes kapcsolattípus értéket a portálról korábban beszerzett kapcsolatok karakterláncára.
+1. Továbbra is *App.config*, az `<appSettings>` elemben cserélje le a teljes kapcsolattípus értéket a portálról korábban beszerzett kapcsolatok karakterláncára.
 
     ```xml
     <appSettings>
@@ -401,7 +390,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-A következő példában a szolgáltatáshoz társított *app. config* fájl látható.
+A következő példában a szolgáltatáshoz társított *App.config* fájl látható.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -552,7 +541,7 @@ A szolgáltatásgazda az a WCF-objektum, amely a gazdaalkalmazást példányosí
 
 ### <a name="example-of-the-service-contract-and-implementation"></a>A szolgáltatási szerződés és a megvalósítás példája
 
-Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le a következő kódot egy *ImageListener. exe*nevű végrehajtható fájlba.
+Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le a következő kódot egy *ImageListener.exe*nevű végrehajtható fájlba.
 
 ```csharp
 using System;

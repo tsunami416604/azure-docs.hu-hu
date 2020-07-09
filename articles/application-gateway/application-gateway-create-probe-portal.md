@@ -5,20 +5,20 @@ description: Ismerje meg, hogyan hozhat létre egyéni mintavételt a Applicatio
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808220"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Egyéni mintavétel létrehozása Application Gatewayhoz a portál használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Portalra](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -46,11 +46,11 @@ A mintavétel két lépésből álló folyamaton keresztül történik a portál
 
    |**Beállítás** | **Érték** | **Részletek**|
    |---|---|---|
-   |**Név**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
-   |**Protocol (Protokoll)**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
+   |**Name (Név)**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
+   |**Protokoll**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
    |**Állomás**|azaz contoso.com|Ez az érték annak a virtuális gazdagépnek a neve (amely eltér a virtuálisgép-állomásnévtől), amely az alkalmazáskiszolgáló kiszolgálón fut. A rendszer elküldi a mintavételt a (z)://(állomásnév):(port httpsetting)/urlPath.  Ez akkor alkalmazható, ha a többhelyes konfiguráció a Application Gatewayon van konfigurálva. Ha a Application Gateway egyetlen helyhez van konfigurálva, írja be a "127.0.0.1" értéket.|
    |**Állomásnév kiválasztása a háttérbeli HTTP-beállításokból**|Igen vagy nem|A mintavételben *szereplő állomásfejléc* értékének beállítása annak a http-beállításnak a háttér-erőforrásának állomásneve, amelyhez ez a mintavétel hozzá van rendelve. Kifejezetten a több-bérlős háttérrendszer, például az Azure app Service esetében szükséges. [További információ](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Elérési út**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:\//contoso.com alapértelmezett elérési útja csak a "/" értéket használja |
+   |**Elérési út**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:/contoso.com alapértelmezett elérési útja \/ csak a "/" értéket használja |
    |**Időköz (mp)**|30|Milyen gyakran fut a mintavétel az állapot kereséséhez. A 30 másodpercnél kisebb értéket nem ajánlott beállítani.|
    |**Időkorlát (mp)**|30|Az az időtartam, ameddig a mintavétel időtúllépés előtt várakozik. Ha az időkorláton belül nem érkezik érvényes válasz, a mintavétel sikertelenként van megjelölve. Az időtúllépési intervallumnak elég magasnak kell lennie ahhoz, hogy http-hívást lehessen biztosítani, hogy a háttér állapota lap elérhető legyen. Vegye figyelembe, hogy az időtúllépési érték nem lehet nagyobb, mint a mintavételi beállításban használt "Interval" érték, vagy a "kérelem időtúllépése" érték abban a HTTP-beállításban, amely ehhez a mintavételhez lesz társítva.|
 |**Nem kifogástalan állapot küszöbértéke**|3|Az egymást követő sikertelen kísérletek nem megfelelőnek tekintendők. A küszöbérték értéke 1 vagy több lehet.|
@@ -95,11 +95,11 @@ A mintavétel két lépésből álló folyamaton keresztül történik a portál
 
    |**Beállítás** | **Érték** | **Részletek**|
    |---|---|---|
-   |**Név**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
-   |**Protocol (Protokoll)**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
+   |**Name (Név)**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
+   |**Protokoll**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
    |**Állomás**|azaz contoso.com|Ez az érték annak a virtuális gazdagépnek a neve (amely eltér a virtuálisgép-állomásnévtől), amely az alkalmazáskiszolgáló kiszolgálón fut. A rendszer elküldi a mintavételt a (z)://(állomásnév):(port httpsetting)/urlPath.  Ez akkor alkalmazható, ha a többhelyes konfiguráció a Application Gatewayon van konfigurálva. Ha a Application Gateway egyetlen helyhez van konfigurálva, írja be a "127.0.0.1" értéket.|
    |**Állomásnév kiválasztása a háttérbeli HTTP-beállításokból**|Igen vagy nem|A mintavételben *szereplő állomásfejléc* értékének beállítása annak a http-beállításnak a háttér-erőforrásának állomásneve, amelyhez ez a mintavétel hozzá van rendelve. Kifejezetten a több-bérlős háttérrendszer, például az Azure app Service esetében szükséges. [További információ](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Elérési út**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:\//contoso.com alapértelmezett elérési útja csak a "/" értéket használja |
+   |**Elérési út**|/vagy egy másik elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:/contoso.com alapértelmezett elérési útja \/ csak a "/" értéket használja |
    |**Időköz (mp)**|30|Milyen gyakran fut a mintavétel az állapot kereséséhez. A 30 másodpercnél kisebb értéket nem ajánlott beállítani.|
    |**Időkorlát (mp)**|30|Az az időtartam, ameddig a mintavétel időtúllépés előtt várakozik. Ha az időkorláton belül nem érkezik érvényes válasz, a mintavétel sikertelenként van megjelölve. Az időtúllépési intervallumnak elég magasnak kell lennie ahhoz, hogy http-hívást lehessen biztosítani, hogy a háttér állapota lap elérhető legyen. Vegye figyelembe, hogy az időtúllépési érték nem lehet nagyobb, mint a mintavételi beállításban használt "Interval" érték, vagy a "kérelem időtúllépése" érték abban a HTTP-beállításban, amely ehhez a mintavételhez lesz társítva.|
 |**Nem kifogástalan állapot küszöbértéke**|3|Az egymást követő sikertelen kísérletek nem megfelelőnek tekintendők. A küszöbérték értéke 1 vagy több lehet.|

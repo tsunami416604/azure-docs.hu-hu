@@ -1,21 +1,14 @@
 ---
 title: Congigure IP-tűzfal Azure Relay névtérhez
 description: Ez a cikk azt ismerteti, hogyan használhatók a tűzfalszabályok az adott IP-címekről Azure Relay névterekhez való csatlakozás engedélyezéséhez.
-services: service-bus-relay
-documentationcenter: ''
-author: spelluru
-ms.service: service-bus-relay
-ms.devlang: na
-ms.custom: seodec18
 ms.topic: article
-ms.date: 05/13/2020
-ms.author: spelluru
-ms.openlocfilehash: 88eb7acf1e72084a83d6d8631c0ea5d740988640
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314844"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-tűzfal konfigurálása Azure Relay névtérhez
 Alapértelmezés szerint a továbbítási névterek elérhetők az internetről, feltéve, hogy a kérelem érvényes hitelesítést és engedélyezést tartalmaz. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.

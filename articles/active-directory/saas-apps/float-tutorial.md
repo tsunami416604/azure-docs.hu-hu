@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d3f2381f2fdce123511caa2339d41b0641b077
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4889fe0b482bd1485f6f05b8e0369823561f094d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690640"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606477"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az úszóval
 
@@ -83,16 +83,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be a következő URL- `https://app.float.com/sso/metadata`címet:.
+    a. Az **azonosító** szövegmezőbe írja be a következő URL-címet: `https://app.float.com/sso/metadata` .
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be a mintát `https://<hostname>.float.com/sso/azuread`használó URL-címet.
+    b. A **Válasz URL-címe** szövegmezőbe írja be a mintát használó URL-címet `https://<hostname>.float.com/sso/azuread` .
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be a minta `https://<hostname>.float.com/login`URL-címét.
+    A **bejelentkezési URL-cím** szövegmezőbe írja be a minta URL-címét `https://<hostname>.float.com/login` .
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Cserélje <hostname> le az lebegőpontos állomásnévre. Ha nem biztos benne, vegye fel a kapcsolatot az [úszó ügyfél-támogatási csapattal](mailto:support@float.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Cserélje le az <hostname> lebegőpontos állomásnévre. Ha nem biztos benne, vegye fel a kapcsolatot az [úszó ügyfél-támogatási csapattal](mailto:support@float.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az lebegőpontos alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -100,9 +100,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az úszó alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name (Név) |  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | e-mail | | User. userPrincipalName |
+    | Name | Forrás attribútum|
+    | ---------------| --------- |
+    | e-mail | User. userPrincipalName |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -119,9 +119,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -155,7 +155,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen az úszó csempére kattint, automatikusan be kell jelentkeznie arra az Úszóre, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

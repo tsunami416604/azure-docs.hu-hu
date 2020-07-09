@@ -4,21 +4,18 @@ description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a n
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: 508e2d229c067ac84d4c8d6338e658df8d3fa932
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113207"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>A Azure Portal Azure Database for MySQL naplózási naplóinak konfigurálása és elérése
 
 A Azure Portal [Azure Database for MySQL naplózási naplókat](concepts-audit-logs.md) és diagnosztikai beállításokat is konfigurálhat.
-
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,6 +24,9 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - [Azure Database for MySQL kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
+
+>[!IMPORTANT]
+> Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 A naplózás engedélyezése és konfigurálása.
 
@@ -53,7 +53,7 @@ A naplózás engedélyezése és konfigurálása.
 
 1. Az oldalsáv **figyelés** területén válassza a **diagnosztikai beállítások**elemet.
 
-1. Kattintson a "+ diagnosztikai beállítás hozzáadása" ![diagnosztikai beállítás hozzáadása elemre.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Kattintson a "+ diagnosztikai beállítás hozzáadása" ![ diagnosztikai beállítás hozzáadása elemre.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Adja meg a diagnosztikai beállítások nevét.
 
@@ -67,7 +67,7 @@ A naplózás engedélyezése és konfigurálása.
 
 1. A naplókat úgy érheti el, hogy a konfigurált adattárolókban vizsgálja őket. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MySQL [naplózási naplóiról](concepts-audit-logs.md)
 - Ismerje meg, hogyan konfigurálhatja a naplókat az [Azure CLI](howto-configure-audit-logs-cli.md) -ben

@@ -4,19 +4,18 @@ description: A Azure Cosmos DB ENDSWITH SQL System függvényének megismerése 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322686"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
- Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e  
+Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e  
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -75,6 +74,8 @@ Vegyük például a következő két tulajdonságot: város és ország. A váro
 ```
 
 Az első lekérdezés valószínűleg több RUs-t fog használni a második lekérdezésnél, mert a város számos országa magasabb.
+
+Ha egyes dokumentumoknál a EndsWith nagyobb, mint 1 KB, akkor a lekérdezési motornak be kell töltenie ezeket a dokumentumokat. Ebben az esetben a lekérdezési motor nem tudja teljes mértékben kiértékelni a EndsWith indextel. A EndsWith-díj akkor lesz magas, ha nagy számú, 1 KB-nál nagyobb méretű dokumentumot tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

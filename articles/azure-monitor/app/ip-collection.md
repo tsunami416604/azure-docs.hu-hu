@@ -3,12 +3,11 @@ title: Azure Application Insights IP-címek gyűjteménye | Microsoft Docs
 description: Az IP-címek és a térinformatikai kezelésének ismertetése az Azure Application Insights
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807128"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -18,10 +17,10 @@ Ez a cikk azt ismerteti, hogyan történik a térinformatikai keresés és az IP
 
 Alapértelmezés szerint az IP-címek ideiglenes gyűjtése történik, de a Application Insights nem tárolja őket. A folyamat alapvetően a következőképpen történik:
 
-Az IP-címeket a rendszer a telemetria-adatmennyiség részeként küldi Application Insights. Amikor eléri a betöltési végpontot az Azure-ban, a rendszer az IP-címet használja a térinformatikai keresés végrehajtásához a [GeoLite2-ből a Maxmind-ből](https://dev.maxmind.com/geoip/geoip2/geolite2/). A keresés eredményei a következő mezők `client_City`feltöltésére szolgálnak: `client_StateOrProvince`,. `client_CountryOrRegion` Ekkor a rendszer elveti az IP-címet, és `0.0.0.0` beírja a `client_IP` mezőbe.
+Az IP-címeket a rendszer a telemetria-adatmennyiség részeként küldi Application Insights. Amikor eléri a betöltési végpontot az Azure-ban, a rendszer az IP-címet használja a térinformatikai keresés végrehajtásához a [GeoLite2-ből a Maxmind-ből](https://dev.maxmind.com/geoip/geoip2/geolite2/). A keresés eredményei a következő mezők feltöltésére szolgálnak: `client_City` `client_StateOrProvince` , `client_CountryOrRegion` . Ekkor a rendszer elveti az IP-címet, és `0.0.0.0` beírja a `client_IP` mezőbe.
 
 * Böngésző telemetria: ideiglenesen gyűjtjük a küldő IP-címét. Az IP-címet a betöltési végpont számítja ki.
-* Kiszolgáló telemetria: a Application Insights modul átmenetileg gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` be van állítva, a rendszer nem gyűjti.
+* Kiszolgáló telemetria: a Application Insights modul átmenetileg gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
 
 Ez a viselkedés úgy működik, hogy segít elkerülni a személyes adatgyűjtést. Amikor csak lehetséges, javasoljuk a személyes adatgyűjtés elkerülését. 
 
@@ -31,7 +30,7 @@ Habár az alapértelmezett viselkedés a személyes adatok gyűjtésének csökk
 
 ## <a name="storing-ip-address-data"></a>IP-címek tárolására szolgáló adattároló
 
-Az IP-gyűjtés és-tárolás engedélyezéséhez a `DisableIpMasking` Application Insights összetevő tulajdonságát be kell állítani `true`. Ezt a tulajdonságot Azure Resource Manager-sablonokon vagy a REST API meghívásával lehet beállítani. 
+Az IP-gyűjtés és-tárolás engedélyezéséhez a `DisableIpMasking` Application Insights összetevő tulajdonságát be kell állítani `true` . Ezt a tulajdonságot Azure Resource Manager-sablonokon vagy a REST API meghívásával lehet beállítani. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
@@ -59,7 +58,7 @@ Az IP-gyűjtés és-tárolás engedélyezéséhez a `DisableIpMasking` Applicati
 
 Ha csak egyetlen Application Insights erőforrás viselkedését kell módosítania, a legegyszerűbben az Azure Portal keresztül valósítható meg.  
 
-1. Nyissa meg Application Insights erőforrás-> **beállításait** > **sablon exportálása** 
+1. Nyissa meg Application Insights erőforrás-> **beállításait**  >  **sablon exportálása** 
 
     ![Sablon exportálása](media/ip-collection/export-template.png)
 
@@ -78,7 +77,7 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
     > [!WARNING]
     > Ha olyan hibát tapasztal, amely azt mondja: ** _az erőforráscsoport olyan helyen található, amelyet a sablon egy vagy több erőforrása nem támogat. Válasszon másik erőforráscsoportot._** Ideiglenesen válasszon egy másik erőforráscsoportot a legördülő listából, majd válassza ki újra az eredeti erőforráscsoportot a hiba elhárításához.
 
-5. Válassza az **Elfogadom** > a**vásárlás**lehetőséget. 
+5. Válassza az **Elfogadom**a  >  **vásárlás**lehetőséget. 
 
     ![Sablon szerkesztése](media/ip-collection/purchase.png)
 
@@ -86,7 +85,7 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
 
 6. Miután az üzembe helyezés befejeződött, a rendszer rögzíti az új telemetria-adatgyűjtést.
 
-    Ha még egyszer kijelöli és szerkeszti a sablont, akkor csak az alapértelmezett sablont fogja látni, és nem fogja látni az újonnan hozzáadott tulajdonságot és a hozzá tartozó értéket. Ha nem látja az IP-címekre vonatkozó adatcímeket `"DisableIpMasking": true` , és szeretné megerősíteni, hogy a be van állítva. Futtassa a következő PowerShell-t: `Fabrikam-dev` (cserélje le a megfelelő erőforrás-és erőforráscsoport-nevet.)
+    Ha még egyszer kijelöli és szerkeszti a sablont, akkor csak az alapértelmezett sablont fogja látni, és nem fogja látni az újonnan hozzáadott tulajdonságot és a hozzá tartozó értéket. Ha nem látja az IP-címekre vonatkozó adatcímeket, és szeretné megerősíteni, hogy `"DisableIpMasking": true` a be van állítva. Futtassa a következő PowerShell-t: (cserélje le a `Fabrikam-dev` megfelelő erőforrás-és erőforráscsoport-nevet.)
     
     ```powershell
     # If you aren't using the cloud shell you will need to connect to your Azure account
@@ -95,7 +94,7 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
     $AppInsights.Properties
     ```
     
-    Ennek eredményeképpen a rendszer a tulajdonságok listáját adja vissza. Az egyik tulajdonságnak olvasnia `DisableIpMasking: true`kell. Ha a PowerShellt az új tulajdonságnak a Azure Resource Manager használatával történő telepítése előtt futtatja, akkor a tulajdonság nem létezik.
+    Ennek eredményeképpen a rendszer a tulajdonságok listáját adja vissza. Az egyik tulajdonságnak olvasnia kell `DisableIpMasking: true` . Ha a PowerShellt az új tulajdonságnak a Azure Resource Manager használatával történő telepítése előtt futtatja, akkor a tulajdonság nem létezik.
 
 ### <a name="rest-api"></a>REST API
 
@@ -120,7 +119,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetria inicializáló
 
-Ha rugalmasabb alternatíva szükséges, mint `DisableIpMasking` az összes IP-cím rögzítése, a [telemetria inicializáló](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) használatával az összeset vagy annak egy részét átmásolhatja egy egyéni mezőbe. 
+Ha rugalmasabb alternatíva szükséges, mint az `DisableIpMasking` összes IP-cím rögzítése, a [telemetria inicializáló](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) használatával az összeset vagy annak egy részét átmásolhatja egy egyéni mezőbe. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -148,7 +147,7 @@ namespace MyWebApp
 ```
 
 > [!NOTE]
-> Ha nem tud hozzáférni `ISupportProperties`, ellenőrizze, hogy a Application Insights SDK legújabb stabil kiadását futtatja-e. `ISupportProperties`a magas fokú kardinális értékekhez készültek, `GlobalProperties` míg a kis-és nagymértékű értékek, például a régió neve, a környezet neve stb. megfelelőbbek. 
+> Ha nem tud hozzáférni `ISupportProperties` , ellenőrizze, hogy a Application INSIGHTS SDK legújabb stabil kiadását futtatja-e. `ISupportProperties`a magas fokú kardinális értékekhez készültek, míg a kis-és `GlobalProperties` nagymértékű értékek, például a régió neve, a környezet neve stb. megfelelőbbek. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Telemetria-inicializálás engedélyezése a ASP.NET
 
@@ -201,9 +200,9 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 
 A kiszolgálóoldali SDK-któl eltérően az ügyféloldali JavaScript SDK nem számítja ki az IP-címet. Az ügyféloldali telemetria alapértelmezett IP-címének kiszámítása az Azure-beli betöltési végponton történik az telemetria érkezésekor. Ez azt jelenti, hogy ha ügyféloldali adatokat küld egy proxynak, majd továbbítja azt a betöltési végpontra, az IP-cím kiszámítása a proxy IP-címét és nem az ügyfelet is megjeleníti. Ha nem használ proxyt, ez nem lehet probléma.
 
-Ha közvetlenül az ügyfélszámítógépen szeretné kiszámítani az IP-címet, akkor a számítás végrehajtásához hozzá kell adnia a saját egyéni logikáját, és az eredményt kell használnia `ai.location.ip` a címke beállításához. Ha `ai.location.ip` be van állítva, a rendszer nem hajtja végre az IP-címek kiszámítását a betöltési végponton, és a megadott IP-címet tiszteletben tartja, és a Geo-címkeresés végrehajtásához használja. Ebben az esetben az IP-cím alapértelmezés szerint nulla marad. 
+Ha közvetlenül az ügyfélszámítógépen szeretné kiszámítani az IP-címet, akkor a számítás végrehajtásához hozzá kell adnia a saját egyéni logikáját, és az eredményt kell használnia a címke beállításához `ai.location.ip` . Ha `ai.location.ip` be van állítva, a rendszer nem hajtja végre az IP-címek kiszámítását a betöltési végponton, és a megadott IP-címet tiszteletben tartja, és a Geo-címkeresés végrehajtásához használja. Ebben az esetben az IP-cím alapértelmezés szerint nulla marad. 
 
-Ha meg szeretné őrizni az egyéni logikából kiszámított teljes IP-címet, használhat egy olyan telemetria-inicializálást, amely átmásolja az `ai.location.ip` Ön által megadott IP-cím adatait egy külön egyéni mezőbe. A kiszolgálóoldali SDK-któl eltérően azonban a harmadik féltől származó kódtárak vagy a saját egyéni ügyféloldali IP-gyűjtési logikája nélkül az ügyféloldali SDK nem számítja ki az IP-címet.    
+Ha meg szeretné őrizni az egyéni logikából kiszámított teljes IP-címet, használhat egy olyan telemetria-inicializálást, amely átmásolja az Ön által megadott IP-cím adatait `ai.location.ip` egy külön egyéni mezőbe. A kiszolgálóoldali SDK-któl eltérően azonban a harmadik féltől származó kódtárak vagy a saját egyéni ügyféloldali IP-gyűjtési logikája nélkül az ügyféloldali SDK nem számítja ki az IP-címet.    
 
 
 ```javascript
@@ -229,10 +228,10 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-Az újonnan összegyűjtött IP-címeknek az `customDimensions_client-ip` oszlopban kell szerepelniük. Az alapértelmezett `client-ip` oszlop továbbra is összesen 4 oktetttel rendelkezik, vagy csak az első három oktettet jeleníti meg attól függően, hogy az IP-cím gyűjteményt hogyan konfigurálta az összetevő szintjén. Ha a telemetria inicializáló megvalósítása után helyileg végzi a tesztelést, és a `customDimensions_client-ip` `::1` megjelenő érték ez a várt viselkedés. `::1`a visszacsatolási cím az IPv6-ban. Ez egyenértékű az IPv4 `127.0.01` -ben, és az az eredmény, amelyet a rendszer a localhost-ból való tesztelés során fog látni.
+Az újonnan összegyűjtött IP-címeknek az oszlopban kell szerepelniük `customDimensions_client-ip` . Az alapértelmezett `client-ip` oszlop továbbra is összesen 4 oktetttel rendelkezik, vagy csak az első három oktettet jeleníti meg attól függően, hogy az IP-cím gyűjteményt hogyan konfigurálta az összetevő szintjén. Ha a telemetria inicializáló megvalósítása után helyileg végzi a tesztelést, és a `customDimensions_client-ip` `::1` megjelenő érték ez a várt viselkedés. `::1`a visszacsatolási cím az IPv6-ban. Ez egyenértékű az `127.0.01` IPv4-ben, és az az eredmény, amelyet a rendszer a localhost-ból való tesztelés során fog látni.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a Application Insights [személyes adatainak gyűjtéséről](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) .
 
-* További információ arról, hogyan működik az [IP-címek gyűjteménye](https://apmtips.com/blog/2016/07/05/client-ip-address/) Application Insights. (Ez egy régebbi külső blogbejegyzés, amelyet az egyik mérnök írt. Ez a beállítás a jelenlegi alapértelmezett viselkedést `0.0.0.0`, az IP-címet pedig az aktuálisan rögzített állapotba helyezi, de a beépített mechanika nagyobb mélységbe kerül `ClientIpHeaderTelemetryInitializer`.)
+* További információ arról, hogyan működik az [IP-címek gyűjteménye](https://apmtips.com/posts/2016-07-05-client-ip-address/) Application Insights. (Ez egy régebbi külső blogbejegyzés, amelyet az egyik mérnök írt. Ez a beállítás a jelenlegi alapértelmezett viselkedést, az IP-címet pedig az aktuálisan rögzített állapotba `0.0.0.0` helyezi, de a beépített mechanika nagyobb mélységbe kerül `ClientIpHeaderTelemetryInitializer` .)

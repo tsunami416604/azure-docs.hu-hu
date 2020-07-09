@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: e5966f142ece32f148c56edb5b0ef5dfd88603aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851704"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB konzisztenciáji szintjei
 
@@ -21,7 +21,7 @@ A Azure Cosmos DB a két véglet helyett a választási lehetőségek spektrumá
 
 A Azure Cosmos DB segítségével a fejlesztők öt jól meghatározott konzisztencia-szintet választhatnak a konzisztencia-spektrumon. Ezek a szintek *erős*, *kötött*elavulás, *munkamenet*, *konzisztens előtag*és *végleges* konzisztenciát tartalmaznak. A szintek jól definiálva és intuitív módon használhatók, és az adott valós forgatókönyvek esetében használhatók. Minden szint [rendelkezésre állási és teljesítménybeli kompromisszumokat](consistency-levels-tradeoffs.md) biztosít, és a SLA-kat támogatja. A következő képen a különböző konzisztencia-szintek láthatók spektrumként.
 
-![Konzisztencia spektrumként](./media/consistency-levels/five-consistency-levels.png)
+:::image type="content" source="./media/consistency-levels/five-consistency-levels.png" alt-text="Konzisztencia spektrumként" border="false" :::
 
 A konzisztencia szintje régió-agnosztikus, és minden művelet számára garantált, függetlenül attól, hogy az olvasások és írások kiszolgálása melyik régióból történik, az Azure Cosmos-fiókhoz társított régiók száma, illetve hogy a fiókja egyetlen vagy több írási régióval van-e konfigurálva.
 
@@ -31,7 +31,7 @@ Az olvasási konzisztencia a logikai partíción belüli egyetlen olvasási műv
 
 ## <a name="configure-the-default-consistency-level"></a>Az alapértelmezett konzisztenciaszint beállítása
 
-Bármikor megadhatja az alapértelmezett konzisztencia-szintet az Azure Cosmos-fiókban. A fiókban konfigurált alapértelmezett konzisztencia-szint az adott fiókhoz tartozó összes Azure Cosmos-adatbázisra és-tárolóra vonatkozik. A tárolók vagy adatbázisok által kiadott összes olvasás és lekérdezés alapértelmezés szerint a megadott konzisztencia-szintet használja. További információ: [az alapértelmezett konzisztencia-szint konfigurálása](how-to-manage-consistency.md#configure-the-default-consistency-level).
+Bármikor megadhatja az alapértelmezett konzisztencia-szintet az Azure Cosmos-fiókban. A fiókban konfigurált alapértelmezett konzisztencia-szint az adott fiókhoz tartozó összes Azure Cosmos-adatbázisra és-tárolóra vonatkozik. A tárolók vagy adatbázisok által kiadott összes olvasás és lekérdezés alapértelmezés szerint a megadott konzisztencia-szintet használja. További információ: [az alapértelmezett konzisztencia-szint konfigurálása](how-to-manage-consistency.md#configure-the-default-consistency-level). Felülbírálhatja egy adott kérelem alapértelmezett konzisztencia-szintjét is, ha további információt szeretne megtudni az [alapértelmezett konzisztencia-szint felülbírálásáról](how-to-manage-consistency.md?#override-the-default-consistency-level) szóló cikkben.
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Konzisztencia-szintekhez kapcsolódó garanciák
 
@@ -43,9 +43,9 @@ Az öt konzisztencia-szint szemantikai leírása itt található:
 
   Az alábbi ábrán a hangjegyzetekkel való erős konzisztencia látható. Miután az adatok az "USA nyugati régiója 2" régiójába kerülnek, a többi régióból származó adatok beolvasása után a legfrissebb értéket kapja:
 
-  ![Videó](media/consistency-levels/strong-consistency.gif)
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="videó":::
 
-- **Határos**elavulás: az olvasások garantálva vannak, hogy tiszteletben tartsák a konzisztens előtagú garanciát. Az olvasások a " *K"* (azaz "frissítések") és a *"T"* ("" updates ")" Más szóval, ha a kötött elavulás beállítást választja, a "elavulás" két módon konfigurálható:
+- **Határos**elavulás: az olvasások garantálva vannak, hogy tiszteletben tartsák a konzisztens előtagú garanciát. Előfordulhat, hogy az olvasások lemaradnak az írások mögött az elemek legfeljebb *"K"* verziójában (azaz "frissítések"), vagy a *"T"* időintervallumban, attól függően, hogy melyik érték van elsőként. Más szóval, ha a kötött elavulás beállítást választja, a "elavulás" két módon konfigurálható:
 
 - Az elemek verzióinak (*K*) száma
 - Az az időintervallum (*T*), ameddig az olvasások lemerülhetnek az írások mögött.
@@ -61,7 +61,7 @@ Az elavultság ablakon belül a határértékek a következő konzisztencia-gara
 
   A kötött elavulás gyakran olyan globálisan elosztott alkalmazások által van kiválasztva, amelyek alacsony írási késést várnak, de teljes globális rendelési garanciát igényelnek. A kötött elavulás kiválóan használható a csoportos együttműködést és megosztást, a tőzsdei előfizetést, a közzétételt és a várakozási sort is tartalmazó alkalmazások esetében. Az alábbi ábrán látható, hogy a megkötött elavultság konzisztens legyen a zenei megjegyzésekkel. Az adatok az "USA nyugati régiója 2" régiójába való beírása után az "USA 2. keleti régiója" és a "Kelet-Ausztrália" régiók a beállított maximális késési idő vagy a maximális műveletek alapján olvassák el a megírt értéket:
 
-  ![Videó](media/consistency-levels/bounded-staleness-consistency.gif)
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="videó":::
 
 - **Munkamenet**: egyetlen ügyfél-munkameneten belül a rendszer garantáltan beolvassa a konzisztens előtagot, az monoton olvasásokat, az monoton írásokat, az olvasást és írást, valamint az írási és olvasási garanciákat. Ez egyetlen "író" munkamenetet feltételez, vagy a munkamenet-tokent több író számára is megosztja.
 
@@ -72,13 +72,13 @@ A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják
 - Több főkiszolgálós fiók esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
 - Több főkiszolgálós fiók esetében több régióba írt ügyfelek konzisztenciája = végleges
 
-  A munkamenet konzisztenciája a széles körben használt konzisztenciai szint mind az egyetlen régió, mind a globálisan elosztott alkalmazások esetében. Az írási késleltetést, rendelkezésre állást és olvasási sebességet biztosít a végleges konzisztencia szempontjából, de biztosítja a konzisztencia-garanciát is, amely megfelel a felhasználó környezetében való működésre írt alkalmazások igényeinek. A következő ábra a munkamenetek konzisztenciáját mutatja be hangjegyzetekkel. Az "USA nyugati régiója 2 írója" és az "USA nyugati régiója 2 olvasója" ugyanazt a munkamenetet használja (A-munkamenet), hogy egyszerre ugyanazokat az adatfájlokat olvassák. Míg a "Kelet-Ausztrália" régió "B munkamenetet" használ, a rendszer később, de az írásokkal megegyező sorrendben fogadja az adatot.
+  A munkamenet konzisztenciája a legszélesebb körben használt konzisztencia-szint mind az egyetlen régió, mind a globálisan elosztott alkalmazások esetében. Az írási késleltetést, rendelkezésre állást és olvasási sebességet biztosít a végleges konzisztencia szempontjából, de biztosítja a konzisztencia-garanciát is, amely megfelel a felhasználó környezetében való működésre írt alkalmazások igényeinek. A következő ábra a munkamenetek konzisztenciáját mutatja be hangjegyzetekkel. Az "USA nyugati régiója 2 írója" és az "USA nyugati régiója 2 olvasója" ugyanazt a munkamenetet használja (A-munkamenet), hogy egyszerre ugyanazokat az adatfájlokat olvassák. Míg a "Kelet-Ausztrália" régió "B munkamenetet" használ, a rendszer később, de az írásokkal megegyező sorrendben fogadja az adatot.
 
-  ![Videó](media/consistency-levels/session-consistency.gif)
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="videó":::
 
-- **Konzisztens előtag**: a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Az konzisztens előtag-konzisztenciai szint garantálja, hogy az olvasás soha nem jelenik meg a sorrend szerinti írásokban.
+- **Konzisztens előtag**: a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
 
-Ha az írások végrehajtása `A, B, C` sorrendben történik, akkor az ügyfél `A`, `A,B` vagy `A,B,C` sorrendben látja azokat, de sosem felcserélt sorrendben (például `A,C` vagy `B,A,C`). Az konzisztens előtag a végleges konzisztencia miatti írási késleltetést, rendelkezésre állást és olvasási átviteli sebességet biztosít, ugyanakkor biztosítja az olyan forgatókönyvek igényeit is, amelyek a sorrend szempontjából fontosak. 
+Ha az írások sorrendben lettek elvégezve, akkor az ügyfél a következőt látja:, `A, B, C` `A` `A,B` vagy `A,B,C` `A,C` `B,A,C` Az konzisztens előtag a végleges konzisztencia miatti írási késleltetést, rendelkezésre állást és olvasási átviteli sebességet biztosít, ugyanakkor biztosítja az olyan forgatókönyvek igényeit is, amelyek a sorrend szempontjából fontosak. 
 
 Az alábbi konzisztens előtagok konzisztencia-garanciái:
 
@@ -89,12 +89,12 @@ Az alábbi konzisztens előtagok konzisztencia-garanciái:
 
 A következő ábra a konzisztencia-előtagot ábrázolja a zenei megjegyzésekkel. Az összes régióban az olvasások soha nem láthatók az írások sorrendjében:
 
-  ![Videó](media/consistency-levels/consistent-prefix.gif)
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="videó":::
 
 - **Végleges**: nem áll rendelkezésre rendelési garancia a beolvasáshoz. A további írások hiányában a replikák végül konvergálnak.  
 A végleges konzisztencia a konzisztencia leggyengébb formája, mivel előfordulhat, hogy az ügyfél elolvashatja azokat az értékeket, amelyek régebbiek, mint a korábban olvasottak. A végleges konzisztencia ideális, ha az alkalmazás nem igényel rendelési garanciát. Ilyenek például a retweets, a Like vagy a nem többszálú megjegyzések száma. Az alábbi ábrán a zenei megjegyzésekkel való végleges konzisztencia látható.
 
-  ![Videó](media/consistency-levels/eventual-consistency.gif)
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="videó":::
 
 ## <a name="additional-reading"></a>További olvasnivaló
 

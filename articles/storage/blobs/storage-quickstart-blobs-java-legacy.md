@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473982"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Gyors útmutató: Blobok kezelése a Java V8 SDK-val
@@ -36,7 +36,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 Ez a parancs a helyi git mappába klónozza az adattárat. A projekt megnyitásához indítsa el az Eclipse-t, és zárja be az üdvözlőképernyőt. Kattintson a **File** (Fájl), majd az **Open Projects from File System** (Projekt megnyitása fájlrendszerből) lehetőségre. Ügyeljen arra, hogy a **Detect and configure project natures** (Projektek természetének észlelése és konfigurálása) lehetőség be legyen jelölve. Válassza a **Directory** (Könyvtár) lehetőséget, majd lépjen oda, ahová a klónozott adattárat mentette. A klónozott adattárban válassza a **blobAzureApp** mappát. Győződjön meg arról, hogy a **blobAzureApp** projekt megjelenik Eclipse-projektként, majd válassza a **Finish** (Befejezés) lehetőséget.
 
-Miután a projekt befejeződik, nyissa meg a **AzureApp. Java** (amely a **blobQuickstart. blobAzureApp** mappában található a **src/Main/Java**-ban `accountname` ) `accountkey` , és cserélje `storageConnectionString` le a karakterláncot a és a belső helyére. Ezután futtassa az alkalmazást. Az ezen feladatok elvégzésére vonatkozó utasítások leírását a következő szakaszok tartalmazzák.
+Miután a projekt befejeződik, nyissa meg a **AzureApp. Java** (amely a **blobQuickstart. blobAzureApp** mappában található a **src/Main/Java**-ban), és cserélje le a `accountname` `accountkey` karakterláncot a és a belső helyére `storageConnectionString` . Ezután futtassa az alkalmazást. Az ezen feladatok elvégzésére vonatkozó utasítások leírását a következő szakaszok tartalmazzák.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -53,7 +53,7 @@ public static final String storageConnectionString =
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Ez a mintaalkalmazás létrehoz egy tesztfájlt az alapértelmezett könyvtárban (Windows-felhasználók esetén ez a *C:\Users\<felhasználó>\AppData\Local\Temp* könyvtár), feltölti a Blob Storage-ba, listázza a tárolóban található blobokat, majd letölti a fájlt új néven, hogy össze lehessen hasonlítani a régebbi fájllal.
+Ez a minta alkalmazás létrehoz egy tesztoldalt az alapértelmezett címtárban (*C:\Users \<user> \AppData\Local\Temp*, Windows-felhasználók számára), feltölti a blob Storage-ba, felsorolja a tárolóban lévő blobokat, majd letölti a fájlt egy új névvel, hogy össze tudja hasonlítani a régi és az új fájlokat.
 
 A minta futtatásához használja a Mavent a parancssorban. Nyisson meg egy rendszerhéjat, és navigáljon a **blobAzureApp** elemre a klónozott könyvtárában. Ezután írja be az `mvn compile exec:java` parancsot.
 
@@ -72,7 +72,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-A folytatás előtt ellenőrizze a mintafájlt az alapértelmezett könyvtárban (Windows-felhasználók esetén ez a *C:\Users\<felhasználó>\AppData\Local\Temp* könyvtár). Másolja ki a blob URL-címét a konzolablakból, és másolja be egy böngészőbe a fájl tartalmának blobtárolóban való megtekintéséhez. Ha összehasonlítja a könyvtárban lévő mintafájlt és a Blob Storage-ben tárolt tartalmakat, azt tapasztalja, hogy ezek megegyeznek.
+A folytatás előtt tekintse meg az alapértelmezett címtárat (*C:\Users \<user> \AppData\Local\Temp*Windows-felhasználók számára) a szövegfájlhoz. Másolja ki a blob URL-címét a konzolablakból, és másolja be egy böngészőbe a fájl tartalmának blobtárolóban való megtekintéséhez. Ha összehasonlítja a könyvtárban lévő mintafájlt és a Blob Storage-ben tárolt tartalmakat, azt tapasztalja, hogy ezek megegyeznek.
 
   >[!NOTE]
   >Az [Azure Storage Explorert](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha szeretné a fájlt megtekinteni a blobtárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat.
@@ -171,7 +171,7 @@ downloadedFile = new File(sourceFile.getParentFile(), "downloadedFile.txt");
 blob.downloadToFile(downloadedFile.getAbsolutePath());
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a feltöltött blobokra, a teljes tárolót törölheti a [CloudBlobContainer. deleteifexists paranccsal](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)használatával. Ez a metódus a tárolóban található fájlokat is törli.
 
@@ -197,5 +197,5 @@ sourceFile.deleteOnExit();
 Ebben a cikkben megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. Ha bővebb információra van szüksége a Java használatával kapcsolatban, lépjen tovább a GitHub-forráskódadattárba.
 
 > [!div class="nextstepaction"]
-> [Java API-hivatkozási](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
-> [kód minták a Javához](../common/storage-samples-java.md)
+> [Java API-referenciák](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy) 
+>  [Programkód-minták a Javához](../common/storage-samples-java.md)

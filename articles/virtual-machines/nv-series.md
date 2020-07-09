@@ -1,18 +1,17 @@
 ---
 title: NV-sorozat – Azure Virtual Machines
 description: Az NV-sorozatú virtuális gépek specifikációi.
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 7fd9fff87564b790915acf01373c078c2012371e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: e7fdc232d698e3eb2038bb6ec7a4c47a9c49944a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726583"
 ---
 # <a name="nv-series"></a>NV sorozat
 

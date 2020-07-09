@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390227"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
@@ -41,17 +41,17 @@ Használhatja a Bashben elérhető SSH-segédprogramokat is a [Azure Cloud Shell
 * Az [Azure-fiók bővítményének](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)telepítésével elérheti Cloud Shell terminálként a Visual Studio Code-ban.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
-A következő szakaszok két lehetőséget ismertetnek az SSH-kulcspár Windowson való létrehozásához. Használhat egy rendszerhéj-parancsot (`ssh-keygen`) vagy egy GUI-eszközt (PuTTYgen). Azt is vegye figyelembe, hogy ha a PowerShell használatával hoz létre kulcsot, töltse fel a nyilvános kulcsot SSH. com (SECSH) formátumban. A CLI használatakor a feltöltés előtt alakítsa át a kulcsot OpenSSH formátumba. 
+A következő szakaszok két lehetőséget ismertetnek az SSH-kulcspár Windowson való létrehozásához. Használhat egy rendszerhéj-parancsot ( `ssh-keygen` ) vagy egy GUI-eszközt (PuTTYgen). Azt is vegye figyelembe, hogy ha a PowerShell használatával hoz létre kulcsot, töltse fel a nyilvános kulcsot SSH. com (SECSH) formátumban. A CLI használatakor a feltöltés előtt alakítsa át a kulcsot OpenSSH formátumba. 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>SSH-kulcsok létrehozása ssh-keygen használatával
 
-Ha olyan Windows-parancssort futtat, amely támogatja az SSH-ügyféleszközök használatát (vagy Azure Cloud Shell), hozzon létre egy SSH-kulcspárt `ssh-keygen` a parancs használatával. Írja be a következő parancsot, és válaszolja meg a kérdéseit. Ha egy SSH-kulcspár létezik a kiválasztott helyen, a rendszer felülírja ezeket a fájlokat. 
+Ha olyan Windows-parancssort futtat, amely támogatja az SSH-ügyféleszközök használatát (vagy Azure Cloud Shell), hozzon létre egy SSH-kulcspárt a `ssh-keygen` parancs használatával. Írja be a következő parancsot, és válaszolja meg a kérdéseit. Ha egy SSH-kulcspár létezik a kiválasztott helyen, a rendszer felülírja ezeket a fájlokat. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-További háttér és információk: az SSH-kulcsok használatával [detailed](create-ssh-keys-detailed.md) `ssh-keygen`történő létrehozásának [gyors](mac-create-ssh-keys.md) vagy részletes lépései.
+További háttér és információk: az SSH-kulcsok használatával történő létrehozásának [gyors](mac-create-ssh-keys.md) vagy [részletes](create-ssh-keys-detailed.md) lépései `ssh-keygen` .
 
 ### <a name="create-ssh-keys-with-puttygen"></a>SSH-kulcsok létrehozása a PuTTYgen
 
@@ -63,19 +63,19 @@ SSH RSA kulcspár létrehozása a PuTTYgen:
 
 2. Kattintson a **Létrehozás** lehetőségre. Alapértelmezés szerint a PuTTYgen egy 2048 bites SSH-2 RSA-kulcsot hoz létre.
 
-4. Vigye az egérmutatót az üres részre, hogy véletlenszerű legyen a kulcshoz.
+3. Vigye az egérmutatót az üres részre, hogy véletlenszerű legyen a kulcshoz.
 
-5. A nyilvános kulcs létrehozása után opcionálisan megadhatja és megerősítheti a jelszót. A rendszer a jelszó megadását fogja kérni, ha a titkos SSH-kulccsal hitelesíti magát a virtuális gépen. Jelszó nélkül, ha valaki megszerzi a titkos kulcsot, bejelentkezhet bármely olyan virtuális gépre vagy szolgáltatásba, amely ezt a kulcsot használja. Javasoljuk, hogy hozzon létre egy hozzáférési kódot. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
+4. A nyilvános kulcs létrehozása után opcionálisan megadhatja és megerősítheti a jelszót. A rendszer a jelszó megadását fogja kérni, ha a titkos SSH-kulccsal hitelesíti magát a virtuális gépen. Jelszó nélkül, ha valaki megszerzi a titkos kulcsot, bejelentkezhet bármely olyan virtuális gépre vagy szolgáltatásba, amely ezt a kulcsot használja. Javasoljuk, hogy hozzon létre egy hozzáférési kódot. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
 
-6. A nyilvános kulcs az ablak tetején jelenik meg. Ezt a teljes nyilvános kulcsot másolhatja, majd beillesztheti a Azure Portalba vagy egy Azure Resource Manager sablonba, amikor Linux rendszerű virtuális gépet hoz létre. Azt is megteheti, hogy a **nyilvános kulcs mentése** lehetőséggel másolatot készít a számítógépre:
+5. A nyilvános kulcs az ablak tetején jelenik meg. Másolhatja ezt a teljes nyilvános kulcsot, majd beillesztheti a Azure Portalba vagy egy Azure Resource Manager sablonba, amikor létrehoz egy Linux rendszerű virtuális gépet. Azt is megteheti, hogy a **nyilvános kulcs mentése** lehetőséggel másolatot készít a számítógépre. Vegye figyelembe, hogy amikor fájlba ment, a PuTTY átalakítja a nyilvános kulcsot egy másik formátumba ( [lévő rfc4716](https://tools.ietf.org/html/rfc4716)). Előfordulhat, hogy a lévő RFC4716 formátuma nem kompatibilis az összes API-val. Ha tehát a Azure Portal szeretné használni, javasoljuk, hogy másolja a PuTTY ablakban megjelenő nyilvános kulcsot.
 
     ![Putty nyilvánoskulcs-fájl mentése](./media/ssh-from-windows/save-public-key.png)
 
-7. Ha a titkos kulcsot Putty titkos kulcs formátumú (. PPK fájl) formátumban szeretné menteni, válassza a **titkos kulcs mentése**lehetőséget. Ahhoz, hogy SSH-kapcsolatokat létesítsen a virtuális géppel, szüksége lesz a. PPK fájlra a PuTTY használatával.
+6. Ha a titkos kulcsot Putty titkos kulcs formátumú (. PPK fájl) formátumban szeretné menteni, válassza a **titkos kulcs mentése**lehetőséget. Ahhoz, hogy SSH-kapcsolatokat létesítsen a virtuális géppel, szüksége lesz a. PPK fájlra a PuTTY használatával.
 
     ![A PuTTY titkos kulcs fájljának mentése](./media/ssh-from-windows/save-ppk-file.png)
 
-    Ha az OpenSSH formátumban szeretné menteni a titkos kulcsot, a számos SSH-ügyfél által használt titkos kulcs formátumát válassza a **konverziók** > **Exportálás OpenSSH-kulcs**lehetőséget.
+    Ha az OpenSSH formátumban szeretné menteni a titkos kulcsot, a számos SSH-ügyfél által használt titkos kulcs formátumát válassza a **konverziók**  >  **Exportálás OpenSSH-kulcs**lehetőséget.
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Nyilvános SSH-kulcs megadása virtuális gép telepítésekor
 
@@ -111,7 +111,7 @@ Ha telepítette a [Putty letöltési csomagot](https://www.chiark.greenend.org.u
 
     ![Új Putty-kapcsolatok megnyitása](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Válassza ki a **kapcsolatok** > **SSH** > -**hitelesítésének** kategóriáját. Keresse meg és válassza ki a PuTTY titkos kulcsát (. PPK-fájl):
+3. Válassza ki a **kapcsolatok**  >  **SSH**-  >  **hitelesítésének** kategóriáját. Keresse meg és válassza ki a PuTTY titkos kulcsát (. PPK-fájl):
 
     ![Válasszon Putty titkos kulcsot a hitelesítéshez](./media/ssh-from-windows/putty-auth-dialog.png)
 

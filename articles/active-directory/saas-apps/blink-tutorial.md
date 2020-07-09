@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c87fe6dce4fa35eaed4ab43d6dcbffeae32e27f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 04002cb62190addac2c3d71e320501846c873c87
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69626046"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799666"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blink"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Blink-mel
 
@@ -85,11 +85,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
     
-    | | |
-    |-|-|
-    | `https://app.joinblink.com`|
-    | `https://<SUBDOMAIN>.joinblink.com`|
-    | | |
+    ```http
+    https://app.joinblink.com
+    https://<SUBDOMAIN>.joinblink.com
+    ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://api.joinblink.com/saml/o-<TENANTID>`
 
@@ -102,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Blink találkozók alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. A felhasználó attribútumai párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------|  --------- |
     |   first_name    | User. givenName |
     |   second_name    | felhasználó. vezetéknév |
@@ -137,9 +136,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -173,7 +172,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Pislogás csempére kattint, a rendszer automatikusan bejelentkezik a Blink-be, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

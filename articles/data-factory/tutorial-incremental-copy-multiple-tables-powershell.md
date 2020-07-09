@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása a PowerShell használatával
-description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi a helyszíni SQL Server-adatbázis több táblájából egy Azure SQL Databaseba.
+description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi egy SQL Server-adatbázis több táblájából egy Azure SQL Database-adatbázisba.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/30/2020
-ms.openlocfilehash: 84df242cdbfedd0cd1442ac4c4da7f4b6139d244
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/10/2020
+ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020744"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250961"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése több táblázatból SQL Server egy Azure SQL Database
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Több táblázatból származó adatok növekményes betöltése SQL Server Azure SQL Database a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely a helyszíni SQL Server több táblájából származó különbözeti adatok betöltésével egy Azure SQL Database.    
+Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely a SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését Azure SQL Database.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -69,12 +69,12 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használ forrásadattárként. 
-* **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket. 
+* **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
+* **Azure SQL Database**. A fogadó adattára Azure SQL Database-adatbázist használ. Ha nem rendelkezik SQL-adatbázissal, tekintse meg az [adatbázis létrehozása Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md) című témakört. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
-1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a helyszíni SQL Server-adatbázishoz.
+1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a SQL Server-adatbázishoz.
 
 2. A **Server Explorerben (SSMS)** vagy a **kapcsolatok ablaktáblán (Azure Data Studio)** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
 
@@ -113,11 +113,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltábla létrehozása a Azure SQL Databaseban
 
-1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a helyszíni SQL Server-adatbázishoz.
+1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a SQL Server-adatbázishoz.
 
 2. A **Server Explorerben (SSMS)** vagy a **kapcsolatok ablaktáblán (Azure Data Studio)** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
 
-3. Futtassa a következő SQL-parancsot az SQL-adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:  
+3. Futtassa a következő SQL-parancsot az adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:  
 
     ```sql
     create table customer_table
@@ -134,9 +134,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Hozzon létre egy másik táblát a Azure SQL Databaseban a felső vízjel értékének tárolásához
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>Hozzon létre egy másik táblát a Azure SQL Databaseban a felső vízjel értékének tárolásához
 
-1. Futtassa a következő SQL-parancsot az SQL-adatbázison egy `watermarktable` nevű, a küszöbértékek tárolására szolgáló tábla létrehozásához: 
+1. Futtassa a következő SQL-parancsot az adatbázison egy nevű tábla létrehozásához `watermarktable` a vízjel értékének tárolásához: 
     
     ```sql
     create table watermarktable
@@ -159,7 +159,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása a Azure SQL Databaseban 
 
-Az alábbi parancs futtatásával hozzon létre egy tárolt eljárást az SQL-adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
+Futtassa a következő parancsot egy tárolt eljárás létrehozásához az adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -175,9 +175,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása a Azure SQL Database
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása Azure SQL Database
 
-Az alábbi lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az SQL-adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba. 
+A következő lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba. 
 
 Ahhoz, hogy az utazást könnyen el lehessen kezdeni, közvetlenül használjuk ezeket a tárolt eljárásokat egy tábla változón keresztül, majd összevonjuk őket a célhelyek tárolójába. Legyen óvatos, nem számít "nagy" számú különbözeti sort (több mint 100) a tábla változóban való tároláshoz.  
 
@@ -283,19 +283,19 @@ Vegye figyelembe a következő szempontokat:
 
 * Adatelőállító-példányok létrehozásához a felhasználói fióknak, amellyel bejelentkezik az Azure-ba, a közreműködő vagy tulajdonos szerepkörök tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
 
-* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adattárak (Azure Storage, SQL Database, SQL felügyelt példány stb.) és az adatelőállító által használt számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a helyszíni SQL Server-adatbázishoz, és Azure SQL Database. 
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a SQL Server-adatbázishoz és az adatbázishoz Azure SQL Database-ben. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Az SQL Server társított szolgáltatásának létrehozása
 
-Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előállítóval.
+Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállítóval.
 
-1. Hozzon létre egy **SqlServerLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában (hozza létre a helyi mappákat, ha még nem léteznek) az alábbi tartalommal. Válassza ki az SQL Serverhez való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.  
+1. Hozzon létre egy **SqlServerLinkedService.js** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában (hozza létre a helyi mappákat, ha még nem léteznek) az alábbi tartalommal. Válassza ki az SQL Serverhez való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.  
 
     > [!IMPORTANT]
     > Válassza ki az SQL Serverhez való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
@@ -372,9 +372,9 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
-### <a name="create-the-sql-database-linked-service"></a>Az SQL-adatbázis társított szolgáltatásának létrehozása
+### <a name="create-the-sql-database-linked-service"></a>A SQL Database társított szolgáltatás létrehozása
 
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) &lt; &gt; A fájl mentése előtt cserélje le a servername, az &lt; adatbázis nevét &gt; , a &lt; felhasználónevet &gt; és a jelszót a &lt; &gt; SQL Server adatbázis nevére, az adatbázis nevére, a felhasználónevére és a jelszavára. 
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService.js** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) &lt; &gt; A fájl mentése előtt cserélje le a servername, az &lt; adatbázis nevét &gt; , a &lt; felhasználónevet &gt; és a jelszót a &lt; &gt; SQL Server adatbázis nevére, az adatbázis nevére, a felhasználónevére és a jelszavára. 
 
     ```json
     {  
@@ -453,7 +453,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
 
 ### <a name="create-a-sink-dataset"></a>Fogadó adatkészlet létrehozása
 
-1. Hozzon létre egy **SinkDataset. JSON** nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal. A tableName elemet a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek. 
+1. Hozzon létre egy **SinkDataset.js** nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal. A tableName elemet a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek. 
 
     ```json
     {  
@@ -502,7 +502,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
 
 Ebben a lépésben egy adatkészletet hozunk létre a felső küszöbértékek tárolására. 
 
-1. Hozzon létre egy **WatermarkDataset. JSON** nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal: 
+1. Hozzon létre egy **WatermarkDataset.js** nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal: 
 
     ```json
     {
@@ -549,7 +549,7 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
 
 ### <a name="create-the-pipeline"></a>A folyamat létrehozása
 
-1. Hozzon létre egy **IncrementalCopyPipeline. JSON** nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal: 
+1. Hozzon létre egy **IncrementalCopyPipeline.js** nevű JSON-fájlt ugyanebben a mappában az alábbi tartalommal: 
 
     ```json
     {  
@@ -783,7 +783,7 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
  
 ## <a name="run-the-pipeline"></a>A folyamat futtatása
 
-1. Hozzon létre egy **Parameters. JSON** nevű paramétert ugyanabban a mappában az alábbi tartalommal:
+1. Hozzon létre egy **Parameters.js** nevű paramétert ugyanabban a mappában a következő tartalommal:
 
     ```json
     {

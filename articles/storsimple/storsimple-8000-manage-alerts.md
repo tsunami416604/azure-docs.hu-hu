@@ -3,15 +3,15 @@ title: Riasztások megtekintése és kezelése a StorSimple 8000 Series eszközh
 description: Ismerteti a StorSimple riasztási feltételeit és súlyosságát, a riasztási értesítések konfigurálását, valamint a StorSimple Eszközkezelő szolgáltatás használatát a riasztások kezeléséhez.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830043"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -48,11 +48,11 @@ Megadhatja, hogy szeretne-e e-mailben értesítést kapni az egyes StorSimple-es
 > [!NOTE]
 > Eszközönként legfeljebb 20 e-mail-címet adhat meg.
 
-Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesítési lista tagjai minden alkalommal kapnak egy e-mail-üzenetet, amikor kritikus riasztás történik. Az üzenetek a *storsimple-Alerts-reply\@mail.windowsazure.com* lesznek elküldve, és leírják a riasztási feltételt. A címzettek a **leiratkozás** lehetőségre kattintva eltávolíthatják magukat az e-mail értesítések listájáról.
+Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesítési lista tagjai minden alkalommal kapnak egy e-mail-üzenetet, amikor kritikus riasztás történik. Az üzenetek a *storsimple-Alerts-reply \@ mail.windowsazure.com* lesznek elküldve, és leírják a riasztási feltételt. A címzettek a **leiratkozás** lehetőségre kattintva eltávolíthatják magukat az e-mail értesítések listájáról.
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Riasztások e-mailes értesítésének engedélyezése az eszközön
 1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Az eszközök listájából válassza ki a konfigurálni kívánt eszközt, majd kattintson rá.
-2. Lépjen az eszköz **Beállítások** > **általános** részére.
+2. Lépjen az eszköz **Beállítások**  >  **általános** részére.
 
    ![Riasztások panel](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesít
    
    1. Az **e-mail értesítés küldése** mezőben válassza az **Igen**lehetőséget.
    2. Az **e-mail szolgáltatás-rendszergazdák** mezőben válassza az **Igen** lehetőséget, ha szeretné, hogy a szolgáltatás rendszergazdája és az összes társ-rendszergazda megkapja a riasztási értesítéseket.
-   3. A **többi e-mail-címzett** mezőben adja meg az összes többi címzett e-mail-címét, akiknek a riasztási értesítéseket kell kapniuk. Adja meg a neveket a *valaki\@Somewhere.com*formátumban. Az e-mail-címeket pontosvesszővel válassza el egymástól. Eszközönként legfeljebb 20 e-mail-címet állíthat be. 
+   3. A **többi e-mail-címzett** mezőben adja meg az összes többi címzett e-mail-címét, akiknek a riasztási értesítéseket kell kapniuk. Adja meg a neveket a *valaki \@ Somewhere.com*formátumban. Az e-mail-címeket pontosvesszővel válassza el egymástól. Eszközönként legfeljebb 20 e-mail-címet állíthat be. 
       
 3. Teszt e-mail értesítés küldéséhez kattintson a **Tesztüzenet küldése**elemre. A StorSimple Eszközkezelő szolgáltatás megjeleníti az állapotüzenetek üzeneteit, mert továbbítja a teszt értesítését.
 
@@ -120,13 +120,14 @@ Az alábbi táblázatok felsorolják az esetlegesen felmerülő Microsoft Azure 
 * [Teljesítmény-riasztások](#performance-alerts)
 * [Biztonsági riasztások](#security-alerts)
 * [Támogatási csomagra vonatkozó riasztások](#support-package-alerts)
+* [Bekerítési környezet riasztásai](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Felhőalapú csatlakozási riasztások
 
 | Riasztás szövege | Esemény | További információ/javasolt műveletek |
 |:--- |:--- |:--- |
-| Nem lehet kapcsolatot létesíteni <*Felhőbeli hitelesítő adatok nevével*>. |Nem lehet csatlakozni a Storage-fiókhoz. |Úgy tűnik, hogy az eszközhöz kapcsolódási probléma merülhet fel. A probléma azonosításához és kijavításához futtassa a `Test-HcsmConnection` parancsmagot az eszközön található StorSimple Windows PowerShell felületén. Ha a beállítások helyesek, a probléma lehet annak a Storage-fióknak a hitelesítő adataival, amelyhez a riasztás létrejött. Ebben az esetben a `Test-HcsStorageAccountCredential` parancsmaggal állapítsa meg, hogy van-e probléma a megoldással.<ul><li>Keresse meg a hálózati beállításokat.</li><li>Keresse meg a Storage-fiók hitelesítő adatait.</li></ul> |
-| Nem kaptunk szívverést az eszközről az utolsó <*szám*> percben. |Nem lehet csatlakozni az eszközhöz. |Úgy tűnik, az eszköz csatlakozási problémája van. A probléma azonosításához és kijavításához, illetve a hálózati rendszergazdához való kapcsolatfelvételhez használja a `Test-HcsmConnection` parancsmagot az eszköz StorSimple Windows PowerShell-felületén. |
+| Nem lehet kapcsolatot létesíteni <*Felhőbeli hitelesítő adatok nevével*>. |Nem lehet csatlakozni a Storage-fiókhoz. |Úgy tűnik, hogy az eszközhöz kapcsolódási probléma merülhet fel. A `Test-HcsmConnection` probléma azonosításához és kijavításához futtassa a parancsmagot az eszközön található StorSimple Windows PowerShell felületén. Ha a beállítások helyesek, a probléma lehet annak a Storage-fióknak a hitelesítő adataival, amelyhez a riasztás létrejött. Ebben az esetben a `Test-HcsStorageAccountCredential` parancsmaggal állapítsa meg, hogy van-e probléma a megoldással.<ul><li>Keresse meg a hálózati beállításokat.</li><li>Keresse meg a Storage-fiók hitelesítő adatait.</li></ul> |
+| Nem kaptunk szívverést az eszközről az utolsó <*szám*> percben. |Nem lehet csatlakozni az eszközhöz. |Úgy tűnik, az eszköz csatlakozási problémája van. A `Test-HcsmConnection` probléma azonosításához és kijavításához, illetve a hálózati rendszergazdához való kapcsolatfelvételhez használja a parancsmagot az eszköz StorSimple Windows PowerShell-felületén. |
 
 ### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple viselkedés a Felhőbeli kapcsolat sikertelensége esetén
 
@@ -158,7 +159,7 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 
 | Riasztás szövege | Esemény | További információ/javasolt műveletek |
 |:--- |:--- |:--- |
-| A helyreállítási műveletek nem tudták visszaállítani a szolgáltatás összes beállítását. Az eszköz konfigurációs adategysége nem konzisztens állapotban van bizonyos eszközök esetében. |Az adatkonzisztencia a vész-helyreállítás után észlelhető. |A szolgáltatásban lévő titkosított adatokat nem szinkronizálja a rendszer az eszközön. A szinkronizálási folyamat elindításához engedélyezze az eszköz <*eszköz nevét*> a StorSimple Eszközkezelő. A StorSimple Windows PowerShell-felületén futtathatja az `Restore-HcsmEncryptedServiceData` eszközön <*eszköz neve*> parancsmagot, amely a régi jelszót adja meg bemenetként a parancsmagnak a biztonsági profil visszaállításához. Ezután futtassa a `Invoke-HcsmServiceDataEncryptionKeyChange` parancsmagot a szolgáltatásban tárolt adattitkosítási kulcs frissítéséhez. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
+| A helyreállítási műveletek nem tudták visszaállítani a szolgáltatás összes beállítását. Az eszköz konfigurációs adategysége nem konzisztens állapotban van bizonyos eszközök esetében. |Az adatkonzisztencia a vész-helyreállítás után észlelhető. |A szolgáltatásban lévő titkosított adatokat nem szinkronizálja a rendszer az eszközön. A szinkronizálási folyamat elindításához engedélyezze az eszköz <*eszköz nevét*> a StorSimple Eszközkezelő. A StorSimple Windows PowerShell-felületén futtathatja az eszközön `Restore-HcsmEncryptedServiceData` <*eszköz neve*> parancsmagot, amely a régi jelszót adja meg bemenetként a parancsmagnak a biztonsági profil visszaállításához. Ezután futtassa a `Invoke-HcsmServiceDataEncryptionKeyChange` parancsmagot a szolgáltatásban tárolt adattitkosítási kulcs frissítéséhez. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
 
 ### <a name="hardware-alerts"></a>Hardveres riasztások
 
@@ -192,9 +193,9 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 | Riasztás szövege | Esemény | További információ/javasolt műveletek |
 |:--- |:--- |:--- |
 | Nem lehetett elindítani a StorSimple szolgáltatás (oka) t. |DataPath hiba |Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
-| Ismétlődő IP-cím észlelhető a következőhöz: "Data0". | |A rendszer ütközést észlelt a (z) 10.0.0.1 IP-címhez. A "Data0" hálózati erőforrás az eszköz * \<device1>* offline állapotban van. Győződjön meg arról, hogy ezt az IP-címet a hálózat egyik másik entitása sem használja. A hálózati problémák elhárításához lépjen a következőre: [Hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). A probléma megoldása érdekében forduljon a hálózati rendszergazdához. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
-| A "Data0" IPv4-(vagy IPv6-) címe offline állapotban van. | |A "Data0" hálózati erőforrás "10.0.0.1" IP-címmel. az eszköz * \<device1>* a "22-es" előtag hossza offline állapotban van. Győződjön meg arról, hogy az illesztőhöz csatlakozó portok működnek. A hálózati problémák elhárításához lépjen a következőre: [Hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Nem lehet csatlakozni a hitelesítési szolgáltatáshoz. |DataPath hiba |A hitelesítéshez használt URLthat nem érhető el. Győződjön meg arról, hogy a tűzfalszabályok tartalmazzák a StorSimple-eszközhöz megadott URL-mintákat. A Azure Portal URL-mintázatával kapcsolatos további információkért keresse fel a https\/:/aka.MS/SS-8000-Network-reqs. Ha Azure Government felhőt használ, keresse fel az URL-mintákat a\/https:/aka.MS/ss8000-gov-Network-reqs.|
+| Ismétlődő IP-cím észlelhető a következőhöz: "Data0". | |A rendszer ütközést észlelt a (z) 10.0.0.1 IP-címhez. Az eszközön lévő "Data0" hálózati erőforrás *\<device1>* offline állapotban van. Győződjön meg arról, hogy ezt az IP-címet a hálózat egyik másik entitása sem használja. A hálózati problémák elhárításához lépjen a következőre: [Hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). A probléma megoldása érdekében forduljon a hálózati rendszergazdához. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| A "Data0" IPv4-(vagy IPv6-) címe offline állapotban van. | |A "Data0" hálózati erőforrás "10.0.0.1" IP-címmel. az eszközön a "22" előtag hossza *\<device1>* offline állapotban van. Győződjön meg arról, hogy az illesztőhöz csatlakozó portok működnek. A hálózati problémák elhárításához lépjen a következőre: [Hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Nem lehet csatlakozni a hitelesítési szolgáltatáshoz. |DataPath hiba |A hitelesítéshez használt URLthat nem érhető el. Győződjön meg arról, hogy a tűzfalszabályok tartalmazzák a StorSimple-eszközhöz megadott URL-mintákat. A Azure Portal URL-mintázatával kapcsolatos további információkért keresse fel a https: \/ /aka.MS/SS-8000-Network-reqs. Ha Azure Government felhőt használ, keresse fel az URL-mintákat a https: \/ /aka.MS/ss8000-gov-Network-reqs.|
 
 ### <a name="performance-alerts"></a>Teljesítmény-riasztások
 
@@ -211,7 +212,7 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 | A <> *elemhez* tartozó jelszó <> *időtartamában* lejár. |A jelszó lejárata közeledik. |A jelszó módosítása a lejárat előtt. |
 | Hiányzó biztonsági konfigurációs adatok a <*elem azonosítójának*>. | |A mennyiségi tárolóhoz társított kötetek nem használhatók a StorSimple-konfiguráció replikálásához. Az adatai biztonságos tárolásának biztosítása érdekében javasoljuk, hogy törölje a mennyiségi tárolót és a kötet-tárolóhoz társított köteteket. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról. |
 | <> sikertelen bejelentkezési kísérletek *száma* <*elem-azonosító*>. |Több sikertelen bejelentkezési kísérlet. |Előfordulhat, hogy az eszköz támadás alatt áll, vagy a felhasználó helytelen jelszóval próbál csatlakozni.<ul><li>Forduljon a jogosult felhasználókhoz, és ellenőrizze, hogy ezek a kísérletek megbízható forrásból származnak-e. Ha továbbra is nagy számú sikertelen bejelentkezési kísérletet lát, érdemes lehet letiltani a távoli felügyeletet és kapcsolatba lépni a hálózati rendszergazdával. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról.</li><li>Győződjön meg arról, hogy a Snapshot Manager példányok a megfelelő jelszóval vannak konfigurálva. A megfelelő művelet elvégzése után törölje a riasztást a riasztások lapról.</li></ul>További információért lépjen a [lejárt eszköz jelszavának módosítása](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password)elemre. |
-| Egy vagy több hiba történt a szolgáltatásban tárolt adattitkosítási kulcs módosításakor. | |Hiba történt a szolgáltatási adattitkosítási kulcs módosításakor. Miután megoldotta a hibák feltételeit, `Invoke-HcsmServiceDataEncryptionKeyChange` futtassa a parancsmagot az eszközön található StorSimple Windows PowerShell-felületéről a szolgáltatás frissítéséhez. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához. A probléma megoldása után törölje a riasztást a riasztások lapról. |
+| Egy vagy több hiba történt a szolgáltatásban tárolt adattitkosítási kulcs módosításakor. | |Hiba történt a szolgáltatási adattitkosítási kulcs módosításakor. Miután megoldotta a hibák feltételeit, futtassa a `Invoke-HcsmServiceDataEncryptionKeyChange` parancsmagot az eszközön található StorSimple Windows PowerShell-felületéről a szolgáltatás frissítéséhez. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához. A probléma megoldása után törölje a riasztást a riasztások lapról. |
 
 ### <a name="support-package-alerts"></a>Támogatási csomagra vonatkozó riasztások
 
@@ -219,7 +220,12 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 |:--- |:--- |:--- |
 | Nem sikerült létrehozni a támogatási csomagot. |A StorSimple nem tudta előállítani a csomagot. |Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. A probléma megoldása után törölje a riasztást a riasztások lapról. |
 
+### <a name="enclosure-environment-alerts"></a>Bekerítési környezet riasztásai
+
+| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+|:--- |:--- |:--- |
+| A hardver-összetevő környezeti hőmérséklet-érzékelője nem sikerült állapotot jelez.  | Ház típusa: fő ház | Ez a riasztás akkor aktiválódik, ha a StorSimple körüli környezeti környezet egy elfogadható tartomány fölé esik. Győződjön meg róla, hogy az adatközpontban az AC-szellőzőn kívül a környezeti környezet vagy a légáram található. Ha a hőmérséklet visszatér a normál értékre, a rendszer automatikusan törli a riasztást egy kis idő elteltével. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.   |
+
 ## <a name="next-steps"></a>További lépések
 
 További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).
-

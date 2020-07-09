@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921925"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
@@ -32,8 +32,8 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 * [Azure-előfizetés](https://azure.microsoft.com/free/)
 * A [Microsoft Power bi Desktop](https://powerbi.microsoft.com/get-started/)ingyenesen elérhető.
 * Az idősorozat adatpontjait tartalmazó Excel-fájl (. xlsx). A rövid útmutatóhoz tartozó példa a [githubon](https://go.microsoft.com/fwlink/?linkid=2090962) érhető el
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon"  target="_blank">létre egy Text Analytics erőforrást, és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. 
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont 
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -52,7 +52,7 @@ A párbeszédpanel megjelenése után Navigáljon arra a mappára, ahová letöl
 
 ![A "navigátor" adatforrás képe Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI a rendszer az első oszlopban `Date/Time` lévő időbélyegeket adattípusra konvertálja. Ezeket az időbélyegeket szöveggé kell alakítani, hogy el lehessen elküldeni az anomália-detektor API-nak. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a kezdőlapon a **lekérdezések szerkesztése** elemre. 
+Power BI a rendszer az első oszlopban lévő időbélyegeket `Date/Time` adattípusra konvertálja. Ezeket az időbélyegeket szöveggé kell alakítani, hogy el lehessen elküldeni az anomália-detektor API-nak. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a kezdőlapon a **lekérdezések szerkesztése** elemre. 
 
 Kattintson az **átalakítás** menüszalagra a Power Query-szerkesztőben. A **bármely oszlop** csoportban nyissa meg az **adattípus:** legördülő menüt, és válassza a **text (szöveg**) lehetőséget.
 
@@ -68,7 +68,7 @@ Győződjön meg arról, hogy az új lekérdezés van kiválasztva, majd kattint
 
 ![A "Speciális szerkesztő" gomb képe a Power BI](../media/tutorials/advanced-editor-screen.png)
 
-A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bontsa ki az oszlopokat a táblából, és küldje el az API-nak. Ezt követően a lekérdezés létrehoz egy táblát a JSON-válaszból, és visszaküldi azt. Cserélje le `apiKey` a változót az érvényes anomália-érzékelő API `endpoint` -kulcsára és a végpontra. Miután megadta a lekérdezést a Speciális szerkesztőban, kattintson a **kész**gombra.
+A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bontsa ki az oszlopokat a táblából, és küldje el az API-nak. Ezt követően a lekérdezés létrehoz egy táblát a JSON-válaszból, és visszaküldi azt. Cserélje le a `apiKey` változót az érvényes anomália-érzékelő API-kulcsára és a `endpoint` végpontra. Miután megadta a lekérdezést a Speciális szerkesztőban, kattintson a **kész**gombra.
 
 ```M
 (table as table) => let
@@ -112,7 +112,7 @@ A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bo
  in results
 ```
 
-A lekérdezésnek az adatlapon való meghívásához válassza `Sheet1` az alábbi **ENTER paramétert**, majd kattintson a **meghívás**gombra. 
+A lekérdezésnek az adatlapon való meghívásához válassza az `Sheet1` alábbi **ENTER paramétert**, majd kattintson a **meghívás**gombra. 
 
 ![A "Speciális szerkesztő" gomb képe](../media/tutorials/invoke-function-screenshot.png)
 
@@ -143,10 +143,10 @@ A fő Power BI képernyőn kezdje el használni a fent létrehozott lekérdezés
 
 Adja hozzá a következő mezőket a **meghívott függvényből** a diagram **értékek** mezőjébe. A diagram létrehozásához használja az alábbi képernyőképet.
 
-    * Érték
-    * UpperMargins
-    * LowerMargins
-    * ExpectedValues
+* Érték
+* UpperMargins
+* LowerMargins
+* ExpectedValues
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/chart-settings.png)
 
@@ -160,11 +160,11 @@ A Power BI ablak jobb oldalán, a **mezők** ablaktábla alatt kattintson a jobb
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure.png)
 
-A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetőséget. Alapérték **beállítása a** `Sum of Value`következőre:. Ezután húzza `IsAnomaly` a **meghívott függvény** mezőiből a **szűrőt**. Válasszon `True` a **szűrő** legördülő menüből.
+A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetőséget. Alapérték **beállítása a** következőre: `Sum of Value` . Ezután húzza `IsAnomaly` a **meghívott függvény** mezőiből a **szűrőt**. Válasszon `True` a **szűrő** legördülő menüből.
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure-2.png)
 
-Miután rákattintott **az OK gombra**, `Value for True` a mezők listájának alján egy mező jelenik meg. Kattintson rá a jobb gombbal, és nevezze át az **anomáliára**. Adja hozzá a diagram **értékeit**. Ezután válassza ki a **formázó** eszközt, és állítsa az X tengely típusát **kategorikus**értékre.
+Miután rákattintott **az OK gombra**, a `Value for True` mezők listájának alján egy mező jelenik meg. Kattintson rá a jobb gombbal, és nevezze át az **anomáliára**. Adja hozzá a diagram **értékeit**. Ezután válassza ki a **formázó** eszközt, és állítsa az X tengely típusát **kategorikus**értékre.
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/format-x-axis.png)
 

@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208093"
 ---
 # <a name="column-level-security"></a>Oszlop szintű biztonság
 
@@ -32,7 +32,7 @@ Az oszlop szintű biztonságot a [Grant](/sql/t-sql/statements/grant-transact-sq
 
 ![CLS](./media/column-level-security/cls.png)
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```syntaxsql
 GRANT <permission> [ ,...n ] ON
@@ -52,7 +52,7 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>Példa
 
-A következő példa azt mutatja be, `TestUser` hogyan lehet korlátozni a `SSN` `Membership` tábla oszlopának elérését:
+A következő példa azt mutatja be, hogyan lehet korlátozni a `TestUser` `SSN` tábla oszlopának elérését `Membership` :
 
 A `Membership` közösségi biztonsági számok tárolására szolgáló SSN oszlop létrehozásával létrehozott tábla:
 
@@ -72,7 +72,7 @@ Az `TestUser` összes oszlop elérésének engedélyezése a bizalmas adatokkal 
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-A másként végrehajtott `TestUser` lekérdezések sikertelenek lesznek, ha tartalmazzák a SSN oszlopot:
+A másként végrehajtott lekérdezések `TestUser` sikertelenek lesznek, ha tartalmazzák a SSN oszlopot:
 
 ```sql
 SELECT * FROM Membership;

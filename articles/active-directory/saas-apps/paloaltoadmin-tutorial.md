@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682961"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Azure Active Directory a Palo Alto Networks-integrációval – rendszergazdai felhasználói felület
 
@@ -106,14 +106,14 @@ Az Azure AD egyszeri bejelentkezés a Palo Alto Networks-rendszergazdai KEZELŐF
 
     > A 443-es port szükséges az **azonosítóhoz** és a **Válasz URL-címéhez** , mivel ezek az értékek a Palo Alto tűzfalon hardcoded. Ha eltávolítja a portszámot, a rendszer hibát okoz a bejelentkezés során.
 
-1. A Genesys-alkalmazás által használt PureCloud egy adott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Palo Alto Networks-admin felhasználói felületi alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
    > Mivel az attribútumok értékei csak példaként szolgálnak, a *Felhasználónév* és a *adminrole*megfelelő értékeit képezi le. Van egy másik opcionális attribútum is, a *accessdomain*, amely a tűzfal adott virtuális rendszereihez való rendszergazdai hozzáférés korlátozására szolgál.
 
-1. A fentiek mellett a Genesys alkalmazás PureCloud néhány további attribútumot is vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A fentiek mellett a Palo Alto Networks-admin UI alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
     | Name |  Forrás attribútum|
     | --- | --- |
@@ -150,7 +150,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -188,7 +188,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. A **profil neve** mezőben adjon meg egy nevet (például **AzureAD felügyeleti felhasználói felület**).
 
-    b. Az **identitás-szolgáltató metaadatai**területen válassza a **Tallózás**lehetőséget, majd válassza ki a Azure Portal korábban letöltött metaadat. xml fájlt.
+    b. Az **Identity Provider metaadatai**területen válassza a **Tallózás**lehetőséget, majd válassza ki a Azure Portal korábban letöltött metadata.xml fájlt.
 
     c. Törölje az **identitás-szolgáltatói tanúsítvány** ellenőrzése jelölőnégyzet jelölését.
 
@@ -241,7 +241,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     f. Jelölje be az **összes** jelölőnégyzetet, vagy válassza ki azokat a felhasználókat és csoportokat, akikkel hitelesíteni lehet a profilt.  
     Amikor egy felhasználó hitelesíti magát, a tűzfal megfelel a társított felhasználónévnek vagy csoportnak a listában szereplő bejegyzéseknek. Ha nem ad hozzá bejegyzéseket, akkor egyetlen felhasználó sem tud hitelesíteni.
 
-    g. Válassza az **OK** lehetőséget.
+    : Válassza az **OK** lehetőséget.
 
 13. Ha engedélyezni szeretné, hogy a rendszergazdák az SAML SSO-t használják az Azure-ban, válassza az **eszköz**  >  **beállítása**lehetőséget. A **telepítés** ablaktáblán válassza a **felügyelet** fület, majd a **hitelesítési beállítások**területen válassza a **Beállítások** ("fogaskerék") gombot.
 

@@ -3,17 +3,17 @@ title: Soft delete – Azure-fájlmegosztás engedélyezése
 description: Megtudhatja, hogyan engedélyezheti az Azure-fájlmegosztás Soft Delete (előzetes verzió) szolgáltatását az adathelyreállításhoz és a véletlen törlés megakadályozásához.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 05/26/2020
+ms.topic: how-to
+ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: a31fc675ca32697ece1fe7240112bb5610feda9d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510817"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
 
@@ -98,6 +98,6 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountNa
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatvédelem és a helyreállítás más formájával kapcsolatos további információkért tekintse meg a [Azure Files-Pillanatképek megosztásának áttekintését](storage-snapshots-files.md)ismertető cikket.

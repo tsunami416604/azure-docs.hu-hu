@@ -4,16 +4,16 @@ description: Ez a cikk áttekintést nyújt Azure Cosmos DB indexelési képess�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 04/03/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: fd602f88acf26e821e57e0a844f543aac08dad0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260695"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -21,9 +21,9 @@ A MongoDB Azure Cosmos DB API-ját kihasználhatja Azure Cosmos DB alapvető ind
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>A MongoDB Server 3,6-es verziójának indexelése
 
-A MongoDB Server 3,6-es verziójának Azure Cosmos DB API-je `_id` automatikusan indexeli a mezőt, amely nem lehet eldobni. Automatikusan kikényszeríti a `_id` mező egyediségét.
+A MongoDB Server 3,6-es verziójának Azure Cosmos DB API-je automatikusan indexeli a `_id` mezőt, amely nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . A Azure Cosmos DB API-MongoDB a horizontális felskálázás és az indexelés külön fogalmakat mutat be. Nem kell indexelni a Szilánk-kulcsot. Azonban a dokumentumban lévő többi tulajdonsághoz hasonlóan, ha ez a tulajdonság a lekérdezésekben gyakran használt szűrő, javasoljuk, hogy indexelje a Szilánk kulcsát.
 
-További mezők indexeléséhez alkalmazza a MongoDB index-Management parancsait. Ahogy a MongoDB-ben, Azure Cosmos DB API-ját a MongoDB automatikusan `_id` indexeli a mezőt. Ez az alapértelmezett indexelési házirend eltér a Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint indexeli az összes mezőt.
+További mezők indexeléséhez alkalmazza a MongoDB index-Management parancsait. Ahogy a MongoDB-ben, Azure Cosmos DB API-ját a MongoDB automatikusan indexeli a `_id` mezőt. Ez az alapértelmezett indexelési házirend eltér a Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint indexeli az összes mezőt.
 
 A rendezés lekérdezésre való alkalmazásához létre kell hoznia egy indexet a rendezési műveletben használt mezőkön.
 
@@ -31,7 +31,7 @@ A rendezés lekérdezésre való alkalmazásához létre kell hoznia egy indexet
 
 ### <a name="single-field"></a>Egyetlen mező
 
-Létrehozhat indexeket bármely egyetlen mezőben. Az egymezős index rendezési sorrendje nem számít. A következő parancs létrehoz egy indexet a mezőhöz `name`:
+Létrehozhat indexeket bármely egyetlen mezőben. Az egymezős index rendezési sorrendje nem számít. A következő parancs létrehoz egy indexet a mezőhöz `name` :
 
 `db.coll.createIndex({name:1})`
 
@@ -41,7 +41,7 @@ Az egyik lekérdezés több egymezős indexet használ, ahol elérhető. Egy tá
 
 A MongoDB Azure Cosmos DB API-ját a 3,6-os átviteli protokollt használó fiókok összetett indexeit támogatja. Akár nyolc mezőt is hozzáadhat egy összetett indexben. A MongoDB eltérően csak akkor érdemes összetett indexet létrehozni, ha a lekérdezésnek egyszerre több mezőn kell rendeznie. Több olyan szűrővel rendelkező lekérdezések esetén, amelyek nem szükségesek a rendezéshez, egyetlen összetett index helyett hozzon létre több egymezős indexet.
 
-A következő parancs létrehoz egy összetett indexet a `name` mezőkön `age`, és:
+A következő parancs létrehoz egy összetett indexet a mezőkön `name` , és `age` :
 
 `db.coll.createIndex({name:1,age:1})`
 
@@ -49,7 +49,7 @@ Az összetett indexek segítségével egyszerre több mezőn rendezheti a művel
 
 `db.coll.find().sort({name:1,age:1})`
 
-Az előző összetett index használatával a lekérdezéseket az összes mező ellentétes rendezési sorrendjével is hatékonyan rendezheti. Például:
+Az előző összetett index használatával a lekérdezéseket az összes mező ellentétes rendezési sorrendjével is hatékonyan rendezheti. Íme egy példa:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -63,7 +63,7 @@ A Azure Cosmos DB multikey indexeket hoz létre a tömbökben tárolt tartalom i
 
 ### <a name="geospatial-indexes"></a>Térinformatikai indexek
 
-Számos térinformatikai operátor kihasználja a térinformatikai indexeket. Jelenleg Azure Cosmos DB API-MongoDB támogatja `2dsphere` az indexeket. Az API még nem támogatja `2d` az indexeket.
+Számos térinformatikai operátor kihasználja a térinformatikai indexeket. Jelenleg Azure Cosmos DB API-MongoDB támogatja az `2dsphere` indexeket. Az API még nem támogatja az `2d` indexeket.
 
 Az alábbi példa egy térinformatikai index létrehozását szemlélteti a `location` mezőn:
 
@@ -72,6 +72,98 @@ Az alábbi példa egy térinformatikai index létrehozását szemlélteti a `loc
 ### <a name="text-indexes"></a>Szöveges indexek
 
 Azure Cosmos DB API-MongoDB jelenleg nem támogatja a szöveges indexeket. A karakterláncokra vonatkozó szöveges keresési lekérdezésekhez az [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) integrációját kell használnia Azure Cosmos DBokkal.
+
+## <a name="wildcard-indexes"></a>Helyettesítő karakterek indexei
+
+Használhat helyettesítő indexeket az ismeretlen mezőkkel kapcsolatos lekérdezések támogatásához. Tegyük fel, hogy van egy gyűjteménye, amely a családokkal kapcsolatos információkat tárol.
+
+Íme egy példa a gyűjteményben szereplő dokumentum részeként:
+
+```json
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "grade": "5"
+     }
+  ]
+```
+
+Íme egy másik példa, ezúttal egy kis mértékben eltérő tulajdonságokkal `children` :
+
+```json
+  "children": [
+      {
+        "familyName": "Merriam",
+        "givenName": "Jesse",
+        "pets": [
+            { "givenName": "Goofy" },
+            { "givenName": "Shadow" }
+      },
+      {
+        "familyName": "Merriam",
+        "givenName": "John",
+      }
+  ]
+```
+
+Ebben a gyűjteményben a dokumentumok számos különböző tulajdonsággal rendelkezhetnek. Ha a tömbben lévő összes értéket szeretné indexelni `children` , két lehetőség közül választhat: hozzon létre külön indexeket minden egyes tulajdonsághoz, vagy hozzon létre egy helyettesítő karaktert a teljes `children` tömbhöz.
+
+### <a name="create-a-wildcard-index"></a>Helyettesítő karakteres index létrehozása
+
+A következő parancs egy helyettesítő karaktert hoz létre bármely tulajdonságon belül `children` :
+
+`db.coll.createIndex({"children.$**" : 1})`
+
+**A MongoDB eltérően a helyettesítő karakterek több mezőt is támogatnak a lekérdezési predikátumokban**. Ha egyetlen helyettesítő karaktert használ, nem lehet különbséget adni a lekérdezési teljesítményben, és nem kell külön indexet létrehoznia az egyes tulajdonságokhoz.
+
+A következő típusú indexeket hozhatja létre helyettesítő szintaxis használatával:
+
+- Egyetlen mező
+- Térinformatikai
+
+### <a name="indexing-all-properties"></a>Az összes tulajdonság indexelése
+
+A következő módon hozhat létre helyettesítő karaktert az összes mezőhöz:
+
+`db.coll.createIndex( { "$**" : 1 } )`
+
+A fejlesztés megkezdése során hasznos lehet a helyettesítő karakteres index létrehozása az összes mezőben. Ahogy a dokumentumban további tulajdonságok vannak indexelve, a rendszer megnöveli a dokumentum írására és frissítésére vonatkozó kérési egység (RU) díját. Ezért ha nagy írási szintű számítási feladattal rendelkezik, a helyettesítő karakteres indexek helyett egyéni indexeket kell választania.
+
+### <a name="limitations"></a>Korlátozások
+
+A helyettesítő karakteres indexek nem támogatják a következő típusú indexeket vagy tulajdonságokat:
+
+- Összetett
+- Élettartam
+- Egyedi
+
+A **MongoDB-től eltérően**Azure Cosmos db API-ját a MongoDB esetében **nem** használhat helyettesítő indexeket a következőhöz:
+
+- Több megadott mezőt tartalmazó helyettesítő karakteres index létrehozása
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection " :
+        {
+           "children.givenName" : 1,
+           "children.grade" : 1
+        }
+    }
+)`
+
+- Egy helyettesítő karakterből álló index létrehozása, amely kizárja több konkrét mezőt
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection" :
+        {
+           "children.givenName" : 0,
+           "children.grade" : 0
+        }
+    }
+)`
+
+Alternatív megoldásként több helyettesítő karaktert is létrehozhat.
 
 ## <a name="index-properties"></a>Index tulajdonságai
 
@@ -84,7 +176,7 @@ Az [egyedi indexek](unique-keys.md) akkor hasznosak, ha a két vagy több dokume
 > [!IMPORTANT]
 > Egyedi indexek csak akkor hozhatók létre, ha a gyűjtemény üres (nem tartalmaz dokumentumokat).
 
-A következő parancs létrehoz egy egyedi indexet a mezőhöz `student_id`:
+A következő parancs létrehoz egy egyedi indexet a mezőhöz `student_id` :
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
@@ -99,7 +191,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 
 A többrészes gyűjtemények esetében meg kell adnia a szegmens (partíció) kulcsot egy egyedi index létrehozásához. Ez azt jelenti, hogy a megosztott gyűjteményekben esetében az összes egyedi index összetett index, és az egyik mező a partíciókulcs.
 
-A következő ```coll``` parancsok a mezőkben ```university``` `student_id` egyedi indextel (a szegmens kulcs) hoznak létre egy többszegmenses gyűjteményt `university`(a Szilánk kulcsa):
+A következő parancsok a ```coll``` ```university``` mezőkben egyedi indextel (a szegmens kulcs) hoznak létre egy többszegmenses gyűjteményt (a Szilánk kulcsa) `student_id` `university` :
 
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
@@ -118,13 +210,13 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 }
 ```
 
-Az előző példában a ```"university":1``` záradék kihagyása hibaüzenetet ad vissza a következő üzenettel:
+Az előző példában a záradék kihagyása ```"university":1``` hibaüzenetet ad vissza a következő üzenettel:
 
 ```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
 
 ### <a name="ttl-indexes"></a>TTL-indexek
 
-Ha engedélyezni szeretné a dokumentumok lejáratát egy adott gyűjteményben, létre kell hoznia egy [élettartam (TTL) indexet](../cosmos-db/time-to-live.md). A TTL index egy `_ts` `expireAfterSeconds` értékkel rendelkező mező indexe.
+Ha engedélyezni szeretné a dokumentumok lejáratát egy adott gyűjteményben, létre kell hoznia egy [élettartam (TTL) indexet](../cosmos-db/time-to-live.md). A TTL index egy `_ts` értékkel rendelkező mező indexe `expireAfterSeconds` .
 
 Példa:
 
@@ -132,14 +224,14 @@ Példa:
 globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ```
 
-Az előző parancs törli a ```db.coll``` gyűjteményben lévő összes olyan dokumentumot, amely nem lett módosítva az elmúlt 10 másodpercben.
+Az előző parancs törli a gyűjteményben lévő összes olyan dokumentumot, ```db.coll``` amely nem lett módosítva az elmúlt 10 másodpercben.
 
 > [!NOTE]
 > A **_ts** mező a Azure Cosmos DBra vonatkozik, és nem érhető el a MongoDB-ügyfelektől. Ez egy fenntartott (rendszer) tulajdonság, amely a dokumentum utolsó módosításának időbélyegzőjét tartalmazza.
 
 ## <a name="track-index-progress"></a>Index előrehaladásának nyomon követése
 
-A Azure Cosmos DB API-MongoDB 3,6-es verziója támogatja `currentOp()` az index előrehaladásának nyomon követésére szolgáló parancsot az adatbázis-példányon. Ez a parancs egy olyan dokumentumot ad vissza, amely az adatbázis-példányon végzett folyamatban lévő műveletekkel kapcsolatos információkat tartalmaz. A `currentOp` paranccsal nyomon követheti az összes folyamatban lévő műveletet a natív MongoDB. Azure Cosmos DB API-MongoDB ez a parancs csak az indexelési művelet nyomon követését támogatja.
+A Azure Cosmos DB API-MongoDB 3,6-es verziója támogatja az `currentOp()` index előrehaladásának nyomon követésére szolgáló parancsot az adatbázis-példányon. Ez a parancs egy olyan dokumentumot ad vissza, amely az adatbázis-példányon végzett folyamatban lévő műveletekkel kapcsolatos információkat tartalmaz. A `currentOp` paranccsal nyomon követheti az összes folyamatban lévő műveletet a natív MongoDB. Azure Cosmos DB API-MongoDB ez a parancs csak az indexelési művelet nyomon követését támogatja.
 
 Az alábbi példák azt mutatják be, hogyan használható a `currentOp` parancs az index előrehaladásának nyomon követéséhez:
 
@@ -213,7 +305,7 @@ Az index előrehaladásának részletei az aktuális indexelési művelet előre
    }
    ```
 
-- Ha a folyamatban lévő index művelet befejeződik, a kimeneti dokumentum üres `inprog` műveleteket jelenít meg.
+- Ha a folyamatban lévő index művelet befejeződik, a kimeneti dokumentum üres műveleteket jelenít meg `inprog` .
 
    ```json
    {
@@ -230,7 +322,7 @@ A **háttérbeli** index tulajdonsághoz megadott értéktől függetlenül az i
 
 ## <a name="migrate-collections-with-indexes"></a>Gyűjtemények migrálása indexekkel
 
-Jelenleg csak akkor hozhat létre egyedi indexeket, ha a gyűjtemény nem tartalmaz dokumentumokat. A népszerű MongoDB áttelepítési eszközök megpróbálják létrehozni az egyedi indexeket az Adatimportálás után. A probléma megkerüléséhez manuálisan is létrehozhatja a megfelelő gyűjteményeket és egyedi indexeket ahelyett, hogy engedélyezné az áttelepítési eszköz kipróbálását. (Ezt a viselkedést ```mongorestore``` a parancssorban a `--noIndexRestore` jelölő használatával érheti el.)
+Jelenleg csak akkor hozhat létre egyedi indexeket, ha a gyűjtemény nem tartalmaz dokumentumokat. A népszerű MongoDB áttelepítési eszközök megpróbálják létrehozni az egyedi indexeket az Adatimportálás után. A probléma megkerüléséhez manuálisan is létrehozhatja a megfelelő gyűjteményeket és egyedi indexeket ahelyett, hogy engedélyezné az áttelepítési eszköz kipróbálását. (Ezt a viselkedést a ```mongorestore``` parancssorban a jelölő használatával érheti el `--noIndexRestore` .)
 
 ## <a name="indexing-for-mongodb-version-32"></a>Az MongoDB 3,2-es verziójának indexelése
 
@@ -240,7 +332,7 @@ Ha az 3,2-es verziót használja, ez a szakasz az 3,6-es verzió főbb különbs
 
 ### <a name="dropping-default-indexes-version-32"></a>Alapértelmezett indexek eldobása (3,2-es verzió)
 
-A MongoDB-hez készült Azure Cosmos DB API 3,6-es verziójától eltérően a 3,2-es verzió alapértelmezés szerint minden tulajdonságot indexel. A következő parancs használatával elhúzhatja ezeket az alapértelmezett indexeket egy gyűjteményhez (```coll```):
+A MongoDB-hez készült Azure Cosmos DB API 3,6-es verziójától eltérően a 3,2-es verzió alapértelmezés szerint minden tulajdonságot indexel. A következő parancs használatával elhúzhatja ezeket az alapértelmezett indexeket egy gyűjteményhez ( ```coll``` ):
 
 ```JavaScript
 > db.coll.dropIndexes()
@@ -253,7 +345,12 @@ Az alapértelmezett indexek eldobása után további indexeket adhat hozzá, aho
 
 Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat tartalmaznak. Ha összetett indexet szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
 
+### <a name="wildcard-indexes-version-32"></a>Helyettesítő karakterek indexei (3,2-es verzió)
+
+Ha helyettesítő karaktert szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
+
 ## <a name="next-steps"></a>További lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)
+* A particionálás és az indexelés közötti kapcsolat megismeréséhez tekintse meg az [Azure Cosmos Container lekérdezését](how-to-query-container.md) ismertető cikket.

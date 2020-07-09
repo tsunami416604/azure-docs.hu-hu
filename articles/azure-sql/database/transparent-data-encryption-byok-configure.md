@@ -1,9 +1,9 @@
 ---
 title: SQL-TDE engedélyezése Azure Key Vault
-titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Megtudhatja, hogyan konfigurálhat egy Azure SQL Database és az Azure szinapszis Analytics szolgáltatást, hogy a PowerShell vagy a parancssori felület használatával megkezdheti a titkosítást a transzparens adattitkosítás (TDE) használatával.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
+description: Megtudhatja, hogyan konfigurálhat egy Azure SQL Database és az Azure szinapszis Analytics szolgáltatást, hogy a PowerShell vagy az Azure CLI használatával megkezdheti a titkosítást a transzparens adattitkosítás (TDE) használatával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a71d4f2d724584509f25c7ae458ed6ab1b415af
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051177"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981328"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
+# <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens adattitkosítás (TDE) kulcsát a Azure SQL Database vagy az Azure szinapszis Analytics (korábban SQL DW) használatával. Ha többet szeretne megtudni a Azure Key Vault Integration-Bring Your Own Key (BYOK) támogatással rendelkező TDE, látogasson el a [TDE felhasználó által felügyelt kulcsokra a Azure Key Vault](transparent-data-encryption-byok-overview.md).
+Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens adattitkosítás (TDE) kulcsát a Azure SQL Database vagy az Azure szinapszis Analytics (korábban SQL Data Warehouse) számára. Ha többet szeretne megtudni a Azure Key Vault Integration-Bring Your Own Key (BYOK) támogatással rendelkező TDE, látogasson el a [TDE felhasználó által felügyelt kulcsokra a Azure Key Vault](transparent-data-encryption-byok-overview.md).
 
 ## <a name="prerequisites-for-powershell"></a>A PowerShell előfeltételei
 
@@ -47,9 +47,9 @@ A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault PowerShell-utas
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD-identitás kiosztása a kiszolgálóhoz
+## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>Azure Active Directory (Azure AD) identitásának kiosztása a kiszolgálóhoz
 
-Ha rendelkezik meglévő [kiszolgálóval](logical-servers.md), az alábbi paranccsal adhat hozzá Azure ad-identitást a kiszolgálóhoz:
+Ha rendelkezik meglévő [kiszolgálóval](logical-servers.md), a következő paranccsal adhat hozzá egy Azure Active Directory (Azure ad) identitást a kiszolgálóhoz:
 
    ```powershell
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
@@ -121,11 +121,11 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
-A szükséges parancssori felület 2,0-es vagy újabb verziójának telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz lásd: [Az Azure platformfüggetlen parancssori 2,0 felületének telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Az Azure CLI (2,0-es vagy újabb verzió) szükséges verziójának telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz lásd: [Az Azure platformfüggetlen parancssori 2,0 felületének telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-A Key Vault kapcsolatos részletekért lásd: [Key Vault kezelése a parancssori felület 2,0](../../key-vault/general/manage-with-cli2.md) és a parancssori felülettel való [Törlés Key Vault](../../key-vault/general/soft-delete-cli.md)használatával.
+A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault kezelése a cli 2,0 használatával](../../key-vault/general/manage-with-cli2.md) és a parancssori felülettel [történő Key Vault-törlés használata](../../key-vault/general/soft-delete-cli.md)című témakört.
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD-identitás kiosztása a kiszolgálóhoz
 
@@ -207,7 +207,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 - Az adatbázis általános beállításai: [az SQL](/cli/azure/sql).
 
@@ -229,7 +229,7 @@ Ha probléma merül fel, ellenőrizze a következőket:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

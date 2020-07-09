@@ -5,12 +5,11 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74227068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340861"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Az Azure Function Event Grid helyi hibakeresést indít
 
@@ -34,7 +33,7 @@ A függvény létrehozása után nyissa meg a fájlt, és másolja ki a fájl el
 
 ![Másolás helye](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Ezután állítson be egy töréspontot a kezdetű sorban `log.LogInformation`.
+Ezután állítson be egy töréspontot a kezdetű sorban `log.LogInformation` .
 
 ![Töréspont beállítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
@@ -62,7 +61,7 @@ Nyissa meg a Azure Portal, és navigáljon egy Storage-fiókhoz, és kattintson 
 
 ![Storage-fiók eseményének hozzáadása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-Az *események* ablakban kattintson az **esemény-előfizetés** gombra. A *páros előfizetés* ablakban kattintson a *végpont típusa* legördülő menüre, és válassza a **web Hook**elemet.
+Az *események* ablakban kattintson az **esemény-előfizetés** gombra. Az *esemény-előfizetés* ablakban kattintson a *végpont típusa* legördülő menüre, és válassza a **web Hook**elemet.
 
 ![Előfizetés típusának kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -70,7 +69,7 @@ A végpont típusának konfigurálása után kattintson a végpont **kiválaszt�
 
 ![Végpont típusának kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-Az *előfizetői végpont* értéke három különböző értékből áll. Az előtag a *ngrok*által generált HTTPS URL-cím. Az URL-cím hátralévő része a függvény kódlapja fájljában található URL-címről származik, és a függvény neve a végén van hozzáadva. A függvény kódjának URL-címétől kezdve a *ngrok* URL-címe `http://localhost:7071` és a függvény neve lecserélve `{functionname}`.
+Az *előfizetői végpont* értéke három különböző értékből áll. Az előtag a *ngrok*által generált HTTPS URL-cím. Az URL-cím hátralévő része a függvény kódlapja fájljában található URL-címről származik, és a függvény neve a végén van hozzáadva. A függvény kódjának URL-címétől kezdve a *ngrok* URL-címe `http://localhost:7071` és a függvény neve lecserélve `{functionname}` .
 
 A következő képernyőképen a végső URL-cím jelenik meg:
 
@@ -101,7 +100,7 @@ Miután a Event Grid felismerte, hogy a rendszer feltölt egy új fájlt a Stora
 
 ![Ngrok elindítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A cikkben létrehozott erőforrások törléséhez törölje a tároló-fiókban található **teszt** tárolót.
 

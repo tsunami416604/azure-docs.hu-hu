@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80421339"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
@@ -53,7 +53,7 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
     Ha ezt a beállítást választja, a biztonsági mentés konzisztencia-ellenőrzése a MABS-on fut, hogy elkerülje az **eseutil** parancsnak az Exchange Serveren való futtatásával generált I/O-forgalmat.
 
    > [!NOTE]
-   > A beállítás használatához át kell másolnia az ESE. dll és az Eseutil. exe fájlokat a MABS-kiszolgáló C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin könyvtárába. Ellenkező esetben a rendszer a következő hibát váltja ki:  
+   > Ennek a lehetőségnek a használatához át kell másolnia a Ese.dll és Eseutil.exe fájlokat a C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin könyvtárba a MABS-kiszolgálón. Ellenkező esetben a rendszer a következő hibát váltja ki:  
    > ![Eseutil-hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >

@@ -3,12 +3,12 @@ title: Service Fabric szolgáltatások particionálása
 description: Útmutató Service Fabric állapot-nyilvántartó szolgáltatások particionálásához. A partíciók lehetővé teszik az adattárolást a helyi gépeken, hogy az adatok és a számítások együtt is méretezhetők legyenek.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115167"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045416"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric Reliable Services particionálása
 Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A cikkben használt forráskód a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
@@ -21,11 +21,11 @@ Az állapot nélküli szolgáltatások esetében úgy gondolja, hogy egy partíc
 
 ![Állapot nélküli szolgáltatás](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Valójában két típusú állapot nélküli szolgáltatási megoldás létezik. Az első egy olyan szolgáltatás, amely külsőleg is megőrzi az állapotát, például egy Azure SQL Database-adatbázisban (például egy olyan webhelyen, amely a munkamenet adatait és adatait tárolja). A második a csak számítási szolgáltatások (például a számológép vagy a képminiatűr), amely nem kezel állandó állapotot.
+Valójában két típusú állapot nélküli szolgáltatási megoldás létezik. Az első egy olyan szolgáltatás, amely külsőleg is megőrzi az állapotát, például egy Azure SQL Databaseban található adatbázisban (például egy olyan webhelyhez, amely a munkamenet adatait és adatait tárolja). A második a csak számítási szolgáltatások (például a számológép vagy a képminiatűr), amely nem kezel állandó állapotot.
 
 Az állapot nélküli szolgáltatások particionálása mindkét esetben nagyon ritka forgatókönyv – a méretezhetőség és a rendelkezésre állás általában további példányok hozzáadásával valósul meg. Az állapot nélküli szolgáltatási példányok esetében egyetlen alkalommal érdemes több partíciót figyelembe venni, ha a speciális útválasztási kérelmeket meg kell felelnie.
 
-Példaként vegyünk például egy olyan esetet, amikor egy bizonyos tartományba tartozó azonosítóval rendelkező felhasználókat csak egy adott szolgáltatási példány számára kell kiszolgálni. Egy másik példa az állapot nélküli szolgáltatás particionálására, ha valóban particionált háttérrel rendelkezik (például egy többrétegű SQL-adatbázis), és azt szeretné szabályozni, hogy melyik szolgáltatási példánynak kell írnia az adatbázisba, vagy más előkészítési műveletet kell végrehajtania az állapot nélküli szolgáltatásban, amely a háttérben használt particionálási adatokat igényli. Az ilyen típusú forgatókönyvek különböző módokon is megoldhatók, és nem feltétlenül szükségesek a szolgáltatások particionálásához.
+Példaként vegyünk például egy olyan esetet, amikor egy bizonyos tartományba tartozó azonosítóval rendelkező felhasználókat csak egy adott szolgáltatási példány számára kell kiszolgálni. Egy másik példa az állapot nélküli szolgáltatás particionálására, ha valóban particionált háttérrel rendelkezik (például SQL Database), és szeretné szabályozni, hogy melyik szolgáltatási példánynak kell írnia az adatbázisba, vagy más előkészítési munkát hajtson végre az állapot nélküli szolgáltatáson belül, amely a háttérben használt particionálási adatokat igényli. Az ilyen típusú forgatókönyvek különböző módokon is megoldhatók, és nem feltétlenül szükségesek a szolgáltatások particionálásához.
 
 Az útmutató hátralévő része az állapot-nyilvántartó szolgáltatásokra koncentrál.
 
@@ -115,17 +115,17 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
 > 
 > 
 
-1. Nyissa meg a **Visual Studio** > **fájl** > **új** > **projektjét**.
+1. Nyissa meg a **Visual Studio**-  >  **fájl**  >  **új**  >  **projektjét**.
 2. Az **új projekt** párbeszédpanelen válassza a Service Fabric alkalmazást.
 3. Hívja meg a "AlphabetPartitions" projektet.
 4. A **szolgáltatás létrehozása** párbeszédpanelen válassza az **állapot-nyilvántartó** szolgáltatás lehetőséget, és hívja meg az "ABC. Processing" kifejezést.
-5. Állítsa be a partíciók számát. Nyissa meg a AlphabetPartitions projekt ApplicationPackageRoot mappájában található Applicationmanifest. xml fájlt, és frissítse a paramétert Processing_PartitionCount 26-ra az alábbi ábrán látható módon.
+5. Állítsa be a partíciók számát. Nyissa meg a AlphabetPartitions-projekt ApplicationPackageRoot mappájában található Applicationmanifest.xml fájlt, és frissítse a paramétert a Processing_PartitionCount az alább látható módon.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    Emellett frissítenie kell a StatefulService elem LowKey és HighKey tulajdonságait a ApplicationManifest. xml fájlban az alábbi ábrán látható módon.
+    A ApplicationManifest.xml StatefulService elemének LowKey és HighKey tulajdonságait is frissítenie kell az alább látható módon.
    
     ```xml
     <Service Name="Processing">
@@ -134,20 +134,20 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
       </StatefulService>
     </Service>
     ```
-6. Ahhoz, hogy a szolgáltatás elérhető legyen, nyisson meg egy végpontot egy porton. Ehhez adja hozzá a ServiceManifest. XML (a PackageRoot mappában található) végpont elemet az ábécé. Processing szolgáltatáshoz az alábbi ábrán látható módon:
+6. Ahhoz, hogy a szolgáltatás elérhető legyen, nyisson meg egy végpontot a porton a ServiceManifest.xml (a PackageRoot mappában található) végpont elemének hozzáadásával az ábécé. Processing szolgáltatáshoz az alábbi ábrán látható módon:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
    
     A szolgáltatás most úgy van konfigurálva, hogy 26 partíciót tartalmazó belső végpontot hallgasson.
-7. Ezután felül kell bírálnia a feldolgozási `CreateServiceReplicaListeners()` osztály metódusát.
+7. Ezután felül kell bírálnia a `CreateServiceReplicaListeners()` feldolgozási osztály metódusát.
    
    > [!NOTE]
    > Ebben a példában feltételezzük, hogy egyszerű HttpCommunicationListener használ. A megbízható szolgáltatásokkal folytatott kommunikációról a [megbízható szolgáltatás kommunikációs modellje](service-fabric-reliable-services-communication.md)című témakörben olvashat bővebben.
    > 
    > 
-8. A replika által figyelt URL-cím ajánlott mintája a következő: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
+8. A replika által figyelt URL-cím ajánlott mintája a következő: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}` .
     Ezért úgy konfigurálja a kommunikációs figyelőt, hogy a helyes végpontokat figyelje, és ezzel a mintával.
    
     Előfordulhat, hogy a szolgáltatás több replikája ugyanazon a számítógépen található, ezért a címnek egyedinek kell lennie a replikában. Ezért az URL-cím a Partition ID + replika azonosítója. A HttpListener ugyanazon a porton több címet is megfigyelheti, ha az URL-előtag egyedi.
@@ -224,14 +224,14 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
     }
     ```
    
-    `ProcessInternalRequest`beolvassa a partíció meghívásához használt lekérdezési karakterlánc paraméter értékeit `AddUserAsync` , és meghívja a LastName hozzáadását `dictionary`a megbízható szótárhoz.
+    `ProcessInternalRequest`beolvassa a partíció meghívásához használt lekérdezési karakterlánc paraméter értékeit, és meghívja a `AddUserAsync` LastName hozzáadását a megbízható szótárhoz `dictionary` .
 10. Hozzunk létre egy állapot nélküli szolgáltatást a projekthez, amelyből megtudhatja, hogyan hívhat meg egy adott partíciót.
     
     Ez a szolgáltatás egy egyszerű webes felület, amely a LastName lekérdezési karakterlánc paraméterként való fogadására szolgál, meghatározza a partíciós kulcsot, és elküldi az Ábécébe. feldolgozási szolgáltatás feldolgozásra.
 11. A **szolgáltatás létrehozása** párbeszédpanelen válassza az **állapot nélküli** szolgáltatás lehetőséget, és hívja meg az "ABC. Web" kifejezést az alábbi ábrán látható módon.
     
     ![Állapot nélküli szolgáltatás képernyőképe](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Frissítse a végponti adatokat az ABC. WebApi szolgáltatás ServiceManifest. XML fájljában, és nyisson meg egy portot az alább látható módon.
+12. Frissítse a végpont adatait az ABC. WebApi szolgáltatás ServiceManifest.xmljában, hogy az alább látható módon nyisson meg egy portot.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
@@ -252,7 +252,7 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Most végre kell hajtania a feldolgozási logikát. A HttpCommunicationListener meghívja `ProcessInputRequest` a-t, amikor egy kérelem érkezik. Nézzük meg, és adjuk hozzá az alábbi kódot.
+14. Most végre kell hajtania a feldolgozási logikát. A HttpCommunicationListener meghívja a `ProcessInputRequest` -t, amikor egy kérelem érkezik. Nézzük meg, és adjuk hozzá az alábbi kódot.
     
     ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -298,7 +298,7 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
     }
     ```
     
-    Nézzük végig lépésről lépésre. A kód beolvassa a lekérdezési karakterlánc paraméterének `lastname` első betűjét egy karakterbe. Ezután meghatározza a levél partíciós kulcsát úgy, hogy kivonja a hexadecimális `A` értéket az utolsó név "első betűje" karakterből.
+    Nézzük végig lépésről lépésre. A kód beolvassa a lekérdezési karakterlánc paraméterének első betűjét `lastname` egy karakterbe. Ezután meghatározza a levél partíciós kulcsát úgy, hogy kivonja a hexadecimális értéket az `A` utolsó név "első betűje" karakterből.
     
     ```csharp
     string lastname = context.Request.QueryString["lastname"];
@@ -307,13 +307,13 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
     ```
     
     Ne feledje, hogy ebben a példában 26 partíciót használunk partícióként egy partíciós kulccsal.
-    Ezt követően a kulcshoz tartozó szolgáltatás `partition` -partíciót az `ResolveAsync` `servicePartitionResolver` objektum metódusának használatával szerezjük be. `servicePartitionResolver`definiálva
+    Ezt követően a kulcshoz tartozó szolgáltatás-partíciót az `partition` objektum metódusának használatával szerezjük be `ResolveAsync` `servicePartitionResolver` . `servicePartitionResolver`definiálva
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    A `ResolveAsync` metódus a szolgáltatás URI-ját, a partíciós kulcsot és a lemondási tokent paraméterként veszi át. A feldolgozási szolgáltatáshoz tartozó szolgáltatás URI- `fabric:/AlphabetPartitions/Processing`ja. Ezután lekérdezjük a partíció végpontját.
+    A `ResolveAsync` metódus a szolgáltatás URI-ját, a partíciós kulcsot és a lemondási tokent paraméterként veszi át. A feldolgozási szolgáltatáshoz tartozó szolgáltatás URI-ja `fabric:/AlphabetPartitions/Processing` . Ezután lekérdezjük a partíció végpontját.
     
     ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
@@ -343,7 +343,7 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
 16. Miután befejezte a telepítést, megtekintheti a szolgáltatást és annak összes partícióját a Service Fabric Explorer.
     
     ![Képernyőkép Service Fabric Explorer](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. A böngészőben a particionálási logikát a beírásával `http://localhost:8081/?lastname=somename`ellenőrizheti. Látni fogja, hogy az azonos betűvel kezdődő összes vezetéknevet ugyanazon a partíción tárolja a rendszer.
+17. A böngészőben a particionálási logikát a beírásával ellenőrizheti `http://localhost:8081/?lastname=somename` . Látni fogja, hogy az azonos betűvel kezdődő összes vezetéknevet ugyanazon a partíción tárolja a rendszer.
     
     ![Böngésző képernyőképe](./media/service-fabric-concepts-partitioning/samplerunning.png)
 

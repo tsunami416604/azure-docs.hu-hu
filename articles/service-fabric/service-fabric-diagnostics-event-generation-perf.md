@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464700"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
@@ -71,11 +70,11 @@ Gyűjtsön a következő számlálókat, ha .NET-szolgáltatásokat helyez üzem
 
 Service Fabric jelentős mennyiségű egyéni teljesítményszámlálókat generál. Ha telepítette az SDK-t, a Teljesítményfigyelő alkalmazásban megtekintheti a Windows rendszerű számítógép átfogó listáját (indítsa el > Teljesítményfigyelőt). 
 
-A fürtön üzembe helyezett alkalmazásokban, ha Reliable Actors használ, adja hozzá a számlálókat és `Service Fabric Actor` `Service Fabric Actor Method` a kategóriákat (lásd: [Service Fabric Reliable Actors diagnosztika](service-fabric-reliable-actors-diagnostics.md)).
+A fürtön üzembe helyezett alkalmazásokban, ha Reliable Actors használ, adja hozzá a számlálókat `Service Fabric Actor` és a `Service Fabric Actor Method` kategóriákat (lásd: [Service Fabric Reliable Actors diagnosztika](service-fabric-reliable-actors-diagnostics.md)).
 
-Ha Reliable Services vagy szolgáltatás- `Service Fabric Service` távelérést használ, a következőhöz `Service Fabric Service Method` hasonló módon kell összegyűjtenie a számlálókat: [figyelés a szolgáltatás távelérési szolgáltatásával](service-fabric-reliable-serviceremoting-diagnostics.md) és a [megbízható szolgáltatások teljesítményszámlálói](service-fabric-reliable-services-diagnostics.md#performance-counters). 
+Ha Reliable Services vagy szolgáltatás-távelérést használ, `Service Fabric Service` `Service Fabric Service Method` a következőhöz hasonló módon kell összegyűjtenie a számlálókat: [figyelés a szolgáltatás távelérési szolgáltatásával](service-fabric-reliable-serviceremoting-diagnostics.md) és a [megbízható szolgáltatások teljesítményszámlálói](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
-Ha megbízható gyűjteményeket használ, javasoljuk, hogy vegye `Avg. Transaction ms/Commit` fel a `Service Fabric Transactional Replicator` -t a használatával a tranzakciós metrikák átlagos végrehajtási késésének összegyűjtéséhez.
+Ha megbízható gyűjteményeket használ, javasoljuk, hogy vegye `Avg. Transaction ms/Commit` fel a-t a `Service Fabric Transactional Replicator` használatával a tranzakciós metrikák átlagos végrehajtási késésének összegyűjtéséhez.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -4,20 +4,20 @@ description: Ismerje meg, hogyan hozhat létre egyéni mintavételt a Applicatio
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807288"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) szolgáltatáshoz a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Portalra](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -136,32 +136,32 @@ Az alábbi példa azt szemlélteti, hogyan használható konfigurációs fájl a
 > [!IMPORTANT]
 > A Http és Https protokollelem különbséget tesz a kis- és a nagybetűk között.
 
-A\> rendszer új konfigurációs \<elemek mintavételét adja hozzá az egyéni mintavételek konfigurálásához.
+A rendszer új konfigurációs elemeket ad \<Probe\> hozzá az egyéni mintavételek konfigurálásához.
 
 A konfigurációs paraméterek a következők:
 
 |Paraméter|Leírás|
 |---|---|
-|**Név** |Az egyéni mintavétel hivatkozási neve. |
-| **Protocol (Protokoll)** | Használt protokoll (a lehetséges értékek HTTP vagy HTTPS).|
-| **Gazdagép** és **elérési út** | Teljes URL-cím elérési útja, amelyet az Application Gateway hív meg a példány állapotának meghatározásához. Ha például webhelye http:\//contoso.com/, akkor az egyéni mintavétel konfigurálható a "http:\//contoso.com/Path/custompath.htm" értékre a mintavételi ellenőrzésekhez, hogy sikeres legyen a http-válasz.|
+|**Name (Név)** |Az egyéni mintavétel hivatkozási neve. |
+| **Protokoll** | Használt protokoll (a lehetséges értékek HTTP vagy HTTPS).|
+| **Gazdagép** és **elérési út** | Teljes URL-cím elérési útja, amelyet az Application Gateway hív meg a példány állapotának meghatározásához. Ha például van egy webhely http: \/ /contoso.com/, akkor az egyéni mintavétel konfigurálható a "http: \/ /contoso.com/Path/custompath.htm" értékre a mintavételi ellenőrzésekhez, hogy sikeres legyen a http-válasz.|
 | **Időköz** | A mintavételi időköz ellenőrzésének beállítása másodpercben.|
 | **Időtúllépés** | Meghatározza a mintavétel időtúllépését a HTTP-válaszok esetében.|
 | **UnhealthyThreshold** | A háttérbeli példány *sérültként*való megjelöléséhez szükséges sikertelen http-válaszok száma.|
 
-A mintavétel nevét a \<BackendHttpSettings\> konfigurációjában kell megadni, amely azt adja meg, hogy melyik háttér-készlet használja az egyéni mintavételi beállításokat.
+A mintavétel neve a konfigurációban hivatkozik \<BackendHttpSettings\> arra, hogy melyik háttér-készlet használja az egyéni mintavételi beállításokat.
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Egyéni mintavétel hozzáadása meglévő Application Gateway-átjáróhoz
 
 Az Application Gateway aktuális konfigurációjának módosításához három lépés szükséges: az aktuális XML-konfigurációs fájl beolvasása, a módosítás, hogy egyéni mintavételt végezzen, és konfigurálja az Application Gatewayt az új XML-beállításokkal.
 
-1. Az XML-fájl beolvasása a használatával `Get-AzureApplicationGatewayConfig`. Ez a parancsmag exportálja a konfigurációs XML-t, hogy a rendszer módosítsa a mintavételi beállításokat.
+1. Az XML-fájl beolvasása a használatával `Get-AzureApplicationGatewayConfig` . Ez a parancsmag exportálja a konfigurációs XML-t, hogy a rendszer módosítsa a mintavételi beállításokat.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. Nyissa meg az XML-fájlt egy szövegszerkesztőben. Adjon hozzá `<probe>` egy szakaszt `<frontendport>`a következő után:.
+1. Nyissa meg az XML-fájlt egy szövegszerkesztőben. Adjon hozzá egy szakaszt a következő `<probe>` után: `<frontendport>` .
 
    ```xml
    <Probes>
@@ -192,7 +192,7 @@ Az Application Gateway aktuális konfigurációjának módosításához három l
 
    Mentse az XML-fájlt.
 
-1. Frissítse az Application Gateway konfigurációját az új XML-fájllal a `Set-AzureApplicationGatewayConfig`használatával. Ez a parancsmag frissíti az Application Gatewayt az új konfigurációval.
+1. Frissítse az Application Gateway konfigurációját az új XML-fájllal a használatával `Set-AzureApplicationGatewayConfig` . Ez a parancsmag frissíti az Application Gatewayt az új konfigurációval.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"

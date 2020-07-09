@@ -14,10 +14,9 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616908"
 ---
 # <a name="sizing"></a>Méretezés
@@ -34,5 +33,5 @@ A zöld mezők megvalósításához az SAP Quick Sizeer elérhetővé válik a H
 
 A HANA adatmennyiség növekedésével kapcsolatos memória-követelmények Vegye figyelembe, hogy a jelenlegi memóriahasználat alapján várhatóan megjósolhatja, mi lesz a jövőben. A memóriára vonatkozó követelmények alapján leképezheti az igényét az egyik HANA nagyméretű példány SKU-ra.
 
-**További lépések**
+**Következő lépések**
 - A bevezetési [követelmények](hana-onboarding-requirements.md) átirányítása

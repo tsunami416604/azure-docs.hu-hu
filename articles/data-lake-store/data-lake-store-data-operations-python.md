@@ -4,15 +4,16 @@ description: Megtudhatja, hogyan használhatja a Python SDK-t a Data Lake Storag
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 17b53c508f0c4c5ba8fa257fcdc692cdaa45d470
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: b6c5abe6dc267795fc2fc4c5e3371a93414e21b9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294218"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985102"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fájlrendszer-műveletek Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan hajthat végre fájlrendszerbeli művelete
 
 * **Python**. A Pythont [innen](https://www.python.org/downloads/) töltheti le. Ez a cikk a Python 3.6.2-es verzióját használja.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Data Lake Storage Gen1 fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
 
@@ -43,7 +44,7 @@ A Data Lake Storage Gen1 Python használatával való használatához három mod
 
 A modulok telepítéséhez használja a következő parancsokat.
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
@@ -55,7 +56,7 @@ pip install azure-datalake-store
 
 2. Adja hozzá a következő sorokat a szükséges modulok importálásához.
 
-   ```
+   ```python
    ## Use this only for Azure AD service-to-service authentication
    from azure.common.credentials import ServicePrincipalCredentials
 
@@ -93,34 +94,43 @@ Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk.
 
 A következő kódrészlet először létrehozza a Data Lake Storage Gen1 fiók ügyfelét. Az ügyfél objektum használatával hozza létre a Data Lake Storage Gen1 fiókot. Végül pedig létrehoz egy fájlrendszerügyfél-objektumot.
 
-    ## Declare variables
-    subscriptionId = 'FILL-IN-HERE'
-    adlsAccountName = 'FILL-IN-HERE'
+```python
+## Declare variables
+subscriptionId = 'FILL-IN-HERE'
+adlsAccountName = 'FILL-IN-HERE'
 
-    ## Create a filesystem client object
-    adlsFileSystemClient = core.AzureDLFileSystem(adlCreds, store_name=adlsAccountName)
+## Create a filesystem client object
+adlsFileSystemClient = core.AzureDLFileSystem(adlCreds, store_name=adlsAccountName)
+```
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-    ## Create a directory
-    adlsFileSystemClient.mkdir('/mysampledirectory')
+```python
+## Create a directory
+adlsFileSystemClient.mkdir('/mysampledirectory')
+```
 
 ## <a name="upload-a-file"></a>Fájl feltöltése
 
-
-    ## Upload a file
-    multithread.ADLUploader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```python
+## Upload a file
+multithread.ADLUploader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```
 
 
 ## <a name="download-a-file"></a>Fájl letöltése
 
-    ## Download a file
-    multithread.ADLDownloader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt.out', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```python
+## Download a file
+multithread.ADLDownloader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt.out', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+```
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-    ## Delete a directory
-    adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
+```python
+## Delete a directory
+adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
+```
 
 ## <a name="next-steps"></a>További lépések
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md).

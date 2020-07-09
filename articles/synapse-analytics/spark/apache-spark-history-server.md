@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194994"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
@@ -120,7 +120,7 @@ A Graph csomópont megjeleníti a hő jelmagyarázatban látható színeket.
 
 A feladatok lejátszásához válassza a **Lejátszás**lehetőséget. A **Leállítás lehetőség kiválasztásával** bármikor leállíthatja a leállítást. A feladat színei különböző állapotokat mutatnak vissza a lejátszáskor:
 
-|Color|Jelentés|
+|Szín|Értelmezés|
 |-|-|
 |Zöld|Sikeres: a feladatok sikeresen befejeződtek.|
 |Narancssárga|Újrapróbálkozás: a feladatok olyan példányai, amelyek sikertelenek voltak, de nem befolyásolják a feladat végső eredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeztek, amelyek később esetleg sikeresek lehetnek.|
@@ -157,7 +157,7 @@ Mutasson a Graph csomópontra az elemleírás megjelenítéséhez, amikor a fela
 
 A feladatütemezés lapon egy elemleírás és egy kis ikon jelenik meg, ha olyan feladatokkal rendelkeznek, amelyek megfelelnek a következő feltételeknek:
 
-|Állapot|Leírás|
+|Állapot|Description|
 |-|-|
 |Az adattorzítás|az adatolvasási méret > a fázisban lévő összes feladat átlagos adatolvasási mérete, valamint az adatolvasási méret > 10 MB|
 |Időbeli döntés|a végrehajtási idő > a szakasz összes feladatának átlagos végrehajtási időpontja * 2 és végrehajtási idő > 2 percen belül|

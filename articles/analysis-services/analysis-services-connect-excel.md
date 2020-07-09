@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361557"
 ---
 # <a name="connect-with-excel"></a>Kapcsolódás Excellel
 
@@ -26,9 +26,9 @@ A bejelentkezett fióknak a modell adatbázis-szerepköréhez kell tartoznia leg
 
 Az Excel-kiszolgálókhoz való kapcsolódás az Excel 2016-es és újabb verzióiban az adatlekérdezés használatával támogatott. A Power Pivot nem támogatja a csatlakozást a tábla importálása varázsló használatával. 
 
-1. Az Excelben az **adatok** menüszalagon kattintson a >  **külső adatok beolvasása****más forrásokból** > lehetőségre**Analysis Services**.
+1. Az Excelben az **adatok** menüszalagon kattintson a **külső adatok beolvasása**  >  **más forrásokból**lehetőségre  >  **Analysis Services**.
 
-2. Az Adatkapcsolat varázslóban, a **kiszolgáló neve**mezőben adja meg a kiszolgáló nevét, beleértve a protokollt és az URI-t. Például: asazure://westcentralus.asazure.windows.net/advworks. Ezután a **bejelentkezési hitelesítő adatok**területen jelölje be **a következő Felhasználónév és jelszó használata**jelölőnégyzetet, majd írja be a szervezeti felhasználónevet, nancy@adventureworks.compéldául a jelszót.
+2. Az Adatkapcsolat varázslóban, a **kiszolgáló neve**mezőben adja meg a kiszolgáló nevét, beleértve a protokollt és az URI-t. Például: asazure://westcentralus.asazure.windows.net/advworks. Ezután a **bejelentkezési hitelesítő adatok**területen jelölje be **a következő Felhasználónév és jelszó használata**jelölőnégyzetet, majd írja be a szervezeti felhasználónevet, például a nancy@adventureworks.com jelszót.
 
     > [!IMPORTANT]
     > Ha Microsoft-fiókkal, élő AZONOSÍTÓval, a Yahoo-val, a Gmailben vagy más felhasználóval jelentkezik be, vagy ha be kell jelentkeznie a többtényezős hitelesítéssel, hagyja üresen a jelszó mezőt. A Tovább gombra kattintás után a rendszer jelszót kér. 
@@ -42,7 +42,7 @@ Az Excel-kiszolgálókhoz való kapcsolódás az Excel 2016-es és újabb verzi�
 
 ## <a name="see-also"></a>Lásd még
 
-[Ügyféloldali kódtárak](analysis-services-data-providers.md)   
+[Ügyféloldali kódtárak](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [A kiszolgáló kezelése](analysis-services-manage.md)     
 
 

@@ -3,12 +3,12 @@ title: Erőforrás-fájlok létrehozása és használata
 description: Megtudhatja, hogyan hozhat létre batch-forrásfájlokat különböző bemeneti forrásokból. Ez a cikk néhány gyakori módszert ismertet a virtuális gépek létrehozásához és elhelyezéséhez.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723459"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964022"
 ---
 # <a name="creating-and-using-resource-files"></a>Erőforrás-fájlok létrehozása és használata
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > A tárolók eléréséhez mind a, mind az engedélyekkel kell rendelkeznie, `Read` `List` míg a blob-hozzáféréssel rendelkezik, csak `Read` engedélyre van szüksége.
 
-Az engedélyek konfigurálása után hozza létre az SAS-jogkivonatot, és formázza az SAS URL-címét a tárolóhoz való hozzáféréshez. A Storage-tárolóhoz tartozó formázott SAS URL-cím használatával állítson elő egy erőforráscsoportot a következővel: [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
+Az engedélyek konfigurálása után hozza létre az SAS-jogkivonatot, és formázza az SAS URL-címét a tárolóhoz való hozzáféréshez. A Storage-tárolóhoz tartozó formázott SAS URL-cím használatával állítson elő egy erőforráscsoportot a következővel: [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,9 +99,9 @@ Ha az egyes feladatokhoz több fájl is tartozik, akkor az erőforrás-fájlok a
 
 Ha egy feladatban több száz erőforrás van megadva, akkor a Batch túl nagynak fogja utasítani a feladatot. A feladatok minimalizálása érdekében a legjobb, ha a feladatban lévő erőforrás-fájlok számát minimálisra csökkenti.
 
-Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja a különböző "Container" [metódusokat](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) az erőforrás-fájlokhoz. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
+Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja a különböző "Container" [metódusokat](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) az erőforrás-fájlokhoz. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg az [alkalmazás csomagjait](batch-application-packages.md) az erőforrás-fájlok alternatívájaként.
 - További információ a tárolók erőforrás-fájlokhoz való használatáról: [tároló munkaterhelések](batch-docker-container-workloads.md).

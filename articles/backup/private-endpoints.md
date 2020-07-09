@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bc778506819c44291bb2d8f69cdd9ac0aed51399
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007855"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124255"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -21,9 +21,11 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 - A magánhálózati végpontok csak az új Recovery Services-tárolók számára hozhatók létre (amelyek nem rendelkeznek a tárolóhoz regisztrált elemekkel). Ezért létre kell hozni a privát végpontokat, mielőtt a tár bármely elemét védetté tenné.
 - Egy virtuális hálózat több Recovery Services-tárolóhoz is tartalmazhat privát végpontokat. Emellett egy Recovery Services-tár több virtuális hálózatban is rendelkezhet saját végpontokkal. Azonban a tárolóhoz létrehozható privát végpontok maximális száma 12.
 - Miután létrehozta a tárolóhoz egy privát végpontot, a rendszer zárolja a tárolót. Nem lesz elérhető (biztonsági mentéshez és visszaállításhoz) a hálózatokon kívülről is, amelyek a tárolóhoz privát végpontot tartalmaznak. Ha a tár összes privát végpontja törlődik, a tároló minden hálózatról elérhető lesz.
+- A biztonsági mentéshez használt privát végponti kapcsolatok összesen 11 magánhálózati IP-címet használnak az alhálózaton. Ez a szám lehet magasabb (legfeljebb 15) bizonyos Azure-régiókban. Ezért javasoljuk, hogy elegendő privát IP-cím álljon rendelkezésre, ha privát végpontokat próbál létrehozni a biztonsági mentéshez.
 - A Recovery Services-tárolót (mindkettő) Azure Backup és Azure Site Recovery is használja, ez a cikk a privát végpontok használatát ismerteti csak Azure Backup esetén.
 - Azure Active Directory jelenleg nem támogatja a privát végpontokat. A Azure Active Directory működéséhez szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez.
 - A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt le kell tiltania a hálózati házirendeket.
+- A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha azt a 1 2020. május előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és kattintson az **újbóli regisztrálás**gombra.
 
 ## <a name="recommended-and-supported-scenarios"></a>Ajánlott és támogatott forgatókönyvek
 
@@ -40,9 +42,6 @@ Ez a szakasz a virtuális hálózatokon belüli Azure Backup magánhálózati v�
 
 >[!IMPORTANT]
 > Erősen ajánlott, hogy kövesse a jelen dokumentumban említett lépéseket. Ennek elmulasztása miatt előfordulhat, hogy a tár nem kompatibilis a privát végpontok használatára, és egy új tárolóval újra kell indítania a folyamatot.
-
->[!NOTE]
-> Lehetséges, hogy a Azure Portal-élmény bizonyos elemei jelenleg nem érhetők el. Tekintse meg az ilyen helyzetekben felhasználható alternatív tapasztalatokat, amíg a teljes rendelkezésre állást el nem végzi a régiójában.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -110,7 +109,7 @@ Ha önálló, saját DNS-zónát szeretne létrehozni az Azure-ban, ugyanezt a l
 
 Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz.
 
-Az URL-címek elnevezési konvenciói az országos térségek:
+Az URL-címek elnevezési konvenciói a nemzeti régiókban:
 
 - [Kína](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [Németország](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
@@ -344,7 +343,7 @@ A szükséges engedélyekkel rendelkező szerepkörök létrehozásához az alá
 
 Hozza létre a következő JSON-fájlokat, és használja a szakasz végén található PowerShell-parancsot a szerepkörök létrehozásához:
 
-PrivateEndpointContributorRoleDef. JSON
+PrivateEndpointContributorRoleDef.jsbekapcsolva
 
 ```json
 {
@@ -362,7 +361,7 @@ PrivateEndpointContributorRoleDef. JSON
 }
 ```
 
-NetworkInterfaceReaderRoleDef. JSON
+NetworkInterfaceReaderRoleDef.jsbekapcsolva
 
 ```json
 {
@@ -380,7 +379,7 @@ NetworkInterfaceReaderRoleDef. JSON
 }
 ```
 
-PrivateEndpointSubnetContributorRoleDef. JSON
+PrivateEndpointSubnetContributorRoleDef.jsbekapcsolva
 
 ```json
 {

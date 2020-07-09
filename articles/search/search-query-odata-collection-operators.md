@@ -20,19 +20,18 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113230"
 ---
-# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-gyűjtemény operátorok az Azure `any` Cognitive Searchban – és`all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-gyűjtemény operátorok az Azure Cognitive Searchban – `any` és`all`
 
-Ha egy [OData-szűrési kifejezést](query-odata-filter-orderby-syntax.md) ír az Azure Cognitive Search használatával, gyakran hasznos a begyűjtési mezők szűrése. Ezt a és `any` `all` a operátorok használatával érheti el.
+Ha egy [OData-szűrési kifejezést](query-odata-filter-orderby-syntax.md) ír az Azure Cognitive Search használatával, gyakran hasznos a begyűjtési mezők szűrése. Ezt a és a operátorok használatával érheti el `any` `all` .
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
-A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a vagy a által használt `any` OData- `all`kifejezés nyelvtanát határozza meg.
+A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a vagy a által használt OData-kifejezés nyelvtanát határozza meg `any` `all` .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -56,9 +55,9 @@ Az interaktív szintaxis diagram is elérhető:
 A gyűjtemények három formája létezik.
 
 - Az első két iteráció egy gyűjtemény mező fölé, amely egy lambda kifejezés formájában megadott predikátumot alkalmaz a gyűjtemény minden elemére.
-  - A visszatérést `all` `true` használó kifejezés, ha a predikátum a gyűjtemény minden eleme esetében igaz.
-  - A visszatérést `any` `true` használó kifejezés, ha a predikátum a gyűjtemény legalább egy eleménél igaz.
-- A gyűjtési szűrő harmadik formája lambda `any` kifejezés nélkül működik annak teszteléséhez, hogy egy gyűjtemény mező üres-e. Ha a gyűjteménynek bármilyen eleme van, a `true`függvény visszaadja. Ha a gyűjtemény üres, a függvény visszaadja `false`.
+  - A `all` visszatérést használó kifejezés `true` , ha a predikátum a gyűjtemény minden eleme esetében igaz.
+  - A visszatérést használó kifejezés, `any` `true` Ha a predikátum a gyűjtemény legalább egy eleménél igaz.
+- A gyűjtési szűrő harmadik formája `any` lambda kifejezés nélkül működik annak teszteléséhez, hogy egy gyűjtemény mező üres-e. Ha a gyűjteménynek bármilyen eleme van, a függvény visszaadja `true` . Ha a gyűjtemény üres, a függvény visszaadja `false` .
 
 A gyűjtemény szűrőben lévő **lambda kifejezés** olyan, mint egy programozási nyelvben lévő hurok törzse. Definiál egy változót, amelynek neve a **Range változó**, amely a gyűjtemény aktuális elemét tárolja az iteráció során. Egy másik logikai kifejezést is definiál, amely a gyűjtemény egyes elemeinél a tartomány változóra alkalmazandó szűrési feltétel.
 
@@ -68,19 +67,19 @@ Olyan dokumentumok egyeztetése, amelyek `tags` mezője pontosan a "WiFi" karakt
 
     tags/any(t: t eq 'wifi')
 
-Olyan dokumentumok egyeztetése, amelyekben `ratings` a mező minden eleme 3 és 5 közé esik, beleértve a következőket:
+Olyan dokumentumok egyeztetése, amelyekben a mező minden eleme `ratings` 3 és 5 közé esik, beleértve a következőket:
 
     ratings/all(r: r ge 3 and r le 5)
 
-Olyan dokumentumok egyeztetése, amelyekben a `locations` mező egyik földrajzi koordinátái a megadott sokszögen belül vannak:
+Olyan dokumentumok egyeztetése, amelyekben a mező egyik földrajzi koordinátái `locations` a megadott sokszögen belül vannak:
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-Olyan dokumentumok egyeztetése `rooms` , amelyekben a mező üres:
+Olyan dokumentumok egyeztetése, amelyekben a `rooms` mező üres:
 
     not rooms/any()
 
-A dokumentumok egyeztetése az összes szobában, `rooms/amenities` a mező a "TV" `rooms/baseRate` kifejezést tartalmazza, és kevesebb, mint 100:
+A dokumentumok egyeztetése az összes szobában, a `rooms/amenities` mező a "TV" kifejezést tartalmazza, és `rooms/baseRate` kevesebb, mint 100:
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 

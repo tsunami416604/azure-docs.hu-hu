@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71122731"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Nem indítható Cloud Service-szerepkörök – problémamegoldás
@@ -42,13 +42,13 @@ Amikor egy webes szerepkörbe telepített webhelyre navigál, és a böngésző 
 ![Kiszolgálóhiba a következő alkalmazásban: "/".](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
 ## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Problémák diagnosztizálása az egyéni hibák kikapcsolásával
-A részletes hibaüzenetek megtekinthetők úgy, hogy a webes szerepkörhöz tartozó web. config fájl konfigurálásával beállítja az egyéni hibaüzenetet a szolgáltatás kikapcsolására és újbóli üzembe helyezésére.
+A részletes hibaüzeneteket úgy tekintheti meg, ha a webes szerepkörhöz tartozó web.config konfigurálásával beállítja az egyéni hibaüzenetet a szolgáltatás kikapcsolására és újbóli üzembe helyezésére.
 
 Ha a Távoli asztal használata nélkül szeretné megtekinteni a teljes hibákat:
 
 1. Nyissa meg a megoldást a Microsoft Visual Studióban.
-2. A **megoldáskezelő**keresse meg a web. config fájlt, és nyissa meg.
-3. A web. config fájlban keresse meg a System. Web szakaszt, és adja hozzá a következő sort:
+2. A **megoldáskezelő**keresse meg a web.config fájlt, és nyissa meg.
+3. A web.config fájlban keresse meg a System. Web szakaszt, és adja hozzá a következő sort:
 
     ```xml
     <customErrors mode="Off" />
@@ -82,7 +82,7 @@ Például:
 ![Explicit Kiszolgálóhiba a következő alkalmazásban: "/".](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Problémák diagnosztizálása a Compute Emulator használatával
-A Microsoft Azure Compute Emulator segítségével diagnosztizálhatja és elháríthatja a hiányzó függőségekkel és a web. config hibákkal kapcsolatos problémákat.
+A Microsoft Azure Compute Emulator segítségével diagnosztizálhatja és elháríthatja a hiányzó függőségekkel és web.config hibákkal kapcsolatos problémákat.
 
 A diagnosztikai módszer használatának legjobb eredményeihez olyan számítógépet vagy virtuális gépet kell használnia, amely a Windows tiszta telepítését használja. Az Azure-környezet legjobb szimulálása érdekében használja a Windows Server 2008 R2 x64-et.
 
@@ -90,8 +90,8 @@ A diagnosztikai módszer használatának legjobb eredményeihez olyan számító
 2. A fejlesztői gépen hozza létre a Cloud Service-projektet.
 3. A Windows Intézőben navigáljon a Cloud Service-projekt bin\debug mappájához.
 4. Másolja a. CSX mappát és a. cscfg fájlt arra a számítógépre, amelyet a problémák hibakereséséhez használ.
-5. A tiszta gépen nyisson meg egy Azure SDK parancssori ablakot, és írja be `csrun.exe /devstore:start`a következőt:.
-6. A parancssorba írja be a `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`következőt:.
+5. A tiszta gépen nyisson meg egy Azure SDK parancssori ablakot, és írja be a következőt: `csrun.exe /devstore:start` .
+6. A parancssorba írja be a következőt: `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser` .
 7. A szerepkör indításakor a részletes hibaüzenetek jelennek meg az Internet Explorerben. A probléma további diagnosztizálásához használhatja a szabványos Windows hibaelhárítási eszközöket is.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Problémák diagnosztizálása a IntelliTrace használatával
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve telepítheti a szolgáltatást a IntelliTrace en
 1. Ellenőrizze, hogy telepítve van-e az Azure SDK 1,3-as vagy újabb verziója.
 2. A megoldás üzembe helyezése a Visual Studio használatával. Az üzembe helyezés során jelölje be a **IntelliTrace engedélyezése a .net 4-szerepkörökhöz** jelölőnégyzetet.
 3. A példány elindítása után nyissa meg a **Server Explorert**.
-4. Bontsa ki az **Azure\\Cloud Services** csomópontot, és keresse meg a központi telepítést.
+4. Bontsa ki az **Azure \\ Cloud Services** csomópontot, és keresse meg a központi telepítést.
 5. Bontsa ki a központi telepítést, amíg meg nem jelenik a szerepkör példányai. Kattintson a jobb gombbal az egyik példányra.
 6. Válassza a **IntelliTrace-naplók megtekintése**lehetőséget. Ekkor megnyílik a **IntelliTrace összegzése** .
 7. Keresse meg az összefoglalás kivételek szakaszát. Ha kivételek vannak, a szakasz a **kivételek által jelzett adattípust**jelöli.

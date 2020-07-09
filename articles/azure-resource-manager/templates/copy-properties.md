@@ -3,12 +3,11 @@ title: Egy tulajdonság több példányának meghatározása
 description: A másolási művelettel egy Azure Resource Manager sablonban több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678460"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
 
@@ -16,7 +15,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy tulajdonság több péld
 
 A másolás [erőforrásokat](copy-resources.md), [változókat](copy-variables.md)és [kimeneteket](copy-outputs.md)is használhat.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A másolási elem a következő általános formátumú:
 
@@ -51,11 +50,11 @@ A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla é
 
 ## <a name="property-iteration"></a>Tulajdonság iterációja
 
-Az alábbi példa bemutatja, hogyan alkalmazható `copy` a virtuális gép dataDisks tulajdonságára:
+Az alábbi példa bemutatja, hogyan alkalmazható a `copy` virtuális gép dataDisks tulajdonságára:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "numberOfDataDisks": {
@@ -95,9 +94,9 @@ Az alábbi példa bemutatja, hogyan alkalmazható `copy` a virtuális gép dataD
 }
 ```
 
-Figyelje meg, hogy `copyIndex` ha egy tulajdonság-iteráción belül használ, meg kell adnia az iteráció nevét. A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például copyIndex (' dataDisks ', 1).
+Figyelje meg, hogy ha `copyIndex` egy tulajdonság-iteráción belül használ, meg kell adnia az iteráció nevét. A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például copyIndex (' dataDisks ', 1).
 
-A Resource Manager kibontja a tömböt az `copy` üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
+A Resource Manager kibontja a `copy` tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
 
 ```json
 {
@@ -126,7 +125,7 @@ A Resource Manager kibontja a tömböt az `copy` üzembe helyezés során. A tö
       ...
 ```
 
-A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a `length` tömb függvényét az iterációk számának megadásához, valamint `copyIndex` a tömb aktuális indexének lekéréséhez.
+A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a `length` tömb függvényét az iterációk számának megadásához, valamint a `copyIndex` tömb aktuális indexének lekéréséhez.
 
 A következő példa sablon létrehoz egy feladatátvételi csoportot a tömbként átadott adatbázisok számára.
 
@@ -252,7 +251,7 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 
 Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tulajdonság egynél több értékét hozza létre.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 |[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
 

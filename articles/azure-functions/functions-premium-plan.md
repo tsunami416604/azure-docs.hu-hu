@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298514"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Ebben a példában cserélje le `<RESOURCE_GROUP>` az erőforráscsoportot és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [támogatottat `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
+Ebben a példában cserélje le az `<RESOURCE_GROUP>` erőforráscsoportot és az erőforráscsoport `<PLAN_NAME>` egyedi csomagjának nevére. Válasszon egy [támogatottat `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
@@ -61,11 +61,13 @@ További információ: [a Function app integrálása VNet](functions-create-vnet
 
 ### <a name="rapid-elastic-scale"></a>Gyors rugalmas skála
 
-Az alkalmazáshoz további számítási példányok is automatikusan hozzáadódnak a használati tervvel megegyező gyors skálázási logikával.  Ha többet szeretne megtudni a skálázás működéséről, tekintse meg a [függvények méretezése és üzemeltetése](./functions-scale.md#how-the-consumption-and-premium-plans-work)című témakört.
+Az alkalmazáshoz további számítási példányok is automatikusan hozzáadódnak a használati tervvel megegyező gyors skálázási logikával. Az azonos App Service csomagbeli alkalmazások egymástól függetlenül méretezhetők, egy adott alkalmazás igényeitől függően. Ugyanakkor a functions-alkalmazások ugyanabban a App Service csomagban megosztják a virtuális gépek erőforrásait a költségek csökkentése érdekében, ha lehetséges. A virtuális géphez társított alkalmazások száma az egyes alkalmazások lábnyomával és a virtuális gép méretétől függ.
+
+Ha többet szeretne megtudni a skálázás működéséről, tekintse meg a [függvények méretezése és üzemeltetése](./functions-scale.md#how-the-consumption-and-premium-plans-work)című témakört.
 
 ### <a name="longer-run-duration"></a>Hosszabb Futtatás időtartama
 
-A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. Azonban [módosíthatja a Host. JSON-konfigurációt](./functions-host-json.md#functiontimeout) , hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen (garantált 60 perc).
+A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. Azonban [módosíthatja a konfiguráció host.jsét](./functions-host-json.md#functiontimeout) , hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen (garantált 60 perc).
 
 ## <a name="plan-and-sku-settings"></a>Csomag-és SKU-beállítások
 
@@ -88,7 +90,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|SKU|Cores|Memory (Memória)|Storage|
+|Termékváltozat|Cores|Memory (Memória)|Storage|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
@@ -97,7 +99,7 @@ A csomag létrehozásakor vagy skálázásakor három példány mérete közül 
 ### <a name="memory-utilization-considerations"></a>Memóriahasználat szempontjai
 A több memóriával rendelkező gépeken való futtatás nem mindig jelenti azt, hogy a Function alkalmazás az összes rendelkezésre álló memóriát fogja használni.
 
-A JavaScript-függvények alkalmazásait például korlátozza a Node. js alapértelmezett memória-korlátja. A rögzített memória korlátjának növeléséhez adja hozzá az alkalmazás `languageWorkers:node:arguments` értékét a következő értékkel: `--max-old-space-size=<max memory in MB>`.
+A JavaScript-függvények alkalmazásait például a Node.js alapértelmezett memória-korlátja korlátozza. A rögzített memória korlátjának növeléséhez adja hozzá az alkalmazás `languageWorkers:node:arguments` értékét a következő értékkel: `--max-old-space-size=<max memory in MB>` .
 
 ## <a name="region-max-scale-out"></a>Régió maximális felskálázása
 

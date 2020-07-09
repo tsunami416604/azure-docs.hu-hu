@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 258dfec20644ee29368de075673dfc7798bee28a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195485"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083542"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Az Apache Hive lekérdezése a HDInsight JDBC-illesztőjén keresztül
 
@@ -65,7 +65,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 1. Hozzon létre egy könyvtárat, amely bizonyos, a fürtből másolandó fájlokat tartalmaz.
 
-2. A következő parancsfájlban cserélje le `sshuser` a parancsot a fürthöz tartozó SSH-felhasználói fiók nevére.  Cserélje `CLUSTERNAME` le a nevet a HDInsight-fürt nevére.  A parancssorban módosítsa a munkahelyi könyvtárat az előző lépésben létrehozottra, majd írja be a következő parancsot a fájlok HDInsight-fürtből való másolásához:
+2. A következő parancsfájlban cserélje le a parancsot a `sshuser` fürthöz tartozó SSH-felhasználói fiók nevére.  Cserélje le `CLUSTERNAME` a nevet a HDInsight-fürt nevére.  A parancssorban módosítsa a munkahelyi könyvtárat az előző lépésben létrehozottra, majd írja be a következő parancsot a fájlok HDInsight-fürtből való másolásához:
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -129,7 +129,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 ## <a name="connect-from-an-example-java-application"></a>Csatlakozási példa Java-alkalmazásból
 
-A (z) HDInsight található struktúra lekérdezése Java-ügyféllel című példa a [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)következő címen érhető el:. A minta létrehozásához és futtatásához kövesse az adattár utasításait.
+A (z) HDInsight található struktúra lekérdezése Java-ügyféllel című példa a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . A minta létrehozásához és futtatásához kövesse az adattár utasításait.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -147,7 +147,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Megoldás**: a hiba elhárításához kövesse az alábbi lépéseket:
 
-1. Lépjen ki a Mókusból, majd nyissa meg azt a könyvtárat, ahol a mókus telepítve `C:\Program Files\squirrel-sql-4.0.0\lib`van a rendszeren. A mókus könyvtárában a `lib` könyvtár alatt cserélje le a meglévő Commons-codec. jar fájlt a HDInsight-fürtről letöltöttre.
+1. Lépjen ki a Mókusból, majd nyissa meg azt a könyvtárat, ahol a mókus telepítve van a rendszeren `C:\Program Files\squirrel-sql-4.0.0\lib` . A mókus könyvtárában a könyvtár alatt `lib` cserélje le a meglévő Commons-codec. jar fájlt a HDInsight-fürtről letöltöttre.
 
 1. Indítsa újra a mókust. A hiba többé nem fordulhat elő, amikor a HDInsight-beli struktúrához csatlakozik.
 

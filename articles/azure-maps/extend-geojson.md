@@ -9,11 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687497"
 ---
 # <a name="extended-geojson-geometries"></a>Kiterjesztett GeoJSON geometriák
 
@@ -35,21 +34,21 @@ Ez a cikk részletesen ismerteti, hogy Azure Maps kiterjeszti a [GeoJSON SPECT][
 
 ## <a name="circle"></a>Kör
 
-A `Circle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy olyan `GeoJSON Point Feature` objektumot használunk, amely egy kört jelöl.
+A `Circle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy olyan objektumot használunk `GeoJSON Point Feature` , amely egy kört jelöl.
 
-Az `Circle` `GeoJSON Feature` objektummal jelölt geometriának a következő koordinátákat és tulajdonságokat __kell__ tartalmaznia:
+`Circle`Az objektummal jelölt geometriának `GeoJSON Feature` a következő koordinátákat és tulajdonságokat __kell__ tartalmaznia:
 
 - Középső
 
-    A kör középpontja egy `GeoJSON Point` objektum használatával van ábrázolva.
+    A kör középpontja egy objektum használatával van ábrázolva `GeoJSON Point` .
 
-- Sugár
+- Radius
 
-    A kör a `radius` tulajdonságok használatával `GeoJSON Feature`jelenik meg. A sugár értéke _méterben_ , és a típusnak `double`kell lennie.
+    A kör a `radius` Tulajdonságok használatával jelenik meg `GeoJSON Feature` . A sugár értéke _méterben_ , és a típusnak kell lennie `double` .
 
 - Altípus
 
-    A kör geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a tulajdonságok részének `GeoJSON Feature`kell lennie, és az értékének _kör_ típusúnak kell lennie
+    A kör geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a tulajdonságok részének kell lennie `GeoJSON Feature` , és az értékének _kör_ típusúnak kell lennie
 
 #### <a name="example"></a>Példa
 
@@ -71,17 +70,17 @@ A következő módon lehet egy kört ábrázolni egy `GeoJSON Feature` objektum 
 
 ## <a name="rectangle"></a>Téglalap
 
-A `Rectangle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy téglalapot `GeoJSON Polygon Feature` jelölő objektumot használunk. A téglalap-bővítményt elsősorban a web SDK rajzolási eszközei modulja használja.
+A `Rectangle` [GeoJSON-specifikáció][1]nem támogatja a geometriát. Egy `GeoJSON Polygon Feature` téglalapot jelölő objektumot használunk. A téglalap-bővítményt elsősorban a web SDK rajzolási eszközei modulja használja.
 
-Az `Rectangle` `GeoJSON Polygon Feature` objektummal jelölt geometriának a következő koordinátákat és tulajdonságokat __kell__ tartalmaznia:
+`Rectangle`Az objektummal jelölt geometriának `GeoJSON Polygon Feature` a következő koordinátákat és tulajdonságokat __kell__ tartalmaznia:
 
 - Sarkok
 
-    A téglalap sarkai egy `GeoJSON Polygon` objektum koordinátái alapján jelennek meg. Öt koordinátáknak kell lennie, egyet mindegyik sarokhoz. És egy olyan ötödik koordináta, amely megegyezik az első koordinátaval, a sokszög gyűrű bezárásához. A rendszer feltételezi, hogy ezek a koordináták összehangolják, és a fejlesztő a kívánt módon elforgathatja őket.
+    A téglalap sarkai egy objektum koordinátái alapján jelennek meg `GeoJSON Polygon` . Öt koordinátáknak kell lennie, egyet mindegyik sarokhoz. És egy olyan ötödik koordináta, amely megegyezik az első koordinátaval, a sokszög gyűrű bezárásához. A rendszer feltételezi, hogy ezek a koordináták összehangolják, és a fejlesztő a kívánt módon elforgathatja őket.
 
 - Altípus
 
-    A négyszög geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a `GeoJSON Feature`tulajdonságok részének kell lennie, és az értékének _négyszögnek_ kell lennie
+    A négyszög geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a tulajdonságok részének kell lennie `GeoJSON Feature` , és az értékének _négyszögnek_ kell lennie
 
 ### <a name="example"></a>Példa
 
@@ -108,6 +107,6 @@ További információ a Azure Maps GeoJSON-adatainak használatáról:
 Tekintse át a Azure Maps és a hely intelligenciát használó alkalmazásokkal kapcsolatos általános technikai feltételek szószedetét:
 
 > [!div class="nextstepaction"]
-> [Szószedet Azure Maps](glossary.md)
+> [Azure Maps-szószedet](glossary.md)
 
 [1]: https://tools.ietf.org/html/rfc7946

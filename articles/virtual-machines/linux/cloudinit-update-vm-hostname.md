@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969172"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Az Azure-beli Linux rendszerű virtuális gép állomásnévének beállítása a Cloud-init használatával
@@ -19,7 +18,7 @@ Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.i
 ## <a name="set-the-hostname-with-cloud-init"></a>Az állomásnév beállítása a Cloud-init használatával
 Alapértelmezés szerint az állomásnév ugyanaz, mint a virtuális gép neve, amikor új virtuális gépet hoz létre az Azure-ban.  Ha az [az VM Create](/cli/azure/vm)paranccsal hoz létre egy virtuális gépet az Azure-ban, akkor a Cloud-init parancsfájl futtatásával állítsa be a Cloud-init fájlt a `--custom-data` kapcsolóval.  
 
-A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt a *cloud_init_hostname. txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_hostname.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
+A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt a *cloud_init_hostname.txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_hostname.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
 
 ```yaml
 #cloud-config
@@ -32,7 +31,7 @@ A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot a
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a `--custom-data cloud_init_hostname.txt` Cloud-init fájlt a következő módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a Cloud-init fájlt a `--custom-data cloud_init_hostname.txt` következő módon:
 
 ```azurecli-interactive 
 az vm create \
@@ -49,7 +48,7 @@ A létrehozást követően az Azure CLI a virtuális géppel kapcsolatos inform�
 ssh <publicIpAddress>
 ```
 
-A virtuális gép nevének megtekintéséhez használja az parancsot `hostname` a következő módon:
+A virtuális gép nevének megtekintéséhez használja az `hostname` parancsot a következő módon:
 
 ```bash
 hostname

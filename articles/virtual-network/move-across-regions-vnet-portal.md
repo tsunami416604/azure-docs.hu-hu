@@ -3,15 +3,14 @@ title: Egy Azure-beli virtuális hálózat áthelyezése egy másik Azure-régi�
 description: Azure-beli virtuális hálózat áthelyezése egyik Azure-régióból a másikba egy Resource Manager-sablon és a Azure Portal használatával.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75640788"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711442"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure-beli virtuális hálózat áthelyezése másik régióba a Azure Portal használatával
 
@@ -42,9 +41,9 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza az **erőforráscsoportok**lehetőséget.
 1. Keresse meg azt az erőforráscsoportot, amely a forrás virtuális hálózatot tartalmazza, majd jelölje ki.
-1. Válassza a **Beállítások** > **Exportálás sablon**lehetőséget.
+1. Válassza a **Beállítások**  >  **Exportálás sablon**lehetőséget.
 1. A **sablon exportálása** panelen válassza a **telepítés**lehetőséget.
-1. Ha meg szeretné nyitni a *Parameters. JSON* fájlt az online szerkesztőben, válassza a **sablon** > **szerkesztése paraméterek**lehetőséget.
+1. Ha meg szeretné nyitni a *parameters.js* fájlt az online szerkesztőben, válassza a **sablon**  >  **szerkesztése paraméterek**lehetőséget.
 1. A virtuális hálózat nevének paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek**alatt:
 
     ```json
@@ -63,7 +62,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
 
 1. Válassza a **Mentés** lehetőséget a szerkesztőben.
 
-1. Ha meg szeretné nyitni a *template. JSON* fájlt az online szerkesztőben, válassza **a sablon** > **szerkesztése**lehetőséget.
+1. Az online szerkesztőben a *template.js* fájl megnyitásához válassza **a sablon**  >  **szerkesztése**lehetőséget.
 
 1. Az online szerkesztőben annak a célcsoportnak a szerkesztéséhez, ahol a virtuális hálózat át lesz helyezve, módosítsa a **Location (hely** ) tulajdonságot az **erőforrások**területen.
 
@@ -85,11 +84,11 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
 
     ```
 
-1. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/). A régió kódja a régió neve, szóközök nélkül (például az **USA** = középső**CentralUS**).
+1. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/). A régió kódja a régió neve, szóközök nélkül (például az **USA középső**  =  **CentralUS**).
 
 1. Választható A követelményektől függően a sablon egyéb paramétereit is módosíthatja:
 
-    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat**addressSpace** , ha módosítja az **erőforrások** > szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
+    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >  **addressSpace** szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
 
         ```json
                 "resources": [
@@ -140,7 +139,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
                 ]
         ```
 
-        Ha módosítani szeretné a *sablon. JSON* fájljának előtagját, szerkessze azt két helyen: az előző szakaszban található kódban, valamint a következő kód **Type (típus** ) szakaszában. Módosítsa a **addressPrefix** tulajdonságot a következő kódban, hogy az megfeleljen az előző szakaszban található kódban szereplő **addressPrefix** tulajdonságnak.
+        Ha módosítani szeretné a *template.js* fájljának előtagját a fájlban, szerkessze azt két helyen: az előző szakasz kódjában és a következő kód **Type (típus** ) szakaszában. Módosítsa a **addressPrefix** tulajdonságot a következő kódban, hogy az megfeleljen az előző szakaszban található kódban szereplő **addressPrefix** tulajdonságnak.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -178,13 +177,13 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
 
 1. Az online szerkesztőben válassza a **Mentés**lehetőséget.
 
-1. Válassza ki azt az előfizetést, amelyben a cél virtuális hálózat üzembe lesz helyezni **, majd válassza** > az alapszintű**előfizetés**lehetőséget.
+1. Válassza **ki azt az**előfizetést, amelyben a cél virtuális hálózat üzembe lesz helyezni, majd válassza az alapszintű  >  **előfizetés**lehetőséget.
 
-1. Válassza **ki azt az** > erőforráscsoportot, amelybe a célként megadott virtuális hálózatot telepíteni kívánja, válassza az alapértékek**erőforráscsoport**elemet. 
+1. Válassza **ki azt az**erőforráscsoportot, amelybe a célként megadott virtuális hálózatot telepíteni kívánja, válassza az alapértékek  >  **erőforráscsoport**elemet. 
 
     Ha létre kell hoznia egy új erőforráscsoportot a célként megadott virtuális hálózathoz, válassza az **új létrehozása**lehetőséget. Győződjön meg arról, hogy a név nem ugyanaz, mint a forrás erőforráscsoport neve a meglévő virtuális hálózaton.
 
-1. Győződjön meg **arról, hogy** > az alapértékek**helye** arra a célhelyre van beállítva, ahol a virtuális hálózatot telepíteni szeretné.
+1. Győződjön meg **arról, hogy az**alapértékek  >  **helye** arra a célhelyre van beállítva, ahol a virtuális hálózatot telepíteni szeretné.
 
 1. A **Beállítások**területen ellenőrizze, hogy a név megegyezik-e a korábban a paraméterek szerkesztőjében megadott névvel.
 

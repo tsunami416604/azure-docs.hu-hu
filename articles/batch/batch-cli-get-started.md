@@ -4,22 +4,22 @@ description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásai
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: b07045bc0a756c5565356bb0a674188cf84c8785
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780224"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960860"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
 Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. Az Azure CLI-t az Azure erőforrások parancssorból történő kezelésére és felügyeletére optimalizáltuk. Az Azure CLI használatával felügyelheti Azure Batch-fiókját, valamint erőforrásokat kezelhet, például készleteket, feladatokat és tevékenységeket is. Az Azure CLI-vel a Batch API-k, az Azure Portal és a Batch PowerShell-parancsmagok használatával végrehajtott műveletek közül is sokat elvégezhet.
 
-Ez a cikk betekintést nyújt az [Azure CLI 2.0-ás verziójának](https://docs.microsoft.com/cli/azure) Batch-csel történő használatába. A CLI és az Azure együttes használatával kapcsolatban további információt a [Bevezetés az Azure CLI használatába](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) című cikkben talál.
+Ez a cikk betekintést nyújt az [Azure CLI 2.0-ás verziójának](/cli/azure) Batch-csel történő használatába. A CLI és az Azure együttes használatával kapcsolatban további információt a [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli) című cikkben talál.
 
 ## <a name="set-up-the-azure-cli"></a>Az Azure CLI beállítása
 
-A legújabb Azure CLI-t az [Azure Cloud Shellben](../cloud-shell/overview.md) futtathatja. Az Azure CLI helyi telepítéséhez kövesse az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető cikk lépéseit.
+A legújabb Azure CLI-t az [Azure Cloud Shellben](../cloud-shell/overview.md) futtathatja. Az Azure CLI helyi telepítéséhez kövesse az [Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikk lépéseit.
 
 > [!TIP]
 > Ajánlott gyakran frissíteni az Azure CLI telepítést a szolgáltatásfrissítések és -fejlesztések kihasználása érdekében.
@@ -51,10 +51,10 @@ Az Azure CLI Batch-csel történő használatához be kell jelentkeznie és hite
 
 Az Azure-szolgáltatásba több módon is bejelentkezhet, ezeket részletesen a [Bejelentkezés az Azure használatával](/cli/azure/authenticate-azure-cli) című cikk ismerteti:
 
-1. [Interaktív bejelentkezés](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Az Interaktív bejelentkezést akkor használja, ha személyesen szeretne Azure CLI-parancsokat futtatni a parancssor használatával.
-2. [Jelentkezzen be egy egyszerű szolgáltatással](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Jelentkezzen be szolgáltatásnévvel, ha szkript vagy alkalmazás használatával kíván Azure CLI-parancsokat futtatni.
+1. [Interaktív bejelentkezés](/cli/azure/authenticate-azure-cli). Az Interaktív bejelentkezést akkor használja, ha személyesen szeretne Azure CLI-parancsokat futtatni a parancssor használatával.
+2. [Jelentkezzen be egy egyszerű szolgáltatással](/cli/azure/authenticate-azure-cli). Jelentkezzen be szolgáltatásnévvel, ha szkript vagy alkalmazás használatával kíván Azure CLI-parancsokat futtatni.
 
-Ebben a cikkben az Interaktív bejelentkezést fogjuk használni az Azure-ba történő belépéshez. Írja be az [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) utasítást a parancssorba:
+Ebben a cikkben az Interaktív bejelentkezést fogjuk használni az Azure-ba történő belépéshez. Írja be az [az login](/cli/azure/reference-index#az-login) utasítást a parancssorba:
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -69,7 +69,7 @@ A Shell-szkript minták részben felsorolt példákban is az interaktív bejelen
 
 ### <a name="log-in-to-your-batch-account"></a>Bejelentkezés a Batch-fiókjába
 
-Ahhoz, hogy az Azure CLI segítségével kezelhessen Batch-erőforrásokat, például készleteket, feladatokat és tevékenységeket, be kell jelentkeznie Batch-fiókjába, és azt hitelesítenie kell. A Batch szolgáltatásba történő bejelentkezéshez használja a [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) parancsot. 
+Ahhoz, hogy az Azure CLI segítségével kezelhessen Batch-erőforrásokat, például készleteket, feladatokat és tevékenységeket, be kell jelentkeznie Batch-fiókjába, és azt hitelesítenie kell. A Batch szolgáltatásba történő bejelentkezéshez használja a [az batch account login](/cli/azure/batch/account#az-batch-account-login) parancsot. 
 
 A Batch-fiók hitelesítését két módon is elvégezheti:
 
@@ -81,7 +81,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
 
     Az Azure AD előnye a szerepköralapú hozzáférés-vezérlés (RBAC) használatában rejlik. Szerepköralapú hozzáférés-vezérlés használatával a felhasználók hozzáférése a kiosztott szerepkörtől függ, nem pedig attól, hogy rendelkeznek-e a fiókhoz tartozó hitelesítőkulccsal. Így ahelyett, hogy hozzáférési kulcsokat kellene kezelnie, elég ha a szerepköröket kezeli, a hozzáférést és a hitelesítést pedig az Azure AD-ra bízhatja.  
 
-     Ahhoz, hogy az Azure AD használatával jelentkezzen be Batch-fiókjába, használja a [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) parancsot: 
+     Ahhoz, hogy az Azure AD használatával jelentkezzen be Batch-fiókjába, használja a [az batch account login](/cli/azure/batch/account#az-batch-account-login) parancsot: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -141,7 +141,7 @@ Ha a `list` művelettel küld lekérdezést a Batch-szolgáltatásnak, megadhat 
 
 A következő táblázat bemutatja azokat, az OData-záradékokat, amelyeket a Batch szolgáltatás támogat:
 
-| Záradék | Leírás |
+| Záradék | Description |
 |---|---|
 | `--select-clause [select-clause]` | A tulajdonságok egy részét adja vissza minden entitás esetében. |
 | `--filter-clause [filter-clause]` | Csak olyan entitásokat ad vissza, amelyek megfelelnek a megadott OData-kifejezésnek. |
@@ -162,10 +162,10 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+* Tekintse meg az [Azure CLI dokumentációját](/cli/azure).
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * A cikkből megtudhatja, hogyan hozhat létre készleteket, feladatokat és tevékenységeket a Batch-sablonok használatával [Azure batch CLI-sablonok és fájlátvitel használata](batch-cli-templates.md)nélkül.
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
-[rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_api]: /rest/api/batchservice/
+[rest_add_pool]: /rest/api/batchservice/pool/add

@@ -7,17 +7,17 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357579"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -196,7 +196,7 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 **K: a következő mérföldkőre való idő?**  
 </br>A nyilvános előzetes verzió funkcióit a további mérföldkövek elérése előtt lehet visszavonni és valószínűleg újratervezni.  
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

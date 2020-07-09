@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: troubleshooting
+ms.date: 06/18/2020
+ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127757"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044515"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -59,23 +59,23 @@ A Tevékenységnaplók alapértelmezés szerint be vannak kapcsolva, és magas s
 
 Az erőforrás-naplók bekapcsolása és a Azure Monitor naplókba való elküldése kifejezetten ajánlott. Alapértelmezés szerint **ki vannak kapcsolva** . A bekapcsolásához hajtsa végre az alábbi lépéseket:
 
-1.  Jelentkezzen be a Azure Portalba, és navigáljon a Stream Analytics feladatokhoz. A **figyelés**területen válassza a **diagnosztikai naplók**lehetőséget. Ezután kattintson **a diagnosztika bekapcsolása**elemre.
+1.  Ha még nem rendelkezik ilyennel, [hozzon létre egy log Analytics munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) . Azt javasoljuk, hogy a Log Analytics munkaterülete ugyanabban a régióban legyen, mint a Stream Analytics feladatokkal.
+
+2.  Jelentkezzen be a Azure Portalba, és navigáljon a Stream Analytics feladatokhoz. A **figyelés**területen válassza a **diagnosztikai naplók**lehetőséget. Ezután kattintson **a diagnosztika bekapcsolása**elemre.
 
     ![Panel navigálás az erőforrás-naplókhoz](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Hozzon létre egy **nevet** a **diagnosztikai beállítások** között, és jelölje be a **Küldés log Analyticsra**jelölőnégyzetet. Ezután vegyen fel egy meglévőt, vagy hozzon létre egy új **log Analytics-munkaterületet**. A **naplózás**területen keresse meg a **végrehajtás** és a **szerzői műveletek** jelölőnégyzetét, és **AllMetrics** a **metrika**területen. Kattintson a **Save** (Mentés) gombra. A további költségek elkerülése érdekében ajánlott Log Analytics munkaterületet használni ugyanabban az Azure-régióban, mint a Stream Analytics feladatot.
+2.  Adjon meg egy **nevet** a **diagnosztikai beállítások nevében** **, és**keresse meg a **végrehajtáshoz** és a **szerzői** műveletekhez tartozó jelölőnégyzeteket a **AllMetrics** **alatt.** Ezután válassza a **küldés log Analytics** lehetőséget, és válassza ki a munkaterületet. Kattintson a **Save** (Mentés) gombra.
 
-    ![Az erőforrás-naplók beállításai](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Az erőforrás-naplók beállításai](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. A Stream Analytics-feladatok indításakor a rendszer átirányítja az erőforrás-naplókat a Log Analytics-munkaterületre. Ha meg szeretné tekinteni a feladathoz tartozó erőforrás-naplókat, válassza a **figyelés** szakaszban található **naplók** lehetőséget.
 
    ![Erőforrás-naplók a figyelés alatt](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics olyan előre definiált lekérdezéseket biztosít, amelyek segítségével könnyedén megkeresheti a kívánt naplókat. A 3 kategória **általános**, **bemeneti adatokkal kapcsolatos hibákkal** és **kimeneti adatokkal kapcsolatos hibákat**tartalmaz. Ha például szeretné megtekinteni a feladatok összes hibájának összegzését az elmúlt 7 napban, válassza ki a megfelelő előre definiált lekérdezés **futtatását** . 
+4. Stream Analytics olyan előre definiált lekérdezéseket biztosít, amelyek segítségével könnyedén megkeresheti a kívánt naplókat. Bármelyik előre definiált lekérdezést kiválaszthatja a bal oldali ablaktáblán, majd a **Futtatás**elemet is kiválaszthatja. A lekérdezés eredményei az alsó ablaktáblán jelennek meg. 
 
-   ![Erőforrás-naplók a figyelés alatt](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![Naplók eredményei](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![Erőforrás-naplók a figyelés alatt](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Erőforrás-naplók kategóriái
 
@@ -94,7 +94,7 @@ Azure Stream Analytics az erőforrás-naplók két kategóriáját rögzíti:
 
 Az összes napló JSON formátumban van tárolva. Mindegyik bejegyzés a következő általános karakterlánc-mezőket tartalmazhatja:
 
-Name (Név) | Leírás
+Name | Description
 ------- | -------
 time | A napló időbélyegzője (UTC).
 resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -112,7 +112,7 @@ A végrehajtási naplók információkkal rendelkeznek a Stream Analytics felada
 
 Minden olyan hiba, amely akkor fordul elő, amikor a feladatsor az adatok feldolgozását végzi. Ezek a naplók leggyakrabban az adatok olvasási, szerializálási és írási műveletei során jönnek létre. Ezek a naplók nem tartalmaznak csatlakozási hibákat. A csatlakozási hibákat általános eseményekként kezeli a rendszer. További információt a különböző [bemeneti és kimeneti adatokkal kapcsolatos hibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)okairól itt talál.
 
-Name (Név) | Leírás
+Name | Description
 ------- | -------
 Forrás | A feladathoz tartozó bemenet vagy kimenet neve, ahol a hiba történt.
 Üzenet | A hibához tartozó üzenet.
@@ -133,7 +133,7 @@ A **operationName** értékétől függően az adathibák a következő sémáva
 
 Az általános események minden mást lefedik.
 
-Name (Név) | Leírás
+Name | Description
 -------- | --------
 Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha elérhető.
 Üzenet| A naplózási üzenet.

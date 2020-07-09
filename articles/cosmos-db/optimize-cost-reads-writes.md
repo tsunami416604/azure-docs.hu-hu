@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 725876594a7e7c5f3b3a02802f487dc5fdfb64dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79535935"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Olvasási és írási díjak optimalizálása Azure Cosmos DB
@@ -34,7 +34,7 @@ Az olvasási és írási műveletek között nem kell megkülönböztetnie a ké
 
 Írási műveletek végrehajtásakor elegendő kapacitást kell kiépíteni a másodpercenkénti írások számának támogatásához. Az írások végrehajtása előtt növelheti a kiépített átviteli sebességet az SDK, a portál, a CLI használatával, majd az írások befejezése után csökkentheti az átviteli sebességet. Az írási időszakra vonatkozó átviteli sebesség a megadott adatokhoz szükséges minimális átviteli sebesség, valamint a munkaterhelések beszúrásához szükséges átviteli sebesség, feltéve, hogy más számítási feladatok nem futnak. 
 
-Ha egyidejűleg más munkaterheléseket futtat, például lekérdezés/olvasás/frissítés/törlés, adja hozzá a műveletekhez szükséges további kérési egységeket is. Ha az írási műveletek száma korlátozott, az újrapróbálkozási/leállítási szabályzatot Azure Cosmos DB SDK-k használatával szabhatja testre. Megnövelheti például a terhelést, amíg a kisebb kérelmek aránya korlátozott. Ha a díjszabási korlát történik, az ügyfélalkalmazás a megadott újrapróbálkozási időintervallumra vonatkozó kérelmek korlátozására vonatkozó kérések miatt vissza kell térnie. Az újrapróbálkozások megkezdése előtt az újrapróbálkozások között minimális idő alatt kell állnia. Az újrapróbálkozási szabályzat támogatása az SQL .NET, a Java, a Node. js és a Python SDK-k, valamint a .NET Core SDK-k összes támogatott verziója része. 
+Ha egyidejűleg más munkaterheléseket futtat, például lekérdezés/olvasás/frissítés/törlés, adja hozzá a műveletekhez szükséges további kérési egységeket is. Ha az írási műveletek száma korlátozott, az újrapróbálkozási/leállítási szabályzatot Azure Cosmos DB SDK-k használatával szabhatja testre. Megnövelheti például a terhelést, amíg a kisebb kérelmek aránya korlátozott. Ha a díjszabási korlát történik, az ügyfélalkalmazás a megadott újrapróbálkozási időintervallumra vonatkozó kérelmek korlátozására vonatkozó kérések miatt vissza kell térnie. Az újrapróbálkozások megkezdése előtt az újrapróbálkozások között minimális idő alatt kell állnia. Az újrapróbálkozási szabályzat támogatása az SQL .NET, a Java, a Node.js és a Python SDK-k, valamint a .NET Core SDK-k összes támogatott verziója része. 
 
 Az adatok tömegesen szúrhatók be a Azure Cosmos DBba, vagy bármely támogatott forrásból származó adatok másolása a [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)használatával Azure Cosmos db. A Azure Data Factory natív módon integrálható a Azure Cosmos DB tömeges API-val a legjobb teljesítmény biztosításához, amikor adatírást végez.
 

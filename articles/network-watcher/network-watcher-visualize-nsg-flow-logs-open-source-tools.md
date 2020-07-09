@@ -7,26 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807669"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-forgalomnaplók vizualizációja nyílt forráskódú eszközök használatával
 
 A hálózati biztonsági csoport folyamatábrája olyan információkat biztosít, amelyek segítségével megismerheti a bejövő és a kimenő IP-forgalmat a hálózati biztonsági csoportokon. Ezek a flow-naplók a kimenő és bejövő folyamatokat jelenítik meg egy szabály alapján, a folyamathoz tartozó hálózati adaptert, 5 rekordos információt a folyamatról (forrás/cél IP-cím, forrás/célport, protokoll), és ha a forgalmat engedélyezték vagy megtagadták.
 
 Ezek a flow-naplók nehéz kézzel elemezni és betekintést nyerni. Azonban több nyílt forráskódú eszköz is rendelkezésre áll, amelyek segítenek megjeleníteni ezeket az adatforrásokat. Ez a cikk megoldást nyújt a naplók rugalmas verem használatával történő megjelenítésére, így gyorsan indexelheti és megjelenítheti a folyamat naplóit egy Kibana-irányítópulton.
-
-> [!Warning]  
-> Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -44,7 +41,7 @@ Ha a NSG-flow naplóit a rugalmas Veremtel csatlakoztatja, létrehozhatunk egy K
 
 #### <a name="install-elasticsearch"></a>A Elasticsearch telepítése
 
-1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot `java -version` a verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
+1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot a `java -version` verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
 2. Töltse le a rendszerének megfelelő bináris csomagot:
 
    ```bash
@@ -138,6 +135,11 @@ A rugalmas keresés telepítésével kapcsolatos további információkért teki
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}

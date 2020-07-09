@@ -9,16 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654726"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039874"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány biztonságossá tételéhez tiltsa le a gyenge titkosításokat és a jelszó-kivonatolási szinkronizálást
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure Active Directory Domain Services felügyelt tartomány biztonságossá tételéhez tiltsa le a gyenge titkosításokat és a jelszó-kivonatolási szinkronizálást
 
 Alapértelmezés szerint a Azure Active Directory Domain Services (Azure AD DS) lehetővé teszi a titkosítások, például az NTLM v1 és a TLS v1 használatát. Ezek a titkosítási funkciók bizonyos örökölt alkalmazásokhoz szükségesek lehetnek, de gyengenak számítanak, és ha nincs rá szükségük, le lehet tiltani őket. Ha Azure AD Connect használatával helyszíni hibrid kapcsolattal rendelkezik, le is tilthatja az NTLM-jelszó kivonatok szinkronizálását.
 
@@ -33,7 +32,7 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
+    * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][create-azure-ad-ds-instance].
 * Az Azure PowerShell telepítése és konfigurálása.
     * Ha szükséges, kövesse az utasításokat a [Azure PowerShell modul telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz](/powershell/azure/install-az-ps).
     * Győződjön meg róla, hogy bejelentkezik az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] parancsmag használatával.
@@ -67,17 +66,17 @@ Ezután adja meg a *DomainSecuritySettings* a következő biztonsági beállít�
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Végül alkalmazza a definiált biztonsági beállításokat az Azure AD DS felügyelt tartományra a [set-AzResource][Set-AzResource] parancsmag használatával. Az első lépésből válassza ki az Azure AD DS-erőforrást, és az előző lépés biztonsági beállításait.
+Végül alkalmazza a definiált biztonsági beállításokat a felügyelt tartományra a [set-AzResource][Set-AzResource] parancsmag használatával. Az első lépésből válassza ki az Azure AD DS-erőforrást, és az előző lépés biztonsági beállításait.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Néhány percet vesz igénybe, hogy a biztonsági beállítások az Azure AD DS felügyelt tartományra legyenek alkalmazva.
+Néhány percet vesz igénybe, hogy a biztonsági beállítások a felügyelt tartományra legyenek alkalmazva.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a szinkronizálási folyamatról: az [objektumok és a hitelesítő adatok szinkronizálása egy Azure AD DS felügyelt tartományban][synchronization].
+További információ a szinkronizálási folyamatról: [objektumok és hitelesítő adatok szinkronizálása felügyelt tartományokban][synchronization].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

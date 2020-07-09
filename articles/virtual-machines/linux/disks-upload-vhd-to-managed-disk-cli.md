@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan tölthet fel egy virtuális merevlemezt egy Azu
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945630"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD feltöltése az Azure-ba vagy egy felügyelt lemez másolása egy másik régióba – Azure CLI
 
@@ -38,15 +38,18 @@ Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 - ActiveUpload, ami azt jelenti, hogy a lemez készen áll a feltöltés fogadására, és a SAS létrejött.
 
 > [!NOTE]
-> Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak `revoke-access` akkor lesz érvényes, ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
+> Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak akkor lesz érvényes `revoke-access` , ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
 
-Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, szüksége lesz a feltölteni kívánt VHD-fájl méretére (bájtban). Ehhez használhatja a `wc -c <yourFileName>.vhd` vagy `ls -al <yourFileName>.vhd`a lehetőséget is. Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
+Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, szüksége lesz a feltölteni kívánt VHD-fájl méretére (bájtban). Ehhez használhatja a vagy a lehetőséget is `wc -c <yourFileName>.vhd` `ls -al <yourFileName>.vhd` . Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
 
 Hozzon létre egy üres szabványos HDD-t a feltöltéshez a **-– for-upload** paraméter és a **--upload-size-Bytes** paraméter megadásával a [lemez létrehozása](/cli/azure/disk#az-disk-create) parancsmagban:
 
-Cserélje le a `<yourregion>` értéket a értékre, és válassza ki `<yourdiskname>`a megfelelő értékeket. `<yourresourcegroupname>` A `--upload-size-bytes` paraméter egy példát tartalmaz `34359738880`, és lecseréli az Önnek megfelelő értékre.
+Cserélje le a `<yourdiskname>` `<yourresourcegroupname>` értéket a `<yourregion>` értékre, és válassza ki a megfelelő értékeket. A `--upload-size-bytes` paraméter egy példát tartalmaz, és `34359738880` lecseréli az Önnek megfelelő értékre.
+
+> [!TIP]
+> Ha operációsrendszer-lemezt hoz létre, adja hozzá a--Hyper-v-Generation lehetőséget a következőhöz: <yourGeneration> `az disk create` .
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -56,7 +59,7 @@ Ha prémium szintű SSD-t vagy standard SSD-t szeretne feltölteni, cserélje le
 
 Most, hogy létrehozott egy üres felügyelt lemezt, amely a feltöltési folyamathoz van konfigurálva, feltöltheti a virtuális merevlemezt. A virtuális merevlemezek lemezre való feltöltéséhez írható SAS szükséges, hogy a feltöltés céljának megfelelően hivatkozzon legyen rá.
 
-Az üres felügyelt lemezről írható SAS létrehozásához cserélje le `<yourdiskname>`a `<yourresourcegroupname>`(z) és a (z) parancsot a következő parancs használatára:
+Az üres felügyelt lemezről írható SAS létrehozásához cserélje le a (z) és a (z) `<yourdiskname>` `<yourresourcegroupname>` parancsot a következő parancs használatára:
 
 ```azurecli
 az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
@@ -84,7 +87,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 
 Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
 
-Cserélje `<yourdiskname>`le `<yourresourcegroupname>`a és a (z) parancsot, majd a következő parancs használatával tegye elérhetővé a lemezt:
+Cserélje le a és a (z) `<yourdiskname>` `<yourresourcegroupname>` parancsot, majd a következő parancs használatával tegye elérhetővé a lemezt:
 
 ```azurecli
 az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
@@ -99,7 +102,10 @@ A következő szkript ezt elvégzi Önnek, a folyamat hasonló a korábban ismer
 > [!IMPORTANT]
 > Ha az Azure-ból felügyelt lemez mérete bájtban van megadva, akkor 512 eltolást kell hozzáadnia. Ennek az az oka, hogy az Azure kihagyja a láblécet a lemez méretének visszaadása során. Ha ezt nem teszi meg, a másolás sikertelen lesz. A következő szkript ezt már elvégezte Önnek.
 
-Cserélje le `<sourceResourceGroupHere>`a `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`,, `<yourTargetLocationHere>` és (például a uswest2) értéket az értékekkel, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
+Cserélje le a,,, `<sourceResourceGroupHere>` `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` , és `<yourTargetLocationHere>` (például a uswest2) értéket az értékekkel, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
+
+> [!TIP]
+> Ha operációsrendszer-lemezt hoz létre, adja hozzá a--Hyper-v-Generation lehetőséget a következőhöz: <yourGeneration> `az disk create` .
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

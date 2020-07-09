@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/21/2019
 ms.openlocfilehash: e389c05a6de85287bc86eff510e137f470837e56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894323"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Az Apache Spark-feladatok lassan futnak, ha az Azure Storage-tároló sok fájlt tartalmaz az Azure HDInsightban
@@ -24,9 +23,9 @@ HDInsight-fürt futtatásakor az Azure Storage-tárolóba írást Apache Spark f
 
 ## <a name="cause"></a>Ok
 
-Ez egy ismert Spark-probléma. A lassulás a Spark-feladatok `ListBlob` végrehajtása `GetBlobProperties` során a és a műveletből származik.
+Ez egy ismert Spark-probléma. A lassulás a `ListBlob` `GetBlobProperties` Spark-feladatok végrehajtása során a és a műveletből származik.
 
-A partíciók nyomon követéséhez a Sparknak `FileStatusCache` egy olyan információt kell fenntartania, amely a címtár struktúrájáról tartalmaz információkat. Ezen gyorsítótár használatával a Spark elemezheti az elérési utakat, és tisztában lehet a rendelkezésre álló partíciókkal. A partíciók nyomon követésének előnye, hogy a Spark csak az adatolvasás során érinti a szükséges fájlokat. Az adatok naprakészen tartásához az új adatok írásakor a Sparknak fel kell sorolnia a könyvtár alatt lévő összes fájlt, és frissítenie kell a gyorsítótárat.
+A partíciók nyomon követéséhez a Sparknak egy olyan információt kell fenntartania, `FileStatusCache` amely a címtár struktúrájáról tartalmaz információkat. Ezen gyorsítótár használatával a Spark elemezheti az elérési utakat, és tisztában lehet a rendelkezésre álló partíciókkal. A partíciók nyomon követésének előnye, hogy a Spark csak az adatolvasás során érinti a szükséges fájlokat. Az adatok naprakészen tartásához az új adatok írásakor a Sparknak fel kell sorolnia a könyvtár alatt lévő összes fájlt, és frissítenie kell a gyorsítótárat.
 
 A Spark 2,1-es verziójában a Spark azt jelzi, hogy egy meglévő partíciós oszlop megegyezik-e a jelenlegi írási kérelemben szereplővel, és hogy a rendszer minden írási művelet után is a következő műveleteket fogja-e megtekinteni.
 
@@ -34,7 +33,7 @@ Ha a Spark 2,2-as verzióban az adatírás hozzáfűzési móddal történik, ez
 
 ## <a name="resolution"></a>Megoldás:
 
-Particionált adatkészlet létrehozásakor fontos a particionálási séma használata, amely korlátozni fogja a Spark által a frissítéshez szükséges fájlok számát `FileStatusCache`.
+Particionált adatkészlet létrehozásakor fontos a particionálási séma használata, amely korlátozni fogja a Spark által a frissítéshez szükséges fájlok számát `FileStatusCache` .
 
 Ha N %100 = = 0 (100), akkor a meglévő adat áthelyezése egy másik könyvtárba, amelyet a Spark betölt.
 

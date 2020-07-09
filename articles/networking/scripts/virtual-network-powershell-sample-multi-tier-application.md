@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: 2faa799276bafca1ac731dbbef1c08430c7cea73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80521483"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Hálózat létrehozása többrétegű alkalmazásokhoz
 
 Ez a példaszkript előtérbeli és háttérbeli alhálózattal rendelkező virtuális hálózatot hoz létre. Az előtérbeli alhálózat felé irányuló forgalom a HTTP- és az SSH-protokollon, a háttérbeli alhálózat felé irányuló forgalom pedig a MySQL-en, a 3306-os porton keresztül engedélyezett. A szkript futtatása után két virtuális géppel fog rendelkezni, eggyel-eggyel mindegyik olyan alhálózatban, amelyben üzembe helyezhet webkiszolgálót és MySQL-szoftvert.
 
-Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)található utasítással, majd futtassa a parancsot `Connect-AzAccount` az Azure-hoz való kapcsolódáshoz.
+Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

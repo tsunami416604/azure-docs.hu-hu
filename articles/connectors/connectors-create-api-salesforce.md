@@ -8,13 +8,12 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 73aeef24fde9fe58b89f1aa7789970e77e985d50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834832"
 ---
-# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Salesforce-erőforrások figyelése, létrehozása és kezelése Azure Logic Apps használatával
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Salesforce-erőforrások monitorozása, létrehozása és kezelése az Azure Logic Apps használatával
 
 A Azure Logic Apps és a Salesforce-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre a Salesforce-erőforrásokhoz, például a rekordokhoz, a feladatokhoz és az objektumokhoz, például a következő módon:
 

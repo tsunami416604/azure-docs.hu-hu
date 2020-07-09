@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213499"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Tranzakciók optimalizálása a szinapszis SQL-ben
 

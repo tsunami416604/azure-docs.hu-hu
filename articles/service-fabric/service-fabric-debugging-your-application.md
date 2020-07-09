@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77624140"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Service Fabric-alkalmazás hibakeresése a Visual Studióval
@@ -23,7 +22,7 @@ ms.locfileid: "77624140"
 Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe helyezésével és hibakeresésével egy helyi számítógép-fejlesztési fürtben. A Visual Studio 2019 vagy a 2015 képes telepíteni az alkalmazást a helyi fürtre, és automatikusan összekapcsolja a hibakeresőt az alkalmazás összes példányával. A hibakeresőhöz a Visual studiót rendszergazdaként kell futtatni.
 
 1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started.md)című témakör lépéseit követve.
-2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés** > **indítása**gombra.
+2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés**  >  **indítása**gombra.
    
     ![Alkalmazás hibakeresésének megkezdése][startdebugging]
 3. A **hibakeresés** menüben a parancsok elemre kattintva adja meg a töréspontokat a kódban, és lépjen az alkalmazásba.
@@ -56,7 +55,7 @@ Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe hel
 ### <a name="running-a-script-as-part-of-debugging"></a>Parancsfájl futtatása hibakeresés részeként
 Bizonyos esetekben előfordulhat, hogy parancsfájlt kell futtatnia egy hibakeresési munkamenet elindításának részeként (például ha nem használja az alapértelmezett szolgáltatásokat).
 
-A Visual Studióban hozzáadhat egy **Start-Service. ps1** nevű fájlt a Service Fabric Application Project (. Sfproj) **Scripts** mappájában. Ezt a szkriptet az alkalmazás helyi fürtben való létrehozása után hívja meg a rendszer.
+A Visual Studióban hozzáadhat egy **Start-Service.ps1** nevű fájlt a Service Fabric alkalmazás projekt **szkriptek** mappájában (. sfproj). Ezt a szkriptet az alkalmazás helyi fürtben való létrehozása után hívja meg a rendszer.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

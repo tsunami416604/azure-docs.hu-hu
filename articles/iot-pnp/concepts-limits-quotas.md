@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518166"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug and Play előzetes verziójának korlátai, kvótái és szabályozásai
@@ -29,7 +29,7 @@ A nyilvános előzetes verzió esetében a következő korlátozások és kvót�
 | Az Eszközönként regisztrálható DCMs maximális száma | 1 ||
 | Illesztőfelület/DCM-fájl maximális mérete | 512 KB ||
 | Illesztőfelület nevének maximális mérete | 256 karakter ||
-| Tulajdonságnév maximális mérete  | 64 bájt, 7 szint mélységben (és az első szint a számára `$iotin`van fenntartva) | Engedélyezett karakterek: a-z, A-Z, 0-9 (nem az első karakter) és az aláhúzás. |
+| Tulajdonságnév maximális mérete  | 64 bájt, 7 szint mélységben (és az első szint a számára van fenntartva `$iotin` ) | Engedélyezett karakterek: a-z, A-Z, 0-9 (nem az első karakter) és az aláhúzás. |
 | Tulajdonság értékének maximális mérete | 512 bájt ||
 | Parancs nevének maximális mérete | 100 bájt ||
 | Eszköz kettős mérete | Ugyanaz, mint a [IoT hub korlátok](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||

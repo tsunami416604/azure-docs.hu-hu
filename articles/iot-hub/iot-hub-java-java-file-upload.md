@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732465"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Java) használatával
@@ -63,7 +62,7 @@ Az oktatóanyag végén két Java-konzol alkalmazást futtat:
 
 Ebben a szakaszban a [felhőből az eszközre irányuló üzenetek küldése a IoT hub](iot-hub-java-java-c2d.md) használatával a IoT hub-ba való feltöltéshez létrehozott eszközt módosítja.
 
-1. Másolja a `simulated-device` mappába egy lemezképfájlt, és nevezze át `myimage.png`.
+1. Másolja a mappába egy lemezképfájlt, `simulated-device` és nevezze át `myimage.png` .
 
 2. Egy szövegszerkesztővel nyissa meg a `simulated-device\src\main\java\com\mycompany\app\App.java` fájlt.
 
@@ -156,7 +155,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     > [!NOTE]
     > Az **iot-service-client** legújabb verzióját a [Maven keresési funkciójával](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) tekintheti meg.
 
-4. Mentse és zárjuk be `pom.xml` a fájlt.
+4. Mentse és zárjuk be a `pom.xml` fájlt.
 
 5. Egy szövegszerkesztővel nyissa meg a `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` fájlt.
 
@@ -233,7 +232,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
     }
     ```
 
-10. Mentse és zárjuk be `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` a fájlt.
+10. Mentse és zárjuk be a `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` fájlt.
 
 11. A következő parancs használatával hozza létre az **olvasási-fájl-feltöltési-értesítési** alkalmazást, és keressen hibákat:
 
@@ -245,13 +244,13 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a IoT Hub cím
 
 Készen áll arra, hogy futtassa az alkalmazásokat.
 
-A `read-file-upload-notification` mappában a parancssorban futtassa a következő parancsot:
+A mappában a parancssorban `read-file-upload-notification` futtassa a következő parancsot:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-A `simulated-device` mappában a parancssorban futtassa a következő parancsot:
+A mappában a parancssorban `simulated-device` futtassa a következő parancsot:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

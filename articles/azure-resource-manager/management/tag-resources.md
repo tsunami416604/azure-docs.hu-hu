@@ -2,13 +2,13 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.date: 07/01/2020
+ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864487"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056922"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -17,7 +17,9 @@ Címkéket alkalmazhat az Azure-erőforrások, az erőforráscsoportok és az el
 A címkézési stratégia megvalósításával kapcsolatos javaslatokért lásd: [erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> A címkék nevei kis-és nagybetűk megkülönböztetése nélkül. A címke értékei megkülönböztetik a kis-és nagybetűket.
+> A címkék nevei a kis-és nagybetűk megkülönböztetését jelentik a műveletekhez. A címkével ellátott címkét a rendszer a beborítástól függetlenül frissíti vagy lekéri. Előfordulhat azonban, hogy az erőforrás-szolgáltató megtartja a címke nevéhez megadott burkolatot. Látni fogja, hogy a ház a Cost-jelentésekben szerepel.
+> 
+> A címke értékei megkülönböztetik a kis-és nagybetűket.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
@@ -31,7 +33,7 @@ A [közreműködő](../../role-based-access-control/built-in-roles.md#contributo
 
 ### <a name="apply-tags"></a>Címkék alkalmazása
 
-Azure PowerShell két parancsot kínál a címkék alkalmazásához: [New-AzTag](/powershell/module/az.resources/new-aztag) és [Update-AzTag](/powershell/module/az.resources/update-aztag). Az az. Resources Module 1.12.0 vagy újabb verzióval kell rendelkeznie. A verzióját a segítségével is megtekintheti `Get-Module Az.Resources`. Telepítheti a modult, vagy [telepítheti a Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1-es vagy újabb verzióját.
+Azure PowerShell két parancsot kínál a címkék alkalmazásához: [New-AzTag](/powershell/module/az.resources/new-aztag) és [Update-AzTag](/powershell/module/az.resources/update-aztag). Az az. Resources Module 1.12.0 vagy újabb verzióval kell rendelkeznie. A verzióját a segítségével is megtekintheti `Get-Module Az.Resources` . Telepítheti a modult, vagy [telepítheti a Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1-es vagy újabb verzióját.
 
 A **New-AzTag** az erőforráson, az erőforráscsoporton vagy az előfizetésen lévő összes címkét lecseréli. A parancs hívásakor adja meg a címkével ellátni kívánt entitás erőforrás-AZONOSÍTÓját.
 
@@ -263,7 +265,7 @@ Ha címkét szeretne hozzáfűzni egy erőforráscsoport meglévő címkéjéhez
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-Az Azure CLI jelenleg nem támogatja a címkék alkalmazását az előfizetésekhez.
+Az Azure CLI jelenleg nem rendelkezik olyan paranccsal, amely címkéket alkalmaz az előfizetésekre. Azonban a CLI használatával üzembe helyezhet egy olyan ARM-sablont, amely a címkéket egy előfizetésre alkalmazza. Lásd: [címkék alkalmazása erőforráscsoportok vagy előfizetések](#apply-tags-to-resource-groups-or-subscriptions)esetén.
 
 ### <a name="list-tags"></a>Címkék listázása
 
@@ -290,13 +292,13 @@ A szkript a következő formátumot adja vissza:
 
 ### <a name="list-by-tag"></a>Listázás címke szerint
 
-Az adott címkével és értékkel rendelkező erőforrások beszerzéséhez használja `az resource list`a következőt:
+Az adott címkével és értékkel rendelkező erőforrások beszerzéséhez használja a következőt `az resource list` :
 
 ```azurecli-interactive
 az resource list --tag Dept=Finance
 ```
 
-Adott címkével rendelkező erőforráscsoportok lekéréséhez használja `az group list`a következőt:
+Adott címkével rendelkező erőforráscsoportok lekéréséhez használja a következőt `az group list` :
 
 ```azurecli-interactive
 az group list --tag Dept=IT
@@ -326,7 +328,7 @@ Resource Manager-sablonnal az üzembe helyezés során erőforrásokat, erőforr
 
 ### <a name="apply-values"></a>Értékek alkalmazása
 
-Az alábbi példa három címkével rendelkező Storage-fiókot telepít. A címkék közül kettő (`Dept` és `Environment`) konstans értékre van beállítva. Az egyik címke`LastDeployed`() egy olyan paraméterre van beállítva, amely alapértelmezett értéke az aktuális dátum.
+Az alábbi példa három címkével rendelkező Storage-fiókot telepít. A címkék közül kettő ( `Dept` és `Environment` ) konstans értékre van beállítva. Az egyik címke ( `LastDeployed` ) egy olyan paraméterre van beállítva, amely alapértelmezett értéke az aktuális dátum.
 
 ```json
 {
@@ -436,7 +438,7 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
 
 ### <a name="apply-tags-from-resource-group"></a>Címkék alkalmazása az erőforrás-csoportból
 
-Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](../templates/template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasása során `tags[tag-name]` a szintaxis helyett `tags.tag-name` használja a szintaxist, mert néhány karakter nem megfelelően van értelmezve a dot jelölésben.
+Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](../templates/template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasása során a szintaxis helyett használja a `tags[tag-name]` szintaxist `tags.tag-name` , mert néhány karakter nem megfelelően van értelmezve a dot jelölésben.
 
 ```json
 {
@@ -523,6 +525,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+Az előfizetések telepítésével kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../templates/deploy-to-subscription.md).
+
 A következő sablon hozzáadja a címkéket egy objektumból egy erőforráscsoporthoz vagy előfizetésbe.
 
 ```json
@@ -574,7 +578,7 @@ Az erőforráscsoport vagy az előfizetés által alkalmazott címkéket nem ör
 
 Címkék segítségével a számlázási adatok is csoportosíthatók. Ha például több virtuális gépet futtat különböző vállalatok számára, akkor a használatot címkék segítségével tudja költséghely szerint csoportosítani. A címkék a költségek futtatókörnyezet szerinti besorolására, például az éles környezetben futó virtuális gépek használatának kiszámlázására is felhasználhatók.
 
-A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../../billing/billing-usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../billing/billing-download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
+A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
 
 REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
 
@@ -583,17 +587,15 @@ REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciá
 Az alábbi korlátozások érvényesek a címkékre:
 
 * Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
-* A felügyeleti csoportok jelenleg nem támogatják a címkéket.
 * Minden erőforrás, erőforráscsoport és előfizetés legfeljebb 50 címke név/érték párokat tartalmazhat. Ha a maximálisan megengedettnél több címkét kell alkalmaznia, használjon egy JSON-karakterláncot a címke értékhez. A JSON-sztring sok olyan értéket tartalmazhat, amelyek egyetlen címkenévre vannak alkalmazva. Egy erőforráscsoport vagy előfizetés több olyan erőforrást is tartalmazhat, amelyek mindegyike 50 címke név/érték párokat tartalmaz.
 * A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
-* Az általánosított virtuális gépek nem támogatják a címkéket.
 * A címkék nem alkalmazhatók a klasszikus erőforrásokra, például a Cloud Servicesra.
-* A címkék nevei nem tartalmazhatják a `<`következő `>`karaktereket `%`: `&` `\`,, `?`,,,,`/`
+* A címkék nevei nem tartalmazhatják a következő karaktereket:,,,,, `<` `>` `%` `&` `\` `?` ,`/`
 
    > [!NOTE]
    > Azure DNS zónák és Traffic Manager szolgáltatások jelenleg nem teszik lehetővé a szóközök használatát a címkében.
    >
-   > Az Azure bejárati ajtó nem támogatja `#` a címke nevében való használatát.
+   > Az Azure bejárati ajtó nem támogatja a `#` címke nevében való használatát.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219719"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686630"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
@@ -53,14 +53,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="dutch-entity-support"></a>Holland entitások támogatása
 
@@ -75,14 +75,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="english-american-entity-support"></a>Angol (amerikai) entitások támogatása
 
@@ -97,14 +97,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="french-france-entity-support"></a>Francia (franciaországi) entitások támogatása
 
@@ -119,14 +119,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="french-canadian-entity-support"></a>Francia (kanadai) entitás támogatása
 
@@ -141,14 +141,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="german-entity-support"></a>Német entitások támogatása
 
@@ -163,14 +163,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="italian-entity-support"></a>Olasz entitások támogatása
 
@@ -187,14 +187,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="japanese-entity-support"></a>Japán entitások támogatása
 
@@ -209,14 +209,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2,-   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2,-   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2,-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2,-   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="korean-entity-support"></a>Koreai entitások támogatása
 
@@ -231,14 +231,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    -   |
+[Szám](luis-reference-prebuilt-number.md)   |    -   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    -   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="portuguese-brazil-entity-support"></a>Portugál (brazíliai) entitások támogatása
 
@@ -253,14 +253,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="spanish-spain-entity-support"></a>Spanyol (spanyolországi) entitások támogatása
 
@@ -275,14 +275,14 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    V2, V3   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="spanish-mexico-entity-support"></a>Spanyol (mexikói) entitások támogatása
 
@@ -297,18 +297,18 @@ A következő entitások támogatottak:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Száma](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Sorszámok](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   |
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>DeLisle<br>Celsius   |    -   |
-[URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
+[URL-cím](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 Tekintse meg az [elavult előre összeépített entitások](luis-reference-prebuilt-deprecated.md) megjegyzéseit
 
-A KeyPhrase nem érhető el a portugál (brazíliai) alkultúrában ```pt-BR```.
+A KeyPhrase nem érhető el a portugál (brazíliai) alkultúrában ```pt-BR``` .
 
 ## <a name="turkish-entity-support"></a>Török entitások támogatása
 

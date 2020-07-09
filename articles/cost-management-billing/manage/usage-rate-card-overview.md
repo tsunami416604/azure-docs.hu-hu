@@ -10,11 +10,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237632"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702323"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Az Azure Billing API-kkal szoftveres úton juthat az Azure-használatra vonatkozó megállapításokhoz.
 Az Azure Billing API-kkal lekérhetők a használattal és erőforrásokkal kapcsolatos adatok az előnyben részesített adatelemző eszközökbe. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k erőforrás-szolgáltatóként vannak implementálva, és az Azure Resource Manager által közzétett API-k családjának részei.  

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
 ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79369386"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
@@ -43,7 +42,7 @@ Az alábbi eljárás azt ismerteti, hogyan hozhat létre metrikus riasztási sza
 8. Ha a metrika dimenziókat tartalmaz, megjelenik egy megjelenített dimenziós tábla. Jelöljön ki egy vagy több értéket egy dimenzióban.
     - A megjelenített dimenzió értékei az elmúlt három nap mérőszám-adatain alapulnak.
     - Ha a keresett dimenzióérték nem jelenik meg, kattintson a "+" elemre egyéni érték hozzáadásához.
-    - Bármelyik dimenzióhoz **kiválaszthatja a lehetőséget \* ** is. **A \* Select** (kijelölés) beállítással dinamikusan méretezheti a kijelölést a dimenzió összes aktuális és jövőbeli értékére.
+    - Bármelyik dimenzióhoz **kiválaszthatja a lehetőséget \* ** is. **Válassza \* ki** dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
 
     A metrika riasztási szabálya kiértékeli a kiválasztott értékek összes kombinációjának feltételeit. [További információ a többdimenziós metrikák működésével kapcsolatos riasztásokról](alerts-metric-overview.md).
 
@@ -94,7 +93,7 @@ Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet m
 
 1. Lépjen a Azure Portalra, majd a **Cloud Shell**elemre.
 
-2. A parancssorban a parancsokkal további információkat kaphat ``--help`` a paranccsal és annak használatáról. A következő parancs például megjeleníti a metrikai riasztások létrehozásához, megtekintéséhez és kezeléséhez elérhető parancsok listáját.
+2. A parancssorban a ``--help`` parancsokkal további információkat kaphat a paranccsal és annak használatáról. A következő parancs például megjeleníti a metrikai riasztások létrehozásához, megtekintéséhez és kezeléséhez elérhető parancsok listáját.
 
     ```azurecli
     az monitor metrics alert --help

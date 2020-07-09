@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670287"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések írása a Azure Monitorban
@@ -21,7 +20,7 @@ ms.locfileid: "77670287"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 ## <a name="reusing-code-with-let"></a>Kód újrafelhasználása a Let
-A `let` paranccsal az eredményeket egy változóhoz rendelheti hozzá, és a lekérdezésben később is megtekintheti:
+A paranccsal az `let` eredményeket egy változóhoz rendelheti hozzá, és a lekérdezésben később is megtekintheti:
 
 ```Kusto
 // get all events that have level 2 (indicates warning level)
@@ -54,7 +53,7 @@ union FreeDiskSpace, FreeMemory
 Így egyszerűen megváltoztathatja a befejezési idő kezdetét a lekérdezés következő futtatásakor.
 
 ### <a name="local-functions-and-parameters"></a>Helyi függvények és paraméterek
-Az `let` ugyanabban a lekérdezésben használható függvények létrehozásához használjon utasításokkal. Definiáljon például egy olyan függvényt, amely egy datetime típusú mezőt (UTC formátumban) fogad, és átalakítja a standard US formátumra. 
+`let`Az ugyanabban a lekérdezésben használható függvények létrehozásához használjon utasításokkal. Definiáljon például egy olyan függvényt, amely egy datetime típusú mezőt (UTC formátumban) fogad, és átalakítja a standard US formátumra. 
 
 ```Kusto
 let utc_to_us_date_format = (t:datetime)
@@ -94,7 +93,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-A DataTable-szerkezetek a keresési tábla létrehozásakor is hasznosak. Ha például a _SecurityEvent_ táblából származó táblázatos adatok (például eseményazonosító) leképezése a máshol felsorolt események típusaira, hozzon létre egy keresési táblázatot az eseménytípus `datatable` használatával, és csatlakozzon ehhez a DataTable adattáblához _SecurityEvent_ -adatokkal:
+A DataTable-szerkezetek a keresési tábla létrehozásakor is hasznosak. Ha például a _SecurityEvent_ táblából származó táblázatos adatok (például eseményazonosító) leképezése a máshol felsorolt események típusaira, hozzon létre egy keresési táblázatot az eseménytípus használatával, `datatable` és csatlakozzon ehhez a DataTable adattáblához _SecurityEvent_ -adatokkal:
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)

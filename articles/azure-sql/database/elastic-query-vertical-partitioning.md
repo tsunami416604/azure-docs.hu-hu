@@ -12,10 +12,9 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 95964064200064dcc43449e1d939c1cdfd78cdb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84048454"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Különböző sémákkal rendelkező felhőalapú adatbázisok lekérdezése (előzetes verzió)
@@ -189,7 +188,7 @@ A hagyományos SQL Server kapcsolati karakterláncokkal csatlakoztathatja a BI-�
 * Győződjön meg arról, hogy a rugalmas lekérdezési végpont adatbázisa hozzáférést kapott a távoli adatbázishoz azáltal, hogy engedélyezi az Azure-szolgáltatások hozzáférését az Azure SQL Database tűzfal konfigurációjában. Győződjön meg arról is, hogy a külső adatforrás-definícióban megadott hitelesítő adat sikeresen bejelentkezhet a távoli adatbázisba, és rendelkezik a távoli tábla eléréséhez szükséges engedélyekkel.  
 * A rugalmas lekérdezés a legmegfelelőbb a lekérdezésekhez, ahol a számítások többsége a távoli adatbázisokon végezhető el. A lehető legjobb lekérdezési teljesítményt a szelektív szűrési predikátumokkal érheti el, amelyek kiértékelése a távoli adatbázisokon, illetve az olyan illesztéseken végezhető el, amelyek teljes mértékben a távoli adatbázisban végezhetők el. Előfordulhat, hogy más lekérdezési minták nagy mennyiségű adat betöltését végzik a távoli adatbázisból, és nem is gyengék.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](elastic-query-overview.md).
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).

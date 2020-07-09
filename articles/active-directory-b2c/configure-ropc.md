@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389598"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása Azure AD B2C
 
@@ -50,9 +50,9 @@ Az erőforrás-tulajdonosi jelszó hitelesítő adatai (ROPC) a OAuth standard h
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a felhasználói folyamat hibakeresésére szolgáló választ. A következő táblázatban szereplő információk alapján állítson össze egy hívást a post kérelem törzse:
-- Cserélje le a * \< bérlő neve>. onmicrosoft.com* nevet a B2C-bérlő nevére.
-- Cserélje le * \< B2C_1A_ROPC_Auth>t* az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
-- Cserélje le a * \< bef2222d56-552f-4a5b-b90a-1988a7d634c3>* a regisztrációhoz tartozó alkalmazás-azonosítóra.
+- Cserélje le a * \<tenant-name> . onmicrosoft.com* nevet a B2C-bérlő nevére.
+- A helyére írja *\<B2C_1A_ROPC_Auth>* be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
+- Cserélje le a *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* elemet a regisztrációhoz tartozó alkalmazás-azonosítóra.
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
@@ -61,7 +61,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 | felhasználónév | leadiocl@outlook.com |
 | jelszó | Passxword1 |
 | grant_type | jelszó |
-| scope | OpenID \< bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 

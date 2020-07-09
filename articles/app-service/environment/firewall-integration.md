@@ -6,13 +6,13 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 4c25c64268b38e5929c73891f7c48e79b9b8593e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832984"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -96,8 +96,10 @@ A Application Gateway használata csupán egy példa arra, hogyan konfigurálhat
 
 Azure Firewall küldhet naplókat az Azure Storage-ba, az Event hub-ba vagy a Azure Monitor naplókba. Az alkalmazás bármely támogatott célhoz való integrálásához lépjen a Azure Firewall-portálra > a diagnosztikai naplókat, és engedélyezze a kívánt célhelyhez tartozó naplókat. Ha integrálja Azure Monitor-naplókat, akkor a Azure Firewallba érkező forgalom naplózása látható. A megtagadott forgalom megjelenítéséhez nyissa meg a Log Analytics munkaterület-portálon > naplókat, és adjon meg egy lekérdezést, például: 
 
-    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
- 
+```kusto
+AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+```
+
 Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Függőségek
@@ -225,7 +227,7 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 
 | Végpont |
 |----------|
-|gr-Prod-\*. cloudapp.net:443 |
+|gr-Prod- \* . cloudapp.net:443 |
 | \*. management.azure.com:443 |
 | \*. update.microsoft.com:443 |
 | \*. windowsupdate.microsoft.com:443 |
@@ -248,6 +250,7 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 |security.ubuntu.com:80 |
 | \*. cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
+|\*. data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
 |apt-mo.trafficmanager.net:80 |

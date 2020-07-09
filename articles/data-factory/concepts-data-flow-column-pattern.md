@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606119"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopok mintáinak használata a leképezési adatfolyamban
@@ -31,9 +30,9 @@ Ha egy származtatott oszlopban vagy egy összesített átalakítás összesít�
 
 ![oszlop mintázatai](media/data-flow/columnpattern.png "Oszlopminták")
 
-A [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md) segítségével adja meg a egyezési feltételt. Hozzon létre egy logikai kifejezést, amely a ( `name`z `type`) `stream`,, `position` és oszlop alapján egyezik az oszlopokkal. A minta minden olyan oszlopot érint, amely sodródik vagy definiálva lesz, ahol a feltétel igaz értéket ad vissza.
+A [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md) segítségével adja meg a egyezési feltételt. Hozzon létre egy logikai kifejezést, amely a (z),, `name` `type` `stream` és oszlop alapján egyezik az oszlopokkal `position` . A minta minden olyan oszlopot érint, amely sodródik vagy definiálva lesz, ahol a feltétel igaz értéket ad vissza.
 
-Az egyeztetési feltétel alá tartozó két kifejezés mező adja meg az érintett oszlopok új neveit és értékeit. Ezzel `$$` a beállítással hivatkozhat a megegyező mező meglévő értékére. A bal oldali kifejezés mezőben a név és a jobb oldali kifejezés mező határozza meg az értéket.
+Az egyeztetési feltétel alá tartozó két kifejezés mező adja meg az érintett oszlopok új neveit és értékeit. Ezzel a `$$` beállítással hivatkozhat a megegyező mező meglévő értékére. A bal oldali kifejezés mezőben a név és a jobb oldali kifejezés mező határozza meg az értéket.
 
 ![oszlop mintázatai](media/data-flow/columnpattern2.png "Oszlopminták")
 
@@ -45,7 +44,7 @@ Az egyeztetési feltétel helyességének ellenőrzéséhez ellenőrizheti a **m
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Szabályon alapuló hozzárendelés a Select és a mosogatóban
 
-A forrásban lévő oszlopok leképezése és az átalakítások kiválasztása esetén rögzített leképezési vagy szabály-alapú leképezéseket adhat hozzá. Egyezés a `name`, `type` `stream`, és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
+A forrásban lévő oszlopok leképezése és az átalakítások kiválasztása esetén rögzített leképezési vagy szabály-alapú leképezéseket adhat hozzá. Egyezés a,, `name` `type` `stream` és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
 
 Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés**lehetőséget.
 
@@ -55,7 +54,7 @@ Minden szabály alapú leképezéshez két bemenet szükséges: az a feltétel, 
 
 ![szabály alapú leképezés](media/data-flow/rule-based-mapping.png "Szabály alapú leképezés")
 
-Szintaxis `$$` használatával hivatkozhat egy egyező oszlop bemeneti nevére. Tegyük fel, hogy a fenti képen egy felhasználó szeretne egyeztetni az összes olyan karakterlánc-oszlopon, amelynek a neve 6 karakternél rövidebb. Ha az egyik bejövő oszlop neve `test`, a kifejezés `$$ + '_short'` átnevezi az oszlopot `test_short`. Ha ez az egyetlen olyan leképezés, amely nem felel meg a feltételnek, a rendszer elveti a kiszolgált adatokból.
+`$$`Szintaxis használatával hivatkozhat egy egyező oszlop bemeneti nevére. Tegyük fel, hogy a fenti képen egy felhasználó szeretne egyeztetni az összes olyan karakterlánc-oszlopon, amelynek a neve 6 karakternél rövidebb. Ha az egyik bejövő oszlop neve `test` , a kifejezés `$$ + '_short'` átnevezi az oszlopot `test_short` . Ha ez az egyetlen olyan leképezés, amely nem felel meg a feltételnek, a rendszer elveti a kiszolgált adatokból.
 
 A minták egymásba sodródott és definiált oszlopokkal egyeznek meg. Ha szeretné megtekinteni, hogy mely meghatározott oszlopok vannak leképezve egy szabályhoz, kattintson a szabály melletti szemüveg ikonra. Ellenőrizze a kimenetet az adatelőnézet használatával.
 
@@ -65,7 +64,7 @@ Ha a lefelé mutató Chevron ikonra kattint, megadhat egy regex-leképezési fel
 
 ![szabály alapú leképezés](media/data-flow/regex-matching.png "Szabály alapú leképezés")
 
-A fenti példa a regex mintára `(r)` vagy bármely olyan oszlop nevére illeszkedik, amely egy kisbetű r betűt tartalmaz. A szabványos szabályokon alapuló leképezéshez hasonlóan az összes egyező oszlop a megfelelő szintaxis használatával `$$` módosul.
+A fenti példa a regex mintára `(r)` vagy bármely olyan oszlop nevére illeszkedik, amely egy kisbetű r betűt tartalmaz. A szabványos szabályokon alapuló leképezéshez hasonlóan az összes egyező oszlop a megfelelő szintaxis használatával módosul `$$` .
 
 ### <a name="rule-based-hierarchies"></a>Szabály alapú hierarchiák
 
@@ -73,7 +72,7 @@ Ha a megadott leképezés rendelkezik hierarchiával, akkor a szabályokon alapu
 
 ![szabály alapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
 
-A fenti példa a komplex oszlopok `a`összes aloszlopára illeszkedik. `a`két aloszlopot tartalmaz `b` , `c`és. A kimeneti séma két oszlopot `b` fog tartalmazni `c` , és a "Name as" feltételnek kell `$$`lennie.
+A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a`két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Mintázattal egyező kifejezés értékei.
 

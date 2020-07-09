@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502287"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>A szolgáltatás szintű szolgáltatások implementálása a Actor Service-ben
 
-A [szolgáltatási rétegben](service-fabric-reliable-actors-platform.md#service-layering)leírtak szerint a Actor szolgáltatás maga is megbízható szolgáltatás. A ból származó `ActorService`saját szolgáltatást írhat. A szolgáltatási szintű szolgáltatásokat ugyanúgy is megvalósíthatja, mint az állapot-nyilvántartó szolgáltatás öröklése esetén, például:
+A [szolgáltatási rétegben](service-fabric-reliable-actors-platform.md#service-layering)leírtak szerint a Actor szolgáltatás maga is megbízható szolgáltatás. A ból származó saját szolgáltatást írhat `ActorService` . A szolgáltatási szintű szolgáltatásokat ugyanúgy is megvalósíthatja, mint az állapot-nyilvántartó szolgáltatás öröklése esetén, például:
 
 - Szolgáltatás biztonsági mentése és visszaállítása.
 - Megosztott funkciók minden résztvevő számára, például egy áramkör-megszakító.
@@ -89,12 +89,12 @@ static class Program
 
 ## <a name="actor-service-methods"></a>Actor Service-metódusok
 
-A `IActorService` actoring szolgáltatás implementálja (c#) `ActorService` vagy (Java), ami implementálja `IService` a (c#) vagy `Service` a (Java) szolgáltatást. Ezt a felületet a Reliable Services távelérési szolgáltatás használja, amely lehetővé teszi a távoli eljáráshívási hívásokat a szolgáltatási módszerekhez. Olyan szolgáltatási szintű metódusokat tartalmaz, amelyek távolról is meghívhatók a szolgáltatás távelérésén keresztül. Használhatja a szereplők [enumerálására](service-fabric-reliable-actors-enumerate.md) és [törlésére](service-fabric-reliable-actors-delete-actors.md) .
+A actoring szolgáltatás implementálja `IActorService` (c#) vagy `ActorService` (Java), ami implementálja a ( `IService` c#) vagy a `Service` (Java) szolgáltatást. Ezt a felületet a Reliable Services távelérési szolgáltatás használja, amely lehetővé teszi a távoli eljáráshívási hívásokat a szolgáltatási módszerekhez. Olyan szolgáltatási szintű metódusokat tartalmaz, amelyek távolról is meghívhatók a szolgáltatás távelérésén keresztül. Használhatja a szereplők [enumerálására](service-fabric-reliable-actors-enumerate.md) és [törlésére](service-fabric-reliable-actors-delete-actors.md) .
 
 
 ## <a name="custom-actor-service"></a>Egyéni Actor szolgáltatás
 
-A Actor-regisztráció lambda használatával regisztrálhatja a saját, C# és `ActorService` `FabricActorService` a (Java) rendszerből származtatott egyéni Actor-szolgáltatást. Ezután implementálhatja a saját szolgáltatási szintű funkcióit úgy, hogy az örökölt `ActorService` (C#) vagy `FabricActorService` a (Java) szolgáltatási osztályt ír. Az egyéni Actor szolgáltatás örökli az összes Actor Runtime funkciót a ( `ActorService` C#) vagy `FabricActorService` a (Java) használatával. Saját szolgáltatási módszerek megvalósítására is használható.
+A Actor-regisztráció lambda használatával regisztrálhatja a saját, `ActorService` C# és a (Java) rendszerből származtatott egyéni Actor-szolgáltatást `FabricActorService` . Ezután implementálhatja a saját szolgáltatási szintű funkcióit úgy, hogy az örökölt `ActorService` (C#) vagy a `FabricActorService` (Java) szolgáltatási osztályt ír. Az egyéni Actor szolgáltatás örökli az összes Actor Runtime funkciót a `ActorService` (C#) vagy a `FabricActorService` (Java) használatával. Saját szolgáltatási módszerek megvalósítására is használható.
 
 ```csharp
 class MyActorService : ActorService
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>A színész biztonsági mentésének és visszaállításának implementálása
 
-Az egyéni Actors szolgáltatás lehetővé teszi, hogy a-ben már meglévő távelérési figyelő előnyeit kihasználva egy metódust nyújtson a Actor- `ActorService`adatbiztonsági mentéshez. Példát a következő témakörben talál: [biztonsági másolatok és visszaállítási szereplők](service-fabric-reliable-actors-backup-and-restore.md).
+Az egyéni Actors szolgáltatás lehetővé teszi, hogy a-ben már meglévő távelérési figyelő előnyeit kihasználva egy metódust nyújtson a Actor-adatbiztonsági mentéshez `ActorService` . Példát a következő témakörben talál: [biztonsági másolatok és visszaállítási szereplők](service-fabric-reliable-actors-backup-and-restore.md).
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Egy, a távelérési szolgáltatással (kompatibilis csatolóval) elhasználó
 

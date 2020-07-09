@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658030"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor munkafüzetek vizualizációi
@@ -69,7 +68,7 @@ A munkafüzetek a naplók és a metrikus adatforrások diagramjait támogatják.
 | `Size` | A vezérlő függőleges mérete | Kicsi, közepes, nagy vagy teljes |
 | `Color palette` | A diagramban használandó színpaletta Több metrikus vagy szegmentált módban figyelmen kívül hagyva. | Kék, zöld, piros stb. |
 | `Legend` | A jelmagyarázathoz használandó aggregációs függvény | Értékek vagy maximum, minimum, első, utolsó érték összege vagy átlaga |
-| `Query` | Bármely olyan KQL-lekérdezés, amely a diagram vizualizációja által várt formátumban adja vissza az adatok értékét | _a \| kérelmek sorozatos kérelmeket igényelnek = count () default = 0 az időbélyegzőn (1d) – most (), 1 – 5. lépés_ |
+| `Query` | Bármely olyan KQL-lekérdezés, amely a diagram vizualizációja által várt formátumban adja vissza az adatok értékét | _a kérelmek \| sorozatos kérelmeket igényelnek = count () default = 0 az időbélyegzőn (1d) – most (), 1 – 5. lépés_ |
 
 ### <a name="adding-a-metric-chart"></a>Metrikus diagram hozzáadása
 
@@ -138,7 +137,7 @@ A munkafüzet csempék támogatják a címet, a feliratot, a nagyméretű szöve
 7. Kattintson a **csempe beállításai** gombra a beállítások ablaktábla megnyitásához.
 8. A **csempe mezőiben**állítsa be a következőket:
     * Cím`name`
-    * Bal: `Requests`, megjelenítő: `Big Number`, színpaletta: `Green to Red`, minimális érték:`0`
+    * Bal: `Requests` , megjelenítő: `Big Number` , színpaletta: `Green to Red` , minimális érték:`0`
     * Alján`appName`
 9. Kattintson a **Mentés és bezárás** gombra a panel alján.
 
@@ -182,7 +181,7 @@ Az alábbi példában a tároló állapot metrikái (Munkakészlet mérete) lát
 8. Az _oszlopok_ szakaszban, a felső részen állítsa be a következőt:
     * _Azonosító_ – oszlop megjelenítő:`Hidden`
     * _Szülő-azonosító_ – oszlop megjelenítő:`Hidden`
-    * _Kérelmek_ – oszlop megjelenítő: `Bar`, szín: `Blue`, minimális érték:`0`
+    * _Kérelmek_ – oszlop megjelenítő: `Bar` , szín: `Blue` , minimális érték:`0`
 9. Kattintson a _Mentés és bezárás_ gombra a panel alján.    
 
 ![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/tree-settings.png)
@@ -243,9 +242,9 @@ Az alábbi ábrán egy számítógépnek a külső számítógépekre irányuló
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
 10. A felső _csomópont-formátum beállításainál_ állítsa be a következőt:
-    * _Top Content_-use oszlop: `Name`, oszlop megjelenítő:`Text`
-    * _Center Content_-use oszlop: `Calls`, oszlop megjelenítő: `Big Number`, színpaletta:`None`
-    * _Alsó Content_-use oszlop: `Kind`, oszlop megjelenítő:`Text`
+    * _Top Content_-use oszlop: `Name` , oszlop megjelenítő:`Text`
+    * _Center Content_-use oszlop: `Calls` , oszlop megjelenítő: `Big Number` , színpaletta:`None`
+    * _Alsó Content_-use oszlop: `Kind` , oszlop megjelenítő:`Text`
 10. Kattintson a _Mentés és bezárás_ gombra a panel alján.
 
 ![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/graph-settings.png)

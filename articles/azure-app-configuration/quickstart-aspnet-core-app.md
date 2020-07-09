@@ -8,12 +8,11 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245774"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027715"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -31,7 +30,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját fogja has
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. A következő kulcs-érték párok hozzáadásához válassza a **Configuration Explorer** > **create** > **Key-Value** elemet:
+6. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create**Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -60,10 +59,10 @@ A Secret Manager használatához adjon hozzá egy `UserSecretsId` elemet a *. cs
 
 1. Nyissa meg a *. csproj* fájlt.
 
-1.  Adjon hozzá `UserSecretsId` egy elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is.
+1.  Adjon hozzá egy `UserSecretsId` elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`a `CreateWebHostBuilder` .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
+    > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
     
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
     
@@ -106,7 +105,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
+1. Adja hozzá a NuGet- `Microsoft.Azure.AppConfiguration.AspNetCore` csomagra mutató hivatkozást a következő parancs futtatásával:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
@@ -141,10 +140,10 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatára a `config.AddAzureAppConfiguration()` metódus meghívásával.
+1. Frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatára a metódus meghívásával `config.AddAzureAppConfiguration()` .
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`a `CreateWebHostBuilder` .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
+    > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -175,7 +174,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
     ---
 
-1. Navigáljon a * <app root>/views/Home* elemhez, és nyissa meg az *index. cshtml*. Cserélje le a tartalmát a következő kódra:
+1. Navigáljon a * <app root> /views/Home* elemhez, és nyissa meg az *index. cshtml*. Cserélje le a tartalmát a következő kódra:
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -187,14 +186,14 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-1. Navigáljon a * <app root>/views/Shared* , és nyissa meg *_Layout. cshtml*. Cserélje le a tartalmát a következő kódra:
+1. Navigáljon a * <app root> /views/Shared* , és nyissa meg *_Layout. cshtml*. Cserélje le a tartalmát a következő kódra:
 
     ```HTML
     <!DOCTYPE html>
@@ -235,7 +234,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     dotnet run
     ```
 
-1. Ha a helyi gépen dolgozik, nyissa meg a böngészőt `http://localhost:5000`. Ez a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.  
+1. Ha a helyi gépen dolgozik, nyissa meg a böngészőt `http://localhost:5000` . Ez a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.  
 
 Ha dolgozik a Azure Cloud Shellban, válassza a *webes előnézet* gombot, majd a *configure (Konfigurálás*) lehetőséget.  
 
@@ -243,11 +242,11 @@ Ha dolgozik a Azure Cloud Shellban, válassza a *webes előnézet* gombot, majd 
 
 Amikor a rendszer kéri, hogy konfigurálja a portot az előzetes verzióhoz, írja be a "5000" értéket, és válassza a *Megnyitás és Tallózás*lehetőséget.  A weblap beolvassa az "adatok az Azure-alkalmazás konfigurációjától" című lapot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a ASP.NET Core alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

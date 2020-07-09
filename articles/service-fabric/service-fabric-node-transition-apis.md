@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609791"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>A csomópont elindítása és a csomópont API-k leállítása a Node áttérési API-val
@@ -31,9 +30,9 @@ Emellett a csomópont leállításának időtartama a "végtelen", amíg meg nem
 
 Ezeket a problémákat az API-k egy új készletében tárgyaljuk.  Az új csomópont-átváltási API (felügyelt: [StartNodeTransitionAsync ()][snt]) felhasználható egy Service Fabric csomópont *leállított* állapotba való átváltására, vagy egy *leállított* állapotból a normál állapotba való átállásra.  Vegye figyelembe, hogy az API neveként a "Start" nem hivatkozik csomópont indítására.  Egy aszinkron művelet megkezdését jelenti, amelyet a rendszer végrehajt, hogy a csomópontot *leállított* vagy elindított állapotba váltson.
 
-**Használati**
+**Használat**
 
-Ha a csomópont-átváltási API nem kivételt jelez a meghívásakor, akkor a rendszer elfogadta az aszinkron műveletet, és végrehajtja.  A sikeres hívás nem jelenti azt, hogy a művelet még nem fejeződött be.  Ha információt szeretne kapni a művelet aktuális állapotáról, hívja meg a csomópont-áttérési folyamat API-ját (felügyelt: [GetNodeTransitionProgressAsync ()][gntp]) a csomópont-áttérési API-nak a művelethez való meghívásakor használt GUID azonosítóval.  A csomópont-áttérési folyamat API egy NodeTransitionProgress objektumot ad vissza.  Az objektum State tulajdonsága a művelet aktuális állapotát adja meg.  Ha az állapot "fut", akkor a művelet végrehajtása folyamatban van.  Ha befejeződött, a művelet hiba nélkül befejeződött.  Ha hibás, hiba történt a művelet végrehajtásakor.  Az eredmény tulajdonság kivétel tulajdonsága jelzi, hogy mi volt a probléma.  További https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate információ az állapot tulajdonságról: példák a "minta felhasználás" szakaszra.
+Ha a csomópont-átváltási API nem kivételt jelez a meghívásakor, akkor a rendszer elfogadta az aszinkron műveletet, és végrehajtja.  A sikeres hívás nem jelenti azt, hogy a művelet még nem fejeződött be.  Ha információt szeretne kapni a művelet aktuális állapotáról, hívja meg a csomópont-áttérési folyamat API-ját (felügyelt: [GetNodeTransitionProgressAsync ()][gntp]) a csomópont-áttérési API-nak a művelethez való meghívásakor használt GUID azonosítóval.  A csomópont-áttérési folyamat API egy NodeTransitionProgress objektumot ad vissza.  Az objektum State tulajdonsága a művelet aktuális állapotát adja meg.  Ha az állapot "fut", akkor a művelet végrehajtása folyamatban van.  Ha befejeződött, a művelet hiba nélkül befejeződött.  Ha hibás, hiba történt a művelet végrehajtásakor.  Az eredmény tulajdonság kivétel tulajdonsága jelzi, hogy mi volt a probléma.  https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstateTovábbi információ az állapot tulajdonságról: példák a "minta felhasználás" szakaszra.
 
 
 **Leállított csomópont és egy lefelé mutató csomópont közötti különbségtétel** Ha egy csomópontot *leállítanak* a csomópont-áttérési API használatával, a csomópont-lekérdezés (felügyelt: [GetNodeListAsync ()][nodequery], a PowerShell: [Get-ServiceFabricNode][nodequeryps]) kimenete azt mutatja, hogy ez a csomópont igaz értékű *IsStopped* tulajdonságot tartalmaz.  Vegye figyelembe, hogy ez eltér a *NodeStatus* tulajdonság értékétől, amely a következőt fogja *lemondani*:.  Ha a *NodeStatus* tulajdonság értéke *lefelé*van, de a *IsStopped* hamis, akkor a csomópont nem állt le a csomópont-áttérési API-val, és valamilyen más ok miatt *leáll* .  Ha a *IsStopped* tulajdonság értéke TRUE (igaz), és a *NodeStatus* tulajdonság nem érhető *el, akkor a csomópont-* áttérési API használatával leállt.

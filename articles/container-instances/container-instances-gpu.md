@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances 
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77525286"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
@@ -43,7 +42,7 @@ Ha a GPU-t egy Container-példányban szeretné használni, egy *GPU-erőforrás
 * **Darabszám** – a GPU-k száma: **1**, **2**vagy **4**.
 * **SKU** – a GPU SKU: **K80**, **P100**vagy **V100**. Mindegyik SKU az NVIDIA Tesla GPU-ra mutat az alábbi Azure GPU-kompatibilis virtuálisgép-családokban:
 
-  | SKU | VM-család |
+  | Termékváltozat | VM-család |
   | --- | --- |
   | K80 | [NC](../virtual-machines/nc-series.md) |
   | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
@@ -91,7 +90,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Telepítse a tároló csoportot az az [Container Create][az-container-create] paranccsal, és adja meg a `--file` paraméter YAML-fájljának nevét. Meg kell adnia egy erőforráscsoport nevét és egy olyan helyet a tároló csoport számára, amely támogatja a GPU-erőforrásokat támogató *eastus* .  
+Telepítse a tároló csoportot az az [Container Create][az-container-create] paranccsal, és adja meg a paraméter YAML-fájljának nevét `--file` . Meg kell adnia egy erőforráscsoport nevét és egy olyan helyet a tároló csoport számára, amely támogatja a GPU-erőforrásokat támogató *eastus* .  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -116,7 +115,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Példa Resource Manager-sablonra
 
-Egy másik lehetőség, hogy egy, a GPU-erőforrásokkal rendelkező tároló csoportot egy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával telepítsen. Először hozzon létre egy nevű `gpudeploy.json`fájlt, majd másolja a következő JSON-t. Ez a példa egy V100 GPU-val rendelkező tároló-példányt helyez üzembe, amely [TensorFlow](https://www.tensorflow.org/) -betanítási feladatot futtat a MNIST-adatkészleten. Az erőforrás-kérelmek elegendőek a munkaterhelés futtatásához.
+Egy másik lehetőség, hogy egy, a GPU-erőforrásokkal rendelkező tároló csoportot egy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával telepítsen. Először hozzon létre egy nevű fájlt `gpudeploy.json` , majd másolja a következő JSON-t. Ez a példa egy V100 GPU-val rendelkező tároló-példányt helyez üzembe, amely [TensorFlow](https://www.tensorflow.org/) -betanítási feladatot futtat a MNIST-adatkészleten. Az erőforrás-kérelmek elegendőek a munkaterhelés futtatásához.
 
 ```JSON
 {
@@ -207,7 +206,7 @@ Accuracy at step 990: 0.969
 Adding run metadata for 999
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Mivel a GPU-erőforrások használata költséges lehet, gondoskodjon arról, hogy a tárolók ne fussanak váratlanul hosszú ideig. Figyelje a tárolókat a Azure Portalban, vagy ellenőrizze egy tároló csoport állapotát az az [Container show][az-container-show] paranccsal. Például:
 

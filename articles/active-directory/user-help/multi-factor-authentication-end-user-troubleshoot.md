@@ -13,13 +13,12 @@ ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: 8d2e34bcfd180dfeb814dace2a496f3ac593c5bf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738608"
 ---
-# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros ellenőrzéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
+# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros hitelesítéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
 
 Ha a Azure Active Directory-(Azure AD-) szervezet bekapcsolja a kétfaktoros ellenőrzést, a munkahelyi vagy iskolai fiókhoz való bejelentkezéshez a Felhasználónév, a jelszó, valamint a mobileszköz vagy telefon kombinációja szükséges. Sokkal biztonságosabb, mint a jelszó, és a hitelesítés két formájára támaszkodik: valami, amit ismer, és Önnek is van. A kétfaktoros ellenőrzés segít megakadályozni, hogy a rosszindulatú hackerek az Ön számára legyenek, mert még ha a jelszavuk is van, az esélyek arra, hogy nem rendelkeznek az eszközzel.
 

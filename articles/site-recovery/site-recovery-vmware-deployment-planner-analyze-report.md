@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699192"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási Deployment Planner jelentés elemzése az Azure-ba
 
@@ -178,7 +177,7 @@ A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló el
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes\*** (Igen) lehet. **Igen** \* olyan példányok esetén, amelyekben a virtuális gép a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára alkalmas. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes\*** (Igen) lehet. **Igen** \* olyan példányok esetén, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15
 * 256 GB és 512 GB között P20.
@@ -186,7 +185,7 @@ A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló el
 * 1025 GB és 2048 GB között P40.
 * 2049 GB és 4095 GB között P50.
 
-Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába helyezi, de a méret leképezi egy alacsonyabb Premium Storage-lemez típusra, akkor az eszköz **Igen értéket**\*jelöl a virtuális gép számára. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
+Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába helyezi, de a méret leképezi egy alacsonyabb Premium Storage-lemez típusra, akkor az eszköz **Igen értéket**jelöl a virtuális gép számára \* . Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
 **Storage Type** (Tároló típusa): Standard vagy Premium.
 

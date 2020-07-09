@@ -3,12 +3,12 @@ title: Gyakornoki mód – személyre szabás
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599402"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087197"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>A tanulói mód használata a személyre szabás kitanításához anélkül, hogy ez hatással lenne a meglévő alkalmazásra
 
@@ -30,7 +30,7 @@ A gyakornoki mód megbízhatóságot biztosít a személyre szabott szolgáltat�
 
 A Apprentice mód használatának két fő oka a következő:
 
-* A **hűtés**enyhítése: a gyakornoki mód segít az "új" modell betanítási idejének kezelésében és értékelésében – ha nem adja vissza a legjobb működést, és nem éri el a 75-85%-os hatékonyságot kielégítő szintet.
+* A **hűtés**enyhítése: a gyakornoki mód segít az "új" modell betanítási idejének kezelésében és értékelésében – ha nem adja vissza a legjobb működést, és nem éri el a 60-80%-os hatékonyságot kielégítő szintet.
 * A **művelet-és környezeti funkciók ellenőrzése**: a műveletekben és kontextusban eljuttatott funkciók nem megfelelőek vagy pontatlanok lehetnek – a túl kevés, túl sok, helytelen vagy túl jellemző a személyre szabáshoz az ideális hatékonysági arány eléréséhez. A funkciókkal kapcsolatos problémák megkereséséhez és kijavításához használja a [szolgáltatás-értékeléseket](concept-feature-evaluation.md) .
 
 ## <a name="when-should-you-use-apprentice-mode"></a>Mikor érdemes a Apprentice üzemmódot használni?
@@ -68,7 +68,7 @@ A tanulói módban való tanulás az alábbi módokon különbözik az online m�
 A Apprentice mód hatékonyságával kapcsolatos Megjegyzés:
 
 * Az alkalmazás alapkonfigurációjának közel 100%-a a személyre szabási módban a személyre szabott hatékonyságot ritkán éri el a rendszer. és soha ne lépje túl.
-* Az ajánlott eljárások nem a 100%-os elérésének megkezdéséhez szükségesek. a használati esettől függően a 75 – 85%-os tartományt kell megcélozni.
+* Az ajánlott eljárások nem a 100%-os elérésének megkezdéséhez szükségesek. a használati esettől függően a 60% – 80%-os tartományt kell megcélozni.
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>Tanulói mód használata a korábbi adatbevitelhez
 

@@ -30,9 +30,9 @@
     - name: Automatizálás szolgáltatásnevekkel
       href: analysis-services-service-principal.md
     - name: Ügyfélkódtárak
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: Kompatibilitási szint
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: Csatlakozás helyszíni adatforrásokhoz
       href: analysis-services-gateway.md
     - name: Kapcsolódás kiszolgálókhoz
@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz
           href: analysis-services-addservprinc-admins.md
+        - name: Áthelyezés régiók között
+          href: move-between-regions.md
     - name: Modell
       items:
         - name: Táblázatos modellezés
@@ -120,11 +122,9 @@
     - name: Példák
       href: analysis-services-samples.md
     - name: Az Analysis Services csapatának blogja
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Microsoft Q&A kérdések oldala az Azure Analysis Serviceshez
-      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Az Azure állapota
       href: 'https://azure.microsoft.com/status/'
     - name: Visszajelzés

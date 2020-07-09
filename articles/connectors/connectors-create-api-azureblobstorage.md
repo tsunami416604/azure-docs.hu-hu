@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711289"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storageban Azure Logic Apps használatával
 
@@ -89,7 +88,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Új lépés hozzáadása a Logic app-munkafolyamathoz](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 3. A keresőmezőbe írja be szűrőként az "Azure Blob" kifejezést. A műveletek listából válassza ki a kívánt műveletet.
 
@@ -121,10 +120,10 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 1. Amikor a rendszer felszólítja a kapcsolódás létrehozására, adja meg a következő információkat:
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
-   | **Storage-fiók** | Igen | <*Storage – fiók*> | Válassza ki a Storage-fiókját a listából. |
+   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
+   | **Tárfiók** | Yes | <*Storage – fiók*> | Válassza ki a Storage-fiókját a listából. |
    ||||
 
    Például:
@@ -194,7 +193,7 @@ A kivétel és a felügyelt identitás támogatásának beállításához köves
 1. A logikai alkalmazás munkafolyamatában adja hozzá és állítsa be a HTTP-műveletet vagy-triggert a Storage-fiók vagy-entitás eléréséhez.
 
    > [!IMPORTANT]
-   > A kimenő HTTP-művelethez vagy az Azure Storage-fiókokhoz indított hívások elindításához ellenőrizze, `x-ms-version` hogy a kérelem fejléce tartalmazza-e a Storage-fiókban futtatni kívánt művelethez tartozó tulajdonságot és API-verziót. További információ: [hozzáférés hitelesítése felügyelt identitással](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) és [verziószámozás az Azure Storage-szolgáltatásokhoz](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
+   > A kimenő HTTP-művelethez vagy az Azure Storage-fiókokhoz indított hívások elindításához ellenőrizze, hogy a kérelem fejléce tartalmazza-e a `x-ms-version` Storage-fiókban futtatni kívánt művelethez tartozó tulajdonságot és API-verziót. További információ: [hozzáférés hitelesítése felügyelt identitással](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) és [verziószámozás az Azure Storage-szolgáltatásokhoz](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
 
 1. Ezen a műveleten [válassza ki a hitelesítéshez használandó felügyelt identitást](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
 

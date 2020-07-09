@@ -58,6 +58,8 @@
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Felhasználók tömeges visszaállítása
           href: users-bulk-restore.md
+        - name: Felhasználó jogosultságának visszavonása
+          href: users-revoke-access.md
         - name: Nem felügyelt könyvtárban található fiók bezárása
           href: users-close-account.md
         - name: B2B-felhasználók hozzáadása
@@ -183,7 +185,7 @@
               href: directory-admin-roles-secure.md
             - name: Vészelérési fiókok létrehozása
               href: directory-emergency-access.md
-        - name: Felügyeleti egység
+        - name: Felügyeleti egységek
           items:
             - name: Felügyeleti egységek áttekintése
               href: directory-administrative-units.md

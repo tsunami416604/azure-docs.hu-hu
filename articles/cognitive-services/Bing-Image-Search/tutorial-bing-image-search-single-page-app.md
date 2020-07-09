@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943891"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800904"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
 
@@ -390,15 +390,18 @@ Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztü
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Ezután módosítsa a HTML-fájlban lévő Bing Web Search végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
@@ -407,6 +410,6 @@ Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak
 > [!div class="nextstepaction"]
 > [Képadatok kinyerése a Bing Image Search API használatával](tutorial-image-post.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

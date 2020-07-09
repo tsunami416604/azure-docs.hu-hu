@@ -1,15 +1,14 @@
 ---
 title: Azure Backup Recovery Services-tárolók áthelyezése
 description: Útmutató a Recovery Services-tároló Azure-előfizetések és-erőforráscsoportok közötti áthelyezéséhez.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597994"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368226"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -37,7 +36,11 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 - Ha felügyelt lemezekkel rendelkező virtuális gépet szeretne áthelyezni, tekintse meg ezt a [cikket](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
 - A klasszikus modellben üzembe helyezett erőforrások áthelyezésének lehetőségei eltérnek attól függően, hogy az adott előfizetésen belül vagy egy új előfizetésre helyezi át az erőforrásokat. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - A tárolóhoz definiált biztonsági mentési szabályzatok megmaradnak, miután a tár előfizetések vagy egy új erőforráscsoport között mozog.
-- Csak akkor helyezhető át tároló, ha az Azure Virtual Machines csak az egyetlen biztonsági mentési elem a tárban.
+- Csak olyan tárolót helyezhet át, amely a következő típusú biztonsági másolati elemeket tartalmazza. Az alább nem felsorolt típusú biztonsági másolati elemeket le kell állítani, és az adatokat véglegesen törölni kell a tár áthelyezése előtt.
+  - Azure-alapú virtuális gépek
+  - Microsoft Azure Recovery Services (MARS) ügynök
+  - Microsoft Azure Backup-kiszolgáló (MABS)
+  - Data Protection Manager (DPM)
 - Ha egy virtuális gép biztonsági mentési adatait tartalmazó tárolót helyez át az előfizetések között, át kell helyeznie a virtuális gépeket ugyanahhoz az előfizetéshez, és ugyanazt a cél virtuálisgép-erőforráscsoport nevét kell használnia (mint a régi előfizetésben) a biztonsági mentések folytatásához.
 
 > [!NOTE]
@@ -116,7 +119,7 @@ $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Az erőforrások másik előfizetésbe való áthelyezéséhez adja `-DestinationSubscriptionId` meg a paramétert.
+Az erőforrások másik előfizetésbe való áthelyezéséhez adja meg a `-DestinationSubscriptionId` paramétert.
 
 ```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
@@ -132,7 +135,7 @@ Recovery Services-tároló másik erőforráscsoporthoz való áthelyezéséhez 
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Új előfizetésre való áttéréshez adja meg `--destination-subscription-id` a paramétert.
+Új előfizetésre való áttéréshez adja meg a `--destination-subscription-id` paramétert.
 
 ## <a name="post-migration"></a>Migráció utáni feladatok
 

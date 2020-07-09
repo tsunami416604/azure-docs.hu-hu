@@ -5,16 +5,16 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6bdc2eca3bdf02814ee851ff266e04bb57f7978c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fa33f2d9e0c4606587ca5ef65a3f4a021319431f
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658825"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195045"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Csatlakozás az Azure szinapszis hivatkozásához (előzetes verzió) Azure Cosmos DB
 
@@ -23,6 +23,9 @@ Ez a cikk azt ismerteti, hogyan férhet hozzá egy Azure Cosmos DB-adatbázishoz
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt a munkaterülethez csatlakoztatná egy Azure Cosmos DB adatbázist, a következőkre lesz szüksége:
+
+> [!IMPORTANT]
+> A Azure Cosmos DB Azure szinapszis hivatkozása jelenleg támogatott olyan munkaterületek esetében, amelyeken nincs engedélyezve a felügyelt virtuális hálózat. 
 
 * Meglévő Azure Cosmos DB adatbázis, vagy hozzon létre egy új [fiókot a rövid](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account) útmutató után
 * Meglévő szinapszis munkaterület, vagy hozzon létre egy új munkaterületet [a rövid](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) útmutató után 
@@ -64,7 +67,7 @@ Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban **csatolt**
 
 Ha a jobb gombbal rákattint egy tárolóra, olyan kézmozdulatok listája látható, amelyek elindítják a Spark vagy az SQL futási idejét. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./concept-synapse-link-cosmos-db-support.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](./how-to-query-analytical-store-spark.md)

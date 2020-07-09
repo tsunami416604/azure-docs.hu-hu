@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687124"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus azonosítása nyelvi azonosító modellel
@@ -27,7 +26,7 @@ Tekintse át az alábbi [irányelvek és korlátozások](#guidelines-and-limitat
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Automatikus nyelvi azonosítás kiválasztása az indexeléshez
 
-Ha az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `auto detect` `sourceLanguage` paraméterben található lehetőséget.
+Ha az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `auto detect` paraméterben található lehetőséget `sourceLanguage` .
 
 A portál használatakor a [video Indexer](https://www.videoindexer.ai/) kezdőlapján keresse meg a **fiókja videóit** , és vigye az egérmutatót az újra indexelni kívánt videó nevére. A jobb alsó sarokban kattintson az újra index gombra. A **videó újraindexelése** párbeszédpanelen válassza az *automatikus észlelés* lehetőséget a **videó forrása nyelv** legördülő listából.
 
@@ -35,9 +34,9 @@ A portál használatakor a [video Indexer](https://www.videoindexer.ai/) kezdől
 
 ## <a name="model-output"></a>A modell kimenete
 
-Video Indexer a videót a legvalószínűbb nyelven írja át, ha az adott nyelv megbízhatósága `> 0.6`. Ha a nyelv nem azonosítható magabiztosan, feltételezi, hogy a beszélt nyelv angol. 
+Video Indexer a videót a legvalószínűbb nyelven írja át, ha az adott nyelv megbízhatósága `> 0.6` . Ha a nyelv nem azonosítható magabiztosan, feltételezi, hogy a beszélt nyelv angol. 
 
-A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attribútumként érhető el (a root/videos/bepillantás alatt). A megfelelő megbízhatósági pontszám az `sourceLanguageConfidence` attribútum alatt is elérhető.
+A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attribútumként érhető el (a root/videos/bepillantás alatt). A megfelelő megbízhatósági pontszám az attribútum alatt is elérhető `sourceLanguageConfidence` .
 
 ```json
 "insights": {
@@ -58,7 +57,7 @@ A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attr
     Angol, spanyol, francia, német, olasz, mandarin Chines, Japán, orosz és portugál (brazíliai).
 * Bár a Video Indexer támogatja az Arab (modern standard és levantei), a hindi és a Koreai nyelvet, a fedél nem támogatja ezeket a nyelveket.
 * Ha a hang a fenti támogatott listán kívül más nyelveket is tartalmaz, az eredmény nem várt.
-* Ha Video Indexer nem tudja azonosítani a nyelvet elég magas megbízhatósággal (`>0.6`), a tartalék nyelv angol.
+* Ha Video Indexer nem tudja azonosítani a nyelvet elég magas megbízhatósággal ( `>0.6` ), a tartalék nyelv angol.
 * A vegyes nyelvi hanggal rendelkező fájlok jelenleg nem támogatottak. Ha a hang vegyes nyelveket tartalmaz, az eredmény nem várt. 
 * Az alacsony minőségű hang befolyásolhatja a modell eredményeit.
 * A modellhez legalább egy perces beszéd szükséges a hanganyagban.

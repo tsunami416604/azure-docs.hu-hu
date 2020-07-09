@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75425976"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044413"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Bejelentkezési hitelesítő adatok elforgatása egy Stream Analytics-feladathoz tartozó bemenetekhez és kimenetekhez
 
@@ -49,13 +49,13 @@ Ebben a szakaszban bemutatjuk a Blob Storage, Event Hubs, SQL Database és Table
 
 ### <a name="sql-database"></a>SQL Database
 
-Egy meglévő felhasználó bejelentkezési hitelesítő adatainak frissítéséhez csatlakoznia kell az SQL-adatbázishoz. A hitelesítő adatokat Azure Portal vagy egy ügyféloldali eszköz (például SQL Server Management Studio) használatával frissítheti. Ez a szakasz a hitelesítő adatok Azure Portal használatával történő frissítésének folyamatát mutatja be.
+Egy meglévő felhasználó bejelentkezési hitelesítő adatainak frissítéséhez csatlakoznia kell a SQL Databasehoz. A hitelesítő adatokat Azure Portal vagy egy ügyféloldali eszköz (például SQL Server Management Studio) használatával frissítheti. Ez a szakasz a hitelesítő adatok Azure Portal használatával történő frissítésének folyamatát mutatja be.
 
 1. Jelentkezzen be a Azure Portal > tallózással keresse meg a Stream Analytics feladatokhoz kimenetként használt SQL-adatbázist.    
 2. Az **adatkezelőből**jelentkezzen be/kapcsolódjon az adatbázishoz > válassza az engedélyezési típus lehetőséget az **SQL server-hitelesítés** > írja be a **bejelentkezési** és a **jelszó** részleteit > válassza az **OK**gombot.  
-   ![Hitelesítő adatok újbóli előállítása az SQL Database-ben](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
+   ![Hitelesítő adatok újbóli előállítása SQL Databasehoz](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
-3. A lekérdezés lapon módosítsa a felhasználó jelszavát a következő lekérdezés futtatásával (ne felejtse el lecserélni `<user_name>` a felhasználónevével és `<new_password>` az új jelszavával):  
+3. A lekérdezés lapon módosítsa a felhasználó jelszavát a következő lekérdezés futtatásával (ne felejtse el lecserélni a `<user_name>` felhasználónevével és az `<new_password>` új jelszavával):  
 
    ```SQL
    Alter user `<user_name>` WITH PASSWORD = '<new_password>'
@@ -64,7 +64,7 @@ Egy meglévő felhasználó bejelentkezési hitelesítő adatainak frissítésé
 
 4. Jegyezze fel az új jelszót.    
 5. A Azure Portal tallózással keresse meg Stream Analytics feladatot > válassza a **Leállítás** lehetőséget, és várja meg, amíg a feladatok le nem állnak.    
-6. Keresse meg azt az SQL Database-kimenetet, amelynek a hitelesítő adatait el szeretné forgatni. Frissítse a jelszót, és mentse a módosításokat.    
+6. Keresse meg azt a SQL Database kimenetet, amelynek a hitelesítő adatait el szeretné forgatni. Frissítse a jelszót, és mentse a módosításokat.    
 7. A módosítások mentésekor a rendszer automatikusan elindítja a kapcsolódási teszteket.    
 8. Folytassa a [feladatok elindításával az utolsó leállított idő](#start-your-job-from-the-last-stopped-time) szakaszból.
 

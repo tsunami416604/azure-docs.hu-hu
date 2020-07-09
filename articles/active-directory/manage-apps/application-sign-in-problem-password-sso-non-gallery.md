@@ -3,25 +3,24 @@ title: Jelszó-alapú egyszeri bejelentkezés (SSO) a hozzáférési panelen | M
 description: A problémás területeket ismerteti, amelyek útmutatást nyújtanak a jelszó egyszeri bejelentkezéshez konfigurált Azure AD Gallery-alkalmazásokba való bejelentkezéssel kapcsolatos problémák elhárításához.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bd4a645038dfb49e7c79995b90b159bdc07bea4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68381243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763771"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problémák a jelszó egyszeri bejelentkezéséhez konfigurált Azure AD Gallery-alkalmazásba való bejelentkezéskor
 
@@ -78,7 +77,7 @@ Az előfeltételek a következők:
 
 -   Beállította [Active Directory tartományi szolgáltatások](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és csatlakoztatta a felhasználói gépeket a tartományhoz.
 
--   A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [További információ](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [További információk](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
 A csoportházirend konfigurálásához és a felhasználók számára történő üzembe helyezéséhez kövesse a következő oktatóanyagot, [amely bemutatja, hogyan helyezheti üzembe a hozzáférési panel bővítményét az Internet Explorer alkalmazásban csoportházirend használatával](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) : részletes útmutató.
 

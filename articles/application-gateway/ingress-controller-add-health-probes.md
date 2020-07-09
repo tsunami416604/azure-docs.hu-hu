@@ -4,21 +4,21 @@ description: Ez a cikk azt ismerteti, hogyan adhatók hozzá az egészségügyi 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807992"
 ---
 # <a name="add-health-probes-to-your-service"></a>Állapot-mintavétel hozzáadása a szolgáltatáshoz
 Alapértelmezés szerint a bejövő forgalomhoz tartozó vezérlő kiépít egy HTTP GET mintavételt a kitett hüvelyek számára.
 A mintavételi tulajdonságok testreszabhatók úgy, hogy [készültségi vagy élettartam](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) -vizsgálatot adnak a `deployment` / `pod` specifikációhoz.
 
-## <a name="with-readinessprobe-or-livenessprobe"></a>`readinessProbe` Vagy`livenessProbe`
+## <a name="with-readinessprobe-or-livenessprobe"></a>`readinessProbe`Vagy`livenessProbe`
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -47,15 +47,15 @@ spec:
 
 Kubernetes API-referenciája:
 * [Tároló-mintavételek](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
-* [HttpGet művelet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+* [HttpGet művelet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`és `livenessProbe` támogatottak, ha a `httpGet`-vel van konfigurálva.
+> * `readinessProbe`és `livenessProbe` támogatottak, ha a-vel van konfigurálva `httpGet` .
 > * A nem a pod-on keresztül kitett porton lévő szondázás jelenleg nem támogatott.
-> * `HttpHeaders``SuccessThreshold` , `InitialDelaySeconds`nem támogatottak.
+> * `HttpHeaders`, `InitialDelaySeconds` `SuccessThreshold` nem támogatottak.
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>Nélkül `readinessProbe` vagy`livenessProbe`
-Ha a fenti mintavételek nincsenek megadva, akkor a bejövő vezérlő feltételezi, hogy a `Path` szolgáltatás elérhető a `backend-path-prefix` jegyzethez vagy a szolgáltatás `path` `ingress` definíciójában megadott módon.
+Ha a fenti mintavételek nincsenek megadva, akkor a bejövő vezérlő feltételezi, hogy a szolgáltatás elérhető a `Path` `backend-path-prefix` jegyzethez vagy a `path` `ingress` szolgáltatás definíciójában megadott módon.
 
 ## <a name="default-values-for-health-probe"></a>Az állapot mintavételének alapértelmezett értékei
 Minden olyan tulajdonság esetében, amely nem következtethető ki a készültség/élő mintavétel alapján, az alapértelmezett értékek vannak megadva.

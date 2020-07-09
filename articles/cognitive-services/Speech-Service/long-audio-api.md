@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587340"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080654"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
@@ -48,7 +48,7 @@ A szövegfájl előkészítésekor győződjön meg róla, hogy:
   * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
   * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
 > [!NOTE]
-> Kínai (anyaországi), Kínai (Hongkong), Kínai (Tajvan), Japán és koreai nyelveken az egyik szó két karakterből áll. 
+> A kínai (anyaországi), a kínai (Hongkong KKT), a kínai (Tajvan), a japán és a Koreai nyelveken egy szót két karakternek számítunk fel. 
 
 ## <a name="submit-synthesis-requests"></a>Szintézisi kérelmek elküldése
 
@@ -66,7 +66,7 @@ A **http-állapotkódok** gyakori hibákat jeleznek.
 |        | 400 | A hangszintézis csak az UTF-8 kódolású szövegfájlt támogatja az byte-Order jelölővel. | Győződjön meg arról, hogy a bemeneti fájlok UTF-8 kódolással vannak ellátva a byte-Order jelölővel. |
 |        | 400 | A hangszintézisi kérelemben csak érvényes SSML-bemenetek engedélyezettek. | Győződjön meg arról, hogy a bemeneti SSML-kifejezések helyesek. |
 |        | 400 | A (z) {voiceName} nevű hang nem található a bemeneti fájlban. | A bemeneti SSML hangjának neve nincs igazítva a modell azonosítójával. |
-|        | 400 | A bemeneti fájlban lévő bekezdések mennyiségének 10 000-nál kisebbnek kell lennie. | Győződjön meg arról, hogy a fájl bekezdése kevesebb, mint 10 000. |
+|        | 400 | A bemeneti fájlban lévő bekezdések számának 10 000-nál kisebbnek kell lennie. | Győződjön meg arról, hogy a fájlban lévő bekezdések száma kisebb, mint 10 000. |
 |        | 400 | A bemeneti fájlnak 400 karakternél nagyobbnak kell lennie. | Győződjön meg arról, hogy a bemeneti fájl mérete meghaladja a 400 karaktert. |
 |        | 404 | A hangszintézis definíciójában deklarált modell nem található: {modelID}. | Győződjön meg arról, hogy a ({modelID}) helyes. |
 |        | 429 | Túllépi az aktív hangszintézis korlátot. Várjon, amíg néhány kérelem befejeződik. | A kiszolgáló az egyes Azure-fiókokhoz legfeljebb 120 kérelem futtatására és várólistára helyezésére jogosult. Várjon, és ne küldje el az új kéréseket, amíg néhány kérelem be nem fejeződik. |

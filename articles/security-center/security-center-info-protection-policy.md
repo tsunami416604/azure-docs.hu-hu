@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711085"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban (előzetes verzió)
  
@@ -75,7 +74,11 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
 7. Ügyeljen rá, hogy a fő **címkék** panelen a **Mentés** gombra kattintva alkalmazza az összes módosítást.
  
 Miután az adatvédelmi szabályzatot teljesen meghatározta és mentette, a bérlőben lévő összes Azure SQL-adatbázis adatainak besorolására vonatkozik.
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>Az SQL Information Protection kezelése Azure PowerShell használatával
+
+- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): lekéri az érvényes bérlői SQL Information Protection-házirendet.
+- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): beállítja a hatályos bérlői SQL Information Protection-házirendet.
  
 ## <a name="next-steps"></a>További lépések
  

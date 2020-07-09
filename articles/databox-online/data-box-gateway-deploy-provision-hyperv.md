@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561628"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196635"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a Hyper-V-ben
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális eszköz üzembe helyezése a hipervizorban
 > * A virtuális eszköz elindítása és az IP-cím lekérése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,8 +64,8 @@ Az eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
 Előkészületek:
 
-- Tekintse át a Data Box Gateway üzembe helyezésére vonatkozó hálózati követelményeket, és azoknak megfelelően konfigurálja az adatközponti hálózatot. További információkért lásd [a Data Box Gateway hálózati követelményeit](data-box-gateway-system-requirements.md#networking-port-requirements) ismertető szakaszt.
-- Az eszköz optimális működéséhez gondoskodjon róla, hogy legalább 20 Mb/s sebességű internetes sávszélesség rendelkezésre álljon.
+* Tekintse át a Data Box Gateway üzembe helyezésére vonatkozó hálózati követelményeket, és azoknak megfelelően konfigurálja az adatközponti hálózatot. További információkért lásd [a Data Box Gateway hálózati követelményeit](data-box-gateway-system-requirements.md#networking-port-requirements) ismertető szakaszt.
+* Az eszköz optimális működéséhez gondoskodjon róla, hogy legalább 20 Mb/s sebességű internetes sávszélesség rendelkezésre álljon.
 
 ## <a name="check-the-host-system"></a>A gazdarendszer ellenőrzése
 
@@ -75,11 +75,17 @@ Virtuális eszköz létrehozásához a következőkre lesz szüksége:
 * Egy, a gazdagépre csatlakoztatott Microsoft Windows-ügyfélen futó Microsoft Hyper-V-kezelőre.
 * Bizonyosodjon meg róla, hogy a mögöttes hardver (a gazdarendszer), amelyen a virtuális eszközt létrehozza, képes elkülöníteni az alábbi erőforrásokat a virtuális eszköz számára:
 
-    * Legalább 4 virtuális processzor.
-    * Legalább 8 GB RAM.
-    * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani. 
-    * 250 GB-os operációsrendszer-lemez.
-    * 2 TB-os virtuális lemez a rendszeradatok számára.
+  * Legalább 4 virtuális processzor.
+  * Legalább 8 GB RAM.
+  * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani.
+  * 250 GB-os operációsrendszer-lemez.
+  * 2 TB-os virtuális lemez a rendszeradatok számára.
+
+## <a name="bitlocker-considerations"></a>BitLocker-megfontolások
+
+* Javasoljuk, hogy engedélyezze a BitLockert a Data Box Gateway virtuális gépen. Alapértelmezés szerint a BitLocker nincs engedélyezve. További információkért lásd:
+  * [Titkosítási támogatás beállításai a Hyper-V kezelőjében](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [BitLocker-támogatás egy virtuális gépen](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Virtuális eszköz üzembe helyezése a hipervizorban
 
@@ -136,7 +142,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
     ![Név és hely megadása lap](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
 19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet.
-    
+
     Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető, A lemez lekicsinyítésére tett kísérlet során a rendszer az eszközön lévő összes helyi adatvesztés elvesztését eredményezi. Az adatlemez kiterjesztése nem támogatott. Kattintson a **Tovább** gombra.
 
     ![Lemez konfigurálása lap](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
@@ -148,37 +154,38 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
     ![Beállítások lap](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>A virtuális eszköz elindítása és az IP-cím lekérése
+
 Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és csatlakozzon hozzá.
 
 #### <a name="to-start-the-virtual-device"></a>A virtuális eszköz indítása
+
 1. Indítsa el a virtuális eszközt.
 
    ![Virtuális eszköz indítása](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Amikor az eszköz már fut, jelölje ki, kattintson rá a jobb gombbal, és válassza a **Csatlakozás** lehetőséget.
 
-3. 10–15 percig is eltarthat, amíg az eszköz elkészül. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Kattintson `Ctrl + Alt + Delete` a gombra a virtuális eszközre való bejelentkezéshez. Az alapértelmezett felhasználó az *EdgeUser*, az alapértelmezett jelszó pedig a *Password1*.
+3. 10–15 percig is eltarthat, amíg az eszköz elkészül. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Kattintson a `Ctrl + Alt + Delete` gombra a virtuális eszközre való bejelentkezéshez. Az alapértelmezett felhasználó az *EdgeUser*, az alapértelmezett jelszó pedig a *Password1*.
 
    ![Bejelentkezés a virtuális eszközre](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-   
-6. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. DHCP-környezetben hagyja ki ezeket a lépéseket. Ha nem DHCP-környezetben indította az eszközt, erről egy üzenet tájékoztatja.
-    
-7. A hálózat konfigurálásához a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
-8. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Lásd a következő példát:
+4. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. DHCP-környezetben hagyja ki ezeket a lépéseket. Ha nem DHCP-környezetben indította az eszközt, erről egy üzenet tájékoztatja.
+
+5. A hálózat konfigurálásához a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
+
+6. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Lásd a következő példát:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
-    
-9. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Az IP-címmel csatlakozhat a virtuális készülék webes kezelőfelületéhez, ahol elvégezheti a helyi beállítást és az aktiválást.
+
+7. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Az IP-címmel csatlakozhat a virtuális készülék webes kezelőfelületéhez, ahol elvégezheti a helyi beállítást és az aktiválást.
 
    ![Virtuális eszköz szalagcíme IP-címmel és a kapcsolatok URL-címével](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
-      
 
 Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében. Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg a minimálisan szükséges konfigurációs követelményeket a következő témakörben: [a gazdarendszer megfelel a virtuális eszközök minimális követelményeinek](#check-the-host-system).
 
 Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi webes felhasználói felülettel, tekintse meg a következő munkafolyamatokat:
 
-- [Diagnosztikai tesztek futtatása a webes felhasználói felület beállításának hibakereséséhez](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Naplófájlok előállítása és a naplófájlok megtekintése](data-box-gateway-troubleshoot.md#collect-support-package).
+* [Diagnosztikai tesztek futtatása a webes felhasználói felület beállításának hibakereséséhez](data-box-gateway-troubleshoot.md#run-diagnostics).
+* [Naplófájlok előállítása és a naplófájlok megtekintése](data-box-gateway-troubleshoot.md#collect-support-package).
 
 ## <a name="next-steps"></a>További lépések
 

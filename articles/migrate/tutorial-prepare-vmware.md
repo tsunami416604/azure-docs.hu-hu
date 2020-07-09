@@ -2,46 +2,42 @@
 title: VMware virtuális gépek előkészítése értékeléshez/áttelepítéshez Azure Migrate
 description: Ismerje meg, hogyan készítheti elő a VMware virtuális gépek értékelését és áttelepítését Azure Migrate használatával.
 ms.topic: tutorial
-ms.date: 04/19/2020
+ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81677295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109575"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz
 
-Ez a cikk segít felkészülni a helyszíni VMware virtuális gépek felmérésére és/vagy áttelepítésére az Azure-ban [Azure Migrate](migrate-services-overview.md)használatával.
+Ez a cikk segít felkészülni a helyszíni VMware virtuális gépek felmérésére és áttelepítésére az Azure-ban [Azure Migrate](migrate-services-overview.md)használatával.
 
-
-
-Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
-> * Készítse elő a VMware for VM értékelését a Azure Migrate: Server Assessment Tool eszközzel.
-> * Készítse elő a VMware virtuális gépek áttelepítését a Azure Migrate: Server Migration Tool eszközzel. 
+> * Felkészülés a VMware virtuális gépek felmérésére a Azure Migrate: Server Assessment Tool használatával.
+> * Felkészülés a VMware virtuális gépek áttelepítésére a Azure Migrate: Server áttelepítési eszközzel. 
 
 > [!NOTE]
-> Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Ezek akkor hasznosak, ha megtudhatja, hogyan állíthatja be a központi telepítést, és hogyan hozhat létre gyors megvalósíthatósági koncepciót. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. 
+> Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Hasznosnak bizonyulnak a gyors próba-koncepció. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
 
-Ezeknek a feladatoknak az Azure-ban kell megadnia ezeket az engedélyeket a VMware virtuális gépek felmérése vagy áttelepítéséhez.
+A táblázat összefoglalja az Azure-ban elvégzendő feladatokat. Az egyes feladatokhoz tartozó utasítások a táblázatot követik.
 
-**Tevékenység** | **Részletek** 
---- | --- 
-**Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához. 
-**Erőforrás-szolgáltatók regisztrálása** | A Azure Migrate a VMware virtuális gépek felderítésére és értékelésére, valamint az Azure-ba való áttelepítésére szolgáló Azure Migrate berendezést használ a Azure Migrate: Server Assessment használatával.<br/><br/> A készülék regisztrálása során az erőforrás-szolgáltatók regisztrálva vannak a berendezésben kiválasztott előfizetésben. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.
-**Azure AD-alkalmazások létrehozása** | A készülék regisztrálása során a Azure Migrate Azure Active Directory (Azure AD) alkalmazásokat hoz létre. <br/><br/> – Az első alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz használatos.<br/><br/> – A második alkalmazás kizárólag az ügynök nélküli VMware VM-Migrálás felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Engedélyekre van szüksége az Azure AD-alkalmazások (az Application Developer) szerepkörben való létrehozásához.
-**Kulcstartó létrehozása** | A VMware virtuális gépek ügynök nélküli áttelepítéssel való áttelepítéséhez Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezeli.<br/><br/> A tároló létrehozásához szerepkör-hozzárendelési engedélyekre van szükség ahhoz az erőforráscsoporthoz, amelyben az Azure Migrate-projekt található.
-
-
+**Tevékenység** | **Részletek** | **Engedélyek**
+--- | --- | ---
+**Azure Migrate projekt létrehozása** | Az Azure Migrate projektek központi helyet biztosítanak a felmérések és áttelepítések előkészítéséhez és kezeléséhez Azure Migrate eszközökkel, Microsoft-eszközökkel és harmadik féltől származó ajánlatokkal. | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie abban az erőforráscsoportban, amelyben a projekt található.
+**Berendezés regisztrálása** | A Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli a virtuális gépeket, értékeli azokat a kiszolgáló-értékelési eszközzel, és a kiszolgáló áttelepítési eszközével az ügynök nélküli Migrálás segítségével áttelepítheti azokat. [További](migrate-appliance-architecture.md#appliance-registration) információ a regisztrációról. | A készülék regisztrálásához az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az Azure-előfizetésben.
+**Azure AD-alkalmazások létrehozása** | A berendezések regisztrálása Azure Migrate Azure Active Directory (Azure AD) alkalmazásokat hoz létre. <br/><br/> – Az első alkalmazás a készüléken futó ügynökök és Azure Migrate közötti kommunikációra szolgál. <br/><br/> – A második alkalmazás kizárólag az ügynök nélküli VMware VM-Migrálás felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál.   | Az Azure-fióknak rendelkeznie kell az Azure AD-alkalmazások létrehozásához szükséges engedélyekkel.
+**Kulcstartó létrehozása** | A VMware virtuális gépek ügynök nélküli áttelepítéssel való áttelepítéséhez Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetése replikációs fiókjához kezeli. | Ahhoz, hogy a Azure Migrate létrehozza a Key Vault, beállíthatja az engedélyeket (tulajdonos, közreműködő és felhasználói hozzáférés rendszergazdája) azon erőforráscsoporthoz, amelyben a Azure Migrate projekt található.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
@@ -52,32 +48,31 @@ Ezeknek a feladatoknak az Azure-ban kell megadnia ezeket az engedélyeket a VMwa
     - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
-### <a name="assign-permissions-to-register-the-appliance"></a>Engedélyek kiosztása a készülék regisztrálásához
+### <a name="assign-permissions-to-create-azure-ad-apps"></a>Engedélyek kiosztása Azure AD-alkalmazások létrehozásához
 
-A készülék regisztrálásához engedélyeket kell rendelnie Azure Migrate az Azure AD-alkalmazások létrehozásához a készülék regisztrációja során. Az engedélyek az alábbi módszerek egyikével rendelhetők el:
+A készülék regisztrálásához az Azure-fióknak rendelkeznie kell az Azure AD-alkalmazások létrehozásához szükséges engedélyekkel. Rendelje hozzá az engedélyeket az alábbi módszerek egyikének használatával:
 
-- **Engedélyek megadása**: a bérlők/globális rendszergazdák engedélyeket adhatnak a bérlő felhasználói számára az Azure ad-alkalmazások létrehozásához és regisztrálásához.
-- **Alkalmazás fejlesztői szerepkörének kiosztása**: a bérlői/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét (amely rendelkezik engedélyekkel) a fiókhoz.
+- **1. módszer: engedélyek megadása a fióknak**: a bérlők/globális rendszergazdák engedélyeket adhatnak a bérlő felhasználói fiókjainak az Azure ad-alkalmazások létrehozásához és regisztrálásához.
+- **2. módszer: szerepkör társítása az engedélyekkel egy felhasználói fiókhoz**: a bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét (amely rendelkezik a szükséges engedélyekkel) a felhasználói fiókhoz.
 
 > [!NOTE]
-> - Az alkalmazások nem rendelkeznek más hozzáférési engedélyekkel az előfizetéshez a fent leírtak kivételével.
-> - Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el.
+> Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el.
 
 
-#### <a name="grant-account-permissions"></a>Fiók engedélyeinek megadása
+#### <a name="method-1-grant-permissions-to-the-account"></a>1. módszer: engedélyek megadása a fiók számára
 
-Ha azt szeretné, hogy a bérlő/globális rendszergazda engedélyeket adjon meg, tegye a következőket:
+A következőképpen adja meg az engedélyeket a fióknak:
 
-1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory** > **felhasználók** > **felhasználói beállításait**.
-2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** . Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+1. Győződjön meg arról, hogy Ön bérlő vagy globális rendszergazda. Ezután az Azure ad-ben navigáljon **Azure Active Directory**  >  **felhasználók**  >  **felhasználói beállításait**.
+2. Állítsa **App registrations** a Alkalmazásregisztrációk **értéket igen**értékre. Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-vmware/aad.png)
 
 
 
-#### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása
+#### <a name="method-2-assign-application-developer-role"></a>2. módszer: az alkalmazás fejlesztői szerepkörének kiosztása
 
-Azt is megteheti, hogy a bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkört egy fiókhoz. [További](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) információ a szerepkörök hozzárendeléséről.
+Azt is megteheti, hogy a bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkört egy fiókhoz. [További](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md) információ a szerepkörök hozzárendeléséről.
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Engedélyek kiosztása Key Vault létrehozásához
 
@@ -91,70 +86,109 @@ Ha engedélyezni szeretné, hogy a Azure Migrate Key Vault hozzon létre, rendel
 
 3. Ha nem rendelkezik a szükséges engedélyekkel, kérje meg őket az erőforráscsoport tulajdonosától.
 
-
-
-## <a name="prepare-for-vmware-vm-assessment"></a>Felkészülés a VMware virtuális gépek értékelésére
+## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 
 A VMware virtuális gépek értékelésének előkészítéséhez a következőket kell tennie:
 
-- A **VMware-beállítások ellenőrzése**. Győződjön meg arról, hogy az áttelepíteni kívánt vCenter Server és virtuális gépek megfelelnek a követelményeknek.
-- **Hozzon létre egy fiókot az értékeléshez**. Azure Migrate ezt a fiókot használja a vCenter Server eléréséhez, hogy felderítse a virtuális gépeket az értékeléshez.
-- A **berendezésre vonatkozó követelmények ellenőrzése**. Az üzembe helyezés előtt ellenőrizze az Azure Migrate berendezés telepítési követelményeit.
+1. A **VMware-beállítások ellenőrzése**. Győződjön meg arról, hogy az áttelepíteni kívánt vCenter Server és virtuális gépek megfelelnek a követelményeknek.
+2. **Állítsa be az értékeléshez szükséges engedélyeket**. Azure Migrate egy vCenter-fiókot használ a vCenter Server eléréséhez a virtuális gépek felderítéséhez és értékeléséhez.
+3. A **berendezésre vonatkozó követelmények ellenőrzése**. A következő oktatóanyagban a központi telepítés előtt ellenőrizze a Azure Migrate berendezés telepítési követelményeit.
 
 ### <a name="verify-vmware-settings"></a>VMware-beállítások ellenőrzése
 
-1. [Ellenőrzési](migrate-support-matrix-vmware.md#vmware-requirements) A VMware-kiszolgálói követelmények az értékeléshez.
-2. Győződjön meg [arról](migrate-support-matrix-vmware.md#port-access) , hogy a szükséges portok nyitva vannak vCenter Serveron.
-3. VCenter Serveron ellenőrizze, hogy a fiókja rendelkezik-e engedéllyel egy virtuális gép létrehozásához PETESEJT-fájl használatával. A Azure Migrate berendezést VMware virtuális gépként helyezi üzembe a PETESEJT-fájl használatával.
+1. [Vizsgálja](migrate-support-matrix-vmware.md#vmware-requirements) meg a VMware-követelményeket az értékeléshez.
+2. Győződjön meg [arról](migrate-support-matrix-vmware.md#port-access-requirements) , hogy a szükséges portok nyitva vannak vCenter Serveron.
+3. VCenter Server esetén győződjön meg arról, hogy a fiókja rendelkezik engedéllyel a virtuális gép létrehozásához PETESEJT-fájl használatával. Erre akkor van szükség, amikor a Azure Migrate készüléket VMware virtuális gépként telepíti, és egy PETESEJT-fájlt használ.
+4. Az Azure-ba történő Migrálás előtt néhány módosításra van szükség a virtuális gépeken.
+
+    - Egyes operációs rendszerek esetében a Azure Migrate automatikusan végrehajtja ezeket a módosításokat. 
+    - Az áttelepítés megkezdése előtt fontos, hogy elvégezze ezeket a módosításokat. Ha a módosítás előtt áttelepíti a virtuális gépet, előfordulhat, hogy a virtuális gép nem indul el az Azure-ban.
+    - Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux](prepare-for-migration.md#linux-machines) -módosításokat, amelyeket el kell végeznie.
 
 
-### <a name="set-up-an-account-for-assessment"></a>Fiók beállítása az értékeléshez
+### <a name="set-up-permissions-for-assessment"></a>Az értékeléshez szükséges engedélyek beállítása
 
-Azure Migrate el kell érnie a vCenter Server, hogy felderítse a virtuális gépeket az értékeléshez és az ügynök nélküli áttelepítéshez.
+Azure Migratenak hozzá kell férnie a vCenter Serverhoz, hogy a Azure Migrate készülék képes legyen felderíteni a virtuális gépeket az értékeléshez és az ügynök nélküli áttelepítéshez. A következőképpen állíthatja be a fiókot:
 
-- Ha ügynök nélküli módon szeretné felderíteni az alkalmazásokat, vagy a függőségeket szeretné megjeleníteni, hozzon létre egy vCenter Server fiókot írásvédett hozzáféréssel, valamint a **virtuális gépek** > **vendég műveleteihez**engedélyezett jogosultságokkal.
+1. A vSphere webes ügyfélprogramban nyissa meg a **felügyeleti**  >  **hozzáférés**  >  **SSO-felhasználók és-csoportok**lehetőséget.
+2. A **felhasználók**területen kattintson az **új felhasználó** ikonra.
+3. Írja be az új felhasználó adatait.
+4. Válassza az engedélyek lehetőséget a tábla értékeinek megfelelően.
 
-  ![vCenter Server fiók jogosultságai](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
-
-- Ha nem tervezi az alkalmazások felderítését és az ügynök nélküli függőségek megjelenítését, állítson be írásvédett fiókot a vCenter Server számára.
+    **Szolgáltatás** | **Fiók engedélyei**
+    --- | ---
+    [Virtuális gépek felmérése](tutorial-assess-vmware.md) | Az értékeléshez a fióknak csak olvasási hozzáférésre van szüksége.
+    [VM-alkalmazások,-szerepkörök és-szolgáltatások felderítése](how-to-discover-applications.md) | Ha az App-Discovery szolgáltatást szeretné használni, az értékeléshez használt írásvédett fióknak engedélyezve kell lennie a **virtuális gépek**  >  **vendég műveleteihez**.
+    [Virtuális gépek függőségeinek elemzése (ügynök nélküli)](how-to-create-group-machine-dependencies-agentless.md) | Ha szeretné elemezni a függőségeket, az értékeléshez használt írásvédett fióknak engedélyezve kell lennie a **virtuális gépek**  >  **vendég műveleteihez**.
+    
+> [!NOTE]
+> Ha korlátozni szeretné a virtuális gépek felderítését egy adott hatókörre, tekintse át [ezt a cikket](set-discovery-scope.md#assign-a-role-for-assessment).
 
 ### <a name="verify-appliance-settings-for-assessment"></a>A berendezés beállításainak ellenőrzése az értékeléshez
 
-A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt a következő oktatóanyagban készítse elő a berendezés üzembe helyezését.
+A [következő oktatóanyagban](tutorial-assess-vmware.md) beállíthatja a Azure Migrate készüléket, és megkezdheti az értékelést. Mielőtt ezt megtenné, tekintse át a készülékre vonatkozó követelményeket a következő módon: 
 
-1. [Ellenőrzés](migrate-appliance.md#appliance---vmware) Azure Migrate készülékre vonatkozó követelmények.
-2. Tekintse át azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben.
-3. [Tekintse át](migrate-appliance.md#collected-data---vmware) a készülék által a felderítés és az értékelés során gyűjtött adatokat.
-4. [Jegyezze](migrate-support-matrix-vmware.md#port-access) fel a port hozzáférési követelményeit a készülékhez.
-
-
-
+1. [Tekintse át az](migrate-appliance.md#appliance---vmware) Azure Migrate berendezés üzembe helyezésének követelményeit.
+2. Tekintse át azokat az Azure URL-címeket, amelyeket a készüléknek a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell elérnie.
+3. [Jegyezze](migrate-support-matrix-vmware.md#port-access-requirements) fel a készülék által használt portokat.
+4. [Tekintse át a](migrate-appliance.md#collected-data---vmware) berendezés által a felderítés és az értékelés során gyűjtött adatokat.
 
 ## <a name="prepare-for-agentless-vmware-migration"></a>Felkészülés az ügynök nélküli VMware-áttelepítésre
 
-Tekintse át a VMware virtuális gépek [ügynök nélküli áttelepítésének](server-migrate-overview.md) követelményeit.
+A VMware virtuális gépeket [ügynök nélküli vagy ügynök alapú áttelepítéssel](server-migrate-overview.md)is áttelepítheti. Ez a szakasz az ügynök nélküli áttelepítés követelményeit foglalja össze.
 
-1. [Tekintse át](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) VMware-kiszolgálói követelmények.
-2. [Tekintse át azokat az engedélyeket](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) , amelyekre Azure Migrate szüksége van a vCenter Server eléréséhez.
-3. [Tekintse át](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) A VMware virtuális gépekre vonatkozó követelmények.
-4. [Tekintse át](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) a Azure Migrate készülékre vonatkozó követelményeket.
+1. [Döntse el](server-migrate-overview.md#compare-migration-methods) , hogy az ügynök nélküli áttelepítést szeretné-e használni.
+2. Az áttelepíteni kívánt gépekre vonatkozó hypervisor-követelmények [áttekintése](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless) .
+3. [Tekintse át](migrate-support-matrix-vmware-migration.md#vm-requirements-agentless) az áttelepíteni kívánt VMWare virtuális gépekre vonatkozó követelményeket az ügynök nélküli áttelepítés használatával.
+4. [Tekintse át](migrate-support-matrix-vmware-migration.md#appliance-requirements-agentless) az ügynök nélküli áttelepítés Azure Migrate készülékre vonatkozó követelményeit.
 5. Megjegyzés: a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkhez szükséges URL-hozzáférés.
-6. Tekintse át a [port hozzáférési](migrate-support-matrix-vmware-migration.md#agentless-ports) követelményeit.
+6. Tekintse át a [port hozzáférési](migrate-support-matrix-vmware-migration.md#port-requirements-agentless) követelményeit.
+7. Az ügynök nélküli áttelepítés engedélyeinek beállítása a következő eljárásban leírtak szerint.
+
+
+### <a name="assign-permissions-to-an-account"></a>Engedélyek kiosztása egy fiókhoz
+
+Azure Migrate készülék csatlakoztatja a vCenter Servert a virtuális gépek ügynök nélküli áttelepítéssel való felderítéséhez és áttelepítéséhez. Hozzárendelheti azokat az engedélyeket, amelyekre a készüléknek szüksége van a felhasználói fiókhoz, vagy létre kell hoznia egy szerepkört az engedélyekkel, és hozzá kell rendelnie a szerepkört egy felhasználói fiókhoz.
+
+1. A vSphere webes ügyfélprogramban nyissa meg a **felügyeleti**  >  **hozzáférés**  >  **SSO-felhasználók és-csoportok**lehetőséget.
+2. A **felhasználók**területen kattintson az **új felhasználó** ikonra.
+3. Írja be az új felhasználó adatait.
+4. [Engedélyek](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless) kiosztása
+
+#### <a name="create-a-role-and-assign-to-an-account"></a>Szerepkör létrehozása és hozzárendelés egy fiókhoz
+
+Azt is megteheti, hogy létrehoz egy fiókot. Ezután hozzon létre egy szerepkört, és rendelje hozzá a fiókhoz az alábbiak szerint:
+
+1. Jelentkezzen be a gömb webes ügyfelére vCenter Server rendszergazdaként
+2. Válassza ki a vCenter Server példányt > **hozzon létre szerepkört**.
+3. Adja meg a szerepkör nevét, például <em>Azure_Migrate</em>, és rendelje hozzá a [szükséges engedélyeket](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless) a szerepkörhöz.
+
+    ![vCenter Server fiók jogosultságai](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+4. Most hozzon létre egy fiókot, és rendelje hozzá a szerepkört a fiókhoz.
+
+> [!NOTE]
+> Ha korlátozni szeretné az ügynök nélküli áttelepítés adott hatókörre való virtuálisgép-felderítését, tekintse át [ezt a cikket](set-discovery-scope.md#assign-a-role-for-agentless-migration).
+
+
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Felkészülés az ügynök alapú VMware-áttelepítésre
 
-Tekintse át a VMware virtuális gépek [ügynök-alapú áttelepítésének](server-migrate-overview.md) követelményeit.
+A VMware virtuális gépeket [ügynök nélküli vagy ügynök alapú áttelepítéssel](server-migrate-overview.md)is áttelepítheti. Ez a szakasz az ügynök-alapú áttelepítés követelményeit foglalja össze.
 
-1. [Tekintse át](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) VMware-kiszolgálói követelmények.
-2. [Az engedélyek áttekintése](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) A Azure Migratenak el kell érnie a vCenter Server.
-2. [Tekintse át](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) A VMware virtuális gépekre vonatkozó követelmények, beleértve a mobilitási szolgáltatás telepítését minden olyan virtuális gépen, amelyet át szeretne telepíteni.
+1. [Döntse el](server-migrate-overview.md#compare-migration-methods) , hogy az ügynök-alapú áttelepítést szeretné-e használni.
+1. Az áttelepíteni kívánt gépekre vonatkozó hypervisor-követelmények [áttekintése](migrate-support-matrix-vmware-migration.md#vmware-requirements-agent-based) .
+2. [Tekintse át](migrate-support-matrix-vmware-migration.md#vm-requirements-agent-based) A VMware virtuális gépekre vonatkozó követelmények, beleértve a mobilitási szolgáltatás telepítését minden olyan virtuális gépen, amelyet át szeretne telepíteni.
 3. Az ügynök alapú áttelepítés replikációs készüléket használ:
     - [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a replikációs berendezés telepítési követelményeit.
     - [Tekintse át a](migrate-replication-appliance.md#mysql-installation) MySQL telepítésének lehetőségeit a készüléken.
     - Megjegyzés: a [nyilvános](migrate-replication-appliance.md#url-access) és a [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhőkhez szükséges URL-hozzáférés.
     - Tekintse át a replikációs berendezés [portra vonatkozó hozzáférési](migrate-replication-appliance.md#port-access) követelményeit.
-    
-## <a name="next-steps"></a>További lépések
+4. Néhány módosításra van szükség a virtuális gépeken az Azure-ba való Migrálás előtt. Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux](prepare-for-migration.md#linux-machines) -módosításokat, amelyeket el kell végeznie.
+
+
+
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

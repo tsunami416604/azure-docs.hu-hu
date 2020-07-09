@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797595"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
@@ -28,7 +27,7 @@ Annak érdekében, hogy a teljes környezeten belül betekintést nyerjen, enged
 - [Azure DevOps projects](../devops-project/overview.md) a meglévő kód-és git-tárház egyszerűsített élményét nyújtja, vagy választhat az egyik példa közül, hogy egy folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamatot hozzon létre az Azure-ba.
 - A [DevOps kiadási folyamat folyamatos figyelése](../azure-monitor/app/continuous-monitoring.md) lehetővé teszi, hogy a figyelési adatain alapuló üzembe helyezést vagy visszaállítást.
 - [Állapotmonitor](../azure-monitor/app/monitor-performance-live-website-now.md) lehetővé teszi egy élő .NET-alkalmazás üzembe helyezését a Windowsban az Azure Application Insights használatával anélkül, hogy módosítania vagy újra kellene telepítenie a kódot.
-- Ha rendelkezik hozzáféréssel az alkalmazás kódjához, akkor a teljes figyelést [Application Insights](../azure-monitor/app/app-insights-overview.md) a [.net](../azure-monitor/learn/quick-monitor-portal.md), a [Java](../azure-monitor/app/java-get-started.md), a [Node. js](../azure-monitor/learn/nodejs-quick-start.md)vagy [más programozási nyelvek](../azure-monitor/app/platforms.md)Azure monitor Application Insights SDK telepítésével engedélyezheti. Ez lehetővé teszi az alkalmazáshoz és a vállalathoz tartozó egyéni események, metrikák vagy oldalletöltések megadását.
+- Ha rendelkezik hozzáféréssel az alkalmazás kódjához, akkor a Azure Monitor Application Insights SDK [.net](../azure-monitor/learn/quick-monitor-portal.md)-, [Java](../azure-monitor/app/java-get-started.md)-, [Node.js](../azure-monitor/learn/nodejs-quick-start.md)-vagy [más programozási nyelvekre](../azure-monitor/app/platforms.md)való telepítésével engedélyezze a [Application Insights](../azure-monitor/app/app-insights-overview.md) teljes figyelését. Ez lehetővé teszi az alkalmazáshoz és a vállalathoz tartozó egyéni események, metrikák vagy oldalletöltések megadását.
 
 
 
@@ -83,7 +82,7 @@ Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos te
 - Az [Impact Analysis](../azure-monitor/app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor](overview.md)különbségi összetevőiről.
 - [Vegyen fel folyamatos figyelést](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamatba.

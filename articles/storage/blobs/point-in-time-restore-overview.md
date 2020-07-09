@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 38f6cfef60cf3bfe66742cba204d74db1c22ca77
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 60f83fae6e7e685a1065d1c01327a004d9bb2864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675652"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)
 
@@ -84,7 +84,7 @@ A következő régiók támogatják az időponthoz történő visszaállítást 
 Az előzetes verzió az alábbi korlátozásokat tartalmazza:
 
 - A prémium blokkos Blobok visszaállítása nem támogatott.
-- A Blobok archiválási szinten való visszaállítása nem támogatott. Ha például a forró rétegben lévő blobot két nappal ezelőtt áthelyezték az archiválási rétegbe, és a visszaállítási művelet három nappal ezelőtt visszaállítja a-t, a blob nem lesz visszaállítva a forró szintre.
+- A blobok visszaállítása az archív szinten nem támogatott. Ha például egy blob két nappal ezelőtt át lett helyezve a gyakori elérésű szintről az archív szintre, és a visszaállítási művelet egy három nappal korábbi pontra állítja vissza a rendszert, a blob nem lesz vissza állítva a gyakori elérésű szintre.
 - Azure Data Lake Storage Gen2 lapos és hierarchikus névterek visszaállítása nem támogatott.
 - A Storage-fiókok ügyfél által megadott kulcsokkal történő visszaállítása nem támogatott.
 
@@ -93,7 +93,9 @@ Az előzetes verzió az alábbi korlátozásokat tartalmazza:
 
 ### <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzióra
 
-Az előzetes verzióra való regisztráláshoz futtassa a következő parancsokat a Azure PowerShellról:
+Az előzetes verzióra való regisztráláshoz futtassa a következő parancsokat:
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 # Register for the point-in-time restore preview
@@ -103,16 +105,28 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
 # Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
+Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
+az feature register --namespace Microsoft.Storage --name Changefeed
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
+
 ### <a name="check-registration-status"></a>Regisztráció állapotának bejelölése
 
-A regisztráció állapotának megtekintéséhez futtassa a következő parancsokat:
+Az időpontra történő visszaállítás regisztrálása automatikus, és kevesebb, mint 10 percet vesz igénybe. A regisztráció állapotának megtekintéséhez futtassa a következő parancsokat:
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -120,7 +134,20 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Changefeed
+
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName Versioning
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
+```
+
+---
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
@@ -134,7 +161,7 @@ Az időponthoz tartozó visszaállítás díjszabásáról további információ
 
 Ha kérdéseket szeretne feltenni az időponthoz tartozó visszaállítás előzetes verziójával kapcsolatban, vagy visszajelzést szeretne küldeni, forduljon a Microsofthoz pitrdiscussion@microsoft.com .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)](point-in-time-restore-manage.md)
 - [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)

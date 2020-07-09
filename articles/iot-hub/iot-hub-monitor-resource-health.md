@@ -1,20 +1,18 @@
 ---
 title: Az Azure-IoT Hub állapotának monitorozása | Microsoft Docs
 description: A Azure Monitor és a Azure Resource Health segítségével figyelheti a IoT Hubeket, és gyorsan diagnosztizálhatja a problémákat
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: kgremban
+ms.date: 04/21/2020
+ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84792021"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
 
@@ -32,8 +30,6 @@ A IoT Hub saját mérőszámokat is biztosít, amelyek segítségével megismerh
 ## <a name="use-azure-monitor"></a>Az Azure Monitor használata
 
 A Azure Monitor diagnosztikai adatokat biztosít az Azure-erőforrásokhoz, ami azt jelenti, hogy nyomon követheti az IoT hub-ban elvégezhető műveleteket.
-
-Azure Monitor diagnosztikai beállításai felváltják a IoT Hub Operations monitort. Ha jelenleg a műveletek figyelését használja, akkor át kell telepítenie a munkafolyamatokat. További információ: [áttelepítés az Operations monitoring és a diagnosztikai beállítások között](iot-hub-migrate-to-diagnostics-settings.md).
 
 Ha többet szeretne megtudni az órákat Azure Monitor kapcsolódó mérőszámokról és eseményekről, tekintse meg a [támogatott mérőszámokat Azure monitor](../azure-monitor/platform/metrics-supported.md) és [támogatott szolgáltatásokkal, sémákkal és kategóriákkal az Azure diagnosztikai naplókhoz](../azure-monitor/platform/diagnostic-logs-schema.md).
 
@@ -121,11 +117,11 @@ Az Eszközállapot-üzemeltetési kategória azokat a hibákat követi, amelyek 
 
 #### <a name="routes"></a>Útvonalak
 
-Az üzenet-útválasztási kategória nyomon követi az üzenetek útvonalának kiértékelése és a végpont állapota során az IoT Hub által észlelt hibákat. Ez a kategória olyan eseményeket tartalmaz, mint például:
+Az [üzenet-útválasztási](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) kategória nyomon követi az üzenetek útvonalának kiértékelése és a végpont állapota során az IoT hub által észlelt hibákat. Ez a kategória olyan eseményeket tartalmaz, mint például:
 
 * Egy szabály "nem definiált" értékre értékeli ki a következőt:
 * IoT Hub a végpontot Holtként jelöli meg, vagy
-* A végponttól érkezett hibák. 
+* A végponttól érkezett hibák.
 
 Ez a kategória nem tartalmaz konkrét hibákat az üzenetekről (például az eszköz-szabályozási hibákról), amelyek az "eszköz telemetria" kategóriában vannak bejelentve.
 
@@ -134,17 +130,24 @@ Ez a kategória nem tartalmaz konkrét hibákat az üzenetekről (például az e
     "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"westus"
         }
     ]
 }
 ```
+
+További részletek az útválasztási diagnosztikai naplókról:
+
+* [Útválasztási diagnosztikai napló hibakódok listája](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [Útválasztási diagnosztikai naplók operationNames listája](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>Eszköz telemetria
 
@@ -315,7 +318,7 @@ A közvetlen metódusok kategória az egyes eszközökre küldött kérelem-vál
 
 Az elosztott nyomkövetési kategória a nyomkövetési környezet fejlécét tartalmazó üzenetek korrelációs azonosítóit követi nyomon. A naplók teljes körű engedélyezéséhez az ügyféloldali kódot a következő elemzéssel kell frissíteni, [és diagnosztizálni kell a IoT-alkalmazásokat végpontok közötti IoT hub elosztott nyomkövetéssel (előzetes verzió)](iot-hub-distributed-tracing.md).
 
-Vegye figyelembe `correlationId` , hogy a W3C- [nyomkövetési kontextusra](https://github.com/w3c/trace-context) vonatkozó javaslatnak megfelel, `trace-id` ahol a tartalmaz egy `span-id`és egy.
+Vegye figyelembe, hogy `correlationId` a W3C- [nyomkövetési kontextusra](https://github.com/w3c/trace-context) vonatkozó javaslatnak megfelel, ahol a tartalmaz egy `trace-id` és egy `span-id` .
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (eszközről a felhőbe irányuló) naplók
 
@@ -342,9 +345,9 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 }
 ```
 
-`durationMs` Itt nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
+Itt `durationMs` nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
@@ -378,7 +381,7 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
 | **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
@@ -410,7 +413,7 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Végpontneve** | Sztring | Az útválasztási végpont neve |
 | **endpointType** | Sztring | Az útválasztási végpont típusa |
@@ -543,7 +546,7 @@ Az IoT-hubok állapotának vizsgálatához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Navigáljon **Service Health** > **erőforrás-állapothoz**.
+2. Navigáljon **Service Health**  >  **erőforrás-állapothoz**.
 
 3. A legördülő listából válassza ki az előfizetést, majd válassza az **IoT hub** lehetőséget az erőforrástípus mezőben.
 

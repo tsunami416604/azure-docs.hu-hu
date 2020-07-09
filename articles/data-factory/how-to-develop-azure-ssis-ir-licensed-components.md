@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: b7079262dc7db4f4a00a9dc79193da1574c7153a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605857"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Fizetős vagy licencelt egyéni összetevők telepítése az Azure-SSIS Integration Runtime-hoz
@@ -41,9 +40,9 @@ Az alábbi ábrán az új változókat használó, harmadik féltől származó 
 ![Licencelt összetevők telepítése](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
 ## <a name="instructions"></a>Utasítások
-1. A független szoftvergyártók a licencelt összetevőiket különböző SKU-ban vagy rétegekben (például egyetlen csomópont, legfeljebb 5 csomópont, legfeljebb 10 csomópont stb.) használhatják. Az ISV biztosítja a megfelelő termékkulcsot, amikor az ügyfelek vásárolnak egy terméket. Az ISV olyan Azure Storage BLOB-tárolót is biztosíthat, amely egy ISV telepítési parancsfájlt és egy kapcsolódó fájlt tartalmaz. Az ügyfelek átmásolhatják ezeket a fájlokat a saját tárolóba, és módosíthatják azokat a saját termékkulcs használatával (például a `IsvSetup.exe -pid xxxx-xxxx-xxxx`futtatásával). Az ügyfelek ezt követően a tároló SAS URI-ja segítségével is kioszthatják vagy konfigurálhatják a Azure-SSIS IRt paraméterként. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
+1. A független szoftvergyártók a licencelt összetevőiket különböző SKU-ban vagy rétegekben (például egyetlen csomópont, legfeljebb 5 csomópont, legfeljebb 10 csomópont stb.) használhatják. Az ISV biztosítja a megfelelő termékkulcsot, amikor az ügyfelek vásárolnak egy terméket. Az ISV olyan Azure Storage BLOB-tárolót is biztosíthat, amely egy ISV telepítési parancsfájlt és egy kapcsolódó fájlt tartalmaz. Az ügyfelek átmásolhatják ezeket a fájlokat a saját tárolóba, és módosíthatják azokat a saját termékkulcs használatával (például a futtatásával `IsvSetup.exe -pid xxxx-xxxx-xxxx` ). Az ügyfelek ezt követően a tároló SAS URI-ja segítségével is kioszthatják vagy konfigurálhatják a Azure-SSIS IRt paraméterként. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-2. A Azure-SSIS IR kiosztása vagy újrakonfigurálása után az ISV-telepítő minden csomóponton fut, hogy lekérdezze a Windows környezeti `SSIS_CLUSTERID` változóit `SSIS_CLUSTERNODECOUNT`, és. Ezután a Azure-SSIS IR elküldi a fürt AZONOSÍTÓját és a licenccel rendelkező termék termékkulcsot az ISV aktiválási kiszolgáló számára egy aktiválási kulcs létrehozásához.
+2. A Azure-SSIS IR kiosztása vagy újrakonfigurálása után az ISV-telepítő minden csomóponton fut, hogy lekérdezze a Windows környezeti változóit, `SSIS_CLUSTERID` és `SSIS_CLUSTERNODECOUNT` . Ezután a Azure-SSIS IR elküldi a fürt AZONOSÍTÓját és a licenccel rendelkező termék termékkulcsot az ISV aktiválási kiszolgáló számára egy aktiválási kulcs létrehozásához.
 
 3. Az aktiválási kulcs kézhezvétele után az ISV telepítő helyileg képes tárolni a kulcsot az egyes csomópontokon (például a beállításjegyzékben).
 

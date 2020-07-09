@@ -2,13 +2,12 @@
 title: VMware áttelepítési lehetőség kiválasztása Azure Migrate kiszolgáló áttelepítésével | Microsoft Docs
 description: Áttekintést nyújt a VMware virtuális gépek Azure-ba való áttelepítésének lehetőségeiről Azure Migrate Server áttelepítéssel
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/08/2020
+ms.openlocfilehash: 56398f8bf78cb48b6cfe7a90ffdcbdb72743dc93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76028712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769625"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware áttelepítési lehetőség kiválasztása
 
@@ -18,16 +17,14 @@ A VMware virtuális gépeket áttelepítheti az Azure-ba az Azure Migrate Server
 - Áttelepítés ügynökkel a replikáláshoz. Telepítsen egy ügynököt a virtuális gépre a replikáláshoz.
 
 
-
-
 ## <a name="compare-migration-methods"></a>Áttelepítési módszerek összehasonlítása
 
-A kiválasztott összehasonlítások segítségével eldöntheti, hogy melyik módszert kell használni. Az [ügynök](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) nélküli és az [ügynök-alapú](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) áttelepítés teljes támogatási követelményeit is ellenőrizheti.
+A kiválasztott összehasonlítások segítségével eldöntheti, hogy melyik módszert kell használni. Az [ügynök](migrate-support-matrix-vmware-migration.md#agentless-migration) nélküli és az [ügynök-alapú](migrate-support-matrix-vmware-migration.md#agent-based-migration) áttelepítés teljes támogatási követelményeit is ellenőrizheti.
 
 **Beállítás** | **Ügynök nélküli** | **Ügynök-alapú**
 --- | --- | ---
 **Azure-engedélyek** | Azure Migrate projekt létrehozásához, valamint a Azure Migrate berendezés telepítésekor létrehozott Azure AD-alkalmazások regisztrálásához engedélyekre van szükség. | Közreműködői engedélyekkel kell rendelkeznie az Azure-előfizetéshez. 
-**Egyidejű replikáció** | Egy vCenter Server legfeljebb 100 virtuális gépet lehet replikálni egyszerre.<br/> Ha több mint 50 virtuális gépet szeretne áttelepíteni, hozzon létre több köteget a virtuális gépekről.<br/> Ha több replikálást végez, a szolgáltatás hatással lesz a teljesítményre. | NA
+**Replikáció** | Egy vCenter Server legfeljebb 300 virtuális gépet lehet replikálni egyszerre.<br/> Ha több mint 50 virtuális gépet szeretne áttelepíteni, hozzon létre több köteget a virtuális gépekről.<br/> Ha több replikálást végez, a szolgáltatás hatással lesz a teljesítményre.<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.| A replikálási kapacitás a replikációs berendezés skálázásával nő.
 **Berendezések üzembe helyezése** | A [Azure Migrate berendezést](migrate-appliance.md) a helyszínen helyezik üzembe. | A [Azure Migrate replikációs berendezést](migrate-replication-appliance.md) a helyszínen helyezik üzembe.
 **Site Recovery kompatibilitás** | Kompatibilis. | Nem lehet replikálni Azure Migrate-kiszolgáló áttelepítésével, ha Site Recovery használatával beállította egy gép replikálását.
 **Céllemez** | Felügyelt lemezek | Felügyelt lemezek
@@ -35,23 +32,21 @@ A kiválasztott összehasonlítások segítségével eldöntheti, hogy melyik m�
 **Továbbító lemezek** | Nem támogatott | Támogatott
 **UEFI-rendszerindítás** | Nem támogatott | Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva.<br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
 
-
-## <a name="deployment-steps-comparison"></a>Telepítési lépések összehasonlítása
+## <a name="compare-deployment-steps"></a>Telepítési lépések összehasonlítása
 
 A korlátozások áttekintése után megismerheti, hogy az egyes megoldások üzembe helyezésével kapcsolatos lépések segítenek eldönteni, hogy melyik lehetőséget kell választania.
 
 **Tevékenység** | **Részletek** |**Ügynök nélküli** | **Ügynök-alapú**
 --- | --- | --- | ---
-**Értékelés** | Az áttelepítés előtt mérje fel a kiszolgálókat.  Az értékelés nem kötelező. Javasoljuk, hogy az áttelepítés előtt mérje fel a gépeket, de nem kell. <br/><br/> Az értékeléshez Azure Migrate egy könnyű berendezést állít be a virtuális gépek felderítéséhez és értékeléséhez. | Ha az értékelés után ügynök nélküli áttelepítést futtat, akkor az ügynök nélküli Migrálás során az értékeléshez beállított Azure Migrate berendezés is használatos.  |  Ha az értékelés után ügynök-alapú áttelepítést futtat, az értékeléshez beállított berendezés nem használatos az ügynök nélküli áttelepítés során. A készüléket meghagyhatja, vagy eltávolíthatja, ha nem szeretné további felderítést és értékelést végezni.
-**VMware-kiszolgálók és virtuális gépek előkészítése áttelepítésre** | Konfiguráljon számos beállítást a VMware-kiszolgálókon és a virtuális gépeken. | Kötelező | Kötelező
-**A kiszolgáló áttelepítési eszközének hozzáadása** | Adja hozzá a Azure Migrate Server áttelepítési eszközt a Azure Migrate projektben. | Kötelező | Kötelező
-**A Azure Migrate berendezés üzembe helyezése** | Hozzon létre egy egyszerűsített készüléket egy VMware virtuális gépen a virtuális gépek felderítéséhez és értékeléséhez. | Kötelező | Nem kötelező.
-**A mobilitási szolgáltatás telepítése virtuális gépeken** | Telepítse a mobilitási szolgáltatást a replikálni kívánt virtuális gépekre | Nem kötelező | Kötelező
-**A Azure Migrate kiszolgáló áttelepítésének replikációs berendezésének üzembe helyezése** | Készülék beállítása VMware virtuális gépen a virtuális gépek felderítése és a virtuális gépeken futó mobilitási szolgáltatás és a Azure Migrate-kiszolgáló áttelepítése közötti híd létrehozásához | Nem kötelező | Kötelező
+**A Azure Migrate berendezés üzembe helyezése** | Egy, a VMware virtuális gépen futó, kis méretű készülék.<br/><br/> A berendezés a gépek felderítésére és értékelésére, valamint a gépek ügynök nélküli áttelepítéssel történő áttelepítésére szolgál. | Kötelező.<br/><br/> Ha már beállította a készüléket az értékeléshez, ugyanazt a készüléket használhatja az ügynök nélküli áttelepítés számára. | Nem kötelező.<br/><br/> Ha már beállított egy készüléket az értékeléshez, hagyja azt helyben, vagy távolítsa el, ha elkészült az értékeléssel.
+**A kiszolgáló-Assessment eszköz használata** | Mérje fel a gépeket a Azure Migrate: Server Assessment Tool eszközzel. | A gépeket a Migrálás előtt is felhasználhatja, de nem kell. | Az értékelés nem kötelező | Az értékelés nem kötelező.
+**A kiszolgáló áttelepítési eszközének használata** | Adja hozzá a Azure Migrate Server áttelepítési eszközt a Azure Migrate projektben. | Kötelező | Kötelező
+**A VMware előkészítése áttelepítésre** | Konfigurálja a beállításokat a VMware-kiszolgálókon és a virtuális gépeken. | Kötelező | Kötelező
+**A mobilitási szolgáltatás telepítése virtuális gépeken** | A mobilitási szolgáltatás minden olyan virtuális gépen fut, amelyet replikálni szeretne | Nem kötelező | Kötelező
+**A replikációs berendezés üzembe helyezése** | A [replikációs berendezés](migrate-replication-appliance.md) ügynök-alapú áttelepítéshez használatos. A virtuális gépeken futó mobilitási szolgáltatás és a kiszolgáló áttelepítése között csatlakozik. | Nem kötelező | Kötelező
 **Virtuális gépek replikálása**. Engedélyezze a virtuális gép replikálását. | Replikációs beállítások konfigurálása és a replikálni kívánt virtuális gépek kiválasztása | Kötelező | Kötelező
 **Migrálási teszt futtatása** | Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e. | Kötelező | Kötelező
 **Teljes áttelepítés futtatása** | Telepítse át a virtuális gépeket. | Kötelező | Kötelező
-
 
 
 

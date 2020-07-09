@@ -9,15 +9,14 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792347"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek kódolása Azure Logic Appsban Enterprise Integration Pack
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek kódolása az Azure Logic Appsben az Enterprise Integration Packkel
 
-Az X12-összekötő kódolásával érvényesítheti az EDI-és a Partner-specifikus tulajdonságokat, konvertálhatja az XML-kódolású üzeneteket a csomópontban található EDI-tranzakciótípusokba, valamint műszaki nyugtázási, funkcionális nyugtát vagy mindkettőt igényelhet.
+Az X12-üzenetek kódolása összekötővel ellenőrizheti az EDI-t és a partnerspecifikus tulajdonságokat, XML-kódolású üzeneteket konvertálhat át EDI-tranzakciókészletekké az üzenetváltásban, valamint műszaki nyugtázást és/vagy funkcionális nyugtázást igényelhet.
 Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
@@ -70,7 +69,7 @@ Ha úgy dönt, hogy identitások alapján kódolja a X12-üzeneteket, adja meg a
    
 ![Adja meg a küldő és a fogadó identitását, és válassza ki a kódolni kívánt XML-üzenetet.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>X12-Kódolás részletei
+## <a name="x12-encode-details"></a>Az X12-kódolás részletei
 
 A X12 kódolású összekötő a következő feladatokat hajtja végre:
 

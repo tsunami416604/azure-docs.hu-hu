@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202993"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Érvényesítési műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az érvényesítési technikai profil bármely protokoll, például [Azure Active Directory](active-directory-technical-profile.md) vagy [REST API](restful-technical-profile.md)általános műszaki profilja. Az érvényesítési technikai profil visszaadja a kimeneti jogcímeket, vagy visszaadja a 4xx HTTP-állapotkódot a következő adatokkal. További információ: [visszatérési hibaüzenet](restful-technical-profile.md#returning-error-message)
+Az érvényesítési technikai profil bármely protokoll, például [Azure Active Directory](active-directory-technical-profile.md) vagy [REST API](restful-technical-profile.md)általános műszaki profilja. Az érvényesítési technikai profil visszaadja a kimeneti jogcímeket, vagy visszaadja a 4xx HTTP-állapotkódot a következő adatokkal. További információ: [visszatérési hibaüzenet](restful-technical-profile.md#returning-validation-error-message)
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -47,7 +47,7 @@ Az önellenőrzött műszaki profilok meghatározhatnak egy érvényesítési m�
 
 A **ValidationTechnicalProfiles** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A hivatkozó technikai profil kimeneti jogcímeinek érvényesítésére szolgáló technikai profil. |
 
@@ -55,13 +55,13 @@ A **ValidationTechnicalProfile** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend vagy a szülő házirendben már definiált technikai profil azonosítója. |
-|ContinueOnError|Nem| Annak jelzése, hogy a további érvényesítési műszaki profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil hibát jelez. Lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és egy hibaüzenetet ad vissza). |
-|ContinueOnSuccess | Nem | Annak jelzése, hogy a további ellenőrzési profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil sikeres. Lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`az, ami azt jelenti, hogy a további ellenőrzési profilok feldolgozása továbbra is fennáll. |
+| ReferenceId | Yes | A házirend vagy a szülő házirendben már definiált technikai profil azonosítója. |
+|ContinueOnError|No| Annak jelzése, hogy a további érvényesítési műszaki profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil hibát jelez. Lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és egy hibaüzenetet ad vissza). |
+|ContinueOnSuccess | No | Annak jelzése, hogy a további ellenőrzési profilok érvényesítése folytatódjon-e, ha az érvényesítési technikai profil sikeres. Lehetséges értékek: `true` vagy `false` . Az alapértelmezett érték az `true` , ami azt jelenti, hogy a további ellenőrzési profilok feldolgozása továbbra is fennáll. |
 
 A **ValidationTechnicalProfile** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Előfeltételei | 0:1 | Azon előfeltételek listája, amelyeknek meg kell felelniük az érvényesítési technikai profil végrehajtásához. |
 
@@ -69,25 +69,25 @@ Az **előfeltétel** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| `Type` | Igen | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Vagy `ClaimsExist` meg van adva annak biztosítása érdekében, hogy a rendszer végrehajtsa a műveleteket, ha a megadott jogcímek szerepelnek `ClaimEquals` a felhasználó jelenlegi jogcímek készletében, vagy ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
-| `ExecuteActionsIf` | Igen | Azt jelzi, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani, ha a teszt igaz vagy hamis. |
+| `Type` | Yes | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Vagy `ClaimsExist` meg van adva annak biztosítása érdekében, hogy a rendszer végrehajtsa a műveleteket, ha a megadott jogcímek szerepelnek a felhasználó jelenlegi jogcímek készletében, vagy `ClaimEquals` Ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
+| `ExecuteActionsIf` | Yes | Azt jelzi, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani, ha a teszt igaz vagy hamis. |
 
 Az **előfeltétel** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
-| Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha ez a jelölőnégyzet be van `ClaimsExist`jelölve, akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus értéke `ClaimEquals`, ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
-| Műveletek | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke a következőre van beállítva `SkipThisValidationTechnicalProfile`:. Megadja, hogy a társított érvényesítési technikai profilt ne lehessen végrehajtani. |
+| Érték | 1: n | Az ellenőrzés által használt adatértékek. Ha ez a jelölőnégyzet be van jelölve `ClaimsExist` , akkor ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Ha az ellenőrzési típus értéke `ClaimEquals` , ez a mező egy ClaimTypeReferenceId határoz meg a lekérdezéshez. Míg egy másik érték elem tartalmazza az ellenőrizendő értéket.|
+| Műveletek | 1:1 | Az a művelet, amelyet akkor kell elvégezni, ha az előkészítési lépésen belüli előfeltétel-ellenőrzési érték igaz. A **művelet** értéke a következőre van beállítva: `SkipThisValidationTechnicalProfile` . Megadja, hogy a társított érvényesítési technikai profilt ne lehessen végrehajtani. |
 
 ### <a name="example"></a>Példa
 
 A következő példa ezeket az ellenőrzési technikai profilokat használja:
 
 1. Az első érvényesítési technikai profil ellenőrzi a felhasználói hitelesítő adatokat, és nem folytatja a hibát, ha hiba történik, például érvénytelen Felhasználónév vagy helytelen jelszó.
-2. A következő érvényesítési technikai profil nem hajtható végre, ha a userType jogcím nem létezik, vagy ha a userType értéke `Partner`. Az érvényesítési technikai profil megpróbálja beolvasni a felhasználói profilt a belső ügyfél-adatbázisból, és folytatja a hibát, például REST API a szolgáltatás nem érhető el, vagy belső hiba történik.
-3. Az utolsó érvényesítés technikai profilja nem hajtható végre, ha a userType jogcím nem létezik, vagy ha a userType értéke `Customer`. Az érvényesítési technikai profil megpróbálja beolvasni a felhasználói profilt a belső partner adatbázisából, és a hiba bekövetkezésekor folytatja, például REST API szolgáltatás nem érhető el, vagy belső hiba történt.
+2. A következő érvényesítési technikai profil nem hajtható végre, ha a userType jogcím nem létezik, vagy ha a userType értéke `Partner` . Az érvényesítési technikai profil megpróbálja beolvasni a felhasználói profilt a belső ügyfél-adatbázisból, és folytatja a hibát, például REST API a szolgáltatás nem érhető el, vagy belső hiba történik.
+3. Az utolsó érvényesítés technikai profilja nem hajtható végre, ha a userType jogcím nem létezik, vagy ha a userType értéke `Customer` . Az érvényesítési technikai profil megpróbálja beolvasni a felhasználói profilt a belső partner adatbázisából, és a hiba bekövetkezésekor folytatja, például REST API szolgáltatás nem érhető el, vagy belső hiba történt.
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >

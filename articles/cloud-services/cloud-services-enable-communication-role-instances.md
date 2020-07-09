@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386340"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure-beli szerepkör-példányok kommunikációjának engedélyezése
@@ -255,7 +254,7 @@ A következő kódrészlet az előző ábrán látható szerepkörökhöz tartoz
 
 Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy **NetworkTrafficRules** elemet a **ServiceDefinition** elemhez a szolgáltatás definíciós fájljában.
 
-### <a name="scenario-1"></a>1. példa
+### <a name="scenario-1"></a>1\. példa
 Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom engedélyezése.
 
 ```xml
@@ -274,7 +273,7 @@ Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom eng
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a>2. példa
+### <a name="scenario-2"></a>2\. példa
 Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2**közötti hálózati forgalmat engedélyezi.
 
 ```xml
@@ -293,7 +292,7 @@ Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2**köz�
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>3. példa
+### <a name="scenario-3"></a>3\. példa
 A csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalmat engedélyezi, és **WorkerRole1** a **WorkerRole2**.
 
 ```xml
@@ -322,7 +321,7 @@ A csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalmat 
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>4. példa
+### <a name="scenario-4"></a>4\. példa
 A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** **és a** **WorkerRole1** közötti hálózati forgalmat engedélyezi a **WorkerRole2**.
 
 ```xml

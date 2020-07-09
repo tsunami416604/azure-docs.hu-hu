@@ -6,16 +6,15 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645531"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors újbóli belépés
 A Reliable Actors futtatókörnyezet alapértelmezés szerint lehetővé teszi a logikai hívás kontextus-alapú újbóli belépés. Ez lehetővé teszi, hogy a szereplők újra bejelentkeznek, ha ugyanabban a hívási környezeti láncban vannak. Az A-Actor például üzenetet küld a B színésznek, aki üzenetet küld a C-nek. Az üzenet feldolgozásának részeként, ha a színész A "A" résztvevőt hívja meg, az üzenet újra bejelentkező, így engedélyezve lesz. A másik hívási környezet részét képező más üzeneteket a rendszer letiltja a (z)
 
-Két lehetőség érhető el az `ActorReentrancyMode` enumerálásban definiált Actor újbóli belépés:
+Két lehetőség érhető el az enumerálásban definiált Actor újbóli belépés `ActorReentrancyMode` :
 
 * `LogicalCallContext`(alapértelmezett viselkedés)
 * `Disallowed`– letiltja a újbóli belépés
@@ -34,9 +33,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-A újbóli belépés a regisztráció során konfigurálható a `ActorService`beállításokban. A beállítás a Actors szolgáltatásban létrehozott összes színészi példányra vonatkozik.
+A újbóli belépés a regisztráció során konfigurálható a `ActorService` beállításokban. A beállítás a Actors szolgáltatásban létrehozott összes színészi példányra vonatkozik.
 
-A következő példa egy Actor szolgáltatást mutat be, amely a újbóli belépés módot `ActorReentrancyMode.Disallowed`állítja be. Ebben az esetben, ha egy színész visszaküldési üzenetet küld egy másik szereplőnek, a rendszer a `FabricException` típus kivételét fogja eldobni.
+A következő példa egy Actor szolgáltatást mutat be, amely a újbóli belépés módot állítja be `ActorReentrancyMode.Disallowed` . Ebben az esetben, ha egy színész visszaküldési üzenetet küld egy másik szereplőnek, a rendszer a típus kivételét `FabricException` fogja eldobni.
 
 ```csharp
 static class Program

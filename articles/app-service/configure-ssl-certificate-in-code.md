@@ -6,10 +6,9 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811701"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>TLS/SSL-tanúsítvány használata a kódban Azure App Service
@@ -29,7 +28,7 @@ A következő útmutató követése:
 
 ## <a name="find-the-thumbprint"></a>Az ujjlenyomat megkeresése
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások**, majd a **titkos kulcsú tanúsítványok (. pfx)** vagy a **nyilvános kulcsú tanúsítványok (. cer)** lehetőséget.
 
@@ -45,16 +44,16 @@ Az alkalmazás kódjában található tanúsítvány eléréséhez adja hozzá a
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-Az összes tanúsítvány elérhetővé tételéhez állítsa a értéket a `*`következőre:.
+Az összes tanúsítvány elérhetővé tételéhez állítsa a értéket a következőre: `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Tanúsítvány betöltése Windows-alkalmazásokban
 
-Az `WEBSITE_LOAD_CERTIFICATES` Alkalmazásbeállítások lehetővé teszi, hogy a megadott tanúsítványok elérhetők legyenek a Windows-tanúsítványtárolóban, és a hely az [árképzési szinttől](overview-hosting-plans.md)függ:
+Az Alkalmazásbeállítások `WEBSITE_LOAD_CERTIFICATES` lehetővé teszi, hogy a megadott tanúsítványok elérhetők legyenek a Windows-tanúsítványtárolóban, és a hely az [árképzési szinttől](overview-hosting-plans.md)függ:
 
 - **Elkülönített** réteg – [helyi Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
 - Minden egyéb réteg – az [aktuális Settingsnew](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-A C#-kódban a Tanúsítvány ujjlenyomata alapján éri el a tanúsítványt. A következő kód betölti az ujjlenyomattal `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`rendelkező tanúsítványt.
+A C#-kódban a Tanúsítvány ujjlenyomata alapján éri el a tanúsítványt. A következő kód betölti az ujjlenyomattal rendelkező tanúsítványt `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
 ```csharp
 using System;
@@ -128,7 +127,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-A TLS/SSL-tanúsítványnak a Node. js, a PHP, a Python, a Java vagy a Ruby fájlból való betöltésével kapcsolatos információkért tekintse meg a megfelelő nyelvi vagy webes platform dokumentációját.
+Ha szeretné megtekinteni, hogyan tölthető be a TLS/SSL-tanúsítvány egy Node.js, PHP, Python, Java vagy Ruby fájlból, tekintse meg a megfelelő nyelvi vagy webes platform dokumentációját.
 
 ## <a name="load-certificate-from-file"></a>Tanúsítvány betöltése fájlból
 
@@ -157,7 +156,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-A TLS/SSL-tanúsítványnak a Node. js, a PHP, a Python, a Java vagy a Ruby fájlból való betöltésével kapcsolatos információkért tekintse meg a megfelelő nyelvi vagy webes platform dokumentációját.
+Ha szeretné megtekinteni, hogyan tölthető be a TLS/SSL-tanúsítvány egy Node.js, PHP, Python, Java vagy Ruby fájlból, tekintse meg a megfelelő nyelvi vagy webes platform dokumentációját.
 
 ## <a name="more-resources"></a>További erőforrások
 

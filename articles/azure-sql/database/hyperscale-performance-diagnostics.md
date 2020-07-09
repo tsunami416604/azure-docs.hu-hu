@@ -10,12 +10,11 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: c9b69b751067ba36daad614b84367aee882d17b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324392"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL nagy kapacitású Performance hibaelhárítási diagnosztika
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +27,7 @@ Minden Azure SQL Database szolgáltatási szinten a naplózási [ráta irányít
 
 A következő várakozási típusok (a [sys. dm_os_wait_statsban](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) azt ismertetik, hogy miért szabályozható a naplózási sebesség az elsődleges számítási replika esetén:
 
-|Várakozás típusa    |Leírás                         |
+|Várakozás típusa    |Description                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Akkor következik be, amikor a nagy kapacitású-adatbázis elsődleges számítási csomópontjának napló-generálási sebessége a kiszolgáló (k) késleltetett naplójának használata miatt van szabályozva.         |
 |RBIO_RG_DESTAGE        | Akkor következik be, amikor a nagy kapacitású-adatbázis számítási csomópontjának naplójának generálási arányát a rendszer a hosszú távú napló-tárolás késleltetett naplózása miatt szabályozza.         |
@@ -41,7 +40,7 @@ A számítási replikák nem gyorsítótárazzák helyileg az adatbázis teljes 
 
 Ha az olvasás egy számítási replikán van kiadva, ha az adatok nem léteznek a puffer-készletben vagy a helyi RBPEX-gyorsítótárban, a rendszer getPage (pageId, LSN) függvény hívását állítja ki, és a lapot beolvassa a megfelelő oldal-kiszolgálóról. Az egyoldalas kiszolgálókról érkező olvasások távoli olvasások, így lassabbak, mint a helyi RBPEX beolvasása. Az IO-vel kapcsolatos teljesítményproblémák hibaelhárításakor tudnia kell, hogy hány IOs-t tettek elérhetővé viszonylag lassabb távoli oldal-kiszolgáló olvasásával.
 
-Számos DMV és bővített eseménynek van olyan oszlopa és mezője, amely meghatározza, hogy a rendszer milyen számú távoli olvasást hajt végre a lapozófájlból, ami összehasonlítható az összes olvasási művelettel. A Query Store a lekérdezés futási idejének statisztikájának részeként rögzíti a távoli olvasásokat is.
+Több dinamikus felügyelt nézet (DMV) és bővített eseménynek van olyan oszlopa és mezője, amely meghatározza a kiszolgálóoldali kiszolgálóról érkező távoli olvasások számát, ami összehasonlítható az összes olvasási művelettel. A Query Store a lekérdezés futási idejének statisztikájának részeként rögzíti a távoli olvasásokat is.
 
 - A jelentéskészítő lap kiszolgálójának olvasási oszlopai a végrehajtás DMV és a katalógusok nézeteiben érhetők el, például:
 
@@ -79,10 +78,10 @@ A RBPEX által az összes többi adatfájlon végzett összesített olvasások a
 
 ### <a name="data-reads"></a>Adatolvasások
 
-- Ha az olvasásokat egy számítási replikán az SQL Database motor állítja ki, akkor azokat a helyi RBPEX-gyorsítótár vagy a távoli lapok kiszolgálói, vagy a kettő kombinációja, ha több oldalt olvas be.
+- Ha az olvasásokat a SQL Server adatbázismotor állítja ki egy számítási replikán, akkor azokat a helyi RBPEX-gyorsítótár vagy a távoli lapok kiszolgálói vagy a kettő kombinációja, ha több oldalt olvas be.
 - Ha a számítási replika egy adott fájl egyes lapjait olvassa be, például file_id 1 értéket, ha ezek az adatok kizárólag a helyi RBPEX-gyorsítótárban találhatók, az olvasáshoz tartozó összes IO-t file_id 0 (RBPEX) értékre kell kiszámítani. Ha az adatok némelyike a helyi RBPEX-gyorsítótárban található, és néhány rész egy távoli oldalon található, akkor az i/o-t a rendszer a RBPEX szolgáltatásból kiszolgált rész file_id felé haladva a 0 értékre veszi figyelembe, és a távoli oldal kiszolgálója által kiszolgált rész file_id 1.
 - Ha egy számítási replika egy adott [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) lévő oldalt kér le, ha a lap kiszolgálója nem a kért LSN, a rendszer a számítási replikán lévő olvasás után megvárja, amíg a kiszolgáló felveszi a lapot a számítási replikába. A számítási replikán lévő egyik oldalról beolvasott adatok esetén a PAGEIOLATCH_ * WAIT típus jelenik meg, ha az IO-ra várakozik. A nagy kapacitású-ben ez a várakozási idő magában foglalja a LSN kért oldalának begyűjtéséhez szükséges időt, valamint a lap kiszolgálóról a számítási replikára történő átviteléhez szükséges időt.
-- A nagyméretű olvasások, például az olvasás előtt gyakran a ["Scatter-gather" olvasások](/sql/relational-databases/reading-pages/)használatával történik. Így egyszerre akár 4 MB-nyi lapot is beolvashat, így egyetlen beolvasható az SQL Database motorban. Ha azonban a beolvasott adatokat RBPEX-ban végzik, akkor ezek az olvasások több egyéni 8 KB-os olvasásnak vannak elküldve, mivel a puffer-készlet és a RBPEX mindig 8 KB-os lapokat használ. Ennek eredményeképpen a RBPEX által látott olvasási IOs-szám nagyobb lehet, mint a motor által elvégzett IOs tényleges száma.
+- A nagyméretű olvasások, például az olvasás előtt gyakran a ["Scatter-gather" olvasások](/sql/relational-databases/reading-pages/)használatával történik. Így egyszerre akár 4 MB-nyi lapot is beolvashat, így egyetlen beolvasható a SQL Server-adatbázismotor. Ha azonban a beolvasott adatokat RBPEX-ban végzik, akkor ezek az olvasások több egyéni 8 KB-os olvasásnak vannak elküldve, mivel a puffer-készlet és a RBPEX mindig 8 KB-os lapokat használ. Ennek eredményeképpen a RBPEX által látott olvasási IOs-szám nagyobb lehet, mint a motor által elvégzett IOs tényleges száma.
 
 ### <a name="data-writes"></a>Adatírások
 
@@ -97,9 +96,9 @@ A RBPEX által az összes többi adatfájlon végzett összesített olvasások a
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Adat IO az erőforrás-kihasználtsági statisztikában
 
-A nem nagy kapacitású adatbázisokban az adatfájlok összevont olvasási és írási IOPS az [erőforrás-irányítási](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) adatIOPSi korláthoz viszonyítva a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetekben szerepelnek az `avg_data_io_percent` oszlopban. Ugyanezt az értéket a portálon _adatio-százalékként_kell jelenteni.
+A nem nagy kapacitású adatbázisokban az adatfájlok összevont olvasási és írási IOPS az [erőforrás-irányítási](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) adatIOPSi korláthoz viszonyítva a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetekben szerepelnek az `avg_data_io_percent` oszlopban. Ugyanezt az értéket jelenti a Azure Portal _Adatio százalékként_.
 
-A nagy kapacitású-adatbázisokban ez az oszlop csak a számítási replikán lévő helyi tárterületre vonatkozó korláttal, kifejezetten a RBPEX és a értékekkel kapcsolatos IOPS-kihasználtságot jelenti `tempdb` . Ebben az oszlopban az 100% érték azt jelzi, hogy az erőforrás-szabályozás korlátozza a helyi tárterület IOPS. Ha ez egy teljesítménnyel kapcsolatos problémával összefügg, állítsa be úgy a számítási feladatot, hogy kevesebb IO-t állítson elő, vagy növelje az adatbázis-szolgáltatás célkitűzését, hogy növelje az erőforrás-szabályozás _maximális IOPS_ [korlátját](resource-limits-vcore-single-databases.md). A RBPEX-olvasások és-írások erőforrás-szabályozása esetében a rendszer az egyes 8 KB-os IOs-et is megszámolja, nem pedig nagyobb IOs-t, amelyet az SQL Database motor bocsát ki.
+A nagy kapacitású-adatbázisokban ez az oszlop csak a számítási replikán lévő helyi tárterületre vonatkozó korláttal, kifejezetten a RBPEX és a értékekkel kapcsolatos IOPS-kihasználtságot jelenti `tempdb` . Ebben az oszlopban az 100% érték azt jelzi, hogy az erőforrás-szabályozás korlátozza a helyi tárterület IOPS. Ha ez egy teljesítménnyel kapcsolatos problémával összefügg, állítsa be úgy a számítási feladatot, hogy kevesebb IO-t állítson elő, vagy növelje az adatbázis-szolgáltatás célkitűzését, hogy növelje az erőforrás-szabályozás _maximális IOPS_ [korlátját](resource-limits-vcore-single-databases.md). A RBPEX-olvasások és-írások erőforrás-szabályozása esetében a rendszer az egyes 8 KB-os IOs-et, nem pedig a SQL Server adatbázismotor által kiállított nagyobb IOs-t számítja fel.
 
 A távoli lapokon tárolt adatio-kiszolgálók nem jelennek meg az erőforrás-felhasználási nézetekben vagy a portálon, de a [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF szerepel a korábban feljegyzett módon.
 

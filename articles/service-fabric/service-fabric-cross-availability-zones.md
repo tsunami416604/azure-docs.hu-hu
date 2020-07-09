@@ -5,12 +5,11 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259371"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -140,6 +139,10 @@ A standard Load Balancer és a standard nyilvános IP-címek új képességeket 
 
 >[!NOTE]
 > A standard sablon egy olyan NSG hivatkozik, amely alapértelmezés szerint engedélyezi az összes kimenő forgalmat. A bejövő forgalom a Service Fabric felügyeleti műveletekhez szükséges portokra korlátozódik. A NSG-szabályok módosíthatók a követelmények teljesítése érdekében.
+
+>[!NOTE]
+> A standard SKU-SLB használó Service Fabric fürtöknek biztosítaniuk kell, hogy minden csomópont-típushoz olyan szabály legyen, amely engedélyezi a kimenő forgalmat az 443-as porton. Ez a fürt beállításának befejezéséhez szükséges, és az ilyen szabályok nélküli központi telepítések sikertelenek lesznek.
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Zónák engedélyezése virtuálisgép-méretezési csoportokban
 Ha egy zónát szeretne engedélyezni egy virtuálisgép-méretezési csoporton, a következő három értéket kell tartalmaznia a virtuálisgép-méretezési csoport erőforrásaiban.

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388986"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Forgatókönyv: REST API-jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
@@ -123,7 +123,7 @@ A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat ha
 1. Illessze be a `<UserJourneys>` into the Extensions (kiterjesztések) fájlba a elem bezárását követően `<ClaimsProviders>` .
 1. Keresse meg a t `<UserJourney Id="SignUpOrSignIn">` , és adja hozzá az alábbi előkészítési lépést az utolsó előtt.
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -133,7 +133,7 @@ A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat ha
 
 1. Az utolsó előkészítési lépés újrabontása a `Order` to értékre való módosításával `8` . Az utolsó két előkészítési lépésnek a következőhöz hasonlóan kell kinéznie:
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -171,9 +171,9 @@ Ha vissza szeretné `balance` állítani a jogcímet a függő entitás alkalmaz
 </RelyingParty>
 ```
 
-Ismételje meg ezt a lépést a **ProfileEdit. XML**és a **PasswordReset. XML** felhasználói útvonalon.
+Ismételje meg ezt a lépést a **ProfileEdit.xml**, és **PasswordReset.xml** a felhasználói útvonalakat.
 
-Mentse a módosított fájlokat: *TrustFrameworkBase. XML*és *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*és *PasswordReset. XML*. 
+Mentse a módosított fájlokat: *TrustFrameworkBase.xml*, *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*és *PasswordReset.xml*. 
 
 ## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
@@ -181,7 +181,7 @@ Mentse a módosított fájlokat: *TrustFrameworkBase. XML*és *TrustFrameworkExt
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **identitási élmény keretrendszert**.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított szabályzatokat: *TrustFrameworkBase. XML*és *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*és *PasswordReset. XML*. 
+1. Válassza **az egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkBase.xml*, és *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*és *PasswordReset.xml*. 
 1. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. Regisztrálnia kell egy e-mail-cím vagy egy Facebook-fiók használatával.
 1. Az alkalmazásnak visszaadott jogkivonat tartalmazza a `balance` jogcímet.

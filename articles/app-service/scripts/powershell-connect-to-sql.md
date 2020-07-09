@@ -6,16 +6,16 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020030"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248295"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>App Service-alkalmazás összekötése egy SQL-adatbázissal
+# <a name="connect-an-app-service-app-to-sql-database"></a>App Service-alkalmazás összekötése SQL Database
 
-Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy Azure SQL Database-adatbázist és egy App Service alkalmazást. Ezután az alkalmazás-beállítások használatával összekapcsolja az SQL-adatbázist az alkalmazással.
+Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre adatbázist Azure SQL Database és egy App Service alkalmazásban. Ezután az alkalmazást az alkalmazás beállításainak használatával fogja összekapcsolni.
 
 Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
 
@@ -23,7 +23,7 @@ Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatób
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |

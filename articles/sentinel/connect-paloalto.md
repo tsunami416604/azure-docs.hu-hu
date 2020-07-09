@@ -1,6 +1,6 @@
 ---
 title: A Palo Alto Networks-adatkapcsolatok és az Azure Sentinel összekötése | Microsoft Docs
-description: Megtudhatja, hogyan csatlakoztathatók a Palo Alto-hálózatok az Azure Sentinel szolgáltatáshoz.
+description: Megtudhatja, hogyan használhatja a Palo Alto Networks-adatösszekötőt a Palo Alto Networks-naplók Azure Sentinel használatával történő egyszerű összekapcsolásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564565"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>A Palo Alto-hálózatok összekapcsolhatók az Azure Sentinel-vel
 
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a Palo Alto Networks-berendez�
 A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban való továbbításához az Azure-munkaterületen a syslog-ügynök használatával:
 1.  Nyissa meg a [Common Event Format (CEF) konfigurációs útmutatóit](https://docs.paloaltonetworks.com/resources/cef) , és töltse le a készülék típusának PDF-fájlját. A CEF események gyűjtéséhez kövesse az útmutató utasításait a Palo Alto Networks-berendezés beállításához. 
 
-1.  Lépjen a [syslog-figyelés konfigurálása](https://aka.ms/asi-syslog-paloalto-forwarding) elemre, és kövesse a 2. és a 3. lépést a Palo Alto Networks-készülékről az Azure sentinelre történő CEF-továbbítás konfigurálásához.
+1.  Lépjen a [syslog-figyelés konfigurálása](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring) elemre, és kövesse a 2. és a 3. lépést a Palo Alto Networks-készülékről az Azure sentinelre történő CEF-továbbítás konfigurálásához.
 
     1. Győződjön meg arról, hogy a **syslog-kiszolgáló formátumát** a **BSD**értékre állítja be.
 

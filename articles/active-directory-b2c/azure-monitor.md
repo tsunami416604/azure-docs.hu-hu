@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386215"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -25,8 +25,8 @@ A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Az
 A naplózási eseményeket a következő módon irányíthatja át:
 
 * Egy Azure [Storage-fiók](../storage/blobs/storage-blobs-introduction.md).
+* [Log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
 * Egy Azure [Event hub](../event-hubs/event-hubs-about.md) (és integrálható a splunk és a szumó logikai példányokkal).
-* Egy [log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -72,9 +72,9 @@ A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói *cs
 
 ### <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager sablon létrehozása
 
-Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure Resource Manager sablont](../lighthouse/how-to/onboard-customer.md) az ajánlatához a következő információkkal. A `mspOfferName` és `mspOfferDescription` az értékek láthatók, ha a Azure Portal [szolgáltató lapján](../lighthouse/how-to/view-manage-service-providers.md) megtekinti az ajánlat részleteit.
+Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure Resource Manager sablont](../lighthouse/how-to/onboard-customer.md) az ajánlatához a következő információkkal. A `mspOfferName` és az `mspOfferDescription` értékek láthatók, ha a Azure Portal [szolgáltató lapján](../lighthouse/how-to/view-manage-service-providers.md) megtekinti az ajánlat részleteit.
 
-| Mező   | Meghatározás |
+| Mező   | Definíció |
 |---------|------------|
 | `mspOfferName`                     | A definíciót leíró név. Például *Azure ad B2C felügyelt szolgáltatásokat*. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként. |
 | `mspOfferDescription`              | Az ajánlat rövid leírása. Például *engedélyezi a Azure AD B2C Azure monitorét*.|
@@ -84,12 +84,12 @@ Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure
 
 Töltse le a Azure Resource Manager sablon és paraméter fájljait:
 
-- [rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-Ezután frissítse a paramétereket tartalmazó fájlt a korábban feljegyzett értékekkel. A következő JSON-kódrészlet példát mutat be Azure Resource Manager sablon paramétereinek fájljára. A `authorizations.value.roleDefinitionId`esetében használja a *közreműködő szerepkör* `b24988ac-6180-42a0-ab88-20f7382dd24c` [beépített szerepkör](../role-based-access-control/built-in-roles.md) értékét.
+Ezután frissítse a paramétereket tartalmazó fájlt a korábban feljegyzett értékekkel. A következő JSON-kódrészlet példát mutat be Azure Resource Manager sablon paramétereinek fájljára. A esetében `authorizations.value.roleDefinitionId` használja a *közreműködő szerepkör* [beépített szerepkör](../role-based-access-control/built-in-roles.md) értékét `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
@@ -141,7 +141,7 @@ Ezután váltson arra az előfizetésre, amelyet szeretne projektbe venni a Azur
 Select-AzSubscription <subscription ID>
 ```
 
-Végül telepítse a korábban letöltött és frissített Azure Resource Manager sablon és paraméter fájljait. A, `Location` `TemplateFile`a és `TemplateParameterFile` az értékeket cserélje le ennek megfelelően.
+Végül telepítse a korábban letöltött és frissített Azure Resource Manager sablon és paraméter fájljait. A, a és az értékeket cserélje le `Location` `TemplateFile` `TemplateParameterFile` ennek megfelelően.
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -193,7 +193,7 @@ Parameters              :
 
 A sablon üzembe helyezése után néhány percet is igénybe vehet, amíg az erőforrás-leképezés befejeződik. Előfordulhat, hogy néhány percet várnia kell (általában legfeljebb öt), mielőtt továbblép a következő szakaszra az előfizetés kiválasztásához.
 
-## <a name="select-your-subscription"></a>Válassza ki előfizetését.
+## <a name="select-your-subscription"></a>Az előfizetés kiválasztása
 
 Miután telepítette a sablont, és néhány percet várt az erőforrás-kivetítés befejezéséhez, társítsa az előfizetést a Azure AD B2C-címtárhoz a következő lépésekkel.
 
@@ -234,7 +234,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Adja meg a beállítás nevét, ha még nem rendelkezik ilyennel.
 1. Jelölje be az egyes célhelyek jelölőnégyzetét a naplók elküldéséhez. Válassza a **Konfigurálás** lehetőséget a beállítások megadásához az alábbi táblázatban leírtak szerint.
 
-    | Beállítás | Leírás |
+    | Beállítás | Description |
     |:---|:---|
     | Archiválás tárfiókba | A Storage-fiók neve. |
     | Streamelés eseményközpontba | Az a névtér, amelyben az Event hub létre lett hozva (ha ez az első adatfolyam-naplók), vagy adatfolyamként továbbítja a (ha már van olyan erőforrás, amely ezen a névtéren keresztül továbbítja a naplózási kategóriát).

@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366491"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
@@ -69,10 +69,10 @@ Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli linuxos virt
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
-* https:\//Device.login.microsoftonline.com
-* https:\//Pas.Windows.net
+* https: \/ /Device.login.microsoftonline.com
+* https: \/ /Pas.Windows.net
 * https:\//management.azure.com
-* https:\//packages.microsoft.com
+* https: \/ /packages.microsoft.com
 
 > [!NOTE]
 > Jelenleg az Azure hálózati biztonsági csoportjai nem konfigurálhatók az Azure AD-hitelesítéssel engedélyezett virtuális gépekhez.
@@ -154,7 +154,7 @@ Jelentkezzen be az Azure Linux rendszerű virtuális gépre az Azure AD-beli hit
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-A rendszer felszólítja, hogy jelentkezzen be az Azure AD-be egy egyszeri használatú kóddal a következő címen: [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Másolja és illessze be az egyszer használatos kódot az eszköz bejelentkezési oldalára.
+A rendszer felszólítja, hogy jelentkezzen be az Azure AD-be egy egyszeri használatú kóddal a következő címen: [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) . Másolja és illessze be az egyszer használatos kódot az eszköz bejelentkezési oldalára.
 
 Ha a rendszer kéri, adja meg az Azure AD bejelentkezési hitelesítő adatait a bejelentkezési oldalon. 
 
@@ -162,11 +162,11 @@ A következő üzenet jelenik meg a böngészőben a sikeres hitelesítés után
 
 A böngészőablak bezárásához térjen vissza az SSH-parancssorba, majd nyomja le az **ENTER** billentyűt. 
 
-Most bejelentkezett az Azure Linux rendszerű virtuális gépre a hozzárendelt szerepkör-engedélyekkel, mint például a *VM-felhasználó* vagy a VM- *rendszergazda*. Ha a felhasználói fiókja a *virtuális gép rendszergazdai bejelentkezési* szerepköréhez van rendelve, akkor `sudo` a paranccsal olyan parancsokat futtathat, amelyek rendszergazdai jogosultságokat igényelnek.
+Most bejelentkezett az Azure Linux rendszerű virtuális gépre a hozzárendelt szerepkör-engedélyekkel, mint például a *VM-felhasználó* vagy a VM- *rendszergazda*. Ha a felhasználói fiókja a *virtuális gép rendszergazdai bejelentkezési* szerepköréhez van rendelve, akkor a paranccsal olyan `sudo` parancsokat futtathat, amelyek rendszergazdai jogosultságokat igényelnek.
 
 ## <a name="sudo-and-aad-login"></a>Sudo és HRE bejelentkezés
 
-Amikor először futtatja a sudo-t, a rendszer kérni fogja, hogy másodszor is hitelesítse magát. Ha nem szeretné ismét hitelesíteni a sudo-t, szerkesztheti a sudoers-fájlt `/etc/sudoers.d/aad_admins` , és lecserélheti a következő sort:
+Amikor először futtatja a sudo-t, a rendszer kérni fogja, hogy másodszor is hitelesítse magát. Ha nem szeretné ismét hitelesíteni a sudo-t, szerkesztheti a sudoers-fájlt, `/etc/sudoers.d/aad_admins` és lecserélheti a következő sort:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -200,9 +200,9 @@ Access denied
 
 Ha sikeresen elvégezte a hitelesítési lépést egy webböngészőben, akkor előfordulhat, hogy a rendszer azonnal felszólítja, hogy új kóddal jelentkezzen be. Ezt a hibát általában az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-nal bejelentkezett fiók közötti eltérés okozza. A probléma megoldásához:
 
-- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Tegyük fel például, hogy a *azuresuer\@contoso.onmicrosoft.com* -et adta meg az *azureuser\@contoso.onmicrosoft.com*helyett.
+- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Tegyük fel például, hogy a *azuresuer \@ contoso.onmicrosoft.com* -et adta meg az *azureuser \@ contoso.onmicrosoft.com*helyett.
 - Ha több felhasználói fiókkal rendelkezik, ügyeljen arra, hogy a böngészőablakban ne adjon meg másik felhasználói fiókot az Azure AD-ba való bejelentkezéskor.
-- A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a (z)Azureuser@contoso.onmicrosoft.comésazureuser@contoso.onmicrosoft.coma (z) között, ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
+- A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a (z) és a (z) között Azureuser@contoso.onmicrosoft.com azureuser@contoso.onmicrosoft.com , ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
 
 ### <a name="other-limitations"></a>Egyéb korlátozások
 

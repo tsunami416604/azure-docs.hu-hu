@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715749"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957062"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
 
@@ -44,7 +44,7 @@ A tranzakció biztonsági korlátai csak a teljesen naplózott műveletekre érv
 
 A következő műveletek képesek minimálisan naplózni:
 
-* CREATE TABLE A SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-ctas.MD? TOC =/Azure/Synapse-Analytics/TOC.JSON&BC =/Azure/Synapse-Analytics/breadcrumb/TOC.JSON)
+* CREATE TABLE A SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-ctas.MD? TOC =/Azure/Synapse-Analytics/toc.js&BC =/Azure/Synapse-Analytics/breadcrumb/toc.json)
 * Beszúrás.. Válassza
 * CREATE INDEX
 * AZ ALTER INDEX ÚJRAÉPÍTÉSE
@@ -420,6 +420,6 @@ A legjobb megoldás az, ha az SQL-készlet szüneteltetése vagy skálázása el
 * A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg az [SQL-készletben található tranzakciókat](develop-transactions.md) .  Az egyéb ajánlott eljárások áttekintését lásd: [SQL Pool – ajánlott eljárások](best-practices-sql-pool.md).

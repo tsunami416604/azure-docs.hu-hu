@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530262"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>A signaler szolgáltatás bemeneti kötése Azure Functions
@@ -22,7 +21,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely a bemeneti kötés használatával szerzi be a Signal-kapcsolati adatokat, és visszaadja a HTTP protokollon keresztül.
 
@@ -38,11 +37,11 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy Signal-kapcsolati adatok bemeneti kötését mutatja be egy *function. JSON* fájlban és egy [C# parancsfájl-függvényben](functions-reference-csharp.md) , amely a kötés használatával adja vissza a kapcsolati adatokat.
+A következő példa egy, a (z) *function.js* fájl és egy [C# parancsfájl-függvény](functions-reference-csharp.md) , amely a kötést használja a kapcsolati adatok visszaadásához.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -68,11 +67,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy Signal-kapcsolati adatokat tartalmazó bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja a kapcsolati adatok visszaadásához.
+Az alábbi példa egy, a (z) *function.js* fájlon belüli Signal kapcsolati adatbeviteli kötést mutat be, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötés használatával adja vissza a kapcsolódási adatokat.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -94,11 +93,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy Signal-kapcsolati adatbeviteli kötést mutat be egy *function. JSON* fájlban és egy [Python-függvényben](functions-reference-python.md) , amely a kötés használatával adja vissza a kapcsolati adatokat.
+Az alábbi példa egy, a (z) *function.js* fájlhoz tartozó jelző kapcsolati adatbeviteli kötést mutat be, és egy [Python-függvényt](functions-reference-python.md) , amely a kötés használatával adja vissza a kapcsolódási adatokat.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -147,11 +146,11 @@ public SignalRConnectionInfo negotiate(
 
 Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét.
+App Service hitelesítés beállítja a nevű HTTP-fejléceket, `x-ms-client-principal-id` `x-ms-client-principal-name` amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Megadhatja a `UserId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+Megadhatja a `UserId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}` .
 
 ```cs
 [FunctionName("negotiate")]
@@ -168,9 +167,9 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}` .
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -199,9 +198,9 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}` .
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -226,9 +225,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}` .
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -258,7 +257,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
+Megadhatja a `userId` kötés tulajdonságát bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}` .
 
 ```java
 @FunctionName("negotiate")

@@ -1,43 +1,67 @@
 ---
 title: Windows Hybrid Runbook Worker üzembe helyezése Azure Automation
-description: Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót, amellyel a runbookok futtathatók a helyi adatközpontban vagy a felhőalapú környezetben található Windows-alapú számítógépeken.
+description: Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót, amely a helyi adatközpontban vagy a felhőalapú környezetben lévő Windows-alapú gépeken futtatott runbookok futtatására használható.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/10/2019
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e4b8bcf2b6ed5ab9c1160df49b1a6082aaf02f65
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e1262aedda95f3feb7cf5604644d938bf4d00a53
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854904"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
-A Azure Automation Hybrid Runbook Worker szolgáltatásával a runbookok közvetlenül a szerepkört üzemeltető számítógépen és a környezetben található erőforrásokon futtathatja a helyi erőforrások kezeléséhez. Azure Automation tárolja és kezeli a runbookok, majd egy vagy több kijelölt számítógéphez továbbítja azokat. Ez a cikk bemutatja, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót egy Windows rendszerű gépen.
+A Azure Automation Hybrid Runbook Worker szolgáltatásával a runbookok közvetlenül a szerepkört üzemeltető gépen és a környezet erőforrásain keresztül futtathatja a helyi erőforrások kezeléséhez. A Azure Automation a runbookok tárolja és felügyeli, majd egy vagy több kijelölt gépre továbbítja azokat. Ez a cikk bemutatja, hogyan helyezhet üzembe hibrid Runbook-feldolgozót egy Windows rendszerű gépen, hogyan távolíthatja el a feldolgozót, és hogyan távolíthat el egy hibrid Runbook-feldolgozói csoportot.
 
 A runbook-feldolgozó sikeres üzembe helyezése után tekintse át a [Runbookok futtatása hibrid runbook-feldolgozón](automation-hrw-run-runbooks.md) című témakört, amelyből megtudhatja, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows hibrid Runbook Worker telepítése és konfigurálása
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel.
 
-A Windows Hybrid Runbook Worker telepítéséhez és konfigurálásához az alábbi módszerek egyikét használhatja.
+### <a name="a-log-analytics-workspace"></a>Log Analytics munkaterület
 
-* Azure-beli virtuális gépek esetén a Windows rendszerhez készült [virtuálisgép-bővítmény](../virtual-machines/extensions/oms-windows.md)használatával telepítse a Windows log Analytics Agent ügynököt. A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy Azure Resource Manager sablonnal vagy a PowerShell használatával regisztrálja a virtuális gépeket egy meglévő Log Analytics-munkaterületen. Miután telepítette az ügynököt, a virtuális gép hozzáadhatók az Automation-fiókjában lévő hibrid Runbook Worker csoportjához. A [manuális telepítés](#manual-deployment) szakaszban tekintse át a 3. és a 4. lépést.
+A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfigurálásához Azure Monitor Log Analytics munkaterülettől függ. [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), a [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)vagy a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)segítségével hozhatja létre.
 
-* Automatizálási runbook segítségével teljes mértékben automatizálhatja a Windows rendszerű számítógépek konfigurálásának folyamatát. Ez az ajánlott módszer az adatközpontban vagy más felhőalapú környezetben található gépekhez.
+Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
-* A hibrid Runbook-feldolgozói szerepkört a nem Azure-beli virtuális gépen manuálisan telepítheti és konfigurálhatja a lépésenkénti eljárást követve.
+Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](automation-update-management.md) vagy a [change Tracking és a leltárt](change-tracking.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
 
-> [!NOTE]
-> A hibrid Runbook-feldolgozói szerepkört támogató kiszolgálók konfigurációjának kezeléséhez a kívánt állapot-konfigurációval (DSC) hozzá kell adnia a kiszolgálókat DSC-csomópontként.
+   A Update Management szolgáltatás munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
 
-### <a name="minimum-requirements-for-windows-hybrid-runbook-worker"></a>A Windows Hybrid Runbook Worker minimális követelményei
+```powershell-interactive
+   Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
+```
+
+   A Change Tracking és a leltár funkciónak a munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
+
+```powershell-interactive
+   Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
+```
+
+### <a name="log-analytics-agent"></a>Log Analytics-ügynök
+
+A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) szükséges a támogatott Windows operációs rendszerhez.
+
+### <a name="supported-windows-operating-system"></a>Támogatott Windows operációs rendszer
+
+A Windows Hybrid Runbook Worker a Windows operációs rendszer következő verzióit támogatja hivatalosan:
+
+* Windows Server 2019
+* Windows Server 2016, 1709-es és 1803-es verzió
+* Windows Server 2012, 2012 R2
+* Windows Server 2008 SP2 (x64), 2008 R2
+* Windows 10 Enterprise (több munkamenetet is beleértve) és Pro
+* Windows 8 Enterprise és Pro
+* Windows 7 SP1
+
+### <a name="minimum-requirements"></a>Minimális követelmények
 
 A Windows Hybrid Runbook Worker minimális követelményei a következők:
 
-* Windows Server 2012 vagy újabb
 * Windows PowerShell 5,1 vagy újabb ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))
 * A .NET-keretrendszer 4.6.2-es vagy újabb verziója
 * Két mag
@@ -48,23 +72,46 @@ A Windows Hybrid Runbook Worker minimális követelményei a következők:
 
 A hibrid Runbook-feldolgozók további hálózati követelményeinek eléréséhez lásd: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="enabling-servers-for-management-with-azure-automation-state-configuration"></a>Kiszolgálók felügyeletének engedélyezése Azure Automation állapot-konfigurációval
+### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Gép felvétele hibrid Runbook Worker-csoportba
 
-A kiszolgálók Azure Automation állapot-konfigurációval való felügyeletének engedélyezésével kapcsolatos további információkért lásd: a [gépek Azure Automation állapot-konfiguráció általi felügyeletének engedélyezése](automation-dsc-onboarding.md).
+Az Automation-fiókban felveheti a munkavégző gépet egy hibrid Runbook Worker-csoportba. Vegye figyelembe, hogy az Automation runbookok is támogatnia kell, ha ugyanazt a fiókot használja, mint a Azure Automation funkció és a hibrid Runbook Worker csoport tagsága. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
 
-A Azure Automation [Update Management](automation-update-management.md) engedélyezése automatikusan konfigurálja a log Analytics munkaterülethez kapcsolódó Windows-számítógépeket hibrid Runbook-feldolgozóként a Runbook-frissítések támogatásához. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal.
+>[!NOTE]
+>A Azure Automation [Update Management](automation-update-management.md) engedélyezése lehetővé teszi, hogy a log Analytics munkaterülethez csatlakoztatott Windows-gépeket a hibrid Runbook-feldolgozóként automatikusan konfigurálja az operációs rendszer frissítéseinek kezeléséhez. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal.
 
-### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>A számítógép hozzáadása egy hibrid Runbook Worker-csoporthoz
+## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Gépek Azure Automation állapot-konfigurációval való felügyeletének engedélyezése
 
-Az Automation-fiókban felveheti a munkavégző számítógépet egy hibrid Runbook Worker-csoportba. Vegye figyelembe, hogy az Automation runbookok is támogatnia kell, ha ugyanazt a fiókot használja, mint a Azure Automation funkció és a hibrid Runbook Worker csoport tagsága. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
+További információ a gépek Azure Automation állapot-konfigurációval való felügyeletének engedélyezéséről: [a gépek Azure Automation állapot-konfiguráció általi felügyeletének engedélyezése](automation-dsc-onboarding.md).
+
+> [!NOTE]
+> A hibrid Runbook-feldolgozói szerepkört a kívánt állapot-konfigurációval (DSC) támogató gépek konfigurációjának kezeléséhez a gépeket DSC-csomópontként kell hozzáadnia.
+
+## <a name="windows-hybrid-runbook-worker-installation-options"></a>A Windows Hybrid Runbook Worker telepítési beállításai
+
+A Windows Hybrid Runbook Worker telepítéséhez és konfigurálásához az alábbi módszerek egyikét használhatja.
+
+* Azure-beli virtuális gépek esetén a Windows rendszerhez készült [virtuálisgép-bővítmény](../virtual-machines/extensions/oms-windows.md)használatával telepítse a Windows log Analytics Agent ügynököt. A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy Azure Resource Manager sablonnal vagy a PowerShell használatával regisztrálja a virtuális gépeket egy meglévő Log Analytics-munkaterületen. Miután telepítette az ügynököt, a virtuális gép hozzáadhatók az Automation-fiókjában lévő hibrid Runbook Worker csoportjához.
+
+* Nem Azure-beli virtuális gépek esetén telepítse a Windows Log Analytics Agent ügynököt a Windows [rendszerű számítógépek összekötése a Azure monitor](../azure-monitor/platform/agent-windows.md) cikkhez című témakörben ismertetett központi telepítési beállítások használatával. Ezt a folyamatot többször is megismételheti, ha több feldolgozót ad hozzá a környezethez. Az ügynök telepítése után a virtuális gépek hozzáadhatók az Automation-fiókjában lévő hibrid Runbook Worker csoportjához.
+
+* Egy megadott PowerShell-szkripttel teljes mértékben [automatizálhatja](#automated-deployment) egy vagy több Windows rendszerű gép konfigurálásának folyamatát. Ez az ajánlott módszer az adatközpontban vagy más felhőalapú környezetben található gépekhez.
 
 ## <a name="automated-deployment"></a>Automatikus üzembe helyezés
 
-A célszámítógépen hajtsa végre a következő lépéseket a Windows hibrid feldolgozói szerepkör telepítésének és konfigurálásának automatizálásához.
+A célszámítógépen hajtsa végre a következő lépéseket a Windows hibrid feldolgozói szerepkör telepítésének és konfigurálásának automatizálásához a PowerShell-parancsfájl **New-OnPremiseHybridWorker.ps1**használatával. A szkript a következő lépéseket hajtja végre:
+
+* Telepíti a szükséges modulokat.
+* Bejelentkezik az Azure-fiókjával
+* Ellenőrzi a megadott erőforráscsoport és Automation-fiók létezését
+* Az Automation-fiók attribútumaira mutató hivatkozásokat hoz létre
+* Ha nincs megadva, létrehoz egy Azure Monitor Log Analytics munkaterületet
+* A Azure Automation megoldás engedélyezése a munkaterületen
+* Töltse le és telepítse a Windows Log Analytics Agent ügynököt
+* A gép regisztrálása hibrid Runbook-feldolgozóként
 
 ### <a name="step-1---download-the-powershell-script"></a>1. lépés – a PowerShell-parancsfájl letöltése
 
-Töltse le a **New-OnPremiseHybridWorker. ps1** parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker). A letöltést közvetlenül a hibrid Runbook-feldolgozói szerepkört futtató számítógépről vagy a környezet egy másik számítógépéről kell letölteni. Ha letöltötte a parancsfájlt, másolja a munkavégzőbe. A **New-OnPremiseHybridWorker. ps1** parancsfájl az alább leírt paramétereket használja a végrehajtás során.
+Töltse le a **New-OnPremiseHybridWorker.ps1** szkriptet a [PowerShell-galériaból](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker). A parancsfájl letöltése után másolja vagy futtassa azt a célszámítógépen. A **New-OnPremiseHybridWorker.ps1** szkript a végrehajtás során az alább ismertetett paramétereket használja.
 
 | Paraméter | Állapot | Leírás |
 | --------- | ------ | ----------- |
@@ -82,7 +129,7 @@ Töltse le a **New-OnPremiseHybridWorker. ps1** parancsfájlt a [PowerShell-Gal�
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>2. lépés – a Windows PowerShell parancssori rendszerhéj megnyitása
 
-Nyissa meg a **Windows PowerShellt** a **kezdőképernyőn** rendszergazdai módban.
+A **Start menüben** kattintson a **Start**gombra, írja be a **PowerShell**parancsot, kattintson a jobb gombbal a **Windows PowerShell**elemre, majd kattintson a **Futtatás rendszergazdaként**parancsra.
 
 ### <a name="step-3---run-the-powershell-script"></a>3. lépés – a PowerShell-szkript futtatása
 
@@ -91,60 +138,44 @@ A PowerShell parancssori felületén keresse meg a letöltött parancsfájlt tar
 A parancsfájl futtatása után meg kell adnia a hitelesítést az Azure-ban. Be kell jelentkeznie egy olyan fiókkal, amely tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés közös rendszergazdája.
 
 ```powershell-interactive
-.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> -AAResourceGroupName <NameofResourceGroup>`
--OMSResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
--SubscriptionID <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
+.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <nameOfAutomationAccount> -AAResourceGroupName <nameOfResourceGroup>`
+-OMSResourceGroupName <nameOfOResourceGroup> -HybridGroupName <nameOfHRWGroup> `
+-SubscriptionID <subscriptionId> -WorkspaceName <nameOfLogAnalyticsWorkspace>
 ```
 
 ### <a name="step-4---install-nuget"></a>4. lépés – a NuGet telepítése
 
-A rendszer felszólítja, hogy fogadja el a NuGet telepítését, valamint az Azure-beli hitelesítő adataival történő hitelesítést. Ha nem rendelkezik a legújabb NuGet-verzióval, az [elérhető NuGet-terjesztési verziókról](https://www.nuget.org/downloads)szerezheti be.
+A rendszer felszólítja, hogy fogadja el a NuGet telepítését, valamint az Azure-beli hitelesítő adataival történő hitelesítést. Ha nem rendelkezik a legújabb NuGet-verzióval, letöltheti az [elérhető NuGet-terjesztési verziókról](https://www.nuget.org/downloads).
 
 ### <a name="step-5---verify-the-deployment"></a>5. lépés – az üzemelő példány ellenőrzése
 
-A szkript befejezése után a hibrid feldolgozói csoportok lapon az új csoport és a tagok száma látható. Ha ez egy meglévő csoport, a tagok száma nő. Válassza ki a csoportot a hibrid munkavégző csoportok lapon a listából, és válassza a **hibrid feldolgozók** csempét. A hibrid dolgozók oldalon láthatja a csoport egyes tagjainak listáját.
+A szkript befejezése után az Automation-fiók hibrid feldolgozói csoportok lapja az új csoportot és a tagok számát jeleníti meg. Ha ez egy meglévő csoport, a tagok száma nő. Válassza ki a csoportot a hibrid munkavégző csoportok lapon a listából, és válassza a **hibrid feldolgozók** csempét. A hibrid dolgozók oldalon láthatja a csoport egyes tagjainak listáját.
 
 ## <a name="manual-deployment"></a>Kézi üzembe helyezés
 
-A célszámítógépen végezze el az első két lépést egyszer az Automation-környezethez. Ezután hajtsa végre a fennmaradó lépéseket az egyes munkavégző számítógépeken.
+Windows Hybrid Runbook Worker telepítéséhez és konfigurálásához hajtsa végre az alábbi lépéseket.
 
-### <a name="step-1---create-a-log-analytics-workspace"></a>1. lépés – Log Analytics munkaterület létrehozása
+### <a name="step-1---verify-agent-is-reporting-to-workspace"></a>1. lépés – az ügynök ellenőrzése a munkaterületre
 
-Ha még nem rendelkezik Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
-
-### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>2. lépés – Azure Automation funkció hozzáadása a Log Analytics munkaterülethez
-
-Az automatizálási szolgáltatás funkciókat biztosít a Azure Automationhoz, beleértve a hibrid Runbook-feldolgozók támogatását is. Ha engedélyez egy Azure Automation funkciót a Log Analytics munkaterületen, a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
-
-A Azure Automation szolgáltatás (például Update Management) a munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
-
-```powershell-interactive
-Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true -DefaultProfile <IAzureContextContainer>
-```
-
-### <a name="step-3---install-the-log-analytics-agent-for-windows"></a>3. lépés – a Windows Log Analytics ügynökének telepítése
-
-A Windows Log Analytics ügynöke csatlakoztatja a számítógépeket egy Azure Monitor Log Analytics-munkaterülethez. Amikor telepíti az ügynököt a számítógépre, és összekapcsolja a munkaterülettel, automatikusan letölti a hibrid Runbook-feldolgozóhoz szükséges összetevőket.
-
-Ha az ügynököt a számítógépre szeretné telepíteni, kövesse a [Windows rendszerű számítógépek Összekapcsolása Azure monitor naplókhoz](../log-analytics/log-analytics-windows-agent.md)című témakör útmutatását. Ezt a folyamatot több számítógép esetében is megismételheti, ha több feldolgozót ad hozzá a környezethez.
+A Windows Log Analytics ügynöke csatlakoztatja a gépeket egy Azure Monitor Log Analytics-munkaterülethez. Amikor telepíti az ügynököt a gépre, és összekapcsolja a munkaterülettel, automatikusan letölti a hibrid Runbook-feldolgozóhoz szükséges összetevőket.
 
 Ha az ügynök néhány perc elteltével sikeresen csatlakozott a Log Analytics munkaterülethez, a következő lekérdezés futtatásával ellenőrizheti, hogy a rendszer a szívverési adatokat küldi a munkaterületre.
 
 ```kusto
 Heartbeat 
-| where Category == "Direct Agent" 
+| where Category == "Direct Agent"
 | where TimeGenerated > ago(30m)
 ```
 
-A keresési eredmények között meg kell jelennie a számítógép szívverési rekordjainak, ami azt jelzi, hogy csatlakoztatva van, és jelentést küld a szolgáltatásnak. Alapértelmezés szerint minden ügynök egy szívverési rekordot továbbít a hozzárendelt munkaterülethez. Az ügynök telepítésének és telepítésének befejezéséhez kövesse az alábbi lépéseket.
+A keresési eredmények között meg kell jelennie a gép szívverési rekordjainak, ami azt jelzi, hogy csatlakoztatva van, és a szolgáltatáshoz jelent jelentést. Alapértelmezés szerint minden ügynök egy szívverési rekordot továbbít a hozzárendelt munkaterülethez. Az ügynök telepítésének és telepítésének befejezéséhez kövesse az alábbi lépéseket.
 
-1. Engedélyezze a szolgáltatásnak az ügynök számítógép hozzáadását. Lásd: [gépek engedélyezése a munkaterületen](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
-2. Ellenőrizze, hogy az ügynök megfelelően letöltötte-e a Azure Automation funkciót. 
-3. A hibrid Runbook-feldolgozó verziójának megerősítéséhez keresse meg a **C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation** , és jegyezze fel a **verzió** almappát.
+1. Engedélyezze a szolgáltatásnak az ügynök számítógép hozzáadását. Update Management-és Azure-beli virtuális gépek esetében lásd: Azure-beli [virtuális gépek engedélyezése](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)és nem Azure-beli virtuális gépek esetén lásd: [számítógépek engedélyezése a munkaterületen](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace). Change Tracking-és Azure-beli virtuális gépek esetében lásd: Azure-beli [virtuális gépek engedélyezése](automation-enable-changes-from-auto-acct.md#enable-azure-vms)és nem Azure-beli virtuális gépek esetén lásd: [számítógépek engedélyezése a munkaterületen](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
 
-### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>4. lépés – a runbook-környezet telepítése és a Azure Automationhoz való kapcsolódás
+2. A hibrid Runbook-feldolgozó verziójának megerősítéséhez keresse meg `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` és jegyezze fel a **verzió** almappát.
 
-Ha úgy konfigurálja az ügynököt, hogy egy Log Analytics munkaterületre jelentsen, az Azure Automation szolgáltatás leküldi a `HybridRegistration` parancsmagot tartalmazó PowerShell-modult `Add-HybridRunbookWorker` . Ezzel a parancsmaggal telepítheti a számítógép runbook-környezetét, és regisztrálhatja Azure Automation.
+### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>3. lépés – a runbook-környezet telepítése és a Azure Automationhoz való kapcsolódás
+
+Ha úgy konfigurálja az ügynököt, hogy egy Log Analytics munkaterületre jelentsen, az Azure Automation szolgáltatás leküldi a `HybridRegistration` parancsmagot tartalmazó PowerShell-modult `Add-HybridRunbookWorker` . Ezzel a parancsmaggal telepítheti a runbook környezetet a gépre, és regisztrálhatja Azure Automation.
 
 Nyisson meg egy PowerShell-munkamenetet rendszergazdai módban, és futtassa a következő parancsokat a modul importálásához.
 
@@ -156,42 +187,47 @@ Import-Module .\HybridRegistration.psd1
 Most futtassa a `Add-HybridRunbookWorker` parancsmagot a következő szintaxis használatával.
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-A parancsmaghoz szükséges adatokat a Azure Portal kulcsok kezelése lapján érheti el. Az Automation-fiók beállítások lapján található **kulcsok** lehetőség kiválasztásával nyissa meg ezt a lapot.
+A paraméterekhez `Url` és az `Key` Automation-fiók Keys ( **kulcsok** ) lapjához szükséges információkat lekérheti. A lap bal oldalán található **Fiókbeállítások** szakaszban válassza a **kulcsok** lehetőséget.
 
 ![Kulcsok kezelése lap](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* A `GroupName` paraméterhez használja a Hybrid Runbook Worker Group nevét. Ha ez a csoport már létezik az Automation-fiókban, az aktuális számítógép hozzá lesz adva. Ha ez a csoport nem létezik, a rendszer hozzáadja.
-* A `EndPoint` paraméter esetében használja az **URL-címet** a kulcsok kezelése lapon.
-* A `Token` paraméter esetében használja az **elsődleges hozzáférési kulcs** bejegyzést a kulcsok kezelése lapon.
+* A `Url` paraméter esetében másolja az **URL-cím**értékét.
+
+* A `Key` paraméter esetében másolja az **elsődleges elérési kulcs**értékét.
+
+* A `GroupName` paraméterhez használja a Hybrid Runbook Worker Group nevét. Ha ez a csoport már létezik az Automation-fiókban, az aktuális gép hozzá lesz adva. Ha ez a csoport nem létezik, a rendszer hozzáadja.
+
 * Ha szükséges, állítsa be a `Verbose` paramétert a telepítés részleteinek fogadására.
 
-### <a name="step-5----install-powershell-modules"></a>5. lépés – PowerShell-modulok telepítése
+### <a name="step-4----install-powershell-modules"></a>4. lépés – PowerShell-modulok telepítése
 
-A runbookok a Azure Automation környezetében telepített modulokban meghatározott tevékenységeket és parancsmagokat is használhatják. Mivel ezeket a modulokat a rendszer nem telepíti automatikusan a helyszíni számítógépekre, manuálisan kell telepítenie azokat. A kivétel az Azure-modul. Ez a modul alapértelmezés szerint telepítve van, és hozzáférést biztosít a Azure Automation összes Azure-szolgáltatásának és tevékenységének parancsmagokhoz.
+A runbookok a Azure Automation környezetében telepített modulokban meghatározott tevékenységeket és parancsmagokat is használhatják. Mivel ezeket a modulokat a rendszer nem telepíti automatikusan a helyszíni gépekre, manuálisan kell telepítenie azokat. A kivétel az Azure-modul. Ez a modul alapértelmezés szerint telepítve van, és hozzáférést biztosít a Azure Automation összes Azure-szolgáltatásának és tevékenységének parancsmagokhoz.
 
 Mivel a hibrid Runbook-feldolgozó elsődleges célja a helyi erőforrások kezelése, valószínűleg telepítenie kell azokat a modulokat, amelyek támogatják ezeket az erőforrásokat, különösen a `PowerShellGet` modult. A Windows PowerShell-modulok telepítésével kapcsolatos információkért lásd: [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
 A telepített moduloknak a környezeti változó által hivatkozott helyen kell lenniük, `PSModulePath` hogy a hibrid feldolgozó automatikusan importálni tudja őket. További információkért lásd: [modulok telepítése a PSModulePath-ben](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
-## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozó eltávolítása egy helyszíni Windows-számítógépről
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozó eltávolítása egy helyszíni Windows-gépről
 
 1. A Azure Portal nyissa meg az Automation-fiókját.
+
 2. A **Fiókbeállítások**területen válassza a **kulcsok** lehetőséget, és jegyezze fel az **URL-cím** és az **elsődleges elérési kulcs**értékét.
 
 3. Nyisson meg egy PowerShell-munkamenetet rendszergazdai módban, és futtassa az alábbi parancsot az URL-cím és az elsődleges elérési kulcs értékeivel. Az `Verbose` eltávolítási folyamat részletes naplójához használja a paramétert. Ha el szeretné távolítani az elavult gépeket a hibrid feldolgozói csoportból, használja a választható `machineName` paramétert.
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>Hibridfeldolgozó-csoport eltávolítása
 
-Hibrid Runbook-feldolgozó csoport eltávolításához először el kell távolítania a hibrid Runbook-feldolgozót minden olyan számítógépről, amely tagja a csoportnak. Ezután a következő lépésekkel távolítsa el a csoportot:
+Hibrid Runbook-feldolgozó csoport eltávolításához először el kell távolítania a hibrid Runbook-feldolgozót minden olyan gépről, amely tagja a csoportnak. Ezután a következő lépésekkel távolítsa el a csoportot:
 
 1. Nyissa meg az Automation-fiókot a Azure Portal.
+
 2. Válassza a **hibrid munkavégző csoportok** lehetőséget a **folyamat automatizálása**alatt. Válassza ki a törölni kívánt csoportot. Megjelenik az adott csoport tulajdonságok lapja.
 
    ![Tulajdonságok lap](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
@@ -205,4 +241,5 @@ Hibrid Runbook-feldolgozó csoport eltávolításához először el kell távol�
 ## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
+
 * A hibrid Runbook-feldolgozók hibaelhárításával kapcsolatos további információkért lásd: [hibrid Runbook-feldolgozói problémák elhárítása](troubleshoot/hybrid-runbook-worker.md#general).

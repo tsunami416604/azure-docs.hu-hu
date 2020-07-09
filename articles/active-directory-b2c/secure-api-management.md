@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385416"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
 
@@ -35,23 +35,23 @@ A cikk lépéseinek folytatása előtt a következő erőforrásokra van szüks�
 
 Ha az Azure-API Managementban található API-t Azure AD B2C használatával védi, több értékre van szüksége a APIM-ben létrehozott [bejövő házirendhez](../api-management/api-management-howto-policies.md) . Először jegyezze fel egy korábban a Azure AD B2C-bérlőben létrehozott alkalmazás AZONOSÍTÓját. Ha az előfeltételekben létrehozott alkalmazást használja, használja a *webbapp1*alkalmazás-azonosítóját.
 
-Az alkalmazás AZONOSÍTÓjának beszerzéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói felületét. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. A **kezelés**területen válassza az **alkalmazások**lehetőséget.
-1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazás **alkalmazás-azonosító** oszlopában található értéket.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
 1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosító** oszlopában található értéket.
+
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. A **kezelés**területen válassza az **alkalmazások (örökölt)** lehetőséget.
+1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazás **alkalmazás-azonosító** oszlopában található értéket.
 
 * * *
 
@@ -171,7 +171,7 @@ Ha a hozzáférési jogkivonat és a APIM-előfizetés kulcsa rögzített, most 
 
 1. A kérelem végrehajtásához kattintson a Poster **Send (Küldés** ) gombjára. Ha mindent helyesen konfigurált, akkor a rendszer egy JSON-választ jelenít meg a konferencia-hangszórók gyűjteményéből (itt látható csonkolt):
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ Most, hogy sikeresen elvégezte a kérést, tesztelje a hiba esetét, hogy a ren
 
 1. A kérelem végrehajtásához kattintson a **Küldés** gombra. Érvénytelen jogkivonat esetén a várt eredmény egy nem `401` engedélyezett állapotkód:
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ Ha az állapotkódot látja `401` , akkor ellenőrizte, hogy a Azure ad B2C ált
 
 Számos alkalmazás általában egyetlen REST APIsal kommunikál. Annak engedélyezéséhez, hogy az API több alkalmazáshoz tartozó jogkivonatokat fogadjon el, adja hozzá az alkalmazás azonosítóit a `<audiences>` APIM bejövő házirend eleméhez.
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ Számos alkalmazás általában egyetlen REST APIsal kommunikál. Annak engedél
 
 Hasonlóképpen, a több jogkivonat-kiállítók támogatásához adja hozzá a végponti URI-ket a `<issuers>` APIM bejövő házirend eleméhez.
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ Ezt az általános eljárást követve elvégezheti a szakaszos áttelepítést:
 
 A következő példában a APIM bejövő házirendje azt szemlélteti, hogyan fogadhatja el a b2clogin.com és a login.microsoftonline.com által kiállított jogkivonatokat. Emellett két alkalmazás API-kérelmeit is támogatja.
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

@@ -5,15 +5,14 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb01bf613ef007be6eafa98e12f4c5f4b5c607ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831168"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037069"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -91,7 +90,7 @@ Az eredeti kompatibilitási szint (1,0) használatakor Azure Stream Analytics az
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

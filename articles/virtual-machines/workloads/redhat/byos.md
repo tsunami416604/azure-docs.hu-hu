@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694382"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -52,7 +51,7 @@ Miután befejezte a Felhőbeli hozzáférés engedélyezésének lépéseit, a R
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>A Red Hat Gold images-képek használata a Azure Portal
 
-1. Miután az Azure-előfizetés hozzáfér a Red Hat Gold images-hez, megkeresheti őket a [Azure Portalban](https://portal.azure.com). Nyissa meg az **erőforrás** > létrehozása**című témakört**.
+1. Miután az Azure-előfizetés hozzáfér a Red Hat Gold images-hez, megkeresheti őket a [Azure Portalban](https://portal.azure.com). Nyissa meg az **erőforrás létrehozása**  >  **című témakört**.
 
 1. A lap tetején láthatja, hogy saját ajánlatokat tartalmaz.
 
@@ -96,7 +95,7 @@ Az alábbi utasítások végigvezetik a RHEL virtuális gép kezdeti üzembe hel
 
     OR
 
-    az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
+    az vm image terms accept --urn redhat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
 
     >[!NOTE]
@@ -108,16 +107,19 @@ Az alábbi utasítások végigvezetik a RHEL virtuális gép kezdeti üzembe hel
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
     # Example:
-    az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
-1. A virtuális gépet úgy is kiépítheti, hogy az `--validate` argumentum nélkül az előző példában látható parancsot futtatja.
+1. A virtuális gépet úgy is kiépítheti, hogy az argumentum nélkül az előző példában látható parancsot futtatja `--validate` .
 
     ```azurecli
-    az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
+    az vm create -n <VM name> -g <resource group name> --image <image urn>
+
+    # Example:
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. SSH-t a virtuális géphez, és ellenőrizze, hogy van-e egy nem jogosult rendszerkép. Ennek a lépésnek a végrehajtásához futtassa a parancsot `sudo yum repolist`. A RHEL 8 esetében használja `sudo dnf repolist`a következőt:. A kimenet azt kéri, hogy az előfizetés-kezelővel regisztrálja a virtuális gépet a Red Hat használatával.
+1. SSH-t a virtuális géphez, és ellenőrizze, hogy van-e egy nem jogosult rendszerkép. Ennek a lépésnek a végrehajtásához futtassa a parancsot `sudo yum repolist` . A RHEL 8 esetében használja a következőt: `sudo dnf repolist` . A kimenet azt kéri, hogy az előfizetés-kezelővel regisztrálja a virtuális gépet a Red Hat használatával.
 
 >[!NOTE]
 >A RHEL 8, `dnf` és `yum` felcserélhetők. További információ: [RHEL 8 felügyeleti útmutató](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
@@ -135,7 +137,7 @@ A következő szkript egy példa. Cserélje le az erőforráscsoportot, a helyet
     # Define user name and blank password
     $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher RedHat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
+    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
 
     # Create a resource group
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location

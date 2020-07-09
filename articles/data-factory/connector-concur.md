@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417461"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Adatok másolása az összekötésből Azure Data Factory használatával (előzetes verzió)
@@ -53,7 +53,7 @@ A egyetértő társított szolgáltatás a következő tulajdonságokat támogat
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **egybeesik** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **egybeesik** | Igen |
 | ügyfél-azonosító | Az alkalmazás-client_id a egyetért az alkalmazások kezelésével.  | Igen |
 | felhasználónév | Az a Felhasználónév, amelyet a rendszer az egybeesik szolgáltatás elérésére használ.  | Igen |
 | jelszó | A Felhasználónév mezőben megadott felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
@@ -61,7 +61,7 @@ A egyetértő társított szolgáltatás a következő tulajdonságokat támogat
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -88,11 +88,11 @@ Az adatoknak a tartományba való másolásához állítsa az adatkészlet Type 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ConcurObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ConcurObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -119,10 +119,10 @@ Az adatoknak a **ConcurSource**való másolásához állítsa a másolási tevé
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ConcurSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ConcurSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

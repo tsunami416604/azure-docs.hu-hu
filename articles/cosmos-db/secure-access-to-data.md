@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208720"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023584"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 
@@ -19,7 +19,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|További források|
+|Kulcs típusa|Erőforrások|
 |---|---|
 |[Főkulcsok](#master-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -41,7 +41,7 @@ A Cosmos DB fiók két főkulcsán kívül két írásvédett kulcs is van. Ezek
 
 Az elsődleges, másodlagos, írásvédett és írható főkulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
 
-![Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása":::
 
 ### <a name="key-rotation"></a>Kulcs elforgatása<a id="key-rotation"></a>
 
@@ -53,7 +53,7 @@ A főkulcs elforgatásának folyamata egyszerű.
 4. Ellenőrzi, hogy az új elsődleges kulcs az összes erőforráson működik-e. A kulcsfontosságú rotációs folyamat a Cosmos DB fiók méretétől függően akár egy perctől akár órákig is elvégezhető.
 5. Cserélje le a másodlagos kulcsot az új elsődleges kulcsra.
 
-![Főkulcs elforgatása a Azure Portalban – NoSQL adatbázis biztonságának bemutatása](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Főkulcs elforgatása a Azure Portalban – NoSQL adatbázis biztonságának bemutatása" border="false":::
 
 ### <a name="code-sample-to-use-a-master-key"></a>Mintakód a főkulcs használatához
 
@@ -97,9 +97,9 @@ A Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak,
 7. A telefonos alkalmazás továbbra is használhatja az erőforrás-jogkivonatot, hogy közvetlenül hozzáférhessen Cosmos DB erőforrásokhoz az erőforrás-jogkivonat által meghatározott engedélyekkel és az erőforrás-jogkivonat által engedélyezett intervallummal.
 8. Az erőforrás-jogkivonat lejárata után a további kérések 401 jogosulatlan kivételt kapnak.  Ezen a ponton a telefonos alkalmazás újból létrehozza az identitást, és új erőforrás-tokent kér.
 
-    ![Azure Cosmos DB erőforrás-tokenek munkafolyamata](./media/secure-access-to-data/resourcekeyworkflow.png)
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB erőforrás-tokenek munkafolyamata" border="false":::
 
-Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik; Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) , illetve a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) vagy [Node. js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)forráskódján.
+Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik; Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) -hoz vagy a [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)-hoz tartozó forráskódhoz.
 
 Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt középső rétegű szolgáltatásra például a [ResourceTokenBroker alkalmazásban](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)talál példát.
 
@@ -176,5 +176,5 @@ Azure Cosmos DB lehetővé teszi, hogy az adatbázisban vagy gyűjteményekben t
 ## <a name="next-steps"></a>További lépések
 
 - További információ a Cosmos Database biztonságáról: [Cosmos db adatbázis-biztonság](database-security.md).
-- A Azure Cosmos DB engedélyezési jogkivonatok létrehozásával kapcsolatos további információkért lásd: [Access Control Azure Cosmos db erőforrásokon](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
+- A Azure Cosmos DB engedélyezési jogkivonatok létrehozásával kapcsolatos további információkért lásd: [Access Control Azure Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
 - Felhasználókkal és engedélyekkel rendelkező felhasználói felügyeleti minták, [.net SDK v3 felhasználói felügyeleti minták](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

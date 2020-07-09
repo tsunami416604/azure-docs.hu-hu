@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási eredm
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75369711"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039041"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Konfigurálható küszöbérték-alapú szabályok feldolgozása Azure Stream Analytics
 Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási eredmények olyan riasztási megoldás eléréséhez, amely a Azure Stream Analytics konfigurálható küszöbértékeken alapuló szabályokat használ.
@@ -39,9 +39,9 @@ Tegyük fel például, hogy van egy olyan Stream Analytics-feladata, amely egy *
 ## <a name="reference-data"></a>Hivatkozási érték
 Ez a példás példa azt mutatja be, hogyan lehet egy küszöbérték-alapú szabályt megjeleníteni. Egy JSON-fájl tárolja a hivatkozási adatokat, és az Azure Blob Storage-ba menti, és a blob Storage-tárolót a **szabályok**nevű hivatkozásként használja. Felülírhatja ezt a JSON-fájlt, és lecserélheti a szabály konfigurációját az idő bekapcsolásával a folyamatos átviteli feladatok leállítása vagy elindítása nélkül.
 
-- A példában szereplő szabály egy állítható riasztást jelöl, ha a processzor mérete meghaladja az értéket (az átlag nagyobb vagy egyenlő) `90` a százalékos értéknél. A `value` mező igény szerint konfigurálható.
-- Figyelje meg `AVGGREATEROREQUAL`, hogy a szabály egy **operátor** mezővel rendelkezik, amelyet később a lekérdezési szintaxisban kell értelmezni. 
-- A szabály egy adott dimenzió kulcsának `2` értékét szűri az értékkel. `C1` A többi mező üres karakterlánc, amely azt jelzi, hogy az adott esemény mezői nem szűrik a bemeneti adatfolyamot. További CPU-szabályokat is beállíthat, hogy szükség szerint szűrje a többi egyező mezőt.
+- A példában szereplő szabály egy állítható riasztást jelöl, ha a processzor mérete meghaladja az értéket (az átlag nagyobb vagy egyenlő) a százalékos értéknél `90` . A `value` mező igény szerint konfigurálható.
+- Figyelje meg, hogy a szabály egy **operátor** mezővel rendelkezik, amelyet később a lekérdezési szintaxisban kell értelmezni `AVGGREATEROREQUAL` . 
+- A szabály egy adott dimenzió kulcsának értékét szűri az `2` értékkel `C1` . A többi mező üres karakterlánc, amely azt jelzi, hogy az adott esemény mezői nem szűrik a bemeneti adatfolyamot. További CPU-szabályokat is beállíthat, hogy szükség szerint szűrje a többi egyező mezőt.
 - Nem minden oszlopnak szerepelnie kell a kimeneti riasztási eseményben. Ebben az esetben a `includedDim` kulcs száma `2` bekapcsolva `TRUE` értékre van kapcsolva, amely azt jelzi, hogy az adatfolyamban lévő Event-adatmező 2. száma szerepel a megfelelő kimeneti eseményekben. A többi mező nem szerepel a riasztás kimenetében, de a mezőlista módosítható.
 
 
@@ -134,11 +134,11 @@ HAVING
 ## <a name="example-streaming-input-event-data"></a>Példa adatfolyam-bevitelsel kapcsolatos esemény-adatokra
 Ez a példa JSON-adatok a fenti adatfolyam-lekérdezésben használt **mérőszámok** bemeneti adatait jelölik. 
 
-- Az 1 perces TimeSpan az érték `T14:50`három példát mutat be. 
-- Mindhárom érték `deviceId` `978648`megegyezik.
-- A CPU-metrika értékei különbözőek lehetnek az `98`egyes `95`eseményeken `80` (,). Csak az első két példa esemény haladja meg a szabályban megállapított CPU riasztási szabályt.
-- A riasztási szabály includeDim mezőjében a 2. kulcs szerepel. A Példaban szereplő események neve `NodeName`a megfelelő kulcs 2 mezőben található. A három példa eseményeinek értéke `N024`: `N024`, és `N014` . A kimenetben csak a csomópont `N024` jelenik meg, mint az egyetlen olyan adat, amely megfelel a magas CPU riasztási feltételeinek. `N014`nem felel meg a magas CPU-küszöbértéknek.
-- A riasztási szabály `filter` csak a 2. számú kulcson van konfigurálva, amely a `cluster` minta események mezőjének felel meg. A három példa eseményeinek mindegyike `C1` értékkel rendelkezik, és megfelel a szűrési feltételeknek.
+- Az 1 perces TimeSpan az érték három példát mutat be `T14:50` . 
+- Mindhárom `deviceId` érték megegyezik `978648` .
+- A CPU-metrika értékei különbözőek lehetnek az egyes eseményeken (, `98` `95` `80` ). Csak az első két példa esemény haladja meg a szabályban megállapított CPU riasztási szabályt.
+- A riasztási szabály includeDim mezőjében a 2. kulcs szerepel. A Példaban szereplő események neve a megfelelő kulcs 2 mezőben található `NodeName` . A három példa eseményeinek értéke `N024` : `N024` , és `N014` . A kimenetben csak a csomópont jelenik meg, `N024` mint az egyetlen olyan adat, amely megfelel a magas CPU riasztási feltételeinek. `N014`nem felel meg a magas CPU-küszöbértéknek.
+- A riasztási szabály `filter` csak a 2. számú kulcson van konfigurálva, amely a `cluster` minta események mezőjének felel meg. A három példa eseményeinek mindegyike értékkel rendelkezik `C1` , és megfelel a szűrési feltételeknek.
 
 ```json
 {
@@ -282,7 +282,7 @@ Ez a példa JSON-adatok a fenti adatfolyam-lekérdezésben használt **mérősz�
 ```
 
 ## <a name="example-output"></a>Példa kimenetre
-Ez a példa a kimeneti JSON-adatokat jeleníti meg egyetlen riasztási esemény a hivatkozási adatokat definiáló CPU-küszöbérték alapján. A kimeneti esemény tartalmazza a riasztás nevét, valamint a figyelembe vett mezők összesített (átlagos, minimális és maximális) értékét. A kimeneti esemény adatokat tartalmaz a szabály konfigurálása `NodeName` `N024` miatti 2. számú kulcsmező. (A JSON úgy lett módosítva, hogy megjelenjenek a sortörések az olvashatóság érdekében.)
+Ez a példa a kimeneti JSON-adatokat jeleníti meg egyetlen riasztási esemény a hivatkozási adatokat definiáló CPU-küszöbérték alapján. A kimeneti esemény tartalmazza a riasztás nevét, valamint a figyelembe vett mezők összesített (átlagos, minimális és maximális) értékét. A kimeneti esemény adatokat tartalmaz `NodeName` `N024` a szabály konfigurálása miatti 2. számú kulcsmező. (A JSON úgy lett módosítva, hogy megjelenjenek a sortörések az olvashatóság érdekében.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

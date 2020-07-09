@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021874"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
@@ -219,7 +218,7 @@ Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelm
 - [Vezetékes titkosítás](../../storage/blobs/security-recommendations.md), például SMB 3,0 titkosítás az Azure-fájlmegosztás számára.
 - [Ügyféloldali titkosítás](../../storage/blobs/security-recommendations.md), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 
-#### <a name="encryption-at-rest"></a>Titkosítás nyugalmi állapotban
+#### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
 Számos szervezet esetében az [adattitkosítás](isolation-choices.md) az adatok védelme, a megfelelőség és az adatok szuverenitása szempontjából kötelező lépés. Három Azure-szolgáltatás áll rendelkezésre, amelyek a "nyugalmi állapotban" lévő adatok titkosítását teszik lehetővé:
 

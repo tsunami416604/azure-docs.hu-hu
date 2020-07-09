@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066763"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciók adatai
@@ -28,7 +28,7 @@ Javasoljuk, hogy kezdje az [Azure által támogatott disztribúciók](endorsed-d
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES és openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 Ez a cikk általános útmutatást nyújt a Linux-disztribúciók Azure-beli futtatásához.
@@ -39,14 +39,14 @@ Ez a cikk általános útmutatást nyújt a Linux-disztribúciók Azure-beli fut
 * A VHD számára engedélyezett maximális méret 1 023 GB.
 * A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötet-kezelő (LVM) helyett szabványos partíciókat használjon, amely számos telepítés esetében az alapértelmezett. A standard partíciók használatával elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemez már csatlakoztatva van egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható.
 * Szükség van az UDF-fájlrendszerek csatlakoztatásához szükséges kernel-támogatásra. Az Azure-ban az első indításkor a kiépítési konfigurációt a rendszer a vendéghez csatolt UDF formátumú adathordozó használatával továbbítja a linuxos virtuális géphez. Az Azure Linux-ügynöknek csatlakoztatnia kell az UDF fájlrendszert a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.
-* A 2.6.37-nál korábbi Linux kernel verziók nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504) rögzített. A 2.6.37-nál régebbi egyéni kerneleket futtató rendszerek vagy a 2.6.32-504 RHEL-alapú kernelek esetében a rendszerindítási `numa=off` paramétert a grub. conf fájlban lévő kernel parancssorban kell beállítani. További információ: [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
+* A 2.6.37-nál korábbi Linux kernel verziók nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504) rögzített. A 2.6.37-nál régebbi egyéni kerneleket futtató rendszerek vagy a 2.6.32-504 RHEL-alapú kernelek esetében a rendszerindítási paramétert a `numa=off` grub. conf fájlban lévő kernel parancssorban kell beállítani. További információ: [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * Ne állítson be swap-partíciót az operációsrendszer-lemezen. A Linux-ügynök konfigurálható úgy, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén az alábbi lépésekben leírtak szerint.
 * Minden Azure-beli virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor győződjön meg arról, hogy a nyers lemez mérete 1 MB-nál több, a konverzió előtt, az alábbi lépések szerint.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Kernel-modulok telepítése Hyper-V nélkül
 Az Azure a Hyper-V hypervisoron fut, így a Linux bizonyos kernel modulokat igényel az Azure-ban való futtatáshoz. Ha olyan virtuális gépet használ, amely a Hyper-V-n kívül lett létrehozva, akkor előfordulhat, hogy a Linux-telepítők nem tartalmazzák a Hyper-V illesztőprogramjait a kezdeti Ramdisk-ben (initrd vagy initramfs), kivéve, ha a virtuális gép nem észleli, hogy egy Hyper-V környezetben fut. Ha más virtualizációs rendszert (például VirtualBox, KVM stb.) használ a Linux-rendszerkép előkészítéséhez, előfordulhat, hogy újra kell építenie a initrd, hogy legalább a hv_vmbus és hv_storvsc kernel-modulok elérhetők legyenek a kezdeti Ramdisk-ben.  Ez az ismert probléma a felsőbb rétegbeli Red Hat-disztribúción alapuló rendszerek, és esetleg mások számára is lehetséges.
 
-A initrd vagy initramfs-rendszerkép újraépítési mechanizmusa a terjesztéstől függően változhat. A megfelelő eljáráshoz olvassa el a disztribúció dokumentációját vagy támogatását.  Íme egy példa arra, hogyan lehet a initrd újraépíteni `mkinitrd` a segédprogram használatával:
+A initrd vagy initramfs-rendszerkép újraépítési mechanizmusa a terjesztéstől függően változhat. A megfelelő eljáráshoz olvassa el a disztribúció dokumentációját vagy támogatását.  Íme egy példa arra, hogyan lehet a initrd újraépíteni a `mkinitrd` segédprogram használatával:
 
 1. A meglévő initrd-rendszerkép biztonsági mentése:
 
@@ -64,21 +64,21 @@ A initrd vagy initramfs-rendszerkép újraépítési mechanizmusa a terjesztést
 ### <a name="resizing-vhds"></a>Virtuális merevlemezek átméretezése
 Az Azure-beli VHD-lemezképeknek egy 1 MB-ra igazított virtuális mérettel kell rendelkezniük.  A Hyper-V használatával létrehozott virtuális merevlemezek általában megfelelően vannak igazítva.  Ha a virtuális merevlemez nem megfelelően van igazítva, az alábbihoz hasonló hibaüzenet jelenhet meg, amikor megpróbál létrehozni egy rendszerképet a VHD-ből.
 
-* A VHD http:\//\<mystorageaccount>. blob.Core.Windows.net/VHDs/MyLinuxVM.vhd virtuális mérete (21475270656 bájt) nem támogatott. A méretnek egész számnak kell lennie (MB-ban).
+* A VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.vhd virtuális mérete 21475270656 bájtnál nem támogatott. A méretnek egész számnak kell lennie (MB-ban).
 
-Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](https://technet.microsoft.com/library/hh848535.aspx) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, hogy a használatával `qemu-img` alakítsa át (ha szükséges), és méretezze át a VHD-t.
+Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](https://technet.microsoft.com/library/hh848535.aspx) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, `qemu-img` hogy a használatával alakítsa át (ha szükséges), és méretezze át a VHD-t.
 
 > [!NOTE]
 > Létezik egy [ismert hiba a qemu-IMG](https://bugs.launchpad.net/qemu/+bug/1490611) verzióban >= 2.2.1, amely egy nem megfelelően formázott VHD-t eredményez. A probléma a QEMU 2,6-es verziójában lett kijavítva. Javasoljuk, hogy a `qemu-img` 2.2.0 vagy az alacsonyabb, vagy a 2,6 vagy újabb rendszer használatát javasolja.
 > 
 
-1. A virtuális merevlemez átméretezése közvetlenül olyan eszközökkel `qemu-img` történhet `vbox-manage` , mint a vagy egy nem indítható virtuális merevlemez.  Javasoljuk, hogy először konvertálja a VHD-t egy nyers lemezképre.  Ha a virtuálisgép-lemezkép nyers lemezképként lett létrehozva (egyes hypervisorok alapértelmezett értéke, például KVM), akkor kihagyhatja ezt a lépést.
+1. A virtuális merevlemez átméretezése közvetlenül olyan eszközökkel történhet, mint a `qemu-img` vagy `vbox-manage` egy nem indítható virtuális merevlemez.  Javasoljuk, hogy először konvertálja a VHD-t egy nyers lemezképre.  Ha a virtuálisgép-lemezkép nyers lemezképként lett létrehozva (egyes hypervisorok alapértelmezett értéke, például KVM), akkor kihagyhatja ezt a lépést.
  
     ```
     qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
     ```
 
-1. Kiszámítja a lemezkép szükséges méretét úgy, hogy a virtuális méret 1 MB-ra legyen igazítva.  A következő bash rendszerhéj-parancsfájl `qemu-img info` a lemezkép virtuális méretének meghatározásához használja, majd a következő 1 MB-ra kiszámítja a méretet.
+1. Kiszámítja a lemezkép szükséges méretét úgy, hogy a virtuális méret 1 MB-ra legyen igazítva.  A következő bash rendszerhéj-parancsfájl a `qemu-img info` lemezkép virtuális méretének meghatározásához használja, majd a következő 1 MB-ra kiszámítja a méretet.
 
     ```bash
     rawdisk="MyLinuxVM.raw"
@@ -93,7 +93,7 @@ Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vag
     echo "Rounded Size = $rounded_size"
     ```
 
-3. Méretezze át a nyers lemezt `$rounded_size` a fent megadott módon.
+3. Méretezze át a nyers lemezt a `$rounded_size` fent megadott módon.
 
     ```bash
     qemu-img resize MyLinuxVM.raw $rounded_size
@@ -160,7 +160,7 @@ Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux rend
     ```  
     rhgb quiet crashkernel=auto
     ```
-    A grafikus és a csendes rendszerindítás nem hasznos felhőalapú környezetben, ahol a soros portra érkező összes naplót szeretnénk használni. Ha `crashkernel` szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter kevesebb, mint 128 MB-tal csökkenti a virtuális gép rendelkezésre álló memóriájának mennyiségét, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+    A grafikus és a csendes rendszerindítás nem hasznos felhőalapú környezetben, ahol a soros portra érkező összes naplót szeretnénk használni. `crashkernel`Ha szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter kevesebb, mint 128 MB-tal csökkenti a virtuális gép rendelkezésre álló memóriájának mennyiségét, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
 1. Telepítse az Azure Linux-ügynököt.
   
@@ -186,7 +186,7 @@ Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux rend
      logout
      ```  
    > [!NOTE]
-   > A VirtualBox-on a következő hibaüzenet jelenhet meg a `waagent -force -deprovision` Futtatás után `[Errno 5] Input/output error`:. Ez a hibaüzenet nem kritikus, és figyelmen kívül hagyható.
+   > A VirtualBox-on a következő hibaüzenet jelenhet meg a Futtatás után: `waagent -force -deprovision` `[Errno 5] Input/output error` . Ez a hibaüzenet nem kritikus, és figyelmen kívül hagyható.
 
 * Állítsa le a virtuális gépet, és töltse fel a VHD-t az Azure-ba.
 

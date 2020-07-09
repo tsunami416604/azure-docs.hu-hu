@@ -4,10 +4,9 @@ description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok bi
 ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83697065"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
@@ -106,7 +105,7 @@ A HANA-hoz készült több Container Database-ben a standard konfiguráció SYST
 
 ## <a name="back-up-a-replicated-vm"></a>Replikált virtuális gép biztonsági mentése
 
-### <a name="scenario-1"></a>1. példa
+### <a name="scenario-1"></a>1\. példa
 
 Az eredeti virtuális gépet Azure Site Recovery vagy Azure-beli virtuális gép biztonsági másolatának használatával replikálták. Az új virtuális gép úgy lett felépítve, hogy szimulálja a régi virtuális gépet. Vagyis a beállítások pontosan ugyanazok. (Ennek az az oka, hogy az eredeti virtuális gép törölve lett, és a visszaállítás a virtuális gép biztonsági másolatából vagy Azure Site Recovery) történt.
 
@@ -133,7 +132,7 @@ Ez a forgatókönyv két lehetséges esetet tartalmazhat. Ismerje meg, hogyan k�
     - Biztonsági másolatok engedélyezése ezeken az adatbázisokon
     - A már meglévő biztonsági másolati adatbázisok (a törölt virtuális gépről) továbbra is a tárolóban lesznek tárolva (a biztonsági mentések a szabályzatnak megfelelően megmaradnak)
 
-### <a name="scenario-2"></a>2. példa
+### <a name="scenario-2"></a>2\. példa
 
 Az eredeti virtuális gépet Azure Site Recovery vagy Azure-beli virtuális gép biztonsági másolatának használatával replikálták. Az új virtuális gép a tartalomból lett kiépítve – sablonként való használatra. Ez egy új biztonsági azonosítóval rendelkező virtuális gép.
 

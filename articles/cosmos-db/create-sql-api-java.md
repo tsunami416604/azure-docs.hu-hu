@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bb711dc67df51edc569f23bd1e6c54eef55012d2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647708"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115388"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
 
@@ -44,7 +44,7 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 
 *Egy Cosmos DB fiók szerkezete.* Az API-tól vagy programozási nyelvtől függetlenül Cosmos DB *fiók* nulla vagy több *adatbázist*tartalmaz, egy *adatbázis* (db) nulla vagy több *tárolót*tartalmaz, és egy *tároló* nulla vagy több elemet tartalmaz, ahogy az alábbi ábrán is látható:
 
-![Azure Cosmos-fiókok entitásai](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókok entitásai" border="false":::
 
 Az adatbázisokról, a tárolók és az elemek [itt](databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs*. 
 
@@ -186,7 +186,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB SQL API-fiókot, hogyan hozhat létre egy dokumentum-adatbázist és-tárolót a Adatkezelő használatával, és hogyan futtathat egy Java-alkalmazást a programozott módon történő futtatásához. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

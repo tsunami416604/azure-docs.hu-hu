@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614523"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>C# Service Fabric-alkalmazások fejlesztése a Visual Studio Code-ban
@@ -61,31 +60,31 @@ Az alkalmazás létrehozása után üzembe helyezheti azt a helyi fürtön.
 
    ![Alkalmazás üzembe helyezése parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa\/meg Service Fabric Explorer: http:/localhost: 19080/Explorer. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
+4. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg Service Fabric Explorer: http: \/ /localhost: 19080/Explorer. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
 
    ![Counter Service-alkalmazás a Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Miután ellenőrizte, hogy az alkalmazás fut, indítson el egy böngészőt, és nyissa\/meg a következő oldalt: http:/localhost: 31002. Ez az alkalmazás webes kezelőfelülete. Frissítse az oldalt, hogy megtekintse a számláló aktuális értékét, ahogy az növekszik.
+4. Miután ellenőrizte, hogy az alkalmazás fut, indítson el egy böngészőt, és nyissa meg a következő oldalt: http: \/ /localhost: 31002. Ez az alkalmazás webes kezelőfelülete. Frissítse az oldalt, hogy megtekintse a számláló aktuális értékét, ahogy az növekszik.
 
    ![Counter Service-alkalmazás a böngészőben](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
 ## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Az alkalmazás közzététele Azure Service Fabric-fürtön
 Az alkalmazás helyi fürtön való üzembe helyezése mellett közzéteheti az alkalmazást egy távoli Azure Service Fabric-fürtön is. 
 
-1. Győződjön meg arról, hogy az alkalmazást a fenti utasítások alapján építették. Frissítse a létrehozott konfigurációs fájlt `Cloud.json` a közzétenni kívánt távoli fürt részleteivel.
+1. Győződjön meg arról, hogy az alkalmazást a fenti utasítások alapján építették. Frissítse a létrehozott konfigurációs fájlt a `Cloud.json` közzétenni kívánt távoli fürt részleteivel.
 
 2. A **parancs palettáján**válassza ki a **Service Fabric: Application publish (alkalmazás közzététele) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
 
    ![Alkalmazás közzététele parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Ha a telepítés befejeződött, indítson el egy böngészőt, és `https:<clusterurl>:19080/Explorer`nyissa meg Service Fabric Explorer:. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
+3. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg Service Fabric Explorer: `https:<clusterurl>:19080/Explorer` . Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
 
 ## <a name="debug-the-application"></a>Az alkalmazás hibakeresése
 Ha a VS Code alkalmazásban hibakeresést végez, az alkalmazásnak helyi fürtön kell futnia. A töréspontok ezután hozzáadhatók a kódhoz.
 
 Töréspont és hibakeresés beállításához hajtsa végre a következő lépéseket:
-1. Az Intézőben nyissa meg a */src/CounterServiceApplication/CounterService/CounterService.cs* fájlt, és állítson be egy töréspontot `RunAsync` a 62. sorban a metóduson belül.
-3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **.net Core** elemet a legördülő menüből. Megnyílik a Launch. JSON fájl. Ezt a fájlt lezárhatja. Most meg kell jelennie a konfigurációs beállításoknak a Futtatás gomb melletti hibakeresési konfigurációs menüben (zöld nyíl).
+1. Az Intézőben nyissa meg a */src/CounterServiceApplication/CounterService/CounterService.cs* fájlt, és állítson be egy töréspontot a 62. sorban a `RunAsync` metóduson belül.
+3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **.net Core** elemet a legördülő menüből. Megnyílik a launch.jsfájl. Ezt a fájlt lezárhatja. Most meg kell jelennie a konfigurációs beállításoknak a Futtatás gomb melletti hibakeresési konfigurációs menüben (zöld nyíl).
 
    ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
@@ -93,7 +92,7 @@ Töréspont és hibakeresés beállításához hajtsa végre a következő lép�
 
    ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Service Fabric Explorer megnyitása böngészőben: http:\//localhost: 19080/Explorer. Kattintson az **alkalmazások** elemre, és válassza ki azt az elsődleges csomópontot, amelyen a CounterService fut. Az alábbi képen a CounterService elsődleges csomópontja a 0. csomópont.
+3. Service Fabric Explorer megnyitása böngészőben: http: \/ /localhost: 19080/Explorer. Kattintson az **alkalmazások** elemre, és válassza ki azt az elsődleges csomópontot, amelyen a CounterService fut. Az alábbi képen a CounterService elsődleges csomópontja a 0. csomópont.
 
    ![CounterService elsődleges csomópontja](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

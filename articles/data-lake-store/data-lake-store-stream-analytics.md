@@ -3,15 +3,14 @@ title: Stream-adatok Stream Analyticsról Data Lake Storage Gen1ra – Azure
 description: A Azure Stream Analytics használatával továbbíthatja az adatátvitelt a Azure Data Lake Storage Gen1ba.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515170"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok továbbítása Azure Storage Blobról Azure Data Lake Storage Gen1 a Azure Stream Analytics használatával
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 kimenetként egy Azure Stream Analytics feladatokhoz. Ez a cikk egy egyszerű forgatókönyvet mutat be, amely beolvassa az adatokat egy Azure Storage-blobból (bemenet), és az adatokat a Data Lake Storage Gen1ba (output) írja.
@@ -58,7 +57,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
    * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
    * A **kódoláshoz**válassza az **UTF-8**elemet.
 
-     Kattintson a **Létrehozás**gombra. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
+     Kattintson a **Létrehozás** lehetőségre. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Data Lake Storage Gen1 kimenet létrehozása a feladatokhoz
@@ -86,7 +85,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
    * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
    * A **kódoláshoz**válassza az **UTF-8**elemet.
     
-     Kattintson a **Létrehozás**gombra. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
+     Kattintson a **Létrehozás** lehetőségre. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
@@ -100,7 +99,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
 
     A feladatok elindításához kattintson a **Start** gombra. A feladatok elindításához akár pár percet is igénybe vehet.
 
-3. Ha a feladatot úgy szeretné elindítani, hogy a blobból kiválassza az adatforrást, másolja a minta adatfájlt a blob-tárolóba. A [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)lekérhet egy minta adatfájlt. Ebben az oktatóanyagban másolja a **vehicle1_09142014. csv**fájlt. Az adatok blob-tárolóba való feltöltéséhez különböző ügyfeleket, például [Azure Storage Explorereket](https://storageexplorer.com/)használhat.
+3. Ha a feladatot úgy szeretné elindítani, hogy a blobból kiválassza az adatforrást, másolja a minta adatfájlt a blob-tárolóba. A [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)lekérhet egy minta adatfájlt. Ebben az oktatóanyagban másolja a **vehicle1_09142014.csv**fájlt. Az adatok blob-tárolóba való feltöltéséhez különböző ügyfeleket, például [Azure Storage Explorereket](https://storageexplorer.com/)használhat.
 
 4. Az **Áttekintés** lap **figyelés**területén tekintse meg az adatok feldolgozásának módját.
 
@@ -110,7 +109,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
 
     ![Kimenet ellenőrzése](./media/data-lake-store-stream-analytics/run.query.4.png "Kimenet ellenőrzése")
 
-    A Adatkezelő ablaktáblán figyelje meg, hogy a kimenet a Data Lake Storage Gen1 output Settings (`streamanalytics/job/output/{date}/{time}`) paraméterben megadott elérési út mappájába íródik.  
+    A Adatkezelő ablaktáblán figyelje meg, hogy a kimenet a Data Lake Storage Gen1 output Settings () paraméterben megadott elérési út mappájába íródik `streamanalytics/job/output/{date}/{time}` .  
 
 ## <a name="see-also"></a>Lásd még
 * [Data Lake Storage Gen1 használatára szolgáló HDInsight-fürt létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)

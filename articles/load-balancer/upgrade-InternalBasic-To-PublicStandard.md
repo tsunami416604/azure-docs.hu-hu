@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan frissítheti az Azure alapszintű bels�
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809353"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure belső Load Balancer frissítése – kimenő kapcsolatok szükségesek
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
@@ -47,10 +47,10 @@ Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.
 
 A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
 
-* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a szkript futtatására szolgáló `Install-Script` lehetőség használata.
+* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a `Install-Script` szkript futtatására szolgáló lehetőség használata.
 * Ha meg kell őriznie az Azure az modulokat, a legjobb megoldás, ha letölti a szkriptet, és közvetlenül futtatja.
 
-Annak megállapításához, hogy telepítve van-e az Azure az `Get-InstalledModule -Name az`modulok, futtassa a parancsot. Ha a telepített modulok nem láthatók, akkor használhatja a `Install-Script` metódust.
+Annak megállapításához, hogy telepítve van-e az Azure az modulok, futtassa a parancsot `Get-InstalledModule -Name az` . Ha a telepített modulok nem láthatók, akkor használhatja a `Install-Script` metódust.
 
 ### <a name="install-using-the-install-script-method"></a>Telepítés az install-script metódus használatával
 
@@ -68,9 +68,9 @@ Ha van néhány Azure az modulok telepítve, és nem távolítható el (vagy nem
 
 A szkript futtatása:
 
-1. Az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz használható.
+1. Az Azure-hoz való `Connect-AzAccount` kapcsolódáshoz használható.
 
-1. A `Import-Module Az` használatával importálhatja az az modulokat.
+1. `Import-Module Az`A használatával importálhatja az az modulokat.
 
 1. Vizsgálja meg a szükséges paramétereket:
 
@@ -132,7 +132,7 @@ Nem. A Azure PowerShell szkript csak a konfigurációt telepíti át. A tényleg
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány probléma merült fel a szkript használatával. Hogyan Kérhetek segítséget?
   
-E-mailt küldhet a slbupgradesupport@microsoft.comszolgáltatásnak, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
+E-mailt küldhet a szolgáltatásnak slbupgradesupport@microsoft.com , megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
 
 ## <a name="next-steps"></a>További lépések
 

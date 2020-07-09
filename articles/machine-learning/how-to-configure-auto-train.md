@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18
-ms.openlocfilehash: 625c1ea474693732ab19e82de4730d2f8c971979
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833689"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Ha nem szeretne programkódot felvenni, akkor [Azure Machine learning Studióban
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
-A kísérlet megkezdése előtt meg kell határoznia, hogy milyen típusú gépi tanulási probléma van a megoldásban. Az automatizált gépi tanulás támogatja a besorolási, a regressziós és az előrejelzési feladatok típusát. További [információ a feladattípusokról](how-to-define-task-type.md).
+A kísérlet megkezdése előtt meg kell határoznia, hogy milyen típusú gépi tanulási probléma van a megoldásban. Az automatizált gépi tanulás támogatja a besorolási, a regressziós és az előrejelzési feladatok típusát. További [információ a feladattípusokról](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
 Az automatizált gépi tanulás a következő algoritmusokat támogatja az automatizálási és hangolási folyamat során. Felhasználóként nem kell megadnia az algoritmust.
 
@@ -58,12 +58,10 @@ Osztályozás | Regresszió | Idősoros előrejelzés
 [Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN lineáris osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineáris Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineáris Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Gyors lineáris Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Automatikus ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Sztochasztikus gradiens leereszkedés (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online színátmenet-leereszkedés Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
-|[Átlagos Perceptron osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[Lineáris SVM osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
+[Átlagos Perceptron osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)|[Online színátmenet-leereszkedés Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest) |[Automatikus ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Gyors lineáris Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
+[Sztochasztikus gradiens leereszkedés (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[Lineáris SVM osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)*||
 
 A `task` `AutoMLConfig` kísérlet típusának megadásához használja a konstruktor paraméterét.
 
@@ -117,13 +115,14 @@ A következő témakörben talál példát arra, [Hogyan](how-to-train-with-data
 
 ## <a name="train-and-validation-data"></a>Betanítási és érvényesítési adatkészletek
 
-A konstruktorban külön betanítási és érvényesítési készletek is megadhatók `AutoMLConfig` .
+Az alábbi beállításokkal adhat meg külön betanítási és ellenőrzési készleteket közvetlenül a `AutoMLConfig` konstruktorban. További információ az [adatfelosztások és a AutoML-kísérletek határokon való ellenőrzésének konfigurálásáról](how-to-configure-cross-validation-data-splits.md) . 
 
 ### <a name="k-folds-cross-validation"></a>K-összecsukható kereszt-ellenőrzés
 
 `n_cross_validations`A beállítással adhatja meg a több érvényesítést. A betanítási adatkészletet véletlenszerűen felosztja a rendszer az `n_cross_validations` egyenlő mérettel. Az egyes átellenőrzési körökben a rendszer az egyik hajtogatást használja a fennmaradó hajtogatási modell érvényesítéséhez. Ez a folyamat `n_cross_validations` csak akkor ismétlődik a körökhöz, ha az egyes összekapcsolások érvényesítési készletként egyszer szerepelnek. A rendszer az összes kör átlagos pontszámát `n_cross_validations` fogja jelenteni, és a hozzá tartozó modell a teljes betanítási adatkészletre lesz átképezve.
 
 További információ arról, hogy a autoML hogyan alkalmazza a határokon átnyúló ellenőrzéseket a [túlzottan illeszkedő modellek megelőzése](concept-manage-ml-pitfalls.md#prevent-over-fitting)érdekében.
+
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo Cross Validation (ismétlődő véletlenszerű almintavételezés)
 
 Ezzel a `validation_size` beállítással megadhatja az érvényesítéshez használandó betanítási adatkészlet százalékos arányát, és `n_cross_validations` a használatával megadhatja a kereszthivatkozások számát. Az egyes átellenőrzési körökben a méret egy részhalmaza `validation_size` véletlenszerűen lesz kiválasztva a fennmaradó adattípusra képzett modell érvényesítéséhez. Végül az összes kör átlagos pontszáma is `n_cross_validations` jelenteni fog, és a rendszer a megfelelő modellt a teljes betanítási adatkészleten át fogja képezni. A Monte Carlo nem támogatott az idősorozat-előrejelzéshez.
@@ -200,7 +199,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan 
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a featurization elfogadott beállításait mutatja be a [AutoMLConfig osztályban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Featurization-konfiguráció | Leírás |
+|Featurization-konfiguráció | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
@@ -345,6 +344,8 @@ A kísérlet befejezéséhez több lehetőség is megadható.
 
 Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha egy jegyzetfüzetben van. További részletekért tekintse meg a [modellek követése és értékelése](how-to-track-experiments.md#view-run-details) című témakört.
 
+A webszolgáltatások üzembe helyezéséhez szükséges modellek letöltéséről vagy regisztrálásáról további információt a [modell üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
+
 ## <a name="understand-automated-ml-models"></a>Az automatizált ML-modellek ismertetése
 
 Az automatikus ML használatával előállított modellek a következő lépéseket tartalmazzák:
@@ -421,7 +422,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Az elemek magyarázata:
+   Ebben a kódban:
 
    |Kimenet|Definíció|
    |----|--------|
@@ -509,6 +510,9 @@ A modell értelmezése lehetővé teszi, hogy megtudja, miért hoztak létre a m
 Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md) a kódokhoz című témakört, amely bemutatja, hogyan engedélyezheti a tolmácsolási funkciókat kifejezetten az automatizált gépi tanulási kísérleteken belül.
 
 Általános információk arról, hogy a modell magyarázatait és funkcióinak fontosságát az SDK más területein is engedélyezheti az automatikus gépi tanuláson kívül: a [koncepcióról](how-to-machine-learning-interpretability.md) szóló cikk értelmezése.
+
+> [!NOTE]
+> A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
 
 ## <a name="next-steps"></a>További lépések
 

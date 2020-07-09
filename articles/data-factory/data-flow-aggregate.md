@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606535"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban
@@ -50,17 +49,17 @@ Az összesített átalakítások hasonlóak az SQL aggregált választó lekérd
 
 ## <a name="removing-duplicate-rows"></a>Ismétlődő sorok eltávolítása
 
-Az összesített átalakítás általános használata eltávolítja vagy azonosítja a forrásadatok ismétlődő bejegyzéseit. Ez a folyamat deduplikált néven ismert. A kulcsok csoportosítása alapján, a kiválasztott ismétlődő sorok meghatározásához használja a választott heurisztikus lehetőséget. `first()`Gyakori heurisztikus `last()` `max()`:,, és `min()`. Használjon [oszlopos mintákat](concepts-data-flow-column-pattern.md) a szabály minden oszlopra való alkalmazásához, kivéve a csoportosítási oszlopokat.
+Az összesített átalakítás általános használata eltávolítja vagy azonosítja a forrásadatok ismétlődő bejegyzéseit. Ez a folyamat deduplikált néven ismert. A kulcsok csoportosítása alapján, a kiválasztott ismétlődő sorok meghatározásához használja a választott heurisztikus lehetőséget. Gyakori heurisztikus:, `first()` , `last()` `max()` és `min()` . Használjon [oszlopos mintákat](concepts-data-flow-column-pattern.md) a szabály minden oszlopra való alkalmazásához, kivéve a csoportosítási oszlopokat.
 
 ![Deduplikáció](media/data-flow/agg-dedupe.png "Deduplikáció")
 
-A fenti példában az oszlopok `ProductID` és `Name` a csoportosításhoz használják őket. Ha két sor ugyanazokkal az értékekkel rendelkezik a két oszlophoz, azok ismétlődésnek tekintendők. Ebben az összesített átalakításban a rendszer megőrzi az első sor egyezésének értékeit, és az összes többi el fog dobni. Az oszlop mintájának szintaxisa alapján az összes olyan `ProductID` oszlop `Name` , amelynek a neve nem, és le van képezve a meglévő oszlop nevére, és az első megfeleltetett sorok értéke. A kimeneti séma megegyezik a bemeneti sémával.
+A fenti példában az oszlopok `ProductID` és a `Name` csoportosításhoz használják őket. Ha két sor ugyanazokkal az értékekkel rendelkezik a két oszlophoz, azok ismétlődésnek tekintendők. Ebben az összesített átalakításban a rendszer megőrzi az első sor egyezésének értékeit, és az összes többi el fog dobni. Az oszlop mintájának szintaxisa alapján az összes olyan oszlop, amelynek a neve nem, `ProductID` és le `Name` van képezve a meglévő oszlop nevére, és az első megfeleltetett sorok értéke. A kimeneti séma megegyezik a bemeneti sémával.
 
-Az adatérvényesítési forgatókönyvek `count()` esetében a függvény használatával megszámolható, hogy hány ismétlődés van.
+Az adatérvényesítési forgatókönyvek esetében a `count()` függvény használatával megszámolható, hogy hány ismétlődés van.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -81,7 +80,7 @@ Az adatérvényesítési forgatókönyvek `count()` esetében a függvény haszn
 
 ### <a name="example"></a>Példa
 
-Az alábbi példában a bejövő adatfolyam `MoviesYear` és a csoportok oszlop `year`szerint vannak sorba rendezve. Az átalakítás egy összesített oszlopot `avgrating` hoz létre, amely kiértékeli az oszlop `Rating`átlagát. Ez az összesített átalakítás neve `AvgComedyRatingsByYear`.
+Az alábbi példában a bejövő adatfolyam `MoviesYear` és a csoportok oszlop szerint vannak sorba rendezve `year` . Az átalakítás egy összesített oszlopot hoz létre `avgrating` , amely kiértékeli az oszlop átlagát `Rating` . Ez az összesített átalakítás neve `AvgComedyRatingsByYear` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -100,7 +99,7 @@ MoviesYear aggregate(
 
 ![Összesített adatfolyam-parancsfájl](media/data-flow/aggdfs1.png "Összesített adatfolyam-parancsfájl")
 
-```MoviesYear```: Származtatott oszlop, amely az év és ```AvgComedyRatingByYear```a cím oszlopokat definiálja: a vígjátékok átlagos minősítésének ```avgrating```összesített átalakítása év szerint csoportosítva: az összesített érték tárolásához létrehozott új oszlop neve.
+```MoviesYear```: Származtatott oszlop, amely az év és a cím oszlopokat definiálja ```AvgComedyRatingByYear``` : a vígjátékok átlagos minősítésének összesített átalakítása év szerint csoportosítva ```avgrating``` : az összesített érték tárolásához létrehozott új oszlop neve.
 
 ```
 MoviesYear aggregate(groupBy(year),

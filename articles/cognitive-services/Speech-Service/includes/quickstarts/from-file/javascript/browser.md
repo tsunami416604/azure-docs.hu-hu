@@ -3,13 +3,12 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: b5bdbb76a822f8b6d5134da819828b3dee518165
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: 7e2960adce028450fd3ccdb9eb11190629bf7bb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806436"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035687"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -168,7 +167,7 @@ Az objektumok inicializálásához `SpeechRecognizer` létre kell hoznia egy oly
 Most létre kell hoznia egy `AudioConfig` objektumot, amely a hangfájlra mutat. Szúrja be ezt a kódot a `startRecognizeOnceAsyncButton.addEventListener()` metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
 
 ```JavaScript
-        var audioConfig  = SpeechSDK.AudioConfig.fromFile(audioFile);
+        var audioConfig  = SpeechSDK.AudioConfig.fromWavFileInput(audioFile);
 ```
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer inicializálása
@@ -212,7 +211,7 @@ recognizer.recognizeOnceAsync(
 Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat egy jogkivonatforrást a bemutató alkalmazáshoz.
 Így az előfizetői azonosítója soha nem fog kikerülni a kiszolgálóról, közben viszont a felhasználóknak úgy teheti lehetővé a beszédfelismerési képességek használatát, hogy ők maguk semmilyen engedélyezési kódot nem adnak meg.
 
-Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP parancsnyelv használatát. Írja be a következő kódot:
+Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP programozási nyelvet a curl enabled használatával. Írja be a következő kódot:
 
 ```php
 <?php

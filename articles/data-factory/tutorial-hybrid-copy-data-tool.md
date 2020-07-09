@@ -1,6 +1,6 @@
 ---
 title: Helyszíni adatai másolása az Azure Adatok másolása eszköz használatával
-description: Létrehozhat egy Azure-beli adat-előállítót, majd az Adatok másolása eszközzel másolhat adatokat egy helyszíni SQL Server-adatbázisból az Azure Blob Storage-tárolóba.
+description: Hozzon létre egy Azure-beli adatelőállítót, majd az Adatok másolása eszközzel másolja át az adatait egy SQL Server-adatbázisból az Azure Blob Storage-ba.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -10,22 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/09/2018
-ms.openlocfilehash: 6b4df324fec38d08355754146d8be76d225e6cb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/09/2020
+ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418592"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660951"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása az Adatok másolása eszközzel helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba a Adatok másolása eszköz használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](tutorial-hybrid-copy-data-tool.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel létrehoz egy folyamatot, amely egy helyszíni SQL Server-adatbázisból másol adatokat egy Azure-blobtárolóba.
+Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezt követően a Adatok másolása eszközzel létrehozhat egy folyamatot, amely egy SQL Server-adatbázisból másolja az Azure Blob Storage-ba.
 
 > [!NOTE]
 > - Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Data Factory szolgáltatást bemutató](introduction.md) cikket.
@@ -47,7 +47,7 @@ Az adat-előállító példányok létrehozásához annak a felhasználói fiók
 Az előfizetésben található engedélyek megtekintéséhez lépjen be az Azure Portalra. Válassza ki a felhasználónevét a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md) című cikket.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
-Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forrásadattárként*. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol egy helyszíni SQL Server-adatbázisból (forrás) egy Blob Storage-tárolóba (fogadó). Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
+Ebben az oktatóanyagban egy SQL Server-adatbázist használ *forrásként* szolgáló adattárként. Az oktatóanyagban létrehozott adatfeldolgozó folyamata a SQL Server-adatbázisból (forrás) a blob Storage-ba (fogadóba) másolja az adatait. Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
 
 1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) cikket.
 
@@ -74,7 +74,7 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forr
     ```
 
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
-Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú tárfiókkal, a létrehozást segítő útmutatásért tekintse meg a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol a helyszíni SQL Server-adatbázisból (forrás) a Blob Storage tárolóba (fogadó). 
+Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú tárfiókkal, a létrehozást segítő útmutatásért tekintse meg a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Az oktatóanyagban létrehozott adatfeldolgozó folyamata az SQL Server-adatbázisból (forrás) származó adatok másolása erre a blob Storage-tárolóba (fogadó). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
 Ebben az oktatóanyagban a tárfiók nevét és kulcsát használjuk. A tárfiók nevét és kulcsát az alábbi lépéseket követve szerezheti be:
@@ -109,7 +109,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **+ erőforrás** > **létrehozása elemzési** > **Data Factory**elemet.
+1. A bal oldali menüben válassza az **+ erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**elemet.
 
    ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -146,18 +146,15 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre.
 
-
 1. Az **új társított szolgáltatás**területen keressen **SQL Server**, majd válassza a **Folytatás**lehetőséget.
 
 1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanel **név**mezőjébe írja be a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
 
+1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget. Ezután válassza a **Folytatás** elemet.
 
-1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget. Ezután válassza a **tovább**lehetőséget.
+   ![Integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-   ![Integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
-
-1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután válassza a **tovább**lehetőséget.
-
+1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután kattintson a **Létrehozás** elemre.
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza **a kattintson ide, hogy elindítsa a számítógép expressz telepítését**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
 
@@ -169,17 +166,17 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
     a. A **Név** mezőben adja meg az **SqlServerLinkedService** nevet.
 
-    b. A **Kiszolgáló neve** alatt adja meg a helyszíni SQL Server-példánya nevét.
+    b. A **Kiszolgáló neve** alatt adja meg az SQL Server-példány nevét.
 
     c. Az **Adatbázis neve** mezőben adja meg a helyszíni adatbázis nevét.
 
     d. A **Hitelesítés típusa** mezőben válassza a megfelelő hitelesítést.
 
-    e. A **Felhasználónév** mezőben adja meg a helyszíni SQL Server-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét.
+    e. A **Felhasználónév**mezőbe írja be a SQL Serverhoz hozzáféréssel rendelkező felhasználó nevét.
 
     f. Adja meg a felhasználó **jelszavát** .
 
-    g. Tesztelje a kapcsolatokat, és válassza a **Befejezés**lehetőséget.
+    : Tesztelje a kapcsolatokat, és válassza a **Befejezés**lehetőséget.
 
       ![Integrációs modul kiválasztva](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 
@@ -202,7 +199,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    c. A **Tárfiók neve** alatt a legördülő menüből válassza ki a tárfiókja nevét.
 
-   d. Válassza a **Finish** (Befejezés) elemet.
+   d. Válassza a **Befejezés** gombot.
 
 1. Győződjön meg arról, hogy az **Azure Blob Storage** van kiválasztva a **célhely adattára** párbeszédpanelen. Ezután válassza a **tovább**lehetőséget.
 
@@ -216,24 +213,21 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Az **Összefoglaló** párbeszédpanelen tekintse át az összes beállítás értékét, és kattintson a **Tovább** gombra.
 
-1. A létrehozott folyamat vagy feladat monitorozásához az **Üzembe helyezés** lapon válassza a **Monitorozás** elemet.
+1. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre. 
 
-   ![Üzembe helyezés lap](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+1. Ha a folyamat futása befejeződött, megtekintheti a létrehozott folyamat állapotát. 
 
-1. A **Monitorozás** lapon megtekintheti a létrehozott folyamat állapotát. A **Művelet** oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot.
+1. A folyamat futtatása lapon kattintson a **frissítés** gombra a lista frissítéséhez. Kattintson a **folyamat neve** alatt látható hivatkozásra a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához. 
 
-1. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra a folyamat futásához társított tevékenységfuttatások megtekintéséhez. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). Ha vissza szeretne váltani a **folyamat futási** nézetére, válassza a felső **folyamat futtatása** lehetőséget.
+1. A másolási művelettel kapcsolatos további információkért a tevékenység futtatása lapon válassza a **részletek** hivatkozást (szemüveg ikon) a **tevékenység neve** oszlopban. Ha vissza szeretne térni a folyamat futási nézetéhez, válassza a **minden folyamat futtatása** hivatkozást a navigációs menüben. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
 1. Ellenőrizze, hogy látja-e a kimeneti fájlt az **adftutorial** tároló **fromonprem** mappájában.
 
-
 1. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Szerkesztés** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. A szerkesztőben megnyitott entitáshoz társított JSON-kód megtekintéséhez kattintson a **Kód** elemre. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
 
-   ![Szerkesztés lap](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
-
-## <a name="next-steps"></a>További lépések
-A példában szereplő folyamat adatokat másol egy helyszíni SQL Server-adatbázisból Blob Storage-tárolóba. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
+Az ebben a példában szereplő folyamat átmásolja az adatait egy SQL Server adatbázisból a blob Storage-ba. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

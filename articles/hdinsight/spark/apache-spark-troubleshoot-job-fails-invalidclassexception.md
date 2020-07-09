@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: be50f8716835b0842f854842e5340b0bb8594136
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894372"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark a feladatok meghiúsulnak a InvalidClassException, az osztály verziószáma nem egyezik az Azure HDInsight
@@ -34,7 +33,7 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Ok
 
-Ezt a hibát okozhatja, ha hozzáad egy további jar- `spark.yarn.jars` t a konfigurációhoz, amely kifejezetten egy olyan árnyékolt jar, amely `commons-lang3` a csomag egy másik verzióját tartalmazza, és egy osztály-eltérést mutat be. Alapértelmezés szerint a Spark 2.1/2/3 verziója a `commons-lang3`3,5-es verzióját használja.
+Ezt a hibát okozhatja, ha hozzáad egy további jar-t a `spark.yarn.jars` konfigurációhoz, amely kifejezetten egy olyan árnyékolt jar, amely a csomag egy másik verzióját tartalmazza, `commons-lang3` és egy osztály-eltérést mutat be. Alapértelmezés szerint a Spark 2.1/2/3 verziója a 3,5-es verzióját használja `commons-lang3` .
 
 > [!TIP]
 > Egy könyvtár árnyékolásához a saját tartalmait a saját jar-ba helyezheti, és megváltoztathatja a csomagját. Ez különbözik a könyvtár csomagolásával, amely a könyvtárat a saját Jarba helyezi újra csomagolás nélkül.

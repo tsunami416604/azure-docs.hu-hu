@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672207"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service PremiumV2-szintjeinek konfigurálása
@@ -91,7 +90,7 @@ Az **PremiumV2** szinten automatizálhatja az alkalmazások létrehozását az [
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A Cloud Shell futtathatja. A következő lehetőségei `--sku` : P1V2, _P2V2_és _P3V2_.
+A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A Cloud Shell futtathatja. A következő lehetőségei: `--sku` P1V2, _P2V2_és _P3V2_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -104,7 +103,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A _kis_, `-WorkerSize` _közepes_és _nagyméretű_beállítások.
+A következő parancs egy App Service tervet hoz létre a _P1V2_-ben. A `-WorkerSize` _kis_, _közepes_és _nagyméretű_beállítások.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

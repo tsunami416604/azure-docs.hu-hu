@@ -1,18 +1,19 @@
 ---
-title: Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
-description: Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
+title: Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
+description: Az egyéni képkészletek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851714"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
-Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. Létrehozhatja a virtuális gépek készletét vagy egy támogatott Azure Marketplace-lemezképpel, vagy létrehozhat egy egyéni rendszerképet a [megosztott](../virtual-machines/windows/shared-image-galleries.md)képkatalógus használatával.
+Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. Létrehozhat egy virtuális gépek készletét vagy egy támogatott Azure Marketplace-lemezképpel, vagy létrehozhat egy egyéni rendszerképet egy [megosztott képtárat](../virtual-machines/windows/shared-image-galleries.md)tartalmazó képpel.
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>A megosztott képgyűjtemény előnyei
 
@@ -29,7 +30,7 @@ A forgatókönyvhöz konfigurált megosztott rendszerkép használata több elő
 - **Alkalmazások telepítése előtt.** Az operációsrendszer-lemezen lévő alkalmazások előzetes telepítése hatékonyabb és kevésbé hasonló, mint az alkalmazások telepítése a számítási csomópontok indítási tevékenységgel való kiépítés után.
 - **Nagyméretű adatmennyiségek másolása egyszer.** A felügyelt megosztott rendszerkép statikus adatokból álló részét a felügyelt rendszerkép adatlemezére másolja. Ezt csak egyszer kell elvégezni, és a készlet minden csomópontja számára elérhetővé kell tenni az adatmennyiséget.
 - **Növelje a készleteket nagyobb méretekre.** A megosztott képkatalógussal nagyobb készleteket hozhat létre a testreszabott rendszerképekkel együtt, és több megosztott lemezkép-replikát is használhat.
-- **Jobb teljesítmény, mint az egyéni rendszerkép.** A megosztott rendszerképek használatával a készlethez szükséges idő akár 25%-kal gyorsabb, a virtuális gép üresjárati késése pedig akár 30%-kal rövidebb is lehet.
+- **Jobb teljesítmény, mint a csak a felügyelt rendszerképek egyéni rendszerképként való használata.** Egy megosztott rendszerkép egyéni rendszerkép-készlete esetében az állandó állapot eléréséhez szükséges idő akár 25% fasterm is lehet, a virtuális gép üresjárati késése pedig akár 30%-kal rövidebb.
 - **A képek verziószámozása és csoportosítása az egyszerűbb felügyelet érdekében.** A képcsoportosítási definíció információt tartalmaz arról, hogy miért jött létre a rendszerkép, milyen operációs rendszerre és a rendszerképek használatára vonatkozó információkkal rendelkezik. A képek csoportosítása megkönnyíti a képek kezelését. További információ: [képdefiníciók](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,9 +45,11 @@ A forgatókönyvhöz konfigurált megosztott rendszerkép használata több elő
 > [!NOTE]
 > A megosztott rendszerképnek a Batch-fiókkal megegyező előfizetésben kell lennie. A rendszerkép különböző régiókban lehet, amíg a Batch-fiókkal azonos régióban található replikák találhatók.
 
-## <a name="prepare-a-custom-image"></a>Egyéni rendszerkép előkészítése
+Ha egy Azure AD-alkalmazással hoz létre egyéni képtárat egy megosztott képkatalógus-lemezképpel, az alkalmazásnak rendelkeznie kell egy [Azure beépített szerepkörrel](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , amely hozzáférést biztosít a megosztott rendszerképhez. Ezt a hozzáférést a Azure Portal a megosztott rendszerképre való navigálással, a **hozzáférés-vezérlés (iam)** lehetőség kiválasztásával, valamint az alkalmazáshoz tartozó szerepkör-hozzárendelés hozzáadásával adhatja meg.
 
-Az Azure-ban egyéni rendszerképeket készíthet a következő helyekről:
+## <a name="prepare-a-shared-image"></a>Megosztott rendszerkép előkészítése
+
+Az Azure-ban létrehozhat egy megosztott rendszerképet egy felügyelt rendszerképből, amely a következő helyekről hozható létre:
 
 - Azure-beli virtuális gép operációs rendszerének és adatlemezének pillanatképei
 - Általános Azure-beli virtuális gép felügyelt lemezekkel
@@ -200,7 +203,7 @@ client.pool.add(new_pool)
 
 A következő lépésekkel hozhat létre készletet egy megosztott rendszerképből a Azure Portal.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 1. Nyissa meg a **Batch-fiókokat** , és válassza ki a fiókját.
 1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
 1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.

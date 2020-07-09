@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: cf50ee847bd1542a3e024cb88cf7bbc8bc283f91
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f0fe18623d1cea6c7fd692a383a351e0ec76fe91
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643428"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132963"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése az Azure-beli használatra
 
@@ -37,61 +37,94 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 3. Regisztrálja a SUSE Linux Enterprise rendszerét, hogy lehetővé tegye a frissítések letöltését és a csomagok telepítését.
 4. A System frissítése a legújabb javításokkal:
-   
-        # sudo zypper update
-5. Telepítse az Azure Linux-ügynököt a SLES adattárból (SLE11-Public-Cloud-Module):
-   
-        # sudo zypper install python-azure-agent
-6. Ellenőrizze, hogy a waagent "on" értékre van-e állítva a Chkconfig, és ha nem, engedélyezze az automatikus indításhoz:
-   
-        # sudo chkconfig waagent on
+
+    ```console
+    # sudo zypper update
+    ```
+
+1. Telepítse az Azure Linux-ügynököt a SLES adattárból (SLE11-Public-Cloud-Module):
+
+    ```console
+    # sudo zypper install python-azure-agent
+    ```
+
+1. Ellenőrizze, hogy a waagent "on" értékre van-e állítva a Chkconfig, és ha nem, engedélyezze az automatikus indításhoz:
+
+    ```console
+    # sudo chkconfig waagent on
+    ```
+
 7. Ellenőrizze, hogy fut-e a waagent szolgáltatás, és ha nem, indítsa el a következőket: 
-   
-        # sudo service waagent start
+
+    ```console
+    # sudo service waagent start
+    ```
+
 8. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/boot/grub/menu.lst" szöveget egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
-   
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-   
+
+    ```config-grub
+    console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
+
     Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely a hibakeresési problémákkal segíti az Azure-támogatást.
 9. Győződjön meg arról, hogy a/boot/grub/menu.lst és az/etc/fstab is hivatkozik a lemezre a lemez AZONOSÍTÓjának (by-id) helyett az UUID (by-UUID) használatával. 
    
     Lemez UUID beolvasása
-   
-        # ls /dev/disk/by-uuid/
-   
+
+    ```console
+    # ls /dev/disk/by-uuid/
+    ```
+
     Ha/dev/disk/by-id/használ, frissítse a/boot/grub/menu.lst és az/etc/fstab-et a megfelelő by-UUID értékkel
    
     Módosítás előtt
    
-        root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
+    `root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1`
    
     Módosítás után
    
-        root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    `root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+
 10. Módosítsa a udev-szabályokat úgy, hogy ne generáljon statikus szabályokat az Ethernet-adapter (ek) számára. Ezek a szabályok problémákat okozhatnak a Microsoft Azure vagy Hyper-V-ben lévő virtuális gépek klónozásakor:
-    
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
-    
-     DHCLIENT_SET_HOSTNAME = "nem"
-12. A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:
-    
+
+    ```console
+    # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
-     Defaults targetpw   # ask for the password of the target user i.e. root
-     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-     ```
+
+11. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
+
+    ```config
+    DHCLIENT_SET_HOSTNAME="no"
+    ```
+
+12. A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:
+
+    ```text
+    Defaults targetpw   # ask for the password of the target user i.e. root
+    ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+    ```
+
 13. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik.  Ez általában az alapértelmezett.
 14. Ne hozzon létre lapozófájlt az operációsrendszer-lemezen.
     
     Az Azure Linux-ügynök automatikusan konfigurálhatja a lapozófájlt a virtuális géphez az Azure-ban való üzembe helyezést követően csatlakozó helyi erőforrás lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy *ideiglenes* lemez, és a virtuális gép kiépítésekor kiürítésre kerülhet. Az Azure Linux-ügynök telepítése után (lásd az előző lépést) a/etc/waagent.conf megfelelően módosítsa a következő paramétereket:
-    
-     ResourceDisk. Format = y ResourceDisk. filesystem = ext4 ResourceDisk. csatlakoztatási pont =/mnt/Resource ResourceDisk. EnableSwap = y ResourceDisk. SwapSizeMB = 2048 # # Megjegyzés: állítsa be a következőt, amire szüksége van.
+
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
+
 15. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
-    
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent -force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
 16. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
 ---
@@ -99,64 +132,98 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 1. A Hyper-V kezelőjének középső ablaktábláján válassza ki a virtuális gépet.
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 3. A rendszerhéjon futtassa a következő parancsot: " `zypper lr` ". Ha a parancs a következőhöz hasonló kimenetet ad vissza, akkor a Tárházak a várt módon lesznek konfigurálva – nincs szükség módosításra (vegye figyelembe, hogy a verziószámok száma változhat):
-   
-        # | Alias                 | Name                  | Enabled | Refresh
-        --+-----------------------+-----------------------+---------+--------
-        1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | Yes     | Yes
-        2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
-        3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
-   
+
+   | # | Alias                 | Name                  | Engedélyezve | Frissítés
+   | - | :-------------------- | :-------------------- | :------ | :------
+   | 1 | Felhő: Tools_13.1      | Felhő: Tools_13.1      | Igen     | Igen
+   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Igen     | Igen
+   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Igen     | Igen
+
     Ha a parancs visszaadja a "nincsenek adattárak definiálva..." értéket. Ezután az alábbi parancsokkal adhatja hozzá ezeket a repókat:
-   
-        # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
-        # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
-        # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
-   
+
+    ```console
+    # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
+    # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
+    # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
+    ```
+
     Ezután a (z) parancs futtatásával ellenőrizheti, hogy a Tárházak hozzá lettek-e adva `zypper lr` . Ha az egyik releváns frissítési tárház nincs engedélyezve, engedélyezze a következő paranccsal:
-   
-        # sudo zypper mr -e [NUMBER OF REPOSITORY]
+
+    ```console
+    # sudo zypper mr -e [NUMBER OF REPOSITORY]
+    ```
+
 4. A rendszermag frissítése a legújabb elérhető verzióra:
-   
-        # sudo zypper up kernel-default
-   
+
+    ```console
+    # sudo zypper up kernel-default
+    ```
+
     Vagy frissítse a rendszeren a legújabb javításokat:
-   
-        # sudo zypper update
+
+    ```console
+    # sudo zypper update
+    ```
+
 5. Telepítse az Azure Linux-ügynököt.
-   
-        # sudo zypper install WALinuxAgent
+
+    ```console
+    # sudo zypper install WALinuxAgent
+    ```
+
 6. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/boot/grub/menu.lst" kifejezést egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
-   
-     Console = ttyS0 earlyprintk = ttyS0 rootdelay = 300
-   
+
+    ```config-grub
+     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
+
    Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely a hibakeresési problémákkal segíti az Azure-támogatást. Továbbá távolítsa el a következő paramétereket a kernel rendszerindítási sorából, ha vannak ilyenek:
-   
-     libata. atapi_enabled = 0 tartalék = 0x1f0, 0x8
+
+    ```config-grub
+     libata.atapi_enabled=0 reserve=0x1f0,0x8
+    ```
+
 7. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
-   
-     DHCLIENT_SET_HOSTNAME = "nem"
+
+    ```config
+     DHCLIENT_SET_HOSTNAME="no"
+    ```
+
 8. **Fontos:** A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:
-     
-     ```
-     Defaults targetpw   # ask for the password of the target user i.e. root
-     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-     ```
+
+    ```text
+    Defaults targetpw   # ask for the password of the target user i.e. root
+    ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+    ```
 
 9. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik.  Ez általában az alapértelmezett.
 10. Ne hozzon létre lapozófájlt az operációsrendszer-lemezen.
-    
+
     Az Azure Linux-ügynök automatikusan konfigurálhatja a lapozófájlt a virtuális géphez az Azure-ban való üzembe helyezést követően csatlakozó helyi erőforrás lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy *ideiglenes* lemez, és a virtuális gép kiépítésekor kiürítésre kerülhet. Az Azure Linux-ügynök telepítése után (lásd az előző lépést) a/etc/waagent.conf megfelelően módosítsa a következő paramétereket:
-    
-     ResourceDisk. Format = y ResourceDisk. filesystem = ext4 ResourceDisk. csatlakoztatási pont =/mnt/Resource ResourceDisk. EnableSwap = y ResourceDisk. SwapSizeMB = 2048 # # Megjegyzés: állítsa be a következőt, amire szüksége van.
+
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
+
 11. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
-    
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent -force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
+
 12. Ellenőrizze, hogy az Azure Linux-ügynök fut-e indításkor:
-    
-        # sudo systemctl enable waagent.service
+
+    ```console
+    # sudo systemctl enable waagent.service
+    ```
+
 13. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a SUSE Linux rendszerű virtuális merevlemez használatára, hogy új virtuális gépeket hozzon létre az Azure-ban. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.

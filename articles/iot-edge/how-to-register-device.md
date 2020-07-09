@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 2ac6a38d99f588c9dbab7a40bc092aa01b27649a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726009"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge-eszköz regisztrálása
@@ -156,7 +156,7 @@ Ha készen áll az eszköz beállítására, szüksége lesz arra a kapcsolati k
 
 A `device-id` paraméter értéke megkülönbözteti a kis-és nagybetűket. Ne másolja az idézőjeleket a kapcsolatok sztring köré.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy az IoT hub-ban regisztrálta az eszköz azonosítóját, készen áll a IoT Edge futtatókörnyezet telepítésére az eszközökön. Telepítse a futtatókörnyezetet az eszköz operációs rendszere szerint:
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76024735"
 ---
 # <a name="service-fabric-application-scenarios"></a>Alkalmazás-forgatókönyvek Service Fabric
@@ -55,15 +54,15 @@ Az Azure Cloud Services feldolgozói szerepkörökkel rendelkező alkalmazások 
 
 A Service Fabric állapot-nyilvántartó szolgáltatásai magas rendelkezésre állást biztosítanak az összes típusú alkalmazáshoz, nem csak adatbázisokhoz és más adattárakhoz. Ez természetes folyamat. Az alkalmazások a NoSQL-adatbázisok magas rendelkezésre állása érdekében már tisztán összehasonlított adatbázisok használatával lettek áthelyezve. Az alkalmazások maguk is rendelkezhetnek a "forró" állapottal és a bennük kezelt adatokkal a teljesítmény növelése érdekében, a megbízhatóság, a konzisztencia vagy a rendelkezésre állás feláldozása nélkül.
 
-Ha olyan alkalmazásokat fejleszt, amelyek a-szolgáltatásokból állnak, jellemzően állapot nélküli webalkalmazások (például a ASP.NET és a Node. js) kombinációja van, amely az állapot nélküli és állapot-nyilvántartó üzleti középszintű szolgáltatásokat hívja meg. Az alkalmazások és szolgáltatások mind ugyanabban a Service Fabric-fürtben vannak telepítve a Service Fabric telepítési parancsok használatával. Ezek a szolgáltatások a méretezés, a megbízhatóság és az erőforrás-használat tekintetében függetlenek egymástól. Ez a függetlenség javítja a fejlesztés és az életciklus-kezelés rugalmasságát és rugalmasságát.
+Ha olyan alkalmazásokat fejleszt, amelyek a-szolgáltatásokból állnak, jellemzően az állapot nélküli webalkalmazások (például a ASP.NET és a Node.js) kombinációja jelent állapot nélküli és állapot-nyilvántartó üzleti középszintű szolgáltatásokat. Az alkalmazások és szolgáltatások mind ugyanabban a Service Fabric-fürtben vannak telepítve a Service Fabric telepítési parancsok használatával. Ezek a szolgáltatások a méretezés, a megbízhatóság és az erőforrás-használat tekintetében függetlenek egymástól. Ez a függetlenség javítja a fejlesztés és az életciklus-kezelés rugalmasságát és rugalmasságát.
 
 Az állapot-nyilvántartó szolgáltatások leegyszerűsítik az alkalmazások kialakítását, mivel azok nem igénylik a kizárólag állapot nélküli alkalmazások rendelkezésre állási és késési követelményeinek kielégítéséhez szükséges további várólisták és gyorsítótárak szükségességét. Mivel az állapot-nyilvántartó szolgáltatások magas rendelkezésre állással és alacsony késéssel rendelkeznek, kevesebb részletet kell kezelni az alkalmazásban.
 
 Az alábbi ábrák az állapot nélküli alkalmazások megtervezése és az egyik állapot közötti különbséget szemléltetik. A [Reliable Services](service-fabric-reliable-services-introduction.md) és [Reliable Actors](service-fabric-reliable-actors-introduction.md) programozási modellek előnyeit kihasználva az állapot-nyilvántartó szolgáltatások csökkentik az alkalmazások összetettségét a nagy átviteli sebesség és az alacsony késés elérése mellett.
 
-Az alábbi példa az állapot nélküli szolgáltatásokat használó alkalmazást használja: ![az állapot nélküli szolgáltatásokat használó alkalmazás][Image1]
+Az alábbi példa az állapot nélküli szolgáltatásokat használó alkalmazást használja: ![ az állapot nélküli szolgáltatásokat használó alkalmazás][Image1]
 
-Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![állapot-nyilvántartó szolgáltatásokat használó alkalmazás][Image2]
+Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![ állapot-nyilvántartó szolgáltatásokat használó alkalmazás][Image2]
 
 ## <a name="next-steps"></a>További lépések
 

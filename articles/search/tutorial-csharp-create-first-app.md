@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780623"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261460"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -81,7 +81,7 @@ Ha a projektet a semmiből szeretné létrehozni, és így segít megerősíteni
 
 Ebben a példában nyilvánosan elérhető szállodai adatszolgáltatásokat használunk. Ezek az adat a 50 kitalált nevek és leírások tetszőleges gyűjteménye, amely kizárólag a bemutató adatának biztosítása céljából hozható létre. Az adateléréshez meg kell adnia egy nevet és egy kulcsot.
 
-1. Nyissa meg az appSettings. JSON fájlt az új projektben, és cserélje le az alapértelmezett sorokat a következő névre és kulcsra. Az itt megjelenő API-kulcs nem egy példa a kulcsra, hanem _pontosan_ a szükséges kulcsot kell elérnie. A appSettings. JSON fájlnak most így kell kinéznie.
+1. Nyissa meg a appsettings.jst az új projekt fájljában, és cserélje le az alapértelmezett sorokat a következő névre és kulcsra. Az itt megjelenő API-kulcs nem egy példa a kulcsra, hanem _pontosan_ a szükséges kulcsot kell elérnie. A appsettings.jsfájlnak most így kell kinéznie.
 
     ```cs
     {
@@ -242,7 +242,7 @@ A modellek (C# osztályok) az ügyfél (a nézet), a kiszolgáló (a vezérlő) 
     }
     ```
 
-    Ez az osztály tartalmazza a felhasználó bemenetét (**keresettszöveg**) és a keresés kimenetét (**resultList**). A kimenet típusa kritikus, **DocumentSearchResult&lt;&gt;**, mivel ez a típus pontosan megfelel a keresés eredményeinek, és át kell adni ezt a hivatkozást a nézetnek.
+    Ez az osztály tartalmazza a felhasználó bemenetét (**keresettszöveg**) és a keresés kimenetét (**resultList**). A kimenet típusa kritikus, **DocumentSearchResult &lt; &gt; **, mivel ez a típus pontosan megfelel a keresés eredményeinek, és át kell adni ezt a hivatkozást a nézetnek.
 
 
 
@@ -252,7 +252,7 @@ Az Ön által létrehozott projekt alapértelmezés szerint több ügyfél-néze
 
 Törölje az index. cshtml tartalmát a teljes egészében, majd hozza létre újra a fájlt a következő lépésekben.
 
-1. A nézet két kis képet használ. Használhatja a sajátját, vagy átmásolhatja a képeket a GitHub-projektből: Azure-logo. png és Search. png. Ezt a két képet a **wwwroot/images** mappába kell helyezni.
+1. A nézet két kis képet használ. Használhatja a sajátját, vagy átmásolhatja a képeket a GitHub-projektből: azure-logo.png és search.png. Ezt a két képet a **wwwroot/images** mappába kell helyezni.
 
 2. Az index első sora. a cshtml-nek hivatkoznia kell arra a modellre, amelyet a rendszer az ügyfél (a nézet) és a kiszolgáló (a vezérlő) közötti adatkommunikációra használ, amely az általunk létrehozott **SearchData** -modell. Adja hozzá ezt a sort az index. cshtml fájlhoz.
 
@@ -502,7 +502,7 @@ Az Azure Cognitive Search hívást a **RunQueryAsync** metódusban ágyazjuk be.
 
     Ez a módszer először gondoskodik az Azure-konfiguráció kezdeményezéséről, majd beállítja a keresési paramétereket. A **Select** paraméter mezőinek nevei pontosan egyeznek a **Hotel** osztályban található tulajdonságok neveivel. A **Select** paraméter kihagyható, amely esetben a rendszer az összes tulajdonságot visszaadja. A **Select** paraméterek beállítása nem hatékony, ha csak az adatok egy részhalmazát érdeklik. A fontos tulajdonságok megadásával csak ezeket a tulajdonságokat adja vissza.
 
-    A keresés aszinkron hívása (**Model. resultList = vár _indexClient. Documents.&lt;SearchAsync&gt;Hotel (Model. keresettszöveg, Parameters);**) az oktatóanyag és az alkalmazás lényege. A **DocumentSearchResult** osztály egy érdekes, és jó ötlet (ha az alkalmazás fut) itt egy töréspontot kell beállítania, és egy hibakereső használatával meg kell vizsgálnia a **Model. resultList**tartalmát. Érdemes megkeresni, hogy a rendszer intuitív módon adja meg a kért adatmennyiséget, és nem sok más.
+    A keresendő aszinkron hívás (**Model. resultList = vár _indexClient.Documents. A SearchAsync &lt; Hotel &gt; (Model. keresettszöveg, Parameters);**) az oktatóanyag és az alkalmazás lényege. A **DocumentSearchResult** osztály egy érdekes, és jó ötlet (ha az alkalmazás fut) itt egy töréspontot kell beállítania, és egy hibakereső használatával meg kell vizsgálnia a **Model. resultList**tartalmát. Érdemes megkeresni, hogy a rendszer intuitív módon adja meg a kért adatmennyiséget, és nem sok más.
 
 Most az igazság pillanatában.
 

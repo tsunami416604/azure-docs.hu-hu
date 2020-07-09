@@ -2,15 +2,15 @@
 title: Sablon üzembe helyezése – Azure Portal
 description: Megismerheti, hogyan hozhatja létre első Azure Resource Manager-sablonját az Azure Portalon, és hogyan helyezheti üzembe.
 author: mumian
-ms.date: 06/12/2019
+ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: dd3d9caa8184b8637b509fc3318851751b211405
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80131877"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557342"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése a Azure Portal használatával
 
@@ -33,15 +33,15 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
 
     ![Válassza az erőforrás létrehozása lehetőséget Azure Portal menüből](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. Válassza a **Storage** > **Storage-fiók**lehetőséget.
+1. Válassza a **Storage**  >  **Storage-fiók**lehetőséget.
 
     ![Azure Storage-fiók létrehozása](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Adja meg a következő információkat:
 
-    |Name (Név)|Érték|
+    |Name|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza az **új létrehozása**lehetőséget, és adjon meg egy tetszőleges erőforráscsoport-nevet. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Az erőforráscsoport az Azure-erőforrások tárolója. Az erőforráscsoport megkönnyíti az Azure-erőforrások kezelését. |
-    |**Név**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni ** &lt;a>Storage&lt;mai dátumot a MMDD>**, például a **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
+    |**Name (Név)**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni ** &lt; a>Storage &lt; mai dátumot a MMDD>**, például a **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -55,13 +55,13 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
 
     ![Sablon generálása a Portal használatával](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    A sablon a főoldalon látható. Ez egy `schema`olyan JSON- `contentVersion` `parameters` `variables` `resources`fájl, amely hat legfelső szintű elemmel rendelkezik:,,, `output`, és. További információ: [ARM-sablonok struktúrájának és szintaxisának megismerése](./template-syntax.md)
+    A sablon a főoldalon látható. Ez egy olyan JSON-fájl, amely hat legfelső szintű elemmel rendelkezik:,,,, `schema` `contentVersion` `parameters` `variables` `resources` és `output` . További információ: [ARM-sablonok struktúrájának és szintaxisának megismerése](./template-syntax.md)
 
-    Hat paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kiemelt rész bemutatja, hogyan hivatkozhat erre a paraméterre a sablonban. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
+    Nyolc paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kiemelt rész bemutatja, hogyan hivatkozhat erre a paraméterre a sablonban. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
 
-    A sablonban egy Azure-erőforrás van definiálva. A típus: `Microsoft.Storage/storageAccounts`. Tekintse át az erőforrás definiálásának módját és a definíciós struktúrát.
+    A sablonban egy Azure-erőforrás van definiálva. A típus: `Microsoft.Storage/storageAccounts` . Tekintse át az erőforrás definiálásának módját és a definíciós struktúrát.
 1. Válassza a **Letöltés** lehetőséget a képernyő tetején.
-1. Nyissa meg a letöltött zip-fájlt, majd mentse a **template. JSON** fájlt a számítógépre. A következő szakaszban egy üzembehelyezési sablon eszközzel fogja szerkeszteni a sablont.
+1. Nyissa meg a letöltött zip-fájlt, majd mentse **template.jsa** számítógépre. A következő szakaszban egy üzembehelyezési sablon eszközzel fogja szerkeszteni a sablont.
 1. A **Paraméterek** lapon tekintheti meg a paraméterekhez megadott értékeket. Jegyezze fel ezeket az értékeket, mivel a következő szakaszban, a sablon üzembe helyezésekor szükség lesz rájuk.
 
     ![Sablon generálása a Portal használatával](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
@@ -77,13 +77,11 @@ Az Azure Portal is használható egyes alapvető szerkesztési műveletekhez. Eb
 
 Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkezzen. A központi telepítés meghiúsulhat, ha olyan nevű Storage-fióknevet adott meg, amely már létezik. A probléma elkerüléséhez módosítsa a sablont úgy, hogy a sablon függvény hívásával `uniquestring()` létrehoz egy egyedi Storage-fiók nevét.
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
-1. A **Keresés a Marketplace-en** mezőbe írja be a **template deployment** kifejezést, majd nyomja le az **ENTER** billentyűt.
-1. Válassza a **Template deployment** lehetőséget.
+1. A Azure Portal menüben a keresőmezőbe írja be a **Deploy**kifejezést, majd válassza az **egyéni sablon telepítése**lehetőséget.
 
     ![Azure Resource Manager-sablonkönyvtár](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
-1. Kattintson a **Létrehozás** gombra.
-1. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
+
+1. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 1. Válassza a **Fájl betöltése** lehetőséget, majd az útmutatásokat követve töltse be az előző szakaszban letöltött template.json fájlt.
 1. Végezze el a következő három módosítást a sablonon:
 
@@ -96,7 +94,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
        "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
        ```
 
-       A következő két sablon függvényt használja `concat()` a `uniqueString()`rendszer: és.
+       A következő két sablon függvényt használja a rendszer: `concat()` és `uniqueString()` .
    - Frissítse a **Microsoft.Storage/storageAccounts** erőforrás név elemét, és a paraméter helyett használja az újonnan definiált változót:
 
        ```json
@@ -107,66 +105,75 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 
      ```json
      {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
        "contentVersion": "1.0.0.0",
        "parameters": {
-           "location": {
-               "type": "string"
-           },
-           "accountType": {
-               "type": "string"
-           },
-           "kind": {
-               "type": "string"
-           },
-           "accessTier": {
-               "type": "string"
-           },
-           "supportsHttpsTrafficOnly": {
-               "type": "bool"
-           }
+         "location": {
+           "type": "string"
+         },
+         "accountType": {
+           "type": "string"
+         },
+         "kind": {
+           "type": "string"
+         },
+         "accessTier": {
+           "type": "string"
+         },
+         "minimumTlsVersion": {
+           "type": "string"
+         },
+         "supportsHttpsTrafficOnly": {
+          "type": "bool"
+         },
+         "allowBlobPublicAccess": {
+           "type": "bool"
+         }
        },
        "variables": {
-           "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+         "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
        },
        "resources": [
-           {
-               "name": "[variables('storageAccountName')]",
-               "type": "Microsoft.Storage/storageAccounts",
-               "apiVersion": "2018-07-01",
-               "location": "[parameters('location')]",
-               "properties": {
-                   "accessTier": "[parameters('accessTier')]",
-                   "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
-               },
-               "dependsOn": [],
-               "sku": {
-                   "name": "[parameters('accountType')]"
-               },
-               "kind": "[parameters('kind')]"
-           }
+         {
+           "name": "[variables('storageAccountName')]",
+           "type": "Microsoft.Storage/storageAccounts",
+           "apiVersion": "2019-06-01",
+           "location": "[parameters('location')]",
+           "properties": {
+             "accessTier": "[parameters('accessTier')]",
+             "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
+             "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+             "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]"
+           },
+           "dependsOn": [],
+           "sku": {
+             "name": "[parameters('accountType')]"
+           },
+           "kind": "[parameters('kind')]",
+           "tags": {}
+         }
        ],
        "outputs": {}
      }
      ```
+
 1. Kattintson a **Mentés** gombra.
 1. Írja be a következő értékeket:
 
-    |Name (Név)|Érték|
+    |Name|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az utolsó szakaszban létrehozott erőforráscsoport-nevet. |
-    |**Hely**|Válassza ki a Storage-fiók helyét. Például az **USA középső**régiója. |
+    |**Régió**|Válasszon egy helyet az erőforráscsoportnak. Például: **USA középső régiója**. |
+    |**Hely**|Válassza ki a Storage-fiók helyét. Például: **USA középső régiója**. |
     |**Fiók típusa**|Adja meg **Standard_LRS** ehhez a rövid útmutatóhoz. |
-    |**Típusú**|Adja meg a rövid útmutató **StorageV2** . |
+    |**Altípus**|Adja meg a rövid útmutató **StorageV2** . |
     |**Hozzáférési szintek**|Adja meg a **gyors** üzembe helyezési útmutatót. |
-    |**Https-forgalom engedélyezve**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |
-    |**Elfogadom a fenti feltételeket és kikötéseket**|Válassza|
+    |**TLS minimális verziója**|Adja meg a **TLS1_0**. |
+    |**Csak HTTPS-forgalmat támogat**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |
+    |**BLOB nyilvános hozzáférésének engedélyezése**| Ehhez az útmutatóhoz válassza a **false** (hamis) értéket. |
 
-    Az alábbi képen egy minta üzembe helyezés látható:
-
-    ![Azure Resource Manager-sablonok üzembe helyezése](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-deploy.png)
-
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. Az üzembe helyezés állapotát úgy nézheti meg, ha a képernyő felső részén kiválasztja a harang (értesítések) ikont. Ekkor **a telepítés folyamatban**van. Várjon, amíg az üzembe helyezés befejeződik.
 
     ![Azure Resource Manager-sablonok üzembehelyezési értesítése](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)

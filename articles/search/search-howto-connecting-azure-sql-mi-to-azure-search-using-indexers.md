@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76964889"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search indexelő és SQL felügyelt példány közötti kapcsolatok konfigurálása
@@ -25,7 +24,7 @@ Hozzon létre egy felügyelt SQL-példányt a **nyilvános végpont engedélyez�
    ![Nyilvános végpont engedélyezése](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Nyilvános végpont engedélyezése")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Az Azure SQL felügyelt példány nyilvános végpontjának engedélyezése
-Egy meglévő SQL felügyelt példányon is engedélyezheti a nyilvános végpontot a **biztonsági** > **virtuális hálózat** > **nyilvános végpontjának** > **engedélyezése**lehetőség alatt.
+Egy meglévő SQL felügyelt példányon is engedélyezheti a nyilvános végpontot a **biztonsági**  >  **virtuális hálózat**  >  **nyilvános végpontjának**  >  **engedélyezése**lehetőség alatt.
 
    ![Nyilvános végpont engedélyezése](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Nyilvános végpont engedélyezése")
 
@@ -36,13 +35,13 @@ Győződjön meg arról, hogy a hálózati biztonsági csoport rendelkezik a meg
 
 > [!NOTE]
 > Az indexelő továbbra is megköveteli, hogy az SQL felügyelt példánya nyilvános végponttal legyen konfigurálva az adatolvasás érdekében.
-> Lehetősége van azonban arra is, hogy az aktuális szabályt (`public_endpoint_inbound`) a következő 2 szabállyal lecserélve a nyilvános végpontra korlátozza a bejövő hozzáférést:
+> Lehetősége van azonban arra is, hogy az aktuális szabályt ( `public_endpoint_inbound` ) a következő 2 szabállyal lecserélve a nyilvános végpontra korlátozza a bejövő hozzáférést:
 >
-> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("forrás" = `AzureCognitiveSearch`, "név" = `cognitive_search_inbound`)
+> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("forrás" = `AzureCognitiveSearch` , "név" = `cognitive_search_inbound` )
 >
-> * A keresési szolgáltatás IP-címéről érkező bejövő hozzáférés engedélyezése, amelyet a teljes tartománynév (például: `<your-search-service-name>.search.windows.net`) pingelésével lehet megszerezni. ("forrás" = `IP address`, "név" = `search_service_inbound`)
+> * A keresési szolgáltatás IP-címéről érkező bejövő hozzáférés engedélyezése, amelyet a teljes tartománynév (például:) pingelésével lehet megszerezni `<your-search-service-name>.search.windows.net` . ("forrás" = `IP address` , "név" = `search_service_inbound` )
 >
-> Mindegyik 2 szabály esetében állítsa be a "PORT" = `3342`, a "Protocol" = `TCP`, a "cél" `Any`=, "művelet" =`Allow`
+> Mindegyik 2 szabály esetében állítsa be a "PORT" =, `3342` a "Protocol" = `TCP` , a "cél" = `Any` , "művelet" =`Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Nyilvános végponti kapcsolatok karakterláncának beolvasása
 Győződjön meg arról, hogy a **nyilvános végpont** (3342-as port, nem a 1433-es port) csatlakozási karakterláncát használja.

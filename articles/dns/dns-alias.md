@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926231"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-aliasrekordok áttekintése
@@ -27,7 +26,7 @@ Egy Azure DNS zónában a következő bejegyzéstípusok esetében támogatott a
 > [!NOTE]
 > Ha egy [Azure Traffic Manager-profilra](../traffic-manager/quickstart-create-traffic-manager-profile.md) mutató alias-rekordot szeretne használni az a vagy AAAA bejegyzéstípushoz, meg kell győződnie arról, hogy a Traffic Manager-profil csak [külső végpontokkal](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)rendelkezik. Meg kell adnia az IPv4-vagy IPv6-címeket a Traffic Manager külső végpontjai számára. A végpontokban nem használhatók teljes tartománynevek (FQDN-EK). Ideális esetben statikus IP-címeket használjon.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 - **Mutasson egy nyilvános IP-erőforrásra egy DNS-A/AAAA-rekorddal.** Létrehozhat egy/AAAA-rekordot, és egy alias-rekordot állíthat be úgy, hogy egy nyilvános IP-erőforrásra mutasson (standard vagy alapszintű). A DNS-rekordtípus automatikusan megváltozik, ha a nyilvános IP-cím megváltozik vagy törölve lett. A helytelen IP-címekre mutató DNS-rekordokat nem lehet elkerülni.
 
@@ -60,13 +59,13 @@ Ez a korlátozás olyan alkalmazás-tulajdonosoknak nyújt problémát, akik az 
 
 Ez a probléma alias-rekordok használatával oldható meg. A CNAME rekordoktól eltérően az alias-rekordok a zóna csúcsán jönnek létre, és az alkalmazás tulajdonosai használhatják a zóna csúcs-rekordját egy olyan Traffic Manager-profilra, amely külső végpontokkal rendelkezik. Az alkalmazások tulajdonosai ugyanarra a Traffic Manager-profilra mutatnak, amelyet a DNS-zónán belüli bármely más tartományhoz használtak.
 
-Például a contoso.com és a www\.contoso.com ugyanarra a Traffic Manager profilra mutathat. Ha többet szeretne megtudni az alias-rekordok Azure Traffic Manager-profilokkal való használatáról, tekintse meg a következő lépések című szakaszt.
+Például a contoso.com és a www \. contoso.com ugyanarra a Traffic Manager profilra mutathat. Ha többet szeretne megtudni az alias-rekordok Azure Traffic Manager-profilokkal való használatáról, tekintse meg a következő lépések című szakaszt.
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Pont Azure CDN végpontokhoz
 
 A Traffic Manager-profilhoz hasonlóan az alias-rekordok is használhatók a DNS-zóna csúcspontjának Azure CDN végpontokra való rámutatása érdekében. Ez akkor hasznos, ha statikus webhelyeket hoz létre az Azure Storage és a Azure CDN használatával. Ezt követően a webhelyhez a "www" előtag nélkül is hozzáférhet a DNS-névhez.
 
-Ha például a statikus webhely neve `www.contoso.com`, a felhasználók hozzáférhetnek a webhelyhez `contoso.com` anélkül, hogy a www-t a DNS-névnek kell megadnia.
+Ha például a statikus webhely neve `www.contoso.com` , a felhasználók hozzáférhetnek a webhelyhez anélkül, `contoso.com` hogy a www-t a DNS-névnek kell megadnia.
 
 Az előzőekben leírtak szerint a CNAME rekordok nem támogatottak a zóna csúcspontján. Ezért nem használhat CNAME-rekordot a CDN-végpontra irányuló contoso.com pontra. Ehelyett használhat alias-rekordot úgy, hogy a zóna csúcsát közvetlenül egy CDN-végpontra irányítsa.
 

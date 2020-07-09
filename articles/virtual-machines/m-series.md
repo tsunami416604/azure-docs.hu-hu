@@ -1,24 +1,23 @@
 ---
 title: M sorozat – Azure Virtual Machines
 description: Az M-sorozatú virtuális gépek specifikációi.
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675944"
 ---
 # <a name="m-series"></a>M sorozat
 
-Az M sorozat magas vCPU (akár 128 vCPU) és nagy mennyiségű memóriát (legfeljebb 3,8 TiB) kínál. Emellett ideális a rendkívül nagy méretű adatbázisok vagy más alkalmazások számára, amelyek nagy vCPU és nagy mennyiségű memóriát foglalnak magukban. Az M-sorozat méretei az&reg; Intel Xeon&reg; CPU E7-8890 v3 @ 2,50 GHz-es és az Intel&reg; Xeon&reg; Platinum 8280M (Cascade Lake) esetében egyaránt támogatottak.
+Az M sorozat magas vCPU (akár 128 vCPU) és nagy mennyiségű memóriát (legfeljebb 3,8 TiB) kínál. Emellett ideális a rendkívül nagy méretű adatbázisok vagy más alkalmazások számára, amelyek nagy vCPU és nagy mennyiségű memóriát foglalnak magukban. Az M-sorozat méretei az Intel &reg; Xeon &reg; CPU E7-8890 v3 @ 2,50 GHz-es és az Intel &reg; Xeon &reg; Platinum 8280M (Cascade Lake) esetében egyaránt támogatottak.
 
-Az M sorozatú virtuális gépek funkciójának Intel&reg; Hyper-Threading technológiája.
+Az M sorozatú virtuális gépek funkciójának Intel &reg; Hyper-Threading technológiája.
 
 ACU: 160–180
 

@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 7b33a857953b7f96180e306195dd0e8b21450556
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: tracking-python
+ms.openlocfilehash: 8a28b187898bc9725b79bfb73c76d161b5ecd4d5
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874013"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607261"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a Python használatával
 
@@ -91,7 +92,7 @@ except Exception as ex:
     raise ex
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

@@ -8,10 +8,9 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: ee6800d2d0f589c43c96b240a74a86db488e0b46
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827794"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
@@ -73,7 +72,7 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Recovery Services-tároló létrehozása
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 2. Válassza **az erőforrás létrehozása**  >  **felügyeleti**  >  **Backup és site Recovery (OMS)** lehetőséget. Választhatja a **Tallózás**  >  **Recovery Services**tár  >  **hozzáadása**lehetőséget is.
    >[!NOTE]
    >A Backup és a Site Recovery korábban a [OMS Suite](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)része volt.
@@ -218,7 +217,7 @@ A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek eset
 Az Azure Storage szolgáltatással és az Azure Virtual Machinesával kapcsolatos további információkért tekintse meg a következő forrásokat is:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure-Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

@@ -3,12 +3,11 @@ title: Fogalmak – tárolás
 description: Ismerje meg az Azure VMware-megoldás (AVS) előzetes privát felhőkre vonatkozó főbb tárolási lehetőségeit.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604116"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware-megoldás (AVS) – előzetes verziójú tárolási fogalmak
 
@@ -21,7 +20,7 @@ Az egyes vSAN lévő helyi tárterületet a rendszer az adattárolók részekén
 A fürtállomások helyi tárterülete a fürtre kiterjedő vSAN-adattárban használatos. A rendszer minden adattárolót egy privát Felhőbeli üzembe helyezés részeként hoz létre, és azonnal használható. A cloudadmin-felhasználó és a CloudAdmin csoport összes felhasználója felügyelheti az adattárolókat ezekkel a vSAN jogosultságokkal:
 - Adattár. AllocateSpace
 - Datastore.Browse
-- Adattár. config
+- Datastore.Config
 - Adattár. DeleteFile
 - Adattár. FileManagement
 - Adattár. UpdateVirtualMachineMetadata
@@ -32,7 +31,7 @@ a vSAN adattárolók alapértelmezés szerint a REST titkosítást használják.
 
 ## <a name="scaling"></a>Méretezés
 
-A natív fürt tárolókapacitása méretezhető úgy, hogy gazdagépeket ad hozzá egy fürthöz. A gazdagépeket használó fürtök esetén a teljes fürtre kiterjedő kapacitást 15,4 TB-kal növelik minden további állomással. A GP-gazdagépekkel létrehozott fürtökön az egyes további gazdagépek esetében 7,7 TB-kal nőtt a nyers kapacitása. Mindkét típusú fürtben a gazdagépek körülbelül 10 percet vesznek fel a fürtbe. A fürtök méretezésére vonatkozó utasításokért tekintse meg a következőt: [a Private Cloud-oktatóanyag méretezése] [oktatóanyag-Scale-Private-Cloud].
+A natív fürt tárolókapacitása méretezhető úgy, hogy gazdagépeket ad hozzá egy fürthöz. A gazdagépeket használó fürtök esetén a teljes fürtre kiterjedő kapacitást 15,4 TB-kal növelik minden további állomással. A GP-gazdagépekkel létrehozott fürtökön az egyes további gazdagépek esetében 7,7 TB-kal nőtt a nyers kapacitása. Mindkét típusú fürtben a gazdagépek körülbelül 10 percet vesznek fel a fürtbe. A fürtök méretezésével kapcsolatos utasításokért tekintse meg a [privát felhő méretezése című oktatóanyagot][tutorial-scale-private-cloud] .
 
 ## <a name="azure-storage-integration"></a>Azure Storage-integráció
 
@@ -45,5 +44,5 @@ A következő lépés a [saját Felhőbeli identitással kapcsolatos fogalmak][c
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

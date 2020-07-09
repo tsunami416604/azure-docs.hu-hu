@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849878"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
 
@@ -72,9 +72,9 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
      | **8080** (nem kötelező) | A hitelesítési ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. A 8080-es port _nem_ használatos a felhasználói bejelentkezésekhez. |
      
      Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
-   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezési lehetőséget, vegyen fel kapcsolatokat a ** \*. msappproxy.net** és ** \*a. servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezési lehetőséget, vegyen fel kapcsolatokat a ** \* . msappproxy.net** és a ** \* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
    - A hitelesítési ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
-   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www\.Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
+   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government a felhő előfeltételei
 Mielőtt engedélyezné az átmenő hitelesítés engedélyezését Azure AD Connect a 2. lépéssel, töltse le az PTA ESP-ügynök legújabb kiadását a Azure Portal.  Győződjön meg arról, hogy az ügynök verziója **1.5.1742.0.** kell fordítani.  Az ügynök ellenőrzéséhez lásd: a [hitelesítési ügynökök frissítése](how-to-connect-pta-upgrade-preview-authentication-agents.md)
@@ -150,16 +150,20 @@ Először a letöltött hitelesítési ügynök végrehajtható fájljának futt
 
 Másodszor, létrehozhat és futtathat felügyelet nélküli telepítési parancsfájlt. Ez akkor lehet hasznos, ha több hitelesítési ügynököt szeretne egyszerre telepíteni, vagy olyan Windows-kiszolgálókra szeretné telepíteni a hitelesítési ügynököket, amelyeken nincs engedélyezve a felhasználói felület, vagy nem fér hozzá a Távoli asztalhoz. Az alábbi útmutató a módszer használatát ismerteti:
 
-1. A következő parancs futtatásával telepítheti a hitelesítési ügynököt: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. A hitelesítési ügynököt a Windows PowerShell használatával is regisztrálhatja a szolgáltatásban. Hozzon létre egy PowerShell hitelesítő adatokat tartalmazó objektumot `$cred` , amely tartalmazza a bérlőhöz tartozó globális rendszergazdai felhasználónevet és jelszót. Futtassa a következő parancsot, és * \<cserélje\> le a felhasználónevet* és a * \<jelszót\>*:
+1. A következő parancs futtatásával telepítheti a hitelesítési ügynököt: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
+2. A hitelesítési ügynököt a Windows PowerShell használatával is regisztrálhatja a szolgáltatásban. Hozzon létre egy PowerShell hitelesítő adatokat `$cred` tartalmazó objektumot, amely tartalmazza a bérlőhöz tartozó globális rendszergazdai felhasználónevet és jelszót. Futtassa a következő parancsot, és cserélje le *\<username\>* *\<password\>* :
 
-        $User = "<username>"
-        $PlainPassword = '<password>'
-        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
-        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
-3. Nyissa meg a **C:\Program Files\Microsoft Azure ad Connect hitelesítési ügynököt** , és futtassa a `$cred` következő szkriptet a létrehozott objektum használatával:
+  ```powershell
+  $User = "<username>"
+  $PlainPassword = '<password>'
+  $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```
+3. Nyissa meg a **C:\Program Files\Microsoft Azure ad Connect hitelesítési ügynököt** , és futtassa a következő szkriptet a `$cred` létrehozott objektum használatával:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```powershell
+  RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```
 
 >[!IMPORTANT]
 >Ha egy hitelesítési ügynök telepítve van egy virtuális gépen, a virtuális gép nem telepíthető másik hitelesítési ügynök beállítására. Ez a metódus nem **támogatott**.

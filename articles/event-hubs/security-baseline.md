@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184707"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs Azure biztonsági alapterve
@@ -38,7 +38,7 @@ Az Azure Event Hubs névteret tűzfalak használatával is biztonságossá tehet
 
 Virtuális hálózati szolgáltatásbeli végpontok használata az Azure Event Hubs használatával:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-További információ: az Azure Event Hubs integrálása az Azure Private-hivatkozással: https://docs.microsoft.com/azure/event-hubs/private-link-service.
+További információ: az Azure Event Hubs integrálása az Azure Private-hivatkozással: https://docs.microsoft.com/azure/event-hubs/private-link-service .
 
 Virtuális hálózatok integrációjának és tűzfalának engedélyezése Event Hubs névtérben:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
@@ -335,7 +335,7 @@ A Azure Policy használata:https://docs.microsoft.com/azure/governance/policy/tu
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutató**: a Microsoft Azure a Azure Active Directory (ad) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A tokent kérő erőforrás neve https:\//eventhubs.Azure.net/. Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
+**Útmutató**: a Microsoft Azure a Azure Active Directory (ad) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A tokent kérő erőforrás neve https: \/ /eventhubs.Azure.net/. Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
 
 Alkalmazások hitelesítése az Azure AD-vel Event Hubs erőforrások eléréséhez:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -1078,7 +1078,7 @@ A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:https://docs.mi
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: rendszeres penetrációs tesztelést végez az Azure-erőforrásokon, és gondoskodik az összes kritikus biztonsági vizsgálat 60 napon belüli szervizeléséről
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék meg a Microsoft-házirendeket: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
+**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék meg a Microsoft-házirendeket: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 .
 A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal és-alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center figyelés**: igen

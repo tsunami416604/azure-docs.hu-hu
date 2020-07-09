@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561584"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
@@ -28,7 +28,7 @@ Míg a keresési dokumentumok nagy mennyiségű mezőt tartalmazhatnak, jellemz�
 A legjobban megfelelő mezők közé tartoznak a dokumentumok közötti kontrasztos és megkülönböztethető elemek, így elegendő információ áll rendelkezésre a felhasználó részéről egy kattintásra adott válasz meghívásához. Az e-kereskedelmi webhelyeken a terméknév, a leírás, a márka, a szín, a méret, az ár és a minősítés lehet. A Hotel-Sample-index beépített mintája a következő példában szereplő mezőkből állhat:
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -103,11 +103,11 @@ A formázás a teljes távú lekérdezésekre vonatkozik. A formázás típusát
 A következő példában a Leírás mezőben a "Sandy", a "Sand", a "strandok", a "Beach" kifejezés a kiemeléshez van címkézve. Azok a lekérdezések, amelyek kiváltják a lekérdezés kiterjesztését a motorban, például a fuzzy és a helyettesítő karakteres keresés, korlátozott támogatást biztosítanak a találatok kiemeléséhez.
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"
@@ -129,7 +129,7 @@ Az új viselkedéssel:
 
 Ha olyan állapotkódot ír, amely megvalósítja a találatok kiemelését, vegye figyelembe a változást. Vegye figyelembe, hogy ez csak akkor lesz hatással, ha teljesen új keresési szolgáltatást hoz létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ügyfél keresési oldalának gyors létrehozásához vegye figyelembe a következő lehetőségeket:
 

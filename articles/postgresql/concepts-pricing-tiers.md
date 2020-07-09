@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 95795f287a369edec84b68ac920874808966ff1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097081"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121622"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az egykiszolgálós Azure Database for PostgreSQL tarifacsomagjai
 
 A Azure Database for PostgreSQL-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a PostgreSQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+| Erőforrás/szintek | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 4, Gen 5 | Gen 4, Gen 5 | 5. gen |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ A Azure Database for PostgreSQL-kiszolgálót a három különböző díjszabás
 
 | Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Basic | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
+| Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
 | Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
 | Memóriaoptimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
 
@@ -43,20 +43,20 @@ A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapu
 
 Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a PostgreSQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+| Tárolási attribútumok | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
+| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, USA északi középső régiója, USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea Kelet-Ausztrália középső régiója
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea, Közép-Korea, Kelet-Ausztrália Dél-Korea
 >
 > Minden más régió támogatja a 4TB és a 6000 IOPS.
 >
 
-A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően. 
+A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
 
 >[!NOTE]
 > A tárterületet csak felfelé, nem lefelé lehet méretezni.
@@ -73,7 +73,7 @@ Ha például 110 GB tárhellyel rendelkezik, és a tényleges kihasználtság me
 
 Ha a kiszolgáló csak olvasható, az összes meglévő munkamenet le van választva, és a nem véglegesített tranzakciók vissza lesznek állítva. A későbbi írási műveletek és tranzakciók véglegesítve sikertelenek lesznek. Az összes további olvasási lekérdezés megszakítás nélkül működik.  
 
-Megnövelheti a kiépített tároló mennyiségét a kiszolgálóra, vagy új munkamenetet indíthat az írási és olvasási módban, és elvégezheti az adattárolást az ingyenes tárterület visszaigényléséhez. A `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` futó az aktuális munkamenetet olvasási írási módba állítja. Az adatok sérülésének elkerülése érdekében ne végezzen írási műveleteket, ha a kiszolgáló még csak olvasható állapotú.
+Megnövelheti a kiépített tároló mennyiségét a kiszolgálóra, vagy új munkamenetet indíthat az írási és olvasási módban, és elvégezheti az adattárolást az ingyenes tárterület visszaigényléséhez. `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;`A futó az aktuális munkamenetet olvasási írási módba állítja. Az adatok sérülésének elkerülése érdekében ne végezzen írási műveleteket, ha a kiszolgáló még csak olvasható állapotú.
 
 Javasoljuk, hogy kapcsolja be a tárterület automatikus növekedését, vagy hozzon létre egy riasztást, amely értesíti, ha a kiszolgáló tárterülete eléri a küszöbértéket, így elkerülhető a csak olvasható állapot. További információt a [riasztás beállításával](howto-alert-on-metric.md)kapcsolatos dokumentációban talál.
 
@@ -93,7 +93,7 @@ A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóró
 
 A kiszolgáló létrehozása után egymástól függetlenül módosíthatja a virtuális mag, a hardverek generációját, az árképzési szintet (kivéve az alapszintű és az alapszintű), a tárterület mennyiségét és a biztonsági mentés megőrzési időtartamát. A biztonsági mentési tár típusa nem módosítható a kiszolgáló létrehozása után. A virtuális mag száma növelhető felfelé vagy lefelé. A biztonsági másolat megőrzési időtartama 7 – 35 nap között méretezhető. A tárterület mérete csak növelni lehet. Az erőforrások méretezése történhet a portálon vagy az Azure CLI-n keresztül. Az Azure CLI-vel történő skálázásra példa: Azure Database for PostgreSQL- [kiszolgáló figyelése és méretezése az Azure CLI használatával](scripts/sample-scale-server-up-or-down.md).
 
-> [!NOTE] 
+> [!NOTE]
 > A tárterület mérete csak növelni lehet. A növekedés után nem térhet vissza kisebb tárterület-méretre.
 
 Ha megváltoztatja a virtuális mag számát, a hardver generálását vagy az árképzési szintet, az eredeti kiszolgáló egy példánya létrejön az új számítási foglalással. Amint a kiszolgáló üzemel, a kapcsolatok átállnak az új kiszolgálóra. Az új kiszolgálóra való váltás pillanatában nem hozható létre új kapcsolat, és a nem véglegesített tranzakciók vissza lesznek állítva. Ez az időtartam változó, de a legtöbb esetben egy percnél kevesebb időt vesz igénybe.
@@ -104,8 +104,8 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/PostgreSQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for PostgreSQL** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre PostgreSQL-kiszolgálót a portálon](tutorial-design-database-using-azure-portal.md).
-- A [szolgáltatás korlátainak](concepts-limits.md)megismerése. 
+- A [szolgáltatás korlátainak](concepts-limits.md)megismerése.
 - Ismerje meg, hogyan [bővítheti az olvasási replikákat](howto-read-replicas-portal.md).

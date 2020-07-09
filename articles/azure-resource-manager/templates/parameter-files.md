@@ -2,13 +2,13 @@
 title: Paraméterfájl létrehozása
 description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117505"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
 
@@ -182,12 +182,18 @@ A következő példában a különböző típusú paraméterek formátuma látha
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>Sablon üzembe helyezése paraméter-fájllal
+
+Lásd:
+
+- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](./deploy-powershell.md#pass-parameter-values)
+- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>Fájlnév
 
-A paraméter elnevezésének általános konvenciója a **. Parameters** hozzáadása a sablon nevéhez. Ha például a sablon neve **azuredeploy. JSON**, a paraméter fájljának neve **azuredeploy. Parameters. JSON**. Ez az elnevezési konvenció a sablon és a paraméterek közötti kapcsolat megtekintését segíti.
+A paraméter elnevezésének általános konvenciója a **. Parameters** hozzáadása a sablon nevéhez. Ha például a sablon neve **azuredeploy.json**, a paraméter fájljának neve **azuredeploy.parameters.js**. Ez az elnevezési konvenció a sablon és a paraméterek közötti kapcsolat megtekintését segíti.
 
-Ha különböző környezetekben kíván üzembe helyezni, hozzon létre egynél több paramétert. A paraméterérték elnevezése esetén adjon hozzá egy módszert a használat azonosításához. Használja például a **azuredeploy. Parameters-dev. JSON** és a **azuredeploy. Parameters-prod. JSON** fájlt.
-
+Ha különböző környezetekben kíván üzembe helyezni, hozzon létre egynél több paramétert. A paraméterérték elnevezése esetén adjon hozzá egy módszert a használat azonosításához. Használja például a **azuredeploy.parameters-dev.json** és a **azuredeploy.parameters-prod.json**
 
 ## <a name="parameter-precedence"></a>Paraméter prioritása
 
@@ -198,6 +204,7 @@ Külső paramétert is használhat a fájl URI azonosítójának megadásával. 
 ## <a name="parameter-name-conflicts"></a>Paraméter neve ütközés
 
 Ha a sablon egy, a PowerShell-parancsban szereplő paraméterekkel megegyező nevű paramétert tartalmaz, a PowerShell a sablonban található paramétert a Postfix **FromTemplate**mutatja be. A sablonban található **ResourceGroupName** nevű paraméter például ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. A rendszer megkéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**számára. Ezt a zavart a telepítési parancsokhoz nem használt paraméterek neveinek használatával lehet elkerülni.
+
 
 ## <a name="next-steps"></a>További lépések
 

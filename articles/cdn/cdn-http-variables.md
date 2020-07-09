@@ -14,31 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84340674"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabályok motorjának HTTP-változói
 A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beolvasására szolgáló eszközöket. Ez a metaadatok ezután a kérések és válaszok dinamikus módosítására használhatók. A HTTP-változók használata a következő szabályok motor-funkcióihoz korlátozódik:
 
-- [Gyorsítótár – kulcs újraírása](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Ügyfél-kérelem fejlécének módosítása](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Ügyfél-válasz fejlécének módosítása](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL-átirányítás](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL-átírás](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Gyorsítótár – kulcs újraírása](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Ügyfél-kérelem fejlécének módosítása](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Ügyfél-válasz fejlécének módosítása](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL-átirányítás](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL-újraírás](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
-## <a name="definitions"></a>Meghatározások
+## <a name="definitions"></a>Definíciók
 A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer üres értéket ad vissza, ha a GEO-metaadatok (például postai kód) nem érhetők el egy adott kéréshez.
 
 
-| Name | Változó | Leírás | Mintaérték |
+| Name | Változó | Description | Mintaérték |
 | ---- | -------- | ----------- | ------------ |
 | ASN (kérelmező) | % {geo_asnum} | Megadja a kérelmező AS-számát. <br /><br />**Elavult:** % {virt_dst_asnum}. <br />Ez a változó a (z)% {geo_asnum} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | AS15133 |
 | Város (kérelmező) | % {geo_city} | A kérelmező városát jelzi. | Los Angeles |
-| Kontinens (kérelmező) | % {geo_continent} | Azt jelzi, hogy a kérelmező kontinense a rövidítése. <br />Az érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />OC: Ausztrália és Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** % {virt_dst_continent}. <br />Ez a változó a (z)% {geo_continent} helyett elavult. <br />Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára.| N/A |
+| Kontinens (kérelmező) | % {geo_continent} | Azt jelzi, hogy a kérelmező kontinense a rövidítése. <br />Az érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />OC: Ausztrália és Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** % {virt_dst_continent}. <br />Ez a változó a (z)% {geo_continent} helyett elavult. <br />Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára.| N.A. |
 | Cookie értéke | % {cookie_Cookie} | A cookie-kifejezés által azonosított cookie-kulcsnak megfelelő értéket adja vissza. | Minta használata: <br />% {cookie__utma}<br /><br />Minta értéke:<br />111662281.2.10.1222100123 |
 | Ország/régió (kérelmező) | % {geo_country} | Azt jelzi, hogy a kérelmező országa/régiója az ország/régió kódja alapján van-e. <br />**Elavult:** % {virt_dst_country}. <br /><br />Ez a változó a (z)% {geo_country} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | USA |
 | Kijelölt piaci térség (kérelmező) | % {geo_dma_code} |A kérelmező adathordozó-piacát jelzi a régió kódja alapján. <br /><br />Ez a mező csak a Egyesült Államokból származó kérelmekre vonatkozik.| 745 |
@@ -62,14 +61,14 @@ A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer �
 | Kérési séma | % {séma} | A kérelem sémáját jelzi. |http |
 | Kérelem URI-ja (relatív) | % {request_uri} | Megadja a relatív elérési utat, beleértve a lekérdezési karakterláncot is, amely a kérelem URI-ja alapján van meghatározva. | /marketing/foo.js? loggedin = True |
 | Kérelem URI-ja (relatív lekérdezési karakterlánc nélkül) | % {URI} | A kért tartalom relatív elérési útját jelzi. <br /><br/>Legfontosabb információk:<br />– Ez a relatív elérési út kizárja a lekérdezési karakterláncot.<br />– Ez a relatív elérési út az URL-címek újraírását tükrözi. Az URL-cím a következő feltételekkel lesz újraírva:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-URL-Újraírási funkció: Ez a szolgáltatás átírja a kérelem URI-jében definiált relatív elérési utat.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL-cím: az ilyen típusú kérést a rendszer a megfelelő CDN URL-címre írja át. |/800001/corigin/rewrittendir/foo.js |
-| Kérés URI-ja | % {kérelem} | Leírja a kérelmet. <br />Szintaxis: &lt; http-metódus &gt; &lt; relatív elérési útja &gt; &lt; http protokoll&gt; | /Marketing/foo.js beolvasása? loggedin = True HTTP/1.1 |
+| Kérés URI-ja | % {kérelem} | Leírja a kérelmet. <br />Szintaxis: &lt; http-metódus &gt; &lt; relatív elérési útja &gt; &lt; http protokoll&gt; | /Marketing/-foo.js beolvasása? loggedin = True HTTP/1.1 |
 | Válasz fejlécének értéke | % {resp_ &lt; ResponseHeader &gt; } | A ResponseHeader kifejezés által azonosított válasz fejlécének megfelelő értéket adja vissza &lt; &gt; . <br /><br />Ha a válasz fejlécének neve kötőjelet tartalmaz (például felhasználói ügynök), cserélje le aláhúzásra (például User_Agent). | Minta használata:% {resp_Content_Length}<br /><br />Minta értéke: 100 |
 
 ## <a name="usage"></a>Használat
 Az alábbi táblázat a HTTP-változó megadásának megfelelő szintaxisát ismerteti.
 
 
-| Szintaxis | Példa | Leírás |
+| Syntax | Példa | Description |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {gazdagép} | Használja ezt a szintaxist a megadott HTTPVariable megfelelő teljes érték beolvasásához &lt; &gt; . |
 | % { &lt; HTTPVariableDelimiter &gt; } | % {gazdagép,} | Ezzel a szintaxissal állíthatja be a megadott HTTPVariableDelimiter megfelelő teljes értékhez tartozó esetet &lt; &gt; . |
@@ -92,7 +91,7 @@ Ha egy HTTP-változó a következő hatások bármelyikét elérheti, elválaszt
 
 Az elhatárolókat az alábbi táblázat ismerteti.
 
-| Elválasztó | Leírás |
+| Elválasztó | Description |
 | --------- | ----------- |
 | := | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha a következők valamelyike: <br />-Hiányzó <br />-NULL értékűre van állítva. |
 | :+ | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha hozzá van rendelve egy érték. |
@@ -125,7 +124,7 @@ Egy alapértelmezett érték rendelhető hozzá egy fejléchez, ha az megfelel a
 
 Az alábbi táblázat leírja, hogyan határozhat meg alapértelmezett értéket.
 
-| Állapot | Szintaxis | Példa | Leírás |
+| Állapot | Syntax | Példa | Description |
 | --------- | ------ | --------| ----------- |
 | Állítsa be az alapértelmezett érték fejlécét, ha az megfelel a következő feltételek bármelyikének: <br /><br />-Hiányzó fejléc <br /><br />– A fejléc értéke NULL értékre van állítva.| % {Változó: = érték} | % {http_referrer: = meghatározatlan} | A hivatkozó fejléc csak akkor lesz *meghatározatlan* , ha hiányzik vagy NULL értékűre van állítva. Ha be van állítva, semmilyen művelet nem kerül sor. |
 | Ha hiányzik, állítsa be a fejlécet az alapértelmezett értékre. | % {Változó = érték} | % {http_referrer = meghatározatlan} | A hivatkozó fejléc csak akkor lesz *meghatározatlan* értékre állítva, ha hiányzik. Ha be van állítva, semmilyen művelet nem kerül sor. |
@@ -160,7 +159,7 @@ Legfontosabb információk:
 
 A következő példa a minta kérelem URL-címére támaszkodik:
 
-https: \/ /CDN.mydomain.com/Folder/marketing/myconsultant/Proposal.html
+https: \/ /cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
 
 A következő sztring különböző módszereket mutat be a változók módosításához:
 
@@ -168,13 +167,13 @@ https: \/ /www%{HTTP_HOST: 3}/mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}.
 
 A mintául szolgáló kérelem URL-címe alapján a fenti változó manipuláció a következő értéket fogja eredményezni:
 
-https: \/ /www.mydomain.com/Mobile/marketing/Proposal.htm
+https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 
 
 ### <a name="pattern-removal"></a>Minta eltávolítása
 Egy adott mintázatnak megfelelő szöveg eltávolítható egy változó értékének elejéről vagy végéről.
 
-| Szintaxis | Műveletek |
+| Syntax | Műveletek |
 | ------ | ------ |
 | % {Változó # minta} | Szöveg eltávolítása, ha a megadott minta a változó értékének elején található. |
 | % {Változó% Pattern} | A szöveg eltávolítása, ha a megadott minta a változó értékének végén található. |
@@ -189,13 +188,13 @@ A következő táblázat bemutatja, hogyan működik ez a szintaxis.
 
 | Minta szintaxisa | Results (Eredmények) | |
 | ------------- | ------- | --- |
-| % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/Product.html? Language = en-US | Mivel a változó a mintával kezdődik, lecserélték. |
-| % {request_uri% HTML} htm | /800001/myorigin/marketing/Product.html? Language = en-US | Mivel a változó nem a mintával végződik, nem történt változás.|
+| % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Mivel a változó a mintával kezdődik, lecserélték. |
+| % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Mivel a változó nem a mintával végződik, nem történt változás.|
 
 ### <a name="find-and-replace"></a>Keresés és csere
 A Find és a Replace szintaxist az alábbi táblázat ismerteti.
 
-| Szintaxis | Műveletek |
+| Syntax | Műveletek |
 | ------ | ------ |
 | % {Változó/Keresés/csere} | A megadott minta első előfordulásának megkeresése és cseréje. |
 | % {Változó//Keresés/csere} | A megadott minta összes előfordulásának megkeresése és cseréje. |
@@ -207,7 +206,7 @@ A Find és a Replace szintaxist az alábbi táblázat ismerteti.
 ### <a name="find-and-rewrite"></a>Keresés és újraírás
 A keresés és csere megváltoztatásához használja a megadott mintának megfelelő szöveget az újraíráskor. A keresés és az újraírás szintaxisát az alábbi táblázat ismerteti.
 
-| Szintaxis | Műveletek |
+| Syntax | Műveletek |
 | ------ | ------ |
 | % {Változó/= keresés/újraírás} | A megadott minta összes előfordulásának megkeresése, másolása és újraírása. |
 | % {Változó/^ keresés/újraírás} | A megadott minta megkeresése, másolása és újraírása a változó elején. |

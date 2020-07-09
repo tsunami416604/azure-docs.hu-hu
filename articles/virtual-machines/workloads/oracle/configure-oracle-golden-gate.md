@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683731"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
@@ -82,7 +82,7 @@ az vm availability-set create \
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. 
 
-A következő példa két virtuális gépet hoz `myVM1` létre `myVM2`, és a nevet. Hozzon létre SSH-kulcsokat, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+A következő példa két virtuális gépet hoz létre `myVM1` , és a nevet `myVM2` . Hozzon létre SSH-kulcsokat, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 #### <a name="create-myvm1-primary"></a>MyVM1 létrehozása (elsődleges):
 
@@ -96,7 +96,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. (Jegyezze fel a `publicIpAddress`következőt:. Ez a címe a virtuális gép elérésére szolgál.)
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. (Jegyezze fel a következőt: `publicIpAddress` . Ez a címe a virtuális gép elérésére szolgál.)
 
 ```output
 {
@@ -123,7 +123,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Jegyezze fel azt is `publicIpAddress` , hogy a létrehozása után is megtörtént.
+Jegyezze fel azt is, hogy a `publicIpAddress` létrehozása után is megtörtént.
 
 ### <a name="open-the-tcp-port-for-connectivity"></a>A TCP-port megnyitása a kapcsolathoz
 
@@ -354,7 +354,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>A Golden Gate szoftver letöltése
 Az Oracle Golden Gate szoftver letöltéséhez és előkészítéséhez végezze el a következő lépéseket:
 
-1. Töltse le a **fbo_ggs_Linux_x64_shiphome. zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-es verziójában**a letölteni kívánt. zip-fájlok készletének kell lennie.
+1. Töltse le a **fbo_ggs_Linux_x64_shiphome.zip** fájlt az [Oracle Golden Gate letöltési oldaláról](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési cím **Oracle GoldenGate 12. x. x. x Oracle Linux x86-64-es verziójában**a letölteni kívánt. zip-fájlok készletének kell lennie.
 
 2. Miután letöltötte a. zip-fájlokat az ügyfélszámítógépre, a biztonságos másolási protokoll (SCP) használatával másolja a fájlokat a virtuális gépre:
 
@@ -391,7 +391,7 @@ Ez egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet has
    * [A PuTTY letöltése](https://www.putty.org/)
    * [Xming letöltése](https://xming.en.softonic.com/)
 
-2. A PuTTY telepítése után a PuTTY mappában (például C:\Program Files\PuTTY) futtassa a PuTTYgen. exe (Putty Key Generator) parancsot.
+2. A PuTTY telepítése után a PuTTY mappában (például a C:\Program Files\PuTTY) futtassa a puttygen.exe (Putty Key Generator) parancsot.
 
 3. A PuTTY Key Generatorban:
 
@@ -413,14 +413,14 @@ Ez egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet has
 5. Hozzon létre egy **authorized_keys**nevű fájlt. Illessze be a kulcs tartalmát a fájlban, majd mentse a fájlt.
 
    > [!NOTE]
-   > A kulcsnak tartalmaznia kell a `ssh-rsa`karakterláncot. Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
+   > A kulcsnak tartalmaznia kell a karakterláncot `ssh-rsa` . Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
    >  
 
-6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok** > **SSH** > -**hitelesítés**lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
+6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH**-  >  **hitelesítés**lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
 
    ![A titkos kulcs beállítása lap képernyőképe](./media/oracle-golden-gate/setprivatekey.png)
 
-7. A **Kategória** ablaktáblán válassza a **kapcsolatok** > **SSH** > **X11**elemet. Ezután jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
+7. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH**  >  **X11**elemet. Ezután jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
 
    ![Az X11 engedélyezése lap képernyőképe](./media/oracle-golden-gate/enablex11.png)
 

@@ -15,10 +15,10 @@ ms.custom:
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050783"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
@@ -62,9 +62,9 @@ Ha összevonási hitelesítést használ, és a felhasználó még nem létezik 
 
 A probléma megoldásához a külső felhasználó rendszergazdájának szinkronizálnia kell a felhasználó fiókját a Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan működik a\#"", amely nem általában érvényes karakter, szinkronizáljon az Azure ad-vel?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan működik a " \# ", amely nem általában érvényes karakter, szinkronizáljon az Azure ad-vel?
 
-a\#(z) "" az Azure ad B2B Collaboration vagy a külső felhasználók számára az UPN-ben foglalt karakter, mert a user@contoso.com meghívott@fabrikam.onmicrosoft.comfiók user_contoso. com # ext # lesz. \# Ezért a helyszíni UPN-ből érkező egyszerű felhasználónevek nem jelentkezhetnek be a Azure Portalba. 
+a (z) " \# " az Azure ad B2B Collaboration vagy a külső felhasználók számára az UPN-ben foglalt karakter, mert a meghívott fiók user@contoso.com user_contoso. com # ext # lesz @fabrikam.onmicrosoft.com . Ezért a helyszíni UPN-ből \# érkező egyszerű felhasználónevek nem jelentkezhetnek be a Azure Portalba. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Hibaüzenet jelenik meg, amikor külső felhasználókat veszek fel egy szinkronizált csoportba
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560021"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Az Azure Blob Storage kimeneti kötése Azure Functions
 
@@ -20,7 +20,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő példa egy olyan [C#-függvény](functions-dotnet-class-library.md) , amely blob-triggert és két kimeneti blob-kötést használ. A függvényt egy képblob létrehozásával indítják el a *minta-rendszerkép* tárolóban. Létrehozza a képblob kis és közepes méretű másolatait.
 
@@ -77,9 +77,9 @@ public class ResizeImages
 
 <!--Same example for input and output. -->
 
-A következő példa a blob bemeneti és kimeneti kötéseit ábrázolja egy *function. JSON* fájlban és [C# parancsfájlban (. CSX)](functions-reference-csharp.md) , amely a kötéseket használja. A függvény egy szöveges blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
+Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy olyan *function.jsa* fájl-és [C#-parancsfájl (. CSX)](functions-reference-csharp.md) kódjában, amely a kötéseket használja. A függvény egy szöveges blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
 
-A *function. JSON* fájlban a `queueTrigger` metaadatok tulajdonság a következő `path` tulajdonságok alapján adható meg:
+A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával adja meg a blob nevét a `path` Tulajdonságok között:
 
 ```json
 {
@@ -126,9 +126,9 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy *function. JSON* fájlban és [JavaScript-kódban](functions-reference-node.md) , amely a kötéseket használja. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
+Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy *function.jsa* fájl-és [JavaScript-kódban](functions-reference-node.md) , amely a kötéseket használja. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
 
-A *function. JSON* fájlban a `queueTrigger` metaadatok tulajdonság a következő `path` tulajdonságok alapján adható meg:
+A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával adja meg a blob nevét a `path` Tulajdonságok között:
 
 ```json
 {
@@ -175,9 +175,9 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-A következő példa egy *function. JSON* fájlban és a kötéseket használó [Python-kódban](functions-reference-python.md) mutatja be a blob bemeneti és kimeneti kötéseit. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
+Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy *function.jsa* fájlban és a [Python-kódban](functions-reference-python.md) , amely a kötéseket használja. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
 
-A *function. JSON* fájlban a `queueTrigger` metaadatok tulajdonság a következő `path` tulajdonságok alapján adható meg:
+A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával adja meg a blob nevét a `path` Tulajdonságok között:
 
 ```json
 {
@@ -233,7 +233,7 @@ Ez a szakasz a következő példákat tartalmazza:
 
 #### <a name="http-trigger-using-outputbinding-java"></a>HTTP-trigger a OutputBinding (Java) használatával
 
- A következő példa egy Java-függvényt mutat be `HttpTrigger` , amely a jegyzetet használja a blob Storage-tárolóban található fájl nevét tartalmazó paraméter fogadására. A `BlobInput` jegyzet ezután beolvassa a fájlt, és továbbítja a tartalmát a függvénynek `byte[]`. A `BlobOutput` jegyzet a következőhöz kötődik `OutputBinding outputItem`:, amelyet a függvény használ a bemeneti blob tartalmának a konfigurált tárolóba való írásához.
+ A következő példa egy Java-függvényt mutat be, amely a `HttpTrigger` jegyzetet használja a blob Storage-tárolóban található fájl nevét tartalmazó paraméter fogadására. A `BlobInput` jegyzet ezután beolvassa a fájlt, és továbbítja a tartalmát a függvénynek `byte[]` . A jegyzet a következőhöz `BlobOutput` kötődik `OutputBinding outputItem` :, amelyet a függvény használ a bemeneti blob tartalmának a konfigurált tárolóba való írásához.
 
 ```java
   @FunctionName("copyBlobHttp")
@@ -265,7 +265,7 @@ Ez a szakasz a következő példákat tartalmazza:
 
 #### <a name="queue-trigger-using-function-return-value-java"></a>Üzenetsor-trigger, függvény visszatérési értéke (Java) használatával
 
- A következő példa egy Java-függvényt mutat be `QueueTrigger` , amely a jegyzetet használja a blob Storage-tárolóban található fájl nevét tartalmazó üzenet fogadására. A `BlobInput` jegyzet ezután beolvassa a fájlt, és továbbítja a tartalmát a függvénynek `byte[]`. A `BlobOutput` jegyzet a függvény visszatérési értékéhez kötődik, amelyet ezután a futtatókörnyezet használ a bemeneti blob tartalmának a konfigurált tárolóba való írásához.
+ A következő példa egy Java-függvényt mutat be, amely a `QueueTrigger` jegyzetet használja a blob Storage-tárolóban található fájl nevét tartalmazó üzenet fogadására. A `BlobInput` jegyzet ezután beolvassa a fájlt, és továbbítja a tartalmát a függvénynek `byte[]` . A `BlobOutput` jegyzet a függvény visszatérési értékéhez kötődik, amelyet ezután a futtatókörnyezet használ a bemeneti blob tartalmának a konfigurált tárolóba való írásához.
 
 ```java
   @FunctionName("copyBlobQueueTrigger")
@@ -289,17 +289,17 @@ Ez a szakasz a következő példákat tartalmazza:
   }
 ```
 
- A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `@BlobOutput` a megjegyzések a függvények azon paramétereit, amelyek értékét a blob Storage-ban lévő objektumba kívánja írni.  A paraméternek a következőnek kell lennie `OutputBinding<T>`:, ahol a T bármely natív Java-típus vagy POJO.
+ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@BlobOutput` Megjegyzések a függvények azon paramétereit, amelyek értékét a blob Storage-ban lévő objektumba kívánja írni.  A paraméternek a következőnek kell lennie: `OutputBinding<T>` , ahol a T bármely natív Java-típus vagy POJO.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
-Az attribútum konstruktora a blob elérési útját és az olvasási `FileAccess` vagy írási paramétereket jelölő paramétert a következő példában látható módon veszi át:
+Az attribútum konstruktora a blob elérési útját és az `FileAccess` olvasási vagy írási paramétereket jelölő paramétert a következő példában látható módon veszi át:
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -311,7 +311,7 @@ public static void Run(
 }
 ```
 
-A `Connection` tulajdonság beállításával megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
+A tulajdonság beállításával `Connection` megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -337,7 +337,7 @@ A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó blobhoz. Ha az attribútummal rendelkező byte tömböt használ, állítsa `dataType` a `binary`következőre:. A részletekért tekintse meg a [kimeneti példát](#example) .
+Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó blobhoz. Ha az attribútummal rendelkező byte tömböt használ, állítsa a következőre: `dataType` `binary` . A részletekért tekintse meg a [kimeneti példát](#example) .
 
 ---
 
@@ -345,24 +345,24 @@ Teljes példa: [kimeneti példa](#example).
 
 Az `StorageAccount` attribútummal megadhatja a Storage-fiókot az osztály, a metódus vagy a paraméter szintjén. További információ: [trigger-attributes](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations).
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az `Blob` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Blob` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa** | n/a | Értékre kell állítani `blob`. |
-|**direction** | n/a | Kimeneti kötéshez be `out` kell állítani. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
-|**név** | n/a | A blobot jelölő változó neve a függvény kódjában.  `$return` Állítsa a értékre a függvény visszatérési értékének hivatkozásához.|
+|**típusa** | n.a. | Értékre kell állítani `blob` . |
+|**direction** | n.a. | `out`Kimeneti kötéshez be kell állítani. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
+|**név** | n.a. | A blobot jelölő változó neve a függvény kódjában.  Állítsa a értékre `$return` a függvény visszatérési értékének hivatkozásához.|
 |**elérési útja** |**BlobPath** | A blob-tároló elérési útja. |
-|**kapcsolat** |**Kapcsolat**| Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" `connection` értékre van állítva, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen `connection` hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű `AzureWebJobsStorage`alkalmazás-beállításban.<br><br>A kapcsolatok karakterláncának általános célú Storage-fiókhoz kell tartoznia, nem [csak blob Storage-fiókhoz](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|n/a | **Hozzáférés** | Azt jelzi, hogy olvasás vagy írás történik-e. |
+|**kapcsolat** |**Kapcsolat**| Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .<br><br>A kapcsolatok karakterláncának általános célú Storage-fiókhoz kell tartoznia, nem [csak blob Storage-fiókhoz](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|n.a. | **Hozzáférés** | Azt jelzi, hogy olvasás vagy írás történik-e. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Használat
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
@@ -372,7 +372,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az `Blob` attribútumban b
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A JavaScriptben a használatával `context.bindings.<name from function.json>`férhet hozzá a blob-adataihoz.
+A JavaScriptben a használatával férhet hozzá a blob-adataihoz `context.bindings.<name from function.json>` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -385,13 +385,13 @@ A részletekért tekintse meg a [kimeneti példát](#example) .
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó blobhoz. Ha az attribútummal rendelkező byte tömböt használ, állítsa `dataType` a `binary`következőre:. A részletekért tekintse meg a [kimeneti példát](#example) .
+Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó blobhoz. Ha az attribútummal rendelkező byte tömböt használ, állítsa a következőre: `dataType` `binary` . A részletekért tekintse meg a [kimeneti példát](#example) .
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Referencia |
+| Kötés |  Hivatkozás |
 |---|---|
 | Blob | [BLOB-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB, tábla, üzenetsor |  [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

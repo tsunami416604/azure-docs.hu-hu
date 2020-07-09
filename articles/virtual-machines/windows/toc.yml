@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: Virtuális gép létrehozása – Azure CLI
       href: quick-create-cli.md
+    - name: Virtuális gép létrehozása – ARM-sablon
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Virtuális gép létrehozása/kezelése
@@ -189,6 +192,10 @@
               href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Dav4 és Dasv4 sorozat
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ddv4 és Ddsv4 sorozat
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv4 és Dsv4 sorozat
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Számításra optimalizált
           items:
             - name: Áttekintés
@@ -206,6 +213,10 @@
               href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Eav4 és Easv4 sorozat
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Edv4 és Edsv4 sorozat
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev4 és Esv4 sorozat
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: M sorozat
               href: ../m-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Mv2 sorozat
@@ -270,6 +281,8 @@
         - name: Spot virtuális gépek
           href: spot-vms.md
           displayName: 'pre-empt, preempt'
+        - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
+          href: ../azure-vms-no-temp-disk.md
         - name: Előző generációk
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
@@ -338,9 +351,9 @@
     - name: Biztonsági másolat és helyreállítás
       href: backup-recovery.md
     - name: A felhő bevezetésének keretrendszere
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
     - name: Architektúra-központ
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
+      href: 'https://docs.microsoft.com/azure/architecture/'
     - name: Példa infrastruktúrára
       href: infrastructure-example.md
 - name: Útmutatók
@@ -364,7 +377,7 @@
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Hibakódok
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 'A C# használata'
+        - name: A C# használata
           href: csharp.md
         - name: Speciális lemez használata
           items:
@@ -372,7 +385,7 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'ARM-sablon használata a C#-vel'
+        - name: ARM-sablon használata a C#-vel
           href: csharp-template.md
           displayName: Azure Resource Manager
         - name: Virtuális gép létrehozása Chef használatával
@@ -449,6 +462,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Virtuális gép létrehozása
                   items:
+                    - name: Specializált
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Általánosított
                       href: ../vm-generalized-image-version-cli.md
                 - name: Rendszerkép-erőforrások frissítése
@@ -478,6 +493,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Az Azure parancssori felület használatával
               href: image-builder.md
+            - name: Azure PowerShell használatával
+              href: image-builder-powershell.md
             - name: Buildelés rendszerkép-katalógusokhoz
               href: image-builder-gallery.md
             - name: Meglévő rendszerkép frissítése
@@ -654,7 +671,7 @@
             - name: Ügynökök áttekintése
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: GYIK
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure Diagnostics bővítmény
               items:
                 - name: Áttekintés
@@ -664,7 +681,7 @@
                       items:
                         - name: Virtuális gép
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: Virtuálisgép-méretezési csoport
+                        - name: Méretezési csoport
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Küldés az Event Hubsba
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -727,7 +744,7 @@
             - name: Általános rendelkezésre állás – gyakori kérdések
               href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: GYIK
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése
@@ -838,6 +855,8 @@
           href: incremental-snapshots.md
         - name: Migrálás és átalakítás
           items:
+            - name: Konvertálás kiszolgálóoldali titkosításra
+              href: disks-ade-sse-conversion-powershell.md
             - name: Lemez konvertálása a standard és a prémium szint között
               href: convert-disk-storage.md
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
@@ -854,8 +873,10 @@
               href: disks-enable-ultra-ssd.md
             - name: Lemez teljesítménytesztelése
               href: disks-benchmarks.md
-        - name: Nem csatlakozó lemezek megkeresése
+        - name: Nem csatlakoztatott lemezek keresése – PowerShell
           href: find-unattached-disks.md
+        - name: Nem csatlakoztatott lemezek keresése – portál
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Lemezek – Gyakori kérdések
           href: faq-for-disks.md
     - name: Hálózatkezelés felügyelete

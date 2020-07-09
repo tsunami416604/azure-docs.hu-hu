@@ -6,19 +6,19 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac1129db05c7b492e209478446f69fe48ea9fffd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834424"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111116"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
 > [!NOTE]
 > Ez a cikk a Application Insights költségeinek megismerését és szabályozását ismerteti.  A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez.
 
-Application Insights úgy lett kialakítva, hogy a webalkalmazások rendelkezésre állásának, teljesítményének és használatának nyomon követéséhez szükséges mindent meg lehessen figyelni, függetlenül attól, hogy az Azure-ban vagy a helyszínen vannak tárolva. Application Insights támogatja a népszerű nyelveket és keretrendszerek, például a .NET, a Java és a Node. js használatát, és integrálható a DevOps-folyamatokkal és-eszközökkel, például az Azure DevOps, a JIRA és a PagerDuty. Fontos tisztában lenni azzal, hogy mi határozza meg az alkalmazások monitorozásának költségeit. Ebben a cikkben áttekintjük, hogy mi vezet az alkalmazás figyelési költségeihez, és hogy miként lehet proaktívan figyelni és felügyelni őket.
+Application Insights úgy lett kialakítva, hogy a webalkalmazások rendelkezésre állásának, teljesítményének és használatának nyomon követéséhez szükséges mindent meg lehessen figyelni, függetlenül attól, hogy az Azure-ban vagy a helyszínen vannak tárolva. Application Insights támogatja a népszerű nyelveket és keretrendszerek, például a .NET, a Java és a Node.js használatát, és integrálható a DevOps-folyamatokkal és-eszközökkel, például az Azure DevOps, a JIRA és a PagerDuty. Fontos tisztában lenni azzal, hogy mi határozza meg az alkalmazások monitorozásának költségeit. Ebben a cikkben áttekintjük, hogy mi vezet az alkalmazás figyelési költségeihez, és hogy miként lehet proaktívan figyelni és felügyelni őket.
 
 Ha kérdése van a Application Insights díjszabásával kapcsolatban, tegye fel kérdéseit a [Microsoft Q&egy kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-monitor.html).
 
@@ -187,7 +187,7 @@ A küldött adatmennyiség a következő módszerekkel kezelhető:
 
 * **Ajax-hívások korlátozása**: [korlátozhatja az összes oldal nézetben jelentett Ajax-hívások számát](../../azure-monitor/app/javascript.md#configuration) , vagy kikapcsolhatja az Ajax-jelentéskészítést.
 
-* **Szükségtelen modulok letiltása**: [szerkessze a ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlt a nem szükséges gyűjteményi modulok kikapcsolásához. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
+* **Szükségtelen modulok letiltása**: [ApplicationInsights.configszerkesztésével](../../azure-monitor/app/configuration-with-applicationinsights-config.md) kikapcsolhatja a nem szükséges gyűjteményi modulokat. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
 
 * **Előre összevont mérőszámok**: Ha a TrackMetric-hívásokat az alkalmazásban helyezi el, csökkentheti a forgalmat a mérések egy kötegének átlagos és szórásos kiszámítását elfogadó túlterhelés használatával. Vagy használhatja az [Összesítés előtti csomagot](https://www.myget.org/gallery/applicationinsights-sdk-labs)is.
  
@@ -197,7 +197,7 @@ A küldött adatmennyiség a következő módszerekkel kezelhető:
     
     A napi korláttal kapcsolatos figyelmeztetési e-maileket a rendszer a következő szerepkörökhöz tartozó fiókra küldi el a Application Insights erőforráshoz: "ServiceAdmin", "AccountAdmin", "társtulajdonosa", "Owner".
 
-    A napi korlát beállításakor legyen körültekintő. Az Ön szándéka, hogy *Soha ne nyomja meg a napi korlátot*. Ha eléri a napi korlátot, a nap hátralevő részében elveszíti az adatait, és nem tudja figyelni az alkalmazást. A napi korlát módosításához használja a **napi mennyiségi korlátot** . Ezt a beállítást a **használati és becsült költségek** ablaktáblán érheti el (a cikk későbbi részében részletesebben ismertetjük).
+    A napi korlát beállításakor körültekintően járjon el. Az Ön szándéka, hogy *Soha ne nyomja meg a napi korlátot*. Ha eléri a napi korlátot, a nap hátralevő részében elveszíti az adatait, és nem tudja monitorozni az alkalmazást. A napi korlát módosításához használja a **napi mennyiségi korlátot** . Ezt a beállítást a **használati és becsült költségek** ablaktáblán érheti el (a cikk későbbi részében részletesebben ismertetjük).
     
     Eltávolítjuk a korlátozást olyan előfizetési típusoknál, amelyek olyan Kredittel rendelkeznek, amely nem használható Application Insightshoz. Korábban, ha az előfizetés költségkerettel rendelkezik, a napi korlátot tartalmazó párbeszédablak útmutatást tartalmaz a költségkeret eltávolításához, és lehetővé teszi, hogy a napi korlát 32,3 MB/nap-nál nagyobb legyen.
     
@@ -249,9 +249,11 @@ A betöltési mintavételezés beállításához lépjen a **díjszabás** panel
 
 Ha a tényleges mintavételezési sebességet szeretné felderíteni, függetlenül attól, hogy hol lett alkalmazva, használjon egy [elemzési lekérdezést](analytics.md). A lekérdezés így néz ki:
 
-    requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h)
-    | render areachart
+```kusto
+requests | where timestamp > ago(1d)
+| summarize 100/avg(itemCount) by bin(timestamp, 1h)
+| render areachart
+```
 
 Az egyes megőrzött rekordokban `itemCount` az eredeti rekordok számát jelöli. A korábbi elvetett rekordok száma 1.
 
@@ -333,9 +335,9 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 ## <a name="automation"></a>Automation
 
-Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [További tudnivalókat itt talál](powershell.md#price).
+Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [Ismerje meg, hogyan](powershell.md#price).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
 

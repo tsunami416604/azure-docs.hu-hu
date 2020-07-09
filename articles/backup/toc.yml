@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: Visszaállítás
           items:
+            - name: Azure-beli virtuális gépek visszaállítása
+              href: about-azure-vm-restore.md
             - name: Azure-beli virtuális gépek visszaállítása a portálon
               href: backup-azure-arm-restore-vms.md
             - name: Fájlok helyreállítása Azure-beli virtuális gépek biztonsági másolataiból
@@ -217,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Azure Backup Server (MABS)
       items:
-        - name: Az Azure Backup Server védelmi mátrixa
-          href: backup-mabs-protection-matrix.md
+        - name: Védelmi mátrixok
+          items:
+            - name: MABS V3 UR1 védelmi mátrix
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM védelmi mátrix
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: Telepítés vagy frissítés
           items:
             - name: Azure Backup Server telepítése
@@ -227,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: Az MABS újdonságai
               href: backup-mabs-whats-new-mabs.md
-            - name: Kibocsátási megjegyzések – MABS V3
+            - name: Kibocsátási megjegyzések – MABS
               href: backup-mabs-release-notes-v3.md
             - name: Felügyelet nélküli telepítés
               href: backup-mabs-unattended-install.md
@@ -282,7 +288,9 @@
         - name: Offline biztonsági mentés az Import/Exporttal (MARS)
           href: backup-azure-backup-import-export.md
         - name: Offline biztonsági mentés az Import/Exporttal (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: A DPM és a MABS offline biztonsági mentése (korábbi verziók)
+          href: offline-backup-server-previous-versions.md
     - name: Monitorozás és riasztások
       items:
         - name: A Backup Explorer használata
@@ -355,6 +363,8 @@
               href: soft-delete-virtual-machines.md
             - name: Azure-beli virtuális gépeken futó SQL Serverhez és SAP HANA-hoz
               href: soft-delete-sql-saphana-in-azure-vm.md
+        - name: Azure-fájlmegosztások védelmének törlése
+          href: soft-delete-azure-file-share.md
         - name: Biztonsági szolgáltatások hibrid biztonsági mentésekhez
           href: backup-azure-security-feature.md
         - name: Privát végpontok
@@ -412,7 +422,7 @@
     - name: Microsoft Q&A kérdések oldala
       href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
     - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+      href: azure-backup-pricing.md
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=backup'
     - name: Videók

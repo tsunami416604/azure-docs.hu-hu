@@ -1,18 +1,18 @@
 ---
 title: Vezető felügyelet az Azure Blob Storage-ban – Microsoft kereskedelmi piactér
 description: Ismerje meg, hogyan konfigurálhatja az Azure blobot az Microsoft AppSource és az Azure Marketplace-hez készült érdeklődők konfigurálásához
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/01/2020
-ms.author: dsindona
-ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845789"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121911"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -33,11 +33,11 @@ ms.locfileid: "83845789"
 3. A Azure Portal a következő eljárással hozzon létre egy Storage-fiókot.  
     1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüsorban.  Ekkor megjelenik az **új** ablaktábla (panel) a jobb oldalon.
     2. Válassza a **tároló** lehetőséget az **új** ablaktáblán.  Egy **Kiemelt** lista jelenik meg a jobb oldalon.
-    3. A fiók létrehozásának megkezdéséhez válassza ki a **Storage-fiókot** .  Kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)című cikk utasításait.
+    3. A fiók létrehozásának megkezdéséhez válassza ki a **Storage-fiókot** .  Kövesse a [Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)című cikk utasításait.
 
     ![Azure Storage-fiók létrehozásának lépései](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    A Storage-fiókokkal kapcsolatos további információkért válassza a gyors üzembe helyezési [oktatóanyag](https://docs.microsoft.com/azure/storage/)elemet.  További információ a Storage díjszabásáról: [Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+    A Storage-fiókokkal kapcsolatos további információkért tekintse [meg ezt a](../../storage/blobs/storage-quickstart-blobs-portal.md)rövid útmutatót.  További információ a Storage díjszabásáról: [Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 4. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése, egy folyamat, amely általában néhány percet vesz igénybe.  Ezután nyissa meg a Storage-fiókját a Azure Portal **kezdőlapján** az **összes erőforrás** megjelenítése lehetőség kiválasztásával, vagy a Azure Portal bal oldali navigációs sávján található **összes erőforrás** kiválasztásával.
 

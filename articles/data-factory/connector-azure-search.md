@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418235"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Adatmásolás Azure Cognitive Search-indexbe Azure Data Factory használatával
@@ -44,7 +44,7 @@ Az Azure Cognitive Search társított szolgáltatás a következő tulajdonságo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AzureSearch** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch** | Igen |
 | url | A keresési szolgáltatás URL-címe. | Igen |
 | kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
@@ -52,7 +52,7 @@ Az Azure Cognitive Search társított szolgáltatás a következő tulajdonságo
 > [!IMPORTANT]
 > Amikor az Azure Cognitive Search társított szolgáltatásban az adatok Felhőbeli adattárból történő másolását végzi, a connactVia-ben egy explicit régióval rendelkező Azure Integration Runtime kell hivatkoznia. Állítsa be a régiót, ahol a keresési szolgáltatás található. További információ: [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -82,10 +82,10 @@ Az Azure Cognitive Searchba való másoláshoz a következő tulajdonságok tám
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureSearchIndex** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureSearchIndex** | Igen |
 | indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -114,7 +114,7 @@ Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a m
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Igen |
 | writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | Nem |
 | writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | Nem |
 
@@ -133,7 +133,7 @@ Az alapértelmezett viselkedés az **Egyesítés**.
 
 Az Azure Cognitive Search szolgáltatás támogatja a dokumentumok kötegként való írását. Egy köteg 1 – 1 000 műveletet tartalmazhat. Egy művelet kezeli az egyik dokumentumot a feltöltési/egyesítési művelet végrehajtásához.
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

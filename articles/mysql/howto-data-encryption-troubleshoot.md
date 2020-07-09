@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan lehet elhárítani az adattitkosítást Azure D
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 42956d115590fd322d2851fd546c505a76a851fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fba55dcca46b313c7b9a847412615215ad57c72
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297040"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118579"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Azure Database for MySQL adattitkosításának hibáinak megoldása
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan azonosíthatók és oldhatók meg a Azure Databa
 
 Ha úgy konfigurálja az adattitkosítást, hogy Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálók folyamatos hozzáférést igényelnek a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és úgy módosítja az állapotát, hogy az nem ***érhető*** el a Azure Portal.
 
-Ha már nincs szüksége egy nem elérhető Azure Database for MySQL-kiszolgálóra, törölheti a költségeket. A kiszolgálón semmilyen más művelet nem engedélyezett, amíg a kulcstartóhoz való hozzáférés vissza nem áll, és a kiszolgáló elérhető. Nem lehet módosítani az adattitkosítási lehetőséget a `Yes`(felhasználó által felügyelt) értékről `No` (szolgáltatás által felügyelt) a nem elérhető kiszolgálókon, ha az ügyfél által felügyelt kulccsal van titkosítva. A kulcs ismételt érvényesítéséhez manuálisan kell újraérvényesíteni a kiszolgálót, mielőtt újra elérhetővé válik. Ez a művelet szükséges az adatok jogosulatlan hozzáférés elleni védelme érdekében, az ügyfél által felügyelt kulcs engedélyeinek visszavonása mellett.
+Ha már nincs szüksége egy nem elérhető Azure Database for MySQL-kiszolgálóra, törölheti a költségeket. A kiszolgálón semmilyen más művelet nem engedélyezett, amíg a kulcstartóhoz való hozzáférés vissza nem áll, és a kiszolgáló elérhető. Nem lehet módosítani az adattitkosítási lehetőséget a `Yes` (felhasználó által felügyelt) értékről `No` (szolgáltatás által felügyelt) a nem elérhető kiszolgálókon, ha az ügyfél által felügyelt kulccsal van titkosítva. A kulcs ismételt érvényesítéséhez manuálisan kell újraérvényesíteni a kiszolgálót, mielőtt újra elérhetővé válik. Ez a művelet szükséges az adatok jogosulatlan hozzáférés elleni védelme érdekében, az ügyfél által felügyelt kulcs engedélyeinek visszavonása mellett.
 
 ## <a name="common-errors-that-cause-the-server-to-become-inaccessible"></a>Gyakori hibák, amelyek miatt a kiszolgáló elérhetetlenné válik
 
@@ -57,6 +57,6 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 - Azonosítsa a kulcstartót, majd nyissa meg a Azure Portal található kulcstartót.
 - Győződjön meg arról, hogy a kulcs URI-ja egy jelen lévő kulcsot azonosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal használatával állíthatja be az adattitkosítást az ügyfél által felügyelt kulccsal Azure Database for MySQL](howto-data-encryption-portal.md)

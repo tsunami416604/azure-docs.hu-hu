@@ -3,12 +3,11 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 67c80a76720dd544da355ee00540cd11a22bfb10
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 696da2c94a439e5efaebbd148f6e05a9e0e15f37
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247750"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -42,7 +41,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy-lrs.md) vagy a [geo redundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testVault beállításnál a GeoRedundant értékre.
+4. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy-lrs.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testVault beállításnál a GeoRedundant értékre.
 
    > [!TIP]
    > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
@@ -694,7 +693,7 @@ Az ügynök bináris fájljainak számítógépről való eltávolítása néhá
 * A rendszer eltávolítja az összes házirend-információt a gépről, de a házirend-információkat továbbra is a szolgáltatás tárolja.
 * Az összes biztonsági mentési ütemezés el lesz távolítva, és nem készül további biztonsági másolat.
 
-Az Azure-ban tárolt adatok azonban továbbra is megmaradnak, és az adatmegőrzési szabályzat beállításának megfelelően megmaradnak. A régebbi pontok automatikusan elévülnek.
+Az Azure-ban tárolt adatok azonban továbbra is megmaradnak, és a megőrzési szabályzat beállításának megfelelően megmaradnak. A régebbi pontok automatikusan elévülnek.
 
 ## <a name="remote-management"></a>Távfelügyelet
 

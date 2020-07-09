@@ -13,10 +13,9 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745724"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
@@ -61,7 +60,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a * \< your_organization>* Azure ad**-hez csatlakozik.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy az ** *\<your_organization>* Azure ad-hez kapcsolódóan**hasonló szöveg jelenik meg.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +105,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a * \< your_organization>* Azure ad**-hez csatlakozik.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy az ** *\<your_organization>* Azure ad-hez kapcsolódóan**hasonló szöveg jelenik meg.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

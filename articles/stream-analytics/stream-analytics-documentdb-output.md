@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848041"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
@@ -105,7 +104,7 @@ A Azure Cosmos DB Stream Analytics kimenetként való használata a következő 
 
 ![Azure Cosmos DB kimeneti adatfolyamhoz tartozó információs mezők](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Mező           | Leírás|
+|Mező           | Description|
 |-------------   | -------------|
 |Kimeneti alias    | Egy alias, amely a Stream Analytics lekérdezésében erre a kimenetre hivatkozik.|
 |Előfizetés    | Az Azure-előfizetés.|

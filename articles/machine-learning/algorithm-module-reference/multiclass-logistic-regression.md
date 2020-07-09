@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137773"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Többosztályos logisztikai regressziós modul
@@ -48,7 +48,7 @@ A többosztályos logisztikai regresszió esetében az osztályozó használatá
 
     A regularizációs olyan módszer, amellyel megelőzhető a rendkívül hatékony értékekkel rendelkező modellek szankcionálása. A regularizációs úgy működik, hogy a hipotézis hibája alapján együttható értékekkel társított büntetést ad hozzá. A rendkívül hatékony értékekkel rendelkező pontos modell többek között büntethető, de a kevésbé pontos, konzervatív értékekkel rendelkező modellek kevesebbet büntetik.
 
-     Az L1 és az L2 regularizációs különböző effektusokkal és felhasználással rendelkeznek. Az L1 a ritka modellekre is alkalmazható, amelyek hasznosak lehetnek a nagy dimenziós adattípusok használatakor. Ezzel szemben az L2 regularizációs a nem ritka adatértékekhez ajánlott.  Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: Ez a `x = L1` ( `y = L2`z `ax + by = c` ), ha és, meghatározza a regularizációs-kifejezések lineáris kiterjedését.
+     Az L1 és az L2 regularizációs különböző effektusokkal és felhasználással rendelkeznek. Az L1 a ritka modellekre is alkalmazható, amelyek hasznosak lehetnek a nagy dimenziós adattípusok használatakor. Ezzel szemben az L2 regularizációs a nem ritka adatértékekhez ajánlott.  Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: Ez a (z), ha `x = L1` és `y = L2` , `ax + by = c` meghatározza a regularizációs-kifejezések lineáris kiterjedését.
 
      Az L1 és a L2 kifejezések különböző lineáris kombinációit tervezték logisztikai regressziós modellekhez, például a [rugalmas háló regularizációs](https://wikipedia.org/wiki/Elastic_net_regularization).
 

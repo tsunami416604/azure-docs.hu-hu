@@ -9,10 +9,10 @@ ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
 ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158418"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Hozza létre a IoT Central Device Bridge eszközt más IoT-felhők csatlakoztatásához IoT Central

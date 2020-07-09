@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556054"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Az S1, S2 és S3 teljesítményszintek kivonása
 
 > [!IMPORTANT] 
 > A cikkben ismertetett S1, S2 és S3 szintű teljesítményszint megszűnik, és az új Azure Cosmos DB fiókok esetében már nem érhetők el.
->
 
 Ez a cikk az S1, az S2 és az S3 teljesítményszint áttekintését tartalmazza, és bemutatja, hogyan telepíthetők át az ezeket a teljesítményadatokat használó gyűjtemények egy particionált gyűjteményekbe. A cikk elolvasása után a következő kérdésekre tud válaszolni:
 
@@ -43,7 +42,7 @@ Az S1, S2 és S3 teljesítményszint nem nyújt rugalmasságot a standard Azure 
 
 Az alábbi táblázat összehasonlítja az egypartíciós gyűjtemények, a particionált gyűjtemények, valamint az S1, S2 és S3 teljesítményszint esetében elérhető átviteli sebességet és tárolási lehetőségeket. Példa az USA 2. keleti régiójára:
 
-|   |Particionált gyűjtemény|Egyetlen partíciós gyűjtemény|S1|S2|S3|
+| Kvóta neve  |Particionált gyűjtemény|Egyetlen partíciós gyűjtemény|S1|S2|S3|
 |---|---|---|---|---|---|
 |Maximális átviteli sebesség|Korlátlan|10K RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
 |Minimális átviteli sebesség|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
@@ -76,7 +75,7 @@ Ezekben az esetekben a gyűjtemény áttelepítése után testre szabhatja az á
 
 Tegyük fel, hogy 10 S1-es gyűjteményt tartalmaz, 1 GB tárterületet az USA keleti régiójában, és a 10 S1-es gyűjteményt 10 egypartíciós gyűjteménybe telepíti át a 400 RU/s (a minimális szint) értékre. A számla a következőképpen jelenik meg, ha a 10 egypartíciós gyűjteményt egy teljes hónapra vonatkozóan tartja:
 
-![Az S1 díjszabása 10 gyűjtemény esetében 10 gyűjtemény összehasonlításával egyetlen partíciós gyűjtemény díjszabása alapján](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="Az S1 díjszabása 10 gyűjtemény esetében 10 gyűjtemény összehasonlításával egyetlen partíciós gyűjtemény díjszabása alapján" border="false":::
 
 <a name="more-storage-needed"></a>
 

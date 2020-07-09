@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 4460c24bb742bff72af47954363b1051f5d9b43d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3578cda1b51dbb70b0bdfebf92b98c3fa7aa2842
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75895279"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085956"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Hibák az Azure HDInsight használatával
 

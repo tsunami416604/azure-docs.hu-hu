@@ -10,23 +10,26 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403426"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986576"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Java használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API a Java használatával ismeri fel az emberi arcokat egy képben.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
-- Bármely tetszőleges Java IDE.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Bármely tetszőleges Java IDE.
 
 ## <a name="create-the-java-project"></a>A Java-projekt létrehozása
 
@@ -43,7 +46,7 @@ Nyissa meg a projekt fő osztályát. Itt hozzá kell adnia a lemezképek betöl
 
 ### <a name="import-packages"></a>Csomagok importálása
 
-Adja hozzá a `import` következő utasításokat a fájl elejéhez.
+Adja hozzá a következő `import` utasításokat a fájl elejéhez.
 
 ```java
 // This sample uses Apache HttpComponents:
@@ -65,7 +68,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-Cserélje le a **Main** osztályt a következő kódra. Ezek az adatok határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. Azt is megteheti, hogy `imageWithFaces` az értéket olyan elérési útra szeretné beállítani, amely egy másik képfájlra mutat.
+Cserélje le a **Main** osztályt a következő kódra. Ezek az adatok határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a mezőt az `subscriptionKey` előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. Azt is megteheti, hogy az `imageWithFaces` értéket olyan elérési útra szeretné beállítani, amely egy másik képfájlra mutat.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -88,7 +91,7 @@ public class Main {
 
 ### <a name="call-the-face-detection-rest-api"></a>Arcfelismerés REST API hívása
 
-Adja hozzá a **Main** metódust a következő kóddal. Egy REST-hívást hoz létre a Face API a távoli rendszerképben lévő arc-információk észleléséhez ( `faceAttributes` ez a karakterlánc határozza meg a lekérdezni kívánt Arcfelismerés-attribútumokat). Ezután a kimeneti adatokat egy JSON-karakterláncba írja.
+Adja hozzá a **Main** metódust a következő kóddal. Egy REST-hívást hoz létre a Face API a távoli rendszerképben lévő arc-információk észleléséhez (ez a `faceAttributes` karakterlánc határozza meg a lekérdezni kívánt Arcfelismerés-attribútumokat). Ezután a kimeneti adatokat egy JSON-karakterláncba írja.
 
 ```Java
     public static void main(String[] args) {
@@ -248,7 +251,7 @@ Fordítsa le a kódot, és futtassa. A sikeres válasz a konzol ablakában könn
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy egyszerű Java-konzol alkalmazást, amely REST-hívásokat használ az Azure Face API egy rendszerképben lévő arcok észleléséhez és attribútumaik visszaküldéséhez. Következő lépésként megtudhatja, hogyan teheti ezt a funkciót egy Android-alkalmazásban.
+Ebben a rövid útmutatóban létrehozott egy egyszerű Java-konzol alkalmazást, amely REST-hívásokat használ az Azure Face API egy rendszerképben lévő arcok észleléséhez és attribútumaik visszaküldéséhez. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Android-alkalmazás létrehozása az arcok észleléséhez és keretének megjelenítéséhez](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

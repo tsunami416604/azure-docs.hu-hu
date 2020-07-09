@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488749"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
@@ -24,7 +23,7 @@ A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása el
 
 1. A Azure Machine Learning használatával [üzembe helyezheti a modellt webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. A pontozási szkriptnek tartalmaznia kell egy [minta bemeneteket és kimeneteket](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , amelyeket a Azure Machine learning használ a séma specifikációjának létrehozásához. Stream Analytics a séma segítségével értelmezi a webszolgáltatás funkciójának aláírását.
+2. A pontozási szkriptnek tartalmaznia kell egy [minta bemeneteket és kimeneteket](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , amelyeket a Azure Machine learning használ a séma specifikációjának létrehozásához. Stream Analytics a séma segítségével értelmezi a webszolgáltatás funkciójának aláírását. Ezt a minta-Felskálázási [definíciót](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) hivatkozásként használva ellenőrizheti, hogy helyesen állította-e be.
 
 3. Győződjön meg arról, hogy a webszolgáltatás elfogadja és visszaadja a JSON szerializált adatait.
 
@@ -163,7 +162,7 @@ Optimális skálázás esetén a Stream Analyticsi feladatnak több párhuzamos 
 
 Az ilyen késések elkerülése érdekében győződjön meg arról, hogy az Azure Kubernetes szolgáltatás (ak) fürtjének [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Fontos, hogy a webszolgáltatás nagy rendelkezésre állású legyen, és sikeres válaszokat ad vissza. Ha a feladat egy szolgáltatás nem érhető el választ (503) kap a webszolgáltatástól, a rendszer folyamatosan újrapróbálkozik az exponenciális visszalépéssel. Ha a sikertől (200) és a szolgáltatástól (503) nem érhető el válasz, a művelet sikertelen állapotba kerül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)
 * [Stream Analytics-feladat skálázása Azure Machine Learning Studio (klasszikus) függvénnyel](stream-analytics-scale-with-machine-learning-functions.md)

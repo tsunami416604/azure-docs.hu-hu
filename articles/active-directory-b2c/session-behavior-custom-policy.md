@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f6af5e8e1cfadd302eadfedf189a6710ac4aeca
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385263"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ A webalkalmazás-munkamenetek kezeléséhez a következő tulajdonságokat haszn
 
 A munkamenet-viselkedés és az SSO-konfigurációk módosításához adjon hozzá egy **UserJourneyBehaviors** elemet a [RelyingParty](relyingparty.md) elemen belül.  A **UserJourneyBehaviors** elemnek azonnal követnie kell a **DefaultUserJourney**. A **UserJourneyBehavors** elemnek a következő példához hasonlóan kell kinéznie:
 
-```XML
+```xml
 <UserJourneyBehaviors>
    <SingleSignOn Scope="Application" />
    <SessionExpiryType>Absolute</SessionExpiryType>
@@ -48,7 +48,7 @@ A munkamenet-viselkedés és az SSO-konfigurációk módosításához adjon hozz
 
 ### <a name="configure-the-applications"></a>Alkalmazások konfigurálása
 
-Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra (a OAuth2 és az SAML protokollok esetében egyaránt), Azure AD B2C törli a felhasználó munkamenetét a böngészőből.  Az [egyszeri kijelentkezés](session-overview.md#single-sign-out)engedélyezéséhez állítsa be `LogoutUrl` az alkalmazást a Azure Portal:
+Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra (a OAuth2 és az SAML protokollok esetében egyaránt), Azure AD B2C törli a felhasználó munkamenetét a böngészőből.  Az [egyszeri kijelentkezés](session-overview.md#single-sign-out)engedélyezéséhez állítsa be az `LogoutUrl` alkalmazást a Azure Portal:
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 1. A lap jobb felső sarkában található fiókra kattintva válassza ki a Azure AD B2C könyvtárat.
@@ -60,7 +60,7 @@ Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra
 Az egyszeri kijelentkezés támogatásához a token kiállítói technikai profiljainak mind a JWT, mind az SAML esetében meg kell adniuk a következőket:
 
 - A protokoll neve, például`<Protocol Name="OpenIdConnect" />`
-- A munkamenet technikai profiljára mutató hivatkozás, például: `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />`.
+- A munkamenet technikai profiljára mutató hivatkozás, például: `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` .
 
 Az alábbi példa a JWT és az SAML-jogkivonat kiállítóit mutatja be egyszeri kijelentkezéssel:
 
@@ -74,7 +74,7 @@ Az alábbi példa a JWT és az SAML-jogkivonat kiállítóit mutatja be egyszeri
       <Protocol Name="OpenIdConnect" />
       <OutputTokenFormat>JWT</OutputTokenFormat>
       ...    
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
     </TechnicalProfile>
 
     <!-- Session management technical profile for OIDC based tokens -->

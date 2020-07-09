@@ -1,18 +1,14 @@
 ---
 title: Előfizetések Azure Event Grid portálon keresztül
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre Event Grid-előfizetések a támogatott forrásokhoz, például az Azure Blob Storagehoz a Azure Portal használatával.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393181"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119990"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Előfizetés az eseményekre a portálon keresztül
 
@@ -64,7 +60,7 @@ Néhány eseményforrás támogatja az esemény-előfizetések létrehozását a
 
 A portálon megtekintheti az adott forráshoz kapcsolódó esemény-előfizetések létrehozásának lehetőségeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

@@ -7,12 +7,11 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213091"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -138,7 +137,7 @@ Először regisztrálnia kell egy Azure-előfizetésre. Az Azure-előfizetésre 
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Elérhető néhány kész minta a kezdő kezdéshez?
 
-Az SQL API [.net](sql-api-dotnet-samples.md), a [Java](https://github.com/Azure/azure-documentdb-java), a [Node. js](sql-api-nodejs-samples.md)és a [Python](sql-api-python-samples.md) SDK minták a githubon érhetők el.
+Az SQL API [.net](sql-api-dotnet-samples.md)-, [Java](https://github.com/Azure/azure-documentdb-java)-, [Node.js](sql-api-nodejs-samples.md)-és [Python](sql-api-python-samples.md) SDK-minták a githubon érhetők el.
 
 ### <a name="does-the-sql-api-database-support-schema-free-data"></a>Támogatja az SQL API-adatbázis a séma nélküli adatgyűjtést?
 
@@ -152,7 +151,7 @@ Igen, az SQL API támogatja a JavaScript által tárolt eljárásként és esem�
 
 A tároló dokumentumok egy csoportja és a hozzájuk társított JavaScript-alkalmazás logikája. A tároló számlázható entitás, ahol a [költségeket](performance-levels.md) az átviteli sebesség és a felhasznált tárterület határozza meg. A tárolók egy vagy több partíciót vagy kiszolgálót is kiterjedhetnek, és méretezhetők a gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére.
 
-* Az SQL API-hoz egy tároló képezi le a tárolót.
+* Az SQL API esetében az erőforrás neve tároló.
 * A MongoDB-fiókok Cosmos DB API-ját egy tároló képezi le egy gyűjteményhez.
 * A Cassandra és a Table API fiókok esetében egy tároló képezi le a táblát.
 * A Gremlin API-fiókok esetében a tároló egy gráfhoz rendeli a diagramot.

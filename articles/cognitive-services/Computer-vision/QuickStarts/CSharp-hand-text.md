@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0904f8689019e57ff830265dfe50007f0aaa75b4
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171735"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987530"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision 3,0 REST API és C használatával #
 
@@ -27,11 +27,12 @@ Ebben a rövid útmutatóban a Computer Vision REST API használatával Kinyeri 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
-
-- A [Visual Studio 2015-es vagy újabb verziójával](https://visualstudio.microsoft.com/downloads/)kell rendelkeznie.
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. 
-- [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a szolgáltatás végponti karakterláncához, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* A [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziójával kell rendelkeznie
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -403,7 +404,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 
 Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fedezzen fel egy alapszintű Windows-alkalmazást, amely Computer Visiont használ az optikai karakterfelismerés (OCR) végrehajtásához. Intelligens vágású miniatűrök létrehozása; Emellett vizuális funkciók (például arcok) észlelése, kategorizálása, címkézése és leírása a képen.
 

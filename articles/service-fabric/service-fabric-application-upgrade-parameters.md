@@ -4,10 +4,9 @@ description: A Service Fabric alkalmazás frissítésével kapcsolatos paraméte
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377973"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
@@ -33,7 +32,7 @@ A Visual Studio Service Fabric az alkalmazás frissítési paramétereit a Visua
 ### <a name="required-parameters"></a>Szükséges paraméterek
 (PS = PowerShell, VS = Visual Studio)
 
-| Paraméter | Érvényesség | Leírás |
+| Paraméter | Érvényesség | Description |
 | --- | --- | --- |
 ApplicationName |PS| A frissítendő alkalmazás neve. Példák: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|Annak az alkalmazásnak a verziója, amelyet a frissítési célok határoznak meg. |
@@ -45,10 +44,10 @@ UnmonitoredManual | PS | Azt jelzi, hogy a frissítési mód a nem figyelt manu�
 
 ### <a name="optional-parameters"></a>Választható paraméterek
 
-Az állapot-értékelési paraméterek megadása nem kötelező. Ha az állapot-értékelési feltételek nincsenek megadva a frissítés indításakor, Service Fabric az alkalmazás-példány ApplicationManifest. XML fájljában megadott alkalmazás-állapot házirendeket használja.
+Az állapot-értékelési paraméterek megadása nem kötelező. Ha az állapot-értékelési feltételek nem lettek megadva a frissítés indításakor, Service Fabric az alkalmazás példányának ApplicationManifest.xml megadott alkalmazás-állapot házirendjét használja.
 
 > [!div class="mx-tdBreakAll"]
-> | Paraméter | Érvényesség | Leírás |
+> | Paraméter | Érvényesség | Description |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Megadja az alkalmazás paramétereinek felülbírálásait.<br>A PowerShell-alkalmazás paraméterei szórótábla név/érték párokként vannak megadva. Például: @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>A Visual Studio alkalmazás paramétereinek megadhatók az **alkalmazás-paraméterek fájl** mezőjében a közzététel Service Fabric alkalmazásban párbeszédpanelen.
 > | Jóváhagyás |PS| Az engedélyezett értékek értéke **igaz** és **hamis**. A parancsmag futtatása előtt megerősítést kér. |
@@ -80,7 +79,7 @@ Service Fabric az alkalmazások frissítése a Service Fabric parancssori felül
 
 | Paraméter | Leírás |
 | --- | --- |
-| alkalmazás-azonosító  |A frissítendő alkalmazás azonosítója. <br> Ez általában az alkalmazás teljes neve a "Fabric:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric:/SajátPr/App1", az alkalmazás identitása a korábbi verziókban a következő\~: "SajátPr App1", 6.0 + és "SajátPr/App1".|
+| alkalmazás-azonosító  |A frissítendő alkalmazás azonosítója. <br> Ez általában az alkalmazás teljes neve a "Fabric:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric:/SajátPr/App1", az alkalmazás identitása a korábbi verziókban a következő: "SajátPr \~ App1", 6.0 + és "SajátPr/App1".|
 alkalmazás verziója |Annak az alkalmazásnak a verziója, amelyet a frissítési célok határoznak meg.|
 paraméterek  |Az alkalmazás frissítésekor alkalmazandó felülbírálások JSON-kódolású listája.|
 

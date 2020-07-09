@@ -3,17 +3,16 @@ title: Biztonsági vezérlők
 description: A Azure SQL Database értékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
 services: sql-database
 author: msmbaldwin
-manager: rkalrin
+manager: rkarlin
 ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 09045e01ad4d40ab770dd6203f2dd4b299317a55
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668423"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági vezérlői
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +25,7 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaiba beépí
 
 ## <a name="network"></a>Network (Hálózat)
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
 | Szolgáltatás végpontjának támogatása| Yes | Csak [SQL Databasere](../index.yml) vonatkozik. |
 | Azure Virtual Network injekciós támogatás| Yes | Csak az [SQL felügyelt példányára](../managed-instance/sql-managed-instance-paas-overview.md) vonatkozik. |
@@ -35,7 +34,7 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaiba beépí
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Azure monitoring-támogatás, például Log Analytics vagy Application Insights| Yes | A SecureSphere, a inperverztől származó SIEM-megoldás az [Azure Event Hubs](../event-hubs/../index.yml) -integráción keresztül is támogatott az [SQL-naplózással](../../azure-sql/database/auditing-overview.md). |
 | Vezérlés – sík és felügyelet – a sík naplózása és naplózása| Yes | Igen, csak néhány eseménynél |
@@ -43,14 +42,14 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaiba beépí
 
 ## <a name="identity"></a>Identitás
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Hitelesítés| Yes | Azure Active Directory (Azure AD) |
-| Engedélyezés| Yes | Nincs |
+| Engedélyezés| Yes | None |
 
 ## <a name="data-protection"></a>Adatvédelem
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Yes | A "titkosítás használaton kívül" kifejezést a [Always encrypted](always-encrypted-certificate-store-configure.md)című cikkben leírtak szerint kell elnevezni. A kiszolgálóoldali titkosítás [transzparens adattitkosítást](transparent-data-encryption-tde-overview.md)használ.|
 | Titkosítás az átvitel során:<ul><li>Azure ExpressRoute-titkosítás</li><li>Titkosítás egy virtuális hálózaton</li><li>Titkosítás a virtuális hálózatok között</ul>| Yes | HTTPS használatával. |
@@ -60,18 +59,18 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaiba beépí
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
-| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| No  | Nincs |
+| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| No  | None |
 
 ## <a name="additional-security-controls-for-sql-database"></a>További biztonsági vezérlők SQL Database
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Megelőző: sebezhetőségi felmérés | Yes | Lásd az [SQL sebezhetőség-felmérési szolgáltatás segítséget nyújt az adatbázis-biztonsági rések azonosításához](sql-vulnerability-assessment.md). |
 | Megelőző: adatfelderítés és besorolás  | Yes | Lásd: [Azure SQL Database és SQL Data Warehouse az adatfelderítés & besorolása](data-discovery-and-classification-overview.md). |
 | Észlelés: fenyegetések észlelése | Yes | Lásd: [a Azure SQL Database összetett veszélyforrások elleni védelme](threat-detection-overview.md). |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).

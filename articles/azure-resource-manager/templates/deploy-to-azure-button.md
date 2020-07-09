@@ -4,10 +4,10 @@ description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe h
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744090"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával

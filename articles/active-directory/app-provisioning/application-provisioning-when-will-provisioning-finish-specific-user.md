@@ -2,21 +2,20 @@
 title: Annak megállapítása, hogy egy adott felhasználó tud-e hozzáférni egy alkalmazáshoz
 description: Annak megállapítása, hogy egy kritikus fontosságú felhasználó hozzáférhet-e az Azure AD-vel való felhasználói üzembe helyezéshez konfigurált alkalmazáshoz
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782024"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -35,7 +34,7 @@ Amikor először konfigurálja az automatikus kiosztást, az oldal alján talál
 
 A létesítési ciklus befejezése után a **statisztikák a mai napig** szakasz megjeleníti a dátummal kiépített felhasználók és csoportok összesített számát, valamint az utolsó ciklus befejezési dátumát és időtartamát. A **tevékenység azonosítója** egyedileg azonosítja a legutóbbi kiépítési ciklust. A **feladathoz tartozó azonosító** a kiépítési feladathoz tartozó egyedi azonosító, és a bérlőn lévő alkalmazásra vonatkozik.
 
-A kiépítési folyamat megtekinthető a Azure Portal ** &gt; Azure Active Directory vállalati &gt; \[alkalmazások alkalmazás\] &gt; neve kiépítés** lapján.
+A kiépítési folyamat megtekinthető a Azure Portal **Azure Active Directory &gt; vállalati alkalmazások &gt; \[ alkalmazás neve \] &gt; kiépítés** lapján.
 
 ![Kiépítés oldal folyamatjelző sáv](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -43,7 +42,7 @@ A kiépítési folyamat megtekinthető a Azure Portal ** &gt; Azure Active Direc
 
 A kiválasztott felhasználó kiépítési állapotának megtekintéséhez tekintse meg az Azure AD-beli [kiépítési naplókat (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) . A felhasználói kiépítési szolgáltatás által futtatott összes műveletet az Azure AD-létesítési naplók rögzítik. Ebbe beletartozik a forrás-és a megcélzott rendszerek összes írási és olvasási művelete, valamint az egyes műveletek során olvasott vagy írt felhasználói adatok.
 
-A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+A Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** **Activity** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 A kiépítési naplók rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve a következőket:
 

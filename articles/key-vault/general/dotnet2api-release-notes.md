@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431916"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – kibocsátási megjegyzések és áttelepítési útmutató
@@ -49,12 +49,12 @@ Key Vault tanúsítványok kezelik a x509-tanúsítványokat, és a következő 
 
 * A *titkos* kód a *SecretBundle* módosult
 * A *szótár* *IDictionary* módosult
-* *A\<t> listázása, a sztring []* *\<IList T* -re változott>
+* *List \<T> , string []* módosította *IList \<T> *
 * A *NextList* *NextPageLink* módosult
 
 ## <a name="return-types"></a>Visszatérési típusok
 
-* A **Feladatlista** és a **SecretList** mostantól *IPage\<T>* ad vissza a *ListKeysResponseMessage* helyett.
+* A **Feladatlista** és a **SecretList** mostantól *IPage \<T> * ad vissza a *ListKeysResponseMessage* helyett.
 * A generált **BackupKeyAsync** most visszaadja a *BackupKeyResult*, amely tartalmazza az *értéket* (biztonsági másolati blob). Korábban a metódus burkolta, és csak az értéket adta vissza.
 
 ## <a name="exceptions"></a>Kivételek

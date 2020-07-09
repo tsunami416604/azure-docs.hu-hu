@@ -7,17 +7,17 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 05/31/2019
+ms.topic: conceptual
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 626bc12b01428b90de1cbafe28bd7493e7ed1743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356644"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrálás az összevonásból a Azure Active Directory áteresztő hitelesítésre
 
@@ -25,6 +25,9 @@ Ez a cikk azt ismerteti, hogyan helyezheti át szervezeti tartományait Active D
 
 > [!NOTE]
 > A hitelesítési módszer megváltoztatásához tervezési, tesztelési és lehetséges állásidő szükséges. Az [előkészített](how-to-connect-staged-rollout.md) bevezetéssel az áteresztő hitelesítéssel alternatív módszerekkel lehet tesztelni és fokozatosan áttérni az összevonás és a felhő közötti hitelesítésre.
+> 
+> Ha lépcsőzetes bevezetést használ, ne feledje, hogy kikapcsolja a szakaszos bevezetési funkciókat, miután befejezte a kivágást.  További információ: [Migrálás felhőalapú hitelesítésre szakaszos bevezetés használatával](how-to-connect-staged-rollout.md)
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Az átmenő hitelesítésre való Migrálás előfeltételei
 
@@ -97,7 +100,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 Ellenőrizze, hogy vannak-e testreszabott beállítások az összevonási tervezési és telepítési dokumentációhoz. Pontosabban keresse meg a testreszabásokat a **PreferredAuthenticationProtocol**, a **SupportsMfa**és a **PromptLoginBehavior**.
 
-További információval a következő cikkek szolgálnak:
+További információért lásd a következő cikkeket:
 
 * [AD FS prompt = bejelentkezési paraméter támogatása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
@@ -128,7 +131,7 @@ Az összevont identitásról a felügyelt identitásra való áttérés előtt t
 | Ha a(z) | Majd |
 |-|-|
 | A AD FS használatát tervezi más alkalmazásokkal (az Azure AD és az Office 365 kivételével). | A tartományok konvertálása után AD FS és Azure AD-t is használhat. Vegye figyelembe a felhasználói élményt. Bizonyos esetekben előfordulhat, hogy a felhasználóknak kétszer kell hitelesíteniük magukat: egyszer az Azure AD-be (ahol a felhasználó SSO-hozzáférést kap más alkalmazásokhoz, például az Office 365-hoz), és újra minden olyan alkalmazáshoz, amely továbbra is a függő entitás megbízhatóságának AD FS kötődik. |
-| A AD FS-példánya nagymértékben testre szabható, és az OnLoad. js fájlban megadott testreszabási beállításokra támaszkodik (például ha megváltoztatta a bejelentkezési folyamatot, hogy a felhasználók csak az egyszerű felhasználónév (UPN) helyett a **sAMAccountName** használják a felhasználónevet, vagy ha a szervezete nagymértékben kihasználta a bejelentkezési élményt). Az OnLoad. js fájl nem duplikálható az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD megfelel-e az aktuális testreszabási követelményeknek. További információért és útmutatásért tekintse meg a AD FS branding és a AD FS testreszabása című szakaszt.|
+| A AD FS-példánya nagymértékben testre szabható, és a onload.js fájl adott testreszabási beállításaira támaszkodik (például ha megváltoztatta a bejelentkezési folyamatot, hogy a felhasználók csak az egyszerű felhasználónév (UPN) helyett a **sAMAccountName** használják a felhasználónevet, vagy ha a szervezete jelentősen kihasználta a bejelentkezési élményt). Az onload.js fájlt nem lehet duplikálni az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD megfelel-e az aktuális testreszabási követelményeknek. További információért és útmutatásért tekintse meg a AD FS branding és a AD FS testreszabása című szakaszt.|
 | AD FS használatával blokkolhatja a hitelesítési ügyfelek korábbi verzióit.| A [feltételes hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) és az [Exchange Online ügyfél-hozzáférési szabályok](https://aka.ms/EXOCAR)együttes használatával vegye figyelembe a hitelesítési ügyfelek korábbi verzióit letiltó AD FS vezérlőket. |
 | A felhasználóknak a többtényezős hitelesítést kell végrehajtaniuk a helyszíni multi-Factor Authentication kiszolgálói megoldáson, amikor a felhasználók hitelesítik AD FS.| Felügyelt identitási tartományban a többtényezős hitelesítési kihívás a helyszíni multi-Factor Authentication megoldáson keresztül nem szúrható be a hitelesítési folyamatba. A tartomány átalakítása után azonban használhatja az Azure Multi-Factor Authentication szolgáltatást a többtényezős hitelesítéshez.<br /><br /> Ha a felhasználók jelenleg nem használják az Azure Multi-Factor Authentication-t, egy egyszeri bejelentkezést igénylő felhasználói regisztrációs lépést kell megadnia. Elő kell készítenie és továbbítania kell a tervezett regisztrációt a felhasználók számára. |
 | Jelenleg a AD FS hozzáférés-vezérlési házirendjeit (AuthZ-szabályok) használja az Office 365 elérésének szabályozásához.| Érdemes lehet a szabályzatokat az egyenértékű Azure AD [feltételes hozzáférési szabályzatokkal](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) és az [Exchange Online ügyfél-hozzáférési szabályokkal](https://aka.ms/EXOCAR)helyettesíteni.|
@@ -153,7 +156,7 @@ Amikor csatlakoztat egy eszközt az Azure AD-hoz, létrehozhat feltételes hozz�
 
 Annak biztosítása érdekében, hogy a hibrid csatlakoztatások továbbra is működjenek a tartományhoz csatlakoztatott összes eszközön, miután a tartományok áteresztő hitelesítésre lettek konvertálva Windows 10-es ügyfelek esetén, a Azure AD Connect használatával kell szinkronizálnia Active Directory számítógépfiókokat az Azure AD-be.
 
-A Windows 8 és a Windows 7 rendszerű számítógépfiókok esetében a hibrid illesztés zökkenőmentes egyszeri bejelentkezést használ a számítógép Azure AD-ben való regisztrálásához. A Windows 8 és a Windows 7 rendszerű számítógépek fiókjait nem kell szinkronizálnia, mint a Windows 10-es eszközökhöz. Azonban a frissített workplacejoin. exe fájlt (. msi fájlon keresztül) telepítenie kell a Windows 8 és a Windows 7 rendszerű ügyfelekre, így a zökkenőmentes SSO használatával regisztrálhatják magukat. [Töltse le az. msi fájlt](https://www.microsoft.com/download/details.aspx?id=53554).
+A Windows 8 és a Windows 7 rendszerű számítógépfiókok esetében a hibrid illesztés zökkenőmentes egyszeri bejelentkezést használ a számítógép Azure AD-ben való regisztrálásához. A Windows 8 és a Windows 7 rendszerű számítógépek fiókjait nem kell szinkronizálnia, mint a Windows 10-es eszközökhöz. A Windows 8 és a Windows 7 rendszerű ügyfelek esetében azonban frissítenie kell egy frissített workplacejoin.exe-fájlt (. msi-fájlon keresztül), hogy a zökkenőmentes SSO használatával regisztrálja magukat. [Töltse le az. msi fájlt](https://www.microsoft.com/download/details.aspx?id=53554).
 
 További információ: [hibrid Azure ad-hez csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
@@ -223,7 +226,7 @@ Megtervezte a megoldást. Most már elvégezheti a megvalósítást. A megvalós
 
 Ahhoz, hogy az eszközök zökkenőmentes egyszeri bejelentkezést használjanak, hozzá kell adnia egy Azure AD-URL-címet a felhasználók intranetes zónájának beállításaihoz egy Active Directory csoportházirend használatával.
 
-Alapértelmezés szerint a böngészők automatikusan kiszámítják a megfelelő zónát (Internet vagy intranet) egy URL-címről. Például **http\/\/: contoso/** maps to the intranet zóna és **\/\/http: intranet.contoso.com** maps to the Internet Zone (mivel az URL-cím egy pontot tartalmaz). A böngészők Kerberos-jegyeket küldenek egy Felhőbeli végpontra (például az Azure AD URL-címére), ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
+Alapértelmezés szerint a böngészők automatikusan kiszámítják a megfelelő zónát (Internet vagy intranet) egy URL-címről. Például **http: \/ \/ contoso/** maps to the intranet zóna és **http: \/ \/ intranet.contoso.com** maps to the Internet Zone (mivel az URL-cím egy pontot tartalmaz). A böngészők Kerberos-jegyeket küldenek egy Felhőbeli végpontra (például az Azure AD URL-címére), ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
 
 Végezze [el az](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) eszközök szükséges módosításainak lépéseit.
 
@@ -269,7 +272,7 @@ Először módosítsa a bejelentkezési módszert:
 
 Tovább gombra. További hitelesítési módszerek üzembe helyezése:
 
-1. A Azure Portal lépjen a **Azure Active Directory** > **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
+1. A Azure Portal lépjen a **Azure Active Directory**  >  **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
 2. Az **átmenő hitelesítés** lapon kattintson a **Letöltés** gombra.
 3. Az **ügynök letöltése** lapon válassza a **feltételek elfogadása és a letöltés**lehetőséget.
 
@@ -331,7 +334,7 @@ Először engedélyezze az átmenő hitelesítést:
 
 Következő lépésként telepítsen további hitelesítési ügynököket:
 
-1. A Azure Portal lépjen a **Azure Active Directory** > **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
+1. A Azure Portal lépjen a **Azure Active Directory**  >  **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
 2. Az **átmenő hitelesítés** lapon kattintson a **Letöltés** gombra. 
 3. Az **ügynök letöltése** lapon válassza a **feltételek elfogadása és a letöltés**lehetőséget.
  
@@ -359,7 +362,7 @@ Fejezze be az átalakítást az Azure AD PowerShell-modul használatával:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Az Azure ad-portálon válassza a **Azure Active Directory** > **Azure ad Connect**lehetőséget.
+3. Az Azure ad-portálon válassza a **Azure Active Directory**  >  **Azure ad Connect**lehetőséget.
 4. Az összes összevont tartomány konvertálása után ellenőrizze ezeket a beállításokat:
    * Az **összevonás** **Letiltva**értékre van állítva.
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
@@ -378,7 +381,7 @@ Ha a bérlő összevont identitást használt, a rendszer átirányítja a felha
 Az átmenő hitelesítés tesztelése:
 
 1. Nyissa meg az Internet Explorert InPrivate módban, hogy a zökkenőmentes SSO ne jelentkezzen be automatikusan.
-2. Nyissa meg az Office 365 bejelentkezési oldalát ([https://portal.office.com](https://portal.office.com/)).
+2. Nyissa meg az Office 365 bejelentkezési oldalát ( [https://portal.office.com](https://portal.office.com/) ).
 3. Adjon meg egy felhasználói UPN-t, majd kattintson a **tovább**gombra. Győződjön meg arról, hogy megadta a helyszíni Active Directory-példányról szinkronizált hibrid felhasználó egyszerű felhasználónevét, és korábban összevont hitelesítést használt. Ekkor megjelenik a Felhasználónév és a jelszó megadására szolgáló lap:
 
    ![Képernyőkép, amely megjeleníti a bejelentkezési oldalt, amelyben beírja a felhasználónevet](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
@@ -396,8 +399,8 @@ A zökkenőmentes egyszeri bejelentkezés tesztelése:
 1. Jelentkezzen be egy olyan tartományhoz csatlakoztatott gépre, amely a vállalati hálózathoz csatlakozik.
 2. Az Internet Explorerben vagy a Chrome-ban nyissa meg a következő URL-címek egyikét (a "contoso" kifejezést cserélje le a tartományra):
 
-   * https:\/\/MyApps.microsoft.com/contoso.com
-   * https:\/\/MyApps.microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/ MyApps.microsoft.com/contoso.com
+   * https: \/ \/ MyApps.microsoft.com/contoso.onmicrosoft.com
 
    A rendszer röviden átirányítja a felhasználót az Azure AD bejelentkezési oldalára, amely megjeleníti a "kísérlet a bejelentkezésre" üzenetet. A felhasználó nem kér felhasználónevet vagy jelszót.<br />
 

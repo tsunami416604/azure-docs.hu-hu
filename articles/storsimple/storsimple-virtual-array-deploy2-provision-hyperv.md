@@ -16,10 +16,9 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79267533"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple virtuális tömb üzembe helyezése – létesítés a Hyper-V-ben
@@ -163,7 +162,7 @@ A következő lépések végrehajtásával indítsa el a virtuális tömböt, é
 2. Amikor az eszköz már fut, jelölje ki, kattintson rá a jobb gombbal, és válassza a **Csatlakozás** lehetőséget.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Előfordulhat, hogy várnia kell 5-10 percet, amíg az eszköz készen áll. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Nyomja `Ctrl + Alt + Delete` meg a gombot a virtuális tömbbe való bejelentkezéshez. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
+3. Előfordulhat, hogy várnia kell 5-10 percet, amíg az eszköz készen áll. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. Nyomja meg a gombot `Ctrl + Alt + Delete` a virtuális tömbbe való bejelentkezéshez. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.

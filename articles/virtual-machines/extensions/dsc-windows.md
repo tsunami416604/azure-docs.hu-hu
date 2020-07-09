@@ -14,11 +14,10 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689486"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-bővítmény
 
@@ -97,34 +96,34 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | dátum |
 | közzétevő | Microsoft. PowerShell. DSC | sztring |
-| type | DSC | sztring |
+| típus | DSC | sztring |
 | typeHandlerVersion | 2,77 | int |
 
 ### <a name="settings-property-values"></a>Beállítások tulajdonság értékei
 
-| Name (Név) | Adattípus | Leírás
+| Name | Adattípus | Description
 | ---- | ---- | ---- |
 | Settings. wmfVersion | sztring | Meghatározza a Windows felügyeleti keretrendszer azon verzióját, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot "Latest" értékre állítja, a rendszer a WMF legújabb verzióját telepíti. Ennek a tulajdonságnak csak az aktuális lehetséges értékei: "4,0", "5,0" és "Latest". Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a "Latest". |
-| Settings. Configuration. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció zip-fájlját. Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, a Protectedsettingsfromkeyvault. configurationUrlSasToken tulajdonságot az SAS-jogkivonat értékére kell állítania. Ezt a tulajdonságot kötelező megadni, ha a Settings. Configuration. script és/vagy Settings. Configuration. Function definiálva van.
-| Settings. Configuration. script | sztring | A DSC-konfiguráció definícióját tartalmazó parancsfájl fájlnevét adja meg. A szkriptnek a Configuration. URL tulajdonság által megadott URL-címről letöltött zip-fájl gyökérkönyvtárában kell lennie. Ezt a tulajdonságot kötelező megadni, ha a Settings. Configuration. URL és/vagy Settings. Configuration. script definiálva van.
-| Settings. Configuration. Function | sztring | Megadja a DSC-konfiguráció nevét. A nevű konfigurációnak szerepelnie kell a Configuration. script által meghatározott parancsfájlban. Ezt a tulajdonságot kötelező megadni, ha a Settings. Configuration. URL és/vagy Settings. Configuration. Function definiálva van.
-| Settings. configurationArguments | Gyűjtemény | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság nem lesz titkosítva.
-| Settings. configurationData. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció bemenetként használandó konfigurációs adatait (. pds1). Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, a Protectedsettingsfromkeyvault. configurationDataUrlSasToken tulajdonságot az SAS-jogkivonat értékére kell állítania.
+| settings.configszülő. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció zip-fájlját. Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, akkor a protectedSettings.configurationUrlSasToken tulajdonságot az SAS-token értékére kell állítania. Ez a tulajdonság akkor szükséges, ha settings.configszülő. script és/vagy settings.configszülő. Function van definiálva.
+| settings.configszülő. script | sztring | A DSC-konfiguráció definícióját tartalmazó parancsfájl fájlnevét adja meg. A szkriptnek a Configuration. URL tulajdonság által megadott URL-címről letöltött zip-fájl gyökérkönyvtárában kell lennie. Ez a tulajdonság akkor szükséges, ha settings.configszülő. URL-cím és/vagy settings.configszülő. script van definiálva.
+| settings.configszülő. Function | sztring | Megadja a DSC-konfiguráció nevét. A nevű konfigurációnak szerepelnie kell a Configuration. script által meghatározott parancsfájlban. Ez a tulajdonság akkor szükséges, ha settings.configszülő. URL és/vagy settings.configszülő. Function van definiálva.
+| settings.configurationArguments | Gyűjtemény | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság nem lesz titkosítva.
+| settings.configurationData. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció bemenetként használandó konfigurációs adatait (. pds1). Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, akkor a protectedSettings.configurationDataUrlSasToken tulajdonságot az SAS-token értékére kell állítania.
 | Settings. privacy. dataEnabled | sztring | Engedélyezheti vagy letilthatja a telemetria-gyűjteményt. A tulajdonság egyetlen lehetséges értéke az "Enable", a "Disable", a "vagy a $null. Ha a tulajdonságot üresen hagyja, vagy NULL értékűre, akkor a telemetria engedélyezi
-| Settings. advancedOptions. forcePullAndApply | Logikai | Ezzel a beállítással növelhető a bővítmények használatának a kiterjesztése a Azure Automation DSC-vel rendelkező csomópontok regisztrálásához.  Ha az érték `$true`, a bővítmény a sikeres vagy sikertelen visszatérés előtt megvárja a konfiguráció első futtatását a szolgáltatásból.  Ha az érték $falsere van állítva, akkor a bővítmény által visszaadott állapot csak azt jelzi, hogy a csomópont regisztrálva lett-e a Azure Automation állapot-konfigurációban, és a csomópont-konfiguráció nem lesz futtatva a regisztráció során.
+| Settings. advancedOptions. forcePullAndApply | Logikai | Ezzel a beállítással növelhető a bővítmények használatának a kiterjesztése a Azure Automation DSC-vel rendelkező csomópontok regisztrálásához.  Ha az érték `$true` , a bővítmény a sikeres vagy sikertelen visszatérés előtt megvárja a konfiguráció első futtatását a szolgáltatásból.  Ha az érték $falsere van állítva, akkor a bővítmény által visszaadott állapot csak azt jelzi, hogy a csomópont regisztrálva lett-e a Azure Automation állapot-konfigurációban, és a csomópont-konfiguráció nem lesz futtatva a regisztráció során.
 | Settings. advancedOptions. downloadMappings | Gyűjtemény | Alternatív helyszínek meghatározása a függőségek, például a WMF és a .NET letöltéséhez
 
 ### <a name="protected-settings-property-values"></a>Védett beállítások tulajdonságértékek
 
-| Name (Név) | Adattípus | Leírás
+| Name | Adattípus | Description
 | ---- | ---- | ---- |
-| Protectedsettingsfromkeyvault. configurationArguments | sztring | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság titkosítva lesz. |
-| Protectedsettingsfromkeyvault. configurationUrlSasToken | sztring | Meghatározza a Configuration. URL által definiált URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |
-| Protectedsettingsfromkeyvault. configurationDataUrlSasToken | sztring | Megadja az configurationData. URL által meghatározott URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |
+| protectedSettings.configurationArguments | sztring | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság titkosítva lesz. |
+| protectedSettings.configurationUrlSasToken | sztring | Meghatározza a Configuration. URL által definiált URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |
+| protectedSettings.configurationDataUrlSasToken | sztring | Megadja az configurationData. URL által meghatározott URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
@@ -161,7 +160,7 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és jelentéseik
 
-| Hibakód | Jelentés | Lehetséges művelet |
+| Hibakód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
 | 1000 | Általános hiba | Az ehhez a hibához tartozó üzenetet a bővítmények naplófájljaiban megadott kivétel jeleníti meg |
 | 52 | Bővítmény telepítési hibája | A hiba üzenetét a megadott kivétel ismerteti |

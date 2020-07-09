@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81263343"
 ---
 Az alábbiakban az általánosan elérhető főbb korlátokat összegzi.
@@ -37,7 +37,7 @@ Az S1 és az S2 SKU beáramlási aránya és kapacitása rugalmasságot biztosí
 
 Az S2 SKU-környezetek havonta több eseményt támogatnak, és lényegesen magasabb beáramlási kapacitással rendelkeznek.
 
-| SKU  | Események száma havonta  | Események száma percenként | Esemény mérete percenként  |
+| Termékváltozat  | Események száma havonta  | Események száma percenként | Esemény mérete percenként  |
 |---------|---------|---------|---------|---------|
 | S1     |   30 000 000   |  720    |  720 KB   |
  |S2     |   300 000 000   | 7 200   | 7 200 KB  |
@@ -46,7 +46,7 @@ Az S2 SKU-környezetek havonta több eseményt támogatnak, és lényegesen maga
 
 A GA-tulajdonságok korlátai a kiválasztott SKU-környezettől függenek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyek megtekinthetők a [Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
-| SKU | Maximális tulajdonságok |
+| Termékváltozat | Maximális tulajdonságok |
 | --- | --- |
 | S1 | 600 tulajdonságok (oszlopok) |
 | S2 | 800 tulajdonságok (oszlopok) |

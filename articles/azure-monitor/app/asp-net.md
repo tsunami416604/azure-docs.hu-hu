@@ -3,12 +3,12 @@ title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: aa4449a0229ba156dbeed37c10ed21f8b1b5f201
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7dd60be0a3f2ee7e1a0d306fa007bed166746115
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886835"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -54,7 +54,7 @@ Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának 
 
  A telemetria az [Azure Portalra](https://portal.azure.com) lesz küldve a hibakeresés során és az alkalmazás közzététele után is.
 > [!NOTE]
-> Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](../../azure-monitor/app/monitor-performance-live-website-now.md).
+> Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](../../azure-monitor/app/status-monitor-v2-overview.md).
 
 ## <a name="step-2-run-your-app"></a><a name="run"></a> 2. lépés: Az alkalmazás futtatása
 Futtassa az alkalmazást az F5 billentyűvel. Nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.

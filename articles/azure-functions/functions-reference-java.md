@@ -3,12 +3,12 @@ title: Java fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648232"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057602"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 A jelen archetípus használatának megkezdéséhez tekintse meg a [Java](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)rövid útmutatóját. 
 
-## <a name="create-kotlin-functions-preview"></a>Kotlin függvények létrehozása (előzetes verzió)
-
-Van egy Maven archetípusa is a Kotlin függvények létrehozásához. A jelenleg előzetes verzióban elérhető archetípus a következő _GroupID_van közzétéve:_artifactId_: [com. microsoft. Azure: Azure-functions-Kotlin-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
-
-Az alábbi parancs egy új Java-függvény projektet hoz létre a következő archetípus használatával:
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-A jelen archetípus használatának megkezdéséhez tekintse meg a [Kotlin](functions-create-first-kotlin-maven.md)rövid útmutatóját.
-
 ## <a name="folder-structure"></a>Mappa szerkezete
 
 Itt látható egy Azure Functions Java-projekthez tartozó mappa szerkezete:
@@ -90,9 +76,7 @@ FunctionsProject
  | - pom.xml
 ```
 
-_* A Kotlin-projekt nagyon hasonlónak tűnik, mivel még Maven_
-
-A Function alkalmazást a Shared [Host. JSON](functions-host-json.md) fájl használatával konfigurálhatja. Mindegyik függvényhez saját kódlap (. Java) és kötési konfigurációs fájl (function. JSON) tartozik.
+A Function alkalmazás konfigurálásához használhat megosztott [host.jsa](functions-host-json.md) fájlon. Mindegyik függvényhez tartozik egy saját kódlap (. Java) és egy kötési konfigurációs fájl (function.js).
 
 Egy projektben több függvény is elhelyezhető. Kerülje a függvények különálló tégelybe való elhelyezését. A `FunctionApp` cél könyvtárban az Azure-beli Function alkalmazás üzembe helyezése történik.
 
@@ -103,7 +87,7 @@ Egy projektben több függvény is elhelyezhető. Kerülje a függvények külö
 Használja a [com. microsoft. Azure. functions. Megjegyzés. *](/java/api/com.microsoft.azure.functions.annotation) csomagban található Java-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez. További információ: [Java-referenciák dokumentációja](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Konfigurálnia kell egy Azure Storage-fiókot a [Local. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) fájlban az Azure Blob Storage, az Azure üzenetsor-tároló vagy az Azure Table Storage-eseményindítók helyi futtatásához.
+> Az Azure Blob Storage, az Azure üzenetsor-tároló vagy az Azure Table Storage-eseményindítók helyi futtatásához konfigurálnia kell egy Azure Storage-fiókot a [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) .
 
 Példa:
 
@@ -203,7 +187,7 @@ A bemeneti adatok POJO alakításához az [Azure-functions-Java-Worker](https://
 
 ### <a name="binary-data"></a>Bináris adatok
 
-A bináris bemenetek és kimenetek kötése a `byte[]` `dataType` következőhöz `binary` :
+A bináris bemenetek és kimenetek összekötése a `byte[]` `dataType` function.jskövetkezőhöz `binary` :
 
 ```java
    @FunctionName("BlobTrigger")
@@ -391,7 +375,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 
 ## <a name="execution-context"></a>Végrehajtási környezet
 
-`ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz.
+`ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 
 ### <a name="logger"></a>Tuskózó
 

@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258002"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040452"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
-Ahhoz, hogy az alkalmazások és szolgáltatások megfelelően kommunikáljanak a Azure Active Directory Domain Servicesokkal (Azure AD DS), a forgalom áramlásának engedélyezése érdekében a megadott hálózati portoknak nyitva kell lenniük. Az Azure-ban hálózati biztonsági csoportok használatával szabályozhatja a forgalom áramlását. Egy Azure AD DS felügyelt tartomány állapota riasztást jelenít meg, ha a szükséges hálózati biztonsági csoportra vonatkozó szabályok nincsenek érvényben.
+Ahhoz, hogy az alkalmazások és a szolgáltatások megfelelően kommunikáljanak egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománnyal, bizonyos hálózati portoknak nyitva kell lenniük, hogy lehetővé tegyék a forgalom áramlását. Az Azure-ban hálózati biztonsági csoportok használatával szabályozhatja a forgalom áramlását. Egy Azure AD DS felügyelt tartomány állapota riasztást jelenít meg, ha a szükséges hálózati biztonsági csoportra vonatkozó szabályok nincsenek érvényben.
 
 Ez a cikk segít megérteni és elhárítani a hálózati biztonsági csoport konfigurációs problémáinak gyakori riasztásait.
 
@@ -30,15 +29,15 @@ Ez a cikk segít megérteni és elhárítani a hálózati biztonsági csoport ko
 
 *A Microsoft nem tudja elérni a tartományvezérlőket ehhez a felügyelt tartományhoz. Ez akkor fordulhat elő, ha a virtuális hálózaton konfigurált hálózati biztonsági csoport (NSG) blokkolja a hozzáférést a felügyelt tartományhoz. Egy másik lehetséges ok, ha van egy felhasználó által megadott útvonal, amely blokkolja az internetről érkező bejövő forgalmat.*
 
-A hálózati biztonsági csoportra vonatkozó szabályok érvénytelenek az Azure-AD DS hálózati hibáinak leggyakoribb okai. A virtuális hálózathoz tartozó hálózati biztonsági csoportnak engedélyeznie kell az adott portokhoz és protokollokhoz való hozzáférést. Ha ezek a portok le vannak tiltva, az Azure platform nem tudja figyelni vagy frissíteni a felügyelt tartományt. Az Azure AD-címtár és az Azure AD DS felügyelt tartomány közötti szinkronizálás is hatással van. Ügyeljen arra, hogy az alapértelmezett portok nyitva maradjanak a szolgáltatás megszakadásának elkerülése érdekében.
+A hálózati biztonsági csoportra vonatkozó szabályok érvénytelenek az Azure-AD DS hálózati hibáinak leggyakoribb okai. A virtuális hálózathoz tartozó hálózati biztonsági csoportnak engedélyeznie kell az adott portokhoz és protokollokhoz való hozzáférést. Ha ezek a portok le vannak tiltva, az Azure platform nem tudja figyelni vagy frissíteni a felügyelt tartományt. Az Azure AD-címtár és az Azure AD DS közötti szinkronizálás is hatással van. Ügyeljen arra, hogy az alapértelmezett portok nyitva maradjanak a szolgáltatás megszakadásának elkerülése érdekében.
 
 ## <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
 
-A következő alapértelmezett bejövő és kimenő biztonsági szabályok lesznek alkalmazva egy Azure AD DS felügyelt tartomány hálózati biztonsági csoportjára. Ezek a szabályok megőrzik az Azure AD DS védelmét, és lehetővé teszik az Azure platform számára a felügyelt tartomány figyelését, kezelését és frissítését. A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat.
+A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szabályokat alkalmazza a felügyelt tartomány hálózati biztonsági csoportjára. Ezek a szabályok megőrzik az Azure AD DS védelmét, és lehetővé teszik az Azure platform számára a felügyelt tartomány figyelését, kezelését és frissítését.
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Prioritás | Name (Név) | Port | Protocol (Protokoll) | Forrás | Cél | Műveletek |
+| Prioritás | Name | Port | Protokoll | Forrás | Cél | Műveletek |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | Engedélyezés |
@@ -47,9 +46,12 @@ A következő alapértelmezett bejövő és kimenő biztonsági szabályok leszn
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
 | 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
 
+> [!NOTE]
+> A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat. Ez a további szabály a megfelelő LDAP-kommunikációhoz szükséges.
+
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Prioritás | Name (Név) | Port | Protocol (Protokoll) | Forrás | Cél | Műveletek |
+| Prioritás | Name | Port | Protokoll | Forrás | Cél | Műveletek |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |
@@ -68,7 +70,7 @@ A meglévő biztonsági szabályok ellenőrzéséhez és az alapértelmezett por
 
     Tekintse át a bejövő és kimenő szabályokat, és hasonlítsa össze az előző szakaszban szereplő kötelező szabályok listájával. Szükség esetén válassza ki, majd törölje a szükséges forgalmat blokkoló egyéni szabályokat. Ha a szükséges szabályok bármelyike hiányzik, adjon hozzá egy szabályt a következő szakaszban.
 
-    Miután hozzáadta vagy törli a szükséges forgalmat engedélyező szabályokat, az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
+    Miután hozzáadta vagy törli a szükséges forgalmat engedélyező szabályokat, a felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
 ### <a name="add-a-security-rule"></a>Biztonsági szabály hozzáadása
 

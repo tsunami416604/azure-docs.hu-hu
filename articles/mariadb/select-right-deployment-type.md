@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4c7eb5e4f22cb432a9d17e6eafa653e62e1f9129
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3b65558a12fb6b20f449f5386c0ce7e598433b6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529900"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110300"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Válassza ki a megfelelő MariaDB-kiszolgáló lehetőséget az Azure-ban
 
@@ -31,7 +31,7 @@ A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
 
 A fenti lehetőségek közötti fő különbségek a következő táblázatban láthatók:
 
-|            | Azure Database for MariaDB | MariaDB az Azure-beli virtuális gépeken    |
+| Attribútum          | Azure Database for MariaDB | MariaDB az Azure-beli virtuális gépeken    |
 |:-------------------|:-----------------------------|:--------------------|
 | Szolgáltatói szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
 | Operációs rendszer javítása        | Automatikus  | Ügyfelek által felügyelt |
@@ -49,7 +49,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 A MariaDB-adatbázisok üzemeltetéséhez számos tényező befolyásolhatja a saját döntését, hogy kiválassza a Péter vagy a IaaS lehetőséget.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Cost
 
 A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépek Azure Database for MariaDB és MariaDB vonatkoznak.
 
@@ -99,7 +99,7 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
   Mivel nincs szükség a bemutató, az alkalmazás és az adatrétegek módosítására, időt és költségvetést takaríthat meg a meglévő megoldás újratervezése során. Ehelyett a megoldások Azure-ba való áttelepítésére és az Azure-platform által igényelt teljesítmény-optimalizálásokra koncentrálhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Azure Database for MariaDB díjszabása](https://azure.microsoft.com/pricing/details/MariaDB/).
 * Első lépésként [hozza létre első kiszolgálóját](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal).

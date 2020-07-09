@@ -1,25 +1,18 @@
 ---
 title: Azure Service Bus névtérbeli témakör létrehozása sablon használatával
 description: 'Rövid útmutató: Service Bus névtér létrehozása témakörrel és előfizetéssel Azure Resource Manager sablon használatával'
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: d3d55200-5c60-4b5f-822d-59974cafff0e
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 01/16/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: c94b670a33f7640d2d6f428287b3ba0fab766bc5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7417b8a1d63001ae4812160b95c6c0f12da52ef6
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80384874"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336910"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Gyors útmutató: Service Bus névtér létrehozása témakörrel és előfizetéssel egy Azure Resource Manager sablon használatával
 
@@ -51,7 +44,7 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy nevű `Parameters` szakaszt, amely tartalmazza az összes paraméter értékét. Definiáljon egy paramétert azokhoz az értékekhez, amelyek az üzembe helyezett projekttől függően változnak, vagy azon a környezeten alapulnak, amelyet üzembe szeretne helyezni. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy nevű szakaszt `Parameters` , amely tartalmazza az összes paraméter értékét. Definiáljon egy paramétert azokhoz az értékekhez, amelyek az üzembe helyezett projekttől függően változnak, vagy azon a környezeten alapulnak, amelyet üzembe szeretne helyezni. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
 A sablon a következő paramétereket definiálja:
 

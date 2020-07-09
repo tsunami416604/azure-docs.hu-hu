@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420812"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure-beli virtuális géphez RDP használatával való csatlakozáskor jelentkező hitelesítési hibák elhárítása
@@ -163,7 +163,7 @@ Ha a tartományvezérlő és a virtuális gép közötti kommunikáció jó, de 
 
 Ha az előző parancs nem javította a kommunikációs problémát a tartományon, akkor a virtuális gépet újra csatlakoztathatja a tartományhoz. Ehhez kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy unjoin. ps1 nevű parancsfájlt a következő tartalom használatával, majd telepítse a parancsfájlt egyéni parancsfájl-bővítményként a Azure Portal:
+1. Hozzon létre egy Unjoin.ps1 nevű szkriptet a következő tartalom használatával, majd telepítse a parancsfájlt egyéni parancsfájl-kiterjesztésként a Azure Portal:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
@@ -171,7 +171,7 @@ Ha az előző parancs nem javította a kommunikációs problémát a tartományo
     
     Ez a szkript a virtuális gépet a tartományon kívülről kényszeríti, majd 10 másodperccel később újraindítja. Ezután törölje a számítógép-objektumot a tartomány oldalon.
 
-2.  A karbantartás befejezése után csatlakoztassa újra a virtuális gépet a tartományhoz. Ehhez hozzon létre egy JoinDomain. ps1 nevű szkriptet a következő tartalom használatával, majd telepítse a parancsfájlt egyéni parancsfájl-bővítményként a Azure Portal: 
+2.  A karbantartás befejezése után csatlakoztassa újra a virtuális gépet a tartományhoz. Ehhez hozzon létre egy JoinDomain.ps1 nevű szkriptet a következő tartalom használatával, majd telepítse a parancsfájlt egyéni parancsfájl-kiterjesztésként a Azure Portal: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"

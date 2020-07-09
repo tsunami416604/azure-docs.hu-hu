@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371553"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043638"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -32,7 +32,7 @@ Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb
 
 - Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
 - Data Lake Gen2
-- Fájlok
+- Files
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -49,7 +49,7 @@ Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínál
 Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus)
-- Fájlok
+- Files
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -184,6 +184,8 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 ## <a name="storage-account-billing"></a>Tárfiókok számlázása
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>További lépések
 

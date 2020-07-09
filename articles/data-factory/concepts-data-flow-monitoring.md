@@ -7,13 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/17/2020
-ms.openlocfilehash: 9594a2ddfaa0103e171618925ba6974bf9ad7f00
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.date: 07/03/2020
+ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833982"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958896"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -56,12 +55,31 @@ Ha az adatfolyamot a Sparkban hajtja végre, Azure Data Factory meghatározza a 
   * Fürt indítási ideje: a JIT Spark számítási környezet beolvasásához szükséges idő az adatfolyam-végrehajtáshoz
   * Átalakítások száma: hány átalakítási lépést hajt végre a folyamaton belül
   
-![Adatfolyam-figyelés](media/data-flow/monitornew.png "Adatfolyam-figyelés – új")  
+![Adatfolyam-figyelés](media/data-flow/monitornew.png "Adatfolyam-figyelés – új")
+
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Teljes fogadó feldolgozási idő és átalakítás feldolgozási ideje
+
+Az egyes átalakítási szakaszok teljes időt biztosítanak ahhoz, hogy az adott fázis befejeződjön az egyes partíciók végrehajtási idejével együtt. Ha a fogadóra kattint, megjelenik a "fogadó feldolgozási idő". Ez az idő magában foglalja az átalakítási idő összegét, *valamint* azt az I/O-időt, amelyet az adatainak a célhelyre való írásához vett igénybe. A fogadó feldolgozási ideje és az átalakítás összege közötti különbség az az I/O-idő, amellyel az adatmennyiséget el kell írni.
+
+Az egyes partíció-transzformációs lépések részletes időzítését is megtekintheti, ha a JSON-kimenetet az ADF-folyamat figyelési nézetében nyitja meg az adatfolyam-tevékenységből. A JSON az egyes partíciók esetében ezredmásodperces időzítést tartalmaz, míg az UX-figyelési nézet a partíciók összesített időzítése, amely együtt bővült:
+
+```
+ {
+     "stage": 4,
+     "partitionTimes": [
+          14353,
+          14914,
+          14246,
+          14912,
+          ...
+         ]
+}
+```
   
 ## <a name="monitor-icons"></a>Ikonok figyelése
 
 Ez az ikon azt jelenti, hogy az átalakítási adatgyűjtés már gyorsítótárazva van a fürtön, így az időzítések és a végrehajtás elérési útja figyelembe vette a következőt:
 
-![Adatfolyam-figyelés](media/data-flow/mon004.png "Adatfolyam-figyelés")
+![Adatfolyam-figyelés](media/data-flow/mon005.png "Adatfolyam-figyelés")
 
 Az átalakításban a zöld kör ikonjai is megjelennek. Ezek a mosdók számát jelölik, amelyekben az adatforgalom beáramlik.

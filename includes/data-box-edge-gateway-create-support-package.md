@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179578"
 ---
 Ha bármilyen eszközzel kapcsolatos probléma merül fel, létrehozhat egy támogatási csomagot a rendszernaplókból. Microsoft ügyfélszolgálata ezt a csomagot használja a problémák elhárításához. Támogatási csomag létrehozásához kövesse az alábbi lépéseket:
 
 1. [Kapcsolódjon az eszköz PowerShell-felületéhez](#connect-to-the-powershell-interface).
-2. Támogatási csomag `Get-HcsNodeSupportPackage` létrehozásához használja a parancsot. A parancsmag használata a következő:
+2. `Get-HcsNodeSupportPackage`Támogatási csomag létrehozásához használja a parancsot. A parancsmag használata a következő:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs

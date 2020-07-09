@@ -4,16 +4,16 @@ description: A Windows rendszerű virtuális asztali munkamenet-gazdagépek auto
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362543"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -33,14 +33,14 @@ A skálázási eszközre vonatkozó jelentések kiadása jelenleg a GitHubon tö
 A skálázási eszköz alacsony költségű automatizálási lehetőséget biztosít azon ügyfelek számára, akik szeretnék optimalizálni a munkamenet-gazda virtuális gépek költségeit.
 
 A skálázási eszköz használatával a következőket végezheti el:
- 
+
 - A virtuális gépeket a csúcson és a maximum munkaidőn alapuló kezdési és leállítási időszakokra ütemezhet.
 - Virtuális gépek vertikális felskálázása a munkamenetek száma alapján a CPU Core-ban.
 - Méretezés a virtuális gépeken a munkaidőn kívüli időszakban, így a munkamenet-gazdagépek minimális száma nem fut le.
 
 A skálázási eszköz Azure Automation PowerShell-runbookok, webhookok és Azure Logic Apps függvény kombinációját használja. Az eszköz futtatásakor Azure Logic Apps meghívja a webhookot a Azure Automation runbook elindításához. A runbook Ezután létrehoz egy feladatot.
 
-A maximális kihasználtság ideje alatt a feladattípus ellenőrzi a munkamenetek aktuális számát és az aktuálisan futó munkamenet-gazdagép virtuálisgép-kapacitását az egyes gazdagépek esetében. Ezt az információt használja annak kiszámításához, hogy a futó munkamenet-gazda virtuális gépek támogatni tudják-e a meglévő munkameneteket a **createazurelogicapp. ps1** fájlhoz definiált *SessionThresholdPerCPU* paraméter alapján. Ha a munkamenet-gazdagép virtuális gépei nem támogatják a meglévő munkameneteket, a feladatokban további munkamenet-gazda virtuális gépek indulnak a gazdagép-készletben.
+A maximális kihasználtság ideje alatt a feladattípus ellenőrzi a munkamenetek aktuális számát és az aktuálisan futó munkamenet-gazdagép virtuálisgép-kapacitását az egyes gazdagépek esetében. Ezt az információt használja annak kiszámításához, hogy a futó munkamenet-gazda virtuális gépek támogatják-e a meglévő munkameneteket a **createazurelogicapp.ps1** fájlhoz definiált *SessionThresholdPerCPU* paraméter alapján. Ha a munkamenet-gazdagép virtuális gépei nem támogatják a meglévő munkameneteket, a feladatokban további munkamenet-gazda virtuális gépek indulnak a gazdagép-készletben.
 
 >[!NOTE]
 >A *SessionThresholdPerCPU* nem korlátozza a virtuális gépen futó munkamenetek számát. Ez a paraméter csak azt határozza meg, hogy mikor kell elindítani az új virtuális gépeket a kapcsolatok terheléselosztásához. A munkamenetek számának korlátozásához kövesse a [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) utasítást, hogy ennek megfelelően konfigurálja a *MaxSessionLimit* paramétert.
@@ -67,7 +67,7 @@ A skálázási eszköz beállításának megkezdése előtt győződjön meg arr
 - A Windows rendszerű virtuális asztali szolgáltatásban konfigurált és regisztrált munkamenet-gazdagépek készletei
 - Az Azure-előfizetés [közreműködői hozzáféréssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználója
 
-Az eszköz telepítéséhez használt gépnek rendelkeznie kell a következővel: 
+Az eszköz telepítéséhez használt gépnek rendelkeznie kell a következővel:
 
 - Windows PowerShell 5,1 vagy újabb
 - A Microsoft az PowerShell-modul
@@ -106,7 +106,8 @@ Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook f
 
 6. Miután beállította Azure Automation-fiókját, jelentkezzen be az Azure-előfizetésbe, és ellenőrizze, hogy a Azure Automation-fiókja és a kapcsolódó runbook szerepeltek-e a megadott erőforráscsoporthoz, ahogy az alábbi képen is látható:
 
-![Az újonnan létrehozott Automation-fiókot és runbook bemutató Azure áttekintés oldal képe.](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Az újonnan létrehozott Automation-fiókot és runbook bemutató Azure áttekintés oldal képe.](../media/automation-account.png)
 
   Ha szeretné megnézni, hogy a webhook hol kell legyen, válassza ki a runbook nevét. Ezután nyissa meg a runbook erőforrásai szakaszt, és válassza a **webhookok**lehetőséget.
 
@@ -162,7 +163,7 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
      Login-AzAccount
      ```
 
-3. Futtassa a következő parancsmagot a createazurelogicapp. ps1 parancsfájl helyi számítógépen való letöltéséhez.
+3. Futtassa a következő parancsmagot a createazurelogicapp.ps1 parancsfájlnak a helyi gépen való letöltéséhez.
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -180,21 +181,21 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +205,12 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
@@ -236,11 +237,13 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
 
      A parancsfájl futtatása után a logikai alkalmazásnak egy erőforráscsoporthoz kell megjelennie, ahogy az alábbi képen is látható.
 
-     ![Egy példa az Azure logikai alkalmazás áttekintés lapjára.](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Egy példa az Azure logikai alkalmazás áttekintés lapjára.](../media/logic-app.png)
 
 Ha módosítani szeretné a végrehajtás ütemezését, például az ismétlődési intervallumot vagy az időzónát, lépjen az autoskálázás ütemező elemre, és válassza a **Szerkesztés** lehetőséget a Logic apps Designer megkereséséhez.
 
-![A Logic Apps Designer képe. A felhasználó ismétlődési idejének módosítására és a webhook fájljának megnyitására szolgáló ismétlődési és webhook-menük.](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![A Logic Apps Designer képe. A felhasználó ismétlődési idejének módosítására és a webhook fájljának megnyitására szolgáló ismétlődési és webhook-menük.](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>Méretezési eszköz kezelése
 
@@ -252,7 +255,8 @@ Megtekintheti az összes runbook-feladat összegzett állapotát, vagy megtekint
 
 A kiválasztott Automation-fiók jobb oldalán, a "feladat statisztikái" alatt megtekintheti az összes runbook-feladat összefoglalóit tartalmazó listát. Az ablak bal oldalán a **feladatok** lap megnyitása megjeleníti a feladat aktuális állapotát, a kezdési időpontokat és a befejezési időpontokat.
 
-![A feladatok állapota lap képernyőképe.](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![A feladatok állapota lap képernyőképe.](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>Naplók és méretezési eszköz kimenetének megtekintése
 
@@ -260,5 +264,6 @@ A kibővíthető és a skálázási műveletek naplóit megtekintheti a runbook 
 
 Navigáljon a runbook (az alapértelmezett név WVDAutoScaleRunbook) az Azure Automation fiókot futtató erőforráscsoporthoz, és válassza az **Áttekintés**lehetőséget. Az Áttekintés lapon válasszon ki egy feladatot a legutóbbi feladatok területen a méretezési eszköz kimenetének megtekintéséhez, ahogy az alábbi képen is látható.
 
-![A skálázási eszköz kimeneti ablakának képe.](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![A skálázási eszköz kimeneti ablakának képe.](../media/tool-output.png)
 

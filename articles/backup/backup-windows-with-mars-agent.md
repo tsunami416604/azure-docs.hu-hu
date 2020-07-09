@@ -3,14 +3,13 @@ title: Windows rendszerű gépek biztonsági mentése a MARS-ügynök használat
 description: A Windows rendszerű gépek biztonsági mentéséhez használja a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604845"
 ---
-# <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Windows rendszerű gépek biztonsági mentése a Azure Backup MARS-ügynök használatával
+# <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server-fájlok és-mappák biztonsági mentése az Azure-ba
 
 Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni a Windows rendszerű gépekről a [Azure Backup](backup-overview.md) szolgáltatás és a Microsoft Azure Recovery Services (MARS) ügynök használatával. A MARSot Azure Backup ügynöknek is nevezzük.
 
@@ -43,7 +42,7 @@ Biztonsági mentési szabályzat létrehozásához:
 1. A **műveletek**területen válassza a **biztonsági mentés időzítése**elemet.
 
     ![Windows Server biztonsági mentés ütemezése](./media/backup-configure-vault/schedule-first-backup.png)
-1. Az ütemezett biztonsági mentés varázslóban válassza az **első lépések** > **lehetőséget.**
+1. Az ütemezett biztonsági mentés varázslóban válassza az **első lépések**lehetőséget  >  **Next**.
 1. Az **elemek kiválasztása a biztonsági mentéshez**területen válassza az **elemek hozzáadása**lehetőséget.
 
     ![Elemek hozzáadása a biztonsági mentéshez](./media/backup-azure-manage-mars/select-item-to-backup.png)
@@ -79,7 +78,7 @@ Biztonsági mentési szabályzat létrehozásához:
 
         ![Adatmegőrzési szabály – példa](./media/backup-configure-vault/retention-example.png)
 
-1. A **kezdeti biztonsági mentés típusának kiválasztása** lapon döntse el, hogy szeretné-e a kezdeti biztonsági mentést végezni a hálózaton keresztül, vagy az offline biztonsági mentést. Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza a **automatikusan a hálózaton** > keresztül lehetőséget a**tovább**gombra.
+1. A **kezdeti biztonsági mentés típusának kiválasztása** lapon döntse el, hogy szeretné-e a kezdeti biztonsági mentést végezni a hálózaton keresztül, vagy az offline biztonsági mentést. Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza a **automatikusan a hálózaton keresztül lehetőséget a**  >  **tovább**gombra.
 
     További információ az offline biztonsági mentésről: [a Azure Data Box használata az offline biztonsági mentéshez](offline-backup-azure-data-box.md).
 
@@ -150,7 +149,7 @@ A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** ál
 
 | Biztonsági mentés – ütemezett beállítás | Az adatmegőrzés időtartama
 | -- | --
-| Day | **Alapértelmezett megőrzés**: megegyezik a napi biztonsági másolatok megőrzési napjaiban. <br/><br/> **Kivétel**: Ha a hosszú távú adatmegőrzésre beállított napi ütemezett biztonsági mentés (hét, hónap vagy év) meghiúsul, egy igény szerinti biztonsági mentést, amely a hiba után azonnal aktiválódik, hosszú távú adatmegőrzésre számít. Ellenkező esetben a következő ütemezett biztonsági mentés a hosszú távú adatmegőrzést veszi figyelembe.<br/><br/> **Példa**: a 8:00-as csütörtökön ütemezett biztonsági mentés sikertelen. Ezt a biztonsági mentést hetente, havonta vagy évenkénti megőrzés céljából kell figyelembe venni. Ezért az első igény szerinti biztonsági mentést a rendszer a következő ütemezett biztonsági mentés elindítását megelőzően, a 8:00 ÓRAKOR automatikusan címkézi, hetente, havonta vagy évenkénti megőrzéssel. Ez a biztonsági másolat helyettesíti a Csütörtök 8:00 AM biztonsági mentést.
+| Nap | **Alapértelmezett megőrzés**: megegyezik a napi biztonsági másolatok megőrzési napjaiban. <br/><br/> **Kivétel**: Ha a hosszú távú adatmegőrzésre beállított napi ütemezett biztonsági mentés (hét, hónap vagy év) meghiúsul, egy igény szerinti biztonsági mentést, amely a hiba után azonnal aktiválódik, hosszú távú adatmegőrzésre számít. Ellenkező esetben a következő ütemezett biztonsági mentés a hosszú távú adatmegőrzést veszi figyelembe.<br/><br/> **Példa**: a 8:00-as csütörtökön ütemezett biztonsági mentés sikertelen. Ezt a biztonsági mentést hetente, havonta vagy évenkénti megőrzés céljából kell figyelembe venni. Ezért az első igény szerinti biztonsági mentést a rendszer a következő ütemezett biztonsági mentés elindítását megelőzően, a 8:00 ÓRAKOR automatikusan címkézi, hetente, havonta vagy évenkénti megőrzéssel. Ez a biztonsági másolat helyettesíti a Csütörtök 8:00 AM biztonsági mentést.
 | Hét | **Alapértelmezett megőrzés**: egy nap. A heti biztonsági mentési házirenddel rendelkező adatforrások igény szerinti biztonsági mentését a következő nap során törli a rendszer. A rendszer akkor is törli őket, ha az adatforrás legújabb biztonsági mentései vannak. <br/><br/> **Kivétel**: Ha a hosszú távú adatmegőrzésre beállított heti ütemezett biztonsági mentés (hét, hónap vagy év) meghiúsul, egy igény szerinti biztonsági mentés, amely a hiba után azonnal aktiválódik, hosszú távú adatmegőrzésre számít. Ellenkező esetben a következő ütemezett biztonsági mentés a hosszú távú adatmegőrzést veszi figyelembe. <br/><br/> **Példa**: a 8:00-as csütörtökön ütemezett biztonsági mentés sikertelen. A biztonsági mentést figyelembe kell venni a havi vagy az éves adatmegőrzés során. Így az első, a 8:00-as csütörtökön a következő ütemezett biztonsági mentés előtt kiváltott, igény szerinti biztonsági mentést a rendszer automatikusan felcímkézi a havi vagy az éves adatmegőrzési időszakra. Ez a biztonsági másolat helyettesíti a Csütörtök 8:00 AM biztonsági mentést.
 
 További információt a [biztonsági mentési szabályzat létrehozása](#create-a-backup-policy)című témakörben talál.

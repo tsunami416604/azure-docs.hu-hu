@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 47af78e562329a7221dcba865fc7304543a282df
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856759"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 
@@ -48,7 +48,7 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. Nyissa meg a *program.cs*, `CreateWebHostBuilder` és frissítse a METÓDUSt az exportált JSON-fájl `config.AddJsonFile()` használatára a metódus meghívásával.  Adja hozzá `System.Reflection` a névteret is.
+1. Nyissa meg a *program.cs*, és frissítse a `CreateWebHostBuilder` metódust az exportált JSON-fájl használatára a metódus meghívásával `config.AddJsonFile()` .  Adja hozzá a `System.Reflection` névteret is.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -69,25 +69,35 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
 1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. 
     Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. Ha az alkalmazást a a .NET Core parancssori felülete használatával szeretné felépíteni, futtassa a következő parancsot a parancs-rendszerhéjban:
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 3. A létrehozás sikeres befejezése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
-4. Nyisson meg egy böngészőablakot `http://localhost:5000`, és nyissa meg a következőt:, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+4. Nyisson meg egy böngészőablakot, és nyissa meg a következőt `http://localhost:5000` :, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
 

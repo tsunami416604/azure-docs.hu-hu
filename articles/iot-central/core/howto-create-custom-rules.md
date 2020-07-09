@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158146"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával
@@ -34,7 +34,7 @@ Ebben a útmutatóban a következőket sajátíthatja el:
 
 A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
@@ -65,7 +65,7 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 | Beállítás | Érték |
 | ------- | ----- |
 | Name (Név)    | Adja meg a névtér nevét |
-| Tarifacsomag | Basic |
+| Tarifacsomag | Alapszintű |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Hely | USA keleti régiója |
@@ -144,7 +144,7 @@ Az e-mailek küldéséhez a Function alkalmazásnak szüksége van egy SendGrid 
 Ez a megoldás egy Azure Functions alkalmazást használ e-mail-értesítés küldéséhez, ha a Stream Analytics feladatokban leállított eszköz észlelve. A Function-alkalmazás létrehozása:
 
 1. A Azure Portal navigáljon a **DetectStoppedDevices** erőforráscsoport **app Service** példányához.
-1. Új **+** függvény létrehozásához válassza a lehetőséget.
+1. **+** Új függvény létrehozásához válassza a lehetőséget.
 1. A **fejlesztési környezet kiválasztása** lapon válassza **a portálon** , majd a **Folytatás**lehetőséget.
 1. A **függvény létrehozása** lapon válassza a **WEBhook + API** elemet, majd kattintson a **Létrehozás**gombra.
 
@@ -159,7 +159,7 @@ Az e-mailek SendGrid való elküldéséhez a következő módon kell konfigurál
 1. Válassza az **integráció**lehetőséget, válassza ki a kimeneti http-t **($Return)**, majd válassza a **Törlés**lehetőséget.
 1. Válassza az **+ új kimenet**, majd a **SendGrid**lehetőséget, majd a **kiválasztás**lehetőséget. A SendGrid-bővítmény telepítéséhez válassza a **telepítés** lehetőséget.
 1. Ha a telepítés befejeződött, válassza a **függvény visszatérési értékének használata**lehetőséget. Adjon meg egy érvényes **címet** az e-mail-értesítések fogadásához.  Adjon meg egy érvényes **címet** az e-mail feladóként való használathoz.
-1. Válassza a **SENDGRID API-kulcs alkalmazás**melletti **új** lehetőséget. Adja meg a **SendGridAPIKey** kulcsot, és a korábban feljegyzett SendGrid API-kulcsot értékként. Ezután válassza a **Létrehozás**lehetőséget.
+1. Válassza a **SENDGRID API-kulcs alkalmazás**melletti **új** lehetőséget. Adja meg a **SendGridAPIKey** kulcsot, és a korábban feljegyzett SendGrid API-kulcsot értékként. Ezután kattintson a **Létrehozás** elemre.
 1. A **Save (Mentés** ) gombra kattintva mentse a függvény SendGrid-kötéseit.
 
 Az integrálási beállítások a következő képernyőképhez hasonlóan néznek ki:
@@ -317,10 +317,10 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
     | Beállítás | Érték |
     | ------- | ----- |
     | Megjelenítendő név | Exportálás Event Hubsba |
-    | Engedélyezve | Bekapcsolva |
+    | Engedélyezve | Be |
     | Event Hubs-névtér | Az Event Hubs névtér neve |
     | Eseményközpont | centralexport |
-    | Mérések | Bekapcsolva |
+    | Mérések | Be |
     | Eszközök | Ki |
     | Eszközök sablonjai | Ki |
 

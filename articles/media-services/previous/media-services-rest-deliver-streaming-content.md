@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77050006"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Azure Media Services tartalom közzététele REST használatával 
@@ -46,7 +45,7 @@ A [következő](#types) szakasz azokat a felsorolási típusokat mutatja be, ame
 További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->A sikeres csatlakozás után https://media.windows.netegy 301-es átirányítást fog kapni, amely egy másik Media Services URI azonosítót ad meg. Ezt követően meg kell adnia a további hívásokat az új URI-hoz.
+>A sikeres csatlakozás után https://media.windows.net egy 301-es átirányítást fog kapni, amely egy másik Media Services URI azonosítót ad meg. Ezt követően meg kell adnia a további hívásokat az új URI-hoz.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>OnDemand-kereső létrehozása
 A OnDemand streaming-lokátor létrehozásához és az URL-címek lekéréséhez a következőket kell tennie:

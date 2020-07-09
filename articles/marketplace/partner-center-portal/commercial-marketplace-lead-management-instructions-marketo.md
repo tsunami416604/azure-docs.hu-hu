@@ -1,18 +1,18 @@
 ---
 title: Vezető felügyelet a Marketo-ben – Microsoft kereskedelmi piactér
 description: Megtudhatja, hogyan kezelheti a Marketo CRM-rendszert a Microsoft AppSource és az Azure Marketplace-en található érdeklődők kezeléséhez.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: f1db7cc34a77c342a3d11e4b509d45a745a200db
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: be1f21f927b01d66e19dc5e97b38e5c35e6664cb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849177"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120262"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>A Marketo használata a kereskedelmi Piactéri érdeklődők kezelésére
 

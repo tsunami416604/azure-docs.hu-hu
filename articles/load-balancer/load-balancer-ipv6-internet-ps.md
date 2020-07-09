@@ -9,17 +9,16 @@ keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803704"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
 
@@ -102,7 +101,7 @@ Győződjön meg arról, hogy rendelkezik a PowerShell Azure Resource Manager mo
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Azure nyilvános IP-cím (PIP) erőforrások létrehozása az előtér-IP-címkészlet számára. Ügyeljen arra, hogy a következő parancsok `-DomainNameLabel` futtatása előtt módosítsa az értéket. Az értéknek egyedinek kell lennie az Azure-régión belül.
+2. Azure nyilvános IP-cím (PIP) erőforrások létrehozása az előtér-IP-címkészlet számára. Ügyeljen arra, hogy a `-DomainNameLabel` következő parancsok futtatása előtt módosítsa az értéket. Az értéknek egyedinek kell lennie az Azure-régión belül.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

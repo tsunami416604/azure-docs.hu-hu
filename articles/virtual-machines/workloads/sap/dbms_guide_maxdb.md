@@ -16,10 +16,9 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022590"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése Azure-beli virtuális gépeken
@@ -370,7 +369,7 @@ Ha szeretné megnövelni, hogy milyen célokat kell írnia, két lehetőség kö
 
 A kötetek több csatlakoztatott lemezre való csíkozása korábban már megtörtént az [Azure Virtual Machines adatbázis-kezelői szolgáltatás SAP-munkaterheléshez való üzembe helyezésének szempontjaiban](dbms_guide_general.md). 
 
-#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Egyéb megfontolások
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>További szempontok
 Az összes többi általános terület, például az Azure-beli rendelkezésre állási készletek vagy az SAP-figyelés az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md)számítási feladataihoz  a virtuális gépek SAP MaxDB-adatbázissal történő üzembe helyezéséhez.
 Más SAP MaxDB-specifikus beállítások transzparensek az Azure-beli virtuális gépek számára, és az SAP Note [767598] -ben és a következő SAP-megjegyzésekben felsorolt különböző dokumentumokban találhatók:
 
@@ -412,7 +411,7 @@ Mivel az SAP liveCache nagy mértékben használja a számítási teljesítmény
 #### <a name="backup-and-restore-for-livecache-in-azure"></a>LiveCache biztonsági mentése és visszaállítása az Azure-ban
 a biztonsági mentést és visszaállítást, beleértve a teljesítménnyel kapcsolatos szempontokat is, a jelen dokumentum megfelelő SAP MaxDB fejezeteiben olvashat. 
 
-#### <a name="other-considerations"></a>Egyéb szempontok
+#### <a name="other-considerations"></a>További szempontok
 Az összes többi általános terület már le van írva a megfelelő SAP MaxDB fejezetben. 
 
 ## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Az SAP Content Server telepítésének sajátosságai az Azure-ban Windows rendszeren

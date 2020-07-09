@@ -9,14 +9,13 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609503"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Kapcsolódás IBM MQ-kiszolgálóhoz Azure Logic Apps
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Csatlakozás egy IBM MQ-kiszolgálóhoz az Azure Logic Appsből
 
 Az IBM MQ-összekötő a helyszínen vagy az Azure-ban egy IBM MQ-kiszolgálón tárolt üzeneteket küld és kérdez le. Ez az összekötő egy olyan Microsoft MQ-ügyfelet tartalmaz, amely egy távoli IBM MQ-kiszolgálóval kommunikál egy TCP/IP-hálózaton keresztül. Ez a cikk egy alapszintű útmutatót tartalmaz az MQ-összekötő használatához. Először egyetlen üzenetben tallózhat egy várólistán, majd más műveleteket is kipróbálhat.
 
@@ -71,7 +70,7 @@ Ha egy MQ-művelet hozzáadásakor még nem rendelkezik MQ-kapcsolattal, a rends
 
    1. A **kapcsolódási átjáró** listából válassza ki a használni kívánt Azure Gateway-erőforrást.
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 <a name="connection-problems"></a>
 
@@ -94,7 +93,7 @@ Ha a logikai alkalmazás megpróbál csatlakozni a helyszíni MQ-kiszolgálóhoz
      > [!IMPORTANT]
      > Ügyeljen arra, hogy a tanúsítványokat a **tanúsítványok – helyi számítógép**  >  **megbízható legfelső szintű hitelesítésszolgáltatók** tárolójába telepítse.
 
-* Az MQ-kiszolgáló megköveteli az SSL-kapcsolatokhoz használni kívánt titkosítási specifikáció megadását. A .NET-beli SsLStream azonban nem teszi lehetővé a titkosítási specifikációk megadását. A korlátozás megkerüléséhez módosítsa az MQ-kiszolgáló konfigurációját úgy, hogy az megfeleljen az összekötő által az SSL-egyeztetésben elküldött csomag első titkosítási specifikációjának.
+* Az MQ-kiszolgáló megköveteli, hogy a TLS/SSL-kapcsolatokhoz használni kívánt titkosítási specifikációt adja meg. A .NET-beli SslStream azonban nem teszi lehetővé a titkosítási specifikációk megadását. A korlátozás megkerüléséhez módosítsa az MQ-kiszolgáló konfigurációját úgy, hogy az megfeleljen a csomag első titkosítási specifikációjának, amelyet az összekötő a TLS/SSL egyeztetésben küld.
 
   A kapcsolat kipróbálásakor az MQ-kiszolgáló naplóz egy olyan eseményt, amely jelzi, hogy a kapcsolat nem sikerült, mert a másik végén a helytelen titkosítási specifikációt használta. Az esemény üzenet tartalmazza a listában elsőként megjelenő titkosítási specifikációt. Frissítse a titkosítási specifikációt a csatorna konfigurációjában, hogy az megfeleljen a titkosítási specifikációnak az esemény üzenetében.
 
@@ -110,7 +109,7 @@ Ha a logikai alkalmazás megpróbál csatlakozni a helyszíni MQ-kiszolgálóhoz
 
 1. A kapcsolat létrehozása után állítsa be a **tallózási üzenet** műveletének tulajdonságait:
 
-   | Tulajdonság | Description |
+   | Tulajdonság | Leírás |
    |----------|-------------|
    | **Várólista** | Ha eltér a kapcsolatban megadott sorból, adja meg a várólistát. |
    | **MessageID**, **correlationId**, **GroupID**és egyéb tulajdonságok | A különböző MQ-üzenet tulajdonságain alapuló üzenet keresése |

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75612257"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080057"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix lekérdezési kiszolgáló – REST SDK
 
@@ -27,11 +27,13 @@ További információ: [Apache kalcit Avatica Protocol-pufferek referenciája](h
 
 Apache Phoenix Query Server Microsoft .NET illesztőprogramja NuGet-csomagként van megadva, amely a Visual Studio **NuGet Package Manager konzolról** telepíthető a következő paranccsal:
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Új PhoenixClient objektumának példánya
 
-A könyvtár használatának megkezdéséhez hozzon létre egy `PhoenixClient` új objektumot, `ClusterCredentials` amely a `Uri` fürtöt és a fürt Apache Hadoop felhasználónevét és jelszavát adja meg.
+A könyvtár használatának megkezdéséhez hozzon létre egy új `PhoenixClient` objektumot, `ClusterCredentials` amely a `Uri` fürtöt és a fürt Apache Hadoop felhasználónevét és jelszavát adja meg.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,11 +50,11 @@ Egy vagy több kérelem PQS való elküldéséhez meg kell adnia egy egyedi kapc
 string connId = Guid.NewGuid().ToString();
 ```
 
-Mindegyik példa először egy hívást kezdeményez a `OpenConnectionRequestAsync` metódushoz, amely az egyedi kapcsolatazonosító alapján halad. Ezután definiálja `ConnectionProperties` és `RequestOptions`adja át ezeket az objektumokat és a generált kapcsolatazonosító a `ConnectionSyncRequestAsync` metódusnak. A PQS `ConnectionSyncRequest` objektuma segít biztosítani, hogy az ügyfél és a kiszolgáló is konzisztens képet biztosítson az adatbázis tulajdonságairól.
+Mindegyik példa először egy hívást kezdeményez a `OpenConnectionRequestAsync` metódushoz, amely az egyedi kapcsolatazonosító alapján halad. Ezután definiálja `ConnectionProperties` és adja `RequestOptions` át ezeket az objektumokat és a generált kapcsolatazonosító a `ConnectionSyncRequestAsync` metódusnak. A PQS `ConnectionSyncRequest` objektuma segít biztosítani, hogy az ügyfél és a kiszolgáló is konzisztens képet biztosítson az adatbázis tulajdonságairól.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest és az ConnectionProperties
 
-A híváshoz `ConnectionSyncRequestAsync`adjon meg egy `ConnectionProperties` objektumot.
+A híváshoz `ConnectionSyncRequestAsync` adjon meg egy `ConnectionProperties` objektumot.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -73,16 +75,16 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 | Tulajdonság | Leírás |
 | -- | -- |
-| Autocommit | Logikai érték, amely `autoCommit` azt jelzi, hogy engedélyezve van-e a Phoenix-tranzakciókhoz. |
+| Autocommit | Logikai `autoCommit` érték, amely azt jelzi, hogy engedélyezve van-e a Phoenix-tranzakciókhoz. |
 | ReadOnly | Logikai érték, amely azt jelzi, hogy a hálózat írásvédett-e. |
 | TransactionIsolation | Egy egész szám, amely a tranzakciós elkülönítés szintjét jelöli a JDBC-specifikáció alapján – lásd a következő táblázatot.|
 | Katalógus | A kapcsolódási tulajdonságok beolvasásakor használandó katalógus neve. |
 | Séma | A kapcsolódási tulajdonságok beolvasásakor használandó séma neve. |
 | IsDirty | Logikai érték, amely azt jelzi, hogy a tulajdonságok módosultak-e. |
 
-Az értékek a `TransactionIsolation` következők:
+Az értékek a következők `TransactionIsolation` :
 
-| Elkülönítési érték | Leírás |
+| Elkülönítési érték | Description |
 | -- | -- |
 | 0 | A tranzakciók nem támogatottak. |
 | 1 | A piszkos olvasások, a nem ismételhető olvasások és a látszólagos olvasások is előfordulhatnak. |
@@ -160,11 +162,11 @@ finally
 }
 ```
 
-Az előző példa egy nevű `Customers` új táblát hoz létre a `IF NOT EXISTS` kapcsoló használatával. A `CreateStatementRequestAsync` hívás új utasítást hoz létre a Avitica-(PQS-) kiszolgálón. A `finally` blokk lezárja a `CreateStatementResponse` visszaadott `OpenConnectionResponse` és az objektumokat.
+Az előző példa egy nevű új táblát hoz létre `Customers` a `IF NOT EXISTS` kapcsoló használatával. A `CreateStatementRequestAsync` hívás új utasítást hoz létre a Avitica-(PQS-) kiszolgálón. A `finally` blokk lezárja a visszaadott `CreateStatementResponse` és az `OpenConnectionResponse` objektumokat.
 
 ## <a name="insert-data-individually"></a>Az adatbeszúrás egyenként
 
-Ez a példa egy egyéni adatbeszúrást mutat be, amely `List<string>` az amerikai állam és a területi rövidítések gyűjteményére hivatkozik:
+Ez a példa egy egyéni adatbeszúrást mutat be, amely az `List<string>` amerikai állam és a területi rövidítések gyűjteményére hivatkozik:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
@@ -281,7 +283,7 @@ Az INSERT utasítás végrehajtásának szerkezete hasonló egy új tábla létr
 
 ## <a name="batch-insert-data"></a>Kötegek beszúrása
 
-A következő kód majdnem azonos az adatbeszúrási kóddal. Ez a példa az `UpdateBatch` objektumot egy hívásban használja `ExecuteBatchRequestAsync`, nem pedig többször `ExecuteRequestAsync` is előkészített utasítással.
+A következő kód majdnem azonos az adatbeszúrási kóddal. Ez a példa az `UpdateBatch` objektumot egy hívásban használja `ExecuteBatchRequestAsync` , nem pedig többször `ExecuteRequestAsync` is előkészített utasítással.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -492,9 +494,9 @@ finally
 }
 ```
 
-Az `select` utasítások kimenetének a következő eredménynek kell lennie:
+Az utasítások kimenetének `select` a következő eredménynek kell lennie:
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

@@ -1,5 +1,5 @@
 ---
-title: Node. js-oktatóanyag a Azure Cosmos DB SQL API-hoz
+title: Node.js oktatóanyag a Azure Cosmos DB SQL API-hoz
 description: Node.js oktatóanyag, amely az Azure Cosmos DB SQL API-val való csatlakoztatását és lekérdezését írja le
 author: deborahc
 ms.service: cosmos-db
@@ -8,14 +8,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-ms.openlocfilehash: ef493b6b21eb0ba0ad6d22a21e4e205a9fecacb6
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 5d41f467efafa42bd73fce258ca97e4412a7cf48
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858065"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026848"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node. js-konzol alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-adat kezeléséhez
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js Console-alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-beli adatkezeléshez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -24,7 +23,7 @@ ms.locfileid: "82858065"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-Fejlesztőként rendelkezhet olyan alkalmazásokkal, amelyek NoSQL-dokumentumokat használnak. A dokumentumok tárolására és elérésére a Azure Cosmos DBban SQL API-fiók használható. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-konzol alkalmazást Azure Cosmos DB erőforrások létrehozásához és lekérdezéséhez.
+Fejlesztőként rendelkezhet olyan alkalmazásokkal, amelyek NoSQL-dokumentumokat használnak. A dokumentumok tárolására és elérésére a Azure Cosmos DBban SQL API-fiók használható. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js-konzolos alkalmazást Azure Cosmos DB erőforrások létrehozásához és lekérdezéséhez.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -44,7 +43,7 @@ Győződjön meg róla, hogy rendelkezik az alábbi erőforrásokkal:
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node. js](https://nodejs.org/) v 6.0.0 vagy újabb.
+* [Node.js](https://nodejs.org/) v 6.0.0 vagy újabb.
 
 ## <a name="create-azure-cosmos-db-account"></a>Azure Cosmos DB fiók létrehozása
 
@@ -54,7 +53,7 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 
 ## <a name="set-up-your-nodejs-application"></a><a id="SetupNode"></a>A Node.js-alkalmazás beállítása
 
-Mielőtt elkezdi a kód írását az alkalmazás létrehozásához, létrehozhatja az alkalmazás keretrendszerét. A következő lépésekkel állíthatja be a Node. js-alkalmazást, amely a keretrendszer kódjával rendelkezik:
+Mielőtt elkezdi a kód írását az alkalmazás létrehozásához, létrehozhatja az alkalmazás keretrendszerét. A következő lépésekkel állíthatja be Node.js alkalmazást a keretrendszer kódjával:
 
 1. Nyissa meg kedvenc terminálját.
 2. Keresse meg azt a mappát vagy könyvtárat, ahova a Node.js-alkalmazást menteni szeretné.
@@ -82,34 +81,34 @@ Mielőtt elkezdi a kód írását az alkalmazás létrehozásához, létrehozhat
 
 Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud beszélni Azure Cosmos DB. Néhány konfigurációs beállítás frissítésével az alábbi lépésekben látható módon beállíthatja, hogy az alkalmazás beszéljen a Azure Cosmos DB:
 
-1. Nyissa meg a *config. js* fájlt a kedvenc szövegszerkesztőben.
+1. Nyissa meg a *config.js* fájlt a kedvenc szövegszerkesztőben.
 
-1. Másolja és illessze be a következő kódrészletet a *config. js* fájlba, és állítsa be `endpoint` a `key` TULAJDONSÁGOKAT és a Azure Cosmos db végponti URI-t és az elsődleges kulcsot. Az adatbázis, a tárolók nevei a **feladatok** és **elemek**értékre vannak beállítva. Az alkalmazáshoz használni kívánt partíciós kulcs **/category**.
+1. Másolja és illessze be a következő kódrészletet a *config.js* fájlba, és állítsa be a tulajdonságokat `endpoint` és a `key` Azure Cosmos db végponti URI-t és az elsődleges kulcsot. Az adatbázis, a tárolók nevei a **feladatok** és **elemek**értékre vannak beállítva. Az alkalmazáshoz használni kívánt partíciós kulcs **/category**.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    A végpont és a kulcs részleteit a [Azure Portal](https://portal.azure.com) **kulcsok** ablaktábláján találja.
 
-   ![Kulcsok lekérése az Azure Portalról képernyőkép][keys]
+   :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Kulcsok lekérése az Azure Portalról képernyőkép":::
 
-A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket*használja. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. Az előző kódrészletben a `module.exports = config;` kód a konfigurációs objektum exportálására szolgál, így hivatkozhat rá az *app. js* fájlon belül.
+A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket*használja. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. Az előző kódrészletben a kód a `module.exports = config;` konfigurációs objektum exportálására szolgál, így hivatkozhat rá a *app.js* fájlon belül.
 
 ## <a name="create-a-database-and-a-container"></a>Adatbázis és tároló létrehozása
 
-1. Nyissa meg a *databaseContext. js* fájlt a kedvenc szövegszerkesztőben.
+1. Nyissa meg a *databaseContext.js* fájlt a kedvenc szövegszerkesztőben.
 
-1. Másolja és illessze be a következő kódot a *databaseContext. js* fájlba. Ez a kód olyan függvényt határoz meg, amely létrehozza a "feladatok", az "Items" adatbázist és a tárolót, ha még nem léteznek az Azure Cosmos-fiókban:
+1. Másolja és illessze be a következő kódot a *databaseContext.js* fájlba. Ez a kód olyan függvényt határoz meg, amely létrehozza a "feladatok", az "Items" adatbázist és a tárolót, ha még nem léteznek az Azure Cosmos-fiókban:
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/data/databaseContext.js" id="createDatabaseAndContainer":::
 
-   Az adatbázis a tárolók között particionált elemek logikai tárolója. Adatbázis létrehozásához használja az **adatbázisok** osztály vagy `createIfNotExists` a Create függvényét. Egy tároló olyan elemekből áll, amelyek az SQL API esetében JSON-dokumentumok. Hozzon létre egy tárolót a `createIfNotExists` **tárolók** osztály vagy a Create függvény használatával. A tároló létrehozása után tárolhatja és lekérdezheti az adattárolást.
+   Az adatbázis a tárolók között particionált elemek logikai tárolója. Adatbázis létrehozásához használja az `createIfNotExists` **adatbázisok** osztály vagy a Create függvényét. Egy tároló olyan elemekből áll, amelyek az SQL API esetében JSON-dokumentumok. Hozzon létre egy tárolót a `createIfNotExists` **tárolók** osztály vagy a Create függvény használatával. A tároló létrehozása után tárolhatja és lekérdezheti az adattárolást.
 
    > [!WARNING]
    > A tárolók létrehozása díjszabási következményekkel jár. Látogasson el az [árképzési oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/) , és tudja, mire számíthat.
 
 ## <a name="import-the-configuration"></a>A konfiguráció importálása
 
-1. Nyissa meg az *app. js* fájlt a kedvenc szövegszerkesztőben.
+1. Nyissa meg a *app.js* fájlt a kedvenc szövegszerkesztőben.
 
 1. Másolja és illessze be az alábbi kódot a `@azure/cosmos` modul, a konfiguráció és az előző lépésekben megadott databaseContext importálásához. 
 
@@ -117,7 +116,7 @@ A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket*hasz
 
 ## <a name="connect-to-the-azure-cosmos-account"></a>Kapcsolódás az Azure Cosmos-fiókhoz
 
-Az *app. js* fájlban másolja és illessze be a következő kódot, hogy a korábban mentett végpontot és kulcsot használja egy új CosmosClient objektum létrehozásához.
+A *app.js* fájlban másolja és illessze be a következő kódot, hogy a korábban mentett végpontot és kulcsot használja egy új CosmosClient objektum létrehozásához.
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
@@ -132,15 +131,15 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
 ## <a name="query-items"></a><a id="QueryItem"></a>Lekérdezési elemek
 
-Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-elemek részletes lekérdezéseit. A következő mintakód egy lekérdezést mutat be, amelyet a tároló elemein futtathat. Az elemeket az `Items` osztály lekérdezési funkciójával kérdezheti le. Adja hozzá a következő kódot az *app. js* fájlhoz az Azure Cosmos-fiókból származó elemek lekérdezéséhez:
+Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-elemek részletes lekérdezéseit. A következő mintakód egy lekérdezést mutat be, amelyet a tároló elemein futtathat. Az elemeket az osztály lekérdezési funkciójával kérdezheti le `Items` . Adja hozzá a következő kódot a *app.js* fájlhoz az Azure Cosmos-fiókban lévő elemek lekérdezéséhez:
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="QueryItems":::
 
 ## <a name="create-an-item"></a><a id="CreateItem"></a>Elemek létrehozása
 
-Egy tétel a `Items` osztály Create függvényével hozható létre. Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Ebben az oktatóanyagban egy új elem jön létre a feladatok adatbázisán belül.
+Egy tétel a osztály Create függvényével hozható létre `Items` . Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Ebben az oktatóanyagban egy új elem jön létre a feladatok adatbázisán belül.
 
-1. Az app. js fájlban adja meg az elem definícióját:
+1. A app.js fájlban adja meg az elem definícióját:
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="DefineNewItem":::
 
@@ -150,13 +149,13 @@ Egy tétel a `Items` osztály Create függvényével hozható létre. Az SQL API
 
 ## <a name="update-an-item"></a><a id="ReplaceItem"></a>Egy tétel frissítése
 
-Azure Cosmos DB támogatja az elemek tartalmának cseréjét. Másolja és illessze be az alábbi kódot az *app. js* fájlba. Ez a kód beolvas egy elemet a tárolóból, és frissíti a *isComplete* mezőt igaz értékre.
+Azure Cosmos DB támogatja az elemek tartalmának cseréjét. Másolja és illessze be a következő kódot *app.js* fájlba. Ez a kód beolvas egy elemet a tárolóból, és frissíti a *isComplete* mezőt igaz értékre.
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="UpdateItem":::
 
 ## <a name="delete-an-item"></a><a id="DeleteItem"></a>Elem törlése
 
-Az Azure Cosmos DB támogatja a JSON-elemek törlését. Az alábbi kód azt mutatja be, hogyan kérhető le egy adott tétel az azonosítója alapján, és hogyan törölhető. Másolja és illessze be a következő kódot az *app. js* fájlba:
+Az Azure Cosmos DB támogatja a JSON-elemek törlését. Az alábbi kód azt mutatja be, hogyan kérhető le egy adott tétel az azonosítója alapján, és hogyan törölhető. Másolja és illessze be a következő kódot *app.js* fájlba:
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="DeleteItem":::
 
@@ -213,7 +212,7 @@ Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi 
 node app.js 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
@@ -223,4 +222,3 @@ Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscso
 > [Azure Cosmos DB fiók figyelése](monitor-accounts.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account
-[keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png

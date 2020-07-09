@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727194"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
 
@@ -40,7 +39,7 @@ Lehetővé teheti, hogy a szervezet felhasználói a LinkedIn-kapcsolataikat biz
 A LinkedIn-fiókok kapcsolatai csak azokra a felhasználókra engedélyezhetők, akik számára hozzáférést szeretne elérni, a teljes szervezetből csak a szervezet kiválasztott felhasználói számára.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
-1. Válassza a **Felhasználók** lehetőséget.
+1. Válassza a **felhasználók**lehetőséget.
 1. A **felhasználók** lapon válassza a **felhasználói beállítások**lehetőséget.
 1. A **LinkedIn-fiókok kapcsolatai**területen engedélyezze a felhasználók számára, hogy a LinkedIn-kapcsolataik elérését néhány Microsoft-alkalmazáson belül hozzáférjenek a fiókjához. A felhasználók nem oszthatnak meg semmilyen adatmegosztást, amíg a felhasználók nem csatlakoznak a fiókjához.
 
@@ -91,7 +90,7 @@ Ha az Azure AD felügyeleti központban lévő LinkedIn Account Connections (Lin
 1. Töltse le az [Office 2016 felügyeleti sablon fájljait (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 1. Bontsa ki az **ADMX** -fájlokat, és másolja őket a központi tárolóba.
 1. Nyissa meg a Csoportházirend kezelése eszközt.
-1. Hozzon létre egy csoportházirend objektumot a következő beállítással: **felhasználói konfiguráció** > **Felügyeleti sablonok** > **Microsoft Office 2016** > **egyebek** > **az Office-alkalmazások LinkedIn szolgáltatásainak megjelenítése**.
+1. Hozzon létre egy csoportházirend objektumot a következő beállítással: **felhasználói konfiguráció**  >  **Felügyeleti sablonok**  >  **Microsoft Office 2016**  >  **egyebek**  >  **az Office-alkalmazások LinkedIn szolgáltatásainak megjelenítése**.
 1. Válassza az **engedélyezve** vagy a **Letiltva**lehetőséget.
   
    Állapot | Hatás

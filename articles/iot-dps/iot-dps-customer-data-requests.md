@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890653"
 ---
-# <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
+# <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
 
 Az Azure IoT Hub Device Provisioning Service olyan nagyvállalati ügyfeleknek szánt, REST API alapú felhőalapú szolgáltatás, amely lehetővé teszi, hogy az eszközök zökkenőmentes, automatizált, nulla szintű kiépíthető legyenek az Azure IoT Hubba az eszközön kezdődő és a felhővel végződő biztonsággal.
 
@@ -62,6 +61,6 @@ A REST API-k használatával a beléptetésekhez és a regisztrációs rekordokh
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációra mutató hivatkozások
 
-A Device kiépítési szolgáltatás API-jai teljes dokumentációja a [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)következő helyen található:.
+A Device kiépítési szolgáltatás API-jai teljes dokumentációja a következő helyen található: [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps) .
 
 Az Azure IoT Hub [ügyfél-adatkérés funkciói](../iot-hub/iot-hub-customer-data-requests.md).

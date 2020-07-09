@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247292"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események figyelése, fogadása és küldése az Azure Event Hubs és Azure Logic Apps
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események monitorozása, fogadása és küldése az Azure Event Hubs és az Azure Logic Apps használatával
 
-Ez a cikk bemutatja, hogyan figyelheti és kezelheti az [azure Event Hubsnak](../event-hubs/event-hubs-what-is-event-hubs.md) eljuttatott eseményeket egy logikai alkalmazásból az Azure Event Hubs Connector használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják az események ellenőrzési, küldési és fogadási feladatait és munkafolyamatait az Event Hubon. Az összekötő-specifikus technikai információk az [Azure Event Hubs-összekötő dokumentációjában](https://docs.microsoft.com/connectors/eventhubs/)</a>olvashatók.
+Ez a cikk bemutatja, hogyan figyelheti és kezelheti az [azure Event Hubsnak](../event-hubs/event-hubs-what-is-event-hubs.md) eljuttatott eseményeket egy logikai alkalmazásból az Azure Event Hubs Connector használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják az események ellenőrzési, küldési és fogadási feladatait és munkafolyamatait az Event Hubon. Az összekötő-specifikus technikai információk az [Azure Event Hubs-összekötő dokumentációjában](https://docs.microsoft.com/connectors/eventhubs/)olvashatók </a> .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,13 +49,13 @@ Győződjön meg arról, hogy a logikai alkalmazás hozzáfér az Event hub-hoz,
       ![Event Hubs névtérbeli kapcsolatok karakterláncának másolása](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Annak ellenőrzéséhez, hogy a kapcsolati karakterlánc társítva van-e a Event Hubs névteréhez vagy egy adott Event hub-hoz, győződjön `EntityPath`  meg arról, hogy a kapcsolati karakterlánc nem rendelkezik a paraméterrel. Ha ezt a paramétert találja, a kapcsolati karakterlánc egy adott Event hub "Entity" értékre vonatkozik, és nem a logikai alkalmazáshoz használandó helyes sztring.
+      > Annak ellenőrzéséhez, hogy a kapcsolati karakterlánc társítva van-e a Event Hubs névteréhez vagy egy adott Event hub-hoz, győződjön meg arról, hogy a kapcsolati karakterlánc nem rendelkezik a `EntityPath`   paraméterrel. Ha ezt a paramétert találja, a kapcsolati karakterlánc egy adott Event hub "Entity" értékre vonatkozik, és nem a logikai alkalmazáshoz használandó helyes sztring.
 
 1. Most folytassa a [Event Hubs-trigger hozzáadásával](#add-trigger) vagy [egy Event Hubs művelet hozzáadásával](#add-action).
 
 <a name="add-trigger"></a>
 
-## <a name="add-event-hubs-trigger"></a>Event Hubs trigger hozzáadása
+## <a name="add-event-hubs-trigger"></a>Event Hubs-trigger hozzáadása
 
 Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
 
@@ -76,23 +75,23 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Event hub neve** | Igen | A figyelni kívánt Event hub neve |
-   | **Tartalom típusa** | Nem | Az esemény tartalomtípusa. A mező alapértelmezett értéke: `application/octet-stream`. |
-   | **Fogyasztói csoport neve** | Nem | Az események olvasásához használandó [Event hub-beli fogyasztói csoport neve](../event-hubs/event-hubs-features.md#consumer-groups) . Ha nincs megadva, a rendszer az alapértelmezett fogyasztói csoportot használja. |
-   | **Események maximális száma** | Nem | Az események maximális száma. Az trigger az egyik és a tulajdonság által megadott események száma közötti értéket adja vissza. |
-   | **Időköz** | Igen | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján |
-   | **Gyakoriság** | Igen | Az ismétlődés időegysége |
+   | **Event hub neve** | Yes | A figyelni kívánt Event hub neve |
+   | **Tartalom típusa** | No | Az esemény tartalomtípusa. A mező alapértelmezett értéke: `application/octet-stream`. |
+   | **Fogyasztói csoport neve** | No | Az események olvasásához használandó [Event hub-beli fogyasztói csoport neve](../event-hubs/event-hubs-features.md#consumer-groups) . Ha nincs megadva, a rendszer az alapértelmezett fogyasztói csoportot használja. |
+   | **Események maximális száma** | No | Az események maximális száma. Az trigger az egyik és a tulajdonság által megadott események száma közötti értéket adja vissza. |
+   | **Időköz** | Yes | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján |
+   | **Gyakoriság** | Yes | Az ismétlődés időegysége |
    ||||
 
    **További tulajdonságok**
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Tartalmi séma** | Nem | Az Event hub-ból beolvasni kívánt események JSON-tartalmának sémája. Ha például megadja a tartalmi sémát, a logikai alkalmazást csak azokhoz az eseményekhez aktiválhatja, amelyek megfelelnek a sémának. |
-   | **Minimális partíciós kulcs** | Nem | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosító minimális értéket. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
-   | **Partíció maximális kulcsa** | Nem | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) maximális azonosítóját. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
-   | **Időzóna** | Nem | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el UTC-eltolást. Válassza ki az alkalmazni kívánt időzónát. <p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
-   | **Kezdési idő** | Nem | Adja meg a kezdő időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ<p>– vagy –<p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát<p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
+   | **Tartalmi séma** | No | Az Event hub-ból beolvasni kívánt események JSON-tartalmának sémája. Ha például megadja a tartalmi sémát, a logikai alkalmazást csak azokhoz az eseményekhez aktiválhatja, amelyek megfelelnek a sémának. |
+   | **Minimális partíciós kulcs** | No | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosító minimális értéket. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
+   | **Partíció maximális kulcsa** | No | Adja meg az olvasni kívánt [partíció](../event-hubs/event-hubs-features.md#partitions) maximális azonosítóját. Alapértelmezés szerint a rendszer az összes partíciót beolvassa. |
+   | **Időzóna** | No | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el UTC-eltolást. Válassza ki az alkalmazni kívánt időzónát. <p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
+   | **Kezdési idő** | No | Adja meg a kezdő időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ<p>-vagy-<p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát<p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
    ||||
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
@@ -108,7 +107,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
 <a name="add-action"></a>
 
-## <a name="add-event-hubs-action"></a>Event Hubs művelet hozzáadása
+## <a name="add-event-hubs-action"></a>Event Hubs-művelet hozzáadása
 
 Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan lépés a munkafolyamatban, amely egy triggert vagy egy másik műveletet követ. Ebben a példában a logikai alkalmazás egy Event Hubs eseményindítóval kezdődik, amely az Event hub új eseményeit ellenőrzi.
 
@@ -117,7 +116,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 1. Az trigger vagy a művelet alatt válassza az **új lépés**lehetőséget.
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként az "Event hubok" kifejezést.
 A műveletek listából válassza a következő műveletet: **esemény küldése – Event Hubs**
@@ -132,10 +131,10 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Event hub neve** | Igen | Az Event hub, ahová el szeretné küldeni az eseményt |
-   | **Tartalom** | Nem | Az elküldeni kívánt esemény tartalma |
-   | **Tulajdonságok** | Nem | A küldendő alkalmazás tulajdonságai és értékei |
-   | **Partíciókulcs** | Nem | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
+   | **Event hub neve** | Yes | Az Event hub, ahová el szeretné küldeni az eseményt |
+   | **Tartalom** | No | Az elküldeni kívánt esemény tartalma |
+   | **Tulajdonságok** | No | A küldendő alkalmazás tulajdonságai és értékei |
+   | **Partíciókulcs** | No | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
    ||||
 
    Elküldheti például a kimenetet a Event Hubs eseményindítóból egy másik Event hubhoz:
@@ -152,10 +151,10 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
 1. Ha a rendszer a kapcsolódási adatok megadását kéri, adja meg a következő adatokat:
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
-   | **Event Hubs névtér** | Igen | <*Event-hubok – névtér*> | Válassza ki a használni kívánt Event Hubs névteret. |
+   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
+   | **Event Hubs névtér** | Yes | <*Event-hubok – névtér*> | Válassza ki a használni kívánt Event Hubs névteret. |
    |||||  
 
    Például:

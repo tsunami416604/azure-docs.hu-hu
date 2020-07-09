@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780640"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807781"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -72,7 +72,7 @@ Foglalásokat az Azure Portalon, API-kkal, a PowerShellben és a parancssori fel
 - [Dedicated Host](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [Szoftvercsomagok](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
-- [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure Database for PostgreSQL](../../postgresql/concept-reserved-pricing.md)
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
@@ -85,7 +85,7 @@ Havi kifizetésekkel is fizethet a foglalásokért. Az előre fizetéses vásár
 
 Ha foglalását Microsoft Ügyfélszerződés (Microsoft Customer Agreement, MCA) keretén belül vásárolta, a havonta fizetendő összeg a helyi pénznem aktuális hónapban érvényes átváltási árfolyamától függően változhat.
 
-A havi kifizetések az alábbiakhoz nem érhetőek el: Databricks, SUSE Linux-foglalások, Red Hat-csomagok és Azure Red Hat OpenShift-számítások.
+A havi kifizetések az alábbiakhoz nem érhetőek el: Databricks, SUSE Linux-foglalások, Red Hat-csomagok és Azure Red Hat OpenShift-licencek.
 
 ### <a name="view-payments-made"></a>A megtörtént kifizetések megtekintése
 

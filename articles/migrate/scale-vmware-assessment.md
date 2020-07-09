@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepít
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336850"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagy számú VMware virtuális gép értékelése az Azure-ba való áttelepítéshez
@@ -65,7 +65,7 @@ Ha több-bérlős környezetet szeretne tervezni, a felderítést a vCenter Serv
 
 - A berendezés felderítési hatókörét beállíthatja egy vCenter Server adatközpontra, fürtökre vagy a fürtök, a gazdagépek vagy az egyes virtuális gépek mappájára vagy mappára.
 - Ha a környezet a bérlők között van megosztva, és az egyes bérlőket külön szeretné felderíteni, akkor a hatókörhöz való hozzáférést a berendezés által a felderítéshez használt vCenter-fiókhoz is elérheti. 
-    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. [További információ](set-discovery-scope.md).
+    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. [További információk](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 

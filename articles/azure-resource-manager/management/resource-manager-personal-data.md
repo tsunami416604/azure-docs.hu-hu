@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan kezelheti Azure Resource Manager műveletekhez 
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75485259"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Managerhoz társított személyes adatai kezelése
@@ -40,7 +39,7 @@ Az erőforráscsoport neve mindaddig megmarad, amíg nem törli az erőforráscs
 
 Az **erőforráscsoportok**listázásához használja a következőt:
 
-* [Listáját](/rest/api/resources/resourcegroups/list)
+* [Lista](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az Group List](/cli/azure/group#az-group-list)
 
@@ -56,7 +55,7 @@ A címkék nevei és értékei mindaddig megmaradnak, amíg nem törli vagy nem 
 
 **Címkék**listázásához használja a következőt:
 
-* [Listáját](/rest/api/resources/tags/list)
+* [Lista](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [az az tag List](/cli/azure/tag#az-tag-list)
 

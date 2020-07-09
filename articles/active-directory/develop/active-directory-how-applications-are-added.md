@@ -14,10 +14,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80884273"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
@@ -105,7 +104,7 @@ A saját maga által hozzáadott alkalmazások (amelyek a diagramon az **alkalma
   * Attribútum-hozzárendelések (felhasználói kiépítés)
 * Az egyszerű szolgáltatással és az alkalmazás-objektumokkal kapcsolatos részletes információkért tekintse meg a Microsoft Graph API-dokumentációt:
   * [Alkalmazás](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Szolgáltatásnév](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Egyszerű szolgáltatásnév](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Az alkalmazások hogyan integrálhatók az Azure AD-vel?
 

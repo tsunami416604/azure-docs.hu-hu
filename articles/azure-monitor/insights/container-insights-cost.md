@@ -2,13 +2,12 @@
 title: A tárolók Azure Monitorának figyelési díja | Microsoft Docs
 description: Ez a cikk ismerteti a metrikák figyelési költségeit, & a Azure Monitor által gyűjtött leltározási adatokat, amelyek segítenek az ügyfeleknek a használat és a kapcsolódó költségek kezelésében.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 44802f611919fbf88894576eecf581a668e05b5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122464"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204650"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>A tárolók Azure Monitor figyelési költségeinek megismerése
 
@@ -110,7 +109,7 @@ Ha engedélyezte a következőképpen konfigurált AK-fürtök figyelését,
 
 A hozzárendelt Log Analytics munkaterületen megtekintheti az óránként generált táblákat és adatmennyiséget. További információ ezekről a táblákról: [tároló rekordjai](container-insights-log-search.md#container-records).
 
-|Tábla | Becsült méret (MB/óra) |
+|Táblázat | Becsült méret (MB/óra) |
 |------|---------------|
 |Teljesítmény | 12,9 |
 |InsightsMetrics | 11,3 |
@@ -140,6 +139,8 @@ Vegyünk egy olyan forgatókönyvet, amelyben a szervezete különböző üzleti
 - Logsource-bejegyzés által betöltött számlázható tároló naplózási adata
 
 - Diagnosztikai főcsomóponti naplók által betöltött számlázható diagnosztikai adatok
+
+Ha szeretné megtudni, hogyan kezelhetők a munkafüzetek jogai és engedélyei, tekintse át a [hozzáférés-vezérlés](../platform/workbooks-access-control.md)című témakört.
 
 Miután elvégezte az elemzést annak meghatározásához, hogy melyik forrás vagy forrás hozza létre a legtöbb adat, vagy több olyan adat, amely meghaladja a követelményeket, újrakonfigurálhatja az adatgyűjtést. Az stdout, a stderr és a környezeti változók gyűjtésének konfigurálásáról az [ügynök adatgyűjtési beállításainak konfigurálása](container-insights-agent-config.md) című cikkben olvashat bővebben.
 

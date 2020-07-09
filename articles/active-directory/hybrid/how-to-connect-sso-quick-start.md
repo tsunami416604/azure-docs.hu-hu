@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358004"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -100,9 +100,8 @@ Kövesse ezeket az utasításokat annak ellenőrzéséhez, hogy megfelelően eng
 
 ## <a name="step-3-roll-out-the-feature"></a>3. lépés: a funkció bevezetése
 
-A zökkenőmentes SSO-t fokozatosan kiderítheti a felhasználók számára az alábbi utasítások alapján. Első lépésként adja hozzá a következő Azure AD URL-címeket az összes vagy a kiválasztott felhasználó intranetes zónájának beállításaihoz a Active Directory Csoportházirend használatával:
+A zökkenőmentes SSO-t fokozatosan kiderítheti a felhasználók számára az alábbi utasítások alapján. Első lépésként adja hozzá a következő Azure AD URL-címet az összes vagy a kiválasztott felhasználó intranetes zónájának beállításaihoz a Active Directory Csoportházirend használatával:
 
-- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Emellett engedélyeznie kell egy intranetes zóna házirend-beállítását, amelynek neve a **frissítés engedélyezése az állapotsoron parancsfájlon** keresztül csoportházirend. 

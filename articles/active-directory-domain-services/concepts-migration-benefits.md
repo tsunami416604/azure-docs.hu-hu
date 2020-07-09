@@ -10,16 +10,15 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 29d7772ef688134e8fc9009ec32cffacc3f23ca7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734928"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>A Klasszikusról Resource Manager-alapú üzemi modellre való Migrálás előnyei Azure Active Directory Domain Services
 
-A Azure Active Directory Domain Services (AD DS) lehetővé teszi egy meglévő felügyelt tartomány áttelepítését, amely a klasszikus üzemi modellt használja a Resource Manager-alapú üzemi modellre. Az Azure AD DS a Resource Manager-alapú üzemi modellt használó felügyelt tartományok olyan további funkciókat biztosítanak, mint például a részletes jelszóházirendek, a naplók és a fiókzárolás elleni védelem.
+Azure Active Directory Domain Services (Azure AD DS) lehetővé teszi egy meglévő felügyelt tartomány áttelepítését, amely a klasszikus üzemi modellt használja a Resource Manager-alapú üzemi modellre. Az Azure AD DS a Resource Manager-alapú üzemi modellt használó felügyelt tartományok olyan további funkciókat biztosítanak, mint például a részletes jelszóházirendek, a naplók és a fiókzárolás elleni védelem.
 
 Ez a cikk az áttelepítés előnyeit ismerteti. Első lépésként tekintse [meg a Azure ad Domain Services áttelepítését a klasszikus virtuális hálózati modellből a Resource Managerbe][howto-migrate]című témakört.
 
@@ -30,7 +29,7 @@ Ez a cikk az áttelepítés előnyeit ismerteti. Első lépésként tekintse [me
 
 ## <a name="migration-benefits"></a>Áttelepítési előnyök
 
-Az áttelepítési folyamat egy meglévő Azure AD DS-példányt használ, amely a klasszikus telepítési modellt használja, és a Resource Manager-alapú üzemi modellt használja. Ha egy Azure AD DS felügyelt tartományt telepít át a Klasszikusról Resource Manager-alapú üzemi modellre, akkor nem kell újracsatlakoztatni a gépeket a felügyelt tartományhoz, vagy törölnie kell az Azure AD DS példányt, és létre kell hoznia egyet a semmiből. A virtuális gépek továbbra is csatlakozni fognak az Azure AD DS felügyelt tartományhoz az áttelepítési folyamat végén.
+Az áttelepítési folyamat egy meglévő felügyelt tartományt használ, amely a klasszikus telepítési modellt használja, és a Resource Manager-alapú üzemi modellt használja. Amikor felügyelt tartományt telepít át a Klasszikusról Resource Manager-alapú üzemi modellre, nem kell újracsatlakoztatni a gépeket a felügyelt tartományhoz, vagy törölnie kell a felügyelt tartományt, és létre kell hoznia egy teljesen új példányt. A virtuális gépek továbbra is csatlakozni fognak a felügyelt tartományhoz az áttelepítési folyamat végén.
 
 Az áttelepítés után az Azure AD DS számos olyan funkciót biztosít, amelyek csak a Resource Manager-alapú üzemi modellt használó tartományokhoz érhetők el, például a következőkkel:
 
@@ -46,7 +45,7 @@ Az áttelepítés után az Azure AD DS számos olyan funkciót biztosít, amelye
 * A támogatás több telemetria férhet hozzá, és hatékonyabban tudja elhárítani a hibakeresést.
 * A felügyelt tartományvezérlőkön lévő adatok [Azure Managed Disks][managed-disks] használatával történő titkosítása.
 
-A Resource Manager-alapú üzemi modellt használó Azure AD DS felügyelt tartományok a legújabb új funkciókkal naprakészek maradnak. A klasszikus üzemi modellt használó Azure AD DS felügyelt tartományokhoz nem érhetők el új funkciók.
+A Resource Manager-alapú üzemi modellt használó felügyelt tartományok a legújabb új funkciókkal naprakészek maradnak. A klasszikus üzemi modellt használó felügyelt tartományok esetében nem érhetők el új funkciók.
 
 ## <a name="next-steps"></a>További lépések
 

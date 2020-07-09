@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a Service Fa
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991330"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi Linux-alapú gépek fejlesztésének beállításakor
@@ -24,7 +24,7 @@ A szolgáltatások figyelése, észlelése, diagnosztizálása és hibaelhárít
 
 ## <a name="debugging-service-fabric-java-applications"></a>Java-alkalmazások hibakeresése Service Fabric
 
-Java-alkalmazások esetében [több naplózási keretrendszer](https://en.wikipedia.org/wiki/Java_logging_framework) érhető el. Mivel `java.util.logging` az alapértelmezett beállítás a JRE-ben, a [kód példákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)is használ a githubban. A következő vitafórum ismerteti a `java.util.logging` keretrendszer konfigurálásának módját.
+Java-alkalmazások esetében [több naplózási keretrendszer](https://en.wikipedia.org/wiki/Java_logging_framework) érhető el. Mivel az `java.util.logging` alapértelmezett beállítás a JRE-ben, a [kód példákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)is használ a githubban. A következő vitafórum ismerteti a keretrendszer konfigurálásának módját `java.util.logging` .
 
 A Java. util. Logging használatával átirányíthatja az alkalmazás naplóit a memóriára, a kimeneti adatfolyamokra, a konzol fájljaira vagy a szoftvercsatornára. Ezen beállítások esetében a keretrendszerben már vannak alapértelmezett kezelők. Létrehozhat egy `app.properties` fájlt, amely az alkalmazás fájlkezelőjét konfigurálja úgy, hogy az összes naplót átirányítsa egy helyi fájlba.
 
@@ -40,14 +40,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-A `app.properties` fájlra mutató mappanak léteznie kell. `app.properties` A fájl létrehozása után módosítania kell `entrypoint.sh` a belépési pont parancsfájlját is a `<applicationfolder>/<servicePkg>/Code/` mappában, hogy a tulajdonságot `java.util.logging.config.file` `app.properties` fájlba állítsa. A bejegyzésnek a következő kódrészlethez hasonlóan kell kinéznie:
+A fájlra mutató mappanak `app.properties` léteznie kell. A `app.properties` fájl létrehozása után módosítania kell a belépési pont parancsfájlját is `entrypoint.sh` a `<applicationfolder>/<servicePkg>/Code/` mappában, hogy a tulajdonságot fájlba állítsa `java.util.logging.config.file` `app.properties` . A bejegyzésnek a következő kódrészlethez hasonlóan kell kinéznie:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Ez a konfiguráció a naplókat a következő `/tmp/servicefabric/logs/`rotációs módon gyűjti. Ebben az esetben a naplófájl neve mysfapp% u .% g. log, ahol:
+Ez a konfiguráció a naplókat a következő rotációs módon gyűjti `/tmp/servicefabric/logs/` . Ebben az esetben a naplófájl neve mysfapp% u .% g. log, ahol:
 * a **(z)% u** egy egyedi szám az egyidejű Java-folyamatok közötti ütközések feloldásához.
 * a **(z)% g** a létrehozási szám, amely megkülönbözteti a forgó naplók közötti különbséget.
 
@@ -61,7 +61,7 @@ További információ: [példák a githubon](https://github.com/Azure-Samples/se
 
 A Linuxon futó CoreCLR-alkalmazások nyomkövetéséhez több keretrendszer is rendelkezésre áll. További információ: .net- [bővítmények a naplózáshoz](https://github.com/dotnet/extensions/tree/master/src/Logging).  Mivel a EventSource ismerős a C#-fejlesztők számára, "Ez a cikk a CoreCLR-minták EventSource használja a Linuxon.
 
-Az első lépés a System. Diagnostics. tracing belefoglalása, hogy a naplókat a memóriába, a kimeneti adatfolyamba vagy a konzol fájljaiba lehessen írni.  A EventSource használatával történő naplózáshoz adja hozzá a következő projektet a Project. JSON fájlhoz:
+Az első lépés a System. Diagnostics. tracing belefoglalása, hogy a naplókat a memóriába, a kimeneti adatfolyamba vagy a konzol fájljaiba lehessen írni.  A EventSource használatával történő naplózáshoz adja hozzá a következő projektet a project.jshoz:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
@@ -120,7 +120,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Az előző kódrészlet a naplófájlokat egy fájlba írja `/tmp/MyServiceLog.txt`. A fájl nevét megfelelően frissíteni kell. Ha át szeretné irányítani a naplókat a konzolra, használja a következő kódrészletet a testreszabott EventListener osztályban:
+Az előző kódrészlet a naplófájlokat egy fájlba írja `/tmp/MyServiceLog.txt` . A fájl nevét megfelelően frissíteni kell. Ha át szeretné irányítani a naplókat a konzolra, használja a következő kódrészletet a testreszabott EventListener osztályban:
 
 ```csharp
 public static TextWriter Out = Console.Out;
@@ -130,6 +130,6 @@ A C#- [minták](https://github.com/Azure-Samples/service-fabric-dotnet-core-gett
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alkalmazáshoz hozzáadott nyomkövetési kód az alkalmazás diagnosztikaával is együttműködik az Azure-fürtön. Tekintse át ezeket a cikkeket, amelyek az eszközök különböző lehetőségeit tárgyalják, és leírják, hogyan kell beállítani őket.
 * [Naplók összegyűjtése a Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)

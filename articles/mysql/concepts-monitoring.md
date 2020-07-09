@@ -5,13 +5,12 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 2de04bbb1523151ac566b78bf99eba34c437fccd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/25/2020
+ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414113"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
@@ -22,11 +21,11 @@ Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
-|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya.|
+|io_consumption_percent|IO-százalék|Százalék|A használatban lévő IO százalékos aránya. (Nem alkalmazható az alapszintű kiszolgálók esetében.)|
 |storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális száma által felhasznált tárterület százalékos aránya.|
 |storage_used|Felhasznált tárterület|Bájt|A használatban lévő tárterület mennyisége. A szolgáltatás által használt tárterület magában foglalhatja az adatbázisfájlok, a tranzakciós naplók és a kiszolgáló naplófájljait is.|
 |serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Százalék|A kiszolgáló naplófájl-tárolási helyének maximális tárterületének százalékos értéke.|
@@ -73,7 +72,7 @@ A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztáso
 A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el
+> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
 
 ## <a name="next-steps"></a>További lépések
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.

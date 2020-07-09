@@ -1,40 +1,25 @@
 ---
-title: Üzembehelyezési hibaelhárítási útmutató
+title: Docker-telepítés – hibaelhárítás
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogy miként lehet megkerülni, megoldani és elhárítani a Common Docker-telepítési hibákat az Azure Kubernetes szolgáltatással, és Azure Container Instances a Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873381"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214366"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 
 
-Megtudhatja, hogyan használhatja a Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes szolgáltatással (ak) a Azure Machine Learning használatával.
-
-Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre.
-
-Az ajánlott és a legmodernebb módszer a modell üzembe helyezéséhez a [Model. Deploy () API-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) t használja egy [környezeti](how-to-use-environments.md) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap Docker-rendszerképet az üzembe helyezési fázisban, és egy hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
-
-1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
-
-2. Következtetési konfiguráció meghatározása:
-    1. Hozzon létre egy [környezeti](how-to-use-environments.md) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
-    2. Hozzon létre egy következtetési konfigurációt (InferenceConfig-objektumot) a környezet és a pontozási parancsfájl alapján.
-
-3. A modell üzembe helyezése az Azure Container instance (ACI) szolgáltatásban vagy az Azure Kubernetes szolgáltatásban (ak).
-
-További információ a folyamatról a [modellkezelés](concept-model-management-and-deployment.md) bevezetésében.
+Megtudhatja, hogyan oldhatja fel az általános Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes szolgáltatással (ak) a Azure Machine Learning használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,6 +30,22 @@ További információ a folyamatról a [modellkezelés](concept-model-management
 * Helyi hibakereséshez rendelkeznie kell egy működő Docker-telepítéssel a helyi rendszeren.
 
     A Docker-telepítés ellenőrzéséhez használja a parancsot `docker run hello-world` egy terminálról vagy parancssorból. A Docker telepítésével vagy a Docker-hibák elhárításával kapcsolatos információkért tekintse meg a [Docker dokumentációját](https://docs.docker.com/).
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>A Machine learning-modellek Docker-telepítésének lépései
+
+Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre.
+
+A modell üzembe helyezésének ajánlott módja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API használata egy [környezeti](how-to-use-environments.md) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás alapszintű Docker-rendszerképet hoz létre az üzembe helyezési fázis során, és egyetlen hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
+
+1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
+
+2. Következtetési konfiguráció meghatározása:
+    1. Hozzon létre egy [környezeti](how-to-use-environments.md) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
+    2. Hozzon létre egy következtetési konfigurációt (InferenceConfig-objektumot) a környezet és a pontozási parancsfájl alapján.
+
+3. A modell üzembe helyezése az Azure Container instance (ACI) szolgáltatásban vagy az Azure Kubernetes szolgáltatásban (ak).
+
+További információ a folyamatról a [modellkezelés](concept-model-management-and-deployment.md) bevezetésében.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -124,7 +125,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Vegye figyelembe, hogy ha saját Conda-specifikációs YAML határoz meg, akkor a azureml alapértelmezett értékeit kell megadnia, amelyek a >= 1.0.45 verzióban pip-függőségként szerepelnek. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
+Ha saját Conda-specifikációs YAML határoz meg, akkor a azureml alapértelmezett értékeit kell megadnia a >= 1.0.45 verzióval pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
 
 Ezen a ponton a megszokott módon dolgozhat a szolgáltatással. Az alábbi kód például a szolgáltatásnak küldött adatokat mutatja be:
 
@@ -182,9 +183,9 @@ print(ws.webservices['mysvc'].get_logs())
 ```
 ## <a name="container-cannot-be-scheduled"></a>A tároló nem ütemezhető
 
-Egy szolgáltatás Azure Kubernetes szolgáltatásbeli számítási célra való telepítésekor a Azure Machine Learning megkísérli a szolgáltatás ütemezését a kért mennyiségű erőforrással. Ha 5 perc elteltével a fürtben nincsenek elérhető csomópontok a megfelelő mennyiségű erőforrással, a központi telepítés sikertelen lesz az üzenettel `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Ezt a hibát a további csomópontok hozzáadásával, a csomópontok SKU-jának módosításával vagy a szolgáltatás erőforrás-követelményeinek módosításával kezelheti. 
+Egy szolgáltatás Azure Kubernetes szolgáltatásbeli számítási célra való telepítésekor a Azure Machine Learning megkísérli a szolgáltatás ütemezését a kért mennyiségű erőforrással. Ha 5 perc elteltével nem érhetők el csomópontok a fürtben a megfelelő mennyiségű erőforrással, a telepítés sikertelen lesz az üzenettel `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Ezt a hibát a további csomópontok hozzáadásával, a csomópontok SKU-jának módosításával vagy a szolgáltatás erőforrás-követelményeinek módosításával kezelheti. 
 
-A hibaüzenet általában azt jelzi, hogy melyik erőforrásra van szüksége – például ha egy hibaüzenet jelenik meg, amely azt jelzi, hogy `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` a szolgáltatás a GPU-t igényli, és 3 csomópont van a fürtben, amely nem rendelkezik rendelkezésre álló GPU-val. Ez több csomópont hozzáadásával oldható meg, ha GPU SKU-t használ, váltson GPU-t támogató SKU-ra, ha nem a GPU-k használatára van szüksége, és nem módosítja a környezetet.  
+A hibaüzenet általában azt jelzi, hogy melyik erőforrásra van szüksége – például ha megjelenik egy hibaüzenet, amely azt jelzi, hogy `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` a szolgáltatás a GPU-t igényli, és a fürtben három olyan csomópont van, amely nem rendelkezik elérhető GPU-val. Ez több csomópont hozzáadásával oldható meg, ha GPU SKU-t használ, váltson GPU-t támogató SKU-ra, ha nem a GPU-k használatára van szüksége, és nem módosítja a környezetet.  
 
 ## <a name="service-launch-fails"></a>A szolgáltatás indítása sikertelen
 
@@ -275,7 +276,7 @@ A és a for beállításával kapcsolatos további információkért `autoscale_
 
 A 504 állapotkód azt jelzi, hogy a kérelem túllépte az időkorlátot. Az alapértelmezett időkorlát 1 perc.
 
-A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. Előfordulhat, hogy a kód lefagyott állapotban vagy végtelen hurokban van.
+A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. A kód nem válaszoló állapotban vagy végtelen hurokban is lehet.
 
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 
@@ -298,9 +299,9 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
 1. Ha a VS Code-t úgy szeretné konfigurálni, hogy kommunikáljon a Docker-lemezképpel, hozzon létre egy új hibakeresési konfigurációt:
 
-    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __Launch. JSON__ nevű fájl.
+    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
 
-    1. A __Launch. JSON__ fájlban keresse meg a tartalmazó sort `"configurations": [` , majd szúrja be a következő szöveget:
+    1. A fájl __launch.js__ keresse meg a tartalmazó sort `"configurations": [` , majd szúrja be a következő szöveget:
 
         ```json
         {
@@ -323,7 +324,7 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
         Ez a szakasz a Docker-tárolóhoz csatlakozik a 5678-es porton keresztül.
 
-    1. Mentse a __Launch. JSON__ fájlt.
+    1. Mentse a __launch.js__ fájlt.
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD tartalmazó rendszerkép létrehozása
 

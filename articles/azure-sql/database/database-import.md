@@ -1,9 +1,9 @@
 ---
-title: BACPAC-fájl importálása adatbázis létrehozásához az Azure SQL-ben
-description: Hozzon létre egy új Azure SQL Database vagy egy Azure SQL felügyelt példány-adatbázist egy BACPAC-fájlból.
+title: BACPAC-fájl importálása egy adatbázis létrehozásához Azure SQL Database
+description: Hozzon létre egy új adatbázist Azure SQL Database vagy Azure SQL felügyelt példányban egy BACPAC-fájlból.
 services: sql-database
-ms.service: sql-database
-ms.subservice: migration
+ms.service: sql-db-mi
+ms.subservice: migrate
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 25e8790ed0fd5a9a9d93458c3c247632defa778a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7bca179f3140a64923af71199fe4a1db48d2065c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050673"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982337"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fájl használatával importálhat egy SQL Server adatbázist egy Azure SQL Database vagy SQL felügyelt példányba. Az adatok importálhatók az `BACPAC` Azure Blob Storage-ban tárolt fájlból (csak standard szintű tárolóban) vagy helyi tárolóból egy helyszíni helyen. Ha maximálisra szeretné növelni az importálási sebességet több, gyorsabb erőforrás biztosításával, skálázza az adatbázist magasabb szolgáltatási szintre és nagyobb számítási méretre az importálási folyamat során. A sikeres importálás után vertikálisan leskálázhatja őket.
+[BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fájl használatával importálhat egy SQL Server adatbázist Azure SQL Database vagy SQL felügyelt példányba. Az adatokat importálhatja az Azure Blob Storage-ben tárolt BACPAC-fájlból (csak standard tárolás), vagy egy helyszíni tárolóból. Ha maximálisra szeretné növelni az importálási sebességet több, gyorsabb erőforrás biztosításával, skálázza az adatbázist magasabb szolgáltatási szintre és nagyobb számítási méretre az importálási folyamat során. A sikeres importálás után vertikálisan leskálázhatja őket.
 
 > [!NOTE]
 > Az importált adatbázis kompatibilitási szintje a forrás adatbázis kompatibilitási szintjén alapul.
@@ -35,12 +35,12 @@ Tekintse meg ezt a videót, amelyből megtudhatja, hogyan importálhat egy BACPA
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-A [Azure Portal](https://portal.azure.com) *csak* egyetlen Azure SQL Database létrehozását támogatja, és *csak* az Azure Blob Storage-ban tárolt BACPAC-fájlból.
+A [Azure Portal](https://portal.azure.com) *csak* az Azure Blob Storage-ban tárolt BACPAC *-* fájlokból hoz létre egyetlen adatbázist a Azure SQL Databaseban.
 
 Ha az adatbázist egy BACPAC-fájlból egy [Azure SQL felügyelt példányba](../managed-instance/sql-managed-instance-paas-overview.md) kívánja áttelepíteni, használja a SQL Server Management Studio vagy a SQLPackage, a Azure Portal vagy a Azure PowerShell használata jelenleg nem támogatott.
 
 > [!NOTE]
-> A Azure Portalon vagy PowerShellen keresztül küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy néhány kérelem meghiúsul a hibával `There is not enough space on the disk` . Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására SqlPackage használjon.
+> A Azure Portalon vagy PowerShellen keresztül küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy néhány kérelem meghiúsul a hibával `There is not enough space on the disk` . Ebben az esetben a megkerülő megoldás az sqlpackage.exe futtatása egy olyan gépen, amely elegendő helyi lemezterülettel rendelkezik. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására SqlPackage használjon.
 
 1. Ha a Azure Portal használatával szeretne importálni egy BACPAC-fájlból egy új önálló adatbázisba, nyissa meg a megfelelő kiszolgáló lapot, majd az eszköztáron válassza az **adatbázis importálása**lehetőséget.  
 
@@ -48,7 +48,7 @@ Ha az adatbázist egy BACPAC-fájlból egy [Azure SQL felügyelt példányba](..
 
 1. Válassza ki a Storage-fiókot és a tárolót a BACPAC fájlhoz, majd válassza ki azt a BACPAC-fájlt, amelyből importálni kívánja.
 
-1. Adja meg az új adatbázis méretét (általában megegyezik a forrással), és adja meg a cél SQL Server hitelesítő adatokat. Az új Azure SQL Database lehetséges értékeinek listáját az [adatbázis létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)című témakörben tekintheti meg.
+1. Adja meg az új adatbázis méretét (általában megegyezik a forrással), és adja meg a cél SQL Server hitelesítő adatokat. A Azure SQL Databaseban található új adatbázis lehetséges értékeinek listáját az [adatbázis létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)című témakörben tekintheti meg.
 
    ![Adatbázis import2](./media/database-import/sql-server-import-database-settings.png)
 
@@ -87,7 +87,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [A felügyelt SQL-példányok](../managed-instance/sql-managed-instance-paas-overview.md) jelenleg nem támogatják az adatbázisok példány-adatbázisba való áttelepítését egy BACPAC-fájlból Azure PowerShell használatával. SQL felügyelt példányba való importáláshoz használja a SQL Server Management Studio vagy a SQLPackage.
 
 > [!NOTE]
-> A portálon vagy a Powershellen keresztül küldött importálási/exportálási kérelmek feldolgozását végző gépeknek a bacpac-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentős mértékben változhat az azonos méretű adatbázisok között, és akár 3 alkalommal is eltarthat az adatbázis mérete. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy egyes kérések meghiúsulnak a "nincs elég hely a lemezen" hibaüzenet. Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A 150GB-nál nagyobb adatbázisok importálásakor/exportálásakor a SqlPackage használatával elkerülhető a probléma.
+> A portálon vagy a Powershellen keresztül küldött importálási/exportálási kérelmek feldolgozását végző gépeknek a bacpac-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentős mértékben változhat az azonos méretű adatbázisok között, és akár 3 alkalommal is eltarthat az adatbázis mérete. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy egyes kérések meghiúsulnak a "nincs elég hely a lemezen" hibaüzenet. Ebben az esetben a megkerülő megoldás az sqlpackage.exe futtatása egy olyan gépen, amely elegendő helyi lemezterülettel rendelkezik. A 150GB-nál nagyobb adatbázisok importálásakor/exportálásakor a SqlPackage használatával elkerülhető a probléma.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -146,7 +146,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 ## <a name="limitations"></a>Korlátozások
 
 - A rugalmas készletben lévő adatbázisokba importálás nem támogatott. Az adatokat importálhatja egy önálló adatbázisba, majd az adatbázist áthelyezheti egy rugalmas készletbe.
-- Az importálási exportálási szolgáltatás nem működik, ha az Azure-szolgáltatásokhoz való hozzáférés engedélyezése beállítás ki van kapcsolva. A probléma megoldásához azonban a sqlpackage. exe fájlt manuálisan is futtathatja egy Azure-beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
+- Az importálási exportálási szolgáltatás nem működik, ha az Azure-szolgáltatásokhoz való hozzáférés engedélyezése beállítás ki van kapcsolva. Azonban a probléma megoldásához manuálisan is futtathatja sqlpackage.exe egy Azure-beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
 
 ## <a name="import-using-wizards"></a>Importálás varázslók használatával
 
@@ -157,7 +157,7 @@ Ezeket a varázslókat is használhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha meg szeretné tudni, hogyan csatlakozhat egy Azure SQL Databasehoz, és hogyan lehet lekérdezni, tekintse meg a gyors útmutató [: Azure SQL Database: SQL Server Management Studio használata a kapcsolódáshoz és a lekérdezéshez](connect-query-ssms.md)
+- Ha meg szeretné tudni, hogyan csatlakozhat az adatbázishoz, és hogyan lehet lekérdezéseket Azure SQL Databaseban, tekintse meg a gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használatával csatlakozhat az adatlekérdezéshez](connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
 - A teljes SQL Server adatbázis-áttelepítési folyamatról, beleértve a teljesítménnyel kapcsolatos ajánlásokat is, tekintse meg a [SQL Server adatbázis áttelepítésének Azure SQL Database](migrate-to-database-from-sql-server.md).
 - A tárolási kulcsok és a közös hozzáférési aláírások biztonságos kezelésével és megosztásával kapcsolatos további információkért lásd: az [Azure Storage biztonsági útmutatója](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610148"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
@@ -45,7 +44,7 @@ A biztonsági mentési szabályzat a következő konfigurációkból áll:
         ```
 
     2. **Időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap vagy hét adott időpontjában kell végrehajtani. Az ütemezett gyakoriság típusa lehet naponta vagy hetente.
-        1. ** _Napi_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. A beállítás megadásához `ScheduleFrequencyType` állítsa _napire_a következőt: `RunTimes` a ISO8601 formátumban megadott időpontot pedig a kívánt idő listájának megfelelően a rendszer figyelmen kívül hagyja. Például `0001-01-01T18:00:00` a _6:00 PM_ mindennapi, figyelmen kívül hagyva a _0001-01-01_. Az alábbi példa azt szemlélteti, hogy a napi biztonsági mentést az _9:00_ -es és a _6:00_ -as nap minden nap elindítsa.
+        1. ** _Napi_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. Ha ezt szeretné megadni, `ScheduleFrequencyType` állítsa _napi_értékre, és állítsa be a `RunTimes` kívánt idő listáját a nap folyamán a ISO8601 formátumban, a dátummal együtt megadott dátum figyelmen kívül lesz hagyva. Például a `0001-01-01T18:00:00` _6:00 PM_ mindennapi, figyelmen kívül hagyva a _0001-01-01_. Az alábbi példa azt szemlélteti, hogy a napi biztonsági mentést az _9:00_ -es és a _6:00_ -as nap minden nap elindítsa.
 
             ```json
             {
@@ -58,7 +57,7 @@ A biztonsági mentési szabályzat a következő konfigurációkból áll:
             }
             ```
 
-        2. ** _Heti_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. Ennek megadásához állítsa `ScheduleFrequencyType` be a következőt: _Weekly_; azt `RunDays` a napot adja meg egy héten belül, amikor a biztonsági mentést el kell indítani `RunTimes` , és a nap folyamán a ISO8601 formátumban a kívánt idő listájára kell beállítani, a dátummal együtt megadott dátumot pedig figyelmen kívül hagyja a rendszer. Egy hét napjainak listája az időszakos biztonsági mentés elindításához. Az alábbi példa azt szemlélteti, hogyan lehet a napi biztonsági mentést az _9:00_ -es és a _6:00_ -es időpontra kiváltani a hétfőtől péntekig.
+        2. ** _Heti_ időalapú biztonsági mentési ütemterv**: ezt az ütemtervet akkor kell használni, ha az adatbiztonsági mentést a nap adott időpontjában be kell állítani. Ennek megadásához állítsa be a következőt `ScheduleFrequencyType` : _Weekly_; állítsa be `RunDays` azt a napot egy héten belül, amikor a biztonsági mentést el kell indítani `RunTimes` , és a nap során a kívánt időt kell beállítani a ISO8601 formátumban, és az idővel megadott dátumot figyelmen kívül hagyja a rendszer. Egy hét napjainak listája az időszakos biztonsági mentés elindításához. Az alábbi példa azt szemlélteti, hogyan lehet a napi biztonsági mentést az _9:00_ -es és a _6:00_ -es időpontra kiváltani a hétfőtől péntekig.
 
             ```json
             {
@@ -119,7 +118,7 @@ A biztonsági mentési szabályzat a következő konfigurációkból áll:
 >
 
 * **Adatmegőrzési szabály**: a konfigurált tárolóban lévő biztonsági másolatok megőrzésére vonatkozó házirendet határozza meg. Csak az alapszintű adatmegőrzési szabályok támogatottak.
-    1. **Alapszintű adatmegőrzési szabály**: ez az adatmegőrzési szabály lehetővé teszi az optimális tárterület-kihasználtság biztosítását a nem szükséges biztonsági mentési fájlok eltávolításával. `RetentionDuration`megadható azt az időtartományt, ameddig a tárolóban meg kell őrizni a biztonsági mentéseket. `MinimumNumberOfBackups`egy opcionális paraméter, amely megadható, hogy a megadott számú biztonsági mentés mindig a-tól függetlenül megmaradjon `RetentionDuration`. Az alábbi példa azt szemlélteti, hogy a biztonsági másolatok _10_ napig megmaradjanak, és nem teszi lehetővé, hogy a biztonsági másolatok száma _20_alá kerüljön.
+    1. **Alapszintű adatmegőrzési szabály**: ez az adatmegőrzési szabály lehetővé teszi az optimális tárterület-kihasználtság biztosítását a nem szükséges biztonsági mentési fájlok eltávolításával. `RetentionDuration`megadható azt az időtartományt, ameddig a tárolóban meg kell őrizni a biztonsági mentéseket. `MinimumNumberOfBackups`egy opcionális paraméter, amely megadható, hogy a megadott számú biztonsági mentés mindig a-tól függetlenül megmaradjon `RetentionDuration` . Az alábbi példa azt szemlélteti, hogy a biztonsági másolatok _10_ napig megmaradjanak, és nem teszi lehetővé, hogy a biztonsági másolatok száma _20_alá kerüljön.
 
         ```json
         {
@@ -140,7 +139,7 @@ Előfordulhat, hogy az alkalmazás összes szolgáltatásához azonos biztonság
 
 ### <a name="example"></a>Példa
 
-Ez a példa a telepítőt használja két alkalmazással, _MyApp_A_ és _MyApp_Bval_. Az alkalmazás _MyApp_A_ két megbízható állapot-nyilvántartó szolgáltatást tartalmaz, a _SvcA1_ & _SvcA3_és egy megbízható Actor Service-t, a _ActorA2_-t. A _SvcA1_ három partíciót tartalmaz, míg a _ActorA2_ és a _SvcA3_ két partíciót tartalmaz.  Az alkalmazás _MyApp_B_ három megbízható állapot-nyilvántartó szolgáltatást, _SvcB1_, _SvcB2_és _SvcB3_tartalmaz. A _SvcB1_ és a _SvcB2_ két partíciót tartalmaz, míg a _SvcB3_ három partíciót tartalmaz.
+Ez a példa a telepítőt használja két alkalmazással, _MyApp_A_ és _MyApp_Bval_. Az alkalmazás _MyApp_A_ két megbízható állapot-nyilvántartó szolgáltatást tartalmaz, a _SvcA1_  &  _SvcA3_és egy megbízható Actor Service-t, a _ActorA2_-t. A _SvcA1_ három partíciót tartalmaz, míg a _ActorA2_ és a _SvcA3_ két partíciót tartalmaz.  Az alkalmazás _MyApp_B_ három megbízható állapot-nyilvántartó szolgáltatást, _SvcB1_, _SvcB2_és _SvcB3_tartalmaz. A _SvcB1_ és a _SvcB2_ két partíciót tartalmaz, míg a _SvcB3_ három partíciót tartalmaz.
 
 Tegyük fel, hogy ezek az alkalmazások biztonsági mentési követelményei a következők:
 
@@ -182,7 +181,7 @@ A biztonsági mentési szabályzatok letilthatók, ha nincs szükség az adatbiz
 
 * Egy _partíció_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést a partíció biztonsági mentési szabályzata miatt.
 
-* Az entitások (alkalmazás/szolgáltatás/partíció) biztonsági mentésének letiltása `CleanBackup` közben _igaz_ értékre állítható, hogy a konfigurált tárolóban lévő összes biztonsági mentést törölni lehessen.
+* Az entitások (alkalmazás/szolgáltatás/partíció) biztonsági mentésének letiltása közben `CleanBackup` _igaz_ értékre állítható, hogy a konfigurált tárolóban lévő összes biztonsági mentést törölni lehessen.
     ```json
     {
         "CleanBackup": true 
@@ -214,7 +213,7 @@ Bár a Letiltás csak olyan szinten hívható meg, amely korábban engedélyezve
 ## <a name="auto-restore-on-data-loss"></a>Automatikus visszaállítás az adatvesztéskor
 A szolgáltatás partíciója nem várt hibák miatt elveszítheti az adatvesztést. Például a partíciók három másodpéldánya (beleértve az elsődleges replikát is) esetében a lemez megsérül vagy törölve lesz.
 
-Ha Service Fabric észleli, hogy a partíció adatvesztésben van, meghívja `OnDataLossAsync` a csatoló metódust a partíción, és elvárja, hogy a partíció elvégezze az adatvesztést. Ebben az esetben, ha a partíción a tényleges biztonsági mentési házirendben a `AutoRestoreOnDataLoss` jelző `true` van beállítva, akkor a visszaállítás automatikusan aktiválódik a partíció legújabb elérhető biztonsági másolatának használatával.
+Ha Service Fabric észleli, hogy a partíció adatvesztésben van, meghívja a `OnDataLossAsync` csatoló metódust a partíción, és elvárja, hogy a partíció elvégezze az adatvesztést. Ebben az esetben, ha a partíción a tényleges biztonsági mentési házirendben a `AutoRestoreOnDataLoss` jelző van beállítva, `true` akkor a visszaállítás automatikusan aktiválódik a partíció legújabb elérhető biztonsági másolatának használatával.
 
 ## <a name="get-backup-configuration"></a>Biztonsági mentési konfiguráció beolvasása
 Az _alkalmazások_, _szolgáltatások_és _partíciók_ hatókörében külön API-k érhetők el a biztonsági mentési konfigurációs információk lekéréséhez. Az [alkalmazás biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)beszerzése, a [szolgáltatás biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)beolvasása, valamint a [partíció biztonsági mentési konfigurációs adatainak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) beolvasása ezen API-k Ezek az API-k elsősorban a megfelelő biztonsági mentési szabályzatot, a biztonsági mentési szabályzat hatálya alá eső hatókört és a biztonsági mentési felfüggesztés részleteit adják vissza. Az alábbi rövid leírás az API-k visszaadott eredményeiről szól.

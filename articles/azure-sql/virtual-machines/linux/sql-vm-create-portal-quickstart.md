@@ -1,9 +1,8 @@
 ---
-title: 'Quckstart: linuxos SQL Server VM létrehozása az Azure-ban'
+title: 'Gyors útmutató: linuxos SQL Server VM létrehozása az Azure-ban'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Linux rendszerű SQL Server 2017-virtuálisgépet az Azure Portalon.
 services: virtual-machines-linux
 author: MashaMSFT
-manager: craigg
 ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: conceptual
@@ -11,14 +10,13 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 34f2189a75db06ceca467dfc4e9b35692def6926
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669511"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>SQL Server-t futtató linuxos virtuális gép kiépítése a Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +26,7 @@ ms.locfileid: "84049679"
 Ebben a rövid útmutatóban a Azure Portal használatával hozzon létre egy Linux rendszerű virtuális gépet, amelyen telepítve van a SQL Server 2017-es verzió. A következőket sajátíthatja el: 
 
 
-* [Linux rendszerű SQL-virtuálisgép létrehozása a katalógusból](#create)
+* [SQL Server-t futtató linuxos virtuális gép létrehozása a katalógusból](#create)
 * [Csatlakozás az új virtuális géphez ssh használatával](#connect)
 * [Az SA-jelszó módosítása](#password)
 * [Konfigurálás távoli kapcsolatokhoz](#remote)
@@ -60,7 +58,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
    > [!TIP]
    > A fejlesztői kiadással tesztelheti vagy fejlesztheti a vállalati kiadás szolgáltatásait, de nem SQL Server licencelési költségeket. Csak a Linux rendszerű virtuális gép futtatásával járó költségeket kell kifizetnie.
 
-1. Kattintson a **Létrehozás** gombra. 
+1. Válassza a **Létrehozás** lehetőséget. 
 
 
 ### <a name="set-up-your-linux-vm"></a>Linux rendszerű virtuális gép beállítása
@@ -125,7 +123,7 @@ Ha Windows rendszert használ, és nem rendelkezik BASH-rendszerhéjral, telepí
 
 A Linux rendszerű virtuális gépekhez való csatlakozásról további információt a [Linux rendszerű virtuális gép az Azure-ban a Portal használatával történő létrehozását](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal) ismertető cikkben talál.
 
-> [!Note]
+> [!NOTE]
 > Ha a kiszolgáló gazdagép-kulcsát nem gyorsítótárazza a beállításjegyzékben, a következő lehetőségek közül választhat: Putty biztonsági riasztás. Ha megbízik a gazdagépen, válassza az **Igen** lehetőséget a kulcs a PuTTY gyorsítótárba való felvételéhez és a csatlakozás folytatásához. Ha csak egyszer szeretné csatlakoztatni a csatlakozást, anélkül, hogy a kulcsot a gyorsítótárba venné, válassza a **nem**lehetőséget. Ha nem bízik meg a gazdagépen, kattintson a **Mégse** gombra a kapcsolat megszakításához.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> Az SA-jelszó módosítása

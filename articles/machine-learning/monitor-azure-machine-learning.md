@@ -10,10 +10,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399111"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Figyelés Azure Machine Learning
@@ -50,7 +49,7 @@ Azure Machine Learning összes mérőszáma a névtér **Machine learning szolg�
 
 ### <a name="filtering-and-splitting"></a>Szűrés és felosztás
 
-A dimenziókat támogató metrikák esetében a dimenzió érték használatával szűrőket alkalmazhat. Például az **aktív magok** szűrése a **fürt nevénél** `cpu-cluster`. 
+A dimenziókat támogató metrikák esetében a dimenzió érték használatával szűrőket alkalmazhat. Például az **aktív magok** szűrése a **fürt nevénél** `cpu-cluster` . 
 
 A mérőszámokat dimenzió alapján is feloszthatja, hogy megjelenítse, hogy a metrika különböző szakaszai hogyan hasonlítanak össze egymással. Például feloszthatja a folyamat **lépésének típusát** , hogy megtekintse a folyamat során használt lépések számát.
 
@@ -62,13 +61,13 @@ Azure Machine Learning riasztásait a **Azure monitor** menüből származó **r
 
 A következő táblázat a Azure Machine Learning vonatkozó gyakori és javasolt metrikai szabályokat sorolja fel:
 
-| Riasztástípus | Állapot | Leírás |
+| Riasztástípus | Állapot | Description |
 |:---|:---|:---|
 | Modell-üzembehelyezés sikertelen | Összesítés típusa: Total, operátor: nagyobb, mint, küszöbérték: 0 | Ha egy vagy több modell telepítése meghiúsult |
 | Kvóta kihasználtsága (%) | Összesítés típusa: átlag, operátor: nagyobb, mint, küszöbérték: 90| Ha a kvóta kihasználtsági aránya nagyobb, mint 90% |
 | Használhatatlan csomópontok | Összesítés típusa: Total, operátor: nagyobb, mint, küszöbérték: 0 | Ha egy vagy több használhatatlan csomópont van |
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 > [!IMPORTANT]
 > A __Azure Machine learning metrikáit nem kell konfigurálni__, a rendszer automatikusan gyűjti azokat, és az Metrikaböngészőban elérhetők a figyeléshez és a riasztáshoz.
@@ -85,7 +84,7 @@ A diagnosztikai beállítások létrehozásával kapcsolatos további informáci
 
 A következő naplókat konfigurálhatja Azure Machine Learninghoz:
 
-| Kategória | Leírás |
+| Kategória | Description |
 |:---|:---|
 | AmlComputeClusterEvent | Azure Machine Learning számítási fürtök eseményei. |
 | AmlComputeClusterNodeEvent | Azure Machine Learning számítási fürt csomópontjain belüli események. |
@@ -100,7 +99,7 @@ A Azure Monitor Log Analytics használatával diagnosztikai konfigurációt kell
 
 Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok. A Azure Machine Learning az alábbi táblázatokban tárolja az adattárolást:
 
-| Tábla | Leírás |
+| Táblázat | Leírás |
 |:---|:---|
 | AmlComputeClusterEvent | Azure Machine Learning számítási fürtök eseményei. |
 | AmlComputeClusterNodeEvent | Azure Machine Learning számítási fürt csomópontjain belüli események. |

@@ -4,12 +4,11 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757586"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958208"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -20,7 +19,7 @@ Az Azure AD-hitelesítés Azure Batch használatával történő használatakor 
 - **Integrált hitelesítéssel** hitelesítheti az alkalmazással kommunikáló felhasználókat. Az integrált hitelesítést használó alkalmazások összegyűjtik a felhasználó hitelesítő adatait, és ezeket a hitelesítő adatokat használják a Batch-erőforrásokhoz való hozzáférés hitelesítéséhez.
 - Egy **egyszerű szolgáltatásnév** használatával hitelesítheti a felügyelet nélküli alkalmazást. Egy egyszerű szolgáltatásnév határozza meg az alkalmazáshoz tartozó házirendet és engedélyeket, hogy az alkalmazás az erőforrásokhoz való hozzáféréskor a futtatókörnyezetben legyen elérhető.
 
-Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/).
+Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](../active-directory/index.yml).
 
 ## <a name="endpoints-for-authentication"></a>Hitelesítéshez használt végpontok
 
@@ -140,20 +139,20 @@ Az egyéni szerepkörök részletes engedélyeket biztosítanak a felhasználók
 
 Az alábbi RBAC műveletekhez egyéni szerepkört is használhat az Azure AD-felhasználók,-csoportok vagy-szolgáltatások engedélyeinek megadásához:
 
-- Microsoft. batch/batchAccounts/készletek/írás
-- Microsoft. batch/batchAccounts/készletek/törlés
-- Microsoft. batch/batchAccounts/készletek/olvasás
-- Microsoft. batch/batchAccounts/jobSchedules/írás
-- Microsoft. batch/batchAccounts/jobSchedules/delete
-- Microsoft. batch/batchAccounts/jobSchedules/olvasás
-- Microsoft. batch/batchAccounts/feladatok/írás
-- Microsoft. batch/batchAccounts/feladatok/törlés
-- Microsoft. batch/batchAccounts/feladatok/olvasás
-- Microsoft. batch/batchAccounts/tanúsítványok/írás
-- Microsoft. batch/batchAccounts/tanúsítványok/törlés
-- Microsoft. batch/batchAccounts/tanúsítványok/olvasás
-- Microsoft. batch/batchAccounts/Read (bármilyen olvasási művelethez)
-- Microsoft. batch/batchAccounts/Listkeys műveletének beolvasása/művelet (bármilyen művelethez)
+- Microsoft.BatCH/batchAccounts/készletek/írás
+- Microsoft.BatCH/batchAccounts/készletek/törlés
+- Microsoft.BatCH/batchAccounts/készletek/olvasás
+- Microsoft.BatCH/batchAccounts/jobSchedules/Write
+- Microsoft.BatCH/batchAccounts/jobSchedules/delete
+- Microsoft.BatCH/batchAccounts/jobSchedules/READ
+- Microsoft.BatCH/batchAccounts/feladatok/írás
+- Microsoft.BatCH/batchAccounts/feladatok/törlés
+- Microsoft.BatCH/batchAccounts/feladatok/olvasás
+- Microsoft.BatCH/batchAccounts/tanúsítványok/írás
+- Microsoft.BatCH/batchAccounts/tanúsítványok/törlés
+- Microsoft.BatCH/batchAccounts/tanúsítványok/olvasás
+- Microsoft.BatCH/batchAccounts/Read (bármilyen olvasási művelethez)
+- Microsoft.BatCH/batchAccounts/Listkeys műveletének beolvasása/Action (bármilyen művelethez)
 
 Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonatkoznak, nem a Batch-fiók hitelesítő adataival (megosztott kulcs). Vegye figyelembe, hogy a Batch-fiók hitelesítő adatai teljes hozzáférést biztosítanak a Batch-fiókhoz. Azt is vegye figyelembe, hogy az autopoolt használó feladatok készlet szintű engedélyeket igényelnek.
 
@@ -419,7 +418,7 @@ A **BatchServiceClient** objektum megnyitásához használja az egyszerű szolg�
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
+- Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](../active-directory/index.yml). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
 
 - Az egyszerű szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg [az alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md). Ha a Azure Portal használatával szeretne szolgáltatásnevet létrehozni, tekintse meg az [erőforrásokhoz hozzáférő Active Directory alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md)című témakört. A PowerShell vagy az Azure CLI használatával is létrehozhat egy egyszerű szolgáltatást.
 

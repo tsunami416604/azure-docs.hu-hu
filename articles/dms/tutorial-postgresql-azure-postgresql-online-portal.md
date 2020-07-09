@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
 ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113999"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Oktatóanyag: a PostgreSQL migrálása az Azure DB for PostgreSQL online-ba a DMS használatával a Azure Portalon keresztül

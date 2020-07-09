@@ -5,17 +5,17 @@ description: A Machine Learning Studio (klasszikus) részét képező minta mode
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3cd7d880efaa5c69301c25c69d55f4b21dd97242
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321841"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
 
@@ -142,7 +142,7 @@ A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás (<a href="http://www.s
 <tr>
   <td>Megosztott CRM-adatkészlet</td>
   <td>
-Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. adat. zip</a>) származnak.
+Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>) származnak.
 <p></p>
 Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-től. Minden ügyfél 230-es anonim funkciókkal rendelkezik, amelyek 190 a numerikus és a 40-as számú adat kategorikus. A funkciók nagyon ritkák.
   </td>
@@ -303,7 +303,7 @@ Az acélipari osztályok a SAE és más szervezetek által meghatározott szabv�
 <p></p>
 <b>Kapcsolódó kutatás:</b> Sterling, D. & Buntine, W. (NA). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
-A Steel-osztályok hasznos útmutatója itt található:<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
+A Steel-osztályok hasznos útmutatója itt található:<a href="https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf">https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -359,48 +359,48 @@ Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a 
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
 Az adatkészlet ügyféladatokat tartalmaz, és jelzi a közvetlen levelezési kampányra adott válaszokat. Minden sor az ügyfelet jelöli. Az adatkészlet kilenc funkciót tartalmaz a felhasználói demográfiai adatokkal és a múltbeli viselkedéssel kapcsolatban, valamint három címke oszlopot (látogatás, átalakítás és költés).  A Visit egy bináris oszlop, amely azt jelzi, hogy az ügyfél a marketing kampány után látogatta meg. Az átalakítás azt jelzi, hogy egy ügyfél vásárolt valamit. A költés a felhasznált mennyiség.  Az adathalmazt a Kevin Hillstrom tette elérhetővé a MineThatData E-Mail elemzés és az adatbányászati kihívás számára.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
 A RCV1-v2 Reuters Hírek adatkészletében található tesztelési példák funkciói. Az adatkészlet 781K, valamint az azonosítójuk (az adatkészlet első oszlopa) szerepel. Minden cikk jogkivonat-, stopworded-és ered. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
 A betanítási példák funkciói a RCV1-v2 Reuters Hírek adatkészletében. Az adatkészlet 23K, valamint az azonosítójuk (az adatkészlet első oszlopa) szerepel. Minden cikk jogkivonat-, stopworded-és ered. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-Adatkészlet a KDD Cup 1999 Knowledge Discovery és az adatbányászati eszközök versenyéről (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>).
+Adathalmaz a KDD Cup 1999 Knowledge Discovery és az adatbányászati eszközök versenyéről (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
 <p></p>
-Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a>) történik, és a képzési és tesztelési adatkészleteket is tartalmazza. A betanítási adatkészlet körülbelül 126K sort és 43 oszlopot tartalmaz, beleértve a címkéket is. Három oszlop szerepel a címke adatai között, és 40 oszlop, amely a numerikus és a karakterlánc/kategorikus funkciókból áll, és a modell betanítására is használható. A tesztelési adatként körülbelül 22.5 K tesztelési példákat tartalmaz a betanítási adatként megegyező 43 oszlopokkal.
+Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) történik, és a képzési és tesztelési adatkészleteket is tartalmazza. A betanítási adatkészlet körülbelül 126K sort és 43 oszlopot tartalmaz, beleértve a címkéket is. Három oszlop szerepel a címke adatai között, és 40 oszlop, amely a numerikus és a karakterlánc/kategorikus funkciókból áll, és a modell betanítására is használható. A tesztelési adatként körülbelül 22.5 K tesztelési példákat tartalmaz a betanítási adatként megegyező 43 oszlopokkal.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témák. qrels. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
 Témakör-hozzárendelések a hírekhez a RCV1-v2 Reuters Hírek adatkészletében. Egy újságcikk több témakörhöz is hozzárendelhető. Az egyes sorok formátuma a " &lt; téma neve &gt; &lt; dokumentum azonosítója &gt; 1". Az adatkészlet 2,6 M témakör-hozzárendeléseket tartalmaz. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Ezek az adatok a KDD Cup 2010 Student Performance kiértékelési Challenge (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance értékelés</a>) alapján származnak. A felhasznált adathalmaz a Algebra_2008_2009 betanítási készlet (stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, ka (2010). Algebra I 2008-2009. A KDD Cup 2010 oktatási adatbányászati kihívása. Keresse meg a <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>fájlon.
+Ezek az adatok a KDD Cup 2010 Student Performance kiértékelési Challenge (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance értékelés</a>) alapján származnak. A felhasznált adathalmaz a Algebra_2008_2009 betanítási készlet (stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, ka (2010). Algebra I 2008-2009. A KDD Cup 2010 oktatási adatbányászati kihívása. Keresse meg a következőt: <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
-Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) történik, és a tanulói oktató rendszerből származó naplófájlokat tartalmaz. A megadott funkciók közé tartozik a probléma azonosítója és a rövid leírása, a tanuló azonosítója, az időbélyeg, valamint a tanulók által a probléma megoldásához a megfelelő módon történt kísérlet. Az eredeti adatkészlet 8.9 millió rekorddal rendelkezik; ezt az adatkészletet leállították az első 100 000 sorra. Az adatkészlet 23 tabulátorral tagolt oszlopa különböző típusú: numerikus, kategorikus és timestamp.
+Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) történik, és a tanulói tutori rendszerből származó naplófájlokat tartalmaz. A megadott funkciók közé tartozik a probléma azonosítója és a rövid leírása, a tanuló azonosítója, az időbélyeg, valamint a tanulók által a probléma megoldásához a megfelelő módon történt kísérlet. Az eredeti adatkészlet 8.9 millió rekorddal rendelkezik; ezt az adatkészletet leállították az első 100 000 sorra. Az adatkészlet 23 tabulátorral tagolt oszlopa különböző típusú: numerikus, kategorikus és timestamp.
   </td>
 </tr>
 

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780375"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Leképezési adatfolyamok paraméterezése
@@ -64,14 +64,14 @@ Ha karakterlánc típusú adatcsatorna-kifejezési paramétert rendel hozzá, a 
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/string-parameter.png "Adatfolyam-paraméter beállítása")
 
-Ha az adatáramlási paraméter `stringParam` értékkel `upper(column1)`rendelkező folyamat paraméterre hivatkozik. 
+Ha az adatáramlási paraméter `stringParam` értékkel rendelkező folyamat paraméterre hivatkozik `upper(column1)` . 
 
-- Ha a kifejezés be van `$stringParam` jelölve, a kiértékeli az összes nagybetűs Column1 értékét.
-- Ha a kifejezés nincs bejelölve (az alapértelmezett viselkedés `$stringParam` ), a kiértékelés a következőre`'upper(column1)'`
+- Ha a kifejezés be van jelölve, `$stringParam` a kiértékeli az összes nagybetűs Column1 értékét.
+- Ha a kifejezés nincs bejelölve (az alapértelmezett viselkedés), `$stringParam` a kiértékelés a következőre`'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Időbélyegek átadása
 
-A folyamat kifejezésének nyelvén a rendszerváltozók `pipeline().TriggerTime` , például a `utcNow()` és függvények, például a visszatérési időbélyegek karakterláncként,\'"\'éééé-hh-nn T óó: PP: SS" formátumban. SSSSSSZ'. Ha timestamp típusú adatfolyam-paraméterekre kívánja konvertálni ezeket, használja a karakterlánc-interpolációt, hogy tartalmazza a `toTimestamp()` kívánt időbélyeget egy függvényben. Ha például át szeretné alakítani a folyamat indításának időpontját egy adatfolyam-paraméterbe, `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`használhatja a következőt:. 
+A folyamat kifejezésének nyelvén a rendszerváltozók, például a és függvények, például a `pipeline().TriggerTime` `utcNow()` visszatérési időbélyegek karakterláncként, "éééé-hh-nn \' T \' óó: PP: SS" formátumban. SSSSSSZ'. Ha timestamp típusú adatfolyam-paraméterekre kívánja konvertálni ezeket, használja a karakterlánc-interpolációt, hogy tartalmazza a kívánt időbélyeget egy `toTimestamp()` függvényben. Ha például át szeretné alakítani a folyamat indításának időpontját egy adatfolyam-paraméterbe, használhatja a következőt: `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-timestamp.png "Adatfolyam-paraméter beállítása")
 
@@ -80,7 +80,7 @@ A folyamat kifejezésének nyelvén a rendszerváltozók `pipeline().TriggerTime
 
 #### <a name="pipeline-parameter-example"></a>Példa a folyamat paraméterére
 
-Tegyük fel, hogy van `intParam` egy Integer paraméter, amely egy string típusú folyamat- `@pipeline.parameters.pipelineParam`paraméterre hivatkozik. 
+Tegyük fel, hogy van egy Integer paraméter `intParam` , amely egy string típusú folyamat-paraméterre hivatkozik `@pipeline.parameters.pipelineParam` . 
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-pipeline-2.png "Adatfolyam-paraméter beállítása")
 
@@ -88,7 +88,7 @@ Tegyük fel, hogy van `intParam` egy Integer paraméter, amely egy string típus
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-pipeline-4.png "Adatfolyam-paraméter beállítása")
 
-Ha `$intParam` egy kifejezés, például egy származtatott oszlop hivatkozik rá, a rendszer a `abs(1)` visszaadott értéket adja vissza `1`. 
+Ha egy `$intParam` kifejezés, például egy származtatott oszlop hivatkozik rá, a rendszer a visszaadott értéket `abs(1)` adja vissza `1` . 
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-pipeline-3.png "Adatfolyam-paraméter beállítása")
 
@@ -102,9 +102,9 @@ Válassza az adatfolyam- **kifejezés** lehetőséget, majd nyissa meg az adatfo
 
 ### <a name="passing-in-a-column-name-as-a-parameter"></a>Oszlop nevének átadása paraméterként
 
-Egy általános minta egy oszlop neve paraméterként való továbbítása. Ha az oszlop definiálva van az adatfolyam-sémában, hivatkozhat rá közvetlenül karakterlánc-kifejezésként. Ha az oszlop nincs definiálva a sémában, használja `byName()` a függvényt. Ne felejtse el átadni az oszlopot a megfelelő típusra egy öntési `toString()`függvénnyel, például:.
+Egy általános minta egy oszlop neve paraméterként való továbbítása. Ha az oszlop definiálva van az adatfolyam-sémában, hivatkozhat rá közvetlenül karakterlánc-kifejezésként. Ha az oszlop nincs definiálva a sémában, használja a `byName()` függvényt. Ne felejtse el átadni az oszlopot a megfelelő típusra egy öntési függvénnyel, például: `toString()` .
 
-Ha például egy paraméteren `columnName`alapuló karakterlánc-oszlopot szeretne leképezni, hozzáadhat egy származtatott oszlopot, amely egyenlő a `toString(byName($columnName))`következővel:.
+Ha például egy paraméteren alapuló karakterlánc-oszlopot szeretne leképezni `columnName` , hozzáadhat egy származtatott oszlopot, amely egyenlő a következővel: `toString(byName($columnName))` .
 
 ![Oszlop nevének átadása paraméterként](media/data-flow/parameterize-column-name.png "Oszlop nevének átadása paraméterként")
 

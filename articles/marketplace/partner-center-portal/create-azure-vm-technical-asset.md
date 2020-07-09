@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek technikai eszközeinek létrehozása
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat technikai eszközöket az Azure Marketplace-hez készült virtuálisgép-(VM-) ajánlathoz.
-author: dannyevers
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: dannyevers
+ms.author: mingshen
 ms.date: 04/13/2020
-ms.openlocfilehash: 3c4e5fa4ce960f8113504b52aa0d5055bf1bf85a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722711"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107155"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure-beli virtuális gépek technikai eszközeinek létrehozása
 
@@ -48,7 +48,7 @@ A virtuális gépek és virtuális merevlemezek kezeléséhez a következő para
 
 Emellett vegye fontolóra a következő eszközök hozzáadását a fejlesztői környezethez:
 
-* [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
   * Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   * Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -63,10 +63,10 @@ Tekintse át a rendelkezésre álló eszközöket az [Azure fejlesztői eszköz�
 
 Ez a szakasz a jóváhagyott alapértékek használatának különböző szempontjait ismerteti, például a RDP protokoll (RDP) használatát, a virtuális gép méretének kiválasztását, a legújabb Windows-frissítések telepítését és a VHD-lemezkép általánosítását ismerteti.
 
-Az alábbi fejezetek elsősorban a Windows-alapú virtuális merevlemezek esetében összpontosítanak. A Linux-alapú virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: az [Azure által támogatott disztribúciók Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Az alábbi fejezetek elsősorban a Windows-alapú virtuális merevlemezek esetében összpontosítanak. A Linux-alapú virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: az [Azure által támogatott disztribúciók Linux](../../virtual-machines/linux/endorsed-distros.md).
 
 > [!WARNING]
-> Kövesse a jelen témakör útmutatását, hogy az Azure-t használva hozzon létre egy virtuális gépet, amely egy előre konfigurált, támogatott operációs rendszert tartalmaz. Ha ez nem kompatibilis a megoldással, lehetséges, hogy a helyszíni virtuális gépet egy jóváhagyott operációs rendszer használatával hozza létre és konfigurálja. Ezután beállíthatja és felkészítheti a feltöltéshez a [Windows VHD vagy a VHDX előkészítése az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)-ba való feltöltéshez című témakörben leírtak szerint.
+> Kövesse a jelen témakör útmutatását, hogy az Azure-t használva hozzon létre egy virtuális gépet, amely egy előre konfigurált, támogatott operációs rendszert tartalmaz. Ha ez nem kompatibilis a megoldással, lehetséges, hogy a helyszíni virtuális gépet egy jóváhagyott operációs rendszer használatával hozza létre és konfigurálja. Ezután beállíthatja és felkészítheti a feltöltéshez a [Windows VHD vagy a VHDX előkészítése az Azure](../../virtual-machines/windows/prepare-for-upload-vhd-image.md)-ba való feltöltéshez című témakörben leírtak szerint.
 
 ### <a name="select-an-approved-base"></a>Jóváhagyott alap kiválasztása
 
@@ -76,23 +76,23 @@ Válassza ki a Windows operációs rendszert vagy a Linuxot az alapjaként.
 
 A Windows-alapú virtuálisgép-rendszerkép operációs rendszerének VHD-jét a Windows Servert vagy SQL Servert tartalmazó, Azure által jóváhagyott alaprendszerképen kell alapulnia. A kezdéshez hozzon létre egy virtuális gépet az alábbi rendszerképek egyikéről a Azure Portal:
 
-* Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 r2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
-* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, standard, web)
-* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, standard, web)
+* Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 r2 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing), [2012 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+* [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise, standard, web)
+* [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise, standard, web)
 
 > [!NOTE]
 > Ha a jelenlegi Azure Portal vagy Azure PowerShell használja, a Windows Server rendszerképeket a 2014. szeptember 8-án és később is jóváhagyjuk.
 
 #### <a name="linux"></a>Linux
 
-Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális listán tekintse [meg az Azure által támogatott disztribúciókkal](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)foglalkozó Linux című témakört.
+Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális listán tekintse [meg az Azure által támogatott disztribúciókkal](../../virtual-machines/linux/endorsed-distros.md)foglalkozó Linux című témakört.
 
 ### <a name="create-vm-in-the-azure-portal"></a>Virtuális gép létrehozása a Azure Portalban
 
 Az alábbi lépéseket követve hozza létre az alapszintű VM-rendszerképet a [Azure Portalban](https://ms.portal.azure.com/):
 
 1. Jelentkezzen be a [Azure Portalba](https://ms.portal.azure.com/) a virtuális gép ajánlatának közzétételéhez használni kívánt Azure-előfizetéshez társított Microsoft-fiókval.
-2. Hozzon létre egy új erőforráscsoportot, és adja meg az **erőforráscsoport nevét**, az **előfizetést**és az **erőforráscsoport helyét**. Részletekért lásd: [erőforrások kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+2. Hozzon létre egy új erőforráscsoportot, és adja meg az **erőforráscsoport nevét**, az **előfizetést**és az **erőforráscsoport helyét**. Részletekért lásd: [erőforrások kezelése](../../azure-resource-manager/resource-group-portal.md).
 3. Válassza a bal oldali **virtuális gépek** lehetőséget a virtuális gépek részletei lap megjelenítéséhez.
 4. Válassza a **+ Hozzáadás** lehetőséget a **virtuális gép létrehozásának élményének**megnyitásához.
 5. Válassza ki a lemezképet a legördülő listából, vagy kattintson az **összes nyilvános és privát rendszerkép tallózása** lehetőségre az összes elérhető virtuálisgép-lemezkép kereséséhez vagy tallózásához.
@@ -106,7 +106,7 @@ Az alábbi lépéseket követve hozza létre az alapszintű VM-rendszerképet a 
 
 Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali **Virtual Machines** fület. A létrehozása után az állapot **fut**értékre változik.
 
-Ha nehézségekbe ütközik az új Azure-alapú virtuális merevlemez létrehozásakor, tekintse meg a [gyakori problémák a VHD létrehozásakor (gyakori kérdések)](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)című témakört.
+Ha nehézségekbe ütközik az új Azure-alapú virtuális merevlemez létrehozásakor, tekintse meg a [gyakori problémák a VHD létrehozásakor (gyakori kérdések)](common-issues-during-vhd-creation.md)című témakört.
 
 ### <a name="connect-to-your-azure-vm"></a>Kapcsolódás Azure-beli virtuális géphez
 
@@ -116,7 +116,7 @@ Ez a szakasz azt ismerteti, hogyan csatlakozhat az Azure-ban létrehozott virtu�
 
 Az Azure-ban üzemeltetett Windows-alapú virtuális géphez való kapcsolódáshoz használja a távoli asztali ügyfelet. A Windows legtöbb verziója natív módon támogatja a Remote Desktop Protocol (RDP) szolgáltatást. Más operációs rendszerek esetén további információkat találhat [Távoli asztal ügyfelek](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)ügyfeleiről.
 
-Ez a cikk részletesen ismerteti, hogyan használható a beépített Windows RDP-támogatás a virtuális géphez való kapcsolódáshoz: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).
+Ez a cikk részletesen ismerteti, hogyan használható a beépített Windows RDP-támogatás a virtuális géphez való kapcsolódáshoz: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](../../virtual-machines/windows/connect-logon.md).
 
 > [!TIP]
 > A folyamat során biztonsági figyelmeztetéseket kaphat. Például: "az. rdp fájl ismeretlen közzétevőtől származik" vagy "a felhasználói hitelesítő adatok nem ellenőrizhetők." Ezeket a figyelmeztetéseket nyugodtan figyelmen kívül hagyhatja.
@@ -130,7 +130,7 @@ Linux-alapú virtuális géphez való kapcsolódáshoz Secure Shell Protocol-(SS
 3. Válassza ki azt a virtuális gépet, amelyhez csatlakozni szeretne.
 4. Ha még nem fut, indítsa el a virtuális gépet.
 5. Válassza ki a virtuális gép nevét az **áttekintő** oldal megnyitásához.
-6. Jegyezze fel a virtuális gép nyilvános IP-címét és DNS-nevét (ha ezek az értékek nincsenek beállítva, [létre kell hoznia egy hálózati adaptert](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)).
+6. Jegyezze fel a virtuális gép nyilvános IP-címét és DNS-nevét (ha ezek az értékek nincsenek beállítva, [létre kell hoznia egy hálózati adaptert](../../virtual-network/virtual-network-network-interface.md#create-a-network-interface))).
 7. Nyissa meg a PuTTY alkalmazást.
 8. A PuTTY konfigurációja párbeszédpanelen adja meg a virtuális gép IP-címét vagy DNS-nevét.
 
@@ -141,7 +141,7 @@ Linux-alapú virtuális géphez való kapcsolódáshoz Secure Shell Protocol-(SS
 
 Ha kapcsolódási problémák léptek fel, tekintse meg az SSH-ügyfél dokumentációját. Például a [10. fejezet: gyakori hibaüzenetek](https://www.ssh.com/ssh/putty/putty-manuals).
 
-További részletekért, beleértve az asztal kiépített linuxos virtuális géphez való hozzáadásával kapcsolatos információkat: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop).
+További részletekért, beleértve az asztal kiépített linuxos virtuális géphez való hozzáadásával kapcsolatos információkat: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](../../virtual-machines/linux/use-remote-desktop.md).
 
 ## <a name="create-a-vm-using-your-own-image"></a>Virtuális gép létrehozása saját rendszerkép használatával
 
@@ -170,7 +170,7 @@ Hozza létre a rendszerképet a Azure Portal vagy a Azure PowerShell használat�
 
     :::image type="content" source="media/avm-custom-deployment.png" alt-text="Az egyéni telepítési oldal szemléltetése.":::
 
-3. Illessze be ezt a [JSON-sablont](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template) a Szerkesztőbe, majd válassza a **Mentés**lehetőséget.
+3. Illessze be ezt a [JSON-sablont](../partner-center-portal/azure-vm-image-certification.md) a Szerkesztőbe, majd válassza a **Mentés**lehetőséget.
 4. Adja meg a paraméterek értékeit az **Egyéni központi telepítési** tulajdonságlapon.
 
     | Paraméter | Leírás |
@@ -183,7 +183,7 @@ Hozza létre a rendszerképet a Azure Portal vagy a Azure PowerShell használat�
     | Operációs rendszer típusa | VM operációs rendszer: Windows vagy Linux |
     | Előfizetés azonosítója | A kiválasztott előfizetés azonosítója |
     | Hely | Az üzemelő példány földrajzi helye |
-    | Virtuális gép mérete | [Azure-beli virtuális gép mérete](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), például Standard_A2 |
+    | Virtuális gép mérete | [Azure-beli virtuális gép mérete](../../virtual-machines/windows/sizes.md), például Standard_A2 |
     | Nyilvános IP-cím neve | A nyilvános IP-cím neve |
     | Virtuális gép neve | Az új virtuális gép neve |
     | Virtual Network neve | A virtuális gép által használt virtuális hálózat neve |
@@ -209,8 +209,8 @@ Az Azure elindítja az üzembe helyezést. Egy új virtuális gépet hoz létre 
 
 Használja az alábbi utasításokat, amelyek megfelelnek az Ön megközelítésének:
 
-* Azure PowerShell: nem [felügyelt virtuális gép rendszerképének létrehozása Azure-beli virtuális](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) gépről
-* Azure CLI: [virtuális gép vagy VHD rendszerképének létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+* Azure PowerShell: nem [felügyelt virtuális gép rendszerképének létrehozása Azure-beli virtuális](../../virtual-machines/windows/capture-image-resource.md) gépről
+* Azure CLI: [virtuális gép vagy VHD rendszerképének létrehozása](../../virtual-machines/linux/capture-image.md)
 * API: [Virtual Machines – rögzítés](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 ## <a name="configure-the-virtual-machine"></a>A virtuális gép konfigurálása
@@ -238,7 +238,7 @@ A Linux-disztribúciók esetében a frissítések általában egy parancssori es
 
 ### <a name="perform-additional-security-checks"></a>További biztonsági ellenőrzések végrehajtása
 
-Az Azure Marketplace-en magas szintű biztonságot tarthat a megoldási lemezképek számára. A következő cikk a biztonsági konfigurációkról és eljárásokról nyújt útmutatást: az [Azure Marketplace-rendszerképekkel kapcsolatos biztonsági javaslatok](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images). A javaslatok némelyike a Linux-alapú rendszerképekre jellemző, de a legtöbb esetben a virtuálisgép-lemezképekre is érvényes.
+Az Azure Marketplace-en magas szintű biztonságot tarthat a megoldási lemezképek számára. A következő cikk a biztonsági konfigurációkról és eljárásokról nyújt útmutatást: az [Azure Marketplace-rendszerképekkel kapcsolatos biztonsági javaslatok](../../security/security-recommendations-azure-marketplace-images.md). A javaslatok némelyike a Linux-alapú rendszerképekre jellemző, de a legtöbb esetben a virtuálisgép-lemezképekre is érvényes.
 
 ### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Egyéni konfiguráció és ütemezett feladatok végrehajtása
 
@@ -247,7 +247,7 @@ Ha további konfigurálásra van szükség, az indításkor futó ütemezett fel
 * Ha ez egy egyszeri futtatású feladat, a feladat a sikeres befejezést követően törli magát.
 * A konfigurációk nem hivatkozhatnak a C vagy a D meghajtón kívüli meghajtókra, mert csak ez a két meghajtó garantáltan létezik (a C meghajtó az operációsrendszer-lemez, a D meghajtó pedig az ideiglenes helyi lemez).
 
-A Linux testreszabásával kapcsolatos további információkért lásd: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
+A Linux testreszabásával kapcsolatos további információkért lásd: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](../../virtual-machines/extensions/features-linux.md).
 
 ## <a name="generalize-the-image"></a>A rendszerkép általánosítása
 
@@ -258,11 +258,11 @@ Az Azure Marketplace-en lévő összes lemezképet általános módon újrafelha
 A Windows operációsrendszer-lemezek általánosítva vannak a [Sysprep eszközzel](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Ha később frissíti vagy újrakonfigurálja az operációs rendszert, újra kell futtatnia a Sysprep programot.
 
 > [!WARNING]
-> Mivel a frissítések automatikusan futtathatók, a Sysprep futtatása után kapcsolja ki a virtuális gépet, amíg üzembe nem helyezi. Ez a Leállítás megakadályozza, hogy a későbbi frissítések az operációs rendszer vagy a telepített szolgáltatások példány-specifikus módosításait is elvégezzék. A Sysprep futtatásával kapcsolatos további információkért tekintse [meg a virtuális merevlemez általánosítása című témakör lépéseit](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep).
+> Mivel a frissítések automatikusan futtathatók, a Sysprep futtatása után kapcsolja ki a virtuális gépet, amíg üzembe nem helyezi. Ez a Leállítás megakadályozza, hogy a későbbi frissítések az operációs rendszer vagy a telepített szolgáltatások példány-specifikus módosításait is elvégezzék. A Sysprep futtatásával kapcsolatos további információkért tekintse [meg a virtuális merevlemez általánosítása című témakör lépéseit](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep).
 
 ### <a name="linux"></a>Linux
 
-A következő folyamat általánosít egy Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre. Részletekért lásd: [virtuális gépek vagy VHD-k rendszerképének létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image). Ha eléri a "virtuális gép létrehozása a rögzített lemezképből" szakaszt, akkor leállíthatja.
+A következő folyamat általánosít egy Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre. Részletekért lásd: [virtuális gépek vagy VHD-k rendszerképének létrehozása](../../virtual-machines/linux/capture-image.md). Ha eléri a "virtuális gép létrehozása a rögzített lemezképből" szakaszt, akkor leállíthatja.
 
 1. **Az Azure Linux-ügynök eltávolítása**
 
@@ -278,8 +278,8 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)című témakört.
+Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](common-issues-during-vhd-creation.md)című témakört.
 
 Egyéb esetben:
 
-* [Tanúsítsa a](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) virtuálisgép-rendszerképet, amely bemutatja, hogyan lehet tesztelni és elküldeni egy virtuálisgép-rendszerképet az Azure Marketplace minősítéshez, beleértve az *Azure Certified eszköz minősítési teszt eszközét* és annak használatát a virtuálisgép-rendszerkép hitelesítéséhez.
+* [Tanúsítsa a](get-sas-uri.md) virtuálisgép-rendszerképet, amely bemutatja, hogyan lehet tesztelni és elküldeni egy virtuálisgép-rendszerképet az Azure Marketplace minősítéshez, beleértve az *Azure Certified eszköz minősítési teszt eszközét* és annak használatát a virtuálisgép-rendszerkép hitelesítéséhez.

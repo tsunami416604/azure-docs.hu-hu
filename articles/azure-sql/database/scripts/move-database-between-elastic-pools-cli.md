@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: adatbázis áthelyezése rugalmas készletek között'
-description: Azure CLI-példa parancsfájl, amely két rugalmas készletet hoz létre, és áthelyez egy adatbázist SQL Database egy rugalmas készletből egy másikba az Azure CLI használatával.
+title: 'Az Azure CLI: adatbázis áthelyezése rugalmas készletek között'
+description: Egy Azure CLI-parancsfájl használatával két rugalmas készletet hozhat létre, és SQL Database egy-egy rugalmas készletből egy másikba helyezheti át az adatbázist.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,17 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2bcf9f4218f535556ff83ccaad130bb1da28ef69
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 85b78ad92997344ff6ea0f30da25205790d90eef
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054058"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196766"
 ---
-# <a name="use-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>A CLI használata egy adatbázis SQL Databaseba való áthelyezéséhez egy rugalmas SQL-készletben
+# <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>Az adatbázis áthelyezése az Azure CLI használatával SQL Database egy rugalmas SQL-készletben
 
-
-Ez az Azure CLI-parancsfájl két rugalmas készletet hoz létre, és egy adatbázist helyez át SQL Database egy rugalmas SQL-készletből egy másik SQL rugalmas készletbe, majd áthelyezi az adatbázist a rugalmas készletből egyetlen adatbázis-számítási méretre.
+Ez az Azure CLI-parancsfájl két rugalmas készletet hoz létre, és egy készletezett adatbázist helyez át SQL Database egy rugalmas SQL-készletből egy másik SQL rugalmas készletbe, majd áthelyezi a készletezett adatbázist a rugalmas SQL-készletből, hogy egyetlen adatbázis legyen a SQL Database.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 

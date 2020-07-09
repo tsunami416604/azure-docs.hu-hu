@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: anzaman
 ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239751"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Tudnivalók a pont–hely VPN-útválasztásról
@@ -44,7 +44,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat olyan VNet vonatkozik, 
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek hozzáférhetnek a VNet1
 
@@ -74,7 +74,7 @@ A Windowst használó ügyfelek közvetlenül hozzáférhetnek a virtuális hál
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek hozzáférhetnek a VNet1, a VNet2 és a Vnet4 felé, de a VPN-ügyfelet újra le kell tölteni, hogy az összes topológiai módosítás érvénybe lép.
 
@@ -102,7 +102,7 @@ A Windows vagy más támogatott operációs rendszert használó ügyfelek csak 
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek csak a VNet1 férhetnek hozzá
 
@@ -130,7 +130,7 @@ A Windows vagy más támogatott operációs rendszert használó ügyfelek hozz�
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek elérhetik a VNet1, a VNet2 és a VNet3, de a VNet2 és a VNet3 útvonalakat manuálisan kell hozzáadni.
 
@@ -156,7 +156,7 @@ A Windows és a nem Windows rendszerű ügyfelek csak a VNet1 férhetnek hozzá.
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek csak VNet1 férhetnek hozzá
 
@@ -182,7 +182,7 @@ A Windows-ügyfelek elérhetik a VNet és a fiókirodát (hely1), de a hely1 út
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek hozzáférhetnek a VNet1 és a hely1, de a hely1 útvonalakat manuálisan kell hozzáadni.
 
@@ -213,7 +213,7 @@ Minden ügyfél csak a VNet1 fér hozzá.
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek csak a VNet1 férhetnek hozzá
 
@@ -243,7 +243,7 @@ A Windowst használó ügyfelek hozzáférhetnek a helyek közötti VPN-kapcsola
 
 * A nem Windows rendszerű ügyfelekhez hozzáadott útvonalak: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Hozzáférés
+### <a name="access"></a>Access
 
 * A Windows-ügyfelek hozzáférhetnek a VNet1, a VNet2, a VNet3 és a hely1, de a VNet2, a VNet3 és a hely1 útvonalakat manuálisan kell hozzáadni az ügyfélhez.
 

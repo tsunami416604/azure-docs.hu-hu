@@ -22,7 +22,7 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio'
         - name: Container Service
           href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment'
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Webalkalmazás létrehozása és üzembe helyezése
       items:
@@ -80,7 +80,7 @@
       href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-overview'
 - name: Útmutatók
   items:
-    - name: Csomag
+    - name: Felkészülés
       items:
         - name: Webalkalmazás-architektúrák
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
@@ -132,17 +132,17 @@
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Mikroszolgáltatások alkalmazásai
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
-    - name: Védelem
+    - name: Biztonságos
       items:
         - name: Web- és mobilalkalmazások
           href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
-    - name: Biztonsági mentés
+    - name: Backup
       items:
         - name: Web- és mobilalkalmazások
           href: 'https://docs.microsoft.com/azure/app-service/manage-backup'
         - name: Virtual machines (Virtuális gépek)
           href: 'https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction'
-    - name: Monitoring
+    - name: Figyelés
       items:
         - name: Web- és mobilalkalmazások
           href: 'https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs'
@@ -175,7 +175,7 @@
         - name: PHP
           href: 'https://github.com/Azure/azure-sdk-for-php/blob/master/README.md'
         - name: Python
-          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/'
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/README.md'
         - name: Ruby
           href: 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md'
     - name: Parancssori felületek (CLI)

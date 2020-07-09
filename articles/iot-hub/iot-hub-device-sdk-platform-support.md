@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Device SDK-platform támogatása | Microsoft Docs
-description: A nyílt forráskódú eszközök SDK-k a GitHubon, a C, a .NET (C#), a Java, a Node. js és a Python eszközben érhetők el az eszközök Azure IoT Hub és Device kiépítési szolgáltatáshoz (DPS) való csatlakoztatásához.
+description: A nyílt forráskódú eszközök SDK-k a GitHubon, a C, a .NET (C#), a Java, a Node.js és a Python alkalmazásban érhetők el az eszközök Azure-beli IoT Hub és az eszközök kiépítési szolgáltatásához (DPS) való csatlakoztatásához.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045115"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
-A Microsoft igyekszik folyamatosan bővíteni az Azure IoT Hub-kompatibilis eszközök univerzumát. A Microsoft a GitHubon teszi közzé a nyílt forráskódú eszközök SDK-kat, hogy segítsen az eszközök csatlakoztatásában az Azure IoT Hub és a Device kiépítési szolgáltatáshoz. Az eszköz SDK-k a következőkhöz érhetők el: C, .NET (C#), Java, Node. js és Python. A Microsoft teszteli az egyes SDK-kat, hogy azok a támogatott konfigurációkon futnak a [Microsoft SDK-k és az eszközök platformjának támogatása](#microsoft-sdks-and-device-platform-support) szakaszban.
+A Microsoft igyekszik folyamatosan bővíteni az Azure IoT Hub-kompatibilis eszközök univerzumát. A Microsoft a GitHubon teszi közzé a nyílt forráskódú eszközök SDK-kat, hogy segítsen az eszközök csatlakoztatásában az Azure IoT Hub és a Device kiépítési szolgáltatáshoz. Az eszköz SDK-k a következőkhöz érhetők el: C, .NET (C#), Java, Node.js és Python. A Microsoft teszteli az egyes SDK-kat, hogy azok a támogatott konfigurációkon futnak a [Microsoft SDK-k és az eszközök platformjának támogatása](#microsoft-sdks-and-device-platform-support) szakaszban.
 
 Az eszköz SDK-k mellett a Microsoft számos más utat is biztosít az ügyfelek és a fejlesztők számára az eszközök Azure IoT való csatlakoztatásához:
 
@@ -30,7 +29,7 @@ Ez a témakör a Microsoft SDK-k és az általuk támogatott platform-konfigurá
 
 ## <a name="microsoft-sdks-and-device-platform-support"></a>A Microsoft SDK-k és az eszközök platformjának támogatása
 
-A Microsoft nyílt forráskódú SDK-kat tesz közzé a GitHubon a következő nyelveken: C, .NET (C#), Node. js, Java és Python. Ebben a szakaszban az SDK-k és azok függőségei szerepelnek. Az SDK-k bármely, a függőségeket kielégítő eszköz platformon támogatottak.
+A Microsoft nyílt forráskódú SDK-kat tesz közzé a GitHubon a következő nyelveken: C, .NET (C#), Node.js, Java és Python. Ebben a szakaszban az SDK-k és azok függőségei szerepelnek. Az SDK-k bármely, a függőségeket kielégítő eszköz platformon támogatottak.
 
 Az egyes felsorolt SDK-k esetében a Microsoft:
 
@@ -78,7 +77,7 @@ A .NET SDK a Windows IoT Core-ban is használható az [Azure-eszköz ügynökév
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-Az [Azure IoT hub Node. js ESZKÖZOLDALI SDK](https://github.com/Azure/azure-iot-sdk-node) -t teszteli, és a következő konfigurációkat támogatja.
+Az [Azure IoT Hub Node.js az eszköz SDK](https://github.com/Azure/azure-iot-sdk-node) -t teszteli, és a következő konfigurációkat támogatja.
 
 | Operációs rendszer                  | Csomópont verziója    |
 |---------------------|-----------------|
@@ -122,7 +121,7 @@ A Microsoft számos partnerrel működik együtt az Azure IoT-univerzum folyamat
 
 Ha nem tudja használni az IoT Hub eszköz SDK-kat, közvetlenül is csatlakozhat a IoT Hubhoz a [IOT hub REST API](https://docs.microsoft.com/rest/api/iothub/) -k használatával a HTTPS-kérések és válaszok küldésére és fogadására képes bármely alkalmazásból.
 
-## <a name="support-and-other-resources"></a>Támogatás és egyéb erőforrások
+## <a name="support-and-other-resources"></a>Támogatás és egyéb forrásanyagok
 
 Ha problémák merülnek fel az Azure IoT-eszközök SDK-k használata során, többféleképpen is kérhet támogatást. Kipróbálhatja a következő csatornák egyikét:
 
@@ -134,7 +133,7 @@ Ha problémák merülnek fel az Azure IoT-eszközök SDK-k használata során, t
 
 * [Azure IoT Hub Java SDK-problémák](https://github.com/Azure/azure-iot-sdk-java/issues)
 
-* [Azure IoT Hub Node. js SDK-problémák](https://github.com/Azure/azure-iot-sdk-node/issues)
+* [Azure IoT Hub Node.js SDK-problémák](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Azure IoT Hub Python SDK-problémák](https://github.com/Azure/azure-iot-sdk-python/issues)
 

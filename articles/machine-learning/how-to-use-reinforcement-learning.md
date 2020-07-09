@@ -5,16 +5,16 @@ description: Megtudhatja, hogyan használhatja a Azure Machine Learning-megerős
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556941"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -424,7 +424,7 @@ Válassza **a kattintson ide a futtatás Azure Machine learning Studióban** a t
 
 Az **episode_reward_mean** ábrán látható, hogy milyen számú pontot kell kiszámítani a képzési korszakban. Láthatja, hogy az oktatási ügynök kezdetben rosszul lett elvégezve, és a egyezésük elvesztése nélkül megszakadt (a-21 reward_mean). Az 100-es ismétléseken belül a képzési ügynök megtanulta, hogy átlagosan 18 ponttal megverte a számítógépes ellenfelet.
 
-Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log. txt fájlban rögzített kiértékelési eredményeket. Előfordulhat, hogy néhány percet várnia kell, amíg a metrikák elérhetővé válnak a Futtatás oldalon.
+Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log.txt fájlban rögzített kiértékelési eredményeket. Előfordulhat, hogy néhány percet várnia kell, amíg a metrikák elérhetővé válnak a Futtatás oldalon.
 
 Rövid idő alatt több számítási erőforrást is megtanult a megerősítő tanulási ügynök betanítására, hogy nagyon jól játszhasson.
 

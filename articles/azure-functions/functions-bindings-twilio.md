@@ -7,10 +7,9 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76715058"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions Twilio kötése
@@ -35,7 +34,7 @@ A Twilio-kötések a [Microsoft. Azure. webjobs. Extensions. Twilio](https://www
 
 ## <a name="example---functions-2x-and-higher"></a>Példa – 2. x és újabb függvények
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely szöveges üzenetet küld, amikor egy üzenetsor-üzenet aktiválja.
 
@@ -72,11 +71,11 @@ Ez a példa az `TwilioSms` attribútumot használja a metódus visszatérési é
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A következő példa egy Twilio kimeneti kötést mutat be egy *function. JSON* fájlban és egy [C# parancsfájl-függvényben](functions-reference-csharp.md) , amely a kötést használja. A függvény egy `out` paramétert használ szöveges üzenet küldéséhez.
+Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function.jsa* fájlban és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy `out` paramétert használ szöveges üzenet küldéséhez.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -158,11 +157,11 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
+Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -203,7 +202,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet a kimeneti kötés használatával a következő *function. js*fájlban megadott módon.
+Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet az alábbi *function.js*meghatározott kimeneti kötés használatával.
 
 ```json
     {
@@ -217,7 +216,7 @@ Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet a kimeneti kötés ha
     }
 ```
 
-Az SMS-üzenet elküldéséhez átadhat egy `func.Out` szerializált JSON-objektumot a paraméternek.
+Az SMS-üzenet elküldéséhez átadhat egy szerializált JSON-objektumot a `func.Out` paraméternek.
 
 ```python
 import logging
@@ -241,7 +240,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az alábbi példa bemutatja, hogyan lehet SMS-üzenetet küldeni a [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzet használatával. Az attribútumok `to`definíciójában `from`a `body` , a és az értékek szükségesek, még akkor is, ha programozott módon felülbírálja őket.
+Az alábbi példa bemutatja, hogyan lehet SMS-üzenetet küldeni a [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzet használatával. `to` `from` Az attribútumok definíciójában a, a és az értékek `body` szükségesek, még akkor is, ha programozott módon felülbírálja őket.
 
 ```java
 package com.function;
@@ -287,11 +286,11 @@ public class TwilioOutput {
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribútumot.
 
-További információ a konfigurálható attribútumok tulajdonságairól: [konfiguráció](#configuration). `TwilioSms` Példa a metódus aláírására:
+További információ a konfigurálható attribútumok tulajdonságairól: [konfiguráció](#configuration). `TwilioSms`Példa a metódus aláírására:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -319,22 +318,22 @@ A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Helyezzen [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzetet egy [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) paraméterre `T` , ahol bármilyen natív Java-típus lehet `int`, `String` `byte[]`például,, vagy egy POJO típus.
+Helyezzen [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzetet egy [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) paraméterre, ahol `T` bármilyen natív Java-típus lehet, például,, `int` `String` `byte[]` vagy egy POJO típus.
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az `TwilioSms` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TwilioSms` .
 
-| v1 function. JSON tulajdonság | v2 function. JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|---------|----------------------|
-|**típusa**|**típusa**| értékre kell állítani `twilioSms`.|
-|**direction**|**direction**| értékre kell állítani `out`.|
+|**típusa**|**típusa**| értékre kell állítani `twilioSms` .|
+|**direction**|**direction**| értékre kell állítani `out` .|
 |**név**|**név**| A Twilio SMS szöveges üzenethez tartozó Function Code-ban használt változó neve. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók SID (`TwilioAccountSid`) azonosítóját tartalmazza. Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |
-|**Aad**|**authTokenSetting**|**AuthTokenSetting**| Ezt az értéket egy olyan Alkalmazásbeállítások nevére kell beállítani, amely a Twilio hitelesítési tokent (`TwilioAccountAuthToken`) tárolja. Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAuthToken". |
-|**hogy**| N/A – megadás a kódban | **Címzett**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók SID () azonosítóját tartalmazza `TwilioAccountSid` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |
+|**Aad**|**authTokenSetting**|**AuthTokenSetting**| Ezt az értéket egy olyan Alkalmazásbeállítások nevére kell beállítani, amely a Twilio hitelesítési tokent () tárolja `TwilioAccountAuthToken` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAuthToken". |
+|**hogy**| N/A – megadás a kódban | **Hogy**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
 |**a**|**a** | **A**| Ez az érték arra a telefonszámra van beállítva, amelyet az SMS-szöveg elküldésére használt.|
 |**törzse**|**törzse** | **Törzs**| Ez az érték használható az SMS szöveges üzenet kódolására, ha nem kell dinamikusan beállítania a függvény kódjában. |  
 

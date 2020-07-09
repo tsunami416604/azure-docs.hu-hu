@@ -10,10 +10,9 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75976740"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>IoT hub létrehozása Azure Resource Manager sablon használatával (.NET)
@@ -74,9 +73,9 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot az erőforráscsoporthoz. A meglévő IoT hub-t egy Azure Resource Manager sablonnal is módosíthatja.
 
-1. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Vegyen fel egy **template. JSON** nevű JSON-fájlt a projektbe.
+1. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Vegyen fel egy **template.js** nevű JSON-fájlt a projektbe.
 
-2. Ha standard IoT hub-t szeretne felvenni az **USA keleti** régiójába, cserélje le a **template. JSON** tartalmát a következő erőforrás-definícióval. Az IoT Hubt támogató régiók aktuális listájának megtekintéséhez tekintse meg az [Azure status][lnk-status]:
+2. Ha standard IoT hub-t szeretne felvenni az **USA keleti** régiójába, cserélje le a **template.js** tartalmát a következő erőforrás-definícióval. Az IoT Hubt támogató régiók aktuális listájának megtekintéséhez tekintse meg az [Azure status][lnk-status]:
 
     ```json
     {
@@ -112,9 +111,9 @@ A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot
     }
     ```
 
-3. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Adjon hozzá egy **Parameters. JSON** nevű JSON-fájlt a projekthez.
+3. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Vegyen fel egy **parameters.js** nevű JSON-fájlt a projektbe.
 
-4. Cserélje le a **Parameters. JSON** fájl tartalmát a következő paraméter-információra, amely az új IoT hub nevét állítja be, például **{a Initials} mynewiothub**. Az IoT hub nevének globálisan egyedinek kell lennie, ezért tartalmaznia kell a nevét vagy a monogramját:
+4. Cserélje le a **parameters.js** tartalmát a következő paraméter-információra, amely az új IoT hub nevét állítja be, például **{a Monogram} mynewiothub**. Az IoT hub nevének globálisan egyedinek kell lennie, ezért tartalmaznia kell a nevét vagy a monogramját:
 
     ```json
     {
@@ -129,7 +128,7 @@ A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot
 
 5. A **Server Explorerben**kapcsolódjon az Azure-előfizetéséhez, és az Azure Storage-fiókban hozzon létre egy **templates**nevű tárolót. A **Tulajdonságok** panelen állítsa a **sablonok** tárolóhoz tartozó **nyilvános olvasási hozzáférési** engedélyeket a **blob**elemre.
 
-6. A **Server Explorerben**kattintson a jobb gombbal a **sablonok** tárolóra, majd kattintson a **blob-tároló megtekintése**elemre. Kattintson a **blob feltöltése** gombra, válassza ki a két fájlt, a **Parameters. JSON** és a **templates. JSON**fájlt, majd kattintson a **Megnyitás** gombra, és töltse fel a JSON-fájlokat a **sablonok** tárolóba. A JSON-fájlokat tartalmazó Blobok URL-címei a következők:
+6. A **Server Explorerben**kattintson a jobb gombbal a **sablonok** tárolóra, majd kattintson a **blob-tároló megtekintése**elemre. Kattintson a **blob feltöltése** gombra, jelölje ki a két fájlt, **parameters.js** be és **templates.js**be, majd kattintson a **Megnyitás** gombra, és töltse fel a JSON-fájlokat a **sablonok** tárolóba. A JSON-fájlokat tartalmazó Blobok URL-címei a következők:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json

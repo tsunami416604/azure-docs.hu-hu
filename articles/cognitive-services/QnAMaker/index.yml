@@ -3,7 +3,7 @@ title: A QnA Maker dokumentációja
 summary: Megismerheti a QnA Maker szolgáltatást, illetve hogy a szolgáltatás tudásbázisai hogyan működnek a kérdésekkel és válaszokkal.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/18/2019
+  ms.date: 06/08/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
+  ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83651159"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84628034"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -66,8 +66,8 @@ landingContent:
     links:
     - text: 'Gyorsútmutató: Postman vagy cURL használatával'
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - text: 'Gyorsútmutató: A REST és a C# használata'
-      url: quickstarts/get-answer-from-knowledge-base-csharp.md
+    - text: 'Gyorsútmutató: A REST és a cURL használata'
+      url: quickstarts/quickstart-rest-curl.md
     - text: 'Gyorsútmutató: Az SDK használata'
       url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
@@ -94,8 +94,12 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: 'Portál: QnA-robot létrehozása'
+    - text: 'Portál: Azure Bot Service-robot létrehozása'
       url: tutorials/create-qna-bot.md
+    - text: 'Power Apps: QnA Maker által működtetett robot létrehozása'
+      url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - text: 'Robotkeretrendszer: LUIS- és QnA Maker-alkalmazások közötti átadás'
+      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
     - text: Egyéb mintarobotok
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: Referencia

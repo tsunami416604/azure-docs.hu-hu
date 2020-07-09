@@ -1,5 +1,5 @@
 ---
-title: A málna PI webszimulátor összekötése az Azure IoT Hub (node. js)
+title: A málna PI web Simulator összekötése az Azure IoT Hub (Node.js)
 description: A málna PI webszimulátor összekapcsolásával Azure-IoT Hub a málna PI-hoz az Azure-felhőbe való adatküldéshez.
 author: wesmc7777
 manager: philmea
@@ -10,31 +10,32 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0c1e56eced3ed675a70cc1ec2461038c80cff233
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449787"
 ---
-# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>A málna PI online szimulátor összekötése az Azure IoT Hub (node. js)
+# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>A málna PI online szimulátor összekötése az Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 Ebben az oktatóanyagban elkezdi megtanulni a málna PI online szimulátor használatának alapjait. Ezután megtudhatja, hogyan csatlakoztatható zökkenőmentesen a PI-szimulátor a felhőhöz az [Azure IoT hub](about-iot-hub.md)használatával.
 
-Ha fizikai eszközökkel rendelkezik, a kezdéshez látogasson el a [málna PI csatlakoztatása az Azure IoT hubhoz](iot-hub-raspberry-pi-kit-node-get-started.md) című oldalon.
-
 <p>
 <div id="diag" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/3-banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
 </div>
+</p>
 <p>
 <div id="button" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted" target="_blank">
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
+</a>
 </div>
+</p>
+
+Ha fizikai eszközökkel rendelkezik, a kezdéshez látogasson el a [málna PI csatlakoztatása az Azure IoT hubhoz](iot-hub-raspberry-pi-kit-node-get-started.md) című oldalon.
 
 ## <a name="what-you-do"></a>Teendők
 
@@ -98,7 +99,7 @@ A webes szimulátorban három terület található.
 
 2. Válassza a **Futtatás** vagy `npm start` a típus lehetőséget az alkalmazás futtatásához.
 
-A következő kimenetnek kell megjelennie, amely megjeleníti az érzékelő adatait és az IoT hub ![kimeneti-érzékelő adatait a málna PI-ből a IoT hub-ba küldött üzenetekben](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
+A következő kimenetnek kell megjelennie, amely megjeleníti az érzékelő adatait és az IoT hub ![ kimeneti-érzékelő adatait a málna PI-ből a IoT hub-ba küldött üzenetekben](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>A hub által fogadott üzenetek olvasása
 

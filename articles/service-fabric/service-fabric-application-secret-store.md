@@ -4,10 +4,9 @@ description: Ez a cikk azt ismerteti, hogyan használható a központi titkok t�
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197766"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolása az Azure-ban Service Fabric 
@@ -73,7 +72,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 Az alábbi lépéseket követve használhatja a titkos kulcsot a Service Fabric alkalmazásban.
 
-1. Vegyen fel egy szakaszt a **Settings. XML** fájlban a következő kódrészlettel. Vegye figyelembe, hogy az érték { `secretname:version` } formátumú.
+1. Vegyen fel egy szakaszt a **settings.xml** fájlban a következő kódrészlettel. Vegye figyelembe, hogy az érték { `secretname:version` } formátumú.
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +80,7 @@ Az alábbi lépéseket követve használhatja a titkos kulcsot a Service Fabric 
      </Section>
    ```
 
-1. Importálja a szakaszt a **ApplicationManifest. xml fájlban**.
+1. Importálja **ApplicationManifest.xml**szakaszát.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -99,7 +98,7 @@ Az alábbi lépéseket követve használhatja a titkos kulcsot a Service Fabric 
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
 1. A titkok csatlakoztatása egy tárolóhoz. Az egyetlen, a tárolón belül elérhető titkokat a `specify` -ben lévő csatlakoztatási pontra kell módosítani `<ConfigPackage>` .
-A következő kódrészlet a módosított **ApplicationManifest. XML**.  
+A következő kódrészlet a módosított **ApplicationManifest.xml**.  
 
    ```xml
    <ServiceManifestImport>
@@ -117,7 +116,7 @@ A következő kódrészlet a módosított **ApplicationManifest. XML**.
    ```
    A Titkok a tárolón belüli csatlakoztatási pont alatt érhetők el.
 
-1. Megadhat egy titkos kulcsot egy folyamat környezeti változóhoz a következő megadásával: `Type='SecretsStoreRef` . Az alábbi kódrészlet egy példa arra, hogyan köthető a `supersecret` verzió a `ver1` környezeti változóhoz a `MySuperSecret` **ServiceManifest. xml fájlban**.
+1. Megadhat egy titkos kulcsot egy folyamat környezeti változóhoz a következő megadásával: `Type='SecretsStoreRef` . Az alábbi kódrészlet egy példa arra, hogyan köthető a `supersecret` verzió a `ver1` környezeti változóhoz a `MySuperSecret` **ServiceManifest.xmlban **.
 
    ```xml
    <EnvironmentVariables>

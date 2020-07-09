@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: functions
 author: jeffhollan
 ms.service: azure-functions
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: c53486bf3368039f172c7a13420e2291dd9c9892
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4dc85988d904fdec72e1e6d92f03582a2a8f1427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85121603"
 ---
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
@@ -26,7 +26,7 @@ ms.locfileid: "83122667"
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
     | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
     | **függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9` és `-` .  |
-    |**Közzététel**| Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
+    |**Közzététel**| Code | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
     |**Régió**| Előnyben részesített régió | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
 
@@ -36,9 +36,9 @@ ms.locfileid: "83122667"
 
     | Beállítás      | Ajánlott érték  | Leírás |
     | ------------ | ---------------- | ----------- |
-    | **[Tárfiók](../articles/storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
-    |**Operációs rendszer**| Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
-    | **[Felkészülés](../articles/azure-functions/functions-scale.md)** | Prémium | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Válassza a **prémium**lehetőséget, majd válassza ki a **Windows-csomag** és az **SKU és a méret**alapértelmezett értékeit. |
+    | **[Storage-fiók](../articles/storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Operációs rendszer**| Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. A Python csak Linux rendszeren támogatott. |
+    | **[Felkészülés](../articles/azure-functions/functions-scale.md)** | Prémium | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Válassza a **prémium**lehetőséget. Alapértelmezés szerint a rendszer új App Service tervet hoz létre. Az alapértelmezett **SKU és size** érték a **EP1**, ahol az EP a _rugalmas prémium szintű támogatást_nyújtja. További információért lásd a [prémium SKU-ket tartalmazó listát](../articles/azure-functions/functions-premium-plan.md#available-instance-skus).<br/>A JavaScript-függvények prémium csomagon való futtatásakor olyan példányt válasszon, amelynek kevesebb vCPU van. További információ: az [egymagos prémium csomagok kiválasztása](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions).  |
 
     ![Üzemeltetési oldal](./media/functions-premium-create/function-app-premium-create-hosting.png)
 

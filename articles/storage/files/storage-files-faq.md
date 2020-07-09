@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 8896aba104a99d323b3c39cfaeab6043d1c12f9d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482870"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -98,12 +98,18 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
   **Létrehoztam egy fájlt közvetlenül az Azure-fájlmegosztást az SMB vagy a portál használatával. Mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoportban lévő kiszolgálókhoz?**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
-* <a id="afs-conflict-resolution"></a>**Ha ugyanezt a fájlt két kiszolgálón is megváltoztatják egy időben, mi történik?**  
-    A Azure File Sync egy egyszerű ütközés-feloldási stratégiát használ: egyszerre két kiszolgálón módosítjuk a fájlok változásait. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régi fájl a "forrás" gépet és az ütköző számot fűzi a névhez. Ezt a besorolást követi: 
-   
-    \<FileNameWithoutExtension \> - \< számítógépnév \> \[ -# \] . \< ext\>  
 
-    A CompanyReport. docx első ütközése például CompanyReport-CentralServer. docx lesz, ha a CentralServer a régebbi írás történt. A második ütközés neve CompanyReport-CentralServer-1. docx lesz. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. Ha elérte az ütköző fájlok maximális számát, a fájl szinkronizálása sikertelen lesz, amíg az ütköző fájlok száma nem haladja meg a 100-ot.
+* <a id="afs-sync-time"></a>
+  **Mennyi ideig tart a Azure File Sync az 1TiB feltöltéséhez?**
+  
+    A teljesítmény a környezeti beállításoktól, a konfigurációtól és attól függően változik, hogy ez egy kezdeti szinkronizálás vagy egy folyamatban lévő szinkronizálás. További információ: [Azure file Sync teljesítmény mérőszámai](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
+
+* <a id="afs-conflict-resolution"></a>**Ha ugyanezt a fájlt két kiszolgálón is megváltoztatják egy időben, mi történik?**  
+    A Azure File Sync egy egyszerű ütközés-feloldási stratégiát használ: egyszerre két végponton módosult fájlok változásai is megmaradnak. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi (LastWriteTime által meghatározott) fájl a végpont nevét és a fájlnévhez hozzáfűzött ütközési számot tartalmaz. A kiszolgálói végpontok esetében a végpont neve a kiszolgáló neve. A Felhőbeli végpontok esetén a végpont neve **felhő**. A név ezt a besorolást követi: 
+   
+    \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
+
+    Például az első ütközés a CompanyReport.docx CompanyReport-CentralServer.docx, ha a CentralServer, ahol a régebbi írás történt. A második ütközés neve CompanyReport-CentralServer-1.docx. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. Ha elérte az ütköző fájlok maximális számát, a fájl szinkronizálása sikertelen lesz, amíg az ütköző fájlok száma nem haladja meg a 100-ot.
 
 * <a id="afs-storage-redundancy"></a>
   **A Geo-redundáns tárolás Azure File Sync támogatott?**  
@@ -127,6 +133,10 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="afs-effective-vfs"></a>
   **Hogyan történik a *kötetek szabad területének* értelmezése, ha több kiszolgálói végpontom van egy köteten?**  
   Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  
+* <a id="afs-tiered-files-tiering-disabled"></a>
+  **Letiltottam a Felhőbeli letiltást, miért vannak a kiszolgálói végpontok helyen található, lépcsőzetes fájlok?**  
+  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#afs-tiering-disabled).
 
 * <a id="afs-files-excluded"></a>
   **Mely fájlokat és mappákat automatikusan kizárja a Azure File Sync?**  
@@ -145,16 +155,16 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-  **Áthelyezhetem a Storage Sync szolgáltatást és/vagy a Storage-fiókot egy másik erőforráscsoporthoz vagy előfizetésbe?**  
-   Igen, a Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoporthoz vagy előfizetésbe a meglévő Azure AD-bérlőn belül. Ha áthelyezi a Storage-fiókot, meg kell adnia a hibrid File Sync szolgáltatás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+  **Áthelyezhetem a Storage Sync szolgáltatást és/vagy a Storage-fiókot egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe?**  
+   Igen, a Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe. A Storage Sync szolgáltatás vagy a Storage-fiók áthelyezése után meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > A Azure File Sync nem támogatja az előfizetés másik Azure AD-bérlőre való áthelyezését.
+    > A Felhőbeli végpont létrehozásakor a Storage Sync szolgáltatásnak és a Storage-fióknak ugyanabban az Azure AD-bérlőben kell lennie. A Felhőbeli végpont létrehozása után a Storage Sync szolgáltatás és a Storage-fiók áthelyezhető a különböző Azure AD-bérlők között.
     
 * <a id="afs-ntfs-acls"></a>
   **A Azure File Sync a könyvtár/fájl szintű NTFS ACL-ek és a Azure Files tárolt adathozzáférések megőrzése mellett?**
 
-    Február 24-én a 2020-es verzióban az Azure file Sync által létrehozott új és meglévő ACL-ek NTFS-formátumban lesznek tárolva, és az Azure-fájlmegosztás felé irányuló ACL-módosítások szinkronizálása a szinkronizálási csoport összes kiszolgálójára történik. A Azure Files hozzáférés-vezérlési listáin végrehajtott módosítások az Azure file Sync használatával lesznek szinkronizálva. Az adatok Azure Filesba való másolása során az SMB használatával férhet hozzá a megosztáshoz, és megőrizheti a hozzáférés-vezérlési listákat. A meglévő REST-alapú eszközök, például a AzCopy vagy a Storage Explorer nem őrzik meg az ACL-eket.
+    Február 24-én a 2020-es verzióban az Azure file Sync által létrehozott új és meglévő ACL-ek NTFS-formátumban lesznek tárolva, és az Azure-fájlmegosztás felé irányuló ACL-módosítások szinkronizálása a szinkronizálási csoport összes kiszolgálójára történik. A Azure Files hozzáférés-vezérlési listáin végrehajtott módosítások az Azure file Sync használatával lesznek szinkronizálva. Az adatok Azure Filesba másolásakor győződjön meg arról, hogy olyan másolási eszközt használ, amely támogatja a szükséges "hűséget" ahhoz, hogy az attribútumokat, az időbélyegeket és az ACL-eket egy Azure-fájlmegosztásba másolja – SMB vagy REST használatával. Az Azure Copy-eszközök, például a AzCopy használata esetén fontos, hogy a legújabb verziót használja. Tekintse át a fájlmásolás- [eszközök táblázatát](storage-files-migration-overview.md#file-copy-tools) , és tekintse át az Azure Copy Tools eszközt, és győződjön meg arról, hogy a fájl összes fontos metaadatát át tudja másolni.
 
     Ha engedélyezte a Azure Backup a file Sync Managed file shares szolgáltatásban, a fájl ACL-ek továbbra is visszaállíthatók a biztonsági mentés visszaállítási munkafolyamatának részeként. Ez a teljes megosztásra vagy egyedi fájlokra/könyvtárakra is használható.
 
@@ -164,7 +174,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="ad-support"></a>
 **Támogatott-e a Azure Files identitás-alapú hitelesítés és hozzáférés-vezérlés?**  
     
-    Igen, Azure Files támogatja az identitás-alapú hitelesítést és a hozzáférés-vezérlést. Az identitás-alapú hozzáférés-vezérlés használatának két módja közül választhat: helyszíni Active Directory tartományi szolgáltatások (előzetes verzió) vagy Azure Active Directory Domain Services (Azure AD DS). A helyszíni Active Directory tartományi szolgáltatások (AD DS) támogatja a hitelesítést a AD DS tartományhoz csatlakoztatott, helyszíni vagy Azure-beli gépek használatával az Azure-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez. Azure Files az Azure AD DS az SMB protokollon keresztüli hitelesítés lehetővé teszi, hogy az Azure AD DS tartományhoz csatlakoztatott Windows virtuális gépek hozzáférjenek a megosztásokhoz, könyvtárakhoz és fájlokhoz az Azure AD hitelesítő adataival. További részletekért lásd: [az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md). 
+    Igen, Azure Files támogatja az identitás-alapú hitelesítést és a hozzáférés-vezérlést. Az identitás-alapú hozzáférés-vezérlés használatának két módja közül választhat: helyszíni Active Directory tartományi szolgáltatások vagy Azure Active Directory Domain Services (Azure AD DS). A helyszíni Active Directory tartományi szolgáltatások (AD DS) támogatja a hitelesítést a AD DS tartományhoz csatlakoztatott, helyszíni vagy Azure-beli gépek használatával az Azure-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez. Azure Files az Azure AD DS az SMB protokollon keresztüli hitelesítés lehetővé teszi, hogy az Azure AD DS tartományhoz csatlakoztatott Windows virtuális gépek hozzáférjenek a megosztásokhoz, könyvtárakhoz és fájlokhoz az Azure AD hitelesítő adataival. További részletekért lásd: [az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md). 
 
     A Azure Files két további módszert kínál a hozzáférés-vezérlés kezelésére:
 
@@ -173,41 +183,6 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     - Azure File Sync megőrzi és replikálja az összes tulajdonosi ACL-t vagy DACL-t (akár Active Directory-alapú, akár helyi) az összes olyan kiszolgálói végpontra, amelyet szinkronizál. 
     
     Az Azure Storage szolgáltatásban támogatott összes protokoll átfogó megjelenítéséhez tekintse meg az [Azure Storage-hozzáférés engedélyezését](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető témakört. 
-
-* <a id="ad-support-devices"></a>
-**A Azure Files Azure Active Directory Domain Services (Azure AD DS) hitelesítés támogatja az Azure AD-beli hitelesítő adatokkal való SMB-hozzáférést az Azure AD-hez csatlakoztatott vagy regisztrált eszközökön?**
-
-    Nem, ez a forgatókönyv nem támogatott.
-
-* <a id="ad-support-rest-apis"></a>
-**Vannak olyan REST API-k, amelyek támogatják a beolvasás/beállítás/másolás/fájl NTFS ACL-eket?**
-
-    Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor.
-
-* <a id="ad-vm-subscription"></a>
-**Hozzáférhetek az Azure-fájlmegosztás Azure AD-beli hitelesítő adataival egy másik előfizetéshez tartozó virtuális gépről?**
-
-    Ha az előfizetés, amely alatt a fájlmegosztás telepítve van, ugyanahhoz az Azure AD-bérlőhöz van társítva, mint az Azure AD DS-példány, amelyhez a virtuális gép tartományhoz csatlakozik, az Azure-fájlmegosztást ugyanazzal az Azure AD-beli hitelesítő adatokkal érheti el. A korlátozás nem az előfizetésre, hanem a kapcsolódó Azure AD-bérlőre is érvényes.
-    
-* <a id="ad-support-subscription"></a>
-**Engedélyezhető az Azure-AD DS vagy helyszíni AD DS hitelesítés az Azure-fájlmegosztás esetében, amely eltér az Azure-fájlmegosztás elsődleges bérlőtől?**
-
-    Nem, Azure Files csak az Azure AD DS vagy a helyszíni AD DS integrációt támogatja egy olyan Azure AD-Bérlővel, amely ugyanabban az előfizetésben található, mint a fájlmegosztás. Egy Azure AD-bérlőhöz csak egy előfizetés társítható. Ez a korlátozás az Azure AD DS és a helyszíni AD DS hitelesítési módszerekre is vonatkozik. Helyszíni AD DS hitelesítéshez való használatakor [a AD DS hitelesítő adatokat szinkronizálni kell az Azure ad](../../active-directory/hybrid/how-to-connect-install-roadmap.md) -vel, amelyhez a Storage-fiók társítva van.
-
-* <a id="ad-linux-vms"></a>
-**Támogatja az Azure AD DS vagy a helyszíni AD DS-hitelesítés az Azure-fájlmegosztás számára a Linux rendszerű virtuális gépeket?**
-
-    Nem, a Linux rendszerű virtuális gépekről történő hitelesítés nem támogatott.
-
-* <a id="ad-aad-smb-afs"></a>
-**Azure File Sync által felügyelt fájlmegosztás támogatja az Azure AD DS vagy a helyszíni AD DS (előzetes verzió) hitelesítést?**
-
-    Igen, a Azure File Sync által felügyelt fájlmegosztás esetében engedélyezheti az Azure AD DS vagy a helyszíni AD DS hitelesítést. A könyvtár/fájl NTFS ACL-ek helyi fájlkiszolgálón való módosítása a Azure Files és fordítva történik.
-
-* <a id="ad-aad-smb-files"></a>
-**Hogyan ellenőrizhetem, hogy engedélyezve van-e a AD DS hitelesítés a Storage-fiókomban, és hogyan kérhető le a tartományi információ?**
-
-    Útmutatásért lásd [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
     
 * <a id="encryption-at-rest"></a>
 **Hogyan biztosíthatom, hogy az Azure-fájlmegosztás titkosítatlan állapotban legyen?**  
@@ -234,7 +209,37 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
    Azure Files ugyanazon a tárolási architektúrán fut, amelyet az Azure Storage más tárolási szolgáltatásaiban használ. Azure Files ugyanazokat az adatmegfelelőségi szabályzatokat alkalmazza, amelyek más Azure Storage-szolgáltatásokban is használhatók. Az Azure Storage-beli adatok megfelelőségével kapcsolatos további információkért tekintse meg az [Azure Storage megfelelőségi ajánlatait](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft adatvédelmi központját](https://microsoft.com/trustcenter/default.aspx).
    
-### <a name="ad-authentication"></a>AD-hitelesítés
+### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS Authentication
+* <a id="ad-support-devices"></a>
+**A Azure Files Azure Active Directory Domain Services (Azure AD DS) hitelesítés támogatja az Azure AD-beli hitelesítő adatokkal való SMB-hozzáférést az Azure AD-hez csatlakoztatott vagy regisztrált eszközökön?**
+
+    Nem, ez a forgatókönyv nem támogatott.
+
+* <a id="ad-vm-subscription"></a>
+**Hozzáférhetek az Azure-fájlmegosztás Azure AD-beli hitelesítő adataival egy másik előfizetéshez tartozó virtuális gépről?**
+
+    Ha az előfizetés, amely alatt a fájlmegosztás telepítve van, ugyanahhoz az Azure AD-bérlőhöz van társítva, mint az Azure AD DS-példány, amelyhez a virtuális gép tartományhoz csatlakozik, az Azure-fájlmegosztást ugyanazzal az Azure AD-beli hitelesítő adatokkal érheti el. A korlátozás nem az előfizetésre, hanem a kapcsolódó Azure AD-bérlőre is érvényes.
+    
+* <a id="ad-support-subscription"></a>
+**Engedélyezhető az Azure-AD DS vagy helyszíni AD DS hitelesítés az Azure-fájlmegosztás esetében, amely eltér az Azure-fájlmegosztás elsődleges bérlőtől?**
+
+    Nem, Azure Files csak az Azure AD DS vagy a helyszíni AD DS integrációt támogatja egy olyan Azure AD-Bérlővel, amely ugyanabban az előfizetésben található, mint a fájlmegosztás. Egy Azure AD-bérlőhöz csak egy előfizetés társítható. Ez a korlátozás az Azure AD DS és a helyszíni AD DS hitelesítési módszerekre is vonatkozik. Helyszíni AD DS hitelesítéshez való használatakor [a AD DS hitelesítő adatokat szinkronizálni kell az Azure ad](../../active-directory/hybrid/how-to-connect-install-roadmap.md) -vel, amelyhez a Storage-fiók társítva van.
+
+* <a id="ad-linux-vms"></a>
+**Támogatja az Azure AD DS vagy a helyszíni AD DS-hitelesítés az Azure-fájlmegosztás számára a Linux rendszerű virtuális gépeket?**
+
+    Nem, a Linux rendszerű virtuális gépekről történő hitelesítés nem támogatott.
+
+* <a id="ad-aad-smb-afs"></a>
+**Azure File Sync által felügyelt fájlmegosztás támogatja az Azure AD DS vagy a helyszíni AD DS hitelesítést?**
+
+    Igen, a Azure File Sync által felügyelt fájlmegosztás esetében engedélyezheti az Azure AD DS vagy a helyszíni AD DS hitelesítést. A könyvtár/fájl NTFS ACL-ek helyi fájlkiszolgálón való módosítása a Azure Files és fordítva történik.
+
+* <a id="ad-aad-smb-files"></a>
+**Hogyan ellenőrizhetem, hogy engedélyezve van-e a AD DS hitelesítés a Storage-fiókomban, és hogyan kérhető le a tartományi információ?**
+
+    Útmutatásért lásd [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
+
 * <a id=""></a>
 **Támogatja Azure Files Azure AD-hitelesítés a Linux rendszerű virtuális gépeket?**
 
@@ -246,12 +251,12 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     Azure Files helyszíni AD DS hitelesítés csak annak a tartományi szolgáltatásnak az erdőjét integrálja, amelyhez a Storage-fiók regisztrálva van. Egy másik erdő hitelesítésének támogatásához a környezetnek megfelelően konfigurált erdőszintű megbízhatósági kapcsolattal kell rendelkeznie. A Azure Files regisztrálása AD DS szinte ugyanaz, mint egy normál fájlkiszolgáló, ahol identitást (számítógép vagy szolgáltatás bejelentkezési fiókját) hoz létre a hitelesítéshez AD DS. Az egyetlen különbség, hogy a Storage-fiók regisztrált SPN-je "file.core.windows.net" értékkel végződik, amely nem felel meg a tartomány utótagjának. Tekintse meg a tartományi rendszergazdát, és ellenőrizze, hogy szükséges-e a DNS-útválasztási házirend frissítése a különböző tartományi utótag miatti több erdős hitelesítés engedélyezéséhez.
 
 * <a id=""></a>
-**Mely régiók érhetők el Azure Files AD DS hitelesítéshez (előzetes verzió)?**
+**Mely régiók érhetők el Azure Files AD DS hitelesítéshez?**
 
     További részletekért tekintse meg [AD DS regionális elérhetőségét](storage-files-identity-auth-active-directory-enable.md#regional-availability) .
     
 * <a id="ad-aad-smb-afs"></a>
-**Kihasználhatom Azure Files Active Directory (AD) hitelesítést (előzetes verzió) a Azure File Sync által felügyelt fájlmegosztás esetében?**
+**Kihasználhatom Azure Files Active Directory (AD) hitelesítést a Azure File Sync által felügyelt fájlmegosztás esetében?**
 
     Igen, engedélyezheti az AD-hitelesítést az Azure file Sync által kezelt fájlmegosztás esetén. A könyvtár/fájl NTFS ACL-ek helyi fájlkiszolgálón való módosítása a Azure Files és fordítva történik.
 
@@ -264,6 +269,12 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 **Van valamilyen különbség a saját Storage-fiókomat képviselő számítógépfiók vagy szolgáltatásbeli bejelentkezési fiók létrehozásakor?**
 
     Egy [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy egy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) létrehozása nem különbözik attól, hogy a hitelesítés hogyan működjön együtt Azure Filesokkal. Saját maga dönthet úgy, hogy a Storage-fiókot identitásként jelöli meg az AD-környezetben. A JOIN-AzStorageAccountForAuth parancsmagban beállított alapértelmezett DomainAccountType számítógépfiók. Azonban az AD-környezetben konfigurált jelszó lejárati kora eltérő lehet a számítógép vagy szolgáltatás bejelentkezési fiókja számára, és figyelembe kell vennie, hogy a [Storage-fiók identitásának frissítése az ad-ban](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)című részében kell megfontolnia a jelszót.
+ 
+* <a id="ad-support-rest-apis"></a>
+**Vannak olyan REST API-k, amelyek támogatják a lekérési/beállítási/másolási és a fájlok Windows ACL-jeit?**
+
+    Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor. A Windows ACL-ek továbbra is támogatottak a REST-alapú eszközökön: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
 
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 

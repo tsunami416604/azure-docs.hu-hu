@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 7db83535b7e6257159e0a0eb363e6d05c5e916b9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047908"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963648"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database biztonsági beállítások konfigurálása és kezelése geo-visszaállításhoz vagy feladatátvételhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,15 +55,19 @@ A folyamat első lépése annak meghatározása, hogy mely bejelentkezéseket ke
 
 Csak a kiszolgáló rendszergazdája vagy a **loginmanager szerepkörhöz adhatja** -kiszolgáló szerepkör tagja határozhatja meg a forráskiszolgálón a következő SELECT utasítással rendelkező bejelentkezéseket.
 
-    SELECT [name], [sid]
-    FROM [sys].[sql_logins]
-    WHERE [type_desc] = 'SQL_Login'
+```sql
+SELECT [name], [sid]
+FROM [sys].[sql_logins]
+WHERE [type_desc] = 'SQL_Login'
+```
 
 Csak a db_owner adatbázis-szerepkör, a dbo-felhasználó vagy a kiszolgáló rendszergazdája tagjai határozzák meg az összes adatbázis-felhasználói rendszerbiztonsági tagot az elsődleges adatbázisban.
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 #### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Keresse meg az 1. lépésben azonosított bejelentkezések SID-azonosítóját
 
@@ -71,9 +75,11 @@ Az előző szakaszban található lekérdezések kimenetének és a biztonsági 
 
 A következő lekérdezéssel megtekintheti az összes felhasználói résztvevőt és azok SID-fájljait egy adatbázisban. A lekérdezés csak a db_owner adatbázis-szerepkör vagy a kiszolgáló-rendszergazda tagja lehet.
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 > [!NOTE]
 > A **INFORMATION_SCHEMA** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, és a **vendég** SID **kell lennie 0x00**. A **dbo** SID a *0x01060000000001648000000000048454*-vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager**tagja helyett.
@@ -82,9 +88,11 @@ A következő lekérdezéssel megtekintheti az összes felhasználói résztvev�
 
 Utolsó lépésként nyissa meg a célkiszolgálóra vagy a kiszolgálókat, és a megfelelő biztonsági azonosítókkal létrehozza a bejelentkezéseket. Az alapszintű szintaxis a következő.
 
-    CREATE LOGIN [<login name>]
-    WITH PASSWORD = <login password>,
-    SID = <desired login SID>
+```sql
+CREATE LOGIN [<login name>]
+WITH PASSWORD = <login password>,
+SID = <desired login SID>
+```
 
 > [!NOTE]
 > Ha a másodlagoshoz szeretné megadni a felhasználói hozzáférést, de az elsődlegeshez nem, az alábbi szintaxissal módosíthatja a felhasználói bejelentkezést az elsődleges kiszolgálón.

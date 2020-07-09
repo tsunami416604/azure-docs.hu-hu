@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856826"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése
 
@@ -23,7 +23,7 @@ Ebből a dokumentumból megtudhatja, hogyan mérhető a Microsoft beszédfelisme
 
 ## <a name="what-is-word-error-rate-wer"></a>Mi az a Word Error Rate (WER)?
 
-A modell pontosságának méréséhez használt iparági szabvány a *Word Error Rate* (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számával elosztja. Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
+A modell pontosságának méréséhez használt iparági szabvány a *Word Error Rate* (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számát (N). Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
 
 ![WER-képlet](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -33,7 +33,7 @@ A helytelenül azonosított szavak három kategóriába sorolhatók:
 * Törlés (D): a hipotézis átiratában nem észlelhető szavak
 * Helyettesítő (k): a hivatkozás és a hipotézis között helyettesített szavak
 
-Például:
+Íme egy példa:
 
 ![Helytelenül azonosított szavak – példa](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -52,11 +52,11 @@ Ha szeretné kipróbálni a Microsoft beszéd-szöveg típusú alapmodelljét va
 Modellek kiértékelése egymás mellett:
 
 1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
-2. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
+2. Navigáljon a **beszéd – szöveg > Custom Speech > [a projekt neve] > tesztelése**elemre.
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza ki a **pontosság kiértékelése**elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 
@@ -69,7 +69,7 @@ A teszt befejezése után az állapot változása *sikeres*volt, a tesztben szer
 * [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78186726"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Megoldások és képzés a Azure Active Directory B2C
@@ -22,7 +21,7 @@ A Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a szervezetek szám
 
 | Cím | Leírás |
 | ----- | ----------- |
-| [Ügyfél-identitás kezelése Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | A szolgáltatás ezen áttekintésében a Azure AD B2C csapattól származó[@jainparakh](https://twitter.com/jainparakh)Parakh a a szolgáltatás működésének áttekintését, valamint azt is bemutatja, hogyan lehet a B2C-t egy ASP.net Core alkalmazáshoz gyorsan összekapcsolni. |
+| [Ügyfél-identitás kezelése Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | A szolgáltatás ezen áttekintésében [@jainparakh](https://twitter.com/jainparakh) a Azure ad B2C csapattól származó Parakh a a szolgáltatás működésének áttekintését, valamint azt is bemutatja, hogyan lehet a B2C-t egy ASP.net Core alkalmazáshoz gyorsan összekapcsolni. |
 | [A Azure AD B2C használatának előnyei](https://aka.ms/b2coverview) | Megismerheti a Azure AD B2C előnyeit és gyakori forgatókönyveit, valamint azt, hogy az alkalmazás (ok) hogyan használhatja ezt a CIAM szolgáltatást. |
 | [Szaktudást szerez Azure AD B2Cban: fejlesztőknek szóló tanfolyam](https://aka.ms/learnAADB2C) | Ez a teljes körű tanfolyam a fejlesztőknek biztosít olyan alkalmazásokat, amelyekkel a Azure AD B2C hitelesítési mechanizmusként fejlesztheti alkalmazásait. A Labs-mel rendelkező tíz részletes modul minden olyan Azure-előfizetés beállításával foglalkozik, amely meghatározza az ügyfeleket használó útvonalakat. |
 | [Partnereink, szállítók és ügyfelek hozzáférésének engedélyezése az Azure Active Directoryval való alkalmazásokhoz](https://aka.ms/aadexternalidentities) | Minden szervezet sikere, függetlenül attól, hogy mekkora, iparági vagy megfelelőségi és biztonsági testtartásra támaszkodik, a szervezeti képességtől függ, hogy együttműködik más szervezetekkel, és hogyan csatlakozhat az ügyfelekhez.<br><br>Az Azure AD, a Azure AD B2C és az Azure AD B2B együttműködésének összevonásával ez az útmutató részletesen ismerteti az üzleti értékeket és az olyan alkalmazások vagy webes élmények kialakításának felépítését, amelyek összevont hitelesítési élményt biztosítanak alkalmazottai, üzleti partnerei és szállítói, valamint az ügyfelek környezetében. |

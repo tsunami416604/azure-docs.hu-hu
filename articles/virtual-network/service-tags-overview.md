@@ -4,21 +4,21 @@ titlesuffix: Azure Virtual Network
 description: További információ a szolgáltatási címkékről. A szolgáltatás-címkék segítségével csökkentheti a biztonsági szabályok létrehozásának bonyolultságát.
 services: virtual-network
 documentationcenter: na
-author: jispar
+author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
-ms.author: jispar
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fd44c07ea44e7487a22b0de67737dcc135c813b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660602"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038038"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -40,18 +40,18 @@ Az oszlopok azt jelzik, hogy a címke:
 
 Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait tükrözik. Egyes szolgáltatási címkék a megfelelő IP-tartományok adott régióra való korlátozásával is részletesebb szabályozást tesznek lehetővé. A szolgáltatás címkéje például az **Azure Storage-** t jelöli a teljes felhőhöz, de a **Storage. WestUS** leszűkíti a tartományt úgy, hogy csak a WestUS régióból származó tárolási IP-címekre legyenek érvényesek. Az alábbi táblázat azt jelzi, hogy az egyes szolgáltatási címkék támogatják-e az ilyen regionális hatókört.  
 
-| Címke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Címke | Szerep | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ActionGroup** | Műveleti csoport. | Bejövő | Nem | Nem |
 | **ApiManagement** | Felügyeleti forgalom az Azure API Managementhoz – dedikált központi telepítések. <br/><br/>*Megjegyzés:* Ez a címke az Azure API Management szolgáltatási végpontját jelöli a vezérlési sík régiónként. Ez lehetővé teszi, hogy az ügyfelek felügyeleti műveleteket hajtsanak végre a API Management szolgáltatáson konfigurált API-kkal, műveletekkel, házirendekkel és NamedValues.  | Bejövő | Igen | Igen |
 | **ApplicationInsightsAvailability** | Application Insights rendelkezésre állás. | Bejövő | Nem | Nem |
 | **AppConfiguration** | Alkalmazás konfigurációja. | Kimenő | Nem | Nem |
 | **AppService**    | Azure App Service. A rendszer ezt a címkét a webalkalmazások előtéri kimenő biztonsági szabályaihoz ajánlja. | Kimenő | Igen | Igen |
-| **AppServiceManagement** | Felügyeleti forgalom a App Service Environment számára dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |
-| **AzureActiveDirectory** | Azure Active Directory. | Kimenő | Nem | Igen |
-| **AzureActiveDirectoryDomainServices** | Felügyeleti forgalom a Azure Active Directory Domain Services számára dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |
+| **AppServiceManagement** | Felügyeleti forgalom a App Service Environment számára dedikált központi telepítések esetén. | Mindkettő | No | Yes |
+| **AzureActiveDirectory** | Azure Active Directory. | Kimenő | No | Yes |
+| **AzureActiveDirectoryDomainServices** | Felügyeleti forgalom a Azure Active Directory Domain Services számára dedikált központi telepítések esetén. | Mindkettő | No | Yes |
 | **AzureAdvancedThreatProtection** | Az Azure komplex veszélyforrások elleni védelem. | Kimenő | Nem | Nem |
-| **AzureBackup** |Azure Backup.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **Storage** és a **AzureActiveDirectory** címkével. | Kimenő | Nem | Igen |
+| **AzureBackup** |Azure Backup.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **Storage** és a **AzureActiveDirectory** címkével. | Kimenő | No | Yes |
 | **AzureBotService** | Azure Bot Service. | Kimenő | Nem | Nem |
 | **AzureCloud** | Minden [adatközpont nyilvános IP-címe](https://www.microsoft.com/download/details.aspx?id=56519). | Kimenő | Igen | Igen |
 | **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Ez a címke vagy a címke által jelzett IP-címek segítségével biztosítható, hogy az indexelő biztonságos hozzáférést biztosítson az adatforrásokhoz. További részletekért tekintse meg az [Indexelő kapcsolati dokumentációját](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) . <br/><br/> *Megjegyzés*: a keresési szolgáltatás IP-címe nem szerepel az ehhez a szolgáltatási címkéhez tartozó IP-címtartományok listájában, és **hozzá kell adni** az adatforrások IP-tűzfalához is. | Bejövő | Nem | Nem |
@@ -60,16 +60,16 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureCosmosDB** | Azure Cosmos DB. | Kimenő | Igen | Igen |
 | **AzureDatabricks** | Azure Databricks. | Mindkettő | Nem | Nem |
 | **AzureDataExplorerManagement** | Azure Adatkezelő-felügyelet. | Bejövő | Nem | Nem |
-| **AzureDataLake** | Azure Data Lake Storage Gen1. | Kimenő | Nem | Igen |
+| **AzureDataLake** | Azure Data Lake Storage Gen1. | Kimenő | No | Yes |
 | **AzureDevSpaces** | Azure fejlesztői tárhelyek. | Kimenő | Nem | Nem |
-| **AzureEventGrid** | Azure Event Grid. <br/><br/>*Megjegyzés:* Ez a címke az USA déli középső régiójában, az USA keleti régiójában, az USA keleti régiójában, az USA 2. nyugati régiójában és az USA középső régiójában található Azure Event Grid | Mindkettő | Nem | Nem |
+| **AzureEventGrid** | Azure Event Grid. | Mindkettő | Nem | Nem |
 | **AzureFrontDoor. frontend** <br/> **AzureFrontDoor. backend** <br/> **AzureFrontDoor.FirstParty**  | Azure bejárati ajtó. | Mindkettő | Nem | Nem |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Megjegyzés:* Ez a címke a **AzureActiveDirectory**, a **AzureFrontDoor. frontend** és a **AzureFrontDoor. FirstParty** címkéktől függ. | Kimenő | Nem | Nem |
 | **AzureIoTHub** | Azure IoT Hub. | Kimenő | Nem | Nem |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory** címkével. | Kimenő | Igen | Igen |
 | **AzureLoadBalancer** | Az Azure-infrastruktúra Load Balancer. A címke a gazdagép (168.63.129.16) [virtuális IP-címére van](security-overview.md#azure-platform-considerations) lefordítva, ahol az Azure Health-Szondák származnak. Ez nem tartalmazza a Azure Load Balancer-erőforrás felé irányuló forgalmat. Ha nem Azure Load Balancer használ, felülbírálhatja ezt a szabályt. | Mindkettő | Nem | Nem |
-| **AzureMachineLearning** | Azure Machine Learning. | Mindkettő | Nem | Igen |
-| **AzureMonitor** | Log Analytics, Application Insights, AzMon és egyéni metrikák (GiG-végpontok).<br/><br/>*Megjegyzés:* Log Analytics esetén ez a címke függőséget tartalmaz a **tárolási** címkével. | Kimenő | Nem | Igen |
+| **AzureMachineLearning** | Azure Machine Learning. | Mindkettő | No | Yes |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon és egyéni metrikák (GiG-végpontok).<br/><br/>*Megjegyzés:* Log Analytics esetén ez a címke függőséget tartalmaz a **tárolási** címkével. | Kimenő | No | Yes |
 | **AzureOpenDatasets** | Azure Open-adatkészletek.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureFrontDoor. frontend** és a **Storage** címkével. | Kimenő | Nem | Nem |
 | **AzurePlatformDNS** | Az alapszintű infrastruktúra (alapértelmezett) DNS szolgáltatás.<br/><br>Ezt a címkét használhatja az alapértelmezett DNS letiltásához. Ha ezt a címkét használja, körültekintően járjon el. Javasoljuk, hogy olvassa el az [Azure platformmal kapcsolatos szempontokat](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Javasoljuk továbbá, hogy a címke használata előtt végezzen tesztelést. | Kimenő | Nem | Nem |
 | **AzurePlatformIMDS** | Az Azure Instance Metadata Service (IMDS), amely egy alapszintű infrastruktúra-szolgáltatás.<br/><br/>Ezt a címkét használhatja az alapértelmezett IMDS letiltásához. Ha ezt a címkét használja, körültekintően járjon el. Javasoljuk, hogy olvassa el az [Azure platformmal kapcsolatos szempontokat](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Javasoljuk továbbá, hogy a címke használata előtt végezzen tesztelést. | Kimenő | Nem | Nem |
@@ -77,17 +77,17 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureResourceManager** | Azure Resource Manager. | Kimenő | Nem | Nem |
 | **AzureSignalR** | Azure-jelző. | Kimenő | Nem | Nem |
 | **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory**, a **AzureKeyVault**, a **EventHub**, a**GuestAndHybridManagement** és a **Storage** címkével. | Kimenő | Nem | Nem |
-| **AzureTrafficManager** | Azure Traffic Manager mintavétel IP-címei.<br/><br/>Traffic Manager mintavétel IP-címeivel kapcsolatos további információkért lásd: [Azure Traffic Manager – gyakori kérdések](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Bejövő | Nem | Igen |  
-| **BatchNodeManagement** | Felügyeleti forgalom a Azure Batch számára dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |
+| **AzureTrafficManager** | Azure Traffic Manager mintavétel IP-címei.<br/><br/>Traffic Manager mintavétel IP-címeivel kapcsolatos további információkért lásd: [Azure Traffic Manager – gyakori kérdések](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Bejövő | No | Yes |  
+| **BatchNodeManagement** | Felügyeleti forgalom a Azure Batch számára dedikált központi telepítések esetén. | Mindkettő | No | Yes |
 | **CognitiveServicesManagement** | Az Azure Cognitive Services adatforgalmára vonatkozó címtartományok. | Mindkettő | Nem | Nem |
 | **DataFactory**  | Azure Data Factory | Mindkettő | Nem | Nem |
 | **DataFactoryManagement** | Azure Data Factory felügyeleti forgalma. | Kimenő | Nem | Nem |
-| **Dynamics365ForMarketingEmail** | A Dynamics 365 marketing e-mail-szolgáltatásának címtartományt. | Kimenő | Igen | Nem |
+| **Dynamics365ForMarketingEmail** | A Dynamics 365 marketing e-mail-szolgáltatásának címtartományt. | Kimenő | Yes | No |
 | **ElasticAFD** | Rugalmas Azure bejárati ajtó. | Mindkettő | Nem | Nem |
 | **EventHub** | Azure Event Hubs. | Kimenő | Igen | Igen |
 | **GatewayManager** | Az Azure VPN Gateway és Application Gateway számára dedikált központi telepítések kezelési forgalma. | Bejövő | Nem | Nem |
-| **GuestAndHybridManagement** | Azure Automation és vendég konfiguráció. | Kimenő | Nem | Igen |
-| **HDInsight** | Azure-HDInsight. | Bejövő | Igen | Nem |
+| **GuestAndHybridManagement** | Azure Automation és vendég konfiguráció. | Kimenő | No | Yes |
+| **HDInsight** | Azure-HDInsight. | Bejövő | Yes | No |
 | **Internet** | Az IP-címtartomány, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el.<br/><br/>A címtartomány magában foglalja az [Azure tulajdonában lévő nyilvános IP-címterület területét](https://www.microsoft.com/download/details.aspx?id=41653). | Mindkettő | Nem | Nem |
 | **LogicApps** | Logic Apps. | Mindkettő | Nem | Nem |
 | **LogicAppsManagement** | Logic Apps felügyeleti forgalma. | Bejövő | Nem | Nem |
@@ -97,10 +97,10 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Igen |
 | **ServiceFabric** | Azure Service Fabric.<br/><br/>*Megjegyzés:* Ez a címke a Service Fabric szolgáltatási végpontot jelöli a vezérlési sík régiónként. Ez lehetővé teszi, hogy az ügyfelek felügyeleti műveleteket hajtsanak végre a Service Fabric-fürtökhöz a VNET (például végpontot). https://westus.servicefabric.azure.com) | Mindkettő | Nem | Nem |
 | **SQL** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure SQL Data Warehouse.<br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. Ez a címke nem vonatkozik az SQL felügyelt példányára. | Kimenő | Igen | Igen |
-| **SqlManagement** | Felügyeleti forgalom az SQL-dedikált üzemelő példányokhoz. | Mindkettő | Nem | Igen |
+| **SqlManagement** | Felügyeleti forgalom az SQL-dedikált üzemelő példányokhoz. | Mindkettő | No | Yes |
 | **Storage** | Azure Storage. <br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. | Kimenő | Igen | Igen |
 | **StorageSyncService** | Storage Sync szolgáltatás. | Mindkettő | Nem | Nem |
-| **WindowsVirtualDesktop** | Windows rendszerű virtuális asztal. | Mindkettő | Nem | Igen |
+| **WindowsVirtualDesktop** | Windows rendszerű virtuális asztal. | Mindkettő | No | Yes |
 | **VirtualNetwork** | A virtuális hálózati címtartomány (a virtuális hálózathoz meghatározott összes IP-címtartomány), az összes csatlakoztatott helyszíni [címterület, a virtuális hálózat](virtual-network-peering-overview.md) , a [virtuális hálózati átjáróhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)csatlakoztatott virtuális hálózatok, a [gazdagép virtuális IP-címe](security-overview.md#azure-platform-considerations), valamint a [felhasználó által megadott útvonalakon](virtual-networks-udr-overview.md)használt előtagok címei. Ez a címke tartalmazhatja az alapértelmezett útvonalakat is. | Mindkettő | Nem | Nem |
 
 >[!NOTE]
@@ -139,6 +139,8 @@ A szolgáltatáshoz tartozó címkék aktuális listáját tartalmazó JSON-fáj
 - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
+
+Az ezekben a fájlokban lévő IP-címtartományok CIDR-jelöléssel rendelkeznek. 
 
 > [!NOTE]
 >Az adatok egy részhalmaza közzé lett téve az [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), az [Azure China](https://www.microsoft.com/download/details.aspx?id=42064)és az [Azure Germany](https://www.microsoft.com/download/details.aspx?id=54770)XML-fájljaiban. Az XML-letöltéseket a rendszer a 2020-es június 30-ig elavult, és a továbbiakban nem lesz elérhető. Az előző szakaszokban leírtaknak megfelelően telepítse át a programot a felderítési API vagy a JSON-fájl letöltésére.

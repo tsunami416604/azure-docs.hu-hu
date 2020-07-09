@@ -5,15 +5,15 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261766"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Particionált gráfok használata az Azure Cosmos DB-ben
 
@@ -21,7 +21,7 @@ A Azure Cosmos DB Gremlin API egyik fő funkciója a horizontális skálázási 
 
 A **particionálásra akkor van szükség** , ha a tároló várhatóan több mint 20 GB-ot tárol, vagy ha több mint 10 000 adategységet szeretne lefoglalni másodpercenként (RUs). A [Azure Cosmos db particionálási mechanizmussal](partition-data.md) azonos általános elvek vonatkoznak néhány, az alábbiakban ismertetett gráf-specifikus optimalizálásra.
 
-![Gráf particionálás.](./media/graph-partitioning/graph-partitioning.png)
+:::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Gráf particionálás." border="false":::
 
 ## <a name="graph-partitioning-mechanism"></a>Gráf particionálási mechanizmusa
 
@@ -29,15 +29,15 @@ Az alábbi irányelvek azt írják le, hogyan működik a Azure Cosmos DB partic
 
 - **A csúcspontokat és az éleket JSON-dokumentumként tárolja a rendszer**.
 
-- **A csúcspontok partíciós kulcsot igényelnek**. Ez a kulcs határozza meg, hogy a rendszer melyik partíción tárolja a csúcspontot egy kivonatoló algoritmus használatával. A Partition Key tulajdonság neve az új tároló létrehozásakor van meghatározva, és a formátuma `/partitioning-key-name`a (z):.
+- **A csúcspontok partíciós kulcsot igényelnek**. Ez a kulcs határozza meg, hogy a rendszer melyik partíción tárolja a csúcspontot egy kivonatoló algoritmus használatával. A Partition Key tulajdonság neve az új tároló létrehozásakor van meghatározva, és a formátuma a (z `/partitioning-key-name` ):.
 
 - Az **élek a forrás csúcspontjának megfelelően lesznek tárolva**. Más szóval a partíciós kulcs minden csúcspontján meghatározza, hogy a rendszer hol tárolja azokat a kimenő élekkel együtt. Ez az optimalizálás elkerüli a több partíciós lekérdezések használatát a `out()` diagramos lekérdezésekben felhasznált kardinális használatakor.
 
-- **Az élek a csúcspontokra mutató hivatkozásokat tartalmaznak**. Az összes élek tárolása a csúcspontok partíciós kulcsaival és azonosítói történik. Ez a számítás lehetővé `out()` teszi, hogy az összes irány lekérdezése mindig hatókörrel rendelkező particionált lekérdezés legyen, és ne egy vak, több partíciós lekérdezést. 
+- **Az élek a csúcspontokra mutató hivatkozásokat tartalmaznak**. Az összes élek tárolása a csúcspontok partíciós kulcsaival és azonosítói történik. Ez a számítás lehetővé teszi, hogy az összes `out()` irány lekérdezése mindig hatókörrel rendelkező particionált lekérdezés legyen, és ne egy vak, több partíciós lekérdezést. 
 
 - **A Graph-lekérdezéseknek partíciós kulcsot kell megadniuk**. A Azure Cosmos DB vízszintes particionálásának teljes kihasználása érdekében a partíciós kulcsot meg kell adni, ha egyetlen csúcspont van kiválasztva, amikor lehetséges. A következő lekérdezések egy vagy több csúcspont kiválasztására szolgálnak egy particionált gráfban:
 
-    - `/id`a `/label` és a nem támogatottak a Gremlin API-hoz tartozó tárolók partíciós kulcsaként.
+    - `/id`a és a `/label` nem támogatottak a GREMLIN API-hoz tartozó tárolók partíciós kulcsaként.
 
 
     - Jelölje ki az azonosító alapján egy csúcspontot, majd **a `.has()` lépés használatával adja meg a Partition Key tulajdonságot**: 

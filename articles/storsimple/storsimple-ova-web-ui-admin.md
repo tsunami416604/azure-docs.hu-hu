@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513048"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>A webes felhasználói felület használata a StorSimple virtuális tömb felügyeletéhez
 ![folyamat beállítása folyamatban](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -40,7 +39,7 @@ A szolgáltatás adattitkosítási kulcsa akkor jön létre, amikor regisztrálj
 Ha elvégezte a szolgáltatási adatok titkosítási kulcsának lekérését, és le kell kérnie azt, hajtsa végre a következő lépéseket a szolgáltatásban regisztrált eszköz helyi webes FELÜLETén.
 
 #### <a name="to-get-the-service-data-encryption-key"></a>A szolgáltatásban tárolt adattitkosítási kulcs beszerzése
-1. Kapcsolódjon a helyi webes felhasználói felülethez. Nyissa meg a **konfigurációs** > **felhő beállításait**.
+1. Kapcsolódjon a helyi webes felhasználói felülethez. Nyissa meg a **konfigurációs**  >  **felhő beállításait**.
 2. A lap alján kattintson a **szolgáltatás adattitkosítási kulcsának beolvasása**elemre. Ekkor megjelenik egy kulcs. Másolja ki és mentse a kulcsot.
    
     ![szolgáltatás adattitkosítási kulcsának beolvasása 1](./media/storsimple-ova-web-ui-admin/image27.png)
@@ -49,7 +48,7 @@ Ha elvégezte a szolgáltatási adatok titkosítási kulcsának lekérését, é
 Bizonyos esetekben, amikor az eszközt a helyi webes felületen konfigurálja, hibákba ütközhet. Az ilyen hibák diagnosztizálásához és elhárításához futtathatja a diagnosztikai teszteket.
 
 #### <a name="to-run-the-diagnostic-tests"></a>A diagnosztikai tesztek futtatása
-1. A helyi webes kezelőfelületen lépjen a **Hibaelhárítás** > **diagnosztikai tesztek**elemre.
+1. A helyi webes kezelőfelületen lépjen a **Hibaelhárítás**  >  **diagnosztikai tesztek**elemre.
    
     ![diagnosztika futtatása 1](./media/storsimple-ova-web-ui-admin/image29.png)
 2. A lap alján kattintson a **diagnosztikai tesztek futtatása**elemre. Ez teszteket kezdeményez a hálózat, az eszköz, a webproxy, az idő vagy a felhő beállításaival kapcsolatos esetleges problémák diagnosztizálásához. A rendszer értesítést küld arról, hogy az eszköz teszteket futtat.
@@ -61,7 +60,7 @@ Bizonyos esetekben, amikor az eszközt a helyi webes felületen konfigurálja, h
 A naplófájlok a kapcsolódó naplókból állnak, amelyek segítséget nyújthatnak Microsoft ügyfélszolgálatanek az eszközkel kapcsolatos problémák elhárításában. Ebben a kiadásban a helyi webes felületen keresztül lehet létrehozni egy naplófájlt.
 
 #### <a name="to-generate-the-log-package"></a>A naplófájl előállítása
-1. A helyi webes kezelőfelületen lépjen a**rendszernaplók** **hibaelhárítása című témakörre** > .
+1. A helyi webes kezelőfelületen lépjen a **Troubleshooting**  >  **rendszernaplók**hibaelhárítása című témakörre.
    
     ![1. log csomag előállítása](./media/storsimple-ova-web-ui-admin/image31.png)
 2. A lap alján kattintson a **naplófájl létrehozása**lehetőségre. Létrejön a rendszernaplók csomagja. Ez eltarthat néhány percig.
@@ -80,7 +79,7 @@ A naplófájlok a kapcsolódó naplókból állnak, amelyek segítséget nyújth
 Leállíthatja vagy újraindíthatja a virtuális eszközt a helyi webes felhasználói felület használatával. Javasoljuk, hogy az újraindítás előtt állítsa offline állapotba a köteteket vagy a megosztásokat a gazdagépen, majd az eszközön. Ez a szolgáltatás a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>A virtuális eszköz leállítása
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **energiagazdálkodási beállítások**elemre.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **energiagazdálkodási beállítások**elemre.
 2. Kattintson a lap alján található **Leállítás**elemre.
    
     ![eszköz leállítása 1](./media/storsimple-ova-web-ui-admin/image36.png)
@@ -95,7 +94,7 @@ Leállíthatja vagy újraindíthatja a virtuális eszközt a helyi webes felhasz
     Az eszköz ekkor leáll. Ha el szeretné indítani az eszközt, ezt a Hyper-V kezelőjén keresztül kell végrehajtania.
 
 #### <a name="to-restart-your-virtual-device"></a>A virtuális eszköz újraindítása
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **energiagazdálkodási beállítások**elemre.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **energiagazdálkodási beállítások**elemre.
 2. Az oldal alján kattintson az **Újraindítás**elemre.
    
     ![eszköz újraindítása](./media/storsimple-ova-web-ui-admin/image36.png)

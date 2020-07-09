@@ -4,16 +4,15 @@ description: Beépített alkalmazások közzététele a Windows Virtual Desktopb
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a02bf514ff76f5528bc46f0a60642163c9278ebf
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 7a453ef44a1ede86290f4130a6147eaaad09fa97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214145"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon
 
@@ -29,13 +28,13 @@ Beépített alkalmazás közzététele:
 1. Kapcsolódjon az egyik virtuális géphez a gazdagép-készletben.
 2. A [cikkben](/powershell/module/appx/get-appxpackage?view=win10-ps/)szereplő utasítások alapján szerezze be a közzétenni kívánt alkalmazás **PackageFamilyName** .
 3. Végül futtassa a következő parancsmagot az `<PackageFamilyName>` előző lépésben megtalált **PackageFamilyName** lecserélve:
-   
+
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
    ```
 
 >[!NOTE]
-> A Windows virtuális asztal csak a alkalmazással kezdődő telepítési hellyel rendelkező alkalmazások `C:\Program Files\Windows Apps`közzétételét támogatja.
+> A Windows virtuális asztal csak a alkalmazással kezdődő telepítési hellyel rendelkező alkalmazások közzétételét támogatja `C:\Program Files\Windows Apps` .
 
 ## <a name="update-app-icons"></a>Alkalmazás ikonjainak frissítése
 
@@ -46,7 +45,7 @@ Miután közzétett egy alkalmazást, az alapértelmezés szerint a Windows-alka
 A Microsoft Edge közzétételéhez használt folyamat némileg eltér a közzétételi folyamattól más alkalmazások esetében. Ha közzé szeretné tenni a Microsoft Edge-t az alapértelmezett kezdőlapon, futtassa a következő parancsmagot:
 
 ```powershell
-New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
+New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge"
 ```
 
 ## <a name="next-steps"></a>További lépések

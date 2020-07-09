@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272695"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
@@ -35,16 +34,16 @@ Azure Load Balancer többdimenziós metrikákat biztosít az Azure-metrikák has
 
 A különböző standard Load Balancer konfigurációk a következő metrikákat biztosítják:
 
-| Metrika | Erőforrás típusa | Leírás | Ajánlott összesítés |
+| Metrika | Erőforrás típusa | Description | Ajánlott aggregáció |
 | --- | --- | --- | --- |
-| Adatelérési út rendelkezésre állása | Nyilvános és belső terheléselosztó | Standard Load Balancer folyamatosan gyakorolja az adatelérési utat a régión belülről a terheléselosztó kezelőfelületére, egészen az SDN-veremig, amely támogatja a virtuális gépet. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatelérési út is érvényesítve lesz. A mérték láthatatlan az alkalmazás számára, és nem zavarja a többi műveletet.| Átlag |
-| Állapot mintavételi állapota | Nyilvános és belső terheléselosztó | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő minden példány végpontjának összesített vagy végponti szűrt nézetét biztosítja. Megtudhatja, hogyan tekintheti meg Load Balancer az alkalmazás állapotát, ahogy azt az állapot-mintavételi konfiguráció jelzi. |  Átlag |
-| (Szinkronizált) csomagok | Nyilvános és belső terheléselosztó | A standard Load Balancer nem szakítja meg Transmission Control Protocol (TCP) kapcsolatait, vagy nem kommunikál a TCP-vagy UDP-csomagok forgalmával. A folyamatok és a kézfogások mindig a forrás és a virtuálisgép-példány között vannak. A TCP protokollal kapcsolatos forgatókönyvek jobb megoldásához használhatja az SYN-csomagok számlálóit, hogy megtudja, hány TCP-kapcsolati kísérletet hajt végre a rendszer. A metrika a fogadott TCP SYN-csomagok számát jelenti.| Átlag |
-| SNAT-kapcsolatok | Nyilvános Load Balancer |Standard Load Balancer a nyilvános IP-címhez maszkolás kimenő folyamatok számát jelenti. A forrásoldali hálózati címfordítási (SNAT) portok kimeríthető erőforrások. Ez a metrika arra utalhat, hogy az alkalmazás milyen mértékben támaszkodik a SNAT a kimenő folyamatokból. A sikeres és sikertelen kimenő SNAT folyamatokra vonatkozó számlálókat jelentettek, és felhasználhatók a kimenő folyamatok állapotának hibakeresésére és megismerésére.| Átlag |
-| Lefoglalt SNAT-portok | Nyilvános Load Balancer | standard Load Balancer a háttérbeli példányok által lefoglalt SNAT-portok számát jelenti | Átlagos. |
+| Adatútvonalak rendelkezésre állása | Nyilvános és belső Load Balancer | A standard szintű Load Balancer folyamatosan kihasználja a régió és a terheléselosztó elülső rétege közötti adatútvonalat egészen a virtuális gépet támogató SDN-veremig. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatútvonal szintén érvényesítve lesz. A mérés nem látható az alkalmazás számára, és nincs hatással más műveletekre.| Átlag |
+| Állapotadat-mintavétel állapota | Nyilvános és belső Load Balancer | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő példányok összesített vagy végponti szűrt nézetét biztosítja. Láthatja, hogyan tekinti meg a Load Balancer az alkalmazás állapotát az állapotminta konfigurációja alapján. |  Átlag |
+| Csomagok szinkronizálása (SYN) | Nyilvános és belső Load Balancer | A standard szintű Load Balancer nem állítja le a Transmission Control Protocol- (TCP-) kapcsolatokat, és nem befolyásolja a TCP- vagy UDP-csomagok átvitelét. A folyamok és a hozzájuk tartozó kézfogások mindig a forrás és a virtuálisgép-példány között történnek. A TCP protokollal kapcsolatos forgatókönyvek hatékonyabb hibaelhárítása érdekében használhatja a SYN csomagszámlálókat, hogy átlássa, hány TCP-csatlakozási kísérlet történt. A metrika a fogadott TCP SYN-csomagok számáról készít jelentést.| Átlag |
+| SNAT-kapcsolatok | Nyilvános Load Balancer |A standard szintű Load Balancer azoknak a kimenő folyamoknak a számáról készít jelentést, amelyek el vannak rejtve a nyilvános IP-cím előtere elől. A forráshálózati címfordítási (SNAT-) portok véges erőforrások. Ez a metrika jelzi, hogy az alkalmazás milyen mértékben támaszkodik az SNAT-ra a kívülről érkező folyamok esetén. A sikeres és meghiúsult kimenő SNAT-folyamok számlálóiról jelentés készül, amely felhasználható a kimenő folyamok hibaelhárításához és az állapotuk áttekintéséhez.| Átlag |
+| Lefoglalt SNAT-portok | Nyilvános Load Balancer | standard Load Balancer a háttérbeli példányok által lefoglalt SNAT-portok számát jelenti | Átlag. |
 | Használt SNAT-portok | Nyilvános Load Balancer | Standard Load Balancer a háttérbeli példányok által használt SNAT-portok számát jelenti. | Átlag | 
-| Bájtok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer az előtér által feldolgozott adatmennyiséget jelenti. Észreveheti, hogy a bájtok nincsenek egyenlően elosztva a háttérbeli példányok között. Ez várhatóan az Azure Load Balancer algoritmusa a folyamatokon alapul. | Átlag |
-| Csomagok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer jelentést készít az előtér által feldolgozott csomagokról.| Átlag |
+| Bájtszámlálók |  Nyilvános és belső Load Balancer | A standard szintű Load Balancer jelentést készít az előtérrendszerenként feldolgozott adatok mennyiségéről. Látható, hogy a bájtok nincsenek egyenletesen elosztva a háttérpéldányok közt. Ez várhatóan az Azure Load Balancer algoritmusa a folyamatokon alapul. | Átlag |
+| Csomagszámlálók |  Nyilvános és belső Load Balancer | A standard szintű Load Balancer jelentést készít az előtérrendszerenként feldolgozott csomagok mennyiségéről.| Átlag |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>A terheléselosztó metrikáinak megtekintése a Azure Portalban
 
@@ -231,7 +230,7 @@ A diagram lehetővé teszi, hogy az ügyfelek az üzembe helyezést a saját mag
 A standard Load Balancer erőforrások állapotának állapota a meglévő **erőforrás** -állapoton keresztül érhető el a **monitor > Service Health**.
 
 A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
-1. Válassza a **figyelő** > **Service Health**elemet.
+1. Válassza a **figyelő**  >  **Service Health**elemet.
 
    ![Figyelő oldal](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
@@ -251,10 +250,10 @@ A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
  
 A különböző erőforrás-állapotokat és azok leírását az alábbi táblázat tartalmazza: 
 
-| Erőforrás állapotának állapota | Leírás |
+| Erőforrás állapotának állapota | Description |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
-| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. **Azure monitor** > **metrikák**kiválasztásával diagnosztizálhatja az állapotot.<br>(A nem*elérhető* állapot azt is jelenti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.) |
+| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. **Azure monitor**  >  **metrikák**kiválasztásával diagnosztizálhatja az állapotot.<br>(A nem*elérhető* állapot azt is jelenti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.) |
 | Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült.<br>(Az*ismeretlen* állapot azt is jelentheti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.)  |
 
 ## <a name="next-steps"></a>További lépések

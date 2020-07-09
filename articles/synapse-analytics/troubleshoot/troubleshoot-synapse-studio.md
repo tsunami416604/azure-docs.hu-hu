@@ -4,15 +4,16 @@ description: Az Azure szinapszis Studio hibáinak megoldása
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20978a6389c790575fa26258c4468f891af733ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211459"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Az Azure szinapszis Studio (előzetes verzió) hibaelhárítása
 
@@ -99,4 +100,4 @@ Bizonyos böngészők támogatják az időbélyegek megjelenítését a "konzol"
 ![időbélyegző megjelenítése](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>További lépések
-Ha az előző lépések nem segítenek feloldani a [támogatási jegy létrehozásával](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kapcsolatos problémákat
+Ha az előző lépések nem segítenek a probléma megoldásában, [hozzon létre egy támogatási jegyet](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

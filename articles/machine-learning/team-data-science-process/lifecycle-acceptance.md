@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720520"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának ügyfél-elfogadási szakasza
@@ -44,7 +43,7 @@ Ebben a szakaszban két fő feladat foglalkozik:
 
 Az ügyfélnek ellenőriznie kell, hogy a rendszer megfelel-e az üzleti igényeknek, és hogy a megfelelő pontossággal válaszol-e a rendszer éles környezetben való üzembe helyezésére az ügyfél alkalmazása általi használatra. Az összes dokumentáció véglegesítése és felülvizsgálata megtörténik. A projekt átadásra kerül a műveletekért felelős entitás számára. Ez az entitás lehet például egy IT vagy Customer adattudományi csapat, vagy az ügyfélnek a rendszer éles környezetben való futtatásért felelős ügynöke. 
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>Artifacts
 Az ebben az utolsó szakaszban létrehozott fő összetevő az **ügyfélre vonatkozó projekt kilépési jelentése**. Ez a technikai jelentés tartalmazza a teljes projekt részletes ismertetését, amely a rendszer működésének megismeréséhez hasznos. A TDSP egy [kilépési jelentési](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) sablont biztosít. A sablont használhatja, vagy testre is szabhatja az ügyfél igényeihez. 
 
 

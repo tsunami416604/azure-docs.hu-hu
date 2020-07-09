@@ -3,16 +3,15 @@ title: Azure-beli virtuális gépek karbantartási vezérlése a PowerShell-lel
 description: Útmutató az Azure-beli virtuális gépek karbantartásának szabályozásához a karbantartás és a PowerShell használatával.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675842"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
 
@@ -20,7 +19,7 @@ A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissíté
  
 ## <a name="enable-the-powershell-module"></a>A PowerShell-modul engedélyezése
 
-Győződjön meg `PowerShellGet` róla, hogy naprakész.    
+Győződjön `PowerShellGet` meg róla, hogy naprakész.    
 
 ```azurepowershell-interactive  
 Install-Module -Name PowerShellGet -Repository PSGallery -Force 
@@ -34,7 +33,7 @@ Install-Module -Name Az.Maintenance
 
 Ha helyileg telepíti a rendszert, győződjön meg róla, hogy rendszergazdaként megnyitja a PowerShell-parancssort.
 
-Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból*kíván telepíteni. Írja `Y` be, vagy válassza az Igen lehetőséget az **összes** elemre a modul telepítéséhez.
+Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból*kíván telepíteni. Írja be, `Y` vagy válassza az **Igen** lehetőséget az összes elemre a modul telepítéséhez.
 
 
 ## <a name="create-a-maintenance-configuration"></a>Karbantartási konfiguráció létrehozása
@@ -57,7 +56,7 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-A `-MaintenanceScope host` használata biztosítja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép frissítéseinek vezérlésére.
+A használata `-MaintenanceScope host` biztosítja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép frissítéseinek vezérlésére.
 
 Ha azonos nevű konfigurációt próbál létrehozni, de egy másik helyen, hibaüzenetet fog kapni. A konfiguráció nevének egyedinek kell lennie az előfizetésben.
 
@@ -73,7 +72,7 @@ A [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/a
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
-Alkalmazza a konfigurációt egy virtuális gépre a konfiguráció AZONOSÍTÓjának használatával. Adja `-ResourceType VirtualMachines` meg és adja meg a virtuális gép nevét `-ResourceName`, valamint a virtuális gép erőforrás-csoportját `-ResourceGroupName`. 
+Alkalmazza a konfigurációt egy virtuális gépre a konfiguráció AZONOSÍTÓjának használatával. Adja meg és adja meg a virtuális gép `-ResourceType VirtualMachines` nevét `-ResourceName` , valamint a virtuális gép erőforrás-csoportját `-ResourceGroupName` . 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -88,7 +87,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-Ha a konfigurációt dedikált gazdagépre szeretné alkalmazni, a nevet is tartalmaznia `-ResourceType hosts` `-ResourceParentName` kell a gazda csoport nevével és `-ResourceParentType hostGroups`. 
+Ha a konfigurációt dedikált gazdagépre szeretné alkalmazni, a nevet is tartalmaznia kell a `-ResourceType hosts` `-ResourceParentName` gazda csoport nevével és `-ResourceParentType hostGroups` . 
 
 
 ```azurepowershell-interactive
@@ -106,7 +105,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Függőben lévő frissítések keresése
 
-A [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) használatával ellenőrizze, hogy van-e függőben lévő frissítés. A `-subscription` használatával megadhatja a virtuális gép Azure-előfizetését, ha az eltér a bejelentkezett fióktól.
+A [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) használatával ellenőrizze, hogy van-e függőben lévő frissítés. A használatával `-subscription` megadhatja a virtuális gép Azure-előfizetését, ha az eltér a bejelentkezett fióktól.
 
 Ha nincsenek megjeleníthető frissítések, a parancs nem ad vissza semmit. Ellenkező esetben egy PSApplyUpdate objektumot ad vissza:
 
@@ -166,7 +165,7 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-Sikeres művelet esetén a parancs egy `PSApplyUpdate` objektumot ad vissza. A frissítés állapotának megtekintéséhez használja a `Get-AzApplyUpdate` parancs Name attribútumát. Lásd: [frissítési állapot keresése](#check-update-status).
+Sikeres művelet esetén a parancs egy objektumot ad vissza `PSApplyUpdate` . A `Get-AzApplyUpdate` frissítés állapotának megtekintéséhez használja a parancs Name attribútumát. Lásd: [frissítési állapot keresése](#check-update-status).
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 

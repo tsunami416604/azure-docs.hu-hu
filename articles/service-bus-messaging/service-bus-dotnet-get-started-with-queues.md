@@ -1,25 +1,14 @@
 ---
 title: Bevezetés az Azure Service Bus által kezelt üzenetsorok használatába | Microsoft Docs
 description: Ebben az oktatóanyagban .NET Core Console-alkalmazásokat hoz létre, amelyek üzeneteket küldenek és fogadnak egy Service Bus üzenetsor üzeneteit.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337549"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -55,7 +44,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kód írása az üzenetek üzenetsorba való küldéséhez
 
-1. A *program.cs*-ben adja hozzá `using` a következő utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
+1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
 
     ```csharp
     using System.Text;
@@ -74,7 +63,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
 
     Adja meg a névtérhez tartozó kapcsolatok karakterláncát `ServiceBusConnectionString` változóként. Adja meg a várólista nevét.
 
-1. Cserélje le `Main()` a metódust a következő **aszinkron** `Main` metódusra. Meghívja a `SendMessagesAsync()` metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
+1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a `SendMessagesAsync()` metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -94,7 +83,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
         await queueClient.CloseAsync();
     }
     ```
-1. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust, amely a által `numberOfMessagesToSend` megadott számú üzenet küldését végzi (jelenleg 10 értékre van állítva):
+1. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust, amely a által megadott számú üzenet küldését végzi `numberOfMessagesToSend` (jelenleg 10 értékre van állítva):
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -201,7 +190,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kód írása az üzenetek üzenetsorból történő fogadásához
 
-1. A *program.cs*-ben adja hozzá `using` a következő utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
+1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
 
     ```csharp
     using System;

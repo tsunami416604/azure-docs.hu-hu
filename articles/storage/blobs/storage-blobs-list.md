@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan listázhat blobokat egy tárolóban az Azure St
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851277"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
@@ -24,6 +24,15 @@ Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez kész
 ## <a name="understand-blob-listing-options"></a>A Blobok listázási beállításainak ismertetése
 
 A Storage-fiókban lévő Blobok listázásához hívja a következő módszerek egyikét:
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 - [CloudBlobClient. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -37,21 +46,27 @@ A tárolóban lévő Blobok listázásához hívja a következő módszerek egyi
 
 Ezeknek a módszereknek a túlterhelései további beállításokat biztosítanak a Blobok a listázási művelet által történő visszaadásához. Ezeket a beállításokat a következő szakaszokban ismertetjük.
 
+---
+
 ### <a name="manage-how-many-results-are-returned"></a>A visszaadott eredmények számának kezelése
 
-Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza. Kisebb eredmények visszaadásához adjon meg nullától eltérő értéket a `maxresults` paraméterhez, amikor az egyik **ListBlobs** metódust hívja meg.
+Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza, de megadhatja, hogy az egyes listázási műveletek hány eredményt adjanak vissza. A cikkben bemutatott példák bemutatják, hogyan teheti ezt meg.
 
-Ha a listázási művelet több mint 5000 blobot ad vissza, vagy ha olyan értéket `maxresults` adott meg, amelyet a listázási művelet a Storage-fiókban lévő tárolók részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a Blobok listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
+Ha a listázási művelet több mint 5000 blobot ad vissza, vagy ha az elérhető Blobok száma meghaladja a megadott számot, akkor az Azure Storage egy *folytatási tokent* ad vissza a Blobok listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
 
 A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor ismét hívja meg a listázási műveletet, és a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási jogkivonat null nem lesz.
 
 ### <a name="filter-results-with-a-prefix"></a>Eredmények szűrése előtaggal
 
-A tárolók listájának szűréséhez a `prefix` paraméterhez meg kell adni egy karakterláncot. Az előtag-karakterlánc tartalmazhat egy vagy több karaktert. Az Azure Storage ezt követően csak azokat a blobokat adja vissza, amelyeknek a neve az adott előtaggal kezdődik.
+A tárolók listájának szűréséhez a paraméterhez meg kell adni egy karakterláncot `prefix` . Az előtag-karakterlánc tartalmazhat egy vagy több karaktert. Az Azure Storage ezt követően csak azokat a blobokat adja vissza, amelyeknek a neve az adott előtaggal kezdődik.
 
 ### <a name="return-metadata"></a>Metaadatok visszaküldése
 
-Ha a blob-metaadatokat az eredményekkel szeretné visszaadni, akkor a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
+A blob metaadatait az eredményekkel adhatja vissza. 
+
+- Ha a .NET V12 SDK-t használja, akkor a [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) enumerálás **metaadat** értékét kell megadnia.
+
+- Ha a .NET v11 SDK-t használja, akkor a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>A lapos Listázás és a hierarchikus Listázás
 
@@ -66,6 +81,14 @@ Ha elválasztó karakterrel nevezi el a blobokat, a Blobok hierarchikus listáz�
 Alapértelmezés szerint a listázási művelet egy egyszerű listaelemben lévő blobokat ad vissza. Egy egyszerű felsorolásban a blobokat nem a virtuális könyvtár rendezi.
 
 Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy egyszerű lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakába írja.
+
+Ha engedélyezte a hierarchikus névtér funkciót a fiókjában, a címtárak nem virtuálisak. Ehelyett konkrét, független objektumok. Így a címtárak nulla hosszúságú blobként jelennek meg a listában.
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -85,7 +108,6 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 
             foreach (var blobItem in resultSegment.Results)
             {
-                // A flat listing operation returns only blobs, not virtual directories.
                 blob = (CloudBlob)blobItem;
 
                 // Write out some blob properties.
@@ -108,6 +130,8 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 A minta kimenete a következőhöz hasonló:
 
 ```
@@ -125,6 +149,16 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ## <a name="use-a-hierarchical-listing"></a>Hierarchikus lista használata
 
 Ha hierarchikusan hívja meg a listázási műveletet, az Azure Storage a hierarchia első szintjén adja vissza a virtuális könyvtárakat és blobokat. Az egyes virtuális könyvtárak [előtag](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) tulajdonsága úgy van beállítva, hogy egy rekurzív hívásban továbbítsa az előtagot a következő könyvtár lekéréséhez.
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+A Blobok hierarchikus listázásához hívja meg a [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)vagy a [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) metódust.
+
+Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy hierarchikus lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakba írja.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 A Blobok hierarchikus listázásához állítsa a `useFlatBlobListing` listázási metódus paraméterét **hamis**értékre.
 
@@ -182,6 +216,8 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     }
 }
 ```
+
+---
 
 A minta kimenete a következőhöz hasonló:
 

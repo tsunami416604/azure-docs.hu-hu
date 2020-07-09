@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833400"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Tároló tulajdonságainak és metaadatainak kezelése a .NET-tel
 
@@ -25,14 +25,27 @@ A blob-tárolók támogatják a rendszertulajdonságokat és a felhasználó ál
 
 - **Felhasználó által definiált metaadatok**: a felhasználó által definiált metaadatok egy vagy több, a blob Storage-erőforráshoz megadott név-érték párokból állnak. A metaadatok használatával további értékeket is tárolhat az erőforrással. A metaadatok értéke csak saját célra szolgál, és nem befolyásolja az erőforrás működésének módját.
 
+A metaadatok neve/értéke párok érvényes HTTP-fejlécek, ezért meg kell felelniük a HTTP-fejléceket szabályozó összes korlátozásnak. A metaadatok nevének érvényes HTTP-fejléc-névnek és érvényes C#-azonosítónak kell lennie, csak ASCII-karaktereket tartalmazhat, és a kis-és nagybetűket nem megkülönböztetőként kell kezelni. A nem ASCII karaktereket tartalmazó metaadat-értékeknek Base64 kódolású vagy URL-kódolású kell lenniük.
+
+## <a name="retrieve-container-properties"></a>Tároló tulajdonságainak lekérése
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+A tároló tulajdonságainak lekéréséhez hívja a következő módszerek egyikét:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+A következő mintakód egy tároló rendszertulajdonságait olvassa be, és bizonyos tulajdonságértékeket ír egy konzolablakbe:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 A blob Storage-erőforrások tulajdonság-és metaadat-értékeinek beolvasása kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat a **FetchAttributes** vagy a **FetchAttributesAsync** metódus meghívásával. A szabály alól kivételt képez, hogy a **létező** és a **ExistsAsync** metódusok a borító alatt meghívja a megfelelő **FetchAttributes** metódust. Ha meghívja az egyik módszert, nem kell meghívnia a **FetchAttributes**.
 
 > [!IMPORTANT]
 > Ha azt tapasztalja, hogy a tárolási erőforráshoz tartozó tulajdonság vagy metaadatok értéke nem lett feltöltve, ellenőrizze, hogy a kód meghívja-e a **FetchAttributes** vagy a **FetchAttributesAsync** metódust.
-
-A metaadatok neve/értéke párok érvényes HTTP-fejlécek, ezért meg kell felelniük a HTTP-fejléceket szabályozó összes korlátozásnak. A metaadatok nevének érvényes HTTP-fejléc-névnek és érvényes C#-azonosítónak kell lennie, csak ASCII-karaktereket tartalmazhat, és a kis-és nagybetűket nem megkülönböztetőként kell kezelni. A nem ASCII karaktereket tartalmazó metaadat-értékeknek Base64 kódolású vagy URL-kódolású kell lenniük.
-
-## <a name="retrieve-container-properties"></a>Tároló tulajdonságainak lekérése
 
 A tároló tulajdonságainak lekéréséhez hívja a következő módszerek egyikét:
 
@@ -63,14 +76,40 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
+---
+
 ## <a name="set-and-retrieve-metadata"></a>Metaadatok beállítása és lekérése
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat egy [IDictionary](/dotnet/api/system.collections.idictionary) objektumhoz, majd hívja meg az alábbi módszerek egyikét az értékek írásához:
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
+
+A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik azt az esetet, amellyel létrehozták őket, de a kis-és nagybetűk nem különböznek a beállítás vagy az olvasás során. Ha két vagy több metaadat-fejléc ugyanazzal a névvel van elküldve egy erőforráshoz, a blob Storage vesszővel elválasztja és összefűzi a két értéket, és visszaadja a 200-as HTTP-válasz kódját (OK).
+
+A következő kódrészlet egy tároló metaadatait állítja be.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddContainerMetadata":::
+
+A metaadatok lekéréséhez hívja a következő módszerek egyikét:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync).
+
+Ezután olvassa el az értékeket az alábbi példában látható módon.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat az erőforrás **metaadat** -gyűjteményéhez, majd hívja meg az alábbi módszerek egyikét az értékek írásához:
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik azt az esetet, amellyel létrehozták őket, de a kis-és nagybetűk nem különböznek a beállítás vagy az olvasás során. Ha két vagy több, azonos nevű metaadat-fejlécet küld egy erőforráshoz, a blob Storage a 400-as HTTP-hibakódot (hibás kérés) adja vissza.
+A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik azt az esetet, amellyel létrehozták őket, de a kis-és nagybetűk nem különböznek a beállítás vagy az olvasás során. Ha két vagy több metaadat-fejléc ugyanazzal a névvel van elküldve egy erőforráshoz, a blob Storage vesszővel elválasztja és összefűzi a két értéket, és visszaadja a 200-as HTTP-válasz kódját (OK).
 
 A következő kódrészlet egy tároló metaadatait állítja be. Egy érték van beállítva a gyűjtemény **hozzáadási** metódusának használatával. A másik érték az implicit kulcs/érték szintaxis használatával van beállítva. Mindkettő érvényes.
 
@@ -126,10 +165,12 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="see-also"></a>Lásd még
 
 - [Tároló tulajdonságainak beolvasása művelet](/rest/api/storageservices/get-container-properties)
 - [Tároló metaadatainak beállítása művelet](/rest/api/storageservices/set-container-metadata)
-- [Tároló metaadatainak beolvasása művelet](/rest/api/storageservices/set-container-metadata)
+- [Tároló metaadatainak beolvasása művelet](/rest/api/storageservices/get-container-metadata)

@@ -1,6 +1,6 @@
 ---
-title: A Microsoft&reg; Smooth streaming ügyféloldali Porting Kit licencelése
-description: További információ a Microsoft&reg; Smooth streaming ügyfél-Porting Kit licenceléséről.
+title: A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése
+description: További információ a Microsoft &reg; Smooth streaming ügyfél-Porting Kit licenceléséről.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677168"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft&reg; Smooth streaming ügyféloldali Porting Kit licencelése 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése 
 ## <a name="overview"></a>Áttekintés
 A Microsoft Smooth Streaming ügyfél-telepítési csomag (**SSPK** ) egy olyan Smooth streaming ügyfél-implementáció, amely a beágyazott eszközök gyártóinak, a kábeleknek és a mobil operátoroknak, a tartalomszolgáltatóknak, a kézibeszélő-gyártóknak, a független szoftvergyártóknak, valamint a megoldás-szolgáltatóknak az adaptív tartalmak Smooth streaming formátumban való továbbítására optimalizált termékeket és szolgáltatásokat hoz létre. A SSPK olyan Smooth Streaming-ügyfél eszköz-és platform-független implementációja, amelyet a licenccel bármely eszközre és platformra lehet átadni. 
 
@@ -29,7 +28,7 @@ Az alábbiakban látható egy magas szintű architektúra és IIS-Smooth Streami
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Leírás
+## <a name="description"></a>Description
 A SSPK a kiváló üzleti értékkel rendelkező feltételekkel rendelkezik. A SSPK-licenc a következőket biztosítja az iparág számára:
 
 * Smooth Streaming a Porting Kit forrása a C++-ban 
@@ -71,11 +70,11 @@ A Smooth Streaming ügyfél végleges termékét a következők szerint kínálj
 * Az első 10 000-es eszköz implementációja minden évben díjmentes 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Licencelési eljárás és SSPK-hozzáférés
-Az [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) összes licencelési lekérdezésre vonatkozó e-mail-cím.
+[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)Az összes licencelési lekérdezésre vonatkozó e-mail-cím.
 
 A SSPK terjesztési portál elérhető a regisztrált közbenső licencek számára.
 
-Az ideiglenes és a [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)végleges SSPK-licencek technikai kérdéseket is beküldhetnek.
+Az ideiglenes és a végleges SSPK-licencek technikai kérdéseket is beküldhetnek [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) .
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>A Microsoft Smooth Streaming ügyfél ideiglenes termék-licencszerződése
 
@@ -113,51 +112,41 @@ Az ideiglenes és a [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)végl
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>A Microsoft Smooth Streaming ügyfél végleges termékre vonatkozó licencszerződései
 * Speciális digitális szórásos biztonsági társítás
 * AirTies Kablosuz Iletism Sanayive dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONIK SAN. VE TIC. A. Asszonyvására
-* Brit Sky-műsorszolgáltatás korlátozott
-* CastPal Technology Inc., Shenzhen
+* Arcelik. S
 * Compal Electronics, Inc.
-* Dongguan digitális AV Technology Corp., Ltd.
-* EchoStar-vásárlási vállalat
-* Enseo, Inc.
-* FilmFlex Movies Limited
+* EXPRESSZ SZERENCSE TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Haier információ-pályázó S. R. L
-* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation Limited
+* Hong Kong Konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* Mega Fame Electronics Co. Limited
+* MIRC Electronics Limited
 * Nintendo Co., Ltd.
-* Narancssárga SA
-* Sáfrányos digitális korlátozott
-* Sagemcom broadband SAS
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier OPTRONICS Co., Ltd.
+* Shenzhen ATEKO PHOTO áramszolgáltató Co., Ltd.
 * Shenzhen Chuangwei – RGB Elektronika Co., Ltd.
-* Shenzheni együttes elektronika CO., LTD.
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Szecsuán Changhong, Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBÁLIS SAS
 * SoftAtHome
 * Sony Corporation
 * Technicolor kézbesítési technológiák, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation/Slovakia/s.r.o.
-* VEZÍR, Inc.
-* Tud Corporation
+* UMC Lengyelország SP. z. o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

@@ -11,18 +11,18 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
-ms.openlocfilehash: e102b14d8471a19564f66edc27cc328c2a789c98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 6ae42c9cb68b28e5d2f0b5a2ba3cf7eab74a74b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561125"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Az adatátalakítást egy Python-tevékenység futtatásával Azure Databricks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-A [Data Factory folyamat](concepts-pipelines-activities.md) Azure Databricks Python-tevékenysége egy Python-fájlt futtat a Azure Databricks-fürtben. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.A Azure Databricks felügyelt platform a Apache Spark futtatásához.
+A [Data Factory folyamat](concepts-pipelines-activities.md) Azure Databricks Python-tevékenysége egy Python-fájlt futtat a Azure Databricks-fürtben. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md)szóló   cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.A Azure Databricks felügyelt platform a Apache Spark futtatásához.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -65,13 +65,13 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 
 |Tulajdonság|Leírás|Kötelező|
 |---|---|---|
-|név|A folyamatban szereplő tevékenység neve.|Igen|
-|leírás|A tevékenység működését leíró szöveg|Nem|
-|type|A Databricks Python-tevékenység esetén a tevékenység típusa DatabricksSparkPython.|Igen|
-|linkedServiceName|Annak a Databricks társított szolgáltatásnak a neve, amelyen a Python-tevékenység fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
-|pythonFile|A végrehajtandó Python-fájl URI-ja. Csak DBFS elérési utak támogatottak.|Igen|
-|paraméterek|A Python-fájlnak átadandó parancssori paraméterek. Ez a karakterláncok tömbje.|Nem|
-|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. <sztring, objektum> tömbje lehet.|Nem|
+|name|A folyamatban szereplő tevékenység neve.|Yes|
+|leírás|A tevékenység működését leíró szöveg|No|
+|típus|A Databricks Python-tevékenység esetén a tevékenység típusa DatabricksSparkPython.|Yes|
+|linkedServiceName|Annak a Databricks társított szolgáltatásnak a neve, amelyen a Python-tevékenység fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md)   cikk.|Yes|
+|pythonFile|A végrehajtandó Python-fájl URI-ja. Csak DBFS elérési utak támogatottak.|Yes|
+|paraméterek|A Python-fájlnak átadandó parancssori paraméterek. Ez a karakterláncok tömbje.|No|
+|szalagtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. <sztring, objektum> tömbje lehet.|No|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a databricks-tevékenységekhez
 

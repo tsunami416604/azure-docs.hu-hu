@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979392"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>JSON létrehozása, szerkesztése vagy kiterjesztése a Logic app munkafolyamat-definícióinak Azure Logic Apps
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Logikai alkalmazásokhoz készült JSON-munkafolyamatdefiníciók létrehozása, szerkesztése, vagy kiterjesztése az Azure Logic Appsben
 
 Ha [Azure Logic apps](../logic-apps/logic-apps-overview.md)-ben automatizált munkafolyamatokkal rendelkező vállalati integrációs megoldásokat hoz létre, az alapul szolgáló logikai alkalmazás-definíciók egyszerű és deklaratív JavaScript Object Notation (JSON) és a [munkafolyamat-definíciós nyelv (WDL) sémáját](../logic-apps/logic-apps-workflow-definition-language.md) használják a leíráshoz és az érvényesítéshez. Ezek a formátumok a Logic app-definíciók könnyebben olvashatók és megérthetők, és a kód ismerete nélkül.
 Ha automatizálni szeretné a logikai alkalmazások létrehozását és üzembe helyezését, [Azure Resource Manager-sablonokban](../azure-resource-manager/templates/overview.md)található [Azure-erőforrásokként](../azure-resource-manager/management/overview.md) is hozzáadhat logikai alkalmazás-definíciókat.
@@ -46,7 +45,7 @@ A Visual Studióban megnyithatja azokat a Logic apps-alkalmazásokat, amelyeket 
 
 1. Nyissa meg a Visual Studio-megoldást vagy az [Azure erőforráscsoport](../azure-resource-manager/management/overview.md) -projektet, amely tartalmazza a logikai alkalmazást.
 
-2. Keresse meg és nyissa meg a logikai alkalmazás definícióját, amely alapértelmezés szerint egy **LogicApp. JSON**nevű [Resource Manager-sablonban](../azure-resource-manager/templates/overview.md)jelenik meg.
+2. Keresse meg és nyissa meg a logikai alkalmazás definícióját, amely alapértelmezés szerint a **LogicApp.js**nevű [Resource Manager-sablonban](../azure-resource-manager/templates/overview.md)jelenik meg.
 A sablont a különböző környezetekben való üzembe helyezéshez használhatja és testreszabhatja.
 
 3. Nyissa meg a logikai alkalmazás definíciójának és sablonjának helyi menüjét.
@@ -127,18 +126,18 @@ Ezek a lépések azt írják le, hogy a példa hogyan dolgozza fel ezt a karakte
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) Szerezze be a vállalat nevét, így megkapja a karakterek teljes számát.
+1. Szerezze [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) be a vállalat nevét, így megkapja a karakterek teljes számát.
 
-2. Egy rövidebb sztring levonásához `5`.
+2. Egy rövidebb sztring levonásához `5` .
 
-3. Most szerezzen [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)be egy.
-Indítsa el az `5`indexet, és ugorjon a karakterlánc hátralévő részére.
+3. Most szerezzen be egy [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) .
+Indítsa el az indexet `5` , és ugorjon a karakterlánc hátralévő részére.
 
 4. Az alkarakterlánc konvertálása [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) karakterlánccá.
 
-5. Most [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) már minden `+` karakterrel `-` rendelkező karakter szerepel.
+5. Most már minden karakterrel [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) `+` rendelkező karakter szerepel `-` .
 
-6. Végül az [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) `/` összes karakterrel rendelkező `_` karakter.
+6. Végül [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) az összes karakterrel `/` rendelkező karakter `_` .
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Listaelemek listázása tulajdonságértékek alapján, majd a Maps használata paraméterekként
 
@@ -228,19 +227,19 @@ Ez a kifejezés például megkeresi, hogy mennyi ideig tart a munkafolyamat lép
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. A `order` műveletből bontsa ki `startTime`a következőt:.
-2. Az aktuális idő beolvasása `utcNow()`.
+1. A `order` műveletből bontsa ki a következőt: `startTime` .
+2. Az aktuális idő beolvasása `utcNow()` .
 3. Egy másodperc kivonása:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md)
 
-   Más időegységeket is használhat, például `minutes` vagy. `hours`
+   Más időegységeket is használhat, például `minutes` vagy `hours` .
 
 3. Most összehasonlíthatja ezt a két értéket.
 
    Ha az első érték kisebb, mint a második érték, akkor a rendelés első elhelyezése óta a rendszer egynél több másodpercet adott át.
 
-A dátumok formázásához karakterlánc-formázó használhat. A RFC1123 lekéréséhez például használja [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)a következőt:.
+A dátumok formázásához karakterlánc-formázó használhat. A RFC1123 lekéréséhez például használja a következőt: [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) .
 További információ a [dátum formázásáról](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ``` json

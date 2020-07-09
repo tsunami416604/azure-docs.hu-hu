@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: ed51fb7589247b1a52930931ed297d4292b07ea6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: ae851f5b02c0fc06f346195c5c3b8667284eb1d1
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77921130"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608961"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Python használatával
 
@@ -45,7 +45,7 @@ A teszteszköz segítségével a következő lépésekkel állíthat elő tanús
 
 1. Keresse meg az Azure IoT C SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-2. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
+2. Nyisson meg egy parancssort vagy a Git Bash-felületet, és lépjen egy, a gépen található munkamappába. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a paraméter értékeként `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -143,7 +143,7 @@ A [Python regisztrációs szolgáltatási SDK](https://github.com/Azure/azure-io
     ![Sikeres X.509-regisztráció ellenőrzése a portálon](./media/quick-enroll-device-x509-python/1.png)  
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
@@ -151,7 +151,7 @@ Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az
 1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **beléptetési csoportok** fület. jelölje be a rövid útmutató segítségével regisztrált X. 509 eszközök *csoportjának neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.    
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy X. 509 eszköz szimulált csoportját regisztrálta az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]

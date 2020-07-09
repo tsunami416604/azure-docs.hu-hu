@@ -2,13 +2,12 @@
 title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078975"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -107,7 +106,7 @@ Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ü
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hány virtuális gépet vagy kiszolgálót tud felderíteni egy berendezéssel?
 
-Akár 10 000 VMware virtuális gép, akár 5 000 Hyper-V virtuális gép, valamint akár 250 fizikai kiszolgáló is felderíthető egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V felmérésének](scale-hyper-v-assessment.md)méretezését, [a VMware-értékelés méretezését](scale-vmware-assessment.md)és [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető részt.
+Akár 10 000 VMware virtuális gép, akár 5 000 Hyper-V virtuális gép, valamint akár 1000 fizikai kiszolgáló is felderíthető egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V felmérésének](scale-hyper-v-assessment.md)méretezését, [a VMware-értékelés méretezését](scale-vmware-assessment.md)és [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető részt.
 
 ## <a name="can-i-delete-an-appliance"></a>Törölhetek-e készüléket?
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066657"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése
@@ -146,7 +146,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
 
 - **ROLESTATEUNKNOWN VM-állapot** – ha az áttelepítés egy **ismeretlen szerepkör-állapot** miatt leáll, vizsgálja meg a virtuális gépet a portálon, és ellenőrizze, hogy fut-e. Ez a hiba általában a saját (nincs szükség szervizelése nélkül) elmúlik néhány perc múlva, és gyakran átmeneti típust mutat a virtuális gépek **indításakor**, **leállításakor**, **újraindításakor** . **Ajánlott eljárás:** próbálkozzon újra az áttelepítés elvégzésével néhány perc múlva.
 
-- A **Fabric-fürt nem létezik** – bizonyos esetekben bizonyos virtuális gépek nem telepíthetők át különböző páratlan okok miatt. Ezek közül az egyik ismert eset az, ha a virtuális gép nemrég lett létrehozva (az elmúlt héten vagy azt megelőzően), és egy olyan Azure-fürtöt helyeztek el, amely még nem rendelkezik Azure Resource Manager számítási feladatokhoz.  Hibaüzenet jelenik meg, amely szerint a **Fabric-fürt nem létezik** , és a virtuális gép nem telepíthető át. Néhány nap várakozása általában megoldja ezt a problémát, mivel a fürt hamarosan Azure Resource Manager engedélyezve lesz. Azonban `stop-deallocate` az egyik azonnali Áthidaló megoldás a virtuális gép, majd az áttelepítés után folytatható, és a Azure Resource Manager az áttelepítés után indítsa el a virtuális gépet.
+- A **Fabric-fürt nem létezik** – bizonyos esetekben bizonyos virtuális gépek nem telepíthetők át különböző páratlan okok miatt. Ezek közül az egyik ismert eset az, ha a virtuális gép nemrég lett létrehozva (az elmúlt héten vagy azt megelőzően), és egy olyan Azure-fürtöt helyeztek el, amely még nem rendelkezik Azure Resource Manager számítási feladatokhoz.  Hibaüzenet jelenik meg, amely szerint a **Fabric-fürt nem létezik** , és a virtuális gép nem telepíthető át. Néhány nap várakozása általában megoldja ezt a problémát, mivel a fürt hamarosan Azure Resource Manager engedélyezve lesz. Azonban az egyik azonnali Áthidaló megoldás `stop-deallocate` a virtuális gép, majd az áttelepítés után folytatható, és a Azure Resource Manager az áttelepítés után indítsa el a virtuális gépet.
 
 ### <a name="pitfalls-to-avoid"></a>Kikerülő buktatók
 

@@ -23,8 +23,6 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Alapelvek
   items:
-    - name: Áttekintés
-      href: video-indexer-concepts.md
     - name: A Video Indexer és a Media Services előzetes beállításainak összehasonlítása
       href: compare-video-indexer-with-media-services-presets.md
     - name: Több bérlő kezelése

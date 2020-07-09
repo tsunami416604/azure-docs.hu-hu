@@ -1,81 +1,80 @@
 ---
-title: OpenAPI-metaadatok az Azure Functionsben
-description: Az OpenAPI-támogatás áttekintése az Azure Functionsben
+title: OpenAPI-metaadatok a Azure Functionsban
+description: A Azure Functions OpenAPI-támogatásának áttekintése
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81866722"
 ---
-# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Az OpenAPI 2.0 metaadat-támogatása az Azure Functionsben (előzetes verzió)
-Az OpenAPI 2.0 (korábban Swagger) metaadat-támogatása az Azure Functionsben egy előzetes verziójú szolgáltatás, amely segítségével OpenAPI 2.0-definíciót írhat egy függvényalkalmazáson belül. Ezután a függvényalkalmazás segítségével üzemeltetheti a fájlt.
+# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2,0 metaadat-támogatás a Azure Functionsban (előzetes verzió)
+A OpenAPI 2,0 (korábban hencegés) metaadatainak támogatása Azure Functions egy előzetes funkció, amellyel OpenAPI 2,0-definíciót írhat a Function alkalmazásban. Ezt a fájlt ezután a Function alkalmazás használatával futtathatja.
 
 > [!IMPORTANT]
 > Az OpenAPI előzetes verziójú funkció csak ma, az 1.x futtatókörnyezetben érhető el. 1.x függvényalkalmazás létrehozásáról [itt találhat](./functions-versions.md#creating-1x-apps) további információt.
 
-[Az OpenAPI metaadatai](https://swagger.io/) lehetővé teszik, hogy a REST API-t tároló függvényt számos más szoftver használja fel. Ez a szoftver magában foglalja a Microsoft ajánlatait, például a PowerApps-et és az [Azure App Service API-alkalmazások funkcióját,](../app-service/overview.md)a külső fejlesztői eszközöket , például [a Postmant](https://www.getpostman.com/docs/importing_swagger)és [még sok más csomagot.](https://swagger.io/tools/)
+A [OpenAPI-metaadatok](https://swagger.io/) lehetővé teszik, hogy egy olyan függvényt, amely a különböző szoftverek széles körének használatát REST API üzemelteti. Ez a szoftver olyan Microsoft-ajánlatokat is tartalmaz, mint a PowerApps, valamint a Azure App Service, harmadik féltől származó fejlesztői eszközök, például a [Poster](https://www.getpostman.com/docs/importing_swagger)és [számos további csomag](https://swagger.io/tools/) [API apps funkcióját](../app-service/overview.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Azt javasoljuk, hogy kezdje az [első lépések oktatóanyag,](./functions-api-definition-getting-started.md) majd térjen vissza ehhez a dokumentumhoz, hogy többet tudjon meg a konkrét funkciókról.
+>Javasoljuk, hogy kezdje a [kezdeti lépéseket ismertető oktatóanyaggal](./functions-api-definition-getting-started.md) , majd térjen vissza ehhez a dokumentumhoz, és tudjon meg többet az egyes funkciókról.
 
-## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI-definíció támogatás engedélyezése
-Az összes OpenAPI-beállítást a függvényalkalmazás platformfunkcióinak **API-definíciója** lapján **állíthatja be.**
+## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI-definíció támogatásának engedélyezése
+A Function app **platform funkcióinak**API- **definíciós** lapján az összes OpenAPI beállításait konfigurálhatja.
 
 > [!NOTE]
-> A függvény API-definíciós szolgáltatása jelenleg nem támogatott a béta-futtatási időhez.
+> A függvény API-definíciós funkciója jelenleg nem támogatott a bétaverziós futtatókörnyezet esetében.
 
-A hosztolt OpenAPI-definíció és egy rövid útmutató definíció létrehozásának engedélyezéséhez állítsa **az API-definícióforrást** **Függvény (előzetes verzió)** értékre. **A külső URL lehetővé** teszi, hogy a függvény máshol tárolt OpenAPI-definíciót használjon.
+Egy üzemeltetett OpenAPI-definíció és egy rövid útmutató meghatározásának engedélyezéséhez állítsa be az **API-definíció forrását** a **Function (előzetes verzió)** értékre. A **külső URL-cím** lehetővé teszi, hogy a függvény egy máshol üzemeltetett OpenAPI-definíciót használjon.
 
-## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>Swagger csontváz létrehozása a függvény metaadataiból
-A sablon segítségével elkezdheti írni az első OpenAPI-definíciót. A definíciós sablonszolgáltatás ritka OpenAPI-definíciót hoz létre a function.json fájlban lévő összes metaadatot használva az egyes HTTP-eseményindító függvényekhez. Az [OpenAPI specifikációból](https://swagger.io/specification/)további információkat kell kitöltenie az API-ról, például kérés- és válaszsablonokat.
+## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>Hencegő csontváz létrehozása a függvény metaadataiból
+A sablonok segítségével megkezdheti az első OpenAPI-definíció megírását. A definíciós sablon szolgáltatás egy ritka OpenAPI-definíciót hoz létre az összes HTTP-trigger funkciójának function.jsfájljában található metaadatok használatával. További információkat kell kitöltenie az API-ról a OpenAPI- [specifikációból](https://swagger.io/specification/), például a kérések és a válaszok sablonjairól.
 
-A részletes útmutatást az [első lépések oktatóanyagcímű témakörben találja.](./functions-api-definition-getting-started.md)
+Részletes útmutatásért tekintse meg az [első lépéseket ismertető oktatóanyagot](./functions-api-definition-getting-started.md).
 
 ### <a name="available-templates"></a><a name="templates"></a>Elérhető sablonok
 
-|Name (Név)| Leírás |
+|Name| Description |
 |:-----|:-----|
-|Létrehozott definíció|OpenAPI-definíció, amely a függvény meglévő metaadataiból kikövetkeztethető maximális mennyiségű információt tartalmazza.|
+|Generált definíció|Egy OpenAPI-definíció, amely a függvény meglévő metaadataiból kikövetkeztethető maximális mennyiségű adatot tartalmaz.|
 
-### <a name="included-metadata-in-the-generated-definition"></a><a name="quickstart-details"></a>Metaadatok beleszámítva a létrehozott definícióba
+### <a name="included-metadata-in-the-generated-definition"></a><a name="quickstart-details"></a>Tartalmazott metaadatok a generált definícióban
 
-Az alábbi táblázat az Azure Portal beállításait és a megfelelő adatokat a function.json, ahogy a létrehozott Swagger csontváz leképezve.
+A következő táblázat a Azure Portal beállításokat és a function.jsmegfelelő, a generált hencegő csontvázra leképezett információit tartalmazza.
 
-|Swagger.json|Portál felhasználói felülete|Funkció.json|
+|Swagger.jsbekapcsolva|Portál felhasználói felülete|Function.jsbekapcsolva|
 |:----|:-----|:-----|
-|[Állomás](https://swagger.io/specification/#fixed-fields-15)|**A Függvényalkalmazás beállításai** > **az App Service beállításai –** > **áttekintés** > **URL**|*Nincs jelen*
-|[Elérési utak](https://swagger.io/specification/#paths-object-29)|**A** > **kijelölt HTTP-módszerek integrálása**|Kötések: Útvonal
-|[Görbe elem](https://swagger.io/specification/#path-item-object-32)|**Integrate** > **Útvonalsablon integrálása**|Kötések: Módszerek
+|[Állomás](https://swagger.io/specification/#fixed-fields-15)|**Function alkalmazás beállításai**  >  **App Service beállítások**  >  **Áttekintés**  >  **URL-cím**|*Nincs jelen*
+|[Elérési utak](https://swagger.io/specification/#paths-object-29)|**Integrálás**  >  **Kiválasztott http-metódusok**|Kötések: útvonal
+|[Elérési út eleme](https://swagger.io/specification/#path-item-object-32)|**Integrálás**  >  **Útvonal sablonja**|Kötések: metódusok
 |[Biztonság](https://swagger.io/specification/#security-scheme-object-112)|**Kulcsok**|*Nincs jelen*|
-|műveletazonosítója*|**Útvonal + Engedélyezett műveletek**|Útvonal + Engedélyezett műveletek|
+|OperationID|**Route + engedélyezett műveletek**|Route + engedélyezett műveletek|
 
-\*A műveletazonosító csak a PowerApps és a Flow integrálásához szükséges.
+\*A műveleti azonosító csak a PowerApps és a flow integrálásához szükséges.
 > [!NOTE]
-> Az x-ms-summary bővítmény megjelenítendő nevet biztosít a Logic Apps, a PowerApps és a Flow alkalmazásban.
+> Az x-MS-Summary bővítmény megjelenített nevet biztosít Logic Apps, PowerApps és flow-ban.
 >
-> További információ: [A Swagger-definíció testreszabása a PowerApps alkalmazáshoz](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)című témakörben olvashat.
+> További információkért lásd: [a PowerApps-hez készült hencegés definíciójának testreszabása](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions).
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>API-definíció beállítása CI/CD használatával
 
- Engedélyeznie kell az API-definíció üzemeltetését a portálon, mielőtt engedélyezné a forrásvezérlést az API-definíció forrásvezérlésből történő módosításához. Kövesse az alábbi utasításokat:
+ Engedélyeznie kell az API-definíció üzemeltetését a portálon, mielőtt engedélyezi a verziókövetés számára az API-definíciók forrás-vezérlőelemből való módosítását. Kövesse az alábbi utasításokat:
 
-1. Tallózással keresse meg **az API Definition (előzetes verzió)** nézetet a függvényalkalmazás beállításaiközött.
-   1. Állítsa **az API-definícióforrást** **függvényre.**
-   1. Kattintson **az API-definíciós sablon létrehozása,** majd **a Mentés** gombra a későbbi módosításhoz szükséges sablondefiníció létrehozásához.
+1. Tallózással keresse meg az **API-definíciót (előzetes verzió)** a Function app-beállításokban.
+   1. Állítsa be az **API-definíció forrását** a **működéshez**.
+   1. Kattintson az **API-definíciós sablon létrehozása** lehetőségre, majd a **Mentés** gombra a sablon definíciójának létrehozásához a későbbi módosításhoz.
    1. Jegyezze fel az API-definíció URL-címét és kulcsát.
-1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása.](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment)
-2. Módosítsa a swagger.json parancsot a\.forrásvezérlőben a \site\wwwroot azurefunctions\swagger\swagger.json mappában.
+1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
+2. Módosítsa swagger.jsa forrás vezérlőelemben a \site\wwwroot \.azurefunctions\swagger\swagger.json címen.
 
-Most a swagger.json módosításait a tárházban a függvényalkalmazás üzemelteti az API-definíció URL-címén és az 1.c lépésben észlelt kulcson.
+A tárházban swagger.jsmódosításait mostantól az API-definíció URL-címe és az 1. c lépésben feljegyzett kulcs alapján hajtja végre a függvény alkalmazás.
 
 ## <a name="next-steps"></a>További lépések
-* [Első lépések bemutató](functions-api-definition-getting-started.md). Próbálja ki a forgatókönyvet, hogy egy OpenAPI-definíciót működés közben láthasson.
-* [Azure Functions GitHub-tárház.](https://github.com/Azure/Azure-Functions/) Tekintse meg a Functions repository visszajelzést az API-definíció támogatási előzetes verziójáról. Készíts egy GitHub-problémát minden, amit szeretne látni frissíteni.
-* [Az Azure Functions fejlesztői útmutatója](functions-reference.md). Ismerje meg a kódolási funkciókat, valamint az eseményindítók és kötések definiálását.
+* [Első lépések oktatóanyag](functions-api-definition-getting-started.md). Próbálja ki a bemutatót egy OpenAPI-definíció működés közbeni megtekintéséhez.
+* [Azure functions GitHub-tárház](https://github.com/Azure/Azure-Functions/). Tekintse meg a functions tárházat, és küldjön visszajelzést az API-definíció támogatásának előzetes verziójáról. Hozzon fel GitHub-problémát minden, amit frissíteni szeretne.
+* [Azure functions fejlesztői referenciája](functions-reference.md). A kódolási függvények ismertetése és az eseményindítók és kötések meghatározása.

@@ -6,16 +6,15 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84190733"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók Azure Logic Apps
 
-[Azure Logic apps](../logic-apps/logic-apps-overview.md) a különböző szolgáltatások összehangolása és integrálása révén [több száz használatra kész összekötőt](../connectors/apis-list.md)biztosít, amelyek a helyszíni SQL Server vagy az SAP és az Azure Cognitive Services között állnak rendelkezésre. A Logic Apps szolgáltatás "kiszolgáló nélküli", így nem kell aggódnia a méretezéssel vagy a példányokkal kapcsolatban. Mindössze annyit kell tennie, hogy meghatározza a munkafolyamatot egy triggerrel, valamint a munkafolyamat által végrehajtott műveleteket. Az alapul szolgáló platform kezeli a skálázást, a rendelkezésre állást és a teljesítményt. Logic Apps különösen hasznos olyan használati esetekhez és forgatókönyvekhez, ahol több rendszer és szolgáltatás között kell összehangolni a műveleteket.
+[Azure Logic apps](../logic-apps/logic-apps-overview.md) a különböző szolgáltatások összehangolása és integrálása révén [több száz használatra kész összekötőt](../connectors/apis-list.md)biztosít, amelyek SQL Server vagy SAP-ről az Azure-ra Cognitive Services. A Logic Apps szolgáltatás "kiszolgáló nélküli", így nem kell aggódnia a méretezéssel vagy a példányokkal kapcsolatban. Mindössze annyit kell tennie, hogy meghatározza a munkafolyamatot egy triggerrel, valamint a munkafolyamat által végrehajtott műveleteket. Az alapul szolgáló platform kezeli a skálázást, a rendelkezésre állást és a teljesítményt. Logic Apps különösen hasznos olyan használati esetekhez és forgatókönyvekhez, ahol több rendszer és szolgáltatás között kell összehangolni a műveleteket.
 
 A Azure Logic Apps által támogatott képességek és minták megismerése érdekében ez a cikk általános kiindulási pontokat, példákat és forgatókönyveket ismertet.
 
@@ -86,7 +85,7 @@ A közzétett összekötőket nem tartalmazó rendszerekhez és szolgáltatások
 A nagyvállalati integrációs megoldások és a szervezetek közötti zökkenőmentes kommunikáció érdekében a Enterprise Integration Pack (EIP) és a Azure Logic Apps használatával automatizált skálázható munkafolyamatokat hozhat létre ezekhez a forgatókönyvekhez. Bár a szervezetek különböző protokollokat és formátumokat használnak, elektronikus úton is cserélhetnek üzeneteket. A EIP különböző formátumokat alakít át egy olyan formátumba, amelyet a szervezet rendszerei feldolgozhatnak és támogatnak az iparági szabványoknak megfelelő protokollokat, beleértve az AS2, a X12, a EDIFACT és a RosettaNet. A megoldások létrehozásához létre kell hoznia egy integrációs fiókot, amely egy különálló Azure-erőforrás, amely biztonságos, méretezhető és kezelhető tárolót biztosít a logikai alkalmazás munkafolyamataihoz definiált és használható összetevőkhöz. Ilyenek például a kereskedelmi partnerek, a szerződések, a térképek, a sémák, a tanúsítványok és a Batch-konfigurációk.
 
 * [Áttekintés: B2B vállalati integrációs megoldások Azure Logic Apps és Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* [Integrációs fiókok létrehozása és kezelése a B2B vállalati integrációk Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Integrációs fiókok létrehozása és felügyelete B2B vállalati integrációkhoz az Azure Logic Appsben](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 ## <a name="access-azure-virtual-network-resources"></a>Azure-beli virtuális hálózati erőforrások elérése
 
@@ -103,8 +102,8 @@ A Visual Studióval, az Azure DevOps vagy bármely más verziókövetés és aut
 
 * [Gyors útmutató: automatizált feladatok, folyamatok és munkafolyamatok létrehozása a Azure Logic Apps-Visual Studio használatával](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Áttekintés: logikai alkalmazások központi telepítésének automatizálása](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [Azure Resource Manager-sablonok létrehozása a Azure Logic Apps üzembe helyezésének automatizálásához](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Resource Manager-sablonok létrehozása az Azure Logic Apps-alkalmazások üzembe helyezésének automatizálásához](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [Azure Resource Manager-sablonok üzembe helyezése Azure Logic Apps-alkalmazásokhoz](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 * [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps és üzembe helyezés az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Minta: Function app-művelet beállítása az Azure DevOps Azure-folyamatokkal való üzembe helyezéséhez és üzembe helyezéséhez Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -119,16 +118,16 @@ A Visual Studióval, az Azure DevOps vagy bármely más verziókövetés és aut
 
 ### <a name="monitor"></a>Figyelés
 
-* [A Futtatás állapotának figyelése, az aktiválási előzmények áttekintése és a Azure Logic Apps riasztások beállítása](../logic-apps/monitor-logic-apps.md)
+* [Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez](../logic-apps/monitor-logic-apps.md)
 * [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
-* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése a B2B-üzenetekhez Azure Logic Apps](../logic-apps/monitor-b2b-messages-log-analytics.md)
+* [Azure Monitor-naplók beállítása és diagnosztikai adatok begyűjtése a B2B-üzenetekre vonatkozóan az Azure Logic Appsben](../logic-apps/monitor-b2b-messages-log-analytics.md)
 * [A Azure Monitor-naplók figyelésére és nyomon követésére szolgáló lekérdezések megtekintése és létrehozása Azure Logic Apps](../logic-apps/create-monitoring-tracking-queries.md)
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>A tartalomtípusok, a konverziók és az átalakítások kezelése
 
-Több tartalomtípus elérését, átalakítását és átalakítását a Azure Logic Apps [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs)számos funkciója segítségével végezheti el. A karakterlánc, a JSON és az XML között például a és `@json()` `@xml()` a munkafolyamat kifejezéseket lehet konvertálni. A Logic Apps motor megőrzi a tartalomtípusokat, hogy a szolgáltatások között veszteségmentes módon támogassa a tartalom átvitelét.
+Több tartalomtípus elérését, átalakítását és átalakítását a Azure Logic Apps [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs)számos funkciója segítségével végezheti el. A karakterlánc, a JSON és az XML között például a `@json()` és a `@xml()` munkafolyamat kifejezéseket lehet konvertálni. A Logic Apps motor megőrzi a tartalomtípusokat, hogy a szolgáltatások között veszteségmentes módon támogassa a tartalom átvitelét.
 
-* A Azure Logic apps, például a `application/`, `application/octet-stream`és [a tartalomtípusok kezelése](../logic-apps/logic-apps-content-type.md)`multipart/formdata`
+* A Azure Logic Apps, például a, és [a tartalomtípusok kezelése](../logic-apps/logic-apps-content-type.md) `application/` `application/octet-stream``multipart/formdata`
 * [A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Munkafolyamat-definíció nyelvi sémája Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
 
@@ -141,7 +140,7 @@ A Azure Logic Apps számos szolgáltatással integrálható, például a Azure F
 * [Oktatóanyag: streaming Customer-adatáttekintési irányítópult létrehozása Azure Logic Apps és Azure Functions](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Oktatóanyag: az Azure Logic Apps és az Azure Cognitive Services integrációs funkciójának létrehozása a Twitter utáni érzelmek elemzéséhez](../azure-functions/functions-twitter-email.md)
 * [Oktatóanyag: AI-alapú közösségi irányítópult létrehozása Power BI és Azure Logic Apps használatával](https://aka.ms/logicappsdemo)
-* [Oktatóanyag: a virtuális gépek változásainak figyelése Azure Event Grid és Logic Apps használatával](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Oktatóanyag: Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps használatával](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Oktatóanyag: a IoT távoli figyelése és értesítései Azure Logic Apps az IoT hub és a postaláda csatlakoztatásával](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: a SOAP-szolgáltatások meghívása Azure Logic Apps használatával](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

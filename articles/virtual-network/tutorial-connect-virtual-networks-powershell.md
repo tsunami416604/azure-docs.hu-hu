@@ -9,18 +9,17 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e040938cd0bde127d3ae36819b978ad4e56ded4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703434"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Virtuális hálózatok összekötése virtuális hálózattal a PowerShell használatával
 
@@ -33,7 +32,7 @@ A virtuális hálózatok közötti társviszony létesítésével virtuális há
 * Virtuális gép üzembe helyezése mindkét virtuális hálózaton
 * Virtuális gépek közötti kommunikáció
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -196,7 +195,7 @@ ping 10.0.0.4
 
 Négy választ kap. Válassza le az RDP-munkameneteket a *myVm1* és *myVm2* virtuális gépről egyaránt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, a [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 

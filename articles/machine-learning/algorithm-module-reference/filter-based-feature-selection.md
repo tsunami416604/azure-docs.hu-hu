@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477595"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
@@ -40,7 +39,7 @@ A szűrésen alapuló funkció kiválasztási modulja számos mérőszámot bizt
 
 -   **Pearson korreláció**  
 
-    A Pearson korrelációs statisztikája vagy a `r` Pearson korrelációs együtthatója a statisztikai modellekben is ismert értékként. Bármely két változó esetében egy olyan értéket ad vissza, amely jelzi a korreláció erősségét.
+    A Pearson korrelációs statisztikája vagy a Pearson korrelációs együtthatója a statisztikai modellekben is ismert `r` értékként. Bármely két változó esetében egy olyan értéket ad vissza, amely jelzi a korreláció erősségét.
 
     A Pearson korrelációs együtthatóját úgy számítjuk ki, hogy a két változó egymástól való eltérését és a szórásuk szorzatát választja. A két változó méretezésének módosítása nem befolyásolja az együtthatót.  
 
@@ -68,7 +67,7 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
     > Ha tudja, hogy egyes oszlopok helytelen funkciókat végeznek, akkor eltávolíthatja őket az oszlop kiválasztásával. A [metaadatok szerkesztése](edit-metadata.md) modullal is megjelölheti azokat **kategorikusként**. 
 3.  A **szolgáltatás pontozási módszere**esetében válassza az alábbi, a pontszámok kiszámításakor használandó statisztikai módszerek egyikét.  
 
-    | Módszer              | Követelmények                             |
+    | Metódus              | Követelmények                             |
     | ------------------- | ---------------------------------------- |
     | Pearson korreláció | A címke lehet szöveg vagy numerikus. A funkcióknak numerikusnak kell lenniük. |
     Chi négyzetes| A címkék és a szolgáltatások lehetnek szöveg vagy numerikus elemek. Használja ezt a módszert a számítási funkció fontosságához két kategorikus oszlop esetében.|
@@ -120,7 +119,7 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 
 -   Ha a metódus által nem támogatott adattípusú oszlophoz próbál pontozási módszert használni, a modul hibát jelez. Vagy nulla pontszámot fog rendelni az oszlophoz.  
 
--   Ha egy oszlop logikai (igaz/hamis) értékeket tartalmaz, azok a következő módon `True = 1` lesznek `False = 0`feldolgozva: és.  
+-   Ha egy oszlop logikai (igaz/hamis) értékeket tartalmaz, azok a következő módon lesznek feldolgozva: `True = 1` és `False = 0` .  
 
 -   Egy oszlop nem lehet olyan szolgáltatás, amely **címkeként** vagy **pontszámként**lett megjelölve.  
 

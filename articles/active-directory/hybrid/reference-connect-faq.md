@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827148"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
@@ -88,7 +87,7 @@ A következő egy tájékoztató dokumentum, amely bemutatja a mérnöki, támog
     - Kevésbé összetett
     - Erőforrásokat kell kijelölnie az SQL-hez, és lehetővé kell tennie a Azure AD Connect és az operációs rendszer terhelését
 - Proxy kihagyása, ha az összes lehetséges, ha nem tudja megkerülni a proxyt, akkor biztosítania kell, hogy az időkorlát 5 percnél nagyobb legyen.
-- Ha proxyra van szükség, akkor hozzá kell adnia a proxyt a Machine. config fájlhoz.
+- Ha proxyra van szükség, a proxyt hozzá kell adnia a machine.config fájlhoz.
 - Vegye figyelembe a helyi SQL-feladatokat és-karbantartást, valamint azt, hogy ezek milyen hatással lesznek Azure AD Connect – különösen újraindexelésre
 - Külső megoldás biztosítása, mint a DNS
 - Győződjön meg arról, hogy a [kiszolgáló specifikációi](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) a fizikai vagy virtuális kiszolgálók használatát ajánlják
@@ -203,7 +202,7 @@ A múlt évben a Azure AD Connect egy olyan verzióját adtuk ki, amely bizonyos
 
 A PowerShell-szkript futtatásához [töltse le a parancsfájlt](https://aka.ms/repairaadconnect) , majd futtassa a Azure ad Connect-kiszolgálón egy felügyeleti PowerShell-ablakban. A szkript futtatásának megismeréséhez [tekintse meg ezt a rövid videót](https://aka.ms/repairaadcau).
 
-A manuális frissítéshez le kell töltenie és futtatnia kell a AADConnect. msi fájl legújabb verzióját.
+A manuális frissítéshez le kell töltenie és futtatnia kell a AADConnect.msi fájl legújabb verzióját.
  
 -  Ha a jelenlegi verziója régebbi, mint a 1.1.750.0, [töltse le és frissítse a legújabb verzióra](https://www.microsoft.com/download/details.aspx?id=47594).
 - Ha a Azure AD Connect verziója 1.1.750.0 vagy újabb, nincs szükség további műveletre. Már használja az automatikus frissítés javítását tartalmazó verziót. 

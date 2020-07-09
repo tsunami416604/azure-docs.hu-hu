@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659833"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636087"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -49,7 +49,7 @@ Cserélje le az `<REGION_IDENTIFIER>` elemet az előfizetés régiójának megfe
 
 Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncában.
 
-| Paraméter | Description | Kötelező/nem kötelező |
+| Paraméter | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `language` | Azonosítja a felismert nyelvet. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Kötelező |
 | `format` | Megadja az eredmény formátumát. Az elfogadott értékek: `simple` és `detailed` . Az egyszerű eredmények közé tartoznak a következők:,, `RecognitionStatus` `DisplayText` `Offset` és `Duration` . A részletes válaszok a megjelenítendő szöveg négy különböző ábrázolását tartalmazzák. Az alapértelmezett beállítás: `simple`. | Választható |
@@ -60,7 +60,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 
 Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-|Fejléc| Description | Kötelező/nem kötelező |
+|Fejléc| Leírás | Kötelező/nem kötelező |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
 | `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
@@ -86,7 +86,7 @@ A hang a HTTP-kérelem törzsében lesz elküldve `POST` . Ennek a táblázatnak
 
 Ez a táblázat a kiejtés értékeléséhez szükséges és választható paramétereket sorolja fel.
 
-| Paraméter | Description | Kötelező/nem kötelező |
+| Paraméter | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | ReferenceText | A kiejtés kiértékeléséhez használandó szöveg | Kötelező |
 | GradingSystem | A pontszám kalibrációs pontjának rendszere. Az elfogadott értékek: `FivePoint` és `HundredMark` . Az alapértelmezett beállítás: `FivePoint`. | Választható |
@@ -114,8 +114,10 @@ var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson)
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
 
+Javasoljuk, hogy a hangadatok közzététele során a streaming (darabolásos) feltöltést is javasolja, ami jelentősen csökkentheti a késést. A streaming engedélyezéséhez lásd: [mintakód különböző programozási nyelveken](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) .
+
 >[!NOTE]
->A kiejtés-értékelési funkció jelenleg csak `westus` és `eastasia` régiókban érhető el. Ez a funkció jelenleg csak nyelven érhető el `en-US` .
+>A kiejtés-értékelési funkció jelenleg csak `westus` `eastasia` és `centralindia` régiókban érhető el. Ez a funkció jelenleg csak nyelven érhető el `en-US` .
 
 ## <a name="sample-request"></a>Példa a kérelemre
 
@@ -141,7 +143,7 @@ Pronunciation-Assessment: eyJSZWZlcm...
 
 Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
-| HTTP-állapotkód | Description | Lehetséges ok |
+| HTTP-állapotkód | Leírás | Lehetséges ok |
 |------------------|-------------|-----------------|
 | `100` | Folytatás | A kezdeti kérelem el lett fogadva. Folytassa a további adatok küldésével. (Darabolásos átvitelsel használatos) |
 | `200` | OK | A kérelem sikeres volt; a válasz törzse egy JSON-objektum. |
@@ -189,7 +191,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 Az eredmények JSON-ként vannak megadva. A `simple` formátum tartalmazza ezeket a legfelső szintű mezőket.
 
-| Paraméter | Description  |
+| Paraméter | Leírás  |
 |-----------|--------------|
 |`RecognitionStatus`|Állapot, például `Success` sikeres felismeréshez. Lásd a következő táblázatot.|
 |`DisplayText`|A felismert szöveg a tőkésítés, a központozás, az inverz szöveg normalizálása (a szóbeli szöveg konvertálása rövidebb formátumokra, például 200 a "200" vagy "Dr. Smith" kifejezésre a "Doctor Smith" esetében) és a káromkodás maszkolása után. Csak sikeres.|
@@ -214,7 +216,7 @@ A formátum használatakor a a `detailed` `DisplayText` `Display` lista minden e
 
 A listában szereplő objektum a következőket `NBest` tartalmazhatja:
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | `Confidence` | A 0,0-es bejegyzés megbízhatósági pontszáma (nincs megbízhatóság) 1,0-re (teljes biztonság) |
 | `Lexical` | A felismert szöveg lexikális formája: a tényleges szavak felismerése. |
@@ -298,7 +300,7 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)

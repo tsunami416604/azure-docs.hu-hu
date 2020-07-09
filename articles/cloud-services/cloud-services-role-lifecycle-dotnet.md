@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652079"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes vagy feldolgozói szerepkör életciklusának testreszabása a .NET-ben
@@ -72,7 +71,7 @@ A **Run** metódus felülbírálható a szerepkör-példányhoz tartozó hosszú
 A **futtatási** metódus felülbírálása nem kötelező; az alapértelmezett implementáció egy olyan szálat indít el, amely örökre alvó állapotba kerül. Ha felülbírálja a **futtatási** módszert, a kódnak határozatlan ideig kell blokkolnia. Ha a **Run** metódus visszatér, a rendszer automatikusan újrahasznosítja a szerepkört. más szóval az Azure kiemeli a **leállítási** eseményt, és meghívja a **OnStop** metódust, hogy a leállítási folyamatokat a rendszer offline állapotba helyezése előtt végrehajtsa.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>A ASP.NET életciklus-módszereinek megvalósítása webes szerepkörhöz
-A **RoleEntryPoint** osztály által biztosított ASP.net-életciklusi módszerek mellett a webes szerepkörök inicializálási és leállítási folyamatait is kezelheti. Ez a kompatibilitási célokra hasznos lehet, ha meglévő ASP.NET-alkalmazást PORTOL az Azure-ba. A ASP.NET életciklusának metódusait a rendszer a **RoleEntryPoint** metódusok alapján hívja meg. Az **alkalmazás\_indítási** módszerét a **RoleEntryPoint. OnStart** metódus befejeződése után hívja meg a rendszer. Az **alkalmazás\_befejezési** metódusát a rendszer a **RoleEntryPoint. OnStop** metódus meghívása előtt hívja meg.
+A **RoleEntryPoint** osztály által biztosított ASP.net-életciklusi módszerek mellett a webes szerepkörök inicializálási és leállítási folyamatait is kezelheti. Ez a kompatibilitási célokra hasznos lehet, ha meglévő ASP.NET-alkalmazást PORTOL az Azure-ba. A ASP.NET életciklusának metódusait a rendszer a **RoleEntryPoint** metódusok alapján hívja meg. Az **alkalmazás \_ indítási** módszerét a **RoleEntryPoint. OnStart** metódus befejeződése után hívja meg a rendszer. Az **alkalmazás \_ befejezési** metódusát a rendszer a **RoleEntryPoint. OnStop** metódus meghívása előtt hívja meg.
 
 ## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan [hozhat létre Cloud Service-csomagot](cloud-services-model-and-package.md).

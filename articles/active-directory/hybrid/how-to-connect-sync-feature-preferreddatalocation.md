@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357409"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
@@ -91,8 +91,8 @@ A következő szakaszokban ismertetjük a **preferredDataLocation** attribútum 
 Ha el szeretné kerülni az Azure AD-ba való nem kívánt módosítások elkerülését, győződjön meg arról, hogy a szinkronizálási szabályok frissítése közben nem történik szinkronizálás. A beépített szinkronizálási ütemező letiltása:
 
 1. Indítsa el a PowerShell-munkamenetet a Azure AD Connect-kiszolgálón.
-2. Az ütemezett szinkronizálás letiltása a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. A**szinkronizálási szolgáltatás** **elindításával** > indítsa el a **synchronization Service Manager** .
+2. Az ütemezett szinkronizálás letiltása a következő parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+3. A szinkronizálási szolgáltatás **elindításával**indítsa el a **synchronization Service Manager**  >  **Synchronization Service**.
 4. Válassza az **Operations (műveletek** ) fület, és ellenőrizze, hogy nincs *-e folyamatban*állapotú művelet.
 
 ![Képernyőkép a Synchronization Service Managerról](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -135,15 +135,15 @@ Alapértelmezés szerint a **preferredDataLocation** attribútum nem lett import
 ## <a name="step-5-create-an-inbound-synchronization-rule"></a>5. lépés: bejövő szinkronizálási szabály létrehozása
 A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum értéke a helyszíni Active Directory Forrás attribútumáról a metaverse-ba kerüljön.
 
-1. Indítsa el **a szinkronizálási szabályok szerkesztőjét** a**szinkronizálási szabályok szerkesztőjének** **elindításával** > .
+1. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a szinkronizálási **START**  >  **szabályok szerkesztőjének**elindításával.
 2. Állítsa be a keresési szűrő **irányát** **bejövő**értékre.
 3. Új bejövő szabály létrehozásához válassza az **új szabály hozzáadása**lehetőséget.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name (Név) | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
-    | Leírás | *Egyéni Leírás megadása* |  |
+    | Name | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
+    | Description | *Egyéni Leírás megadása* |  |
     | Csatlakoztatott rendszerek | *A helyszíni Active Directory-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
     | Metaverse objektum típusa | **Személy** |  |
@@ -171,8 +171,8 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Name (Név) | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
-    | Leírás | *Adja meg a leírást* ||
+    | Name | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
+    | Description | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
     | Metaverse objektum típusa | **Személy** ||

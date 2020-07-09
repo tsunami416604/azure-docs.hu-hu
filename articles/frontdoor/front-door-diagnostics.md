@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322317"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
@@ -29,7 +29,7 @@ Az Azure bejárati ajtót használva a következő módokon figyelheti az erőfo
 
 A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Leírás |
+| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
 | RequestSize | Kérelem mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
@@ -88,6 +88,7 @@ A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként köteg
 | RequestUri | A fogadott kérelem URI-ja. |
 | ResponseBytes | A háttér-kiszolgáló által válaszként küldött bájtok.  |
 | RoutingRuleName | Annak az útválasztási szabálynak a neve, amelyhez a kérelem illeszkedik. |
+| RulesEngineMatchNames | A kérelemnek megfelelő szabályok nevei. |
 | SecurityProtocol | A kérelem által használt TLS/SSL protokoll verziója vagy Null, ha nincs titkosítás. |
 | SentToOriginShield | Logikai mező, amely azt jelöli, hogy az első környezetben történt-e gyorsítótár-kihagyás, és a rendszer elküldte a kérelmet a regionális gyorsítótárnak. Hagyja figyelmen kívül ezt a mezőt, ha az útválasztási szabály egy átirányítás, vagy ha nincs engedélyezve a gyorsítótárazás. |
 | Eltelt idő | A művelet végrehajtásának időtartama (ezredmásodpercben). |

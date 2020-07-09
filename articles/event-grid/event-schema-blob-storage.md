@@ -1,18 +1,14 @@
 ---
 title: Azure-Blob Storage Event Grid forrásként
 description: A blob Storage-eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115125"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113751"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure-Blob Storage Event Grid forrásként
 
@@ -30,11 +26,11 @@ Ezek az események akkor aktiválódnak, ha egy ügyfél a blob REST API-k megh�
 
  |Esemény neve |Leírás|
  |----------|-----------|
- |**Microsoft. Storage. BlobCreated** |Egy blob létrehozásakor vagy cseréjekor aktiválódik. <br>Pontosabban ez az esemény akkor aktiválódik, ha az ügyfelek `PutBlob`a `PutBlockList`blob Rest APIban elérhető, vagy `CopyBlob` műveleteket használják.   |
- |**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a blob `DeleteBlob` Rest APIban elérhető műveletet hívják meg. |
+ |**Microsoft. Storage. BlobCreated** |Egy blob létrehozásakor vagy cseréjekor aktiválódik. <br>Pontosabban ez az esemény akkor aktiválódik, ha az ügyfelek `PutBlob` a `PutBlockList` `CopyBlob` blob Rest APIban elérhető, vagy műveleteket használják.   |
+ |**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `DeleteBlob` Blob Rest APIban elérhető műveletet hívják meg. |
 
 > [!NOTE]
-> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje `CopyBlob`a `PutBlob`, és `PutBlockList` a REST API hívások eseményeit. Ezek az API-hívások csak azt követően indítják el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adatgyűjtés teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje a `CopyBlob` , és a `PutBlob` `PutBlockList` REST API hívások eseményeit. Ezek az API-hívások csak azt követően indítják el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adatgyűjtés teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage 2. generációs REST API-k eseményeinek listája
 
@@ -43,17 +39,16 @@ Ezek az események akkor aktiválódnak, ha egy hierarchikus névteret engedély
 |Esemény neve|Leírás|
 |----------|-----------|
 |**Microsoft. Storage. BlobCreated** | Egy blob létrehozásakor vagy cseréjekor aktiválódik. <br>Pontosabban ez az esemény akkor aktiválódik, ha az ügyfelek `CreateFile` a `FlushWithClose` Azure Data Lake Storage Gen2 REST API elérhető műveleteket használják. |
-|**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor is aktiválódik, ha az ügyfelek a Azure Data Lake Storage Gen2 `DeleteFile` REST API elérhető műveletet hívják meg. |
+|**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor is aktiválódik, ha az ügyfelek a `DeleteFile` Azure Data Lake Storage Gen2 REST API elérhető műveletet hívják meg. |
 |**Microsoft. Storage. BlobRenamed**|Egy blob átnevezve. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `RenameFile` Azure Data Lake Storage Gen2 REST API elérhető műveletet használják.|
 |**Microsoft. Storage. DirectoryCreated**|Egy könyvtár létrehozásakor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `CreateDirectory` Azure Data Lake Storage Gen2 REST API elérhető műveletet használják.|
 |**Microsoft. Storage. DirectoryRenamed**|Egy könyvtár átnevezve. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `RenameDirectory` Azure Data Lake Storage Gen2 REST API elérhető műveletet használják.|
 |**Microsoft. Storage. DirectoryDeleted**|Egy könyvtár törlésekor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `DeleteDirectory` Azure Data Lake Storage Gen2 REST API elérhető műveletet használják.|
 
 > [!NOTE]
-> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje `FlushWithClose` az eseményt a REST API híváshoz. Ez az API-hívás csak azt követően indítja el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adathalmaz teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje az eseményt a `FlushWithClose` REST API híváshoz. Ez az API-hívás csak azt követően indítja el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adathalmaz teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
-<a id="example-event" />
-
+<a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>Egy eseményre adott válasz tartalma
 
 Egy esemény indításakor a Event Grid szolgáltatás adatokat küld az eseményről a végpontra való feliratkozáshoz.
@@ -92,9 +87,9 @@ Ez a szakasz egy példát mutat be, hogy az egyes blob Storage-események milyen
 
 Ha a blob Storage-fiók hierarchikus névtérrel rendelkezik, az adatváltozások az előző példához hasonlóan jelennek meg, kivéve a következő módosításokat:
 
-* A `dataVersion` kulcs értéke a következő értékre van `2`beállítva:.
+* A `dataVersion` kulcs értéke a következő értékre van beállítva: `2` .
 
-* A `data.api` kulcs a karakterláncra `CreateFile` vagy `FlushWithClose`a értékre van beállítva.
+* A `data.api` kulcs a karakterláncra vagy a értékre van beállítva `CreateFile` `FlushWithClose` .
 
 * A `contentOffset` kulcs szerepel az adatkészletben.
 
@@ -157,11 +152,11 @@ Ha a blob Storage-fiók hierarchikus névtérrel rendelkezik, az adatváltozáso
 
 Ha a blob Storage-fiók hierarchikus névtérrel rendelkezik, az adatváltozások az előző példához hasonlóan jelennek meg, kivéve a következő módosításokat:
 
-* A `dataVersion` kulcs értéke a következő értékre van `2`beállítva:.
+* A `dataVersion` kulcs értéke a következő értékre van beállítva: `2` .
 
-* A `data.api` kulcs a karakterláncra `DeleteFile`van beállítva.
+* A `data.api` kulcs a karakterláncra van beállítva `DeleteFile` .
 
-* A `url` kulcs tartalmazza az elérési utat `dfs.core.windows.net`.
+* A `url` kulcs tartalmazza az elérési utat `dfs.core.windows.net` .
 
 > [!NOTE]
 > Ha az alkalmazások a `DeleteBlob` művelettel törölnek egy blobot a fiókból, akkor az adatok nem tartalmazzák ezeket a módosításokat.
@@ -300,13 +295,13 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
+| adatok | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | api-t | sztring | Az eseményt kiváltó művelet. |
 | ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
@@ -318,8 +313,8 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | contentOffset | szám | Egy írási művelet bájtban kifejezett eltolása azon a ponton, ahol az eseményindító alkalmazás befejezte a fájlba való írást. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak.|
 | destinationUrl |sztring | A művelet befejeződése után létező fájl URL-címe. Ha például egy fájl átnevezve lett, a `destinationUrl` tulajdonság az új fájlnév URL-címét tartalmazza. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak.|
 | sourceUrl |sztring | A művelet előtt létező fájl URL-címe. Ha például egy fájl átnevezve lett, a az `sourceUrl` átnevezési művelet előtt az eredeti fájlnév URL-címét tartalmazza. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
-| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<Storage\>-Account\<-Name.\>/\<blob.Core.Windows.net/Container-\>Name fájlnév*. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<Storage\>-Account\<-Name. DFS.Core.Windows.net/fájl\>/\<-rendszer-\>név fájl neve*. |
-| rekurzív | sztring | `True`a művelet végrehajtása az összes alárendelt könyvtáron; ellenkező `False`esetben. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
+| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
+| rekurzív | sztring | `True`a művelet végrehajtása az összes alárendelt könyvtáron; Ellenkező esetben `False` . <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
 | Sequencer | sztring | Egy átlátszatlan karakterlánc-érték, amely az események logikai sorát jelképezi az adott blob nevénél.  A felhasználók a szabványos sztringek összehasonlításával megértették, hogy az adott blob nevében két esemény relatív sorszáma látható. |
 | storageDiagnostics | objektum | Az Azure Storage szolgáltatás időnként diagnosztikai adatelemzéseket is tartalmaz. Ha van ilyen, figyelmen kívül kell hagyni az esemény felhasználói számára. |
 
@@ -334,7 +329,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Resource Manager-sablon: blob Storage és előfizetés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy webhooknak. |
 | [Áttekintés: a blob Storage eseményeire való reagálás](../storage/blobs/storage-blob-event-overview.md) | A blob Storage Event Grid-val való integrálásának áttekintése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

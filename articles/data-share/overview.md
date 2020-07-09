@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621856"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636774"
 ---
 # <a name="what-is-azure-data-share"></a>Mi az az Azure Data Share?
 
@@ -79,15 +79,6 @@ Az Azure-adatmegosztás lehetővé teszi az adatfogyasztók számára a követke
 
 A fent felsorolt főbb képességek a Azure Portalon vagy a REST API-kon keresztül támogatottak. További információ az Azure-beli adatmegosztás REST API-kkal való használatáról: dokumentáció. 
 
-## <a name="security"></a>Biztonság
-
-Az Azure-adatmegosztás kihasználja az Azure által az inaktív és az átvitel alatt álló adatok védelméhez használt mögöttes biztonsági adatokat. Az adatok titkosítva vannak, ahol a mögöttes adattár támogatja. Az adatátvitelt is titkosítja a rendszer. Az adatmegosztások metaadatait a rendszer a REST és az átvitel során is titkosítja. 
-
-A hozzáférés-vezérlés beállítható az Azure-beli adatmegosztási erőforrás szintjén, így biztosítva, hogy azok elérhetők legyenek a jogosultak számára. 
-
-Az Azure-adatmegosztás felügyelt identitásokat használ az Azure-erőforrások (korábbi nevén rendszercsomagok) számára a Azure Active Directory automatikus Identitáskezelés kezeléséhez. Az Azure-erőforrások felügyelt identitásai kihasználva az adatmegosztáshoz használt adattárakhoz való hozzáféréshez. Az adatszolgáltató és az adatfogyasztó között nincs hitelesítő adatok cseréje. További információkért tekintse meg az [Azure-erőforrások felügyelt identitások oldalát](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
-
-
 ## <a name="supported-regions"></a>Támogatott régiók
 
 Az Azure-beli adatmegosztást használó Azure-régiók [listáját az Azure](https://azure.microsoft.com/global-infrastructure/services/?products=data-share) -beli adatmegosztást ismertető oldalon tekintheti meg és keresheti meg. 
@@ -96,6 +87,6 @@ Az Azure-beli adatmegosztás nem tárolja magáról az adatmásolatot. Az adatok
 
 Az Azure-beli adatmegosztási szolgáltatásnak nem kell elérhetőnek lennie a régióban a szolgáltatás kihasználása érdekében. Ha például egy olyan régióban található Azure Storage-fiókban tárolt adatai vannak, amelyben az Azure-adatmegosztás még nem érhető el, akkor továbbra is használhatja a szolgáltatást az adatmegosztáshoz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

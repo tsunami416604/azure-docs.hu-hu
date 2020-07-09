@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73826238"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Gyakori kérdések a távoli monitorozási megoldás gyorsítása terén
@@ -40,7 +39,7 @@ További információ: a [Térkép kulcsának frissítése az eszközök dinamik
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távoli figyelési megoldás előző verziójáról?
 
-A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
 
 ### <a name="next-steps"></a>További lépések
 

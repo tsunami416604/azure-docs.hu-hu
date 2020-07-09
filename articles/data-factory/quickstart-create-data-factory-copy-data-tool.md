@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 03/18/2020
-ms.openlocfilehash: e61bc750a06fb041e97def842e81fd62b614fcf6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/10/2020
+ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982156"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735191"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
 
@@ -37,13 +37,13 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Lépjen a [Azure Portal](https://portal.azure.com). 
-1. A Azure Portal menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**:
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
  
-   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például ** &lt;sajátneve&gt;ADFTutorialDataFactory**), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például ** &lt; sajátneve &gt; ADFTutorialDataFactory**), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/doc-common-process/name-not-available-error.png)
 1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
@@ -90,7 +90,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
 1. **A bemeneti fájl vagy mappa kiválasztása** lapon kövesse az alábbi lépéseket:
 
-   a. A **Tallózás** gombra kattintva keresse meg a **adftutorial/input** mappát, válassza ki az **EMP. txt** fájlt, majd kattintson a **kiválasztás**elemre. 
+   a. A **Tallózás** gombra kattintva keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson a **kiválasztás**elemre. 
 
    d. A **bináris másolás** jelölőnégyzet bejelölésével másolja a fájlt a **következőre**, majd kattintson a Tovább gombra. 
 

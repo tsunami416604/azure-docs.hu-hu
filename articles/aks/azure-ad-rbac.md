@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan használhatja Azure Active Directory csoporttag
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb48e4f72506a69969cae39810640d23d771bde3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803569"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106084"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>A fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitásokkal az Azure Kubernetes szolgáltatásban
 
@@ -50,7 +50,7 @@ Hozza létre az első példa csoportot az Azure AD-ben az alkalmazás fejlesztő
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-Most hozzon létre egy Azure-szerepkör-hozzárendelést a *appdev* -csoport számára az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Ez a hozzárendelés lehetővé teszi, hogy a csoport `kubectl` bármely tagja használja az AK-fürtöket az *Azure Kubernetes Service-fürt felhasználói szerepkörének*megadásával.
+Most hozzon létre egy Azure-szerepkör-hozzárendelést a *appdev* -csoport számára az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Ez a hozzárendelés lehetővé teszi, hogy a csoport bármely tagja használja az `kubectl` AK-fürtöket az *Azure Kubernetes Service-fürt felhasználói szerepkörének*megadásával.
 
 ```azurecli-interactive
 az role assignment create \
@@ -60,7 +60,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Ha hibaüzenetet kap `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.`, várjon néhány másodpercet, amíg az Azure ad-csoport objektumazonosító át nem terjed a címtárban, majd próbálja megismételni a `az role assignment create` parancsot.
+> Ha hibaüzenetet kap `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.` , várjon néhány másodpercet, amíg az Azure ad-csoport objektumazonosító át nem terjed a címtárban, majd próbálja megismételni a `az role assignment create` parancsot.
 
 Hozzon létre egy második példa csoportot, amely a *opssre*nevű SREs:
 
@@ -83,7 +83,7 @@ Az Azure AD-ben az alkalmazás-fejlesztőknek és a SREs két példával létreh
 
 Hozza létre az első felhasználói fiókot az Azure AD-ben az az [ad User Create][az-ad-user-create] paranccsal.
 
-A következő példa egy olyan felhasználót hoz létre, amelynek a megjelenítendő neve: *AK dev* és az egyszerű felhasználóneve ( `aksdev@contoso.com`UPN). Frissítse az egyszerű felhasználónevet, hogy tartalmazza az Azure AD-bérlő ellenőrzött tartományát (a *contoso.com* cserélje le a saját tartományára), `--password` és adja meg a saját biztonságos hitelesítő adatait:
+A következő példa egy olyan felhasználót hoz létre, amelynek a megjelenítendő neve: *AK dev* és az egyszerű felhasználóneve (UPN) `aksdev@contoso.com` . Frissítse az egyszerű felhasználónevet, hogy tartalmazza az Azure AD-bérlő ellenőrzött tartományát (a *contoso.com* cserélje le a saját tartományára), és adja meg a saját biztonságos `--password` hitelesítő adatait:
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
@@ -99,7 +99,7 @@ Most adja hozzá a felhasználót az előző szakaszban létrehozott *appdev* cs
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-Hozzon létre egy második felhasználói fiókot. Az alábbi példa egy olyan felhasználót hoz létre, amelynek a megjelenítendő neve: *AK sre* és az egyszerű felhasználónév ( `akssre@contoso.com`UPN). Újra frissítse az egyszerű felhasználónevet, hogy tartalmazza az Azure AD-bérlő ellenőrzött tartományát (a *contoso.com* cserélje le a saját tartományára), és `--password` adja meg a saját biztonságos hitelesítő adatait:
+Hozzon létre egy második felhasználói fiókot. Az alábbi példa egy olyan felhasználót hoz létre, amelynek a megjelenítendő neve: *AK sre* és az egyszerű felhasználónév (UPN) `akssre@contoso.com` . Újra frissítse az egyszerű felhasználónevet, hogy tartalmazza az Azure AD-bérlő ellenőrzött tartományát (a *contoso.com* cserélje le a saját tartományára), és adja meg a saját biztonságos `--password` hitelesítő adatait:
 
 ```azurecli-interactive
 # Create a user for the SRE role
@@ -133,7 +133,7 @@ A Kubernetes-ben a *szerepkörök* határozzák meg a megadható engedélyeket, 
 
 Először hozzon létre egy szerepkört a *fejlesztői* névtérhez. Ez a szerepkör teljes körű engedélyeket biztosít a névtérnek. Éles környezetekben részletesebb engedélyeket adhat meg a különböző felhasználókhoz vagy csoportokhoz.
 
-Hozzon létre egy `role-dev-namespace.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Hozzon létre egy nevű fájlt `role-dev-namespace.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 kind: Role
@@ -164,7 +164,7 @@ Ezután szerezze be a *appdev* -csoport erőforrás-azonosítóját az az [ad Gr
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-Most hozzon létre egy RoleBinding a *appdev* csoport számára, hogy a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy `rolebinding-dev-namespace.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId* -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
+Most hozzon létre egy RoleBinding a *appdev* csoport számára, hogy a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy nevű fájlt `rolebinding-dev-namespace.yaml` , és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId* -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
 
 ```yaml
 kind: RoleBinding
@@ -198,7 +198,7 @@ Először hozzon létre egy névteret a *sre* a [kubectl Create Namespace][kubec
 kubectl create namespace sre
 ```
 
-Hozzon létre egy `role-sre-namespace.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe:
+Hozzon létre egy nevű fájlt `role-sre-namespace.yaml` , és illessze be a következő YAML-jegyzékbe:
 
 ```yaml
 kind: Role
@@ -229,7 +229,7 @@ Szerezze be a *opssre* -csoport erőforrás-azonosítóját az az [ad Group show
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-Hozzon létre egy RoleBinding ahhoz a *opssre* -csoporthoz, amely a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy `rolebinding-sre-namespace.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId* -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
+Hozzon létre egy RoleBinding ahhoz a *opssre* -csoporthoz, amely a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy nevű fájlt `rolebinding-sre-namespace.yaml` , és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId* -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
 
 ```yaml
 kind: RoleBinding
@@ -269,7 +269,7 @@ Alapszintű NGINX Pod-t ütemezhet a [kubectl Run][kubectl-run] paranccsal a *fe
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
 ```
 
-A bejelentkezéshez írja be a cikk elején létrehozott saját `appdev@contoso.com` fiókhoz tartozó hitelesítő adatokat. Miután sikeresen bejelentkezett, a rendszer a fiók jogkivonatát gyorsítótárazza `kubectl` a jövőbeli parancsokhoz. Az NGINX sikeresen be van jelölve, ahogy az a következő példában látható:
+A bejelentkezéshez írja be a `appdev@contoso.com` cikk elején létrehozott saját fiókhoz tartozó hitelesítő adatokat. Miután sikeresen bejelentkezett, a rendszer a fiók jogkivonatát gyorsítótárazza a jövőbeli `kubectl` parancsokhoz. Az NGINX sikeresen be van jelölve, ahogy az a következő példában látható:
 
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -296,7 +296,7 @@ nginx-dev   1/1     Running   0          4m
 
 ### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>Fürt erőforrásainak létrehozása és megtekintése a hozzárendelt névtéren kívül
 
-Most próbálja meg megtekinteni a hüvelyt a *fejlesztői* névtéren kívül. A [kubectl Get hüvely][kubectl-get] parancs újbóli futtatásához `--all-namespaces` használja a következőt:
+Most próbálja meg megtekinteni a hüvelyt a *fejlesztői* névtéren kívül. A [kubectl Get hüvely][kubectl-get] parancs újbóli futtatásához használja a `--all-namespaces` következőt:
 
 ```console
 kubectl get pods --all-namespaces
@@ -328,7 +328,7 @@ Annak ellenőrzéséhez, hogy az Azure AD-csoporttagság és a Kubernetes RBAC m
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Próbálja meg ütemezni és megtekinteni a hüvelyeket a hozzárendelt *sre* -névtérben. Ha a rendszer kéri, jelentkezzen be `opssre@contoso.com` a cikk elején létrehozott saját hitelesítő adataival:
+Próbálja meg ütemezni és megtekinteni a hüvelyeket a hozzárendelt *sre* -névtérben. Ha a rendszer kéri, jelentkezzen be a `opssre@contoso.com` cikk elején létrehozott saját hitelesítő adataival:
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
@@ -367,7 +367,7 @@ $ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ebben a cikkben erőforrásokat hozott létre az AK-fürtben, valamint az Azure AD-ben lévő felhasználókat és csoportokat. Az összes erőforrás eltávolításához futtassa a következő parancsokat:
 
@@ -388,7 +388,7 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes-fürtök védelméről: [a hozzáférési és identitási beállítások az AK-][rbac-authorization]ban.
 
@@ -410,5 +410,5 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193122"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
@@ -106,7 +106,7 @@ Válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az AZON
 
 Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
-- [Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
+- [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 - [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 

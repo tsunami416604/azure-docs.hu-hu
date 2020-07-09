@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73100160"
 ---
 # <a name="common-issues"></a>Gyakori problémák
@@ -42,7 +42,7 @@ sudo docker logs eventgridmodule
 
 * Ha a modul – modul kommunikációja, győződjön meg arról, hogy az **4438** -es porton hívja meg a hívást, és a modul neve megegyezik a telepített szolgáltatással. 
 
-  Például ha Event Grid modult a **eventgridmodule** néven telepítette, akkor az URL-címnek a következőnek kell lennie **https://eventgridmodule:4438**:. Győződjön meg arról, hogy a burkolat és a portszám helyes.
+  Például ha Event Grid modult a **eventgridmodule** néven telepítette, akkor az URL-címnek a következőnek kell lennie: **https://eventgridmodule:4438** . Győződjön meg arról, hogy a burkolat és a portszám helyes.
     
 * Ha nem IoT modulról van szó, győződjön meg róla, hogy Event Grid port a gazdagépre van leképezve az üzembe helyezés során, például:
 
@@ -64,7 +64,7 @@ sudo docker logs eventgridmodule
 
 * Ha a modul – modul kommunikációja, győződjön meg arról, hogy az **5888** -es porton hívja meg a hívást, és a modul neve megegyezik a telepített szolgáltatással. 
 
-  Például ha Event Grid modult a **eventgridmodule** néven telepítette, akkor az URL-címnek a következőnek kell lennie **http://eventgridmodule:5888**:. Győződjön meg arról, hogy a burkolat és a portszám helyes.
+  Például ha Event Grid modult a **eventgridmodule** néven telepítette, akkor az URL-címnek a következőnek kell lennie: **http://eventgridmodule:5888** . Győződjön meg arról, hogy a burkolat és a portszám helyes.
     
 * Ha nem IoT modulról van szó, győződjön meg róla, hogy Event Grid port a gazdagépre van leképezve az üzembe helyezés során, például:
 
@@ -84,7 +84,7 @@ sudo docker logs eventgridmodule
 
 Alapértelmezés szerint Event Grid modul úgy van konfigurálva, hogy hitelesítse az ügyfeleket a IoT Edge biztonsági démon által kiadott tanúsítvánnyal. Győződjön meg arról, hogy az ügyfél olyan tanúsítványt mutat be, amely a lánc gyökerében van.
 
-**IoTSecurity** A [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) IoTSecurity osztály azt mutatja be, hogyan kérhet le tanúsítványokat IoT Edge biztonsági démonból, és hogyan konfigurálhatja a kimenő hívásokat.
+A **IoTSecurity** osztály [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) azt mutatja be, hogyan kérhet le tanúsítványokat IoT Edge biztonsági démonból, és hogyan konfigurálhatja a kimenő hívásokat.
 
 Ha nem éles környezetben van, lehetősége van az ügyfél-hitelesítés kikapcsolására. Ennek elvégzéséhez tekintse meg a [biztonsági és hitelesítési](security-authentication.md) tudnivalókat.
 
@@ -108,4 +108,4 @@ Ennek jellemző okai a következők:
 
 ## <a name="next-steps"></a>További lépések
 
-Bármilyen problémát jelenthet, a Event Grid használatával kapcsolatos javaslatok a IoT Edge [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)címen.
+Bármilyen problémát jelenthet, a Event Grid használatával kapcsolatos javaslatok a IoT Edge címen [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .

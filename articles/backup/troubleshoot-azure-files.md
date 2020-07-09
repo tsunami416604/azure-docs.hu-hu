@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116736"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079887"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -25,6 +25,7 @@ Ez a cikk a Azure Backup szolgáltatással történő biztonsági mentés vagy a
   >A Storage-fiókokban lévő összes fájlmegosztást csak egy Recovery Services tárolóban lehet védeni. [Ezzel a parancsfájllal](scripts/backup-powershell-script-find-recovery-services-vault.md) megkeresheti azt a Recovery Services-tárolót, ahol a Storage-fiók regisztrálva van.
 
 - Győződjön meg arról, hogy a fájlmegosztás nem szerepel a nem támogatott Storage-fiókok egyikében sem. A támogatott Storage-fiókok kereséséhez tekintse meg az [Azure-fájlmegosztás biztonsági mentésének támogatási mátrixát](azure-file-share-support-matrix.md) .
+- Győződjön meg arról, hogy a Storage-fiók neve és az erőforráscsoport neve nem haladja meg a 84 karaktert az új Storage-fiókok esetében, illetve a 77 karaktert a klasszikus Storage-fiókok esetében. 
 - Ellenőrizze a Storage-fiók tűzfal-beállításait, és győződjön meg arról, hogy engedélyezve van-e a megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz lehetőség.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Hiba történt a portál állapotában a Storage-fiókok felderítése során
@@ -276,8 +277,6 @@ Hibakód: BMSUserErrorObjectLocked
 Hibaüzenet: egy másik művelet van folyamatban a kijelölt elemen.
 
 Várjon, amíg a másik folyamatban lévő művelet befejeződik, és próbálkozzon újra később.
-
-A fájlból: troubleshoot-azure-files.md
 
 ## <a name="common-soft-delete-related-errors"></a>Gyakori törléssel kapcsolatos gyakori hibák
 

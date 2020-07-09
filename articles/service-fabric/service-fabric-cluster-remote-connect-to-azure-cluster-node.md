@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan csatlakozhat távolról egy méretezési csopor
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458315"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
@@ -19,7 +18,7 @@ Ha olyan IP-címet és portot szeretne megkeresni, amelyet egy adott példányho
 
     A fürtben definiált csomópont-típusok általában saját virtuális IP-címmel és dedikált Load balancerrel rendelkeznek. Alapértelmezés szerint a rendszer a csomópont típusú terheléselosztást a következő formátumban nevezi el: *LB-{cluster-Name}-{Node-Type}*; például: *LB-mycluster-FrontEnd*. 
     
-    A terheléselosztó lapján a Azure Portalban válassza a **Beállítások** > **bejövő NAT-szabályok**elemet: 
+    A terheléselosztó lapján a Azure Portalban válassza a **Beállítások**  >  **bejövő NAT-szabályok**elemet: 
 
     ![Terheléselosztó bejövő NAT-szabályai](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -29,7 +28,7 @@ Ha olyan IP-címet és portot szeretne megkeresni, amelyet egy adott példányho
 
     Az egyes csomópontok esetében az IP-cím a **cél** oszlopban jelenik meg, a **cél** oszlop pedig megadja a méretezési csoport példányát, és a **szolgáltatás** oszlopa megadja a portszámot. A távoli kapcsolatok esetében a portok a 3389-es porttól kezdődően növekvő sorrendben vannak lefoglalva az egyes csomópontokhoz.
 
-    A bejövő NAT-szabályokat a fürt Resource Manager- `Microsoft.Network/loadBalancers` sablonjának szakaszában találja.
+    A bejövő NAT-szabályokat a `Microsoft.Network/loadBalancers` fürt Resource Manager-sablonjának szakaszában találja.
     
 2. Ha szeretné megerősíteni, hogy a bejövő port egy csomóponthoz tartozó porthoz legyen hozzárendelve, kattintson a szabályra, és tekintse meg a **célport értékét.** Az alábbi képernyőfelvételen az előző lépésben a **FrontEnd (1. példány)** csomópont bejövő NAT-szabálya látható. Figyelje meg, hogy bár a (bejövő) portszáma 3390, a célként megadott port a 3389-es portra van leképezve, a célhelyen lévő RDP szolgáltatás portja.  
 

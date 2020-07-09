@@ -6,12 +6,11 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 695023f4700370cbe5e9b345f513e38d1cf1fc0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 602aaeb67ca081ebac71ca1d6d24a2de3c020603
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650183"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055987"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése a PowerShell-lel
 
@@ -30,14 +29,14 @@ Ez a parancsfájl erőforrásokat kér le egy felügyelt erőforráscsoportból,
 
 Ez a szkript a következő parancsokat használja egy felügyelt alkalmazás üzembe helyezéséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
-| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Listázza a felügyelt alkalmazásokat. Adja meg az erőforráscsoport nevét az eredmények kiépítéséhez. |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Listázza az erőforrásokat. Adjon meg egy erőforráscsoportot és egy erőforrástípust az eredmény kiépítéséhez. |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Frissíti egy virtuális gép méretét. |
+| [Get-AzManagedApplication](/powershell/module/az.resources/get-azmanagedapplication) | Listázza a felügyelt alkalmazásokat. Adja meg az erőforráscsoport nevét az eredmények kiépítéséhez. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Listázza az erőforrásokat. Adjon meg egy erőforráscsoportot és egy erőforrástípust az eredmény kiépítéséhez. |
+| [Update-AzVM](/powershell/module/az.compute/update-azvm) | Frissíti egy virtuális gép méretét. |
 
 
 ## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
-* A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](/powershell/azure/get-started-azureps).

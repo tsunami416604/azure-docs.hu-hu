@@ -3,25 +3,25 @@ title: Problémák a nem gyűjteményes összevont egyszeri bejelentkezés alkal
 description: Útmutató az Azure AD-vel az SAML-alapú összevont egyszeri bejelentkezéshez konfigurált alkalmazásba való bejelentkezéskor felmerülő problémákhoz
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd951f0b4d2f4887630e29cbd3b0ae429b9f6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e72ed9ef43fd1222592e7f88d4e3a6e998c59d2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367857"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759079"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problémák az összevont egyszeri bejelentkezéshez konfigurált, nem Gallery-alkalmazásba való bejelentkezéskor
 
@@ -32,7 +32,7 @@ Az alábbi bejelentkezési problémák elhárításához javasoljuk, hogy köves
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
-*Hiba AADSTS70001: az azonosítóval `https://contoso.com` rendelkező alkalmazás nem található a címtárban*.
+*Hiba AADSTS70001: az azonosítóval rendelkező alkalmazás `https://contoso.com` nem található a címtárban*.
 
 **Lehetséges ok**
 
@@ -40,7 +40,7 @@ Az SAML-kérelemben az alkalmazásból az Azure AD-be küldött kiállítói att
 
 **Resolution** (Osztás)
 
-Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
@@ -70,7 +70,7 @@ Az SAML-kérelemben az AssertionConsumerServiceURL értéke nem felel meg az Azu
 
 **Resolution** (Osztás) 
 
-Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
  
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként. 
 
@@ -88,7 +88,7 @@ Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútu
 
 7. Az alkalmazás betöltése után kattintson az **egyszeri bejelentkezésre** az alkalmazás bal oldali navigációs menüjében.
 
-8. Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Ellenőrizze vagy frissítse a válasz URL-címe szövegmezőben szereplő értéket, `AssertionConsumerServiceURL` hogy az MEGFELELJEN az SAML-kérelemben szereplő értéknek.    
+8. Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Ellenőrizze vagy frissítse a válasz URL-címe szövegmezőben szereplő értéket, hogy az megfeleljen az `AssertionConsumerServiceURL` SAML-kérelemben szereplő értéknek.    
     
 Miután frissítette a válasz URL-értékét az Azure AD-ben, és megfelel az alkalmazás által az SAML-kérelemben küldött értéknek, be kell tudnia jelentkezni az alkalmazásba.
 
@@ -172,7 +172,7 @@ Az `Issuer` SAML-kérelemben az alkalmazásból az Azure ad-be elküldett attrib
 
 **Resolution** (Osztás)
 
-Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
+Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
 
 1.  Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
@@ -242,7 +242,7 @@ Az alkalmazásnak HTTP-átirányítási kötés használatával kell elküldenie
 
 **Lehetséges ok**
 
-Az egyszeri bejelentkezés során, ha a bejelentkezési kérés nem tartalmaz explicit válasz URL-címet (a felhasználói szolgáltatás URL-címét), akkor az Azure AD kiválasztja az adott alkalmazáshoz konfigurált összes hivatkozhat URL-címet. Annak ellenére, hogy az alkalmazás explicit válasz URL-címmel van konfigurálva, a felhasználó átirányítható https://127.0.0.1:444. 
+Az egyszeri bejelentkezés során, ha a bejelentkezési kérés nem tartalmaz explicit válasz URL-címet (a felhasználói szolgáltatás URL-címét), akkor az Azure AD kiválasztja az adott alkalmazáshoz konfigurált összes hivatkozhat URL-címet. Annak ellenére, hogy az alkalmazás explicit válasz URL-címmel van konfigurálva, a felhasználó átirányítható https://127.0.0.1:444 . 
 
 Amikor az alkalmazás hozzá lett adva nem katalógusbeli alkalmazásként, az Azure Active Directory ezt a válasz-URL-címet alapértelmezett értékként hozta létre. Ez a viselkedés azóta megváltozott, és az Azure Active Directory már nem adja hozzá ezt az URL-címet alapértelmezés szerint. 
 

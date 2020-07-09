@@ -3,16 +3,16 @@ title: Adatok migrálása az Oracle-ből Azure Cosmos DB Cassandra API a Blitzz 
 description: Ismerje meg, hogyan telepítheti át az Oracle Database-ből származó adatok Azure Cosmos DB Cassandra API a Blitzz használatával.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262463"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása az Oracle-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
 
@@ -54,11 +54,11 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
 
 1. a szervezeti egység a Blitzz-telepítést és a bináris fájlokat a [Blitzz webhelyén](https://www.blitzz.io)bemutató kéréssel szerezheti be. Azt is megteheti, hogy [e-mailt](mailto:success@blitzz.io) küld a csapatnak.
 
-   ![Blitzz replikált eszköz letöltése](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz replikált eszköz letöltése":::
 
-   ![Blitzz replikált-fájlok](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replikált-fájlok":::
 
-1. A CLI-terminálon állítsa be a forrás adatbázis konfigurációját. Nyissa meg a konfigurációs **`vi conf/conn/oracle.yml`** fájlt a paranccsal, és adja hozzá az Oracle-csomópontok, a portszám, a Felhasználónév, a jelszó és a többi szükséges adat IP-címeinek vesszővel tagolt listáját. A következő kód egy példaként szolgáló konfigurációs fájlt mutat be:
+1. A CLI-terminálon állítsa be a forrás adatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/oracle.yml`** paranccsal, és adja hozzá az Oracle-csomópontok, a portszám, a Felhasználónév, a jelszó és a többi szükséges adat IP-címeinek vesszővel tagolt listáját. A következő kód egy példaként szolgáló konfigurációs fájlt mutat be:
 
    ```bash
    type: ORACLE
@@ -75,13 +75,13 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
    use-ssl: false
    ```
 
-   ![Az Oracle-kapcsolatok szerkesztőjének megnyitása](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="Az Oracle-kapcsolatok szerkesztőjének megnyitása":::
 
-   ![Oracle-kapcsolatok konfigurálása](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Oracle-kapcsolatok konfigurálása":::
 
    A konfigurációs adatok kitöltése után mentse és zárjuk be a fájlt.
 
-1. Igény szerint beállíthatja a forrás adatbázis-szűrő fájlját is. A szűrő fájl határozza meg, hogy mely sémákat vagy táblákat kell áttelepíteni. Nyissa meg a konfigurációs **`vi filter/oracle_filter.yml`** fájlt a parancs használatával, és adja meg a következő konfigurációs adatokat:
+1. Igény szerint beállíthatja a forrás adatbázis-szűrő fájlját is. A szűrő fájl határozza meg, hogy mely sémákat vagy táblákat kell áttelepíteni. Nyissa meg a konfigurációs fájlt a **`vi filter/oracle_filter.yml`** parancs használatával, és adja meg a következő konfigurációs adatokat:
 
    ```bash
 
@@ -96,13 +96,13 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
 
 1. Az adatok áttelepítése előtt növelje a tároló átviteli sebességét az alkalmazás gyors áttelepítéséhez szükséges mennyiségre. Megnövelheti például az átviteli sebességet 100000 RUs-re. Az adatátviteli sebesség az áttelepítés megkezdése előtt méretezése segít az adatok áttelepítésében kevesebb idő alatt. 
 
-   ![Az Azure Cosmos-tároló méretezése az egész](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Az Azure Cosmos-tároló méretezése az egész":::
 
    Az áttelepítés befejeződése után csökkentenie kell az átviteli sebességet. A tárolt adatok mennyisége és az egyes műveletekhez szükséges RUs alapján megbecsülhető az adatáttelepítés után szükséges átviteli sebesség. Ha többet szeretne megtudni arról, hogyan kell megbecsülni az RUs-t, tekintse meg a [tárolók és adatbázisok átviteli sebességének kiépítése](set-throughput.md) és [a Azure Cosmos db Capacity Planner cikkeinek becslése](estimate-ru-with-capacity-planner.md) című cikket.
 
 1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét**és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
 
-1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs **`vi conf/conn/cosmosdb.yml`** fájlt a paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
+1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/cosmosdb.yml`** paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
 
    ```bash
    type: COSMOSDB
@@ -134,7 +134,7 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
 
    A replikált felhasználói felületén látható a replikálási folyamat. Ha elkészült a séma-áttelepítési és a pillanatkép-művelet, a folyamat 100%-ot mutat. Az áttelepítés befejezése után érvényesítheti a cél Azure Cosmos-adatbázisban található adatforrásokat.
 
-   ![Oracle-adatáttelepítési kimenet](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Oracle-adatáttelepítési kimenet":::
 
 1. Mivel a teljes áttelepítési módot használta, olyan műveleteket hajthat végre, mint például az adatok beszúrása, frissítése vagy törlése a forrás Oracle-adatbázisban. Később ellenőrizheti, hogy valós időben replikálódnak-e a cél Azure Cosmos-adatbázison. Az áttelepítés után csökkentse az Azure Cosmos-tárolóhoz konfigurált átviteli sebességet.
 

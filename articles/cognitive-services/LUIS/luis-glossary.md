@@ -3,12 +3,12 @@ title: Szószedet – LUIS
 description: A Szószedet a LUIS API szolgáltatással való munka során felmerülő feltételeket ismerteti.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681618"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056378"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) Szószedet a LUIS szolgáltatással való munka során felmerülő feltételeket ismerteti.
@@ -38,11 +38,11 @@ A szerző a Luis-portál vagy a szerzői API-k használatával hozhat létre, ke
 
 ### <a name="authoring-key"></a>Szerzői kulcs
 
-A szerzői [kulcs](luis-concept-keys.md) az alkalmazás létrehozásához használatos. Üzemi szintű végponti lekérdezésekhez nem használatos. További információ: [Key Limits](luis-limits.md#key-limits).
+A szerzői [kulcs](luis-how-to-azure-subscription.md) az alkalmazás létrehozásához használatos. Üzemi szintű végponti lekérdezésekhez nem használatos. További információ: [Key Limits](luis-limits.md#key-limits).
 
 ### <a name="authoring-resource"></a>Erőforrás létrehozása
 
-A LUIS [authoring Resource](luis-concept-keys.md#azure-resources-for-luis) egy felügyelhető tétel, amely az Azure-on keresztül érhető el. Az erőforrás az Azure-szolgáltatáshoz kapcsolódó szerzői műveletek, képzések és közzétételi képességek elérését teszi elérhetővé. Az erőforrás a kapcsolódó Azure-szolgáltatás eléréséhez szükséges hitelesítési, engedélyezési és biztonsági adatokat tartalmaz.
+A LUIS [authoring Resource](luis-how-to-azure-subscription.md#azure-resources-for-luis) egy felügyelhető tétel, amely az Azure-on keresztül érhető el. Az erőforrás az Azure-szolgáltatáshoz kapcsolódó szerzői műveletek, képzések és közzétételi képességek elérését teszi elérhetővé. Az erőforrás a kapcsolódó Azure-szolgáltatás eléréséhez szükséges hitelesítési, engedélyezési és biztonsági adatokat tartalmaz.
 
 Az authoring erőforrás rendelkezik egy Azure "Kind" típussal `LUIS-Authoring` .
 
@@ -51,7 +51,7 @@ Az authoring erőforrás rendelkezik egy Azure "Kind" típussal `LUIS-Authoring`
 A Batch-tesztelés lehetővé teszi, hogy a jelenlegi LUIS alkalmazás modelljeit a felhasználói hosszúságú kimondott szöveg konzisztens és ismert tesztelési készletével érvényesítse. A Batch-teszt egy JSON- [formátumú fájlban](luis-concept-batch-test.md#batch-file-format)van definiálva.
 
 Lásd még:
-* [Alapelvek](luis-concept-batch-test.md)
+* [Fogalmak](luis-concept-batch-test.md)
 * A Batch [-](luis-how-to-batch-test.md) teszt futtatása
 * [Oktatóanyag](luis-tutorial-batch-testing.md) – batch-teszt létrehozása és futtatása
 
@@ -160,7 +160,7 @@ A [reguláris kifejezés entitás](reference-entity-regular-expression.md) regul
 
 Előre összeépített [entitáshoz](#prebuilt-entity) tartozó előre felépített modell bejegyzésének megjelenítése
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A gépi tanulásban a funkció olyan jellemző, amely segít a modellnek egy adott fogalom felismerésében. Ez egy olyan tipp, amelyet a LUIS használhat, de nem kemény szabályt.
 
@@ -234,7 +234,7 @@ A jóslat egy REST-kérelem az Azure LUIS előrejelzési szolgáltatásba, amely
 
 ### <a name="prediction-key"></a>Előrejelzési kulcs
 
-Az [előrejelzési kulcs](luis-concept-keys.md) (korábbi nevén előfizetési kulcs) az Azure-ban létrehozott Luis szolgáltatáshoz társított kulcs, amely engedélyezi az előrejelzési végpont használatát.
+Az [előrejelzési kulcs](luis-how-to-azure-subscription.md) (korábbi nevén előfizetési kulcs) az Azure-ban létrehozott Luis szolgáltatáshoz társított kulcs, amely engedélyezi az előrejelzési végpont használatát.
 
 Ez a kulcs nem a szerzői kulcs. Ha van egy előrejelzési végpont kulcsa, azt a szerzői kulcs helyett a végponti kérelmekhez kell használni. A jelenlegi előrejelzési kulcsot a végpont URL-címében tekintheti meg a LUIS webhely Azure-erőforrások lapjának alján. Ez az előfizetés-kulcs neve/érték párok értéke.
 

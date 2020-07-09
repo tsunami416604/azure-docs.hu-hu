@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 05/21/2020
 ms.author: radeltch
 ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800263"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux
@@ -108,7 +107,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     * **SAP-rendszer mérete**: Itt adhatja meg, hogy az új rendszer milyen típusú SAP-t fog biztosítani. Ha nem biztos benne, hogy hány SAP-rendszer szükséges, kérdezze meg az SAP-technológiai partnerét vagy rendszerintegrátorát.
     * **Rendszerszintű rendelkezésre állás**: válassza a **Ha**lehetőséget.
     * **Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs**: új felhasználó jön létre, amely a gépre való bejelentkezéshez használható.
-    * **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint az **/Subscriptions/ \< előfizetés-azonosítója>/resourcegroups/ \< erőforráscsoport neve>/Providers/Microsoft.Network/virtualnetworks/ \< virtuális hálózat neve>/Subnets/ \< alhálózat neve>**. Ha új virtuális hálózatot szeretne létrehozni, hagyja üresen.
+    * **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint a **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /Subnets/ \<subnet name> **. Ha új virtuális hálózatot szeretne létrehozni, hagyja üresen.
 
 ### <a name="manual-deployment"></a>Kézi üzembe helyezés
 
@@ -139,7 +138,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza **a virtuális gép hozzáadása**lehetőséget.
       1. Válassza a * * virtuális gép * * elemet.
       1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-      1. Válassza a **Hozzáadás** lehetőséget.
+      1. Válassza a **Hozzáadás** elemet.
 
    1. Következő lépésként hozzon létre egy állapot-mintavételt:
 
@@ -797,7 +796,7 @@ A manuális feladatátvételt a hn1-db-0 csomóponton található fürt leállí
 </code></pre>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

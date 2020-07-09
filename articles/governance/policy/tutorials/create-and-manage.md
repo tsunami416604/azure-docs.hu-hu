@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: szabályzatok létrehozása a megfelelőség kikényszerítása érdekében'
 description: Ebben az oktatóanyagban szabályzatokat alkalmaz a szabványok betartatására, a költségek szabályozására, a biztonság fenntartására és a vállalati szintű tervezési alapelvek kiszabására.
-ms.date: 03/24/2020
+ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190826"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781127"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 
@@ -24,7 +24,7 @@ Ha szeretne hozzárendelni egy szabályzatot a meglévő erőforrások aktuális
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="assign-a-policy"></a>Szabályzat hozzárendelése
 
@@ -78,7 +78,7 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
 ## <a name="implement-a-new-custom-policy"></a>Új egyéni szabályzat megvalósítása
 
-Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Ezután hozzon létre egy új egyéni szabályzatot a költségek megtakarításához, ha ellenőrzi, hogy a környezetben létrehozott virtuális gépek nem lehetnek-e a G sorozatban. Így valahányszor a cég egy felhasználója megpróbál létrehozni egy G sorozatú virtuális gépet, a rendszer megtagadja a kérelmet.
+Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Ezután hozzon létre egy új egyéni szabályzatot a költségek megtakarításához, ha ellenőrzi, hogy a környezetben létrehozott virtuális gépek nem lehetnek-e a G sorozatban. Így minden alkalommal, amikor a szervezet egy felhasználója megpróbál létrehozni egy virtuális gépet a G sorozatba, a rendszer megtagadja a kérelmet.
 
 1. A Azure Policy lap bal oldalán, a **szerzői műveletek** területen válassza a **definíciók** lehetőséget.
 
@@ -93,8 +93,8 @@ Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet v
      > [!NOTE]
      > Ha ezt a szabályzatdefiníciót több előfizetésre szeretné alkalmazni, a helynek egy olyan felügyeleti csoportnak kell lennie, amely tartalmazza azokat az előfizetéseket, amelyekhez hozzárendeli a szabályzatot. Ugyanez vonatkozik a kezdeményezési definíciókra.
 
-   - A házirend-definíció neve – _ * a_G sorozatnál kisebb virtuálisgép-SKU megkövetelése_
-   - A szabályzatdefiníciók céljának leírása – _Ez a szabályzatdefiníció kikényszeríti, hogy a költségek csökkentése érdekében az ebben a hatókörben létrehozott minden virtuális gép termékváltozata a G sorozat alatti legyen._
+   - A házirend-definíció neve – a _G sorozatba nem_ tartozó virtuálisgép-SKU-ket igényel
+   - A házirend-definíció leírásának leírása – ez a házirend- _definíció azt kényszeríti, hogy az ebben a hatókörben létrehozott összes virtuális gép a G sorozattól eltérő SKU-val rendelkezik, hogy csökkentse a költségeket._
    - Válasszon a meglévő lehetőségek közül (például _Compute_), vagy hozzon létre egy új kategóriát ehhez a szabályzatdefinícióhoz.
    - Másolja le az alábbi JSON-kódot, és frissítse az igényeinek megfelelően az alábbiakkal:
       - A szabályzat paraméterei.
@@ -356,7 +356,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. A **Kategória** megadásakor válasszon a meglévő lehetőségek közül, vagy hozzon létre új kategóriát.
 
-1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. A **biztonságos** kezdeményezéshez adja hozzá a következő beépített szabályzat-definíciókat a házirend-definíciós információk **+** melletti, vagy a házirend-definíciós sor kiválasztása, majd a Részletek lapon a **+ Hozzáadás** lehetőség kiválasztásával:
+1. Tekintse át az **Elérhető definíciók** listáját a **Kezdeményezési definíció** oldal jobb oldalán, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelye(ke)t hozzá szeretne adni a kezdeményezéshez. A **biztonságos** kezdeményezéshez adja hozzá a következő beépített szabályzat-definíciókat a **+** házirend-definíciós információk melletti, vagy a házirend-definíciós sor kiválasztása, majd a Részletek lapon a **+ Hozzáadás** lehetőség kiválasztásával:
 
    - Engedélyezett helyek
    - Hiányzó Endpoint Protection figyelése Azure Security Center
@@ -373,7 +373,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Kezdeményezési definíció paramétereinek módosítása az engedélyezett értékekről" border="false":::
 
    > [!NOTE]
-   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Ha kiválasztja, megnyílik a "paraméter hatóköre&lt;(&gt;paraméter neve)" oldal. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
+   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Ha kiválasztja, megnyílik a "paraméter hatóköre ( &lt; paraméter neve &gt; )" oldal. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
 
    Állítsa az "engedélyezett helyszínek" paramétert az "USA 2. keleti régiója" értékre, és hagyja a többit alapértelmezett "AuditifNotExists".
 
@@ -381,7 +381,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Házirend-kezdeményezési definíció létrehozása az Azure CLI-vel
 
-Az Azure CLI-vel a `az policy set-definition` paranccsal hozhat létre házirend-kezdeményezési definíciót. Ha házirend-kezdeményezési definíciót szeretne létrehozni egy meglévő szabályzat-definícióval, használja a következő példát:
+Az Azure CLI-vel a paranccsal hozhat létre házirend-kezdeményezési definíciót `az policy set-definition` . Ha házirend-kezdeményezési definíciót szeretne létrehozni egy meglévő szabályzat-definícióval, használja a következő példát:
 
 ```azurecli-interactive
 az policy set-definition create -n readOnlyStorage --definitions '[
@@ -395,7 +395,7 @@ az policy set-definition create -n readOnlyStorage --definitions '[
 
 #### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>Házirend-kezdeményezési definíció létrehozása Azure PowerShell
 
-Létrehozhat egy házirend-kezdeményezési definíciót Azure PowerShell használatával a `New-AzPolicySetDefinition` parancsmaggal. Ha egy házirend-kezdeményezési definíciót szeretne létrehozni egy meglévő szabályzat-definícióval, használja a következő `VMPolicySet.json`házirend-kezdeményezési definíciós fájlt:
+Létrehozhat egy házirend-kezdeményezési definíciót Azure PowerShell használatával a `New-AzPolicySetDefinition` parancsmaggal. Ha egy házirend-kezdeményezési definíciót szeretne létrehozni egy meglévő szabályzat-definícióval, használja a következő házirend-kezdeményezési definíciós fájlt `VMPolicySet.json` :
 
 ```json
 [
@@ -496,7 +496,7 @@ Ebben a példában a Trent Baker, az egyik contoso SR. Virtualization specialist
 
 Ebben a szakaszban megoldotta a megtagadott kérelmet úgy, hogy egyetlen erőforráscsoport számára létrehoz egy kizárást.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett az oktatóanyag erőforrásainak használatával, a következő lépésekkel törölheti a fent létrehozott szabályzat-hozzárendeléseket vagy definíciókat:
 

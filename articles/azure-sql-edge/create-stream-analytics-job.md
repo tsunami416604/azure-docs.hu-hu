@@ -1,42 +1,39 @@
 ---
 title: T-SQL streaming-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió)
-description: Tudnivalók Stream Analytics feladatok létrehozásáról az Azure SQL Edge-ben (előzetes verzió)
+description: Ismerkedjen meg Stream Analytics feladatok létrehozásával az Azure SQL Edge-ben (előzetes verzió).
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255415"
 ---
-# <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
+# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
 
-Ez a cikk azt ismerteti, hogyan lehet T-SQL streaming-feladatot létrehozni az Azure SQL Edge-ben (előzetes verzió). A folyamatos átviteli feladatok SQL Edge-ben való létrehozásához a következő lépések szükségesek
-
-1. Külső stream bemeneti és kimeneti objektumainak létrehozása
-2. A folyamatos átviteli feladatok létrehozásának részeként adja meg a folyamatos átviteli feladatok lekérdezését.
+Ez a cikk azt ismerteti, hogyan lehet T-SQL streaming-feladatot létrehozni az Azure SQL Edge-ben (előzetes verzió). Létre kell hoznia a külső adatfolyam bemeneti és kimeneti objektumait, majd a folyamatos átviteli feladatok létrehozásának részeként meg kell határoznia a folyamatos átviteli feladatok lekérdezését.
 
 > [!NOTE]
-> Az Azure SQL Edge-ben a T-SQL streaming funkció engedélyezéséhez engedélyezze a TF 11515-as indítási lehetőséget, vagy használja a [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) parancsot. További információ a nyomkövetési jelzők MSSQL. conf fájl használatával történő engedélyezéséről: [Konfigurálás az MSSQL. conf fájllal](configure.md#configure-using-mssqlconf-file). Ez a követelmény el lesz távolítva az Azure SQL Edge (előzetes verzió) jövőbeli frissítéseiben.
+> Az Azure SQL Edge-ben a T-SQL streaming funkció engedélyezéséhez engedélyezze a TF 11515-as indítási lehetőséget, vagy használja a [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) parancsot. A nyomkövetési jelzők MSSQL. conf fájl használatával történő engedélyezésével kapcsolatos további információkért lásd [az MSSQL. conf fájl használatával történő konfigurálást](configure.md#configure-by-using-an-mssqlconf-file)ismertető témakört.
 
-## <a name="configure-an-external-stream-input-and-output-object"></a>Külső stream bemeneti és kimeneti objektumának konfigurálása
+## <a name="configure-the-external-stream-input-and-output-objects"></a>A külső adatfolyam bemeneti és kimeneti objektumainak konfigurálása
 
-A T-SQL streaming a SQL Server külső adatforrás-funkciójának használatával határozza meg a folyamatos átviteli feladatok külső stream-bemenetekhez és kimenetekhez társított adatforrásokat. A következő T-SQL-parancsok szükségesek külső adatfolyam-bemeneti vagy kimeneti objektum létrehozásához.
+A T-SQL streaming a SQL Server külső adatforrásának funkcióját használja a külső adatfolyam-bemenetekhez és a folyamatos átviteli feladatok kimenetéhez társított adatforrások definiálásához. A következő T-SQL-parancsok használatával hozzon létre egy külső stream bemeneti vagy kimeneti objektumát:
 
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-[CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
 
-[KÜLSŐ STREAM létrehozása (Transact-SQL)](#example-create-an-external-stream-object-sql-database)
+- [KÜLSŐ STREAM létrehozása (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Emellett az SQL Edge (vagy SQL Server, Azure SQL) kimeneti adatfolyamként való használata esetén az [adatbázis-hatókörű hitelesítő adatok létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) T-SQL parancs szükséges a hitelesítő adatok az SQL Database-hez való hozzáféréshez való definiálásához.
+Emellett, ha az Azure SQL Edge, SQL Server vagy Azure SQL Database kimeneti adatfolyamként van használatban, szüksége lesz az [adatbázis-hatókörön belüli hitelesítő adatok létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Ez a T-SQL-parancs határozza meg az adatbázis eléréséhez szükséges hitelesítő adatokat.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Támogatott bemeneti és kimeneti adatfolyam-adatforrások
 
@@ -44,16 +41,16 @@ Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-
 
 | Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | I | I | Az adatforrást az adatfolyamok Azure IoT Edge hubhoz való olvasására és írására. Azure IoT Edge hubhoz vonatkozó további információkért lásd: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
-| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. A SQL Database lehet helyi SQL Edge-adatbázis vagy távoli SQL Server vagy Azure SQL Database|
+| Azure IoT Edge hub | I | I | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
+| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
 | Azure Blob Storage | N | I | Adatforrás, amely az Azure Storage-fiókban lévő blobba írja az adatforrást. |
-| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel/AMD verziójához érhető el, és nem érhető el az SQL Edge ARM64 verziójához.|
+| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel vagy AMD verzióihoz érhető el. Az Azure SQL Edge ARM64 verziója nem érhető el.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Példa: külső stream bemeneti/kimeneti objektum létrehozása Azure IoT Edge hubhoz
 
-Az alábbi példa egy külső stream objektumot hoz létre a peremhálózati hubhoz. Ha Azure IoT Edge hub külső stream bemeneti/kimeneti adatforrását szeretné létrehozni, először létre kell hoznia egy külső fájlformátumot az SQL-hez, hogy megértse az adatok elrendezését.
+A következő példa egy külső stream-objektumot hoz létre Azure IoT Edge hub számára. Ha Azure IoT Edge hub külső stream bemeneti/kimeneti adatforrását szeretné létrehozni, először létre kell hoznia egy külső fájlformátumot az adatok elrendezéséhez.
 
-1. Hozzon létre egy külső fájlformátumot a JSON formátum típusával.
+1. Hozzon létre egy külső fájlformátum JSON típusú formátumot.
 
     ```sql
     Create External file format InputFileFormat
@@ -63,7 +60,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a peremhálózati hub
     go
     ```
 
-2. Hozzon létre egy külső adatforrást az IoT Edge hub számára. Az alábbi T-SQL-szkript létrehoz egy adatforrás-kapcsolódást egy olyan peremhálózati hubhoz, amely ugyanazon a Docker-gazdagépen fut, mint az SQL Edge.
+2. Hozzon létre egy külső adatforrást Azure IoT Edge hub számára. A következő T-SQL-szkript létrehoz egy adatforrás-kapcsolódást egy IoT Edge hubhoz, amely ugyanazon a Docker-gazdagépen fut, mint az Azure SQL Edge.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
@@ -72,7 +69,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a peremhálózati hub
     go
     ```
 
-3. Hozza létre a külső stream objektumot az IoT Edge hub számára. Az alábbi T-SQL-szkript létrehoz egy stream objektumot a peremhálózati hubhoz. Edge hub Stream-objektum esetén a LOCATION paraméter a (z) a (z) és a (z) rendszerhez tartozó Edge hub-témakör vagy-csatorna neve.
+3. Hozza létre a külső stream objektumot Azure IoT Edge hub számára. A következő T-SQL-szkript létrehoz egy stream objektumot az IoT Edge hub számára. IoT Edge hub Stream objektum esetén a LOCATION paraméter a IoT Edge hub-témakör neve, vagy a csatorna olvasása vagy írása.
 
     ```sql
     CREATE EXTERNAL STREAM MyTempSensors WITH (
@@ -85,9 +82,9 @@ Az alábbi példa egy külső stream objektumot hoz létre a peremhálózati hub
     go
     ```
 
-### <a name="example-create-an-external-stream-object-sql-database"></a>Példa: külső Stream objektum létrehozása SQL Database
+### <a name="example-create-an-external-stream-object-to-azure-sql-database"></a>Példa: külső Stream-objektum létrehozása Azure SQL Database
 
-Az alábbi példa egy külső stream objektumot hoz létre a helyi SQL Edge-adatbázishoz. 
+Az alábbi példa egy külső stream objektumot hoz létre a helyi adatbázishoz az Azure SQL Edge-ben. 
 
 1. Hozzon létre egy főkulcsot az adatbázisban. Ez a hitelesítő adatok titkos kulcsának titkosításához szükséges.
 
@@ -95,7 +92,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi SQL Edge-adat
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<<Strong_Password_For_Master_Key_Encryption>>';
     ```
 
-2. Hozzon létre egy adatbázis-hatókörrel rendelkező hitelesítő adatot a SQL Server forrás eléréséhez. A következő példa hitelesítő adatokat hoz létre a külső adatforráshoz az IDENTITY = "username" és a SECRET = "password" névvel.
+2. Hozzon létre egy adatbázis-hatókörű hitelesítő adatot a SQL Server forrás eléréséhez. Az alábbi példa egy hitelesítő adatot hoz létre a külső adatforráshoz, az IDENTITY = username és a SECRET = Password értékkel.
 
     ```sql
     CREATE DATABASE SCOPED CREDENTIAL SQLCredential
@@ -105,9 +102,9 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi SQL Edge-adat
 
 3. Hozzon létre egy külső adatforrást külső ADATFORRÁS LÉTREHOZÁSával. A következő példa:
 
-    * Létrehoz egy LocalSQLOutput nevű külső adatforrást.
-    * A külső adatforrás (LOCATION = ' <vendor> :// <server> [: <port> ] ') azonosítása. A példában az SQL Edge helyi példányára mutat.
-    * Végül a példa a korábban létrehozott hitelesítő adatokat használja.
+    * Létrehoz egy *LocalSQLOutput*nevű külső adatforrást.
+    * A külső adatforrás (LOCATION = ' <vendor> :// <server> [: <port> ] ') azonosítása. A példában az Azure SQL Edge helyi példányára mutat.
+    * A korábban létrehozott hitelesítő adatokat használja.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
@@ -117,7 +114,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi SQL Edge-adat
     go
     ```
 
-4. Hozza létre a külső stream objektumot. Az alábbi példa egy külső stream objektumot hoz létre, amely egy tábla *dbo mutat. TemperatureMeasurements* az adatbázis *MySQLDatabase*.
+4. Hozza létre a külső stream objektumot. A következő példa egy külső stream objektumot hoz létre, amely egy tábla *dbo mutat. TemperatureMeasurements*az adatbázis *MySQLDatabase*.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
@@ -130,19 +127,19 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi SQL Edge-adat
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>A folyamatos átviteli feladatok és a folyamatos átviteli lekérdezések létrehozása
 
-Az adatfolyam-lekérdezések definiálásához és a folyamatos átviteli feladat létrehozásához használja a **sys. sp_create_streaming_job** rendszer tárolt eljárását. A **sp_create_streaming_job** tárolt eljárás két paramétert vesz igénybe
+Az `sys.sp_create_streaming_job` adatfolyam-lekérdezések definiálásához és a folyamatos átviteli feladat létrehozásához használja a rendszer tárolt eljárását. A `sp_create_streaming_job` tárolt eljárás a következő paramétereket veszi figyelembe:
 
-- job_name – a folyamatos átviteli feladatok neve. A folyamatos átviteli feladatok nevei egyediek a példányok között.
-- utasítás – [stream Analytics lekérdezési nyelven](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?) alapuló streaming Query-utasítások.
+- `job_name`: A folyamatos átviteli feladatok neve. A folyamatos átviteli feladatok nevei egyediek a példányok között.
+- `statement`: [Stream Analytics lekérdezési nyelvre](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)épülő streaming Query-utasítások.
 
-Az alábbi példa egy egyszerű folyamatos átviteli feladatot hoz létre egy adatfolyam-lekérdezéssel. Ez a lekérdezés beolvassa a bemeneteket a peremhálózati hubhoz, és írást ír a *dbo. TemperatureMeasurements* az adatbázisban.
+Az alábbi példa egy egyszerű folyamatos átviteli feladatot hoz létre egy adatfolyam-lekérdezéssel. Ez a lekérdezés beolvassa az IoT Edge hub bemeneteit, és az adatbázisba írja az adatokat `dbo.TemperatureMeasurements` .
 
 ```sql
 EXEC sys.sp_create_streaming_job @name=N'StreamingJob1',
 @statement= N'Select * INTO TemperatureMeasurements from MyEdgeHubInput'
 ```
 
-Az alábbi példa egy összetettebb folyamatos átviteli feladatot hoz létre több különböző lekérdezéssel, beleértve egy olyan lekérdezést, amely a beépített AnomalyDetection_ChangePoint függvényt használja a hőmérsékleti adatokban észlelt rendellenességek azonosítására.
+Az alábbi példa egy összetettebb folyamatos átviteli feladatot hoz létre több különböző lekérdezéssel. Ezek a lekérdezések tartalmazzák az egyiket, amely a beépített `AnomalyDetection_ChangePoint` függvényt használja a hőmérsékleti adatban észlelt rendellenességek azonosítására.
 
 ```sql
 EXEC sys.sp_create_streaming_job @name=N'StreamingJob2', @statement=
@@ -162,30 +159,30 @@ INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 go
 ```
 
-## <a name="start-stop-drop-and-monitor-streaming-jobs"></a>Streaming-feladatok elindítása, leállítása, eldobása és figyelése
+## <a name="start-stop-drop-and-monitor-streaming-jobs"></a>Folyamatos átviteli feladatok elindítása, leállítása, eldobása és figyelése
 
-Ha egy folyamatos átviteli feladatot szeretne elindítani az SQL Edge-ben, hajtsa végre a **sys. sp_start_streaming_job** tárolt eljárást. A tárolt eljárás működéséhez az szükséges, hogy a folyamatos átviteli feladat elinduljon bemenetként.
+Ha egy folyamatos átviteli feladatot szeretne elindítani az Azure SQL Edge-ben, futtassa a `sys.sp_start_streaming_job` tárolt eljárást. A tárolt eljárás a folyamatos átviteli feladat nevét írja be bemenetként.
 
 ```sql
 exec sys.sp_start_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-Ha le szeretne állítani egy folyamatos átviteli feladatot az SQL Edge-ben, hajtsa végre a **sys. sp_stop_streaming_job** tárolt eljárást. A tárolt eljárásnak meg kell egyeznie a folyamatos átviteli feladattal, amely bemenetként van megszakítva.
+A folyamatos átviteli feladatok leállításához futtassa a `sys.sp_stop_streaming_job` tárolt eljárást. A tárolt eljárás a leállításhoz szükséges folyamatos átviteli feladat nevét igényli bemenetként.
 
 ```sql
 exec sys.sp_stop_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-Ha az SQL Edge-ben szeretné eldobni (vagy törölni) egy folyamatos átviteli feladatot, hajtsa végre a **sys. sp_drop_streaming_job** tárolt eljárást. A tárolt eljárásnak meg kell egyeznie a folyamatos átviteli feladatokkal, mint a bemenet.
+Adatfolyam-feladat eldobásához (vagy törléséhez) futtassa a `sys.sp_drop_streaming_job` tárolt eljárást. A tárolt eljárásnak a bemeneti adatátviteli feladat nevét kell eldobnia.
 
 ```sql
 exec sys.sp_drop_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-Egy folyamatos átviteli feladat aktuális állapotának lekéréséhez az SQL Edge-ben hajtsa végre a **sys. sp_get_streaming_job** tárolt eljárást. A tárolt eljárásnak meg kell egyeznie a folyamatos átviteli feladattal, hogy beírja a bemenetet, és kiírja a folyamatos átviteli feladat nevét és aktuális állapotát.
+Egy folyamatos átviteli feladat aktuális állapotának lekéréséhez futtassa a `sys.sp_get_streaming_job` tárolt eljárást. A tárolt eljárásnak a bemeneti adatátviteli feladat nevét kell eldobnia. A kimenet a folyamatos átviteli feladatok nevét és aktuális állapotát adja meg.
 
 ```sql
 exec sys.sp_get_streaming_job @name=N'StreamingJob1'
@@ -198,19 +195,19 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 )
 ```
 
-A folyamatos átviteli feladatot a következő állapotok bármelyike lehet:
+A folyamatos átviteli feladatokhoz a következő állapotok tartozhatnak:
 
 | Állapot | Leírás |
 |--------| ------------|
-| Létrehozva | A folyamatos átviteli feladatot létrehozták, de még nincs elindítva |
-| Indítás | A folyamatos átviteli feladatok a kezdeti fázisban vannak |
-| Üresjárati | A folyamatos átviteli feladatot futtatja, de nincs feldolgozható bemenet. |
+| Létrehozva | A folyamatos átviteli feladatot létrehozták, de még nem indult el. |
+| Indítás | A folyamatos átviteli feladatok a kezdeti fázisban vannak. |
+| Tétlen | A folyamatos átviteli feladatok futtatása folyamatban van, de nincs feldolgozható bemenet. |
 | Feldolgozás | A folyamatos átviteli feladatot futtatja, és feldolgozza a bemeneteket. Ez az állapot a folyamatos átviteli feladatokhoz tartozó kifogástalan állapotot jelzi. |
-| Csökkentett teljesítményű | A folyamatos átviteli feladatok futtatása folyamatban van, de néhány nem végzetes bemeneti/kimeneti szerializálási/deszerializálási hiba történt a bemeneti feldolgozás során. A bemeneti feladatot a rendszer továbbra is futtatja, de a hibákkal kapcsolatos bemenetek eldobása is megtörténik. |
-| Leállítva | A folyamatos átviteli feladatot leállították |
+| Csökkentett teljesítményű | A folyamatos átviteli feladatok futnak, de a bemeneti feldolgozás során néhány nem végzetes hiba történt. A bemeneti feladatot a rendszer továbbra is futtatja, de a hibákkal kapcsolatos bemenetek eldobása is megtörténik. |
+| Leállítva | A folyamatos átviteli feladatot leállították. |
 | Sikertelen | A folyamatos átviteli feladatot nem sikerült végrehajtani. Ez általában egy végzetes hibát jelez a feldolgozás során. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A folyamatos átviteli feladatokhoz tartozó metaadatok megtekintése az Azure SQL Edge-ben (előzetes verzió)](streaming-catalog-views.md) 
 - [Külső stream létrehozása](create-external-stream-transact-sql.md)

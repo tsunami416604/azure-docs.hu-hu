@@ -54,6 +54,9 @@
         - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: Alkalmazások üzembe helyezése
+          tocHref: /azure/active-directory/app-provisioning/
+          topicHref: /azure/active-directory/app-provisioning/
         - name: Alkalmazáskezelés
           tocHref: /azure/active-directory/manage-apps/
           topicHref: /azure/active-directory/manage-apps/
@@ -438,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box termékcsalád
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: Storage
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Offline Data Box-adatátvitel
           tocHref: /azure/databox/
@@ -463,9 +466,9 @@
     - name: Dedicated HSM
       tocHref: /azure/dedicated-hsm/
       topicHref: /azure/dedicated-hsm/
-    - name: DevTest Lab
-      tocHref: /azure/devtest-lab/
-      topicHref: /azure/devtest-lab/
+    - name: DevTest Labs
+      tocHref: /azure/devtest-labs/
+      topicHref: /azure/devtest-labs/
     - name: FXT Edge Filer
       tocHref: /azure/fxt-edge-filer/
       topicHref: /azure/fxt-edge-filer/
@@ -595,6 +598,9 @@
         - name: Azure Media Player
           tocHref: /azure/media-services/azure-media-player/
           topicHref: /azure/media-services/azure-media-player/
+        - name: Live Video Analytics az IoT Edge-en
+          tocHref: /azure/media-services/live-video-analytics-edge/
+          topicHref: /azure/media-services/live-video-analytics-edge/
     - name: Üzenetküldő szolgáltatások
       tocHref: /azure/messaging-services/
       topicHref: /azure/messaging-services/
@@ -767,9 +773,26 @@
     - name: Synapse Analytics
       tocHref: /azure/synapse-analytics/
       topicHref: /azure/synapse-analytics/
-    - name: SQL Database
-      tocHref: /azure/sql-database/
-      topicHref: /azure/sql-database/
+    - name: Azure SQL
+      tocHref: /azure/azure-sql/
+      topicHref: /azure/azure-sql/
+      items:
+        - name: SQL Database
+          tocHref: /azure/azure-sql/database
+          topicHref: /azure/azure-sql/database
+        - name: Felügyelt SQL-példány
+          tocHref: /azure/azure-sql/managed-instance
+          topicHref: /azure/azure-sql/managed-instance
+        - name: Azure virtuális gépen futó SQL Server
+          tocHref: /azure/azure-sql/virtual-machines
+          topicHref: /azure/azure-sql/virtual-machines
+          items:
+            - name: Windows
+              tocHref: /azure/azure-sql/virtual-machines/windows
+              topicHref: /azure/azure-sql/virtual-machines/windows
+            - name: Linux
+              tocHref: /azure/azure-sql/virtual-machines/linux
+              topicHref: /azure/azure-sql/virtual-machines/linux
     - name: Azure SQL Edge
       tocHref: /azure/azure-sql-edge/
       topicHref: /azure/azure-sql-edge/

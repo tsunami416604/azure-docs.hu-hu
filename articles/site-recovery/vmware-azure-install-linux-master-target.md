@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829783"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130144"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linux fő célkiszolgáló telepítése feladat-visszavételhez
 A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
@@ -27,7 +27,7 @@ Ha a védett virtuális gép egy Windows rendszerű virtuális gép, akkor szük
 ## <a name="overview"></a>Áttekintés
 Ez a cikk útmutatást nyújt a Linux fő célhelyének telepítéséhez.
 
-A jelen cikk végén vagy a [Microsoft Q&az Azure Recovery Services-ra vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)megjegyzéseket vagy kérdéseket tehet közzé.
+A jelen cikk végén vagy a [Microsoft Q&az Azure Recovery Services-ra vonatkozó kérdés oldalán](/answers/topics/azure-site-recovery.html)megjegyzéseket vagy kérdéseket tehet közzé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,6 +37,9 @@ A jelen cikk végén vagy a [Microsoft Q&az Azure Recovery Services-ra vonatkoz�
 * A fő célként olyan hálózaton kell lennie, amely képes kommunikálni a Process Serverrel és a konfigurációs kiszolgálóval.
 * A fő célként megadott verziónak egyenlőnek vagy annál korábbinak kell lennie a Process Server és a konfigurációs kiszolgáló verziójánál. Ha például a konfigurációs kiszolgáló verziója 9,4, akkor a fő cél verziója 9,4 vagy 9,3, de nem 9,5.
 * A fő cél csak VMware virtuális gép lehet, és nem fizikai kiszolgáló.
+
+> [!NOTE]
+> Ügyeljen rá, hogy ne kapcsolja be a vMotion a felügyeleti összetevőkön, például a fő célhelyen. Ha a fő cél sikeres ismételt védelem után mozog, a virtuális gép lemezei (VMDK) nem választhatók le. Ebben az esetben a feladat-visszavétel sikertelen lesz.
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>A fő célkiszolgáló létrehozásához szükséges Méretezési irányelvek
 
@@ -244,7 +247,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
     ![Többutas azonosító](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4/dev/Mapper/ \< adatmegőrzési lemez többutas azonosító>**.
+3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4 \<Retention disk's multipath id> /dev/Mapper/**.
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +264,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
     
     A fájl szerkesztésének megkezdéséhez kattintson a **Beszúrás** gombra. Hozzon létre egy új sort, majd szúrja be a következő szöveget. Szerkessze a lemez többutas AZONOSÍTÓját az előző parancs kijelölt többutas AZONOSÍTÓjának alapján.
 
-    **/dev/Mapper/ \< adatmegőrzési lemezek többutas azonosítója>/mnt/Retention ext4 rw 0 0**
+    **/dev/Mapper/ \<Retention disks multipath id> /mnt/Retention ext4 rw 0 0**
 
     Válassza az **ESC**lehetőséget, majd írja be a következőt **: wq** (írás és Kilépés) a szerkesztő ablak bezárásához.
 
@@ -274,16 +277,22 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 > [!NOTE]
 > A fő célkiszolgáló telepítése előtt győződjön meg arról, hogy a virtuális gépen található **/etc/hosts** -fájl olyan bejegyzéseket tartalmaz, amelyek leképezik a helyi gazdagépet az összes hálózati adapterhez társított IP-címekre.
 
-1. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezt követően a következő parancs futtatásával mentse a (z **) jelszót. txt** néven a helyi könyvtárban:
+1. Futtassa a következő parancsot a fő cél telepítéséhez.
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse **passphrase.txtként** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
 
     `echo <passphrase> >passphrase.txt`
 
     Példa: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Jegyezze fel a konfigurációs kiszolgáló IP-címét. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és regisztrálja a kiszolgálót a konfigurációs kiszolgálóval.
+3. Jegyezze fel a konfigurációs kiszolgáló IP-címét. A következő parancs futtatásával regisztrálja a kiszolgálót a konfigurációs kiszolgálóval.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -314,16 +323,10 @@ A telepítés befejezése után regisztrálja a konfigurációs kiszolgálót a 
 
 1. Jegyezze fel a konfigurációs kiszolgáló IP-címét. A következő lépésben szüksége lesz rá.
 
-2. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és regisztrálja a kiszolgálót a konfigurációs kiszolgálóval.
+2. A következő parancs futtatásával regisztrálja a kiszolgálót a konfigurációs kiszolgálóval.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    Példa: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      Várjon, amíg a szkript be nem fejeződik. Ha a fő cél regisztrálása sikeresen megtörtént, a fő cél a portál **site Recovery infrastruktúra** lapján jelenik meg.
@@ -348,12 +351,16 @@ Látni fogja, hogy a **Version (verzió** ) mező a fő cél verziószámát adj
 
 * A fő cél nem rendelkezhet pillanatképekkel a virtuális gépen. Pillanatképek esetén a feladat-visszavétel sikertelen lesz.
 
-* Egyes egyéni NIC-konfigurációk miatt a hálózati adapter az indítás során le van tiltva, és a fő célként megadott ügynök nem inicializálható. Győződjön meg arról, hogy a következő tulajdonságok helyesen vannak beállítva. Ezeket a tulajdonságokat az Ethernet kártya fájljának/etc/sysconfig/network-scripts/ifcfg-ETH *.
-    * BOOTPROTO = DHCP
-    * ONBOOT = igen
+* Egyes egyéni NIC-konfigurációk miatt a hálózati adapter az indítás során le van tiltva, és a fő célként megadott ügynök nem inicializálható. Győződjön meg arról, hogy a következő tulajdonságok helyesen vannak beállítva. Ezeket a tulajdonságokat az Ethernet kártya fájljának/etc/network/interfaces. kell megnéznie
+    * automatikus ETH0
+    * iface ETH0 inet DHCP <br>
+
+    Indítsa újra a hálózati szolgáltatást a következő parancs használatával: <br>
+
+`sudo systemctl restart networking`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fő cél telepítésének és regisztrálásának befejeződése után a fő cél a **site Recovery infrastruktúra** **fő célhely** szakaszában jelenik meg, a konfigurációs kiszolgáló áttekintése alatt.
 
 Most már folytathatja az ismételt [védelmet](vmware-azure-reprotect.md), majd a feladat-visszavétel után is.

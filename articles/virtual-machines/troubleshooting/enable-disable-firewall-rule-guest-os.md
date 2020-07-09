@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422894"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Tűzfalszabály engedélyezése vagy letiltása egy Azure-beli virtuális gép vendég operációs rendszeréhez
@@ -97,7 +97,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
 
 Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton található másik virtuális gépen is elérhető, akkor a másik virtuális GÉPEN is használhatja a [távoli beállításjegyzéket](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) .
 
-1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe), majd válassza a **file** > **Network Registry (fájl összekapcsolása**) lehetőséget.
+1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe), majd válassza a **fájl**  >  **összekapcsolása hálózati beállításjegyzék**lehetőséget.
 
 2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, majd adja meg a következő értékeket:
 
@@ -107,7 +107,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
     
         Ezután módosítsa az **aktív = FALSE értéket** az **aktív = True** értékre a karakterláncban:
 
-        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
     
     * Egy szabály letiltásához nyissa meg a következő beállításértéket:
     
@@ -115,7 +115,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
 
         Ezután módosítsa az **aktív = True** **értéket az aktív = false**értékre:
         
-        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
 
 3.  A módosítások alkalmazásához indítsa újra a virtuális gépet.
 
@@ -133,9 +133,9 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
 
 4.  A módosítások elvégzése előtt hozzon létre egy másolatot a \Windows\System32\Config mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 
-5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe).
+5.  A hibaelhárítás virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe).
 
-6.  Jelölje ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **Load kaptár** elemet a menüből.
+6.  Jelölje ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl**  >  **Load kaptár** elemet a menüből.
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
@@ -154,7 +154,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
         
         Ezután módosítsa az **aktív = FALSE értéket** **aktív = True**értékre.
         
-        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
 
     3.  Egy szabály letiltásához nyissa meg a következő beállításkulcsot:
 
@@ -162,9 +162,9 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
 
         Ezután módosítsa az **aktív = True** **értéket aktív = false**értékre.
         
-        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Név =\@FirewallAPI. dll,-28775 | Desc =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
 
-9.  Jelölje ki a **BROKENSYSTEM**, majd a menüből válassza ki a **fájl** > **kitöltése struktúrát** .
+9.  Jelölje ki a **BROKENSYSTEM**, majd a menüből válassza ki a **fájl**  >  **kitöltése struktúrát** .
 
 10. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](troubleshoot-recovery-disks-portal-windows.md).
 

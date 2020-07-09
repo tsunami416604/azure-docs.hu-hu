@@ -10,11 +10,11 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239489"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687107"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: eszköz üzembe helyezése az Azure IoT Hub Device Provisioning Service használatával
 
@@ -52,7 +52,7 @@ A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver im
 
 2. Keresse meg az SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
+3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a paraméter értékeként `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -198,7 +198,7 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 
 Előfordulhat, hogy először egy szimulált eszköz, majd egy tesztszolgáltatás beállítása segítségével finomítania kell a Device Provisioning Service ügyfél-regisztrációs alkalmazást. Ha az alkalmazás megfelelően működik a tesztkörnyezetben, a valós eszközhöz is létrehozhatja, és az eszközképre másolhatja a végrehajtható fájlokat. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Előfordulhat, hogy ekkor fut a portálon a Device Provisioning Service és az IoT Hub szolgáltatás. Ha félbe szeretné hagyni az eszközregisztráció beállítását, és/vagy később fejezné be ezt az oktatóanyagot, javasoljuk, hogy a felesleges költségek elkerülése érdekében kapcsolja ki az eszközt.
 

@@ -8,13 +8,12 @@ ms.author: mhopkins
 ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 0a8eca9e7b3e890b67daf915ffe733dd54ef5896
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515053"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
 
@@ -24,9 +23,9 @@ A fiókadatok a 2018-03-28-es verziótól kezdődően elérhetők a szolgáltat�
 
 ## <a name="about-account-type-and-sku-name"></a>A fiók típusa és az SKU neve
 
-**Fióktípus**: `BlobStorage` `BlockBlobStorage`az `FileStorage` `StorageV2`érvényes fióktípus például a,,, és. `Storage` Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
+**Fióktípus**: az érvényes fióktípus például a,,, `BlobStorage` `BlockBlobStorage` `FileStorage` `Storage` és `StorageV2` . Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
 
-**SKU neve**: érvényes SKU-nevek `Premium_LRS`a `Premium_ZRS`következők `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS`:,,,,, `Standard_ZRS`, és. Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)sztring mezői.
+**SKU neve**: érvényes SKU-nevek a következők:,,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` és `Standard_ZRS` . Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)sztring mezői.
 
 ## <a name="retrieve-account-information"></a>Fiókadatok beolvasása
 

@@ -1,24 +1,19 @@
 ---
 title: 'Gyors útmutató: Azure Service Bus témakörök és előfizetések használata a Python használatával'
 description: Ez a cikk bemutatja, hogyan hozhat létre egy Azure Service Bus témakört, előfizetést, üzeneteket küldhet egy témakörnek, és üzeneteket fogadhat az előfizetésből.
-services: service-bus-messaging
 documentationcenter: python
-author: axisc
-editor: spelluru
-ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: tracking-python
+ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478071"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341037"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Python használatával
 
@@ -45,7 +40,7 @@ A **ServiceBusService** objektummal témaköröket és előfizetéseket dolgozha
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Adja hozzá a következő kódot egy **ServiceBusService** objektum létrehozásához. `<sharedaccesskeyname>`Cserélje `<namespace>`le a, `<sharedaccesskeyvalue>` a és a paramétert a Service Bus névtér nevére, a közös hozzáférési aláírás (SAS) kulcsának nevére és az elsődleges kulcs értékére. Ezeket az értékeket a [Azure Portal][Azure portal]Service Bus névterében található **megosztott hozzáférési házirendek** területen találja.
+Adja hozzá a következő kódot egy **ServiceBusService** objektum létrehozásához. Cserélje le a, a `<namespace>` `<sharedaccesskeyname>` és a paramétert `<sharedaccesskeyvalue>` a Service Bus névtér nevére, a közös hozzáférési aláírás (SAS) kulcsának nevére és az elsődleges kulcs értékére. Ezeket az értékeket a [Azure Portal][Azure portal]Service Bus névterében található **megosztott hozzáférési házirendek** területen találja.
 
 ```python
 bus_service = ServiceBusService(
@@ -56,13 +51,13 @@ bus_service = ServiceBusService(
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 
-A következő kód a `create_topic` metódus használatával hozza létre a nevű `mytopic`Service Bus témakört alapértelmezett beállításokkal:
+A következő kód a `create_topic` metódus használatával hozza létre a nevű Service Bus témakört `mytopic` alapértelmezett beállításokkal:
 
 ```python
 bus_service.create_topic('mytopic')
 ```
 
-A témakör beállításai segítségével felülbírálhatja az alapértelmezett témakör-beállításokat, például az üzenetek élettartamát (TTL) vagy a témakör maximális méretét. Az alábbi példa egy nevű `mytopic` témakört hoz létre, amely egy percen belüli, maximális számú témakört tartalmaz:
+A témakör beállításai segítségével felülbírálhatja az alapértelmezett témakör-beállításokat, például az üzenetek élettartamát (TTL) vagy a témakör maximális méretét. Az alábbi példa egy nevű témakört hoz létre, amely egy percen belüli, maximális számú témakört `mytopic` tartalmaz:
 
 ```python
 topic_options = Topic()
@@ -74,7 +69,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 ## <a name="create-subscriptions"></a>Előfizetések létrehozása
 
-A **ServiceBusService** objektummal előfizetéseket is létrehozhat a témakörökhöz. Egy előfizetéshez tartozhat egy szűrő, amellyel korlátozható a virtuális várólistára küldött üzenet. Ha nem ad meg szűrőt, az új előfizetések az alapértelmezett **MatchAll** szűrőt használják, amely a témakörben közzétett összes üzenetet elhelyezi az előfizetés virtuális várólistáján. A következő példa létrehoz egy nevű `mytopic` `AllMessages` előfizetést, amely a **MatchAll** szűrőt használja:
+A **ServiceBusService** objektummal előfizetéseket is létrehozhat a témakörökhöz. Egy előfizetéshez tartozhat egy szűrő, amellyel korlátozható a virtuális várólistára küldött üzenet. Ha nem ad meg szűrőt, az új előfizetések az alapértelmezett **MatchAll** szűrőt használják, amely a témakörben közzétett összes üzenetet elhelyezi az előfizetés virtuális várólistáján. A következő példa létrehoz egy nevű előfizetést, `mytopic` `AllMessages` amely a **MatchAll** szűrőt használja:
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -82,13 +77,13 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 ### <a name="use-filters-with-subscriptions"></a>Szűrők használata előfizetésekkel
 
-A ServiceBusService `create_rule` objektum metódusának **ServiceBusService** használatával szűrheti az előfizetésben megjelenő üzeneteket. Megadhatja az előfizetés létrehozásakor vagy a meglévő előfizetésekhez tartozó szabályok hozzáadására vonatkozó szabályokat.
+A `create_rule` **ServiceBusService** objektum metódusának használatával szűrheti az előfizetésben megjelenő üzeneteket. Megadhatja az előfizetés létrehozásakor vagy a meglévő előfizetésekhez tartozó szabályok hozzáadására vonatkozó szabályokat.
 
 A legrugalmasabb típusú szűrő egy **SqlFilter**, amely az SQL-92 részhalmazát használja. Az SQL-szűrők a témakörben közzétett üzenetek tulajdonságai alapján működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkért tekintse meg a [SqlFilter. SqlExpression][SqlFilter.SqlExpression] szintaxist.
 
 Mivel a **MatchAll** alapértelmezett szűrője automatikusan az összes új előfizetésre vonatkozik, el kell távolítania a szűrni kívánt előfizetések közül, vagy a **MatchAll** felülbírálja az Ön által megadott szűrőket. Az alapértelmezett szabályt a `delete_rule` **ServiceBusService** objektum metódusának használatával távolíthatja el.
 
-Az alábbi példa egy nevű `mytopic` előfizetést `HighMessages`hoz létre egy nevű **SqlFilter** szabállyal `HighMessageFilter`. A `HighMessageFilter` szabály csak a 3-nál nagyobb `messageposition` egyéni tulajdonságú üzeneteket választja ki:
+Az alábbi példa egy nevű előfizetést hoz létre `mytopic` `HighMessages` egy nevű **SqlFilter** szabállyal `HighMessageFilter` . A `HighMessageFilter` szabály csak a `messageposition` 3-nál nagyobb egyéni tulajdonságú üzeneteket választja ki:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -101,7 +96,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Az alábbi példa egy nevű `mytopic` előfizetést `LowMessages`hoz létre egy nevű **SqlFilter** szabállyal `LowMessageFilter`. A `LowMessageFilter` szabály csak a `messageposition` 3 értéknél kisebb vagy azzal egyenlő értékű üzeneteket jelöli ki:
+Az alábbi példa egy nevű előfizetést hoz létre `mytopic` `LowMessages` egy nevű **SqlFilter** szabállyal `LowMessageFilter` . A `LowMessageFilter` szabály csak a `messageposition` 3 értéknél kisebb vagy azzal egyenlő értékű üzeneteket jelöli ki:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -114,13 +109,13 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-A `AllMessages`, `HighMessages`a és `LowMessages` az összes hatására a `mytopic` rendszer mindig az `AllMessages` előfizetés fogadóinak kézbesíti az elküldött üzeneteket. Az üzenetek a (z) `HighMessages` vagy `LowMessages` előfizetéshez is szelektív módon érkeznek, az üzenet `messageposition` tulajdonságának értékétől függően. 
+A `AllMessages` , a `HighMessages` és az `LowMessages` összes hatására a `mytopic` rendszer mindig az előfizetés fogadóinak kézbesíti az elküldött üzeneteket `AllMessages` . Az üzenetek a (z `HighMessages` ) vagy előfizetéshez is szelektív módon érkeznek `LowMessages` , az üzenet `messageposition` tulajdonságának értékétől függően. 
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
 
 Az alkalmazások a `send_topic_message` **ServiceBusService** objektum metódusát használják üzenetek küldésére egy Service Bus témakörben.
 
-A következő példa öt tesztüzenet küldését küldi `mytopic` el a témakörnek. Az egyéni `messageposition` tulajdonság értéke a hurok iterációtól függ, és meghatározza, hogy mely előfizetések kapják meg az üzeneteket. 
+A következő példa öt tesztüzenet küldését küldi el a `mytopic` témakörnek. Az egyéni `messageposition` tulajdonság értéke a hurok iterációtól függ, és meghatározza, hogy mely előfizetések kapják meg az üzeneteket. 
 
 ```python
 for i in range(5):
@@ -148,7 +143,7 @@ A választható `peek_lock` paraméter `receive_subscription_message` határozza
 
 Ha törölni szeretné az előfizetésből származó üzeneteket, a `peek_lock` paramétert **hamis**értékre állíthatja, ahogy az előző példában is látható. Ha a fogadási művelet részeként törli az üzeneteket, a legegyszerűbb modell, és jól működik, ha az alkalmazás meghibásodás esetén képes elviselni a hiányzó üzeneteket. A viselkedés megértéséhez Vegyünk egy olyan forgatókönyvet, amelyben az alkalmazás egy fogadási kérést ad ki, majd összeomlik a feldolgozás előtt. Ha a rendszer törölte az üzenetet a fogadáskor, amikor az alkalmazás újraindul, és megkezdi az üzenetek újrafelhasználását, az összeomlás előtt elmulasztotta a kapott üzenetet.
 
-Ha az alkalmazás nem tudja elviselni a kihagyott üzeneteket, a fogadás kétfázisú műveletvé válik. A PeekLock megkeresi a használni kívánt következő üzenetet, zárolja, hogy megakadályozza más fogyasztók számára a fogadást, és visszaadja az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás végrehajtja a fogadási folyamat második szakaszát úgy, hogy meghívja `complete` a metódust az **üzenet** objektumon.  A `complete` metódus felhasználja az üzenetet, és eltávolítja azt az előfizetésből.
+Ha az alkalmazás nem tudja elviselni a kihagyott üzeneteket, a fogadás kétfázisú műveletvé válik. A PeekLock megkeresi a használni kívánt következő üzenetet, zárolja, hogy megakadályozza más fogyasztók számára a fogadást, és visszaadja az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás végrehajtja a fogadási folyamat második szakaszát úgy, hogy meghívja a `complete` metódust az **üzenet** objektumon.  A `complete` metódus felhasználja az üzenetet, és eltávolítja azt az előfizetésből.
 
 Az alábbi példa egy betekintés zárolási forgatókönyvet mutat be:
 
@@ -165,17 +160,17 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 Az előfizetésen belül zárolt üzenetek esetében is van időtúllépés. Ha egy alkalmazás nem tud feldolgozni egy üzenetet a zárolási időtúllépés lejárta előtt, például ha az alkalmazás összeomlik, Service Bus feloldja az üzenet automatikus zárolását, és elérhetővé teszi azt újra.
 
-Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a `complete` metódus meghívása előtt, a rendszer az újraindításkor visszaküldi az üzenetet az alkalmazásnak. Ezt a viselkedést gyakran egyszeri *feldolgozásnak*nevezik. Minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között, hogy kezelni tudja a duplikált üzenetek kézbesítését. 
+Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a metódus meghívása előtt `complete` , a rendszer az újraindításkor visszaküldi az üzenetet az alkalmazásnak. Ezt a viselkedést gyakran egyszeri *feldolgozásnak*nevezik. Minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között, hogy kezelni tudja a duplikált üzenetek kézbesítését. 
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
 
-Témakörök és előfizetések törléséhez használja a [Azure Portal][Azure portal] vagy `delete_topic` a metódust. A következő kód törli a nevű `mytopic`témakört:
+Témakörök és előfizetések törléséhez használja a [Azure Portal][Azure portal] vagy a `delete_topic` metódust. A következő kód törli a nevű témakört `mytopic` :
 
 ```python
 bus_service.delete_topic('mytopic')
 ```
 
-Egy témakör törlése törli a témakör összes előfizetését. Az előfizetéseket egymástól függetlenül is törölheti. A következő kód törli a nevű `HighMessages` előfizetést `mytopic` a témakörből:
+Egy témakör törlése törli a témakör összes előfizetését. Az előfizetéseket egymástól függetlenül is törölheti. A következő kód törli a nevű előfizetést `HighMessages` a `mytopic` témakörből:
 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')

@@ -10,13 +10,12 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684864"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>A Change Tracking és a leltárral kapcsolatos problémák elhárítása
+# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>A Change Tracking és az Inventory hibáinak elhárítása
 
 Ez a cikk a Azure Automation Change Tracking és a leltárral kapcsolatos problémák elhárítását és megoldását ismerteti. A Change Tracking és a leltárral kapcsolatos általános információkért lásd: [change Tracking és leltár – áttekintés](../change-tracking.md).
 
@@ -55,7 +54,7 @@ Ha továbbra is segítségre van szüksége, diagnosztikai információkat gyűj
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Log Analytics ügynök nem fut a Windows rendszerben
 
-Ellenőrizze, hogy a Windows rendszerhez készült Log Analytics ügynök (**HealthService. exe**) fut-e a gépen.
+Ellenőrizze, hogy a számítógépen fut-e a Windows Log Analytics-ügynök (**HealthService.exe**).
 
 ##### <a name="communication-to-automation-account-blocked"></a>Az Automation-fiókkal folytatott kommunikáció blokkolva
 

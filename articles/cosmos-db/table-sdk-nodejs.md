@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Table API a Node. js-hez
+title: Azure Cosmos DB Table API a Node.js
 description: Ismerkedjen meg a Azure Cosmos DB Table APIekkel, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és az egyes verziókon végrehajtott módosításokat.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,13 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167978"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API Node. js-hez: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API for Node.js: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,7 +26,7 @@ ms.locfileid: "84167978"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API-dokumentáció**|[Node. js API-referenciák dokumentációja](https://azure.github.io/azure-storage-node/)|
+|**API-dokumentáció**|[Node.js API-referenciák dokumentációja](https://azure.github.io/azure-storage-node/)|
 |**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]
@@ -44,7 +43,7 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017. november 15. |--- |
 

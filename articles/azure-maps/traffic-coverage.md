@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333949"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
@@ -21,7 +21,7 @@ A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes
 
 A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal minden országban vagy régióban. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 |Ország/régió  |Incidensek  |Folyamat  |
 |---------|:---------:|:---------:|
@@ -112,7 +112,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |+ Gibraltár     |✓         |✓         |
 |+ Guernsey & Jersey     |✓         |✓         |
 |+ Man-sziget     |✓         |✓         |
-|Vatikáni Városállam   |✓         |✓         |
+|Vatikán   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641683"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a Haivision KB Live Encoder használatával  
@@ -83,7 +82,7 @@ Hang
     ![Képernyőkép a 2017-08-14-es 9.33.17](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  Kattintson a Tovább gombra, majd kattintson a kész gombra.
 9.  A kódoló csatorna elindításához kattintson a **Lejátszás gombra** .  
-    ![Haivision KB. png](./media/media-services-configure-kb-live-encoder/step9.png)
+    ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>Lejátszás tesztelése
 Navigáljon a AMSE eszközhöz, és kattintson a jobb gombbal a tesztelni kívánt csatornára. A menüben vigye az egérmutatót az előnézet lejátszásához, és válassza a Azure Media Player lehetőséget.

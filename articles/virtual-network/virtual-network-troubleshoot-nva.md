@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71056835"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130713"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezések problémái az Azure-ban
 
@@ -103,11 +103,15 @@ A PowerShell használata
 
     Windows esetén:
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     Linux esetén:
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. Ha nem látja azt a TCP-portot, amelyet az eredmények listájában szereplő NVA szoftver használ, konfigurálnia kell az alkalmazást a NVA és a virtuális gépen, hogy figyelje és reagáljon a portokat elérő forgalomra. [Szükség esetén forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 ## <a name="check-nva-performance"></a>NVA teljesítményének megtekintése
@@ -135,7 +139,7 @@ Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen
 
    sudo tcpdump-S0-i ETH0-X-w vmtrace. Cap
 
-2. Használjon **PsPing** vagy **nmap** -t a forrás virtuális gépről a cél virtuális gépre (például `PsPing 10.0.0.4:80` : `Nmap -p 80 10.0.0.4`vagy).
+2. Használjon **PsPing** vagy **nmap** -t a forrás virtuális gépről a cél virtuális gépre (például: `PsPing 10.0.0.4:80` vagy `Nmap -p 80 10.0.0.4` ).
 3. Nyissa meg a hálózati nyomkövetést a cél virtuális gépről [Hálózatfigyelő](https://www.microsoft.com/download/details.aspx?id=4865) vagy tcpdump használatával. Alkalmazzon megjelenítési szűrőt a **PsPing** vagy **nmap** -t futtató forrás virtuális gép IP-címére, például `IPv4.address==10.0.0.4 (Windows netmon)` vagy `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
 ### <a name="analyze-traces"></a>Nyomkövetések elemzése

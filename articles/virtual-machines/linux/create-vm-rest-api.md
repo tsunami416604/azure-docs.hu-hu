@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970276"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH-hitelesítést használó linuxos virtuális gép létrehozása a REST API
@@ -39,7 +38,7 @@ Virtuális gép létrehozásához vagy frissítéséhez használja a következő
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-`{subscription-id}` A és `{resourceGroupName}` a paraméterek mellett meg kell adnia a `{vmName}` (`api-version` nem kötelező, de a cikket tesztelte) `api-version=2017-12-01`
+A `{subscription-id}` és a paraméterek mellett `{resourceGroupName}` meg kell adnia a `{vmName}` ( `api-version` nem kötelező, de a cikket tesztelte `api-version=2017-12-01` )
 
 A következő fejlécek megadása kötelező:
 
@@ -54,16 +53,16 @@ REST API kérelmekkel kapcsolatos általános információkért tekintse meg [a 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-| Name (Név)                       | Kötelező | Típus                                                                                | Leírás  |
+| Name                       | Kötelező | Típus                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True (Igaz)     | sztring                                                                              | Erőforrás helye. |
-| név                       |          | sztring                                                                              | A virtuális gép neve. |
+| name                       |          | sztring                                                                              | A virtuális gép neve. |
 | Properties. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Megadja a virtuális gép hardveres beállításait. |
 | Properties. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Megadja a virtuális gépek lemezeinek tárolási beállításait. |
 | Properties. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Megadja a virtuális gép operációs rendszerének beállításait. |
 | Properties. networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Megadja a virtuális gép hálózati adaptereit. |
 
-Egy példa a kérelem törzsére. Győződjön meg róla, hogy megadta a virtuális `{computerName}` gép `{name}` nevét a és a paraméterek között, a létrehozott hálózati adapter nevét `networkInterfaces`, a felhasználónevét `adminUsername` és `path`az SSH-kulcspár *nyilvános* részét (például: `~/.ssh/id_rsa.pub`). `keyData` A módosítani kívánt egyéb paraméterek közé tartoznak a `location` és `vmSize`a is.  
+Egy példa a kérelem törzsére. Győződjön meg róla, hogy megadta a virtuális gép nevét a `{computerName}` és a `{name}` paraméterek között, a létrehozott hálózati adapter nevét `networkInterfaces` , a felhasználónevét `adminUsername` és `path` az SSH-kulcspár *nyilvános* részét (például: `~/.ssh/id_rsa.pub` ) `keyData` . A módosítani kívánt egyéb paraméterek közé tartoznak `location` a és a is `vmSize` .  
 
 ```json
 {
@@ -128,7 +127,7 @@ A HTTP-kérelem elküldéséhez használhatja a kívánt ügyfelet. Egy [böngé
 
 A műveletnek két sikeres válasza van a virtuális gép létrehozásához vagy frissítéséhez:
 
-| Name (Név)        | Típus                                                                              | Leírás |
+| Name        | Típus                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 létrehozva | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Létrehozva     |

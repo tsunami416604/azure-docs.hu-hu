@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 4ef7e4058c4f9cb458f4036ad4b315f5e85036b1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602584"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
 
@@ -74,11 +74,17 @@ Ha például a belső virtuális hálózatok VNet1 és VNet2 csatlakozniuk kell 
 
 Első lépésként hozzon létre egy Azure Monitor privát hivatkozás hatókör-erőforrást.
 
-1. Nyissa meg az **erőforrás létrehozása** a Azure Portalban, és keresse meg **Azure monitor privát hivatkozás hatókörét**. 
-2. Kattintson a **Létrehozás**gombra. 
-3. Válasszon egy előfizetést és egy erőforráscsoportot. 
-4. Adja meg a AMPLS nevét. Érdemes olyan nevet használni, amely törli a hatókört és a biztonsági határt, hogy valaki ne szakítsa meg véletlenül a hálózati biztonsági határokat. Például: "AppServerProdTelem". 
+1. Nyissa meg az **erőforrás létrehozása** a Azure Portalban, és keresse meg **Azure monitor privát hivatkozás hatókörét**.
+
+   ![Azure Monitor privát hivatkozás hatókörének keresése](./media/private-link-security/ampls-find-1c.png)
+
+2. Kattintson a **Létrehozás**gombra.
+3. Válasszon egy előfizetést és egy erőforráscsoportot.
+4. Adja meg a AMPLS nevét. Érdemes olyan nevet használni, amely törli a hatókört és a biztonsági határt, hogy valaki ne szakítsa meg véletlenül a hálózati biztonsági határokat. Például: "AppServerProdTelem".
 5. Kattintson a **felülvizsgálat + létrehozás**gombra. 
+
+   ![Azure Monitor privát hivatkozás hatókörének létrehozása](./media/private-link-security/ampls-create-1d.png)
+
 6. Hagyja meg az érvényesítési fázist, majd kattintson a **Létrehozás**gombra.
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Monitor-erőforrások összekötése
@@ -117,13 +123,13 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
 
    a.    Válassza ki azt a **virtuális hálózatot** és **alhálózatot** , amelyhez csatlakozni szeretne a Azure monitor erőforrásaihoz. 
  
-   b.    Válassza az **Igen** lehetőséget a **saját DNS-zónába való integráláshoz**, és hagyja, hogy automatikusan létrehozzon egy új saját DNS zónát. 
+   b.    Válassza az **Igen** lehetőséget a **saját DNS-zónába való integráláshoz**, és hagyja, hogy automatikusan létrehozzon egy új saját DNS zónát. Előfordulhat, hogy a tényleges DNS-zónák eltérnek az alábbi képernyőképen láthatótól. 
  
    c.    Kattintson az **Áttekintés + létrehozás** elemre.
  
    d.    Az érvényesítési fázis engedélyezése. 
  
-   e.    Kattintson a **Létrehozás**gombra. 
+   e.    Kattintson a **Létrehozás** lehetőségre. 
 
     ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -162,9 +168,8 @@ A hozzáférés ezen a módon való korlátozása csak a Application Insights er
 
 > [!NOTE]
 > A munkaterület-alapú Application Insights teljes biztonsága érdekében le kell zárnia a Application Insights erőforráshoz és a mögöttes Log Analytics munkaterülethez való hozzáférést.
-
-> [!NOTE]
-> A kód szintű diagnosztika (Profiler/Debugger) jelenleg nem támogatja a privát hivatkozást.
+>
+> A kód szintű diagnosztika (Profiler/Debugger) esetében meg kell adnia a saját Storage-fiókját a privát kapcsolat támogatásához. Ehhez a [dokumentációban](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) olvashat.
 
 ## <a name="use-apis-and-command-line"></a>API-k és parancssor használata
 
@@ -220,7 +225,14 @@ Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási
 
 | Felhőalapú környezet | Ügynök erőforrása | Portok | Irány |
 |:--|:--|:--|:--|
-|Azure Public     | scadvisor.blob.core.windows.net         | 443 | Kimenő
+|Azure Public     | scadvisorcontent.blob.core.windows.net         | 443 | Kimenő
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
 
+### <a name="browser-dns-settings"></a>Böngésző DNS-beállításai
+
+Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
+
+## <a name="next-steps"></a>További lépések
+
+- Tudnivalók a [privát tárterületről](private-storage.md)

@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
 ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263973"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>Azure Notification hub létrehozása a PowerShell használatával
@@ -47,7 +46,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 Ez a szkript a következő parancsokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | Létrehoz egy névteret az értesítési Központ számára. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 22084f9c59070c2efaa112ebfbb0c5ecc647145e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68965885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556029"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Helyszíni StorSimple-eszköz üzembe helyezése a kormányzati portálon
 
@@ -28,7 +28,7 @@ ms.locfileid: "68965885"
 ## <a name="overview"></a>Áttekintés
 Üdvözöljük a Microsoft Azure StorSimple eszköztelepítő útmutatójában. Ezek az üzembehelyezési oktatóanyagok a 3. frissítés szoftvert futtató StorSimple 8000 sorozatra vonatkoznak, vagy később a Azure Government-portálon. Az oktatóanyagok ezen sorozata tartalmaz egy konfigurációs ellenőrzőlistát, a konfigurációs előfeltételek listáját, valamint a StorSimple-eszköz részletes konfigurációs lépéseit.
 
-Az oktatóanyagban szereplő információk arra a feltételezésre alapulnak, hogy áttekintette a biztonsági óvintézkedéseket, valamint hogy kicsomagolta, az állványba helyezte és bekábelezte a StorSimple eszközt. Ha még nem hajtotta végre ezeket a feladatokat, kezdje a [biztonsági óvintézkedések](storsimple-safety.md) áttekintésével. Kövesse az eszköz kicsomagolására, állványra szerelésére és bekábelezésére vonatkozó eszközspecifikus utasításokat.
+Az oktatóanyagban szereplő információk arra a feltételezésre alapulnak, hogy áttekintette a biztonsági óvintézkedéseket, valamint hogy kicsomagolta, az állványba helyezte és bekábelezte a StorSimple eszközt. Ha még nem hajtotta végre ezeket a feladatokat, kezdje a [biztonsági óvintézkedések](storsimple-8000-safety.md) áttekintésével. Kövesse az eszköz kicsomagolására, állványra szerelésére és bekábelezésére vonatkozó eszközspecifikus utasításokat.
 
 * [A StorSimple 8100 kicsomagolása, állványra szerelése és bekábelezése](storsimple-8100-hardware-installation.md)
 * [A StorSimple 8600 kicsomagolása, állványra szerelése és bekábelezése](storsimple-8600-hardware-installation.md)
@@ -36,13 +36,13 @@ Az oktatóanyagban szereplő információk arra a feltételezésre alapulnak, ho
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. Azt javasoljuk, hogy mielőtt hozzákezdene, tekintse át a konfigurációs ellenőrzőlistát. Az üzembehelyezési és konfigurációs folyamatok végrehajtása eltarthat egy ideig.
 
 > [!NOTE]
-> A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozat eszközeire érvényesek. Az 7000 sorozatú eszközökről a következő témakörben olvashat részletesen: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). A 7000-es sorozatra vonatkozó üzembehelyezési információkat a [StorSimple rendszer gyors üzembehelyezési útmutatójában](http://onlinehelp.storsimple.com/111_Appliance/) találja.
+> A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozat eszközeire érvényesek. Az 7000 sorozatú eszközökről a következő témakörben olvashat részletesen: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) . A 7000-es sorozatra vonatkozó üzembehelyezési információkat a [StorSimple rendszer gyors üzembehelyezési útmutatójában](http://onlinehelp.storsimple.com/111_Appliance/) találja.
 
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 Ezen szükséges lépések végrehajtásával konfigurálhatja a StorSimple-eszközt és csatlakoztathatja a StorSimple-eszközkezelő szolgáltatáshoz. A szükséges lépések mellett választható lépések és eljárások is megadhatók, amelyeket a telepítés során esetlegesen kell végrehajtania. A részletes üzembehelyezési utasítások jelzik, amikor ezeket az opcionális lépéseket végre kell hajtania.
 
-| Lépés | Leírás |
+| Lépés | Description |
 | --- | --- |
 | **Előfeltételek** |Ezeknek kell teljesülniük az üzembe helyezésre való felkészülés során. |
 | [Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist) |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |

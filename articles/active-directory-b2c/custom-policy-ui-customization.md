@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388884"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -34,11 +34,11 @@ Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-sta
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például <em> `SocialAndLocalAccounts/` </em>:. Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
-1. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
+1. Nyissa meg a kiterjesztési fájlt. Például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
-1. Keresse meg a **ContentDefinition** másolt XML `Id="api.signuporsignin"` -fájlban található ContentDefinition elemet.
+1. Keresse meg a **ContentDefinition** `Id="api.signuporsignin"` másolt XML-fájlban található ContentDefinition elemet.
 1. Módosítsa a **tartalomdefinícióban** értékét a Storage-ba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Az egyéni szabályzatnak a következő kódrészlethez hasonlóan kell kinéznie:
@@ -79,13 +79,13 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 
 ## <a name="configure-dynamic-custom-page-content-uri"></a>Dinamikus egyéni oldal tartalmi URI-ja konfigurálása
 
-Azure AD B2C egyéni szabályzatok használatával az URL-címen vagy egy lekérdezési karakterláncban is elküldheti a paramétereket. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. A paraméter lehet bármely [jogcím-feloldó](claim-resolver-overview.md), például az alkalmazás azonosítója, a nyelvi azonosító vagy az egyéni lekérdezési karakterlánc paraméter, például: `campaignId`.
+Azure AD B2C egyéni szabályzatok használatával az URL-címen vagy egy lekérdezési karakterláncban is elküldheti a paramétereket. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. A paraméter lehet bármely [jogcím-feloldó](claim-resolver-overview.md), például az alkalmazás azonosítója, a nyelvi azonosító vagy az egyéni lekérdezési karakterlánc paraméter, például: `campaignId` .
 
 ### <a name="sending-query-string-parameters"></a>Lekérdezési karakterlánc paramétereinek küldése
 
 Lekérdezési karakterlánc paramétereinek küldéséhez a [függő entitás házirendjében](relyingparty.md)adjon hozzá egy `ContentDefinitionParameters` elemet az alább látható módon.
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -99,9 +99,9 @@ Lekérdezési karakterlánc paramétereinek küldéséhez a [függő entitás h�
 </RelyingParty>
 ```
 
-A tartalom definíciójában módosítsa a értékét `LoadUri` a következőre `https://<app_name>.azurewebsites.net/home/unified`:. Az egyéni szabályzatnak `ContentDefinition` a következő kódrészlethez hasonlóan kell kinéznie:
+A tartalom definíciójában módosítsa a értékét a következőre: `LoadUri` `https://<app_name>.azurewebsites.net/home/unified` . Az egyéni szabályzatnak `ContentDefinition` a következő kódrészlethez hasonlóan kell kinéznie:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,14 +118,14 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 A tartalom a használt paraméterek alapján különböző helyekről is kihúzható. A CORS-kompatibilis végponton állítsa be a mappa szerkezetét a tartalom tárolására. Például a következő struktúrában rendezheti a tartalmakat. Gyökérmappa */mappa/nyelv/a HTML-fájlok*. Az egyéni oldal URI-ja például az alábbihoz hasonló lehet:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
 </ContentDefinition>
 ```
 
-A Azure AD B2C a francia nyelvhez a két betűs ISO `fr` -kódot küldi el:
+A Azure AD B2C a francia nyelvhez a két betűs ISO-kódot küldi el `fr` :
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html

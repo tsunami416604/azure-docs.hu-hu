@@ -11,23 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b756ad44c9702d7b8a2e1fe02c1404e0309f4f10
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d9c387a095f81978bc57f6ce6365596cafffc39c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054112"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196998"
 ---
-# <a name="use-powershell-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz a PowerShell használatával
+# <a name="use-powershell-to-add-an-elastic-pool-to-a-failover-group"></a>Rugalmas készlet hozzáadása feladatátvételi csoporthoz a PowerShell használatával
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez a PowerShell-parancsfájl egy önálló adatbázist hoz létre, és hozzáadja egy rugalmas készlethez, létrehoz egy feladatátvételi csoportot és teszteli a feladatátvételi teszteket.
+Ez a Azure PowerShell szkript létrehoz egy adatbázist a Azure SQL Databaseban, hozzáadja azt egy rugalmas készlethez, létrehoz egy feladatátvételi csoportot és teszteli a feladatátvételi teszteket.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-scripts"></a>Mintaparancsfájlok
 

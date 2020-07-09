@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: Legutóbbi frissítések
       items:
+        - name: 2020. májusi feladat- és metrikafrissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: 2020. májusi irányítópult-frissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: 2020. április – új funkciók
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: 2020. április – frissítések
@@ -57,6 +61,8 @@
       href: concepts-architecture.md
     - name: Mik azok az alkalmazássablonok?
       href: concepts-app-templates.md
+    - name: Mik azok az eszközsablonok?
+      href: concepts-device-templates.md
     - name: Eszközkapcsolatok
       href: concepts-get-connected.md
     - name: IoT Edge-eszközök csatlakoztatása
@@ -87,8 +93,6 @@
           href: howto-manage-devices.md
         - name: Szabályok konfigurálása
           href: howto-configure-rules.md
-        - name: Munkafolyamatok használata más szolgáltatásokkal való integráláshoz
-          href: howto-configure-rules-advanced.md
         - name: Eszközadatok elemzése
           href: howto-create-analytics.md
         - name: Csempék hozzáadása az irányítópulthoz
@@ -103,12 +107,16 @@
           href: howto-export-data.md
         - name: Szabályokra vonatkozó webhookok létrehozása
           href: howto-create-webhooks.md
+        - name: Munkafolyamatok használata más szolgáltatásokkal való integráláshoz
+          href: howto-configure-rules-advanced.md
         - name: Szabályokra vonatkozó Azure Monitor-műveletcsoportok csatlakoztatása
           href: howto-use-action-groups.md
         - name: Egyéni szabályok létrehozása
           href: howto-create-custom-rules.md
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: howto-create-custom-analytics.md
+        - name: Adatok vizualizációja a Power BI-ban
+          href: howto-connect-powerbi.md
     - name: Felügyelet
       items:
         - name: Az alkalmazás felügyelete
@@ -123,6 +131,10 @@
               href: howto-customize-ui.md
             - name: Az alkalmazás exportálása
               href: howto-use-app-templates.md
+            - name: Alkalmazásállapot monitorozása
+              href: howto-monitor-application-health.md
+            - name: Az alkalmazásról
+              href: howto-get-app-info.md
         - name: Kezelés más helyekről
           items:
             - name: Kezelés az Azure Portalról
@@ -141,6 +153,10 @@
               href: howto-manage-preferences.md
             - name: Élő csevegés ki-/bekapcsolása
               href: howto-show-hide-chat.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
@@ -176,9 +192,9 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: IoT Central API – Referencia
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Ügyfelek adatkérései

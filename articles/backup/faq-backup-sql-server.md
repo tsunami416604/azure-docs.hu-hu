@@ -4,12 +4,11 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248260"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -32,8 +31,8 @@ Bizonyos körülmények között a Azure Backup szolgáltatás elindítja a jav�
 
 Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve van az összes felhasználó számára; Ha azonban úgy dönt, hogy kikapcsolja, akkor hajtsa végre az alábbi műveleteket:
 
-- A SQL Server példányon a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre vagy szerkessze a **ExtensionSettingsOverrides. JSON** fájlt.
-- A **ExtensionSettingsOverrides. JSON**fájlban állítsa be a *{"EnableAutoHealer": false}* értéket.
+- A SQL Server példányon a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre vagy szerkessze a fájlt a **ExtensionSettingsOverrides.js** .
+- A **ExtensionSettingsOverrides.jsa**(z) beállításnál állítsa be a (z) *{"EnableAutoHealer": false}* értéket.
 - Mentse a módosításokat, és zárjuk be a fájlt.
 - A SQL Server-példányon nyissa meg a **feladat kezelése** , majd a **AzureWLBackupCoordinatorSvc** szolgáltatás újraindítása műveletet.
 
@@ -41,8 +40,8 @@ Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve
 
 Igen. A biztonsági mentési házirend futási arányának szabályozásával csökkentheti a SQL Server-példányra gyakorolt hatást. A beállítás módosítása:
 
-1. A SQL Server-példányon, a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre a *ExtensionSettingsOverrides. JSON* fájlt.
-2. A *ExtensionSettingsOverrides. JSON* fájlban módosítsa a **DefaultBackupTasksThreshold** beállítást alacsonyabb értékre (például 5). <br>
+1. A SQL Server-példányon, a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre a *ExtensionSettingsOverrides.js* fájlt.
+2. A *ExtensionSettingsOverrides.js* fájlban módosítsa a **DefaultBackupTasksThreshold** beállítást alacsonyabb értékre (például 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 A DefaultBackupTasksThreshold alapértelmezett értéke **20**.
@@ -52,7 +51,7 @@ A DefaultBackupTasksThreshold alapértelmezett értéke **20**.
  Habár ez a módszer segít, ha a biztonságimásolat-készítő alkalmazás nagy mennyiségű erőforrást használ fel, SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) sokkal általánosabb módszer a határértékek megadására a bejövő alkalmazások által igényelt CPU, fizikai IO és memória mennyisége tekintetében.
 
 > [!NOTE]
-> Az UX-ben továbbra is bármikor előre ütemezheti a sok biztonsági mentést, azonban a fenti példában szereplő, 5-öt lecsúsztatható ablakban fogja feldolgozni.
+> Az UX-ben továbbra is bármikor előre ütemezheti a sok biztonsági mentést, azonban a fenti példának megfelelően a rendszer egy csúszó ablakban fogja feldolgozni, azaz 5.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Futtathatok teljes biztonsági mentést egy másodlagos replikáról?
 
@@ -92,7 +91,7 @@ Ha nem **törli az adatokat a biztonsági mentésből**, a rendszer nem hajtja v
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Ha a védelem után módosítom az adatbázis nevét, mi lesz a viselkedés?
 
-Az átnevezett adatbázist új adatbázisként kezeli a rendszer. A szolgáltatás ezért úgy fogja kezelni ezt a helyzetet, mintha az adatbázis nem található, és a biztonsági mentések sikertelenek lesznek.
+Az átnevezett adatbázist új adatbázisként kezeli a rendszer. Így a szolgáltatás úgy fogja kezelni ezt a helyzetet, mintha az adatbázis nem található, és a biztonsági mentések sikertelenek lesznek.
 
 Kiválaszthatja az adatbázist, amely már átnevezve van és konfigurálhatja a védelmet. Ha az automatikus védelem engedélyezve van a példányon, a rendszer automatikusan észleli és védi az átnevezett adatbázist.
 

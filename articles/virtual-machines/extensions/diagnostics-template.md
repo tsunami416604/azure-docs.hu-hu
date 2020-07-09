@@ -16,10 +16,9 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258830"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal
@@ -168,7 +167,7 @@ Példa: a *WADMetricsPT1HP10DV2S20151108* olyan mérőszámokat tartalmaz, amely
 Minden WADMetrics-tábla a következő oszlopokat tartalmazza:
 
 * **PartitionKey**: a partíciós kulcs a *resourceID* érték alapján épül fel a virtuálisgép-erőforrás egyedi azonosítására. Például:`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: a formátumot `<Descending time tick>:<Performance Counter Name>`követi. A csökkenő időtartamú Tick-számítás a maximális idő, amely az összesítési időszak kezdetének időpontját jelöli. Például, ha a mintavételi időszak 10 – Nov-2015 és 00:00Hrs UTC, akkor a számítás a következő lesz: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. A rendelkezésre álló memória bájtjainak teljesítményszámláló a sor kulcsa a következőképpen fog kinézni:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: a formátumot követi `<Descending time tick>:<Performance Counter Name>` . A csökkenő időtartamú Tick-számítás a maximális idő, amely az összesítési időszak kezdetének időpontját jelöli. Például, ha a mintavételi időszak 10 – Nov-2015 és 00:00Hrs UTC, akkor a számítás a következő lesz: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . A rendelkezésre álló memória bájtjainak teljesítményszámláló a sor kulcsa a következőképpen fog kinézni:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: a teljesítményszámláló neve. Ez megegyezik az XML-konfigurációban definiált *counterSpecifier* .
 * **Maximum**: a teljesítményszámláló maximális értéke az összesítési időszakban.
 * **Minimum**: a teljesítményszámláló minimális értéke az összesítési időszakban.

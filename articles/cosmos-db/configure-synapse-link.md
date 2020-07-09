@@ -3,15 +3,15 @@ title: Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos
 description: Megtudhatja, hogyan engedélyezheti az Azure Cosmos-fiókok szinapszis-hivatkozását, hogyan hozhat létre olyan tárolót, amelyeken engedélyezve van az analitikai tároló, valamint csatlakoztathatja az Azure Cosmos-adatbázist a szinapszis munkaterülethez
 author: SriChintala
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262038"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
@@ -40,11 +40,11 @@ Az alábbi lépések végrehajtásával elemzési lekérdezéseket futtathat a A
 
 1. Válassza a **szinapszis hivatkozás** elemet a szolgáltatások listából.
 
-   ![A szinapszis-hivatkozás előzetes funkciójának keresése](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="A szinapszis-hivatkozás előzetes funkciójának keresése":::
 
 1. Ezután felszólítja, hogy engedélyezze a szinapszis hivatkozását a fiókján. Válassza az Engedélyezés lehetőséget.
 
-   ![Szinapszis-hivatkozás funkciójának engedélyezése](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Szinapszis-hivatkozás funkciójának engedélyezése":::
 
 1. A fiókja mostantól engedélyezve van a szinapszis-hivatkozás használatára. Ezután olvassa el az analitikai tárolóval rendelkező tárolók létrehozása a működési adatok tranzakciós tárolóból az analitikai tárolóba való replikálásának automatikus megkezdéséhez című témakört.
 
@@ -67,7 +67,7 @@ A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cos
 
 1. Válassza az **új tároló** lehetőséget, és adja meg az adatbázis nevét, a tárolót, a partíció kulcsát és az átviteli sebesség részleteit. Kapcsolja be az **analitikai tároló** lehetőséget. Az analitikai tároló engedélyezése után egy olyan tárolót hoz létre, amelynek `AnalyicalTTL` a tulajdonsága az alapértelmezett-1 értékre van beállítva (végtelen megőrzés). Ez az analitikai tároló a rekordok összes korábbi verzióját megőrzi.
 
-   ![Az analitikai tár bekapcsolása az Azure Cosmos-tárolóhoz](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Az analitikai tár bekapcsolása az Azure Cosmos-tárolóhoz":::
 
 1. Ha korábban nem engedélyezte a szinapszis hivatkozását ezen a fiókon, a rendszer felszólítja erre, mert ez egy, az analitikai tároló engedélyezett tárolójának létrehozásához szükséges előfeltétel. Ha a rendszer kéri, válassza a **szinapszis-hivatkozás engedélyezése**lehetőséget.
 
@@ -142,7 +142,7 @@ container = client.CreateContainer(db['_self'], container_definition, options)
 
 ### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a>Az analitikai tár élettartamának frissítése
 
-Miután az analitikai tár engedélyezve lett egy adott TTL-értékkel, később frissítheti azt egy másik érvényes értékre. Az értéket a Azure Portal vagy SDK-k használatával frissítheti. További információ a különböző analitikai TTL-konfigurációs beállításokról: az [analitikai élettartam támogatott értékei](analytical-store-introduction.md#analytical-ttl) című cikk.
+Ha az elemzési tárat egy adott élettartamértékkel engedélyezte, később módosíthatja azt egy másik érvényes értékre. Az értéket az Azure Portalon vagy SDK-k használatával módosíthatja. További információ a különböző analitikai TTL-konfigurációs beállításokról: az [analitikai élettartam támogatott értékei](analytical-store-introduction.md#analytical-ttl) című cikk.
 
 #### <a name="azure-portal"></a>Azure Portal
 
@@ -203,7 +203,7 @@ További információért lásd a következő dokumentumokat:
 
 * [Az Azure szinapszis hivatkozása Azure Cosmos DB.](synapse-link.md)
 
-* [Azure Cosmos DB analitikus áruház áttekintése.](analytical-store-introduction.md)
+* [Az Azure Cosmos DB elemzési tár áttekintése.](analytical-store-introduction.md)
 
 * [Gyakran ismételt kérdések a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozásról.](synapse-link-frequently-asked-questions.md)
 

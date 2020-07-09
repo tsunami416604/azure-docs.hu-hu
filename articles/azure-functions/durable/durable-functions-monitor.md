@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562122"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
@@ -28,7 +27,7 @@ Ez a minta figyeli a hely aktuális időjárási feltételeit, és SMS-ben figye
 * A figyelők méretezhetők. Mivel minden figyelő egy előkészítési példány, több figyelő is létrehozható anélkül, hogy új funkciókat kellene létrehoznia, vagy további kódokat kellene megadnia.
 * A monitorok könnyen integrálhatók a nagyobb munkafolyamatokban. Egy figyelő lehet egy összetettebb összehangoló függvény, vagy egy [alfolyamatok](durable-functions-sub-orchestrations.md)egyik szakasza is.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="configuring-twilio-integration"></a>Twilio-integráció konfigurálása
 
@@ -38,7 +37,7 @@ Ez a minta figyeli a hely aktuális időjárási feltételeit, és SMS-ben figye
 
 Ez a példa a Weather Underground API-t használja a hely aktuális időjárási feltételeinek vizsgálatához.
 
-Az első dolog, amire szüksége van egy időjárási Underground-fiók. Létrehozhat egyet ingyen a következő címen: [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Ha már rendelkezik fiókkal, meg kell adnia egy API-kulcsot. Ehhez látogasson [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)el, és válassza a Key Settings (Alapbeállítások) lehetőséget. Az Stratus fejlesztői terve ingyenes, és elegendő a minta futtatásához.
+Az első dolog, amire szüksége van egy időjárási Underground-fiók. Létrehozhat egyet ingyen a következő címen: [https://www.wunderground.com/signup](https://www.wunderground.com/signup) . Ha már rendelkezik fiókkal, meg kell adnia egy API-kulcsot. Ehhez látogasson el [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) , és válassza a Key Settings (Alapbeállítások) lehetőséget. Az Stratus fejlesztői terve ingyenes, és elegendő a minta futtatásához.
 
 Ha már rendelkezik API-kulccsal, adja hozzá a következő **alkalmazás-beállítást** a Function alkalmazáshoz.
 
@@ -50,21 +49,21 @@ Ha már rendelkezik API-kulccsal, adja hozzá a következő **alkalmazás-beáll
 
 Ez a cikk a minta alkalmazás következő funkcióit ismerteti:
 
-* `E3_Monitor`: Egy [Orchestrator függvény](durable-functions-bindings.md#orchestration-trigger) , amely `E3_GetIsClear` rendszeresen hív meg. Ha `E3_GetIsClear` igaz `E3_SendGoodWeatherAlert` értéket ad vissza, meghívja a függvényt.
+* `E3_Monitor`: Egy [Orchestrator függvény](durable-functions-bindings.md#orchestration-trigger) , amely `E3_GetIsClear` rendszeresen hív meg. `E3_SendGoodWeatherAlert`Ha `E3_GetIsClear` igaz értéket ad vissza, meghívja a függvényt.
 * `E3_GetIsClear`: Olyan [tevékenységi függvény](durable-functions-bindings.md#activity-trigger) , amely egy adott hely aktuális időjárási feltételeit ellenőrzi.
 * `E3_SendGoodWeatherAlert`: Egy tevékenység-függvény, amely SMS-üzenetet küld a Twilio-on keresztül.
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator függvény
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
 
-A Orchestrator meg kell adni egy helyet a figyeléshez, valamint egy telefonszámot, hogy üzenetet küldjön, amikor a helyről törölve lesz. Ezeket az adattípusokat a rendszer erősen beírt `MonitorRequest` objektumként adja át a Orchestrator.
+A Orchestrator meg kell adni egy helyet a figyeléshez, valamint egy telefonszámot, hogy üzenetet küldjön, amikor a helyről törölve lesz. Ezeket az adattípusokat a rendszer erősen beírt objektumként adja át a Orchestrator `MonitorRequest` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A **E3_Monitor** függvény a standard *function. JSON* fájlt használja a Orchestrator függvényekhez.
+A **E3_Monitor** függvény a standard *function.jst* használja a Orchestrator függvényekhez.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
@@ -87,15 +86,15 @@ Egyszerre több Orchestrator példány is futtatható a Orchestrator függvény 
 
 ### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear Activity függvény
 
-Más mintákhoz hasonlóan a segítő tevékenység funkciói az `activityTrigger` trigger-kötést használó reguláris függvények. A **E3_GetIsClear** függvény az időjárási földalatti API használatával beolvassa az aktuális időjárási feltételeket, és meghatározza, hogy az ég tiszta-e.
+Más mintákhoz hasonlóan a segítő tevékenység funkciói az trigger-kötést használó reguláris függvények `activityTrigger` . A **E3_GetIsClear** függvény az időjárási földalatti API használatával beolvassa az aktuális időjárási feltételeket, és meghatározza, hogy az ég tiszta-e.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A *function. JSON* a következőképpen van definiálva:
+A *function.jsa* következő módon van definiálva:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
@@ -109,16 +108,16 @@ Itt pedig a megvalósítás.
 
 A **E3_SendGoodWeatherAlert** függvény a Twilio kötés használatával küld SMS-üzenetet, amely értesíti a felhasználót arról, hogy jó idő van egy sétára.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
 
 > [!NOTE]
-> A mintakód futtatásához telepítenie `Microsoft.Azure.WebJobs.Extensions.Twilio` kell a Nuget csomagot.
+> A mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget csomagot.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A *function. JSON* egyszerű:
+A *function.js* egyszerű:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
@@ -169,7 +168,7 @@ A munkafolyamatok tevékenysége a Azure Functions portálon megjelenő függvé
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-A rendszer az időtúllépés elérésekor vagy az égbolt észlelésének törlésével [leáll](durable-functions-instance-management.md) . Használhatja `TerminateAsync` a (.net) vagy `terminate` a (JavaScript) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **terminatePostUri** http post webhookot, a lemondási ok helyett: `{text}`
+A rendszer az időtúllépés elérésekor vagy az égbolt észlelésének törlésével [leáll](durable-functions-instance-management.md) . Használhatja a `TerminateAsync` (.net) vagy a `terminate` (JavaScript) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **terminatePostUri** http post webhookot, `{text}` a lemondási ok helyett:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
 ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75779246"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val
@@ -86,7 +85,7 @@ client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, enc
 
 Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](dynamic-packaging-overview.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
 
-A következő C#-kód azt mutatja be, hogyan hozható létre adatfolyam- `StreamingLocator.Filters`kereső, és hogyan adható meg. Ez egy opcionális tulajdonság, amely `IList<string>` a szűrők nevét veszi figyelembe.
+A következő C#-kód azt mutatja be, hogyan hozható létre adatfolyam-kereső, és hogyan adható meg `StreamingLocator.Filters` . Ez egy opcionális tulajdonság, amely `IList<string>` a szűrők nevét veszi figyelembe.
 
 ```csharp
 IList<string> filters = new List<string>();
@@ -110,7 +109,7 @@ A szűrők meghatározása után az ügyfelek a streaming URL-ben használhatjá
 
 Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
-|Protocol (Protokoll)|Példa|
+|Protokoll|Példa|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|

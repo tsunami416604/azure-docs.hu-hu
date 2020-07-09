@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82615278"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép hibaelhárítása a Windows Virtual Desktopban
@@ -46,7 +46,7 @@ A hiba elhárításához vegye fel a felhasználót a Távoli asztal felhasznál
 1. Nyissa meg az Azure Portalt.
 2. Válassza ki azt a virtuális gépet, amelyen a hibaüzenet jelenik meg.
 3. Válassza **a parancs futtatása**lehetőséget.
-4. Futtassa a következő parancsot, `<username>` és a helyére írja be a hozzáadni kívánt felhasználó nevét:
+4. Futtassa a következő parancsot, és a `<username>` helyére írja be a hozzáadni kívánt felhasználó nevét:
    
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add

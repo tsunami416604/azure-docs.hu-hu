@@ -3,12 +3,12 @@ title: QnA Maker szolgáltatás beállítása – QnA Maker
 description: Mielőtt bármilyen QnA Maker tudásbázist létrehozni, először be kell állítania egy QnA Maker szolgáltatást az Azure-ban. Az előfizetésben lévő új erőforrások létrehozásához szükséges engedélyekkel rendelkező bárki beállíthat QnA Maker szolgáltatást.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171174"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214128"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -60,9 +60,9 @@ Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szüksége
     Az _Cognitive Services_ típusú erőforrás rendelkezik az _előfizetési_ kulcsokkal.
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Előfizetési kulcsok keresése a Azure Portal
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Szerzői kulcsok keresése a Azure Portal
 
-Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure Portal, ahol létrehozta a QnA Maker erőforrást.
+A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Portal, ahol létrehozta a QnA Maker erőforrást. Ezeket a kulcsokat előfizetési kulcsoknak is nevezzük. 
 
 1. Nyissa meg a Azure Portal QnA Maker erőforrását, és válassza ki a _Cognitive Services_ típust tartalmazó erőforrást:
 
@@ -72,7 +72,7 @@ Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure 
 
     ![Előfizetői azonosító](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Végponti kulcsok keresése a QnA Maker portálon
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Lekérdezési végpont kulcsainak keresése a QnA Maker portálon
 
 A végpont ugyanabban a régióban található, mint az erőforrás, mert a végponti kulcsok használatával hívható meg a Tudásbázis.
 
@@ -210,6 +210,11 @@ Annak érdekében, hogy az előrejelzési végpont alkalmazás betöltődik, mé
 1. A rendszer megkérdezi, hogy szeretné-e újraindítani az alkalmazást az új beállítás használatához. Válassza a **Folytatás** elemet.
 
 További információ a App Service [általános beállításainak](../../../app-service/configure-common.md#configure-general-settings)konfigurálásáról.
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Environment konfigurálása a QnA Maker számára App Service
+A App Service Environment használható QnA Maker app Service üzemeltetéséhez. Ha a App Service Environment belső, akkor az alábbi lépéseket kell követnie:
+1. Hozzon létre egy app Service-t és egy Azure Search-szolgáltatást.
+2. Tegye közzé az App Service-t nyilvános DNS-en és engedélyezési QnA Maker Service-címkén: CognitiveServicesManagement vagy őrizze meg az internetkapcsolatot.
+3. Hozzon létre egy QnA Maker kognitív szolgáltatási példányt (Microsoft. CognitiveServices/accounts) Azure Resource Manager használatával, ahol a QnA Maker végpontot App Service Environment értékre kell állítani. 
 
 ## <a name="business-continuity-with-traffic-manager"></a>Üzletmenet-folytonosság a Traffic Managerrel
 
@@ -238,7 +243,7 @@ A fentiekben képviselt magas szintű ötlet a következő:
 
 Ha törli a QnA Maker tudásbázishoz használt Azure-erőforrásokat, a tudásbázisok nem fognak működni. Az erőforrások törlése előtt győződjön meg arról, hogy a tudásbázisokat a **Beállítások** lapról exportálja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 

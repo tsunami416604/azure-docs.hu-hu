@@ -4,19 +4,19 @@ description: Azt mutatja, hogy az Azure AD B2B vendég felhasználó hogyan hagy
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386980"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>A szervezet kihagyása vendég felhasználóként
 
@@ -51,8 +51,8 @@ Amikor egy felhasználó elhagyja a szervezetet, a felhasználói fiók "Soft De
 
 Ha szükséges, a bérlői rendszergazda a 30 napos időszakban bármikor véglegesen törölheti a fiókot. Ehhez tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory**lehetőséget.
-2. A **Kezelés** alatt válassza a **Felhasználókat**.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** lehetőséget.
+2. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 3. Válassza a **törölt felhasználók**lehetőséget.
 4. Jelölje be a törölt felhasználó melletti jelölőnégyzetet, majd válassza a **véglegesen törlés**lehetőséget.
 

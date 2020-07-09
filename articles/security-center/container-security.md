@@ -10,24 +10,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80125145"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800603"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
-A Azure Security Center az Azure-natív megoldás a tárolók biztonságához. A Security Center a Felhőbeli számítási feladatok, a virtuális gépek, a kiszolgálók és a tárolók biztonsága terén is optimális, egyetlen üvegtábla.
+Azure Security Center az Azure-natív megoldás a tárolók biztonságossá tételéhez. A Security Center a következő tároló-erőforrástípusok elleni védelemmel rendelkezhet:
 
-Ez a cikk azt ismerteti, hogyan segíti a Security Center a tárolók és alkalmazásaik biztonságának javítását, figyelését és karbantartását. Megtudhatja, hogyan segíti a Security Center a tárolók biztonságával kapcsolatos alapvető szempontokat:
 
-* Sebezhetőségek kezelése
-* A tároló környezetének megerősítése
-* Futtatókörnyezet védelme
+
+|Erőforrás |Name  |Részletek  |
+|:---------:|---------|---------|
+|![Tároló gazdagépe](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|Tároló-gazdagépek (a Docker-t futtató virtuális gépek)|A Security Center megvizsgálja a Docker-konfigurációkat, és egy listát készít az összes átvizsgált hibás szabályról, így láthatóvá teszi a konfigurációs hibákat. Security Center útmutatást nyújt a problémák gyors megoldásához és az idő megtakarításához. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és tájékoztatja a legfrissebb állapotukról.|
+|![Kubernetes szolgáltatás](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Azure Kubernetes szolgáltatás (ak) fürtök|A standard szintű felhasználók számára, hogy mélyebben lássa el az AK-csomópontokat, a felhő forgalmát és a biztonsági ellenőrzéseket [Security Center a választható AK-csomaggal](azure-kubernetes-service-integration.md) .|
+|![Tárolóregisztrációs adatbázis](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry (ACR) jegyzékek|Az ARM-alapú ACR-jegyzékekben található rendszerképek biztonsági réseit alaposabban megismerheti, ha a standard szintű felhasználók számára [Security Center opcionális ACR-csomaggal](azure-kubernetes-service-integration.md) rendelkezik.|
+||||
+
+
+Ez a cikk bemutatja, hogyan használhatja ezeket a csomagokat a tárolók és alkalmazásaik biztonságának fejlesztéséhez, figyeléséhez és karbantartásához. Megtudhatja, hogyan segíti a Security Center a tárolók biztonságával kapcsolatos alapvető szempontokat:
+
+- [Sebezhetőségi kezelés – tároló lemezképének vizsgálata](#vulnerability-management---scanning-container-images)
+- [Környezet megerősítése – a Docker-konfiguráció és a Kubernetes-fürtök folyamatos figyelése](#environment-hardening)
+- [Futásidejű védelem – valós idejű fenyegetések észlelése](#run-time-protection---real-time-threat-detection)
 
 [![Azure Security Center a tároló biztonsága lapon](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
@@ -65,36 +75,13 @@ A szolgáltatással kapcsolatos releváns Security Center javaslatok részletei�
 
 ## <a name="run-time-protection---real-time-threat-detection"></a>Futásidejű védelem – valós idejű fenyegetések észlelése
 
-Security Center valós idejű veszélyforrások észlelését teszi lehetővé a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
-
-A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. A részletekért lásd: [Az Azure-tárolók veszélyforrások észlelése](threat-protection.md#azure-containers).
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
-## <a name="container-security-faq"></a>Container Security – gyakori kérdések
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Milyen típusú képeket tud Azure Security Center a vizsgálat?
-Security Center megvizsgálja a rendszerhéj-hozzáférést biztosító Linux operációs rendszert használó lemezképeket. 
-
-A Qualys képolvasó nem támogatja a Super minimalista rendszerképeket, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképeket vagy a "eltérítetlen" lemezképeket, amelyek csak az alkalmazást és a futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.
-
-### <a name="how-does-azure-security-center-scan-an-image"></a>Hogyan vizsgálja Azure Security Center a rendszerképet?
-A rendszerkép a beállításjegyzékből lett kihúzva. Ezután egy elkülönített homokozóban fut a Qualys-olvasóval, amely kibontja az ismert sebezhetőségek listáját.
-
-Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
-
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Milyen gyakran Azure Security Center beolvasni a képeiket?
-A képvizsgálatok minden leküldésen aktiválva lesznek.
-
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>Lekérhetem a vizsgálat eredményeit REST APIon keresztül?
-Igen. Az eredmények az [alárendelt értékelések REST API](/rest/api/securitycenter/subassessments/list/)-ban találhatók. Emellett használhatja az Azure Resource Graph (ARG), a Kusto API-t az összes erőforráshoz: a lekérdezés egy adott vizsgálatot tud beolvasni.
- 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Azure Security Center tárolók biztonságáról, tekintse meg a következő kapcsolódó cikkeket:
-
-* A tárolóval kapcsolatos erőforrások biztonsági állapotának megtekintéséhez tekintse meg a [gépek és alkalmazások védelme](security-center-virtual-machine-protection.md#containers)a tárolókkal foglalkozó szakaszt.
-
-* Az [Azure Kubernetes szolgáltatással való integráció](azure-kubernetes-service-integration.md) részletei
-
-* Az Azure Container Registry-nal való [integráció](azure-container-registry-integration.md) részletei
+Ebben az áttekintésben megtanulta a tárolók biztonságának alapvető elemeit Azure Security Centerban. Folytassa a [tárolók biztonságának monitorozásával](monitor-container-security.md).
+> [!div class="nextstepaction"]
+> [A tárolók biztonságának figyelése](monitor-container-security.md)

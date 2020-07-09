@@ -7,111 +7,89 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77462326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806811"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
 
-Ez a cikk a szolgáltatás (erőforrás) szintjén, a munkaterhelés szintjén (lekérdezések és indexelés), valamint a felhasználói hozzáférés figyelésére szolgáló keretrendszert mutat be.
+Ez a cikk áttekintést nyújt az Azure Cognitive Search figyelési alapelveiről és eszközeiről. Az átfogó figyeléshez használhatja a beépített funkciók és bővítmények, például a Azure Monitor kombinációját.
 
-A spektrumon a beépített infrastruktúra és az alapszintű szolgáltatások, például a Azure Monitor, valamint a statisztikát, darabszámot és állapotot visszaadó szolgáltatás API-k kombinációját fogja használni. A funkciók körének megismerése segíthet egy visszajelzési hurok összeállításában, így problémák merülhetnek fel, ahogy azok megjelentek.
+Összességében nyomon követheti a következőket:
 
-## <a name="use-azure-monitor"></a>Az Azure Monitor használata
+* Szolgáltatás: állapot/rendelkezésre állás és a szolgáltatás konfigurációjának módosításai.
+* Tárterület: mindkettő használatban van és elérhető, és minden tartalomtípushoz a szolgáltatási szinten engedélyezett kvótához viszonyítva számít.
+* Lekérdezési tevékenység: kötetek, késések, valamint szabályozott vagy eldobott lekérdezések. A naplózott lekérdezési kérelmekhez [Azure monitor](#add-azure-monitor)szükséges.
+* Indexelési tevékenység: a Azure Monitortel való [diagnosztikai naplózást](#add-azure-monitor) igényel.
 
-Számos szolgáltatás, többek között az Azure Cognitive Search, a riasztások, a metrikák és a naplózási diagnosztikai adatok kihasználása [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) . Az Azure Cognitive Search esetében a beépített figyelési infrastruktúrát elsősorban az erőforrás-szintű monitorozás (a szolgáltatás állapota) és a [lekérdezések figyelése](search-monitor-queries.md)használja.
+A keresési szolgáltatás felhasználónkénti hitelesítést nem támogat, ezért a rendszer nem talál azonosító adatokat a naplókban.
 
-A következő képernyőfelvétel segít megkeresni Azure Monitor szolgáltatásokat a portálon.
+## <a name="built-in-monitoring"></a>Beépített figyelés
 
-+ A **figyelés** lap a fő Áttekintés lapon a legfontosabb metrikákat jeleníti meg egy pillantással.
-+ **Műveletnapló**, csak az alábbi áttekintés, erőforrás-szintű műveletek jelentései: szolgáltatás állapota és API-kulcs kérése értesítések.
-+ A **figyelés**, a lista lejjebb, konfigurálható riasztások, metrikák és diagnosztikai naplók. Ezeket akkor hozza létre, amikor szüksége van rájuk. Az adatok gyűjtése és tárolása után lekérdezheti vagy megjelenítheti az elemzések adatait.
+A beépített figyelés a keresési szolgáltatás által naplózott tevékenységekre vonatkozik. A diagnosztika kivételével a figyelési szinthez nincs szükség konfigurációra.
+
+Az Azure Cognitive Search a szolgáltatás állapotára és a lekérdezési metrikára vonatkozó jelentéskészítési 30 napos ütemterven tárolja a belső adatokat, amelyek a portálon vagy a [REST API](#monitoring-apis)-kon keresztül találhatók meg.
+
+A következő képernyőfelvétel segít megtalálni a figyelési információkat a portálon. Az adatai a szolgáltatás használatának megkezdése után azonnal elérhetővé válnak. A portál oldalai néhány percenként frissülnek.
+
+* **Figyelés** lap – a fő Áttekintés lapon a lekérdezési mennyiség, a késés, valamint a szolgáltatás nyomása alatt látható.
+* A **tevékenység naplója**a bal oldali navigációs ablaktáblán csatlakozik a Azure Resource Managerhoz. A tevékenység napló jelentéseket készít a Resource Manager által végrehajtott műveletekről: a szolgáltatás rendelkezésre állása és állapota, a kapacitás (replikák és partíciók) változásai, valamint az API-kulcsokkal kapcsolatos tevékenységek.
+* A **figyelési** beállítások – lejjebb – konfigurálható riasztásokat, metrikákat és diagnosztikai naplókat biztosítanak. Ezeket akkor hozza létre, amikor szüksége van rájuk. Az adatok gyűjtése és tárolása után lekérdezheti vagy megjelenítheti az elemzések adatait.
 
 ![Azure Monitor integráció egy keresési szolgáltatásban](./media/search-monitor-usage/azure-monitor-search.png
  "Azure Monitor integráció egy keresési szolgáltatásban")
 
-### <a name="precision-of-reported-numbers"></a>Jelentett számok pontossága
+> [!NOTE]
+> Mivel a portál oldalai néhány percenként frissülnek, a jelentett számok hozzávetőleges értékkel bírnak, így általános értelemben láthatja, hogy a rendszer milyen jól szolgálja ki a karbantartási kérelmeket. A tényleges mérőszámok, például a másodpercenkénti lekérdezések (QPS) lehetnek magasabbak vagy alacsonyabbak, mint az oldalon megjelenített szám. Ha a pontosság követelmény, érdemes lehet API-kat használni.
 
-A portál oldalai néhány percenként frissülnek. Így a portálon jelentett számok hozzávetőleges értékkel bírnak, így általános értelemben láthatja, hogy a rendszer milyen jól szolgálja ki a karbantartási kérelmeket. A tényleges mérőszámok, például a másodpercenkénti lekérdezések (QPS) lehetnek magasabbak vagy alacsonyabbak, mint az oldalon megjelenített szám.
+<a name="monitoring-apis"> </a>
 
-## <a name="activity-logs-and-service-health"></a>Tevékenységek naplói és szolgáltatás állapota
+### <a name="apis-useful-for-monitoring"></a>A figyeléshez hasznos API-k
 
-A [**tevékenység naplója**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) adatokat gyűjt a Azure Resource Managerről, és jelentéseket készít a szolgáltatás állapotát érintő változásokról. A szolgáltatási állapottal kapcsolatos kritikus, hibával és figyelmeztetési feltételekkel nyomon követheti a tevékenység naplóját.
+A következő API-k segítségével kérheti le a portál figyelés és használat lapjain található adatokat.
 
-A szolgáltatáson belüli feladatokhoz – mint például a lekérdezések, az indexelés vagy az objektumok létrehozása – általános tájékoztató értesítéseket fog látni, például a *rendszergazdai kulcs beolvasása* és a *lekérdezési kulcsok beolvasása* az egyes kérelmekhez, de nem maga a konkrét művelet. A gabonával kapcsolatos információkért be kell állítania a diagnosztikai naplózást.
+* [Szolgáltatás statisztikáinak beolvasása](/rest/api/searchservice/get-service-statistics)
+* [Index statisztikáinak beolvasása](/rest/api/searchservice/get-index-statistics)
+* [Dokumentumok számának beolvasása](/rest/api/searchservice/count-documents)
+* [Indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status)
+
+### <a name="activity-logs-and-service-health"></a>Tevékenységek naplói és szolgáltatás állapota
+
+A portál [**tevékenység napló**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) lapja adatokat gyűjt a Azure Resource Managerről, és jelentéseket készít a szolgáltatás állapotának változásairól. A szolgáltatási állapottal kapcsolatos kritikus, hibával és figyelmeztetési feltételekkel nyomon követheti a tevékenység naplóját.
+
+A közös bejegyzések az API-kulcsokra mutató hivatkozásokat tartalmaznak – általános tájékoztató értesítések, például *rendszergazdai kulcs* beolvasása és *lekérdezési kulcsok beolvasása*. Ezek a tevékenységek azokat a kérelmeket jelzik, amelyeket a felügyeleti kulcs (objektumok létrehozása vagy törlése) vagy a lekérdezési kulcs használatával hoztak létre, de a kérést nem jelenítik meg. A gabonával kapcsolatos információkért be kell állítania a diagnosztikai naplózást.
 
 A **tevékenység naplóját** a bal oldali navigációs ablaktáblán, vagy a felső ablak parancssáv vagy a **problémák diagnosztizálása és megoldása** oldalon található értesítések közül lehet elérni.
 
-## <a name="monitor-storage"></a>Tároló figyelése
+### <a name="monitor-storage-in-the-usage-tab"></a>Tároló figyelése a használat lapon
 
-Az áttekintő lapokra épülő, Többlapos lapok az erőforrás-használattal kapcsolatos jelentést jelentenek. Ezek az adatok a szolgáltatás használatának megkezdése után azonnal elérhetővé válnak, és az oldal néhány percenként frissül. 
-
-Ha az éles számítási feladatokhoz [használt szintet](search-sku-tier.md)véglegesíti, vagy ha [módosítani szeretné az aktív replikák és partíciók számát](search-capacity-planning.md), akkor ezek a mérőszámok segítséget nyújthatnak ezekhez a döntésekhez azáltal, hogy megmutatják, hogy az erőforrások milyen gyorsan legyenek felhasználva, és hogy a jelenlegi konfiguráció milyen mértékben kezeli a meglévő terhelést.
-
-A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. Létre kell hoznia [egy egyéni megoldást](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) , amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ. További információ a tárolási metrikákkal kapcsolatban: [szolgáltatás statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
-
-A portálon a vizualizáció figyeléséhez a **használat** lapon az erőforrás rendelkezésre állása látható a szolgáltatási szinten kiszabott jelenlegi [korlátokhoz](search-limits-quotas-capacity.md) képest. 
+A portálon a vizualizáció figyeléséhez a **használat** lapon az erőforrás rendelkezésre állása látható a szolgáltatási szinten kiszabott jelenlegi [korlátokhoz](search-limits-quotas-capacity.md) képest. Ha az éles számítási feladatokhoz [használt szintet](search-sku-tier.md)véglegesíti, vagy ha [módosítani szeretné az aktív replikák és partíciók számát](search-capacity-planning.md), akkor ezek a mérőszámok segítséget nyújthatnak ezekhez a döntésekhez azáltal, hogy megmutatják, hogy az erőforrások milyen gyorsan legyenek felhasználva, és hogy a jelenlegi konfiguráció milyen mértékben kezeli a meglévő terhelést.
 
 Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektumára, illetve 50 MB tárterületre van korlátozva. Egy alapszintű vagy standard szolgáltatás magasabb korláttal rendelkezik, és ha megnöveli a partíciók számát, a maximális tárterület arányosan növekszik.
 
 ![A használati állapot a rétegek korlátaihoz képest](./media/search-monitor-usage/usage-tab.png
  "A használati állapot a rétegek korlátaihoz képest")
 
-## <a name="monitor-workloads"></a>Munkaterhelések figyelése
+> [!NOTE]
+> A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. A tárolási riasztások beszerzéséhez létre kell hoznia [egy egyéni megoldást](../azure-monitor/insights/solutions-creating.md) , amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ.
 
-A naplózott események magukban foglalják az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
+<a name="add-azure-monitor"></a>
 
-A naplózott adatok többsége csak olvasási műveletekhez használható. A naplóban nem rögzített további frissítési-törlési műveletekhez a keresési szolgáltatást a rendszerinformációk lekérdezése céljából kérdezheti le.
+## <a name="add-on-monitoring-with-azure-monitor"></a>Kiegészítő figyelés Azure Monitor
 
-| OperationName | Leírás |
-|---------------|-------------|
-| ServiceStats | Ez a művelet egy rutinos hívás a [szolgáltatás statisztikáinak beszerzésére](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), vagy közvetlenül vagy implicit módon, a portál áttekintő oldalának feltöltésekor, amikor betöltődik vagy frissül. |
-| Lekérdezés. keresés |  Lekérdezési kérelmek egy indextel kapcsolatban: a naplózott lekérdezésekkel kapcsolatos információk [figyelése](search-monitor-queries.md) .|
-| Indexelés. index  | Ez a művelet a [dokumentumok hozzáadását, frissítését és törlését](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)hívja meg. |
-| indexek. Prototípus | Ez az adatbázis importálása varázsló által létrehozott index. |
-| Indexelő. létrehozás | Hozzon létre egy indexelő explicit módon vagy implicit módon az adatimportálás varázsló segítségével. |
-| Indexelő. Get | Egy indexelő nevét adja vissza, amikor az indexelő fut. |
-| Indexelő. status | Egy indexelő állapotát adja vissza, amikor az indexelő fut. |
-| Adatforrások. Get | Az adatforrás nevét adja vissza, amikor egy indexelő fut.|
-| Indexek. Get | Egy index nevét adja vissza, amikor egy indexelő fut. |
+Számos szolgáltatás, többek között az Azure Cognitive Search, a további riasztások, metrikák és naplózási diagnosztikai adatok [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) integrálásával. 
 
-### <a name="kusto-queries-about-workloads"></a>Kusto lekérdezések a számítási feladatokról
+A keresési szolgáltatás [diagnosztikai naplózásának engedélyezése](search-monitor-logs.md) , ha az adatgyűjtést és-tárolást szeretné szabályozni. Az Azure Monitor által rögzített naplózott eseményeket a rendszer a **AzureDiagnostics** táblában tárolja, és a lekérdezésekhez és indexeléshez kapcsolódó operatív adatból áll.
 
-Ha engedélyezte a naplózást, a **AzureDiagnostics** lekérdezheti a szolgáltatásban futtatott műveletek listáját, valamint a következőt:. A tevékenységek a teljesítmény változásainak vizsgálatára is felhasználhatók.
+Azure Monitor számos tárolási lehetőséget biztosít, és az Ön választása határozza meg, hogyan használhatja fel az adatait:
 
-#### <a name="example-list-operations"></a>Példa: műveletek listázása 
+* Válassza az Azure Blob Storage lehetőséget, ha egy Power BI jelentésben szeretné [megjeleníteni a naplózási adattárakat](search-monitor-logs-powerbi.md) .
+* Válassza a Log Analytics lehetőséget, ha Kusto-lekérdezéseken keresztül szeretné felderíteni az adatforrásokat.
 
-Visszaküldi a műveletek listáját és az egyes elemek számát.
-
-```
-AzureDiagnostics
-| summarize count() by OperationName
-```
-
-#### <a name="example-correlate-operations"></a>Példa: korrelációs műveletek
-
-A lekérdezési kérelmek korrelációja az indexelési műveletekkel, valamint az adatpontok megjelenítése az idődiagramokon keresztül, hogy a műveletek egybeessenek.
-
-```
-AzureDiagnostics
-| summarize OperationName, Count=count()
-| where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
-| render timechart
-```
-
-### <a name="use-search-apis"></a>Keresési API-k használata
-
-Az Azure Cognitive Search REST API és a .NET SDK egyaránt biztosít programozott hozzáférést a szolgáltatási metrikák, az index és az indexelő adataihoz, valamint a dokumentumok számát.
-
-+ [Szolgáltatás statisztikáinak beolvasása](/rest/api/searchservice/get-service-statistics)
-+ [Index statisztikáinak beolvasása](/rest/api/searchservice/get-index-statistics)
-+ [Dokumentumok számának beolvasása](/rest/api/searchservice/count-documents)
-+ [Indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status)
+Azure Monitor saját számlázási struktúrája van, és az ebben a szakaszban hivatkozott diagnosztikai naplókhoz kapcsolódó díj vonatkozik. További információ: [a Azure monitor használati és becsült költségei](../azure-monitor/platform/usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Felhasználói hozzáférés figyelése
 

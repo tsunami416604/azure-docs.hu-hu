@@ -1,16 +1,15 @@
 ---
 title: Állapot-figyelés Service Fabric
 description: Bevezetés az Azure Service Fabric Health monitoring modellbe, amely a fürt és az alkalmazásai és szolgáltatásai figyelését teszi lehetővé.
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: gwallace
+ms.openlocfilehash: 82e61b2bf127ba86d06aba3110a000ed28a79833
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392760"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.
@@ -64,7 +63,7 @@ A lehetséges [állapotok](https://docs.microsoft.com/dotnet/api/system.fabric.h
 
 * **OK**. Az entitás kifogástalan. Nincsenek ismert problémák az informatikai vagy a gyermekeik számára (ha vannak ilyenek).
 * **Figyelmeztetés**. Az entitásnak vannak problémái, de továbbra is megfelelően működhet. Például késések fordulnak elő, de még nem okoznak működési problémákat. Bizonyos esetekben a figyelmeztetési feltétel külső beavatkozás nélkül is megoldható. Ezekben az esetekben az állapot-jelentések a tudatosságot és a folyamatban lévők láthatóságát teszik lehetővé. Más esetekben előfordulhat, hogy a figyelmeztetési feltétel a felhasználói beavatkozás nélkül súlyos hibába ütközik.
-* **Error**. Az entitás állapota nem kifogástalan. Az entitás állapotának kijavításához műveletet kell végrehajtani, mert az nem működik megfelelően.
+* **Hiba történt**. Az entitás állapota nem kifogástalan. Az entitás állapotának kijavításához műveletet kell végrehajtani, mert az nem működik megfelelően.
 * **Ismeretlen**. Az entitás nem létezik a Health Store-ban. Ezt az eredményt a több összetevőből származó eredményeket egyesítő elosztott lekérdezésekből lehet beszerezni. A csomópont-lista lekérése lekérdezés például a **FailoverManager**, a **ClusterManager**és a **HealthManager**; az alkalmazások listájának lekérése a **ClusterManager** és a **HealthManager**. Ezek a lekérdezések több rendszerösszetevőből egyesítik az eredményeket. Ha egy másik rendszerösszetevő olyan entitást ad vissza, amely nem szerepel az állapotfigyelő tárolóban, az egyesített eredmény ismeretlen állapottal rendelkezik. Az entitások nincsenek tárolva, mert az állapot-jelentések még nem lettek feldolgozva, vagy az entitást a törlés után törölték.
 
 ## <a name="health-policies"></a>Állapotfigyelő házirendek
@@ -101,7 +100,7 @@ A következő példa egy fürt jegyzékfájljának kivonata. Ha bejegyzéseket s
 ```
 
 ### <a name="application-health-policy"></a>Alkalmazás állapotára vonatkozó házirend
-Az [alkalmazás állapotára vonatkozó házirend](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) leírja, hogyan történik az események és a gyermekek összesítésének kiértékelése az alkalmazásokhoz és a gyermekeik számára. Az alkalmazás-jegyzékfájlban, az **ApplicationManifest. xml fájlban**definiálható, az alkalmazáscsomag használatával. Ha nincsenek megadva szabályzatok, Service Fabric feltételezi, hogy az entitás nem kifogástalan állapotú, ha a figyelmeztetés vagy a hiba állapot állapota jelentésben vagy gyermeken van.
+Az [alkalmazás állapotára vonatkozó házirend](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) leírja, hogyan történik az események és a gyermekek összesítésének kiértékelése az alkalmazásokhoz és a gyermekeik számára. Az alkalmazás jegyzékfájljában, **ApplicationManifest.xml**az alkalmazáscsomagban definiálható. Ha nincsenek megadva szabályzatok, Service Fabric feltételezi, hogy az entitás nem kifogástalan állapotú, ha a figyelmeztetés vagy a hiba állapot állapota jelentésben vagy gyermeken van.
 A konfigurálható szabályzatok a következők:
 
 * [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett érték: false (hamis).
@@ -179,7 +178,7 @@ Miután az állapotfigyelő kiértékelte az összes gyermeket, a rendszer a nem
 ## <a name="health-reporting"></a>Állapotadatok jelentése
 A rendszerösszetevők, a rendszerháló alkalmazások és a belső/külső watchdogok jelenthetnek Service Fabric entitásokat. A jelentéskészítők a figyelt entitások állapotának *helyi* meghatározását teszik elérhetővé a figyelés feltételei alapján. Nem kell semmilyen globális vagy összesített adatokat megvizsgálniuk. A kívánt viselkedés az egyszerű jelentéskészítők használata, és nem olyan összetett szervezetek, amelyeknek sok dolgot kell megvizsgálniuk, hogy milyen információkat kell elküldeni.
 
-Az állapotadatok az állapotfigyelő tárolóba való küldéséhez a Jelentéskészítőnek azonosítania kell az érintett entitást, és létre kell hoznia egy állapotjelentést. A jelentés elküldéséhez használja a [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-t, a Report Health `Partition` API `CodePackageActivationContext` -kat, amelyek elérhetők a vagy az objektumok, a POWERSHELL-parancsmagok vagy a REST számára.
+Az állapotadatok az állapotfigyelő tárolóba való küldéséhez a Jelentéskészítőnek azonosítania kell az érintett entitást, és létre kell hoznia egy állapotjelentést. A jelentés elküldéséhez használja a [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-t, a Report Health API-kat, amelyek elérhetők a `Partition` vagy az `CodePackageActivationContext` objektumok, a PowerShell-parancsmagok vagy a REST számára.
 
 ### <a name="health-reports"></a>Állapotjelentés
 A fürt minden entitásához tartozó [Állapotjelentés](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) a következő információkat tartalmazza:
@@ -187,7 +186,7 @@ A fürt minden entitásához tartozó [Állapotjelentés](https://docs.microsoft
 * **SourceId forrásazonosító**. Egy olyan karakterlánc, amely egyedileg azonosítja az állapotadatok jelentéskészítőjét.
 * Az **entitás azonosítója**. Azonosítja azt az entitást, amelyben a jelentés alkalmazva van. Az [entitás típusa](service-fabric-health-introduction.md#health-entities-and-hierarchy)alapján különbözik:
   
-  * Fürt. Nincs.
+  * Fürt. Nincsenek.
   * Csomópont. Csomópont neve (karakterlánc).
   * Alkalmazás. Az alkalmazás neve (URI). A fürtben üzembe helyezett alkalmazás példányának nevét jelöli.
   * Szolgáltatás. Szolgáltatás neve (URI). A fürtben üzembe helyezett szolgáltatási példány nevét jelöli.

@@ -1,14 +1,13 @@
 ---
 title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
 description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683257"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044617"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
@@ -53,7 +52,7 @@ Az üzleti követelménytől függően az Azure-erőforrás, amellyel a Azure Po
 Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
 
 - Azure Policy-bővítmény VSCode-hoz
-- Resource Manager-sablonok
+- Azure Resource Manager sablonok (ARM-sablonok)
   - Meglévő erőforrás exportálása
   - Létrehozási élmény
   - Gyorsindítás sablonok (GitHub)
@@ -64,9 +63,9 @@ Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az
 
 A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-resources) használatával böngészheti az erőforrásokat a környezetben, és megtekintheti a Resource Manager-tulajdonságokat az egyes erőforrásokon.
 
-### <a name="resource-manager-templates"></a>Resource Manager-sablonok
+### <a name="arm-templates"></a>ARM-sablonok
 
-A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) .
+A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) .
 
 #### <a name="existing-resource-in-the-portal"></a>Meglévő erőforrás a portálon
 
@@ -144,12 +143,11 @@ Ez az információ azt jelzi, hogy a tulajdonság típusa és a **supportsHttpsT
 
 #### <a name="quickstart-templates-on-github"></a>Gyors útmutató sablonok a GitHubon
 
-A GitHubon futó Azure rövid útmutató [sablonjai](https://github.com/Azure/azure-quickstart-templates) több száz Resource Manager-sablonnal rendelkeznek, amelyek különböző erőforrásokhoz készültek. Ezek a sablonok nagyszerű módot biztosítanak a keresett erőforrás-tulajdonság megkeresésére. Előfordulhat, hogy egyes tulajdonságok úgy tűnik, hogy mit keres, de mást is vezérel.
+A GitHubon található Azure rövid útmutató- [sablonok](https://github.com/Azure/azure-quickstart-templates) több száz ARM-sablonból állnak, amelyek különböző erőforrásokhoz készültek. Ezek a sablonok nagyszerű módot biztosítanak a keresett erőforrás-tulajdonság megkeresésére. Előfordulhat, hogy egyes tulajdonságok úgy tűnik, hogy mit keres, de mást is vezérel.
 
 #### <a name="resource-reference-docs"></a>Erőforrás-referenciák dokumentációja
 
-A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) Resource Manager-sablonra vonatkozó hivatkozását a tárolási szolgáltatón.
-A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
+A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) ARM-sablonra vonatkozó hivatkozását a tárolási szolgáltatón. A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
@@ -171,6 +169,9 @@ Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az 
 ### <a name="get-aliases-in-vs-code-extension"></a>Aliasok beolvasása a VS Code bővítménnyel
 
 A VS Code bővítmény Azure Policy bővítménye megkönnyíti az erőforrások tallózását és az [aliasok felderítését](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+
+> [!NOTE]
+> A VS Code bővítmény csak a Resource Manager-üzemmód tulajdonságait mutatja be, és nem jeleníti meg az [erőforrás-szolgáltatói mód](../concepts/definition-structure.md#mode) tulajdonságait.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -216,7 +217,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Az eredmények ugyanúgy néznek ki, mint a Resource Manager-sablonokban és a Azure Erőforrás-kezelő. Az Azure Resource Graph eredményei azonban _az aliasok tömb_ _kivetítésével_ is tartalmazhatják az [alias](../concepts/definition-structure.md#aliases) részleteit:
+Az eredmények ugyanúgy néznek ki, mint az ARM-sablonokban és a Azure Erőforrás-kezelőon. Az Azure Resource Graph eredményei azonban _az aliasok tömb_ _kivetítésével_ is tartalmazhatják az [alias](../concepts/definition-structure.md#aliases) részleteit:
 
 ```kusto
 Resources
@@ -474,7 +475,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - A használandó effektus meghatározása
 > - A szabályzat definíciójának tagjai
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 

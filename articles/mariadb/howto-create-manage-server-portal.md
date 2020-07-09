@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan kezelheti Azure Database for MariaDB-kiszolgál
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 43004f8c52bbec17f78ed4be024cf75224dbd179
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 196b1dda17de1c9430ab048ac90d1d10b6a595b4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530240"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104690"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló kezelése a Azure Portal használatával
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MariaDB-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
@@ -102,6 +102,6 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 3. Válassza a **Törlés** elemet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A [biztonsági másolatok és a kiszolgáló-visszaállítás](howto-restore-server-portal.md) ismertetése
 - Ismerkedjen meg [a hangolási és figyelési lehetőségekkel Azure Database for MariaDB](concepts-monitoring.md)

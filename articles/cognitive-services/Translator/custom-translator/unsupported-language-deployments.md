@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996363"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964685"
 ---
 # <a name="unsupported-language-deployments"></a>Nem támogatott nyelvű környezetek
 
@@ -47,7 +47,7 @@ Az elküldés után a modell többé nem lesz elérhető a nem **kérelmezett k�
 
 ## <a name="whats-next"></a>A következő lépések
 
-A központi telepítéshez kiválasztott modelleket a rendszer a központ leszerelése és az összes modell üzembe helyezése után menti.  A nem támogatott modellek üzembe helyezésére vonatkozó kérések elküldésére május 24-én van lehetőség.  Ezeket a modelleket június 15-én fogjuk üzembe helyezni, ekkor a Translator V3 API-n keresztül lesznek elérhetők.  Ezen kívül a v2 API-n keresztül lesznek elérhetők az 1. július 1-jéig.  
+A központi telepítéshez kiválasztott modelleket a rendszer a központ leszerelése és az összes modell üzembe helyezése után menti.  A nem támogatott modellek üzembe helyezésére vonatkozó kérések elküldésére május 24-én van lehetőség.  Ezeket a modelleket június 15-én fogjuk üzembe helyezni, ekkor a Translator v3 használatával lesznek elérhetők.  Emellett a Translator v2-en keresztül is elérhetők lesznek a július 1-től.  
 
 További információ a központ elavulása a fontos dátumokról [itt](https://www.microsoft.com/translator/business/hub/)található.
 Az üzembe helyezést követően a szokásos üzemeltetési díjak érvényesek.  A részletekért tekintse meg a [díjszabást](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  

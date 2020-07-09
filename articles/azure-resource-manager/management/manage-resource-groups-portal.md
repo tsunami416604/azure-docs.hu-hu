@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632993"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057551"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával
 
@@ -25,7 +25,7 @@ Az erőforráscsoportok kezelésével kapcsolatos további cikkek:
 
 ## <a name="what-is-a-resource-group"></a>Mi az erőforráscsoport?
 
-Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általában olyan erőforrásokat adjon hozzá, amelyek ugyanazt az életciklust használják ugyanahhoz az erőforráscsoporthoz, így egyszerűen üzembe helyezheti, frissítheti és törölheti őket csoportként.
+Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általában olyan erőforrásokat adjon hozzá, amelyek ugyanazt az életciklust használják ugyanahhoz az erőforráscsoporthoz, így egyszerűen üzembe helyezheti, frissítheti és törölheti őket csoportként.
 
 Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha az erőforráscsoport számára megad egy helyet, akkor a metaadatok tárolási helyét adja meg. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
@@ -36,7 +36,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 2. **Erőforráscsoportok** kiválasztása
 
     ![erőforráscsoport hozzáadása](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. Írja be a következő értékeket:
 
    - **Előfizetés**: Válassza ki az Azure-előfizetést. 
@@ -45,7 +45,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 
      ![erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Válassza a **felülvizsgálat + létrehozás** lehetőséget
-6. Kattintson a **Létrehozás** gombra. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
+6. Válassza a **Létrehozás** lehetőséget. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
 7. A felső menüben válassza a **frissítés** lehetőséget az erőforráscsoport listájának frissítéséhez, majd válassza ki az újonnan létrehozott erőforráscsoportot a megnyitásához. Vagy válassza a felül az **értesítés**(harang ikon) lehetőséget, majd válassza az **Ugrás az erőforrás-csoportba** lehetőséget az újonnan létrehozott erőforráscsoport megnyitásához.
 
     ![erőforrás-csoport megugrása](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
@@ -86,7 +86,7 @@ A csoportban található erőforrásokat áthelyezheti egy másik erőforráscso
 
 A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
 
-1. Nyissa meg a törölni kívánt erőforráscsoportot.  Lásd: [erőforráscsoportok megnyitása](#open-resource-groups).
+1. Nyissa meg a zárolni kívánt erőforráscsoportot.  Lásd: [erőforráscsoportok megnyitása](#open-resource-groups).
 2. A bal oldali ablaktáblán válassza a **zárolások**lehetőséget.
 3. Ha zárolást szeretne hozzáadni az erőforráscsoporthoz, válassza a **Hozzáadás**lehetőséget.
 4. Adja meg a **zárolás nevét**, a **zárolás típusát**és a **megjegyzéseket**. A zárolási típusok tartalmazzák az **írásvédett**és a **törlési**típust.
@@ -111,5 +111,5 @@ A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-con
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../templates/template-syntax.md)című témakört.
-- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](/azure/azure-resource-manager/).
+- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](../index.yml).
 - A Azure Resource Manager sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).

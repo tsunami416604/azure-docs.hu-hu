@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273290"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
@@ -39,7 +38,7 @@ Ha alapszintű beállításokat használ, és csak egy előfizetést választ ki
 
 ![Az előfizetés beállítása](media/persisting-shell-storage/basic-storage.png)
 
-A fájlmegosztás a `$Home` címtárhoz hasonlóan `clouddrive` van csatolva. Ez egy egyszeri művelet, és a fájlmegosztás automatikusan csatolva lesz a következő munkamenetekben. 
+A fájlmegosztás a `clouddrive` címtárhoz hasonlóan van csatolva `$Home` . Ez egy egyszeri művelet, és a fájlmegosztás automatikusan csatolva lesz a következő munkamenetekben. 
 
 A fájlmegosztás egy 5 GB-os rendszerképet is tartalmaz, amely automatikusan megőrzi a `$Home` címtárban tárolt adatait. Ez a bash és a PowerShell esetében is érvényes.
 
@@ -62,13 +61,13 @@ Cloud Shell egy Azure-fájlmegosztást használ egy Storage-fiókban egy adott e
 A felhasználók a fájlokhoz való hozzáférést a Storage-fiók vagy az előfizetési szint engedélyeinek beállításával zárolják.
 
 ## <a name="supported-storage-regions"></a>Támogatott tárolási régiók
-A bash-ben futtatott `env` aktuális régió megkereséséhez keresse meg a `ACC_LOCATION`változót, vagy a `$env:ACC_LOCATION`PowerShell futtatásával. A fájlmegosztás egy 5 GB-os rendszerképet kap, amelyet a `$Home` címtár megtartására hozott létre.
+A bash-ben futtatott aktuális régió megkereséséhez `env` Keresse meg a változót `ACC_LOCATION` , vagy a PowerShell futtatásával `$env:ACC_LOCATION` . A fájlmegosztás egy 5 GB-os rendszerképet kap, amelyet a címtár megtartására hozott létre `$Home` .
 
 Cloud Shell gépek léteznek a következő régiókban:
 
 |Terület|Régió|
 |---|---|
-|Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
+|Észak-, Dél- és Közép-Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
 |Európa|Észak-Európa, Nyugat-Európa|
 |Ázsia és a Csendes-óceáni térség|Közép-India, Délkelet-Ázsia|
 
@@ -80,28 +79,28 @@ Másodlagos tárolási régió használata esetén a társított Azure Storage-f
 > [!NOTE]
 > Másodlagos régió használata esetén előfordulhat, hogy a fájlokhoz való hozzáférés és a Cloud Shell indítási ideje lassabb.
 
-A felhasználók a PowerShellben futhatnak `(Get-CloudDrive | Get-AzStorageAccount).Location` a fájlmegosztás helyének megtekintéséhez.
+A felhasználók a `(Get-CloudDrive | Get-AzStorageAccount).Location` PowerShellben futhatnak a fájlmegosztás helyének megtekintéséhez.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás-létrehozás korlátozása Azure-erőforrás-házirenddel
-A Cloud Shellban létrehozott Storage-fiókok címkével rendelkeznek `ms-resource-usage:azure-cloud-shell`. Ha azt szeretné, hogy a felhasználók ne hozzanak létre Storage-fiókokat a Cloud Shellban, hozzon létre egy Azure-erőforrás-szabályzatot az adott címke által aktivált [címkékhez](../azure-policy/json-samples.md) .
+A Cloud Shellban létrehozott Storage-fiókok címkével rendelkeznek `ms-resource-usage:azure-cloud-shell` . Ha azt szeretné, hogy a felhasználók ne hozzanak létre Storage-fiókokat a Cloud Shellban, hozzon létre egy Azure-erőforrás-szabályzatot az adott címke által aktivált [címkékhez](../azure-policy/json-samples.md) .
 
 ## <a name="how-cloud-shell-storage-works"></a>A Cloud Shell Storage működése 
 A Cloud Shell a következő módszerekkel is megőrzi a fájlokat: 
-* Hozzon létre egy lemezképet `$Home` a címtárból, hogy az a könyvtárban található összes tartalmat megőrzi. A rendszer a lemezképet a megadott fájlmegosztást a `acc_<User>.img` (z) `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`helyen menti, és automatikusan szinkronizálja a módosításokat. 
-* A megadott fájlmegosztás `clouddrive` csatlakoztatása a közvetlen fájlmegosztás `$Home` -interakcióhoz a címtárban. `/Home/<User>/clouddrive`leképezve `fileshare.storage.windows.net/fileshare`a következőre:.
+* Hozzon létre egy lemezképet a `$Home` címtárból, hogy az a könyvtárban található összes tartalmat megőrzi. A rendszer a lemezképet a megadott fájlmegosztást a `acc_<User>.img` (z) helyen menti `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` , és automatikusan szinkronizálja a módosításokat. 
+* A megadott fájlmegosztás csatlakoztatása a `clouddrive` `$Home` közvetlen fájlmegosztás-interakcióhoz a címtárban. `/Home/<User>/clouddrive`leképezve a következőre: `fileshare.storage.windows.net/fileshare` .
  
 > [!NOTE]
-> A `$Home` címtárban lévő összes fájl, például az ssh-kulcsok megmaradnak a felhasználói lemezképben, amelyet a csatlakoztatott fájlmegosztás tárol. Alkalmazza az ajánlott eljárásokat, ha a címtárban `$Home` és a csatlakoztatott fájlmegosztás adataiban marad.
+> A címtárban lévő összes fájl `$Home` , például az ssh-kulcsok megmaradnak a felhasználói lemezképben, amelyet a csatlakoztatott fájlmegosztás tárol. Alkalmazza az ajánlott eljárásokat, ha a `$Home` címtárban és a csatlakoztatott fájlmegosztás adataiban marad.
 
 ## <a name="clouddrive-commands"></a>clouddrive parancsok
 
 ### <a name="use-the-clouddrive-command"></a>A `clouddrive` parancs használata
-Cloud Shell futtathatja a nevű `clouddrive`parancsot, amely lehetővé teszi a Cloud Shellhoz csatlakoztatott fájlmegosztás manuális frissítését.
+Cloud Shell futtathatja a nevű parancsot `clouddrive` , amely lehetővé teszi a Cloud Shellhoz csatlakoztatott fájlmegosztás manuális frissítését.
 
 ![A "clouddrive" parancs futtatása](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>Listáját`clouddrive`
-A `clouddrive` `df` parancs futtatásával derítheti fel, hogy melyik fájlmegosztás van csatlakoztatva. 
+`clouddrive`A parancs futtatásával derítheti fel, hogy melyik fájlmegosztás van csatlakoztatva `df` . 
 
 A clouddrive elérési útja a Storage-fiók nevét és a fájlmegosztás URL-címét jeleníti meg. Például: `//storageaccountname.file.core.windows.net/filesharename`
 
@@ -120,9 +119,9 @@ justin@Azure:~$
 ### <a name="mount-a-new-clouddrive"></a>Új clouddrive csatlakoztatása
 
 #### <a name="prerequisites-for-manual-mounting"></a>Manuális csatlakoztatás előfeltételei
-A `clouddrive mount` parancs használatával frissítheti Cloud Shellhoz társított fájlmegosztást.
+A parancs használatával frissítheti Cloud Shellhoz társított fájlmegosztást `clouddrive mount` .
 
-Ha meglévő fájlmegosztást csatlakoztat, a Storage-fiókoknak a Select Cloud Shell régióban kell elhelyezkedniük. Kérje le a helyet a `env` futtatásával, `ACC_LOCATION`majd ellenőrizze a alkalmazást.
+Ha meglévő fájlmegosztást csatlakoztat, a Storage-fiókoknak a Select Cloud Shell régióban kell elhelyezkedniük. Kérje le a helyet a futtatásával `env` , majd ellenőrizze a alkalmazást `ACC_LOCATION` .
 
 #### <a name="the-clouddrive-mount-command"></a>A `clouddrive mount` parancs
 
@@ -135,7 +134,7 @@ Futtassa a `clouddrive mount` parancsot a következő paraméterekkel:
 clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareName
 ```
 
-További részletek megtekintéséhez futtassa `clouddrive mount -h`a következőt:
+További részletek megtekintéséhez futtassa a következőt `clouddrive mount -h` :
 
 ![A "clouddrive mount'command futtatása](media/persisting-shell-storage/mount-h.png)
 
@@ -145,7 +144,7 @@ Bármikor leválaszthatja a Cloud Shellhoz csatlakoztatott fájlmegosztást. Miv
 1. Futtassa az `clouddrive unmount` parancsot.
 2. Nyugtázza és erősítse meg a kéréseket.
 
-A fájlmegosztás továbbra is fennáll, hacsak nem törli manuálisan. A következő munkamenetekben a Cloud Shell többé nem fogja megkeresni ezt a fájlmegosztást. További részletek megtekintéséhez futtassa `clouddrive unmount -h`a következőt:
+A fájlmegosztás továbbra is fennáll, hacsak nem törli manuálisan. A következő munkamenetekben a Cloud Shell többé nem fogja megkeresni ezt a fájlmegosztást. További részletek megtekintéséhez futtassa a következőt `clouddrive unmount -h` :
 
 ![A "clouddrive unmount'command futtatása](media/persisting-shell-storage/unmount-h.png)
 
@@ -153,14 +152,14 @@ A fájlmegosztás továbbra is fennáll, hacsak nem törli manuálisan. A követ
 > Bár a parancs futtatása nem törli az erőforrásokat, manuálisan törli az erőforráscsoportot, a Storage-fiókot vagy az Cloud Shellra leképezett fájlmegosztást, törli a `$Home` könyvtár lemezének lemezképét és a fájlmegosztás összes fájlját. Ez a művelet nem vonható vissza.
 ## <a name="powershell-specific-commands"></a>PowerShell-specifikus parancsok
 
-### <a name="list-clouddrive-azure-file-shares"></a>Azure `clouddrive` -fájlmegosztás listázása
-A `Get-CloudDrive` parancsmag lekérdezi az Azure `clouddrive` -fájlmegosztás aktuálisan csatlakoztatott adatait a Cloud shell. <br>
+### <a name="list-clouddrive-azure-file-shares"></a>Azure-fájlmegosztás listázása `clouddrive`
+A `Get-CloudDrive` parancsmag lekérdezi az Azure-fájlmegosztás aktuálisan csatlakoztatott adatait a `clouddrive` Cloud shell. <br>
 ![A Get-CloudDrive futtatása](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
 ### <a name="unmount-clouddrive"></a>Foglalatlan`clouddrive`
 Bármikor leválaszthatja a Cloud Shellhoz csatlakoztatott Azure-fájlmegosztást. Ha az Azure-fájlmegosztás el lett távolítva, a rendszer felszólítja egy új Azure-fájlmegosztás létrehozására és csatlakoztatására a következő munkamenet során.
 
-A `Dismount-CloudDrive` parancsmag leválasztja az Azure-fájlmegosztást az aktuális Storage-fiókból. Az `clouddrive` aktuális munkamenet leválasztásának megszakítása. A rendszer a következő munkamenet során új Azure-fájlmegosztás létrehozására és csatlakoztatására kéri a felhasználót.
+A `Dismount-CloudDrive` parancsmag leválasztja az Azure-fájlmegosztást az aktuális Storage-fiókból. Az aktuális munkamenet leválasztásának `clouddrive` megszakítása. A rendszer a következő munkamenet során új Azure-fájlmegosztás létrehozására és csatlakoztatására kéri a felhasználót.
 ![Leválasztások futtatása – CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]

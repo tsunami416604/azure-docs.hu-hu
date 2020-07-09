@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434714"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Örökölt eszközök kiépítése szimmetrikus kulcsok használatával
@@ -63,7 +62,7 @@ Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimu
 
 2. Keresse meg az SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
+3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a paraméter értékeként `-b` :
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -201,7 +200,7 @@ Az eszköz a származtatott eszköz kulcsát az egyedi regisztrációs azonosít
 
 ## <a name="create-a-device-image-to-provision"></a>Rendszerkép létrehozása a kiépíthető eszközhöz
 
-Ebben a szakaszban a korábban beállított Azure IoT C SDK-ban található **prov\_dev\_Client\_minta** nevű kiépítési mintát fogja frissíteni. 
+Ebben a szakaszban a korábban beállított Azure IoT C SDK-ban található **prov \_ dev \_ Client \_ minta** nevű kiépítési mintát fogja frissíteni. 
 
 Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a kiépítési kérést az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat azt eredményezi, hogy az eszköz fel lesz ismerve, és hozzá lesz rendelve a beléptetési csoportban konfigurált IoT hubhoz.
 
@@ -232,7 +231,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Keresse meg a " `prov_dev_set_symmetric_key_info()` **prov\_dev\_Client\_sample. c** " meghívását, amely kommentálva van.
+6. Keresse meg a " `prov_dev_set_symmetric_key_info()` **prov \_ dev \_ Client \_ sample. c** " meghívását, amely kommentálva van.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -250,7 +249,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 7. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget. 
 
-8. A Visual Studio menüjében válassza a **hibakeresés** > **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
+8. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésére vonatkozó parancsablakban kattintson az **Igen** gombra a projekt újraépítéséhez a futtatás előtt.
 
     Az alábbi példakimeneten látható, hogy a szimulált eszköz sikeresen elindul és csatlakozik a regisztrációs szolgáltatáspéldányhoz, hogy az hozzárendelhesse egy IoT-központhoz:
 

@@ -10,10 +10,9 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f0c21626c664f2d72b534ebae7f0a257620be07d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81767073"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
@@ -143,7 +142,7 @@ A modellek és felületek [IoT Plug and Play eszközökhöz](#iot-plug-and-play-
 
 Egy [IoT-hubhoz](#azure-iot-hub) beállított útvonal, amely a [digitális kettős változási eseményeket](#digital-twin-change-events) és végpontokat (például Service Bus üzenetsor) továbbítja.
 
-## <a name="interface"></a>Felület
+## <a name="interface"></a>Interfész
 
 Az illesztőfelületek a [IoT Plug and Play eszköz](#iot-plug-and-play-device) vagy a [digitális Twin](#digital-twin)szolgáltatás által megvalósított kapcsolódó képességeket ismertetik. A csatolókat a különböző [eszköz-képesség modellek](#device-capability-model)között is felhasználhatja.
 

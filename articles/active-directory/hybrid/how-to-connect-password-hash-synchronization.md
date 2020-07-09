@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358562"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat-szinkronizálás implementálása Azure AD Connect-szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -89,14 +89,13 @@ Ha a felhasználó a jelszó-kivonatolási szinkronizálás hatókörében van, 
 
 Továbbra is bejelentkezhet a Cloud servicesbe egy szinkronizált jelszó használatával, amely a helyszíni környezetben lejárt. A felhő jelszava frissül, amikor legközelebb megváltoztatja a jelszót a helyszíni környezetben.
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>A *EnforceCloudPasswordPolicyForPasswordSyncedUsers* szolgáltatás nyilvános előzetes verziója
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 Ha olyan szinkronizált felhasználók vannak, akik csak az Azure AD integrált szolgáltatásaival működnek együtt, és meg kell felelniük a jelszó lejárati házirendjének, akkor a *EnforceCloudPasswordPolicyForPasswordSyncedUsers* funkció engedélyezésével kényszerítheti az Azure ad-jelszó lejárati szabályzatának betartását.
 
 Ha a *EnforceCloudPasswordPolicyForPasswordSyncedUsers* le van tiltva (ez az alapértelmezett beállítás), Azure ad Connect a szinkronizált felhasználók PasswordPolicies attribútumát a "DisablePasswordExpiration" értékre állítja. Ez minden alkalommal megtörténik, amikor a felhasználó jelszava szinkronizálva van, és arra utasítja az Azure AD-t, hogy figyelmen kívül hagyja az adott felhasználóhoz tartozó Felhőbeli jelszó lejárati szabályzatát. Az attribútum értékét a következő paranccsal tekintheti meg az Azure AD PowerShell-modul használatával:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 A EnforceCloudPasswordPolicyForPasswordSyncedUsers funkció engedélyezéséhez futtassa a következő parancsot a MSOnline PowerShell-modullal az alább látható módon. Az engedélyezés paraméternél az Igen értéket kell beírnia az alábbi módon:
 
@@ -110,23 +109,22 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználóhoz csatlakozik, hogy `DisablePasswordExpiration` eltávolítsa az értéket a PasswordPolicies attribútumból. Ehelyett az érték az egyes felhasználók következő `None` jelszavas szinkronizálására van beállítva, amikor legközelebb megváltoztatják a jelszavukat a helyszíni ad-ben.  
+Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználóhoz csatlakozik, hogy eltávolítsa az `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett az érték az `None` egyes felhasználók következő jelszavas szinkronizálására van beállítva, amikor legközelebb megváltoztatják a jelszavukat a helyszíni ad-ben.  
 
-Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá `DisablePasswordExpiration` az értéket a felhasználók PasswordPolicies attribútumához.
+Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá az `DisablePasswordExpiration` értéket a felhasználók PasswordPolicies attribútumához.
 
 Az alapértelmezett Azure AD-jelszóházirend megköveteli, hogy a felhasználók 90 naponta megváltoztassák a jelszavukat. Ha az AD-szabályzat 90 nap is, a két házirendnek egyeznie kell. Ha azonban az AD-házirend nem 90 nap, a set-MsolPasswordPolicy PowerShell-paranccsal módosíthatja az Azure AD-jelszó szabályzatát.
 
 Az Azure AD egy regisztrált tartományon belüli külön jelszó-elévülési szabályzatot támogat.
 
-Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-ben nem lejáró jelszavakkal kell rendelkezniük, explicit módon hozzá `DisablePasswordExpiration` kell adnia az értéket az Azure ad felhasználói objektumának PasswordPolicies attribútumához.  Ezt a következő parancs futtatásával teheti meg.
+Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-ben nem lejáró jelszavakkal kell rendelkezniük, explicit módon hozzá kell adnia az `DisablePasswordExpiration` értéket az Azure ad felhasználói objektumának PasswordPolicies attribútumához.  Ezt a következő parancs futtatásával teheti meg.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
 > A set-MsolPasswordPolicy PowerShell-parancs összevont tartományokon nem fog működni. 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Az ideiglenes jelszavak szinkronizálásának nyilvános előzetese és "a jelszó módosítása a következő bejelentkezéskor"
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Ideiglenes jelszavak szinkronizálása és a "jelszó módosítása a következő bejelentkezéskor"
 
 Általában arra kényszeríti a felhasználót, hogy az első bejelentkezéskor változtassa meg a jelszavát, különösen a rendszergazdai jelszó alaphelyzetbe állítása után.  Ezt általában "ideiglenes" jelszóként kell beállítani, és a rendszer azt ellenőrzi, hogy a "felhasználónak meg kell-e változtatni a jelszót a következő bejelentkezéskor" jelzőn a Active Directory (AD) felhasználói objektumán.
   
@@ -141,9 +139,6 @@ Az Azure AD-ben a szinkronizált felhasználók számára az ideiglenes jelszava
 
 > [!CAUTION]
 > Ezt a funkciót csak akkor használja, ha a SSPR és a jelszó visszaírási engedélyezve vannak a bérlőn.  Ez azért van így, hogy ha a felhasználó a SSPR-n keresztül módosítja a jelszavát, a rendszer szinkronizálja Active Directory.
-
-> [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
 
 #### <a name="account-expiration"></a>Fiók lejárata
 
@@ -216,7 +211,7 @@ Ha a kiszolgálót a Federal Information Processing standard (FIPS) szerint zár
 **A jelszó-kivonatok szinkronizálásához az MD5 engedélyezéséhez hajtsa végre a következő lépéseket:**
 
 1. Ugrás a%programfiles%\Azure AD Sync\Bin.
-2. Nyissa meg a MIIServer. exe. config fájlt.
+2. Nyissa meg miiserver.exe.config.
 3. Nyissa meg a fájl végén található Configuration/Runtime csomópontot.
 4. Adja hozzá a következő csomópontot:`<enforceFIPSPolicy enabled="false"/>`
 5. Mentse a módosításokat.

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,15 +9,15 @@ ms.date: 04/06/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008339"
 ---
 Egyelőre csak az ultra-lemezek és a prémium SSD-k engedélyezhetik a megosztott lemezeket. A különböző méretű lemezek eltérő `maxShares` korláttal rendelkezhetnek, ami nem haladhatja meg az `maxShares` érték beállítását. A prémium SSD-k esetében a lemezek megosztását támogató lemezek mérete P15 és nagyobb.
 
-Minden lemez esetében megadhat egy `maxShares` értéket, amely a lemez párhuzamosan megosztható csomópontok maximális számát jelöli. Ha például egy 2 csomópontos feladatátvevő fürtöt szeretne beállítani, állítsa `maxShares=2`be a következőt:. A maximális érték egy felső határ. A csomópontok csatlakozhatnak vagy elhagyhatják a fürtöt (a lemez csatlakoztatása vagy leválasztása), feltéve, hogy a `maxShares` csomópontok száma alacsonyabb a megadott értéknél.
+Minden lemez esetében megadhat egy értéket, `maxShares` amely a lemez párhuzamosan megosztható csomópontok maximális számát jelöli. Ha például egy 2 csomópontos feladatátvevő fürtöt szeretne beállítani, állítsa be a következőt: `maxShares=2` . A maximális érték egy felső határ. A csomópontok csatlakozhatnak vagy elhagyhatják a fürtöt (a lemez csatlakoztatása vagy leválasztása), feltéve, hogy a csomópontok száma alacsonyabb a megadott `maxShares` értéknél.
 
 > [!NOTE]
 > Az `maxShares` érték csak akkor állítható be vagy szerkeszthető, ha a lemez le van választva az összes csomópontról.
@@ -36,4 +36,4 @@ A IOPS és a sávszélességre vonatkozó korlátokat nem érinti az `maxShares`
 
 ### <a name="ultra-disk-ranges"></a>Ultra-lemezes tartományok
 
-A minimális `maxShares` érték 1, a maximális `maxShares` érték pedig 5. Az ultra-lemezeken nincs méretre vonatkozó korlátozás, bármilyen méretű, ultra-lemez bármilyen `maxShares`értéket használhat a számára, akár a maximális értéket is beleértve.
+A minimális `maxShares` érték 1, a maximális érték pedig `maxShares` 5. Az ultra-lemezeken nincs méretre vonatkozó korlátozás, bármilyen méretű, ultra-lemez bármilyen értéket használhat a számára `maxShares` , akár a maximális értéket is beleértve.

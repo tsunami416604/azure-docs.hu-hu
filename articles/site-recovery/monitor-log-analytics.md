@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300790"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -36,13 +35,13 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Site Recovery konfigurálása naplók küldéséhez
 
-1. A tárolóban kattintson a **diagnosztikai beállítások** > **Hozzáadás diagnosztikai beállítás**elemre.
+1. A tárolóban kattintson a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás**elemre.
 
     ![Erőforrás-naplózás kiválasztása](./media/monitoring-log-analytics/add-diagnostic.png)
 
@@ -252,7 +251,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Riasztások beállítása – példák
 
-Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) információ a naplózási riasztások beállításáról. 
+Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) információ a naplózási riasztások beállításáról. 
 
 > [!NOTE]
 > Néhány példa a **replicationProviderName_s** beállítása **A2A**értékre. Ez riasztásokat állít be a másodlagos Azure-régióba replikált Azure-beli virtuális gépekről. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2** -be, ha riasztásokat szeretne beállítani a helyszíni VMWare virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.

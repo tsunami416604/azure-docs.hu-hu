@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74900301"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058010"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Arcok kivonása a Azure Media Analytics 
 ## <a name="overview"></a>Áttekintés
@@ -34,11 +34,11 @@ A teljesen automatikus mód mellett van egy kétlépéses munkafolyamat is, amel
 ### <a name="combined-mode"></a>Kombinált mód
 Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MOV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "combined"}} |
-| Kimeneti eszköz |foo_redacted. MP4 |Videó az elmosódás alkalmazásával |
+| Kimeneti eszköz |foo_redacted.mp4 |Videó az elmosódás alkalmazásával |
 
 #### <a name="input-example"></a>Bemeneti példa:
 [videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
@@ -49,12 +49,12 @@ Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 ### <a name="analyze-mode"></a>Elemzési mód
 A kétlépéses munkafolyamat **elemzése** átveszi a videó bemenetét, és az összes észlelt arc egy JSON-fájlját, valamint a jpg-képeket hozza létre.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MPV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "elemzés"}} |
-| Kimeneti eszköz |foo_annotations. JSON |Az arc helyeinek megjegyzései JSON formátumban. Ezt a felhasználó módosíthatja az elmosódást határoló mezők módosításához. Lásd az alábbi mintát. |
-| Kimeneti eszköz |foo_thumb %0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Az egyes észlelt arcoknál az összes megjelenített jpg, ahol a szám az arc labelId jelöli. |
+| Kimeneti eszköz |foo_annotations.jsbekapcsolva |Az arc helyeinek megjegyzései JSON formátumban. Ezt a felhasználó módosíthatja az elmosódást határoló mezők módosításához. Lásd az alábbi mintát. |
+| Kimeneti eszköz |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Az egyes észlelt arcoknál az összes megjelenített jpg, ahol a szám az arc labelId jelöli. |
 
 #### <a name="output-example"></a>Példa a kimenetre:
 
@@ -114,24 +114,26 @@ Ide tartozik az életlenítés, az eredeti videó és a jegyzetek JSON-azonosít
 
 Az elemzés menetének kimenete nem tartalmazza az eredeti videót. A videót fel kell tölteni a bemeneti eszközbe a kivonási mód feladathoz, és az elsődleges fájlként kell kiválasztani.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV-, MPV-vagy MP4-formátumban. Ugyanaz a videó, mint az 1. lépésben. |
-| Bemeneti eszköz |foo_annotations. JSON |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |
-| Bemeneti eszköz |foo_IDList. txt (nem kötelező) |A kibontani kívánt arc-azonosítók új, sorba tagolt listája. Ha üresen hagyja, az elmossa az összes arcot. |
+| Bemeneti eszköz |foo_annotations.jsbekapcsolva |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |
+| Bemeneti eszköz |foo_IDList.txt (nem kötelező) |A kibontani kívánt arc-azonosítók új, sorba tagolt listája. Ha üresen hagyja, az elmossa az összes arcot. |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "kivonás"}} |
-| Kimeneti eszköz |foo_redacted. MP4 |Videó az elmosódást alkalmazva a jegyzetek alapján |
+| Kimeneti eszköz |foo_redacted.mp4 |Videó az elmosódást alkalmazva a jegyzetek alapján |
 
 #### <a name="example-output"></a>Példa kimenetre
 Egy kiválasztott AZONOSÍTÓval rendelkező IDList kimenete.
 
 [videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
-Példa foo_IDList. txt fájlra
+Példa foo_IDList.txt
  
-     1
-     2
-     3
+```output
+1
+2
+3
+```
 
 ## <a name="blur-types"></a>Életlenítési típusok
 
@@ -191,7 +193,7 @@ A következő program a következőket mutatja be:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 

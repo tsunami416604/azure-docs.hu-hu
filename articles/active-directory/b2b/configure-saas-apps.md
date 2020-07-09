@@ -4,7 +4,7 @@ description: Kód- és a PowerShell-minták az Azure Active Directory B2B-együt
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387350"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-alkalmazások B2B-együttműködéshez
 
@@ -32,7 +32,7 @@ Az alkalmazásra vonatkozó utasítások megtekintése előtt itt talál néhán
 * A felhasználói attribútumok között, hogy enyhítse az összekeveredett felhasználói profil lemezével (UPD) kapcsolatos problémákat a vendég felhasználóinál, mindig állítsa be a **felhasználói azonosítót** a **User. mail**értékre.
 
 
-## <a name="dropbox-business"></a>Dropbox üzleti
+## <a name="dropbox-business"></a>Dropbox Business
 
 Annak engedélyezéséhez, hogy a felhasználók a szervezeti fiókjával jelentkezzenek be, manuálisan kell konfigurálnia a Dropbox vállalatot, hogy az Azure AD-t használja Security Assertion Markup Language (SAML) identitás-szolgáltatóként. Ha a Dropbox Business nem erre van konfigurálva, nem tud rákérdezni vagy más módon engedélyezni a felhasználókat az Azure AD használatával történő bejelentkezéshez.
 
@@ -81,7 +81,7 @@ Az SAML protokollon alapuló összevonás használatával engedélyezheti a felh
 
    ![Az egyszeri bejelentkezés konfigurációs beállításait bemutató képernyőkép](media/configure-saas-apps/configure-box-sso.png)
 
-   a. A **bejelentkezési URL-cím** mezőben ellenőrizze, hogy a bejelentkezési URL-cím megfelelően van-e beállítva a Azure Portal található dobozhoz. Ez az URL-cím a Box.com-bérlő URL-címe. Az elnevezési konvenciónak *https://.box.com*kell követnie.  
+   a. A **bejelentkezési URL-cím** mezőben ellenőrizze, hogy a bejelentkezési URL-cím megfelelően van-e beállítva a Azure Portal található dobozhoz. Ez az URL-cím a Box.com-bérlő URL-címe. Az elnevezési konvenciónak kell követnie *https://.box.com* .  
    Az **azonosító** nem vonatkozik erre az alkalmazásra, de továbbra is kötelező mezőként jelenik meg.
 
    b. A **felhasználói azonosító** mezőben adja meg a **User. mail** (egyszeri bejelentkezés a vendég fiókokhoz) értéket.

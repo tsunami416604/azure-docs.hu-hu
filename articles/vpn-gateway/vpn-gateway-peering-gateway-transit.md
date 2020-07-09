@@ -5,16 +5,16 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982892"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
 
@@ -60,7 +60,7 @@ A virtuális hálózatok közötti társviszony létrehozásához használt fió
 |Virtuális hálózat|Üzemi modell|Szerepkör|Engedélyek|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
+| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N.A.|
 |Spoke-Classic|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
@@ -158,7 +158,7 @@ Add-AzVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg alaposabban a [virtuális hálózatok közötti társviszony-létesítés korlátozásaival és működésével](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints), valamint a [virtuális hálózatok közötti társviszonyok beállításaival](../virtual-network/virtual-network-manage-peering.md#create-a-peering), mielőtt virtuális hálózatok közötti társviszonyt hozna létre éles környezetben való használatra.
 * Megtudhatja, [hogyan hozhat létre küllős hálózati topológiát](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) virtuális hálózatok közötti társviszony-létesítéssel és átjáróval történő átvitellel.

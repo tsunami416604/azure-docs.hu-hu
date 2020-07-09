@@ -5,14 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835580"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037409"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
@@ -106,14 +105,14 @@ Alább látható a különböző SUs-és batch-méretekhez tartozó Stream Analy
 
 | köteg mérete (ML késleltetés) | 500 (200 MS) | 1 000 (200 MS) | 5 000 (250 MS) | 10 000 (300 MS) | 25 000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2500 |5000 |20000 |30 000 |50 000 |
-| **3 SUs** |2500 |5000 |20000 |30 000 |50 000 |
-| **6 SUs** |2500 |5000 |20000 |30 000 |50 000 |
-| **12 SUs** |5000 |10,000 |40,000 |60.000 |100 000 |
+| **1 SU** |2500 |5000 |20000 |30 000 |50,000 |
+| **3 SUs** |2500 |5000 |20000 |30 000 |50,000 |
+| **6 SUs** |2500 |5000 |20000 |30 000 |50,000 |
+| **12 SUs** |5000 |10,000 |40,000 |60.000 |100.000 |
 | **18 SUs** |7500 |15 000 |60.000 |90,000 |150 000 |
 | **24 SUs** |10,000 |20000 |80,000 |120 000 |200,000 |
 | **…** |… |… |… |… |… |
-| **60 SUs** |25,000 |50 000 |200,000 |300 000 |500 000 |
+| **60 SUs** |25,000 |50,000 |200,000 |300 000 |500 000 |
 
 Mostantól már jól megértette, hogyan Machine Learning függvények a Stream Analytics működésében. Valószínűleg azt is tudomásul veszi, hogy Stream Analytics feladatok "lekéréses" adatai az adatforrásokból és az egyes "lekérések" az Stream Analytics feladathoz tartozó események kötegét adja vissza. Hogyan befolyásolja ez a lekérési modell a Machine Learning webszolgáltatási kérelmeket?
 

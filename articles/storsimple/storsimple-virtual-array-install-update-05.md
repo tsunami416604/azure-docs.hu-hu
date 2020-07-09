@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61445420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513657"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Az 0,5-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -57,7 +57,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert, [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
@@ -75,8 +75,8 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
     ![A csomagban található fájlok](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     A következőt fogja látni:
-    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64`. Ez a fájl az eszköz szoftverének frissítésére szolgál.
-    - Egy Genfi figyelési ügynök csomagfájl `GenevaMonitoringAgentPackageInstaller`. Ez a fájl a monitoring and Diagnostics szolgáltatás (MDS) ügynökének frissítésére szolgál. Kattintson duplán a cab-fájlra. Megjelenik egy. msi fájl. Válassza ki a fájlt, kattintson rá a jobb gombbal, majd **bontsa** ki a fájlt. Az ügynök frissítéséhez az _. msi_ fájlt fogja használni.
+    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64` . Ez a fájl az eszköz szoftverének frissítésére szolgál.
+    - Egy Genfi figyelési ügynök csomagfájl `GenevaMonitoringAgentPackageInstaller` . Ez a fájl a monitoring and Diagnostics szolgáltatás (MDS) ügynökének frissítésére szolgál. Kattintson duplán a cab-fájlra. Megjelenik egy. msi fájl. Válassza ki a fájlt, kattintson rá a jobb gombbal, majd **bontsa** ki a fájlt. Az ügynök frissítéséhez az _. msi_ fájlt fogja használni.
 
         ![MDS-ügynök frissítési fájljának kibontása](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
@@ -90,7 +90,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **szoftverfrissítés**elemre.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -106,7 +106,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási** > **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10290.0** kell lennie az 0,5-es frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10290.0** kell lennie az 0,5-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10290** és a Azure Portal jelentések **10.0.10290.0** ugyanazt a verziót jelenti.

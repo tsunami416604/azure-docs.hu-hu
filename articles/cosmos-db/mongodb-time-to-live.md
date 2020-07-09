@@ -5,14 +5,13 @@ author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
 ms.devlang: javascript
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 74c140f2fa08fb49235c0503ea5812e047185f8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61330681"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023499"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lejárttá tétele a MongoDB-hez készült Azure Cosmos DB API-val
 
@@ -74,8 +73,8 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 A dokumentumon belüli TTL funkció a Azure Cosmos DB API-MongoDB is aktiválható.
 
-![Képernyőkép a dokumentumon belüli TTL funkció aktiválásáról a portálon](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="Képernyőkép a dokumentumon belüli TTL funkció aktiválásáról a portálon":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)
 * [A Cosmos-adatbázis indexelése a MongoDB Azure Cosmos DB API-val konfigurálva](../cosmos-db/mongodb-indexing.md)

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022112"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513309"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -48,17 +48,17 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 * Azure Storage-fiók. A blob Storage-t forrásként szolgáló adattárként használhatja. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
 * Azure Storage Explorer. Az eszköz telepítéséhez lásd: [Azure Storage Explorer](https://storageexplorer.com/).
-* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakört.
+* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse [meg az adatbázis létrehozása a Azure SQL Database-ben](../azure-sql/database/single-database-create-quickstart.md)című témakört.
 * Visual Studio. Ez a cikk a Visual Studio 2019-et használja.
 * Azure .NET SDK. Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
 
 Azon Azure-régiók listájáért, amelyekben jelenleg Data Factory érhető el, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/). Az adattárak és a számítások más régiókban is lehetnek. Az üzletek közé tartozik az Azure Storage és a Azure SQL Database. A számítások közé tartoznak a HDInsight, amelyeket a Data Factory használ.
 
-Hozzon létre egy alkalmazást az [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)című témakörben leírtak szerint. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve. Az oktatóanyag későbbi részeihez több érték szükséges, például az **alkalmazás (ügyfél) azonosítója** és a **címtár (bérlő) azonosítója**.
+Hozzon létre egy alkalmazást az [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)című témakörben leírtak szerint. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve. Az oktatóanyag későbbi részeihez több érték szükséges, például az **alkalmazás (ügyfél) azonosítója** és a **címtár (bérlő) azonosítója**.
 
 ### <a name="create-a-blob-table"></a>BLOB-tábla létrehozása
 
-1. Nyisson meg egy szövegszerkesztőt. Másolja a következő szöveget, és mentse helyileg a *input. txt*néven.
+1. Nyisson meg egy szövegszerkesztőt. Másolja az alábbi szöveget, és mentse helyileg *input.txtként *.
 
    ```
    Ethel|Berg
@@ -66,7 +66,7 @@ Hozzon létre egy alkalmazást az [Azure Active Directory alkalmazás létrehoz�
    ```
 
 1. Nyissa meg Azure Storage Explorer. Bontsa ki a Storage-fiókját. Kattintson a jobb gombbal a **blob-tárolók** elemre, majd válassza a **blob tároló létrehozása**lehetőséget.
-1. Nevezze el az új tároló *adfv2branch* , és válassza a **feltöltés** lehetőséget, hogy hozzáadja a *bemeneti. txt* fájlt a tárolóhoz.
+1. Nevezze el az új tároló *adfv2branch* , és válassza a **feltöltés** lehetőséget, hogy hozzáadja a *input.txt* fájlt a tárolóhoz.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása<a name="create-visual-studio-project"></a>
 

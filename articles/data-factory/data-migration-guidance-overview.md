@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416426"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból
@@ -52,7 +52,7 @@ Az online és az offline áttelepítési módszer közül három fő szempontot 
 
 Tegyük fel például, hogy az adatáttelepítés két héten belül történő elvégzéséhez tervezi Azure Data Factory használatát (az *áttelepítési ablak*). Figyelje meg a rózsaszín/kék határvonalat a következő táblázatban. Az adott oszlop legalacsonyabb rózsaszín cellája azt az adatméretet/hálózati sávszélesség-párosítást jeleníti meg, amelynek áttelepítési ablaka a legközelebb van, de kevesebb, mint két hét. (A kék cellában lévő bármilyen méretű vagy sávszélességű párosítás Online áttelepítési időszaka több mint két hétig tart.) 
 
-![online vagy offline](media/data-migration-guidance-overview/online-offline.png) – ez a táblázat segít eldönteni, hogy a tervezett áttelepítési időszakot az adatforgalom és a rendelkezésre álló hálózati sávszélesség alapján tudja-e teljesíteni az online áttelepítéssel (Azure Data Factory). Ha az online áttelepítési ablak kettőnél több hetet használ, offline áttelepítést érdemes használni.
+![online vagy offline ](media/data-migration-guidance-overview/online-offline.png) – Ez a táblázat segít eldönteni, hogy a tervezett áttelepítési időszakot az adatforgalom és a rendelkezésre álló hálózati sávszélesség alapján tudja-e teljesíteni az online áttelepítéssel (Azure Data Factory). Ha az online áttelepítési ablak kettőnél több hetet használ, offline áttelepítést érdemes használni.
 
 > [!NOTE]
 > Az online áttelepítés használatával a korábbi és a növekményes adatbevitelt is elérheti egyetlen eszközön keresztül.  Ezzel a megközelítéssel az adatokat szinkronizálni lehet a meglévő tároló és az új áruház között a teljes áttelepítési időszak alatt. Ez azt jelenti, hogy újraépítheti az ETL-logikát az új tárolóban a frissített adatértékekkel.

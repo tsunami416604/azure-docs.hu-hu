@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82105573"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100919"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
 
@@ -26,13 +26,14 @@ Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > * Kulcstartó létrehozása.
-> * Tanúsítvány importálása a Key vaultban a portál használatával.
-> * Tanúsítvány importálása a Key vaultban a CLI használatával.
+> * Tanúsítvány importálása Key Vault a portál használatával.
+> * Tanúsítvány importálása Key Vault a parancssori felület használatával.
+> * Tanúsítvány importálása Key Vault a PowerShell használatával.
 
 
 Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md). 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -66,7 +67,7 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a lemezen található PEM-vagy PFX-tanúsítványfájl-fájllal. Ebben az esetben egy **ExampleCertificate**nevű tanúsítványt fogunk importálni.
 
 > [!IMPORTANT]
-> Azure Key Vault a támogatott tanúsítvány-formátumok a PFX és a PEM. 
+> Az Azure Key Vault által támogatott tanúsítványformátumok a PFX és a PEM. 
 > - a. PEM fájlformátum egy vagy több X509 tartalmaz.
 > - a. pfx fájlformátum egy Archív fájlformátum, amely több kriptográfiai objektumot tárol egyetlen fájlban, például a tartományhoz tartozó kiszolgálói tanúsítványt, a hozzá tartozó titkos kulcsot, és szükség esetén egy közbenső HITELESÍTÉSSZOLGÁLTATÓT is tartalmazhat.  
 
@@ -77,7 +78,7 @@ Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a l
     - **Tanúsítvány neve**: ExampleCertificate.
     - **Tanúsítványfájl feltöltése**: válassza ki a fájlt a lemezről.
     - **Password** (jelszó): jelszóval védett tanúsítványfájl feltöltésekor itt adja meg a jelszót. Ellenkező esetben hagyja üresen. A tanúsítványfájl sikeres importálása után a Key Vault eltávolítja ezt a jelszót.
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -102,7 +103,8 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-További információ [a paraméterekről](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)
+
+További információ a [paraméterekről](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
 
 A tanúsítvány importálása után megtekintheti a tanúsítványt a [tanúsítvány megjelenítése](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) lehetőség használatával.
 
@@ -116,11 +118,27 @@ az keyvault certificate show [--id]
                              [--version]
 ```
 
-
-
 Most létrehozott egy kulcstartót, importált egy tanúsítványt, és megtekintette a tanúsítvány tulajdonságait.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="import-a-certificate-using-azure-powershell"></a>Tanúsítvány importálása Azure PowerShell használatával
+
+```
+Import-AzureKeyVaultCertificate
+      [-VaultName] <String>
+      [-Name] <String>
+      -FilePath <String>
+      [-Password <SecureString>]
+      [-Tag <Hashtable>]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
+```
+
+További információ a [paraméterekről](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:

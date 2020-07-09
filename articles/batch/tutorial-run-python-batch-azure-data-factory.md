@@ -6,13 +6,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
-ms.custom: mvc
-ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851732"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 * Telepített [Python](https://www.python.org/downloads/) -eloszlás helyi teszteléshez.
 * Az [Azure](https://pypi.org/project/azure/) - `pip` csomag.
-* Az [Iris. csv adatkészlet](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* Az [iris.csv adatkészlet](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A Batch-fiókok Storage-fiókokhoz való létrehozásával és összekapcsolásával kapcsolatos további információkért tekintse meg [a Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) című témakört.
 * Egy Azure Data Factory-fiók. A adat-előállító létrehozásával kapcsolatos további információkért tekintse meg Azure Portal az adat-előállító [létrehozása](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) című témakört.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -116,27 +116,27 @@ Ebben a szakaszban egy folyamatot hoz létre és érvényesít a Python-parancsf
 1. A **gyári erőforrások** mezőben válassza a + (plusz) gombot, majd válassza a **folyamat** elemet.
 1. Az **általános** lapon állítsa be a folyamat nevét "Python futtatása" értékre.
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![Az Általános lapon állítsa be a folyamat nevét "Python futtatása" értékre.](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. A **tevékenységek** mezőben bontsa ki a **Batch szolgáltatás**elemet. Húzza az egyéni tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére.
 1. Az **általános** lapon adja meg a **testPipeline** nevet
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![Az Általános lapon adja meg a testPipeline nevet](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. A **Azure batch** lapon adja hozzá az előző lépésekben létrehozott **Batch-fiókot** , és **tesztelje a kapcsolódást** annak érdekében, hogy sikeres legyen.
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![A Azure Batch lapon adja hozzá az előző lépésekben létrehozott batch-fiókot, majd tesztelje a kapcsolatokat.](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. A **Beállítások** lapon adja meg a parancsot `python main.py` .
 1. Az **erőforráshoz társított szolgáltatáshoz**adja hozzá az előző lépésekben létrehozott Storage-fiókot. Ellenőrizze, hogy a kapcsolódás sikeres volt-e.
 1. A **mappa elérési útja**mezőben válassza ki a Python-parancsfájlt és a hozzá tartozó bemeneti adatokat tartalmazó **Azure Blob Storage** tároló nevét. Ezzel letölti a kiválasztott fájlokat a tárolóból a készlet csomópont példányaira a Python-szkript végrehajtása előtt.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![A mappa elérési útja lapon válassza ki az Azure Blob Storage tároló nevét.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítés kimenetének bezárásához kattintson a &gt;&gt; (jobbra mutató nyíl) gombra.
 1. A folyamat teszteléséhez kattintson a **hibakeresés** elemre, és győződjön meg róla, hogy az megfelelően működik-e.
 1. A folyamat közzétételéhez kattintson a **Közzététel** gombra.
 1. Kattintson az **aktiválás** gombra a Python-szkript batch-folyamat részeként való futtatásához.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![Kattintson az aktiválás gombra a Python-szkript batch-folyamat részeként való futtatásához](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>A naplófájlok figyelése
 

@@ -3,16 +3,16 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 03e2a778559f97e1a7455180b287d44b55361a0e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654759"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807801"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -224,7 +224,7 @@ Azon szolgáltatások esetében, ahol a zóna és a régió befolyásolja a díj
 | 2\. zóna | Ázsia és a csendes-óceáni térség keleti régiója <br> Ázsia és a csendes-óceáni térség délkeleti régiója <br> Kelet-Japán <br> Nyugat-Japán <br> Kelet-Ausztrália <br> Délkelet-Ausztrália | Ázsia és a Csendes-óceáni térség <br> Japán <br> Latin-Amerika <br> Közel-Kelet / Afrika <br> Kelet-Ausztrália <br> Délkelet-Ausztrália |
 | 3\. zóna | Dél-Brazília |   |
 
-A szolgáltatások közötti, ugyanazon az adatközponton belüli adatforgalomért nem számítunk fel díjat. Például az Office 365 és az Azure esetében.
+A szolgáltatások közötti, ugyanazon az adatközponton belüli adatforgalomért nem számítunk fel díjat. Például a Microsoft 365 és az Azure esetében.
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>Pénzügyi keret és a ki nem számlázott használat
 

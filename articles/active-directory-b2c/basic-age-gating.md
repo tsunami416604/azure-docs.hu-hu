@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386131"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Age kapuzás engedélyezése a Azure Active Directory B2Cban
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) Age kapuzás lehetővé teszi az alkal
 
 Miután engedélyezte az Age kapuzás a [felhasználói folyamat](user-flow-overview.md)során, a rendszer megkérdezi a felhasználókat, hogy mikor születtek és milyen országban/régióban laknak. Ha egy felhasználó bejelentkezik, amely korábban nem adta meg az adatokat, akkor a következő bejelentkezéskor meg kell adnia. A szabályok minden alkalommal érvényesek, amikor egy felhasználó bejelentkezik.
 
-Azure AD B2C a felhasználó által megadott adatok alapján azonosítja, hogy azok kisebbek-e. A rendszer ezután frissíti a **beszerzésimennyiség** mezőt a fiókjában. Az érték `null` `Undefined` `Minor`lehet:,,, és `NotAdult` `Adult`  A rendszer ezután a **beszerzésimennyiség** és a **consentProvidedForMinor** mezőket használja a **legalAgeGroupClassification**értékének kiszámításához.
+Azure AD B2C a felhasználó által megadott adatok alapján azonosítja, hogy azok kisebbek-e. A rendszer ezután frissíti a **beszerzésimennyiség** mezőt a fiókjában. Az érték lehet:,,, `null` `Undefined` `Minor` `Adult` és `NotAdult` .  A rendszer ezután a **beszerzésimennyiség** és a **consentProvidedForMinor** mezőket használja a **legalAgeGroupClassification**értékének kiszámításához.
 
 Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki már nem tekint kisebbnek, és azt, hogy a kiskorú gyermekeknek hogyan kell beleegyezniük. A következő táblázat felsorolja azokat a kor-szabályokat, amelyek egy kisebb és egy kisebb, a hozzájuk szükséges engedély definiálásához használatosak.
 
@@ -103,7 +103,7 @@ Miután a bérlő beállította az Age kapuzás használatát, ezt a funkciót h
 1. Hozzon létre egy olyan felhasználói folyamatot, amelynél engedélyezve van az Age kapuzás.
 2. A felhasználói folyamat létrehozása után válassza a menü **Tulajdonságok** elemét.
 3. Az **Age kapuzás** szakaszban válassza az **engedélyezve**lehetőséget.
-4. Ezután eldöntheti, hogyan kívánja kezelni a kiskorúakat azonosító felhasználókat. A **regisztrációhoz vagy a bejelentkezéshez**válassza a vagy `Block minors from accessing your application`a `Allow minors to access your application` lehetőséget. Ha kijelöli a kiskorúakat, válassza `Send a JSON back to the application` a `Show an error message`vagy a lehetőséget.
+4. Ezután eldöntheti, hogyan kívánja kezelni a kiskorúakat azonosító felhasználókat. A **regisztrációhoz vagy a bejelentkezéshez**válassza a vagy a `Allow minors to access your application` lehetőséget `Block minors from accessing your application` . Ha kijelöli a kiskorúakat, válassza a vagy a lehetőséget `Send a JSON back to the application` `Show an error message` .
 
 
 

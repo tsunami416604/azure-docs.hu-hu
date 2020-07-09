@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688045"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804620"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -43,7 +43,7 @@ Az Azure Storage három különböző típusú közös hozzáférési aláírás
 A közös hozzáférésű aláírás két űrlap egyikét veheti igénybe:
 
 - **Ad hoc sas:** Ha ad hoc SAS-t hoz létre, a kezdési idő, a lejárati idő és az SAS-engedélyek mind meg vannak adva az SAS URI-ban (vagy hallgatólagosan, ha a kezdési idő nincs megadva). Bármilyen típusú SAS lehet ad hoc SAS.
-- **A tárolt hozzáférési házirenddel rendelkező Service sas:** Egy tárolt hozzáférési szabályzat definiálva van egy erőforrás-tárolón, amely lehet blob-tároló,-tábla,-várólista vagy-fájlmegosztás. A tárolt hozzáférési szabályzat segítségével kezelheti a korlátozásokat egy vagy több szolgáltatás közös hozzáférési aláírásakor. Ha egy szolgáltatás SAS-t társít egy tárolt hozzáférési szabályzathoz, a SAS örökli a megkötéseket&mdash;a tárolt hozzáférési házirend kezdési időpontja,&mdash;lejárati ideje és engedélyei alapján.
+- **A tárolt hozzáférési házirenddel rendelkező Service sas:** Egy tárolt hozzáférési szabályzat definiálva van egy erőforrás-tárolón, amely lehet blob-tároló,-tábla,-várólista vagy-fájlmegosztás. A tárolt hozzáférési szabályzat segítségével kezelheti a korlátozásokat egy vagy több szolgáltatás közös hozzáférési aláírásakor. Ha egy szolgáltatás SAS-t társít egy tárolt hozzáférési szabályzathoz, a SAS örökli a megkötéseket &mdash; a tárolt hozzáférési házirend kezdési időpontja, lejárati ideje és engedélyei alapján &mdash; .
 
 > [!NOTE]
 > A felhasználói delegálási SAS vagy a fiók SAS-nak ad hoc SAS-nek kell lennie. A tárolt hozzáférési szabályzatok nem támogatottak a felhasználói delegálási SAS vagy a fiók SAS számára.

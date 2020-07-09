@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087163"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rendellenesség-észlelési API
 
@@ -63,44 +63,48 @@ Az API meghívásához ismernie kell a végpont helyét és az API-kulcsot.  Ez 
 ### <a name="sample-request-body"></a>Mintául szolgáló kérelem törzse
 A kérelem két objektumot tartalmaz: `Inputs` és `GlobalParameters` .  Az alábbi példában szereplő kérelemben bizonyos paraméterek küldése explicit módon megtörténik, míg mások nem (az egyes végpontok összes paraméterének teljes listáját lefelé görgetve).  A kérelemben nem kifejezetten elküldett paraméterek az alább megadott alapértelmezett értékeket fogják használni.
 
-    {
-                "Inputs": {
-                        "input1": {
-                                "ColumnNames": ["Time", "Data"],
-                                "Values": [
-                                        ["5/30/2010 18:07:00", "1"],
-                                        ["5/30/2010 18:08:00", "1.4"],
-                                        ["5/30/2010 18:09:00", "1.1"]
-                                ]
-                        }
-                },
-        "GlobalParameters": {
-            "tspikedetector.sensitivity": "3",
-            "zspikedetector.sensitivity": "3",
-            "bileveldetector.sensitivity": "3.25",
-            "detectors.spikesdips": "Both"
-        }
+```json
+{
+            "Inputs": {
+                    "input1": {
+                            "ColumnNames": ["Time", "Data"],
+                            "Values": [
+                                    ["5/30/2010 18:07:00", "1"],
+                                    ["5/30/2010 18:08:00", "1.4"],
+                                    ["5/30/2010 18:09:00", "1.1"]
+                            ]
+                    }
+            },
+    "GlobalParameters": {
+        "tspikedetector.sensitivity": "3",
+        "zspikedetector.sensitivity": "3",
+        "bileveldetector.sensitivity": "3.25",
+        "detectors.spikesdips": "Both"
     }
+}
+```
 
 ### <a name="sample-response"></a>Mintaválasz
 A mező megjelenítéséhez `ColumnNames` URL-paraméterként kell szerepelnie a `details=true` kérelemben.  Tekintse meg az alábbi táblázatokat az egyes mezők mögötti jelentésekhez.
 
-    {
-        "Results": {
-            "output1": {
-                "type": "table",
-                "value": {
-                    "Values": [
-                        ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
-                        ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
-                        ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
-                    ],
-                    "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
-                    "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
-                }
+```json
+{
+    "Results": {
+        "output1": {
+            "type": "table",
+            "value": {
+                "Values": [
+                    ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
+                    ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
+                    ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
+                ],
+                "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
+                "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
             }
         }
     }
+}
+```
 
 
 ## <a name="score-api"></a>Pontszám API
@@ -125,18 +129,18 @@ A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi 
 | --- | --- | --- | --- | --- | --- |
 | érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
 | érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
-| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| trenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| trenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | tspikedetector. érzékenység |TSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | zspikedetector. érzékenység |ZSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N/A |
+| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N.A. |
 
 ### <a name="output"></a>Kimenet
 Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
 | Kimenetek | Description |
 | --- | --- |
-| Time |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
+| Idő |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
 | Adatok |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |
 | TSpike |Bináris kijelző, amely azt jelzi, hogy a TSpike detektor észleli-e a nyársat |
 | ZSpike |Bináris kijelző, amely azt jelzi, hogy a ZSpike detektor észleli-e a nyársat |
@@ -160,26 +164,26 @@ A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi 
 | Bemeneti paraméterek | Description | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
 | előfeldolgozás. aggregationInterval |Összesítési időköz másodpercben a bemeneti idősorozatok összesítéséhez |0 (nem történt összesítés) |egész szám |0: az Összesítés kihagyása, > 0, máskülönben |5 perc – 1 nap, idősorozat-függő |
-| előfeldolgozás. aggregationFunc |Az adatnak a megadott AggregationInterval való összesítéséhez használt függvény |középérték |felsorolt |középérték, összeg, hossz |N/A |
-| előfeldolgozás. replaceMissing |Hiányzó adatok eltulajdonítása esetén használt értékek |LKV (utolsó ismert érték) |felsorolt |nulla, LKV, Mean |N/A |
+| előfeldolgozás. aggregationFunc |Az adatnak a megadott AggregationInterval való összesítéséhez használt függvény |középérték |felsorolt |középérték, összeg, hossz |N.A. |
+| előfeldolgozás. replaceMissing |Hiányzó adatok eltulajdonítása esetén használt értékek |LKV (utolsó ismert érték) |felsorolt |nulla, LKV, Mean |N.A. |
 | érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
 | érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
-| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| postrenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| negtrenddetector. érzékenység |A negatív trend detektorának érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| postrenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| negtrenddetector. érzékenység |A negatív trend detektorának érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | tspikedetector. érzékenység |TSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | zspikedetector. érzékenység |ZSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | szezonális. Enable |Azt határozza meg, hogy a szezonális elemzést kell-e elvégezni |igaz |logikai |igaz, hamis |Idősorozat-függő |
 | szezonális. numSeasonality |Az észlelni kívánt időszakos ciklusok maximális száma |1 |egész szám |1, 2 |1-2 |
-| szezonális. átalakítás |Azt határozza meg, hogy a szezonális (és) trend-összetevőket el kell-e távolítani az anomáliák észlelése előtt |leszezon |felsorolt |nincs, deszezon, deseasontrend |N/A |
-| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N/A |
+| szezonális. átalakítás |Azt határozza meg, hogy a szezonális (és) trend-összetevőket el kell-e távolítani az anomáliák észlelése előtt |leszezon |felsorolt |nincs, deszezon, deseasontrend |N.A. |
+| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N.A. |
 
 ### <a name="output"></a>Kimenet
 Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
 | Kimenetek | Description |
 | --- | --- |
-| Time |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
+| Idő |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
 | OriginalData |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |
 | ProcessedData |A következő lehetőségek egyike: <ul><li>Szezonálisan beállított idősorozat, ha a rendszer jelentős szezonális elemet észlelt, és kijelöli a kilépési lehetőséget.</li><li>szezonálisan igazított és elválasztott idősorozat, ha a rendszer jelentős szezonális észlelést észlelt, és kiválasztotta a deseasontrend beállítást</li><li>Ellenkező esetben ez a beállítás megegyezik a OriginalData</li> |
 | TSpike |Bináris kijelző, amely azt jelzi, hogy a TSpike detektor észleli-e a nyársat |

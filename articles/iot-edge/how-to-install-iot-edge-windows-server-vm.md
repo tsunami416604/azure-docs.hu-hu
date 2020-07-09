@@ -9,12 +9,11 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77045900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266474"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge futtatása Windows Serveren Virtual Machines
 
@@ -22,11 +21,11 @@ Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcs
 
 Ha többet szeretne megtudni arról, hogyan működik a IoT Edge futtatókörnyezet és milyen összetevőket tartalmaz, tekintse meg [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md)című témakört.
 
-Ez a cikk azokat a lépéseket sorolja fel, amelyekkel [a Windows Server Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) piactéren elérhető windows Server 2019 virtuális gépen futtathatja a Azure IoT Edge Runtime szolgáltatást. Kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge-windows.md) Windows rendszeren más verziókkal való használatra című témakör utasításait.
+Ez a cikk azokat a lépéseket sorolja fel, amelyekkel [a Windows Server Azure](https://www.microsoft.com/cloud-platform/windows-server-pricing) piactéren elérhető windows Server 2019 virtuális gépen futtathatja a Azure IoT Edge Runtime szolgáltatást. Kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge-windows.md) Windows rendszeren más verziókkal való használatra című témakör utasításait.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Üzembe helyezés az Azure piactéren
 
-1. Navigáljon a [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace ajánlathoz, vagy keressen rá a "Windows Server" kifejezésre az [Azure piactéren](https://azuremarketplace.microsoft.com/)
+1. Navigáljon a [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace ajánlathoz, vagy keressen rá a "Windows Server" kifejezésre az [Azure piactéren](https://azuremarketplace.microsoft.com/)
 2. Válassza a **Letöltés most** lehetőséget.
 3. A **szoftvercsomag**területen keresse meg a "Windows Server 2019 Datacenter Server Core with containers" kifejezést, majd válassza a **tovább** gombot a következő párbeszédpanelen.
     * Ezeket az utasításokat a Windows Server más verzióihoz is használhatja tárolókkal
@@ -87,8 +86,8 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyekkel [a Windows Server Azure](
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   * Ez a parancs felszólítja a jelszó megadására, de a parancsfájlban `--admin-password` megadhatja, hogy könnyebb legyen a beállítás.
-   * A Windows Server Core rendszerkép csak a távoli asztal szolgáltatással támogatja a parancssori támogatást, így ha a teljes asztali élményre van szüksége `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` , akkor a képet kell megadni
+   * Ez a parancs felszólítja a jelszó megadására, de a parancsfájlban megadhatja, hogy könnyebb legyen a beállítás. `--admin-password`
+   * A Windows Server Core rendszerkép csak a távoli asztal szolgáltatással támogatja a parancssori támogatást, így ha a teljes asztali élményre van szüksége, akkor `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` a képet kell megadni
 
 1. Adja meg az eszköz csatlakoztatási karakterláncát (ha nem ismeri ezt a folyamatot, kövesse a következőt: a [kapcsolatok karakterláncának lekérése az Azure CLI](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) eljárással):
 

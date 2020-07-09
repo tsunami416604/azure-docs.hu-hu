@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614366"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Naplózás hozzáadása Service Fabric-alkalmazáshoz
@@ -126,13 +125,13 @@ A ASP.NET Core naplózás ([Microsoft. Extensions. Logging NuGet csomag](https:/
 Egyes harmadik féltől származó szolgáltatók az előző szakaszban leírt módszert használják, beleértve a [Serilog](https://serilog.net/), a [NLog](https://nlog-project.org/)és a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Mindegyiket csatlakoztathatja ASP.NET Core naplózáshoz, vagy külön is használhatja őket. A Serilog olyan funkcióval rendelkezik, amely a naplózó összes üzenetet gazdagítja. Ez a szolgáltatás hasznos lehet a szolgáltatásnév, a típus és a partíció adatainak kimenete. Ha ezt a funkciót a ASP.NET Core-infrastruktúrában szeretné használni, hajtsa végre a következő lépéseket:
 
 1. Adja hozzá a **Serilog**, a **Serilog. Extensions. Logging**, a **Serilog. mosogatós. írástudó**és a **Serilog. mosogató. megfigyelhető** NuGet-csomagokat a projekthez. 
-2. Hozzon `LoggerConfiguration` létre egy és a Logger-példányt.
+2. Hozzon létre egy `LoggerConfiguration` és a Logger-példányt.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Adjon hozzá `Serilog.ILogger` egy argumentumot a szolgáltatás konstruktorához, és adja át az újonnan létrehozott naplózó.
+3. Adjon hozzá egy `Serilog.ILogger` argumentumot a szolgáltatás konstruktorához, és adja át az újonnan létrehozott naplózó.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
@@ -161,7 +160,7 @@ Egyes harmadik féltől származó szolgáltatók az előző szakaszban leírt m
 5. A kód megegyeznek azzal, mintha Serilog nélkül használta ASP.NET Core.
 
    >[!NOTE]
-   >Azt javasoljuk, hogy *ne* használja a statikust `Log.Logger` az előző példával. Service Fabric ugyanazon szolgáltatástípus több példányát is üzemeltetheti egyetlen folyamaton belül. Ha a statikus `Log.Logger`szolgáltatást használja, a tulajdonság-gazdagítók utolsó írója megjeleníti a-t futtató összes példány értékeit. Ez az egyik oka annak, hogy a _logger változó a Service osztály egy privát tagja változó. Emellett elérhetővé kell tennie a `_logger` közös programkódot is, amely a szolgáltatásokon keresztül is felhasználható.
+   >Azt javasoljuk, hogy *ne* használja a statikust `Log.Logger` az előző példával. Service Fabric ugyanazon szolgáltatástípus több példányát is üzemeltetheti egyetlen folyamaton belül. Ha a statikus szolgáltatást használja `Log.Logger` , a tulajdonság-gazdagítók utolsó írója megjeleníti a-t futtató összes példány értékeit. Ez az egyik oka annak, hogy a _logger változó a Service osztály egy privát tagja változó. Emellett elérhetővé kell tennie a `_logger` közös programkódot is, amely a szolgáltatásokon keresztül is felhasználható.
 
 ## <a name="next-steps"></a>További lépések
 

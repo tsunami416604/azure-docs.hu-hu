@@ -1,22 +1,14 @@
 ---
 title: Többrétegű .NET-alkalmazás az Azure Service Bus használatával | Microsoft Docs
 description: Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60403369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340303"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 

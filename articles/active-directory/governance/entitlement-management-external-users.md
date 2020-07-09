@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af0f68ca9520c1715463212da80aaabed48f8269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338210"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
@@ -103,13 +103,13 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 - Győződjön meg arról, hogy a hely szintű beállítások lehetővé teszik a vendég hozzáférését (ugyanazokat a beállításokat a korábban felsoroltak szerint). További információ: [külső megosztás be-és kikapcsolása egy adott helyen](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
 
-### <a name="review-your-office-365-group-sharing-settings"></a>Tekintse át az Office 365 csoport megosztási beállításait
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>Tekintse át Microsoft 365 csoport megosztási beállításait
 
-- Ha az Office 365-csoportokat a külső felhasználók hozzáférési csomagjaiban szeretné felvenni, akkor győződjön **meg** arról, hogy a **felhasználók az új vendégek hozzáadása a szervezethez** beállítás be értékre van állítva a vendég hozzáférésének engedélyezéséhez. További információ: a [vendég hozzáférésének kezelése az Office 365-csoportokhoz](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Ha a külső felhasználók hozzáférési csomagjaiban Microsoft 365 csoportokat szeretne felvenni, győződjön **meg** arról, hogy a **felhasználók új vendégeket adhatnak hozzá a szervezethez** , hogy engedélyezze a vendég hozzáférését. További információ: a [vendég hozzáférésének kezelése Microsoft 365 csoportokhoz](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és az Office 365-csoporthoz kapcsolódó erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és a Microsoft 365hoz társított erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- További információ arról, hogyan állíthatja be az Office 365-csoportok vendég házirendjét a PowerShell címtár szintjén, lásd [: példa a csoportházirendek konfigurálására a címtár szintjén](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- A következő témakörben talál további információt arról, hogyan állíthatja be a Microsoft 365-csoportok vendég házirendjét a PowerShell címtár szintjén: [példa: a vendég házirend konfigurálása csoportok számára a címtár szintjén](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>A csapatok megosztási beállításainak áttekintése
 

@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710745"
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
 Ez a cikk áttekintést nyújt az állapot-nyilvántartó szolgáltatások replikáinak életciklusáról és az állapot nélküli szolgáltatások példányairól.
@@ -37,7 +36,7 @@ A záró állapotban az Azure Service Fabric folyamatban van a példány leáll�
 Az eldobott állapotban a példány már nem fut a csomóponton. Ezen a ponton Service Fabric megtartja a példány metaadatait, ami végül is törlődik.
 
 > [!NOTE]
-> A **ForceRemove** kapcsoló használatával bármely állapotból eldobott állapotba lehet áttérni `Remove-ServiceFabricReplica`.
+> A **ForceRemove** kapcsoló használatával bármely állapotból eldobott állapotba lehet áttérni `Remove-ServiceFabricReplica` .
 >
 
 ## <a name="replicas-of-stateful-services"></a>Állapot-nyilvántartó szolgáltatások replikái
@@ -101,7 +100,7 @@ A replika szerepkör nem vonatkozik a készenléti állapotra.
 >
 
 > [!NOTE]
-> A **ForceRemove** kapcsoló használatával bármely állapotból eldobott állapotba lehet áttérni `Remove-ServiceFabricReplica`.
+> A **ForceRemove** kapcsoló használatával bármely állapotból eldobott állapotba lehet áttérni `Remove-ServiceFabricReplica` .
 >
 
 ## <a name="replica-role"></a>Replika szerepkör 

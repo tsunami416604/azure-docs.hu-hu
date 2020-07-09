@@ -1,32 +1,32 @@
 ---
 title: Szolgáltatói tevékenység megtekintése
 description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolgáltatók által az Azure-beli delegált erőforrás-kezelésen keresztül végrehajtott műveletek megtekintéséhez.
-ms.date: 01/15/2020
-ms.topic: conceptual
-ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131467"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
 
-Azok az ügyfelek, akik az Azure-beli delegált erőforrás-kezeléshez delegált előfizetésekkel rendelkeznek, [megtekinthetik az Azure-tevékenység naplójának](../../azure-monitor/platform/platform-logs-overview.md) adatait az összes művelet megtekintéséhez Ez teljes körű láthatóságot biztosít az ügyfeleknek a szolgáltatók számára az Azure-beli delegált erőforrás-kezelésen keresztül, valamint az ügyfél saját Azure Active Directory (Azure AD) bérlője által végzett műveletek végrehajtásával.
+Azok az ügyfelek, akik az [Azure világítótoronyhoz](../overview.md) delegált előfizetésekkel rendelkeznek, [megtekinthetik az Azure-tevékenység naplójának](../../azure-monitor/platform/platform-logs-overview.md) adatait az összes végrehajtott művelet megtekintéséhez. Ez teljes körű láthatóságot biztosít az ügyfeleknek a szolgáltatók számára az Azure-beli [delegált erőforrás-kezelésen](../concepts/azure-delegated-resource-management.md)keresztül, valamint az ügyfél saját Azure Active Directory (Azure ad) bérlője által végzett műveletek végrehajtásával.
 
 > [!TIP]
 > Egy Azure Policy beépített szabályzat-definíciót is biztosítunk a hatókörök delegálásának naplózására egy felügyeleti bérlő számára. További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Tevékenység naplójának adatnézete
 
-A [tevékenység naplóját](../../azure-monitor/platform/activity-log-view.md) a Azure Portal **figyelő** menüjéből tekintheti meg. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, használja a szűrőket egy adott előfizetés kiválasztásához. [A tevékenységek naplózási eseményeit programozott módon is megtekintheti és lekérheti](../../azure-monitor/platform/activity-log-view.md) .
+A [tevékenység naplóját](../../azure-monitor/platform/activity-log.md#view-the-activity-log) a Azure Portal **figyelő** menüjéből tekintheti meg. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, használja a szűrőket egy adott előfizetés kiválasztásához. [A tevékenységek naplózási eseményeit programozott módon is megtekintheti és lekérheti](../../azure-monitor/platform/activity-log.md#view-the-activity-log) .
 
 > [!NOTE]
-> A szolgáltató bérlője által biztosított felhasználók megtekinthetik a tevékenység naplójának eredményét egy ügyfél-bérlőben lévő delegált előfizetésre vonatkozóan, ha az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört is tartalmaznak, amely olvasói hozzáférést is tartalmaz) az Azure-beli delegált erőforrás-kezeléshez.
+> A szolgáltató bérlője által biztosított felhasználók megtekinthetik a tevékenység naplójának eredményét egy ügyfél-bérlőben lévő delegált előfizetésre vonatkozóan, ha az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört is tartalmaznak, amely olvasói hozzáférést is tartalmaz), amikor az előfizetés bekerült az Azure Lighthouse szolgáltatásba.
 
-A tevékenység naplójában látni fogja a művelet nevét és állapotát, valamint a végrehajtás dátumát és időpontját. Az oszlop **által kezdeményezett esemény** azt jeleníti meg, hogy melyik felhasználó végezte el a műveletet, függetlenül attól, hogy a szolgáltató bérlője egy Azure-beli delegált erőforrás-kezelést vagy egy, az ügyfél saját bérlője által elindított felhasználó. Vegye figyelembe, hogy a felhasználó neve jelenik meg, nem pedig a bérlő vagy a felhasználó által az előfizetéshez hozzárendelt szerepkör.
+A tevékenység naplójában látni fogja a művelet nevét és állapotát, valamint a végrehajtás dátumát és időpontját. Az oszlop **által kezdeményezett esemény** azt jeleníti meg, hogy melyik felhasználó végezte el a műveletet, függetlenül attól, hogy a szolgáltató bérlője az Azure világítótoronyon vagy az ügyfél saját bérlője által elindított felhasználó. Vegye figyelembe, hogy a felhasználó neve jelenik meg, nem pedig a bérlő vagy a felhasználó által az előfizetéshez hozzárendelt szerepkör.
 
-A naplózott tevékenység a Azure Portal az elmúlt 90 napban érhető el. Az adatok 90 napnál hosszabb ideig történő tárolásával kapcsolatban tekintse meg [Az Azure-beli tevékenység-naplók gyűjtése és elemzése log Analytics munkaterületen](../../azure-monitor/platform/activity-log-collect.md)című témakört.
+A naplózott tevékenység a Azure Portal az elmúlt 90 napban érhető el. Az adatok 90 napnál hosszabb ideig történő tárolásával kapcsolatban tekintse meg [Az Azure-beli tevékenység-naplók gyűjtése és elemzése log Analytics munkaterületen](../../azure-monitor/platform/activity-log.md)című témakört.
 
 > [!NOTE]
 > A szolgáltató felhasználói a tevékenység naplójában jelennek meg, de a felhasználók és a hozzájuk tartozó szerepkör-hozzárendelések nem jelennek meg **Access Control (iam)** vagy a szerepkör-hozzárendelési adatok API-kon keresztüli lekérdezése során.
@@ -43,7 +43,7 @@ Létrehozhat lekérdezéseket a naplózott tevékenység elemzéséhez, vagy ado
 
 További információ: [Azure monitorban található naplók áttekintése](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitorról](../../azure-monitor/index.yml).
 - Megtudhatja, hogyan [tekintheti meg és kezelheti](view-manage-service-providers.md) a szolgáltatói ajánlatokat a Azure Portalban.

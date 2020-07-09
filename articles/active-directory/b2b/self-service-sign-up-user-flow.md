@@ -4,26 +4,23 @@ description: A összevonása a Facebook használatával lehetővé teheti a kül
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551247"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
-|     |
-| --- |
-| Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+> [!NOTE]
+> Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Felhasználói folyamatokat hozhat létre a szervezete által készített alkalmazásokhoz. Ha a felhasználói folyamatot egy alkalmazással társítja, lehetővé teszi, hogy engedélyezze a regisztrálást az alkalmazáson. Több alkalmazást is kiválaszthat a felhasználói folyamathoz való társításhoz. Miután hozzárendelte a felhasználói folyamatot egy vagy több alkalmazáshoz, a felhasználók, akik meglátogatják az alkalmazást, regisztrálhatnak, és elérhetik a vendég fiókot a felhasználói folyamaton konfigurált beállítások használatával.
 
@@ -74,14 +71,14 @@ Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisz
 
    ![Új felhasználói folyamat létrehozása lap](media/self-service-sign-up-user-flow/create-user-flow.png)
 
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 9. Az új felhasználói folyamat megjelenik a **felhasználói folyamatok (előzetes verzió)** listában. Ha szükséges, frissítse az oldalt.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Az attribútumok gyűjteménye űrlap elrendezésének kiválasztása
 
 Megadhatja, hogy az attribútumok milyen sorrendben jelenjenek meg a regisztrációs oldalon. 
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** lehetőséget.
 2. Válassza ki a **külső identitások**lehetőséget, majd válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget.
 3. Válassza ki az önkiszolgáló bejelentkezési felhasználói folyamatot a listából.
 4. A **Testreszabás** **területen válassza a lapelrendezések elemet**.
@@ -105,7 +102,9 @@ Most már hozzárendelheti az alkalmazásokat a felhasználói folyamathoz.
 8. Válassza ki az alkalmazást a listából. Vagy használja a keresőmezőt az alkalmazás megkereséséhez, majd jelölje ki.
 9. Kattintson a **Kiválasztás** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)
+- [API-összekötők használata a felhasználói folyamatok webes API-kon keresztüli testreszabásához és bővítéséhez](api-connectors-overview.md)
+- [Egyéni jóváhagyási munkafolyamat hozzáadása a felhasználói folyamathoz](self-service-sign-up-add-approvals.md)

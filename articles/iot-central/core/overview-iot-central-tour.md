@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1792f158ac59e2b80a037621be2c2ce2556e1097
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77426198"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799785"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -103,7 +103,7 @@ Minden oldalon megjelenik a felső menü:
 * Az eszközök sablonjainak és eszközeinek kereséséhez adjon meg egy **keresési** értéket.
 * A felhasználói felület nyelvének vagy témájának módosításához válassza a **Beállítások** ikont. További információ [az alkalmazások beállításainak kezeléséről](howto-manage-preferences.md)
 * Az alkalmazásból való kijelentkezéshez válassza a **fiók** ikont.
-* Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját. Az ingyenes díjszabási csomag alkalmazásaiban a támogatási források az [élő csevegéshez](howto-show-hide-chat.md)is hozzáférést biztosítanak.
+* Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját. Az [alkalmazással kapcsolatos információkat](./howto-get-app-info.md) az alkalmazás **névjegye** hivatkozásra kattintva érheti el. Az ingyenes díjszabási csomag alkalmazásaiban a támogatási források az [élő csevegéshez](howto-show-hide-chat.md)is hozzáférést biztosítanak.
 
 A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
@@ -188,6 +188,6 @@ Az adatok exportálása lehetővé teszi az adatstreamek (például telemetria) 
 
 Az adminisztráció oldalon konfigurálhatja és testre szabhatja a IoT Central alkalmazást. Itt megváltoztathatja az alkalmazás nevét, URL-címét, a felhasználók és szerepkörök kezelését, API-jogkivonatok létrehozását és az alkalmazás exportálását. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md) ismertető szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Azure IoT Central jellemzőit, és megismerkedett a kezelőfelület elrendezésével, a javasolt következő lépés az [Azure IoT Central-alkalmazás létrehozását](quick-deploy-iot-central.md) ismertető rövid útmutató elvégzése.

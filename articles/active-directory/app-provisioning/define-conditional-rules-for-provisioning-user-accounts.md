@@ -2,20 +2,19 @@
 title: Alkalmazások kiépítése a hatóköri szűrőkkel | Microsoft Docs
 description: Ismerje meg, hogyan használhatók a hatóköri szűrők, hogy megakadályozza az olyan alkalmazásokban lévő objektumok használatát, amelyek támogatják az automatikus felhasználó-kiépítés kiépítési módját, ha egy objektum nem felel meg az üzleti követelményeinek.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.topic: how-to
+ms.date: 06/08/2020
+ms.author: kenwith
+ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781956"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -29,7 +28,7 @@ A hatóköri szűrők a kiépítési összekötő típusától függően eltér�
 * **Kimenő kiépítés az Azure ad-ből az SaaS-alkalmazásokba**. Ha az Azure AD a forrásoldali rendszer, a felhasználók [és csoportok hozzárendelései](../manage-apps/assign-user-or-group-access-portal.md) a leggyakoribb módszer annak meghatározására, hogy mely felhasználók tartoznak a kiépítés hatóköréhez. Ezek a hozzárendelések az egyszeri bejelentkezés engedélyezésére is használhatók, és egyetlen módszert biztosítanak a hozzáférés és a kiépítés kezeléséhez. A hatókörhöz tartozó szűrők opcionálisan, a hozzárendelések mellett vagy ahelyett is használhatók, hogy az attribútumok alapján szűrhetik a felhasználókat.
 
     >[!TIP]
-    > Egy vállalati alkalmazás hozzárendelései alapján letilthatja az üzembe helyezést, ha a [hatókör](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menü Beállítások elemére módosítja a kiépítési beállítások lehetőséget az **összes felhasználó és csoport szinkronizálásához**. Ha ezt a lehetőséget választja, és az attribútum-alapú hatóköri szűrők gyorsabb teljesítményt biztosítanak, mint a csoport alapú hozzárendelések használata.  
+    > Egy vállalati alkalmazás hozzárendelései alapján letilthatja az üzembe helyezést, ha a [hatókör](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menü Beállítások elemére módosítja a kiépítési beállítások lehetőséget az **összes felhasználó és csoport szinkronizálásához**. 
 
 * **Bejövő kiépítés a HCM-alkalmazásokból az Azure ad-be és a Active Directoryba**. Ha egy [HCM-alkalmazás, például a munkanap](../saas-apps/workday-tutorial.md) a forrásrendszer, a hatóköri szűrők az elsődleges módszer annak meghatározására, hogy mely felhasználókat kell kiépíteni a HCM-alkalmazásból Active Directory vagy az Azure ad-be.
 
@@ -60,7 +59,7 @@ A hatókör-szűrőnek megfelelően a felhasználóknak meg kell felelniük a k�
 A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési összekötők attribútum-hozzárendeléseinek részeként vannak konfigurálva. Az alábbi eljárás azt feltételezi, hogy már beállította az automatikus kiépítési műveletet az [egyik támogatott alkalmazáshoz](../saas-apps/tutorial-list.md) , és egy hatókör-szűrőt ad hozzá.
 
 ### <a name="create-a-scoping-filter"></a>Hatókör-szűrő létrehozása
-1. A [Azure Portal](https://portal.azure.com)nyissa meg a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** szakaszt.
 
 2. Válassza ki azt az alkalmazást, amelyhez az automatikus kiépítés konfigurálva van: például "ServiceNow".
 
@@ -86,7 +85,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
    f. **nem null**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem üres.
 
-   g. **REGEX egyezés**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum megfelel egy reguláris kifejezési mintának. Például: ([1-9] [0-9]) a 10 és 99 közötti számra illeszkedik.
+   : **REGEX egyezés**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum megfelel egy reguláris kifejezési mintának. Például: ([1-9] [0-9]) a 10 és 99 közötti számra illeszkedik.
 
    h. **nem a REGEX egyezése**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem felel meg a reguláris kifejezési mintának.
    
@@ -105,7 +104,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 10. A **hatóköri szűrő címe**területen adja meg a hatókör-szűrő nevét.
 
-11. Kattintson az **OK** gombra.
+11. Válassza az **OK** lehetőséget.
 
 12. Kattintson ismét az **OK gombra** a **hatókör szűrők** képernyőjén. Szükség esetén ismételje meg a 6-11-es lépést egy másik hatókör-szűrő hozzáadásához.
 
@@ -116,10 +115,10 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 
 ## <a name="common-scoping-filters"></a>Gyakori hatókörű szűrők
-| Cél attribútum| Művelet | Érték | Leírás|
+| Cél attribútum| Művelet | Érték | Description|
 |----|----|----|----|
-|userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartománnyal @domain.com rendelkező userPrincipal, a kiépítés hatóköre lesz|
-|userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartománnyal @domain.com rendelkező userPrincipal, ki lesz a kiépítés hatóköre|
+|userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartománnyal rendelkező userPrincipal, a @domain.com kiépítés hatóköre lesz|
+|userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartománnyal rendelkező userPrincipal, ki lesz a @domain.com kiépítés hatóköre|
 |Részleg|EGYENLŐ|értékesítési|Az értékesítési részleg összes felhasználója a kiépítés hatókörében van|
 |workerID|REGEX EGYEZÉS|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| A 1000000 és 2000000 közötti workerIDs rendelkező alkalmazottak a kiépítés hatókörébe tartoznak.|
 

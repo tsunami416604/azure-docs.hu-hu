@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670916"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>A Application Insights felhasználói viselkedési elemzési eszközeinek hibáinak megoldása
@@ -32,22 +31,22 @@ A felhasználói viselkedés elemzési eszközei jelenleg nem támogatják a fel
 ## <a name="naming-events"></a>Események elnevezése
 **Az alkalmazásom több ezer különböző oldal-és egyéni esemény-névvel rendelkezik. Nehéz megkülönböztetni őket egymástól, és a felhasználói viselkedés elemzési eszközei gyakran nem válaszolnak. Hogyan javíthatom ezeket az elnevezési problémákat?**
 
-Az oldal nézet és az egyéni események nevei a felhasználói viselkedés elemzési eszközein keresztül használatosak. A kiértékelési események is kritikus fontosságúak az ilyen eszközökből származó értékek beszerzéséhez. A cél egy olyan egyensúly, amely a túl kevés, túlságosan általános névvel ("gomb csattant"), és túl sok, túlságosan specifikus névvel rendelkezik ("Szerkesztés gomb rákattintott\/a http:/www.contoso.com/index").
+Az oldal nézet és az egyéni események nevei a felhasználói viselkedés elemzési eszközein keresztül használatosak. A kiértékelési események is kritikus fontosságúak az ilyen eszközökből származó értékek beszerzéséhez. A cél egy olyan egyensúly, amely a túl kevés, túlságosan általános névvel ("gomb csattant"), és túl sok, túlságosan specifikus névvel rendelkezik ("Szerkesztés gomb rákattintott a http: \/ /www.contoso.com/index").
 
 Ha módosítani szeretné a lap nézetét és az alkalmazás által küldött egyéni események nevét, meg kell változtatnia az alkalmazás forráskódját, és újra kell telepítenie. A **Application Insightsban lévő összes telemetria-adatérték 90 napig tárolódik, és nem törölhető**, így az események neveiben végzett módosítások teljes egészében a 90 nap lesz. A név módosítása után a 90 nappal a régi és az új esemény neve is megjelenik a telemetria, így a lekérdezéseket és a csapatokon belüli kommunikációt is módosítani kell.
 
 Ha az alkalmazás túl sok nézet nevét küldi el, ellenőrizze, hogy a rendszer manuálisan adta-e meg ezeket a nézeteket a kódban, vagy hogy automatikusan elküldje-e őket a Application Insights JavaScript SDK:
 
-* Ha az oldal nézetének neve manuálisan van megadva a kódban az [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)használatával, módosítsa a nevet kevésbé konkrétra. Kerülje a gyakori hibákat, például az URL-cím elhelyezését az oldal nézetének nevében. Ehelyett használja az `trackPageView` API URL-paraméterét. Más részletek áthelyezése az oldal nézetének nevéből egyéni tulajdonságokba.
+* Ha az oldal nézetének neve manuálisan van megadva a kódban az [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)használatával, módosítsa a nevet kevésbé konkrétra. Kerülje a gyakori hibákat, például az URL-cím elhelyezését az oldal nézetének nevében. Ehelyett használja az API URL-paraméterét `trackPageView` . Más részletek áthelyezése az oldal nézetének nevéből egyéni tulajdonságokba.
 
-* Ha a Application Insights JavaScript SDK automatikusan küldi az oldal nézetének neveit, módosíthatja a lapok címeit, vagy átválthat az oldalmegtekintések nevének manuális elküldéséhez. Az SDK alapértelmezés szerint az oldal nézet neveként elküldi az egyes lapok [címét](https://developer.mozilla.org/docs/Web/HTML/Element/title) . Megváltoztathatja a címeket, hogy általánosabbak legyenek, de figyelembe kell vennie a SEO-t és más, a változtatások következményeit is. Az oldalmegtekintési nevek manuális megadásával `trackPageView` az API felülbírálja az automatikusan összegyűjtött neveket, így több általános nevet is küldhet a telemetria a lapok címeinek módosítása nélkül.   
+* Ha a Application Insights JavaScript SDK automatikusan küldi az oldal nézetének neveit, módosíthatja a lapok címeit, vagy átválthat az oldalmegtekintések nevének manuális elküldéséhez. Az SDK alapértelmezés szerint az oldal nézet neveként elküldi az egyes lapok [címét](https://developer.mozilla.org/docs/Web/HTML/Element/title) . Megváltoztathatja a címeket, hogy általánosabbak legyenek, de figyelembe kell vennie a SEO-t és más, a változtatások következményeit is. Az oldalmegtekintési nevek manuális megadásával az `trackPageView` API felülbírálja az automatikusan összegyűjtött neveket, így több általános nevet is küldhet a telemetria a lapok címeinek módosítása nélkül.   
 
-Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, módosítsa a kód nevét kevésbé konkrét értékre. Az URL-címek és más, oldalanként vagy dinamikus információk az egyéni események neveiben való közvetlen üzembe helyezésének elkerülése érdekében. Ehelyett helyezze át ezeket az adatokat az egyéni esemény egyéni tulajdonságaiba az `trackEvent` API-val. Például a helyett `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`a következőt javasoljuk: `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
+Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, módosítsa a kód nevét kevésbé konkrét értékre. Az URL-címek és más, oldalanként vagy dinamikus információk az egyéni események neveiben való közvetlen üzembe helyezésének elkerülése érdekében. Ehelyett helyezze át ezeket az adatokat az egyéni esemény egyéni tulajdonságaiba az API-val `trackEvent` . Például a helyett a következőt `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` javasoljuk: `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` .
 
 ## <a name="next-steps"></a>További lépések
 
 * [A felhasználói viselkedés elemzési eszközeinek áttekintése](usage-overview.md)
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

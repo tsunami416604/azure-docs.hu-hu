@@ -4,14 +4,13 @@ description: Azure PowerShell mintákat talál néhány gyakori App Service forg
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81532425"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057908"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-minták a Azure App Servicehoz
 
@@ -25,6 +24,7 @@ Az alábbi táblázat a Azure PowerShell használatával létrehozott PowerShell
 | [Alkalmazás létrehozása és kód üzembe helyezése FTP-vel](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és fájlokat tölt fel egy helyi könyvtárból FTP használatával. |
 | [Alkalmazás létrehozása és kód üzembe helyezése helyi git-tárházból](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és beállítja a kód leküldését egy helyi git-adattárból. |
 | [Alkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást egy üzembe helyezési ponttal az átmeneti kód változásaihoz. |
+|  [Alkalmazás létrehozása és az alkalmazás közzététele privát végponttal](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást egy privát végponttal. |
 |**Alkalmazás konfigurálása**||
 | [Egyéni tartomány leképezése egy alkalmazásra](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egyéni tartománynevet rendel hozzá. |
 | [Egyéni TLS/SSL-tanúsítvány kötése egy alkalmazáshoz](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egy egyéni tartománynév TLS/SSL-tanúsítványát köti hozzá. |
@@ -32,7 +32,7 @@ Az alábbi táblázat a Azure PowerShell használatával létrehozott PowerShell
 | [Alkalmazások manuális méretezése](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és két példány között méretezi azt. |
 | [Az alkalmazások globális skálázása magas rendelkezésre állású architektúrával](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Két App Service alkalmazást hoz létre két különböző földrajzi régióban, és egyetlen végponton keresztül elérhetővé teszi őket az Azure Traffic Manager használatával. |
 |**Az alkalmazás összekötése az erőforrásokkal**||
-| [Alkalmazás összekötése egy SQL Database](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy SQL-adatbázist, majd hozzáadja az adatbázis-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
+| [Alkalmazás összekötése egy SQL Database](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy adatbázist a Azure SQL Database, majd hozzáadja az adatbázis-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
 | [Alkalmazás összekötése egy Storage-fiókkal](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy Storage-fiókot, majd hozzáadja a Storage-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
 |**Alkalmazás biztonsági mentése és visszaállítása**||
 | [Alkalmazás biztonsági mentése](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és létrehoz egy egyszeri biztonsági mentést. |

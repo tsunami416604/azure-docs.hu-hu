@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850965"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-hivatkozás
 Az alábbi dokumentáció a Azure AD Connect ADSyncConfig. psm1 PowerShell-moduljának hivatkozásait tartalmazza.
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
@@ -452,7 +452,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
@@ -614,7 +614,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
@@ -775,7 +775,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
@@ -896,7 +896,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
@@ -1061,7 +1061,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>LEÍRÁS
 A set-ADSyncRestrictedPermissions függvény szigorítja az engedélyeket a megadott fiókkal.
 Az engedélyek szigorítása a következő lépésekkel jár:
-1.
-Öröklés letiltása a megadott objektumon
-2.
-Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket.
+1. Öröklés letiltása a megadott objektumon
+2. Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket.
 Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
-3.
-Rendelje hozzá ezeket a konkrét engedélyeket:
+3. Rendelje hozzá ezeket a konkrét engedélyeket:
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | Típus | Name | Access | Érvényesség |
+   |------|------|--------|------------|
+   | Engedélyezés | RENDSZER | Teljes hozzáférés | Ez az objektum |
+   | Engedélyezés | Vállalati rendszergazdák | Teljes hozzáférés | Ez az objektum |
+   | Engedélyezés | Tartományi rendszergazdák | Teljes hozzáférés | Ez az objektum | 
+   | Engedélyezés | Rendszergazdák | Teljes hozzáférés | Ez az objektum |
+   | Engedélyezés | Vállalati tartományvezérlők | Tartalom listázása <br> Az összes tulajdonság olvasása <br> Olvasási engedélyek | Ez az objektum |
+   | Engedélyezés | Hitelesített felhasználók | Tartalom listázása <br> Az összes tulajdonság olvasása <br> Olvasási engedélyek | Ez az objektum |
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -1192,7 +1183,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
@@ -1354,7 +1345,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="show-adsyncadobjectpermissions"></a>ADSyncADObjectPermissions megjelenítése
 
@@ -1397,4 +1388,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .

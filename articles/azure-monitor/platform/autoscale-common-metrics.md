@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845561"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
@@ -22,7 +21,7 @@ Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.micro
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>A Resource Manager-alapú virtuális gépek számítási mérőszámai
 Alapértelmezés szerint a Resource Manager-alapú Virtual Machines és Virtual Machine Scale Sets alapszintű (gazdagép szintű) mérőszámokat bocsát ki. Emellett az Azure-beli virtuális gépek és VMSS diagnosztikai adatgyűjtésének konfigurálásakor az Azure diagnosztikai bővítmény a vendég-operációsrendszer-teljesítményszámlálók (általában "Vendég-OS mérőszámok") kitöltésére is lehetőséget nyújt.  Ezeket a metrikákat az autoskálázási szabályokban használhatja.
 
-Az `Get MetricDefinitions` API/Posh/CLI használatával megtekintheti a VMSS-erőforráshoz elérhető metrikákat.
+Az `Get MetricDefinitions` API/PoSH/CLI használatával megtekintheti a VMSS-erőforráshoz elérhető metrikákat.
 
 Ha virtuálisgép-méretezési csoportokat használ, és nem jelenik meg egy adott metrika, akkor a diagnosztika bővítmény valószínűleg *le lesz tiltva* .
 
@@ -50,21 +49,21 @@ Riasztást a következő mérőszámokhoz hozhat létre:
 | Metrika neve | Unit (Egység) |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Százalék |
-| \Processor (_Total)\% Kiemelt idő |Százalék |
-| \Processor (_Total)\% felhasználói idő |Százalék |
+| \Processor (_Total) \% Kiemelt idő |Százalék |
+| \Processor (_Total) \% felhasználói idő |Százalék |
 | \Processor információ (_Total) \Processor gyakorisága |Darabszám |
 | \System\Processes |Darabszám |
 | \Process (_Total) \Thread száma |Darabszám |
 | \Process (_Total) \Handle száma |Darabszám |
-| \Memory\% előjegyzett bájtok használatban |Százalék |
+| \Memory \% előjegyzett bájtok használatban |Százalék |
 | \Memory\Available Bytes |Bájt |
 | \Memory\Committed bájtok |Bájt |
 | \Memory\Commit korlátja |Bájt |
 | \Memory\Pool lapozható bájtok |Bájt |
 | \Memory\Pool, nem lapozható bájtok |Bájt |
-| \PhysicalDisk (_Total)\% lemez ideje |Százalék |
-| \PhysicalDisk (_Total)\% lemez olvasási ideje |Százalék |
-| \PhysicalDisk (_Total)\% lemez írási ideje |Százalék |
+| \PhysicalDisk (_Total) \% lemez ideje |Százalék |
+| \PhysicalDisk (_Total) \% lemez olvasási ideje |Százalék |
+| \PhysicalDisk (_Total) \% lemez írási ideje |Százalék |
 | \PhysicalDisk (_Total) \ átvitel másodpercenként |CountPerSecond |
 | \PhysicalDisk (_Total) \ Olvasás gyakorisága másodpercenként |CountPerSecond |
 | \PhysicalDisk (_Total) \ írás gyakorisága (művelet/mp) |CountPerSecond |
@@ -74,7 +73,7 @@ Riasztást a következő mérőszámokhoz hozhat létre:
 | \PhysicalDisk (_Total) \ átlagos a lemez várólistájának hossza |Darabszám |
 | \PhysicalDisk (_Total) \ átlagos lemez olvasási várólistájának hossza |Darabszám |
 | \PhysicalDisk (_Total) \ átlagos lemez írási várólistájának hossza |Darabszám |
-| \Logikai lemez (_Total)\% szabad terület |Százalék |
+| \Logikai lemez (_Total) \% szabad terület |Százalék |
 | \Logikai lemez (_Total) \Szabad hely (MB) |Darabszám |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Vendég operációs rendszer mérőszámai Linux rendszerű virtuális gépek

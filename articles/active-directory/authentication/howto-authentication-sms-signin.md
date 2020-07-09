@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450e6aa1b22806fbd4d142e47caee720d7f63648
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550488"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával (előzetes verzió)
 
@@ -24,10 +24,8 @@ A felhasználók által az alkalmazásokhoz és szolgáltatásokhoz való bejele
 
 Ez a cikk bemutatja, hogyan engedélyezhető az SMS-alapú hitelesítés az Azure AD-beli felhasználók vagy csoportok kiválasztásához.
 
-|     |
-| --- |
-| Az SMS-alapú hitelesítés a felhasználók számára a Azure Active Directory egy nyilvános előzetes funkciója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> Az SMS-alapú hitelesítés a felhasználók számára a Azure Active Directory egy nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -150,12 +148,16 @@ Ha hibaüzenet jelenik meg, amikor a Azure Portal egy felhasználói fiókhoz pr
 
 Az Azure AD-ba való bejelentkezés további módjai jelszó nélkül, például a Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsainak használata: az [Azure ad-hez készült jelszó nélküli hitelesítési beállítások][concepts-passwordless].
 
+Az SMS-alapú bejelentkezés [engedélyezéséhez][rest-enable] vagy [letiltásához][rest-disable] használhatja a Microsoft Graph REST API Beta-ot is.
+
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com

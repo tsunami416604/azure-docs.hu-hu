@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7e3659aa3044a4453574a2cd171303d00abc19
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67102839"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606681"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Oktatóanyag: a ExpenseIn és a Azure Active Directory integrálása
 
@@ -82,10 +82,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-cím egyikét:
 
-    | |
-    |--|
-    | `https://app.expensein.com/samlcallback` |
-    | `https://mobileapi.expensein.com/identity/samlcallback` |
+    ```https
+    https://app.expensein.com/samlcallback
+    https://mobileapi.expensein.com/identity/samlcallback
+    ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -129,7 +129,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. Nyissa meg a tanúsítványt (Base64) a Jegyzettömbben, másolja ki a tartalmát, és illessze be a **tanúsítvány** szövegmezőbe.
 
-    f. Kattintson a **Létrehozás**gombra.
+    f. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -139,9 +139,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -181,15 +181,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ex
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló `B.Simon@contoso.com`e-mail címet.
+    c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `B.Simon@contoso.com` .
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Amikor kiválasztja a ExpenseIn csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a ExpenseIn, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

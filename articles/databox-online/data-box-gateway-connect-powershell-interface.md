@@ -5,21 +5,20 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 2413e53e9613aaa1140b083cb24fe709eb1b067d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: c071d372ba90d29806fd8a44909e2c803a8d3fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339280"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Azure Data Box Gateway-eszköz kezelése a Windows PowerShell használatával
 
 Azure Data Box Gateway megoldás lehetővé teszi az adatküldés hálózaton keresztül az Azure-ba. Ez a cikk a Data Box Gateway eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
-Ez a cikk a PowerShell-felületet használó feladatokra összpontosít. 
+Ez a cikk a PowerShell-felületet használó feladatokra összpontosít.
 
 Ez a cikk az alábbi eljárásokat tartalmazza:
 

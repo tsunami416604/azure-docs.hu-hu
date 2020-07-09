@@ -4,16 +4,16 @@ description: Windows rendszerű virtuális asztali rendszerképek előkészíté
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832525"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -37,11 +37,13 @@ Virtuális gép létrehozása a másolt VHD-vel:
 
 2. A generáció megadása lapon válassza az **1. generáció**lehetőséget.
 
-    ![Képernyőkép a létrehozási lap megadásáról. Az "1. generáció" beállítás van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a létrehozási lap megadásáról. Az "1. generáció" beállítás van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
 
 3. Az ellenőrzőpont típusa területen tiltsa le az ellenőrzőpontokat a jelölőnégyzet bejelölésének törlésével.
 
-    ![Az ellenőrzőpontok lap ellenőrzőpont-típus szakaszának képernyőképe.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![Az ellenőrzőpontok lap ellenőrzőpont-típus szakaszának képernyőképe.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 Az ellenőrzőpontok letiltásához a PowerShellben a következő parancsmagot is futtathatja.
 
@@ -53,7 +55,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 Ha meglévő virtuális merevlemezről hoz létre virtuális gépet, alapértelmezés szerint dinamikus lemezt hoz létre. A rögzített lemezre a **lemez szerkesztése...** lehetőség kiválasztásával módosítható, ahogy az alábbi képen is látható. Részletesebb útmutatásért lásd: [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)-ba való feltöltéshez.
 
-![Képernyőkép a lemez szerkesztése lehetőségről.](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a lemez szerkesztése lehetőségről.](media/35772414b5a0f81f06f54065561d1414.png)
 
 A következő PowerShell-parancsmag futtatásával is megváltoztathatja a lemezt egy rögzített lemezre.
 
@@ -63,9 +66,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>Szoftverek előkészítése és telepítése
 
-Ez a szakasz a FSLogix és a Windows Defender előkészítését és telepítését, valamint az alkalmazások és a rendszerkép beállításjegyzékének alapszintű konfigurációs beállításait ismerteti. 
+Ez a szakasz a FSLogix és a Windows Defender előkészítését és telepítését, valamint az alkalmazások és a rendszerkép beállításjegyzékének alapszintű konfigurációs beállításait ismerteti.
 
-Ha az Office 365 ProPlus és a OneDrive-et telepíti a virtuális gépre, lépjen az [Office telepítése fő VHD-lemezképre](install-office-on-wvd-master-image.md) , és kövesse az itt található utasításokat az alkalmazások telepítéséhez. Ha elkészült, térjen vissza ehhez a cikkhez.
+Ha nagyvállalati és OneDrive telepíti Microsoft 365 alkalmazásait a virtuális gépen, lépjen az [Office telepítése fő VHD-lemezképre](install-office-on-wvd-master-image.md) , és kövesse az itt található utasításokat az alkalmazások telepítéséhez. Ha elkészült, térjen vissza ehhez a cikkhez.
 
 Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, javasoljuk, hogy a szakasz utasításainak elvégzése után telepítse őket.
 
@@ -87,7 +90,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert
 
 Az automatikus frissítések letiltása helyi Csoportházirend használatával:
 
-1. Nyissa meg **Helyicsoportházirend-szerkesztő\\\\felügyeleti sablonok\\Windows-összetevők Windows Update**.
+1. Nyissa meg **Helyicsoportházirend-szerkesztő \\ Felügyeleti sablonok \\ Windows-összetevők \\ Windows Update**.
 2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva**értékre.
 
 A parancssorban a következő parancsot is futtathatja az automatikus frissítések letiltásához.
@@ -113,7 +116,7 @@ Időzónák átirányítása:
 1. A Active Directory-kiszolgálón nyissa meg a **csoportházirend-kezelő konzol**.
 2. Bontsa ki a tartományt és Csoportházirend objektumokat.
 3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés**lehetőséget.
-4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **számítógép-konfigurációs** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **eszköz és erőforrás-átirányítás**elemre.
+4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **számítógép-konfigurációs**  >  **házirendek**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **eszköz és erőforrás-átirányítás**elemre.
 5. Engedélyezze az **időzóna-átirányítás engedélyezése** beállítást.
 
 Ezt a parancsot a fő lemezképen is futtathatja az időzónák átirányításához:
@@ -126,7 +129,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 A Windows 10 Enterprise vagy a Windows 10 Enterprise multi-session hostt használó Windowsos virtuális asztali munkamenetgazda esetében ajánlott letiltani a tárterületet. Az alábbi képernyőképen látható beállítások menüben letilthatja **a tárolási**érzékelést:
 
-![Képernyőfelvétel a beállítások területen a tárolási menüről. A "tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőfelvétel a beállítások területen a tárolási menüről. A "tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
 
 A beállítást a beállításjegyzékben a következő parancs futtatásával is módosíthatja:
 
@@ -136,7 +140,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>További nyelvi támogatás
 
-Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információkért tekintse át a következő cikkeket:
+Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információért tekintse át a következő cikkeket:
 
 - [Nyelvek hozzáadása Windows-lemezképekhez](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [Igény szerinti szolgáltatások](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
@@ -183,21 +187,24 @@ A rendszerkép feltöltésre való előkészítése után győződjön meg arró
 
 Ez a szakasz csak akkor érvényes, ha a fő lemezképet helyileg hozták létre.
 
-Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezképet egy Azure Storage-fiókba. Ha még nem rendelkezik Azure Storage-fiókkal, akkor a [cikk](/azure/javascript/tutorial-vscode-static-website-node-03) utasításait követve hozzon létre egyet.
+Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezképet egy Azure Storage-fiókba. Ha még nem rendelkezik Azure Storage-fiókkal, akkor a [cikk](/azure/developer/javascript/tutorial-vscode-static-website-node-03) utasításait követve hozzon létre egyet.
 
 1. Ha még nem tette meg, alakítsa át a virtuális gép rendszerképét (VHD). Ha nem alakítja át a képet Rögzítettre, nem tudja sikeresen létrehozni a rendszerképet.
 
 2. Töltse fel a VHD-t egy blob-tárolóba a Storage-fiókjában. Gyorsan feltöltheti az [Storage Explorer eszközzel](https://azure.microsoft.com/features/storage-explorer/). Ha többet szeretne megtudni a Storage Explorer eszközről, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-    ![A Microsoft Azure Storage Explorer eszköz keresési ablakának képernyőképe. A "feltöltés. vhd vagy vhdx fájlok blobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![A Microsoft Azure Storage Explorer eszköz keresési ablakának képernyőképe. A "feltöltés. vhd vagy vhdx fájlok blobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. Ezután nyissa meg a böngészőben a Azure Portalt, és keressen rá a "képek" kifejezésre. A keresésnek a **rendszerkép létrehozása** lapra kell mutatnia, ahogy az alábbi képernyőképen is látható:
 
-    ![A Azure Portal rendszerkép létrehozása oldalának képernyőképe, amely a képen látható értékekkel lett kitöltve.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![A Azure Portal rendszerkép létrehozása oldalának képernyőképe, amely a képen látható értékekkel lett kitöltve.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. Miután létrehozta a rendszerképet, a következő képernyőképen láthatóhoz hasonló értesítést kell látnia:
 
-    ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>További lépések
 

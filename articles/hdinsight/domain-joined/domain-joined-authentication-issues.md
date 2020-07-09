@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75896136"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Hitelesítési problémák az Azure HDInsight
@@ -34,7 +33,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Ok
 
-Azure AD-hibakód: 50126 azt `AllowCloudPasswordValidation` jelenti, hogy a házirendet a bérlő nem állította be.
+Azure AD-hibakód: 50126 azt jelenti, hogy a `AllowCloudPasswordValidation` házirendet a bérlő nem állította be.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -106,11 +105,11 @@ Módosítsa a jelszót a Azure Portalban (a helyszíni rendszeren), majd várjon
 
 ### <a name="issue"></a>Probléma
 
-Hibaüzenet fogadása `interaction_required`.
+Hibaüzenet fogadása `interaction_required` .
 
 ### <a name="cause"></a>Ok
 
-A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy `ServiceEndpoints` az ad engedélyezve van az adott vnet.
+A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy az AD `ServiceEndpoints` engedélyezve van az adott vnet.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -148,9 +147,9 @@ Változik.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ahhoz, hogy a kinit parancsot sikeres legyen, tudnia `sAMAccountName` kell, hogy (ez a fiók neve a tartomány nélkül). `sAMAccountName`általában a fiók előtagja (például a Bob `bob@contoso.com`a-ben). Egyes felhasználók esetében eltérő lehet. A címtár megismeréséhez tallózással vagy kereséssel kell rendelkeznie `sAMAccountName`.
+Ahhoz, hogy a kinit parancsot sikeres legyen, tudnia kell, hogy `sAMAccountName` (ez a fiók neve a tartomány nélkül). `sAMAccountName`általában a fiók előtagja (például a Bob a-ben `bob@contoso.com` ). Egyes felhasználók esetében eltérő lehet. A címtár megismeréséhez tallózással vagy kereséssel kell rendelkeznie `sAMAccountName` .
 
-A keresés `sAMAccountName`módjai:
+A keresés módjai `sAMAccountName` :
 
 * Ha a helyi Ambari-rendszergazda használatával tud bejelentkezni a Ambari-be, tekintse meg a felhasználók listáját.
 
@@ -158,7 +157,7 @@ A keresés `sAMAccountName`módjai:
 
 * A fő csomóponton a SAMBA-parancsokat használhatja a kereséshez. Ehhez érvényes Kerberos-munkamenetre (sikeres kinit parancsot) van szükség. NET ADS-keresés (userPrincipalName = Bob *)
 
-    A keresés/Tallózás eredményeinek meg kell mutatniuk az `sAMAccountName` attribútumot. Emellett megtekintheti a többi attribútumot, `pwdLastSet`például `badPasswordTime`, `userPrincipalName` stb., és megtekintheti, hogy ezek a tulajdonságok megfelelnek-e a vártnak.
+    A keresés/Tallózás eredményeinek meg kell mutatniuk az `sAMAccountName` attribútumot. Emellett megtekintheti a többi attribútumot, `pwdLastSet` például `badPasswordTime` , `userPrincipalName` stb., és megtekintheti, hogy ezek a tulajdonságok megfelelnek-e a vártnak.
 
 ---
 
@@ -166,7 +165,7 @@ A keresés `sAMAccountName`módjai:
 
 ### <a name="issue"></a>Probléma
 
-A `Preauthentication` kinit parancsot sikertelen.
+A kinit parancsot sikertelen `Preauthentication` .
 
 ### <a name="cause"></a>Ok
 
@@ -182,7 +181,7 @@ Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett
 
 ### <a name="issue"></a>Probléma
 
-A Job/HDFS parancs végrehajtása a `TokenNotFoundException`következő okból meghiúsult:.
+A Job/HDFS parancs végrehajtása a következő okból meghiúsult: `TokenNotFoundException` .
 
 ### <a name="cause"></a>Ok
 
@@ -198,7 +197,7 @@ Győződjön meg arról, hogy sikeresen bejelentkezett a Ambari-portálra azon a
 
 ### <a name="issue"></a>Probléma
 
-A felhasználó hibaüzenetet `Error fetching access token`kap.
+A felhasználó hibaüzenetet kap `Error fetching access token` .
 
 ### <a name="cause"></a>Ok
 
@@ -208,7 +207,7 @@ Ez a hiba időnként fordul elő, amikor a felhasználók ACL-ek használatával
 
 * Azure Data Lake Storage Gen1 a böngésző gyorsítótárát, és jelentkezzen be újra a Ambari.
 
-* Azure Data Lake Storage Gen2 esetén futtassa `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` azt a felhasználót, aki a felhasználó a következőként próbál bejelentkezni:
+* Azure Data Lake Storage Gen2 esetén futtassa azt `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` a felhasználót, aki a felhasználó a következőként próbál bejelentkezni:
 
 ---
 

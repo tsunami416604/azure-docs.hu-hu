@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7c8a35b2699035b3ce4f96a94ca970da2cf343c4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570607"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608434"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Oktatóanyag: Azure Stack Edge összekapcsolása, beállítása és aktiválása 
 
@@ -22,9 +22,10 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és akt
 
 A telepítés és az aktiválás folyamata körülbelül 20 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
+>
 > * Kapcsolódás fizikai eszközhöz
 > * A fizikai eszköz beállítása és aktiválása
 
@@ -35,7 +36,7 @@ Az Azure Stack Edge-eszköz konfigurálása és beállítása előtt győződjö
 * A fizikai eszközt a [Azure stack Edge telepítése](azure-stack-edge-deploy-install.md)című részletesen telepítette.
 * Az Azure Stack Edge-eszköz kezeléséhez létrehozott Azure Stack Edge-szolgáltatásból aktiválhatja az aktiválási kulcsot. További információ: [felkészülés a Azure stack Edge üzembe helyezésére](azure-stack-edge-deploy-prep.md).
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Kapcsolódás a helyi webes felhasználói felület telepítéséhez 
+## <a name="connect-to-the-local-web-ui-setup"></a>Kapcsolódás a helyi webes felhasználói felület telepítéséhez
 
 1. Konfigurálja az Ethernet-adaptert a számítógépén az Azure Stack Edge-eszközhöz való csatlakozáshoz a 192.168.100.5 és az alhálózat 255.255.255.0 statikus IP-címével.
 
@@ -43,11 +44,10 @@ Az Azure Stack Edge-eszköz konfigurálása és beállítása előtt győződjö
 
     ![Egy bekábelezett eszköz hátlapja](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
+3. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes FELÜLETét a következő címen: `https://192.168.100.10` .  
+    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt.
 
-3. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes `https://192.168.100.10`felületét a következő címen:.  
-    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt. 
-
-    Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával. 
+    Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
    
     ![A webhely biztonsági tanúsítványának hibaüzenete](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
@@ -94,14 +94,14 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
    
    A **webproxy beállításai** lapon tegye a következőket:
    
-   a. A **webproxy URL-címe** mezőbe írja be az URL-címet a `http://host-IP address or FQDN:Port number`következő formátumban:. A HTTPS URL-címek nem támogatottak.
+   a. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number` . A HTTPS URL-címek nem támogatottak.
 
-   b. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget.
+   b. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget. Ha engedélyezi a számítást, és a IoT Edge modult használja az Azure Stack Edge-eszközön, javasoljuk, hogy a webproxy-hitelesítést a **none**értékre állítsa be. Az **NTLM** nem támogatott.
 
    c. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 
    d. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához válassza a **Beállítások alkalmazása**lehetőséget.
-   
+
    > [!NOTE]
    > A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához.
    > Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.

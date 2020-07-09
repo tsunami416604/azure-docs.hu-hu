@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79266987"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
@@ -69,7 +68,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - Illesztőprogram-információk
 
 - Hardver
-  - PCI-eszközök`*`[]
+  - PCI-eszközök [ `*` ]
 
 - Folyamatok és memória
   - Folyamatok listája (feladat neve, felhasznált memória, megnyitott fájlok)
@@ -103,7 +102,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[bővítmény mappája]\*/napló\*
+  - /var/log/Azure/[bővítmény mappája]/ \* napló\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
@@ -112,7 +111,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
 - [Azure virtuálisgép-példány metaadatainak](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] A PCI-információk gyűjtése még nem történt meg a Debian és a SLES disztribúcióban
+>[ `*` ] A PCI-információk gyűjtése még nem történt meg a Debian és a SLES disztribúcióban
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>A PerfInsights Linux futtatása a virtuális gépen
 
@@ -127,16 +126,16 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
 
     | Disztribúció               | Verzió                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux kiszolgáló        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 Marketplace-rendszerkép)|
-    | CentOS                     | 6,5 [`*`], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
+    | Oracle Linux kiszolgáló        | 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Marketplace-rendszerkép)|
+    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
-    | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | Debian                     | 8, 9, 10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Tekintse meg az [ismert problémák](#known-issues) szakaszt.
+>[ `*` ] Tekintse meg az [ismert problémák](#known-issues) szakaszt.
 
 ### <a name="known-issues"></a>Ismert problémák
 
@@ -173,7 +172,7 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Keresse meg a fájlt tartalmazó `perfinsights.py` mappát, majd futtassa a parancsot `perfinsights.py` az elérhető parancssori paraméterek megtekintéséhez.
+2. Keresse meg a fájlt tartalmazó mappát `perfinsights.py` , majd futtassa a parancsot `perfinsights.py` az elérhető parancssori paraméterek megtekintéséhez.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +204,11 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
     >
     >Ha aktív támogatási jegyet használ a Microsofttal, és PerfInsights-t futtat a támogatási szakember kérelmére, akkor ügyeljen arra, hogy a támogatási jegy számát a **-s vagy a--support-Request** kapcsoló használatával adja meg.
 
-Ha a Futtatás befejeződött, egy új tar-fájl ugyanabban a mappában jelenik meg, mint a PerfInsights, kivéve, ha nincs megadva kimeneti mappa. A fájl neve **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a fájlon belül a megállapítások és javaslatok áttekintéséhez.
+Ha a Futtatás befejeződött, egy új tar-fájl ugyanabban a mappában jelenik meg, mint a PerfInsights, kivéve, ha nincs megadva kimeneti mappa. A fájl neve **PerformanceDiagnostics \_ éééé-hh-nn \_ hh-mm-SS-fff. tar. gz.** Ezt a fájlt elküldheti a támogatási ügynöknek elemzésre, vagy megnyithatja a jelentést a fájlon belül a megállapítások és javaslatok áttekintéséhez.
 
 ## <a name="review-the-diagnostics-report"></a>A diagnosztikai jelentés áttekintése
 
-A **PerformanceDiagnostics\_éééé-hh-nn\_hh-mm-SS-fff. tar. gz** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki **a\_PERFORMANCEDIAGNOSTICS éééé-hh-\_nn hh-mm-SS-fff. tar. gz** fájlt, majd nyissa meg a **PerfInsights report. html** fájlt.
+A **PerformanceDiagnostics \_ éééé-hh-nn \_ hh-mm-SS-fff. tar. gz** fájlon belül egy HTML-jelentést talál, amely a PerfInsights eredményeit részletezi. A jelentés áttekintéséhez bontsa ki a **PerformanceDiagnostics \_ éééé-hh-nn \_ hh-mm-SS-fff. tar. gz** fájlt, majd nyissa meg a **PerfInsights Report.html** fájlt.
 
 ### <a name="overview-tab"></a>Áttekintés lap
 
@@ -254,4 +253,4 @@ Az alábbi képernyőképen egy, a következőhöz hasonló üzenet látható:
 
 Az üzenetben található utasításokat követve férhet hozzá a fájlátviteli munkaterülethez. A további biztonság érdekében meg kell változtatnia a jelszavát az első használatkor.
 
-A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **PerformanceDiagnostics\_éééé-hh\_-nn hh-mm-SS-fff. tar. gz** fájlt.
+A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **PerformanceDiagnostics \_ éééé-hh-nn \_ hh-mm-SS-fff. tar. gz** fájlt.

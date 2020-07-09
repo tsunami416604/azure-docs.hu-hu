@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74931788"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése a DB2-ből Azure Data Factory másolási tevékenység használatával
@@ -80,14 +79,14 @@ A következő táblázat felsorolja a DB2-hez társított szolgáltatáshoz tart
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **OnPremisesDb2**értékre kell beállítani. |Igen |
-| **Server** |A DB2-kiszolgáló neve. |Igen |
-| **adatbázis** |A DB2-adatbázis neve. |Igen |
-| **séma** |A séma neve a DB2-adatbázisban. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |Nem |
-| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
-| **username** |A felhasználói fiók neve, ha alapszintű vagy Windows-hitelesítést használ. |Nem |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Nem |
-| **Átjáró neve** |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni DB2-adatbázishoz való kapcsolódáshoz. |Igen |
+| **típusa** |Ezt a tulajdonságot **OnPremisesDb2**értékre kell beállítani. |Yes |
+| **Server** |A DB2-kiszolgáló neve. |Yes |
+| **adatbázis** |A DB2-adatbázis neve. |Yes |
+| **séma** |A séma neve a DB2-adatbázisban. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |No |
+| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
+| **username** |A felhasználói fiók neve, ha alapszintű vagy Windows-hitelesítést használ. |No |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |No |
+| **Átjáró neve** |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni DB2-adatbázishoz való kapcsolódáshoz. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a **struktúra**, a **rendelkezésre állás** **és az adatkészlet** JSON-szabályzata) minden adatkészlet esetében hasonlóak (az Azure SQL, az Azure Blob Storage, az Azure Table Storage stb.).
@@ -96,7 +95,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **Táblanév** |Annak a DB2-adatbázis-példánynak a neve, amelyre a társított szolgáltatás hivatkozik. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
+| **tableName** |Annak a DB2-adatbázis-példánynak a neve, amelyre a társított szolgáltatás hivatkozik. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |Nem (ha a **RelationalSource** típusú másolási tevékenység **lekérdezési** tulajdonsága meg van adva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A másolási tevékenységek definiálásához elérhető csoportok és tulajdonságok listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A másolási tevékenység tulajdonságai, például a **név**, a **Leírás**, a **bemeneti** tábla, a **kimenetek** tábla és a **házirend**, minden típusú tevékenység számára elérhetők. A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a tulajdonságok az adatforrások típusától és a mosdótól függően változnak.
@@ -310,14 +309,14 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyirányú |
+| Valós |Egyszeres |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numerikus |Decimal |
 | Dátum |DateTime |
-| Time |időtartam |
+| Idő |időtartam |
 | Időbélyeg |DateTime |
 | Xml |Bájt [] |
 | Char |Sztring |
@@ -336,14 +335,14 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyirányú |
+| Valós |Egyszeres |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numerikus |Decimal |
 | Dátum |DateTime |
-| Time |időtartam |
+| Idő |időtartam |
 | Időbélyeg |DateTime |
 | Xml |Bájt [] |
 | Char |Sztring |

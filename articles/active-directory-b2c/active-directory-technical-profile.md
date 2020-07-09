@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330388"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201514"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -24,9 +24,9 @@ ms.locfileid: "80330388"
 
 A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a Azure Active Directory felhasználói felügyelethez. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
-A **protokoll** elem `Proprietary` **Name** attribútumát be kell állítani. A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvényének `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`teljesen minősített nevét.
+A **protokoll** elem **Name** attribútumát be kell állítani `Proprietary` . A **kezelő** attribútumnak tartalmaznia kell a protokollkezelő szerelvényének teljesen minősített nevét `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
 A következő [Egyéni szabályzat](custom-policy-get-started.md#custom-policy-starter-pack) -előindítási csomag Azure ad technikai profiljai tartalmazzák a **HRE-közös** technikai profilt. Az Azure AD technikai profiljai nem határozzák meg a protokollt, mert a protokoll a **HRE-közös** technikai profilban van konfigurálva:
  
@@ -41,7 +41,7 @@ A következő [Egyéni szabályzat](custom-policy-get-started.md#custom-policy-s
 
 A következő példa a **HRE-közös** technikai profilt mutatja be:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -96,7 +96,7 @@ A **PersistedClaims** elem tartalmazza az összes olyan értéket, amelyet az Az
 
 A **HRE-UserWriteUsingLogonEmail** technikai profil, amely új helyi fiókot hoz létre, a következő jogcímeket tartja fenn:
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -116,8 +116,8 @@ A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **Partne
 
 - Az összes Azure AD technikai profilhoz pontosan egy **InputClaim** elemnek kell tartoznia a jogcím-táskában.
 - A [felhasználói profil attribútumai című cikk](user-profile-attributes.md) a bemeneti jogcímek, a kimeneti jogcímek és a megőrzött jogcímek által használható, támogatott Azure ad B2C felhasználóiprofil-attribútumokat ismerteti. 
-- Ha a művelet `Write` vagy `DeleteClaims`, akkor azt is meg kell jelennie egy **PersistedClaims** elemben.
-- A **userPrincipalName** jogcím értékének formátuma a ( `user@tenant.onmicrosoft.com`).
+- Ha a művelet `Write` vagy `DeleteClaims` , akkor azt is meg kell jelennie egy **PersistedClaims** elemben.
+- A **userPrincipalName** jogcím értékének formátuma a ( `user@tenant.onmicrosoft.com` ).
 - A **DisplayName** jogcím megadása kötelező, és nem lehet üres karakterlánc.
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD technikai szolgáltatói műveletek
@@ -126,7 +126,7 @@ A jogcím neve az Azure AD attribútum neve, kivéve, ha meg van adva a **Partne
 
 Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A következő technikai profil egy felhasználói fiók adatait olvassa be a felhasználó objectId használatával:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ Az **olvasási** művelet egyetlen felhasználói fiók adatait olvassa be. A k�
 
 Az **írási** művelet egyetlen felhasználói fiókot hoz létre vagy frissít. A következő technikai profil új közösségi fiókot hoz létre:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ Az **írási** művelet egyetlen felhasználói fiókot hoz létre vagy frissít
 
 A **DeleteClaims** művelet törli az adatokat egy adott jogcímek listájáról. A következő technikai profil törli a jogcímeket:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ A **DeleteClaims** művelet törli az adatokat egy adott jogcímek listájáról
 
 A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a címtárból. A következő technikai profil törli a felhasználói fiókot a címtárból az egyszerű felhasználónév használatával:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a c
 
 A következő technikai profil töröl egy közösségi felhasználói fiókot a **alternativeSecurityId**használatával:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -248,12 +248,12 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read`, `Write` `DeleteClaims`,, vagy `DeleteClaimsPrincipal`. |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false`. |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false`.|
-| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
-| ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`, vagy `false`  (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true`. |
+| Művelet | Yes | A végrehajtandó művelet. Lehetséges értékek: `Read` ,,, `Write` `DeleteClaims` vagy `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false` .|
+| ApplicationObjectId | No | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
+| ClientID | No | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
  
@@ -261,8 +261,8 @@ A következő beállításokkal megadhatja a hiba esetén megjelenő hibaüzenet
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
+| UserMessageIfClaimsPrincipalAlreadyExists | No | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
 
 
 ## <a name="next-steps"></a>További lépések

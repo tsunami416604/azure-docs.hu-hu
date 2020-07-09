@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74226725"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>A 2. Azure Functions-futtatókörnyezet előzetes verziójának telepítése
@@ -91,7 +90,7 @@ A Azure Functions-futtatókörnyezet telepítésének befejezéséhez végre kel
 
     ![Azure Functions-futtatókörnyezet előzetes verzió konfigurációjának befejezése][12]
 
-1. Tallózással keresse meg a **Azure functions-futtatókörnyezet portált** `https://<machinename>.<domain>/`.
+1. Tallózással keresse meg a **Azure functions-futtatókörnyezet portált** `https://<machinename>.<domain>/` .
 
     ![Azure Functions-futtatókörnyezet betekintő portál][13]
 
@@ -99,7 +98,7 @@ A Azure Functions-futtatókörnyezet telepítésének befejezéséhez végre kel
 
 Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes verzióban
 
-1. Keresse meg például `https://mycomputer.mydomain.com`a **Azure functions-futtatókörnyezet portált** `https://<machinename>.<domain>` .
+1. Keresse meg például a **Azure functions-futtatókörnyezet portált** `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` .
 
 1. A rendszer arra kéri, hogy **Jelentkezzen be**, ha egy tartományban van telepítve, használja a tartományi fiókja felhasználónevét és jelszavát, máskülönben a helyi fiók felhasználónevét és jelszavát használja a portálra való bejelentkezéshez.
 
@@ -113,7 +112,7 @@ Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes v
 
     ![Azure Functions-futtatókörnyezet betekintő portál előfizetési terve és neve][16]
 
-1. Az összes Function-alkalmazás a portál bal oldali ablaktábláján jelenik meg.  Új függvényalkalmazás létrehozásához válassza ki a fejléc **függvény alkalmazásait** , és kattintson **+** a lehetőségre.
+1. Az összes Function-alkalmazás a portál bal oldali ablaktábláján jelenik meg.  Új függvényalkalmazás létrehozásához válassza ki a fejléc **függvény alkalmazásait** , és kattintson a **+** lehetőségre.
 
 1. Adja meg a Function alkalmazás nevét, válassza ki a megfelelő előfizetést, válassza ki, hogy a Azure Functions futtatókörnyezet melyik verzióját szeretné programozni, és kattintson a **Létrehozás** gombra.
 
@@ -123,7 +122,7 @@ Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes v
 
     ![Azure Functions-futtatókörnyezet előnézeti sablonok][18]
 
-1. Válassza ki az időzítő eseményindító függvényt, a jobb oldali menüben adja meg a függvényt, és módosítsa `*/5 * * * * *` az ütemtervet (ez a cron-kifejezés azt eredményezi, hogy az időzítő függvény öt másodpercenként végrehajtódik), majd kattintson a **Létrehozás** gombra.
+1. Válassza ki az időzítő eseményindító függvényt, a jobb oldali menüben adja meg a függvényt, és módosítsa az ütemtervet `*/5 * * * * *` (ez a cron-kifejezés azt eredményezi, hogy az időzítő függvény öt másodpercenként végrehajtódik), majd kattintson a **Létrehozás** gombra.
 
     ![Azure Functions-futtatókörnyezet előzetes verzió új időzítő funkciójának konfigurálása][19]
 

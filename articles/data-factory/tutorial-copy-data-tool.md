@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/08/2020
+ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022061"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660961"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
 
@@ -134,7 +134,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     b. A következő lépéshez kattintson a **Tovább** gombra.
 
-1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként*való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Kattintson a **Tovább** gombra. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
+1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként*való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Válassza a **Tovább** lehetőséget. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
 
     ![A Fájlformátum beállításai](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. A **Céladattár** oldalon hajtsa végre a következő lépéseket:
@@ -156,11 +156,13 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
     ![Oszlop-hozzárendelési lap](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. A **Beállítások** lapon kattintson a **Tovább** gombra.
-1. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább** gombra.
-1. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre.
- 
-    ![Folyamat figyelése](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
+1. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább** gombra.
+
+1. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre.
+
+    ![Folyamat figyelése](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+    
 1. A folyamat futtatása lapon kattintson a **frissítés** gombra a lista frissítéséhez. Kattintson a **folyamat neve** alatt látható hivatkozásra a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához. 
     ![Folyamat futtatása](./media/tutorial-copy-data-tool/pipeline-run.png)
 
@@ -168,15 +170,13 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     ![Tevékenységfuttatások monitorozása](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-
 1. Ellenőrizze, hogy a rendszer beszúrja-e az adatait a SQL Database **dbo. EMP** táblájába.
-
 
 1. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Létrehozás** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
 
     ![Szerző lap kiválasztása](./media/tutorial-copy-data-tool/author-tab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

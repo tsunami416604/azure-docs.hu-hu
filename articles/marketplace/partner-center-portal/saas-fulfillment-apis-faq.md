@@ -1,18 +1,16 @@
 ---
 title: SaaS-teljesítési API – GYIK – Microsoft kereskedelmi piactér
 description: Ismerje meg a Microsoft kereskedelmi piactér integrációs követelményeit, amelyek lehetővé teszik az Azure-ügyfelek számára az SaaS-ajánlatokra való előfizetést.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 97359083698e92f39ca854972c864ef769bda730
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792904"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109246"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
 
@@ -46,11 +44,11 @@ Ha az Azure-felhasználót átirányítják a kezdőlapra, a rendszer tokent ad 
 
 ![Ügyfél-előfizetési folyamat](media/saas-metering-service-integration-flow-a.png)
 
-Az SaaS-ajánlat életciklusában a Transact-forgatókönyvek kezelésére szolgáló API-szerződéssel kapcsolatos további információkért lásd: [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Az SaaS-ajánlat életciklusában a Transact-forgatókönyvek kezelésére szolgáló API-szerződéssel kapcsolatos további információkért lásd: [SaaS-teljesítési API](pc-saas-fulfillment-api-v2.md).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Honnan tudhatja meg, hogy a felhasználó milyen SaaS-előfizetést kínál az Azure-ban?
 
-Az `Resolve` API-ra adott válasz az SaaS-előfizetéshez kapcsolódó ajánlatot és megtervezési információkat tartalmazza.
+Az API-ra adott válasz az `Resolve` SaaS-előfizetéshez kapcsolódó ajánlatot és megtervezési információkat tartalmazza.
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Hogyan változtatható meg az Azure-felhasználó az ehhez az Azure-előfizetéshez társított terv?
 
@@ -83,6 +81,6 @@ Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó le
 
 ![Ügyfél lemondása a Microsoft kirakatában](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Marketplace metering service API-k](./marketplace-metering-service-apis.md)

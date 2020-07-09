@@ -2,24 +2,20 @@
 title: Megfelelőség a Azure Policy használatával
 description: Beépített szabályzatok kiosztása Azure Policyban az Azure Container-nyilvántartások megfelelőségének naplózásához
 ms.topic: article
-ms.date: 02/26/2020
-ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/11/2020
+ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791894"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Az Azure Container-nyilvántartások megfelelőségének naplózása Azure Policy használatával
 
 [Azure Policy](../governance/policy/overview.md) a szabályzatok létrehozásához, hozzárendeléséhez és kezeléséhez használt Azure-szolgáltatás. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek.
 
-Ez a cikk a Azure Container Registry beépített szabályzatait (előzetes verzió) ismerteti. Ezekkel a házirendekkel naplózhatja az új és a meglévő beállításjegyzékeket a megfelelőség érdekében.
+Ez a cikk a Azure Container Registry beépített házirendjeit ismerteti. Ezekkel a házirendekkel naplózhatja az új és a meglévő beállításjegyzékeket a megfelelőség érdekében.
 
 A Azure Policy használatához nem számítunk fel díjat.
-
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 ## <a name="built-in-policy-definitions"></a>Beépített szabályzat-definíciók
 
@@ -27,7 +23,7 @@ A következő beépített szabályzat-definíciók a Azure Container Registryra 
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
-Lásd még a beépített hálózati házirend-definíció: [[előzetes verzió] Container Registry a virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+Lásd még a beépített hálózati házirend definíciója: [Container Registry virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
 ## <a name="assign-policies"></a>Szabályzatok hozzárendelése
 
@@ -48,7 +44,10 @@ Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Az ok megálla
 
 1. Válassza a **minden szolgáltatás**lehetőséget, és keresse meg a **házirendet**.
 1. Válassza a **megfelelőség**lehetőséget.
-1. A szűrők használatával korlátozhatja a megfelelőségi állapotokat, vagy ![megkeresheti a](./media/container-registry-azure-policy/azure-policy-compliance.png)szabályzatok megfelelőségét a portálon.
+1. A szűrők használatával korlátozhatja a megfelelőségi állapotokat, vagy megkeresheti a szabályzatokat.
+
+    ![Szabályzatoknak való megfelelés a portálon](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. Válasszon ki egy házirendet az összesített megfelelőségi adatok és események áttekintéséhez. Ha szükséges, válasszon ki egy adott beállításjegyzéket az erőforrás-megfelelőséghez.
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Szabályzatok megfelelősége az Azure CLI-ben
@@ -64,8 +63,8 @@ Példa a kimenetre:
 ```
 Name                                                                                   ID
 -------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 Ezután futtassa az az [Policy State List](/cli/azure/policy/state#az-policy-state-list) parancsot az adott házirend-azonosítóhoz tartozó összes erőforrás JSON-formátumú megfelelőségi állapotának visszaküldéséhez:
@@ -87,12 +86,8 @@ az policy state list \
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a Azure Policy [definíciói](../governance/policy/concepts/definition-structure.md) és [hatásairól](../governance/policy/concepts/effects.md)
+* További információ a Azure Policy- [definíciókkal](../governance/policy/concepts/definition-structure.md) és- [hatásokkal](../governance/policy/concepts/effects.md)kapcsolatban.
 
-* [Egyéni szabályzat-definíció](../governance/policy/tutorials/create-custom-policy-definition.md) létrehozása
+* Hozzon létre egy [Egyéni szabályzat-definíciót](../governance/policy/tutorials/create-custom-policy-definition.md).
 
-* További információ az Azure [irányítási képességeiről](../governance/index.yml)
-
-
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+* További információ az Azure [irányítási képességeiről](../governance/index.yml) .

@@ -5,12 +5,11 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079349"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>A Service Fabric önálló fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -22,7 +21,7 @@ Arra készül, hogy létrehoz egy Service Fabric-fürtöt a "saját" számítóg
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>A tartalék tartományok és a frissítési tartományok számának meghatározása
 A tartalék [ *tartomány* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) a meghibásodás fizikai egysége, és közvetlenül kapcsolódik az adatközpontok fizikai infrastruktúrához. A tartalék tartományok olyan hardver-összetevőkből (számítógépek, kapcsolók, hálózatok stb.) állnak, amelyek egyetlen meghibásodási ponton osztoznak. Bár a tartalék tartományok és az állványok között nincs 1:1-es leképezés, az egyes állványok meghibásodási tartománynak tekinthetők.
 
-Ha tartalék ad meg a ClusterConfig. JSON fájlban, kiválaszthatja az egyes FD-nevek nevét. Service Fabric támogatja a hierarchikus tartalék, így az infrastruktúra-topológiát is tükrözheti bennük.  Például a következő tartalék érvényesek:
+Ha a ClusterConfig.json tartalék megadását választja, megadhatja az egyes FD-ket. Service Fabric támogatja a hierarchikus tartalék, így az infrastruktúra-topológiát is tükrözheti bennük.  Például a következő tartalék érvényesek:
 
 * "faultDomain": "FD:/Room1/Rack1/Machine1"
 * "faultDomain": "FD:/FD1"
@@ -32,7 +31,7 @@ A *frissítési tartomány* (UD) a csomópontok logikai egysége. Service Fabric
 
 Ezeknek az elképzeléseknek a legegyszerűbb módja, ha úgy gondolja, hogy tartalék, mint a nem tervezett meghibásodások egysége és a tervezett karbantartás frissítési.
 
-Ha frissítési ad meg a ClusterConfig. JSON fájlban, kiválaszthatja az egyes UD-nevek nevét. Például a következő nevek érvényesek:
+Ha a ClusterConfig.json frissítési megadását választja, megadhatja az egyes UD-nevek nevét. Például a következő nevek érvényesek:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
@@ -51,7 +50,7 @@ Az állapot-nyilvántartó számítási feladatokat futtató fürtökön három 
 
 ## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>A csomópontként szolgáló gépek előkészítése
 
-Íme néhány ajánlott specifikáció minden olyan géphez, amelyet hozzá szeretne adni a fürthöz:
+Az alábbiakban a Service Fabric-fürthöz tartozó gépekre vonatkozó ajánlott specifikációk találhatók:
 
 * Legalább 16 GB RAM
 * Legalább 40 GB szabad lemezterület
@@ -61,20 +60,22 @@ Az állapot-nyilvántartó számítási feladatokat futtató fürtökön három 
 * [.NET-keretrendszer 4.5.1 vagy újabb](https://www.microsoft.com/download/details.aspx?id=40773), teljes telepítés
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * A [RemoteRegistry szolgáltatásnak](https://technet.microsoft.com/library/cc754820) az összes gépen futnia kell
-* Service Fabric telepítési meghajtójának NTFS fájlrendszerrel kell rendelkeznie
+* **Service Fabric telepítési meghajtójának NTFS fájlrendszerrel kell rendelkeznie**
+* **A Windows-szolgáltatások *teljesítményadatait & riasztásokat* és a *Windows-eseménynaplót* [engedélyezni](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))** kell.
 
-A fürt telepítéséhez és konfigurálásához a fürtnek [rendszergazdai jogosultságokkal](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) kell rendelkeznie az egyes gépeken. A Service Fabric tartományvezérlőn nem telepíthető.
+> [!IMPORTANT]
+> A fürt telepítéséhez és konfigurálásához a fürtnek [rendszergazdai jogosultságokkal](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) kell rendelkeznie az egyes gépeken. A Service Fabric tartományvezérlőn nem telepíthető.
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>A Windows Serverhez készült Service Fabric önálló csomag letöltése
 [Töltse le a hivatkozást – Service Fabric önálló csomagot – a Windows Servert](https://go.microsoft.com/fwlink/?LinkId=730690) és csomagolja ki a csomagot egy olyan központi telepítési gépre, amely nem része a fürtnek, vagy a fürt részét képező gépek egyikének.
 
 ## <a name="modify-cluster-configuration"></a>Fürt konfigurációjának módosítása
-Önálló fürt létrehozásához létre kell hoznia egy önálló fürtkonfiguráció ClusterConfig. JSON fájlt, amely leírja a fürt specifikációját. A konfigurációs fájlt a lenti hivatkozásban található sablonok alapján alapozhatja. <br>
+Önálló fürt létrehozásához létre kell hoznia egy önálló fürtkonfiguráció-ClusterConfig.jsa fájlon, amely leírja a fürt specifikációját. A konfigurációs fájlt a lenti hivatkozásban található sablonok alapján alapozhatja. <br>
 [Önálló fürt konfigurációi](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 További információ a fájl fejezeteiről: [önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md).
 
-Nyisson meg egy ClusterConfig. JSON fájlt a letöltött csomagból, és módosítsa a következő beállításokat:
+Nyissa meg az egyik ClusterConfig.jsa letöltött csomag fájljai közül, és módosítsa a következő beállításokat:
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
@@ -115,21 +116,21 @@ Ha egy fürt rendszergazdája Service Fabric önálló fürtöt konfigurál, a k
 
 | **Víruskereső által kizárt folyamatok** |
 | --- |
-| Fabric. exe |
-| Hálóbeli. exe |
-| FabricInstallerService. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>Környezet ellenőrzése a TestConfiguration parancsfájl használatával
-A TestConfiguration. ps1 parancsfájl az önálló csomagban található. A rendszer az ajánlott eljárásokat elemző eszközként használja a fenti feltételek némelyikének ellenőrzéséhez, és az alapértékként ellenőrzi, hogy egy fürt üzembe helyezhető-e egy adott környezetben. Ha hiba lép fel, a hibaelhárításhoz tekintse meg a [környezet beállítása](service-fabric-cluster-standalone-deployment-preparation.md) szakaszban található listát.
+A TestConfiguration.ps1 szkript az önálló csomagban található. A rendszer az ajánlott eljárásokat elemző eszközként használja a fenti feltételek némelyikének ellenőrzéséhez, és az alapértékként ellenőrzi, hogy egy fürt üzembe helyezhető-e egy adott környezetben. Ha hiba lép fel, a hibaelhárításhoz tekintse meg a [környezet beállítása](service-fabric-cluster-standalone-deployment-preparation.md) szakaszban található listát.
 
 Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzáféréssel rendelkezik az összes olyan géphez, amely csomópontként szerepel a fürt konfigurációs fájljában. A parancsfájl futtatásához használt gépnek nem kell a fürt részét képeznie.
 

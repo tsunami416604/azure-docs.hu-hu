@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84141738"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: nyilvános SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
@@ -92,7 +91,7 @@ Ha a kulcspár létrehozásakor jelszót adott meg, írja be a jelszót, amikor 
 
 Ha a virtuális gép az igény szerinti hozzáférési szabályzatot használja, a virtuális géphez való kapcsolódáshoz a hozzáférést kell kérnie. Az igény szerinti szabályzattal kapcsolatos további információkért lásd: [virtuális gépek hozzáférésének kezelése az igény szerinti házirend használatával](../../security-center/security-center-just-in-time.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az SSH-kulcspár használatával kapcsolatos további információkért tekintse meg az [SSH-kulcspár létrehozásának és kezelésének részletes lépéseit](create-ssh-keys-detailed.md).
 

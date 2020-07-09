@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726723"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
@@ -28,7 +27,7 @@ A tárolók használata egyszerű módszert kínál a Batch-feladatok futtatás�
     * Batch .NET SDK-verzió 8.0.0
     * Batch Python SDK 4,0-es verzió
     * Batch Java SDK 3,0-es verzió
-    * Batch Node. js SDK 3,0-es verzió
+    * Batch Node.js SDK 3,0-es verzió
 
 * **Fiókok**: az Azure-előfizetésében létre kell hoznia egy batch-fiókot és opcionálisan egy Azure Storage-fiókot.
 
@@ -306,7 +305,7 @@ CloudTask containerTask = new CloudTask (
 containerTask.ContainerSettings = cmdContainerSettings;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Lásd még: a [Batch hajógyár](https://github.com/Azure/batch-shipyard) eszközkészlete a tárolók számítási feladatainak egyszerű üzembe helyezését a [hajógyári receptek](https://github.com/Azure/batch-shipyard/tree/master/recipes)alapján Azure Batch.
 

@@ -4,20 +4,26 @@ description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyors�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82106457"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433696"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
 Az Azure HPC cache nagy teljesítményű számítástechnikai (HPC) feladatokhoz biztosít hozzáférést az adatokhoz. Az Azure-ban tárolt fájlok gyorsítótárazásával az Azure HPC cache a Felhőbeli számítástechnika méretezhetőségét a meglévő munkafolyamatba helyezi. Ez a szolgáltatás még olyan munkafolyamatok esetében is használható, ahol az adatait WAN-kapcsolatokon keresztül tárolják, például a helyi Datacenter hálózati tároló (NAS) környezetében.
 
 Az Azure HPC cache könnyen indítható és figyelhető a Azure Portal. A meglévő NFS-tárolók vagy új blob-tárolók az összesített névtér részévé válhatnak, ami egyszerűvé teszi az ügyfelek hozzáférését, még akkor is, ha megváltoztatja a háttérbeli tároló célját.
+
+## <a name="overview-video"></a>Áttekintő videó
+
+[![videó miniatűrje: az Azure HPC cache áttekintése – ide kattintva megtekintheti a videó oldalt](media/video-1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+
+Kattintson a fenti képre az [Azure HPC cache rövid áttekintésének](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)megtekintéséhez.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -70,7 +76,7 @@ Az Azure HPC cache használatával használni kívánt előfizetésekhez hozzáf
 
 Hozzáférés kérése az [űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután hozzáadta az előfizetést a hozzáférési listához, létrehozhat gyorsítótárat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A képességeivel kapcsolatos további információkért olvassa el az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache)
 * További tudnivalók a termékek [előfeltételeiről](hpc-cache-prereqs.md)

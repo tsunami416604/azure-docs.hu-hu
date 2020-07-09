@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389292"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 1. A **név**mezőben adja meg a nevet `TokenSigningKeyContainer` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-the-encryption-key"></a>A titkosítási kulcs létrehozása
 
@@ -53,7 +53,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 1. A **név**mezőben adja meg a nevet `TokenEncryptionKeyContainer` . Lehetséges, hogy az `B2C_1A` _ előtag automatikusan hozzá van adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-the-facebook-key"></a>A Facebook-kulcs létrehozása
 
@@ -64,7 +64,7 @@ Adja hozzá a Facebook-alkalmazás [titkos](identity-provider-facebook.md) kulcs
 1. A **név**mezőbe írja be a következőt: `FacebookSecret` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **Secret (titkos**kód) mezőben adja meg a Facebook-alkalmazás *titkos* kódját a Developers.Facebook.com. Ez az érték a titok, nem az alkalmazás azonosítója.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework-alkalmazások regisztrálása
 
@@ -74,22 +74,9 @@ Ezt a két alkalmazást csak egyszer kell regisztrálnia a Azure AD B2C-bérlőb
 
 ### <a name="register-the-identityexperienceframework-application"></a>A IdentityExperienceFramework alkalmazás regisztrálása
 
-Egy alkalmazásnak a Azure AD B2C-bérlőben való regisztrálásához használhatja a **Alkalmazásregisztrációk (örökölt)** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a **Alkalmazásregisztrációk** -élményt.
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. Az **Azure Active Directory** áttekintés menüjének **kezelés**területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
-1. Válassza az **Új alkalmazás regisztrálása** elemet.
-1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework` .
-1. Az **alkalmazás típusa mezőben**válassza a **Web App/API**lehetőséget.
-1. A **bejelentkezési URL-cím**mezőbe írja be a (z `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` ) nevet, ahol a a `your-tenant-name` Azure ad B2C bérlői tartományneve. Az összes URL-nek most a [B2clogin.com](b2clogin.md)-t kell használnia.
-1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework` .
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd írja be `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` `your-tenant-name` a nevet, ahol a a Azure ad B2C bérlői tartományneve.
@@ -111,21 +98,7 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>A ProxyIdentityExperienceFramework alkalmazás regisztrálása
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. **Alkalmazásregisztrációk (örökölt)** területen válassza az **új alkalmazás regisztrálása**lehetőséget.
-1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework` .
-1. Az **alkalmazás típusa mezőben**válassza a **natív**lehetőséget.
-1. Az **átirányítási URI**mezőbe írja be a következőt: `myapp://auth` .
-1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
-1. Válassza a **Beállítások**, majd a **szükséges engedélyek**elemet, majd kattintson a **Hozzáadás**gombra.
-1. Válassza **az API kiválasztása**lehetőséget, keresse meg és válassza ki a **IdentityExperienceFramework**, majd kattintson a **kiválasztás**gombra.
-1. Jelölje be a **hozzáférés IdentityExperienceFramework**melletti jelölőnégyzetet, kattintson a **kiválasztás**elemre, majd kattintson a **kész**gombra.
-1. Válassza az **engedélyek megadása**lehetőséget, majd erősítse meg az **Igen**lehetőséget.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework` .
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**alatt válassza a legördülő menüből a **nyilvános ügyfél/natív (mobil & Desktop)** lehetőséget.
@@ -137,7 +110,6 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 Ezután határozza meg, hogy az alkalmazást nyilvános ügyfélként kell kezelni:
 
 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-1. Válassza **az új élmény kipróbálása** (ha látható) lehetőséget.
 1. A **Speciális beállítások**területen engedélyezze az **alkalmazás kezelése nyilvános ügyfélként** (válassza az **Igen**lehetőséget). Győződjön meg arról, hogy a **"allowPublicClient": true** érték van beállítva az alkalmazás jegyzékfájljában. 
 1. Kattintson a **Mentés** gombra.
 
@@ -151,7 +123,7 @@ Most adja meg a *IdentityExperienceFramework* -regisztráció során korábban k
 1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
 1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
 1. Válassza ki az **Elfogadás** lehetőséget.
-1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." mindkét hatókör **állapota** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
+1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." a hatókörök – offline_access, OpenID és user_impersonation **állapot** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
 
 * * *
 
@@ -166,9 +138,9 @@ Az egyéni házirendek a Azure AD B2C bérlőre feltöltött, a technikai profil
 
 Minden kezdő csomag a következőket tartalmazza:
 
-- **Alapfájl** – kevés módosításra van szükség az alaphoz. Például: *TrustFrameworkBase. XML*
-- **Kiterjesztési fájl** – ez a fájl a legtöbb konfigurációs módosítást hajtja végre. Például: *TrustFrameworkExtensions. XML*
-- **Függő entitás fájljai** – az alkalmazás által meghívott feladat-specifikus fájlok. Példák: *SignUpOrSignin. XML*, *ProfileEdit. XML*, *PasswordReset. XML*
+- **Alapfájl** – kevés módosításra van szükség az alaphoz. Példa: *TrustFrameworkBase.xml*
+- **Kiterjesztési fájl** – ez a fájl a legtöbb konfigurációs módosítást hajtja végre. Példa: *TrustFrameworkExtensions.xml*
+- **Függő entitás fájljai** – az alkalmazás által meghívott feladat-specifikus fájlok. Példák: *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*
 
 Ebben a cikkben a **SocialAndLocalAccounts** alapszintű csomagban lévő egyéni XML-házirendek fájljait szerkeszti. Ha XML-szerkesztőre van szüksége, próbálja ki a [Visual Studio Code](https://code.visualstudio.com/download)-ot, amely egy könnyű platformfüggetlen szerkesztő.
 
@@ -188,7 +160,7 @@ Szerezze be az egyéni házirend-előindítási csomagokat a GitHubról, majd fr
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Alkalmazás-azonosítók hozzáadása az egyéni szabályzathoz
 
-Adja hozzá az alkalmazás-azonosítókat a *TrustFrameworkExtensions. XML*kiterjesztésű fájlhoz.
+Adja hozzá az alkalmazás-azonosítókat a kiterjesztések fájlhoz *TrustFrameworkExtensions.xml*.
 
 1. Nyissa meg `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** és keresse meg az elemet `<TechnicalProfile Id="login-NonInteractive">` .
 1. Cserélje le mindkét példányát a `IdentityExperienceFrameworkAppId` korábban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítójával.
@@ -200,11 +172,11 @@ Adja hozzá az alkalmazás-azonosítókat a *TrustFrameworkExtensions. XML*kiter
 1. Válassza ki az **Identity Experience Framework** menüpontot a B2C-bérlőben a Azure Portalban.
 1. Válassza az **egyéni házirend feltöltése**lehetőséget.
 1. Ebben a sorrendben töltse fel a házirend-fájlokat:
-    1. *TrustFrameworkBase. XML*
-    1. *TrustFrameworkExtensions. XML*
-    1. *SignUpOrSignin. XML*
-    1. *ProfileEdit. XML*
-    1. *PasswordReset. XML*
+    1. *TrustFrameworkBase.xml*
+    1. *TrustFrameworkExtensions.xml*
+    1. *SignUpOrSignin.xml*
+    1. *ProfileEdit.xml*
+    1. *PasswordReset.xml*
 
 A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhez.
 
@@ -234,7 +206,7 @@ Az [Előfeltételek](#prerequisites)értelmében a Facebook *nem* szükséges eg
        <Item Key="client_id">00000000000000</Item>
    ```
 
-1. Töltse fel a *TrustFrameworkExtensions. XML* fájlt a bérlőbe.
+1. Töltse fel a *TrustFrameworkExtensions.xml* fájlt a bérlőbe.
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_signup_signin**lehetőséget.
 1. Kattintson a **Futtatás most** lehetőségre, és válassza a Facebook lehetőséget a Facebook használatával való bejelentkezéshez és az egyéni szabályzat teszteléséhez.
 

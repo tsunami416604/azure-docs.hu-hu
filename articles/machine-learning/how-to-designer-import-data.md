@@ -1,23 +1,23 @@
 ---
 title: Adatok importálása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan importálhatja adatait Azure Machine Learning designerbe különböző adatforrásokból.
+description: Megtudhatja, hogyan importálhat különböző adatforrásokból származó adatok Azure Machine Learning designerbe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610948"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Az adatai importálása Azure Machine Learning designerbe (előzetes verzió)
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Az adatimportálás Azure Machine Learning designerbe (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan importálhat saját adatait a Designerben egyéni megoldások létrehozásához. Az adatgyűjtés kétféleképpen importálható a tervezőbe: 
 
@@ -89,6 +89,10 @@ A tervező egy belső adattípust használ a modulok közötti adatátvitelhez. 
 ## <a name="data-constraints"></a>Adatkorlátozások
 
 A tervezőben lévő modulokat a számítási cél mérete korlátozza. Nagyobb adatkészletek esetén nagyobb Azure Machine Learning számítási erőforrást kell használnia. További információ a Azure Machine Learning számítási feladatokról: [Mik a számítási célok a Azure Machine Learningban?](concept-compute-target.md#azure-machine-learning-compute-managed)
+
+## <a name="access-data-in-a-virtual-network"></a>Virtuális hálózatban tárolt adathozzáférés
+
+Ha a munkaterület virtuális hálózatban található, további konfigurációs lépéseket kell végrehajtania a tervezőben lévő adatok megjelenítéséhez. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [hálózati elkülönítés a betanítás során & a privát virtuális hálózatokkal való következtetés](how-to-enable-virtual-network.md#machine-learning-studio).
 
 ## <a name="next-steps"></a>További lépések
 

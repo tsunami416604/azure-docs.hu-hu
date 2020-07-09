@@ -6,12 +6,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132516"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával
 
@@ -25,7 +25,7 @@ Ez a cikk a Windows PowerShell és a Azure Resource Manager együttes használat
 
 A Azure PowerShell parancsmagokat biztosít az Azure kezeléséhez a Windows PowerShell használatával. Site Recovery PowerShell-parancsmagok, amelyek a Azure Resource Manager Azure PowerShell érhetők el, segítenek a kiszolgálók védelmében és helyreállításában az Azure-ban.
 
-A cikk használatához nem kell PowerShell-szakértőnek lennie, de meg kell ismernie az alapvető fogalmakat, például a modulokat, a parancsmagokat és a munkameneteket. További információt a [PowerShell dokumentációjában](/powershell) és a [Azure PowerShell és a Azure Resource Manager használatával](../powershell-azure-resource-manager.md)című témakörben talál.
+A cikk használatához nem kell PowerShell-szakértőnek lennie, de meg kell ismernie az alapvető fogalmakat, például a modulokat, a parancsmagokat és a munkameneteket. További információt a [PowerShell dokumentációjában](/powershell) és a [Azure PowerShell és a Azure Resource Manager használatával](../azure-resource-manager/management/manage-resources-powershell.md)című témakörben talál.
 
 > [!NOTE]
 > A Microsoft partnerei a Cloud Solution Provider (CSP) programban konfigurálhatják és kezelhetik az ügyfél-kiszolgálók védelmét a megfelelő CSP-előfizetésekkel (bérlői előfizetések).
@@ -44,8 +44,8 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>1. lépés: Jelentkezzen be az Azure-fiókjába
 
-1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókba való bejelentkezéshez. A parancsmag egy weboldalt hoz létre, amely a fiók hitelesítő adatait kéri `Connect-AzAccount`:.
-   - Másik lehetőségként a fiók hitelesítő adatait a `Connect-AzAccount` parancsmag paraméterként is megadhatja a **hitelesítőadat** -paraméter használatával.
+1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókba való bejelentkezéshez. A parancsmag egy weboldalt hoz létre, amely a fiók hitelesítő adatait kéri: `Connect-AzAccount` .
+   - Másik lehetőségként a fiók hitelesítő adatait a parancsmag paraméterként is megadhatja a `Connect-AzAccount` **hitelesítőadat** -paraméter használatával.
    - Ha Ön egy bérlő nevében dolgozó CSP-partner, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Például:`Connect-AzAccount -Tenant "fabrikam.com"`
 1. Társítsa a fiókhoz használni kívánt előfizetést, mivel egy fiók több előfizetéssel is rendelkezhet:
 
@@ -79,14 +79,14 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
    ```
 
-1. Az előfizetéshez tartozó erőforráscsoportok listájának beszerzéséhez futtassa a `Get-AzResourceGroup` (z) parancsmagot.
+1. Az előfizetéshez tartozó erőforráscsoportok listájának beszerzéséhez futtassa a (z `Get-AzResourceGroup` ) parancsmagot.
 1. Hozzon létre egy új Azure Recovery Services-tárolót az alábbiak szerint:
 
    ```azurepowershell
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-A `Get-AzRecoveryServicesVault` parancsmaggal lekérheti a meglévő tárolók listáját.
+A parancsmaggal lekérheti a meglévő tárolók listáját `Get-AzRecoveryServicesVault` .
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>3. lépés: a Recovery Services-tároló környezetének beállítása
 
@@ -130,7 +130,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 Ha a Hyper-V Core-kiszolgálót futtatja, töltse le a telepítőfájlt, és kövesse az alábbi lépéseket:
 
-1. Bontsa ki a fájlokat a _AzureSiteRecoveryProvider. exe_ fájlból egy helyi könyvtárba a következő parancs futtatásával:
+1. A következő parancs futtatásával bontsa ki a fájlokat a _AzureSiteRecoveryProvider.exeból_ egy helyi könyvtárba:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -240,9 +240,9 @@ A Kezdés előtt a megadott Storage-fióknak ugyanabban az Azure-régióban kell
 > Ha a CMK-kompatibilis felügyelt lemezeket az Azure-ban szeretné replikálni, hajtsa végre a következő lépéseket az az PowerShell 3.3.0-től kezdődően:
 >
 > 1. Feladatátvétel engedélyezése a felügyelt lemezeken a virtuális gép tulajdonságainak frissítésével
-> 1. A következő `Get-AzRecoveryServicesAsrReplicationProtectedItem` parancsmaggal kérheti le a védett elemek LEMEZének azonosítóját:
-> 1. Hozzon létre egy szótár `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` objektumot a parancsmag használatával, amely tartalmazza a lemezes titkosítási készlethez tartozó lemez-azonosító hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
-> 1. Frissítse a virtuális gép tulajdonságait `Set-AzRecoveryServicesAsrReplicationProtectedItem` a parancsmag használatával a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
+> 1. A `Get-AzRecoveryServicesAsrReplicationProtectedItem` következő parancsmaggal kérheti le a védett elemek lemezének azonosítóját:
+> 1. Hozzon létre egy szótár objektumot a `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` parancsmag használatával, amely tartalmazza a lemezes titkosítási készlethez tartozó lemez-azonosító hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
+> 1. Frissítse a virtuális gép tulajdonságait a `Set-AzRecoveryServicesAsrReplicationProtectedItem` parancsmag használatával a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
 
 ## <a name="step-8-run-a-test-failover"></a>8. lépés: feladatátvételi teszt futtatása
 
@@ -263,6 +263,6 @@ A Kezdés előtt a megadott Storage-fióknak ugyanabban az Azure-régióban kell
    $TFjob = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](/powershell/module/az.recoveryservices) információ a Azure site Recovery Azure Resource Manager PowerShell-parancsmagokkal.

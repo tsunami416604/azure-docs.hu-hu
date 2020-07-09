@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830349"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Átirányítási URI-k használata az iOS és a macOS rendszerhez készült Microsoft Authentication Library használatával
 
@@ -40,10 +40,12 @@ Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egye
 
 A következő alkalmazás-regisztráció a Azure Portalban:
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* Ügyfél-azonosító: `ABCDE-12345` (ez egyetlen ügyfél-azonosító)
+* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` ,`msauth.com.contoso.app3://auth`
 
-A App1 átirányítási `msauth.com.contoso.app1://auth` App2 `msauth.com.contoso.app2://auth` használ a App3 használatával`msauth.com.contoso.app1://auth`
+A App1 átirányítást használ `msauth.com.contoso.app1://auth` . \
+A App2 használja `msauth.com.contoso.app2://auth` . \
+A App3 használja `msauth.com.contoso.app1://auth` .
 
 ### <a name="migrating-from-adal-to-msal"></a>Migrálás a ADAL-ből a MSAL-be
 
@@ -53,11 +55,11 @@ Ha olyan kódot telepít át, amely az Azure AD hitelesítési függvénytárat 
 
 * A MSAL átirányítási URI-nak az űrlapon kell lennie`<scheme>://host`
 
-    Hol `<scheme>` található az alkalmazás azonosítására szolgáló egyedi karakterlánc. Elsődlegesen az alkalmazás köteg-azonosítóján alapul, amely garantálja az egyediséget. Ha például az alkalmazás Bundle `com.contoso.myapp`-azonosítója, az átirányítási URI a következő formában lesz:. `msauth.com.contoso.myapp://auth`
+    Hol `<scheme>` található az alkalmazás azonosítására szolgáló egyedi karakterlánc. Elsődlegesen az alkalmazás köteg-azonosítóján alapul, amely garantálja az egyediséget. Ha például az alkalmazás Bundle `com.contoso.myapp` -azonosítója, az átirányítási URI a következő formában lesz: `msauth.com.contoso.myapp://auth` .
 
-    Ha a ADAL-ről végez áttelepítést, az átirányítási URI-ja valószínűleg `<scheme>://[Your_Bundle_Id]`a következő `scheme` formátumú lesz:, ahol a egy egyedi karakterlánc. A MSAL használatakor ez a formátum továbbra is működni fog.
+    Ha a ADAL-ről végez áttelepítést, az átirányítási URI-ja valószínűleg a következő formátumú lesz: `<scheme>://[Your_Bundle_Id]` , ahol a egy `scheme` egyedi karakterlánc. A MSAL használatakor ez a formátum továbbra is működni fog.
 
-* `<scheme>`az alkalmazás info. plist fájljában kell regisztrálni `CFBundleURLTypes > CFBundleURLSchemes`.  Ebben a példában a info. plist fájl forráskódként lett megnyitva:
+* `<scheme>`az alkalmazás info. plist fájljában kell regisztrálni `CFBundleURLTypes > CFBundleURLSchemes` .  Ebben a példában a info. plist fájl forráskódként lett megnyitva:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -70,15 +72,14 @@ Ha olyan kódot telepít át, amely az Azure AD hitelesítési függvénytárat 
         </dict>
     </array>
     ```
-    
 
 A MSAL ellenőrzi, hogy az átirányítási URI megfelelően van-e regisztrálva, és ha nem, hibaüzenetet ad vissza.
     
-* Ha az `<scheme>` univerzális hivatkozásokat átirányítási URI-ként kívánja használni, akkor `https` azt be kell jelölnie, és `CFBundleURLSchemes`nem kell deklarálnia. Ehelyett konfigurálja az alkalmazást és a tartományt az Apple által a `MSALPublicClientApplication` [fejlesztők számára elérhető univerzális hivatkozásokon](https://developer.apple.com/ios/universal-links/) , és `handleMSALResponse:sourceApplication:` hívja meg a metódust, amikor az alkalmazást univerzális kapcsolaton keresztül nyitják meg.
+* Ha az univerzális hivatkozásokat átirányítási URI-ként kívánja használni, akkor azt be kell `<scheme>` jelölnie, `https` és nem kell deklarálnia `CFBundleURLSchemes` . Ehelyett konfigurálja az alkalmazást és a tartományt az Apple által a [fejlesztők számára elérhető univerzális hivatkozásokon](https://developer.apple.com/ios/universal-links/) , és hívja meg a `handleMSALResponse:sourceApplication:` metódust, `MSALPublicClientApplication` amikor az alkalmazást univerzális kapcsolaton keresztül nyitják meg.
 
 ## <a name="use-a-custom-redirect-uri"></a>Egyéni átirányítási URI használata
 
-Ha egyéni átirányítási URI-t szeretne használni `redirectUri` , adja `MSALPublicClientApplicationConfig` át a paramétert, `MSALPublicClientApplication` és adja át az objektumot az objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializálás visszaadja `nil` és beállítja `redirectURIError`a további információkat.  Például:
+Ha egyéni átirányítási URI-t szeretne használni, adja át a `redirectUri` paramétert, `MSALPublicClientApplicationConfig` és adja át az objektumot az `MSALPublicClientApplication` objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializálás visszaadja `nil` és beállítja a `redirectURIError` További információkat.  Például:
 
 Objective-C:
 
@@ -110,7 +111,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>A megnyitott URL-cím eseményének kezelése
 
-Az alkalmazásnak meg kell hívnia a MSAL, ha bármilyen választ kap az URL-sémák vagy az univerzális hivatkozások segítségével. A `handleMSALResponse:sourceApplication:` metódus `MSALPublicClientApplication` meghívása az alkalmazás megnyitásakor. Az alábbi példa az egyéni sémákat szemlélteti:
+Az alkalmazásnak meg kell hívnia a MSAL, ha bármilyen választ kap az URL-sémák vagy az univerzális hivatkozások segítségével. A metódus meghívása az `handleMSALResponse:sourceApplication:` `MSALPublicClientApplication` alkalmazás megnyitásakor. Az alábbi példa az egyéni sémákat szemlélteti:
 
 Objective-C:
 

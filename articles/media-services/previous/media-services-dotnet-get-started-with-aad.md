@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8fbe8e0cbf2768af973a0ccc9e237fb770b27a74
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9458f6d66dbf95429172a0767b9293efdfa51113
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086636"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata Azure Media Services API .NET-tel való eléréséhez
 
@@ -56,22 +56,26 @@ Lehetősége van arra is, hogy lecserélje a **AzureAdTokenProvider** alapértel
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK telepítése és konfigurálása
 
 >[!NOTE]
->Ha az Azure AD-hitelesítést a Media Services .NET SDK-val szeretné használni, rendelkeznie kell a legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -csomaggal. Továbbá adjon hozzá egy hivatkozást a **Microsoft. IdentityModel. clients. ActiveDirectory** szerelvényhez. Ha meglévő alkalmazást használ, foglalja bele a **Microsoft. WindowsAzure. MediaServices. Client. Common. Authentication. dll** szerelvényt.
+>Ha az Azure AD-hitelesítést a Media Services .NET SDK-val szeretné használni, rendelkeznie kell a legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -csomaggal. Továbbá adjon hozzá egy hivatkozást a **Microsoft. IdentityModel. clients. ActiveDirectory** szerelvényhez. Ha meglévő alkalmazást használ, foglalja bele a **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** szerelvényt.
 
 1. Hozzon létre egy új C# konzolos alkalmazást a Visual Studióban.
 2. **Azure Media Services .net SDK**telepítéséhez használja a [windowsazure. Mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-csomagot.
 
     Ha a NuGet használatával szeretne hivatkozásokat felvenni, hajtsa végre a következő lépéseket: **megoldáskezelő**kattintson a jobb gombbal a projekt nevére, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Ezután keressen rá a **windowsazure. Mediaservices** kifejezésre, és válassza a **telepítés**lehetőséget.
 
-    – vagy –
+    -vagy-
 
     Futtassa a következő parancsot a **Package Manager konzolon** a Visual Studióban.
 
-        Install-Package windowsazure.mediaservices -Version 4.0.0.4
+    ```console
+    Install-Package windowsazure.mediaservices -Version 4.0.0.4
+    ```
 
 3. Adja hozzá a **használatát** a forráskódhoz.
 
-        using Microsoft.WindowsAzure.MediaServices.Client;
+    ```csharp
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    ```
 
 ## <a name="use-user-authentication"></a>Felhasználói hitelesítés használata
 
@@ -88,8 +92,10 @@ Előre definiált környezeti beállításokat tartalmaz, amelyek csak a nyilvá
 
 A következő kódrészlet létrehoz egy jogkivonatot:
 
-    var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
-    var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+```csharp
+var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
+var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+```
 
 A Media Services programozásának megkezdéséhez létre kell hoznia egy **csatlakozáshoz szükséges cloudmediacontext** -példányt, amely a kiszolgáló környezetét jelöli. A **csatlakozáshoz szükséges cloudmediacontext** olyan fontos gyűjteményekre mutató hivatkozásokat tartalmaz, mint a feladatok, az eszközök, a fájlok, a hozzáférési házirendek és a lokátorok.
 
@@ -97,33 +103,36 @@ A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csa
 
 A következő mintakód egy **csatlakozáshoz szükséges cloudmediacontext** -példányt hoz létre:
 
-    CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```csharp
+CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```
 
 Az alábbi példa bemutatja, hogyan hozhatja létre az Azure AD-tokent és a környezetet:
 
-    namespace AzureADAuthSample
+```csharp
+namespace AzureADAuthSample
+{
+    class Program
     {
-        class Program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
+            var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
+
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
+            CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+
+            var assets = context.Assets;
+            foreach (var a in assets)
             {
-                // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
-
-                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-                // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
-                CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
-
-                var assets = context.Assets;
-                foreach (var a in assets)
-                {
-                    Console.WriteLine(a.Name);
-                }
+                Console.WriteLine(a.Name);
             }
-
         }
     }
+}
+```
 
 >[!NOTE]
 >Ha olyan kivételt kap, amely azt jelzi, hogy "a távoli kiszolgáló a következő hibát adta vissza: (401) nem engedélyezett", tekintse meg a [hozzáférés-vezérlési](media-services-use-aad-auth-to-access-ams-api.md#access-control) szakaszt a Azure Media Services API Azure ad-hitelesítéssel történő elérésének áttekintésével
@@ -140,55 +149,61 @@ Az **ügyfél-azonosító** és az **ügyfél titkos** paramétereinek értékei
 
 A következő mintakód létrehoz egy jogkivonatot a **AzureAdTokenCredentials** konstruktor használatával, amely paraméterként a **AzureAdClientSymmetricKey** fogadja:
 
-    var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                                new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                                AzureEnvironments.AzureCloudEnvironment);
+```csharp
+var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
+                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                            AzureEnvironments.AzureCloudEnvironment);
 
-    var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+```
 
 Megadhatja azt a **AzureAdTokenCredentials** konstruktort is, amely paraméterként fogadja a **AzureAdClientCertificate** .
 
 A tanúsítványoknak az Azure AD által használható űrlapon való létrehozásával és konfigurálásával kapcsolatos utasításokért lásd: [hitelesítés az Azure ad-ben az Active Directory-alkalmazásokban, tanúsítványokkal – manuális konfigurációs lépések](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2).
 
-    var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                                new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                                AzureEnvironments.AzureCloudEnvironment);
+```csharp
+var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
+                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                            AzureEnvironments.AzureCloudEnvironment);
+```
 
 A Media Services programozásának megkezdéséhez létre kell hoznia egy **csatlakozáshoz szükséges cloudmediacontext** -példányt, amely a kiszolgáló környezetét jelöli. A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csatlakozáshoz szükséges cloudmediacontext** konstruktornak. A **Media Rest Services** értékének erőforrás-URI-ja a Azure Portal is beszerezhető.
 
 A következő mintakód egy **csatlakozáshoz szükséges cloudmediacontext** -példányt hoz létre:
 
-    CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```csharp
+CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```
 
 Az alábbi példa bemutatja, hogyan hozhatja létre az Azure AD-tokent és a környezetet:
 
-    namespace AzureADAuthSample
+```csharp
+namespace AzureADAuthSample
+{
+    class Program
     {
-
-        class Program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
+                                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                                        AzureEnvironments.AzureCloudEnvironment);
+
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
+            CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+
+            var assets = context.Assets;
+            foreach (var a in assets)
             {
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                                            AzureEnvironments.AzureCloudEnvironment);
-
-                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-                // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
-                CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
-
-                var assets = context.Assets;
-                foreach (var a in assets)
-                {
-                    Console.WriteLine(a.Name);
-                }
-
-                Console.ReadLine();
+                Console.WriteLine(a.Name);
             }
 
+            Console.ReadLine();
         }
     }
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

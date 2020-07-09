@@ -2,37 +2,36 @@
 title: Naplók lekérdezése Azure Monitorról tárolók számára | Microsoft Docs
 description: A tárolók Azure Monitor a metrikákat és a naplózási adatokat gyűjtik, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298303"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Naplók lekérdezése Azure Monitorról tárolók számára
 
-A tárolók Azure Monitor a tároló gazdagépek és tárolók teljesítmény-metrikáit, leltározási adatait és állapotadatok adatait gyűjtik, és a Azure Monitor Log Analytics munkaterületére továbbítják. Az adatok gyűjtése három percenként történik. Ezek az adatAzure Monitor [lekérdezésekhez](../../azure-monitor/log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+A tárolók Azure Monitor a tároló gazdagépek és tárolók teljesítmény-mérőszámait, leltározási adatait és állapotadatok adatait gyűjtik. Az adatok gyűjtése három percenként történik, és a rendszer továbbítja azokat a Azure Monitor Log Analytics munkaterületére. Ezek az adatAzure Monitor [lekérdezésekhez](../../azure-monitor/log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 ## <a name="container-records"></a>Tároló rekordjai
 
-A következő táblázatban láthatók például a tárolók Azure Monitor által összegyűjtött rekordok, valamint a naplók keresési eredményei között megjelenő adattípusok:
+A következő táblázatban a Azure Monitor által a tárolók által gyűjtött rekordok részletei találhatók. 
 
-| Adattípus | Adattípus a naplóbeli keresésben | Mezők |
-| --- | --- | --- |
-| Gazdagépek és tárolók teljesítménye | `Perf` | Számítógép, ObjectName, CounterName &#40;% processzoridő, lemez olvasás MB, lemez írása MB, memória-használat MB, hálózati fogadási bájtok, hálózati küldési bájtok, processzor kihasználtsága (mp), hálózati&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem |
-| Tároló leltározása | `ContainerInventory` | TimeGenerated, számítógép, tároló neve, ContainerHostname, rendszerkép, ImageTag, ContainerState, ExitCode, EnvironmentVar, parancs, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
-| Tároló naplója | `ContainerLog` | TimeGenerated, számítógép, rendszerkép azonosítója, tároló neve, LogEntrySource, LogEntry, SourceSystem, ContainerID |
-| Tároló-csomópont leltározása | `ContainerNodeInventory`| TimeGenerated, számítógép, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Hüvelyek leltározása egy Kubernetes-fürtben | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, szolgáltatásnév, ControllerKind, ControllerName, tároló állapota:, ContainerStatusReason, ContainerID, ContainerName, név, PodLabel, névtér, PodStatus, ClusterName, képe, SourceSystem |
-| Kubernetes-fürt csomópontjainak leltára | `KubeNodeInventory` | TimeGenerated, számítógép, ClusterName, ClusterId, LastTransitionTimeReady, címkék, állapot, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
-| Kubernetes események | `KubeEvents` | TimeGenerated, számítógép, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, üzenet, SourceSystem | 
-| Szolgáltatások a Kubernetes-fürtben | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| A Kubernetes-fürt csomópontjainak teljesítmény-mérőszámai | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "K8SNode" | Számítógép, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem | 
-| A Kubernetes-fürthöz tartozó tárolók teljesítmény-mérőszámai | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem | 
-| Egyéni metrikák |`InsightsMetrics` | Számítógép, név, névtér, forrás, SourceSystem, címkék<sup>1</sup>, TimeGenerated, típus, Va, _ResourceId | 
+| Adatok | Adatforrás | Adattípus | Mezők |
+|------|-------------|-----------|--------|
+| Gazdagépek és tárolók teljesítménye | A használati metrikák a cAdvisor és a Kube API korlátaiból szerezhetők be. | `Perf` | Számítógép, ObjectName, CounterName &#40;% processzoridő, lemez olvasás MB, lemez írása MB, memória-használat MB, hálózati fogadási bájtok, hálózati küldési bájtok, processzor kihasználtsága (mp), hálózati&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem |
+| Tároló leltározása | Docker | `ContainerInventory` | TimeGenerated, számítógép, tároló neve, ContainerHostname, rendszerkép, ImageTag, ContainerState, ExitCode, EnvironmentVar, parancs, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Tároló naplója | Docker | `ContainerLog` | TimeGenerated, számítógép, rendszerkép azonosítója, tároló neve, LogEntrySource, LogEntry, SourceSystem, ContainerID |
+| Tároló-csomópont leltározása | Kube API | `ContainerNodeInventory`| TimeGenerated, számítógép, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Hüvelyek leltározása egy Kubernetes-fürtben | Kube API | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, szolgáltatásnév, ControllerKind, ControllerName, tároló állapota:, ContainerStatusReason, ContainerID, ContainerName, név, PodLabel, névtér, PodStatus, ClusterName, képe, SourceSystem |
+| Kubernetes-fürt csomópontjainak leltára | Kube API | `KubeNodeInventory` | TimeGenerated, számítógép, ClusterName, ClusterId, LastTransitionTimeReady, címkék, állapot, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+| Kubernetes-események | Kube API | `KubeEvents` | TimeGenerated, számítógép, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, üzenet, SourceSystem | 
+| Szolgáltatások a Kubernetes-fürtben | Kube API | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
+| A Kubernetes-fürt csomópontjainak teljesítmény-mérőszámai || A Teljesítményfigyelő &#124;, ahol a ObjectName = = "K8SNode" | Számítógép, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem | 
+| A Kubernetes-fürthöz tartozó tárolók teljesítmény-mérőszámai || A Teljesítményfigyelő &#124;, ahol a ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem | 
+| Egyéni metrikák ||`InsightsMetrics` | Számítógép, név, névtér, forrás, SourceSystem, címkék<sup>1</sup>, TimeGenerated, típus, Va, _ResourceId | 
 
-<sup>1</sup> a *címkék* tulajdonság a megfelelő metrika [több dimenzióját](../platform/data-platform-metrics.md#multi-dimensional-metrics) jelöli. A `InsightsMetrics` táblázatban gyűjtött és tárolt metrikákkal és a rekordok tulajdonságainak leírásával kapcsolatos további információkért lásd: [InsightsMetrics – áttekintés](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
+<sup>1</sup> a *címkék* tulajdonság a megfelelő metrika [több dimenzióját](../platform/data-platform-metrics.md#multi-dimensional-metrics) jelöli. A táblázatban gyűjtött és tárolt metrikákkal `InsightsMetrics` és a rekordok tulajdonságainak leírásával kapcsolatos további információkért lásd: [InsightsMetrics – áttekintés](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
 
 ## <a name="search-logs-to-analyze-data"></a>Naplók keresése az adatelemzéshez
 
@@ -48,7 +47,7 @@ A tároló a munkaterületre továbbított kimenetet naplózza STDOUT és STDERR
 
 Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd az igényeinek megfelelően módosítják őket. A fejlettebb lekérdezések létrehozásához a következő példa-lekérdezésekkel lehet kísérletezni:
 
-| Lekérdezés | Leírás | 
+| Lekérdezés | Description | 
 |-------|-------------|
 | ContainerInventory<br> &#124; Project számítógép, név, rendszerkép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; renderelési táblázat | Egy tároló életciklus-információinak listázása| 
 | KubeEvents_CL<br> &#124;, ahol nem (IsEmpty (Namespace_s))<br> &#124; rendezés TimeGenerated desc szerint<br> &#124; renderelési táblázat | Kubernetes események|
@@ -80,7 +79,7 @@ InsightsMetrics
 
 ```
 
-A Azure Monitor névtér alapján megszűrt Prometheus-metrikák megtekintéséhez a "Prometheus" kifejezést kell megadnia. Íme egy példa egy lekérdezésre a Prometheus-metrikák megtekintéséhez `default` a kubernetes-névtérből.
+A Azure Monitor névtér alapján megszűrt Prometheus-metrikák megtekintéséhez a "Prometheus" kifejezést kell megadnia. Íme egy példa egy lekérdezésre a Prometheus-metrikák megtekintéséhez a `default` kubernetes-névtérből.
 
 ```
 InsightsMetrics 
@@ -99,13 +98,13 @@ InsightsMetrics
 
 ### <a name="query-config-or-scraping-errors"></a>Lekérdezési konfiguráció vagy karcolási hibák
 
-A konfigurációs vagy a selejtes hibák vizsgálatához a következő példa a `KubeMonAgentEvents` tábla tájékoztató eseményeit adja vissza.
+A konfigurációs vagy a selejtes hibák vizsgálatához a következő példa a tábla tájékoztató eseményeit adja vissza `KubeMonAgentEvents` .
 
 ```
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
+A kimenet az alábbi példához hasonló eredményeket mutat:
 
 ![Az ügynöktől származó tájékoztató események lekérdezési eredményeinek naplózása](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 

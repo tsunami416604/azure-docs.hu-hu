@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 8407aafdb9b9dadcbc8e220ac42e5d7856116959
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083100"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -101,7 +101,7 @@ A HDInsight előre megírt parancsfájlokat biztosít a következő összetevők
 
 A parancsfájlok műveletei az Azure Marketplace-en is HDInsight-alkalmazásként közzétehetők.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Külső gyártótól származó Apache Hadoop alkalmazások telepítése a HDInsight-on](../hdinsight-apps-install-applications.md)
 - [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](../hdinsight-hadoop-customize-cluster-linux.md)
@@ -109,7 +109,7 @@ További információkért tekintse át a következő cikkeket:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>HDInsight-konfigurációk testreszabása a bootstrap használatával
 
-A konfigurációs fájlokban lévő konfigurációk módosításai `core-site.xml`, például a, `hive-site.xml` és `oozie-env.xml` a bootstrap használatával hozhatók létre. A következő szkript egy példa a PowerShell az [Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)használatával:
+A konfigurációs fájlokban lévő konfigurációk módosításai, például a `core-site.xml` , `hive-site.xml` és a `oozie-env.xml` bootstrap használatával hozhatók létre. A következő szkript egy példa a PowerShell az [Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)használatával:
 
 ```powershell
 # hive-site.xml configuration
@@ -144,7 +144,7 @@ Az üres peremhálózati csomópont egy Linux rendszerű virtuális gép, amely 
 - ügyfélalkalmazások tesztelése
 - ügyfélalkalmazások üzemeltetése
 
-Az Edge-csomópontok létrehozhatók és törölhetők a Azure Portalon keresztül, és a fürt létrehozásakor vagy után is használhatók. Az Edge-csomópont létrehozása után az SSH használatával kapcsolódhat a peremhálózati csomóponthoz, és az ügyféleszközök futtatásával érheti el a Hadoop-fürtöt a HDInsight-ben. Az Edge Node SSH-végpontja `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
+Az Edge-csomópontok létrehozhatók és törölhetők a Azure Portalon keresztül, és a fürt létrehozásakor vagy után is használhatók. Az Edge-csomópont létrehozása után az SSH használatával kapcsolódhat a peremhálózati csomóponthoz, és az ügyféleszközök futtatásával érheti el a Hadoop-fürtöt a HDInsight-ben. Az Edge Node SSH-végpontja `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22` .
 
 
 További információkért tekintse meg a következő cikket: [üres peremhálózati csomópontok használata Apache Hadoop fürtökön a HDInsight-ben](../hdinsight-apps-use-edge-node.md).
@@ -172,7 +172,7 @@ A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a 
 > [!Note]  
 > A HDInsight jelenleg nem támogatja a kényszerített bújtatást. A kényszerített bújtatás egy olyan alhálózat-beállítás, amely az eszközre irányuló kimenő internetes forgalmat ellenőrzés és naplózás céljából kényszeríti. Távolítsa el a kényszerített bújtatást, mielőtt telepítené a HDInsight egy alhálózatba, vagy hozzon létre egy új alhálózatot a HDInsight. A HDInsight emellett nem támogatja a kimenő hálózati kapcsolatok korlátozását.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Azure Virtual-Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
@@ -181,7 +181,7 @@ További információkért tekintse át a következő cikkeket:
 
 A HDInsight támogatja a [virtuális hálózati szolgáltatás-végpontokat](../../virtual-network/virtual-network-service-endpoints-overview.md), amelyek lehetővé teszik az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos db és SQL-adatbázisokhoz való biztonságos kapcsolódást. A szolgáltatás-végpont Azure HDInsight való engedélyezésével a forgalom a biztonságos útvonalon halad át az Azure-adatközponton belül. Ezzel a fokozott biztonsággal a hálózati rétegben zárolhatja big data Storage-fiókjait a megadott virtuális hálózatokra (virtuális hálózatok), és továbbra is zökkenőmentesen használhatja a HDInsight-fürtöket az adateléréshez és a feldolgozáshoz.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Virtuális hálózati szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [A HDInsight biztonság növelése a szolgáltatási végpontokkal](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)

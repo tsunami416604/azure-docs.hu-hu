@@ -6,18 +6,18 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021602"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255194"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Oktatóanyag: adategységek regisztrálása a Azure Data Catalogban
 
-Ebben az oktatóanyagban a regisztrációs eszközzel regisztrálja az adategységeket az Azure SQL Database mintából a katalógus használatával. A regisztráció az a folyamat, amelynek során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
+Ebben az oktatóanyagban a regisztrációs eszközzel regisztrálja az adategységeket az adatbázis mintából a katalógus használatával. A regisztráció az a folyamat, amelynek során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Adategységek regisztrálása 
 > * Adategységek keresése
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Első lépésként el kell végeznie a [gyors](register-data-assets-tutorial.md)üzembe helyezést.
 
-* [Microsoft Azure](https://azure.microsoft.com/) előfizetés.
+* Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetéssel.
 * Saját [Azure Active Directory Bérlővel](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)kell rendelkeznie.
 
 Data Catalog beállításához az Azure-előfizetés tulajdonosának vagy tulajdonosának kell lennie.
@@ -39,11 +39,11 @@ Data Catalog beállításához az Azure-előfizetés tulajdonosának vagy tulajd
 
 ### <a name="register-a-data-source"></a>Adatforrás regisztrálása
 
-Az adategységeket (táblákat) egy [Azure SQL Database-mintából](../azure-sql/database/single-database-create-quickstart.md)regisztrálja, de bármilyen támogatott adatforrást használhat, ha Ön szívesebben dolgozik a szerepköre számára ismerős és releváns adatokkal. A támogatott adatforrások listájáért lásd: [Supported data sources](data-catalog-dsr.md) (Támogatott adatforrások).
+Az adategységeket (táblákat) a Azure SQL Database [adatbázis-mintából](../azure-sql/database/single-database-create-quickstart.md) regisztrálja, de bármilyen támogatott adatforrást használhat, ha a szerepköre ismerős és releváns adatokkal szeretne dolgozni. A támogatott adatforrások listájáért lásd: [Supported data sources](data-catalog-dsr.md) (Támogatott adatforrások).
 
-Az oktatóanyagban használt Azure SQL Database-adatbázis neve *RLSTest*.
+Az oktatóanyagban használt *RLSTest*.
 
-Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket az Azure SQL Database mintából.
+Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket az adatbázis mintából.
 
 1. Lépjen a [Azure Data Catalog kezdőlapjára](http://azuredatacatalog.com) , majd válassza az **adatközzététel**lehetőséget.
 
@@ -61,13 +61,13 @@ Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket a
 
     ![Azure Data Catalog – adatforrások](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. Adja meg az Azure SQL Database-minta SQL Server kapcsolati tulajdonságait, és válassza a **kapcsolat lehetőséget.**
+5. Adja meg az adatbázis-minta SQL Server kapcsolati tulajdonságait Azure SQL Database és válassza a **kapcsolat**lehetőséget.
 
    ![Azure Data Catalog – SQL Server-kapcsolati tulajdonságok](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. Regisztrálja az adategység metaadatait. Ebben a példában a **Product** objektumokat az Azure SQL Database-minta névterében regisztrálja:
+6. Regisztrálja az adategység metaadatait. Ebben a példában a **termék** objektumait regisztrálja a minta névterből:
 
-    1. A **kiszolgálói hierarchia** fáján bontsa ki az Azure SQL Database-mintát, és válassza a **SalesLT**lehetőséget.
+    1. A **kiszolgálói hierarchia** fáján bontsa ki az adatbázis mintát, és válassza a **SalesLT**lehetőséget.
 
     2. Válassza a **termék**, a **ProductCategory**, a **ProductDescription**és a **ProductModel** lehetőséget a CTRL + Select billentyűkombinációval.
 
@@ -85,7 +85,7 @@ Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket a
 
           ![Azure Data Catalog oktatóanyag – regisztrálandó objektumok](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Válassza a **regisztráció**lehetőséget. Az Azure Data Catalog regisztrálja a kiválasztott objektumokat. Ebben a gyakorlatban az Azure SQL Database mintából kiválasztott objektumok regisztrálva vannak. A regisztrációs eszköz kinyeri a metaadatokat az adategységből, majd az Azure Data Catalogba másolja az adatokat. Az adatmennyiség marad, ahol jelenleg is marad. Az adat a forrásrendszer rendszergazdáinak és házirendjeinek felügyelete alatt marad.
+    8. Válassza a **regisztráció**lehetőséget. Az Azure Data Catalog regisztrálja a kiválasztott objektumokat. Ebben a gyakorlatban az adatbázis mintából kiválasztott objektumok regisztrálva vannak. A regisztrációs eszköz kinyeri a metaadatokat az adategységből, majd az Azure Data Catalogba másolja az adatokat. Az adatmennyiség marad, ahol jelenleg is marad. Az adat a forrásrendszer rendszergazdáinak és házirendjeinek felügyelete alatt marad.
 
           ![Azure Data Catalog – regisztrált objektumok](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket a
 
         ![Objektumok az Azure Data Catalog-portálon](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-Ebben a gyakorlatban az Azure SQL Database-ből származó objektumokat regisztrált, hogy a felhasználók könnyen fel tudják deríteni a szervezeten belül.
+Ebben a gyakorlatban a Azure SQL Database adatbázis-mintájában regisztrált objektumokat, hogy azok könnyen felismerhetők legyenek a felhasználók számára a szervezeten belül.
 
 A következő gyakorlatból elsajátíthatja, hogyan találhatja meg a regisztrált adategységeket.
 
@@ -178,7 +178,7 @@ Az összehasonlító operátorok segítségével a szám és adat adattípusú t
 
 3. Nyomja le az **ENTER** billentyűt.
 
-4. Ellenőrizze, hogy megjelenik-e a **termék**, a **ProductCategory**és a **ProductDescription** tábla, valamint a keresési eredmények között regisztrált Azure SQL-adatbázis.
+4. Ellenőrizze, hogy megjelenik-e a **termék**, a **ProductCategory**és a **ProductDescription** tábla, valamint a keresési eredmények között regisztrált SQL-adatbázis.
 
     ![Azure Data Catalog – összehasonlító találatok](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,7 +251,7 @@ Ebben a gyakorlatban a kapcsolatadatok segítségével az adategységeket egy in
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-Ebben a gyakorlatban az Azure Data Catalog segítségével felderített adategységekhez fog csatlakozni. Az Azure Data Catalog-portál segítségével közvetlenül, a **Open in** (Megnyitás a következőben) menüben elérhető integrált ügyfélalkalmazásokkal végezheti el a csatlakozást. Ezenfelül tetszőleges alkalmazáshoz csatlakozhat az adategység metaadataiban szereplő csatlakozási helyadatok segítségével. A SQL Server Management Studio segítségével például csatlakozhat az Azure SQL Database-hez az oktatóanyagban regisztrált adategységekben lévő adatok eléréséhez.
+Ebben a gyakorlatban az Azure Data Catalog segítségével felderített adategységekhez fog csatlakozni. Az Azure Data Catalog-portál segítségével közvetlenül, a **Open in** (Megnyitás a következőben) menüben elérhető integrált ügyfélalkalmazásokkal végezheti el a csatlakozást. Ezenfelül tetszőleges alkalmazáshoz csatlakozhat az adategység metaadataiban szereplő csatlakozási helyadatok segítségével. Használhatja például a SQL Server Management Studiot a Azure SQL Databasehoz való kapcsolódáshoz az ebben az oktatóanyagban regisztrált adategységekben lévő adatok eléréséhez.
 
 1. Nyissa meg az **SQL Server Management Studiót**.
 

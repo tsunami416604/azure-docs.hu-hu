@@ -9,10 +9,9 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74158187"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reagálás az Azure SignalR Service eseményeire
@@ -29,7 +28,7 @@ Az Azure Signaler szolgáltatás eseményei csak akkor aktívak, ha az ügyfélk
 ## <a name="available-azure-signalr-service-events"></a>Elérhető Azure Signaler szolgáltatás eseményei
 Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Az Azure Signaler szolgáltatás esemény-előfizetései két típusú eseményt támogatnak:  
 
-|Esemény neve|Leírás|
+|Esemény neve|Description|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|Az ügyfélkapcsolatok kapcsolódásakor következik be.|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|Az ügyfél kapcsolatának leválasztásakor következik be.|
@@ -63,5 +62,5 @@ További információ: [signaler Service Events Schema](../event-grid/event-sche
 Tudjon meg többet a Event Gridről, és adjon meg egy esélyt az Azure Signaler szolgáltatás eseményeire:
 
 > [!div class="nextstepaction"]
-> [Próbálja ki Event Grid integrációját az Azure signaler szolgáltatással](./signalr-howto-event-grid-integration.md)
-> a[Event Grid](../event-grid/overview.md)
+> [Példa Event Grid az Azure signaler szolgáltatással](./signalr-howto-event-grid-integration.md) 
+>  való integráció kipróbálására [Tudnivalók Event Grid](../event-grid/overview.md)

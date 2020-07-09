@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: ad57fe01313957c4f3d23ef44d0e02ad11ab3fa8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780572"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262174"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Oktatóanyag: lapozás hozzáadása a keresési eredményekhez a .NET SDK használatával
 
 Megtudhatja, hogyan valósítható meg két különböző lapozófájl-rendszer, az első a oldalszámok alapján, a második pedig a végtelen görgetésen. A lapozás mindkét rendszerét széles körben használják, és a jobb gombbal kiválaszthatja az eredményekkel kapcsolatos felhasználói élményt. Ez az oktatóanyag létrehozza a lapozási rendszereket a [C# oktatóanyagban létrehozott projektbe: az első alkalmazás létrehozása – Azure Cognitive Search](tutorial-csharp-create-first-app.md) oktatóanyag.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Az alkalmazás kiterjesztése számozott lapozással
 > * Az alkalmazás kiterjesztése végtelen görgetéssel
@@ -100,7 +100,7 @@ Nyissa meg az alapszintű keresési oldal megoldást.
 
 ### <a name="add-a-table-of-paging-options-to-the-view"></a>Lapozási beállítások táblázatának hozzáadása a nézethez
 
-1. Nyissa meg az index. cshtml fájlt, és közvetlenül a záró &lt;/Body&gt; címke előtt adja hozzá a következő kódot. Ez az új kód a lapozási lehetőségek táblázatát jeleníti meg: első, előző, 1, 2, 3, 4, 5, tovább, utolsó.
+1. Nyissa meg az index. cshtml fájlt, és közvetlenül a záró/Body címke előtt adja hozzá a következő kódot &lt; &gt; . Ez az új kód a lapozási lehetőségek táblázatát jeleníti meg: első, előző, 1, 2, 3, 4, 5, tovább, utolsó.
 
     ```cs
     @if (Model != null && Model.pageCount > 1)
@@ -424,7 +424,7 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
 
 1. Keresse meg az index. cshtml fájlnak azt a szakaszát, amely megjeleníti az eredményeket (ez a ** @if következővel kezdődik: (Model! = null)**).
 
-2. Cserélje le a szakaszt az alábbi kódra. Az új ** &lt;div&gt; ** szakasz az a terület körül van, amelynek görgethető kell lennie, és hozzá kell adni egy **túlfolyó-y** attribútumot, valamint egy "görgetve ()" nevű **onscroll** -függvény hívását, például:.
+2. Cserélje le a szakaszt az alábbi kódra. Az új ** &lt; div &gt; ** szakasz az a terület körül van, amelynek görgethető kell lennie, és hozzá kell adni egy **túlfolyó-y** attribútumot, valamint egy "görgetve ()" nevű **onscroll** -függvény hívását, például:.
 
     ```cs
         @if (Model != null)
@@ -447,7 +447,7 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
         }
     ```
 
-3. Közvetlenül a hurok alatt, a &lt;/div&gt; címke után adja hozzá a **görgetett** függvényt.
+3. Közvetlenül a hurok alatt, a &lt; /div &gt; címke után adja hozzá a **görgetett** függvényt.
 
     ```javascript
         <script>
@@ -563,7 +563,7 @@ Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futt
         }
     ```
 
-4. Ha szintaktikai hibaüzenetet kap a **List&lt;karakterláncban&gt;**, adja hozzá a következő **using** direktívát a vezérlő fájljának fejlécéhez.
+4. Ha szintaktikai hibaüzenetet kap a **List &lt; &gt; karakterláncban**, adja hozzá a következő **using** direktívát a vezérlő fájljának fejlécéhez.
 
     ```cs
     using System.Collections.Generic;
@@ -578,7 +578,7 @@ Most válassza a **Start hibakeresés nélkül** lehetőséget (vagy nyomja le a
     ![Végtelen görgetés a "pool" eredményei között](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > Annak érdekében, hogy az első oldalon megjelenjen egy görgetősáv, az eredmények első oldalának valamivel nagyobbnak kell lennie a megjelenített terület magasságán. A példánkban a **Box1** 30 képpont magasságú **. a rajzolása 2** magassága 100 képpont, az alsó _margó pedig 24_ képpont. Így minden bejegyzés 154 képpont-t használ. Három bejegyzés 3 x 154 = 462 képpont-t vesz igénybe. Annak érdekében, hogy megjelenjen egy függőleges görgetősáv, a megjelenített területen lévő magasságot 462 képpontnál kisebb értékre kell állítani, még a 461 is. Ez a probléma csak az első oldalon fordul elő, miután a görgetősáv biztosan megjelenik. A frissítendő vonal a következő: ** &lt;div id = "myDiv" style = "width: 800px; height: 450px; túlcsordulás-y: Scroll;" onscroll = "görgetett ()"&gt;**.
+    > Annak érdekében, hogy az első oldalon megjelenjen egy görgetősáv, az eredmények első oldalának valamivel nagyobbnak kell lennie a megjelenített terület magasságán. A példánkban a **Box1** 30 képpont magasságú **. a rajzolása 2** magassága 100 képpont, az alsó _margó pedig 24_ képpont. Így minden bejegyzés 154 képpont-t használ. Három bejegyzés 3 x 154 = 462 képpont-t vesz igénybe. Annak érdekében, hogy megjelenjen egy függőleges görgetősáv, a megjelenített területen lévő magasságot 462 képpontnál kisebb értékre kell állítani, még a 461 is. Ez a probléma csak az első oldalon fordul elő, miután a görgetősáv biztosan megjelenik. A frissítendő vonal a következő: ** &lt; div id = "myDiv" style = "width: 800px; height: 450px; túlcsordulás-y: Scroll;" onscroll = "görgetett ()" &gt; **.
 
 2. Görgessen le egészen az eredmények aljáig. Figyelje meg, hogy az összes információ most már az egyetlen nézet oldalon található. Az összes kiszolgáló hívásának elindítása nélkül görgetheti az összes utat a tetejére.
 

@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383815"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Egyéni szabályok a webalkalmazási tűzfal v2-hez az Azure Application Gateway
@@ -37,7 +37,7 @@ A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, 
 
 A forgalom engedélyezése és blokkolása egyszerű az egyéni szabályokkal. Letilthatja például az IP-címtartományból érkező összes forgalmat. Ha a kérelem egy adott böngészőből származik, egy másik szabályt is beállíthat, amely engedélyezi a forgalmat.
 
-Ha valamit szeretne engedélyezni, győződjön meg `-Action` arról, hogy a paraméter értéke **Engedélyezés**. Ha blokkolni szeretne valamit, győződjön `-Action` meg arról, hogy a paraméter **blokkolás**értékre van beállítva.
+Ha valamit szeretne engedélyezni, győződjön meg arról, hogy a `-Action` paraméter értéke **Engedélyezés**. Ha blokkolni szeretne valamit, győződjön meg arról, hogy a `-Action` paraméter **blokkolás**értékre van beállítva.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `

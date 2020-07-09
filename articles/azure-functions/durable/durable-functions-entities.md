@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877542"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341565"
 ---
 # <a name="entity-functions"></a>Entitás-függvények
 
@@ -18,7 +18,7 @@ Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű 
 Az entitások lehetővé teszik az alkalmazások méretezését azáltal, hogy számos entitáson keresztül terjesztik a munkát, amelyek mindegyike szerény méretű állapotú.
 
 > [!NOTE]
-> Az Entity functions és a kapcsolódó funkciók csak Durable Functions 2,0-es és újabb verziókban érhetők el.
+> Az Entity functions és a kapcsolódó funkciók csak Durable Functions 2,0-es és újabb verziókban érhetők el. A .NET és a JavaScript jelenleg támogatott.
 
 ## <a name="general-concepts"></a>Általános fogalmak
 
@@ -32,14 +32,14 @@ Az entitások egyedi azonosítóval, az *entitás azonosítójának*használatá
 * Az **entitás neve**, amely az entitás típusát azonosító név. Ilyen például a "Counter". A névnek meg kell egyeznie az entitást megvalósító entitás-függvény nevével. Nem érzékeny az esetre.
 * Az **entitás kulcsa**, amely egy olyan karakterlánc, amely egyedileg azonosítja az entitást az azonos nevű entitások között. Ilyen például egy GUID.
 
-Előfordulhat például, hogy `Counter` egy Entity függvényt használ a pontszám online játékokban való megőrzésére. A játék minden példánya egyedi AZONOSÍTÓJÚ entitást tartalmaz, például: `@Counter@Game1` és `@Counter@Game2`. Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
+Előfordulhat például, hogy egy `Counter` Entity függvényt használ a pontszám online játékokban való megőrzésére. A játék minden példánya egyedi AZONOSÍTÓJÚ entitást tartalmaz, például: `@Counter@Game1` és `@Counter@Game2` . Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
 
 ### <a name="entity-operations"></a>Entitás-műveletek ###
 
 Egy művelet egy entitáson való meghívásához a következőt kell megadnia:
 
 * A célként megadott entitás **azonosítója** .
-* A **művelet neve**, amely egy karakterlánc, amely meghatározza a végrehajtandó műveletet. Az entitás `Counter` például támogathatja `add` `get`a vagy `reset` a műveleteket.
+* A **művelet neve**, amely egy karakterlánc, amely meghatározza a végrehajtandó műveletet. Az `Counter` entitás például támogathatja a `add` vagy a `get` `reset` műveleteket.
 * A **művelet bemenete**, amely egy opcionális bemeneti paraméter a művelethez. A hozzáadási művelet például egész számot vehet igénybe bemenetként.
 * Az **ütemezett időpont**, amely egy opcionális paraméter a művelet kézbesítési idejének megadásához. Egy művelet például megbízhatóan ütemezhető úgy, hogy több napot is futtasson a jövőben.
 
@@ -55,11 +55,11 @@ Az entitások definiálásának két különböző API-jának jelenleg a követk
 
 **Osztály-alapú szintaxis (csak .net)**, ahol az entitásokat és a műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot hoz létre, és lehetővé teszi a műveletek típusos biztonságos módon történő meghívását. Az osztály-alapú szintaxis egy vékony réteg a függvény-alapú szintaxisban, így mindkét változat felhasználható ugyanabban az alkalmazásban.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Példa: függvény-alapú szintaxis – C #
 
-A következő kód egy egyszerű `Counter` entitás, amely tartós függvényként van megvalósítva. Ez a függvény három műveletet `add`határoz meg `reset`:, `get`, és, amelyek mindegyike egész számú állapotban működik.
+A következő kód egy egyszerű entitás, amely `Counter` tartós függvényként van megvalósítva. Ez a függvény három műveletet határoz meg:, `add` `reset` , és `get` , amelyek mindegyike egész számú állapotban működik.
 
 ```csharp
 [FunctionName("Counter")]
@@ -84,7 +84,7 @@ A függvény-alapú szintaxissal és annak használatával kapcsolatos további 
 
 ### <a name="example-class-based-syntax---c"></a>Példa: osztály alapú szintaxis – C #
 
-A következő példa az `Counter` entitás egyenértékű implementációját osztályok és metódusok használatával.
+A következő példa az entitás egyenértékű implementációját `Counter` osztályok és metódusok használatával.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -105,7 +105,7 @@ public class Counter
 }
 ```
 
-Az entitás állapota egy típusú `Counter`objektum, amely egy olyan mezőt tartalmaz, amely a számláló aktuális értékét tárolja. Ha meg szeretné őrizni ezt az objektumot a tárolóban, a rendszer szerializálja és deszerializálja a [JSON.net](https://www.newtonsoft.com/json) -könyvtár. 
+Az entitás állapota egy típusú objektum `Counter` , amely egy olyan mezőt tartalmaz, amely a számláló aktuális értékét tárolja. Ha meg szeretné őrizni ezt az objektumot a tárolóban, a rendszer szerializálja és deszerializálja a [JSON.net](https://www.newtonsoft.com/json) -könyvtár. 
 
 Az osztály-alapú szintaxissal és annak használatával kapcsolatos további információkért lásd: entitás- [osztályok meghatározása](durable-functions-dotnet-entities.md#defining-entity-classes).
 
@@ -113,9 +113,9 @@ Az osztály-alapú szintaxissal és annak használatával kapcsolatos további i
 
 ### <a name="example-javascript-entity"></a>Példa: JavaScript-entitás
 
-A `durable-functions` NPM-csomag **1.3.0** kezdődően tartós entitások érhetők el a JavaScriptben. A következő kód az `Counter` entitás, amely a JavaScriptben írt tartós függvényként van megvalósítva.
+A NPM-csomag **1.3.0** kezdődően tartós entitások érhetők el a JavaScriptben `durable-functions` . A következő kód az `Counter` entitás, amely a JavaScriptben írt tartós függvényként van megvalósítva.
 
-**Számláló/function. JSON**
+**Számláló/function.jsbekapcsolva**
 ```json
 {
   "bindings": [
@@ -129,7 +129,7 @@ A `durable-functions` NPM-csomag **1.3.0** kezdődően tartós entitások érhet
 }
 ```
 
-**Számláló/index. js**
+**Számláló/index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -171,7 +171,7 @@ Az alábbi példák az entitások elérésének különféle módjait szemlélte
 
 Ha az entitásokat egy általános Azure-függvényből kívánja elérni, amely más néven ügyfél-függvény, használja az [entitás-ügyfél kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást jelez.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > Az egyszerűség kedvéért az alábbi példák a lazán beírt szintaxist mutatják be az entitásokhoz való hozzáféréshez. Általánosságban azt javasoljuk, hogy az [entitásokat a felületeken keresztül érheti](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) el, mivel több típusú ellenőrzést is biztosít.
@@ -209,7 +209,7 @@ A *jel* kifejezés azt jelenti, hogy az entitás API-hívása egyirányú és as
 
 Az ügyfél functions egy entitás állapotát is lekérdezheti az alábbi példában látható módon:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -242,9 +242,9 @@ Az entitások állapotának lekérdezéseit a rendszer a tartós nyomkövetési 
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Példa: előkészítési jelek és entitások meghívása
 
-A Orchestrator függvények API-k használatával férhetnek hozzá az entitásokhoz a előkészítési [trigger kötésében](durable-functions-bindings.md#orchestration-trigger). A következő példa egy Orchestrator-függvényt mutat be, amely egy `Counter` entitást hív meg és jelez.
+A Orchestrator függvények API-k használatával férhetnek hozzá az entitásokhoz a előkészítési [trigger kötésében](durable-functions-bindings.md#orchestration-trigger). A következő példa egy Orchestrator-függvényt mutat be, amely egy entitást hív meg és jelez `Counter` .
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -291,7 +291,7 @@ Csak a bevezetések képesek az entitások meghívására és a válasz lekéré
 Az Entity függvény jeleket küldhet más entitásoknak, vagy akár saját maga is, miközben végrehajt egy műveletet.
 Például módosíthatjuk az előző `Counter` entitást például úgy, hogy egy "mérföldkő által elért" jelet küld egy figyelő entitásnak, amikor a számláló eléri a 100 értéket.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -327,7 +327,7 @@ Előfordulhatnak olyan időpontok, amikor több entitáson keresztül kell össz
 
 ### <a name="example-transfer-funds-c"></a>Példa: átutalási alapok (C#)
 
-A következő példában a kód egy Orchestrator függvény használatával továbbítja az alapokat a két fiók entitásai között. Az entitások frissítéseinek koordinálásához `LockAsync` a metódus használatával kell létrehozni egy _kritikus szakaszt_ a koordinációban.
+A következő példában a kód egy Orchestrator függvény használatával továbbítja az alapokat a két fiók entitásai között. Az entitások frissítéseinek koordinálásához a `LockAsync` metódus használatával kell létrehozni egy _kritikus szakaszt_ a koordinációban.
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez a példa a `Counter` korábban definiált entitást használja. Egy valós alkalmazásban jobb lenne egy részletesebb `BankAccount` entitás meghatározása.
@@ -372,9 +372,9 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-A .NET- `LockAsync` ben `IDisposable`a visszaadott érték a kritikus szakaszt adja vissza, ha a művelet el van távolítva. Ez `IDisposable` az eredmény együtt használható egy `using` blokkal a kritikus szakasz szintaktikai ábrázolásának beolvasásához.
+A .NET-ben a `LockAsync` `IDisposable` visszaadott érték a kritikus szakaszt adja vissza, ha a művelet el van távolítva. Ez `IDisposable` az eredmény együtt használható egy `using` blokkal a kritikus szakasz szintaktikai ábrázolásának beolvasásához.
 
-Az előző példában egy Orchestrator-függvény a forrás entitásból egy célként megadott entitásba ruházta át a forrásokat. A `LockAsync` metódus a forrás és a cél fiók entitásait is zárolta. Ez a zárolás gondoskodik arról, hogy egyetlen másik ügyfél sem tudja lekérdezni vagy módosítani a fiók állapotát, amíg az `using` utasítás végén kilépett a kritikus szakaszra. Ez a viselkedés megakadályozza a forrás fiókból való túllépés lehetőségét.
+Az előző példában egy Orchestrator-függvény a forrás entitásból egy célként megadott entitásba ruházta át a forrásokat. A `LockAsync` metódus a forrás és a cél fiók entitásait is zárolta. Ez a zárolás gondoskodik arról, hogy egyetlen másik ügyfél sem tudja lekérdezni vagy módosítani a fiók állapotát, amíg az utasítás végén kilépett a kritikus szakaszra `using` . Ez a viselkedés megakadályozza a forrás fiókból való túllépés lehetőségét.
 
 > [!NOTE] 
 > Ha egy összehangolás általában vagy hibával leáll, a folyamatban lévő kritikus fejezetek implicit módon véget ér, és minden zárolás megjelent.
@@ -386,7 +386,7 @@ A `LockAsync` metódus kritikus szakaszt hoz létre egy előkészítési folyama
 A más ügyfelektől érkező műveletek nem engedélyezettek egy entitáson, amíg a zárolt állapotban van. Ez a viselkedés garantálja, hogy egyszerre csak egy összehangoló példány tud zárolni egy entitást. Ha a hívó egy művelettel próbál meg meghívást alkalmazni egy entitáson, miközben azt egy előkészítés zárolta, a művelet egy függőben lévő műveleti várólistába kerül. A függőben lévő műveletek addig nem lesznek feldolgozva, amíg a Holding-előkészítés fel nem oldja a zárolást.
 
 > [!NOTE] 
-> Ez a viselkedés némileg eltér a legtöbb programozási nyelvben használt szinkronizálási primitívekkel, például a `lock` C# utasításban. A C# nyelvben például az utasítást `lock` minden szálnak használnia kell, hogy biztosítsa a megfelelő szinkronizálást több szálon. Az entitásoknak azonban nincs szükségük arra, hogy az entitások explicit módon zárolják az összes hívót. Ha bármelyik hívó zárol egy entitást, az adott entitáson végzett összes egyéb művelet blokkolva lesz, és a zárolás mögött van.
+> Ez a viselkedés némileg eltér a legtöbb programozási nyelvben használt szinkronizálási primitívekkel, például a `lock` C# utasításban. A C# nyelvben például az `lock` utasítást minden szálnak használnia kell, hogy biztosítsa a megfelelő szinkronizálást több szálon. Az entitásoknak azonban nincs szükségük arra, hogy az entitások explicit módon zárolják az összes hívót. Ha bármelyik hívó zárol egy entitást, az adott entitáson végzett összes egyéb művelet blokkolva lesz, és a zárolás mögött van.
 
 Az entitásokra vonatkozó zárolások tartósak, így azok még akkor is megmaradnak, ha a végrehajtó folyamat újra lett hasznosítva. A zárolások belsőleg megmaradnak az entitás tartós állapotának részeként.
 

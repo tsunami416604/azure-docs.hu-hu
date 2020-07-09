@@ -3,19 +3,18 @@ title: Integrációs szolgáltatási környezetek (ISEs) létrehozása Logic App
 description: Hozzon létre egy integrációs szolgáltatási környezetet (ISE) a Logic Apps REST API használatával, hogy elérhető legyen az Azure Virtual Networks (virtuális hálózatok) az Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84656544"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps használatával REST API
 
-Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API olyan helyzetekben, ahol a logikai alkalmazások és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md). Az ISE egy elszigetelt környezet, amely dedikált tárolót és más erőforrásokat használ, amelyeket a "globális" több-bérlős Logic Apps szolgáltatástól elkülönítve tartanak. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
+Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API olyan helyzetekben, ahol a logikai alkalmazások és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md). Az ISE egy dedikált környezet, amely dedikált tárterületet és egyéb, a „globális”, több-bérlős Logic Apps-szolgáltatástól elkülönített erőforrásokat használ. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
 
 Az ISE-t a [minta Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) gyors üzembe helyezési sablonnal vagy az [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)használatával is létrehozhatja.
 
@@ -50,13 +49,15 @@ Az üzembe helyezés általában két órán belül befejeződik. Alkalmanként 
 
 A kérelem fejlécében adja meg a következő tulajdonságokat:
 
-* `Content-type`: Állítsa ezt a tulajdonságot `application/json`értékre.
+* `Content-type`: Állítsa ezt a tulajdonságot értékre `application/json` .
 
 * `Authorization`: Állítsa ezt a tulajdonságot annak az ügyfélnek a tulajdonosi jogkivonatára, aki hozzáfér a használni kívánt Azure-előfizetéshez vagy erőforráscsoporthoz.
 
-### <a name="request-body-syntax"></a>Kérelem törzsének szintaxisa
+<a name="request-body"></a>
 
-Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehozásakor használandó tulajdonságokat:
+## <a name="request-body"></a>A kérés törzse
+
+Itt látható a kérelem törzsének szintaxisa, amely az ISE létrehozásakor használandó tulajdonságokat ismerteti. Egy olyan ISE létrehozásához, amely lehetővé teszi egy olyan önaláírt tanúsítvány használatát, amely a helyen van telepítve `TrustedRoot` , adja `certificates` meg az OBJEKTUMOT az ISE-definíció `properties` szakaszán belül. Egy meglévő ISE esetében csak az objektumra vonatkozó javítási kérelmet küldhet `certificates` . További információ az önaláírt tanúsítványok használatáról: [http-összekötő – önaláírt tanúsítványok](../connectors/connectors-native-http.md#self-signed).
 
 ```json
 {
@@ -88,6 +89,13 @@ Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehoz�
                "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Network/virtualNetworks/{virtual-network-name}/subnets/{subnet-4}",
             }
          ]
+      },
+      // Include `certificates` object to enable self-signed certificate support
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
       }
    }
 }
@@ -127,7 +135,12 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
                "id": "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.Network/virtualNetworks/Fabrikam-VNET/subnets/subnet-4",
             }
          ]
-      }
+      },
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
+            "kind": "TrustedRoot"
+         }
    }
 }
 ```

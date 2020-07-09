@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bef655c4dd30147733b28252199a7d8b58df42f8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435748"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085990"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>A HDInsight-ben található MapReduce-példák futtatása
 
@@ -29,11 +29,11 @@ Megtudhatja, hogyan futtathatja a Apache Hadoop HDInsight-on található MapRedu
 
 ## <a name="the-mapreduce-examples"></a>Példák a MapReduce
 
-A minták a HDInsight-fürtön találhatók `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`. A minták forráskódját a HDInsight-fürt tartalmazza `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+A minták a HDInsight-fürtön találhatók `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` . A minták forráskódját a HDInsight-fürt tartalmazza `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` .
 
 Ebben az archívumban a következő minták szerepelnek:
 
-|Sample |Leírás |
+|Sample |Description |
 |---|---|
 |aggregatewordcount|Megszámolja a bemeneti fájlokban szereplő szavakat.|
 |aggregatewordhist|Kiszámítja a bemeneti fájlokban szereplő szavak hisztogramját.|
@@ -60,7 +60,7 @@ Ebben az archívumban a következő minták szerepelnek:
 
 ## <a name="run-the-wordcount-example"></a>A WordCount-példa futtatása
 
-1. Kapcsolódás a HDInsight az SSH használatával. Cserélje `CLUSTER` le a nevet a fürt nevére, majd írja be a következő parancsot:
+1. Kapcsolódás a HDInsight az SSH használatával. Cserélje le a `CLUSTER` nevet a fürt nevére, majd írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
@@ -94,10 +94,10 @@ Ebben az archívumban a következő minták szerepelnek:
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    A feladathoz tartozó bemenet beolvasva `/example/data/gutenberg/davinci.txt`. A példa kimenetét a következő tárolja `/example/data/davinciwordcount`:. Mindkét útvonal a fürt alapértelmezett tárolójában, nem pedig a helyi fájlrendszerben található.
+    A feladathoz tartozó bemenet beolvasva `/example/data/gutenberg/davinci.txt` . A példa kimenetét a következő tárolja: `/example/data/davinciwordcount` . Mindkét útvonal a fürt alapértelmezett tárolójában, nem pedig a helyi fájlrendszerben található.
 
    > [!NOTE]  
-   > Ahogy az a WordCount-minta súgójában is látható, több bemeneti fájlt is megadhat. Például `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` a DaVinci. txt és az Ulysses. txt fájlban lévő szavakat is megszámolhatja.
+   > Ahogy az a WordCount-minta súgójában is látható, több bemeneti fájlt is megadhat. Például a `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` davinci.txt és a ulysses.txt egyaránt megszámolja a szavakat.
 
 5. A művelet befejezése után a következő parancs használatával tekintheti meg a kimenetet:
 
@@ -122,7 +122,7 @@ A [sudoku](https://en.wikipedia.org/wiki/Sudoku) olyan logikai puzzle, amely kil
 * Minden oszlop tartalmazhat számot vagy `?` (amely üres cellát jelez)
 * A cellákat szóközzel elválasztva
 
-A sudoku-rejtvényeket a következő módon hozhatja létre: oszlopokban vagy sorokban nem lehet megismételni a számot. Van egy példa a megfelelően kialakított HDInsight-fürtre. A (z) `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` helyen található, és a következő szöveget tartalmazza:
+A sudoku-rejtvényeket a következő módon hozhatja létre: oszlopokban vagy sorokban nem lehet megismételni a számot. Van egy példa a megfelelően kialakított HDInsight-fürtre. A (z) helyen található `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` , és a következő szöveget tartalmazza:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -184,13 +184,13 @@ Ez a példa három MapReduce programot használ:
 
 A következő lépésekkel hozhatja végre az adatokat, rendezheti és ellenőrizheti a kimenetet:
 
-1. 10 GB adat előállítása, amely a HDInsight-fürt alapértelmezett tárolójában tárolódik a `/example/data/10GB-sort-input`következő helyen:
+1. 10 GB adat előállítása, amely a HDInsight-fürt alapértelmezett tárolójában tárolódik a következő helyen `/example/data/10GB-sort-input` :
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    A `-Dmapred.map.tasks` Hadoop azt jelzi, hogy hány leképezési feladat használható ehhez a feladathoz. Az utolsó két paraméter arra utasítja a feladatot, hogy 10 GB adatmennyiséget hozzon létre `/example/data/10GB-sort-input`, és tárolja azt a következő helyen:.
+    A `-Dmapred.map.tasks` Hadoop azt jelzi, hogy hány leképezési feladat használható ehhez a feladathoz. Az utolsó két paraméter arra utasítja a feladatot, hogy 10 GB adatmennyiséget hozzon létre, és tárolja azt a következő helyen: `/example/data/10GB-sort-input` .
 
 2. Az alábbi paranccsal rendezheti az adatsorokat:
 

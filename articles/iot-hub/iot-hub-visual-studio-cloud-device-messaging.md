@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74079480"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Üzenetek küldése és fogadása az eszköz és a IoT Hub között a Cloud Explorer for Visual Studio használatával
@@ -54,7 +53,7 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 A hub eléréséhez kövesse az alábbi lépéseket:
 
-1. A Visual Studióban kattintson a**Cloud** Explorer **megtekintése** > elemre a Cloud Explorer megnyitásához.
+1. A Visual Studióban kattintson a Cloud Explorer **megtekintése**elemre  >  **Cloud Explorer** a Cloud Explorer megnyitásához.
 
 1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
 

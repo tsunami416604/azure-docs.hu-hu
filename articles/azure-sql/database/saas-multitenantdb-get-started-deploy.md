@@ -11,12 +11,11 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 274f8d985304ee27776017dfee7d263df8271fbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84310087"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -99,7 +98,7 @@ Az alkalmazás központi telepítése közben töltse le az alkalmazás forrásk
 1. Keresse meg [a WingtipTicketsSaaS-MultiTenantDb GitHub-](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)tárházat.
 2. Kattintson a **klónozás vagy a letöltés**elemre.
 3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
-4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-Master. zip** fájlra, és válassza a **Tulajdonságok**lehetőséget.
+4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-master.zip** fájlra, majd válassza a **Tulajdonságok**lehetőséget.
 5. Az **általános** lapon válassza a **Tiltás feloldása**lehetőséget, majd kattintson az **alkalmaz**gombra.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
@@ -155,22 +154,22 @@ A bejövő kérések eloszlásának szabályozásához a Wingtip alkalmazás az 
 
 Most, hogy üzembe helyezte az alkalmazást, nézzük a munkát! A *demo-LoadGenerator PowerShell-* szkript elindítja az egyes bérlők számára futó számítási feladatokat. A sok SaaS-alkalmazás valós terhelése általában szórványos és kiszámíthatatlan. Az ilyen típusú terhelés szimulálása érdekében a generátor az összes bérlőre kiterjedő terhelést hoz létre. A terhelés véletlenszerű kitöréseket tartalmaz az egyes bérlők véletlenszerűen megjelenő időközönként. A terhelési minta megjelenése több percet vesz igénybe, így a generátor a terhelés monitorozása előtt legalább három-négy percig futtatható.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Learning modules \\ Utilities \\ *demo-LoadGenerator. ps1* parancsfájl.
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Tanulási modulok \\ segédprogramjai \\ *Demo-LoadGenerator.ps1* szkript.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a terhelésgenerátor indításához (egyelőre nem módosítsa az alapértelmezett paraméterértékeket).
 
-A *demo-LoadGenerator. ps1* parancsfájl egy másik PowerShell-munkamenetet nyit meg, amelyen a Load Generator fut. A betöltési folyamat ebben a munkamenetben olyan előtéri feladatként fut, amely a háttérbeli terhelés-generálási feladatokat hívja meg, egyet az egyes bérlők számára.
+A *Demo-LoadGenerator.ps1* parancsfájl egy másik PowerShell-munkamenetet nyit meg, amelyen a Load Generator fut. A betöltési folyamat ebben a munkamenetben olyan előtéri feladatként fut, amely a háttérbeli terhelés-generálási feladatokat hívja meg, egyet az egyes bérlők számára.
 
 Az előtérbeli feladat elindítása után a feladat-Meghívási állapotban marad. A feladat további háttérben futó feladatokat indít el minden olyan új bérlő esetében, amelyet később kiépítenek.
 
 A PowerShell-munkamenet bezárása leállítja az összes feladatot.
 
-Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *demo-LoadGenerator. ps1*fájlját.
+Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *Demo-LoadGenerator.ps1*.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Új bérlő kiépítése a szilánkokra osztott adatbázisba
 
 A kezdeti üzembe helyezés három minta bérlőt tartalmaz a *Tenants1* -adatbázisban. Hozzunk létre egy másik bérlőt, és figyeljük meg az üzembe helyezett alkalmazás hatásait. Ebben a lépésben egy kulcsot egy új bérlő létrehozásához kell megnyomnia:
 
-1. Megnyitás.. \\ . \\ \\ A*demo-ProvisionTenants. ps1* kiépítése és katalogizálása a *PowerShell ISE*-ben című tanulási modulok.
+1. Megnyitás.. \\ . A tanulási modulok \\ \\ a *PowerShell ISE*-ben Kiépítik és katalogizálják*Demo-ProvisionTenants.ps1* .
 2. A szkript futtatásához nyomja le az **F5** billentyűt (nem **F8**) (most hagyja meg az alapértelmezett értékeket).
 
    > [!NOTE]
@@ -193,7 +192,7 @@ Dönthet úgy, hogy ingyenes próbaverziós ügyfeleket vagy gazdaságbeli ügyf
 
 Ezután kiépítünk egy másik bérlőt, ezúttal a saját adatbázisában:
 
-1. A. \\ .. A Learning-modulok \\ kiépítik és katalogizálják a \\ *demo-ProvisionTenants. ps1*-t, módosíthatja *$TenantName* a **Salix Salsa**, *$VenueType* a **Dance** és a *$Scenario* a **2**.
+1. A. \\ .. Tanulási modulok \\ kiépítése és katalogizálása \\ *Demo-ProvisionTenants.ps1*, *$TenantName* módosítása a **salsa Salix**, *$VenueType* a **Dance** és a *$Scenario* **2**.
 
 2. A szkript ismételt futtatásához nyomja le az **F5** billentyűt.
     - Ez az **F5** billentyű lenyomásával az új bérlőt külön adatbázisban kell kiépíteni. Az adatbázis és a bérlő regisztrálva van a katalógusban. Ezután megnyílik a böngésző a bérlő események lapjára.
@@ -265,7 +264,7 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > - A készlet kihasználtságának megtekintése a bérlői tevékenységek figyeléséhez.
 > - Mintavételi erőforrások törlése a kapcsolódó számlázás leállításához.
 
-Most próbálja ki a [létesítés és a katalógus oktatóanyagot](saas-dbpertenant-provision-and-catalog.md).
+Most próbálja ki a [létesítés és a katalógus oktatóanyagot](saas-multitenantdb-provision-and-catalog.md).
 
 
 <!--  Link references.

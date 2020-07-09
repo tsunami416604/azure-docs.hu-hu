@@ -1,49 +1,53 @@
 ---
-title: Keresési alkalmazás létrehozása Azure Portal
+title: Bemutató alkalmazás létrehozása Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Futtassa az alkalmazás létrehozása (előzetes verzió) varázslót, amellyel HTML-lapokat és parancsfájlokat hozhat létre egy operatív webalkalmazáshoz. Az oldalon található egy keresősáv, az eredmények, az oldalsáv és a typeahead támogatása.
+description: Futtassa a demó alkalmazás létrehozása (előzetes verzió) varázslót, amellyel HTML-lapokat és parancsfájlokat hozhat létre egy operatív webalkalmazáshoz. Az oldalon található egy keresősáv, az eredmények, az oldalsáv és a typeahead támogatása.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/25/2020
-ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369714"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955692"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Gyors útmutató: keresési alkalmazás létrehozása a portálon (Azure Cognitive Search)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rövid útmutató: bemutató alkalmazás létrehozása a portálon (Azure Cognitive Search)
 
-A portálon a **keresési alkalmazás létrehozása** varázslóval létrehozhat egy letölthető, "localhost" stílusú webalkalmazást, amely böngészőben fut. A konfigurációtól függően a létrehozott alkalmazás az első használat során működik, és élő kapcsolattal csatlakozik egy távoli indexhez. Egy alapértelmezett alkalmazás tartalmazhatja a keresősáv, az eredmények, a Sidebar-szűrők és a typeahead támogatását.
+A Azure Portal a **bemutató alkalmazás létrehozása** varázslóval létrehozhat egy letölthető, "localhost" stílusú webes alkalmazást, amely böngészőben fut. A konfigurációtól függően a létrehozott alkalmazás első használatban működik, és egy élő írásvédett kapcsolattal rendelkezik egy távoli indexhez. Egy alapértelmezett alkalmazás tartalmazhatja a keresősáv, az eredmények, a Sidebar-szűrők és a typeahead támogatását.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+A bemutató alkalmazás segítségével megjelenítheti, hogyan fog működni az index egy ügyfélalkalmazás számára, de nem éles környezetekhez készült. Az ügyfélalkalmazások olyan biztonságot, hibakezelés és üzemeltetési logikát tartalmaznak, amelyet a generált HTML-oldal nem biztosít. Ha készen áll egy ügyfélalkalmazás létrehozására, tekintse [meg az első keresőalkalmazás létrehozása a .net SDK](tutorial-csharp-create-first-app.md) -val című témakört a következő lépésekhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Frissítsen a [Microsoft Edge legújabb verziójára](https://www.microsoft.com/edge) , vagy használja a Google Chrome böngészőjét ehhez a rövid útmutatóhoz.
+Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
-[Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
++ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
 
-[Hozzon létre egy indexet](search-create-index-portal.md) , amelyet az alkalmazás alapjaként kíván használni. 
++ Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
-Ez a rövid útmutató a beépített ingatlan-mintaadatok és-indexet használja, mivel miniatűr képekkel rendelkezik (a varázsló támogatja a képek hozzáadását az eredmények laphoz). Az ebben a gyakorlatban használt index létrehozásához futtassa az **adat importálása** varázslót, és válassza az *Realestate-US-Sample* adatforrást.
++ [Microsoft Edge (legújabb verzió)](https://www.microsoft.com/edge) vagy Google Chrome.
 
-![adatforrások lapja mintaadatok esetén](media/search-create-app-portal/import-data-realestate.png)
++ A generált alkalmazás alapjaként használandó [keresési index](search-create-index-portal.md) . 
+
+  Ez a rövid útmutató a beépített ingatlan-mintaadatok és-indexet használja, mivel miniatűr képekkel rendelkezik (a varázsló támogatja a képek hozzáadását az eredmények laphoz). Az ebben a gyakorlatban használt index létrehozásához futtassa az **adat importálása** varázslót, és válassza az *Realestate-US-Sample* adatforrást.
+
+  ![adatforrások lapja mintaadatok esetén](media/search-create-app-portal/import-data-realestate.png)
 
 Ha az index használatra kész, lépjen tovább a következő lépésre.
 
 ## <a name="start-the-wizard"></a>A varázsló elindítása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
 
-1. Az Áttekintés oldalon, a lap közepén található hivatkozások közül válassza az **indexek**lehetőséget. 
+1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés oldalon, az oldal közepén található hivatkozások közül válassza az **indexek**lehetőséget. 
 
 1. Válassza a *Realestate-US-Sample-index* elemet a meglévő indexek listájából.
 
-1. A varázsló elindításához az index lap tetején válassza a **Search alkalmazás létrehozása (előzetes verzió)** lehetőséget.
+1. A varázsló elindításához az index lap tetején kattintson a **bemutató alkalmazás létrehozása (előzetes verzió)** elemre.
 
 1. A varázsló első lapján jelölje be a **több eredetű erőforrás-megosztás (CORS) engedélyezése** lehetőséget az CORS támogatásának hozzáadásához az index definíciójában. Ez a lépés nem kötelező, de a helyi webalkalmazás nem csatlakozik a távoli indexhez.
 
@@ -57,7 +61,7 @@ A varázsló alapvető elrendezést biztosít a megjelenített keresési eredmé
 
 1. A Description (Leírás) mezőben válasszon ki egy olyan mezőt, amely segítséget nyújthat valakinek annak eldöntésében, hogy az adott dokumentumra kattint-e.
 
-![adatforrások lapja mintaadatok esetén](media/search-create-app-portal/configure-results.png)
+   ![adatforrások lapja mintaadatok esetén](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Oldalsáv hozzáadása
 
@@ -83,7 +87,7 @@ Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, am
 
 ## <a name="create-download-and-execute"></a>Létrehozás, letöltés és végrehajtás
 
-1. A HTML-fájl létrehozásához válassza a **keresési alkalmazás létrehozása** lehetőséget.
+1. A HTML-fájl létrehozásához válassza a **bemutató alkalmazás létrehozása** lehetőséget.
 
 1. Ha a rendszer kéri, válassza az **alkalmazás letöltése** lehetőséget a fájl letöltéséhez.
 
@@ -94,7 +98,7 @@ Az alapul szolgáló index olyan fiktív, generált adatokból áll, amelyek a d
 ![Az alkalmazás futtatása](media/search-create-app-portal/run-app.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

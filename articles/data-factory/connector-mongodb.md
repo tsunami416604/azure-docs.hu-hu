@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 3b6476b794d2e1b2e9a36aa26f35c247641d44e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558166"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB a Azure Data Factory használatával
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok MongoDB-adatbázisból történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
@@ -49,12 +49,12 @@ A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot a következőre kell beállítani: **MongoDbV2** |Igen |
-| connectionString |A MongoDB-kapcsolatok karakterláncának megadásához például: `mongodb://[username:password@]host[:port][/[database][?options]]`. További részletekért tekintse [meg a MongoDB Manual on kapcsolati sztringet](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> A jelszót a Azure Key Vaultban is elhelyezheti, és `password` lekérheti a konfigurációt a kapcsolatok karakterláncáról. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. |Igen |
-| adatbázis | Az elérni kívánt adatbázis neve. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus |A Type tulajdonságot a következőre kell beállítani: **MongoDbV2** |Yes |
+| connectionString |A MongoDB-kapcsolatok karakterláncának megadásához például: `mongodb://[username:password@]host[:port][/[database][?options]]` . További részletekért tekintse [meg a MongoDB Manual on kapcsolati sztringet](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a  `password`   konfigurációt a kapcsolatok karakterláncáról. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. |Yes |
+| adatbázis | Az elérni kívánt adatbázis neve. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -79,10 +79,10 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbV2Collection** | Igen |
-| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbV2Collection** | Yes |
+| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -111,18 +111,18 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbV2Source** | Igen |
-| filter | Meghatározza a kiválasztási szűrőt a lekérdezési operátorok használatával. Ha egy gyűjteményben lévő összes dokumentumot vissza szeretné adni, hagyja ki ezt a paramétert{}, vagy adjon meg egy üres dokumentumot (). | Nem |
-| cursorMethods. Project | Meghatározza a dokumentumokban a kivetítéshez visszaadni kívánt mezőket. Ha a megfelelő dokumentumokban lévő összes mezőt vissza szeretné adni, hagyja ki ezt a paramétert. | Nem |
-| cursorMethods. sort | Meghatározza, hogy a lekérdezés milyen sorrendben adja vissza a megfelelő dokumentumokat. Tekintse meg a [kurzor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
-| cursorMethods. limit | A kiszolgáló által visszaadott dokumentumok maximális számát adja meg. Lásd: [kurzor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem |
-| cursorMethods. skip | Meghatározza a kihagyni kívánt dokumentumok számát, valamint a MongoDB az eredmények visszaadásának helyét. Lásd: [kurzor. skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
-| batchSize | Meghatározza a MongoDB-példány válaszának egyes kötegében visszaadni kívánt dokumentumok számát. A legtöbb esetben a Batch méretének módosítása nem érinti a felhasználót vagy az alkalmazást. Cosmos DB korlátozza, hogy az egyes kötegek ne lépjék túl a 40MB méretét, ami a dokumentumok méretének batchSize összege, ezért csökkentse ezt az értéket, ha a dokumentum mérete nagy. | Nem<br/>(az alapértelmezett érték **100**) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbV2Source** | Yes |
+| filter | Meghatározza a kiválasztási szűrőt a lekérdezési operátorok használatával. Ha egy gyűjteményben lévő összes dokumentumot vissza szeretné adni, hagyja ki ezt a paramétert, vagy adjon meg egy üres dokumentumot ( {} ). | No |
+| cursorMethods. Project | Meghatározza a dokumentumokban a kivetítéshez visszaadni kívánt mezőket. Ha a megfelelő dokumentumokban lévő összes mezőt vissza szeretné adni, hagyja ki ezt a paramétert. | No |
+| cursorMethods. sort | Meghatározza, hogy a lekérdezés milyen sorrendben adja vissza a megfelelő dokumentumokat. Tekintse meg a [kurzor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | No |
+| cursorMethods. limit | A kiszolgáló által visszaadott dokumentumok maximális számát adja meg. Lásd: [kurzor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | No |
+| cursorMethods. skip | Meghatározza a kihagyni kívánt dokumentumok számát, valamint a MongoDB az eredmények visszaadásának helyét. Lásd: [kurzor. skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | No |
+| batchSize | Meghatározza a MongoDB-példány válaszának egyes kötegében visszaadni kívánt dokumentumok számát. A legtöbb esetben a Batch méretének módosítása nem érinti a felhasználót vagy az alkalmazást. Cosmos DB korlátozza, hogy az egyes kötegek ne lépjék túl a 40MB méretét, ami a dokumentumok méretének batchSize összege, ezért csökkentse ezt az értéket, ha a dokumentum mérete nagy. | No<br/>(az alapértelmezett érték **100**) |
 
 >[!TIP]
 >Az ADF támogatja a BSON-dokumentumok **szigorú módban**történő felhasználását. Győződjön meg arról, hogy a szűrő lekérdezése a rendszerhéj mód helyett szigorú módban van. További Leírás a következő helyen található: [MongoDB Manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

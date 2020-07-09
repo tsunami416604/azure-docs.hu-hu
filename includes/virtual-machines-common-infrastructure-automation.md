@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485758"
 ---
 Az Azure-beli virtuális gépek (VM-EK) egységes módon történő létrehozásához és kezeléséhez általában az automatizálás valamilyen formája szükséges. Számos eszköz és megoldás lehetővé teszi, hogy automatizálja az Azure-infrastruktúra teljes üzembe helyezését és a felügyeleti életciklusát. Ez a cikk az Azure-ban használható infrastruktúra-automatizálási eszközöket ismerteti. Ezek az eszközök általában a következő megközelítések egyikéhez illeszkednek:
 
@@ -52,7 +52,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A `#cloud-config` fájlok megfelelő formázásáról további információt a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config`a fájlok a Base64 kódolású szövegfájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A fájlok megfelelő formázásáról további információt `#cloud-config` a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config`a fájlok a Base64 kódolású szövegfájlok.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
@@ -100,7 +100,7 @@ A [Terraform](https://www.terraform.io) egy automatizálási eszköz, amely lehe
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Terraform telepítése és konfigurálása az Azure-](/azure/developer/terraform/install-configure)ban.
+- [Terraform telepítése és konfigurálása az Azure-](/azure/developer/terraform/getting-started-cloud-shell)ban.
 - [Hozzon létre egy Azure-infrastruktúrát a Terraform](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure).
 
 

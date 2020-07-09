@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: aa6585b981626d3752f2383db20f8e149a2ed007
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17dc6ef4b1c86e0ae0301783c2c524062e85fb5a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73156117"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Azure Active Directory integráció a Form.com
 
@@ -111,10 +111,10 @@ Az Azure AD egyszeri bejelentkezés Form.com való konfigurálásához hajtsa v�
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
-    | `https://<subdomain>.form.com/Member/UserAccount/SAML2.action` |
+    ```http
+    https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action
+    https://<subdomain>.form.com/Member/UserAccount/SAML2.action
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a Form.com ügyfélszolgálati [csapatához](https://form.com/about/company/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -155,12 +155,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -3,15 +3,13 @@ title: Kifizetési fiók beállítása & adóügyi űrlapok – Microsoft keresk
 Description: Ha pénzt szeretne kapni a kereskedelmi piactéren elérhető ajánlat értékesítéséből, Ismerje meg, hogyan állíthatja be a kifizetési fiókját, és töltse ki a szükséges adózási űrlapokat.
 ms.date: 12/10/2019
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 493043c43cf8dbac94bd33a907c91291fc51bf6c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738285"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109127"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Kifizetési számla és űrlapok beállítása
 
@@ -203,6 +201,6 @@ Ha úgy döntött, hogy bankszámlát használ a kifizetések fogadásához, a k
 5. Minden programban részt vevő programhoz ki kell választania egy fizetési profilt, de több program esetében ugyanazt a profilt használhatja.
 6. A módosítások mentéséhez kattintson a Submit (küldés) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A kereskedelmi piactér számlázása](billing-details.md)

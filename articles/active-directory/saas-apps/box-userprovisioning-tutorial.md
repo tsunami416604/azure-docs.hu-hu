@@ -16,10 +16,9 @@ ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058569"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
@@ -130,7 +129,7 @@ A Box-bérlőben a szinkronizált felhasználók a **felügyelt felhasználók**
 ![Integrációs állapot](./media/box-userprovisioning-tutorial/IC769556.png "Integrációs állapot")
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

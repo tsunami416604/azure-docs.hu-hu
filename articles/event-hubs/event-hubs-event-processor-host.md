@@ -1,25 +1,14 @@
 ---
 title: Események fogadása az Event Processor Host használatával – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, amely leegyszerűsíti az ellenőrzőpontok, a bérletek és az olvasási események ion párhuzamos kezelését.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/10/2020
-ms.author: shvija
-ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320638"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]
@@ -104,15 +93,15 @@ Végezetül a felhasználók regisztrálják a [EventProcessorHost](/dotnet/api/
 
 Tegyük fel például, hogy az események felhasználására szolgáló 5 virtuális gép (VM) és egy egyszerű konzol-alkalmazás minden virtuális gépen, amely a tényleges fogyasztást végzi. Ezután mindegyik konzolszoftver létrehoz egy [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -példányt, és regisztrálja azt a Event Hubs szolgáltatásban.
 
-Ebben a példában tegyük fel, hogy 16 partíció van lefoglalva az 5 **EventProcessorHost** -példányhoz. Egyes **EventProcessorHost** -példányok a többinél több partíciót is tartalmazhatnak. Minden olyan partícióhoz, amely egy **EventProcessorHost** -példány tulajdonosa, létrehozza a `SimpleEventProcessor` osztály egy példányát. Ezért az egyes partíciók esetében legalább `SimpleEventProcessor` 16 példány létezik.
+Ebben a példában tegyük fel, hogy 16 partíció van lefoglalva az 5 **EventProcessorHost** -példányhoz. Egyes **EventProcessorHost** -példányok a többinél több partíciót is tartalmazhatnak. Minden olyan partícióhoz, amely egy **EventProcessorHost** -példány tulajdonosa, létrehozza a osztály egy példányát `SimpleEventProcessor` . Ezért az `SimpleEventProcessor` egyes partíciók esetében legalább 16 példány létezik.
 
 A következő lista összefoglalja a példát:
 
 - 16 Event Hubs partíció.
-- 5 virtuális gép, 1 fogyasztói alkalmazás (például Consumer. exe) az egyes virtuális gépeken.
-- 5 EF-példány regisztrálva, 1 az egyes virtuális gépeken a Consumer. exe alapján.
-- az `SimpleEventProcessor` 5 EF-példány által létrehozott 16 objektum.
-- 1 a Consumer. exe alkalmazás 4 `SimpleEventProcessor` objektumot tartalmazhat, mivel az 1 EF-példány 4 partícióval rendelkezhet.
+- 5 virtuális gép, 1 fogyasztói alkalmazás (például Consumer.exe) minden egyes virtuális gépen.
+- 5 EF-példány regisztrálva, 1 az egyes virtuális gépeken Consumer.exe alapján.
+- `SimpleEventProcessor`az 5 EF-példány által létrehozott 16 objektum.
+- 1 Consumer.exe alkalmazás 4 objektumot tartalmazhat `SimpleEventProcessor` , mivel az 1 EF-példány 4 partícióval rendelkezhet.
 
 ## <a name="partition-ownership-tracking"></a>Partíció tulajdonjogának nyomon követése
 
@@ -120,12 +109,12 @@ A partíciók EF-példányra (vagy fogyasztóra) való tulajdonjogát nyomon kö
 
 | **Fogyasztói csoport neve** | **Partícióazonosító** | **Állomásnév (tulajdonos)** | **Bérlet (vagy tulajdonos) beszerzett ideje** | **Eltolás a partícióban (ellenőrzőpont)** |
 | --- | --- | --- | --- | --- |
-| $Default | 0 | Fogyasztói\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 1 | Fogyasztói\_VM4 | 2018-04-15T01:22:13 | 734 |
-| $Default | 2 | Fogyasztói\_VM0 | 2018-04-15T01:22:56 | 122 |
+| $Default | 0 | Fogyasztói \_ VM3 | 2018-04-15T01:23:45 | 156 |
+| $Default | 1 | Fogyasztói \_ VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 2 | Fogyasztói \_ VM0 | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
-| $Default | 15 | Fogyasztói\_VM3 | 2018-04-15T01:22:56 | 976 |
+| $Default | 15 | Fogyasztói \_ VM3 | 2018-04-15T01:22:56 | 976 |
 
 Itt minden gazdagép egy adott időtartamra (a címbérlet időtartamára) egy partíció tulajdonjogát szerzi be. Ha egy gazdagép meghibásodik (a virtuális gép leáll), a bérlet lejár. Más gazdagépek megpróbálják beolvasni a partíció tulajdonjogát, és az egyik gazdagép sikeres. Ez a folyamat visszaállítja a partíción lévő bérletet egy új tulajdonossal. Így egyszerre csak egyetlen olvasó tud olvasni egy felhasználói csoporton belüli adott partícióról.
 
@@ -206,7 +195,7 @@ Most, hogy már ismeri az Event Processor Hostt, tekintse meg a következő cikk
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-node-send-v2.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 * [Rendelkezésre állás és konzisztencia az Event Hubsban](event-hubs-availability-and-consistency.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)

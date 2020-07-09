@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80986714"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-ügyfelek
@@ -25,12 +25,12 @@ ms.locfileid: "80986714"
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) utasítások
    
    * [Virtuális WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) -utasítások
-5. Bontsa ki a titkos kulcsot és a Base64 ujjlenyomatot a *. pfx*fájlból. Ezt többféleképpen megteheti. Az OpenSSL használata a gépen egy módszer. A *profileinfo. txt* fájl tartalmazza a titkos kulcsot, valamint a hitelesítésszolgáltató és az ügyféltanúsítvány ujjlenyomatát. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
+5. Bontsa ki a titkos kulcsot és a Base64 ujjlenyomatot a *. pfx*fájlból. Ezt többféleképpen megteheti. Az OpenSSL használata a gépen egy módszer. A *profileinfo.txt* fájl tartalmazza a titkos kulcsot, valamint a hitelesítésszolgáltató és az ügyféltanúsítvány ujjlenyomatát. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
    ```
-6. Nyissa meg a *profileinfo. txt fájlt* a Jegyzettömbben. Az ügyfél (gyermek) tanúsítványának ujjlenyomatának lekéréséhez jelölje ki a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" szöveget a gyermek tanúsítványhoz, és másolja azt. A gyermek tanúsítvány azonosításához tekintse meg a subject =/sort.
+6. Nyissa meg *profileinfo.txt* a Jegyzettömbben. Az ügyfél (gyermek) tanúsítványának ujjlenyomatának lekéréséhez jelölje ki a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" szöveget a gyermek tanúsítványhoz, és másolja azt. A gyermek tanúsítvány azonosításához tekintse meg a subject =/sort.
 7. Váltson arra a *vpnconfig. ovpn* fájlra, amelyet a 3. lépésben megnyitott a Jegyzettömbben. Keresse meg az alább látható szakaszt, és cserélje le a "CERT" és a "/CERT" közötti mindent.
 
    ```
@@ -40,7 +40,7 @@ ms.locfileid: "80986714"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Nyissa meg a *profileinfo. txt fájlt* a Jegyzettömbben. A titkos kulcs lekéréséhez válassza ki a "-----BEGIN PRIVATE KEY-----" és a "-----END titkos kulcs-----" szöveget, és másolja azt.
+8. Nyissa meg a *profileinfo.txt* a Jegyzettömbben. A titkos kulcs lekéréséhez válassza ki a "-----BEGIN PRIVATE KEY-----" és a "-----END titkos kulcs-----" szöveget, és másolja azt.
 9. Térjen vissza a vpnconfig. ovpn fájlhoz a Jegyzettömbben, és keresse meg ezt a szakaszt. Illessze be a titkos kulcsot, és cserélje le a "Key" és a "/Key" közötti mindent.
 
    ```
@@ -92,7 +92,7 @@ ms.locfileid: "80986714"
 
 9. Ha nem látja a **Másolás az OpenVPN-be** lehetőséget, koppintson a **továbbiak** elemre.
 
-    ![Továbbiak](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
+    ![Kibontás](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
 
 10. Koppintson a **Másolás az OpenVPN-** re lehetőségre 
 
@@ -132,9 +132,9 @@ ms.locfileid: "80986714"
     ```
     openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-   A *profileinfo. txt* fájl tartalmazni fogja a titkos kulcsot és a hitelesítésszolgáltató ujjlenyomatát, valamint az ügyféltanúsítványt. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
+   A *profileinfo.txt* fájl tartalmazni fogja a titkos kulcsot és a hitelesítésszolgáltató ujjlenyomatát, valamint az ügyféltanúsítványt. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
 
-6. Nyissa meg a *profileinfo. txt fájlt* egy szövegszerkesztőben. Az ügyfél (gyermek) tanúsítványának ujjlenyomatának lekéréséhez válassza a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" szöveget, és másolja azt. A gyermek tanúsítvány azonosításához tekintse meg a subject =/sort.
+6. *profileinfo.txt* megnyitása egy szövegszerkesztőben. Az ügyfél (gyermek) tanúsítványának ujjlenyomatának lekéréséhez válassza a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" szöveget, és másolja azt. A gyermek tanúsítvány azonosításához tekintse meg a subject =/sort.
 
 7. Nyissa meg az *vpnconfig. ovpn* fájlt, és keresse meg az alább látható szakaszt. Cserélje le a és a "CERT" és a "/CERT" közötti mindent.
 
@@ -145,7 +145,7 @@ ms.locfileid: "80986714"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Nyissa meg a profileinfo. txt fájlt egy szövegszerkesztőben. A titkos kulcs beszerzéséhez válassza ki a "-----BEGIN PRIVATE KEY-----" és a "-----END titkos kulcs-----" szöveget, és másolja azt.
+8. Nyissa meg a profileinfo.txt egy szövegszerkesztőben. A titkos kulcs beszerzéséhez válassza ki a "-----BEGIN PRIVATE KEY-----" és a "-----END titkos kulcs-----" szöveget, és másolja azt.
 
 9. Nyissa meg a vpnconfig. ovpn fájlt egy szövegszerkesztőben, és keresse meg ezt a szakaszt. Illessze be a titkos kulcsot, és cserélje le a "Key" és a "/Key" közötti mindent.
 
@@ -164,7 +164,7 @@ ms.locfileid: "80986714"
     sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. A grafikus felhasználói felülettel való kapcsolódáshoz lépjen a rendszerbeállítások elemre.
-13. Új **+** VPN-kapcsolat hozzáadásához kattintson ide.
+13. **+** Új VPN-kapcsolat hozzáadásához kattintson ide.
 14. A **VPN hozzáadása**területen válassza **az importálás fájlból lehetőséget..** .
 15. Tallózással keresse meg a profil fájlt, és kattintson rá duplán, vagy válassza a **Megnyitás**lehetőséget.
 16. A **VPN hozzáadása** ablakban kattintson a **Hozzáadás** gombra.

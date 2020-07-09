@@ -4,13 +4,13 @@ description: Hozzon létre egy OpenAPI definíciót, amely lehetővé teszi más
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.reviewer: sunayv
-ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7d63d5ea17184ffa6e456877079da0821a75d59e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mvc, cc996988-fb4f-47, references_regions
+ms.openlocfilehash: 87f7b47354d3d76d5185b1bf956fd0c422c092bd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121427"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197027"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>OpenAPI-definíció létrehozása kiszolgáló nélküli API-hoz az Azure API Management használatával
 
@@ -138,7 +138,7 @@ A OpenAPI-definíció előállítása:
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Név** | Globálisan egyedi név | A rendszer a függvény alkalmazásának neve alapján hozza létre a nevet. |
+    | **Name (Név)** | Globálisan egyedi név | A rendszer a függvény alkalmazásának neve alapján hozza létre a nevet. |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amely alatt az új erőforrást létrehozták. |  
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  myResourceGroup | A Function alkalmazással megegyező erőforrás, amelyet be kell állítani. |
     | **Hely** | USA nyugati régiója | Válassza ki az USA nyugati régióját. |

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587510"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339612"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>Külső identitásokkal kapcsolatos megoldások összehasonlítása Azure Active Directory
 
@@ -36,11 +36,11 @@ Az alábbi táblázat részletesen összehasonlítja a különböző forgatókö
 
 | Több-bérlős alkalmazások  | Külső felhasználói együttműködés (B2B) | Alkalmazások fogyasztók vagy ügyfelek számára (B2C)  |
 | ---- | --- | --- |
-| Elsődleges forgatókönyv: vállalati szoftver-szolgáltatás (SaaS) | Elsődleges forgatókönyv: együttműködés a Microsoft-alkalmazásokkal (Office 365, Teams,...) vagy a saját csoportmunka-szoftverrel.  | Elsődleges forgatókönyv: az egyéni fejlesztésű alkalmazásokat használó tranzakciós alkalmazások.   |
+| Elsődleges forgatókönyv: vállalati szoftver-szolgáltatás (SaaS) | Elsődleges forgatókönyv: együttműködés a Microsoft-alkalmazásokkal (Microsoft 365, csapatok,...) vagy a saját csoportmunka-szoftverrel.  | Elsődleges forgatókönyv: az egyéni fejlesztésű alkalmazásokat használó tranzakciós alkalmazások.   |
 | A következő célra készült: olyan szervezetek, amelyek számos nagyvállalati ügyfél számára kívánnak szoftvert nyújtani.    | Kinek készült: olyan szervezeteknek, ahol igény van a partner szervezetek felhasználóinak hitelesítésére az identitásszolgáltatótól függetlenül.    | Cél: a mobil-és webalkalmazások ügyfeleinek meghívása, függetlenül attól, hogy magánszemélyek, intézményi vagy szervezeti ügyfelek egy Azure AD-címtárban legyenek elkülönítve a saját szervezete címtárával. |
 | Támogatott identitások: az Azure AD-fiókkal rendelkező alkalmazottak. | Támogatott identitások: Munkahelyi vagy iskolai fiókkal rendelkező alkalmazottak, munkahelyi vagy iskolai fiókkal vagy e-mail címmel rendelkező partnerek. Hamarosan támogatni fogja a közvetlen összevonást.      | Támogatott identitások: Fogyasztói felhasználók helyi vonatkozású fiókkal (bármilyen e-mail-cím vagy felhasználónév), vagy bármely támogatott közösségi identitás közvetlen összevonással.       |
 | A külső felhasználók felügyelete a saját címtárban történik, amely az alkalmazás regisztrálásának helyétől elkülönített könyvtárból van elkülönítve.    | A külső felhasználók kezelése az alkalmazottakkal megegyező könyvtárban történik, de kifejezetten megjegyzésekkel ellátva. Az alkalmazottakkal megegyező módon kezelhetők, de hozzáadhatók ugyanahhoz a csoporthoz, és így tovább.    | A külső felhasználókat az alkalmazás könyvtára kezeli. Ezeket külön kezelik a szervezet alkalmazotti és partneri könyvtára (ha van ilyen).  |
-| Egyszeri bejelentkezés: az egyszeri bejelentkezés minden Azure AD-hez csatlakoztatott alkalmazáshoz támogatott.          | Egyszeri bejelentkezés: az egyszeri bejelentkezés minden Azure AD-hez csatlakoztatott alkalmazáshoz támogatott. Hozzáférést adhat például az Office 365-höz, vagy a helyszíni alkalmazásokhoz és egyéb SaaS-alkalmazásokhoz, amilyen például a Salesforce vagy a Workday.    | Egyszeri bejelentkezés: az Azure AD B2C bérlőn belül az ügyfél tulajdonában lévő alkalmazásokhoz való egyszeri bejelentkezés támogatott. Az Office 365-hez vagy más Microsoft SaaS-alkalmazásokhoz való egyszeri bejelentkezés nem támogatott.    |
+| Egyszeri bejelentkezés: az egyszeri bejelentkezés minden Azure AD-hez csatlakoztatott alkalmazáshoz támogatott.          | Egyszeri bejelentkezés: az egyszeri bejelentkezés minden Azure AD-hez csatlakoztatott alkalmazáshoz támogatott. Hozzáférést biztosíthat például Microsoft 365 vagy helyszíni alkalmazásokhoz, valamint más SaaS-alkalmazásokhoz, például Salesforce vagy munkanapokhoz.    | Egyszeri bejelentkezés: az Azure AD B2C bérlőn belül az ügyfél tulajdonában lévő alkalmazásokhoz való egyszeri bejelentkezés támogatott. Az egyszeri bejelentkezés Microsoft 365 vagy más Microsoft SaaS-alkalmazásokhoz nem támogatott.    |
 | Ügyfél-életciklus: a felhasználó otthoni szervezete felügyeli.      | Partner életciklus: A vendéglátó/meghívó szervezet felügyeli.    | Ügyféléletciklus: Önkiszolgáló vagy az alkalmazás felügyeli.      |
 | Biztonsági házirend és megfelelőség: a gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)) által felügyelt.           | Biztonsági házirend és megfelelőség: a gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)) által felügyelt. | Biztonsági házirend és megfelelőség: Az alkalmazás kezeli.        |
 | Branding: a gazdagép és a meghívó szervezet márkája használatban van.   | Branding: a gazdagép és a meghívó szervezet márkája használatban van.    | Védjegyek: Az alkalmazás kezeli. Általában termékek márkái láthatók, a szervezet inkább háttérbe szorul.   |

@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 612751c2405cd55ad0b3760aa8e093e434a22f57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96ab2b7c8e80375f97df550ed6c83e7bb3e2f3e3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121605"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562085"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a PowerShellben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Poster (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portál](search-create-index-portal.md)
@@ -27,7 +27,7 @@ ms.locfileid: "77121605"
 
 Ez a cikk végigvezeti egy Azure Cognitive Search index létrehozásának, betöltésének és lekérdezésének lépésein a PowerShell és az [azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k használatával. Ez a cikk azt ismerteti, hogyan lehet interaktív módon futtatni a PowerShell-parancsokat. Azt is megteheti, hogy [letölti és futtat egy PowerShell-parancsfájlt](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , amely ugyanezeket a műveleteket hajtja végre.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
 ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
@@ -63,7 +63,7 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 2. Hozzon létre egy **$URL** objektumot, amely meghatározza a szolgáltatás indexeit tartalmazó gyűjteményt. Cserélje le a szolgáltatás nevét (a-SEARCH-SERVICE-NAME) egy érvényes keresési szolgáltatással.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name"
     ```
 
 3. Futtassa a **meghívó-RestMethod** parancsot, hogy küldjön egy Get kérelmet a szolgáltatásnak, és ellenőrizze a kapcsolódást. Adja hozzá a **ConvertTo-JSON-** t, hogy megtekintse a szolgáltatásból visszaküldött válaszokat.
@@ -87,7 +87,7 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés határozza meg az indexet, és leküldi azt a szolgáltatásnak. Ehhez a lépéshez a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban.
 
-Az index kötelező elemei közé tartozik a név és a mezők gyűjteménye. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza, hogyan használják a rendszer (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú `Edm.String` mezőt meg kell jelölni a dokumentum-identitás *kulcsaként* .
+Az index kötelező elemei közé tartozik a név és a mezők gyűjteménye. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza, hogyan használják a rendszer (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú mezőt `Edm.String` meg kell jelölni a dokumentum-identitás *kulcsaként* .
 
 Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, más forgatókönyvekben használt [szállodák indexének](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) részhalmaza. Ebben a rövid útmutatóban lerövidítjük.
 
@@ -123,7 +123,7 @@ Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíció
 2. Állítsa be az URI-t a szolgáltatás indexek gyűjteményére és a *Hotels-Gyorsindítás* indexre.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30"
     ```
 
 3. Futtassa a parancsot **$URL**, **$headers**és **$Body** használatával az index létrehozásához a szolgáltatásban. 
@@ -273,7 +273,7 @@ A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-cím�
 1. Állítsa a végpontot a *hotelek –* gyors dokumentumok gyűjteményre, és adja meg az index műveletet (indexek/Hotels-Gyorsindítás/docs/index).
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30"
     ```
 
 1. Futtassa a parancsot **$URL**, **$headers**és **$Body** használatával a dokumentumok betöltéséhez a Hotels-Gyorsindítás indexbe.
@@ -319,14 +319,14 @@ A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-cím�
 
 Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.
 
-Ügyeljen arra, hogy egyetlen idézőjelet használjon a keresési $urls. A lekérdezési **$** karakterláncok tartalmazhatnak karaktereket, és kihagyhatják, hogy a teljes sztring egyetlen idézőjelben legyen bezárva.
+Ügyeljen arra, hogy egyetlen idézőjelet használjon a keresési $urls. A lekérdezési karakterláncok tartalmazhatnak **$** karaktereket, és kihagyhatják, hogy a teljes sztring egyetlen idézőjelben legyen bezárva.
 
 1. Állítsa a végpontot a *Hotels-* gyors dokumentumok gyűjteményre, és adjon hozzá egy **keresési** paramétert egy lekérdezési karakterláncba való továbbításhoz. 
   
    Ez a karakterlánc egy üres keresést hajt végre (Search = *), és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Alapértelmezés szerint az Azure Cognitive Search a 50-es egyezést adja vissza egyszerre. Strukturált módon a lekérdezés egy teljes dokumentum-struktúrát és-értéket ad vissza. Adja hozzá a **$Count = True** értéket az eredményekben található összes dokumentum számának beolvasásához.
 
     ```powershell
-    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
+    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$count=true'
     ```
 
 1. Futtassa a parancsot a **$URL** a szolgáltatásnak való elküldéséhez.
@@ -375,21 +375,21 @@ Néhány további lekérdezési példát is kipróbálhat a szintaxis megszerzé
 # Query example 1
 # Search the entire index for the terms 'restaurant' and 'wifi'
 # Return only the HotelName, Description, and Tags fields
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
 # Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
 # Query example 3
 # Take the top two results, and show only HotelName and Category in the results
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=boutique&$top=2&$select=HotelName,Category'
 
 # Query example 4
 # Sort by a specific field (Address/City) in ascending order
 
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

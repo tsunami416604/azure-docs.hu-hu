@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670032"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
@@ -23,7 +22,7 @@ A rendelkezésre állási tesztek három típusa létezik:
 
 * [URL-ping teszt](#create-a-url-ping-test): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
 * [Többlépéses webes teszt](availability-multistep.md): a webes kérések sorozatának rögzítése, amely az összetettebb forgatókönyvek tesztelésére használható. A többlépéses webes tesztek a Visual Studio Enterprise-ban jönnek létre, és a portálra lesznek feltöltve a végrehajtáshoz.
-* [Egyéni nyomon követési rendelkezésre állási tesztek](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a `TrackAvailability()` rendelkezésre állási tesztek futtatásához, a metódus segítségével küldheti el az eredményeket Application Insights.
+* [Egyéni nyomon követési rendelkezésre állási tesztek](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a `TrackAvailability()` metódus segítségével küldheti el az eredményeket Application Insights.
 
 **Application Insights erőforráson akár 100 rendelkezésre állási tesztet is létrehozhat.**
 
@@ -31,7 +30,7 @@ A rendelkezésre állási tesztek három típusa létezik:
 
 A rendelkezésre állási teszt létrehozásához először létre kell hoznia egy Application Insights erőforrást. Ha már létrehozott egy erőforrást, folytassa a következő szakasszal [egy URL ping teszt létrehozásához](#create-a-url-ping-test).
 
-A Azure Portal válassza az **erőforrás** > létrehozása**fejlesztői eszközök** > **Application Insights** lehetőséget, és [hozzon létre egy Application Insights erőforrást](create-new-resource.md).
+A Azure Portal válassza az **erőforrás létrehozása**  >  **fejlesztői eszközök**  >  **Application Insights** lehetőséget, és [hozzon létre egy Application Insights erőforrást](create-new-resource.md).
 
 ## <a name="create-a-url-ping-test"></a>URL-ping teszt létrehozása
 
@@ -45,7 +44,7 @@ Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelk
 
 |Beállítás| Magyarázat
 |----|----|----|
-|**URL** |  Az URL-cím bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési sztringet. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.|
+|**URL-cím** |  Az URL-cím bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési sztringet. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.|
 |**Függő kérelmek elemzése**| Tesztelje a weboldalhoz tartozó képeket, parancsfájlokat, stílusú fájlokat és egyéb fájlokat, amelyek a tesztelés alatt állnak. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt sikertelen lesz, ha a teljes teszt időkorlátján belül nem tölthetők le ezek az erőforrások. Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le. Ha engedélyezi ezt a beállítást, a rendszer szigorúbb ellenőrzését eredményez. Előfordulhat, hogy a teszt sikertelen lehet, ami nem észlelhető a hely manuális böngészése során.
 |**Újrapróbálkozások engedélyezése**|Ha a teszt sikertelen, a rendszer rövid idő után újrapróbálkozik. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. **Ezt a beállítást javasoljuk**. Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.|
 |**Tesztelési gyakoriság**| Beállítja, hogy a teszt milyen gyakran fusson az egyes tesztelési helyekről. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.|
@@ -70,7 +69,7 @@ Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelk
 |----|----|----|
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
 |**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
-|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke** = **– 2, legalább öt tesztelési hely.**|
+|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  **– 2, legalább öt tesztelési hely.**|
 
 ## <a name="see-your-availability-test-results"></a>A rendelkezésre állási teszt eredményeinek megtekintése
 

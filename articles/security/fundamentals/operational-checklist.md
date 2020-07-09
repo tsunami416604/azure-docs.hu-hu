@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: fb940857a0f88590cb9bbbf56b9e6a791299309f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980960"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure Operational Security ellenőrzőlista
@@ -37,7 +36,7 @@ Az Azure az alkalmazások üzembe helyezéséhez használható infrastruktúra-s
 
 Ez az ellenőrzőlista arra szolgál, hogy segítse a vállalatokat a különböző működési biztonsági megfontolásokon, miközben kifinomult vállalati alkalmazásokat telepítenek az Azure-ban. A szolgáltatás segítségével biztonságos Felhőbeli áttelepítési és műveleti stratégiát hozhat létre a szervezet számára.
 
-|Ellenőrzőlista kategóriája| Leírás|
+|Ellenőrzőlista kategóriája| Description|
 | ------------ | -------- |
 | [<br>Biztonsági szerepkörök & hozzáférés-vezérléssel](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/role-assignments-portal.md) használatával biztosíthatja a felhasználókhoz, csoportokhoz és alkalmazásokhoz adott hatókörön belüli engedélyek hozzárendeléséhez használt felhasználói jogosultságokat.</li></ul> |
 | [<br>Adatgyűjtés & Storage-ban](../../storage/blobs/security-recommendations.md)|<ul><li>A felügyeleti sík biztonsági szolgáltatásával biztonságossá teheti a Storage-fiókját [szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md)használatával.</li><li>Adatsíkok biztonsága az adataihoz való hozzáférés biztosításához [közös hozzáférésű aláírások (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) és tárolt hozzáférési szabályzatok használatával.</li><li>Használjon átviteli szintű titkosítást – HTTPS protokollal és az SMB által használt titkosítással [(Server Message Block PROTOCOLS) 3,0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) [Azure-fájlmegosztás](../../storage/files/storage-dotnet-how-to-use-files.md)esetén.</li><li>Az [ügyféloldali titkosítással](../../storage/common/storage-client-side-encryption.md) biztosíthatja a Storage-fiókoknak küldött adatvédelmet, ha a titkosítási kulcsok kizárólagos felügyeletét igényli. </li><li>A [Storage Service encryption (SSE)](../../storage/common/storage-service-encryption.md) használatával automatikusan titkosíthatja az Azure Storage-ban tárolt és az operációs rendszer és az adatlemezek virtuális merevlemez-fájljainak titkosítását [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) .</li><li>Az Azure [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics) használatával figyelheti az engedélyezési típust; a Blob Storagehoz hasonlóan láthatja, hogy a felhasználók közös hozzáférési aláírást vagy a Storage-fiók kulcsait használták-e.</li><li>A különböző tartományokból származó tárolási erőforrások eléréséhez használjon eltérő [eredetű erőforrás-megosztást (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .</li></ul> |

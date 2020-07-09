@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083274"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési helyzetekben
@@ -21,8 +21,8 @@ A fejlesztői és tesztelési forgatókönyvekhez használhatja a Windows 7, Win
 ![Rendszerkép részletei a Azure Portal](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> A Windows 10 Pro és a Windows 10 Pro N rendszerképek az Azure-katalógusban című témakörben tájékozódhat [arról, hogyan helyezheti üzembe a Windows 10](windows-desktop-multitenant-hosting-deployment.md)
->![rendszert az Azure-ban a Azure Portal](./media/client-images/windows-client-pro-images.png) 
+> A Windows 10 Pro és a Windows 10 Pro N rendszerképek az Azure-katalógusban című témakörben tájékozódhat [arról, hogyan helyezheti üzembe a Windows 10](windows-desktop-multitenant-hosting-deployment.md)rendszert az Azure-ban a 
+> ![ Azure Portal](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>Előfizetés támogathatósága

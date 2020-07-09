@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207948"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Windows Server-tároló létrehozása Azure Kubernetes-szolgáltatásbeli (ak-) fürtön a PowerShell használatával
 
@@ -45,7 +45,7 @@ A következő további korlátozások érvényesek a Windows Server Node-készle
 * Az AK-fürt legfeljebb 100 csomópontot tartalmazhat az egyes csomópont-készletekben.
 * A Windows Server-csomópontok készletének neve legfeljebb 6 karakterből állhat.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az [Azure-erőforráscsoport](/azure/azure-resource-manager/resource-group-overview) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name myResourceGroup -Location eastus
 
 A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen létrejött:
 
-```Output
+```plaintext
 ResourceGroupName : myResourceGroup
 Location          : eastus
 ProvisioningState : Succeeded
@@ -119,7 +119,7 @@ kubectl get nodes
 
 A következő példa kimenete a fürt összes csomópontját megjeleníti. Győződjön meg arról, hogy az összes csomópont állapota **kész**:
 
-```Output
+```plaintext
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
 aksnpwin987654                      Ready    agent   108s   v1.16.7
@@ -187,7 +187,7 @@ kubectl apply -f sample.yaml
 
 A következő példa kimenete a központi telepítés és a szolgáltatás sikeres létrehozását mutatja be:
 
-```Output
+```plaintext
 deployment.apps/sample created
 service/sample created
 ```
@@ -205,14 +205,14 @@ kubectl get service sample --watch
 
 Kezdetben a **minta** szolgáltatás **külső IP-címe** **függőben**jelenik meg.
 
-```Output
+```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Ha a **külső IP-** cím **függőben** ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` . A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
-```Output
+```plaintext
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
@@ -234,7 +234,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben üzembe helyezett egy Kubernetes-fürtöt, és üzembe helyezett egy `ASP.NET` minta alkalmazást egy Windows Server-tárolóban. Nyissa meg a létrehozott fürt [Kubernetes webes irányítópultját][kubernetes-dashboard] .
 

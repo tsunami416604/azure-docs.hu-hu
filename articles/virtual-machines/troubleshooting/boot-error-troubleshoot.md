@@ -12,12 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1ab2861f73d66987230c9e3398227c8e80665e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71059170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769608"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure Virtual Machines rendszerindítási hibák elhárítása
 
@@ -26,12 +25,12 @@ Ez a cikk azokat a gyakori rendszerindítási hibákat sorolja fel, amelyeket a 
 ## <a name="boot-errors-and-solutions"></a>Rendszerindítási hibák és megoldások
 
 * [BitLocker rendszerindítási hibái](troubleshoot-bitlocker-boot-error.md) 
+* [A virtuális gép nem indul el a Windows Update után](troubleshoot-stuck-updating-boot-error.md)
 * [A Windows „A fájlrendszer ellenőrzése” üzenetet jeleníti meg a rendszerindítás során](troubleshoot-check-disk-boot-error.md)
 * [Kék képernyős hibák](troubleshoot-common-blue-screen-error.md)
 * [A virtuális gép indítása beragadt a "Felkészülés a Windowsba](troubleshoot-vm-boot-configure-update.md)
 * [EGY KULCSFONTOSSÁGÚ SZOLGÁLTATÁS MEGHIÚSULT” hibával a kék képernyőn](troubleshoot-critical-service-failed-boot-error.md)
 * [Újraindítási hurokkal kapcsolatos probléma](troubleshoot-reboot-loop.md)
-* [A virtuális gép indítása elakadt a Windows frissítési szakaszánál](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>További lépések
 

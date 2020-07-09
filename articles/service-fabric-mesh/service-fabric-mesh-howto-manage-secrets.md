@@ -4,10 +4,9 @@ description: Az alkalmazási titkokat felügyelheti, így biztonságosan hozhat 
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461932"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-alkalmazás titkainak kezelése
@@ -95,7 +94,7 @@ Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets-erőforrásoka
 ## <a name="declare-mesh-secretsvalues-resources"></a>A Mesh Secrets/Values típusú erőforrások deklarálása
 A Mesh Secrets/Values erőforrásai az előző lépésben meghatározott rácsvonal-titkok erőforrásaitól függenek.
 
-A "Resources" (erőforrások) szakasz "Value:" és "Name:" mezők közötti kapcsolata esetén: a "Name:" karakterlánc második része, amely egy kettősponttal van elválasztva, a titkos kulcshoz használt verziószám, a kettőspontnak pedig meg kell egyeznie annak a szembőség-értéknek a nevével, amelyhez függőséggel rendelkezik. Az elem ```name: mysecret:1.0```esetében például a verziószám 1,0, a névnek ```mysecret``` pedig meg kell egyeznie a korábban definiált ```"value": "mysecret"```értékkel.
+A "Resources" (erőforrások) szakasz "Value:" és "Name:" mezők közötti kapcsolata esetén: a "Name:" karakterlánc második része, amely egy kettősponttal van elválasztva, a titkos kulcshoz használt verziószám, a kettőspontnak pedig meg kell egyeznie annak a szembőség-értéknek a nevével, amelyhez függőséggel rendelkezik. Az elem esetében például ```name: mysecret:1.0``` a verziószám 1,0, a névnek pedig ```mysecret``` meg kell egyeznie a korábban definiált értékkel ```"value": "mysecret"``` .
 
 >
 Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets/Values-erőforrásokat egy JSON-fájlban:
@@ -201,8 +200,8 @@ az mesh deployment create –-<template-file> or --<template-uri>
 Adja át a **template-file** vagy a **template-URI elemet** (de ne mindkettőt).
 
 Például:
-- az Mesh Deployment Create--c:\MyMeshTemplates\SecretTemplate1.txt
-- az Mesh Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az Mesh Deployment Create --c:\MyMeshTemplates\SecretTemplate1.txt
+- az Mesh Deployment Create--https: \/ /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Titkos kód megjelenítése
 A titok leírását adja vissza (de nem az értéket).

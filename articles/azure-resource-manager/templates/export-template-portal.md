@@ -3,12 +3,12 @@ title: Sablon exportálása Azure Portal
 description: A Azure Portal használatával exportálhat egy Azure Resource Manager sablont az előfizetése erőforrásaiból.
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273734"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057704"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
 
@@ -121,5 +121,5 @@ Exportálhatja a meglévő erőforrások üzembe helyezéséhez használt sablon
 
 - Ismerje meg, hogyan exportálhat sablonokat az [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), a [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)vagy a [REST API](/rest/api/resources/resourcegroups/exporttemplate)használatával.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
-- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](/azure/azure-resource-manager/).
+- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](../index.yml).
 - A Azure Resource Manager sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).

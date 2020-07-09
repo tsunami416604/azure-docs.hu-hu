@@ -3,12 +3,11 @@ title: A Azure Site Recovery helyreállítási tervei
 description: A Azure Site Recovery helyreállítási terveinek megismerése.
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343914"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -17,7 +16,7 @@ Ez a cikk a [Azure site Recovery](site-recovery-overview.md)helyreállítási te
 A helyreállítási terv a gépeket helyreállítási csoportokba gyűjti a feladatátvétel céljából. A helyreállítási terv segítséget nyújt egy rendszeres helyreállítási folyamat definiálásához, ha olyan kis független egységeket hoz létre, amelyek feladatátvételt hajtanak végre. Egy egység általában egy alkalmazást jelöl a környezetben.
 
 - A helyreállítási terv meghatározza a gépek feladatátvételét, valamint azt a sorozatot, amelyben a feladatátvétel után indulnak.
-- A helyreállítási tervek az Azure-ba történő feladatátvételhez használhatók, de nem használhatók az Azure-beli feladat-visszavételhez.
+- A helyreállítási tervek a feladatátvétel és az Azure-beli feladat-visszavétel esetében is használhatók.
 - Akár 100 védett példány is hozzáadható egy helyreállítási tervhez.
 - A tervet testreszabhatja rendelés, utasítások és feladatok hozzáadásával.
 - A terv meghatározása után futtathatja a feladatátvételt.

@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997043"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962262"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az a szótár?
 
-A szótár olyan igazított pár dokumentum, amely a mondatok vagy mondatok listáját és a hozzájuk tartozó fordításokat határozza meg. Használjon szótárt a képzésben, ha azt szeretné, hogy a Microsoft Translator mindig lefordítsa a forrás kifejezés vagy mondat bármely példányát a szótárban megadott fordítás használatával. A szótárakat más néven szószedeteknek vagy kifejezéseknek nevezzük. A szótárt a lista összes feltételének "másolás és csere" kifejezésével lehet meggondolni. Emellett a Microsoft Custom Translator Service saját általános célú szótárakat is létrehoz és használ a fordítás minőségének javítása érdekében. Az ügyfél által megadott szótár azonban precedenst kap, és először a szavak vagy mondatok keresésére keres rá.
+A szótár olyan igazított pár dokumentum, amely a mondatok vagy mondatok listáját és a hozzájuk tartozó fordításokat határozza meg. Használjon szótárt a képzésben, ha azt szeretné, hogy a fordító mindig lefordítsa a forrás kifejezés vagy mondat bármely példányát a szótárban megadott fordítás használatával. A szótárakat más néven szószedeteknek vagy kifejezéseknek nevezzük. A szótárt a lista összes feltételének "másolás és csere" kifejezésével lehet meggondolni. Emellett a Custom Translator szolgáltatás a saját általános célú szótárakat is felhasználja a fordítás minőségének javítása érdekében. Az ügyfél által megadott szótár azonban precedenst kap, és először a szavak vagy mondatok keresésére keres rá.
 
 A szótárak csak olyan nyelvi párokban működő projektekhez működnek, amelyek teljes mértékben támogatottak a Microsoft általános neurális hálózati modellje mögött. [Tekintse meg a nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 

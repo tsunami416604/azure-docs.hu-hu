@@ -4,10 +4,9 @@ description: A Java-webhely kiterjesztett teljesítmény-és használati figyel�
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537542"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételek és metódus-végrehajtási idők figyelése Java-webalkalmazásokban
@@ -16,7 +15,7 @@ ms.locfileid: "81537542"
 Ha a [Java-webalkalmazást Application Insights][java]használatával állította be, a Java-ügynökkel mélyebb elemzéseket kaphat, kód módosítása nélkül:
 
 * **Függőségek:** Az alkalmazás által más összetevőkre irányuló hívásokkal kapcsolatos információk, beleértve a következőket:
-  * **Outgoing HTTP calls** Az Apache HttpClient, a OkHttp és `java.net.HttpURLConnection` a rögzített http-hívások rögzítése megtörtént.
+  * Az Apache HttpClient, a OkHttp és a rögzített **http-hívások** rögzítése megtörtént `java.net.HttpURLConnection` .
   * A Jedis ügyféllel készített **Redis-hívások** rögzítése történik.
   * **JDBC-lekérdezések** – a MySQL és a PostgreSQL esetében, ha a hívás 10 másodpercnél hosszabb időt vesz igénybe, az ügynök jelentést készít a lekérdezési tervről.
 
@@ -26,8 +25,8 @@ Ha a [Java-webalkalmazást Application Insights][java]használatával állított
   * **Logback**
 
 * **Jobb működés elnevezése:** (a portálon található kérelmek összesítéséhez használják)
-  * **Rugó** – alapján `@RequestMapping`.
-  * **Jax-RS** -alapján `@Path`. 
+  * **Rugó** – alapján `@RequestMapping` .
+  * **Jax-RS** -alapján `@Path` . 
 
 A Java-ügynök használatához telepítenie kell a-kiszolgálóra. A webalkalmazásokat a [Application Insights Java SDK][java]-val kell kiépíteni. 
 
@@ -43,7 +42,7 @@ A Java-ügynök használatához telepítenie kell a-kiszolgálóra. A webalkalma
 3. Indítsa újra az alkalmazást.
 
 ## <a name="configure-the-agent"></a>Az ügynök konfigurálása
-Hozzon létre egy `AI-Agent.xml` nevű fájlt, és helyezze ugyanabba a mappába, amelyben az ügynök jar-fájlja található.
+Hozzon létre egy nevű fájlt, `AI-Agent.xml` és helyezze ugyanabba a mappába, amelyben az ügynök jar-fájlja található.
 
 Adja meg az XML-fájl tartalmát. Szerkessze az alábbi példát a kívánt funkciók belefoglalásához vagy kihagyásához.
 
@@ -89,16 +88,16 @@ Kulcs: `JAVA_OPTS` érték:`-javaagent:D:/home/site/wwwroot/applicationinsights-
 A Java-ügynök legújabb verziójáért tekintse meg a kiadásokat [itt](https://github.com/Microsoft/ApplicationInsights-Java/releases
 ). 
 
-Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** > **speciális eszközök** > **hibakeresési konzolján** ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e, és megvizsgálja a hely könyvtárának tartalmát.    
+Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök**speciális eszközök hibakeresési konzolján ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e,  >  **Advanced Tools**  >  **Debug Console** és megvizsgálja a hely könyvtárának tartalmát.    
 
 * Mentse a beállításokat, és indítsa újra az alkalmazást. (Ezek a lépések csak Windows rendszeren futó App Services vonatkoznak.)
 
 > [!NOTE]
-> A AI-Agent. XML és az Agent jar-fájlnak ugyanabban a mappában kell lennie. Ezeket gyakran együtt helyezik el a `/resources` projekt mappájába.  
+> AI-Agent.xml és az ügynök jar-fájljának ugyanabban a mappában kell lennie. Ezeket gyakran együtt helyezik el a `/resources` projekt mappájába.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>W3C elosztott nyomkövetés engedélyezése
 
-Adja hozzá a következőt a AI-Agent. xml fájlhoz:
+Adja hozzá a következőt a AI-Agent.xmlhoz:
 
 ```xml
 <Instrumentation>
@@ -122,7 +121,7 @@ A függőség, a kivétel és a metódus-jelentések egyes példányainak keres�
 
 [Függőségi problémák diagnosztizálása – további információ](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
-## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
+## <a name="questions-problems"></a>Kérdése van? Problémákat tapasztal?
 * Nincs adat? [Tűzfal-kivételek beállítása](../../azure-monitor/app/ip-addresses.md)
 * [A Java hibaelhárítása](java-troubleshoot.md)
 

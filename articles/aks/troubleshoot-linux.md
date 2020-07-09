@@ -9,21 +9,20 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925604"
 ---
 # <a name="linux-performance-troubleshooting"></a>A Linux teljesítményének hibaelhárítása
 
 A Linux rendszerű gépek erőforrás-kimerülése gyakori probléma, és a tünetek széles körének megnyilvánulása. Ez a dokumentum magas szintű áttekintést nyújt az ilyen problémák diagnosztizálásához rendelkezésre álló eszközökről.
 
-Ezen eszközök közül sok olyan intervallumot fogad el, amelyen a működés közbeni kimenet hozható létre. Ez a kimeneti formátum általában sokkal egyszerűbbé teszi a bepecsételés mintázatát. Ha elfogadták, a példa a meghívást fogja tartalmazni `[interval]`.
+Ezen eszközök közül sok olyan intervallumot fogad el, amelyen a működés közbeni kimenet hozható létre. Ez a kimeneti formátum általában sokkal egyszerűbbé teszi a bepecsételés mintázatát. Ha elfogadták, a példa a meghívást fogja tartalmazni `[interval]` .
 
 Ezeknek az eszközöknek a széles körű előzményei és számos konfigurációs lehetősége van. Ezen a lapon a hívások egyszerű részhalmaza látható a gyakori problémák kiemeléséhez. Az információk kanonikus forrása mindig az egyes eszközök dokumentációja. Ez a dokumentáció sokkal alaposabban fog megjelenni, mint amit itt biztosítunk.
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 A teljesítménnyel kapcsolatos problémák kivizsgálásának módszere a következő: Két gyakori módszer van HASZNÁLATban (kihasználtság, telítettség, hibák) és piros (sebesség, hibák, időtartam). A RED-t általában a szolgáltatások környezetében használják a kérelmeken alapuló figyeléshez. A HASZNÁLATot általában az erőforrások figyelésére használják: a gépek minden erőforrása esetében a kihasználtság, a telítettség és a hibák figyelhetők. Bármely gépen a négy fő típusú erőforrás a CPU, a memória, a lemez és a hálózat. Ezeknek az erőforrásoknak a magas kihasználtsága, telítettsége vagy hibái aránya a rendszerrel kapcsolatos lehetséges problémát jelzi. Ha probléma van, vizsgálja meg a kiváltó okot: Miért magas a lemez i/o-késése? A lemezek vagy a virtuális gép SKU-jának szabályozása megtörtént? Milyen folyamatokat írunk az eszközökre és milyen fájlokra?
 
@@ -84,7 +83,7 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
 - CPU-kihasználtság, ebben az esetben többnyire a tétlen időt mutatja.
 - a teljes, az ingyenes és a felhasznált rendszermemória.
 
-`top`rövid élettartamú folyamatokat hagyhat ki; `htop` az ilyen jellegű `atop` hiányosságok kijavítása közben hasonló felületeket biztosítanak.
+`top`rövid élettartamú folyamatokat hagyhat ki; `htop` `atop` az ilyen jellegű hiányosságok kijavítása közben hasonló felületeket biztosítanak.
 
 ## <a name="cpu"></a>CPU
 
@@ -119,11 +118,11 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`hasonló információkat `mpstat` nyújt, `top`valamint a processzor (r oszlop), a memória statisztikái és az egyes munkaállapotokban eltöltött CPU-idő százalékos arányának enumerálása.
+`vmstat`hasonló információkat nyújt `mpstat` , valamint a `top` processzor (r oszlop), a memória statisztikái és az egyes munkaállapotokban ELtöltött CPU-idő százalékos arányának enumerálása.
 
 ## <a name="memory"></a>Memory (Memória)
 
-A memória nagyon fontos, és szerencsére könnyen nyomon követhető az erőforrás. Egyes eszközök a PROCESSZORt és a memóriát is jelenthetik, például a következőt: `vmstat`. A gyors hibakereséshez azonban hasonló `free` eszközök is hasznosak lehetnek.
+A memória nagyon fontos, és szerencsére könnyen nyomon követhető az erőforrás. Egyes eszközök a PROCESSZORt és a memóriát is jelenthetik, például a következőt: `vmstat` . `free`A gyors hibakereséshez azonban hasonló eszközök is hasznosak lehetnek.
 
 ### <a name="free"></a>ingyenes
 
@@ -157,21 +156,21 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`mélyreható betekintést nyújt a lemez kihasználtságára. Ezt a meghívást `-x` a kibővített `-y` statisztikákhoz kell átadni, hogy kihagyják a kezdeti kimeneti `1 1` nyomtatási rendszer átlagait a rendszerindítás óta, és meg kell határozni, hogy a kimenet egy blokk után véget ér. 
+`iostat`mélyreható betekintést nyújt a lemez kihasználtságára. Ezt a meghívást `-x` a kibővített statisztikákhoz kell átadni, `-y` hogy kihagyják a kezdeti kimeneti nyomtatási rendszer átlagait a rendszerindítás óta, és `1 1` meg kell határozni, hogy a kimenet egy blokk után véget ér. 
 
 `iostat`számos hasznos statisztikát tesz elérhetővé:
 
-- `r/s``w/s` a másodpercenkénti olvasások és az írások másodpercenkénti száma. Ezeknek az értékeknek az összege IOPS.
-- `rkB/s`a `wkB/s` és a másodpercenként olvasható/írható. Ezeknek az értékeknek az összege az átviteli sebesség.
+- `r/s`a másodpercenkénti `w/s` olvasások és az írások másodpercenkénti száma. Ezeknek az értékeknek az összege IOPS.
+- `rkB/s``wkB/s`a és a másodpercenként olvasható/írható. Ezeknek az értékeknek az összege az átviteli sebesség.
 - `await`a várólistára helyezett kérelmek átlagos iowait-ideje ezredmásodpercben.
 - `avgqu-sz`a várólista átlagos mérete a megadott intervallumban.
 
 Azure-beli virtuális gépen:
 
-- az egyes blokkos eszközök összege és száma `r/s` nem haladhatja meg a lemez SKU- `w/s` korlátait.
-- az egyes blokkos eszközök összege és száma `rkB/s` nem haladhatja meg a lemez SKU- `wkB/s` korlátait
-- a `r/s` és az összes `w/s` blokkos eszköz összege nem lépheti túl a virtuális gép SKU-jának korlátait.
-- a (z `rkB/s` ) és az összes blokkos eszközhöz tartozó wkB/s összege nem lépheti túl a virtuális gép SKU-jának korlátait.
+- az `r/s` `w/s` egyes blokkos eszközök összege és száma nem haladhatja meg a lemez SKU-korlátait.
+- az `rkB/s` `wkB/s` egyes blokkos eszközök összege és száma nem haladhatja meg a lemez SKU-korlátait
+- a `r/s` és `w/s` az összes blokkos eszköz összege nem lépheti túl a virtuális gép SKU-jának korlátait.
+- a ( `rkB/s` z) és az összes blokkos eszközhöz tartozó wkB/s összege nem lépheti túl a virtuális gép SKU-jának korlátait.
 
 Vegye figyelembe, hogy az operációsrendszer-lemez a kapacitásának megfelelő legkisebb SKU felügyelt lemezének számít. Egy 1024GB operációsrendszer-lemez például egy P30-lemeznek felel meg. Az elmúló operációsrendszer-lemezek és az ideiglenes lemezek nem rendelkeznek egyedi lemezzel; ezeket csak a teljes VM-korlátok korlátozzák.
 
@@ -199,9 +198,9 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`hatékony eszköz az elemzések széles köréhez. Habár ez a példa a hálózati statisztika mérésére szolgál, egyformán hatékony a CPU és a memória használatának méréséhez. Ez a példa `sar` a `-n` jelzővel hívja meg `DEV` a (hálózati eszköz) kulcsszót, amely az eszköz hálózati átviteli sebességét jeleníti meg.
+`sar`hatékony eszköz az elemzések széles köréhez. Habár ez a példa a hálózati statisztika mérésére szolgál, egyformán hatékony a CPU és a memória használatának méréséhez. Ez a példa `sar` a `-n` jelzővel hívja meg a `DEV` (hálózati eszköz) kulcsszót, amely az eszköz hálózati átviteli sebességét jeleníti meg.
 
-- Egy adott eszköz `rxKb/s` összege `txKb/s` és teljes átviteli sebessége. Ha ez az érték meghaladja a kiépített Azure hálózati adapterek korlátját, akkor a gépen felmerülő terhelések nagyobb hálózati késést tapasztalnak.
+- `rxKb/s` `txKb/s` Egy adott eszköz összege és teljes átviteli sebessége. Ha ez az érték meghaladja a kiépített Azure hálózati adapterek korlátját, akkor a gépen felmerülő terhelések nagyobb hálózati késést tapasztalnak.
 - `%ifutil`egy adott eszköz kihasználtságának mértéke. Mivel ez az érték a 100%-ot közelíti meg, a munkaterhelések nagyobb hálózati késést tapasztalnak.
 
 ```
@@ -221,7 +220,7 @@ Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
 Average:         0.00      0.00      0.00      0.00      0.00
 ```
 
-Ez a hívás a `sar` kulcsszavakat használja `TCP,ETCP` a TCP-kapcsolatok vizsgálatához. A "retrans" utolsó sor harmadik oszlopa a TCP-újraküldések másodpercenkénti száma. A mező magas értékei megbízhatatlan hálózati kapcsolatokat jeleznek. Az első és a harmadik sorban az "Active" a helyi eszközről származik, míg a "távoli" a bejövő kapcsolatokat jelzi.  Az Azure-ban gyakran előfordul, hogy SNAT a portok kimerülése, ami `sar` segíthet az észlelésben. A SNAT-portok kimerülése magas "aktív" értékként nyilvánul meg, mivel a probléma oka a kimenő, helyileg kezdeményezett TCP-kapcsolatok magas aránya.
+Ez `sar` a hívás a kulcsszavakat használja a `TCP,ETCP` TCP-kapcsolatok vizsgálatához. A "retrans" utolsó sor harmadik oszlopa a TCP-újraküldések másodpercenkénti száma. A mező magas értékei megbízhatatlan hálózati kapcsolatokat jeleznek. Az első és a harmadik sorban az "Active" a helyi eszközről származik, míg a "távoli" a bejövő kapcsolatokat jelzi.  Az Azure-ban gyakran előfordul, hogy SNAT a portok kimerülése, ami `sar` segíthet az észlelésben. A SNAT-portok kimerülése magas "aktív" értékként nyilvánul meg, mivel a probléma oka a kimenő, helyileg kezdeményezett TCP-kapcsolatok magas aránya.
 
 Ahogy `sar` az egy intervallumot vesz igénybe, a rendszer megjeleníti a működés közbeni kimenetet, majd kinyomtatja a meghívásból származó átlagos eredményeket tartalmazó kimenet végső sorait.
 

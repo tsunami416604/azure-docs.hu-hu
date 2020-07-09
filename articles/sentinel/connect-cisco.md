@@ -1,6 +1,6 @@
 ---
 title: Cisco-adatkapcsolatok az Azure Sentinel-be | Microsoft Docs
-description: Ismerje meg, hogyan kapcsolódhat a Cisco-beli adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
+description: Ismerje meg, hogyan csatlakoztatható a Cisco ASA-berendezés az Azure Sentinelhez az irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566034"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>A Cisco ASA összekötése az Azure Sentinel-vel
 
@@ -38,7 +38,7 @@ A Cisco ASA nem támogatja a CEF, ezért a rendszer syslog-ként küldi el a nap
     - Állítsa a **portot** 514-re vagy az ügynökben beállított portra.
     - **Syslog_ip** beállítása az ügynök IP-címére.
 
-1. A Cisco-események Log Analytics vonatkozó sémájának használatához keresse a következőt `CommonSecurityLog`:.
+1. A Cisco-események Log Analytics vonatkozó sémájának használatához keresse a következőt: `CommonSecurityLog` .
 
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 

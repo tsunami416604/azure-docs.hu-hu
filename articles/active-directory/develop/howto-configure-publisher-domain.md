@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76697132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477991"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Útmutató: alkalmazás közzétevő tartományának konfigurálása
 
@@ -71,7 +71,7 @@ Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>Új tartomány ellenőrzése az alkalmazáshoz
 
-1. Hozzon létre egy `microsoft-identity-association.json` nevű fájlt, és illessze be a következő JSON-kódrészletet.
+1. Hozzon létre egy nevű fájlt `microsoft-identity-association.json` , és illessze be a következő JSON-kódrészletet.
 
    ```json
    {
@@ -85,7 +85,7 @@ Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány
 
 1. Cserélje le a *{Your-app-ID-here}* helyőrzőt az alkalmazásnak megfelelő alkalmazás-(ügyfél-) azonosítóra.
 
-1. A fájl üzemeltetése a `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`következő helyen:. Cserélje le a *{Your-Domain-ide}* helyőrzőt az ellenőrzött tartománynak megfelelően.
+1. A fájl üzemeltetése a következő helyen: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` . Cserélje le a *{Your-Domain-ide}* helyőrzőt az ellenőrzött tartománynak megfelelően.
 
 1. Kattintson a **tartomány ellenőrzése és mentése** gombra.
 
@@ -94,7 +94,7 @@ Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány
 - Ha a bérlő ellenőrizte a tartományokat, válassza ki az egyik tartományt a **Select an ellenőrzött tartomány** legördülő listából.
 
 >[!Note]
-> A várt "Content-Type" fejlécnek kell szerepelnie `application/json`. Előfordulhat, hogy az alábbihoz hasonló hibaüzenetet kap, ha mást szeretne használni`application/json; charset=utf-8` 
+> A várt "Content-Type" fejlécnek kell szerepelnie `application/json` . Előfordulhat, hogy az alábbihoz hasonló hibaüzenetet kap, ha mást szeretne használni`application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

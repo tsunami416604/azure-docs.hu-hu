@@ -4,22 +4,22 @@ description: ExpressRoute-áramkör létrehozása, kiépítése, ellenőrzése, 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aba29c46a781c8e687c79a197d37758699a9acf5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75770968"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984465"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>ExpressRoute-kapcsolatcsoport létrehozása és módosítása a PowerShell-lel
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Ellenőrizze, hogy szerepel-e a kapcsolat szolgáltatója. Jegyezze fel a következő információkat, amelyekre később szüksége lesz az áramkör létrehozásakor:
 
-* Name (Név)
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -97,27 +97,29 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 A válasz az alábbi példához hasonlóan néz ki:
 
-    Name                             : ExpressRouteARMCircuit
-    ResourceGroupName                : ExpressRouteResourceGroup
-    Location                         : westus
-    Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                         "Name": "Standard_MeteredData",
-                                         "Tier": "Standard",
-                                         "Family": "MeteredData"
-                                          }
-    CircuitProvisioningState          : Enabled
-    ServiceProviderProvisioningState  : NotProvisioned
-    ServiceProviderNotes              :
-    ServiceProviderProperties         : {
-                                          "ServiceProviderName": "Equinix",
-                                          "PeeringLocation": "Silicon Valley",
-                                          "BandwidthInMbps": 200
-                                        }
-    ServiceKey                        : **************************************
-    Peerings                          : []
+```azurepowershell
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_MeteredData",
+                                    "Tier": "Standard",
+                                    "Family": "MeteredData"
+                                    }
+CircuitProvisioningState          : Enabled
+ServiceProviderProvisioningState  : NotProvisioned
+ServiceProviderNotes              :
+ServiceProviderProperties         : {
+                                    "ServiceProviderName": "Equinix",
+                                    "PeeringLocation": "Silicon Valley",
+                                    "BandwidthInMbps": 200
+                                    }
+ServiceKey                        : **************************************
+Peerings                          : []
+```
 
 Ezeket az adatokat bármikor lekérheti a `Get-AzExpressRouteCircuit` parancsmag használatával. A hívás paraméterek nélkül való megadásával az összes áramkör szerepel. A szolgáltatási kulcs megjelenik a *serviceKey* mezőben:
 
@@ -128,27 +130,29 @@ Get-AzExpressRouteCircuit
 
 A válasz az alábbi példához hasonlóan néz ki:
 
-    Name                             : ExpressRouteARMCircuit
-    ResourceGroupName                : ExpressRouteResourceGroup
-    Location                         : westus
-    Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                         "Name": "Standard_MeteredData",
-                                         "Tier": "Standard",
-                                         "Family": "MeteredData"
-                                          }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : NotProvisioned
-    ServiceProviderNotes             :
-    ServiceProviderProperties        : {
-                                         "ServiceProviderName": "Equinix",
-                                         "PeeringLocation": "Silicon Valley",
-                                         "BandwidthInMbps": 200
-                                          }
-    ServiceKey                       : **************************************
-    Peerings                         : []
+```azurepowershell
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_MeteredData",
+                                    "Tier": "Standard",
+                                    "Family": "MeteredData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : NotProvisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "Equinix",
+                                    "PeeringLocation": "Silicon Valley",
+                                    "BandwidthInMbps": 200
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+```
 
 
 ### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. küldje el a szolgáltatási kulcsot a kapcsolat szolgáltatójának az üzembe helyezéshez
@@ -156,20 +160,26 @@ A *ServiceProviderProvisioningState* információt nyújt a szolgáltatói oldal
 
 Új ExpressRoute-kör létrehozásakor az áramkör a következő állapotban van:
 
-    ServiceProviderProvisioningState : NotProvisioned
-    CircuitProvisioningState         : Enabled
+```azurepowershell
+ServiceProviderProvisioningState : NotProvisioned
+CircuitProvisioningState         : Enabled
+```
 
 
 
 Az áramkör a következő állapotra vált, amikor a kapcsolati szolgáltató a következő állapotban van:
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
+```azurepowershell
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 Ahhoz, hogy használni tudja a ExpressRoute áramkört, a következő állapotban kell lennie:
 
-    ServiceProviderProvisioningState : Provisioned
-    CircuitProvisioningState         : Enabled
+```azurepowershell
+ServiceProviderProvisioningState : Provisioned
+CircuitProvisioningState         : Enabled
+```
 
 ### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
 Az állapot és az áramköri kulcs állapotának ellenőrzése lehetővé teszi, hogy a szolgáltató engedélyezte az áramkört. Az áramkör konfigurálása után a *ServiceProviderProvisioningState* *kiépítve*jelenik meg, ahogy az az alábbi példában is látható:
@@ -181,27 +191,29 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 A válasz az alábbi példához hasonlóan néz ki:
 
-    Name                             : ExpressRouteARMCircuit
-    ResourceGroupName                : ExpressRouteResourceGroup
-    Location                         : westus
-    Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                         "Name": "Standard_MeteredData",
-                                         "Tier": "Standard",
-                                         "Family": "MeteredData"
-                                       }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             :
-    ServiceProviderProperties        : {
-                                         "ServiceProviderName": "Equinix",
-                                         "PeeringLocation": "Silicon Valley",
-                                         "BandwidthInMbps": 200
-                                       }
-    ServiceKey                       : **************************************
-    Peerings                         : []
+```azurepowershell
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_MeteredData",
+                                    "Tier": "Standard",
+                                    "Family": "MeteredData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "Equinix",
+                                    "PeeringLocation": "Silicon Valley",
+                                    "BandwidthInMbps": 200
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+```
 
 ### <a name="7-create-your-routing-configuration"></a>7. hozza létre az útválasztási konfigurációt
 Részletes útmutatásért lásd az [ExpressRoute-áramköri útválasztási konfiguráció](expressroute-howto-routing-arm.md) című cikket az áramköri társítások létrehozásához és módosításához.
@@ -224,27 +236,29 @@ Get-AzExpressRouteCircuit
 
 A válasz a következő példához hasonló:
 
-    Name                             : ExpressRouteARMCircuit
-    ResourceGroupName                : ExpressRouteResourceGroup
-    Location                         : westus
-    Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                         "Name": "Standard_MeteredData",
-                                         "Tier": "Standard",
-                                         "Family": "MeteredData"
-                                       }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             :
-    ServiceProviderProperties        : {
-                                            "ServiceProviderName": "Equinix",
-                                            "PeeringLocation": "Silicon Valley",
-                                            "BandwidthInMbps": 200
-                                          }
-    ServiceKey                       : **************************************
-    Peerings                         : []
+```azurepowershell
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_MeteredData",
+                                    "Tier": "Standard",
+                                    "Family": "MeteredData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                        "ServiceProviderName": "Equinix",
+                                        "PeeringLocation": "Silicon Valley",
+                                        "BandwidthInMbps": 200
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+```
 
 
 Az adott ExpressRoute-áramkörre vonatkozó információk lekéréséhez adja meg az erőforráscsoport nevét és az áramkör nevét paraméterként a híváshoz:
@@ -256,27 +270,29 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 A válasz az alábbi példához hasonlóan néz ki:
 
-    Name                             : ExpressRouteARMCircuit
-    ResourceGroupName                : ExpressRouteResourceGroup
-    Location                         : westus
-    Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                         "Name": "Standard_MeteredData",
-                                            "Tier": "Standard",
-                                            "Family": "MeteredData"
-                                          }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             :
-    ServiceProviderProperties        : {
-                                         "ServiceProviderName": "Equinix",
-                                         "PeeringLocation": "Silicon Valley",
-                                         "BandwidthInMbps": 200
-                                          }
-    ServiceKey                       : **************************************
-    Peerings                         : []
+```azurepowershell
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                        "Name": "Standard_MeteredData",
+                                        "Tier": "Standard",
+                                        "Family": "MeteredData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                        "ServiceProviderName": "Equinix",
+                                        "PeeringLocation": "Silicon Valley",
+                                        "BandwidthInMbps": 200
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+```
 
 
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:

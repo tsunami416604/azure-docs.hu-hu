@@ -2,7 +2,7 @@
 title: 'Felügyelt Azure SQL-példány: hosszú távú biztonsági mentés megőrzése (PowerShell)'
 description: Megtudhatja, hogyan tárolhatja és állíthatja vissza az automatizált biztonsági mentéseket egy Azure SQL felügyelt példány különálló Azure Blob Storage-tárolójában a PowerShell használatával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -10,19 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 04/29/2020
-ms.openlocfilehash: 385a7594de48f1bcf04d79d0dcd9dfb521d4ff08
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: b628ca7f676c3eab80e11da124f4d6aa7ebd52a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708790"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Az Azure SQL felügyelt példányainak hosszú távú biztonsági mentési megőrzése (PowerShell) kezelése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az Azure SQL felügyelt példányain a [biztonsági mentés hosszú távú megőrzési](../database/long-term-retention-overview.md#managed-instance-support) szabályzatát (ltr) korlátozott nyilvános előzetes verzióként is konfigurálhatja. Ez lehetővé teszi az adatbázis biztonsági másolatainak automatikus megőrzését különálló Azure Blob Storage-tárolókban akár 10 évig. Ezt követően a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal.
+Az Azure SQL felügyelt példányain a [biztonsági mentés hosszú távú megőrzési](../database/long-term-retention-overview.md#sql-managed-instance-support) szabályzatát (ltr) korlátozott nyilvános előzetes verzióként is konfigurálhatja. Ez lehetővé teszi az adatbázis biztonsági másolatainak automatikus megőrzését különálló Azure Blob Storage-tárolókban akár 10 évig. Ezt követően a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal.
 
    > [!IMPORTANT]
    > A felügyelt példányok LTR jelenleg korlátozott előzetes verzióban érhető el, és az EA-és CSP-előfizetések esetében eseti alapon érhető el. A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/). A probléma típusa beállításnál válassza a technikai probléma, SQL Database felügyelt példány lehetőséget, majd a probléma típusa beállításnál válassza a **biztonsági mentés, visszaállítás és Üzletmenet-folytonosság/hosszú távú biztonsági mentés**lehetőséget. A kérelemben adja meg, hogy a felügyelt példányhoz tartozó LTR korlátozott nyilvános előzetes verziójával szeretne-e regisztrálni.

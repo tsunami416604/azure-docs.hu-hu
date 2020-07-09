@@ -1,22 +1,20 @@
 ---
-title: Azure Firewall konfigurációk migrálása Azure Firewall szabályzatba (előzetes verzió) a PowerShell használatával
-description: Megtudhatja, hogyan telepíthet át Azure Firewall konfigurációkat Azure Firewall házirendbe (előzetes verzió)
+title: Azure Firewall konfigurációk migrálása Azure Firewall házirendre a PowerShell használatával
+description: Megtudhatja, hogyan telepíthet át Azure Firewall konfigurációkat Azure Firewall házirendre
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601326"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Azure Firewall konfigurációk migrálása Azure Firewall szabályzatba (előzetes verzió) a PowerShell használatával
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>Azure Firewall konfigurációk migrálása Azure Firewall házirendre a PowerShell használatával
 
 Egy Azure PowerShell parancsfájl használatával áttelepítheti a meglévő Azure Firewall-konfigurációkat egy Azure Firewall házirend-erőforrásba. Ezután a Azure Firewall Manager használatával telepítheti a szabályzatot.
 
@@ -161,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>További lépések
 
-További információ a Azure Firewall Manager telepítéséről: [Azure Firewall Manager előzetes verziójának üzembe helyezésének áttekintése](deployment-overview.md).
+További információ a Azure Firewall Manager üzembe helyezéséről: [Azure Firewall Manager üzembe helyezésének áttekintése](deployment-overview.md).

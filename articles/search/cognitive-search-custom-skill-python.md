@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604694"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
 
@@ -41,7 +41,7 @@ Ez a példa egy Azure-függvényt használ a webes API-k üzemeltetésére, de m
 
 A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Create new project...`a következőt:.
+1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create new project...` .
 
 1. Válasszon egy címtárbeli helyet a projekt munkaterülethez, és válassza a **kiválasztás**lehetőséget.
 
@@ -57,7 +57,7 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 
 A Visual Studio Code létrehozza a függvényalkalmazást egy új munkaterületen. Ez a projekt a [host.json](../azure-functions/functions-host-json.md) és a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) konfigurációs fájlokat tartalmazza, valamint az esetleges nyelvspecifikus projektfájlokat is. 
 
-A Function app projekt **összefűzési** mappájába egy új, http-triggerrel aktivált függvény is létrejön. Ebben a tartalomban a "\_\_init__. a" nevű fájl lesz:
+A Function app projekt **összefűzési** mappájába egy új, http-triggerrel aktivált függvény is létrejön. \_ \_ Ebben a tartalomban a "init__. a" nevű fájl lesz:
 
 ```py
 import logging
@@ -207,7 +207,7 @@ Most, hogy rendelkezik az alapértelmezett gazdagép kulccsal, tesztelje a függ
 POST [Function URL you copied above]
 ```
 
-### <a name="request-body"></a>A kérelem törzse
+### <a name="request-body"></a>Kérelem törzse
 ```json
 {
     "values": [
@@ -231,7 +231,7 @@ Ebben a példában ugyanazt az eredményt kell megadnia, amelyet korábban a fü
 
 ## <a name="connect-to-your-pipeline"></a>Kapcsolódás a folyamathoz
 
-Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a készségkészlet. Az alábbi példa azt mutatja be, hogyan hívhatja meg a képességet, hogy összefűzse a dokumentum címét és szerzőjét egyetlen olyan mezőbe, amelyet merged_title_author hívunk meg. Cserélje `[your-function-url-here]` le az címet az új Azure-függvény URL-címére.
+Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a készségkészlet. Az alábbi példa azt mutatja be, hogyan hívhatja meg a képességet, hogy összefűzse a dokumentum címét és szerzőjét egyetlen olyan mezőbe, amelyet merged_title_author hívunk meg. Cserélje le az `[your-function-url-here]` címet az új Azure-függvény URL-címére.
 
 ```json
 {

@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850930"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -51,26 +51,32 @@ A felhasználókat kétféleképpen rendelheti hozzá felügyeleti egységekhez.
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```powershell
+$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
+Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```
 
 A fenti példában az Add-AzureADAdministrativeUnitMember parancsmag használatával lehet hozzáadni a felhasználót a felügyeleti egységhez. Annak a felügyeleti egységnek az azonosítója, amelyhez a felhasználót hozzá kívánja adni, valamint a hozzáadni kívánt felhasználó objektumazonosító argumentumként. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{Admin Unit id}/members/$ref
-    Request body
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
-    }
+```http
+Http request
+POST /administrativeUnits/{Admin Unit id}/members/$ref
+Request body
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+}
+```
 
 Példa:
 
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
-    }
+```http
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+}
+```
 
 ## <a name="list-administrative-units-for-a-user"></a>Felhasználók felügyeleti egységeinek listázása
 
@@ -86,27 +92,33 @@ A bal oldali panelen válassza a **felügyeleti egységek** lehetőséget, hogy 
 
 ### <a name="powershell"></a>PowerShell
 
-    Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```powershell
+Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```http
+https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```
 
 ## <a name="remove-a-single-user-from-an-au"></a>Egyetlen felhasználó eltávolítása egy AU-ból
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A felhasználókat kétféleképpen lehet eltávolítani egy felügyeleti egységből. A Azure Portal megnyithatja a felhasználó profilját az **Azure ad** > -**felhasználók**lehetőséggel. Válassza ki a felhasználót a felhasználó profiljának megnyitásához. Válassza ki azt a felügyeleti egységet, amelyről el szeretné távolítani a felhasználót, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
+A felhasználókat kétféleképpen lehet eltávolítani egy felügyeleti egységből. A Azure Portal megnyithatja a felhasználó profilját az **Azure ad**-  >  **felhasználók**lehetőséggel. Válassza ki a felhasználót a felhasználó profiljának megnyitásához. Válassza ki azt a felügyeleti egységet, amelyről el szeretné távolítani a felhasználót, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
 
 ![Felhasználó eltávolítása felügyeleti egységből a felhasználói profilból](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-Egy felhasználót az **Azure ad** > **felügyeleti egységekben** is eltávolíthat, ha kiválasztja azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználókat. Válassza ki a felhasználót, és válassza a **tag eltávolítása**lehetőséget.
+Egy felhasználót az **Azure ad**  >  **felügyeleti egységekben** is eltávolíthat, ha kiválasztja azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználókat. Válassza ki a felhasználót, és válassza a **tag eltávolítása**lehetőséget.
   
 ![Felhasználó eltávolítása a felügyeleti egység szintjén](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 
 ### <a name="powershell"></a>PowerShell
 
-    Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```powershell
+Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

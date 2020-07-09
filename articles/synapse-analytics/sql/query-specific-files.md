@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478416"
 ---
 # <a name="using-file-metadata-in-queries"></a>Fájl metaadatainak használata a lekérdezésekben
 
@@ -22,7 +22,7 @@ Az SQL igény szerinti lekérdezési szolgáltatása több fájlt és mappát is
 
 Előfordulhat, hogy tudnia kell, hogy melyik fájl-vagy mappa-forrás korrelál az eredményhalmaz egy adott sorával.
 
-Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fájlneveket és/vagy az elérési utat az eredményhalmazban. Vagy használhatja őket az adatszűréshez a fájlnév és/vagy a mappa elérési útja alapján. Ezeket a függvényeket a szintaxis szakasz [filename függvénye](develop-storage-files-overview.md#filename-function) és a [filepath függvény](develop-storage-files-overview.md#filepath-function)ismerteti. Alább rövid leírásokat talál a minták mentén.
+Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fájlneveket és/vagy az elérési utat az eredményhalmazban. Vagy használhatja őket az adatszűréshez a fájlnév és/vagy a mappa elérési útja alapján. Ezeket a függvényeket a szintaxis szakasz [filename függvénye](query-data-storage.md#filename-function) és a [filepath függvény](query-data-storage.md#filepath-function)ismerteti. Alább rövid leírásokat talál a minták mentén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594729"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
@@ -114,11 +114,11 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | dátum |
 | közzétevő | Microsoft. számítás. bővítmények | sztring |
-| type | CustomScript | sztring |
+| típus | CustomScript | sztring |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | tömb |
-| commandToExecute (például) | Python- \<MyPythonScript.py My-param1> | sztring |
-| szkriptet. | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
+| commandToExecute (például) | Python-MyPythonScript.py\<my-param1> | sztring |
+| parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
 | skipDos2Unix (például) | hamis | logikai |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
 | storageAccountName (például) | examplestorageacct | sztring |
@@ -132,7 +132,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 * `commandToExecute`: (**kötelező** , ha a parancsfájl nincs beállítva, string) a beléptetési pont parancsfájlját a végrehajtáshoz. Ezt a mezőt használja helyette, ha a parancs titkos kódokat, például jelszavakat tartalmaz.
 * `script`: (**kötelező** , ha a commandToExecute nincs beállítva, string) a/bin/sh. által végrehajtott Base64 kódolású (és opcionálisan gzip'ed) parancsfájlt
 * `fileUris`: (opcionális, karakterlánc-tömb) a letölteni kívánt fájl (ok) URL-címei.
-* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, `fileUris` az összes URL-címet az Azure-Blobok számára kell megadni.
+* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, az összes `fileUris` URL-címet az Azure-Blobok számára kell megadni.
 * `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
 * `managedIdentity`: (nem kötelező, JSON-objektum) a fájl (ok) letöltésének [felügyelt identitása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
   * `clientId`: (nem kötelező, karakterlánc) a felügyelt identitás ügyfél-azonosítója
@@ -152,10 +152,10 @@ A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a vi
 
 Az alapértelmezett érték false (hamis), ami azt jelenti **, hogy a dos2unix konverziót** hajt végre.
 
-A CustomScript (Microsoft. OSTCExtensions. CustomScriptForLinux) előző verziója automatikusan átalakítja a DOS-fájlokat a UNIX-fájlokba a `\r\n` következőre való `\n`fordítással:. Ez a fordítás továbbra is létezik, és alapértelmezés szerint be van kapcsolva. Ez a konverzió a fileUris-ből letöltött összes fájlra vagy a parancsfájl-beállításra vonatkozik a következő feltételek bármelyike alapján.
+A CustomScript (Microsoft. OSTCExtensions. CustomScriptForLinux) előző verziója automatikusan átalakítja a DOS-fájlokat a UNIX-fájlokba a következőre való fordítással: `\r\n` `\n` . Ez a fordítás továbbra is létezik, és alapértelmezés szerint be van kapcsolva. Ez a konverzió a fileUris-ből letöltött összes fájlra vagy a parancsfájl-beállításra vonatkozik a következő feltételek bármelyike alapján.
 
-* Ha a bővítmény `.sh`a, `.txt` `.py`,, vagy `.pl` az egyike, akkor a rendszer konvertálja. A parancsfájl-beállítás mindig megfelel ennek a feltételnek, mert feltételezi, hogy egy/bin/sh-vel futtatott parancsfájl, és a virtuális gép script.sh mentve lesz.
-* Ha a fájl elindul `#!`.
+* Ha a bővítmény a,,, vagy az egyike, akkor a `.sh` `.txt` `.py` `.pl` rendszer konvertálja. A parancsfájl-beállítás mindig megfelel ennek a feltételnek, mert feltételezi, hogy egy/bin/sh-vel futtatott parancsfájl, és a virtuális gép script.sh mentve lesz.
+* Ha a fájl elindul `#!` .
 
 A dos2unix-konverzió kihagyható úgy, hogy a skipDos2Unix értéke TRUE (igaz) értékre van állítva.
 
@@ -379,7 +379,7 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete is ebbe a könyvtárba kerül a `stdout` és `stderr` a fájlokba.
+Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete is ebbe a könyvtárba kerül a `stdout` és a `stderr` fájlokba.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
@@ -448,7 +448,7 @@ Itt láthatja:
 * A kiterjesztés fájljának letöltése és eredménye.
 * A futtatandó parancs és az eredmény.
 
-Lekérheti az egyéni szkriptek bővítményének végrehajtási állapotát is, beleértve az Azure CLI használatával átadott `commandToExecute` tényleges argumentumokat:
+Lekérheti az egyéni szkriptek bővítményének végrehajtási állapotát is, beleértve az Azure CLI használatával átadott tényleges argumentumokat `commandToExecute` :
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM

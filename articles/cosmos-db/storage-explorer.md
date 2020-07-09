@@ -3,16 +3,16 @@ title: Azure Cosmos DB erőforrások kezelése a Azure Storage Explorer használ
 description: Megtudhatja, hogyan csatlakozhat a Azure Cosmos DBhoz, és hogyan kezelheti erőforrásait Azure Storage Explorer használatával.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a43e49ab29780e718139b677b780443e5e31e2ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262242"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
@@ -31,23 +31,23 @@ Az Azure Storage Explorer legújabb elemei innen telepíthetők: [Azure Storage 
 
 1. Az **Azure Storage Explorer** telepítését követően kattintson a bal oldali **beépülő modul** ikonra, ahogy az alábbi képen is látható:
 
-   ![Beépülő modul ikon](./media/storage-explorer/plug-in-icon.png)
+   :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="Beépülő modul ikon":::
 
 2. Válassza az **Azure-fiók hozzáadása** elemet, majd kattintson a **Bejelentkezés** gombra.
 
-   ![Csatlakozás Azure-előfizetéshez](./media/storage-explorer/connect-to-azure-subscription.png)
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="Csatlakozás Azure-előfizetéshez":::
 
 2. Az **Azure bejelentkezési** párbeszédpanelen válassza a **Bejelentkezés** elemet, majd adja meg Azure hitelesítő adatait.
 
-    ![Bejelentkezés](./media/storage-explorer/sign-in.png)
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Bejelentkezés":::
 
 3. Válassza ki az előfizetést a listából, majd kattintson az **Alkalmaz** gombra.
 
-    ![Alkalmaz](./media/storage-explorer/apply-subscription.png)
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="Alkalmazása":::
 
     Az Explorer panel frissül, és megjeleníti a kiválasztott előfizetéshez tartozó fiókokat.
 
-    ![Fióklista](./media/storage-explorer/account-list.png)
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="Fióklista":::
 
     Sikeresen csatlakoztatta a **Cosmos DB-fiókot** az Azure-előfizetéshez.
 
@@ -57,11 +57,11 @@ Az Azure Cosmos DB-hez történő csatlakozás másik módja a kapcsolati sztrin
 
 1. Keresse meg a **Helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal a **Cosmos DB-fiókok** elemre, majd válassza a **Csatlakozás a Cosmos DB-hez…** lehetőséget.
 
-    ![Csatlakozás a Cosmos DB-hez kapcsolati sztringgel](./media/storage-explorer/connect-to-db-by-connection-string.png)
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Csatlakozás a Cosmos DB-hez kapcsolati sztringgel":::
 
 2. Egyelőre csak az SQL és a Table API-t támogatja. Válassza ki az API-t, illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. Az elsődleges kapcsolatok karakterláncának beolvasásával kapcsolatos információkért lásd: [a kapcsolatok karakterláncának](manage-with-powershell.md#list-keys)beolvasása.
 
-    ![Kapcsolati karakterlánc](./media/storage-explorer/connection-string.png)
+    :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Kapcsolatok – karakterlánc":::
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Csatlakozás az Azure Cosmos DB-hez helyi emulátorral
 
@@ -71,11 +71,11 @@ A következő lépésekkel csatlakozhat az Azure Cosmos DB-hez az Emulator haszn
 
 2. Keresse meg a **Helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal a **Cosmos DB-fiókok** elemre, majd válassza a **Csatlakozás a Cosmos DB Emulatorhoz…** lehetőséget.
 
-    ![Csatlakozás a Cosmos DB-hez az Emulatorral](./media/storage-explorer/emulator-entry.png)
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Csatlakozás a Cosmos DB-hez az Emulatorral":::
 
 3. Egyelőre csak az SQL API-t támogatja. Illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. Az elsődleges kapcsolatok karakterláncának beolvasásával kapcsolatos információkért lásd: [a kapcsolatok karakterláncának](manage-with-powershell.md#list-keys)beolvasása.
 
-    ![Csatlakozás a Cosmos DB-hez az Emulatorral párbeszédpanel](./media/storage-explorer/emulator-dialog.png)
+    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="Csatlakozás a Cosmos DB-hez az Emulatorral párbeszédpanel":::
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Az Azure Cosmos DB-erőforrások kezelése
@@ -95,52 +95,52 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 * Kattintson a jobb gombbal egy Azure Cosmos DB-fiókra vagy -adatbázisra, majd a **Megnyitás a portálon** lehetőség kiválasztásával kezelheti az erőforrást a böngészőben az Azure Portalon.
 
-     ![Megnyitás a portálon](./media/storage-explorer/open-in-portal.png)
+     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Megnyitás a portálon":::
 
 * Emellett Azure Cosmos DB-fiókot, -adatbázist és -gyűjteményt is hozzáadhat a **gyorselérési** eszköztárhoz.
 * A **Keresés innen** funkció lehetővé teszi a kulcsszavaknak a kijelölt útvonalon történő keresését.
 
-    ![keresés innen:](./media/storage-explorer/search-from-here.png)
+    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="keresés innen:":::
 
 ### <a name="database-and-collection-management"></a>Adatbázisok és gyűjtemények kezelése
 #### <a name="create-a-database"></a>Adatbázis létrehozása
 -   Kattintson a jobb gombbal az Azure Cosmos DB-fiókra, válassza az **Adatbázis létrehozása** elemet, adja meg az adatbázis nevét, majd a befejezéshez nyomja le az **Enter** billentyűt.
 
-    ![Adatbázis létrehozása](./media/storage-explorer/create-database.png)
+    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Adatbázis létrehozása":::
 
 #### <a name="delete-a-database"></a>Adatbázis törlése
 - Kattintson a jobb gombbal az adatbázisra, kattintson az **Adatbázis törlése** elemre, majd kattintson az **Igen** gombra a felugró ablakban. A rendszer törli az adatbázis-csomópontot, és automatikusan frissíti az Azure Cosmos DB-fiókot.
 
-    ![1. adatbázis törlése](./media/storage-explorer/delete-database1.png)
+    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="1. adatbázis törlése":::
 
-    ![2. adatbázis törlése](./media/storage-explorer/delete-database2.png)
+    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="2. adatbázis törlése":::
 
 #### <a name="create-a-collection"></a>Gyűjtemény létrehozása
 1. Kattintson a jobb gombbal az adatbázisra, válassza a **gyűjtemény létrehozása**lehetőséget, majd adja meg a következő információkat, például a **gyűjtemény azonosítóját**, a **tárolási kapacitást**stb. A befejezéshez kattintson **az OK** gombra.
 
-    ![1. gyűjtemény létrehozása](./media/storage-explorer/create-collection.png)
+    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="1. gyűjtemény létrehozása":::
 
-    ![2. gyűjtemény létrehozása](./media/storage-explorer/create-collection2.png)
+    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="2. gyűjtemény létrehozása":::
 
 2. Válassza a **Korlátlan** lehetőséget, hogy megadhassa a partíciókulcsot, majd kattintson az **OK** gombra.
 
     Ha partíciókulcsot használt a gyűjtemény létrehozásakor, akkor a létrehozást követően a partíciókulcs értéke nem módosítható a gyűjteményben.
 
-    ![Partíciókulcs](./media/storage-explorer/partitionkey.png)
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="Partíciókulcs":::
 
 #### <a name="delete-a-collection"></a>Gyűjtemény törlése
 - Kattintson a jobb gombbal a gyűjteményre, kattintson a **Gyűjtemény törlése** elemre, majd kattintson az **Igen** gombra a felugró ablakban.
 
     A rendszer törli a gyűjteménycsomópontot, és automatikusan frissíti az adatbázist.
 
-    ![Gyűjtemény törlése](./media/storage-explorer/delete-collection.png)
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="Gyűjtemény törlése":::
 
 ### <a name="document-management"></a>Dokumentumok kezelése
 
 #### <a name="create-and-modify-documents"></a>Dokumentumok létrehozása és módosítása
 - Új dokumentum létrehozásához kattintson a bal oldali ablakban található **Dokumentumok** elemre, kattintson az **Új dokumentum létrehozása** lehetőségre, szerkessze a tartalmakat a jobb oldali ablaktáblában, majd kattintson a **Mentés** gombra. Frissíthet meglévő dokumentumot is, amelyet a **Mentés** gombra kattintva menthet. A módosítások elvetéséhez kattintson az **Elvetés** gombra.
 
-    ![Dokumentum](./media/storage-explorer/document.png)
+    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Dokumentum":::
 
 #### <a name="delete-a-document"></a>Dokumentum törlése
 - Kattintson a **Törlés** gombra a kijelölt dokumentum törléséhez.
@@ -148,7 +148,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 #### <a name="query-for-documents"></a>Dokumentumok lekérdezése
 - Szerkessze a dokumentumszűrőt egy [SQL-lekérdezés](how-to-sql-query.md) beírásával, majd kattintson az **Alkalmaz** gombra.
 
-    ![Dokumentumszűrő](./media/storage-explorer/document-filter.png)
+    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Dokumentumszűrő":::
 
 
 
@@ -158,7 +158,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 1. Új csúcspont létrehozásához nyissa meg a bal oldali ablakban található **Gráf** elemet, kattintson az **Új csúcspont** lehetőségre, szerkessze a tartalmakat, majd kattintson az **OK** gombra.
 2. Meglévő csúcspont módosításához kattintson a jobb oldali panelen látható toll ikonra.
 
-    ![Graph](./media/storage-explorer/vertex.png)
+    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Gráf":::
 
 #### <a name="delete-a-graph"></a>Gráf törlése
 - Csúcspont törléséhez kattintson a csúcspont neve mellet látható lomtár ikonra.
@@ -166,7 +166,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 #### <a name="filter-for-graph"></a>Gráfok szűrése
 - Szerkessze a gráfszűrőt egy [gremlin-lekérdezés](gremlin-support.md) megadásával, majd kattintson a **Szűrő alkalmazása** gombra.
 
-    ![Gráfszűrő](./media/storage-explorer/graph-filter.png)
+    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Gráfszűrő":::
 
 ### <a name="table-management"></a>Táblák kezelése
 
@@ -174,29 +174,29 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 1. Új tábla létrehozásához nyissa meg a bal oldali ablakban található **Entitások** elemet, kattintson a **Hozzáadás** gombra, szerkessze az **Entitás hozzáadása** párbeszédpanel tartalmát, adjon hozzá tulajdonságokat a **Tulajdonság hozzáadása** gombra kattintva, végül kattintson a **Beszúrás** elemre.
 2. Egy tábla módosításához kattintson a **Szerkesztés** gombra, módosítsa a tartalmakat, majd kattintson a **Frissítés** elemre.
 
-    ![Tábla](./media/storage-explorer/table.png)
+    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tábla":::
 
 #### <a name="import-and-export-table"></a>Táblák importálása és exportálása
 1. Az importáláshoz kattintson az **Importálás** gombra, és válasszon ki egy meglévő táblát.
 2. Az exportáláshoz kattintson az **Exportálás** gombra, és válasszon egy célhelyet.
 
-    ![Tábla importálása és exportálása](./media/storage-explorer/table-import-export.png)
+    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tábla importálása és exportálása":::
 
 #### <a name="delete-entities"></a>Entitások törlése
 - Jelölje ki az entitásokat, majd kattintson a **Törlés** gombra.
 
-    ![Tábla törlése](./media/storage-explorer/table-delete.png)
+    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Tábla törlése":::
 
 #### <a name="query-table"></a>Táblák lekérdezése
 - Kattintson a **Lekérdezés** gombra, adja meg a lekérdezés feltételeit, majd kattintson a **Lekérdezés végrehajtása** gombra. Zárja be a Lekérdezés panelt a **Lekérdezés bezárása** gombbal.
 
-    ![Tábla lekérdezése](./media/storage-explorer/table-query.png)
+    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Tábla lekérdezése":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Tárolt eljárások, eseményindítók és felhasználói függvények kezelése
 * Tárolt eljárás létrehozásához kattintson a jobb gombbal a bal oldali fában található **Tárolt eljárás** elemre, válassza a **Tárolt eljárás létrehozása** lehetőségre, adjon meg egy nevet a bal oldalon, írja be a tárolt eljárás szkriptjeit a jobb oldali ablakban, majd kattintson a **Létrehozás** gombra.
 * Meglévő tárolt eljárás szerkesztéséhez kattintson duplán az eljárásra, végezze el a frissítést, majd kattintson a **Frissítés** gombra a mentéshez, vagy kattintson az **Elvetés** gombra a módosítások visszavonásához.
 
-    ![Tárolt eljárás](./media/storage-explorer/stored-procedure.png)
+    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Tárolt eljárás":::
 * A **Triggerekhez** és **Felhasználói függvényekhez** használható műveletek hasonlóak a **Tárolt eljárások** esetében használhatókhoz.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -228,7 +228,7 @@ Amikor a Storage Explorer egy ilyen „önaláírt tanúsítványt” észlel, o
 3. Hajtsa végre az `s_client -showcerts -connect microsoft.com:443` parancsot.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem tudja biztosan, melyik tanúsítvány önaláírt, akkor figyeljen arra, hogy melyiknél azonos a tárgy („s:”) és a kiállító („i:”).
 5.  Ha talált önaláírt tanúsítványokat, másolja ki egyenként a tartalmukat a **---BEGIN CERTIFICATE---** sorral kezdve és az **---END CERTIFICATE---** sorral bezárólag egy-egy új .cer fájlba.
-6.  Nyissa meg Storage Explorer, majd lépjen az**SSL-tanúsítványok** > **importálása tanúsítványok importálása** **menüpontra** > . A fájlkeresővel keresse meg és nyissa meg a létrehozott .cer-fájlokat.
+6.  Nyissa meg Storage Explorer, majd **Edit**lépjen az  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok importálása**menüpontra. A fájlkeresővel keresse meg és nyissa meg a létrehozott .cer-fájlokat.
 
 Ha a fenti lépésekkel nem talál önaláírt tanúsítványokat, küldjön visszajelzést, hogy további segítséget kapjon.
 
@@ -246,7 +246,7 @@ Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett:
   - .extaccounts
 - Tartsa figyelemmel, hogy a fejlesztői eszközök konzolján (F12) nem jelennek-e meg hibaüzenetek.
 
-![konzol](./media/storage-explorer/console.png)
+:::image type="content" source="./media/storage-explorer/console.png" alt-text="konzol":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>A hitelesítési oldalt nem sikerül megjeleníteni
 
@@ -279,19 +279,19 @@ A bal oldali fában nem listázhatók az Azure Cosmos DB-csomópontok, amikor ht
 
 A rendszer nem reagál arra, ha a bal oldali fában a „Helyi és csatolt” csomópont alatti „Fejlesztés” csomópontra kattintunk.  Ennek így is kell lennie. Az Azure Cosmos DB helyi emulátora csak a következő kiadástól lesz támogatott.
 
-![Fejlesztési csomópont](./media/storage-explorer/development.png)
+:::image type="content" source="./media/storage-explorer/development.png" alt-text="Fejlesztési csomópont":::
 
 ### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>Nem sikerül csatolni az Azure Cosmos DB-fiókot a „Helyi és csatolt” csomópont alatt
 
 Ha az alábbi hibát látja, amikor csatolni próbál egy Azure Cosmos DB-fiókot a „Helyi és csatolt” csomópont alatt, akkor ellenőrizze, hogy a használt kapcsolati sztring megfelelő-e.
 
-![Azure Cosmos DB csatolása a „Helyi és csatolt” csomópont alatt sikertelen](./media/storage-explorer/attached-error.png)
+:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="Azure Cosmos DB csatolása a „Helyi és csatolt” csomópont alatt sikertelen":::
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Azure Cosmos DB-csomópont kibontása sikertelen
 
 Az alábbi hibával találkozhat, amikor megpróbálja kibontani a bal oldali fa csomópontjait.
 
-![Kibontási hiba](./media/storage-explorer/expand-error.png)
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="Kibontási hiba":::
 
 Próbálkozzon a következőkkel:
 
@@ -300,7 +300,7 @@ Próbálkozzon a következőkkel:
 
 ## <a name="contact-us"></a>Kapcsolat
 
-Ha a megoldások egyike sem működik Önnek, küldjön e-mailt az Azure Cosmos DB fejlesztői szerszámozási[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)csapatának () a probléma részleteiről, a problémák elhárításához.
+Ha a megoldások egyike sem működik Önnek, küldjön e-mailt az Azure Cosmos DB fejlesztői szerszámozási csapatának ( [cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com) ) a probléma részleteiről, a problémák elhárításához.
 
 ## <a name="next-steps"></a>További lépések
 

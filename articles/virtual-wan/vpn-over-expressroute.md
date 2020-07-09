@@ -4,15 +4,15 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azu
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059302"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749598"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz
 
@@ -140,7 +140,7 @@ Az eszköz konfigurációs fájlja a helyszíni VPN-eszköz konfigurálásakor h
            ```
            "ConnectedSubnets":["10.51.231.0/24"]
             ```
-    * A virtuális központ VPN-átjárójának IP-címei. Mivel a VPN-átjáró minden kapcsolata két alagútból áll az aktív-aktív konfigurációban, a fájlban felsorolt IP-címeket is látni fogja. Ebben a példában az egyes `Instance0` helyekhez `Instance1` és a nyilvános IP-címek helyett magánhálózati IP-címekre van szükség.<br>Példa:
+    * A virtuális központ VPN-átjárójának IP-címei. Mivel a VPN-átjáró minden kapcsolata két alagútból áll az aktív-aktív konfigurációban, a fájlban felsorolt IP-címeket is látni fogja. Ebben a példában az `Instance0` `Instance1` egyes helyekhez és a nyilvános IP-címek helyett magánhálózati IP-címekre van szükség.<br>Példa:
            ``` 
            "Instance0":"10.51.230.4"
            "Instance1":"10.51.230.5"
@@ -231,7 +231,7 @@ Hozzon létre egy kapcsolatot az Azure-beli virtuális gép (VM) és egy távoli
 
 ## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. erőforrások törlése
 
-Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. Futtassa a következő PowerShell-parancsot, és `myResourceGroup` cserélje le az erőforráscsoport nevére:
+Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. Futtassa a következő PowerShell-parancsot, és cserélje le az `myResourceGroup` erőforráscsoport nevére:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

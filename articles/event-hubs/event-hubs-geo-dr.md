@@ -1,24 +1,14 @@
 ---
 title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft Docs
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: 47e3a27ba9c0b7995f45f38ae4e19941cb4f8c01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320546"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rendelkezésre állási zónák](../availability-zones/az-overview.md) ) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás egy másik régióban vagy adatközpontban is működjön. Így a *geo-* vész-helyreállítás és a *geo-replikáció* minden vállalat számára fontos funkció. Az Azure Event Hubs a Geo-vész-helyreállítást és a Geo-replikációt is támogatja a névtér szintjén. 
@@ -55,10 +45,10 @@ Az elsődleges és a másodlagos névterek következő kombinációi támogatott
 
 | Elsődleges névtér | Másodlagos névtér | Támogatott | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Igen | 
-| Standard | Dedikált | Igen | 
-| Dedikált | Dedikált | Igen | 
-| Dedikált | Standard | Nem | 
+| Standard | Standard | Yes | 
+| Standard | Dedikált | Yes | 
+| Dedikált | Dedikált | Yes | 
+| Dedikált | Standard | No | 
 
 > [!NOTE]
 > Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 

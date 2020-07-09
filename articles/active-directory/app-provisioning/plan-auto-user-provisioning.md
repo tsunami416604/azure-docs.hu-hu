@@ -2,21 +2,20 @@
 title: A felhasználók automatikus üzembe helyezésének megtervezése a Azure Active Directory
 description: Útmutató az automatikus felhasználó-kiépítés tervezéséhez és végrehajtásához
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781633"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -66,7 +65,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| További források| Hivatkozás és leírás |
+| Erőforrások| Hivatkozás és leírás |
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -217,7 +216,7 @@ Az üzembe helyezés utáni problémák csökkentése érdekében vegye figyelem
 
 * Előfordulhat, hogy az alkalmazásoknak olyan konkrét korlátozásokkal és/vagy követelményekkel kell rendelkezniük, amelyeknek teljesülniük kell a felhasználók megfelelő működéséhez. A Slack például bizonyos attribútumok értékeit csonkolja. Az egyes alkalmazásokra vonatkozó [automatikus felhasználói üzembe helyezési oktatóanyagokat](../saas-apps/tutorial-list.md) itt találja.
 
-* Erősítse meg a séma konzisztenciáját a forrás-és a célszámítógépeken. Gyakori problémák például az egyszerű felhasználónév vagy a levelezés nem megfelelő attribútumokat tartalmaznak. Például az Azure AD-beli UPN-t *john_smith@contoso.com* az alkalmazásban és az alkalmazásban *jsmith@contoso.com*is megadhatja. További információ: a [felhasználói és a csoport sémájának referenciája](../app-provisioning/use-scim-to-provision-users-and-groups.md).
+* Erősítse meg a séma konzisztenciáját a forrás-és a célszámítógépeken. Gyakori problémák például az egyszerű felhasználónév vagy a levelezés nem megfelelő attribútumokat tartalmaznak. Például az Azure AD-beli UPN-t *john_smith@contoso.com* az alkalmazásban és az alkalmazásban is megadhatja *jsmith@contoso.com* . További információ: a [felhasználói és a csoport sémájának referenciája](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>A tesztelés és a biztonság tervezése
 
@@ -318,7 +317,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Erőforrások
 
 * [Termékkel kapcsolatos visszajelzés küldése](https://feedback.azure.com/forums/169401-azure-active-directory)
 

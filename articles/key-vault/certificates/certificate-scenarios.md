@@ -3,19 +3,17 @@ title: Bevezetés a Key Vault-tanúsítványok használatába
 description: A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84765097"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Bevezetés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -97,13 +95,19 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
 -   A felhasználó szerkesztheti a szabályzatot is, amely az importálás időpontjában működik, de olyan alapértékeket tartalmaz, amelyekben nincs megadva információ az importáláskor. Pl. nincs kiállítói információ  
 
 ### <a name="formats-of-import-we-support"></a>A támogatott importálási formátumok
+A Azure Key Vault támogatja a. PEM és a. pfx tanúsítványfájl-tanúsítványokat a tanúsítványok Key vaultba történő importálásához.
 A következő típusú importálási típust támogatjuk a PEM-fájlformátum esetében:. Egyetlen PEM-kódolású tanúsítvány, valamint egy PKCS # 8 kódolt, titkosítatlan kulcs, amely a következőkkel rendelkezik
 
 -----A TANÚSÍTVÁNY----------A ZÁRÓ TANÚSÍTVÁNY MEGKEZDÉSE-----
 
 -----A TITKOS KULCS MEGKEZDÉSE----------A TITKOS KULCS BEFEJEZÉSE-----
 
-A tanúsítvány egyesítése során 2 PEM-alapú formátumot támogatunk. Egyesítheti egyetlen PKCS # 8 kódolású tanúsítványt vagy egy Base64 kódolású P7B-fájlt. -----A TANÚSÍTVÁNY----------A ZÁRÓ TANÚSÍTVÁNY MEGKEZDÉSE-----
+A tanúsítvány importálásakor győződjön meg arról, hogy a kulcs maga is szerepel a fájlban. Ha a titkos kulccsal külön formátumban van, akkor a kulcsot össze kell kapcsolni a tanúsítvánnyal. Egyes hitelesítésszolgáltatók különböző formátumú tanúsítványokat biztosítanak, ezért a tanúsítvány importálása előtt győződjön meg arról, hogy azok a. PEM vagy a. pfx formátumban vannak. 
+
+### <a name="formats-of-merge-csr-we-support"></a>Az összevont CSR-ket támogató formátumok
+A AKV 2 PEM-alapú formátumot támogat. Egyesítheti az egyetlen PKCS # 8 kódolású tanúsítványt vagy egy Base64 kódolású P7B (a CA által aláírt tanúsítványok láncát). 
+
+-----A TANÚSÍTVÁNY----------A ZÁRÓ TANÚSÍTVÁNY MEGKEZDÉSE-----
 
 Jelenleg nem támogatottak az EC-kulcsok PEM formátumban.
 
@@ -123,4 +127,3 @@ Jelenleg nem támogatottak az EC-kulcsok PEM formátumban.
   (4) – a kiválasztott HITELESÍTÉSSZOLGÁLTATÓ válaszol egy X509-tanúsítvánnyal.  
 
   (5) – az alkalmazás befejezi az új tanúsítvány létrehozását a HITELESÍTÉSSZOLGÁLTATÓTÓL származó X509-tanúsítvány egyesítésével.
-

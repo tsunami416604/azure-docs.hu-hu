@@ -1,17 +1,16 @@
 ---
-title: A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud-alkalmazáshoz
+title: Az Azure Spring Cloud-alkalmazás rendszer által hozzárendelt felügyelt identitásának engedélyezése
 description: A rendszerhez rendelt felügyelt identitás engedélyezése az alkalmazáshoz.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 81df4364324b03bb624e051fd71b25f0d6cdb049
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: d113d20e87d58bad007a35fce47d597a67849a6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445202"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
 Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítanak Azure Active Directory egy Azure-erőforráshoz, például az Azure Spring Cloud-alkalmazáshoz. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban.
@@ -53,11 +52,11 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Jogkivonatok beszerzése az Azure-erőforrásokhoz
-Egy alkalmazás a felügyelt identitásával lekérheti a jogkivonatokat az Azure AD által védett egyéb erőforrásokhoz, például a Azure Key Vaulthoz való hozzáféréshez. Ezek a jogkivonatok az erőforráshoz hozzáférő alkalmazást jelölik, nem az alkalmazás adott felhasználóját.
+Egy alkalmazás a felügyelt identitásával lekérheti a jogkivonatokat a Azure Active Directory által védett egyéb erőforrások, például a Azure Key Vault eléréséhez. Ezek a jogkivonatok az erőforráshoz hozzáférő alkalmazást jelölik, nem az alkalmazás adott felhasználóját.
 
 Előfordulhat, hogy [a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal). Ha például jogkivonatot kér a Key Vaulthoz való hozzáféréshez, győződjön meg arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication).
 
-Az Azure Spring Cloud ugyanazt a végpontot osztja meg az Azure virtuális géppel való jogkivonat-beszerzéshez. Lásd: a virtuálisgép- [token használata](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) különböző kód-és parancsfájl-példákhoz, valamint útmutatás a fontos témakörökhöz, például a jogkivonat lejáratának és a http-hibák kezeléséhez.
+Az Azure Spring Cloud ugyanazt a végpontot osztja meg az Azure virtuális géppel való jogkivonat-beszerzéshez. A jogkivonatok beszerzéséhez a Java SDK vagy a Spring boot Starter használatát javasoljuk.  Lásd: a virtuálisgép- [token használata](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) különböző kód-és parancsfájl-példákhoz, valamint útmutatás a fontos témakörökhöz, például a jogkivonat lejáratának és a http-hibák kezeléséhez.
 
 Ajánlott: használja a Java SDK-t vagy a Spring boot Starter-t a jogkivonatok lekéréséhez.  Tekintse meg a mintákat a [következő lépésekben](#next-steps).
 
@@ -79,6 +78,8 @@ A következő paranccsal távolíthatja el a rendszer által hozzárendelt felü
 az spring-cloud app identity remove -n app_name -s service_name -g resource_group_name
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Felügyelt identitások használata a Java SDK-val](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Felügyelt identitásokkal rendelkező Azure Key Vault elérése a Spring boot Starter-ben](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+

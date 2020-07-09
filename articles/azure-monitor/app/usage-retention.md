@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797735"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>A webalkalmazások felhasználói adatmegőrzési elemzése Application Insights
@@ -42,7 +41,7 @@ A leghasznosabb adatmegőrzési elemzés érdekében mérje fel a jelentős üzl
 
 Előfordulhat például, hogy számos felhasználó megnyithat egy oldalt az alkalmazásban, és nem játssza le a megjelenített játékot. Az oldal nézeteinek nyomon követése ezért pontatlan becslést ad arról, hogy hányan térnek vissza a játékra, miután a szolgáltatás már korábban is elvégezte a lejátszást. Ha tiszta képet szeretne kapni a játékosok visszaküldéséről, az alkalmazásnak egyéni eseményt kell küldenie, amikor egy felhasználó ténylegesen játszik.  
 
-Célszerű a kulcsfontosságú üzleti műveleteket jelképező egyéni eseményeket felvenni, és ezeket az adatmegőrzési elemzéshez használni. A játék eredményének rögzítéséhez meg kell írnia egy kódrészletet, hogy egy egyéni eseményt küldjön Application Insights. Ha a weblap kódjában vagy a Node. JS-ben írja, a következőképpen néz ki:
+Célszerű a kulcsfontosságú üzleti műveleteket jelképező egyéni eseményeket felvenni, és ezeket az adatmegőrzési elemzéshez használni. A játék eredményének rögzítéséhez meg kell írnia egy kódrészletet, hogy egy egyéni eseményt küldjön Application Insights. Ha a weblap kódjába vagy Node.JSba írja, a következőképpen néz ki:
 
 ```JavaScript
     appinsights.trackEvent("won game");
@@ -57,7 +56,7 @@ Vagy a ASP.NET-kiszolgáló kódjában:
 [További információ az egyéni események írásához](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Felhasználók, munkamenetek, események](usage-segmentation.md)

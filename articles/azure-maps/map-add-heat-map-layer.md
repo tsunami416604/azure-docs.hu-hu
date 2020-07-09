@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804554"
 ---
 # <a name="add-a-heat-map-layer"></a>Hőtérképréteg hozzáadása
@@ -29,7 +28,7 @@ A Heat Maps számos különböző forgatókönyvben használható, beleértve a 
 - **GPS-nyomkövetés**: magában foglalja a sebességét súlyozott magassági térképként, ahol az egyes adatpontok intenzitása a sebességen alapul. Ez a funkció például lehetővé teszi, hogy megtekintse a jármű sebességének helyét.
 
 > [!TIP]
-> Az adatforrásban lévő összes geometriá koordinátáit alapértelmezés szerint a térképi rétegek rétege jeleníti meg. Ha úgy szeretné korlátozni a réteget, hogy az csak a pont geometriájának funkcióit jelenítse meg, állítsa a `filter` réteg tulajdonságát a következőre: `['==', ['geometry-type'], 'Point']`. Ha azt szeretné, hogy a multipoint-funkciók is szerepeljenek, állítsa a `filter` réteg `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`tulajdonságát a következőre:.
+> Az adatforrásban lévő összes geometriá koordinátáit alapértelmezés szerint a térképi rétegek rétege jeleníti meg. Ha úgy szeretné korlátozni a réteget, hogy az csak a pont geometriájának funkcióit jelenítse meg, állítsa a réteg tulajdonságát a következőre: `filter` `['==', ['geometry-type'], 'Point']` . Ha azt szeretné, hogy a multipoint-funkciók is szerepeljenek, állítsa a réteg tulajdonságát a következőre: `filter` `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` .
 
 <br/>
 
@@ -37,7 +36,7 @@ A Heat Maps számos különböző forgatókönyvben használható, beleértve a 
 
 ## <a name="add-a-heat-map-layer"></a>Hőtérképréteg hozzáadása
 
-Ha a pontok egy adatforrását szeretné megjeleníteni hő-hozzárendelésként, adja át az adatforrást az `HeatMapLayer` osztály egy példányának, és adja hozzá a térképhez.
+Ha a pontok egy adatforrását szeretné megjeleníteni hő-hozzárendelésként, adja át az adatforrást az osztály egy példányának `HeatMapLayer` , és adja hozzá a térképhez.
 
 A következő kódban minden egyes hőforrás 10 képpont sugarú, minden nagyítási szinten. Ha jobb felhasználói élményt szeretne biztosítani, a Heat Térkép a címke réteg alatt van. A feliratok jól láthatók maradnak. Az ebben a példában szereplő adatok az [USGS földrengés veszélyei programból](https://earthquake.usgs.gov/)származnak. Ez az elmúlt 30 napban történt jelentős földrengések esetében jelent meg.
 
@@ -60,7 +59,7 @@ Itt látható az előző kód teljes futtatási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Egyszerű Heat Map-réteg' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>egyszerű Heat Térkép réteget</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Egyszerű Heat Map-réteg' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>egyszerű Heat Térkép réteget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>A Heat Map-réteg testreszabása
@@ -68,7 +67,7 @@ Itt látható az előző kód teljes futtatási kódjának mintája.
 Az előző példában a sugár-és opacitási beállítások megadásával testre szabta a Heat térképet. A Heat Map réteg számos testreszabási lehetőséget kínál, többek között a következőket:
 
 * `radius`: Az egyes adatpontok megjelenítéséhez használandó képpont sugarat határozza meg. A sugarat rögzített számként vagy kifejezésként is beállíthatja. Egy kifejezés használatával méretezheti a sugarat a nagyítási szint alapján, és a térképen egy konzisztens térbeli terület (például egy 5 mérföldes sugár) látható.
-* `color`: Megadja, hogyan legyen színezetve a Heat map. A színátmenetek a Heat Maps gyakori funkciói. A hatás egy `interpolate` kifejezéssel valósítható meg. Használhat egy `step` kifejezést is a Heat Térkép színezéséhez, a sűrűséget pedig vizuálisan kibontva olyan tartományokra, amelyek egy kontúr vagy egy radar stílusú térképhez hasonlítanak. Ezek a színpalettaek a minimális és a maximális sűrűség értékének színét határozzák meg. 
+* `color`: Megadja, hogyan legyen színezetve a Heat map. A színátmenetek a Heat Maps gyakori funkciói. A hatás egy kifejezéssel valósítható meg `interpolate` . Használhat egy kifejezést is a `step` Heat Térkép színezéséhez, a sűrűséget pedig vizuálisan kibontva olyan tartományokra, amelyek egy kontúr vagy egy radar stílusú térképhez hasonlítanak. Ezek a színpalettaek a minimális és a maximális sűrűség értékének színét határozzák meg. 
 
   A Heat Maps színértékeit kifejezésként adja meg az `heatmap-density` értéken. Annak a területnek a színe, amelyben nem szerepelnek az adathalmazok a "interpoláció" kifejezés 0. indexében, vagy egy "lépcsőzetes" kifejezés alapértelmezett színe. Ennek az értéknek a használatával megadhatja a háttér színét. Ez az érték gyakran átlátszó vagy félig átlátszó feketére van állítva. 
    
@@ -76,20 +75,20 @@ Az előző példában a sugár-és opacitási beállítások megadásával testr
 
   | Interpoláció színe kifejezés | Lépcsőzetes szín kifejezése | 
   |--------------------------------|--------------------------|
-  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"interpoláció",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["lineáris"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["hő-sűrűség"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transzparens",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "lila",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, "#fb00fb",<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff"<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Step",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["hő-sűrűség"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transzparens",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "Navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zöld",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "sárga",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "piros"<br/>\] |   
+  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"interpoláció",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["lineáris" \] ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["hő-sűrűség" \] ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transzparens",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "lila",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, "#fb00fb",<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff"<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Step",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["hő-sűrűség" \] ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transzparens",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "Navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zöld",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "sárga",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "piros"<br/>\] |   
 
 - `opacity`: Azt határozza meg, hogy a Heat Térkép rétege milyen átlátszatlan vagy átlátszó legyen.
 - `intensity`: Szorzót alkalmaz az egyes adatpontok súlyozására, hogy növelje a hő összesített intenzitását. Az adatpontok súlyozásával különbséget okoz, így könnyebben láthatóvá válik.
 - `weight`: Alapértelmezés szerint az összes adatponthoz 1 érték tartozik, és a súlyozása egyenlő. A súlyozási beállítás szorzóként funkcionál, és beállíthatja számként vagy kifejezésként. Ha egy szám a súlyozáshoz van beállítva, akkor a rendszer az egyes adatpontokat a térképen kétszer helyezi el. Ha például a súlyozás 2, akkor a sűrűség megduplázódik. Ha a súlyozási beállítást egy számra állítja, akkor a rendszer hasonló módon jeleníti meg a hő-hozzárendelést az intenzitás lehetőség használatával. 
 
   Ha azonban egy kifejezést használ, az egyes adatpontok súlyozása az egyes adatpontok tulajdonságai alapján lehetséges. Tegyük fel például, hogy az egyes adatpontok földrengést jelentenek. A magnitúdó értéke az egyes földrengés-adatpontok fontos mérőszáma volt. A földrengések minden alkalommal történnek, de a legtöbb esetben alacsony a jelentősége, és a rendszer nem észlelt. Egy kifejezésben szereplő magnitúdó értékkel rendelheti hozzá a súlyozást az egyes adatpontokhoz. A súlyozás kiosztásához a magnitúdó értékének használatával jobban áttekinthető a földrengések jelentősége a hő-térképen belül.
-- `source`és `source-layer`: lehetővé teszi az adatforrás frissítését.
+- `source`és `source-layer` : lehetővé teszi az adatforrás frissítését.
 
 Itt talál egy eszközt a különböző Heat Térkép réteg beállításainak teszteléséhez.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Hő-Térkép réteg beállításai' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Térkép rétegének beállításait</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Hő-Térkép réteg beállításai' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Térkép rétegének beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>Konzisztens nagyítású Heat-Térkép
@@ -98,16 +97,16 @@ Alapértelmezés szerint a Heat Map rétegben megjelenített adatpontok sugara r
 
 Egy `zoom` kifejezéssel méretezheti a sugarat az egyes nagyítási szintekhez, így az egyes adatpontok a Térkép ugyanazon fizikai területére terjednek ki. Ez a kifejezés a Heat Map réteget statikus és konzisztensvé teszi. A Térkép minden nagyítási szintje kétszer annyi képpontot tartalmaz függőlegesen és vízszintesen, mint az előző nagyítási szint. 
 
-A sugár skálázása úgy, hogy az minden nagyítási szinten megduplázódik, létrehoz egy hő-térképet, amely minden nagyítási szinten konzisztensnek tűnik. Ha alkalmazni szeretné ezt a skálázást `zoom` , használja a ( `exponential interpolation` 2. alap) kifejezést, a minimális nagyítási szinthez pedig a képpont sugarat, a maximális nagyítási szinthez `2 * Math.pow(2, minZoom - maxZoom)` pedig a következő mintában látható méretet. A Térkép nagyításával megtekintheti, hogy a Heat Térkép hogyan méretezhető a nagyítási szinttel.
+A sugár skálázása úgy, hogy az minden nagyítási szinten megduplázódik, létrehoz egy hő-térképet, amely minden nagyítási szinten konzisztensnek tűnik. Ha alkalmazni szeretné ezt a skálázást, használja a ( `zoom` 2 `exponential interpolation` . alap) kifejezést, a minimális nagyítási szinthez pedig a képpont sugarat, a maximális nagyítási szinthez pedig a következő mintában látható méretet `2 * Math.pow(2, minZoom - maxZoom)` . A Térkép nagyításával megtekintheti, hogy a Heat Térkép hogyan méretezhető a nagyítási szinttel.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Konzisztens nagyítású Heat-Térkép" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg az <a href='https://codepen.io'>CodePen</a>-on található, Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>konzisztens, kinagyítható hő-hozzárendelést</a> .
+Tekintse meg az CodePen-on található, Azure Maps () által <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>konzisztens, kinagyítható hő-hozzárendelést</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
-> Ha engedélyezi a fürtözést az adatforráson, akkor a egymáshoz közeledő pontok fürtözött pontként vannak csoportosítva. Az egyes fürtökhöz tartozó pontok számát használhatja a Heat Map súlyozási kifejezésének. Ez jelentősen csökkentheti a megjelenítendő pontok számát. A fürt pontok számát a pont funkció egy `point_count` tulajdonsága tárolja: 
+> Ha engedélyezi a fürtözést az adatforráson, akkor a egymáshoz közeledő pontok fürtözött pontként vannak csoportosítva. Az egyes fürtökhöz tartozó pontok számát használhatja a Heat Map súlyozási kifejezésének. Ez jelentősen csökkentheti a megjelenítendő pontok számát. A fürt pontok számát `point_count` a pont funkció egy tulajdonsága tárolja: 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']

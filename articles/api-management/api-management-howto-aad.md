@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808292"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory használatával az Azure API Managementben
 
@@ -72,7 +72,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 19. Az **identitás-szolgáltató hozzáadása** ablak az **engedélyezett bérlők** szövegmezőt is tartalmazza. Itt adja meg azon Azure AD-példányok tartományait, amelyekhez hozzáférést szeretne biztosítani az API Management Service-példány API-jai számára. Több tartományt is elkülönítheti a sortörésekkel, szóközökkel vagy vesszővel.
 
     > [!NOTE]
-    > Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Ugrás a `https://<URL of your developer portal>/aadadminconsent` következőre: ( https://contoso.portal.azure-api.net/aadadminconsent)például.
+    > Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Ugrás a `https://<URL of your developer portal>/aadadminconsent` következőre: (például https://contoso.portal.azure-api.net/aadadminconsent) .
     > b. Írja be annak az Azure AD-bérlőnek a tartománynevét, amelyhez hozzáférést szeretne biztosítani.
     > c. Válassza a **Küldés** lehetőséget. 
 
@@ -84,11 +84,11 @@ A módosítások mentése után a megadott Azure AD-példányban lévő felhaszn
 
 Miután engedélyezte az Azure AD-bérlő felhasználóinak hozzáférését, hozzáadhat Azure AD-csoportokat API Managementhoz. Ennek eredményeképpen a termék láthatóságát az Azure AD-csoportok használatával szabályozhatja.
 
-Ha külső Azure AD-csoportot szeretne hozzáadni a APIM-hez, először el kell végeznie az előző szakaszt. Emellett a regisztrált alkalmazásnak hozzáférést kell biztosítania a Microsoft Graph API `Directory.Read.All` -hoz a következő lépések végrehajtásával: 
+Ha külső Azure AD-csoportot szeretne hozzáadni a APIM-hez, először el kell végeznie az előző szakaszt. Emellett a regisztrált alkalmazásnak hozzáférést kell biztosítania a Microsoft Graph API-hoz a `Directory.Read.All` következő lépések végrehajtásával: 
 
 1. Térjen vissza az alkalmazás regisztrálásához, amely az előző szakaszban lett létrehozva.
 2. Válassza az **API-engedélyek**lehetőséget, majd kattintson **az + engedély hozzáadása**lehetőségre. 
-3. A **kérelem API-engedélyek** ablaktáblán válassza a **Microsoft API** -k fület, majd válassza ki a **Microsoft Graph** csempét. Válassza az **alkalmazás engedélyei**lehetőséget, keresse meg a **címtár**kifejezést, majd válassza ki a **könyvtárat. Read. All** engedély. 
+3. A **kérelem API-engedélyek** ablaktáblán válassza a **Microsoft API** -k fület, görgessen le, majd válassza ki a **Azure Active Directory gráf** csempét. Válassza az **alkalmazás engedélyei**lehetőséget, keresse meg a **címtár**kifejezést, majd válassza ki a **könyvtárat. Read. All** engedély. 
 4. Kattintson a panel alján található **engedélyek hozzáadása** elemre, majd kattintson a **rendszergazdai jóváhagyás megadása a (z) {tenantname} számára** lehetőségre, hogy hozzáférést biztosítson a címtár összes felhasználója számára. 
 
 Most hozzáadhat külső Azure AD-csoportokat a API Management példány **csoportok** lapjáról.
@@ -103,7 +103,7 @@ Külső Azure AD-csoport hozzáadása után megtekintheti és konfigurálhatja a
  
 A konfigurált Azure AD-példány felhasználói már bejelentkezhetnek a fejlesztői portálra. Megtekinthetik és előfizethetnek bármely olyan csoportra, amelyben láthatók.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/>Fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>Fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
 
 A fejlesztői portálon jelentkezzen be a HRE-be a **Bejelentkezés gombra: OAuth** widget. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
 

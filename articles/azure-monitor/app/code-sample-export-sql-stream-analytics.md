@@ -3,15 +3,15 @@ title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Doc
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536913"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087230"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
-Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [azure Application Insightsból][start] egy Azure SQL Database-be [folyamatos exportálás][export] és [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával. 
+Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [Azure Application Insightsból][start] a [folyamatos exportálás][export] és a [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával Azure SQL Databaseba. 
 
 A folyamatos exportálás JSON formátumban helyezi át a telemetria adatait az Azure Storage-ba. A JSON-objektumokat a Azure Stream Analytics használatával elemezzük, és sorokat hozunk létre az adatbázis-táblában.
 
@@ -70,21 +70,21 @@ A folyamatos exportálás mindig az adatokat egy Azure Storage-fiókba exportál
    
     Jegyezze fel az elérési út nevének közös részét, amely az alkalmazás neve és a kialakítási kulcsból származik. 
 
-Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy vagy több eseményt is tartalmazhatnak. Ezért szeretnénk beolvasni az események adatait, és kiszűrni a kívánt mezőket. Az adatkezeléshez sokféle dolog van, de a tervünk szerint a Stream Analytics használatával helyezheti át az SQL Database-be. Ez megkönnyíti a sok érdekes lekérdezés futtatását.
+Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy vagy több eseményt is tartalmazhatnak. Ezért szeretnénk beolvasni az események adatait, és kiszűrni a kívánt mezőket. Az adatkezeléshez sokféle dolog van, de a tervünk szerint a Stream Analytics használatával helyezheti át az adatSQL Databaseba. Ez megkönnyíti a sok érdekes lekérdezés futtatását.
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Database-adatbázis létrehozása
 A [Azure Portal][portal]-előfizetésből való indítás után hozza létre az adatbázist (és egy új kiszolgálót, ha már van ilyen), amelybe az adatok írhatók.
 
 ![Új, adatkezelési, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-Győződjön meg arról, hogy az adatbázis-kiszolgáló engedélyezi az Azure-szolgáltatásokhoz való hozzáférést:
+Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatásokhoz való hozzáférést:
 
 ![Tallózás, kiszolgálók, a kiszolgáló, a beállítások, a tűzfal, az Azure-hoz való hozzáférés engedélyezése](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Tábla létrehozása az Azure SQL DB-ben
+## <a name="create-a-table-in-azure-sql-database"></a>Tábla létrehozása Azure SQL Databaseban
 Kapcsolódjon az előző szakaszban létrehozott adatbázishoz az előnyben részesített felügyeleti eszközzel. Ebben az útmutatóban a [SQL Server felügyeleti eszközei](https://msdn.microsoft.com/ms174173.aspx) (SSMS) használatát fogjuk használni.
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Kapcsolódás az Azure SQL Database-hez](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Hozzon létre egy új lekérdezést, és hajtsa végre a következő T-SQL-T:
 
@@ -126,7 +126,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![PageViewsTable létrehozása](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
 Ebben a példában a lap nézeteiből származó adatok szerepelnek. Ha meg szeretné tekinteni az elérhető egyéb adatokat, ellenőrizze a JSON-kimenetét, és tekintse meg az [adatexportálási modellt](../../azure-monitor/app/export-data-model.md).
 
@@ -135,7 +135,7 @@ A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics
 
 ![Stream Analytics-beállítások](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![Új stream Analytics-feladatok](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz**lehetőséget.
 
@@ -157,7 +157,9 @@ Most szüksége lesz az elsődleges hozzáférési kulcsra a Storage-fiókjábó
 
 Az elérési út előtagja minta meghatározza, hogy a Stream Analytics hogyan találja meg a bemeneti fájlokat a tárolóban. Be kell állítania, hogy a folyamatos exportálás hogyan tárolja az adattárolást. Állítsa be a következőhöz hasonlót:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
 Ebben a példában:
 
@@ -220,7 +222,7 @@ Kimenetként válassza az SQL lehetőséget.
 
 ![A stream Analyticsben válassza a kimenetek lehetőséget.](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-Határozza meg az SQL-adatbázist.
+Határozza meg az adatbázist.
 
 ![Adja meg az adatbázis adatait](./media/code-sample-export-sql-stream-analytics/SA007.png)
 
@@ -235,9 +237,10 @@ Megadhatja, hogy szeretné-e az adatok feldolgozását mostantól kezdve, vagy a
 
 Néhány perc elteltével lépjen vissza SQL Server felügyeleti eszközeire, és tekintse meg a folyamatban lévő adatforgalmat. Például használjon a következőhöz hasonló lekérdezést:
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Exportálás Power BI a Stream Analytics használatával](../../azure-monitor/app/export-power-bi.md )

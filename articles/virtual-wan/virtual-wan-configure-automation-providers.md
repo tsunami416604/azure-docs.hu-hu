@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565958"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizálási irányelvek virtuális WAN-partnerekhez
 
@@ -54,7 +54,7 @@ Ismerje meg a várt felhasználói élményt az Azure Virtual WAN szolgáltatás
 
 ###  <a name="access-control"></a><a name="access"></a>Hozzáférés-vezérlés
 
-Az ügyfeleknek képesnek kell lenniük a virtuális WAN megfelelő hozzáférés-vezérlésének beállítására az eszköz felhasználói felületén. Ezt az Azure egyszerű szolgáltatásnév használatával ajánlott használni. Az egyszerű szolgáltatás-alapú hozzáférés biztosítja az eszköz megfelelő hitelesítését a fiókirodai adatok feltöltéséhez. További információ: [egyszerű szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Habár ez a funkció az Azure-beli virtuális WAN-ajánlaton kívül esik, a hozzáférés az Azure-ban való beállításának szokásos lépésein látható, amely után a vonatkozó részletek bekerülnek az Eszközkezelő irányítópultba
+Az ügyfeleknek képesnek kell lenniük a virtuális WAN megfelelő hozzáférés-vezérlésének beállítására az eszköz felhasználói felületén. Ezt az Azure egyszerű szolgáltatásnév használatával ajánlott használni. Az egyszerű szolgáltatás-alapú hozzáférés biztosítja az eszköz megfelelő hitelesítését a fiókirodai adatok feltöltéséhez. További információ: [egyszerű szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Habár ez a funkció az Azure-beli virtuális WAN-ajánlaton kívül esik, a hozzáférés az Azure-ban való beállításának szokásos lépésein látható, amely után a vonatkozó részletek bekerülnek az Eszközkezelő irányítópultba
 
 * Hozzon létre egy Azure Active Directory alkalmazást a helyszíni eszköz-vezérlőhöz.
 * Alkalmazás-azonosító és hitelesítési kulcs beszerzése
@@ -227,4 +227,4 @@ A helyszíni SDWAN/VPN-eszköznek vagy az SD-WAN konfigurációnak meg kell egye
 
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).
 
-További információért küldjön egy e-mailt a <azurevirtualwan@microsoft.com>címre. Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében.
+További információért küldjön egy e-mailt a címre <azurevirtualwan@microsoft.com> . Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében.

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106219"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970552"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -35,21 +35,20 @@ Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 > [!NOTE]
 > A biztonsági szerepkörök, a biztonsági olvasó és a biztonsági rendszergazda csak Security Center rendelkezik hozzáféréssel. A biztonsági szerepkörök nem férnek hozzá az Azure más szolgáltatási területeihez, például a Storage, a web & Mobile vagy a eszközök internetes hálózatahoz.
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>Szerepkörök és engedélyezett műveletek
 
 A következő táblázat a szerepköröket és az engedélyezett műveleteket mutatja Security Centerban.
 
-| Szerepkör | Biztonsági házirend szerkesztése | Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (beleértve a ' Quick Fix! ') | Riasztások és javaslatok bezárása | Riasztások és javaslatok megtekintése |
-|:--- |:---:|:---:|:---:|:---:|
-| Előfizetés tulajdonosa | ✔ | ✔ | ✔ | ✔ |
-| Előfizetés közreműködői | -- | ✔ | ✔ | ✔ |
-| Erőforráscsoport tulajdonosa | -- | ✔ | -- | ✔ |
-| Erőforráscsoport közreműködői | -- | ✔ | -- | ✔ |
-| Olvasó | -- | -- | -- | ✔ |
-| Biztonsági rendszergazda | ✔ | -- | ✔ | ✔ |
-| Biztonsági olvasó | -- | -- | -- | ✔ |
+|Műveletek|Biztonsági olvasó/ <br> Olvasó |Biztonsági rendszergazda  |Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa  |Előfizetés közreműködői  |Előfizetés tulajdonosa  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|Biztonsági házirend szerkesztése|-|✔|-|-|✔|
+|Kezdeményezések hozzáadása/kiosztása (beleértve) szabályozási megfelelőségi szabványok)|-|-|-|-|✔|
+|Előfizetés díjszabási szintjének módosítása|-|✔|-|-|✔|
+|Automatikus kiépítés engedélyezése/letiltása|-|✔|✔|-|✔|
+|Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (és használjon [gyors javítást!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
+|Riasztások bezárása|-|✔|-|✔|✔|
+|Riasztások és javaslatok megtekintése|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. Például rendelje hozzá az olvasó szerepkört azokhoz a felhasználókhoz, akik csak az erőforrások biztonsági állapotával kapcsolatos információkat szeretnének megtekinteni, de nem végeznek műveleteket, például javaslatok alkalmazása vagy szerkesztési szabályzatok.

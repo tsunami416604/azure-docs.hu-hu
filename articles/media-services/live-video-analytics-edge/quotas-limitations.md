@@ -1,0 +1,71 @@
+---
+title: Élő videó-elemzések IoT Edge kvóták – Azure
+description: Ez a cikk az élő videók elemzését ismerteti IoT Edge kvóták és korlátozások alapján.
+ms.topic: conceptual
+ms.date: 05/22/2020
+ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84261050"
+---
+# <a name="quotas-and-limitations"></a>Kvóták és korlátozások
+
+Ez a cikk a IoT Edge modul élő videós elemzésének kvótáit és korlátozásait sorolja fel.
+
+## <a name="maximum-period-of-disconnected-use"></a>Leválasztott használat maximális időtartama
+
+Az Edge-modul képes fenntartani a hálózati kapcsolat átmeneti elvesztését. Ha a modul több mint 36 órával továbbra is megszakadt, akkor a rendszer inaktiválja a futó Graph-példányokat, és a további közvetlen metódusok hívása le lesz tiltva.
+
+Ha a peremhálózati modult működési állapotba kívánja folytatni, akkor vissza kell állítania a hálózati kapcsolatot, és a modulnak képesnek kell lennie az Azure Media Service-fiókkal való sikeres kommunikációra.
+
+## <a name="maximum-number-of-graph-instances"></a>Graph-példányok maximális száma
+
+A modulban legfeljebb 1000 gráf példány adható meg (GraphInstanceSet használatával létrehozva).
+
+## <a name="maximum-number-of-graph-topologies"></a>Gráf-topológiák maximális száma
+
+Modulon legfeljebb 50 gráf-topológiát lehet létrehozni (GraphTopologySet-on keresztül létrehozva).
+
+## <a name="limitations-on-graph-topologies-at-preview"></a>A Graph-topológiák korlátozásai az előzetes verzióban
+
+Az előzetes kiadásban a különböző csomópontokra vonatkozó korlátozások is csatlakoztathatók a Media Graph-topológiában.
+
+* RTSP-forrás
+   * Graph-topológia esetében csak egy RTSP-forrás engedélyezett.
+* Frame rate Filter processzor
+   * Közvetlenül az RTSP forrás-vagy mozgásészlelési processzorról kell, hogy legyen.
+   * HTTP-bővítmény processzorának alsóbb rétegében nem használható.
+   * Mozgásészlelési processzorról nem lehet upstream.
+* HTTP-bővítmény processzora
+   * Graph-topológiában legfeljebb egy ilyen processzor lehet.
+* Mozgásészlelési processzor
+   * Közvetlenül az RTSP-forrástól kell, hogy legyen.
+   * Graph-topológiában legfeljebb egy ilyen processzor lehet.
+   * HTTP-bővítmény processzorának alsóbb rétegében nem használható.
+* Signal Gate processzor
+   * Közvetlenül az RTSP-forrástól kell, hogy legyen.
+* Eszköz fogadója 
+   * Graph-topológia esetében legfeljebb egy ilyen csomópont lehet.
+      * Ha egy adatkészletet használ, akkor a fájlok fogadója nem lehet jelen, vagy fordítva.
+   * Közvetlenül az RTSP-forrás vagy a Signal Gate-processzor között kell lennie.
+* File mosogató
+   * Graph-topológia esetén legfeljebb egy ilyen csomópont lehet (lásd a következő megjegyzést az Asset fogadóval kapcsolatban).
+   * Közvetlenül a Signal Gate-processzorról kell, hogy legyen.
+   * Nem lehet közvetlenül a HTTP-bővítmény processzora vagy a mozgásérzékelő processzora
+* IoT Hub fogadó
+   * Nem lehet közvetlenül a IoT Hub forrásának vége.
+
+Ha a mozgásészlelési és a szűrési sebességű processzor-csomópontok is szerepelnek, akkor az RTSP-forrás csomóponthoz vezető csomópontok láncában kell lenniük.
+
+## <a name="limitations-on-media-service-operations-at-preview"></a>A Media Service-műveletekre vonatkozó korlátozások előzetes verzióban
+
+Az előzetes kiadás időpontjában a IoT Edge Live Video Analytics nem támogatja a következőket:
+
+* A Media Service-fiók egyik előfizetésből a másikba való migrálása megszakítás nélkül.
+* Több Storage-fiók is használható a Media Service-fiókkal.
+* Az egyszerű szolgáltatásnév adatait dinamikusan, újraindítás nélkül módosíthatja a modul kívánt tulajdonságaiban.
+
+## <a name="next-steps"></a>További lépések
+
+[Áttekintés](overview.md)

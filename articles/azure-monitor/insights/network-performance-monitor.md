@@ -7,10 +7,9 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480878"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
@@ -84,7 +83,7 @@ Az alapfolyamatok segítségével ügynököket telepíthet a [Windows rendszer�
 
 A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és a cél-ügynökök közötti hálózati teljesítmény figyelésére. A Teljesítményfigyelő és a szolgáltatás-csatlakozási figyelő funkcióinak figyeléséhez a TCP és az ICMP protokollt is választhatja. A ExpressRoute figyelési protokollként csak a TCP érhető el. Győződjön meg arról, hogy a tűzfal engedélyezi a kiválasztott protokoll figyeléséhez használt Log Analytics ügynökök közötti kommunikációt. 
 
-* **TCP protokoll**: Ha a TCP protokollt választja a figyeléshez, nyissa meg a tűzfal portját a Network Performance monitor és a ExpressRoute figyeléséhez használt ügynökökön, és győződjön meg arról, hogy az ügynökök csatlakozhatnak egymáshoz. A port megnyitásához futtassa a [EnableRules. ps1](https://aka.ms/npmpowershellscript) PowerShell-szkriptet a PowerShell-ablakban található paraméterek nélkül, rendszergazdai jogosultságokkal.
+* **TCP protokoll**: Ha a TCP protokollt választja a figyeléshez, nyissa meg a tűzfal portját a Network Performance monitor és a ExpressRoute figyeléséhez használt ügynökökön, és győződjön meg arról, hogy az ügynökök csatlakozhatnak egymáshoz. A port megnyitásához futtassa a [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-parancsfájlt a rendszergazdai jogosultságokkal rendelkező PowerShell-ablakban található paraméterek nélkül.
 
     A parancsfájl a megoldáshoz szükséges beállításkulcsokat hoz létre. Emellett Windows tűzfal-szabályokat is létrehoz, amelyek lehetővé teszik, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással. A parancsfájl által létrehozott beállításkulcsok határozzák meg, hogy naplózzák-e a hibakeresési naplókat és a naplófájlok elérési útját. A parancsfájl a kommunikációhoz használt ügynök TCP-portját is meghatározza. A kulcsok értékeit a parancsfájl automatikusan beállítja. Ezeket a kulcsokat ne módosítsa manuálisan. Alapértelmezés szerint a 8084-es port van megnyitva. Egyéni portot úgy használhat, hogy a portszám paramétert a parancsfájlhoz adja. Ugyanazt a portot használja az összes olyan számítógépen, amelyen a parancsfájl fut. 
 
@@ -92,7 +91,7 @@ A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és 
     > A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha hálózati tűzfallal rendelkezik, győződjön meg arról, hogy az Network Performance Monitor által használt TCP-portra irányuló forgalmat engedélyezi.
 
     >[!NOTE]
-    > Nem kell futtatnia a [EnableRules. ps1](https://aka.ms/npmpowershellscript ) PowerShell-parancsfájlt a szolgáltatás-kapcsolódási figyelőhöz.
+    > Nem kell futtatnia a [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell-parancsfájlt a szolgáltatás-kapcsolódási figyelőhöz.
 
     
 

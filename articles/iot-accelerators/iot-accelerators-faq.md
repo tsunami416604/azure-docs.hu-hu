@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75647713"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakran ismételt kérdések az IoT-megoldásgyorsítókról
@@ -30,7 +29,7 @@ A forráskód a következő GitHub-adattárakban tárolódik:
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Milyen SDK-kat használhatok az eszközök ügyfeleinek fejlesztéséhez a megoldás-gyorssegédekhez?
 
-A [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub-adattárakban a különböző nyelvekre (C, .net, Java, Node. js, Python) mutató hivatkozásokat talál a IoT.
+A különböző nyelvekre (C, .NET, Java, Node.js, Python) mutató hivatkozásokat a [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub-adattárakban található IoT.
 
 Ha a fejlesztői készlet eszközt használja, a [IoT fejlesztői készlet SDK](https://github.com/Microsoft/devkit-sdk) GitHub-tárházban találhat erőforrásokat és mintákat.
 
@@ -65,7 +64,7 @@ Ha biztos benne, hogy rendelkezik Azure-előfizetéssel, érvényesítse az elő
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távoli figyelési megoldás előző verziójáról?
 
-A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Elérhető-e az új megoldás-gyorsító ugyanabban a földrajzi régióban, mint a meglévő megoldás?
 

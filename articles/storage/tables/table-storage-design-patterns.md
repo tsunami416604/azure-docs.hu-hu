@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081230"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk a Table service-megoldásokkal való használatra alkalmas mintákat ismerteti. Azt is megtudhatja, hogyan lehet gyakorlatilag a más Table Storage-kialakítási cikkekben tárgyalt problémák és kompromisszumok kezelésére. A következő ábra összefoglalja a különböző minták közötti kapcsolatokat:  
@@ -41,7 +41,7 @@ A másodlagos indexek hiányának megkerülése érdekében az egyes entitások 
 A következő két szűrési feltétel (az alkalmazotti azonosító és egy e-mail-cím alapján megtekintett) a pontok lekérdezéseit is megadja:  
 
 * $filter = (PartitionKey EQ "Sales") és (RowKey EQ "empid_000223")  
-* $filter = (PartitionKey EQ ' Sales ') és (RowKey EQemail_jonesj@contoso.com' ')  
+* $filter = (PartitionKey EQ ' Sales ') és (RowKey EQ ' email_jonesj@contoso.com ')  
 
 Ha az alkalmazotti entitások egy tartományát kérdezi le, megadhatja az alkalmazotti azonosító sorrendbe rendezett tartományt, vagy az e-mail-címek sorrendjét az **RowKey**megfelelő előtaggal rendelkező entitások lekérdezésével.  
 
@@ -97,7 +97,7 @@ A másodlagos indexek hiányának megkerülése érdekében az egyes entitások 
 A következő két szűrési feltétel (az alkalmazotti azonosító és egy e-mail-cím alapján megtekintett) a pontok lekérdezéseit is megadja:  
 
 * $filter = (PartitionKey EQ "empid_Sales") és (RowKey EQ "000223")
-* $filter = (PartitionKey EQ "email_Sales") és (RowKey EQ "jonesj@contoso.com")  
+* $filter = (PartitionKey EQ "email_Sales") és (RowKey EQ " jonesj@contoso.com ")  
 
 Ha az alkalmazotti entitások egy tartományát kérdezi le, megadhatja az alkalmazotti azonosító sorrendbe rendezett tartományt, vagy az e-mail-címek sorrendjét az **RowKey**megfelelő előtaggal rendelkező entitások lekérdezésével.  
 
@@ -539,7 +539,7 @@ Ez a szakasz azt ismerteti, hogyan tárolja a Storage Analytics a blob Storage-b
 
 Storage Analytics a naplófájlokat több blobban tagolt formátumban tárolja. A tagolt formátum megkönnyíti az ügyfélalkalmazás számára a naplófájlban lévő adatelemzést.  
 
-Storage Analytics a Blobok elnevezési konvenciójának használatával megkeresheti azokat a blobokat (vagy blobokat), amelyek a keresett naplófájlokat tartalmazzák. Egy "üzenetsor/2014/07/31/1800/000001. log" nevű blob például a üzenetsor-szolgáltatáshoz kapcsolódó naplófájlokat tartalmaz, amelyek az óra 18:00. július 31-ig, 2014-kor kezdődnek. A "000001" azt jelzi, hogy ez az időszak első naplófájlja. A Storage Analytics a fájlban tárolt első és utolsó naplózási üzenetek időbélyegét is rögzíti a blob metaadatainak részeként. A blob Storage-hoz készült API lehetővé teszi, hogy megkeresse a tárolóban lévő blobokat egy név előtag alapján: Ha meg szeretné keresni az összes olyan blobot, amely üzenetsor-naplózási adathalmazt tartalmaz, az óra 18:00-től kezdődően a "üzenetsor/2014/07/31/1800" előtagot használhatja.  
+Storage Analytics a Blobok elnevezési konvenciójának használatával megkeresheti azokat a blobokat (vagy blobokat), amelyek a keresett naplófájlokat tartalmazzák. Egy "üzenetsor/2014/07/31/1800/000001. log" nevű blob például a üzenetsor-szolgáltatáshoz kapcsolódó naplófájlokat tartalmaz, amelyek az óra 18:00. július 31-ig, 2014-kor kezdődnek. A "000001" azt jelzi, hogy ez az időszak első naplófájlja. A Storage Analytics a fájlban tárolt első és utolsó naplózási üzenetek időbélyegét is rögzíti a blob metaadatainak részeként. A blob Storage-hoz készült API lehetővé teszi, hogy megkeresse a tárolóban lévő blobokat egy név előtag alapján: Ha meg szeretné keresni az összes olyan blobot, amely üzenetsor-naplózási adat18:00 tárolási naplót tartalmaz, akkor a "üzenetsor/2014/07/31/1800" előtagot használhatja.  
 
 Storage Analytics pufferek belső naplófájlokat küldenek, majd rendszeresen frissítik a megfelelő blobot, vagy létrehoznak egy újat a naplóbejegyzések legújabb kötegével. Ez csökkenti a blob szolgáltatásnak elvégezhető írások számát.  
 
@@ -588,7 +588,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-A employeeTable egy olyan CloudTable-objektum, amely CreateQuery\<ITableEntity> () metódust valósít meg, amely egy\<TableQuery ITableEntity> ad vissza. Az ilyen típusú objektumok egy IQueryable valósítanak meg, és lehetővé teszik a LINQ lekérdezési kifejezések és a dot jelölési szintaxis használatát is.
+A employeeTable egy CloudTable-objektum, amely egy CreateQuery \<ITableEntity> () metódust valósít meg, amely egy TableQuery ad vissza \<ITableEntity> . Az ilyen típusú objektumok egy IQueryable valósítanak meg, és lehetővé teszik a LINQ lekérdezési kifejezések és a dot jelölési szintaxis használatát is.
 
 Több entitás beolvasása és egy **Where** záradékkal rendelkező lekérdezés megadásával érhető el. A táblák vizsgálatának elkerüléséhez mindig adja meg a **PartitionKey** értékét a WHERE záradékban, és ha lehetséges, akkor a **RowKey** értéket a tábla és a partíció ellenőrzésének elkerülése érdekében. A Table szolgáltatás támogatja az összehasonlító operátorok korlátozott készletét (nagyobb, mint, nagyobb vagy egyenlő, kisebb, mint, kisebb vagy egyenlő, egyenlő és nem egyenlő) a WHERE záradékban való használathoz. 
 

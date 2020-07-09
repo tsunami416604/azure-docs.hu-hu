@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: ec5a0d6e8c0a5236ae3929560e81033d983d4dfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895115"
 ---
 # <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>Forgatókönyv: az Apache TEZ-alkalmazás lefagy az Azure HDInsight
@@ -30,7 +29,7 @@ Túl sok feladat van elküldve; hosszú fonalas üzenetsor.
 
 Bővítse a fürtöt, vagy csak várjon, amíg a fonal-várólista el nem kerül.
 
-Alapértelmezés `yarn.scheduler.capacity.maximum-applications` szerint a vagy függőben lévő alkalmazások maximális számát szabályozza, és alapértelmezés szerint a ( `10000`) értéket használja.
+Alapértelmezés szerint `yarn.scheduler.capacity.maximum-applications` a vagy függőben lévő alkalmazások maximális számát szabályozza, és alapértelmezés szerint a () értéket használja `10000` .
 
 ## <a name="next-steps"></a>További lépések
 

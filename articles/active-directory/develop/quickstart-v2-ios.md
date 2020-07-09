@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169848"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554058"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -70,56 +70,32 @@ Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány 
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-ios/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
-
-#### <a name="step-2-download-the-sample-project"></a>2. lépés: a minta projekt letöltése
-
-- [Az iOS-hez készült kód mintájának letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [Töltse le a macOS rendszerhez készült kód mintáját](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> 
+> #### <a name="step-2-download-the-sample-project"></a>2. lépés: a minta projekt letöltése
+> > [!div id="autoupdate_ios" class="nextstepaction"]
+> > [Az iOS-hez készült kód mintájának letöltése]()
+> 
+> > [!div id="autoupdate_macos" class="nextstepaction"]
+> > [Töltse le a macOS rendszerhez készült kód mintáját]()
+> [!div renderon="docs"]
+> #### <a name="step-2-download-the-sample-project"></a>2. lépés: a minta projekt letöltése
+> 
+> - [Az iOS-hez készült kód mintájának letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+> - [Töltse le a macOS rendszerhez készült kód mintáját](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-install-dependencies"></a>3. lépés: a függőségek telepítése
 
 A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és futtassa a parancsot a `pod install` legújabb MSAL-könyvtár telepítéséhez.
 
-#### <a name="step-4-configure-your-project"></a>4. lépés: a projekt konfigurálása
-
-> [!div renderon="docs"]
-> Ha a fenti 1. lehetőséget választotta, akkor kihagyhatja ezeket a lépéseket.
-
 > [!div renderon="portal" class="sxs-lookup"]
-> 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
-> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a értéket az `kClientID` alkalmazásnak a portálon korábban a portálon való regisztrálása során mentett ügyfél-azonosítóval:
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
-> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kAuthority" kezdetű sort a következő kódrészletre:
->    ```swift
->    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
->    ```
-> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kGraphEndpoint" kezdetű sort a következő kódrészletre:
->    ```swift
->    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
->    ```
-> 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
-> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le a `CFBundleURLSchemes` -t a portálon megadott ***csomag-azonosítóra*** .
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
-> 1. Build & az alkalmazás futtatása!
-> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>4. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
+> A projektet az alkalmazás tulajdonságainak értékével konfiguráltuk, és készen áll a futtatásra.
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-> [!div renderon="docs"]
 >
+> [!div renderon="docs"]
+>#### <a name="step-4-configure-your-project"></a>4. lépés: a projekt konfigurálása
+> Ha a fenti 1. lehetőséget választotta, akkor kihagyhatja ezeket a lépéseket.
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
 > 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a értéket az `kClientID` alkalmazás a portálon korábban a portálon való regisztrálása során mentett clientID:
 >    ```swift
@@ -136,8 +112,8 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
-> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le a `Enter_the_bundle_Id_Here` -t a portálon használt ***csomag-azonosítóra*** .
+> 1. Kattintson a jobb gombbal az **info. plist** elemre, és válassza **a Megnyitás**  >  **forrásként kód**lehetőséget.
+> 1. A dict gyökérszintű csomópont alatt cserélje le a `Enter_the_bundle_Id_Here` -t a portálon használt ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -197,7 +173,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Az elemek magyarázata: ||
+> |Az elemek magyarázata: | Leírás |
 > |---------|---------|
 > | `clientId` | A *portal.azure.com* webhelyen regisztrált alkalmazásból származó alkalmazásazonosító |
 > | `authority` | A Microsoft Identity platform végpontja. Ez a legtöbb esetben *https<span/>://login.microsoftonline.com/common* |
@@ -261,7 +237,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Az elemek magyarázata:||
+> |Az elemek magyarázata:| Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 
@@ -281,12 +257,12 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Az elemek magyarázata: ||
+> |Az elemek magyarázata: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a jogkivonat-kérelmekhez a `accountsFromDeviceForParameters:completionBlock:` és a megfelelő érték beadásával.`accountIdentifier` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az iOS és macOS rendszerhez készült oktatóanyagot, amely részletes útmutatót nyújt az alkalmazások létrehozásához, beleértve a gyors útmutató részletes ismertetését is.
 

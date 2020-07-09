@@ -11,18 +11,23 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987241"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
 Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános kérdések
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Melyek a Media Services v3 Azure Portal korlátozásai?
+
+A [Azure Portal](https://portal.azure.com/) a v3 élő események kezelésére, a v3-eszközök és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. <br/>Minden egyéb felügyeleti feladathoz (például átalakítások és feladatok kezelése vagy v3 tartalom elemzése) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+
+Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V3 API-val, vagy a tartalom egy élő kimenet alapján lett létrehozva, akkor nem jelenik meg a **kódolás**, az **elemzés**vagy a **titkosítás** gomb a Azure Portal. Ezeket a feladatokat a Media Services V3 API-k használatával hajthatja végre.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök végezhetnek műveleteket Azure Media Services erőforrásokon? 
 
@@ -95,7 +100,7 @@ A (z) PlayReady, Widevine és FairPlay DRM-rendszerek mindegyike további titkos
 
 Nem kell semmilyen speciális jogkivonat-szolgáltatót használnia, például Azure Active Directory (Azure AD). Az aszimmetrikus kulcsú titkosítás használatával saját [JWT](https://jwt.io/) -szolgáltatót (úgynevezett biztonságos jogkivonat-szolgáltatást vagy STS-t) is létrehozhat. Az egyéni STS-ben az üzleti logikája alapján adhat hozzá jogcímeket.
 
-Győződjön meg arról, hogy a kibocsátó, a célközönség és a jogcímek pontosan egyeznek a JWT és a `ContentKeyPolicyRestriction` által `ContentKeyPolicy`használt érték között.
+Győződjön meg arról, hogy a kibocsátó, a célközönség és a jogcímek pontosan egyeznek a JWT és a `ContentKeyPolicyRestriction` által használt érték között `ContentKeyPolicy` .
 
 További információ: [a tartalom Media Services dinamikus titkosítással való védelemmel](content-protection-overview.md)való ellátása.
 
@@ -109,7 +114,7 @@ Az STS szimmetrikus kulccsal vagy aszimmetrikus kulccsal való futtatására pé
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hogyan engedélyezi a videók AES-titkosítással való továbbítását?
 
-A helyes módszer a biztonságos jogkivonat-szolgáltatás használata. Az STS-ben a felhasználói profiltól függően adjon hozzá különböző jogcímeket (például "prémium szintű felhasználó", "alapszintű felhasználó", ingyenes próbaverziós felhasználó). A JWT eltérő jogcímek esetén a felhasználó különböző tartalmakat láthat. A különböző tartalmakhoz és eszközökhöz a megfelelő `ContentKeyPolicyRestriction` `RequiredClaims` érték lesz.
+A helyes módszer a biztonságos jogkivonat-szolgáltatás használata. Az STS-ben a felhasználói profiltól függően adjon hozzá különböző jogcímeket (például "prémium szintű felhasználó", "alapszintű felhasználó", ingyenes próbaverziós felhasználó). A JWT eltérő jogcímek esetén a felhasználó különböző tartalmakat láthat. A különböző tartalmakhoz és eszközökhöz `ContentKeyPolicyRestriction` a megfelelő `RequiredClaims` érték lesz.
 
 Azure Media Services API-k használatával konfigurálhatja a licencek/kulcsok küldését és titkosíthatja az adategységeket (ahogy az [ebben a mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)is látható).
 
@@ -140,7 +145,7 @@ Pontosan ugyanazt a kialakítást és megvalósítást használhatja a Media Ser
 Az ügyfelek gyakran a saját adatközpontjában vagy a DRM-szolgáltatók által üzemeltetett licencelési kiszolgálófarm egyik farmján fektettek be. A Media Services Content Protection használatával hibrid módban is működhet. A tartalom üzemeltethető és dinamikusan védhető Media Servicesban, míg a DRM-licenceket a Media Serviceson kívüli kiszolgálók is továbbítják. Ebben az esetben vegye figyelembe a következő változásokat:
 
 * Az STS-nek olyan jogkivonatokat kell kiállítania, amelyek elfogadhatók, és a licenckiszolgáló-Farm ellenőrizheti őket. A Axinom által biztosított Widevine-licenckiszolgálók például egy adott JWT igényelnek, amely jogosultsági üzenetet tartalmaz. Egy ilyen JWT kibocsátásához STS szükséges. 
-* Már nem kell konfigurálnia a Media Services licenc kézbesítési szolgáltatását. A konfiguráláskor `ContentKeyPolicy`meg kell adnia a licenc-beszerzési URL-címeket (a PlayReady, a Widevine és a Fairplay).
+* Már nem kell konfigurálnia a Media Services licenc kézbesítési szolgáltatását. A konfiguráláskor meg kell adnia a licenc-beszerzési URL-címeket (a PlayReady, a Widevine és a FairPlay) `ContentKeyPolicy` .
 
 > [!NOTE]
 > A Widevine a Google által biztosított szolgáltatás, amely a Google használati feltételeinek és adatvédelmi szabályzatának hatálya alá tartozik.
@@ -193,11 +198,11 @@ Az FPS Server SDK 4-es verziója óta ez a dokumentum a "FairPlay streaming prog
 
 Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. 
 
-Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy szám, amely a videó tartalmát tartalmazza. A numerikus érték a videó-kiadatások maximális sávszélessége. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. A nevű `Data` harmadik mappa tartalmazza az fps-tartalom fő lejátszási listáját. Végül a boot. XML a `.movpkg` mappa tartalmának teljes leírását tartalmazza. 
+Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy szám, amely a videó tartalmát tartalmazza. A numerikus érték a videó-kiadatások maximális sávszélessége. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. A nevű harmadik mappa `Data` tartalmazza az fps-tartalom fő lejátszási listáját. Végezetül boot.xml a mappa tartalmának teljes leírását tartalmazza `.movpkg` . 
 
 ![Offline FairPlay iOS-minta alkalmazáshoz](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-Íme egy minta rendszerindító. xml fájl:
+Példa boot.xml fájlra:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -231,10 +236,10 @@ Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy szám, 
 
 #### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Hogyan biztosíthatok állandó licenceket (offline) az egyes ügyfelek/felhasználók és a nem állandó licencek (offline letiltva) számára mások számára? Duplikálni kell a tartalmat, és külön tartalmi kulcsokat kell használniuk?
 
-Mivel a Media Services v3 lehetővé teszi, hogy egy `StreamingLocator` eszköz több példányban is legyen, a következőket teheti:
+Mivel a Media Services v3 lehetővé teszi, hogy egy eszköz több `StreamingLocator` példányban is legyen, a következőket teheti:
 
-* Egy `ContentKeyPolicy` példány, `license_type = "persistent"`a `ContentKeyPolicyRestriction` következővel: `"persistent"`, jogcím: `StreamingLocator`,.
-* Egy `ContentKeyPolicy` másik példány `license_type="nonpersistent"` `ContentKeyPolicyRestriction` , amely a ( `"nonpersistent`z `StreamingLocator`) és a (z) jogcímevel rendelkezik.
+* Egy példány, a következővel: `ContentKeyPolicy` `license_type = "persistent"` , `ContentKeyPolicyRestriction` jogcím: `"persistent"` , `StreamingLocator` .
+* Egy másik példány, amely a (z) és a (z `ContentKeyPolicy` `license_type="nonpersistent"` `ContentKeyPolicyRestriction` ) jogcímevel rendelkezik `"nonpersistent` `StreamingLocator` .
 * Két `StreamingLocator` példány, amelyek eltérő `ContentKey` értékekkel rendelkeznek.
 
 Az egyéni STS üzleti logikától függően a rendszer különböző jogcímeket ad ki a JWT-jogkivonatban. A jogkivonattal csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím játszható le.
@@ -243,7 +248,7 @@ Az egyéni STS üzleti logikától függően a rendszer különböző jogcímeke
 
 A Google "Widevine DRM-architektúra áttekintése" három biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációja](widevine-license-template-overview.md) azonban öt biztonsági szintet vázol fel (a lejátszási ügyfél megbízhatósági követelményei). Ez a szakasz a biztonsági szintek leképezését ismerteti.
 
-A Google Widevine a biztonsági szintek mindkét készletét definiálja. A különbség a használati szint: architektúra vagy API. Az öt biztonsági szint a Widevine API-ban használatos. A `content_key_specs` -t tartalmazó `security_level`objektumot a rendszer deszerializálja, és átadja a Widevine globális kézbesítési szolgáltatásnak a Azure Media Services Widevine License Service. A következő táblázat a két biztonsági szint közötti leképezést mutatja be.
+A Google Widevine a biztonsági szintek mindkét készletét definiálja. A különbség a használati szint: architektúra vagy API. Az öt biztonsági szint a Widevine API-ban használatos. A `content_key_specs` -t tartalmazó objektumot a `security_level` rendszer deszerializálja, és átadja a Widevine globális kézbesítési szolgáltatásnak a Azure Media Services Widevine License Service. A következő táblázat a két biztonsági szint közötti leképezést mutatja be.
 
 | **A Widevine architektúrában definiált biztonsági szintek** |**A Widevine API-ban használt biztonsági szintek**|
 |---|---| 

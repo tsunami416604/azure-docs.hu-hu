@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005954"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT záradék Azure Cosmos DB
 
-Minden lekérdezés tartalmaz egy `SELECT` záradékot, és nem kötelező [a](sql-query-from.md) és [Where](sql-query-where.md) ZÁRADÉKok alapján, az ANSI SQL-szabványoknak megfelelően. A `FROM` záradékban általában a forrás szerepel, a `WHERE` záradék pedig egy szűrőt alkalmaz a forráson a JSON-elemek egy részhalmazának lekéréséhez. Ezután `SELECT` a záradék a kért JSON-értékeket a kiválasztási listán adja meg.
+Minden lekérdezés tartalmaz egy `SELECT` záradékot, és nem kötelező [a](sql-query-from.md) és [Where](sql-query-where.md) záradékok alapján, az ANSI SQL-szabványoknak megfelelően. A záradékban általában a forrás szerepel `FROM` , a `WHERE` záradék pedig egy szűrőt alkalmaz a forráson a JSON-elemek egy részhalmazának lekéréséhez. `SELECT`Ezután a záradék a kért JSON-értékeket a kiválasztási listán adja meg.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -61,7 +60,7 @@ SELECT <select_specification>
 
 A `SELECT *` szintaxis csak akkor érvényes, ha a from záradék pontosan egy aliast deklarált. `SELECT *`identitás-kivetítést biztosít, amely akkor lehet hasznos, ha nincs szükség leképezésre. A SELECT * utasítás csak akkor érvényes, ha a FROM záradék meg van adva, és csak egyetlen bemeneti forrást mutat be.  
   
-`SELECT *` Mindkettő `SELECT <select_list>` "szintaktikai cukor", és az alábbiakban látható egyszerű Select utasításokkal is megadható.  
+Mindkettő `SELECT <select_list>` `SELECT *` "szintaktikai cukor", és az alábbiakban látható egyszerű Select utasításokkal is megadható.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -77,7 +76,7 @@ A `SELECT *` szintaxis csak akkor érvényes, ha a from záradék pontosan egy a
   
 ## <a name="examples"></a>Példák
 
-A következő SELECT lekérdezési példa `address` azt `Families` adja `id` vissza `AndersenFamily`, hogy mely egyezések közül választhat:
+A következő SELECT lekérdezési példa azt adja vissza `address` , hogy `Families` mely `id` egyezések közül választhat `AndersenFamily` :
 
 ```sql
     SELECT f.address
@@ -99,6 +98,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE záradék](sql-query-where.md)

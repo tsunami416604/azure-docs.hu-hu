@@ -3,15 +3,15 @@ title: Migrálás a tömeges végrehajtó könyvtárából a Azure Cosmos DB .NE
 description: Ismerje meg, hogyan migrálhatja az alkalmazást a tömeges végrehajtó kódtár használatával a Azure Cosmos DB SDK v3-es verziójának tömeges támogatásához
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f204b6d73f121b8f05c807d6be47c36c006f607
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261426"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrálás a tömeges végrehajtó könyvtárából a Azure Cosmos DB .NET v3 SDK tömeges támogatásához
 
@@ -33,25 +33,25 @@ Ha például a kezdeti bemenet azon elemek listája, amelyekben az egyes elemek 
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Ha tömeges importálást szeretne végezni (hasonlóan a BulkExecutor. BulkImportAsync-hoz), akkor egyidejű hívásokkal kell rendelkeznie `CreateItemAsync`. Például:
+Ha tömeges importálást szeretne végezni (hasonlóan a BulkExecutor. BulkImportAsync-hoz), akkor egyidejű hívásokkal kell rendelkeznie `CreateItemAsync` . Például:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Ha a tömeges *frissítést* szeretné elvégezni (a [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)-hez hasonlóan), az elem értékének frissítése után egyidejű `ReplaceItemAsync` hívásokkal kell rendelkeznie a metódushoz. Például:
+Ha a tömeges *frissítést* szeretné elvégezni (a [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)-hez hasonlóan), `ReplaceItemAsync` az elem értékének frissítése után egyidejű hívásokkal kell rendelkeznie a metódushoz. Például:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-Ha pedig tömeges *törlést* szeretne végezni (hasonlóan a [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)-hoz), az `DeleteItemAsync` `id` egyes elemek és partíciós kulcsával párhuzamos hívásokat kell megadnia a szolgáltatáshoz. Például:
+Ha pedig tömeges *törlést* szeretne végezni (hasonlóan a [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)-hoz), `DeleteItemAsync` az `id` egyes elemek és partíciós kulcsával párhuzamos hívásokat kell megadnia a szolgáltatáshoz. Például:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
 ## <a name="capture-task-result-state"></a>Rögzítési feladat eredményének állapota
 
-A korábbi példákban a feladatok egyidejű listáját hoztuk létre, és minden egyes feladathoz meghívjuk a `CaptureOperationResponse` metódust. Ez a módszer egy olyan bővítmény, amely lehetővé teszi, hogy a BulkExecutor *hasonló választ* lehessen fenntartani a hibák rögzítésével és a [kérési egységek használatának](request-units.md)nyomon követésével.
+A korábbi példákban a feladatok egyidejű listáját hoztuk létre, és `CaptureOperationResponse` minden egyes feladathoz meghívjuk a metódust. Ez a módszer egy olyan bővítmény, amely lehetővé teszi, hogy a BulkExecutor *hasonló választ* lehessen fenntartani a hibák rögzítésével és a [kérési egységek használatának](request-units.md)nyomon követésével.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
-Ahol a `OperationResponse` a következőképpen van deklarálva:
+Ahol a a `OperationResponse` következőképpen van deklarálva:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="OperationResult":::
 
@@ -80,7 +80,7 @@ A `BulkOperationResponse` tartalmazza a következőket:
 
 ## <a name="retry-configuration"></a>Újrapróbálkozási konfiguráció
 
-A tömeges végrehajtó függvénytár [útmutatása](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) szerint megemlítette, `MaxRetryWaitTimeInSeconds` hogy `MaxRetryAttemptsOnThrottledRequests` az és a `0` [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) a vezérlés delegálására a könyvtárba.
+A tömeges végrehajtó függvénytár [útmutatása](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) szerint megemlítette, hogy az `MaxRetryWaitTimeInSeconds` és `MaxRetryAttemptsOnThrottledRequests` a [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) a `0` vezérlés delegálására a könyvtárba.
 
 A .NET SDK tömeges támogatásához nincs rejtett viselkedés. Az újrapróbálkozási beállításokat közvetlenül a [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) és a [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)használatával konfigurálhatja.
 
@@ -91,7 +91,7 @@ A .NET SDK tömeges támogatásához nincs rejtett viselkedés. Az újrapróbál
 
 A .NET SDK-val végzett egyéb műveletekhez hasonlóan a stream API-k segítségével jobb teljesítményt és a szükségtelen szerializálást is elkerülheti. 
 
-A stream API-k használata csak akkor lehetséges, ha a használt adat természete megegyezik a bájtos adatfolyamok (például a fájlok streamek) természetétől. Ilyen `CreateItemStreamAsync`esetekben a, `ReplaceItemStreamAsync`vagy `DeleteItemStreamAsync` a metódusok és a `ResponseMessage` (helyett `ItemResponse`) használata növeli az elérhető átviteli sebességet.
+A stream API-k használata csak akkor lehetséges, ha a használt adat természete megegyezik a bájtos adatfolyamok (például a fájlok streamek) természetétől. Ilyen esetekben a `CreateItemStreamAsync` , `ReplaceItemStreamAsync` vagy a `DeleteItemStreamAsync` metódusok és a `ResponseMessage` (helyett `ItemResponse` ) használata növeli az elérhető átviteli sebességet.
 
 ## <a name="next-steps"></a>További lépések
 

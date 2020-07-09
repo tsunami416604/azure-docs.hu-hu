@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042623"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők kiépítése és katalógusa egy SaaS-alkalmazásban többvállalatos több-bérlős Azure SQL Database használatával
@@ -156,7 +155,7 @@ A következő a kiépítési munkafolyamat legfontosabb elemei:
 
 Annak megismeréséhez, hogy a Wingtip alkalmazás hogyan valósítja meg az új bérlők üzembe helyezését egy megosztott adatbázisban, adjon hozzá egy töréspontot és egy lépést a munkafolyamaton keresztül:
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Tanulási modulok \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* és állítsa be a következő paramétereket:
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A Learning \\ -modulok ProvisionTenants \\ *Demo-ProvisionTenants.ps1* , és a következő paramétereket kell megadni:
    - **$TenantName**  =  **Bushwillow blues**, egy új helyszín neve.
    - **$VenueType**  =  **blues**, az egyik előre definiált helyszín típusa: blues, ClassicalMusic, Dance, jazz, judo, Motorsport, többcélú, Opera, rockzene, Soccer (kisbetűs, nincs szóköz).
    - **$DemoScenario**  =  **1**. a bérlők kiépítése egy megosztott adatbázisban más bérlők használatával.
@@ -196,7 +195,7 @@ Az alábbiakban a parancsfájl nyomkövetésének lépésein áthaladó munkafol
 
 Most járjon végig a parancsfájlon, amikor a bérlőt a saját adatbázisában hozza létre:
 
-1. Továbbra is.. \\ . \\Az ProvisionTenants \\ *demo-ProvisionTenants. Ps1* learning-modulok a következő paramétereket határozzák meg:
+1. Továbbra is.. \\ . A tanulási modulok \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* a következő paramétereket adja meg:
    - **$TenantName**  =  **Sequoia Soccer**, egy új helyszín neve.
    - **$VenueType**  =  **futball**, az egyik előre definiált helyszín típusa: blues, ClassicalMusic, Dance, jazz, judo, Motorsport, többcélú, Opera, rockzene, Soccer (kisbetű, nem szóköz).
    - **$DemoScenario**  =  **2**. a bérlő kiépítése a saját adatbázisba.
@@ -213,7 +212,7 @@ Most járjon végig a parancsfájlon, amikor a bérlőt a saját adatbázisában
 
 Ez a gyakorlat 17 bérlős köteget foglal le. Javasoljuk, hogy a bérlők számára kiépítse ezt a köteget, mielőtt más Wingtip-jegyeket is megkezdenén, hogy több adatbázis működjön együtt a szolgáltatással.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Learning \\ -modulok ProvisionTenants \\ *demo-ProvisionTenants. ps1* , és módosítsa a *$DemoScenario* paramétert 4-re:
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A Learning \\ -modulok ProvisionTenants \\ *Demo-ProvisionTenants.ps1* , és a *$DemoScenario* paramétert a 4 értékre kell módosítani:
    - **$DemoScenario**  =  **4**. a bérlők kötegének kiépítése egy megosztott adatbázisba.
 
 2. Nyomja le az **F5** billentyűt, és futtassa a szkriptet.

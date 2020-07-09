@@ -7,19 +7,18 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
 ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969154"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Csomagok frissítése és telepítése a Cloud-init használatával Linux rendszerű virtuális gépen az Azure-ban
 Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.io) használatával frissíteni a csomagokat egy linuxos virtuális GÉPEN (VM) vagy virtuálisgép-méretezési csoportokban az Azure üzembe helyezési ideje alatt. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
 
 ## <a name="update-a-vm-with-cloud-init"></a>Virtuális gép frissítése a Cloud-init használatával
-Biztonsági okokból érdemes lehet úgy konfigurálni a virtuális gépet, hogy az első rendszerindításkor alkalmazza a legújabb frissítéseket. Mivel a Cloud-init a különböző Linux-disztribúciókban működik, nem kell `apt` megadnia `yum` vagy a Package Managert. Ehelyett definiálja `package_upgrade` , és hagyja, hogy a felhő-init folyamat meghatározza a megfelelő mechanizmust a használatban lévő disztribúcióhoz. Ez a munkafolyamat lehetővé teszi, hogy ugyanazt a Cloud-init parancsfájlt használja a disztribúciók között.
+Biztonsági okokból érdemes lehet úgy konfigurálni a virtuális gépet, hogy az első rendszerindításkor alkalmazza a legújabb frissítéseket. Mivel a Cloud-init a különböző Linux-disztribúciókban működik, nem kell megadnia `apt` vagy `yum` a Package Managert. Ehelyett definiálja, `package_upgrade` és hagyja, hogy a felhő-init folyamat meghatározza a megfelelő mechanizmust a használatban lévő disztribúcióhoz. Ez a munkafolyamat lehetővé teszi, hogy ugyanazt a Cloud-init parancsfájlt használja a disztribúciók között.
 
-A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt a *cloud_init_upgrade. txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_upgrade.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
+A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt a *cloud_init_upgrade.txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_upgrade.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
 
 ```yaml
 #cloud-config
@@ -34,7 +33,7 @@ A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot a
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a `--custom-data cloud_init_upgrade.txt` Cloud-init fájlt a következő módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a Cloud-init fájlt a `--custom-data cloud_init_upgrade.txt` következő módon:
 
 ```azurecli-interactive 
 az vm create \
@@ -57,7 +56,7 @@ Futtassa a csomagkezelő eszközt, és keressen frissítéseket.
 sudo yum update
 ```
 
-Mivel a Cloud-init bejelölte és telepítette a frissítéseket a rendszerindításhoz, nem kell további frissítéseket alkalmaznia.  Ekkor megjelenik a frissítési folyamat, a módosított csomagok száma, valamint a telepítésének `httpd` menete, `yum history` és az alábbihoz hasonló kimenet tekinthető meg.
+Mivel a Cloud-init bejelölte és telepítette a frissítéseket a rendszerindításhoz, nem kell további frissítéseket alkalmaznia.  Ekkor megjelenik a frissítési folyamat, a módosított csomagok száma, valamint a telepítésének menete, `httpd` `yum history` és az alábbihoz hasonló kimenet tekinthető meg.
 
 ```bash
 Loaded plugins: fastestmirror, langpacks

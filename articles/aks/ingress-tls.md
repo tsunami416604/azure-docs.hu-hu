@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 04/27/2020
 ms.openlocfilehash: 59f1b63a5c72ed5583b88af9e42bf5337f358b47
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561896"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
@@ -46,7 +46,7 @@ A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. Windows
 > A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű*forgalomhoz. Szükség szerint adja meg a saját környezetének névterét.
 
 > [!TIP]
-> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja `--set controller.service.externalTrafficPolicy=Local` hozzá a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha az ügyfél-forrás IP-megtartást engedélyező bejövő vezérlőt használ, a TLS-áteresztő nem fog működni.
+> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha az ügyfél-forrás IP-megtartást engedélyező bejövő vezérlőt használ, a TLS-áteresztő nem fog működni.
 
 ```console
 # Create a namespace for your ingress resources
@@ -65,7 +65,7 @@ helm install nginx stable/nginx-ingress \
 
 A telepítés során létrejön egy Azure nyilvános IP-cím a beléptetési vezérlőhöz. Ez a nyilvános IP-cím statikus a bejövő vezérlő élettartama szempontjából. Ha törli a beáramló vezérlőt, a nyilvános IP-cím hozzárendelés elvész. Ha ezután létrehoz egy további bejövő vezérlőt, a rendszer egy új nyilvános IP-címet rendel hozzá. Ha meg szeretné őrizni a nyilvános IP-cím használatát, helyette [létrehozhat egy statikus nyilvános IP-címmel rendelkező bejövő vezérlőt][aks-ingress-static-tls]is.
 
-A nyilvános IP-cím lekéréséhez használja `kubectl get service` az parancsot. Néhány percet vesz igénybe, hogy az IP-cím hozzá legyen rendelve a szolgáltatáshoz.
+A nyilvános IP-cím lekéréséhez használja az `kubectl get service` parancsot. Néhány percet vesz igénybe, hogy az IP-cím hozzá legyen rendelve a szolgáltatáshoz.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -140,9 +140,9 @@ A tanúsítvány-kezelő konfigurálásával kapcsolatos további információk�
 
 ## <a name="create-a-ca-cluster-issuer"></a>HITELESÍTÉSSZOLGÁLTATÓI fürt kiállítójának létrehozása
 
-A tanúsítványok kiállítása előtt a tanúsítvány-kezelőnek [kiállítói][cert-manager-issuer] vagy [ClusterIssuer][cert-manager-cluster-issuer] erőforrásra van szüksége. Ezek a Kubernetes-erőforrások azonosak a funkcionalitással, azonban `Issuer` egyetlen névtérben működnek `ClusterIssuer` , és az összes névtérben működnek. További információt a [tanúsítvány-kezelő kiállítói][cert-manager-issuer] dokumentációjában talál.
+A tanúsítványok kiállítása előtt a tanúsítvány-kezelőnek [kiállítói][cert-manager-issuer] vagy [ClusterIssuer][cert-manager-cluster-issuer] erőforrásra van szüksége. Ezek a Kubernetes-erőforrások azonosak a funkcionalitással, azonban `Issuer` egyetlen névtérben működnek, és az `ClusterIssuer` összes névtérben működnek. További információt a [tanúsítvány-kezelő kiállítói][cert-manager-issuer] dokumentációjában talál.
 
-Hozzon létre egy fürt kiállítóját, `cluster-issuer.yaml`például:, a következő példa jegyzékfájl használatával. Frissítse az e-mail-címet a szervezete érvényes címével:
+Hozzon létre egy fürt kiállítóját, például: `cluster-issuer.yaml` , a következő példa jegyzékfájl használatával. Frissítse az e-mail-címet a szervezete érvényes címével:
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -171,7 +171,7 @@ kubectl apply -f cluster-issuer.yaml
 
 Be van állítva egy bejövő vezérlő és egy tanúsítványkezelő megoldás. Most futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában a Helm egy egyszerű *Hello World* -alkalmazás két példányának üzembe helyezésére szolgál.
 
-A beáramló vezérlő működés közbeni megtekintéséhez futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában egy egyszerű `kubectl apply` *Helló World* -alkalmazás két példányának üzembe helyezésére használható.
+A beáramló vezérlő működés közbeni megtekintéséhez futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában `kubectl apply` egy egyszerű *Helló World* -alkalmazás két példányának üzembe helyezésére használható.
 
 Hozzon létre egy *AK-HelloWorld-One. YAML* fájlt, és másolja a következő PÉLDÁBAN szereplő YAML:
 
@@ -249,7 +249,7 @@ spec:
     app: aks-helloworld-two
 ```
 
-Futtassa a két bemutató alkalmazást a `kubectl apply`használatával:
+Futtassa a két bemutató alkalmazást a használatával `kubectl apply` :
 
 ```console
 kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
@@ -258,14 +258,14 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 ## <a name="create-an-ingress-route"></a>Bejövő forgalom útvonalának létrehozása
 
-Mindkét alkalmazás már fut a Kubernetes-fürtön. Azonban olyan típusú `ClusterIP` szolgáltatással vannak konfigurálva, amely nem érhető el az internetről. A nyilvánosan elérhetővé tételéhez hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
+Mindkét alkalmazás már fut a Kubernetes-fürtön. Azonban olyan típusú szolgáltatással vannak konfigurálva, amely `ClusterIP` nem érhető el az internetről. A nyilvánosan elérhetővé tételéhez hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
 
 A következő példában a *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN* az *AK-HelloWorld* szolgáltatáshoz van irányítva. A *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN/Hello-World-Two* átirányítva az *AK-HelloWorld-Two* szolgáltatáshoz. Forgalom a *Hello-World-inbehatolással. MY_CUSTOM_DOMAIN/statikus* a rendszer a (z) *HelloWorld* nevű szolgáltatáshoz irányítja a statikus eszközökhöz.
 
 > [!NOTE]
-> Ha az egyéni tartomány helyett a bejövő vezérlő IP-címéhez teljes tartománynevet állított be, akkor a *Hello-World-beáramló helyett használja a teljes tartománynevet. MY_CUSTOM_DOMAIN*. Például ha a teljes tartománynév *demo-AKS-ingress.eastus.cloudapp.Azure.com*, cserélje le a *Hello-World-inbehatolást. MY_CUSTOM_DOMAIN* a *demo-AKS-ingress.eastus.cloudapp.Azure.com* a `hello-world-ingress.yaml`alkalmazásban.
+> Ha az egyéni tartomány helyett a bejövő vezérlő IP-címéhez teljes tartománynevet állított be, akkor a *Hello-World-beáramló helyett használja a teljes tartománynevet. MY_CUSTOM_DOMAIN*. Például ha a teljes tartománynév *demo-AKS-ingress.eastus.cloudapp.Azure.com*, cserélje le a *Hello-World-inbehatolást. MY_CUSTOM_DOMAIN* a *demo-AKS-ingress.eastus.cloudapp.Azure.com* a alkalmazásban `hello-world-ingress.yaml` .
 
-Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt az alábbi példa YAML használatával. Frissítse a *gazdagépeket és a* *gazdagépet* az előző lépésben létrehozott DNS-névre.
+Hozzon létre egy nevű fájlt `hello-world-ingress.yaml` az alábbi példa YAML használatával. Frissítse a *gazdagépeket és a* *gazdagépet* az előző lépésben létrehozott DNS-névre.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -327,7 +327,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 Ezután létre kell hozni egy tanúsítvány-erőforrást. A tanúsítvány erőforrása határozza meg a kívánt X. 509 tanúsítványt. További információ: [CERT-Manager-tanúsítványok][cert-manager-certificates]. A CERT-Manager automatikusan létrehozott egy tanúsítvány-objektumot a bejövő forgalom használatával, amelyet a rendszer automatikusan üzembe helyez a CERT-Managerrel a v 0.2.2 óta. További információkért lásd a bejövő adatokról szóló [dokumentációt][ingress-shim].
 
-A tanúsítvány sikeres létrehozásának ellenőrzéséhez használja a `kubectl get certificate --namespace ingress-basic` parancsot, és ellenőrizze, hogy a *kész* érték *igaz*-e, ami több percet is igénybe vehet.
+A tanúsítvány sikeres létrehozásának ellenőrzéséhez használja a parancsot, és ellenőrizze, hogy a `kubectl get certificate --namespace ingress-basic` *kész* érték *igaz*-e, ami több percet is igénybe vehet.
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -340,7 +340,7 @@ tls-secret   True    tls-secret   11m
 
 Nyisson meg egy webböngészőt a *Hello-World-inbehatolás szolgáltatásban. MY_CUSTOM_DOMAIN* a Kubernetes bejövő adatkezelője. Figyelje meg, hogy a HTTPS használatára van átirányítva, és a tanúsítvány megbízható, és a bemutató alkalmazás megjelenik a böngészőben. Adja hozzá a */Hello-World-Two* elérési útját, és figyelje meg, hogy a második bemutató alkalmazás az egyéni címmel jelenik meg.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ez a cikk a beáramlási összetevők, a tanúsítványok és a minta alkalmazások telepítéséhez használható. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -360,7 +360,7 @@ Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozot
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Sorolja fel az `helm list` paranccsal a Helm kiadásait. Keresse meg az *Nginx* és a *CERT-Manager*nevű diagramot az alábbi példában látható módon:
+Sorolja fel az paranccsal a Helm kiadásait `helm list` . Keresse meg az *Nginx* és a *CERT-Manager*nevű diagramot az alábbi példában látható módon:
 
 ```
 $ helm list --namespace ingress-basic

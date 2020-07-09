@@ -15,10 +15,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128009"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL a MSAL áttelepítési útmutató Javához
@@ -43,13 +43,13 @@ Ha az Azure AD for Developers (1.0) végpont (és a ADAL4J) használatával dolg
 
 A ADAL4J az erőforrások jogkivonatait szerzi be, míg a Java-MSAL a hatókörökhöz tartozó jogkivonatokat vásárol. A Java-osztályokhoz számos MSAL szükséges. Ez a paraméter a szükséges engedélyeket és erőforrásokat deklaráló karakterláncok listája. Tekintse [meg a Microsoft Graph hatókörét](https://docs.microsoft.com/graph/permissions-reference) a példa hatókörök megjelenítéséhez.
 
-A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazásokat a 1.0-s verziójú végpontról (ADAL) a Microsoft Identity platform-végpontra (MSAL) telepítse. A (z) erőforrás értékének `https://graph.microsoft.com`megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default`.  Ha az erőforrás nem szerepel az URL-címben, de az űrlap `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`erőforrás-azonosítója, továbbra is használhatja a hatókör értékét. `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`
+A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazásokat a 1.0-s verziójú végpontról (ADAL) a Microsoft Identity platform-végpontra (MSAL) telepítse. A (z) erőforrás értékének `https://graph.microsoft.com` megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default` .  Ha az erőforrás nem szerepel az URL-címben, de az űrlap erőforrás-azonosítója `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , továbbra is használhatja a hatókör értékét `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 A különböző típusú hatókörökkel kapcsolatos további részletekért tekintse [meg a Microsoft Identity platform engedélyeit és](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) a hozzájuk tartozó jogosultságokat, valamint a webes API-k 1.0-s verzióinak [elfogadására vonatkozó](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) cikkeket.
 
 ## <a name="core-classes"></a>Alapvető osztályok
 
-A ADAL4J-ben `AuthenticationContext` az osztály a biztonsági jogkivonat szolgáltatással (STS) vagy az engedélyezési kiszolgálóval létesített kapcsolatát jelenti a szolgáltatón keresztül. A Java-hoz készült MSAL azonban ügyfélalkalmazások köré épülnek. Két különálló osztályt biztosít: `PublicClientApplication` `ConfidentialClientApplication` az ügyfélalkalmazások képviseletére.  Ez utóbbi `ConfidentialClientApplication`egy olyan alkalmazást jelent, amely biztonságos karbantartást, például egy Daemon-alkalmazás alkalmazás-azonosítóját jelöli.
+A ADAL4J-ben az `AuthenticationContext` osztály a biztonsági jogkivonat szolgáltatással (STS) vagy az engedélyezési kiszolgálóval létesített kapcsolatát jelenti a szolgáltatón keresztül. A Java-hoz készült MSAL azonban ügyfélalkalmazások köré épülnek. Két különálló osztályt biztosít: `PublicClientApplication` `ConfidentialClientApplication` az ügyfélalkalmazások képviseletére.  Ez utóbbi `ConfidentialClientApplication` egy olyan alkalmazást jelent, amely biztonságos karbantartást, például egy Daemon-alkalmazás alkalmazás-azonosítóját jelöli.
 
 A következő táblázat azt mutatja be, hogy a ADAL4J functions hogyan képezhető le a Java functions új MSAL:
 
@@ -69,7 +69,7 @@ A következő táblázat azt mutatja be, hogy a ADAL4J functions hogyan képezhe
 
 ADAL4J manipulált felhasználók. Bár a felhasználók egyetlen emberi vagy szoftveres ügynököt jelölnek, a Microsoft Identity rendszer egy vagy több fiókja is lehet. Előfordulhat például, hogy egy felhasználó több Azure AD-, Azure AD B2C-vagy személyes Microsoft-fiókkal rendelkezik.
 
-A Javához készült MSAL a `IAccount` felhasználói felületen keresztül határozza meg a fiók fogalmát. Ez egy ADAL4J-változás, de ez egy jó megoldás, mivel ez azt a tényt rögzíti, hogy ugyanaz a felhasználó több fiókkal is rendelkezhet, és talán akár különböző Azure AD-címtárakban is. A MSAL for Java jobb információkat biztosít a vendég forgatókönyvekhez, mert a rendszer megadja az otthoni fiók adatait.
+A Javához készült MSAL a felhasználói felületen keresztül határozza meg a fiók fogalmát `IAccount` . Ez egy ADAL4J-változás, de ez egy jó megoldás, mivel ez azt a tényt rögzíti, hogy ugyanaz a felhasználó több fiókkal is rendelkezhet, és talán akár különböző Azure AD-címtárakban is. A MSAL for Java jobb információkat biztosít a vendég forgatókönyvekhez, mert a rendszer megadja az otthoni fiók adatait.
 
 ## <a name="cache-persistence"></a>Gyorsítótár-megőrzés
 
@@ -78,9 +78,9 @@ A MSAL for Java egy [jogkivonat-gyorsítótárat](msal-acquire-cache-tokens.md) 
 
 ## <a name="common-authority"></a>Általános szolgáltató
 
-A v 1.0-s verzióban, `https://login.microsoftonline.com/common` ha a hatóságot használja, a felhasználók bármilyen Azure Active Directory-(HRE-) fiókkal bejelentkezhetnek (bármely szervezet esetében).
+A v 1.0-s verzióban, ha a `https://login.microsoftonline.com/common` hatóságot használja, a felhasználók bármilyen Azure Active Directory-(HRE-) fiókkal bejelentkezhetnek (bármely szervezet esetében).
 
-Ha a szolgáltatót `https://login.microsoftonline.com/common` a 2.0-s verzióban használja, a felhasználók bármely HRE-szervezettel, vagy akár egy személyes Microsoft-fiókkal (MSA) is bejelentkezhetnek. A MSAL for Java esetében, ha korlátozni szeretné a bejelentkezést bármely HRE-fiókra, akkor a `https://login.microsoftonline.com/organizations` szolgáltatót kell használnia (ez ugyanaz, mint a ADAL4J esetében). A szolgáltató megadásához állítsa a `authority` paramétert a [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) metódusban az `PublicClientApplication` osztály létrehozásakor.
+Ha a szolgáltatót a 2.0-s `https://login.microsoftonline.com/common` verzióban használja, a felhasználók bármely HRE-szervezettel, vagy akár egy személyes Microsoft-fiókkal (MSA) is bejelentkezhetnek. A MSAL for Java esetében, ha korlátozni szeretné a bejelentkezést bármely HRE-fiókra, akkor a szolgáltatót kell használnia `https://login.microsoftonline.com/organizations` (ez ugyanaz, mint a ADAL4J esetében). A szolgáltató megadásához állítsa a `authority` paramétert a [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) metódusban az osztály létrehozásakor `PublicClientApplication` .
 
 ## <a name="v10-and-v20-tokens"></a>1.0-s és v 2.0-tokenek
 
@@ -92,7 +92,7 @@ A 1.0-s és a 2.0-s verziókkal kapcsolatos további információkért lásd: [A
 
 ## <a name="adal-to-msal-migration"></a>ADAL a MSAL áttelepítéséhez
 
-A ADAL4J a frissítési jogkivonatok elérhetők – ami lehetővé tette a fejlesztők számára a gyorsítótárazást. Ezeket a megoldásokat olyan `AcquireTokenByRefreshToken()` megoldások engedélyezésére használják, mint például a hosszan futó szolgáltatások megvalósítása, amelyek az irányítópultokat a felhasználó nevében frissítik, ha a felhasználó már nem csatlakozik.
+A ADAL4J a frissítési jogkivonatok elérhetők – ami lehetővé tette a fejlesztők számára a gyorsítótárazást. Ezeket a megoldásokat olyan megoldások engedélyezésére használják, mint például a `AcquireTokenByRefreshToken()` hosszan futó szolgáltatások megvalósítása, amelyek az irányítópultokat a felhasználó nevében frissítik, ha a felhasználó már nem csatlakozik.
 
 A MSAL for Java nem teszi lehetővé biztonsági okokból a frissítési jogkivonatokat. Ehelyett a MSAL kezeli a frissítő tokeneket.
 

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844589"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Oktatóanyag: közzététel, előfizetés a Felhőbeli eseményekre
@@ -67,7 +66,7 @@ Az új függvényben kattintson a jobb felső sarokban található **függvény 
 
 Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A témakör egy olyan végpontra hivatkozik, ahol a közzétevők eseményeket küldhetnek a alkalmazásba.
 
-1. Hozza létre a topic2. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre topic2.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
     ```json
          {
@@ -110,7 +109,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozza létre a előfizetés2. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
+1. Hozzon létre subscription2.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
 
     ```json
         {
@@ -159,7 +158,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 ## <a name="publish-an-event"></a>Esemény közzététele
 
-1. Hozza létre a event2. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
+1. Hozzon létre event2.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
 
     ```json
         [

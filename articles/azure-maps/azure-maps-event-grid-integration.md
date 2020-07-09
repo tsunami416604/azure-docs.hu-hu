@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335721"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Azure Maps eseményekre való reagálás Event Grid használatával 
@@ -81,8 +81,8 @@ A következő példa a GeofenceResult sémáját mutatja be:
 Az Azure Maps geokerítésen-eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlatot követniük kell:
 
 * Több előfizetést konfigurálhat az események ugyanahhoz az eseménykezelőhöz való átirányításához. Fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak. Mindig ellenőrizze az üzenet témakörét, és győződjön meg arról, hogy az üzenet a várt forrásból származik.
-* A válasz `X-Correlation-id` fejlécében található mező segítségével megtudhatja, hogy az objektumok adatai naprakészek-e. Az üzenetek megérkeznek a sorrendbe, vagy késés után is.
-* Ha a Geokerítésen API-ban a GET vagy a POST kérést a (z) paraméterrel `EnterAndExit`beállított Mode paraméterrel hívja meg, akkor létrejön egy Enter vagy Exit esemény a geokerítésen minden olyan geometriájában, amelynek az állapota módosult az előző geokerítésen API-hívásból.
+* A `X-Correlation-id` válasz fejlécében található mező segítségével megtudhatja, hogy az objektumok adatai naprakészek-e. Az üzenetek megérkeznek a sorrendbe, vagy késés után is.
+* Ha a Geokerítésen API-ban a GET vagy a POST kérést a (z) paraméterrel beállított Mode paraméterrel hívja `EnterAndExit` meg, akkor létrejön egy Enter vagy Exit esemény a geokerítésen minden olyan geometriájában, amelynek az állapota módosult az előző GEOKERÍTÉSEN API-hívásból.
 
 ## <a name="next-steps"></a>További lépések
 

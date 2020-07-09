@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy kiszolg�
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: fa8ead8daa202f5747c134a62fbd43bcdf2af0d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/30/2020
+ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80369248"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115910"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for MariaDB a Azure Portal használatával
 
@@ -37,7 +37,7 @@ Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási r�
 További információ ezekről az értékekről a létrehozás során: [Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-portal.md)gyors üzembe helyezése.
 
 A biztonsági másolatok megőrzési időszaka a kiszolgálón a következő lépésekkel módosítható:
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 2. Válassza ki a Azure Database for MariaDB-kiszolgálót. Ez a művelet megnyitja az **Áttekintés** lapot.
 
@@ -73,33 +73,55 @@ A következő lépésekkel állíthatja vissza a kiszolgálót egy időpontra:
 
 5. A visszaállítás befejeződése után keresse meg a létrehozott új kiszolgálót annak ellenőrzéséhez, hogy az Adathelyreállítás a várt módon történt-e.
 
-
 Az időponthoz tartozó visszaállítás által létrehozott új kiszolgáló ugyanazzal a kiszolgáló-rendszergazdai bejelentkezési névvel és jelszóval rendelkezik, amely érvényes volt a meglévő kiszolgáló számára a kiválasztott időpontban. A jelszót az új kiszolgáló **áttekintő** oldaláról lehet módosítani.
 
-A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
 ## <a name="geo-restore"></a>Geo-visszaállítás
 
 Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta, akkor a rendszer létrehoz egy új kiszolgálót a meglévő kiszolgáló biztonsági másolatából. Ezt az új kiszolgálót bármely olyan régióban létre lehet hozni, amely Azure Database for MariaDB elérhető.  
 
-1. Válassza az **adatbázisok** > **Azure Database for MariaDB**elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
+1. Válassza az **erőforrás létrehozása** gombot (+) a portál bal felső sarkában. Válassza az **adatbázisok**  >  **Azure Database for MariaDB**elemet.
 
-   ![A "Azure Database for MariaDB" lehetőség](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2_navigate-to-mariadb.png" alt-text="Navigáljon Azure Database for MariaDB.":::
+ 
+2. Adja meg az előfizetést, az erőforráscsoportot és az új kiszolgáló nevét. 
 
-2. Az űrlap **Select Source (forrás kiválasztása** ) legördülő menüben válassza a **biztonsági mentés**lehetőséget. Ez a művelet betölti azon kiszolgálók listáját, amelyeken engedélyezve van a földrajzi redundáns biztonsági másolatok. Válassza ki az egyik biztonsági mentést az új kiszolgáló forrásaként.
-   ![Forrás kiválasztása: a redundáns biztonsági másolatok biztonsági mentése és listázása](./media/howto-restore-server-portal/2-georestore.png)
-
+3. **Adatforrásként**válassza a **biztonsági mentés** lehetőséget. Ez a művelet betölti a legördülő listát, amely felsorolja azokat a kiszolgálókat, amelyeken engedélyezve vannak a Geo redundáns biztonsági másolatok.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Válassza ki az adatforrást.":::
+    
    > [!NOTE]
    > A kiszolgálók első létrehozásakor előfordulhat, hogy a Geo-visszaállításhoz nem lesz azonnal elérhető. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
    >
 
-3. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet**kiválaszthatja. A hely kiválasztása után kiválaszthatja az **árképzési szintet**. Alapértelmezés szerint a rendszer megjeleníti a meglévő, visszaállításra szolgáló kiszolgáló paramétereit. **Az OK** gombra kattintva módosíthatja a beállítások öröklését. Vagy módosíthatja a **számítási generációt** (ha elérhető a választott régióban), a **virtuális mag**számát, a **biztonsági mentés megőrzési idejét**és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
+4. Válassza ki a **biztonsági mentés** legördülő menüt.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Válassza a biztonsági mentés legördülő menüt.":::
+
+5. Válassza ki a visszaállítani kívánt forráskiszolgáló-kiszolgálót.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Válassza a biztonsági mentés lehetőséget.":::
+
+6. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás** elemet. 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Folytassa a biztonsági mentéssel.":::
+
+7. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet**kiválaszthatja.
+
+    A hely kiválasztása után a **kiszolgáló konfigurálása** lehetőség kiválasztásával frissítheti a **számítási generációt** (ha elérhető a kiválasztott régióban), a **virtuális mag**, a **biztonsági mentés megőrzési idejét**és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
+
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Űrlap kitöltése"::: 
+
+8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. 
+
+9. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A művelet eltarthat néhány percig.
 
 A földrajzi visszaállítás által létrehozott új kiszolgáló ugyanazzal a kiszolgáló-rendszergazdai bejelentkezési névvel és jelszóval rendelkezik, amely a visszaállítás kezdeményezésének időpontjában érvényes a meglévő kiszolgálóhoz. A jelszót az új kiszolgáló **áttekintő** oldaláról lehet megváltoztatni.
 
-A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md)
 - A [replikák](concepts-read-replicas.md) megismerése
 - További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről

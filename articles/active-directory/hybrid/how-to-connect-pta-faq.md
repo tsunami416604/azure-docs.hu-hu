@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/09/2020
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358293"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -44,7 +44,7 @@ Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában é
 Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Az áteresztő hitelesítés támogatja a "másodlagos azonosító" nevet a "userPrincipalName" helyett?
-A bejelentkezés nem UPN-értékkel, például egy másodlagos e-mail-címmel történik, és jelenleg az átmenő hitelesítés (PTA) és a jelszó-kivonatolási szinkronizálás (PHS) esetében is a privát előzetes verzióban van tesztelve.
+Igen, a bejelentkezés nem UPN-értékkel, például egy másodlagos e-mail-címmel is támogatott az átmenő hitelesítés (PTA) és a jelszó-kivonat szinkronizálása (PHS) esetében. További információ a [Másodlagos bejelentkezési azonosítóról](../authentication/howto-authentication-use-email-signin.md).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>A jelszó-kivonatolási szinkronizálás tartalékként viselkedik az átmenő hitelesítéshez?
 
@@ -87,7 +87,7 @@ Igen. Ha a webproxy automatikus felderítése (WPAD) engedélyezve van a helysz�
 Ha nem rendelkezik WPAD-környezettel a környezetben, akkor az áteresztő hitelesítési ügynök az Azure AD-vel való kommunikáció engedélyezéséhez (az alább látható módon) adhat hozzá proxy-információkat:
 - Konfigurálja a proxybeállításokat az Internet Explorerben, mielőtt telepítené a továbbítási hitelesítési ügynököt a kiszolgálón. Ez lehetővé teszi a hitelesítési ügynök telepítésének befejezését, de továbbra is **inaktívként** jelenik meg a felügyeleti portálon.
 - A kiszolgálón navigáljon a "C:\Program Files\Microsoft Azure AD Connect Authentication Agent" elemre.
-- Szerkessze a "AzureADConnectAuthenticationAgentService" konfigurációs fájlt, és adja hozzá a következő sorokat (\:cserélje le a "http//contosoproxy.com:8080" kifejezést a tényleges proxy-címmé):
+- Szerkessze a "AzureADConnectAuthenticationAgentService" konfigurációs fájlt, és adja hozzá a következő sorokat (cserélje le a "http \: //contosoproxy.com:8080" kifejezést a tényleges proxy-címmé):
 
 ```
    <system.net>

@@ -11,12 +11,11 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710439"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -50,7 +49,7 @@ Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszkö
 
 ![SAS-kulcsok egy adott eszközhöz](./media/concepts-get-connected/single-device-sas.png)
 
-További információ: [Node. js-ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](./tutorial-connect-device-nodejs.md) oktatóanyag.
+További információ: [Node.js ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central Application](./tutorial-connect-device-nodejs.md) oktatóanyagban.
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Eszközök csatlakoztatása nagy méretekben SAS használatával
 
@@ -97,7 +96,7 @@ X. 509 Leaf-tanúsítványok előállítása az eszközökön a feltöltött gy�
 
 #### <a name="sample-device-code"></a>Minta eszköz kódja
 
-Az [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) következő mintája azt mutatja be, hogy egy Node. js-eszköz ügyfele X. 509 levél-tanúsítványt és DPS-t használ egy IoT Central alkalmazásban való regisztráláshoz:
+Az [Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) következő mintája azt mutatja be, hogy egy Node.js-eszköz ügyfele hogyan használ X. 509 levél-tanúsítványt és DPS-t egy IoT Central alkalmazásban való regisztráláshoz:
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -107,7 +106,7 @@ Az egyenértékű C minta esetében lásd: [prov_dev_client_sample. C](https://g
 
 Csak tesztelés esetén a következő segédprogramok segítségével hozhatja ki a gyökér-, köztes és eszköz-tanúsítványokat:
 
-- [Eszközök az Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)-hoz: az X. 509 tanúsítványok és kulcsok létrehozásához és ellenőrzéséhez használható Node. js-eszközök gyűjteménye.
+- [Eszközök az Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)-hoz: Node.js eszközök gyűjteménye, amelyek X. 509 tanúsítványok és kulcsok létrehozásához és ellenőrzéséhez használhatók.
 - Ha fejlesztői készlet eszközt használ, a [parancssori eszköz](https://aka.ms/iotcentral-docs-dicetool) létrehoz egy hitelesítésszolgáltatói tanúsítványt, amelyet hozzáadhat a IoT Central alkalmazáshoz a tanúsítványok ellenőrzéséhez.
 - [Tesztelési hitelesítésszolgáltatói tanúsítványok kezelése mintákhoz és oktatóanyagokhoz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): PowerShell-és bash-parancsfájlok gyűjteménye a következőhöz:
   - Hozzon létre egy tanúsítványláncot.
@@ -148,7 +147,7 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 1. [Adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#connect-devices-using-x509-certificates) a IoT Central alkalmazáshoz.
 
-1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. A kisbetűket használó eszközök azonosítóit `CNAME` használja a levél tanúsítványainak.
+1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. A kisbetűket használó eszközök azonosítóit használja a `CNAME` levél tanúsítványainak.
 
 1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy generált levél X. 509 tanúsítvánnyal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
 
@@ -180,7 +179,7 @@ IoT Central a következő igazolási mechanizmusokat támogatja az egyéni regis
 - **X. 509 tanúsítványok:** X. 509 tanúsítvánnyal rendelkező egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolódása** lapot, válassza az **Egyéni regisztráció** lehetőséget a kapcsolódási módszerként, valamint a **tanúsítványok (X. 509)** módszert. Az egyéni beléptetési bejegyzésekhez használt eszközök tanúsítványainak követelménye, hogy a kiállító és a tulajdonos CN az eszköz AZONOSÍTÓját adja meg.
 
     > [!TIP]
-    > A teszteléshez használhatja [a Node. js-hez készült Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) -hoz tartozó eszközöket az önaláírt tanúsítvány létrehozásához:`node create_test_cert.js device "mytestdevice"`
+    > A teszteléshez használhatja [Az Azure IoT Device kiépítési eszköz SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) -t a Node.jsszámára egy önaláírt tanúsítvány létrehozásához:`node create_test_cert.js device "mytestdevice"`
 
 - **Platformmegbízhatósági modul (TPM) igazolása:** A [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) a hardveres biztonsági modul típusa. Az eszköz csatlakoztatásának egyik legbiztonságosabb módja a TPM használata. Ez a cikk feltételezi, hogy diszkrét, belső vezérlőprogramot vagy integrált TPM-t használ. A szoftveresen emulált TPM a prototípus-készítéshez és a teszteléshez megfelelőek, de nem biztosítják ugyanazt a biztonsági szintet, mint a diszkrét, belső vezérlőprogram vagy integrált TPM. Ne használja éles környezetben a szoftver TPM. TPM-t használó egyéni regisztráció létrehozásához nyissa meg az **eszköz kapcsolódása** lapot, válassza az **Egyéni regisztráció** a kapcsolódási módszerként és a **TPM** mechanizmusként lehetőséget. Adja meg a TPM-záradék kulcsát, és mentse az eszköz csatlakoztatási adatait.
 
@@ -261,7 +260,7 @@ Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkció
 | Tulajdonság (írható) | Az eszköz Twin kívánt és jelentett tulajdonságai |
 | Parancs | Közvetlen metódusok |
 
-Ha többet szeretne megtudni az eszköz SDK-k használatáról, tekintse meg a [DevDiv-készlet eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-devkit.md) , például kód című témakört.
+Ha többet szeretne megtudni az eszköz SDK-k használatáról, tekintse meg a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-devkit.md) például kód című témakört.
 
 ### <a name="protocols"></a>Protokollok
 

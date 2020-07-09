@@ -8,15 +8,15 @@ ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80257410"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
-Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A következő példában az Application Gateway a Contososerverpoolhoz és `contoso.com` `fabrikam.com` a fabrikamserverpoolhoz irányítja nevű, két háttér-kiszolgáló készletből származó forgalmat szolgáltat.
+Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A következő példában az Application Gateway a `contoso.com` `fabrikam.com` contososerverpoolhoz és a fabrikamserverpoolhoz irányítja nevű, két háttér-kiszolgáló készletből származó forgalmat szolgáltat.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -25,7 +25,7 @@ Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálásá
 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
-Hasonlóképpen ugyanazon szülőtartomány több altartományát is üzemeltetheti ugyanazon az Application Gateway-példányon. Például egyetlen Application Gateway- `http://blog.contoso.com` `http://app.contoso.com` telepítésben is üzemeltetheti a szolgáltatást.
+Hasonlóképpen ugyanazon szülőtartomány több altartományát is üzemeltetheti ugyanazon az Application Gateway-példányon. Például `http://blog.contoso.com` `http://app.contoso.com` egyetlen Application Gateway-telepítésben is üzemeltetheti a szolgáltatást.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
 

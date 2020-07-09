@@ -4,10 +4,9 @@ description: Használjon PowerShell-szkriptet a Azure Backup Server v2 csendes t
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172246"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server felügyelet nélküli telepítésének futtatása
@@ -18,9 +17,9 @@ Ezek a lépések nem érvényesek, ha Azure Backup Server v1-es verzióját tele
 
 ## <a name="install-backup-server"></a>A biztonsági mentési kiszolgáló telepítése
 
-1. A Azure Backup Server v2 vagy újabb verziót futtató kiszolgálón hozzon létre egy szövegfájlt. (A fájlt a Jegyzettömbben vagy egy másik szövegszerkesztőben is létrehozhatja.) Mentse a fájlt MABSSetup. ini néven.
+1. A Azure Backup Server v2 vagy újabb verziót futtató kiszolgálón hozzon létre egy szövegfájlt. (A fájlt a Jegyzettömbben vagy egy másik szövegszerkesztőben is létrehozhatja.) Mentse a fájlt MABSSetup.iniként.
 
-2. Illessze be a következő kódot a MABSSetup. ini fájlba. Cserélje le a zárójelben (\< \>) lévő szöveget a környezetének megfelelő értékekre. A következő szöveg egy példa:
+2. Illessze be a következő kódot a MABSSetup.ini fájlba. Cserélje le a zárójelben () lévő szöveget a \< \> környezetének megfelelő értékekre. A következő szöveg egy példa:
 
    ```text
    [OPTIONS]

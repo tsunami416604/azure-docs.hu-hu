@@ -4,19 +4,19 @@ description: Ez a C# REST-alapú rövid útmutató végigvezeti egy adott Tudás
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 16093ec5e837b098da3c9b038fe2a57cd76c7151
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 8e821531fdc7be13833b134b087d26c2b157425a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851805"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342833"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Gyors útmutató: válaszok a Tudásbázis egy kérdésére C használatával #
 
 Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../Concepts/knowledge-base.md) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
 
-[Dokumentációs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs)
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ A Program.cs fájl elején cserélje le az egyetlen using utasítást a követke
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-Az `Program` osztály tetején, a `Main`on belül adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.
+Az osztály tetején, `Program` a on belül `Main` adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=9-41 "Add the required constants")]
 
@@ -51,7 +51,7 @@ A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a
 
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=43-76 "Add a POST request to send question to knowledge base")]
 
-A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`.
+A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey` .
 
 További információ a [kérelemről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
@@ -63,7 +63,7 @@ Hozza létre és futtassa a programot a Visual studióból. A szolgáltatás aut
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

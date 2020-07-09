@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 786f277c1a46213b43f81b5cfa563303b3d7ddf9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921305"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
@@ -49,7 +49,7 @@ Ezzel a módszerrel gyorsan és egyszerűen elolvashatja a fájlok tartalmát el
     Ezzel a beállítással konfigurálhatja a Storage-fiók helyét az adatforrásban, és megadhatja a tároló eléréséhez használandó hitelesítési módszert. 
     
     > [!IMPORTANT]
-    > `OPENROWSET``DATA_SOURCE`a nem biztosít gyors és egyszerű módszert a tárolási fájlok eléréséhez, de korlátozott hitelesítési lehetőségeket kínál. Az Azure AD-rendszerbiztonsági tag például csak az [Azure ad-identitásuk](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) használatával férhet hozzá a fájlokhoz, és nem fér hozzá a nyilvánosan elérhető fájlokhoz. Ha nagyobb teljesítményű hitelesítési beállításokra van szüksége, használja `DATA_SOURCE` a kapcsolót, és adja meg a tárhely eléréséhez használni kívánt hitelesítő adatokat.
+    > `OPENROWSET``DATA_SOURCE`a nem biztosít gyors és egyszerű módszert a tárolási fájlok eléréséhez, de korlátozott hitelesítési lehetőségeket kínál. Az Azure AD-rendszerbiztonsági tag például csak az [Azure ad-identitás](develop-storage-files-storage-access-control.md?tabs=user-identity) vagy nyilvánosan elérhető fájlok használatával férhet hozzá a fájlokhoz. Ha nagyobb teljesítményű hitelesítési beállításokra van szüksége, használja `DATA_SOURCE` a kapcsolót, és adja meg a tárhely eléréséhez használni kívánt hitelesítő adatokat.
 
 
 ## <a name="security"></a>Biztonság
@@ -60,7 +60,8 @@ A tároló rendszergazdájának engedélyeznie kell a felhasználók számára, 
 
 `OPENROWSET`a következő szabályok segítségével határozhatja meg, hogyan hitelesíthető a tárolóban:
 - A `OPENROWSET` `DATA_SOURCE` hitelesítési mechanizmus nélkül a hívó típusától függ.
-  - Az Azure AD-bejelentkezések csak a saját [Azure ad-identitásuk](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) használatával férhetnek hozzá a fájlokhoz, ha az Azure Storage lehetővé teszi, hogy az Azure ad-felhasználó hozzáférjen a mögöttes fájlokhoz (például ha a hívó rendelkezik Storage Reader engedéllyel a tárolóban), és ha [engedélyezi az Azure ad áteresztő HITELESÍTÉST](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) a szinapszis SQL-szolgáltatásban.
+  - Bármely felhasználó használhatja `OPENROWSET` anélkül `DATA_SOURCE` , hogy nyilvánosan elérhető fájlokat kellene beolvasnia az Azure Storage-ban.
+  - Az Azure AD-bejelentkezések saját [Azure ad-identitással](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) férhetnek hozzá a védett fájlokhoz, ha az Azure Storage lehetővé teszi, hogy az Azure ad-felhasználó hozzáférjen a mögöttes fájlokhoz (például ha a hívó rendelkezik `Storage Reader` engedéllyel az Azure Storage szolgáltatásban).
   - Az SQL-bejelentkezések `OPENROWSET` `DATA_SOURCE` a nyilvánosan elérhető fájlok, az SAS-token használatával védett fájlok, illetve a szinapszis munkaterület felügyelt identitása nélkül is használhatók. [Létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot](develop-storage-files-storage-access-control.md#examples) a tárolási fájlok elérésének engedélyezéséhez. 
 - A `OPENROWSET` és a `DATA_SOURCE` hitelesítési mechanizmus a hivatkozott adatforráshoz rendelt adatbázis-hatókörű hitelesítő adatokban van definiálva. Ez a beállítás lehetővé teszi a nyilvánosan elérhető tárolók elérését, vagy az SAS-token, a munkaterület felügyelt identitása vagy [a hívó Azure ad-identitása](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (ha a hívó az Azure ad rendszerbiztonsági tag) használatával fér hozzá a tárolóhoz. Ha `DATA_SOURCE` olyan Azure Storage-ra hivatkozik, amely nem nyilvános, [adatbázis-hatókörű hitelesítő adatokat kell létrehoznia](develop-storage-files-storage-access-control.md#examples) , és hivatkozni kell rá a `DATA SOURCE` tároló-fájlok elérésének engedélyezéséhez.
 
@@ -107,19 +108,21 @@ A lekérdezéshez célként megadott adatokat tartalmazó bemeneti fájlok eset�
 **"unstructured_data_path"**
 
 Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív elérési út lehet:
-- Az " \< előtag>:// \< storage_account_path>/storage_path>" formátum abszolút elérési útja \< lehetővé teszi, hogy a felhasználó közvetlenül olvassa be a fájlokat.
+- A "://" formátumú abszolút elérési út \<prefix> \<storage_account_path> / \<storage_path> lehetővé teszi a felhasználók számára, hogy közvetlenül beolvassák a fájlokat.
 - Relatív elérési út a (z) "<storage_path>" formátumban, amelyet a paraméterrel kell használni, `DATA_SOURCE` és a <storage_account_path> helyen definiált fájl mintáját ismerteti `EXTERNAL DATA SOURCE` . 
 
  Az alábbiakban megtalálhatja a megfelelő <storage account path> értékeket, amelyek az adott külső adatforráshoz kapcsolódnak. 
 
 | Külső adatforrás       | Előtag | Storage-fiók elérési útja                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<storage_account>. blob.core.windows.net             |
+| Azure Blob Storage         | https  | \<storage_account>. blob.core.windows.net/path/file   |
+| Azure Blob Storage         | wasb   | \<container>@\<storage_account>. blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | https  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net              |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net/Path/file   |
+| Azure Data Lake Store Gen2 | abfss  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
-" \< storage_path>"
+'\<storage_path>'
 
  Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
 
@@ -130,9 +133,9 @@ Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Popula
 Ha a unstructured_data_path mappát adja meg, az SQL igény szerinti lekérdezése a mappában lévő fájlokat fogja lekérni. 
 
 > [!NOTE]
-> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a PloyBase függvénytől eltérően az SQL igény szerint olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
+> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a Base függvénytől eltérően az SQL igény szerint visszaadja azokat a fájlokat, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
-Az alábbi példában, ha a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , egy SQL igény szerinti lekérdezés a SajátAdatok. txt és a _Hidden. txt fájlból származó sorokat ad vissza. A mydata2. txt és a mydata3. txt fájlt nem fogja visszaadni, mert egy almappában találhatók.
+Ha az alábbi példában a unstructured_data_path =, az `https://mystorageaccount.dfs.core.windows.net/webdata/` SQL igény szerinti lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem tér vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
 ![Rekurzív adatértékek külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
 
@@ -177,7 +180,7 @@ ESCAPE_CHAR = "char"
 
 Meghatározza a fájlban található karaktert, amely a fájl összes elválasztó értékének kiszökésére szolgál. Ha az Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter eldobása az érték beolvasása közben történik. 
 
-A ESCAPE_CHAR paraméter attól függetlenül lesz alkalmazva, hogy a FIELDQUOTE vagy nincs-e engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjeles karaktert dupla idézőjelek között kell megszökni az Excel CSV-viselkedéssel való igazításhoz.
+A ESCAPE_CHAR paraméter attól függetlenül lesz alkalmazva, hogy a FIELDQUOTE vagy nincs-e engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
 
 FIRSTROW = ' first_row ' 
 
@@ -238,10 +241,6 @@ FROM
     ) AS [r]
 ```
 
-Ha hibaüzenetet kap arról, hogy a fájlok nem szerepelhetnek a felsorolásban, engedélyeznie kell a nyilvános tárterülethez való hozzáférést az igény szerinti szinapszis SQL-ben:
-- Ha SQL-bejelentkezést használ, [létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely lehetővé teszi a hozzáférést a nyilvános tárhelyhez](develop-storage-files-storage-access-control.md#examples).
-- Ha Azure AD-rendszerbiztonsági tag használatával fér hozzá a nyilvános tárolóhoz, létre kell [hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely lehetővé teszi a nyilvános tárhely elérését](develop-storage-files-storage-access-control.md#examples) , és letiltja az [Azure ad áteresztő hitelesítését](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
-
-További példákért tekintse meg a [lekérdezési adattárolási](query-data-storage.md) útmutató című témakört, amelyből megtudhatja, hogyan használható a OpenRowset a [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.
+További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

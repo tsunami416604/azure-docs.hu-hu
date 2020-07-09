@@ -5,12 +5,11 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Válaszok az Azure dev Spaces használatával kapcsolatos gyakori kérdésekre
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6328515232b257e01b9b453de4ca0aca820c4038
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267494"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakran ismételt kérdések az Azure dev Spaces-ről
 
@@ -30,7 +29,7 @@ Igen, ha szeretné áthelyezni az AK-fürtöt az Azure dev Spaces-szel egy mási
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Használhatom az Azure dev Spaces szolgáltatást meglévő Dockerfiles vagy Helm-diagramok segítségével?
 
-Igen, ha a projekt már rendelkezik egy Docker vagy egy Helm-diagrammal, ezeket a fájlokat használhatja az Azure dev Spaces használatával. A futtatásakor `azds prep`használja a `--chart` paramétert, és adja meg a diagram helyét. Az Azure dev Spaces továbbra is létrehozza a *azds. YAML* és a *Docker. fejlessze* a fájlt, de nem cseréli le és nem módosítja a meglévő Docker vagy a Helm diagramot. Előfordulhat, hogy módosítania kell a *azds. YAML* és a *Docker.* Files fájlt, hogy minden megfelelően működjön a meglévő alkalmazással, ha `azds up`fut.
+Igen, ha a projekt már rendelkezik egy Docker vagy egy Helm-diagrammal, ezeket a fájlokat használhatja az Azure dev Spaces használatával. A futtatásakor `azds prep` használja a `--chart` paramétert, és adja meg a diagram helyét. Az Azure dev Spaces továbbra is létrehozza a *azds. YAML* és a *Docker. fejlessze* a fájlt, de nem cseréli le és nem módosítja a meglévő Docker vagy a Helm diagramot. Előfordulhat, hogy módosítania kell a *azds. YAML* és a *Docker.* Files fájlt, hogy minden megfelelően működjön a meglévő alkalmazással, ha fut `azds up` .
 
 Saját Docker vagy Helm-diagram használata esetén a következő korlátozások érvényesek:
 * Ha csak egy Docker használ, tartalmaznia kell mindazt, amire szüksége lehet a fejlesztési forgatókönyvek engedélyezéséhez, például a nyelvi SDK-t, nem csak a futtatókörnyezetet. Ha külön Docker használ az Azure dev Spaces szolgáltatáshoz, például egy Docker. fejlesszen, a fejlesztési forgatókönyvek engedélyezéséhez szükséges mindennek szerepelnie kell a Docker.
@@ -99,7 +98,6 @@ Jelenleg nem használhatja az Azure dev Spaces szolgáltatást olyan rácsvonala
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
-[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities

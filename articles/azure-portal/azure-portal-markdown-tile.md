@@ -6,15 +6,14 @@ keywords: ''
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 338135561a462fec3b0bfc619a3518cb420908f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763992"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown csempe használata az Azure-irányítópultokon egyéni tartalom megjelenítéséhez
 
@@ -57,7 +56,7 @@ Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csem
 
 A Markdown csempén bármilyen egyszerű szöveg, Markdown szintaxis és HTML-tartalom kombinációja használható. A Azure Portal egy _jelölt_ nevű nyílt forráskódú függvénytárat használ, amely a csempén látható HTML-re alakítja át a tartalmat. A _megjelöléssel_ létrehozott HTML-kódot a portál előre feldolgozta a Megjelenítés előtt. Ez a lépés segít meggyőződni arról, hogy a Testreszabás nem befolyásolja a portál biztonságát vagy elrendezését. Az előzetes feldolgozás során a HTML bármely olyan része törlődik, amely potenciális fenyegetést jelent. A portál a következő típusú tartalmakat nem engedélyezi:
 
-* JavaScript – `<script>` a címkék és a beágyazott JavaScript-értékelések el lesznek távolítva.
+* JavaScript – a `<script>` címkék és a beágyazott JavaScript-értékelések el lesznek távolítva.
 * iframe elemek – `<iframe>` a címkék el lesznek távolítva.
 * Style – `<style>` a címkék el lesznek távolítva. A HTML-elemekben található beágyazott stílusú attribútumok nem támogatottak hivatalosan. Előfordulhat, hogy néhány beágyazott stílusú elem működik Önnek, de ha a portál elrendezését zavarja, bármikor leállíthatja a munkát. A Markdown csempe olyan alapszintű, statikus tartalomhoz készült, amely a portál alapértelmezett stílusait használja.
 

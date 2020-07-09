@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652384"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown felhasználói felületi elem
@@ -55,9 +54,9 @@ Egy legördülő listával rendelkező kiválasztási vezérlő.
 ## <a name="remarks"></a>Megjegyzések
 
 - A címkéje `constraints.allowedValues` az elem megjelenített szövege, a értéke pedig az elem kimeneti értéke, ha ki van választva.
-- Ha meg van adva, az alapértelmezett értéknek szerepelnie kell `constraints.allowedValues`a címkében. Ha nincs megadva, az első elem `constraints.allowedValues` van kiválasztva. Az alapértelmezett érték **Null**.
+- Ha meg van adva, az alapértelmezett értéknek szerepelnie kell a címkében `constraints.allowedValues` . Ha nincs megadva, az első elem `constraints.allowedValues` van kiválasztva. Az alapértelmezett érték **Null**.
 - `constraints.allowedValues`legalább egy elemmel kell rendelkeznie.
-- Ahhoz, hogy egy értéket ne lehessen emulálni, adjon hozzá egy címkével ellátott és `""` (üres karakterlánc) értéket `constraints.allowedValues`a következőhöz:.
+- Ahhoz, hogy egy értéket ne lehessen emulálni, adjon hozzá egy címkével ellátott és `""` (üres karakterlánc) értéket a következőhöz: `constraints.allowedValues` .
 
 ## <a name="next-steps"></a>További lépések
 

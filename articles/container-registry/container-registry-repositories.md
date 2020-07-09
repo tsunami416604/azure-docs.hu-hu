@@ -4,10 +4,9 @@ description: A Azure Portal használatával megtekintheti Azure Container Regist
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456294"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Tároló beállításjegyzékbeli Tárházak megtekintése a Azure Portal
@@ -24,7 +23,7 @@ Azure Container Registry lehetővé teszi a Docker-tárolók rendszerképének t
 
 Megtekintheti a lemezképeket tároló adattárak listáját, valamint a képcímkéket a Azure Portal.
 
-Ha követte a [rendszerképek leküldése és lekérése](container-registry-get-started-docker-cli.md) című témakör lépéseit (és ezt követően nem törli a képet), akkor egy Nginx-rendszerképet kell tartalmaznia a tároló beállításjegyzékében. Az ebben a cikkben szereplő utasítások azt adták meg, hogy a képet egy névtérrel, a "Samples" címkével lássa el `/samples/nginx`. Frissítőként a cikkben megadott [Docker leküldéses][docker-push] parancs a következők voltak:
+Ha követte a [rendszerképek leküldése és lekérése](container-registry-get-started-docker-cli.md) című témakör lépéseit (és ezt követően nem törli a képet), akkor egy Nginx-rendszerképet kell tartalmaznia a tároló beállításjegyzékében. Az ebben a cikkben szereplő utasítások azt adták meg, hogy a képet egy névtérrel, a "Samples" címkével lássa el `/samples/nginx` . Frissítőként a cikkben megadott [Docker leküldéses][docker-push] parancs a következők voltak:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx

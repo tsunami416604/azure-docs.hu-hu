@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: carlrab, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: e57f13ee1f9e9044751bc6b286c2b90174b52119
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1b709d1968a066ab5e4da4fef1659150d645ac26
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054106"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196925"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>A PowerShell használata SQL Database naplózás és az összetett veszélyforrások elleni védelem konfigurálásához
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Ez a PowerShell-parancsfájl a Azure SQL Database naplózási és komplex veszé
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -58,6 +58,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../powershell-script-content-guide.md).

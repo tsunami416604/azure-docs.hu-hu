@@ -10,13 +10,12 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/11/2020
-ms.openlocfilehash: 4a49d4ba4d0e82273c06afa178630be32ca1c463
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669528"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Az virtuális mag beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +24,7 @@ Ez a cikk a Azure SQL Database önálló adatbázisainak részletes erőforrás-
 
 A kiszolgálón található önálló adatbázisokra vonatkozó DTU megvásárlásával kapcsolatban lásd: a [kiszolgálók erőforrás-korlátainak áttekintése](resource-limits-logical-server.md).
 
-Az [Azure Portal](single-database-manage.md#azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet és a tárterületet egyetlen adatbázishoz.
+Az [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#the-azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) és a tárterület mennyiségét.
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [önálló adatbázis](single-database-scale.md)skálázása.
@@ -36,12 +35,12 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 számítási generációja (1. rész)
 
-|Számítási méret|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|Számítási méret (szolgáltatási cél)|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
 |:--- | --: |--: |--: |--: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Minimális – maximális virtuális mag|0.5-1|0.5-2|0,5 – 4|0,75 – 6|1.0-8|
 |Minimális memória maximális mérete (GB)|2.02 – 3|2.05 – 6|2.10-12|2,25 – 18|3,00 – 24|
-|Automatikus szüneteltetés minimális késleltetése (perc)|60|60|60|60|60|
+|Minimum – maximális automatikus szüneteltetési késleltetés (perc)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|512|1024|1024|1024|1536|
@@ -62,12 +61,12 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 számítási generációja (2. rész)
 
-|Számítási méret|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|Számítási méret (szolgáltatási cél)|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
 |:--- | --: |--: |--: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|
 |Minimális – maximális virtuális mag|1,25 – 10|1,50 – 12|1,75 – 14|2,00 – 16|
 |Minimális memória maximális mérete (GB)|3,75 – 30|4.50 – 36|5.25 – 42|6,00 – 48|
-|Automatikus szüneteltetés minimális késleltetése (perc)|60|60|60|60|
+|Minimum – maximális automatikus szüneteltetési késleltetés (perc)|60-10080|60-10080|60-10080|60-10080|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|1536|3072|3072|3072|
@@ -86,11 +85,38 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
 
+### <a name="gen5-compute-generation-part-3"></a>Gen5 számítási generációja (3. rész)
+
+|Számítási méret (szolgáltatási cél)|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
+|:--- | --: |--: |--: |--: |--:|
+|Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Minimális – maximális virtuális mag|2,25 – 18|2,5 – 20|3–24|4-32|5-40|
+|Minimális memória maximális mérete (GB)|6.75 – 54|7,5 – 60|9-72|12-96|15-120|
+|Minimum – maximális automatikus szüneteltetési késleltetés (perc)|60-10080|60-10080|60-10080|60-10080|60-10080|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Maximális adatméret (GB)|3072|3072|4096|4096|4096|
+|Napló maximális mérete (GB)|922|922|1229|1229|1229|
+|TempDB maximális adatméret (GB)|576|640|768|1024|1280|
+|Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
+|IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
+|Maximális adatmennyiség IOPS *|5760|6400|7680|10240|12800|
+|Maximális naplózási arány (MBps)|30|30|30|30|30|
+|Egyidejű feldolgozók maximális száma (kérelem)|1350|1500|1800|2400|3000|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
+|Replikák száma|1|1|1|1|1|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+\*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
+
+
 ## <a name="hyperscale---provisioned-compute---gen4"></a>Nagy kapacitású – kiépített számítás – Gen4
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 számítási generációja (1. rész)
 
-|Teljesítményszint|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
+|Számítási méret (szolgáltatási cél)|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
 |:--- | --: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|1|2|3|4|5|6|
@@ -115,7 +141,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 számítási generációja (2. rész)
 
-|Teljesítményszint|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
+|Számítási méret (szolgáltatási cél)|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
 |:--- | ---: |--: |--: | --: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
@@ -144,7 +170,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 számítási generációja (1. rész)
 
-|Teljesítményszint|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
+|Számítási méret (szolgáltatási cél)|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|2|4|6|8|10|12|14|
@@ -171,7 +197,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 számítási generációja (2. rész)
 
-|Teljesítményszint|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|Számítási méret (szolgáltatási cél)|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: |--: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
@@ -196,7 +222,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
 
-#### <a name="notes"></a>Megjegyzések
+#### <a name="notes"></a>Jegyzetek
 
 **1. Megjegyzés**: a nagy kapacitású egy többrétegű architektúra, külön számítási és tárolási összetevőkkel: a [nagy kapacitású szolgáltatási réteg architektúrája](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -211,7 +237,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 számítási generációja (1. rész)
 
-|Számítási méret|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Számítási méret (szolgáltatási cél)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|1|2|3|4|5|6|
@@ -236,7 +262,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 számítási generációja (2. rész)
 
-|Számítási méret|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
+|Számítási méret (szolgáltatási cél)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
@@ -263,7 +289,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 számítási generációja (1. rész)
 
-|Számítási méret|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Számítási méret (szolgáltatási cél)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|2|4|6|8|10|12|14|
@@ -288,7 +314,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 számítási generációja (2. rész)
 
-|Számítási méret|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Számítási méret (szolgáltatási cél)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
@@ -300,7 +326,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|5120|5760|6400|7680|10240|12800|25600|
+|Maximális adatmennyiség IOPS *|5120|5760|6400|7680|10240|12800|12800|
 |Maximális naplózási arány (MBps)|30|30|30|30|30|30|30|
 |Egyidejű feldolgozók maximális száma (kérelem)|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -315,12 +341,12 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 sorozatú számítási generáció (előzetes verzió)
 
-|Számítási méret|GP_Fsv2_72|
+|Számítási méret (szolgáltatási cél)|GP_Fsv2_72|
 |:--- | --: |
 |Számítási generáció|Fsv2 sorozat|
 |Virtuális mag|72|
 |Memória (GB)|136,2|
-|Oszlopcentrikus-támogatás|Igen|
+|Oszlopcentrikus-támogatás|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
@@ -346,7 +372,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 számítási generációja (1. rész)
 
-|Számítási méret|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Számítási méret (szolgáltatási cél)|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|1|2|3|4|5|6|
@@ -372,7 +398,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 számítási generációja (2. rész)
 
-|Számítási méret|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Számítási méret (szolgáltatási cél)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
@@ -400,7 +426,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 számítási generációja (1. rész)
 
-|Számítási méret|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Számítási méret (szolgáltatási cél)|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|2|4|6|8|10|12|14|
@@ -426,7 +452,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 számítási generációja (2. rész)
 
-|Számítási méret|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Számítási méret (szolgáltatási cél)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
@@ -454,12 +480,12 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 ### <a name="m-series-compute-generation-preview"></a>Az M-sorozat számítási generációja (előzetes verzió)
 
-|Számítási méret|BC_M_128|
+|Számítási méret (szolgáltatási cél)|BC_M_128|
 |:--- | --: |
 |Számítási generáció|M sorozat|
 |Virtuális mag|128|
 |Memória (GB)|3767,1|
-|Oszlopcentrikus-támogatás|Igen|
+|Oszlopcentrikus-támogatás|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|1768|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|2048|
@@ -472,8 +498,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű bejelentkezések maximális száma|12 800|
 |Egyidejű munkamenetek maximális száma|30000|
 |Replikák száma|4|
-|Több – AZ|Igen|
-|Olvasási felskálázás|Igen|
+|Több – AZ|Yes|
+|Olvasási felskálázás|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).

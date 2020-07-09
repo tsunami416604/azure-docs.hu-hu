@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
-ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503126"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133220"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Mobilitási szolgáltatás proxybeállításait konfigurálhatja az Azure-hoz az Azure vész-helyreállításhoz
 
@@ -51,8 +51,8 @@ A mobilitási szolgáltatás automatikusan észleli a proxybeállításokat a k�
 Ebben az esetben az ügyfél egyéni alkalmazásproxy-beállításokat biztosít a mobilitási szolgáltatás konfigurációs fájljában a ProxyInfo. conf fájlban. Ez a módszer lehetővé teszi, hogy az ügyfelek csak a mobilitási szolgáltatáshoz vagy egy másik Azure Site Recovery proxyhoz szolgáltassanak proxyt, mint egy proxy (vagy nem proxy) a gépen lévő alkalmazások többi részének.
 
 ## <a name="proxy-template"></a>Proxy sablon
-A ProxyInfo. conf fájl a következő sablont tartalmazza [proxy]http://1.2.3.4 címe = port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, login. microsoftonline. com, blob. Core. Windows. net. A BypassList nem támogatja a helyettesítő karaktereket (például "*. windows.net"), de a windows.net megadása elég jó az megkerüléshez. 
+A ProxyInfo. conf fájl a következő sablont tartalmazza [proxy] címe = http://1.2.3.4 port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, login. microsoftonline. com, blob. Core. Windows. net. A BypassList nem támogatja a helyettesítő karaktereket (például "*. windows.net"), de a windows.net megadása elég jó az megkerüléshez. 
 
 ## <a name="next-steps"></a>Következő lépések:
-- Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](site-recovery-azure-to-azure-networking-guidance.md) .
-- A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](site-recovery-azure-to-azure.md).
+- Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md) .
+- A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).

@@ -1,6 +1,6 @@
 ---
-title: Auditnapló formátuma
-description: Ismerje meg, hogy az Azure SQL és az Azure szinapszis-naplók hogyan vannak strukturálva.
+title: SQL Database napló formátuma
+description: Megtudhatja, hogyan épülnek fel Azure SQL Database naplózási naplók.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
-ms.date: 04/28/2020
-ms.openlocfilehash: 33a82cb5e4daac96d51f19de21e817b07237ec20
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/03/2020
+ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041660"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954111"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Azure SQL Database a naplózás](auditing-overview.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat, vagy elküldi őket az Event hub-nak, vagy log Analytics az alsóbb rétegbeli feldolgozás és elemzés céljából.
 
@@ -27,13 +27,13 @@ ms.locfileid: "84041660"
 
 ### <a name="blob-audit"></a>Blobok naplózása
 
-A blob Storage-ban tárolt naplók tárolása az `sqldbauditlogs` Azure Storage-fiókban megnevezett tárolóban történik. A tárolóban lévő címtár-hierarchia űrlap `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . A blob filename formátuma `<CreationTime>_<FileNumberInSession>.xel` , ahol `CreationTime` UTC formátumban van `hh_mm_ss_ms` , és `FileNumberInSession` egy futó index abban az esetben, ha a munkamenet-naplók több blob-fájlba is kiterjednek.
+Az Azure Blob Storage-ban tárolt naplók tárolása az `sqldbauditlogs` Azure Storage-fiókban megnevezett tárolóban történik. A tárolóban lévő címtár-hierarchia űrlap `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . A blob fájlnevének formátuma a (z) `<CreationTime>_<FileNumberInSession>.xel` , ahol `CreationTime` UTC `hh_mm_ss_ms` formátumban van, és `FileNumberInSession` egy futó index abban az esetben, ha a munkamenet-naplók több blob-fájlba is kiterjednek.
 
 Például a `Database1` `Server1` következő egy lehetséges érvényes elérési út az adatbázishoz:
 
-    Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
+`Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel`
 
-[Írásvédett replikák](read-scale-out.md) A naplófájlok tárolása ugyanabban a tárolóban történik. A tárolóban lévő címtár-hierarchia űrlap `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . A blob fájlnevének formátuma azonos. A csak olvasható replikák naplófájljai ugyanabban a tárolóban tárolódnak.
+A [csak olvasható replikák](read-scale-out.md) naplófájljai ugyanabban a tárolóban tárolódnak. A tárolóban lévő címtár-hierarchia űrlap `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . A blob fájlneve ugyanazzal a formátummal van megosztva. A csak olvasható replikák naplófájljai ugyanabban a tárolóban tárolódnak.
 
 
 ### <a name="event-hub"></a>Eseményközpont
@@ -46,7 +46,7 @@ A naplózási eseményeket a rendszer a naplózási konfiguráció során defini
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Naplózási napló mezői
 
-| Név (blob) | Név (Event Hubs/Log Analytics) | Leírás | BLOB típusa | Event Hubs/Log Analytics típusa |
+| Név (blob) | Név (Event Hubs/Log Analytics) | Description | Blobtípus | Event Hubs/Log Analytics típusa |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | A művelet azonosítója | varchar (4) | sztring |
 | action_name | action_name_s | A művelet neve | N.A. | sztring |
@@ -92,6 +92,6 @@ A naplózási eseményeket a rendszer a naplózási konfiguráció során defini
 | user_defined_event_id | user_defined_event_id_d | A felhasználó által definiált eseményazonosító a sp_audit_write argumentumként lett átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
 | user_defined_information | user_defined_information_s | A felhasználó által megadott adatok sp_audit_write argumentumként lettek átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | sztring |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [Azure SQL Database naplózásról](auditing-overview.md).

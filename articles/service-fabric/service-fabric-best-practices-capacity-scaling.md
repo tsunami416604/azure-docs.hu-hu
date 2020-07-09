@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791867"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitás megtervezése és méretezése az Azure Service Fabric
@@ -48,7 +48,7 @@ Az Azure Service Fabric egy csomópont-típus [vertikális skálázása](https:/
 
 A virtuálisgép-méretezési csoport vertikális skálázása romboló művelet. Ehelyett horizontálisan méretezheti a fürtöt egy új méretezési csoport hozzáadásával a kívánt SKU-val. Ezután telepítse át a szolgáltatásokat a kívánt SKU-ba egy biztonságos vertikális skálázási művelet elvégzéséhez. A virtuálisgép-méretezési csoport erőforrás-SKU-jának módosítása roncsolásos művelet, mert alaphelyzetbe állítja a gazdagépeket, ami eltávolítja az összes helyileg megőrzött állapotot.
 
-A fürt Service Fabric [csomópont-tulajdonságokat és elhelyezési korlátozásokat](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints) használ, hogy eldöntse, hová szeretné üzemeltetni az alkalmazás szolgáltatásait. Az elsődleges csomópont típusának vertikális skálázásakor deklarálja az azonos tulajdonságértékek értékét a következőhöz `"nodeTypeRef"`:. Ezeket az értékeket a virtuálisgép-méretezési csoportokhoz tartozó Service Fabric-bővítményben tekintheti meg. 
+A fürt Service Fabric [csomópont-tulajdonságokat és elhelyezési korlátozásokat](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints) használ, hogy eldöntse, hová szeretné üzemeltetni az alkalmazás szolgáltatásait. Az elsődleges csomópont típusának vertikális skálázásakor deklarálja az azonos tulajdonságértékek értékét a következőhöz: `"nodeTypeRef"` . Ezeket az értékeket a virtuálisgép-méretezési csoportokhoz tartozó Service Fabric-bővítményben tekintheti meg. 
 
 A Resource Manager-sablonok következő kódrészlete a deklarált tulajdonságokat jeleníti meg. Ez az érték megegyezik az újonnan kiosztott méretezési csoportokkal, amelyekhez méretezést végez, és csak a fürt ideiglenes állapot-nyilvántartó szolgáltatásaként támogatott.
 
@@ -59,18 +59,18 @@ A Resource Manager-sablonok következő kódrészlete a deklarált tulajdonságo
 ```
 
 > [!NOTE]
-> Ne hagyja, hogy a fürt több méretezési csoporttal fusson `nodeTypeRef` , amelyek ugyanazt a tulajdonságot használják, mint amennyi a sikeres vertikális skálázási művelet befejezéséhez szükséges.
+> Ne hagyja, hogy a fürt több méretezési csoporttal fusson, amelyek ugyanazt a `nodeTypeRef` tulajdonságot használják, mint amennyi a sikeres vertikális skálázási művelet befejezéséhez szükséges.
 >
 > Mindig ellenőrizze a tesztelési környezetekben lévő műveleteket, mielőtt megkísérli a módosításokat az éles környezetben. Alapértelmezés szerint Service Fabric a fürt rendszerszolgáltatásainak elhelyezési megkötése csak a célként megadott elsődleges csomópont típusára vonatkozik.
 
 A csomópont tulajdonságai és az elhelyezési megkötések deklarálása esetén a következő lépésekkel egyszerre egy virtuálisgép-példányt hajthat végre. Ez lehetővé teszi, hogy a rendszerszolgáltatások (és az állapot-nyilvántartó szolgáltatások) szabályosan legyenek leállítva az eltávolítani kívánt virtuálisgép-példányon, mivel az új replikák máshol jönnek létre.
 
 1. A PowerShellből futtassa `Disable-ServiceFabricNode` a parancsot, `RemoveNode` hogy letiltsa az eltávolítani kívánt csomópontot. Távolítsa el a legmagasabb számú csomópont-típust. Ha például hat csomópontos fürttel rendelkezik, távolítsa el a "MyNodeType_5" virtuálisgép-példányt.
-2. A `Get-ServiceFabricNode` futtatásával győződjön meg arról, hogy a csomópont le van-e tiltva. Ha nem, várja meg, amíg le nem tiltja a csomópontot. Ez eltarthat egy pár órát az egyes csomópontokhoz. Ne folytassa, amíg a csomópont nem lett letiltva.
+2. A futtatásával `Get-ServiceFabricNode` Győződjön meg arról, hogy a csomópont le van-e tiltva. Ha nem, várja meg, amíg le nem tiltja a csomópontot. Ez eltarthat egy pár órát az egyes csomópontokhoz. Ne folytassa, amíg a csomópont nem lett letiltva.
 3. Csökkentse a virtuális gépek számát egy adott csomópont-típusban. A legmagasabb virtuálisgép-példány most el lesz távolítva.
 4. Szükség szerint ismételje meg az 1 – 3. lépést, de az elsődleges csomópontban lévő példányok száma nem méretezhető, mint a megbízhatósági szintet. Lásd: [a Service Fabric-fürt kapacitásának megtervezése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) az ajánlott példányok listájához.
 5. Ha minden virtuális gép el lett mentve ("Down"-ként jelenik meg), a Fabric:/System/InfrastructureService/[NODE name] hibaüzenetet jelenít meg. Ezután frissítheti a fürterőforrás-t a csomópont típusának eltávolításához. Használhatja az ARM-sablon üzembe helyezését, vagy szerkesztheti a fürterőforrás-t az [Azure Resource Managerrel](https://resources.azure.com). Ezzel elindítja a fürt frissítését, amely a hibás állapotú háló:/System/InfrastructureService/[NODE type] szolgáltatást fogja eltávolítani.
- 6. Ezután törölheti is a VMScaleSet, ha a csomópontokat a Service Fabric Explorer nézetből "lefelé" fogja látni. Az utolsó lépés az, hogy megtisztítsa őket `Remove-ServiceFabricNodeState` a paranccsal.
+ 6. Ezután törölheti is a VMScaleSet, ha a csomópontokat a Service Fabric Explorer nézetből "lefelé" fogja látni. Az utolsó lépés az, hogy megtisztítsa őket a `Remove-ServiceFabricNodeState` paranccsal.
 
 ## <a name="horizontal-scaling"></a>Vízszintes méretezés
 
@@ -81,7 +81,7 @@ A horizontális skálázást [manuálisan](https://docs.microsoft.com/azure/serv
 
 ### <a name="scaling-out"></a>Méretezés
 
-Service Fabric-fürt felskálázása egy adott virtuálisgép-méretezési csoport példányszámának növelésével. A kapacitás növeléséhez programozott módon, a és `AzureClient` a kívánt méretezési csoport azonosítójának használatával is méretezhető.
+Service Fabric-fürt felskálázása egy adott virtuálisgép-méretezési csoport példányszámának növelésével. A kapacitás növeléséhez programozott módon, a `AzureClient` és a kívánt méretezési csoport azonosítójának használatával is méretezhető.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -109,7 +109,7 @@ A-ben a méretezés több szempontot igényel, mint a horizontális felskáláz�
 A manuális méretezéshez kövesse az alábbi lépéseket:
 
 1. A PowerShellből futtassa `Disable-ServiceFabricNode` a parancsot, `RemoveNode` hogy letiltsa az eltávolítani kívánt csomópontot. Távolítsa el a legmagasabb számú csomópont-típust. Ha például hat csomópontos fürttel rendelkezik, távolítsa el a "MyNodeType_5" virtuálisgép-példányt.
-2. A `Get-ServiceFabricNode` futtatásával győződjön meg arról, hogy a csomópont le van-e tiltva. Ha nem, várja meg, amíg le nem tiltja a csomópontot. Ez eltarthat egy pár órát az egyes csomópontokhoz. Ne folytassa, amíg a csomópont nem lett letiltva.
+2. A futtatásával `Get-ServiceFabricNode` Győződjön meg arról, hogy a csomópont le van-e tiltva. Ha nem, várja meg, amíg le nem tiltja a csomópontot. Ez eltarthat egy pár órát az egyes csomópontokhoz. Ne folytassa, amíg a csomópont nem lett letiltva.
 3. Csökkentse a virtuális gépek számát egy adott csomópont-típusban. A legmagasabb virtuálisgép-példány most el lesz távolítva.
 4. A kívánt kapacitás kiépítése előtt ismételje meg az 1 – 3. lépést. Ne méretezze át az elsődleges csomópontokban lévő példányok számát a megbízhatósági szinteknél kisebb értékre. Lásd: [a Service Fabric-fürt kapacitásának megtervezése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) az ajánlott példányok listájához.
 
@@ -140,7 +140,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Inaktiválja és távolítsa el a csomópontot ugyanazzal `FabricClient` a példánnyal`client` (ebben az esetben) és a csomópont`instanceIdString` -példánnyal (ebben az esetben), amelyet az előző kódban használt:
+Inaktiválja és távolítsa el a csomópontot ugyanazzal a `FabricClient` példánnyal (ebben az `client` esetben) és a csomópont-példánnyal (ebben az `instanceIdString` esetben), amelyet az előző kódban használt:
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);

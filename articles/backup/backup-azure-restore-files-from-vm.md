@@ -3,12 +3,12 @@ title: Fájlok és mappák helyreállítása az Azure virtuális gép biztonság
 description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0cb3b588aadcda232d1a9a07fc6d9336448cb5a5
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118135"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027165"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -236,7 +236,7 @@ Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancs
 
 > [!NOTE]
 >
-> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Exampple esetén: a letöltött szkript neve a \' VMname \' \_ \' geoname \' _ \' GUID azonosítóval kezdődik \' , például *ContosoVM_wcus_12345678*
+> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve a \' VMname \' \_ \' geoname \' _ \' GUID azonosítóval kezdődik \' , például *ContosoVM_wcus_12345678*
 > - Az URL-cím a következő lenne: <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
@@ -246,9 +246,9 @@ A hozzáférés `download.microsoft.com` szükséges a biztonságos csatorna lé
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>A fájlok helyreállítása a nagyméretű lemezekkel rendelkező virtuális gépekről
 
-Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása a több mint 16 lemezzel rendelkező Azure-beli virtuális gépekről, és az egyes lemezek mérete meghaladja a 32 TB-ot.
+Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása a több mint 16 lemezzel rendelkező Azure-beli virtuális gépekről, vagy az egyes lemezek mérete meghaladja a 4 TB-ot.
 
-Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (>16) vagy nagyméretű lemez (> 32 TB) van használatban, a következő műveleti pontok ajánlottak:
+Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (>16) vagy nagyméretű lemez (> 4 TB) van használatban, a következő műveleti pontok ajánlottak:
 
 - A fájlok helyreállításához külön helyreállítási kiszolgálót (Azure VM D2v3 virtuális gépeket) kell megőrizni. Ezt csak a fájl-helyreállításhoz használhatja, majd leállíthatja, ha nincs rá szükség. Az eredeti gépen való visszaállítás nem ajánlott, mert jelentős hatással lesz a virtuális gépre.
 - Ezután futtassa egyszer a parancsfájlt annak vizsgálatához, hogy a fájl-helyreállítási művelet sikeres-e.
@@ -257,7 +257,7 @@ Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a bizt
     - Győződjön meg arról, hogy az operációs rendszer WS 2012 vagy újabb.
     - Győződjön meg arról, hogy a beállításjegyzék-kulcsok az alábbi módon vannak beállítva a visszaállítási kiszolgálón, és indítsa újra a kiszolgálót. A GUID melletti szám a 0001-0005-tól terjedhet. A következő példában ez a 0004. A parameters (paraméterek) szakaszig navigáljon a beállításkulcs elérési útjára.
 
-    ![iSCSI-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200

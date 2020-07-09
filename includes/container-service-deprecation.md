@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: c7a34256bff46247ed6c97bc2931942f631bbf09
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179671"
 ---
 > [!WARNING]
@@ -19,7 +19,7 @@ ms.locfileid: "67179671"
 > Javasoljuk, hogy telepítse az alábbi Azure Marketplace-megoldások egyikét:
 >
 > * Mesosphere DC/OS
->   * [Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
+>   * [Vállalat](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
 >   * [Nyílt forráskódú kiadás](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.dcos?tab=overview)
 >
 > Ha a Kubernetes-t szeretné használni, tekintse meg az [Azure Kubernetes szolgáltatást](https://docs.microsoft.com/azure/aks).

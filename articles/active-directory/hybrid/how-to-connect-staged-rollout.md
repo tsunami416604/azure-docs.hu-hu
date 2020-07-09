@@ -5,21 +5,21 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/12/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357851"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
-A szakaszos bevezetési megközelítés használatával áttelepítheti az összevont hitelesítést a felhőalapú hitelesítésbe. Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
+A szakaszos bevezetési megközelítés használatával elkerülhető a teljes tartomány átváltás.  Ez lehetővé teszi, hogy szelektíven tesztelje a felhasználók csoportjait olyan felhőalapú hitelesítési funkciókkal, mint az Azure Multi-Factor Authentication (MFA), a feltételes hozzáférés, az Identity Protection a kiszivárgott hitelesítő adatokkal, az identitások szabályozása és egyebek.  Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
     
 -  Jelenleg helyszíni Multi-Factor Authentication-kiszolgálót használ. 
 -  Intelligens kártyákat használ a hitelesítéshez. 
@@ -38,8 +38,8 @@ A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a sz
 -   Van egy Azure Active Directory (Azure AD) bérlő összevont tartománnyal.
 
 -   Úgy döntött, hogy két lehetőség közül választhat:
-    - " **A**  -  " lehetőség *jelszó kivonatának szinkronizálása (szinkronizálás)*  +  *zökkenőmentes egyszeri bejelentkezés (SSO)*
-    - **B**  -  . lehetőség *átmenő hitelesítés*  +  *zökkenőmentes egyszeri bejelentkezés*
+    - " **A**  -  " lehetőség *jelszó kivonatának szinkronizálása (szinkronizálás)*  +  *zökkenőmentes egyszeri bejelentkezés (SSO)*.  További információ: [Mi az a jelszó-kivonatoló szinkronizálás](whatis-phs.md) , és [Mi a zökkenőmentes egyszeri bejelentkezés](how-to-connect-sso.md)
+    - **B**  -  . lehetőség *átmenő hitelesítés*  +  *zökkenőmentes egyszeri bejelentkezés*.  További információ: [Mi az átmenő hitelesítés](how-to-connect-pta.md) ?  
     
     Habár a *zökkenőmentes egyszeri bejelentkezés* nem kötelező, javasoljuk, hogy a tartományhoz csatlakoztatott számítógépeket futtató felhasználók számára is csendes bejelentkezési élményt biztosítson a vállalati hálózaton belül.
 
@@ -76,12 +76,12 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
     - A szakaszos bevezetéshez *nem használhatók* dinamikus csoportok.
     - A csoporton belüli kapcsolattartási objektumok nem lesznek hozzáadva a csoporthoz.
 
-- Azure AD Connect vagy PowerShell használatával továbbra is a végső átváltás kell összevontról felhőbe történő hitelesítésre. A előkészített bevezetések nem váltják át a tartományokat összevontról felügyelt állapotba.
+- Azure AD Connect vagy PowerShell használatával továbbra is a végső átváltás kell összevontról felhőbe történő hitelesítésre. A előkészített bevezetések nem váltják át a tartományokat összevontról felügyelt állapotba.  További információ a tartományi átváltás: [áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba](plan-migrate-adfs-password-hash-sync.md) és [áttelepítés az összevonási szolgáltatásból átmenő hitelesítésre](plan-migrate-adfs-pass-through-authentication.md)
+
+
 
 - Amikor először ad hozzá egy biztonsági csoportot az előkészített bevezetéshez, a rendszer 200-re korlátozza a felhasználóktól, hogy elkerülje az UX időtúllépését. A csoport hozzáadása után további felhasználókat is hozzáadhat közvetlenül hozzá, ha szükséges.
 
->[!NOTE]
-> Mivel a bérlői végpontok nem küldenek bejelentkezési tippeket, a szakaszos bevezetéshez nem használhatók.  Az SAML-alkalmazások a bérlői végpontokat használják, és nem támogatják az előkészített bevezetést is.
 
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel
 

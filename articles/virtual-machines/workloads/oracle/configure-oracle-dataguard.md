@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676767"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle-adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen 
@@ -71,7 +70,7 @@ az vm availability-set create \
 
 Hozzon létre egy virtuális gépet az az [VM Create](/cli/azure/vm) paranccsal. 
 
-A következő példa két virtuális gépet hoz `myVM1` létre `myVM2`, és a nevet. Emellett SSH-kulcsokat hoz létre, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+A következő példa két virtuális gépet hoz létre `myVM1` , és a nevet `myVM2` . Emellett SSH-kulcsokat hoz létre, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 MyVM1 létrehozása (elsődleges):
 ```azurecli
@@ -85,7 +84,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`a értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a értékét `publicIpAddress` . Ennek a címnek a használatával férhet hozzá a virtuális géphez.
 
 ```output
 {
@@ -113,7 +112,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-A myVM2 létrehozása után `publicIpAddress` jegyezze fel a értékét.
+A myVM2 létrehozása után jegyezze fel a értékét `publicIpAddress` .
 
 ### <a name="open-the-tcp-port-for-connectivity"></a>A TCP-port megnyitása a kapcsolathoz
 
@@ -162,7 +161,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le az IP-címet `publicIpAddress` a virtuális gép értékére.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le az IP-címet a `publicIpAddress` virtuális gép értékére.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -282,7 +281,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-A flashback bekapcsolása (ami sokkal könnyebbé teszi a helyreállítást)\_és\_a készenléti Fájlkezelés automatikusra állítása. Zárja be az SQL * Plus parancsot.
+A flashback bekapcsolása (ami sokkal könnyebbé teszi a helyreállítást) és a KÉSZENLÉTi \_ Fájlkezelés \_ automatikusra állítása. Zárja be az SQL * Plus parancsot.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -554,7 +553,7 @@ Elvégezte az Oracle-adatvédelem beállítását. A következő szakasz bemutat
 
 Frissítse vagy hozza létre az tnsnames. ora fájlt az ügyfélszámítógépen. Ez a fájl általában $ORACLE _HOME \network\admin.
 
-Cserélje le az IP-címeket `publicIpAddress` a myVM1 és a myVM2 értékére:
+Cserélje le az IP-címeket a `publicIpAddress` myVM1 és a myVM2 értékére:
 
 ```bash
 cdb1=

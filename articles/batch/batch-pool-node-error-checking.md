@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723918"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979917"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -24,9 +24,9 @@ Ez a cikk a készletek és a készlet csomópontjain előforduló háttérben fu
 
 ### <a name="resize-timeout-or-failure"></a>Időtúllépés vagy hiba átméretezése
 
-Új készlet létrehozásakor vagy egy meglévő készlet átméretezése esetén meg kell adnia a csomópontok célként megadott számát.  A létrehozási vagy átméretezési művelet azonnal befejeződik, de az új csomópontok tényleges kiosztása vagy a meglévő csomópontok eltávolítása több percet is igénybe vehet.  Az átméretezési időtúllépést a [create](https://docs.microsoft.com/rest/api/batchservice/pool/add) vagy az [átméretezés](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API-ban adhatja meg. Ha a Batch nem tudja megszerezni a csomópontok megcélzott számát az átméretezési időtúllépés időtartama alatt, a készlet stabil állapotba kerül, és a jelentések átméretezési hibákat jelez.
+Új készlet létrehozásakor vagy egy meglévő készlet átméretezése esetén meg kell adnia a csomópontok célként megadott számát.  A létrehozási vagy átméretezési művelet azonnal befejeződik, de az új csomópontok tényleges kiosztása vagy a meglévő csomópontok eltávolítása több percet is igénybe vehet.  Az átméretezési időtúllépést a [create](/rest/api/batchservice/pool/add) vagy az [átméretezés](/rest/api/batchservice/pool/resize) API-ban adhatja meg. Ha a Batch nem tudja megszerezni a csomópontok megcélzott számát az átméretezési időtúllépés időtartama alatt, a készlet stabil állapotba kerül, és a jelentések átméretezési hibákat jelez.
 
-A legutóbbi értékelés [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) tulajdonsága felsorolja az észlelt hibákat.
+A legutóbbi értékelés [ResizeError](/rest/api/batchservice/pool/get#resizeerror) tulajdonsága felsorolja az észlelt hibákat.
 
 Az átméretezési hibák gyakori okai a következők:
 
@@ -34,31 +34,31 @@ Az átméretezési hibák gyakori okai a következők:
   - A legtöbb esetben az alapértelmezett 15 perces időkorlát elég hosszú ahhoz, hogy a készlet csomópontjai le legyenek foglalva vagy el lesznek távolítva.
   - Ha nagy számú csomópontot foglal le, javasoljuk, hogy az átméretezési időtúllépést 30 percre állítsa be. Például, ha több mint 1 000 csomópontra végez átméretezést egy Azure Marketplace-rendszerképből vagy egy egyéni virtuálisgép-rendszerképből származó több mint 300 csomópontra.
 - Nincs elég alapvető kvóta
-  - A Batch-fiók az összes készletben lefoglalható magok számával van korlátozva. A Batch leállítja a csomópontok lefoglalását, miután elérte a kvótát. [Növelheti](https://docs.microsoft.com/azure/batch/batch-quota-limit) az alapszintű kvótát, hogy a Batch több csomópontot foglaljon le.
-- Nem elegendő alhálózat IP-címe, ha a [készlet virtuális hálózaton van](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+  - A Batch-fiók az összes készletben lefoglalható magok számával van korlátozva. A Batch leállítja a csomópontok lefoglalását, miután elérte a kvótát. [Növelheti](./batch-quota-limit.md) az alapszintű kvótát, hogy a Batch több csomópontot foglaljon le.
+- Nem elegendő alhálózat IP-címe, ha a [készlet virtuális hálózaton van](./batch-virtual-network.md)
   - A virtuális hálózat alhálózatának elegendő, nem hozzárendelt IP-címmel kell rendelkeznie az összes kért készlet-csomóponthoz való lefoglaláshoz. Ellenkező esetben a csomópontok nem hozhatók létre.
-- Nincs elegendő erőforrás, ha a [készlet virtuális hálózaton van](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+- Nincs elegendő erőforrás, ha a [készlet virtuális hálózaton van](./batch-virtual-network.md)
   - A Batch-fiókkal megegyező előfizetésben létrehozhat olyan erőforrásokat, mint a terheléselosztó, a nyilvános IP-címek és a hálózati biztonsági csoportok. Győződjön meg arról, hogy az előfizetési kvóták elégségesek ezekhez az erőforrásokhoz.
 - Egyéni virtuálisgép-rendszerképekkel rendelkező nagyméretű készletek
   - Az egyéni virtuálisgép-rendszerképeket használó nagyméretű készletek hosszabb időt vehetnek igénybe az időtúllépések lefoglalása és átméretezése esetén.  A korlátokkal és a konfigurációval kapcsolatos javaslatokért tekintse meg a [készlet létrehozása a megosztott rendszerkép](batch-sig-images.md) -katalógussal című témakört.
 
 ### <a name="automatic-scaling-failures"></a>Automatikus skálázási hibák
 
-Azure Batch beállítható úgy is, hogy a készletben lévő csomópontok számát automatikusan méretezni lehessen. Meghatározhatja a [készlet automatikus skálázási képletének](https://docs.microsoft.com/azure/batch/batch-automatic-scaling)paramétereit. A Batch szolgáltatás a képlettel rendszeres időközönként kiértékeli a készletben lévő csomópontok számát, és új célértéket állít be. A következő típusú problémák léphetnek fel:
+Azure Batch beállítható úgy is, hogy a készletben lévő csomópontok számát automatikusan méretezni lehessen. Meghatározhatja a [készlet automatikus skálázási képletének](./batch-automatic-scaling.md)paramétereit. A Batch szolgáltatás a képlettel rendszeres időközönként kiértékeli a készletben lévő csomópontok számát, és új célértéket állít be. A következő típusú problémák léphetnek fel:
 
 - Az automatikus skálázás kiértékelése sikertelen.
 - Az eredményül kapott átméretezési művelet meghiúsul, és időtúllépést jelez.
 - Az automatikus skálázási képlettel kapcsolatos probléma helytelen csomópont-célértékek elérését eredményezi. Az átméretezés akár működik, akár időtúllépést is mutat.
 
-Az utolsó automatikus skálázási kiértékeléssel kapcsolatos információk a [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) tulajdonság használatával szerezhetők be. Ez a tulajdonság a kiértékelési időt, az értékeket és az eredményt, valamint a teljesítménnyel kapcsolatos hibákat jelenti.
+Az utolsó automatikus skálázási kiértékeléssel kapcsolatos információk a [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) tulajdonság használatával szerezhetők be. Ez a tulajdonság a kiértékelési időt, az értékeket és az eredményt, valamint a teljesítménnyel kapcsolatos hibákat jelenti.
 
-A [készlet átméretezése kész esemény](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) rögzíti az összes értékelés információit.
+A [készlet átméretezése kész esemény](./batch-pool-resize-complete-event.md) rögzíti az összes értékelés információit.
 
 ### <a name="delete"></a>Törlés
 
 Csomópontokat tartalmazó készlet törlésekor az első köteg törli a csomópontokat. Ezután maga törli a készlet objektumot. Néhány percet is igénybe vehet, amíg a készlet csomópontjai törölve lesznek.
 
-A Batch beállítja a [készlet állapotát](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) **a törlési folyamat során.** A hívó alkalmazás képes megállapítani, hogy a készlet törlése túl hosszú időt vesz igénybe az **állapot** és a **stateTransitionTime** tulajdonság használatával.
+A Batch beállítja a [készlet állapotát](/rest/api/batchservice/pool/get#poolstate) **a törlési folyamat során.** A hívó alkalmazás képes megállapítani, hogy a készlet törlése túl hosszú időt vesz igénybe az **állapot** és a **stateTransitionTime** tulajdonság használatával.
 
 ## <a name="pool-compute-node-errors"></a>A készlet számítási csomópontjaival kapcsolatos hibák
 
@@ -131,7 +131,7 @@ A rendszer minden olyan feladatra kiírja a többi fájlt, amely egy csomóponto
 Az ideiglenes meghajtó mérete a virtuális gép méretétől függ. A virtuális gép méretének kiválasztásakor az egyik szempont, hogy az ideiglenes meghajtó elegendő lemezterülettel rendelkezzen.
 
 - A készlet hozzáadásakor a Azure Portal a virtuálisgép-méretek teljes listáját jelenítheti meg, és az erőforrás lemez mérete oszlop is megjelenik.
-- Az összes virtuálisgép-méretet ismertető cikk a "Temp Storage" oszlopot tartalmazó táblázatokat tartalmaz. például a [számítási optimalizált VM-méretek](/azure/virtual-machines/windows/sizes-compute)
+- Az összes virtuálisgép-méretet ismertető cikk a "Temp Storage" oszlopot tartalmazó táblázatokat tartalmaz. például a [számítási optimalizált VM-méretek](../virtual-machines/sizes-compute.md)
 
 Az egyes feladatok által írt fájlok esetében megadható az egyes feladatokhoz tartozó megőrzési idő, amely meghatározza, hogy a rendszer mennyi ideig tárolja a feladatokat, mielőtt automatikusan kitakarítja a fájlokat. A megőrzési idő csökkentheti a tárolási követelmények csökkentését.
 
@@ -140,18 +140,18 @@ Ha az ideiglenes lemez kifogy (vagy nagyon közel van a helyhez), a csomópont [
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>Mi a teendő, ha egy lemez megtelt
 
-Annak meghatározása, hogy a lemez miért megtelt: Ha nem biztos benne, hogy mi a terület a csomóponton, akkor azt javasoljuk, hogy távolról a csomópontra kerüljön, és vizsgálja meg, hogy a terület Hová lett-e mentve. A [Batch Files API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) -t is használhatja a Batch által felügyelt mappákban található fájlok vizsgálatához (például feladat kimenetei). Vegye figyelembe, hogy ez az API csak a Batch által felügyelt címtárakban található fájlokat sorolja fel, és ha a feladatok máshol nem láthatók, akkor azok nem jelennek meg.
+Annak meghatározása, hogy a lemez miért megtelt: Ha nem biztos benne, hogy mi a terület a csomóponton, akkor azt javasoljuk, hogy távolról a csomópontra kerüljön, és vizsgálja meg, hogy a terület Hová lett-e mentve. A [Batch Files API](/rest/api/batchservice/file/listfromcomputenode) -t is használhatja a Batch által felügyelt mappákban található fájlok vizsgálatához (például feladat kimenetei). Vegye figyelembe, hogy ez az API csak a Batch által felügyelt címtárakban található fájlokat sorolja fel, és ha a feladatok máshol nem láthatók, akkor azok nem jelennek meg.
 
 Győződjön meg arról, hogy minden szükséges adat le lett kérve a csomópontból, vagy feltöltve lett egy tartós tárolóba. A lemez teljes hibájának enyhítése magában foglalja az adattárolás lemezterület felszabadításához szükséges adattörlést.
 
 ### <a name="recovering-the-node"></a>A csomópont helyreállítása
 
-1. Ha a készlet egy [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) -készlet, akkor a csomópontot a [Batch relemezkép API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)használatával újra elvégezheti. Ezzel megtisztítja a teljes lemezt. A [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) -készletek jelenleg nem támogatják az újralemezképet.
+1. Ha a készlet egy [C. loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) -készlet, akkor a csomópontot a [Batch relemezkép API](/rest/api/batchservice/computenode/reimage)használatával újra elvégezheti. Ezzel megtisztítja a teljes lemezt. A [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) -készletek jelenleg nem támogatják az újralemezképet.
 
-2. Ha a készlet [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), a csomópontok [eltávolítása API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)használatával eltávolíthatja a csomópontot a készletből. Ezután ismét növelheti a készletet, hogy a rossz csomópontot egy frissre cserélje.
+2. Ha a készlet [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration), a csomópontok [eltávolítása API](/rest/api/batchservice/pool/removenodes)használatával eltávolíthatja a csomópontot a készletből. Ezután ismét növelheti a készletet, hogy a rossz csomópontot egy frissre cserélje.
 
-3.  Törölheti a régi befejezett feladatokat vagy a régi befejezett feladatokat, amelyek tevékenységi adatai még mindig a csomópontokon vannak. Arra vonatkozóan, hogy milyen feladatok/feladatok adatai vannak azon csomópontokon, amelyeket a csomóponton található [RecentTasks-gyűjteményben](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) vagy a [csomóponton lévő fájlokban](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)kereshet. A feladat törlésével törli a feladat összes feladatát, és törli a feladat feladatait, hogy a csomóponton lévő feladatok könyvtáraiban található adatok törlődnek, így felszabadítja a helyet. Ha elegendő lemezterületet szabadít fel, indítsa újra a csomópontot, és a "használhatatlan" állapotból és a "tétlen" állapotúra kell lépnie.
+3.  Törölheti a régi befejezett feladatokat vagy a régi befejezett feladatokat, amelyek tevékenységi adatai még mindig a csomópontokon vannak. Arra vonatkozóan, hogy milyen feladatok/feladatok adatai vannak azon csomópontokon, amelyeket a csomóponton található [RecentTasks-gyűjteményben](/rest/api/batchservice/computenode/get#taskinformation) vagy a [csomóponton lévő fájlokban](/rest/api/batchservice/file/listfromcomputenode)kereshet. A feladat törlésével törli a feladat összes feladatát, és törli a feladat feladatait, hogy a csomóponton lévő feladatok könyvtáraiban található adatok törlődnek, így felszabadítja a helyet. Ha elegendő lemezterületet szabadít fel, indítsa újra a csomópontot, és a "használhatatlan" állapotból és a "tétlen" állapotúra kell lépnie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Győződjön meg arról, hogy az alkalmazás teljes körű hibaellenőrzés megvalósítására van beállítva, különösen aszinkron műveletekhez. Kritikus fontosságú lehet a problémák azonnali észlelése és diagnosztizálása.

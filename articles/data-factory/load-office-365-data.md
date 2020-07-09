@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415799"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**: 
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -40,7 +40,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
     * **Verzió**: válassza a **v2**elemet.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
    
    ![Data factory kezdőlap](./media/load-office-365-data/data-factory-home-page.png)
@@ -79,7 +79,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
     ![Config Office 365 adatkészlet táblázata](./media/load-office-365-data/edit-dataset.png)
 
-8. Most lépjen vissza a **folyamat** > **forrása lapra** , és folytassa az Office 365-Adatkiemelés további tulajdonságainak konfigurálását.  A felhasználói hatókör és a felhasználói hatókör szűrője választható predikátumokat határozhat meg az Office 365-ből kinyerni kívánt adatok korlátozásához. A beállítások konfigurálásával kapcsolatban lásd az [Office 365-adatkészlet tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) című szakaszt.
+8. Most lépjen vissza a **folyamat**  >  **forrása lapra** , és folytassa az Office 365-Adatkiemelés további tulajdonságainak konfigurálását.  A felhasználói hatókör és a felhasználói hatókör szűrője választható predikátumokat határozhat meg az Office 365-ből kinyerni kívánt adatok korlátozásához. A beállítások konfigurálásával kapcsolatban lásd az [Office 365-adatkészlet tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) című szakaszt.
 
 9. Ki kell választania a Dátumszűrő egyikét, és meg kell adnia a kezdési és a befejezési időpontot.
 
@@ -132,8 +132,8 @@ A folyamat futásához társított tevékenységfuttatások megtekintéséhez ka
 
 Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (amely az adattábla egy kombinációja, amelybe a rendszer betölti az adatokat, és hogy melyik felhasználói identitás teszi az adatelérési kérelmet), a másolási tevékenység állapota **folyamatban**, és csak akkor jelenik meg, ha a műveletek területen a részletek hivatkozásra kattint, és az állapot **RequesetingConsent**lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
-_Engedély_
-![kérése: tevékenység-végrehajtás részletei – kérelem belefoglalása](./media/load-office-365-data/activity-details-request-consent.png) 
+_Engedély kérése:_ 
+ ![ Tevékenység-végrehajtás részletei – kérelem beleegyezike](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Állapot kibontási adatokként:_
 

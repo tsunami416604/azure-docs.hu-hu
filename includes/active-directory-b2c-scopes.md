@@ -5,29 +5,20 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84680338"
 ---
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/) 
 
-1. Válassza az **alkalmazások**lehetőséget.
-1. Válassza ki a *webapi1* alkalmazást a **Tulajdonságok** lap megnyitásához.
-1. Válassza a **közzétett hatókörök**elemet. A közzétett hatókörökkel egy ügyfélalkalmazás bizonyos engedélyeket biztosíthat a webes API-nak.
-1. A **hatókör**, `demo.read`a és a **Leírás**mezőbe írja be `Read access to the web API`a következőt:.
-1. A **hatókör**, `demo.write`a és a **Leírás**mezőbe írja be `Write access to the web API`a következőt:.
-1. Kattintson a **Mentés** gombra.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Válassza ki a *webapi1* alkalmazást az **áttekintő** oldal megnyitásához.
 1. A **kezelés**területen válassza **az API közzététele**lehetőséget.
 1. Az **alkalmazás-azonosító URI-ja**mellett válassza a **beállítás** hivatkozást.
-1. Cserélje le az alapértelmezett értéket (GUID) a `api`értékre, majd válassza a **Mentés**lehetőséget. A teljes URI látható, és a formátumnak `https://your-tenant-name.onmicrosoft.com/api`kell lennie. Ha a webalkalmazás hozzáférési jogkivonatot kér az API-hoz, adja hozzá ezt az URI-t az API-hoz definiált minden hatókör előtagjaként.
+1. Cserélje le az alapértelmezett értéket (GUID) a értékre `api` , majd válassza a **Mentés**lehetőséget. A teljes URI látható, és a formátumnak kell lennie `https://your-tenant-name.onmicrosoft.com/api` . Ha a webalkalmazás hozzáférési jogkivonatot kér az API-hoz, adja hozzá ezt az URI-t az API-hoz definiált minden hatókör előtagjaként.
 1. Az **API által definiált hatókörök**területen válassza **a hatókör hozzáadása**elemet.
 1. Adja meg a következő értékeket egy olyan hatókör létrehozásához, amely az API olvasási hozzáférését határozza meg, majd válassza a **hatókör hozzáadása**elemet:
     1. **Hatókör neve**:`demo.read`
@@ -37,3 +28,12 @@ ms.locfileid: "78183379"
     1. **Hatókör neve**:`demo.write`
     1. **Rendszergazdai engedély megjelenítendő neve**:`Write access to demo API`
     1. **Rendszergazdai engedély leírása**:`Allows write access to the demo API`
+
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
+
+1. Válassza az **alkalmazások (örökölt)** lehetőséget.
+1. Válassza ki a *webapi1* alkalmazást a **Tulajdonságok** lap megnyitásához.
+1. Válassza a **közzétett hatókörök**elemet. A közzétett hatókörökkel egy ügyfélalkalmazás bizonyos engedélyeket biztosíthat a webes API-nak.
+1. A **hatókör**, a `demo.read` és a **Leírás**mezőbe írja be a következőt: `Read access to the web API` .
+1. A **hatókör**, a `demo.write` és a **Leírás**mezőbe írja be a következőt: `Write access to the web API` .
+1. Kattintson a **Mentés** gombra.

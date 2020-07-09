@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77212277"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Az Azure-beli virtuális gépek vész-helyreállításának beállítása Azure PowerShell használatával
@@ -51,7 +50,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsmaggal.
 Connect-AzAccount
 ```
 
-Válassza ki az Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki a `Set-AzContext` parancsmag használatával dolgozni kívánt Azure-előfizetést.
+Válassza ki az Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki a parancsmag használatával dolgozni kívánt Azure-előfizetést `Set-AzContext` .
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -59,7 +58,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>A replikálni kívánt virtuális gép adatainak beolvasása
 
-Ebben a cikkben az USA keleti régiójában található virtuális gépeket az USA 2. nyugati régiójában replikáljuk és helyreállítjuk. A replikált virtuális gép operációsrendszer-lemezzel és egyetlen adatlemezzel rendelkezik. A példában használt virtuális gép neve `AzureDemoVM`.
+Ebben a cikkben az USA keleti régiójában található virtuális gépeket az USA 2. nyugati régiójában replikáljuk és helyreállítjuk. A replikált virtuális gép operációsrendszer-lemezzel és egyetlen adatlemezzel rendelkezik. A példában használt virtuális gép neve `AzureDemoVM` .
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -115,7 +114,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Hozzon létre egy Recovery Services-tárolót. Ebben a példában egy nevű `a2aDemoRecoveryVault` Recovery Services-tároló jön létre az USA 2. nyugati régiójában.
+Hozzon létre egy Recovery Services-tárolót. Ebben a példában egy nevű Recovery Services-tároló `a2aDemoRecoveryVault` jön létre az USA 2. nyugati régiójában.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -170,7 +169,7 @@ A tároló háló objektuma egy Azure-régiót jelöl. Az elsődleges háló obj
 - Régiónként csak egy Fabric-objektum hozható létre.
 - Ha korábban engedélyezte Site Recovery replikációt a Azure Portal egy virtuális géphez, a Site Recovery automatikusan létrehoz egy háló objektumot. Ha egy adott régióban létezik egy Fabric-objektum, nem hozhat létre újat.
 
-Mielőtt elkezdené, Ismerje meg, hogy Site Recovery műveletek végrehajtása aszinkron módon történik. Amikor műveletet kezdeményez, egy Azure Site Recovery feladatot küld, és a rendszer visszaadja a feladatok követésére szolgáló objektumot. A feladatok követése objektum használatával lekérheti a feladatokhoz`Get-AzRecoveryServicesAsrJob`tartozó legújabb állapotot, és figyelheti a művelet állapotát.
+Mielőtt elkezdené, Ismerje meg, hogy Site Recovery műveletek végrehajtása aszinkron módon történik. Amikor műveletet kezdeményez, egy Azure Site Recovery feladatot küld, és a rendszer visszaadja a feladatok követésére szolgáló objektumot. A feladatok követése objektum használatával lekérheti a feladatokhoz tartozó legújabb állapotot `Get-AzRecoveryServicesAsrJob` , és figyelheti a művelet állapotát.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -603,7 +602,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-fail-back-to-the-source-region"></a>Ismételt védelem és feladat-visszavétel a forrás régióba
 
-Feladatátvétel után, amikor készen áll arra, hogy visszalépjen az eredeti régióba, a `Update-AzRecoveryServicesAsrProtectionDirection` parancsmag használatával indítsa el a replikációval védett elem visszirányú replikálását.
+Feladatátvétel után, amikor készen áll arra, hogy visszalépjen az eredeti régióba, a parancsmag használatával indítsa el a replikációval védett elem visszirányú replikálását `Update-AzRecoveryServicesAsrProtectionDirection` .
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -620,7 +619,7 @@ Az ismételt védelem befejeződése után fordított irányban, az USA keleti r
 
 ## <a name="disable-replication"></a>A replikálás letiltása
 
-A replikációt letilthatja `Remove-AzRecoveryServicesAsrReplicationProtectedItem` a parancsmaggal.
+A replikációt letilthatja a `Remove-AzRecoveryServicesAsrReplicationProtectedItem` parancsmaggal.
 
 ```azurepowershell
 Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem

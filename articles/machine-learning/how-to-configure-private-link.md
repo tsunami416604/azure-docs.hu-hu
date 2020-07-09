@@ -1,21 +1,21 @@
 ---
-title: Az Azure privát hivatkozásának konfigurálása
+title: Privát végpont konfigurálása (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Az Azure Private link használatával biztonságosan férhet hozzá a Azure Machine Learning-munkaterülethez egy virtuális hálózatról.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891370"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134881"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez (előzetes verzió)
 
@@ -71,7 +71,7 @@ További információ: [erőforrások központi telepítése egyéni sablonból]
 
 ### <a name="deploy-the-template-using-azure-powershell"></a>A sablon üzembe helyezése Azure PowerShell használatával
 
-Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az aktuális könyvtárban `azuredeploy.json` található fájlba:
+Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az `azuredeploy.json` aktuális könyvtárban található fájlba:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -84,7 +84,7 @@ További információ: [erőforrások üzembe helyezése Resource Manager-sablon
 
 ### <a name="deploy-the-template-using-the-azure-cli"></a>A sablon üzembe helyezése az Azure CLI használatával
 
-Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az aktuális könyvtárban `azuredeploy.json` található fájlba:
+Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az `azuredeploy.json` aktuális könyvtárban található fájlba:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -99,14 +99,13 @@ További információ: [erőforrások üzembe helyezése Resource Manager-sablon
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>Munkaterület használata privát végponton keresztül
 
-Mivel a munkaterület felé irányuló kommunikáció csak a virtuális hálózatról engedélyezett, a munkaterületet használó fejlesztési környezeteknek a virtuális hálózat tagjának kell lenniük. Például a virtuális hálózatban található virtuális gép vagy a virtuális hálózathoz a VPN-átjáró használatával csatlakoztatott számítógép.
+Mivel a munkaterület felé irányuló kommunikáció csak a virtuális hálózatról engedélyezett, a munkaterületet használó fejlesztési környezeteknek a virtuális hálózat tagjának kell lenniük. Például egy virtuális gép a virtuális hálózaton.
 
 > [!IMPORTANT]
 > A kapcsolat ideiglenes megszakadásának elkerülése érdekében a Microsoft javasolja a DNS-gyorsítótár kiürítését a munkaterülethez csatlakozó számítógépeken a privát hivatkozás engedélyezése után. 
 
 Az Azure Virtual Machinesról a [Virtual Machines dokumentációjában](/azure/virtual-machines/)olvashat bővebben.
 
-További információ a VPN-átjárókkal kapcsolatban: [Mi a VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
 ## <a name="using-azure-storage"></a>Az Azure Storage használata
 
@@ -1162,6 +1161,6 @@ A virtuális hálózaton belüli Azure Container Registry biztonságossá tétel
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning munkaterület biztonságossá tételével kapcsolatos további információkért tekintse meg a [nagyvállalati biztonsági](concept-enterprise-security.md) cikket.

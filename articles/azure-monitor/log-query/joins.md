@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670202"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Illesztések Azure Monitor log lekérdezésekben
@@ -42,7 +41,7 @@ Ebben a példában az első adatkészlet szűri az összes bejelentkezési esem�
 Ha mindkét adatkészlet azonos nevű oszlopokkal rendelkezik, akkor a jobb oldali adatkészlet oszlopai egy indexet kapnak, így ebben a példában az eredmények a bal oldali táblából származó értékekkel _és a_ jobb oldali tábla értékeit tartalmazó _TargetLogonId_ jelennek meg. Ebben az esetben a második _TargetLogonId1_ oszlop el lett távolítva az `project-away` operátor használatával.
 
 > [!NOTE]
-> A teljesítmény javítása érdekében a `project` kezelő használatával csak a csatlakoztatott adatkészletek megfelelő oszlopait tartsa meg.
+> A teljesítmény javítása érdekében a kezelő használatával csak a csatlakoztatott adatkészletek megfelelő oszlopait tartsa meg `project` .
 
 
 A következő szintaxissal csatlakozhat két adatkészlethez, az összevont kulcs pedig eltérő névvel rendelkezik a két tábla között:
@@ -79,7 +78,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Összekapcsolási típus
 Adja meg a _Kind_ argumentummal való illesztés típusát. Mindegyik típus a következő táblázatban leírtak szerint eltérő egyezést hajt végre az adott táblák rekordjai között.
 
-| Illesztés típusa | Leírás |
+| Illesztés típusa | Description |
 |:---|:---|
 | innerunique | Ez az alapértelmezett csatlakozási mód. Először a bal oldali tábla egyező oszlopának értékei találhatók, és az ismétlődő értékek törlődnek.  Ezután az egyedi értékek halmaza illeszkedik a jobb oldali táblához. |
 | belső | A rendszer csak a mindkét táblában lévő rekordokat tartalmazza az eredmények között. |
@@ -93,7 +92,7 @@ Adja meg a _Kind_ argumentummal való illesztés típusát. Mindegyik típus a k
 Az optimális teljesítmény érdekében vegye figyelembe a következő szempontokat:
 
 - Használjon időszűrőt az egyes táblákon, hogy csökkentse azokat a rekordokat, amelyeket ki kell értékelni az illesztéshez.
-- A `where` és `project` a használatával csökkentheti a bemeneti táblák sorainak és oszlopainak számát az illesztés előtt.
+- A `where` és a használatával `project` csökkentheti a bemeneti táblák sorainak és oszlopainak számát az illesztés előtt.
 - Ha egy tábla mindig kisebb, mint a többi, használja az illesztés bal oldalán.
 
 

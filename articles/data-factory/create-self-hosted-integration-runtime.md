@@ -10,13 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/13/2020
-ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655864"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -56,13 +55,13 @@ Saját üzemeltetésű integrációs modul létrehozásához és beállításáh
 
 A következő lépésekkel hozhat létre saját üzemeltetésű integrációs modult Azure Data Factory felhasználói felület használatával.
 
-1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a **Szerző** fület a bal szélső ablaktáblán.
+1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal szélső ablaktáblán.
 
-   ![A Kezdőlap létrehozás gombja](media/doc-common-process/get-started-page-author-button.png)
+   ![A Kezdőlap kezelés gombja](media/doc-common-process/get-started-page-manage-button.png)
 
-1. A bal szélső ablaktábla alján válassza a **kapcsolatok** lehetőséget, majd a **kapcsolatok** ablakban válassza az **Integration Runtimes (integrációs** modulok) lehetőséget. Válassza az **+ új**lehetőséget.
+1. Válassza az **integrációs** modulok lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új**lehetőséget.
 
-   ![Integrációs modul létrehozása](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+   ![Integrációs modul létrehozása](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra. 
 
@@ -97,7 +96,7 @@ A saját üzemeltetésű IR-telepítőt automatizálhatja egy Azure-beli virtuá
 
 Egy meglévő, saját üzemeltetésű integrációs modul beállításához vagy kezeléséhez használhatja a parancssort. Ez a használat különösen segít automatizálni a saját üzemeltetésű IR-csomópontok telepítését és regisztrálását.
 
-A Dmgcmd. exe a saját üzemeltetésű telepítő részét képezi. Ez általában a C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ mappában található. Ez az alkalmazás támogatja a különböző paramétereket, és az automatizáláshoz használható batch-parancsfájlok használatával parancssorból hívható meg.
+A Dmgcmd.exe a saját üzemeltetésű telepítő része. Ez általában a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ mappában található. Ez az alkalmazás támogatja a különböző paramétereket, és az automatizáláshoz használható batch-parancsfájlok használatával parancssorból hívható meg.
 
 Az alkalmazást a következőképpen használhatja:
 
@@ -117,7 +116,7 @@ Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit
 | **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | No       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | No       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | No       |
-| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | No       |
+| **Újraindítás**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | No       |
 | **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | No       |
 | **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | No       |
 | **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | No       |
@@ -151,7 +150,7 @@ Az alábbiakban a saját üzemeltetésű integrációs modulról történő más
 - Saját üzemeltetésű integrációs modul használata az Azure-beli virtuális hálózaton belüli Adatintegráció támogatásához.
 - Az adatforrást olyan helyszíni adatforrásként kezelheti, amely tűzfal mögött található, még akkor is, ha az Azure ExpressRoute-t használja. A saját üzemeltetésű integrációs modul használatával kapcsolódhat a szolgáltatáshoz az adatforráshoz.
 - Használja a saját üzemeltetésű integrációs modult, még akkor is, ha az adattár a felhőben van egy Azure-beli infrastruktúra-szolgáltatás (IaaS) virtuális gép.
-- Előfordulhat, hogy a feladatok sikertelenek lehetnek a saját üzemeltetésű integrációs modulban, amelyet egy olyan Windows-kiszolgálóra telepített, amelyen engedélyezve van az FIPS-kompatibilis titkosítás. A probléma megkerüléséhez tiltsa le a FIPS-kompatibilis titkosítást a kiszolgálón. A FIPS-kompatibilis titkosítás letiltásához módosítsa a beállításjegyzék következő alkulcsának értékét 1 (engedélyezve) értékről 0 (letiltva) értékre: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
+- Előfordulhat, hogy a feladatok sikertelenek lehetnek a saját üzemeltetésű integrációs modulban, amelyet egy olyan Windows-kiszolgálóra telepített, amelyen engedélyezve van az FIPS-kompatibilis titkosítás. A probléma megkerüléséhez tiltsa le a FIPS-kompatibilis titkosítást a kiszolgálón. A FIPS-kompatibilis titkosítás letiltásához módosítsa a beállításjegyzék következő alkulcsának értékét 1 (engedélyezve) értékről 0 (letiltva) értékre: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -173,7 +172,7 @@ Az alábbiakban a saját üzemeltetésű integrációs modulról történő más
 - A másolási tevékenység futtatása egy adott gyakorisággal történik. A processzor és a RAM-használat a gépen ugyanazt a mintát követi, mint a csúcs és az üresjárati idő. Az erőforrás-használat az áthelyezett adatok mennyiségétől is nagy mértékben függ. Ha több másolási feladat van folyamatban, az erőforrás-használat a csúcs idején jelenik meg.
 - Előfordulhat, hogy a feladatok a parketta, az ork vagy a Avro formátumú adatok kinyerése során meghiúsulnak. A parkettával kapcsolatos további információkért lásd: [parketta formátum Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime). A fájl létrehozása a saját üzemeltetésű integrációs gépen fut. Ahhoz, hogy a várt módon működjön, a fájl létrehozásához a következő előfeltételek szükségesek:
     - [Visual C++ 2010 újraterjeszthető](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) csomag Csomag (x64)
-    - Java Runtime (JRE) 8-as verzió egy JRE-szolgáltatótól, például a [OpenJDK elfogadása](https://adoptopenjdk.net/). Győződjön meg arról `JAVA_HOME` , hogy a környezeti változó be van állítva.
+    - Java Runtime (JRE) 8-as verzió egy JRE-szolgáltatótól, például a [OpenJDK elfogadása](https://adoptopenjdk.net/). Győződjön meg arról, hogy a `JAVA_HOME` környezeti változó be van állítva.
 
 ## <a name="installation-best-practices"></a>Gyakorlati tanácsok a telepítéshez
 
@@ -220,7 +219,7 @@ Több csomópontot úgy is hozzárendelhet, ha telepíti a saját üzemeltetés�
 > Nem kell létrehoznia új, saját üzemeltetésű integrációs modult az egyes csomópontok hozzárendeléséhez. Telepítheti a saját üzemeltetésű integrációs modult egy másik gépre, és ugyanazzal a hitelesítési kulccsal regisztrálhatja azt.
 
 > [!NOTE]
-> Mielőtt újabb csomópontot ad hozzá a magas rendelkezésre álláshoz és a méretezhetőséghez, győződjön meg arról, hogy az első csomóponton engedélyezve van az **intranetes távelérés** beállítás. Ehhez válassza az **Microsoft Integration Runtime Configuration Manager** > a**Beállítások** > **Távoli elérés az intranethez**lehetőséget.
+> Mielőtt újabb csomópontot ad hozzá a magas rendelkezésre álláshoz és a méretezhetőséghez, győződjön meg arról, hogy az első csomóponton engedélyezve van az **intranetes távelérés** beállítás. Ehhez válassza az **Microsoft Integration Runtime Configuration Manager**  >  **Settings**  >  **a beállítások távoli elérés az intranethez**lehetőséget.
 
 ### <a name="scale-considerations"></a>Méretezési szempontok
 
@@ -352,8 +351,8 @@ Ha be van állítva, a saját üzemeltetésű integrációs modul a proxykiszolg
 Három konfigurációs lehetőség közül választhat:
 
 - Ne **használja a proxyt**: a saját üzemeltetésű integrációs modul nem használ explicit módon semmilyen proxyt a Cloud Serviceshez való csatlakozáshoz.
-- A **rendszerproxy használata**: a saját üzemeltetésű integrációs modul a diahost. exe. config és a diawp. exe. config fájlban konfigurált proxy-beállítást használja. Ha ezek a fájlok nem határoznak meg proxy-konfigurációt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
-- **Egyéni proxy használata**: KONFIGURÁLJA a http-proxy beállítását a saját üzemeltetésű integrációs modulhoz a diahost. exe. config és a diawp. exe. config fájlban található konfigurációk használata helyett. A **címek** és a **portok** értékének megadása kötelező. A proxy hitelesítési beállításától függően a **Felhasználónév** és a **jelszó** értéke nem kötelező. Az összes beállítás titkosítása a Windows DPAPI a saját üzemeltetésű integrációs modulban és helyileg, a gépen történik.
+- A **System proxy használata**: a saját üzemeltetésű integrációs modul a diahost.exe.config és diawp.exe.config konfigurált proxybeállításokat használja. Ha ezek a fájlok nem határoznak meg proxy-konfigurációt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
+- **Egyéni proxy használata**: KONFIGURÁLJA a http-proxy beállítását a saját üzemeltetésű integrációs modulhoz a diahost.exe.config és diawp.exe.config konfigurációk használata helyett. A **címek** és a **portok** értékének megadása kötelező. A proxy hitelesítési beállításától függően a **Felhasználónév** és a **jelszó** értéke nem kötelező. Az összes beállítás titkosítása a Windows DPAPI a saját üzemeltetésű integrációs modulban és helyileg, a gépen történik.
 
 Az Integration Runtime Host szolgáltatás automatikusan újraindul a frissített proxybeállítások mentése után.
 
@@ -362,7 +361,7 @@ Miután regisztrálta a saját üzemeltetésű integrációs modult, ha szeretn�
 1. Nyissa meg **Microsoft Integration Runtime Configuration Manager**.
 1. Válassza a **Settings** (Beállítások) fület.
 1. A **http-proxy**alatt kattintson a **módosítás** hivatkozásra a **http-proxy beállítása** párbeszédpanel megnyitásához.
-1. Kattintson a **Tovább** gombra. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
+1. Válassza a **Tovább** lehetőséget. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
 
 A Configuration Manager eszköz használatával megtekintheti és frissítheti a HTTP-proxyt.
 
@@ -373,11 +372,11 @@ A Configuration Manager eszköz használatával megtekintheti és frissítheti a
 
 ### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló beállításainak konfigurálása
 
-Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a saját üzemeltetésű integrációs modul a diahost. exe. config és a diawp. exe. config fájl proxybeállításait használja. Ha ezek a fájlok nem határoznak meg proxyt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost. exe. config fájl frissítéséhez:
+Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a saját üzemeltetésű integrációs modul a proxybeállításokat használja diahost.exe.config és diawp.exe.config. Ha ezek a fájlok nem határoznak meg proxyt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost.exe.config fájl frissítéséhez:
 
-1. A Fájlkezelőben készítse el a C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config biztonságos másolatát az eredeti fájl biztonsági másolatából.
+1. A Fájlkezelőben készítse el a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config biztonságos másolatát az eredeti fájl biztonsági másolatából.
 1. Nyissa meg rendszergazdaként a Jegyzettömb alkalmazást.
-1. A Jegyzettömbben nyissa meg a C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config. szövegfájlt.
+1. A Jegyzettömbben nyissa meg a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config szövegfájlt.
 1. Keresse meg az alapértelmezett **System.net** címkét az alábbi kódban látható módon:
 
     ```xml
@@ -395,7 +394,7 @@ Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a s
     </system.net>
     ```
 
-    A proxy címkéje további tulajdonságokat is lehetővé tesz a szükséges `scriptLocation`beállítások megadásához, például:. A szintaxishoz lásd: [ \<proxy\> elem (hálózati beállítások)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
+    A proxy címkéje további tulajdonságokat is lehetővé tesz a szükséges beállítások megadásához, például: `scriptLocation` . A szintaxishoz lásd: [ \<proxy\> elem (hálózati beállítások)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -407,7 +406,7 @@ Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a s
    Ha a szolgáltatás nem indul el, valószínűleg helytelen XML-címkét ad hozzá a szerkesztett alkalmazás konfigurációs fájljában.
 
 > [!IMPORTANT]
-> Ne felejtse el frissíteni a diahost. exe. config és a diawp. exe. config fájlt is.
+> Ne felejtse el frissíteni a diahost.exe.config és diawp.exe.config is.
 
 Emellett meg kell győződnie arról, hogy Microsoft Azure a vállalat engedélyezési listájában van. Az érvényes Azure IP-címek listáját letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -416,7 +415,7 @@ Emellett meg kell győződnie arról, hogy Microsoft Azure a vállalat engedély
 Ha a következőhöz hasonló hibaüzenetek jelennek meg, a valószínű ok a tűzfal vagy a proxykiszolgáló helytelen konfigurációja. Ez a konfiguráció megakadályozza, hogy a saját üzemeltetésű integrációs modul csatlakozzon a Data Factoryhoz a hitelesítéshez. A tűzfal és a proxykiszolgáló megfelelő konfigurálásának biztosításához tekintse meg az előző szakaszt.
 
 * Amikor megpróbálja regisztrálni a saját üzemeltetésű integrációs modult, a következő hibaüzenet jelenik meg: "nem sikerült regisztrálni ezt a Integration Runtime csomópontot! Győződjön meg arról, hogy a hitelesítési kulcs érvényes, és az Integration Service Host szolgáltatás fut ezen a gépen. "
-* A Integration Runtime Configuration Manager megnyitásakor a **leválasztott** vagy a **Csatlakozás**állapot jelenik meg. Amikor megtekinti a Windows-eseménynaplókat, **Eseménynapló** > **alkalmazás-és szolgáltatások naplói** > **Microsoft Integration Runtime**, a következőhöz hasonló hibaüzenetek jelennek meg:
+* A Integration Runtime Configuration Manager megnyitásakor a **leválasztott** vagy a **Csatlakozás**állapot jelenik meg. Amikor megtekinti a Windows-eseménynaplókat, **Eseménynapló**  >  **alkalmazás-és szolgáltatások naplói**  >  **Microsoft Integration Runtime**, a következőhöz hasonló hibaüzenetek jelennek meg:
 
     ```
     Unable to connect to the remote server

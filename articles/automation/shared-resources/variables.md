@@ -10,10 +10,9 @@ ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744957"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Változók kezelése a Azure Automationban
@@ -58,7 +57,7 @@ Tömb vagy szórótábla létrehozásával és a változóba való mentésével 
 
 Az alábbi táblázatban található parancsmagok automatizálási változókat hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik.
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 |:---|:---|
 |[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Egy létező változó értékét kérdezi le. Ha az érték egy egyszerű típus, akkor a rendszer ugyanazt a típust kéri le. Összetett típus esetén a `PSCustomObject` rendszer beolvassa a típust. <br>**Megjegyzés:**  Nem használhatja ezt a parancsmagot egy titkosított változó értékének lekéréséhez. Ennek egyetlen módja, ha a belső `Get-AutomationVariable` parancsmagot használja egy runbook vagy DSC-konfigurációban. [A változók eléréséhez tekintse meg a belső parancsmagokat](#internal-cmdlets-to-access-variables). |
 |[Új – AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Létrehoz egy új változót, és beállítja annak értékét.|
@@ -69,7 +68,7 @@ Az alábbi táblázatban található parancsmagok automatizálási változókat 
 
 A következő táblázatban található belső parancsmagok a runbookok és a DSC-konfigurációk változóinak elérésére szolgálnak. Ezek a parancsmagok a globális modulhoz tartoznak `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Leírás |
+| Belső parancsmag | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Egy létező változó értékét kérdezi le.|
 |`Set-AutomationVariable`|Beállítja egy létező változó értékét.|
@@ -88,7 +87,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 A következő táblázatban szereplő függvények a Python 2 runbook változóinak elérésére szolgálnak.
 
-|Python 2 függvények|Leírás|
+|Python 2 függvények|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Egy létező változó értékét kérdezi le. |
 |`automationassets.set_automation_variable`|Beállítja egy létező változó értékét. |

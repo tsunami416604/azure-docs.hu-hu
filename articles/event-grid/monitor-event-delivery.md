@@ -1,29 +1,19 @@
 ---
-title: Figyelő Azure Event Grid üzenet kézbesítése
-description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal az Azure Event Grid üzenetek kézbesítési állapotának megtekintéséhez.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+title: Azure Event Grid mérőszámok megtekintése és riasztások beállítása
+description: Ez a cikk bemutatja, hogyan tekintheti meg Azure Event Grid témakörök és előfizetések metrikáit, és hogyan hozhat létre riasztásokat a Azure Portal használatával.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890848"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114883"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Figyelő Event Grid üzenet kézbesítése 
+Ez a cikk azt ismerteti, hogyan használható a portál a Event Grid témakörök és előfizetések metrikáinak megjelenítéséhez, valamint riasztások létrehozásához. 
 
-Ez a cikk azt ismerteti, hogyan használható a portál az események kézbesítési állapotának megtekintéséhez.
-
-Event Grid tartós kézbesítést biztosít. Minden egyes előfizetéshez legalább egyszer kézbesít minden üzenetet. Az eseményeket azonnal elküldi az egyes előfizetések regisztrált webhookjának. Ha egy webhook nem igazolja az esemény kézhezvételét az első kézbesítési kísérlet 60 másodpercén belül, Event Grid újrapróbálkozik az esemény kézbesítésével.
-
-További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
-
-## <a name="delivery-metrics"></a>Kézbesítési metrikák
+## <a name="metrics"></a>Mérőszámok
 
 A portál megjeleníti az események kézbesítésének állapotára vonatkozó metrikákat.
 
@@ -43,50 +33,69 @@ Az előfizetések esetében Íme néhány mérőszám:
     > [!NOTE]
     > A metrikák teljes listájáért lásd: [Azure Event Grid által támogatott metrikák](metrics.md).
 
-## <a name="event-subscription-status"></a>Esemény-előfizetés állapota
+## <a name="view-custom-topic-metrics"></a>Egyéni témakör metrikáinak megtekintése
 
-Ha szeretné megtekinteni az esemény-előfizetés mérőszámait, kereshet az előfizetés típusa vagy egy adott erőforrás előfizetése alapján.
+Ha közzétett egy egyéni témakört, megtekintheti a metrikákat. 
 
-Ha az esemény-előfizetés típusa szerint szeretne keresni, válassza a **minden szolgáltatás**lehetőséget.
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
+2. A témakörben található keresősáv mezőbe írja be **Event Grid témaköröket**, majd válassza a **Event Grid témakörök** elemet a legördülő listából. 
 
-![Minden szolgáltatás kiválasztása](./media/monitor-event-delivery/all-services.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid témakörök keresése és kiválasztása":::
+3. Válassza ki az egyéni témakört a témakörök listájában. 
 
-Keressen az **Event Grid** kifejezésre, és válassza ki **Event Grid előfizetéseket** az elérhető lehetőségek közül.
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Egyéni témakör kiválasztása":::
+4. Tekintse meg az egyéni esemény témakör metrikáit a **Event Grid témakör** oldalon. A következő ábrán az **alapvető** tudnivalókat tartalmazó szakasz az erőforráscsoport, az előfizetés stb. értékre van lecsökkentve. 
 
-![Esemény-előfizetések keresése](./media/monitor-event-delivery/search-and-select.png)
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Esemény metrikáinak megtekintése":::
 
-Szűrés az esemény típusa, az előfizetés és a hely alapján. Válassza ki a megtekinteni kívánt előfizetéshez tartozó **metrikákat** .
+A támogatott metrikákkal rendelkező diagramokat a **Event Grid témakör** oldal **mérőszámok** lapján lehet létrehozni.
 
-![Esemény-előfizetések szűrése](./media/monitor-event-delivery/filter-events.png)
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Témakör – mérőszámok lap":::
 
-Tekintse meg az esemény témakörének és előfizetésének mérőszámait.
+A metrikákkal kapcsolatos további tudnivalókért tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md)
 
-![Esemény metrikáinak megtekintése](./media/monitor-event-delivery/subscription-metrics.png)
+Tekintse meg például a **közzétett események** metrikájának mérőszámait tartalmazó diagramot.
 
-Egy adott erőforrás metrikáinak megkereséséhez válassza ki az erőforrást. Ezután válassza az **események**lehetőséget.
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Közzétett események mérőszáma":::
 
-![Erőforrások eseményeinek kiválasztása](./media/monitor-event-delivery/select-events.png)
 
-Megjelenik az adott erőforráshoz tartozó előfizetések metrikái.
+## <a name="view-subscription-metrics"></a>Előfizetési mérőszámok megtekintése
+1. Az előző szakasz lépéseit követve navigáljon a **Event Grid témakör** oldalára. 
+2. Válassza ki az előfizetést az alsó ablaktáblán az alábbi példában látható módon. 
 
-## <a name="custom-event-status"></a>Egyéni esemény állapota
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Esemény-előfizetés kiválasztása":::    
 
-Ha közzétett egy egyéni témakört, megtekintheti a metrikákat. Válassza ki a témakörhöz tartozó erőforráscsoportot, és válassza ki a témakört.
+    **Event Grid előfizetéseket** a Azure Portal keresési sávjában is megkeresheti, ha az esemény-előfizetés megjelenítéséhez a **témakör típusa**, az **előfizetés**és a **hely** lehetőséget választja. 
 
-![Egyéni témakör kiválasztása](./media/monitor-event-delivery/select-custom-topic.png)
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Esemény-előfizetés kiválasztása Event Grid-előfizetések lapról":::        
 
-Tekintse meg az egyéni esemény témakör mérőszámait.
+    Egyéni témakörök esetén válassza ki a témakörök **típusaként** **Event Grid témákat** . A rendszertémák területen válassza ki az Azure-erőforrás típusát (például Storage- **fiókok (blob, GPv2))**. 
+3. A diagramon az előfizetés kezdőlapján tekintheti meg az előfizetés mérőszámait. Az elmúlt 1 óra, 6 óra, 12 óra, 1 nap, 7 nap vagy 30 nap között az **általános**, a **hiba**, a **késés**és a **kézbesítetlen levelek** mérőszáma látható. 
 
-![Esemény metrikáinak megtekintése](./media/monitor-event-delivery/custom-topic-metrics.png)
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metrikák az előfizetés kezdőlapján":::    
 
-## <a name="set-alerts"></a>Riasztások beállítása
+## <a name="view-system-topic-metrics"></a>Rendszertémakör metrikáinak megtekintése
 
-Megadhatja a riasztásokat a témakörben és a tartományi szintű mérőszámokban az egyéni témakörökhöz és az esemény-tartományokhoz. Az Áttekintés panelen válassza a bal oldali erőforrás menü **riasztások** elemét a riasztási szabályok megtekintéséhez, kezeléséhez és létrehozásához. [További információ a Azure Monitor riasztásokról](../azure-monitor/platform/alerts-overview.md)
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
+2. A témakörben található keresősáv mezőbe írja be **Event Grid Rendszertémaköröket**, majd válassza a **Event Grid rendszertémakörök** lehetőséget a legördülő listából. 
 
-![Esemény metrikáinak megtekintése](./media/monitor-event-delivery/select-alerts.png)
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid rendszerbeli témakörök keresése és kiválasztása":::
+3. A témakörök listájából válassza ki a rendszer témakört. 
 
-## <a name="next-steps"></a>További lépések
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="A System témakör kiválasztása":::
+4. Tekintse meg a rendszertémakör metrikáit a **Event Grid rendszertémakör** oldalon. A következő ábrán az **alapvető** tudnivalókat tartalmazó szakasz az erőforráscsoport, az előfizetés stb. értékre van lecsökkentve. 
 
-* További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
-* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
-* Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="A rendszertémakör metrikáinak megtekintése az Áttekintés oldalon":::
+
+A támogatott metrikákkal rendelkező diagramokat a **Event Grid témakör** oldal **mérőszámok** lapján lehet létrehozni.
+
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Rendszertémakör – mérőszámok lap":::
+
+A metrikákkal kapcsolatos további tudnivalókért tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md)
+
+
+## <a name="next-steps"></a>Következő lépések
+Lásd az alábbi cikkeket:
+
+- A metrikák és a tevékenységek naplózási műveleteinek létrehozásáról a [riasztások beállítása](set-alerts.md)című témakörben olvashat bővebben.
+- További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).

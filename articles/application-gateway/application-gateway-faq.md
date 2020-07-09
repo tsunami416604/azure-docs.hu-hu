@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: e5e60fbcbdd7784cf131b7acb461065251a2dfd7
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.custom: references_regions
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981999"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -72,7 +73,13 @@ A v2 SKU esetében nyissa meg a nyilvános IP-erőforrást, és válassza a **ko
 
 Az *életben tartási időkorlát* azt szabályozza, hogy a Application Gateway mennyi ideig várjon, amíg az ügyfél egy másik HTTP-kérést küld egy állandó kapcsolaton, mielőtt újra felhasználja vagy bezárja. A *TCP üresjárati időkorlátja* azt szabályozza, hogy a TCP-kapcsolatok mennyi ideig legyenek nyitva, ha nincs tevékenység. 
 
-A *Keep-Alive időtúllépés* a Application Gateway v1 SKU-ban 120 másodperc, a v2 sku pedig 75 másodperc. A *TCP Üresjárati időkorlát* 4 perces alapértelmezett érték a (z) v1-es és v2-es Application Gateway-alapú virtuális IP-cím (VIP) esetében. Ezek az értékek nem módosíthatók.
+A *Keep-Alive időtúllépés* a Application Gateway v1 SKU-ban 120 másodperc, a v2 sku pedig 75 másodperc. A *TCP Üresjárati időkorlát* 4 perces alapértelmezett érték a (z) v1-es és v2-es Application Gateway-alapú virtuális IP-cím (VIP) esetében. A TCP Üresjárati időkorlát értékét a v1-es és v2-es Application Gateway-ben beállíthatja 4 perc és 30 perc között. A v1 és v2 Application Gateway esetén a Application Gateway nyilvános IP-címére kell navigálnia, és módosítania kell a TCP üresjárati időkorlátot a nyilvános IP-cím "konfiguráció" paneljén a portálon. A nyilvános IP-cím TCP üresjárati időtúllépési értékét a PowerShellen keresztül állíthatja be a következő parancsok futtatásával: 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Az IP-cím vagy a DNS-név módosul az Application Gateway élettartama során?
 
@@ -337,11 +344,31 @@ Nem, csak alfanumerikus karaktereket használjon a. pfx-fájl jelszavában.
 A Kubernetes lehetővé teszi a létrehozást `deployment` és az `service` erőforrást, hogy a fürtön belül belső hüvelyek csoportját tegye elérhetővé. Ahhoz, hogy a szolgáltatás külsőleg is elérhető legyen, egy [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrás van meghatározva, amely terheléselosztást, TLS-megszakítást és név-alapú virtuális üzemeltetést biztosít.
 Ahhoz, hogy kielégítse ezt az `Ingress` erőforrást, be kell állítani egy bejövő vezérlőt, amely figyeli az erőforrások változásait, `Ingress` és konfigurálja a terheléselosztó-házirendeket.
 
-Az Application Gateway beáramlási vezérlő lehetővé teszi az [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) számára, hogy az Azure Kubernetes szolgáltatás beáramlási [szolgáltatásaként](https://azure.microsoft.com/services/kubernetes-service/) más néven AK-fürtöt használjanak.
+A Application Gateway beáramlási vezérlő (AGIC) lehetővé teszi az [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) számára, hogy az [Azure Kubernetes szolgáltatás](https://azure.microsoft.com/services/kubernetes-service/) bemenő példányként is használható legyen, más néven AK-fürtként.
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Több Application Gateway-példányt is kezelhet?
 
 Jelenleg a bejövő adatkezelő egyik példánya csak egy Application Gatewayhoz társítható.
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Miért nem működik együtt a AGIC a kubenet-sel?
+
+A AGIC megpróbálja automatikusan hozzárendelni az útválasztási tábla erőforrását az Application Gateway alhálózathoz, de ezt a művelet nem teszi lehetővé, mert a AGIC nem rendelkezik a megfelelő engedélyekkel. Ha a AGIC nem tudja hozzárendelni az útválasztási táblázatot a Application Gateway alhálózathoz, akkor a AGIC-naplók hibát jeleznek, ami azt jelzi, hogy az AK-fürt által létrehozott útválasztási táblázatot manuálisan kell hozzárendelni a Application Gateway alhálózatához. További információ: [itt](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)talál útmutatást.
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Csatlakozhatok a saját AK-fürthöz, és Application Gateway külön virtuális hálózatban? 
+
+Igen, ha a virtuális hálózatok egyenrangúak, és nincs átfedésben a címtartomány. Ha a kubenet-t futtatja, akkor ügyeljen arra, hogy az AK által generált útválasztási táblázatot társítsa a Application Gateway alhálózathoz. 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>Milyen funkciók nem támogatottak a AGIC-bővítményben? 
+
+Tekintse meg a Helm használatával központilag telepített AGIC és az [itt](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) található AK-bővítmények közötti különbségeket
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>Mikor érdemes használni a bővítményt és a Helm-telepítést? 
+
+Tekintse meg a Helm által központilag üzembe helyezett AGIC közötti különbségeket itt is: [ide](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)tartoznak, különösen azokat a táblákat, amelyeknek a AGIC a Helm-on keresztül üzembe helyezett, az AK-bővítmények által támogatott forgatókönyv (ek) et. Általánosságban elmondható, hogy a Helm használatával történő üzembe helyezés lehetővé teszi a bétaverziós funkciók tesztelését és a pályázók kiadását a hivatalos kiadás előtt. 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>Szabályozható, hogy a AGIC melyik verzióját fogja telepíteni a bővítmény?
+
+Nem, a AGIC bővítmény felügyelt szolgáltatás, ami azt jelenti, hogy a Microsoft automatikusan frissíti a bővítményt a legújabb stabil verzióra. 
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 

@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – munkaterület létrehozása
-description: Hozzon létre egy Azure szinapszis Analytics-munkaterületet az útmutató lépéseit követve.
+title: Rövid útmutató – szinapszis-munkaterület létrehozása
+description: Hozzon létre egy szinapszis-munkaterületet az útmutató lépéseit követve.
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4d3044ec04a3306efdc3b57c1e5a3149b70fab05
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e5896d1eabaf43afcbab7513d7abb0b1de4efe51
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112868"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656691"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rövid útmutató: Azure szinapszis Analytics-munkaterület létrehozása (előzetes verzió)
+# <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
 
@@ -44,7 +44,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
     | **Erőforráscsoport** | *Bármely erőforráscsoport* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
     | **Munkaterület neve** | mysampleworkspace | Megadja a munkaterület nevét, amelyet a rendszer a kapcsolatok végpontjai esetében is használni fog.|
     | **Régió** | USA 2. keleti régiója | Meghatározza a munkaterület helyét.|
-    | **2. generációs Data Lake Storage** | Fiók`storage account name` </br> Fájlrendszer:`root file system to use` | Megadja az elsődleges tárolóként használandó ADLS Gen2 Storage-fiók nevét és a használni kívánt fájlrendszert.|
+    | **Data Lake Storage Gen2** | Fiók`storage account name` </br> Fájlrendszer:`root file system to use` | Megadja az elsődleges tárolóként használandó ADLS Gen2 Storage-fiók nevét és a használni kívánt fájlrendszert.|
     ||||
 
     ![Munkaterület-kiépítési folyamat – alapismeretek lap.](media/quickstart-create-synapse-workspace/create-workspace-03.png)
@@ -80,6 +80,6 @@ Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a köv
  ![Az Azure szinapszis munkaterületének áttekintése – munkaterület megerősítő párbeszédpanelének törlése.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
 1. Ha a folyamat sikeresen befejeződik, az Azure szinapszis munkaterület többé nem jelenik meg a munkaterületek listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

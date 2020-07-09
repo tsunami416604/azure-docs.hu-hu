@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609454"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>A Azure Portal használatával felügyelheti Azure Data Box és Azure Data Box Heavy
 
@@ -48,7 +47,7 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
     ![Rendelés klónozása 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás**gombra.
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** lehetőségre.
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -197,7 +196,7 @@ Emellett a felügyeleti naplók láncát, azaz az auditnaplókat és a darabjegy
 
 Az eszköz állapotának a portálon való változásáról a rendszer értesítést küld e-mailben.
 
-|Rendelés állapota |Leírás |
+|Rendelés állapota |Description |
 |---------|---------|
 |Megrendelve     | A rendelés sikeresen fel lett adva. <br>Ha az eszköz elérhető, a Microsoft kiválaszt egy eszközt a szállításhoz, és előkészíti. <br> Ha az eszköz nem érhető el azonnal, a rendelés akkor lesz feldolgozva, amikor az eszköz elérhetővé válik. A rendelés feldolgozása néhány napot, de akár hónapokat is igénybe vehet. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.         |
 |Feldolgozva     | A rendelés feldolgozása befejeződött. Az eszköz szállításra való előkészítése a rendelésnek megfelelően megtörténik az adatközpontban.         |
@@ -206,7 +205,7 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 |Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
 |Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
 |Adatok másolása     | Az adatok másolása folyamatban van. Kövesse nyomon a rendelés másolásának folyamatát az Azure Portalon. <br> Várjon, amíg az adatok másolása befejeződik. |
-|Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
+|Befejeződött       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. [A másolási naplókra vonatkozó példákat a feltöltés hibával fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)be.   |
 |Figyelmeztetésekkel fejeződött be| Az Adatmásolás befejeződött, de az adatai módosultak. Az adatfájl-vagy blob-nevek módosításával kijavított nem kritikus blob-vagy fájlnév-hibák történtek. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. Jegyezze fel az adataiban történt módosításokat. Tekintse át [a naplók másolására vonatkozó példákat, ha a feltöltés figyelmeztetésekkel fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)be.   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.     |

@@ -1,29 +1,28 @@
 ---
 title: Az erőforrás nem található hibák
-description: Ismerteti, Hogyan oldhatók meg a hibák, ha egy Azure Resource Manager sablonnal való üzembe helyezéskor nem található erőforrás.
+description: Ismerteti, Hogyan oldhatók meg a hibák, ha egy erőforrás nem található. A hiba akkor fordulhat elő, ha Azure Resource Manager sablont telepít, vagy a felügyeleti műveletek végrehajtásakor.
 ms.topic: troubleshooting
-ms.date: 01/21/2020
-ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667947"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibáinak elhárítása
+# <a name="resolve-resource-not-found-errors"></a>Nem található az erőforrás hibáinak elhárítása
 
-Ez a cikk azokat a hibákat ismerteti, amelyeket akkor láthat, ha egy erőforrás nem található az üzembe helyezés során.
+Ez a cikk azt a hibát ismerteti, amikor egy erőforrás nem található egy művelet során. Ez a hiba általában az erőforrások telepítésekor jelenik meg. Ez a hiba akkor is megjelenik, ha a felügyeleti feladatok végrehajtásakor a Azure Resource Manager nem találja a szükséges erőforrást. Ha például olyan erőforráshoz próbál címkéket hozzáadni, amely nem létezik, akkor ezt a hibaüzenetet kapja.
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha a sablon egy nem feloldható erőforrás nevét tartalmazza, a következőhöz hasonló hibaüzenet jelenik meg:
+Két hibakód jelenik meg, amelyek jelzik, hogy az erőforrás nem található. A **NOTFOUND** hiba a következőhöz hasonló eredményt ad vissza:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Ha a [Reference](template-functions-resource.md#reference) vagy a [listkeys műveletének beolvasása](template-functions-resource.md#listkeys) függvényt olyan erőforrással használja, amely nem oldható fel, a következő hibaüzenet jelenik meg:
+A **ResourceNotFound** hiba a következőhöz hasonló eredményt ad vissza:
 
 ```
 Code=ResourceNotFound;
@@ -33,11 +32,23 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Ok
 
-A Resource Managernek le kell kérnie egy erőforrás tulajdonságait, de nem tudja azonosítani az erőforrást az előfizetésében.
+A Resource Managernek le kell kérnie egy erőforrás tulajdonságait, de nem találja az erőforrást az előfizetésekben.
 
-## <a name="solution-1---set-dependencies"></a>1. megoldás – függőségek beállítása
+## <a name="solution-1---check-resource-properties"></a>1. megoldás – erőforrás-tulajdonságok keresése
 
-Ha a hiányzó erőforrást a sablonban próbálja telepíteni, ellenőrizze, hogy hozzá kell-e adnia egy függőséget. A Resource Manager optimalizálja az üzembe helyezést az erőforrások párhuzamos létrehozásával, ha lehetséges. Ha egy erőforrást egy másik erőforrás után kell telepíteni, akkor a sablon **dependsOn** elemét kell használnia. Egy webalkalmazás telepítésekor például a App Service tervnek léteznie kell. Ha nem adta meg, hogy a webalkalmazás a App Service-csomagtól függ, a Resource Manager mindkét erőforrást egyszerre hozza létre. Hibaüzenet jelenik meg arról, hogy a App Service-csomag erőforrása nem található, mert még nem létezik, amikor a webalkalmazásban tulajdonságot próbál beállítani. Ezt a hibát a webalkalmazás függőségének beállításával megakadályozhatja.
+Ha ezt a hibaüzenetet egy felügyeleti feladat végrehajtása közben kapja meg, tekintse meg az erőforráshoz megadott értékeket. Az ellenőrzési három érték a következő:
+
+* Erőforrás neve
+* Erőforráscsoport neve
+* Előfizetés
+
+Ha a PowerShellt vagy az Azure CLI-t használja, ellenőrizze, hogy a parancsot az erőforrást tartalmazó előfizetésben futtatja-e. Az előfizetést [beállíthatja a set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) vagy [az az Account set értékkel](/cli/azure/account#az-account-set). Számos parancs olyan előfizetési paramétert is biztosít, amely lehetővé teszi, hogy az aktuális környezettől eltérő előfizetést adjon meg.
+
+Ha nem sikerül ellenőrizni a tulajdonságokat, jelentkezzen be a [portálra](https://portal.azure.com). Keresse meg a használni kívánt erőforrást, és vizsgálja meg az erőforrás nevét, az erőforráscsoportot és az előfizetést.
+
+## <a name="solution-2---set-dependencies"></a>2. megoldás – függőségek beállítása
+
+Ha ezt a hibaüzenetet kapja a sablon telepítésekor, lehet, hogy hozzá kell adnia egy függőséget. A Resource Manager optimalizálja az üzembe helyezést az erőforrások párhuzamos létrehozásával, ha lehetséges. Ha egy erőforrást egy másik erőforrás után kell telepíteni, akkor a sablon **dependsOn** elemét kell használnia. Egy webalkalmazás telepítésekor például a App Service tervnek léteznie kell. Ha nem adta meg, hogy a webalkalmazás a App Service-csomagtól függ, a Resource Manager mindkét erőforrást egyszerre hozza létre. Hibaüzenet jelenik meg arról, hogy a App Service-csomag erőforrása nem található, mert még nem létezik, amikor a webalkalmazásban tulajdonságot próbál beállítani. Ezt a hibát a webalkalmazás függőségének beállításával megakadályozhatja.
 
 ```json
 {
@@ -70,9 +81,13 @@ Ha megtekinti a függőségi problémákat, meg kell ismernie az erőforrás-tel
 
    ![szekvenciális üzembe helyezés](./media/error-not-found/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>2. megoldás – erőforrás beolvasása különböző erőforráscsoporthoz
+## <a name="solution-3---get-external-resource"></a>3. megoldás – külső erőforrás beolvasása
 
-Ha az erőforrás létezik egy másik erőforráscsoporthoz, mint amelyet a központilag telepített, akkor a [resourceId függvénnyel](template-functions-resource.md#resourceid) kérheti le az erőforrás teljes nevét.
+Sablon telepítésekor és egy másik előfizetésben vagy erőforráscsoporthoz található erőforrás beszerzéséhez használja a [resourceId függvényt](template-functions-resource.md#resourceid). Ez a függvény visszaadja az erőforrás teljes nevét.
+
+Az előfizetés és az erőforráscsoport paramétereinek megadása a resourceId függvényben nem kötelező. Ha nem adja meg őket, alapértelmezés szerint a jelenlegi előfizetést és erőforráscsoportot használják. Ha más erőforráscsoporthoz vagy előfizetéshez tartozó erőforrással dolgozik, győződjön meg arról, hogy megadja ezeket az értékeket.
+
+A következő példa egy másik erőforráscsoport erőforrás-AZONOSÍTÓját kéri le.
 
 ```json
 "properties": {
@@ -81,22 +96,39 @@ Ha az erőforrás létezik egy másik erőforráscsoporthoz, mint amelyet a köz
 }
 ```
 
-## <a name="solution-3---check-reference-function"></a>3. megoldás – a hivatkozás-ellenőrzési funkció
-
-Keresse meg a [hivatkozási](template-functions-resource.md#reference) függvényt tartalmazó kifejezést. Az Ön által megadott értékek attól függően változnak, hogy az erőforrás ugyanabban a sablonban, erőforráscsoporthoz és előfizetésben található-e. Ellenőrizze, hogy az adott forgatókönyvhöz szükséges paramétereket adja meg. Ha az erőforrás egy másik erőforráscsoporthoz esik, adja meg a teljes erőforrás-azonosítót. Ha például egy másik erőforráscsoport Storage-fiókjára szeretne hivatkozni, használja a következőt:
-
-```json
-"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
-```
-
 ## <a name="solution-4---get-managed-identity-from-resource"></a>4. megoldás – felügyelt identitás beszerzése az erőforrásból
 
 Ha olyan erőforrást helyez üzembe, amely implicit módon létrehoz egy [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md), meg kell várnia, amíg az erőforrás telepítve lesz, mielőtt beolvassa az értékeket a felügyelt identitáson. Ha átadja a felügyelt identitás nevét a [hivatkozási](template-functions-resource.md#reference) függvénynek, a Resource Manager megkísérli a hivatkozás feloldását az erőforrás és az identitás üzembe helyezése előtt. Ehelyett adja meg annak az erőforrásnak a nevét, amelyre az identitás vonatkozik. Ez a megközelítés biztosítja az erőforrás és a felügyelt identitás üzembe helyezését, mielőtt a Resource Manager feloldja a hivatkozási funkciót.
 
-A Reference függvényben használja `Full` az parancsot az összes tulajdonság beolvasásához, beleértve a felügyelt identitást is.
+A Reference függvényben használja az `Full` parancsot az összes tulajdonság beolvasásához, beleértve a felügyelt identitást is.
 
-Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
+A minta a következő:
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+> [!IMPORTANT]
+> Ne használja a mintát:
+>
+> `"[reference(concat(resourceId(<resource-provider-namespace>, <resource-name>),'/providers/Microsoft.ManagedIdentity/Identities/default'),<API-version>).principalId]"`
+>
+> A sablon sikertelen lesz.
+
+Ha például egy virtuális gépre alkalmazott felügyelt identitás elsődleges AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+Vagy egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓjának lekéréséhez használja a következőt:
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
+```
+
+## <a name="solution-5---check-functions"></a>5. megoldás – függvények keresése
+
+Sablon telepítésekor keresse meg azokat a kifejezéseket, amelyek a [hivatkozási](template-functions-resource.md#reference) vagy a [listkeys műveletének beolvasása](template-functions-resource.md#listkeys) függvényt használják. Az Ön által megadott értékek attól függően változnak, hogy az erőforrás ugyanabban a sablonban, erőforráscsoporthoz és előfizetésben található-e. Győződjön meg arról, hogy megadja a forgatókönyvhöz szükséges paramétereket. Ha az erőforrás egy másik erőforráscsoporthoz esik, adja meg a teljes erőforrás-azonosítót. Ha például egy másik erőforráscsoport Storage-fiókjára szeretne hivatkozni, használja a következőt:
+
+```json
+"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```

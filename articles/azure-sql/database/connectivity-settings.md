@@ -1,6 +1,6 @@
 ---
 title: A Azure SQL Database és az adatraktár csatlakozási beállításai
-description: Ez a dokumentum ismerteti a TLS-verzió választását és a proxy és az átirányítási beállításokat a Azure SQL Database és az Azure szinapszis Analytics számára
+description: Ez a dokumentum a Azure SQL Database és az Azure szinapszis Analytics Transport Layer Security (TLS) verziójának megválasztását és proxy-és átirányítási beállításait ismerteti.
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 7b8fc2145c8b1c9da67f0ef44397b0e765b03de2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 07/06/2020
+ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046606"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045372"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Az Azure SQL-kapcsolatok beállításai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,9 +33,17 @@ A kapcsolódási beállítások a **tűzfalak és a virtuális hálózatok** ké
 
 ## <a name="deny-public-network-access"></a>Nyilvános hálózati hozzáférés megtagadása
 
-A Azure Portal, ha a **nyilvános hálózati hozzáférés megtagadása** beállítás az **Igen**értékre van állítva, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek. Ha ez a beállítás **nem**értékre van állítva, az ügyfelek a privát vagy a nyilvános végponton keresztül csatlakozhatnak.
+Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen**értékre állítja, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek. Ha a beállítás értéke **nem** (alapértelmezett), az ügyfelek csatlakozhatnak nyilvános végpontokkal (az IP-alapú tűzfalszabályok, a VNET-alapú tűzfalszabályok) vagy a privát végpontok (privát hivatkozás használatával), a [hálózati hozzáférés áttekintése című](network-access-controls-overview.md)témakörben leírtak szerint. 
 
-A [hálózati hozzáférés áttekintése című témakörben](network-access-controls-overview.md)leírtak szerint az ügyfelek csatlakozhatnak SQL Database nyilvános végpontok (IP-alapú TŰZFALSZABÁLYOK, VNET-alapú tűzfalszabályok) vagy privát végpontok (privát hivatkozás használatával) használatával. 
+ ![Képernyőfelvétel a nyilvános hálózati hozzáférés megtagadásával létesített kapcsolatról][2]
+
+A **nyilvános hálózati hozzáférés megtagadási** beállításának az **Igen** értékre állítására tett kísérletek a logikai kiszolgálón meglévő privát végpontok nélkül is sikertelenek lesznek, és a következőhöz hasonló hibaüzenet jelenik meg:  
+
+```output
+Error 42102
+Unable to set Deny Public Network Access to Yes since there is no private endpoint enabled to access the server. 
+Please set up private endpoints and retry the operation. 
+```
 
 Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen**értékre állítja, csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek, és a nyilvános végpontokon keresztül létesített összes kapcsolat megtagadva a következőhöz hasonló hibaüzenettel:  
 
@@ -44,6 +52,14 @@ Error 47073
 An instance-specific error occurred while establishing a connection to SQL Server. 
 The public network interface on this server is not accessible. 
 To connect to this server, use the Private Endpoint from inside your virtual network.
+```
+
+Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Igen**értékre állítja, a tűzfalszabályok hozzáadására vagy frissítésére tett kísérletek a következőhöz hasonló hibaüzenettel lesznek megtagadva:
+
+```output
+Error 42101
+Unable to create or modify firewall rules when public network interface for the server is disabled. 
+To manage server or database level firewall rules, please enable the public network interface.
 ```
 
 ## <a name="change-public-network-access-via-powershell"></a>Nyilvános hálózati hozzáférés módosítása a PowerShell használatával
@@ -86,11 +102,14 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 A minimális [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) verzió beállítás lehetővé teszi, hogy az ügyfelek szabályozzák a Azure SQL Database által használt TLS-verziót.
 
-Jelenleg a TLS 1,0, 1,1 és 1,2 támogatottak. A TLS minimális verziójának beállítása biztosítja, hogy a következő, újabb TLS-verziók támogatottak legyenek. Például például a 1,1-nál nagyobb TLS-verzió választása. azt jelenti, hogy a rendszer csak a TLS 1,1-es és 1,2-as kapcsolatait fogadja el, és a TLS 1,0 A tesztelést követően, hogy az alkalmazásai támogatják a használatát, javasoljuk, hogy a minimális TLS-verziót 1,2-re állítsa be, mivel az a korábbi verziókban talált biztonsági rések javításait tartalmazza, és a Azure SQL Database által támogatott TLS legmagasabb verziója.
+Jelenleg a TLS 1,0, 1,1 és 1,2 támogatott. A TLS minimális verziójának beállítása biztosítja, hogy a következő, újabb TLS-verziók támogatottak legyenek. Például a 1,1-nál nagyobb TLS-verzió kiválasztásával. azt jelenti, hogy a rendszer csak a TLS 1,1-es és 1,2-as kapcsolatait fogadja el, és a TLS 1,0 Az alkalmazások támogatásának megerősítését követően javasoljuk, hogy a minimális TLS-verziót 1,2-re állítsa be, mert a korábbi verziókban talált biztonsági rések javításait tartalmazza, és a Azure SQL Database által támogatott TLS legmagasabb verziója.
 
-A TLS régebbi verzióit használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verziószámát. Azon ügyfelek esetében, akik nem titkosított kapcsolaton keresztül kapcsolódnak az alkalmazásokhoz, javasoljuk, hogy ne állítson be minimális TLS-verziót. 
+> [!IMPORTANT]
+> A minimális TLS-verzió alapértelmezett értéke az összes verzió engedélyezése. A TLS verziójának betartatása után azonban nem lehet visszaállítani az alapértelmezett értéket.
 
-További információ: TLS- [megfontolások SQL Database kapcsolathoz](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+A TLS régebbi verzióit használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verziószámát. Azon ügyfelek esetében, akik nem titkosított kapcsolaton keresztül kapcsolódnak az alkalmazásokhoz, javasoljuk, hogy ne állítson be minimális TLS-verziót.
+
+További információ: TLS- [megfontolások SQL Database kapcsolathoz](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 A minimális TLS-verzió beállítása után a bejelentkezés a következő hibával meghiúsul, ha a TLS-t használó ügyfelek nem a minimális TLS-verziót használják:
 
@@ -107,10 +126,10 @@ Login failed with invalid TLS version
 A következő PowerShell-szkript bemutatja, hogyan `Get` és `Set` a **minimális TLS-verzió** tulajdonságot a logikai kiszolgáló szintjén:
 
 ```powershell
-#Get the Public Network Access property
-(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).PublicNetworkAccess
+#Get the Minimal TLS Version property
+(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).MinimalTlsVersion
 
-# Update Public Network Access to Disabled
+# # Update Minimal TLS Version to 1.2
 $SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
 
 Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString  -MinimalTlsVersion "1.2"
@@ -198,10 +217,11 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure SQL Database kapcsolatok működésének áttekintését lásd: [kapcsolati architektúra](connectivity-architecture.md)
 - További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png
+[2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

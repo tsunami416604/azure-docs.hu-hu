@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303766"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
@@ -34,7 +33,7 @@ IS_STRING(<expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a `IS_STRING` függvény használatával ellenőrzi a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait.  
+  A következő példa a függvény használatával ellenőrzi a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait `IS_STRING` .  
   
 ```sql
 SELECT   

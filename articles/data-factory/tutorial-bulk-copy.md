@@ -1,5 +1,5 @@
 ---
-title: Adatok tömeges másolása
+title: Az Adatmásolás ömlesztve a PowerShell használatával
 description: Megismerheti, hogyan másolhat tömegesen adatokat egy forrásadattárból a céladattárba az Azure Data Factory és a másolási tevékenység használatával.
 services: data-factory
 author: linda33wj
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: a6a6aaedc1bb4abc5cf02ea1cd081ad48ec78d19
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118203"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251510"
 ---
-# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
+# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -59,7 +59,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
+Hozzon létre egy adatbázist az Adventure Works LT mintaadatok használatával SQL Database az [adatbázis létrehozása Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
 
 **A fogadó Azure SQL Data Warehouse előkészítése**:
 
@@ -334,7 +334,7 @@ Ez a folyamat a táblák listáját használja paraméterként. A lista minden e
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {

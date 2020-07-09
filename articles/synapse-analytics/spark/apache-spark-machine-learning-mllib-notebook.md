@@ -6,14 +6,15 @@ author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
+ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fd3637eed35fa4b9f40623612be9fc99703051e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368175"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -70,48 +71,32 @@ A következő lépésekben olyan modellt fejlesztünk ki, amely azt jelzi, hogy 
 
 Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közvetlenül is lehívhatja a fájlt a memóriába dataframe. Míg az alábbi kód az alapértelmezett beállításokat használja, az adattípusok és egyéb sémák attribútumainak leképezése is kényszeríthető, ha szükséges.
 
-1. A következő sorok futtatásával hozzon létre egy Spark-dataframe a kód egy új cellába való beillesztésével. Az első szakasz az Azure Storage elérési adatait rendeli hozzá a változókhoz. A második szakasz lehetővé teszi, hogy a Spark távolról is beolvassa a blob Storage-ból. A kód utolsó sora a parkettát olvassa, de ezen a ponton nem töltődik be az adatmennyiség.
+1. A következő sorok futtatásával hozzon létre egy Spark-dataframe a kód egy új cellába való beillesztésével. Ezzel lekéri az adatokat a megnyitott adatkészletek API-n keresztül. Az összes ilyen adatmennyiség körülbelül 1 500 000 000 sort hoz létre. A Spark-készlet (előzetes verzió) méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezt az adatmennyiséget lejjebb is szűrheti. Start_date és end_date használata olyan szűrőt alkalmaz, amely egy hónapot ad vissza.
 
     ```python
-    # Azure storage access info
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "nyctlc"
-    blob_relative_path = "yellow"
-    blob_sas_token = r""
+    from azureml.opendatasets import NycTlcYellow
 
-    # Allow SPARK to read from Blob remotely
-    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
-
-    # SPARK read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+    end_date = parser.parse('2018-06-06')
+    start_date = parser.parse('2018-05-01')
+    nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+    filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. Az összes ilyen adatmennyiség körülbelül 1 500 000 000 sort hoz létre. A Spark-készlet (előzetes verzió) méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezt az adatmennyiséget lejjebb is szűrheti. Ha szükséges, adja hozzá a következő sorokat az adatszűréshez a körülbelül 2 000 000 sorra a rugalmasabb felhasználói élmény érdekében. Ezekkel a paraméterekkel egy hetet lehet lekérni.
-
-    ```python
-    # Create an ingestion filter
-    start_date = '2018-05-01 00:00:00'
-    end_date = '2018-05-08 00:00:00'
-
-    filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
-    ```
-
-3. Az egyszerű szűrés hátránya, hogy statisztikai szempontból az adatokra vonatkozó elfogultság is bevezethető. Egy másik módszer a Spark-ba épített mintavétel használata. A következő kód csökkenti az adatkészletet körülbelül 2000 sorra, ha a fenti kód után alkalmazza őket. Ezt a mintavételi lépést az egyszerű szűrő helyett, vagy az egyszerű szűrővel együtt lehet használni.
+2. Az egyszerű szűrés hátránya, hogy statisztikai szempontból az adatokra vonatkozó elfogultság is bevezethető. Egy másik módszer a Spark-ba épített mintavétel használata. A következő kód csökkenti az adatkészletet körülbelül 2000 sorra, ha a fenti kód után alkalmazza őket. Ezt a mintavételi lépést az egyszerű szűrő helyett, vagy az egyszerű szűrővel együtt lehet használni.
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. Most már megtekintheti az itt olvasható információt. Általában jobb, ha az adatokat egy részhalmazsal szeretné áttekinteni, és nem a teljes készletet az adatkészlet méretétől függően. A következő kód két módszert kínál az adatok megtekintésére: az előző, hogy az alapszintű és az utóbbi egy sokkal gazdagabb Grid-élményt biztosít, valamint az adatok grafikus megjelenítésének képességét.
+3. Most már megtekintheti az itt olvasható információt. Általában jobb, ha az adatokat egy részhalmazsal szeretné áttekinteni, és nem a teljes készletet az adatkészlet méretétől függően. A következő kód két módszert kínál az adatok megtekintésére: az előző, hogy az alapszintű és az utóbbi egy sokkal gazdagabb Grid-élményt biztosít, valamint az adatok grafikus megjelenítésének képességét.
 
     ```python
-    sampled_taxi_df.show(5)
-    display(sampled_taxi_df.show(5))
+    #sampled_taxi_df.show(5)
+    display(sampled_taxi_df)
     ```
 
-5. A generált adatkészlet méretétől és a jegyzetfüzet többszöri kipróbálásának vagy futtatásának szükségessége alapján célszerű lehet az adatkészlet helyi gyorsítótárazása a munkaterületen. Az explicit gyorsítótárazás három módon végezhető el:
+4. A generált adatkészlet méretétől és a jegyzetfüzet többszöri kipróbálásának vagy futtatásának szükségessége alapján célszerű lehet az adatkészlet helyi gyorsítótárazása a munkaterületen. Az explicit gyorsítótárazás három módon végezhető el:
 
    - A dataframe helyi mentése fájlként
    - A dataframe mentése ideiglenes táblába vagy nézetbe
@@ -293,7 +278,7 @@ plt.show()
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. ehhez zárja be a fület, vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot panelen.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 

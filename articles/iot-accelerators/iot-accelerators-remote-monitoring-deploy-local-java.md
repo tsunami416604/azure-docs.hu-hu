@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187211"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldás helyi telepítése – IntelliJ
@@ -41,9 +41,9 @@ A helyi telepítés befejezéséhez a következő eszközökre van szükség a h
 * [IntelliJ SBT beépülő modul](https://plugins.jetbrains.com/plugin/5007-sbt)
 * [IntelliJ SBT végrehajtó beépülő modul](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/)
+* [Node.js V8](https://nodejs.org/)
 
-A Node. js V8 előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node. js v10-et.
+Node.js V8 előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node.js v10-et.
 
 > [!NOTE]
 > A IntelliJ IDE a Windows és a Mac rendszerhez érhető el.
@@ -98,7 +98,7 @@ Ha még nem hozta létre a szükséges Azure-erőforrásokat, kövesse az alább
    A parancsfájl környezeti változókat is hozzáad a helyi géphez. Mindegyik változó neve a **számítógépek**előtagját adja meg. Ezek a környezeti változók olyan részleteket biztosítanak, amelyek lehetővé teszik a távoli megfigyelés számára, hogy beolvassák a konfigurációs értékeket egy Azure Key Vault erőforrásból.
 
    > [!TIP]
-   > A parancsfájl befejeződése után a környezeti változókat egy saját kezdőmappa nevű ** \<\>\\fájlba menti. a számítógépek\\\<megoldás\>neve. env**. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **Services\\-\\parancsfájlok helyi\\. env** fájljának értékeit.
+   > A parancsfájl befejeződése után a környezeti változókat egy ** \<your home folder\> \\ . PCs \\ \<solution name\> . env**nevű fájlba menti. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **Services- \\ parancsfájlok \\ helyi \\ . env** fájljának értékeit.
 
 1. A parancssori környezet lezárása.
 
@@ -109,7 +109,7 @@ Ha már létrehozta a szükséges Azure-erőforrásokat, állítsa be a megfelel
 * **PCS_AAD_APPID**: a Azure Active Directory (Azure ad) alkalmazás azonosítója.
 * **PCS_AAD_APPSECRET**: az Azure ad-alkalmazás titka.
 
-A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezek a környezeti változók menthetők a ** \<saját kezdőmappa\>\\. számítógép\\\<-megoldás neve\>. env** fájlból a telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **\\\\szolgáltatások helyi\\. env** fájljának értékeit.
+A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezeket a környezeti változókat a telepítésből a ** \<your home folder\> \\ . PC \\ \<solution name\> . env** fájlba mentheti. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **szolgáltatások \\ \\ helyi \\ . env** fájljának értékeit.
 
 A webszolgáltatás által igényelt néhány konfiguráció a kezdeti telepítéskor létrehozott Key Vault egy példányában van tárolva. A Key Vault megfelelő változóit szükség szerint módosítani kell.
 
@@ -159,11 +159,11 @@ A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási 
 
 #### <a name="create-run-configurations"></a>Futtatási konfigurációk létrehozása
 
-1. Válassza a**szerkesztési konfigurációk** **futtatása** > lehetőséget.
-1. Válassza az **új konfigurációs** > **SBT feladat**hozzáadása lehetőséget.
+1. Válassza **Run**a  >  **szerkesztési konfigurációk**futtatása lehetőséget.
+1. Válassza az **új konfigurációs**  >  **SBT feladat**hozzáadása lehetőséget.
 1. Adja meg a **nevet**, majd adja meg a **feladatokat** **futtatásként**.
 1. Válassza ki a **munkakönyvtárat** a futtatni kívánt szolgáltatás alapján.
-1. Válassza az**OK** **alkalmazása** > lehetőséget a beállítások mentéséhez.
+1. Válassza **Apply**az  >  **OK** alkalmazása lehetőséget a beállítások mentéséhez.
 1. Hozzon létre futtatási konfigurációkat a következő webszolgáltatásokhoz:
     * Webszolgáltatás (services\config)
     * Webszolgáltatás (services\device-telemetry)
@@ -176,9 +176,9 @@ Az alábbi képen például egy szolgáltatás konfigurációjának hozzáadása
 
 #### <a name="create-a-compound-configuration"></a>Összetett konfiguráció létrehozása
 
-1. Az összes szolgáltatás együttes futtatásához válassza az **új konfigurációs** > **összetett**hozzáadása elemet.
+1. Az összes szolgáltatás együttes futtatásához válassza az **új konfigurációs**  >  **összetett**hozzáadása elemet.
 1. Adja meg a **nevet**, majd kattintson a **SBT-feladatok hozzáadása**lehetőségre.
-1. Válassza az**OK** **alkalmazása** > lehetőséget a beállítások mentéséhez.
+1. Válassza **Apply**az  >  **OK** alkalmazása lehetőséget a beállítások mentéséhez.
 
 Az alábbi képen látható, hogyan adhat hozzá az összes SBT-feladatot egyetlen konfigurációhoz:
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-A **Start** parancs befejezése után a böngésző megjeleníti a lapot a címen `http://localhost:3000/dashboard`. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre az alábbi lépéseket.
+A **Start** parancs befejezése után a böngésző megjeleníti a lapot a címen `http://localhost:3000/dashboard` . A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre az alábbi lépéseket.
 
 ### <a name="configure-and-run-nginx"></a>Az Nginx konfigurálása és futtatása
 
@@ -226,7 +226,7 @@ További információ az Nginx futtatásáról: [Nginx for Windows](https://ngin
 
 ### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a t `http://localhost:9000` a böngészőben.
+A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a t a `http://localhost:9000` böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

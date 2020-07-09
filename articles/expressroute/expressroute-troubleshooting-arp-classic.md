@@ -4,15 +4,15 @@ description: Ez az oldal utasításokat tartalmaz a ExpressRoute Circuit-klasszi
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: charwen
-ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f381c25edae566f2dc9f864beda47e65df5c21e1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618619"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985390"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>ARP-táblák lekérése a klasszikus üzemi modellben
 > [!div class="op_single_selector"]
@@ -41,10 +41,12 @@ Az ARP-táblák segíthetnek a 2. rétegbeli konfiguráció érvényesítésébe
 
 Az alábbi példa egy ARP-táblázatot mutat be:
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
 
 
 A következő szakasz az ExpressRoute Edge-útválasztók által látott ARP-táblák megtekintésével kapcsolatos információkat tartalmaz.
@@ -63,67 +65,81 @@ Ez a szakasz azt ismerteti, hogyan lehet a PowerShell használatával megtekinte
 ### <a name="arp-tables-for-azure-private-peering"></a>ARP-táblák az Azure Private-társához
 A következő parancsmag az Azure Private-partnerekhez tartozó ARP-táblákat biztosítja:
 
-        # Required variables
-        $ckt = "<your Service Key here>
+```azurepowershell
+# Required variables
+$ckt = "<your Service Key here>
 
-        # ARP table for Azure private peering--primary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Primary
+# ARP table for Azure private peering--primary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Primary
 
-        # ARP table for Azure private peering--secondary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Secondary
+# ARP table for Azure private peering--secondary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Secondary
+```
 
 Az alábbi példa az egyik útvonal kimenetét jeleníti meg:
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ### <a name="arp-tables-for-azure-public-peering"></a>ARP-táblák az Azure nyilvános társításához:
 A következő parancsmag az Azure-beli nyilvános partnerek ARP-tábláit tartalmazza:
 
-        # Required variables
-        $ckt = "<your Service Key here>
+```azurepowershell
+# Required variables
+$ckt = "<your Service Key here>
 
-        # ARP table for Azure public peering--primary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Primary
+# ARP table for Azure public peering--primary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Primary
 
-        # ARP table for Azure public peering--secondary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Secondary
-
-Az alábbi példa az egyik útvonal kimenetét jeleníti meg:
-
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
-
+# ARP table for Azure public peering--secondary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Secondary
+```
 
 Az alábbi példa az egyik útvonal kimenetét jeleníti meg:
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           64.0.0.1 ffff.eeee.dddd
-          0 Microsoft         64.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
+
+
+Az alábbi példa az egyik útvonal kimenetét jeleníti meg:
+
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           64.0.0.1   ffff.eeee.dddd
+  0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ### <a name="arp-tables-for-microsoft-peering"></a>ARP-táblák a Microsoft-partnerek számára
 A következő parancsmag a Microsoft-partnerek ARP-tábláit biztosítja:
 
-    # ARP table for Microsoft peering--primary path
-    Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Primary
+```azurepowershell
+# ARP table for Microsoft peering--primary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Primary
 
-    # ARP table for Microsoft peering--secondary path
-    Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Secondary
+# ARP table for Microsoft peering--secondary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Secondary
+```
 
 
 A minta kimenete alább látható a következő elérési utak egyikéhez:
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1 ffff.eeee.dddd
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           65.0.0.1   ffff.eeee.dddd
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ## <a name="how-to-use-this-information"></a>Az információk használata
@@ -135,17 +151,21 @@ A társítások ARP-táblázata a 2. rétegbeli konfiguráció és a kapcsolat e
 * A Microsoft IP-címének utolsó oktettje mindig páros szám.
 * Ugyanaz a MAC-címe jelenik meg a Microsoft oldalán mindhárom (elsődleges/másodlagos) partnernél.
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1 ffff.eeee.dddd
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           65.0.0.1   ffff.eeee.dddd
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 ### <a name="arp-table-when-its-on-premises-or-when-the-connectivity-provider-side-has-problems"></a>ARP-tábla, ha a helyszíni, vagy ha a kapcsolódási szolgáltató oldalán problémák léptek fel
  Az ARP-táblában csak egy bejegyzés jelenik meg. Megjeleníti a MAC-cím és a Microsoft-oldalon használt IP-cím közötti leképezést.
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+   0 Microsoft         65.0.0.2  aaaa.bbbb.cccc
+```
 
 > [!NOTE]
 > Ha ezt a problémát tapasztalja, nyisson meg egy támogatási kérést a kapcsolat szolgáltatójánál a megoldásához.

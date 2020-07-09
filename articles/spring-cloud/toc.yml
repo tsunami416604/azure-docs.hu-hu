@@ -49,6 +49,8 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud-metrikák ismertetése
       href: spring-cloud-concept-metrics.md
+    - name: Alkalmazás kezelése és monitorozása az Azure Spring Boot Actuatorrel
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
     - name: Az Azure Spring Cloud Service biztonsági vezérlői
       href: spring-cloud-concept-security-controls.md
     - name: Az Azure Spring Cloud alkalmazásállapotainak ismertetése
@@ -73,6 +75,10 @@
       href: spring-cloud-howto-persistent-storage.md
     - name: Az Azure Spring Cloud és az Azure Load Balancer-megoldások integrálása
       href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: Az Azure Spring Cloud-alkalmazás rendszer által hozzárendelt felügyelt identitásának engedélyezése
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: Problémák önkiszolgáló diagnosztizálása és megoldása az Azure Spring Cloudban
+      href: spring-cloud-howto-self-diagnose-solve.md
 - name: DevOps-telepítés az Azure Spring Cloudba
   items:
     - name: CI/CD az Azure DevOps használatával
@@ -86,7 +92,7 @@
 - name: Referencia
   items:
     - name: Azure CLI beépülő modul
-      href: spring-cloud-cli-reference.md
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
     - name: További források
       href: spring-cloud-resources.md
     - name: Gyakori kérdések

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e4a7ae00edd8ff86e27037df1a26828c400f6ccf
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807978"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -39,11 +39,11 @@ Ha lehetséges, a 3. verzióra vonatkozó példákat is meg kell adni. *x* és 2
 
 A gazdagép a függvények futásidejű tárolója.  Ez figyeli az eseményindítókat és a hívási függvényeket. A 3. verzióban. *x*a gazdagép a (z) implementációja `IHost` . A 2. verzióban. *x*, használja az `JobHost` objektumot. Hozzon létre egy gazdagép-példányt a kódban, és írja be a kódot a viselkedésének testre szabásához.
 
-Ez kulcsfontosságú különbség a webjobs SDK közvetlen használata és a Azure Functions használatával közvetve. Azure Functions a szolgáltatás vezérli a gazdagépet, és nem tudja testreszabni a gazdagépet a kód írásával. Azure Functions lehetővé teszi a gazdagép viselkedésének testreszabását a Host. JSON fájl beállításain keresztül. Ezek a beállítások karakterláncok, nem pedig kódok, és ez korlátozza az elvégezhető testreszabások fajtáit.
+Ez kulcsfontosságú különbség a webjobs SDK közvetlen használata és a Azure Functions használatával közvetve. Azure Functions a szolgáltatás vezérli a gazdagépet, és nem tudja testreszabni a gazdagépet a kód írásával. Azure Functions lehetővé teszi a gazdagép viselkedésének testreszabását a fájl host.jsbeállításain keresztül. Ezek a beállítások karakterláncok, nem pedig kódok, és ez korlátozza az elvégezhető testreszabások fajtáit.
 
 ### <a name="host-connection-strings"></a>Gazdagép-kapcsolatok karakterláncai
 
-A webjobs SDK megkeresi az Azure Storage-t, és Azure Service Bus a helyi. Settings. JSON fájlban lévő kapcsolódási karakterláncokat a helyileg futtatott vagy az Azure-ban futtatott Webjobs környezetében. Alapértelmezés szerint a nevű tárolási kapcsolatok karakterlánc-beállításának megadása `AzureWebJobsStorage` kötelező.  
+A webjobs SDK megkeresi az Azure Storage-t, és Azure Service Bus kapcsolódási karakterláncokat a fájl local.settings.jsa helyi futtatásakor vagy az Azure-ban futtatott Webjobs környezetében. Alapértelmezés szerint a nevű tárolási kapcsolatok karakterlánc-beállításának megadása `AzureWebJobsStorage` kötelező.  
 
 2. verzió. Az SDK *x* -je lehetővé teszi, hogy saját nevét használja ezeket a kapcsolatok sztringeket, vagy máshol tárolja őket. A kódban szereplő neveket a használatával is megadhatja [`JobHostConfiguration`] , ahogy az itt látható:
 
@@ -358,7 +358,7 @@ Beállíthatja egyes eseményindítók és kötések viselkedését. A konfigur�
 * **3. verzió. *x*:** állítsa be a konfigurációt, ha a `Add<Binding>` metódus hívása megtörténik `ConfigureWebJobs` .
 * **2. verzió. *x*:** konfiguráció beállítása egy olyan konfigurációs objektum tulajdonságainak beállításával, amelybe bejelentkezett `JobHost` .
 
-Ezek a kötési beállítások egyenértékűek a [Host. JSON projektfájl](../azure-functions/functions-host-json.md) Azure Functionsban található beállításokkal.
+Ezek a kötési beállítások egyenértékűek a Azure Functionsban a [Project fájlhost.jsjának](../azure-functions/functions-host-json.md) beállításaival.
 
 A következő kötéseket állíthatja be:
 
@@ -470,7 +470,7 @@ static void Main(string[] args)
 }
 ```
 
-További részletekért tekintse meg a [Host. JSON v1. x hivatkozást](../azure-functions/functions-host-json-v1.md#queues).
+További részletekért tekintse [meg a v1. xhost.jsét](../azure-functions/functions-host-json-v1.md#queues)ismertető témakört.
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid-kötési konfiguráció (3. verzió).* x*)
 
@@ -832,7 +832,7 @@ A példányok által létrehozott összes naplóhoz `ILogger` társítva `Catego
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincs        | 6 |
+|None        | 6 |
 
 Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek feldolgozásához, de `Error` minden más esetében csak a magasabbra.
 
@@ -959,7 +959,7 @@ A 3. verzióban. *x*esetén már nem kell kiürítenie a [`TelemetryClient`] gaz
 
 #### <a name="version-2x"></a>2. verzió. *x*
 
-A 2. verzióban. *x*, a [`TelemetryClient`] webjobs SDK által használt Application Insights szolgáltató belsőleg létrehozva [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Ha a Application Insights végpont nem érhető el, vagy a bejövő kérelmek szabályozása folyamatban van, a csatorna [a webalkalmazás fájlrendszerében menti a kérelmeket, és később újra elküldi őket](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+A 2. verzióban. *x*, a [`TelemetryClient`] webjobs SDK által használt Application Insights szolgáltató belsőleg létrehozva [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Ha a Application Insights végpont nem érhető el, vagy a bejövő kérelmek szabályozása folyamatban van, a csatorna [a webalkalmazás fájlrendszerében menti a kérelmeket, és később újra elküldi őket](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/).
 
 A- [`TelemetryClient`] t egy olyan osztály hozza létre, amely megvalósítja `ITelemetryClientFactory` . Alapértelmezés szerint ez a következő: [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) .
 

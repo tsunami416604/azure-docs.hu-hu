@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8939d4546657b049b61eb31c08844dac07c67ae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389088"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének honosítása egyéni házirend használatával Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`
 1. Adja hozzá a `Localization` elemet a támogatott nyelvekhez: angol (alapértelmezett) és spanyol.  
 
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -51,7 +51,7 @@ A honosított erőforrások elemeit a tartalom definíciójában és a támogatn
 > [!NOTE]
 > Az alábbi példában az `#` egyes sorok koldulása során hozzáadott egy font szimbólumot, így easly megtalálhatja a képernyőn megjelenő honosított címkéket.
 
-```XML
+```xml
 <!--Local account sign-up or sign-in page English-->
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
@@ -218,7 +218,7 @@ Illessze be a ContentDefinitions elem teljes tartalmát, amelyet a BuildingBlock
 
 A következő példában az angol (en) és a spanyol (es) egyéni sztringek hozzáadódnak a regisztrációs vagy bejelentkezési laphoz, valamint a helyi fiók regisztrációs lapjához. Az egyes **LocalizedResourcesReference** **LocalizedResourcesReferenceId** megegyeznek a területi beállításokkal, de az azonosítóhoz bármilyen karakterláncot használhat. Minden nyelv és oldal kombináció esetében mutasson a korábban létrehozott megfelelő **LocalizedResources** .
 
-```XML
+```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.signuporsignin">
     <LocalizedResourcesReferences MergeBehavior="Prepend">

@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 9997a97b-9382-43ed-b56e-61369335c987
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61409415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507874"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Telepítse a frissítéseket a StorSimple Virtual Array-Azure Portal
 
@@ -49,7 +49,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert, [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
@@ -65,7 +65,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 6. Kattintson a **Letöltés**gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. A frissítések a megadott helyre lesznek letöltve, azon belül az egyes frissítések nevével egyező nevű almappákba. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
 
-7. Nyissa meg a másolt mappát, Microsoft Update önálló csomagfájl jelenik meg `WindowsTH-KB3011067-x64`. Ez a fájl a frissítés vagy a gyorsjavítás telepítéséhez használatos.
+7. Nyissa meg a másolt mappát, Microsoft Update önálló csomagfájl jelenik meg `WindowsTH-KB3011067-x64` . Ez a fájl a frissítés vagy a gyorsjavítás telepítéséhez használatos.
 
 ### <a name="install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
@@ -75,7 +75,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **szoftverfrissítés**elemre.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update1m.png)
 
@@ -91,7 +91,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási** > **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10288.0** kell lennie az 0,3-es frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10288.0** kell lennie az 0,3-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10288** és a Azure Portal jelentések **10.0.10288.0** ugyanazt a verziót jelenti.

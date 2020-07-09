@@ -7,12 +7,13 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b91d0ce8cb7bfed7bdcd7925a247327358a8e887
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: c8546d159d920fc728f0bf6413d84d7b19bbe09c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982989"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125242"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rövid útmutató: Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
 
@@ -26,7 +27,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API-referenciák dokumentációs](/python/api/overview/azure/key-vault?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [-csomagja (Python-csomag indexe)](https://pypi.org/project/azure-keyvault/)
+[API-referenciák dokumentációja](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,12 +70,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 A felhőalapú Python-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](../general/managed-identity.md) című témakört. 
 
-Az egyszerűség kedvéért azonban ez a rövid útmutató egy asztali alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. A szolgáltatási elv egyedi nevet igényel a "http://&lt;My-Unique-Service-elven-name&gt;" formátumban.
+Az egyszerűség kedvéért azonban ez a rövid útmutató egy asztali alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. Az egyszerű szolgáltatásnév egyedi nevet igényel a "http:// &lt; My-Unique-Service-principal-name &gt; " formátumban.
 
-Hozzon létre egy szolgáltatási elvet az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
+Hozzon létre egy egyszerű szolgáltatást az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
@@ -105,9 +106,9 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`és. `AZURE_TENANT_ID` Állítsa be ezeket a változókat a clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben `export VARNAME=VALUE` jegyezte fel a formátum használatával. (Ez a módszer csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, `/etc/environment ` szerkessze a fájlt.) 
+Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` és `AZURE_TENANT_ID` . Állítsa be ezeket a változókat a clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben jegyezte fel a `export VARNAME=VALUE` formátum használatával. (Ez a módszer csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, szerkessze a `/etc/environment ` fájlt.) 
 
-A kulcstároló nevét a nevű `KEY_VAULT_NAME`környezeti változó néven is menteni kell.
+A kulcstároló nevét a nevű környezeti változó néven is menteni kell `KEY_VAULT_NAME` .
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -123,7 +124,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 A Pythonhoz készült Azure Key Vault ügyféloldali kódtár lehetővé teszi a kulcsok és a kapcsolódó eszközök, például tanúsítványok és titkos kódok kezelését. Az alábbi kódrészletek megmutatják, hogyan hozhat létre egy ügyfelet, hogyan állíthat be titkos kulcsot, beolvashat egy titkos kulcsot, és törölhet egy titkos kulcsot.
 
-A teljes konzol alkalmazás a következő címen https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appérhető el:.
+A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -169,7 +170,7 @@ Most már lekérheti a korábban beállított értéket az [ügyféllel. GetSecr
 retrieved_secret = client.get_secret(secretName)
  ```
 
-A titkos kód most már mentve van `retrieved_secret.value`.
+A titkos kód most már mentve van `retrieved_secret.value` .
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 

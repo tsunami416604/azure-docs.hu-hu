@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek minősítése – Azure Marketplace
 description: Megtudhatja, hogyan tesztelheti és küldheti el a virtuálisgép-ajánlatokat a kereskedelmi piactéren.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d3b89945c077b9c26bab1709bd6d1def20959e33
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110045"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure virtuális gép (VM) rendszerképek minősítése
 
@@ -188,7 +188,7 @@ Szerkessze és futtassa a következő Azure PowerShell parancsfájlt egy Azure K
 | $postfix | A központi telepítési azonosítóhoz csatolt véletlenszerű numerikus karakterlánc. |
 | $rgName | A létrehozandó Azure-erőforráscsoport (RG) neve. |
 | $location | Az Azure standard földrajzi helyeinek egyike. |
-| $kvTemplateJson | A Key Vault Resource Manager-sablonját tartalmazó fájl (kulcstartó. JSON) elérési útja. |
+| $kvTemplateJson | A Key Vault Resource Manager-sablonját tartalmazó fájl (keyvault.js) elérési útja. |
 | $kvname | Az új kulcstároló neve.|
 |   |   |
 
@@ -320,7 +320,7 @@ Ez a szakasz azt ismerteti, hogyan helyezhet üzembe egy általánosított VHD-r
 
 ### <a name="prepare-an-azure-resource-manager-template"></a>Azure Resource Manager sablon előkészítése
 
-Másolja a következő Azure Resource Manager sablont a VHD-telepítéshez egy VHDtoImage. JSON nevű helyi fájlba. A következő parancsfájl a helyi gépen található helyet fogja használni a JSON használatához.
+Másolja a következő Azure Resource Manager sablont a VHD-telepítéshez egy VHDtoImage.jsnevű helyi fájlba. A következő parancsfájl a helyi gépen található helyet fogja használni a JSON használatához.
 
 ```JSON
 {
@@ -560,7 +560,7 @@ Szerkessze ezt a fájlt a paraméterek értékeinek megadásához:
 | **Paraméter** | **Leírás** |
 | --- | --- |
 | ResourceGroupName | Meglévő Azure-erőforráscsoport neve. Általában ugyanazt a RG-t használja, mint a Key Vault. |
-| TemplateFile | A VHDtoImage. JSON fájl teljes elérési útja. |
+| TemplateFile | A (z) VHDtoImage.jsfájl teljes elérési útja. |
 | userStorageAccountName | A Storage-fiók neve. |
 | sNameForPublicIP | A nyilvános IP-cím DNS-neve; kisbetűsnek kell lennie. |
 | subscriptionId | Azure-előfizetés azonosítója. |
@@ -649,4 +649,4 @@ Végül válassza a **jelentés készítése** lehetőséget, hogy letöltse a t
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Egységes erőforrás-azonosítók (URI-k) létrehozása minden virtuális merevlemezhez](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Gyakori SAS URI-problémák és javítások](common-sas-uri-issues.md)

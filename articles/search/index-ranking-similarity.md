@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565297"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Rangsorolási algoritmus az Azure Cognitive Search
 
 > [!IMPORTANT]
 > 2020. július 15-étől az újonnan létrehozott keresési szolgáltatások automatikusan a BM25 ranking függvényt fogják használni, amely a legtöbb esetben olyan keresési rangsorok biztosítására szolgál, amelyek a jelenlegi alapértelmezett rangsorolásnál jobban illeszkednek a felhasználói elvárásokhoz. A kiváló rangsoroláson felül a BM25 az eredmények hangolására szolgáló konfigurációs beállításokat is lehetővé teszi az olyan tényezők alapján, mint a dokumentumok mérete.  
 >
-> Ennek a változásnak a hatására a keresési eredmények sorrendjében valószínűleg kisebb változások jelennek meg. Azok számára, akik szeretnék kipróbálni a változás hatását, a BM25 algoritmus az API-Version 2019-05-06 – Preview verzióban érhető el.  
+> Ennek a változásnak a hatására a keresési eredmények sorrendjében valószínűleg kisebb változások jelennek meg. Azok számára, akik szeretnék kipróbálni a változás hatását, a BM25 algoritmus az API-Version 2019-05-06 – Preview és a 2020-06-30-es verzióban érhető el.  
 
 Ez a cikk azt ismerteti, hogyan használhatók a meglévő keresési szolgáltatások új BM25 ranking algoritmusa az előzetes verziójú API-val létrehozott és lekérdezett új indexekhez.
 
@@ -30,7 +30,7 @@ A régebbi klasszikus hasonlósági algoritmushoz hasonlóan elméletileg a BM25
 
 ## <a name="how-to-test-bm25-today"></a>A BM25 tesztelése még ma
 
-Új index létrehozásakor beállíthatja a **hasonlóság** tulajdonságot az algoritmus megadásához. Az alább látható módon kell használnia a `api-version=2019-05-06-Preview`t.
+Új index létrehozásakor beállíthatja a **hasonlóság** tulajdonságot az algoritmus megadásához. Használhatja a t az `api-version=2019-05-06-Preview` alább látható módon, vagy `api-version=2020-06-30` .
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -63,9 +63,9 @@ A **hasonlósági** tulajdonság ebben az átmeneti időszakban hasznos, ha mind
 
 | Tulajdonság | Leírás |
 |----------|-------------|
-| hasonlóság | Választható. Az érvényes értékek a következők: *"#Microsoft. Azure. Search. ClassicSimilarity"* vagy *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> A `api-version=2019-05-06-Preview` (z) 2020. július 15. előtt létrehozott keresési szolgáltatáshoz szükséges vagy újabb. |
+| hasonlóság | Választható. Az érvényes értékek a következők: *"#Microsoft. Azure. Search. ClassicSimilarity"* vagy *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> A (z `api-version=2019-05-06-Preview` ) 2020. július 15. előtt létrehozott keresési szolgáltatáshoz szükséges vagy újabb. |
 
-A 2020. július 15. után létrehozott új szolgáltatások esetében az BM25 automatikusan használatos, és az egyetlen hasonlósági algoritmus. Ha egy új szolgáltatáshoz próbál meg **hasonlóságot** `ClassicSimilarity` beállítani, a rendszer 400-es hibát ad vissza, mivel ez az algoritmus nem támogatott az új szolgáltatásokban.
+A 2020. július 15. után létrehozott új szolgáltatások esetében az BM25 automatikusan használatos, és az egyetlen hasonlósági algoritmus. Ha egy új szolgáltatáshoz próbál meg **hasonlóságot** beállítani `ClassicSimilarity` , a rendszer 400-es hibát ad vissza, mivel ez az algoritmus nem támogatott az új szolgáltatásokban.
 
 A 2020. július 15. előtt létrehozott meglévő szolgáltatások esetében a klasszikus hasonlóság az alapértelmezett algoritmus marad. Ha a **hasonlóság** tulajdonság nincs megadva vagy NULL értékre van állítva, az index a klasszikus algoritmust használja. Ha az új algoritmust szeretné használni, a fentiekben ismertetett **hasonlóságot** kell megadnia.
 

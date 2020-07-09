@@ -6,13 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/18/2020
-ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322090"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Átalakítás kiválasztása az adatforgalom leképezése elemben
 
@@ -39,7 +38,10 @@ A rögzített leképezések használatával egy hierarchikus oszlop aloszlopa k�
 
 ## <a name="rule-based-mapping"></a>Szabály alapú leképezés
 
-Ha egyszerre sok oszlopot szeretne leképezni, vagy átadni a lebegő oszlopokat, a szabályok alapján történő leképezés használatával definiálhatja a leképezéseket az oszlopok mintázatával. Egyezés a `name`, `type` `stream`, és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xiXz]
+
+Ha egyszerre sok oszlopot szeretne leképezni, vagy átadni a lebegő oszlopokat, a szabályok alapján történő leképezés használatával definiálhatja a leképezéseket az oszlopok mintázatával. Egyezés a,, `name` `type` `stream` és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
 
 Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés**lehetőséget.
 
@@ -49,7 +51,7 @@ Minden szabály alapú leképezéshez két bemenet szükséges: az a feltétel, 
 
 ![szabály alapú leképezés](media/data-flow/rule-based-mapping.png "Szabály alapú leképezés")
 
-Szintaxis `$$` használatával hivatkozhat egy egyező oszlop bemeneti nevére. Tegyük fel, hogy a fenti képen egy felhasználó szeretne egyeztetni az összes olyan karakterlánc-oszlopon, amelynek a neve 6 karakternél rövidebb. Ha az egyik bejövő oszlop neve `test`, a kifejezés `$$ + '_short'` átnevezi az oszlopot `test_short`. Ha ez az egyetlen olyan leképezés, amely nem felel meg a feltételnek, a rendszer elveti a kiszolgált adatokból.
+`$$`Szintaxis használatával hivatkozhat egy egyező oszlop bemeneti nevére. Tegyük fel, hogy a fenti képen egy felhasználó szeretne egyeztetni az összes olyan karakterlánc-oszlopon, amelynek a neve 6 karakternél rövidebb. Ha az egyik bejövő oszlop neve `test` , a kifejezés `$$ + '_short'` átnevezi az oszlopot `test_short` . Ha ez az egyetlen olyan leképezés, amely nem felel meg a feltételnek, a rendszer elveti a kiszolgált adatokból.
 
 A minták egymásba sodródott és definiált oszlopokkal egyeznek meg. Ha szeretné megtekinteni, hogy mely meghatározott oszlopok vannak leképezve egy szabályhoz, kattintson a szabály melletti szemüveg ikonra. Ellenőrizze a kimenetet az adatelőnézet használatával.
 
@@ -59,9 +61,9 @@ Ha a lefelé mutató Chevron ikonra kattint, megadhat egy regex-leképezési fel
 
 ![szabály alapú leképezés](media/data-flow/regex-matching.png "Szabály alapú leképezés")
 
-A fenti példa a regex mintára `(r)` vagy bármely olyan oszlop nevére illeszkedik, amely egy kisbetű r betűt tartalmaz. A szabványos szabályokon alapuló leképezéshez hasonlóan az összes egyező oszlop a megfelelő szintaxis használatával `$$` módosul.
+A fenti példa a regex mintára `(r)` vagy bármely olyan oszlop nevére illeszkedik, amely egy kisbetű r betűt tartalmaz. A szabványos szabályokon alapuló leképezéshez hasonlóan az összes egyező oszlop a megfelelő szintaxis használatával módosul `$$` .
 
-Ha az oszlopnév több regex-egyezéssel rendelkezik, akkor az "n" kifejezéssel megegyező egyezésekre `$n` hivatkozhat. Például a "$2" az oszlopnév második egyezésére hivatkozik.
+Ha az oszlopnév több regex-egyezéssel rendelkezik, akkor az `$n` "n" kifejezéssel megegyező egyezésekre hivatkozhat. Például a "$2" az oszlopnév második egyezésére hivatkozik.
 
 ### <a name="rule-based-hierarchies"></a>Szabály alapú hierarchiák
 
@@ -69,11 +71,11 @@ Ha a megadott leképezés rendelkezik hierarchiával, akkor a szabályokon alapu
 
 ![szabály alapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
 
-A fenti példa a komplex oszlopok `a`összes aloszlopára illeszkedik. `a`két aloszlopot tartalmaz `b` , `c`és. A kimeneti séma két oszlopot `b` fog tartalmazni `c` , és a "Name as" feltételnek kell `$$`lennie.
+A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a`két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
 
 ### <a name="parameterization"></a>Paraméterezés
 
-Az oszlopnevek parametrizálja leképezés használatával is megadhatók. A kulcsszó ```name``` használatával a bejövő oszlopnevek megegyeznek egy paraméterrel. Ha például egy adatáramlási paraméterrel ```mycolumn```rendelkezik, létrehozhat egy olyan szabályt, amely megegyezik a ```mycolumn```következővel egyenlő oszlop nevével:. Átnevezheti az egyező oszlopot egy nehezen kódolt sztringre, például az "üzleti kulcs" kifejezésre, és hivatkozását explicit módon. Ebben a példában a megfelelő feltétel ```name == $mycolumn``` , a név feltétel pedig az "üzleti kulcs". 
+Az oszlopnevek parametrizálja leképezés használatával is megadhatók. A kulcsszó használatával a ```name``` bejövő oszlopnevek megegyeznek egy paraméterrel. Ha például egy adatáramlási paraméterrel rendelkezik ```mycolumn``` , létrehozhat egy olyan szabályt, amely megegyezik a következővel egyenlő oszlop nevével: ```mycolumn``` . Átnevezheti az egyező oszlopot egy nehezen kódolt sztringre, például az "üzleti kulcs" kifejezésre, és hivatkozását explicit módon. Ebben a példában a megfelelő feltétel, ```name == $mycolumn``` a név feltétel pedig az "üzleti kulcs". 
 
 ## <a name="auto-mapping"></a>Automatikus leképezés
 
@@ -95,7 +97,7 @@ A leképezések sorrendje határozza meg a kimeneti oszlopok sorrendjét. Ha egy
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

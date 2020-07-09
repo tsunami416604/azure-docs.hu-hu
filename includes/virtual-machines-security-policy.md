@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458666"
 ---
 Fontos, hogy a virtuális gép (VM) biztonságos legyen a futtatott alkalmazások számára. A virtuális gépek biztonságossá tételéhez tartozhat egy vagy több olyan Azure-szolgáltatás és szolgáltatás, amely a virtuális gépek biztonságos elérését és az adatai biztonságos tárolását is magában foglalja. Ez a cikk a virtuális gép és az alkalmazások védelmét lehetővé tevő információkat tartalmaz.

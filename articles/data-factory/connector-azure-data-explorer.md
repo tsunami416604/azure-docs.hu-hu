@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82560161"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Adatkezelőba vagy onnan a Azure Data Factory használatával
@@ -77,8 +77,8 @@ Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A **Type** tulajdonságot **AzureDataExplorer**értékre kell beállítani. | Igen |
-| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek `https://<clusterName>.<regionName>.kusto.windows.net`formátuma:. | Igen |
+| típus | A **Type** tulajdonságot **AzureDataExplorer**értékre kell beállítani. | Igen |
+| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Igen |
 | adatbázis | Az adatbázis neve. | Igen |
 | Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen |
 | servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
@@ -115,7 +115,7 @@ A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A **Type** tulajdonságot **AzureDataExplorerTable**értékre kell beállítani. | Igen |
+| típus | A **Type** tulajdonságot **AzureDataExplorerTable**értékre kell beállítani. | Igen |
 | tábla | Annak a táblának a neve, amelyre a társított szolgáltatás hivatkozik. | Igen a fogadó számára; Nem a forráshoz |
 
 **Adatkészlet tulajdonságai – példa:**
@@ -147,15 +147,15 @@ Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus*
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Igen |
 | lekérdezés | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Igen |
-| queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | No |
-| nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |No |
+| queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | Nem |
+| nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |Nem |
 
 >[!NOTE]
->Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, `set notruncation;` megadhatja a lekérdezés elején. További információ: [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, megadhatja a `set notruncation;` lekérdezés elején. További információ: [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -194,11 +194,11 @@ Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenys�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Igen |
-| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | No |
-| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](https://docs.microsoft.com/azure/data-explorer/ingestion-properties). | No |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Igen |
+| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | Nem |
+| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](https://docs.microsoft.com/azure/data-explorer/ingestion-properties). | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838586"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Az Azure-ban elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképek
@@ -31,7 +30,7 @@ Ez az Azure-ban elérhető RHEL-lemezképek listája. Ha másként nincs megadva
 > [!NOTE]
 > A nyers képek már nem jönnek létre az LVM-particionált lemezképek javára. Az LVM számos előnyt biztosít a régebbi nyers (nem LVM) particionálási sémához képest, beleértve a jóval rugalmasabb partíció-átméretezési lehetőségeket.
 
-Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
+Ajánlat| Termékváltozat | Particionálás | Kiépítés | Jegyzetek
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | NYERS    | Linux-ügynök |
 |             | 6.8      | NYERS    | Linux-ügynök |

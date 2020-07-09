@@ -14,10 +14,9 @@ ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6785ae821f701121185f0064c6317c69d50191ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617052"
 ---
 # <a name="know-the-terms"></a>A feltételek megismerése
@@ -47,5 +46,5 @@ Számos gyakori definíciót széles körben használnak az architektúra és a 
 
 A felhőben számos további erőforrás érhető el a SAP-munkaterhelések üzembe helyezéséhez. Ha SAP HANA Azure-beli üzembe helyezését tervezi, akkor az Azure IaaS alapelveivel és az Azure IaaS SAP-számítási feladatainak üzembe helyezésével foglalkoznia kell. A folytatás előtt tekintse [meg az SAP-megoldások használata az Azure Virtual Machines](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) szolgáltatásban című témakört. 
 
-**További lépések**
+**Következő lépések**
 - [HLI-minősítés](hana-certification.md) megtekintése

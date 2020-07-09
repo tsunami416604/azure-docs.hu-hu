@@ -4,19 +4,19 @@ description: Ez a dokumentum áttekintést nyújt a virtuális hálózatok (virt
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a289284fa27055c76e1e0594e3b0655e746159b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74930038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737087"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a PowerShell (klasszikus) használatával
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)

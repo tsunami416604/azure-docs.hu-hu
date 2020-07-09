@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144342"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Üzenetek küldése, fogadása és kötegelt feldolgozása Azure Logic Apps
@@ -85,7 +85,7 @@ Ahhoz, hogy üzeneteket küldhessen egy kötegbe, a kötegnek először az üzen
    2. A keresőmezőbe írja be szűrőként az „e-mail küldése” kifejezést.
    Az e-mail-szolgáltató alapján válasszon ki egy e-mail-összekötőt.
 
-      Ha például van egy személyes fiókja, például a @outlook.com vagy @hotmail.coma, válassza ki a Outlook.com-összekötőt. Ez a példa az Office 365 Outlook Connectort használja.
+      Ha például van egy személyes fiókja, például @outlook.com a vagy a @hotmail.com , válassza ki a Outlook.com-összekötőt. Ez a példa az Office 365 Outlook Connectort használja.
 
    3. Válassza ki ezt a műveletet: **E-mail küldése <*e-mail szolgáltatónak* > **
 
@@ -180,7 +180,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
 
    2. Amikor megjelenik a dinamikus tartalom lista, válassza a **kifejezés**lehetőséget. 
 
-   3. Adja meg a `utcnow()`kifejezést, majd kattintson **az OK gombra**. 
+   3. Adja meg a kifejezést `utcnow()` , majd kattintson **az OK gombra**. 
 
       ![Az "üzenet tartalma" területen válassza a "kifejezés" értéket, írja be a "utcnow ()" kifejezést, majd kattintson az "OK" gombra.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -198,7 +198,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
 
    2. A dinamikus tartalmak listájában válassza a **Kifejezés** lehetőséget.
    
-   3. Adja meg a `rand(1,6)`kifejezést, majd kattintson **az OK gombra**.
+   3. Adja meg a kifejezést `rand(1,6)` , majd kattintson **az OK gombra**.
 
       ![Partíció beállítása a cél köteghez](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: d20258e90c819c5d1f6b90be3303878c405e1f2d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 14ea15734a1db71c03d4ebd0cc3b10dabfb9b2dc
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806428"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805437"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el a Custom Vision SDK és a Python használatát a képbesorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
 
@@ -42,7 +42,7 @@ A projekt létrehozásakor további beállítások megadásához tekintse meg a 
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry
 from msrest.authentication import ApiKeyCredentials
 
 ENDPOINT = "<your API endpoint>"
@@ -96,7 +96,7 @@ for image_num in range(1, 11):
     with open(base_image_url + "images/Japanese Cherry/" + file_name, "rb") as image_contents:
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[cherry_tag.id]))
 
-upload_result = trainer.create_images_from_files(project.id, images=image_list)
+upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
 if not upload_result.is_batch_successful:
     print("Image batch upload failed.")
     for image in upload_result.images:
@@ -170,7 +170,7 @@ Ezt követően ellenőrizheti, hogy a **<base_image_url>images/test/**) címkéj
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
 

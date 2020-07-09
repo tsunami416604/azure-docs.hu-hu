@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f65e98cec04991fe9edef1b81bcb3ecc3d93d76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384957"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Az egyéni szabályzatok és az Identity Experience Framework Azure AD B2C hibáinak megoldása
 
@@ -52,13 +52,13 @@ Gyakori érvényesítési hibák a következők:
 
 > Hiba kódrészlet:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* Győződjön meg arról, hogy a `<TrustFrameworkPolicy\>` és `<BasePolicy\>` az elemek TenantId értéke megegyezik a cél Azure ad B2C Bérlővel.
+* Győződjön meg arról, hogy a és az elemek TenantId értéke `<TrustFrameworkPolicy\>` `<BasePolicy\>` megegyezik a cél Azure ad B2C Bérlővel.
 
 ## <a name="troubleshoot-the-runtime"></a>A futtatókörnyezet hibáinak megoldása
 
-* A **Futtatás most** `https://jwt.ms` paranccsal tesztelheti a házirendeket a webes vagy a mobil alkalmazástól függetlenül. Ez a webhely úgy viselkedik, mint egy függő entitás alkalmazása. Megjeleníti a Azure AD B2C szabályzat által generált JSON webes jogkivonat (JWT) tartalmát.
+* A **Futtatás most** paranccsal `https://jwt.ms` tesztelheti a házirendeket a webes vagy a mobil alkalmazástól függetlenül. Ez a webhely úgy viselkedik, mint egy függő entitás alkalmazása. Megjeleníti a Azure AD B2C szabályzat által generált JSON webes jogkivonat (JWT) tartalmát.
 
-    A jogkivonat- `https://jwt.ms` ellenőrzéshez átirányítható tesztelési alkalmazás létrehozása:
+    A jogkivonat-ellenőrzéshez átirányítható tesztelési alkalmazás létrehozása `https://jwt.ms` :
 
     [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

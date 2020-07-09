@@ -9,10 +9,9 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770086"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata
@@ -38,7 +37,7 @@ Az oktatóanyag elvégzéséhez az alábbi feladatokat végezheti el:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Rendelkeznie kell egy Azure-előfizetéssel. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * A [Visual Studio](https://www.visualstudio.com/) telepítése.
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
@@ -51,7 +50,7 @@ Az oktatóanyag elvégzéséhez az alábbi feladatokat végezheti el:
 Töltse le a [IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a githubról, és csomagolja ki őket. A tárházban számos alkalmazás, parancsfájl és Resource Manager-sablon található. Az oktatóanyaghoz használt eszközök a következők:
 
 * A manuális módszerhez van egy CLI-szkript, amely az erőforrások létrehozásához használatos. Ez a szkript a/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Ez a szkript létrehozza az erőforrásokat, és konfigurálja az üzenet-útválasztást. A szkript futtatása után manuálisan hozza létre az üzenet-dúsításokat a [Azure Portal](https://portal.azure.com)használatával.
-* Az automatizált metódushoz van egy Azure Resource Manager sablon. A sablon a/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments. JSON fájlban található. Ez a sablon létrehozza az erőforrásokat, konfigurálja az üzenet-útválasztást, majd konfigurálja az üzenetek dúsítását.
+* Az automatizált metódushoz van egy Azure Resource Manager sablon. A sablon/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.js. Ez a sablon létrehozza az erőforrásokat, konfigurálja az üzenet-útválasztást, majd konfigurálja az üzenetek dúsítását.
 * A használt harmadik alkalmazás az eszköz-szimulációs alkalmazás, amellyel üzeneteket küldhet az IoT hubhoz, és tesztelheti az üzenetek dúsítását.
 
 ## <a name="manually-set-up-and-configure-by-using-the-azure-cli"></a>Manuális beállítás és konfigurálás az Azure CLI használatával
@@ -77,7 +76,7 @@ Ha még nem tette meg, nyisson meg egy Azure [Cloud Shell ablakot](https://shell
 
 Itt láthatók a szkript által létrehozott erőforrások. A *dúsított* érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az *eredeti* érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Name (Név) | Érték |
+| Name | Érték |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | tároló neve | eredeti  |
@@ -287,7 +286,7 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
 
 1. Az **Egyéni telepítés** panelen válassza a **saját sablon létrehozása lehetőséget a szerkesztőben**.
 
-1. A **Sablon szerkesztése** panelen válassza a **fájl betöltése**lehetőséget. A Windows Intéző megjelenik. Keresse meg a **template_messageenrichments. JSON** fájlt a **/IOT-hub/tutorials/Routing/SimulatedDevice/Resources**-ben található kibontott adattár-fájlban. 
+1. A **Sablon szerkesztése** panelen válassza a **fájl betöltése**lehetőséget. A Windows Intéző megjelenik. Keresse meg a fájl **template_messageenrichments.js** a **/IOT-hub/tutorials/Routing/SimulatedDevice/Resources**-ben a kibontott tárház kibontott fájljában. 
 
    ![Sablon kiválasztása a helyi gépről](./media/tutorial-message-enrichments/template-select.png)
 
@@ -297,7 +296,7 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
 
    Itt láthatók a sablon betöltésével létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható. Ezek az Azure CLI-szkriptben használt értékek.
 
-   | Name (Név) | Érték |
+   | Name | Érték |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | tároló neve | eredeti  |
@@ -330,13 +329,13 @@ Az üzenetek dúsításának megtekintéséhez válassza az **erőforráscsoport
 
 Most, hogy az üzenet gazdagítása konfigurálva van a végponthoz, futtassa a szimulált eszköz alkalmazást, hogy üzeneteket küldjön az IoT hubhoz. A hub olyan beállításokkal lett beállítva, amelyek a következő feladatokat hajtják végre:
 
-* A tárolási végpont ContosoStorageEndpointOriginal továbbított üzenetek nem lesznek gazdagítva, és a tárolóban lesznek tárolva `original`.
+* A tárolási végpont ContosoStorageEndpointOriginal továbbított üzenetek nem lesznek gazdagítva, és a tárolóban lesznek tárolva `original` .
 
-* A tárolási végpont ContosoStorageEndpointEnriched átirányított üzenetek a tárolóban lesznek gazdagítva és tárolva `enriched`.
+* A tárolási végpont ContosoStorageEndpointEnriched átirányított üzenetek a tárolóban lesznek gazdagítva és tárolva `enriched` .
 
 A szimulált eszköz alkalmazás a kibontott letöltésben szereplő egyik alkalmazás. Az alkalmazás üzeneteket küld az [útválasztási oktatóanyag](tutorial-routing.md)egyes különböző üzenet-útválasztási módszereihez, beleértve az Azure Storage-t is.
 
-Kattintson duplán a megoldás fájlra **IoT_SimulatedDevice. SLN** a kód megnyitásához a Visual Studióban, majd nyissa meg a **program.cs**. Helyettesítse be a jelölőhöz `{your hub name}`tartozó IoT hub nevét. Az IoT hub-állomásnév formátuma **{a hub neve}. Azure-Devices.net**. Ebben az oktatóanyagban a hub-gazdagép neve ContosoTestHubMsgEn.azure-devices.net. Ezután cserélje le a korábban mentett eszköz kulcsát, amikor futtatta a szkriptet a jelölőhöz `{your device key}`tartozó erőforrások létrehozásához.
+Kattintson duplán a megoldás fájlra **IoT_SimulatedDevice. SLN** a kód megnyitásához a Visual Studióban, majd nyissa meg a **program.cs**. Helyettesítse be a jelölőhöz tartozó IoT hub nevét `{your hub name}` . Az IoT hub-állomásnév formátuma **{a hub neve}. Azure-Devices.net**. Ebben az oktatóanyagban a hub-gazdagép neve ContosoTestHubMsgEn.azure-devices.net. Ezután cserélje le a korábban mentett eszköz kulcsát, amikor futtatta a szkriptet a jelölőhöz tartozó erőforrások létrehozásához `{your device key}` .
 
 Ha nem rendelkezik az eszköz kulcsával, lekérheti azt a portálról. A bejelentkezés után lépjen az **erőforráscsoportok**elemre, válassza ki az erőforráscsoportot, majd válassza ki az IoT hubot. Keresse meg a **IoT eszközeit** , és válassza ki az eszközt. A vágólapra másoláshoz kattintson az **elsődleges kulcs** melletti másolás ikonra.
 
@@ -352,7 +351,7 @@ Ha nem rendelkezik az eszköz kulcsával, lekérheti azt a portálról. A bejele
 
 Futtassa a konzol alkalmazást néhány percig. Az elküldött üzenetek az alkalmazás konzol képernyőjén jelennek meg.
 
-Az alkalmazás másodpercenként elküld egy új üzenetet az eszközről a felhőbe az IoT Hubnak. Az üzenet egy JSON-szerializált objektumot tartalmaz az eszköz azonosítójával, a hőmérséklettel, a páratartalommal és az üzenet szintjével, amely alapértelmezés szerint `normal`. Véletlenszerűen rendeli hozzá a `critical` vagy `storage`a szintet, ami azt eredményezi, hogy az üzenet a Storage-fiókhoz vagy az alapértelmezett végponthoz lesz irányítva. A Storage-fiókban a **dúsított** tárolóba küldött üzenetek gazdagítva lesznek.
+Az alkalmazás másodpercenként elküld egy új üzenetet az eszközről a felhőbe az IoT Hubnak. Az üzenet egy JSON-szerializált objektumot tartalmaz az eszköz azonosítójával, a hőmérséklettel, a páratartalommal és az üzenet szintjével, amely alapértelmezés szerint `normal`. Véletlenszerűen rendeli hozzá a vagy a `critical` szintet `storage` , ami azt eredményezi, hogy az üzenet a Storage-fiókhoz vagy az alapértelmezett végponthoz lesz irányítva. A Storage-fiókban a **dúsított** tárolóba küldött üzenetek gazdagítva lesznek.
 
 Több tárolási üzenet elküldése után megtekintheti az adatfájlokat.
 
@@ -380,13 +379,13 @@ Itt egy nem dúsított üzenet jelenik meg. Figyelje meg, hogy a "saját IoT Hub
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben eltávolítja az IoT hubot, a Storage-fiókot és magát az erőforráscsoportot.
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. Visszahívás, `$resourceGroup` amely az oktatóanyag elején **ContosoResourcesMsgEn** értékre lett állítva.
+Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. Visszahívás, amely az `$resourceGroup` oktatóanyag elején **ContosoResourcesMsgEn** értékre lett állítva.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

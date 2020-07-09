@@ -3,12 +3,12 @@ title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure 
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135164"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
@@ -122,7 +122,7 @@ Az új virtuális gépek Storage-fiókba való replikálása csak a PowerShell v
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Módosíthatom a felügyelt lemez típusát a gép védelme után?
 
-Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) a folyamatos replikáláshoz. A típus módosítása előtt győződjön meg arról, hogy a felügyelt lemezen nem jön létre közös hozzáférésű aláírási URL-cím:
+Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](../virtual-machines/windows/convert-disk-storage.md) a folyamatos replikáláshoz. A típus módosítása előtt győződjön meg arról, hogy a felügyelt lemezen nem jön létre közös hozzáférésű aláírási URL-cím:
 
 1. Nyissa meg a **felügyelt lemez** erőforrást a Azure Portalon, és győződjön meg arról, hogy rendelkezik-e közös hozzáférési aláírási URL-címmel az **Áttekintés** panelen.
 1. Ha a szalagcím megtalálható, válassza ki azt a folyamatban lévő exportálás megszakításához.
@@ -198,7 +198,7 @@ Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Szükség van-e az egyes verziófrissítésekhez szükséges forrásoldali gépek újraindítására?
 
-Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információ](https://aka.ms/asr_vmware_upgrades).
+Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -282,7 +282,7 @@ Igen, de vegye figyelembe, hogy a fizikai gép csak a VMware virtuális gépeken
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Honnan tölthetők le a tároló regisztrációs kulcsai?
 
-A Recovery Services-tárolóban válassza a **konfigurációs kiszolgálók** lehetőséget **site Recovery infrastruktúra** > **kezelése**elemnél. Ezután a **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
+A Recovery Services-tárolóban válassza a **konfigurációs kiszolgálók** lehetőséget **site Recovery infrastruktúra**  >  **kezelése**elemnél. Ezután a **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Használható egyetlen konfigurációs kiszolgáló a több vCenter-példány védeleméhez?
 
@@ -326,7 +326,7 @@ A VMware-ből az Azure-ba a legrégebbi helyreállítási pont 72 óra lehet.
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan Azure-beli virtuális gépeket a feladatátvételt követően?
 
-A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>A feladatátvételi feladathoz képest rugalmas?
 
@@ -338,7 +338,7 @@ A [feladatátvétel](site-recovery-failover.md) nem automatikus. A feladatátvé
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Visszatérhetek egy másik helyre?
 
-Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információ](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Miért van szükségem VPN-vagy ExpressRoute-kapcsolatra a feladat-visszavétel érdekében?
 
@@ -349,15 +349,15 @@ Ha az Azure-ból végez feladatátvételt, az Azure-ból származó adatok vissz
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Beállítható a replikáció parancsfájlok futtatásával?
 
-Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információ](vmware-azure-disaster-recovery-powershell.md).
+Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információk](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Teljesítmény és kapacitás
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Szabályozható a replikálási sávszélesség?
 
-Igen. [További információ](site-recovery-plan-capacity-vmware.md).
+Igen. [További információk](site-recovery-plan-capacity-vmware.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](vmware-physical-azure-support-matrix.md) a támogatási követelményeket.
 - [Beállítás](vmware-azure-tutorial.md) VMware – Azure replikálás.

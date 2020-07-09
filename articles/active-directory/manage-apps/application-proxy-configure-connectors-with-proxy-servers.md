@@ -2,22 +2,21 @@
 title: Meglévő helyszíni proxykiszolgálók és Azure AD használata | Microsoft Docs
 description: Ismerteti, hogyan használható a meglévő helyszíni proxykiszolgálók használata.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764927"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -39,7 +38,7 @@ Az operációs rendszer összetevői a WPAD. domainsuffix DNS-címkeresés végr
 
 Az összekötőt úgy is beállíthatja, hogy megkerülje a helyszíni proxyt, hogy az az Azure-szolgáltatásokhoz közvetlen kapcsolatot használjon. Ezt a megközelítést javasoljuk, ha a hálózati házirend lehetővé teszi a számára, mert az azt jelenti, hogy egy kisebb konfigurációt kell fenntartania.
 
-Az összekötő kimenő proxy használatának letiltásához szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *System.net* szakaszt a következő példában látható módon:
+Az összekötő kimenő proxy használatának letiltásához szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *System.net* szakaszt a következő kódban:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -56,7 +55,7 @@ Az összekötő kimenő proxy használatának letiltásához szerkessze a C:\Pro
 </configuration>
 ```
 
-Annak biztosítása érdekében, hogy a Connector Updater szolgáltatás a proxyt is megkerüljék, végezze el a ApplicationProxyConnectorUpdaterService. exe. config fájl hasonló módosítását. Ez a fájl a C:\Program Files\Microsoft HRE app proxy Connector Updater található.
+Annak biztosítása érdekében, hogy a Connector Updater szolgáltatás a proxyt is megkerüljék, végezze el a ApplicationProxyConnectorUpdaterService.exe.config fájl hasonló módosítását. Ez a fájl a C:\Program Files\Microsoft HRE app proxy Connector Updater található.
 
 Készítsen másolatot az eredeti fájlokról, ha az alapértelmezett. config fájlokra kell visszaállítania.
 
@@ -77,7 +76,7 @@ A csak kimenő forgalom miatt nem kell konfigurálnia a tűzfalon keresztüli be
 
 Ha a WPAD engedélyezve van a környezetben, és megfelelően van konfigurálva, az összekötő automatikusan felfedi a kimenő proxykiszolgálót, és megpróbálja használni azt. Az összekötőt azonban explicit módon úgy konfigurálhatja, hogy átugorjon egy kimenő proxyn.
 
-Ehhez szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *System.net* szakaszt a kódban. Módosítsa a *ProxyServer: 8080* , hogy tükrözze a helyi proxykiszolgáló nevét vagy IP-címét, valamint azt a portot, amelyen a figyel. Az értéknek az előtag http://akkor is szerepelnie kell, ha IP-címet használ.
+Ehhez szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\ApplicationProxyConnectorService.exe.config fájlt, és adja hozzá a *System.net* szakaszt az ebben a kódban látható példában. Módosítsa a *ProxyServer: 8080* , hogy tükrözze a helyi proxykiszolgáló nevét vagy IP-címét, valamint azt a portot, amelyen a figyel. Az értéknek az előtag http://akkor is szerepelnie kell, ha IP-címet használ.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -96,7 +95,7 @@ Ehhez szerkessze a C:\Program Files\Microsoft HRE app proxy Connector\Applicatio
 </configuration>
 ```
 
-Ezután konfigurálja a Connector Updater szolgáltatást a proxy használatára úgy, hogy hasonló módosítást végez a C:\Program Files\Microsoft HRE app proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config fájlhoz.
+Ezután konfigurálja a Connector Updater szolgáltatást a proxy használatára úgy, hogy hasonló módosítást végez a C:\Program Files\Microsoft HRE app proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config fájlban.
 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2. lépés: konfigurálja a proxyt úgy, hogy az összekötő és a kapcsolódó szolgáltatások forgalmát a
 
@@ -152,9 +151,9 @@ Ennek engedélyezéséhez kövesse a következő lépéseket:
 3.  Nyisson meg egy rendszergazda jogú parancssort rendszergazdai jogosultságokkal, és írja be a parancsot `control inetcpl.cpl` .
 4.  Konfigurálja a szükséges proxybeállításokat. 
 
-Ezek a beállítások teszik, hogy az összekötő ugyanazt a továbbítási proxyt használja az Azure-hoz és a háttérbeli alkalmazáshoz való kommunikációhoz. Ha az összekötő és az Azure közötti kommunikációhoz nem szükséges továbbító proxy vagy más továbbítási proxy, a ApplicationProxyConnectorService. exe. config fájl módosításával a kimenő proxyk megkerülése vagy a kimenő proxykiszolgáló használata című részben leírtak szerint állíthatja be ezt.
+Ezek a beállítások teszik, hogy az összekötő ugyanazt a továbbítási proxyt használja az Azure-hoz és a háttérbeli alkalmazáshoz való kommunikációhoz. Ha az összekötő és az Azure közötti kommunikációhoz nem szükséges a továbbítási proxy vagy más továbbítási proxy, beállíthatja, hogy a fájl módosítása ApplicationProxyConnectorService.exe.config a kimenő proxyk megkerülése vagy a kimenő proxykiszolgáló használata részben leírtak szerint.
 
-Az összekötő-frissítési szolgáltatás a Machine proxyt is használja majd. Ez a viselkedés a ApplicationProxyConnectorUpdaterService. exe. config fájl módosításával módosítható.
+Az összekötő-frissítési szolgáltatás a Machine proxyt is használja majd. Ez a viselkedés módosítható a ApplicationProxyConnectorUpdaterService.exe.config fájl módosításával.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Az összekötő-proxyval kapcsolatos problémák elhárítása és a szolgáltatás csatlakozási problémái
 

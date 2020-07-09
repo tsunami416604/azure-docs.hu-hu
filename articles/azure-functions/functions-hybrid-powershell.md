@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122273"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hibrid környezetek kezelése a PowerShell-lel Azure Functions és App Service Hibrid kapcsolatok
@@ -61,7 +60,7 @@ A App Service Hibrid kapcsolatok funkció csak az alapszintű, a standard és az
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
     | **függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9` és `-` .  |
-    |**Közzététel**| Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
+    |**Közzététel**| Code | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válassza a PowerShell mag lehetőséget. |
     |**Verzió**| Verziószám | Válassza ki a telepített futtatókörnyezet verzióját.  |
     |**Régió**| Előnyben részesített régió | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
@@ -72,7 +71,7 @@ A App Service Hibrid kapcsolatok funkció csak az alapszintű, a standard és az
 
     | Beállítás      | Ajánlott érték  | Leírás |
     | ------------ | ---------------- | ----------- |
-    | **[Tárfiók](../storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Storage-fiók](../storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../azure-functions/functions-scale.md#storage-account-requirements). |
     |**Operációs rendszer**| Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
     | **[Csomag típusa](../azure-functions/functions-scale.md)** | **App Service-csomag** | Válassza az **app Service-csomag**elemet. Ha App Service-csomagot használ, foglalkoznia kell a [függvényalkalmazás méretezésével](../azure-functions/functions-scale.md).  |
 
@@ -118,7 +117,7 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
     | **Végpont portja** | 5986 |
     | **Servicebus-névtér** | Új létrehozása |
     | **Hely** | Válasszon ki egy elérhető helyet |
-    | **Név** | contosopowershellhybrid | 
+    | **Name (Név)** | contosopowershellhybrid | 
 
 1. A hibrid kapcsolatok létrehozásához kattintson **az OK gombra** .
 
@@ -157,7 +156,7 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
 
     :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Adja meg a rendszergazdai fiók jelszavát." border="true":::
 
-1. Nevezze el a beállítás **ContosoUserPassword**, és adja meg a jelszót. Kattintson az **OK** gombra.
+1. Nevezze el a beállítás **ContosoUserPassword**, és adja meg a jelszót. Válassza az **OK** lehetőséget.
 1. Válassza a **Mentés** lehetőséget a jelszó tárolásához a Function alkalmazásban.
 
     :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Mentse a rendszergazdai fiók jelszavát." border="true":::

@@ -1,19 +1,19 @@
 ---
 title: Azure N sorozatú AMD GPU illesztőprogram-telepítő Windows rendszerhez
 description: AMD GPU-illesztőprogramok beállítása az Azure-ban Windows Servert vagy Windowst futtató N sorozatú virtuális gépekhez
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: c4ab6f8dd1c2484ca560fd570f88476f31897b28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975187"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -38,9 +38,11 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 
 1. Kapcsolódjon Távoli asztal az egyes NVv4-sorozatú virtuális gépekhez.
 
-2. Töltse le és telepítse a legújabb illesztőprogramot.
+2. Ha el kell távolítania az illesztőprogram előző verzióját, majd le kell töltenie az AMD [CleanUp segédprogramot](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) , kérjük, ne használja az illesztőprogram előző verzióját tartalmazó segédprogramot.
 
-3. Indítsa újra a virtuális gépet.
+3. Töltse le és telepítse a legújabb illesztőprogramot.
+
+4. Indítsa újra a virtuális gépet.
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
 
@@ -50,7 +52,7 @@ Az illesztőprogram telepítését a Eszközkezelő ellenőrizheti. Az alábbi p
 
 A Dxdiag használatával ellenőrizheti a GPU megjelenítési tulajdonságait, beleértve a videó RAM-ját is. Az alábbi példa egy Azure NVv4 virtuális gépen található Radeon ösztön MI25 kártya 1/2-es partícióját mutatja be.
 <br />
-![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-output.png)
+![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Ha a Windows 10 Build 1903-es vagy újabb verzióját futtatja, akkor a Dxdiag nem jelenít meg információt a "Display" (megjelenítés) lapon. Használja az összes információ mentése lehetőséget az alján, és a kimeneti fájl megjeleníti az AMD MI25 GPU-val kapcsolatos információkat.
 

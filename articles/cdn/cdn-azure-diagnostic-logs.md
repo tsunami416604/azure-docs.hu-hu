@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254801"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84883993"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -87,7 +87,7 @@ Ha Storage-fiókot szeretne használni a naplók tárolásához, kövesse az al�
 
 5. Miután befejezte a diagnosztikai napló beállításait, válassza a **Mentés**lehetőséget.
 
-### <a name="logging-with-azure-monitor"></a>Bejelentkezés Azure Monitor
+### <a name="logging-with-azure-monitor"></a>Naplózás az Azure Monitorral
 
 Ha a naplókat a Azure Monitor használatával szeretné tárolni, kövesse az alábbi lépéseket:
 
@@ -176,8 +176,8 @@ Ahhoz, hogy hozzáférhessen az Azure Storage-fiókhoz tartozó alapvető elemz�
 2.  A Storage-fiók megkeresése
 3.  Bontsa ki a **blob-tárolók** csomópontot ebben a Storage-fiókban.
 4.  Válassza ki az elemzések *-naplók-coreanalytics*nevű tárolót.
-5.  Az eredmények a jobb oldali ablaktáblán jelennek meg, az első szinttől kezdve, ahogy a *resourceId =*. Folytassa az egyes szintek kijelölését, amíg meg nem találja a *PT1H. JSON*fájlt. Az elérési út magyarázatát lásd: [blob Path Format](cdn-azure-diagnostic-logs.md#blob-path-format).
-6.  Minden blob *PT1H. JSON* fájl egy órányi elemzési naplókat jelöl egy adott CDN-végpont vagy az egyéni tartomány számára.
+5.  Az eredmények a jobb oldali ablaktáblán jelennek meg, az első szinttől kezdve, ahogy a *resourceId =*. Folytassa az egyes szintek kiválasztását, amíg meg nem találja a *PT1H.js*fájlt. Az elérési út magyarázatát lásd: [blob Path Format](cdn-azure-diagnostic-logs.md#blob-path-format).
+6.  A fájlokban lévő összes blob- *PT1H.js* egy órányi elemzési naplókat jelöl egy adott CDN-végpont vagy az egyéni tartomány számára.
 7.  A JSON-fájl tartalmának sémáját az alapvető elemzési naplók sémája ismerteti.
 
 
@@ -189,16 +189,16 @@ Az alapvető elemzési naplók óránként jönnek létre, és az adatok gyűjt�
 
 **Mezők leírása:**
 
-|Érték|Leírás|
+|Érték|Description|
 |-------|---------|
 |Előfizetés azonosítója    |Az Azure-előfizetés azonosítója GUID formátumban.|
 |Erőforráscsoport neve |Azon erőforráscsoport neve, amelyhez a CDN-erőforrások tartoznak.|
 |Profilnév |A CDN-profil neve|
 |Végpont neve |A CDN-végpont neve|
-|Year|  Az év négyjegyű ábrázolása, például 2017|
-|Month| A hónap számának kétszámjegyű ábrázolása. 01 = Január... 12 = december|
-|Day|   A hónap napjának kétszámjegyű ábrázolása|
-|PT1H. JSON| Az elemzési adatokat tároló tényleges JSON-fájl|
+|Év|  Az év négyjegyű ábrázolása, például 2017|
+|Hónap| A hónap számának kétszámjegyű ábrázolása. 01 = Január... 12 = december|
+|Nap|   A hónap napjának kétszámjegyű ábrázolása|
+|PT1H.jsbekapcsolva| Az elemzési adatokat tároló tényleges JSON-fájl|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Az alapvető elemzési adatfájlok exportálása CSV-fájlba
 
@@ -323,7 +323,7 @@ A Microsoft jelenleg csak alapszintű elemzési naplókat kínál, amelyek a HTT
 Az alábbi táblázat a **microsofttól Azure CDN standard szintű**, a Akamai-tól **Azure CDN standard**Azure CDN és a **Verizon standard/prémium**szintű elemzési naplókban elérhető mérőszámok listáját tartalmazza. Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen eltérések minimálisak. A tábla azt is megjeleníti, hogy egy adott metrika elérhető-e a szolgáltatótól. A metrikák csak azokra a CDN-végpontokra érhetők el, amelyeken forgalom van rajtuk.
 
 
-|Metrika                     | Leírás | Microsoft | Verizon | Akamai |
+|Metric                     | Leírás | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | A kérelem összes találatának száma ebben az időszakban. | Igen | Igen |Igen |
 | RequestCountHttpStatus2xx | Az 2xx HTTP-kódot eredményező kérések száma (például 200, 202). | Igen | Igen |Igen |
@@ -331,16 +331,16 @@ Az alábbi táblázat a **microsofttól Azure CDN standard szintű**, a Akamai-t
 | RequestCountHttpStatus4xx | Az 4xx HTTP-kódot eredményező kérések száma (például 400, 404). | Igen | Igen |Igen |
 | RequestCountHttpStatus5xx | Az 5xx HTTP-kódot eredményező kérések száma (például 500, 504). | Igen | Igen |Igen |
 | RequestCountHttpStatusOthers | Az összes többi HTTP-kód száma (a 2xx-5xx kívül). | Igen | Igen |Igen |
-| RequestCountHttpStatus200 | Az 200 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus206 | Az 206 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus302 | Az 302 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus304 | Az 304 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus404 | Az 404 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus200 | Az 200 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
+| RequestCountHttpStatus206 | Az 206 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
+| RequestCountHttpStatus302 | Az 302 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
+| RequestCountHttpStatus304 | Az 304 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
+| RequestCountHttpStatus404 | Az 404 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
 | RequestCountCacheHit | A gyorsítótárban találatot eredményező kérések száma. Az eszköz közvetlenül a POP-ból a-ügyfélhez lett kézbesítve. | Igen | Igen | Nem  |
 | RequestCountCacheMiss | A gyorsítótárból kihagyott összes kérelem száma. A gyorsítótár-kihagyás azt jelenti, hogy az eszköz nem található az ügyfélhez legközelebb lévő POP-ban, ezért a forrásból lett lekérve. | Igen | Igen | Nem |
 | RequestCountCacheNoCache | Az eszközre irányuló, a peremhálózati felhasználói konfiguráció miatt nem gyorsítótárazott adatkérések száma. | Igen | Igen | Nem |
 | RequestCountCacheUncacheable | Azon eszközökre irányuló kérelmek száma, amelyeket az eszköz gyorsítótár-vezérlése nem gyorsítótárazhat, és a fejlécek lejárnak, ami azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
-| RequestCountCacheOthers | Az összes olyan kérelem száma, amelynél a gyorsítótár állapota nem szerepel a fentiekben. | Nem | Igen | Nem  |
+| RequestCountCacheOthers | Az összes olyan kérelem száma, amelynél a gyorsítótár állapota nem szerepel a fentiekben. | Nem | Yes | Nem  |
 | EgressTotal | Kimenő adatforgalom GB-ban | Igen |Igen |Igen |
 | EgressHttpStatus2xx | Kimenő adatátvitel * a 2xx HTTP-állapotkódok GB-ban való kitöltéséhez. | Igen | Igen | Nem  |
 | EgressHttpStatus3xx | Kimenő adatforgalom a 3xx HTTP-állapotkódot tartalmazó válaszok esetében GB-ban. | Igen | Igen | Nem  |
@@ -351,7 +351,7 @@ Az alábbi táblázat a **microsofttól Azure CDN standard szintű**, a Akamai-t
 | EgressCacheMiss. | Kimenő adatforgalom olyan válaszokhoz, amelyek nem találhatók a legközelebbi POP-kiszolgálón, és a rendszer lekéri a forrás-kiszolgálóról. | Igen | Igen | Nem |
 | EgressCacheNoCache | A kimenő adatforgalom olyan eszközök esetében, amelyek megakadályozták a gyorsítótárazást a peremhálózati felhasználói konfiguráció miatt. | Igen | Igen | Nem |
 | EgressCacheUncacheable | Kimenő adatforgalom olyan eszközökön, amelyeket az eszköz gyorsítótár-vezérlése és/vagy a fejlécek lejárata megakadályoz. Azt jelzi, hogy nem szabad gyorsítótárazni a POP-on vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
-| EgressCacheOthers | Kimenő adatforgalom más gyorsítótár-forgatókönyvekhez. | Nem | Igen | Nem |
+| EgressCacheOthers | Kimenő adatforgalom más gyorsítótár-forgatókönyvekhez. | Nem | Yes | Nem |
 
 * A kimenő adatátvitel a CDN POP-kiszolgálókról az ügyfélnek továbbított forgalomra utal.
 
@@ -441,11 +441,11 @@ Példa tulajdonságai:
 
 ```
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Azure-beli diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Core Analytics Azure CDN kiegészítő portálon keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor-naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Naplók Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

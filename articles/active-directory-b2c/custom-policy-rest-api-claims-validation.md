@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388918"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Bemutató: REST API jogcímek cseréje a Azure AD B2C felhasználói úton a felhasználói bevitel érvényesítéséhez
 
@@ -55,7 +55,7 @@ Miután a REST API érvényesíti az adatait, a következő JSON-adataival kell 
 }
 ```
 
-Ha az ellenőrzés nem sikerült, a REST API HTTP 409 (ütközés) értéket kell visszaadnia `userMessage` a JSON-elemmel. A IEF a REST API által `userMessage` visszaadott jogcímet várja. Ez a jogcím karakterláncként jelenik meg a felhasználó számára, ha az ellenőrzés sikertelen.
+Ha az ellenőrzés nem sikerült, a REST API HTTP 409 (ütközés) értéket kell visszaadnia a `userMessage` JSON-elemmel. A IEF a `userMessage` REST API által visszaadott jogcímet várja. Ez a jogcím karakterláncként jelenik meg a felhasználó számára, ha az ellenőrzés sikertelen.
 
 ```json
 {
@@ -71,7 +71,7 @@ A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létre
 
 A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. A jogcímeket a [jogcímek sémája](claimsschema.md) szakaszon belül deklarálhatja. 
 
-1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcímeket a **ClaimsSchema** elemhez.  
@@ -128,15 +128,15 @@ A [Rest-technikai profil](restful-technical-profile.md) támogatja a saját Rest
 </ClaimsProvider>
 ```
 
-Ebben a példában a `userLanguage` a rendszer ELKÜLDI a REST szolgáltatásnak `lang` a JSON-adattartalommal. A `userLanguage` jogcím értéke az aktuális felhasználói nyelvi azonosítót tartalmazza. További információ: jogcím- [feloldó](claim-resolver-overview.md).
+Ebben a példában a a `userLanguage` rendszer elküldi a REST szolgáltatásnak a `lang` JSON-adattartalommal. A `userLanguage` jogcím értéke az aktuális felhasználói nyelvi azonosítót tartalmazza. További információ: jogcím- [feloldó](claim-resolver-overview.md).
 
-A fenti `AuthenticationType` megjegyzések és `AllowInsecureAuthInProduction` az éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez lásd: [biztonságos REST API](secure-rest-api.md).
+A fenti megjegyzések `AuthenticationType` és az `AllowInsecureAuthInProduction` éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez lásd: [biztonságos REST API](secure-rest-api.md).
 
 ## <a name="validate-the-user-input"></a>Felhasználói bevitel ellenőrzése
 
 A felhasználó hűségi számának a regisztráció során való beszerzéséhez engedélyeznie kell a felhasználónak, hogy adja meg ezeket az adatfájlokat a képernyőn. Adja hozzá a **loyaltyId** kimeneti jogcímet a regisztrációs laphoz úgy, hogy hozzáadja a meglévő regisztrációs technikai profil szakaszának `OutputClaims` eleméhez. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn.  
 
-Adja hozzá az érvényesítési technikai profil referenciáját a regisztrációs technikai profilhoz, amely meghívja a `REST-ValidateProfile`-t. Az új érvényesítési technikai profil az alapházirendben definiált `<ValidationTechnicalProfiles>` gyűjtemény tetejéhez lesz hozzáadva. Ez azt jelenti, hogy csak a sikeres ellenőrzés után Azure AD B2C továbblép a fiók létrehozásához a címtárban.   
+Adja hozzá az érvényesítési technikai profil referenciáját a regisztrációs technikai profilhoz, amely meghívja a-t `REST-ValidateProfile` . Az új érvényesítési technikai profil az `<ValidationTechnicalProfiles>` alapházirendben definiált gyűjtemény tetejéhez lesz hozzáadva. Ez azt jelenti, hogy csak a sikeres ellenőrzés után Azure AD B2C továbblép a fiók létrehozásához a címtárban.   
 
 1. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új jogcím-szolgáltatót az alábbiak szerint:
 
@@ -192,7 +192,7 @@ Adja hozzá az érvényesítési technikai profil referenciáját a regisztráci
 
 ## <a name="include-a-claim-in-the-token"></a>Jogcím belefoglalása a jogkivonatba 
 
-Ha vissza szeretné állítani a promóciós kód jogcímet a függő entitás alkalmazásához, adjon hozzá egy kimeneti <em> `SocialAndLocalAccounts/` </em> jogcímet a fájlhoz. A kimeneti jogcímek lehetővé teszik, hogy a rendszer sikeres felhasználói út után hozzáadja a jogcímet a jogkivonathoz, és az alkalmazás megkapja az alkalmazást. Módosítsa a technikai profil elemet a függő entitás szakaszban a kimeneti Jogcím hozzáadásához `promoCode` .
+Ha vissza szeretné állítani a promóciós kód jogcímet a függő entitás alkalmazásához, adjon hozzá egy kimeneti jogcímet a <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> fájlhoz. A kimeneti jogcímek lehetővé teszik, hogy a rendszer sikeres felhasználói út után hozzáadja a jogcímet a jogkivonathoz, és az alkalmazás megkapja az alkalmazást. Módosítsa a technikai profil elemet a függő entitás szakaszban a kimeneti Jogcím hozzáadásához `promoCode` .
  
 ```xml
 <RelyingParty>
@@ -221,7 +221,7 @@ Ha vissza szeretné állítani a promóciós kód jogcímet a függő entitás a
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **identitási élmény keretrendszert**.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkExtensions. XML*és *SignUpOrSignin. XML*. 
+1. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkExtensions.xml*és *SignUpOrSignin.xml*. 
 1. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. Regisztrálnia kell egy e-mail-cím használatával.
 1. Kattintson a **regisztrálás most** hivatkozásra.

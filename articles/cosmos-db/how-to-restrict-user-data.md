@@ -3,15 +3,15 @@ title: Az adatműveletekhez való felhasználói hozzáférés korlátozása kiz
 description: Megtudhatja, hogyan korlátozhatja az adatműveletekhez való hozzáférést Azure Cosmos DB
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261222"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Felhasználói hozzáférés korlátozása az adatműveletekre
 
@@ -19,7 +19,9 @@ Azure Cosmos DB két módon hitelesítheti az interakciókat az adatbázis-szolg
 - a Azure Active Directory identitás használata a Azure Portal való interakció során
 - Azure Cosmos DB [kulcsok](secure-access-to-data.md#master-keys) vagy [erőforrás-tokenek](secure-access-to-data.md#resource-tokens) használata az API-k és SDK-k által kezdeményezett hívások kibocsátásakor.
 
-Az egyes hitelesítési módszerek különböző műveletekhez biztosítanak hozzáférést, néhány átfedésben: ![műveletek felosztása hitelesítési típus szerint](./media/how-to-restrict-user-data/operations.png)
+Az egyes hitelesítési módszerek különböző műveletekhez biztosítanak hozzáférést, néhány átfedéssel:
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="Műveletek felosztása hitelesítési típus szerint" border="false":::
 
 Bizonyos esetekben előfordulhat, hogy korlátozni szeretné a szervezet egyes felhasználói számára az adatműveletek (azaz a szifilisz-kérelmek és-lekérdezések) elvégzését. Ez általában olyan fejlesztőknek szól, akik nem szükségesek erőforrásokat létrehozni vagy törölni, vagy módosítani az általuk használt tárolók kiépített átviteli sebességét.
 
@@ -33,10 +35,10 @@ A cikk következő fejezetei bemutatják, hogyan hajthatja végre ezeket a lép�
 > A következő szakaszokban szereplő parancsok végrehajtásához telepítenie kell Azure PowerShell modul 3.0.0 vagy újabb verzióját, valamint az [Azure tulajdonosi szerepkört](../role-based-access-control/built-in-roles.md#owner) a módosítani kívánt előfizetéshez.
 
 A következő szakaszban található PowerShell-parancsfájlokban cserélje le a következő helyőrzőket a környezetre jellemző értékekre:
-- `$MySubscriptionId`– Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Például: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`– Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Például: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`– Az Azure Cosmos-fiók neve. Például: `mycosmosdbsaccount`.
-- `$MyUserName`– Annak a felhasználónakusername@domaina felhasználóneve (), akivel korlátozni kívánja a hozzáférést. Például: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId`– Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Példa: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName`– Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Példa: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName`– Az Azure Cosmos-fiók neve. Példa: `mycosmosdbsaccount`.
+- `$MyUserName`– Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Példa: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Válassza ki az Azure-előfizetését
 
@@ -49,9 +51,9 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>Az egyéni Azure Active Directory szerepkör létrehozása
 
-Az alábbi szkript létrehoz egy Azure Active Directory szerepkör-hozzárendelést az Azure Cosmos-fiókok "kulcs csak" hozzáférésével. A szerepkör az Azure- [erőforrások egyéni szerepkörein](../role-based-access-control/custom-roles.md) és a [Azure Cosmos db részletes műveletein](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)alapul. Ezek a szerepkörök és műveletek a `Microsoft.DocumentDB` Azure Active Directory névtér részét képezik.
+Az alábbi szkript létrehoz egy Azure Active Directory szerepkör-hozzárendelést az Azure Cosmos-fiókok "kulcs csak" hozzáférésével. A szerepkör az Azure- [erőforrások egyéni szerepkörein](../role-based-access-control/custom-roles.md) és a [Azure Cosmos db részletes műveletein](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)alapul. Ezek a szerepkörök és műveletek a Azure Active Directory névtér részét képezik `Microsoft.DocumentDB` .
 
-1. Először hozzon létre egy nevű `AzureCosmosKeyOnlyAccess.json` JSON-dokumentumot a következő tartalommal:
+1. Először hozzon létre egy nevű JSON-dokumentumot `AzureCosmosKeyOnlyAccess.json` a következő tartalommal:
 
     ```
     {

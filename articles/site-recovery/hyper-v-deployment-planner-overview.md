@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368723"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134364"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure-ba irányuló Hyper-V vész-helyreállítás Azure Site Recovery Deployment Planner
 
@@ -115,9 +115,9 @@ A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 1.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR-telepítés Planner_v2.3. zip
+Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR üzembe helyezési Planner_v2.3.zip
 
-E:\ASR-telepítés Planner_v2.3 \ ASRDeploymentPlanner. exe
+E:\ASR üzembe helyezési Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 
@@ -139,5 +139,5 @@ A legújabb Azure Site Recovery Deployment Planner eszköz verziója 2,5.
 Tekintse meg az egyes frissítésekben hozzáadott javítások [Azure site Recovery Deployment Planner korábbi verziók](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lapját.
 
 
-## <a name="next-steps"></a>További lépések
-* [Az üzembehelyezés-tervező futtatása](site-recovery-hyper-v-deployment-planner-run.md).
+## <a name="next-steps"></a>Következő lépések
+* [Az üzembehelyezés-tervező futtatása](./hyper-v-deployment-planner-run.md).

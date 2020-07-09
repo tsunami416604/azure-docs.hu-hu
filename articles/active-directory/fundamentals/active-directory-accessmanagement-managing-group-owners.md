@@ -7,17 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83a48ad13fe4ae217319b2aa85adf976aa6a7ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd5fc389ccb52c4a5eeec0e0f544a17b011333a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77149847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604522"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Csoport tulajdonosainak hozzáadása vagy eltávolítása Azure Active Directory
 A Azure Active Directory-(Azure AD-) csoportokat a csoport tulajdonosai és kezelik. A csoport tulajdonosai lehetnek felhasználók vagy egyszerű szolgáltatások, és képesek a csoport kezelésére, beleértve a tagságot is. A csoport tulajdonosai csak a meglévő tulajdonosok vagy csoport-felügyeleti rendszergazdák számára rendelhetők hozzá. A csoport tulajdonosai nem szükségesek a csoport tagjainak lennie.

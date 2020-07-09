@@ -4,7 +4,6 @@ description: Ez a cikk ismerteti, hogyan kezelheti a SQL Server IaaS-ügynök b�
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: jroth
 editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
@@ -17,12 +16,11 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08b9076ae81c8c8c071b03167d0242c1d933e619
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 89210cda6390fd7c3cf4ca2877b8899559a41321
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668712"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,11 +40,11 @@ A cikk klasszikus verziójának megtekintéséhez lásd: [SQL Server IaaS-ügyn�
 ## <a name="supported-services"></a>Támogatott szolgáltatások
 A SQL Server IaaS-ügynök bővítmény a következő felügyeleti feladatokat támogatja:
 
-| Felügyeleti funkció | Leírás |
+| Felügyeleti funkció | Description |
 | --- | --- |
 | **Automatikus biztonsági mentés SQL Server** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](frequently-asked-questions-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-backup-sql-2014.md). |
 | **Automatikus javítás SQL Server** |Beállítja a karbantartási időszakot, amely alatt a virtuális gép fontos Windows-frissítései elhelyezhetők, így elkerülhetők a frissítések a számítási feladatok maximális ideje alatt. További információ: [SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-patching.md). |
-| **Azure Key Vault-integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása az Azure-beli SQL Serverhoz Virtual Machines (Resource Manager)](azure-key-vault-integration-configure.md). |
+| **Azure Key Vault integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása az Azure-beli SQL Serverhoz Virtual Machines (Resource Manager)](azure-key-vault-integration-configure.md). |
 
 A SQL Server IaaS-ügynök bővítmény telepítése és futtatása után elérhetővé válik az adminisztrációs funkciók:
 
@@ -82,7 +80,7 @@ Az alábbi követelmények vonatkoznak a SQL Server IaaS-ügynök bővítmény h
 
 
 ##  <a name="installation"></a>Telepítés
-A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM az [SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti az alábbi PowerShell-parancs használatával: 
+A SQL Server IaaS bővítmény akkor települ, amikor regisztrálja az SQL Server VM a [SQL Server VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). Ha szükséges, a SQL Server IaaS-ügynököt manuálisan is telepítheti az alábbi PowerShell-parancs használatával: 
 
   ```powershell-interactive
     Set-AzVMSqlServerExtension -VMName "sql2017" `

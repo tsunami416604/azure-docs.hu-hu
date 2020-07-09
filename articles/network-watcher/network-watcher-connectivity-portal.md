@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
-ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a16e99df57da66d2633947f8aecdf1d2cef9ab15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283237"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737410"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
 
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 

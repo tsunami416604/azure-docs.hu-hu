@@ -3,15 +3,15 @@ title: Adatbázis átviteli sebességének kiosztása Azure Cosmos DB-ben
 description: Megtudhatja, hogyan építhet ki adatátviteli sebességet Azure Cosmos DB adatbázis szintjén a Azure Portal, a CLI, a PowerShell és a különböző egyéb SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263639"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Standard (manuális) átviteli sebesség kiépítése a Azure Cosmos DB található adatbázison
 
@@ -32,7 +32,7 @@ Ez a cikk azt ismerteti, hogyan lehet szabványos (manuális) átviteli sebessé
    * Adja meg az átviteli sebességet (például 1000 RUs).
    * Válassza az **OK** lehetőséget.
 
-    ![Képernyőkép az új adatbázis párbeszédpanelről](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="Képernyőkép az új adatbázis párbeszédpanelről":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Átviteli sebesség kiépítése az Azure CLI vagy a PowerShell használatával
 

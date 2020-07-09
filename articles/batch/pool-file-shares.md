@@ -4,10 +4,9 @@ description: Azure Files-megosztás csatlakoztatása a számítási csomópontok
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780274"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata batch-készlettel
@@ -39,8 +38,8 @@ A Batch-ben minden alkalommal csatlakoztatni kell a megosztást, amikor egy fela
 
 Például adjon meg egy `net use` parancsot a fájlmegosztás csatlakoztatásához az egyes feladatok parancssorának részeként. A fájlmegosztás csatlakoztatásához a következő hitelesítő adatok szükségesek:
 
-* **Felhasználónév**: Azure \\ \< -storageaccountname \> , például Azure \\ *mystorageaccountname*
-* **Password**: \< StorageAccountKeyWhichEnds in = =>, például *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Felhasználónév**: Azure \\ \<storageaccountname\> , például Azure \\ *mystorageaccountname*
+* **Password (jelszó** \<StorageAccountKeyWhichEnds in==> ):, például *XXXXXXXXXXXXXXXXXXXXX = =*
 
 A következő parancs egy fájlmegosztási *myfileshare* csatlakoztat a Storage-fiók *mystorageaccountname* az *S:* meghajtóként:
 
@@ -116,8 +115,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Ezután futtassa a `mount` parancsot a fájlmegosztás csatlakoztatásához, és adja meg a következő hitelesítő adatokat:
 
-* **Felhasználónév**: \< storageaccountname \> , például *mystorageaccountname*
-* **Password**: \< StorageAccountKeyWhichEnds in = =>, például *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Felhasználónév**: \<storageaccountname\> , például *mystorageaccountname*
+* **Password (jelszó** \<StorageAccountKeyWhichEnds in==> ):, például *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Az alábbi parancs egy fájlmegosztási *myfileshare* csatlakoztat a Storage-fiók *mystorageaccountname* a következő helyen: */mnt/MyAzureFileShare*: 
 

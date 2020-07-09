@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170766"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service
@@ -152,7 +151,7 @@ Emellett dönthet úgy is, hogy az alkalmazást egynél több példányon futtat
 Beállíthatja, hogy a méretezés manuális vagy automatikus legyen.
 
 #### <a name="use-autoheal"></a>Az autoheal használata
-Az automatikus gyógyulás a választott beállítások alapján újrahasznosítja az alkalmazás munkavégző folyamatát (például a konfiguráció módosításait, a kérelmeket, a memória alapú korlátokat vagy a kérelem végrehajtásához szükséges időt). A legtöbb esetben a folyamat újrahasznosítása a leggyorsabb módszer a probléma megoldására. Bár bármikor újraindíthatja az alkalmazást közvetlenül a Azure Portal belül, az automatikus javítás automatikusan elvégzi Önt. Mindössze annyit kell tennie, hogy a root web. config fájlban ad hozzá néhány eseményindítót az alkalmazásához. Ezek a beállítások ugyanúgy működnek, még akkor is, ha az alkalmazás nem .NET-alkalmazás.
+Az automatikus gyógyulás a választott beállítások alapján újrahasznosítja az alkalmazás munkavégző folyamatát (például a konfiguráció módosításait, a kérelmeket, a memória alapú korlátokat vagy a kérelem végrehajtásához szükséges időt). A legtöbb esetben a folyamat újrahasznosítása a leggyorsabb módszer a probléma megoldására. Bár bármikor újraindíthatja az alkalmazást közvetlenül a Azure Portal belül, az automatikus javítás automatikusan elvégzi Önt. Mindössze néhány eseményindítót kell felvennie az alkalmazás legfelső web.config. Ezek a beállítások ugyanúgy működnek, még akkor is, ha az alkalmazás nem .NET-alkalmazás.
 
 További információ: az [Azure webhelyek automatikus](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)javítása.
 

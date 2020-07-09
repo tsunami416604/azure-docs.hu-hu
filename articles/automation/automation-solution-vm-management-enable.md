@@ -6,13 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743755"
 ---
-# <a name="enable-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours engedélyezése
+# <a name="enable-startstop-vms-during-off-hours"></a>Virtuális gépek munkaidőn kívüli indításának és leállításának engedélyezése
 
 A témakörben ismertetett lépések végrehajtásával engedélyezheti a virtuális gépek Start/Stop VMs during off-hours funkcióját egy új vagy meglévő Automation-fiók és a csatolt Log Analytics-munkaterület használatával. A telepítési folyamat befejezése után konfigurálja a változókat a funkció testreszabásához.
 
@@ -98,7 +97,7 @@ A Start/Stop VMs during off-hours nem tartalmaz előre meghatározott riasztáso
 
 1. Miután konfigurálta a szolgáltatáshoz szükséges kezdeti beállításokat, kattintson az **OK** gombra a paraméterek lap bezárásához.
 
-2. Kattintson a **Létrehozás**gombra. Az összes beállítás ellenőrzése után a szolgáltatás telepíti az előfizetését. Ez a folyamat több másodpercig is eltarthat, és a menü **értesítések** részén nyomon követheti a folyamat állapotát.
+2. Kattintson a **Létrehozás** lehetőségre. Az összes beállítás ellenőrzése után a szolgáltatás telepíti az előfizetését. Ez a folyamat több másodpercig is eltarthat, és a menü **értesítések** részén nyomon követheti a folyamat állapotát.
 
     > [!NOTE]
     > Ha Azure Cloud Solution Provider (Azure CSP) előfizetéssel rendelkezik, az üzembe helyezés befejezése után az Automation-fiókjában lépjen a **változók** elemre a **megosztott erőforrások** területen, és állítsa a [External_EnableClassicVMs](automation-solution-vm-management.md#variables) változót **hamis**értékre. Ezzel leállítja a megoldást a klasszikus virtuálisgép-erőforrások keresésére.

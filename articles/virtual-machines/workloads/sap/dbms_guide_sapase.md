@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273205"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
@@ -61,7 +60,7 @@ Az oldalméret általában 2048 KB. Részletekért tekintse [meg a Linuxon futó
 
 Az SAP NetWeaver-alkalmazások SAP-alapú bejelentési szolgáltatásait az [SAP-támogatási megjegyzésekben](https://launchpad.support.sap.com/#/notes/1928533) felsorolt virtuálisgép-típusok támogatják, #1928533 a közepes méretű SAP betekintő adatbázis-kiszolgálóinak tipikus virtuálisgép-típusai is Esv3.  A nagyméretű, több terabájtos adatbázisok képesek az M sorozatú virtuális gépek típusának kihasználására. Az M-sorozat írásgyorsítóának engedélyezésével javítható az SAP-alapú adatátviteli napló lemezének írási teljesítménye. A írásgyorsító az SAP-bevezetőknek körültekintően kell megvizsgálnia, mivel az SAP-beolvasások végzik a naplók írását.  Tekintse át az [SAP támogatási megjegyzéseit #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) és vegye fontolóra a teljesítményteszt futtatását.  
 Írásgyorsító csak tranzakciónapló-lemezre lett tervezve. A lemez szintű gyorsítótárat a NONE értékre kell beállítani. Ne lepődj meg, ha az Azure írásgyorsító nem mutat hasonló fejlesztési funkciókat más adatbázis-kezelők esetében. Az SAP-nal a tranzakciónaplóba való beírása alapján előfordulhat, hogy az Azure írásgyorsító nem tud felgyorsulni.
-Az adateszközökhöz és a naplózási eszközökhöz külön lemezek használata ajánlott.  A rendszeradatbázisok sybsecurity `saptools` , és nem igényelnek dedikált lemezeket, és az SAP-adatbázis adat-és naplózási eszközeit tartalmazó lemezekre helyezhetők. 
+Az adateszközökhöz és a naplózási eszközökhöz külön lemezek használata ajánlott.  A rendszeradatbázisok sybsecurity, és `saptools` nem igényelnek dedikált lemezeket, és az SAP-adatbázis adat-és naplózási eszközeit tartalmazó lemezekre helyezhetők. 
 
 ![Az SAP-hez készült tárolási konfiguráció](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
@@ -80,10 +79,10 @@ Az alább megadott példák szemléltető célokat szolgálnak, és az egyéni i
 
 Példa arra, hogy egy kis SAP-alapú, 50 GB – 250 GB közötti adatbázis-mérettel rendelkező kisméretű SAP bevezető DB-kiszolgáló konfigurációja hasonlítson a következőre:
 
-| Configuration | Windows | Linux | Megjegyzések |
+| Konfiguráció | Windows | Linux | Megjegyzések |
 | --- | --- | --- | --- |
 | Virtuális gép típusa | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
-| Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
+| Gyorsított hálózatkezelés | Engedélyezés | Engedélyezés | ---|
 | SAP-bemutató verziója | 16.0.03.07 vagy újabb | 16.0.03.07 vagy újabb | --- |
 | adategységek száma | 4 | 4 | ---|
 | naplózási eszközök száma | 1 | 1 | --- |
@@ -101,10 +100,10 @@ Példa arra, hogy egy kis SAP-alapú, 50 GB – 250 GB közötti adatbázis-mér
 
 Példa egy közepes szintű SAP-alapú, 250 GB – 750 GB közötti adatbázis-méretű, közepes teljesítményű SAP betekintő DB-kiszolgáló konfigurálására, például egy kisebb SAP Business Suite-rendszerre
 
-| Configuration | Windows | Linux | Megjegyzések |
+| Konfiguráció | Windows | Linux | Megjegyzések |
 | --- | --- | --- | --- |
 | Virtuális gép típusa | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
-| Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
+| Gyorsított hálózatkezelés | Engedélyezés | Engedélyezés | ---|
 | SAP-bemutató verziója | 16.0.03.07 vagy újabb | 16.0.03.07 vagy újabb | --- |
 | adategységek száma | 8 | 8 | ---|
 | naplózási eszközök száma | 1 | 1 | --- |
@@ -121,10 +120,10 @@ Példa egy közepes szintű SAP-alapú, 250 GB – 750 GB közötti adatbázis-m
 
 Példa arra, hogy egy kis SAP-beli, 750 GB – 2000 GB közötti adatbázis-mérettel rendelkező kisméretű SAP-alapú adatbázis-kiszolgáló konfigurációját, például egy nagyobb SAP Business Suite-rendszerre hasonlít
 
-| Configuration | Windows | Linux | Megjegyzések |
+| Konfiguráció | Windows | Linux | Megjegyzések |
 | --- | --- | --- | --- |
 | Virtuális gép típusa | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
-| Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
+| Gyorsított hálózatkezelés | Engedélyezés | Engedélyezés | ---|
 | SAP-bemutató verziója | 16.0.03.07 vagy újabb | 16.0.03.07 vagy újabb | --- |
 | adategységek száma | 16 | 16 | ---|
 | naplózási eszközök száma | 1 | 1 | --- |
@@ -142,10 +141,10 @@ Példa arra, hogy egy kis SAP-beli, 750 GB – 2000 GB közötti adatbázis-mér
 
 Példa arra, hogy egy kisebb SAP-t tartalmazó adatbázis-kiszolgáló konfigurációját 2 TB +, például egy nagyobb globálisan használt SAP Business Suite-rendszer, a következőhöz hasonlóan kell kinéznie:
 
-| Configuration | Windows | Linux | Megjegyzések |
+| Konfiguráció | Windows | Linux | Megjegyzések |
 | --- | --- | --- | --- |
 | Virtuális gép típusa | M sorozat (1,0 – 4,0 TB RAM)  | M sorozat (1,0 – 4,0 TB RAM) | --- |
-| Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
+| Gyorsított hálózatkezelés | Engedélyezés | Engedélyezés | ---|
 | SAP-bemutató verziója | 16.0.03.07 vagy újabb | 16.0.03.07 vagy újabb | --- |
 | adategységek száma | 32 | 32 | ---|
 | naplózási eszközök száma | 1 | 1 | --- |
@@ -211,7 +210,7 @@ Az SAP Software kiépítési kezelője (SWPM) lehetőséget ad az adatbázis tit
 - Windows Storage Spaces vagy Linux LVM2 használatával összesített lemezek a megfelelő szalagos mérettel és fájlrendszerrel
 - Elegendő számú eszközt hozhat létre az adatkezeléshez, a naplóhoz, a temphoz és a biztonsági mentéshez.
 - Használjon UltraDisk-t az x-Large rendszerekhez 
-- SAP `saptune` -bevezetési Linux operációs rendszer futtatása 
+- SAP-bevezetési `saptune` Linux operációs rendszer futtatása 
 - Az adatbázis védelme DB titkosítással – a kulcsok kézi tárolása Azure Key Vault 
 - Az [SAP on Azure ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) befejezése 
 - Napló biztonsági mentésének és teljes biztonsági mentésének konfigurálása 
@@ -221,7 +220,7 @@ Az SAP Software kiépítési kezelője (SWPM) lehetőséget ad az adatbázis tit
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>Az DBACockpit használata az adatbázis-példányok figyelésére
 Az SAP-t adatbázis-platformként használó SAP-rendszerek esetén a DBACockpit a tranzakciós DBACockpit vagy WebDynpro a beágyazott böngészőablakként érhető el. Az adatbázis figyelésének és felügyeletének teljes funkcionalitása azonban csak a DBACockpit WebDynpro implementációjában érhető el.
 
-Csakúgy, mint a helyszíni rendszerek esetében, több lépésre van szükség ahhoz, hogy a DBACockpit WebDynpro-implementációja által használt összes SAP NetWeaver funkció engedélyezve legyen. A webdynpros használatának engedélyezéséhez és a szükségesek létrehozásához kövesse az [SAP támogatási megjegyzéseit #1245200](https://launchpad.support.sap.com/#/notes/1245200) . Ha követi a fenti megjegyzések utasításait, az Internet Communication Manager (`ICM`) és a http-és HTTPS-kapcsolatokhoz használt portok mellett is konfigurálhatja. A http alapértelmezett beállítása a következőképpen néz ki:
+Csakúgy, mint a helyszíni rendszerek esetében, több lépésre van szükség ahhoz, hogy a DBACockpit WebDynpro-implementációja által használt összes SAP NetWeaver funkció engedélyezve legyen. A webdynpros használatának engedélyezéséhez és a szükségesek létrehozásához kövesse az [SAP támogatási megjegyzéseit #1245200](https://launchpad.support.sap.com/#/notes/1245200) . Ha követi a fenti megjegyzések utasításait, az Internet Communication Manager ( `ICM` ) és a http-és HTTPS-kapcsolatokhoz használt portok mellett is konfigurálhatja. A http alapértelmezett beállítása a következőképpen néz ki:
 
 > ICM/server_port_0 = PROT = HTTP, PORT = 8000, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
@@ -231,17 +230,17 @@ Csakúgy, mint a helyszíni rendszerek esetében, több lépésre van szükség 
 
 a tranzakciós DBACockpit létrehozott hivatkozások a következőhöz hasonlóan néz ki:
 
-> https:\//\<fullyqualifiedhostname>:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https: \/ / \<fullyqualifiedhostname> : 44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//\<fullyqualifiedhostname>:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http: \/ / \<fullyqualifiedhostname> : 8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
 > 
 
 Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Lásd: [SAP-támogatás megjegyzés #773830](https://launchpad.support.sap.com/#/notes/773830) annak megismeréséhez, hogy az ICM hogyan határozza meg a teljes állomásnevet a profil paraméterei alapján, és ha szükséges, állítsa be explicit módon az icm/host_name_full paramétert.
 
-Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy `domainlabel`-t. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
+Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy-t `domainlabel` . A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
-> `<custom domainlabel`>. `<azure region`>. cloudapp.Azure.com
+> `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 
 > 
 
@@ -249,9 +248,9 @@ A DNS-névvel kapcsolatos további részleteket [itt] [Virtual-Machines-azurerm-
 
 Ha az ICM/host_name_full SAP-profil paramétert az Azure-beli virtuális gép DNS-nevére állítja be, a hivatkozás a következőhöz hasonló lehet:
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https: \/ /mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http: \/ /mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 
 Ebben az esetben a következőket kell tennie:
 

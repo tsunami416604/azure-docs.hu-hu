@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845546"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971181"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására
@@ -67,7 +67,11 @@ A megadható paraméterek a következők:
 - [biztonságimentésfájlja. SQL] az adatbázis biztonsági másolatának fájlneve 
 - [--opt] A mysqldump beállítás 
 
-Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MySQL-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű fájlba `testdb_backup.sql` , amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. 
+Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MySQL-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű fájlba `testdb_backup.sql` , amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. Győződjön meg arról, hogy a (z) "tesztfelhasználó" felhasználónévnek van legalább a SELECT jogosultsága a dömpingelt táblákhoz, a megjelenített nézetek megjelenítése, a dömpingelt eseményindítók aktiválása és a táblák ZÁROLÁSa, ha az--Single-Transaction beállítás nincs használatban.
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -96,9 +100,10 @@ Adja hozzá a kapcsolatok adatait a MySQL Workbench-hez.
 A cél Azure Database for MySQL kiszolgáló gyorsabb adatterhelésre való előkészítéséhez a következő kiszolgálói paramétereket és konfigurációkat módosítani kell.
 - max_allowed_packet – állítsa 1073741824-ra (azaz 1GB-ra), hogy megakadályozza a hosszú sorok miatti túlcsordulási problémákat.
 - slow_query_log – az OFF érték kikapcsolásával kikapcsolhatja a lassú lekérdezési naplót. Ezzel a művelettel elkerülhető, hogy az adatterhelések során a lassú lekérdezési naplózás okozza a terhelést.
-- query_store_capture_mode – állítsa mindkettőt a NONE értékre a lekérdezési tároló kikapcsolásához. Ezzel a művelettel elkerülhető a lekérdezési tár mintavételi tevékenységei által okozott terhelés.
+- query_store_capture_mode – állítsa a Nincs értékre a lekérdezési tároló kikapcsolásához. Ezzel a művelettel elkerülhető a lekérdezési tár mintavételi tevékenységei által okozott terhelés.
 - innodb_buffer_pool_size – a-kiszolgáló vertikális felskálázása 32 virtuális mag memória optimalizált SKU-ra a portál díjszabási szintjéről az áttelepítés során a innodb_buffer_pool_size növeléséhez. Innodb_buffer_pool_size csak Azure Database for MySQL kiszolgáló számítási felskálázásával növelhető.
-- a Migrálás sebességének növelése érdekében innodb_write_io_threads & innodb_write_io_threads – a Azure Portal kiszolgálói paramétereinek 16-ra változnak.
+- innodb_io_capacity & innodb_io_capacity_max – váltson a Azure Portal kiszolgálói paramétereinek 9000 értékre, hogy javítsa az i/o-kihasználtságot az áttelepítési sebesség optimalizálása érdekében.
+- innodb_write_io_threads & innodb_write_io_threads – az áttelepítés gyorsaságának javításához a Azure Portal kiszolgáló paraméterei közül a 4 értékre kell váltania.
 - A tárolási rétegek vertikális felskálázása – a Azure Database for MySQL kiszolgáló IOPs fokozatosan növekszik a tárolási rétegek növekedésével. A gyorsabb terhelés érdekében érdemes lehet megnövelni a tárolási szintet, hogy növelje a IOPs kiépített mennyiségét. Ne feledje, hogy a tárterület csak vertikális felskálázásra használható, nem.
 
 Az áttelepítés befejezése után visszaállíthatja a kiszolgálói paramétereket és a számítási rétegek konfigurációját a korábbi értékekre. 

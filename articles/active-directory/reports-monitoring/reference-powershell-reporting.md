@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75495308"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
@@ -40,7 +39,7 @@ A Azure Active Directory-(Azure AD-) jelentésekkel részletes információkat k
 
 Ez a cikk áttekintést nyújt a naplókhoz és a bejelentkezési naplókhoz használandó PowerShell-parancsmagokról.
 
-## <a name="audit-logs"></a>Naplók
+## <a name="audit-logs"></a>Auditnaplók
 
 A [naplók nyomon követést biztosítanak](concept-audit-logs.md) az Azure ad különböző funkciói által végzett összes módosítás naplójában. A naplók például a felhasználók, alkalmazások, csoportok, szerepkörök és házirendek hozzáadásával vagy eltávolításával kapcsolatos, az Azure AD-ban található összes erőforráson végrehajtott módosítások.
 
@@ -72,7 +71,7 @@ A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használat�
 | :--                           | :--                |
 | Felhasználó megjelenítendő neve             | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "" |
 | Létrehozás dátuma és időpontja              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (mindent a 4/18-as 5:30-kor) |
-| status                        | Get-AzureADAuditSignInLogs-Filter "Status/errorCode EQ 50105" |
+| Állapot                        | Get-AzureADAuditSignInLogs-Filter "Status/errorCode EQ 50105" |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed engedélyezve] "" |
 | A fentiek közül az összes              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "és status/errorCode ne 0 és appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
 

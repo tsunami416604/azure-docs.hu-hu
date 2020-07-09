@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666943"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>A Hyper-V virtuális gépek kapacitásának megtervezése a Capacity and Performance megoldással (elavult)
@@ -39,19 +38,19 @@ A megoldás:
 
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
-| Összekapcsolt forrás | Támogatás | Leírás |
+| Összekapcsolt forrás | Támogatás | Description |
 |---|---|---|
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Igen | A megoldás a Windows-ügynököktől származó kapacitás-és teljesítményadatok adatait gyűjti. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem    | A megoldás nem gyűjt kapacitás-és teljesítményadatok-adatokat a közvetlen Linux-ügynököktől.|
-| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Igen |A megoldás gyűjti a kapacitás-és teljesítményadatokat a csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől. Nem szükséges közvetlen kapcsolódás a SCOM-ügynöktől a Log Analyticshoz.|
-| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | Az Azure Storage nem tartalmaz kapacitás-és teljesítményadatokat.|
+| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Yes | A megoldás a Windows-ügynököktől származó kapacitás-és teljesítményadatok adatait gyűjti. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | A megoldás nem gyűjt kapacitás-és teljesítményadatok-adatokat a közvetlen Linux-ügynököktől.|
+| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Yes |A megoldás gyűjti a kapacitás-és teljesítményadatokat a csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől. Nem szükséges közvetlen kapcsolódás a SCOM-ügynöktől a Log Analyticshoz.|
+| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Az Azure Storage nem tartalmaz kapacitás-és teljesítményadatokat.|
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Windows-vagy Operations Manager-ügynököket a Windows Server 2012-es vagy újabb Hyper-V-gazdagépekre kell telepíteni, nem virtuális gépekre.
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 A Capacity and Performance megoldás a munkaterülethez való hozzáadásához hajtsa végre a következő lépést.
 
@@ -88,7 +87,7 @@ A Capacity and Performance csempére kattintva nyissa meg a Capacity and Perform
 - **Gazdagépek**
     - **GAZDAGÉP CPU-kihasználtsága** Megjeleníti a gazdagépek CPU-kihasználtságának grafikus trendjét, valamint a gazdagépek listáját a kiválasztott időszak alapján. Vigye az egérmutatót a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. Kattintson bármelyik állomásnévre a naplók keresésének megnyitásához, és tekintse meg az üzemeltetett virtuális gépek CPU-számlálójának adatait.
     - **Gazdagép memóriájának kihasználtsága** A gazdagépek memóriájának kihasználtságát és a gazdagépek listáját jeleníti meg a kiválasztott időszak alapján. Vigye az egérmutatót a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. Kattintson bármelyik állomásnévre a naplóbeli keresés megnyitásához és a memória számlálójának megtekintéséhez az üzemeltetett virtuális gépekhez.
-- **Virtuális gépek**
+- **Virtual Machines**
     - **Virtuális gép CPU-kihasználtsága** Megjeleníti a virtuális gépek CPU-kihasználtságának grafikus trendjét, valamint a virtuális gépek listáját a kiválasztott időszak alapján. Vigye a kurzort a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez az első 3 virtuális gépen. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. Kattintson a virtuális gép nevére a naplóbeli keresés megnyitásához, és tekintse meg a virtuális gép összesített CPU-számlálójának részleteit.
     - **Virtuális gépek memóriájának kihasználtsága** Megjeleníti a virtuális gépek memóriahasználat és a virtuális gépek listájának grafikus trendjét a kiválasztott időszak alapján. Vigye a kurzort a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez az első 3 virtuális gépen. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. Kattintson a virtuális gép nevére a naplóbeli keresés megnyitásához, és tekintse meg a virtuális gép összesített memória-számlálójának részleteit.
     - **Virtuális gép – teljes lemez IOPS** Megjeleníti a virtuális gépek teljes IOPS grafikus trendjeit, valamint a virtuális gépek listáját, amelyekhez a IOPS a kiválasztott időszak alapján. Vigye a kurzort a diagram fölé egy adott időpontra vonatkozó részletek megtekintéséhez az első 3 virtuális gépen. Kattintson a diagramra a naplóbeli keresés további részleteinek megtekintéséhez. A virtuális gép nevére kattintva megnyithatja a naplók keresését, és megtekintheti az összesített lemez IOPS a virtuális gép számlálójának adatait.
@@ -117,7 +116,7 @@ Az összegzéshez a megoldás a különböző forrásokból származó kapacitá
 Az alábbi táblázat a megoldás által gyűjtött és kiszámított kapacitás-és teljesítményadatok-kereséseket tartalmazza.
 
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | Minden gazdagép memória-konfigurációja | A Perf &#124;, ahol a ObjectName = = "Capacity and Performance" és a CounterName = = "gazdagéphez hozzárendelt memória MB" &#124; összefoglaló MB = AVG (kártyabirtokos számlájának megterhelését) by példánynév |
 | Minden virtuális gép memória-konfigurációja | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "Capacity and Performance" és a CounterName = = "virtuális gép hozzárendelt memóriája MB" &#124; a MB = AVG (kártyabirtokos számlájának megterhelését) by példánynév összegzése |

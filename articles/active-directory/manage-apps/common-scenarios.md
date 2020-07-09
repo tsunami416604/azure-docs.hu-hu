@@ -2,25 +2,25 @@
 title: Gyakori alkalmazás-felügyeleti forgatókönyvek a Azure Active Directoryhoz | Microsoft Docs
 description: Az alkalmazások kezelésének központosítása az Azure AD-vel
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763635"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Az alkalmazások kezelésének központosítása az Azure AD-vel
 

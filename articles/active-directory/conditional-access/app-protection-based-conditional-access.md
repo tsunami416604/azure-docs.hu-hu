@@ -4,19 +4,18 @@ description: Megtudhatja, hogyan igényelhet alkalmazás-védelmi szabályzatot 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253358"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
@@ -37,7 +36,7 @@ A jogosult ügyfélalkalmazások listáját a következő témakörben tekinthet
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>1. forgatókönyv: az Office 365-alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel
 
-Ebben a forgatókönyvben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil hozzáféréshez jóváhagyott ügyfélalkalmazások, például az Outlook Mobile, a OneDrive és a Microsoft Teams által védett alkalmazások férhetnek hozzá a hozzáférés megkezdése előtt. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+Ebben az esetben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil hozzáférésnek jóváhagyott ügyfélalkalmazások, például az Outlook Mobile és a OneDrive használatát kell használnia, melyet a hozzáférés megkezdése előtt egy app Protection-szabályzat véd. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
 
 A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a jóváhagyott ügyfélalkalmazás használatát kötelezővé lehessen tenni a mobileszközökön.
 
@@ -172,7 +171,7 @@ Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzáre
 
 ## <a name="next-steps"></a>További lépések
 
-[Mit jelent a feltételes hozzáférés?](overview.md)
+[Mi az a feltételes hozzáférés?](overview.md)
 
 [Feltételes hozzáférési összetevők](concept-conditional-access-policies.md)
 

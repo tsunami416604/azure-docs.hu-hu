@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918755"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -69,8 +69,8 @@ A [beépített Event hub-kompatibilis végpont](iot-hub-devguide-messages-read-b
 A IoT Hub [IP-szűrője](iot-hub-ip-filtering.md) nem szabályozza a nyilvános hozzáférést a beépített végponthoz. Az IoT hub nyilvános hálózati hozzáférésének teljes blokkolásához a következőket kell tennie: 
 
 1. Magánhálózati végpont-hozzáférés konfigurálása IoT Hubhoz
-1. Nyilvános hálózati hozzáférés kikapcsolása IP-szűrő használatával az összes IP-cím letiltásához
-1. Kapcsolja ki a beépített Event hub-végpontot úgy, [hogy az Útválasztás beállításával nem küldi el az adatküldést](iot-hub-devguide-messages-d2c.md)
+1. A [nyilvános hálózati hozzáférés kikapcsolása](iot-hub-public-network-access.md) vagy az IP-szűrő használata az összes IP-cím blokkolásához
+1. Állítsa le a beépített Event hub-végpontot úgy, [hogy az Útválasztás beállításával nem küldi el az adatküldést](iot-hub-devguide-messages-d2c.md)
 1. A [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) kikapcsolása
 1. A kimenő forgalom konfigurálása más Azure-erőforrásokhoz [megbízható Microsoft-szolgáltatás](#egress-connectivity-from-iot-hub-to-other-azure-resources) használatával
 
@@ -91,6 +91,76 @@ Ahhoz, hogy más szolgáltatások megbízható Microsoft-szolgáltatásként meg
 1. Az **állapot**területen válassza **a be**lehetőséget, majd kattintson a **Mentés**gombra.
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="A IoT Hub felügyelt identitásának bekapcsolását bemutató képernyőkép":::
+
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Felügyelt identitás kiosztása a IoT Hub a létrehozáskor az ARM-sablon használatával
+
+Ha a felügyelt identitást erőforrás-kiépítési időpontban szeretné hozzárendelni az IoT hubhoz, használja az alábbi ARM-sablont:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2020-03-01",
+      "name": "<provide-a-valid-resource-name>",
+      "location": "<any-of-supported-regions>",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "<your-hubs-SKU-name>",
+        "tier": "<your-hubs-SKU-tier>",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "name": "updateIotHubWithKeyEncryptionKey",
+      "dependsOn": [
+        "<provide-a-valid-resource-name>"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "0.9.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Devices/IotHubs",
+              "apiVersion": "2020-03-01",
+              "name": "<provide-a-valid-resource-name>",
+              "location": "<any-of-supported-regions>",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+Az erőforráshoz tartozó értékek helyettesítése után `name` `location` `SKU.name` `SKU.tier` Az Azure CLI használatával telepítheti az erőforrást egy meglévő erőforráscsoporthoz a következő használatával:
+
+```azurecli-interactive
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+```
+
+Az erőforrás létrehozása után lekérheti a hubhoz rendelt felügyelt szolgáltatás identitását az Azure CLI használatával:
+
+```azurecli-interactive
+az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
+```
 
 ### <a name="pricing-for-managed-identity"></a>A felügyelt identitás díjszabása
 
@@ -196,11 +266,11 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-Az Azure IoT SDK-k ezen verziójának használata a C#, a Java és a Node. js virtuális hálózati támogatásával:
+Ha az Azure IoT SDK-k ezen verzióját szeretné használni a C#, a Java és a Node.js virtuális hálózati támogatásával:
 
 1. Hozzon létre egy nevű környezeti változót `EnableStorageIdentity` , és állítsa be a értékét a következőre: `1` .
 
-2. Az SDK letöltése: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk)
+2. Az SDK letöltése: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node.js](https://aka.ms/vnetnodesdk)
  
 A Python esetében töltse le a korlátozott verziót a GitHubról.
 

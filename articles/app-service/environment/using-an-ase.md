@@ -8,10 +8,9 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125808"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
@@ -62,7 +61,7 @@ Alkalmazás létrehozása a kiegészítőben:
 
     f. Válasszon futtatókörnyezetet.
 
-    g. Válassza a **Linux** vagy a **Windows**lehetőséget. 
+    : Válassza a **Linux** vagy a **Windows**lehetőséget. 
 
     h. Válassza ki a központot a **régió** legördülő listából. 
 
@@ -250,7 +249,7 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

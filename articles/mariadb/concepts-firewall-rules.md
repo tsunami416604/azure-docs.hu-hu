@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532042"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB kiszolgálói tűzfalszabályok
@@ -66,7 +66,7 @@ Vegye figyelembe a következő szempontokat, amikor a MariaDB-kiszolgáló szolg
 
    * Állítson be statikus IP-címeket az ügyfélszámítógépei számára, majd adja meg az IP-címeket tűzfalszabályokként.
 
-* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MariaDB-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért látogasson el a [kapcsolati architektúra című cikkben](concepts-connectivity-architecture.md). 
+* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MariaDB-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>További lépések
 - [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-portal.md)

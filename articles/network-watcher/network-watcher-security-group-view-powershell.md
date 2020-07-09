@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87d076c12a40d84dc99ef5b48454afa3f0ffce0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738726"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>A virtuális gép biztonságának elemzése a biztonsági csoport nézetben a PowerShell használatával
 
@@ -43,7 +43,7 @@ A cikkben ismertetett forgatókönyv egy adott virtuális gép konfigurált és 
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher beolvasása
 
-Az első lépés az Network Watcher példány beolvasása. A rendszer ezt a változót `Get-AzNetworkWatcherSecurityGroupView` adja át a parancsmagnak.
+Az első lépés az Network Watcher példány beolvasása. A rendszer ezt a változót adja át a `Get-AzNetworkWatcherSecurityGroupView` parancsmagnak.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -51,7 +51,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Virtuális gép beszerzése
 
-A `Get-AzNetworkWatcherSecurityGroupView` parancsmag futtatásához virtuális gépnek kell futnia. A következő példa egy virtuálisgép-objektumot kap.
+A parancsmag futtatásához virtuális gépnek kell futnia `Get-AzNetworkWatcherSecurityGroupView` . A következő példa egy virtuálisgép-objektumot kap.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

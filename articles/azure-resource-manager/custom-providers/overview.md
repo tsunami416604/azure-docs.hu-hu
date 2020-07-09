@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398475"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Az Azure egyéni erőforrás-szolgáltatók áttekintése
@@ -55,7 +55,7 @@ Példa végpontra:
 
 Tulajdonság | Kötelező | Leírás
 ---|---|---
-név | *igen* | A végpont definíciójának neve. Az Azure a "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/" alatt teszi elérhetővé a nevet az API-n<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+name | *igen* | A végpont definíciójának neve. Az Azure a "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/" alatt teszi elérhetővé a nevet az API-n<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
 routingType | *nem* | Meghatározza a szerződés típusát a **végponttal**. Ha nincs megadva, a rendszer alapértelmezés szerint a "proxy" értéket adja meg.
 endpoint | *igen* | A végpont, amelybe a kérelmeket át kell irányítani. Ez kezeli a választ, valamint a kérés bármely mellékhatását.
 
@@ -118,7 +118,7 @@ POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>sz
 
 ## <a name="looking-for-help"></a>Segítség keresése
 
-Ha kérdése van az Azure egyéni erőforrás-szolgáltatói fejlesztéséhez, próbálkozzon a [stack Overflowával](https://stackoverflow.com/questions/tagged/azure-custom-providers). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke ```azure-custom-providers``` hozzáadásával gyors választ kaphat!
+Ha kérdése van az Azure egyéni erőforrás-szolgáltatói fejlesztéséhez, próbálkozzon a [stack Overflowával](https://stackoverflow.com/questions/tagged/azure-custom-providers). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke hozzáadásával ```azure-custom-providers``` gyors választ kaphat!
 
 ## <a name="next-steps"></a>További lépések
 

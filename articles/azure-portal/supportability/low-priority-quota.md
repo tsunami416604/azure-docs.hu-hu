@@ -4,15 +4,14 @@ description: Növelje a kvóták korlátait a helyszíni virtuális gépek szám
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 3e6dddfc458f390f5648e23a8a2af8d714de4bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763873"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>Helyszíni kvóta: az összes virtuálisgép-sorozat korlátainak emelése
 

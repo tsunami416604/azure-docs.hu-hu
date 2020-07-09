@@ -14,10 +14,9 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425544"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>A Microsoft 365 Government Azure Active Directory újdonságai
@@ -34,9 +33,9 @@ Ez a cikk a Microsoft 365 Government – GCC-ügyfelekre nem vonatkozik.
 
 ## <a name="changes-to-the-initial-domain-name"></a>A kezdeti tartománynév módosításai
 
-A szervezet kezdeti regisztrálása során egy Microsoft 365 Government Online szolgáltatásra vonatkozóan a rendszer megkérte, hogy válassza ki a szervezet tartománynevét `<your-domain-name>.onmicrosoft.com`. Ha már rendelkezik a. com utótaggal rendelkező tartománynévvel, semmi sem változik.
+A szervezet kezdeti regisztrálása során egy Microsoft 365 Government Online szolgáltatásra vonatkozóan a rendszer megkérte, hogy válassza ki a szervezet tartománynevét `<your-domain-name>.onmicrosoft.com` . Ha már rendelkezik a. com utótaggal rendelkező tartománynévvel, semmi sem változik.
 
-Ha azonban új Microsoft 365 Government-szolgáltatásra jelentkezik be, a rendszer arra kéri, hogy válasszon egy tartománynevet az `.us` utótag használatával. Így lesz `<your-domain-name>.onmicrosoft.us`.
+Ha azonban új Microsoft 365 Government-szolgáltatásra jelentkezik be, a rendszer arra kéri, hogy válasszon egy tartománynevet az `.us` utótag használatával. Így lesz `<your-domain-name>.onmicrosoft.us` .
 
 >[!Note]
 >Ez a változás nem vonatkozik a Cloud Service Providers (CSP) által kezelt ügyfelekre.
@@ -51,7 +50,7 @@ Korábban az ügyfelek bejelentkezhetnek a Worldwide Azure (portal.azure.com) é
 
 A következő táblázat az összes ügyfél végpontját tartalmazza:
 
-| Name (Név) | Végpont részletei |
+| Name | Végpont részletei |
 |------|------------------|
 | Portálok |Microsoft Azure Government:https://portal.azure.us<p>Microsoft 365 Government – magas GCC:https://portal.office365.us<p>Microsoft 365 Government – DoD:https://portal.apps.mil |
 | Azure Active Directory Authority végpont | https://login.microsoftonline.us |
@@ -61,9 +60,9 @@ A következő táblázat az összes ügyfél végpontját tartalmazza:
 | Microsoft 365 Government – magas szintű GCC-végpontok | Részletekért lásd: [Office 365 Egyesült Államok kormányának GCC magas végpontja](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
 | Microsoft 365 Government – DoD | Részletekért lásd: [Office 365 US government DoD-végpontok](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információval a következő cikkek szolgálnak:
+További információért lásd a következő cikkeket:
 
 - [Mi az az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 

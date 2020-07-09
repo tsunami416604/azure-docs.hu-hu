@@ -1,24 +1,24 @@
 ---
 title: A Azure Security Center beépített szabályzat-definíciói
 description: A Azure Security Center Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 30ad99228ce9c3a936c8c43e61489d7b0cc94114
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a43ecc5d3a2c1d6de7a95d854a8ad4c778f37b5d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650162"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320876"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-security-center"></a>Azure Policy beépített szabályzat-definíciók a Azure Security Center
+# <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>A Azure Security Center beépített definíciói Azure Policy
 
 Ez az oldal a Azure Security Center [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 

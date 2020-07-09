@@ -1,14 +1,14 @@
 ---
 title: Modell-és tanulási beállítások kezelése – személyre szabás
 description: A gép által megtanult modell-és tanulási beállítások a saját verziókövetés rendszerében exportálhatók a biztonsági mentéshez.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624296"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344356"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Modell-és tanulási beállítások kezelése
 
@@ -51,6 +51,6 @@ A képzési [szabályzat](concept-active-learning.md#understand-learning-policy-
 1. Válassza ki a **modell-és tanulási beállításokat** az **Erőforrás-kezelés** szakaszban.
 1. A **tanulási beállítások importálása** gombra kattintva válassza a **tanulási Beállítások exportálása** gombot. Ezzel menti a `json` fájlt a helyi számítógépre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Útmutató a képzési szabályzatok kezeléséhez](how-to-manage-model.md)

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
-ms.openlocfilehash: b3c4110c8761b3e8daf324d65ac7fa1dcbcdf61f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055046"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>Telepítés utáni konfigurációk megadása bővítmények használatával
 
@@ -20,13 +20,13 @@ A sablon-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyez�
 
 A meglévő bővítmények a következők:
 
-- [Microsoft. számítás/virtualMachines/bővítmények](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
-- [Microsoft. számítási virtualMachineScaleSets/bővítmények](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
-- [Microsoft. HDInsight-fürtök/-bővítmények](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
-- [Microsoft. SQL-kiszolgálók/adatbázisok/bővítmények](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
-- [Microsoft. Web/Sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
+- [Microsoft. számítás/virtualMachines/bővítmények](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
+- [Microsoft. számítási virtualMachineScaleSets/bővítmények](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
+- [Microsoft. HDInsight-fürtök/-bővítmények](/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
+- [Microsoft. SQL-kiszolgálók/adatbázisok/bővítmények](/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
+- [Microsoft. Web/Sites/siteextensions](/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
-Az elérhető bővítmények kereséséhez keresse meg a [sablon hivatkozását](https://docs.microsoft.com/azure/templates/). A **szűrés cím szerint**mezőben adja meg a **bővítményt**.
+Az elérhető bővítmények kereséséhez keresse meg a [sablon hivatkozását](/azure/templates/). A **szűrés cím szerint**mezőben adja meg a **bővítményt**.
 
 A bővítmények használatáról további információt a következő témakörben talál:
 

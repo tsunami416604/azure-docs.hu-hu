@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118794"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
@@ -83,7 +82,7 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
 
 Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön. A létrehozás után ezeket a runbookok biztonságosan törölheti, ha nem szeretné megtartani őket. A futtató fiókok segítségével hitelesítheti a fiókját egy runbook, és csak akkor hagyhatja el, ha létrehoz egy másikat, vagy ha nem igényel ilyet. Az alábbi táblázat a futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
-| Erőforrás | Leírás |
+| Erőforrás | Description |
 | --- | --- |
 | AzureAutomationTutorial forgatókönyv |Példa grafikus runbook, amely bemutatja, hogyan történik a hitelesítés a futtató fiók használatával. A runbook lekéri az összes Resource Manager-erőforrást. |
 | AzureAutomationTutorialScript forgatókönyv |Egy PowerShell-runbook, amely bemutatja, hogyan történik a hitelesítés a futtató fiók használatával. A runbook lekéri az összes Resource Manager-erőforrást. |

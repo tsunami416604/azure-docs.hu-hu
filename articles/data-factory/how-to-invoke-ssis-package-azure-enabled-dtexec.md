@@ -12,10 +12,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414332"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services csomagok futtatása az Azure-kompatibilis dtexec segédprogrammal
@@ -36,7 +36,7 @@ A AzureDTExec konfigurálható a SSMS-on keresztül egy olyan Azure Active Direc
 A AzureDTExec használatához töltse le és telepítse a SSMS legújabb verzióját, amely 18,3-es vagy újabb verziójú. Töltse le a [webhelyről](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>A AzureDTExec segédprogram konfigurálása
-A SSMS telepítése a helyi gépen a AzureDTExec-t is telepíti. A beállítások konfigurálásához indítsa el a SSMS a **Futtatás rendszergazdaként** beállítással. Ezután válassza **az eszközök** > **migrálása az Azure** > **-ba beállítást Azure-kompatibilis DTExec**.
+A SSMS telepítése a helyi gépen a AzureDTExec-t is telepíti. A beállítások konfigurálásához indítsa el a SSMS a **Futtatás rendszergazdaként** beállítással. Ezután válassza **Tools**  >  **az eszközök migrálása az Azure-ba**beállítást  >  **Azure-kompatibilis DTExec**.
 
 ![Az Azure-kompatibilis dtexec menü konfigurálása](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -70,7 +70,7 @@ Ha el szeretné kerülni, hogy a *AzureDTExec. Settings* fájlba írt bizalmas �
 ## <a name="invoke-the-azuredtexec-utility"></a>A AzureDTExec segédprogram meghívása
 A AzureDTExec meghívhatja a parancssori parancssorból, és megadhatja a megfelelő értékeket a használati esethez tartozó konkrét beállításokhoz.
 
-A segédprogram a következő helyen `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`van telepítve:. Az elérési utat hozzáadhatja az "ELÉRÉSi út" környezeti változóhoz, amelyet a rendszer bárhonnan meghívhat.
+A segédprogram a következő helyen van telepítve: `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` . Az elérési utat hozzáadhatja az "ELÉRÉSi út" környezeti változóhoz, amelyet a rendszer bárhonnan meghívhat.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,9 +86,9 @@ A AzureDTExec meghívása hasonló beállításokat kínál a dtexec meghívás�
 
 - **/F [Ile]**: a fájlrendszerben, a fájlmegosztást vagy a Azure Filesban tárolt csomagot tölt be. A beállítás értékeként megadhatja a csomagfájl UNC elérési útját a fájlrendszerben, a fájlmegosztást vagy a Azure Files a. dtsx kiterjesztésű fájllal. Ha a megadott UNC elérési út szóközt tartalmaz, tegye idézőjelek közé a teljes elérési utat.
 - **/Conf [igFile]**: meghatározza az értékek kinyerésére szolgáló konfigurációs fájlt. Ezzel a beállítással megadhatja a csomag futásidejű konfigurációját, amely eltér a tervezési időpontban megadott értéktől. Egy XML-konfigurációs fájlban különböző beállításokat tárolhat, majd betöltheti őket a csomag végrehajtása előtt. További információ: SSIS- [csomag beállításai](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). A beállítás értékének megadásához használja az UNC elérési utat a fájlrendszerben, a fájlmegosztást vagy Azure Files a saját dtsConfig-bővítménnyel. Ha a megadott UNC elérési út szóközt tartalmaz, tegye idézőjelek közé a teljes elérési utat.
-- **/Conn [csolat]**: a csomag meglévő kapcsolataihoz tartozó kapcsolatok karakterláncait határozza meg. Ezzel a beállítással beállíthatja, hogy a csomagban lévő, a tervezési időpontban megadott beállításoktól eltérő futásidejű kapcsolatok karakterláncai meglegyenek a csomag meglévő kapcsolataihoz. A beállítás értékét a következőképpen adhatja meg: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
-- **Készlet**: felülbírálja a paraméter, változó, tulajdonság, tároló, naplózási szolgáltató, foreach enumerálás vagy a csomagbeli kapcsolatok konfigurációját. Ez a beállítás többször is megadható. A beállítás értékét a következőképpen adhatja meg: `property_path;value`. Például `\package.variables[counter].Value;1` felülbírálja a `counter` változó értékét 1-ként. A **csomag konfigurációja** varázslóval megkeresheti, másolhatja és beillesztheti a csomagban lévő `property_path` azon elemek értékét, amelyek értékeit felül szeretné bírálni. További információ: [csomag konfigurálása varázsló](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
-- **/De [Crypt]**: a **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** védelmi szintjével konfigurált csomag visszafejtési jelszavának beállítása.
+- **/Conn [csolat]**: a csomag meglévő kapcsolataihoz tartozó kapcsolatok karakterláncait határozza meg. Ezzel a beállítással beállíthatja, hogy a csomagban lévő, a tervezési időpontban megadott beállításoktól eltérő futásidejű kapcsolatok karakterláncai meglegyenek a csomag meglévő kapcsolataihoz. A beállítás értékét a következőképpen adhatja meg: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` .
+- **Készlet**: felülbírálja a paraméter, változó, tulajdonság, tároló, naplózási szolgáltató, foreach enumerálás vagy a csomagbeli kapcsolatok konfigurációját. Ez a beállítás többször is megadható. A beállítás értékét a következőképpen adhatja meg: `property_path;value` . Például `\package.variables[counter].Value;1` felülbírálja a `counter` változó értékét 1-ként. A **csomag konfigurációja** varázslóval megkeresheti, másolhatja és beillesztheti a csomagban lévő azon elemek értékét, `property_path` amelyek értékeit felül szeretné bírálni. További információ: [csomag konfigurálása varázsló](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **/De [Crypt]**: a **EncryptAllWithPassword** / **EncryptSensitiveWithPassword** védelmi szintjével konfigurált csomag visszafejtési jelszavának beállítása.
 
 > [!NOTE]
 > A AzureDTExec új értékekkel való meghívásával új folyamat jön létre, kivéve a **/de [csfájl]** kapcsolót.

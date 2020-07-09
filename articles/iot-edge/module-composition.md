@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545633"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben
@@ -36,7 +36,7 @@ A Azure IoT Edge oktatóanyagokban az üzembe helyezési jegyzéket a Azure IoT 
 
 Az üzembe helyezési jegyzék magas szinten az olyan modulok listája, amelyek a kívánt tulajdonságokkal vannak konfigurálva. Az üzembe helyezési jegyzék egy IoT Edge eszközt (vagy az eszközök egy csoportját) adja meg, mely modulokat kell telepíteni és konfigurálni. Az üzembe helyezési jegyzékek tartalmazzák a különálló modulok *kívánt tulajdonságait* . IoT Edge az eszközök jelentést készítenek az egyes modulok *jelentett tulajdonságairól* .
 
-Minden üzembe helyezési jegyzékfájlban két modulra `$edgeAgent`van szükség `$edgeHub`: és. Ezek a modulok a IoT Edge eszközt és a rajta futó modulokat kezelő IoT Edge futtatókörnyezet részét képezik. További információ ezekről a modulokról: [a IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
+Minden üzembe helyezési jegyzékfájlban két modulra van szükség: `$edgeAgent` és `$edgeHub` . Ezek a modulok a IoT Edge eszközt és a rajta futó modulokat kezelő IoT Edge futtatókörnyezet részét képezik. További információ ezekről a modulokról: [a IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
 A két futásidejű modul mellett akár 20 modult is hozzáadhat a saját IoT Edge eszközön való futtatáshoz.
 
@@ -159,7 +159,7 @@ A IoT Edge moduljai között továbbított üzenetek ugyanúgy vannak formázva,
 
 A következő szintaxissal hozhat létre lekérdezéseket a három paraméter bármelyikén:
 
-* Rendszertulajdonságok `$<propertyName>` : vagy`{$<propertyName>}`
+* Rendszertulajdonságok: `$<propertyName>` vagy`{$<propertyName>}`
 * Alkalmazás tulajdonságai:`<propertyName>`
 * Törzs tulajdonságai:`$body.<propertyName>`
 

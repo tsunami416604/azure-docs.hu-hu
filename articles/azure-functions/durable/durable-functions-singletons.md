@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262809"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
@@ -20,7 +19,7 @@ A háttérben felmerülő feladatok esetében gyakran biztosítania kell, hogy e
 
 Az alábbi példa egy olyan HTTP-trigger függvényt mutat be, amely létrehoz egy egypéldányos háttér-előkészítési feladatot. A kód biztosítja, hogy csak egy példány létezik egy adott példány-AZONOSÍTÓhoz.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,11 +51,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén `OrchestrationClient` az attribútum helyett `DurableClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia a helyett. `IDurableOrchestrationClient` A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén az attribútum `OrchestrationClient` helyett attribútumot kell használnia `DurableClient` , és a paraméter típusát kell használnia a `DurableOrchestrationClient` helyett `IDurableOrchestrationClient` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**function. JSON**
+**function.jsbekapcsolva**
 
 ```json
 {
@@ -83,7 +82,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-**index. js**
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -114,7 +113,7 @@ module.exports = async function(context, req) {
 
 ---
 
-Alapértelmezés szerint a példány-azonosítók véletlenszerűen generált GUID azonosítók. Az előző példában azonban a példány AZONOSÍTÓját átadja a rendszer az URL-ből származó útvonal-adatok között. A kód meghívja `GetStatusAsync`(C#) `getStatus` vagy (JavaScript) annak ellenőrzését, hogy a megadott azonosítójú példány már fut-e. Ha nem fut ilyen példány, a rendszer létrehoz egy új példányt az AZONOSÍTÓval.
+Alapértelmezés szerint a példány-azonosítók véletlenszerűen generált GUID azonosítók. Az előző példában azonban a példány AZONOSÍTÓját átadja a rendszer az URL-ből származó útvonal-adatok között. A kód meghívja `GetStatusAsync` (C#) vagy `getStatus` (JavaScript) annak ellenőrzését, hogy a megadott azonosítójú példány már fut-e. Ha nem fut ilyen példány, a rendszer létrehoz egy új példányt az AZONOSÍTÓval.
 
 > [!NOTE]
 > Ebben a példában a verseny feltétele lehetséges. Ha a **HttpStartSingle** két példánya egyidejű végrehajtást hajt végre, mindkét függvényhívás sikeres lesz, de a rendszer csak egy hanghívási példányt fog elindulni. A követelményektől függően előfordulhat, hogy ez nem lenne lehetséges mellékhatása. Ezért fontos annak biztosítása, hogy ne lehessen egyszerre két kérelmet végrehajtani az trigger-függvényt.

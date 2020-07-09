@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c7598aafea85e91f28233645d3d71bf85bf45425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82130978"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>CI/CD-folyamat létrehozása a IoT Edgehoz Azure DevOps Projects
@@ -28,11 +28,11 @@ A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure DevOps-ben. Létrehoz
 
 1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget, majd keressen rá **DevOps projects**.  
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-new-application-pipeline"></a>Új alkalmazás-folyamat létrehozása
 
-1. A Azure IoT Edge modul (ok) [C#](tutorial-csharp-module.md), [Node. js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) és [Java](tutorial-java-module.md)nyelven is megírhatók. Válassza ki a kívánt nyelvet egy új alkalmazás indításához: **.net**, **Node. js**, **Python**, **C**vagy **Java**. A folytatáshoz kattintson a **Tovább** gombra.
+1. A Azure IoT Edge modul (ok) a [C#](tutorial-csharp-module.md), a [Node.js](tutorial-node-module.md), a [Python](tutorial-python-module.md), a [C](tutorial-c-module.md) és a [Java](tutorial-java-module.md)nyelven is írható. Válassza ki a kívánt nyelvet egy új alkalmazás indításához: **.net**, **Node.js**, **Python**, **C**vagy **Java**. A folytatáshoz kattintson a **Tovább** gombra.
 
    ![Új alkalmazás létrehozásához válassza a Language (nyelv) lehetőséget.](./media/how-to-devops-project/select-language.png)
 
@@ -76,9 +76,9 @@ DevOps Projects létrehozott egy git-tárházat a projekthez az Azure Reposban. 
 
 2. A következő lépések végigvezetik a böngészőben a kód módosításának lépésein. Ha a tárházat helyileg szeretné klónozottként használni, válassza a **klónozás** lehetőséget az ablak jobb felső sarkában. Használja a megadott URL-címet a git-tárház klónozásához a Visual Studio Code-ban vagy az előnyben részesített fejlesztői eszközben.
 
-3. A tárház már tartalmaz egy **FilterModule** nevű modul kódját a létrehozási folyamat során kiválasztott nyelv alapján. Nyissa meg a **modules/FilterModule/Module. JSON** fájlt.
+3. A tárház már tartalmaz egy **FilterModule** nevű modul kódját a létrehozási folyamat során kiválasztott nyelv alapján. Nyissa meg a **modules/FilterModule/module.js** fájlt.
 
-   ![Module. JSON fájl megnyitása az Azure Reposban](./media/how-to-devops-project/open-module-json.png)
+   ![module.jsmegnyitása a fájlon az Azure Reposban](./media/how-to-devops-project/open-module-json.png)
 
 4. Figyelje meg, hogy ez a fájl az [Azure DevOps Build változókat](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) használja a **Version** paraméterben. Ez a konfiguráció biztosítja, hogy a rendszer minden új Build futtatásakor létrehozza a modul új verzióját.
 
@@ -124,7 +124,7 @@ Az előző szakaszban Azure DevOps Projects automatikusan konfigurálta a IoT Ed
 
 14. Válassza ki a kiadás nevét a további információk megtekintéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, ha már nincs rá szükség. Használja a **delete** funkciót a DevOps projects irányítópulton.
 

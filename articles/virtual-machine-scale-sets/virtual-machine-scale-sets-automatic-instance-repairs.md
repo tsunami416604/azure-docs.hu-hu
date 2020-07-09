@@ -10,13 +10,12 @@ ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197037"
 ---
-# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok automatikus példányának javítása
+# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Példányok automatikus javítása az Azure-beli virtuális gépek méretezési csoportjaiban
 
 Az Azure-beli virtuálisgép-méretezési csoportokhoz tartozó automatikus példányok javításának engedélyezése lehetővé teszi, hogy az alkalmazások magas rendelkezésre állást biztosítson a megfelelő állapotok mellett. Ha a méretezési csoport egyik példánya nem kifogástalan állapotú, mint az [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) vagy a [Load Balancer Health](../load-balancer/load-balancer-custom-probe-overview.md)mintavétele, akkor ez a funkció automatikusan elvégzi a példányok javítását a nem kifogástalan példány törlésével, és újat hoz létre a helyére.
 

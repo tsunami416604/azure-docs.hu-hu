@@ -8,10 +8,9 @@ ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
 ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650541"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windows rendszerű virtuális gép Azure Resource Manager-sablonjának használatával
@@ -38,22 +37,22 @@ A Azure Diagnostics bővítmény az "adatnyelők" nevű szolgáltatást használ
 ## <a name="author-resource-manager-template"></a>Resource Manager-sablon készítése
 Ebben a példában egy nyilvánosan elérhető minta sablont használhat. A kezdő sablonok a következő helyen találhatók: https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows .
 
-- A **Azuredeploy. JSON** egy előre konfigurált Resource Manager-sablon egy virtuális gép telepítéséhez.
+- A **Azuredeploy.json** egy előre konfigurált Resource Manager-sablon a virtuális gépek telepítéséhez.
 
-- A **Azuredeploy. Parameters. JSON** egy olyan paraméter-fájl, amely olyan adatokat tárol, mint például a virtuális géphez beállítani kívánt Felhasználónév és jelszó. Az üzembe helyezés során a Resource Manager-sablon a fájlban beállított paramétereket használja.
+- **AAzuredeploy.parameters.json** paraméter olyan adatokat tárol, mint például a virtuális géphez beállítani kívánt Felhasználónév és jelszó. Az üzembe helyezés során a Resource Manager-sablon a fájlban beállított paramétereket használja.
 
 Töltse le és mentse a fájlokat helyileg.
 
-### <a name="modify-azuredeployparametersjson"></a>Módosítsa a azuredeploy. Parameters. JSON fájlt
-Nyissa meg az *azuredeploy. Parameters. JSON fájlt.*
+### <a name="modify-azuredeployparametersjson"></a>azuredeploy.parameters.jsmódosítása
+A *azuredeploy.parameters.js* megnyitása fájlon
 
 1. Adja meg a virtuális gép **adminUsername** és **adminPassword** értékeit. Ezek a paraméterek a virtuális gép távoli elérésére szolgálnak. Ha el szeretné kerülni, hogy a virtuális gép eltérítve legyen, ne használja a sablonban szereplő értékeket. A robotok a nyilvános GitHub-adattárakban lévő felhasználónevek és jelszavak számára ellenőrzik az interneten. Valószínűleg a virtuális gépeket tesztelik ezekkel az alapértékekkel.
 
 1. Hozzon létre egy egyedi dnsname a virtuális géphez.
 
-### <a name="modify-azuredeployjson"></a>Azuredeploy. JSON módosítása
+### <a name="modify-azuredeployjson"></a>azuredeploy.jsmódosítása
 
-A *azuredeploy. JSON* fájl megnyitása
+A *azuredeploy.js* megnyitása fájlon
 
 A StorageAccountName bejegyzése után vegyen fel egy Storage-fiók AZONOSÍTÓját a sablon **változók** szakaszába **.**
 
@@ -263,7 +262,7 @@ A Resource Manager-sablon üzembe helyezéséhez kihasználjuk a Azure PowerShel
 1. Miután az üzembe helyezés sikeres volt, a virtuális gépnek a Azure Portal kell lennie, és a metrikákat Azure Monitor kell kiadnia.
 
    > [!NOTE]
-   > A kiválasztott vmSkuSize hibákba ütközhet. Ha ez történik, térjen vissza a azuredeploy. JSON fájlhoz, és frissítse a vmSkuSize paraméter alapértelmezett értékét. Ebben az esetben javasoljuk, hogy próbálkozzon a "Standard_DS1_v2" művelettel.
+   > A kiválasztott vmSkuSize hibákba ütközhet. Ha ez történik, térjen vissza a azuredeploy.jsfájlhoz, és frissítse a vmSkuSize paraméter alapértelmezett értékét. Ebben az esetben javasoljuk, hogy próbálkozzon a "Standard_DS1_v2" művelettel.
 
 ## <a name="chart-your-metrics"></a>A metrikák diagramja
 

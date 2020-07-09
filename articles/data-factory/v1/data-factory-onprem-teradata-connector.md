@@ -13,11 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707310"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -63,12 +62,12 @@ A következő táblázat a Teradata társított szolgáltatáshoz tartozó JSON-
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Igen |
-| kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
-| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Yes |
+| kiszolgáló |A Teradata-kiszolgáló neve. |Yes |
+| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
+| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |No |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |No |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -84,7 +83,7 @@ Ha a forrás **RelationalSource** típusú (amely magában foglalja a Teradata),
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Yes |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: adatok másolása a Teradata-ből az Azure-Blobba
 Az alábbi példa olyan JSON-definíciókat tartalmaz, amelyeket a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre a folyamat létrehozásához. Bemutatják, hogyan másolhatók adatok a Teradata-ből az Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
@@ -300,7 +299,7 @@ Az adatok Teradata való áthelyezésekor a rendszer a következő leképezések
 | Szám |Double |
 | SmallInt |Int16 |
 | Dátum |DateTime |
-| Time |időtartam |
+| Idő |időtartam |
 | Időzónával ellátott idő |Sztring |
 | Időbélyeg |DateTime |
 | Időbélyeg időzónával |DateTimeOffset |

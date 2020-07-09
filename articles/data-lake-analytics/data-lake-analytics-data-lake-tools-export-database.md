@@ -7,14 +7,14 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 364682f6bcf2edeecc7af2da6c91e4bfd1de98a4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71315793"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117287"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
 
@@ -51,7 +51,7 @@ Ebben a lépésben ellenőrizheti a kijelölt objektumokat az **objektum export�
 
 Az exportálási cél egyéb beállításait is megadhatja. A konfigurációs leírások az alábbi táblázatban láthatók:
 
-|Configuration|Leírás|
+|Konfiguráció|Leírás|
 |-------------|-----------|
 |Cél neve|Ez a név jelzi, hogy hová szeretné menteni az exportált adatbázis erőforrásait. Ilyenek például a szerelvények, a további fájlok és a mintaadatok. A rendszer létrehoz egy ilyen nevű mappát a helyi adatgyökér mappában.|
 |Projekt könyvtára|Ez az elérési út határozza meg, hogy hová szeretné menteni az exportált U-SQL-szkriptet. Ezen a helyen minden adatbázis-objektum definíciója mentve lesz.|
@@ -82,7 +82,7 @@ Az adatbázis importálása a különböző Data Lake Analytics fiókba:
 
 Ha a 3. lépésben a **séma és az adatok** lehetőséget választja, az eszköz egy U-SQL-feladatot futtat a táblákban tárolt adatok exportálásához. Emiatt az adatexportálási folyamat lassú lehet, és felmerülhet a költségek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az U-SQL-adatbázisok megismerése](/u-sql/data-definition-language-ddl-statements) 
 * [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)

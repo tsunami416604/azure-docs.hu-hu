@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72436044"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban
@@ -104,7 +104,7 @@ Az első lépések előtt tegye a következőket:
 
 - Szerezze be a OpenFrame Kiindulópontul telepítési adathordozóját a TmaxSoft-ből. Ha Ön már meglévő TmaxSoft-ügyfél, az TmaxSoft-képviselőjétől kaphat egy licenccel rendelkező példányt. Ellenkező esetben kérjen próbaverziót a [TmaxSoft](https://www.tmaxsoft.com/contact/)webhelyről.
 
-- Kérje meg a OpenFrame Kiindulópontul dokumentációját e- <support@tmaxsoft.com>mailben a címre.
+- Kérje meg a OpenFrame Kiindulópontul dokumentációját e-mailben a címre <support@tmaxsoft.com> .
 
 - Azure-előfizetés beszerzése, ha még nem rendelkezik ilyennel. Mielőtt elkezdené, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) is.
 
@@ -145,20 +145,20 @@ A OpenFrame Kiindulópontul környezetet különböző üzembe helyezési mintá
 
 Ha Windows operációs rendszert használ, PuTTYgen kell létrehoznia egy nyilvános/titkos kulcspár létrehozásához.
 
-A nyilvános kulcs szabadon megosztható, de a titkos kulcsot teljesen titokban kell tartani, és soha nem szabad megosztani egy másik féllel. A kulcsok létrehozása után be kell illesztenie a **nyilvános SSH-kulcsot** a konfigurációba, és fel kell őket feltölteni a Linux rendszerű virtuális gépre. A rendszer a hitelesítő\_kulcsokon belül \~tárolja a felhasználói fiók kezdőkönyvtárának/.ssh könyvtárában. A Linux rendszerű virtuális gép ezután képes felismerni és érvényesíteni a kapcsolódást, miután megadta a társított **SSH titkos kulcsot** az SSH-ügyfélen (esetünkben, PuTTY).
+A nyilvános kulcs szabadon megosztható, de a titkos kulcsot teljesen titokban kell tartani, és soha nem szabad megosztani egy másik féllel. A kulcsok létrehozása után be kell illesztenie a **nyilvános SSH-kulcsot** a konfigurációba, és fel kell őket feltölteni a Linux rendszerű virtuális gépre. A rendszer a hitelesítő \_ kulcsokon belül tárolja a \~ felhasználói fiók kezdőkönyvtárának/.ssh könyvtárában. A Linux rendszerű virtuális gép ezután képes felismerni és érvényesíteni a kapcsolódást, miután megadta a társított **SSH titkos kulcsot** az SSH-ügyfélen (esetünkben, PuTTY).
 
 Amikor új személyeknek adnak hozzáférést a virtuális géphez: 
 
 - Minden egyes új egyéni saját nyilvános/titkos kulcsot hoz létre a PuTTYgen használatával.
 - Az egyének külön tárolják saját titkos kulcsaikat, és a nyilvános kulcs adatait a virtuális gép rendszergazdájától küldik el.
-- A rendszergazda beillesztette a nyilvános kulcs tartalmát a \~/.ssh/Authorized\_-kulcsok fájljába.
+- A rendszergazda beillesztette a nyilvános kulcs tartalmát a/.ssh/Authorized- \~ \_ kulcsok fájljába.
 - Az új egyéni kapcsolódás a PuTTY használatával.
 
 **Nyilvános/titkos kulcspár létrehozása**
 
-1.  Töltse le a <https://www.putty.org/> PuTTYgen alkalmazást, és telepítse az összes alapértelmezett beállítással.
+1.  Töltse le a PuTTYgen <https://www.putty.org/> alkalmazást, és telepítse az összes alapértelmezett beállítással.
 
-2.  A PuTTYgen megnyitásához keresse meg a PuTTY telepítési könyvtárat a C:\\Program Files\\Putty fájlban.
+2.  A PuTTYgen megnyitásához keresse meg a PuTTY telepítési könyvtárat a C: \\ Program Files \\ Putty fájlban.
 
     ![Putty felület](media/puttygen-01.png)
 
@@ -166,7 +166,7 @@ Amikor új személyeknek adnak hozzáférést a virtuális géphez:
 
     ![A PuTTY Key Generator párbeszédpanel](media/puttygen-02.png)
 
-4.  A létrehozást követően mentse a nyilvános kulcsot és a titkos kulcsot is. Illessze be a nyilvános kulcs tartalmát a **virtuális gép \> létrehozása alapismeretek** ablaktáblájának **SSH nyilvános kulcs** szakaszában (az előző szakasz 6. és 7. lépésében látható).
+4.  A létrehozást követően mentse a nyilvános kulcsot és a titkos kulcsot is. Illessze be a nyilvános kulcs tartalmát a **virtuális gép létrehozása \> alapismeretek** ablaktáblájának **SSH nyilvános kulcs** szakaszában (az előző szakasz 6. és 7. lépésében látható).
 
     ![A PuTTY Key Generator párbeszédpanel](media/puttygen-03.png)
 
@@ -189,11 +189,11 @@ Amikor új személyeknek adnak hozzáférést a virtuális géphez:
 
 6. Nyissa meg a PuTTY eszközt.
 
-7. Az **állomásnév**mezőben adja meg a felhasználónevét és a másolt nyilvános IP-címet. Például: **username\@publicip**.
+7. Az **állomásnév**mezőben adja meg a felhasználónevét és a másolt nyilvános IP-címet. Például: **username \@ publicip**.
 
     ![A PuTTY konfigurációja párbeszédpanel](media/putty-01.png)
 
-8. A **Kategória** mezőben kattintson a ** \> kapcsolatok SSH \> -hitelesítés**elemre. Adja meg a **titkos kulcs** fájljának elérési útját.
+8. A **Kategória** mezőben kattintson a **kapcsolatok SSH \> - \> hitelesítés**elemre. Adja meg a **titkos kulcs** fájljának elérési útját.
 
     ![A PuTTY konfigurációja párbeszédpanel](media/putty-02.png)
 
@@ -207,7 +207,7 @@ Amikor új személyeknek adnak hozzáférést a virtuális géphez:
 
 Most, hogy létrejött a virtuális gép, és be van jelentkezve, végre kell hajtania néhány telepítési lépést, és telepítenie kell a szükséges előtelepítési csomagokat.
 
-1. Rendelje hozzá a **ofdemo** nevet a helyi IP-címhez a VI használatával a Hosts fájl`vi /etc/hosts`() szerkesztéséhez. Feltételezve, hogy az IP-192.168.96.148 ofdemo, ez a változás előtt van:
+1. Rendelje hozzá a **ofdemo** nevet a helyi IP-címhez a VI használatával a Hosts fájl () szerkesztéséhez `vi /etc/hosts` . Feltételezve, hogy az IP-192.168.96.148 ofdemo, ez a változás előtt van:
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -256,7 +256,7 @@ Most, hogy létrejött a virtuális gép, és be van jelentkezve, végre kell ha
 
      - dos2unix
      - glibc
-     - folyékony beszédű. i686 folyékonyan. x86\_64
+     - folyékony beszédű. i686 folyékonyan. x86 \_ 64
      - libaio
      - ncurses
 
@@ -269,7 +269,7 @@ Most, hogy létrejött a virtuális gép, és be van jelentkezve, végre kell ha
 
      - GCC
      - GCC-c + +
-     - libaio-devel. x86\_64
+     - libaio-devel. x86 \_ 64
      - strace
      - ltrace
      - gdb
@@ -315,7 +315,7 @@ A Tibero a OpenFrame Kiindulópontul-környezet számos kulcsfontosságú funkci
     [oframe7@ofdemo ~]$ mv license.xml /opt/tmaxdb/tibero6/license/
     ```
 
-3. Nyissa meg\_a. bash-`vi .bash_profile`profilt a VI () alkalmazásban, és illessze be a következőket:
+3. Nyissa meg \_ a. bash-profilt a VI () alkalmazásban, `vi .bash_profile` és illessze be a következőket:
 
     ```
     # Tibero6 ENV
@@ -338,7 +338,7 @@ A Tibero a OpenFrame Kiindulópontul-környezet számos kulcsfontosságú funkci
     [oframe7@ofdemo ~]$ vi $TB_HOME/config/$TB_SID.tip
     ```
 
-6. Módosítsa \$a\_TB Home/Client/config/tbdsn. TBR fájlt, és helyezze a 127.0.0.1 helyet a oflocalhost, ahogy az a következőképpen jelenik meg:
+6. Módosítsa \$ \_ a TB Home/Client/config/tbdsn. TBR fájlt, és helyezze a 127.0.0.1 helyet a oflocalhost, ahogy az a következőképpen jelenik meg:
 
     ```
     TVSAM=( 
@@ -393,7 +393,7 @@ A Tibero a OpenFrame Kiindulópontul-környezet számos kulcsfontosságú funkci
     Tibero instance terminated (NORMAL mode).
     ```
 
-9. A rendszerindítási `tbboot`Tibero használatával. Például:
+9. A rendszerindítási Tibero használatával `tbboot` . Például:
 
     ```
     [oframe7@ofdemo ~]$ tbboot
@@ -440,7 +440,7 @@ A OpenFrame Kiindulópontul lévő alkalmazások a nyílt forráskódú unixODBC
 
 Az ODBC telepítése:
 
-1. Győződjön meg arról, hogy a unixODBC-2.3.4. tar. gz telepítőfájl létezik, vagy használja `wget unixODBC-2.3.4.tar.gz` a parancsot. Például:
+1. Győződjön meg arról, hogy a unixODBC-2.3.4. tar. gz telepítőfájl létezik, vagy használja a `wget unixODBC-2.3.4.tar.gz` parancsot. Például:
 
      ```
      [oframe7@ofdemo ~]$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.4.tar.gz
@@ -458,7 +458,7 @@ Az ODBC telepítése:
      [oframe7@ofdemo unixODBC-2.3.4]$ ./configure --prefix=/opt/tmaxapp/unixODBC/ --sysconfdir=/opt/tmaxapp/unixODBC/etc
      ```
 
-     Alapértelmezés szerint a unixODBC a/usr/local-ben van telepítve `--prefix` , ezért egy értéket kell áthaladnia a hely módosításához. Hasonlóképpen, a konfigurációs fájlok alapértelmezés szerint telepítve vannak a/etc számítógépen `--sysconfdir` , ezért a kívánt hely értékét adja át.
+     Alapértelmezés szerint a unixODBC a/usr/local-ben van telepítve, ezért `--prefix` egy értéket kell áthaladnia a hely módosításához. Hasonlóképpen, a konfigurációs fájlok alapértelmezés szerint telepítve vannak a/etc számítógépen, ezért a `--sysconfdir` kívánt hely értékét adja át.
 
 4. Makefile végrehajtása:`[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
@@ -468,7 +468,7 @@ Az ODBC telepítése:
      [oframe7@ofdemo unixODBC-2.3.4]$ make install
      ```
 
-6. A VI használatával szerkessze a bash-`vi ~/.bash_profile`profilt (), és adja hozzá a következőket:
+6. A VI használatával szerkessze a bash-profilt ( `vi ~/.bash_profile` ), és adja hozzá a következőket:
 
      ```
      # UNIX ODBC ENV 
@@ -543,7 +543,7 @@ Az alapalkalmazás-kiszolgáló telepítése a OpenFrame Kiindulópontul által 
 
 **A OpenFrame Kiindulópontul-alap telepítése**
 
-1. Győződjön meg arról, hogy a Tibero telepítése sikeres volt, majd ellenőrizze,\_hogy\_a\_következő\_OpenFrame Kiindulópontul\_Base7 0 Linux x86 64. bin telepítőfájl és Base. properties konfigurációs fájl található.
+1. Győződjön meg arról, hogy a Tibero telepítése sikeres volt, majd ellenőrizze, hogy a következő OpenFrame Kiindulópontul \_ Base7 \_ 0 \_ Linux \_ x86 \_ 64. bin telepítőfájl és Base. properties konfigurációs fájl található.
 
 2. Frissítse a bash-profilt a következő Tibero-specifikus információkkal:
 
@@ -611,7 +611,7 @@ Az alapalkalmazás-kiszolgáló telepítése a OpenFrame Kiindulópontul által 
 
     Ha elkészült, a telepítés befejezése üzenet el lesz játszva.
 
-8. A `ls -ltr` parancs használatával ellenőrizze a OpenFrame Kiindulópontul alapkönyvtárának struktúráját. Például:
+8. A parancs használatával ellenőrizze a OpenFrame Kiindulópontul alapkönyvtárának struktúráját `ls -ltr` . Például:
 
      ```
      [oframe7@ofdemo OpenFrame]$ ls -ltr
@@ -677,9 +677,9 @@ A OpenFrame Kiindulópontul batch számos olyan összetevőből áll, amelyek a 
 
 **A Batch telepítése**
 
-1. Győződjön meg arról, hogy az alap telepítése sikeres volt, majd ellenőrizze\_,\_hogy\_a\_OpenFrame Kiindulópontul\_Batch7\_0\_Fix2 MVS Linux x86 64. bin telepítőfájl és Batch. properties konfigurációs fájl található-e:
+1. Győződjön meg arról, hogy az alap telepítése sikeres volt, majd ellenőrizze, hogy a OpenFrame Kiindulópontul \_ Batch7 \_ 0 \_ Fix2 \_ MVS \_ Linux \_ x86 \_ 64. bin telepítőfájl és Batch. properties konfigurációs fájl található-e:
 
-2. A parancssorba írja be `vi batch.properties` a Batch. properties fájl szerkesztését a VI használatával.
+2. A parancssorba írja be a `vi batch.properties` Batch. properties fájl szerkesztését a VI használatával.
 
 3. Módosítsa a paramétereket az alábbiak szerint:
 
@@ -706,11 +706,11 @@ A OpenFrame Kiindulópontul batch számos olyan összetevőből áll, amelyek a 
      ./OpenFrame_Batch7_0_Fix2_MVS_Linux_x86_64.bin -f batch.properties
      ```
 
-5. Ha a telepítés befejeződött, indítsa el a telepített OpenFrame Kiindulópontul-csomagokat a `tmboot` parancssorba való beírásával.
+5. Ha a telepítés befejeződött, indítsa el a telepített OpenFrame Kiindulópontul-csomagokat a parancssorba való beírásával `tmboot` .
 
     ![tmboot kimenete](media/tmboot-01.png)
 
-6. Írja `tmadmin` be a parancsot a parancssorba a OpenFrame Kiindulópontul folyamatának vizsgálatához.
+6. Írja be a `tmadmin` parancsot a parancssorba a OpenFrame Kiindulópontul folyamatának vizsgálatához.
 
     ![Tmax-adminisztrátor képernyő](media/tmadmin-01.png)
 
@@ -721,7 +721,7 @@ A OpenFrame Kiindulópontul batch számos olyan összetevőből áll, amelyek a 
      ADM quit for node (NODE1)
      ```
 
-8. A Batch `tmdown` indításához és leállításához használja a parancsot:
+8. A `tmdown` Batch indításához és leállításához használja a parancsot:
 
      ```
      [oframe7@ofdemo ~]$tmdown
@@ -765,8 +765,8 @@ A TACF Manager egy OpenFrame Kiindulópontul szolgáltatás-modul, amely a RACF 
 
 **A TACF telepítése**
 
-1. Ellenőrizze, hogy a\_OpenFrame Kiindulópontul\_Tacf7\_0\_Fix2\_Linux\_x86 64. bin Installer-fájl és a tacf. properties konfigurációs fájl található-e.
-2. Győződjön meg arról, hogy a Batch telepítése sikeres volt, majd a VI paranccsal nyissa meg a`vi tacf.properties`tacf. properties fájlt ().
+1. Ellenőrizze, hogy a OpenFrame Kiindulópontul \_ Tacf7 \_ 0 \_ Fix2 \_ Linux \_ x86 \_ 64. bin Installer-fájl és a tacf. properties konfigurációs fájl található-e.
+2. Győződjön meg arról, hogy a Batch telepítése sikeres volt, majd a VI paranccsal nyissa meg a tacf. properties fájlt ( `vi tacf.properties` ).
 3. Módosítsa a TACF paramétereit:
 
      ```
@@ -812,7 +812,7 @@ A TACF Manager egy OpenFrame Kiindulópontul szolgáltatás-modul, amely a RACF 
      /tmp/install.dir.41422/Linux/resource/jre/lib/resources.jar /tmp/install.dir.41422/Linux/resource/jre/lib/rt.jar /tmp/install.dir.41422/Linux/resource/jre/lib/sunrsasign.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jsse.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jce.jar /tmp/install.dir.41422/Linux/resource/jre/lib/charsets.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jfr.jar /tmp/install.dir.41422/Linux/resource/jre/classes
      ```
 
-6. A parancssorba írja be a `tmboot` következőt: OpenFrame Kiindulópontul újraindítása. A kimenet valahogy így néz ki:
+6. A parancssorba írja be a következőt: `tmboot` OpenFrame Kiindulópontul újraindítása. A kimenet valahogy így néz ki:
 
      ```
      TMBOOT for node(NODE1) is starting: 
@@ -849,7 +849,7 @@ A TACF Manager egy OpenFrame Kiindulópontul szolgáltatás-modul, amely a RACF 
      TMBOOT: SVR(tmsvr) is starting: Wed Sep  7 17:48:53 2016
      ```
 
-7. Ellenőrizze, hogy a folyamat állapota készen `tmadmin` áll- `si` e a parancs használatával. Például:
+7. Ellenőrizze, hogy a folyamat állapota készen áll `tmadmin` -e a `si` parancs használatával. Például:
 
      ```
      [oframe7\@ofdemo \~]\$ tmadmin
@@ -909,7 +909,7 @@ A rendezés az Adatrendezésre szolgáló batch-tranzakciókban használt segéd
 
 **A rendezés telepítése**
 
-1. Győződjön meg arról, hogy a Batch telepítése sikeres volt, majd ellenőrizze, hogy megtalálható-e a **\_2sp3-Linux64-2123-opt. tar. gz** telepítési fájl.
+1. Győződjön meg arról, hogy a Batch telepítése sikeres volt, majd ellenőrizze, hogy megtalálható-e a ** \_ 2sp3-Linux64-2123-opt. tar. gz** telepítési fájl.
 
 2. Futtassa a telepítőt a tulajdonságok fájl használatával. A parancssorba írja be a következőt:
 
@@ -931,7 +931,7 @@ A rendezés az Adatrendezésre szolgáló batch-tranzakciókban használt segéd
      cp /opt/tmaxsw/oflicense/prosort/license.xml /opt/tmaxapp/prosort/license
      ```
 
-5. Nyissa meg a bash. profil`vi .bash_profile`a VI () eszközt, és frissítse a következő módon:
+5. Nyissa meg a bash. profil a VI ( `vi .bash_profile` ) eszközt, és frissítse a következő módon:
 
      ```bash
      #       PROSORT
@@ -963,7 +963,7 @@ A rendezés az Adatrendezésre szolgáló batch-tranzakciókban használt segéd
      oframe@oframe7home/oframe7/OpenFrame/util :  ln -s DFSORT SORT
      ```
 
-9. A `prosort -h` parancs végrehajtásával ellenőrizze a rendezési telepítést. Például:
+9. A parancs végrehajtásával ellenőrizze a rendezési telepítést `prosort -h` . Például:
 
      ```
      oframe@oframe7: prosort -h
@@ -983,7 +983,7 @@ A OFCOBOL a OpenFrame Kiindulópontul-fordító, amely a nagyszámítógép COBO
 
 **A OFCOBOL telepítése**
 
-1. Győződjön meg arról, hogy a Batch/online telepítés sikeresen befejeződött, majd ellenőrizze,\_hogy\_megtalálható\_-\_e\_a\_OpenFrame Kiindulópontul COBOL3 0 40 Linux x86 64. bin Installer fájl.
+1. Győződjön meg arról, hogy a Batch/online telepítés sikeresen befejeződött, majd ellenőrizze, hogy megtalálható-e a OpenFrame Kiindulópontul \_ COBOL3 \_ 0 \_ 40 \_ Linux \_ x86 \_ 64. bin Installer fájl.
 
 2. A OFCOBOL-telepítő végrehajtásához írja be a következőt a parancssorba:
 
@@ -1017,7 +1017,7 @@ A OFCOBOL a OpenFrame Kiindulópontul-fordító, amely a nagyszámítógép COBO
      PRESS <ENTER> TO EXIT THE INSTALLER
      ```
 
-5. Nyissa meg a bash-profilt`vi .bash_profile`a VI () alkalmazásban, és ellenőrizze, hogy a frissítése OFCOBOL-változókkal történt-e.
+5. Nyissa meg a bash-profilt a VI () alkalmazásban, `vi .bash_profile` és ellenőrizze, hogy a frissítése OFCOBOL-változókkal történt-e.
 6. Hajtsa végre a bash-profilt. A parancssorba írja be a következőt:
 
      ```
@@ -1043,7 +1043,7 @@ A OFCOBOL a OpenFrame Kiindulópontul-fordító, amely a nagyszámítógép COBO
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib :${ODBC_HOME}/lib 
      :${OFCOB_HOME}/lib
      ```
-9. Tekintse át\_a\_OpenFrame Kiindulópontul Cobol InstallLog. log fájlt a VI-ben, és ellenőrizze, hogy nincsenek-e hibák. Például:
+9. Tekintse át a OpenFrame Kiindulópontul \_ Cobol \_ InstallLog. log fájlt a VI-ben, és ellenőrizze, hogy nincsenek-e hibák. Például:
      ```
      [oframe7@ofdemo ~]$ vi $OFCOB_HOME/UninstallerData/log/OpenFrame_COBOL_InstallLog.log 
      …….. 
@@ -1063,7 +1063,7 @@ A OFCOBOL a OpenFrame Kiindulópontul-fordító, amely a nagyszámítógép COBO
      CommitTag:: 645f3f6bf7fbe1c366a6557c55b96c48454f4bf
      ```
 
-11. Indítsa újra a OpenFrame Kiindulópontul `tmdown/tmboot` a parancs használatával.
+11. Indítsa újra a OpenFrame Kiindulópontul a `tmdown/tmboot` parancs használatával.
 
 ## <a name="install-ofasm"></a>A OFASM telepítése
 
@@ -1071,7 +1071,7 @@ A OFASM a OpenFrame Kiindulópontul-fordító, amely a nagyvállalati szerelvén
 
 **A OFASM telepítése**
 
-1. Győződjön meg arról, hogy a Batch/online telepítés sikeresen befejeződött, majd ellenőrizze,\_hogy\_megtalálható\_-\_e\_a OpenFrame Kiindulópontul ASM3 0 Linux x86 64. bin telepítőfájl.
+1. Győződjön meg arról, hogy a Batch/online telepítés sikeresen befejeződött, majd ellenőrizze, hogy megtalálható-e a OpenFrame Kiindulópontul \_ ASM3 \_ 0 \_ Linux \_ x86 \_ 64. bin telepítőfájl.
 
 2. Hajtsa végre a telepítőt. Például:
 
@@ -1117,7 +1117,7 @@ A OFASM a OpenFrame Kiindulópontul-fordító, amely a nagyvállalati szerelvén
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
      ```
 
-7. Nyissa meg\_a\_OpenFrame Kiindulópontul ASM InstallLog. log fájlt a VI-ben, és ellenőrizze, hogy nincsenek-e hibák. Például:
+7. Nyissa meg a OpenFrame Kiindulópontul \_ ASM \_ InstallLog. log fájlt a VI-ben, és ellenőrizze, hogy nincsenek-e hibák. Például:
 
      ```
      [oframe7@ofdemo ~]$ vi 
@@ -1152,7 +1152,7 @@ Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogat
 
 **Az OSC telepítése**
 
-1. Győződjön meg arról, hogy az alap telepítése sikeres volt, majd ellenőrizze\_,\_hogy\_a\_OpenFrame Kiindulópontul\_OSC7\_0 Fix2 Linux x86 64. bin Installer fájl és osc. properties konfigurációs fájl található-e.
+1. Győződjön meg arról, hogy az alap telepítése sikeres volt, majd ellenőrizze, hogy a OpenFrame Kiindulópontul \_ OSC7 \_ 0 \_ Fix2 \_ Linux \_ x86 \_ 64. bin Installer fájl és osc. properties konfigurációs fájl található-e.
 2. Szerkessze a következő paramétereket az OSC. properties fájlban:
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame OSC_SYS_OSC_NCS_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_NCS OSC_APP_OSC_TC_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_TC
@@ -1167,7 +1167,7 @@ Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogat
      Ha elkészült, a "telepítés kész" üzenet jelenik meg.
 
 4. Győződjön meg arról, hogy a bash-profil frissítése OSC-változókkal történik.
-5. Tekintse át\_a\_OpenFrame Kiindulópontul\_OSC7\_0 Fix2 InstallLog. log fájlt. A következőhöz hasonló eredményt kell kapnia:
+5. Tekintse át a OpenFrame Kiindulópontul \_ OSC7 \_ 0 \_ Fix2 \_ InstallLog. log fájlt. A következőhöz hasonló eredményt kell kapnia:
 
      ```
      Summary 
@@ -1186,7 +1186,7 @@ Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogat
      vi $OPENFRAME_HOME/config/ofsys.seq
      ```
 
-7. Az alap \#és \#a köteg szakaszban szerkessze a paramétereket az ábrán látható módon.
+7. Az \# Alap és a \# köteg szakaszban szerkessze a paramétereket az ábrán látható módon.
 
      ```
      Before changes
@@ -1238,7 +1238,7 @@ Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogat
      -rwxrwxr-x. 1 oframe mqm 80 Sep  3 11:54 lictjes.da
      ```
 
-9. Az OSC elindításához és leállításához inicializálja a CICS régió megosztott memóriáját `osctdlinit OSCOIVP1` a parancssorba való beírásával.
+9. Az OSC elindításához és leállításához inicializálja a CICS régió megosztott memóriáját a parancssorba való beírásával `osctdlinit OSCOIVP1` .
 
 10. Futtassa `oscboot` a parancsot az OSC rendszerindításához. A kimenet valahogy így néz ki:
 
@@ -1258,7 +1258,7 @@ Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogat
 
     ![RDY megjelenítő folyamatok](media/tmadmin-02.png)
 
-12. Állítsa le az OSC- `oscdown` t a parancs használatával.
+12. Állítsa le az OSC-t a `oscdown` parancs használatával.
 
 ## <a name="install-jeus"></a>A JEUS telepítése
 
@@ -1268,7 +1268,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
 
 **Az Apache Ant telepítése**
 
-1. Töltse le a hangya `wget` bináris fájlját a parancs használatával. Például:
+1. Töltse le a hangya bináris fájlját a `wget` parancs használatával. Például:
 
      ```
      wget http://apache.mirror.cdnetworks.com/ant/binaries/apacheant-1.9.7-bin.tar.gz
@@ -1286,7 +1286,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
      ln -s apache-ant-1.9.7 ant
      ```
 
-4. Nyissa meg a bash-profilt`vi .bash_profile`a VI () alkalmazásban, és frissítse a következő változókkal:
+4. Nyissa meg a bash-profilt a VI () alkalmazásban, `vi .bash_profile` és frissítse a következő változókkal:
 
      ```
      # Ant ENV
@@ -1308,7 +1308,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
-2. Hozzon **jeus** létre egy jeus`mkdir jeus7`mappát (), és bontsa ki a bináris fájlt.
+2. Hozzon létre egy **jeus** mappát ( `mkdir jeus7` ), és bontsa ki a bináris fájlt.
 3. Váltson a **telepítési** könyvtárra (vagy használja a JEUS paramétert a saját környezetéhez). Például:
 
      ```
@@ -1345,7 +1345,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
 7. Módosítás `jeus.password=jeusadmin nodename=Tmaxsoft` ide`jeus.password=tmax1234 nodename=ofdemo`
 
 8. Futtassa a `ant install` parancsot a JEUS létrehozásához.
-9.  Frissítse a. bash\_-profilt a JEUS változókkal az alábbiak szerint:
+9.  Frissítse a. bash- \_ profilt a JEUS változókkal az alábbiak szerint:
 
      ```
      # JEUS ENV 
@@ -1382,12 +1382,12 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
      http://<IP>:<port>/webadmin/login
      ```
 
-     <http://192.168.92.133:9736/webadmin/login.> A bejelentkezési képernyő például a következőt jeleníti meg:
+     <http://192.168.92.133:9736/webadmin/login.>A bejelentkezési képernyő például a következőt jeleníti meg:
     
      ![JEUS webadminisztrátor bejelentkezési képernyője](media/jeus-01.png)
 
      > [!NOTE]
-     > Ha a port biztonságával kapcsolatos problémákat tapasztal, nyissa meg a 9736-es portot`systemctl stop firewall`, vagy tiltsa le a tűzfalat ().
+     > Ha a port biztonságával kapcsolatos problémákat tapasztal, nyissa meg a 9736-es portot, vagy tiltsa le a tűzfalat ( `systemctl stop firewall` ).
 
 14. A Kiszolgáló1-hez tartozó állomásnév módosításához kattintson a **zárolás & szerkesztés**elemre, majd a **Kiszolgáló1**elemre. A kiszolgáló ablakban módosítsa az állomásnevet a következőképpen:
 
@@ -1413,7 +1413,7 @@ A OFGW az a OpenFrame Kiindulópontul-átjáró, amely támogatja az 3270-es ter
 
 **A OFGW telepítése**
 
-1. Győződjön meg arról, hogy a JEUS telepítése sikeresen megtörtént, majd\_ellenőrizze\_,\_hogy a OFGW7 0 1 általános. bin telepítőfájl található-e.
+1. Győződjön meg arról, hogy a JEUS telepítése sikeresen megtörtént, majd ellenőrizze, hogy a OFGW7 \_ 0 \_ 1 \_ általános. bin telepítőfájl található-e.
 2. Hajtsa végre a telepítőt. Például:
 
      ```
@@ -1447,7 +1447,7 @@ A OFManager üzemeltetési és felügyeleti funkciókat biztosít a OpenFrame Ki
 
 **A OFManager telepítése**
 
-1. Ellenőrizze, hogy megtalálható\_-e a OFManager7 általános. bin telepítési fájlja.
+1. Ellenőrizze, hogy megtalálható-e a OFManager7 \_ általános. bin telepítési fájlja.
 2. Hajtsa végre a telepítőt. Például:
 
      ```

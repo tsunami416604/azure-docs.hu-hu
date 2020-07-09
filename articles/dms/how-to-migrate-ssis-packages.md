@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021517"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-csomagok újbóli üzembe helyezése Azure SQL Databasere Azure Database Migration Service
@@ -78,7 +77,7 @@ A SSIS-projektek/csomagok Azure SQL Databaseba való áttelepítéséhez hajtsa 
 
     ![Központi telepítés varázsló forrás kiválasztása lap](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. Kattintson a **Tovább** gombra.
+8. Válassza a **Tovább** lehetőséget.
 9. A **cél kiválasztása** lapon adja meg a projekt célját.
 
     a. A kiszolgáló neve szövegmezőbe írja be a teljes kiszolgálónevet (<server_name>. database.windows.net).
@@ -96,7 +95,7 @@ A SSIS-projektek/csomagok Azure SQL Databaseba való áttelepítéséhez hajtsa 
 
     ![Központi telepítési varázsló – ellenőrzés lap](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-11. Kattintson a **Tovább** gombra.
+11. Válassza a **Tovább** lehetőséget.
 
 12. Az **Áttekintés** lapon tekintse át a telepítési beállításokat.
 

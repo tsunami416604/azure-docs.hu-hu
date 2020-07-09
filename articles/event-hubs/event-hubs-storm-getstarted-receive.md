@@ -1,26 +1,14 @@
 ---
 title: 'Gyors útmutató: események fogadása Apache Storm használatával – Azure Event Hubs'
 description: 'Gyors útmutató: ebben a cikkben arról olvashat, hogyan fogadhat eseményeket az Azure Event Hubs a Apache Storm használatával.'
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73717604"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315363"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Gyors útmutató: események fogadása Event Hubs használatával Apache Storm
 
@@ -48,7 +36,7 @@ Ez az oktatóanyag egy [HDInsight Storm][HDInsight Storm] -telepítést használ
 5. Válassza **az alapértelmezett munkaterület helyének használata**lehetőséget, majd kattintson a **tovább** gombra.
 6. Válassza ki a **Maven-archetípus-Gyorsindítás** archetípusot, majd kattintson a **tovább** gombra.
 7. Szúrjon be egy **GroupID** és egy **ArtifactId**, majd kattintson a **Befejezés** gombra.
-8. A **Pom. xml fájlban**adja hozzá a következő függőségeket `<dependency>` a csomóponthoz.
+8. A **pom.xmlban **adja hozzá a következő függőségeket a `<dependency>` csomóponthoz.
 
     ```xml  
     <dependency>
@@ -80,7 +68,7 @@ Ez az oktatóanyag egy [HDInsight Storm][HDInsight Storm] -telepítést használ
     </dependency>
     ```
 
-9. A **src** mappában hozzon létre egy **config. properties** nevű fájlt, és másolja a következő tartalmakat, és `receive rule key` helyettesítse a és `event hub name` a értékeket:
+9. A **src** mappában hozzon létre egy **config. properties** nevű fájlt, és másolja a következő tartalmakat, és helyettesítse a `receive rule key` és a `event hub name` értékeket:
 
     ```java
     eventhubspout.username = ReceiveRule

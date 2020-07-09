@@ -5,15 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60616499"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121435"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
@@ -60,32 +59,34 @@ A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyo
 
 2. A tárolókban a naplófájlok a következő fájl struktúrában tárolódnak:
 
-        resourceId=/
-          SUBSCRIPTIONS/
-            <<SUBSCRIPTION_ID>>/
-              RESOURCEGROUPS/
-                <<RESOURCE_GRP_NAME>>/
-                  PROVIDERS/
-                    MICROSOFT.DATALAKEANALYTICS/
-                      ACCOUNTS/
-                        <DATA_LAKE_ANALYTICS_NAME>>/
-                          y=####/
-                            m=##/
-                              d=##/
-                                h=##/
-                                  m=00/
-                                    PT1H.json
+   ```text
+   resourceId=/
+     SUBSCRIPTIONS/
+       <<SUBSCRIPTION_ID>>/
+         RESOURCEGROUPS/
+           <<RESOURCE_GRP_NAME>>/
+             PROVIDERS/
+               MICROSOFT.DATALAKEANALYTICS/
+                 ACCOUNTS/
+                   <DATA_LAKE_ANALYTICS_NAME>>/
+                     y=####/
+                       m=##/
+                         d=##/
+                           h=##/
+                             m=00/
+                               PT1H.json
+   ```
 
    > [!NOTE]
-   > Az `##` elérési úthoz tartozó bejegyzések a napló létrehozásának évét, hónapját, napját és óráját tartalmazzák. Data Lake Analytics óránként egy fájlt hoz létre, ezért `m=` mindig tartalmazza a értékét `00`.
+   > Az `##` elérési úthoz tartozó bejegyzések a napló létrehozásának évét, hónapját, napját és óráját tartalmazzák. Data Lake Analytics óránként egy fájlt hoz létre, ezért `m=` mindig tartalmazza a értékét `00` .
 
     A napló teljes elérési útja például a következő lehet:
 
-        https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
     Hasonlóképpen a kérelmek naplójának teljes elérési útja a következő lehet:
 
-        https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="log-structure"></a>Naplózási struktúra
 
@@ -95,37 +96,39 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 Íme egy minta bejegyzés a JSON-formátumú kérelem naplójában. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
+```json
+{
+"records":
+  [
+    . . . .
+    ,
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
-                 "HttpMethod":"POST",
-                 "Path":"/JobAggregatedHistory",
-                 "RequestContentLength":122,
-                 "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
-                 "StartTime":"2016-07-07T21:02:52.472Z",
-                 "EndTime":"2016-07-07T21:02:53.456Z"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-07T21:02:53.456Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+         "category": "Requests",
+         "operationName": "GetAggregatedJobHistory",
+         "resultType": "200",
+         "callerIpAddress": "::ffff:1.1.1.1",
+         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+         "properties": {
+             "HttpMethod":"POST",
+             "Path":"/JobAggregatedHistory",
+             "RequestContentLength":122,
+             "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
+             "StartTime":"2016-07-07T21:02:52.472Z",
+             "EndTime":"2016-07-07T21:02:53.456Z"
+             }
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Kérelem naplózási sémája
 
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -139,10 +142,10 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
 
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
-| Útvonal |Sztring |A művelet végrehajtásának elérési útja |
+| Elérési út |Sztring |A művelet végrehajtásának elérési útja |
 | RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
 | Ügyfélkérelem |Sztring |A kérést egyedileg azonosító azonosító |
 | StartTime |Sztring |Az az idő, amikor a kiszolgáló megkapta a kérést |
@@ -152,32 +155,30 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
+```json
+{
+"records":
+  [
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
-                 "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
-                 "JobName": "New Job",
-                 "JobRuntimeName": "default",
-                 "SubmitTime": "7/28/2016 7:14:57 PM"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-28T19:15:16.245Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+         "category": "Audit",
+         "operationName": "JobSubmitted",
+         "identity": "user@somewhere.com",
+         "properties": {
+             "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
+             "JobName": "New Job",
+             "JobRuntimeName": "default",
+             "SubmitTime": "7/28/2016 7:14:57 PM"
+             }
     }
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -195,7 +196,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
 
-| Name (Név) | Típus | Leírás |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | JobId |Sztring |A feladathoz rendelt azonosító |
 | JobName |Sztring |A feladatokhoz megadott név |
@@ -210,7 +211,8 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 ## <a name="process-the-log-data"></a>A napló adatfeldolgozása
 
-Azure Data Lake Analytics a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample):.
+Azure Data Lake Analytics a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) .
 
-## <a name="next-steps"></a>További lépések
-* [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
+## <a name="next-steps"></a>Következő lépések
+
+[Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

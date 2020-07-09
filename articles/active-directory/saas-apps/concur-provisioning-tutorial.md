@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60280411"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása
@@ -121,7 +121,7 @@ A következő okok miatt ez a művelet nem hajtható végre a normál T&E felüg
 
 Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellenőrizze, hogy a fiók szinkronizálása megtörtént-e.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

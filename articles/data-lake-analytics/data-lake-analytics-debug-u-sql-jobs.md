@@ -7,14 +7,14 @@ author: yanancai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c1c36d146b4370962fc6328f6b75ef7160e28b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121452"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
 
@@ -80,7 +80,7 @@ Ha a felhasználói kód nem szerepel a kód mögötti fájlban, vagy nem regisz
 
 2. A **FailedVertexDebugHost** projekthez tartozó Project mappa elérési útjának beolvasása. 
 
-3. Kattintson a jobb gombbal **a hozzáadott szerelvény forráskódjának projekt > tulajdonságai**elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
+3. Kattintson a jobb gombbal **a hozzáadott szerelvény forráskódjának projekt > tulajdonságai**elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Az U-SQL hibakeresési készletének Azure Data Lake Analytics az PDB elérési útja](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -93,19 +93,19 @@ Ezeket a beállításokat az **F5** és a töréspontok hibakeresésével indít
 
 A hibakeresést követően, ha a projekt sikeresen befejeződik, a kimeneti ablak a következő üzenetet jeleníti meg:
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Azure Data Lake Analytics U-SQL-hibakeresés sikeres](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
 A sikertelen feladatok újraküldése:
 
-1. A kód mögötti megoldásokkal rendelkező feladatok esetében másolja a C#-kódot a forráskód mögötti fájlba (jellemzően `Script.usql.cs`).
+1. A kód mögötti megoldásokkal rendelkező feladatok esetében másolja a C#-kódot a forráskód mögötti fájlba (jellemzően `Script.usql.cs` ).
 
 2. A szerelvényekkel rendelkező feladatok esetében kattintson a jobb gombbal a szerelvény forráskódjának projektre a hibakeresési megoldásban, és regisztrálja a frissített. dll szerelvényeket a Azure Data Lake-katalógusban.
 
 3. Küldje el újra az U-SQL-feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A U-SQL programozható útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
 - [A felhasználó által definiált U-SQL-operátorok fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80057566"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833502"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service környezetek egyéni konfigurációs beállításai
 ## <a name="overview"></a>Áttekintés
@@ -24,30 +24,32 @@ App Service Environment testreszabásokat az új **clusterSettings** attribútum
 
 A következő rövidített Resource Manager-sablon a **clusterSettings** attribútumot jeleníti meg:
 
-    "resources": [
-    {
-       "apiVersion": "2015-08-01",
-       "type": "Microsoft.Web/hostingEnvironments",
-       "name": ...,
-       "location": ...,
-       "properties": {
-          "clusterSettings": [
-             {
-                 "name": "nameOfCustomSetting",
-                 "value": "valueOfCustomSetting"
-             }
-          ],
-          "workerPools": [ ...],
-          etc...
-       }
+```json
+"resources": [
+{
+    "apiVersion": "2015-08-01",
+    "type": "Microsoft.Web/hostingEnvironments",
+    "name": ...,
+    "location": ...,
+    "properties": {
+        "clusterSettings": [
+            {
+                "name": "nameOfCustomSetting",
+                "value": "valueOfCustomSetting"
+            }
+        ],
+        "workerPools": [ ...],
+        etc...
     }
+}
+```
 
 A **clusterSettings** attribútum egy Resource Manager-sablonban is szerepelhet a app Service Environment frissítéséhez.
 
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>App Service Environment frissítése a Azure Erőforrás-kezelő használatával
 Azt is megteheti, hogy a [Azure erőforrás-kezelő](https://resources.azure.com)használatával frissíti a app Service Environment.  
 
-1. A erőforrás-kezelő területen lépjen a app Service Environment (**előfizetések** > **resourceGroups** > **providers** > **Microsoft. Web** > **hostingEnvironments**) csomópontra. Ezután kattintson a frissíteni kívánt App Service Environmentra.
+1. A erőforrás-kezelő területen lépjen a app Service Environment (**előfizetések**  >  **resourceGroups**  >  **providers**  >  **Microsoft. Web**  >  **hostingEnvironments**) csomópontra. Ezután kattintson a frissíteni kívánt App Service Environmentra.
 2. A jobb oldali ablaktáblán kattintson az **olvasás/írás** lehetőségre a felső eszköztáron a erőforrás-kezelő interaktív szerkesztésének engedélyezéséhez.  
 3. Kattintson a kék **Szerkesztés** gombra, hogy a Resource Manager-sablon szerkeszthető legyen.
 4. Görgessen a jobb oldali ablaktábla aljára. A **clusterSettings** attribútum a legalul található, ahol megadhatja vagy frissítheti az értékét.
@@ -61,13 +63,15 @@ Ha például egy App Service Environment négy előtérrel rendelkezik, a konfig
 
 A App Service Environment fekete Box-rendszerként működik, ahol a belső összetevők vagy a rendszeren belüli kommunikáció nem látható. A nagyobb átviteli sebesség engedélyezéséhez a titkosítás alapértelmezés szerint nincs engedélyezve a belső összetevők között. A rendszer biztonságban van, mivel a forgalom teljesen elérhetetlenné válik a figyeléshez vagy a hozzáféréshez. Ha a megfelelőségi követelmény azonban az, hogy az adatok elérési útja teljes titkosítást igényel a végponttól a végéig, a clusterSetting lehetővé teszi ezt a lehetőséget.  
 
-        "clusterSettings": [
-            {
-                "name": "InternalEncryption",
-                "value": "1"
-            }
-        ],
- 
+```json
+"clusterSettings": [
+    {
+        "name": "InternalEncryption",
+        "value": "1"
+    }
+],
+```
+
 A InternalEncryption-clusterSetting engedélyezése után hatással lehet a rendszer teljesítményére. Ha a módosítást engedélyezi a InternalEncryption engedélyezéséhez, a beadása instabil állapotban lesz, amíg a változást teljes mértékben nem propagálja. A változtatások teljes propagálása eltarthat néhány óráig, attól függően, hogy hány példányt használ a központilag. Kifejezetten javasoljuk, hogy ezt a szolgáltatást a szolgáltatón kívül ne engedélyezze. Ha ezt egy aktívan használt benyújtó eszközön kell engedélyeznie, javasoljuk, hogy a művelet befejeződése előtt irányítsa át a forgalmat egy biztonsági mentési környezetbe. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>A TLS 1,0 és a TLS 1,1 letiltása
@@ -76,31 +80,33 @@ Ha egy alkalmazáson keresztül szeretné kezelni a TLS-beállításokat, akkor 
 
 Ha le szeretné tiltani az összes bejövő TLS 1,0-és TLS 1,1-forgalmat egy kiegészítő csomag összes alkalmazásához, a következő **clusterSettings** -bejegyzést állíthatja be:
 
-        "clusterSettings": [
-            {
-                "name": "DisableTls1.0",
-                "value": "1"
-            }
-        ],
+```json
+"clusterSettings": [
+    {
+        "name": "DisableTls1.0",
+        "value": "1"
+    }
+],
+```
 
 A beállítás neve 1,0, de ha be van állítva, akkor a TLS 1,0 és a TLS 1,1 is letiltja.
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS titkosítási csomag sorrendjének módosítása
 Egy másik kérdés az ügyfelektől, ha módosíthatják a kiszolgáló által egyeztetett titkosítási algoritmusok listáját, és ez a **clusterSettings** az alább látható módon történő módosításával is megvalósítható. A rendelkezésre álló titkosítási csomagok listáját [ebből az MSDN-cikkből](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)lehet lekérni.
 
-        "clusterSettings": [
-            {
-                "name": "FrontEndSSLCipherSuiteOrder",
-                "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
-            }
-        ],
+```json
+"clusterSettings": [
+    {
+        "name": "FrontEndSSLCipherSuiteOrder",
+        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+    }
+],
+```
 
 > [!WARNING]
 > Ha helytelen értékek vannak beállítva az SChannel által nem értelmezhető titkosítási csomaghoz, akkor a kiszolgálóval folytatott összes TLS-kommunikáció leállhat. Ebben az esetben el kell távolítania a *FrontEndSSLCipherSuiteOrder* bejegyzést a **clusterSettings** -ből, és el kell küldenie a frissített Resource Manager-sablont, hogy vissza lehessen térni az alapértelmezett titkosítási csomag beállításaihoz.  Körültekintően használja ezt a funkciót.
-> 
-> 
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 Az Azure rövid útmutató Resource Manager-sablon webhelye tartalmaz egy [app Service Environment létrehozásához](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)szükséges alapdefiníciót tartalmazó sablont.
 
 <!-- LINKS -->

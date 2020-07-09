@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992144"
 ---
 # <a name="module-twin-json-schema"></a>Modul Twin JSON-sémája
@@ -21,13 +21,13 @@ ms.locfileid: "72992144"
 A Event Grid on IoT Edge integrálódik a IoT Edge ökoszisztémával, és támogatja a témakörök és előfizetések létrehozását a Twin modulon keresztül. Azt is jelenti, hogy az összes témakör és esemény-előfizetés aktuális állapota a (z) Twin modul jelentett tulajdonságaira mutat.
 
 > [!WARNING]
-> A IoT Edge ökoszisztémájának korlátai miatt a következő JSON-példa összes tömb eleme JSON-karakterláncként lett kódolva. A `EventSubscription.Filter.EventTypes` következő `EventSubscription.Filter.AdvancedFilters` példában a és a kulcsok láthatók.
+> A IoT Edge ökoszisztémájának korlátai miatt a következő JSON-példa összes tömb eleme JSON-karakterláncként lett kódolva. `EventSubscription.Filter.EventTypes` `EventSubscription.Filter.AdvancedFilters` A következő példában a és a kulcsok láthatók.
 
 ## <a name="desired-properties-json"></a>Kívánt tulajdonságok JSON
 
-* A témakörök szakaszban szereplő egyes kulcs-érték párok értéke pontosan ugyanazt a JSON-sémát tartalmazza, amelyet az API `Topic.Properties` -hoz használ a témakörök létrehozásakor.
-* A **EventSubscriptions** szakaszban szereplő egyes kulcs-érték párok értéke pontosan ugyanazt a JSON-sémát tartalmazza, amelyet az API `EventSubscription.Properties` -hoz használ a témakörök létrehozásakor.
-* Egy témakör törléséhez állítsa az értékét `null` a kívánt tulajdonságokra.
+* A témakörök szakaszban szereplő egyes kulcs-érték párok értéke pontosan ugyanazt a JSON-sémát tartalmazza, amelyet az API-hoz használ a `Topic.Properties` témakörök létrehozásakor.
+* A **EventSubscriptions** szakaszban szereplő egyes kulcs-érték párok értéke pontosan ugyanazt a JSON-sémát tartalmazza, amelyet az API-hoz használ a `EventSubscription.Properties` témakörök létrehozásakor.
+* Egy témakör törléséhez állítsa az értékét a `null` kívánt tulajdonságokra.
 * Az esemény-előfizetések a kívánt tulajdonságok használatával történő törlése nem támogatott.
 
 ```json

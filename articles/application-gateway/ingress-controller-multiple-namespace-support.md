@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető több névtér tá
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556167"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Több névtér támogatásának engedélyezése egy AK-fürtön Application Gateway bejövő adatkezelővel
 
@@ -21,14 +21,14 @@ A Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-w
 
 Az 0,7-es verziótól kezdve az [Azure Application Gateway Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC) több névtérből is betöltheti az eseményeket, és megfigyelheti azokat. Ha az AK rendszergazdája úgy dönt, hogy az [app Gateway](https://azure.microsoft.com/services/application-gateway/) -t bejövőként használja, az összes névtér ugyanazt a példányt fogja használni Application Gateway. A bejövő hozzáférés-vezérlés egyetlen telepítése figyeli a hozzáférhető névtereket, és konfigurálja a Application Gateway társítva lesz.
 
-A AGIC 0,7-es verziója továbbra is kizárólag `default` a névteret vizsgálja meg, kivéve, ha ezt explicit módon egy vagy több különböző névtérre változtatja a Helm konfigurációjában (lásd az alábbi szakaszt).
+A AGIC 0,7-es verziója továbbra is kizárólag a `default` névteret vizsgálja meg, kivéve, ha ezt explicit módon egy vagy több különböző névtérre változtatja a Helm konfigurációjában (lásd az alábbi szakaszt).
 
 ## <a name="enable-multiple-namespace-support"></a>Több névtér támogatásának engedélyezése
 Több névtér támogatásának engedélyezése:
 1. módosítsa a [Helm-config. YAML](#sample-helm-config-file) fájlt az alábbi módszerek egyikével:
    - törölje a `watchNamespace` kulcsot teljes egészében a [Helm-config fájlból. YAML](#sample-helm-config-file) – a AGIC minden névteret figyelembe vesz
-   - üres `watchNamespace` karakterláncra van beállítva – a AGIC minden névteret betart
-   - több névtér hozzáadása vesszővel (`watchNamespace: default,secondNamespace`) – a AGIC csak a következő névtereket veszi figyelembe:
+   - `watchNamespace`üres karakterláncra van beállítva – a AGIC minden névteret betart
+   - több névtér hozzáadása vesszővel ( `watchNamespace: default,secondNamespace` ) – a AGIC csak a következő névtereket veszi figyelembe:
 2. a Helm-sablon módosításainak alkalmazása a következővel:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Az üzembe helyezést követően több névteret is megfigyelheti, a AGIC a következőket teszi:
@@ -44,7 +44,8 @@ A hierarchia- **figyelők** (IP-cím, port és gazdagép) és az **útválasztá
 
 A többi elérési úton, a háttér-készletek, a HTTP-beállítások és a TLS-tanúsítványok csak egyetlen névtérből hozhatók létre, és a rendszer eltávolítja a duplikált elemeket.
 
-Tegyük fel például, hogy a következő duplikált bejövő erőforrások `staging` definiált `production` névtereket és a `www.contoso.com`:
+Tegyük fel például, hogy a következő duplikált bejövő erőforrások definiált névtereket `staging` és `production` a `www.contoso.com` :
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -81,7 +82,7 @@ spec:
               servicePort: 80
 ```
 
-Annak ellenére, hogy a bejövő erőforrások felé irányuló forgalmat a rendszer `www.contoso.com` a megfelelő Kubernetes-névterekhez irányítja, csak egy háttérrendszer képes a forgalom kiszolgálására. A AGIC létrehoz egy konfigurációt az egyik erőforrásra vonatkozóan az "első alkalommal kiszolgált" alapján. Ha egyszerre két ingresses-erőforrást hoz létre, akkor az ábécében az egyik korábbi is elsőbbséget élvez. A fenti példában csak a `production` bejövő adatokra vonatkozó beállításokat lehet létrehozni. A Application Gateway a következő erőforrásokkal lesz konfigurálva:
+Annak ellenére, hogy a bejövő erőforrások felé irányuló forgalmat a rendszer `www.contoso.com` a megfelelő Kubernetes-névterekhez irányítja, csak egy háttérrendszer képes a forgalom kiszolgálására. A AGIC létrehoz egy konfigurációt az egyik erőforrásra vonatkozóan az "első alkalommal kiszolgált" alapján. Ha egyszerre két ingresses-erőforrást hoz létre, akkor az ábécében az egyik korábbi is elsőbbséget élvez. A fenti példában csak a bejövő adatokra vonatkozó beállításokat lehet létrehozni `production` . A Application Gateway a következő erőforrásokkal lesz konfigurálva:
 
   - Hallgató`fl-www.contoso.com-80`
   - Útválasztási szabály:`rr-www.contoso.com-80`
@@ -89,18 +90,19 @@ Annak ellenére, hogy a bejövő erőforrások felé irányuló forgalmat a rend
   - HTTP-beállítások:`bp-production-contoso-web-service-80-80-websocket-ingress`
   - Állapot mintavétele:`pb-production-contoso-web-service-80-websocket-ingress`
 
-Vegye figyelembe, hogy a *figyelő* és az *útválasztási szabály*kivételével a létrehozott Application Gateway erőforrások közé tartozik annak a névtérnek`production`() a neve, amelyhez létre lettek hozva.
+Vegye figyelembe, hogy a *figyelő* és az *útválasztási szabály*kivételével a létrehozott Application Gateway erőforrások közé tartozik annak a névtérnek () a neve, amelyhez létre lettek `production` hozva.
 
-Ha a két bejövő erőforrás be van vezetve az AK-fürtbe különböző időpontokban, valószínű, hogy a AGIC, amikor újrakonfigurálja Application Gateway és átirányítja a forgalmat a rendszerből `namespace-B` `namespace-A`.
+Ha a két bejövő erőforrás be van vezetve az AK-fürtbe különböző időpontokban, valószínű, hogy a AGIC, amikor újrakonfigurálja Application Gateway és átirányítja a forgalmat a rendszerből `namespace-B` `namespace-A` .
 
-Ha például először adta hozzá `staging` a-t, a AGIC úgy konfigurálja Application Gateway, hogy átirányítsa a forgalmat az átmeneti háttérrendszer-készletbe. Egy későbbi fázisban a bejövő `production` forgalom bevezetése a AGIC újraprogramozását eredményezi Application Gateway, amely a háttér-készletbe irányítja a `production` forgalmat.
+Ha például először adta hozzá a `staging` -t, a AGIC úgy konfigurálja Application Gateway, hogy átirányítsa a forgalmat az átmeneti háttérrendszer-készletbe. Egy későbbi fázisban a `production` Bejövő forgalom bevezetése a AGIC újraprogramozását eredményezi Application Gateway, amely a háttér-készletbe irányítja a forgalmat `production` .
 
 ## <a name="restrict-access-to-namespaces"></a>Névterek elérésének korlátozása
 Alapértelmezés szerint a AGIC a megadott névtéren belüli jegyzett bejövő forgalom alapján konfigurálja Application Gateway. Ha korlátozni szeretné ezt a viselkedést, a következő lehetőségek közül választhat:
-  - korlátozza a névtereket, ha explicit módon definiálja a névtereket, a AGIC `watchNamespace` a [Helm-config](#sample-helm-config-file) YAML kulcsán keresztül kell megfigyelnie. YAML
+  - korlátozza a névtereket, ha explicit módon definiálja a névtereket, a AGIC a `watchNamespace` [Helm-config](#sample-helm-config-file) YAML kulcsán keresztül kell megfigyelnie. YAML
   - a [szerepkörök és RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) használata a AGIC meghatározott névterekre való korlátozásához
 
 ## <a name="sample-helm-config-file"></a>Példa Helm konfigurációs fájlra
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -152,5 +154,5 @@ Alapértelmezés szerint a AGIC a megadott névtéren belüli jegyzett bejövő 
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 

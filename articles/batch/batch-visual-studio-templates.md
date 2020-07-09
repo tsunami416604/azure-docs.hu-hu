@@ -4,12 +4,11 @@ description: Ismerje meg, hogy a Visual Studio Project sablonjai hogyan segíthe
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: c4cdc3fa7b3238a83d55113c5f7dc551d637c8e2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779513"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959772"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>A Visual Studio Project templates használata a Batch-megoldások beindítására
 
@@ -90,7 +89,7 @@ Amikor a Feladatkezelő sablonnal hoz létre egy projektet, három kódrészlete
 
 Természetesen szükség szerint további fájlokat is hozzáadhat a feladat-elválasztó kódjának támogatásához, a feladat felosztási logikájának összetettsége alapján.
 
-A sablon emellett szabványos .NET-projektfájlok (például. csproj-fájl, app. config, packages. config stb.) is létrehozható.
+A sablon szabványos .NET-projektfájlok (például. csproj-fájl, app.config, packages.config stb.) is létrehozható.
 
 A szakasz további része a különböző fájlokat és a kód szerkezetét írja le, és bemutatja, hogy az egyes osztályok hogyan működik.
 
@@ -178,7 +177,7 @@ A kilépési kódok és kivételek biztosítják a programok futtatásának ered
 
 A Feladatkezelő sablonnal megvalósított Feladatkezelő-feladatok három lehetséges kilépési kódot adhatnak vissza:
 
-| Code | Leírás |
+| Code | Description |
 | --- | --- |
 | 0 |A Feladatkezelő sikeresen befejeződött. A feladat-elválasztó kódja befejeződött, és az összes feladat hozzá lett adva a feladathoz. |
 | 1 |A Feladatkezelő feladat sikertelen volt, kivétel történt a program "várt" részében. A kivételt egy diagnosztikai adatokat tartalmazó JobManagerException fordították le, és ahol lehetséges, a hiba megoldására vonatkozó javaslatokat. |
@@ -186,7 +185,7 @@ A Feladatkezelő sablonnal megvalósított Feladatkezelő-feladatok három lehet
 
 A Feladatkezelő feladatának meghibásodása esetén előfordulhat, hogy egyes feladatok még a hiba bekövetkezése előtt hozzá lettek adva a szolgáltatáshoz. Ezek a feladatok a szokásos módon fognak futni. A kód elérési útjának tárgyalásához tekintse meg a fenti "feladatok felosztása sikertelen" című témakört.
 
-A kivételek által visszaadott összes információ az StdOut. txt és a stderr. txt fájlba íródik. [További információ: hibakezelés](error-handling.md).
+A kivételek által visszaadott összes információ stdout.txt és stderr.txt fájlba íródik. [További információ: hibakezelés](error-handling.md).
 
 ### <a name="client-considerations"></a>Ügyfelekkel kapcsolatos megfontolások
 Ez a szakasz néhány ügyfél-megvalósítási követelményt ismertet, amikor a sablon alapján meghívja a Feladatkezelőt. A paraméterek és környezeti beállítások átadásának részleteiért lásd: [paraméterek és környezeti változók továbbítása az ügyfél kódjából](#pass-environment-settings) .
@@ -259,7 +258,7 @@ Amikor létrehoz egy projektet a feladat-feldolgozó sablonnal, három kódrész
 
 Természetesen a feladatok processzor-kódjának támogatásához szükség szerint további fájlokat is hozzáadhat, a feladat felosztási logikájának összetettsége alapján.
 
-A sablon emellett szabványos .NET-projektfájlok (például. csproj-fájl, app. config, packages. config stb.) is létrehozható.
+A sablon szabványos .NET-projektfájlok (például. csproj-fájl, app.config, packages.config stb.) is létrehozható.
 
 A szakasz további része a különböző fájlokat és a kód szerkezetét írja le, és bemutatja, hogy az egyes osztályok hogyan működik.
 
@@ -356,7 +355,7 @@ A kilépési kódok és kivételek biztosítják a programok futtatásának ered
 
 A feladat-feldolgozó sablonnal megvalósított feladat-feldolgozó feladat három lehetséges kilépési kódot tud visszaadni:
 
-| Code | Leírás |
+| Code | Description |
 | --- | --- |
 | [Process. ExitCode][process_exitcode] |A feladat processzora befejeződött. Vegye figyelembe, hogy ez nem jelenti azt, hogy a meghívott program sikeres volt – csak azt, hogy a feldolgozói feladat sikeresen megkezdődött, és kivételek nélkül hajtotta végre a feldolgozás utáni műveleteket. A kilépési kód jelentése a meghívott programtól függ – általában a 0. kilépési kód azt jelenti, hogy a program sikeres volt, és minden más kilépési kód azt jelenti, hogy a program meghiúsult. |
 | 1 |A feladat processzora nem tudott kivételt a program "várt" részében. A kivételt a `TaskProcessorException` diagnosztikai információkra fordították le, és ahol lehetséges, a hiba megoldására vonatkozó javaslatokat. |
@@ -367,7 +366,7 @@ A feladat-feldolgozó sablonnal megvalósított feladat-feldolgozó feladat hár
 > 
 > 
 
-A kivételek által visszaadott összes információ az StdOut. txt és a stderr. txt fájlba íródik. További információ: hibakezelés, a Batch dokumentációjában.
+A kivételek által visszaadott összes információ stdout.txt és stderr.txt fájlba íródik. További információ: hibakezelés, a Batch dokumentációjában.
 
 ### <a name="client-considerations"></a>Ügyfelekkel kapcsolatos megfontolások
 **Tárolási hitelesítő adatok**
@@ -397,12 +396,12 @@ Az ügyfél környezeti beállítások formájában adhatja át az adatokat a Fe
 * Batch-fiók URL-címe
 * Batch-fiók kulcsa
 
-A Batch szolgáltatás egyszerű mechanizmussal rendelkezik a környezeti beállítások egy Feladatkezelő feladathoz való átadásához a `EnvironmentSettings` [Microsoft. Azure. Batch. JobManagerTask][net_jobmanagertask]tulajdonságának használatával.
+A Batch szolgáltatás egyszerű mechanizmussal rendelkezik a környezeti beállítások átadásához a Feladatkezelő feladatához a `EnvironmentSettings`Microsoft.Azure.BatCH tulajdonságának használatával [. JobManagerTask][net_jobmanagertask].
 
 A Batch-fiókhoz tartozó példány beszerzéséhez például a `BatchClient` Batch-fiók URL-címét és a megosztott kulcs hitelesítő adatait adhatja át az ügyfél kódjában. Hasonlóképpen, a Batch-fiókhoz csatolt Storage-fiók eléréséhez adja át a Storage-fiók nevét és a Storage-fiók kulcsát környezeti változókként.
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>Paraméterek továbbítása a Feladatkezelő sablonba
-Sok esetben hasznos lehet a feladat-felügyeleti feladathoz tartozó feladatok átadása a Feladatkezelő tevékenység számára, vagy a feladat felosztási folyamatának szabályozása vagy a feladat feladatainak konfigurálása. Ezt úgy teheti meg, hogy feltölt egy Parameters. JSON nevű JSON-fájlt a Feladatkezelő feladathoz tartozó erőforrás-fájlként. A paraméterek ezután elérhetővé válnak a `JobSplitter._parameters` Feladatkezelő sablon mezőjében.
+Sok esetben hasznos lehet a feladat-felügyeleti feladathoz tartozó feladatok átadása a Feladatkezelő tevékenység számára, vagy a feladat felosztási folyamatának szabályozása vagy a feladat feladatainak konfigurálása. Ezt úgy teheti meg, hogy feltölt egy parameters.jsnevű JSON-fájlt a Feladatkezelő feladathoz tartozó erőforrás-fájlként. A paraméterek ezután elérhetővé válnak a `JobSplitter._parameters` Feladatkezelő sablon mezőjében.
 
 > [!NOTE]
 > A beépített paraméter-kezelő csak a karakterláncok közötti szótárakat támogatja. Ha az összetett JSON-értékeket paraméter-értékként kívánja átadni, ezeket karakterláncként kell átadnia, és elemezni kell őket a feladatok elválasztójában, vagy módosítania kell a keretrendszer `Configuration.GetJobParameters` metódusát.
@@ -412,10 +411,10 @@ Sok esetben hasznos lehet a feladat-felügyeleti feladathoz tartozó feladatok �
 ### <a name="pass-parameters-to-the-task-processor-template"></a>Paraméterek átadása a feladathoz tartozó processzor sablonjának
 Paramétereket is átadhat a feladat-feldolgozó sablon használatával megvalósított egyes feladatokhoz. Csakúgy, mint a Feladatkezelő sablonnal, a feladat processzor-sablonja a következő nevű erőforrásfájl-fájlt keresi:
 
-Parameters. JSON, és ha megtalálta, betölti a paramétereket tartalmazó szótárt. A következő lehetőségek közül választhat, hogy miként lehet paramétereket átadni a feladat-feldolgozó feladatainak:
+parameters.js, és ha megtalálta, betölti a paramétereket tartalmazó szótárba. A következő lehetőségek közül választhat, hogy miként lehet paramétereket átadni a feladat-feldolgozó feladatainak:
 
-* Használja újra a JSON-feladatok paramétereit. Ez jól működik, ha az egyetlen paraméter a feladatok széles skálája (például a renderelés magassága és szélessége). Ennek elvégzéséhez a CloudTask létrehozásakor vegyen fel egy hivatkozást a Task Manager feladat ResourceFiles ( `JobSplitter._jobManagerTask.ResourceFiles` ) és a CloudTask ResourceFiles-gyűjteményéhez tartozó Parameters. JSON erőforrásfájl-objektumra.
-* Feladat-specifikus paraméterek. JSON-dokumentum létrehozása és feltöltése a feladat-elválasztó végrehajtásának részeként, valamint a feladat erőforrásfájl-gyűjteményében lévő blob hivatkozása. Erre akkor van szükség, ha a különböző tevékenységek különböző paraméterekkel rendelkeznek. Ilyen lehet például egy 3D megjelenítési forgatókönyv, amelyben a rendszer paraméterként továbbítja a frame indexet a feladatnak.
+* Használja újra a JSON-feladatok paramétereit. Ez jól működik, ha az egyetlen paraméter a feladatok széles skálája (például a renderelés magassága és szélessége). Ehhez vegyen fel egy hivatkozást a feladat-elválasztó CloudTask, és adja hozzá parameters.jsa ResourceFiles () erőforrás-objektumra mutató hivatkozást a `JobSplitter._jobManagerTask.ResourceFiles` CloudTask ResourceFiles-gyűjteményéhez.
+* Feladat-specifikus parameters.jslétrehozása és feltöltése a dokumentumhoz a feladat-elválasztó végrehajtásának részeként, és hivatkozás a feladat erőforrásfájl-gyűjteményében található blobra. Erre akkor van szükség, ha a különböző tevékenységek különböző paraméterekkel rendelkeznek. Ilyen lehet például egy 3D megjelenítési forgatókönyv, amelyben a rendszer paraméterként továbbítja a frame indexet a feladatnak.
 
 > [!NOTE]
 > A beépített paraméter-kezelő csak a karakterláncok közötti szótárakat támogatja. Ha az összetett JSON-értékeket paraméter-értékként kívánja átadni, ezeket karakterláncként kell átadnia, és elemezni kell őket a feldolgozói feladatban, vagy módosítania kell a keretrendszer `Configuration.GetTaskParameters` metódusát.
@@ -427,13 +426,13 @@ Parameters. JSON, és ha megtalálta, betölti a paramétereket tartalmazó szó
 A Batch-megoldások fejlesztésének egy másik hasznos eszköze [Azure batch fájl konvenciói][nuget_package]. Használja ezt a .NET-osztályt (jelenleg előzetes verzióban) a Batch .NET-alkalmazásaiban, így egyszerűen tárolhatja és lekérheti a tevékenységek kimeneteit az Azure Storage-ba és az-ból. A [Azure batch feladat és a feladat kimenetének](batch-task-output.md) megőrzése a könyvtár és a használat teljes körű megvitatását tartalmazza.
 
 
-[net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
+[net_jobmanagertask]: /dotnet/api/microsoft.azure.batch.jobmanagertask
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
-[process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
+[process_exitcode]: /dotnet/api/system.diagnostics.process.exitcode
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
 [vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
-[vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
+[vs_find_use_ext]: /visualstudio/ide/finding-and-using-visual-studio-extensions
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png

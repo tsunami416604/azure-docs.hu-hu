@@ -10,10 +10,9 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117257"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>A Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének előkészítésével
@@ -155,7 +154,7 @@ Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény előtt ke
 ```
 
 Részletesebb sablon a következő témakörben található:
-* A Azure Disk Encryption bővítmény alkalmazása a lemezt formázó egyéni rendszerhéj-parancsfájl után (Linux): [Deploy-extseq-Linux-ade-After-customscript. JSON](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* A Azure Disk Encryption bővítmény alkalmazása a lemezt formázó egyéni rendszerhéj-parancsfájl után (Linux): [deploy-extseq-linux-ADE-after-customscript.jsbe](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>További lépések

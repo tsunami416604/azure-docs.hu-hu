@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 09f08e314a634de13a683440ad9fead97ad8a260
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b5d1421c36fa5d0568985b7792715533d2540ee
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399581"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035931"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -17,7 +17,7 @@ Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-e
 
 ## <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
-Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t. A platformtól függően kövesse a Speech SDK cikk <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">beszédfelismerési SDK <span class="docon docon-navigate-external x-hidden-focus"></span> beszerzése</a> című szakaszának utasításait.
+Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t. A platformtól függően kövesse a _SPEECH SDK névjegye_ című cikk a <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> beszerzése</a> című szakaszában található utasításokat.
 
 ## <a name="import-dependencies"></a>Függőségek importálása
 
@@ -39,7 +39,7 @@ using namespace Microsoft::CognitiveServices::Speech::Translation;
 
 ## <a name="sensitive-data-and-environment-variables"></a>Bizalmas adatok és környezeti változók
 
-A cikkben szereplő mintakód a bizalmas adatok tárolására szolgáló környezeti változóktól, például a beszédfelismerési erőforrás-előfizetési kulcstól és régiótól függ. A C++-kódrészlet két olyan karakterlánc-értéket tartalmaz, amelyek a gazdagép-gépek környezeti változói `SPEECH__SUBSCRIPTION__KEY` alapján `SPEECH__SERVICE__REGION`vannak hozzárendelve, nevezetesen és. Mindkét mező a Class (osztály) hatókörében szerepel, így azok elérhetővé válnak az osztály metódus szervein belül. További információ a környezeti változókról: [környezeti változók és alkalmazás konfigurációja](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
+A cikkben szereplő mintakód a bizalmas adatok tárolására szolgáló környezeti változóktól, például a beszédfelismerési erőforrás-előfizetési kulcstól és régiótól függ. A C++-kódrészlet két olyan karakterlánc-értéket tartalmaz, amelyek a gazdagép-gépek környezeti változói alapján vannak hozzárendelve, nevezetesen `SPEECH__SUBSCRIPTION__KEY` és `SPEECH__SERVICE__REGION` . Mindkét mező a Class (osztály) hatókörében szerepel, így azok elérhetővé válnak az osztály metódus szervein belül. További információ a környezeti változókról: [környezeti változók és alkalmazás konfigurációja](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
 
 ```cpp
 auto SPEECH__SUBSCRIPTION__KEY = getenv("SPEECH__SUBSCRIPTION__KEY");
@@ -48,12 +48,12 @@ auto SPEECH__SERVICE__REGION = getenv("SPEECH__SERVICE__REGION");
 
 ## <a name="create-a-speech-translation-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechTranslationConfig`][config]. Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechTranslationConfig`][config] . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
 
 > [!TIP]
 > Függetlenül attól, hogy elvégezte-e a beszédfelismerést, a beszédfelismerést, a fordítást vagy a szándék felismerését, mindig hozzon létre egy konfigurációt.
 
-Az alábbiakat többféleképpen lehet inicializálni [`SpeechTranslationConfig`][config]:
+Az alábbiakat többféleképpen lehet inicializálni [`SpeechTranslationConfig`][config] :
 
 * Előfizetéssel: adjon egy kulcsot és a hozzá tartozó régiót.
 * Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
@@ -96,7 +96,7 @@ A [`SpeechRecognitionLanguage`][recognitionlang] tulajdonság nyelvi területi b
 
 ## <a name="add-translation-language"></a>Fordítási nyelv hozzáadása
 
-A beszédfelismerés egy másik gyakori feladata, hogy megadják a cél fordítási nyelveket, de legalább egy szükséges, de a többszörösek támogatottak. A következő kódrészletben francia és német nyelvű fordítási nyelvi célokat is.
+A beszédfelismerés egy másik gyakori feladata, hogy megadják a cél fordítási nyelveket, de legalább egy szükséges, de a többszörösek támogatottak. A következő kódrészlet a franciát és a német nyelvet állítja be fordítási nyelvi célokként.
 
 ```cpp
 void translateSpeech() {
@@ -111,13 +111,13 @@ void translateSpeech() {
 }
 ```
 
-Minden hívás [`AddTargetLanguage`][addlang]esetén új fordítási nyelv van megadva. Más szóval, ha a beszédfelismerést a forrás nyelvéről ismerik fel, minden cél fordítás az eredményül kapott fordítási művelet részeként érhető el.
+Minden hívás [`AddTargetLanguage`][addlang] esetén új fordítási nyelv van megadva. Más szóval, ha a beszédfelismerést a forrás nyelvéről ismerik fel, minden cél fordítás az eredményül kapott fordítási művelet részeként érhető el.
 
 ## <a name="initialize-a-translation-recognizer"></a>Fordító-felismerő inicializálása
 
-Miután létrehozta a [`SpeechTranslationConfig`][config]-t, a következő lépés a inicializálása [`TranslationRecognizer`][recognizer]. A [`TranslationRecognizer`][recognizer]inicializálásakor át kell adnia a `translationConfig`következőt:. A konfigurációs objektum biztosítja azokat a hitelesítő adatokat, amelyeket a beszédfelismerési szolgáltatás a kérelem érvényesítéséhez igényel.
+Miután létrehozta a [`SpeechTranslationConfig`][config] -t, a következő lépés a inicializálása [`TranslationRecognizer`][recognizer] . A inicializálásakor [`TranslationRecognizer`][recognizer] át kell adnia a következőt: `translationConfig` . A konfigurációs objektum biztosítja azokat a hitelesítő adatokat, amelyeket a beszédfelismerési szolgáltatás a kérelem érvényesítéséhez igényel.
 
-Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a [`TranslationRecognizer`][recognizer] következőképpen kell kinéznie:
+Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a következőképpen [`TranslationRecognizer`][recognizer] kell kinéznie:
 
 ```cpp
 void translateSpeech() {
@@ -135,7 +135,7 @@ void translateSpeech() {
 }
 ```
 
-Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy [`AudioConfig`][audioconfig] -t, és meg `audioConfig` kell adnia a paramétert [`TranslationRecognizer`][recognizer]a inicializálásakor.
+Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy-t, és meg kell [`AudioConfig`][audioconfig] adnia a `audioConfig` paramétert a inicializálásakor [`TranslationRecognizer`][recognizer] .
 
 > [!TIP]
 > [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
@@ -159,7 +159,7 @@ void translateSpeech() {
 }
 ```
 
-Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia a következőt: `audioConfig`. Ha azonban a létrehozása helyett a [`AudioConfig`][audioconfig](z) metódust hozza létre `FromDefaultMicrophoneInput`, `FromWavFileInput` hívja meg és `filename` adja át a paramétert.
+Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia a következőt: `audioConfig` . Ha azonban a létrehozása helyett a (z) metódust hozza létre [`AudioConfig`][audioconfig] `FromDefaultMicrophoneInput` , hívja meg `FromWavFileInput` és adja át a `filename` paramétert.
 
 ```cpp
 void translateSpeech() {
@@ -219,10 +219,10 @@ A sikeres beszédfelismerés és a fordítás után az eredmény egy szótár ö
 
 ### <a name="event-based-synthesis"></a>Eseményvezérelt szintézis
 
-Az `TranslationRecognizer` objektum egy `Synthesizing` eseményt tesz elérhetővé. Az esemény többször is bekövetkezik, és egy mechanizmust biztosít a szintetizált hang lekéréséhez a fordítási felismerés eredményéről. Ha több nyelvre végez fordítást, olvassa el a [manuális szintézis](#manual-synthesis)című témakört. Adja meg a szintézis hangját, és [`SetVoiceName`][voicename] adjon meg egy eseménykezelőt az `Synthesizing` eseményhez, majd szerezze be a hangot. Az alábbi példa *. wav* -fájlként menti a lefordított hangot.
+Az `TranslationRecognizer` objektum egy eseményt tesz elérhetővé `Synthesizing` . Az esemény többször is bekövetkezik, és egy mechanizmust biztosít a szintetizált hang lekéréséhez a fordítási felismerés eredményéről. Ha több nyelvre végez fordítást, olvassa el a [manuális szintézis](#manual-synthesis)című témakört. Adja meg a szintézis hangját, és adjon meg egy eseménykezelőt [`SetVoiceName`][voicename] az `Synthesizing` eseményhez, majd szerezze be a hangot. Az alábbi példa *. wav* -fájlként menti a lefordított hangot.
 
 > [!IMPORTANT]
-> Az Event-alapú szintézis csak egyetlen fordítással működik, **ne** adjon hozzá több fordítási nyelvet. Emellett a nyelvnek [`SetVoiceName`][voicename] meg kell egyeznie a cél fordítási nyelvével, például: `"de"` leképezés a `"de-DE-Hedda"`következőre:.
+> Az Event-alapú szintézis csak egyetlen fordítással működik, **ne** adjon hozzá több fordítási nyelvet. Emellett a [`SetVoiceName`][voicename] nyelvnek meg kell egyeznie a cél fordítási nyelvével, például a következőhöz: `"de"` `"de-DE-Hedda"` .
 
 ```cpp
 void translateSpeech() {
@@ -270,7 +270,7 @@ void translateSpeech() {
 
 ### <a name="manual-synthesis"></a>Manuális szintézis
 
-A [`Translations`][translations] szótár használható a hangfordítási szöveg hangszintéziséhez. Ismételje meg az egyes fordításokat, és szintetizálja a fordítást. Egy `SpeechSynthesizer` példány létrehozásakor az `SpeechConfig` objektumnak a kívánt hangra [`SetSpeechSynthesisVoiceName`][speechsynthesisvoicename] kell állítania a tulajdonságát. Az alábbi példa öt nyelvet fordít le, és az egyes fordítások a megfelelő neurális nyelven egy hangfájlba kerülnek.
+A [`Translations`][translations] szótár használható a hangfordítási szöveg hangszintéziséhez. Ismételje meg az egyes fordításokat, és szintetizálja a fordítást. Egy példány létrehozásakor `SpeechSynthesizer` az `SpeechConfig` objektumnak a [`SetSpeechSynthesisVoiceName`][speechsynthesisvoicename] kívánt hangra kell állítania a tulajdonságát. Az alábbi példa öt nyelvet fordít le, és az egyes fordítások a megfelelő neurális nyelven egy hangfájlba kerülnek.
 
 ```cpp
 void translateSpeech() {

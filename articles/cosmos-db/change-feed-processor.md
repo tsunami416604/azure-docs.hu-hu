@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119409"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 
@@ -23,19 +23,19 @@ A Change feed Processor Library fő előnye a hibatűrő viselkedés, amely bizt
 
 ## <a name="components-of-the-change-feed-processor"></a>A módosítási hírcsatorna processzorának összetevői
 
-A módosítási hírcsatorna processzorának megvalósításának négy fő összetevője van:
+A változáscsatorna-feldolgozó implementálásának négy fő összetevője van:
 
-1. **A figyelt tároló:** A figyelt tárolóban szerepelnek azok az adatok, amelyekről a változási csatornát létrehozták. A figyelt tároló összes beszúrása és frissítése megjelenik a tároló változási hírcsatornájában.
+1. **A monitorozott tároló:** A monitorozott tároló tartalmazza azokat az adatokat, amelyekből létrejön a változáscsatorna. A monitorozott tárolóba való beszúrások és a tároló frissítései megjelennek a tároló változáscsatornájában.
 
-1. **A bérlet tárolója:** A bérlet tároló állapot-tárolóként működik, és koordinálja a változási csatornát több feldolgozón keresztül. A bérlet tároló a figyelt tárolóval megegyező fiókban vagy egy külön fiókban is tárolható.
+1. **A bérlettároló:** A bérlettároló állapottárolóként működik, és több feldolgozó között koordinálja a változáscsatorna feldolgozását. A bérlettároló tárolható ugyanabban a fiókban, mint a monitorozott tároló, de akár külön fiókban is.
 
-1. **A gazdagép:** A gazdagép egy olyan alkalmazás-példány, amely a változási hírcsatorna-feldolgozó használatával figyeli a módosításokat. Az azonos címbérleti konfigurációval rendelkező példányok párhuzamosan futhatnak, de minden példánynak más **példánynév**is kell lennie.
+1. **A gazdagép:** A gazdagép egy olyan alkalmazáspéldány, amely a változáscsatorna feldolgozóját használja a módosítások figyeléséhez. Az azonos bérletkonfigurációval rendelkező példányok párhuzamosan is futhatnak, de minden példánynak más **példánynévvel** kell rendelkeznie.
 
-1. **A delegált:** A delegált az a kód, amely meghatározza, hogy az Ön és a fejlesztő milyen módosításokat szeretne végrehajtani a változási hírcsatorna-feldolgozó által beolvasott minden egyes kötegben. 
+1. **A delegált:** A delegált az a kód, amely meghatározza, hogy Ön, mint fejlesztő mit szeretne tenni azon egyes módosításkötegekkel, amelyeket a változáscsatorna feldolgozója beolvas. 
 
 Ha szeretné jobban megismerni, hogy a változási hírcsatorna processzorának négy eleme hogyan működik együtt, tekintsük át az alábbi ábrán látható példát. A figyelt tároló tárolja a dokumentumokat, és a "City" partíciót használja a partíciós kulcsként. Láthatjuk, hogy a partíciós kulcs értékei az elemeket tartalmazó tartományokban vannak elosztva. Két gazdagép-példány létezik, és a módosítási hírcsatorna processzora különböző tartományokat rendel az egyes példányokhoz a számítási eloszlás maximalizálása érdekében. Minden tartományt párhuzamosan kell beolvasni, és az előrehaladását a bérlet tárolójában lévő többi tartománytól elkülönítve kell karbantartani.
 
-![Példa a hírcsatorna processzorának módosítására](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Példa a hírcsatorna processzorának módosítására" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>A változási csatorna processzorának implementálása
 
@@ -56,7 +56,7 @@ A hívással megadhatja `Build` a processzor azon példányát, amelyet elindít
 
 ## <a name="processing-life-cycle"></a>Életciklus feldolgozása
 
-A gazdagép-példányok normál életciklusa:
+A gazdagéppéldány normál életciklusa:
 
 1. Olvassa el a változási csatornát.
 1. Ha nincsenek változások, Aludjon előre meghatározott ideig (testreszabható a `WithPollInterval` -ben a Builder-ben), és lépjen a #1.
@@ -83,7 +83,7 @@ Ahogy korábban említettük, egy üzembe helyezési egységen belül egy vagy t
 
 1. Minden példánynak ugyanazzal a bérlet-tároló konfigurációval kell rendelkeznie.
 1. Minden példánynak azonosnak kell lennie `processorName` .
-1. Minden példánynak más példánynév () névvel kell rendelkeznie `WithInstanceName` .
+1. Minden példánynak különböző példánynévvel kell rendelkeznie (`WithInstanceName`).
 
 Ha ezt a három feltételt alkalmazza, akkor a módosítási hírcsatorna processzora egyenlő terjesztési algoritmussal osztja el a bérleti tároló összes bérletét az adott üzembe helyezési egység összes futó példánya és a integrálással számítási szolgáltatás között. Egy bérlet csak egy példány tulajdonosa lehet egy adott időpontban, így a példányok maximális száma megegyezik a bérletek számával.
 

@@ -1,21 +1,29 @@
 ---
 title: Beépített szabályzat-definíciók listája
 description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c6a7f128dd2479645cc379f36532563c0ade5d14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651380"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313516"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
 
 Ez az oldal Azure Policy beépített szabályzat-definíciók indexe.
 
 Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+
+## <a name="api-for-fhir"></a>API for FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
+
+## <a name="api-management"></a>API Management
+
+[!INCLUDE [azure-policy-samples-policies-api-management](../../../../includes/policy/samples/bycat/policies-api-management.md)]
 
 ## <a name="app-configuration"></a>Alkalmazás konfigurációja
 
@@ -45,6 +53,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-cache](../../../../includes/policy/samples/bycat/policies-cache.md)]
 
+## <a name="cognitive-services"></a>Cognitive Services
+
+[!INCLUDE [azure-policy-samples-policies-cognitive-services](../../../../includes/policy/samples/bycat/policies-cognitive-services.md)]
+
 ## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-samples-policies-compute](../../../../includes/policy/samples/bycat/policies-compute.md)]
@@ -64,6 +76,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 ## <a name="data-lake"></a>Data Lake
 
 [!INCLUDE [azure-policy-samples-policies-data-lake](../../../../includes/policy/samples/bycat/policies-data-lake.md)]
+
+## <a name="event-grid"></a>Event Grid
+
+[!INCLUDE [azure-policy-samples-policies-event-grid](../../../../includes/policy/samples/bycat/policies-event-grid.md)]
 
 ## <a name="event-hub"></a>Eseményközpont
 
@@ -89,10 +105,6 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](../../../../includes/policy/samples/bycat/policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes szolgáltatás
-
-[!INCLUDE [azure-policy-samples-policies-kubernetes-service](../../../../includes/policy/samples/bycat/policies-kubernetes-service.md)]
-
 ## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](../../../../includes/policy/samples/bycat/policies-lighthouse.md)]
@@ -100,6 +112,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 ## <a name="logic-apps"></a>Logic Apps
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](../../../../includes/policy/samples/bycat/policies-logic-apps.md)]
+
+## <a name="machine-learning"></a>Machine Learning
+
+[!INCLUDE [azure-policy-samples-policies-machine-learning](../../../../includes/policy/samples/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>Felügyelt alkalmazás
 
@@ -129,6 +145,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-service-fabric](../../../../includes/policy/samples/bycat/policies-service-fabric.md)]
 
+## <a name="signalr"></a>SignalR
+
+[!INCLUDE [azure-policy-samples-policies-signalr](../../../../includes/policy/samples/bycat/policies-signalr.md)]
+
 ## <a name="sql"></a>SQL
 
 [!INCLUDE [azure-policy-samples-policies-sql](../../../../includes/policy/samples/bycat/policies-sql.md)]
@@ -141,7 +161,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-stream-analytics](../../../../includes/policy/samples/bycat/policies-stream-analytics.md)]
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Címkék
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../../../includes/policy/samples/bycat/policies-tags.md)]
 

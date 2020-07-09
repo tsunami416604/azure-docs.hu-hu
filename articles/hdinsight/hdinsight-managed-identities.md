@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408941"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Felügyelt identitások az Azure HDInsight
@@ -31,7 +31,7 @@ Az Azure HDInsight-ben a felügyelt identitások kiosztása a fürt minden egyes
 
 A felügyelt identitások a következő módszerek bármelyikével hozhatók létre:
 
-* [Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+* [Azure Portalra](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
@@ -42,7 +42,7 @@ A felügyelt identitás konfigurálásának hátralévő lépései attól függn
 
 A felügyelt identitásokat több forgatókönyvben használják az Azure HDInsight. A részletes beállítási és konfigurációs utasításokért tekintse meg a kapcsolódó dokumentumokat:
 
-* [2. generációs Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Ügyfél által felügyelt kulcson alapuló lemeztitkosítás](disk-encryption.md)
 

@@ -7,11 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710371"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -29,7 +28,7 @@ Ezek a táblázatok összefoglalják a felhasználható adatműveleteket, amelye
 
 Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésében.
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |--------|-------------|
 | [**CSV-tábla létrehozása**](#create-csv-table-action) | Hozzon létre egy vesszővel tagolt (CSV) táblázatot egy tömbből. |
 | [**HTML-tábla létrehozása**](#create-html-table-action) | Hozzon létre egy HTML-táblázatot egy tömbből. |
@@ -42,9 +41,9 @@ Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésébe
 
 Ezek a műveletek segítenek JavaScript Object Notation (JSON) formátumban tárolt adatmennyiségek kezelésében.
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |--------|-------------|
-| [**Compose**](#compose-action) | Hozzon létre egy üzenetet vagy karakterláncot több olyan bemenetből, amely különböző adattípusokkal rendelkezhet. Ezt a karakterláncot ezután egyetlen bemenetként használhatja, és nem kell ismételten megadnia ugyanazt a bemenetet. Létrehozhat például egy JSON-üzenetet különböző bemenetekről. |
+| [**Összeállítás**](#compose-action) | Hozzon létre egy üzenetet vagy karakterláncot több olyan bemenetből, amely különböző adattípusokkal rendelkezhet. Ezt a karakterláncot ezután egyetlen bemenetként használhatja, és nem kell ismételten megadnia ugyanazt a bemenetet. Létrehozhat például egy JSON-üzenetet különböző bemenetekről. |
 | [**JSON-elemzés**](#parse-json-action) | Felhasználóbarát adattokeneket hozhat létre a JSON-tartalmak tulajdonságaihoz, így könnyebben használhatja a logikai alkalmazásaiban található tulajdonságokat. |
 |||
 
@@ -90,7 +89,7 @@ Egy példa kipróbálásához kövesse az alábbi lépéseket a Logic app Design
 
      ![Válassza az "új lépés" lehetőséget a "levélírás" művelethez](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen, a keresőmezőbe írja be `compose` szűrőként a kifejezést. A műveletek listából válassza ki az **összeállítás** műveletet.
 
@@ -148,7 +147,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-
 
      ![Válassza az "új lépés" lehetőséget a "CSV-táblázat létrehozása" művelethez](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen, a keresőmezőbe írja be `create csv table` szűrőként a kifejezést. A műveletek listából válassza a CSV- **táblázat létrehozása** műveletet.
 
@@ -219,11 +218,11 @@ A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszl
 
 #### <a name="work-in-code-view"></a>Munka kód nézetben
 
-A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden `value` tulajdonság esetében az összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
+A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden tulajdonság esetében az `value` összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
 
 1. A tervező eszköztárán válassza a **kód nézet**lehetőséget.
 
-1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt `value` a kifejezést a kívánt tömbképlet minden oszlopához:
+1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt a `value` kifejezést a kívánt tömbképlet minden oszlopához:
 
    ```json
    {
@@ -299,7 +298,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a H
 
      ![Válassza az "új lépés" lehetőséget a "HTML-tábla létrehozása" művelethez](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen, a keresőmezőbe írja be `create html table` szűrőként a kifejezést. A műveletek listából válassza a HTML- **táblázat létrehozása** műveletet.
 
@@ -370,11 +369,11 @@ A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszl
 
 #### <a name="work-in-code-view"></a>Munka kód nézetben
 
-A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden `value` tulajdonság esetében az összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
+A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden tulajdonság esetében az `value` összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
 
 1. A tervező eszköztárán válassza a **kód nézet**lehetőséget.
 
-1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt `value` a kifejezést a kívánt tömbképlet minden oszlopához:
+1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt a `value` kifejezést a kívánt tömbképlet minden oszlopához:
 
    ```json
    {
@@ -464,7 +463,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben
 
      ![Válassza az "új lépés" lehetőséget a "tömb szűrése" művelethez](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be `filter array` szűrőként a kifejezést. A műveletek listából válassza a **tömb szűrése** műveletet.
 
@@ -526,7 +525,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, akkor a jelen c
 
      ![SSelect "új lépés" a "Join" művelethez](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be `join` szűrőként a kifejezést. A műveletek listából válassza a következő műveletet: **Csatlakozás**
 
@@ -586,7 +585,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a cikkből átm
 
      ![Válassza az "új lépés" lehetőséget a "JSON-elemzés" művelethez](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be `parse json` szűrőként a kifejezést. A műveletek listából válassza a JSON- **elemzés** műveletet.
 
@@ -661,7 +660,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a j
 
      ![Válassza az "új lépés" lehetőséget a "Select" művelethez](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel**+**(). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `select` szűrőként a kifejezést. A műveletek listából válassza a **kijelölés** műveletet.
 
@@ -675,7 +674,7 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, másolhatja a j
 
 1. A **Térkép** mező bal oldali oszlopában adja meg a forrás tömbben az egyes értékek hozzárendeléséhez használni kívánt tulajdonság nevét. A jobb oldali oszlopban adjon meg egy kifejezést, amely a tulajdonságot hozzárendelni kívánt értéket jelöli.
 
-   Ez a példa a "Product_ID" értéket adja meg, mivel a tulajdonság neve az egész tömbben lévő értékek `item()` hozzárendelésére szolgál az egyes tömbökhöz hozzáférő kifejezésben szereplő függvény használatával. 
+   Ez a példa a "Product_ID" értéket adja meg, mivel a tulajdonság neve az egész tömbben lévő értékek hozzárendelésére szolgál az `item()` egyes tömbökhöz hozzáférő kifejezésben szereplő függvény használatával. 
 
    ![A JSON-objektum tulajdonságainak és értékeinek meghatározása tömb létrehozásához](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
@@ -697,7 +696,7 @@ Annak ellenőrzéséhez, hogy a **Select** művelet létrehozza-e a várt eredm�
 
    `@actionBody('Select')`
 
-   Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és az e-mail `@actionBody('Select')` -szövegtörzsben szereplő kifejezés kimeneteit tartalmazza:
+   Ez a példa az Office 365 Outlook **E-mail küldése** műveletét használja, és az `@actionBody('Select')` e-mail-szövegtörzsben szereplő kifejezés kimeneteit tartalmazza:
 
    ![Művelet kimenetei a "Select" műveletből](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 

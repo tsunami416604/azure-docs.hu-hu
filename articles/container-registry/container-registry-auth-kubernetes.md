@@ -5,13 +5,12 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84309815"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Képek lekérése egy Azure Container registryből egy Kubernetes-fürtre
 
@@ -20,7 +19,7 @@ Az Azure Container Registry-t tároló lemezképek forrásaként bármely Kubern
 > [!TIP]
 > Ha a felügyelt [Azure Kubernetes szolgáltatást](../aks/intro-kubernetes.md)használja, akkor a fürtöt a képek lekéréséhez a cél Azure Container Registry szolgáltatással is [integrálhatja](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) . 
 
-Ez a cikk feltételezi, hogy már létrehozott egy privát Azure Container registryt. Emellett a `kubectl` parancssori eszközön keresztül is futnia kell egy Kubernetes-fürtnek, és elérhetőnek kell lennie.
+Ez a cikk feltételezi, hogy már létrehozott egy privát Azure Container registryt. Emellett a parancssori eszközön keresztül is futnia kell egy Kubernetes-fürtnek, és elérhetőnek kell lennie `kubectl` .
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
@@ -40,41 +39,41 @@ Hozzon létre egy rendszerképet a következő `kubectl` paranccsal:
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 ahol:
 
-| Érték | Leírás |
+| Érték | Description |
 | :--- | :--- |
 | `secret-name` | A képkeresési titok neve, például *ACR-Secret* |
 | `namespace` | Kubernetes névtér, amely a titkot a következőre helyezi <br/> Csak akkor szükséges, ha a titkot az alapértelmezett névtértől eltérő névtérben kívánja elhelyezni. |
-| `container-registry-name` | Az Azure Container Registry neve |
+| `container-registry-name` | Az Azure Container Registry neve, például *myregistry*<br/><br/>A a `--docker-server` beállításjegyzék bejelentkezési kiszolgálójának teljesen minősített neve  |
 | `service-principal-ID` | Annak az egyszerű szolgáltatásnak az azonosítója, amelyet a Kubernetes a beállításjegyzék eléréséhez fog használni |
 | `service-principal-password` | Egyszerű szolgáltatásnév jelszava |
 
 ## <a name="use-the-image-pull-secret"></a>A rendszerkép lekérési titkának használata
 
-Miután létrehozta a rendszerkép lekérésének titkát, használhatja Kubernetes-hüvelyek és-telepítések létrehozásához. Adja `imagePullSecrets` meg a titkos kulcs nevét a telepítési fájlban. Például:
+Miután létrehozta a rendszerkép lekérésének titkát, használhatja Kubernetes-hüvelyek és-telepítések létrehozásához. Adja meg a titkos kulcs nevét a `imagePullSecrets` telepítési fájlban. Például:
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-Az előző példában `your-awesome-app:v1` a a rendszerkép neve, amelyet az Azure Container registryből kell lekérni, és `acr-secret` a létrehozott lekérési titok neve a beállításjegyzék eléréséhez. A pod telepítésekor a Kubernetes automatikusan lekéri a rendszerképet a beállításjegyzékből, ha még nem szerepel a fürtön.
+Az előző példában a a `my-awesome-app:v1` rendszerkép neve, amelyet az Azure Container registryből kell lekérni, és a `acr-secret` létrehozott lekérési titok neve a beállításjegyzék eléréséhez. A pod telepítésekor a Kubernetes automatikusan lekéri a rendszerképet a beállításjegyzékből, ha még nem szerepel a fürtön.
 
 
 ## <a name="next-steps"></a>További lépések

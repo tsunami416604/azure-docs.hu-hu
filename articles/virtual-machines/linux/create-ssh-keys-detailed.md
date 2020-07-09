@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142469"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119208"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Részletes lépések: SSH-kulcsok létrehozása és kezelése az Azure-beli linuxos virtuális gépek hitelesítéséhez 
 A Secure Shell (SSH) kulcspár használatával létrehozhat egy Linux rendszerű virtuális gépet az Azure-ban, amely alapértelmezés szerint SSH-kulcsokat használ a hitelesítéshez, így nincs szükség a bejelentkezéshez szükséges jelszavakra. A Azure Portal, az Azure CLI, a Resource Manager-sablonok vagy más eszközök segítségével létrehozott virtuális gépek tartalmazhatják a nyilvános SSH-kulcsot az üzembe helyezés részeként, amely beállítja az SSH-kulcsos hitelesítést az SSH-kapcsolatokhoz. 
 
 Ez a cikk részletes hátteret és lépéseket tartalmaz az SSH RSA nyilvános titkos kulcspár létrehozásához és kezeléséhez az SSH-ügyfélkapcsolatokhoz. Ha gyors parancsokat szeretne, tekintse meg a Linux rendszerű [virtuális gépekhez készült nyilvános SSH-kulcspár létrehozása az Azure-ban](mac-create-ssh-keys.md)című témakört.
 
-Az SSH-kulcsok Windows-számítógépen való létrehozásával és használatával kapcsolatos további lehetőségekért lásd: [az ssh-kulcsok használata az Azure-ban Windowson](ssh-from-windows.md).
+Az SSH-kulcsok létrehozásához és a **Windows** rendszerű számítógépekhez való kapcsolódáshoz használja az [ssh-kulcsok használata az Azure](ssh-from-windows.md)-ban című témakört.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -41,7 +41,7 @@ Az SSH-kulcsokat alapértelmezés szerint a `~/.ssh` könyvtár tárolja.  Ha Ö
 
 ### <a name="basic-example"></a>Alapszintű példa
 
-A következő `ssh-keygen` parancs az 2048 bites SSH RSA nyilvános és titkos kulcs fájljait hozza létre alapértelmezés szerint a `~/.ssh` címtárban. Ha egy SSH-kulcspár létezik az aktuális helyen, a rendszer felülírja ezeket a fájlokat.
+A következő `ssh-keygen` parancs az 4096 bites SSH RSA nyilvános és titkos kulcs fájljait hozza létre alapértelmezés szerint a `~/.ssh` címtárban. Ha egy SSH-kulcspár létezik az aktuális helyen, a rendszer felülírja ezeket a fájlokat.
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

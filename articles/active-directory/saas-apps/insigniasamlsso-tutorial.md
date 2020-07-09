@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 47f3885d9bd71abeb2a1bffe27b3ca1b2aa611ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7b62a65d3f0b3b4006c55f5323b1feb69cca9f1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100028"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Oktatóanyag: Azure Active Directory-integráció a Insignia SAML SSO-vel
 
@@ -107,12 +107,11 @@ Ha az Azure AD egyszeri bejelentkezést az SAML-alapú egyszeri bejelentkezésse
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<customername>.insigniails.com/ils`|
-    | `https://<customername>.insigniails.com/`|
-    | `https://<customername>.insigniailsusa.com/`|
-    | |
+    ```http
+    https://<customername>.insigniails.com/ils
+    https://<customername>.insigniails.com/
+    https://<customername>.insigniailsusa.com/
+    ```
     
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<customername>.insigniailsusa.com/<uniqueid>`
 
@@ -160,7 +159,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -198,7 +197,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Insignia SAML SSO csempére kattint, automatikusan be kell jelentkeznie az Insignia SAML SSO-ra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

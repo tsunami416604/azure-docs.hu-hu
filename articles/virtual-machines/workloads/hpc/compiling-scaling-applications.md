@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594797"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
@@ -33,11 +33,11 @@ Az AMD-optimalizáló C/C++ Compiler (AOCC) fordítórendszer magas szintű fejl
 
 ### <a name="clang"></a>Csenget
 
-A csenget egy C, C++ és Objective-C fordító, amely az előfeldolgozást, az elemzést, az optimalizálást, a kód generálását, a szerelvényt és a csatolást kezeli. A csenget támogatja `-march=znver1` a jelölőt, amely lehetővé teszi a legjobb kód generálását és finomhangolását az AMD Zen-alapú x86-architektúrája számára.
+A csenget egy C, C++ és Objective-C fordító, amely az előfeldolgozást, az elemzést, az optimalizálást, a kód generálását, a szerelvényt és a csatolást kezeli. A csenget támogatja a `-march=znver1` jelölőt, amely lehetővé teszi a legjobb kód generálását és finomhangolását az AMD Zen-alapú x86-architektúrája számára.
 
 ### <a name="flang"></a>FLANG
 
-A FLANG Compiler a AOCC Suite (2018. április) újabb verziója, és jelenleg előzetes kiadásban érhető el a fejlesztők számára a letöltéshez és teszteléshez. A FORTRAN 2008 alapján az AMD kiterjeszti a FLANG GitHub-verziójáthttps://github.com/flang-compiler/flang)(. A FLANG Compiler támogatja az összes csenget-fordítói beállítást és a FLANG-specifikus fordítási lehetőségek további számát.
+A FLANG Compiler a AOCC Suite (2018. április) újabb verziója, és jelenleg előzetes kiadásban érhető el a fejlesztők számára a letöltéshez és teszteléshez. A FORTRAN 2008 alapján az AMD kiterjeszti a FLANG GitHub-verzióját ( https://github.com/flang-compiler/flang) . A FLANG Compiler támogatja az összes csenget-fordítói beállítást és a FLANG-specifikus fordítási lehetőségek további számát.
 
 ### <a name="dragonegg"></a>DragonEgg
 

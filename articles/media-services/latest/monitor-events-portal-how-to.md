@@ -16,10 +16,9 @@ ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76509223"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services-események létrehozása és monitorozása az Event Griddel az Azure Portalon
@@ -73,7 +72,7 @@ A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely e
 
 1. Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. 
 
-    Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A végpontnak a következőre kell beállítania `validationResponse` : `validationCode`. További információ: [Event Grid biztonság és hitelesítés](../../event-grid/security-authentication.md). Megtekintheti a webalkalmazás kódját, hogy megtudja, hogyan érvényesíti az előfizetést.
+    Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A végpontnak a következőre kell beállítania: `validationResponse` `validationCode` . További információ: [Event Grid biztonság és hitelesítés](../../event-grid/security-authentication.md). Megtekintheti a webalkalmazás kódját, hogy megtudja, hogyan érvényesíti az előfizetést.
 
 Most aktiváljuk az eseményeket, hogy meglássuk, hogyan osztja el a Event Grid az üzenetet a végpontnak.
 

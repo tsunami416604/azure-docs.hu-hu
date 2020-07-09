@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
 ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019894"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Prediktív folyamatok létrehozása az Azure Machine Learning és az Azure Data Factory használatával
@@ -127,13 +126,13 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning batch végr
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | A folyamatban szereplő tevékenység neve     | Igen      |
-| leírás       | A tevékenység működését leíró szöveg  | Nem       |
-| típus              | Data Lake Analytics U-SQL tevékenység esetén a tevékenység típusa **AzureMLBatchExecution**. | Igen      |
-| linkedServiceName | Társított szolgáltatások a Azure Machine Learning társított szolgáltatáshoz. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| webServiceInputs  | Kulcs-érték párok, Azure Machine Learning webszolgáltatás-bemenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált bemeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a bemeneti Blobok helyét adja meg. | Nem       |
-| webServiceOutputs | Kulcs, érték párok, Azure Machine Learning webszolgáltatás-kimenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált kimeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a kimeneti Blobok helyét adja meg. | Nem       |
-| globalParameters  | A Azure Machine Learning Studio (klasszikus) batch-végrehajtási szolgáltatási végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Azure Machine Learning Studio (klasszikus) webszolgáltatásban definiált webszolgáltatás-paraméterek neveivel. Az értékek a Azure Machine Learning Studio (klasszikus) batch-végrehajtási kérelem GlobalParameters tulajdonságában lesznek átadva | Nem       |
+| name              | A folyamatban szereplő tevékenység neve     | Yes      |
+| leírás       | A tevékenység működését leíró szöveg  | No       |
+| típus              | Data Lake Analytics U-SQL tevékenység esetén a tevékenység típusa **AzureMLBatchExecution**. | Yes      |
+| linkedServiceName | Társított szolgáltatások a Azure Machine Learning társított szolgáltatáshoz. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Yes      |
+| webServiceInputs  | Kulcs-érték párok, Azure Machine Learning webszolgáltatás-bemenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált bemeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a bemeneti Blobok helyét adja meg. | No       |
+| webServiceOutputs | Kulcs, érték párok, Azure Machine Learning webszolgáltatás-kimenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált kimeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a kimeneti Blobok helyét adja meg. | No       |
+| globalParameters  | A Azure Machine Learning Studio (klasszikus) batch-végrehajtási szolgáltatási végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Azure Machine Learning Studio (klasszikus) webszolgáltatásban definiált webszolgáltatás-paraméterek neveivel. Az értékek a Azure Machine Learning Studio (klasszikus) batch-végrehajtási kérelem GlobalParameters tulajdonságában lesznek átadva | No       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>1. forgatókönyv: az Azure-ban tárolt adatokra hivatkozó webszolgáltatási bemeneteket/kimeneteket használó kísérletek Blob Storage
 

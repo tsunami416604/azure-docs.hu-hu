@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257614"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135457"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
 
@@ -92,11 +92,13 @@ Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md
 
     ![A Azure Backup tulajdonságai párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-A szabályozáshoz a [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) parancsmag is használható. Például:
+A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Íme egy példa:
 
-    $mon = [System.DayOfWeek]::Monday
-    $tue = [System.DayOfWeek]::Tuesday
-    Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "18:00:00" -WorkHourBandwidth  (512*1024) -NonWorkHourBandwidth (2048*1024)
+```azurepowershell-interactive
+$mon = [System.DayOfWeek]::Monday
+$tue = [System.DayOfWeek]::Tuesday
+Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "18:00:00" -WorkHourBandwidth  (512*1024) -NonWorkHourBandwidth (2048*1024)
+```
 
 A **Set-OBMachineSetting -NoThrottle** beállítás azt jelenti, hogy nincs szükség szabályozásra.
 
@@ -124,7 +126,7 @@ Ha az üzembe helyezést az 200-as számú forrásoldali gépen túlra bővíti,
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Gépek migrálása az új Process Server használatára
 
-1. Válassza a **Beállítások** > **site Recovery kiszolgálók**lehetőséget. Válassza ki a konfigurációs kiszolgálót, majd bontsa ki a **folyamat-kiszolgálók**elemet.
+1. Válassza a **Beállítások**  >  **site Recovery kiszolgálók**lehetőséget. Válassza ki a konfigurációs kiszolgálót, majd bontsa ki a **folyamat-kiszolgálók**elemet.
 
     ![A folyamat-kiszolgáló párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. Kattintson a jobb gombbal a jelenleg használt Process Server elemre, majd válassza a **váltás**lehetőséget.
@@ -144,12 +146,12 @@ A Linux-alapú virtuális gépek fő célkiszolgáló hozzáadásával kapcsolat
 
 Fő célkiszolgáló hozzáadása Windows-alapú virtuális géphez:
 
-1. Nyissa meg **Recovery Services** > tároló**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**lehetőséget.
+1. Nyissa meg **Recovery Services**tároló  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók**lehetőséget.
 2. Válassza ki a szükséges konfigurációs kiszolgálót, majd válassza a **fő célkiszolgáló**elemet.
 
     ![A fő célkiszolgáló hozzáadása gombot megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. Töltse le az egyesített telepítő fájlt, majd futtassa a fájlt a virtuális gépen a fő célkiszolgáló beállításához.
-4. Válassza a **fő cél** > telepítése**tovább**lehetőséget.
+4. Válassza a **fő cél telepítése**  >  **tovább**lehetőséget.
 
     ![A fő cél telepítése lehetőség kiválasztását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
 5. Válassza ki az alapértelmezett telepítési helyet, majd válassza a **telepítés**lehetőséget.
@@ -163,11 +165,11 @@ Fő célkiszolgáló hozzáadása Windows-alapú virtuális géphez:
     ![A konfigurációs kiszolgáló IP-címének és jelszavának megadását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Kattintson a **Register** (Regisztrálás) elemre. A regisztráció befejeződése után válassza a **Befejezés**lehetőséget.
 
-A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure Portal **Recovery Services** > tárolóban**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**csomópontban a konfigurációs kiszolgáló fő célkiszolgálón.
+A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure Portal **Recovery Services**tárolóban  >  **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálók**csomópontban a konfigurációs kiszolgáló fő célkiszolgálón.
 
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)letöltése és futtatása.

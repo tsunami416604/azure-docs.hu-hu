@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75927750"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
@@ -33,7 +33,7 @@ Névtér létrehozása:
     4. Az **előfizetés**mezőben válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni a névteret.
     5. Az **erőforráscsoport**mezőben válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér él, vagy hozzon létre egy újat.      
     6. A **hely**mezőben válassza ki azt a régiót, amelyben a névteret üzemeltetni szeretné.
-    7. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+    7. Válassza a **Létrehozás** lehetőséget. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
    
         ![Névtér létrehozása](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Győződjön meg arról, hogy a Service Bus-névtér üzembe helyezése sikeresen megtörtént. Az értesítések megtekintéséhez válassza a **harang ikont (riasztások)** az eszköztáron. Válassza ki az **erőforráscsoport nevét** az értesítésben a képen látható módon. Megjelenik a Service Bus-névteret tartalmazó erőforráscsoport.

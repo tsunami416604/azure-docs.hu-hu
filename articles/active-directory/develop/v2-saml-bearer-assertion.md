@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886177"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform és OAuth 2,0 SAML-tulajdonos állítási folyamata
@@ -85,7 +84,7 @@ A hozzáférési jogkivonat kézhezvétele után hívja meg a Graph API-kat (ebb
 
 1. Hozzon létre egy GET kérelmet az előző lépésben beolvasott hozzáférési jogkivonattal:
 
-    ![Kérelem kérése](./media/v2-saml-bearer-assertion/7.png)
+    ![GET kérés](./media/v2-saml-bearer-assertion/7.png)
 
 1. A sikeres kérelem után JSON-választ fog kapni.
 

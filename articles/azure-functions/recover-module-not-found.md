@@ -5,12 +5,12 @@ author: Hazhzeng
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: hazeng
-ms.openlocfilehash: 191cde0f90b4968ca230db72bad68cca8b1db3fd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: b2582caf407b3983b32c40482fa0f0275f00fb8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84554761"
 ---
 # <a name="troubleshoot-python-module-errors-in-azure-functions"></a>Python-modul hibáinak elhárítása Azure Functions
 
@@ -85,9 +85,9 @@ Lásd: [a csomag frissítése a legújabb verzióra](#update-your-package-to-the
 
 Nyissa meg a `requirements.txt` szövegszerkesztőben, és keresse meg a csomagot a alkalmazásban `https://pypi.org/project/<package-name>` . Egyes csomagok csak Windows vagy macOS platformokon futnak. Például a pywin32 csak Windows rendszeren fut.
 
-A `Module Not Found` hiba akkor fordulhat elő, ha Windows vagy MacOS rendszert használ a helyi fejlesztéshez. A csomagot azonban nem lehet importálni a Azure Functionson, amely Linux-t használ futásidőben. Ezt valószínűleg a használatával lehet a `pip freeze` virtuális környezetnek a Windows vagy MacOS rendszerű számítógépről a követelmények. txt fájlba való exportálására használni a projekt inicializálásakor.
+A `Module Not Found` hiba akkor fordulhat elő, ha Windows vagy MacOS rendszert használ a helyi fejlesztéshez. A csomagot azonban nem lehet importálni a Azure Functionson, amely Linux-t használ futásidőben. Ezt valószínűleg a használatával lehet a `pip freeze` virtuális környezetnek a Windows vagy MacOS rendszerű gépről requirements.txtba exportálni a projekt inicializálásakor.
 
-Lásd: [a csomag helyettesítése egyenértékű](#replace-the-package-with-equivalents) vagy [kézműves követelményekkel. txt](#handcraft-requirementstxt) a mérsékléshez.
+Lásd: [a csomag helyettesítése az egyenértékű](#replace-the-package-with-equivalents) vagy a [kézműves requirements.txtával](#handcraft-requirementstxt) .
 
 ## <a name="mitigate-modulenotfounderror"></a>ModuleNotFoundError enyhítése
 
@@ -118,19 +118,19 @@ Győződjön meg arról, hogy a **Docker** és a [Azure functions Core Tools](ht
 
 Keresse meg a csomag legújabb verzióját, `https://pypi.org/project/<package-name>` és tekintse meg az **osztályozók:** szakaszt. A csomagnak vagy `OS Independent` `POSIX` `POSIX :: Linux` **operációs rendszerrel**kompatibilisnek kell lennie. Emellett a programozási nyelvnek tartalmaznia kell a, a, a `Python :: 3` `Python :: 3.6` vagy a `Python :: 3.7` `Python :: 3.8` .
 
-Ha ezek helyesek, a csomagot a legújabb verzióra frissítheti a `<package-name>~=<latest-version>` követelmények. txt fájlban lévő vonal módosításával.
+Ha ezek helyesek, a csomagot a legújabb verzióra is frissítheti, ha módosítja a `<package-name>~=<latest-version>` requirements.txt lévő sort.
 
-### <a name="handcraft-requirementstxt"></a>Kézműves követelmények. txt
+### <a name="handcraft-requirementstxt"></a>Kézműves requirements.txt
 
 Egyes fejlesztők a `pip freeze > requirements.txt` Python-csomagok listáját használják a fejlesztői környezetekhez. Habár ez a kényelem a legtöbb esetben működik, a platformok közötti üzembe helyezési forgatókönyvek során problémák merülhetnek fel, például a függvények helyi fejlesztése Windows vagy macOS rendszeren, de a Linuxon futó Function alkalmazásban való közzététel is lehetséges. Ebben az esetben a `pip freeze` helyi fejlesztési környezet nem várt operációsrendszer-specifikus függőségeket vagy függőségeket tud bevezetni. Ezek a függőségek megszakítják a Python Function alkalmazást Linux rendszeren való futtatáskor.
 
-Az ajánlott eljárás az, hogy az importálási utasítást a projekt forráskódjának minden. a. a fájljában, csak a követelmények. txt fájlban lévő modulokban jelentkezzen be. Ez garantálja, hogy a csomagok feloldása megfelelően kezelhető a különböző operációs rendszereken.
+Az ajánlott eljárás az, ha az importálási utasítást a projekt forráskódjában lévő minden. a. a fájlból berequirements.txt jelöli. Ez garantálja, hogy a csomagok feloldása megfelelően kezelhető a különböző operációs rendszereken.
 
 ### <a name="replace-the-package-with-equivalents"></a>A csomag helyettesítése a megfelelővel
 
 Először is tekintse át a csomag legújabb verzióját a alkalmazásban `https://pypi.org/project/<package-name>` . Ennek a csomagnak általában saját GitHub-lapja van, a **problémák** szakasz a githubon és a keresés, ha a probléma kijavítva. Ha igen, frissítse a csomagot a legújabb verzióra.
 
-Előfordulhat, hogy a csomag integrálva lett a [Python standard Library](https://docs.python.org/3/library/) -ba (például pathlib). Ha igen, mivel egy bizonyos Python-disztribúciót biztosítunk Azure Functions (Python 3,6, Python 3,7 és Python 3,8), a követelmények. txt fájl csomagját el kell távolítani.
+Előfordulhat, hogy a csomag integrálva lett a [Python standard Library](https://docs.python.org/3/library/) -ba (például pathlib). Ha igen, mivel egy bizonyos Python-disztribúciót biztosítunk Azure Functions (Python 3,6, Python 3,7 és Python 3,8), el kell távolítani a csomagot a requirements.txt.
 
 Ha azonban egy olyan problémával szembesül, amelyet nem rögzítettek, és Ön határidővel rendelkezik. Azt javasoljuk, hogy végezzen kutatást, és találjon egy hasonló csomagot a projekthez. A Python-Közösség általában a hasonló könyvtárak széles választékát kínálja.
 

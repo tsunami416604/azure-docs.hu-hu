@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374848"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -91,6 +91,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 
 * A HDInsight 4,0 nem támogatja a Apache Hive MapReduce. Használja helyette az Apache TEZ. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
 * A HDInsight 4,0 nem támogatja a Apache Storm.
+* A HDInsight 4,0 nem támogatja a ML Services-fürt típusát.
 * A kaptár nézet már nem érhető el a HDInsight 4,0-ben.
 * Az Apache Zeppelin rendszerhéj-értelmező nem támogatott a Spark és az interaktív lekérdezési fürtökben.
 * Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Csak az LLAP kikapcsolására van lehetősége.

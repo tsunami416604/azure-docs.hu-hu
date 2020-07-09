@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100906"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
@@ -27,7 +27,7 @@ ms.locfileid: "82100906"
 A munkafolyamathoz társított hibaüzeneteket a következő módszerekkel érheti el:
 
 1. A parancssor használata és a beírása`msgen status`
-2. A StandardOutput. txt fájl tartalmának vizsgálata.
+2. standardoutput.txt tartalmának vizsgálata.
 
 ### <a name="1-using-the-command-line-msgen-status"></a>1. a parancssor használata`msgen status`
 
@@ -75,21 +75,21 @@ Három kötelező argumentum:
   > [!NOTE]
   >  Azt is megteheti, hogy a konfigurációs fájl elérési útját nem közvetlenül az URL-cím és a kulcs megadása helyett adja meg. Ha ezeket az argumentumokat a parancssorban és a konfigurációs fájlban is tartalmazza, akkor a parancssori argumentumok elsőbbséget élveznek.  
 
-A 1001-es és a config. txt fájlnak a msgen végrehajtható fájllal megegyező elérési útra helyezett konfigurációjában a parancs a következőhöz hasonlóan fog kinézni:
+A 1001-es AZONOSÍTÓJÚ munkafolyamathoz és config.txt fájlhoz a msgen végrehajtható fájllal megegyező elérési útra helyezve a parancs a következőképpen fog kinézni:
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. a StandardOutput. txt fájl tartalmának vizsgálata 
-Keresse meg a kérdéses munkafolyamat kimeneti tárolóját. A MSGEN minden munkafolyamat `[workflowfilename].logs.zip` -végrehajtás után létrehoz egy mappát. Bontsa ki a mappát a tartalmának megtekintéséhez:
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. a standardoutput.txt tartalmának vizsgálata 
+Keresse meg a kérdéses munkafolyamat kimeneti tárolóját. A MSGEN `[workflowfilename].logs.zip` minden munkafolyamat-végrehajtás után létrehoz egy mappát. Bontsa ki a mappát a tartalmának megtekintéséhez:
 
-* outputFileList. txt – a munkafolyamat során létrehozott kimeneti fájlok listája
-* StandardError. txt – ez a fájl üres.
-* StandardOutput. txt – naplózza az összes legfelső szintű állapotüzenetek, beleértve a hibákat, amelyek a munkafolyamat futtatásakor történtek.
-* GATK naplófájlok – a `logs` mappában található összes többi fájl
+* outputFileList.txt – a munkafolyamat során létrehozott kimeneti fájlok listája
+* standarderror.txt – ez a fájl üres.
+* standardoutput.txt – naplózza az összes legfelső szintű állapotüzenetek, beleértve a hibákat, amelyek a munkafolyamat futtatásakor történtek.
+* GATK naplófájlok – a mappában található összes többi fájl `logs`
 
-Hibaelhárításhoz vizsgálja meg a StandardOutput. txt fájl tartalmát, és jegyezze fel a megjelenő hibaüzeneteket.
+Hibaelhárításhoz vizsgálja meg standardoutput.txt tartalmát, és jegyezze fel a megjelenő hibaüzeneteket.
 
 
 ## <a name="step-2-try-recommended-steps-for-common-errors"></a>2. lépés: a gyakori hibákra vonatkozó ajánlott lépések kipróbálása

@@ -1,14 +1,14 @@
 ---
 title: DoD Impact Level 4 terv minta-vezérlők
 description: A DoD Impact Level 4 terv minta hozzárendelésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 05/12/2020
+ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 54eb1807e4986bb56b72e064cdae9df973ed7a81
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168981"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800426"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 tervezetének vezérlése
 
@@ -175,21 +175,21 @@ Ehhez a beépített szabályzathoz az erőforrástípusok tömbjét kell megadni
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) a legkevésbé szükséges funkciók | Program végrehajtásának megakadályozása
 
-A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem kényszerítési módban futtatható, amely tiltja a nem jóváhagyott alkalmazások futtatását. Ez a terv egy Azure Policy-definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, amelyekben az alkalmazás-engedélyezési lista ajánlott, de még nincs konfigurálva.
+A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési lista megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem kényszerítési módban futtatható, amely tiltja a nem jóváhagyott alkalmazások futtatását. Ez a tervrajz olyan Azure Policy-definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, ahol az alkalmazás engedélyezési listája ajánlott, de még nincs konfigurálva.
 
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
+- Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) a legkevésbé szükséges funkciók | Engedélyezett szoftver/engedélyezési lista
 
-A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem lehetővé teszi a jóváhagyott alkalmazások listáját a virtuális gépekhez. Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, amelyekben az alkalmazás-engedélyezési lista ajánlott, de még nincs konfigurálva.
+A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési lista megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem lehetővé teszi a jóváhagyott alkalmazások listáját a virtuális gépekhez. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, ahol az alkalmazás engedélyezési listája ajánlott, de még nincs konfigurálva.
 
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
+- Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 felhasználó által telepített szoftver
 
-A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem segítségével érvényesítheti és figyelheti a szoftverkorlátozó házirendek megfelelőségét. Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, amelyekben az alkalmazás-engedélyezési lista ajánlott, de még nincs konfigurálva.
+A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési lista megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem segítségével érvényesítheti és figyelheti a szoftverkorlátozó házirendek megfelelőségét. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, ahol az alkalmazás engedélyezési listája ajánlott, de még nincs konfigurálva.
 
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
+- Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken
 
 ## <a name="cp-7-alternate-processing-site"></a>CP-7 alternatív feldolgozási hely
 
@@ -415,7 +415,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a DoD Impact Level 4 tervezetének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 
@@ -423,7 +423,7 @@ Most, hogy áttekintette a DoD Impact Level 4 tervezetének vezérlési leképez
 > [DoD Impact Level 4 tervezet – áttekintés](./index.md) 
 >  [DoD Impact Level 4 tervezet – a lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

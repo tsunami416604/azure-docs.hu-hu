@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378b442c80758c4a5dca02b33f92ba3823f33ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113651"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB kérelemegységei
 
@@ -25,7 +25,7 @@ Egy 1 KB-os elem beolvasásának költsége 1 kérelemegység (1 RU). 1 GB-nyi a
 
 A következő képen a kérelemegységek áttekintése látható:
 
-![Adatbázis-műveletek felhasználásának kérelmezési egységei](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Adatbázis-műveletek felhasználásának kérelmezési egységei" border="false":::
 
 A kapacitás kezelése és tervezése érdekében az Azure Cosmos DB biztosítja, hogy egy adott adatbázis-művelethez a kérelemegységek száma egy adott adatkészletre determinisztikus legyen. Megvizsgálhatja a válasz fejlécét bármely adatbázis-művelet által felhasznált kérelemegységek számának nyomon követéséhez. Ha megérti [azokat a tényezőket, amelyek hatással vannak az ru-díjakra](request-units.md#request-unit-considerations) és az alkalmazás átviteli sebességére vonatkozó követelményekre, akkor az alkalmazás költségei hatékonyan futtathatók.
 

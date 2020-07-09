@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025067"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Az eszköz-és IoT automatikus kezelése a Azure Portal használatával
@@ -65,7 +65,7 @@ A konfiguráció létrehozásához öt lépés szükséges. A következő szakas
 
 ### <a name="name-and-label"></a>Név és címke
 
-1. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő `& ^ [ ] { } \ | " < > /`érvénytelen karaktereket:.
+1. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` .
 
 2. Címkék hozzáadása a konfigurációk nyomon követése érdekében. A címkék **név**, **érték** párok, amelyek leírják a konfigurációt. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
 
@@ -87,11 +87,11 @@ Megadhatja például a kettős elérési utat, `properties.desired.chiller-water
 ![A kettős elérési út és a tartalom beállítása](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
 
-Az egyes beállításokat megadhatja úgy is, hogy megadja a teljes dupla elérési utat, és a szögletes zárójelek nélkül biztosítja az értéket. Például a kettős elérési úttal `properties.desired.chiller-water.temperature`állítsa be a tartalmat a következőre:. `66` Ezután hozzon létre egy új, dupla beállítást a Pressure tulajdonsághoz. 
+Az egyes beállításokat megadhatja úgy is, hogy megadja a teljes dupla elérési utat, és a szögletes zárójelek nélkül biztosítja az értéket. Például a kettős elérési úttal `properties.desired.chiller-water.temperature` állítsa be a tartalmat a következőre: `66` . Ezután hozzon létre egy új, dupla beállítást a Pressure tulajdonsághoz. 
 
 Ha két vagy több konfiguráció ugyanazt a különálló elérési utat célozza meg, akkor a legmagasabb prioritású konfigurációból származó tartalom lesz érvényes (a 4. lépésben megadott prioritást kell megadni).
 
-Ha el szeretne távolítani egy meglévő tulajdonságot, a tulajdonság értékét állítsa be `null`.
+Ha el szeretne távolítani egy meglévő tulajdonságot, a tulajdonság értékét állítsa be `null` .
 
 További beállításokat adhat hozzá, ha az **eszköz hozzáadása** vagy a **modul különálló**beállítása lehetőséget választja.
 
@@ -120,7 +120,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Ha mérőszámot épít be a konfigurált modulok jelentésére, válassza `moduleId` a from `devices.modules`elemet. Például:
+Ha mérőszámot épít be a konfigurált modulok jelentésére, válassza `moduleId` a from elemet `devices.modules` . Például:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules

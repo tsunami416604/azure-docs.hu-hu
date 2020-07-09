@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339757"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>A Azure Portal használatával kezelheti a sávszélesség-ütemterveket a Azure Stack Edge-ben  
 
@@ -44,7 +43,7 @@ Az ütemterv hozzáadásához hajtsa végre az alábbi lépéseket a Azure Porta
    2. Ellenőrizze az **egész nap** beállítást, ha az adott ütemtervnek egész nap kell futnia.
    3. A **Sávszélesség** az eszköz által felhasznált sávszélesség Mb/s-ban kifejezett értéke a felhőműveletek (fel- és letöltés egyaránt) esetében. Ehhez a mezőhöz 20 és 1 000 000 007 közötti számot adjon meg.
    4. Ha nem kívánja korlátozni a fel- és letöltéseket, válassza a **Korlátlan** sávszélesség-beállítást.
-   5. Válassza a **Hozzáadás** lehetőséget.
+   5. Válassza a **Hozzáadás** elemet.
 
       ![Ütemterv hozzáadása](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480742"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Hibrid környezetek Azure Monitor for VMsának engedélyezése
@@ -41,7 +40,7 @@ A feladat elvégzéséhez szükséges lépéseket a következőképpen összegzi
 
 ## <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepítése Windows rendszeren
 
-A függőségi ügynököt manuálisan is telepítheti a Windows rendszerű `InstallDependencyAgent-Windows.exe`számítógépeken. Ha bármilyen lehetőség nélkül futtatja ezt a végrehajtható fájlt, elindul egy telepítővarázsló, amelyet követve interaktív módon telepítheti az ügynököt.
+A függőségi ügynököt manuálisan is telepítheti a Windows rendszerű számítógépeken `InstallDependencyAgent-Windows.exe` . Ha bármilyen lehetőség nélkül futtatja ezt a végrehajtható fájlt, elindul egy telepítővarázsló, amelyet követve interaktív módon telepítheti az ügynököt.
 
 >[!NOTE]
 >Az ügynök telepítéséhez vagy eltávolításához *rendszergazdai* jogosultságok szükségesek.
@@ -53,7 +52,7 @@ A következő táblázat azokat a paramétereket mutatja be, amelyeket az ügyn�
 | /? | A parancssori kapcsolók listáját adja vissza. |
 | /S | A csendes telepítést felhasználói beavatkozás nélkül hajtja végre. |
 
-A telepítőprogramnak a `/?` paraméterrel való futtatásához például írja be a következőt: **InstallDependencyAgent-Windows. exe/?**.
+A telepítőprogramnak a paraméterrel való futtatásához például írja be a következőt: `/?` **InstallDependencyAgent-Windows.exe/?**.
 
 A Windows-függőségi ügynök fájljai alapértelmezés szerint telepítve vannak a *C:\Program Files\Microsoft Dependency Agent* . Ha a telepítés befejezése után a függőségi ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A naplózási könyvtár a *%ProgramFiles%\Microsoft függőségi Agent\logs*.
 
@@ -71,15 +70,15 @@ A függőségi ügynök Linux-kiszolgálókra van telepítve a *InstallDependenc
 | -s | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
 | – Keresés | Győződjön meg arról, hogy az engedélyek és az operációs rendszer nem telepíti az ügynököt. |
 
-A telepítőprogramnak a `-help` paraméterrel való futtatásához például írja be a **InstallDependencyAgent-Linux64. bin-help**parancsot.
+A telepítőprogramnak a paraméterrel való futtatásához például `-help` írja be a **InstallDependencyAgent-Linux64. bin-help**parancsot.
 
-Telepítse a Linux függőségi ügynököt root-ként a parancs `sh InstallDependencyAgent-Linux64.bin`futtatásával.
+Telepítse a Linux függőségi ügynököt root-ként a parancs futtatásával `sh InstallDependencyAgent-Linux64.bin` .
 
 Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log*a naplózási könyvtár.
 
 A függőségi ügynök fájljai a következő könyvtárakba kerülnek:
 
-| Fájlok | Hely |
+| Files | Hely |
 |:--|:--|
 | Alapvető fájlok | /opt/microsoft/dependency-agent |
 | Naplófájlok | /var/opt/microsoft/dependency-agent/log |
@@ -156,7 +155,7 @@ Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, t
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version`parancsot. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-and-execute-a-template"></a>Sablon létrehozása és végrehajtása
 
@@ -206,7 +205,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
     }
     ```
 
-1. Mentse ezt a fájlt *installsolutionsforvminsights. JSON* néven egy helyi mappába.
+1. Mentse ezt a fájlt *installsolutionsforvminsights.jsként* egy helyi mappába.
 
 1. Rögzítse a *WorkspaceName*, a *ResourceGroupName*és a *WorkspaceLocation*értékeit. A *WorkspaceName* értéke a log Analytics munkaterület neve. A *WorkspaceLocation* értéke az a régió, amelyben a munkaterület definiálva van.
 
@@ -229,7 +228,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
 
 Ha a függőségi ügynök telepítése sikeres volt, de a számítógép nem jelenik meg a térképen, a következő lépésekkel diagnosztizálhatja a problémát.
 
-1. A függőségi ügynök telepítése sikeresen megtörtént? Ezt úgy ellenőrizheti, hogy ellenőrzi, hogy a szolgáltatás telepítve van-e és fut-e.
+1. Sikeres volt a függőségi ügynök telepítése? Ennek ellenőrzéséhez tekintse meg, hogy a szolgáltatás telepítve van és fut-e.
 
     **Windows**: keresse meg a "Microsoft függőségi ügynök" nevű szolgáltatást.
 
@@ -243,13 +242,13 @@ Ha a függőségi ügynök telepítése sikeres volt, de a számítógép nem je
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    Egy vagy több eredményt adott vissza? A legutóbbi adatszolgáltatások? Ha igen, a Log Analytics-ügynök megfelelően működik, és kommunikál a szolgáltatással. Ha nem, ellenőrizze az ügynököt a kiszolgálón: [log Analytics ügynök a Windows hibaelhárításához](../platform/agent-windows-troubleshoot.md) , vagy [log Analytics ügynök a Linux rendszerhez – hibaelhárítás](../platform/agent-linux-troubleshoot.md).
+    Egy vagy több eredményt adott vissza? Frissek az adatok? Ha igen, a Log Analytics-ügynök megfelelően működik, és kommunikál a szolgáltatással. Ha nem, ellenőrizze az ügynököt a kiszolgálón: [log Analytics ügynök a Windows hibaelhárításához](../platform/agent-windows-troubleshoot.md) , vagy [log Analytics ügynök a Linux rendszerhez – hibaelhárítás](../platform/agent-linux-troubleshoot.md).
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>A számítógép megjelenik a térképen, de nem rendelkezik folyamatokkal
 
 Ha látja a kiszolgálót a térképen, de nem rendelkezik folyamat-vagy adatszolgáltatással, akkor ez azt jelzi, hogy a függőségi ügynök telepítve van és fut, de a kernel-illesztőprogram nem töltődött be.
 
-Keresse meg a C:\Program Files\Microsoft függőség Agent\logs\wrapper.log fájl (Windows) vagy a/var/opt/Microsoft/Dependency-Agent/log/Service.log (Linux) fájlt. A fájl utolsó soraiban jelezni kell, hogy miért nem töltődött be a kernel. Előfordulhat például, hogy a kernelt nem támogatja a Linux, ha frissítette a kernelt.
+Ellenőrizze a C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log fájlt (Windows) vagy a /var/opt/microsoft/dependency-agent/log/service.log fájlt (Linux). A fájl utolsó sorai jelzik, hogy a kernel miért nem töltődött be. Előfordulhat például, hogy a Linux nem támogatja a kernelt, ha frissítette a kernelt.
 
 
 ## <a name="next-steps"></a>További lépések

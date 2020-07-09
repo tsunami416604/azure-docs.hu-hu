@@ -10,17 +10,16 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705049"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Virtuális gép útválasztási problémáinak diagnosztizálása
 
@@ -38,7 +37,7 @@ Az alábbi lépések feltételezik, hogy rendelkezik egy meglévő virtuális g�
 2. A Azure Portal tetején adja meg a futó állapotú virtuális gép nevét a keresőmezőbe. Ha a virtuális gép neve megjelenik a keresési eredmények között, válassza ki.
 3. A bal oldali **Beállítások** területen válassza a **hálózatkezelés**lehetőséget, majd a név kiválasztásával navigáljon a hálózati adapter erőforrásához.
      ![Hálózati adapterek megtekintése](./media/diagnose-network-routing-problem/view-nics.png)
-4. A bal oldalon válassza a **hatályos útvonalak**lehetőséget. A **myVMNic1** nevű hálózati adapter érvényes útvonalait a következő képen tekintheti meg: ![az érvényes útvonalak megtekintése](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. A bal oldalon válassza a **hatályos útvonalak**lehetőséget. A **myVMNic1** nevű hálózati adapter érvényes útvonalait a következő képen tekintheti meg: az ![ érvényes útvonalak megtekintése](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     Ha a virtuális géphez több hálózati adapter van csatlakoztatva, a kiválasztásával megtekintheti az összes hálózati adapter érvényes útvonalait. Mivel az egyes hálózati adapterek eltérő alhálózatokban is lehetnek, az egyes hálózati adapterek különböző tényleges útvonalakkal rendelkezhetnek.
 
@@ -52,7 +51,7 @@ Bár az előző lépések során a virtuális gépen megtekintett tényleges út
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa `Get-Module -ListAvailable Az` a parancsot a számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia `Connect-AzAccount` kell, hogy az Azure-ba jelentkezzen be egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa a parancsot a `Get-Module -ListAvailable Az` számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia kell, `Connect-AzAccount` hogy az Azure-ba jelentkezzen be egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
 Szerezze be a [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)hálózati adapter érvényes útvonalait. A következő példa lekéri a *myVMNic1*nevű hálózati adapter érvényes útvonalait, amely egy *myResourceGroup*nevű erőforráscsoport:
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: raynew
 ms.openlocfilehash: 22d8bcee96b4ac52641d4f0841267195f44fe15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75485207"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Azure-erőforrások áthelyezése régiók között
@@ -25,7 +24,7 @@ Az erőforrások adott Azure-régióban való üzembe helyezése után számos o
 - **Szolgáltatások/szolgáltatások igazítása**: az erőforrások áthelyezésével kihasználhatja az adott régióban elérhető szolgáltatások és szolgáltatások előnyeit.
 - **Válaszadás az üzleti fejleményekre**: erőforrások áthelyezése egy régióba az üzleti változások, például az összeolvadások vagy a beszerzések megválaszolására válaszul.
 - **Közelség**: erőforrások áthelyezése a vállalat helyi régiójába.
-- Az **adattárolási követelmények teljesítése**: helyezze át az erőforrásokat az adattárolási követelményekhez vagy az adatbesorolási igényekhez való igazodás érdekében. [További információ](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
+- Az **adattárolási követelmények teljesítése**: helyezze át az erőforrásokat az adattárolási követelményekhez vagy az adatbesorolási igényekhez való igazodás érdekében. [További információk](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
 - **Válaszadás a központi telepítési követelményekre**: a hiba miatt üzembe helyezett erőforrások áthelyezése vagy a kapacitási igényekre való áttérés. 
 - **Válasz a leszerelésre**: erőforrások áthelyezése a régiók leszerelése miatt.
 

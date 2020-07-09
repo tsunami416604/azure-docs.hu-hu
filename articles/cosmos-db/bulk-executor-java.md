@@ -5,26 +5,26 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260593"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Műveletek tömeges végrehajtása Azure Cosmos DB-adatokon a tömeges végrehajtási Java-kódtárral
 
 Ez az oktatóanyag útmutatást nyújt a Azure Cosmos DB tömeges végrehajtó Java-könyvtárának használatáról az importáláshoz és a Azure Cosmos DB dokumentumok frissítéséhez. Ha többet szeretne megtudni a tömeges végrehajtó függvénytárról, valamint arról, hogy miként segíti a nagy átviteli sebesség és tárterület kihasználását, tekintse meg a [tömeges végrehajtó függvénytár áttekintését](bulk-executor-overview.md) ismertető cikket. Ebben az oktatóanyagban egy olyan Java-alkalmazást hoz létre, amely véletlenszerű dokumentumokat hoz létre, és tömegesen importálnak egy Azure Cosmos-tárolóba. Az importálás után tömegesen frissíti a dokumentumok egyes tulajdonságait. 
 
-Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. A tömeges végrehajtó .NET-kódtár Gremlin API-val történő használatáról további információt a [tömeges műveletek végrehajtása Azure Cosmos db GREMLIN API-ban](bulk-executor-graph-dotnet.md)című témakörben talál.
+Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. A tömeges végrehajtó .NET-kódtár Gremlin API-val történő használatáról további információt a [tömeges műveletek végrehajtása Azure Cosmos db GREMLIN API-ban](bulk-executor-graph-dotnet.md)című témakörben talál. A fent ismertetett tömeges végrehajtó könyvtár csak a [Azure Cosmos db Java Sync SDK v2](sql-api-sdk-java.md) esetén érhető el, és ez a Java tömeges támogatásának jelenleg javasolt megoldása. Jelenleg nem érhető el a 3. x, 4. x vagy más SDK-verzióhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .  
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).  
 
 * Az Azure-előfizetések nélkül, díjmentesen és kötelezettségvállalásokon keresztül [Azure Cosmos db ingyen kipróbálhatja](https://azure.microsoft.com/try/cosmosdb/) . Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 
@@ -118,8 +118,8 @@ A klónozott adattár a "\azure-cosmosdb-bulkexecutor-Java-Getting-started\sampl
    |int getNumberOfDocumentsImported ()  |   A tömeges importálási API-híváshoz megadott dokumentumokból sikeresen importált dokumentumok teljes száma.      |
    |dupla getTotalRequestUnitsConsumed ()   |  A tömeges importálási API-hívás által felhasznált összes kérelmek egysége (RU).       |
    |Időtartam getTotalTimeTaken ()   |    A tömeges importálási API hívása által a végrehajtás befejezésére tett teljes idő.     |
-   |Kivételek listázása\<> getErrors () |  Lekéri a hibák listáját, ha nem sikerült beszúrni a tömeges importálási API-híváshoz megadott kötegből kiolvasott dokumentumokat.       |
-   |Objektum\<listázása> getBadInputDocuments ()  |    Azon helytelen formátumú dokumentumok listája, amelyeket nem sikerült importálni a tömeges importálási API-hívásban. A felhasználónak ki kell javítania a visszaadott dokumentumokat, és újra kell próbálkoznia az importálás A helytelen formátumú dokumentumok közé tartoznak azok a dokumentumok, amelyek azonosító értéke nem sztring (null vagy bármely más adattípus érvénytelennek tekintendő).     |
+   |GetErrors listázása \<Exception> () |  Lekéri a hibák listáját, ha nem sikerült beszúrni a tömeges importálási API-híváshoz megadott kötegből kiolvasott dokumentumokat.       |
+   |GetBadInputDocuments listázása \<Object> ()  |    Azon helytelen formátumú dokumentumok listája, amelyeket nem sikerült importálni a tömeges importálási API-hívásban. A felhasználónak ki kell javítania a visszaadott dokumentumokat, és újra kell próbálkoznia az importálás A helytelen formátumú dokumentumok közé tartoznak azok a dokumentumok, amelyek azonosító értéke nem sztring (null vagy bármely más adattípus érvénytelennek tekintendő).     |
 
 5. Miután megtörtént a tömeges importálás alkalmazása, hozza létre a parancssori eszközt a forrásból a "MVN tiszta csomag" parancs használatával. Ez a parancs egy jar-fájlt hoz létre a célmappában:  
 
@@ -133,7 +133,7 @@ A klónozott adattár a "\azure-cosmosdb-bulkexecutor-Java-Getting-started\sampl
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
-   A tömeges importáló létrehoz egy új adatbázist és egy gyűjteményt, amely az app. config fájlban megadott adatbázis-névvel, gyűjtemény nevével és átviteli értékkel rendelkezik. 
+   A tömeges importáló létrehoz egy új adatbázist és egy gyűjteményt, amely a App.config fájlban megadott adatbázis-névvel, gyűjtemény nevével és átviteli értékkel rendelkezik. 
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>A Azure Cosmos DBban tárolt adatmennyiségek tömeges frissítése
 
@@ -182,7 +182,7 @@ A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. E
    |int getNumberOfDocumentsUpdated ()  |   Azon dokumentumok teljes száma, amelyek sikeresen frissítve lettek a tömeges frissítési API-híváshoz megadott dokumentumokból.      |
    |dupla getTotalRequestUnitsConsumed () |  A tömeges frissítési API-hívás által felhasznált összes kérési egység (RU).       |
    |Időtartam getTotalTimeTaken ()  |   A tömeges frissítési API hívása által a végrehajtás befejezésére tett teljes idő.      |
-   |Kivételek listázása\<> getErrors ()   |       A hibák listájának beolvasása, ha a tömeges frissítési API-híváshoz megadott kötegből nem sikerült beszúrni néhány dokumentumot.      |
+   |GetErrors listázása \<Exception> ()   |       A hibák listájának beolvasása, ha a tömeges frissítési API-híváshoz megadott kötegből nem sikerült beszúrni néhány dokumentumot.      |
 
 3. Miután elvégezte a tömeges frissítés alkalmazását, hozza létre a parancssori eszközt a forrásból a "MVN tiszta csomag" parancs használatával. Ez a parancs egy jar-fájlt hoz létre a célmappában:  
 

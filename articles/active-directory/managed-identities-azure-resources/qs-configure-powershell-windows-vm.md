@@ -9,24 +9,24 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f24c89477d71df3f497590b49841403576343bd4
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 62c4baafdd66465502bf45fe19a111e17a9539ac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609073"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure-erőforrásokhoz a PowerShell használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
+Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory automatikusan felügyelt identitással. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
 
 Ebben a cikkben a PowerShell használatával megtudhatja, hogyan hajthatja végre a következő felügyelt identitásokat az Azure-erőforrások műveleteihez egy Azure-beli virtuális gépen.
 
@@ -34,7 +34,7 @@ Ebben a cikkben a PowerShell használatával megtudhatja, hogyan hajthatja végr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ha még nem tette meg [, telepítse a Azure PowerShell legújabb verzióját](/powershell/azure/install-az-ps) .
 
@@ -63,13 +63,13 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
 
 Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárendelt felügyelt identitást, amelyet eredetileg anélkül osztott ki, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkörének hozzárendelésére.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
+1. Jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Először kérje le a virtuális gép tulajdonságait `Get-AzVM` a parancsmag használatával. Ezután a rendszerhez rendelt felügyelt identitás engedélyezéséhez használja az `-AssignIdentity` [Update-AzVM](/powershell/module/az.compute/update-azvm) parancsmag kapcsolóját:
+2. Először kérje le a virtuális gép tulajdonságait a `Get-AzVM` parancsmag használatával. Ezután a rendszerhez rendelt felügyelt identitás engedélyezéséhez használja az `-AssignIdentity` [Update-AzVM](/powershell/module/az.compute/update-azvm) parancsmag kapcsolóját:
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -82,19 +82,19 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
 
 Miután engedélyezte a rendszerhez rendelt identitást egy virtuális gépen, felveheti azt egy csoportba.  Az alábbi eljárás egy virtuális gép rendszerhez rendelt identitását adja hozzá egy csoporthoz.
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
+1. Jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Kérje le és jegyezze `ObjectID` fel a virtuális gép egyszerű `Id` szolgáltatásnév mezőjében megadott értéket:
+2. Kérje le és jegyezze `ObjectID` `Id` fel a virtuális gép egyszerű szolgáltatásnév mezőjében megadott értéket:
 
    ```powerhshell
    Get-AzADServicePrincipal -displayname "myVM"
    ```
 
-3. A csoport lekérése és megjegyzése `ObjectID` ( `Id` a visszaadott értékek mezőben megadott módon):
+3. A csoport lekérése és megjegyzése `ObjectID` (a `Id` visszaadott értékek mezőben megadott módon):
 
    ```powershell
    Get-AzADGroup -searchstring "myGroup"
@@ -112,13 +112,13 @@ Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuá
 
 Ha olyan virtuális géppel rendelkezik, amelyhez már nincs szükség a rendszerhez rendelt felügyelt identitásra, de továbbra is felhasználó által hozzárendelt felügyelt identitásokra van szükség, használja a következő parancsmagot:
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
+1. Jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Kérje le a virtuális gép tulajdonságait `Get-AzVM` a parancsmag használatával, `-IdentityType` és állítsa `UserAssigned`a paramétert a következőre:
+2. Kérje le a virtuális gép tulajdonságait a `Get-AzVM` parancsmag használatával, és állítsa a paramétert a következőre `-IdentityType` `UserAssigned` :
 
    ```powershell   
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
@@ -144,7 +144,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 1. Tekintse át a következő Azure-beli VM-gyors útmutatókat, csak a szükséges részeket ("Bejelentkezés az Azure-ba", "erőforráscsoport létrehozása", "hálózatkezelési csoport létrehozása", "Create The VM"). 
   
-    Ha a "virtuális gép létrehozása" szakaszra kattint, akkor a [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) parancsmag szintaxisa némileg módosul. Adja hozzá `-IdentityType UserAssigned` a `-IdentityID` és a paramétereket a virtuális gép felhasználó által hozzárendelt identitással való kiépítéséhez.  Cserélje le `<VM NAME>`a `<RESROURCE GROUP>`,, `<USER ASSIGNED IDENTITY NAME>` , és értéket a saját értékeire.`<SUBSCRIPTION ID>`  Például:
+    Ha a "virtuális gép létrehozása" szakaszra kattint, akkor a [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) parancsmag szintaxisa némileg módosul. Adja hozzá a `-IdentityType UserAssigned` és a `-IdentityID` paramétereket a virtuális gép felhasználó által hozzárendelt identitással való kiépítéséhez.  Cserélje le a,, `<VM NAME>` `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` , és `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire.  Például:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
@@ -159,24 +159,24 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
+1. Jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást a [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) parancsmag használatával.  `Id` Ügyeljen rá, hogy a kimenetben a következő lépésben szükség lesz rá.
+2. Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást a [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) parancsmag használatával.  Ügyeljen rá, hogy a `Id` kimenetben a következő lépésben szükség lesz rá.
 
    > [!IMPORTANT]
-   > A felhasználó által hozzárendelt felügyelt identitások létrehozása csak alfanumerikus karaktereket, aláhúzást és kötőjelet (0-9 vagy a-z \_ , a-z vagy-) karaktert támogat. Emellett a névnek 3 – 128 karakterből kell állnia ahhoz, hogy a hozzárendelt virtuális gép vagy VMSS megfelelően működjön. További információ: [Gyakori kérdések és ismert problémák](known-issues.md)
+   > A felhasználó által hozzárendelt felügyelt identitások létrehozása csak alfanumerikus karaktereket, aláhúzást és kötőjelet (0-9 vagy a-z, A-z vagy \_ -) karaktert támogat. Emellett a névnek 3 – 128 karakterből kell állnia ahhoz, hogy a hozzárendelt virtuális gép vagy VMSS megfelelően működjön. További információ: [Gyakori kérdések és ismert problémák](known-issues.md)
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
    ```
-3. Kérje le a virtuális gép tulajdonságait `Get-AzVM` a parancsmag használatával. Ezután rendeljen hozzá egy felhasználóhoz rendelt felügyelt identitást az Azure-beli `-IdentityType` virtuális `-IdentityID` géphez, használja az and kapcsolót az [Update-AzVM](/powershell/module/az.compute/update-azvm) parancsmaggal.  A`-IdentityId` paraméter `Id` értéke az előző lépésben feljegyzett érték.  Cserélje le `<VM NAME>`a `<RESROURCE GROUP>`,, `<USER ASSIGNED IDENTITY NAME>` , és értéket a saját értékeire. `<SUBSCRIPTION ID>`
+3. Kérje le a virtuális gép tulajdonságait a `Get-AzVM` parancsmag használatával. Ezután rendeljen hozzá egy felhasználóhoz rendelt felügyelt identitást az Azure-beli virtuális géphez, használja az `-IdentityType` and `-IdentityID` kapcsolót az [Update-AzVM](/powershell/module/az.compute/update-azvm) parancsmaggal.  A paraméter értéke az `-IdentityId` `Id` előző lépésben feljegyzett érték.  Cserélje le a,, `<VM NAME>` `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` , és `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire.
 
    > [!WARNING]
-   > Ha meg szeretné őrizni a virtuális géphez hozzárendelt korábban felhasználóhoz rendelt felügyelt identitásokat `Identity` , kérdezze le a virtuálisgép-objektum tulajdonságát `$vm.Identity`(például:).  Ha a rendszer minden felhasználóhoz hozzárendelt felügyelt identitást ad vissza, akkor a következő parancsban adja meg azokat az új felhasználóhoz rendelt felügyelt identitást, amelyet hozzá szeretne rendelni a virtuális géphez.
+   > Ha meg szeretné őrizni a virtuális géphez hozzárendelt korábban felhasználóhoz rendelt felügyelt identitásokat, kérdezze le a virtuálisgép- `Identity` objektum tulajdonságát (például: `$vm.Identity` ).  Ha a rendszer minden felhasználóhoz hozzárendelt felügyelt identitást ad vissza, akkor a következő parancsban adja meg azokat az új felhasználóhoz rendelt felügyelt identitást, amelyet hozzá szeretne rendelni a virtuális géphez.
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
@@ -189,7 +189,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 A felhasználó által hozzárendelt identitás egy virtuális géphez való eltávolításához a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.
 
-Ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van, az alábbi parancsokkal távolíthatja el az összeset, de az utolsót is. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY NAME>` a felhasználó által hozzárendelt felügyelt identitás Name tulajdonsága, amely a virtuális gépen marad. Ez az információ a virtuálisgép-objektum `Identity` tulajdonságának lekérdezésével érhető el.  Például `$vm.Identity`:
+Ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van, az alábbi parancsokkal távolíthatja el az összeset, de az utolsót is. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A a `<USER ASSIGNED IDENTITY NAME>` felhasználó által hozzárendelt felügyelt identitás Name tulajdonsága, amely a virtuális gépen marad. Ez az információ a virtuálisgép-objektum tulajdonságának lekérdezésével érhető el `Identity` .  Például `$vm.Identity` :
 
 ```powershell
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm

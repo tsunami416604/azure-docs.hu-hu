@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847070"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Eszközök és kapcsolódó entitások kezelése Media Services .NET SDK-val
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Ez a témakör bemutatja, hogyan kezelheti Azure Media Services entitásokat a .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 ## <a name="get-an-asset-reference"></a>Tárgyieszköz-hivatkozás beszerzése
 Gyakori feladat, hogy a Media Services egy meglévő eszközre mutató hivatkozást kapjon. A következő mintakód bemutatja, hogyan kérhető le egy eszköz-hivatkozás a kiszolgálói környezeti objektum assets gyűjteményéből az eszköz azonosítója alapján. A következő kódrészlet egy LINQ-lekérdezést használ egy meglévő IAsset-objektumra mutató hivatkozás beszerzéséhez.

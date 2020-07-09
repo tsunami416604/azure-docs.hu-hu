@@ -4,7 +4,7 @@ description: Azt mutatja, hogy a rendszergazda hogyan használhatja a Azure Port
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/15/2018
 ms.author: mimart
 author: msmimart
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387286"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Meghatározott B2B-felhasználóktól érkező meghívások engedélyezése vagy letiltása
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása
 
 Az engedélyezési és a megtagadási lista használatával engedélyezheti vagy letilthatja a VÁLLALATKÖZI felhasználók számára az adott szervezetektől érkező meghívókat. Ha például le szeretné tiltani a személyes e-mail-címek tartományait, beállíthat egy megtagadási listát, amely olyan tartományokat tartalmaz, mint a Gmail.com és a Outlook.com. Ha vállalata más vállalatokkal is rendelkezik, mint például a Contoso.com, a Fabrikam.com és a Litware.com, és csak ezekre a szervezetekre szeretné korlátozni a meghívókat, hozzáadhat Contoso.com, Fabrikam.com és Litware.com is az engedélyezési listához.
   
@@ -42,7 +42,7 @@ Ez a leggyakoribb forgatókönyv, ahol a szervezet szinte bármilyen szervezetet
 Megtagadási lista hozzáadása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **Azure Active Directory** > **Users** > felhasználó**felhasználói beállításait**.
+2. Válassza ki **Azure Active Directory**  >  **felhasználó**  >  **felhasználói beállításait**.
 3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 4. Az **együttműködési korlátozások**területen válassza **a meghívások megtagadása a megadott tartományokra**lehetőséget.
 5. A **céltartomány**területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
@@ -63,7 +63,7 @@ Ha az engedélyezési listát szeretné használni, ügyeljen arra, hogy az üzl
 Engedélyezési lista hozzáadása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **Azure Active Directory** > **Users** > felhasználó**felhasználói beállításait**.
+2. Válassza ki **Azure Active Directory**  >  **felhasználó**  >  **felhasználói beállításait**.
 3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 4. Az **együttműködési korlátozások**területen jelölje be **a csak a megadott tartományokra vonatkozó meghívások engedélyezése (a legszigorúbb)** jelölőnégyzetet.
 5. A **céltartomány**területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:

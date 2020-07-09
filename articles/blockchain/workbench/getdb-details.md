@@ -2,14 +2,14 @@
 title: Az Azure Blockchain Workbench-adatbázis adatainak lekérése
 description: Ismerje meg, hogyan kérheti le az Azure Blockchain Workbench előzetes verziójú adatbázisát és az adatbázis-kiszolgáló adatait.
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: 2b3190a9d042be8ead1ff3d5ef48d4a2a19e8963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254650"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Az Azure Blockchain Workbench-adatbázis adatainak lekérése
 
@@ -31,7 +31,7 @@ Az adatbázishoz való csatlakozáshoz:
 1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely rendelkezik **tulajdonosi** engedélyekkel az Azure Blockchain Workbench erőforrásaihoz.
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza a Blockchain Workbench-környezete erőforráscsoportjának nevét.
-4. Válassza a **Típus** lehetőséget az erőforráslista rendezéséhez, majd válassza az **SQL server** lehetőséget. Az alábbi képernyőképen szemléltetett rendezett listában két SQL-adatbázis látható, egy „master” nevű, illetve egy másik, mely az „lhgn” nevet használja **erőforrás-előtagként**.
+4. Válassza a **Típus** lehetőséget az erőforráslista rendezéséhez, majd válassza az **SQL server** lehetőséget. A következő képernyőfelvételen a rendezett lista két adatbázist mutat be: "Master", egy pedig a "lhgn" **előtagot az erőforrás előtagjaként**.
 
    ![A Blockchain Workbench-erőforrások rendezett listája](./media/getdb-details/sorted-workbench-resource-list.png)
 

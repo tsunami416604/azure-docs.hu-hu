@@ -7,20 +7,20 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5ef550af0c7e19531ea19093ea937880f7dcf14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165529697949bba0233567b89c5a8a077d48a28b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384022"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
-A Azure Active Directory B2C (Azure AD B2C) a fiók létrehozásakor támogatja a végfelhasználók által megadott jelszavak összetettségi követelményeinek módosítását. Alapértelmezés szerint a Azure AD B2C jelszavakat használ `Strong` . A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat.
+A Azure Active Directory B2C (Azure AD B2C) a fiók létrehozásakor támogatja a végfelhasználók által megadott jelszavak összetettségi követelményeinek módosítását. Alapértelmezés szerint a Azure AD B2C `Strong` jelszavakat használ. A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat.
 
 ## <a name="password-rule-enforcement"></a>Jelszavas szabály kényszerítése
 
@@ -46,7 +46,7 @@ Ha egyéni házirendeket használ, akkor (a[jelszó bonyolultságát egyéni sza
 
 ### <a name="comparison-chart"></a>Összehasonlító diagram
 
-| Összetettség | Leírás |
+| Összetettség | Description |
 | --- | --- |
 | Egyszerű | Egy legalább 8 – 64 karakterből álló jelszó. |
 | Erős | Egy legalább 8 – 64 karakterből álló jelszó. Ehhez 3 kisbetűs, nagybetűs, szám vagy szimbólum közül 3. |

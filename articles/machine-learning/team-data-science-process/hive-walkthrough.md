@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677462"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Azure HDInsight Hadoop fürtök használata
@@ -45,16 +44,16 @@ A New York-i taxi Trip-adat körülbelül 20 GB tömörített, vesszővel tagolt
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Az utazáshoz\_és az utazáshoz\_való csatlakozáshoz szükséges egyedi kulcs a következő mezőkből áll:\_emlékérem, Hack License\_és a pickup DateTime. Egy adott útra vonatkozó összes adat beszerzéséhez elegendő a három kulcshoz csatlakozni.
+Az utazáshoz és az utazáshoz való csatlakozáshoz szükséges egyedi kulcs \_ \_ a következő mezőkből áll: emlékérem, Hack \_ License és a pickup \_ DateTime. Egy adott útra vonatkozó összes adat beszerzéséhez elegendő a három kulcshoz csatlakozni.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Példák az előrejelzési feladatokra
-Határozza meg, hogy milyen előrejelzések alapján kívánja végrehajtani az adatelemzést a szükséges folyamat-feladatok tisztázásához. Íme három példa az útmutatóban ismertetett előrejelzési problémákra, mindezt a *tip\_-összeg*alapján:
+Határozza meg, hogy milyen előrejelzések alapján kívánja végrehajtani az adatelemzést a szükséges folyamat-feladatok tisztázásához. Íme három példa az útmutatóban ismertetett előrejelzési problémákra, mindezt a tip- * \_ összeg*alapján:
 
-- **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra. Ez azt a *tippet\_* jelöli, amely nagyobb, mint $0 pozitív példa, míg a $0-es számú *Tipp\_* negatív példa.
+- **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra. Ez azt a *tippet \_ * jelöli, amely nagyobb, mint $0 pozitív példa, míg a $0-es számú *Tipp \_ * negatív példa.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Többosztályos besorolás**: az útra kifizetett tip-összegek tartományának előrejelzése. A *\_tipp összegét* öt osztályra osztjuk:
+- **Többosztályos besorolás**: az útra kifizetett tip-összegek tartományának előrejelzése. A *Tipp \_ összegét* öt osztályra osztjuk:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
@@ -88,11 +87,11 @@ Ha a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészletet a
 
 Itt azt ismertetjük, hogyan lehet a AzCopy használatával átvinni az adatokból származó fájlokat. A AzCopy letöltéséhez és telepítéséhez kövesse az [első lépések a AzCopy parancssori segédprogrammal](../../storage/common/storage-use-azcopy.md)című témakör útmutatását.
 
-1. A parancssori ablakban futtassa a következő AzCopy-parancsokat, és cserélje * \<le path_to_data_folder>* a kívánt célhelyre:
+1. A parancssori ablakban futtassa a következő AzCopy-parancsokat, és cserélje le a elemet *\<path_to_data_folder>* a kívánt célhelyre:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. A másolás befejezésekor a kiválasztott adatmappa összesen 24 tömörített fájlt fog látni. Bontsa ki a letöltött fájlokat a helyi gépen található könyvtárba. Jegyezze fel azt a mappát, ahol a tömörítetlen fájlok találhatók. Ezt a * \<\_mappát nevezzük\_unzipped_data\_fájlok\> elérési útjaként* a következőben:.
+1. A másolás befejezésekor a kiválasztott adatmappa összesen 24 tömörített fájlt fog látni. Bontsa ki a letöltött fájlokat a helyi gépen található könyvtárba. Jegyezze fel azt a mappát, ahol a tömörítetlen fájlok találhatók. Ezt a mappát nevezzük a *\<path\_to\_unzipped_data\_files\>* következőnek:.
 
 ## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>Az adatok feltöltése a HDInsight Hadoop-fürt alapértelmezett tárolójába
 > [!NOTE]
@@ -102,10 +101,10 @@ Itt azt ismertetjük, hogyan lehet a AzCopy használatával átvinni az adatokb�
 
 A következő AzCopy-parancsokban cserélje le a következő paramétereket a Hadoop-fürt létrehozásakor megadott tényleges értékekre, és adja meg az adatfájlok kicsomagolását.
 
-* *** \<path_to_data_folder>*** A kibontott adatfájlokat tartalmazó könyvtár (az elérési úttal együtt) a gépen.  
-* ***a Hadoop-fürt Storage-fiókjának neve>\<*** A HDInsight-fürthöz társított Storage-fiók.
-* ***a Hadoop-fürt alapértelmezett tárolója>\<*** A fürt által használt alapértelmezett tároló. Az alapértelmezett tároló neve általában megegyezik a fürt nevével. Ha például a fürt neve "abc123.azurehdinsight.net", az alapértelmezett tároló a abc123.
-* ***Storage-fiók kulcsa>\<*** A fürt által használt Storage-fiók kulcsa.
+* ***\<path_to_data_folder>*** A kibontott adatfájlokat tartalmazó könyvtár (az elérési úttal együtt) a gépen.  
+* ***\<storage account name of Hadoop cluster>*** A HDInsight-fürthöz társított Storage-fiók.
+* ***\<default container of Hadoop cluster>*** A fürt által használt alapértelmezett tároló. Az alapértelmezett tároló neve általában megegyezik a fürt nevével. Ha például a fürt neve "abc123.azurehdinsight.net", az alapértelmezett tároló a abc123.
+* ***\<storage account key>*** A fürt által használt Storage-fiók kulcsa.
 
 A parancssorból vagy egy Windows PowerShell-ablakból futtassa a következő két AzCopy parancsot.
 
@@ -157,7 +156,7 @@ A kaptár-könyvtár parancssorában futtassa a következő parancsot a kaptár-
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Itt látható a **C:\Temp\sample\_\_struktúra létrehozása\_db\_és\_Tables. HQL** fájl, amely létrehozza a kaptár-adatbázis **nyctaxidb**, valamint a táblákat és a **viteldíjat**. **trip**
+Itt látható a **C:\Temp\sample \_ struktúra \_ létrehozása \_ db \_ és \_ Tables. HQL** fájl, amely létrehozza a kaptár-adatbázis **nyctaxidb**, valamint **a táblákat** és a **viteldíjat**.
 
     create database if not exists nyctaxidb;
 
@@ -215,7 +214,7 @@ A New York-i taxi-adatkészlet egy hónap alatt természetes particionálással 
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-A **minta\_\_struktúrában\_\_a\_Partitions. HQL** fájl a következő **betöltési** parancsokat tartalmazza:
+A **minta \_ struktúrában a \_ \_ \_ \_ Partitions. HQL** fájl a következő **betöltési** parancsokat tartalmazza:
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
@@ -382,11 +381,11 @@ A két táblában található rekordok teljes száma szintén azonos, és egy m�
 > 
 > 
 
-Ez a példa az adott időszakon belül 100-nál nagyobb számú medált (taxi számot) azonosít. A lekérdezés a particionált tábla-hozzáférés előnyeit élvezheti, mert a partíció változó **hónapja**feltétele. A lekérdezés eredményei egy helyi fájlba, a **queryoutput. TSV**fájlba íródnak, `C:\temp` a fő csomóponton.
+Ez a példa az adott időszakon belül 100-nál nagyobb számú medált (taxi számot) azonosít. A lekérdezés a particionált tábla-hozzáférés előnyeit élvezheti, mert a partíció változó **hónapja**feltétele. A lekérdezés eredményei egy helyi fájlba, a **queryoutput. TSV**fájlba íródnak, a `C:\temp` fő csomóponton.
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-Itt látható a **\_minta\_kaptár-utazások\_számának\_tartalma\_a medalion. HQL** -fájl alapján a vizsgálathoz.
+Itt látható a **minta \_ kaptár- \_ utazások \_ számának tartalma a \_ \_ medalion. HQL** -fájl alapján a vizsgálathoz.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -397,7 +396,7 @@ Itt látható a **\_minta\_kaptár-utazások\_számának\_tartalma\_a medalion. 
 
 A New York-i taxi adatkészlete egy egyedi cab-t azonosít. Megadhatja, hogy mely megfelelőségértékelő központok legyenek viszonylag elfoglalva azzal, hogy egy adott időszakon belül egy adott számú utazáson több útra is tettek. Az alábbi példa azokat a megfelelőségértékelő-ket azonosítja, amelyek az első három hónapban több mint száz utazást hajtottak végre, és a lekérdezési eredményeket egy helyi fájlba, a **C:\temp\queryoutput.TSV**menti.
 
-Itt látható a **\_minta\_kaptár-utazások\_számának\_tartalma\_a medalion. HQL** -fájl alapján a vizsgálathoz.
+Itt látható a **minta \_ kaptár- \_ utazások \_ számának tartalma a \_ \_ medalion. HQL** -fájl alapján a vizsgálathoz.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -418,7 +417,7 @@ Futtassa a következő parancsot a kaptár könyvtárában:
 
 Az adathalmazok feltárásakor gyakran szeretnénk megvizsgálni az értékek csoportjai eloszlását. Ez a szakasz bemutatja, hogyan végezheti el ezt az elemzést a vezetőfülkék és az illesztőprogramok számára.
 
-A **minta\_kaptár\_-\_utazások\_száma\_\_a medál-licenc. HQL** -fájl csoportosítja a díjszabási adatkészletet a **medál** és a **hack_license**között, és az egyes kombinációk számát adja vissza. A tartalma:
+A **minta \_ kaptár- \_ utazások \_ száma a medál- \_ \_ \_ licenc. HQL** -fájl csoportosítja a díjszabási adatkészletet a **medál** és a **hack_license**között, és az egyes kombinációk számát adja vissza. A tartalma:
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -443,7 +442,7 @@ A lekérdezés eredményei egy helyi fájlba íródnak, a **C:\temp\queryoutput.
 
 A feltáró adatok elemzésének közös célja, hogy az érvénytelen vagy hibás rekordok kiszűrése megtörténjen. Az ebben a szakaszban szereplő példa azt határozza meg, hogy a hosszúsági vagy szélességi mezők a New York-i területtől távol eső értéket tartalmaznak-e. Mivel valószínű, hogy az ilyen rekordok hibás földrajzi szélességi értékkel rendelkeznek, a modellezéshez használni kívánt adatokból szeretnénk megtörölni azokat.
 
-Itt látható a **minta\_struktúra\_minőségi\_Assessment. HQL** -fájljának tartalma a vizsgálathoz.
+Itt látható a **minta \_ struktúra \_ minőségi \_ Assessment. HQL** -fájljának tartalma a vizsgálathoz.
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -467,10 +466,10 @@ A parancsban szereplő *-S* argumentum letiltja a struktúra-hozzárendelési T�
 
 Az [előrejelzési feladatok](hive-walkthrough.md#mltasks) című szakaszban ismertetett bináris besorolási probléma esetén hasznos lehet megállapítani, hogy van-e megadva tipp. A tippek ezen eloszlása bináris:
 
-* Tipp megadva (1. osztály,\_tipp összege > $0)  
-* nincs tipp (0. osztály,\_tipp mennyisége = $0)
+* Tipp megadva (1. osztály, Tipp \_ összege > $0)  
+* nincs tipp (0. osztály, Tipp \_ mennyisége = $0)
 
-A következő **minta\_\_kimutatott\_frekvenciákon. HQL** fájl a futtatandó parancsot mutatja:
+A következő minta kimutatott ** \_ \_ \_ frekvenciákon. HQL** fájl a futtatandó parancsot mutatja:
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -491,7 +490,7 @@ A kaptár könyvtárának parancssorában futtassa a következőt:
 > 
 > 
 
-Az [előrejelzési feladatok](hive-walkthrough.md#mltasks) című szakaszban ismertetett többosztályos besorolási probléma esetén ez az adatkészlet természetes besorolást is biztosít, hogy előre megjósolja a megadott tippek mennyiségét. A lekérdezésben használhatunk raktárhelyeket a tip-tartományok definiálásához. A különböző tip-tartományok osztály-eloszlásának beszerzéséhez használja a **minta\_kaptár\_tip\_Range\_frekvenciákon. HQL** fájlt. Itt látható a tartalma.
+Az [előrejelzési feladatok](hive-walkthrough.md#mltasks) című szakaszban ismertetett többosztályos besorolási probléma esetén ez az adatkészlet természetes besorolást is biztosít, hogy előre megjósolja a megadott tippek mennyiségét. A lekérdezésben használhatunk raktárhelyeket a tip-tartományok definiálásához. A különböző tip-tartományok osztály-eloszlásának beszerzéséhez használja a **minta \_ kaptár \_ tip \_ Range \_ frekvenciákon. HQL** fájlt. Itt látható a tartalma.
 
     SELECT tip_class, COUNT(*) AS tip_freq
     FROM
@@ -548,13 +547,13 @@ A kaptár könyvtárának parancssorában futtassa a következőt:
     hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
 
-A lekérdezés eredményét kilenc Azure-blobra (**queryoutputdir/000000 kódot\_0** – **queryoutputdir/000008\_0**), a Hadoop-fürt alapértelmezett tárolójában kell írni.
+A lekérdezés eredményét kilenc Azure-blobra (**queryoutputdir/000000 kódot \_ 0** – **queryoutputdir/000008 \_ 0**), a Hadoop-fürt alapértelmezett tárolójában kell írni.
 
 Az egyes Blobok méretének megtekintéséhez futtassa a következő parancsot a kaptár könyvtárának parancssorában:
 
     hdfs dfs -ls wasb:///queryoutputdir
 
-Ha szeretné megtekinteni egy adott fájl tartalmát, mondjuk a **000000 kódot\_0**, használja `copyToLocal` a Hadoop parancsot.
+Ha szeretné megtekinteni egy adott fájl tartalmát, mondjuk a **000000 kódot \_ 0**, használja a Hadoop `copyToLocal` parancsot.
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
@@ -574,11 +573,11 @@ Ennek az adatnak az egyik fő előnye az, hogy az [adatimportálási][import-dat
 A feltáró adatelemzési fázis után most már készen áll arra, hogy felkészítsük a modelleket a Machine Learningban. Ebben a szakaszban bemutatjuk, hogyan használhatók a kaptár-lekérdezések az adatmintákhoz. Machine Learning ezután az [adatok importálása][import-data] modulból fér hozzá.
 
 ### <a name="down-sampling-the-data"></a>Lefelé – az adatmintavételezés
-Ebben az eljárásban két lépés található. Először csatlakoztassa a **nyctaxidb. Trip** és a **nyctaxidb. fare** táblát az összes rekordban található három kulcshoz: **emlékérem**, **Hack\_licenc**, és a **pickup\_datetime**. Ezután előállítunk egy bináris besorolási **címkét, egy**kijelzett és egy többosztályos besorolási címkét, a **\_tip osztályt**.
+Ebben az eljárásban két lépés található. Először csatlakoztassa a **nyctaxidb. Trip** és a **nyctaxidb. fare** táblát az összes rekordban található három kulcshoz: **emlékérem**, **Hack \_ licenc**, és a **pickup \_ datetime**. Ezután előállítunk egy bináris besorolási **címkét, egy**kijelzett és egy többosztályos besorolási címkét, a **tip \_ osztályt**.
 
 Ahhoz, hogy közvetlenül a Machine Learning [adatimportálási][import-data] modulból lehessen használni a lefelé vett mintákat, az előző lekérdezés eredményét egy belső struktúra-táblába kell menteni. A következő lépésekben létrehozunk egy belső struktúrás táblát, és feltöltjük annak tartalmát az összevont és a lefelé mintavételezéssel ellátott adatokkal.
 
-A lekérdezés a standard kaptár-függvényeket közvetlenül alkalmazza a következő időpontok létrehozásához a **felvételi\_dátum** /idő mezőben:
+A lekérdezés a standard kaptár-függvényeket közvetlenül alkalmazza a következő időpontok létrehozásához a **felvételi \_ dátum** /idő mezőben:
 - nap órája
 - év hete
 - a hétköznap (1) a hétfő, a "7" pedig a vasárnapot jelenti.
@@ -587,7 +586,7 @@ A lekérdezés a közvetlen távolságot is létrehozza a kivételezési és a l
 
 A lekérdezés ezután lekérdezi az adatmintákat, hogy a lekérdezés eredményei illeszkedjenek Azure Machine Learning Studio. A studióba csak az eredeti adatkészlet 1 százalékát importálja a rendszer.
 
-Az alábbiakban látható a **HQL-\_re\_\_vonatkozó\_, a\_pénzmosás teljes.** fájljának tartalma, amely előkészíti az adatmodell-létrehozási Machine learning:
+Az alábbiakban látható a HQL-re vonatkozó, a ** \_ \_ \_ \_ pénzmosás \_ teljes.** fájljának tartalma, amely előkészíti az adatmodell-létrehozási Machine learning:
 
         set R = 3959;
         set pi=radians(180);
@@ -721,7 +720,7 @@ A Machine Learning adatimportálási moduljában a kaptár-lekérdezések [kikü
 
 Íme néhány információ az [adatimportálási][import-data] modulról és a bemeneti paraméterekről:
 
-**HCatalog-kiszolgáló URI-ja**: Ha a fürt neve **abc123**, használja a következőket\/: https:/abc123.azurehdinsight.net.
+**HCatalog-kiszolgáló URI-ja**: Ha a fürt neve **abc123**, használja a következőket: https: \/ /abc123.azurehdinsight.net.
 
 **Hadoop felhasználói fiók neve**: a fürthöz választott Felhasználónév (nem a távelérés felhasználóneve).
 
@@ -750,7 +749,7 @@ Itt látható a kaptár-lekérdezés és az [adatimportálási][import-data] mod
 
 ![Képernyőfelvétel a kaptár-lekérdezésről az Adatimportálási modulhoz](./media/hive-walkthrough/1eTYf52.png)
 
-Mivel a rendszer az alapértelmezett tárolóban tárolja a levett mintavételen alapuló adatforrásokat, a Machine Learningből származó kaptár-lekérdezés egyszerű. Ez csak egy **select * from nyctaxidb. nyctaxi\_Downsampled\_-adatok**.
+Mivel a rendszer az alapértelmezett tárolóban tárolja a levett mintavételen alapuló adatforrásokat, a Machine Learningből származó kaptár-lekérdezés egyszerű. Ez csak egy **select * from nyctaxidb. nyctaxi \_ Downsampled- \_ adatok**.
 
 Az adatkészlet mostantól kiindulási pontként használható Machine Learning modellek létrehozásához.
 
@@ -761,7 +760,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   **Használt tanuló:** Kétosztályos logisztikai regresszió
 
-  a. Ehhez a problémához a cél (vagy osztály) **felirat van**kijelölve. Az eredeti, lefelé mintavételezés alatt álló adatkészlet néhány oszlopa van, amelyek célja a besorolási kísérlethez tartozó szivárgás. Különösen a **\_tipp osztály**, a **Tipp\_mennyisége**és a **teljes\_összeg** felfedi az adott címkével kapcsolatos információkat, amelyek teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészletek kiválasztása][select-columns] modulban az oszlopok kijelölése elem használatával távolítjuk el.
+  a. Ehhez a problémához a cél (vagy osztály) **felirat van**kijelölve. Az eredeti, lefelé mintavételezés alatt álló adatkészlet néhány oszlopa van, amelyek célja a besorolási kísérlethez tartozó szivárgás. Különösen a **Tipp \_ osztály**, a **Tipp \_ mennyisége**és a **teljes \_ összeg** felfedi az adott címkével kapcsolatos információkat, amelyek teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészletek kiválasztása][select-columns] modulban az oszlopok kijelölése elem használatával távolítjuk el.
 
   A következő ábra azt mutatja be a kísérletet, hogy egy adott utazásra fordítottak-e borravalót:
 
@@ -781,7 +780,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   **Használt tanuló:** Többosztályos logisztikai regresszió
 
-  a. Ennek a problémának a célja (vagy osztály) címkéje **a\_tip osztály**, amely öt érték (0, 1, 2, 3, 4) egyikét veheti igénybe. Ahogy a bináris besorolás esetében is, van néhány oszlopunk, amely a kísérlethez célzott szivárgást céloz meg. Különösen a kitűzött, a **tip\_-összeg**és **a\_teljes összeg** felfedi az adott címkére vonatkozó **adatokat, amelyek**teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészlet kijelölése oszlopban található oszlopok][select-columns] használatával távolítjuk el.
+  a. Ennek a problémának a célja (vagy osztály) címkéje a **tip \_ osztály**, amely öt érték (0, 1, 2, 3, 4) egyikét veheti igénybe. Ahogy a bináris besorolás esetében is, van néhány oszlopunk, amely a kísérlethez célzott szivárgást céloz meg. Különösen a kitűzött, a **tip- \_ összeg**és a **teljes \_ összeg** felfedi az adott címkére vonatkozó **adatokat, amelyek**teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészlet kijelölése oszlopban található oszlopok][select-columns] használatával távolítjuk el.
 
   Az alábbi ábrán azt a kísérletet láthatja, hogy a tipp melyik raktárhelyre várhatóan csökken. A Raktárhelyek: 0. osztály: tipp = $0, 1. osztály: tipp > $0 és tipp <= $5, 2. osztály: tipp > $5 és tipp <= $10, 3. osztály: tipp > $10 és tipp <= $20 és 4. osztály: tipp > $20.
 
@@ -801,7 +800,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   **Használt tanuló:** Megnövelt döntési fa
 
-  a. Ehhez a problémához a cél (vagy osztály) címkéje **a\_tip-mennyiség**. A cél szivárgások ebben az esetben a következők **:** kitűzött, **tip\_-osztály**és **teljes\_összeg**. Az összes ilyen változó felfedi a tip-mennyiségre vonatkozó információt, amely általában nem érhető el tesztelési időben. Ezeket az oszlopokat az [adatkészlet kijelölése oszlopban található oszlopok][select-columns] használatával távolítjuk el.
+  a. Ehhez a problémához a cél (vagy osztály) címkéje a **tip- \_ mennyiség**. A cél szivárgások ebben az esetben a következők **:** kitűzött, **tip- \_ osztály**és **teljes \_ összeg**. Az összes ilyen változó felfedi a tip-mennyiségre vonatkozó információt, amely általában nem érhető el tesztelési időben. Ezeket az oszlopokat az [adatkészlet kijelölése oszlopban található oszlopok][select-columns] használatával távolítjuk el.
 
   Az alábbi ábrán az adott tipp mennyiségének előrejelzésére szolgáló kísérlet látható:
 
@@ -819,9 +818,9 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 > 
 
 ## <a name="license-information"></a>Licencelési információk
-Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT licenc alatt osztja meg. További információ: **License. txt** fájl a githubon található mintakód könyvtárában.
+Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT licenc alatt osztja meg. További információ: **LICENSE.txt** fájl a githubon található mintakód könyvtárában.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 • [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
 • [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • A [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

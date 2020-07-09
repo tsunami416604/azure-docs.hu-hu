@@ -1,24 +1,13 @@
 ---
 title: Felügyelt identitások az Azure-erőforrásokhoz Service Bus
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások Azure Service Bus entitások (várólisták, témakörök és előfizetések) elérésére.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 62c00c92ddd8265b1174cc195bfa83d533ec20d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341411"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához használt központi telepítéshez tartozó biztonságos identitást hozzon létre. Ezután társíthatja az identitást hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket biztosítanak az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
@@ -28,7 +17,7 @@ A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű 
 ## <a name="overview"></a>Áttekintés
 Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) egy Service Bus entitáshoz próbál hozzáférni, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
 
- 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent kérő erőforrás neve `https://servicebus.azure.net`.
+ 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent kérő erőforrás neve `https://servicebus.azure.net` .
  1. Ezután a jogkivonat a Service Bus szolgáltatásnak küldött kérelem részeként a megadott erőforráshoz való hozzáférés engedélyezéséhez lesz átadva.
 
 A hitelesítési lépés megköveteli, hogy egy alkalmazás-kérelem OAuth 2,0 hozzáférési jogkivonatot tartalmazzon futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Function-alkalmazáson belül fut, akkor a felügyelt identitás használatával férhet hozzá az erőforrásokhoz. 
@@ -75,10 +64,10 @@ További információ a beépített szerepkörök meghatározásáról: a [szere
 ## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése egy virtuális gépen
 Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuális gép Service Bus erőforrásainak engedélyezéséhez, először engedélyeznie kell az Azure-erőforrások felügyelt identitásait a virtuális gépen. Ha szeretné megtudni, hogyan engedélyezheti az Azure-erőforrások felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
 
-- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portalra](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Engedélyek megadása felügyelt identitásnak az Azure AD-ben
@@ -130,7 +119,7 @@ Most módosítsa a létrehozott ASP.NET-alkalmazás alapértelmezett oldalát. A
 
 Az alapértelmezett. aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban található. Az eredmény egy minimális webalkalmazás, amely néhány beviteli mezővel rendelkezik, valamint a **küldési** és **fogadási** gombokkal, amelyek a Service Bushoz csatlakoznak a küldési és fogadási üzenetekhez.
 
-Figyelje meg, hogy a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálva van. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató használata helyett a kód létrehoz egy jogkivonat-szolgáltatót a felügyelt identitáshoz `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` a hívással. Így nem kell megőrizni és használni a titkokat. A felügyelt identitás környezetének Service Busre való áramlását, valamint az engedélyezési kézfogást a jogkivonat-szolgáltató automatikusan kezeli. Ez egy egyszerűbb modell, mint az SAS használata.
+Figyelje meg, hogy a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálva van. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató használata helyett a kód létrehoz egy jogkivonat-szolgáltatót a felügyelt identitáshoz a `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` hívással. Így nem kell megőrizni és használni a titkokat. A felügyelt identitás környezetének Service Busre való áramlását, valamint az engedélyezési kézfogást a jogkivonat-szolgáltató automatikusan kezeli. Ez egy egyszerűbb modell, mint az SAS használata.
 
 A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A Visual Studióban a közzétételi profil letöltésével és importálásával egyszerűen hozzájuthat a megfelelő közzétételi adatokhoz:
 

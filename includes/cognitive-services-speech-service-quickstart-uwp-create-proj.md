@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 23c4e18ae3e4111c179c1b98320af8c5659fa10c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673101"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414358"
 ---
 Ha Univerzális Windows-platform (UWP) fejlesztéshez szeretne létrehozni Visual Studio-projektet, be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, be kell állítania a hangrögzítést, és telepítenie kell a Speech SDK-t.
 
@@ -70,7 +70,7 @@ Most válassza ki a cél platform architektúráját. A Visual Studio eszköztá
 
 ### <a name="set-up-audio-capture"></a>Hangrögzítés beállítása
 
-Ezután engedélyezze a projektnek a hangbemenet rögzítését:
+Hangbemenet rögzítésének engedélyezése a projekt számára:
 
 1. A **megoldáskezelő**kattintson duplán a **Package. appxmanifest** elemre a Package Application manifest megnyitásához.
 
@@ -104,4 +104,4 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld` .

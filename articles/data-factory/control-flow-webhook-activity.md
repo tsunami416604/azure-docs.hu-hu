@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417878"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
@@ -24,7 +24,7 @@ ms.locfileid: "81417878"
 
 A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végrehajtását. A webhook tevékenységgel az ügyfelek kódja hívhat meg egy végpontot, és átadhatja a visszahívási URL-címet. A folyamat futása megvárja a visszahívás meghívását, mielőtt továbblép a következő tevékenységre.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -59,10 +59,10 @@ Tulajdonság | Leírás | Megengedett értékek | Kötelező
 **típusa** | "Webhook" értékre kell beállítani. | Sztring | Igen |
 **metódus** | A célként megadott végpont REST API metódusa. | Sztring. A támogatott típus a "POST". | Igen |
 **URL** | A célként megadott végpont és elérési út. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen |
-**fejlécek** | A kérelembe küldendő fejlécek. Az alábbi példa egy kérelem nyelvét és típusát állítja be: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen. Ehhez `Content-Type` hasonló `"headers":{ "Content-Type":"application/json"}` fejlécre van szükség. |
+**fejlécek** | A kérelembe küldendő fejlécek. Az alábbi példa egy kérelem nyelvét és típusát állítja be: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen. Ehhez `Content-Type` hasonló fejlécre `"headers":{ "Content-Type":"application/json"}` van szükség. |
 **törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Igen |
 **hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Nem |
-**timeout** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d*TimeSpan formátumban jelennek meg. *óó*:*PP*:*ss*mm. | Sztring | Nem |
+**időtúllépés** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d*TimeSpan formátumban jelennek meg. *óó*:*PP*:*ss*mm. | Sztring | Nem |
 **Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai | Nem |
 
 ## <a name="authentication"></a>Hitelesítés
@@ -73,7 +73,7 @@ A webhook-tevékenység a következő hitelesítési típusokat támogatja.
 
 Ha nincs szükség hitelesítésre, ne adja meg a **hitelesítési** tulajdonságot.
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Alapszintű
 
 Az alapszintű hitelesítéshez használandó Felhasználónév és jelszó megadása.
 
@@ -99,7 +99,7 @@ Itt adhatja meg a PFX-fájl és a jelszó Base64 kódolású tartalmát.
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-Az adatok gyárának felügyelt identitásával adhatja meg azt az erőforrás-URI-t, amelyhez a hozzáférési jogkivonatot kéri. Az Azure Resource Management API meghívásához használja `https://management.azure.com/`a következőt:. További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
+Az adatok gyárának felügyelt identitásával adhatja meg azt az erőforrás-URI-t, amelyhez a hozzáférési jogkivonatot kéri. Az Azure Resource Management API meghívásához használja a következőt: `https://management.azure.com/` . További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -121,7 +121,7 @@ Minden REST API hívás esetén az ügyfél időtúllépést mutat, ha a végpon
 
 A kérelemben szereplő egyperces időkorlát semmi köze a tevékenység időtúllépéséhez. Az utóbbi a **callbackUri**által meghatározott visszahívás megvárni.
 
-A visszahívási URI-nak visszaadott törzsnek érvényes JSON-nek kell lennie. Állítsa be `Content-Type` a fejlécet a következőre: `application/json`.
+A visszahívási URI-nak visszaadott törzsnek érvényes JSON-nek kell lennie. Állítsa be a fejlécet a következőre: `Content-Type` `application/json` .
 
 Ha a **jelentés állapotát visszahívási** tulajdonságot használja, a visszahíváshoz a következő kódot kell felvennie a törzsbe:
 

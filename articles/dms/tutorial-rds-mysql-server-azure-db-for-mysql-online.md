@@ -11,13 +11,12 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609250"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: az RDS MySQL migrálása Azure Database for MySQL online-ba a DMS használatával
 
@@ -67,6 +66,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 1. Új paraméterérték létrehozásához kövesse az AWS-ben a [MySQL-adatbázis naplófájljai](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)című cikkben szereplő utasításokat a **bináris naplózási formátum** szakaszban.
 2. Hozzon létre egy új paraméter-csoportot a következő konfigurációval:
+    * log_bin = bekapcsolva
     * binlog_format = row
     * binlog_checksum = nincs
 3. Mentse az új paraméter csoportot.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846665"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044277"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -47,7 +47,7 @@ A Security Center eszközeivel megvédheti magát a fenti kihívásokkal szemben
 
 ## <a name="architecture"></a>Architektúra
 
-Mivel a Security Center natívan része az Azure-nak, az Azure-ban a Pásti-szolgáltatások, beleértve a Service Fabricokat, az SQL-adatbázisokat és a Storage-fiókokat is, a Security Center figyeli és védi őket, anélkül, hogy üzembe kellene
+Mivel Security Center natívan része az Azure-nak, az Azure-ban a Pásti-szolgáltatások, beleértve a Service Fabric, a SQL Database, az SQL felügyelt példányokat és a Storage-fiókokat, a Security Center figyelése és védelme anélkül, hogy az üzembe helyezés szükségessé vált.
 
 Emellett Security Center a nem Azure-beli kiszolgálókat és virtuális gépeket is védi a felhőben vagy a helyszínen, Windows-és Linux-kiszolgálókon egyaránt, ha telepíti az Log Analytics ügynököt. Az Azure Virtual Machines szolgáltatás automatikusan kiépítve van Security Centerban.
 
@@ -111,7 +111,7 @@ Security Center fenyegetés elleni védelme magában foglalja a Fusion kill-Chai
 
 A Security Center tartalmaz automatikus, natív integrációt a Microsoft Defender komplex veszélyforrások elleni védelemmel. Ez azt jelenti, hogy konfiguráció nélkül a Windows és a Linux rendszerű gépek teljes mértékben integrálva vannak Security Center javaslataival és értékelésével.
 
-Emellett a Security Center lehetővé teszi az alkalmazás-vezérlési házirendek automatizálását kiszolgálói környezetekben. Az adaptív alkalmazás-vezérlők a Security Center lehetővé teszik a teljes körű alkalmazás engedélyezési feltételeit a Windows-kiszolgálókon. Nincs szükség a szabályok létrehozására és a szabálysértések vizsgálatára, mindezt automatikusan elvégezheti Önnek.
+Emellett a Security Center lehetővé teszi az alkalmazás-vezérlési házirendek automatizálását kiszolgálói környezetekben. A Security Center adaptív alkalmazás-vezérlői lehetővé teszik a teljes körű alkalmazás-jóváhagyási listát a Windows-kiszolgálókon. Nincs szükség a szabályok létrehozására és a szabálysértések vizsgálatára, mindezt automatikusan elvégezheti Önnek.
 
 ### <a name="protect-paas"></a>Pásti-védelem
 
@@ -147,6 +147,6 @@ Kiterjedt naplózási gyűjtemény – a Windows és a Linux rendszerből szárm
 
 - A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 
-- A Security Center ingyenes díjszabási szintje engedélyezve van az összes jelenlegi Azure-előfizetésen, ha első alkalommal látogatja meg az Azure Security Center irányítópultot az Azure Portalon, vagy ha az API használatával programozott módon engedélyezte. A speciális biztonsági felügyelet és a fenyegetések észlelési képességeinek kihasználásához frissítenie kell a standard díjszabási szintre. A standard szintű csomag 30 napig ingyenesen kipróbálható. További információkért tekintse meg a [Security Center díjszabási lapját](https://azure.microsoft.com/pricing/details/security-center/).
+- A Security Center ingyenes díjszabási szintje minden aktuális Azure-előfizetésnél engedélyezve van, ha a Azure Portal első alkalommal látogatja meg a Azure Security Center irányítópultot, vagy ha az API-n keresztül engedélyezte a programozott módon. A speciális biztonsági felügyelet és a fenyegetések észlelési képességeinek kihasználásához frissítenie kell a standard díjszabási szintre. A standard szintű csomag 30 napig ingyenesen kipróbálható. További információkért tekintse meg a [Security Center díjszabási lapját](https://azure.microsoft.com/pricing/details/security-center/).
 
 - Ha most már készen áll a Security Center Standard engedélyezésére, a gyors üzembe helyezési útmutató [: az Azure-előfizetésének előkészítése a Security Center Standard](security-center-get-started.md) végigvezeti Önt a lépéseken.

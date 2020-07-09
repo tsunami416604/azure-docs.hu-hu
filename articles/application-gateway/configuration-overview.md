@@ -4,15 +4,15 @@ description: Ez a cikk az Azure-Application Gateway összetevőinek konfigurál�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254667"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -307,7 +307,7 @@ Vegye figyelembe, hogy az alapértelmezett affinitási cookie neve *ApplicationG
 
 ### <a name="connection-draining"></a>Kapcsolatkiürítés
 
-A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a példányok deregisztrációja az átjáró által felügyelt munkamenet-affinitás miatt, és a rendszer továbbra is továbbítja őket a deregistering példányokra. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
+A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást egy háttér-készlet összes tagjára alkalmazhatja, ha engedélyezi a kapcsolatok kiürítését a HTTP-beállításban. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a példányok deregisztrációja az átjáró által felügyelt munkamenet-affinitás miatt, és a rendszer továbbra is továbbítja őket a deregistering példányokra. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
 
 ### <a name="protocol"></a>Protokoll
 

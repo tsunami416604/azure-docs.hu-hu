@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830009"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Az Azure cache méretezése a Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A gyorsítótár létrehozása után méretezheti a gyorsítótár méretét és díjszabási szintjét, ha az alkalmazás követelményei megváltoznak. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
@@ -24,7 +24,7 @@ A következő mérőszámok figyelésével megállapíthatja, hogy szükség van
 * Redis-kiszolgáló terhelése
 * Memóriahasználat
 * Hálózati sávszélesség
-* Processzorhasználat
+* CPU-használat
 
 Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás követelményeinek, egy nagyobb vagy kisebb gyorsítótár-díjszabási csomagra méretezheti, amely megfelelő az alkalmazásához. A gyorsítótár-díjszabási csomag kiválasztásával kapcsolatos további információkért tekintse meg az [Azure cache Redis-ajánlat és-méret használatát](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)ismertető témakört.
 
@@ -64,9 +64,11 @@ A Azure Portal gyorsítótár-példányainak skálázása mellett a PowerShell-p
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A Redis-példányok Azure-gyorsítótárát a PowerShell-lel méretezheti [a set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) parancsmag használatával `Size`, `Sku`ha a `ShardCount` , vagy a tulajdonság módosul. Az alábbi példa bemutatja, hogyan méretezheti át a gyorsítótárat egy 2,5 GB `myCache` -os gyorsítótárba. 
+A Redis-példányok Azure-gyorsítótárát a PowerShell-lel méretezheti a [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) parancsmag használatával `Size` , ha a, vagy a `Sku` `ShardCount` tulajdonság módosul. Az alábbi példa bemutatja, hogyan méretezheti át a gyorsítótárat `myCache` egy 2,5 GB-os gyorsítótárba. 
 
-    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```powershell
+   Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 A PowerShell-sel való skálázással kapcsolatos további információkért lásd: [Azure cache skálázása Redis a PowerShell használatával](cache-how-to-manage-redis-cache-powershell.md#scale).
 
@@ -76,8 +78,9 @@ Az Azure-gyorsítótár Redis-példányok Azure CLI-vel történő méretezésé
 Az Azure CLI-vel való skálázással kapcsolatos további információkért lásd: [meglévő Azure cache beállításainak módosítása a Redis](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Méretezés a MAML használatával
-Ha az Azure cache-t a [Microsoft Azure Management librarys (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)használatával szeretné Redis-példányokra méretezni, hívja meg a `IRedisOperations.CreateOrUpdate` metódust, `RedisProperties.SKU.Capacity`és adja át az új méretet a következőnek:.
+Ha az Azure cache-t a [Microsoft Azure Management librarys (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)használatával szeretné Redis-példányokra méretezni, hívja meg a `IRedisOperations.CreateOrUpdate` metódust, és adja át az új méretet a következőnek: `RedisProperties.SKU.Capacity` .
 
+```csharp
     static void Main(string[] args)
     {
         // For instructions on getting the access token, see
@@ -95,6 +98,7 @@ Ha az Azure cache-t a [Microsoft Azure Management librarys (MAML)](https://azure
         var redisParams = new RedisCreateOrUpdateParameters(redisProperties, redisCacheRegion);
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
+```
 
 További információ: az [Azure cache kezelése a REDIS MAML](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) -minta használatával.
 
@@ -134,13 +138,13 @@ Nem, a gyorsítótár neve és kulcsa változatlan marad a skálázási művelet
 * Ha egy **standard** gyorsítótár nagyobb méretre vagy szintre van méretezve, vagy a **prémium** szintű gyorsítótár nagyobb méretűre van méretezve, az összes adatmennyiséget általában megőrzi a rendszer. Ha egy standard vagy **prémium** **szintű** gyorsítótárat kisebb méretre méretezi, az adatvesztés attól függ, hogy mennyi adat van a gyorsítótárban az új mérethez kapcsolódóan. Ha a skálázás során az adatvesztés történik, a kulcsok kimaradnak a [allkeys-LRU](https://redis.io/topics/lru-cache) kizárási házirend használatával. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Az egyéni adatbázisokra vonatkozó beállítások a skálázás során is érintettek?
-Ha egyéni értéket konfigurált a beállításhoz a `databases` gyorsítótár létrehozása során, vegye figyelembe, hogy egyes díjszabási szintek eltérő adatbázis- [korlátokkal](cache-configure.md#databases)rendelkeznek. Ebben az esetben a következő szempontokat érdemes figyelembe venni:
+Ha egyéni értéket konfigurált a `databases` beállításhoz a gyorsítótár létrehozása során, vegye figyelembe, hogy egyes díjszabási szintek eltérő adatbázis- [korlátokkal](cache-configure.md#databases)rendelkeznek. Ebben az esetben a következő szempontokat érdemes figyelembe venni:
 
-* Az aktuális szintjénél alacsonyabb `databases` korláttal rendelkező díjszabási csomagra való skálázás esetén:
-  * Ha az alapértelmezett értéket használja `databases`, amely az összes díjszabási csomag esetében 16, az adatvesztés nem történik meg.
-  * Ha olyan egyéni számot használ, `databases` amely a skálázási szintre korlátozza a korlátot, a rendszer megőrzi ezt `databases` a beállítást, és nem vesz fel adatvesztést.
+* Az aktuális szintjénél alacsonyabb korláttal rendelkező díjszabási csomagra való skálázás esetén `databases` :
+  * Ha az alapértelmezett értéket használja `databases` , amely az összes díjszabási csomag esetében 16, az adatvesztés nem történik meg.
+  * Ha olyan egyéni számot használ, amely a `databases` skálázási szintre korlátozza a korlátot, a rendszer megőrzi ezt a beállítást, `databases` és nem vesz fel adatvesztést.
   * Ha olyan egyéni számot használ, `databases` amely meghaladja az új csomag korlátait, a `databases` beállítás az új csomag korlátaira csökken, és az eltávolított adatbázisokban lévő összes érték elvész.
-* Ha az aktuális csomaggal megegyező vagy magasabb `databases` korláttal rendelkező árképzési szintre van skálázás, a `databases` rendszer megőrzi a beállítást, és nem vesz fel adatvesztést.
+* Ha az aktuális csomaggal megegyező vagy magasabb korláttal rendelkező árképzési szintre `databases` van skálázás, a `databases` rendszer megőrzi a beállítást, és nem vesz fel adatvesztést.
 
 Míg a standard és a prémium szintű gyorsítótár 99,9%-os SLA-val rendelkezik a rendelkezésre álláshoz, az adatvesztéshez nem biztosítunk SLA-t.
 

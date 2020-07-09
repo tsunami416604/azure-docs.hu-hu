@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77188720"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) az Azure Cosmos DB-ben 
@@ -24,7 +23,7 @@ A lejárt elemek törlése olyan háttérbeli feladat, amely felhasználja a [k�
 
 Az élettartam értéke másodpercben van megadva, és a rendszer az elem utolsó módosításának időpontjában változásként értelmezi. Beállíthatja, hogy az élettartam egy tárolón vagy egy elemen belül legyen:
 
-1. A **tárolón való** működéshez szükséges idő ( `DefaultTimeToLive`a használatával beállítva):
+1. A **tárolón való** működéshez szükséges idő (a használatával beállítva `DefaultTimeToLive` ):
 
    - Ha hiányzik (vagy NULL értékre van állítva), az elemek nem lesznek automatikusan lejáratva.
 
@@ -32,11 +31,11 @@ Az élettartam értéke másodpercben van megadva, és a rendszer az elem utols�
 
    - Ha van, és az érték egy *"n"* számra van beállítva, az elemek az utolsó módosítás időpontja után az *"n"* másodpercet fogják lejárni.
 
-2. **Egy elem** (a használatával `ttl`beállított) élettartama:
+2. **Egy elem** (a használatával beállított) élettartama `ttl` :
 
-   - Ez a tulajdonság csak akkor alkalmazható `DefaultTimeToLive` , ha létezik, és a szülő tárolóban nem null értékre van állítva.
+   - Ez a tulajdonság csak akkor alkalmazható, ha `DefaultTimeToLive` létezik, és a szülő tárolóban nem null értékre van állítva.
 
-   - Ha van ilyen, felülbírálja a szülő `DefaultTimeToLive` tároló értékét.
+   - Ha van ilyen, felülbírálja a `DefaultTimeToLive` szülő tároló értékét.
 
 ## <a name="time-to-live-configurations"></a>Élettartam-konfigurációk
 
@@ -50,7 +49,7 @@ Az élettartam értéke másodpercben van megadva, és a rendszer az elem utols�
 
 Ez a szakasz néhány példát mutat be a tárolóhoz és elemekhez rendelt élő értékek különböző időpontjával:
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 A tároló ÉLETTARTAMa NULL értékre van állítva (DefaultTimeToLive = null)
 
@@ -61,7 +60,7 @@ A tároló ÉLETTARTAMa NULL értékre van állítva (DefaultTimeToLive = null)
 |TTL = 2000 |Az élettartam le van tiltva. Az adott tétel soha nem jár le.|
 
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 A tárolón belüli TTL értéke-1 (DefaultTimeToLive =-1)
 
@@ -72,7 +71,7 @@ A tárolón belüli TTL értéke-1 (DefaultTimeToLive =-1)
 |TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 
 A tárolón lévő TTL értéke 1000 (DefaultTimeToLive = 1000)
 

@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255237"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Az Azure-beli SAP HANA biztonsági mentési útmutatója Virtual Machines
@@ -41,7 +40,7 @@ Az Azure-ban támogatott SAP-szoftvereket az Azure-beli [üzembe helyezések ál
 
 ## <a name="azure-backup-service"></a>Azure Backup szolgáltatás
 
-Az első forgatókönyv azt mutatja be, hogy Azure Backup szolgáltatás vagy a SAP HANA `backint` felületen keresztül végez adatfolyam-mentést egy SAP HANA-adatbázisból. Vagy a Azure Backup szolgáltatás általánosabb funkciójának használatával létrehozhat egy alkalmazás-konzisztens lemez-pillanatképet, és azt a Azure Backup szolgáltatásba kell átvinni.
+Az első forgatókönyv azt mutatja be, hogy Azure Backup szolgáltatás vagy a SAP HANA felületen keresztül `backint` végez adatfolyam-mentést egy SAP HANA-adatbázisból. Vagy a Azure Backup szolgáltatás általánosabb funkciójának használatával létrehozhat egy alkalmazás-konzisztens lemez-pillanatképet, és azt a Azure Backup szolgáltatásba kell átvinni.
 
 A Azure Backup a [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)nevű tulajdonosi SAP HANA felülettel integrálja és minősítette SAP HANA biztonsági mentési megoldásként. A megoldással, annak képességeivel és az elérhető Azure-régiókkal kapcsolatos további információkért olvassa el a [SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentését](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)ismertető cikket. A HANA Azure Backup szolgáltatásával kapcsolatos részletekért és alapelvekért olvassa el az [Azure-beli virtuális gépeken futó SAP HANA adatbázis biztonsági mentéséről szóló](https://docs.microsoft.com/azure/backup/sap-hana-db-about)cikket. 
 
@@ -116,12 +115,12 @@ A korábban leírtaknak megfelelően a Azure Backup, a fájlrendszer és az alka
 > Lemezes pillanatkép-alapú biztonsági másolatok SAP HANAhoz olyan központi telepítések esetén, ahol több adatbázis-tároló van használatban, a HANA 2,0 SP04 minimális kiadására van szükség
 > 
 
-Az Azure Storage nem biztosít fájlrendszerbeli konzisztenciát több lemezre vagy kötetre a pillanatkép-készítési folyamat során. Ez azt jelenti, hogy az alkalmazásnak konzisztensnek kell lennie az alkalmazásban, ebben az esetben SAP HANA magát. Az 2039883-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/2039883) fontos információkat tartalmaz a tárolási pillanatképek SAP HANA biztonsági mentéséről. A XFS fájlrendszerek esetében például a **XFS\_rögzítése** szükséges a tárolási pillanatkép elindításához az alkalmazás konzisztenciájának biztosítása érdekében (lásd: [XFS\_Freeze (8) – Linux man oldal](https://linux.die.net/man/8/xfs_freeze) a **XFS\_befagyasztásával**kapcsolatos részletekért.
+Az Azure Storage nem biztosít fájlrendszerbeli konzisztenciát több lemezre vagy kötetre a pillanatkép-készítési folyamat során. Ez azt jelenti, hogy az alkalmazásnak konzisztensnek kell lennie az alkalmazásban, ebben az esetben SAP HANA magát. Az 2039883-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/2039883) fontos információkat tartalmaz a tárolási pillanatképek SAP HANA biztonsági mentéséről. A XFS fájlrendszerek esetében például a **XFS \_ rögzítése** szükséges a tárolási pillanatkép elindításához az alkalmazás konzisztenciájának biztosítása érdekében (lásd: [XFS \_ Freeze (8) – Linux man oldal](https://linux.die.net/man/8/xfs_freeze) a **XFS \_ befagyasztásával**kapcsolatos részletekért.
 
 Feltételezve, hogy a XFS fájlrendszer négy Azure virtuális lemezzel rendelkezik, a következő lépések egységes pillanatképet biztosítanak, amely a HANA-adatterületet jelöli:
 
 1. HANA-adatok pillanatkép-előkészítésének létrehozása
-1. Az összes lemez/kötet fájlrendszerének rögzítése (például **XFS\_Freeze**használata)
+1. Az összes lemez/kötet fájlrendszerének rögzítése (például **XFS \_ Freeze**használata)
 1. Az összes szükséges blob-pillanatkép létrehozása az Azure-ban
 1. A fájlrendszer rögzítésének feloldása
 1. A HANA-adatok pillanatképének megerősítése (törli a pillanatképet)
@@ -133,7 +132,7 @@ A HANA-adatpillanatképek létrehozásával kapcsolatos további információké
 - További részletek a lépés végrehajtásához #1 a következő cikkben találhatók: [Adatpillanatkép létrehozása (NATÍV SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) 
 - Az [adatok pillanatképének létrehozása (NATÍV SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) című cikkben található, a HANA-adatpillanatképek igény szerinti megerősítésére és törlésére vonatkozó részletek a #5 lépésben olvashatók. 
 
-Fontos, hogy erősítse meg a HANA-pillanatképet. A másolási &quot;és írási művelet miatt előfordulhat,&quot; hogy a pillanatkép-előkészítési módban a SAP HANA nem igényel további lemezterületet. &#39;s nem lehet új biztonsági mentéseket elindítani, amíg meg nem történik a SAP HANA pillanatkép megerősítése.
+Fontos, hogy erősítse meg a HANA-pillanatképet. A &quot; másolási és írási művelet miatt előfordulhat, hogy a &quot; Pillanatkép-előkészítési módban a SAP HANA nem igényel további lemezterületet. &#39;s nem lehet új biztonsági mentéseket elindítani, amíg meg nem történik a SAP HANA pillanatkép megerősítése.
 
 
 ### <a name="sap-hana-backup-scheduling-strategy"></a>SAP HANA biztonsági mentési ütemezési stratégia

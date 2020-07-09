@@ -6,18 +6,17 @@ ms.author: mimckitt
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: ''
-ms.date: 09/26/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 986a2722515ac49aad9e655d1dcef06f5ce2e3dc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: ec96cab0a147e661df48318aadb057f9f6785b1f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198416"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026525"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
-Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
+Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhelésű virtuális gépek csoportjának létrehozását és kezelését. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
 
 
 ## <a name="why-use-virtual-machine-scale-sets"></a>Miért érdemes virtuálisgép-méretezési csoportokat használni?

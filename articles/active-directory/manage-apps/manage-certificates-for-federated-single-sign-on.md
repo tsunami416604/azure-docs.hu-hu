@@ -3,8 +3,8 @@ title: Összevonási tanúsítványok kezelése az Azure AD-ben | Microsoft Docs
 description: Megtudhatja, hogyan szabhatja testre az összevonási tanúsítványok lejárati dátumát, és hogyan újíthatja meg a hamarosan lejáró tanúsítványokat.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763210"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory
 
@@ -30,7 +29,7 @@ Ez a cikk csak azokra az alkalmazásokra vonatkozik, amelyek az Azure AD SSO [Se
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automatikusan generált tanúsítvány a katalógushoz és a nem katalógusbeli alkalmazásokhoz
 
-Amikor új alkalmazást ad hozzá a katalógusból, és konfigurál egy SAML-alapú bejelentkezést (az **egyszeri bejelentkezés** > **SAML** kiválasztásával az alkalmazás áttekintés lapjáról), az Azure ad létrehoz egy tanúsítványt az alkalmazás számára, amely három évig érvényes. Az aktív tanúsítvány biztonsági tanúsítvány (**. cer**) fájlként való letöltéséhez térjen vissza ehhez az oldalhoz (**SAML-alapú bejelentkezés**), és válasszon egy letöltési hivatkozást az **SAML aláíró tanúsítvány** fejlécében. Választhat a nyers (bináris) tanúsítvány vagy a Base64 (Base 64-kódolt szöveg) tanúsítvány közül. A katalógusbeli alkalmazások esetében ez a szakasz egy hivatkozást is megjelenít, amely az alkalmazás követelményeitől függően az összevonási metaadatok XML-kódjának ( **. XML** fájljának) letöltésére szolgál.
+Amikor új alkalmazást ad hozzá a katalógusból, és konfigurál egy SAML-alapú bejelentkezést (az **egyszeri bejelentkezés**  >  **SAML** kiválasztásával az alkalmazás áttekintés lapjáról), az Azure ad létrehoz egy tanúsítványt az alkalmazás számára, amely három évig érvényes. Az aktív tanúsítvány biztonsági tanúsítvány (**. cer**) fájlként való letöltéséhez térjen vissza ehhez az oldalhoz (**SAML-alapú bejelentkezés**), és válasszon egy letöltési hivatkozást az **SAML aláíró tanúsítvány** fejlécében. Választhat a nyers (bináris) tanúsítvány vagy a Base64 (Base 64-kódolt szöveg) tanúsítvány közül. A katalógusbeli alkalmazások esetében ez a szakasz egy hivatkozást is megjelenít, amely az alkalmazás követelményeitől függően az összevonási metaadatok XML-kódjának ( **. XML** fájljának) letöltésére szolgál.
 
 ![SAML aktív aláíró tanúsítvány letöltési lehetőségei](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
@@ -90,7 +89,7 @@ Az Azure AD e-mailben értesítést küld a 60, 30 és 7 nappal az SAML-tanúsí
 1. Minden törölni kívánt e-mail-cím esetében válassza a **Törlés** ikont (a szemetet is) az e-mail-cím mellett.
 1. Kattintson a **Mentés** gombra.
 
-Az értesítő e-mailt a következő aadnotification@microsoft.comcímről küldi:. Ha el szeretné kerülni, hogy az e-mail a levélszemét helyére kerüljön, vegye fel ezt az e-mailt a névjegyalbumba.
+Az értesítő e-mailt a következő címről küldi: aadnotification@microsoft.com . Ha el szeretné kerülni, hogy az e-mail a levélszemét helyére kerüljön, vegye fel ezt az e-mailt a névjegyalbumba.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Hamarosan lejáró tanúsítvány megújítása
 
@@ -111,4 +110,4 @@ Ha egy tanúsítvány hamarosan lejár, megújíthatja azt egy olyan eljárássa
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](../saas-apps/tutorial-list.md)
 - [Alkalmazásfelügyelet az Azure Active Directoryval](what-is-application-management.md)
 - [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](what-is-single-sign-on.md)
-- [SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Az Azure Active Directoryban található alkalmazásokba történő SAML-alapú egyszeri bejelentkezés hibaelhárítása](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

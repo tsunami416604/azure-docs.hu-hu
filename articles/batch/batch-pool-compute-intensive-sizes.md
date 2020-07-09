@@ -3,12 +3,12 @@ title: Nagy számítási igényű Azure-beli virtuális gépek használata a Bat
 description: A HPC és a GPU virtuálisgép-méretek kihasználása Azure Batch készletekben. Ismerje meg az operációs rendszer függőségeit, és tekintse meg a példákat.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779748"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962509"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
 
@@ -36,8 +36,8 @@ A Batch-ben a számítási igényű méretek RDMA vagy GPU-képességei csak biz
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS vagy<br/>CentOS-alapú HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA-illesztőprogramok | Csomópontok közötti kommunikáció engedélyezése, egyidejű feladatok végrehajtásának letiltása |
-| [NC, NCv2, NCv3, NDv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (változó sorozat) | Ubuntu 16,04 LTS vagy<br/>CentOS 7,3 vagy 7,4<br/>(Azure Marketplace) | NVIDIA CUDA vagy CUDA Toolkit-illesztőprogramok | N/A | 
-| [NV, NVv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS vagy<br/>CentOS 7,3<br/>(Azure Marketplace) | NVIDIA GRID-illesztőprogramok | N/A |
+| [NC, NCv2, NCv3, NDv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (változó sorozat) | Ubuntu 16,04 LTS vagy<br/>CentOS 7,3 vagy 7,4<br/>(Azure Marketplace) | NVIDIA CUDA vagy CUDA Toolkit-illesztőprogramok | N.A. | 
+| [NV, NVv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS vagy<br/>CentOS 7,3<br/>(Azure Marketplace) | NVIDIA GRID-illesztőprogramok | N.A. |
 
 <sup>*</sup>Az RDMA-kompatibilis N-sorozatú méretek NVIDIA Tesla GPU-ket is tartalmazhatnak
 
@@ -46,8 +46,8 @@ A Batch-ben a számítási igényű méretek RDMA vagy GPU-képességei csak biz
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 vagy<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 vagy újabb, vagy<br/> Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Csomópontok közötti kommunikáció engedélyezése, egyidejű feladatok végrehajtásának letiltása |
-| [NC, NCv2, NCv3, ND, NDv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (változó sorozat) | Windows Server 2016 vagy <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA vagy CUDA Toolkit-illesztőprogramok| N/A | 
-| [NV, NVv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 vagy<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-illesztőprogramok | N/A |
+| [NC, NCv2, NCv3, ND, NDv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (változó sorozat) | Windows Server 2016 vagy <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA vagy CUDA Toolkit-illesztőprogramok| N.A. | 
+| [NV, NVv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 vagy<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-illesztőprogramok | N.A. |
 
 <sup>*</sup>Az RDMA-kompatibilis N-sorozatú méretek NVIDIA Tesla GPU-ket is tartalmazhatnak
 
@@ -92,7 +92,7 @@ A Batch-készlet speciális virtuálisgép-méretének konfigurálásához több
 
 Ha a CUDA-alkalmazásokat Windows NC-csomópontok készletén szeretné futtatni, telepítenie kell a NVDIA GPU-illesztőprogramokat. A következő példa egy alkalmazáscsomag használatával telepíti az NVIDIA GPU-illesztőprogramokat. Ezt a beállítást akkor érdemes választania, ha a számítási feladat egy adott GPU-illesztőprogram-verziótól függ.
 
-1. Töltsön le egy telepítőcsomagot a GPU-illesztőprogramok számára a Windows Server 2016-es [verziójáról](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)az [NVIDIA webhelyről](https://www.nvidia.com/Download/index.aspx) – például: 411,82. Mentse a fájlt helyileg egy rövid névvel, például a *GPUDriverSetup. exe*fájllal.
+1. Töltsön le egy telepítőcsomagot a GPU-illesztőprogramok számára a Windows Server 2016-es [verziójáról](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)az [NVIDIA webhelyről](https://www.nvidia.com/Download/index.aspx) – például: 411,82. Mentse a fájlt helyileg egy rövid névvel, például az *GPUDriverSetup.exe*.
 2. Hozzon létre egy zip-fájlt a csomagból.
 3. Töltse fel a csomagot a Batch-fiókjába. A lépéseket lásd az [alkalmazáscsomag](batch-application-packages.md) útmutatójában. Olyan alkalmazás-azonosítót kell megadnia, mint a *GPUDriver*, valamint egy olyan verzió, mint például a *411,82*.
 1. A Batch API-k vagy a Azure Portal használatával hozzon létre egy készletet a virtuális gép konfigurációjában a kívánt számú csomópont és skála alapján. Az alábbi táblázat az NVIDIA GPU-illesztőprogramok csendes üzembe helyezését mutatja be az indítási tevékenység használatával:
@@ -127,12 +127,12 @@ Ha a CUDA-alkalmazásokat Linux NC-csomópontok készletén szeretné futtatni, 
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Példa: Microsoft MPI Windows H16r virtuálisgép-készleten
 
-Ha Windows MPI-alkalmazásokat szeretne futtatni az Azure H16r virtuálisgép-csomópontok készletén, konfigurálnia kell a HpcVmDrivers-bővítményt, és telepítenie kell a [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)-t. Íme néhány példa a Windows Server 2016-lemezkép telepítésére a szükséges illesztőprogramokkal és szoftverekkel:
+Ha Windows MPI-alkalmazásokat szeretne futtatni az Azure H16r virtuálisgép-csomópontok készletén, konfigurálnia kell a HpcVmDrivers-bővítményt, és telepítenie kell a [Microsoft MPI](/message-passing-interface/microsoft-mpi)-t. Íme néhány példa a Windows Server 2016-lemezkép telepítésére a szükséges illesztőprogramokkal és szoftverekkel:
 
 1. Helyezzen üzembe egy Windows Server 2016 rendszerű Azure H16r virtuális gépet. Hozza létre például a virtuális gépet az USA nyugati régiójában. 
 2. Adja hozzá a HpcVmDrivers-bővítményt a virtuális géphez egy [Azure PowerShell parancs futtatásával](../virtual-machines/sizes-hpc.md) egy olyan ügyfélszámítógépről, amely csatlakozik az Azure-előfizetéséhez, vagy használja a Azure Cloud shell. 
 1. Hozzon Távoli asztal kapcsolódni a virtuális géphez.
-1. Töltse le a Microsoft MPI legújabb verziójához készült telepítőcsomagot (MSMpiSetup. exe), és [telepítse a Microsoft](https://www.microsoft.com/download/details.aspx?id=57467) MPI-t.
+1. Töltse le a Microsoft MPI legújabb verziójához készült telepítőcsomagot (MSMpiSetup.exe), és [telepítse a Microsoft](https://www.microsoft.com/download/details.aspx?id=57467) MPI-t.
 1. A Batch szolgáltatáshoz tartozó megosztott képkatalógus [rendszerképének](batch-sig-images.md) létrehozásához kövesse az alábbi lépéseket.
 1. A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet [a megosztott rendszerkép](batch-sig-images.md) -katalógus és a kívánt számú csomópont és skála alapján. A következő táblázat a rendszerkép minta-készletének beállításait mutatja be:
 
@@ -163,6 +163,6 @@ A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet a r
 
 ## <a name="next-steps"></a>További lépések
 
-* Az MPI-feladatok Azure Batch készleten való futtatásához tekintse meg a Windows vagy [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) [rendszerű](batch-mpi.md) példákat.
+* Az MPI-feladatok Azure Batch készleten való futtatásához tekintse meg a Windows vagy [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) [rendszerű](batch-mpi.md) példákat.
 
 * A Batch-beli GPU-munkaterhelésekre vonatkozó példákat a [Batch hajógyári](https://github.com/Azure/batch-shipyard/) receptek című témakörben talál.

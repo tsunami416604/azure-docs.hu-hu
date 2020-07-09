@@ -1,10 +1,9 @@
 ---
-title: Az Azure-beli SQL Server VMhoz tartozó licencelési modell módosítása
-description: Megtudhatja, hogyan válthat az Azure-beli SQL Server virtuális gépek licencelése a saját licencek megvásárlásával a Azure Hybrid Benefit használatával.
+title: Az Azure-beli SQL virtuális gép licencelési modelljének módosítása
+description: Megtudhatja, hogyan válthat az Azure-beli SQL Server VM licencelése az előfizetéses elszámolással a saját licencek használatára a Azure Hybrid Benefit használatával.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -14,20 +13,19 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ebf8e62074d357b6c7dc91d1a88a46dcfc18bf16
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668899"
 ---
-# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Servert futtató virtuális gépek licencmodelljének módosítása
+# <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure-beli, SQL-t futtató virtuális gépek licencmodelljének módosítása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
+Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL Server VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
 
-Három licenccel rendelkezik a SQL Server üzemeltető virtuális géphez: utólagos elszámolású, Azure Hybrid Benefit és vész-helyreállítási (DR). A SQL Server VM licencelési modelljét a Azure Portal, az Azure CLI vagy a PowerShell használatával módosíthatja. 
+A virtuális gépek három licenccel rendelkeznek, amelyek SQL Server üzemeltetik: utólagos elszámolású, Azure Hybrid Benefit (AHB) és vész-helyreállítási (DR). A SQL Server VM licencelési modelljét a Azure Portal, az Azure CLI vagy a PowerShell használatával módosíthatja. 
 
 - Az utólagos **elszámolású modell azt** jelenti, hogy az Azure-beli virtuális gép futtatásának másodpercenkénti díja magában foglalja a SQL Server licenc költségeit.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) lehetővé teszi, hogy a saját SQL Server licencét egy SQL Server futtató virtuális géppel használhassa. 
@@ -41,7 +39,7 @@ Ha az Azure-beli virtuális gépen SQL Server Azure Hybrid Benefit használatát
 
 - Hozzon létre egy virtuális gépet egy saját licencű SQL Server rendszerkép használatával az Azure Marketplace-en. Ez a beállítás csak Nagyvállalati Szerződés rendelkező ügyfelek számára érhető el.
 - Hozzon létre egy virtuális gépet az Azure Marketplace-en az utólagos elszámolású SQL Server rendszerképpel, és aktiválja a Azure Hybrid Benefit.
-- Önálló telepítés SQL Server egy Azure-beli virtuális gépen, manuálisan [regisztrálja az SQL VM erőforrás-szolgáltatót](sql-vm-resource-provider-register.md), és aktiválja a Azure Hybrid Benefit.
+- Telepítse SQL Servert az Azure-beli virtuális gépen, manuálisan [regisztrálja az SQL VM erőforrás-szolgáltatót](sql-vm-resource-provider-register.md), és aktiválja a Azure Hybrid Benefit.
 
 A SQL Server licencelése a virtuális gép kiépített állapotában, vagy később bármikor konfigurálható. A licencelési modellek közötti váltás nem eredményez leállást, nem indítja újra a virtuális gépet vagy a SQL Server szolgáltatást, nem vesz fel további költségeket, és azonnal érvénybe lép. Valójában a Azure Hybrid Benefit aktiválása *csökkenti* a költségeket.
 
@@ -56,7 +54,7 @@ A SQL Server VM licencelési modelljének módosítása az alábbi követelmény
 
 ## <a name="vms-already-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál már regisztrált virtuális gépek 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -70,7 +68,7 @@ A licencelési modellt közvetlenül a portálról is módosíthatja:
 ![Azure Hybrid Benefit a portálon](./media/licensing-model-azure-hybrid-benefit-ahb-change/ahb-in-portal.png)
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 Az Azure CLI használatával módosíthatja a licenc modelljét.  
 
@@ -131,9 +129,9 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 ## <a name="vms-not-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál nem regisztrált virtuális gépek
 
-Ha kiépített egy SQL Server VM az utólagos elszámolású Azure Marketplace-rendszerképekből, akkor a SQL Server licenc típusa utólagos elszámolású lesz. Ha az Azure Marketplace-en keresztül létrehozott egy saját licenctel ellátott rendszerképet használó SQL Server VM-t, a licenc típusa AHUB lesz. Az alapértelmezett (utólagos elszámolású) vagy a saját licencű Azure Marketplace-lemezképek által kiépített SQL Server virtuális gépek automatikusan regisztrálva lesznek az SQL VM erőforrás-szolgáltatóban, így megváltoztathatják a [licenc típusát](#vms-already-registered-with-the-resource-provider).
+Ha kiépített egy SQL Server VM az utólagos elszámolású Azure Marketplace-rendszerképekből, a SQL Server-licenc típusa utólagos elszámolású lesz. Ha az Azure Marketplace-en keresztül létrehozott egy saját licenctel ellátott rendszerképet használó SQL Server VM-t, a licenc típusa AHUB lesz. Az alapértelmezett (utólagos elszámolású) vagy a saját licencű Azure Marketplace-lemezképek által kiépített SQL Server virtuális gépek automatikusan regisztrálva lesznek az SQL VM erőforrás-szolgáltatóban, így megváltoztathatják a [licenc típusát](#vms-already-registered-with-the-resource-provider).
 
-Csak az Azure-beli virtuális gépeken Azure Hybrid Benefit-n keresztül telepíthet SQL Server. Ezeket a [virtuális gépeket az SQL VM erőforrás-szolgáltatóval kell regisztrálnia](sql-vm-resource-provider-register.md) , ha a SQL Server-licencet Azure Hybrid Benefitként állítja be, hogy jelezze a Azure Hybrid Benefit használatát a Microsoft termék feltételeinek megfelelően.
+Csak az Azure-beli virtuális gépeken Azure Hybrid Benefit-on keresztül telepíthető SQL Server. Ezeket a [virtuális gépeket az SQL VM erőforrás-szolgáltatóval kell regisztrálnia](sql-vm-resource-provider-register.md) , ha a SQL Server-licencet Azure Hybrid Benefitként állítja be, hogy jelezze a Azure Hybrid Benefit használatát a Microsoft termék feltételeinek megfelelően.
 
 A SQL Server VM licencének típusa csak akkor módosítható, ha a SQL Server VM regisztrálva van az SQL VM erőforrás Azure Hybrid Benefit-szolgáltatóban.
 
@@ -171,7 +169,7 @@ Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [r
 Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózati adapterrel rendelkeznek. A licencelési modell módosítása előtt távolítsa el az egyik hálózati adaptert. Bár a licenc modell módosítása után a hálózati adaptert visszaállíthatja a virtuális géphez, a Azure Portal, például az automatikus biztonsági mentés és a javítások nem lesznek többé támogatottak. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

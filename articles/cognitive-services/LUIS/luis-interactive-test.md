@@ -2,13 +2,13 @@
 title: Alkalmazás tesztelése a LUIS Portalon
 description: A Language Understanding (LUIS) használatával folyamatosan dolgozhat az alkalmazáson, és javíthatja annak nyelvi megismerését.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714404"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677736"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 
@@ -65,9 +65,25 @@ A vizsgálat panelen a Hozzáadás a következőhöz: **például hosszúságú 
 
 ## <a name="disable-required-features"></a>Szükséges szolgáltatások letiltása
 
-Ezzel a kapcsolóval megtekintheti, hogy mi a jóslat, ha az entitás funkciójának megadása nem volt szükséges.
+Ezzel a kapcsolóval meghatározhatja, hogy a betanított alkalmazás megfelelően előre megjósolja-e az entitásokat a szükséges funkciók alapján. Az alapértelmezett beállítás szerint az előrejelzés során szükség szerint alkalmazza a szolgáltatást. Ezt a kapcsolót választva megtekintheti, hogy mi a jóslat, ha az alentitás funkciójának megadása nem volt szükséges.
 
-Ezzel a kapcsolóval meghatározhatja, hogy a betanított alkalmazás megfelelően előre megjósolja-e az entitásokat a szükséges funkciók alapján. Előfordulhat, hogy a betanított alkalmazás megjósolhatja, hogy a gép megtanulta-e a nem megfelelő címkét például a hosszúságú kimondott szöveg, vagy a szükséges szolgáltatás nem felel meg a szövegnek.
+### <a name="when-to-disable-required-features"></a>Mikor kell letiltani a szükséges szolgáltatásokat
+
+Előfordulhat, hogy a betanított alkalmazás a következők valamelyike alapján elkerülheti a géppel megtanult entitást:
+* A példa hosszúságú kimondott szöveg címkézése helytelen.
+* A szükséges szolgáltatás nem felel meg a szövegnek.
+
+Ilyen például egy géppel megtanult entitás, amely egy személy nevének alentitását adja meg.
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="Képernyőkép a LUIS Portal Machine-ról – megtanult entitás sémája a szükséges funkcióval":::
+
+A gép által megtanult entitások példájának kimondása: `Assign Bob Jones to work on the new security feature` .
+
+A kinyerés legyen `security feature` a jegy leírása `Bob Jones` , és a mérnök, az entitás két alentitása `Assign ticket` .
+
+Az alentitások sikeres előrejelzéséhez adja hozzá az előkészített entitást AA [PersonName](luis-reference-prebuilt-person.md) az `engineer` alentitáshoz. Ha a funkciót kötelezővé teszi, ez azt jelenti, hogy az alentitás csak akkor lesz kibontva, ha a PersonName előre összeépített entitást jósolnak a szöveghez. Ez azt jelenti, hogy a szövegben az PersonName alentitással nem előre jelzett nevek nem lesznek visszaadott címkével ellátott alentitásként `engineer` .
+
+Ha az interaktív teszt panelt használja, és a szükséges funkcióval látja el az alentitást, akkor nem előre jelezheti ezt a beállítást, hogy megtudja, van-e előre jelezve, hogy nincs-e szükség a szolgáltatásra. Lehetséges, hogy az alentitások megfelelően előre jelezve lesznek anélkül, hogy a funkciót a példa hosszúságú kimondott szöveg helyes címkézése miatt szükség lenne.
 
 ## <a name="view-sentiment-results"></a>A hangulat eredményeinek megtekintése
 

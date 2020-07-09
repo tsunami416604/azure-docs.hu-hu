@@ -4,20 +4,20 @@ description: A B2B vendég felhasználói tulajdonságainak és állapotának Az
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 03/19/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f5002e361653614c966dc43301afa83eb7b200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386623"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -104,7 +104,11 @@ Kikapcsolhatja az alapértelmezett korlátozásokat annak érdekében, hogy a v�
 ![A felhasználói beállításokban a külső felhasználók lehetőséget ábrázoló képernyőkép](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Elérhetővé tehetem vendég felhasználókat az Exchange globális címlistában?
-Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet globális címeinek listájában, de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Részletekért lásd: a vendég **objektumok megjelenítése a globális címlistában?** a vendégek [hozzáférésének kezelése az Office 365-csoportokban](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list). 
+Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet globális címeinek listájában, de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Részletekért lásd: a vendég **objektumok megjelenítése a globális címlistában?** a vendégek [hozzáférésének kezelése az Office 365-csoportokban](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
+
+## <a name="can-i-update-a-guest-users-email-address"></a>Frissíthetem a vendég felhasználó e-mail-címét?
+
+Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)-n keresztül hozza létre a rendszer. Az e-mail tulajdonságot az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)segítségével frissítheti, és a módosítás az Azure ad vendég felhasználói objektumában jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
 

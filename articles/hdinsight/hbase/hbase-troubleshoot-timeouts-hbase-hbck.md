@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 5604b42e1611830f3aaea9ae180cdb8142ab0942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887189"
 ---
 # <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Forgatókönyv: időtúllépés a "hbase hbck" paranccsal az Azure HDInsight
@@ -24,17 +23,17 @@ Időtúllépéseket észlel a `hbase hbck` régió-hozzárendelések kijavítás
 
 ## <a name="cause"></a>Ok
 
-Ha a `hbck` parancs használatakor időtúllépési problémák merülhetnek fel, lehetséges, hogy több régió "átmenetes" állapotban van hosszú ideig. Ezeket a régiókat kapcsolat nélküli üzemmódban láthatja a HBase Master felhasználói felületen. Mivel nagy számú régiót próbálnak áttérni, HBase Master lehet, hogy időtúllépés történt, és nem lehet ismét online állapotba hozni ezeket a régiókat.
+Ha a parancs használatakor időtúllépési problémák merülhetnek fel, lehetséges `hbck` , hogy több régió "átmenetes" állapotban van hosszú ideig. Ezeket a régiókat kapcsolat nélküli üzemmódban láthatja a HBase Master felhasználói felületen. Mivel nagy számú régiót próbálnak áttérni, HBase Master lehet, hogy időtúllépés történt, és nem lehet ismét online állapotba hozni ezeket a régiókat.
 
 ## <a name="resolution"></a>Megoldás:
 
 1. Jelentkezzen be a HDInsight HBase-fürtbe SSH használatával.
 
-1. Futtassa `hbase zkcli` a parancsot Apache ZooKeeper rendszerhéjhoz való kapcsolódáshoz.
+1. Futtassa a `hbase zkcli` parancsot Apache ZooKeeper rendszerhéjhoz való kapcsolódáshoz.
 
 1. Futtatás `rmr /hbase/regions-in-transition` vagy `rmr /hbase-unsecure/regions-in-transition` parancs.
 
-1. Kilépés a `hbase zkcli` rendszerhéjból parancs `exit` használatával.
+1. Kilépés a `hbase zkcli` rendszerhéjból `exit` parancs használatával.
 
 1. Az Apache Ambari felhasználói felületén indítsa újra az aktív HBase Master szolgáltatást.
 

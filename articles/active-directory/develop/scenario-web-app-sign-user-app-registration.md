@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881579"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
@@ -43,17 +42,17 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával. Másik lehetőségként jelentkezzen be a nemzeti felhőhöz választott Azure Portal.
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban. Ezután állítsa be a portál munkamenetét a kívánt Azure Active Directory (Azure AD) bérlőre.
-1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
    1. Válassza ki az alkalmazás támogatott fiók-típusait. (Lásd: [támogatott fióktípus](./v2-supported-account-types.md).)
    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **AspNetCore-WebApp**.
-   1. Az **átirányítási URI**esetében adja hozzá az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után a visszaadott jogkivonat-válaszokat fogja fogadni. Adja meg **https://localhost:44321**például a következőt:. Ezután válassza a **regisztráció**lehetőséget.
+   1. Az **átirányítási URI**esetében adja hozzá az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után a visszaadott jogkivonat-válaszokat fogja fogadni. Adja meg például a következőt: **https://localhost:44321** . Ezután válassza a **regisztráció**lehetőséget.
 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
-   1. A **Válasz URL-cím**mezőbe írja be **https://localhost:44321/signin-oidc** a **web**típusú értéket.
-   1. A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a **https://localhost:44321/signout-oidc**következőre:.
+   1. A **Válasz URL-cím**mezőbe **https://localhost:44321/signin-oidc** írja be a **web**típusú értéket.
+   1. A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: **https://localhost:44321/signout-oidc** .
    1. Az **Implicit engedély** területen válassza az **Azonosítói jogkivonatok** elemet.
    1. Kattintson a **Mentés** gombra.
 
@@ -62,10 +61,10 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
    1. Válassza ki az alkalmazás támogatott fiók-típusait. (Lásd: [támogatott fióktípus](./v2-supported-account-types.md).)
    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **MailApp-openidconnect-v2**.
-   1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő **https://localhost:44326/** átirányítási URI-t:.
+   1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő átirányítási URI-t: **https://localhost:44326/** .
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Válassza a **hitelesítés** menüt.
-1. A **Speciális beállítások** | **implicit támogatás** szakaszban válassza az **azonosító tokenek**elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
+1. A **Speciális beállítások**  |  **implicit támogatás** szakaszban válassza az **azonosító tokenek**elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
 1. Kattintson a **Mentés** gombra.
 
 # <a name="java"></a>[Java](#tab/java)
@@ -89,7 +88,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 
    1. Adja meg a kulcs leírását.
    1. Válassza ki a kulcs időtartamát **1 évben**.
-   1. Válassza a **Hozzáadás** lehetőséget.
+   1. Válassza a **Hozzáadás** elemet.
    1. Ha a kulcs értéke megjelenik, másolja később. Ez az érték nem jelenik meg újra, vagy bármilyen más módon lekérdezhető.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -97,7 +96,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Adja meg például a **Python-WebApp**értéket.
    1. A **támogatott fióktípus** módosítása **bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)**.
-   1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő **http://localhost:5000/getAToken**átirányítási URI-t:.
+   1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő átirányítási URI-t: **http://localhost:5000/getAToken** .
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
 1. A bal oldali menüben válassza a **tanúsítványok & Secrets**elemet.
@@ -105,7 +104,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 
    1. Adja meg a kulcs leírását.
    1. Adja **meg az 1 év**kulcsának időtartamát.
-   1. Válassza a **Hozzáadás** lehetőséget.
+   1. Válassza a **Hozzáadás** elemet.
    1. Ha a kulcs értéke megjelenik, másolja. Erre később még szüksége lesz.
 ---
 
@@ -117,7 +116,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 > - MyOrg (csak ebben a szervezeti könyvtárban lévő fiókok)
 > - AnyOrg (fiókok bármely szervezeti címtárban)
 >
-> Létrehozhat egy olyan alkalmazást, amely a felhasználók személyes Microsoft-fiókjait (például Skype, Xbox vagy Outlook.com) is aláírja. Először hozzon létre egy több-bérlős alkalmazást. A támogatott fióktípus bármely szervezeti címtárban található fiókok. Ezután módosítsa az alkalmazás `signInAudience` jegyzékfájljában lévő tulajdonságot a Azure Portal. További információ: 1,3. [lépés](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) a ASP.net Core oktatóanyagban. Ezt a lépést bármilyen nyelven általánosíthatja a Web Apps szolgáltatásban.
+> Létrehozhat egy olyan alkalmazást, amely a felhasználók személyes Microsoft-fiókjait (például Skype, Xbox vagy Outlook.com) is aláírja. Először hozzon létre egy több-bérlős alkalmazást. A támogatott fióktípus bármely szervezeti címtárban található fiókok. Ezután módosítsa az `signInAudience` alkalmazás jegyzékfájljában lévő tulajdonságot a Azure Portal. További információ: 1,3. [lépés](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) a ASP.net Core oktatóanyagban. Ezt a lépést bármilyen nyelven általánosíthatja a Web Apps szolgáltatásban.
 
 ## <a name="next-steps"></a>További lépések
 

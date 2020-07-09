@@ -1,6 +1,6 @@
 ---
-title: 'CLI: alkalmazások összekapcsolása SQL-adatbázishoz'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan csatlakoztatható egy alkalmazás egy SQL-adatbázishoz.
+title: 'CLI: alkalmazás összekötése SQL Database'
+description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a példa azt mutatja be, hogyan csatlakoztatható egy alkalmazás SQL Databasehoz.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: aa922930314d630e1aece004bab0c74adaf8eb2f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015488"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250740"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>App Service-alkalmazás összekötése egy SQL-adatbázissal a parancssori felület használatával
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>App Service alkalmazás összekötése SQL Database a parancssori felület használatával
 
-Ez a példa egy Azure SQL Database-adatbázist és egy App Service alkalmazást hoz létre. Ezután az alkalmazás beállításainak használatával kapcsolódik az SQL-adatbázishoz az alkalmazáshoz.
+Ez a példa egy adatbázist hoz létre Azure SQL Database és egy App Service alkalmazásban. Ezután az alkalmazás beállításainak használatával összekapcsolja az adatbázist az alkalmazással.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás, SQL Database és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |

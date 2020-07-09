@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 6273043fc50938961caaf9f5a84273ec93c7521c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 5bdcbe620e88700c5607162cd2471f6b2c3e7532
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801747"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132841"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: ARM-sablon használata Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozásához
 
-Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre Azure Database for PostgreSQL-egyetlen kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI használatával.
+Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy Azure Database for PostgreSQL-egyetlen kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI-ben.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,20 +35,18 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](htt
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Ha a kódot helyileg szeretné futtatni, [Azure PowerShell](/powershell/azure/).
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Ha a kódot helyileg szeretné futtatni, az [Azure CLI](/cli/azure/)-t.
 
 ---
 
-## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Létre kell hoznia egy Azure Database for PostgreSQL-kiszolgálót a számítási és tárolási erőforrások konfigurált készletével. További információ: [Azure Database for PostgreSQL-Single Server díjszabási szintjei](concepts-pricing-tiers.md). A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-postgresql-with-vnet/)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-managed-postgresql-with-vnet/azuredeploy.json" range="001-233" highlight="151,164,178,201,215":::
 
@@ -120,7 +122,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue: "
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 A sablon használatával hozzon létre egy új Azure Database for PostgreSQL-kiszolgálót a következő interaktív kóddal. A kód az új kiszolgálónév, egy új erőforráscsoport nevének és helyének, valamint egy rendszergazdai fiók nevének és jelszavának megadását kéri.
 
@@ -160,7 +162,7 @@ Get-AzResource -ResourceType "Microsoft.DbForPostgreSQL/servers" -Name $serverNa
 Read-Host -Prompt "Press [ENTER] to continue: "
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 Futtassa a következő interaktív kódot a Azure Database for PostgreSQL-kiszolgáló részleteinek megtekintéséhez. Meg kell adnia az új kiszolgáló nevét és erőforrás-csoportját.
 
@@ -195,7 +197,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Read-Host -Prompt "Press [ENTER] to continue: "
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 read -p "Enter the Resource Group name: " resourceGroupName &&
@@ -210,4 +212,4 @@ read -p "Press [ENTER] to continue: "
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

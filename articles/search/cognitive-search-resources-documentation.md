@@ -7,36 +7,66 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 3399ace71d3a28ea903991e0439f1c9ddcc939d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565393"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Az AI-bővítés dokumentációs erőforrásai az Azure-ban Cognitive Search
 
-Az AI-bővítés az Azure Cognitive Search indexelésének egyik funkciója, amely a nem szöveges forrásokban és a nem differenciált szövegekben található látens információkat, valamint a teljes szöveges kereshető tartalmat átalakítja az Azure Cognitive Searchban.
+Az AI-bővítés egy olyan bővítmény az indexelő-alapú indexeléshez, amely nem szöveges forrásokban és nem differenciált szövegekben talál látens információkat, és átalakítja azt teljes szöveges kereshető tartalomra az Azure Cognitive Searchban. 
 
-A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumentációt tartalmaznak.
+A beépített feldolgozáshoz a Cognitive Services előképzett AI-modelljeit belsőleg nevezzük az elemzések végrehajtásához. Az egyéni modelleket Azure Machine Learning, Azure Functions vagy más megközelítéssel is integrálhatja.
 
-## <a name="getting-started"></a>Első lépések
-+ [Az AI bemutatása az Azure-ban Cognitive Search](cognitive-search-concept-intro.md)
+Az alábbi lista a AI-bővítés dokumentációjának összevont listáját tartalmazza.
+
+## <a name="concepts"></a>Fogalmak
+
++ [AI-bővítések](cognitive-search-concept-intro.md)
++ [Készségek](cognitive-search-working-with-skillsets.md)
++ [Munkamenetek hibakeresése](cognitive-search-debug-session.md)
++ [Tudástárak](knowledge-store-concept-intro.md)
++ [Leképezések](knowledge-store-projection-overview.md)
++ [Növekményes gazdagodás (a gyorsítótárazott dúsított dokumentumok újrafelhasználása)](cognitive-search-incremental-indexing-conceptual.md)
+
+## <a name="hands-on-walkthroughs"></a>Gyakorlati útmutatók
+
 + [Gyors útmutató: kognitív készségkészlet létrehozása a Azure Portalban](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: bővített indexelés az AI-vel](cognitive-search-tutorial-blob.md)
-+ [Példa: egyéni képesség létrehozása AI-bővítéshez](cognitive-search-create-custom-skill-example.md)
++ [Oktatóanyag: a készségkészlet diagnosztizálása, javítása és végrehajtása hibakeresési munkamenetekkel](cognitive-search-tutorial-debug-sessions.md)
+
+## <a name="knowledge-stores"></a>Tudástárak
+
++ [Gyors útmutató: Knowledge Store létrehozása a Azure Portal](knowledge-store-create-portal.md)
++ [Knowledge Store létrehozása REST és Poster használatával](knowledge-store-create-rest.md)
++ [Tudásbázis megtekintése Storage Explorer](knowledge-store-view-storage-explorer.md)
++ [Tudástár összekötése Power BI](knowledge-store-connect-power-bi.md)
++ [Kivetítési példák (a dúsítások formálása és exportálása)](knowledge-store-projections-examples.md)
+
+## <a name="custom-skills-advanced"></a>Egyéni képességek (speciális)
+
++ [Egyéni szaktudás-illesztőfelület definiálása](cognitive-search-custom-skill-interface.md)
++ [Példa: egyéni képesség létrehozása Azure Functions (és Bing Entity Search API-k) használatával](cognitive-search-create-custom-skill-example.md)
++ [Példa: egyéni szakértelem létrehozása a Python használatával](cognitive-search-custom-skill-python.md)
++ [Példa: egyéni képesség létrehozása az űrlap-felismerő használatával](cognitive-search-custom-skill-form.md) 
++ [Példa: egyéni képesség létrehozása Azure Machine Learning használatával](cognitive-search-tutorial-aml-custom-skill.md) 
 
 ## <a name="how-to-guidance"></a>Útmutató
-+ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Annotációk hivatkozása képességcsoportokban](cognitive-search-concept-annotations-syntax.md)
-+ [Mezők leképezése indexre](cognitive-search-output-field-mapping.md)
-+ [Információk feldolgozása és kinyerése képekből](cognitive-search-concept-image-scenarios.md)
-+ [Azure Cognitive Search index újraépítése](search-howto-reindex.md)
-+ [Egyéni szaktudás-illesztőfelület definiálása](cognitive-search-custom-skill-interface.md)
-+ [Hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Referencia
++ [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md)
++ [Képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [jegyzetek készségkészlet való hivatkozása](cognitive-search-concept-annotations-syntax.md)
++ [Mezők leképezése indexre](cognitive-search-output-field-mapping.md)
++ [Képeken szereplő információk feldolgozása és kinyerése](cognitive-search-concept-image-scenarios.md)
++ [A növekményes dúsítás gyorsítótárazásának konfigurálása](search-howto-incremental-index.md)
++ [Azure Cognitive Search index újraépítése](search-howto-reindex.md)
++ [Tervezési tippek](cognitive-search-concept-troubleshooting.md)
++ [Gyakori hibák és figyelmeztetések](cognitive-search-common-errors-warnings.md)
+
+## <a name="skills-reference"></a>Képességek referenciája
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
   + [Microsoft. Skills. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -50,21 +80,24 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
   + [Microsoft. Skills. vízió. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft. Skills. vízió. OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft. Skills. util. ConditionalSkill](cognitive-search-skill-conditional.md)
-  + [Microsoft. Skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
+  + [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft. Skills. util. ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Egyéni készségek
+  + [Microsoft. Skills. Custom. AmlSkill](cognitive-search-aml-skill.md)
   + [Microsoft. Skills. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md)
 
 + [Elavult képességek](cognitive-search-skill-deprecated.md)
   + [Microsoft. Skills. Text. NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
 
+## <a name="apis"></a>API-k
+
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Készségkészlet létrehozása (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Indexelő létrehozása (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Lásd még
 
 + [Az Azure Cognitive Search REST API-jai](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
-+ [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)
++ [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)

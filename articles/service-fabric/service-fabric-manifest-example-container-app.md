@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701166"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
 A következő példák a többtárolós Service Fabric alkalmazás alkalmazás-és szolgáltatási jegyzékfájlját szemléltetik. A példák célja, hogy megmutassa, milyen beállítások érhetők el, és hogyan használhatja őket. Ezek az alkalmazások és szolgáltatások jegyzékfájli a [Windows Server 2016-tároló mintájának](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) jegyzékfájlján alapulnak.
@@ -269,7 +268,7 @@ A jegyzékfájlban használandó alkalmazás-paraméter. A paraméter értéke m
 A szolgáltatás-fejlesztő által létrehozott szolgáltatási jegyzékfájl importálása. Az alkalmazás egyes összetevőihez szolgáltatásbeli jegyzékfájlt kell importálni. A konfigurációs felülbírálások és házirendek deklarálása a szolgáltatás jegyzékfájljában lehetséges. További információ: [ServiceManifestImport elem](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
 ### <a name="servicemanifestref-element"></a>ServiceManifestRef elem
-A szolgáltatás jegyzékfájljának importálása hivatkozással. Jelenleg a szolgáltatás jegyzékfájljának (ServiceManifest. xml) jelen kell lennie a Build csomagban. További információ: [ServiceManifestRef elem](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
+A szolgáltatás jegyzékfájljának importálása hivatkozással. Jelenleg a szolgáltatás jegyzékfájljának (ServiceManifest.xml) jelen kell lennie a Build csomagban. További információ: [ServiceManifestRef elem](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="policies-element"></a>Szabályzatok elem
 A szabályzatok (a végponti kötés, a csomagok megosztása, a futtatási és a biztonsági hozzáférés) ismertetése az importált szolgáltatás jegyzékfájlján. További információ: [szabályzatok elem](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
@@ -342,7 +341,7 @@ A BelépésiPont által megadott végrehajtható fájl általában a hosszan fut
  További információ: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName elem
-A tárház és a rendszerkép [https://hub.docker.com](https://hub.docker.com) on vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+A tárház és a rendszerkép on [https://hub.docker.com](https://hub.docker.com) vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables elem
 Adja át a környezeti változókat a tárolóba vagy az exe-be.  További információ: [EnvironmentVariables elem](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -351,7 +350,7 @@ Adja át a környezeti változókat a tárolóba vagy az exe-be.  További infor
 Környezeti változó. További információ: [EnvironmentVariable elem](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage elem
-Egy Name attribútum által elnevezett mappát deklarál, amely egy Settings. xml fájlt tartalmaz. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+A Name attribútum által elnevezett mappát deklarál, amely Settings.xml fájlt tartalmaz. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="datapackage-element"></a>Datapackage szakaszából elem
 A Name attribútum által elnevezett mappát deklarál, amely statikus adatfájlokat tartalmaz. Service Fabric újrahasznosítja a gazdagépen és a támogatási csomagokban megadott összes EXEs és DLLHOSTs, ha a szolgáltatás jegyzékfájljában felsorolt adatcsomagok bármelyike frissül. További információ: [Datapackage szakaszából elem](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
@@ -386,7 +385,7 @@ A BelépésiPont által megadott végrehajtható fájl általában a hosszan fut
 További információ: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName elem
-A tárház és a rendszerkép [https://hub.docker.com](https://hub.docker.com) on vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+A tárház és a rendszerkép on [https://hub.docker.com](https://hub.docker.com) vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Parancsok elem
 Adja meg a parancsok vesszővel tagolt listáját a tárolóhoz. További információ: [commands Element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
@@ -398,7 +397,7 @@ Adja át a környezeti változókat a tárolóba vagy az exe-be.  További infor
 Környezeti változó. További információ: [EnvironmentVariable elem](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage elem
-Egy Name attribútum által elnevezett mappát deklarál, amely egy Settings. xml fájlt tartalmaz. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+A Name attribútum által elnevezett mappát deklarál, amely Settings.xml fájlt tartalmaz. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem
 Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: [Resources Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)

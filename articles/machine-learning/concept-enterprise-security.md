@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392233"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -146,7 +146,7 @@ Ha saját (ügyfél által felügyelt) kulcsokat kíván használni a Azure Cosm
 
 Az ügyfél által felügyelt kulcsokkal rendelkező Cosmos DB példány kiépítés engedélyezéséhez hajtsa végre a következő műveleteket:
 
-* Regisztrálja a Azure Machine Learning és Azure Cosmos DB erőforrás-szolgáltatót az előfizetésében, ha még nem tette meg.
+* Regisztrálja a Microsoft. MachineLearning és a Microsoft.DocumentDB erőforrás-szolgáltatót az előfizetésében, ha még nem tette meg.
 
 * Engedélyezze az előfizetéshez tartozó közreműködői engedélyekkel rendelkező Machine Learning alkalmazást (az identitás-és hozzáférés-kezelésben).
 
@@ -176,6 +176,11 @@ Az ügyfél által felügyelt Cosmos DB kulcsokkal kapcsolatos további informá
 A beállításjegyzékben található összes tároló lemezkép (Azure Container Registry) inaktív állapotban van. Az Azure automatikusan titkosítja a képeket a tárolás előtt, és visszafejti azt, amikor Azure Machine Learning lekéri a rendszerképet.
 
 Ha saját (felhasználó által felügyelt) kulcsokat kíván használni a Azure Container Registry titkosításához, létre kell hoznia a saját ACR-t, és csatolnia kell azt a munkaterület kiépítés során, vagy titkosítania kell az alapértelmezett példányt, amelyet a rendszer a munkaterület üzembe helyezésének időpontjában hoz létre.
+
+> [!IMPORTANT]
+> A Azure Machine Learning megköveteli, hogy a rendszergazdai fiók engedélyezve legyen a Azure Container Registry. Alapértelmezés szerint ez a beállítás le van tiltva a tároló-beállításjegyzék létrehozásakor. A rendszergazdai fiók engedélyezésével kapcsolatos információkért lásd: [rendszergazdai fiók](/azure/container-registry/container-registry-authentication#admin-account).
+>
+> Ha egy munkaterülethez Azure Container Registry lett létrehozva, ne törölje. Ezzel megszakítja Azure Machine Learning munkaterületét.
 
 A munkaterületek meglévő Azure Container Registry használatával történő létrehozásának példáját a következő cikkekben találja:
 
@@ -317,7 +322,7 @@ Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) 
 
 [![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Oktatás
+### <a name="training"></a>Képzés
 
 Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 

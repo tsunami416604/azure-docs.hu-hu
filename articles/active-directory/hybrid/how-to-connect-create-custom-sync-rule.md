@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75300824d94ecbd77f426539ce99da6caaa2e27a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60351068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359993"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Szinkronizálási szabály testre szabása
 
-## <a name="recommended-steps"></a>**Ajánlott lépések**
+## <a name="recommended-steps"></a>**Javasolt lépések**
 
 A szinkronizálási szabály szerkesztőjével szerkesztheti vagy létrehozhatja az új szinkronizálási szabályt. A szinkronizálási szabályok módosításához speciális felhasználónak kell lennie. Előfordulhat, hogy a helytelen módosítások miatt törölheti az objektumokat a cél könyvtárából. Kérjük, olvassa el az [ajánlott dokumentumokat](#recommended-documents) a szinkronizálási szabályokkal kapcsolatos szakértelem beszerzéséhez. A szinkronizálási szabály módosításához kövesse az alábbi lépéseket:
 

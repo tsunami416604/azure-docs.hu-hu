@@ -5,18 +5,18 @@ description: Automatizált gépi tanulási modellek létrehozása, áttekintése
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/20/2020
-ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9871d2ef46a4bbcaa0de7a2aee7d2c91f2bfefab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831913"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -66,7 +66,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
     1. A pontosság érdekében tekintse át a **beállításokat és az előnézet** űrlapot. Az űrlap intelligensen van feltöltve a fájl típusa alapján. 
 
-        Mező| Leírás
+        Mező| Description
         ----|----
         Fájlformátum| Meghatározza a fájlban tárolt adatelrendezést és-típust.
         Elválasztó| Egy vagy több karakter, amely egy egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt.
@@ -74,7 +74,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).
         Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.
     
-        Kattintson a **Tovább** gombra.
+        Válassza a **Tovább** lehetőséget.
 
     1. A **séma** űrlapja intelligens módon van feltöltve a **beállítások és az előnézet** űrlapon megadott beállítások alapján. Itt konfigurálhatja az egyes oszlopok adattípusát, áttekintheti az oszlopnevek nevét, és kiválaszthatja, hogy mely oszlopok **ne szerepeljenek** a kísérletben. 
             
@@ -82,7 +82,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
     1. A **részletek megerősítése** űrlap az **alapszintű információ** és **beállítások és az előnézet** űrlapon korábban feltöltött információk összegzése. Lehetősége van arra is, hogy adatprofilt hozzon létre az adatkészlethez egy profilkészítést engedélyező számítás használatával. További információ az [adatprofilkészítésről](#profile).
 
-        Kattintson a **Tovább** gombra.
+        Válassza a **Tovább** lehetőséget.
 1. Válassza ki az újonnan létrehozott adatkészletet, amint megjelenik. Emellett megtekintheti az adatkészlet és a minta statisztikáinak előnézetét is. 
 
 1. A **Run (Futtatás** ) űrlapon adja meg a kísérlet egyedi nevét.
@@ -93,20 +93,20 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Válassza az **új számítás létrehozása** lehetőséget a számítási környezet konfigurálásához a kísérlethez.
 
-    Mező|Leírás
+    Mező|Description
     ---|---
     Számítási név| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet.
     Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.
     Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia. Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont a pénzmosás-számításokhoz.
     
-    Kattintson a **Létrehozás** gombra. Egy új számítás létrehozása néhány percet is igénybe vehet.
+    Válassza a **Létrehozás** lehetőséget. Egy új számítás létrehozása néhány percet is igénybe vehet.
 
     >[!NOTE]
     > A számítási név azt jelzi, hogy a kiválasztott számítási/létrehozási *profil engedélyezve*van-e. (További részletekért lásd az [adatok profilkészítési](#profile) szakaszát).
 
-    Kattintson a **Tovább** gombra.
+    Válassza a **Tovább** lehetőséget.
 
-1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. További információért lásd: tevékenységtípusok [definiálása](how-to-define-task-type.md) .
+1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. További információért lásd: [támogatott](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) feladattípusok.
 
     1. A besoroláshoz is engedélyezheti a mély tanulást, amelyet a Text featurizations is használhat.
 
@@ -117,14 +117,14 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Választható További konfigurációs beállítások megtekintése: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
-    További konfigurációk|Leírás
+    További konfigurációk|Description
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
     Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja a gépi tanulással végzett featurization. Az automatikus featurization az automatikus adattisztítást, előkészítést és átalakítást tartalmaz szintetikus funkciók létrehozásához. Az idősorozat-előrejelzés feladattípusa nem támogatott. [További információ a featurization](how-to-configure-auto-features.md#featurization). 
     A legjobb modell ismertetése | Az engedélyezés vagy a Letiltás lehetőség kiválasztásával megjelenítheti a javasolt legjobb modell magyarázatát
     Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
     Kilépési feltétel| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Képzési idő (óra)*: meddig kell futtatni a betanítási feladatot. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
-    Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
+    Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-cross-validation-data-splits.md#prerequisites)szolgáltatásról.
     Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál.
 
 1. Választható Featurization-beállítások megtekintése: Ha úgy dönt, hogy engedélyezi az **automatikus featurization** a **további konfigurációs beállítások** űrlapon, a rendszer az alapértelmezett featurization technikákat alkalmazza. A **featurization-beállítások megtekintése** lehetőséggel módosíthatja ezeket az alapértelmezett értékeket, és ennek megfelelően testreszabhatja azokat. Megtudhatja, hogyan [szabhatja testre a featurizations](#customize-featurization). 
@@ -140,9 +140,9 @@ Az adatkészletek széles skáláját veheti igénybe, így ellenőrizheti, hogy
 >[!NOTE]
 > A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
-Statisztika|Leírás
+Statisztika|Description
 ------|------
-Funkció| Az összesíteni kívánt oszlop neve.
+Szolgáltatás| Az összesíteni kívánt oszlop neve.
 Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
 Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
 Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
@@ -206,7 +206,7 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
     Mező| Érték
     ----|----
     Name (Név)| Adja meg a központi telepítés egyedi nevét.
-    Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
+    Description| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)*.
     Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.

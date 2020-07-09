@@ -4,18 +4,18 @@ description: Ismerje meg, hogyan hozhatja létre és kezelheti a Azure Machine L
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
+ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5a532ec11cdcd97bd1f72c40f603bce7cc4b12c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611764"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & a CLI-bővítményt használja Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -158,6 +158,49 @@ A következő parancsok bemutatják, hogyan használható a CLI a Azure Machine 
 
     További információ: [az ml computetarget Create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
 
++ <a id="computeinstance"></a>Számítási példányok kezelése.  Az alábbi példákban a számítási példány neve **CPU**
+
+    + Hozzon létre egy új computeinstance.
+
+        ```azurecli-interactive
+        az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
+        ```
+    
+        További információ: [az ml computetarget Create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance).
+
+    + Computeinstance leállítása.
+    
+        ```azurecli-interactive
+        az ml computetarget stop computeinstance -n cpu -v
+        ```
+    
+        További információ: [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    
+    + Computeinstance elindítása.
+    
+        ```azurecli-interactive
+        az ml computetarget start computeinstance -n cpu -v
+       ```
+    
+        További információ: [az ml computetarget Start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    
+    + Indítsa újra a computeinstance.
+    
+        ```azurecli-interactive
+        az ml computetarget restart computeinstance -n cpu -v
+       ```
+    
+        További információ: [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    
+    + Computeinstance törlése.
+    
+        ```azurecli-interactive
+        az ml computetarget delete -n cpu -v
+       ```
+    
+        További információ: [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete).
+
+
 ## <a name="run-experiments"></a><a id="experiments"></a>Kísérletek futtatása
 
 * Indítsa el a kísérlet futtatását. Ha ezt a parancsot használja, adja meg a runconfig-fájl nevét (a. runconfig karakterláncot, \* Ha a fájlrendszert keresi) a-c paraméterrel.
@@ -195,23 +238,7 @@ A következő parancsok bemutatják, hogyan használhatók az adatkészletek a A
 
     Az adatkészlet definiálásához használt JSON-fájl formátumával kapcsolatos információkért használja a következőt: `az ml dataset register --show-template` .
 
-    További információ: [az ml adatkészlet regisztrálása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Aktív vagy elavult adatkészlet archiválása:
-
-    ```azurecli-interactive
-    az ml dataset archive -n dataset-name
-    ```
-
-    További információ: [az ml adatkészlet archívuma](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Adatkészlet elavult:
-
-    ```azurecli-interactive
-    az ml dataset deprecate -d replacement-dataset-id -n dataset-to-deprecate
-    ```
-
-    További információ: [az ml adatkészlet elavult](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    További információ: [az ml adatkészlet regisztrálása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-register).
 
 + Munkaterület összes adatkészletének listázása:
 
@@ -219,7 +246,7 @@ A következő parancsok bemutatják, hogyan használhatók az adatkészletek a A
     az ml dataset list
     ```
 
-    További információ: [az ml adatkészlet listája](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    További információ: [az ml adatkészlet listája](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-list).
 
 + Adatkészlet részleteinek beolvasása:
 
@@ -227,15 +254,7 @@ A következő parancsok bemutatják, hogyan használhatók az adatkészletek a A
     az ml dataset show -n dataset-name
     ```
 
-    További információ: [az ml adatkészlet show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Archivált vagy elavult adatkészlet újraaktiválása:
-
-    ```azurecli-interactive
-    az ml dataset reactivate -n dataset-name
-    ```
-
-    További információ: [az ml adatkészlet újraaktiválása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    További információ: [az ml adatkészlet show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-show).
 
 + Adatkészlet regisztrációjának törlése:
 

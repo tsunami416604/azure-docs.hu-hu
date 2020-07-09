@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre exportálási feladatokat Azure P
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513497"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -39,7 +39,7 @@ A következőket kell tennie:
 
 Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladatot a Azure Portal.
 
-1. Jelentkezzen be a következőre: https://portal.azure.com/ .
+1. Jelentkezzen be a következőre: <https://portal.azure.com/> .
 2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
 
     ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Az Exportálás befejeződött.
 
 Ha a WAImportExport eszköz 1.4.0.300 használja, használja a következő parancsot a meghajtó zárolásának feloldásához:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+Íme egy példa a minta bemenetre.
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 Ha az eszköz korábbi verzióit használja, a BitLocker párbeszédpanellel oldhatja fel a meghajtót.
 
@@ -143,11 +147,11 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 2. Bontsa ki az alapértelmezett mappát `waimportexportv1` . Például: `C:\WaImportExportV1`.
 3. Nyisson meg egy PowerShell-vagy parancssori ablakot rendszergazdai jogosultságokkal. Ha a könyvtárat a kibontott mappára szeretné módosítani, futtassa a következő parancsot:
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. A kiválasztott blobokhoz szükséges lemezek számának ellenőrzéséhez futtassa a következő parancsot:
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     A paramétereket a következő táblázat ismerteti:
 
@@ -212,10 +216,10 @@ A következő táblázat példákat mutat be a Blobok érvényes elérési útja
    | Kezdete |/book |Minden blob exportálása minden olyan tárolóban, **amely előtaggal** kezdődik |
    | Kezdete |zene |A **tárolóban** lévő összes blob exportálása |
    | Kezdete |/music/love |Az összes olyan blob exportálása **a tárolóba, amely** a **Love** előtaggal kezdődik |
-   | Egyenlő |$root/logo.bmp |BLOB **logo. bmp** exportálása a gyökér-tárolóban |
-   | Egyenlő |videók/Story. MP4 |BLOB **Story. mp4** exportálása a Container **videosban** |
+   | Egyenlő |$root/logo.bmp |A blob **logo.bmp** exportálása a gyökér tárolóba |
+   | Egyenlő |videók/story.mp4 |BLOB- **story.mp4** exportálása a tároló- **videókban** |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 - [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

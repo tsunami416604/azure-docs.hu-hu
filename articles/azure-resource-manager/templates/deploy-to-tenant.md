@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/08/2020
+ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945443"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
 
@@ -72,7 +72,7 @@ Az Azure CLI esetén használja az [az Deployment bérlő Create](/cli/azure/dep
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Azure PowerShell esetén használja a [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
@@ -81,7 +81,7 @@ Azure PowerShell esetén használja a [New-AzTenantDeployment](/powershell/modul
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 REST API esetén használjon [központi telepítéseket – létrehozás vagy frissítés a bérlői hatókörben](/rest/api/resources/deployments/createorupdateattenantscope).
@@ -90,7 +90,7 @@ REST API esetén használjon [központi telepítéseket – létrehozás vagy fr
 
 Bérlői szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat.
 
-Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy. JSON** nevű sablon üzembe helyezése például létrehoz egy alapértelmezett központi telepítési nevet a **azuredeploy**.
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy**alapértelmezett központi telepítési nevét hozza létre.
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
@@ -117,7 +117,7 @@ A bérlői központi telepítések esetén fontos szempont a sablon funkcióinak
 
 ## <a name="create-management-group"></a>Felügyeleti csoport létrehozása
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg) létrehoz egy felügyeleti csoportot.
+A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) létrehoz egy felügyeleti csoportot.
 
 ```json
 {
@@ -143,7 +143,7 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="assign-role"></a>Szerepkör kiosztása
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
+A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
 
 ```json
 {

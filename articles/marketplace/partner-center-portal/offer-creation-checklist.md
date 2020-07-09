@@ -1,33 +1,34 @@
 ---
-title: SaaS-ajánlat létrehozása ellenőrzőlista – kereskedelmi piactér az Azure-hoz
-description: Az SaaS-ajánlat létrehozási folyamatában megadható részletek. -Kereskedelmi piactér az Azure-hoz
-author: dsindona
-ms.author: dsindona
+title: SaaS-ajánlat létrehozása ellenőrzőlista a Microsoft kereskedelmi piactéren
+description: Az SaaS-ajánlat létrehozási folyamatában megadható részletek a partner Centerben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/08/2020
+ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850011"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101708"
 ---
-# <a name="saas-offer-creation-checklist"></a>SaaS-ajánlatlétrehozási ellenőrzőlista
+# <a name="saas-offer-creation-checklist-in-partner-center"></a>SaaS-ajánlat létrehozási ellenőrzőlistája a partner Centerben
 
-Az SaaS-ajánlat létrehozási folyamata több oldalt is igénybe vesz. Az egyes lapokon megadható részletek az egyes elemekre mutató hivatkozásokat tartalmaznak.
+Az SaaS-ajánlat létrehozási folyamata több oldalt is igénybe vesz.  Az egyes lapokon megadható részletek az egyes elemekre mutató hivatkozásokat tartalmaznak.
 
-Az alább megadott vagy megadható elemek szerepelnek. Bizonyos területek nem kötelezőek, vagy a megadott alapértelmezett értékekkel rendelkeznek, amelyeket igény szerint módosíthat. Ezeket a részeket az itt felsorolt sorrendben nem kell feldolgoznia.
+Az alább megadott vagy megadható elemek szerepelnek.  Bizonyos területek nem kötelezőek, vagy a megadott alapértelmezett értékekkel rendelkeznek, amelyeket igény szerint módosíthat.  Ezeket a részeket az itt felsorolt sorrendben nem kell feldolgoznia.
 
-| **Item**    | **Cél**  |
+>[!Note]
+>Ha elérhető SaaS-ajánlatot hoz létre, győződjön meg arról, hogy implementálja a [SaaS-megvalósítási API](./pc-saas-fulfillment-apis.md)-kkal való integrációt.  Az API-kkal való integráció az egyetlen módszer a piactér megfelelő működéséhez.
+
+| **Item**    | **Szerep**  |
 | :---------- | :-------------------|
 | [**Új ajánlat – modális**](#new-offer-modal) | Az ajánlatok azonosító adatait gyűjti.  |
 | [Ajánlat beállítása lap](#offer-setup-page) | Lehetővé teszi, hogy belépjen a főbb funkciók használatára, és válassza ki, hogyan értékesítheti ajánlatát a Microsofton keresztül.  |
 | [Tulajdonságok lap](#properties-page) | Adja meg az ajánlatnak a piactéren való csoportosításához használt kategóriákat és iparágakat, az ajánlatát támogató jogi szerződéseket és az alkalmazás verzióját. |
-| [Ajánlati lista lapja](#offer-listing-page) | Adja meg a piactéren megjelenítendő ajánlat részleteit, beleértve az ajánlat és a marketing-eszközök leírását. |
-| [Előnézet lap](#preview-page) | Az ajánlat közzétételét megelőzően korlátozott előzetes célközönséget adhat meg az ajánlat közzététele előtt a nagyobb Piactéri közönségnek. |
-| [Ajánlat – technikai konfiguráció lap](#technical-configuration-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el. Adja meg az ajánlathoz való kapcsolódáshoz használt technikai adatokat (URL-cím, webhook, bérlői azonosító és alkalmazás-azonosító). |
+| [Ajánlati lista lapja](#offer-listing-page) | Adja meg a piactéren megjelenítendő ajánlat részleteit, beleértve az ajánlat és a marketing-eszközök leírását.|
+| [Előnézet lap](#preview-page) | Az ajánlat közzétételét megelőzően korlátozott előzetes célközönséget adhat meg az ajánlat közzététele előtt a nagyobb Piactéri közönségnek.|
+| [Ajánlat – technikai konfiguráció lap](#technical-configuration-page)  |  Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el.  Adja meg a piactér által az ajánlathoz való csatlakozáshoz használt technikai részleteket (a Kezdőlap URL-címét, a kapcsolat webhook URL-címét, az Azure AD-bérlő AZONOSÍTÓját és az Azure AD-alkalmazás AZONOSÍTÓját).  Ezek a paraméterek szükségesek ahhoz, hogy megfelelően integrálva legyenek a SaaS-betöltéssel és a piactéren mért számlázási API-kkal.|
 | [**Új modális csomag**](#plan-identity-modal) | Gyűjti a terv azonosító adatait.  |
 | [A lista megtervezése lap](#plan-listing-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el. A tervnek a piactéren való listázásához használt részletek meghatározása.  |
 | [A díjszabási & rendelkezésre állási oldalának megtervezése](#plan-pricing--availability-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el.  Összegyűjti az üzleti jellemzőit (díjszabási modell), a célközönséget és a piac rendelkezésre állását az ajánlat minden egyes csomagjában (verzióban).  |
@@ -89,7 +90,7 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 | Hasznos hivatkozások címe + URL-cím  | Választható. |
 | Támogató dokumentumok cím + fájl  | Kötelező, minimum 1 és Max 3. PDF-fájlformátumnak kell lennie. |
 | Képernyőképek  | Kötelező, min. 1 képernyőfelvétel és max. 5; négy vagy több ajánlott. PNG formátumban 1280 X 720 értéknek kell lennie. |
-| Emblémák tárolása (kicsi, közepes, nagy, széles, hős)  | Kicsi (48 X 48) és nagy (216 X 216) szükséges; Egyéb méretek nem kötelező, de ajánlott: közepes (90 x 90), Wide (255 x 115), Hero (815 x 290). PNG formátumúnak kell lennie. |
+| Emblémák tárolása (kicsi, közepes, nagy, széles)  | Kicsi (48 X 48) és nagy (216 X 216) szükséges; Egyéb méretek nem kötelező, de ajánlott: közepes (90 x 90), széles (255 x 115). A-ben kell lennie. PNG-formátum. |
 | Videók neve + URL + miniatűr  | Opcionális, ajánlott, legfeljebb 4 videó. A miniatűr 1280 x 720 PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
 | Névjegyek (CSP program, mérnöki, támogatás)  | Mérnöki és támogatási Kapcsolatfelvétel szükséges (név, e-mail és telefonszám); A CSP program elérhetősége nem kötelező, de ajánlott. |
 | Támogatási URL-cím  | Kötelező. |
@@ -160,6 +161,6 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 | :---------------- | :-----------| 
 | A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

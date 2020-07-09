@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548866"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
@@ -70,7 +69,7 @@ A következő attribútum-szabályok érvényesek:
   1. A bejelentkezéshez kapcsolódó attribútumok (például a userPrincipalName) az erdőből egy engedélyezett fiókkal járulnak hozzá.
   2. Az Exchange-GAL (globális címlistában) található attribútumok az erdőhöz kapcsolódnak Exchange-postaládával.
   3. Ha nem található postaláda, ezek az attribútumok bármely erdőből származhatnak.
-  4. Az Exchange-hez kapcsolódó attribútumok (a GAL-ben nem látható technikai attribútumok) az erdőből `mailNickname ISNOTNULL`származnak.
+  4. Az Exchange-hez kapcsolódó attribútumok (a GAL-ben nem látható technikai attribútumok) az erdőből származnak `mailNickname ISNOTNULL` .
   5. Ha több olyan erdő van, amely megfelel ezeknek a szabályoknak, akkor az összekötők (erdők) létrehozási sorrendje (dátum/idő) alapján határozható meg, hogy melyik erdő járul hozzá az attribútumokhoz. Az első csatlakoztatott erdő lesz az első szinkronizálandó erdő. 
 
 ### <a name="contact-out-of-box-rules"></a>Kapcsolaton kívüli szabályok
@@ -80,7 +79,7 @@ A kapcsolattartási objektumnak meg kell felelnie a következő szinkronizálás
   * `IsPresent([proxyAddresses]) = True)`. A proxyAddresses attribútumot fel kell tölteni.
   * Az elsődleges e-mail-cím a proxyAddresses attribútumban vagy a mail attribútumban található. A jelenléte \@ annak ellenőrzésére szolgál, hogy a tartalom egy e-mail-cím. Ennek a két szabálynak az egyikét igaz értékre kell kiértékelni.
     * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Létezik "SMTP:" bejegyzés, és ha van ilyen, \@ a karakterláncban található?
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. A mail attribútum ki van töltve, és ha igen, \@ megtalálható a karakterláncban?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. A mail attribútum ki van töltve, és ha igen, megtalálható \@ a karakterláncban?
 
 A következő kapcsolattartási objektumok **nincsenek szinkronizálva** az Azure ad-vel:
 
@@ -106,7 +105,7 @@ A következő csoportosítási objektumok **nincsenek szinkronizálva** az Azure
 * `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Ne szinkronizáljon egyetlen replikációs sértett objektumot sem.
 
 ### <a name="foreignsecurityprincipal-out-of-box-rules"></a>ForeignSecurityPrincipal szabályok
-A FSP a metaverse "any" (\*) objektumához vannak csatlakoztatva. A valóságban ez a csatlakozás csak a felhasználók és a biztonsági csoportok esetében fordul elő. Ez a konfiguráció biztosítja, hogy az erdők közötti tagságok megoldódik és megfelelően megjelenjenek az Azure AD-ben.
+A FSP a metaverse "any" ( \* ) objektumához vannak csatlakoztatva. A valóságban ez a csatlakozás csak a felhasználók és a biztonsági csoportok esetében fordul elő. Ez a konfiguráció biztosítja, hogy az erdők közötti tagságok megoldódik és megfelelően megjelenjenek az Azure AD-ben.
 
 ### <a name="computer-out-of-box-rules"></a>Számítógépeken kívüli szabályok
 A számítógép-objektumoknak meg kell felelniük a következő szinkronizálásának:
@@ -148,7 +147,7 @@ Mivel ez a szabály egy beépített szabály, a szabály megnyitásakor figyelme
 
 A szinkronizálási szabály négy konfigurációs szakaszt tartalmaz: Leírás, hatókör-szűrő, csatlakozási szabályok és átalakítások.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 Az első szakasz olyan alapvető információkat tartalmaz, mint például a név és a leírás.
 
 ![Leírás lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -162,7 +161,7 @@ A hatóköri szűrő szakasz használatával konfigurálhatja, hogy mikor kell a
 
 ![Hatókör lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-A hatókör-szűrő olyan csoportokat és záradékokat tartalmaz, amelyek beágyazva lehetnek. Egy csoporton belüli összes záradéknak meg kell felelnie egy szinkronizálási szabály alkalmazásának. Ha több csoport van definiálva, akkor legalább egy csoportnak teljesülnie kell a szabály alkalmazásához. Ez a logikai vagy a csoportok és logikai, valamint egy csoporton belüli kiértékelése. Erre a konfigurációra például a kimenő szinkronizálási szabály a **HRE – csoportos csatlakozás**lehetőségnél talál példát. Több szinkronizálási szűrő is létezik, például egy a biztonsági csoportok (`securityEnabled EQUAL True`) és egy a terjesztési csoportok (`securityEnabled EQUAL False`) számára.
+A hatókör-szűrő olyan csoportokat és záradékokat tartalmaz, amelyek beágyazva lehetnek. Egy csoporton belüli összes záradéknak meg kell felelnie egy szinkronizálási szabály alkalmazásának. Ha több csoport van definiálva, akkor legalább egy csoportnak teljesülnie kell a szabály alkalmazásához. Ez a logikai vagy a csoportok és logikai, valamint egy csoporton belüli kiértékelése. Erre a konfigurációra például a kimenő szinkronizálási szabály a **HRE – csoportos csatlakozás**lehetőségnél talál példát. Több szinkronizálási szűrő is létezik, például egy a biztonsági csoportok ( `securityEnabled EQUAL True` ) és egy a terjesztési csoportok ( `securityEnabled EQUAL False` ) számára.
 
 ![Hatókör lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
@@ -220,7 +219,7 @@ A szinkronizálási szabályok elsőbbségi sorrendjét a telepítővarázsló c
 ### <a name="putting-it-all-together"></a>Végső összeállítás
 Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal, hogy a konfiguráció hogyan működik a különböző szinkronizálási szabályokkal. Ha megtekint egy felhasználót és a metaverse-hoz hozzájáruló attribútumokat, a szabályok a következő sorrendben lesznek alkalmazva:
 
-| Name (Név) | Megjegyzés |
+| Name | Megjegyzés |
 |:--- |:--- |
 | A from AD – felhasználói csatlakozás |Szabály az összekötő terület objektumainak metaverse-vel való csatlakoztatásához. |
 | A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és az Office 365-be való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |

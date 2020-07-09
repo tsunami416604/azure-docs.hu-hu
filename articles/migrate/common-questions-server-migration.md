@@ -4,10 +4,10 @@ description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a 
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744324"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
@@ -21,7 +21,7 @@ Ez a cikk a Azure Migrate: Server áttelepítési eszközzel kapcsolatos gyakori
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Milyen földrajzi területek támogatottak a Azure Migrate való áttelepítéshez?
 
-Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
+Tekintse át a [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és a [Government-felhők](migrate-support-matrix.md#supported-geographies-azure-government) támogatott régióit.
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Hogyan működik az ügynök nélküli VMware-replikáció?
 
@@ -83,9 +83,9 @@ Jelenleg a 100-es virtuális gépeket a vCenter Server egy példányán egyszerr
 
 A NetQosPolicy használatával szabályozhatja a szabályozást. Például:
 
-A NetQosPolicy használt AppNamePrefix a következő: "GatewayWindowsService. exe". Létrehozhat egy szabályzatot az Azure Migrate berendezésen a készülék replikációs forgalmának szabályozásához egy olyan házirend létrehozásával, mint például ez:
+A NetQosPolicy használandó AppNamePrefix: "GatewayWindowsService.exe". Létrehozhat egy szabályzatot az Azure Migrate berendezésen a készülék replikációs forgalmának szabályozásához egy olyan házirend létrehozásával, mint például ez:
  
-New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1MB
+New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1MB
 
 ## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Áttelepíthetem azokat a virtuális gépeket, amelyek már replikálódnak az Azure-ba? 
 
@@ -106,7 +106,7 @@ A gépek áttelepítése a fizikai kiszolgálóként való kezeléssel számos e
 Habár ez jó használati eset lehet, jelenleg nem támogatott. Ha két (vagy több) készüléket helyez üzembe ugyanazon virtuális gépek felderítéséhez, olyan szolgáltatási problémát okoz, amelyben a virtuális gépek tulajdonlása megtartja a két készülék közötti váltást. Itt láthatja, hogy a virtuális gépek megjelennek és eltűnnek. Ilyen esetekben a probléma megoldásához törölnie kell egy készüléket, és kemény frissítést kell végeznie.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>A VMWare virtuális gépek áttelepítéséhez VMware vCenter szükséges?
-[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információ](migrate-support-matrix-physical-migration.md).
+[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információk](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>További lépések
 

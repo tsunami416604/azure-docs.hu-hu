@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 34ae87859b20895598611d25eb069fd05c24d262
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: fbe74b62352babf7a1fdd93bf19a6e1475e3f032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553573"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity platform és implicit engedélyezési folyamat
 
@@ -27,7 +27,7 @@ A Microsoft Identity platform végpontja segítségével a Microsofttól személ
 * Számos engedélyezési kiszolgáló és Identitáskezelő nem támogatja a CORS kérelmeket.
 * A teljes oldal böngészője átirányítja az alkalmazást az alkalmazásból, így a felhasználói élmény különösen ininvazív lehet.
 
-A Microsoft Identity platform a OAuth 2,0 implicit engedélyezési folyamatot támogatja a következő alkalmazásokhoz (szögletes, ember. js, reagálás. js stb.). Az implicit folyamat leírása a [OAuth 2,0 specifikációban](https://tools.ietf.org/html/rfc6749#section-4.2)található. Elsődleges előnye, hogy lehetővé teszi, hogy az alkalmazás a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül beszerezze a jogkivonatokat a Microsoft Identity platformból. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóval, fenntartsa a munkamenetet, és más webes API-kra is lekérje az ügyfél JavaScript-kódjában található összes tokent. Néhány fontos biztonsági szempontot figyelembe kell venni, amikor az implicit folyamatot kifejezetten az [ügyfél](https://tools.ietf.org/html/rfc6749#section-10.3) -és a [felhasználói megszemélyesítést](https://tools.ietf.org/html/rfc6749#section-10.3)használja.
+Ezekhez az alkalmazásokhoz (szögletes, Ember.js, React.js stb.) a Microsoft Identity platform támogatja a OAuth 2,0 implicit engedélyezési folyamatot. Az implicit folyamat leírása a [OAuth 2,0 specifikációban](https://tools.ietf.org/html/rfc6749#section-4.2)található. Elsődleges előnye, hogy lehetővé teszi, hogy az alkalmazás a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül beszerezze a jogkivonatokat a Microsoft Identity platformból. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóval, fenntartsa a munkamenetet, és más webes API-kra is lekérje az ügyfél JavaScript-kódjában található összes tokent. Néhány fontos biztonsági szempontot figyelembe kell venni, amikor az implicit folyamatot kifejezetten az [ügyfél](https://tools.ietf.org/html/rfc6749#section-10.3) -és a [felhasználói megszemélyesítést](https://tools.ietf.org/html/rfc6749#section-10.3)használja.
 
 Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
@@ -73,10 +73,10 @@ Az alábbi ábrán látható, hogy a teljes implicit bejelentkezési folyamat ho
 
 ## <a name="send-the-sign-in-request"></a>Bejelentkezési kérelem küldése
 
-Ahhoz, hogy először aláírja a felhasználót az alkalmazásba, elküldheti az [OpenID Connect](v2-protocols-oidc.md) hitelesítési kérését, és beszerezheti a `id_token` -t a Microsoft Identity platform végpontjának használatával.
+Ahhoz, hogy először aláírja a felhasználót az alkalmazásba, elküldheti az [OpenID Connect](v2-protocols-oidc.md) hitelesítési kérését, és beszerezheti `id_token` a-t a Microsoft Identity platform végpontjának használatával.
 
 > [!IMPORTANT]
-> Egy azonosító jogkivonat és/vagy hozzáférési jogkivonat sikeres igényléséhez az alkalmazásnak a [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon való regisztrálásához engedélyezve kell lennie a megfelelő implicit engedélyezési folyamatnak, az **azonosító tokenek** **és a.** **hozzáférési tokenek** kiválasztásával. Ha nincs engedélyezve, `unsupported_response` hibaüzenetet ad vissza: a (z) **"response_type" bemeneti paraméter megadott értéke nem engedélyezett ehhez az ügyfélhez. A várt érték a "code"**
+> Egy azonosító jogkivonat és/vagy hozzáférési jogkivonat sikeres igényléséhez az alkalmazásnak a [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon való regisztrálásához engedélyezve kell lennie a megfelelő implicit engedélyezési folyamatnak, az **azonosító tokenek** **és a.** **hozzáférési tokenek** kiválasztásával. Ha nincs engedélyezve, `unsupported_response` hibaüzenetet ad vissza: **a (z) "response_type" bemeneti paraméter megadott értéke nem engedélyezett ehhez az ügyfélhez. A várt érték a "code"**
 
 ```
 // Line breaks for legibility only
@@ -92,30 +92,30 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Az implicit folyamat használatával történő bejelentkezés teszteléséhez kattintson a elemre <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank"> https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> A bejelentkezést követően a böngészőt át `https://localhost/myapp/` kell irányítani egy `id_token` -ra a címsorba.
+> Az implicit folyamat használatával történő bejelentkezés teszteléséhez kattintson a elemre <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank"> https://login.microsoftonline.com/common/oauth2/v2.0/authorize.. .</a> A bejelentkezést követően a böngészőt át kell irányítani `https://localhost/myapp/` egy-ra `id_token` a címsorba.
 >
 
-| Paraméter |  | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
-| `tenant` | kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek `common` `organizations` `consumers`:,, és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
+| `tenant` | kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
-| `response_type` | kötelező |Tartalmaznia `id_token` kell az OpenID Connect bejelentkezést. Emellett a response_type `token`is szerepelhetnek. Az `token` itt elérhetővé teszi, hogy az alkalmazás azonnal kapjon hozzáférési jogkivonatot az engedélyező végponttól anélkül, hogy egy második kérést kellene létesítenie az engedélyezés végpontjának. Ha a `token` response_type használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely jelzi, hogy melyik erőforrást kell kibocsátania a jogkivonat számára (például: user. Read on Microsoft Graph).  |
+| `response_type` | kötelező |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezést. Emellett a response_type is szerepelhetnek `token` . Az `token` itt elérhetővé teszi, hogy az alkalmazás azonnal kapjon hozzáférési jogkivonatot az engedélyező végponttól anélkül, hogy egy második kérést kellene létesítenie az engedélyezés végpontjának. Ha a response_type használja `token` , a `scope` paraméternek tartalmaznia kell egy hatókört, amely jelzi, hogy melyik erőforrást kell kibocsátania a jogkivonat számára (például: user. read on Microsoft Graph).  |
 | `redirect_uri` | ajánlott |Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. |
-| `scope` | kötelező |A [hatókörök](v2-permissions-and-consent.md)szóközzel tagolt listája. Az OpenID Connect (id_tokens) esetében tartalmaznia kell a hatókört `openid`, amely a hozzájárulási felhasználói felületen a "Bejelentkezés" engedélyre van lefordítva. Opcionálisan érdemes lehet a és `email` `profile` a hatóköröket is használni a további felhasználói információkhoz való hozzáféréshez. A kérelemben más hatókörök is szerepelhetnek, ha hozzáférési jogkivonatot kér a különböző erőforrásokhoz való hozzáféréshez. |
+| `scope` | kötelező |A [hatókörök](v2-permissions-and-consent.md)szóközzel tagolt listája. Az OpenID Connect (id_tokens) esetében tartalmaznia kell a hatókört `openid` , amely a hozzájárulási felhasználói felületen a "Bejelentkezés" engedélyre van lefordítva. Opcionálisan érdemes lehet a és a hatóköröket is használni a `email` `profile` további felhasználói információkhoz való hozzáféréshez. A kérelemben más hatókörök is szerepelhetnek, ha hozzáférési jogkivonatot kér a különböző erőforrásokhoz való hozzáféréshez. |
 | `response_mode` | választható |Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. Az alapértelmezett érték csak egy hozzáférési jogkivonat lekérdezése, de töredék, ha a kérelem tartalmaz egy id_token. |
 | `state` | ajánlott |A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. Bármely kívánt tartalom sztringje lehet. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
 | `nonce` | kötelező |Az alkalmazás által generált kérelemben szereplő érték, amelyet a rendszer az eredményül kapott id_token tartalmaz. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. Csak id_token kérelmezése esetén szükséges. |
 | `prompt` | választható |Megadja a szükséges felhasználói beavatkozás típusát. Ebben az esetben az egyetlen érvényes érték a következők egyike: "bejelentkezhessen," None "," select_account "és" beleegyező ". `prompt=login`kényszeríti a felhasználót, hogy adja meg hitelesítő adatait a kérésen, és zárja be az egyszeri bejelentkezést. `prompt=none`Ez ellentétes – biztosítja, hogy a felhasználó semmilyen interaktív kérdés nélkül is megjelenik. Ha a kérést nem lehet csendes úton végrehajtani az egyszeri bejelentkezésen keresztül, a Microsoft Identity platform-végpont hibát ad vissza. `prompt=select_account`elküldi a felhasználót egy olyan fiók-választónak, ahol a munkamenetben megjegyezett összes fiók megjelenik. `prompt=consent`a a felhasználó bejelentkezése után elindítja a OAuth jóváhagyása párbeszédpanelt, amely arra kéri a felhasználót, hogy adjon engedélyt az alkalmazásnak. |
-| `login_hint`  |választható |A felhasználó számára a bejelentkezési oldal Felhasználónév/e-mail cím mezőjének előzetes kitöltésére is használható, ha a felhasználónevet az idő előtt ismeri. Az alkalmazások gyakran ezt a paramétert fogják használni az ismételt hitelesítés során, miután már kibontotta a felhasználónevet egy korábbi `preferred_username` bejelentkezésből a jogcím használatával.|
+| `login_hint`  |választható |A felhasználó számára a bejelentkezési oldal Felhasználónév/e-mail cím mezőjének előzetes kitöltésére is használható, ha a felhasználónevet az idő előtt ismeri. Az alkalmazások gyakran ezt a paramétert fogják használni az ismételt hitelesítés során, miután már kibontotta a felhasználónevet egy korábbi bejelentkezésből a `preferred_username` jogcím használatával.|
 | `domain_hint` | választható |Ha belefoglalja ezt a funkciót, a rendszer kihagyja az e-mailes felderítési folyamatot, amelyet a felhasználó a bejelentkezési oldalon áthalad, ami valamivel egyszerűbb felhasználói élményt nyújt. Ezt gyakran használják olyan üzletági alkalmazások esetében, amelyek egyetlen bérlőn működnek, és amelyek tartománynevet biztosítanak egy adott bérlőn belül.  Ezzel továbbítja a felhasználót az adott bérlőhöz tartozó összevonási szolgáltatóhoz.  Vegye figyelembe, hogy ez megakadályozza, hogy a vendégek bejelentkezzenek ebbe az alkalmazásba.  |
 
 Ekkor a rendszer megkéri a felhasználót, hogy adja meg a hitelesítő adatait, és fejezze be a hitelesítést. A Microsoft Identity platform végpontja azt is biztosítja, hogy a felhasználó beleegyezett a `scope` lekérdezési paraméterben megadott engedélyekkel. Ha a felhasználó beleegyezett a fenti engedélyek **egyikére sem** , a felhasználó beleegyezést kér a szükséges engedélyekkel. További információ: [engedélyek, beleegyezikés és több-bérlős alkalmazások](v2-permissions-and-consent.md).
 
-Miután a felhasználó hitelesíti és beleegyezik, a Microsoft Identity platform végpontja az adott alkalmazásra `redirect_uri`adott választ ad vissza a `response_mode` paraméterben megadott metódus használatával.
+Miután a felhasználó hitelesíti és beleegyezik, a Microsoft Identity platform végpontja az adott alkalmazásra adott választ ad vissza a `redirect_uri` paraméterben megadott metódus használatával `response_mode` .
 
 #### <a name="successful-response"></a>Sikeres válasz
 
-A sikeres válasz és `response_mode=fragment` `response_type=id_token+token` a következőképpen néz ki (az olvashatóság érdekében sortöréseket használ):
+A sikeres válasz `response_mode=fragment` és `response_type=id_token+token` a következőképpen néz ki (az olvashatóság érdekében sortöréseket használ):
 
 ```HTTP
 GET https://localhost/myapp/#
@@ -127,16 +127,16 @@ GET https://localhost/myapp/#
 
 | Paraméter | Leírás |
 | --- | --- |
-| `access_token` |Tartalmazza, `response_type` ha `token`tartalmaz. Az alkalmazás által kért hozzáférési jogkivonat. A hozzáférési tokent nem lehet dekódolni vagy más módon megvizsgálni, átlátszatlan karakterláncként kell kezelni. |
-| `token_type` |Tartalmazza, `response_type` ha `token`tartalmaz. Mindig a `Bearer`lesz. |
-| `expires_in`|Tartalmazza, `response_type` ha `token`tartalmaz. Azt jelzi, hogy a jogkivonat hány másodpercig érvényes, gyorsítótárazási célokra. |
-| `scope` |Tartalmazza, `response_type` ha `token`tartalmaz. Azokat a hatókör (eke) t jelöli, amelyekhez a access_token érvényes lesz. Előfordulhat, hogy nem tartalmazza az összes kért hatókört, ha nem voltak érvényesek a felhasználóra (csak az Azure AD-hatókörök esetében, amikor a rendszer személyes fiókot használ a bejelentkezéshez). |
-| `id_token` | Aláírt JSON Web Token (JWT). Az alkalmazás képes dekódolni a token szegmenseit, hogy adatokat kérjen a bejelentkezett felhasználótól. Az alkalmazás gyorsítótárazhatja az értékeket, és megjelenítheti őket, de nem támaszkodhat rájuk az engedélyezési vagy biztonsági határokra. További információ a id_tokensról: [`id_token reference`](id-tokens.md). <br> **Megjegyzés:** Csak akkor van `openid` megadva, ha a hatókört kérték. |
+| `access_token` |Tartalmazza, ha `response_type` tartalmaz `token` . Az alkalmazás által kért hozzáférési jogkivonat. A hozzáférési tokent nem lehet dekódolni vagy más módon megvizsgálni, átlátszatlan karakterláncként kell kezelni. |
+| `token_type` |Tartalmazza, ha `response_type` tartalmaz `token` . Mindig a lesz `Bearer` . |
+| `expires_in`|Tartalmazza, ha `response_type` tartalmaz `token` . Azt jelzi, hogy a jogkivonat hány másodpercig érvényes, gyorsítótárazási célokra. |
+| `scope` |Tartalmazza, ha `response_type` tartalmaz `token` . Azokat a hatókör (eke) t jelöli, amelyekhez a access_token érvényes lesz. Előfordulhat, hogy nem tartalmazza az összes kért hatókört, ha nem voltak érvényesek a felhasználóra (csak az Azure AD-hatókörök esetében, amikor a rendszer személyes fiókot használ a bejelentkezéshez). |
+| `id_token` | Aláírt JSON Web Token (JWT). Az alkalmazás képes dekódolni a token szegmenseit, hogy adatokat kérjen a bejelentkezett felhasználótól. Az alkalmazás gyorsítótárazhatja az értékeket, és megjelenítheti őket, de nem támaszkodhat rájuk az engedélyezési vagy biztonsági határokra. További információ a id_tokensról: [`id_token reference`](id-tokens.md) . <br> **Megjegyzés:** Csak akkor van megadva, ha a `openid` hatókört kérték. |
 | `state` |Ha a kérelemben szerepel egy State paraméter, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a kérelemben és a válaszban szereplő állapot értékek azonosak-e. |
 
 #### <a name="error-response"></a>Hiba válasza
 
-A `redirect_uri` rendszer a hibaüzeneteket is elküldheti, hogy az alkalmazás megfelelően tudja kezelni őket:
+A rendszer a hibaüzeneteket is elküldheti, hogy `redirect_uri` az alkalmazás megfelelően tudja kezelni őket:
 
 ```HTTP
 GET https://localhost/myapp/#
@@ -151,9 +151,9 @@ error=access_denied
 
 ## <a name="getting-access-tokens-silently-in-the-background"></a>Hozzáférési tokenek csendes beolvasása a háttérben
 
-Most, hogy aláírta a felhasználót egy egyoldalas alkalmazásba, a Microsoft Identity platform által védett webes API-k meghívásához (például a [Microsoft Graph](https://developer.microsoft.com/graph)) csendes módon kaphat hozzáférési jogkivonatokat. Akkor is használhatja ezt a módszert, ha a `token` response_type használatával már kapott jogkivonatot, és nem kell átirányítani a felhasználót, hogy újra be kellene jelentkeznie.
+Most, hogy aláírta a felhasználót egy egyoldalas alkalmazásba, a Microsoft Identity platform által védett webes API-k meghívásához (például a [Microsoft Graph](https://developer.microsoft.com/graph)) csendes módon kaphat hozzáférési jogkivonatokat. Akkor is használhatja ezt a módszert, ha a response_type használatával már kapott jogkivonatot `token` , és nem kell átirányítani a felhasználót, hogy újra be kellene jelentkeznie.
 
-A normál OpenID Connect/OAuth folyamat során ezt a Microsoft Identity platform `/token` -végpontra irányuló kéréssel teheti meg. A Microsoft Identity platform végpontja azonban nem támogatja a CORS-kérelmeket, így az AJAX-hívások lekérése és frissítése a jogkivonatok alól nem áll fenn. Ehelyett a rejtett iframe-ben lévő implicit folyamattal új jogkivonatokat kérhet le más webes API-khoz:
+A normál OpenID Connect/OAuth folyamat során ezt a Microsoft Identity platform-végpontra irányuló kéréssel teheti meg `/token` . A Microsoft Identity platform végpontja azonban nem támogatja a CORS-kérelmeket, így az AJAX-hívások lekérése és frissítése a jogkivonatok alól nem áll fenn. Ehelyett a rejtett iframe-ben lévő implicit folyamattal új jogkivonatokat kérhet le más webes API-khoz:
 
 ```
 // Line breaks for legibility only
@@ -178,7 +178,7 @@ Az URL-cím lekérdezési paramétereinek részletes ismertetését lásd: [a be
 >`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint={your-username}`
 >
 
-A `prompt=none` paraméternek köszönhetően ez a kérés sikeres vagy sikertelen lesz, és visszatér az alkalmazáshoz. A rendszer sikeres választ küld az alkalmazásnak a jelzett `redirect_uri`időpontban, a `response_mode` paraméterben megadott metódus használatával.
+A `prompt=none` paraméternek köszönhetően ez a kérés sikeres vagy sikertelen lesz, és visszatér az alkalmazáshoz. A rendszer sikeres választ küld az alkalmazásnak a jelzett időpontban `redirect_uri` , a paraméterben megadott metódus használatával `response_mode` .
 
 #### <a name="successful-response"></a>Sikeres válasz
 
@@ -195,16 +195,16 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Paraméter | Leírás |
 | --- | --- |
-| `access_token` |Tartalmazza, `response_type` ha `token`tartalmaz. Az alkalmazás által kért hozzáférési jogkivonat, ebben az esetben a Microsoft Graph. A hozzáférési tokent nem lehet dekódolni vagy más módon megvizsgálni, átlátszatlan karakterláncként kell kezelni. |
-| `token_type` | Mindig a `Bearer`lesz. |
+| `access_token` |Tartalmazza, ha `response_type` tartalmaz `token` . Az alkalmazás által kért hozzáférési jogkivonat, ebben az esetben a Microsoft Graph. A hozzáférési tokent nem lehet dekódolni vagy más módon megvizsgálni, átlátszatlan karakterláncként kell kezelni. |
+| `token_type` | Mindig a lesz `Bearer` . |
 | `expires_in` | Azt jelzi, hogy a jogkivonat hány másodpercig érvényes, gyorsítótárazási célokra. |
 | `scope` | Azokat a hatókör (eke) t jelöli, amelyekhez a access_token érvényes lesz. Előfordulhat, hogy nem tartalmazza az összes kért hatókört, ha nem voltak érvényesek a felhasználóra (csak az Azure AD-hatókörök esetében, amikor a rendszer személyes fiókot használ a bejelentkezéshez). |
-| `id_token` | Aláírt JSON Web Token (JWT). Tartalmazza, `response_type` ha `id_token`tartalmaz. Az alkalmazás képes dekódolni a token szegmenseit, hogy adatokat kérjen a bejelentkezett felhasználótól. Az alkalmazás gyorsítótárazhatja az értékeket, és megjelenítheti őket, de nem támaszkodhat rájuk az engedélyezési vagy biztonsági határokra. További információ a id_tokensről: [ `id_token` hivatkozás](id-tokens.md). <br> **Megjegyzés:** Csak akkor van `openid` megadva, ha a hatókört kérték. |
+| `id_token` | Aláírt JSON Web Token (JWT). Tartalmazza, ha `response_type` tartalmaz `id_token` . Az alkalmazás képes dekódolni a token szegmenseit, hogy adatokat kérjen a bejelentkezett felhasználótól. Az alkalmazás gyorsítótárazhatja az értékeket, és megjelenítheti őket, de nem támaszkodhat rájuk az engedélyezési vagy biztonsági határokra. További információ a id_tokensről: [ `id_token` hivatkozás](id-tokens.md). <br> **Megjegyzés:** Csak akkor van megadva, ha a `openid` hatókört kérték. |
 | `state` |Ha a kérelemben szerepel egy State paraméter, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a kérelemben és a válaszban szereplő állapot értékek azonosak-e. |
 
 #### <a name="error-response"></a>Hiba válasza
 
-A `redirect_uri` rendszer a hibaüzeneteket is elküldheti, hogy az alkalmazás megfelelően tudja kezelni őket. A esetében `prompt=none`a várt hiba a következő lesz:
+A rendszer a hibaüzeneteket is elküldheti, hogy `redirect_uri` az alkalmazás megfelelően tudja kezelni őket. A esetében a `prompt=none` várt hiba a következő lesz:
 
 ```HTTP
 GET https://localhost/myapp/#
@@ -221,7 +221,7 @@ Ha ezt a hibát az IFRAME-kérelemben kapja, a felhasználónak interaktív mód
 
 ## <a name="refreshing-tokens"></a>Tokenek frissítése
 
-Az implicit támogatás nem biztosít frissítési jogkivonatokat. Az `id_token`s és `access_token`az s is rövid idő után lejár, így az alkalmazásnak fel kell készülnie, hogy rendszeresen frissítse ezeket a jogkivonatokat. A jogkivonat bármelyik típusának frissítéséhez ugyanezt a rejtett iframe-kérést is végrehajthatja a `prompt=none` fentiekben a paraméterrel az Identity platform viselkedésének szabályozásához. Ha újt `id_token`szeretne kapni, ne felejtse el használni `id_token` a `response_type` és `scope=openid`a, valamint a `nonce` paramétert.
+Az implicit támogatás nem biztosít frissítési jogkivonatokat. Az `id_token` s és `access_token` az s is rövid idő után lejár, így az alkalmazásnak fel kell készülnie, hogy rendszeresen frissítse ezeket a jogkivonatokat. A jogkivonat bármelyik típusának frissítéséhez ugyanezt a rejtett iframe-kérést is végrehajthatja a fentiekben a `prompt=none` paraméterrel az Identity platform viselkedésének szabályozásához. Ha újt szeretne kapni, ne `id_token` felejtse el használni `id_token` a és a `response_type` `scope=openid` , valamint a `nonce` paramétert.
 
 ## <a name="send-a-sign-out-request"></a>Kijelentkezési kérelem küldése
 
@@ -231,9 +231,9 @@ Az OpenID Connect `end_session_endpoint` lehetővé teszi, hogy az alkalmazás k
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| Paraméter |  | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
-| `tenant` |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek `common` `organizations` `consumers`:,, és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
+| `tenant` |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
 | `post_logout_redirect_uri` | ajánlott | A felhasználó által a kijelentkezés befejeződése után visszaadott URL-cím. Ennek az értéknek meg kell egyeznie az alkalmazáshoz regisztrált átirányítási URI-k egyikével. Ha nem szerepel, a felhasználó egy általános üzenetet fog megjeleníteni a Microsoft Identity platform végpontján. |
 
 ## <a name="next-steps"></a>További lépések

@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 struktúra teljesítményének finomha
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 66042568cede364c16302fbd85751de4113bbe0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327587"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106311"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: struktúra, HDInsight & Azure Data Lake Storage Gen2
 
@@ -21,7 +21,7 @@ Az alapértelmezett beállítások úgy lettek beállítva, hogy a jó teljesít
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
 * **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 * **Struktúra futtatása a HDInsight-on**.  A kaptár-feladatok HDInsight való futtatásával kapcsolatos további információkért lásd: [a kaptár használata a HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
@@ -37,7 +37,7 @@ A továbbfejlesztett Data Lake Storage Gen2 teljesítményének finomhangolásá
 
 * **TEZ. grouping. max-size** – az egyes leképezések maximális mérete
 
-* **kaptár. exec. szűkítő. Bytes. per. szűkítő** – az egyes csökkentők mérete
+* **hive.exec. szűkítő. Bytes. per. szűkítő** – az egyes csökkentők mérete
 
 **kaptár. TEZ. Container. size** – a tároló mérete határozza meg, hogy mennyi memória érhető el az egyes feladatokhoz.  Ez a fő bemenet a párhuzamosságok struktúrában való vezérléséhez.  
 
@@ -45,11 +45,11 @@ A továbbfejlesztett Data Lake Storage Gen2 teljesítményének finomhangolásá
 
 **TEZ. grouping. max-size** – a paraméter lehetővé teszi az egyes leképezések maximális méretének beállítását.  Ha a TEZ által választott leképezések száma nagyobb, mint a paraméter értéke, akkor a TEZ az itt beállított értéket fogja használni.
 
-**kaptár. exec. szűkítő. Bytes. per. szűkítő** – ez a paraméter beállítja az egyes szűkítők méretét.  Alapértelmezés szerint minden egyes csökkentő 256MB.  
+**hive.exec. szűkítő. Bytes. per. szűkítő** – ez a paraméter beállítja az egyes szűkítők méretét.  Alapértelmezés szerint minden egyes csökkentő 256MB.  
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
-A **kaptár. exec. szűkítő. Bytes. per. szűkítő beállítása** – az alapértelmezett érték jól működik, ha az adat kibontása nem történik meg.  A tömörített adatmennyiség csökkentése érdekében csökkentse a szűkítő méretét.  
+**hive.exec. szűkítő. Bytes. per. szűkítő beállítása** – az alapértelmezett érték jól működik, ha az adat ki van tömörítve.  A tömörített adatmennyiség csökkentése érdekében csökkentse a szűkítő méretét.  
 
 A **kaptár. TEZ. Container. size beállítása** – az egyes csomópontokban a memóriát a következő szálak határozzák meg: fonal. nodemanager. Resource. Memory-MB, és a HDI-fürthöz alapértelmezés szerint helyesen kell beállítani.  A megfelelő memória a FONALban való beállításával kapcsolatos további információkért tekintse meg ezt a [bejegyzést](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
@@ -57,17 +57,18 @@ Az I/O-igényes munkaterhelések a TEZ-tároló méretének csökkentésével t�
 
 A futó vagy párhuzamos feladatok egyidejű számát a rendszer a FONALak teljes memóriája alapján fogja megkötni.  A FONALas tárolók száma határozza meg, hogy hány egyidejű feladat futhat.  Ha a szál memóriáját szeretné megkeresni egy csomóponton, nyissa meg a Ambari.  Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot.  Ebben az ablakban a szál memóriája jelenik meg.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
+- \#of fonal-tárolók = a fonal teljes memóriája/TEZ-tároló mérete
+
 A Data Lake Storage Gen2 használatával javíthatja a teljesítményt, hogy a lehető legnagyobb mértékben növelje a párhuzamosságot.  A TEZ automatikusan kiszámítja a létrehozandó feladatok számát, így nem kell azt beállítania.   
 
 ## <a name="example-calculation"></a>Példa a számításra
 
 Tegyük fel, hogy 8 csomópontos D14-fürtöt tartalmaz.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
+- Összes szál memóriája = 8 csomópont * 96GB = 768GB
+- \#FONALas tárolók esetén = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>További információ a kaptár hangolásáról
 

@@ -33,6 +33,9 @@
           href: create-data-warehouse-portal.md
         - name: PowerShell
           href: create-data-warehouse-powershell.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: quickstart-arm-template.md
     - name: Adatok betöltése
       items:
         - name: COPY utasítás
@@ -417,5 +420,7 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Adatkezelés
           href: sql-data-warehouse-partner-data-management.md
+        - name: Gépi tanulás és mesterséges intelligencia
+          href: sql-data-warehouse-partner-machine-learning-ai.md
         - name: A nyilvános előzetes verzió partnerei
           href: sql-data-warehouse-partner-launch.md

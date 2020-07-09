@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691152"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086415"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>A fürt rendelkezésre állásának figyelése az Apache Ambari az Azure HDInsight
 
@@ -23,7 +23,7 @@ Ez a cikk azt mutatja be, hogyan használható a Ambari a fürt figyelésére, v
 
 ## <a name="dashboard"></a>Irányítópult
 
-A Ambari irányítópultja a következő Azure Portal a HDInsight áttekintésének **fürt irányítópultok** szakaszában a **Ambari Kezdőlap** hivatkozásra kattintva érhető el. Azt is megteheti, hogy egy böngészőben navigál `https://CLUSTERNAME.azurehdinsight.net` , ahol a CLUSTERNAME a fürt neve.
+A Ambari irányítópultja a következő Azure Portal a HDInsight áttekintésének **fürt irányítópultok** szakaszában a **Ambari Kezdőlap** hivatkozásra kattintva érhető el. Azt is megteheti, hogy egy böngészőben navigál, `https://CLUSTERNAME.azurehdinsight.net` ahol a CLUSTERNAME a fürt neve.
 
 ![HDInsight erőforrás-portál nézet](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -55,7 +55,7 @@ A riasztási definíciók és állapotuk megjelenítéséhez válassza a **riasz
 
 A Ambari számos előre meghatározott riasztást kínál a rendelkezésre állással kapcsolatban, beleértve a következőket:
 
-| Riasztás neve                        | Leírás   |
+| Riasztás neve                        | Description   |
 |---|---|
 | DataNode állapotának összegzése           | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Adatcsomópontok van|
 | NameNode magas rendelkezésre állási állapota | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha az aktív NameNode vagy a készenléti NameNode nem fut.|
@@ -80,7 +80,7 @@ A Ambari-riasztásokhoz e-mail-értesítéseket is konfigurálhat. Ehhez a **ria
 
 ![Ambari – értesítések kezelése művelet](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszédpanel. **+** Kattintson a párbeszédpanel alján található elemre, és töltse ki a kötelező mezőket az e-mail-kiszolgáló Ambari biztosításához, amelyről e-maileket szeretne küldeni.
+Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszédpanel. Kattintson a **+** párbeszédpanel alján található elemre, és töltse ki a kötelező mezőket az e-mail-kiszolgáló Ambari biztosításához, amelyről e-maileket szeretne küldeni.
 
 > [!TIP]
 > A Ambari e-mail-értesítéseinek beállítása jó módszer lehet a riasztások egy helyen való fogadására sok HDInsight-fürt kezelésekor.
@@ -88,6 +88,6 @@ Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszéd
 ## <a name="next-steps"></a>További lépések
 
 - [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
-- [Fürt rendelkezésre állása – Azure Monitor naplók](./cluster-availability-monitor-logs.md)
-- [Az Azure Monitor-naplók használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+- [Fürt rendelkezésre állása – Azure Monitor-naplók](./cluster-availability-monitor-logs.md)
+- [Azure Monitor naplók használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Az Apache Ambari e-mail-értesítései](apache-ambari-email.md)

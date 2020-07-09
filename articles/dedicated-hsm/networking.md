@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70881283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300732"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure dedikált HSM hálózatkezelés
 
@@ -78,7 +77,7 @@ A HSM-eszközök lehetővé teszi, hogy a szoftvereken keresztül átirányíts�
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>Régión átívelő, HA VPN-átjárót használ
 
-Globálisan elosztott alkalmazások esetén vagy magas rendelkezésre állású regionális feladatátvételi helyzetekben a virtuális hálózatok régiók közötti összekapcsolására van szükség. Az Azure dedikált HSM-vel a magas rendelkezésre állást olyan VPN Gateway használatával lehet megvalósítani, amely biztonságos alagutat biztosít a két virtuális hálózat között. A VPN Gateway használatával történő vnet-kapcsolatokkal kapcsolatos további információkért tekintse meg a [mi VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V) című cikket.
+Globálisan elosztott alkalmazások esetén vagy magas rendelkezésre állású regionális feladatátvételi helyzetekben a virtuális hálózatok régiók közötti összekapcsolására van szükség. Az Azure dedikált HSM-vel a magas rendelkezésre állást olyan VPN Gateway használatával lehet megvalósítani, amely biztonságos alagutat biztosít a két virtuális hálózat között. A VPN Gateway használatával történő vnet-kapcsolatokkal kapcsolatos további információkért tekintse meg a [mi VPN Gateway?](../vpn-gateway/design.md#V2V) című cikket.
 
 > [!NOTE]
 > A globális vnet-társítás jelenleg nem érhető el a régiók közötti kapcsolódási forgatókönyvekben a dedikált HSM, és helyette a VPN-átjárót kell használni. 

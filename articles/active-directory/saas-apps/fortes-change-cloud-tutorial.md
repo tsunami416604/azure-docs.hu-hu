@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55305fff95e9707b35ea265915e2893a736ab97d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a8dc8bec5d5e81a8e1e23e7697e6e630b307670
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81265642"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219745"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortes-change-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Forts Change Cloud-nal
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<identifier>.fortes-online.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<identifier>.fortes-online.com/saml/metadata`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<identifier>.fortes-online.com/saml/SSO`
 
@@ -94,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot az [erődökkel a Cloud Client ügyfélszolgálati csapatával](mailto:support@fortes.nl) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A fortes Change Cloud Application az SAML-jogcímeket egy adott formátumban várja, amely megköveteli, hogy egyéni attribútum-hozzárendeléseket adjon hozzá az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A fortes megváltoztatja a Cloud Application **NameIdentifier** -t a **User. sAMAccountName**leképezésével, ezért az attribútum-hozzárendelés szerkesztéséhez kattintson a **Szerkesztés** ikonra, és módosítsa az attribútumok leképezését.
+1. A fortes Change Cloud Application az SAML-jogcímeket egy adott formátumban várja, amely megköveteli, hogy egyéni attribútum-hozzárendeléseket adjon hozzá az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A fortes Change Cloud Application szolgáltatás **egyedi felhasználói azonosítót** vár a **User. mail**használatával, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
@@ -110,7 +110,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -146,7 +146,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a erőd módosítása felhő csempére kattint, automatikusan be kell jelentkeznie az Forts Change felhőbe, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

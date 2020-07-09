@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645582"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
@@ -49,9 +48,9 @@ Az alapértelmezett konfiguráció módosításához használhat egy [konfigurá
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>A Actor szolgáltatás FabricTransport beállításainak konfigurálása
 
-Adjon hozzá egy TransportSettings szakaszt a Settings. xml fájlban.
+Adjon hozzá egy TransportSettings szakaszt a settings.xml fájlban.
 
-Alapértelmezés szerint a színész kódja a "&lt;ActorName&gt;TransportSettings" SectionName keresi. Ha ez nem található, akkor a SectionName "TransportSettings"-ként ellenőrzi.
+Alapértelmezés szerint a színész kódja a " &lt; ActorName &gt; TransportSettings" SectionName keresi. Ha ez nem található, akkor a SectionName "TransportSettings"-ként ellenőrzi.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -70,7 +69,7 @@ Alapértelmezés szerint a színész kódja a "&lt;ActorName&gt;TransportSetting
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>FabricTransport-beállítások konfigurálása a színészi ügyfél szerelvényéhez
 
-Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy "&lt;Client exe name&gt;. Settings. xml" fájlt a Client. exe fájllal megegyező helyen. Ezután adjon hozzá egy TransportSettings szakaszt a fájlban. A SectionName "TransportSettings" értéknek kell lennie.
+Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy " &lt; Client exe Name &gt;.settings.xml" fájlt a Client. exe fájllal megegyező helyen. Ezután adjon hozzá egy TransportSettings szakaszt a fájlban. A SectionName "TransportSettings" értéknek kell lennie.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

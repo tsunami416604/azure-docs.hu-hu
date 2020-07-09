@@ -5,15 +5,15 @@ documentationcenter: na
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: charwen
-ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1efaecc0bb857478a6a9f94db33ddaf547f1ac2
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272928"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985207"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása (klasszikus)
 > [!div class="op_single_selector"]
@@ -92,65 +92,77 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
    * A virtuális hálózat átjáró-alhálózata /27 vagy egy rövidebb előtag kell legyen (például /26 vagy /25).
    * Az átjáró kapcsolattípusa: „Dedikált”.
      
-             <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
-               <AddressSpace>
-                 <AddressPrefix>10.17.159.192/26</AddressPrefix>
-               </AddressSpace>
-               <Subnets>
-                 <Subnet name="Subnet-1">
-                   <AddressPrefix>10.17.159.192/27</AddressPrefix>
-                 </Subnet>
-                 <Subnet name="GatewaySubnet">
-                   <AddressPrefix>10.17.159.224/27</AddressPrefix>
-                 </Subnet>
-               </Subnets>
-               <Gateway>
-                 <ConnectionsToLocalNetwork>
-                   <LocalNetworkSiteRef name="MyLocalNetwork">
-                     <Connection type="Dedicated" />
-                   </LocalNetworkSiteRef>
-                 </ConnectionsToLocalNetwork>
-               </Gateway>
-             </VirtualNetworkSite>
+    ```xml
+    <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
+      <AddressSpace>
+        <AddressPrefix>10.17.159.192/26</AddressPrefix>
+      </AddressSpace>
+      <Subnets>
+        <Subnet name="Subnet-1">
+          <AddressPrefix>10.17.159.192/27</AddressPrefix>
+        </Subnet>
+        <Subnet name="GatewaySubnet">
+          <AddressPrefix>10.17.159.224/27</AddressPrefix>
+          /Subnet>
+      </Subnets>
+      <Gateway>
+        <ConnectionsToLocalNetwork>
+          <LocalNetworkSiteRef name="MyLocalNetwork">
+            <Connection type="Dedicated" />
+          </LocalNetworkSiteRef>
+        </ConnectionsToLocalNetwork>
+      </Gateway>
+    </VirtualNetworkSite>
+    ```
 3. Az xml-sémafájl létrehozása és konfigurálása után töltse fel a fájlt. Ezzel létrejön a virtuális hálózat.
    
     A fájl feltöltéséhez használja a következő parancsmagot, és cserélje le az értéket saját értékre.
    
-        Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```azurepowershell
+    Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```
 4. <a name="gw"></a>Hozzon létre egy ExpressRoute-átjárót. Ne felejtse megadni a GatewaySKU paraméterben a *Standard*, a *HighPerformance* vagy az *UltraPerformance* értéket, a GatewayType paraméterben pedig a *DynamicRouting* értéket.
    
     Használja a következő mintát, és cserélje le az értékeket saját értékekre.
-   
-        New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+
+    ```azurepowershell
+    New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+    ```
 5. Csatlakoztassa az ExpressRoute-átjárót az ExpressRoute-kapcsolatcsoporthoz. A lépés végrehajtásával létrejön a kapcsolat a helyszíni hálózat és az Azure között az ExpressRoute-on keresztül.
    
-        New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```azurepowershell
+    New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```
 6. <a name="vpngw"></a>Ezután hozza létre a helyek közötti VPN-átjárót. A GatewaySKU paraméterben a *Standard*, a *HighPerformance* vagy az *UltraPerformance* értéket, a GatewayType paraméterben pedig a *DynamicRouting* értéket kell megadnia.
    
-        New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```azurepowershell
+    New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```
    
     A virtuális hálózati átjáró beállításainak, köztük az átjáróazonosítónak és a nyilvános IP-címnek a lekéréséhez használja a `Get-AzureVirtualNetworkGateway` parancsmagot.
    
-        Get-AzureVirtualNetworkGateway
+    ```azurepowershell
+    Get-AzureVirtualNetworkGateway
    
-        GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
-        GatewayName          : S2SVPN
-        LastEventData        :
-        GatewayType          : DynamicRouting
-        LastEventTimeStamp   : 5/29/2015 4:41:41 PM
-        LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
-        LastEventID          : 23002
-        State                : Provisioned
-        VIPAddress           : 104.43.x.y
-        DefaultSite          :
-        GatewaySKU           : HighPerformance
-        Location             :
-        VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
-        SubnetId             :
-        EnableBgp            : False
-        OperationDescription : Get-AzureVirtualNetworkGateway
-        OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
-        OperationStatus      : Succeeded
+    GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
+    GatewayName          : S2SVPN
+    LastEventData        :
+    GatewayType          : DynamicRouting
+    LastEventTimeStamp   : 5/29/2015 4:41:41 PM
+    LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
+    LastEventID          : 23002
+    State                : Provisioned
+    VIPAddress           : 104.43.x.y
+    DefaultSite          :
+    GatewaySKU           : HighPerformance
+    Location             :
+    VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
+    SubnetId             :
+    EnableBgp            : False
+    OperationDescription : Get-AzureVirtualNetworkGateway
+    OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
+    OperationStatus      : Succeeded
+    ```
 7. Hozzon létre egy helyi VPN-átjáró entitást. Ez a parancs nem konfigurálja a helyszíni VPN-átjárót. Ehelyett a helyi átjáró beállításai, például a nyilvános IP-cím és a helyszíni címtér megadására szolgál, hogy az Azure VPN-átjáró kapcsolódhasson hozzá.
    
    > [!IMPORTANT]
@@ -160,7 +172,9 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
    
     Használja a következő mintát, és cserélje le az értékeket saját értékekre.
    
-        New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```azurepowershell
+    New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```
    
    > [!NOTE]
    > Ha a helyi hálózat több útvonalat is tartalmaz, tömbként egyszerre mindet megadhatja.  $MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")  
@@ -169,15 +183,17 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
 
     A virtuális hálózati átjáró beállításainak, köztük az átjáróazonosítónak és a nyilvános IP-címnek a lekéréséhez használja a `Get-AzureVirtualNetworkGateway` parancsmagot. Tekintse meg a következő példát.
 
-        Get-AzureLocalNetworkGateway
+    ```azurepowershell
+    Get-AzureLocalNetworkGateway
 
-        GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
-        GatewayName          : MyLocalNetwork
-        IpAddress            : 23.39.x.y
-        AddressSpace         : {10.1.2.0/24}
-        OperationDescription : Get-AzureLocalNetworkGateway
-        OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
-        OperationStatus      : Succeeded
+    GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
+    GatewayName          : MyLocalNetwork
+    IpAddress            : 23.39.x.y
+    AddressSpace         : {10.1.2.0/24}
+    OperationDescription : Get-AzureLocalNetworkGateway
+    OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
+    OperationStatus      : Succeeded
+    ```
 
 
 1. Konfigurálja helyi VPN-eszközét, hogy az új átjáróhoz csatlakozzon. A VPN-eszköz konfigurálása során használja a 6. lépésben lekért információkat. A VPN-eszköz konfigurálásával kapcsolatos további információkért lásd: [VPN-eszköz konfigurálása](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
@@ -185,7 +201,9 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
    
     Ebben a példában a connectedEntityId a helyi átjáró, amely a `Get-AzureLocalNetworkGateway` futtatásával azonosítható. A virtualNetworkGatewayId a `Get-AzureVirtualNetworkGateway` parancsmag használatával azonosítható. A lépés után létrejön a kapcsolat a helyszíni hálózat és az Azure között a helyek közötti VPN-kapcsolaton keresztül.
 
-        New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```azurepowershell
+    New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```
 
 ## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>Egyidejű kapcsolatok konfigurálása meglévő VNet számára
 Ha már rendelkezik meglévő virtuális hálózattal, ellenőrizze az átjáró-alhálózat méretét. Ha az átjáró-alhálózat /28 vagy /29, először törölnie kell a virtuális hálózati átjárót, és növelnie kell az átjáró-alhálózat méretét. A jelen szakaszban ismertetett lépések bemutatják, mindez hogyan valósítható meg.
@@ -200,10 +218,14 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
 1. Az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióit kell telepítenie. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Vegye figyelembe, hogy az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
 2. Törölje a meglévő ExpressRoute- vagy helyek közötti VPN-átjárót. Használja a következő parancsmagot, és cserélje le az értékeket saját értékekre.
    
-        Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```azurepowershell
+    Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```
 3. Exportálja a virtuális hálózati sémát. Használja a következő PowerShell-parancsmagot, és cserélje le az értékeket saját értékekre.
    
-        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```azurepowershell
+    Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```
 4. Szerkessze a hálózat konfigurációs sémáját, hogy az átjáró-alhálózat /27 vagy egy rövidebb előtag legyen (például /26 vagy /25). Tekintse meg a következő példát. 
    
    > [!NOTE]
@@ -211,18 +233,22 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
    > 
    > 
    
-          <Subnet name="GatewaySubnet">
-            <AddressPrefix>10.17.159.224/27</AddressPrefix>
-          </Subnet>
+    ```xml
+    <Subnet name="GatewaySubnet">
+      <AddressPrefix>10.17.159.224/27</AddressPrefix>
+    </Subnet>
+    ```
 5. Ha az előző átjáró helyek közötti VPN volt, a kapcsolat típusát is át kell állítania **Dedicated** értékre.
    
-                 <Gateway>
-                  <ConnectionsToLocalNetwork>
-                    <LocalNetworkSiteRef name="MyLocalNetwork">
-                      <Connection type="Dedicated" />
-                    </LocalNetworkSiteRef>
-                  </ConnectionsToLocalNetwork>
-                </Gateway>
+    ```xml
+    <Gateway>
+      <ConnectionsToLocalNetwork>
+        <LocalNetworkSiteRef name="MyLocalNetwork">
+          <Connection type="Dedicated" />
+        </LocalNetworkSiteRef>
+      </ConnectionsToLocalNetwork>
+    </Gateway>
+    ```
 6. Ezen a ponton egy átjáró nélküli VNettel rendelkezik. Új átjárók létrehozásához és a kapcsolatok véglegesítéséhez folytathatja az előző lépéssorban foglalt [4. lépés – ExpressRoute-átjáró létrehozása](#gw) lépéssel.
 
 ## <a name="next-steps"></a>További lépések

@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477799"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása 
@@ -36,12 +36,12 @@ Fontos, hogy tisztában legyenek a nem módosítható dolgokkal. A következő s
 A VNet kiválasztásakor és az alhálózat megadásakor győződjön meg arról, hogy elég nagy a jövőbeli növekedéshez. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása
-App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en ***app Service Environment v1***-re, vagy átléphet az **erőforrás** -> létrehozása**web és mobil** -> **app Service Environment**. ASEv1 létrehozása:
+App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en ***app Service Environment v1***-re, vagy átléphet az **erőforrás létrehozása**  ->  **web és mobil**  ->  **app Service Environment**. ASEv1 létrehozása:
 
 1. Adja meg a beadás nevét. A központhoz megadott nevet a központhoz tartozó elősegítő alkalmazásban létrehozott alkalmazások használják. Ha a appsvcenvdemo neve a következő lesz: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre egy *mytestapp*nevű alkalmazást, a *mytestapp.appsvcenvdemo.p.azurewebsites.net*címen lehet címezni. A szolgáltató neve nem használható üresen. Ha nagybetűket használ a névben, a tartománynév a név teljes kisbetűs változata lesz. Ha ILB használ, a rendszer nem használja a beléptetési nevet az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
    
     ![][1]
-2. Válassza ki előfizetését. A benyújtó csomaghoz használt előfizetés az adott kiegészítő csomagban létrehozott összes alkalmazásra is érvényes lesz. Egy másik előfizetésben található VNet nem helyezheti üzembe a Bea-t.
+2. Válassza ki az előfizetését. A benyújtó csomaghoz használt előfizetés az adott kiegészítő csomagban létrehozott összes alkalmazásra is érvényes lesz. Egy másik előfizetésben található VNet nem helyezheti üzembe a Bea-t.
 3. Válasszon ki vagy adjon meg egy új erőforráscsoportot. A kiegészítő szolgáltatáshoz használt erőforráscsoporthoz meg kell egyeznie a VNet. Ha már meglévő VNet választ, a rendszer frissíti az erőforráscsoport-kiválasztást a saját VNet.
    
     ![][2]

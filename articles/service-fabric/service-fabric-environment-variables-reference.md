@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645684"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric környezeti változók
@@ -19,13 +18,13 @@ Service Fabric beépített környezeti változók vannak beállítva az egyes sz
 | Környezeti változó                         | Leírás                                                            | Példa                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | Az alkalmazás háló URI-neve                                 | háló:/MyApplication                                                |
-| Fabric_CodePackageName                       | Annak a kódnak a neve, amelyhez a folyamat tartozik              | Kód                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | A végpont IP-címe vagy teljes tartományneve                                 | 10.0.0.1                                                     |
-| Háló\_végpontjának\_*ServiceEndpointName*              | A végpont portszáma                                  | 8234                                                                 |
-| Fabric_Folder_App_Log                        | Napló mappája                                                             | C:\\\\\\\\\\adat_App\\_Node_0\\MyApplicationType_App12\\napló\\\\      |
-| Fabric_Folder_App_Temp                       | Temp mappa                                                            | C:\\\\\\\\\\adat_App\\_Node_0\\MyApplicationType_App12\\Temp\\\\     |
-| Fabric_Folder_App_Work                       | Munkahelyi mappa                                                            | C:\\\\az\\\\\\\\adat_App\\_Node_0\\MyApplicationType_App12\\működik\\     |
-| Fabric_Folder_Application                    | Az alkalmazások kezdőmappa                                           | C:\\\\\\\\_App\\_Node_0\\az\\adatMyApplicationType_App12\\             |
+| Fabric_CodePackageName                       | Annak a kódnak a neve, amelyhez a folyamat tartozik              | Code                                                                 |
+| Fabric_Endpoint \_ IPOrFQDN \_ *ServiceEndpointName*     | A végpont IP-címe vagy teljes tartományneve                                 | 10.0.0.1                                                     |
+| Háló \_ végpontjának \_ *ServiceEndpointName*              | A végpont portszáma                                  | 8234                                                                 |
+| Fabric_Folder_App_Log                        | Napló mappája                                                             | C: \\ \\ \\ \\ adat_App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ napló      |
+| Fabric_Folder_App_Temp                       | Temp mappa                                                            | C: \\ \\ \\ \\ adat_App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ temp     |
+| Fabric_Folder_App_Work                       | Munkahelyi mappa                                                            | C: \\ \\ az \\ \\ adat_App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ működik     |
+| Fabric_Folder_Application                    | Az alkalmazások kezdőmappa                                           | C: \\ \\ \\ \\ _App \\ \\ _Node_0 az \\ \\ adatMyApplicationType_App12             |
 | Fabric_IsContainerHost                       | Logikai érték, amely azt határozza meg, hogy a folyamat tároló-e                   | hamis                                                                |
 | Fabric_NodeId                                | A folyamatot futtató csomóponthoz tartozó csomópont-azonosító                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | A csomópont IP-címe vagy teljes tartományneve a fürt jegyzékfájljában megadott módon. | localhost vagy 10.0.0.1                                                |

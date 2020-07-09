@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205117"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Üzembe helyezés az Azure Kubernetes Service-ben
@@ -37,7 +37,7 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 6. Válassza ki **<Gateway-name>. YML-** fájl hivatkozását a **központi telepítés** mellett a fájl letöltéséhez.
 7. Szükség szerint módosítsa a port-hozzárendeléseket és a tároló nevét a YML fájlban.
 8. A forgatókönyvtől függően előfordulhat, hogy módosítania kell a [szolgáltatás típusát](https://docs.microsoft.com/azure/aks/concepts-network#services). Az alapértelmezett érték `NodePort`.
-9. Válassza a **telepítés** szövegmező jobb oldalán található `kubectl` **Másolás** ikont a parancs vágólapra mentéséhez.
+9. Válassza a **telepítés** szövegmező jobb oldalán található **Másolás** ikont a `kubectl` parancs vágólapra mentéséhez.
 10. Illessze be a parancsot a terminál (vagy a parancs) ablakába. Vegye figyelembe, hogy a parancs elvárja, hogy a letöltött környezeti fájl megtalálható legyen az aktuális könyvtárban.
 ```console
     kubectl apply -f <gateway-name>.yaml

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429667"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 tanúsítványalapú hitelesítés Service Fabric-fürtökben
@@ -106,8 +106,8 @@ Először vegyünk fel egy részletet egy exemplifying a fürt jegyzékfájljáb
 ```
 A deklarációk a kiszolgáló és a fürt identitására vonatkoznak; vegye figyelembe, hogy a CN-alapú deklarációk a fürt jegyzékfájljának saját részeivel rendelkeznek, és elkülönítik a standard biztonsági szintet. Mindkét deklarációban a "név" a tanúsítvány megkülönböztető tulajdonos köznapi nevét jelöli, és az "érték" mező a várt kiállítót jelöli, az alábbiak szerint:
 
-- az első esetben a deklaráció azt jelzi, hogy a kiszolgálói tanúsítvány megkülönböztető tulajdonosának köznapi név elemének meg kell egyeznie a "Server. demo. System. servicefabric. Azure-int" karakterlánccal. az üres "érték" mező azt jelzi, hogy a tanúsítványlánc gyökerének megbízhatónak kell lennie azon a csomóponton/gépen, amelyen a kiszolgálói tanúsítvány érvényesítve van; Windows rendszeren ez azt jelenti, hogy a tanúsítvány képes a "megbízható legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" tárolóban telepített összes tanúsítvány összekapcsolására.
-- a második esetben a deklaráció azt jelzi, hogy egy tanúsítvány előadója a fürt egyik társ csomópontja, ha a tanúsítvány köznapi neve megegyezik a "cluster. bemutató. System. servicefabric. Azure-int" karakterláncmal, *és* a tanúsítvány közvetlen kiállítójának ujjlenyomata megegyezik az "érték" mezőben található vesszővel tagolt bejegyzések egyikével. (Ez a Szabálytípus "köznapi név a kiállítói rögzítéssel" néven ismert.)
+- az első esetben a deklaráció azt jelzi, hogy a kiszolgálói tanúsítvány megkülönböztető tulajdonosának köznapi név elemének meg kell egyeznie a következő karakterlánccal: "server.demo.system. servicefabric. Azure-int"; az üres "érték" mező azt jelzi, hogy a tanúsítványlánc gyökerének megbízhatónak kell lennie azon a csomóponton/gépen, amelyen a kiszolgálói tanúsítvány érvényesítve van; Windows rendszeren ez azt jelenti, hogy a tanúsítvány képes a "megbízható legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" tárolóban telepített összes tanúsítvány összekapcsolására.
+- a második esetben a deklaráció azt jelzi, hogy egy tanúsítvány előadója a fürt egyik társ csomópontja, ha a tanúsítvány köznapi neve megegyezik a "cluster.demo.system. servicefabric. Azure-int" karakterlánccal, *és* a tanúsítvány közvetlen kiállítójának ujjlenyomata megegyezik az "érték" mezőben található vesszővel tagolt bejegyzések egyikével. (Ez a Szabálytípus "köznapi név a kiállítói rögzítéssel" néven ismert.)
 
 A tanúsítvány lánca mindkét esetben felépíthető, és a rendszer a várhatóan hibamentes lesz. Ez azt jelenti, hogy a visszavonási hibák, a részleges lánc vagy az idő – érvénytelen megbízhatósági hibák minősülnek végzetesnek, és a tanúsítvány ellenőrzése sikertelen lesz. A kiállítók rögzítése azt eredményezi, hogy a "nem megbízható legfelső szintű" állapotot nem végzetes hibaként veszi figyelembe. a megjelenések ellenére ez egy szigorúbb ellenőrzési űrlap, mivel lehetővé teszi, hogy a fürt tulajdonosa a saját PKI-re korlátozza a jogosult/elfogadott kiállítók készletét.
 
@@ -156,7 +156,7 @@ Tegyük fel, hogy a következő részletet vesszük figyelembe a fürt jegyzékf
     </NodeType>
   </NodeTypes>
 ```
-A "ClusterCertificate" elem a teljes sémát mutatja be, beleértve a választható paramétereket ("X509FindValueSecondary") vagy a megfelelő alapértékekkel rendelkezőket ("X509StoreName"); a többi deklaráció rövidített űrlapot mutat be. A fürt tanúsítványa a fentiekben kijelenti, hogy a "nt1vm" típusú csomópontok biztonsági beállításai inicializálva lettek a következő tanúsítvánnyal: "cc71.. 1984 "elsődlegesként, a" 49e2... 19d6 "tanúsítványa másodlagosként; mindkét tanúsítványnak szerepelnie kell a LocalMachine\'saját tanúsítványtárolójában (vagy a Linux-megfelelő elérési úton, a *var/lib/sfcerts*).
+A "ClusterCertificate" elem a teljes sémát mutatja be, beleértve a választható paramétereket ("X509FindValueSecondary") vagy a megfelelő alapértékekkel rendelkezőket ("X509StoreName"); a többi deklaráció rövidített űrlapot mutat be. A fürt tanúsítványa a fentiekben kijelenti, hogy a "nt1vm" típusú csomópontok biztonsági beállításai inicializálva lettek a következő tanúsítvánnyal: "cc71.. 1984 "elsődlegesként, a" 49e2... 19d6 "tanúsítványa másodlagosként; mindkét tanúsítványnak szerepelnie kell a LocalMachine \' saját tanúsítványtárolójában (vagy a Linux-megfelelő elérési úton, a *var/lib/sfcerts*).
 
 #### <a name="common-name-based-certificate-presentation-declarations"></a>Köznapi név alapú tanúsítvány-megjelenítési deklarációk
 A csomópont típusú tanúsítványokat a tulajdonos köznapi neve is deklarálhatja, az alábbi példának megfelelően:

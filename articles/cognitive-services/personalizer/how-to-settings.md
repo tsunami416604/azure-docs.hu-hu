@@ -1,14 +1,14 @@
 ---
 title: A Personalizer konfigurálása
 description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c0cbf35a37f6b3eb134992b34b23fd9d7be47ed
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584654"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344339"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Személyre szabott tanulási hurok konfigurálása
 
@@ -43,7 +43,7 @@ Konfigurálja a szolgáltatást a tanulási ciklusban a jutalmak használatára.
 > [!div class="mx-imgBorder"]
 > ![Adja meg a visszajelzési hurok jutalmazási értékeit](media/settings/configure-model-reward-settings.png)
 
-|Érték|Cél|
+|Érték|Szerep|
 |--|--|
 |Jutalom várakozási ideje|Meghatározza azt az időtartamot, ameddig a személynek a rangsorolási híváshoz tartozó jutalmazási értékeket kell gyűjtenie a rangsor meghívásának pillanatától kezdve. Ezt az értéket úgy állítja be a rendszer, hogy megkérdezi, hogy mennyi ideig kell megvárnia a személyre szabási hívásokat? Az ablak beérkezését követően bekövetkező minden jutalom bekerül, de nem használható a tanuláshoz.|
 |Alapértelmezett jutalom|Ha nem fogadja el a személyre szabott jutalmat a rangsorolási várakozási idő időszaka alatt, a személyre szabási híváshoz rendelt jutalmazási időablakban az alapértelmezett jutalom lesz hozzárendelve. Alapértelmezés szerint a legtöbb esetben az alapértelmezett jutalom nulla (0).|
@@ -67,7 +67,7 @@ Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 A **modell frissítési gyakorisága** határozza meg, hogy a modell milyen gyakran legyen betanítva.
 
-|Gyakorisági beállítás|Cél|
+|Gyakorisági beállítás|Szerep|
 |--|--|
 |1 perc|Az egyperces frissítési gyakoriságok akkor hasznosak, ha az alkalmazás kódját a személyre szabás, a demók **vagy a gépi** tanulási szempontok interaktív tesztelése során végzi.|
 |15 perc|A magas modell-frissítési gyakoriságok olyan helyzetekben hasznosak, amikor **szorosan nyomon szeretné követni** a felhasználói viselkedések változásait. Ilyenek például az élő Hírek, a vírusos tartalmak vagy az élő termékek ajánlattételi helyei. Ezeket a forgatókönyveket 15 perces gyakorisággal használhatja. |
@@ -85,6 +85,6 @@ Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan kezelheti a modellt](how-to-manage-model.md)

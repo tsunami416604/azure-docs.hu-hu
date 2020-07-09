@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998115"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237705"
 ---
 Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -37,7 +37,7 @@ Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes 
 
 1. A Tudásbázis **Beállítások** lapján kattintson a **poster (beküldés** ) fülre, és tekintse meg a Tudásbázisból a válasz létrehozásához használt konfigurációt. Másolja a következő adatokat a Poster-ban való használatra.
 
-    |Name|Beállítás|Cél és érték|
+    |Name (Név)|Beállítás|Cél és érték|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Ez az URL-cím HTTP-metódusa és útvonala.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Ez az URL-cím gazdagépe. Fűzze össze a gazdagépet, és tegye az értékeket a teljes generateAnswer URL-cím beszerzéséhez.|
@@ -108,7 +108,7 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáa
 ## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
 
 > [!NOTE]
->Nem ajánlott hibakeresési poreperty használni bármilyen függőséghez. Ez a tulajdonság hozzá lett adva, hogy segítse a termék csapatát a hibaelhárításban.
+>A függőségek hibakeresési tulajdonságát nem ajánlott használni. Ez a tulajdonság hozzá lett adva, hogy segítse a termék csapatát a hibaelhárításban.
 
 A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá a következő `debug` tulajdonságot:
 

@@ -37,6 +37,8 @@
       href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: JavaScript
       href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: További nyelvek
+      href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Alapelvek
   items:
     - name: Tárfiókok
@@ -71,8 +73,18 @@
       href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Vészhelyreállítás és feladatátvétel
       href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Teljesítmény és kapacitás – ellenőrzőlista
-      href: storage-performance-checklist.md
+    - name: 'Teljesítmény, méretezés és költségoptimalizálás'
+      items:
+        - name: Méretezhetőségi és teljesítménycélok
+          items:
+            - name: Queue Storage
+              href: scalability-targets.md
+            - name: Standard szintű tárfiókok
+              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Tárolásierőforrás-szolgáltató
+              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Teljesítmény és kapacitás – ellenőrzőlista
+          href: storage-performance-checklist.md
     - name: Egyidejűség
       href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Figyelés és hibaelhárítás
@@ -214,54 +226,8 @@
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Referencia
   items:
-    - name: Méretezhetőségi és teljesítménycélok
-      items:
-        - name: Queue Storage
-          href: scalability-targets.md
-        - name: Standard szintű tárfiókok
-          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Tárolásierőforrás-szolgáltató
-          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Azure PowerShell
-      href: /powershell/module/az.storage
-    - name: Azure CLI
-      href: /cli/azure/storage
-    - name: .NET
-      items:
-        - name: Queues (11.x verzió)
-          href: /dotnet/api/microsoft.azure.storage.queue
-        - name: Queues (12.x verzió)
-          href: /dotnet/api/azure.storage.queues
-        - name: Storage Resource Provider
-          href: /dotnet/api/overview/azure/storage/management
-    - name: Java
-      items:
-        - name: Queues (8.x verzió)
-          href: /java/api/com.microsoft.azure.storage.queue
-        - name: Queues (12.x verzió)
-          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html'
-        - name: Storage Resource Provider
-          href: /java/api/overview/azure/storage/management
-    - name: JavaScript (12.x verzió)
-      href: /javascript/api/@azure/storage-queue
-    - name: Python (12.x verzió)
-      href: /python/api/azure-storage-queue/?view=azure-python
-    - name: REST
-      items:
-        - name: 'Blobok, üzenetsorok, táblák és fájlok'
-          href: /rest/api/storageservices
-        - name: Storage Resource Provider
-          href: /rest/api/storagerp
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+    - name: Azure Queue Storage-referencia
+      href: ../queues/reference.md
     - name: Resource Manager-sablon
       displayName: ARM
       href: /azure/templates/microsoft.storage/allversions

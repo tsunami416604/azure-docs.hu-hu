@@ -3,15 +3,15 @@ title: A Change feed kalkulátor használata – Azure Cosmos DB
 description: Ismerje meg, hogy miként elemezheti a változási hírcsatorna-feldolgozók állapotát a Change feed kalkulátor használatával
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90ae7951196d424b59d3780469cb7e01519c51f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263578"
 ---
 # <a name="use-the-change-feed-estimator"></a>A módosítási hírcsatorna kalkulátor használata
 
@@ -35,11 +35,11 @@ Ha például a változási csatorna processzora a következőképpen van defini�
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-A becslések inicializálásának helyes módja, ha azt méri, hogy a processzor `GetChangeFeedEstimatorBuilder` a következőképpen fog kinézni:
+A becslések inicializálásának helyes módja, ha azt méri, hogy a processzor a következőképpen fog `GetChangeFeedEstimatorBuilder` kinézni:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Ahol a processzor és a kalkulátor is ugyanazt `leaseContainer` a nevet használja.
+Ahol a processzor és a kalkulátor is ugyanazt a `leaseContainer` nevet használja.
 
 A másik két paraméter a delegált, amely egy számot fog kapni, amely azt jelzi, hogy hány **módosítást kell olvasni** a processzor, valamint azt az időintervallumot, amelyen a mérést el szeretné végezni.
 
@@ -52,7 +52,7 @@ Ezt a becslést elküldheti a figyelési megoldásnak, és azt is megtudhatja, h
 > [!NOTE]
 > A módosítási hírcsatorna-kalkulátor nem szükséges a módosítási csatorna processzorának részeként telepíteni, és nem lehet ugyanannak a projektnek a része. Független lehet, és egy teljesen más példányban futtatható. Csak ugyanazt a nevet és címbérleti konfigurációt kell használnia.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

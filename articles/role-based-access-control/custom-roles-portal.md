@@ -7,19 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791197"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a Azure Portal használatával
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure Portalon
 
 Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni Azure-szerepköröket is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetéshez és az erőforráscsoport-hatókörökhöz. Az egyéni szerepkörök egy Azure Active Directory (Azure AD) könyvtárban tárolódnak, és az előfizetések között megoszthatók. Minden címtárhoz legfeljebb 5000 egyéni szerepkör tartozhat. Egyéni szerepkörök hozhatók létre a Azure Portal, a Azure PowerShell, az Azure CLI vagy a REST API használatával. Ez a cikk azt ismerteti, hogyan hozhat létre egyéni szerepköröket a Azure Portal használatával.
 
@@ -33,7 +32,7 @@ Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
 
 Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat az egyéni szerepkörbe. Az alábbi négy módszer segítségével határozhatja meg az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
 
-| Módszer | Leírás |
+| Metódus | Description |
 | --- | --- |
 | Megtekintheti a meglévő szerepköröket | Megtekintheti a meglévő szerepköröket, hogy megtudja, milyen engedélyek vannak használatban. További információ: [Azure beépített szerepkörök](built-in-roles.md). |
 | Engedélyek keresése kulcsszó alapján | Ha a Azure Portal használatával hoz létre egyéni szerepkört, az engedélyek kulcsszava alapján is megkereshetők. Megkeresheti például a *virtuális gépet* vagy a *Számlázási* engedélyeket. Ezt a keresési funkciót a [4. lépés: engedélyek című szakasza](#step-4-permissions)tárgyalja. |
@@ -196,7 +195,7 @@ Kövesse az alábbi lépéseket az egyéni szerepkörhöz tartozó engedélyek h
 
 1. Kattintson a **Hozzáadás** gombra az engedélyek listához való hozzáadásához.
 
-    Az engedély a `Actions` vagy a `DataActions`lesz hozzáadva.
+    Az engedély a `Actions` vagy a lesz hozzáadva `DataActions` .
 
     ![Engedély hozzáadva](./media/custom-roles-portal/permissions-list-add.png)
 
@@ -204,7 +203,7 @@ Kövesse az alábbi lépéseket az egyéni szerepkörhöz tartozó engedélyek h
 
 ### <a name="add-wildcard-permissions"></a>Helyettesítő karakteres engedélyek hozzáadása
 
-Attól függően, hogy hogyan döntött, az engedélyek listájában szerepelhetnek helyettesítő karakterekkel (\*). Egy helyettesítő karakter\*() kibővíti az Ön által megadott karakterlánccal megegyező összes engedélyt. Tegyük fel például, hogy hozzá kívánja adni a Azure Cost Management és az exportáláshoz kapcsolódó összes engedélyt. A következő engedélyeket adhatja hozzá:
+Attól függően, hogy hogyan döntött, az engedélyek listájában szerepelhetnek helyettesítő karakterekkel ( \* ). Egy helyettesítő karakter ( \* ) kibővíti az Ön által megadott karakterlánccal megegyező összes engedélyt. Tegyük fel például, hogy hozzá kívánja adni a Azure Cost Management és az exportáláshoz kapcsolódó összes engedélyt. A következő engedélyeket adhatja hozzá:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -224,7 +223,7 @@ Ha új helyettesítő karaktert szeretne hozzáadni, az **engedélyek hozzáadá
 
 ### <a name="exclude-permissions"></a>Engedélyek kizárása
 
-Ha a szerepkör helyettesítő (\*) engedéllyel rendelkezik, és ki kívánja zárni vagy kivonni a helyettesítő jogosultságokból származó konkrét engedélyeket, kizárhatja őket. Tegyük fel például, hogy a következő helyettesítő karakteres engedélyekkel rendelkezik:
+Ha a szerepkör helyettesítő () engedéllyel rendelkezik, és ki kívánja \* zárni vagy kivonni a helyettesítő jogosultságokból származó konkrét engedélyeket, kizárhatja őket. Tegyük fel például, hogy a következő helyettesítő karakteres engedélyekkel rendelkezik:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -236,7 +235,7 @@ Ha nem szeretné engedélyezni az Exportálás törlését, kizárhatja a követ
 Microsoft.CostManagement/exports/delete
 ```
 
-Ha kizár egy engedélyt, azt a vagy a- `NotActions` `NotDataActions`ként adja hozzá a rendszer. Az érvényben lévő felügyeleti engedélyek kiszámításához adja hozzá az `Actions` összeset, majd vonja ki az összeset `NotActions`. Az érvényes adatokra vonatkozó engedélyek kiszámítása úgy történik, hogy hozzáadja `DataActions` az összeset, majd kivonja az `NotDataActions`összeset.
+Ha kizár egy engedélyt, azt a vagy a-ként adja hozzá a rendszer `NotActions` `NotDataActions` . Az érvényben lévő felügyeleti engedélyek kiszámításához adja hozzá az összeset, `Actions` majd vonja ki az összeset `NotActions` . Az érvényes adatokra vonatkozó engedélyek kiszámítása úgy történik, hogy hozzáadja az összeset, `DataActions` majd kivonja az összeset `NotDataActions` .
 
 > [!NOTE]
 > Az engedélyek kizárása nem ugyanaz, mint a megtagadás. Az engedélyek kizárása egyszerűen egy kényelmes módszer az engedélyek kivonására egy helyettesítő jogosultsággal.
@@ -249,7 +248,7 @@ Ha kizár egy engedélyt, azt a vagy a- `NotActions` `NotDataActions`ként adja 
 
     ![Engedélyek kizárása panel – kijelölt engedély](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    Az engedély a `NotActions` vagy `NotDataActions`a lesz hozzáadva.
+    Az engedély a vagy a lesz hozzáadva `NotActions` `NotDataActions` .
 
     ![Kizárt engedély](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
@@ -269,7 +268,7 @@ A **hozzárendelhető hatókörök** lapon adhatja meg, hogy az egyéni szerepk�
 
 ## <a name="step-6-json"></a>6. lépés: JSON
 
-A **JSON** lapon megtekintheti a JSON-ban formázott egyéni szerepkört. Ha szeretné, közvetlenül is szerkesztheti a JSON-t. Ha helyettesítő karaktert (\*) szeretne hozzáadni, ezt a fület kell használnia.
+A **JSON** lapon megtekintheti a JSON-ban formázott egyéni szerepkört. Ha szeretné, közvetlenül is szerkesztheti a JSON-t. Ha helyettesítő karaktert () szeretne hozzáadni \* , ezt a fület kell használnia.
 
 1. A JSON szerkesztéséhez kattintson a **Szerkesztés**gombra.
 

@@ -1,21 +1,17 @@
 ---
 title: Service Bus üzenetsor létrehozásához használja a Azure PowerShell
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus üzenetsor létrehozásához Azure PowerShell. Ezt követően egy minta alkalmazással üzeneteket küldhet és fogadhat üzeneteket a várólistából.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 12/20/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1fecfd7ba9f35d06b680d43248bf82aeb54a27b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75426935"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337248"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozása a Azure PowerShell használatával
 Ebből a rövid útmutatóból megismerheti, hogyan küldhet és fogadhat üzeneteket egy Service Bus-üzenetsorból a PowerShell használatával egy üzenetküldési névtér és egy azon belüli üzenetsor létrehozásához, valamint az adott névtér hitelesítő adatainak lekéréséhez. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
@@ -29,7 +25,7 @@ Ebből a rövid útmutatóból megismerheti, hogyan küldhet és fogadhat üzene
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot][] . 
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][]. 
 - [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studióval olyan mintát hozhat létre, amely üzeneteket küld egy várólistából, és üzenetet fogad. A példa a portálon létrehozott üzenetsor tesztelésére szolgál. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 
@@ -128,7 +124,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A rendszer a `Main()` metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
+A rendszer a metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét `Main()` parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -165,7 +161,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű `RegisterOnMessageHandlerAndReceiveMessages()`üzenet-kezelőt, és elküldi az üzenetek készletét:
+A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű üzenet-kezelőt `RegisterOnMessageHandlerAndReceiveMessages()` , és elküldi az üzenetek készletét:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

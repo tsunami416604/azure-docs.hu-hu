@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494922"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight-fürtök teljesítményoptimalizálása
@@ -44,13 +43,13 @@ Apache Kafka-termelők olyan üzeneteket (batchs-csoportokat) állítanak össze
 
 ### <a name="producer-required-acknowledgments"></a>Producer szükséges nyugták
 
-A gyártó által `acks` megkövetelt konfiguráció határozza meg, hogy a partíció vezetője milyen nyugtákat igényel, mielőtt az írási kérelem befejeződik. Ez a beállítás hatással van az adatok megbízhatóságára, `0`és `1`a, `-1`vagy a értékeit veszi figyelembe. Az érték `-1` azt jelenti, hogy az írás befejezése előtt az összes replikáról nyugtát kell kapnia. A `acks = -1` beállítás nagyobb mértékű garanciát biztosít az adatvesztés ellen, de magasabb késést és alacsonyabb átviteli sebességet is eredményez. Ha az alkalmazásra vonatkozó követelmények nagyobb átviteli sebességet igényelnek `acks = 1`, próbálkozzon a beállítással vagy a értékkel `acks = 0` . Ne feledje, hogy az összes replikát nem ismerheti fel az adatmegbízhatóság csökkentése érdekében.
+A gyártó által megkövetelt `acks` konfiguráció határozza meg, hogy a partíció vezetője milyen nyugtákat igényel, mielőtt az írási kérelem befejeződik. Ez a beállítás hatással van az adatok megbízhatóságára, és a, vagy a értékeit veszi figyelembe `0` `1` `-1` . Az érték `-1` azt jelenti, hogy az írás befejezése előtt az összes replikáról nyugtát kell kapnia. A beállítás nagyobb `acks = -1` mértékű garanciát biztosít az adatvesztés ellen, de magasabb késést és alacsonyabb átviteli sebességet is eredményez. Ha az alkalmazásra vonatkozó követelmények nagyobb átviteli sebességet igényelnek, próbálkozzon a beállítással vagy a értékkel `acks = 0` `acks = 1` . Ne feledje, hogy az összes replikát nem ismerheti fel az adatmegbízhatóság csökkentése érdekében.
 
 ### <a name="compression"></a>Tömörítés
 
 A Kafka-gyártó konfigurálható úgy, hogy tömörítse az üzeneteket, mielőtt elküldené őket a brókereknek. A `compression.type` beállítás határozza meg a használni kívánt tömörítési kodeket. A támogatott tömörítési kodekek a következők: "gzip", "Snappy" és "lz4". A tömörítés hasznos lehet, és figyelembe kell venni a lemez kapacitásának korlátozását.
 
-A két leggyakrabban használt tömörítési kodek, `gzip` a `snappy`pedig `gzip` nagyobb tömörítési aránnyal rendelkezik, ami nagyobb CPU-terhelést eredményez. A `snappy` kodek kevesebb tömörítést biztosít kevesebb CPU-terheléssel. Eldöntheti, hogy melyik kodeket szeretné használni a Broker Disk vagy a producer CPU korlátozásai alapján. `gzip`a legfeljebb `snappy`ötször képes tömöríteni az adatokra.
+A két leggyakrabban használt tömörítési kodek, `gzip` a `snappy` pedig `gzip` nagyobb tömörítési aránnyal rendelkezik, ami nagyobb CPU-terhelést eredményez. A `snappy` kodek kevesebb tömörítést biztosít kevesebb CPU-terheléssel. Eldöntheti, hogy melyik kodeket szeretné használni a Broker Disk vagy a producer CPU korlátozásai alapján. `gzip`a legfeljebb ötször képes tömöríteni az adatokra `snappy` .
 
 Az adattömörítés használatával növelheti a lemezen tárolható rekordok számát. Emellett növelheti a CPU-terhelést azokban az esetekben, amikor a gyártó és a közvetítő által használt tömörítési formátumok között eltérés tapasztalható. mivel a feldolgozás előtt az adatoknak tömörítettnek kell lenniük a küldés előtt, majd ki kell tömöríteni őket.
 

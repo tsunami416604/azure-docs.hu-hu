@@ -7,12 +7,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807706"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -245,7 +244,7 @@ A részletek a projekt típusától függenek. Webalkalmazások esetén:
 
 * Hozzáadja ezeket a fájlokat a projekthez:
   * ApplicationInsights.config
-  * ai. js
+  * ai.js
 * A következő NuGet-csomagokat telepíti:
   * *Application INSIGHTS API* – a Core API
   * *Application INSIGHTS API webalkalmazásokhoz* – telemetria küldésére szolgál a kiszolgálóról
@@ -255,14 +254,14 @@ A részletek a projekt típusától függenek. Webalkalmazások esetén:
   * Microsoft. ApplicationInsights. platform
 * Elemek beszúrása a következőkbe:
   * Web.config
-  * packages. config
+  * packages.config
 * (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a kód bekerül a mesteroldalak nézeteibe/Shared/ \_ layout. cshtml
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíteni a régebbi SDK-verziókról?
 Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
-A Megoldáskezelő kattintson a jobb gombbal, `ApplicationInsights.config` majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
+A Megoldáskezelő kattintson a jobb gombbal, `ApplicationInsights.config` majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló módosítja a kialakítási kulcsot ApplicationInsights.configban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Használhatom `providers('Microsoft.Insights', 'components').apiVersions[0]` a Azure Resource Manager üzembe helyezéseit?
 
@@ -318,7 +317,7 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -367,7 +366,7 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 ### <a name="what-are-the-user-and-session-counts"></a>Mik a felhasználók és a munkamenetek száma?
 
 * A JavaScript SDK beállítja a felhasználói cookie-t a webes ügyfélen, a visszatérő felhasználók azonosítására, valamint egy munkamenet-cookie-t a tevékenységek csoportosítására.
-* Ha nincs ügyféloldali parancsfájl, beállíthatja [a cookie-kat a kiszolgálón](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Ha nincs ügyféloldali parancsfájl, beállíthatja [a cookie-kat a kiszolgálón](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Ha egy valós felhasználó különböző böngészőkben használja a webhelyét, vagy ha privát vagy inkognitóbani böngészést vagy különböző gépeket használ, a rendszer egynél többször veszi fel őket.
 * A bejelentkezett felhasználók számítógépek és böngészők közötti azonosításához vegyen fel egy hívást a [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users)szolgáltatásba.
 
@@ -443,12 +442,12 @@ Lehetővé teszi, hogy a webkiszolgáló telemetria küldjön a végpontoknak.
 
 #### <a name="gateway-redirect"></a>Átjáró átirányítása
 
-Átirányíthatja a forgalmat a kiszolgálóról az intranetes átjáróra a konfigurációban található végpontok felülírásával. Ha ezek a "végpont" tulajdonságok nem szerepelnek a konfigurációban, ezek az osztályok az alapértelmezett értékeket fogják használni az alábbi példában látható ApplicationInsights. config fájlban. 
+Átirányíthatja a forgalmat a kiszolgálóról az intranetes átjáróra a konfigurációban található végpontok felülírásával. Ha ezek a "végpont" tulajdonságok nem szerepelnek a konfigurációban, ezek az osztályok az alábbi példában látható alapértelmezett értékeket fogják használni ApplicationInsights.config. 
 
 Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfigurációban cserélje le az alapértelmezett értékeket a értékre `http://<your.gateway.address>/<relative path>` .
 
 
-##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Példa ApplicationInsights. config alapértelmezett végpontokkal:
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Példa ApplicationInsights.config alapértelmezett végpontokkal:
 ```xml
 <ApplicationInsights>
   ...
@@ -479,7 +478,7 @@ Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfig
 A proxy továbbítása a gépi vagy az alkalmazás szintű proxy konfigurálásával érhető el.
 További információ: a [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)-ra vonatkozó DotNet-cikk.
  
- Példa web. config:
+ Példa Web.config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -546,7 +545,7 @@ A **többi folyamat** az alábbiakat tartalmazza:
 
 Az ügynök verziójának ciprod12042019 és újabb verzióiban alapértelmezés szerint ez a két tulajdonság nem töltődik fel minden egyes naplófájlhoz, hogy csökkentse a begyűjtött naplózási adatokhoz felmerülő költségeket. Az alábbi két lehetőség közül választhat a tulajdonságokat tartalmazó tábla lekérdezéséhez:
 
-#### <a name="option-1"></a>1. lehetőség 
+#### <a name="option-1"></a>1\. lehetőség 
 
 Csatlakozás más táblákhoz, hogy ezek a tulajdonságértékek szerepeljenek az eredmények között.
 
@@ -574,7 +573,7 @@ ContainerLog
 
 ```
 
-#### <a name="option-2"></a>2. lehetőség
+#### <a name="option-2"></a>2\. lehetőség
 
 Engedélyezze újra a gyűjteményt ezen tulajdonságok esetében minden egyes tároló-naplófájlhoz.
 
@@ -619,7 +618,7 @@ Az ügynök frissítésének megismeréséhez tekintse meg az [ügynökök kezel
 
 A tárolók számára jelenleg Azure Monitor nem támogatja a többsoros naplózást, de vannak elérhető áthidaló megoldások. Az összes szolgáltatást JSON formátumban is konfigurálhatja, majd a Docker/Moby egyetlen sorba írja azokat.
 
-Például becsomagolhatja a naplót JSON-objektumként, ahogy az alábbi példában is látható egy példa Node. js-alkalmazáshoz:
+Például becsomagolhatja a naplót JSON-objektumként, ahogy az alábbi példában is látható egy példa node.js alkalmazáshoz:
 
 ```
 console.log(json.stringify({ 

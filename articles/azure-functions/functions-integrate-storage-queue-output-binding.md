@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: mvc
 ms.openlocfilehash: 5ae282750580ed5b4e53e78c52ca285e40365fd3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122006"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
@@ -58,7 +57,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
 
 1. Frissítse a függvénykódot a függvény nyelvétől függően:
 
-    # <a name="c"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C#\#](#tab/csharp)
 
     Adjon hozzá egy **outputQueueItem** paramétert a metódus aláírásához, ahogy az alábbi példában is látható.
 
@@ -127,7 +126,7 @@ A Functions futtatókörnyezete egy **outqueue** nevű új üzenetsort hoz létr
 
 1. Ha újból futtatja a függvényt, egy új üzenet jelenik meg az üzenetsorban.  
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 

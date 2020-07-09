@@ -2,45 +2,43 @@
 title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Server Assessment-ben
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 6/08/2020
+ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84771376"
 ---
-# <a name="set-up-agentless-dependency-visualization"></a>Ügynök nélküli függőségi vizualizáció beállítása 
+# <a name="analyze-machine-dependencies-agentless"></a>A gép függőségeinek elemzése (ügynök nélküli)
 
-Ez a cikk az ügynök nélküli függőségek elemzésének beállítását ismerteti Azure Migrateban: kiszolgáló értékelése. A függőségek [elemzése](concepts-dependency-visualization.md) segít az Azure-ba felmérni és migrálni kívánt gépek függőségeinek azonosításában és megismerésében.
+Ez a cikk az ügynök nélküli függőségek elemzésének beállítását ismerteti Azure Migrateban: kiszolgáló értékelése. A függőségek [elemzése](concepts-dependency-visualization.md) segítséget nyújt a számítógépek közötti függőségek azonosításában és értelmezésében az Azure-ba történő értékeléshez és áttelepítéshez.
 
 
 > [!IMPORTANT]
-> Az ügynök nélküli függőségi vizualizáció jelenleg csak az előzetes verzióban érhető el a VMware virtuális gépekhez, amely a Azure Migrate: Server Assessment Tool eszközzel lett felderítve.
+> Az ügynök nélküli függőségi vizualizáció jelenleg előzetes verzióban érhető el a Azure Migrate: Server Assessment Tool eszközzel felderített VMware virtuális gépek számára.
 > Lehetséges, hogy a funkciók korlátozottak vagy hiányosak.
 > Ezt az előzetes verziót az ügyfélszolgálat támogatja, és az éles számítási feladatokhoz is használható.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+## <a name="current-limitations"></a>Aktuális korlátozások
 
+- A függőség elemzése nézetben jelenleg nem adhat hozzá és nem távolíthat el kiszolgálót egy csoportból.
+- Jelenleg nem érhető el függőségi Térkép a kiszolgálók csoportjához.
+- A függőségi adatokat táblázatos formátumban nem lehet letölteni.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- [További információ az](concepts-dependency-visualization.md#agentless-analysis) ügynök nélküli függőségek elemzéséről.
-- [Tekintse át](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) a VMWare virtuális gépek ügynök nélküli függőségi vizualizációjának beállításához szükséges előfeltételeket és támogatási követelményeket
-- Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
-- Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Győződjön meg arról, hogy beállított egy [Azure Migrate berendezést](migrate-appliance.md) a helyszíni gépek felderítéséhez. Megtudhatja, hogyan állíthat be egy készüléket a [VMware](how-to-set-up-appliance-vmware.md) virtuális gépekhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését.
+- [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket és a szükséges engedélyeket.
+- Győződjön meg róla, hogy:
+    - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](how-to-add-tool-first-time.md) egyet most.
+    - Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt a projekthez.
+    - [Azure Migrate berendezés](migrate-appliance.md) beállítása a helyszíni gépek felderítéséhez. [Állítson be egy készüléket](how-to-set-up-appliance-vmware.md) a VMWare virtuális gépekhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését.
+- Győződjön meg arról, hogy az összes elemezni kívánt virtuális gépre telepítve van a VMware-eszközök (10,2-nál újabb).
 
-
-## <a name="current-limitations"></a>Aktuális korlátozások
-
-- Mostantól nem adhat hozzá és nem távolíthat el kiszolgálót egy csoportból a függőség elemzése nézetben.
-- A kiszolgálók egy csoportjának függőségi leképezése jelenleg nem érhető el.
-- Jelenleg a függőségi adatokat táblázatos formátumban nem lehet letölteni.
 
 ## <a name="create-a-user-account-for-discovery"></a>Felhasználói fiók létrehozása a felderítéshez
 
-Hozzon létre egy felhasználói fiókot, hogy a kiszolgáló értékelése hozzáférhessen a virtuális géphez a felderítéshez. [További](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) információ a fiókokra vonatkozó követelményekről.
+Hozzon létre egy felhasználói fiókot, hogy a kiszolgáló értékelése hozzáférhessen a virtuális géphez a függőségek felderítése érdekében. A Windows-és Linux-alapú virtuális gépek fiókra vonatkozó követelményeinek [megismerése](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
 
 
 ## <a name="add-the-user-account-to-the-appliance"></a>A felhasználói fiók hozzáadása a berendezéshez
@@ -50,7 +48,7 @@ Adja hozzá a felhasználói fiókot a készülékhez.
 1. Nyissa meg a berendezés-kezelő alkalmazást. 
 2. Navigáljon az **adja meg a vCenter részletei** panelt.
 3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése**területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
-3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév**/**jelszava**
+3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév** / **jelszava**
 6. Kattintson a **Save** (Mentés) gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
 
@@ -63,9 +61,9 @@ Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Kattintson a **függőség elemzése** ikonra.
 3. Kattintson a **kiszolgálók hozzáadása**elemre.
-3. A **kiszolgálók hozzáadása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
-4. A gép listából válassza ki a gépeket.
-5. Kattintson a **kiszolgálók hozzáadása**elemre.
+4. A **kiszolgálók hozzáadása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
+5. A gép listából válassza ki a gépeket.
+6. Kattintson a **kiszolgálók hozzáadása**elemre.
 
     ![Függőségi felderítés elindítása](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -92,6 +90,38 @@ A függőségek felderítésének megkezdése után hat órán belül megjelení
 > [!NOTE]
 > A függőségi adatok feldolgozása nem mindig érhető el. Ha nem érhető el, a függőséget az "ismeretlen folyamat" jelölésű folyamat mutatja.
 
+## <a name="export-dependency-data"></a>Függőségi adatgyűjtés exportálása
+
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
+2. Kattintson a **függőség elemzése** ikonra.
+3. Kattintson az **alkalmazás függőségeinek exportálása**elemre.
+4. Az **alkalmazás-függőségek exportálása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
+5. Válassza ki a kezdési és befejezési időpontot. Vegye figyelembe, hogy csak az elmúlt 30 napban töltheti le az adatgyűjtést.
+6. Kattintson a **függőség exportálása**elemre.
+
+A függőségi adatfájlok exportálása és letöltése CSV-formátumban történik. A letöltött fájl a függőségi elemzéshez engedélyezett összes gépen tartalmazza a függőségi adataikat. 
+
+![Függőségek exportálása](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
+### <a name="dependency-information"></a>Függőségi adatok
+
+Az exportált CSV-fájl minden sora a megadott időpontban megfigyelt függőségnek felel meg. 
+
+Az alábbi táblázat összefoglalja az exportált CSV-fájl mezőit. Vegye figyelembe, hogy a kiszolgáló neve, az alkalmazás és a folyamat mező csak olyan kiszolgálókon töltődik fel, amelyeken engedélyezve van az ügynök nélküli függőségi elemzés.
+
+**Mezőnév** | **Részletek**
+--- | --- 
+Időrés | Az a időrés, amely alatt a függőség megfigyelhető. <br/> A függőségi adat jelenleg 6 órás tárolóhelyre van rögzítve.
+Forráskiszolgáló neve | A forrásoldali gép neve 
+Forrásoldali alkalmazás | Az alkalmazás neve a forrásoldali gépen 
+Forrásoldali folyamat | A forrás gépen lévő folyamat neve 
+Célkiszolgáló neve | A célszámítógép neve
+Cél IP-címe | A célszámítógép IP-címe
+Célalkalmazás | Az alkalmazás neve a célszámítógépen
+Cél folyamat | A folyamat neve a célszámítógépen 
+Célport | Portszám a célszámítógépen
+
+
 ## <a name="stop-dependency-discovery"></a>Függőségi felderítés leállítása
 
 Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi felderítést.
@@ -106,4 +136,4 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 
 ## <a name="next-steps"></a>További lépések
 
-[A gépek csoportosítása](how-to-create-a-group.md) az értékeléshez.
+Az értékeléshez [csoportosítsa a gépeket](how-to-create-a-group.md) .

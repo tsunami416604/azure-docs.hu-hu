@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74924096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320981"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Tárolt eljárás meghívása másolási tevékenységből Azure Data Factory
 > [!NOTE]
@@ -29,7 +29,7 @@ Az adatok [SQL Server](data-factory-sqlserver-connector.md) vagy [Azure SQL Data
 Az alábbi példa bemutatja, hogyan hívhat meg egy tárolt eljárást egy SQL Server-adatbázisban egy Data Factory folyamatból (másolási tevékenység):  
 
 ## <a name="output-dataset-json"></a>Kimeneti adatkészlet JSON-je
-A kimeneti adatkészlet JSON-fájljában állítsa be a **következőt** : **SqlServerTable**. Beállíthatja, hogy a **tulajdonsága azuresqltable** Azure SQL Database-adatbázissal használhassa. A **Táblanév** tulajdonság értékének meg kell egyeznie a tárolt eljárás első paraméterének nevével.  
+A kimeneti adatkészlet JSON-fájljában állítsa be a **következőt** : **SqlServerTable**. Állítsa be a **tulajdonsága azuresqltable** -re, hogy az Azure SQL Database használatával használhassa. A **Táblanév** tulajdonság értékének meg kell egyeznie a tárolt eljárás első paraméterének nevével.  
 
 ```json
 {

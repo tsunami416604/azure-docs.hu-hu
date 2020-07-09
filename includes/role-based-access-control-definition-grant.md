@@ -15,4 +15,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "74707794"
 ---
-Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles/role-based-access-control/overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésére használt engedélyezési rendszer. A hozzáférés biztosításához a szerepköröket egy adott hatókörhöz tartozó felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz rendelheti hozzá.
+Az [Azure szerepköralapú hozzáférés-vezérlése (RBAC)](../articles/role-based-access-control/overview.md) az Azure-erőforrásokhoz való hozzáférés kezeléséhez használt engedélyezési rendszer. A hozzáférés biztosításához adott hatókör mellett szerepköröket rendelhet a felhasználókhoz, csoportokhoz, szolgáltatásnevekhez vagy felügyelt identitásokhoz.

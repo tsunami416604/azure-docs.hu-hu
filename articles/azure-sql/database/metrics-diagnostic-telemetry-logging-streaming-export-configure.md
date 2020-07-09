@@ -2,7 +2,7 @@
 title: Metrikák és erőforrás-naplók adatfolyam-exportálásának konfigurálása
 description: Megtudhatja, hogyan állíthatja be a metrikák és erőforrás-naplók adatfolyam-exportálását, beleértve az Azure SQL Database és az Azure SQL felügyelt példányának intelligens diagnosztikai elemzését, hogy az Ön által választott célra az erőforrás-kihasználtsággal és a lekérdezés-végrehajtási statisztikákkal kapcsolatos információkat tárolja.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 87a30544378936f8408f187f6b9ad67edb8dce12
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117759"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085599"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database és SQL felügyelt példányok diagnosztikai telemetria adatfolyam-exportálásának konfigurálása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,16 +37,16 @@ A Intelligent Insights napló exportálásán kívül számos teljesítmény-mé
 
 | Diagnosztikai telemetria adatbázisok számára | Azure SQL Database támogatás | Az Azure SQL felügyelt példányainak támogatása |
 | :------------------- | ----- | ----- |
-| [Alapszintű mérőszámok](#basic-metrics): tartalmazza a DTU/CPU-arányt, a DTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási százalékos arányát, a sikeres/sikertelen/letiltott/blokkolt, a munkamenetek százalékos arányát, a dolgozók százalékos arányát, a tárterületet | Igen | Nem |
-| [A példány és az alkalmazás speciális](#advanced-metrics): tartalmazza a tempdb rendszeradatbázis-információit és a naplófájlok méretét, valamint a tempdb százalékos naplófájlját. | Igen | Nem |
+| [Alapszintű mérőszámok](#basic-metrics): tartalmazza a DTU/CPU-arányt, a DTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási százalékos arányát, a sikeres/sikertelen/letiltott/blokkolt, a munkamenetek százalékos arányát, a dolgozók százalékos arányát, a tárterületet | Yes | Nem |
+| [A példány és az alkalmazás speciális](#advanced-metrics): tartalmazza a tempdb rendszeradatbázis-információit és a naplófájlok méretét, valamint a tempdb százalékos naplófájlját. | Yes | Nem |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): a lekérdezési futtatókörnyezet statisztikáit, például a CPU-használat és a lekérdezés időtartamára vonatkozó statisztikai adatokat tartalmazza. | Igen | Igen |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): a lekérdezési várakozási statisztikával kapcsolatos információkat tartalmaz (a lekérdezéseket várta), például a processzort, a naplót és a zárolást. | Igen | Igen |
 | [Hibák](#errors-dataset): az adatbázis SQL-hibáiról tartalmaz információkat. | Igen | Igen |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): információ arról, hogy mennyi időt töltöttek egy adatbázis a különböző várakozási típusoknál. | Igen | Nem |
-| [Időtúllépések](#time-outs-dataset): az adatbázis-időtúllépésekkel kapcsolatos információkat tartalmaz. | Igen | Nem |
-| [Blokkok](#blockings-dataset): az adatbázis-események blokkolásával kapcsolatos információkat tartalmaz. | Igen | Nem |
-| [Holtpontok](#deadlocks-dataset): az adatbázis holtpont eseményeivel kapcsolatos információkat tartalmaz. | Igen | Nem |
-| [AutomaticTuning](#automatic-tuning-dataset): az adatbázis Automatikus hangolási javaslataival kapcsolatos információkat tartalmaz. | Igen | Nem |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): információ arról, hogy mennyi időt töltöttek egy adatbázis a különböző várakozási típusoknál. | Yes | Nem |
+| [Időtúllépések](#time-outs-dataset): az adatbázis-időtúllépésekkel kapcsolatos információkat tartalmaz. | Yes | Nem |
+| [Blokkok](#blockings-dataset): az adatbázis-események blokkolásával kapcsolatos információkat tartalmaz. | Yes | Nem |
+| [Holtpontok](#deadlocks-dataset): az adatbázis holtpont eseményeivel kapcsolatos információkat tartalmaz. | Yes | Nem |
+| [AutomaticTuning](#automatic-tuning-dataset): az adatbázis Automatikus hangolási javaslataival kapcsolatos információkat tartalmaz. | Yes | Nem |
 | [SQLInsights](#intelligent-insights-dataset): Intelligent Insightst tartalmaz egy adatbázis teljesítményében. További információ: [Intelligent Insights](intelligent-insights-overview.md). | Igen | Igen |
 
 > [!NOTE]
@@ -96,7 +96,7 @@ A Azure Portal **diagnosztikai beállítások** menüjében engedélyezheti és 
 
 A következő lapok egyikének kiválasztásával részletes útmutatást találhat a diagnosztikai telemetria adatfolyam-exportálásának konfigurálásához a Azure Portalban, valamint parancsfájlokat a PowerShell és az Azure CLI használatával történő végrehajtásához.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Rugalmas készletek Azure SQL Database
 
@@ -133,9 +133,9 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria folya
 > [!IMPORTANT]
 > A rugalmas készlet diagnosztikai telemetria konfigurálása mellett a rugalmas készletben lévő minden adatbázishoz is be kell állítania a diagnosztikai telemetria.
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Egy-és készletezett adatbázisok Azure SQL Database
+### <a name="databases-in-azure-sql-database"></a>Adatbázisok Azure SQL Database
 
-Beállíthat egy vagy készletezett adatbázis-erőforrást a következő diagnosztikai telemetria gyűjtéséhez:
+Beállíthat egy adatbázis-erőforrást a következő diagnosztikai telemetria gyűjtéséhez:
 
 | Erőforrás | Telemetria figyelése |
 | :------------------- | ------------------- |
@@ -231,7 +231,7 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria a pé
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager modul továbbra is támogatott az Azure-ban, de az az. SQL modulhoz tartozó jövőbeli fejlesztés is. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> A PowerShell Azure Resource Manager modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 A metrikák és a diagnosztika naplózása a PowerShell használatával engedélyezhető.
 

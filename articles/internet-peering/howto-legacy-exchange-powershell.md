@@ -5,15 +5,14 @@ description: Örökölt Exchange-társ konvertálása Azure-erőforrásra a Powe
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2abd05243f30a32d8fe49f12bf4ee2ad09855002
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699991"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Örökölt Exchange-társ konvertálása Azure-erőforrásra a PowerShell használatával
 
@@ -91,7 +90,7 @@ Ez a példa a végpontok közötti kiépítés sikeres befejezését mutatja be:
     MaxPrefixesAdvertisedV6  : 2000
     ConnectionState          : Active
 ```
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```powershell

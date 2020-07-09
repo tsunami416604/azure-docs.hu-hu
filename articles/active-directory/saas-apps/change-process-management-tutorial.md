@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Change Process Management szolgáltatással | Microsoft Docs'
+title: 'Oktatóanyag: az Azure AD SSO-integrációja a Change Process managementtel'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és módosíthatja a folyamatok felügyeletét.
 services: active-directory
 documentationCenter: na
@@ -15,139 +15,139 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad145593d6811860fe367f5473b54de2a057d71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984376"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456827"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Change Process Management szolgáltatással
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a változási folyamatokat a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a változási folyamatok felügyeletét, a következőket teheti:
 
-* Az Azure AD azon vezérlése, amely hozzáfér a folyamatok kezelésének módosításához.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy az Azure AD-fiókokkal megváltoztassák a folyamatok kezelését.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Az Azure AD használatával szabályozhatja, hogy ki férhet hozzá a Change Process Management szolgáltatáshoz.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a folyamatok Azure AD-fiókjával való kezelésének módosításához.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* A folyamat-felügyeleti egyszeri bejelentkezés (SSO) engedélyezett előfizetésének módosítása.
+* Az egyszeri bejelentkezéssel (SSO) rendelkező Change Process Management-előfizetés engedélyezve van.
 
-## <a name="scenario-description"></a>Forgatókönyv leírása
+## <a name="tutorial-description"></a>Oktatóanyag leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tesztkörnyezetben végezheti el.
 
-* A Process Management módosítása támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
-* A módosítási folyamat kezelésének konfigurálása után kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását is biztosítja. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A Change Process Management támogatja a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-change-process-management-from-the-gallery"></a>Módosítási folyamat kezelésének hozzáadása a katalógusból
+A módosítási folyamat kezelésének konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="add-change-process-management-from-the-gallery"></a>Módosítási folyamat kezelésének hozzáadása a katalógusból
 
 A Change Process Management Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a gyűjtemény módosításait a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **change Process Management** in the keresőmezőbe.
-1. Válassza a **folyamat kezelése** az eredmények panelen lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
+1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban adja meg a Research ( **folyamat kezelése** ) kifejezést a keresőmezőbe.
+1. Válassza a **folyamat-kezelés módosítása** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-change-process-management"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a változási folyamatok kezeléséhez
+## <a name="configure-and-test-azure-ad-sso-for-change-process-management"></a>Azure AD SSO konfigurálása és tesztelése a változási folyamatok kezeléséhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a változási folyamat kezelésével egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a folyamat módosításainak kezelése szolgáltatásban.
+Az Azure AD SSO konfigurálását és tesztelését egy B. Simon nevű teszt felhasználó használatával végezheti el a változási folyamatok kezelésével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a megfelelő felhasználó között a folyamat módosításainak kezelése területen.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Change Process Management használatával végezze el a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a Change Process Management használatával hajtsa végre a következő magas szintű lépéseket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[change Process Management SSO konfigurálása](#configure-change-process-management-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Módosítási folyamat kezelése – felhasználó létrehozása](#create-change-process-management-test-user)** – a módosítási folyamat felügyelete, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t annak engedélyezéséhez, hogy a felhasználók használják a szolgáltatást.
+    1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez.
+    1. **[Hozzáférés biztosítása a tesztelési felhasználónak](#grant-access-to-the-test-user)** , hogy lehetővé váljon a felhasználó számára az Azure ad egyszeri bejelentkezés használata.
+1. A **[change Process Management SSO konfigurálása](#configure-change-process-management-sso)** az alkalmazás oldalán.
+    1. **[Hozzon létre egy módosítási folyamat-felügyeleti teszt felhasználót](#create-a-change-process-management-test-user)** a felhasználó Azure ad-beli képviseletének megfelelő felhasználóként.
+1. Ellenőrizze az **[SSO](#test-sso)** -t a konfiguráció működésének ellenőrzéséhez.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **folyamat kezelése** alkalmazás-integráció módosítása lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **folyamat kezelése** alkalmazás-integráció módosítása lap **kezelés** szakaszában válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Az alapszintű SAML-konfiguráció ceruza gombja](common/edit-urls.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<hostname>:8443/`
+    a. Az **azonosító** mezőben adja meg az URL-címet a következő mintában:`https://<hostname>:8443/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<hostname>:8443/changepilot/saml/sso`
+    b. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő mintában:`https://<hostname>:8443/changepilot/saml/sso`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba a [Process Management-ügyfél támogatási csapatával](mailto:support@realtech-us.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az előző **azonosító** és a **Válasz URL-** értékei nem a ténylegesen használt értékek. A tényleges értékek lekéréséhez lépjen kapcsolatba a [change Process Management támogatási csapatával](mailto:support@realtech-us.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a tanúsítvány **(Base64)** **letöltési** hivatkozását a tanúsítvány letöltéséhez és a számítógépbe való mentéséhez:
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![Tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **módosítási folyamat kezelésének beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. A **módosítási folyamat kezelése** szakaszban másolja be a megfelelő URL-címet vagy URL-címeket a követelmények alapján:
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
+   1. A név mezőbe írja be a **B. Simon** **nevet** .  
+   1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
+   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a folyamatok kezelésének módosításához.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy megadja, hogy a felhasználó hozzáférést biztosít a folyamatok kezelésének módosításához.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza a **folyamat-kezelés módosítása**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
 ## <a name="configure-change-process-management-sso"></a>A Change Process Management SSO konfigurálása
 
-Ha az egyszeri bejelentkezést a **módosítási folyamat kezelése** oldalon szeretné konfigurálni, akkor a [Process Management támogatási csapatának módosításához](mailto:support@realtech-us.com)el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket a Azure Portalból. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a folyamat módosításainak kezelése oldalon, el kell küldenie a letöltött Base64-tanúsítványt és a Azure Portalból átmásolt megfelelő URL-címeket a [change Process Management támogatási csapatának](mailto:support@realtech-us.com). Az SAML SSO-kapcsolatokat úgy konfigurálja, hogy mindkét oldalon megfelelő legyen.
 
-### <a name="create-change-process-management-test-user"></a>Módosítási folyamat kezelése – felhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Change Process Management szolgáltatásban. A [change Process Management támogatási csapatával](mailto:support@realtech-us.com) felveheti a felhasználókat a Change Process Management platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+### <a name="create-a-change-process-management-test-user"></a>Módosítási folyamat-felügyeleti teszt felhasználó létrehozása
+ A [módosítási folyamat kezelése támogatási csapattal](mailto:support@realtech-us.com) együtt vegyen fel egy B. Simon nevű felhasználót a Change Process Management szolgáltatásban. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Ha a hozzáférési panel váltás folyamat kezelése csempére kattint, automatikusan be kell jelentkeznie a Change Process Management szolgáltatásba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor bejelöli a folyamat kezelése csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Change Process Management-példányra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Próbálja meg módosítani a folyamatok kezelését az Azure AD-vel](https://aad.portal.azure.com/)
 

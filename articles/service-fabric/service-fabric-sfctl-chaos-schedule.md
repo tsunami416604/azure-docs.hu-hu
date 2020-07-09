@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906184"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl-káosz ütemterv
@@ -17,7 +16,7 @@ A Chaos-ütemterv beolvasása és beállítása.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Leírás|
+|Parancs|Description|
 | --- | --- |
 | get | Szerezze be a káosz-ütemtervet, amely meghatározza, hogy mikor és hogyan kell futtatni a káoszt. |
 | halmaz | Állítsa be a káosz által használt ütemtervet. |
@@ -29,18 +28,18 @@ Beolvassa a használatban lévő Chaos-ütemterv verzióját, valamint azt a ká
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett \: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl Chaos-ütemterv beállítása
@@ -50,23 +49,23 @@ A Chaos automatikusan ütemezni fogja a futtatásokat a Chaos-ütemterv alapján
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Chaos-Parameters-Dictionary | A JSON-kódolású lista a feladatok által használandó ChaosParameters karakterlánc-nevek hozzárendelését jelképezi. |
-| --lejárat dátuma – UTC | Az a dátum és idő, ameddig a rendszer leállítja a káoszt az ütemterv használatával.  Alapértelmezett\: 9999-12-31T23\:59\:59.999 z. |
+| --lejárat dátuma – UTC | Az a dátum és idő, ameddig a rendszer leállítja a káoszt az ütemterv használatával.  Alapértelmezett \: 9999-12-31T23 \: 59 \: 59.999 z. |
 | – feladatok | JSON-kódolású ChaosScheduleJobs-lista, amely azt jelképezi, hogy mikor fusson a káosz, és hogy milyen paraméterekkel kell futtatni a Chaos-t |
-| --Start-Date-UTC | Annak a dátumnak és időpontnak a dátuma és ideje, hogy mikor kell elkezdeni az ütemtervet ütemezni.  Alapértelmezett\: 1601-01-01T00\:00\:00.000 z. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
+| --Start-Date-UTC | Annak a dátumnak és időpontnak a dátuma és ideje, hogy mikor kell elkezdeni az ütemtervet ütemezni.  Alapértelmezett \: 1601-01-01T00 \: 00 \: 00.000 z. |
+| --időtúllépés-t | Alapértelmezett \: 60. |
 | --Version | Az ütemezett verzió verziószáma. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ### <a name="examples"></a>Példák

@@ -7,15 +7,14 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659276"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
-A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md)a helyi számítógépen töltse le és telepítse a helyszíni [adatátjárót](https://aka.ms/on-premises-data-gateway-installer) . Az átjáró hídként működik, amely gyors adatátvitelt és titkosítást biztosít a helyszínen és a logikai alkalmazásokban lévő adatforrások között. Ugyanezt az átjárót más felhőalapú szolgáltatásokkal is használhatja, mint például a Power BI, az automatizálás, a Power apps és a Azure Analysis Services. Az átjáró ezen szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
+A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md)a helyi számítógépen töltse le és telepítse a helyszíni [adatátjárót](https://aka.ms/on-premises-data-gateway-installer) . Az átjáró hídként működik, amely gyors adatátvitelt és titkosítást biztosít a helyszínen található adatforrások és a logikai alkalmazások között. Ugyanezt az átjárót más felhőalapú szolgáltatásokkal is használhatja, mint például a Power BI, az automatizálás, a Power apps és a Azure Analysis Services. Az átjáró ezen szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
 
 * [A Microsoft Power automatizálja a helyszíni adatátjárót](/power-automate/gateway-reference)
 * [Microsoft Power BI helyszíni adatátjáró](/power-bi/service-gateway-onprem)

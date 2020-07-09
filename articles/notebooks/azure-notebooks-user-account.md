@@ -3,22 +3,22 @@ title: Bejelentkezés Azure Notebooks előzetes verzióra
 description: A Azure Notebooks felhasználói fiókjának konfigurálása Microsoft-fiók vagy munkahelyi/iskolai fiók használatával.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646296"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832185"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks előzetes verziójának felhasználói fiókja
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 A Azure Notebooks a felhasználói fiókkal való bejelentkezéssel vagy anélkül is használhatja:
 
 - Bejelentkezés nélkül létrehozhat és futtathat jegyzetfüzeteket, de nem tudja megőrizni a jegyzetfüzeteket és az adatfájlokat a projektek részeként. Azok a felhasználók, akik egy Azure-jegyzetfüzetre mutató hivatkozást kapnak, így nem kell bejelentkezniük a jegyzetfüzetbe.
 - Ha bejelentkezett, Azure Notebooks megőrzi az összes projektet a fiókjával. A bejelentkezett felhasználóknak olyan felhasználói AZONOSÍTÓjuk is van, amely lehetővé teszi, hogy másokkal is megosszák a projektjeiket és a jegyzetfüzeteket.
 - Ha a Azure Notebookshez használt fiók egy Azure-előfizetéshez is társítva van, akkor további előnyökkel jár, mint például a jegyzetfüzetek futtatása nagyobb teljesítményű kiszolgálókon, privát jegyzetfüzetek létrehozása és engedélyek engedélyezése a jegyzetfüzetekhez az egyes felhasználók számára.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Az Azure Notebooksba való bejelentkezéshez Microsoft-fiókra vagy munkahelyi vagy iskolai fiókra van szükség. A rendszer a jegyzetfüzetek oldal jobb felső sarkában található **Bejelentkezés** parancs kiválasztásakor kéri a fiókját:
 
@@ -53,7 +53,7 @@ A hozzáférés engedélyezéséhez a szülőnek a következő lépéseket kell 
 
 ## <a name="work-or-school-accounts"></a>Munkahelyi vagy iskolai fiókok
 
-A szervezet rendszergazdája létrehoz egy munkahelyi vagy iskolai fiókot, amely lehetővé teszi, hogy a szervezet egy tagja hozzáférhessen a Microsoft Cloud Services, például az Office 365, valamint egy olyan fiókhoz, amellyel a Windowsba bejelentkezhetnek a tartományhoz csatlakoztatott számítógépeken. A munkahelyi vagy iskolai fiók jellemzően szervezeti e-mail-címet használ, any-user@contoso.compéldául:.
+A szervezet rendszergazdája létrehoz egy munkahelyi vagy iskolai fiókot, amely lehetővé teszi, hogy a szervezet egy tagja hozzáférhessen a Microsoft Cloud Services, például a Microsoft 365hoz, valamint egy olyan fiókhoz, amely egy tartományhoz csatlakoztatott számítógépre jelentkezik be a Windowsba. A munkahelyi vagy iskolai fiók jellemzően szervezeti e-mail-címet használ, például: any-user@contoso.com .
 
 A munkahelyi vagy iskolai fiókkal való Azure Notebooks bejelentkezéshez rendszergazdai jogosultságra lehet szükség, mert a Azure Notebooks gyűjti vagy használja (de nem fedi le) az adatokat, például a fiók e-mail-címét és a felhasználó böngésző-információit. (A böngésző adatait a funkciók népszerű használat szerint történő optimalizálására használják.)
 

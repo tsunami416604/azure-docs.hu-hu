@@ -7,10 +7,9 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76718820"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure Files-alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
@@ -34,7 +33,7 @@ PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 
 A cikk végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését is. 
 
-Ha az Azure CLI-t helyileg szeretné használni a cikkben, `az --version` győződjön meg arról `azure-cli (2.0.43)`, hogy legalább a értéket adja vissza.  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
+Ha az Azure CLI-t helyileg szeretné használni a cikkben, győződjön meg arról, hogy `az --version` legalább a értéket adja vissza `azure-cli (2.0.43)` .  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
 
 Az Azure-ba való bejelentkezéshez és az előfizetés beállításához:
 
@@ -57,7 +56,7 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Szerezze be a Storage-fiók nevét és kulcsát, valamint a fájlmegosztás nevét
-A Storage-fiók neve, a Storage-fiók kulcsa, valamint a fájlmegosztás neve a `<storageAccountName>`következő `<storageAccountKey>`részekben `<fileShareName>` , és a fájlokra hivatkozik. 
+A Storage-fiók neve, a Storage-fiók kulcsa, valamint a fájlmegosztás neve a `<storageAccountName>` `<storageAccountKey>` következő részekben, és a fájlokra hivatkozik `<fileShareName>` . 
 
 Sorolja fel a Storage-fiókokat, és szerezze be a Storage-fiók nevét a használni kívánt fájlmegosztás használatával:
 ```azurecli-interactive
@@ -81,11 +80,11 @@ Ezeket az értékeket a [Azure Portal](https://portal.azure.com)is megtalálhatj
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Mennyiségi erőforrás deklarálása és a szolgáltatási erőforrás (JSON) frissítése
 
-Paraméterek hozzáadása az `<fileShareName>`előző lépésben `<storageAccountName>`megtalált, és `<storageAccountKey>` értékekhez. 
+Paraméterek hozzáadása az `<fileShareName>` `<storageAccountName>` `<storageAccountKey>` előző lépésben megtalált, és értékekhez. 
 
-Hozzon létre egy kötet-erőforrást az alkalmazás-erőforrás társaként. Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). A `azureFileParameters`alkalmazásban határozza meg az előző `<fileShareName>`lépésben `<storageAccountName>`megtalált, és `<storageAccountKey>` értékek paramétereit.
+Hozzon létre egy kötet-erőforrást az alkalmazás-erőforrás társaként. Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). A alkalmazásban `azureFileParameters` határozza meg az `<fileShareName>` `<storageAccountName>` `<storageAccountKey>` előző lépésben megtalált, és értékek paramétereit.
 
-Ha a kötetet a szolgáltatásban szeretné csatlakoztatni `volumeRefs` , vegyen fel egy `codePackages` elemet a szolgáltatás eleméhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
+Ha a kötetet a szolgáltatásban szeretné csatlakoztatni, vegyen fel egy `volumeRefs` `codePackages` elemet a szolgáltatás eleméhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
 
 ```json
 {
@@ -210,7 +209,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Frissítse a Service *. YAML* fájlt a szolgáltatás *erőforrásainak* könyvtárában a kötet a szolgáltatásban való csatlakoztatásához.  Adja hozzá `volumeRefs` az elemet a `codePackages` elemhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
+Frissítse a Service *. YAML* fájlt a szolgáltatás *erőforrásainak* könyvtárában a kötet a szolgáltatásban való csatlakoztatásához.  Adja hozzá az `volumeRefs` elemet a `codePackages` elemhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
 
 ```yaml
 ## Service definition ##

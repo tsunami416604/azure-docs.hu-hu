@@ -3,27 +3,27 @@ title: Alkalmazásproxy – problémamegoldás | Microsoft Docs
 description: Az Azure AD Application Proxy hibáinak elhárítását ismerteti.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848459"
 ---
-# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása
+# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása
 
 Az alkalmazásproxy hibáinak elhárítása során javasoljuk, hogy kezdje meg a hibaelhárítási folyamat áttekintését, az [alkalmazásproxy-összekötő](application-proxy-debug-connectors.md)hibáinak elhárítását, és állapítsa meg, hogy az alkalmazásproxy-összekötők megfelelően vannak-e konfigurálva. Ha továbbra is problémát tapasztal az alkalmazáshoz való csatlakozás során, kövesse az [alkalmazásproxy alkalmazásával kapcsolatos hibák](application-proxy-debug-apps.md)elhárítása című témakört.
 
@@ -31,21 +31,21 @@ Ha hiba lép fel egy közzétett alkalmazás elérésekor vagy az alkalmazások 
 
 * Nyissa meg a Windows-szolgáltatások konzolt. Ellenőrizze, hogy a **Microsoft HRE Application proxy Connector** szolgáltatás engedélyezve van-e és fut-e. Érdemes megtekinteni az alkalmazásproxy szolgáltatás Tulajdonságok lapját is, ahogy az az alábbi képen is látható:  
   ![A Microsoft HRE Application proxy-összekötő Tulajdonságok ablak képernyőképe](./media/application-proxy-troubleshoot/connectorproperties.png)
-* Nyissa meg Eseménynapló és keresse meg az alkalmazásproxy-összekötő eseményeit az **alkalmazásokban és a szolgáltatásokban naplózza** > a**Microsoft** > **AadApplicationProxy** > -**összekötő** > **rendszergazdáját**.
+* Nyissa meg Eseménynapló és keresse meg az alkalmazásproxy-összekötő eseményeit az **alkalmazásokban és a szolgáltatásokban naplózza**a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötő**  >  **rendszergazdáját**.
 * Ha szükséges, részletesebb naplók érhetők el [az alkalmazásproxy-összekötő munkamenet-naplófájljainak bekapcsolásával](application-proxy-connectors.md#under-the-hood).
 
 ## <a name="the-page-is-not-rendered-correctly"></a>A lap nem megfelelően jelenik meg
 Előfordulhat, hogy problémák léptek fel az alkalmazás megjelenítésével kapcsolatban, vagy helytelenül működnek, anélkül, hogy konkrét hibaüzeneteket kellene kapnia. Ez akkor fordulhat elő, ha közzétette a cikk elérési útját, de az alkalmazásnak az elérési úton kívül található tartalomra van szüksége.
 
-Ha például közzéteszi az elérési utat `https://yourapp/app` , de az alkalmazás rendszerképeket hív meg `https://yourapp/media`, azok nem lesznek megjelenítve. Győződjön meg arról, hogy az alkalmazást a legmagasabb szintű elérési úttal kell közzétennie, és az összes releváns tartalmat fel kell vennie. Ebben a példában ez lenne `http://yourapp/`.
-
-Ha úgy módosítja az elérési utat, hogy tartalmazza a hivatkozott tartalmat, de továbbra is szükség van arra, hogy a felhasználók az elérési úton mélyebb kapcsolaton keresztül férhessenek hozzá, tekintse meg a blogbejegyzés az [Application proxy alkalmazásokhoz való megfelelő hivatkozását az Azure ad hozzáférési paneljén és az Office 365 app launcherben](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
+Ha például közzéteszi az elérési utat `https://yourapp/app` , de az alkalmazás rendszerképeket hív meg `https://yourapp/media` , azok nem lesznek megjelenítve. Győződjön meg arról, hogy az alkalmazást a legmagasabb szintű elérési úttal kell közzétennie, és az összes releváns tartalmat fel kell vennie. Ebben a példában ez lenne `http://yourapp/` .
 
 ## <a name="connector-errors"></a>Összekötői hibák
 
 Ha az összekötő varázsló telepítésekor nem sikerül a regisztráció, kétféleképpen tekintheti meg a hiba okát. Keresse meg az eseménynaplót az **alkalmazások és szolgáltatások Logs\Microsoft\AadApplicationProxy\Connector\Admin**alatt, vagy futtassa a következő Windows PowerShell-parancsot:
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 Miután megtalálta az összekötő hibáját az eseménynaplóból, a gyakori hibákkal kapcsolatos táblázat segítségével oldja meg a problémát:
 
@@ -53,9 +53,9 @@ Miután megtalálta az összekötő hibáját az eseménynaplóból, a gyakori h
 | ----- | ----------------- |
 | Az összekötő regisztrálása nem sikerült: Győződjön meg arról, hogy engedélyezte az alkalmazásproxy használatát az Azure felügyeleti portálban, és hogy helyesen adta meg a Active Directory felhasználónevét és jelszavát. Hiba: egy vagy több hiba történt. | Ha bezárta a regisztrációs ablakot az Azure AD-be való bejelentkezés nélkül, futtassa újra az összekötő varázslót, és regisztrálja az összekötőt. <br><br> Ha megnyílik a regisztrációs ablak, majd azonnal bezárul anélkül, hogy bejelentkezne, valószínűleg ezt a hibát fogja kapni. Ez a hiba akkor fordul elő, ha hálózati hiba van a rendszeren. Győződjön meg arról, hogy a böngészőből nyilvános webhelyre lehet csatlakozni, és hogy a portok az [alkalmazásproxy előfeltételeiben](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)megadott módon vannak megnyitva. |
 | A törlési hiba a regisztrációs ablakban jelenik meg. Nem folytatható | Ha ezt a hibát látja, és az ablak bezárul, helytelen felhasználónevet vagy jelszót adott meg. próbáld újra. |
-| Az összekötő regisztrálása nem sikerült: Győződjön meg arról, hogy engedélyezte az alkalmazásproxy használatát az Azure felügyeleti portálban, és hogy helyesen adta meg a Active Directory felhasználónevét és jelszavát. Hiba: "AADSTS50059: nem található bérlő által azonosított információ sem a kérelemben, sem pedig a megadott hitelesítő adatok alapján történő keresés, és a szolgáltatás egyszerű URI általi keresése nem sikerült. | Microsoft-fiókkal próbál bejelentkezni, és nem egy olyan tartományba, amely tagja annak a címtárnak, amelyhez hozzáférni próbál. Győződjön meg arról, hogy a rendszergazda a bérlő tartományának azonos tartománynevéhez tartozik, például ha az Azure AD-tartomány contoso.com, a rendszergazdának kell lennie admin@contoso.com. |
-| Nem sikerült beolvasni a PowerShell-parancsfájlok futtatásának aktuális végrehajtási szabályzatát. | Ha az összekötő telepítése sikertelen, ellenőrizze, hogy nincs-e letiltva a PowerShell végrehajtási házirendje. <br><br>1. Nyissa meg a Csoportházirend szerkesztőt.<br>2. Lépjen a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Windows PowerShell** elemre, és kattintson duplán **a parancsfájlok végrehajtásának bekapcsolása**lehetőségre.<br>3. a végrehajtási házirend beállítható úgy, hogy **nincs konfigurálva** vagy **engedélyezve**. Ha az **engedélyezve**értékre van állítva, győződjön meg arról, hogy a beállítások területen a végrehajtási házirend a **helyi parancsfájlok és a távoli aláírású parancsfájlok engedélyezése** vagy az **összes parancsfájl engedélyezése**beállítást adja meg. |
-| Az összekötő nem tudta letölteni a konfigurációt. | Az összekötő ügyféltanúsítvány, amely a hitelesítéshez használatos, lejárt. Ez akkor is előfordulhat, ha az összekötőt proxy mögött telepítette. Ebben az esetben az összekötő nem fér hozzá az internethez, és nem fog tudni alkalmazásokat biztosítani a távoli felhasználók számára. A Windows PowerShell parancsmagjának `Register-AppProxyConnector` használatával manuálisan újítsa meg a megbízhatósági kapcsolatot. Ha az összekötő egy proxy mögött van, akkor internet-hozzáférést kell biztosítania a "hálózati szolgáltatások" és a "helyi rendszer" összekötő fiókjaihoz. Ezt úgy teheti meg, hogy hozzáférést biztosít számukra a proxyhoz, vagy a proxy megkerüléséhez beállítja őket. |
+| Az összekötő regisztrálása nem sikerült: Győződjön meg arról, hogy engedélyezte az alkalmazásproxy használatát az Azure felügyeleti portálban, és hogy helyesen adta meg a Active Directory felhasználónevét és jelszavát. Hiba: "AADSTS50059: nem található bérlő által azonosított információ sem a kérelemben, sem pedig a megadott hitelesítő adatok alapján történő keresés, és a szolgáltatás egyszerű URI általi keresése nem sikerült. | Microsoft-fiókkal próbál bejelentkezni, és nem egy olyan tartományba, amely tagja annak a címtárnak, amelyhez hozzáférni próbál. Győződjön meg arról, hogy a rendszergazda a bérlő tartományának azonos tartománynevéhez tartozik, például ha az Azure AD-tartomány contoso.com, a rendszergazdának kell lennie admin@contoso.com . |
+| Nem sikerült beolvasni a PowerShell-parancsfájlok futtatásának aktuális végrehajtási szabályzatát. | Ha az összekötő telepítése sikertelen, ellenőrizze, hogy nincs-e letiltva a PowerShell végrehajtási házirendje. <br><br>1. Nyissa meg a Csoportházirend szerkesztőt.<br>2. Lépjen a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Windows PowerShell** elemre, és kattintson duplán **a parancsfájlok végrehajtásának bekapcsolása**lehetőségre.<br>3. a végrehajtási házirend beállítható úgy, hogy **nincs konfigurálva** vagy **engedélyezve**. Ha az **engedélyezve**értékre van állítva, győződjön meg arról, hogy a beállítások területen a végrehajtási házirend a **helyi parancsfájlok és a távoli aláírású parancsfájlok engedélyezése** vagy az **összes parancsfájl engedélyezése**beállítást adja meg. |
+| Az összekötő nem tudta letölteni a konfigurációt. | Az összekötő ügyféltanúsítvány, amely a hitelesítéshez használatos, lejárt. Ez akkor is előfordulhat, ha az összekötőt proxy mögött telepítette. Ebben az esetben az összekötő nem fér hozzá az internethez, és nem fog tudni alkalmazásokat biztosítani a távoli felhasználók számára. A Windows PowerShell parancsmagjának használatával manuálisan újítsa meg a megbízhatósági kapcsolatot `Register-AppProxyConnector` . Ha az összekötő egy proxy mögött van, akkor internet-hozzáférést kell biztosítania a "hálózati szolgáltatások" és a "helyi rendszer" összekötő fiókjaihoz. Ezt úgy teheti meg, hogy hozzáférést biztosít számukra a proxyhoz, vagy a proxy megkerüléséhez beállítja őket. |
 | Az összekötő regisztrálása nem sikerült: Győződjön meg arról, hogy a Active Directory alkalmazás-rendszergazdája az összekötő regisztrálásához. Hiba: "a regisztrációs kérelem megtagadva." | A bejelentkezni próbáló alias nem rendszergazda ezen a tartományon. Az összekötő mindig telepítve van a felhasználó tartományát birtokló könyvtárba. Győződjön meg arról, hogy a bejelentkezni próbáló rendszergazdai fiókja atleast alkalmazás-rendszergazdai jogosultságokkal rendelkezik az Azure AD-bérlőhöz. |
 | Az összekötő hálózati problémák miatt nem tudott kapcsolódni a szolgáltatáshoz. Az összekötő megpróbálta elérni a következő URL-címet. | Az összekötő nem tud csatlakozni az alkalmazásproxy Cloud Service-hez. Ez akkor fordulhat elő, ha egy tűzfalszabály blokkolja a kapcsolatokat. Győződjön meg arról, hogy engedélyezett a megfelelő portok és URL-címek elérése az [alkalmazásproxy előfeltételeiben](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
 
@@ -65,7 +65,7 @@ Ez a táblázat a Kerberos-telepítés és-konfiguráció leggyakoribb hibáit i
 
 | Hiba | Javasolt lépések |
 | ----- | ----------------- |
-| Nem sikerült beolvasni a PowerShell-parancsfájlok futtatásának aktuális végrehajtási szabályzatát. | Ha az összekötő telepítése nem sikerül, győződjön meg arról, hogy a PowerShell végrehajtási házirendje nincs letiltva.<br><br>1. Nyissa meg a Csoportházirend szerkesztőt.<br>2. Lépjen a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Windows PowerShell** elemre, és kattintson duplán **a parancsfájlok végrehajtásának bekapcsolása**lehetőségre.<br>3. a végrehajtási házirend beállítható úgy, hogy **nincs konfigurálva** vagy **engedélyezve**. Ha az **engedélyezve**értékre van állítva, győződjön meg arról, hogy a beállítások területen a végrehajtási házirend a **helyi parancsfájlok és a távoli aláírású parancsfájlok engedélyezése** vagy az **összes parancsfájl engedélyezése**beállítást adja meg. |
+| Nem sikerült beolvasni a PowerShell-parancsfájlok futtatásának aktuális végrehajtási szabályzatát. | Ha az összekötő telepítése nem sikerül, győződjön meg arról, hogy a PowerShell végrehajtási házirendje nincs letiltva.<br><br>1. Nyissa meg a Csoportházirend szerkesztőt.<br>2. Lépjen a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Windows PowerShell** elemre, és kattintson duplán **a parancsfájlok végrehajtásának bekapcsolása**lehetőségre.<br>3. a végrehajtási házirend beállítható úgy, hogy **nincs konfigurálva** vagy **engedélyezve**. Ha az **engedélyezve**értékre van állítva, győződjön meg arról, hogy a beállítások területen a végrehajtási házirend a **helyi parancsfájlok és a távoli aláírású parancsfájlok engedélyezése** vagy az **összes parancsfájl engedélyezése**beállítást adja meg. |
 | 12008 – az Azure AD túllépte a maximálisan megengedett Kerberos-hitelesítési próbálkozások számát a háttér-kiszolgáló felé. | Ez a hiba helytelen konfigurációt jelezhet az Azure AD és a háttérrendszer-kiszolgáló között, illetve a mindkét gépen az idő és a dátum konfigurációjában tapasztalható problémát. A háttér-kiszolgáló elutasította az Azure AD által létrehozott Kerberos-jegyet. Ellenőrizze, hogy az Azure AD és a háttérbeli alkalmazáskiszolgáló megfelelően van-e konfigurálva. Győződjön meg arról, hogy az Azure AD-ben és a háttérbeli alkalmazáskiszolgáló időpontjának és dátumának konfigurációja szinkronizálva van. |
 | 13016 – az Azure AD nem tud Kerberos-jegyet beolvasni a felhasználó nevében, mert nincs egyszerű felhasználónév a peremhálózati jogkivonatban vagy a hozzáférési cookie-ban. | Probléma merült fel az STS-konfigurációval kapcsolatban. Javítsa ki az UPN-jogcím konfigurációját az STS-ben. |
 | 13019 – az Azure AD nem tud Kerberos-jegyet beolvasni a felhasználó nevében a következő általános API-hiba miatt. | Ez az esemény helytelen konfigurációt jelezhet az Azure AD és a tartományvezérlő kiszolgálója között, illetve a mindkét gépen az idő és a dátum konfigurációjában tapasztalható problémát. A tartományvezérlő elutasította az Azure AD által létrehozott Kerberos-jegyet. Ellenőrizze, hogy az Azure AD és a háttérbeli alkalmazáskiszolgáló megfelelően van-e konfigurálva, különösen az SPN-konfigurációval. Győződjön meg arról, hogy az Azure AD tartomány ugyanahhoz a tartományhoz van csatlakoztatva, mint a tartományvezérlő, így biztosítva, hogy a tartományvezérlő megbízhatóan létrehozza az Azure AD-t. Győződjön meg arról, hogy az Azure AD és a tartományvezérlő időpontjának és dátumának konfigurációja szinkronizálva van. |

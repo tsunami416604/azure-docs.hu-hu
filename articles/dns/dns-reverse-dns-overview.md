@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76932294"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>A fordított DNS és a támogatás áttekintése az Azure-ban
@@ -42,9 +41,9 @@ Ha egy szervezet IP-blokkhoz van hozzárendelve, akkor a megfelelő ARPA zóna f
 
 ### <a name="ipv4"></a>IPv4
 
-Egy IPv4 névkeresési zóna nevének a következő formátumúnak kell lennie: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Egy IPv4 névkeresési zóna nevének a következő formátumúnak kell lennie: `<IPv4 network prefix in reverse order>.in-addr.arpa` .
 
-Ha például egy fordított zónát hoz létre, amely a 192.0.2.0/24 előtagban található IP-címekkel rendelkező gazdagépek rekordjait tárolja, a zóna neve a cím hálózati előtagjának (192.0.2) elkülönítésével jön létre, majd megfordítja a sorrendet (2.0.192), `.in-addr.arpa`és hozzáadja az utótagot.
+Ha például egy fordított zónát hoz létre, amely a 192.0.2.0/24 előtagban található IP-címekkel rendelkező gazdagépek rekordjait tárolja, a zóna neve a cím hálózati előtagjának (192.0.2) elkülönítésével jön létre, majd megfordítja a sorrendet (2.0.192), és hozzáadja az utótagot `.in-addr.arpa` .
 
 |Alhálózat osztálya|Hálózati előtag  |Fordított hálózati előtag  |Szabványos utótag  |Fordított zóna neve |
 |-------|----------------|------------|-----------------|---------------------------|
@@ -54,7 +53,7 @@ Ha például egy fordított zónát hoz létre, amely a 192.0.2.0/24 előtagban 
 
 ### <a name="classless-ipv4-delegation"></a>Osztály nélküli IPv4-delegálás
 
-Bizonyos esetekben a szervezet számára lefoglalt IP-címtartomány kisebb, mint a C osztály (/24) tartománya. Ebben az esetben az IP-címtartomány nem esik a zóna-hierarchián belüli `.in-addr.arpa` zónára, ezért nem delegálható alárendelt zónának.
+Bizonyos esetekben a szervezet számára lefoglalt IP-címtartomány kisebb, mint a C osztály (/24) tartománya. Ebben az esetben az IP-címtartomány nem esik a zóna-hierarchián belüli zónára `.in-addr.arpa` , ezért nem delegálható alárendelt zónának.
 
 Ehelyett egy másik mechanizmust használ a névkeresési (PTR) rekordok vezérlésének átadására egy dedikált DNS-zónára. Ez a mechanizmus minden IP-címtartomány esetében delegál egy alárendelt zónát, majd a tartomány egyes IP-címeit az adott alárendelt zónához tartozó CNAME rekordok használatával képezi le.
 
@@ -89,7 +88,7 @@ A "192.0.2.129" IP-cím fordított megkeresése egy "129.2.0.192.in-addr. arpa" 
 
 Egy IPv6-névkeresési zóna nevének a következő formátumúnak kell lennie:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Például:. Ha fordított zónát hoz létre a 2001: DB8:1000: ABDC::/64 előtaggal rendelkező gazdagépek rekordjainak tárolására, a zóna neve a cím hálózati előtagjának elkülönítésével jön létre (2001: DB8: ABDC::). Ezután bontsa ki az IPv6-hálózati előtagot a [nulla tömörítés](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)eltávolításához, ha az IPv6-cím előtagjának lerövidítését használta (2001:0db8: ABDC: 0000::). Megfordíthatja a sorrendet, ha az előtagban lévő összes hexadecimális szám között elválasztó pontot használ a fordított hálózati előtag (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) létrehozásához és az `.ip6.arpa`utótag hozzáadásához.
+Például:. Ha fordított zónát hoz létre a 2001: DB8:1000: ABDC::/64 előtaggal rendelkező gazdagépek rekordjainak tárolására, a zóna neve a cím hálózati előtagjának elkülönítésével jön létre (2001: DB8: ABDC::). Ezután bontsa ki az IPv6-hálózati előtagot a [nulla tömörítés](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)eltávolításához, ha az IPv6-cím előtagjának lerövidítését használta (2001:0db8: ABDC: 0000::). Megfordíthatja a sorrendet, ha az előtagban lévő összes hexadecimális szám között elválasztó pontot használ a fordított hálózati előtag ( `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ) létrehozásához és az utótag hozzáadásához `.ip6.arpa` .
 
 
 |Hálózati előtag  |Kibontott és fordított hálózati előtag |Szabványos utótag |Fordított zóna neve  |

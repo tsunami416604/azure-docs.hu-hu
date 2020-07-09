@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 202acff5bae87174781dc6c914bebf0494dfcf05
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975792"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gép létrehozása Azure PowerShell használatával
 
@@ -67,6 +67,10 @@ Az feleznie-t támogató példányokon a gyorsított hálózatkezelést a négy 
 
 A virtuálisgép-példányokkal kapcsolatos további információkért lásd: [a Windows rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
+### <a name="custom-images"></a>Egyéni képek
+
+Ha egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy rendelkezik a szükséges illesztőprogramokkal, amelyek a Mellanox ConnectX-3 és a ConnectX-4 LX hálózati adapterek használatával működnek az Azure-ban.
+
 ### <a name="regions"></a>Régiók
 
 A gyorsított hálózatkezelés minden globális Azure-régióban és Azure Government-felhőben elérhető.
@@ -98,7 +102,7 @@ A hálózati adapteren, a **gyorsított hálózati** címke mellett a portál va
 
 ## <a name="vm-creation-using-powershell"></a>VIRTUÁLIS gépek létrehozása a PowerShell-lel
 
-A folytatás előtt telepítse a [Azure PowerShell](/powershell/azure/install-az-ps) vagy újabb verziójú 1.0.0-t. A jelenleg telepített verziójának megkereséséhez `Get-Module -ListAvailable Az`futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, telepítse az az modul legújabb verzióját a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az). Egy PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba a Connection [-AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával.
+A folytatás előtt telepítse a [Azure PowerShell](/powershell/azure/install-az-ps) vagy újabb verziójú 1.0.0-t. A jelenleg telepített verziójának megkereséséhez futtassa a parancsot `Get-Module -ListAvailable Az` . Ha telepíteni vagy frissíteni szeretne, telepítse az az modul legújabb verzióját a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az). Egy PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba a Connection [-AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával.
 
 Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *myNic*és *myVM*.
 
@@ -192,7 +196,7 @@ Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a
 
 ### <a name="create-a-vm-and-attach-the-network-interface"></a>Virtuális gép létrehozása és a hálózati adapter csatlakoztatása
 
-1. Állítsa be a virtuális gép hitelesítő `$cred` adatait a [Get-hitelesítő adatokkal](/powershell/module/microsoft.powershell.security/get-credential)a változóra, amely felszólítja a bejelentkezésre:
+1. Állítsa be a virtuális gép hitelesítő adatait a `$cred` [Get-hitelesítő adatokkal](/powershell/module/microsoft.powershell.security/get-credential)a változóra, amely felszólítja a bejelentkezésre:
 
     ```azurepowershell
     $cred = Get-Credential
@@ -244,7 +248,7 @@ Miután létrehozta a virtuális gépet az Azure-ban, kapcsolódjon a virtuális
 
 3. A virtuális gép áttekintése lapon, ha a virtuális gép **állapota** **létrehozáskor**szerepel, várjon, amíg az Azure befejezi a virtuális gép létrehozását. A virtuális gép létrehozása után az **állapot** a **futtatásra** módosul.
 
-4. A virtuális gép áttekintő eszköztárán válassza az**RDP** > -**Letöltés RDP-fájljának** **összekapcsolását** > .
+4. A virtuális gép áttekintő eszköztárán válassza az **Connect**  >  **RDP**-  >  **Letöltés RDP-fájljának**összekapcsolását.
 
 5. Nyissa meg az. rdp-fájlt, majd jelentkezzen be a virtuális gépre a [virtuális gép létrehozása és a hálózati adapter csatlakoztatása](#create-a-vm-and-attach-the-network-interface) című szakaszban megadott hitelesítő adatokkal. Ha még soha nem kapcsolódott az Azure-beli Windows rendszerű virtuális géphez, tekintse meg a [Csatlakozás virtuális géphez](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)című témakört.
 
@@ -327,7 +331,7 @@ A virtuálisgép-méretezési csoport némileg eltérő, de ugyanazt a munkafoly
 3. Állítsa be az alkalmazott frissítéseket automatikusra, hogy a módosítások azonnal elérhetők legyenek:
 
     ```azurepowershell
-    $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+    $vmss.UpgradePolicy.Mode = "Automatic"
     
     Update-AzVmss -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `

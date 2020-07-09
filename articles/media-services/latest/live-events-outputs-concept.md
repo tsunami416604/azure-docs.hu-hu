@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010579"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
@@ -30,7 +29,7 @@ Azure Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügy
 
 ## <a name="live-events"></a>Élő események
 
-Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Élő esemény létrehozásakor létrejön egy elsődleges és egy másodlagos bemeneti végpont, amelynek használatával élő jeleket küldhet egy távoli kódolóból. A távoli élő kódoló az [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy a [Smooth streaming](https://msdn.microsoft.com/library/ff469518.aspx) (darabolt MP4) bemeneti protokoll használatával küldi el a hozzájárulási csatornát az adott bemeneti végpontnak. Az RTMP betöltési protokoll esetében a tartalom a (z) Clear (`rtmp://`) vagy a Wire (`rtmps://`) biztonságos titkosításával is elvégezhető. A Smooth Streaming betöltési protokoll esetében a támogatott URL- `http://` sémák a vagy `https://`a.  
+Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Élő esemény létrehozásakor létrejön egy elsődleges és egy másodlagos bemeneti végpont, amelynek használatával élő jeleket küldhet egy távoli kódolóból. A távoli élő kódoló az [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy a [Smooth streaming](https://msdn.microsoft.com/library/ff469518.aspx) (darabolt MP4) bemeneti protokoll használatával küldi el a hozzájárulási csatornát az adott bemeneti végpontnak. Az RTMP betöltési protokoll esetében a tartalom a (z) Clear ( `rtmp://` ) vagy a Wire () biztonságos titkosításával is elvégezhető `rtmps://` . A Smooth Streaming betöltési protokoll esetében a támogatott URL-sémák a `http://` vagy a `https://` .  
 
 ## <a name="live-event-types"></a>Élő események típusai
 
@@ -87,7 +86,7 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 ### <a name="naming-rules"></a>Elnevezési szabályok
 
 * Az élő esemény maximális neve 32 karakter.
-* A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`követnie:.
+* A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell követnie: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 Lásd még: [adatfolyam-végpontok elnevezési konvenciói](streaming-endpoint-concept.md#naming-convention).
 
@@ -116,11 +115,11 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
     > [!NOTE]
     > A Azure Portal a hiúság URL-címét "*állandó bemeneti URL-cím*" névvel kell elnevezni.
 
-    Ha ezt a módot az API-ban szeretné `vanityUrl` megadni `true` , állítsa a következőre: `false`létrehozás időpontja (alapértelmezett érték). A létrehozáskor is át kell adnia a saját hozzáférési`LiveEventInput.accessToken`tokenjét (). Megadhatja a jogkivonat értékét, hogy elkerülje a véletlenszerű tokent az URL-címben. A hozzáférési jogkivonatnak érvényes GUID-karakterláncnak kell lennie (kötőjelekkel vagy anélkül). A mód beállítása után nem frissíthető.
+    Ha ezt a módot az API-ban szeretné megadni, állítsa a következőre `vanityUrl` `true` : létrehozás időpontja (alapértelmezett érték `false` ). A létrehozáskor is át kell adnia a saját hozzáférési tokenjét ( `LiveEventInput.accessToken` ). Megadhatja a jogkivonat értékét, hogy elkerülje a véletlenszerű tokent az URL-címben. A hozzáférési jogkivonatnak érvényes GUID-karakterláncnak kell lennie (kötőjelekkel vagy anélkül). A mód beállítása után nem frissíthető.
 
     A hozzáférési tokennek egyedinek kell lennie az adatközpontban. Ha az alkalmazásnak a Vanity URL-címet kell használnia, akkor azt javasoljuk, hogy mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonathoz (a meglévő GUID-azonosítók újbóli használata helyett).
 
-    A következő API-k használatával engedélyezheti a hiúság URL-címét, és a hozzáférési tokent érvényes GUID azonosítóra (például: `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) állíthatja be.  
+    A következő API-k használatával engedélyezheti a hiúság URL-címét, és a hozzáférési tokent érvényes GUID azonosítóra (például:) állíthatja be `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` .  
 
     |Nyelv|A hiúság URL-címének engedélyezése|Hozzáférési jogkivonat beállítása|
     |---|---|---|

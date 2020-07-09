@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét ki
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 5aae60900a61c28f6c53f89b8e273daccb047eef
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83116104"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Function-alkalmazás létrehozása Linux rendszeren egy Azure App Service tervben

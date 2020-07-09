@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eb6438271547348abef78dd8b35b577f2ac0ab8c
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179158"
 ---
 #### <a name="to-install-regular-updates-via-the-azure-classic-portal"></a>A hagyományos frissítések telepítése a klasszikus Azure portálon keresztül
 1. Az **eszközök** lapon válassza ki azt az eszközt, amelyre telepíteni kívánja a frissítéseket.
-2. Navigáljon az **eszközök** > **karbantartásához** , és görgessen le a **szoftverfrissítéseket**.
+2. Navigáljon az **eszközök**  >  **karbantartásához** , és görgessen le a **szoftverfrissítéseket**.
 3. A frissítések kereséséhez kattintson az oldal alján található **frissítések keresése** elemre.
 4. Ekkor megjelenik egy üzenet, ha a szoftverfrissítések elérhetők. Kattintson a **frissítések telepítése** elemre az eszköz frissítésének megkezdéséhez.
    

@@ -5,11 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712530"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service Consortium
 
@@ -34,10 +33,10 @@ A konzorcium résztvevői lehetnek magánszemélyek vagy szervezetek, és felhas
 | Műveletek | Felhasználói szerepkör | Rendszergazdai szerepkör
 |--------|:----:|:------------:|
 | Új tag létrehozása | Igen | Igen |
-| Új tagok meghívása | Nem | Igen |
-| Tag résztvevői szerepkörének beállítása vagy módosítása | Nem | Igen |
+| Új tagok meghívása | Nem | Yes |
+| Tag résztvevői szerepkörének beállítása vagy módosítása | Nem | Yes |
 | Tag megjelenítendő nevének módosítása | Csak a saját tag számára | Csak a saját tag számára |
-| Tagok eltávolítása | Csak a saját tag számára | Igen |
+| Tagok eltávolítása | Csak a saját tag számára | Yes |
 | Részvétel a blockchain-tranzakciókban | Igen | Igen |
 
 ### <a name="user-role"></a>Felhasználói szerepkör

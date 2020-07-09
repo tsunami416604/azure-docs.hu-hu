@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058003"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985806"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az RDP általános hibáinak megoldása az Azure-beli virtuális gépen
 
@@ -60,13 +60,13 @@ Az RDP-figyelő helytelenül van konfigurálva.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációs rendszer lemezét egy mentési virtuális géphez](troubleshoot-recovery-disks-portal-windows.md), majd kövesse a lépéseket.
+Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. A probléma megoldásához használja a soros vezérlőelemet, vagy javítsa ki a virtuális gépet kapcsolat nélküli üzemmódban.
 
 ### <a name="serial-console"></a>Soros konzol
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. lépés: a CMD-példány megnyitása a Serial consoleban
 
-1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás** > **Serial Console (előzetes verzió)** lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
+1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás**  >  **Serial Console (előzetes verzió)** lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
 
 2. Hozzon létre egy új csatornát egy CMD-példányhoz. Írja be a **cmd** parancsot a csatorna nevének lekéréséhez.
 
@@ -78,29 +78,37 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2. lépés: az RDP-beállításkulcsok értékének megkeresése:
 
-1. Ellenőrizze, hogy a házirendek letiltották-e az RDP-t.
+1. Ellenőrizze, hogy az RDP le van-e tiltva a csoportba tartozó házirendek alapján.
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    Ha a csoportházirend tiltja, hogy az RDP le van tiltva (a fDenyTSConnections értéke 0x1), futtassa a következő parancsot a TermService szolgáltatás engedélyezéséhez. Ha a beállításkulcs nem található, nincs olyan csoportházirend konfigurálva, amely letiltja az RDP-t. A következő lépésre léphet.
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > Ez a lépés átmenetileg engedélyezi a TermService szolgáltatást. A rendszer alaphelyzetbe állítja a változást a csoportházirend-beállítások frissítésekor. A probléma megoldásához ellenőrizze, hogy az TermService szolgáltatást letiltotta-e a helyi csoportházirend vagy a tartományi csoportházirend, majd frissítse a házirend-beállításokat ennek megfelelően.
+    
+2. A távoli kapcsolatok aktuális konfigurációjának megtekintése.
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    Ha a parancs 0x1 ad vissza, a virtuális gép nem engedélyezi a távoli kapcsolatokat. Ezután engedélyezze a távoli kapcsolatokat a következő parancs használatával:
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. Keresse meg a terminálkiszolgáló aktuális konfigurációját.
 
-      - Ha a tartományi házirend létezik, a rendszer felülírja a helyi házirend beállítását.
-      - Ha a tartományi házirend azt állítja be, hogy az RDP le van tiltva (1), akkor frissítse az AD-házirendet a tartományvezérlőről.
-      - Ha a tartományi házirend azt állítja be, hogy az RDP engedélyezve van (0), akkor nincs szükség frissítésre.
-      - Ha a tartományi házirend nem létezik, és a helyi házirend tiltja, hogy az RDP le van tiltva (1), engedélyezze az RDP-t a következő parancs használatával: 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. Keresse meg a terminálkiszolgáló aktuális konfigurációját.
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       Ha a parancs 0 értéket ad vissza, a terminálkiszolgáló le van tiltva. Ezután engedélyezze a terminálkiszolgálót a következőképpen:
 
@@ -157,9 +165,9 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 7. Indítsa újra a virtuális gépet.
 
-8. Lépjen ki a CMD-példányból `exit`, írja be a parancsot, majd nyomja le kétszer az **ENTER billentyűt** .
+8. Lépjen ki a CMD-példányból `exit` , írja be a parancsot, majd nyomja le kétszer az **ENTER billentyűt** .
 
-9. Indítsa újra a virtuális gépet `restart`a paranccsal, majd kapcsolódjon a virtuális géphez.
+9. Indítsa újra a virtuális gépet a paranccsal `restart` , majd kapcsolódjon a virtuális géphez.
 
 Ha a probléma továbbra is fennáll, lépjen a 2. lépésre.
 

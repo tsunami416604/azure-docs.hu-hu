@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/11/2020
-ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/18/2020
+ms.openlocfilehash: 9072f057059c66d0030c31e649fda6b6ebe3db9d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79369063"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117811"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 
@@ -36,7 +36,7 @@ Módosítsa a *CacheSecrets.config* fájlt, és adja hozzá az alábbi tartalmak
 
 ```xml
 <appSettings>
-    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
 </appSettings>
 ```
 
@@ -47,7 +47,7 @@ Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulc
 
 ## <a name="create-a-console-app"></a>Konzolalkalmazás létrehozása
 
-A Visual Studióban kattintson a **fájl** > **új** > **projekt**elemre.
+A Visual Studióban kattintson a **fájl**  >  **új**  >  **projekt**elemre.
 
 Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az alkalmazás konfigurálásához kattintson a **következő** elemre. Adja meg a **projekt nevét** , majd kattintson a **Létrehozás** gombra egy új konzol alkalmazás létrehozásához.
 
@@ -57,7 +57,7 @@ Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az 
 
 Ebben a szakaszban konfigurálja a konzolalkalmazást a .NET [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) ügyfél használatára.
 
-A Visual Studióban kattintson a **Tools** > **NuGet** > Package Manager**csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
+A Visual Studióban kattintson a **Tools**  >  **NuGet**Package Manager  >  **csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -77,8 +77,7 @@ Nyissa meg az *App.config* fájlt a Visual Studióban, és frissítse azt az `ap
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.1" />
     </startup>
 
-    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>  
-
+    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>
 </configuration>
 ```
 
@@ -98,19 +97,19 @@ Soha ne tároljon hitelesítő adatokat a forráskódban. Annak érdekében, hog
 A *Program.cs* fájlban adja hozzá a következő tagokat a konzolalkalmazás `Program` osztályához:
 
 ```csharp
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+    return ConnectionMultiplexer.Connect(cacheConnection);
+});
 
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
-        }
+public static ConnectionMultiplexer Connection
+{
+    get
+    {
+        return lazyConnection.Value;
+    }
+}
 ```
 
 
@@ -123,40 +122,49 @@ A rendszer a *CacheConnection* alkalmazásbeállítás értékét használja ahh
 Adja hozzá a következő kódot a konzolalkalmazás `Program` osztályának `Main` eljárásához:
 
 ```csharp
-        static void Main(string[] args)
-        {
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = Connection.GetDatabase();
+static void Main(string[] args)
+{
+    // Connection refers to a property that returns a ConnectionMultiplexer
+    // as shown in the previous example.
+    IDatabase cache = Connection.GetDatabase();
 
-            // Perform cache operations using the cache object...
+    // Perform cache operations using the cache object...
 
-            // Simple PING command
-            string cacheCommand = "PING";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
+    // Simple PING command
+    string cacheCommand = "PING";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
 
-            // Simple get and put of integral data types into the cache
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Simple get and put of integral data types into the cache
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
-            Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
+    cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
+    Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
 
-            // Demonstrate "SET Message" executed as expected...
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Demonstrate "SET Message" executed as expected...
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            // Get the client list, useful to see if connection list is growing...
-            cacheCommand = "CLIENT LIST";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+    // Get the client list, useful to see if connection list is growing...
+    // Note that this requires the allowAdmin=true
+    cacheCommand = "CLIENT LIST";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    var endpoint = (System.Net.DnsEndPoint) Connection.GetEndPoints()[0];
+    var server = Connection.GetServer(endpoint.Host, endpoint.Port);
 
-            lazyConnection.Value.Dispose();
-        }
+    var clients = server.ClientList(); 
+    Console.WriteLine("Cache response :");
+    foreach (var client in clients)
+    {
+        Console.WriteLine(client.Raw);
+    }
+
+    lazyConnection.Value.Dispose();
+}
 ```
 
 A Redis-hez készült Azure cache egy konfigurálható (alapértelmezett 16) adatbázist tartalmaz, amelyekkel logikailag elkülöníthető az Azure-gyorsítótárban lévő Redis. A kód az alapértelmezett adatbázishoz csatlakozik (DB 0). További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration).
@@ -178,7 +186,7 @@ A Redis-hez készült Azure cache gyorsítótárba helyezheti a .NET-objektumoka
 
 Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) kódtárban található `JsonConvert` szerializálási metódusokat használja a JSON formátumból és a JSON formátumba szerializálásra. Ebben a szakaszban egy .NET-objektumot fog hozzáadni a gyorsítótárhoz.
 
-A Visual Studióban kattintson a **Tools** > **NuGet** > Package Manager**csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
+A Visual Studióban kattintson a **Tools**  >  **NuGet**Package Manager  >  **csomagkezelő konzol**elemre, majd futtassa a következő parancsot a Package Manager konzol ablakában.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -193,35 +201,35 @@ using Newtonsoft.Json;
 Adja hozzá a következő `Employee` osztálydefiníciót a *Program.cs* fájlhoz:
 
 ```csharp
-        class Employee
-        {
-            public string Id { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
+class Employee
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
 
-            public Employee(string EmployeeId, string Name, int Age)
-            {
-                this.Id = EmployeeId;
-                this.Name = Name;
-                this.Age = Age;
-            }
-        }
+    public Employee(string EmployeeId, string Name, int Age)
+    {
+        this.Id = EmployeeId;
+        this.Name = Name;
+        this.Age = Age;
+    }
+}
 ```
 
 Másolja és illessze be a következő kódsorokat a *Program.cs* fájl `Main()` eljárásának végére, a `Dispose()` hívása elé, egy szerializált .NET-objektum gyorsítótárazásához és lekéréséhez:
 
 ```csharp
-            // Store .NET object to cache
-            Employee e007 = new Employee("007", "Davide Columbo", 100);
-            Console.WriteLine("Cache response from storing Employee .NET object : " + 
-                cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+    // Store .NET object to cache
+    Employee e007 = new Employee("007", "Davide Columbo", 100);
+    Console.WriteLine("Cache response from storing Employee .NET object : " + 
+    cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
 
-            // Retrieve .NET object from cache
-            Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
-            Console.WriteLine("Deserialized Employee .NET object :\n");
-            Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
-            Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
-            Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
+    // Retrieve .NET object from cache
+    Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
+    Console.WriteLine("Deserialized Employee .NET object :\n");
+    Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
+    Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
+    Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
 A .NET-objektumok szerializálásának teszteléséhez buildelje és futtassa a konzolalkalmazást a **Ctrl+F5** billentyűkombináció lenyomásával. 
@@ -229,7 +237,7 @@ A .NET-objektumok szerializálásának teszteléséhez buildelje és futtassa a 
 ![Kész konzolalkalmazás](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

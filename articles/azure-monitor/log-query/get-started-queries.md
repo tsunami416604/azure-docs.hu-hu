@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670179"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801427"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
 
 > [!NOTE]
-> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://portal.loganalytics.io/demo), amely rengeteg mintavételi adatmennyiséget tartalmaz.
+> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://portal.loganalytics.io/demo), amely rengeteg mintavételi adatmennyiséget tartalmaz.  Ha már tudja, hogyan lehet lekérdezni a KQL-ben, de csak az erőforrás típusa (i) alapján kell gyorsan létrehoznia hasznos lekérdezéseket, tekintse meg a [mentett példákat tartalmazó ablaktáblát](saved-queries.md).
 
 Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monitor. A következőket fogja megtanítani:
 
@@ -36,12 +36,14 @@ Kövesse az alábbi oktatóanyag videós verzióját:
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Új lekérdezés írása
+
 A lekérdezések a táblanév vagy a *keresési* paranccsal kezdődhetnek. A táblázat nevével kell kezdődnie, mert egyértelmű hatókört határoz meg a lekérdezéshez, és javítja a lekérdezés teljesítményét és az eredmények relevanciáját.
 
 > [!NOTE]
 > Az Azure Monitor által használt Kusto-lekérdezési nyelv megkülönbözteti a kis- és nagybetűket. A nyelvi kulcsszavakat általában kisbetűvel kell írni. Ha a lekérdezésben táblák vagy oszlopok nevét használja, ügyeljen arra, hogy a megfelelő esetet használja a séma ablaktáblán látható módon.
 
 ### <a name="table-based-queries"></a>Tábla alapú lekérdezések
+
 A Azure Monitor táblákba rendezi a naplókat, amelyek mindegyike több oszlopból áll. Az elemzési portálon az összes tábla és oszlop megjelenik a Log Analytics sémája ablaktáblán. Azonosítson egy olyan táblát, amely érdekli, és tekintse meg a következőt:
 
 ```Kusto
@@ -55,9 +57,10 @@ A fenti lekérdezés a *SecurityEvent* tábla 10 találatát adja vissza, a mega
 * A pipe (|) karakter elválasztja a parancsokat, így a kimenete az első a következő parancs bemenetében. Tetszőleges számú vezetékes elemet adhat hozzá.
 * A cső után a **Take** parancs, amely egy adott számú tetszőleges rekordot ad vissza a táblából.
 
-Gyakorlatilag még a Hozzáadás `| take 10` nélkül is futtathatjuk a lekérdezést, amely továbbra is érvényes lesz, de akár 10 000 eredményt is visszatérhet.
+Gyakorlatilag még a Hozzáadás nélkül is futtathatjuk a lekérdezést `| take 10` , amely továbbra is érvényes lesz, de akár 10 000 eredményt is visszatérhet.
 
 ### <a name="search-queries"></a>Keresési lekérdezések
+
 A keresési lekérdezések kevésbé strukturáltak, és általában alkalmasabbak arra, hogy olyan rekordokat keressenek, amelyek egy adott értéket tartalmaznak a saját oszlopaikban:
 
 ```Kusto
@@ -65,7 +68,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Ez a lekérdezés a "kriptográfia" kifejezést tartalmazó rekordokra keres rá a *SecurityEvent* táblában. Ezekből a rekordokból 10 rekordot ad vissza és jelenít meg. Ha kihagyja a `in (SecurityEvent)` részt, és csak `search "Cryptographic"`futtatja a parancsot, a Keresés az *összes* tábla fölé kerül, ami hosszabb ideig tart, és kevésbé hatékony.
+Ez a lekérdezés a "kriptográfia" kifejezést tartalmazó rekordokra keres rá a *SecurityEvent* táblában. Ezekből a rekordokból 10 rekordot ad vissza és jelenít meg. Ha kihagyja a `in (SecurityEvent)` részt, és csak futtatja `search "Cryptographic"` a parancsot, a Keresés az *összes* tábla fölé kerül, ami hosszabb ideig tart, és kevésbé hatékony.
 
 > [!WARNING]
 > A keresési lekérdezések általában lassabbak, mint a tábla alapú lekérdezések, mert több adatfeldolgozást kell feldolgozniuk. 
@@ -132,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Időtartomány megadásának időpontja
 
 ### <a name="time-picker"></a>Időválasztó
+
 Az időválasztó a Futtatás gomb mellett látható, és azt jelzi, hogy az elmúlt 24 órában csak rekordok vannak lekérdezve. Ez az összes lekérdezésre alkalmazott alapértelmezett időtartomány. Ha csak az elmúlt óra rekordjait szeretné lekérni, válassza az _elmúlt óra_ lehetőséget, majd futtassa újra a lekérdezést.
 
 ![Időválasztó](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Időszűrő a lekérdezésben
+
 A lekérdezéshez Időszűrő hozzáadásával is megadhatja a saját időtartományát. Az időszűrőt közvetlenül a tábla neve után helyezheti el: 
 
 ```Kusto
@@ -146,10 +151,11 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-A fenti időpontnál `ago(30m)` a "30 perce" kifejezés azt jelenti, hogy ez a lekérdezés csak az elmúlt 30 perc rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
+A fenti időpontnál a `ago(30m)` "30 perce" kifejezés azt jelenti, hogy ez a lekérdezés csak az elmúlt 30 perc rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt és bővítés: Select és számítási oszlopok
+
 A **Project** használatával kiválaszthatja az eredményekbe felvenni kívánt oszlopokat:
 
 ```Kusto
@@ -218,7 +224,7 @@ Perf
 ```
 
 ### <a name="summarize-by-a-time-column"></a>Összesítés egy időoszlop alapján
-A csoportosítási eredmények egy időoszlopon vagy egy másik folytonos értéken is alapulhatnak. Egyszerűen Összefoglalva, `by TimeGenerated` bár az adott időtartományon belül minden egyes ezredmásodperchez létrehozhatnak csoportokat, mivel ezek egyedi értékek. 
+A csoportosítási eredmények egy időoszlopon vagy egy másik folytonos értéken is alapulhatnak. Egyszerűen Összefoglalva `by TimeGenerated` , bár az adott időtartományon belül minden egyes ezredmásodperchez létrehozhatnak csoportokat, mivel ezek egyedi értékek. 
 
 Ha folytonos értékek alapján szeretne csoportokat létrehozni, érdemes lehet a tartományt a **bin**használatával felügyelt egységekre bontani. A következő lekérdezés az adott számítógépen a szabad memóriát (*rendelkezésre álló MB*-ot) mérni kívánó teljesítmény *-rekordokat* elemzi. Kiszámítja az 1 órás időszak átlagos értékét az elmúlt 7 napban:
 

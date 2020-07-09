@@ -3,18 +3,18 @@ title: Jupyter-jegyzetfüzet megjelenítése diavetítésként Azure Notebooks e
 description: Megtudhatja, hogyan konfigurálhat cellákat Diavetítés módban egy Jupyter-jegyzetfüzetben, majd a diavetítést a RISE bővítmény használatával.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe337361436ecfc8eabf2855ad633b891db69d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834046"
 ---
 # <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Jegyzetfüzet-Diavetítés futtatása Azure Notebooks előzetes verzióban
 
-Azure Notebooks előre konfigurálva van a Jupyter/IPython Slideshow bővítménnyel (RISE), amely lehetővé teszi, hogy egy jegyzetfüzetet közvetlenül diavetítésként nyújtson be. A diavetítésben a cellák általában egy olyan betűmérettel jelennek meg, amely a nagyméretű képernyőkön való megjelenítéshez megfelelő, és a kódot továbbra is futtathatja, és nem kell külön bemutató számítógépre váltania.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks előre konfigurálva van a Jupyter/IPython Slideshow bővítménnyel (RISE), amely lehetővé teszi, hogy egy jegyzetfüzetet közvetlenül diavetítésként nyújtson be. A diavetítésben a cellák általában egy olyan betűmérettel jelennek meg, amely a nagyméretű képernyőkön való megjelenítéshez megfelelő, és a kódot továbbra is futtathatja, és nem kell külön bemutató számítógépre váltania.
 
 Az alábbi képen a szabványos jegyzetfüzet nézet látható, amelyben a Markdown és a kód cellái együttesen láthatók:
 
@@ -34,7 +34,7 @@ A jegyzetfüzetek diavetítésre való előkészítése két elsődleges tevéke
 
 Ha véletlenszerű jegyzetfüzetet használ, és egy diavetítéshez használja, általában úgy látja, hogy az összes cella össze van keverve, és a tartalom nagy része rejtve marad a böngészőablak alján. Ahhoz, hogy egy hatékony bemutatót lehessen készíteni, minden cellához hozzá kell rendelnie egy slideshow-típust a diavetítés cella eszköztár használatával:
 
-1. A **nézet** menüben válassza a **cella eszköztár** > -**Diavetítés**elemet:
+1. A **nézet** menüben válassza a **cella eszköztár**-  >  **Diavetítés**elemet:
 
     ![A cella-diavetítés eszköztárának bekapcsolása](media/slideshow/slideshow-view-cell-toolbar.png)
 
@@ -53,7 +53,7 @@ Ha véletlenszerű jegyzetfüzetet használ, és egy diavetítéshez használja,
     | Sub-slide | A cella "alul" egy elsődleges dia, a navigációs vezérlőelem lefelé mutató nyilát használva navigált. A felfelé mutató nyíl az elsődleges diához tér vissza. Az aldiákat olyan másodlagos anyagokhoz használják, amelyeket kihagyhat a bemutató fő elérési útjában, de szükség esetén könnyen elérhető. |
     | Töredék | A cella tartalma az előző dia vagy az aldia kontextusában jelenik meg a lefelé mutató navigációs nyíl használatakor (a felugró nyíl használatakor a rendszer eltávolítja a töredéket). A kódrészletek segítségével a kód megjelenhet egy dián belül, vagy több töredéket is használhat a szöveges felsorolásjelek megjelenítéséhez (lásd a példát a következő szakaszban). Mivel a töredékek az aktuális dián vannak kiépítve, a felesleges töredékek nem lesznek láthatók a böngészőablak alján. |
     | Kihagyás | A cella nem jelenik meg a diavetítésben. |
-    | Megjegyzések | A cella olyan hangjegyzeteket tartalmaz, amelyek nem láthatók a diavetítésben. |
+    | Jegyzetek | A cella olyan hangjegyzeteket tartalmaz, amelyek nem láthatók a diavetítésben. |
 
 1. Először is hasznos lehet minden cella esetében kiválasztani a **diát** . Ezután futtathatja a diavetítést, és elvégezheti a megfelelő módosításokat.
 
@@ -88,7 +88,7 @@ Mivel a diavetítés több függőleges térközt jelenít meg, mint amikor az �
     ![A kód cellájának kimenete megjelenik a diavetítésben](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > A cella kimenete a bemutató cellájának része. Ha jegyzetfüzet vagy Diavetítés nézetben futtat egy cellát, a kimenet a másik nézetben is megjelenik. A kimenet törléséhez használja a **cella** > **aktuális kimenete** > **Clear** parancsot (az aktuális cellánál) **, vagy** > az**összes kimenetet** > **törölje** (minden cella esetében).
+    > A cella kimenete a bemutató cellájának része. Ha jegyzetfüzet vagy Diavetítés nézetben futtat egy cellát, a kimenet a másik nézetben is megjelenik. A kimenet törléséhez használja a **cella**  >  **aktuális kimenete**  >  **Clear** parancsot (az aktuális cellánál), vagy **Cell**az  >  **összes kimenetet**  >  **törölje** (minden cella esetében).
 
 1. Ha elkészült a diavetítéssel, az **X** használatával térjen vissza a jegyzetfüzet nézetbe.
 

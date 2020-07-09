@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580654"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL figyelése és finomhangolása – nagy kapacitású (Citus)
@@ -28,7 +28,7 @@ A metrikák diagramjainak megtekintése mellett beállíthatja a riasztásokat i
 
 Ezek a metrikák a nagy kapacitású-(Citus-) csomópontokhoz érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
 |---|---|---|---|
 |active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|

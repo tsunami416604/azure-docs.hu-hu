@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó | Microsoft Docs
-description: Ez a cikk az Azure Front Doorról nyújt áttekintést. Megtudhatja, hogy a megfelelő választás-e a felhasználói forgalom terheléselosztásához az alkalmazáshoz.
+title: Azure Front Door
+description: Ez a cikk áttekintést nyújt az Azure bejárati szabályainak motor szolgáltatásáról.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,27 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 19deb763c8e750490854892c90d0293d3e209c09
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ee981d08e53765003e88870d35b291a5802e6848
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515551"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322015"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Mi a szabályok motorja az Azure bejárati kapujában? 
 
 A Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását, és a webalkalmazás viselkedésének nagyobb mértékű felügyeletét biztosítja. Az Azure-beli bejárati ajtóhoz tartozó szabályok a legfontosabb funkciókból állnak, többek között:
 
-- Fejléc-alapú útválasztás – a kérések fejléce, cookie-k és lekérdezési karakterláncok tartalmában található minták alapján továbbítja a kérelmeket.
-- Paraméter-alapú útválasztás – kihasználhatja az egyeztetési feltételek egy sorozatát, beleértve az argumentumokat, a lekérdezési karakterláncokat, a cookie-kat és a kérelmeket, valamint a HTTP-kérések paramétereinek alapján történő átirányítását. 
-- Útvonal-konfigurációk felülbírálásai: 
-    - Az átirányítási képességekkel 301/302/307/308-es átirányítást adhat vissza az ügyfélnek az új állomásnévre, elérési utakra és protokollokra való átirányításhoz. 
-    - A továbbítási funkciók használatával a kérelem URL-címének újraírhatónak kell lennie anélkül, hogy hagyományos átirányítást kellene végeznie, és továbbítania kell a kérést a konfigurált háttérrendszer megfelelő hátterébe 
-    - Testreszabhatja a gyorsítótárazási konfigurációt, és dinamikusan módosíthatja az útvonalakat a gyorsítótárazástól a megfeleltetési feltételek alapján. 
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+- A HTTPS betartatása, gondoskodjon róla, hogy a végfelhasználók a tartalmat biztonságos kapcsolaton keresztül használják.
+- A biztonsági fejlécek alkalmazásával megakadályozhatja a böngészőalapú biztonsági réseket, például a HTTP Strict-Transport-Security (HSTS), az X-XSS-Protection, a Content-Security-Policy, az X-frame-Options, valamint a hozzáférés-vezérlés-engedélyezési-Origin fejléceket a különböző eredetű erőforrás-megosztási (CORS) forgatókönyvekhez. A biztonság-alapú attribútumok cookie-kkal is meghatározhatók.
+- Az alkalmazás mobil vagy asztali verziójára irányuló kérelmek átirányítása a kérések fejlécei, cookie-k vagy lekérdezési karakterláncok tartalmának mintái alapján.
+- Az átirányítási képességekkel 301, 302, 307 és 308 értéket adhat vissza az ügyfélnek, hogy átirányítsa az új állomásnévre, elérési utakra vagy protokollokra.
+- Dinamikusan módosítja az útvonal gyorsítótárazási konfigurációját a bejövő kérelmek alapján.
+- Írja át újra a kérelem URL-címét, és továbbítsa a kérést a megfelelő háttérbe a konfigurált háttérrendszer-készletben.
 
 ## <a name="architecture"></a>Architektúra 
 
@@ -52,7 +48,7 @@ Mindkét példa esetében, ha egyetlen egyezési feltétel sem teljesül, a mega
 
 A AFD Rules Engine használatával több szabálykészlet-konfigurációt hozhat létre, amelyek mindegyike szabályokból áll. Az alábbiakban néhány hasznos terminológiát ismertetünk, amely a szabályok motorjának konfigurálásakor fog megjelenni. 
 
-- *Rules Engine-konfiguráció*: egyetlen útvonalra vonatkozó szabályra alkalmazott szabályok halmaza. Mindegyik konfiguráció 5 szabályra van korlátozva. Akár 10 konfigurációt is létrehozhat. 
+- *Rules Engine-konfiguráció*: egyetlen útvonalra vonatkozó szabályra alkalmazott szabályok halmaza. Mindegyik konfiguráció 25 szabályra van korlátozva. Akár 10 konfigurációt is létrehozhat. 
 - *Rules Engine szabály*: egy legfeljebb 10 egyeztetési feltételből és 5 műveletből álló szabály.
 - *Egyeztetési feltétel*: a beérkező kérések elemzéséhez számos egyeztetési feltétel használható. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltételek a **és** a operátorral vannak kiértékelve. Az egyeztetési feltételek teljes listája [itt](front-door-rules-engine-match-conditions.md)található. 
 - *Művelet*: a műveletek azt írják elő, hogy mi történik a bejövő kérelmekkel – a kérés/válasz fejléc műveletei, a továbbítás, az átirányítások és az újraírások még ma elérhetők. Egy szabály legfeljebb 5 műveletet tartalmazhat. egy szabály azonban csak 1 útvonal-konfiguráció felülbírálását tartalmazhatja.  A műveletek teljes listája [itt](front-door-rules-engine-actions.md)található.

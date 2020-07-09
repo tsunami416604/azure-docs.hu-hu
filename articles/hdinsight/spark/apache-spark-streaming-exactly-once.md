@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2018
-ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74228971"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086177"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-feladatok létrehozása pontosan egyszeri esemény-feldolgozással
 
@@ -49,7 +49,7 @@ A Spark Streamingben a források, például a Event Hubs és a Kafka *megbízhat
 
 ### <a name="use-the-write-ahead-log"></a>A Write-Ahead napló használata
 
-A Spark streaming támogatja egy írási idejű napló használatát, amelyben az egyes fogadott eseményeket először a Spark ellenőrzőpont-könyvtárába írja a hibatűrő tárolóban, majd egy rugalmasan elosztott adatkészlet (RDD) tárolja. Az Azure-ban a hibatűrő tárolót az Azure Storage vagy a Azure Data Lake Storage HDFS. A Spark streaming-alkalmazásban az írási és olvasási napló minden fogadó esetében engedélyezve van, ha `spark.streaming.receiver.writeAheadLog.enable` `true`a konfigurációs beállítást a értékre állítja. Az írási és olvasási napló hibatűrést biztosít mind az illesztőprogram, mind a végrehajtók meghibásodása esetén.
+A Spark streaming támogatja egy írási idejű napló használatát, amelyben az egyes fogadott eseményeket először a Spark ellenőrzőpont-könyvtárába írja a hibatűrő tárolóban, majd egy rugalmasan elosztott adatkészlet (RDD) tárolja. Az Azure-ban a hibatűrő tárolót az Azure Storage vagy a Azure Data Lake Storage HDFS. A Spark streaming-alkalmazásban az írási és olvasási napló minden fogadó esetében engedélyezve van, ha a konfigurációs beállítást a értékre állítja `spark.streaming.receiver.writeAheadLog.enable` `true` . Az írási és olvasási napló hibatűrést biztosít mind az illesztőprogram, mind a végrehajtók meghibásodása esetén.
 
 Az esemény adataival kapcsolatos feladatokat futtató munkavégzők esetében minden RDD definíciója a több feldolgozón replikált és elosztott. Ha egy feladat meghiúsul, mert az azt futtató feldolgozó összeomlott, a feladat újraindul egy másik feldolgozón, amely az esemény adatai replikáját használja, így az esemény nem vész el.
 

@@ -9,20 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c24f82d48a1452cdb272abca178a9ba924aacc20
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: f5bf8a0420614b69f4022891e76b5d959f5782f3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997587"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035678"
 ---
-[Dokumentáció](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **vonattal** mappában található fájlokat.
-* A [Node. js](https://nodejs.org/) jelenlegi verziója
+* A [Node.js](https://nodejs.org/) aktuális verziója
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -101,9 +100,9 @@ const apiKey = process.env["FORM_RECOGNIZER_KEY"] || "<api key>";
 Ezután hitelesítse az ügyféloldali objektumokat a definiált előfizetési változók használatával. **AzureKeyCredential** objektumot fog használni, így ha szükséges, az API-kulcsot új ügyfélalkalmazások létrehozása nélkül is frissítheti. Létre kell hoznia egy képzési ügyfél objektumot is.
 
 ```javascript
-const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
+const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
-const trainingClient = client.getFormTrainingClient();
+const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
 ### <a name="call-client-specific-functions"></a>Ügyfél-specifikus függvények hívása
@@ -116,7 +115,7 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is, vagy használhatja a mintaként megadott képet.
 
 > [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview).
+> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer).
 
 
 ```javascript
@@ -182,44 +181,37 @@ async function AnalyzeReceipt( client, receiptUri)
     const response = poller.getResult();
 
 
-    const usReceipt = response.receipts[0];
+    const receipt = receipts[0];
     console.log("First receipt:");
-    console.log(`Receipt type: ${usReceipt.receiptType}`);
-    console.log(
-        `Merchant Name: ${usReceipt.merchantName.value} (confidence: ${usReceipt.merchantName.confidence})`
-    );
-    console.log(
-        `Transaction Date: ${usReceipt.transactionDate.value} (confidence: ${usReceipt.transactionDate.confidence})`
-    );
-    console.log("Receipt items:");
-    console.log(`  name\tprice\tquantity\ttotalPrice`);
+    // For supported fields recognized by the service, please refer to https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult.
+    const receiptTypeField = receipt.recognizedForm.fields["ReceiptType"];
+    if (receiptTypeField.valueType === "string") {
+        console.log(`  Receipt Type: '${receiptTypeField.value || "<missing>"}', with confidence of ${receiptTypeField.confidence}`);
+    }
+    const merchantNameField = receipt.recognizedForm.fields["MerchantName"];
+    if (merchantNameField.valueType === "string") {
+        console.log(`  Merchant Name: '${merchantNameField.value || "<missing>"}', with confidence of ${merchantNameField.confidence}`);
+    }
+    const transactionDate = receipt.recognizedForm.fields["TransactionDate"];
+    if (transactionDate.valueType === "date") {
+        console.log(`  Transaction Date: '${transactionDate.value || "<missing>"}', with confidence of ${transactionDate.confidence}`);
+    }
 ```
 
 A kód következő blokkja megismétli a nyugtán észlelt egyes elemeket, és kiírja az adataikat a-konzolra.
 
-```csharp
-    for (const item of usReceipt.items) {
-        const name = `${optionalToString(item.name.value)} (confidence: ${optionalToString(
-            item.name.confidence
-        )})`;
-        const price = `${optionalToString(item.price.value)} (confidence: ${optionalToString(
-            item.price.confidence
-        )})`;
-        const quantity = `${optionalToString(item.quantity.value)} (confidence: ${optionalToString(
-            item.quantity.confidence
-        )})`;
-        const totalPrice = `${optionalToString(item.totalPrice.value)} (confidence: ${optionalToString(
-            item.totalPrice.confidence
-        )})`;
-        console.log(`  ${name}\t${price}\t${quantity}\t${totalPrice}`);
-    }
-```
-
-Ez a függvény egy segítő függvényt használ `optionalToString` . Adja meg a függvényt a parancsfájl gyökerénél:
-
 ```javascript
-function optionalToString(value) {
-  return `${value || "<missing>"}`;
+    const itemsField = receipt.recognizedForm.fields["Items"];
+    if (itemsField.valueType === "array") {
+        for (const itemField of itemsField.value || []) {
+            if (itemField.valueType === "object") {
+                const itemNameField = itemField.value["Name"];
+                if (itemNameField.valueType === "string") {
+                    console.log(`    Item Name: '${itemNameField.value || "<missing>"}', with confidence of ${itemNameField.confidence}`);
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -254,15 +246,15 @@ async function TrainModel(trainingClient, trainingDataUrl)
     
     console.log(`Model ID: ${response.modelId}`);
     console.log(`Status: ${response.status}`);
-    console.log(`Created on: ${response.createdOn}`);
-    console.log(`Last modified: ${response.lastModified}`);
+    console.log(`Created on: ${response.requestedOn}`);
+    console.log(`Last modified: ${response.completedOn}`);
 ```
 
 A visszaadott **CustomFormModel** objektum a modell által felismerhető űrlap-típusokkal és az egyes űrlapokból kinyerhető mezőkkel kapcsolatos információkat tartalmaz. A következő kódrészlet kinyomtatja ezeket az információkat a konzolra.
 
 ```javascript
-    if (response.models) {
-        for (const submodel of response.models) {
+    if (response.submodels) {
+        for (const submodel of response.submodels) {
             // since the training data is unlabeled, we are unable to return the accuracy of this model
             console.log("We have recognized the following fields");
             for (const key in submodel.fields) {
@@ -282,7 +274,7 @@ Végezetül ez a metódus a modell egyedi AZONOSÍTÓját adja vissza.
 
 ### <a name="train-a-model-with-labels"></a>Modell betanítása címkékkel
 
-Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. Ha címkéket szeretne betanítani, a blob Storage-tárolóban speciális címke-információs fájlokat (* \<filename\> . PDF. labels. JSON*) kell használnia a betanítási dokumentumok mellett. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Miután megadta őket, meghívhatja a **beginTraining** metódust a *uselabels* paraméterrel, amely a következőre van beállítva: `true` .
+Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokumentumokat. A címkékkel való képzés bizonyos helyzetekben jobb teljesítményt eredményez. Ha címkéket szeretne betanítani, a blob Storage-tárolóban a betanítási dokumentumokkal együtt speciális feliratú információs fájlokat (* \<filename\>.pdf.labels.js*) kell használnia. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Miután megadta őket, meghívhatja a **beginTraining** metódust a *uselabels* paraméterrel, amely a következőre van beállítva: `true` .
 
 ```javascript
 async function TrainModelWithLabelsAsync(
@@ -305,13 +297,13 @@ Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információk
 > [!IMPORTANT]
 > Ennek a forgatókönyvnek a megvalósításához már be kell tanítania egy modellt, hogy az ID-t az alábbi metódusba tudja adni. Lásd a [modell betanítása](#train-a-model-without-labels) szakaszt.
 
-A **beginRecognizeFormsFromUrl** metódust fogja használni. A visszaadott érték egy **RecognizedForm** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához.
+A **beginRecognizeCustomFormsFromUrl** metódust fogja használni. A visszaadott érték egy **RecognizedForm** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához.
 
 ```javascript
 // Analyze PDF form document at an accessible URL
 async function AnalyzePdfForm(client, modelId, formUrl)
 {    
-    const poller = await client.beginRecognizeFormsFromUrl(modelId, formUrl, {
+    const poller = await client.beginRecognizeCustomFormsFromUrl(modelId, formUrl, {
         onProgress: (state) => {
             console.log(`status: ${state.status}`);
         }
@@ -351,7 +343,7 @@ A következő kódrészlet ellenőrzi, hogy az űrlap-felismerő fiókban hány 
     // First, we see how many custom models we have, and what our limit is
     const accountProperties = await trainingClient.getAccountProperties();
     console.log(
-        `Our account has ${accountProperties.count} custom models, and we can have at most ${accountProperties.limit} custom models`
+        `Our account has ${accountProperties.customModelCount} custom models, and we can have at most ${accountProperties.customModelLimit} custom models`
     );
 ```
 
@@ -361,7 +353,7 @@ A következő kódrészlet felsorolja a fiókban lévő aktuális modelleket, é
 
 ```javascript
     // Next, we get a paged async iterator of all of our custom models
-    const result = trainingClient.listModels();
+    const result = trainingClient.listCustomModels();
 
     // We could print out information about first ten models
     // and save the first model id for later use
@@ -439,7 +431,7 @@ export DEBUG=azure*
 A naplók engedélyezésével kapcsolatos részletes információkért lásd a [ @azure/logger csomag dokumentációját](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő Python ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

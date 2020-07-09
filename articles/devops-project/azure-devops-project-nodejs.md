@@ -14,13 +14,13 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc
 ms.openlocfilehash: 7db4fa2a780a3a1f53ecd73a40c247583cb6a79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233842"
 ---
-# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Node. js-hez készült Azure-folyamatokban az Azure DevOps Starter-vel
+# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása Azure-folyamatokban Node.js Azure DevOps Starter-vel
 
 Ebben a rövid útmutatóban létrehoz egy NodeJS progresszív webalkalmazást (PWA) a [GatsbyJS](https://www.gatsbyjs.org/) és az egyszerűsített Azure DevOps Starter-létrehozási felület használatával. Ha elkészült, folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamattal rendelkezik az Azure-folyamatok PWA. Az Azure DevOps a fejlesztéshez, üzembe helyezéshez és figyeléshez szükséges igényeket határozza meg.
 
@@ -45,11 +45,11 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza a Node.js mintaalkalmazást.   
 
-    ![Válassza ki a Node. js-mintát](_img/azure-devops-project-nodejs/select-nodejs.png) 
+    ![Node.js minta kiválasztása](_img/azure-devops-project-nodejs/select-nodejs.png) 
 
-1. Az alapértelmezett mintakeretrendszer az **Express.js**. Módosítsa a kijelölést **egyszerű Node. js-alkalmazásra** , majd kattintson a **tovább**gombra. 
+1. Az alapértelmezett mintakeretrendszer az **Express.js**. Módosítsa a kijelölést **egyszerű Node.js alkalmazásra** , majd válassza a **tovább**lehetőséget. 
 
-    ![Válassza ki az egyszerű Node. js-alkalmazást](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
+    ![Válassza ki az egyszerű Node.js alkalmazást](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
 1. Az ebben a lépésben elérhető központi telepítési célokat a 2. lépésben kiválasztott alkalmazás-keretrendszer határozza meg. Ebben a példában a **Windows Web App** az alapértelmezett telepítési cél. Hagyja **Web App for containers** a beállítást, és válassza a **tovább**lehetőséget.
 
@@ -108,7 +108,7 @@ A DevOps Starter létrehoz egy git-tárházat az Azure Reposben vagy a GitHubban
     rmdir Application
     ```
 
-1. Minta PWA létrehozásához használja a Gatsby CLI-t. Futtassa `gatsby new` a parancsot a terminálról a PWA varázsló elindításához, és válassza ki `gatsby-starter-blog` a kezdő sablonját. Ehhez a példához hasonlónak kell lennie:
+1. Minta PWA létrehozásához használja a Gatsby CLI-t. Futtassa a `gatsby new` parancsot a terminálról a PWA varázsló elindításához, és válassza ki a `gatsby-starter-blog` kezdő sablonját. Ehhez a példához hasonlónak kell lennie:
 
     ```powershell
     c:\myproject> gatsby new
@@ -120,16 +120,16 @@ A DevOps Starter létrehoz egy git-tárházat az Azure Reposben vagy a GitHubban
         (Use a different starter)
     ```
     
-1. Most már rendelkezik egy nevű `my-gatsby-project`mappával. Nevezze át, `Application` és másolja a `Dockerfile` ba.
+1. Most már rendelkezik egy nevű mappával `my-gatsby-project` . Nevezze át, `Application` és másolja a `Dockerfile` ba.
     
     ```powershell
     mv my-gatsby-project Application
     mv Dockerfile Application
     ```
     
-1. A kedvenc szerkesztőjében nyissa meg a Docker, és módosítsa az első `FROM node:8` sort `FROM node:12`a verzióról a verzióra. Ez a változás biztosítja, hogy a tároló a 8. x verzió helyett a Node. js 12. x verziót használja. A GatsbyJS a Node. js modernebb verzióit igényli.
+1. A kedvenc szerkesztőjében nyissa meg a Docker, és módosítsa az első sort a verzióról a verzióra `FROM node:8` `FROM node:12` . Ez a változás biztosítja, hogy a tároló a 8. x verzió helyett a 12. x Node.js használja. A GatsbyJS Node.js modern verzióját igénylik.
 
-1. Ezután nyissa meg a Package. JSON fájlt az alkalmazás mappájában, és szerkessze a [parancsfájlok mezőt](https://docs.npmjs.com/files/package.json#scripts) , hogy a fejlesztési és üzemi kiszolgálók az összes rendelkezésre álló hálózati adapteren (például 0.0.0.0) és a 80-as porton figyeljenek. Ezen beállítások nélkül a Container app Service nem tudja átirányítani a forgalmat a tárolón belül futó Node. js-alkalmazásba. A `scripts` mezőnek az alábbihoz hasonlónak kell lennie. Pontosabban a, `develop` `serve`a és `start` a célokat szeretné módosítani az alapértelmezett beállítások alapján.
+1. Ezután nyissa meg a package.jsfájlt az alkalmazás mappájában, és szerkessze a [parancsfájlok mezőt](https://docs.npmjs.com/files/package.json#scripts) annak ellenőrzéséhez, hogy a fejlesztési és üzemi kiszolgálók figyelik-e az összes elérhető hálózati adaptert (például 0.0.0.0) és a 80-es portot. Ezen beállítások nélkül a Container app Service nem tudja átirányítani a forgalmat a tárolón belül futó Node.js-alkalmazásba. A `scripts` mezőnek az alábbihoz hasonlónak kell lennie. Pontosabban a, a és a célokat szeretné módosítani az `develop` `serve` `start` alapértelmezett beállítások alapján.
 
     ```json
       "scripts": {
@@ -145,9 +145,9 @@ A DevOps Starter létrehoz egy git-tárházat az Azure Reposben vagy a GitHubban
     
 ## <a name="edit-your-cicd-pipelines"></a>A CI/CD-folyamatok szerkesztése
 
-1. Mielőtt véglegesíti a kódot az előző szakaszban, hajtson végre néhány módosítást a build és a Release folyamaton. Szerkessze a "folyamat létrehozása" lehetőséget, és frissítse a csomópont-feladatot a Node. js 12. x verziójának használatára. Állítsa a **feladat verziója** mezőt 1. x értékre, a **Version (verzió** ) mezőre pedig 12. x.
+1. Mielőtt véglegesíti a kódot az előző szakaszban, hajtson végre néhány módosítást a build és a Release folyamaton. Szerkessze a "folyamat létrehozása" lehetőséget, és frissítse a csomópont-feladatot Node.js 12. x verzió használatára. Állítsa a **feladat verziója** mezőt 1. x értékre, a **Version (verzió** ) mezőre pedig 12. x.
 
-    ![A Node. js frissítése 12. x-re](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+    ![Node.js frissítése 12. x-re](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
 
 1. Ebben a rövid útmutatóban nem hozunk létre egység-teszteket, és letiltjuk ezeket a lépéseket a Build-folyamatban. Tesztek írásakor újra engedélyezheti ezeket a lépéseket. Kattintson a jobb gombbal, és válassza ki a **teszt függőségeinek telepítése** és az **egységek futtatása tesztek** és a Letiltás műveletek elemet.
 
@@ -182,11 +182,11 @@ Az előző két lépésben hozzáadott egy Gatsby létrehozott PWA a git-tárhá
     git push
     ```
     
-1. A buildek a `git push` befejezést követően kezdődnek. Az **Azure DevOps irányítópultján**követheti a folyamat előrehaladását.
+1. A buildek a befejezést követően kezdődnek `git push` . Az **Azure DevOps irányítópultján**követheti a folyamat előrehaladását.
 
 3. Néhány perc elteltével a létrehozási és kiadási folyamatokat be kell fejezni, és a PWA üzembe kell helyezni egy tárolón. Kattintson az **alkalmazás-végpont** hivatkozásra a fenti irányítópulton, és egy Gatsby Starter-projektet kell megjelennie a blogokhoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, amikor már nincs szüksége az erőforrásokra. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 

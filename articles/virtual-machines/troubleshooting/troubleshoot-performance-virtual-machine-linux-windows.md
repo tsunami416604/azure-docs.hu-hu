@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772618"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Azure-beli virtuális gépek teljesítményének megoldása Linux vagy Windows rendszeren
@@ -139,7 +138,7 @@ Spike és állandó/állandó fogyasztás – a nagy memória kihasználtsága n
 
 Folyamatosan növekvő fogyasztás – egy lehetséges "felmelegedés" alkalmazás, ez a fogyasztás gyakori az adatbázis-hajtóműveknél. Ugyanakkor jelezheti egy alkalmazás memóriavesztését is. Azonosítsa az alkalmazást, és Ismerje meg, hogy a működés várható-e.
 
-Oldal-vagy lapozófájl-használat – győződjön meg arról, hogy a Windows lapozófájlt használja (a (\) z) D: vagy a `/dev/sdb`Linux swap-fájlban () található). Ha ezekkel a kötetekkel nem rendelkezik ezekkel a fájlokkal, akkor ellenőrizze, hogy vannak-e magas olvasási/írási műveletek a lemezeken. Ez a probléma kevés memóriát jelez.
+Oldal-vagy lapozófájl-használat – győződjön meg arról, hogy a Windows lapozófájlt használja (a (z) D: \) vagy a Linux swap-fájlban ( `/dev/sdb` ) található). Ha ezekkel a kötetekkel nem rendelkezik ezekkel a fájlokkal, akkor ellenőrizze, hogy vannak-e magas olvasási/írási műveletek a lemezeken. Ez a probléma kevés memóriát jelez.
 
 ### <a name="high-memory-utilization-remediation"></a>Nagy memória-kihasználtság szervizelése
 
@@ -210,7 +209,7 @@ Ha a standard szintű tárolóban új lemezes ajánlatokat használ, a IOPS és 
 
 * A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
-#### <a name="references"></a>Referencia
+#### <a name="references"></a>Hivatkozások
 
 * [Méretezhetőségi és teljesítményi célok a prémium oldal blob Storage-fiókjaihoz](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 

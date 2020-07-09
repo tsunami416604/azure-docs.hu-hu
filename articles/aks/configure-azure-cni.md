@@ -4,12 +4,11 @@ description: Ismerje meg, hogyan konfigurálhatja az Azure CNI (Advanced) háló
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416851"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -63,7 +62,7 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
-| Portál | 110 | 30 | Nem |
+| Portál | 110 | 30 | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
 
@@ -151,7 +150,7 @@ Az alábbi kérdések és válaszok az **Azure CNI** hálózati konfigurációra
 
 * *Telepíthetek virtuális gépeket a fürt alhálózatában?*
 
-  Nem. A virtuális gépeknek a Kubernetes-fürt által használt alhálózatban való telepítése nem támogatott. A virtuális gépek ugyanabban a virtuális hálózatban, de egy másik alhálózatban is üzembe helyezhetők.
+  Igen.
 
 * *Beállíthat egy Pod hálózati házirendeket?*
 

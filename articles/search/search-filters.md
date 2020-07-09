@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562295"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
 
@@ -58,7 +58,7 @@ A paraméterekkel kapcsolatos további információkért lásd: [dokumentumok ke
 
 A lekérdezési időpontnál a szűrő-elemző a feltételeket bemenetként fogadja el, átalakítja a kifejezést egy faszerkezetként jelölt atomi logikai kifejezésre, majd kiértékeli a szűrő faszerkezetét egy index szűrt mezőin.
 
-A szűrés párhuzamosan történik a kereséssel, amely feljogosítja, hogy a dokumentumok lekéréséhez és a relevancia pontozásához mely dokumentumokat kell felvenni az alárendelt feldolgozásba. Keresési karakterlánccal párosítva a szűrő hatékonyan csökkenti a későbbi keresési művelet visszahívási készletét. Ha egyedül használja (például ha a lekérdezési karakterlánc üres, ahol `search=*`), a szűrési feltételek az egyetlen bemenetek. 
+A szűrés párhuzamosan történik a kereséssel, amely feljogosítja, hogy a dokumentumok lekéréséhez és a relevancia pontozásához mely dokumentumokat kell felvenni az alárendelt feldolgozásba. Keresési karakterlánccal párosítva a szűrő hatékonyan csökkenti a későbbi keresési művelet visszahívási készletét. Ha egyedül használja (például ha a lekérdezési karakterlánc üres, ahol `search=*` ), a szűrési feltételek az egyetlen bemenetek. 
 
 ## <a name="defining-filters"></a>Szűrők definiálása
 A szűrők OData kifejezések, amelyek az [Azure Cognitive Search által támogatott OData v4-szintaxist](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)használnak. 
@@ -71,10 +71,10 @@ Az alábbi példák több API-ban prototípusos-szűrési definíciókat tartalm
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2020-06-30&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "*",
     "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
@@ -109,7 +109,7 @@ Az alábbi példák több használati mintát mutatnak be a szűrési forgatók�
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
-+ A "vagy" karakterrel elválasztott összetett lekérdezések, amelyek mindegyike saját szűrési feltételekkel rendelkezik (például "Beagle" a "Dog" vagy "Sziámi" a "Cat"-ben). A összevont `or` kifejezések kiértékelése külön történik, és a válaszban visszaküldött összes kifejezésnek megfelelő dokumentumok Uniója. Ez a használati minta a `search.ismatchscoring` függvényen keresztül érhető el. A nem pontozási verziót is használhatja `search.ismatch`.
++ A "vagy" karakterrel elválasztott összetett lekérdezések, amelyek mindegyike saját szűrési feltételekkel rendelkezik (például "Beagle" a "Dog" vagy "Sziámi" a "Cat"-ben). A összevont kifejezések `or` kiértékelése külön történik, és a válaszban visszaküldött összes kifejezésnek megfelelő dokumentumok Uniója. Ez a használati minta a függvényen keresztül érhető el `search.ismatchscoring` . A nem pontozási verziót is használhatja `search.ismatch` .
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -119,7 +119,7 @@ Az alábbi példák több használati mintát mutatnak be a szűrési forgatók�
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  Az is lehetséges, hogy a teljes `search.ismatchscoring` szöveges keresést a szűrők használatával `and` is kombinálhatja a `or`helyett, de ez a funkció egyenértékű a keresési kérelemben szereplő `search` és `$filter` paraméterek használatával. Például a következő két lekérdezés ugyanazt az eredményt eredményezi:
+  Az is lehetséges, hogy a teljes szöveges keresést a szűrők használatával is kombinálhatja a `search.ismatchscoring` `and` helyett `or` , de ez a funkció egyenértékű a `search` `$filter` keresési kérelemben szereplő és paraméterek használatával. Például a következő két lekérdezés ugyanazt az eredményt eredményezi:
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -137,7 +137,7 @@ Az alábbi cikkekben részletes útmutatást talál az egyes használati esetekh
 
 A REST APIban az egyszerű mezők esetében a szűrhető beállítás alapértelmezés szerint be van *kapcsolva* . Szűrhető mezők: az index mérete növekszik; Ügyeljen arra, hogy `"filterable": false` a szűrőben ténylegesen használni kívánt mezőkhöz legyen beállítva. További információ a mezőértékek beállításairól: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy `true`a megfelelő [mező](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektum [IsFilterable tulajdonságát](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) a értékre állítja. Ezt a deklaratív [IsFilterable attribútum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum egy olyan modell osztály `BaseRate` tulajdonságára van beállítva, amely az index definícióját képezi le.
+A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy a megfelelő [mező](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektum [IsFilterable tulajdonságát](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) a értékre állítja `true` . Ezt a deklaratív [IsFilterable attribútum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum `BaseRate` egy olyan modell osztály tulajdonságára van beállítva, amely az index definícióját képezi le.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -150,23 +150,23 @@ A meglévő mezők nem módosíthatók úgy, hogy szűrhetők legyenek. Ehelyett
 
 ## <a name="text-filter-fundamentals"></a>A szöveg szűrő alapjai
 
-A szöveges szűrők a szűrőben megadott literális karakterláncok alapján egyeznek meg a karakterlánc mezőivel. A teljes szöveges kereséstől eltérően a szöveges szűrők nem rendelkeznek lexikális analízissel vagy sortöréssel, így az összehasonlítások csak a pontos egyezésekre vonatkoznak. Tegyük fel például, hogy az *f* mező a "Sunny Day `$filter=f eq 'Sunny'` " kifejezést tartalmazza, nem `$filter=f eq 'sunny day'` egyezik, de a következő lesz:. 
+A szöveges szűrők a szűrőben megadott literális karakterláncok alapján egyeznek meg a karakterlánc mezőivel. A teljes szöveges kereséstől eltérően a szöveges szűrők nem rendelkeznek lexikális analízissel vagy sortöréssel, így az összehasonlítások csak a pontos egyezésekre vonatkoznak. Tegyük fel például, hogy az *f* mező a "Sunny Day" kifejezést tartalmazza, `$filter=f eq 'Sunny'` nem egyezik, de a következő `$filter=f eq 'sunny day'` lesz:. 
 
-A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. A felső rétegbeli szavak nem rendelkeznek alsó borítással: `$filter=f eq 'Sunny day'` a "Sunny Day" nem található.
+A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. A felső rétegbeli szavak nem rendelkeznek alsó borítással: a `$filter=f eq 'Sunny day'` "Sunny Day" nem található.
 
 ### <a name="approaches-for-filtering-on-text"></a>A szöveg szűrésének módszerei
 
-| Módszer | Leírás | A következő esetekben használja |
+| Módszer | Description | A következő esetekben használja |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény sebességre lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összehasonlítása az egyes `eq` sztringekkel a és `or`a használatával. | 
+| [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény sebességre lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összehasonlítása az egyes sztringekkel a és a használatával `eq` `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresési műveleteket szigorúan logikai szűrési műveletekkel keverje ugyanabban a szűrő kifejezésben. | Használja a **Search. ismatch** (vagy annak pontozási egyenértéke, **Search. ismatchscoring**) kifejezést, ha egy kérelemben több keresési kombinációt szeretne használni. Azt is megteheti, hogy egy olyan szűrőt *tartalmaz* , amely egy nagyobb sztringen belüli részleges karakterláncot szűr. |
 | [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Mezőkből, operátorokból és értékből álló, felhasználó által definiált kifejezés. | Akkor használja ezt a lehetőséget, ha pontos egyezést szeretne találni egy karakterlánc-mező és egy karakterlánc-érték között. |
 
 ## <a name="numeric-filter-fundamentals"></a>Numerikus szűrők alapjai
 
-A numerikus mezők `searchable` nincsenek a teljes szöveges keresés kontextusában. Csak karakterláncok tartoznak a teljes szöveges keresésre. Ha például a 99,99 értéket adja meg keresési kifejezésként, akkor nem fog visszakerülni a $99,99-es díjszabású elemekbe. Ehelyett a dokumentum sztring mezőiben szereplő, 99 számú elemek jelennek meg. Így ha numerikus adattal rendelkezik, feltételezi, hogy a szűrőket, például a tartományokat, a dimenziókat, a csoportokat és így tovább használni fogja. 
+A numerikus mezők nincsenek `searchable` a teljes szöveges keresés kontextusában. Csak karakterláncok tartoznak a teljes szöveges keresésre. Ha például a 99,99 értéket adja meg keresési kifejezésként, akkor nem fog visszakerülni a $99,99-es díjszabású elemekbe. Ehelyett a dokumentum sztring mezőiben szereplő, 99 számú elemek jelennek meg. Így ha numerikus adattal rendelkezik, feltételezi, hogy a szűrőket, például a tartományokat, a dimenziókat, a csoportokat és így tovább használni fogja. 
 
-A numerikus mezőket (ár, méret, SKU, ID) tartalmazó dokumentumok a keresési eredményekben adják meg ezeket az értékeket, ha `retrievable`a mező meg van jelölve. Itt az a pont, hogy a teljes szöveges keresés önmagában nem vonatkozik a numerikus mezők típusára.
+A numerikus mezőket (ár, méret, SKU, ID) tartalmazó dokumentumok a keresési eredményekben adják meg ezeket az értékeket, ha a mező meg van jelölve `retrievable` . Itt az a pont, hogy a teljes szöveges keresés önmagában nem vonatkozik a numerikus mezők típusára.
 
 ## <a name="next-steps"></a>További lépések
 

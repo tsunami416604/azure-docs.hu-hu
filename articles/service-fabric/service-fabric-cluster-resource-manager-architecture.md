@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551692"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>A fürterőforrás-kezelő architektúrájának áttekintése
@@ -25,7 +24,7 @@ A fürt erőforrásainak kezeléséhez a Service Fabric fürterőforrás-kezelő
 
 Egy adott szolgáltatás erőforrás-felhasználása idővel változhat, és a szolgáltatások általában egynél több típusú erőforrással törődnek. A különböző szolgáltatások között valós fizikai és fizikai erőforrások is mérhetők. A szolgáltatások nyomon követhetik a fizikai mérőszámokat, például a memória és a lemez felhasználását. Gyakrabban a szolgáltatások a logikai metrikákkal kapcsolatosak – például "WorkQueueDepth" vagy "TotalRequests". A logikai és fizikai mérőszámok is használhatók ugyanabban a fürtben. A metrikák több szolgáltatás között is megoszthatók, vagy egy adott szolgáltatásra vonatkoznak.
 
-## <a name="other-considerations"></a>Egyéb szempontok
+## <a name="other-considerations"></a>További szempontok
 A fürt tulajdonosai és üzemeltetői eltérhetnek a szolgáltatás és az alkalmazás szerzőktől, vagy legalább ugyanazok, akik különböző kalapokat viselnek. Az alkalmazás fejlesztése során néhány dolgot is tudnia kell, hogy mire van szüksége. Megbecsüli az általa felhasznált erőforrásokat, valamint a különböző szolgáltatások üzembe helyezésének módját. A webes szintet például az internetre kitett csomópontokon kell futtatni, míg az adatbázis-szolgáltatások nem. Egy másik példaként a webszolgáltatásokat valószínűleg a CPU és a hálózat korlátozza, míg az adatszintek szolgáltatásai többet törődnek a memória és a lemez használatával. Azonban az adott szolgáltatáshoz éles környezetben, vagy a szolgáltatásra való frissítést kezelő személy egy másik feladatot hajt végre, és különböző eszközöket igényel. 
 
 A fürt és a szolgáltatások egyaránt dinamikusak:

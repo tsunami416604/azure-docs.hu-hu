@@ -3,15 +3,15 @@ title: Végfelhasználói hitelesítés – .NET és Data Lake Storage Gen1 – 
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést a Azure Data Lake Storage Gen1 a Azure Active Directory és a .NET SDK használatával
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 12f6e0fd34de96677693b7f0d159c7cf9032ca1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511289"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Végfelhasználói hitelesítés a Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a végfelhaszn�
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
 2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-3. A **Project Name (projekt neve**) mezőben adja meg `CreateADLApplication`a nevet, majd válassza a **Létrehozás**lehetőséget.
+3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás**lehetőséget.
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
 
@@ -69,7 +69,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a végfelhaszn�
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Adja hozzá ezt a kódrészletet a .NET-ügyfélalkalmazás alkalmazásához. Cserélje le a helyőrző értékeket az Azure AD natív alkalmazásból beolvasott értékekre (az előfeltételként megadott módon). Ez a kódrészlet lehetővé teszi, hogy az alkalmazást **interaktívan** hitelesítse Data Lake Storage Gen1okkal, ami azt jelenti, hogy meg kell adnia az Azure-beli hitelesítő adatait.
 
-Az egyszerű használat érdekében az alábbi kódrészlet az ügyfél-azonosító és az átirányítási URI alapértelmezett értékeit használja, amelyek bármely Azure-előfizetéshez érvényesek. A következő kódrészletben csak a bérlői azonosító értékét kell megadnia. A bérlő AZONOSÍTÓját a [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)című részben leírtak alapján kérheti le.
+Az egyszerű használat érdekében az alábbi kódrészlet az ügyfél-azonosító és az átirányítási URI alapértelmezett értékeit használja, amelyek bármely Azure-előfizetéshez érvényesek. A következő kódrészletben csak a bérlői azonosító értékét kell megadnia. A bérlő AZONOSÍTÓját a [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)című részben leírtak alapján kérheti le.
     
 - Cserélje le a Main () függvényt a következő kódra:
 
@@ -91,7 +91,7 @@ Az egyszerű használat érdekében az alábbi kódrészlet az ügyfél-azonosí
 
 Néhány tudnivaló az előző kódrészletről:
 
-* Az előző kódrészlet segítő függvényeket `GetTokenCache` és. `GetCreds_User_Popup` Ezen segítő függvények kódja elérhető [itt a githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* Az előző kódrészlet segítő függvényeket `GetTokenCache` és `GetCreds_User_Popup` . Ezen segítő függvények kódja elérhető [itt a githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
 * Az oktatóanyag gyorsabb elvégzéséhez a kódrészlet egy natív alkalmazás ügyfél-AZONOSÍTÓját használja, amely alapértelmezés szerint elérhető az összes Azure-előfizetéshez. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
 * Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-bérlőazonosítót, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatásért lásd: [Active Directory alkalmazás létrehozása végfelhasználói hitelesítéshez Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md) .
 

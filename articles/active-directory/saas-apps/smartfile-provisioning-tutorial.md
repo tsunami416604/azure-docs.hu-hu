@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: b113cc27195b2ce954d677ab0f1ec83e394946be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060218"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés SmartFile konfigurálása
@@ -113,7 +112,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5.  A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<SmartFile sitename>.smartfile.com/ftp/scim` meg a **bérlői URL-címet**. Egy példa így `https://demo1test.smartfile.com/ftp/scim`néz ki. Adja meg a **titkos jogkivonatban**korábban lekért **tulajdonosi jogkivonat** -értéket (termék: ProductPassword). Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a SmartFile. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a SmartFile-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5.  A **rendszergazdai hitelesítő adatok** szakaszban adja `https://<SmartFile sitename>.smartfile.com/ftp/scim` meg a **bérlői URL-címet**. Egy példa így néz ki `https://demo1test.smartfile.com/ftp/scim` . Adja meg a **titkos jogkivonatban**korábban lekért **tulajdonosi jogkivonat** -értéket (termék: ProductPassword). Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a SmartFile. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a SmartFile-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -161,7 +160,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 * A SmartFile csak a rögzített törléseket támogatja. 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

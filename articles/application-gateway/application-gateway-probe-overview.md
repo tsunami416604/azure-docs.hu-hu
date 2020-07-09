@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648407"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapot figyelésének áttekintése
@@ -59,7 +58,7 @@ Miután megadta a megfeleltetési feltételeket, a PowerShellben található par
 
 ### <a name="default-health-probe-settings"></a>Alapértelmezett állapot mintavételi beállításai
 
-| Mintavételi tulajdonság | Érték | Leírás |
+| Mintavételi tulajdonság | Érték | Description |
 | --- | --- | --- |
 | Mintavételi URL-cím |http://127.0.0.1:\<port\>/ |URL-cím elérési útja |
 | Intervallum |30 |Az az időtartam másodpercben, ameddig a következő állapotú mintavétel elküldése előtt várni kell.|
@@ -69,7 +68,7 @@ Miután megadta a megfeleltetési feltételeket, a PowerShellben található par
 > [!NOTE]
 > A port ugyanaz a port, mint a háttérbeli HTTP-beállítások.
 
-Az alapértelmezett mintavétel csak a http: \/ /127.0.0.1: \< porton jelenik \> meg az állapot meghatározásához. Ha az állapot-mintavételt úgy kell konfigurálnia, hogy az egyéni URL-címre váltson, vagy más beállításokat módosítson, egyéni mintavételt kell használnia. További információ a HTTP-mintavételekről: [a TLS-megszakítás áttekintése és a végpontok közötti TLS és a Application Gateway](ssl-overview.md#for-probe-traffic).
+Az alapértelmezett mintavétel csak a http: \/ /127.0.0.1: állapot \<port\> alapján határozható meg. Ha az állapot-mintavételt úgy kell konfigurálnia, hogy az egyéni URL-címre váltson, vagy más beállításokat módosítson, egyéni mintavételt kell használnia. További információ a HTTP-mintavételekről: [a TLS-megszakítás áttekintése és a végpontok közötti TLS és a Application Gateway](ssl-overview.md#for-probe-traffic).
 
 ### <a name="probe-intervals"></a>Mintavételi időközök
 
@@ -85,7 +84,7 @@ Az egyéni mintavételek segítségével részletesebben szabályozhatja az áll
 
 Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatkozó definíciókat tartalmazza.
 
-| Mintavételi tulajdonság | Leírás |
+| Mintavételi tulajdonság | Description |
 | --- | --- |
 | Name |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
@@ -97,7 +96,7 @@ Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatko
 
 > [!IMPORTANT]
 > Ha a Application Gateway egyetlen helyhez van konfigurálva, alapértelmezés szerint az állomásnevet "127.0.0.1"-ként kell megadni, kivéve, ha az egyéni mintavétel másként van konfigurálva.
-> A hivatkozáshoz egyéni mintavételt kell elküldeni az \< \> :// \< Host \> : \< port \> \< elérési útjának \> . A használt port a háttérbeli HTTP-beállításokban definiált port lesz.
+> A hivatkozáshoz egyéni mintavételt kell elküldeni a \<protocol\> :// \<host\> : \<port\> \<path\> . A használt port a háttérbeli HTTP-beállításokban definiált port lesz.
 
 ## <a name="nsg-considerations"></a>NSG szempontok
 

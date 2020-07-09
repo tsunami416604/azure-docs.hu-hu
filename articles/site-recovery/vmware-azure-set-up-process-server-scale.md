@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711952"
 ---
 # <a name="scale-with-additional-process-servers"></a>Skálázás további folyamat-kiszolgálókkal
 
@@ -52,9 +51,9 @@ A további folyamat-kiszolgáló előfeltételeit a következő táblázat fogla
 Töltse le a Process Server telepítési fájlját a következőképpen:
 
 1. Jelentkezzen be a Azure Portalba, és keresse meg a Recovery Services-tárolót.
-2. Nyissa meg **site Recovery-infrastruktúra** > **VMware-és fizikai gépek** > **konfigurációs kiszolgálóit** (a VMware & fizikai gépeknél).
+2. Nyissa meg **site Recovery-infrastruktúra**  >  **VMware-és fizikai gépek**  >  **konfigurációs kiszolgálóit** (a VMware & fizikai gépeknél).
 3. Válassza ki a konfigurációs kiszolgálót a kiszolgáló adatainak részletezéséhez. Ezután kattintson a **+ folyamat kiszolgáló**elemre.
-4. A **Process Server** >  hozzáadása lapon válassza ki,**hogy hová szeretné telepíteni a Process Servert**, válassza a **helyszíni kibővíthető folyamat kiszolgálójának központi telepítése**lehetőséget.
+4. A **Process Server hozzáadása**  >   lapon válassza ki,**hogy hová szeretné telepíteni a Process Servert**, válassza a **helyszíni kibővíthető folyamat kiszolgálójának központi telepítése**lehetőséget.
 
    ![Kiszolgálók hozzáadása lap](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Kattintson **a Microsoft Azure site Recovery egyesített telepítő letöltése**elemre. Ezzel letölti a telepítési fájl legújabb verzióját.

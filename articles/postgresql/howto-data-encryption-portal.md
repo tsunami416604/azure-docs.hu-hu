@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan állíthatja be és kezelheti a Azure Database 
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00fd6ff9d79a59421a13d02ad4bafcf3f0a964fa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457977"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119667"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Adattitkosítás Azure Database for PostgreSQL önálló kiszolgáló számára a Azure Portal használatával
 
@@ -41,7 +41,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és kezelheti a Azure
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>A megfelelő engedélyek beállítása a kulcsfontosságú műveletekhez
 
-1. A Key Vault területen válassza a **hozzáférési szabályzatok** > **hozzáférési házirend hozzáadása**lehetőséget.
+1. A Key Vault területen válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**lehetőséget.
 
    ![Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
@@ -69,7 +69,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és kezelheti a Azure
 
 Miután Azure Database for PostgreSQL egy kiszolgálót a Key Vault tárolt ügyfél felügyelt kulcsával, a kiszolgáló minden újonnan létrehozott példánya is titkosítva lesz. Ezt az új másolatot helyi vagy geo-visszaállítási művelettel vagy replika (helyi/régió) művelettel teheti meg. Tehát titkosított PostgreSQL-kiszolgáló esetén a következő lépésekkel hozhat létre titkosított visszaállított kiszolgálót.
 
-1. A kiszolgálón válassza az **Áttekintés** > **visszaállítás**lehetőséget.
+1. A kiszolgálón válassza az **Áttekintés**  >  **visszaállítás**lehetőséget.
 
    ![Képernyőkép a Azure Database for PostgreSQLről, áttekintés és visszaállítás kiemelve](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
@@ -81,7 +81,7 @@ Miután Azure Database for PostgreSQL egy kiszolgálót a Key Vault tárolt ügy
 
    ![Képernyőkép a Azure Database for PostgreSQLről, a nem elérhető állapot kiemelésével](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. A kiszolgáló elérhetővé tételéhez érvényesítse újra a kulcsot a visszaállított kiszolgálón. Válassza **az adattitkosítás** > **újraellenőrzése kulcsot**.
+3. A kiszolgáló elérhetővé tételéhez érvényesítse újra a kulcsot a visszaállított kiszolgálón. Válassza **az adattitkosítás**  >  **újraellenőrzése kulcsot**.
 
    > [!NOTE]
    > Az első újraellenőrzési kísérlet sikertelen lesz, mert az új kiszolgáló egyszerű szolgáltatásának hozzáférést kell adni a kulcstartóhoz. Az egyszerű szolgáltatásnév létrehozásához válassza a **kulcs újraérvényesítése**lehetőséget, amely hibaüzenetet jelenít meg, de létrehozza az egyszerű szolgáltatásnevet. Ezt követően tekintse meg a jelen cikk korábbi részében [ismertetett lépéseket](#set-the-right-permissions-for-key-operations) .
@@ -94,6 +94,6 @@ Miután Azure Database for PostgreSQL egy kiszolgálót a Key Vault tárolt ügy
 
    ![Képernyőkép a Azure Database for PostgreSQLről, amely a visszaállított funkciókat mutatja](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  További információ az adattitkosításról: [Azure Database for PostgreSQL egykiszolgálós adattitkosítás az ügyfél által felügyelt kulccsal](concepts-data-encryption-postgresql.md).

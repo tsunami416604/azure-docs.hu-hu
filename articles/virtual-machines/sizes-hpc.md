@@ -1,26 +1,20 @@
 ---
 title: Azure-beli VM-méretek – HPC | Microsoft Docs
 description: Felsorolja a nagy teljesítményű számítástechnikai virtuális gépek számára elérhető különböző méreteket az Azure-ban. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
-ms.reviewer: jonbeck
-ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.reviewer: jushiman
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850446"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -44,13 +38,13 @@ A HPC VM-méretek többsége (HBv2, HB, HC, H16r, H16mr, A8 és A9) egy hálóza
 Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBand (IB) hálózaton keresztül kommunikáljanak, a HBv2 HDR-díjszabása, a HB, az HC, a FDR díjszabása pedig a H16r, a H16mr és a RDMA-kompatibilis N sorozatú virtuális gépek esetében, valamint az A8-as és A9-es VM-EK QDR-díjait. Ezek a RDMA-képességek növelhetik bizonyos Message Passing Interface-(MPI-) alkalmazások méretezhetőségét és teljesítményét. A sebességgel kapcsolatos további információkért tekintse meg az ezen a lapon található táblázatok részleteit.
 
 > [!NOTE]
-> Az Azure HPC-ben a virtuális gépek két osztálya van attól függően, hogy az SR-IOV engedélyezve van-e a InfiniBand. Jelenleg a InfiniBand-kompatibilis virtuális gépek SR-IOV a következők: HBv2, HB, HC és NCv3. A InfiniBand-kompatibilis virtuális gépek többi része nem engedélyezett az SR-IOV.
+> Az Azure HPC-ben a virtuális gépek két osztálya van attól függően, hogy az SR-IOV engedélyezve van-e a InfiniBand. Jelenleg a InfiniBand-kompatibilis virtuális gépek SR-IOV a következők: HBv2, HB, HC, NCv3 és NDv2. A InfiniBand-kompatibilis virtuális gépek többi része nem engedélyezett az SR-IOV.
 > Az IB protokollon keresztüli RDMA minden RDMA-kompatibilis virtuális gép esetében támogatott.
 > Az IB protokollon keresztüli IP-cím csak az SR-IOV-kompatibilis virtuális gépeken támogatott.
 
-- **Operációs rendszer** – a Linux a HPC-alapú virtuális gépek, disztribúciók, például a CentOS, a RHEL, az Ubuntu és a SUSE együttes használatát is támogatja. A Windows-támogatással kapcsolatban a HPC sorozatú virtuális gépeken a Windows Server 2016 támogatott. A Windows Server 2012 R2, a Windows Server 2012 is támogatott a nem SR-IOV-kompatibilis virtuális gépeken.
+- **Operációs rendszer** – a Linux a HPC-alapú virtuális gépek esetében nagyon jól támogatott; általában a CentOS, a RHEL, az Ubuntu és a SUSE rendszerű disztribúciókat használják. A Windows-támogatással kapcsolatban a Windows Server 2016-es és újabb verziói támogatottak az összes HPC sorozatú virtuális gépen. A Windows Server 2012 R2, a Windows Server 2012 is támogatott a nem SR-IOV-kompatibilis virtuális gépeken (H16r, H16mr, A8 és A9). Vegye figyelembe, hogy [a Windows Server 2012 R2 nem támogatott a HBv2 és más, több mint 64 (virtuális vagy fizikai) magokkal rendelkező virtuális gépeken](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
-- **MPI** – az SR-IOV által engedélyezett virtuálisgép-méretek az Azure-ban (HBV2, HB, HC, NCv3) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED.
+- **MPI** – az SR-IOV engedélyezett virtuálisgép-méretek az Azure-ban (HBV2, HB, HC, NCv3, NDv2) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED.
 A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
 
 - **InfiniBandDriver<Linux | Windows>** virtuálisgép-BŐVÍTMÉNY RDMA-kompatibilis virtuális gépeken, adja hozzá a InfiniBandDriver<Linux rendszerhez | Windows> bővítmény a InfiniBand engedélyezéséhez. Linux rendszeren a InfiniBandDriverLinux virtuálisgép-bővítmény telepíti a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. Windows rendszeren a InfiniBandDriverWindows virtuálisgép-bővítmény telepíti a Windows Network Direct-illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz.
@@ -92,7 +86,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Virtual Machines** – a RDMA-kompatibilis HPC-alapú virtuális gépeket ugyanabban a méretezési csoporton vagy rendelkezésre állási csoporton helyezheti üzembe (ha a Azure Resource Manager üzembe helyezési modellt használja). Ha a klasszikus üzemi modellt használja, telepítse a virtuális gépeket ugyanabban a felhőalapú szolgáltatásban.
 
-- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban (VMSS) ellenőrizze, hogy a központi telepítést egyetlen elhelyezési csoportra korlátozza-e a VMSS belüli InfiniBand-kommunikációra. Például egy Resource Manager-sablonban állítsa be a `singlePlacementGroup` tulajdonságot a `true`következőre:. Vegye figyelembe, hogy a `singlePlacementGroup` tulajdonsággal megadható maximális VMSS- `true` méret alapértelmezés szerint 100 virtuális gépenként van korlátozva. Ha a HPC-feladatok skálázása egy VMSS-bérlőnél több mint 100 virtuális gépre van szüksége, akkor a növeléshez igénybe vehet egy [online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) ingyenesen. Az egyetlen VMSS lévő virtuális gépek számának korlátja 300-ra növelhető. Vegye figyelembe, hogy a virtuális gépek a rendelkezésre állási csoportokkal való telepítésekor a maximális korlát a rendelkezésre állási csoporton 200 virtuális gépenként érhető el.
+- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban (VMSS) ellenőrizze, hogy a központi telepítést egyetlen elhelyezési csoportra korlátozza-e a VMSS belüli InfiniBand-kommunikációra. Például egy Resource Manager-sablonban állítsa be a tulajdonságot a következőre: `singlePlacementGroup` `true` . Vegye figyelembe, hogy a tulajdonsággal megadható maximális VMSS `singlePlacementGroup` -méret `true` alapértelmezés szerint 100 virtuális gépenként van korlátozva. Ha a HPC-feladatok skálázása egy VMSS-bérlőnél több mint 100 virtuális gépre van szüksége, akkor a növeléshez igénybe vehet egy [online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) ingyenesen. Az egyetlen VMSS lévő virtuális gépek számának korlátja 300-ra növelhető. Vegye figyelembe, hogy a virtuális gépek a rendelkezésre állási csoportokkal való telepítésekor a maximális korlát a rendelkezésre állási csoporton 200 virtuális gépenként érhető el.
 
 - **MPI a virtuális gépek között** – ha RDMA (például MPI-kommunikációt használ) a virtuális gépek (VM-EK) között kell lennie, ügyeljen arra, hogy a virtuális gépek ugyanabban a virtuálisgép-méretezési csoporton vagy rendelkezésre állási csoporton belül legyenek.
 
@@ -100,7 +94,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Azure batch** – hozzon létre egy [Azure batch](/azure/batch/) -készletet az MPI-munkaterhelések futtatásához. Ha Azure Batch használatával MPI-alkalmazások futtatásához nagy számítási igényű példányokat szeretne használni, tekintse meg a [többpéldányos feladatok használata a Message Passing Interface (MPI) alkalmazások Azure batch-ben való futtatásához](../batch/batch-mpi.md)című témakört.
 
-- **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) olyan futásidejű környezetet tartalmaz az MS-MPI-hez, amely az Azure RDMA-hálózatot használja RDMA-kompatibilis Linux rendszerű virtuális gépeken való üzembe helyezéskor. Központi telepítések például: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- **Microsoft HPC Pack**  -  A [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) tartalmaz egy futásidejű környezetet az MS-MPI számára, amely az Azure RDMA hálózatot használja RDMA-kompatibilis Linux virtuális gépeken való üzembe helyezéskor. Központi telepítések például: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 

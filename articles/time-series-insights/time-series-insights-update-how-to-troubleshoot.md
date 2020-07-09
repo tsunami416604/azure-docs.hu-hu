@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80152652"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Előzetes verziójú környezet diagnosztizálása és megoldása
@@ -92,9 +92,9 @@ Válassza ki azokat az eseményforrás (ka) t, amelyekről leállt a betöltés,
 Győződjön meg arról, hogy a név és az érték megfelel a következő szabályoknak:
 
 * Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
-* Az eseményforrás által a JSON-karakterláncként kapott timestamp tulajdonság értéke formátuma `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Ilyen karakterlánc például: `“2008-04-12T12:53Z”`.
+* Az eseményforrás által a JSON-karakterláncként kapott timestamp tulajdonság értéke formátuma `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Ilyen karakterlánc például: `“2008-04-12T12:53Z”` .
 
-Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Preview Explorer használata. A Time Series Insights Preview Explorerben a diagramon kiválaszthat egy időszakot, miután megadták az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, és válassza az **események feltárása** lehetőséget. Az első oszlop fejléce az időbélyeg-tulajdonság neve. A szó `($ts)` `Timestamp`mellett kell lennie a következő helyett:
+Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Preview Explorer használata. A Time Series Insights Preview Explorerben a diagramon kiválaszthat egy időszakot, miután megadták az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, és válassza az **események feltárása** lehetőséget. Az első oszlop fejléce az időbélyeg-tulajdonság neve. `($ts)`A szó mellett kell lennie a következő `Timestamp` helyett:
 
 * `(abc)`, amely azt jelzi, hogy Time Series Insights beolvassa az adatértékeket karakterláncként.
 * A **Naptár** ikon, amely azt jelzi, hogy Time Series Insights beolvassa az adatértéket datetime formátumban.

@@ -4,12 +4,11 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025101"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057823"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -22,7 +21,7 @@ A biztonsági mentési szabályzat módosításakor hozzáadhat új elemeket, el
 - **Elemek hozzáadása** ezt a lehetőséget csak új elemek biztonsági mentéshez való hozzáadásához használja. Meglévő elemek eltávolításához használja az **elemek eltávolítása** vagy a **kizárási beállítások** lehetőséget.  
 - **Elemek eltávolítása** ezzel a beállítással távolíthatja el az elemeket a biztonsági mentésből.
   - A **kizárási beállítások** használatával **távolítsa el**a köteten belüli összes elemet az elemek eltávolítása helyett.
-  - Egy kötet összes kijelölésének törlésével a rendszer a legutóbbi biztonsági mentés időpontjában megőrzési beállításokként megőrzi az elemek régi biztonsági másolatait, a módosítás hatóköre nélkül.
+  - Egy kötet összes kijelölésének törlésével a rendszer a legutóbbi biztonsági mentés időpontjában megőrzi az elemek régi biztonsági másolatait, a módosítás hatóköre nélkül.
   - Ha újra kiválasztja ezeket az elemeket, a rendszer az első teljes biztonsági mentést és az új házirend-módosításokat nem alkalmazza a régi biztonsági másolatokra.
   - A teljes kötet kijelölésének megszüntetése megőrzi a korábbi biztonsági mentést az adatmegőrzési szabályzat módosításának hatóköre nélkül.
 - **Kizárási beállítások** ezzel a beállítással kizárhat bizonyos elemeket a biztonsági mentésből.
@@ -125,7 +124,7 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
 
     ![Állítsa le az ütemezett biztonsági mentést.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. A rendszer felszólítja, hogy adjon meg egy biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell előkészítenie. Ehhez először jelentkezzen be a Azure Portalba.
-5. Nyissa meg **Recovery Services** > tároló**beállításai** > **tulajdonságokat**.
+5. Nyissa meg **Recovery Services**tároló  >  **beállításai**  >  **tulajdonságokat**.
 6. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
 7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson **az OK gombra**.
 
@@ -156,7 +155,7 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 
 A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helyszíni vagy helyi gép a MARS-ügynökkel vagy az Azure-ból történő biztonsági mentése vagy visszaállítása során. Ha elvesztette vagy elfelejtette a jelszót, akkor újra létrehozhatja a jelszót (ha a számítógép továbbra is regisztrálva van a Recovery Services-tárolóban, és a biztonsági mentés konfigurálva van), kövesse az alábbi lépéseket:
 
-- A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára** > , és**módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
+- A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára**, és  >  **módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
 - Válassza a **jelszó módosítása** jelölőnégyzetet.<br>
 - Adjon meg egy új jelszót, vagy kattintson a **jelszó létrehozása**lehetőségre.
 - Az új jelszó mentéséhez kattintson a **Tallózás** gombra.
@@ -167,6 +166,27 @@ A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helys
 
     ![Jelszó előállítása.](./media/backup-azure-manage-mars/passphrase2.png)
 - Győződjön meg arról, hogy a jelszó biztonságos módon mentve van egy másik helyen (a forrásoldali gépen kívül), lehetőleg a Azure Key Vault. Tartsa nyomon az összes hozzáférési kódot, ha több géppel is rendelkezik a MARS-ügynökökkel való biztonsági mentéssel.
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>Nem elérhető gépek biztonsági mentési információinak kezelése
+
+Ez a szakasz egy olyan forgatókönyvet tárgyal, amelyben a MARStal védett forrásoldali gép már nem érhető el, mert törölték, megsérült, kártevő szoftverrel/ransomware vagy leszerelt.
+
+Ezekhez a gépekhez a Azure Backup szolgáltatás biztosítja, hogy az utolsó helyreállítási pont nem jár le (azaz ne legyen metszve) a biztonsági mentési szabályzatban megadott megőrzési szabályoknak megfelelően. Ezért biztonságosan visszaállíthatja a gépet.  Vegye figyelembe a következő forgatókönyveket a biztonsági másolatban szereplő adatokon:
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>1. forgatókönyv: a forrásszámítógép nem érhető el, és már nem kell megőriznie a biztonsági mentési adatait
+
+- A biztonsági másolatban szereplő adatok törlését a Azure Portal a [cikkben](backup-azure-delete-vault.md#delete-protected-items-on-premises)felsorolt lépések alapján törölheti.
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>2. forgatókönyv: a forrásszámítógép nem érhető el, és meg kell őriznie a biztonsági másolatok adatait
+
+A MARS biztonsági mentési szabályzatának kezelése a MARS-konzolon, és nem a portálon keresztül történik. Ha meg kell hosszabbítani a meglévő helyreállítási pontok megőrzési beállításait a lejárat előtt, akkor vissza kell állítania a gépet, telepítenie kell a MARS-konzolt, és ki kell terjesztenie a szabályzatot.
+
+- A gép visszaállításához hajtsa végre a következő lépéseket:
+  - [A virtuális gép visszaállítása egy másik célszámítógépre](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - Hozza létre újra a célszámítógép nevét ugyanazzal az állomásnévvel, mint a forrásoldali géppel
+  - Telepítse az ügynököt, és regisztrálja újra ugyanazon a tárolón és ugyanazzal a jelszóval
+  - Indítsa el a MARS-ügyfelet, hogy az igényeinek megfelelően kiterjessze a megőrzési időtartamot
+- Az újonnan visszaállított, a MARStal védett gép továbbra is készít biztonsági mentést.  
 
 ## <a name="next-steps"></a>További lépések
 

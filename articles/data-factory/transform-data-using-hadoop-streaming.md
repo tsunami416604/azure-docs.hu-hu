@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83844627"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
@@ -71,19 +70,19 @@ Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevez
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | A tevékenység neve                     | Igen      |
-| leírás       | A tevékenység által használt szöveg leírása | Nem       |
-| típus              | Hadoop adatfolyam-továbbítási tevékenység esetén a tevékenység típusa HDInsightStreaming. | Igen      |
-| linkedServiceName | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| leképező            | A Mapper végrehajtható fájljának nevét adja meg | Igen      |
-| szűkítő           | A csökkentő végrehajtható fájl nevét adja meg | Igen      |
-| egyesítő          | A Combiner végrehajtható fájljának nevét adja meg | Nem       |
-| fileLinkedService | Hivatkozás egy Azure Storage társított szolgáltatásra, amely a leképezett Mapper, Combiner és redukáló programok tárolására szolgál. Itt csak az **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** és **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
-| filePath          | Adja meg a fileLinkedService által hivatkozott Azure Storage-ban tárolt Mapper, Combiner és redukáló programok elérési útjának tömbjét. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
-| bemenet             | Meghatározza a Mapper bemeneti fájljának WASB elérési útját. | Igen      |
-| output            | Megadja a szűkítő kimeneti fájljának WASB elérési útját. | Igen      |
-| getDebugInfo      | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
-| argumentumok         | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
+| name              | A tevékenység neve                     | Yes      |
+| leírás       | A tevékenység által használt szöveg leírása | No       |
+| típus              | Hadoop adatfolyam-továbbítási tevékenység esetén a tevékenység típusa HDInsightStreaming. | Yes      |
+| linkedServiceName | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Yes      |
+| leképező            | A Mapper végrehajtható fájljának nevét adja meg | Yes      |
+| szűkítő           | A csökkentő végrehajtható fájl nevét adja meg | Yes      |
+| egyesítő          | A Combiner végrehajtható fájljának nevét adja meg | No       |
+| fileLinkedService | Hivatkozás egy Azure Storage társított szolgáltatásra, amely a leképezett Mapper, Combiner és redukáló programok tárolására szolgál. Itt csak az **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** és **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | No       |
+| filePath          | Adja meg a fileLinkedService által hivatkozott Azure Storage-ban tárolt Mapper, Combiner és redukáló programok elérési útjának tömbjét. Az elérési út megkülönbözteti a kis- és nagybetűket. | Yes      |
+| bemenet             | Meghatározza a Mapper bemeneti fájljának WASB elérési útját. | Yes      |
+| output            | Megadja a szűkítő kimeneti fájljának WASB elérési útját. | Yes      |
+| getDebugInfo      | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | No       |
+| argumentumok         | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | No       |
 | meghatározza           | Adja meg a paramétereket kulcs/érték párokként a kaptár-parancsfájlon belüli hivatkozáshoz. | Nem       | 
 
 ## <a name="next-steps"></a>Következő lépések

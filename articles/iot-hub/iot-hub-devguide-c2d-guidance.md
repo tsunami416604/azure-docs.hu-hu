@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733228"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>A felhőből az eszközre irányuló kommunikációs útmutató
@@ -39,8 +38,8 @@ Itt látható a felhőből az eszközre irányuló különböző kommunikációs
 | Tartósság | A leválasztott eszközök nincsenek kapcsolatba. A megoldás háttér-végpontja értesítést kap arról, hogy az eszköz nincs csatlakoztatva. | A tulajdonság értékei megmaradnak az eszköz Twin-ben. Az eszköz a következő újracsatlakoztatáskor fogja olvasni. A tulajdonságértékek a [IoT hub lekérdezési nyelvvel](iot-hub-devguide-query-language.md)olvashatók be. | Az üzenetek IoT Hub akár 48 óráig is megmaradnak. |
 | Célokat | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egyetlen eszköz az **deviceId**alapján. |
 | Méret | A közvetlen metódusok maximális hasznos mérete 128 KB. | A kívánt tulajdonságok maximális mérete 32 KB. | Akár 64 KB-os üzenet. |
-| Frequency | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
-| Protocol (Protokoll) | A MQTT vagy a AMQP használatával érhető el. | A MQTT vagy a AMQP használatával érhető el. | Minden protokollon elérhető. Az eszköznek a HTTPS használatakor kell lekérdezni. |
+| Gyakoriság | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
+| Protokoll | A MQTT vagy a AMQP használatával érhető el. | A MQTT vagy a AMQP használatával érhető el. | Minden protokollon elérhető. Az eszköznek a HTTPS használatakor kell lekérdezni. |
 
 Ismerje meg, hogyan használhatók a közvetlen metódusok, a kívánt tulajdonságok és a felhőből az eszközre irányuló üzenetek a következő oktatóanyagokban:
 

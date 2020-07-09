@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464739"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
@@ -34,9 +33,9 @@ Azure Monitor naplókból származó adatok fogadása után az Azure számos oly
 
 Az [Azure Portalon](https://portal.azure.com)nyissa meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást.
 
-Válassza ki az **erőforrás\<-\>ServiceFabric nameOfOMSWorkspace**.
+Válassza ki az erőforrás- **ServiceFabric \<nameOfOMSWorkspace\> **.
 
-A `Summary`-ben a csempék egy gráf formájában jelennek meg az összes engedélyezett megoldáshoz, beleértve az egyiket a Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
+A-ben a `Summary` csempék egy gráf formájában jelennek meg az összes engedélyezett megoldáshoz, beleértve az egyiket a Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
 ![Service Fabric megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
@@ -82,7 +81,7 @@ A **lista elemre kattintva** megtekintheti a listában szereplő eseményeket. I
 
 ![Lekérdezés Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-A megbízható színészi eseményeket hasonló módon lehet megtekinteni. A megbízható szereplők részletes eseményeinek konfigurálásához módosítania `scheduledTransferKeywordFilter` kell a konfigurációt a diagnosztikai bővítmény konfigurációjában (lásd alább). Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
+A megbízható színészi eseményeket hasonló módon lehet megtekinteni. A megbízható szereplők részletes eseményeinek konfigurálásához módosítania kell a `scheduledTransferKeywordFilter` konfigurációt a diagnosztikai bővítmény konfigurációjában (lásd alább). Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
 
 ```json
 "EtwEventSourceProviderConfiguration": [

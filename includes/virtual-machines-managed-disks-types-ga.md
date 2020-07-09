@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6740ea320f2d950386da12eb44726e2c826b60a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90cd1d8968963d428eb2d1de4efb458b5f89ca74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80386095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436102"
 ---
 ## <a name="premium-ssd"></a>Prémium SSD
 
@@ -70,6 +70,6 @@ A felügyelt lemezek használatakor az alábbi számlázási szempontokat kell f
 - Kimenő adatforgalom
 - Tranzakciók száma
 
-**Felügyelt lemez mérete**: a felügyelt lemezek számlázása a kiosztott méret alapján történik. Az Azure leképezi a kiosztott méretet (felfelé kerekítve) a legközelebbi felajánlott lemez méretére. A felkínált lemezterület részleteiért tekintse meg az előző táblázatokat. Minden lemez egy támogatott kiosztott lemezre mutat, és ennek megfelelően történik a számlázás. Ha például egy 200 GiB-standard SSD kiépített, az a E15 (256 GiB) lemez méretére vonatkozó ajánlatot képezi le. A kiosztott lemezek számlázása óránként, az Premium Storage ajánlat havi díja alapján történik. Ha például kiépített egy E10 lemezt, és 20 óra elteltével törölte azt, akkor a E10-ajánlat díja 20 óra. Ez a lemezre írt tényleges adatok mennyiségétől függetlenül.
+**Felügyelt lemez mérete**: a felügyelt lemezek számlázása a kiosztott méret alapján történik. Az Azure leképezi a kiosztott méretet (felfelé kerekítve) a legközelebbi felajánlott lemez méretére. A felkínált lemezterület részleteiért tekintse meg az előző táblázatokat. Minden lemez egy támogatott kiosztott lemezre mutat, és ennek megfelelően történik a számlázás. Ha például egy 200 GiB-standard SSD kiépített, az a E15 (256 GiB) lemez méretére vonatkozó ajánlatot képezi le. A kiosztott lemezek számlázása óránként, a tárolási ajánlat havi díja alapján történik. Ha például kiépített egy E10 lemezt, és 20 óra elteltével törölte azt, akkor a E10-ajánlat díja 20 óra. Ez a lemezre írt tényleges adatok mennyiségétől függetlenül.
 
 **Pillanatképek**: a pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiosztott kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik.

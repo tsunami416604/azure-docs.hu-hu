@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe540dbb230f033f139e82325bf8e20846f5bfe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68883451"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832542"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérelmek küldése a Bing Spell Check API-nak
 
@@ -46,15 +46,18 @@ A probléma megoldásához a Bing Spell Check API kérelmet CORS-proxyn kereszt�
 
 Egyszerűen telepíthet egy CORS-proxyt, amely lehetővé teszi, hogy az [oktatóanyag-alkalmazás](../tutorials/spellcheck.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Ezután módosítsa a HTML-fájlban lévő Bing Spell Check API végpontot a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
+Ezután módosítsa a HTML-fájlban lévő Bing Spell Check API végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatt a kibontható HTTP-fejlécek szakaszban láthatja a `X-MSEdge-ClientID` fejlécet (többek között), és ellenőrizheti, hogy minden kérelem esetében azonos-e.
 
@@ -62,14 +65,14 @@ Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak
 
 Az alábbiakban egy olyan kérelem látható, amely az összes javasolt lekérdezési paramétert és fejlécet tartalmazza. Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához. 
   
-> ```  
-> GET https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?text=when+its+your+turn+turn,+john,+come+runing&mkt=en-us HTTP/1.1
-> Ocp-Apim-Subscription-Key: 123456789ABCDE  
-> X-MSEdge-ClientIP: 999.999.999.999  
-> X-Search-Location: lat:47.60357;long:-122.3295;re:100  
-> X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
-> Host: api.cognitive.microsoft.com  
-> ```  
+```http
+GET https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?text=when+its+your+turn+turn,+john,+come+runing&mkt=en-us HTTP/1.1
+Ocp-Apim-Subscription-Key: 123456789ABCDE  
+X-MSEdge-ClientIP: 999.999.999.999  
+X-Search-Location: lat:47.60357;long:-122.3295;re:100  
+X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
+Host: api.cognitive.microsoft.com  
+```
 
 Az alábbiakban az előző kérelemre adott válasz látható. A példában a Bing-specifikus válaszfejlécek is láthatók.
 

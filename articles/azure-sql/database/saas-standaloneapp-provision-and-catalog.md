@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042168"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Új bérlők kiépítése és katalogizálása az alkalmazással a bérlői SaaS-minták alapján
@@ -83,14 +82,14 @@ Ebben a feladatban megtudhatja, hogyan építheti ki az összes bérlői adatbá
 * **Regisztrálja a korábban telepített minta bérlői alkalmazásokat** .  Minden bérlő egy, a bérlő nevének kivonata alapján létrehozott kulccsal van regisztrálva.  A bérlő nevét a katalógus egy kiterjesztési táblájában is tárolja.
 
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\UserConfig.PSM* , és frissítse az **\<user\>** értéket a három minta alkalmazás telepítésekor használt értékre.  **Mentse a fájlt**.
-1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa **$Scenario = 1**. Telepítse a bérlői katalógust, és regisztrálja az előre meghatározott bérlőket.
+1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa be a **$Scenario = 1**. Telepítse a bérlői katalógust, és regisztrálja az előre meghatározott bérlőket.
 
 1. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi a sorba, `& $PSScriptRoot\New-Catalog.ps1` majd nyomja le az **F9**billentyűt.
 
     ![Töréspont beállítása nyomkövetéshez](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
 1. Futtassa a szkriptet az **F5**billentyű lenyomásával.
-1.  Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a New-Catalog. ps1 parancsfájl beléptetéséhez.
+1.  Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a New-Catalog.ps1 parancsfájlba lépéshez.
 1.  A szkript végrehajtásának nyomon követéséhez használja a Debug menüpontot, az F10 és az F11 billentyűt a függvények meghívásához.
     *   A PowerShell-parancsfájlok hibakeresésével kapcsolatos további információkért lásd: [Tippek a PowerShell-parancsfájlok használatához és hibakereséséhez](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
@@ -127,7 +126,7 @@ Ebben a feladatban megtudhatja, hogyan építhet ki egyetlen bérlős alkalmazá
 
 1. Vegyen fel egy töréspontot a szkriptbe úgy, hogy a kurzort az 49-es sorban helyezi el, amely a következőt adja meg: `& $PSScriptRoot\New-TenantApp.ps1` **F9**
 1. Futtassa a szkriptet az **F5**billentyű lenyomásával.
-1.  Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a New-Catalog. ps1 parancsfájl beléptetéséhez.
+1.  Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a New-Catalog.ps1 parancsfájlba lépéshez.
 1.  A szkript végrehajtásának nyomon követéséhez használja a Debug menüpontot, az F10 és az F11 billentyűt a függvények meghívásához.
 
 A bérlő üzembe helyezését követően megnyílik az új bérlő eseményeinek webhelye.

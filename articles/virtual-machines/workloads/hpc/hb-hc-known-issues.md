@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67707784"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>A HB és a HC sorozatú virtuális gépek ismert problémái
@@ -53,7 +53,7 @@ A HPC-rendszereken gyakran hasznos a memória megtisztítása a feladatok befeje
 
 ![A parancssor képernyőképe](./media/known-issues/cache-cleaning-1.png)
 
-A `numactl -H` (z) használatával megtudhatja, hogy a memória mely NUMAnode (ek) ba van pufferelt (valószínűleg az összes). A Linux rendszerben a felhasználók háromféleképpen tudják megtisztítani a gyorsítótárat, hogy a pufferelt vagy gyorsítótárazott memóriát "ingyenes" értékre állítsa vissza. A root vagy a sudo engedélyekkel kell rendelkeznie.
+`numactl -H`A (z) használatával megtudhatja, hogy a memória mely NUMAnode (ek) ba van pufferelt (valószínűleg az összes). A Linux rendszerben a felhasználók háromféleképpen tudják megtisztítani a gyorsítótárat, hogy a pufferelt vagy gyorsítótárazott memóriát "ingyenes" értékre állítsa vissza. A root vagy a sudo engedélyekkel kell rendelkeznie.
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]

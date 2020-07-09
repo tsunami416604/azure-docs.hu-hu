@@ -10,10 +10,9 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
 ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83675927"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-naplózás
@@ -87,7 +86,7 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
  A következő táblázat a napló neve egyes attribútumait ismerteti:
 
-|Attribútum|Description|
+|Attribútum|Leírás|
 |---------------|-----------------|
 |`<service-name>`|A tárolási szolgáltatás neve. Például: `blob` , `table` , vagy`queue`|
 |`YYYY`|A naplófájl négyjegyű éve. Például:`2011`|
@@ -111,7 +110,7 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
  Minden naplózási blobot metaadatok tárolnak, amelyek segítségével azonosíthatók a blob által tartalmazott naplózási adatok. Az alábbi táblázat az egyes metaadatok attribútumait ismerteti:
 
-|Attribútum|Description|
+|Attribútum|Leírás|
 |---------------|-----------------|
 |`LogType`|Leírja, hogy a napló tartalmazza-e az olvasási, írási és törlési műveletekkel kapcsolatos információkat. Ez az érték egy típust vagy mindhárom kombinációt tartalmazhat, vesszővel elválasztva.<br /><br /> 1. példa:`write`<br /><br /> 2. példa:`read,write`<br /><br /> 3. példa:`read,write,delete`|
 |`StartTime`|A napló bejegyzéseinek legkorábbi időpontja a ( `YYYY-MM-DDThh:mm:ssZ` ) formában. Például:`2011-07-31T18:21:46Z`|

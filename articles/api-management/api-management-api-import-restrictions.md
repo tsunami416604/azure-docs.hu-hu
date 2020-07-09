@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513371"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
@@ -57,15 +56,15 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 
 ### <a name="add-new-api-via-openapi-import"></a>Új API hozzáadása az OpenAPI import használatával
 
-Az OpenAPI dokumentumban található minden egyes művelethez létrejön egy új művelet, amely az Azure-erőforrás nevét és a megjelenítendő nevet fogja `operationId` beállítani `summary` a és a értékre. `operationId`az érték normalizált az alábbi szabályok szerint. `summary`az értéket a rendszer importálja, és a hossza 300 karakterre van korlátozva.
+Az OpenAPI dokumentumban található minden egyes művelethez létrejön egy új művelet, amely az Azure-erőforrás nevét és a megjelenítendő nevet fogja beállítani a és a értékre `operationId` `summary` . `operationId`az érték normalizált az alábbi szabályok szerint. `summary`az értéket a rendszer importálja, és a hossza 300 karakterre van korlátozva.
 
-Ha `operationId` nincs megadva (azaz nincs jelen, `null`vagy üres), az Azure-Erőforrás neve értéket a http-metódus és az elérésiút-sablon kombinálásával hozza létre, például: `get-foo`.
+Ha `operationId` nincs megadva (azaz nincs jelen, `null` vagy üres), az Azure-Erőforrás neve értéket a http-metódus és az elérésiút-sablon kombinálásával hozza létre, például: `get-foo` .
 
-Ha `summary` nincs megadva (azaz nincs jelen, `null`vagy üres), `display name` az érték a `operationId`következőre lesz beállítva:. Ha `operationId` nincs megadva, a megjelenített név értéke a http-metódus és az elérésiút-sablon kombinálásával jön létre, `Get - /foo`például:.
+Ha `summary` nincs megadva (azaz nincs jelen, `null` vagy üres), `display name` az érték a következőre lesz beállítva: `operationId` . Ha `operationId` nincs megadva, a megjelenített név értéke a http-metódus és az elérésiút-sablon kombinálásával jön létre, például: `Get - /foo` .
 
 ### <a name="update-an-existing-api-via-openapi-import"></a>Meglévő API frissítése a OpenAPI-importálás használatával
 
-A meglévő API importálása során a rendszer az OpenAPI dokumentumban leírt API-ra módosítja. A OpenAPI-dokumentum minden művelete a meglévő művelettel egyezik meg, ha `operationId` az értékét összehasonlítja a meglévő művelet Azure-erőforrásának nevével.
+A meglévő API importálása során a rendszer az OpenAPI dokumentumban leírt API-ra módosítja. A OpenAPI-dokumentum minden művelete a meglévő művelettel egyezik meg, ha az értékét összehasonlítja a `operationId` meglévő művelet Azure-erőforrásának nevével.
 
 Ha a rendszer egyezést talál, a meglévő művelet tulajdonságai "helyben" lesznek frissítve.
 
@@ -75,20 +74,20 @@ A rendszer törli az összes meglévő nem egyező műveletet.
 
 A következő irányelveket követve hatékonyabbá teheti az importálást:
 
-- Győződjön meg arról, `operationId` hogy minden művelethez meg kell adni a tulajdonságot.
-- A kezdeti importálás `operationId` után ne módosítsa a módosítást.
-- Soha ne `operationId` módosítsa és http metódust vagy elérésiút-sablont egyszerre.
+- Győződjön meg arról, hogy minden művelethez meg kell adni a `operationId` tulajdonságot.
+- A kezdeti importálás után ne módosítsa a módosítást `operationId` .
+- Soha ne módosítsa `operationId` és http metódust vagy elérésiút-sablont egyszerre.
 
 ### <a name="export-api-as-openapi"></a>API exportálása OpenAPI
 
-Az egyes műveletekhez az Azure `operationId`-erőforrás neve lesz exportálva, és a `summary`megjelenített név lesz exportálva.
+Az egyes műveletekhez az Azure-Erőforrás neve lesz exportálva `operationId` , és a megjelenített név lesz exportálva `summary` .
 A operationId vonatkozó normalizálás szabályai
 
 - Kis-és nagybetűkre konvertálható.
-- Cserélje le a nem alfanumerikus karakterek egyes sorozatait egyetlen kötőjeltel, például `GET-/foo/{bar}?buzz={quix}` a következőre:. `get-foo-bar-buzz-quix-`
-- A kötőjelek mindkét oldalon láthatók, például a `get-foo-bar-buzz-quix-` következő lesz:`get-foo-bar-buzz-quix`
+- Cserélje le a nem alfanumerikus karakterek egyes sorozatait egyetlen kötőjeltel, például a következőre: `GET-/foo/{bar}?buzz={quix}` `get-foo-bar-buzz-quix-` .
+- A kötőjelek mindkét oldalon láthatók, például a következő `get-foo-bar-buzz-quix-` lesz:`get-foo-bar-buzz-quix`
 - Csonkítás 76 karakterre, az erőforrás neveként legfeljebb négy karakterből állhat.
-- Ha szükséges, használja a további négy karaktert a deduplikáló utótaghoz, a következő formátumban `-1, -2, ..., -999`:.
+- Ha szükséges, használja a további négy karaktert a deduplikáló utótaghoz, a következő formátumban: `-1, -2, ..., -999` .
 
 
 ## <a name="wsdl"></a><a name="wsdl"> </a>WSDL

@@ -6,15 +6,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565014"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Az adatok feltöltésével kapcsolatos problémák elhárításához szükséges naplók ismertetése Azure Data Box Disk
 
@@ -22,7 +22,7 @@ Ez a cikk Microsoft Azure Data Box Diskra vonatkozik, és leírja az adatok Azur
 
 ## <a name="about-upload-logs"></a>A naplók feltöltése
 
-Az adatközpontban `_error.xml` az Azure-ba való feltöltéskor a `_verbose.xml` rendszer minden egyes Storage-fiókhoz hoz létre fájlokat. Ezeket a naplókat a rendszer ugyanarra a Storage-fiókba tölti fel, amelyet az adatok feltöltéséhez használt. 
+Az adatközpontban az Azure-ba való feltöltéskor a rendszer `_error.xml` `_verbose.xml` minden egyes Storage-fiókhoz hoz létre fájlokat. Ezeket a naplókat a rendszer ugyanarra a Storage-fiókba tölti fel, amelyet az adatok feltöltéséhez használt. 
 
 Mindkét napló ugyanabban a formátumban van, és XML-leírást tartalmaz azokról az eseményekről, amelyek az adatok lemezről az Azure Storage-fiókba való másolása során történtek.
 
@@ -91,7 +91,7 @@ Alább látható egy minta `_verbose.xml` . Ebben az esetben a rendelés sikeres
 </DriveLog>
 ```
 
-Ugyanezen megrendelésnél az alább látható egy `_error.xml` minta.
+Ugyanezen megrendelésnél az `_error.xml` alább látható egy minta.
 
 ```xml
 
@@ -112,11 +112,11 @@ Ugyanezen megrendelésnél az alább látható egy `_error.xml` minta.
 
 Az `_error.xml` alábbi minta látható, ahol a rendelés hibákkal fejeződött be. 
 
-Ebben az esetben a hibaüzenet tartalmaz egy `Summary` szakaszt és egy másik szakaszt, amely az összes fájl szintű hibát tartalmazza. 
+Ebben az esetben a hibaüzenet `Summary` tartalmaz egy szakaszt és egy másik szakaszt, amely az összes fájl szintű hibát tartalmazza. 
 
-A `Summary` tartalmazza a `ValidationErrors` és a `CopyErrors`. Ebben az esetben a rendszer 8 fájlt vagy mappát töltött fel az Azure-ba, és nincs érvényesítési hiba. Az Azure Storage-fiókba való másoláskor 5 fájl vagy mappa sikeresen feltöltve. A fennmaradó 3 fájlt vagy mappát az Azure-tároló elnevezési konvenciói alapján átnevezték, majd sikeresen feltöltöttük az Azure-ba.
+A `Summary` tartalmazza a `ValidationErrors` és a `CopyErrors` . Ebben az esetben a rendszer 8 fájlt vagy mappát töltött fel az Azure-ba, és nincs érvényesítési hiba. Az Azure Storage-fiókba való másoláskor 5 fájl vagy mappa sikeresen feltöltve. A fennmaradó 3 fájlt vagy mappát az Azure-tároló elnevezési konvenciói alapján átnevezték, majd sikeresen feltöltöttük az Azure-ba.
 
-A fájl szintjének állapota az `BlobStatus` , amely a Blobok feltöltésére tett összes műveletet ismerteti. Ebben az esetben a rendszer három tárolót nevez át, mert azok a mappák, amelyekhez az adatmásolt, nem feleltek meg a tárolók Azure elnevezési konvencióinak. A tárolókban feltöltött Blobok esetében az új tároló neve, az Azure-beli blob elérési útja, az eredeti érvénytelen elérési út és a blob mérete is szerepel.
+A fájl szintjének állapota az, `BlobStatus` amely a Blobok feltöltésére tett összes műveletet ismerteti. Ebben az esetben a rendszer három tárolót nevez át, mert azok a mappák, amelyekhez az adatmásolt, nem feleltek meg a tárolók Azure elnevezési konvencióinak. A tárolókban feltöltött Blobok esetében az új tároló neve, az Azure-beli blob elérési útja, az eredeti érvénytelen elérési út és a blob mérete is szerepel.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -156,7 +156,7 @@ A fájl szintjének állapota az `BlobStatus` , amely a Blobok feltöltésére t
 
 Az Azure-ba történő adatfeltöltés során generált hibák a következő táblázatban láthatók.
 
-| Hibakód | Leírás                   |
+| Hibakód | Description                   |
 |-------------|------------------------------|
 |`None` |  A művelet sikeresen befejeződött.           |
 |`Renamed` | Sikerült átnevezni a blobot.   |
@@ -168,17 +168,17 @@ Az Azure-ba történő adatfeltöltés során generált hibák a következő tá
 |`ManagedDiskCreationTerminalFailure` | Nem sikerült feltölteni a felügyelt lemezként. A fájlok az átmeneti Storage-fiókban az oldal Blobok néven érhetők el. Manuálisan is átalakíthatja a blobokat a felügyelt lemezekre.  |
 |`DiskConversionNotStartedTierInfoMissing` | Mivel a VHD-fájlt az előkészített rétegek mappáján kívül másolták, a felügyelt lemez nem lett létrehozva. A fájlt a rendszer a rendelés létrehozásakor megadott módon feltölti az átmeneti tárolási fiókba. Manuálisan is konvertálhatja egy felügyelt lemezre.|
 |`InvalidWorkitem` | Nem tölthetők fel az adatok, mert nem felel meg az Azure elnevezési és korlátozási konvencióinak.|
-|`InvalidPageBlobUploadAsBlockBlob` | Egy előtaggal `databoxdisk-invalid-pb-`rendelkező tárolóban van feltöltve blokk-blobként.|
-|`InvalidAzureFileUploadAsBlockBlob` | A tárolóban lévő blokk blobként van feltöltve a-előtaggal `databoxdisk-invalid-af`.|
-|`InvalidManagedDiskUploadAsBlockBlob` | A tárolóban lévő blokk blobként van feltöltve a-előtaggal `databoxdisk-invalid-md`.|
-|`InvalidManagedDiskUploadAsPageBlob` |Egy előtaggal `databoxdisk-invalid-md-`rendelkező tárolóban fel van töltve az oldal blobként. |
-|`MovedToOverflowShare` |A fájlok új megosztásra való feltöltésekor az eredeti megosztás mérete túllépte az Azure-beli maximális méretkorlátot. Az új fájlmegosztás nevének az eredeti neve a (z `-2`) előtaggal.   |
-|`MovedToDefaultAzureShare` |Olyan feltöltött fájlok, amelyek egyetlen mappa sem részei az alapértelmezett megosztásnak. A megosztás neve a ( `databox-`z) karakterlánccal kezdődik. |
-|`ContainerRenamed` |A fájlok tárolója nem felelt meg az Azure elnevezési konvencióinak, és át lett nevezve. Az új név a ( `databox-` z) előtaggal kezdődik, és az eredeti név SHA1-kivonatával van ellátva. |
-|`ShareRenamed` |A fájlok megosztása nem felelt meg az Azure elnevezési konvencióinak, és át lett nevezve. Az új név a ( `databox-` z) előtaggal kezdődik, és az eredeti név SHA1 kivonatával van ellátva. |
-|`BlobRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse meg `BlobPath` az új név mezőjét. |
-|`FileRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse meg `FileStoragePath` az új név mezőjét. |
-|`DiskRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse meg `BlobPath` az új név mezőjét. |
+|`InvalidPageBlobUploadAsBlockBlob` | Egy előtaggal rendelkező tárolóban van feltöltve blokk-blobként `databoxdisk-invalid-pb-` .|
+|`InvalidAzureFileUploadAsBlockBlob` | A tárolóban lévő blokk blobként van feltöltve a-előtaggal `databoxdisk-invalid-af` .|
+|`InvalidManagedDiskUploadAsBlockBlob` | A tárolóban lévő blokk blobként van feltöltve a-előtaggal `databoxdisk-invalid-md` .|
+|`InvalidManagedDiskUploadAsPageBlob` |Egy előtaggal rendelkező tárolóban fel van töltve az oldal blobként `databoxdisk-invalid-md-` . |
+|`MovedToOverflowShare` |A fájlok új megosztásra való feltöltésekor az eredeti megosztás mérete túllépte az Azure-beli maximális méretkorlátot. Az új fájlmegosztás nevének az eredeti neve a (z) előtaggal `-2` .   |
+|`MovedToDefaultAzureShare` |Olyan feltöltött fájlok, amelyek egyetlen mappa sem részei az alapértelmezett megosztásnak. A megosztás neve a (z) karakterlánccal kezdődik `databox-` . |
+|`ContainerRenamed` |A fájlok tárolója nem felelt meg az Azure elnevezési konvencióinak, és át lett nevezve. Az új név a (z `databox-` ) előtaggal kezdődik, és az eredeti név SHA1-kivonatával van ellátva. |
+|`ShareRenamed` |A fájlok megosztása nem felelt meg az Azure elnevezési konvencióinak, és át lett nevezve. Az új név a (z `databox-` ) előtaggal kezdődik, és az eredeti név SHA1 kivonatával van ellátva. |
+|`BlobRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse `BlobPath` meg az új név mezőjét. |
+|`FileRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse `FileStoragePath` meg az új név mezőjét. |
+|`DiskRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse `BlobPath` meg az új név mezőjét. |
 
 
 ## <a name="next-steps"></a>További lépések

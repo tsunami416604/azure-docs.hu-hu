@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838467"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Előzetes verzió: rendszerkép létrehozása virtuális gépről
@@ -38,7 +37,7 @@ A cikkben végzett munka során szükség esetén cserélje le az erőforrások 
 
 ## <a name="get-the-gallery"></a>A katalógus beszerzése
 
-Az összes gyűjteményt és képdefiníciót név szerint listázhatja. Az eredmények formátuma `gallery\image definition\image version`.
+Az összes gyűjteményt és képdefiníciót név szerint listázhatja. Az eredmények formátuma `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -54,7 +53,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>A virtuális gép beszerzése
 
-A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Miután megismerte a virtuális gép nevét és a hozzá tartozó erőforráscsoportot, `Get-AzVM` újra használhatja a virtuálisgép-objektum beolvasását és egy változóban történő tárolását. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$sourceVm*változóhoz. 
+A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Miután megismerte a virtuális gép nevét és a hozzá tartozó erőforráscsoportot, újra használhatja a virtuálisgép- `Get-AzVM` objektum beolvasását és egy változóban történő tárolását. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$sourceVm*változóhoz. 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -75,13 +74,13 @@ Stop-AzVM `
 
 A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. A rendszer a rendszerképpel kapcsolatos információk kezelésére szolgál. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ha általánosítja a virtuális gépet (a Windows Sysprep használatával vagy a Linux waagent), akkor létre kell hoznia egy rendszerkép-definíciót a `-OsState generalized`használatával. Ha nem általánosítta a virtuális gépet, hozzon létre egy rendszerkép `-OsState specialized`-definíciót a használatával.
+A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ha általánosítja a virtuális gépet (a Windows Sysprep használatával vagy a Linux waagent), akkor létre kell hoznia egy rendszerkép-definíciót a használatával `-OsState generalized` . Ha nem általánosítta a virtuális gépet, hozzon létre egy rendszerkép-definíciót a használatával `-OsState specialized` .
 
 További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
 Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy speciális, Windows rendszerű virtuális géphez van. A Linux rendszerű képek definíciójának létrehozásához használja `-OsType Linux`a következőt:. 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy speciális, Windows rendszerű virtuális géphez van. A Linux rendszerű képek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -97,7 +96,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-an-image-version"></a>Rendszerkép-verzió létrehozása
+## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
 Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
@@ -105,7 +104,7 @@ A képverzió megengedett karaktereinek száma számok és időszakok. A számok
 
 Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer replikálja az *USA nyugati középső* régiójában és az *USA déli középső* régiójában. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a *forrás* régiót is meg kell adnia a replikálás céljának.
 
-A virtuális gépről származó rendszerkép-verzió létrehozásához használja `$vm.Id.ToString()` a következőt: `-Source`.
+A virtuális gépről származó rendszerkép-verzió létrehozásához használja a `$vm.Id.ToString()` következőt: `-Source` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -124,7 +123,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A feladatok előrehaladásának megtekintéséhez írja be a következőt `$job.State`:.
+Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A feladatok előrehaladásának megtekintéséhez írja be a következőt: `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -133,7 +132,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS`vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
 >
 
 ## <a name="next-steps"></a>További lépések

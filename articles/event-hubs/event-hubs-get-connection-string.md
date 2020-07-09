@@ -1,21 +1,14 @@
 ---
 title: A kapcsolatok karakterláncának beolvasása – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk útmutatást nyújt olyan kapcsolati karakterlánc beszerzéséhez, amelyet az ügyfelek használhatnak az Azure-Event Hubshoz való kapcsolódáshoz.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 02/19/2019
-ms.author: spelluru
-ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320493"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs-kapcsolatok karakterláncának beolvasása
 
@@ -37,7 +30,7 @@ Például a következőhöz hasonló kapcsolatok karakterlánca lehet:`Endpoint=
 Ez a cikk végigvezeti a kapcsolatok sztring beszerzésének különböző módjain.
 
 ## <a name="get-connection-string-from-the-portal"></a>A portálon keresztüli kapcsolatok karakterláncának beolvasása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com). 
 2. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget. 
 3. Az **elemzés** szakaszban válassza a **Event Hubs** lehetőséget. 
 4. Az Event hubok listájában válassza ki az Event hub elemet.

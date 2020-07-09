@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: 780d3ab5047bff321d0c554880ba2995bcf25524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70102914"
 ---
 # <a name="scaling-media-processing-overview"></a>Médiafeldolgozás skálázása – áttekintés 
@@ -31,7 +31,7 @@ A fenntartott egység típusának meghatározása mellett megadhatja, hogy a fi�
 ## <a name="choosing-between-different-reserved-unit-types"></a>Különböző fenntartott egységek típusának kiválasztása
 A következő táblázat segít dönteni a különböző kódolási sebességek kiválasztásakor. Emellett néhány teljesítményteszt-esetet is biztosít [egy videón, amelyet](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) a saját tesztek elvégzéséhez tölthet le:
 
-|RU-típus|Forgatókönyv|Példa a [7 perces 1080p videó](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) eredményeire|
+|RU-típus|Eset|Példa a [7 perces 1080p videó](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) eredményeire|
 |---|---|---|
 | **S1**|Egyetlen bitráta kódolása. <br/>A fájlok SD-vagy alacsonyabb felbontásban, nem érzékenyek, alacsonyak.|A "H264 Single bitráta SD 16x9" használatával az egyetlen sávszélességű SD-feloldási MP4-fájl kódolása körülbelül 7 percet vesz igénybe.|
 | **S2**|Egyetlen bitráta és több bitráta-kódolás.<br/>Normál használat SD és HD kódoláshoz.|A "H264 Single bitráta 720p" beállítású kódolás körülbelül 6 percet vesz igénybe.<br/><br/>A "H264 Multiple bitráta 720p" beállítású kódolás körülbelül 12 percet vesz igénybe.|

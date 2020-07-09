@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.topic: how-to
+ms.custom: hdinsightactive, tracking-python
 ms.date: 03/04/2020
-ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62034ec84f454e4d726348a1c71b492f8aa598b6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087435"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafkához HDInsight-on egy Azure-beli virtuális hálózaton keresztül
 
@@ -242,7 +242,7 @@ A jelen szakaszban ismertetett lépések segítségével hozza létre a követke
 
 Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevét adja vissza az ügyfeleknek. Ez a konfiguráció nem működik a VPN-ügyfélszoftverrel, mivel nem használhatja a névfeloldást a virtuális hálózatban lévő entitások esetében. Ehhez a konfigurációhoz a következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek helyett IP-címeket Hirdessen:
 
-1. Egy böngészőben nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net`. Cserélje `CLUSTERNAME` le a helyére a Kafka nevét a HDInsight-fürtön.
+1. Egy böngészőben nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a helyére a `CLUSTERNAME` Kafka nevét a HDInsight-fürtön.
 
     Ha a rendszer kéri, használja a fürt HTTPS-felhasználónevét és-jelszavát. Megjelenik a fürt Ambari webes felhasználói felülete.
 
@@ -254,7 +254,7 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
     ![Apache Ambari Services-konfiguráció](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. A __Kafka-env__ konfiguráció megkereséséhez írja `kafka-env` be a jobb felső sarokban található __szűrő__ mezőt.
+4. A __Kafka-env__ konfiguráció megkereséséhez írja be a `kafka-env` jobb felső sarokban található __szűrő__ mezőt.
 
     ![Kafka-konfiguráció, Kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,9 +268,9 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. A Kafka által figyelt felület konfigurálásához írja be `listeners` a jobb felső sarokban található __szűrő__ mezőt.
+6. A Kafka által figyelt felület konfigurálásához írja be a `listeners` jobb felső sarokban található __szűrő__ mezőt.
 
-7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert __listeners__ figyelje, módosítsa a `PLAINTEXT://0.0.0.0:9092`figyelők mező értékét a következőre:.
+7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert figyelje, módosítsa a __figyelők__ mező értékét a következőre: `PLAINTEXT://0.0.0.0:9092` .
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
@@ -316,7 +316,7 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Ez a szkript feltételezi `$resourceGroupName` , hogy a virtuális hálózatot tartalmazó Azure-erőforráscsoport neve.
+    Ez a szkript feltételezi, hogy a `$resourceGroupName` virtuális hálózatot tartalmazó Azure-erőforráscsoport neve.
 
     Mentse a visszaadott adatokat a következő lépésekben való használatra.
 
@@ -337,14 +337,14 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
       producer.send('testtopic', b'test message')
    ```
 
-    Cserélje le `'kafka_broker'` a bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
+    Cserélje le a `'kafka_broker'` bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
 
-   * Ha __szoftveres VPN-ügyfelet__használ, cserélje le `kafka_broker` a bejegyzéseket a MUNKAVÉGZŐ csomópontok IP-címére.
+   * Ha __szoftveres VPN-ügyfelet__használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
 
-   * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le `kafka_broker` a bejegyzéseket a MUNKAVÉGZŐ csomópontok teljes tartománynevére.
+   * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 
      > [!NOTE]
-     > Ez a kód elküldi a `test message` karakterláncot a `testtopic`témakörnek. A Kafka HDInsight alapértelmezett konfigurációja a témakör létrehozása, ha nem létezik.
+     > Ez a kód elküldi a karakterláncot `test message` a témakörnek `testtopic` . A Kafka HDInsight alapértelmezett konfigurációja a témakör létrehozása, ha nem létezik.
 
 4. A Kafka üzeneteinek lekéréséhez használja a következő Python-kódot:
 
@@ -360,11 +360,11 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
      print (msg)
    ```
 
-    Cserélje le `'kafka_broker'` a bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
+    Cserélje le a `'kafka_broker'` bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
 
-    * Ha __szoftveres VPN-ügyfelet__használ, cserélje le `kafka_broker` a bejegyzéseket a MUNKAVÉGZŐ csomópontok IP-címére.
+    * Ha __szoftveres VPN-ügyfelet__használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
 
-    * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le `kafka_broker` a bejegyzéseket a MUNKAVÉGZŐ csomópontok teljes tartománynevére.
+    * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 
 ## <a name="next-steps"></a>További lépések
 

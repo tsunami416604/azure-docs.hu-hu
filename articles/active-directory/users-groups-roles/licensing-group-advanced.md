@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -15,12 +15,11 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727670"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
@@ -57,7 +56,7 @@ Előfordulhat, hogy a felhasználóknak egy licencre van szükségük, de nem eg
 
 ![Képernyőkép a Enterprise Mobility + Security licenccel rendelkező felhasználókról](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-Ehhez a példához módosítsa az egyik felhasználót, és állítsa be a extensionAttribute1 a `EMS;E5_baseservices;` értékre, ha azt szeretné, hogy a felhasználó mindkét licenccel rendelkezzen. Ezt a módosítást a helyszínen végezheti el. Miután a módosítás szinkronizálva lett a felhővel, a rendszer automatikusan hozzáadja a felhasználót mindkét csoporthoz, és hozzárendeli a licenceket.
+Ehhez a példához módosítsa az egyik felhasználót, és állítsa be a extensionAttribute1 a értékre, `EMS;E5_baseservices;` Ha azt szeretné, hogy a felhasználó mindkét licenccel rendelkezzen. Ezt a módosítást a helyszínen végezheti el. Miután a módosítás szinkronizálva lett a felhővel, a rendszer automatikusan hozzáadja a felhasználót mindkét csoporthoz, és hozzárendeli a licenceket.
 
 ![A felhasználó extensionAttribute1 beállítását bemutató képernyőfelvétel](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -193,7 +192,7 @@ Ez a minta kimenet a feldolgozás kezdetét, az összes eredményül kapott felh
 
 Nem lehet törölni egy olyan csoportot, amelyhez aktív licenc van rendelve. Egy rendszergazda törölheti azt a csoportot, amely nem veszi észre, hogy a licenceket el kell távolítani a felhasználóktól, ezért a törléshez előbb el kell távolítani a csoportból a licenceket.
 
-Ha a Azure Portal egy csoport törlését kísérli meg, a következőhöz hasonló hibaüzenet jelenhet meg: ![képernyőkép-csoport törlése sikertelen](./media/licensing-group-advanced/groupdeletionfailed.png)
+Ha a Azure Portal egy csoport törlését kísérli meg, a következőhöz hasonló hibaüzenet jelenhet meg: ![ képernyőkép-csoport törlése sikertelen](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Lépjen a csoport **licencek** fülére, és ellenőrizze, hogy vannak-e hozzárendelve licencek. Ha igen, távolítsa el ezeket a licenceket, és próbálja meg újból törölni a csoportot.
 

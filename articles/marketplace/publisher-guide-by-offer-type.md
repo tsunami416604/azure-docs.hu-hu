@@ -1,24 +1,24 @@
 ---
 title: Közzétételi útmutató ajánlat típusa szerint – Microsoft kereskedelmi piactér
 description: Ez a cikk a Microsoft kereskedelmi piactéren elérhető ajánlati típusokat ismerteti.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982683"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119718"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
 Ez a cikk a kereskedelmi piactéren elérhető ajánlati típusokat ismerteti. Az *ajánlat típusa* határozza meg az ajánlat struktúráját, amely tartalmazza azokat a metaadatokat, összetevőket és egyéb tartalmakat, amelyek az ajánlatnak a piactéren való bemutatására szolgálnak.
 
-Az ajánlat létrehozása előtt és a [közzétételi lehetőség](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)kiválasztása után ki kell választania az ajánlat bemutatására használni kívánt ajánlat típusát is. Az ajánlat típusa megegyezik a közzétenni kívánt megoldás, alkalmazás vagy szolgáltatási ajánlat típusával, valamint a Microsoft-termékekkel és-szolgáltatásokkal való összehangolásával.
+Az ajánlat létrehozása előtt és a [közzétételi lehetőség](determine-your-listing-type.md)kiválasztása után ki kell választania az ajánlat bemutatására használni kívánt ajánlat típusát is. Az ajánlat típusa megegyezik a közzétenni kívánt megoldás, alkalmazás vagy szolgáltatási ajánlat típusával, valamint a Microsoft-termékekkel és-szolgáltatásokkal való összehangolásával.
 
 Egyetlen ajánlat típusa konfigurálható különböző módon a különböző közzétételi beállítások, a műveletek, a kiépítés vagy a díjszabás lehetővé tételéhez. A közzétételi lehetőség és az ajánlat típusának konfigurációja is igazodik az ajánlat támogathatóságához és a technikai követelményekhez.
 
@@ -42,7 +42,7 @@ Az Azure Marketplace-ajánlatok típusai az alábbi táblázatban találhatók.
 
 Az egyszeri bejelentkezésre vonatkozó követelményekről és az ajánlatok típusairól az [**Azure ad-követelmények**](./enable-appsource-marketplace-using-azure-ad.md)című témakörben olvashat bővebben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az ajánlat típusának (a következő szakaszoknak) a megfelelő cikkben szereplő támogathatósági követelményeket az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez.
 - Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

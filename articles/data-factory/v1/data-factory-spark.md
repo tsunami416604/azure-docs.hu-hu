@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185591"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-programok meghívása Azure Data Factory folyamatokból
@@ -35,7 +35,7 @@ ms.locfileid: "82185591"
 > [!NOTE]
 > Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el a következő témakört: az [adatátalakítás Apache Spark tevékenység használatával Data Factory](../transform-data-using-spark.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 A Spark-tevékenység a Data Factory által támogatott [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) egyike. Ez a tevékenység futtatja a megadott Spark-programot a Spark-fürtön az Azure HDInsight-ben.
 
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ Az alábbi általános lépésekkel hozhat létre egy Spark-tevékenységgel ren
 
 1. Hozzon létre egy Spark-fürtöt a HDInsight-ben az oktatóanyagban a [Spark-fürt létrehozása a HDInsight-](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)ben című témakör utasításait követve. Társítsa az 1. lépésben létrehozott Storage-fiókot a fürthöz.
 
-1. Töltse le és tekintse át a Python parancsfájl fájljának **test.py** [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).
+1. Töltse le és tekintse át a Python parancsfájl fájljának **test.py** [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) .
 
 1. Töltse fel a **test.py** a **pyFiles** mappába a blob Storage-beli **adfspark** -tárolóban. Ha nem léteznek, hozza létre a tárolót és a mappát.
 
@@ -65,7 +65,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza az **új** > **adatok és Analitika** > **Data Factory**lehetőséget.
+1. Válassza az **új**  >  **adatok és Analitika**  >  **Data Factory**lehetőséget.
 
 1. Az **új adat-előállító** panelen, a **név**mezőben adja meg a **SparkDF**nevet.
 
@@ -78,7 +78,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    > [!IMPORTANT]
    > Data Factory példányok létrehozásához a [Data Factory közreműködő](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
@@ -112,13 +112,13 @@ Ebben a lépésben társítja a tárfiókot az adat-előállítójához. Az útm
 #### <a name="create-an-hdinsight-linked-service"></a>HDInsight társított szolgáltatás létrehozása
 Ebben a lépésben létrehoz egy HDInsight társított szolgáltatást, amely összekapcsolja a HDInsight Spark-fürtöt az adatelőállítóval. A HDInsight-fürt az ebben a példában szereplő folyamat Spark-tevékenységében megadott Spark-program futtatására szolgál.
 
-1. A Data Factory szerkesztőben válassza a **további** > **új számítási** > **HDInsight-fürt**lehetőséget.
+1. A Data Factory szerkesztőben válassza a **további**  >  **új számítási**  >  **HDInsight-fürt**lehetőséget.
 
     ![HDInsight társított szolgáltatás létrehozása](media/data-factory-spark/new-hdinsight-linked-service.png)
 
 1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-szerkesztőben hajtsa végre a következő lépéseket:
 
-    a. Itt adhatja meg a HDInsight Spark-fürt URI-JÁT. Például: `https://<sparkclustername>.azurehdinsight.net/`.
+    a. Itt adhatja meg a HDInsight Spark-fürt URI-JÁT. Példa: `https://<sparkclustername>.azurehdinsight.net/`.
 
     b. Adja meg annak a felhasználónak a nevét, aki hozzáfér a Spark-fürthöz.
 
@@ -152,7 +152,7 @@ Ebben a lépésben létrehoz egy HDInsight társított szolgáltatást, amely ö
 ### <a name="create-the-output-dataset"></a>A kimeneti adatkészlet létrehozása
 A kimeneti adatkészlet az ütemtervet (óránként, naponta) vezérli. Ezért a folyamat során meg kell adnia a Spark-tevékenység kimeneti adatkészletét, annak ellenére, hogy a tevékenység nem hoz létre kimenetet. A tevékenység bemeneti adatkészletének megadása nem kötelező.
 
-1. A Data Factory szerkesztőben válassza az **More** > **új adatkészlet** > **Azure Blob Storage**elemet.
+1. A Data Factory szerkesztőben **válassza az**  >  **új adatkészlet**  >  **Azure Blob Storage**elemet.
 
 1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-kódrészlet definiál egy **OutputDataset**nevű adatkészletet. Emellett azt is megadhatja, hogy az eredmények a **adfspark** nevű blob-tárolóban és a **pyFiles/output**nevű mappában legyenek tárolva. Ahogy azt korábban említettük, ez az adatkészlet egy próbabábu-adatkészlet. Ebben a példában a Spark program nem hoz létre kimenetet. A **rendelkezésre állási** szakasz meghatározza, hogy a kimeneti adatkészlet naponta jön létre.
 
@@ -183,7 +183,7 @@ A kimeneti adatkészlet az ütemtervet (óránként, naponta) vezérli. Ezért a
 ### <a name="create-a-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben egy HDInsightSpark-tevékenységgel rendelkező folyamatot hoz létre. Jelenleg a kimeneti adatkészlet vezérli az ütemezést, ezért kimeneti adatkészletet akkor is létre kell hoznia, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. Ezért ebben a példában nincs megadva bemeneti adatkészlet.
 
-1. A Data Factory-szerkesztőben válassza **az** > **új folyamat**lehetőséget.
+1. A Data Factory-szerkesztőben válassza **az**  >  **új folyamat**lehetőséget.
 
 1. Cserélje le a szkriptet a draft-1 ablakban a következő parancsfájlra:
 
@@ -217,14 +217,14 @@ Ebben a lépésben egy HDInsightSpark-tevékenységgel rendelkező folyamatot ho
 
     a. A **Type** tulajdonság értéke **HDInsightSpark**.
 
-    b. A **rootPath** tulajdonság értéke **adfspark\\pyFiles** , ahol a adfspark a blob-tároló, a pyFiles pedig a tárolóban lévő fájl mappája. Ebben a példában a blob Storage a Spark-fürthöz társított egyik. A fájlt egy másik Storage-fiókba töltheti fel. Ha így tesz, hozzon létre egy Storage-beli társított szolgáltatást, amely a Storage-fiókot az adatelőállítóhoz kapcsolja. Ezután adja meg a társított szolgáltatás nevét a **sparkJobLinkedService** tulajdonság értékeként. További információt erről a tulajdonságról és a Spark-tevékenység által támogatott egyéb tulajdonságokról a [Spark-tevékenység tulajdonságai](#spark-activity-properties)című témakörben talál.
+    b. A **rootPath** tulajdonság értéke **adfspark \\ pyFiles** , ahol a adfspark a blob-tároló, a pyFiles pedig a tárolóban lévő fájl mappája. Ebben a példában a blob Storage a Spark-fürthöz társított egyik. A fájlt egy másik Storage-fiókba töltheti fel. Ha így tesz, hozzon létre egy Storage-beli társított szolgáltatást, amely a Storage-fiókot az adatelőállítóhoz kapcsolja. Ezután adja meg a társított szolgáltatás nevét a **sparkJobLinkedService** tulajdonság értékeként. További információt erről a tulajdonságról és a Spark-tevékenység által támogatott egyéb tulajdonságokról a [Spark-tevékenység tulajdonságai](#spark-activity-properties)című témakörben talál.
 
     c. A **entryFilePath** tulajdonság értéke **test.py**, amely a Python-fájl.
 
     d. A **getDebugInfo** tulajdonság **mindig**értékre van állítva, ami azt jelenti, hogy a naplófájlok mindig jönnek létre (sikeres vagy sikertelen).
 
     > [!IMPORTANT]
-    > Azt javasoljuk, hogy ne állítson be ezt a `Always` tulajdonságot éles környezetben, kivéve, ha problémát szeretne elhárítani.
+    > Azt javasoljuk, hogy ne állítson be ezt a tulajdonságot `Always` éles környezetben, kivéve, ha problémát szeretne elhárítani.
 
     e. A **kimenetek** szakasz egy kimeneti adatkészlettel rendelkezik. A kimeneti adatkészletet akkor is meg kell adnia, ha a Spark-program nem hoz létre kimenetet. A kimeneti adatkészlet a folyamathoz tartozó ütemtervet (óránként, naponta) vezeti.
 
@@ -247,9 +247,9 @@ Ebben a lépésben egy HDInsightSpark-tevékenységgel rendelkező folyamatot ho
 
 ### <a name="verify-the-results"></a>Az eredmények ellenőrzése
 
-1. Indítsa el a HDInsight Spark- `https://CLUSTERNAME.azurehdinsight.net/jupyter`fürt Jupyter Notebookét a következő címen:. Emellett megnyithatja a HDInsight Spark-fürthöz tartozó irányítópultot, majd elindíthatja a Jupyter Notebook.
+1. Indítsa el a HDInsight Spark-fürt Jupyter Notebookét a következő címen: `https://CLUSTERNAME.azurehdinsight.net/jupyter` . Emellett megnyithatja a HDInsight Spark-fürthöz tartozó irányítópultot, majd elindíthatja a Jupyter Notebook.
 
-1. Új jegyzetfüzet elindításához válassza az **új** > **PySpark** lehetőséget.
+1. **New**  >  Új jegyzetfüzet elindításához válassza az új**PySpark** lehetőséget.
 
     ![Új jegyzetfüzet Jupyter](media/data-factory-spark/jupyter-new-book.png)
 
@@ -326,9 +326,9 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| név | A folyamatban szereplő tevékenység neve. | Igen |
+| name | A folyamatban szereplő tevékenység neve. | Igen |
 | leírás | A tevékenység működését leíró szöveg | Nem |
-| type | Ezt a tulajdonságot HDInsightSpark értékre kell beállítani. | Igen |
+| típus | Ezt a tulajdonságot HDInsightSpark értékre kell beállítani. | Igen |
 | linkedServiceName | Azon HDInsight társított szolgáltatás neve, amelyen a Spark-program fut. | Igen |
 | rootPath | A Spark-fájlt tartalmazó blob-tároló és-mappa. A fájl neve megkülönbözteti a kis-és nagybetűket. | Igen |
 | entryFilePath | A Spark-kód/csomag gyökérkönyvtárának relatív elérési útja. | Igen |
@@ -344,7 +344,7 @@ A Spark-tevékenység nem támogatja az olyan beágyazott parancsfájlokat, mint
 
 Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltatás által hivatkozott blob Storage-tárolóban. Ezután töltse fel a függő fájlokat a **entryFilePath**által jelölt gyökérmappa megfelelő almappájába. Töltse fel például a Python-fájlokat a pyFiles almappában és a jar-fájlokba a gyökérmappa tégelyek almappájába. Futásidőben a Data Factory szolgáltatás a következő mappastruktúrát várja a blob Storage-ban:
 
-| Útvonal | Leírás | Kötelező | Típus |
+| Elérési út | Leírás | Kötelező | Típus |
 | ---- | ----------- | -------- | ---- |
 | . | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban. | Igen | Mappa |
 | &lt;felhasználó által definiált&gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Igen | Fájl |

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: efbd8dfa34f5d954e302b421dfcea6c46d9469ca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022828"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082794"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -235,7 +235,7 @@ Ezután frissítse az adott környezet értékeit. A szöveg alatti tábla össz
     | nameNode | A HDInsight-fürthöz csatolt Azure Storage-tároló teljes elérési útja. |
     | jobTracker | A belső állomásnév az aktív fürthöz tartozó szál főcsomópontja számára. A Ambari kezdőlapján válassza a szálak lehetőséget a szolgáltatások listájából, majd válassza az Active Resource Manager lehetőséget. Az állomásnév URI-ja megjelenik az oldal tetején. Fűzze hozzá a 8050-es portot. |
     | queueName | A kaptár-műveletek ütemezésekor használt fonal-várólista neve. Hagyja meg az alapértelmezett értéket. |
-    | oozie. use. System. Libpath | Igaz értékre kell lépnie. |
+    | oozie.use.system. Libpath | Igaz értékre kell lépnie. |
     | Alkalmazás gyökérkönyvtárán | Annak az Azure Storage-almappának az elérési útja, ahol a Oozie-munkafolyamatot és a támogató fájlokat telepíti. |
     | oozie. WF. Application. Path | A futtatandó Oozie munkafolyamat helye `workflow.xml` . |
     | hiveScriptLoadPartition | Az elérési út az Azure Storage-ban a kaptár-lekérdezési fájlba `hive-load-flights-partition.hql` . |
@@ -422,7 +422,9 @@ A bash-munkamenet SZOLGÁLTATÁSKAPCSOLÓDÁSI pontjának használatával üzemb
 
 1. Ha az állapot sikeres, a beszúrt sorok megjelenítéséhez kérdezze le a SQL Database táblát. A Azure Portal használatával navigáljon a SQL Database ablaktáblához, válassza az **eszközök**lehetőséget, majd nyissa meg a **lekérdezés-szerkesztőt**.
 
-        SELECT * FROM dailyflights
+    ```sql
+    SELECT * FROM dailyflights
+    ```
 
 Most, hogy a munkafolyamat egy tesztelési napra fut, becsomagolhatja ezt a munkafolyamatot egy olyan koordinátorba, amely a munkafolyamatot naponta futtatja.
 

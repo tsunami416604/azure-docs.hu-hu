@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74561734"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084681"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookokkal Apache Spark-fürtökben a HDInsight-ben
 
@@ -33,11 +33,11 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
 * A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete. További információ: [adatok betöltése és lekérdezések futtatása Apache Spark a HDInsight-on](./apache-spark-load-data-run-query.md).
 
-* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `wasb://` Storage `abfs://` számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az `wasbs://` URI `abfss://`-t vagy a-t, illetve a [biztonságos átvitelt](../../storage/common/storage-require-secure-transfer.md)is el kell látnia.
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az `wasb://` Azure Storage számára lenne `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetén `adl://` . Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az URI-t vagy a-t, illetve a `wasbs://` `abfss://` [biztonságos átvitelt](../../storage/common/storage-require-secure-transfer.md)is el kell látnia.
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Külső csomagok használata Jupyter notebookokkal
 
-1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter` oda `CLUSTERNAME` , ahol a a Spark-fürt neve.
+1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter` oda, ahol `CLUSTERNAME` a a Spark-fürt neve.
 
 1. Hozzon létre új notebookot. Válassza az **új**, majd a **Spark**lehetőséget.
 
@@ -47,10 +47,10 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
     ![A notebook elnevezése](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "A notebook elnevezése")
 
-1. A `%%configure` Magic használatával úgy konfigurálhatja a jegyzetfüzetet, hogy külső csomagot használjon. Külső csomagokat használó jegyzetfüzetekben ügyeljen arra, hogy az első kód cellájában hívja meg a `%%configure` magict. Ez biztosítja, hogy a kernel a csomag használatára legyen konfigurálva a munkamenet elindítása előtt.
+1. A Magic használatával úgy `%%configure` konfigurálhatja a jegyzetfüzetet, hogy külső csomagot használjon. Külső csomagokat használó jegyzetfüzetekben ügyeljen arra, hogy az `%%configure` első kód cellájában hívja meg a magict. Ez biztosítja, hogy a kernel a csomag használatára legyen konfigurálva a munkamenet elindítása előtt.
 
     >[!IMPORTANT]  
-    >Ha elfelejti a rendszermag konfigurálását az első cellában, használja `%%configure` a `-f` paramétert, de a rendszer újraindítja a munkamenetet, és az összes folyamat el fog veszni.
+    >Ha elfelejti a rendszermag konfigurálását az első cellában, használja a `%%configure` `-f` paramétert, de a rendszer újraindítja a munkamenetet, és az összes folyamat el fog veszni.
 
     | HDInsight verziója | Parancs |
     |-------------------|---------|
@@ -61,33 +61,41 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
     a. Keresse meg a csomagot a Maven-tárházban. Ebben a cikkben a [Spark-CSV-](https://mvnrepository.com/artifact/com.databricks/spark-csv)t használjuk.
 
-    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,11 és a Spark 1.5.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala vagy Spark verziójának különböző verzióit kell kiválasztania. A Scala verzióját a fürtön a Spark Jupyter kernelen vagy `scala.util.Properties.versionString` a Spark beküldésen futtatva találja meg. A Spark-verziót a fürtön a Jupyter notebookokon futtatva `sc.version` találja meg.
+    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,11 és a Spark 1.5.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala vagy Spark verziójának különböző verzióit kell kiválasztania. A Scala verzióját a fürtön a `scala.util.Properties.versionString` Spark Jupyter kernelen vagy a Spark beküldésen futtatva találja meg. A Spark-verziót a fürtön a Jupyter notebookokon futtatva találja meg `sc.version` .
 
     ![Külső csomagok használata Jupyter notebooktal](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter notebooktal")
 
     c. Összefűzi a három értéket kettősponttal elválasztva (**:**).
 
-        com.databricks:spark-csv_2.11:1.5.0
+    ```scala
+    com.databricks:spark-csv_2.11:1.5.0
+    ```
 
 1. Futtassa a kód cellát a `%%configure` magicmal. Ezzel konfigurálja a mögöttes Livy-munkamenetet a megadott csomag használatára. A jegyzetfüzet következő celláiban már használhatja a csomagot az alább látható módon.
 
-        val df = spark.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = spark.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
     A 3,4-es és az alábbi HDInsight az alábbi kódrészletet kell használnia.
 
-        val df = sqlContext.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = sqlContext.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
 1. Ezután az előző lépésben létrehozott dataframe származó adatok megtekintéséhez futtathatja a kódrészleteket, például alább látható.
 
-        df.show()
+    ```scala
+    df.show()
    
-        df.select("Time").count()
+    df.select("Time").count()
+    ```
 
 ## <a name="see-also"></a><a name="seealso"></a>Lásd még
 

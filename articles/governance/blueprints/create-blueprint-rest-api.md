@@ -1,18 +1,18 @@
 ---
 title: 'Gyors útmutató: terv létrehozása REST API'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a REST API használatával.
-ms.date: 02/26/2020
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: ec84e8396ad65aa01f73414b971f27bc95396e2f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745096"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971198"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
 
-A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé teszi a közös minták definiálását, hogy újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhasson ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
+A tervrajzok létrehozásának és hozzárendelésének megismerése lehetővé teszi a közös minták meghatározását, amelyekkel a Azure Resource Manager sablonok (ARM-sablonok), a házirendek, a biztonság és egyebek alapján újrafelhasználható és gyorsan telepíthető konfigurációk fejleszthetők. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +52,7 @@ A **$restUri** változóban a `{subscriptionId}` helyére írja be a saját elő
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
-A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására. Ezután hozzáadunk egy erőforráscsoportot, egy Resource Manager-sablont és egy szerepkör-hozzárendelést az erőforráscsoporton.
+A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására. Ezután hozzáadunk egy erőforráscsoportot, egy ARM-sablont és egy szerepkör-hozzárendelést az erőforráscsoporthoz.
 
 > [!NOTE]
 > A REST API használata esetén a _terv_ objektumot hozzuk először létre. Mindegyik hozzáadott, paraméterekkel rendelkező _összetevő_ esetében a paramétereket előre definiálni kell a kezdeti _terven_.
@@ -200,7 +200,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Sablon hozzáadása az erőforráscsoport alatt. A Resource Manager-sablon **kérelemtörzse** tartalmazza a sablon normál JSON-összetevőjét, és a **properties.resourceGroup** használatával meghatározza a cél erőforráscsoportot. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A tervparaméterek a **properties.parameters** definiálásával válnak elérhetővé a sablon számára, és a sablon JSON-fájljában az érték beszúrása ezzel a kulcs–érték párral történik. A terv- és a sablonparaméterek neve egyezhet, itt most azonban megkülönböztettük őket, hogy bemutassuk, hogyan lesznek átadva a tervből a sablonösszetevőbe.
+1. Sablon hozzáadása az erőforráscsoport alatt. Az ARM-sablonhoz tartozó **kérelem törzse** tartalmazza a sablon normál JSON összetevőjét, és meghatározza a cél erőforráscsoportot a **Properties. resourceGroup**. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A tervparaméterek a **properties.parameters** definiálásával válnak elérhetővé a sablon számára, és a sablon JSON-fájljában az érték beszúrása ezzel a kulcs–érték párral történik. A terv- és a sablonparaméterek neve egyezhet, itt most azonban megkülönböztettük őket, hogy bemutassuk, hogyan lesznek átadva a tervből a sablonösszetevőbe.
 
    - REST API URI
 

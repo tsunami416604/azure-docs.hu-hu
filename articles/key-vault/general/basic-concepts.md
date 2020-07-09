@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167298"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault alapvető fogalmak
@@ -75,7 +74,7 @@ Ez a rendszergazda ezután lehetővé teszi a fejlesztők URI-k számára, hogy 
 
 A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért tekintse meg a [Key Vault fejlesztői útmutatóját](developers-guide.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [védheti meg a](secure-your-key-vault.md)tárolót.
 

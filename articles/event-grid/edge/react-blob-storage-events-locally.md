@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086603"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
@@ -134,17 +133,17 @@ Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe az Azure Blob Storag
 
    > [!IMPORTANT]
    > - Blob Storage modul a HTTPS és a HTTP protokoll használatával is közzétehet eseményeket. 
-   > - Ha engedélyezte a EventGrid-hez készült ügyfél-alapú hitelesítést, frissítse a EVENTGRID_ENDPOINT értékét a https engedélyezéséhez, például: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
-   > - Egy másik környezeti változót `AllowUnknownCertificateAuthority=true` is hozzáadhat a fenti JSON-hoz. Ha HTTPS-kapcsolaton keresztül beszél a EventGrid, a **AllowUnknownCertificateAuthority** lehetővé teszi, hogy a Storage modul megbízzon az önaláírt EventGrid-kiszolgálói tanúsítványokban.
+   > - Ha engedélyezte a EventGrid-hez készült ügyfél-alapú hitelesítést, frissítse a EVENTGRID_ENDPOINT értékét a https engedélyezéséhez, például: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` .
+   > - Egy másik környezeti változót is hozzáadhat `AllowUnknownCertificateAuthority=true` a fenti JSON-hoz. Ha HTTPS-kapcsolaton keresztül beszél a EventGrid, a **AllowUnknownCertificateAuthority** lehetővé teszi, hogy a Storage modul megbízzon az önaláírt EventGrid-kiszolgálói tanúsítványokban.
 
 4. Frissítse a vágólapra másolt JSON-t a következő információkkal:
 
-   - Cserélje `<your storage account name>` le a nevet, és jegyezze fel. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
+   - Cserélje le a `<your storage account name>` nevet, és jegyezze fel. A fiókok nevének 3 – 24 karakter hosszúnak kell lennie, kisbetűkkel és számokkal. Nincsenek szóközök.
 
-   - Cserélje `<your storage account key>` le egy 64 bájtos Base64-kulccsal. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
+   - Cserélje le `<your storage account key>` egy 64 bájtos Base64-kulccsal. Létrehozhat egy kulcsot olyan eszközökkel, mint a [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Ezeket a hitelesítő adatokat fogja használni a blob Storage más modulokból való eléréséhez.
 
-   - Cserélje `<event grid module name>` le a nevet a Event Grid modul nevére.
-   - Cserélje `<storage mount>` le at a tároló operációs rendszerének megfelelően.
+   - Cserélje le a `<event grid module name>` nevet a Event Grid modul nevére.
+   - Cserélje le `<storage mount>` at a tároló operációs rendszerének megfelelően.
      - Linux-tárolók esetén **a saját kötet:/blobroot**
      - Windows-tárolók esetén**a saját kötet: C:/BlobRoot**
 
@@ -199,7 +198,7 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
     > - A HTTPS-folyamat esetében, ha az ügyfél-hitelesítés tanúsítványon keresztül engedélyezett, a fürtre vonatkozó kérelem a következő lesz:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést a **MicrosoftStorage** témakörben.
-    1. Hozza létre a blobsubscription. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
+    1. Hozzon létre blobsubscription.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
 
        ```json
         {
@@ -217,7 +216,7 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
        >[!NOTE]
        > A **endpointType** tulajdonság azt adja meg, hogy az előfizető egy **webhook**.  A **endpointUrl** meghatározza azt az URL-címet, amelyen az előfizető eseményeket figyel. Ez az URL-cím megfelel a korábban üzembe helyezett Azure Function-mintának.
 
-    2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP- `200 OK`állapotkód.
+    2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP-állapotkód `200 OK` .
 
        ```sh
        curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
@@ -326,29 +325,29 @@ Gratulálunk! Elvégezte az oktatóanyagot. A következő szakaszokban részlete
 
 Az alábbi lista tartalmazza a támogatott események tulajdonságait, valamint azok típusait és leírásait. 
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
+| adatok | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| api-t | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a `PutBlob` következők: és`PutBlockList`</li><li>BlobDeleted – engedélyezett értékek `DeleteBlob`: `DeleteAfterUpload` és. `AutoDelete` <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete`az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
+| api-t | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a következők: `PutBlob` és`PutBlockList`</li><li>BlobDeleted – engedélyezett értékek: `DeleteBlob` `DeleteAfterUpload` és `AutoDelete` . <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete`az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
 | ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Részletekért lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
 | Kérelemazonosító | sztring | A szolgáltatás által generált kérelem azonosítója a tárolási API-művelethez. Felhasználható az Azure Storage diagnosztikai naplóinak a naplók "Request-ID-header" mezővel való összekapcsolására, és a rendszer az "x-MS-Request-id" fejlécben az API-hívás kezdeményezését adja vissza. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | sztring | Az az érték, amelyet a műveletek feltételes végrehajtásához használhat. |
 | contentType | sztring | A blobhoz megadott tartalomtípus. |
 | contentLength | egész szám | A blob mérete bájtban megadva. |
 | blobType | sztring | A blob típusa. Az érvényes értékek: "BlockBlob" vagy "PageBlob". |
-| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<Storage\>-Account\<-Name.\>/\<blob.Core.Windows.net/Container-\>Name fájlnév*. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<Storage\>-Account\<-Name. DFS.Core.Windows.net/fájl\>/\<-rendszer-\>név fájl neve*. |
+| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
 
 
 ## <a name="next-steps"></a>További lépések

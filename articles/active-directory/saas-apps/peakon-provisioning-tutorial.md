@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063392"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Peakon konfigurálása
@@ -147,9 +146,9 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A Peakon összes egyéni felhasználói attribútumát ki kell terjeszteni a Peakon egyéni SCIM felhasználói kiterjesztéséről `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`.
+* A Peakon összes egyéni felhasználói attribútumát ki kell terjeszteni a Peakon egyéni SCIM felhasználói kiterjesztéséről `urn:ietf:params:scim:schemas:extension:peakon:2.0:User` .
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

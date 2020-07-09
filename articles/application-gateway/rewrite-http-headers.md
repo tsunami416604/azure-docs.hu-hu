@@ -4,15 +4,14 @@ description: Ez a cikk áttekintést nyújt a HTTP-fejlécek újraírásáról a
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248683"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-fejlécek újraírása Application Gateway
 
@@ -60,30 +59,30 @@ A Application Gateway kiszolgálói változók használatával tárolja a kiszol
 
 Az Application Gateway a következő kiszolgálói változókat támogatja:
 
-| Változó neve | Leírás                                                  |
+| Változó neve | Description                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| add_x_forwarded_for_proxy  | Az X-Forwarded-For Client Request fejléc mező a `client_ip` (z) változóval (lásd a táblázat későbbi részében) az IP1, a IP2, a IP3 stb. formátumban. Ha az X-Forwardd-for mező nem szerepel az ügyfél-igénylési fejlécben, akkor a `add_x_forwarded_for_proxy` változó `$client_ip` egyenlő a változóval. Ez a változó különösen akkor hasznos, ha újra szeretné írni az X által továbbított fejlécet a Application Gateway, hogy a fejléc csak az IP-címet tartalmazza a port adatai nélkül. |
+| add_x_forwarded_for_proxy  | Az X-Forwarded-For Client Request fejléc mező a `client_ip` (z) változóval (lásd a táblázat későbbi részében) az IP1, a IP2, a IP3 stb. formátumban. Ha az X-Forwardd-for mező nem szerepel az ügyfél-igénylési fejlécben, `add_x_forwarded_for_proxy` akkor a változó egyenlő a `$client_ip` változóval. Ez a változó különösen akkor hasznos, ha újra szeretné írni az X által továbbított fejlécet a Application Gateway, hogy a fejléc csak az IP-címet tartalmazza a port adatai nélkül. |
 | ciphers_supported          | Az ügyfél által támogatott titkosítások listája.          |
 | ciphers_used               | Egy létesített TLS-kapcsolatban használt titkosítási karakterlánc. |
 | client_ip                  | Annak az ügyfélnek az IP-címe, amelyről az Application Gateway fogadta a kérelmet. Ha van fordított proxy az Application Gateway és a kezdeményező ügyfél előtt, *client_ip* a fordított proxy IP-címét fogja visszaadni. |
 | client_port                | Az ügyfél portja.                                                  |
 | client_tcp_rtt             | Az ügyfél TCP-kapcsolataival kapcsolatos információk. Az TCP_INFO socket beállítást támogató rendszereken érhető el. |
 | client_user                | A HTTP-hitelesítés használatakor a rendszer a hitelesítéshez megadott felhasználónevet adja meg. |
-| gazda                       | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*a gazdagép értéke *contoso.com* lesz. |
+| gazda                       | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* gazdagép értéke *contoso.com* lesz. |
 | cookie_*neve*              | A *név* cookie.                                            |
 | http_method                | Az URL-kérelem elvégzéséhez használt metódus. Például: GET vagy POST. |
 | http_status                | A munkamenet állapota. Például: 200, 400 vagy 403.                       |
 | http_version               | A kérelem protokollja. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
-| query_string               | A kért URL-cím "?" értékét követő változó/érték párok listája. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*QUERY_STRING érték *azonosító = 123&title = Fabrikam* |
+| query_string               | A kért URL-cím "?" értékét követő változó/érték párok listája. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING érték *azonosító = 123&title = Fabrikam* |
 | received_bytes             | A kérelem hossza (beleértve a kérelmek sorát, a fejlécet és a kérelem törzsét). |
 | request_query              | A kérés sorában szereplő argumentumok                                |
 | request_scheme             | A kérési séma: http vagy HTTPS.                            |
-| request_uri                | A teljes eredeti kérelem URI-ja (argumentumokkal). Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*REQUEST_URI érték lesz a */Article.aspx? id = 123&title = Fabrikam*   |
+| request_uri                | A teljes eredeti kérelem URI-ja (argumentumokkal). Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI érték lesz a */Article.aspx? id = 123&title = Fabrikam*   |
 | sent_bytes                 | Az ügyfélnek eljuttatott bájtok száma.                             |
 | server_port                | A kérelmet fogadó kiszolgáló portja.                 |
 | ssl_connection_protocol    | Egy létesített TLS-kapcsolat protokollja.        |
 | ssl_enabled                | "On", ha a kapcsolatok TLS módban működnek. Ellenkező esetben üres karakterláncot kell megadni. |
-| uri_path                   | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*uri_path érték lesz a */Article.aspx*  |
+| uri_path                   | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* uri_path érték lesz a */Article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>Konfiguráció újraírása
 
@@ -131,8 +130,8 @@ A probléma megoldásához állítsa be a hostname értéket a Location (hely) f
 
 Az állomásnév lecserélésének lépései a következők:
 
-1. Hozzon létre egy Újraírási szabályt egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Adja meg a `(https?):\/\/.*azurewebsites\.net(.*)$`mintát.
-1. Hajtson végre egy műveletet a hely fejlécének újraírásához, hogy az Application Gateway állomásneve legyen. Ezt a fejléc értékének megadásával `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` teheti meg.
+1. Hozzon létre egy Újraírási szabályt egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Adja meg a mintát `(https?):\/\/.*azurewebsites\.net(.*)$` .
+1. Hajtson végre egy műveletet a hely fejlécének újraírásához, hogy az Application Gateway állomásneve legyen. Ezt a fejléc értékének megadásával teheti meg `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` .
 
 ![Hely fejlécének módosítása](media/rewrite-http-headers/app-service-redirection.png)
 
@@ -156,13 +155,13 @@ Kiértékelheti a HTTP-kérések vagy a válasz fejléceit egy fejléc vagy kisz
 
 ## <a name="limitations"></a>Korlátozások
 
-- Ha egy válasznak több fejléce is van ugyanazzal a névvel, akkor az egyik fejléc értékének átírása miatt a rendszer eldobja a válasz többi fejlécét. Ez általában a Set-Cookie fejléctel fordulhat elő, mert a válaszban több Set-Cookie fejléc is lehet. Az egyik ilyen eset az, amikor app Service-t használ egy Application Gateway-vel, és konfigurálta a cookie-alapú munkamenet-affinitást az Application gatewayben. Ebben az esetben a válasz két set-cookie-fejlécet tartalmaz: az egyiket az App Service használja, például `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` : és egy másik az Application Gateway-affinitáshoz, `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`például:. Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírásával a másik set-cookie fejlécet is eltávolíthatja a válaszból.
+- Ha egy válasznak több fejléce is van ugyanazzal a névvel, akkor az egyik fejléc értékének átírása miatt a rendszer eldobja a válasz többi fejlécét. Ez általában a Set-Cookie fejléctel fordulhat elő, mert a válaszban több Set-Cookie fejléc is lehet. Az egyik ilyen eset az, amikor app Service-t használ egy Application Gateway-vel, és konfigurálta a cookie-alapú munkamenet-affinitást az Application gatewayben. Ebben az esetben a válasz két set-cookie-fejlécet tartalmaz: az egyiket az App Service használja, például: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` és egy másik az Application Gateway-affinitáshoz, például: `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírásával a másik set-cookie fejlécet is eltávolíthatja a válaszból.
 
 - Az újraírások nem támogatottak, ha az Application Gateway úgy van konfigurálva, hogy átirányítsa a kéréseket, vagy megjelenjen egy egyéni hiba lap.
 
 - A kapcsolatok, a verziófrissítés és a gazdagép-fejlécek újraírása jelenleg nem támogatott.
 
-- A fejlécek nevei a 7230-as [számú RFC-dokumentumban](https://tools.ietf.org/html/rfc7230#page-27)meghatározott alfanumerikus karaktereket és egyedi szimbólumokat tartalmazhatnak. Jelenleg nem támogatjuk az aláhúzásjel (\_) speciális karaktert a fejlécek neveiben.
+- A fejlécek nevei a 7230-as [számú RFC-dokumentumban](https://tools.ietf.org/html/rfc7230#page-27)meghatározott alfanumerikus karaktereket és egyedi szimbólumokat tartalmazhatnak. Jelenleg nem támogatjuk az aláhúzásjel ( \_ ) speciális karaktert a fejlécek neveiben.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80876292"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
@@ -128,7 +127,7 @@ A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellá
 Ezt a célt az eszköz identitásának és az Azure AD-ben való kezelésének az alábbi módszerek egyikével végezheti el:
 
 - A szervezetek a [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) használatával kezelhetik az eszközt, és kikényszerítik a megfelelőségi szabályzatokat, tanúsítják az eszköz állapotát, valamint feltételes hozzáférési házirendeket állíthatnak be attól függően, hogy az eszköz megfelel-e Microsoft Intune felügyelheti az iOS-eszközöket, a Mac-asztalokat (JAMF-integráción keresztül), a Windows-asztalokat (natív módon a Windows 10 mobileszköz-felügyeletét, valamint a Microsoft Endpoint Configuration Manager) és az androidos mobileszközök közös felügyeletét.
-- A [hibrid Azure ad-csatlakozás](../devices/hybrid-azuread-join-managed-domains.md) a csoportházirendekkel vagy a Microsoft Endpoint Configuration managerekkel való felügyeletet biztosít Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure ad-be szeretné állítani, a Felhőbeli és a helyszíni erőforrások egyszeri bejelentkezésével maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és helyszíni erőforrások biztonságos elérését a [feltételes hozzáféréssel](../conditional-access/overview.md) egyidejűleg.
+- A [hibrid Azure ad-csatlakozás](../devices/hybrid-azuread-join-managed-domains.md) a csoportházirendekkel vagy a Microsoft Endpoint Configuration managerekkel való felügyeletet biztosít Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure AD-be szeretné állítani, a Felhőbeli és a helyszíni erőforrások egyszeri bejelentkezésével maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és helyszíni erőforrások biztonságos elérését a [feltételes hozzáféréssel](../conditional-access/overview.md)   egyidejűleg.
 
 Ha olyan tartományhoz csatlakoztatott Windows-eszközöket használ, amelyek nincsenek a felhőben regisztrálva, vagy a felhőben regisztrált, de feltételes hozzáférési házirendek nélküli tartományhoz csatlakoztatott Windows-eszközök, akkor regisztrálnia kell a nem regisztrált eszközöket, és mindkét esetben [használja a hibrid Azure ad JOIN vezérlőt](../conditional-access/require-managed-devices.md) a feltételes hozzáférési szabályzatokban.
 
@@ -205,7 +204,7 @@ Az Azure AD-ben [elnevezett helyekkel](https://docs.microsoft.com/azure/active-d
 
 A prioritás alapján az alábbi táblázat segítségével megtalálhatja a szervezete igényeinek leginkább megfelelő ajánlott megoldást:
 
-| **Prioritású** | **Forgatókönyv** | **Ajánlás** |
+| **Prioritás** | **Forgatókönyv** | **Ajánlás** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | Ha nem definiált PHS vagy PTA nevű helyet használ | Elnevezett helyszínek definiálása a kockázati események észlelésének javításához |
 | 2 | Ha összevont, és nem használja a "insideCorporateNetwork" jogcímet, és a nevesített helyszínek nem lettek definiálva | Elnevezett helyszínek definiálása a kockázati események észlelésének javításához |
@@ -296,7 +295,7 @@ A támadók a tiltott engedélyezési támadás során létrehoznak egy Azure AD
 
 Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálhatja a Microsoft Cloud Servicest:
 
-- Alkalmazással vagy delegált alkalmazásokkal rendelkező alkalmazások \*. ReadWrite engedélyek
+- Alkalmazással vagy delegált alkalmazásokkal rendelkező alkalmazások \* . ReadWrite engedélyek
 - A delegált engedélyekkel rendelkező alkalmazások elolvashatják, elküldhetik vagy kezelhetik az e-maileket a felhasználó nevében
 - A következő engedélyek használatával kapott alkalmazások:
 

@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254412"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-csonkolt hibák sorainak kezelése Data Factory leképezési adatforgalomban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A leképezési adatfolyamatok használatakor Data Factory gyakori forgatókönyv, hogy az átalakított adatait egy Azure SQL Database-adatbázisba írja. Ebben a forgatókönyvben egy gyakori hiba feltételt kell megakadályozni, hogy az oszlop csonkítható legyen. Az alábbi lépéseket követve megadhatja azokat az oszlopokat, amelyek nem illeszkednek a célként megadott karakterlánc-oszlopba, így az adatfolyamok továbbra is folytatják ezeket a forgatókönyveket.
+A leképezési adatfolyamatok használatakor Data Factory gyakori forgatókönyv, hogy az átalakított adatait Azure SQL Database-adatbázisba írja. Ebben a forgatókönyvben egy gyakori hiba feltételt kell megakadályozni, hogy az oszlop csonkítható legyen. Az alábbi lépéseket követve megadhatja azokat az oszlopokat, amelyek nem illeszkednek a célként megadott karakterlánc-oszlopba, így az adatfolyamok továbbra is folytatják ezeket a forgatókönyveket.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-1. A cél Azure SQL Database-táblázat egy "Name" ```nvarchar(5)``` nevű oszlopot tartalmaz.
+1. Egy ```nvarchar(5)``` "Name" nevű oszlopot tartalmazó céladatbázis-táblánk van.
 
 2. Az adatfolyamon belül a fogadótól a "Name" oszlophoz tartozó film-címeket szeretnénk leképezni.
 
@@ -42,7 +42,7 @@ Ez a videó végigvezeti egy, az adatfolyamatban a hibák sorát kezelő logiká
 
 2. Ez a feltételes felosztású átalakítás a "title" maximális hosszát határozza meg öt értékre. Minden olyan sor, amely kisebb vagy egyenlő, mint öt, az ```GoodRows``` adatfolyamba kerül. Minden olyan sor, amely ötnél nagyobb, az ```BadRows``` adatfolyamba kerül.
 
-3. Most be kell jelentkeznie a sikertelen sorokat. Adjon hozzá egy fogadó átalakítást ```BadRows``` az adatfolyamhoz a naplózáshoz. Itt "automatikusan leképezjük" az összes mezőt, így a teljes tranzakciós rekord naplózása is megtörtént. Ez egy, a CSV-fájlnak a Blob Storageban lévő egyetlen fájlba való kimenete. Meghívjuk a "badrows. csv" naplófájlt.
+3. Most be kell jelentkeznie a sikertelen sorokat. Adjon hozzá egy fogadó átalakítást az ```BadRows``` adatfolyamhoz a naplózáshoz. Itt "automatikusan leképezjük" az összes mezőt, így a teljes tranzakciós rekord naplózása is megtörtént. Ez egy, a CSV-fájlnak a Blob Storageban lévő egyetlen fájlba való kimenete. Meghívjuk a "badrows.csv" naplófájlt.
 
     ![Helytelen sorok](media/data-flow/error3.png)
     

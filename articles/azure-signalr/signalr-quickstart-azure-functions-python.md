@@ -7,12 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
-ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: d77faf8cf4f859c0ef933d28119bd024ace86ac8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75392156"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832491"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Gyors útmutató: csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Python használatával
 
@@ -52,7 +53,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. A Kódszerkesztő alkalmazásban nyissa meg a *src/chat/Python* mappát a klónozott tárházban.
 
-1. A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6 vagy 3,7 környezetben kell dolgoznia. Futtassa a következő parancsokat a nevű `.venv`virtuális környezet létrehozásához és aktiválásához.
+1. A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6 vagy 3,7 környezetben kell dolgoznia. Futtassa a következő parancsokat a nevű virtuális környezet létrehozásához és aktiválásához `.venv` .
 
     **Linux vagy macOS:**
 
@@ -72,7 +73,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: a *function. JSON* meghatározza a függvényben használt kötéseket, és * \_ \_az\_\_init. a.* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
+1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: *function.jsa* függvényben használt kötéseket definiálja, és az * \_ \_ init \_ \_ .* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
 
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
@@ -100,4 +101,4 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
-> [Az Azure Functions üzembe helyezése VS Code-dal](/azure/javascript/tutorial-vscode-serverless-node-01)
+> [Az Azure Functions üzembe helyezése VS Code-dal](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

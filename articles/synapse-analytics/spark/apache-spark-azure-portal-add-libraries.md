@@ -5,16 +5,14 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cf78a2f7d909fb260c5ff99f80c9d1482f2cd08b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870361"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027307"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Könyvtárak hozzáadása és kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
 
@@ -26,7 +24,7 @@ Python-csomagok a Spark-készlet (előzetes verzió) szintjén adhatók hozzá, 
 
 Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md).
 
-A Spark-példány indításakor új virtuális környezet jön létre, amely a telepítést használja alapként. Emellett a *követelmények. txt* fájl (a `pip freeze` parancs kimenete) a virtuális környezet frissítésére is használható. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a fürt indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
+A Spark-példány indításakor új virtuális környezet jön létre, amely a telepítést használja alapként. Emellett egy *requirements.txt* -fájl (a parancs kimenete) használható a `pip freeze` virtuális környezet frissítésére. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a fürt indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
 
 > [!IMPORTANT]
 >
@@ -40,9 +38,7 @@ A következő kódrészlet a követelmények fájl formátumát mutatja. A PyPi-
 
 ```
 absl-py==0.7.0
-
 adal==1.2.1
-
 alabaster==0.7.10
 ```
 

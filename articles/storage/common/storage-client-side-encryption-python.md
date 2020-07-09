@@ -9,14 +9,14 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74895370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804906"
 ---
 # <a name="client-side-encryption-with-python"></a>Ügyféloldali titkosítás Python-val
 
@@ -92,7 +92,7 @@ A tábla adattitkosítása a következőképpen működik:
 
 1. A felhasználók a titkosítani kívánt tulajdonságokat határozzák meg.
 2. Az ügyféloldali kódtár létrehoz egy véletlenszerű inicializálási vektort (IV) 16 bájttal, valamint egy véletlenszerű Content encryption Key (CEK) 32 bájtot minden entitáshoz, és a borítékok titkosítását is végrehajtja az egyes tulajdonságokon, hogy az új IV/tulajdonságot származtatva titkosítsa. A titkosított tulajdonság bináris adatként van tárolva.
-3. A burkolt CEK és néhány további titkosítási metaadatot a rendszer két további fenntartott tulajdonságként tárolja. Az első fenntartott tulajdonság\_(ClientEncryptionMetadata1) egy karakterlánc-tulajdonság, amely a IV, a verzió és a becsomagolt kulcs adatait tartalmazza. A második fenntartott tulajdonság\_(ClientEncryptionMetadata2) egy bináris tulajdonság, amely a titkosított tulajdonságokkal kapcsolatos információkat tartalmazza. Az ebben a második tulajdonságban (\_ClientEncryptionMetadata2) található információk titkosítva vannak.
+3. A burkolt CEK és néhány további titkosítási metaadatot a rendszer két további fenntartott tulajdonságként tárolja. Az első fenntartott tulajdonság ( \_ ClientEncryptionMetadata1) egy karakterlánc-tulajdonság, amely a IV, a verzió és a becsomagolt kulcs adatait tartalmazza. A második fenntartott tulajdonság ( \_ ClientEncryptionMetadata2) egy bináris tulajdonság, amely a titkosított tulajdonságokkal kapcsolatos információkat tartalmazza. Az ebben a második tulajdonságban ( \_ ClientEncryptionMetadata2) található információk titkosítva vannak.
 4. A titkosításhoz szükséges további fenntartott tulajdonságok miatt a felhasználók mostantól csak 250 egyéni tulajdonságokkal rendelkezhetnek 252 helyett. Az entitás teljes méretének 1 MB-nál kisebbnek kell lennie.
 
    Vegye figyelembe, hogy csak a karakterlánc-tulajdonságok titkosíthatók. Ha más típusú tulajdonságokat kíván titkosítani, azokat karakterlánccá kell konvertálni. A titkosított karakterláncok a szolgáltatásban bináris tulajdonságokként tárolódnak, és vissza lesznek alakítva karakterlánccá (nyers karakterláncok, EdmType. STRING típussal nem EntityProperties) a visszafejtés után.
@@ -109,7 +109,7 @@ Vegye figyelembe, hogy az entitások titkosítva vannak, mivel a köteg titkosí
 > Mivel az entitások titkosítva vannak, nem futtathat olyan lekérdezéseket, amelyek egy titkosított tulajdonságra szűrnek.  Ha megpróbálják, az eredmények helytelenek lesznek, mivel a szolgáltatás nem titkosított adattal próbálta összehasonlítani a titkosított adatmennyiséget.
 > 
 > 
-> A lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs-feloldót, amely képes az eredményhalmaz összes kulcsának feloldására. Ha a lekérdezési eredményben szereplő entitás nem oldható fel szolgáltatóhoz, akkor az ügyféloldali kódtár hibát jelez. A kiszolgálóoldali kivetítéseket végrehajtó lekérdezések esetében az ügyféloldali kódtár alapértelmezés szerint hozzáadja a speciális titkosítási metaadatok tulajdonságait (\_ClientEncryptionMetadata1 és \_ClientEncryptionMetadata2) a kijelölt oszlopokhoz.
+> A lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs-feloldót, amely képes az eredményhalmaz összes kulcsának feloldására. Ha a lekérdezési eredményben szereplő entitás nem oldható fel szolgáltatóhoz, akkor az ügyféloldali kódtár hibát jelez. A kiszolgálóoldali kivetítéseket végrehajtó lekérdezések esetében az ügyféloldali kódtár alapértelmezés szerint hozzáadja a speciális titkosítási metaadatok tulajdonságait ( \_ ClientEncryptionMetadata1 és \_ ClientEncryptionMetadata2) a kijelölt oszlopokhoz.
 > 
 > [!IMPORTANT]
 > Az ügyféloldali titkosítás használatakor vegye figyelembe ezeket a fontos pontokat:

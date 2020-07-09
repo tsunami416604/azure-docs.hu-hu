@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602516"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -45,9 +45,9 @@ A Machine learning-modell munkafolyamata általában az alábbi sorozatot követ
 Ezeket az eszközöket Azure Machine Learning használhatja:
 
 +  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
-+ Az r- [Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)-val bármely r-környezetben dolgozhat a szolgáltatással.
++ A szolgáltatás használata bármely R-környezetben az R- [hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) -val (előzetes verzió).
 + A gépi tanulási tevékenységek automatizálása a [Azure Machine learning parancssori](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)felülettel.
-+ A [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit kód írása nélkül.
++ A [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit kód írása nélkül. ( [Vállalati munkaterület](concept-workspace.md#upgrade)) a Designer használatához szükséges.)
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
 > [!NOTE]
@@ -212,7 +212,7 @@ Ha engedélyezte a figyelést, az Azure a modellből gyűjt telemetria adatokat 
 Azure IoT Edge biztosítja, hogy a modul fut, és figyeli az azt üzemeltető eszközt.
 
 
-### <a name="compute-instance-preview"></a><a name="compute-instance"></a>Számítási példány (előzetes verzió)
+### <a name="compute-instance"></a><a name="compute-instance"></a>Számítási példány
 
 A **Azure Machine learning számítási példány** (korábban notebook VM) egy teljes körűen felügyelt felhőalapú munkaállomás, amely több eszközt és környezetet is tartalmaz a gépi tanuláshoz. A számítási példányok számítási célként használhatók a betanítási és a következtetési feladatokhoz. A nagyméretű feladatokhoz Azure Machine Learning a többcsomópontos skálázási képességekkel rendelkező [számítási fürtök](how-to-set-up-training-targets.md#amlcompute) jobb számítási célt választhatnak.
 

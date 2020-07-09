@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565539"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>IP-csoportok (előzetes verzió) Azure Firewall
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="ip-groups-in-azure-firewall"></a>IP-csoportok a Azure Firewall
 
 Az IP-csoportok lehetővé teszik, hogy az alábbi módokon csoportosítsa és kezelje az Azure Firewall szabályok IP-címeit:
 
@@ -40,7 +37,7 @@ Az alábbi IPv4-címformátum példák érvényesek az IP-csoportokban való has
 
 ## <a name="create-an-ip-group"></a>IP-csoport létrehozása
 
-Az IP-csoportokat a Azure Portal, az Azure CLI vagy a REST API használatával lehet létrehozni. További információkért lásd: [IP-csoport létrehozása (előzetes verzió)](create-ip-group.md).
+Az IP-csoportokat a Azure Portal, az Azure CLI vagy a REST API használatával lehet létrehozni. További információt az [IP-csoport létrehozása](create-ip-group.md)című témakörben talál.
 
 ## <a name="browse-ip-groups"></a>IP-csoportok tallózása
 1. A Azure Portal keresési sávban írja be az **IP-csoportok** kifejezést, és jelölje ki. Megtekintheti az IP-csoportok listáját, vagy kiválaszthatja a **Hozzáadás** lehetőséget egy új IP-csoport létrehozásához.
@@ -64,9 +61,6 @@ Megtekintheti az IP-csoport összes IP-címét és a hozzá társított szabály
 ## <a name="use-an-ip-group"></a>IP-csoport használata
 
 Mostantól kiválaszthatja az **IP-csoport** lehetőséget az IP-cím (ek) **forrás** **-vagy DNAT** , amikor Azure Firewall-t, alkalmazást vagy hálózati szabályt hoz létre.
-
-> [!NOTE]
-> Az IP-csoportok nem támogatottak a tűzfal házirendjében. Jelenleg csak a hagyományos tűzfalszabályok támogatottak.
 
 ![IP-csoportok a tűzfalban](media/ip-groups/fw-ipgroup.png)
 

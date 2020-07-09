@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827556"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Virtuális gépek munkaidőn kívüli indításának és leállításának lekérdezési naplói
@@ -35,7 +34,7 @@ Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munka
 |SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az Automation esetében az érték a OpsManager|
 |StreamType | Megadja az esemény típusát. Lehetséges értékek:<br>- Részletes<br>- Kimenet<br>- Hiba<br>- Figyelmeztetés|
 |SubscriptionId | Megadja a feladat előfizetési azonosítóját.
-|Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
+|Idő | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
 ## <a name="job-streams"></a>Feladatstreamek
 
@@ -54,7 +53,7 @@ Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munka
 |RunbookName | A runbook neve.|
 |SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az Automation esetében az érték a OpsManager.|
 |StreamType | A feladatstream típusa. Lehetséges értékek:<br>– Folyamat<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
-|Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
+|Idő | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
 Ha olyan naplóbeli keresést hajt végre, amely a **JobLogs** vagy a **JobStreams**kategóriába tartozó rekordokat ad vissza, akkor kiválaszthatja a **JobLogs** vagy a **JobStreams** nézetet, amely a keresés által visszaadott frissítések összegzését jeleníti meg.
 
@@ -62,7 +61,7 @@ Ha olyan naplóbeli keresést hajt végre, amely a **JobLogs** vagy a **JobStrea
 
 A következő táblázat a Start/Stop VMs during off-hours által összegyűjtött feladatokhoz tartozó rekordokat tartalmazza.
 
-|Lekérdezés | Leírás|
+|Lekérdezés | Description|
 |----------|----------|
 |A sikeresen befejezett runbook ScheduledStartStop_Parent feladatok keresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Azon runbook ScheduledStartStop_Parent feladatok keresése, amelyek nem fejeződött be sikeresen | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

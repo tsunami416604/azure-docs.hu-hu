@@ -8,25 +8,49 @@ author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: 962b6a17743ea2beed1e16503739c55c83babbce
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.custom: references_regions
+ms.openlocfilehash: 1a186ac3bf2297de5ffc7ff478ba9b4350dae4c8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104281"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
-Kubernetes-fürt összekötése az Azure-ív használatával. 
+Kubernetes-fürt összekötése az Azure-ív használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Győződjön meg arról, hogy az alábbi követelmények állnak készen:
 
-* Kubernetes-fürt, amely működik és fut
-* Szüksége lesz a kubeconfig és a fürt rendszergazdai hozzáférésére. 
+* Kubernetes-fürt, amely működik. Ha nem rendelkezik meglévő Kubernetes-fürttel, a következő útmutatók egyikével hozhat létre egy tesztelési fürtöt:
+  * Kubernetes-fürt létrehozása a [Kubernetes használatával a Docker-ben (fajta)](https://kind.sigs.k8s.io/)
+  * Kubernetes-fürt létrehozása a Docker használatával [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) vagy [Windows rendszerhez](https://docs.docker.com/docker-for-windows/#kubernetes)
+* Szüksége lesz egy kubeconfig-fájlra a fürt és a fürt rendszergazdai szerepkörének eléréséhez a fürtön az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
 * A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. Az "Azure-Kubernetes bevezetéséhez" szerepkör, amelynek az engedélyei használhatók az Azure CLI-vel való bevezetéshez használt felhasználó vagy szolgáltatásnév szerepkör-hozzárendeléseihez.
-* A *connectedk8s* -és *k8sconfiguration* -bővítmények legújabb verziója
+* A connectedk8s-bővítmény használatával a fürt bevezetéséhez a Helm 3 szükséges. [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
+* Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez az Azure CLI 2.3-s verziója szükséges. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.3-as vagy újabb verziója van.
+* Az arc-kompatibilis Kubernetes CLI-bővítményeinek telepítése:
+  
+  Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
+  
+  ```console
+  az extension add --name connectedk8s
+  ```
+  
+  A `k8sconfiguration` bővítmény telepítése:
+  
+  ```console
+  az extension add --name k8sconfiguration
+  ```
+  
+  Ha később szeretné frissíteni ezeket a bővítményeket, futtassa a következő parancsokat:
+  
+  ```console
+  az extension update --name connectedk8s
+  az extension update --name k8sconfiguration
+  ```
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -40,7 +64,7 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 * TCP a 443-es porton – >`https://:443`
 * TCP a 9418-es porton – >`git://:9418`
 
-| Végpont (DNS)                                                                                               | Description                                                                                                                 |
+| Végpont (DNS)                                                                                               | Leírás                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Ahhoz szükséges, hogy az ügynök csatlakozhasson az Azure-hoz, és regisztrálja a fürtöt                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Adatsík végpontja az ügynök számára az állapot leküldéséhez és a konfigurációs adatok beolvasásához                                      |
@@ -53,10 +77,8 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 
 ```console
 az provider register --namespace Microsoft.Kubernetes
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.Kubernetes'
 
 az provider register --namespace Microsoft.KubernetesConfiguration
-Registering is still on-going. You can monitor using 'az provider show -n Microsoft.KubernetesConfiguration'
 ```
 
 A regisztráció egy aszinkron folyamat. A regisztráció körülbelül 10 percet is igénybe vehet. A következő parancsokkal figyelheti a regisztrációs folyamatot:
@@ -67,27 +89,6 @@ az provider show -n Microsoft.Kubernetes -o table
 
 ```console
 az provider show -n Microsoft.KubernetesConfiguration -o table
-```
-
-## <a name="install-azure-cli-extensions"></a>Azure CLI-bővítmények telepítése
-
-Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
-
-```console
-az extension add --name connectedk8s
-```
-
-A `k8sconfiguration` bővítmény telepítése:
-
-```console
-az extension add --name k8sconfiguration
-```
-
-Futtassa a következő parancsokat a bővítmények legújabb verzióra való frissítéséhez.
-
-```console
-az extension update --name connectedk8s
-az extension update --name k8sconfiguration
 ```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
@@ -166,6 +167,8 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
+Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti. Miután megnyitotta a portált a böngészőben, navigáljon az erőforráscsoporthoz és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancs korábbi részében használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .
+
 Az Azure arc-kompatibilis Kubernetes üzembe helyez néhány operátort a `azure-arc` névtérben. Ezeket a központi telepítéseket és hüvelyeket itt tekintheti meg:
 
 ```console
@@ -203,18 +206,25 @@ Az Azure arc-kompatibilis Kubernetes néhány ügynököt (operátort) tartalmaz
 * `deployment.apps/metrics-agent`: más ív-ügynökök metrikáinak gyűjtésével biztosíthatja, hogy ezek az ügynökök optimális teljesítményt mutassanak
 * `deployment.apps/cluster-metadata-operator`: a fürt metaadatainak gyűjtése – a fürt verziószáma, a csomópontok száma és az ív ügynök verziója
 * `deployment.apps/resource-sync-agent`: szinkronizálja a fent említett fürt metaadatait az Azure-ba
-* `deployment.apps/clusteridentityoperator`: karbantartja a más ügynökök által az Azure-nal való kommunikációhoz használt felügyelt szolgáltatás-identitás (MSI) tanúsítványát.
+* `deployment.apps/clusteridentityoperator`: Az Azure arc-kompatibilis Kubernetes jelenleg támogatja a rendszerhez rendelt identitást. a clusteridentityoperator fenntartja a más ügynökök által az Azure-nal folytatott kommunikációhoz használt felügyelt szolgáltatás-identitás (MSI) tanúsítványát.
 * `deployment.apps/flux-logs-agent`: naplók gyűjtése a verziókövetés konfigurációjának részeként üzembe helyezett Flux-kezelők számára
 
 ## <a name="delete-a-connected-cluster"></a>Csatlakoztatott fürt törlése
 
 `Microsoft.Kubernetes/connectedcluster`Az Azure CLI vagy a Azure Portal használatával törölheti az erőforrásokat.
 
-Az Azure CLI `az connectedk8s delete` -parancs eltávolítja az `Microsoft.Kubernetes/connectedCluster` erőforrást az Azure-ban. Az Azure CLI törli az összes kapcsolódó `sourcecontrolconfiguration` erőforrást az Azure-ban. Az Azure CLI a Helm uninstall használatával távolítja el az ügynököket a fürtben.
 
-A Azure Portal törli az `Microsoft.Kubernetes/connectedcluster` erőforrást az Azure-ban, és törli az összes kapcsolódó `sourcecontrolconfiguration` erőforrást az Azure-ban.
+* **Törlés az Azure CLI használatával**: az Azure arc-kompatibilis Kubernetes-erőforrás törlésének elindításához a következő Azure CLI-parancs használható.
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
+  Ezzel eltávolítja az `Microsoft.Kubernetes/connectedCluster` erőforrást és a hozzá tartozó összes `sourcecontrolconfiguration` erőforrást az Azure-ban. Az Azure CLI a Helm uninstall használatával távolítja el a fürtön futó ügynököket is.
 
-Ha el szeretné távolítani a fürtben lévő ügynököket, a vagy a-t kell futtatnia `az connectedk8s delete` `helm uninstall azurearcfork8s` .
+* **Törlés Azure Portal**: az Azure arc-kompatibilis Kubernetes-erőforrás törlése a Azure Portal törli az `Microsoft.Kubernetes/connectedcluster` erőforrást és a hozzá tartozó összes `sourcecontrolconfiguration` erőforrást az Azure-ban, de nem törli a fürtön futó ügynököket. A fürtön futó ügynökök törléséhez futtassa a következő parancsot.
+
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
 
 ## <a name="next-steps"></a>Következő lépések
 

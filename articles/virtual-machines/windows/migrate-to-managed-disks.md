@@ -3,23 +3,22 @@ title: Azure-beli virtuális gépek migrálása a Managed Disksba
 description: Telepítse át a nem felügyelt lemezekkel létrehozott Azure-beli virtuális gépeket a Storage-fiókokban a Managed Disks használatához.
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e8f2753ac9062803a2d6252eca1829cb0b168f02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d64ebb053ef01e375edd52ad0bf2c1f424f1b837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660830"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure-beli virtuális gépek migrálása az Azure-ba való Managed Disks
 
 Az Azure Managed Disks leegyszerűsíti a tárolási felügyeletet, hiszen nem kell külön kezelnie a Storage-fiókokat.  A meglévő Azure-beli virtuális gépeket is áttelepítheti Managed Disks a rendelkezésre állási csoportba tartozó virtuális gépek jobb megbízhatóságának kihasználása érdekében. Biztosítja, hogy a rendelkezésre állási csoportokban lévő különböző virtuális gépek lemezei elég elszigeteltek legyenek egymástól, hogy elkerülje az egyes meghibásodási pontokat. A szolgáltatás automatikusan áthelyezi a különböző virtuális gépek lemezeit egy rendelkezésre állási csoportba a különböző tárolási skálázási egységekben (bélyegzők), ami korlátozza a hardveres és a szoftver meghibásodása miatti egyetlen tárolási skálázási egység meghibásodásának hatását.
 Az igények alapján négyféle tárolási lehetőség közül választhat. A rendelkezésre álló lemezek típusairól a [lemez típusának kiválasztása](disks-types.md) című cikkből tájékozódhat.
 
-## <a name="migration-scenarios"></a> Áttelepítési forgatókönyvek
+## <a name="migration-scenarios"></a>Migrálási forgatókönyvek
 
 A következő helyzetekben telepítheti át Managed Disksre:
 

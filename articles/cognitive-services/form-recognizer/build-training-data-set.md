@@ -9,12 +9,11 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873298"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028256"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Betanítási adatkészlet létrehozása egyéni modellhez
 
@@ -26,7 +25,7 @@ Ha manuálisan címkézett betanítási adatmennyiséget szeretne használni, le
 
 ## <a name="training-data-tips"></a>Az adatképzéssel kapcsolatos tippek
 
-Fontos, hogy olyan adatkészletet használjon, amely betanításra van optimalizálva. A következő tippek segítségével biztosíthatja, hogy a legjobb eredményt kapja a [vonat egyéni modellje](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) műveletből:
+Fontos, hogy olyan adatkészletet használjon, amely betanításra van optimalizálva. A következő tippek segítségével biztosíthatja, hogy a legjobb eredményt kapja a [vonat egyéni modellje](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) műveletből:
 
 * Ha lehetséges, a képeken alapuló dokumentumok helyett szöveges alapú PDF-dokumentumokat használjon. A beolvasott PDF-fájlok képként vannak kezelve.
 * A kitöltött űrlapok esetében olyan példákat használjon, amelyekben az összes mező kitöltése megtörtént.
@@ -44,11 +43,11 @@ Győződjön meg arról, hogy a betanítási adatkészlet az összes űrlap-feli
 
 Ha összeállította a betanításhoz használni kívánt űrlap-dokumentumokat, fel kell töltenie egy Azure Blob Storage-tárolóba. Ha nem tudja, hogyan hozhat létre egy tárolóval rendelkező Azure Storage-fiókot, kövesse a [Azure Portal Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)gyors üzembe helyezési útmutatóját.
 
-Ha manuálisan címkézett adatokkal kívánja használni, akkor a betanítási dokumentumoknak megfelelő *. labels. JSON* és *. OCR. JSON* fájlt is fel kell töltenie. A fájlok létrehozásához használhatja a [minta feliratozási eszközt](./quickstarts/label-tool.md) (vagy a saját felhasználói felületét).
+Ha manuálisan címkézett adatokkal kívánja használni, akkor is fel kell töltenie a *.labels.jst* , és *.ocr.jsa* betanítási dokumentumoknak megfelelő fájlokra. A fájlok létrehozásához használhatja a [minta feliratozási eszközt](./quickstarts/label-tool.md) (vagy a saját felhasználói felületét).
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Az Ön adatait almappákban rendszerezheti (opcionális)
 
-Alapértelmezés szerint az [Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) -API-k csak a Storage-tároló gyökerében található űrlap-dokumentumokat használják. Ha azonban az API-hívásban megadhatja, az almappákban is betaníthatja az adatkészletet. A [vonat egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) -hívásának törzse általában a következő formátumú, ahol `<SAS URL>` a a tároló közös hozzáférésű aláírásának URL-címe:
+Alapértelmezés szerint az [Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) -API-k csak a Storage-tároló gyökerében található űrlap-dokumentumokat használják. Ha azonban az API-hívásban megadhatja, az almappákban is betaníthatja az adatkészletet. A [vonat egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) -hívásának törzse általában a következő formátumú, ahol `<SAS URL>` a a tároló közös hozzáférésű aláírásának URL-címe:
 
 ```json
 {

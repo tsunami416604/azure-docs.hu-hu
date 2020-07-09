@@ -5,15 +5,14 @@ ms.service: virtual-network
 documentationcenter: na
 author: anupamvi
 mms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: kumud
-ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8136ea2a567ac823f03941ebd4a67bed043ada07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689351"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerkapcsolat a Azure DDoS Protection standard csomaggal
 Ez a cikk a Azure DDoS Protection szabvány által engedélyezett partneri lehetőségeket ismerteti. Ez a cikk úgy lett kialakítva, hogy segítse a termék-kezelőket és az üzleti fejlesztési szerepköröket a befektetési útvonalak megismerésében, és betekintést nyújt a partneri értékek kiosztására.
@@ -80,7 +79,7 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 - [Azure DDoS Protection API-hivatkozás](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
 - [Azure Virtual Network API-dokumentáció](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Segítségkérés
+### <a name="get-help"></a>Segítség kérése
 
 - Ha kérdése van az alkalmazással, a szolgáltatással vagy a termék-integrációval kapcsolatban Azure DDoS Protection standard rendszerrel, akkor az [Azure biztonsági közössége](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)is elérhető.
 - [Stack overflow](https://stackoverflow.com/tags/azure-ddos/)-beszélgetések követése.

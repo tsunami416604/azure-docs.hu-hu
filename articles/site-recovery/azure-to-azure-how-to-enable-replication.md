@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973695"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135771"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek replikálása másik Azure-régióba
 
@@ -50,7 +50,7 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
        - Ha a Site Recovery által létrehozott erőforráscsoport már létezik, a rendszer újra felhasználja.
        - Testreszabhatja az erőforráscsoport beállításait.
        - A célként megadott erőforráscsoport helye bármely Azure-régió lehet, kivéve azt a régiót, amelyben a forrásként szolgáló virtuális gépek futnak.
-   - **Célként megadott virtuális hálózat**: alapértelmezés szerint a site Recovery egy új virtuális hálózatot hoz létre a célként megadott régióban egy "ASR" utótaggal a névben. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](site-recovery-network-mapping-azure-to-azure.md) információ a hálózati leképezésről.
+   - **Célként megadott virtuális hálózat**: alapértelmezés szerint a site Recovery egy új virtuális hálózatot hoz létre a célként megadott régióban egy "ASR" utótaggal a névben. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](./azure-to-azure-network-mapping.md) információ a hálózati leképezésről.
    - **Cél Storage-fiókok (a forrásoldali virtuális gép nem használ felügyelt lemezeket)**: alapértelmezés szerint a site Recovery egy új célként szolgáló Storage-fiókot hoz létre, amely utánozza a forrás virtuális gép tárolási konfigurációját. Ha a Storage-fiók már létezik, az újra használatban van.
    - **Replika által felügyelt lemezek (a forrásoldali virtuális gép felügyelt lemezeket használ)**: a site Recovery új replika által felügyelt lemezeket hoz létre a céltartományban a forrás virtuális gép felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium), mint a forrás virtuális gép felügyelt lemezével.
    - **Gyorsítótár-tárolási fiókok**: site Recovery a forrás régióban a cache Storage nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépeken végrehajtott összes módosítást nyomon követi, és a gyorsítótár Storage-fiókjába továbbítja, mielőtt replikálja azokat a célhelyre. A Storage-fióknak standard szintűnek kell lennie.
@@ -113,13 +113,14 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
     - Ha azt szeretné, hogy a Linux rendszerű virtuális gépek egy replikációs csoport részévé legyenek, győződjön meg arról, hogy az 20004-as porton a kimenő forgalom manuálisan nyílik meg az adott Linux-verzió útmutatása szerint.
 ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. Kattintson a **cél erőforrás** > létrehozása**replikáció engedélyezése**lehetőségre.
+5. Kattintson a **cél erőforrás létrehozása**  >  **replikáció engedélyezése**lehetőségre.
 6. Miután a virtuális gépek engedélyezve vannak a replikáláshoz, a virtuális gép állapotának állapotát a **replikált elemek** területen tekintheti meg
 
 >[!NOTE]
->A kezdeti replikálás során az állapot frissítés nélkül is eltarthat egy ideig. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
 >
+> - A kezdeti replikálás során az állapot frissítés nélkül is eltarthat egy ideig. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
+> - Ha egy helyreállítási pont nem lett létrehozva az elmúlt 60 percben, a virtuális gép replikációs állapota kritikus lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

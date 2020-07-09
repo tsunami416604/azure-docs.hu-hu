@@ -5,12 +5,11 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bcb457cd9c2e1bb829ddb90008cc5334db0def8b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204905"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Az Update Management engedélyezése Azure-beli virtuális gépről
 
@@ -43,9 +42,9 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Az Update Management engedélyezése](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
 * Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
 * A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
-* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.
+* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

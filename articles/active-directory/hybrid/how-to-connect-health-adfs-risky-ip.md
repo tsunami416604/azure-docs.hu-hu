@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897258"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359348"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
 Az AD FS-ügyfelek az interneten elérhetővé tehetnek jelszóalapú hitelesési végpontokat, és ezzel hitelesítési szolgáltatásokat biztosíthatnak a végfelhasználók számára olyan SaaS-alkalmazások eléréséhez, mint az Office 365. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
@@ -41,7 +41,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 ## <a name="what-is-in-the-report"></a>Mi a jelentés?
 A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
 
-| Jelentéselem | Leírás |
+| Jelentéselem | Description |
 | ------- | ----------- |
 | Időbélyegző | Az észlelési időszak kezdetét jelző, az Azure Portal helyi ideje szerinti időbélyegző.<br /> Az összes napi eseményt UTC szerint éjfélkor állítja elő a rendszer. <br />Az óránkénti eseményeknél az időbélyeg az óra kezdetére van kerekítve. Az exportált fájlban a „firstAuditTimestamp” érték mutatja az első tevékenység kezdetét. |
 | Eseményindító típusa | Az észlelési időszak típusa. Az összesítési eseményindítók óránkénti és a napi típusúak lehetnek. Ez hasznos lehet a nagy gyakoriságú találgatásos támadások észlelésére a lassú támadásokkal szemben, ahol a kísérletek eloszlanak egy adott napon belül. |
@@ -68,7 +68,7 @@ A terheléselosztó összesítési bejelentkezési tevékenységei meghiúsultak
 ## <a name="download-risky-ip-report"></a>Kockázatos IP-jelentés letöltése 
 A **letöltési** funkcióval az összes kockázatos IP-cím listája exportálható a Connect Health portálról az elmúlt 30 napra vonatkozóan. Az exportált listában szerepel az egyes észlelési időszakokban előforduló összes sikertelen AD FS-bejelentkezési tevékenység, így az exportálás után testreszabhatja a szűrési feltételeket. A portálon kiemelt összesítések mellett az exportált lista IP-címekre lebontva további részleteket is tartalmaz a sikertelen bejelentkezési tevékenységekről:
 
-|  Jelentéselem  |  Leírás  | 
+|  Jelentéselem  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | A sikertelen tevékenységek kezdetének első időbélyegzője az észlelési időszakon belül.  | 
 | lastAuditTimestamp | A sikertelen tevékenységek végének utolsó időbélyegzője az észlelési időszakon belül.  | 
@@ -83,7 +83,7 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 
 ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4d.png)
 
-| Küszöbértékelem | Leírás |
+| Küszöbértékelem | Description |
 | --- | --- |
 | (Helytelen felhasználónév/jelszó + extranet zárolás) naponta  | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **napi** száma meghaladja az értéket. |
 | (Helytelen felhasználónév/jelszó + extranet zárolás) óránként | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **óránkénti** száma meghaladja az értéket. |

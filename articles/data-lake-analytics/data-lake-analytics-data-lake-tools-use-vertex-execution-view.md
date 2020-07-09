@@ -6,14 +6,14 @@ ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: f5adbb75e6852551976aa040a1a1c723d2e3f59b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2dfb03a1b3e0f2bf1146a65627247256125480a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71309719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120109"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>A Visual studióhoz készült Data Lake-eszközök csúcspont-végrehajtási nézetének használata
 Megtudhatja, hogyan használhatja a csúcspont-végrehajtási nézetet Data Lake Analytics feladatok vizsgára.
@@ -49,7 +49,7 @@ Az alsó középső ablaktábla az egyes csúcspontokkal kapcsolatos informáci�
 * A verzió létrehozásának ideje.
 * Folyamat létrehozása indítási idő/folyamat várólistán lévő idő/folyamat indítási idő/folyamat befejezése: Ha a csúcspont-folyamat elindítja a létrehozást, Amikor a csúcspont-folyamat elindul a várólistára; Ha az adott csúcspont-folyamat elindul; Ha az adott csúcspont befejeződik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A diagnosztikai információk naplózása: [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](data-lake-analytics-diagnostic-logs.md).
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).
 * A feladat részleteinek megtekintéséhez lásd: [Az Azure-beli és az Azure-beli adat-Lake Analytics-feladatok](data-lake-analytics-data-lake-tools-view-jobs.md) feladatának használata

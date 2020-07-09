@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480283"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
@@ -72,7 +71,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Védett állapotüzenetek egyeztetése szívverési rekordokkal
 
 Ez a példa a kapcsolódó védelmi állapotokra vonatkozó rekordokat és szívverési rekordokat talál, amelyek a számítógép és az idő szerint egyeznek.
-Figyelje meg, hogy a Time mező a legközelebbi percre van kerekítve. A futásidejű raktárhely számítását a következőre használtuk `round_time=bin(TimeGenerated, 1m)`:.
+Figyelje meg, hogy a Time mező a legközelebbi percre van kerekítve. A futásidejű raktárhely számítását a következőre használtuk: `round_time=bin(TimeGenerated, 1m)` .
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -229,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Biztonsági események száma tevékenység azonosítója szerint
 
 
-Ez a példa a **tevékenység** oszlopának rögzített struktúrájára támaszkodik: \<azonosító\>-\<neve\>.
+Ez a példa a **tevékenység** oszlopának rögzített struktúrájára támaszkodik: \<ID\> - \<Name\> .
 Elemzi a **tevékenység** értékét két új oszlopra, és megszámolja az egyes **tevékenységazonosító**előfordulását.
 
 ```Kusto
@@ -270,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Elemzési tevékenység neve és azonosítója
-Az alábbi két példa a **tevékenység** oszlopának rögzített struktúrájára támaszkodik: \<azonosító\>-\<neve\>. Az első példa az **elemzési** operátort használja az értékek két új oszlophoz való hozzárendeléséhez: **tevékenységazonosító** és **activityDesc**.
+Az alábbi két példa a **tevékenység** oszlop rögzített struktúrájára támaszkodik: \<ID\> - \<Name\> . Az első példa az **elemzési** operátort használja az értékek két új oszlophoz való hozzárendeléséhez: **tevékenységazonosító** és **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -389,7 +388,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Vegye figyelembe, hogy `where IsBillable = true` a záradék kiszűri az adattípusokat bizonyos olyan megoldásokból, amelyekhez nincs betöltési díj.  Emellett a záradéka `TimeGenerated` csak annak biztosítása érdekében, hogy a Azure Portal lekérdezési élménye az alapértelmezett 24 órában is visszatekinthető legyen. A használati adatok típusának használatakor `StartTime` , `EndTime` valamint az eredmények megjelenítéséhez használt időgyűjtők. 
+Vegye figyelembe, hogy a záradék `where IsBillable = true` kiszűri az adattípusokat bizonyos olyan megoldásokból, amelyekhez nincs betöltési díj.  Emellett a záradéka `TimeGenerated` csak annak biztosítása érdekében, hogy a Azure Portal lekérdezési élménye az alapértelmezett 24 órában is visszatekinthető legyen. A használati adatok típusának használatakor, `StartTime` valamint `EndTime` az eredmények megjelenítéséhez használt időgyűjtők. 
 
 #### <a name="data-volume-by-type"></a>Adatmennyiség típus szerint
 

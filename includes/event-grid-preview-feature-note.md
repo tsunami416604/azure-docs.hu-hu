@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-grid
 author: tfitzmac
 ms.service: event-grid
@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66814831"
 ---
 Ez a funkció előzetes verzióban érhető el. A használatához előzetes verziójú bővítményt vagy modult kell telepítenie.
@@ -28,7 +28,7 @@ A [cloudshellben](/azure/cloud-shell/quickstart)-ben:
 
 Helyi telepítés esetén:
 
-1. [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t. Ellenőrizze, hogy rendelkezik-e a legújabb verzióval a- `az --version`nal való ellenőrzéssel.
+1. [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t. Ellenőrizze, hogy rendelkezik-e a legújabb verzióval a-nal való ellenőrzéssel `az --version` .
 1. A bővítmény korábbi verzióinak eltávolítása`az extension remove -n eventgrid`
 1. A `eventgrid` bővítmény telepítése a`az extension add -n eventgrid`
 

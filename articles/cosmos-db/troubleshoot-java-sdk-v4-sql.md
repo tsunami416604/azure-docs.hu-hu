@@ -3,17 +3,16 @@ title: Azure Cosmos DB Java SDK v4-es verziójának diagnosztizálása és megol
 description: A Java SDK v4-ben a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához használhatók olyan funkciók, mint az ügyféloldali naplózás és más külső eszközök.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/11/2020
+ms.date: 06/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: 2deec6f6753a03ab46260432c6faceab009e2911
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 4663839ffa85af0be1de93e2834e1c89e97e95c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718036"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>A Azure Cosmos DB Java SDK v4 SQL API-fiókokkal való használatakor felmerülő problémák elhárítása
 
@@ -95,57 +94,20 @@ Tekintse meg például az alábbi kódrészletet, amely elemeket ad hozzá egy t
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-readtimeout"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-```java
-@Test
-public void badCodeWithReadTimeoutException() throws Exception {
-  int requestTimeoutInSeconds = 10;
-  ConnectionPolicy policy = new ConnectionPolicy();
-  policy.setRequestTimeout(Duration.ofMillis(requestTimeoutInSeconds * 1000));
-  AtomicInteger failureCount = new AtomicInteger();
-  // Max number of concurrent item inserts is # CPU cores + 1
-  Flux<Family> familyPub = 
-      Flux.just(Families.getAndersenFamilyItem(), Families.getWitherspoonFamilyItem(), Families.getCarltonFamilyItem());
-  familyPub.flatMap(family -> {
-      return container.createItem(family);
-  }).flatMap(r -> {
-      try {
-          // Time-consuming work is, for example,
-          // writing to a file, computationally heavy work, or just sleep.
-          // Basically, it's anything that takes more than a few milliseconds.
-          // Doing such operations on the IO Netty thread
-          // without a proper scheduler will cause problems.
-          // The subscriber will get a ReadTimeoutException failure.
-          TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
-      } catch (Exception e) {
-      }
-      return Mono.empty();
-  }).doOnError(Exception.class, exception -> {
-      failureCount.incrementAndGet();
-  }).blockLast();
-  assert(failureCount.get() > 0);
-}
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootNeedsSchedulerAsync)]
 
 A megkerülő megoldással módosíthatja a szálat, amelyen időt vesz igénybe. Definiálja az ütemező egyedi példányát az alkalmazáshoz.
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-```java
-// Have a singleton instance of an executor and a scheduler.
-ExecutorService ex  = Executors.newFixedThreadPool(30);
-Scheduler customScheduler = Schedulers.fromExecutor(ex);
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootCustomSchedulerAsync)]
+
 Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a által az API-val megadott feldolgozónak állítsa be `customScheduler` `.publishOn(customScheduler)` .
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-```java
-container.createItem(family)
-    .publishOn(customScheduler) // Switches the thread.
-    .subscribe(
-        // ...
-    );
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootPublishOnSchedulerAsync)]
+
 A használatával `publishOn(customScheduler)` felszabadítja a nettó i/o-szálat, és átválthat az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem jelenik meg a `io.netty.handler.timeout.ReadTimeoutException` hiba.
 
 ### <a name="request-rate-too-large"></a>Túl nagy a kérelmek aránya
@@ -165,7 +127,7 @@ A Azure Cosmos DB Java SDK számos függőséggel rendelkezik; Általánosságba
 
 A probléma megoldásához meg kell határozni, hogy a projekt függőségei közül melyik hozza a régi verziót, és zárja ki a régebbi verzió tranzitív függőségét, és engedélyezze Azure Cosmos DB Java SDK-t az újabb verzióban.
 
-A következő parancs futtatásával azonosíthatja a Project Pom. XML fájljában, hogy a projekt függőségei közül melyik Azure Cosmos DB a Java SDK-t.
+A következő parancs futtatásával megállapíthatja, hogy a projekt függőségei közül melyik Azure Cosmos DB a Java SDK-t, majd futtassa az alábbi parancsot a projekt pom.xml fájlján:
 ```bash
 mvn dependency:tree
 ```

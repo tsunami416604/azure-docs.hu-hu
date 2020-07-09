@@ -3,19 +3,19 @@ title: Korlátok és kvóták – Custom Vision Service
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk ismerteti a licencelési kulcsok különböző típusait, valamint a Custom Vision Service korlátozásait és kvótáit.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: anroth
-ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 089d5dbb1eece2904f104dfecb3de8adec052dfc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79081777"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391740"
 ---
 # <a name="limits-and-quotas"></a>Korlátok és kvóták
 
@@ -26,7 +26,7 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 ||**F0**|**S0**|
 |-----|-----|-----|
 |Projektek|2|100|
-|Képek betanítása projektenként |5000|100 000|
+|Képek betanítása projektenként |5000|100.000|
 |Előrejelzések/hónap|10,000 |Korlátlan|
 |Címkék/projekt|50|500|
 |Ismétlések |10|10|

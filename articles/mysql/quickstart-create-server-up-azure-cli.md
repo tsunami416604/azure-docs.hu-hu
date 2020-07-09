@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 7b81e88fe6f658fdf4c1857c6082100894c6f2f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067722"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608025"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Gyors útmutató: Azure Database for MySQL létrehozása egyszerű Azure CLI-parancs használatával – az MySQL up (előzetes verzió)
 
@@ -64,7 +64,7 @@ sku-name | GP_Gen5_2 | A termékváltozat neve. A {tarifacsomag}\_{számítási 
 backup-retention | 7 | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap.
 geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz.
 location | westus2 | A kiszolgáló Azure-helye.
-ssl-enforcement | Letiltva | Azt jelzi, hogy engedélyezve van-e az SSL, vagy sem ehhez a kiszolgálóhoz.
+ssl-enforcement | Engedélyezve | Azt jelzi, hogy engedélyezve van-e az SSL, vagy sem ehhez a kiszolgálóhoz.
 storage-size | 5120 | A kiszolgáló tárkapacitása (megabájtban megadva).
 version | 5.7 | A MySQL legújabb főverziója.
 admin-user | Rendszer által generált | A rendszergazda bejelentkezéshez használt felhasználóneve.
@@ -75,7 +75,7 @@ admin-password | Rendszer által generált | A rendszergazda felhasználó jelsz
 
 A kiszolgáló létrehozása után a következő beállításokkal rendelkezik:
 
-- Létrejön egy "devbox" nevű tűzfalszabály. Az Azure CLI megpróbálja felderíteni annak a gépnek az IP- `az mysql up` címét, amelyről a parancsot futtatja, és az IP-cím engedélyezési listáit.
+- Létrejön egy "devbox" nevű tűzfalszabály. Az Azure CLI megpróbálja felderíteni annak a gépnek az IP-címét, `az mysql up` amelyről a parancsot futtatja, és az IP-cím engedélyezési listáit.
 - "Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás be értékre van állítva. Ezzel a beállítással konfigurálható a kiszolgáló tűzfala, hogy fogadja az összes Azure-erőforrás kapcsolatait, beleértve az előfizetésben nem szereplő erőforrásokat is.
 - A `wait_timeout` paraméter értéke 8 óra
 - A rendszer létrehoz egy "sampledb" nevű üres adatbázist.
@@ -90,7 +90,7 @@ A `az mysql up` parancs befejezése után a rendszer visszaadja a népszerű pro
 
 A kapcsolati karakterláncok újbóli listázásához használja az az [MySQL show-kapcsolat-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) parancsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A következő parancs használatával törölje a gyors útmutatóban létrehozott összes erőforrást. Ez a parancs törli a Azure Database for MySQL kiszolgálót és az erőforráscsoportot.
 
@@ -104,7 +104,7 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az mysql down
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-using-cli.md)

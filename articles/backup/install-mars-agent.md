@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök telepítése
 description: Ismerje meg, hogyan telepítheti a Microsoft Azure Recovery Services-(MARS-) ügynököt a Windows rendszerű gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855239"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>A Azure Backup MARS-ügynök telepítése
 
@@ -66,11 +66,12 @@ A tárolási replikálás típusának módosítása:
 Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógépen vagy a proxyn a tűzfalbeállítások a következő URL-címek és IP-címek használatát teszik lehetővé:
 
 * URL-címek
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP-címek
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ Az Azure ExpressRoute-on keresztül történő biztonsági mentést a nyilvános
 A nyilvános társítás használatához először ellenőrizze a következő tartományokhoz és címekhez való hozzáférést:
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
@@ -133,7 +135,7 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
 ## <a name="install-and-register-the-agent"></a>Az ügynök telepítése és regisztrálása
 
-1. Futtassa a *MARSagentinstaller. exe* fájlt azokon a számítógépeken, amelyekről biztonsági másolatot szeretne készíteni.
+1. Futtassa a *MARSagentinstaller.exe* fájlt azokon a számítógépeken, amelyekről biztonsági másolatot szeretne készíteni.
 1. A MARS-ügynök telepítővarázslója területen válassza a **telepítési beállítások**lehetőséget. Ott válassza ki, hol szeretné telepíteni az ügynököt, és válasszon egy helyet a gyorsítótár számára. Ezután válassza a **tovább**lehetőséget.
    * Azure Backup a gyorsítótár használatával tárolja az adatpillanatképeket, mielőtt elküldené őket az Azure-ba.
    * A gyorsítótár helyének legalább 5%-ának kell lennie a biztonsági mentéshez használt adatmennyiségnek.
@@ -149,7 +151,7 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
 1. A **telepítéshez**tekintse át az előfeltételeket, majd válassza a **telepítés**lehetőséget.
 1. Az ügynök telepítése után válassza a **Folytatás a regisztrációhoz**lehetőséget.
-1. A **kiszolgáló regisztrálása varázsló** > tárolójának**azonosítása**lapon keresse meg és válassza ki a letöltött hitelesítő adatokat tartalmazó fájlt. Ezután válassza a **tovább**lehetőséget.
+1. A **kiszolgáló regisztrálása varázsló**tárolójának  >  **azonosítása**lapon keresse meg és válassza ki a letöltött hitelesítő adatokat tartalmazó fájlt. Ezután válassza a **tovább**lehetőséget.
 
     ![Tár hitelesítő adatainak hozzáadása a kiszolgáló regisztrálása varázsló használatával](./media/backup-configure-vault/register1.png)
 
@@ -158,7 +160,7 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
     * Mentse a jelszót egy biztonságos helyen. Szüksége lesz rá a biztonsági másolat visszaállításához.
     * Ha elveszíti vagy elfelejti a jelszót, a Microsoft nem tud segítséget nyújtani a biztonsági mentési adatok helyreállításához.
 
-1. Válassza a **Finish** (Befejezés) elemet. Az ügynök már telepítve van, és a számítógép regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
+1. Válassza a **Befejezés** gombot. Az ügynök már telepítve van, és a számítógép regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
 
 ## <a name="next-steps"></a>További lépések
 

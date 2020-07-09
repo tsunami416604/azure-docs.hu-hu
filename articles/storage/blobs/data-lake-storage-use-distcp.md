@@ -4,16 +4,16 @@ description: Adatok másolása Data Lake Storage Gen2ba és a DistCp eszköz has
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698650"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109501"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz
 
@@ -37,25 +37,33 @@ An méretű HDInsight-fürthöz tartozik a DistCp segédprogram, amely az adatok
 
 2. Ellenőrizze, hogy el tudja-e érni meglévő általános célú v2-fiókját (a hierarchikus névtér engedélyezése nélkül).
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    A kimenetnek meg kell adnia a tároló tartalmának listáját.
 
 3. Hasonlóképpen ellenőrizze, hogy elérhető-e a Storage-fiók a fürtön engedélyezett hierarchikus névtérrel. Futtassa az alábbi parancsot:
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     A kimenetnek meg kell adnia a fájlok/mappák listáját a Data Lake Storage-fiókban.
 
 4. A DistCp használatával másolhatja át a WASB adatait egy Data Lake Storage-fiókba.
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     A parancs átmásolja a **/example/Data/Gutenberg/** mappa tartalmát a blob Storage-ban a Data Lake Storage fiókban lévő **/MyFolder** .
 
 5. Hasonlóképpen, a DistCp használatával másolhatja át Data Lake Storage fiók adatait a Blob Storageba (WASB).
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     A parancs átmásolja a **/MyFolder** tartalmát a Data Lake Store fiókban a WASB **/example/Data/Gutenberg/** mappájába.
 
@@ -65,7 +73,9 @@ Mivel a DistCp legalacsonyabb részletessége egyetlen fájl, az egyidejű máso
 
 **Példa**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hogyan határozza meg a használni kívánt leképezések számát?
 
@@ -75,7 +85,7 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
 * **2. lépés: a leképezések számának kiszámítása** – az **m** érték egyenlő a fonalas tároló méretének hányadosával. A FONALak tárolójának mérete információi a Ambari portálon is elérhetők. Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot. Ebben az ablakban a szál tárolójának mérete jelenik meg. A leképezések (**m**) számának megérkezésére szolgáló egyenlet
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    m = (a csomópontok száma * a szálak memóriája az egyes csomópontokhoz)/FONALak tárolójának mérete
 
 **Példa**
 
@@ -83,11 +93,11 @@ Tegyük fel, hogy egy 4x D14v2s-fürttel rendelkezik, és 10 TB-nyi adat átvite
 
 * **Összes szál memóriája**: a Ambari-portálon azt állapítja meg, hogy a szál memóriája 96 GB D14-csomóponthoz. Tehát a négy csomópontos fürthöz tartozó összes szál memóriája a következő: 
 
-        YARN memory = 4 * 96GB = 384GB
+    FONAL memória = 4 * 96GB = 384GB
 
 * **Hozzárendelések száma**: a Ambari-portálon azt állapítja meg, hogy a szál tárolójának mérete 3 072 MB a D14-fürt csomópontjaihoz. Így a leképezések száma:
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = (4 csomópont * 96GB)/3072MB = 128 mappers
 
 Ha más alkalmazások használják a memóriát, akkor dönthet úgy, hogy csak a fürthöz tartozó fonal-memória egy részét használja a DistCp.
 

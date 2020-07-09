@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665306"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztás viselkedése a műveleti csoportokban
@@ -30,7 +29,7 @@ Egy műveleti csoport részeként konfigurált SMS-fogadó SMS-t kap, ha riaszt�
 * A gazdagépbejegyzés, amelyre a riasztást elküldték
 * A riasztás címe
 
-| VÁLASZ | Leírás |
+| VÁLASZ | Description |
 | ----- | ----------- |
 | Megbénít`<Action Group Short name>` | Letiltja a további SMS-ket a műveleti csoportból |
 | ENGEDÉLYEZÉSE`<Action Group Short name>` | Az SMS újbóli engedélyezése a műveleti csoportból |

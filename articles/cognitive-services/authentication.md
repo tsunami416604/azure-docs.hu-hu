@@ -9,21 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587680"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445542"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Kérelmek hitelesítése az Azure Cognitive Services
 
 Az Azure kognitív szolgáltatás minden kérésének tartalmaznia kell egy hitelesítési fejlécet. Ez a fejléc egy előfizetési kulcs vagy egy hozzáférési jogkivonat mentén halad át, amely a szolgáltatás vagy a szolgáltatás előfizetésének ellenőrzésére szolgál. Ebből a cikkből megtudhatja, hogyan hitelesítheti a kéréseket és az egyes követelmények követelményeit.
 
-* [Hitelesítés egyetlen szolgáltatású előfizetési kulccsal](#authenticate-with-a-single-service-subscription-key)
-* [Hitelesítés több szolgáltatásból álló előfizetési kulccsal](#authenticate-with-a-multi-service-subscription-key)
-* [Hitelesítés jogkivonat használatával](#authenticate-with-an-authentication-token)
-* [Hitelesítés Azure Active Directorysal (HRE)](#authenticate-with-azure-active-directory)
+* Hitelesítés [egyetlen szolgáltatással](#authenticate-with-a-single-service-subscription-key) vagy [több szolgáltatással](#authenticate-with-a-multi-service-subscription-key) rendelkező előfizetési kulccsal
+* Hitelesítés [jogkivonat](#authenticate-with-an-authentication-token) használatával
+* Hitelesítés [Azure Active Directorysal (HRE)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -161,7 +160,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 [!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Cognitive Services?](welcome.md)
 * [A Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/)

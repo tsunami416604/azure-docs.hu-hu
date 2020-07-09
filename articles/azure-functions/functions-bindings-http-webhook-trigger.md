@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833791"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -55,9 +56,9 @@ public static async Task<IActionResult> Run(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy trigger kötést mutat be egy *function. JSON* fájlban és egy [C# parancsfájl-függvényben](functions-reference-csharp.md) , amely a kötést használja. A függvény a `name` paramétert a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében keresi.
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény a `name` paramétert a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében keresi.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -131,9 +132,9 @@ public class Person {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény a `name` paramétert a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében keresi.
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény a `name` paramétert a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében keresi.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -180,9 +181,9 @@ module.exports = function(context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény a `name` paramétert a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében keresi.
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény a `name` paramétert a lekérdezési karakterláncban vagy a HTTP-kérelem törzsében keresi.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -477,9 +478,9 @@ Teljes példaként tekintse meg az [trigger példáját](#example).
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `httpTrigger` . |
 | **direction** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
@@ -497,9 +498,11 @@ Az trigger típusú bemeneti típust `HttpRequest` vagy egyéni típusként dekl
 
 Alapértelmezés szerint a HTTP-triggerekhez tartozó függvény létrehozásakor a függvény címezhető az űrlap egy útvonalával:
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
-Ezt az útvonalat a `route` http-trigger bemeneti kötésének opcionális tulajdonságával is testreszabhatja. Példaként a következő *function. JSON* fájl definiál egy `route` TULAJDONSÁGot egy http-triggerhez:
+Ezt az útvonalat a `route` http-trigger bemeneti kötésének opcionális tulajdonságával is testreszabhatja. A fájl következő *function.js* például a `route` http-triggerek tulajdonságát definiálja:
 
 ```json
 {
@@ -634,12 +637,14 @@ public class HttpTriggerJava {
 
 ---
 
-Alapértelmezés szerint az összes függvény útvonala az *API*-val előtaggal van ellátva. Az előtagot a `http.routePrefix` [Host. JSON](functions-host-json.md) fájlban található tulajdonság használatával is testreszabhatja vagy eltávolíthatja. Az alábbi példa eltávolítja az *API* Route előtagot egy üres karakterlánc használatával a *Host. JSON* fájlban lévő előtaghoz.
+Alapértelmezés szerint az összes függvény útvonala az *API*-val előtaggal van ellátva. Az előtagot testre is szabhatja vagy eltávolíthatja a `extensions.http.routePrefix` [host.js](functions-host-json.md) fájljában található tulajdonság használatával. Az alábbi példa eltávolítja az *API* Route előtagot úgy, hogy az előtaghoz üres karakterláncot használ a fájl *host.js* .
 
 ```json
 {
-    "http": {
-    "routePrefix": ""
+    "extensions": {
+        "http": {
+            "routePrefix": ""
+        }
     }
 }
 ```
@@ -749,9 +754,6 @@ A hitelesített felhasználó [http-fejléceken](../app-service/app-service-auth
 
 ## <a name="function-access-keys"></a><a name="authorization-keys"></a>Függvény-hozzáférési kulcsok
 
-> [!IMPORTANT]
-> Míg a kulcsok segíthetnek a HTTP-végpontok kiépítésében a fejlesztés során, nem céljuk a HTTP-triggerek védelme az éles környezetben. További információ: [http-végpont biztonságossá tétele éles](#secure-an-http-endpoint-in-production)környezetben.
-
 [!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>Kulcsok beszerzése
@@ -766,7 +768,9 @@ A [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-mana
 
 A legtöbb HTTP-trigger sablonhoz API-kulcs szükséges a kérelemben. Így a HTTP-kérelem általában a következő URL-címhez hasonlít:
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 A kulcs egy nevű lekérdezési karakterlánc-változóban is szerepelhet `code` , a fentiek szerint. Egy HTTP-fejlécben is szerepelhet `x-functions-key` . A kulcs értéke lehet a függvényhez definiált bármelyik funkcióbillentyű, vagy bármely gazdagép kulcsa.
 
@@ -810,9 +814,17 @@ A webhook-engedélyezést a webhook fogadó összetevője kezeli, amely a HTTP-t
 * **Lekérdezési karakterlánc**: a szolgáltató átadja a kulcs nevét a `clientid` lekérdezési karakterlánc paraméterében (például `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` ).
 * **Kérelem fejléce**: a szolgáltató átadja a kulcs nevét a `x-functions-clientid` fejlécben.
 
+## <a name="content-types"></a>Tartalomtípusok
+
+A bináris és az űrlapadatok nem C # függvénybe való átadásához a megfelelő Content-type fejlécet kell használnia. A támogatott tartalomtípusok `octet-stream` a bináris adattípusok és a [többrészes típusok](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)esetében is használhatók.
+
+### <a name="known-issues"></a>Ismert problémák
+
+A nem C # függvények esetében a Content-Type értékkel küldött kérések a `image/jpeg` `string` függvénynek átadott értéket eredményeznek. Ilyen esetekben az értéket manuálisan is átalakíthatja `string` egy byte-tömbre a nyers bináris értékek eléréséhez.
+
 ## <a name="limits"></a>Korlátok
 
-A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza pedig 4 KB (4 096 bájt) lehet. Ezeket a korlátokat `httpRuntime` a futtatókörnyezet [web. config fájljának](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)eleme határozza meg.
+A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza pedig 4 KB (4 096 bájt) lehet. Ezeket a korlátokat `httpRuntime` a futtatókörnyezet [Web.config fájljának](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)eleme határozza meg.
 
 Ha a HTTP-triggert használó függvény 230 másodpercen belül nem fejeződik be, akkor a [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) időtúllépést jelez, és http 502-hibát ad vissza. A függvény továbbra is futni fog, de nem tud HTTP-választ adni. A hosszú ideig futó függvények esetében javasoljuk, hogy kövesse az aszinkron mintákat, és olyan helyet küldjön vissza, amelyben pingelheti a kérés állapotát. További információ a függvények futtatásának időtartamáról: [skálázás és üzemeltetés – fogyasztási terv](functions-scale.md#timeout).
 

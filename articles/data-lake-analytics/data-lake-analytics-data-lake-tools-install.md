@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d153ba1d00c0e43a5809503e047fb66713b7fb7c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70914094"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104928"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése
 
@@ -48,10 +48,10 @@ Engedélyezze az **Azure-fejlesztési** számítási feladatot az alábbiak szer
 
 Töltse le és telepítse [a Visual studióhoz készült Microsoft Azure Data Lake és stream Analytics eszközöket ](https://aka.ms/adltoolsvs). A telepítés után a Visual Studio a következő módosításokat hajtja végre:
 
-* A **Server Explorer** > **Azure** -csomópontja **Data Lake Analytics** csomópontot tartalmaz.
+* A **Server Explorer**  >  **Azure** -csomópontja **Data Lake Analytics** csomópontot tartalmaz.
 * Az **Eszközök** menü tartalmaz egy **Data Lake** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).

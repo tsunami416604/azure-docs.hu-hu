@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/29/2020
-ms.openlocfilehash: 0de816d25bbc1563885413d8dbd52dc7bda7d538
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8f21b4daff6f5e30fdbb109e683ad7a3e75c8ad6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615083"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101613"
 ---
-# <a name="customize-azure-database-for-mysql-server-parameters-using-powershell"></a>Azure Database for MySQL kiszolgáló paramétereinek testreszabása a PowerShell használatával
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQL a PowerShell használatával
 
 Egy Azure Database for MySQL kiszolgáló konfigurációs paramétereit a PowerShell használatával listázhatja, megjelenítheti és frissítheti. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
 
@@ -26,7 +26,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - Egy [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Az az. MySql PowerShell-modul előzetes verzióban érhető el, és a következő paranccsal külön kell telepítenie az az PowerShell-modulból: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Az az. MySql PowerShell-modul előzetes verzióban érhető el, és a következő paranccsal külön kell telepítenie az az PowerShell-modulból: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Amint az az. MySql PowerShell-modul általánosan elérhetővé válik, az a PowerShell modul kiadásainak része lesz, és natív módon elérhető a Azure Cloud Shellon belülről.
 
 Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount) parancsmag használatával.
@@ -49,7 +49,7 @@ Az egyes felsorolt paraméterek definícióját a MySQL-referenciával foglalkoz
 
 Egy adott konfigurációs paraméter részleteinek megjelenítéséhez futtassa a `Get-AzMySqlConfiguration` parancsmagot, és adja meg a **Name** paramétert.
 
-Ez a példa a **lassú\_lekérdezési\_napló** kiszolgálójának konfigurációs paraméterének részleteit jeleníti meg a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup**alatt.
+Ez a példa a **lassú \_ lekérdezési \_ napló** kiszolgálójának konfigurációs paraméterének részleteit jeleníti meg a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup**alatt.
 
 ```azurepowershell-interactive
 Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -59,13 +59,13 @@ Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup
 
 Egy bizonyos kiszolgáló-konfigurációs paraméter értékét is módosíthatja, amely frissíti a MySQL-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A konfiguráció frissítéséhez használja a `Update-AzMySqlConfiguration` parancsmagot.
 
-A **lassú\_lekérdezési\_napló** kiszolgáló-konfigurációs paraméterének frissítése a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup**területen.
+A **lassú \_ lekérdezési \_ napló** kiszolgáló-konfigurációs paraméterének frissítése a kiszolgáló **mydemoserver** az erőforráscsoport **myresourcegroup**területen.
 
 ```azurepowershell-interactive
 Update-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A tároló automatikus növekedése Azure Database for MySQL-kiszolgálón a PowerShell használatával](howto-auto-grow-storage-powershell.md).

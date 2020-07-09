@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: e00538d1112492c5b7f9fc0f91c86df6d3500701
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796589"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrálás felügyelt rendszerképből megosztott képgyűjteményi rendszerképre
@@ -33,7 +33,7 @@ A cikkben végzett munka során szükség esetén cserélje le az erőforráscso
 
 ## <a name="get-the-gallery"></a>A katalógus beszerzése
 
-Az összes gyűjteményt és képdefiníciót név szerint listázhatja. Az eredmények formátuma `gallery\image definition\image version`.
+Az összes gyűjteményt és képdefiníciót név szerint listázhatja. Az eredmények formátuma `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -52,11 +52,11 @@ $gallery = Get-AzGallery `
 
 A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. A rendszer a rendszerképpel kapcsolatos információk kezelésére szolgál. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Mivel a felügyelt lemezképek mindig általánosítva vannak, `-OsState generalized`be kell állítani. 
+A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Mivel a felügyelt lemezképek mindig általánosítva vannak, be kell állítani `-OsState generalized` . 
 
 További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
-Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a rendszerkép definíciójának neve *myImageDefinition*, és egy általánosított Windows operációs rendszerre van. A rendszerképek definíciójának létrehozásához használja `-OsType Linux`a következőt:. 
+Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a rendszerkép definíciójának neve *myImageDefinition*, és egy általánosított Windows operációs rendszerre van. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>A felügyelt rendszerkép beolvasása
 
-A [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)használatával megtekintheti az erőforráscsoporthoz elérhető rendszerképek listáját. Ha ismeri a rendszerkép nevét és a benne található erőforráscsoportot, akkor ismét használhatja `Get-AzImage` a rendszerkép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *myImage* nevű rendszerképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$managedImage*változóhoz. 
+A [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)használatával megtekintheti az erőforráscsoporthoz elérhető rendszerképek listáját. Ha ismeri a rendszerkép nevét és a benne található erőforráscsoportot, akkor `Get-AzImage` ismét használhatja a rendszerkép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *myImage* nevű rendszerképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$managedImage*változóhoz. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -107,7 +107,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A folyamat megjelenítéséhez írja be `$job.State`a következőt:.
+Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A folyamat megjelenítéséhez írja be a következőt: `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához. 
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS`vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
 >
 
 ## <a name="delete-the-managed-image"></a>A felügyelt rendszerkép törlése

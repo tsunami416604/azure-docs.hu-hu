@@ -13,7 +13,10 @@
       items:
         - name: Azure Portal
           href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
         - name: ARM-sablon
+          displayName: Resource Manager
           href: quick-create-azure-resource-manager.md
         - name: PowerShell
           href: stream-analytics-quick-create-powershell.md
@@ -29,7 +32,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 – C# UDF futtatása'
+    - name: 4 – C# UDF futtatása
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 – Egyéni .NET-deszerializáló létrehozása
       href: custom-deserializer.md
@@ -48,6 +51,10 @@
       href: feature-comparison.md
     - name: Helyi fejlesztés
       href: develop-locally.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Feladatok bemenettípusai
       items:
         - name: Bemenetek áttekintése
@@ -77,10 +84,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Machine Learning UDF
           href: machine-learning-udf.md
+        - name: Hibakeresési UDF-ek
+          href: debug-user-defined-functions.md
     - name: Stream Analytics-feladat optimalizálása
       items:
         - name: A streamelési egységek ismertetése és módosítása
@@ -114,6 +123,8 @@
   items:
     - name: Kezelés
       items:
+        - name: Feladatok automatikus skálázása
+          href: stream-analytics-autoscale.md
         - name: Hitelesítő adatok frissítése
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Eseményrendező szabályzatok konfigurálása
@@ -221,6 +232,8 @@
           href: visual-studio-code-local-run.md
         - name: Helyi tesztelés élő adatokkal
           href: visual-studio-code-local-run-live-input.md
+        - name: Lekérdezések hibakeresése feladatábra segítségével
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: CI-/CD-folyamat beállítása
           href: setup-cicd-vs-code.md
         - name: Feladatok böngészése
@@ -611,6 +624,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: További források
   items:
     - name: Stream Analytics előzetes verziói

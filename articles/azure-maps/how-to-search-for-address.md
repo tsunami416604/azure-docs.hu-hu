@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335429"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
@@ -39,7 +39,7 @@ Ebben a példában a Azure Maps [keresési címek API](https://docs.microsoft.co
 
 Ha a geocode címei vannak, a [keresési cím KÖTEGELT API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) használatával egyetlen API-hívásban is elküldheti a lekérdezések kötegét.
 
-1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze el a **keresett címeket**.
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el a **keresett címeket**.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz tartozó kérelem URL-címét, és válasszon ki egy hitelesítési protokollt, ha van ilyen.
 
@@ -48,7 +48,7 @@ Ha a geocode címei vannak, a [keresési cím KÖTEGELT API](https://docs.micros
 | Paraméter | Ajánlott érték |
 |---------------|------------------------------------------------| 
 | HTTP method | GET |
-| Kérés URL-címe | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
+| URL-cím kérése | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
 | Engedélyezés | Nincs hitelesítés |
 
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket lekérdezésként vagy elérésiút-paraméterekként kíván használni a kérelem URL-címében: 
@@ -58,7 +58,7 @@ Ha a geocode címei vannak, a [keresési cím KÖTEGELT API](https://docs.micros
 | Kulcs | Érték | 
 |------------------|-------------------------| 
 | api-verzió | 1.0 | 
-| előfizetés – kulcs | \<Az Azure Maps kulcsa\> | 
+| előfizetés – kulcs | \<your Azure Maps key\> | 
 | lekérdezés | 400 Broad St, Seattle, WA 98109 | 
 
 4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét. 
@@ -83,7 +83,7 @@ A **typeahead** jelző azt jelzi, hogy a címek keresési API-ját részleges be
 
 Azure Maps a[ fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -t ajánlott használni, ha nem tudja, mi a felhasználói bemenet egy keresési lekérdezéshez. Az API összekapcsolja az érdeklődési pont (POI) keresését és a helymeghatározáshoz egy canonical "single-line Search" kifejezéssel. Az API például képes kezelni bármilyen címek vagy POI-token kombinációjának bemeneteit. Az is lehet, hogy környezetfüggő pozícióval (lat./Lon. párosítva), teljes mértékben korlátozza a koordináta és a sugár, vagy általánosabban végrehajtja a földrajzi torzítási pontok nélkül.
 
-A legtöbb keresési lekérdezés alapértelmezett `maxFuzzyLevel=1` értéke a teljesítmény elérése és a szokatlan eredmények csökkentése. Ez az alapértelmezett beállítás a lekérdezési paraméterben `maxFuzzyLevel=2` vagy `3`a (z) értékre való átadással igény szerint felülbírálható.
+A legtöbb keresési lekérdezés alapértelmezett értéke a `maxFuzzyLevel=1` teljesítmény elérése és a szokatlan eredmények csökkentése. Ez az alapértelmezett beállítás a lekérdezési paraméterben vagy a (z) értékre való átadással igény szerint felülbírálható `maxFuzzyLevel=2` `3` .
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Címek keresése a fuzzy Search használatával
 
@@ -96,7 +96,7 @@ A legtöbb keresési lekérdezés alapértelmezett `maxFuzzyLevel=1` értéke a 
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP method | GET |
-    | Kérés URL-címe | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
+    | URL-cím kérése | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | Engedélyezés | Nincs hitelesítés |
 
     Az URL-cím alatt található **JSON** -attribútum meghatározza a válasz formátumát. Ez a cikk a JSON-t használja a könnyű használat és az olvashatóság érdekében. A rendelkezésre álló válaszok formátumait a [Maps Functional API-referenciájának](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) **Get Search fuzzy** definíciójában találja.
@@ -108,7 +108,7 @@ A legtöbb keresési lekérdezés alapértelmezett `maxFuzzyLevel=1` értéke a 
     | Kulcs | Érték |
     |------------------|-------------------------|
     | api-verzió | 1.0 |
-    | előfizetés – kulcs | \<Az Azure Maps kulcsa\> |
+    | előfizetés – kulcs | \<your Azure Maps key\> |
     | lekérdezés | pizza |
 
 4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét.
@@ -143,7 +143,7 @@ Azure Maps a [keresési címek fordított API]( https://docs.microsoft.com/rest/
 Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) használatával egyetlen API-hívással küldhet le lekérdezési köteget.
 
 
-1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és adja meg a **fordított címtartomány-keresés**nevet.
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** elemre, és adja meg a **fordított címtartomány-keresés**nevet.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, és adja meg az API-végpont kérésének URL-címét.
   
@@ -152,7 +152,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP method | GET |
-    | Kérés URL-címe | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
+    | URL-cím kérése | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
     | Engedélyezés | Nincs hitelesítés |
   
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket lekérdezésként vagy elérésiút-paraméterekként kíván használni a kérelem URL-címében:
@@ -162,7 +162,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
     | Kulcs | Érték |
     |------------------|-------------------------|
     | api-verzió | 1.0 |
-    | előfizetés – kulcs | \<Az Azure Maps kulcsa\> |
+    | előfizetés – kulcs | \<your Azure Maps key\> |
     | lekérdezés | 47.591180,-122,332700 |
   
 4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét.
@@ -203,7 +203,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
   
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>A Cross Street keresése fordított címekkel Cross Street Search használatával
 
-1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze **vissza a Cross Street Search kifejezésre**.
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze **vissza a Cross Street Search kifejezésre**.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, és adja meg az API-végpont kérésének URL-címét.
   
@@ -212,7 +212,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP method | GET |
-    | Kérés URL-címe | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
+    | URL-cím kérése | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
     | Engedélyezés | Nincs hitelesítés |
   
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket lekérdezésként vagy elérésiút-paraméterekként kíván használni a kérelem URL-címében:
@@ -220,7 +220,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
     | Kulcs | Érték |
     |------------------|-------------------------|
     | api-verzió | 1.0 |
-    | előfizetés – kulcs | \<Az Azure Maps kulcsa\> |
+    | előfizetés – kulcs | \<your Azure Maps key\> |
     | lekérdezés | 47.591180,-122,332700 |
   
 4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét.

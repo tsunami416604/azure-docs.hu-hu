@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: b95d5d6eb52806e5b43a495b875d30846297c465
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 05cad67290b7f89c127d4417e7b89c48279605d9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592434"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886158"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](overview-authentication-authorization.md). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Egy ASP.NET Core alkalmazást használ egy szögletes. js kezelőfelülettel. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, Ön pedig az oktatóanyag elvégzésével megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Az App Service továbbá beépített támogatást nyújt a [felhasználók hitelesítéséhez és engedélyezéséhez](overview-authentication-authorization.md). Ebből az oktatóanyagból megtudhatja, hogyan gondoskodhat az alkalmazások védelméről az App Service-hitelesítés és -engedélyezés segítségével. Egy ASP.NET Core alkalmazást használ, amely egy Angular.js előtéri példát mutat be. Az App Service-hitelesítés és -engedélyezés támogatja az összes nyelvi futtatókörnyezetet, Ön pedig az oktatóanyag elvégzésével megismerheti, hogyan alkalmazhatja ezt a kívánt nyelvre.
 
 ![Egyszerű hitelesítés és engedélyezés](./media/app-service-web-tutorial-auth-aad/simple-auth.png)
 
@@ -79,7 +79,7 @@ Ebben a lépésben üzembe helyezi a projektet két App Service-alkalmazásban. 
 
 ### <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
-A Cloud Shellben futtassa a következő parancsokat két webalkalmazás létrehozásához. Cserélje `a-z`le `0-9` `-` _ \<az előtér-alkalmazás neve>_ és _ \<a háttér-alkalmazás neve>_ két globálisan egyedi alkalmazás-névvel (érvényes karakterek:, és). A parancsokról további információt talál a [CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben](app-service-web-tutorial-rest-api.md) című szakaszban.
+A Cloud Shellben futtassa a következő parancsokat két webalkalmazás létrehozásához. Cserélje le _\<front-end-app-name>_ és _\<back-end-app-name>_ két globálisan egyedi alkalmazás-névvel (érvényes karakterek:, `a-z` `0-9` és `-` ). A parancsokról további információt talál a [CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben](app-service-web-tutorial-rest-api.md) című szakaszban.
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -94,14 +94,14 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
-A _helyi terminálablakba_ visszalépve futtassa a következő Git-parancsokat a háttéralkalmazás telepítéséhez. Cserélje le _ \<a deploymentLocalGitUrl>_ az [Azure-erőforrások létrehozásakor](#create-azure-resources)mentett git-távoli URL-címére. Amikor a git Hitelesítőadat-kezelő kéri a hitelesítő adatok megadását, győződjön meg arról, hogy a [központi telepítési hitelesítő](deploy-configure-credentials.md)adatokat adja meg, nem pedig a Azure Portalba való bejelentkezéshez használt hitelesítő adatokat.
+A _helyi terminálablakba_ visszalépve futtassa a következő Git-parancsokat a háttéralkalmazás telepítéséhez. Cserélje le az _\<deploymentLocalGitUrl-of-back-end-app>_ elemet az [Azure-erőforrások létrehozása](#create-azure-resources)lehetőséggel mentett git-távirányító URL-címére. Amikor a git Hitelesítőadat-kezelő kéri a hitelesítő adatok megadását, győződjön meg arról, hogy a [központi telepítési hitelesítő](deploy-configure-credentials.md)adatokat adja meg, nem pedig a Azure Portalba való bejelentkezéshez használt hitelesítő adatokat.
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
 git push backend master
 ```
 
-A helyi terminálablakban futtassa a következő Git-parancsokat ugyanezen kódnak az előtér-alkalmazásba történő telepítéséhez. Cserélje le _ \<az deploymentLocalGitUrl>_ az [Azure-erőforrások létrehozásakor](#create-azure-resources)mentett git-távirányító URL-címére.
+A helyi terminálablakban futtassa a következő Git-parancsokat ugyanezen kódnak az előtér-alkalmazásba történő telepítéséhez. Cserélje le az _\<deploymentLocalGitUrl-of-front-end-app>_ elemet az [Azure-erőforrások létrehozása](#create-azure-resources)lehetőséggel mentett git-távirányító URL-címére.
 
 ```bash
 git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
@@ -130,14 +130,14 @@ Ebben a lépésben kijelöli az előtér-alkalmazás kiszolgálói kódját, hog
 
 ### <a name="modify-front-end-code"></a>Az előtérkód módosítása
 
-A helyi adattárban nyissa meg a következőt: _Controllers/TodoController.cs_. Az `TodoController` osztály elején adja hozzá a következő sorokat, és cserélje le _ \<a háttér-alkalmazás neve>_ a háttérbeli alkalmazás nevére:
+A helyi adattárban nyissa meg a következőt: _Controllers/TodoController.cs_. Az `TodoController` osztály elején adja hozzá a következő sorokat, és cserélje le at a _\<back-end-app-name>_ háttérbeli alkalmazás nevére:
 
 ```cs
 private static readonly HttpClient _client = new HttpClient();
 private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
 ```
 
-Keresse meg a (z) által `[HttpGet]` díszített metódust, és cserélje le a kódot a kapcsos zárójelek közé a következőket:
+Keresse meg a (z) által díszített metódust, `[HttpGet]` és cserélje le a kódot a kapcsos zárójelek közé a következőket:
 
 ```cs
 var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo");
@@ -225,7 +225,7 @@ Válassza az **expressz**lehetőséget, majd fogadja el az alapértelmezett beá
 
 A **hitelesítés/engedélyezés** lapon válassza a **Mentés**lehetőséget.
 
-Miután megtalálta az üzenetet `Successfully saved the Auth Settings for <back-end-app-name> App`, frissítse a portál oldalt.
+Miután megtalálta az üzenetet `Successfully saved the Auth Settings for <back-end-app-name> App` , frissítse a portál oldalt.
 
 Válassza a **Azure Active Directory** ismét lehetőséget, majd válassza ki a **Azure ad alkalmazás**.
 
@@ -254,11 +254,11 @@ Most, hogy engedélyezve van a hitelesítés és az engedélyezés mindkét alka
 
 A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory** lehetőséget, vagy keresse meg, majd válassza a *Azure Active Directory* lehetőséget bármelyik lapon.
 
-Válassza ki **Alkalmazásregisztrációk** > **tulajdonában lévő alkalmazások** > **megtekintheti a címtárban található összes alkalmazást**. Válassza ki az előtér-alkalmazás nevét, majd válassza az **API-engedélyek**lehetőséget.
+Válassza ki **Alkalmazásregisztrációk**  >  **tulajdonában lévő alkalmazások**  >  **megtekintheti a címtárban található összes alkalmazást**. Válassza ki az előtér-alkalmazás nevét, majd válassza az **API-engedélyek**lehetőséget.
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-Válassza az **engedély hozzáadása**lehetőséget, majd válassza **az API-k saját szervezetem** > **\<háttér-alkalmazás neve>**.
+Válassza az **engedély hozzáadása**lehetőséget, majd **a saját szervezet által használt API**-k elemet  >  **\<back-end-app-name>** .
 
 A háttérbeli alkalmazáshoz tartozó **API-engedélyek kérése** lapon válassza a **delegált engedélyek** és **User_impersonation**, majd az **engedélyek hozzáadása**elemet.
 
@@ -268,15 +268,15 @@ A háttérbeli alkalmazáshoz tartozó **API-engedélyek kérése** lapon válas
 
 Az előtér-alkalmazás most már rendelkezik a szükséges engedélyekkel, amelyekkel hozzáfér a háttérbeli alkalmazáshoz a bejelentkezett felhasználóként. Ebben a lépésben konfigurálja az App Service-hitelesítést és -engedélyezést, hogy használható jogkivonatot adjon a háttéralkalmazás eléréséhez. Ebben a lépésben a háttér-ügyfél-AZONOSÍTÓra van szüksége, amelyet a [hitelesítés engedélyezése és a háttérbeli alkalmazás](#enable-authentication-and-authorization-for-back-end-app)engedélyezése elemre másolt.
 
-Az előtér-alkalmazás bal oldali menüjében válassza az **erőforrás-kezelő** lehetőséget a **fejlesztői eszközök**területen, majd válassza az **Indítás**lehetőséget.
+Keresse meg az [Azure erőforrás-kezelő](https://resources.azure.com) , és használja az erőforrás-fát az előtér-webalkalmazás megkereséséhez.
 
 A [Azure erőforrás-kezelő](https://resources.azure.com) ekkor megnyílik az erőforrás-fában kiválasztott előtér-alkalmazással. Kattintson az **Olvasás/Írás** elemre a lap tetején az Azure-erőforrások szerkesztésének engedélyezéséhez.
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-A bal oldali böngészőben bontsa ki a következőt: **config** > **authsettings elemre**.
+A bal oldali böngészőben bontsa ki a következőt: **config**  >  **authsettings elemre**.
 
-Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. Állítsa `additionalLoginParams` be a következő JSON-karakterláncot a másolt ügyfél-azonosító használatával. 
+Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. Állítsa be a `additionalLoginParams` következő JSON-karakterláncot a másolt ügyfél-azonosító használatával. 
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
@@ -335,12 +335,12 @@ Ebben a lépésben az előtérrendszeri Angular.js alkalmazást a háttérrendsz
 Míg a kiszolgálói kód hozzáfér a kérelemfejlécekhez, az ügyfélkód ugyanezeket a hozzáférési jogkivonatokat a következőből érheti el: `GET /.auth/me` (lásd az [alkalmazáskódban lévő jogkivonatok lekéréséről](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) szóló részt).
 
 > [!TIP]
-> Ez a szakasz a szabványos HTTP-metódusok használatával mutatja be a biztonságos HTTP-hívásokat. A [javascripthez készült Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-js) segítségével azonban egyszerűbbé teheti a szögletes. js alkalmazás mintáját.
+> Ez a szakasz a szabványos HTTP-metódusok használatával mutatja be a biztonságos HTTP-hívásokat. A [javascripthez készült Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-js) segítségével azonban egyszerűbbé teheti a Angular.js alkalmazás mintáját.
 >
 
 ### <a name="configure-cors"></a>A CORS konfigurálása
 
-A Cloud Shellban engedélyezze a CORS az ügyfél URL-címére a [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) parancs használatával. Cserélje le a _ \<háttér-alkalmazás neve>_ és _ \<az előtér-alkalmazás neve>_ helyőrzőket.
+A Cloud Shellban engedélyezze a CORS az ügyfél URL-címére a [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) parancs használatával. Cserélje le a _\<back-end-app-name>_ és a _\<front-end-app-name>_ helyőrzőket.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'
@@ -352,7 +352,7 @@ Ez a lépés nem kapcsolódik a hitelesítéshez és az engedélyezéshez. Azonb
 
 A helyi adattárban nyissa meg a következőt: _wwwroot/index.html_.
 
-A 51. sorban állítsa a `apiEndpoint` változót a háttérbeli alkalmazás (`https://<back-end-app-name>.azurewebsites.net`) HTTPS URL-címére. Cserélje le _ \<a back-end-app-Name>_ az alkalmazás nevére app Service.
+A 51. sorban állítsa a `apiEndpoint` változót a háttérbeli alkalmazás () HTTPS URL-címére `https://<back-end-app-name>.azurewebsites.net` . Cserélje le az _\<back-end-app-name>_ alkalmazást az alkalmazás nevére app Service.
 
 Nyissa meg a helyi adattárban a _wwwroot/app/scripts/todoListSvc.js_ fájlt, és ellenőrizze, hogy minden API-hívás a következővel van-e kiegészítve: `apiEndpoint`. Az Angular.js-alkalmazás most már a háttérrendszer API-kat fogja hívni. 
 
@@ -414,7 +414,7 @@ Gratulálunk! Az ügyfélkód most már hozzáfér a háttéradatokhoz a hiteles
 
 A hozzáférési jogkivonatok bizonyos idő elteltével lejárnak. További információ a hozzáférési jogkivonatok frissítéséről anélkül, hogy a felhasználóknak újra hitelesíteniük kell magukat az alkalmazással kapcsolatban: az [identitás-szolgáltatói tokenek frissítése](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával:
 

@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e1fdf219d09148d47759652e97797b569e265fa4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829433"
 ---
 # <a name="split-merge-security-configuration"></a>Felosztás – biztonsági konfiguráció egyesítése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,8 +38,8 @@ Ha ezek a beállítások nem érhetők el, **önaláírt tanúsítványokat**is 
 
 ## <a name="tools-to-generate-certificates"></a>Tanúsítványok létrehozásához szükséges eszközök
 
-* [MakeCert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
 
@@ -47,7 +47,10 @@ Ha ezek a beállítások nem érhetők el, **önaláírt tanúsítványokat**is 
   
     Ha telepítve van, lépjen a következőre:
   
-        %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```console
+    %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```
+
 * A WDK beszerzése a [Windows 8,1 rendszerből: letölthető készletek és eszközök](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>A TLS/SSL-tanúsítvány konfigurálása
@@ -193,12 +196,14 @@ Ez a témakör csak referenciául szolgál. Kövesse a következő témakörben 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 Végrehajtása
 
-    makecert ^
-      -n "CN=myservice.cloudapp.net" ^
-      -e MM/DD/YYYY ^
-      -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha256 -len 2048 ^
-      -sv MySSL.pvk MySSL.cer
+```console
+makecert ^
+  -n "CN=myservice.cloudapp.net" ^
+  -e MM/DD/YYYY ^
+  -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
+  -a sha256 -len 2048 ^
+  -sv MySSL.pvk MySSL.cer
+```
 
 A testreszabáshoz:
 
@@ -208,7 +213,9 @@ A testreszabáshoz:
 ## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>PFX-fájl létrehozása önaláírt TLS/SSL-tanúsítványhoz
 Végrehajtása
 
-        pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```console
+pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```
 
 Adja meg a jelszót, majd exportálja a tanúsítványt a következő beállításokkal:
 
@@ -230,7 +237,9 @@ Meglévő vagy előállított tanúsítvány feltöltése. PFX-fájl a TLS-kulcs
 ## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>TLS/SSL-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában
 Frissítse a szolgáltatás konfigurációs fájljában a következő beállítás ujjlenyomat-értékét a Cloud Service-be feltöltött tanúsítvány ujjlenyomatával:
 
-    <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```console
+<Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="import-tlsssl-certification-authority"></a>TLS/SSL-hitelesítésszolgáltató importálása
 Kövesse az alábbi lépéseket a szolgáltatással kommunikáló összes fiók/gép esetén:
@@ -258,13 +267,15 @@ Ezután másolja ki ugyanazt az ujjlenyomatot, mint a TLS/SSL-tanúsítvány a H
 ## <a name="create-a-self-signed-certification-authority"></a>Önaláírt hitelesítésszolgáltató létrehozása
 A következő lépések végrehajtásával hozzon létre egy önaláírt tanúsítványt, amely hitelesítésszolgáltatóként működik:
 
-    makecert ^
-    -n "CN=MyCA" ^
-    -e MM/DD/YYYY ^
-     -r -cy authority -h 1 ^
-     -a sha256 -len 2048 ^
-      -sr localmachine -ss my ^
-      MyCA.cer
+```console
+makecert ^
+-n "CN=MyCA" ^
+-e MM/DD/YYYY ^
+ -r -cy authority -h 1 ^
+ -a sha256 -len 2048 ^
+  -sr localmachine -ss my ^
+  MyCA.cer
+```
 
 A testreszabáshoz
 
@@ -311,13 +322,15 @@ A szolgáltatás elérésére jogosult minden egyes személynek rendelkeznie kel
 
 A következő lépéseket ugyanabban a gépen kell végrehajtani, ahol az önaláírt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrejött és tárolva lett:
 
-    makecert ^
-      -n "CN=My ID" ^
-      -e MM/DD/YYYY ^
-      -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha256 -len 2048 ^
-      -in "MyCA" -ir localmachine -is my ^
-      -sv MyID.pvk MyID.cer
+```console
+makecert ^
+  -n "CN=My ID" ^
+  -e MM/DD/YYYY ^
+  -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
+  -a sha256 -len 2048 ^
+  -in "MyCA" -ir localmachine -is my ^
+  -sv MyID.pvk MyID.cer
+```
 
 Testreszabása
 
@@ -330,11 +343,15 @@ Ez a parancs felszólítja a létrehozandó jelszó megadására, majd egyszer h
 ## <a name="create-pfx-files-for-client-certificates"></a>PFX-fájlok létrehozása az Ügyféltanúsítványok számára
 Minden létrehozott ügyféltanúsítvány esetében hajtsa végre a következőt:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Testreszabása
 
-    MyID.pvk and MyID.cer with the filename for the client certificate
+```console
+MyID.pvk and MyID.cer with the filename for the client certificate
+```
 
 Adja meg a jelszót, majd exportálja a tanúsítványt a következő beállításokkal:
 
@@ -352,7 +369,7 @@ Minden olyan személynek, akivel egy ügyféltanúsítványt kiállítottak, imp
 ## <a name="copy-client-certificate-thumbprints"></a>Ügyféltanúsítvány ujjlenyomatai megfelelnek másolása
 A tanúsítvány ujjlenyomatának beszerzéséhez minden olyan személynek, akivel egy ügyféltanúsítványt bocsátottak ki, az alábbi lépéseket kell követnie a szolgáltatás konfigurációs fájljához:
 
-* Futtassa a certmgr. exe fájlt
+* certmgr.exe futtatása
 * Személyes lap kiválasztása
 * Kattintson duplán a hitelesítéshez használandó ügyféltanúsítvány használatára
 * A megnyíló tanúsítvány párbeszédpanelen válassza a részletek lapot.
@@ -379,11 +396,15 @@ Az alapértelmezett beállítás nem az ügyféltanúsítvány visszavonási ál
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>PFX-fájl létrehozása önaláírt titkosítási tanúsítványokhoz
 Titkosítási tanúsítvány esetén hajtsa végre a következőt:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Testreszabása
 
-    MyID.pvk and MyID.cer with the filename for the encryption certificate
+```console
+MyID.pvk and MyID.cer with the filename for the encryption certificate
+```
 
 Adja meg a jelszót, majd exportálja a tanúsítványt a következő beállításokkal:
 
@@ -418,7 +439,7 @@ Frissítse a szolgáltatás konfigurációs fájljának következő beállítás
 ## <a name="find-certificate"></a>Tanúsítvány keresése
 Kövesse az alábbi lépéseket:
 
-1. Futtassa az MMC. exe fájlt.
+1. mmc.exe futtatása.
 2. Fájl – > beépülő modul hozzáadása/eltávolítása...
 3. Válassza a **tanúsítványok**lehetőséget.
 4. Kattintson a **Hozzáadás** parancsra.

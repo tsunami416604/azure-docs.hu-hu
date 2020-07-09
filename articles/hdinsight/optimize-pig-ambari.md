@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 469019eb1e90654d1953156337593d5de99b46c0
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d6f20780ccd90d83631ce07411820fb8c9280c3e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084086"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Az Apache Pig és az Apache Ambari optimalizálása az Azure HDInsight
 
@@ -29,13 +29,13 @@ Az Apache Pig tulajdonságai módosíthatók a Ambari webes KEZELŐFELÜLETérő
     ![Speciális Apache Pig-tulajdonságok](./media/optimize-pig-ambari/advanced-pig-properties.png)
 
 > [!NOTE]  
-> Minden munkamenet-szintű beállítás felülbírálja a `pig.properties` fájl tulajdonságának értékét.
+> Minden munkamenet-szintű beállítás felülbírálja a fájl tulajdonságának értékét `pig.properties` .
 
 ## <a name="tune-execution-engine"></a>Végrehajtó motor hangolása
 
 A Pig-parancsfájlok végrehajtásához két végrehajtó motor érhető el: MapReduce és TEZ. A TEZ egy optimalizált motor, amely jóval gyorsabb, mint a MapReduce.
 
-1. A végrehajtási motor módosításához a **speciális Pig-Properties** ablaktáblán keresse meg a tulajdonságot `exectype`.
+1. A végrehajtási motor módosításához a **speciális Pig-Properties** ablaktáblán keresse meg a tulajdonságot `exectype` .
 
 1. Az alapértelmezett érték a **MapReduce**. Módosítsa a **TEZ**.
 
@@ -45,11 +45,11 @@ A Kaptárhoz hasonlóan a helyi mód is a feladatok gyorsabb, viszonylag kis men
 
 1. A helyi mód engedélyezéséhez állítsa a `pig.auto.local.enabled` **true (igaz**) értéket. Az alapértelmezett érték a hamis.
 
-1. A `pig.auto.local.input.maxbytes` tulajdonság értéknél kisebb bemeneti adatmérettel rendelkező feladatok kisebb feladatoknak tekintendők. Az alapértelmezett érték 1 GB.
+1. A tulajdonság értéknél kisebb bemeneti adatmérettel rendelkező feladatok `pig.auto.local.input.maxbytes` kisebb feladatoknak tekintendők. Az alapértelmezett érték 1 GB.
 
 ## <a name="copy-user-jar-cache"></a>Felhasználói jar-gyorsítótár másolása
 
-A Pig a UDF által igényelt JAR-fájlokat egy elosztott gyorsítótárba másolja, hogy azok elérhetők legyenek a feladatok csomópontjai számára. Ezek a tégelyek nem változnak gyakran. Ha engedélyezve van, `pig.user.cache.enabled` a beállítás lehetővé teszi, hogy a tégelyek egy gyorsítótárba kerüljenek, hogy újra felhasználhassa azokat az ugyanazon felhasználó által futtatott feladatokhoz. Ez a beállítás kisebb növekedést eredményez a feladatok teljesítményében.
+A Pig a UDF által igényelt JAR-fájlokat egy elosztott gyorsítótárba másolja, hogy azok elérhetők legyenek a feladatok csomópontjai számára. Ezek a tégelyek nem változnak gyakran. Ha engedélyezve van, a `pig.user.cache.enabled` beállítás lehetővé teszi, hogy a tégelyek egy gyorsítótárba kerüljenek, hogy újra felhasználhassa azokat az ugyanazon felhasználó által futtatott feladatokhoz. Ez a beállítás kisebb növekedést eredményez a feladatok teljesítményében.
 
 1. Az engedélyezéshez állítsa `pig.user.cache.enabled` igaz értékre. Az alapértelmezett érték a false.
 
@@ -77,16 +77,16 @@ Ha ez a beállítás engedélyezve van, a kis méretű fájlok kevesebb leképez
 
 ## <a name="tune-mappers"></a>Leképezések hangolása
 
-A leképezések számát a tulajdonság `pig.maxCombinedSplitSize`módosításával szabályozhatja. Ez a tulajdonság határozza meg az egyetlen leképezési feladattal feldolgozandó adatok méretét. Az alapértelmezett érték a fájlrendszer alapértelmezett blokkjának mérete. Ennek az értéknek a növelésével alacsonyabb számú Mapper-feladatot eredményez.
+A leképezések számát a tulajdonság módosításával szabályozhatja `pig.maxCombinedSplitSize` . Ez a tulajdonság határozza meg az egyetlen leképezési feladattal feldolgozandó adatok méretét. Az alapértelmezett érték a fájlrendszer alapértelmezett blokkjának mérete. Ennek az értéknek a növelésével alacsonyabb számú Mapper-feladatot eredményez.
 
 ## <a name="tune-reducers"></a>Szűkítők hangolása
 
-A rendszer a paraméter `pig.exec.reducers.bytes.per.reducer`alapján számítja ki a szűkítők számát. A paraméter a redukáló által feldolgozott bájtok számát adja meg, alapértelmezés szerint 1 GB. A szűkítők maximális számának korlátozásához állítsa a `pig.exec.reducers.max` tulajdonságot a 999 alapértelmezett értékre.
+A rendszer a paraméter alapján számítja ki a szűkítők számát `pig.exec.reducers.bytes.per.reducer` . A paraméter a redukáló által feldolgozott bájtok számát adja meg, alapértelmezés szerint 1 GB. A szűkítők maximális számának korlátozásához állítsa a `pig.exec.reducers.max` tulajdonságot a 999 alapértelmezett értékre.
 
 ## <a name="next-steps"></a>További lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETtel](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Fürtök optimalizálása](./hdinsight-changing-configs-via-ambari.md)
-* [Apache-HBase optimalizálása](./optimize-hbase-ambari.md)
-* [Apache Hive optimalizálása](./optimize-hive-ambari.md)
+* [Az Apache HBase optimalizálása](./optimize-hbase-ambari.md)
+* [Az Apache Hive optimalizálása](./optimize-hive-ambari.md)

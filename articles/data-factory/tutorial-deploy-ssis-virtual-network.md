@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118144"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) konfigurálása virtuális hálózathoz való csatlakozáshoz
@@ -92,13 +91,13 @@ A Azure Portal használatával konfigurálhatja a virtuális hálózatokat, miel
 
    1. A Azure Portal bal oldali menüjében válassza az **előfizetések**lehetőséget.
 
-   1. Válassza ki előfizetését.
+   1. Válassza ki az előfizetését.
 
-   1. A bal oldalon válassza az **erőforrás-szolgáltatók**lehetőséget, és győződjön meg arról, hogy a **Microsoft. batch** egy regisztrált szolgáltató.
+   1. A bal oldalon válassza az **erőforrás-szolgáltatók**lehetőséget, és győződjön meg arról, hogy **Microsoft.BatCH** egy regisztrált szolgáltató.
 
    ![A "regisztrált" állapot megerősítése](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   Ha nem látja a **Microsoft. batcht** a listában, a regisztráláshoz [hozzon létre egy üres Azure batch fiókot](../batch/batch-account-create-portal.md) az előfizetésében. Később is törölheti.
+   Ha nem látja **Microsoft.BatCH** -t a listában, a regisztráláshoz [hozzon létre egy üres Azure batch fiókot](../batch/batch-account-create-portal.md) az előfizetésében. Később is törölheti.
 
 ## <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>A Azure-SSIS IR csatlakoztatása egy virtuális hálózathoz
 

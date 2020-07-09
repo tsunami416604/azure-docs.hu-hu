@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370236"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195676"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Gyors útmutató: hibrid üzemmódú példány létrehozása Azure Portal & Azure Database Migration Service
 
@@ -26,7 +26,7 @@ Azure Database Migration Service a hibrid üzemmód az adatbázisok áttelepít�
 >[!NOTE]
 >Jelenleg a hibrid módban futó Azure Database Migration Service támogatja SQL Server áttelepítését a következőre:
 >
->- Azure SQL Database felügyelt példányt közel nulla állásidővel (online).
+>- Az Azure SQL felügyelt példánya közel nulla állásidővel (online).
 >- Azure SQL Database egy adatbázist bizonyos állásidővel (offline).
 >- MongoDb az Azure CosmosDB a közel nulla állásidővel (online).
 >- MongoDb az Azure CosmosDB bizonyos állásidővel (offline).
@@ -191,5 +191,5 @@ Adja meg a paramétereket a parancsfájl tetején, majd futtassa a parancsfájlt
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [SQL Server migrálása egy Azure SQL Database felügyelt példányon online](tutorial-sql-server-managed-instance-online.md)
-> [Migrálás SQL Server egyetlen adatbázisba vagy készletezett adatbázisba Azure SQL Database offline](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server migrálása egy online Azure SQL felügyelt példányra](tutorial-sql-server-managed-instance-online.md) 
+>  [SQL Server migrálása a Azure SQL Database offline állapotba](tutorial-sql-server-to-azure-sql.md)

@@ -7,20 +7,20 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266558"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023771"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
@@ -47,33 +47,31 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
 1. Válassza ki az **Azure-erőforrásokat**.
 
-1. Az **Erőforrás-szűrő** használatával szűrheti a felügyelt erőforrások listáját.
+1. Az erőforrás-szűrő segítségével keresse meg a keresett felügyelt erőforrásokat.
 
     ![A felügyelni kívánt Azure-erőforrások listája](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Válassza ki a kezelni kívánt erőforrást, például egy előfizetést vagy egy felügyeleti csoportot.
+1. Válassza ki a kezelni kívánt erőforrást az erőforrás-Áttekintés lap megnyitásához.
 
-1. A kezelés területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
+1. A **kezelés**területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
 
     ![Azure-erőforrások szerepkörei](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Válassza a **tag hozzáadása** lehetőséget az új hozzárendelés ablaktábla megnyitásához.
+1. Válassza a **hozzárendelések hozzáadása** lehetőséget a **hozzárendelések hozzáadása** panel megnyitásához.
 
-1. Válassza a **szerepkör kiválasztása** lehetőséget a szerepkör kiválasztása ablaktábla megnyitásához.
+1. Válassza a **szerepkör kiválasztása** lehetőséget a **szerepkör kiválasztása** lap megnyitásához.
 
     ![Új hozzárendelés ablaktábla](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
 1. Válassza ki a hozzárendelni kívánt szerepkört, majd kattintson a **kiválasztás**gombra.
 
-    Megnyílik a tag vagy csoport kiválasztása panel.
+    Megnyílik a **tag vagy csoport kiválasztása** panel.
 
 1. Válassza ki a szerepkörhöz hozzárendelni kívánt tagot vagy csoportot, majd kattintson a **kiválasztás**elemre.
 
     ![Tag vagy csoport ablaktábla kiválasztása](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    Megnyílik a tagsági beállítások panel.
-
-1. A **hozzárendelés típusa** listában válassza a **jogosult** vagy az **aktív**lehetőséget.
+1. A **Beállítások** lap **hozzárendelés típusa** listájában válassza a **jogosult** vagy az **aktív**lehetőséget.
 
     ![Tagságok beállításai panel](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,19 +81,11 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
     - Az **aktív** hozzárendelésekhez nem szükséges, hogy a tag bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt tagok rendelkeznek a szerepkörhöz tartozó jogosultságokkal.
 
-1. Ha a hozzárendelésnek állandónak kell lennie (tartósan jogosult vagy véglegesen kiosztott), jelölje be a **véglegesen** jelölőnégyzetet.
+1. Egy adott hozzárendelés időtartamának megadásához módosítsa a kezdő és a záró dátumokat és időpontokat.
 
-    A szerepkör beállításaitól függően előfordulhat, hogy a jelölőnégyzet nem jelenik meg, vagy lehet, hogy nem módosítható.
+1. Ha elkészült, válassza a **hozzárendelés**lehetőséget.
 
-1. Egy adott hozzárendelés időtartamának megadásához törölje a jelölőnégyzet jelölését, és módosítsa a kezdő és/vagy befejező dátum és idő mezőket.
-
-    ![Tagsági beállítások – dátum és idő](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Ha elkészült, válassza a **kész**gombot.
-
-    ![Új hozzárendelés – Hozzáadás](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás**lehetőséget. Megjelenik az állapot értesítése.
+1. Az új szerepkör-hozzárendelés létrehozása után megjelenik egy állapotjelző üzenet.
 
     ![Új hozzárendelés – értesítés](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,9 +97,9 @@ A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításáh
 
 1. Válassza ki az **Azure-erőforrásokat**.
 
-1. Válassza ki a kezelni kívánt erőforrást, például egy előfizetést vagy egy felügyeleti csoportot.
+1. Válassza ki a kezelni kívánt erőforrást az Áttekintés oldal megnyitásához.
 
-1. A kezelés területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
+1. A **kezelés**területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
 
     ![Azure-erőforrás szerepkörei – szerepkör kiválasztása](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 

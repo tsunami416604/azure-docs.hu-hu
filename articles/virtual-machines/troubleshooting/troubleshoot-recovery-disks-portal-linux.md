@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
 ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75374641"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez csatolásával a Azure Portal használatával
@@ -37,7 +36,7 @@ A hibaelhárítási folyamat a következő:
 > Ez a cikk nem vonatkozik a nem felügyelt lemezzel rendelkező virtuális gépre.
 
 ## <a name="determine-boot-issues"></a>Rendszerindítási problémák meghatározása
-Vizsgálja meg a rendszerindítási diagnosztika és a virtuális gép képernyőképét annak meghatározásához, hogy a virtuális gép miért nem tud megfelelően elindulni. Gyakori például `/etc/fstab`, hogy a bejegyzés érvénytelen, vagy egy mögöttes virtuális merevlemez törölve vagy áthelyezve lett.
+Vizsgálja meg a rendszerindítási diagnosztika és a virtuális gép képernyőképét annak meghatározásához, hogy a virtuális gép miért nem tud megfelelően elindulni. Gyakori például, hogy a bejegyzés érvénytelen `/etc/fstab` , vagy egy mögöttes virtuális merevlemez törölve vagy áthelyezve lett.
 
 Válassza ki a virtuális gépet a portálon, majd görgessen le a **támogatás + hibaelhárítás** szakaszhoz. Kattintson a **rendszerindítási diagnosztika** elemre a virtuális gépről továbbított konzol üzeneteinek megtekintéséhez. Tekintse át a konzol naplóit, és ellenőrizze, hogy a virtuális gép miért nem fog problémát észlelni. Az alábbi példa egy olyan virtuális gépet mutat be, amely kézi interakciót igénylő karbantartási módban ragadt:
 
@@ -107,7 +106,7 @@ A következő néhány lépésben hibaelhárítási célból egy másik virtuál
 > [!NOTE]
 > Az alábbi példák egy Ubuntu virtuális gépen szükséges lépéseket részletezik. Ha más Linux-disztribúciót használ, például Red Hat Enterprise Linux vagy SUSE, a naplófájl helyei és `mount` parancsai némileg eltérőek lehetnek. Tekintse át az adott disztribúció dokumentációját a parancsok megfelelő módosításaihoz.
 
-1. A megfelelő hitelesítő adatok használatával SSH-t a hibaelhárítási virtuális géphez. Ha ez a lemez az első, a hibaelhárítási virtuális géphez csatolt adatlemez, valószínűleg csatlakozik a `/dev/sdc`szolgáltatáshoz. A `dmseg` következő paranccsal listázhatja a csatolt lemezeket:
+1. A megfelelő hitelesítő adatok használatával SSH-t a hibaelhárítási virtuális géphez. Ha ez a lemez az első, a hibaelhárítási virtuális géphez csatolt adatlemez, valószínűleg csatlakozik a szolgáltatáshoz `/dev/sdc` . A következő paranccsal `dmseg` listázhatja a csatolt lemezeket:
 
     ```bash
     dmesg | grep SCSI
@@ -122,22 +121,22 @@ A következő néhány lépésben hibaelhárítási célból egy másik virtuál
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    Az előző példában az operációsrendszer-lemez a (z `/dev/sda` ) helyen található, és az egyes virtuális gépekhez `/dev/sdb`megadott ideiglenes lemez a következő helyen található:. Ha több adatlemezzel is rendelkezett, akkor a következő `/dev/sdd`helyen `/dev/sde`kell lennie:, és így tovább.
+    Az előző példában az operációsrendszer-lemez a (z) helyen található, `/dev/sda` és az egyes virtuális gépekhez megadott ideiglenes lemez a következő helyen található: `/dev/sdb` . Ha több adatlemezzel is rendelkezett, akkor a következő helyen kell lennie:, `/dev/sdd` `/dev/sde` és így tovább.
 
-2. Hozzon létre egy könyvtárat a meglévő virtuális merevlemez csatlakoztatásához. A következő példa egy nevű `troubleshootingdisk`könyvtárat hoz létre:
+2. Hozzon létre egy könyvtárat a meglévő virtuális merevlemez csatlakoztatásához. A következő példa egy nevű könyvtárat hoz létre `troubleshootingdisk` :
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Ha több partícióval rendelkezik a meglévő virtuális merevlemezen, csatlakoztassa a szükséges partíciót. Az alábbi példa az első elsődleges partíciót csatlakoztatja a `/dev/sdc1`következő helyen:
+3. Ha több partícióval rendelkezik a meglévő virtuális merevlemezen, csatlakoztassa a szükséges partíciót. Az alábbi példa az első elsődleges partíciót csatlakoztatja a következő helyen `/dev/sdc1` :
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Ajánlott eljárás az adatlemezek csatlakoztatása az Azure-beli virtuális gépekhez a virtuális merevlemez univerzálisan egyedi azonosítója (UUID) használatával. Ebben a rövid hibaelhárítási forgatókönyvben nem szükséges a virtuális merevlemezt az UUID használatával csatlakoztatni. A normál használat `/etc/fstab` alatt azonban az UUID helyett a virtuális merevlemezek az eszköz nevével való csatlakoztatásakor előfordulhat, hogy a virtuális gép nem tud elindulni.
+    > Ajánlott eljárás az adatlemezek csatlakoztatása az Azure-beli virtuális gépekhez a virtuális merevlemez univerzálisan egyedi azonosítója (UUID) használatával. Ebben a rövid hibaelhárítási forgatókönyvben nem szükséges a virtuális merevlemezt az UUID használatával csatlakoztatni. A normál használat alatt azonban `/etc/fstab` az UUID helyett a virtuális merevlemezek az eszköz nevével való csatlakoztatásakor előfordulhat, hogy a virtuális gép nem tud elindulni.
 
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Hibák elhárítása az eredeti virtuális merevlemezen
@@ -152,7 +151,7 @@ A hibák megoldása után válassza le a meglévő virtuális merevlemezt a hiba
     cd /
     ```
 
-    Most válassza le a meglévő virtuális merevlemezt. Az alábbi példa leválasztja az eszközt a `/dev/sdc1`következő helyen:
+    Most válassza le a meglévő virtuális merevlemezt. Az alábbi példa leválasztja az eszközt a következő helyen `/dev/sdc1` :
 
     ```bash
     sudo umount /dev/sdc1

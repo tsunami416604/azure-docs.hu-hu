@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: guybo
 ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066740"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD lemezkép létrehozása és feltöltése az Azure-ba
@@ -47,7 +47,7 @@ Azon a virtuális gépen, amelyre telepítette a Hyper-V-támogatást hozzáadó
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Alapértelmezés szerint a `root` felhasználó le van tiltva az Azure-beli virtuális gépeken. A felhasználók az `doas` OpenBSD virtuális gépen futtatott parancs használatával emelt szintű jogosultságokkal futtathatnak parancsokat. A DOAs alapértelmezés szerint engedélyezve van. További információ: [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
+4. Alapértelmezés szerint a `root` felhasználó le van tiltva az Azure-beli virtuális gépeken. A felhasználók az OpenBSD virtuális gépen futtatott parancs használatával emelt szintű jogosultságokkal futtathatnak parancsokat `doas` . A DOAs alapértelmezés szerint engedélyezve van. További információ: [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Telepítse és konfigurálja az Azure-ügynök előfeltételeit az alábbiak szerint:
 
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Virtuális gép létrehozása a VHD-ből
-Létrehozhat egy virtuális gépet egy [minta parancsfájllal](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) vagy közvetlenül az [az VM Create](/cli/azure/vm)paranccsal. A feltöltött OpenBSD VHD megadásához használja a paramétert a `--image` következő módon:
+Létrehozhat egy virtuális gépet egy [minta parancsfájllal](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) vagy közvetlenül az [az VM Create](/cli/azure/vm)paranccsal. A feltöltött OpenBSD VHD megadásához használja a `--image` paramétert a következő módon:
 
 ```azurecli
 az vm create \

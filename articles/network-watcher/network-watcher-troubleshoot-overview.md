@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738651"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Az erőforrás-hibaelhárítás bemutatása az Azure Network Watcher
 
@@ -49,34 +49,34 @@ Az alábbi táblázatokban láthatók a különböző típusú hibák (azonosít
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba |Igen|
-| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |Nem|
-| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll  |Nem|
-| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet. | Nem |
-| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | Nem |
-| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | Nem|
-| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
-| NoConnectionsFoundForGateway | Nem találhatók kapcsolatok az átjárón. Ez a hiba csak figyelmeztetés.| Nem|
-| ConnectionsNotConnected | A kapcsolatok nincsenek csatlakoztatva. Ez a hiba csak figyelmeztetés.| Igen|
-| GatewayCPUUsageExceeded | Az átjáró jelenlegi CPU-használata > 95%. | Igen |
+| NoFault | Ha nem észlelhető hiba |Yes|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |No|
+| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll  |No|
+| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet. | No |
+| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | No |
+| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | No|
+| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | No|
+| NoConnectionsFoundForGateway | Nem találhatók kapcsolatok az átjárón. Ez a hiba csak figyelmeztetés.| No|
+| ConnectionsNotConnected | A kapcsolatok nincsenek csatlakoztatva. Ez a hiba csak figyelmeztetés.| Yes|
+| GatewayCPUUsageExceeded | Az átjáró jelenlegi CPU-használata > 95%. | Yes |
 
 ### <a name="connection"></a>Kapcsolat
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba |Igen|
-| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |Nem|
-| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll  |Nem|
-| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet.  | Nem |
-| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | Nem |
-| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja | Nem |
-| ConnectionIsMarkedDisconnected | A kapcsolat meg van jelölve "leválasztva" |Nem|
-| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
-| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
-| Hitelesítés | Nem megfelelő előmegosztott kulcs | Igen|
-| PeerReachability | A társ-átjáró nem érhető el. | Igen|
-| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
-| WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|
+| NoFault | Ha nem észlelhető hiba |Yes|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |No|
+| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll  |No|
+| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet.  | No |
+| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | No |
+| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja | No |
+| ConnectionIsMarkedDisconnected | A kapcsolat meg van jelölve "leválasztva" |No|
+| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Yes |
+| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Yes|
+| Hitelesítés | Nem megfelelő előmegosztott kulcs | Yes|
+| PeerReachability | A társ-átjáró nem érhető el. | Yes|
+| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Yes|
+| WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Yes|
 
 ## <a name="supported-gateway-types"></a>Támogatott átjárók típusai
 
@@ -107,12 +107,12 @@ Az erőforrás-hibaelhárítási naplófájlok tárolása egy Storage-fiókban t
 
 A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
-### <a name="connectionstatstxt"></a>ConnectionStats. txt
+### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-A **ConnectionStats. txt** fájl tartalmazza a kapcsolatok általános statisztikáit, beleértve a bejövő és kimenő bájtokat, a kapcsolatok állapotát és a kapcsolatok létrejöttének időpontját.
+A **ConnectionStats.txt** fájl a kapcsolatok általános statisztikáit tartalmazza, beleértve a bejövő és kimenő bájtokat, a kapcsolatok állapotát és a kapcsolatok létrejöttének időpontját.
 
 > [!NOTE]
-> Ha a hibaelhárítási API meghívása kifogástalan állapotot ad vissza, akkor a zip-fájlban szereplő egyetlen dolog egy **ConnectionStats. txt** fájl.
+> Ha a hibaelhárítási API meghívása kifogástalan állapotot ad vissza, akkor a zip-fájlban szereplő egyetlen dolog **ConnectionStats.txt** fájl.
 
 A fájl tartalma a következő példához hasonló:
 
@@ -124,19 +124,19 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats. txt
+### <a name="cpustatstxt"></a>CPUStats.txt
 
-A **CPUStats. txt** fájl a tesztelés időpontjában rendelkezésre álló CPU-használatot és memóriát tartalmaz.  A fájl tartalma a következő példához hasonló:
+A **CPUStats.txt** fájl a tesztelési időszakban rendelkezésre álló CPU-használatot és memóriát tartalmaz.  A fájl tartalma a következő példához hasonló:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
 ```
 
-### <a name="ikeerrorstxt"></a>IKEErrors. txt
+### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-A **IKEErrors. txt** fájl minden olyan IKE-hibát tartalmaz, amely a figyelés során található.
+A **IKEErrors.txt** fájl a figyelés során talált IKE-hibákat tartalmaz.
 
-Az alábbi példa egy IKEErrors. txt fájl tartalmát mutatja be. A hibák a probléma függvényében eltérőek lehetnek.
+Az alábbi példában egy IKEErrors.txt fájl tartalma látható. A hibák a probléma függvényében eltérőek lehetnek.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -145,11 +145,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-A **scrubbed-wfpdiag. txt** naplófájl tartalmazza a WFP-naplót. Ez a napló a csomagok eldobásának és az IKE/AuthIP hibák naplózását tartalmazza.
+A **Scrubbed-wfpdiag.txt** naplófájl tartalmazza a WFP-naplót. Ez a napló a csomagok eldobásának és az IKE/AuthIP hibák naplózását tartalmazza.
 
-A következő példában a scrubbed-wfpdiag. txt fájl tartalma látható. Ebben a példában a kapcsolatok megosztott kulcsa nem megfelelő, mert a harmadik sorból a lent látható. A következő példa csak a teljes napló töredékét adja meg, mert a napló hossza a probléma függvényében lehet.
+A következő példa a Scrubbed-wfpdiag.txt fájl tartalmát mutatja. Ebben a példában a kapcsolatok megosztott kulcsa nem megfelelő, mert a harmadik sorból a lent látható. A következő példa csak a teljes napló töredékét adja meg, mert a napló hossza a probléma függvényében lehet.
 
 ```
 ...
@@ -178,11 +178,11 @@ A következő példában a scrubbed-wfpdiag. txt fájl tartalma látható. Ebben
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag. txt. Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag.txt. Sum
 
-A **wfpdiag. txt. Sum** fájl egy napló, amely a feldolgozott puffereket és eseményeket mutatja.
+A **wfpdiag.txt. Sum** fájl egy napló, amely a feldolgozott puffereket és eseményeket mutatja.
 
-A következő példa egy wfpdiag. txt. Sum fájl tartalmát adja meg.
+A következő példa egy wfpdiag.txt. Sum fájl tartalmát adja meg.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl

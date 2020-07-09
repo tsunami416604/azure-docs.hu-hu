@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 56d2647c3da84e9534220e7b237ea24b2b45e8b3
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854575"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300664"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Gyors útmutató: Azure-beli szerepkör-hozzárendelés hozzáadása Azure Resource Manager sablon használatával
 
@@ -23,7 +23,7 @@ Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) a
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,6 +40,10 @@ Szerepkör-hozzárendelés hozzáadásához három elemet kell megadnia: rendsze
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)származik. A sablon három paramétert és egy erőforrás szakaszt tartalmaz. A Resources (erőforrások) szakaszban figyelje meg, hogy a szerepkör-hozzárendelés három eleme van: rendszerbiztonsági tag, szerepkör-definíció és hatókör. 
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+
+A sablonban definiált erőforrás:
+
+- [Microsoft. Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -112,7 +116,7 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
    ![Új szerepkör hozzárendelése](./media/quickstart-role-assignments-template/role-assignment-portal.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A létrehozott szerepkör-hozzárendelés és erőforráscsoport eltávolításához kövesse az alábbi lépéseket.
 

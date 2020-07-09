@@ -1,20 +1,14 @@
 ---
 title: Azure Service Bus metrikák a Azure Monitorban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Service Bus entitások (várólisták, témakörök és előfizetések) figyelésére.
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: aschhab
-ms.openlocfilehash: f2f3c8113fb89a41b1a22567b4e5ca0085353689
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/23/2020
+ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340289"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
@@ -60,10 +54,10 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 | Bejövő kérelmek| A Service Bus szolgáltatásnak megadott időszakon keresztül küldött kérések száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Sikeres kérések|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Sikeres kérelmek|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Kiszolgálói hibák|A Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Felhasználói hibák (lásd a következő szakaszt)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Szabályozott kérelmek|A lekért kérelmek száma, mert túllépte a használatot.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -78,7 +72,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 ## <a name="message-metrics"></a>Üzenet metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |Bejövő üzenetek|A megadott időszakban Service Bus küldött események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Kimenő üzenetek|A Service Bus a megadott időszakban fogadott események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -96,9 +90,9 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
-|Aktív kapcsolatai|A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Aktív kapcsolatok|A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Lezárt kapcsolatok |A lezárt kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
@@ -111,7 +105,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 > 
 > A figyelt másik mérőszám: **szabályozott kérelmek**. Nem lehet probléma, ha a névtér a memóriájában, a PROCESSZORon és a felügyelt kapcsolaton belül marad. További információ: [szabályozás Azure Service Bus Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) szinten
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |CPU-használat/névtér|A névtér százalékos CPU-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: EntityName|
 |Memória méretének használata névtérben|A névtér százalékos memória-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: EntityName|
@@ -120,7 +114,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-|Dimenzió neve|Leírás|
+|Dimenzió neve|Description|
 | ------------------- | ----------------- |
 |EntityName| Service Bus támogatja az üzenetküldési entitásokat a névtérben.|
 
@@ -156,7 +150,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
 1. A **szabály létrehozása** lapon bontsa ki **a műveleti csoport definiálása**elemet, válassza az **új műveleti csoport**lehetőséget, majd hajtsa végre a következő műveleteket a **műveleti csoport hozzáadása lapon**. 
     1. Adja meg a műveleti csoport nevét.
     2. Adja meg a műveleti csoport rövid nevét. 
-    3. Válassza ki előfizetését. 
+    3. Válassza ki az előfizetését. 
     4. Válasszon ki egy erőforráscsoportot. 
     5. Ehhez a bemutatóhoz írja be a következőt: **E-mail küldése** a **művelet neveként**.
     6. Válassza az **e-mail/SMS/leküldés/hang** lehetőséget a **Művelettípus mezőben**. 

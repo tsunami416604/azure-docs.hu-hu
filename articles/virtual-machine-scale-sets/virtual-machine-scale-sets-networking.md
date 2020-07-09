@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/17/2017
+ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 46a12006274ca8516c936e37189c9233dde9b410
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374729"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -44,13 +44,15 @@ Az Azure Gyorsított hálózatkezelés javítja a hálózati teljesítményt az�
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure-beli virtuálisgép-méretezési csoportok Azure Load Balancer
 
-A virtuálisgép-méretezési csoportok és a terheléselosztó használatakor a következőket kell figyelembe venni:
+A virtuálisgép-méretezési csoportok és a terheléselosztó használatakor a következő elemeket kell figyelembe venni:
 
 * **Több virtuálisgép-méretezési csoport nem használhatja ugyanazt a**terheléselosztó-t.
 * **A port továbbítása és a bejövő NAT-szabályok**:
   * Minden virtuálisgép-méretezési csoportnak rendelkeznie kell egy bejövő NAT-szabállyal.
   * A méretezési csoport létrehozása után a háttér-port nem módosítható a terheléselosztó állapot-mintavételi eljárása által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapot-mintavételt az Azure virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapotot.
   * Ha a terheléselosztó backend-készletében a virtuálisgép-méretezési csoport van használatban, az alapértelmezett bejövő NAT-szabályok automatikusan jönnek létre.
+* **Bejövő NAT-készlet**:
+  * A bejövő NAT-készlet a bejövő NAT-szabályok gyűjteménye. Egy bejövő NAT-készlet nem képes több virtuálisgép-méretezési csoport támogatására.
 * **Terheléselosztási szabályok**:
   * A terheléselosztó backend-készletében lévő virtuálisgép-méretezési csoport használatakor az alapértelmezett terheléselosztási szabály automatikusan létrejön.
 * **Kimenő szabályok**:
@@ -144,7 +146,7 @@ A virtuális gépek egyéni DNS-nevének kimenete az alábbi módon kell, hogy k
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Nyilvános IPv4-cím virtuális gépenként
-Az Azure méretezési csoportok virtuális gépeinek általában nincs szükségük saját nyilvános IP-címre. A legtöbb esetben gazdaságosabb és biztonságosabb megoldás, ha egy terheléselosztóhoz vagy egy egyéni virtuális géphez (azaz jumpboxhoz) társít nyilvános IP-címet, amely ezután szükség szerint átirányítja a beérkező kapcsolatokat a méretezési csoportok virtuális gépeihez (például bejövő NAT-szabályok segítségével).
+Az Azure méretezési csoportok virtuális gépeinek általában nincs szükségük saját nyilvános IP-címre. A legtöbb esetben gazdaságosabb és biztonságosabb a nyilvános IP-címek betöltését egy terheléselosztó vagy egy különálló virtuális gép (más néven Jumpbox) számára, amely a bejövő kapcsolatokat igény szerint a méretezési csoportba tartozó virtuális gépekre irányítja (például a bejövő NAT-szabályokon keresztül).
 
 Egyes helyzetek azonban megkövetelik, hogy a méretezési csoport virtuális gépei saját nyilvános IP-címmel rendelkezzenek. Egy ilyen példa a játékok, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel, amely elvégzi a játék fizikai világának feldolgozását. Egy másik példa, ha a különböző régiókban található virtuális gépeknek külső kapcsolatokat kell létesítenie egymással egy elosztott adatbázisban.
 

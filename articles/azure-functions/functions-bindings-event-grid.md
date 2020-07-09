@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461079"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957178"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Event Grid
 
@@ -32,13 +32,13 @@ A hivatkozásban szereplő kód a .NET Core szintaxisra vonatkozik, amely a func
 
 ## <a name="add-to-your-functions-app"></a>Hozzáadás a functions-alkalmazáshoz
 
-### <a name="functions-2x-and-higher"></a>2. x és újabb függvények
+### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 
 | Nyelv                                        | Hozzáadás...                                   | Megjegyzések 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | A [NuGet-csomag], 3. x verziójának telepítése | |
+| C#                                              | A [NuGet-csomag], 2. x verziójának telepítése | |
 | C# parancsfájl, Java, JavaScript, Python, PowerShell | A [kiterjesztési csomag] regisztrálása          | Az [Azure Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) használata ajánlott a Visual Studio Code használatával. |
 | C#-szkript (csak online – Azure Portal)         | Kötés hozzáadása                            | Ha frissíteni szeretné a meglévő kötési bővítményeket anélkül, hogy újra közzé kellene tennie a Function alkalmazást, tekintse [meg a bővítmények frissítése]című témakört. |
 

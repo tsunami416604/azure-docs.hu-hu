@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650941"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Felügyelt alkalmazáshoz tartozó társítások telepítése Azure Policy használatával
@@ -39,7 +38,7 @@ A beépített házirend használatához hozzon létre egy szabályzat-hozzárend
 
 ## <a name="getting-help"></a>Segítség kérése
 
-Ha kérdése van az Azure-beli egyéni erőforrás-szolgáltatók fejlesztésével kapcsolatban, próbálja meg megkérdezni őket [stack Overflowon](https://stackoverflow.com/questions/tagged/azure-custom-providers). Egy hasonló kérdés megválaszolása már megtörtént, ezért először A feladás előtt érdemes megnéznie. A címke ```azure-custom-providers``` hozzáadásával gyors választ kaphat!
+Ha kérdése van az Azure-beli egyéni erőforrás-szolgáltatók fejlesztésével kapcsolatban, próbálja meg megkérdezni őket [stack Overflowon](https://stackoverflow.com/questions/tagged/azure-custom-providers). Egy hasonló kérdés megválaszolása már megtörtént, ezért először A feladás előtt érdemes megnéznie. A címke hozzáadásával ```azure-custom-providers``` gyors választ kaphat!
 
 ## <a name="next-steps"></a>További lépések
 

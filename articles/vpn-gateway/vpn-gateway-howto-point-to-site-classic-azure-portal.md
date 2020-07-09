@@ -4,15 +4,14 @@ description: Klasszikus pont–hely VPN-átjárókapcsolat létrehozása az Azur
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984797"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása tanúsítványalapú hitelesítés használatával (klasszikus)
 
@@ -21,7 +20,7 @@ ms.locfileid: "79244575"
 Ez a cikk bemutatja, hogyan hozhat létre pont – hely kapcsolattal rendelkező VNet. Ezt a vnet a klasszikus üzemi modellel hozza létre a Azure Portal használatával. A konfiguráció önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványokat használ a kapcsolódó ügyfelek hitelesítéséhez. Ezt a konfigurációt egy másik központi telepítési eszközzel vagy modellel is létrehozhatja az alábbi cikkekben ismertetett beállítások használatával:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >

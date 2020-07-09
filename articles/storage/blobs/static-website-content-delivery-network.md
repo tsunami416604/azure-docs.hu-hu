@@ -4,15 +4,14 @@ description: Ismerje meg, hogyan gyorsítótárazhatja a statikus webhelyek tart
 author: normesta
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465218"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statikus webhely integrálása Azure CDN
 
@@ -41,7 +40,7 @@ A statikus webhely Azure CDNét közvetlenül a Storage-fiókjából engedélyez
    A statikus webhely végpontjának megkereséséhez keresse meg a **statikus webhely** beállításait a Storage-fiókhoz.  Másolja az elsődleges végpontot, és illessze be a CDN-konfigurációba.
 
    > [!IMPORTANT]
-   > Ügyeljen arra, hogy a protokoll azonosítóját (*például*HTTPS) és az URL-cím záró perjelét távolítsa el. Ha például a statikus webhely végpontja `https://mystorageaccount.z5.web.core.windows.net/`, akkor a **forrás állomásnév** mezőben kell `mystorageaccount.z5.web.core.windows.net` megadnia.
+   > Ügyeljen arra, hogy a protokoll azonosítóját (*például*HTTPS) és az URL-cím záró perjelét távolítsa el. Ha például a statikus webhely végpontja `https://mystorageaccount.z5.web.core.windows.net/` , akkor `mystorageaccount.z5.web.core.windows.net` a **forrás állomásnév** mezőben kell megadnia.
 
    Az alábbi képen egy példa végpont-konfiguráció látható:
 
@@ -49,11 +48,11 @@ A statikus webhely Azure CDNét közvetlenül a Storage-fiókjából engedélyez
 
 1. Válassza a **Létrehozás**lehetőséget, majd várjon, amíg a CDN kiépíthető. A létrejött végpont megjelenik a végpontok listájában. (Ha bármilyen hiba van az űrlapon, a mező mellett egy felkiáltójel jelenik meg.)
 
-1. Annak ellenőrzéséhez, hogy a CDN-végpont megfelelően van-e konfigurálva, kattintson a végpontra, és navigáljon a beállításaihoz. A Storage-fiókhoz tartozó CDN áttekintésében keresse meg a végpont állomásnevét, és navigáljon a végponthoz az alábbi ábrán látható módon. A CDN- `https://staticwebsitesamples.azureedge.net`végpont formátuma hasonló lesz a következőhöz:.
+1. Annak ellenőrzéséhez, hogy a CDN-végpont megfelelően van-e konfigurálva, kattintson a végpontra, és navigáljon a beállításaihoz. A Storage-fiókhoz tartozó CDN áttekintésében keresse meg a végpont állomásnevét, és navigáljon a végponthoz az alábbi ábrán látható módon. A CDN-végpont formátuma hasonló lesz a következőhöz: `https://staticwebsitesamples.azureedge.net` .
 
     ![A CDN-végpont áttekintését bemutató képernyőkép](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. A CDN-végpont kiépített állapotában a CDN-végpontra való navigálás megjeleníti a statikus webhelyre korábban feltöltött index. html fájl tartalmát.
+1. A CDN-végpont kiépítés után a CDN-végpontra való navigálás megjeleníti a statikus webhelyre korábban feltöltött index.html-fájl tartalmát.
 
 1. A CDN-végpont forrás-beállításainak áttekintéséhez navigáljon a **forráshoz** a CDN-végpont **Beállítások** szakaszában. Látni fogja, hogy a **forrás típusa** mező *Egyéni forrásként* van beállítva, és a **forrás állomásnév** mező megjeleníti a statikus webhely végpontját.
 

@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77252227"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
@@ -77,7 +76,7 @@ A következő táblázat összefoglalja a mobilitási szolgáltatás üzembe hel
 
 1. Másolja a telepítési fájlokat a hálózati megosztásba:
 
-   - Windows rendszer esetén másolja a _Microsoft-ASR_UA_version_Windows_GA_date_Release. exe fájlt_ a _MobSvcWindows_.
+   - Windows esetén másolja _Microsoft-ASR_UA_version_Windows_GA_date_Release.exet_ a _MobSvcWindows_.
    - Linux esetén másolja a következő fájlokat a _MobSvcLinux_:
      - _Microsoft-ASR_UARHEL6 -64release. tar. gz_
      - _Microsoft-ASR_UARHEL7 -64release. tar. gz_
@@ -88,15 +87,15 @@ A következő táblázat összefoglalja a mobilitási szolgáltatás üzembe hel
 
 1. Az alábbi eljárásokban leírtak szerint másolja a kódot a Windows-vagy Linux-mappákba. Feltételezzük, hogy:
 
-   - A konfigurációs kiszolgáló IP-címe: `192.168.3.121`.
-   - A biztonságos hálózati fájlmegosztás `\\ContosoSecureFS\MobilityServiceInstallers`.
+   - A konfigurációs kiszolgáló IP-címe: `192.168.3.121` .
+   - A biztonságos hálózati fájlmegosztás `\\ContosoSecureFS\MobilityServiceInstallers` .
 
 ### <a name="copy-code-to-the-windows-folder"></a>Kód másolása a Windows mappába
 
 Másolja a következő kódot:
 
-- Mentse a kódot a _MobSvcWindows_ mappába a _install. bat_néven.
-- Cserélje le `[CSIP]` a parancsfájlban található helyőrzőket a konfigurációs kiszolgáló IP-címének tényleges értékeire.
+- Mentse a kódot a _MobSvcWindows_ mappába _install.batként _.
+- Cserélje le a `[CSIP]` parancsfájlban található helyőrzőket a konfigurációs kiszolgáló IP-címének tényleges értékeire.
 - A parancsfájl támogatja a mobilitási szolgáltatás ügynökének új telepítéseit, valamint a már telepített ügynökök frissítéseit.
 
 ```DOS
@@ -199,7 +198,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 Másolja a következő kódot:
 
 - Mentse a kódot a _MobSvcLinux_ mappába _install_linux. sh_néven.
-- Cserélje le `[CSIP]` a parancsfájlban található helyőrzőket a konfigurációs kiszolgáló IP-címének tényleges értékeire.
+- Cserélje le a `[CSIP]` parancsfájlban található helyőrzőket a konfigurációs kiszolgáló IP-címének tényleges értékeire.
 - A parancsfájl támogatja a mobilitási szolgáltatás ügynökének új telepítéseit, valamint a már telepített ügynökök frissítéseit.
 
 ```Bash
@@ -338,15 +337,15 @@ cd /tmp
 
 ### <a name="create-a-package"></a>Csomag létrehozása
 
-1. Jelentkezzen be a Configuration Manager-konzolra, és nyissa meg a **szoftverfrissítési** > **alkalmazások felügyeleti** > **csomagjait**.
-1. Kattintson a jobb gombbal a **csomagok** > **Létrehozás csomag**elemre.
+1. Jelentkezzen be a Configuration Manager-konzolra, és nyissa meg a **szoftverfrissítési**  >  **alkalmazások felügyeleti**  >  **csomagjait**.
+1. Kattintson a jobb gombbal a **csomagok**  >  **Létrehozás csomag**elemre.
 1. Adja meg a csomag részleteit, beleértve a nevet, a leírást, a gyártót, a nyelvet és a verziót.
 1. Válassza ki **ezt a csomagot tartalmazó forrásfájlokat**.
 1. Kattintson a **Tallózás**gombra, és válassza ki a hálózati megosztást és mappát, amely tartalmazza a megfelelő telepítőt (_MobSvcWindows_ vagy _MobSvcLinux_). Ezután válassza a **tovább**lehetőséget.
 
    ![A csomag és program létrehozása varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. A **válassza ki a létrehozni kívánt program típusát** lapon válassza a **normál program** > **tovább**lehetőséget.
+1. A **válassza ki a létrehozni kívánt program típusát** lapon válassza a **normál program**  >  **tovább**lehetőséget.
 
    ![A csomag és program létrehozása varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
@@ -354,8 +353,8 @@ cd /tmp
 
     **Paraméter** | **Windows-érték** | **Linux-érték**
     --- | --- | ---
-    **Név** | Microsoft Azure mobilitási szolgáltatás telepítése (Windows) | Telepítse a Microsoft Azure mobilitási szolgáltatást (Linux).
-    **Parancssor** | install. bat | ./install_linux. sh
+    **Name (Név)** | Microsoft Azure mobilitási szolgáltatás telepítése (Windows) | Telepítse a Microsoft Azure mobilitási szolgáltatást (Linux).
+    **Parancssor** | install.bat | ./install_linux. sh
     **A program futtatható** | Annak megadása, hogy van-e bejelentkezett felhasználó | Annak megadása, hogy van-e bejelentkezett felhasználó
     **Egyéb paraméterek** | Alapértelmezett beállítás használata | Alapértelmezett beállítás használata
 
@@ -374,7 +373,7 @@ cd /tmp
 
    ![Képernyőkép a Configuration Manager-konzolról](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
-1. Válassza ki azokat a terjesztési pontokat, amelyeken a csomagokat át szeretné másolni. [További információ](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
+1. Válassza ki azokat a terjesztési pontokat, amelyeken a csomagokat át szeretné másolni. [További információk](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
 1. Végezze el a varázsló lépéseit. A csomag ezután elindítja a replikálást a megadott terjesztési pontokra.
 1. A csomag terjesztésének befejeződése után kattintson a jobb gombbal a csomagra > az **üzembe helyezés**elemre.
 
@@ -386,13 +385,13 @@ cd /tmp
 
    ![A szoftver központi telepítése varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. A **központi telepítéshez tartozó ütemterv megadása lapon**állítsa be az ütemtervet. [További információ](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
+1. A **központi telepítéshez tartozó ütemterv megadása lapon**állítsa be az ütemtervet. [További információk](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
 
    - A mobilitási szolgáltatás a megadott ütemtervnek megfelelően települ.
    - A szükségtelen újraindítások elkerülése érdekében ütemezze a csomag telepítését a havi karbantartási időszak vagy a szoftverfrissítések ablakában.
 
 1. A **terjesztési pontok** lapon konfigurálja a beállításokat, majd fejezze be a varázslót.
-1. A telepítési folyamat figyelése a Configuration Manager-konzolon. Nyissa **Monitoring** > **Deployments** > _meg a figyelés központi telepítések a csomag nevét\>\<_
+1. A telepítési folyamat figyelése a Configuration Manager-konzolon. Ugrás a **figyelési**  >  **központi telepítésekre**  >  _\<your package name\>_ .
 
 ### <a name="uninstall-the-mobility-service"></a>A mobilitási szolgáltatás eltávolítása
 

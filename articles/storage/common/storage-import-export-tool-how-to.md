@@ -9,15 +9,14 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75978463"
 ---
 # <a name="using-the-azure-importexport-tool"></a>Az Azure import/export eszköz használata
 
-Az Azure import/export eszköz (WAImportExport. exe) az Azure import/export szolgáltatáshoz kapcsolódó feladatok létrehozására és kezelésére szolgál, lehetővé téve nagy mennyiségű adat átvitelét az Azure-Blob Storageba vagy onnan.
+Az Azure import/export eszköz (WAImportExport.exe) az Azure import/export szolgáltatáshoz kapcsolódó feladatok létrehozására és kezelésére szolgál, lehetővé téve nagy mennyiségű adat átvitelét az Azure-Blob Storageba vagy onnan.
 
 Ez a dokumentáció az Azure import/export eszköz legújabb verziójához készült. További információ a klasszikus üzemi modell használatáról: [Az Azure import/export eszköz v1 használata](storage-import-export-tool-how-to-v1.md).
 

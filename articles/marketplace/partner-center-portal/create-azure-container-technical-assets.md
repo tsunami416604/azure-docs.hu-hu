@@ -1,18 +1,18 @@
 ---
 title: Az Azure Container által kínált technikai fogalmak – Microsoft kereskedelmi piactér
 description: Technikai erőforrások és irányelvek a tárolók Azure Marketplace-en való konfigurálásának megkönnyítéséhez.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: da0fa53567e5c58db8e8394ef5562255d8a7142d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700979"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104266"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
@@ -20,7 +20,7 @@ Ez a cikk az Azure Marketplace-en elérhető tárolók létrehozására szolgál
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A gyors útmutatókkal, oktatóanyagokkal és mintákkal kapcsolatban tekintse meg a [Azure Container instances dokumentációját](https://docs.microsoft.com/azure/container-instances).
+A gyors útmutatókkal, oktatóanyagokkal és mintákkal kapcsolatban tekintse meg a [Azure Container instances dokumentációját](../../container-instances/index.yml).
 
 ## <a name="fundamental-technical-knowledge"></a>Alapvető műszaki ismeretek
 
@@ -43,7 +43,7 @@ A tároló rendszerképének kezeléséhez válasszon egyet vagy mindkettőt a k
 
 Javasoljuk, hogy adja hozzá ezeket az eszközöket a fejlesztési környezethez:
 
-- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ Tekintse át az elérhető eszközöket az [Azure fejlesztői eszközök](https:
 
 További információkért tekintse meg a következő oktatóanyagokat:
 
-- [Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Oktatóanyag: tároló-lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [Oktatóanyag: tároló-lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](../../container-registry/container-registry-tutorial-quick-task.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Hozza létre a tároló ajánlatát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Hozza létre a tároló ajánlatát](create-azure-container-offer.md).

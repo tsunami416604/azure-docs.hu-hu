@@ -1,18 +1,14 @@
 ---
 title: Azure-előfizetés Event Grid forrásként
 description: Az előfizetési eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: reference
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393229"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105897"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Azure-előfizetés Event Grid-forrásként
 
@@ -20,11 +16,11 @@ Ez a cikk az Azure-előfizetési eseményekhez tartozó tulajdonságokat és sé
 
 Az Azure-előfizetések és-erőforráscsoportok azonos típusú eseményeket bocsátanak ki. Az események típusa erőforrás-változásokhoz vagy műveletekhez kapcsolódik. Az elsődleges különbség az, hogy az erőforráscsoportok az erőforráscsoport erőforrásai számára bocsátanak ki eseményeket, és az Azure-előfizetések eseményeket bocsátanak ki az előfizetésben található erőforrásokhoz.
 
-Az erőforrás-események a következőre küldött PUT, PATCH, POST és DELETE műveletekhez jönnek `management.azure.com`létre:. A lekérési műveletek nem hoznak létre eseményeket. Az adatsíkon (például `myaccount.blob.core.windows.net`) elküldett műveletek nem hoznak létre eseményeket. A műveleti események olyan műveletekhez biztosítanak eseményeket, mint például az erőforrások kulcsainak listázása.
+Az erőforrás-események a következőre küldött PUT, PATCH, POST és DELETE műveletekhez jönnek létre: `management.azure.com` . A lekérési műveletek nem hoznak létre eseményeket. Az adatsíkon (például) elküldett műveletek `myaccount.blob.core.windows.net` nem hoznak létre eseményeket. A műveleti események olyan műveletekhez biztosítanak eseményeket, mint például az erőforrások kulcsainak listázása.
 
 Amikor előfizet egy Azure-előfizetés eseményeire, a végpont megkapja az előfizetés összes eseményét. Az események tartalmazhatják a megtekinteni kívánt eseményt, például a virtuális gépek frissítését, de olyan eseményeket is, amelyek talán nem fontosak Önnek, például egy új bejegyzés írásakor az üzembe helyezési előzményekben. Az összes eseményt megtekintheti a végponton, és írhat olyan kódot, amely feldolgozza a kezelni kívánt eseményeket. Vagy beállíthat egy szűrőt az esemény-előfizetés létrehozásakor.
 
-Az események programozott kezeléséhez az értékeket megtekintve rendezheti az `operationName` eseményeket. Előfordulhat például, hogy az esemény-végpont csak a `Microsoft.Compute/virtualMachines/write` vagy `Microsoft.Storage/storageAccounts/write`a műveletekkel kapcsolatos eseményeket dolgozza fel.
+Az események programozott kezeléséhez az értékeket megtekintve rendezheti az eseményeket `operationName` . Előfordulhat például, hogy az esemény-végpont csak a vagy a műveletekkel kapcsolatos eseményeket dolgozza fel `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write` .
 
 Az esemény tárgya a művelet céljaként megadott erőforrás azonosítója. Az adott erőforrás eseményeinek szűréséhez adja meg az erőforrás-azonosítót az esemény-előfizetés létrehozásakor. Az erőforrástípus alapján történő szűréshez használja a következő formátumban megadott értéket:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
@@ -49,7 +45,7 @@ Az Azure-előfizetések Azure Resource Manager felügyeleti eseményeket bocsát
 
 ### <a name="example-event"></a>Példa eseményre
 
-Az alábbi példa egy **ResourceWriteSuccess** -esemény sémáját mutatja be. Ugyanezt a sémát használják a **ResourceWriteFailure** és a **ResourceWriteCancel** különböző értékekkel `eventType`rendelkező események esetében.
+Az alábbi példa egy **ResourceWriteSuccess** -esemény sémáját mutatja be. Ugyanezt a sémát használják a **ResourceWriteFailure** és a **ResourceWriteCancel** különböző értékekkel rendelkező események esetében `eventType` .
 
 ```json
 [{
@@ -109,7 +105,7 @@ Az alábbi példa egy **ResourceWriteSuccess** -esemény sémáját mutatja be. 
 }]
 ```
 
-Az alábbi példa egy **ResourceDeleteSuccess** -esemény sémáját mutatja be. Ugyanezt a sémát használják a **ResourceDeleteFailure** és a **ResourceDeleteCancel** különböző értékekkel `eventType`rendelkező események esetében.
+Az alábbi példa egy **ResourceDeleteSuccess** -esemény sémáját mutatja be. Ugyanezt a sémát használják a **ResourceDeleteFailure** és a **ResourceDeleteCancel** különböző értékekkel rendelkező események esetében `eventType` .
 
 ```json
 [{
@@ -175,7 +171,7 @@ Az alábbi példa egy **ResourceDeleteSuccess** -esemény sémáját mutatja be.
 }]
 ```
 
-Az alábbi példa egy **ResourceActionSuccess** -esemény sémáját mutatja be. Ugyanezt a sémát használják a **ResourceActionFailure** és a **ResourceActionCancel** különböző értékekkel `eventType`rendelkező események esetében.
+Az alábbi példa egy **ResourceActionSuccess** -esemény sémáját mutatja be. Ugyanezt a sémát használják a **ResourceActionFailure** és a **ResourceActionCancel** különböző értékekkel rendelkező események esetében `eventType` .
 
 ```json
 [{   
@@ -242,7 +238,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Előfizetési eseményekre vonatkozó adatértékek. |
+| adatok | objektum | Előfizetési eseményekre vonatkozó adatértékek. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -269,7 +265,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Azure CLI: Feliratkozás az Azure-előfizetés eseményeire](./scripts/event-grid-cli-azure-subscription.md) |Parancsfájl, amely Event Grid-előfizetést hoz létre egy Azure-előfizetéshez, és eseményeket küld egy webhooknak. |
 | [PowerShell: Feliratkozás az Azure-előfizetés eseményeire](./scripts/event-grid-powershell-azure-subscription.md)| Parancsfájl, amely Event Grid-előfizetést hoz létre egy Azure-előfizetéshez, és eseményeket küld egy webhooknak. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

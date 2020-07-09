@@ -8,12 +8,11 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629566"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
 
@@ -60,7 +59,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Hozzáférési szintek megadása a blob-adatértékekhez
 
-Az általános célú v2-fiókok támogatják az összes Azure Storage-szolgáltatást és-adatobjektumot, de a hozzáférési szintek csak a blob Storage-ban található blokk-Blobok esetében érhetők el. Egy általános célú v2-es Storage-fiókra való frissítéskor megadhat egy alapértelmezett fiók-hozzáférési szintet, amely az alapértelmezett szint, a blob-adatok feltöltése, ha nincs megadva az egyéni blob-hozzáférési réteg paraméter.
+Az általános célú v2-fiókok támogatják az összes Azure Storage-szolgáltatást és-adatobjektumot, a hozzáférési szintek azonban csak a blob Storage-ban lévő Blobok blokkolására használhatók. Egy általános célú v2-es Storage-fiókra való frissítéskor megadhat egy alapértelmezett fiók-hozzáférési szintet, amely az alapértelmezett szint, a blob-adatok feltöltése, ha nincs megadva az egyéni blob-hozzáférési réteg paraméter.
 
 A blob hozzáférési szintjei lehetővé teszik a leginkább költséghatékony tárterület kiválasztását a várt használati minták alapján. A blokkos Blobok a gyakori, ritka vagy archív szinteken tárolhatók. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
@@ -73,7 +72,7 @@ Mindkét esetben az első prioritás az általános célú v2 Storage-fiókban t
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-Egy v1-es Storage-fiók egy általános célú v2-fiókra való frissítése ingyenes. A frissítési folyamat során megadhatja a kívánt fiók szintjét. Ha nincs megadva a fiók szintje a Verziófrissítéskor, a frissített fiók alapértelmezett fiókjának szintje a következő lesz `Hot`:. Ha azonban a frissítés után módosítja a tárolási hozzáférési szintet, akkor a számla módosítása is előfordulhat, hogy a frissítés során javasolt az új fiók rétegének megadására.
+Egy v1-es Storage-fiók egy általános célú v2-fiókra való frissítése ingyenes. A frissítési folyamat során megadhatja a kívánt fiók szintjét. Ha nincs megadva a fiók szintje a Verziófrissítéskor, a frissített fiók alapértelmezett fiókjának szintje a következő lesz: `Hot` . Ha azonban a frissítés után módosítja a tárolási hozzáférési szintet, akkor a számla módosítása is előfordulhat, hogy a frissítés során javasolt az új fiók rétegének megadására.
 
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 

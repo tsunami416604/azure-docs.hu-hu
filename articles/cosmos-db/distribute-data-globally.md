@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982123"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114741"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális adatterjesztés az Azure Cosmos DB-vel – áttekintés
 
@@ -23,7 +23,7 @@ Az adatbázisokat úgy állíthatja be, hogy globálisan terjeszthetők legyenek
 
 A Azure Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat a fiókjához társított régiókat. Az alkalmazást nem kell szüneteltetni vagy újratelepíteni egy régió hozzáadásához vagy eltávolításához. Továbbra is a szolgáltatás által natív módon biztosított többsoros képességek miatt továbbra is nagyon sok időt vesz igénybe.
 
-![Magasan elérhető üzembe helyezési topológia](./media/distribute-data-globally/deployment-topology.png)
+:::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="Magasan elérhető üzembe helyezési topológia" border="false":::
 
 ## <a name="key-benefits-of-global-distribution"></a>A globális terjesztés fő előnyei
 

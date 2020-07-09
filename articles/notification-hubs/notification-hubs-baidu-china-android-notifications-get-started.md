@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79536989"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
@@ -68,7 +68,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
 
 2. Adjon meg egy alkalmazásnevet, és győződjön meg arról, hogy a Minimum Required SDK (minimális SDK-követelmény) verziószáma API 16: Android 4.1. **Győződjön meg arról is, hogy a csomagnév (应用包名) megegyezik a felhőalapú Baidu-értesítési portálon szereplővel**
 
-    ![Azure Notification Hubs – Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu min SDK1 ](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![ Azure Notification Hubs – BAIDU min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Kattintson a Next (Tovább) gombra, majd folytassa a varázsló használatát, amíg a Create Activity (Tevékenység létrehozása) ablak meg nem jelenik. Győződjön meg arról, hogy az Empty Activity (Üres tevékenység) lehetőség van kiválasztva, majd válassza a Finish (Befejezés) lehetőséget egy új Android-alkalmazás létrehozásához.
 
@@ -112,11 +112,11 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
 
     ![Azure Notification Hubs – Baidu SDK kódtárak](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. A projekt `libs` mappájában kattintson a jobb gombbal a `pushervice-x.y.z.jar` fájlra; Válassza a **Hozzáadás könyvtárként** lehetőséget, hogy a könyvtár a projektben is legyen.
+7. A projekt `libs` mappájában kattintson a jobb gombbal a `pushervice-x.y.z.jar` fájlra, és válassza a **Hozzáadás könyvtárként** lehetőséget, hogy az a projekthez tartozó könyvtárat is tartalmazza.
 
     ![Azure Notification Hubs – Baidu, hozzáadás kódtárként](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Nyissa meg az Android `AndroidManifest.xml` -projekt fájlját, és adja hozzá a Baidu SDK számára szükséges engedélyeket. **Cserélje le a `YOURPACKAGENAME` karakterláncot saját csomagjának nevére**.
+8. Nyissa meg az Android `AndroidManifest.xml` -projekt fájlját, és adja hozzá a BAIDU SDK számára szükséges engedélyeket. **Cserélje le a `YOURPACKAGENAME` karakterláncot saját csomagjának nevére**.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -485,5 +485,5 @@ Tesztértesítést az [Azure Portal] hibakeresési lapjáról küldhet. Ha a .NE
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160715"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024448"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -32,6 +32,10 @@ Ha például egy bizalmas alkalmazáshoz fér hozzá, a rendszergazda az Identit
 
 Az [Identity Protection](../identity-protection/overview-identity-protection.md)szolgáltatáshoz hozzáféréssel rendelkező ügyfelek esetében a bejelentkezési kockázat kiértékelése feltételes hozzáférési szabályzat részeként lehetséges. A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem nem jogosult az identitás tulajdonosa számára. A bejelentkezési kockázattal kapcsolatos további információkért tekintse meg a cikkekben, a [kockázatokról](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) és [a kockázatkezelési szabályzatok konfigurálásáról és engedélyezéséről](../identity-protection/howto-identity-protection-configure-risk-policies.md)szóló cikket.
 
+## <a name="user-risk"></a>Felhasználói kockázat 
+
+Az [Identity Protection](../identity-protection/overview-identity-protection.md)szolgáltatáshoz hozzáféréssel rendelkező ügyfelek esetében a felhasználói kockázat a feltételes hozzáférési szabályzat részeként értékelhető ki. A felhasználói kockázat azt jelzi, hogy egy adott identitás vagy fiók biztonsága sérül. A felhasználói kockázatokról további információt a következő cikkekben talál: [a kockázatkezelés és](../identity-protection/concept-identity-protection-risks.md#user-risk) [a kockázatkezelési szabályzatok konfigurálása és engedélyezése](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+
 ## <a name="device-platforms"></a>Eszközplatformok
 
 Az eszköz platformját az eszközön futó operációs rendszer jellemzi. Az Azure AD a platformot az eszköz által biztosított információk, például a felhasználói ügynök karakterláncai segítségével azonosítja. Mivel a felhasználói ügynök karakterláncai módosíthatók, ez az információ nem ellenőrzött. Az eszköz platformját Microsoft Intune eszköz megfelelőségi házirendjeivel vagy egy blokk-utasítás részeként kell használni. Az alapértelmezett érték az összes eszköz platformra vonatkozik.
@@ -43,9 +47,6 @@ Az Azure AD feltételes hozzáférés a következő eszköz platformokat támoga
 - Windows Phone
 - Windows
 - macOS
-
-> [!WARNING]
-> A Microsoft tisztában van a feltételes hozzáférési szabályzatokkal és a macOS 10.15.4-alapú eszközökkel kapcsolatos problémával. További információ a blogbejegyzésben található, [ismert probléma: a feltételes hozzáférés váratlanul letiltja a MacOS 10.15.4 natív levelezési ügyfélprogramot vagy más alkalmazásokat](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
 
 Ha letiltja az örökölt hitelesítést a **többi ügyfél** feltételének használatával, beállíthatja az eszköz platformjának feltételeit is.
 
@@ -115,21 +116,17 @@ A **Windows 10-es Creators Update (1703-es verzió)** vagy újabb verziók Chrom
 
 A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza létre a következő beállításkulcsot:
 
-|    |    |
-| --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name (Név) | 1 |
-| Típus | REG_SZ (karakterlánc) |
-| Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS\://clients2.Google.com/Service/Update2/CRX |
+- Elérési út HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 1. név
+- Típus REG_SZ (karakterlánc)
+- Adatppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS \: //clients2.Google.com/Service/Update2/CRX
 
 A **Windows 8,1 és 7 rendszerhez**készült Chrome-támogatáshoz hozza létre a következő beállításkulcsot:
 
-|    |    |
-| --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name (Név) | 1 |
-| Típus | REG_SZ (karakterlánc) |
-| Adatok | {"minta": "https://device.login.microsoftonline.com", "filter": {"kiállító": {"CN": "MS-Organization-Access"}}} |
+- Elérési út HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 1. név
+- Típus REG_SZ (karakterlánc)
+- {"Pattern": " https://device.login.microsoftonline.com ", "filter": {"kiállító": {"CN": "MS-Organization-Access"}}}
 
 Ezek a böngészők támogatják az eszköz hitelesítését, amely lehetővé teszi az eszköz azonosítását és érvényesítését egy szabályzattal szemben. Az eszköz-ellenőrzés sikertelen, ha a böngésző privát módban fut.
 
@@ -155,7 +152,7 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 | Outlook 2016 (macOS-es iroda) | Office 365 Exchange Online | macOS |
 | Outlook 2016, Outlook 2013 (modern hitelesítéssel), Skype vállalati verzió (modern hitelesítéssel) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
 | Outlook Mobile alkalmazás | Office 365 Exchange Online | Android, iOS |
-| Power BI alkalmazás | Power BI szolgáltatás | Windows 10, Windows 8,1, Windows 7, Android és iOS |
+| Power BI alkalmazás | Power BI szolgáltatásban | Windows 10, Windows 8,1, Windows 7, Android és iOS |
 | Skype Vállalati verzió | Office 365 Exchange Online| Android, iOS |
 | Visual Studio Team Services-alkalmazás | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS és Android |
 
@@ -167,7 +164,7 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 
 Ha a házirendhez rendelt hozzáférés-vezérlés **jóváhagyott ügyfélalkalmazás használatát igényli**, a rendszer a felhasználót az Outlook Mobile-ügyfél telepítésére és használatára irányítja. Abban az esetben, ha a **többtényezős hitelesítés** szükséges, az érintett felhasználók le vannak tiltva, mert az egyszerű hitelesítés nem támogatja a többtényezős hitelesítést.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Örökölt hitelesítés letiltása feltételes hozzáféréssel](block-legacy-authentication.md)
 - [Jóváhagyott ügyfélalkalmazások feltételes hozzáféréssel való megkövetelése](app-based-conditional-access.md)

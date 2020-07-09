@@ -6,21 +6,20 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213975"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Helyettesítő kulcsok létrehozása identitás használatával a szinapszis SQL-készletben
 
-Javaslatok és példák az IDENTITY tulajdonság használatára helyettesítő kulcsok létrehozásához a szinapszis SQL-készlet tábláiban.
+Ebben a cikkben javaslatokat és példákat talál arra, hogy az IDENTITY tulajdonság használatával helyettesítő kulcsokat hozzon létre a szinapszis SQL-készlet tábláiban.
 
 ## <a name="what-is-a-surrogate-key"></a>Mi az a helyettesítő kulcs?
 
@@ -44,7 +43,7 @@ WITH
 ;
 ```
 
-A paranccsal `INSERT..SELECT` feltöltheti a táblázatot.
+`INSERT..SELECT`A paranccsal feltöltheti a táblázatot.
 
 Ez a szakasz a megvalósítás árnyalatait emeli ki, hogy könnyebben megértse őket.  
 
@@ -77,11 +76,11 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-Az előző példában két sor landolt az 1. eloszlásban. Az első sorban 1 érték szerepel az oszlopban `C1`, a második sorban pedig a 61-es helyettesítő érték szerepel. Mindkét értéket az IDENTITY tulajdonság generálta. Azonban az értékek kiosztása nem folytonos. Ez a működésmód szándékos.
+Az előző példában két sor landolt az 1. eloszlásban. Az első sorban 1 érték szerepel az oszlopban `C1` , a második sorban pedig a 61-es helyettesítő érték szerepel. Mindkét értéket az IDENTITY tulajdonság generálta. Azonban az értékek kiosztása nem folytonos. Ez a működésmód szándékos.
 
 ### <a name="skewed-data"></a>Elferdített adatértékek
 
-Az adattípus értékeinek tartománya egyenletesen oszlik el az eloszlások között. Ha egy elosztott tábla elferdíti az adatmennyiséget, akkor az adattípushoz elérhető értékek tartománya túl korán is kimeríthető. Ha például az összes adatok egyetlen eloszlásban fejeződik be, akkor a tábla gyakorlatilag csak egy hatvanadik fér hozzá az adattípushoz. Emiatt az IDENTITY tulajdonság csak a `INT` és `BIGINT` az adattípusokra korlátozódik.
+Az adattípus értékeinek tartománya egyenletesen oszlik el az eloszlások között. Ha egy elosztott tábla elferdíti az adatmennyiséget, akkor az adattípushoz elérhető értékek tartománya túl korán is kimeríthető. Ha például az összes adatok egyetlen eloszlásban fejeződik be, akkor a tábla gyakorlatilag csak egy hatvanadik fér hozzá az adattípushoz. Emiatt az IDENTITY tulajdonság `INT` csak a és az `BIGINT` adattípusokra korlátozódik.
 
 ### <a name="selectinto"></a>Válassza a.. A
 
@@ -96,11 +95,11 @@ Ha az ilyen feltételek bármelyike igaz, az oszlop létrehozása nem NULL az ID
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-CREATE TABLE AS SELECT (CTAS) a SELECT... SQL Server viselkedését követi. A. Azonban nem adhat meg IDENTITY tulajdonságot az utasítás `CREATE TABLE` részeként definiált oszlop definíciójában. A CTAS `SELECT` részében nem használhatja az Identity függvényt is. Egy tábla feltöltéséhez a használatával `CREATE TABLE` kell megadnia a táblázatot, amelyet `INSERT..SELECT` a feltöltéshez kell adnia.
+CREATE TABLE AS SELECT (CTAS) a SELECT... SQL Server viselkedését követi. A. Azonban nem adhat meg IDENTITY tulajdonságot az utasítás részeként definiált oszlop definíciójában `CREATE TABLE` . A CTAS részében nem használhatja az IDENTITY függvényt is `SELECT` . Egy tábla feltöltéséhez a használatával kell `CREATE TABLE` megadnia a táblázatot, amelyet a `INSERT..SELECT` feltöltéshez kell adnia.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Értékek explicit beszúrása egy IDENTITY oszlopba
 
-A szinapszis SQL- `SET IDENTITY_INSERT <your table> ON|OFF` készlet támogatja a szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
+A szinapszis SQL-készlet támogatja a `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
 
 Számos adatmodell, például az előre meghatározott negatív értékek használata a dimenziókban megadott sorokhoz. Ilyen például az-1 vagy az "ismeretlen tag" sor.
 
@@ -158,7 +157,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> A jelenleg nem használható `CREATE TABLE AS SELECT` , ha az adatok betöltését egy azonosító oszlopot tartalmazó táblába helyezi.
+> A jelenleg nem használható, `CREATE TABLE AS SELECT` Ha az adatok betöltését egy azonosító oszlopot tartalmazó táblába helyezi.
 >
 
 Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezése a SZINAPSZIS SQL-készlethez](design-elt-data-loading.md) , valamint az [ajánlott eljárások betöltése](guidance-for-loading-data.md).
@@ -212,7 +211,7 @@ A C1 oszlop a következő feladatok IDENTITÁSa.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Egy tábla legmagasabb lefoglalt értékének megkeresése
 
-Az elosztott `MAX()` táblához lefoglalt legmagasabb érték meghatározásához használja a függvényt:
+Az `MAX()` elosztott táblához lefoglalt legmagasabb érték meghatározásához használja a függvényt:
 
 ```sql
 SELECT MAX(C1)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: 01c3ab167239affa4d7ae94f5649d60072c3c270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117165"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963852"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Oktatóanyag: batch-feladatok elindítása Azure Functions használatával
 
@@ -36,18 +36,18 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre a Batch-készle
 
 1. Jelentkezzen be Batch Explorer Azure-beli hitelesítő adataival.
 1. Hozzon létre egy készletet a bal oldali sávban található **készletek** kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
-    1. Válassza ki az azonosítót és a megjelenítendő nevet. Ezt a példát `ocr-pool` fogjuk használni.
+    1. Válassza ki az azonosítót és a megjelenítendő nevet. `ocr-pool`Ezt a példát fogjuk használni.
     1. Állítsa a skálázási típust **rögzített méretre**, és állítsa a dedikált csomópontok száma értéket 3 értékre.
     1. Válassza az **Ubuntu 18,04-LTS** operációs rendszert.
-    1. Válassza `Standard_f2s_v2` ki a virtuális gép méretét.
-    1. Engedélyezze az indítási feladatot, és adja hozzá `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`a parancsot. Ügyeljen arra, hogy a felhasználói identitást a **feladat alapértelmezett felhasználója (rendszergazda)** értékre állítsa be, amely lehetővé `sudo`teszi, hogy a feladatok elindításával parancsokat tartalmazzon a paranccsal.
-    1. Kattintson az **OK** gombra.
+    1. Válassza ki `Standard_f2s_v2` a virtuális gép méretét.
+    1. Engedélyezze az indítási feladatot, és adja hozzá a parancsot `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` . Ügyeljen arra, hogy a felhasználói identitást a **feladat alapértelmezett felhasználója (rendszergazda)** értékre állítsa be, amely lehetővé teszi, hogy a feladatok elindításával parancsokat tartalmazzon a paranccsal `sudo` .
+    1. Válassza az **OK** lehetőséget.
 ### <a name="create-a-job"></a>Feladat létrehozása
 
 1. Hozzon létre egy feladatot a készleten a bal oldali sávban a **feladatok** elem kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
-    1. Válassza ki az azonosítót és a megjelenítendő nevet. Ezt a példát `ocr-job` fogjuk használni.
-    1. Állítsa be a készletet `ocr-pool`, vagy bármilyen nevet, amelyet a készlethez választott.
-    1. Kattintson az **OK** gombra.
+    1. Válassza ki az azonosítót és a megjelenítendő nevet. `ocr-job`Ezt a példát fogjuk használni.
+    1. Állítsa be a készletet `ocr-pool` , vagy bármilyen nevet, amelyet a készlethez választott.
+    1. Válassza az **OK** lehetőséget.
 
 
 ## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
@@ -55,10 +55,10 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre a Batch-készle
 Itt olyan blob-tárolókat hoz létre, amelyek a bemeneti és kimeneti fájljait fogják tárolni az OCR batch-feladathoz.
 
 1. Jelentkezzen be Storage Explorer Azure-beli hitelesítő adataival.
-1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)című témakör lépéseit követve.
+1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)című témakör lépéseit követve.
 
-Ebben a példában a bemeneti tároló neve `input` és az, ahol az OCR nélküli összes dokumentumot feltöltötte a rendszer a feldolgozásra. A kimeneti tároló neve `output` , ahol a Batch-feladatok a feldolgozott dokumentumokat az OCR-sel írja.  
-    * Ebben a példában a bemeneti tárolót `input`és a kimeneti tárolót `output`hívjuk.  
+Ebben a példában a bemeneti tároló neve `input` és az, ahol az OCR nélküli összes dokumentumot feltöltötte a rendszer a feldolgozásra. A kimeneti tároló neve, `output` ahol a Batch-feladatok a feldolgozott dokumentumokat az OCR-sel írja.  
+    * Ebben a példában a bemeneti tárolót `input` és a kimeneti tárolót hívjuk `output` .  
     * A bemeneti tároló az OCR nélküli összes dokumentum feltöltése.  
     * A kimeneti tároló, ahol a Batch-feladatok a dokumentumokat OCR-sel írja.  
 
@@ -68,18 +68,18 @@ Hozzon létre egy közös hozzáférési aláírást a kimeneti tárolóhoz Stor
 
 Ebben a szakaszban létrehoz egy Azure-függvényt, amely elindítja az OCR batch-feladatot, valahányszor feltölt egy fájlt a bemeneti tárolóba.
 
-1. A függvények létrehozásához kövesse az [Azure Blob Storage által aktivált függvény létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) című témakör lépéseit.
+1. A függvények létrehozásához kövesse az [Azure Blob Storage által aktivált függvény létrehozása](../azure-functions/functions-create-storage-blob-triggered-function.md) című témakör lépéseit.
     1. Amikor a rendszer a Storage-fiókra kéri, használja ugyanazt a Storage-fiókot, amelyet a Batch-fiókjához társított.
     1. A **futásidejű verem**esetében válassza a .net elemet. A Batch .NET SDK kihasználása érdekében a C# nyelven írunk függvényt.
-1. A blob által aktivált függvény létrehozása után a függvényben használja a [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) és [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) a githubot.
+1. A blob által aktivált függvény létrehozása után a függvényben használja a [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) és a [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) githubot.
     * `run.csx`akkor fut le, amikor új blobot adnak hozzá a bemeneti blob-tárolóhoz.
     * `function.proj`felsorolja a függvény kódjában található külső kódtárakat, például a Batch .NET SDK-t.
-1. Módosítsa a `Run()` `run.csx` fájl függvényében szereplő változók helyőrző értékeit, hogy azok tükrözzék a Batch és a Storage hitelesítő adatait. A Batch-és Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portaljában találja.
+1. Módosítsa a fájl függvényében szereplő változók helyőrző értékeit `Run()` `run.csx` , hogy azok tükrözzék a Batch és a Storage hitelesítő adatait. A Batch-és Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portaljában találja.
     * Kérje le a Batch-és a Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portal. 
 
 ## <a name="trigger-the-function-and-retrieve-results"></a>A függvény elindítása és az eredmények beolvasása
 
-Töltse fel a beolvasott fájlok bármelyikét vagy [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) mindegyikét a githubról a bemeneti tárolóba. Figyelje meg Batch Explorer annak ellenőrzéséhez, hogy a feladat `ocr-pool` minden fájlhoz hozzá lesz-e adva. Néhány másodperc elteltével a rendszer hozzáadja az OCR-t alkalmazó fájlt a kimeneti tárolóhoz. A fájl ezután látható és beolvasható Storage Explorer.
+Töltse fel a beolvasott fájlok bármelyikét vagy mindegyikét a [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) githubról a bemeneti tárolóba. Figyelje meg Batch Explorer annak ellenőrzéséhez, hogy a feladat minden fájlhoz hozzá lesz-e adva `ocr-pool` . Néhány másodperc elteltével a rendszer hozzáadja az OCR-t alkalmazó fájlt a kimeneti tárolóhoz. A fájl ezután látható és beolvasható Storage Explorer.
 
 Emellett megtekintheti a naplófájlokat a Azure Functions Webszerkesztő ablakának alján, ahol a bemeneti tárolóba feltöltött összes fájlhoz hasonló üzenet jelenik meg:
 
@@ -111,4 +111,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Ha további példákat szeretne használni a .NET API-t a Batch-munkaterhelések ütemezhetik és dolgozzák fel, tekintse [meg a mintákat a githubon](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* A Batch-munkaterhelések futtatására használható Azure Functions-eseményindítók megjelenítéséhez tekintse meg [a Azure functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).
+* A Batch-munkaterhelések futtatására használható Azure Functions-eseményindítók megjelenítéséhez tekintse meg [a Azure functions dokumentációját](../azure-functions/functions-triggers-bindings.md).

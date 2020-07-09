@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606298"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Helyettes kulcs átalakítása a leképezési adatfolyamban 
@@ -21,7 +20,7 @@ ms.locfileid: "81606298"
 
 A helyettesítő kulcs átalakításával adja hozzá a növekményes kulcs értékét az egyes adatsorokhoz. Ez akkor hasznos, ha dimenziós táblákat tervez kialakítani egy Star Schema analitikai adatmodellben. A Star-sémákban a dimenziós táblázatok egyes tagjainak olyan egyedi kulcsra van szükségük, amely nem üzleti kulcs.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ![Helyettes kulcs átalakítása](media/data-flow/surrogate.png "Helyettes kulcs átalakítása")
 
@@ -47,7 +46,7 @@ SQL-lekérdezési lehetőséggel válassza ki a MAX () elemet a forrásból. Pé
 
 #### <a name="file-sources"></a>Fájlok forrásai
 
-Ha az előző maximális érték egy fájlban található, az összesített transzformációban az előző maximális érték beszerzéséhez használja a `max()` függvényt:
+Ha az előző maximális érték egy fájlban található, az `max()` összesített transzformációban az előző maximális érték beszerzéséhez használja a függvényt:
 
 ![Helyettesítő kulcs fájlja](media/data-flow/sk008.png "Helyettesítő kulcs fájlja")
 
@@ -57,7 +56,7 @@ Mindkét esetben csatlakoztatnia kell a bejövő új adatait az előző maximál
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream> 

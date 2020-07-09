@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415024"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Adatok másolása a Google AdWordsből Azure Data Factory használatával
@@ -49,7 +49,7 @@ A Google AdWords társított szolgáltatás a következő tulajdonságokat támo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **GoogleAdWords** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **GoogleAdWords** | Igen |
 | clientCustomerID | Azon AdWords-fiók ügyfél-ügyfél-azonosítója, amelyre vonatkozóan be szeretné olvasni a jelentési adatmennyiséget.  | Igen |
 | developerToken | Az AdWords API-hoz való hozzáférés biztosításához használt Manager-fiókhoz társított fejlesztői jogkivonat.  Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Igen |
 | authenticationType | A hitelesítéshez használt OAuth 2,0 hitelesítési mechanizmus. A ServiceAuthentication csak saját üzemeltetésű IR-ben használható. <br/>Az engedélyezett értékek a következők: **ServiceAuthentication**, **UserAuthentication** | Igen |
@@ -61,7 +61,7 @@ A Google AdWords társított szolgáltatás a következő tulajdonságokat támo
 | trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | Nem |
 | useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -105,10 +105,10 @@ Ha adatokat szeretne másolni a Google AdWordsből, állítsa az adatkészlet Ty
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -136,10 +136,10 @@ Az adatok Google AdWordsből való másolásához állítsa a forrás típusát 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

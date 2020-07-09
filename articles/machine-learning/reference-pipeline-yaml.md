@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan határozhat meg gépi tanulási folyamatot egy 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 0bf5a722c611f4d1c5446eb739fdd95b7edbc934
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: a519519d5728307847b5d92f9ae5ce3e739e3ba6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560945"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Gépi tanulási folyamatok definiálása a YAML-ben
 
@@ -229,7 +229,7 @@ pipeline:
 | `run_name` | A Databricks tartozó név ehhez a futtatáshoz. |
 | `source_directory` | A parancsfájlt és más fájlokat tartalmazó könyvtár. |
 | `num_workers` | A Databricks-fürtön futó feldolgozók statikus száma. |
-| `runconfig` | Egy fájl elérési útja `.runconfig` . Ez a fájl a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) osztály YAML ábrázolása. A fájl struktúrájával kapcsolatos további információkért lásd: [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `runconfig` | Egy fájl elérési útja `.runconfig` . Ez a fájl a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) osztály YAML ábrázolása. További információ a fájl struktúrájáról: [runconfigschema.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Meghatározza, hogy a lépés újra fel kell-e használni az előző eredményeket, ha ugyanazokkal a beállításokkal futnak újra. |
 
 A következő példa egy Databricks lépést tartalmaz:
@@ -325,7 +325,7 @@ pipeline:
 | `outputs` | A kimenetek lehetnek [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) vagy [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
 | `script_name` | A Python-szkript neve (a `source_directory` következőhöz képest). |
 | `source_directory` | A parancsfájlt, a Conda-környezetet stb. tartalmazó könyvtár. |
-| `runconfig` | Egy fájl elérési útja `.runconfig` . Ez a fájl a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) osztály YAML ábrázolása. A fájl struktúrájával kapcsolatos további információkért lásd: [runconfig. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `runconfig` | Egy fájl elérési útja `.runconfig` . Ez a fájl a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) osztály YAML ábrázolása. További információ a fájl struktúrájáról: [runconfig.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Meghatározza, hogy a lépés újra fel kell-e használni az előző eredményeket, ha ugyanazokkal a beállításokkal futnak újra. |
 
 A következő példa egy Python-parancsfájl lépését tartalmazza:
@@ -549,6 +549,6 @@ Schedule:
     path_on_datastore: ~ 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [használható a CLI bővítmény a Azure Machine Learninghoz](reference-azure-machine-learning-cli.md).

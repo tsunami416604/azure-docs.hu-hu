@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e2ba749b64a6d44c9aa6b03352910ab24771084
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835648"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037613"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Ismerkedés a Azure Stream Analytics használatával: a csalások valós idejű észlelése
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban a telefonhívási adatokat szimulálja egy olyan ügyf�
 Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Egy Azure-fiók.
-* A [TelcoGenerator. zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)fájlt, amely a Microsoft letöltőközpontból tölthető le. Csomagolja ki a csomagot a számítógép egyik mappájába. Ha szeretné megtekinteni a forráskódot, és egy hibakeresőben futtatja az alkalmazást, akkor a [githubról](https://aka.ms/azure-stream-analytics-telcogenerator)szerezheti be az alkalmazás forráskódját. 
+* A Call-Event Generator alkalmazás, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), amely a Microsoft letöltőközpontból tölthető le. Csomagolja ki a csomagot a számítógép egyik mappájába. Ha szeretné megtekinteni a forráskódot, és egy hibakeresőben futtatja az alkalmazást, akkor a [githubról](https://aka.ms/azure-stream-analytics-telcogenerator)szerezheti be az alkalmazás forráskódját. 
 
     >[!NOTE]
     >Előfordulhat, hogy a Windows letiltja a letöltött. zip fájlt. Ha nem tudja kibontani, kattintson a jobb gombbal a fájlra, és válassza a **Tulajdonságok**lehetőséget. Ha a "Ez a fájl egy másik számítógépről érkezett, és előfordulhat, hogy a számítógép védelmének megakadályozása" üzenet jelenik meg, válassza a **Tiltás feloldása** lehetőséget, majd kattintson az **alkalmaz**gombra.
@@ -47,7 +47,7 @@ Ha meg szeretné vizsgálni a streaming Analytics-feladatok eredményeit, az Azu
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Azure-Event Hubs létrehozása események betöltéséhez
 
-Az adatfolyamok elemzéséhez *Az Azure* -ba kerül. Az adatok betöltésének tipikus módja az [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)használata, amely másodpercenként akár több millió eseményt is felhasználhat, majd feldolgozhatja és tárolhatja az események adatait. Ebben az oktatóanyagban létre fog hozni egy Event hub-t, majd a Call-Event Generator alkalmazásnak meg kell küldenie a hívási adatközpontot. További információ az Event hubokról: [Azure Service Bus dokumentáció](https://docs.microsoft.com/azure/service-bus/).
+Az adatfolyamok elemzéséhez *Az Azure* -ba kerül. Az adatok betöltésének tipikus módja az [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)használata, amely másodpercenként akár több millió eseményt is felhasználhat, majd feldolgozhatja és tárolhatja az események adatait. Ebben az oktatóanyagban létre fog hozni egy Event hub-t, majd a Call-Event Generator alkalmazásnak meg kell küldenie a hívási adatközpontot.
 
 >[!NOTE]
 >Az eljárás részletesebb változata: [Event Hubs névtér és az Event hub létrehozása a Azure Portal használatával](../event-hubs/event-hubs-create.md). 
@@ -81,7 +81,7 @@ Ebben az eljárásban először létre kell hoznia egy Event hub-névteret, majd
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati sztring beszerzése
 
@@ -98,7 +98,7 @@ Ahhoz, hogy egy folyamat hozzáférhessen az adatközponthoz, az Event hub-nak r
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 5. Miután telepítette a házirendet, kattintson rá a megosztott hozzáférési házirendek listájában.
 
@@ -123,7 +123,7 @@ Mielőtt elkezdené a TelcoGenerator alkalmazást, úgy kell konfigurálnia, hog
 
 1. A szerkesztőben, ahová a kapcsolódási karakterláncot másolta, jegyezze fel az `EntityPath` értéket, majd távolítsa el a `EntityPath` párt (ne felejtse el eltávolítani a pontosvesszőt, amely megelőzi azt). 
 
-2. A TelcoGenerator. zip fájl kibontása mappában Nyissa meg a telcodatagen. exe. config fájlt egy szerkesztőben. (Több. config fájl is van, ezért mindenképpen nyissa meg a megfelelőt.)
+2. Nyissa meg a telcodatagen.exe.config fájlt egy szerkesztőben abban a mappában, ahová kicsomagolta a TelcoGenerator.zip fájlt. (Több. config fájl is van, ezért mindenképpen nyissa meg a megfelelőt.)
 
 3. A `<appSettings>` elemben:
 
@@ -162,7 +162,7 @@ Mielőtt elkezdené a TelcoGenerator alkalmazást, úgy kell konfigurálnia, hog
 
 Az ebben a valós idejű csalások észlelése alkalmazásban használt legfontosabb mezők a következők:
 
-|**Record**|**Definíció**|
+|**Rekord**|**Definíció**|
 |----------|--------------|
 |`CallrecTime`|A hívási kezdési idejét jelölő időbélyegző. |
 |`SwitchNum`|A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan karakterláncok, amelyek a származási országot/régiót (USA, Kína, Egyesült Királyság, Németország vagy Ausztrália) jelölik. |
@@ -186,7 +186,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Kattintson a **Létrehozás**gombra.
+3. Kattintson a **Létrehozás** lehetőségre.
 
     A rendszer létrehozza a feladatot, és a portál megjeleníti a feladatok részleteit. A művelet még nem fut, de a művelet elkezdése előtt konfigurálnia kell a feladatot.
 
@@ -202,7 +202,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Bemeneti alias  |  CallStream   |  Adjon meg egy nevet a feladatok bemenetének azonosításához.   |
-   |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott Event hub tartozik.   |
+   |Előfizetés   |  \<Your subscription\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott Event hub tartozik.   |
    |Event Hubs-névtér  |  ASA-eh-NS-bemutató |  Adja meg az Event hub-névtér nevét.   |
    |Eseményközpont neve  | ASA-eh-frauddetection-bemutató | Válassza ki az Event hub nevét.   |
    |Eseményközpont szabályzatának neve  | ASA – szabályzat – felügyelet – bemutató | Válassza ki a korábban létrehozott hozzáférési szabályzatot.   |
@@ -211,7 +211,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Lekérdezések létrehozása a valós idejű adatértékek átalakításához
 
@@ -372,7 +372,7 @@ Ha rendelkezik meglévő blob Storage-fiókkal, ezt használhatja. Ebből az okt
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Kimeneti alias  |  CallStream-FraudulentCalls   |  Adjon meg egy nevet a feladatok kimenetének azonosításához.   |
-   |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
+   |Előfizetés   |  \<Your subscription\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
    |Tárfiók  |  asaehstorage |  Adja meg a létrehozott Storage-fiók nevét. |
    |Tároló  | ASA-fraudulentcalls – bemutató | Válassza az új létrehozása elemet, és adja meg a tároló nevét. |
 

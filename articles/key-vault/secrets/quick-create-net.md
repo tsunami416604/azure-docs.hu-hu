@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 8c0507f4c91c4394da0efc3d8567c52db85fdfe0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 57832060fee9010f21eeb77723cf6058f169a4ee
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652304"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125532"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v4)
 
@@ -97,12 +97,12 @@ New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGr
 
 A felhőalapú .NET-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](../general/managed-identity.md) című témakört. 
 
-Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. A szolgáltatási elv egyedi nevet igényel a "http:// &lt; My-Unique-Service-elven-name &gt; " formátumban.
+Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. Az egyszerű szolgáltatásnév egyedi nevet igényel a "http:// &lt; My-Unique-Service-principal-name &gt; " formátumban.
 
-Hozzon létre egy szolgáltatási elvet az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
+Hozzon létre egy egyszerű szolgáltatást az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
@@ -125,7 +125,7 @@ Egyszerű szolgáltatásnév létrehozása a Azure PowerShell [New-AzADServicePr
 
 ```azurepowershell
 # Create a new service principal
-$spn = New-AzADServicePrincipal -DisplayName "http://&lt;my-unique-service-principle-name&gt;"
+$spn = New-AzADServicePrincipal -DisplayName "http://&lt;my-unique-service-principal-name&gt;"
 
 # Get the tenant ID and subscription ID of the service principal
 $tenantId = (Get-AzContext).Tenant.Id
@@ -200,7 +200,7 @@ Adja hozzá a következő irányelveket a kód elejéhez:
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van kibontva, a "https:// \< your-key-Vault-name \> . Vault.Azure.net" formátumban. Az alábbi kód a Key Vault hitelesítéséhez használja a ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) értéket, amely környezeti változókat olvas be a hozzáférési jogkivonat lekéréséhez. 
+A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A Key Vault neve a "https://. vault.azure.net" formátumban van kibontva a Key Vault URI-ra \<your-key-vault-name\> . Az alábbi kód a Key Vault hitelesítéséhez használja a ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) értéket, amely környezeti változókat olvas be a hozzáférési jogkivonat lekéréséhez. 
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
@@ -247,6 +247,26 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
+
+### <a name="delete-a-key-vault"></a>Key Vault törlése
+```azurecli
+az keyvault delete --name <your-unique-keyvault-name>
+```
+
+```powershell
+Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
+```
+
+### <a name="purge-a-key-vault"></a>Key Vault kiürítése
+```azurecli
+az keyvault purge --location eastus --name <your-unique-keyvault-name>
+```
+
+```powershell
+Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
+```
+
+### <a name="delete-a-resource-group"></a>Erőforráscsoport törlése
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -308,7 +328,7 @@ namespace key_vault_console_app
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 

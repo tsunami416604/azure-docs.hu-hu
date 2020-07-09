@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658489"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
@@ -25,14 +24,14 @@ További információ a tervező nézetéről:
 * [Vizualizációs rész hivatkozása](view-designer-parts.md): útmutatást nyújt az egyéni nézetekben elérhető vizualizációs részek beállításaihoz.
 
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 A nézetek a Azure Portal Azure Monitor **Áttekintés** lapján jelennek meg. Nyissa meg ezt a lapot a **Azure monitor** menüjéből, és kattintson a **továbbiak** elemre az **áttekintések** szakaszban. Az egyes egyéni nézetek csempéi betűrendben jelennek meg, a figyelési megoldások csempéi pedig ugyanarra a munkaterületre lesznek telepítve.
 
 ![Áttekintő lap](media/view-designer/overview-page.png)
 
 A tervező nézettel létrehozott nézetek a következő táblázatban ismertetett elemeket tartalmazzák:
 
-| Rész | Leírás |
+| Rész | Description |
 |:--- |:--- |
 | Csempék | Megjelenik a Azure Monitor **áttekintése** oldalon. Az egyes csempék az általa képviselt egyéni nézet vizuális összegzését jelenítik meg. Mindegyik csempe típusa különböző vizualizációkat biztosít a rekordokhoz. Az egyéni nézet megjelenítéséhez ki kell választania egy csempét. |
 | Egyéni nézet | Egy csempe kiválasztásakor jelenik meg. Minden nézet egy vagy több vizualizációs alkatrészt tartalmaz. |
@@ -49,7 +48,7 @@ A tervező nézettel létrehozott nézetek a következő beállításokat jelen�
 
 A beállításokat a következő táblázat ismerteti:
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 |:--|:--|
 | Frissítés   | A legújabb adattal frissíti a nézetet. | 
 | Naplók      | Megnyitja a [log Analytics](../log-query/portals.md) , hogy a rendszer naplózza az adatelemzési lekérdezéseket. |
@@ -95,7 +94,7 @@ A nézetek szerkesztési módban való használatának lehetőségeit az alábbi
 
 ![Szerkesztés menü](media/view-designer/edit-menu.png)
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 |:--|:--|
 | Mentés        | Menti a módosításokat, és bezárja a nézetet. |
 | Mégse      | Elveti a módosításokat, és bezárja a nézetet. |

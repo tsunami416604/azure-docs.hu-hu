@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710507"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Tudnivalók a ExpressRoute virtuális hálózati átjárókkal kapcsolatban
 

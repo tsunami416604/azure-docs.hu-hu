@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b3e6f5746df6197938d3a91de5ff11b1a311d762
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8de043e9ae79c29d1c6d7e4f59ac7494eeb2d4f8
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402953"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985581"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával
 
@@ -23,7 +23,10 @@ Ebben a rövid útmutatóban az Azure Face REST API a go használatával ismeri 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>A parancsfájl írása
@@ -108,11 +111,11 @@ func main() {
 }
 ```
 
-Frissítenie kell az `subscriptionKey` értéket az előfizetési kulccsal, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot.
+Frissítenie kell az értéket az `subscriptionKey` előfizetési kulccsal, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Azt is megteheti, hogy `imageUrl` módosítani szeretné a mezőt úgy, hogy a saját bemeneti képére mutasson. Előfordulhat, hogy módosítani kívánja azt `returnFaceAttributes` a mezőt is, amely megadja a lekérdezni kívánt Arcfelismerés-attribútumokat.
+Azt is megteheti, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson. Előfordulhat, hogy módosítani kívánja azt a `returnFaceAttributes` mezőt is, amely megadja a lekérdezni kívánt Arcfelismerés-attribútumokat.
 
 ## <a name="run-the-script"></a>A szkript futtatása
 

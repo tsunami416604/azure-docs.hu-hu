@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/27/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078105"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
@@ -43,7 +43,7 @@ A hozzáférési kérelmek jóváhagyásának vagy megtagadásának első lépé
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja a jóváhagyásra váró hozzáférési kérelmeket.
 
-1. Jelentkezzen be a saját hozzáférési portálján a [https://myaccess.microsoft.com](https://myaccess.microsoft.com)következő címen:.  (Az USA kormányzati szervei számára a saját hozzáférési portál hivatkozásában található tartomány lesz `myaccess.microsoft.us`.)
+1. Jelentkezzen be a saját hozzáférési portálján a következő címen: [https://myaccess.microsoft.com](https://myaccess.microsoft.com) .  (Az USA kormányzati szervei számára a saját hozzáférési portál hivatkozásában található tartomány lesz `myaccess.microsoft.us` .)
 
 1. A bal oldali menüben kattintson a **jóváhagyások** elemre, hogy megtekintse a hozzáférési kérelmek függőben lévő jóváhagyásának listáját.
 

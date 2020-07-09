@@ -4,14 +4,14 @@ description: Azure PowerShell minták beszerzése különböző gyakori feladato
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/13/2020
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fc4ec916e71f2fcfd3b411420879d42b2fa90f18
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713539"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563841"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure PowerShell minták a Azure Cosmos DB-SQL (Core) API-hoz
 
@@ -22,7 +22,7 @@ További Cosmos DB PowerShell-minták az SQL (Core) API-hoz és a dokumentáció
 > [!NOTE]
 > A minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Ellenőrizze, hogy rendszeresen frissülnek-e a frissítések `Az.CosmosDB` .
 
-| | |
+|Tevékenység | Leírás |
 |---|---|
 |[Fiók, adatbázis és tároló létrehozása](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy Azure Cosmos DB fiókot, adatbázist és tárolót. |
 |[Tároló létrehozása nagyméretű partíciós kulccsal](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy tárolót egy nagyméretű partíciós kulccsal. |
@@ -35,4 +35,5 @@ További Cosmos DB PowerShell-minták az SQL (Core) API-hoz és a dokumentáció
 |[Feladatátvételi prioritás módosítása vagy feladatátvételi trigger](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy Azure Cosmos-fiók regionális feladatátvételi prioritásának módosítása vagy manuális feladatátvétel indítása. |
 |[Fiók kulcsai vagy a kapcsolatok karakterláncai](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Elsődleges és másodlagos kulcsok, a kapcsolatok karakterláncának beolvasása vagy egy Azure Cosmos DB fiók kulcsának újragenerálása. |
 |[Cosmos-fiók létrehozása IP-tűzfallal](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy Azure Cosmos DB fiókot, amelyen engedélyezve van az IP-tűzfal. |
+|[Erőforrások zárolásának törlése a törlésből](scripts/powershell/sql/powershell-sql-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal. |
 |||

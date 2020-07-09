@@ -10,41 +10,42 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79369896"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299245"
 ---
 # <a name="what-is-a-voice-assistant"></a>Mi az a hangvezérelt asszisztens?
 
 A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban.
 
-A hangsegéd szolgáltatás gyors, megbízható interakciót tesz lehetővé egy eszköz és egy asszisztens implementációja között, amely vagy (1) a bot Framework közvetlen vonalú beszédfelismerési csatornáját, vagy (2) az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladatok befejezéséhez.
-
-Az alkalmazások a beszédfelismerési szoftverfejlesztői készlettel (SDK) csatlakoznak a Voice Assistant szolgáltatáshoz.
-
-   ![A hangsegéd-előkészítési szolgáltatás folyamatának fogalmi diagramja](media/voice-assistants/overview.png "A hangsegéd folyamata")
+A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy asszisztens implementáció között, amely az (1) [közvetlen vonalas beszédet](direct-line-speech.md) (Azure bot Service) használja a hangképességek a botokhoz való hozzáadásához, vagy (2) a hangvezérlési forgatókönyvek egyéni parancsait.
 
 ## <a name="choosing-an-assistant-solution"></a>Asszisztensi megoldás kiválasztása
 
-A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. A beszédfelismerési szolgáltatás több, egymást kiegészítő megoldást biztosít a Segéd interakcióinak kialakításához. Legyen szó akár a rugalmasságról és a sokoldalúságról, amit a bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája biztosít, vagy az egyszerű forgatókönyvekhez [(előzetes verzió)](custom-commands.md) egyszerűen, a megfelelő eszközök kiválasztásával kezdheti meg az első lépéseket.
+A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. A beszédfelismerési szolgáltatás több, egymást kiegészítő megoldást biztosít a Segéd interakcióinak kialakításához. Felvehet hang-és hangvételi képességeket a rugalmas és sokoldalú robotra, amely a [közvetlen vonalas beszélgetési](direct-line-speech.md) csatornán keresztül Azure bot Service használatával készült, vagy az egyszerű hangvezérlési forgatókönyvek esetében egyszerűvé teszi az [egyéni parancsok](custom-commands.md) alkalmazását.
 
 | ha akarod... | Ezt követően tekintse meg... | Például... |
 |-------------------|------------------|----------------|
-|Nyílt végű beszélgetés robusztus szakértelem-integrációval és teljes körű üzembe helyezési ellenőrzéssel | A bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája | <ul><li>"Be kell menni a Seattle-be"</li><li>"Milyen típusú pizzát rendelhetek?"</li></ul>
-|Parancs-és vezérlési vagy feladat-orientált beszélgetés egyszerűsített létrehozással és üzemeltetéssel | [Egyéni parancsok (előzetes verzió)](custom-commands.md) | <ul><li>"Az általános megvilágítás bekapcsolása"</li><li>"5 fokos meleg"</ul>
+|Nyílt végű beszélgetés robusztus szakértelem-integrációval és teljes körű üzembe helyezési ellenőrzéssel | Azure Bot Service robot [közvetlen vonalas beszédfelismerési](direct-line-speech.md) csatornával | <ul><li>"Be kell menni a Seattle-be"</li><li>"Milyen típusú pizzát rendelhetek?"</li></ul>
+|Hangvezérelt vagy egyszerű, feladathoz igazodó beszélgetések egyszerűsített szerzői és üzemeltetési szolgáltatásokkal | [Egyéni parancsok](custom-commands.md) | <ul><li>"Az általános megvilágítás bekapcsolása"</li><li>"5 fokos meleg"</li><li>Az [itt elérhető](https://speech.microsoft.com/customcommands) egyéb minták</li></ul>
 
 Javasoljuk, hogy a [közvetlen vonalas beszédfelismerést](direct-line-speech.md) a legjobb alapértelmezett beállításként válassza, ha még nem biztos benne, hogy mit szeretne kezelni. Integrálja az eszközöket és a szerzői támogatást, például a [virtuális asszisztensi megoldást és a vállalati sablont](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , valamint a [QnA Maker szolgáltatást](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) , hogy közös mintákon építsen, és a meglévő tudásbázisokat használja.
 
-Az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy egyszerűsített szerzői és üzemeltetési élményt biztosítanak, amelyet kifejezetten a természetes nyelvi parancsok és a vezérlési forgatókönyvek számára alakítottak ki.
+Az [egyéni parancsok](custom-commands.md) megkönnyítik a hangvezérelt hangvezérelt alkalmazások készítését a hang-első interakciós élményhez. Egységes szerzői élményt, automatikus üzemeltetési modellt és viszonylag alacsony bonyolultságot biztosít, amely segít a legjobb megoldás kialakításában a hangvezérelt forgatókönyvekhez.
 
    ![Asszisztensi megoldások összehasonlítása](media/voice-assistants/assistant-solution-comparison.png "Asszisztensi megoldások összehasonlítása")
 
+
+## <a name="reference-architecture-for-building-a-voice-assistant-using-the-speech-sdk"></a>Hivatkozási architektúra hangsegéd létrehozásához a Speech SDK használatával
+
+   ![A hangsegéd-előkészítési szolgáltatás folyamatának fogalmi diagramja](media/voice-assistants/overview.png "A hangsegéd folyamata")
+
 ## <a name="core-features"></a>Alapvető funkciók
 
-Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni parancsokat (előzetes verzió)](custom-commands.md) választ a Segéd-interakciók létrehozásához, a testreszabási funkciók széles választékával testre szabhatja a Segédet a márka, a termék és a személyiség számára.
+Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni parancsokat](custom-commands.md) választ a Segéd-interakciók létrehozásához, a testreszabási funkciók széles választékát használhatja a Segéd testreszabásához a márka, a termék és a személyiség számára.
 
 | Kategória | Szolgáltatások |
 |----------|----------|
@@ -56,38 +57,31 @@ Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni par
 
 Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a hangsegéd-gyors üzembe helyezések listáját tartalmazza, nyelv szerint rendezve.
 
-| Első lépések | Platform | API-referencia |
-|------------|----------|---------------|
-| C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
+* [Gyors útmutató: egyéni hangsegéd létrehozása közvetlen vonalas beszédfelismerés használatával](quickstarts/voice-assistants.md)
+* [Rövid útmutató: hangvezérlési alkalmazás létrehozása egyéni parancsokkal](quickstart-custom-commands-application.md)
 
-## <a name="sample-code"></a>Mintakód
+## <a name="sample-code-and-tutorials"></a>Mintakód és oktatóanyagok
 
 Hangsegéd létrehozásához használható mintakód a GitHubon érhető el. Ezek a minták lefedik az ügyfélalkalmazás számára a Segédhez való csatlakozást számos népszerű programozási nyelven.
 
-* [Hangsegéd-minták (SDK)](https://aka.ms/csspeech/samples)
-* [Oktatóanyag: hang engedélyezése a Segéd számára a Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-
-## <a name="tutorial"></a>Oktatóanyag
-
-Egy oktatóanyag, amely bemutatja, hogyan [engedélyezheti a Segédet a SPEECH SDK és a Direct line Speech Channel használatával](tutorial-voice-enable-your-bot-speech-sdk.md).
+* [Hangsegéd-minták a GitHubon](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
+* [Oktatóanyag: a Azure Bot Service és a C# Speech SDK használatával létrehozott asszisztens hangfelismerése](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Oktatóanyag: egyéni parancsokat tartalmazó alkalmazás létrehozása egyszerű hangutasításokkal](how-to-custom-commands-create-application-with-simple-commands.md)
 
 ## <a name="customization"></a>Testreszabás
 
-A beszédfelismerési szolgáltatással létrehozott hangsegédek teljes körű testreszabási lehetőségeket használhatnak a [beszéd – szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak kiválasztásához](speech-devices-sdk-create-kws.md).
+Az Azure Speech Services használatával létrehozott hangsegédek a testreszabási lehetőségek teljes skáláját használhatják.
+
+* [Custom Speech](how-to-custom-speech.md)
+* [Egyéni hang](how-to-custom-voice.md)
+* [Egyéni kulcsszó](custom-keyword-overview.md)
 
 > [!NOTE]
-> A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
-
-## <a name="reference-docs"></a>Dokumentációs dokumentumok
-
-* [Beszéd SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+> A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](language-support.md)).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
-* [A Speech SDK beszerzése](speech-sdk.md)
-* [További információ az egyéni parancsokról (előzetes verzió)](custom-commands.md)
+* [További információ az egyéni parancsokról](custom-commands.md)
 * [További információ a közvetlen vonalas beszédről](direct-line-speech.md)
+* [A Speech SDK beszerzése](speech-sdk.md)

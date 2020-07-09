@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640586"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904762"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -48,7 +48,7 @@ Ez az oktatóanyag az iOS-és macOS-alkalmazásokra is érvényes. Vegye figyele
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ebben az útmutatóban a XCode 11. x vagy újabb verziójára van szükség az alkalmazás létrehozásához. A XCode letöltése az [iTunes webhelyről](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode letöltési URL-címe")végezhető el.
+- Ebben az útmutatóban a XCode 11. x vagy újabb verziójára van szükség az alkalmazás létrehozásához. A XCode letöltése a [Mac App Store áruházból](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode letöltési URL-címe")végezhető el.
 - Microsoft hitelesítési függvénytár ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Használhatja a függőség-kezelőt, vagy manuálisan is hozzáadhatja a könyvtárat. Az alábbi utasítások bemutatják, hogyan.
 
 Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, töltse le a következő kódot:
@@ -624,9 +624,9 @@ A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódo
 
 Ha rendelkezik jogkivonattal, az alkalmazás a HTTP-fejlécben felhasználhatja, hogy jogosult kérést készítsen a Microsoft Graph:
 
-| fejléc kulcsa    | érték                 |
+| fejléc kulcsa    | value                 |
 | ------------- | --------------------- |
-| Engedélyezés | Tulajdonosi \< hozzáférés – token> |
+| Engedélyezés | Tulajdonosi\<access-token> |
 
 Adja hozzá a következő kódot a `ViewController` osztályhoz:
 

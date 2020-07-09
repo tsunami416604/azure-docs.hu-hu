@@ -2,19 +2,19 @@
 title: Erőforrások beállítása egy ML-modell üzembe helyezéséhez az Azure SQL Edge-ben
 description: Az alábbi, a három részből álló Azure SQL Edge-oktatóanyag első részében a vasérc-szennyeződések előrejelzéséhez telepíteni kell az előfeltételként szükséges szoftvereket, és be kell állítania egy gépi tanulási modell üzembe helyezéséhez szükséges Azure-erőforrásokat az Azure SQL Edge-ben.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: c74e402fa1faa883b1e456f11a8d9d7b1e750d27
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772828"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887461"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Szoftver telepítése és erőforrások beállítása az oktatóanyaghoz
 
@@ -30,6 +30,7 @@ Ebben a háromrészes oktatóanyagban egy gépi tanulási modellt hoz létre, am
 4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) telepítése
 5. Nyissa meg Azure Data Studio és konfigurálja a Pythont jegyzetfüzetekhez.Részletekért lásd: [a Python konfigurálása jegyzetfüzetekhez](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Ez a lépés több percet is igénybe vehet.
 6. Telepítse az [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)legújabb verzióját. A következő szkriptek megkövetelik, hogy az AZ PowerShell legyen a legújabb verzió (3.5.0, Feb 2020).
+7. Töltse le a [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) és az [AMD/ARM Docker-lemezképfájlokat](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files) , amelyeket az oktatóanyagban használni fog.
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Azure-erőforrások üzembe helyezése PowerShell-parancsfájl használatával
 

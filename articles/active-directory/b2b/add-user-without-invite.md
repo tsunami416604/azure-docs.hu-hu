@@ -5,19 +5,19 @@ documentationcenter: ''
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42c9caaf581fab37e2e55cbe408db6d6d846622a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cab29fbe9e33cc12336fa1b81ed4aa37f91a7f5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387303"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>B2B Collaboration Guest Users hozzáadása meghívó hivatkozás vagy e-mail küldése nélkül
 
@@ -25,13 +25,13 @@ Most meghívhatja a vendég felhasználókat úgy, hogy közvetlen hivatkozást 
 
 Ahhoz, hogy ez az új metódus elérhetővé vált, a vendég felhasználókat a meghívót kérő e-mailek meghívása nélkül is meghívhatja a meghívó (a szervezet vagy a partner szervezete) és a **vendég meghívó** címtár szerepkörbe, majd a meghívóval a felhasználói felületen vagy a powershellen keresztül adhat hozzá vendégeket a címtárhoz, a csoporthoz vagy az alkalmazásokhoz. (Ha a PowerShellt használja, a meghívót tartalmazó e-mailt összesen is kihagyhatja). Például:
 
-1. A gazda szervezet egyik felhasználója (például a WoodGrove) egy felhasználót hív meg a partner szervezettől (például Sam@litware.com) vendégként.
+1. A gazda szervezet egyik felhasználója (például a WoodGrove) egy felhasználót hív meg a partner szervezettől (például Sam@litware.com ) vendégként.
 2. A gazdagép rendszergazdája olyan [házirendeket állít be](delegate-invitations.md) , amelyek lehetővé teszik a Sam számára a partner szervezet (Litware) más felhasználóinak azonosítását és hozzáadását. (A Sam-t fel kell venni a **vendég meghívó** szerepkörbe.)
 3. Mostantól a Sam más felhasználókat is hozzáadhat a Litware a WoodGrove-címtárhoz,-csoportokhoz vagy-alkalmazásokhoz anélkül, hogy be kellene váltania a meghívókat. Ha a Sam rendelkezik a megfelelő enumerálási jogosultságokkal a Litware-ben, az automatikusan megtörténik.
  
 Ez az eredeti metódus továbbra is működik. Van azonban némi különbség a viselkedésben. Ha a PowerShellt használja, megfigyelheti, hogy egy meghívott vendég fiók most már rendelkezik egy **PendingAcceptance** állapottal, és nem **fogadja el**azonnal az elfogadott értéket. Bár az állapot függőben van, a vendég felhasználó továbbra is bejelentkezhet, és anélkül férhet hozzá az alkalmazáshoz, hogy rákattint egy e-mail meghívására szolgáló hivatkozásra. A függőben lévő állapot azt jelenti, hogy a felhasználó még nem ment át a [jóváhagyáson](redemption-experience.md#consent-experience-for-the-guest), ahol elfogadják a meghívó szervezet adatvédelmi feltételeit. A vendég felhasználó ezt a beleegyezési képernyőt látja, amikor első alkalommal jelentkeznek be. 
 
-Ha meghívja a felhasználót a címtárba, a vendég felhasználónak közvetlenül hozzá kell férnie az erőforrás-bérlőre jellemző Azure Portal URL https://portal.azure.com/-címhez (például *resourcetenant*. onmicrosoft.com) az adatvédelmi feltételek megtekintéséhez és elfogadásához.
+Ha meghívja a felhasználót a címtárba, a vendég felhasználónak közvetlenül hozzá kell férnie az erőforrás-bérlőre jellemző Azure Portal URL-címhez (például https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) az adatvédelmi feltételek megtekintéséhez és elfogadásához.
 
 ## <a name="next-steps"></a>További lépések
 

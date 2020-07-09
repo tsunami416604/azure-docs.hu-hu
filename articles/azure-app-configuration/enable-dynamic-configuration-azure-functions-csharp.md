@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8f5b21189007d2b15c2ff31b778144d9a672318
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74185449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856477"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy Azure Functions alkalmazásban
 
@@ -41,14 +41,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
-1. Nyissa meg a *Function1.cs*. `static` A `Configuration`tulajdonság mellett vegyen fel egy `static` új tulajdonságot `ConfigurationRefresher` , `IConfigurationRefresher` amely megtartja, hogy a rendszer a függvények hívásakor a konfigurációs frissítéseket a későbbiekben fogja használni.
+1. Nyissa meg a *Function1.cs*. A `static` tulajdonság mellett `Configuration` vegyen fel egy új `static` tulajdonságot, `ConfigurationRefresher` amely megtartja, hogy a rendszer a `IConfigurationRefresher` függvények hívásakor a konfigurációs frissítéseket a későbbiekben fogja használni.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
     private static IConfigurationRefresher ConfigurationRefresher { set; get; }
     ```
 
-2. Frissítse a konstruktort, és használja `ConfigureRefresh` a metódust az alkalmazás konfigurációs tárolójából frissíteni kívánt beállítás megadásához. A `IConfigurationRefresher` rendszer egy példányt kér le a `GetRefresher` metódus használatával. Szükség esetén a konfigurációs gyorsítótár lejárati idejének időablakát is módosítjuk az alapértelmezett 30 másodperctől számított 1 percre.
+2. Frissítse a konstruktort, és használja a `ConfigureRefresh` metódust az alkalmazás konfigurációs tárolójából frissíteni kívánt beállítás megadásához. A rendszer egy példányt kér `IConfigurationRefresher` le a `GetRefresher` metódus használatával. Szükség esetén a konfigurációs gyorsítótár lejárati idejének időablakát is módosítjuk az alapértelmezett 30 másodperctől számított 1 percre.
 
     ```csharp
     static Function1()
@@ -67,7 +67,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     }
     ```
 
-3. Frissítse a `Run` metódust és a jelet a konfiguráció frissítéséhez `Refresh` a függvények hívásának elején található metódus használatával. Ez nem lesz-op, ha a gyorsítótár lejárati ideje nem érhető el. Távolítsa `await` el az operátort, ha azt szeretné, hogy a konfiguráció a blokkolás nélkül frissüljön.
+3. Frissítse a `Run` metódust és a jelet a konfiguráció frissítéséhez a `TryRefreshAsync` függvények hívásának elején található metódus használatával. Ez nem lesz-op, ha a gyorsítótár lejárati ideje nem érhető el. Távolítsa el az `await` operátort, ha azt szeretné, hogy a konfiguráció a blokkolás nélkül frissüljön.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
@@ -90,15 +90,21 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studiótól érkező kérést **Azure functions Core (CLI)** eszközök letöltéséhez és telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
 
@@ -124,7 +130,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyagban használt példa kód letölthető az [alkalmazás-konfiguráció GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction) -tárházból
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

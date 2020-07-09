@@ -5,18 +5,18 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847633"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134898"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségben lévő elhelyezési csoportokban futó Azure-beli virtuális gépek replikálása egy másik régióba
 
 Ez a cikk azt ismerteti, hogyan replikálhatja, feladatátvételi és feladat-visszavételi pontokon futó virtuális gépeket egy másodlagos régióba helyezheti el egy közeli elhelyezési csoportban.
 
-A [közelségi csoportok](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) egy Azure-beli virtuális gépek logikai csoportosítási funkciója, amellyel csökkentheti az alkalmazásaihoz tartozó, virtuális gépek közötti hálózati késést. Ha a virtuális gépek ugyanarra a közelségi elhelyezési csoportba vannak helyezve, fizikailag a lehető legközelebb helyezkednek el egymáshoz. A közelségi elhelyezési csoportok különösen hasznosak a késésre érzékeny munkaterhelések követelményeinek kielégítése érdekében.
+A [közelségi csoportok](../virtual-machines/windows/proximity-placement-groups-portal.md) egy Azure-beli virtuális gépek logikai csoportosítási funkciója, amellyel csökkentheti az alkalmazásaihoz tartozó, virtuális gépek közötti hálózati késést. Ha a virtuális gépek ugyanarra a közelségi elhelyezési csoportba vannak helyezve, fizikailag a lehető legközelebb helyezkednek el egymáshoz. A közelségi elhelyezési csoportok különösen hasznosak a késésre érzékeny munkaterhelések követelményeinek kielégítése érdekében.
 
 ## <a name="disaster-recovery-with-proximity-placement-groups"></a>Vész-helyreállítás földrajzi elhelyezési csoportokkal
 
@@ -28,23 +28,26 @@ Egy tipikus forgatókönyv esetében előfordulhat, hogy a virtuális gépek egy
 -  Ha egy rendelkezésre állási csoport egy közelségi helyhez van rögzítve, és a rendelkezésre állási csoportban lévő feladatátvételi/feladat-visszavételi virtuális gépeken foglalási korlátozás van megadva, akkor a virtuális gépek a rendelkezésre állási csoporton és a közelségi elhelyezési csoportban kívül is létrejönnek.
 -  Nem felügyelt lemezek esetén nem támogatott a közelségi csoportok Site Recovery.
 
+> [!Note]
+> A Azure Site Recovery nem támogatja a Hyper-V – Azure forgatókönyvek esetében a felügyelt lemezek feladat-visszavételét. Ezért az Azure-ból a Hyper-V-be történő, a közelségi elhelyezési csoportból történő feladat-visszavétel nem támogatott.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Győződjön meg arról, hogy rendelkezik a Azure PowerShell az modulhoz. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](https://docs.microsoft.com/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
+1. Győződjön meg arról, hogy rendelkezik a Azure PowerShell az modulhoz. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Virtual Machines Site Recovery beállítása a közelségi elhelyezési csoportban
 
 ### <a name="azure-to-azure"></a>Azure – Azure
 
-1. [Jelentkezzen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#sign-in-to-your-microsoft-azure-subscription) be a fiókjába, és állítsa be az előfizetését.
-2. Szerezze be a replikálni kívánt virtuális gép részleteit az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#get-details-of-the-virtual-machine-to-be-replicated)leírtak szerint.
-3. [Hozza létre](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-recovery-services-vault) a Recovery Services-tárolót, és [állítsa be](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#set-the-vault-context) a tár környezetét.
-4. Készítse elő a tárolót a replikálási virtuális gép elindításához. Ez magában foglalja a [Service Fabric-objektum](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) létrehozását az elsődleges és a helyreállítási régiók esetében is.
-5. [Hozzon létre](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-protection-container-in-the-primary-fabric) egy site Recovery védelmi tárolót mind az elsődleges, mind a helyreállítási hálóhoz.
-6. [Hozzon létre](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-replication-policy) egy replikációs házirendet.
-7. Hozzon létre egy védelmi tárolót az elsődleges és a helyreállítási védelmi tároló között az [alábbi](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) lépésekkel és egy védelmi tároló hozzárendelésével az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)említett feladat-visszavételhez.
-8. A cache Storage-fiók létrehozásához kövesse [az](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-cache-storage-account-and-target-storage-account) alábbi lépéseket.
-9. Hozza létre a szükséges hálózati leképezéseket az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-network-mappings)leírtak szerint.
+1. [Jelentkezzen](./azure-to-azure-powershell.md#sign-in-to-your-microsoft-azure-subscription) be a fiókjába, és állítsa be az előfizetését.
+2. Szerezze be a replikálni kívánt virtuális gép részleteit az [itt](./azure-to-azure-powershell.md#get-details-of-the-virtual-machine-to-be-replicated)leírtak szerint.
+3. [Hozza létre](./azure-to-azure-powershell.md#create-a-recovery-services-vault) a Recovery Services-tárolót, és [állítsa be](./azure-to-azure-powershell.md#set-the-vault-context) a tár környezetét.
+4. Készítse elő a tárolót a replikálási virtuális gép elindításához. Ez magában foglalja a [Service Fabric-objektum](./azure-to-azure-powershell.md#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) létrehozását az elsődleges és a helyreállítási régiók esetében is.
+5. [Hozzon létre](./azure-to-azure-powershell.md#create-a-site-recovery-protection-container-in-the-primary-fabric) egy site Recovery védelmi tárolót mind az elsődleges, mind a helyreállítási hálóhoz.
+6. [Hozzon létre](./azure-to-azure-powershell.md#create-a-replication-policy) egy replikációs házirendet.
+7. Hozzon létre egy védelmi tárolót az elsődleges és a helyreállítási védelmi tároló között az [alábbi](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) lépésekkel és egy védelmi tároló hozzárendelésével az [itt](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)említett feladat-visszavételhez.
+8. A cache Storage-fiók létrehozásához kövesse [az](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) alábbi lépéseket.
+9. Hozza létre a szükséges hálózati leképezéseket az [itt](./azure-to-azure-powershell.md#create-network-mappings)leírtak szerint.
 10. Az Azure-beli virtuális gép felügyelt lemezekkel való replikálásához használja az alábbi PowerShell-parancsmagot: 
 
 ```azurepowershell
@@ -58,7 +61,7 @@ $OSdiskId = $vm.StorageProfile.OsDisk.ManagedDisk.Id
 $RecoveryOSDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 
-$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType -RecoveryProximityPlacementGroupId $recPpg.Id
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
 # Data disk
 $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
@@ -88,8 +91,8 @@ A virtuális gép replikációs állapotának és replikálási állapotának fi
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 
-11. A feladatátvételi teszt végrehajtásához kövesse [az alábbi](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#do-a-test-failover-validate-and-cleanup-test-failover) lépéseket.
-12. A feladatátvételhez kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#fail-over-to-azure)említett lépéseket.
+11. A feladatátvételi teszt végrehajtásához kövesse [az alábbi](./azure-to-azure-powershell.md#do-a-test-failover-validate-and-cleanup-test-failover) lépéseket.
+12. A feladatátvételhez kövesse az [itt](./azure-to-azure-powershell.md#fail-over-to-azure)említett lépéseket.
 13. Az alábbi PowerShell-parancsmag használatával a forrás-régióba történő ismételt védelemmel és feladat-visszavételsel
 
 ```azurepowershell
@@ -100,16 +103,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
-14. A replikáció letiltásához kövesse az [alábbi lépéseket.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#disable-replication)
+14. A replikáció letiltásához kövesse az [alábbi lépéseket.](./azure-to-azure-powershell.md#disable-replication)
 
 ### <a name="vmware-to-azure"></a>VMware – Azure
 
-1. Győződjön meg arról, hogy [előkészíti a helyszíni VMware-kiszolgálókat](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises) az Azure-ba való vész-helyreállításra.
-2. Jelentkezzen be a fiókjába, és állítsa be az előfizetését az [itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#log-into-azure)megadott módon.
-3. [Hozzon](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-up-a-recovery-services-vault) létre egy Recovery Services-tárolót, és [állítsa be a tár környezetét](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-the-vault-context).
-4. A tár regisztrációjának [ellenőrzése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#validate-vault-registration) .
-5. [Hozzon létre](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-a-replication-policy) egy replikációs házirendet.
-6. [Adjon hozzá](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#add-a-vcenter-server-and-discover-vms) egy vCenter-kiszolgálót, és fedezze fel a virtuális gépeket, és [hozzon létre](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-storage-accounts-for-replication) tárolási fiókokat a replikáláshoz
+1. Győződjön meg arról, hogy [előkészíti a helyszíni VMware-kiszolgálókat](./vmware-azure-tutorial-prepare-on-premises.md) az Azure-ba való vész-helyreállításra.
+2. Jelentkezzen be a fiókjába, és állítsa be az előfizetését az [itt](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)megadott módon.
+3. [Hozzon](./vmware-azure-disaster-recovery-powershell.md#set-up-a-recovery-services-vault) létre egy Recovery Services-tárolót, és [állítsa be a tár környezetét](./vmware-azure-disaster-recovery-powershell.md#set-the-vault-context).
+4. A tár regisztrációjának [ellenőrzése](./vmware-azure-disaster-recovery-powershell.md#validate-vault-registration) .
+5. [Hozzon létre](./vmware-azure-disaster-recovery-powershell.md#create-a-replication-policy) egy replikációs házirendet.
+6. [Adjon hozzá](./vmware-azure-disaster-recovery-powershell.md#add-a-vcenter-server-and-discover-vms) egy vCenter-kiszolgálót, és fedezze fel a virtuális gépeket, és [hozzon létre](./vmware-azure-disaster-recovery-powershell.md#create-storage-accounts-for-replication) tárolási fiókokat a replikáláshoz
 7. A VMware Virtual Machines replikálásához tekintse meg a részleteket, és kövesse az alábbi PowerShell-parancsmagot:
 
 ```azurepowershell
@@ -134,18 +137,18 @@ $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
-9. A feladatátvételi beállítások konfigurálásához [kövesse az alábbi lépéseket.](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#configure-failover-settings)
-10. [Futtasson](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#run-a-test-failover) feladatátvételi tesztet. 
-11. Feladatátvétel az Azure-ba az [alábbi](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#fail-over-to-azure) lépésekkel.
+9. A feladatátvételi beállítások konfigurálásához [kövesse az alábbi lépéseket.](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings)
+10. [Futtasson](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) feladatátvételi tesztet. 
+11. Feladatátvétel az Azure-ba az [alábbi](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) lépésekkel.
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V – Azure
 
-1. Győződjön meg arról, hogy [előkészíti a helyszíni Hyper-V-kiszolgálókat](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) a vész-helyreállításra az Azure-ban.
-2. [Jelentkezzen](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-1-sign-in-to-your-azure-account) be az Azure-ba.
-3. [Állítsa](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-2-set-up-the-vault) be a tárolót, és [állítsa be](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-3-set-the-recovery-services-vault-context) a Recovery Services-tároló környezetét.
-4. [Hozzon létre](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-4-create-a-hyper-v-site) egy Hyper-V-helyet.
-5. [Telepítse](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-5-install-the-provider-and-agent) a szolgáltatót és az ügynököt.
-6. [Hozzon létre](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-6-create-a-replication-policy) egy replikációs házirendet.
+1. Győződjön meg arról, hogy [előkészíti a helyszíni Hyper-V-kiszolgálókat](./hyper-v-prepare-on-premises-tutorial.md) a vész-helyreállításra az Azure-ban.
+2. [Jelentkezzen](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) be az Azure-ba.
+3. [Állítsa](./hyper-v-azure-powershell-resource-manager.md#step-2-set-up-the-vault) be a tárolót, és [állítsa be](./hyper-v-azure-powershell-resource-manager.md#step-3-set-the-recovery-services-vault-context) a Recovery Services-tároló környezetét.
+4. [Hozzon létre](./hyper-v-azure-powershell-resource-manager.md#step-4-create-a-hyper-v-site) egy Hyper-V-helyet.
+5. [Telepítse](./hyper-v-azure-powershell-resource-manager.md#step-5-install-the-provider-and-agent) a szolgáltatót és az ügynököt.
+6. [Hozzon létre](./hyper-v-azure-powershell-resource-manager.md#step-6-create-a-replication-policy) egy replikációs házirendet.
 7. Engedélyezze a replikálást az alábbi lépések használatával – 
     
     a. Kérje le a védelemmel ellátni kívánt virtuális géphez tartozó védhető elem beolvasását az alábbiak szerint:
@@ -185,13 +188,13 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 
     Get-AzRecoveryServicesAsrJob -Job $job | Select-Object -ExpandProperty state
     ```
-8. Futtasson [feladatátvételi](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)tesztet.
+8. Futtasson [feladatátvételi](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover)tesztet.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A VMware-ből az Azure-ba történő ismételt védelem és feladat-visszavétel végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)ismertetett lépéseket.
+A VMware-ből az Azure-ba történő ismételt védelem és feladat-visszavétel végrehajtásához kövesse az [itt](./vmware-azure-prepare-failback.md)ismertetett lépéseket.
 
-A Hyper-V-ről az Azure-ba történő feladatátvétel végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) ismertetett lépéseket, és hajtsa végre a feladat-visszavételt, kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback)ismertetett lépéseket.
+A Hyper-V-ről az Azure-ba történő feladatátvétel végrehajtásához kövesse az [itt](./site-recovery-failover.md) ismertetett lépéseket, és hajtsa végre a feladat-visszavételt, kövesse az [itt](./hyper-v-azure-failback.md)ismertetett lépéseket.
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).

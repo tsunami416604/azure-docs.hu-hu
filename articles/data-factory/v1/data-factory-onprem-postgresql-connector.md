@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281235"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a PostgreSQL-ből a Azure Data Factory használatával
@@ -72,14 +71,14 @@ A következő táblázat a PostgreSQL-hez társított szolgáltatáshoz tartozó
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Igen |
-| kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
-| adatbázis |A PostgreSQL-adatbázis neve. |Igen |
-| séma |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |Nem |
-| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Yes |
+| kiszolgáló |A PostgreSQL-kiszolgáló neve. |Yes |
+| adatbázis |A PostgreSQL-adatbázis neve. |Yes |
+| séma |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |No |
+| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
+| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |No |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |No |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
@@ -99,12 +98,12 @@ Ha a forrás típusa **RelationalSource** (beleértve a PostgreSQL-t is), a köv
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 > [!NOTE]
 > A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. Csatolja őket a `""` lekérdezésben (idézőjelek között).
 
-**Például**
+**Példa:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -162,7 +161,7 @@ Első lépésként állítsa be az adatkezelési átjárót. Az utasítások a h
 
 A minta feltételezi, hogy létrehozott egy "Sajáttábla" táblát a PostgreSQL-ben, és egy "Timestamp" nevű oszlopot tartalmaz az idősorozat-adatsorokhoz.
 
-A `"external": true` beállítás tájékoztatja a Data Factory szolgáltatást arról, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
+A beállítás `"external": true` tájékoztatja a Data Factory szolgáltatást arról, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```json
 {
@@ -339,7 +338,7 @@ Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképez
 | pg_lsn | |Int64 |
 | pont | |Bájt [], karakterlánc |
 | sokszög | |Bájt [], karakterlánc |
-| valós szám |float4 |Egyirányú |
+| valós szám |float4 |Egyszeres |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sorozatszám |serial4 |Int32 |

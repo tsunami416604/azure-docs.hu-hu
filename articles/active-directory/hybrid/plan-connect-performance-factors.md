@@ -13,23 +13,23 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253494"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
 Azure AD Connect a Active Directory szinkronizálja az Azure AD-vel. Ez a kiszolgáló a felhasználói identitások felhőbe való áthelyezésének kritikus eleme. Egy Azure AD Connect teljesítményét befolyásoló elsődleges tényezők a következők:
 
-| **Tervezési tényező**| **Meghatározás** |
+| **Tervezési tényező**| **Definíció** |
 |:-|-|
 | Topológia| A végpontok és összetevők eloszlásának Azure AD Connect kell kezelnie a hálózaton. |
 | Méretezés| A Azure AD Connect által kezelendő objektumok, például a felhasználók, csoportok és szervezeti egységek száma. |
 | Hardver| A hardver (fizikai vagy virtuális) az egyes hardver-összetevők Azure AD Connect és függő teljesítményére, beleértve a CPU-t, a memóriát, a hálózatot és a merevlemez-konfigurációt. |
-| Configuration| Hogyan dolgozza fel a Azure AD Connect a címtárakat és az információkat. |
+| Konfiguráció| Hogyan dolgozza fel a Azure AD Connect a címtárakat és az információkat. |
 | Betöltés| Az objektum változásainak gyakorisága. A terhelések egy óra, nap vagy hét során változhatnak. Az összetevőtől függően előfordulhat, hogy meg kell terveznie a maximális terhelést vagy az átlagos terhelést. |
 
 A dokumentum célja a Azure AD Connect kiépítési motor teljesítményének befolyásolását befolyásoló tényezők leírása. A nagy vagy összetett szervezetek (több mint 100 000 objektumot kiépítő szervezetek) a javaslatok segítségével optimalizálják Azure AD Connect megvalósítását, ha az itt ismertetett teljesítménnyel kapcsolatos problémákat tapasztalnak. A Azure AD Connect egyéb összetevői, például [Azure ad Connect Health](how-to-connect-health-agent-install.md) és Agents nem szerepelnek itt.
@@ -143,7 +143,7 @@ A szervezetek letilthatják bizonyos attribútumok áramlását az Azure AD-be, 
 
 ## <a name="azure-ad-connect-dependency-factors"></a>Függőségi tényezők Azure AD Connect
 
-A Azure AD Connect teljesítménye függ az általa importált és a-ba exportált csatlakoztatott könyvtárak teljesítményével. Például az importálni kívánt Active Directory mérete vagy az Azure AD szolgáltatás hálózati késése. A kiépítési motor által használt SQL-adatbázis a szinkronizálási ciklus általános teljesítményét is befolyásolja.
+A Azure AD Connect teljesítménye függ az általa importált és a-ba exportált csatlakoztatott könyvtárak teljesítményével. Például az importálni kívánt Active Directory mérete vagy az Azure AD szolgáltatás hálózati késése. A kiépítési motor által használt SQL-adatbázis hatással van a szinkronizálási ciklus általános teljesítményére is.
 
 ### <a name="active-directory-factors"></a>Active Directory tényezők
 
@@ -172,7 +172,7 @@ A forrás Active Directory topológiájának mérete befolyásolja az SQL Databa
 
 - A több mint 100 000 felhasználóval rendelkező szervezetek csökkenthetik a hálózati késéseket az SQL Database és a kiépítési motor ugyanazon a kiszolgálón való elhelyezésével.
 - A szinkronizálási folyamat nagy bemeneti és kimeneti (I/O) követelményei miatt a kiépítési motor SQL Database-hez szükséges SSD-k használata az optimális eredmények érdekében, ha nem lehetséges, érdemes lehet RAID 0 vagy RAID 1 konfigurációt használni.
-- Ne végezzen teljes szinkronizálást előre jelleggel; szükségtelen adatváltozást és lassabb válaszidőt okoz.
+- Ne végezzen teljes szinkronizálási megelőző jelleggel; szükségtelen adatváltozást és lassabb válaszidőt okoz.
 
 ## <a name="conclusion"></a>Összegzés
 

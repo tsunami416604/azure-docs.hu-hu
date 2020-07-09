@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728146"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése az Office 365-csoportokban Azure Active Directory
 
@@ -36,23 +35,23 @@ Ha a csoport elnevezési házirend konfigurálva van, a szabályzat a végfelhas
 
 Két különböző módon kényszerítheti ki a csoportok elnevezési szabályzatát:
 
-- **Előtag – utótag elnevezési házirend** Megadhatja azokat az előtagokat vagy utótagokat, amelyeket a rendszer automatikusan hozzáad a csoportok elnevezési konvenciójának érvényesítéséhez (\_például a "GRP japán\_My Group\_Engineering" csoportban)\_,\_ a GRP Japán az előtag \_, a mérnöki pedig az utótag. 
+- **Előtag – utótag elnevezési házirend** Megadhatja azokat az előtagokat vagy utótagokat, amelyeket a rendszer automatikusan hozzáad a csoportok elnevezési konvenciójának érvényesítéséhez (például a "GRP \_ japán \_ My Group \_ Engineering" csoportban \_ ), a GRP Japán az \_ előtag, a \_ mérnöki pedig az utótag. 
 
 - **Egyéni tiltott szavak** Feltölthet olyan tiltott szavakat is, amelyek a szervezet számára jellemzőek, hogy a felhasználók által létrehozott csoportokban le legyenek tiltva (például "VEZÉRIGAZGATÓ, bérszámfejtés, HR").
 
 ### <a name="prefix-suffix-naming-policy"></a>Előtag – utótag elnevezési házirend
 
-Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehetnek rögzített karakterláncok vagy felhasználói attribútumok, \[például részlegek\] , amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma, beleértve a csoportnév 53 karaktert. 
+Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehetnek rögzített karakterláncok vagy felhasználói attribútumok, például \[ részlegek \] , amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma, beleértve a csoportnév 53 karaktert. 
 
 Az előtagok és az utótagok olyan speciális karaktereket tartalmazhatnak, amelyek a csoport neve és a csoport aliasában is támogatottak. Az előtag vagy utótag azon karaktereit, amelyeket a csoport aliasa nem támogat, továbbra is a csoport nevében lesznek alkalmazva, de a csoport aliasa el lesz távolítva. Ennek a korlátozásnak a miatt a csoport nevére alkalmazott előtagok és utótagok eltérőek lehetnek a csoport aliasán alkalmazott értékekkel. 
 
 #### <a name="fixed-strings"></a>Rögzített karakterláncok
 
-A karakterláncok segítségével könnyebben vizsgálhatja és megkülönböztetheti a csoportokat a globális címlistában, valamint a csoportos munkaterhelések bal oldali navigációs hivatkozásait. Néhány gyakori előtagok olyan kulcsszavak, mint például a "\_GRP neve",\#a "Name"\_, a "Name"
+A karakterláncok segítségével könnyebben vizsgálhatja és megkülönböztetheti a csoportokat a globális címlistában, valamint a csoportos munkaterhelések bal oldali navigációs hivatkozásait. Néhány gyakori előtagok olyan kulcsszavak, mint például a "GRP \_ neve", a " \# Name", a " \_ Name"
 
 #### <a name="user-attributes"></a>Felhasználói attribútumok
 
-Használhatja azokat az attribútumokat, amelyek segítségével a felhasználók megadhatják, hogy melyik részleget, irodát vagy földrajzi régiót hozta létre a csoport. Ha például a (z) és `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering`a (z) elnevezési házirendet definiálja, akkor a kényszerített csoport neve lehet "a csoportom megtervezése". A támogatott Azure ad- \[attribútumok\]a \[következők\]: \[részleg\], \[vállalat\], \[iroda\], \[StateOrProvince\], CountryorRegion, cím. A nem támogatott felhasználói attribútumok rögzített karakterláncként vannak kezelve; például: "\[irányítószám\]". A bővítmény attribútumai és az egyéni attribútumok nem támogatottak.
+Használhatja azokat az attribútumokat, amelyek segítségével a felhasználók megadhatják, hogy melyik részleget, irodát vagy földrajzi régiót hozta létre a csoport. Ha például a (z) és a (z) elnevezési házirendet definiálja, `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering` akkor a kényszerített csoport neve lehet "a csoportom megtervezése". A támogatott Azure AD-attribútumok a következők: \[ részleg \] , \[ vállalat \] , \[ iroda \] , \[ StateOrProvince \] , \[ CountryorRegion \] , \[ cím \] . A nem támogatott felhasználói attribútumok rögzített karakterláncként vannak kezelve; például: " \[ Irányítószám \] ". A bővítmény attribútumai és az egyéni attribútumok nem támogatottak.
 
 Javasoljuk, hogy a szervezet összes felhasználója számára kitöltött értékeket tartalmazó attribútumokat használjon, és ne használjon hosszú értékeket tartalmazó attribútumokat.
 

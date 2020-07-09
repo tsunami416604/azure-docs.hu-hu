@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 06/16/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 77795e654a2f3824a877b28c8d006090c0de7d15
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: 534310609b1d2f375feef81fe45147485216d5ec
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873215"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883724"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Python és a Bing News Search használatával REST API
 
@@ -60,7 +60,7 @@ params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
-    search_results = response.json()
+    search_results = json.dumps(response.json())
     ```
 
 2. Hozzáférés az API-tól kapott válaszban szereplő cikkek leírásához, amely JSON-objektumként van tárolva `search_results` . 

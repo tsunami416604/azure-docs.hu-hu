@@ -30,9 +30,9 @@
     - name: REST API-k használata
       items:
         - name: Szándék lekérése
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: Modell módosítása
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: Oktatóanyagok
   items:
     - name: Felbontható alkalmazás létrehozása
@@ -52,7 +52,7 @@
           href: luis-tutorial-pattern.md
     - name: Használat robottal
       items:
-        - name: 'C# használatával'
+        - name: C# használatával
           href: luis-csharp-tutorial-bf-v4.md
           displayName: 'bot framework, framework, sdk, abs'
         - name: Node.js használatával
@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: Alapelvek
   items:
+    - name: Mesterséges intelligencia
+      href: artificial-intelligence.md
     - name: Fejlesztési életciklus
       href: luis-concept-app-iteration.md
     - name: Az alkalmazás megtervezése
@@ -103,9 +105,6 @@
           href: luis-concept-test.md
         - name: Kötegelt tesztelés
           href: luis-concept-batch-test.md
-    - name: Tartalomkészítési és futtatókörnyezeti kulcsok
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: Adatkezelés
       items:
         - name: Adatok módosítása
@@ -125,6 +124,14 @@
         - name: Tervezési stratégiák
           href: luis-concept-enterprise.md
           displayName: import
+    - name: DevOps-eljárások alkalmazása a LUIS használatával
+      items:
+        - name: A LUIS verziókövetési és elágaztatási stratégiái
+          href: luis-concept-devops-sourcecontrol.md
+        - name: DevOps tesztelése
+          href: luis-concept-devops-testing.md
+        - name: CI/CD-munkafolyamatok
+          href: luis-concept-devops-automation.md
 - name: Útmutatók
   items:
     - name: Új alkalmazás indítása
@@ -186,11 +193,7 @@
         - name: Migrálás összetett entitásból
           href: migrate-from-composite-entity.md
         - name: Migrálás tartalomkészítési erőforrásra
-          items:
-            - name: Áttekintés
-              href: luis-migration-authoring.md
-            - name: Migrálási eljárás
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: Migrálás a V3 API-re
           href: luis-migration-api-v3.md
     - name: Alkalmazás kezelése
@@ -201,11 +204,7 @@
         - name: Alkalmazás- és verzióbeállítások
           href: how-to-application-settings-portal.md
         - name: Migrálás tartalomkészítési erőforrásra
-          items:
-            - name: Áttekintés
-              href: luis-migration-authoring.md
-            - name: Migrálási eljárás
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: Szerzők és közreműködők
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
@@ -226,6 +225,12 @@
           href: luis-migration-api-v3.md
         - name: Áttérés az API 2-es verziójára
           href: luis-migration-api-v1-to-v2.md
+    - name: REST API-k használata
+      items:
+        - name: Szándék lekérése
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Modell módosítása
+          href: get-started-get-model-rest-apis.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása
@@ -238,11 +243,13 @@
         - name: Tárolókorlátozások
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: DevOps használata
+      href: luis-how-to-devops-with-github.md
     - name: Kapcsolódó szolgáltatások
       items:
         - name: Azure Bot Service
           href: 'https://dev.botframework.com/'
-        - name: 'Robotépítő 4.x SDK C#'
+        - name: Robotépítő 4.x SDK C#
           href: 'https://github.com/Microsoft/botbuilder-dotnet'
         - name: QnA Maker
           href: 'https://qnamaker.ai/'
@@ -284,7 +291,7 @@
               href: luis-reference-response-codes.md
         - name: SDK-k
           items:
-            - name: 'C#'
+            - name: C#
               items:
                 - name: NuGet – tartalomkészítés
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'

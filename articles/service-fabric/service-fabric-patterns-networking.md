@@ -3,12 +3,12 @@ title: Az Azure Service Fabric hálózatkezelési mintái
 description: Ismerteti a Service Fabric általános hálózati mintáit, valamint azt, hogyan lehet fürtöt létrehozni az Azure hálózatkezelési funkciói segítségével.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106614"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric hálózati minták
 Az Azure Service Fabric-fürtöt más Azure hálózati szolgáltatásokkal is integrálhatja. Ebben a cikkben bemutatjuk, hogyan hozhat létre olyan fürtöket, amelyek a következő szolgáltatásokat használják:
@@ -68,7 +68,7 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Service Fabric sablon
 
-A cikkben szereplő példákban a Service Fabric template. JSON fájlt használjuk. A sablon létrehozása előtt a szokásos portál varázsló segítségével töltheti le a sablont a portálról. Használhatja az egyik [minta sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates)is, például a [biztonságos, öt csomópontos Service Fabric fürtöt](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
+A cikkben szereplő példákban a Service Fabric template.jst használjuk. A sablon létrehozása előtt a szokásos portál varázsló segítségével töltheti le a sablont a portálról. Használhatja az egyik [minta sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates)is, például a [biztonságos, öt csomópontos Service Fabric fürtöt](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Meglévő virtuális hálózat vagy alhálózat
@@ -100,7 +100,7 @@ A cikkben szereplő példákban a Service Fabric template. JSON fájlt használj
             },*/
     ```
 
-2. A `Microsoft.Compute/virtualMachineScaleSets`Megjegyzés `nicPrefixOverride` ki attribútuma, mivel meglévő alhálózatot használ, és ezt a változót az 1. lépésben letiltotta.
+2. A Megjegyzés ki `nicPrefixOverride` attribútuma `Microsoft.Compute/virtualMachineScaleSets` , mivel meglévő alhálózatot használ, és ezt a változót az 1. lépésben letiltotta.
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
@@ -143,7 +143,7 @@ A cikkben szereplő példákban a Service Fabric template. JSON fájlt használj
     },*/
     ```
 
-5. Jegyezze fel `dependsOn` `Microsoft.Compute/virtualMachineScaleSets`a virtuális hálózatot a (z) attribútumával, így nem függ új virtuális hálózat létrehozásával:
+5. Jegyezze fel a virtuális hálózatot a (z) `dependsOn` attribútumával `Microsoft.Compute/virtualMachineScaleSets` , így nem függ új virtuális hálózat létrehozásával:
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -171,7 +171,7 @@ A cikkben szereplő példákban a Service Fabric template. JSON fájlt használj
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Egy másik példaként tekintse [meg az egyiket, amely nem jellemző a Service Fabricra](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Egy másik példaként tekintse [meg az egyiket, amely nem jellemző a Service Fabricra](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet).
 
 
 <a id="staticpublicip"></a>
@@ -191,7 +191,7 @@ Egy másik példaként tekintse [meg az egyiket, amely nem jellemző a Service F
     }
     ```
 
-2. Távolítsa `dnsName` el a paramétert. (A statikus IP-címnek már van egy.)
+2. Távolítsa el a `dnsName` paramétert. (A statikus IP-címnek már van egy.)
 
     ```json
     /*
@@ -229,7 +229,7 @@ Egy másik példaként tekintse [meg az egyiket, amely nem jellemző a Service F
     }, */
     ```
 
-5. Jegyezze fel `Microsoft.Network/loadBalancers`az IP-címet a `dependsOn` (z) attribútumból, így nem függ új IP-cím létrehozásával:
+5. Jegyezze fel az IP-címet a (z) `dependsOn` attribútumból `Microsoft.Network/loadBalancers` , így nem függ új IP-cím létrehozásával:
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -259,7 +259,7 @@ Egy másik példaként tekintse [meg az egyiket, amely nem jellemző a Service F
                     ],
     ```
 
-7. Az `Microsoft.ServiceFabric/clusters` erőforrásban váltson `managementEndpoint` a statikus IP-cím DNS teljes tartománynevére. Ha biztonságos fürtöt használ, győződjön meg róla, hogy a *http://* a *https://* értékre módosítja. (Vegye figyelembe, hogy ez a lépés csak Service Fabric fürtökre vonatkozik. Ha virtuálisgép-méretezési készletet használ, ugorja át ezt a lépést.)
+7. Az `Microsoft.ServiceFabric/clusters` erőforrásban váltson a `managementEndpoint` statikus IP-cím DNS teljes tartománynevére. Ha biztonságos fürtöt használ, győződjön meg róla, hogy a *http://* a *https://* értékre módosítja. (Vegye figyelembe, hogy ez a lépés csak Service Fabric fürtökre vonatkozik. Ha virtuálisgép-méretezési készletet használ, ugorja át ezt a lépést.)
 
     ```json
                     "fabricSettings": [],
@@ -286,7 +286,7 @@ Az üzembe helyezést követően láthatja, hogy a terheléselosztó a másik er
 
 Ez a forgatókönyv a külső Load balancert az alapértelmezett Service Fabric sablonban cseréli le egy csak belső terheléselosztó esetén. Tekintse meg a [cikk korábbi részében ismertetett](#allowing-the-service-fabric-resource-provider-to-query-your-cluster) következményeket a Azure Portal és a Service Fabric erőforrás-szolgáltató vonatkozásában.
 
-1. Távolítsa `dnsName` el a paramétert. (Nincs szükség.)
+1. Távolítsa el a `dnsName` paramétert. (Nincs szükség.)
 
     ```json
     /*
@@ -327,7 +327,7 @@ Ez a forgatókönyv a külső Load balancert az alapértelmezett Service Fabric 
     }, */
     ```
 
-4. Távolítsa el a `dependsOn` (z `Microsoft.Network/loadBalancers`) IP-cím attribútumát, így az új IP-cím létrehozása nem függ. Adja hozzá a virtuális `dependsOn` hálózat attribútumot, mert a terheléselosztó mostantól a virtuális hálózat alhálózatán múlik:
+4. Távolítsa el a (z) IP-cím `dependsOn` attribútumát `Microsoft.Network/loadBalancers` , így az új IP-cím létrehozása nem függ. Adja hozzá a virtuális hálózat `dependsOn` attribútumot, mert a terheléselosztó mostantól a virtuális hálózat alhálózatán múlik:
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -340,7 +340,7 @@ Ez a forgatókönyv a külső Load balancert az alapértelmezett Service Fabric 
                 ],
     ```
 
-5. Módosítsa a terheléselosztó `frontendIPConfigurations` beállítását a használatával `publicIPAddress`, egy alhálózat és `privateIPAddress`a használatával. `privateIPAddress`egy előre definiált statikus belső IP-címet használ. Ha dinamikus IP-címet szeretne használni, távolítsa el az `privateIPAddress` elemet, `privateIPAllocationMethod` majd váltson **dinamikusra**.
+5. Módosítsa a terheléselosztó `frontendIPConfigurations` beállítását a használatával `publicIPAddress` , egy alhálózat és a használatával `privateIPAddress` . `privateIPAddress`egy előre definiált statikus belső IP-címet használ. Ha dinamikus IP-címet szeretne használni, távolítsa el az `privateIPAddress` elemet, majd váltson `privateIPAllocationMethod` **dinamikusra**.
 
     ```json
                 "frontendIPConfigurations": [
@@ -410,7 +410,7 @@ Egy két csomópontot tartalmazó fürtben az egyik csomópont típusa a külső
             /* Internal load balancer networking variables end */
     ```
 
-4. Ha az 80-es Application porton alapuló, portál által generált sablonnal kezdődik, az alapértelmezett portál sablon hozzáadja a AppPort1 (80-es port) a külső terheléselosztó számára. Ebben az esetben távolítsa el a AppPort1 a külső terheléselosztó `loadBalancingRules` és a mintavételek közül, így hozzáadhatja azt a belső terheléselosztó számára:
+4. Ha az 80-es Application porton alapuló, portál által generált sablonnal kezdődik, az alapértelmezett portál sablon hozzáadja a AppPort1 (80-es port) a külső terheléselosztó számára. Ebben az esetben távolítsa el a AppPort1 a külső terheléselosztó és a mintavételek közül `loadBalancingRules` , így hozzáadhatja azt a belső terheléselosztó számára:
 
     ```json
     "loadBalancingRules": [
@@ -487,7 +487,7 @@ Egy két csomópontot tartalmazó fürtben az egyik csomópont típusa a külső
     "inboundNatPools": [
     ```
 
-5. Adjon hozzá egy `Microsoft.Network/loadBalancers` második erőforrást. A [belső terheléselosztási szakaszban létrehozott](#internallb) belső terheléselosztó hasonlónak tűnik, de az "-int" terheléselosztó változókat használja, és csak az 80-es alkalmazás-portot implementálja. Ez a művelet `inboundNatPools`ELTÁVOLÍTJA az RDP-végpontokat a nyilvános terheléselosztó esetében is. Ha az RDP-t a belső terheléselosztó esetében szeretné használni `inboundNatPools` , váltson át a külső terheléselosztó erre a belső Load balancerre:
+5. Adjon hozzá egy második `Microsoft.Network/loadBalancers` erőforrást. A [belső terheléselosztási szakaszban létrehozott](#internallb) belső terheléselosztó hasonlónak tűnik, de az "-int" terheléselosztó változókat használja, és csak az 80-es alkalmazás-portot implementálja. Ez a művelet eltávolítja `inboundNatPools` az RDP-végpontokat a nyilvános terheléselosztó esetében is. Ha az RDP-t a belső terheléselosztó esetében szeretné használni, váltson át `inboundNatPools` a külső terheléselosztó erre a belső Load balancerre:
 
     ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
@@ -572,7 +572,7 @@ Egy két csomópontot tartalmazó fürtben az egyik csomópont típusa a külső
             },
     ```
 
-6. Az `networkProfile` `Microsoft.Compute/virtualMachineScaleSets` erőforrás esetében adja hozzá a belső háttér-címkészletet:
+6. Az `networkProfile` erőforrás esetében `Microsoft.Compute/virtualMachineScaleSets` adja hozzá a belső háttér-címkészletet:
 
     ```json
     "loadBalancerBackendAddressPools": [

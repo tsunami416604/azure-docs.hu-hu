@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629031"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolat egy adatbázisból egy vezérlő táblával
@@ -114,7 +114,7 @@ A sablon a következő paramétereket definiálja:
 
     ![Tárolt eljárási tevékenység beállítása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. Írja be a ** \@(z) {Activity ("LookupCurrentWaterMark"). output. firstRow. NewWatermarkValue}** nevű tartalmat, majd válassza a **Befejezés**lehetőséget.  
+10. Írja be a ** \@ (z) {Activity ("LookupCurrentWaterMark"). output. FirstRow. NewWatermarkValue}** nevű tartalmat, majd válassza a **Befejezés**lehetőséget.  
 
     ![A tárolt eljárás paramétereinek megírása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      

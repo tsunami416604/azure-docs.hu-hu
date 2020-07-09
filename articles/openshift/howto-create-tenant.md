@@ -7,11 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694905"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure AD-bérlő létrehozása az Azure Red Hat OpenShift
 
@@ -28,16 +27,16 @@ Bérlő létrehozása:
 3. Adja meg a **szervezet nevét**.
 4. Adja meg a **kezdeti tartománynevet**. Ehhez hozzá kell fűzni a *onmicrosoft.com* . Itt újra felhasználhatja a *szervezet nevének* értékét.
 5. Válassza ki azt az országot vagy régiót, ahol létre kívánja hozni a bérlőt.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 7. Miután létrehozta az Azure AD-bérlőt, válassza a **kattintson ide az új címtár-hivatkozás kezeléséhez** . Az új bérlő nevét a Azure Portal jobb felső sarkában kell megjeleníteni:  
 
     ![Képernyőkép a bérlő nevét bemutató portálról a jobb felső sarokban][tenantcallout]  
 
-8. Jegyezze fel a *bérlő azonosítóját* , hogy később meg tudja határozni, hová hozza létre az Azure Red Hat OpenShift-fürtöt. A portálon ekkor megjelenik az új bérlő Azure Active Directory áttekintés panelje. Válassza a **Tulajdonságok** lehetőséget, és másolja a **címtár-azonosító**értékét. Erre az értékre az `TENANT` [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
+8. Jegyezze fel a *bérlő azonosítóját* , hogy később meg tudja határozni, hová hozza létre az Azure Red Hat OpenShift-fürtöt. A portálon ekkor megjelenik az új bérlő Azure Active Directory áttekintés panelje. Válassza a **Tulajdonságok** lehetőséget, és másolja a **címtár-azonosító**értékét. Erre az értékre `TENANT` az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 Az [Azure ad-Bérlővel](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)kapcsolatos további információkért tekintse meg [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/) .
 

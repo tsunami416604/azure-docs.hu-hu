@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73512729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109875"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate-projekt eltávolítása
 
-Ez a cikk egy [Azure Migrate](migrate-overview.md) -projekt törlését ismerteti.
+Ez a cikk egy [Azure Migrate](./migrate-services-overview.md) -projekt törlését ismerteti.
 
 
 ## <a name="before-you-start"></a>Előkészületek
@@ -26,7 +26,7 @@ Projekt törlése előtt:
 - Ha csatolt egy Log Analytics munkaterületet a kiszolgáló-értékelési eszközhöz a függőségek elemzéséhez, döntse el, hogy törölni kívánja-e a munkaterületet. 
     - A munkaterület nem törlődik automatikusan. Törölje manuálisan.
     - Győződjön meg arról, hogy a törlés előtt milyen munkaterület van használatban. Ugyanaz a Log Analytics munkaterület több forgatókönyv esetén is használható.
-    - A projekt törlése előtt megtalálhatja a munkaterületre mutató hivatkozást **Azure Migrate-** > Servers**Azure Migrate-Server Assessment**( **OMS munkaterület**) területen.
+    - A projekt törlése előtt megtalálhatja a munkaterületre mutató hivatkozást **Azure Migrate-** Servers  >  **Azure Migrate-Server Assessment**( **OMS munkaterület**) területen.
     - Ha törölni szeretne egy munkaterületet a projekt törlése után, keresse meg a munkaterületet a megfelelő erőforráscsoporthoz, és kövesse az [alábbi utasításokat](../azure-monitor/platform/delete-workspace.md).
 
 
@@ -76,6 +76,6 @@ HyperV * hely | Microsoft. OffAzure/HyperVSites
 "Projektnév"-MigrateVault-* | Recovery Services-tároló
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

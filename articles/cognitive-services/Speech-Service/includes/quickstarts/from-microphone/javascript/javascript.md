@@ -3,13 +3,12 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 1a1207b056a0cd86d1855d990a8857ef8d9752e4
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: a110ff1db9b75287eb1b75d80003796354aba35b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979575"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035545"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +41,7 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
 Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat egy jogkivonatforrást a bemutató alkalmazáshoz.
 Így az előfizetői azonosítója soha nem fog kikerülni a kiszolgálóról, közben viszont a felhasználóknak úgy teheti lehetővé a beszédfelismerési képességek használatát, hogy ők maguk semmilyen engedélyezési kódot nem adnak meg.
 
-Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP parancsnyelv használatát. Írja be a következő kódot:
+Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP programozási nyelvet a curl enabled használatával. Írja be a következő kódot:
 
 ```php
 <?php
@@ -79,7 +78,7 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 Az alkalmazás elindításához nyissa meg kedvenc webböngészőjét, és mutasson a nyilvános URL-címre, amelyen a mappát tárolja, adja meg a [régiót](../../../../regions.md), majd a mikrofon használatával aktiválja a felismerést. Ha konfigurálva van, az beszerez egy jogkivonatot a jogkivonatforrásból.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
 

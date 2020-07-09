@@ -5,15 +5,16 @@ description: Az Ubuntu Data Science Virtual Machineban található eszközök r�
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161281"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955539"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Hivatkozás: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -52,7 +53,7 @@ Néhány példa notebookok érhetők el a JupyterHub-ben.
 
 A H2O egy gyors, memóriában futó, elosztott gépi tanulás és prediktív elemzési platform. A Python-csomagok a root és a py35 anaconda környezetekben is települnek. Az R-csomag is telepítve van. 
 
-A H2O parancssorból való megnyitásához futtassa `java -jar /dsvm/tools/h2o/current/h2o.jar`a parancsot. Több [parancssori kapcsolót](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) is beállíthat. A folyamat webes felhasználói felületének eléréséhez tallózással `http://localhost:54321` keresse meg az első lépéseket. A minta jegyzetfüzetek a JupyterHub-ben is elérhetők.
+A H2O parancssorból való megnyitásához futtassa a parancsot `java -jar /dsvm/tools/h2o/current/h2o.jar` . Több [parancssori kapcsolót](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) is beállíthat. A folyamat webes felhasználói felületének eléréséhez tallózással keresse meg az `http://localhost:54321` első lépéseket. A minta jegyzetfüzetek a JupyterHub-ben is elérhetők.
 
 ### <a name="keras"></a>Keras
 
@@ -66,7 +67,7 @@ A MXNet a hatékonyságot és a rugalmasságot célzó, mélyreható tanulási k
 
 Az NVIDIA Deep learning GPU képzési rendszer, az úgynevezett SZÁMJEGYek, egy olyan rendszer, amely leegyszerűsíti a közös mély tanulási feladatokat. Ezen feladatok közé tartozik az adatok kezelése, a neurális hálózatok tervezése és betanítása a GPU-rendszereken, valamint a teljesítmény valós idejű figyelése a speciális vizualizációkkal.
 
-A SZÁMJEGYek *számjegyek nevű*szolgáltatásként érhetők el. Indítsa el a szolgáltatást, és `http://localhost:5000` tallózással keresse meg az első lépéseket.
+A SZÁMJEGYek *számjegyek nevű*szolgáltatásként érhetők el. Indítsa el a szolgáltatást, és tallózással keresse meg az `http://localhost:5000` első lépéseket.
 
 A SZÁMJEGYek a Conda-gyökér környezetében is Python-modulként települnek.
 
@@ -137,12 +138,12 @@ Ha grafikus felületen vagy X11-továbbítással rendelkezik, a **notebookshoz**
 
 Az anaconda-disztribúció egy Jupyter-jegyzetfüzettel, egy olyan környezettel is rendelkezik, amely megosztja a kódot és az elemzést. A Jupyter notebook a JupyterHub-on keresztül érhető el. A bejelentkezéshez a helyi Linux-felhasználónevet és-jelszót kell használnia.
 
-A Jupyter notebook-kiszolgáló előre konfigurálva lett a Python 2, a Python 3 és az R kernelrel. A **Jupyter notebook** asztal ikon segítségével nyissa meg a böngészőt, és nyissa meg a notebook-kiszolgálót. Ha a virtuális gépet SSH-n vagy a X2Go-ügyfélen keresztül futtatja, akkor a Jupyter notebook- `https://localhost:8000/`kiszolgáló is elérhető a következő helyen:.
+A Jupyter notebook-kiszolgáló előre konfigurálva lett a Python 2, a Python 3 és az R kernelrel. A **Jupyter notebook** asztal ikon segítségével nyissa meg a böngészőt, és nyissa meg a notebook-kiszolgálót. Ha a virtuális gépet SSH-n vagy a X2Go-ügyfélen keresztül futtatja, akkor a Jupyter notebook-kiszolgáló is elérhető a következő helyen: `https://localhost:8000/` .
 
 > [!NOTE]
 > Ha bármilyen tanúsítványra vonatkozó figyelmeztetést kap, folytassa a művelettel.
 
-A Jupyter notebook-kiszolgálót bármely gazdagépről elérheti. Adja meg a **https://\<virtuális gép DNS-\>nevét vagy IP-címét: 8000/**.
+A Jupyter notebook-kiszolgálót bármely gazdagépről elérheti. Adja meg a **https:// \<VM DNS name or IP address\> : 8000/**.
 
 > [!NOTE]
 > A 8000-es port alapértelmezés szerint a tűzfalon van megnyitva, amikor a virtuális gép ki van építve. 
@@ -173,7 +174,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-A Hadoop kapcsolódó szolgáltatásokat leállíthatja, ha a futtatásával ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```nincs szüksége rájuk.
+A Hadoop kapcsolódó szolgáltatásokat leállíthatja, ha a futtatásával nincs szüksége rájuk ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` .
 
 A/dsvm/samples/MRS könyvtár egy olyan mintát biztosít, amely bemutatja, hogyan fejleszthető és tesztelhető Microsoft Machine Learning Server egy távoli Spark-környezetben (az önálló Spark-példány a DSVM).
 
@@ -259,11 +260,13 @@ A virtuális gép olyan gépi tanulási eszközöket és algoritmusokat tartalma
 * **Vowpal Wabbit**: gyors online tanulási algoritmus.
 * **xgboost**: olyan eszköz, amely optimalizált, növelt fa algoritmusokat biztosít.
 * **Csörgő**: egy R-alapú grafikus eszköz, amely megkönnyíti az adatfeltárást és a modellezést.
-* **Python**: a anaconda Python a gépi tanulási algoritmusokkal, például a Scikit-Learn csomaggal rendelkezik. A `pip install` parancs használatával más kódtárakat is telepíthet.
+* **Python**: a anaconda Python a gépi tanulási algoritmusokkal, például a Scikit-Learn csomaggal rendelkezik. A parancs használatával más kódtárakat is telepíthet `pip install` .
 * **LightGBM**: gyors, elosztott, nagy teljesítményű színátmenet-növelő keretrendszer döntési fa algoritmusok alapján.
 * **R**: a gépi tanulási függvények széles tárháza érhető el az r-hez. az előre telepített kódtárak közé tartozik az LM, a GLM, a randomForest és a rpart. A következő parancs futtatásával más kódtárakat is telepíthet:
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 Íme néhány további információ a lista első három gépi tanulási eszközéről.
 
@@ -338,7 +341,7 @@ Ekkor megnyílik egy grafikus felület, amely fülekből áll. A következő rö
 1. Válassza ki a **kiértékelés** lapot.
 1. Válassza ki a **kockázati** lehetőséget, majd válassza a **végrehajtás** elemet a két **kockázatos (halmozott)** teljesítménybeli ábrázolás megjelenítéséhez.
 1. Válassza a **napló** lapot, hogy megjelenjen az előző műveletekhez generált R-kód.
-   (A csörgő jelenlegi kiadásának hibája miatt be kell szúrnia egy **#** karaktert a naplóba a napló szövegének **Exportálás** előtt.)
+   (A csörgő jelenlegi kiadásának hibája miatt be kell szúrnia egy karaktert a naplóba a napló **#** szövegének **Exportálás** előtt.)
 1. A weather_script nevű R-parancsfájl mentéséhez kattintson az **Exportálás** gombra *. Az R* -t a kezdőmappa mappájába.
 
 Kiléphet a csörgő és az R lehetőségből. Most már módosíthatja a generált R-szkriptet. Használhatja a parancsfájlt is, és bármikor futtathatja, hogy megismételje a csörgő felhasználói felületen végzett összes műveletet. Különösen az R-ben kezdőknek, így gyorsan elvégezheti az elemzést és a gépi tanulást egy egyszerű grafikus felületen, az R-ben pedig automatikusan generálhat kódot a módosításhoz vagy a megismeréshez.

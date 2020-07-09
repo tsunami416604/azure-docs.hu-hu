@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179082"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
@@ -20,12 +20,12 @@ ms.locfileid: "67179082"
 Bizonyos korlátozások vonatkoznak a frissítésre. A következő elemek frissíthetők: 
 
 Megosztott képgyűjtemény:
-- Leírás
+- Description
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Leírás
+- Description
 - Élettartam vége
 
 Rendszerkép verziója:
@@ -66,7 +66,7 @@ Update-AzGalleryImageVersion `
 ```
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Erőforrások törlésekor először a beágyazott erőforrások utolsó elemét kell kezdenie – a rendszerkép verziószámát. A verziók törlése után törölheti a rendszerkép definícióját. A katalógust csak akkor törölheti, ha az összes alatta lévő erőforrás törölve lett.
 

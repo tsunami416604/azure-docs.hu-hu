@@ -1,20 +1,20 @@
 ---
 title: Az Azure IoT Hub-eszközök ikrek ismertetése | Microsoft Docs
 description: Fejlesztői útmutató – az eszközök ikrek használatával szinkronizálhatók az állapot-és konfigurációs adatokat IoT Hub és az eszközei között
-author: wesmc7777
+author: ash2017
 manager: philmea
-ms.author: wesmc
+ms.author: asrastog
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.custom: mqtt
-ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f61748a0a0d3d999670b6129e0e58758715ba3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601853"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
@@ -59,7 +59,7 @@ Az eszköz Twin egy JSON-dokumentum, amely a következőket tartalmazza:
 
 * **Jelentett tulajdonságok**. A kívánt tulajdonságokkal együtt használható az eszköz konfigurációjának vagy feltételeinek szinkronizálásához. Az alkalmazás beállíthatja a jelentett tulajdonságokat, és a megoldás hátterében olvashat és lekérdezheti azokat.
 
-* **Eszköz identitásának tulajdonságai** Az eszköz kettős JSON-dokumentumának gyökere a [személyazonossági beállításjegyzékben](iot-hub-devguide-identity-registry.md)tárolt megfelelő eszköz identitásának írásvédett tulajdonságait tartalmazza. `generationId` A tulajdonságok `connectionStateUpdatedTime` nem lesznek belefoglalva.
+* **Eszköz identitásának tulajdonságai** Az eszköz kettős JSON-dokumentumának gyökere a [személyazonossági beállításjegyzékben](iot-hub-devguide-identity-registry.md)tárolt megfelelő eszköz identitásának írásvédett tulajdonságait tartalmazza. A `connectionStateUpdatedTime` Tulajdonságok `generationId` nem lesznek belefoglalva.
 
 ![Képernyőfelvétel az eszközök Twin tulajdonságairól](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -109,7 +109,7 @@ Az alábbi példa egy eszköz kettős JSON-dokumentumot mutat be:
 }
 ```
 
-A root objektumban az eszköz identitásának tulajdonságai, valamint a és mindkettő `tags` `reported` és `desired` a tulajdonságok tároló objektumai. A `properties` tároló`$metadata`tartalmaz néhány írásvédett elemet (, `$etag`és `$version`) az [eszköz kettős metaadatai](iot-hub-devguide-device-twins.md#device-twin-metadata) és az [optimista Egyidejűség](iot-hub-devguide-device-twins.md#optimistic-concurrency) szakaszokban.
+A root objektumban az eszköz identitásának tulajdonságai, valamint a `tags` és mindkettő és a `reported` Tulajdonságok tároló objektumai `desired` . A `properties` tároló tartalmaz néhány írásvédett elemet ( `$metadata` , `$etag` és `$version` ) az [eszköz kettős metaadatai](iot-hub-devguide-device-twins.md#device-twin-metadata) és az [optimista Egyidejűség](iot-hub-devguide-device-twins.md#optimistic-concurrency) szakaszokban.
 
 ### <a name="reported-property-example"></a>Jelentett tulajdonság – példa
 
@@ -133,7 +133,7 @@ Az előző példában a `telemetryConfig` megoldás háttérbe állítása és a
    },
    ```
 
-2. Az eszköz alkalmazás azonnal értesítést kap a változásról, ha csatlakozik, vagy az első újracsatlakozáskor. Az alkalmazás ezután jelentést készít a frissített konfigurációról (vagy a `status` tulajdonságot használó hiba feltételéről). Itt látható a jelentett tulajdonságok része:
+2. Az eszköz alkalmazás azonnal értesítést kap a változásról, ha csatlakozik, vagy az első újracsatlakozáskor. Az alkalmazás ezután jelentést készít a frissített konfigurációról (vagy a tulajdonságot használó hiba feltételéről `status` ). Itt látható a jelentett tulajdonságok része:
 
    ```json
    "reported": {
@@ -159,7 +159,7 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
 * **A Twin eszköz beolvasása azonosító alapján**. Ez a művelet visszaadja az eszköz kettős dokumentumát, beleértve a címkéket és a kívánt és jelentett rendszertulajdonságokat.
 
-* **Részben frissítse az eszköz ikerét**. Ez a művelet lehetővé teszi, hogy a megoldás háttérbe kerüljön, hogy részben frissítse a címkéket vagy a kívánt tulajdonságokat egy különálló eszközön. A részleges frissítés JSON-dokumentumként van megadva, amely bármilyen tulajdonságot feltesz vagy frissít. Az `null` eltávolításra beállított tulajdonságok törlődnek. Az alábbi példa egy új kívánt tulajdonságot hoz létre `{"newProperty": "newValue"}`az értékkel, felülírja a meglévő `existingProperty` értékét `"otherNewValue"`, és eltávolítja `otherOldProperty`azt. A meglévő kívánt tulajdonságok vagy címkék nem módosulnak:
+* **Részben frissítse az eszköz ikerét**. Ez a művelet lehetővé teszi, hogy a megoldás háttérbe kerüljön, hogy részben frissítse a címkéket vagy a kívánt tulajdonságokat egy különálló eszközön. A részleges frissítés JSON-dokumentumként van megadva, amely bármilyen tulajdonságot feltesz vagy frissít. Az `null` eltávolításra beállított tulajdonságok törlődnek. Az alábbi példa egy új kívánt tulajdonságot hoz létre az értékkel `{"newProperty": "newValue"}` , felülírja a meglévő `existingProperty` értékét `"otherNewValue"` , és eltávolítja azt `otherOldProperty` . A meglévő kívánt tulajdonságok vagy címkék nem módosulnak:
 
    ```json
    {
@@ -175,15 +175,15 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
    }
    ```
 
-* A **kívánt tulajdonságok cseréje**. Ez a művelet lehetővé teszi a megoldás háttérbe lépését, hogy teljesen felülírja az összes meglévő kívánt tulajdonságot, és új JSON-dokumentumot cseréljen `properties/desired`.
+* A **kívánt tulajdonságok cseréje**. Ez a művelet lehetővé teszi a megoldás háttérbe lépését, hogy teljesen felülírja az összes meglévő kívánt tulajdonságot, és új JSON-dokumentumot cseréljen `properties/desired` .
 
-* **Címkék cseréje** Ez a művelet lehetővé teszi a megoldás háttérbe lépését, hogy teljesen felülírja az összes meglévő címkét, és új JSON-dokumentumot cseréljen a alkalmazásra `tags`.
+* **Címkék cseréje** Ez a művelet lehetővé teszi a megoldás háttérbe lépését, hogy teljesen felülírja az összes meglévő címkét, és új JSON-dokumentumot cseréljen a alkalmazásra `tags` .
 
 * **Kettős értesítések fogadása**. Ez a művelet lehetővé teszi a megoldás háttérbeli értesítését, ha a Twin módosítva van. Ehhez a IoT-megoldásnak létre kell hoznia egy útvonalat, és az adatforrást meg kell egyeznie a *twinChangeEvents*értékkel. Alapértelmezés szerint nem léteznek ilyen útvonalak, ezért a rendszer nem küld külön értesítéseket. Ha a változás sebessége túl magas, vagy más okokból, például belső hibák esetén, a IoT Hub csak egy értesítést küldhet, amely az összes módosítást tartalmazza. Ezért, ha az alkalmazásnak az összes közbenső állapot megbízható naplózására és naplózására van szüksége, az eszközről a felhőbe irányuló üzeneteket kell használnia. A kettős értesítési üzenet tartalmazza a tulajdonságokat és a törzset.
 
   - Tulajdonságok
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | --- | --- |
     $content típusa | application/json |
     $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -199,7 +199,7 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
   - Törzs
         
-    Ez a szakasz a JSON-formátum összes kettős módosítását tartalmazza. Ugyanazt a formátumot használja, mint a javítás, a különbséggel, hogy az összes különálló szakaszt tartalmazhatja: címkék, tulajdonságok. jelentett, Properties. desired, és hogy tartalmazza a "$metadata" elemeket. Például:
+    Ez a szakasz a JSON-formátum összes kettős módosítását tartalmazza. Ugyanazt a formátumot használja, mint a javítás, a különbséggel, hogy az összes különálló szakaszt tartalmazhatja: címkék, tulajdonságok. jelentett, Properties. desired, és hogy tartalmazza a "$metadata" elemeket. Példa:
 
     ```json
     {
@@ -246,7 +246,7 @@ Az [Azure IoT-eszközök SDK](iot-hub-devguide-sdks.md) -k megkönnyítik az el�
 
 A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-objektumok a következő korlátozásokkal:
 
-* **Kulcsok**: a JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 kb hosszúságú lehet. Az engedélyezett karakterek kizárják a Unicode vezérlő karaktereket (a C0 és a `.`C1 `$`szegmenst), valamint a, és az SP-t.
+* **Kulcsok**: a JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 kb hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlő karaktereket (a C0 és a C1 szegmenst), valamint a, és az SP-t `.` `$` .
 
 * **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett.
 
@@ -288,7 +288,7 @@ A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-obje
 
 ## <a name="device-twin-size"></a>Eszköz kettős mérete
 
-IoT Hub kényszeríti a 8 KB-os mérethatárt a értékre `tags`, és egy 32 KB `properties/desired` -os mérethatárt a és `properties/reported`a értékre. Ezek az összegek kizárólag a (z `$etag`), `$version`, és `$metadata/$lastUpdated`rendszerű írásvédett elemekre vonatkoznak.
+IoT Hub kényszeríti a 8 KB-os mérethatárt a értékre `tags` , és egy 32 KB-os mérethatárt a és a értékre `properties/desired` `properties/reported` . Ezek az összegek kizárólag a (z `$etag` ),, és rendszerű írásvédett elemekre vonatkoznak `$version` `$metadata/$lastUpdated` .
 
 A Twin méret kiszámítása a következőképpen történik:
 
@@ -302,11 +302,11 @@ A Twin méret kiszámítása a következőképpen történik:
 
 * Az összetett tulajdonságértékek (beágyazott objektumok) kiszámítása az általuk tartalmazott tulajdonságértékek és tulajdonságértékek összesített mérete alapján történik.
 
-A IoT hub elutasítja az összes olyan műveletet, amely a határértéknél nagyobb `tags`méretet `properties/desired`vagy `properties/reported` dokumentumot eredményezne.
+A IoT Hub elutasítja az összes olyan műveletet, amely a `tags` határértéknél nagyobb méretet `properties/desired` vagy `properties/reported` dokumentumot eredményezne.
 
 ## <a name="device-twin-metadata"></a>Eszköz – Twin metaadatok
 
-IoT Hub karbantartja az összes JSON-objektum utolsó frissítésének időbélyegét az eszközök Twin-beli kívánt és jelentett tulajdonságaiban. Az időbélyegek UTC szerint vannak elfoglalva, [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) és ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ`formátumban vannak kódolva.
+IoT Hub karbantartja az összes JSON-objektum utolsó frissítésének időbélyegét az eszközök Twin-beli kívánt és jelentett tulajdonságaiban. Az időbélyegek UTC szerint vannak elfoglalva, és [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátumban vannak kódolva `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
 Például:
 
@@ -374,7 +374,7 @@ IoT Hub nem őrzi meg a leválasztott eszközökhöz tartozó, a kívánt tulajd
 2. Az eszköz-alkalmazás előfizet a kívánt tulajdonságok frissítési értesítéseire.
 3. Az eszköz beolvassa a teljes dokumentumot a kívánt tulajdonságokhoz.
 
-Az eszköz alkalmazás figyelmen kívül hagyhatja az `$version` összes olyan értesítést, amely a teljes beolvasott dokumentum verziójánál kisebb vagy egyenlő. Ez a megközelítés azért lehetséges, mert IoT Hub garantálja, hogy a verziók mindig növekményt biztosítanak.
+Az eszköz alkalmazás figyelmen kívül hagyhatja az összes olyan értesítést, amely a `$version` teljes beolvasott dokumentum verziójánál kisebb vagy egyenlő. Ez a megközelítés azért lehetséges, mert IoT Hub garantálja, hogy a verziók mindig növekményt biztosítanak.
 
 > [!NOTE]
 > Ez a logika már implementálva van az [Azure IoT Device SDK](iot-hub-devguide-sdks.md)-ban. Ez a leírás csak akkor hasznos, ha az eszköz nem tudja használni az Azure IoT Device SDK-kat, és a MQTT felületét közvetlenül kell programoznia.

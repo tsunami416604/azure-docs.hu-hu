@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203146"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -24,7 +24,7 @@ ms.locfileid: "79264309"
 
 A **TechnicalProfiles** elem a jogcím-szolgáltató által támogatott technikai profilok készletét tartalmazza. Minden jogcím-szolgáltatónak rendelkeznie kell egy vagy több olyan technikai profillal, amely meghatározza a végpontokat és a jogcím-szolgáltatóval való kommunikációhoz szükséges protokollokat. A jogcím-szolgáltató több technikai profillal is rendelkezhet.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Display name</DisplayName>
   <TechnicalProfiles>
@@ -77,19 +77,19 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 |---------|---------|---------|
-| Azonosító | Igen | A technikai profil egyedi azonosítója. A technikai profil hivatkozhat erre az azonosítóra a házirend fájljának más elemeiről. Például: **OrchestrationSteps** és **ValidationTechnicalProfile**. |
+| Azonosító | Yes | A technikai profil egyedi azonosítója. A technikai profil hivatkozhat erre az azonosítóra a házirend fájljának más elemeiről. Például: **OrchestrationSteps** és **ValidationTechnicalProfile**. |
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | A technikai profil tartományneve. Ha például a technikai profil megadja a Facebook-identitás szolgáltatóját, a tartománynév Facebook.com. |
 | DisplayName | 1:1 | A felhasználók számára megjeleníthető technikai profil neve. |
-| Leírás | 0:1 | A felhasználók számára megjeleníthető technikai profil leírása. |
-| Protocol (Protokoll) | 0:1 | A másik féllel folytatott kommunikációhoz használt protokoll. |
+| Description | 0:1 | A felhasználók számára megjeleníthető technikai profil leírása. |
+| Protokoll | 0:1 | A másik féllel folytatott kommunikációhoz használt protokoll. |
 | Metaadatok | 0:1 | Kulcs/érték párok gyűjteménye, amelyeket a protokoll használ a végponttal való kommunikációhoz a tranzakció során. |
-| InputTokenFormat | 0:1 | A bemeneti jogkivonat formátuma. Lehetséges értékek: `JSON`, `JWT` `SAML11`,, vagy `SAML2`. Az `JWT` érték az IETF-specifikációnak megfelelő JSON web tokent jelöl. Az `SAML11` érték az SAML 1,1 biztonsági jogkivonatot jelöli, mint az Oasis-specifikáció.  Az `SAML2` érték az SAML 2,0 biztonsági jogkivonatot jelöli, mint az Oasis-specifikáció. |
-| OutputTokenFormat | 0:1 | A kimeneti token formátuma. Lehetséges értékek: `JSON`, `JWT` `SAML11`,, vagy `SAML2`. |
+| InputTokenFormat | 0:1 | A bemeneti jogkivonat formátuma. Lehetséges értékek: `JSON` ,,, `JWT` `SAML11` vagy `SAML2` . Az `JWT` érték az IETF-specifikációnak megfelelő JSON web tokent jelöl. Az `SAML11` érték az SAML 1,1 biztonsági jogkivonatot jelöli, mint az Oasis-specifikáció.  Az `SAML2` érték az SAML 2,0 biztonsági jogkivonatot jelöli, mint az Oasis-specifikáció. |
+| OutputTokenFormat | 0:1 | A kimeneti token formátuma. Lehetséges értékek: `JSON` ,,, `JWT` `SAML11` vagy `SAML2` . |
 | CryptographicKeys | 0:1 | A technikai profilban használt titkosítási kulcsok listája. |
 | InputClaimsTransformations | 0:1 | A jogcímek átalakítására korábban meghatározott hivatkozások listája, amelyeket végre kell hajtani ahhoz, hogy a jogcímeket a jogcím-szolgáltató vagy a függő entitás megkapja. |
 | Szabályzattípushoz | 0:1 | A korábban meghatározott, a technikai profilban bemenetként használt jogcím-típusokra mutató hivatkozások listája. |
@@ -99,42 +99,42 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 | OutputClaimsTransformations | 0:1 | A korábban meghatározott, a jogcím-átalakításokra mutató hivatkozásokat tartalmazó lista, amelyet a jogcím-szolgáltatótól érkező jogcímek fogadása után kell végrehajtani. |
 | ValidationTechnicalProfiles | 0: n | Azon egyéb műszaki profilokra mutató hivatkozások listája, amelyeket a technikai profil az ellenőrzési célokra használ. További információ: [érvényesítési technikai profil](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | A tulajdonos nevének olyan jogkivonatokban való előállítását szabályozza, amelyekben a tulajdonos neve külön van megadva a jogcímek között. Például: OAuth vagy SAML.  |
-| IncludeInSso | 0:1 |  Azt határozza meg, hogy ennek a technikai profilnak a használata esetén kell-e alkalmazni az egyszeri bejelentkezési (SSO) viselkedést a munkamenethez, vagy Ehelyett explicit interakcióra van szükség. Ez az elem csak az érvényesítési technikai profilban használt SelfAsserted-profilokban érvényes. Lehetséges értékek: `true` (alapértelmezett) vagy `false`. |
+| IncludeInSso | 0:1 |  Azt határozza meg, hogy ennek a technikai profilnak a használata esetén kell-e alkalmazni az egyszeri bejelentkezési (SSO) viselkedést a munkamenethez, vagy Ehelyett explicit interakcióra van szükség. Ez az elem csak az érvényesítési technikai profilban használt SelfAsserted-profilokban érvényes. Lehetséges értékek: `true` (alapértelmezett) vagy `false` . |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Egy olyan műszaki profil azonosítója, amelyből hozzá kívánja adni az összes bemeneti és kimeneti jogcímet ehhez a technikai profilhoz. A hivatkozott technikai profilt ugyanabban a házirend-fájlban kell definiálni. |
 | IncludeTechnicalProfile |0:1 | Egy műszaki profil azonosítója, amelyből a technikai profilba felvenni kívánt összes adat bekerül. |
 | UseTechnicalProfileForSessionManagement | 0:1 | A munkamenet-kezeléshez használt másik technikai profil. |
 |EnabledForUserJourneys| 0:1 |Azt szabályozza, hogy a technikai profilt egy felhasználói úton hajtják végre.  |
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 A **protokoll** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OAuth1`, `OAuth2` `SAML2` `OpenIdConnect` `Proprietary`,,, vagy `None`. |
-| Kezelő | Nem | Ha a protokoll neve értékre van `Proprietary`állítva, adja meg annak a szerelvénynek a teljesen minősített nevét, amelyet a Azure ad B2C használ a protokollkezelő meghatározásához. |
+| Name | Yes | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` vagy `None` . |
+| Kezelő | No | Ha a protokoll neve értékre van állítva `Proprietary` , adja meg annak a szerelvénynek a teljesen minősített nevét, amelyet a Azure ad B2C használ a protokollkezelő meghatározásához. |
 
 ## <a name="metadata"></a>Metaadatok
 
 A **metaadat** -elemek a következő elemeket tartalmazzák:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
-| Elem | 0: n | A technikai profilhoz kapcsolódó metaadatok. Az egyes technikai profilok különböző metaadat-elemekből állnak. További információt a technikai profilok típusai című szakaszban talál. |
+| Item | 0: n | A technikai profilhoz kapcsolódó metaadatok. Az egyes technikai profilok különböző metaadat-elemekből állnak. További információt a technikai profilok típusai című szakaszban talál. |
 
-### <a name="item"></a>Elem
+### <a name="item"></a>Item
 
 A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Kulcs | Igen | A metaadat-kulcs. A metaadat-elemek listájának megtekintéséhez tekintse meg az egyes műszaki profilok típusait. |
+| Kulcs | Yes | A metaadat-kulcs. A metaadat-elemek listájának megtekintéséhez tekintse meg az egyes műszaki profilok típusait. |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
 A **CryptographicKeys** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Kulcs | 1: n | A technikai profilban használt titkosítási kulcs. |
 
@@ -144,14 +144,14 @@ A **Key** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Nem | Egy adott kulcspár egyedi azonosítója, amelyet a rendszer a házirend fájljának más elemeiből hivatkozik. |
-| StorageReferenceId | Igen | A termékazonosító más elemeitől hivatkozott tárolási kulcstároló-tárolók egyike. |
+| Azonosító | No | Egy adott kulcspár egyedi azonosítója, amelyet a rendszer a házirend fájljának más elemeiből hivatkozik. |
+| StorageReferenceId | Yes | A termékazonosító más elemeitől hivatkozott tárolási kulcstároló-tárolók egyike. |
 
 ## <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
 A **InputClaimsTransformations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Egy jogcím-átalakítás azonosítója, amelyet el kell végezni, mielőtt a rendszer a jogcímeket elküldi a jogcím-szolgáltatónak vagy a függő entitásnak. A jogcímek átalakításával módosíthatók a meglévő ClaimsSchema-jogcímek, vagy újak is létrehozhatók. |
 
@@ -161,13 +161,13 @@ A **InputClaimsTransformation** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
+| ReferenceId | Yes | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
 
 ## <a name="inputclaims"></a>Szabályzattípushoz
 
 A **szabályzattípushoz** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -177,15 +177,15 @@ A **InputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DefaultValue | Nem | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
-| PartnerClaimType | Nem | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
+| ClaimTypeReferenceId | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DefaultValue | No | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
+| PartnerClaimType | No | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
 
 ## <a name="displayclaims"></a>DisplayClaims
 
 A **DisplayClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -197,17 +197,17 @@ A **DisplayClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Nem | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DisplayControlReferenceId | Nem | A ClaimsSchema szakaszban már definiált [megjelenítési vezérlő](display-controls.md) azonosítója a házirend fájljában vagy a szülő házirend fájljában. |
-| Kötelező | Nem | Azt jelzi, hogy szükséges-e a megjelenítési jogcím. |
+| ClaimTypeReferenceId | No | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DisplayControlReferenceId | No | A ClaimsSchema szakaszban már definiált [megjelenítési vezérlő](display-controls.md) azonosítója a házirend fájljában vagy a szülő házirend fájljában. |
+| Kötelező | No | Azt jelzi, hogy szükséges-e a megjelenítési jogcím. |
 
-A **DisplayClaim** a vagy a `ClaimTypeReferenceId` - `DisplayControlReferenceId`t kell megadnia.
+A **DisplayClaim** a vagy a-t kell megadnia `ClaimTypeReferenceId` `DisplayControlReferenceId` .
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
 A **PersistedClaims** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | A megmaradó jogcím típusa. |
 
@@ -217,15 +217,15 @@ A **PersistedClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DefaultValue | Nem | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
-| PartnerClaimType | Nem | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
+| ClaimTypeReferenceId | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DefaultValue | No | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
+| PartnerClaimType | No | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
 A **OutputClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1: n | A várt kimeneti jogcím típusa. |
 
@@ -235,16 +235,16 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DefaultValue | Nem | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
-|AlwaysUseDefaultValue |Nem |Az alapértelmezett érték használatának kényszerítése.  |
-| PartnerClaimType | Nem | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
+| ClaimTypeReferenceId | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DefaultValue | No | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
+|AlwaysUseDefaultValue |No |Az alapértelmezett érték használatának kényszerítése.  |
+| PartnerClaimType | No | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
 
 ## <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
 A **OutputClaimsTransformations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | A jogcímek átalakításának a jogcím-szolgáltatóba vagy a függő entitásba való elküldése előtt végrehajtandó azonosítók. A jogcímek átalakításával módosíthatók a meglévő ClaimsSchema-jogcímek, vagy újak is létrehozhatók. |
 
@@ -254,13 +254,13 @@ A **OutputClaimsTransformation** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
+| ReferenceId | Yes | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
 A **ValidationTechnicalProfiles** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A felhasználható műszaki profilok azonosítói a hivatkozó technikai profil kimeneti jogcímeinek némelyikét vagy mindegyikét ellenőrzik. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó technikai profil kimeneti jogcímeiben. |
 
@@ -270,7 +270,7 @@ A **ValidationTechnicalProfile** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
+| ReferenceId | Yes | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
 
 ## <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -278,7 +278,7 @@ A **SubjectNamingInfo** a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimType | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájljában. |
+| ClaimType | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájljában. |
 
 ## <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
@@ -286,7 +286,7 @@ A **IncludeTechnicalProfile** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend fájljában vagy a szülő házirend fájljában már definiált technikai profil azonosítója. |
+| ReferenceId | Yes | A házirend fájljában vagy a szülő házirend fájljában már definiált technikai profil azonosítója. |
 
 ## <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
@@ -294,7 +294,7 @@ A **UseTechnicalProfileForSessionManagement** elem a következő attribútumot t
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
+| ReferenceId | Yes | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
 
 ## <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
 
@@ -308,9 +308,9 @@ A felhasználói utazás **ClaimsProviderSelections** a jogcím-szolgáltató ki
 
 A **OnClaimsExistence**, a **OnItemExistenceInStringCollectionClaim** vagy a **OnItemAbsenceInStringCollectionClaim**használatával a következő metaadatokat kell megadnia: a **ClaimTypeOnWhichToEnable** meghatározza a jogcímek kiértékelésének típusát, a **ClaimValueOnWhichToEnable** pedig az összehasonlítani kívánt értéket adja meg.
 
-A következő technikai profilt csak akkor hajtja végre a rendszer, ha a **identityProviders** karakterlánc `facebook.com`-gyűjtemény a következők értékét tartalmazza:
+A következő technikai profilt csak akkor hajtja végre a rendszer, ha a **identityProviders** karakterlánc-gyűjtemény a következők értékét tartalmazza `facebook.com` :
 
-```XML
+```xml
 <TechnicalProfile Id="UnLink-Facebook-OAUTH">
   <DisplayName>Unlink Facebook</DisplayName>
 ...

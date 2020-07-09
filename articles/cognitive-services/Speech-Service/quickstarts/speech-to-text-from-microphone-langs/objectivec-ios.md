@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c1246b19670a18f8dadc0c5e1c64dd5af4c1b210
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c355071c4bbaff5ddb22b2db5fc4a3a0fdb561d4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380779"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391553"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Gyors útmutató: az iOS-ben a Objective-C beszédének felismerése a Speech SDK használatával
 
@@ -40,7 +40,7 @@ Az iOS-hez készült Cognitive Services Speech SDK jelenleg kakaó-keretrendszer
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
-Indítsa el a Xcode, és indítson el egy új projektet a **fájl** > **új** > **projekt**lehetőség kiválasztásával.
+Indítsa el a Xcode, és indítson el egy új projektet a **fájl**  >  **új**  >  **projekt**lehetőség kiválasztásával.
 A sablon kiválasztása párbeszédpanelen válassza ki az **iOS Egynézetű alkalmazás** sablonját.
 
 Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
@@ -57,7 +57,7 @@ Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
    1. Válassza ki a projekt tárolására használt kezdőkönyvtárat. Ez a lépés létrehoz egy HelloWorld könyvtárat a saját könyvtárában, amely a Xcode projekt összes fájlját tartalmazza.
    1. Ennél a próbaprojektnél tiltsa le a Git-adattár létrehozását.
    1. Állítsa be az SDK elérési útját a projekt beállításai képernyőn.
-      1. A **beágyazott bináris fájlok** fejlécének **általános** lapján adja hozzá az SDK-tárat keretrendszerként a **beágyazott bináris fájlok** > hozzáadása**másik hozzáadása**lehetőség kiválasztásával. Nyissa meg a saját könyvtárat, és válassza `MicrosoftCognitiveServicesSpeech.framework`ki a fájlt. Ezzel a művelettel az SDK-függvénytárat a rendszer automatikusan hozzáadja a **csatolt keretrendszerhez és a könyvtárakhoz** .
+      1. A **beágyazott bináris fájlok** fejlécének **általános** lapján adja hozzá az SDK-tárat keretrendszerként a **beágyazott bináris fájlok**hozzáadása  >  **másik hozzáadása**lehetőség kiválasztásával. Nyissa meg a saját könyvtárat, és válassza ki a fájlt `MicrosoftCognitiveServicesSpeech.framework` . Ezzel a művelettel az SDK-függvénytárat a rendszer automatikusan hozzáadja a **csatolt keretrendszerhez és a könyvtárakhoz** .
          ![Keretrendszer hozzáadva](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-framework.png)
       1. Lépjen a **létrehozási beállítások** lapra, és válassza az **összes** beállítást.
       1. Adja hozzá a (SRCROOT)/.. könyvtárat. a **keretrendszer keresési** elérési útjai a **keresési útvonalak** fejlécében.
@@ -66,7 +66,7 @@ Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
 
 ## <a name="set-up-the-ui"></a>A felhasználói felület beállítása
 
-A példában szereplő alkalmazás nagyon egyszerű felhasználói felülettel rendelkezik. Az eredmény megjelenítéséhez két gomb szükséges a beszédfelismerés elindításához a fájlból vagy a mikrofon bemenetből és egy szöveges címkéből. A felhasználói felületet a projekt `Main.storyboard` részében kell beállítani. A történet XML-nézetének megnyitásához kattintson a jobb gombbal `Main.storyboard` a projekt fájának bejegyzésére, és válassza a **Megnyitás** > **forrásként kód**lehetőséget.
+A példában szereplő alkalmazás nagyon egyszerű felhasználói felülettel rendelkezik. Az eredmény megjelenítéséhez két gomb szükséges a beszédfelismerés elindításához a fájlból vagy a mikrofon bemenetből és egy szöveges címkéből. A felhasználói felületet a projekt `Main.storyboard` részében kell beállítani. A történet XML-nézetének megnyitásához kattintson a jobb gombbal a `Main.storyboard` projekt fájának bejegyzésére, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget.
 
 Cserélje le az automatikusan létrehozott XML-kódot a következő kódra:
 
@@ -81,8 +81,8 @@ Cserélje le az automatikusan létrehozott XML-kódot a következő kódra:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/from-microphone/helloworld/helloworld/ViewController.m#code)]
 1. Cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . Használja `westus` például az ingyenes próbaverziós előfizetést.
-1. Adja hozzá a mikrofonhoz való hozzáférésre vonatkozó kérelmet. Kattintson a jobb gombbal `Info.plist` a projekt fájának bejegyzésére, és válassza a **Megnyitás** > **forrásként kód**lehetőséget. Adja hozzá a következő sorokat a `<dict>` szakaszhoz, majd mentse a fájlt.
+1. Cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . Használja például `westus` az ingyenes próbaverziós előfizetést.
+1. Adja hozzá a mikrofonhoz való hozzáférésre vonatkozó kérelmet. Kattintson a jobb gombbal a `Info.plist` projekt fájának bejegyzésére, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget. Adja hozzá a következő sorokat a `<dict>` szakaszhoz, majd mentse a fájlt.
 
     ```xml
     <key>NSMicrophoneUsageDescription</key>
@@ -91,16 +91,16 @@ Cserélje le az automatikusan létrehozott XML-kódot a következő kódra:
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. A hibakeresési kimenet láthatóvá tétele a**hibakeresési területek** > **aktiválása konzol** **kiválasztásával** > .
-1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **termék** > **cél** menüjének listájában.
-1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a menü **termék** > **futtatása** elemét. A **Lejátszás** gombot is kiválaszthatja.
+1. A hibakeresési kimenet láthatóvá tétele a **View**  >  **hibakeresési területek**  >  **aktiválása konzol**kiválasztásával.
+1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **termék**  >  **cél** menüjének listájában.
+1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a menü **termék**  >  **futtatása** elemét. A **Lejátszás** gombot is kiválaszthatja.
 1. Miután kiválasztotta a **felismerés (fájl)** gombot az alkalmazásban, meg kell jelennie a következő hangfájl tartalmának: "What 's The Weather Like?" hangfájl tartalmának.
 
    ![Szimulált iOS-alkalmazás](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app.png)
 
 1. Miután kiválasztotta a **felismerés (mikrofon)** gombot az alkalmazásban, és mondjuk egy pár szót, meg kell jelennie a képernyő alsó részén látható szövegnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

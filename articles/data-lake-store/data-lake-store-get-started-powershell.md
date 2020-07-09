@@ -3,15 +3,15 @@ title: Ismerkedés a Azure Data Lake Storage Gen1-PowerShell használatával | M
 description: A Azure PowerShell használatával hozzon létre egy Azure Data Lake Storage Gen1 fiókot, és hajtson végre alapszintű műveleteket.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73837889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504782"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Ismerkedés a Azure Data Lake Storage Gen1 használatával Azure PowerShell
 
@@ -30,7 +30,7 @@ Megtudhatja, hogyan hozhat létre Azure PowerShell egy Azure Data Lake Storage G
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
 ## <a name="authentication"></a>Hitelesítés

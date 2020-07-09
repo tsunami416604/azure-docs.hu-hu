@@ -4,26 +4,24 @@ description: Ha rendelkezik belső felhasználói fiókkal a partnerek, a terjes
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551361"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása B2B együttműködésre
 
-|     |
-| --- |
-| A belső felhasználók meghívása a B2B együttműködés használatára a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
-|     |
+> [!NOTE]
+> A belső felhasználók meghívása a B2B együttműködés használatára a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure AD B2B-együttműködés rendelkezésre állása előtt a szervezetek a belső hitelesítő adatok beállításával együttműködhetnek a forgalmazókkal, a szállítókkal, a szállítókkal és a többi vendég felhasználóval. Ha ilyen belső vendég felhasználókkal rendelkezik, meghívhatja őket a B2B-együttműködés használatára, így kihasználhatja az Azure AD B2B előnyeinek előnyeit is. A B2B vendég felhasználói saját identitásuk és hitelesítő adataik használatával jelentkezhetnek be, és nem kell megtartania a jelszavakat, és nem kell kezelnie a fiókok életciklusát.
 
@@ -62,7 +60,7 @@ A következő parancs használatával meghívhatja a felhasználót a B2B együt
 ```powershell
 Uninstall-Module AzureADPreview
 Install-Module AzureADPreview
-$ADGraphUser = Get-AzureADUser -searchstring "<<external email>>"
+$ADGraphUser = Get-AzureADUser -objectID "UPN of Internal User"
 $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGraphUser.ObjectId
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```

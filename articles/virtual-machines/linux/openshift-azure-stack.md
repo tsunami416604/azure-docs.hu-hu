@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758237"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift-tároló platform vagy OKD üzembe helyezése Azure Stack
@@ -28,7 +27,7 @@ A OpenShift-tároló platformjának vagy OKD a következő számos módszer egyi
 - Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-container-platform/) is, amely leegyszerűsíti a OpenShift-tároló platform fürt üzembe helyezését.
 - Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-origin) is, amely leegyszerűsíti a OKD-fürt üzembe helyezését.
 
-Ha a Resource Manager-sablont használja, válassza ki a megfelelő ágat (azurestack-Release-3. x). Az Azure-sablonok nem működnek, mivel az API-verziók eltérnek az Azure és a Azure Stack között. A RHEL-rendszerkép hivatkozása jelenleg változóként van kódolva a azuredeploy. JSON fájlban, és módosítania kell, hogy megfeleljen a rendszerképnek.
+Ha a Resource Manager-sablont használja, válassza ki a megfelelő ágat (azurestack-Release-3. x). Az Azure-sablonok nem működnek, mivel az API-verziók eltérnek az Azure és a Azure Stack között. A RHEL-rendszerkép hivatkozása jelenleg változóként van kódolva a fájlban lévő azuredeploy.jsban, és módosítani kell a rendszerképnek megfelelően.
 
 ```json
 "imageReference": {
@@ -40,7 +39,7 @@ Ha a Resource Manager-sablont használja, válassza ki a megfelelő ágat (azure
 ```
 
 Az összes beállításhoz szükség van egy Red Hat-előfizetésre. Az üzembe helyezés során a Red Hat Enterprise Linux példány regisztrálva van a Red Hat-előfizetésben, és ahhoz a készlet-AZONOSÍTÓhoz van csatolva, amely tartalmazza a jogosultságokat a OpenShift-tároló platformhoz.
-Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be a alkalmazásba https://access.redhat.com.
+Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be a alkalmazásba https://access.redhat.com .
 
 ## <a name="azure-stack-prerequisites"></a>Előfeltételek Azure Stack
 
@@ -56,10 +55,10 @@ A Resource Manager-sablonnal történő üzembe helyezéshez egy Parameters-fáj
 
 Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következőkre:
 
-- Megerősített VM-méret (változó a azuredeploy. JSON fájlban)
-- Elnevezési konvenciók (változók a azuredeploy. JSON fájlban)
+- Megerősített VM-méret (változó azuredeploy.json)
+- Elnevezési konvenciók (változók a azuredeploy.json)
 - OpenShift-fürtök, a Hosts fájlon keresztül módosítva (deployOpenShift.sh)
-- RHEL-rendszerkép referenciája (változó a azuredeploy. JSON fájlban)
+- RHEL képhivatkozása (változó azuredeploy.json)
 
 Az Azure CLI használatával történő üzembe helyezés lépéseinek végrehajtásához kövesse a [OpenShift Container platform](./openshift-container-platform-3x.md) szakasz vagy a [OKD](./openshift-okd.md) szakasz megfelelő szakaszát.
 

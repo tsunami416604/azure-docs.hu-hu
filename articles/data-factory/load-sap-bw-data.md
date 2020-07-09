@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415841"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081281"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & 
 
    3. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások ellenőrzéséhez, majd válassza a **Befejezés**lehetőséget.
 
-   4. Létrejön egy új kapcsolatok. Kattintson a **Tovább** gombra.
+   4. Létrejön egy új kapcsolatok. Válassza a **Tovább** lehetőséget.
 
 5. A **hub-célhelyek kiválasztása** lapon tallózzon a SAP BWban elérhető nyitott hub-célhelyek között. Válassza ki a OHD az adatok másolásához, majd kattintson a **tovább**gombra.
 
@@ -81,7 +81,7 @@ Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & 
 
    ![SAP BW nyitott hub-szűrő konfigurálása](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. A **cél adattár** lapon válassza az **+ új kapcsolatok** > létrehozása**Azure Data Lake Storage Gen2** > **Folytatás**lehetőséget.
+7. A **cél adattár** lapon válassza az **+ új kapcsolatok létrehozása**  >  **Azure Data Lake Storage Gen2**  >  **Folytatás**lehetőséget.
 
 8. Az **Azure Data Lake Storage kapcsolódásának meghatározása** lapon kövesse az alábbi lépéseket a kapcsolatok létrehozásához.
 
@@ -165,7 +165,7 @@ Az adatok előállítójának első **lépései** oldalon válassza a **folyamat
 
    - **HighWatermarkBlobDirectory**: Itt adhatja meg a mappa elérési útját a tárolóban a magas vízjel értékének tárolásához.
 
-   - **HighWatermarkBlobName**: adja meg a blob nevét, hogy a felső küszöbértéket tárolja, `requestIdCache.txt`például:. A blob Storage-ban lépjen a HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, például a *Container/Path/requestIdCache. txt*fájl megfelelő elérési útjára. Hozzon létre egy blobot 0 tartalommal.
+   - **HighWatermarkBlobName**: adja meg a blob nevét, hogy a felső küszöbértéket tárolja, például: `requestIdCache.txt` . A blob Storage-ban lépjen a HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName megfelelő elérési útjára, például: *Container/Path/requestIdCache.txt*. Hozzon létre egy blobot 0 tartalommal.
 
       ![Blob tartalma](media/load-sap-bw-data/blob.png)
 
@@ -194,7 +194,7 @@ Az adatok előállítójának első **lépései** oldalon válassza a **folyamat
 
       4. Kattintson a **Mentés** gombra. Ezután másolja át a **http post URL-cím** értékét, amelyet a Data Factory-folyamatban használni szeretne.
 
-4. Miután megadta a Data Factory folyamat paramétereit, a Futtatás ellenőrzéséhez kattintson **Debug** > a**Befejezés** gombra, hogy érvényesítse a konfigurációt. Vagy válassza a **Közzététel** lehetőséget az összes módosítás közzétételéhez, majd válassza az **trigger hozzáadása** parancsot a Futtatás végrehajtásához.
+4. Miután megadta a Data Factory folyamat paramétereit, **Debug**  >  a Futtatás ellenőrzéséhez kattintson a**Befejezés** gombra, hogy érvényesítse a konfigurációt. Vagy válassza a **Közzététel** lehetőséget az összes módosítás közzétételéhez, majd válassza az **trigger hozzáadása** parancsot a Futtatás végrehajtásához.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW nyitott hub-cél konfigurációi
 
@@ -269,7 +269,7 @@ Ezt követően az összes további Delta DTPs és a Data Factory különbözeti 
 
 A Delta DTP állapotának **beolvasásához**a következő lehetőség használatával manuálisan futtathatja a KÜLÖNBÖZETi DTP-t:
 
-    *No Data Transfer; Delta Status in Source: Fetched*
+*Nincs Adatátvitel; Különbözeti állapot a forrásban: beolvasva*
 
 ## <a name="next-steps"></a>További lépések
 

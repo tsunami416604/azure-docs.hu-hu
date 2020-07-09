@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629065"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory
@@ -84,12 +84,12 @@ A sablon hat paramétert definiál:
     ![Eseményindító létrehozása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 10. Állítsa be az **trigger futtatási paramétereinek** értékét az alábbiak szerint, majd válassza a **Befejezés**lehetőséget.
-    - **FolderPath_Source** = **SourceFolder**.  A mappát lecserélheti a forrás adattárban.
-    - **Directory_Source** = **almappa**.  A helyére a forrás adattárban található almappát használhatja.
-    - **FolderPath_Destination** = **destinationfolder**.  Lecserélheti a mappát a célhely adattárában.
-    - **Directory_Destination** = **almappa**.  Az almappában lecserélheti a cél adattárban.
-    - **LastModified_From** =  **LastModified_From\@trigger (). outputs. windowStartTime**.  Ez az a rendszerváltozó, amely azt határozza meg, hogy mikor indította el a folyamat az utolsó alkalommal.
-    - **LastModified_To** = **LastModified_To\@trigger (). outputs. windowEndTime**.  Ez egy rendszerváltozó az Indítóban, amely meghatározza, hogy a folyamat mikor aktiválja ezt az időt.
+    - **FolderPath_Source**  =  **SourceFolder**.  A mappát lecserélheti a forrás adattárban.
+    - **Directory_Source**  =  **almappa**.  A helyére a forrás adattárban található almappát használhatja.
+    - **FolderPath_Destination**  =  **destinationfolder**.  Lecserélheti a mappát a célhely adattárában.
+    - **Directory_Destination**  =  **almappa**.  Az almappában lecserélheti a cél adattárban.
+    - **LastModified_From**  =   ** \@ trigger (). outputs. windowStartTime**.  Ez az a rendszerváltozó, amely azt határozza meg, hogy mikor indította el a folyamat az utolsó alkalommal.
+    - **LastModified_To**  =  ** \@ trigger (). outputs. windowEndTime**.  Ez egy rendszerváltozó az Indítóban, amely meghatározza, hogy a folyamat mikor aktiválja ezt az időt.
     
     ![Bemeneti paraméterek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

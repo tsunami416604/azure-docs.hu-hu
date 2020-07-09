@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614400"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>EventStore API-k lekérdezése a fürt eseményeihez
@@ -44,14 +43,14 @@ A fürt minden entitása lehet lekérdezés az eseményekhez. Az eseményeket a 
 * Replika`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
->Egy alkalmazás vagy szolgáltatás nevének hivatkozásakor a lekérdezésnek nem kell tartalmaznia a "Fabric:/"-t előtag. Emellett, ha az alkalmazás vagy a szolgáltatás neve "/" szerepel bennük, váltson a "~" értékre a lekérdezés működésének megtartásához. Ha például az alkalmazás "Fabric:/App1/FrontendApp" néven jelenik meg, az alkalmazásra vonatkozó lekérdezések strukturálva lesznek `/EventsStore/Applications/App1~FrontendApp/$/Events`.
->Emellett a szolgáltatásokhoz tartozó állapotfigyelő jelentések a megfelelő alkalmazás alatt jelennek meg, így a megfelelő alkalmazás `DeployedServiceHealthReportCreated` -entitás eseményeinek lekérdezése történne. 
+>Egy alkalmazás vagy szolgáltatás nevének hivatkozásakor a lekérdezésnek nem kell tartalmaznia a "Fabric:/"-t előtag. Emellett, ha az alkalmazás vagy a szolgáltatás neve "/" szerepel bennük, váltson a "~" értékre a lekérdezés működésének megtartásához. Ha például az alkalmazás "Fabric:/App1/FrontendApp" néven jelenik meg, az alkalmazásra vonatkozó lekérdezések strukturálva lesznek `/EventsStore/Applications/App1~FrontendApp/$/Events` .
+>Emellett a szolgáltatásokhoz tartozó állapotfigyelő jelentések a megfelelő alkalmazás alatt jelennek meg, így `DeployedServiceHealthReportCreated` a megfelelő alkalmazás-entitás eseményeinek lekérdezése történne. 
 
 ## <a name="query-the-eventstore-via-rest-api-endpoints"></a>A EventStore lekérdezése REST API végpontokon keresztül
 
-A EventStore közvetlenül egy REST-végponton keresztül kérdezheti le, `GET` ha a kérelmeket a következőre kéri: `<your cluster address>/EventsStore/<entity>/Events/`.
+A EventStore közvetlenül egy REST-végponton keresztül kérdezheti le, ha a `GET` kérelmeket a következőre kéri: `<your cluster address>/EventsStore/<entity>/Events/` .
 
-Ha például a és `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`a közötti összes fürt-eseményt szeretné lekérdezni, a kérelem a következőképpen fog kinézni:
+Ha például a és a közötti összes fürt-eseményt szeretné lekérdezni `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` , a kérelem a következőképpen fog kinézni:
 
 ```
 Method: GET 
@@ -106,7 +105,7 @@ Body:
 ]
 ```
 
-Itt láthatjuk, hogy a `2018-04-03T18:00:00Z` és `2018-04-04T18:00:00Z`a között ez a fürt sikeresen befejezte első frissítését, amikor először állt elő `"CurrentClusterVersion": "0.0.0.0:"` , `"TargetClusterVersion": "6.2:1.0"`a- `"OverallUpgradeElapsedTimeInMs": "120196.5212"`tól a-ig.
+Itt láthatjuk, hogy a `2018-04-03T18:00:00Z` és a között `2018-04-04T18:00:00Z` Ez a fürt sikeresen befejezte első frissítését, amikor először állt elő, a-tól a `"CurrentClusterVersion": "0.0.0.0:"` -ig `"TargetClusterVersion": "6.2:1.0"` `"OverallUpgradeElapsedTimeInMs": "120196.5212"` .
 
 ## <a name="query-the-eventstore-programmatically"></a>EventStore programozott lekérdezése
 
@@ -114,7 +113,7 @@ A EventStore programozott módon is lekérdezheti az [Service Fabric ügyfélold
 
 Miután beállította a Service Fabric-ügyfelet, az alábbihoz hasonló EventStore érheti el az eseményeket:`sfhttpClient.EventStore.<request>`
 
-Íme egy példa a és `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`a közötti összes fürterőforrás-kérelemre a `GetClusterEventListAsync` függvényen keresztül.
+Íme egy példa a és a közötti összes fürterőforrás-kérelemre `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` a `GetClusterEventListAsync` függvényen keresztül.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -187,11 +186,11 @@ Nyomon követheti a legutóbbi alkalmazások központi telepítését és friss�
 
 *Alkalmazás korábbi állapota:*
 
-Az alkalmazás-életciklus eseményeinek megjelenítésén kívül előfordulhat, hogy egy adott alkalmazás állapotára vonatkozó korábbi adatokra is kíváncsi. Ehhez meg kell adnia annak az alkalmazásnak a nevét, amelyhez össze kívánja gyűjteni az adatokat. Ezzel a lekérdezéssel kérheti le az összes alkalmazás- `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`állapottal kapcsolatos eseményt:. Ha olyan állapot-eseményeket szeretne szerepeltetni, amelyek esetleg lejártak voltak (az élettartam (TTL)), vegye fel `,ApplicationHealthReportExpired` a lekérdezés végére, és két típusú eseményre szűrje.
+Az alkalmazás-életciklus eseményeinek megjelenítésén kívül előfordulhat, hogy egy adott alkalmazás állapotára vonatkozó korábbi adatokra is kíváncsi. Ehhez meg kell adnia annak az alkalmazásnak a nevét, amelyhez össze kívánja gyűjteni az adatokat. Ezzel a lekérdezéssel kérheti le az összes alkalmazás-állapottal kapcsolatos eseményt: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport` . Ha olyan állapot-eseményeket szeretne szerepeltetni, amelyek esetleg lejártak voltak (az élettartam (TTL)), vegye fel a `,ApplicationHealthReportExpired` lekérdezés végére, és két típusú eseményre szűrje.
 
 *A "SajátPr" összes szolgáltatásának korábbi állapota:*
 
-Jelenleg a szolgáltatások állapotjelentés-eseményei a megfelelő alkalmazás entitása szerint jelennek `DeployedServicePackageNewHealthReport` meg. A következő lekérdezéssel tekintheti meg, hogy a szolgáltatásai hogyan lettek kihasználva a "App1" esetében:`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Jelenleg a szolgáltatások állapotjelentés-eseményei `DeployedServicePackageNewHealthReport` a megfelelő alkalmazás entitása szerint jelennek meg. A következő lekérdezéssel tekintheti meg, hogy a szolgáltatásai hogyan lettek kihasználva a "App1" esetében:`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
 *Partíció újrakonfigurálása:*
 

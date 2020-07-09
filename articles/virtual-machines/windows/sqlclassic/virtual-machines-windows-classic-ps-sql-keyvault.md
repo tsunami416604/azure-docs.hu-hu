@@ -16,12 +16,12 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c84be9a23713080f348daf8dddf0ad6b0390ded
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eb6b678cad4de2039e252b7dd666d78b6c2549b6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014697"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078238"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Key Vault integráció konfigurálása SQL Server Azure-beli Virtual Machines (klasszikus)
 > [!div class="op_single_selector"]
@@ -64,18 +64,23 @@ A következő táblázat a PowerShell-parancsfájl következő szakaszban való 
 A **New-AzureVMSqlServerKeyVaultCredentialConfig** parancsmag egy konfigurációs objektumot hoz létre a Azure Key Vault integrációs szolgáltatáshoz. A **set-AzureVMSqlServerExtension** ezt az integrációt a **KeyVaultCredentialSettings** paraméterrel konfigurálja. A következő lépések bemutatják, hogyan használhatja ezeket a parancsokat.
 
 1. A Azure PowerShellban először konfigurálja a bemeneti paramétereket az adott értékekkel a témakör előző részeiben leírtak szerint. A következő szkript egy példa.
-   
-        $akvURL = "https:\//contosokeyvault.vault.azure.net/"
-        $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
-        $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
-        $credName = "mycred1"
-        $vmName = "myvmname"
-        $serviceName = "mycloudservicename"
+
+    ```azurepowershell
+    $akvURL = "https:\//contosokeyvault.vault.azure.net/"
+    $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
+    $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
+    $credName = "mycred1"
+    $vmName = "myvmname"
+    $serviceName = "mycloudservicename"
+    ```
+
 2. Ezután használja a következő szkriptet a AKV-integráció konfigurálásához és engedélyezéséhez.
-   
-        $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
-        $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
-        Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+
+    ```azurepowershell
+    $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
+    $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
+    Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+    ```
 
 Az SQL IaaS-ügynök bővítménye frissíteni fogja az SQL virtuális gépet ezzel az új konfigurációval.
 

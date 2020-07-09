@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82779042"
 ---
 # <a name="localization"></a>Honosítás #
@@ -26,13 +26,13 @@ A többnyelvű támogatás lehetővé teszi, hogy a nem angol nyelvű felhaszná
 
 A Azure Media Player jelenleg a következő nyelveket támogatja a megfelelő nyelvi kódokkal:
 
-| Nyelv            | Kód | Nyelv                | Kód   | Nyelv                | Kód         |
+| Nyelv            | Code | Nyelv                | Code   | Nyelv                | Code         |
 |---------------------|------|-------------------------|--------|-------------------------|--------------|
-| Angol {default}   | hu   | Horvát                | hr     | Román                | ro           |
+| Angol {default}   | hu   | Horvát                | ó     | Román                | ro           |
 | Arab              | AR   | Magyar               | hu     | Szlovák                  | sk           |
 | Bolgár           | BG   | Indonéz              | id     | Szlovén                 | SL           |
-| Katalán             | CA   | Izlandi               | egyenlő     | Szerb – cirill betűs      | SR-Cyrl-cs   |
-| Cseh               | CS   | Olasz                 | Ez     | Szerb – latin betűs         | sr-latn-rs   |
+| Katalán             | CA   | Izlandi               | egyenlő     | Szerb – cirillbetűs      | SR-Cyrl-cs   |
+| Cseh               | CS   | Olasz                 | Ez     | Szerb – latinbetűs         | sr-latn-rs   |
 | Dán              | da   | Japán                | Japán     | Orosz                 | ru           |
 | Német              | de   | Kazak                  | KK     | Svéd                 | Sv           |
 | Görög               | el   | Koreai                  | Ko     | Thai                    | adik           |
@@ -40,7 +40,7 @@ A Azure Media Player jelenleg a következő nyelveket támogatja a megfelelő ny
 | Észt            | et   | Lett                 | lv     | Török                 | TR           |
 | Baszk              | EU   | Malajziai               | MS     | Ukrán               | uk           |
 | Perzsa               | h   | Norvég – BokmÃ ¥ l     | NB     | urdu                    | a           |
-| Finn             | Fi   | Holland                   | nl     | Vietnami              | VI           |
+| Finn             | Fi   | Holland                   | nl     | Vietnámi              | VI           |
 | Francia              | fr   | Norvég – nynorsk     | pp     | Egyszerűsített kínai    | zh-Hans      |
 | Gallego            | GL   | Lengyel                  | pl     | Kínai – hagyományos   | zh-Hant      |
 | Héber              | ő   | Portugál - Brazília     | pt-br  |                         |              |

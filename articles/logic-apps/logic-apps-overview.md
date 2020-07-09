@@ -3,16 +3,16 @@ title: A vállalati integrációval kapcsolatos feladatok automatizálása
 description: Ismerje meg, hogyan automatizálhat olyan munkafolyamatokat, amelyek az alkalmazásokat, az információkat, a szolgáltatásokat és a rendszereket integrálják minimális kóddal a vállalati integrációhoz Azure Logic Apps használatával.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241667"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563807"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Áttekintés – mi az Azure Logic Apps?
 
@@ -32,7 +32,7 @@ Ha Azure Logic Apps segítségével szeretne nagyvállalati integrációs megold
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>A Logic Apps működése 
+## <a name="how-do-logic-apps-work"></a>Hogyan működnek a Logic apps? 
 
 Minden logikai alkalmazás munkafolyamata egy eseményindítóval indul, amely akkor aktiválódik, ha egy adott esemény bekövetkezik, vagy egy adott feltételnek megfelelő új adatok válnak elérhetővé. A Logic Apps összekötői által biztosított számos eseményindító tartalmaz alapszintű ütemezési funkciókat, így beállíthatja, hogy a számítási feladatok milyen gyakran fussanak. Összetettebb ütemezések vagy speciális ismétlődések esetén bármelyik munkafolyamat első lépéseként használhat ismétlődési eseményindítót. További információ a [Schedule-alapú munkafolyamatokról](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
@@ -42,7 +42,7 @@ A Logic Apps-motor a trigger minden elindulásakor létrehoz egy logikaialkalmaz
 
 Logikai alkalmazásait vizuálisan hozhatja létre a Logic Apps Designer segítségével, amely a böngészőn keresztül az Azure Portalon, illetve a Visual Studióban érhető el. További egyéni logikai alkalmazásokért létrehozhat vagy szerkeszthet JavaScript Object Notation (JSON) logikaialkalmazás-definíciókat a „kódnézet” szerkesztő alkalmazásával. Bizonyos feladatokat Azure PowerShell-parancsokkal és az Azure Resource Manager-sablonokkal is elvégezhet. A logikai alkalmazások az Azure felhőjében üzemelnek és futnak. Részletesebb bevezetésért tekintse meg a következő videót: [Az Azure vállalati integrációs szolgáltatások használata felhőalkalmazások futtatásához ipari méretekben](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
-## <a name="why-use-logic-apps"></a>Miért érdemes a Logic Apps-et használni?
+## <a name="why-use-logic-apps"></a>Miért érdemes a Logic Apps szolgáltatást használni?
 
 A legtöbb vállalat a digitalizáció felé halad, a Logic Apps pedig segít egyszerűbben és gyorsabban kapcsolatot teremteni a régebbi és a modern rendszerek között a Microsoft által felügyelt összekötőkként biztosított beépített API-k segítségével. Így Ön az alkalmazások üzleti logikáira és funkcióira koncentrálhat. Nem kell az alkalmazások létrehozásával, üzemeltetésével, méretezésével, felügyeletével, karbantartásával és monitorozásával foglalkoznia. Ezeket a Logic Apps elvégzi Ön helyett. Emellett a használatalapú [díjszabás](../logic-apps/logic-apps-pricing.md) keretében csak a valóban használt funkciókért kell fizetni.
 
@@ -102,9 +102,9 @@ Hozza létre a logikai alkalmazásait Azure Resource Manager sablonként, így [
 
 ### <a name="access-resources-inside-azure-virtual-networks"></a>Erőforrások elérése Azure-beli virtuális hálózatokon belül
 
-Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozásakor a Logic apps hozzáférhet a biztonságos erőforrásokhoz, például a virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz, amelyek egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) belül vannak. Az ISE a Logic Apps szolgáltatás elkülönített példánya, amely dedikált erőforrásokat használ, és külön fut a "globális" több-bérlős Logic Apps szolgáltatástól.
+Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozásakor a Logic apps hozzáférhet a biztonságos erőforrásokhoz, például a virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz, amelyek egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) belül vannak. Az ISE a Logic Apps szolgáltatás dedikált példánya, amely dedikált erőforrásokat használ, és külön fut a "globális" több-bérlős Logic Apps szolgáltatástól.
 
-A Logic apps önálló elkülönített példányban való futtatása segít csökkenteni a más Azure-bérlők által az alkalmazások teljesítményére gyakorolt hatást, más néven a ["zajos szomszédok" hatását](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Az ISE a következő előnyöket is biztosítja:
+A Logic apps önálló dedikált példányban való futtatása segít csökkenteni a más Azure-bérlők által az alkalmazások teljesítményére gyakorolt hatást, más néven a ["zajos szomszédok" hatást](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Az ISE a következő előnyöket is biztosítja:
 
 * A saját statikus IP-címei, amelyek a több-bérlős szolgáltatásban a Logic apps által megosztott statikus IP-címektől eltérnek. Beállíthat egy nyilvános, statikus és kiszámítható kimenő IP-címet is a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében.
 
@@ -144,7 +144,7 @@ Ezen szolgáltatások mindegyike a különböző rendszerek csatlakoztatásában
 
 * **Enterprise Integration Pack** – A további speciális integrálási forgatókönyvek megvalósítása érdekében a Logic Apps BizTalk Server-képességeket is tartalmaz. Az Enterprise Integration Pack csomag olyan összekötőket tartalmaz, amelyek megkönnyítik a logikai alkalmazások számára az érvényesítés, az átalakítás és egyéb műveletek végrehajtását.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A Logic Apps a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike. Éppen ezért a használatához rendelkeznie kell Azure-előfizetéssel. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 

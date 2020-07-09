@@ -7,12 +7,13 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758180"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971062"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással (Python)
 
@@ -38,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-* Egy, a [Python](https://www.python.org/) 3,7-es vagy újabb verzióját futtató fejlesztési gép. A parancssorban `python3 --version` futtatva ellenőrizhető a verzió. A Python számos operációs rendszer számára elérhető. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **python3** parancsot.
+* Egy, a [Python](https://www.python.org/) 3,7-es vagy újabb verzióját futtató fejlesztési gép. A `python3 --version` parancssorban futtatva ellenőrizhető a verzió. A Python számos operációs rendszer számára elérhető. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **python3** parancsot.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
@@ -54,9 +55,9 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
     pip install azure-iot-device
     ```
 
-1. Hozzon létre egy **environmental_sensor.** -es nevű `environmental-sensor` fájlt a mappában.
+1. Hozzon létre egy **environmental_sensor.** -es nevű fájlt a `environmental-sensor` mappában.
 
-1. Adja hozzá a `import` következő utasításokat a **environmental_sensor.** a fájl elejéhez:
+1. Adja hozzá a következő `import` utasításokat a **environmental_sensor.** a fájl elejéhez:
 
     ```python
     import asyncio
@@ -71,7 +72,7 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
     from azure.iot.device import Message
     ```
 
-1. Adja hozzá a következő `main` aszinkron függvényt és változó deklarációkat a fájlhoz:
+1. Adja hozzá a következő aszinkron `main` függvényt és változó deklarációkat a fájlhoz:
 
     ```python
     async def main():
@@ -90,11 +91,11 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
     asyncio.run(main())
     ```
 
-    Frissítse a helyőrzőket `{your Scope ID}` `{your Device ID}`, és `{your Primary Key}` a korábban megjegyzett értékekkel. Egy valós alkalmazásban ne jegyezze fel ezeket az információkat az alkalmazásban.
+    Frissítse a helyőrzőket `{your Scope ID}` , `{your Device ID}` és a `{your Primary Key}` korábban megjegyzett értékekkel. Egy valós alkalmazásban ne jegyezze fel ezeket az információkat az alkalmazásban.
 
-    A `main` függvényen belül a következő függvények összes definíciója és kódja beágyazva van.
+    A függvényen belül a következő függvények összes definíciója és kódja beágyazva van `main` .
 
-1. Adja hozzá az alábbi két függvényt `main` a függvényben az eszköz regisztrálásához és a IoT Central alkalmazáshoz való csatlakoztatásához. A regisztráció az Azure Device kiépítési szolgáltatást használja:
+1. Adja hozzá az alábbi két függvényt a `main` függvényben az eszköz regisztrálásához és a IoT Central alkalmazáshoz való csatlakoztatásához. A regisztráció az Azure Device kiépítési szolgáltatást használja:
 
     ```python
       async def register_device():
@@ -128,7 +129,7 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
           return device_client
     ```
 
-1. Adja hozzá a következő függvényt `main` a függvényen belül, hogy telemetria küldjön a IoT Central alkalmazásnak:
+1. Adja hozzá a következő függvényt a `main` függvényen belül, hogy telemetria küldjön a IoT Central alkalmazásnak:
 
     ```python
       async def send_telemetry():
@@ -143,9 +144,9 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
           await asyncio.sleep(delay)
     ```
 
-    A telemetria elemek nevének (`temp` és `humid`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
+    A telemetria elemek nevének ( `temp` és `humid` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
-1. Adja hozzá a következő függvényeket `main` a függvényen belül a IoT Central alkalmazás által hívott parancsok kezeléséhez:
+1. Adja hozzá a következő függvényeket a `main` függvényen belül a IoT Central alkalmazás által hívott parancsok kezeléséhez:
 
     ```python
       async def blink_command(request):
@@ -199,7 +200,7 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
           await commands[method_request.name](method_request)
     ```
 
-    A parancsok nevének`blink`(, `turnon` `turnoff`,, és `rundiagnostics`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
+    A parancsok nevének (,, `blink` , `turnon` `turnoff` és `rundiagnostics` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
     A IoT Central jelenleg nem használja az eszköz-képesség modellben definiált válasz sémát. A szinkron parancsok esetében a válasz hasznos JSON lehet. Egy aszinkron parancs esetében az eszköznek azonnal egy 202-es választ kell visszaadnia, amelyet a rendszer a munka befejeződése után jelentett a tulajdonságok frissítése után. A jelentett tulajdonság frissítésének formátuma:
 
@@ -213,39 +214,39 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
 
     Az operátor megtekintheti a válasz adattartalmát a parancs előzményeiben.
 
-1. Adja hozzá a következő függvényeket `main` a függvényen belül a IoT Central alkalmazásból eljuttatott tulajdonságok kezeléséhez:
+1. Adja hozzá a következő függvényeket a `main` függvényen belül a IoT Central alkalmazásból eljuttatott tulajdonságok kezeléséhez:
 
     ```python
-        async def name_setting(value, version):
-          await asyncio.sleep(1)
-          print(f'Setting name value {value} - {version}')
-          await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+      async def name_setting(value, version):
+        await asyncio.sleep(1)
+        print(f'Setting name value {value} - {version}')
+        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
 
-        async def brightness_setting(value, version):
-          await asyncio.sleep(5)
-          print(f'Setting brightness value {value} - {version}')
-          await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+      async def brightness_setting(value, version):
+        await asyncio.sleep(5)
+        print(f'Setting brightness value {value} - {version}')
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
 
-        settings = {
-          'name': name_setting,
-          'brightness': brightness_setting
-        }
+      settings = {
+        'name': name_setting,
+        'brightness': brightness_setting
+      }
 
-        # define behavior for receiving a twin patch
-        async def twin_patch_listener():
-          while True:
-            patch = await device_client.receive_twin_desired_properties_patch() # blocking
-            to_update = patch.keys() & settings.keys()
-            await asyncio.gather(
-              *[settings[setting](patch[setting], patch['$version']) for setting in to_update]
-            )
+      # define behavior for receiving a twin patch
+      async def twin_patch_listener():
+        while True:
+          patch = await device_client.receive_twin_desired_properties_patch() # blocking
+          to_update = patch.keys() & settings.keys()
+          await asyncio.gather(
+            *[settings[setting](patch[setting], patch['$version']) for setting in to_update]
+          )
     ```
 
     Ha a kezelő egy írható tulajdonságot állít be a IoT Central alkalmazásban, az alkalmazás egy, a kívánt eszközhöz tartozó, a kívánt tulajdonságot használva küldi el az értéket az eszköznek. Az eszköz ezután válaszol a Device Twin jelentett tulajdonság használatával. Ha a IoT Central megkapja a jelentett tulajdonság értékét, akkor a rendszer **szinkronizált**állapottal frissíti a tulajdonság nézetét.
 
-    A tulajdonságok nevének (`name` és `brightness`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
+    A tulajdonságok nevének ( `name` és `brightness` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
-1. Adja hozzá a következő függvényeket `main` a függvényen belül az alkalmazás vezérléséhez:
+1. Adja hozzá a következő függvényeket a `main` függvényen belül az alkalmazás vezérléséhez:
 
     ```python
       # Define behavior for halting the application
@@ -305,10 +306,11 @@ Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node. js használatával, néhány javasolt lépés a következő lépésekből áll:
+Most, hogy már megismerte, hogyan hozhat létre egy eszközt a Python használatával, néhány javasolt következő lépés:
 
-- Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
-- Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
+* Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
+* Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.
+* Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
 
 Ha továbbra is szeretne IoT Central oktatóanyagokat használni, és többet szeretne megtudni egy IoT Central megoldás létrehozásáról, tekintse meg a következő témakört:
 

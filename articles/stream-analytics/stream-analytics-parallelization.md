@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ead0041e26b5dff5cfd81b6fa02b7efff6e6e9d1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296321"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>A lekérdezési párhuzamos kihasználása Azure Stream Analytics
 Ez a cikk bemutatja, hogyan veheti igénybe a párhuzamos előnyeit a Azure Stream Analyticsban. Megtudhatja, hogyan méretezheti Stream Analytics feladatokat a bemeneti partíciók konfigurálásával és az elemzési lekérdezés definíciójának finomhangolásával.
@@ -24,7 +24,7 @@ Egy Stream Analytics feladatdefiníció legalább egy adatfolyam-bemenetet, egy 
 ## <a name="partitions-in-inputs-and-outputs"></a>Bemenetekhez és kimenetekhez tartozó partíciók
 A particionálás lehetővé teszi, hogy egy [partíciós kulcs](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions)alapján csoportosítsa az adathalmazokat. Ha a bemenet (például Event Hubs) egy kulccsal van particionálva, erősen ajánlott megadnia ezt a partíciós kulcsot, amikor bemenetet ad hozzá a Stream Analytics feladathoz. A Stream Analyticsi feladatok skálázása kihasználja a bemeneti és a kimeneti partíciókat. A Stream Analytics-feladatok különböző partíciókat használhatnak párhuzamosan, ami növeli az átviteli sebességet. 
 
-### <a name="inputs"></a>Bemenetek
+### <a name="inputs"></a>Bevitelek
 Az összes Azure Stream Analytics-bemenet kihasználhatja a particionálás előnyeit:
 -   EventHub (a partíció kulcsát explicit módon kell beállítani a PARTITION BY kulcsszóval, ha a 1,1-es vagy az alacsonyabb kompatibilitási szintet használja)
 -   IoT Hub (a partíciós kulcsot explicit módon kell beállítani a PARTITION BY kulcsszóval, ha a 1,1-es vagy az alacsonyabb kompatibilitási szintet használja)
@@ -279,7 +279,7 @@ Az [Event hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/e
 |    5E   |   18 |  P4   |
 |    10 E  |   36 |  P6   |
 
-Az [Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) támogatja az írást párhuzamosan, a particionálás öröklése néven, de alapértelmezés szerint nincs engedélyezve. A particionálás öröklésének engedélyezése azonban egy teljesen párhuzamos lekérdezéssel együtt nem elegendő a nagyobb átviteli sebesség eléréséhez. Az SQL írási átviteli sebessége jelentősen függ a SQL Azure adatbázis-konfigurációtól és a tábla sémájától. Az [SQL kimeneti teljesítményről](./stream-analytics-sql-output-perf.md) szóló cikk részletesebben ismerteti azokat a paramétereket, amelyek segítségével maximalizálható az írási sebesség. Ahogy az a [Azure stream Analytics kimenet Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) cikkben látható, ez a megoldás nem méretezhető lineárisan, mint a 8 partíción túli teljes párhuzamos feldolgozási folyamat, és szükség lehet az SQL-kimenet (lásd: [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) újraparticionálására. A prémium SKU-kat a magas i/o-díjak fenntartásához, valamint a naplók biztonsági mentésével járó terheléshez kell elkészíteni néhány percenként.
+Az [Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) támogatja az írást párhuzamosan, a particionálás öröklése néven, de alapértelmezés szerint nincs engedélyezve. A particionálás öröklésének engedélyezése azonban egy teljesen párhuzamos lekérdezéssel együtt nem elegendő a nagyobb átviteli sebesség eléréséhez. Az SQL írási átviteli sebessége jelentősen függ az adatbázis-konfigurációtól és a tábla sémájától. Az [SQL kimeneti teljesítményről](./stream-analytics-sql-output-perf.md) szóló cikk részletesebben ismerteti azokat a paramétereket, amelyek segítségével maximalizálható az írási sebesség. Ahogy az a [Azure stream Analytics kimenet Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) cikkben látható, ez a megoldás nem méretezhető lineárisan, mint a 8 partíción túli teljes párhuzamos feldolgozási folyamat, és szükség lehet az SQL-kimenet (lásd: [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) újraparticionálására. A prémium SKU-kat a magas i/o-díjak fenntartásához, valamint a naplók biztonsági mentésével járó terheléshez kell elkészíteni néhány percenként.
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |Betöltési arány (események másodpercenként) | Folyamatos átviteli egységek | Kimeneti erőforrások  |
@@ -290,7 +290,7 @@ Az [Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/e
 
 A Stream Analytics [Cosmos db](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) kimenete frissítve lett, hogy natív integrációt használjon a [1,2 kompatibilitási szint](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)alatt. A 1,2-es kompatibilitási szint jelentősen nagyobb átviteli sebességet tesz lehetővé, és csökkenti a 1,1-hoz képesti RU-felhasználást, amely az új feladatok alapértelmezett kompatibilitási szintje. A megoldás a/deviceId particionált CosmosDB-tárolókat használ, a többi megoldás pedig azonos módon van konfigurálva.
 
-Az [Azure skálán lévő összes adatfolyam-továbbítási](https://github.com/Azure-Samples/streaming-at-scale) szolgáltatás a tesztelési ügyfeleket bemenetként szimuláló betöltéssel egy Event hub-t használ. Minden bemeneti esemény egy 1KB JSON-dokumentum, amely a konfigurált betöltési sebességet az átviteli sebesség (1MB/s, 5MB/s és 10 MB/s) alapján könnyedén lefordítja. Az események szimulálnak egy IoT-eszközt, amely a következő JSON-adatokat (rövidített formában) küldi el akár 1K-eszközökre:
+Az [Azure-on skálázható összes adatfolyam-továbbítás](https://github.com/Azure-Samples/streaming-at-scale) az Event hub-t használja olyan bemenetként, amelyet a tesztelési ügyfelek terhelésének szimulálása táplál. Minden bemeneti esemény egy 1KB JSON-dokumentum, amely a konfigurált betöltési sebességet az átviteli sebesség (1MB/s, 5MB/s és 10 MB/s) alapján könnyedén lefordítja. Az események szimulálnak egy IoT-eszközt, amely a következő JSON-adatokat (rövidített formában) küldi el akár 1K-eszközökre:
 
 ```
 {

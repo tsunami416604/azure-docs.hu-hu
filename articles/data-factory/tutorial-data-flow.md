@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418677"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
@@ -34,16 +34,16 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* **Egy Azure Storage-fiók**. A ADLS-tárolók *forrásaként* és fogadó *adattárakként* használhatók. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
+* **Azure Storage-fiók**. A ADLS-tárolók *forrásaként* és fogadó *adattárakként* használhatók. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
 
-Az oktatóanyagban átalakított fájl MoviesDB. csv, amely [itt](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)található. A fájl GitHubról történő lekéréséhez másolja a tartalmat egy tetszőleges szövegszerkesztőbe, és mentse helyileg a. csv-fájlként. A fájlnak a Storage-fiókba való feltöltéséhez tekintse meg a [Blobok feltöltése az Azure Portalon](../storage/blobs/storage-quickstart-blobs-portal.md)című témakört. Ez a példa egy "Sample-adat" nevű tárolóra hivatkozik.
+Az oktatóanyagban átalakított fájl MoviesDB.csv, amely [itt](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)található. A fájl GitHubról történő lekéréséhez másolja a tartalmat egy tetszőleges szövegszerkesztőbe, és mentse helyileg a. csv-fájlként. A fájlnak a Storage-fiókba való feltöltéséhez tekintse meg a [Blobok feltöltése az Azure Portalon](../storage/blobs/storage-quickstart-blobs-portal.md)című témakört. Ez a példa egy "Sample-adat" nevű tárolóra hivatkozik.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factory UX-t egy folyamat létrehozásához az adatelőállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. Jelenleg Data Factory felhasználói felület csak a Microsoft Edge és a Google Chrome böngészőben támogatott.
-2. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**:
+2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -62,7 +62,7 @@ Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factor
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adattárak (például az Azure Storage és a SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is használhatók.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 9. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa az adatfeldolgozó lapot.
 10. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Létrehozás és figyelés** csempét.
 
@@ -87,7 +87,7 @@ Ebben a lépésben olyan folyamatot hoz létre, amely egy adatfolyam-tevékenys�
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Átalakítási logika létrehozása az adatfolyam-vásznon
 
-Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adatfolyam-vásznon. Ebben a lépésben egy olyan adatfolyamot fog létrehozni, amely a moviesDB. csv fájlt a ADLS-tárolóban hozza létre, és összesíti a vígjátékok átlagos minősítését 1910 és 2000 között. Ezt a fájlt ezután vissza kell írnia a ADLS-tárolóba.
+Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adatfolyam-vásznon. Ebben a lépésben egy olyan adatfolyamatot fog létrehozni, amely a ADLS-tárolóban lévő moviesDB.csv viszi, és összesíti a vígjátékok 1910 és 2000 közötti átlagos minősítését. Ezt a fájlt ezután vissza kell írnia a ADLS-tárolóba.
 
 1. Az adatfolyam-vásznon adja hozzá a forrást a **forrás hozzáadása** mezőre kattintva.
 
@@ -107,7 +107,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. A társított szolgáltatás létrehozása képernyőn nevezze el a ADLS Gen2 társított szolgáltatás **ADLSGen2** , és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolatok hitelesítő adatait. Ebben az oktatóanyagban a fiók kulcsát használjuk a Storage-fiókhoz való kapcsolódáshoz. Kattintson a **Kapcsolódás tesztelése** lehetőségre a hitelesítő adatok helyes beírásának ellenőrzéséhez. Ha elkészült, kattintson a Létrehozás gombra.
 
     ![Társított szolgáltatás](media/tutorial-data-flow/ls1.png)
-1. Miután visszatért az adatkészlet-létrehozási képernyőre, adja meg, hogy hol található a fájl **elérési útja** mezőben. Ebben az oktatóanyagban a moviesDB. csv fájl található a Container Sample--adattárolóban. Ahogy a fájl fejléceket tartalmaz, tekintse meg az **első sort fejlécként**. Válassza a **Kapcsolódás/áruház** lehetőséget, hogy a fejléc-sémát közvetlenül a tárolóban lévő fájlból importálja. Ha elkészült, kattintson az OK gombra.
+1. Miután visszatért az adatkészlet-létrehozási képernyőre, adja meg, hogy hol található a fájl **elérési útja** mezőben. Ebben az oktatóanyagban a fájl moviesDB.csv található a tároló mintája – adathalmazban. Ahogy a fájl fejléceket tartalmaz, tekintse meg az **első sort fejlécként**. Válassza a **Kapcsolódás/áruház** lehetőséget, hogy a fejléc-sémát közvetlenül a tárolóban lévő fájlból importálja. Ha elkészült, kattintson az OK gombra.
 
     ![Adathalmazok](media/tutorial-data-flow/dataset4.png)
 1. Ha a hibakeresési fürt elindult, lépjen a forrás-átalakítás **adatelőnézet** lapjára, és kattintson a **frissítés** gombra az adatok pillanatképének beolvasásához. Az adatelőnézet használatával ellenőrizheti, hogy az átalakítás megfelelően van-e konfigurálva.
@@ -118,26 +118,26 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow5.png)
 1. Nevezze el a szűrő átalakítási **FilterYears**. Kattintson a **szűrés** elem melletti kifejezés mezőre a Kifejezésszerkesztő megnyitásához. Itt adja meg a szűrési feltételt.
 
-    ![Szűrés](media/tutorial-data-flow/filter1.png)
+    ![Szűrő](media/tutorial-data-flow/filter1.png)
 1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](concepts-data-flow-expression-builder.md).
 
-    Ebben az oktatóanyagban a műfaji komédia azon filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-as évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a ```toInteger()``` függvény használatával át kell alakítani egész számra. Használja a nagyobb vagy egyenlő értéket (>=), és kisebb vagy egyenlő, mint a (<=) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és a (&&) operátorral együtt. A kifejezés a következőképpen érkezik:
+    Ebben az oktatóanyagban a műfaji komédia azon filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-as évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a függvény használatával át kell alakítani egész számra ```toInteger()``` . Használja a nagyobb vagy egyenlő értéket (>=), és kisebb vagy egyenlő, mint a (<=) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és a (&&) operátorral együtt. A kifejezés a következőképpen érkezik:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Ha szeretné megkeresni, hogy mely filmek a vígjátékok ```rlike()``` , a függvény használatával megtalálhatja a "komédia" mintát az oszlopok műfajában. Union The rlike kifejezés az év összehasonlításával a Get:
+    Ha szeretné megkeresni, hogy mely filmek a vígjátékok, a ```rlike()``` függvény használatával megtalálhatja a "komédia" mintát az oszlopok műfajában. Union The rlike kifejezés az év összehasonlításával a Get:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
     Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
 
-    ![Szűrés](media/tutorial-data-flow/filter2.png)
+    ![Szűrő](media/tutorial-data-flow/filter2.png)
 
     Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
 
 1. Egy **Adatelőnézet** beolvasása annak ellenőrzéséhez, hogy a szűrő megfelelően működik-e.
 
-    ![Szűrés](media/tutorial-data-flow/filter3.png)
+    ![Szűrő](media/tutorial-data-flow/filter3.png)
 1. A hozzáadni kívánt következő átalakítás a **séma-módosító**alatt létrehozott **összesített** transzformáció.
 
     ![Összesítés](media/tutorial-data-flow/agg1.png)
@@ -147,7 +147,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Nyissa meg az **összesítések** lapot. A bal oldali szövegmezőben nevezze el az összesítő oszlop **AverageComedyRating**. Kattintson a jobb oldali kifejezés mezőre az összesítő kifejezés megadásához a Expression Builder használatával.
 
     ![Összesítés](media/tutorial-data-flow/agg3.png)
-1. Az oszlop- **minősítés**átlagának lekéréséhez használja ```avg()``` az összesítő függvényt. Mivel a **minősítés** egy karakterlánc, ```avg()``` és egy numerikus bemenetet vesz igénybe, az értéket egy számra kell konvertálnia a ```toInteger()``` függvényen keresztül. A kifejezés a következőképpen néz ki:
+1. Az oszlop- **minősítés**átlagának lekéréséhez használja az ```avg()``` összesítő függvényt. Mivel a **minősítés** egy karakterlánc ```avg()``` , és egy numerikus bemenetet vesz igénybe, az értéket egy számra kell konvertálnia a ```toInteger()``` függvényen keresztül. A kifejezés a következőképpen néz ki:
 
     ```avg(toInteger(Rating))```
 

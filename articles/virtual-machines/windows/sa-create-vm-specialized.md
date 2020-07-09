@@ -9,12 +9,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84232824"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Virtuális gép létrehozása egy speciális VHD-ből egy Storage-fiókban
 
@@ -72,7 +71,7 @@ Ha létre kell hoznia egy Storage-fiókot, kövesse az alábbi lépéseket:
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>A VHD feltöltése a tárfiókba
-Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a rendszerképet a Storage-fiókjában található tárolóba. Ez a példa feltölti a **myVHD. vhd** `"C:\Users\Public\Documents\Virtual hard disks\"` fájlt egy **mystorageaccount** nevű Storage-fiókba a **myResourceGroup** -erőforráscsoporthoz. A fájl a **mycontainer** nevű tárolóba kerül, és az új fájlnév **myUploadedVHD. vhd**lesz.
+Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a rendszerképet a Storage-fiókjában található tárolóba. Ez a példa feltölti a **myVHD. vhd** fájlt `"C:\Users\Public\Documents\Virtual hard disks\"` egy **mystorageaccount** nevű Storage-fiókba a **myResourceGroup** -erőforráscsoporthoz. A fájl a **mycontainer** nevű tárolóba kerül, és az új fájlnév **myUploadedVHD. vhd**lesz.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -112,7 +111,7 @@ Győződjön meg arról, hogy:
 ### <a name="deallocate-the-vm"></a>A virtuális gép felszabadítása
 Szabadítsa fel a virtuális gépet, amely felszabadítja a másolandó virtuális merevlemezt. 
 
-* **Portál**: kattintson a **Virtual Machines** > **myVM** > leállítás elemre.
+* **Portál**: kattintson a **Virtual Machines**  >  **myVM** > leállítás elemre.
 * **PowerShell**: a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) használatával állítsa le (szabadítsa fel) a **myVM** nevű virtuális gépet az erőforráscsoport **myResourceGroup**.
 
 ```powershell
@@ -122,11 +121,11 @@ Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 A Azure Portalban a virtuális gép állapota **Leállítva** **(leállítva)** **állapotra** módosult.
 
 ### <a name="get-the-storage-account-urls"></a>A Storage-fiók URL-címeinek beolvasása
-Szüksége lesz a forrás és a cél Storage-fiókok URL-címeire. Az URL-címek így `https://<storageaccount>.blob.core.windows.net/<containerName>/`néznek ki:. Ha már ismeri a Storage-fiókot és a tároló nevét, egyszerűen cserélje le az adatokat a zárójelek között az URL-cím létrehozásához. 
+Szüksége lesz a forrás és a cél Storage-fiókok URL-címeire. Az URL-címek így néznek ki: `https://<storageaccount>.blob.core.windows.net/<containerName>/` . Ha már ismeri a Storage-fiókot és a tároló nevét, egyszerűen cserélje le az adatokat a zárójelek között az URL-cím létrehozásához. 
 
 Az URL-címet a Azure Portal vagy az Azure PowerShell használatával érheti el:
 
-* **Portál**: kattintson a **>** **minden szolgáltatás** > **Storage accounts** > *Storage-fiók* > **Blobok** elemre, és a forrás vhd-fájl valószínűleg a **VHD** -tárolóban található. Kattintson a tároló **tulajdonságai** elemre, és másolja ki a szöveg címkével ellátott **URL-címét**. Szüksége lesz a forrás és a cél tárolók URL-címeire is. 
+* **Portál**: kattintson a **>** **minden szolgáltatás**  >  **Storage accounts**  >  *Storage-fiók*  >  **Blobok** elemre, és a forrás vhd-fájl valószínűleg a **VHD** -tárolóban található. Kattintson a tároló **tulajdonságai** elemre, és másolja ki a szöveg címkével ellátott **URL-címét**. Szüksége lesz a forrás és a cél tárolók URL-címeire is. 
 * **PowerShell**: a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) használatával lekérheti a **myVM** nevű virtuális gép adatait az erőforráscsoport **myResourceGroup**. Az eredmények között keresse meg a **tárolási profil** szakaszt a **VHD URI**-hoz. Az URI első része a tároló URL-címe, az utolsó rész pedig a virtuális gép operációs rendszerének VHD-neve.
 
 ```powershell
@@ -136,7 +135,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>A tárolási hozzáférési kulcsok beolvasása
 Keresse meg a forrás és a cél Storage-fiókok hozzáférési kulcsait. További információ a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../../storage/common/storage-create-storage-account.md).
 
-* **Portál**: kattintson **a minden szolgáltatás** > **Storage-fiókok** > *Storage-fiók* > **hozzáférési kulcsa**elemre. Másolja a **key1**címkével ellátott kulcsot.
+* **Portál**: kattintson **a minden szolgáltatás**  >  **Storage-fiókok**  >  *Storage-fiók*  >  **hozzáférési kulcsa**elemre. Másolja a **key1**címkével ellátott kulcsot.
 * **PowerShell**: a [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) használatával szerezze be a Storage-fiók **mystorageaccount** az erőforráscsoport **myResourceGroup**. Másolja a **key1**címkével ellátott kulcsot.
 
 ```powershell
@@ -225,7 +224,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 További információ a végpontokról és a NSG-szabályokról: [portok megnyitása virtuális gépen az Azure-ban a PowerShell használatával](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és hálózati adapter létrehozása
-A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
+A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) és egy hálózati adapter szükséges.
 
 1. Hozza létre a nyilvános IP-címet. Ebben a példában a nyilvános IP-cím neve **myIP**értékre van állítva.
    
@@ -278,7 +277,7 @@ $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-Storage-fiók használatakor az adatfájlok és az operációs rendszer lemezének URL-címe `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`a következőhöz hasonló:. Ezt a portálon keresheti meg a cél Storage tárolóra való tallózással, a másolt operációs rendszerre vagy az adatvhd-re, majd az URL-cím tartalmának másolására.
+Storage-fiók használatakor az adatfájlok és az operációs rendszer lemezének URL-címe a következőhöz hasonló: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` . Ezt a portálon keresheti meg a cél Storage tárolóra való tallózással, a másolt operációs rendszerre vagy az adatvhd-re, majd az URL-cím tartalmának másolására.
 
 
 ### <a name="complete-the-vm"></a>A virtuális gép befejezése 
@@ -300,7 +299,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **összes szolgáltatás** > **virtuális gépe**alatt, vagy a következő PowerShell-parancsok használatával kell látnia:
+Az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **összes szolgáltatás**  >  **virtuális gépe**alatt, vagy a következő PowerShell-parancsok használatával kell látnia:
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName

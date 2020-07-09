@@ -4,10 +4,9 @@ description: Ismerje meg a Azure Container Registry alapszintű, standard és pr
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 35f5d4ebd4a2b427aadc6e82e265a7da9b6409f8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683420"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry szolgáltatási szintek
@@ -16,7 +15,7 @@ Azure Container Registry több szolgáltatási rétegben (más néven SKU) is el
 
 | Szint | Description |
 | --- | ----------- |
-| **Basic** | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Az alapszintű beállításjegyzékek ugyanazokkal a programozási képességekkel rendelkeznek, mint a standard és a prémium (például Azure Active Directory [Authentication Integration](container-registry-authentication.md#individual-login-with-azure-ad), a [képek törlése][container-registry-delete]és a [webhookok][container-registry-webhook]). A tartalmazott tárolási és képátviteli teljesítmény azonban a legmegfelelőbb az alacsonyabb használati forgatókönyvek esetében. |
+| **Alapszintű** | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Az alapszintű beállításjegyzékek ugyanazokkal a programozási képességekkel rendelkeznek, mint a standard és a prémium (például Azure Active Directory [Authentication Integration](container-registry-authentication.md#individual-login-with-azure-ad), a [képek törlése][container-registry-delete]és a [webhookok][container-registry-webhook]). A tartalmazott tárolási és képátviteli teljesítmény azonban a legmegfelelőbb az alacsonyabb használati forgatókönyvek esetében. |
 | **Standard** | A standard szintű beállításjegyzékek ugyanazokat a képességeket kínálnak, mint az alapszintű, a megnövekedett tárterület és a képátviteli teljesítmény. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
 | **Prémium** | A prémium szintű kibocsátásiegység-forgalmi jegyzékek biztosítják a legnagyobb mennyiségű foglalt tárterületet és az egyidejű műveleteket, ami lehetővé teszi a nagy mennyiségű forgatókönyvek A magasabb képátviteli teljesítmény mellett a Premium olyan funkciókat is tartalmaz, mint például a [geo-replikáció][container-registry-geo-replication] több régióban, a Képcímke-aláírásban a [tartalom megbízhatósága](container-registry-content-trust.md) , a privát [végpontokkal való privát hivatkozás](container-registry-private-link.md) a beállításjegyzékhez való hozzáférés korlátozása érdekében. |
 

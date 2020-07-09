@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan telepíthet vagy frissíthet Azure Functions k�
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768860"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions kötési bővítmények manuális telepítése vagy frissítése a portálról
@@ -22,13 +21,13 @@ A bővítmények a portálról történő manuális telepítéséhez és frissí
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg a Function alkalmazást, és válassza ki. Válassza az **Áttekintés** lapot, és válassza a **Leállítás**lehetőséget.  A Function alkalmazás leállítása a fájlok zárolásának feloldása, hogy a módosítások elvégezhető legyen.
 
-1. Válassza a **platform szolgáltatásai** lapot, és a **fejlesztői eszközök** területen válassza a **speciális eszközök (kudu)** lehetőséget. A kudu-végpont`https://<APP_NAME>.scm.azurewebsites.net/`() új ablakban van megnyitva.
+1. Válassza a **platform szolgáltatásai** lapot, és a **fejlesztői eszközök** területen válassza a **speciális eszközök (kudu)** lehetőséget. A kudu-végpont ( `https://<APP_NAME>.scm.azurewebsites.net/` ) új ablakban van megnyitva.
 
-1. A kudu ablakban válassza a **Debug konzol** > **cmd**elemet.  
+1. A kudu ablakban válassza a **Debug konzol**  >  **cmd**elemet.  
 
-1. A parancssorablakban navigáljon a következőre `D:\home\site\wwwroot` `bin` , és válassza a törlés ikont a mappa törléséhez. A törlés megerősítéséhez kattintson **az OK gombra** .
+1. A parancssorablakban navigáljon a `D:\home\site\wwwroot` következőre, és válassza a törlés ikont a `bin` mappa törléséhez. A törlés megerősítéséhez kattintson **az OK gombra** .
 
-1. Válassza a `extensions.csproj` fájl melletti Szerkesztés ikont, amely meghatározza a Function alkalmazás kötési bővítményeit. A projektfájl az online szerkesztőben nyílik meg.
+1. Válassza a fájl melletti Szerkesztés ikont `extensions.csproj` , amely meghatározza a Function alkalmazás kötési bővítményeit. A projektfájl az online szerkesztőben nyílik meg.
 
 1. Végezze el a **PackageReference** elemek szükséges kiegészítéseit és frissítéseit a **ItemGroup**, majd válassza a **Mentés**lehetőséget. A támogatott csomag-verziók aktuális listája megtalálható a [Mi szükséges csomagok?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki-cikkben. Mindhárom Azure Storage-kötéshez a Microsoft. Azure. webjobs. Extensions. Storage csomag szükséges.
 

@@ -1,26 +1,19 @@
 ---
 title: Az Azure-beli Linux rendszerű virtuális gépek Cloud-init támogatásának áttekintése
 description: A Cloud-init képességeinek áttekintése a virtuális gép konfigurálásához az Azure-ban kiépített időpontban.
-services: virtual-machines-linux
-documentationcenter: ''
 author: danielsollondon
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.date: 05/19/2019
+ms.topic: how-to
+ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920191"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
@@ -42,7 +35,7 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 
 ### <a name="canonical"></a>Canonical
-| Közzétevő/verzió| Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió| Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Canonical 20,04 |UbuntuServer |18,04 – LTS |legújabb |igen | igen |
 |Canonical 18,04 |UbuntuServer |18,04 – LTS |legújabb |igen | igen |
@@ -50,48 +43,67 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 |Canonical 14,04|UbuntuServer |14.04.5-LTS |legújabb |igen | igen |
 
 ### <a name="rhel"></a>RHEL
-| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 7,7-lemezkép támogatja a Cloud-init-et, akkor ez a 2020. szeptember 1-től lesz eltávolítva) | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 7,7 (Gen2)|RHEL | 7lvm – Gen2 | 7.7.2020051922  | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.20200416 | nem-képfrissítések a repülésben, a május végéig  | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor ez a 2020 augusztus 1-től lesz eltávolítva) | Nem, ETA a teljes támogatásért 2020. június|
-|RedHat 8,1 (Gen2) |RHEL |81 – CI-Gen2 |8.1.2020042524 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor ez a 2020 augusztus 1-től lesz eltávolítva) | Nem, ETA a teljes támogatásért 2020. június |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen2)|RHEL | 7lvm – Gen2 | 7.7.2020051922  | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.20200416 | igen  | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Igen (Megjegyzés: ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor a rendszer eltávolítja az 2020. augusztus 1-től) | Nem, ETA a teljes támogatásért 2020. június|
+|RedHat 8,1 (Gen2) |RHEL |81 – CI-Gen2 |8.1.2020042524 | Igen (Megjegyzés: ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor a rendszer eltávolítja az 2020. augusztus 1-től) | Nem, ETA a teljes támogatásért 2020. június |
 
-RedHat: a RHEL 7,8 és a 8,2 (Gen1 és Gen2) lemezképek a Cloud-init használatával lettek kiépítve.
+* Az összes RedHat: RHEL 7,8 és 8,2 (Gen1 és Gen2) lemezkép a Cloud-init használatával lett kiépítve.
 
 ### <a name="centos"></a>CentOS
 
-| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes CentOS 7,7-lemezkép támogatja a Cloud-init-t, akkor ez a 2020. szeptember 1-től lesz eltávolítva) | igen – a csomag verziójának támogatása: *18,5 -3. el7. CentOS*|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS – HPC | 7_7 – Gen2 |7.6.2020062601 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 |CentOS – HPC | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
 
-* CentOS 7,7 lemezképek, amelyek a Cloud-init engedélyezve lesznek, itt frissíthető itt: 2020. június 
-* A CentOS 7,8 lemezképek a Cloud-init használatával lettek kiépítve.
-
+* Minden OpenLogic: CentOS 7,8 és 8,2 (Gen1 és Gen2) lemezképek kiépítve a Cloud-init használatával.
 
 ### <a name="oracle"></a>Oracle
 
-| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init-t | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
+|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init használatát | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
 
-### <a name="suse-sles"></a>SuSE SLES
-| Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE SLES 15 SP1 |SUSE |SLES-15 – SP1 – alapszintű |Cloud-init – előzetes verzió| Részletekért lásd a [SUSE Cloud-init blogját](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Nem, előzetes verzióban. |
-|SUSE SLES 15 SP1 |SUSE |SLES-15 – SP1 – alapszintű |Gen2 – Cloud-init – előzetes verzió| Részletekért lásd a [SUSE Cloud-init blogját](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Nem, előzetes verzióban. |
+### <a name="suse-sles"></a>SUSE SLES
+Ezek a SLES-lemezképek a Cloud-init használatával lettek kiépítve, a Gen2 lemezkép változatait is frissítették.
+* SUSE: SLES-15-SP1-{Basic/BYOS/HPC/HPC-BYOS/chost-BYOS}: gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1: gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1-BYOS: gen1:2020.06.10
+* SUSE: Manager-proxy-4-BYOS: gen1:2020.06.10
+* SUSE: Manager-Server-4-BYOS: gen1:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 15:2020.06.10
+* SUSE: SLES-12-SP5: gen1:2020.06.10
+* SUSE: SLES-12-SP5 {-BYOS/Basic/HPC-BYOS/HPC}: gen1:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP4:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP3:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP2:2020.06.10
 
 
 ### <a name="debian"></a>Debian
-Jelenleg is dolgozunk az előzetes verzió támogatásán, a frissítések várhatóan 2020 júniusában frissülnek.
+| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| Debian (Gen1) |Debian – 10 | 10 – cloudinit |Cloud-init – előzetes verzió| Igen (csak előzetes verzió) | Nem, előzetes verzióban. |
+| Debian (Gen2) |Debian – 10 | 10 – cloudinit – Gen2 |Cloud-init – előzetes verzió| Igen (csak előzetes verzió) | Nem, előzetes verzióban. |
+
+
+
 
 Jelenleg Azure Stack támogatni fogja a Cloud-init-kompatibilis lemezképek kiépítési folyamatát.
-
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Mi a különbség a Cloud-init és a Linux-ügynök (WALA) között?
 A WALA egy Azure platform-specifikus ügynök, amely virtuális gépek kiépítésére és konfigurálására, valamint az [Azure-bővítmények](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)kezelésére szolgál. 
@@ -114,7 +126,8 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
-A következő lépés egy, a *Cloud-init. txt* nevű fájl létrehozása a jelenlegi rendszerhéjban, majd a következő konfiguráció beillesztése. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+
+A következő lépés egy fájl létrehozása az aktuális rendszerhéjban, *cloud-init.txt* elnevezve, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -126,7 +139,7 @@ Nyomja le `ctrl-X` a fájlt a fájlból való kilépéshez, majd a fájl `y` men
 
 Utolsó lépésként hozzon létre egy virtuális gépet az az [VM Create](/cli/azure/vm) paranccsal. 
 
-A következő példa létrehoz egy *centos74* nevű virtuális gépet, és SSH-kulcsokat hoz létre, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. A következő példa egy *centos74*nevű virtuális gépet hoz létre:
+A következő példa létrehoz egy *centos74* nevű virtuális gépet, és SSH-kulcsokat hoz létre, ha azok még nem léteznek az alapértelmezett kulcs helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. 
 
 ```azurecli-interactive 
 az vm create \
@@ -148,6 +161,10 @@ A virtuális gép üzembe helyezése után a Cloud-init a `--custom-data` virtu�
 A Cloud-init naplózással kapcsolatos további részletekért tekintse meg a [Cloud-init dokumentációját](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) . 
 
 ## <a name="next-steps"></a>További lépések
+
+[A Cloud-init hibáinak elhárítása](cloud-init-troubleshooting.md).
+
+
 A Cloud-init példákat a konfigurációs változásokról a következő dokumentumokban talál:
  
 - [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)

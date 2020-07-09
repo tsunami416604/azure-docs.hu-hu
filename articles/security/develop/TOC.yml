@@ -1,20 +1,6 @@
 - name: A biztonságos fejlesztés dokumentációja
   href: index.yml
-- name: Mintaalkalmazások
-  expanded: true
-  items:
-    - name: Kezdő a biztonságos fejlesztés terén
-      items:
-        - name: Webalkalmazás egy Linux-tárolóban
-          href: secure-web-app.md
-        - name: Webalkalmazás és az Azure Active Directory
-          href: secure-aad-app.md
-    - name: Iparági megfelelőségi megoldások
-      items:
-        - name: Bankkártyaágazat
-          href: secure-pci-web-app.md
 - name: Alapelvek
-  expanded: true
   items:
     - name: Ajánlott eljárások
       items:
@@ -26,8 +12,8 @@
           href: secure-develop.md
         - name: Biztonságos alkalmazások üzembe helyezése
           href: secure-deploy.md
-- name: További források
   expanded: true
+- name: További források
   items:
     - name: Microsoft Security Code Analysis
       items:
@@ -95,3 +81,4 @@
               href: threat-modeling-tool-sensitive-data.md
             - name: Munkamenet-kezelés
               href: threat-modeling-tool-session-management.md
+  expanded: true

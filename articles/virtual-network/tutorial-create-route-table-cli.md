@@ -4,25 +4,24 @@ description: Ebből a cikkből megtudhatja, hogyan irányíthatja át a hálóza
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703349"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom irányítása útválasztási táblázattal az Azure CLI használatával
 
@@ -36,7 +35,7 @@ Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automa
 * Virtuális gépek (VM) üzembe helyezése különböző alhálózatokban
 * Forgalom irányítása egyik alhálózatról hálózati virtuális berendezésen keresztül
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -162,7 +161,7 @@ A parancs végrehajtása akár egy percet is igénybe vehet.
 
 Hozzon létre két virtuális gépet a virtuális hálózaton, így ellenőrizheti, hogy a *nyilvános* alhálózatról érkező forgalom a NVA egy későbbi lépésben átirányítja-e a *privát* alhálózatra. 
 
-Hozzon létre egy virtuális gépet a *nyilvános* alhálózaton az [az VM Create](/cli/azure/vm)paranccsal. A `--no-wait` paraméter lehetővé teszi, hogy az Azure végrehajtsa a parancsot a háttérben, így továbbra is folytathatja a következő parancsot. A cikk egyszerűsítése érdekében a rendszer jelszót használ. A kulcsokat jellemzően éles környezetben használják. Ha kulcsokat használ, az SSH-ügynök továbbítását is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje `<replace-with-your-password>` le a parancsot a következő parancsra a választott jelszóval.
+Hozzon létre egy virtuális gépet a *nyilvános* alhálózaton az [az VM Create](/cli/azure/vm)paranccsal. A `--no-wait` paraméter lehetővé teszi, hogy az Azure végrehajtsa a parancsot a háttérben, így továbbra is folytathatja a következő parancsot. A cikk egyszerűsítése érdekében a rendszer jelszót használ. A kulcsokat jellemzően éles környezetben használják. Ha kulcsokat használ, az SSH-ügynök továbbítását is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le a `<replace-with-your-password>` parancsot a következő parancsra a választott jelszóval.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -210,7 +209,7 @@ Jegyezze fel a **publicIpAddress** értékét. Ez a címe egy későbbi lépésb
 
 ## <a name="route-traffic-through-an-nva"></a>Forgalom irányítása NVA-n keresztül
 
-A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVmPrivate* virtuális géppel. Cserélje le * \<a publicIpAddress>t* a virtuális gép nyilvános IP-címére. A fenti példában az IP-cím *13.90.242.231*.
+A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVmPrivate* virtuális géppel. Cserélje le a *\<publicIpAddress>* t a virtuális gép nyilvános IP-címére. A fenti példában az IP-cím *13.90.242.231*.
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -269,7 +268,7 @@ Láthatja, hogy az első ugrás a 10.0.2.4 cím, amely az NVA magánhálózati I
 
 Az SSH-munkamenetek bezárásával a *myVmPublic* és a *myVmPrivate* virtuális gépek is megtalálhatók.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 

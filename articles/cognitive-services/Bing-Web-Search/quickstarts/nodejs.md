@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: webes keresés végrehajtása Node. js-Bing Web Search REST API'
+title: 'Gyors útmutató: webes keresés végrehajtása Node.js-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérelmeket küldhet a Bing Web Search REST API Node. js használatával, és JSON-választ kap
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API a Node.js használatával, és JSON-választ kap
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873957"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611322"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és a Node. js használatával
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és Node.js használatával
 
-Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Node. js-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Node.js alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
 
-Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet a projektbe egy Search. js nevű fájlban:
+Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet a projektbe egy search.js nevű fájlban:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Az előfizetői azonosító megadása
 
-Ez a kódrészlet a `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetési kulcs tárolására, ami jó megoldás a kulcsok véletlen expozíciójának megelőzésére a kód telepítésekor. Az előfizetési kulcs megkereséséhez tekintse meg [az API-kat](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7).
+Ez a kódrészlet a `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetési kulcs tárolására, ami jó megoldás a kulcsok véletlen expozíciójának megelőzésére a kód telepítésekor.
 
 Ha nem ismeri a környezeti változók használatát, vagy az alkalmazást a lehető leggyorsabban szeretné futtatni, cserélje le az `process.env['AZURE_SUBSCRIPTION_KEY']` értéket karakterláncként beállított előfizetési kulcsra.
 

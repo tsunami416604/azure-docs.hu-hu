@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83997009"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
@@ -235,7 +234,7 @@ Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, a
 ### <a name="schema-overview"></a>Séma áttekintése
 Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
-| JSON-tulajdonság | Leírás |
+| JSON-tulajdonság | Description |
 | --- | --- |
 | **startTime** | Dátum-idő érték. Alapszintű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. |
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. <!-- This property is optional. --> |
@@ -283,11 +282,11 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 | --- | --- | --- | --- | --- | --- |
-| **startTime** | sztring | Igen | Nincs | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **megismétlődésének** | objektum | Igen | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | szám | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | sztring | Igen | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **menetrend** | objektum | Nem | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | sztring | Yes | None | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **megismétlődésének** | objektum | Yes | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | szám | No | 1 | 1–1000 | `"interval":10` |
+| **endTime** | sztring | Yes | None | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **menetrend** | objektum | No | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
@@ -314,7 +313,7 @@ Ha több **Schedule** elem is meg van adva, a kiértékelés sorrendje a legtöb
 
 A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
-| JSON-elem | Leírás | Érvényes értékek |
+| JSON-elem | Description | Érvényes értékek |
 | --- | --- | --- |
 | **perc** | Az óra azon perce, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje |
 | **óra** | A nap azon órái, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje |
@@ -338,7 +337,7 @@ Ez a szakasz az ismétlődésütemezésekre mutat be példákat. A **schedule** 
 
 A példák azt feltételezik, hogy az **intervallum** értéke 1, és a **gyakoriság** értéke helyes az ütemezés definíciója szerint. Például nem rendelkezhet "Day" **Frequency** értékkel, és az **monthDays** módosítás is szerepel az **ütemezett** objektumban. Ezen korlátozások leírása az előző szakaszban található táblázatban szerepel.
 
-| Példa | Leírás |
+| Példa | Description |
 | --- | --- |
 | `{"hours":[5]}` | Minden nap 05:00-kor fut le. |
 | `{"minutes":[15], "hours":[5]}` | Minden nap 05:15-kor fut le. |

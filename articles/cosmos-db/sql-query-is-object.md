@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 43d8237d859249317d7b581e25ed9a2b34d39d00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303800"
 ---
 # <a name="is_object-azure-cosmos-db"></a>IS_OBJECT (Azure Cosmos DB)
@@ -34,7 +33,7 @@ IS_OBJECT(<expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a `IS_OBJECT` függvény használatával ellenőrzi a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait.  
+  A következő példa a függvény használatával ellenőrzi a JSON logikai, szám, karakterlánc, null, objektum, tömb és nem definiált típusok objektumait `IS_OBJECT` .  
   
 ```sql
 SELECT   

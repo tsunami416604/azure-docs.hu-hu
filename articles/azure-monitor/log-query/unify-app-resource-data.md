@@ -8,10 +8,9 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77137494"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Több Azure Monitor Application Insights erőforrás egységesítése 
@@ -24,7 +23,7 @@ Ez a példa azt mutatja be, hogyan figyelhető meg több Application Insights er
 
 Hozzon létre egy függvényt a Union operátor használatával az alkalmazások listájával, majd mentse a lekérdezést a munkaterületen a *applicationsScoping*alias függvényként. 
 
-A felsorolt alkalmazásokat bármikor módosíthatja a portálon, ha megnyitja a lekérdezési tallózót a munkaterületen, majd kiválasztja a függvényt a szerkesztéshez, majd a PowerShell- `SavedSearch` parancsmag használatával vagy a mentéshez. 
+A felsorolt alkalmazásokat bármikor módosíthatja a portálon, ha megnyitja a lekérdezési tallózót a munkaterületen, majd kiválasztja a függvényt a szerkesztéshez, majd a PowerShell-parancsmag használatával vagy a mentéshez `SavedSearch` . 
 
 >[!NOTE]
 >Ez a metódus nem használható a naplózási riasztásokkal, mert a riasztási szabály erőforrásainak, köztük a munkaterületeknek és az alkalmazásoknak a hozzáférés-ellenőrzését a riasztás létrehozási ideje végzi. Új erőforrások hozzáadása a függvényhez a riasztás létrehozása után nem támogatott. Ha az erőforrás-hatókör függvényét szeretné használni a naplózási riasztásokban, szerkesztenie kell a riasztási szabályt a portálon, vagy egy Resource Manager-sablonnal a hatókörrel rendelkező erőforrások frissítéséhez. Azt is megteheti, hogy felveszi az erőforrások listáját a napló riasztási lekérdezésében.
@@ -73,7 +72,7 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | név |
+| AvailabilityTestName | name |
 | AvailabilityTimestamp | időbélyeg |
 | Böngésző | client_browser |
 | Város | client_city |
@@ -82,31 +81,31 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | Ország | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | név | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| ExceptionType | type |
+| ExceptionType | típus |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | Operációs rendszer | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | név | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | név | 
+| RequestName | name | 
 | RequestSuccess | sikeres | 
 | ResponseCode | resultCode | 
 | Szerepkör | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetryTYpe | típus |
 | URL-cím | url |
 | UserAccountId | user_AccountId |
 

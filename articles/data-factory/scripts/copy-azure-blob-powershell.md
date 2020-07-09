@@ -11,10 +11,9 @@ ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
 ms.openlocfilehash: 2e289f30ef1c1883c38884eb563a41bccc841329
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79462651"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>A PowerShell használatával hozzon létre egy adatfeldolgozó-folyamatot a felhőben tárolt adatmásoláshoz
@@ -54,7 +53,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 Ez a szkript a következő parancsokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Adat-előállító létrehozása |

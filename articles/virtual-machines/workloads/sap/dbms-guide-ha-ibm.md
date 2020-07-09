@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978382"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel
@@ -33,7 +32,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Leírás |
+| SAP-Megjegyzés | Description |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -55,7 +54,7 @@ A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket 
 | [SAP számítási feladatok az Azure tervezési és üzembe helyezési ellenőrzőlistáján][azr-sap-plancheck] |
 | [SUSE Linux Enterprise Server for SAP Applications 12 SP4 – ajánlott eljárások útmutatók][sles-for-sap-bp] |
 | [SUSE Linux Enterprise magas rendelkezésre állású bővítmény 12 SP4][sles-ha-guide] |
-| [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezés az SAP-munkaterheléshez][dbms-db2] |
+| [IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz][dbms-db2] |
 | [IBM DB2 HADR 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR R 10,5][db2-hadr-10.5] |
 
@@ -174,7 +173,7 @@ Az elsődleges IBM DB2 LUW adatbázis-példány beállítása:
 
 Ha a készenléti adatbázis-kiszolgálót az SAP homogén rendszermásolási eljárással szeretné beállítani, hajtsa végre a következő lépéseket:
 
-1. Válassza a **rendszermásolási** lehetőség > a **célként kijelölt rendszerek** > **elosztott** > **adatbázis-példányát**.
+1. Válassza a **rendszermásolási** lehetőség > a **célként kijelölt rendszerek**  >  **elosztott**  >  **adatbázis-példányát**.
 1. Másolási módszerként válassza a **homogén rendszer** lehetőséget, hogy a biztonsági mentés használatával visszaállítsa a biztonsági mentést a készenléti kiszolgáló példányán.
 1. Amikor eléri a kilépési lépést az adatbázis homogén rendszermásolásra való visszaállításához, lépjen ki a telepítőből. Állítsa vissza az adatbázist az elsődleges gazdagép biztonsági másolatából. Az összes további telepítési fázis már végre lett hajtva az elsődleges adatbázis-kiszolgálón.
 1. HADR beállítása az IBM DB2-hez.
@@ -314,8 +313,8 @@ A következő elemek előtaggal vannak ellátva:
 - **[2]**: csak a 2. csomópontra vonatkozik
 
 **[A]** a pacemaker konfigurálásának előfeltételei:
-1. Állítsa le mindkét adatbázis-kiszolgálót a DB2\<SID> a db2stop.
-1. Módosítsa a rendszerhéj-környezetet DB2\<SID> felhasználó */bin/ksh*. Javasoljuk, hogy használja a YaST eszközt. 
+1. Állítsa le mindkét adatbázis-kiszolgálót a db2stop-mel rendelkező User DB2- \<sid> vel.
+1. Változtassa meg a/bin/ksh a rendszerhéj-környezetet a DB2 \<sid> -felhasználó számára. */bin/ksh* Javasoljuk, hogy használja a YaST eszközt. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-konfiguráció
@@ -409,7 +408,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Állítsa a **hozzárendelést** **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
-   d. Kattintson az **OK** gombra.
+   d. Válassza az **OK** lehetőséget.
 
    e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
@@ -425,7 +424,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
 
-   f. Kattintson az **OK** gombra.
+   f. Válassza az **OK** lehetőséget.
 
 1. Állapot mintavételének létrehozása:
 
@@ -435,7 +434,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5**értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2**értékre.
 
-   d. Kattintson az **OK** gombra.
+   d. Válassza az **OK** lehetőséget.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
@@ -451,18 +450,18 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
 
-   g. Kattintson az **OK** gombra.
+   : Válassza az **OK** lehetőséget.
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Az SAP-profilok módosítása virtuális IP-cím használatára a kapcsolódáshoz
 A HADR-konfiguráció elsődleges példányához való kapcsolódáshoz az SAP-alkalmazás rétegének a Azure Load Balancerhoz megadott és konfigurált virtuális IP-címet kell használnia. A következő módosítások szükségesek:
 
-/sapmnt/\<SID>/Profile/default. PFL
+/sapmnt/ \<SID> /Profile/default. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/Global/DB6/db2cli.ini
+/sapmnt/ \<SID> /global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -480,10 +479,10 @@ A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissíthet
  
 1. Jelentkezzen be a J2EE-példány elsődleges alkalmazáskiszolgáló kiszolgálójára, és hajtsa végre a következőt:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. A bal oldali keretben válassza a **biztonsági tároló**elemet.
-1. A jobb oldali keretben válassza a JDBC/Pool/\<SAPSID>/URL.
+1. A jobb oldali keretben válassza a JDBC/Pool//URL. elemet. \<SAPSID>
 1. Módosítsa az állomásnév nevét a JDBC URL-címében a virtuális állomásnévre.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
@@ -541,7 +540,7 @@ Az SAP-rendszer eredeti állapota dokumentálva van a Transaction DBACOCKPIT > C
 > A teszt elkezdése előtt győződjön meg a következőket:
 > * A pacemaker nem rendelkezik sikertelen műveletekkel (CRM-állapot).
 > * Nincsenek megkötések (az áttelepítési teszt maradékai)
-> * Az IBM DB2 HADR szinkronizálása működik. Keresés DB2\<SID-vel> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Az IBM DB2 HADR szinkronizálása működik. Keresés DB2-vel\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Telepítse át az elsődleges DB2-adatbázist futtató csomópontot a következő parancs végrehajtásával:
@@ -575,9 +574,9 @@ Telepítse újra az erőforrást a *azibmdb01* , és törölje a hely megkötés
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **CRM-erőforrás \<migrálása \<RES_NAME> gazdagép>:** Megkötéseket hoz létre, és problémákat okozhat az átvétel során
-- **CRM-erőforrás \<törlése RES_NAME>**: a hely korlátozásainak törlése
-- **CRM-erőforrás \<karbantartása RES_NAME>**: törli az erőforrás összes hibáját
+- **CRM-erőforrás migrálása \<res_name> \<host> :** a hely megkötéseit hozza létre, és problémákat okozhat az átvétel során
+- **CRM-erőforrás \<res_name> törlése **: törli a hely megkötéseit
+- **CRM-erőforrás \<res_name> karbantartása **: törli az erőforrás összes hibáját
 
 ### <a name="test-the-fencing-agent"></a>A kerítés ügynök tesztelése
 
@@ -750,7 +749,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-Felhasználó DB2\<SID> Execute parancs db2stop Force:
+Felhasználó DB2- \<sid> db2stop kényszerítési parancsának futtatása:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758479"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Serial Console használata SysRq- és NMI-hívásokhoz
@@ -19,13 +18,13 @@ ms.locfileid: "81758479"
 ## <a name="system-request-sysrq"></a>Rendszerkérelem (SysRq)
 A SysRq a Linux operációs rendszer kernele által értelmezett kulcsok sorozata, amely előre definiált műveletekből álló készletet indíthat el. Ezeket a parancsokat gyakran használják, ha a virtuális gép hibaelhárítását vagy helyreállítását nem lehet a hagyományos felügyeleten keresztül végrehajtani (például ha a virtuális gép nem válaszol). Az Azure soros konzol SysRq funkciójának használatával a rendszer a SysRq kulcs és a fizikai billentyűzeten megadott karakterek lenyomását fogja utánozni.
 
-A SysRq-sorozatot követően a kernel konfigurációja vezérli, hogy a rendszer hogyan reagáljon. A SYSRQ engedélyezésével és letiltásával kapcsolatos információkért tekintse meg a *SYSRQ felügyeleti útmutató* [szöveges](https://aka.ms/kernelorgsysreqdoc) | [Markdown](https://aka.ms/linuxsysrq).  
+A SysRq-sorozatot követően a kernel konfigurációja vezérli, hogy a rendszer hogyan reagáljon. A SYSRQ engedélyezésével és letiltásával kapcsolatos információkért tekintse meg a *SYSRQ felügyeleti útmutató* [szöveges](https://aka.ms/kernelorgsysreqdoc)  |  [Markdown](https://aka.ms/linuxsysrq).  
 
 Az Azure soros konzol használatával SysRq küldhet egy Azure-beli virtuális gépre az alább látható parancssáv billentyűzet ikonjával.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-Ha a "Send SysRq parancs" lehetőséget választja, megnyílik egy párbeszédpanel, amely általános SysRq lehetőségeket biztosít, vagy elfogadja a párbeszédpanelen megadott SysRq parancsok sorrendjét.  Ez lehetővé teszi, hogy a SysRq sorozata magas szintű műveletet végezzen, például biztonságos újraindítás a következő használatával: `REISUB`.
+Ha a "Send SysRq parancs" lehetőséget választja, megnyílik egy párbeszédpanel, amely általános SysRq lehetőségeket biztosít, vagy elfogadja a párbeszédpanelen megadott SysRq parancsok sorrendjét.  Ez lehetővé teszi, hogy a SysRq sorozata magas szintű műveletet végezzen, például biztonságos újraindítás a következő használatával: `REISUB` .
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
@@ -73,7 +72,7 @@ A fenti SysRq felügyeleti útmutatóból:
 |``x``  |    A xmon Interface használja a PPC/PowerPC platformokon. Globális PMU-regisztrációk megjelenítése a sparc64. Az összes TLB-bejegyzés kiírása a MIPS-ben.
 |``y``  |    Globális CPU-regisztrációk megjelenítése [SPARC-64-specifikus]
 |``z``  |    A ftrace puffer kiírása
-|``0``-``9`` | Beállítja a konzol naplózási szintjét, amely szabályozza, hogy mely kernel-üzenetek lesznek kinyomtatva a konzolra. (``0``például úgy tenné, hogy csak olyan vészhelyzeti üzenetek legyenek a konzolon, mint a pánik vagy a Hoppá.)
+|``0``-``9`` | Beállítja a konzol naplózási szintjét, amely szabályozza, hogy mely kernel-üzenetek lesznek kinyomtatva a konzolra. (például úgy tenné ``0`` , hogy csak olyan vészhelyzeti üzenetek legyenek a konzolon, mint a pánik vagy a Hoppá.)
 
 ### <a name="distribution-specific-documentation"></a>Distribution-specifikus dokumentáció ###
 A SysRq-re és a Linux konfigurálására vonatkozó, az összeomlási memóriakép létrehozásához szükséges telepítési dokumentációt az alábbi hivatkozásokra kattintva tekintheti meg:
@@ -104,7 +103,7 @@ Olyan Linux rendszerekhez, amelyek támogatják a sysctl-t a rendszermag paramé
 1. A sysctl újraindítása vagy frissítése a futtatásával <br>
     `sysctl -p`
 
-A Linux kernel-konfigurációkkal kapcsolatos további információkért `unknown_nmi_panic`, `panic_on_io_nmi`beleértve a `panic_on_unrecovered_nmi`, a és a rendszert, lásd: [a/proc/sys/kernel/dokumentációja *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). A NMI-re és a Linux konfigurálására vonatkozó, az összeomlási memóriakép létrehozásához szükséges, az alábbi hivatkozásokra kattintva részletesen tájékozódhat:
+A Linux kernel-konfigurációkkal kapcsolatos további információkért, beleértve a, a és a rendszert, `unknown_nmi_panic` `panic_on_io_nmi` `panic_on_unrecovered_nmi` lásd: [a/proc/sys/kernel/dokumentációja *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). A NMI-re és a Linux konfigurálására vonatkozó, az összeomlási memóriakép létrehozásához szükséges, az alábbi hivatkozásokra kattintva részletesen tájékozódhat:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel összeomlási memóriaképe](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

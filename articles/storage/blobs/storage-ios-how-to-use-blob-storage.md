@@ -6,13 +6,12 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465490"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
 
@@ -82,7 +81,7 @@ Ezután importálhatja a keretrendszer fájlját az alkalmazásba a következő 
 #import <AZSClient/AZSClient.h>
 ```
 
-Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és importálnia kell a \< AZSClient/AZSClient. h-t> ott:
+Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és ott kell importálnia \<AZSClient/AZSClient.h> :
 
 1. Hozzon létre egy header fájlt `Bridging-Header.h` , és adja hozzá a fenti importálási utasítást.
 2. Lépjen a *létrehozási beállítások* lapra, és keressen rá az *Objective-C áthidaló fejlécre*.

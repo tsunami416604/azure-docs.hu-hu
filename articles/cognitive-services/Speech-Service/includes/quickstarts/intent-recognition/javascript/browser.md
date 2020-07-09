@@ -3,13 +3,12 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 4ebd0b7b02036ca9aed6848ee261d32245ba4973
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979671"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035720"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
@@ -159,7 +158,7 @@ Az objektumok inicializálásához `SpeechRecognizer` létre kell hoznia egy oly
 
 ## <a name="create-an-audio-configuration"></a>Hang konfigurációjának létrehozása
 
-Most létre kell hoznia egy `AudioConfig` objektumot, amely a bemeneti devic3 mutat. Szúrja be ezt a kódot a `startIntentRecognizeAsyncButton.addEventListener()` metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
+Most létre kell hoznia egy `AudioConfig` objektumot, amely a bemeneti eszközre mutat. Szúrja be ezt a kódot a `startIntentRecognizeAsyncButton.addEventListener()` metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
 
 ```JavaScript
         var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
@@ -245,7 +244,7 @@ Szúrja be ezt a kódot a modell mellett:
 Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat egy jogkivonatforrást a bemutató alkalmazáshoz.
 Így az előfizetői azonosítója soha nem fog kikerülni a kiszolgálóról, közben viszont a felhasználóknak úgy teheti lehetővé a beszédfelismerési képességek használatát, hogy ők maguk semmilyen engedélyezési kódot nem adnak meg.
 
-Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP parancsnyelv használatát. Írja be a következő kódot:
+Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP programozási nyelvet a curl enabled használatával. Írja be a következő kódot:
 
 ```php
 <?php
@@ -281,6 +280,6 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 
 Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [Luis-régiót](../../../../regions.md) és a Luis-alkalmazás azonosítóját, és indítson el egy felismerést a mikrofon használatával. Ha be van állítva, a jogkivonat-forrástól kapja meg a tokent, és megkezdi a kimondott parancsok felismerését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](footer.md)]

@@ -11,32 +11,32 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356406"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
 Ez a cikk azt ismerteti, hogyan működik a Azure AD Connect és az Azure AD közötti kapcsolat, és hogyan lehet elhárítani a kapcsolódási problémákat. Ezeket a problémákat legvalószínűbben a proxykiszolgáló fogja látni a környezetben.
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>Csatlakozási problémák elhárítása a telepítővarázsló
-A Azure AD Connect a modern hitelesítést használja (a ADAL könyvtár használatával) a hitelesítéshez. A telepítővarázsló és a Szinkronizáló motor megfelelő működéséhez szükség van a Machine. config fájl megfelelő konfigurálására, mivel ez a kettő .NET-alkalmazás.
+A Azure AD Connect a modern hitelesítést használja (a ADAL könyvtár használatával) a hitelesítéshez. A telepítővarázsló és a Szinkronizáló motor megfelelő működéséhez szükség van a machine.config megfelelő konfigurálására, mivel ez a két .NET-alkalmazás.
 
 Ebben a cikkben bemutatjuk, hogyan kapcsolódhat a fabrikam az Azure AD-hez a proxyján keresztül. A proxykiszolgáló neve fabrikamproxy, és az 8080-es portot használja.
 
-Először is meg kell győződnie arról, hogy a [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) megfelelően van konfigurálva.
+Először is meg kell győződnie arról, hogy a [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) megfelelően van konfigurálva.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
-> Néhány nem Microsoft-blogban a rendszer dokumentálja, hogy a MIIServer. exe. config fájl módosításait kell elvégezni. Ez a fájl azonban minden frissítéskor felül van írva, így még akkor is, ha az a kezdeti telepítés során is működik, a rendszer leáll az első frissítéskor. Ezért javasoljuk, hogy a Machine. config fájlt frissítse helyette.
+> Néhány nem Microsoft-blogban dokumentálja, hogy ehelyett miiserver.exe.config módosításokat kell végezni. Ez a fájl azonban minden frissítéskor felül van írva, így még akkor is, ha az a kezdeti telepítés során is működik, a rendszer leáll az első frissítéskor. Emiatt a javaslat a machine.config frissítésére szolgál.
 >
 >
 
@@ -44,7 +44,7 @@ A proxykiszolgáló számára is meg kell nyitni a szükséges URL-címeket. A h
 
 Ezen URL-címek közül az alábbi táblázat az Azure AD-hez való kapcsolódáshoz szükséges abszolút minimális érték. A lista nem tartalmaz olyan választható szolgáltatásokat, mint a jelszó-visszaírási vagy a Azure AD Connect Health. Itt dokumentáljuk a kezdeti konfiguráció hibaelhárításának segítségét.
 
-| URL-cím | Port | Leírás |
+| URL-cím | Port | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL-listák letöltésére használatos. |
 | \*. verisign.com |HTTP/80 |CRL-listák letöltésére használatos. |
@@ -62,7 +62,7 @@ A következő problémák a telepítővarázsló leggyakoribb hibái.
 Ez a hiba akkor jelenik meg, ha a varázsló nem tudja elérni a proxyt.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
-* Ha ezt a hibát látja, ellenőrizze, hogy helyesen konfigurálta-e a [Machine. config](how-to-connect-install-prerequisites.md#connectivity) fájlt.
+* Ha ezt a hibát látja, ellenőrizze, hogy helyesen konfigurálta-e a [machine.config](how-to-connect-install-prerequisites.md#connectivity) .
 * Ha úgy tűnik, hogy helyes, kövesse a [proxy kapcsolatának ellenőrzése](#verify-proxy-connectivity) című témakör lépéseit, és ellenőrizze, hogy a probléma a varázslón kívül található-e.
 
 ### <a name="a-microsoft-account-is-used"></a>Microsoft-fiók van használatban
@@ -70,33 +70,33 @@ Ha **iskolai vagy szervezeti** fiók helyett **Microsoft-fiók** használ, álta
 ![A rendszer Microsoft-fiókot használ](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Az MFA-végpont nem érhető el
-Ez a hiba akkor jelenik meg **https://secure.aadcdn.microsoftonline-p.com** , ha a végpont nem érhető el, és a globális rendszergazda engedélyezte az MFA-t.
+Ez a hiba akkor jelenik meg, ha a végpont **https://secure.aadcdn.microsoftonline-p.com** nem érhető el, és a globális rendszergazda engedélyezte az MFA-t.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Ha ezt a hibát látja, ellenőrizze, hogy a végpont **Secure.aadcdn.microsoftonline-p.com** hozzá lett-e adva a proxyhoz.
 
 ### <a name="the-password-cannot-be-verified"></a>A jelszó nem ellenőrizhető
-Ha a telepítővarázsló sikeresen csatlakozik az Azure AD-hoz, de a jelszót nem lehet ellenőrizni, a következő hibaüzenet jelenik meg: ![helytelen jelszó.](./media/tshoot-connect-connectivity/badpassword.png)
+Ha a telepítővarázsló sikeresen csatlakozik az Azure AD-hoz, de a jelszót nem lehet ellenőrizni, a következő hibaüzenet jelenik meg: ![ helytelen jelszó.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * A jelszó ideiglenes jelszó, és meg kell változtatni? Valóban a helyes jelszó? Próbáljon bejelentkezni `https://login.microsoftonline.com` (a Azure ad Connect-kiszolgálót futtató másik számítógépre), és ellenőrizze, hogy a fiók használható-e.
 
 ### <a name="verify-proxy-connectivity"></a>Proxy kapcsolatának ellenőrzése
-Annak ellenőrzéséhez, hogy a Azure AD Connect-kiszolgáló rendelkezik-e tényleges kapcsolattal a proxyval és az internettel, a PowerShell használatával ellenőrizze, hogy a proxy engedélyezi-e a webes kérelmeket. A PowerShell-parancssorban futtassa `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`a parancsot. (Technikailag az első hívás, `https://login.microsoftonline.com` és ez az URI is működik, de a másik URI gyorsabban reagál.)
+Annak ellenőrzéséhez, hogy a Azure AD Connect-kiszolgáló rendelkezik-e tényleges kapcsolattal a proxyval és az internettel, a PowerShell használatával ellenőrizze, hogy a proxy engedélyezi-e a webes kérelmeket. A PowerShell-parancssorban futtassa a parancsot `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Technikailag az első hívás, `https://login.microsoftonline.com` és ez az URI is működik, de a másik URI gyorsabban reagál.)
 
-A PowerShell a Machine. config fájl konfigurációját használja a proxyhoz való kapcsolatfelvételhez. A WinHTTP/netsh beállításai nem befolyásolhatják ezeket a parancsmagokat.
+A PowerShell a machine.config konfigurációját használja a proxyhoz való kapcsolatfelvételhez. A WinHTTP/netsh beállításai nem befolyásolhatják ezeket a parancsmagokat.
 
-Ha a proxy megfelelően van konfigurálva, akkor sikeres állapotot kell kapnia ![: proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Ha a proxy megfelelően van konfigurálva, akkor sikeres állapotot kell kapnia: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-Ha nem **tud csatlakozni a távoli kiszolgálóhoz**, a PowerShell a proxy vagy a DNS használata nélkül próbál közvetlen hívást végrehajtani, és nem megfelelően van konfigurálva. Győződjön meg arról, hogy a **Machine. config** fájl megfelelően van konfigurálva.
+Ha nem **tud csatlakozni a távoli kiszolgálóhoz**, a PowerShell a proxy vagy a DNS használata nélkül próbál közvetlen hívást végrehajtani, és nem megfelelően van konfigurálva. Győződjön meg arról, hogy a **machine.config** fájl megfelelően van konfigurálva.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
-Ha a proxy helytelenül van konfigurálva, hibaüzenet jelenik meg: ![proxy200 proxy407](./media/tshoot-connect-connectivity/invokewebrequest403.png)
-![](./media/tshoot-connect-connectivity/invokewebrequest407.png)
+Ha a proxy helytelenül van konfigurálva, hibaüzenet jelenik meg: ![ proxy200 ](./media/tshoot-connect-connectivity/invokewebrequest403.png)
+ ![ proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
 | Hiba | Hiba szövege | Megjegyzés |
 | --- | --- | --- |
 | 403 |Forbidden |A kért URL-címhez nem lett megnyitva a proxy. Nyissa meg újra a proxy konfigurációját, és győződjön meg róla, hogy megnyitotta az [URL-címeket](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) . |
-| 407 |Proxy hitelesítés szükséges |A proxykiszolgáló számára szükséges a bejelentkezés, és a nincs megadva. Ha a proxykiszolgáló hitelesítést igényel, győződjön meg arról, hogy a beállítás konfigurálva van a Machine. config fájlban. Győződjön meg arról is, hogy tartományi fiókokat használ a varázslót és a szolgáltatásfiókot futtató felhasználó számára. |
+| 407 |Proxy hitelesítés szükséges |A proxykiszolgáló számára szükséges a bejelentkezés, és a nincs megadva. Ha a proxykiszolgáló hitelesítést igényel, győződjön meg arról, hogy a beállítás konfigurálva van a machine.config. Győződjön meg arról is, hogy tartományi fiókokat használ a varázslót és a szolgáltatásfiókot futtató felhasználó számára. |
 
 ### <a name="proxy-idle-timeout-setting"></a>Proxy tétlen időtúllépési beállítása
 Ha a Azure AD Connect exportálási kérelmet küld az Azure AD-nak, az Azure AD akár 5 percet is igénybe vehet a kérelem feldolgozásához a válasz létrehozása előtt. Ez különösen akkor fordulhat elő, ha az adott exportálási kérelemben több csoport objektum is található nagy csoporttagság esetén. Győződjön meg arról, hogy a proxy üresjárati időkorlátja 5 percnél nagyobb értékre van konfigurálva. Ellenkező esetben előfordulhat, hogy az Azure AD időszakos kapcsolódási problémája észlelhető a Azure AD Connect kiszolgálón.
@@ -104,7 +104,7 @@ Ha a Azure AD Connect exportálási kérelmet küld az Azure AD-nak, az Azure AD
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect és az Azure AD közötti kommunikációs minta
 Ha követte ezeket az előző lépéseket, és továbbra sem tud kapcsolatot létesíteni, előfordulhat, hogy ezen a ponton elkezdi a hálózati naplók megtekintését. Ez a szakasz egy normál és sikeres kapcsolati mintát dokumentál. Emellett olyan gyakori vörös heringeket is felsorol, amelyeket figyelmen kívül hagyhat a hálózati naplók olvasása során.
 
-* Vannak hívások `https://dc.services.visualstudio.com`. A telepítés sikerességéhez nem szükséges, hogy az URL-cím ne legyen megnyitva a proxyban, és ezek a hívások figyelmen kívül hagyhatók.
+* Vannak hívások `https://dc.services.visualstudio.com` . A telepítés sikerességéhez nem szükséges, hogy az URL-cím ne legyen megnyitva a proxyban, és ezek a hívások figyelmen kívül hagyhatók.
 * Láthatja, hogy a DNS-feloldás felsorolja a tényleges gazdagépeket a DNS-névtér nsatc.net és más, nem a microsoftonline.com alatt lévő névterekben. Azonban nincsenek webszolgáltatási kérelmek a tényleges kiszolgálók neveiben, és nem kell hozzáadnia ezeket az URL-címeket a proxyhoz.
 * A végpontok adminwebservice és provisioningapi a felderítési végpontok, és a ténylegesen használandó végpont megtalálására szolgálnak. Ezek a végpontok a régiótól függően eltérőek.
 
@@ -113,7 +113,7 @@ Itt látható egy, a tényleges proxy naplóból és a telepítővarázsló olda
 
 **Csatlakozás az Azure AD szolgáltatáshoz**
 
-| Time | URL-cím |
+| Idő | URL-cím |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Itt látható egy, a tényleges proxy naplóból és a telepítővarázsló olda
 
 **Konfigurálás**
 
-| Time | URL-cím |
+| Idő | URL-cím |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800 – Anchor*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Itt látható egy, a tényleges proxy naplóból és a telepítővarázsló olda
 
 **Kezdeti szinkronizálás**
 
-| Time | URL-cím |
+| Idő | URL-cím |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

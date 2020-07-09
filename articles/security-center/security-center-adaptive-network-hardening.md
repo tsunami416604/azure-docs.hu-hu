@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
 ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80385078"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
@@ -39,7 +39,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózat megerősítő riasztások és szabályok megtekintése
 
-1. A Security Center területen válassza a **hálózatkezelés** -> **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
+1. A Security Center területen válassza a **hálózatkezelés**  ->  **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
    * Nem megfelelő **erőforrások**: azok a virtuális gépek, amelyeken jelenleg az adaptív hálózat megerősítő algoritmusának futtatásával aktiválva vannak javaslatok és riasztások. 
    * **Kifogástalan erőforrások**: riasztások nélküli virtuális gépek és javaslatok.
    * Nem **vizsgált erőforrások**: a következő okok egyike miatt nem futtathatók az adaptív hálózati kötési algoritmust használó virtuális gépek:

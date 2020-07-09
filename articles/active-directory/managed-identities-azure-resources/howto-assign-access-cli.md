@@ -1,6 +1,6 @@
 ---
 title: Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz az Azure CLI-vel – Azure AD
-description: Részletes útmutató egy felügyelt identitás egy erőforráshoz való hozzárendeléséhez, egy másik erőforráshoz való hozzáféréshez az Azure CLI használatával.
+description: Részletes útmutató felügyelt identitások egy erőforráshoz való hozzárendeléséhez, egy másik erőforráshoz való hozzáféréshez az Azure CLI használatával.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 454bc929e3a82aa889c99b9eb74eaee7e95c579f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547375"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608347"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz az Azure CLI használatával
 
@@ -30,7 +29,7 @@ Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, megadh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
     - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).

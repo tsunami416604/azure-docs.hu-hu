@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
 ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82625323"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Tartalom kiszolgálása az Azure Storage-ban App Service Linuxon
@@ -68,9 +68,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-azure-storage-in-docker-compose"></a>Az Azure Storage használata a Docker-összeállításban
 
-Az Azure Storage a Custom-ID használatával több tárolós alkalmazással is csatlakoztatható. Az egyéni azonosító nevének megtekintéséhez futtassa a parancsot [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+Az Azure Storage a Custom-ID használatával több tárolós alkalmazással is csatlakoztatható. Az egyéni azonosító nevének megtekintéséhez futtassa a parancsot [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) .
 
-A *Docker-compose. YML* fájlban rendelje hozzá `volumes` `custom-id`a () beállítást. Például:
+A *Docker-compose. YML* fájlban rendelje hozzá a ( `volumes` `custom-id` ) beállítást. Például:
 
 ```yaml
 wordpress:

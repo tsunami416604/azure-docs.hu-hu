@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan használhatja az Azure CLI-t az Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106101"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával
 
 Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban egy Azure AD-hitelesítési jogkivonat használatával tud bejelentkezni egy AK-fürtbe. A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) is konfigurálhat a felhasználó identitása vagy a címtár csoporttagság alapján.
 
-Ez a cikk bemutatja, hogyan hozhatja létre a szükséges Azure AD-összetevőket, hogyan helyezhet üzembe egy Azure AD-kompatibilis fürtöt, és hogyan hozhat létre alapszintű RBAC-szerepkört az AK-fürtben. [Ezeket a lépéseket a Azure Portal használatával][azure-ad-portal]is elvégezheti.
+Ez a cikk bemutatja, hogyan hozhatja létre a szükséges Azure AD-összetevőket, hogyan helyezhet üzembe egy Azure AD-kompatibilis fürtöt, és hogyan hozhat létre alapszintű RBAC-szerepkört az AK-fürtben.
 
 Az ebben a cikkben használt teljes minta szkripttel kapcsolatban lásd: [Azure CLI-minták – AK-integráció az Azure ad-vel][complete-script].
 
@@ -27,7 +27,7 @@ Az alábbi korlátozások érvényesek:
 
 Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-[https://shell.azure.com](https://shell.azure.com) Nyissa meg a Cloud shellt a böngészőben.
+[https://shell.azure.com](https://shell.azure.com)Nyissa meg a Cloud shellt a böngészőben.
 
 A konzisztencia és a jelen cikkben szereplő parancsok futtatásának elősegítése érdekében hozzon létre egy változót a kívánt AK-fürt nevéhez. A következő példa a *myakscluster*nevet használja:
 
@@ -97,7 +97,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Azure AD-ügyfél-összetevő létrehozása
 
-A második Azure AD-alkalmazást akkor használja a rendszer, amikor egy felhasználó a Kubernetes CLI (`kubectl`) használatával jelentkezik be az AK-fürtbe. Ez az ügyfélalkalmazás elvégzi a hitelesítési kérést a felhasználótól, és ellenőrzi a hitelesítő adatait és engedélyeit. Hozza létre az Azure AD-alkalmazást az ügyfél-összetevőhöz az az [AD App Create][az-ad-app-create] parancs használatával:
+A második Azure AD-alkalmazást akkor használja a rendszer, amikor egy felhasználó a Kubernetes CLI () használatával jelentkezik be az AK-fürtbe `kubectl` . Ez az ügyfélalkalmazás elvégzi a hitelesítési kérést a felhasználótól, és ellenőrzi a hitelesítő adatait és engedélyeit. Hozza létre az Azure AD-alkalmazást az ügyfél-összetevőhöz az az [AD App Create][az-ad-app-create] parancs használatával:
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -171,7 +171,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > Ha az RBAC-kötést megadó felhasználó ugyanabban az Azure AD-bérlőben található, akkor a *userPrincipalName*alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a *objectId* tulajdonság lekérdezése és használata.
 
-Hozzon létre egy nevű `basic-azure-ad-binding.yaml` YAML-jegyzékfájlt, és illessze be a következő tartalmakat. Az utolsó sorban cserélje le a *userPrincipalName_or_objectId* elemet az előző parancs UPN-vagy objektumazonosító-kimenetével:
+Hozzon létre egy nevű YAML-jegyzékfájlt `basic-azure-ad-binding.yaml` , és illessze be a következő tartalmakat. Az utolsó sorban cserélje le a *userPrincipalName_or_objectId* elemet az előző parancs UPN-vagy objektumazonosító-kimenetével:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -229,7 +229,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-A `kubectl` rendszer gyorsítótárazza a által fogadott hitelesítési jogkivonatot. A rendszer csak akkor kéri a bejelentkezést, ha a jogkivonat lejárt, vagy a Kubernetes konfigurációs fájl újból létrejön.
+A rendszer gyorsítótárazza a által fogadott hitelesítési jogkivonatot `kubectl` . A rendszer csak akkor kéri a bejelentkezést, ha a jogkivonat lejárt, vagy a Kubernetes konfigurációs fájl újból létrejön.
 
 Ha a következő példában szereplő kimenetben sikeresen bejelentkezett egy webböngészővel, akkor a következő lehetséges problémákkal kapcsolatos hibaüzenet jelenik meg:
 
@@ -241,7 +241,7 @@ error: You must be logged in to the server (Unauthorized)
 * A felhasználó nem tagja több mint 200 csoportnak.
 * Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel`--aad-server-app-secret`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a cikkben látható parancsokat tartalmazó teljes parancsfájl esetében tekintse meg az [Azure ad-integrációs parancsfájlt az AK-minták][complete-script]tárházában.
 
@@ -276,6 +276,6 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [azure-ad-portal]: azure-ad-integration.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

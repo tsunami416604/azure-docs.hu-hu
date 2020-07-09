@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921577"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -97,11 +96,13 @@ A CSR csak szöveges fájl. Nem kell létrehozni azt a gépről, ahol a tanúsí
 
 A felügyeleti tanúsítványok megújításához a következő PowerShell-parancsokat használhatja:
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
-A **Get-AzurePublishSettingsFile** új felügyeleti tanúsítványt hoz létre az **előfizetés** > -**kezelési tanúsítványokban** a Azure Portalban. Az új tanúsítvány neve a következőhöz hasonló: "YourSubscriptionNam]-[CurrentDate]-hitelesítő adatok".
+A **Get-AzurePublishSettingsFile** új felügyeleti tanúsítványt hoz létre az **előfizetés**-  >  **kezelési tanúsítványokban** a Azure Portalban. Az új tanúsítvány neve a következőhöz hasonló: "YourSubscriptionNam]-[CurrentDate]-hitelesítő adatok".
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>A fő TLS/SSL-tanúsítvány (. pfx) és a köztes tanúsítvány (. p7b) telepítésének automatizálása
 
@@ -111,7 +112,7 @@ Ezt a feladatot indítási parancsfájl (batch/cmd/PowerShell) használatával a
 
 Ezzel a tanúsítvánnyal titkosíthatja a számítógép kulcsait az Azure web roles szolgáltatásban. További információért tekintse meg [ezt a tanácsadót](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 - [Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Gyakori Cloud Service indítási feladatai](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -137,7 +138,7 @@ Kimerítette a helyi tárolási kvótát a naplózási könyvtárba való írás
 * Növelje a helyi erőforrások kvótájának korlátját.
 
 További információ a következő dokumentumokban található:
-* [Diagnosztikai adatgyűjtés tárolása és megtekintése az Azure Storage-ban](/azure/storage/common/storage-introduction)
+* [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](/azure/storage/common/storage-introduction)
 * [IIS-naplók – írások leállítása a Cloud Service-ben](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan a WAD-naplózás engedélyezése a Cloud Serviceshoz?
@@ -189,7 +190,7 @@ A Microsoft folyamatosan figyeli a kiszolgálókat, a hálózatokat és az alkal
 
 A Windows 10 és a Windows Server 2016 támogatja a HTTP/2-t mind az ügyfél, mind a kiszolgáló oldalon. Ha az ügyfél (böngésző) a TLS protokollon keresztül csatlakozik az IIS-kiszolgálóhoz, amely TLS-bővítményekkel egyeztet a HTTP/2 protokollon keresztül, akkor nem kell módosítania a kiszolgálót. Ennek az az oka, hogy a TLS-n keresztül a HTTP/2 használatát megadó H2-14 fejléc alapértelmezés szerint elküldésre kerül. Ha viszont az ügyfél egy frissítési fejlécet küld a HTTP/2 verzióra való frissítéshez, akkor az alábbi módosítást kell végrehajtania a kiszolgáló oldalon, hogy a frissítés működőképes legyen, és egy HTTP/2-alapú kapcsolatban legyen. 
 
-1. Futtassa a Regedit. exe fájlt.
+1. regedit.exe futtatása.
 2. Keresse meg a beállításkulcsot: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Hozzon létre egy új, **DuoEnabled**nevű DWORD értéket.
 4. Állítsa az értékét 1-re.
@@ -253,7 +254,7 @@ További információ a Cloud Services Azure Diagnostics naplózásának engedé
 ## <a name="generic"></a>Általános
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?
-Ha meg szeretné akadályozni, hogy az ügyfelek ne tudják a MIME-típusok elemzését, adjon hozzá egy beállítást a *web. config* fájlban.
+Ha meg szeretné akadályozni, hogy az ügyfelek a MIME-típusokat felszippantsák, adjon hozzá egy beállítást a *web.config* fájlban.
 
 ```xml
 <configuration>
@@ -282,7 +283,7 @@ Lásd a [szolgáltatásra vonatkozó korlátozásokat](../azure-resource-manager
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Miért jelenik meg a Cloud Service-beli virtuális gép meghajtója nagyon kevés szabad lemezterülettel?
 Ez a várt viselkedés, és nem okoz problémát az alkalmazásában. A naplózás be van kapcsolva a (z)% AppRoot% meghajtóhoz az Azure Pásti virtuális gépeken, ami lényegében a fájlok szokásosan felhasználható területének kétszeres mennyiségét használja fel. Azonban több dolgot is figyelembe kell vennie, amelyek lényegében ezt nem jelentik be.
 
-A (z)% AppRoot% meghajtó mérete \<a méretének megfelelően lesz kiszámítva. cspkg + maximális napló mérete + a szabad terület nagysága>, vagy 1,5 GB, attól függően, hogy melyik a nagyobb. A virtuális gép mérete nem befolyásolja ezt a számítást. (A virtuális gép mérete csak az ideiglenes C: meghajtó méretére vonatkozik.) 
+A (z)% AppRoot%-os meghajtó méretének kiszámítása a következőképpen történik: \<size of .cspkg + max journal size + a margin of free space> vagy 1,5 GB, attól függően, hogy melyik a nagyobb. A virtuális gép mérete nem befolyásolja ezt a számítást. (A virtuális gép mérete csak az ideiglenes C: meghajtó méretére vonatkozik.) 
 
 A (z)% AppRoot% meghajtóra való írás nem támogatott. Ha az Azure-beli virtuális gépre ír, ezt egy ideiglenes LocalStorage-erőforrásban (vagy más megoldásban, például blob Storage, Azure Files stb.) kell végrehajtania. Így a (z)% AppRoot% mappában lévő szabad terület mennyisége nem értelmezhető. Ha nem biztos abban, hogy az alkalmazás a (z)% AppRoot% meghajtóra ír, bármikor lefuttathatja a szolgáltatást néhány napig, majd összehasonlíthatja a "Before" és a "After" méretet. 
 
@@ -306,12 +307,14 @@ A SNI a következő módszerek egyikével engedélyezheti Cloud Servicesban:
 **1. módszer: a PowerShell használata**
 
 A SNI kötést a következő PowerShell **-** parancsmaggal konfigurálhatja egy felhőalapú szolgáltatási szerepkör-példány indítási feladatában:
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 Az [itt](https://technet.microsoft.com/library/ee790567.aspx)leírtak szerint a $sslFlags az alábbi értékek egyike lehet:
 
-|Érték|Jelentés|
+|Érték|Értelmezés|
 ------|------
 |0|Nincs SNI|
 |1|SNI engedélyezve|
@@ -322,14 +325,15 @@ Az [itt](https://technet.microsoft.com/library/ee790567.aspx)leírtak szerint a 
 
 Az SNI-kötés a következő [blogbejegyzésben](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)leírtak szerint is konfigurálható kód használatával a szerepkör indításakor:
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 A fenti módszerek bármelyikének használatával az adott állomásnevek megfelelő tanúsítványait (*. pfx) először telepíteni kell a szerepkör példányain indítási feladattal vagy programkódon keresztül, hogy a SNI-kötés érvénybe kerüljön.
 
@@ -341,7 +345,9 @@ A Cloud Service egy klasszikus erőforrás. Csak Azure Resource Manager támogat
 
 Dolgozunk azon, hogy ezt a funkciót a Azure Portal. Eközben a következő PowerShell-parancsokkal kérheti le az SDK verzióját:
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Több hónapig szeretnék leállítani a Cloud Service-t. Hogyan csökkentheti a Cloud Service számlázási költségeit az IP-cím elvesztése nélkül?
 

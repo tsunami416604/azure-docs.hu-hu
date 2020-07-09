@@ -9,23 +9,22 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113868"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Megjegyzések áttekintése egy Azure Cognitive Search készségkészlet
 
 Ebből a cikkből megtudhatja, hogyan hivatkozhat a megjegyzésekre a szaktudás-definíciókban, példákkal illusztrálva a különböző forgatókönyveket. Mivel a dokumentumok tartalma szaktudáson keresztül áramlik, a jegyzetek használatával gazdagítva lesz. A jegyzetek használhatók bemenetként a további alsóbb rétegbeli dúsításhoz, vagy egy index kimeneti mezőjéhez is hozzárendelve. 
  
-A cikkben szereplő példák az [Azure Blob-indexek](search-howto-indexing-azure-blob-storage.md) által automatikusan generált *tartalom* mező alapján jelennek meg a dokumentum repedési fázisának részeként. Ha blob-tárolóból származó dokumentumokra hivatkozik, használjon például egy olyan formátumot `"/document/content"`, amelyben a *Content (tartalom* ) mező a *dokumentum*részét képezi. 
+A cikkben szereplő példák az [Azure Blob-indexek](search-howto-indexing-azure-blob-storage.md) által automatikusan generált *tartalom* mező alapján jelennek meg a dokumentum repedési fázisának részeként. Ha blob-tárolóból származó dokumentumokra hivatkozik, használjon például egy olyan formátumot `"/document/content"` , amelyben a *Content (tartalom* ) mező a *dokumentum*részét képezi. 
 
 ## <a name="background-concepts"></a>Háttérbeli fogalmak
 
 A szintaxis felülvizsgálata előtt tekintse át a néhány fontos fogalmat, hogy jobban megértse a jelen cikk későbbi részében ismertetett példákat.
 
-| Időtartam | Leírás |
+| Kifejezés | Description |
 |------|-------------|
 | Dúsított dokumentum | A dúsított dokumentumok egy belső struktúra, amelyet a folyamat hozott létre, és amely a dokumentumhoz kapcsolódó összes jegyzet tárolására szolgál. Tekintse meg a dúsított dokumentumokat jegyzetekkel ellátott faszerkezetként. Általában egy korábbi jegyzetből létrehozott jegyzet lesz a gyermeke.<p/>A dúsított dokumentumok csak a készségkészlet végrehajtásának időtartamára léteznek. Ha a tartalom a keresési indexre van leképezve, a bővített dokumentumra már nincs szükség. Bár a dúsított dokumentumokkal nem folytatja közvetlenül a kapcsolatot, a készségkészlet létrehozásakor hasznos lehet a dokumentumok mentális modellje. |
 | Dúsítási környezet | Az a környezet, amelyben a gazdagodás zajlik, és amely alapján a rendszer kibővíti az elemet. Alapértelmezés szerint a dúsítási környezet az `"/document"` egyes dokumentumokra kiterjedő szinten van. A szaktudás futtatásakor a szaktudás kimenetei [a definiált környezet tulajdonságai](#example-2)lesznek.|
@@ -33,9 +32,9 @@ A szintaxis felülvizsgálata előtt tekintse át a néhány fontos fogalmat, ho
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>1. példa: egyszerű jegyzet leírása
 
-Tegyük fel, hogy az Azure Blob Storage-ban számos olyan fájl található, amely az Entity Recognition használatával kinyerni kívánt személyek nevére mutató hivatkozásokat tartalmaz. Az alábbi `"/document/content"` szakértelem-definícióban a teljes dokumentum szöveges ábrázolása, a "személyek" pedig teljes nevek kinyerése a személyként azonosított entitások számára.
+Tegyük fel, hogy az Azure Blob Storage-ban számos olyan fájl található, amely az Entity Recognition használatával kinyerni kívánt személyek nevére mutató hivatkozásokat tartalmaz. Az alábbi szakértelem-definícióban a `"/document/content"` teljes dokumentum szöveges ábrázolása, a "személyek" pedig teljes nevek kinyerése a személyként azonosított entitások számára.
 
-Mivel az alapértelmezett környezet a `"/document"`, a felhasználók listája most már hivatkozhat `"/document/people"`. Ebben az esetben `"/document/people"` egy jegyzet, amely most már leképezhető egy index egy mezőjére, vagy egy másik, ugyanabban a készségkészlet lévő képességben.
+Mivel az alapértelmezett környezet a `"/document"` , a felhasználók listája most már hivatkozhat `"/document/people"` . Ebben az esetben `"/document/people"` egy jegyzet, amely most már leképezhető egy index egy mezőjére, vagy egy másik, ugyanabban a készségkészlet lévő képességben.
 
 ```json
   {
@@ -63,7 +62,7 @@ Mivel az alapértelmezett környezet a `"/document"`, a felhasználók listája 
 
 Ez a példa az előzőre épül, amely azt mutatja be, hogyan hívhat meg egyszerre többször a dúsítási lépést ugyanazzal a dokumentummal. Tegyük fel, hogy az előző példa olyan karakterláncok tömbjét generálta, amelyek 10 személy névvel rendelkeznek egyetlen dokumentumból. Egy ésszerű következő lépés lehet egy második dúsítás, amely Kinyeri a vezetéknevet a teljes névben. Mivel a rendszer 10 nevet használ, ezt a lépést a jelen dokumentumban 10 alkalommal kell meghívni, minden személyre egyszer. 
 
-A megfelelő számú iteráció meghívásához állítsa be a kontextust `"/document/people/*"`úgy, hogy a csillag`"*"`() a kibővített dokumentum összes csomópontját a következőként jelenítse `"/document/people"`meg. Bár ez a képesség csak egyszer van definiálva a szaktudás tömbben, a rendszer minden tag számára meghívja a dokumentumot, amíg az összes tagot fel nem dolgozza.
+A megfelelő számú iteráció meghívásához állítsa be a kontextust úgy `"/document/people/*"` , hogy a csillag () a kibővített `"*"` dokumentum összes csomópontját a következőként jelenítse meg `"/document/people"` . Bár ez a képesség csak egyszer van definiálva a szaktudás tömbben, a rendszer minden tag számára meghívja a dokumentumot, amíg az összes tagot fel nem dolgozza.
 
 ```json
   {
@@ -87,15 +86,15 @@ A megfelelő számú iteráció meghívásához állítsa be a kontextust `"/doc
   }
 ```
 
-Ha a jegyzetek tömbök vagy sztringek gyűjteményei, előfordulhat, hogy a tömb egésze helyett meghatározott tagokat szeretne megcélozni. A fenti példa létrehoz egy jegyzetet, `"last"` amelyet a környezet által jelzett csomópontok alatt nevezünk. Ha ezt a családot szeretné megtekinteni a megjegyzések közül, használhatja a szintaxist `"/document/people/*/last"`. Ha egy adott jegyzetre szeretne hivatkozni, használhat egy explicit indexet: `"/document/people/1/last`"a dokumentumban azonosított első személy vezetéknevének hivatkozásához. Figyelje meg, hogy ebben a szintaxisban a tömbök "0 indexelt".
+Ha a jegyzetek tömbök vagy sztringek gyűjteményei, előfordulhat, hogy a tömb egésze helyett meghatározott tagokat szeretne megcélozni. A fenti példa létrehoz egy jegyzetet `"last"` , amelyet a környezet által jelzett csomópontok alatt nevezünk. Ha ezt a családot szeretné megtekinteni a megjegyzések közül, használhatja a szintaxist `"/document/people/*/last"` . Ha egy adott jegyzetre szeretne hivatkozni, használhat egy explicit indexet: `"/document/people/1/last` "a dokumentumban azonosított első személy vezetéknevének hivatkozásához. Figyelje meg, hogy ebben a szintaxisban a tömbök "0 indexelt".
 
 <a name="example-3"></a>
 
 ## <a name="example-3-reference-members-within-an-array"></a>3. példa: a tömbben lévő hivatkozási tagok
 
-Előfordulhat, hogy egy adott típushoz tartozó összes jegyzetet egy adott szaktudásba kell átadnia. Vegyünk egy feltételezett egyéni képességet, amely a 2. példában kinyert összes vezetéknevet azonosítja a leggyakoribb vezetéknevek közül. Ha csak az utolsó nevet szeretné megadni az egyéni szakértelem számára, adja meg a `"/document"` kontextust és a `"/document/people/*/lastname"`bemenetet a következőként:.
+Előfordulhat, hogy egy adott típushoz tartozó összes jegyzetet egy adott szaktudásba kell átadnia. Vegyünk egy feltételezett egyéni képességet, amely a 2. példában kinyert összes vezetéknevet azonosítja a leggyakoribb vezetéknevek közül. Ha csak az utolsó nevet szeretné megadni az egyéni szakértelem számára, adja meg a kontextust `"/document"` és a bemenetet a következőként: `"/document/people/*/lastname"` .
 
-Figyelje meg, hogy a kardinális `"/document/people/*/lastname"` érték nagyobb, mint a dokumentum. A dokumentumhoz csak egy dokumentum-csomópont tartozhat. Ebben az esetben a rendszer automatikusan létrehoz egy tömböt, amely `"/document/people/*/lastname"` tartalmazza a dokumentum összes elemét.
+Figyelje meg, hogy a kardinális érték `"/document/people/*/lastname"` nagyobb, mint a dokumentum. A dokumentumhoz csak egy dokumentum-csomópont tartozhat. Ebben az esetben a rendszer automatikusan létrehoz egy tömböt, amely `"/document/people/*/lastname"` tartalmazza a dokumentum összes elemét.
 
 ```json
   {

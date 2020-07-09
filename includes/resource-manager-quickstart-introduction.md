@@ -4,11 +4,11 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/26/2020
 ms.author: jgao
-ms.openlocfilehash: fba85b8f0e0062be664b076d6c17147a221107fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: e584bb86cbe99c2b0f706c0c914455829f079dbc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249315"
 ---
-A [Resource Manager-sablon](/azure/azure-resource-manager/templates/overview) egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablonokról további információért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonreferenciát](/azure/templates).
+Az [ARM-sablon](/azure/azure-resource-manager/templates/overview) egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia.

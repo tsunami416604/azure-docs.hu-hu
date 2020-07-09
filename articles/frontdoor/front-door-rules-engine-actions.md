@@ -1,6 +1,6 @@
 ---
-title: Azure bejárati ajtó | Microsoft Docs
-description: Ez a cikk az Azure Front Doorról nyújt áttekintést. Megtudhatja, hogy a megfelelő választás-e a felhasználói forgalom terheléselosztásához az alkalmazáshoz.
+title: Azure Front Door
+description: Ez a cikk felsorolja az Azure bejárati szabályainak motorjának különböző műveleteit.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515558"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314008"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure bejárati ajtó szabályait végrehajtó műveletek
 
 A [AFD-szabályok motorjában](front-door-rules-engine.md) a szabály nulla vagy több egyeztetési feltételt és műveletet tartalmaz. Ez a cikk a AFD-szabályok motorjában használható műveletek részletes leírását tartalmazza.
 
-Egy művelet határozza meg, hogy milyen viselkedést alkalmaz a rendszer az egyeztetési feltétel vagy az egyeztetési feltételek alapján azonosított kérelem típusára. A AFD-szabályok motorjában egy szabály legfeljebb öt műveletet tartalmazhat, amelyek közül csak az egyik útvonal-konfiguráció felülbírálása művelet (továbbítás vagy átirányítás) lehet. 
+Egy művelet határozza meg, hogy milyen viselkedést alkalmaz a rendszer az egyeztetési feltétel vagy az egyeztetési feltételek alapján azonosított kérelem típusára. A AFD-szabályok motorjában egy szabály legfeljebb öt műveletet tartalmazhat, amelyek közül csak az egyik útvonal-konfiguráció felülbírálása művelet (továbbítás vagy átirányítás) lehet.
 
 A következő műveletek használhatók az Azure bejárati ajtó szabályainak motorjában.  
 

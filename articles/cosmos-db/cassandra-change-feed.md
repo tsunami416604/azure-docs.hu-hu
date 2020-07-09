@@ -7,12 +7,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 3707ee81c0e50ae028ad7e0bf8178e2f3eff2c64
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431609"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
 
@@ -21,6 +20,43 @@ A "Cassandra" Azure Cosmos DB API-n keresztüli [adatcsatorna](change-feed.md) -
 Az alábbi példa azt mutatja be, hogyan kérhető le egy módosítási hírcsatorna a Cassandra APIi tábla összes sorában a .NET használatával. Az predikátum COSMOS_CHANGEFEED_START_TIME () közvetlenül a CQL-n belül használható a változási csatornán lévő elemek lekérdezésére a megadott kezdési időpontból (ebben az esetben az aktuális datetime értéknél). A teljes minta letölthető [a C# nyelvhez itt és](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a Javához [itt](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
 Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folytatódik, a lapozási állapot használatával. A tábla új változásainak folyamatos streamjét láthatjuk. Ekkor megjelenik a beszúrt vagy frissített sorok változásai. A Cassandra API változási csatornán keresztüli törlési műveletek figyelése jelenleg nem támogatott.
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+        Session cassandraSession = utils.getSession();
+
+        try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+               
+             byte[] token=null; 
+             System.out.println(query); 
+             while(true)
+             {
+                 SimpleStatement st=new  SimpleStatement(query);
+                 st.setFetchSize(100);
+                 if(token!=null)
+                     st.setPagingStateUnsafe(token);
+                 
+                 ResultSet result=cassandraSession.execute(st) ;
+                 token=result.getExecutionInfo().getPagingState().toBytes();
+                 
+                 for(Row row:result)
+                 {
+                     System.out.println(row.getString("user_name"));
+                 }
+             }
+                    
+
+        } finally {
+            utils.close();
+            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+        }
+
+```
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -70,43 +106,6 @@ Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folyta
             Console.WriteLine("Exception " + e);
         }
     }
-
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-        Session cassandraSession = utils.getSession();
-
-        try {
-              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
-               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
-                    + dtf.format(now)+ "'";
-               
-             byte[] token=null; 
-             System.out.println(query); 
-             while(true)
-             {
-                 SimpleStatement st=new  SimpleStatement(query);
-                 st.setFetchSize(100);
-                 if(token!=null)
-                     st.setPagingStateUnsafe(token);
-                 
-                 ResultSet result=cassandraSession.execute(st) ;
-                 token=result.getExecutionInfo().getPagingState().toBytes();
-                 
-                 for(Row row:result)
-                 {
-                     System.out.println(row.getString("user_name"));
-                 }
-             }
-                    
-
-        } finally {
-            utils.close();
-            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
-        }
 
 ```
 ---

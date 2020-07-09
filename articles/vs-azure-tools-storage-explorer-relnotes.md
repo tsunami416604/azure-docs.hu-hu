@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351058"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
@@ -45,7 +45,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
       * Letöltés
       * & beillesztés másolása
       * Törlés, beleértve a mappa törlését
-   * Felügyelt lemezek
+   * Managed Disks
       * Feltöltés
       * Letöltés
       * & beillesztés másolása
@@ -101,8 +101,8 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-   * Felügyelt lemezek
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+   * Managed Disks
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -217,8 +217,8 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-   * Felügyelt lemezek
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+   * Managed Disks
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -291,8 +291,8 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-   * Felügyelt lemezek
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+   * Managed Disks
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -350,7 +350,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -407,7 +407,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -459,7 +459,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Hozzáférési szintek
    * Helyreállítható törlés
    * ADLS Gen2
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -515,7 +515,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -587,7 +587,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -656,7 +656,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -711,7 +711,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -775,7 +775,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -832,7 +832,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -888,7 +888,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -943,7 +943,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1003,7 +1003,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1060,7 +1060,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
    * Fájlmegosztások
    * Hozzáférési szintek
    * Helyreállítható törlés
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1117,7 +1117,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1171,7 +1171,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1201,7 +1201,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Továbbfejlesztett hitelesítés, amely lehetővé teszi, hogy Storage Explorer ugyanazt a fiókot használja, mint a Visual Studio 2017. A szolgáltatás használatához újra be kell jelentkeznie a fiókjaiba, és újra be kell állítania a szűrt előfizetéseket.
 * A HRE által támogatott Azure Stack fiókok esetében Storage Explorer most lekéri Azure Stack előfizetéseket, ha engedélyezve van a "Target Azure Stack". Már nem kell egyéni bejelentkezési környezetet létrehoznia.
 * Több parancsikon lett hozzáadva a gyorsabb navigáláshoz. Ezek közé tartoznak a különböző panelek és a szerkesztők közötti váltás. További részletekért tekintse meg a Nézet menüt.
-* Storage Explorer visszajelzés most a GitHubon él. A problémák oldalát a bal alsó sarokban található visszajelzés gombra kattintva vagy a következő címen érheti el: [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues). Nyugodtan javaslatokat tehet, jelenthet problémákat, kérdéseket tehet fel, vagy bármilyen más visszajelzést is küldhet.
+* Storage Explorer visszajelzés most a GitHubon él. A problémák oldalát a bal alsó sarokban található visszajelzés gombra kattintva vagy a következő címen érheti el: [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . Nyugodtan javaslatokat tehet, jelenthet problémákat, kérdéseket tehet fel, vagy bármilyen más visszajelzést is küldhet.
 * Ha TLS/SSL-tanúsítványokkal kapcsolatos problémákba ütközik, és nem találja a jogsértő tanúsítványt, most már elindíthatja a Storage Explorert a parancssorból a `--ignore-certificate-errors` jelzővel. Ha ezzel a jelzővel indul el, Storage Explorer figyelmen kívül hagyja a TLS/SSL-tanúsítvány hibáit.
 * A blob és a file items (helyi) menüjében már van egy "Letöltés" lehetőség.
 * Továbbfejlesztett kisegítő lehetőségek és képernyőolvasók támogatása. Ha a kisegítő lehetőségek valamelyikét használja, további információért tekintse meg a [kisegítő lehetőségek dokumentációját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) .
@@ -1237,7 +1237,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Ha nem megfelelő PIN-kódot vagy SmartCard-tanúsítványt választ, akkor újra kell indítania, hogy Storage Explorer elfelejteni a döntést.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1274,7 +1274,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1323,7 +1323,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1370,7 +1370,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1434,7 +1434,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1490,7 +1490,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Előfordulhat, hogy a Fiókbeállítások panel megmutathatja, hogy újra meg kell adnia a hitelesítő adatokat az előfizetések szűréséhez.
 * A Blobok átnevezése (egyénileg vagy átnevezett blob-tárolón belül) nem őrzi meg a pillanatképeket. A Blobok, fájlok és entitások összes többi tulajdonsága és metaadatai az Átnevezés során megmaradnak.
 * Bár a Azure Stack jelenleg nem támogatja a fájlmegosztás használatát, egy fájlmegosztási csomópont továbbra is megjelenik egy csatolt Azure Stack Storage-fiókban.
-* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a `--disable-gpu` GPU-gyorsítást a kapcsoló hozzáadásával:
+* Az Storage Explorer által használt elektron-rendszerhéj nem tud gondot okozni néhány GPU-s (grafikus feldolgozási egység) hardveres gyorsítással. Ha Storage Explorer egy üres (üres) főablakot jelenít meg, akkor próbálja meg elindítani a parancssorból a Storage Explorert, és tiltsa le a GPU-gyorsítást a kapcsoló hozzáadásával `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1627,7 +1627,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Most már bejelentkezhet Azure Active Directory (HRE)-alapú Azure Stack-fiókokba.
 * Most már feltöltheti az archív fájlokat a 32MB-ből a Premium Storage-fiókokba
 * Továbbfejlesztett akadálymentesítési támogatás
-* Mostantól hozzáadhat megbízható alap-64 kódolású X. 509 TLS/SSL-tanúsítványokat az Edit-&gt; SSL tanúsítványok –&gt; tanúsítványok importálása lehetőséggel
+* Mostantól hozzáadhat megbízható alap-64 kódolású X. 509 TLS/SSL-tanúsítványokat az Edit- &gt; SSL tanúsítványok – &gt; tanúsítványok importálása lehetőséggel
 
 #### <a name="fixes"></a>Javítások
 
@@ -1730,7 +1730,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * A hatókörön belüli keresést újra bevezetjük az új, továbbfejlesztett alsztring-kereséssel, így mostantól két lehetőség közül választhat:
     * Globális keresés – csak adja meg a keresési kifejezést a keresési szövegmezőbe
     * Hatókörön belüli keresés – kattintson a csomópont melletti nagyító ikonra, majd vegyen fel egy keresési kifejezést az elérési út végére, vagy kattintson a jobb gombbal, és válassza a "keresés innen" lehetőséget.
-* A következő témákat adta hozzá: Light (alapértelmezett), sötét, kontrasztos megjelenítés Black és kontrasztos megjelenítés White. Lépjen a Szerkesztés –&gt; témák menüpontra a rájuk vonatkozó beállítások módosításához
+* A következő témákat adta hozzá: Light (alapértelmezett), sötét, kontrasztos megjelenítés Black és kontrasztos megjelenítés White. Lépjen a Szerkesztés – &gt; témák menüpontra a rájuk vonatkozó beállítások módosításához
 * A blobok és a fájlok tulajdonságai módosíthatók
 * Mostantól támogatjuk a kódolt (Base64) és a nem kódolt üzenetsor-üzeneteket
 * Linux rendszeren a 64 bites operációs rendszer már szükséges. Ebben a kiadásban csak a 64 bites Ubuntu 16.04.1-t támogatjuk
@@ -1889,7 +1889,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* Táblázatok: olyan entitás hozzáadása, szerkesztése vagy importálása, amely nem egyértelmű numerikus értékkel rendelkezik (például "1" vagy "1,0"), és a felhasználó megpróbálja elküldeni azt `Edm.String`, az érték visszakerül az ügyfél API-EDM. Double
+* Táblázatok: olyan entitás hozzáadása, szerkesztése vagy importálása, amely nem egyértelmű numerikus értékkel rendelkezik (például "1" vagy "1,0"), és a felhasználó megpróbálja elküldeni azt `Edm.String` , az érték visszakerül az ügyfél API-EDM. Double
 
 03/31/2016
 
@@ -1916,7 +1916,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 
 * A nagyméretű blob-fájlok letöltése nem működik megfelelően – a probléma megoldásához a AzCopy használatát javasoljuk.
 * A fiók hitelesítő adatait nem lehet beolvasni és gyorsítótárazni, ha a kezdőmappa nem található vagy nem írható
-* Ha olyan entitást ad hozzá, szerkeszt vagy importál, amelynek tulajdonsága nem egyértelmű numerikus értékkel rendelkezik (például "1" vagy "1,0"), és a felhasználó megpróbálja elküldeni azt `Edm.String`, akkor az érték az ügyfél API-EDM fog visszatérni. Double
+* Ha olyan entitást ad hozzá, szerkeszt vagy importál, amelynek tulajdonsága nem egyértelmű numerikus értékkel rendelkezik (például "1" vagy "1,0"), és a felhasználó megpróbálja elküldeni azt `Edm.String` , akkor az érték az ügyfél API-EDM fog visszatérni. Double
 * Többsoros rekordokkal rendelkező CSV-fájlok importálásakor előfordulhat, hogy az adatok fel vannak vágva vagy kódoltak
 
 02/03/2016

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74895778"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetria  
@@ -78,9 +77,9 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|{Account ID} _ {entitás azonosítója}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>A fiók AZONOSÍTÓját a partíciós kulcs tartalmazza, hogy leegyszerűsítse azokat a munkafolyamatokat, amelyekben több Media Services fiók is ugyanarra a Storage-fiókra ír.
 RowKey|{másodperc – éjfél} _ {véletlenszerű érték}|01688_00199<br/><br/>A sor kulcsa másodperc és éjfél közötti időt vesz igénybe, hogy az első n stílusú lekérdezéseket engedélyezzen a partíción belül. További információkért tekintse meg [ezt](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) a cikket. 
-Időbélyeg|Dátum és idő|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Időbélyeg|Dátum/idő|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|A telemetria-adatmennyiséget biztosító entitás típusa|Channel/Streamvégpontok/Archive<br/><br/>Az esemény típusa csak egy karakterlánc-érték.
-Name (Név)|A telemetria esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|A telemetria esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|A telemetria esemény bekövetkezett időpontja (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>A megfigyelt időt a telemetria küldő entitás (például egy csatorna) kapja meg. Az összetevők között időszinkronizálási problémák merülhetnek fel, így ez az érték körülbelül
 ServiceID|{szolgáltatás azonosítója}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entitás-specifikus tulajdonságok|Az esemény által meghatározottak szerint|StreamName: STREAM1, bitráta 10123,...<br/><br/>A hátralévő tulajdonságok az adott eseménytípus esetében vannak meghatározva. Az Azure Table tartalom kulcs érték párok.  (vagyis a tábla különböző sorai eltérő tulajdonságokkal rendelkeznek).
@@ -101,7 +100,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure Table 2016-09-09T22:43:42.241 Z
 Típus|Típus|Streamvégpontok
-Name (Név)|Name (Név)|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|A végpont állomásneve|builddemoserver.origin.mediaservices.windows.net
@@ -120,7 +119,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|Típus|Csatorna
-Name (Név)|Name (Név)|ChannelHeartbeat
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Videó/hang/szöveg követésének típusa|videó/hang
@@ -145,7 +144,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|Típus|Archívum
-Name (Név)|Name (Név)|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|Program URL-címe|Asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM

@@ -5,12 +5,12 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 056c96807fed7d5acca85635440c8fe4d989c933
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 4f3b9966e1d146479ef6aa57e13cbb4ddadb415f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592391"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205849"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
@@ -26,8 +26,8 @@ Az oktatóanyag elvégzéséhez telepítse a <a href="https://www.visualstudio.c
 
 Ha már telepítette a Visual Studio 2019-et:
 
-- A**frissítések keresése**lehetőség **kiválasztásával** > telepítse a legújabb frissítéseket a Visual Studióban.
-- A számítási feladat hozzáadásához **válassza az eszközök** > **beolvasása eszközök és szolgáltatások**lehetőséget.
+- A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
+- A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások**lehetőséget.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-Webalkalmazás létrehozása<a name="create-and-publish-the-web-app"></a>
 
@@ -47,7 +47,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
    ![ASP.NET-Webalkalmazás létrehozása](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-6. A Visual Studio menüjében válassza a **hibakeresés** > **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+6. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
 
    ![Az alkalmazás futtatása helyileg](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
@@ -88,7 +88,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
    ![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-1. A **név**mezőben adjon meg egy egyedi nevet, amely csak `a-z`az érvényes karaktereket `A-Z` `0-9`tartalmazza:,, és `-`. Elfogadhatja az automatikusan létrehozott egyedi nevet is. A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve.
+1. A **név**mezőben adjon meg egy egyedi nevet, amely csak az érvényes karaktereket tartalmazza:,, `a-z` `A-Z` `0-9` és `-` . Elfogadhatja az automatikusan létrehozott egyedi nevet is. A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve.
 
 2. A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
 
@@ -100,17 +100,17 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
     ![Közzétett ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-A (z) **app Service új lap létrehozása** lapon megadott alkalmazásnév URL-előtagként lesz megadva a ( `http://<app-name>.azurewebsites.net`z) formátumban.
+A (z) **app Service új lap létrehozása** lapon megadott alkalmazásnév URL-előtagként lesz megadva a (z `http://<app-name>.azurewebsites.net` ) formátumban.
 
-**Gratulálok!** A ASP.NET webalkalmazása Azure App Service fut.
+**Gratulálunk!** A ASP.NET webalkalmazása Azure App Service fut.
 
 ## <a name="update-the-app-and-redeploy"></a>Az alkalmazás frissítése és ismételt üzembe helyezése
 
-1. A **megoldáskezelő**a projekt alatt nyissa meg a **views** > **Home** > **index. cshtml**nézetet.
+1. A **megoldáskezelő**a projekt alatt nyissa meg a **views**  >  **Home**  >  **index. cshtml**nézetet.
 
 1. Keresse meg a `<div class="jumbotron">` HTML-címkét felül, és cserélje le az egész elemet az alábbi kódra:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -145,3 +145,6 @@ A (z) **app Service új lap létrehozása** lapon megadott alkalmazásnév URL-e
 
 > [!div class="nextstepaction"]
 > [ASP.NET-alkalmazás és SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET-alkalmazás konfigurálása](configure-language-dotnet-framework.md)

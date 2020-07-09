@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84b94240431026020d3de793d56853a7d92a6f14
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61463839"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057976"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Útmutató: adathordozó-feldolgozó példány beszerzése
 > [!div class="op_single_selector"]
@@ -42,16 +42,18 @@ A következő témakör az adathordozó-processzorok listáját tartalmazza:
 
 A következő módszer azt mutatja be, hogyan szerezhet be egy Media Processor-példányt. A kód példa feltételezi, hogy egy **_context** nevű modul szintű változót használ a kiszolgálói környezetre való hivatkozáshoz a következő témakörben ismertetett módon [: a Kapcsolódás a Media Services programhoz](media-services-use-aad-auth-to-access-ams-api.md)című részben leírtak szerint.
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+```csharp
+private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
-        if (processor == null)
-        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+    if (processor == null)
+    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

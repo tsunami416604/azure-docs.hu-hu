@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117829"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086109"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
 
@@ -99,13 +99,17 @@ Az eredeti adatkészlet üres, elválasztott formátumot használ. A Machine Lea
 
 Az ilyen típusú adatkonvertálás számos módon lehetséges. Az egyik módszer a következő Windows PowerShell-parancs használata:   
 
-    cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```powershell
+cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```
 
 Egy másik módszer a UNIX sed parancs használatával:  
 
-    sed 's/ /,/g' german.data > german.csv  
+```console
+sed 's/ /,/g' german.data > german.csv
+```
 
-Mindkét esetben létrehozta az adatok vesszővel tagolt verzióját egy **német. csv** nevű fájlban, amelyet használhat a kísérletben.
+Mindkét esetben létrehozta az adatok vesszővel tagolt verzióját egy **german.csv** nevű fájlban, amelyet használhat a kísérletben.
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Az adatkészlet feltöltése Machine Learning Studio (klasszikus)
 
@@ -123,11 +127,11 @@ Miután az adatok CSV formátumra lettek konvertálva, fel kell töltenie Machin
 
     ![Adatkészlet hozzáadása helyi fájlból](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. Az **új adatkészlet feltöltése** párbeszédpanelen kattintson a Tallózás gombra, és keresse meg a létrehozott **német. csv** fájlt.
+6. Az **új adatkészlet feltöltése** párbeszédpanelen kattintson a Tallózás gombra, és keresse meg a létrehozott **german.csv** fájlt.
 
 7. Adja meg az adatkészlet nevét. Ebben az oktatóanyagban hívja meg az "UCI German Credit Card-adatforrást".
 
-8. Az adattípus mezőben válassza ki **a fejléc nélküli általános CSV-fájlt (. NH. csv)**.
+8. Az adattípus mezőben válassza ki **az általános CSV-fájlt fejléc nélkül (.nh.csv)**.
 
 9. Ha szeretné, adja meg a leírást.
 
@@ -256,11 +260,13 @@ Ezt a replikálást az R-kóddal végezheti el:
 
 1. A **Tulajdonságok** ablaktáblán törölje az **R-parancsfájl** paraméter alapértelmezett szövegét, és adja meg a következő parancsfájlt:
    
-       dataset1 <- maml.mapInputPort(1)
-       data.set<-dataset1[dataset1[,21]==1,]
-       pos<-dataset1[dataset1[,21]==2,]
-       for (i in 1:5) data.set<-rbind(data.set,pos)
-       maml.mapOutputPort("data.set")
+    ```r
+    dataset1 <- maml.mapInputPort(1)
+    data.set<-dataset1[dataset1[,21]==1,]
+    pos<-dataset1[dataset1[,21]==2,]
+    for (i in 1:5) data.set<-rbind(data.set,pos)
+    maml.mapOutputPort("data.set")
+    ```
 
     ![R-szkript az R-szkript végrehajtása modulban](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
@@ -290,7 +296,7 @@ További információ az R-szkriptek kísérletekben való használatáról: [a 
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  

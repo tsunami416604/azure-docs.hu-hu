@@ -4,15 +4,14 @@ description: Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure VPN
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982883"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 

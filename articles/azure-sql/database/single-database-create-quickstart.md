@@ -1,6 +1,6 @@
 ---
 title: Önálló adatbázis létrehozása
-description: Hozzon létre egyetlen Azure SQL Database a Azure Portal, a PowerShell vagy az Azure CLI használatával. A Azure Portal lekérdezési szerkesztőjével kérdezheti le az adatbázist.
+description: A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzon létre egyetlen adatbázist a Azure SQL Database. A Azure Portal lekérdezési szerkesztőjével kérdezheti le az adatbázist.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,22 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 8b4e057fe41bdf76612888e9d4715d7cdee0ce29
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054772"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081587"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ebben a rövid útmutatóban a Azure Portal, egy PowerShell-parancsfájl vagy egy Azure CLI-parancsfájl használatával hozhat létre egyetlen Azure SQL Database. Ezután lekérdezheti az adatbázist a Azure Portalban található **query Editor** használatával.
+Ebben a rövid útmutatóban a Azure Portal, egy PowerShell-parancsfájl vagy egy Azure CLI-parancsfájl használatával hozhat létre egyetlen adatbázist a Azure SQL Database. Ezután lekérdezheti az adatbázist a Azure Portalban található **query Editor** használatával.
 
 [Egyetlen adatbázis](single-database-overview.md) a leggyorsabb és legegyszerűbb lehetőség a Azure SQL Database számára. Egyetlen adatbázist kezel egy [kiszolgálón](logical-servers.md)belül, amely egy adott Azure-régióban található [Azure-erőforráscsoport](../../active-directory-b2c/overview.md) belsejében van. Ebben a rövid útmutatóban létrehoz egy új erőforráscsoportot és egy kiszolgálót az új adatbázishoz.
 
 Létrehozhat egyetlen adatbázist a *kiépített* vagy *kiszolgáló* nélküli számítási rétegben. A kiépített adatbázisok előre meghatározott mennyiségű számítási erőforrást foglalnak magukban, beleértve a CPU-t és a memóriát, és a két [beszerzési modell](purchasing-models.md)egyikét használják. Ez a rövid útmutató egy kiépített adatbázist hoz létre a [virtuális mag-alapú](service-tiers-vcore.md) vásárlási modell használatával, de [DTU-alapú](service-tiers-dtu.md) modellt is választhat.
 
-A kiszolgáló nélküli számítási réteg csak a virtuális mag-alapú vásárlási modellben érhető el, és a számítási erőforrások, például a processzor és a memória automatikusan méretezhető skáláját tartalmazza. Ha egyetlen adatbázist szeretne létrehozni a kiszolgáló nélküli számítási rétegben, tekintse meg [a kiszolgáló nélküli adatbázis létrehozása](serverless-tier-overview.md#create-new-database-in-serverless-compute-tier)című témakört.
+A kiszolgáló nélküli számítási réteg csak a virtuális mag-alapú vásárlási modellben érhető el, és a számítási erőforrások, például a processzor és a memória (CPU és memória) egy, előre meghatározott skáláját tartalmazza. Ha egyetlen adatbázist szeretne létrehozni a kiszolgáló nélküli számítási rétegben, tekintse meg [a kiszolgáló nélküli adatbázis létrehozása](serverless-tier-overview.md#create-a-new-database-in-the-serverless-compute-tier)című témakört.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -68,7 +67,7 @@ Tartsa meg az erőforráscsoportot, a kiszolgálót és az önálló adatbázist
 
 Ha elkészült ezeknek az erőforrásoknak a használatával, törölheti a létrehozott erőforráscsoportot, amely a kiszolgálót és az önálló adatbázist is törli.
 
-### <a name="portal"></a>[Portál](#tab/azure-portal)
+### <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
 
 A **myResourceGroup** és az összes erőforrás törlése a Azure Portal használatával:
 
@@ -76,7 +75,7 @@ A **myResourceGroup** és az összes erőforrás törlése a Azure Portal haszn�
 1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet.
 1. **A írja be az erőforráscsoport nevét**mezőbe írja be a *myResourceGroup*nevet, majd válassza a **Törlés**lehetőséget.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 Az erőforráscsoport és az összes erőforrás törléséhez futtassa az alábbi Azure CLI-parancsot az erőforráscsoport neve alapján:
 
@@ -94,9 +93,15 @@ Remove-AzResourceGroup -Name <your resource group>
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis [összekötése és lekérdezése](connect-query-content-reference-guide.md) különböző eszközök és nyelvek használatával:
 > [!div class="nextstepaction"]
-> [Kapcsolat és lekérdezés SQL Server Management Studio használatával](connect-query-ssms.md) 
->  [Kapcsolat és lekérdezés Azure Data Studio használatával](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+> [Kapcsolódás és lekérdezés az SQL Server Management Studióval](connect-query-ssms.md)
+>
+> [Kapcsolódás és lekérdezés az Azure Data Studióval](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

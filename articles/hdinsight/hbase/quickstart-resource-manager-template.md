@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: 395078b9a973b6255685feb6a858daed7667207a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c772345b9cf5d6e4fafdcd951f65bd8c796ab839
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082148"
 ---
-# <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Apache HBase-fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával
+# <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Gyors útmutató: Apache HBase-fürt létrehozása az Azure HDInsight az ARM-sablon használatával
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hozhat létre [Apache HBase](./apache-hbase-overview.md) -fürtöt az Azure HDInsight-ben. A HBase egy nyílt forráskódú, NoSQL-adatbázis, amely a [Google BigTable](https://cloud.google.com/bigtable/)után készült, és Apache Hadoop a modellen alapul.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hozhat létre [Apache HBase](./apache-hbase-overview.md) -fürtöt az Azure HDInsight. A HBase egy nyílt forráskódú, NoSQL-adatbázis, amely a [Google BigTable](https://cloud.google.com/bigtable/)után készült, és Apache Hadoop a modellen alapul.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
 
-## <a name="create-an-apache-hbase-cluster"></a>Apache HBase-fürt létrehozása
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
 
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-hbase-linux)származik.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-:::code language="json" source="~/quickstart-templates/101-hdinsight-hbase-linux/azuredeploy.json" range="1-145":::
+## <a name="review-the-template"></a>A sablon áttekintése
 
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux/)származik.
+
+:::code language="json" source="~/quickstart-templates/101-hdinsight-hbase-linux/azuredeploy.json" range="1-199" highlight="103-136":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-* [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): hozzon létre egy Azure Storage-fiókot.
-* [Microsoft. HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): hozzon létre egy HDInsight-fürtöt.
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): hozzon létre egy Azure Storage-fiókot.
+* [Microsoft. HDInsight/cluster](/azure/templates/microsoft.hdinsight/clusters): hozzon létre egy HDInsight-fürtöt.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Az Azure-ba való bejelentkezéshez és a Resource Manager-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
+1. Az Azure-ba való bejelentkezéshez és az ARM-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
 
     [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
 
@@ -64,7 +67,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni, amely a **Go to Resource** hivatkozást fogja tartalmazni. Az erőforráscsoport lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) -fiókkal vagy egy [Azure Data Lake Storage fióktól](../hdinsight-hadoop-use-data-lake-store.md) . Ezt az alapértelmezett Storage-fióknak nevezzük. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével nem törlődik a Storage-fiók.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
@@ -74,9 +77,9 @@ A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetősége
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Apache HBase-fürtöt a HDInsight-ben egy Resource Manager-sablon használatával. A következő cikkben megtudhatja, hogyan kérdezheti le a HBase a HDInsight-ben a HBase Shell használatával.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Apache HBase-fürtöt a HDInsight egy ARM-sablonnal. A következő cikkben megtudhatja, hogyan kérdezheti le a HBase a HDInsight-ben a HBase Shell használatával.
 
 > [!div class="nextstepaction"]
 > [Apache HBase lekérdezése az Azure HDInsight a HBase-Rendszerhéjral](./query-hbase-with-hbase-shell.md)

@@ -8,15 +8,15 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/25/2020
+ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f78ef7ddf48612728c0409b0f904c0964e2272b5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84415995"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Fiók hitelesítő adatainak biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazás használatával
 
@@ -73,54 +73,36 @@ A fiók hitelesítő adatait a Felhőbeli fiókjából állíthatja helyre, de e
 
 A helyreállítás befejezése után észreveheti, hogy a Microsoft Authenticator alkalmazásban a személyes Microsoft-fiók ellenőrző kódok különböznek a régi és az új telefonok között. A kódok különböznek, mert minden eszköz saját egyedi hitelesítő adatokkal rendelkezik, de mindkettő érvényes és működik, miközben a társított telefon használatával jelentkezik be.
 
-## <a name="recover-additional-accounts-requiring-more-verification"></a>További ellenőrzéseket igénylő további fiókok helyreállítása
+## <a name="recover-accounts-requiring-more-verification"></a>További ellenőrzést igénylő fiókok helyreállítása
 
 Ha leküldéses értesítéseket használ személyes vagy munkahelyi vagy iskolai fiókjaival, akkor a képernyőn megjelenő riasztást kap, amely szerint további ellenőrzéseket kell megadnia az adatok helyreállítása előtt. Mivel a leküldéses értesítések olyan hitelesítő adatokat igényelnek, amely az adott eszközhöz van kötve, és soha nem küldi el a hálózaton keresztül, a hitelesítő adatoknak az eszközön való létrehozása előtt bizonyítania kell az identitását.
 
 Személyes Microsoft-fiókok esetén a jelszó megadásával, valamint egy másodlagos e-mail-cím vagy telefonszám használatával igazolhatja a személyazonosságát. Munkahelyi vagy iskolai fiókok esetében a fiók szolgáltatója által megadott QR-kódot kell beolvasnia.
 
-### <a name="to-provide-additional-verification-for-personal-accounts"></a>A személyes fiókok további ellenőrzésének biztosítása
+### <a name="to-provide-more-verification-for-personal-accounts"></a>További ellenőrzés biztosítása a személyes fiókok számára
 
-1. A Microsoft Authenticator alkalmazás **fiókok** képernyőjén válassza ki a helyreállítani kívánt fiókot. Android-eszközön válassza a helyreállítani kívánt fiók melletti nyilat.
+1. A Microsoft Authenticator alkalmazás **fiókok** képernyőjén koppintson arra a fiókra, amelyet vissza szeretne állítani a fiók teljes képernyős nézetének megnyitásához.
 
-    ![Microsoft Authenticator alkalmazás, amely az elérhető fiókokat jeleníti meg a hozzájuk tartozó legördülő nyilakkal](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator alkalmazás, amely az elérhető fiók csempéit jeleníti meg" border="true":::
 
-    Egy iOS-eszközön koppintson a visszaállítani kívánt fiókra a fiók teljes képernyős nézetének megnyitásához.
+1. Koppintson a helyreállítani kívánt fiók csempére, majd a helyreállításhoz koppintson a bejelentkezés lehetőségre. Adja meg a jelszavát, majd erősítse meg az e-mail-címét vagy telefonszámát további ellenőrzésként.
 
-    ![Microsoft Authenticator alkalmazás, amely az elérhető fiókokat jeleníti meg a hozzájuk tartozó legördülő nyilakkal](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="A hitelesítő egyszeri jelszót biztosít ellenőrző kódként" border="true":::
 
-2. A fiók helyreállításához jelentkezzen be. Android-eszközön válassza a **bejelentkezés lehetőséget a helyreállításhoz**.
+### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>További ellenőrzés a munkahelyi vagy iskolai fiókok számára
 
-    ![Microsoft Authenticator alkalmazás a bejelentkezési adatok megadásához az Androidon](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+1. A Microsoft Authenticator alkalmazás **fiókok** képernyőjén koppintson arra a fiókra, amelyet vissza szeretne állítani a fiók teljes képernyős nézetének megnyitásához.
 
-    Egy iOS-eszközön koppintson a visszaállítani kívánt fiók csempére, majd koppintson a bejelentkezés és a helyreállítás lehetőségre. Írja be a jelszót, majd erősítse meg az e-mail-címét vagy telefonszámát további ellenőrzésként. fonkönyv.
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator alkalmazás, amely az elérhető fiók csempéit jeleníti meg" border="true":::
 
-    ![Microsoft Authenticator alkalmazás a bejelentkezési adatok beviteléhez iOS-en](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
+1. A teljes képernyős nézetben koppintson a QR-kód teljes helyreállításra való vizsgálatára szolgáló lehetőségre.
 
-### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>További ellenőrzés biztosítása munkahelyi vagy iskolai fiókokhoz
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="A hitelesítő egyszeri jelszót biztosít ellenőrző kódként" border="true":::
 
-1. A fiók helyreállításához jelentkezzen be. Android-eszközön válassza a **bejelentkezés lehetőséget a helyreállításhoz**.
-
-    ![Microsoft Authenticator alkalmazás munkahelyi vagy iskolai fiók helyreállítása Androidon](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
-
-    Egy iOS-eszközön koppintson a visszaállítani kívánt fiókra a fiók teljes képernyős nézetének megnyitásához.
-
-    ![Microsoft Authenticator alkalmazás munkahelyi vagy iskolai fiókjának helyreállítása iOS rendszeren](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
-
-2. A fiók helyreállításához QR-kódot is használhat. Jelölje be a **QR-kód bevizsgálása a helyreállításhoz**lehetőséget, majd vizsgálja meg a QR-kódot.
-
-    Androidon:
-
-    ![Microsoft Authenticator alkalmazás Androidon, amely lehetővé teszi a QR-kód vizsgálatát](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
-
-    IOS rendszeren:
-
-    ![Microsoft Authenticator alkalmazás iOS rendszeren, amely lehetővé teszi a QR-kód vizsgálatát](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
-
-    >[!NOTE]
-    >A QR-kódokról és annak beszerzéséről további információért lásd: Ismerkedés [a Microsoft Authenticator alkalmazással](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) vagy [biztonsági információk beállítása a hitelesítő alkalmazás használatára](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), attól függően, hogy a rendszergazda bekapcsolta-e a biztonsági adatokat.
-    >
-    >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
+>[!NOTE]
+>A QR-kódokról és annak beszerzéséről további információért lásd: Ismerkedés [a Microsoft Authenticator alkalmazással](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) vagy [biztonsági információk beállítása a hitelesítő alkalmazás használatára](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), attól függően, hogy a rendszergazda bekapcsolta-e a biztonsági adatokat.
+>
+>Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>Biztonsági mentési és helyreállítási problémák elhárítása
 
@@ -136,9 +118,9 @@ Előfordulhat, hogy a biztonsági mentés néhány oka nem érhető el
 
 - **Meglévő Microsoft Authenticator fiókok**: Ha már beállította a fiókokat a Microsoft Authenticator alkalmazásban, az alkalmazás nem fogja tudni helyreállítani a biztonsági másolatban szereplő fiókokat. A helyreállítás megakadályozása révén biztosíthatja, hogy a fiók adatai ne legyenek felülírva az elavult információkkal. Ebben az esetben a biztonsági mentés helyreállítása előtt el kell távolítania a meglévő fiók adatait a hitelesítő alkalmazásban beállított meglévő fiókokról.
 
-- A **biztonsági mentés**elavult: Ha a biztonsági mentési információk elavultak, előfordulhat, hogy az adatok frissítését újra be kell jelentkeznie a Microsoft helyreállítási fiókjába. A helyreállítási fiók a személyes Microsoft-fiók, amelyet kezdetben használt a biztonsági másolat tárolására. Ha bejelentkezésre van szükség, egy piros pont jelenik meg a menüben vagy a műveleti sávon, vagy egy felkiáltójel jelenik meg, amely bejelentkezik, és befejezi a visszaállítást a biztonsági mentésből. Miután kiválasztotta az ikont, a rendszer kérni fogja, hogy frissítse az adatait.
+- A **biztonsági mentés**elavult: Ha a biztonsági mentési információk elavultak, előfordulhat, hogy az adatok frissítését újra be kell jelentkeznie a Microsoft helyreállítási fiókjába. A helyreállítási fiók a személyes Microsoft-fiók, amelyet kezdetben használt a biztonsági másolat tárolására. Ha bejelentkezésre van szükség, egy piros pont jelenik meg a menüben vagy a műveleti sávon, vagy egy felkiáltójel ikon jelenik meg, amely felszólítja, hogy jelentkezzen be a biztonsági másolatból való visszaállítás befejezéséhez. Miután kiválasztotta a megfelelő ikont, a rendszer felszólítja az adatok frissítésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy biztonsági mentést készített, és visszaállította a fiókja hitelesítő adatait az új eszközre, továbbra is használhatja a Microsoft Authenticator alkalmazást a személyazonosságának ellenőrzéséhez. További információ: bejelentkezés a [fiókba a Microsoft Authenticator alkalmazás használatával](user-help-sign-in.md).
 

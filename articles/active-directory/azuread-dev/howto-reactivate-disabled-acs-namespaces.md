@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383717"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: a letiltott Access Control Service névterek újraaktiválása
 
@@ -61,17 +61,17 @@ Az ACS PowerShell használatával listázhatja az összes ACS-névteret, és új
         Get-Help [Command-Name] -Full
         ```
     
-        ahol `[Command-Name]` az ACS-parancs neve.
+        ahol az `[Command-Name]` ACS-parancs neve.
 1. Kapcsolódjon az ACS-hez a **Kapcsolódás-AcsAccount** parancsmag használatával. 
 
     A parancs futtatása előtt előfordulhat, hogy módosítania kell a végrehajtási házirendet a **Set-ExecutionPolicy** futtatásával.
 1. Sorolja fel az elérhető Azure-előfizetéseket a **Get-AcsSubscription** parancsmag használatával.
 1. Sorolja fel az ACS-névtereket a **Get-AcsNamespace** parancsmag használatával.
-1. Ellenőrizze, hogy a névterek le vannak-e tiltva `State` a ( `Disabled`) megerősítésével.
+1. Ellenőrizze, hogy a névterek le vannak-e tiltva a () megerősítésével `State` `Disabled` .
 
     [![Győződjön meg arról, hogy a névterek le vannak tiltva](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    Azt is megerősítheti `nslookup {your-namespace}.accesscontrol.windows.net` , hogy a tartomány még aktív-e.
+    Azt is `nslookup {your-namespace}.accesscontrol.windows.net` megerősítheti, hogy a tartomány még aktív-e.
 
 1. Engedélyezze az ACS-névtér (eke) t az **enable-AcsNamespace** parancsmag használatával.
 
@@ -122,7 +122,7 @@ A További bővítmények többé nem lesznek automatikusan jóváhagyva. Ha tov
 ## <a name="help-and-support"></a>Súgó és támogatás
 
 - Ha a fenti útmutató követése után bármilyen problémába ütközik, forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Ha kérdése vagy visszajelzése van az ACS kivonásáról, lépjen acsfeedback@microsoft.comkapcsolatba velünk a következő címen:.
+- Ha kérdése vagy visszajelzése van az ACS kivonásáról, lépjen kapcsolatba velünk a következő címen: acsfeedback@microsoft.com .
 
 ## <a name="next-steps"></a>További lépések
 

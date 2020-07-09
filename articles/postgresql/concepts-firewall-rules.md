@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157270"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Tűzfalszabályok Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -29,7 +28,7 @@ Az internetről és az Azure-ról érkező csatlakozási kísérleteknek előbb 
 A kiszolgálói szintű tűzfalszabályok a Azure Database for PostgreSQL kiszolgálón található összes adatbázisra érvényesek. Ha a kérés IP-címe a kiszolgálószintű tűzfalszabályokban megadott tartományok egyikében található, a tűzfal engedélyezi a csatlakozást.
 Ha a kérés IP-címe nem a kiszolgálói szintű tűzfalszabályok egyikében megadott tartományon belül van, a kapcsolati kérelem sikertelen lesz.
 Ha például az alkalmazás a PostgreSQL-hez készült JDBC-illesztőprogrammal csatlakozik, akkor ez a hiba akkor jelentkezhet, amikor a tűzfal blokkolja a kapcsolatot.
-> Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: nincs PG\_HBA. conf bejegyzés a (z) "123.45.67.890" gazdagéphez, "adminuser", "PostgreSQL" adatbázishoz, SSL
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: nincs PG \_ HBA. conf bejegyzés a következő gazdagépre: "123.45.67.890", "adminuser", "", adatbázis: PostgreSQL, SSL
 
 ## <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
 Javasoljuk, hogy keresse meg bármely alkalmazás vagy szolgáltatás kimenő IP-címét, és explicit módon engedélyezze az adott IP-címekhez vagy tartományokhoz való hozzáférést. Megkeresheti például egy Azure App Service kimenő IP-címét, vagy használhat egy virtuális géphez vagy más erőforráshoz kötött nyilvános IP-címet (lásd alább a virtuális gép magánhálózati IP-címével való csatlakozáshoz a szolgáltatási végpontokon). 
@@ -57,7 +56,7 @@ Vegye figyelembe a következő szempontokat, amikor a PostgreSQL-kiszolgáló Mi
 * **A bejelentkezési azonosító nincs engedélyezve, vagy helytelen jelszót használt:** Ha a bejelentkezési azonosító nem rendelkezik engedéllyel a Azure Database for PostgreSQL-kiszolgálón, vagy helytelen a használt jelszó, a rendszer megtagadja a kapcsolódást a Azure Database for PostgreSQL-kiszolgálóhoz. A tűzfalbeállítások létrehozása csak olyan ügyfelek számára biztosít lehetőséget, akik megpróbálnak csatlakozni a kiszolgálóhoz; minden ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat.
 
    Ha például egy JDBC-ügyfelet használ, a következő hibaüzenet jelenhet meg.
-   > Java. util. egyidejű. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: a jelszó-hitelesítés nem sikerült a (z) "Felhasználónév" felhasználó számára
+   > java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: végzetes: a jelszó-hitelesítés sikertelen volt a (z) "Felhasználónév" felhasználó számára
 
 * **Dinamikus IP-cím**: Ha az internetkapcsolata dinamikus IP-címkezeléssel rendelkezik, és problémákat okoz a tűzfalon való átjutás, próbálja ki a következő megoldások valamelyikét:
 
@@ -65,7 +64,7 @@ Vegye figyelembe a következő szempontokat, amikor a PostgreSQL-kiszolgáló Mi
 
    * Szerezze be a statikus IP-címzést az ügyfélszámítógépek helyett, majd adja hozzá a statikus IP-címet tűzfalszabályként.
 
-* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for PostgreSQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért látogasson el a [kapcsolati architektúra című cikkben](concepts-connectivity-architecture.md). 
+* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for PostgreSQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>További lépések
 A kiszolgálói szintű és az adatbázis-szintű Tűzfalszabályok létrehozásával kapcsolatos cikkekért lásd:

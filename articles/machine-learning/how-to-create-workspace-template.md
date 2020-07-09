@@ -5,17 +5,16 @@ description: Megtudhatja, hogyan hozhat létre egy új Azure Machine Learning-mu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: eae10b7ae8cd14fd120e969c39c05a8ba2525003
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392666"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -65,7 +64,7 @@ A példában szereplő sablonnak két paramétere van:
 > [!TIP]
 > Míg a dokumentumhoz társított sablon új Azure Container Registry hoz létre, a tároló-beállításjegyzék létrehozása nélkül is létrehozhat egy új munkaterületet. A rendszer létrehoz egy tároló-beállításjegyzéket igénylő művelet végrehajtásakor. Például egy modell betanítása vagy üzembe helyezése.
 >
-> Egy meglévő tároló beállításjegyzék-vagy Storage-fiókra is hivatkozhat a Azure Resource Manager sablonban, ahelyett, hogy újat hozna létre.
+> Egy meglévő tároló beállításjegyzék-vagy Storage-fiókra is hivatkozhat a Azure Resource Manager sablonban, ahelyett, hogy újat hozna létre. A használt tároló-beállításjegyzéknek azonban engedélyezve kell lennie a __rendszergazdai fióknak__ . A rendszergazdai fiók engedélyezésével kapcsolatos információkért lásd: [rendszergazdai fiók](/azure/container-registry/container-registry-authentication#admin-account).
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

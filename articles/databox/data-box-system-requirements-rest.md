@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61436494"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>BLOB Storage-követelmények Azure Data Box
@@ -55,9 +55,9 @@ Data Box blob Storage esetében bizonyos ügyféloldali kódtárak és meghatár
 
 | Ügyfélkódtár     |Data Box blob Storage támogatott verziója     | Hivatkozás   |     Végpont specifikációja      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Nuget-csomag:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub-kiadás:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app. config fájl                 |
+|    .NET                |    9.2.0                                           |    Nuget-csomag:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub-kiadás:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config fájl                 |
 |    Java                |    7.0.0                                           |    Maven-csomag:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    A kapcsolatok karakterláncának beállítása         |
-|    Node.js             |    2.8.3                                           |    NPM-hivatkozás https://www.npmjs.com/package/azure-storage : (Futtatás `npm install azure-storage@2.7.0`:)   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Szolgáltatási példány deklarációja    |
+|    Node.js             |    2.8.3                                           |    NPM-hivatkozás: https://www.npmjs.com/package/azure-storage (Futtatás: `npm install azure-storage@2.7.0` )   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Szolgáltatási példány deklarációja    |
 |    C++                 |    5.2.0                                           |    Nuget-csomag:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    A kapcsolatok karakterláncának beállítása         |
 |    PHP                 |    1.2.0                                           |    GitHub-kiadás:<br>Közöshttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>BLOBhttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Telepítés a Zeneszerzőn keresztül (további tudnivalókért tekintse meg az alábbi részleteket.)                                                                                                             |    A kapcsolatok karakterláncának beállítása         |
 |    Python              |    1.1.0                                           |    GitHub-kiadás:<br>Közöshttps://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>BLOBhttps://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Szolgáltatási példány deklarációja    |
@@ -68,7 +68,7 @@ Data Box blob Storage esetében bizonyos ügyféloldali kódtárak és meghatár
 ### <a name="install-php-client-via-composer---current"></a>PHP-ügyfél telepítése a Zeneszerzőn keresztül – aktuális
 
 A következőn keresztül történő telepítéshez: (blob készítése példaként).
-1. Hozzon létre egy zeneszerző. JSON nevű fájlt a projekt gyökerében a következő kóddal:
+1. Hozzon létre egy composer.jsnevű fájlt a projekt gyökérkönyvtárában a következő kóddal:
 
     ```
     {
@@ -77,13 +77,13 @@ A következőn keresztül történő telepítéshez: (blob készítése példak�
     }
     ```
 
-2. Töltse `composer.phar` le a projekt gyökerét.
+2. Töltse le `composer.phar` a projekt gyökerét.
 
 3. Futtatás: php zeneszerző. farmakovigilancia-telepítés.
 
 ### <a name="endpoint-declaration"></a>Végpont deklarációja
 
-Az Azure Data Box blob Storage-végpont két részből áll: a régió és a Data Box tartomány neve. A Data Box blob Storage SDK-ban az alapértelmezett végpont a `\<serial no. of the device>.microsoftdatabox.com`.  A blob Service-végponttal kapcsolatos további információkért nyissa meg a [kapcsolódás Data Box blob Storage](data-box-deploy-copy-data-via-rest.md)-on keresztül című témakört.
+Az Azure Data Box blob Storage-végpont két részből áll: a régió és a Data Box tartomány neve. A Data Box blob Storage SDK-ban az alapértelmezett végpont a `\<serial no. of the device>.microsoftdatabox.com` .  A blob Service-végponttal kapcsolatos további információkért nyissa meg a [kapcsolódás Data Box blob Storage](data-box-deploy-copy-data-via-rest.md)-on keresztül című témakört.
  
 ## <a name="examples"></a>Példák
 

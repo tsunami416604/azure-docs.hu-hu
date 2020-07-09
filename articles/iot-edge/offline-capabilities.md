@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ef6ed74149f106b801049da429dfe7b79b984a70
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83725244"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
@@ -95,7 +94,7 @@ A [lekérdezés](../iot-hub/iot-hub-devguide-query-language.md) módosításáva
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>3. lehetőség: a IoT Hub Service SDK használata
 
-Végül pedig a C#, a Java vagy a Node. js IoT Hub Service SDK használatával felügyelheti a szülő-gyermek kapcsolatokat. Az alábbi példa egy alárendelt eszköz C# SDK-val történő [hozzárendelését szemlélteti](https://aka.ms/set-child-iot-device-c-sharp) .
+Végül pedig a C#, a Java vagy a Node.js IoT Hub Service SDK használatával felügyelheti a szülő-gyermek kapcsolatokat. Az alábbi példa egy alárendelt eszköz C# SDK-val történő [hozzárendelését szemlélteti](https://aka.ms/set-child-iot-device-c-sharp) .
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>A szülő eszköz beállítása átjáróként
 
@@ -138,7 +137,7 @@ Ez a beállítás a IoT Edge hub kívánt tulajdonsága, amelyet a különálló
 
 Az üzenetek és a modul állapotára vonatkozó információk alapértelmezés szerint az IoT Edge hub helyi tárolójában tárolódnak. A jobb megbízhatóság érdekében, különösen a kapcsolat nélküli üzemmódban, a gazdagép IoT Edge eszközön is kioszthatja a tárolót. További információkért lásd: [modulok hozzáférésének biztosítása az eszköz helyi tárolójához](how-to-access-host-storage-from-module.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a szülő/gyermek eszköz kapcsolatainak transzparens átjáró beállításáról:
 

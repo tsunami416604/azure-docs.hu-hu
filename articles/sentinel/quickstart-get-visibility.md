@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: az Azure Sentinel használatának első lépései'
-description: Azure Sentinel rövid útmutató – az Azure Sentinel használatának első lépései
+description: Ebből a rövid útmutatóból megtudhatja, hogyan tekintheti meg és figyelheti meg, hogy mi történik a környezetében az Azure Sentinel használatával. 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798669"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564604"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyors útmutató: az Azure Sentinel használatának első lépései
 
@@ -123,7 +123,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

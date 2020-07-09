@@ -1,19 +1,14 @@
 ---
 title: Esemény közzététele egyéni Azure Event Grid témakörben
 description: Ez a cikk azt ismerteti, hogyan lehet elküldeni egy eseményt egy egyéni témakörbe. Megjeleníti a bejegyzés és az esemény formátumát.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108243"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel a Azure Event Grid egyéni témakörében
 
@@ -23,9 +18,9 @@ Ez a cikk azt ismerteti, hogyan lehet elküldeni egy eseményt egy egyéni téma
 
 ## <a name="endpoint"></a>Végpont
 
-Ha a HTTP-BEJEGYZÉST egyéni témakörbe küldi, használja az URI formátumot `https://<topic-endpoint>?api-version=2018-01-01`:.
+Ha a HTTP-BEJEGYZÉST egyéni témakörbe küldi, használja az URI formátumot: `https://<topic-endpoint>?api-version=2018-01-01` .
 
-Érvényes URI például a következő: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Érvényes URI például a következő: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 
 Az Azure CLI-vel rendelkező egyéni témakör végpontjának beszerzéséhez használja a következőt:
 
@@ -41,9 +36,9 @@ Ahhoz, hogy a végpontot a Azure PowerShell használó egyéni témakörhöz leh
 
 ## <a name="header"></a>Fejléc
 
-A kérelemben adjon meg egy nevű `aeg-sas-key` fejléc-értéket, amely tartalmaz egy kulcsot a hitelesítéshez.
+A kérelemben adjon meg egy nevű fejléc-értéket, `aeg-sas-key` amely tartalmaz egy kulcsot a hitelesítéshez.
 
-Egy érvényes fejléc-érték például: `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Egy érvényes fejléc-érték például: `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==` .
 
 Az Azure CLI-vel való egyéni témakör kulcsának beszerzéséhez használja a következőt:
 
@@ -124,7 +119,7 @@ Hibák esetén az üzenet törzsének formátuma a következő:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

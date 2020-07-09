@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66427564"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Új szimulált eszköz üzembe helyezése
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 A útmutató követéséhez a következőkre lesz szüksége:
 
 - A [távoli figyelési megoldás gyorsító](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2)üzembe helyezett példánya.
-- Egy helyi **bash** -rendszerhéj a és `ssh` `scp` a parancsok futtatásához. Windowson a **bash** telepítésének egyszerű módja a [git](https://git-scm.com/download/win)telepítése.
+- Egy helyi **bash** -rendszerhéj a és a parancsok futtatásához `ssh` `scp` . Windowson a **bash** telepítésének egyszerű módja a [git](https://git-scm.com/download/win)telepítése.
 - Az egyéni eszköz-modell fájljai, például az [új szimulált eszköz létrehozása és tesztelése](iot-accelerators-remote-monitoring-create-simulated-device.md)című témakörben leírtak.
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
@@ -136,7 +136,7 @@ Mostantól használhatja az egyéni eszközöket a távoli figyelési megoldásb
 
 1. Az irányítópult használatával megtekintheti az eszközök telemetria, és meghívhatja az eszköz metódusait.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy további felfedezést szeretne, hagyja üzembe a távoli figyelési megoldáshoz tartozó gyorssegédet.
 

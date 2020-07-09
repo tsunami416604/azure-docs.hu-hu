@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75834431"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>A Service Fabric-szolgáltatások elhelyezési házirendjei
@@ -101,11 +100,11 @@ A replikák _általában_ a hibák és a frissítési tartományok között oszl
 > A korlátozásokkal és a korlátozási prioritásokkal kapcsolatos további információkért tekintse meg [ezt a témakört](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
 >
 
-Ha már látott egy egészségügyi üzenetet (például "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`"), akkor ezt a feltételt találta, vagy valami hasonló. Általában csak egy vagy két replika van csomagolva, ideiglenesen együtt. Ha az adott tartományban kevesebb, mint a replikák kvóruma, akkor biztonságban van. A csomagolás ritka, de előfordulhat, hogy ezek a helyzetek általában átmenetiek, mivel a csomópontok visszatérnek. Ha a csomópontok lemaradnak, és a fürterőforrás-kezelőnek ki kell építenie a cseréket, általában az ideális tartalék tartományokban más csomópontok is elérhetők.
+Ha már látott egy egészségügyi üzenetet (például " `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain` "), akkor ezt a feltételt találta, vagy valami hasonló. Általában csak egy vagy két replika van csomagolva, ideiglenesen együtt. Ha az adott tartományban kevesebb, mint a replikák kvóruma, akkor biztonságban van. A csomagolás ritka, de előfordulhat, hogy ezek a helyzetek általában átmenetiek, mivel a csomópontok visszatérnek. Ha a csomópontok lemaradnak, és a fürterőforrás-kezelőnek ki kell építenie a cseréket, általában az ideális tartalék tartományokban más csomópontok is elérhetők.
 
 Bizonyos munkaterhelések előnyben részesítették a replikák megcélzott számát, még akkor is, ha azok kevesebb tartományba vannak csomagolva. Ezek a számítási feladatok a teljes egyidejű állandó tartományi hibákra, és általában helyi állapot helyreállítására szolgálnak. Más munkaterhelések inkább az állásidőt vennék igénybe, mint a kockázat helyességét vagy elvesztését. A legtöbb éles számítási feladat több mint három replikával fut, több mint három tartalék tartománnyal és számos érvényes csomóponttal. Emiatt az alapértelmezett viselkedés lehetővé teszi a tartomány becsomagolását alapértelmezés szerint. Az alapértelmezett viselkedés lehetővé teszi a normál elosztást és feladatátvételt a szélsőséges esetek kezelésére, még akkor is, ha az ideiglenes tartományi csomagolást jelent.
 
-Ha egy adott munkaterhelés esetében le szeretné tiltani az `RequireDomainDistribution` ilyen csomagolást, megadhatja a szabályzatot a szolgáltatásban. Ha ez a szabályzat be van állítva, a fürterőforrás-kezelő nem biztosít két replikát ugyanahhoz a partíciós vagy frissítési tartományhoz.
+Ha egy adott munkaterhelés esetében le szeretné tiltani az ilyen csomagolást, megadhatja a `RequireDomainDistribution` szabályzatot a szolgáltatásban. Ha ez a szabályzat be van állítva, a fürterőforrás-kezelő nem biztosít két replikát ugyanahhoz a partíciós vagy frissítési tartományhoz.
 
 Kód:
 

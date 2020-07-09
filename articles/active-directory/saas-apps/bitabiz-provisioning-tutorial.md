@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: ad9176614c4a5235e5138444d4197286204a747f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77059219"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BitaBIZ konfigurálása
@@ -158,7 +157,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A BitaBIZ a **Felhasználónév**, az **E-mail**, a **firstName** és a **lastName** kötelező attribútumként való használatát igényli. 
 * A BitaBIZ jelenleg nem támogatja a rögzített törléseket.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

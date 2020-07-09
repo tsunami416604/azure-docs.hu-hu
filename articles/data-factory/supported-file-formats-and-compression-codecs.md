@@ -9,12 +9,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: dbcfad3dd3db9f5c9431e07d85d77a77a10283c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 24edeb686136a1264d75e81fd9527feff3d17c48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84191089"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és tömörítési kodekek a Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +26,7 @@ A [másolási tevékenységgel](copy-activity-overview.md) fájlok másolását 
 
 Emellett egy adott formátumú fájlokat is elemezheti vagy létrehozhatja. Például a következőket végezheti el:
 
-* Adatok másolása helyszíni SQL Server-adatbázisból, és a Azure Data Lake Storage Gen2ba való írás parketta formátumban.
+* Adatok másolása SQL Server-adatbázisból és a Azure Data Lake Storage Gen2ba való írás parketta formátumban.
 * Szövegfájlok (CSV) formátumának másolása helyszíni fájlrendszerből és az Azure Blob Storage-ba való írás Avro formátumban.
 * Másolhatja a tömörített fájlokat egy helyszíni fájlrendszerből, kibonthatja azokat menet közben, és kibontott fájlokat írhat a Azure Data Lake Storage Gen2ba.
 * Adatok másolása gzip tömörített szövegfájlba (CSV) az Azure Blob Storage-ból, és a Azure SQL Databasebe írás.

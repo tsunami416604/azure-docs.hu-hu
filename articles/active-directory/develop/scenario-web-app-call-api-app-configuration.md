@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 82439f8380b0dca676b781e36fff738b5d5bee93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558793"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -31,7 +30,7 @@ A [felhasználói forgatókönyvekben bejelentkező webalkalmazás](scenario-web
 
 A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a webes alkalmazások engedélyezési kódjának áramlását:
 
-| MSAL-könyvtár | Leírás |
+| MSAL-könyvtár | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a Microsoft. Identity. Web nevű magasabb szintű könyvtárban van beágyazva.|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
@@ -95,7 +94,7 @@ A Microsoft. Identity. Web leegyszerűsíti a kódot úgy, hogy beállítja a me
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.NET a ASP.NET Core hasonlóan kezeli a dolgokat, azzal a különbséggel, hogy az OpenID Connect konfigurációja és az eseményre való előfizetés az `OnAuthorizationCodeReceived` [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban történik. A fogalmak a ASP.NET Corehoz hasonlóan is hasonlóak, de a ASP.NET a `RedirectUri` [web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)kell megadnia. Ez a konfiguráció egy kicsit kevésbé robusztus, mint ASP.NET Core, mert az alkalmazás telepítésekor módosítania kell azt.
+A ASP.NET a ASP.NET Core hasonlóan kezeli a dolgokat, azzal a különbséggel, hogy az OpenID Connect konfigurációja és az eseményre való előfizetés az `OnAuthorizationCodeReceived` [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban történik. A fogalmak a ASP.NET Corehoz hasonlóan is hasonlóak, de a ASP.NET-ben meg kell adnia `RedirectUri` a [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint ASP.NET Core, mert az alkalmazás telepítésekor módosítania kell azt.
 
 A Startup.Auth.cs kódja:
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856938"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -31,22 +31,29 @@ A klasszikus üzemi modellel kapcsolatos további információkért lásd: [Azur
 ## <a name="prerequisites"></a>Előfeltételek
 Ha már telepítette a Azure PowerShell-t, akkor Azure PowerShell 1.0.0 vagy újabb verzió szükséges. Az ezzel a paranccsal telepített Azure PowerShell verzióját a Azure PowerShell parancssorban tekintheti meg.
 
+```azurepowershell
     Get-Module Az | format-table version
-
+```
 
 Először be kell jelentkeznie az Azure-ba ezzel a paranccsal.
 
+```azurepowershell
     Connect-AzAccount
+```
 
 Adja meg az Azure-fiókja és a jelszavának e-mail-címét a Microsoft Azure bejelentkezési párbeszédpanelen.
 
 Ha több Azure-előfizetéssel rendelkezik, be kell állítania az Azure-előfizetését. A jelenlegi előfizetések listájának megtekintéséhez futtassa ezt a parancsot.
 
+```azurepowershell
     Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
+```
 
 Az előfizetés megadásához futtassa a következő parancsot. A következő példában az előfizetés neve: `ContosoSubscription` .
 
+```azurepowershell
     Select-AzSubscription -SubscriptionName ContosoSubscription
+```
 
 A Windows PowerShell és a Azure Resource Manager használata előtt a következőkre lesz szüksége:
 
@@ -54,11 +61,15 @@ A Windows PowerShell és a Azure Resource Manager használata előtt a következ
 
 Az oktatóanyagban látható parancsmagok részletes súgójának megjelenítéséhez használja a Get-Help parancsmagot.
 
+```azurepowershell
     Get-Help <cmdlet-name> -Detailed
+```
 
 Ha például segítséget szeretne kérni a `New-AzRedisCache` parancsmaghoz, írja be a következőt:
 
+```azurepowershell
     Get-Help New-AzRedisCache -Detailed
+```
 
 ### <a name="how-to-connect-to-other-clouds"></a>Kapcsolódás más felhőkhöz
 Alapértelmezés szerint az Azure-környezet a `AzureCloud` globális Azure Cloud-példányt jelképezi. Egy másik példányhoz való kapcsolódáshoz használja a `Connect-AzAccount` parancsot a `-Environment` vagy a- `EnvironmentName` Command Line kapcsolóval a kívánt környezet vagy környezet nevével.
@@ -68,11 +79,15 @@ Az elérhető környezetek listájának megtekintéséhez futtassa a `Get-AzEnvi
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Kapcsolódás a Azure Government felhőhöz
 A Azure Government felhőhöz való kapcsolódáshoz használja a következő parancsok egyikét.
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureUSGovernment
+```
 
 vagy
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureUSGovernment)
+```
 
 Ha gyorsítótárat szeretne létrehozni a Azure Government-felhőben, használja az alábbi helyszínek egyikét.
 
@@ -84,11 +99,15 @@ További információ a Azure Government felhőről: [Microsoft Azure Government
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Kapcsolódás az Azure-beli kínai felhőhöz
 Az Azure China-felhőhöz való kapcsolódáshoz használja a következő parancsok egyikét.
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureChinaCloud
+```
 
 vagy
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureChinaCloud)
+```
 
 Ha gyorsítótárat szeretne létrehozni az Azure China-felhőben, használja az alábbi helyszínek egyikét.
 
@@ -100,12 +119,15 @@ További információ az Azure China Cloud-ról: [AzureChinaCloud for Azure ált
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Kapcsolódás Microsoft Azure Germanyhoz
 A Microsoft Azure Germanyhoz való kapcsolódáshoz használja a következő parancsok egyikét.
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureGermanCloud
-
+```
 
 vagy
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
+```
 
 Ha Microsoft Azure Germany gyorsítótárat szeretne létrehozni, használja a következő helyszínek egyikét.
 
@@ -117,14 +139,14 @@ További információ a Microsoft Azure Germanyről: [Microsoft Azure Germany](h
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Az Azure cache Redis PowerShell-hez használt tulajdonságai
 A következő táblázat a gyakran használt paraméterek tulajdonságait és leírásait tartalmazza, amikor az Azure cache-t az Azure PowerShell használatával hozza létre és kezeli az Redis-példányokhoz.
 
-| Paraméter | Description | Alapértelmezett |
+| Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
 | Name |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | ResourceGroupName |Az erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat | |
 | Méret |A gyorsítótár mérete Érvényes értékek: P1, P2, P3, P4, c0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Azon szegmensek száma, amelyeket létre kell hozni a prémium szintű gyorsítótár létrehozásakor, ha a fürtözés engedélyezve van. Az érvényes értékek: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| SKU |A gyorsítótár SKU-jának meghatározása. Az érvényes értékek a következők: alapszintű, standard, prémium |Standard |
+| Termékváltozat |A gyorsítótár SKU-jának meghatározása. Az érvényes értékek a következők: alapszintű, standard, prémium |Standard |
 | RedisConfiguration |Meghatározza a Redis konfigurációs beállításait. Az egyes beállításokkal kapcsolatos részletekért tekintse meg a következő [RedisConfiguration-tulajdonságok](#redisconfiguration-properties) táblázatot. | |
 | EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL-port. |False (Hamis) |
 | MaxMemoryPolicy |Ez a paraméter elavult – használja helyette a RedisConfiguration. | |
@@ -161,6 +183,7 @@ A [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `New-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help New-AzRedisCache -detailed
 
     NAME
@@ -232,27 +255,36 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 Az alapértelmezett paraméterekkel rendelkező gyorsítótár létrehozásához futtassa a következő parancsot.
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
+```
 
 `ResourceGroupName``Name`a, a és a `Location` kötelező paraméterek, de a többi nem kötelező, és alapértelmezett értékekkel rendelkezik. Az előző parancs futtatása létrehoz egy standard SKU Azure cache-t a Redis-példányhoz a megadott névvel, hellyel és erőforráscsoporthoz, amely 1 GB méretű, és a nem SSL-port le van tiltva.
 
 Prémium gyorsítótár létrehozásához meg kell adni a P1 (6 GB-60 GB), P2 (13 GB-130 GB), P3 (26 GB-260 GB) vagy P4 (53 GB-530 GB) méretet. A fürtözés engedélyezéséhez a paraméterrel kell megadnia a szegmensek darabszámát `ShardCount` . Az alábbi példa egy P1 Premium gyorsítótárat hoz létre 3 szegmenssel. A P1 prémium gyorsítótár mérete 6 GB, és mivel három szegmenst adtunk meg, a teljes méret 18 GB (3 x 6 GB).
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
+```
 
 A paraméter értékének megadásához az értékeket a következőhöz `RedisConfiguration` `{}` hasonló kulcs/érték párokba kell foglalni: `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` . Az alábbi példa egy standard 1 GB-os gyorsítótárat hoz létre, amely a `allkeys-random` maxmemory szabályzattal és a által konfigurált, a-val beállított webtárhely `KEA` További információ: a [lemezterület-értesítések (speciális beállítások)](cache-configure.md#keyspace-notifications-advanced-settings) és a [memória-házirendek](cache-configure.md#memory-policies).
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
+```
 
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>Az adatbázisok beállítása a gyorsítótár létrehozásakor
 A `databases` beállítás csak a gyorsítótár létrehozásakor konfigurálható. A következő példa egy prémium P3 (26 GB) gyorsítótárat hoz létre a 48-adatbázisokkal a [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) parancsmag használatával.
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
+```
 
 További információ a `databases` tulajdonságról: [alapértelmezett Azure cache a Redis Server Configuration](cache-configure.md#default-redis-server-configuration). A gyorsítótár a [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) parancsmaggal történő létrehozásával kapcsolatos további információkért tekintse meg a következőt: Azure cache létrehozása Redis szakasz.
 
@@ -261,6 +293,7 @@ A Redis példányok Azure gyorsítótára a [set-AzRedisCache](https://docs.micr
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Set-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Set-AzRedisCache -detailed
 
     NAME
@@ -312,12 +345,15 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 A parancsmag használható a tulajdonságok, például,, `Set-AzRedisCache` `Size` `Sku` `EnableNonSslPort` és értékek frissítésére `RedisConfiguration` . 
 
 A következő parancs frissíti az Azure cache maxmemory-házirendjét a myCache nevű Redis.
 
+```azurepowershell
     Set-AzRedisCache -ResourceGroupName "myGroup" -Name "myCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
+```
 
 <a name="scale"></a>
 
@@ -340,10 +376,13 @@ A következő parancs frissíti az Azure cache maxmemory-házirendjét a myCache
 
 Az alábbi példa bemutatja, hogyan méretezheti át a gyorsítótárat `myCache` egy 2,5 GB-os gyorsítótárba. Vegye figyelembe, hogy ez a parancs egy alapszintű vagy egy standard szintű gyorsítótár esetében is működik.
 
+```azurepowershell
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 A parancs kiadását követően a rendszer a gyorsítótár állapotát adja vissza (a híváshoz hasonlóan `Get-AzRedisCache` ). Vegye figyelembe, hogy a `ProvisioningState` `Scaling` .
 
+```azurepowershell
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
 
 
@@ -370,16 +409,20 @@ A parancs kiadását követően a rendszer a gyorsítótár állapotát adja vis
     StaticIP           :
     TenantSettings     : {}
     ShardCount         :
+```
 
 A skálázási művelet befejezésekor a `ProvisioningState` módosítások a következőre változnak: `Succeeded` . Ha egy későbbi skálázási műveletet kell végrehajtania, például az alapszintről a standard értékre való váltásra, majd a méret módosítására, meg kell várnia, amíg az előző művelet befejeződik, vagy a következőhöz hasonló hibaüzenetet kap.
 
+```azurepowershell
     Set-AzRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
+```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>A Redis Azure-gyorsítótárával kapcsolatos információk beolvasása
 A gyorsítótárra vonatkozó információkat a [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) parancsmag használatával kérheti le.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Get-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Get-AzRedisCache -detailed
 
     NAME
@@ -416,17 +459,23 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 Ha a jelenlegi előfizetésben lévő összes gyorsítótárra vonatkozó információt szeretne visszaadni, paraméterek nélkül futtassa a parancsot `Get-AzRedisCache` .
 
+```azurepowershell
     Get-AzRedisCache
+```
 
 Egy adott erőforráscsoport összes gyorsítótárával kapcsolatos információk visszaadásához futtassa a (z `Get-AzRedisCache` `ResourceGroupName` ) paramétert.
 
+```azurepowershell
     Get-AzRedisCache -ResourceGroupName myGroup
+```
 
 Egy adott gyorsítótárra vonatkozó információk visszaadásához futtassa a parancsot a `Get-AzRedisCache` `Name` gyorsítótár nevét tartalmazó paraméterrel, valamint a `ResourceGroupName` paramétert a gyorsítótárat tartalmazó erőforráscsoporthoz.
 
+```azurepowershell
     PS C:\> Get-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
     Name               : mycache
@@ -450,12 +499,14 @@ Egy adott gyorsítótárra vonatkozó információk visszaadásához futtassa a 
     StaticIP           :
     TenantSettings     : {}
     ShardCount         :
+```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Azure cache elérési kulcsainak beolvasása a Redis
 A gyorsítótárhoz tartozó hozzáférési kulcsok lekéréséhez használhatja a [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) parancsmagot.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Get-AzRedisCacheKey` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Get-AzRedisCacheKey -detailed
 
     NAME
@@ -483,19 +534,23 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 A gyorsítótár kulcsainak lekéréséhez hívja meg a `Get-AzRedisCacheKey` parancsmagot, és adja meg a gyorsítótár nevét a gyorsítótárban található erőforráscsoport nevével.
 
+```azurepowershell
     PS C:\> Get-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup
 
     PrimaryKey   : b2wdt43sfetlju4hfbryfnregrd9wgIcc6IA3zAO1lY=
     SecondaryKey : ABhfB757JgjIgt785JgKH9865eifmekfnn649303JKL=
+```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Az Azure cache elérési kulcsainak újragenerálása a Redis
 A gyorsítótár elérési kulcsainak újragenerálása érdekében használhatja a [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) parancsmagot.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `New-AzRedisCacheKey` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help New-AzRedisCacheKey -detailed
 
     NAME
@@ -528,9 +583,11 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 A gyorsítótár elsődleges vagy másodlagos kulcsának újragenerálása érdekében hívja meg a `New-AzRedisCacheKey` parancsmagot, és adja meg a nevet, az erőforráscsoportot, majd adja meg `Primary` `Secondary` a vagy a `KeyType` paramétert. A következő példában a gyorsítótár másodlagos elérési kulcsa újra létrejön.
 
+```azurepowershell
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
     Confirm
@@ -540,12 +597,14 @@ A gyorsítótár elsődleges vagy másodlagos kulcsának újragenerálása érde
 
     PrimaryKey   : b2wdt43sfetlju4hfbryfnregrd9wgIcc6IA3zAO1lY=
     SecondaryKey : c53hj3kh4jhHjPJk8l0jji785JgKH9865eifmekfnn6=
+```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Azure cache törlése a Redis-hez
 Ha törölni szeretne egy Azure-gyorsítótárat a Redis, használja a [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) parancsmagot.
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Remove-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Remove-AzRedisCache -detailed
 
     NAME
@@ -579,14 +638,17 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 A következő példában a nevű gyorsítótár `myCache` el lesz távolítva.
 
+```azurepowershell
     PS C:\> Remove-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
     Confirm
     Are you sure you want to remove Azure Cache for Redis 'myCache'?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+```
 
 
 ## <a name="to-import-an-azure-cache-for-redis"></a>Azure cache importálása a Redis-hez
@@ -599,6 +661,7 @@ A parancsmag használatával importálhat egy Azure-gyorsítótárba az Redis-p�
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Import-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Import-AzRedisCache -detailed
 
     NAME
@@ -643,11 +706,14 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 A következő parancs a SAS URI által megadott blob adatait importálja az Azure cache-be a Redis-hez.
 
+```azurepowershell
     PS C:\>Import-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+```
 
 ## <a name="to-export-an-azure-cache-for-redis"></a>Azure cache exportálása Redis
 Az adatok az Redis-példány Azure cache-ből exportálhatók a `Export-AzRedisCache` parancsmag használatával.
@@ -659,6 +725,7 @@ Az adatok az Redis-példány Azure cache-ből exportálhatók a `Export-AzRedisC
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Export-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Export-AzRedisCache -detailed
 
     NAME
@@ -702,13 +769,16 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 A következő parancs a Redis példány Azure cache-ből származó adatait exportálja a SAS URI által megadott tárolóba.
 
-        PS C:\>Export-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
-        -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
-        pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+```azurepowershell
+    PS C:\>Export-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
+    -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
+    pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+```
 
 ## <a name="to-reboot-an-azure-cache-for-redis"></a>Azure cache újraindítása a Redis
 A parancsmag használatával újraindíthatja az Azure cache-t a Redis-példányhoz `Reset-AzRedisCache` .
@@ -720,6 +790,7 @@ A parancsmag használatával újraindíthatja az Azure cache-t a Redis-példány
 
 Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséhez `Reset-AzRedisCache` futtassa a következő parancsot.
 
+```azurepowershell
     PS C:\> Get-Help Reset-AzRedisCache -detailed
 
     NAME
@@ -763,12 +834,15 @@ Az elérhető paraméterek és a hozzájuk tartozó leírások megjelenítéséh
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 A következő parancs újraindítja a megadott gyorsítótár mindkét csomópontját.
 
-        PS C:\>Reset-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
-        -Force
+```azurepowershell
+    PS C:\>Reset-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
+    -Force
+```
 
 
 ## <a name="next-steps"></a>További lépések
@@ -779,5 +853,5 @@ Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával k
 * [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/templates/deploy-portal.md): megtudhatja, hogyan hozhat létre és kezelhet erőforráscsoportokat a Azure Portalban.
 * [Azure blog](https://azure.microsoft.com/blog/): Ismerkedjen meg az Azure új szolgáltatásaival.
 * [Windows PowerShell blog](https://devblogs.microsoft.com/powershell/): Ismerkedjen meg a Windows PowerShell új szolgáltatásaival.
-* ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
+* ["Hey, Scripting Guy!" Blog](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
 

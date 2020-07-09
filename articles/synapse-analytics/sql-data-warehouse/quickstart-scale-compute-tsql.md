@@ -6,17 +6,17 @@ author: Antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 780137c8e081917b317656de3caba60dfaea4810
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80633735"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212921"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Gyors útmutató: a számítások méretezése az Azure szinapszis Analyticsben T-SQL használatával
 
@@ -43,7 +43,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-   | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **mySampleDataWarehouseservername.database.Windows.net**. |
+   | Kiszolgáló neve | A teljes kiszolgálónév | Íme egy példa: **mySampleDataWarehouseservername.database.Windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdafiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |

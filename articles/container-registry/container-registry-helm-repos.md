@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan tárolhatja a Kubernetes-alkalmazásokhoz tarto
 ms.topic: article
 ms.date: 03/20/2020
 ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857608"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>A Helm-diagramok leküldése és lekérése egy Azure Container registrybe
@@ -41,7 +40,7 @@ A Helm 3 vagy a Helm 2 használatával a Helm-diagramokat Azure Container Regist
 - Azure **Container Registry** az Azure-előfizetésében. Ha szükséges, hozzon létre egy beállításjegyzéket a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)használatával.
 - A **Helm-ügyfél verziója 3.1.0 vagy újabb** verzióra `helm version` , hogy megtalálja az aktuális verziót. A Helm telepítésével és frissítésével kapcsolatos további információkért lásd: a [Helm telepítése][helm-install].
 - **Egy Kubernetes-fürt** , ahol egy Helm-diagramot fog telepíteni. Ha szükséges, hozzon létre egy [Azure Kubernetes Service-fürtöt][aks-quickstart]. 
-- A verzió megkereséséhez futtassa `az --version` az **Azure CLI 2.0.71 vagy újabb verzióját** . Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+- A verzió megkereséséhez futtassa az **Azure CLI 2.0.71 vagy újabb verzióját** `az --version` . Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Magas szintű munkafolyamat
 
@@ -49,9 +48,9 @@ A **Helm 3** esetében:
 
 * Létrehozhat egy vagy több Helm-tárházat egy Azure Container registryben
 * A [OCI](container-registry-image-formats.md#oci-artifacts)-összetevőket tartalmazó Helm 3 diagramokat egy beállításjegyzékben tárolja. Jelenleg a Helm 3 támogatja a OCI- *t.*
-* A `helm registry login` paranccsal végezze el a hitelesítést a beállításjegyzék használatával.
-* A `helm chart` Helm parancssori felületén található parancsok használatával leküldheti, lekérheti és kezelheti a-beállításjegyzékben található Helm-diagramokat
-* A `helm install` használatával diagramokat telepíthet egy Kubernetes-fürtre egy helyi adattár-gyorsítótárból.
+* A paranccsal végezze el a hitelesítést a beállításjegyzék használatával `helm registry login` .
+* `helm chart`A Helm parancssori felületén található parancsok használatával leküldheti, lekérheti és kezelheti a-beállításjegyzékben található Helm-diagramokat
+* A használatával `helm install` diagramokat telepíthet egy Kubernetes-fürtre egy helyi adattár-gyorsítótárból.
 
 Példákat a következő részekben talál.
 
@@ -81,7 +80,7 @@ cd hello-world/templates
 rm -rf *
 ```
 
-A `templates` mappában hozzon létre egy nevű `configmap.yaml` fájlt a következő tartalommal:
+A `templates` mappában hozzon létre egy nevű fájlt `configmap.yaml` a következő tartalommal:
 
 ```console
 cat <<EOF > configmap.yaml
@@ -98,7 +97,7 @@ A példa létrehozásával és futtatásával kapcsolatos további információk
 
 ### <a name="save-chart-to-local-registry-cache"></a>Diagram mentése helyi beállításjegyzék-gyorsítótárba
 
-Módosítsa a könyvtárat az `hello-world` alkönyvtárra. Ezután futtassa a `helm chart save` parancsot a diagram helyi másolatának mentéséhez, és hozzon létre egy aliast a beállításjegyzék teljes nevével, valamint a cél tárházat és a címkét is. 
+Módosítsa a könyvtárat az `hello-world` alkönyvtárra. Ezután futtassa a parancsot a `helm chart save` diagram helyi másolatának mentéséhez, és hozzon létre egy aliast a beállításjegyzék teljes nevével, valamint a cél tárházat és a címkét is. 
 
 A következő példában a beállításjegyzék neve *mycontainerregistry*, a cél tárháza a *Hello-World*, a TARGET diagram címkéje pedig *v1*, de a környezet helyettesítő értékei:
 
@@ -108,7 +107,7 @@ helm chart save . hello-world:v1
 helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-A `helm chart list` futtatásával erősítse meg, hogy mentette a diagramokat a helyi beállításjegyzék-gyorsítótárban. A kimenet a következőhöz hasonló:
+A futtatásával erősítse meg, `helm chart list` hogy mentette a diagramokat a helyi beállításjegyzék-gyorsítótárban. A kimenet a következőhöz hasonló:
 
 ```console
 REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
@@ -120,7 +119,7 @@ mycontainerregistry.azurecr.io/helm/hello-world:v1       hello-world       0.1.0
 
 Futtassa a `helm registry login` parancsot a Helm 3 CLI-ben a forgatókönyvhöz megfelelő hitelesítő adatok használatával történő [hitelesítéshez](container-registry-authentication.md) .
 
-Hozzon létre például egy Azure Active Directory [egyszerű szolgáltatást a lekéréses és leküldéses engedélyekkel](container-registry-auth-service-principal.md#create-a-service-principal) (AcrPush szerepkör) a beállításjegyzékbe. Ezután adja meg `helm registry login`az egyszerű szolgáltatás hitelesítő adatait a következőhöz:. A következő példa környezeti változó használatával szolgáltatja a jelszót:
+Hozzon létre például egy Azure Active Directory [egyszerű szolgáltatást a lekéréses és leküldéses engedélyekkel](container-registry-auth-service-principal.md#create-a-service-principal) (AcrPush szerepkör) a beállításjegyzékbe. Ezután adja meg az egyszerű szolgáltatás hitelesítő adatait a következőhöz: `helm registry login` . A következő példa környezeti változó használatával szolgáltatja a jelszót:
 
 ```console
 echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
@@ -186,7 +185,7 @@ az acr repository show-manifests \
   --repository helm/hello-world --detail
 ```
 
-A példában szereplő kimenet a következőt jeleníti `configMediaType` meg: `application/vnd.cncf.helm.config.v1+json`
+A példában szereplő kimenet a következőt jeleníti meg `configMediaType` `application/vnd.cncf.helm.config.v1+json` :
 
 ```output
 [
@@ -205,13 +204,13 @@ A példában szereplő kimenet a következőt jeleníti `configMediaType` meg: `
 
 ### <a name="pull-chart-to-local-cache"></a>Diagram lekérése a helyi gyorsítótárba
 
-Ha egy Helm-diagramot szeretne Kubernetes telepíteni, a diagramnak a helyi gyorsítótárban kell lennie. Ebben a példában először a futtatásával `helm chart remove` távolítsa el a nevű `mycontainerregistry.azurecr.io/helm/hello-world:v1`meglévő helyi diagramot:
+Ha egy Helm-diagramot szeretne Kubernetes telepíteni, a diagramnak a helyi gyorsítótárban kell lennie. Ebben a példában először a futtatásával `helm chart remove` távolítsa el a nevű meglévő helyi diagramot `mycontainerregistry.azurecr.io/helm/hello-world:v1` :
 
 ```console
 helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-A `helm chart pull` futtatásával töltse le a diagramot az Azure Container registryből a helyi gyorsítótárba:
+A futtatásával `helm chart pull` töltse le a diagramot az Azure Container registryből a helyi gyorsítótárba:
 
 ```console
 helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
@@ -219,7 +218,7 @@ helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
 
 ### <a name="export-helm-chart"></a>Helm-diagram exportálása
 
-A diagram további működéséhez exportálja azt egy helyi könyvtárba a használatával `helm chart export`. Exportálja például a következő `install` könyvtárba húzott diagramot:
+A diagram további működéséhez exportálja azt egy helyi könyvtárba a használatával `helm chart export` . Exportálja például a következő könyvtárba húzott diagramot `install` :
 
 ```console
 helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
@@ -246,7 +245,7 @@ version: 0.1.0
 
 ### <a name="install-helm-chart"></a>A Helm-diagram telepítése
 
-Futtassa `helm install` a parancsot, és telepítse a helyi gyorsítótárba, majd exportálta a Helm-diagramot. Adja meg a kiadás nevét (például *myhelmtest*), vagy `--generate-name` adja át a paramétert. Például:
+Futtassa `helm install` a parancsot, és telepítse a helyi gyorsítótárba, majd exportálta a Helm-diagramot. Adja meg a kiadás nevét (például *myhelmtest*), vagy adja át a `--generate-name` paramétert. Például:
 
 ```console
 helm install myhelmtest ./hello-world
@@ -263,7 +262,7 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-A telepítés ellenőrzéséhez futtassa a `helm get manifest` parancsot. A parancs a `configmap.yaml` sablonfájl YAML adatait adja vissza.
+A telepítés ellenőrzéséhez futtassa a `helm get manifest` parancsot. A parancs a sablonfájl YAML adatait adja vissza `configmap.yaml` .
 
 Futtassa `helm uninstall` a parancsot a diagram kiadásának eltávolításához a fürtön:
 
@@ -285,7 +284,7 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 
 - Azure **Container Registry** az Azure-előfizetésében. Ha szükséges, hozzon létre egy beállításjegyzéket a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)használatával.
 - A **Helm-ügyfél verziója 2.11.0 (nem RC verzió), vagy később** futtatva `helm version` megkeresi az aktuális verziót. Szükség van egy Kubernetes-fürtön belül inicializált Helm-kiszolgálóra is. Ha szükséges, hozzon létre egy [Azure Kubernetes Service-fürtöt][aks-quickstart]. A Helm telepítésével és frissítésével kapcsolatos további információkért lásd: a [Helm telepítése][helm-install-v2].
-- A verzió megkereséséhez futtassa `az --version` az **Azure CLI 2.0.46 vagy újabb verzióját** . Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+- A verzió megkereséséhez futtassa az **Azure CLI 2.0.46 vagy újabb verzióját** `az --version` . Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Magas szintű munkafolyamat
 
@@ -295,13 +294,13 @@ A **Helm 2** esetében:
 * Az Azure CLI használatával hitelesítheti magát az Azure Container registryben, amely ezután automatikusan frissíti a Helm-ügyfelet a beállításjegyzék URI azonosítójának és hitelesítő adataival. Nem kell manuálisan megadnia a beállításjegyzék adatait, így a hitelesítő adatok nem jelennek meg a parancs előzményeiben.
 * Az Azure CLI-ben az az [ACR Helm][az-acr-helm] paranccsal adhatja hozzá az Azure Container registryt a Helm chart-tárházhoz, és leküldheti és kezelheti a diagramokat. Ezek az Azure CLI-parancsok a Helm 2-ügyfél parancsait takarják.
 * Adja hozzá a diagram adattárat az Azure Container registryben a helyi Helm-tárház indexéhez, amely támogatja a Diagramos keresést.
-* A `helm install` használatával diagramokat telepíthet egy Kubernetes-fürtre egy helyi adattár-gyorsítótárból.
+* A használatával `helm install` diagramokat telepíthet egy Kubernetes-fürtre egy helyi adattár-gyorsítótárból.
 
 Példákat a következő részekben talál.
 
 ### <a name="add-repository-to-helm-client"></a>Tárház hozzáadása a Helm-ügyfélhez
 
-Adja hozzá a Azure Container Registry Helm diagram-tárházát a Helm-ügyfeléhez az az [ACR Helm repo Add][az-acr-helm-repo-add] paranccsal. Ez a parancs beolvassa a Helm-ügyfél által használt Azure Container Registry hitelesítési jogkivonatát. A hitelesítési jogkivonat 3 óráig érvényes. `docker login`A következőhöz hasonlóan futtathatja ezt a parancsot a későbbi CLI-munkamenetekben, hogy a Helm-ügyfelet a Azure Container Registry Helm diagram adattárával hitelesítse:
+Adja hozzá a Azure Container Registry Helm diagram-tárházát a Helm-ügyfeléhez az az [ACR Helm repo Add][az-acr-helm-repo-add] paranccsal. Ez a parancs beolvassa a Helm-ügyfél által használt Azure Container Registry hitelesítési jogkivonatát. A hitelesítési jogkivonat 3 óráig érvényes. A `docker login` következőhöz hasonlóan futtathatja ezt a parancsot a későbbi CLI-munkamenetekben, hogy a Helm-ügyfelet a Azure Container Registry Helm diagram adattárával hitelesítse:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
@@ -317,7 +316,7 @@ helm repo update
 helm fetch stable/wordpress
 ```
 
-Írja `ls` be a letöltött diagramot a listára, és jegyezze fel a fájlnévben szereplő WordPress-verziót. A `helm fetch stable/wordpress` parancs nem adott meg egy adott verziót, ezért a rendszer beolvasta a *legújabb* verziót. A következő példa kimenetében a WordPress-diagram a *8.1.0*verziója:
+Írja be `ls` a letöltött diagramot a listára, és jegyezze fel a fájlnévben szereplő WordPress-verziót. A `helm fetch stable/wordpress` parancs nem adott meg egy adott verziót, ezért a rendszer beolvasta a *legújabb* verziót. A következő példa kimenetében a WordPress-diagram a *8.1.0*verziója:
 
 ```output
 wordpress-8.1.0.tgz
@@ -366,7 +365,7 @@ az acr helm list --name mycontainerregistry
 
 ### <a name="show-information-for-a-helm-chart"></a>Helm-diagram adatainak megjelenítése
 
-A tárház egy adott diagramjának információit a `helm inspect` parancs használatával tekintheti meg.
+A tárház egy adott diagramjának információit a parancs használatával tekintheti meg `helm inspect` .
 
 ```console
 helm inspect mycontainerregistry/wordpress
@@ -399,7 +398,7 @@ version: 8.1.0
 [...]
 ```
 
-A diagramra vonatkozó információkat az Azure CLI az [ACR Helm show][az-acr-helm-show] paranccsal is megjelenítheti. A rendszer a diagram *legújabb* verzióját is alapértelmezés szerint visszaadja. Hozzáfűzheti `--version` a diagram adott verziójának (például *8.1.0*) listázásához:
+A diagramra vonatkozó információkat az Azure CLI az [ACR Helm show][az-acr-helm-show] paranccsal is megjelenítheti. A rendszer a diagram *legújabb* verzióját is alapértelmezés szerint visszaadja. Hozzáfűzheti a `--version` diagram adott verziójának (például *8.1.0*) listázásához:
 
 ```azurecli
 az acr helm show --name mycontainerregistry wordpress
@@ -422,7 +421,7 @@ A telepítési folyamat során a következő lépések végezhetők el:
 - A rendszer letölti a megfelelő diagramot a Azure Container Registry adattárból.
 - A diagram a Kubernetes-fürtön a kormányrúd használatával van üzembe helyezve.
 
-A telepítés folytatásához kövesse a parancs kimenetében található utasításokat a WorPress URL-címeinek és hitelesítő adatainak megtekintéséhez. A következő `kubectl get pods` parancs futtatásával is megtekintheti a Helm diagramon üzembe helyezett Kubernetes-erőforrásokat:
+A telepítés folytatásához kövesse a parancs kimenetében található utasításokat a WorPress URL-címeinek és hitelesítő adatainak megtekintéséhez. A következő parancs futtatásával is `kubectl get pods` megtekintheti a Helm diagramon üzembe helyezett Kubernetes-erőforrásokat:
 
 ```output
 NAME                                    READY   STATUS    RESTARTS   AGE
@@ -441,7 +440,7 @@ az acr helm delete --name mycontainerregistry wordpress --version 8.1.0
 
 Ha törölni szeretné a megnevezett diagram összes verzióját, hagyja ki a `--version` paramétert.
 
-A rendszer a futtatáskor `helm search`továbbra is visszaadja a diagramot. A Helm-ügyfél ismét nem frissíti automatikusan az elérhető diagramok listáját egy adattárban. A Helm Client repo index frissítéséhez használja újra az az [ACR Helm repo Add][az-acr-helm-repo-add] parancsot:
+A rendszer a futtatáskor továbbra is visszaadja a diagramot `helm search` . A Helm-ügyfél ismét nem frissíti automatikusan az elérhető diagramok listáját egy adattárban. A Helm Client repo index frissítéséhez használja újra az az [ACR Helm repo Add][az-acr-helm-repo-add] parancsot:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry

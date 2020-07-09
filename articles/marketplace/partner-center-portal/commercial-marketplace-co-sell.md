@@ -1,18 +1,18 @@
 ---
 title: Közös értékesítés lehetősége a partner Centerben | Azure piactér
 description: Az ajánlat közös értékesítés lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni a megoldásról.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201451"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104231"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
@@ -34,7 +34,7 @@ A partneri központban a közös értékesítés lehetőség jelenleg néhány a
 | Power BI szolgáltatásalkalmazás     |     A bejelentés       |
 |  |
 
-## <a name="listing"></a>Listázása
+## <a name="listing"></a>Listázás
 
 A közös értékesítéssel rendelkező listák segítenek a Microsoft értékesítési csapatoknak felvenni a megoldást a szélesebb közönség számára.
 
@@ -75,7 +75,7 @@ A Microsoft számára biztosítékot biztosíthat az ügyfelek igényeinek kiér
 | *Egyéb dokumentumok* | Akár öt további dokumentumot vagy videót is feltölthet, hogy segítse a Microsoft értékesítési csapatait és a csatornák viszonteladóit, hogy többet tudjon meg a megoldásról, a szervezetről és/vagy a differenciálekről. |
 | *Külső hivatkozás URL-címe* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csoportjai és a csatorna-viszonteladók többet tudnak megtudni a megoldásról. |
 
-## <a name="contacts"></a>Kapcsolatok
+## <a name="contacts"></a>Kapcsolattartók
 
 A kapcsolattartási adatok lehetővé teszik, hogy a Microsoft értékesítési csapatok és a csatornák viszonteladói további információkat kérjenek a szervezet megfelelő erőforrásáról. A kapcsolattartási adatok minden Microsoft értékesítési csapat számára elérhetők. Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a CSP programban, a kapcsolattartási adatok a csatorna-viszonteladók számára is elérhetők.
 
@@ -101,6 +101,6 @@ Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosí
 
 * *Államok/tartományok (nem kötelező):*  A sablon kitöltésekor használja az XX-XX formátumot az [Államok/tartományok táblában](./commercial-marketplace-co-sell-states.md)felsoroltak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [értékesítés a Microsofttal](https://partner.microsoft.com/membership/sell-with-microsoft).

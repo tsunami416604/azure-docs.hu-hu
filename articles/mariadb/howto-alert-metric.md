@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és érheti el az 
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 683b89b29265159b0316d427a7ae616bf3766f7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529017"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120075"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MariaDB
 
@@ -25,7 +25,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Webhook meghívása
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -38,7 +38,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 3. Válassza a **metrika hozzáadása riasztás** (+ ikon) lehetőséget.
 
-4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a szükséges információkat:
+4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
    ![Metrikus riasztási űrlap hozzáadása](./media/howto-alert-metric/4-add-rule-form.png)
 
@@ -84,6 +84,6 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

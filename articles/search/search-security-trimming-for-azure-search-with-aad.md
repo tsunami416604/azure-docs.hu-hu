@@ -1,19 +1,18 @@
 ---
 title: Az eredmények a Active Directory használatával történő levágására szolgáló biztonsági szűrők
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search-tartalmak hozzáférés-vezérlése biztonsági szűrők és Azure Active Directory (HRE) identitások használatával.
+description: Biztonsági jogosultságok a dokumentum szintjén az Azure Cognitive Search keresési eredmények, biztonsági szűrők és Azure Active Directory (HRE) identitások használatával.
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/04/2020
+ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080490"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Az Azure Cognitive Search eredményeinek Active Directory identitások használatával történő kivágására szolgáló biztonsági szűrők
 
@@ -28,7 +27,7 @@ Ez a cikk a következő feladatokat mutatja be:
 > - Keresési kérelem kibocsátása csoportazonosító szűrővel
 > 
 > [!NOTE]
-> A cikkben szereplő kódrészletek a C# nyelven íródnak. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. 
+> A cikkben szereplő kódrészletek a C# nyelven íródnak. A teljes forráskódot a [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started) webhelyén találja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,11 +41,11 @@ Az alkalmazásnak a HRE-ben is regisztrálva kell lennie az alábbi eljárásban
 
 Ez a lépés integrálja az alkalmazást a HRE-mel, hogy elfogadja a felhasználói és csoportfiókok bejelentkezését. Ha Ön nem HRE-rendszergazda a szervezetben, lehetséges, hogy [létre kell hoznia egy új bérlőt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) az alábbi lépések végrehajtásához.
 
-1. Nyissa meg az [**alkalmazás regisztrációs portálját**](https://apps.dev.microsoft.com) >  **Converged app** > , és**adjon hozzá egy alkalmazást**.
+1. Nyissa meg az [**alkalmazás regisztrációs portálját**](https://apps.dev.microsoft.com), és  >   **Converged app**  >  **adjon hozzá egy alkalmazást**.
 2. Adja meg az alkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
 3. Válassza ki az újonnan regisztrált alkalmazást a saját alkalmazások oldalon.
-4. Az alkalmazás regisztrációja **oldalon >** > platform platform**hozzáadása**területen válassza a **webes API**lehetőséget.
-5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek** > **Hozzáadás**gombra.
+4. Az alkalmazás regisztrációja **oldalon > platform platform**  >  **hozzáadása**területen válassza a **webes API**lehetőséget.
+5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek**  >  **Hozzáadás**gombra.
 6. Az engedélyek kiválasztása területen adja hozzá a következő delegált engedélyeket, majd kattintson az **OK**gombra:
 
    + **Directory. ReadWrite. All**

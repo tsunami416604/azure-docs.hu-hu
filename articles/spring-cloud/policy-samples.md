@@ -1,24 +1,24 @@
 ---
 title: Az Azure Spring Cloud beépített szabályzat-definíciói
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure Spring Cloud-hoz. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 8c68f6f802b12e93e0968c3193527e0a1815efff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7988c78b651fb3c5db6df47e1793342440b0d724
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657174"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321707"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-spring-cloud"></a>Az Azure Spring Cloud beépített szabályzat-definícióinak Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Az Azure Spring Cloud beépített definíciói Azure Policy
 
 Ez az oldal az Azure Spring Cloud [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-spring-cloud"></a>Azure Spring Cloud
 

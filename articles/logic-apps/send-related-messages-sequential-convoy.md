@@ -6,12 +6,11 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f2a5ad78ecf4bf02e84b9bf2e37fea13c708e072
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987606"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Kapcsolódó üzenetek küldése sorrendben a Azure Logic Appsban szekvenciális konvoj használatával Azure Service Bus
 
@@ -27,7 +26,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely 
 
 * A várólistán lévő összes üzenet olvasása és feldolgozása az aktuális munkafolyamat-futtatás során.
 
-A sablon JSON-fájljának áttekintéséhez tekintse meg a [GitHub: Service-Bus-Sessions. JSON](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)fájlt.
+A sablon JSON-fájljának áttekintéséhez tekintse [meg a GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)című témakört.
 
 További információ: [szekvenciális konvojos minta – Azure Architecture Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
 
@@ -249,7 +248,7 @@ Ez [ **egészen addig, amíg** a ciklus nem](../logic-apps/logic-apps-control-fl
 1. A Service Bus műveletben **további üzeneteket kaphat a munkamenetből**, adja meg a Service Bus üzenetsor nevét. Ellenkező esetben tartsa meg az összes többi alapértelmezett tulajdonság értékét a műveletben.
 
    > [!NOTE]
-   > Alapértelmezés szerint az üzenetek maximális száma értékre van állítva `175` , de ezt a korlátot a Service Bus üzenet mérete és az üzenet mérete tulajdonság is befolyásolja. Jelenleg ez a korlát a prémium szintű standard és 1 MB 256K.
+   > Alapértelmezés szerint az üzenetek maximális száma értékre van állítva `175` , de ezt a korlátot a Service Bus üzenet mérete és az üzenet mérete tulajdonság is befolyásolja. További információ: [üzenetsor üzenetének mérete](../service-bus-messaging/service-bus-quotas.md).
 
    ![Service Bus művelet – "további üzenetek beolvasása a munkamenetből"](./media/send-related-messages-sequential-convoy/get-additional-messages-from-session.png)
 
@@ -420,6 +419,6 @@ A sablon befejezése után már mentheti a logikai alkalmazást. A tervező eszk
 
 A logikai alkalmazás teszteléséhez küldje el az üzeneteket a Service Bus-várólistába. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Service Bus-összekötő eseményindítóinak és műveleteiről](https://docs.microsoft.com/connectors/servicebus/)

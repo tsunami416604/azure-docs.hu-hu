@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322869"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése az Azure Blob Storageba vagy az SSIS-összekötők használatával
 Az [azure SQL Server Integration Services Feature Pack](https://msdn.microsoft.com/library/mt146770.aspx) az Azure-hoz való kapcsolódáshoz, az Azure-beli és a helyszíni adatforrások közötti adatátvitelhez, valamint az Azure-ban tárolt adatok feldolgozásához biztosít összetevőket.
@@ -27,7 +26,7 @@ Miután az ügyfelek áthelyezték a helyszíni adatait a felhőbe, hozzáférhe
 
 Az Azure-erőforrások használatára vonatkozó példák az [SQL](sql-walkthrough.md) -és a [HDInsight](hive-walkthrough.md) -forgatókönyvekben találhatók.
 
-A hibrid adatintegrációs forgatókönyvekben a SSIS használatával közös üzleti igényeket biztosító kanonikus forgatókönyvek megvitatására a további tudnivalókat lásd: [SQL Server Integration Services Feature Pack for Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog.
+A hibrid adatintegrációs forgatókönyvekben a SSIS használatával közös üzleti igényeket biztosító kanonikus forgatókönyvek megvitatására a további tudnivalókat lásd: [SQL Server Integration Services Feature Pack for Azure](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) blog.
 
 > [!NOTE]
 > Az Azure Blob Storage teljes körű bevezetéséhez tekintse meg az [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és az [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)témakört.
@@ -64,13 +63,13 @@ Ha a helyszíni rendszerről az Azure Blob Storage-ba helyezi át az adatok áth
 
 A tevékenység által használt paraméterek a következők:
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | **AzureStorageConnection** |Megad egy meglévő Azure Storage-Csatlakozáskezelőt, vagy létrehoz egy újat, amely egy olyan Azure Storage-fiókra hivatkozik, amely a blob-fájlok tárolási helyét mutat. |
 | **BlobContainer** |Annak a blob-tárolónak a nevét adja meg, amely blobként tárolja a feltöltött fájlokat. |
 | **BlobDirectory** |Azt a blob könyvtárat adja meg, amelyben a feltöltött fájl blokk blobként van tárolva. A blob könyvtár egy virtuális hierarchikus struktúra. Ha a blob már létezik, az IT IA lecserélve. |
 | **LocalDirectory** |A feltölteni kívánt fájlokat tartalmazó helyi könyvtárat adja meg. |
-| **FileName** |Megadja azt a nevet, amellyel a megadott nevű fájl kiválasztható. Például a MySheet\*. xls\* olyan fájlokat tartalmaz, mint a MySheet001. xls és a MySheetABC. xlsx. |
+| **FileName** |Megadja azt a nevet, amellyel a megadott nevű fájl kiválasztható. Például a MySheet \* . xls olyan \* fájlokat tartalmaz, mint a MySheet001.xls és a MySheetABC.xlsx |
 | **TimeRangeFrom/TimeRangeTo** |Megadja az időtartomány szűrőt. A *TimeRangeFrom* után módosított fájlok és a *TimeRangeTo* előtt is szerepelnek. |
 
 > [!NOTE]

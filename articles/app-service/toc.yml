@@ -112,8 +112,14 @@
       items:
         - name: Általános beállítások konfigurálása
           href: configure-common.md
+        - name: Az ASP.NET konfigurálása
+          href: configure-language-dotnet-framework.md
+        - name: Az ASP.NET Core konfigurálása
+          href: configure-language-dotnetcore.md
+        - name: A Node.js konfigurálása
+          href: configure-language-nodejs.md
         - name: A PHP konfigurálása
-          href: web-sites-php-configure.md
+          href: configure-language-php.md
         - name: A Java konfigurálása
           href: configure-language-java.md
         - name: Csatlakozás helyszíni erőforrásokhoz
@@ -216,12 +222,14 @@
           href: app-service-web-app-cloning.md
         - name: Törölt App Service visszaállítása
           href: app-service-undelete.md
+        - name: Visszaállítás kiesést tapasztaló régióból
+          href: manage-disaster-recovery.md
     - name: Alkalmazás áthelyezése
       items:
         - name: Áthelyezés régiók között
           href: manage-move-across-regions.md
         - name: Előfizetések áthelyezése
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources
     - name: Háttérfeladatok futtatása
       items:
         - name: WebJobs-feladatok létrehozása
@@ -237,7 +245,7 @@
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
-      href: '/powershell/module/az.websites/#app_service'
+      href: /powershell/module/az.websites/#app_service
     - name: REST API
       href: /rest/api/appservice/
     - name: Resource Manager-sablon
@@ -253,7 +261,7 @@
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Kvótákra vonatkozó információk
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Migration Assistant-útmutatók

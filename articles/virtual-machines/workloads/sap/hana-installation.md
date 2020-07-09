@@ -14,10 +14,9 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117121"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
@@ -144,8 +143,8 @@ A tárolási kötetek elnevezési konvenciói az alábbi táblázatban látható
 
 | Tárterület-használat | Csatlakoztatás neve | Kötet neve | 
 | --- | --- | ---|
-| HANA-adathalmazok | /hana/data/SID/mnt0000 \< m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-napló | /hana/log/SID/mnt0000 \< m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA-adathalmazok | /hana/data/SID/mnt0000\<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-napló | /hana/log/SID/mnt0000\<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-napló biztonsági mentése | /hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA megosztott | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -198,7 +197,7 @@ A paramétereket a SAP HANA adatbázis telepítése után is konfigurálhatja a 
 A HANA nagyméretű példányaiban használt tárterület fájlméret-korlátozást tartalmaz. A [méretre vonatkozó korlátozás 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) /fájl. Az EXT3 fájlrendszerbeli korlátozásokkal ellentétben a HANA nem ismeri implicit módon a HANA Large instances Storage által kényszerített tárolási korlátozást. Ennek eredményeképpen a HANA nem hoz létre automatikusan új adatfájlt, ha a 16TB elérte a fájlméretet. Mivel a HANA a 16 TB-nál nagyobb mennyiségű fájlt próbál növelni, a HANA hibát jelez, és az index-kiszolgáló összeomlik a végén.
 
 > [!IMPORTANT]
-> Annak megakadályozása érdekében, hogy a HANA a HANA nagyméretű példányok tárterületének 16 TB-os fájlméret-korlátján kívüli adatfájlokat próbáljon növelni, a következő paramétereket kell beállítania a SAP HANA Global. ini konfigurációs fájlban.
+> Annak megakadályozása érdekében, hogy a HANA a HANA nagyméretű példányok tárterületének 16 TB-os fájlméret-korlátján kívüli adatfájlokat próbáljon növelni, a következő paramétereket kell beállítania a SAP HANA global.ini konfigurációs fájlban:
 > 
 > - datavolume_striping = igaz
 > - datavolume_striping_size_gb = 15000
@@ -211,7 +210,7 @@ A SAP HANA 2,0 esetében a hdbparam-keretrendszer elavult. Ennek eredményeképp
 Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md) az architektúra tárolási elrendezésének megismeréséhez.
 
 
-**További lépések**
+**Következő lépések**
 
 - Tekintse [meg a HANA telepítését a HLI-on](hana-example-installation.md)
 

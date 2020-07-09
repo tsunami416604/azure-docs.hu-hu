@@ -1,5 +1,5 @@
 ---
-title: Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása
+title: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
 description: A hibrid Azure Active Directory csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök hibaelhárítása.
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611313"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
 
 A cikk tartalma a Windows 10 vagy Windows Server 2016 rendszerű eszközökre vonatkozik.
 
@@ -132,7 +132,7 @@ A "hiba fázis" mező azt jelzi, hogy az illesztési hiba fázisa az "ügyfél E
 
 A csatlakozási hibák fázisának és hibakódjának megkereséséhez használja a Eseménynapló naplókat.
 
-1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban**található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő eventIDs 304, 305, 307.
 
 ![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -156,10 +156,10 @@ A hiba lehetséges okai:
    - Érvényes SCP-objektumra van szükség az AD-erdőben, amelyhez az eszköz tartozik, amely egy ellenőrzött tartománynévre mutat az Azure AD-ben.
    - A részletek a [szolgáltatás kapcsolódási pontjának konfigurálása](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)című szakaszban találhatók.
 - Sikertelen volt a kapcsolódás és a felderítési metaadatok beolvasása a felderítési végpontról.
-   - A regisztrációs és engedélyezési végpontok felderítéséhez az eszköznek képesnek kell lennie a rendszerkörnyezethez való hozzáférésre `https://enterpriseregistration.windows.net`.
+   - A `https://enterpriseregistration.windows.net` regisztrációs és engedélyezési végpontok felderítéséhez az eszköznek képesnek kell lennie a rendszerkörnyezethez való hozzáférésre.
    - Ha a helyszíni környezet kimenő proxyt igényel, a rendszergazdának biztosítania kell, hogy az eszköz számítógépfiókja képes legyen felderíteni és csendes módon hitelesíteni a kimenő proxyt.
 - Nem sikerült csatlakozni a felhasználói tartomány végponthoz, és el kell végezni a tartomány felderítését. (Windows 10 1809-es és újabb verziók esetén)
-   - Az eszköznek hozzá kell férnie `https://login.microsoftonline.com`a rendszerkörnyezetben az ellenőrzött tartományhoz tartozó tartományi felderítés végrehajtásához és a tartomány típusának (felügyelt/összevont) meghatározásához.
+   - Az eszköznek hozzá kell férnie a `https://login.microsoftonline.com` rendszerkörnyezetben az ellenőrzött tartományhoz tartozó tartományi felderítés végrehajtásához és a tartomány típusának (felügyelt/összevont) meghatározásához.
    - Ha a helyszíni környezet kimenő proxyt igényel, a RENDSZERGAZDÁnak biztosítania kell, hogy az eszközön lévő rendszerkörnyezet képes legyen felderíteni és csendes módon hitelesíteni a kimenő proxyt.
 
 **Gyakori hibakódok:**
@@ -172,7 +172,7 @@ A hiba lehetséges okai:
    - Megoldás: keresse meg az alábbi alhibát a további vizsgálathoz.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
    - Ok: a művelet időtúllépést észlelt a felderítés végrehajtása során.
-   - Megoldás: Győződjön meg `https://enterpriseregistration.windows.net` arról, hogy a rendszer elérhető a rendszerkörnyezetben. További információt a [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites)című szakaszban talál.
+   - Megoldás: Győződjön meg arról, hogy `https://enterpriseregistration.windows.net` a rendszer elérhető a rendszerkörnyezetben. További információt a [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites)című szakaszban talál.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
    - Ok: általános tartomány-felderítési hiba. Nem sikerült meghatározni a tartomány típusát (felügyelt/összevont) az STS-ből.
    - Megoldás: keresse meg az alábbi alhibát a további vizsgálathoz.
@@ -207,7 +207,7 @@ Keresse meg a "DRS Discovery test" részt az illesztési állapot kimenetének "
 
 A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Eseménynapló naplókat.
 
-1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban**található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő eventIDs 201
 
 ![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ Hiba okai:
 
 Eseménynapló naplók használatával keresse meg a hibakódot, az alhibakódot, a kiszolgálói hibakódot és a kiszolgálói hibaüzenetet.
 
-1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban**található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő Napszállta 305
 
 ![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -273,7 +273,7 @@ Eseménynapló naplók használatával keresse meg a hibakódot, az alhibakódot
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
    - Ok: általános hálózati időtúllépés.
-   - Megoldás: Győződjön meg `https://login.microsoftonline.com` arról, hogy a rendszer elérhető a rendszerkörnyezetben. Győződjön meg arról, hogy a helyszíni identitás-szolgáltató elérhető a rendszerkörnyezetben. További információ: [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Megoldás: Győződjön meg arról, hogy `https://login.microsoftonline.com` a rendszer elérhető a rendszerkörnyezetben. Győződjön meg arról, hogy a helyszíni identitás-szolgáltató elérhető a rendszerkörnyezetben. További információ: [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
    - Ok: az Auth-végponttal való csatlakozás megszakítva.
    - Megoldás: próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
@@ -281,8 +281,8 @@ Eseménynapló naplók használatával keresse meg a hibakódot, az alhibakódot
    - Ok: a Transport Layer Security (TLS), korábbi nevén SSL (SSL), a kiszolgáló által eljuttatott tanúsítvány nem érvényesíthető.
    - Megoldás: az ügyfél időkorlátjának ellenõrzése. Próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
-   - Ok: `https://login.microsoftonline.com` nem sikerült kapcsolódni a kísérlethez.
-   - Megoldás: keresse meg a `https://login.microsoftonline.com`hálózati kapcsolódást.
+   - Ok: nem sikerült kapcsolódni a kísérlethez `https://login.microsoftonline.com` .
+   - Megoldás: keresse meg a hálózati kapcsolódást `https://login.microsoftonline.com` .
 
 ##### <a name="other-errors"></a>Egyéb hibák
 
@@ -327,7 +327,7 @@ A "regisztráció típusa" mező azt jelzi, hogy milyen típusú csatlakozást h
 
 A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Eseménynapló naplókat.
 
-1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** > **található Microsoft** > **Windows** > **felhasználói eszköz regisztrálása**
+1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban**található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő eventIDs 204
 
 ![Sikertelen naplózási esemény](./media/troubleshoot-hybrid-join-windows-current/4.png)
@@ -363,10 +363,10 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 - **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
    - Ok: általános hálózati időtúllépés a (z) DRS-beli eszköz regisztrálására tett kísérlet során
-   - Megoldás: a `https://enterpriseregistration.windows.net`hálózati kapcsolat ellenőrzése.
+   - Megoldás: a hálózati kapcsolat ellenőrzése `https://enterpriseregistration.windows.net` .
 - **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889)
    - Ok: a kiszolgáló neve vagy címe nem oldható fel.
-   - Megoldás: a `https://enterpriseregistration.windows.net`hálózati kapcsolat ellenőrzése. Győződjön meg arról, hogy az állomásnév DNS-feloldása pontos az n/w-ben és az eszközön.
+   - Megoldás: a hálózati kapcsolat ellenőrzése `https://enterpriseregistration.windows.net` . Győződjön meg arról, hogy az állomásnév DNS-feloldása pontos az n/w-ben és az eszközön.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - Ok: a kiszolgálóval való csatlakozás rendellenes módon megszakadt.
    - Megoldás: próbálkozzon újra egy kis ideig, vagy próbáljon meg csatlakozni egy másik stabil hálózati helyről.
@@ -381,15 +381,15 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 | Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
 | --- | --- | --- | --- |
-| Címtárhiba | AADSTS90002: a <UUID> bérlő nem található. Ez a hiba akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések. Egyeztessen az előfizetés rendszergazdájával. | A SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának bérlői azonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, és szerepel a bérlőn. |
+| Címtárhiba | AADSTS90002: a bérlő <UUID> nem található. Ez a hiba akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések. Egyeztessen az előfizetés rendszergazdájával. | A SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának bérlői azonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, és szerepel a bérlőn. |
 | Címtárhiba | Nem található az eszköz objektuma a megadott azonosító alapján. | A szinkronizáláshoz való csatlakozás várható hiba. Az eszköz objektuma nem lett szinkronizálva az AD-ből az Azure AD-be | Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
 | AuthenticationError | A célszámítógép SID-azonosítójának ellenőrzése | Az Azure AD-eszközön lévő tanúsítvány nem felel meg a blob aláírásához használt tanúsítványnak a szinkronizálási csatlakozás során. Ez a hiba általában azt jelenti, hogy a szinkronizálás még nem fejeződött be. |  Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. lépés: naplók összegyűjtése és kapcsolatfelvétel Microsoft ügyfélszolgálata
 
-Töltse le az Auth. zip fájlt a következő helyről:[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Töltse le a Auth.zip fájlt a következőből:[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Bontsa ki a fájlokat, és nevezze át a mellékelt fájlokat a **Start-auth. txt** és a **stop-auth. txt** fájlból a **Start-auth. cmd** és a **stop-auth. cmd**fájlba.
+1. Bontsa ki a fájlokat, és nevezze át a tartalmazott fájlokat **start-auth.txt** és **stop-auth.txt** a **Start-auth. cmd** és a **stop-auth. cmd**fájlba.
 1. Rendszergazda jogú parancssorból futtassa a **Start-auth. cmd**fájlt.
 1. A váltási fiók használatával válthat másik munkamenetre a probléma felhasználóval.
 1. Reprodukálja a problémát.

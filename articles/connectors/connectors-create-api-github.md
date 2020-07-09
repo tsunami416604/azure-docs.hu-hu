@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378449"
 ---
 # <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>A GitHub-tárház monitorozása és kezelése Azure Logic Apps használatával
@@ -26,7 +25,7 @@ Ha logikai alkalmazásban szeretné használni a GitHub-összekötőt, először
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| Jogkivonat | Igen | Adja meg a GitHub hitelesítő adatait. |
+| Jogkivonat | Yes | Adja meg a GitHub hitelesítő adatait. |
 
 A kapcsolatok létrehozása után végrehajthatja a műveleteket, és figyelheti a cikkben ismertetett eseményindítókat.
 

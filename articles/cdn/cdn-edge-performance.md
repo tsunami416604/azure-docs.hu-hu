@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887703"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -84,7 +84,7 @@ A metrikák célja annak megállapítása, hogy javul-e a gyorsítótár hatéko
   * Csökkentett működési költségek.
 * Továbbfejlesztett adattovábbítási gyorsítás, mivel a további kérések közvetlenül a CDN-ből lesznek kézbesítve.
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Gyorsítótár-hatékonyság |A gyorsítótárból kiszolgált adatok százalékos arányát jelzi. Ez a mérőszám azt méri, hogy a kért tartalom gyorsítótárazott verziójának kiszolgálása közvetlenül a CDN-ből (Edge-kiszolgálók) a kérelmezőknek (pl. webböngésző) |
 | Találatok aránya |A gyorsítótárból kiszolgált kérelmek százalékos arányát jelzi. Ez a mérőszám azt méri, hogy a kért tartalom gyorsítótárazott verziójának kiszolgálása közvetlenül a CDN-ből (Edge-kiszolgálók) a kérelmezőknek (például a webböngészőbe). |
@@ -102,7 +102,7 @@ Ezen mérőszámok célja, hogy betekintést nyújtson a következő költségk�
 > 
 > 
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Ave bájt kimenő |Megadja a CDN (Edge-kiszolgálók) által a kérelmezőnek (például webböngészőnek) kiszolgált kérelmekhez továbbított bájtok átlagos számát. |
 | Nincs gyorsítótár-konfigurációs bájtok aránya |Megadja a CDN (Edge-kiszolgálók) által a kérelmezőnek (például a webböngészőnek) kiszolgált forgalom százalékos arányát, amelyet a rendszer a gyorsítótár megkerülése funkció miatt nem gyorsítótáraz. |
@@ -114,7 +114,7 @@ Ezen mérőszámok célja, hogy betekintést nyújtson a következő költségk�
 #### <a name="performance-metrics"></a>Teljesítmény-metrikák
 Ezen mérőszámok célja, hogy nyomon kövessék a forgalom általános CDN-teljesítményét.
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Adatátviteli sebesség |Azt az átlagos sebességet jelzi, amikor a tartalmat a CDN-ből egy kérelmezőnek adták át. |
 | Időtartam |Azt jelzi, hogy az átlagos idő ezredmásodpercben egy eszköz kézbesítése egy kérelmező számára (pl. webböngésző). |
@@ -126,7 +126,7 @@ Ezen mérőszámok célja, hogy nyomon kövessék a forgalom általános CDN-tel
 #### <a name="secure-traffic-metrics"></a>Biztonságos forgalmi metrikák
 Ezen mérőszámok célja, hogy nyomon kövessék a CDN teljesítményét a HTTPS-forgalomhoz.
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Biztonságos gyorsítótár hatékonysága |A gyorsítótárból kiszolgált HTTPS-kérelmekhez továbbított adatok százalékos arányát jelzi. Ez a mérőszám azt méri, hogy a kért tartalom gyorsítótárazott verziójának kiszolgálása közvetlenül a CDN-ből (Edge-kiszolgálók) a kérelmezőknek (például a webböngészőnek) a HTTPS protokollon keresztül. |
 | Biztonságos átvitel sebessége |Azt az átlagos sebességet jelzi, amely alapján a rendszer átvitte a tartalmat a CDN-ből (az Edge-kiszolgálókról) a kérelmezőknek (például webkiszolgálóknak) a HTTPS protokollon keresztül. |
@@ -171,7 +171,7 @@ A modul minden jelentése tartalmaz egy diagramot és statisztikát a különbö
 | Felhasználói ügynök |Egy oszlopdiagram, amely az első 10 felhasználói ügynököt jeleníti meg, hogy a CDN-en keresztül kérje a tartalmat. A felhasználói ügynök általában webböngésző, médialejátszó vagy mobiltelefonos böngésző. A legnépszerűbb 100 felhasználói ügynökök statisztikái közvetlenül ezen a diagramon jelennek meg. |
 | Utalt |Egy oszlopdiagram, amely az első 10 hivatkozót jeleníti meg a CDN-en keresztül elért tartalomhoz. A hivatkozó általában a weblap vagy az erőforrás URL-címe, amely a tartalomra hivatkozik. Részletes információkat a gráf alatt talál a legfontosabb 100-hivatkozók számára. |
 | Tömörítési típusok |Egy fánk-diagramot tartalmaz, amely lebontja a kért eszközöket, attól függetlenül, hogy azok a peremhálózati kiszolgálókon vannak-e tömörítve. A tömörített eszközök százalékos arányát a rendszer a használt tömörítési típus szerint bontja. Részletes információkat az egyes tömörítési típusokhoz és állapotokhoz tartozó gráf alatt talál. |
-| Fájltípusok |Egy oszlopdiagram, amely megjeleníti az Ön fiókja számára a CDN-en keresztül kért első 10 fájltípust. A jelentés esetében a fájl típusát az eszköz fájlnévkiterjesztés és az internetes adathordozó típusa ( \[például. html text/HTML\],. htm \[text/HTML\],. aspx \[szöveg/HTML\]stb.) határozza meg. A részletes információkat a Graph a legfontosabb 100-fájltípusok alatt találja. |
+| Fájltípusok |Egy oszlopdiagram, amely megjeleníti az Ön fiókja számára a CDN-en keresztül kért első 10 fájltípust. A jelentés esetében a fájl típusát az eszköz fájlnévkiterjesztés és az internetes adathordozó típusa (például. html \[ text/HTML \] ,. htm \[ text/HTML \] ,. aspx \[ szöveg/HTML \] stb.) határozza meg. A részletes információkat a Graph a legfontosabb 100-fájltípusok alatt találja. |
 | Egyedi fájlok |Egy olyan gráfot tartalmaz, amely egy adott napon a megadott időszakra vonatkozóan kért egyedi eszközök teljes számát ábrázolja. |
 | Jogkivonat-hitelesítés összegzése |Egy tortadiagramot tartalmaz, amely gyors áttekintést nyújt arról, hogy a kért eszközöket jogkivonat-alapú hitelesítés védi-e. A védett eszközök a diagramon a megkísérelt hitelesítés eredményei alapján jelennek meg. |
 | Jogkivonat-hitelesítés – megtagadás részletei |Egy sávdiagram, amely lehetővé teszi, hogy megtekintse a jogkivonat-alapú hitelesítés miatt megtagadott első 10 kérelmet. |

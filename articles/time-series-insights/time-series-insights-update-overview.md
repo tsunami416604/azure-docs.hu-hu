@@ -10,12 +10,11 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81271063"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040707"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Mi az Azure Time Series Insights előzetes verziója?
 
@@ -78,12 +77,12 @@ Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Time S
 
 | | |
 | ---| ---|
-| Többrétegű tárolás IoT-méretezési idősorozat-adatsorokhoz | Egy megosztott adatfeldolgozási folyamattal az adatbevitelhez a meleg és a hűtőházi tárolóba is betöltheti az adatmennyiséget. A nagyméretű adatmennyiségek tárolásához használjon meleg tárolót interaktív lekérdezésekhez és hideg tároláshoz. Ha többet szeretne megtudni arról, hogyan használhatja ki a nagy teljesítményű eszközökön alapuló lekérdezéseket, tekintse meg a [lekérdezéseket](./time-series-insights-update-tsq.md). |
-| Idősorozat-modell a nyers telemetria contextualize, és az eszköz-alapú adatfelismerések származtatása | Az idősorozat-modell használatával példányokat, hierarchiákat, típusokat és változókat hozhat létre az idősoros adataihoz. Ha többet szeretne megtudni a Time Series-modellről, tekintse meg a [Time Series Model](./time-series-insights-update-tsm.md)című témakört.  |
-| Zökkenőmentes és folyamatos integráció más adatmegoldásokkal | Time Series Insights hűtőházi tárolóban tárolt adattárakat a nyílt forráskódú Apache Parquet-fájlok [tárolják](./time-series-insights-update-storage-ingress.md) . Ez lehetővé teszi az adatintegrációt más adatmegoldásokkal (1. vagy harmadik felekkel) olyan forgatókönyvek esetén, amelyek üzleti intelligenciát, speciális gépi tanulást és prediktív elemzést tartalmaznak. |
+| Többrétegű tárolás IoT-méretezési idősorozat-adatsorokhoz | Egy megosztott adatfeldolgozási folyamattal az adatbevitelhez a meleg és a hűtőházi tárolóba is betöltheti az adatmennyiséget. A nagyméretű adatmennyiségek tárolásához használjon meleg tárolót interaktív lekérdezésekhez és hideg tároláshoz. Ha többet szeretne megtudni arról, hogyan használhatja ki a nagy teljesítményű eszközökön alapuló lekérdezéseket, tekintse meg a [lekérdezéseket](./concepts-query-overview.md). |
+| Idősorozat-modell a nyers telemetria contextualize, és az eszköz-alapú adatfelismerések származtatása | Az idősorozat-modell használatával példányokat, hierarchiákat, típusokat és változókat hozhat létre az idősoros adataihoz. Ha többet szeretne megtudni a Time Series-modellről, tekintse meg a [Time Series Model](./concepts-model-overview.md)című témakört.  |
+| Zökkenőmentes és folyamatos integráció más adatmegoldásokkal | Time Series Insights hűtőházi tárolóban tárolt adattárakat a nyílt forráskódú Apache Parquet-fájlok [tárolják](concepts-storage.md) . Ez lehetővé teszi az adatintegrációt más adatmegoldásokkal (1. vagy harmadik felekkel) olyan forgatókönyvek esetén, amelyek üzleti intelligenciát, speciális gépi tanulást és prediktív elemzést tartalmaznak. |
 | Közel valós idejű adatelemzés | A [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) felhasználói élmény vizualizációt biztosít a betöltési folyamaton keresztüli összes adatfolyamhoz. Az eseményforrás összekapcsolását követően megtekintheti, feltárhatja és lekérdezheti az események adatforrásait. Ily módon ellenőrizheti, hogy az eszköz az elvárt módon bocsát-e ki adatforrásokat. Egy IoT-eszközt is nyomon követheti az állapot, a termelékenység és az általános hatékonyság érdekében. | 
 | Bővíthetőség és integráció | Az Azure Time Series Insights Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **exportálási** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezéseket közvetlenül a Power bi asztalra, a többi bi-elemzéssel együtt megtekinthetik az idősorozat-diagramokat. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. | 
-| A Time Series Insights platformra épülő egyéni alkalmazások | A Time Series Insights támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Time Series Insights az üzleti igényeinek megfelelően. A Time Series Insights [lekérdezési API-kat](./time-series-insights-update-tsq.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba történő adattovábbításhoz. |
+| A Time Series Insights platformra épülő egyéni alkalmazások | A Time Series Insights támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Time Series Insights az üzleti igényeinek megfelelően. A Time Series Insights [lekérdezési API-kat](./concepts-query-overview.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba történő adattovábbításhoz. |
 
 ## <a name="next-steps"></a>További lépések
 

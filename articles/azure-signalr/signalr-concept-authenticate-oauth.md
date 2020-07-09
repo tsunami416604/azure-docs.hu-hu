@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194601"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961795"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR szolgáltatás – hitelesítés
 
@@ -54,11 +54,11 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 1. Nyisson meg egy webböngészőt, navigáljon a `https://github.com` helyre, és jelentkezzen be a fiókjába.
 
-2. A fiókjához navigáljon a **Beállítások** > **fejlesztői beállítások** területen, majd kattintson az **új alkalmazás regisztrálása**vagy az **új OAuth alkalmazás** a *OAuth-alkalmazások*alatt lehetőségre.
+2. A fiókjához navigáljon a **Beállítások**  >  **fejlesztői beállítások** területen, majd kattintson az **új alkalmazás regisztrálása**vagy az **új OAuth alkalmazás** a *OAuth-alkalmazások*alatt lehetőségre.
 
 3. Adja meg a következő beállításokat az új OAuth-alkalmazás számára, majd kattintson a **Register application (Alkalmazás regisztrálása)** lehetőségre:
 
-    | Beállítás neve | Ajánlott érték | Leírás |
+    | Beállítás neve | Ajánlott érték | Description |
     | ------------ | --------------- | ----------- |
     | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználónak képesnek kell lennie a hitelesítéssel rendelkező alkalmazás felismerésére és megbízhatóságára.   |
     | Kezdőlap URL-címe | `http://localhost:5000/home` | |
@@ -67,8 +67,10 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 4. Az új OAuth-alkalmazás regisztrálását követően adja hozzá az *Ügyfél-azonosítót* és a *Titkos ügyfélkulcsot* a Secret Managerhez az alábbi parancsokkal. Cserélje le a *Your_GitHub_Client_Id* és a *Your_GitHub_Client_Secret* elemeket az OAuth-alkalmazás értékeire.
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>Az OAuth-folyamat megvalósítása
 
@@ -76,9 +78,11 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 1. Adjon hozzá egy, a legújabb *Microsoft.AspNetCore.Authentication.Cookies* és *AspNet.Security.OAuth.GitHub* csomagokra mutató hivatkozást, és állítsa vissza az összes csomagot.
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. Nyissa meg a *Startup.cs* fájlt, és adjon hozzá `using` utasításokat az alábbi névterekhez:
 
@@ -345,19 +349,25 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
 
 2. Buildelje az alkalmazást a .NET Core CLI használatával, majd futtassa a következő parancsot a parancsrendszerhéjban:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. Ha a létrehozás sikeresen befejeződött, hajtsa végre a következő parancsot a webalkalmazás helyben való futtatásához:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Alapértelmezés szerint a rendszer helyben, az 5000-es porton üzemelteti az alkalmazást:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. Nyisson meg egy böngészőablakot, és navigáljon a `http://localhost:5000` helyre. A GitHubbal való bejelentkezéshez kattintson a fenti **itt** hivatkozásra.
 
@@ -539,7 +549,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
-1. Nyisson [https://github.com](https://github.com) meg egy böngészőben, és navigáljon a fiókja **Beállítások** > **fejlesztői beállítások** > **OAuth-alkalmazásokhoz**.
+1. Nyisson meg [https://github.com](https://github.com) egy böngészőben, és navigáljon a fiókja **Beállítások**  >  **fejlesztői beállítások**  >  **OAuth-alkalmazásokhoz**.
 
 2. Kattintson a hitelesítő alkalmazásra, és a frissítse a **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságát a lent látható módon:
 
@@ -552,7 +562,7 @@ A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Home
 
     ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a következő oktatóanyagban újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

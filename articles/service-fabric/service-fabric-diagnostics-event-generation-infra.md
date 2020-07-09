@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791816"
 ---
 # <a name="monitoring-the-cluster"></a>A fürt figyelése
@@ -18,7 +18,7 @@ Fontos, hogy a fürt szintjén figyelje azt, hogy a hardver és a fürt a várt 
 
 Service Fabric több strukturált platform-eseményt tesz elérhetővé [Service Fabric eseményekként](service-fabric-diagnostics-events.md)a EventStore és a különböző naplózási csatornákon. 
 
-Windows rendszeren Service Fabric az események egyetlen ETW-szolgáltatóból `logLevelKeywordFilters` érhetők el, amelyek az operatív és az adat& üzenetkezelési csatornák közötti választáshoz szükségesek. Ez a módszer, amellyel elkülönítjük a kimenő Service Fabric eseményeket, hogy szükség szerint szűrni lehessen.
+Windows rendszeren Service Fabric az események egyetlen ETW-szolgáltatóból érhetők el, amelyek az `logLevelKeywordFilters` operatív és az adat& üzenetkezelési csatornák közötti választáshoz szükségesek. Ez a módszer, amellyel elkülönítjük a kimenő Service Fabric eseményeket, hogy szükség szerint szűrni lehessen.
 
 * **Működési műveletek** A Service Fabric és a fürt által végrehajtott magas szintű műveletek, beleértve az esetlegesen megjelenő csomópontok eseményeit, egy új alkalmazás üzembe helyezését, vagy egy frissítés visszaállítását stb. Az események teljes listáját [itt](service-fabric-diagnostics-event-generation-operational.md)tekintheti meg.  
 

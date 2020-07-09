@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 3524f55f70ff42bd5ff800fb2bd7ab7b0e732596
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c67a5537a74e37473280fbd44fa47c65f2a37806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563142"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával (előzetes verzió)
 
@@ -65,7 +65,7 @@ Ha felügyelt identitásokat használ az adatforráshoz való hitelesítéshez, 
 Példa Cosmos DB adatforrás-objektum létrehozására a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával:
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [Search service admin key]
 
@@ -89,7 +89,7 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
 |**típusa**| Kötelező. Kell lennie `cosmosdb` . |
-|**hitelesítő adatok** | Kötelező. <br/><br/>Felügyelt identitással való kapcsolódás esetén a **hitelesítő adatok** formátumának a következőket kell tartalmaznia: *adatbázis = [adatbázis-név]; ResourceId = [erőforrás-azonosító-string];(ApiKind = [API-Kind];)*<br/> <br/>A ResourceId formátuma: *ResourceId =/Subscriptions/**az előfizetés-azonosító**/resourceGroups/**az erőforráscsoport neve**/Providers/Microsoft.DocumentDB/databaseAccounts/**a Cosmos db-fiók neve**/;*<br/><br/>SQL-gyűjtemények esetén a ApiKind nem szükséges a kapcsolatok karakterlánca.<br/><br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez. <br/><br/>A Gremlin gráfok és a Cassandra-táblázatok esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/>|
+|**hitelesítő adatok** | Kötelező. <br/><br/>Felügyelt identitással való kapcsolódás esetén a **hitelesítő adatok** formátumának a következőket kell tartalmaznia: *adatbázis = [adatbázis-név]; ResourceId = [erőforrás-azonosító-string];(ApiKind = [API-Kind];)*<br/> <br/>A ResourceId formátuma: *ResourceId =/Subscriptions/**az előfizetés-azonosítója**/resourceGroups/**az erőforráscsoport neve**/Providers/Microsoft.DocumentDB/databaseAccounts/**a Cosmos db-fiók neve**/;*<br/><br/>SQL-gyűjtemények esetén a ApiKind nem szükséges a kapcsolatok karakterlánca.<br/><br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez. <br/><br/>A Gremlin gráfok és a Cassandra-táblázatok esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/>|
 | **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott |
 |**dataDeletionDetectionPolicy** | Választható |
@@ -103,7 +103,7 @@ Az index meghatározza a dokumentumok, attribútumok és más, a keresési élm�
 Ebből a témakörből megtudhatja, hogyan hozhat létre egy indexet egy kereshető `booktitle` mezővel:
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -126,7 +126,7 @@ Miután létrehozta az indexet és az adatforrást, készen áll az indexelő l�
 
 Példa indexelő definícióra:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

@@ -7,18 +7,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
-ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2b326c6c58b4685b6e73d0f9a641a2f90807d705
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803747"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>A standard Load Balancer terheléselosztási és kimenő szabályainak konfigurálása az Azure CLI használatával
 
@@ -171,7 +170,7 @@ Ha nem szeretne külön kimenő készletet használni, a *bepoolinbound* megadá
 
 Ezen a ponton folytathatja a virtuális gép hozzáadását a háttér-készlet *bepoolinbound* __és__ *bepooloutbound* , ha frissíti a megfelelő NIC-erőforrások IP-konfigurációját az [az Network NIC IP-config cím-Pool Add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)paranccsal.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és az összes kapcsolódó erőforrás.
 

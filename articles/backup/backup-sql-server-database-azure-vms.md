@@ -1,15 +1,14 @@
 ---
 title: SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról az Azure-beli virtuális gépeken Azure Backup használatával.
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3fd94dc6332d96f875c164dfeadff3a8ab2cad4e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817533"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -34,9 +33,10 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 SQL Server adatbázis biztonsági mentése előtt tekintse meg a következő feltételeket:
 
 1. Azonosítson vagy hozzon létre egy [Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) tárolót ugyanabban a régióban és előfizetésben, mint a SQL Server példányt futtató virtuális gép.
-2. Ellenőrizze, hogy a virtuális gép rendelkezik-e [hálózati kapcsolattal](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
-3. Győződjön meg arról, hogy a SQL Server adatbázisok a [Azure Backup adatbázis-elnevezési irányelveit](#database-naming-guidelines-for-azure-backup)követik.
-4. Győződjön meg arról, hogy nincs más biztonsági mentési megoldás, amely engedélyezve van az adatbázishoz. Az adatbázis biztonsági mentése előtt tiltsa le az összes többi SQL Server biztonsági mentést.
+1. Ellenőrizze, hogy a virtuális gép rendelkezik-e [hálózati kapcsolattal](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
+1. Győződjön meg arról, hogy a SQL Server adatbázisok a [Azure Backup adatbázis-elnevezési irányelveit](#database-naming-guidelines-for-azure-backup)követik.
+1. Győződjön meg arról, hogy a SQL Server VM nevének és az erőforráscsoport nevének együttes hossza nem haladja meg Azure Resource Manager (ARM) virtuális gépek 84 karakterét (vagy a klasszikus virtuális gépek 77 karaktereit). Ez a korlátozás azért van, mert egyes karaktereket a szolgáltatás foglal le.
+1. Győződjön meg arról, hogy nincs más biztonsági mentési megoldás, amely engedélyezve van az adatbázishoz. Az adatbázis biztonsági mentése előtt tiltsa le az összes többi SQL Server biztonsági mentést.
 
 > [!NOTE]
 > Engedélyezheti az Azure-beli virtuális gépek Azure Backupét, valamint a virtuális gépen futó SQL Server-adatbázis ütközés nélküli működését is.
@@ -69,7 +69,7 @@ Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup*
 
 1. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
 
-1. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
+1. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
 
 1. Kattintson a **Hozzáadás** gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
@@ -258,13 +258,13 @@ Biztonsági mentési szabályzat létrehozásához:
 14. Miután befejezte a módosításokat a biztonsági mentési szabályzatban, kattintson az **OK gombra**.
 
 > [!NOTE]
-> Minden naplózási biztonsági mentés az előző teljes biztonsági mentéshez van láncolva, amely helyreállítási láncot alkot. Ez a teljes biztonsági mentés a legutóbbi napló biztonsági mentésének lejárta után is megmarad. Ez azt jelentheti, hogy a teljes biztonsági mentést egy további időszakra vonatkozóan kell megőrizni, hogy az összes napló helyreállítható legyen. Tegyük fel, hogy a felhasználó heti teljes biztonsági mentést, napi különbözeti és 2 órás naplókat tartalmaz. Mindegyiket 30 napig őrzi meg a rendszer. A hetente megteltek azonban csak a következő teljes biztonsági mentés elérhetővé tételével, azaz 30 + 7 nap után törlődnek. Tegyük fel, hogy a heti teljes biztonsági mentés november 16-án történik. Az adatmegőrzési szabályzatnak megfelelően a december 16-i-ig meg kell őrizni. Az utolsó napló biztonsági mentése ehhez a teljes, november 22-én a következő beütemezett megtelte előtt történik. Amíg a napló nem érhető el a DEC 22nd-ig, a november 16-i teljes nem törölhető. Így a november 16-i Full megmarad december 22-én.
+> Minden naplózási biztonsági mentés az előző teljes biztonsági mentéshez van láncolva, amely helyreállítási láncot alkot. Ez a teljes biztonsági mentés a legutóbbi napló biztonsági mentésének lejárta után is megmarad. Ez azt jelentheti, hogy a teljes biztonsági mentést egy további időszakra vonatkozóan kell megőrizni, hogy az összes napló helyreállítható legyen. Tegyük fel, hogy a felhasználó heti teljes biztonsági mentést, napi különbözeti és 2 órás naplókat tartalmaz. Mindegyiket 30 napig őrzi meg a rendszer. A hetente megteltek azonban csak a következő teljes biztonsági mentés elérhetővé tételével, azaz 30 + 7 nap után törlődnek. Tegyük fel, hogy a heti teljes biztonsági mentés november 16-án történik. Az adatmegőrzési szabályzat szerint az IT-t december 16-i-ig kell megőrizni. Az utolsó napló biztonsági mentése ehhez a teljes, november 22-én a következő beütemezett megtelte előtt történik. Amíg a napló nem érhető el a DEC 22nd-ig, a november 16-i teljes nem törölhető. Így a november 16-i Full megmarad december 22-én.
 
 ## <a name="enable-auto-protection"></a>Automatikus védelem engedélyezése  
 
 Az automatikus védelem engedélyezésével automatikusan biztonsági másolatot készíthet az összes meglévő és jövőbeli adatbázisról egy önálló SQL Server-példányra vagy egy always on rendelkezésre állási csoportba.
 
-* Egyszerre csak az automatikus védelemhez választható adatbázisok száma nem korlátozható.
+* Az automatikus védelemhez egyszerre kiválasztható adatbázisok száma nincs korlátozva. A felderítés általában nyolc óránként fut. Az új adatbázisokat azonban azonnal felderítheti és védetté teheti, ha manuálisan futtat egy felderítést. Ehhez válassza az **adatbázisok ismételt felderítése** lehetőséget.
 * Az automatikus védelem engedélyezésekor nem lehet szelektív védelemmel ellátni vagy kizárni az adatbázisokat a védelemből egy példányon.
 * Ha a példánya már tartalmaz néhány védett adatbázist, akkor az automatikus védelem bekapcsolása után is a megfelelő szabályzatok alatt maradnak. A később hozzáadott nem védett adatbázisok csak egyetlen szabályzattal rendelkeznek, amelyet az automatikus védelem engedélyezésekor a **biztonsági mentés beállítása**szakaszban talál. Az automatikusan védett adatbázishoz tartozó házirendet azonban később is módosíthatja.  
 
@@ -281,7 +281,7 @@ Ha le kell tiltania az automatikus védelmet, válassza ki a példány nevét a 
 
 ![Automatikus védelem letiltása az adott példányon](./media/backup-azure-sql-database/disable-auto-protection.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 

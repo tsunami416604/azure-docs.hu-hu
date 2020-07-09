@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087125"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>VPN-kapcsolat konfigurálása saját CloudSimple-felhőhöz
@@ -37,7 +36,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
-4. Válassza a **Felhasználók** lehetőséget.
+4. Válassza a **felhasználók**lehetőséget.
 5. Kattintson a **saját VPN-konfiguráció letöltése** elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)
@@ -57,7 +56,7 @@ Az alábbi példa azt mutatja be, hogyan importálhatók a kapcsolatok a **viszk
 
 2. Nyissa meg a viszkozitást a számítógépén.
 
-3. Kattintson az **+** ikonra, és válassza a **kapcsolatok** > importálása**fájlból**lehetőséget.
+3. Kattintson az **+** ikonra, és válassza a **kapcsolatok importálása**  >  **fájlból**lehetőséget.
 
     ![VPN-konfiguráció importálása fájlból](media/import-p2s-vpn-config.png)
 
@@ -79,7 +78,7 @@ A pont – hely típusú VPN-kapcsolat feloldja a létrehozott első saját felh
 
 1. Indítsa el a [CloudSimple portált](access-cloudsimple-portal.md).
 
-2. Navigáljon az **erőforrások** > **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
+2. Navigáljon az **erőforrások**  >  **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
 3. A privát felhő **Összegzés** lapján másolja a saját FELHŐBELI DNS-kiszolgáló IP-címét az **alapszintű adatok**területen.
 
@@ -97,7 +96,7 @@ A pont – hely típusú VPN-kapcsolat feloldja a létrehozott első saját felh
 
     ![VPN-kapcsolat szerkesztése](media/viscosity-edit-connection.png)
 
-7. Kattintson a **hálózatkezelés** lapra, és adja meg a saját FELHŐbeli DNS-kiszolgáló IP-címét vesszővel vagy szóközzel elválasztva, valamint a tartományt ```cloudsimple.io```.  Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése**lehetőséget.
+7. Kattintson a **hálózatkezelés** lapra, és adja meg a saját FELHŐbeli DNS-kiszolgáló IP-címét vesszővel vagy szóközzel elválasztva, valamint a tartományt ```cloudsimple.io``` .  Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése**lehetőséget.
 
     ![VPN-hálózatkezelés](media/viscosity-edit-connection-networking.png)
 

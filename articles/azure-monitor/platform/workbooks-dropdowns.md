@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658283"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965041"
 ---
 # <a name="workbook-drop-down-parameters"></a>Munkafüzet legördülő paraméterei
 
@@ -31,7 +31,7 @@ A legördülő lista megadásának legegyszerűbb módja, ha statikus listát bi
     1. Paraméter neve:`Environment`
     2. Paraméter típusa:`Drop down`
     3. Szükséges`checked`
-    4. Engedélyezés `multiple selection`:`unchecked`
+    4. Engedélyezés `multiple selection` :`unchecked`
     5. Adatok lekérése:`JSON`
 5. A JSON bemeneti szövegmezőbe írja be a következő JSON-kódrészletet:
     ```json
@@ -41,14 +41,16 @@ A legördülő lista megadásának legegyszerűbb módja, ha statikus listát bi
         { "value":"prod", "label":"Production", "selected":true }
     ]
     ```
-6. Nyomja meg a `Update` kék gombot.
+6. Nyomja meg a kék `Update` gombot.
 7. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 8. A környezeti paraméter a három érték legördülő lista lesz.
 
     ![A statikus elfojtani létrehozását bemutató kép](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Statikus legördülő lista létrehozása elemek csoportjaival
+
 Ha a lekérdezés eredménye/JSON tartalmaz egy "csoport" mezőt, a legördülő lista az értékek csoportjait jeleníti meg. Kövesse a fenti mintát, de használja inkább a következő JSON-t:
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ Ha a lekérdezés eredménye/JSON tartalmaz egy "csoport" mezőt, a legördülő
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![Egy csoportosított legördülő listát ábrázoló kép](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>Dinamikus legördülő paraméter létrehozása
@@ -70,7 +73,7 @@ Ha a lekérdezés eredménye/JSON tartalmaz egy "csoport" mezőt, a legördülő
     1. Paraméter neve:`RequestName`
     2. Paraméter típusa:`Drop down`
     3. Szükséges`checked`
-    4. Engedélyezés `multiple selection`:`unchecked`
+    4. Engedélyezés `multiple selection` :`unchecked`
     5. Adatok lekérése:`Query`
 5. A JSON bemeneti szövegmezőbe írja be a következő JSON-kódrészletet:
 
@@ -79,13 +82,14 @@ Ha a lekérdezés eredménye/JSON tartalmaz egy "csoport" mezőt, a legördülő
         | summarize by name
         | order by name asc
     ```
-1. Nyomja meg a `Run Query` kék gombot.
+1. Nyomja meg a kék `Run Query` gombot.
 2. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 3. A RequestName paraméter az alkalmazásban lévő összes kérelem nevének legördülő menüje lesz.
 
     ![A dinamikus legördülő lista létrehozását bemutató kép](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>Viszonyítási legördülő paraméter
+
 ### <a name="in-kql"></a>A KQL
 1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
 2. A KQL-szerkesztőben adja meg a következő kódrészletet:
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![Az érték, a címke, a kiválasztási és a csoportosítási beállítások használatával legördülő paramétereket ábrázoló kép](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>Legördülő paraméterek beállításai
@@ -133,11 +138,11 @@ dependencies
 | `{DependencyName:value}` | A kijelölt érték | Fabrikamaccount beolvasása |
 
 ## <a name="multiple-selection"></a>Többszörös kijelölés
-A példák eddig explicit módon beállítják a paramétert úgy, hogy csak egy értéket válasszon ki a legördülő menüből. A legördülő paraméterek is `multiple selection` támogatják a használatát – ezzel a beállítással egyszerűen `Allow multiple selection` ellenőrizheti a beállítást. 
+A példák eddig explicit módon beállítják a paramétert úgy, hogy csak egy értéket válasszon ki a legördülő menüből. A legördülő paraméterek is támogatják `multiple selection` a használatát – ezzel a beállítással egyszerűen ellenőrizheti a `Allow multiple selection` beállítást. 
 
-A felhasználó a `delimiter` és `quote with` a beállítások használatával is megadhatja az eredményhalmaz formátumát. Az alapértelmezett érték az értékeket gyűjteményként adja vissza ebben az űrlapban: "a", "b", "c". Lehetőség van a kiválasztások számának korlátozására is.
+A felhasználó a és a beállítások használatával is megadhatja az eredményhalmaz formátumát `delimiter` `quote with` . Az alapértelmezett érték az értékeket gyűjteményként adja vissza ebben az űrlapban: "a", "b", "c". Lehetőség van a kiválasztások számának korlátozására is.
 
-A paraméterre hivatkozó KQL módosítani kell az eredmény formátumával. A leggyakrabban az `in` operátoron keresztül engedélyezhető.
+A paraméterre hivatkozó KQL módosítani kell az eredmény formátumával. A leggyakrabban az operátoron keresztül engedélyezhető `in` .
 
 ```kusto
 dependencies

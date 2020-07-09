@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609114"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Támogatási jegy megnyitása Azure Data Box
 
@@ -57,7 +56,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A **kapcsolattartási adatok**területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Válassza **a kapcsolatfelvételi változások mentése a későbbi támogatási kérelmekhez**lehetőséget.
-   3. Kattintson a **Létrehozás**gombra.
+   3. Kattintson a **Létrehozás** lehetőségre.
 
        ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 

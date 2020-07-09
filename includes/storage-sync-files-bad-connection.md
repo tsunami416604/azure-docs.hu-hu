@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: roygara
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772969"
 ---
 Ez a hiba akkor következhet be, ha az Azure File Sync nem érhető el a kiszolgálóról. A hiba elhárításához végezze el a következő lépéseket:
 
-1. Ellenőrizze, hogy a `FileSyncSvc.exe` tűzfal nem blokkolja-e a Windows-szolgáltatást.
-2. Ellenőrizze, hogy a 443-es port nyitva van-e a kimenő kapcsolatokhoz a Azure File Sync szolgáltatással. Ezt a `Test-NetConnection` parancsmaggal teheti meg. Az alábbi `<azure-file-sync-endpoint>` helyőrző URL-címe [Az Azure File Sync proxy- és tűzfalbeállításai](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) című dokumentumban található. 
+1. Ellenőrizze, hogy a tűzfal nem blokkolja-e a Windows-szolgáltatást `FileSyncSvc.exe` .
+2. Ellenőrizze, hogy a 443-es port nyitva van-e a kimenő kapcsolatokhoz a Azure File Sync szolgáltatással. Ezt a parancsmaggal teheti meg `Test-NetConnection` . Az alábbi `<azure-file-sync-endpoint>` helyőrző URL-címe [Az Azure File Sync proxy- és tűzfalbeállításai](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) című dokumentumban található. 
 
     ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443

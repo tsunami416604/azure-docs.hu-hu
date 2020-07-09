@@ -7,10 +7,9 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83846528"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
@@ -65,7 +64,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSM-csatoló megoldást.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
 
-5. Kattintson a **Létrehozás**gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
 A megoldás erőforrásának telepítésekor megjelenik egy értesítés az ablak jobb felső sarkában.
 
@@ -228,7 +227,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Leírás
+- Description
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
@@ -247,7 +246,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | AssignedTo_s | Felelős  |
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
-| Description_s|  Megjegyzések |
+| Description_s|  Jegyzetek |
 | CreatedDate_t|  Megnyitott |
 | ClosedDate_t| lezárva|
 | ResolvedDate_t|Feloldva|
@@ -275,7 +274,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  |   Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Leírás |
+| Description_s | Description |
 | Computer  | Konfigurációs tétel |
 
 

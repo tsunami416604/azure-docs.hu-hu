@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74869833"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Egyedi kulcsokra vonatkozó korlátozások a Azure Cosmos DB
@@ -20,9 +19,9 @@ Az egyedi kulcsok adatintegritási réteget vesznek fel egy Azure Cosmos-tárol�
 
 Miután létrehozta az egyedi kulcs-házirenddel rendelkező tárolót, a rendszer az egyedi kulcs megkötése által megadott módon megakadályozza a meglévő elemek új vagy frissítésének létrehozását egy logikai partíción belül. Az egyedi kulccsal összevont partíciós kulcs garantálja a tároló hatókörén belüli elem egyediségét.
 
-Vegyünk például egy Azure Cosmos-tárolót e-mail-címmel, amely az `CompanyID` egyedi kulcs megkötése, és a partíciós kulcs. Ha a felhasználó e-mail-címét egyedi kulccsal konfigurálja, minden elemnek egyedi e-mail-címe van az `CompanyID`adott területen belül. Két elem nem hozható létre duplikált e-mail-címmel, és ugyanazzal a partíciós kulcs értékkel. 
+Vegyünk például egy Azure Cosmos-tárolót e-mail-címmel, amely az egyedi kulcs megkötése, és `CompanyID` a partíciós kulcs. Ha a felhasználó e-mail-címét egyedi kulccsal konfigurálja, minden elemnek egyedi e-mail-címe van az adott területen belül `CompanyID` . Két elem nem hozható létre duplikált e-mail-címmel, és ugyanazzal a partíciós kulcs értékkel. 
 
-Ha ugyanazzal az e-mail-címmel szeretne elemeket létrehozni, de nem ugyanaz az utónév, a vezetéknév és az e-mail-cím, adjon hozzá további elérési utakat az egyedi kulcs házirendjéhez. Ahelyett, hogy csak az e-mail-cím alapján hozzon létre egyedi kulcsot, létrehozhat egy egyedi kulcsot is az utónév, a vezetéknév és az e-mail cím kombinációjával. Ezt a kulcsot összetett egyedi kulcsnak nevezzük. Ebben az esetben a három érték egy adott `CompanyID` egyedi kombinációja engedélyezett. 
+Ha ugyanazzal az e-mail-címmel szeretne elemeket létrehozni, de nem ugyanaz az utónév, a vezetéknév és az e-mail-cím, adjon hozzá további elérési utakat az egyedi kulcs házirendjéhez. Ahelyett, hogy csak az e-mail-cím alapján hozzon létre egyedi kulcsot, létrehozhat egy egyedi kulcsot is az utónév, a vezetéknév és az e-mail cím kombinációjával. Ezt a kulcsot összetett egyedi kulcsnak nevezzük. Ebben az esetben a három érték egy adott egyedi kombinációja `CompanyID` engedélyezett. 
 
 A tároló tartalmazhat például olyan elemeket, amelyek a következő értékekkel rendelkeznek, ahol mindegyik elem kiértékeli az egyedi kulcs megkötését.
 
@@ -35,7 +34,7 @@ A tároló tartalmazhat például olyan elemeket, amelyek a következő értéke
 |Fabrkam|   |Duperre|gaby@fabraikam.com|
 |Fabrkam|   |   |gaby@fabraikam.com|
 
-Ha egy másik, az előző táblázatban felsorolt kombinációval rendelkező tételt próbál beszúrni, hibaüzenet jelenik meg. A hiba azt jelzi, hogy az egyedi kulcs megkötése nem teljesült. Visszaküldési `Resource with specified ID or name already exists` üzenetet `Resource with specified ID, name, or unique index already exists` kap. 
+Ha egy másik, az előző táblázatban felsorolt kombinációval rendelkező tételt próbál beszúrni, hibaüzenet jelenik meg. A hiba azt jelzi, hogy az egyedi kulcs megkötése nem teljesült. `Resource with specified ID or name already exists` `Resource with specified ID, name, or unique index already exists` Visszaküldési üzenetet kap. 
 
 ## <a name="define-a-unique-key"></a>Egyedi kulcs definiálása
 
@@ -43,15 +42,15 @@ Egyedi kulcsokat csak akkor adhat meg, ha létrehoz egy Azure Cosmos-tárolót. 
 
 * Egy meglévő tároló nem frissíthető más egyedi kulcs használatára. Más szóval, miután egy tároló egyedi kulcs-házirenddel lett létrehozva, a szabályzat nem módosítható.
 
-* Egy meglévő tároló egyedi kulcsának beállításához hozzon létre egy új tárolót az egyedi kulcs korlátozásával. A megfelelő áttelepítési eszköz használatával helyezze át az adatait a meglévő tárolóból az új tárolóba. SQL-tárolók esetén az [adatáttelepítési eszköz](import-data.md) használatával helyezze át az adatátvitelt. MongoDB-tárolók esetén az [mongoimport. exe vagy a mongorestore. exe](mongodb-migrate.md) használatával helyezze át az adatáthelyezést.
+* Egy meglévő tároló egyedi kulcsának beállításához hozzon létre egy új tárolót az egyedi kulcs korlátozásával. A megfelelő áttelepítési eszköz használatával helyezze át az adatait a meglévő tárolóból az új tárolóba. SQL-tárolók esetén az [adatáttelepítési eszköz](import-data.md) használatával helyezze át az adatátvitelt. MongoDB-tárolók esetén [mongoimport.exe vagy mongorestore.exe](mongodb-migrate.md) használatával helyezheti át az adatáthelyezést.
 
-* Az egyedi kulcsokra vonatkozó házirend legfeljebb 16 elérésiút-értéket tartalmazhat. Az értékek például a következőek lehetnek `/firstName` `/lastName`:, és `/address/zipCode`. Az egyes egyedi kulcsokra vonatkozó szabályzatok legfeljebb 10 egyedi kulcs megkötést vagy kombinációt tartalmazhatnak. Az egyes egyedi indexek korlátozásának kombinált elérési útjai nem haladhatják meg a 60 bájtot. Az előző példában az utónév, a vezetéknév és az e-mail-cím együtt egy megkötés. Ez a megkötés 3 lehetőséget használ a 16 lehetséges útvonalon.
+* Az egyedi kulcsokra vonatkozó házirend legfeljebb 16 elérésiút-értéket tartalmazhat. Az értékek például a következőek lehetnek:, `/firstName` `/lastName` és `/address/zipCode` . Az egyes egyedi kulcsokra vonatkozó szabályzatok legfeljebb 10 egyedi kulcs megkötést vagy kombinációt tartalmazhatnak. Az egyes egyedi indexek korlátozásának kombinált elérési útjai nem haladhatják meg a 60 bájtot. Az előző példában az utónév, a vezetéknév és az e-mail-cím együtt egy megkötés. Ez a megkötés 3 lehetőséget használ a 16 lehetséges útvonalon.
 
 * Ha egy tároló egyedi kulcsokra vonatkozó szabályzattal rendelkezik, az elemek létrehozásához, frissítéséhez és törléséhez szükséges használati [egység (ru)](request-units.md) díja valamivel nagyobb.
 
 * A ritka egyedi kulcsok nem támogatottak. Ha néhány egyedi elérésiút-érték hiányzik, a rendszer null értékként kezeli őket, amelyek az egyediségi megkötésben részt vesznek. Emiatt csak egyetlen elem lehet null értékű, hogy kielégítse ezt a korlátozást.
 
-* Az egyedi kulcsnév megkülönbözteti a kis-és nagybetűket. Vegyünk például egy olyan tárolót, amelyben az egyedi kulcs megszorítása van beállítva `/address/zipcode`. Ha az adatai egy nevű `ZipCode`mezővel rendelkeznek, Azure Cosmos db a "NULL" értéket szúrja be `zipcode` egyedi kulcsként, `ZipCode`mert nem ugyanaz, mint. Ennek az esetnek az eltérése miatt az irányítószámmal nem szúrható be minden más rekord, mert az ismétlődő "NULL" megsérti az egyedi kulcs megkötését.
+* Az egyedi kulcsnév megkülönbözteti a kis-és nagybetűket. Vegyünk például egy olyan tárolót, amelyben az egyedi kulcs megszorítása van beállítva `/address/zipcode` . Ha az adatai egy nevű mezővel rendelkeznek `ZipCode` , Azure Cosmos db a "NULL" értéket szúrja be egyedi kulcsként, mert `zipcode` nem ugyanaz, mint `ZipCode` . Ennek az esetnek az eltérése miatt az irányítószámmal nem szúrható be minden más rekord, mert az ismétlődő "NULL" megsérti az egyedi kulcs megkötését.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403667"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987871"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > - Az alkalmazás összekötése az Azure Computer Vision és Custom Vision használatával.
 > - Hozzon létre egy Azure-beli egyszerű fiókot az Azure-szolgáltatások alkalmazásból való üzembe helyezéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -97,7 +97,7 @@ Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címé
 
 ![A Azure Portal Computer Vision szolgáltatása a kiválasztott rövid útmutató menüjével. A kulcsok hivatkozását a rendszer az API-végpont URL-címének megfelelően ismerteti](media/azure-logo-tutorial/comvis-keys.png)
 
-Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse `ComputerVisionEndpoint` ki `ComputerVisionKey` a és a változókat a megfelelő értékekkel.
+Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse ki a `ComputerVisionEndpoint` és a `ComputerVisionKey` változókat a megfelelő értékekkel.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
@@ -131,7 +131,7 @@ A sikeres befejezést követően a következő JSON-kimenetnek kell megjelennie,
 }
 ```
 
-Jegyezze fel a és `clientId` `tenantId` az értékeket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
+Jegyezze fel a `clientId` és az `tenantId` értékeket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
@@ -153,7 +153,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 1. Az első képernyőn adja meg az egyszerű szolgáltatás ügyfél-AZONOSÍTÓját, a bérlő AZONOSÍTÓját és a jelszót. Válassza a **Bejelentkezés** gombot.
 
     > [!NOTE]
-    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg a `Button` **login (bejelentkezés) gombot**, majd távolítsa el a következő sort, majd futtassa újra az alkalmazást.
+    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg a `Button` login (bejelentkezés) **gombot**, majd távolítsa el a következő sort, majd futtassa újra az alkalmazást.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
@@ -171,11 +171,11 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
     ![Egy alkalmazás képernyője, amely a központi telepítési régió és az erőforráscsoport mezőit jeleníti meg](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha követte a forgatókönyv összes lépését, és az alkalmazást használta az Azure-szolgáltatások üzembe helyezéséhez a fiókjában, lépjen a [Azure Portal](https://ms.portal.azure.com/). Itt szakítsa meg a használni nem kívánt szolgáltatásokat.
 
-Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes próbaverziója csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt**területen.
+Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes előfizetése csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt**területen.
 
 ## <a name="next-steps"></a>További lépések
 

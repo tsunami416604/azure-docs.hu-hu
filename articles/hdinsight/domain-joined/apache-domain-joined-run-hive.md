@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196926"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
@@ -27,7 +26,7 @@ Megtudhatja, hogyan konfigurálhatja a Apache Hive Apache Ranger-szabályzatait.
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 **Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez**
 
-1. Egy böngészőben nyissa meg a Ranger felügyeleti felhasználói felületét `https://CLUSTERNAME.azurehdinsight.net/Ranger/` , ahol a CLUSTERNAME a fürt neve.
+1. Egy böngészőben nyissa meg a Ranger felügyeleti felhasználói felületét, `https://CLUSTERNAME.azurehdinsight.net/Ranger/` ahol a CLUSTERNAME a fürt neve.
 
    > [!NOTE]  
    > A Ranger eltérő hitelesítő adatokat használ, mint a Apache Hadoop-fürt. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, használja az új InPrivate-böngészőablakot a Ranger felügyeleti felhasználói felületéhez.
@@ -103,7 +102,7 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
 1. Nyisson meg egy új vagy egy meglévő munkafüzetet Excelben.
 
-1. Az **adatok** lapon navigáljon az >  **adatok beolvasása****más forrásokból** > az**ODBC** -ből, hogy elindítsa a **from ODBC** ablakot.
+1. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból**az ODBC-ből,  >  **From ODBC** hogy elindítsa a **from ODBC** ablakot.
 
     ![Az adatkapcsolatok varázsló megnyitása](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
@@ -115,7 +114,7 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
 1. Válassza a **hivesampletable**lehetőséget, majd kattintson a **tovább**gombra.
 
-1. Válassza a **Finish** (Befejezés) elemet.
+1. Válassza a **Befejezés** gombot.
 
 1. Az **Adatok importálása** párbeszédpanelen módosíthatja vagy megadhatja a lekérdezést. Ehhez válassza a **Tulajdonságok**lehetőséget. Ez eltarthat néhány másodpercig.
 

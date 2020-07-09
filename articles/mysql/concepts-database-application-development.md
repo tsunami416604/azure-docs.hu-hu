@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 02ce6b00b6555f849d162b9f3b381c0ab358d712
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532841"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Az alkalmazások fejlesztésének áttekintése Azure Database for MySQL 
 Ez a cikk azokat a tervezési szempontokat ismerteti, amelyeket a fejlesztőnek követnie kell az alkalmazás kódjának Azure Database for MySQLhoz való csatlakozásakor. 
 
 > [!TIP]
-> A kiszolgáló létrehozásával, a kiszolgáló-alapú tűzfal létrehozásával, a kiszolgáló tulajdonságainak megtekintésével, az adatbázis létrehozásával, valamint a Workbench és a MySQL. exe használatával történő kapcsolódással és lekérdezéssel kapcsolatos oktatóanyagért lásd: [az első Azure Database for MySQL-adatbázis megtervezése](tutorial-design-database-using-portal.md)
+> A kiszolgálók létrehozását, kiszolgáló-alapú tűzfal létrehozását, a kiszolgáló tulajdonságainak megtekintését, az adatbázis létrehozását, valamint a Workbench és a mysql.exe használatával történő kapcsolódást és lekérdezést bemutató oktatóanyagért lásd: [az első Azure Database for MySQL-adatbázis megtervezése](tutorial-design-database-using-portal.md)
 
 ## <a name="language-and-platform"></a>Nyelv és platform
 Különböző programozási nyelvekhez és platformokhoz érhetők el kódminták. A kód mintáinak hivatkozásait itt találja: a [Azure Database for MySQLhoz való csatlakozáshoz használt kapcsolati kódtárak](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Eszközök
-Azure Database for MySQL a MySQL-Közösség verzióját használja, amely kompatibilis a MySQL általános felügyeleti eszközeivel, például a Workbench vagy a MySQL segédprogrammal, például a MySQL. exe, a [phpMyAdmin](https://www.phpmyadmin.net/), a [Navicat](https://www.navicat.com/products/navicat-for-mysql)és más szolgáltatásokkal. Használhatja a Azure Portal, az Azure CLI és a REST API-kat is az adatbázis-szolgáltatással való kommunikációhoz.
+Azure Database for MySQL a MySQL-Közösség verzióját használja, amely kompatibilis a MySQL általános felügyeleti eszközeivel, például a Workbench vagy a MySQL segédprogramokkal, például a mysql.exe, a [phpMyAdmin](https://www.phpmyadmin.net/), a [Navicat](https://www.navicat.com/products/navicat-for-mysql)és másokkal. Használhatja a Azure Portal, az Azure CLI és a REST API-kat is az adatbázis-szolgáltatással való kommunikációhoz.
 
 ## <a name="resource-limitations"></a>Erőforrás-korlátozások
 A Azure Database for MySQL két különböző mechanizmus használatával kezeli a kiszolgálók számára elérhető erőforrásokat: 

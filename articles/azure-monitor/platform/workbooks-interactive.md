@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658268"
 ---
 # <a name="interactive-workbooks"></a>Interaktív munkafüzetek
@@ -75,7 +74,7 @@ Előfordulhat, hogy csak egy adott oszlop helyett érdemes exportálni a kijelö
 A hivatkozó KQL vezérlőben használja a `todynamic` függvényt a JSON elemzéséhez és az egyes oszlopok eléréséhez.
 
  ## <a name="grid-cell-clicks"></a>Rács cellára kattintás
-A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak egy speciális típusú, a `link renderer` A hivatkozás-megjelenítő egy rácsvonalat helyez át egy hiperhivatkozásba a cella tartalma alapján. A munkafüzetek számos különböző típusú csatolást támogatnak – többek között az erőforrás-áttekintő pengék, a tulajdonság-megjelenítők, az alkalmazás-elemzések keresése, a használat, a tranzakciók nyomon követése stb.
+A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak egy speciális típusú `link renderer` , a A hivatkozás-megjelenítő egy rácsvonalat helyez át egy hiperhivatkozásba a cella tartalma alapján. A munkafüzetek számos különböző típusú csatolást támogatnak – többek között az erőforrás-áttekintő pengék, a tulajdonság-megjelenítők, az alkalmazás-elemzések keresése, a használat, a tranzakciók nyomon követése stb.
 
 ### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Az interaktivitás beállítása a rács cellájának kattintással
 1. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
@@ -90,11 +89,11 @@ A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak egy 
 5. `Run query`az eredmények megtekintése
 6. A beállítások ablaktábla megnyitásához kattintson az _oszlop beállításai_ elemre.
 7. Az _oszlopok_ szakaszban állítsa be a következőket:
-    1. _Minta_ -oszlop megjelenítő: `Link`, nézet megnyitása: `Cell Details`, hivatkozás címkéje:`Sample`
-    2. _Count_ -Column megjelenítő: `Bar`, színpaletta: `Blue`, minimális érték:`0`
+    1. _Minta_ -oszlop megjelenítő: `Link` , nézet megnyitása: `Cell Details` , hivatkozás címkéje:`Sample`
+    2. _Count_ -Column megjelenítő: `Bar` , színpaletta: `Blue` , minimális érték:`0`
     3. _Kérelem_ -oszlop megjelenítő:`Automatic`
     4. A módosítások alkalmazásához kattintson a _Mentés és bezárás_ gombra.
-8. Kattintson a rács egyik `Sample` hivatkozására. Ekkor megnyílik a Tulajdonságok ablaktábla egy mintavételi kérelem részleteivel.
+8. Kattintson a `Sample` rács egyik hivatkozására. Ekkor megnyílik a Tulajdonságok ablaktábla egy mintavételi kérelem részleteivel.
 
     ![Kép, amely interaktív élményt nyújt a Grid cella kattintások használatával](./media/workbooks-interactive/grid-cell-click-create.png)
 
@@ -116,7 +115,7 @@ A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak egy 
 A munkafüzet lehetővé teszi, hogy a felhasználók bizonyos vezérlőelemek megjelenjenek vagy eltűnnek a paraméterek értékei alapján. Ez lehetővé teszi a szerzők számára, hogy a jelentések eltérőek legyenek a felhasználói bevitel vagy a telemetria állapot alapján. Egy példa arra, hogy a felhasználók csak egy összefoglalót jelenítenek meg, ha a dolgok jók, de a teljes részleteket megmutatják, ha valami nem stimmel.
 
 ### <a name="setting-up-interactivity-using-conditional-visibility"></a>Az interaktivitás beállítása feltételes láthatósággal
-1. A két interaktív vezérlő beállításához kövesse a `Setting up interactivity on grid row click` szakasz lépéseit.
+1. A `Setting up interactivity on grid row click` két interaktív vezérlő beállításához kövesse a szakasz lépéseit.
 2. Új paraméter hozzáadása a tetején:
     1. név:`ShowDetails`
     2. Paraméter típusa:`Drop down`
@@ -127,16 +126,16 @@ A munkafüzet lehetővé teszi, hogy a felhasználók bizonyos vezérlőelemek m
 3. Paraméter értékének beállítása`Yes`
 4. A lekérdezés vezérlőelemben a körzet diagramon kattintson a _Speciális beállítások_ ikonra (fogaskerék ikon)
 5. A beállítás bejelölése`Make this item conditionally visible`
-    1. Ez az elem látható, `ShowDetails` ha a `equals` paraméter értéke`Yes`
+    1. Ez az elem látható, ha a `ShowDetails` paraméter értéke `equals``Yes`
 6. A módosítások _elvégzéséhez kattintson a Szerkesztés kész_ lehetőségre.
 7. Az olvasási mód megadásához kattintson a _Szerkesztés kész_ gombra a munkafüzet eszköztárán.
-8. Állítsa a paraméter `ShowDetails` értékét a következőre: `No`. Figyelje meg, hogy az alábbi diagram eltűnik.
+8. Állítsa a paraméter értékét a következőre: `ShowDetails` `No` . Figyelje meg, hogy az alábbi diagram eltűnik.
 
 Az alábbi képen látható, hogy hol `ShowDetails` van`Yes`
 
 ![A diagram látható feltételes láthatóságát ábrázoló kép](./media/workbooks-interactive/conditional-visibility.png)
 
-Az alábbi képen látható a rejtett eset, `ShowDetails` ahol a`No`
+Az alábbi képen látható a rejtett eset, ahol a `ShowDetails``No`
 
 ![A diagram elrejtésének feltételes láthatóságát bemutató kép](./media/workbooks-interactive/conditional-invisible.png)
 

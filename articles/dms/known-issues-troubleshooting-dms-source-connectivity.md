@@ -12,12 +12,11 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196331"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>A forrásadatbázisokhoz való csatlakozás során fellépő DMS-hibák elhárítása
 
@@ -30,9 +29,9 @@ A forrás-SQL Server adatbázishoz való csatlakozáshoz és a velük való kapc
 | Hiba         | Ok és hibaelhárítás részletei |
 | ------------- | ------------- |
 | Az SQL-kapcsolatok sikertelenek. Hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Serverhez való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el. Ellenőrizze, hogy a példány neve helyes-e, és hogy a SQL Server távoli kapcsolatok engedélyezésére van-e konfigurálva.<br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem találja a forráskiszolgáló helyét. A probléma megoldásához tekintse meg a [következő cikket: hiba történt a forrás SQL Serverhoz való kapcsolódáskor, ha dinamikus portot vagy nevesített példányt használ](https://docs.microsoft.com/azure/dms/known-issues-troubleshooting-dms#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance). |
-| **53** -es hiba – az SQL-kapcsolatok sikertelenek. (Hibakód: 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud csatlakozni a forráskiszolgálóról. A probléma megoldásához tekintse meg a következő erőforrásokat, majd próbálkozzon újra. <br><br>  [Interaktív felhasználói útmutató a kapcsolódási probléma megoldásához](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server áttelepítésének előfeltételei a Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [SQL Server áttelepítésének előfeltételei egy Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
+| **53** -es hiba – az SQL-kapcsolatok sikertelenek. (Hibakód: 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud csatlakozni a forráskiszolgálóról. A probléma megoldásához tekintse meg a következő erőforrásokat, majd próbálkozzon újra. <br><br>  [Interaktív felhasználói útmutató a kapcsolódási probléma megoldásához](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server áttelepítésének előfeltételei a Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [SQL Server Azure SQL felügyelt példányra való áttelepítésének előfeltételei](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
 | **18456** -es hiba – a bejelentkezés sikertelen.<br> | Ez a hiba akkor fordul elő, ha a szolgáltatás nem tud kapcsolódni a forrás-adatbázishoz a megadott T-SQL hitelesítő adatok használatával. A probléma megoldásához ellenőrizze a megadott hitelesítő adatokat. Tekintse meg [MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) vagy a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat is, majd próbálkozzon újra. |
-| A (z){0}"" formázott accountname érték van megadva. A AccountName várt formátuma tartománynév \ Felhasználónév<br> | Ez a hiba akkor fordul elő, ha a felhasználó a Windows-hitelesítést választja, de a felhasználónevet érvénytelen formátumban adja meg. A probléma megoldásához adja meg a felhasználónevet a Windows-hitelesítés megfelelő formátumában, vagy válassza az **SQL-hitelesítés**lehetőséget. |
+| A (z) "" formázott AccountName érték van {0} megadva. A AccountName várt formátuma tartománynév \ Felhasználónév<br> | Ez a hiba akkor fordul elő, ha a felhasználó a Windows-hitelesítést választja, de a felhasználónevet érvénytelen formátumban adja meg. A probléma megoldásához adja meg a felhasználónevet a Windows-hitelesítés megfelelő formátumában, vagy válassza az **SQL-hitelesítés**lehetőséget. |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
 

@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a k
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2be89f9263c71b7c9d7bc32edd0b1fc7cb2cfbce
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74763691"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118154"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure Database for PostgreSQL – egy kiszolgáló naplófájljainak konfigurálása és elérése a Azure Portal
 
@@ -63,7 +63,7 @@ A naplózás megkezdése után megtekintheti az elérhető naplók listáját, �
 
    ![Képernyőkép a kiszolgálói naplók lapról, a lefelé mutató nyíl ikon kiemelve](./media/howto-configure-server-logs-in-portal/6-download.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A naplófájlok programozott módon történő letöltésének megismeréséhez tekintse meg [a hozzáférési kiszolgáló naplófájljai a CLI-ben](howto-configure-server-logs-using-cli.md) című témakört.
 - További információ a Azure Database for PostgreSQL [kiszolgálói naplóiról](concepts-server-logs.md) . 
 - A paraméter-definíciókkal és a PostgreSQL-naplózással kapcsolatos további információkért tekintse meg a PostgreSQL dokumentációját a [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)témakörben.

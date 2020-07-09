@@ -4,16 +4,16 @@ description: Útmutató az importálási/exportálási feladatokkal kapcsolatos 
 services: storsimple
 author: alkohli
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67621042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514413"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Támogatási jegy megnyitása importálási/exportálási feladatokhoz
 
@@ -39,7 +39,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
             ![Storage-fiókok felügyeletének kiválasztása](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
         - Ha a **blob**lehetőséget választja, válassza az **erőforrás**, a **tároló neve** (nem kötelező) és a **támogatási csomag**elemet.
             ![BLOB kiválasztása](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Ha a **fájl**lehetőséget választja, válassza az **erőforrás**lehetőséget, a **fájlmegosztás nevét** (nem kötelező) és a **támogatási csomagot** ![a fájl kiválasztása elemre.](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+        - Ha a **fájl**lehetőséget választja, válassza az **erőforrás**lehetőséget, a **fájlmegosztás nevét** (nem kötelező) és a **támogatási csomagot** a fájl kiválasztása elemre. ![](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Kattintson a **Tovább** gombra.
 
 3. Az **új támogatási kérelem**területen válassza a **2. lépéssel kapcsolatos problémát**. A **probléma megoldásához**hajtsa végre a következő lépéseket:
@@ -59,7 +59,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmeknél** jelölőnégyzetet.
-   3. Kattintson a **Létrehozás**gombra.
+   3. Kattintson a **Létrehozás** lehetőségre.
    
        ![Kapcsolattartási adatok](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 

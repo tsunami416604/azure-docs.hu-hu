@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 252467a22ba37352cee4c3e7bffcf1ff910c86ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835444"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961812"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -40,13 +40,17 @@ Az internetről a fürthöz való csatlakozáskor használandó teljes tartomán
 
 Belsőleg a fürt minden csomópontja rendelkezik egy, a fürt konfigurálása során hozzárendelt névvel. A fürt nevének megkereséséhez tekintse meg a **gazdagépek** lapot a Ambari webes felhasználói felületén. A következő paranccsal is visszaállíthatja a gazdagépek listáját a Ambari REST API:
 
-    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+```console
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+```
 
 Cserélje le a `CLUSTERNAME` elemet a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai fiók jelszavát. Ez a parancs egy JSON-dokumentumot ad vissza, amely tartalmazza a fürtben lévő gazdagépek listáját. a [jQ](https://stedolan.github.io/jq/) az `host_name` egyes gazdagépek elem értékének kinyerésére szolgál.
 
 Ha meg kell találnia egy adott szolgáltatáshoz tartozó csomópont nevét, lekérdezheti az adott összetevőhöz tartozó Ambari. Ha például a HDFS neve csomópont gazdagépeit szeretné megkeresni, használja a következő parancsot:
 
-    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+```console
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+```
 
 Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja a szolgáltatást, majd a [jQ](https://stedolan.github.io/jq/) csak a `host_name` gazdagépek értékét kéri le.
 
@@ -107,7 +111,9 @@ További információ: a [Blobok](https://docs.microsoft.com/rest/api/storageser
 
 Az Azure Storage vagy a Data Lake Storage használatakor nem kell semmit HDInsight az adatok eléréséhez. Például a következő parancs felsorolja a mappában található fájlokat, `/example/data` hogy az Azure Storage-ban vagy Data Lake Storageban van-e tárolva:
 
-    hdfs dfs -ls /example/data
+```console
+hdfs dfs -ls /example/data
+```
 
 A HDInsight-ben az adattárolási erőforrások (Azure Blob Storage és Azure Data Lake Storage) le vannak választva a számítási erőforrásokból. Létrehozhat HDInsight-fürtöket a számítások elvégzéséhez, majd később törölheti a fürtöt a munka befejezésekor. Eközben az adatfájlok tárolása biztonságosan megőrzött a Felhőbeli tárolásban, amennyiben szükséges.
 

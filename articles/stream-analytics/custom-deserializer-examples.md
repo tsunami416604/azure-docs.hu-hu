@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83873042"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával

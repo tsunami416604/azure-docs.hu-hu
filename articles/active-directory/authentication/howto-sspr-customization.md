@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54a45602b80db965e3cc79d188dd40034a320b79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394253"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Felhasználói élmény testreszabása Azure Active Directory önkiszolgáló jelszó-visszaállításhoz
@@ -56,8 +56,8 @@ Ha többet szeretne megtudni a különböző rendszergazdai szerepkörökről é
 
 Ha a szervezet nem szeretné értesíteni a rendszergazdákat a jelszó-visszaállítási kérelmekről, a következő konfigurációs lehetőségek használhatók:
 
-* Testreszabhatja az ügyfélszolgálati hivatkozást egy webes URL-cím vagy mailto: cím megadásához, amellyel a felhasználók segítséget kérhetnek. Ez a beállítás a **jelszó-visszaállítás** > **testreszabása** > **Egyéni segélyszolgálat e-mail-címe vagy URL-címe**alatt található.
-* Az összes felhasználó önkiszolgáló jelszó-visszaállításának engedélyezése. Ez a beállítás a **jelszó-visszaállítás** > **tulajdonságai**területen található. Ha nem szeretné, hogy a felhasználók a saját jelszavukat állítsa alaphelyzetbe, akkor egy üres csoporthoz is hozzáférhet. *Ez a beállítás nem ajánlott.*
+* Testreszabhatja az ügyfélszolgálati hivatkozást egy webes URL-cím vagy mailto: cím megadásához, amellyel a felhasználók segítséget kérhetnek. Ez a beállítás a **jelszó-visszaállítás**  >  **testreszabása**  >  **Egyéni segélyszolgálat e-mail-címe vagy URL-címe**alatt található.
+* Az összes felhasználó önkiszolgáló jelszó-visszaállításának engedélyezése. Ez a beállítás a **jelszó-visszaállítás**  >  **tulajdonságai**területen található. Ha nem szeretné, hogy a felhasználók a saját jelszavukat állítsa alaphelyzetbe, akkor egy üres csoporthoz is hozzáférhet. *Ez a beállítás nem ajánlott.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>A bejelentkezési oldal és a hozzáférési panel testreszabása
 
@@ -72,7 +72,7 @@ A kiválasztott grafikák a következő esetekben jelennek meg:
 
 ### <a name="directory-name"></a>Könyvtár neve
 
-Annak érdekében, hogy a dolgok jobban megnézzék a felhasználókat, a Portálon és az automatikus kommunikációban is megváltoztathatja a szervezet nevét. Ha módosítani szeretné a Azure Portal könyvtárnév attribútumát, keresse meg **Azure Active Directory** > **tulajdonságokat**. Ez a felhasználóbarát szervezet neve beállítás a legkönnyebben látható az automatizált e-mailekben, az alábbi példáknak megfelelően:
+Annak érdekében, hogy a dolgok jobban megnézzék a felhasználókat, a Portálon és az automatikus kommunikációban is megváltoztathatja a szervezet nevét. Ha módosítani szeretné a Azure Portal könyvtárnév attribútumát, keresse meg **Azure Active Directory**  >  **tulajdonságokat**. Ez a felhasználóbarát szervezet neve beállítás a legkönnyebben látható az automatizált e-mailekben, az alábbi példáknak megfelelően:
 
 * A felhasználóbarát név az e-mailben, például "a Microsoft neve a*contoso demo nevében*"
 * Az e-mailben szereplő tárgyi sor, például "*contoso demo-fiók e-mail-ellenőrző kódja*"
@@ -81,7 +81,7 @@ Annak érdekében, hogy a dolgok jobban megnézzék a felhasználókat, a Portá
 
 Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS)-t használ a felhasználói bejelentkezési eseményekhez, hozzáadhat egy hivatkozást a bejelentkezési oldalhoz a bejelentkezési [oldal leírásának hozzáadásához](/windows-server/identity/ad-fs/operations/add-sign-in-page-description)a cikk útmutatása alapján.
 
-Adja meg a felhasználóknak az oldalra mutató hivatkozást, hogy megadják a SSPR-munkafolyamatot *https://passwordreset.microsoftonline.com*, például:. A AD FS bejelentkezési oldalára mutató hivatkozás hozzáadásához használja a következő parancsot a AD FS-kiszolgálón:
+Adja meg a felhasználóknak az oldalra mutató hivatkozást, hogy megadják a SSPR-munkafolyamatot, például: *https://passwordreset.microsoftonline.com* . A AD FS bejelentkezési oldalára mutató hivatkozás hozzáadásához használja a következő parancsot a AD FS-kiszolgálón:
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwordreset.microsoftonline.com' target='_blank'>Can't access your account?</a></p>"

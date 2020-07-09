@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: c50222c645926a6e48995e6c66d7844adc02699f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: eb236c77fb9b5e2d5da16ff980693d1c9fce3d8d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872999"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611217"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 
@@ -25,9 +25,9 @@ Ez a példában szereplő alkalmazás helyi válaszüzeneteket olvas be az API-b
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , Bing Search API-k. Ebben a rövid útmutatóban az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő. Mentse az ingyenes próbaverzió aktiválásához megadott API-kulcsot. További információ: [Cognitive Services díjszabása-BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
 
 ## <a name="create-the-request"></a>A kérelem létrehozása 
 
@@ -164,5 +164,5 @@ public class LocalSearchCls {
 
 ## <a name="next-steps"></a>További lépések
 - [Helyi üzleti keresés C# rövid útmutató](local-quickstart.md)
-- [Helyi üzleti keresés Node. js rövid útmutató](local-search-node-quickstart.md)
+- [Helyi üzleti keresés Node.js rövid útmutató](local-search-node-quickstart.md)
 - [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

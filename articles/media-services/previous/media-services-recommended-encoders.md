@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535094"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
@@ -94,4 +94,4 @@ Csatorna ellenőrzésének továbbítása
 7. Az élő esemény leállítása
 8. Jegyezze fel az eszköz AZONOSÍTÓját, a közzétett streaming URL-címet az élő archívumhoz, valamint az élő kódoló által használt beállításokat és verziót
 
-Végül küldje el a rögzített beállításokat és az élő archiválási paramétereket Media Services e-mailben amsstreaming@microsoft.com. A beérkezés után a Media Services ellenőrző teszteket hajt végre az élő kódoló mintáján. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Media Services.
+Végül küldje el a rögzített beállításokat és az élő archiválási paramétereket Media Services e-mailben amsstreaming@microsoft.com . A beérkezés után a Media Services ellenőrző teszteket hajt végre az élő kódoló mintáján. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Media Services.

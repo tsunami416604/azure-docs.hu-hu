@@ -15,11 +15,10 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704590"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – iSCSI-kiszolgálóként való beállítása Azure Portalon keresztül
 
@@ -81,7 +80,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 6. Az **eszközbeállítások** lapon:
    
    1. Rendeljen egyedi **nevet** az eszközhöz. Ez a név 1-15 karakterből állhat, és tartalmazhat betűt, számot és kötőjelet.
-   2. Kattintson az **iSCSI** -kiszolgáló ![ikonra iSCSI-](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) kiszolgáló ikonra a létrehozandó eszköz **típusához** . Az iSCSI-kiszolgálók lehetővé teszik a blokkoló tárolók kiépítését.
+   2. Kattintson az **iSCSI-kiszolgáló** ikonra ![ iSCSI-kiszolgáló ikonra a ](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) létrehozandó eszköz **típusához** . Az iSCSI-kiszolgálók lehetővé teszik a blokkoló tárolók kiépítését.
    3. Itt adhatja meg, hogy szeretné-e, hogy az eszköz tartományhoz legyen csatlakoztatva. Ha az eszköz egy iSCSI-kiszolgáló, akkor a tartományhoz való csatlakozás nem kötelező. Ha úgy dönt, hogy nem csatlakoztatja az iSCSI-kiszolgálót egy tartományhoz, kattintson az **alkalmaz**gombra, várjon, amíg a beállítások érvénybe lépnek, majd ugorjon a következő lépésre.
       
        Ha az eszközt tartományhoz kívánja csatlakoztatni. Adja meg a **tartománynevet**, majd kattintson az **alkalmaz**gombra.
@@ -100,7 +99,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
     A **webproxy** lapon:
    
-   1. Adja meg a **webproxy URL** -címét a következő formátumban: *http:\//Host-IP cím* vagy *FQDN: portszám*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
+   1. Adja meg a **webproxy URL** -címét a következő formátumban: *http: \/ /Host-IP cím* vagy *FQDN: portszám*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
    2. A **hitelesítést** a **Basic** vagy a **none**értékre kell beállítani.
    3. Ha hitelesítést használ, meg kell adnia egy **felhasználónevet** és egy **jelszót**is.
    4. Kattintson az **Alkalmaz** gombra. Ez a művelet érvényesíti és alkalmazza a konfigurált webproxy-beállításokat.
@@ -118,7 +117,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
    1. Adja meg a **szolgáltatás regisztrációs kulcsát** , amelyet a **2. lépésben kapott: a szolgáltatás regisztrációs kulcsának beszerzése** a [StorSimple virtuális tömb üzembe helyezése – a portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
    2. Ha nem ez az első eszköz, amelyet a szolgáltatással regisztrál, meg kell adnia a **szolgáltatás adattitkosítási kulcsát**. Erre a kulcsra a szolgáltatás regisztrációs kulcsának használatakor van szükség további eszközök regisztrálásához a StorSimple Eszközkezelő szolgáltatással. További információt a [szolgáltatás adattitkosítási kulcsának beszerzése](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) a helyi webes felhasználói felületen című témakörben talál.
-   3. Kattintson a **regisztrálás**gombra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
+   3. Kattintson a **Regisztrálás** parancsra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
       
       ![Eszköz regisztrálása](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Lépjen vissza az Azure Portalra.

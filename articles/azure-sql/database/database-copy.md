@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 02/24/2020
 ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045297"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
@@ -171,7 +170,7 @@ Ha egy adatbázist egy másik kiszolgálóra másol, a felhasználók és bejele
 
 A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](database-copy.md) című részben.
 
-| Hibakód | Severity | Leírás |
+| Hibakód | Severity | Description |
 | ---:| ---:|:--- |
 | 40635 |16 |A (z)%. &#x2a;ls IP-címmel rendelkező ügyfél átmenetileg le van tiltva. |
 | 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |

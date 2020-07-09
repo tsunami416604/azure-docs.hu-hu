@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731678"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045467"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK-k és CLI-eszközök
 
@@ -49,12 +49,7 @@ Az alábbi táblázat felsorolja a támogatott CLI-eszközöket és azok parancs
 
 ## <a name="code-samples"></a>Kódminták
 
-Az alábbi táblázat felsorolja a hivatkozáshoz tartozó kódrészleteket.   
-
-|    Nyelv/eszköz    |    Mintakód dokumentációja    |
-|------------------|--------------------------------------------|
-|    .NET   |    [Azure NetApp Files SDK-minta a következőhöz:. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [Azure NetApp Files SDK-minta a Pythonhoz](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+Lásd: [Azure NetApp Files-kód mintái](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
 ## <a name="next-steps"></a>További lépések   
  [Azure SDK-k letöltése](https://azure.microsoft.com/downloads/)

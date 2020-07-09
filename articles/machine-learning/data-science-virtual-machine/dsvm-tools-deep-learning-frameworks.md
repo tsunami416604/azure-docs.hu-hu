@@ -6,16 +6,16 @@ keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557482"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Mély tanulási és AI-keretrendszerek az Azure Data Science VM
 Az alábbi lista mély tanulási keretrendszerek a DSVM.
@@ -26,7 +26,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 | ------------- | ------------- |
 | Támogatott verzió (k) | |
 | Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
-| Hogyan van konfigurálva/telepítve a DSVM?  | A Cafe telepítve van `/opt/caffe`a-ben.   A minták a `/opt/caffe/examples`következők:.|
+| Hogyan van konfigurálva/telepítve a DSVM?  | A Cafe telepítve van a-ben `/opt/caffe` .   A minták a következők: `/opt/caffe/examples` .|
 | Futtatás      | a X2Go használatával jelentkezzen be a virtuális gépre, majd indítson el egy új terminált, és adja meg a következőt:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Megnyílik egy új böngészőablak, amely minta jegyzetfüzeteket használ. A bináris fájlok a/opt/caffe/BUILD/install/bin.-ben vannak telepítve<br/><br/>A Cafe telepített verziójának a Python 2,7-es verziójára van szüksége, és a Python 3,5 nem működik, amely alapértelmezés szerint aktiválva van. A Python 2,7-re való váltáshoz futtassa a parancsot `source activate root` az anaconda-környezetre való váltáshoz.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
@@ -45,7 +45,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 | Támogatott verzió (k) | 5,2 |
 | Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
 | Hogyan van konfigurálva/telepítve a DSVM?  | A chainer a Python 3,5-es verzióra van telepítve. |
-| Futtatás      | Terminál: aktiválja a Python 3,5 környezetet, futtassa `python`a parancsot, `import chainer`majd. <br/> * JupyterHub: [kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a láncolt könyvtárat a minta jegyzetfüzetek kereséséhez.| 
+| Futtatás      | Terminál: aktiválja a Python 3,5 környezetet, futtassa a parancsot `python` , majd `import chainer` . <br/> * JupyterHub: [kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a láncolt könyvtárat a minta jegyzetfüzetek kereséséhez.| 
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA, cuDNN, NVIDIA illesztőprogram](https://developer.nvidia.com/cuda-toolkit)
 
@@ -89,8 +89,8 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.3.0 |
 | Támogatott DSVM-kiadások      | Windows és Linux   |
-| Hogyan van konfigurálva/telepítve a DSVM?  | A MXNet Windows és `C:\dsvm\tools\mxnet` `/dsvm/tools/mxnet` Ubuntu rendszerre van telepítve. A Python-kötések a [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) -es Python 3,6-es verziójában, a [Linuxon](./dsvm-tools-languages.md#python-linux-edition)pedig a Python 3,5-ban vannak telepítve, az R-kötések pedig az Ubuntu DSVM is szerepelnek. |
-| Futtatás      | Terminál: aktiválja a megfelelő Conda-környezetet, majd `import mxnet`futtassa a parancsot. <br/>Jupyter: kapcsolódjon a [Jupyter](provision-vm.md#access-the-dsvm) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)-hez, `mxnet` majd nyissa meg a minták könyvtárát. |
+| Hogyan van konfigurálva/telepítve a DSVM?  | A MXNet `C:\dsvm\tools\mxnet` Windows és Ubuntu rendszerre van telepítve `/dsvm/tools/mxnet` . A Python-kötések a [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) -es Python 3,6-es verziójában, a [Linuxon](./dsvm-tools-languages.md#python-linux-edition)pedig a Python 3,5-ban vannak telepítve, az R-kötések pedig az Ubuntu DSVM is szerepelnek. |
+| Futtatás      | Terminál: aktiválja a megfelelő Conda-környezetet, majd futtassa a parancsot `import mxnet` . <br/>Jupyter: kapcsolódjon a [Jupyter](provision-vm.md#access-the-dsvm) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)-hez, majd nyissa meg a `mxnet` minták könyvtárát. |
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
@@ -109,7 +109,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 | Támogatott DSVM-kiadások      | Windows és Linux   |
 | Mi ez? | NVIDIA-eszköz a GPU-tevékenységek lekérdezéséhez |
 | Hogyan van konfigurálva/telepítve a DSVM?  | `nvidia-smi`a rendszer elérési útja. |
-| Futtatás      | Egy **GPU-val rendelkező**virtuális gépen nyisson meg egy parancssort (Windows rendszeren) vagy egy terminált (Linuxon), majd futtassa `nvidia-smi`a parancsot. |
+| Futtatás      | Egy **GPU-val rendelkező**virtuális gépen nyisson meg egy parancssort (Windows rendszeren) vagy egy terminált (Linuxon), majd futtassa a parancsot `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

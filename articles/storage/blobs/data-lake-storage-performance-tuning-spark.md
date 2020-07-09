@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06fe2670e5ee0d95df8985c9777d3ad9741336b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106118"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: Spark, HDInsight & Azure Data Lake Storage Gen2
 
@@ -46,7 +46,7 @@ A Spark-feladatok futtatásakor a legfontosabb beállítások a Data Lake Storag
 
 Alapértelmezés szerint a Spark on HDInsight-on való futtatásakor két virtuális fonal-mag van definiálva mindegyik fizikai mag számára.  Ez a szám egy jó párhuzamosságot és a több szálon átváltott környezetek mennyiségét biztosítja.  
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 Ha a Spark analitikus számítási feladatait a Data Lake Storage Gen2ban lévő adatokkal kívánja használni, javasoljuk, hogy a legújabb HDInsight-verziót használja a legjobb teljesítmény eléréséhez a Data Lake Storage Gen2. Ha a feladata nagyobb I/O-igényű, a teljesítmény javítása érdekében bizonyos paraméterek is konfigurálhatók.  A Data Lake Storage Gen2 egy nagy mértékben méretezhető tárolási platform, amely képes a magas átviteli sebesség kezelésére.  Ha a feladatnak többnyire olvasási vagy írási művelete van, akkor a Data Lake Storage Gen2 az I/O-hoz és a-ból való párhuzamosság növelése növelheti a teljesítményt.
 
@@ -58,25 +58,30 @@ Az I/O-igényes feladatok esetében néhány általános módszer az egyidejűs�
 
 **3. lépés: a végrehajtó-magok beállítása** – olyan I/O-igényű számítási feladatokhoz, amelyek nem rendelkeznek összetett műveletekkel, érdemes nagy számú végrehajtói magot kezdeni a párhuzamos feladatok számának növelésére.  A végrehajtó-magok beállítása jó kezdés.   
 
-    executor-cores = 4
+végrehajtó – magok = 4
+
 A végrehajtói magok számának növelése nagyobb párhuzamosságot biztosít, így különböző végrehajtói magokkal kísérletezhet.  Az összetettebb műveletekkel rendelkező feladatok esetében csökkentse a magok számát a végrehajtón.  Ha a végrehajtó-magok értéke 4-es nagyobb, akkor a szemetet nem lehet hatékonyan és csökkenhet a teljesítmény.
 
 **4. lépés: a szálbeli memória mennyiségének meghatározása a fürtben** – ez az információ a Ambari-ben érhető el.  Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot.  Ebben az ablakban a szál memóriája jelenik meg.  
 Vegye figyelembe, hogy az ablakban az alapértelmezett fonal-tároló mérete is látható.  A fonal tárolójának mérete megegyezik a memória/végrehajtó paraméter értékével.
 
-    Total YARN memory = nodes * YARN memory per node
+Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
+
 **5. lépés: a NUM-végrehajtók kiszámítása**
 
 **Memória-megkötés kiszámítása** – a NUM-végrehajtók paramétert a memória vagy a CPU korlátozza.  A memória megkötését az alkalmazáshoz rendelkezésre álló fonal-memória mennyisége határozza meg.  A FONALak teljes memóriáját kell elosztania, és azt a végrehajtó által használt memória alapján kell megosztania.  A megkötést az alkalmazások számának megfelelően ki kell méretezni, ezért az alkalmazások száma alapján osztjuk.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps   
+Memória korlátozás = (teljes fonal-memória/végrehajtó memória)/alkalmazások száma
+
 **CPU-megkötés kiszámítása** – a rendszer kiszámítja a CPU-korlátozást, mivel a teljes virtuális magok száma a végrehajtón belüli magok számával egyenlő.  Minden fizikai mag esetében 2 virtuális mag van.  A memória megkötéséhez hasonlóan meg kell osztani az alkalmazások számát.
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+- Virtual magok = (a fürtben lévő csomópontok száma a "2" csomópontban)
+- CPU-megkötés = (teljes virtuális magok/végrehajtók száma)/alkalmazások száma
+
 **NUM-végrehajtók beállítása** – a NUM-végrehajtók paramétert a rendszer a memória korlátozásának és a CPU-megkötés minimális értékének megadásával határozza meg. 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
+NUM-végrehajtók = min (összesen virtuális mag/a mag száma/végrehajtó, rendelkezésre álló memória/végrehajtó – memória)
+
 Ha nagyobb számú NUM-végrehajtót állít be, a teljesítmény nem feltétlenül növekszik.  Érdemes figyelembe vennie, hogy további végrehajtók hozzáadása további terhelést eredményez minden további végrehajtónál, ami potenciálisan csökkentheti a teljesítményt.  A NUM-végrehajtók a fürt erőforrásaihoz vannak kötve.    
 
 ## <a name="example-calculation"></a>Példa a számításra
@@ -87,31 +92,36 @@ Tegyük fel, hogy jelenleg 8 D4v2-csomópontból álló fürttel rendelkezik, am
 
 **2. lépés: a végrehajtó-memória beállítása** – ebben a példában megállapítjuk, hogy a végrehajtói memória 6gb-je elegendő az I/O-igényes feladatokhoz.  
 
-    executor-memory = 6GB
+végrehajtó – memória = 6GB
+
 **3. lépés: a végrehajtó-magok beállítása** – mivel ez egy I/O-igényes művelet, beállíthatja a magok számát az egyes végrehajtók számára a 4 értékre.  A magoknak a 4-es értéknél nagyobbra állítása nem okoz problémát a Garbage-gyűjtés során.  
 
-    executor-cores = 4
+végrehajtó – magok = 4
+
 **4. lépés: a szálbeli memória mennyiségének meghatározása a fürtben** – a Ambari navigálva megtudhatja, hogy minden D4v2 25 GB-os memóriával rendelkezik.  Mivel 8 csomópont van, a rendelkezésre álló szál memóriája 8-szor van megszorozva.
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25GB = 200GB
+- Összes szál memóriája = csomópontok * FONÁL memória */csomópont
+- Összes fonal memória = 8 csomópont * 25 GB = 200GB
+
 **5. lépés: a NUM-végrehajtók kiszámítása** – a NUM-végrehajtók paramétert úgy kell meghatározni, hogy a memória megkötésének minimális számát és a CPU-korlátot a Spark-on futó alkalmazások száma alapján osztja el.    
 
 A **memória megkötésének kiszámítása** – a memória megkötésének kiszámítása a memória által lefuttatott memória teljes száma alapján történik.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps   
-    Memory constraint = (200GB / 6GB) / 2   
-    Memory constraint = 16 (rounded)
+- Memória korlátozás = (teljes fonal-memória/végrehajtó memória)/alkalmazások száma
+- Memória megkötése = (200GB/6GB)/2
+- Memória megkötése = 16 (lekerekített)
+
 **CPU-megkötés kiszámítása** – a rendszer kiszámítja a CPU-megkötést, mivel a teljes fonál magjai a végrehajtó magok száma szerint vannak elosztva.
-    
-    YARN cores = nodes in cluster * # of cores per node * 2   
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+
+- FONAL magok = a fürtben található csomópontok száma * 2 csomópontban
+- FONAL magok = 8 csomópont * 8 mag/D14 * 2 = 128
+- CPU-megkötés = (teljes FONÁL-magok/végrehajtók száma)/alkalmazások száma
+- CPU-megkötés = (128/4)/2
+- CPU-megkötés = 16
+
 **NUM-végrehajtók beállítása**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16    
+- NUM-végrehajtók = min (memória megkötése, CPU-megkötés)
+- NUM-végrehajtók = min (16, 16)
+- NUM-végrehajtók = 16
 

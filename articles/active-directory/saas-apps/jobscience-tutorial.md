@@ -16,10 +16,9 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Azure Active Directory integráció a Jobscience
@@ -134,7 +133,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. Nyissa meg a **telepítőt**.
    
-   ![Telepítés](./media/jobscience-tutorial/IC784358.png "Telepítés")
+   ![Beállítás](./media/jobscience-tutorial/IC784358.png "Telepítés")
 
 1. A bal oldali navigációs ablaktábla **felügyelet** szakaszában kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
    
@@ -172,7 +171,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     f. **SAML-identitás helyeként**válassza az **identitás elemet a tulajdonos utasítás NameIdentfier elemében**.
 
-    g. Az **Identity Provider bejelentkezési URL-címe** szövegmezőben illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-címét**, amelyet a Azure Portalból másolt.
+    : Az **Identity Provider bejelentkezési URL-címe** szövegmezőben illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-címét**, amelyet a Azure Portalból másolt.
 
     h. Az **Identity Provider kijelentkezési URL-címe** szövegmezőbe illessze be a kijelentkezési **URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -194,7 +193,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Biztonsági vezérlők](./media/jobscience-tutorial/ic784368.png "Biztonsági vezérlők")
     
-    Kattintson a fenti lépésben létrehozott egyszeri bejelentkezési profilra. Ezen a lapon látható a vállalat egyszeri bejelentkezési URL-címe (például: `https://companyname.my.salesforce.com?so=companyid`).    
+    Kattintson a fenti lépésben létrehozott egyszeri bejelentkezési profilra. Ezen a lapon látható a vállalat egyszeri bejelentkezési URL-címe (például: `https://companyname.my.salesforce.com?so=companyid` ).    
 
 > [!TIP]
 > Most már beolvashatja ezeket az utasításokat a [Azure Portalon](https://portal.azure.com)belül, miközben beállíthatja az alkalmazást!  Miután hozzáadta az alkalmazást a **Active Directory > Enterprise Applications** szakaszban, egyszerűen kattintson az **egyszeri bejelentkezés** lapra, és az alján található **konfigurációs** szakaszon keresztül férhet hozzá a beágyazott dokumentációhoz. A beágyazott dokumentációs szolgáltatásról további információt itt talál: az [Azure ad Embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -229,7 +228,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó**értékét.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
  
 ### <a name="creating-a-jobscience-test-user"></a>Jobscience-tesztelési felhasználó létrehozása
 
@@ -245,8 +244,8 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Jobscience, a Jobscien
 
 1. Nyissa meg a telepítőt.
    
-   ![Telepítés](./media/jobscience-tutorial/ic784358.png "Telepítés")
-1. Nyissa meg a **felhasználók \> kezelése**lehetőséget.
+   ![Beállítás](./media/jobscience-tutorial/ic784358.png "Telepítés")
+1. Nyissa meg a **felhasználók kezelése \> **lehetőséget.
    
    ![Felhasználók](./media/jobscience-tutorial/ic784369.png "Felhasználók")
 1. Kattintson az **új felhasználó**elemre.
@@ -262,13 +261,13 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Jobscience, a Jobscien
    
    c. Az **alias** szövegmezőbe írja be a felhasználóhoz hasonló alias nevét, például Brittas.
 
-   d. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló Brittasimon@contoso.come-mail címet.
+   d. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet Brittasimon@contoso.com .
 
-   e. A **Felhasználónév** szövegmezőbe írja be a felhasználó nevét, például Brittasimon@contoso.com:.
+   e. A **Felhasználónév** szövegmezőbe írja be a felhasználó nevét, például: Brittasimon@contoso.com .
 
    f. A **Nick neve** szövegmezőbe írja be a felhasználó nevét, például Simon.
 
-   g. Kattintson a **Save** (Mentés) gombra.
+   : Kattintson a **Save** (Mentés) gombra.
 
     
 > [!NOTE]
@@ -311,7 +310,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 Ha a hozzáférési panelen a Jobscience csempére kattint, a rendszer automatikusan bejelentkezett a Jobscience alkalmazásba.
 További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

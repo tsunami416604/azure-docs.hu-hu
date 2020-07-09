@@ -8,11 +8,10 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690376"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
@@ -37,7 +36,7 @@ A részletesebb diagnosztika végrehajtásához, a teljesítmény nyomon követ�
 
 A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegfelelőbbek a figyelési forgatókönyvekhez. Ugyanazon a diagramon csak az azonos egység mérőszámai jeleníthetők meg.
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Parancssori feladatok várólistájának hossza|Darabszám|Átlag|A parancsfájl-készlet várólistájában lévő feladatok száma.|
 |Összege|Kapcsolat: aktuális kapcsolatok|Darabszám|Átlag|A létesített ügyfélkapcsolatok aktuális száma.|

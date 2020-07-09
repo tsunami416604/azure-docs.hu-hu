@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 05/19/2020
-  ms.openlocfilehash: 4e1b18e1037b37deba3e037f3e896bf1536f4fd7
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 05/29/2020
+  ms.openlocfilehash: 13e69e5f45244be79d06b0014d32e5c8192c777c
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83591913"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86038072"
 highlightedContent:
   items:
   - title: Mi az Azure AD?
@@ -42,15 +42,15 @@ conceptualContent:
   items:
   - title: Alkalmazáskezelés
     links:
-    - url: ./manage-apps/what-is-single-sign-on.md
-      itemType: concept
-      text: Mi az az egyszeri bejelentkezés (SSO)?
-    - url: ./manage-apps/user-provisioning.md
-      itemType: tutorial
-      text: Felhasználók automatikus üzembe helyezése
-    - url: ./manage-apps/application-proxy.md
-      itemType: concept
-      text: Alkalmazásproxy helyszíni alkalmazásokhoz
+    - url: ./manage-apps/what-is-application-management.md
+      itemType: overview
+      text: Mi az alkalmazáskezelés?
+    - url: ./manage-apps/view-applications-portal.md
+      itemType: quickstart
+      text: A bérlőt az identitáskezelés során használó alkalmazások megtekintése
+    - url: ./manage-apps/add-application-portal-setup-sso.md
+      itemType: quickstart
+      text: SAML-alapú SSO beállítása
     footerLink:
       url: ./manage-apps/index.yml
       text: Részletek
@@ -109,20 +109,6 @@ conceptualContent:
       text: Feltételek hely szerint
     footerLink:
       url: ./conditional-access/index.yml
-      text: Részletek
-  - title: Fejlesztők
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: A Microsoft identitásplatformja
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: OAuth 2.0-kódfolyamat engedély
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: Alkalmazás regisztrálása a Microsoft identitásplatformján
-    footerLink:
-      url: ./develop/index.yml
       text: Részletek
   - title: Eszközfelügyelet
     links:
@@ -235,6 +221,20 @@ conceptualContent:
       text: A felügyelt identitást támogató szolgáltatások
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
+      text: Részletek
+  - title: Microsoft-identitásplatform
+    links:
+    - url: ./develop/v2-overview.md
+      itemType: overview
+      text: A Microsoft identitásplatformja
+    - url: ./develop/v2-oauth2-auth-code-flow.md
+      itemType: concept
+      text: OAuth 2.0-kódfolyamat engedély
+    - url: ./develop/quickstart-register-app.md
+      itemType: quickstart
+      text: Alkalmazás regisztrálása a Microsoft identitásplatformján
+    footerLink:
+      url: ./develop/index.yml
       text: Részletek
   - title: Privileged Identity Management (PIM)
     links:

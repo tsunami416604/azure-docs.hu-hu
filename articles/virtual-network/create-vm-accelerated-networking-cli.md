@@ -10,18 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 54c4a673e654a0244183a84ffa841d553ae6db51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688620"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel az Azure CLI használatával
 
@@ -158,7 +157,7 @@ az network nic create \
 ```
 
 ### <a name="create-a-vm-and-attach-the-nic"></a>Virtuális gép létrehozása és a hálózati adapter csatlakoztatása
-A virtuális gép létrehozásakor határozza meg a létrehozott hálózati adaptert `--nics`. Válassza ki a [Linux-gyorsított hálózatkezelésben](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)felsorolt méretet és eloszlást. 
+A virtuális gép létrehozásakor határozza meg a létrehozott hálózati adaptert `--nics` . Válassza ki a [Linux-gyorsított hálózatkezelésben](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)felsorolt méretet és eloszlást. 
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a UbuntuLTS-lemezképpel és egy olyan mérettel, amely támogatja a gyorsított hálózatkezelést (*Standard_DS4_v2*):
 
@@ -192,7 +191,7 @@ A virtuális gép létrehozása után a rendszer a következő példában szerep
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>Annak ellenőrzése, hogy engedélyezve van-e a gyorsított hálózat
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje `<your-public-ip-address>` le a értéket a létrehozott virtuális géphez hozzárendelt nyilvános IP-címhez, és cserélje le az *azureuser* -t, ha `--admin-username` a virtuális gép létrehozásakor más értéket használt.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le a értéket a `<your-public-ip-address>` létrehozott virtuális géphez hozzárendelt nyilvános IP-címhez, és cserélje le az *azureuser* -t, ha `--admin-username` a virtuális gép létrehozásakor más értéket használt.
 
 ```bash
 ssh azureuser@<your-public-ip-address>
@@ -206,7 +205,7 @@ A bash rendszerhéjból írja be `uname -r` és erősítse meg, hogy a kernel ve
 * **CentOS**: 7.4.20171206
 
 
-Győződjön meg arról, hogy a Mellanox VF eszköz elérhető a virtuális `lspci` géphez a paranccsal. A visszaadott kimenet a következő kimenethez hasonló:
+Győződjön meg arról, hogy a Mellanox VF eszköz elérhető a virtuális géphez a `lspci` paranccsal. A visszaadott kimenet a következő kimenethez hasonló:
 
 ```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
@@ -217,7 +216,7 @@ Győződjön meg arról, hogy a Mellanox VF eszköz elérhető a virtuális `lsp
 0001:00:02.0 Ethernet controller: Mellanox Technologies MT27500/MT27520 Family [ConnectX-3/ConnectX-3 Pro Virtual Function]
 ```
 
-A (z) `ethtool -S eth0 | grep vf_` parancs futtatásával keressen tevékenységeket a VF (Virtual Function) szolgáltatásban. Ha a következő mintához hasonló kimenetet kap, a gyorsított hálózatkezelés engedélyezve és működik.
+A (z) parancs futtatásával keressen tevékenységeket a VF (Virtual Function) szolgáltatásban `ethtool -S eth0 | grep vf_` . Ha a következő mintához hasonló kimenetet kap, a gyorsított hálózatkezelés engedélyezve és működik.
 
 ```output
 vf_rx_packets: 992956

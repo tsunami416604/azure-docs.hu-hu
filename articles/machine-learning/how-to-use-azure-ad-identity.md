@@ -8,18 +8,17 @@ ms.author: trbye
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: f997aef59e91bed325b84af855a84f43cd639d83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 660cb14bd081dffbf3e9fb5f02b7690212915355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807485"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identitás használata az Azure Kubernetes Service-ben a Machine learning webszolgáltatással
 
-Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Directory (HRE) identitást az üzembe helyezett Machine learning-modellhez az Azure Kubernetes szolgáltatásban. A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) projekt lehetővé teszi az alkalmazások számára, hogy biztonságosan hozzáférjenek a HRE a [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -és Kubernetes primitívek használatával. Ez lehetővé teszi a webszolgáltatás számára az Azure-erőforrások biztonságos elérését anélkül, hogy hitelesítő adatokat kellene beágyaznia vagy a `score.py` tokeneket közvetlenül a szkriptben kezelnie. Ez a cikk bemutatja, hogyan hozhat létre és telepíthet Azure-identitást az Azure Kubernetes Service-fürtben, és hogyan rendelheti hozzá az identitást az üzembe helyezett webszolgáltatáshoz.
+Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Directory (HRE) identitást az üzembe helyezett Machine learning-modellhez az Azure Kubernetes szolgáltatásban. A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) projekt lehetővé teszi az alkalmazások számára, hogy biztonságosan hozzáférjenek a HRE a [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -és Kubernetes primitívek használatával. Ez lehetővé teszi a webszolgáltatás számára az Azure-erőforrások biztonságos elérését anélkül, hogy hitelesítő adatokat kellene beágyaznia vagy a tokeneket közvetlenül a `score.py` szkriptben kezelnie. Ez a cikk bemutatja, hogyan hozhat létre és telepíthet Azure-identitást az Azure Kubernetes Service-fürtben, és hogyan rendelheti hozzá az identitást az üzembe helyezett webszolgáltatáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +36,7 @@ Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Dir
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    Ez a parancs egy értéket ad `true` vissza, ha a RBAC engedélyezve van. Ez az érték határozza meg a következő lépésben használandó parancsot.
+    Ez a parancs egy értéket ad vissza, `true` Ha a RBAC engedélyezve van. Ez az érték határozza meg a következő lépésben használandó parancsot.
 
 1. Ha az [HRE Pod-identitást](https://github.com/Azure/aad-pod-identity#getting-started) az AK-fürtön szeretné telepíteni, használja a következő parancsok egyikét:
 
@@ -94,7 +93,7 @@ spec:
   Selector: <label value to match>
 ```
 
-Szerkessze az üzembe helyezést az Azure Identity választó címkéjének hozzáadásához. Lépjen a következő szakaszra `/spec/template/metadata/labels`. A `isazuremlapp: “true”`következő értékeket kell megjelennie:. Adja hozzá az alább látható HRE-Pod-Identity címkét.
+Szerkessze az üzembe helyezést az Azure Identity választó címkéjének hozzáadásához. Lépjen a következő szakaszra `/spec/template/metadata/labels` . A következő értékeket kell megjelennie: `isazuremlapp: “true”` . Adja hozzá az alább látható HRE-Pod-Identity címkét.
 
 ```azurecli-interactive
     kubectl edit deployment/<name of deployment> -n azureml-<name of workspace>
@@ -105,7 +104,7 @@ spec:
   template:
     metadata:
       labels:
-      - aadpodidbinding: "<value of Selector in AzureIdentityBinding>"
+       aadpodidbinding: "<value of Selector in AzureIdentityBinding>"
       ...
 ```
 
@@ -133,7 +132,7 @@ Modell üzembe helyezése az AK-fürtön. A `score.py` szkript olyan műveleteke
 
 ### <a name="access-key-vault-from-your-web-service"></a>Hozzáférés Key Vault a webszolgáltatásból
 
-Ha az Azure Identity olvasási hozzáférést kapott egy **Key Vaultban**található titkos kulcshoz, az `score.py` a következő kód használatával férhet hozzá.
+Ha az Azure Identity olvasási hozzáférést kapott egy **Key Vaultban**található titkos kulcshoz, az a `score.py` következő kód használatával férhet hozzá.
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,7 +152,7 @@ secret = secret_client.get_secret(my_secret_name)
 
 ### <a name="access-blob-from-your-web-service"></a>A blob elérése a webszolgáltatásból
 
-Ha az Azure Identity olvasási hozzáférést kapott a **Storage-blobon**belüli adatokhoz, az `score.py` a következő kód használatával férhet hozzá.
+Ha az Azure Identity olvasási hozzáférést kapott a **Storage-blobon**belüli adatokhoz, az a `score.py` következő kód használatával férhet hozzá.
 
 ```python
 from azure.identity import DefaultAzureCredential

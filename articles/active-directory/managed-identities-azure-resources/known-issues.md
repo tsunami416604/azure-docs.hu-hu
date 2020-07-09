@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714049"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855139"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714049"
 
 > [!NOTE]
 > Az Azure-erőforrások felügyelt identitásai a Managed Service Identity (MSI) szolgáltatás új neve.
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Hogyan találhatják meg a felügyelt identitással rendelkező erőforrásokat?
+
+A rendszerhez rendelt felügyelt identitással rendelkező erőforrások listáját az alábbi Azure CLI-paranccsal érheti el: 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>A felügyelt identitások rendelkeznek egy támogató alkalmazási objektummal?
+
+Nem. A felügyelt identitások és Azure AD alkalmazás regisztrációk nem egyeznek meg a címtárban. 
+
+Alkalmazásregisztrációk két összetevővel rendelkezik: egy Application Object + egy egyszerű szolgáltatásnév objektum. Az Azure-erőforrásokhoz tartozó felügyelt identitások csak a következő összetevők egyikével rendelkeznek: egyszerű szolgáltatásnév-objektum. 
+
+A felügyelt identitások nem rendelkeznek alkalmazás-objektummal a címtárban, ami általában az MS Graph alkalmazás engedélyeinek megadására szolgál. Ehelyett a felügyelt identitásokhoz tartozó MS Graph-engedélyeket közvetlenül az egyszerű szolgáltatásnak kell megadnia.  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Az Azure-erőforrások felügyelt identitásai működnek az Azure Cloud Services?
 
@@ -86,7 +104,7 @@ Ha a séma-exportálási funkció elérhetővé válik a felügyelt identitások
 
 Ha a virtuális gépet futó állapotba helyezi, az áthelyezés során továbbra is futni fog. Az áthelyezést követően azonban, ha a virtuális gép leáll és újraindul, nem fog elindulni. Ez a probléma azért fordul elő, mert a virtuális gép nem frissíti az Azure-erőforrások identitásához tartozó felügyelt identitásokra mutató hivatkozást, és továbbra is a régi erőforráscsoporthoz mutat.
 
-**Workaround** 
+**Áthidaló megoldás** 
  
 Indítson el egy frissítést a virtuális gépen, hogy helyes értékeket kapjon az Azure-erőforrások felügyelt identitásai számára. A virtuális gép tulajdonságainak módosításával frissítheti az Azure-erőforrások identitásához tartozó felügyelt identitásokra mutató hivatkozást. Beállíthat például egy új címke értéket a virtuális gépen a következő paranccsal:
 
@@ -114,6 +132,8 @@ Megkerülő megoldás a felügyelt identitások számára egy másik könyvtárb
 
  - A rendszerhez rendelt felügyelt identitások esetében: letiltás és újbóli engedélyezés. 
  - A felhasználóhoz rendelt felügyelt identitások esetében: törölje, hozza létre újra, majd csatolja újra a szükséges erőforrásokhoz (például virtuális gépekhez)
+
+További információ: Azure- [előfizetés átvitele egy másik Azure ad-címtárba (előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Felhasználó által hozzárendelt felügyelt identitás áthelyezése egy másik erőforráscsoporthoz vagy előfizetésbe
 

@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208399"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Számítási feladatok elemzése az Azure szinapszis Analytics szolgáltatásban
 
-Technikák a szinapszis SQL-munkaterhelések elemzéséhez az Azure szinapszis Analyticsben.
+Technikák a szinapszis SQL-munkaterhelések elemzéséhez az Azure szinapszis Analyticsben. 
 
 ## <a name="resource-classes"></a>Erőforrásosztályok
 
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-A számítási feladatok felügyeleti szerepkörei a `sys.database_principals`használatával tekinthetők meg.
+A számítási feladatok felügyeleti szerepkörei a használatával tekinthetők meg `sys.database_principals` .
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -65,7 +65,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 
 A szinapszis SQL a következő várakozási típusokkal rendelkezik:
 
-* **LocalQueriesConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszeren kívüli lekérdezések. A DMV-lekérdezések és a rendszerfüggvények, például `SELECT @@VERSION` a helyi lekérdezések példái.
+* **LocalQueriesConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszeren kívüli lekérdezések. A DMV-lekérdezések és a rendszerfüggvények, például a `SELECT @@VERSION` helyi lekérdezések példái.
 * **UserConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszerben található lekérdezések. A végfelhasználói táblákra irányuló lekérdezések olyan példákat mutatnak be, amelyek ezt az erőforrástípust használják.
 * **DmsConcurrencyResourceType**: megvárja az adatáthelyezési műveletek eredményét.
 * **BackupConcurrencyResourceType**: Ez a várakozás azt jelzi, hogy egy adatbázis biztonsági mentése folyamatban van. Az erőforrástípus maximális értéke 1. Ha egy időben több biztonsági mentést is kértek, a többi üzenetsor. Általánosságban elmondható, hogy az egymást követő Pillanatképek közül legalább 10 percet ajánlunk.
@@ -126,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-Azt is megteheti `sys.dm_pdw_resource_waits` , hogy a DMV kiszámítja, hogy hány párhuzamossági tárolóhelyet adtak meg.
+Azt is megteheti, `sys.dm_pdw_resource_waits` hogy a DMV kiszámítja, hogy hány párhuzamossági tárolóhelyet adtak meg.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele a SZINAPSZIS SQL-ben](sql-data-warehouse-overview-manage-security.md). Ha többet szeretne megtudni arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, tekintse meg az [indexek újraépítése a szegmens minőségének javítása érdekében című szakaszt](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele a SZINAPSZIS SQL-ben](sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [az indexek újraépítése a szegmensek minőségének javítása érdekében](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

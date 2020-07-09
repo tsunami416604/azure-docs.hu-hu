@@ -1,24 +1,21 @@
 ---
-title: Kapcsolódás a Knowledge Store-hoz (előzetes verzió) Power BI
+title: Kapcsolódás a Power BIsal rendelkező Knowledge Store-hoz
 titleSuffix: Azure Cognitive Search
-description: Egy Azure Cognitive Search Knowledge Store (előzetes verzió) összekötése az elemzéshez és a feltáráshoz Power BI.
+description: Az Azure Cognitive Search Knowledge Store összekapcsolásával elemzést és feltárást Power BI.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/30/2020
+ms.openlocfilehash: 438d8cbc4bf03fa9e03d0d2e1920522768ba9127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565336"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
-
-> [!IMPORTANT] 
-> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és hogyan deríthető fel a Power Query használatával a Power BI Desktop alkalmazásban. A sablonokkal gyorsabban elsajátíthatja az első lépéseket, vagy létrehozhat egy teljesen új irányítópultot. Ebből a rövid videóból megtudhatja, hogyan bővítheti az adatait az Azure Cognitive Search és az Power BI együttes használatával.
 

@@ -2,24 +2,15 @@
 title: A Azure Service Bus Queues használata PHP-vel
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre PHP-alkalmazásokat egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához.
 services: service-bus-messaging
-documentationcenter: php
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760691"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341125"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Gyors útmutató: Service Bus Queues használata PHP-vel
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -54,7 +45,7 @@ Az Service Bus üzenetsor API-k használatához tegye a következőket:
 1. Hivatkozzon az automatikus betöltő fájlra a [require_once][require_once] utasítás használatával.
 2. Hivatkozzon az esetlegesen használt osztályokra.
 
-Az alábbi példa azt mutatja be, hogyan lehet felvenni az automatikus betöltő fájlt `ServicesBuilder` , és hivatkozni az osztályra.
+Az alábbi példa azt mutatja be, hogyan lehet felvenni az automatikus betöltő fájlt, és hivatkozni az `ServicesBuilder` osztályra.
 
 > [!NOTE]
 > Ez a példa (és a cikkben szereplő további példák) feltételezi, hogy telepítette az Azure-hoz készült PHP ügyféloldali kódtárakat a zeneszerző használatával. Ha manuálisan vagy PEAR-csomagként telepítette a kódtárakat, a **WindowsAzure. php** automatikus betöltő fájlra kell hivatkoznia.
@@ -75,14 +66,14 @@ Service Bus-ügyfél létrehozásához a következő formátumban kell érvénye
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Ahol `Endpoint` általában a formátuma `[yourNamespace].servicebus.windows.net`.
+Ahol `Endpoint` általában a formátuma `[yourNamespace].servicebus.windows.net` .
 
-Bármely Azure-szolgáltatásbeli ügyfél létrehozásához a `ServicesBuilder` osztályt kell használnia. A következőket teheti:
+Bármely Azure-szolgáltatásbeli ügyfél létrehozásához a osztályt kell használnia `ServicesBuilder` . A következőket teheti:
 
 * Adja át közvetlenül a kapcsolódási karakterláncot.
 * A **CloudConfigurationManager (CCM)** segítségével több külső forrást is megvizsgálhat a kapcsolódási karakterlánchoz:
   * Alapértelmezés szerint egy külső forrás – környezeti változók támogatásával jár.
-  * Új forrásokat az `ConnectionStringSource` osztály kibővítésével adhat hozzá
+  * Új forrásokat az osztály kibővítésével adhat hozzá `ConnectionStringSource`
 
 Az itt ismertetett példák esetében a kapcsolati sztringet közvetlenül továbbítjuk.
 
@@ -97,9 +88,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
-Service Bus várólistákhoz a `ServiceBusRestProxy` osztályon keresztül végezhet felügyeleti műveleteket. Egy `ServiceBusRestProxy` objektum a `ServicesBuilder::createServiceBusService` gyári metódussal lett létrehozva egy megfelelő kapcsolati karakterlánccal, amely magában foglalja a jogkivonat-engedélyeket a kezeléséhez.
+Service Bus várólistákhoz a osztályon keresztül végezhet felügyeleti műveleteket `ServiceBusRestProxy` . Egy `ServiceBusRestProxy` objektum a `ServicesBuilder::createServiceBusService` gyári metódussal lett létrehozva egy megfelelő kapcsolati karakterlánccal, amely magában foglalja a jogkivonat-engedélyeket a kezeléséhez.
 
-Az alábbi `ServiceBusRestProxy` példa bemutatja, hogyan hozhat létre és hívhat `ServiceBusRestProxy->createQueue` meg egy, a `myqueue` `MySBNamespace` szolgáltatási névtéren belül elnevezett üzenetsor létrehozását:
+Az alábbi példa bemutatja, hogyan `ServiceBusRestProxy` hozhat létre és hívhat meg egy, a `ServiceBusRestProxy->createQueue` `myqueue` szolgáltatási névtéren belül elnevezett üzenetsor létrehozását `MySBNamespace` :
 
 ```php
 require_once 'vendor/autoload.php';
@@ -128,12 +119,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Az `listQueues` `ServiceBusRestProxy` objektumok metódusával ellenőrizhető, hogy egy adott névvel rendelkező várólista már létezik-e egy névtéren belül.
+> Az `listQueues` objektumok metódusával ellenőrizhető, `ServiceBusRestProxy` hogy egy adott névvel rendelkező várólista már létezik-e egy névtéren belül.
 > 
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja `ServiceBusRestProxy->sendQueueMessage` a metódust. A következő kód bemutatja, hogyan küldhet üzenetet a `myqueue` korábban a `MySBNamespace` szolgáltatási névtéren belül létrehozott várólistára.
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `ServiceBusRestProxy->sendQueueMessage` metódust. A következő kód bemutatja, hogyan küldhet üzenetet a `myqueue` korábban a `MySBNamespace` szolgáltatási névtéren belül létrehozott várólistára.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -173,7 +164,7 @@ Az üzenetek várólistából való fogadásának legjobb módja egy `ServiceBus
 
 A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód használatakor a fogadás egy egylépéses művelet; Ez azt jelenti, hogy amikor a Service Bus olvasási kérést kap egy várólistában lévő üzenethez, az üzenetet felhasználva jelöli meg, és visszaadja az alkalmazásnak. A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód a legegyszerűbb modell, és az olyan forgatókönyvekben működik a legjobban, ha az alkalmazás működését nem zavarja, hogy hiba esetén nem dolgoz fel üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus a rendszer felhasználja az üzenetet, amikor az alkalmazás újraindul, és újrakezdi az üzenetek felhasználását, az összeomlás előtt kimaradt az üzenetből.
 
-Az alapértelmezett [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) módban egy üzenet fogadása kétlépcsős művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor Service Bus kap egy kérést, a rendszer megkeresi a következő felhasználandó üzenetet, zárolja, hogy megakadályozza a többi fogyasztótól a fogadást, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja azt a későbbi feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a kapott üzenet átadásával `ServiceBusRestProxy->deleteMessage`. Ha Service Bus látja a `deleteMessage` hívást, az üzenetet a rendszer felhasználja, és eltávolítja a várólistából.
+Az alapértelmezett [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) módban egy üzenet fogadása kétlépcsős művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor Service Bus kap egy kérést, a rendszer megkeresi a következő felhasználandó üzenetet, zárolja, hogy megakadályozza a többi fogyasztótól a fogadást, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja azt a későbbi feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a kapott üzenet átadásával `ServiceBusRestProxy->deleteMessage` . Ha Service Bus látja a `deleteMessage` hívást, az üzenetet a rendszer felhasználja, és eltávolítja a várólistából.
 
 Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel egy üzenetet a [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) mód használatával (az alapértelmezett mód).
 
@@ -217,11 +208,11 @@ catch(ServiceException $e){
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
 
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor a `unlockMessage` metódust meghívhatja a kapott üzeneten (a `deleteMessage` metódus helyett). Ez azt eredményezi, hogy Service Bus a várólistán belüli üzenet zárolását, és elérhetővé teszi azt újra, akár egyazon alkalmazás, akár egy másik alkalmazás.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor a metódust meghívhatja a `unlockMessage` kapott üzeneten (a `deleteMessage` metódus helyett). Ez azt eredményezi, hogy Service Bus a várólistán belüli üzenet zárolását, és elérhetővé teszi azt újra, akár egyazon alkalmazás, akár egy másik alkalmazás.
 
 A várólistán lévő üzenethez is van egy időkorlát társítva, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenetet, és elérhetővé teszi azt újra.
 
-Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, `deleteMessage` de a kérelem kiadása előtt, akkor az üzenet az újraindításkor visszakerül az alkalmazásba. Ezt gyakran nevezik *legalább egyszer* feldolgozásra; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni a duplikált feldolgozást, akkor további logikát adhat hozzá az alkalmazásokhoz az ismétlődő üzenetek kézbesítésének kezeléséhez. Ez gyakran az üzenet `getMessageId` metódusának használatával érhető el, amely állandó marad a kézbesítési kísérletek között.
+Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, de a `deleteMessage` kérelem kiadása előtt, akkor az üzenet az újraindításkor visszakerül az alkalmazásba. Ezt gyakran nevezik *legalább egyszer* feldolgozásra; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni a duplikált feldolgozást, akkor további logikát adhat hozzá az alkalmazásokhoz az ismétlődő üzenetek kézbesítésének kezeléséhez. Ez gyakran az `getMessageId` üzenet metódusának használatával érhető el, amely állandó marad a kézbesítési kísérletek között.
 
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 

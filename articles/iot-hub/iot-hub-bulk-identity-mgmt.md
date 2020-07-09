@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417939"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub-eszközidentitások tömeges importálása vagy exportálása
 
@@ -27,8 +26,6 @@ Az importálási és exportálási műveletek olyan *feladatok* kontextusában l
 A **RegistryManager** osztály a **ExportDevicesAsync** és a **ImportDevicesAsync** metódusokat tartalmazza, amelyek a **feladatok** keretrendszerét használják. Ezek a módszerek lehetővé teszik az IoT hub összes azonosítójának beállításjegyzékének teljes körű exportálását, importálását és szinkronizálását.
 
 Ebből a témakörből megtudhatja, hogyan végezheti el a **RegistryManager** osztály és a **feladat** rendszerét az IoT hub azonosító-beállításjegyzékbe irányuló és onnan érkező eszközök tömeges importálására és exportálására. Az Azure IoT Hub Device Provisioning Service használatával az emberi beavatkozás nélkül is engedélyezheti a nulla érintéses, igény szerinti üzembe helyezést egy vagy több IoT-hubhoz. További információt a [kiépítési szolgáltatás dokumentációjában](/azure/iot-dps)talál.
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 
@@ -135,7 +132,7 @@ while(true)
 }
 ```
 
-A művelet a megadott blob-tárolóban lévő kimenetét a **Devices. txt**nevű blokk-blobként tárolja. A kimeneti adatokat JSON-szerializált eszköz tartalmazza, és soronként egy eszköz van.
+A művelet a megadott blob-tárolóban lévő kimenetét a **devices.txt**nevű blokk-blobként tárolja. A kimeneti adatokat JSON-szerializált eszköz tartalmazza, és soronként egy eszköz van.
 
 A következő példa a kimeneti adatokat mutatja be:
 
@@ -221,7 +218,7 @@ A **RegistryManager** osztály **ImportDevicesAsync** metódusa lehetővé teszi
 
 A **ImportDevicesAsync** metódus két paramétert vesz igénybe:
 
-* Egy olyan *karakterlánc* , amely egy [Azure Storage](../storage/index.yml) blob-tároló URI-ját tartalmazza a feladathoz *bemenetként* való használatra. Az URI azonosítónak tartalmaznia kell egy olyan SAS-jogkivonatot, amely olvasási hozzáférést biztosít a tárolóhoz. Ennek a tárolónak tartalmaznia kell egy " **Devices. txt** " nevű blobot, amely tartalmazza az azonosító beállításjegyzékbe importálandó szerializált eszköz adatait. Az importálási adatoknak ugyanabban a JSON-formátumban kell tartalmazniuk az eszköz adatait, amelyet a **ExportImportDevice** -feladathoz használ a **Devices. txt** blob létrehozásakor. Az SAS-tokennek tartalmaznia kell a következő engedélyeket:
+* Egy olyan *karakterlánc* , amely egy [Azure Storage](../storage/index.yml) blob-tároló URI-ját tartalmazza a feladathoz *bemenetként* való használatra. Az URI azonosítónak tartalmaznia kell egy olyan SAS-jogkivonatot, amely olvasási hozzáférést biztosít a tárolóhoz. Ennek a tárolónak tartalmaznia kell egy **devices.txt** nevű blobot, amely az azonosító beállításjegyzékbe importálandó szerializált eszköz adatait tartalmazza. Az importálási adatoknak ugyanabban a JSON-formátumban kell tartalmazniuk az eszköz adatait, amelyet a **ExportImportDevice** -feladathoz használ, amikor létrehoz egy **devices.txt** blobot. Az SAS-tokennek tartalmaznia kell a következő engedélyeket:
 
    ```csharp
    SharedAccessBlobPermissions.Read
@@ -263,7 +260,7 @@ Ha az importálási fájl kettős metaadatokat tartalmaz, akkor ez a metaadatok 
 
 Az eszközök importálási folyamatának vezérléséhez használja az összes eszköz szerializálási adatkészletének opcionális **importMode** tulajdonságát. A **importMode** tulajdonság a következő beállításokkal rendelkezik:
 
-| importMode | Leírás |
+| importMode | Description |
 | --- | --- |
 | **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
 | **létrehozása** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |

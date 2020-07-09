@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2bc9bb8b79ca0a6f59e6c771109cf4d102cdd78e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 198ab9505c550ad5bf8dc75211864a562b45979f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553658"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
 
@@ -94,7 +94,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| Paraméter | Description  |
+| Paraméter | Leírás  |
 |-----------|--------------|
 | `code` | Az alkalmazás által kért authorization_code. Az alkalmazás az engedélyezési kóddal kérhet hozzáférési jogkivonatot a célként megadott erőforráshoz. Authorization_codes rövid életűek, jellemzően körülbelül 10 perc múlva lejárnak. |
 | `state` | Ha a kérelemben szerepel egy State paraméter, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a kérelemben és a válaszban szereplő állapot értékek azonosak-e. |
@@ -111,7 +111,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| Paraméter | Description  |
+| Paraméter | Leírás  |
 |----------|------------------|
 | `error`  | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra. |
 | `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hitelesítési hiba kiváltó okának azonosításában. |
@@ -180,7 +180,7 @@ A jogkivonat sikeres válasza A következőképpen fog kinézni:
 }
 ```
 
-| Paraméter     | Description   |
+| Paraméter     | Leírás   |
 |---------------|------------------------------|
 | `access_token`  | A kért hozzáférési jogkivonat. Az alkalmazás használhatja ezt a tokent a biztonságos erőforráshoz, például egy webes API-hoz való hitelesítéshez.  |
 | `token_type`    | Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos |
@@ -206,7 +206,7 @@ A következőhöz hasonló hibaüzenetek jelennek meg:
 }
 ```
 
-| Paraméter         | Description    |
+| Paraméter         | Leírás    |
 |-------------------|----------------|
 | `error`       | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra. |
 | `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hitelesítési hiba kiváltó okának azonosításában. |
@@ -274,7 +274,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Próbálja meg végrehajtani a kérelmet postán! (Ne felejtse el lecserélni a `refresh_token` ) [ ![ Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Paraméter     |                | Description        |
+| Paraméter     | Típus           | Description        |
 |---------------|----------------|--------------------|
 | `tenant`        | kötelező     | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | kötelező    | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
@@ -298,7 +298,7 @@ A jogkivonat sikeres válasza A következőképpen fog kinézni:
 }
 ```
 
-| Paraméter     | Description         |
+| Paraméter     | Leírás         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | A kért hozzáférési jogkivonat. Az alkalmazás használhatja ezt a tokent a biztonságos erőforráshoz, például egy webes API-hoz való hitelesítéshez. |
 | `token_type`    | Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos |
@@ -322,7 +322,7 @@ A jogkivonat sikeres válasza A következőképpen fog kinézni:
 }
 ```
 
-| Paraméter         | Description                                                                                        |
+| Paraméter         | Leírás                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
 | `error`           | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra. |
 | `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hitelesítési hiba kiváltó okának azonosításában.           |

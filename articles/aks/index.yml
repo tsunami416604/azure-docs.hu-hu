@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 03/25/2020
-  ms.openlocfilehash: 4829b95fb62a33406248f503e646238e116cb413
-  ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+  ms.openlocfilehash: 44ef4686cd2213230479711060e3f0558981bc18
+  ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/07/2020
-  ms.locfileid: "80803279"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84976472"
 landingContent:
 - title: Tudnivalók az Azure Kubernetes Service-ről (AKS-ről)
   linkLists:
@@ -48,18 +48,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager-sablon
       url: kubernetes-walkthrough-rm-template.md
-- title: Alkalmazások fejlesztése és hibakeresése az AKS-sel és a Dev Spaceszel
+- title: Alkalmazások fejlesztése és hibakeresése Helyi folyamat és Kubernetes használatával
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: Java
-      url: ../dev-spaces/quickstart-java.md
-    - text: .NET és VS Code
-      url: ../dev-spaces/quickstart-netcore.md
-    - text: .NET és Visual Studio
-      url: ../dev-spaces/quickstart-netcore-visualstudio.md
-    - text: Node.js
-      url: ../dev-spaces/quickstart-nodejs.md
+    - text: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
+      url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+    - text: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
+      url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
 - title: Alkalmazások telepítése, kezelése és frissítése
   linkLists:
   - linkListType: tutorial

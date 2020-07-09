@@ -3,12 +3,12 @@ title: Azure Functions zip-leküldéses üzembe helyezése
 description: A Azure Functions közzétételéhez használja a kudu üzembe helyezési szolgáltatás. zip fájljának központi telepítési létesítményeit.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833052"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions üzembe helyezése ZIP-fájlokkal
 
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan helyezheti üzembe a Function app Project-fájljait 
 
 A Azure Functions a Azure App Service által biztosított folyamatos üzembe helyezési és integrációs lehetőségek teljes skáláját ismerteti. További információ: [Azure functions folyamatos üzembe helyezése](functions-continuous-deployment.md).
 
-A fejlesztés felgyorsításához könnyebben telepítheti a Function app Project-fájljait közvetlenül egy. zip-fájlból. A. zip telepítési API egy. zip fájl tartalmát veszi fel, és kibontja a tartalmat `wwwroot` a Function alkalmazás mappájába. Ez a. zip-fájl központi telepítése ugyanazt a kudu szolgáltatást használja, amely a folyamatos integráción alapuló központi telepítéseket is magában foglalja, beleértve a következőket:
+A fejlesztés felgyorsításához könnyebben telepítheti a Function app Project-fájljait közvetlenül egy. zip-fájlból. A. zip telepítési API egy. zip fájl tartalmát veszi fel, és kibontja a tartalmat a `wwwroot` Function alkalmazás mappájába. Ez a. zip-fájl központi telepítése ugyanazt a kudu szolgáltatást használja, amely a folyamatos integráción alapuló központi telepítéseket is magában foglalja, beleértve a következőket:
 
 + A korábbi központi telepítések során hagyott fájlok törlése.
 + Központi telepítés testreszabása, beleértve az üzembe helyezési parancsfájlok futtatását is.
@@ -34,7 +34,7 @@ A leküldéses telepítéshez használt. zip fájlnak tartalmaznia kell a függv
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-A Function alkalmazás tartalmazza a `wwwroot` címtárban található összes fájlt és mappát. A. zip fájlok központi telepítése magában foglalja a `wwwroot` könyvtár tartalmát, a könyvtárat azonban nem. C#-beli függvénytár-projekt telepítésekor a lefordított függvénytár-fájlokat és a függőségeket is bele kell `bin` foglalni a. zip-csomagban található almappába.
+A Function alkalmazás tartalmazza a címtárban található összes fájlt és mappát `wwwroot` . A. zip fájlok központi telepítése magában foglalja a `wwwroot` könyvtár tartalmát, a könyvtárat azonban nem. C#-beli függvénytár-projekt telepítésekor a lefordított függvénytár-fájlokat és a függőségeket is bele kell foglalni a `bin` . zip-csomagban található almappába.
 
 ## <a name="download-your-function-app-files"></a>A Function alkalmazás fájljainak letöltése
 
@@ -54,9 +54,11 @@ Előfordulhat azonban, hogy a Azure Portal szerkesztője segítségével hozta l
 
 + **REST API-k használata:**
 
-    A következő üzembe helyezési API-val letöltheti a fájlokat `<function_app>` a projektből: 
+    A következő üzembe helyezési API-val letöltheti a fájlokat a `<function_app>` projektből: 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
     A `/site/wwwroot/` használatával biztosíthatja, hogy a zip-fájl csak a Function app Project-fájlokat tartalmazza, és ne a teljes helyet. Ha még nem jelentkezett be az Azure-ba, a rendszer erre kéri.  
 
@@ -64,9 +66,9 @@ A. zip fájlt egy GitHub-adattárból is letöltheti. Amikor a GitHub-tárházat
 
 ## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Üzembe helyezés az Azure CLI-vel
 
-A leküldéses telepítést az Azure CLI használatával aktiválhatja. Az az [functionapp Deployment Source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) paranccsal leküldheti a. zip-fájl üzembe helyezését a Function alkalmazásba. A parancs használatához az Azure CLI 2.0.21 vagy újabb verzióját kell használnia. Ha szeretné megtekinteni, hogy milyen Azure CLI-verziót `az --version` használ, használja az parancsot.
+A leküldéses telepítést az Azure CLI használatával aktiválhatja. Az az [functionapp Deployment Source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) paranccsal leküldheti a. zip-fájl üzembe helyezését a Function alkalmazásba. A parancs használatához az Azure CLI 2.0.21 vagy újabb verzióját kell használnia. Ha szeretné megtekinteni, hogy milyen Azure CLI-verziót használ, használja az `az --version` parancsot.
 
-A következő parancsban cserélje le a `<zip_file_path>` helyőrzőt a. zip fájl helyének elérési útjára. Továbbá cserélje le `<app_name>` a függvényt a Function alkalmazás egyedi nevére, és `<resource_group>` cserélje le az erőforráscsoport nevére.
+A következő parancsban cserélje le a `<zip_file_path>` helyőrzőt a. zip fájl helyének elérési útjára. Továbbá cserélje le a `<app_name>` függvényt a Function alkalmazás egyedi nevére, és cserélje le az `<resource_group>` erőforráscsoport nevére.
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \
@@ -83,7 +85,7 @@ Amikor az Azure CLI-t használja a helyi számítógépen, `<zip_file_path>` a a
 
 Dönthet úgy is, hogy a függvényeket közvetlenül a központi telepítési csomag fájljából futtatja. Ez a módszer kihagyja a telepítési lépést a fájlok a csomagból a `wwwroot` Function alkalmazás könyvtárába való másolásával. Ehelyett a csomagfájl a functions futtatókörnyezettel van csatlakoztatva, és a `wwwroot` könyvtár tartalma írásvédett lesz.  
 
-A zip-telepítés integrálható ezzel a szolgáltatással, amelyet a Function app beállítás `WEBSITE_RUN_FROM_PACKAGE` értékének beállításával engedélyezhet `1`. További információkért lásd: [függvények futtatása központi telepítési csomagból](run-functions-from-deployment-package.md).
+A zip-telepítés integrálható ezzel a szolgáltatással, amelyet a Function app beállítás `WEBSITE_RUN_FROM_PACKAGE` értékének beállításával engedélyezhet `1` . További információkért lásd: [függvények futtatása központi telepítési csomagból](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

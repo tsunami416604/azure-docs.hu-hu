@@ -1,18 +1,16 @@
 ---
 title: A partner Center Analytics összegző irányítópultja a kereskedelmi piactéren
 description: Megtudhatja, hogyan érheti el a Piactéri tevékenységeket összefoglaló összesített adatok gráfokat, trendeket és értékeket a partner Center összegző irányítópultján.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 39b963fe40d26d498e69b8fc9bbb62ce514bef39
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738319"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109144"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Az Összegzés irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -113,7 +111,7 @@ A **Orders by munkaállomásonkénti/site** diagram alapján megjelenő rendelé
 
 Az **ingyenes próbaverziós SaaS Orders trend** diagram az ingyenes próbaverziós SaaS-ajánlatok megrendeléseinek trendjét mutatja be egy 30 napos próbaidőszakon belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).

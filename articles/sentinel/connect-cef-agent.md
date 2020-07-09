@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731661"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298990"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -36,7 +36,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A kijelölt linuxos gépen emelt szintű engedélyekkel (sudo) kell rendelkeznie.
-- A Linux gépen telepítve kell lennie a pythonnak.<br>A parancs `python -version` használatával keresse meg a következőt:.
+- A Linux gépen telepítve kell lennie a pythonnak.<br>A parancs használatával keresse meg a következőt: `python -version` .
 - A Linux rendszerű számítógép nem csatlakoztatható Azure-munkaterületekhez az Log Analytics-ügynök telepítése előtt.
 
 ## <a name="run-the-deployment-script"></a>Az üzembe helyezési parancsfájl futtatása
@@ -69,13 +69,13 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 
 1. **A syslog démon konfigurálása:**
 
-    1. Megnyitja a 514-es portot a TCP-kommunikációhoz `/etc/rsyslog.conf`a syslog konfigurációs fájljának használatával.
+    1. Megnyitja a 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájljának használatával `/etc/rsyslog.conf` .
 
-    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP- `security-config-omsagent.conf` porton. ehhez egy `/etc/rsyslog.d/`speciális konfigurációs fájlt kell beszúrnia a syslog démon könyvtárába.
+    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP-porton. ehhez egy speciális konfigurációs fájlt kell beszúrnia `security-config-omsagent.conf` a syslog démon könyvtárába `/etc/rsyslog.d/` .
 
-        A `security-config-omsagent.conf` fájl tartalma:
+        A fájl tartalma `security-config-omsagent.conf` :
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. **A syslog démon újraindítása**
@@ -101,11 +101,11 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 
 1. **A syslog démon konfigurálása:**
 
-    1. Megnyitja a 514-es portot a TCP-kommunikációhoz `/etc/syslog-ng/syslog-ng.conf`a syslog konfigurációs fájljának használatával.
+    1. Megnyitja a 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájljának használatával `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP- `security-config-omsagent.conf` porton. ehhez egy `/etc/syslog-ng/conf.d/`speciális konfigurációs fájlt kell beszúrnia a syslog démon könyvtárába.
+    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP-porton. ehhez egy speciális konfigurációs fájlt kell beszúrnia `security-config-omsagent.conf` a syslog démon könyvtárába `/etc/syslog-ng/conf.d/` .
 
-        A `security-config-omsagent.conf` fájl tartalma:
+        A fájl tartalma `security-config-omsagent.conf` :
 
             filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};

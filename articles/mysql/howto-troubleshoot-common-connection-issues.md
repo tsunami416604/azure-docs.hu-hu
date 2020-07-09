@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100889"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Az Azure Database for MySQL csatlakoztatási hibáinak elhárítása
@@ -48,7 +48,7 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MySQLhoz, �
 
 * Kiszolgáló tűzfal-konfigurációja: Ellenőrizze, hogy a Azure Database for MySQL kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
 * Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások neveit, például a MySQL-t egyes tűzfalakon.
-* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva * \@* , például a kiszolgáló neve a (z) vagy a felhasználónévben lévő kiszolgálónév-utótagnál.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy a felhasználónévben lévő * \@ kiszolgálónév* -utótagnál.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 

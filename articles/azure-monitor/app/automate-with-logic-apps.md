@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan automatizálható a megismételhető folyamatok
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79473166"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights folyamatok automatizálása Logic Apps használatával
@@ -118,7 +117,7 @@ Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően műk�
       ![Office 365 e-mail konfigurációs képernyő](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7. lépés: a logikai alkalmazás mentése és tesztelése
-* A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+* Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 Megvárhatja, hogy a trigger futtassa a logikai alkalmazást, vagy azonnal futtathatja a logikai alkalmazást a **Futtatás**lehetőség kiválasztásával.
 

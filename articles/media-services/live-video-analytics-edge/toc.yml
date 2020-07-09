@@ -1,0 +1,80 @@
+- name: Az IoT Edge-en futó Live Video Analytics (előzetes verzió) dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók az IoT Edge-en futó Live Video Analyticsről
+      href: overview.md
+    - name: Terminológia
+      href: terminology.md
+    - name: Újdonságok
+      items:
+        - name: Kibocsátási megjegyzések
+          href: release-notes.md
+- name: Rövid útmutatók
+  items:
+    - name: Első lépések – Live Video Analytics az IoT Edge-en
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: 'Mozgás észlelése, videó rögzítése a Media Servicesbe'
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: Mozgás észlelése és események kibocsátása
+      href: detect-motion-emit-events-quickstart.md
+    - name: 'Mozgás észlelése, videó rögzítése a peremeszközökön'
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Live Video Analytics futtatása saját modellel
+      href: use-your-model-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: Folyamatos videófelvétel
+      href: continuous-video-recording-tutorial.md
+    - name: Eseményalapú videófelvétel
+      href: event-based-video-recording-tutorial.md
+    - name: Többnapos felvételek lejátszása
+      href: playback-multi-day-recordings-tutorial.md
+- name: Példák
+  items:
+    - name: Az IoT Edge-en futó Live Video Analytics C#-mintái
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: Alapelvek
+  items:
+    - name: Médiagrafikon
+      href: media-graph-concept.md
+    - name: Videófelvétel
+      href: video-recording-concept.md
+    - name: Videó lejátszása
+      href: video-playback-concept.md
+    - name: Forgatókönyvek
+      items:
+        - name: Folyamatos videófelvétel
+          href: continuous-video-recording-concept.md
+        - name: Eseményalapú videófelvétel
+          href: event-based-video-recording-concept.md
+        - name: Live Video Analytics videófelvétel nélkül
+          href: analyze-live-video-concept.md
+- name: Útmutatók
+  items:
+    - name: Egyéni Azure Resource Manager-szerepkör létrehozása
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: Üzembe helyezés IoT Edge-eszközön
+      href: deploy-iot-edge-device.md
+    - name: Monitorozás és naplózás
+      href: monitoring-logging.md
+    - name: Felvétel lejátszása
+      href: playback-recordings-how-to.md
+    - name: Felvételkészítési szabályzat kezelése
+      href: manage-recording-policy-how-to.md
+    - name: Élő videó elemzése tetszőleges mesterséges intelligenciával
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: Hibaelhárítás
+      href: troubleshoot-how-to.md
+- name: Referencia
+  items:
+    - name: Közvetlen metódusok
+      href: direct-methods.md
+    - name: Ikermodul konfigurációs sémája
+      href: module-twin-configuration-schema.md
+    - name: Kvóták és korlátozások
+      href: quotas-limitations.md
+    - name: Gyakori kérdések
+      href: faq.md
+    - name: Termelési készenlét és ajánlott eljárások
+      href: production-readiness.md

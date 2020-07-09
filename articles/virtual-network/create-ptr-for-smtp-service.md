@@ -8,17 +8,17 @@ author: genlin
 manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8ffadb8d54db0c2a99dc12e45b5990155a0505e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201696"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135059"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Névkeresési zónák konfigurálása SMTP-szalagcímek vizsgálatához
 
@@ -38,10 +38,12 @@ A PTR-rekordok Microsoft tulajdonú zónákban való konfigurálásához haszná
 
 A PTR-rekordok konfigurálásakor győződjön meg arról, hogy az előfizetés tulajdonosa az IP-cím és a fordított FQDN. Ha olyan fordított FQDN-t próbál beállítani, amely nem tartozik az előfizetéshez, a következő hibaüzenet jelenik meg:
 
-    Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
-                        
-    1) A ReverseFqdn az előfizetés alá tartozó nyilvános IP-erőforrások teljes tartománynevére illeszkedik.
-    2) A ReverseFqdn az előfizetés alá tartozó nyilvános IP-erőforrások teljes tartománynevét (CName rekordok láncán keresztül) oldja fel.
-    3) A szolgáltatás az előfizetés alatt egy statikus nyilvános IP-erőforrás IP-címére (CName és A rekordok láncán keresztül) oldódik fel.
+```output
+Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
+                    
+1) ReverseFqdn matches fqdn of any public ip resource under the subscription;
+2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subscription;
+3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
+```
 
 Ha az SMTP-szalagcímet manuálisan módosítja az alapértelmezett fordított FQDN-ként, akkor a távoli levelezési kiszolgáló továbbra is meghiúsulhat, mert várható, hogy az SMTP-szalagcím gazdagépe megfelel a tartomány MX-rekordjának.

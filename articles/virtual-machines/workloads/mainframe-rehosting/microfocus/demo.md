@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80411071"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>A Micro Focus CICS BankDemo beállítása a Micro Focus Enterprise Developer 4,0 Azure-beli fejlesztéséhez
@@ -98,7 +98,7 @@ Egyes vállalati kiszolgálói folyamatoknak be kell jelentkezniük SQL Server �
 
 2. A bal oldalon bontsa ki a **biztonsági** mappát, és válassza a **bejelentkezések**lehetőséget.
 
-3. Válassza az **NT\\Authority rendszer** lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
+3. Válassza az **NT Authority \\ rendszer** lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
 
 4. Válassza ki a **kiszolgálói szerepköröket** , és jelölje be a **sysadmin**elemet
 
@@ -106,7 +106,7 @@ Egyes vállalati kiszolgálói folyamatoknak be kell jelentkezniük SQL Server �
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>A BankDemo-adatbázis és az összes objektum létrehozása
 
-1. Nyissa meg a **Windows Intézőt** , és navigáljon a **C\\:\\felhasználók\\\\\\\\\\\\\\\\nyilvános\\dokumentumok Micro Focus Enterprise Developer Samples mainframe CICS DotNet BankDemo SQL**.
+1. Nyissa meg a **Windows Intézőt** , és navigáljon a **C: \\ felhasználók \\ nyilvános \\ dokumentumok \\ Micro Focus \\ Enterprise Developer \\ Samples \\ mainframe \\ CICS \\ DotNet \\ BankDemo \\ SQL**.
 
 2. Másolja a **BankDemoCreateAll. SQL** fájl tartalmát a vágólapra.
 
@@ -132,7 +132,7 @@ A lekérdezésnek hibák nélkül kell futnia. Ha elkészült, a BankDemo alkalm
 
 1. Nyissa meg a Visual studiót, és jelentkezzen be.
 
-2. A **fájl** menüben válassza a **projekt/megoldás megnyitása**lehetőséget, navigáljon a **C:\\\\Users\\Public\\Documents\\Micro Focus\\Enterprise\\Developer\\Samples mainframe CICS\\DotNet\\BankDemo**, és válassza ki a **SLN** fájlt.
+2. A **fájl** menüben válassza a **projekt/megoldás megnyitása**lehetőséget, navigáljon a **C: \\ Users \\ Public \\ Documents \\ Micro Focus \\ Enterprise Developer \\ Samples \\ mainframe \\ CICS \\ DotNet \\ BankDemo**, és válassza ki a **SLN** fájlt.
 
 3. Szánjon némi időt az objektumok vizsgálatára. A COBOL programok Megoldáskezelőban jelennek meg a CBL bővítménnyel, valamint a CopyBooks (CPY) és a JCL.
 
@@ -154,7 +154,7 @@ A lekérdezésnek hibák nélkül kell futnia. Ha elkészült, a BankDemo alkalm
 
 1. Nyisson meg egy vállalati fejlesztői parancssort (64 bites) rendszergazdaként.
 
-2. Navigáljon a **(z)\\%\\Public%\\Documents\\Micro\\Focus\\Enterprise\\Developer\\Samples mainframe CICS DotNet BankDemo**.
+2. Navigáljon a **(z)% Public% \\ Documents \\ Micro Focus \\ Enterprise Developer \\ Samples \\ mainframe \\ CICS \\ DotNet \\ BankDemo**.
 
 3. A parancssorban futtassa a **bankdemodbdeploy** , és adja meg a paramétert a telepítendő adatbázishoz, például:
 
@@ -163,7 +163,7 @@ A lekérdezésnek hibák nélkül kell futnia. Ha elkészült, a BankDemo alkalm
     ```
 
 > [!NOTE]
-> Ügyeljen arra, hogy a perjel (/) ne legyen visszafelé perjel (\\). Ez a szkript egy ideig fut.
+> Ügyeljen arra, hogy a perjel (/) ne legyen visszafelé perjel ( \\ ). Ez a szkript egy ideig fut.
 
 ![Felügyelet: Enterprise Developer parancssori ablak](media/06-demo-cmd.png)
 
@@ -171,7 +171,7 @@ A lekérdezésnek hibák nélkül kell futnia. Ha elkészült, a BankDemo alkalm
 
 1. Nyissa meg az **Enterprise Server for .net felügyeleti** felhasználói felületét.
 
-2. Az MMC beépülő modul elindításához a Windows **Start** menüjében válassza a **Micro Focus Enterprise fejlesztői \> konfiguráció \> Enterprise Server for .net admin**elemet. (A Windows Server esetében válassza a **Micro Focus Enterprise \> Developer Enterprise Server for .net admin**lehetőséget).
+2. Az MMC beépülő modul elindításához a Windows **Start** menüjében válassza a **Micro Focus Enterprise fejlesztői \> konfiguráció \> Enterprise Server for .net admin**elemet. (A Windows Server esetében válassza a **Micro Focus Enterprise Developer \> Enterprise Server for .net admin**lehetőséget).
 
 3. Bontsa ki a **régiók** tárolót a bal oldali ablaktáblán, majd kattintson a jobb gombbal a **CICS**elemre.
 
@@ -181,7 +181,7 @@ A lekérdezésnek hibák nélkül kell futnia. Ha elkészült, a BankDemo alkalm
 
      ![Régió definiálása párbeszédpanel](media/07-demo-cics.png)
 
-6. A régiók közötti adatbázis régió-definíciós fájljának kiválasztásához keresse **meg\_a\_régió bankdemo db. config** fájlt a **\\C:\\Users\\\\Public\\Documents\\Micro\\Focus\\Enterprise\\Developer\\Samples mainframe CICS DotNet bankdemo**.
+6. A régiók közötti adatbázis régió-definíciós fájljának kiválasztásához keresse meg a ** \_ bankdemo régió \_db.config** **C: \\ felhasználók \\ nyilvános \\ dokumentumok \\ Micro Focus \\ Enterprise Developer \\ Samples \\ mainframe \\ CICS \\ DotNet \\ bankdemo**.
 
      ![Régió megadása – régió neve: BANKDEMO](media/08-demo-cics.png)
 
@@ -195,13 +195,13 @@ A lekérdezésnek hibák nélkül kell futnia. Ha elkészült, a BankDemo alkalm
 
 3. A legördülő listában válassza ki az **adatbázis-szolgáltatás példánya**elemet. Ez lesz a helyi gép SQLEXPRESS.
 
-4. Válassza ki a példányt az **XA erőforrás-definíciók (\\számítógépnév SQLExpress)** tárolóból, és kattintson a **Hozzáadás**gombra.
+4. Válassza ki a példányt az **XA erőforrás-definíciók (számítógépnév \\ SQLExpress)** tárolóból, és kattintson a **Hozzáadás**gombra.
 
 5. Válassza ki az **adatbázis XA-erőforrás-definícióját** , majd írja be a **BANKDEMO** **nevet** és a **régiót**.
 
      ![Új adatbázis XA erőforrás-definíciós képernyő](media/09-demo-xa.png)
 
-6. Kattintson a három pontra (**...**) a kapcsolódási karakterlánc varázsló létrehozásához. A **kiszolgálónév**mezőbe írja be a **(helyi\\) SQLExpress**. A **bejelentkezéshez**válassza a **Windows-hitelesítés**lehetőséget. Az adatbázis neve mezőbe írja be a következőt: **BANKDEMO**
+6. Kattintson a három pontra (**...**) a kapcsolódási karakterlánc varázsló létrehozásához. A **kiszolgálónév**mezőbe írja be a **(helyi) \\ SQLExpress**. A **bejelentkezéshez**válassza a **Windows-hitelesítés**lehetőséget. Az adatbázis neve mezőbe írja be a következőt: **BANKDEMO**
 
      ![A kapcsolatok karakterláncának szerkesztése képernyő](media/10-demo-string.png)
 
@@ -230,7 +230,7 @@ Hozzon létre egy figyelőt a BankDemo alkalmazást elérő TN3270-munkamenetek 
 
 1. A bal oldali ablaktáblán bontsa ki a **konfigurációs szerkesztők** csomópontot, és válassza a **figyelő**lehetőséget.
 
-2. Kattintson a **fájl megnyitása** ikonra, és válassza ki a **seelistener. exe. config** fájlt. Ezt a fájlt a rendszer minden alkalommal betölti, amikor a vállalati kiszolgáló elindul.
+2. Kattintson a **fájl megnyitása** ikonra, és válassza ki a **seelistener.exe.config** fájlt. Ezt a fájlt a rendszer minden alkalommal betölti, amikor a vállalati kiszolgáló elindul.
 
 3. Figyelje meg a két korábban definiált régiót (ESDEMO és JCLDEMO).
 
@@ -265,8 +265,8 @@ A végső teendő a 3270-munkamenet konfigurálása a rumba, a 3270 Emulator has
 
 6. A User ID (felhasználói azonosító) mezőbe írja be a **B0001** és a jelszót, és írjon be bármit. Megnyílik az első képernyő BANK20.
 
-![Nagyszámítógépes megjelenítés](media/14-demo.png)
-![– az üdvözlőképernyőn látható nagyszámítógépek megjelenítése – rumba-alrendszer bemutató képernyő](media/15-demo.png)
+![Nagyszámítógépes megjelenítés – az üdvözlőképernyőn látható ](media/14-demo.png)
+ ![ nagyszámítógépek megjelenítése – rumba-alrendszer bemutató képernyő](media/15-demo.png)
 
 Gratulálunk! Mostantól egy CICS alkalmazást futtat az Azure-ban a Micro Focus Enterprise Server használatával.
 
@@ -274,6 +274,6 @@ Gratulálunk! Mostantól egy CICS alkalmazást futtat az Azure-ban a Micro Focus
 
 - [Vállalati kiszolgáló futtatása Docker-tárolókban az Azure-ban](run-enterprise-server-container.md)
 - [Nagyszámítógép-áttelepítés – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4b61df52df45cb2ee01407390ce3e34d86350ef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b57a7c04db0e601b90bc19059df70e63795784bf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189249"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036950"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
@@ -41,7 +40,7 @@ A Azure Time Series Insights az üzleti modellt is alkalmazza. További informá
 Time Series Insights előnézeti környezet kiépítésekor két Azure-erőforrást hoz létre:
 
 * Azure Time Series Insights előnézeti környezet
-* Azure Storage általános célú v1-fiók
+* Azure Storage-fiók
 
 A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyezni a meleg tárolót. A meleg tárolás többplatformos lekérdezési élményt biztosít. Ha engedélyezve van, meg kell adnia egy 7 és 30 nap közötti megőrzési időtartamot. A meleg tárolási megőrzési időszakon belül végrehajtott lekérdezések általában gyorsabb válaszidőt biztosítanak. Ha egy lekérdezés a meleg tároló megőrzési időtartamára terjed ki, a rendszer a hűtőházi tárolóból kézbesíti.
 
@@ -52,7 +51,7 @@ A melegen tárolt lekérdezések ingyenesek, míg a hűtőházi tárolással kap
 
 A kezdéshez három további elemre van szükség:
 
-* Egy [Idősorozat-modell](./time-series-insights-update-tsm.md)
+* Egy [Idősorozat-modell](./concepts-model-overview.md)
 * [Time Series Insightshoz csatlakoztatott eseményforrás](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * [Az eseményforrás](./time-series-insights-send-events.md) , amely a modellhez van rendelve, és érvényes JSON formátumú.
 
@@ -67,7 +66,7 @@ A kezdéshez három további elemre van szükség:
 > [!IMPORTANT]
 > Az idősorozat-azonosítókat *később nem lehet módosítani*. Győződjön meg róla, hogy a végső kiválasztás és az első használat előtt ellenőrizzen egyet.
 
-Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító](./time-series-insights-update-how-to-id.md) és a [tárolás és a bejövő](./time-series-insights-update-storage-ingress.md)adatok kiválasztásához.
+Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító és a betöltési szabályok kiválasztásához](./time-series-insights-update-how-to-id.md) . [Ingestion rules](concepts-json-flattening-escaping-rules.md)
 
 Az **időbélyeg** tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
 
@@ -78,7 +77,7 @@ Ha üresen hagyja, az esemény időbélyegzője az sorba helyezni időpontját h
 
 ## <a name="understand-the-time-series-model"></a>Az idősorozat-modell ismertetése
 
-Mostantól konfigurálhatja Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információ az új [Idősorozat-modellről](./time-series-insights-update-tsm.md).
+Mostantól konfigurálhatja Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információ az új [Idősorozat-modellről](./concepts-model-overview.md).
 
 A modell dinamikus, így bármikor létrehozható. A gyors kezdéshez hozza létre és töltse fel az adatoknak a Time Series Insightsba való kitolása előtt. A modell létrehozásához olvassa el [az idősorozat-modell használatát](./time-series-insights-update-how-to-tsm.md)ismertetőt.
 
@@ -100,5 +99,6 @@ További információ: [Shape Events](./time-series-insights-send-events.md#supp
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
-- További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.
-- Tudnivalók az [adatmodellezésről](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziójában.
+- További információ az [adatfeldolgozásról](./concepts-ingestion-overview.md).
+- Tekintse át az [adattárolásról](./concepts-storage.md) szóló cikket
+- Tudnivalók az [adatmodellezésről](./concepts-model-overview.md) a Time Series Insights előzetes verziójában.

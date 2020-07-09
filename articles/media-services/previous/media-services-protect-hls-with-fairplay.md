@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968765"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058248"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Az Apple FairPlay vagy a Microsoft PlayReady által védett HLS-tartalmak
 
@@ -65,15 +65,15 @@ A következő dolgokat kell beállítani Media Services kulcs kézbesítési old
 
       A következő lépések azt ismertetik, hogyan hozhatók elő a. pfx tanúsítványfájl a FairPlay:
 
-    1. Telepítse az OpenSSL https://slproweb.com/products/Win32OpenSSL.html-t a rendszerből.
+    1. Telepítse az OpenSSL-t a rendszerből https://slproweb.com/products/Win32OpenSSL.html .
 
         Lépjen arra a mappára, ahol a FairPlay-tanúsítvány és az Apple által szállított egyéb fájlok találhatók.
     2. Futtassa az alábbi parancsot a parancssorból. Ezzel átalakítja a. cer fájlt egy. PEM-fájlba.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509 – inform der – FairPlay. cer-out FairPlay-out. PEM
+        "C:\OpenSSL-Win32\bin\openssl.exe" x509 – tájékoztassa a der-in FairPlay. cer-out FairPlay-out. PEM
     3. Futtassa az alábbi parancsot a parancssorból. Ez átalakítja a. PEM fájlt egy. pfx fájlba a titkos kulccsal. A. pfx fájlhoz tartozó jelszót az OpenSSL kéri.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12/pfx-profil-export-out FairPlay-out. pfx-Inkey privatekey. PEM-in FairPlay-out. PEM-passin fájl: privatekey-PEM-pass. txt
+        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12/pfx-profil-export-out FairPlay-out. pfx-Inkey privatekey. PEM-in FairPlay-out. PEM-passin file:privatekey-pem-pass.txt
   * **Alkalmazás-tanúsítvány jelszava**: a. pfx fájl létrehozásához használt jelszó.
   * **Alkalmazás-tanúsítvány jelszava azonosító**: fel kell töltenie a jelszót, hasonlóan a más Media Services kulcsok feltöltéséhez. Használja az **ContentKeyType. FairPlayPfxPassword** Enum értéket az Media Services azonosító lekéréséhez. Ezt kell használniuk a Key Delivery Policy beállításban.
   * **IV**: Ez a 16 bájtos véletlenszerű érték. Meg kell egyeznie az eszköz kézbesítési házirendjének IV értékével. Létrehozta a IV-t, és mindkét helyen elhelyezi a következőket: az eszköz kézbesítési házirendje és a kulcs kézbesítési házirendje beállítás.
@@ -127,7 +127,7 @@ Az alábbi általános lépésekkel biztosíthatja az adategységek védelmét a
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>FairPlay használata a Player-alkalmazások általi kézbesítéssel
 A Player-alkalmazásokat az iOS SDK használatával fejlesztheti. A FairPlay-tartalom lejátszásához végre kell hajtania a License Exchange protokollt. Ezt a protokollt az Apple nem adja meg. Az egyes alkalmazásokban a kulcsok kézbesítésére vonatkozó kérések küldhetők. A Media Services FairPlay kulcs kézbesítési szolgáltatása arra vár, hogy a KOT a következő formában a www-Form-URL-ként kódolt üzenetként fog érkezni:
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player támogatja a FairPlay lejátszását. További információért tekintse meg [Azure Media Player dokumentációját](https://amp.azure.net/libs/amp/latest/docs/index.html) .
@@ -149,7 +149,7 @@ A következő szempontokat kell figyelembe venni:
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-1. Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+1. Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 2. Adja hozzá a következő elemeket az app.config fájlban megadott **appSettings** szakaszhoz:
 
     ```xml

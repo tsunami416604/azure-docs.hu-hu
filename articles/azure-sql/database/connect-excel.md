@@ -1,37 +1,37 @@
 ---
 title: Kapcsolódás Excellel
-description: Ismerje meg, hogyan csatlakoztatható a Microsoft Excel Azure SQL Databasehoz. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
+description: Megtudhatja, hogyan csatlakoztatható a Microsoft Excel egy adatbázishoz Azure SQL Database vagy az Azure SQL felügyelt példányában. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joseidz
-ms.author: craigg
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-ms.date: 02/12/2019
-ms.openlocfilehash: 08bf78e6cc548ed717d6bc57946067a16ec13e2b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267511"
 ---
-# <a name="connect-excel-to-azure-sql-database-and-create-a-report"></a>Az Excel összekötése Azure SQL Database és jelentés létrehozása
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Az Excel csatolása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz, és jelentés létrehozása
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Az Excel összekapcsolása az adatok Azure SQL Databaseával és importálásával, valamint táblázatok és diagramok létrehozása az adatbázis értékei alapján. Ebben az oktatóanyagban csatlakoztatjuk az Excelt az adatbázistáblához, elmentjük az adatokat tároló fájlt és az Excelre vonatkozó kapcsolatadatokat, és kimutatásdiagramot hozunk létre az adatbázis értékeiből.
+Az Excelt összekapcsolhatja egy adatbázissal, majd importálhatja az adatait, és létrehozhat táblákat és diagramokat az adatbázis értékei alapján. Ebben az oktatóanyagban csatlakoztatjuk az Excelt az adatbázistáblához, elmentjük az adatokat tároló fájlt és az Excelre vonatkozó kapcsolatadatokat, és kimutatásdiagramot hozunk létre az adatbázis értékeiből.
 
-A kezdéshez szüksége lesz egy SQL Databasera. Ha még nem rendelkezik ilyennel, tekintse meg a [Azure SQL Database létrehozása](single-database-create-quickstart.md) és a [kiszolgálói szintű IP-tűzfal létrehozása](firewall-create-server-level-portal-quickstart.md) című témakört, amely néhány perc alatt beolvas egy SQL Database a mintaadatok használatával.
+Az első lépések előtt létre kell hoznia egy adatbázist. Ha még nem rendelkezik ilyennel, tekintse meg az [adatbázis létrehozása a Azure SQL Database-ben](single-database-create-quickstart.md) és a [kiszolgálói szintű IP-tűzfal létrehozása](firewall-create-server-level-portal-quickstart.md) című témakört, amely néhány percen belül beolvashatja az adatbázist a mintaadatok használatával.
 
 Ebben a cikkben a mintaadatok importálása az Excel programba című cikkből származnak, de a saját adataival hasonló lépéseket is követheti.
 
 Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](https://products.office.com/) verziót vettük alapul.
 
-## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Az Excel összekötése egy SQL Database és az adatterhelés
+## <a name="connect-excel-and-load-data"></a>Az Excel és az adatterhelés összekötése
 
-1. Az Excel SQL Databasehoz való összekapcsolásához nyissa meg az Excelt, majd hozzon létre egy új munkafüzetet, vagy nyisson meg egy meglévő Excel-munkafüzetet.
+1. Az Excel SQL Database-adatbázishoz való összekapcsolásához nyissa meg az Excelt, majd hozzon létre egy új munkafüzetet, vagy nyisson meg egy meglévő Excel-munkafüzetet.
 2. A lap tetején lévő menüsorban válassza az **adatok** fület, válassza az **adatok lekérése**lehetőséget, válassza ki az Azure-ból lehetőséget, majd válasszon **a következőből: Azure SQL Database**.
 
    ![Adatforrás kiválasztása: az Excel csatolása SQL Databasehoz.](./media/connect-excel/excel_data_source.png)
@@ -53,7 +53,7 @@ Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Adatok importálása Excelbe és kimutatásdiagram létrehozása
 
-Most, hogy létrehozta a kapcsolódást, számos különböző lehetőség áll rendelkezésére az adattöltéshez. Az alábbi lépések például egy kimutatást hoznak létre a SQL Database található adatai alapján.
+Most, hogy létrehozta a kapcsolódást, számos különböző lehetőség áll rendelkezésére az adattöltéshez. Az alábbi lépések például egy kimutatást hoznak létre az adatbázisban található, SQL Databaseban található adatai alapján.
 
 1. Kövesse az előző szakaszban leírt lépéseket, de ezúttal, a **Betöltés helyett**válassza a **Betöltés** lehetőséget a **Betöltés legördülő listából** .
 2. Ezután válassza ki, hogyan szeretné megtekinteni ezeket az adatfájlokat a munkafüzetben. Válassza a **Kimutatásdiagram** lehetőséget. Az **Új munkalap**kiválasztásával új munkalapot is létrehozhat, vagy választhatja az **Adatok hozzáadása adatmodellhez** beállítást is. Az adatmodellekről további információkat az [Adatmodell létrehozása Excelben](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B) részben talál.
@@ -79,10 +79,10 @@ Ha véglegesen szeretné menteni a kapcsolat részleteit, létrehozhat egy. odc-
 
       ![Új kapcsolatok párbeszédpanel](./media/connect-excel/new-connection.png)
 
-2. Az **adatkapcsolatok varázslóban**adja meg a kiszolgáló nevét és a SQL Database hitelesítő adatait. Kattintson a **Tovább** gombra.
+2. Az **adatkapcsolatok varázslóban**adja meg a kiszolgáló nevét és a SQL Database hitelesítő adatait. Válassza a **Tovább** lehetőséget.
    1. Válassza ki azt az adatbázist, amely az adatait tartalmazza a legördülő listából.
    2. Válassza ki azt a táblát vagy nézetet, amelyre kíváncsi. VGetAllCategories választottunk.
-   3. Kattintson a **Tovább** gombra.
+   3. Válassza a **Tovább** lehetőséget.
 
       ![Adatkapcsolatok varázsló](./media/connect-excel/data-connection-wizard.png)
 
@@ -100,6 +100,6 @@ Ha véglegesen szeretné menteni a kapcsolat részleteit, létrehozhat egy. odc-
 
 ## <a name="next-steps"></a>További lépések
 
-* [Kapcsolódás az SQL Database adatbázishoz az SQL Server Management Studio használatával](connect-query-ssms.md) speciális lekérdezés és elemzés céljából.
+* Megtudhatja, hogyan [csatlakozhat és lekérdezéseket SQL Server Management Studio](connect-query-ssms.md) a speciális lekérdezésekhez és elemzésekhez.
 * Tudjon meg többet a [rugalmas készletek](elastic-pool-overview.md) előnyeiről.
-* [A háttérben SQL Database adatbázishoz kapcsolódó webalkalmazás létrehozása](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).
+* Megtudhatja, hogyan [hozhat létre olyan webalkalmazást, amely a háttérbeli Azure SQL Databasehoz csatlakozik](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).

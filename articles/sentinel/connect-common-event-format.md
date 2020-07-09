@@ -1,6 +1,6 @@
 ---
 title: CEF-adatkapcsolatok összekötése az Azure Sentinel előzetes verziójával | Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat a CEF-adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
+description: Csatlakoztasson egy olyan külső megoldást, amely Common Event Format (CEF) üzeneteket küld az Azure Sentinelnek egy Linux rendszerű géppel, proxyként.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563923"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 

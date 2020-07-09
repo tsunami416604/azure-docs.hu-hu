@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80283854"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Az alkalmazás-összetevők értelmezéséhez használja a Azure Monitor for VMs Térkép funkcióját
@@ -114,7 +114,7 @@ Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné m
 ![A virtuális gép térképének áttekintése](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->A virtuálisgép-méretezési csoport **példányok** nézetében egy adott példányhoz is elérheti a leképezést. A **Beállítások** szakaszban válassza a **példányok** > **bepillantást**.
+>A virtuálisgép-méretezési csoport **példányok** nézetében egy adott példányhoz is elérheti a leképezést. A **Beállítások** szakaszban válassza a **példányok**  >  **bepillantást**.
 
 ## <a name="view-a-map-from-azure-monitor"></a>Térkép megtekintése Azure Monitor
 

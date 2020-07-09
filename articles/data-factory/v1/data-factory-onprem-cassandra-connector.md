@@ -13,10 +13,9 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991501"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése helyszíni Cassandra-adatbázisból Azure Data Factory használatával
@@ -65,14 +64,14 @@ A következő táblázat a Cassandra társított szolgáltatáshoz tartozó JSON
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesCassandra** |Igen |
-| gazda |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesCassandra** |Yes |
+| gazda |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Yes |
 | port |A Cassandra-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem, alapértelmezett érték: 9042 |
-| authenticationType |Alapszintű vagy névtelen |Igen |
+| authenticationType |Alapszintű vagy névtelen |Yes |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
 | jelszó |A felhasználói fiók jelszavának megadása. |Igen, ha a authenticationType értéke alapszintű. |
-| Átjáró neve |A helyszíni Cassandra-adatbázishoz való kapcsolódáshoz használt átjáró neve. |Igen |
-| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Nem |
+| Átjáró neve |A helyszíni Cassandra-adatbázishoz való kapcsolódáshoz használt átjáró neve. |Yes |
+| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |No |
 
 >[!NOTE]
 >Jelenleg nem támogatott a Cassandra-hez való kapcsolódás a TLS használatával.
@@ -267,7 +266,7 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 | LOGIKAI |Logikai |
 | DECIMÁLIS |Decimal |
 | DUPLÁN |Double |
-| FLOAT |Egyirányú |
+| FLOAT |Egyszeres |
 | INET |Sztring |
 | INT |Int32 |
 | TEXT |Sztring |

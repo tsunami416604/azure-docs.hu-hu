@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3839efecc1f5c645e8365ca6441731868412371e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976846"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Media Services fiók létrehozása a Azure Portal használatával
 
@@ -27,8 +27,6 @@ ms.locfileid: "78331502"
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Az Azure Portalon gyorsan létrehozhat egy Azure Media Services- (AMS-) fiókot. A fiókkal hozzáférhet olyan Media Services-szogáltatásokhoz, amelyekkel médiatartalmakat tárolhat, titkosíthat, kódolhat, kezelhet és továbbíthat az Azure környezetben. Amikor létrehoz egy Media Services fiókot, létrehoz egy társított Storage-fiókot is (vagy egy meglévőt használ). Egy Media Services-fiók törlésekor a kapcsolódó tárfiókban található blobok nem törlődnek.
-
-Az elsődleges tárfiók lehet általános célú v1 vagy általános célú v2. Az Azure Portal jelenleg csak a v1 kiválasztását támogatja, de hozzáadhatja a v2-t is, ha API-val vagy PowerShell-lel hoz létre fiókot. További információ a tárolási típusokról: [Tudnivalók az Azure Storage-fiókokról](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. Erősen ajánlott a tárfiókokat és a Media Services-fiókot azonos helyen használni a további késés és kimenő adatforgalomból fakadó költségek elkerülése végett.
 
@@ -46,7 +44,7 @@ Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További info
 A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson **az + erőforrás** > **létrehozása adathordozó** > -**Media Services**elemre.
+2. Kattintson **az + erőforrás létrehozása**  >  **adathordozó**-  >  **Media Services**elemre.
 3. A **CREATE MEDIA SERVICES ACCOUNT** (Media Services-fiók létrehozása) részben adja meg a kívánt értékeket.
 
    1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak számokat és kisbetűket tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.

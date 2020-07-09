@@ -7,25 +7,25 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3149d45f50c53209e3be6be6688c9c2ce8fb0555
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: d1a771cb13fcfa76449500ad71c67dcf7c446fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388442"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Egy Amazon-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>Alkalmazás létrehozása az Amazon fejlesztői konzolján
 
-Ha az Amazon-fiókot összevont identitás-szolgáltatóként szeretné használni Azure Active Directory B2C (Azure AD B2C), létre kell hoznia egy alkalmazást az [Amazon fejlesztői szolgáltatásaiban és technológiájában](https://developer.amazon.com). Ha még nem rendelkezik Amazon-fiókkal, regisztrálhat a következő címen: [https://www.amazon.com/](https://www.amazon.com/).
+Ha az Amazon-fiókot összevont identitás-szolgáltatóként szeretné használni Azure Active Directory B2C (Azure AD B2C), létre kell hoznia egy alkalmazást az [Amazon fejlesztői szolgáltatásaiban és technológiájában](https://developer.amazon.com). Ha még nem rendelkezik Amazon-fiókkal, regisztrálhat a következő címen: [https://www.amazon.com/](https://www.amazon.com/) .
 
 > [!NOTE]  
-> Használja a következő URL-címeket az alábbi **8** . `your-tenant-name` lépésben, a helyére pedig a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlő nagybetűvel van definiálva Azure AD B2Cban.
+> Használja a következő URL-címeket az alábbi **8. lépésben** , a helyére pedig `your-tenant-name` a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlő nagybetűvel van definiálva Azure AD B2Cban.
 > - Az **engedélyezett eredetek**mezőben adja meg a következőt:`https://your-tenant-name.b2clogin.com` 
 > - Az **engedélyezett visszatérési URL-címek**esetében adja meg a`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
 

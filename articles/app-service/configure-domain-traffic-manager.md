@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610241"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Egyéni tartománynév konfigurálása Azure App Serviceban Traffic Manager integrációval
@@ -19,7 +19,7 @@ ms.locfileid: "82610241"
 > [!NOTE]
 > Cloud Services esetében lásd: [Egyéni tartománynév konfigurálása Azure Cloud Service-hez](../cloud-services/cloud-services-custom-domain-name.md).
 
-Ha az [Azure Traffic Manager](/azure/traffic-manager/) használatával osztja el a forgalmat [Azure app Servicere](overview.md), a app Service alkalmazás a ** \<Traffic-Manager-Endpoint>. trafficmanager.net**használatával érhető el. Egy egyéni tartománynevet (például a www\.contoso.com) hozzárendelhet a app Service alkalmazással, hogy a felhasználók számára felismerhető tartománynevet adjon meg.
+Ha az [Azure Traffic Manager](/azure/traffic-manager/) használatával szeretné terheléselosztásra osztani a forgalmat [Azure App Service](overview.md), a App Service alkalmazás a ** \<traffic-manager-endpoint> . trafficmanager.net**használatával érhető el. Egy egyéni tartománynevet (például a www \. contoso.com) hozzárendelhet a app Service alkalmazással, hogy a felhasználók számára felismerhető tartománynevet adjon meg.
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egy egyéni tartománynevet egy olyan App Service-alkalmazással, amely integrálva van a [Traffic Managerba](../traffic-manager/traffic-manager-overview.md).
 
@@ -69,7 +69,7 @@ Miután a App Service alkalmazás támogatott árképzési szinten van, megjelen
 Míg az egyes tartományi szolgáltatók sajátosságai eltérőek, a [nem gyökérszintű egyéni tartománynevet](#what-about-root-domains) (például **www.contoso.com** *) az* alkalmazáshoz integrált Traffic Manager tartománynévre (**contoso.trafficmanager.net** *) képezi le.* 
 
 > [!NOTE]
-> Ha egy rekord már használatban van, és megelőző jelleggel kell kötnie az alkalmazásokat, létrehozhat egy további CNAME rekordot is. Ahhoz például, hogy megelőző jelleggel a kötést a **www\.contoso.com** az alkalmazáshoz, hozzon létre egy CNAME rekordot a **awverify. www** és a **contoso.trafficmanager.net**között. Ezután hozzáadhat "www\.contoso.com" az alkalmazáshoz anélkül, hogy módosítania kellene a "www" CNAME rekordot. További információ: [Active DNS-név Áttelepítésének Azure app Service](manage-custom-dns-migrate-domain.md).
+> Ha egy rekord már használatban van, és megelőző jelleggel kell kötnie az alkalmazásokat, létrehozhat egy további CNAME rekordot is. Ahhoz például, hogy megelőző jelleggel a kötést a **www \. contoso.com** az alkalmazáshoz, hozzon létre egy CNAME rekordot a **awverify. www** és a **contoso.trafficmanager.net**között. Ezután hozzáadhat "www \. contoso.com" az alkalmazáshoz anélkül, hogy módosítania kellene a "www" CNAME rekordot. További információ: [Active DNS-név Áttelepítésének Azure app Service](manage-custom-dns-migrate-domain.md).
 
 Miután befejezte a DNS-rekordok hozzáadását vagy módosítását a tartományi szolgáltatónál, mentse a módosításokat.
 
@@ -83,14 +83,14 @@ A magas rendelkezésre állási helyzetekben a hibatűrő DNS-telepítést Traff
 Miután a tartományneven lévő rekordok propagálása megtörtént, a böngésző segítségével ellenőrizze, hogy az Egyéni tartománynév feloldódik-e a App Service alkalmazásra.
 
 > [!NOTE]
-> Eltarthat egy ideig, amíg a CNAME-fájl propagálni tudja a DNS-rendszerét. Használhat olyan szolgáltatást, amellyel ellenőrizheti, <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> hogy a CNAME elérhető-e.
+> Eltarthat egy ideig, amíg a CNAME-fájl propagálni tudja a DNS-rendszerét. Használhat olyan szolgáltatást, amellyel <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> ellenőrizheti, hogy a CNAME elérhető-e.
 > 
 > 
 
 1. Ha a tartomány feloldása sikeres volt, vissza kell térnie az alkalmazás lapjára az [Azure Portalon](https://portal.azure.com)
-2. A bal oldali navigációs sávon válassza az **Egyéni tartományok** > **Add hostname (állomásnév hozzáadása**) lehetőséget.
+2. A bal oldali navigációs sávon válassza az **Egyéni tartományok**  >  **Add hostname (állomásnév hozzáadása**) lehetőséget.
 4. Írja be a korábban leképezett egyéni tartománynevet, és válassza az **Érvényesítés**lehetőséget.
-5. Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME (www\.example.com vagy bármely altartomány)** értékre van beállítva.
+5. Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME (www \. example.com vagy bármely altartomány)** értékre van beállítva.
 
 6. Mivel a App Service alkalmazás már integrálva van egy Traffic Manager-végponttal, a Traffic Manager tartománynevet a **CNAME-konfiguráció**területen kell látnia. Jelölje ki, majd kattintson az **egyéni tartomány hozzáadása**lehetőségre.
 

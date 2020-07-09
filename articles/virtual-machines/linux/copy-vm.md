@@ -8,10 +8,9 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792224"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Linux rendszerű virtuális gép másolatának létrehozása az Azure CLI és a Managed Disks használatával
@@ -115,7 +114,7 @@ Ha virtuális hálózati infrastruktúrát szeretne létrehozni a másolt virtu�
 
 Hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az-vm-create)paranccsal.
 
-A következő módon adhatja meg az operációsrendszer-lemezként használandó átmásolt felügyelt lemezt (`--attach-os-disk`):
+A következő módon adhatja meg az operációsrendszer-lemezként használandó átmásolt felügyelt lemezt ( `--attach-os-disk` ):
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

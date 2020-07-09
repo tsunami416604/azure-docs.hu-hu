@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554924"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
 
@@ -29,9 +29,9 @@ A helyszíni lábnyommal rendelkező szervezetek általában az eszközök kiép
 
 Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek az eszközök a helyszíni Active Directoryhoz csatlakoztatott és a Azure Active Directory regisztrált eszközök.
 
-|   | Hibrid Azure AD-csatlakozás |
+| Hibrid Azure AD-csatlakozás | Description |
 | --- | --- |
-| **Meghatározás** | Csatlakozott a helyszíni AD-hez és az Azure AD-hez, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
+| **Definíció** | Csatlakozott a helyszíni AD-hez és az Azure AD-hez, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
 | **Elsődleges célközönség** | Alkalmas a meglévő helyszíni AD-infrastruktúrával rendelkező hibrid szervezetek számára |
 |   | Egy szervezet összes felhasználójára érvényes |
 | **Az eszközök tulajdonjoga** | Szervezet |

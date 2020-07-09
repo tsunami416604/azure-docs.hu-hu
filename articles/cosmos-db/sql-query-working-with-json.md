@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
 ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83699121"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>JSON használata a Azure Cosmos DBban
@@ -275,6 +274,6 @@ Az aliasok nem használhatók olyan tulajdonság neveként, amely szóközt, spe
 
 ## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [WHERE záradék](sql-query-where.md)

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79249541"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Lapok az Azure API Management
@@ -227,7 +226,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |referenceCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
 |errorCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  

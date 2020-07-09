@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238901"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699617"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
@@ -69,7 +69,7 @@ Feladatátvételi teszt futtatásakor a következő történik:
 
 A következőképpen futtassa a feladatátvételi tesztet:
 
-1. A **Beállítások** > **replikált elemek**területen kattintson a virtuális gép > **+ feladatátvételi teszt**elemre.
+1. A **Beállítások**  >  **replikált elemek**területen kattintson a virtuális gép > **+ feladatátvételi teszt**elemre.
 2. Ehhez az oktatóanyaghoz válassza a **Legutóbb feldolgozott** helyreállítási pontot. Ez a lehetőség a virtuális gépet a rendelkezésre álló legújabb helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
 3. A **Feladatátvételi teszt** területen válassza ki, hogy az Azure virtuális gépek mely cél Azure-hálózathoz csatlakozzanak majd a feladatátvételt követően.
 4. A feladatátvételi művelet elindításához kattintson az **OK** gombra. A folyamat előrehaladásának megtekintéséhez kattintson a virtuális gépre, és nyissa meg a tulajdonságait. Azt is megteheti, hogy a **Feladatátvételi teszt** feladatra kattint a tároló neve > **Beállítások** > **Feladatok** >
@@ -87,6 +87,6 @@ Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH hasz
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Feladatátvétel és feladat-visszavétel futtatása VMWare virtuális](vmware-azure-tutorial-failover-failback.md)
-> gépeken feladatátvétel és feladat-visszavétel futtatása a[Hyper-V virtuális](hyper-v-azure-failover-failback-tutorial.md)
-> gépek számára feladatátvétel és feladat-visszavétel futtatása[fizikai gépek](physical-to-azure-failover-failback.md) esetén
+> [Feladatátvétel és feladat-visszavétel futtatása VMWare virtuális gépekhez](vmware-azure-tutorial-failover-failback.md) 
+>  [Feladatátvétel és feladat-visszavétel futtatása Hyper-V virtuális gépekhez](hyper-v-azure-failover-failback-tutorial.md) 
+>  [Feladatátvétel és feladat-visszavétel futtatása fizikai gépek esetén](physical-to-azure-failover-failback.md)

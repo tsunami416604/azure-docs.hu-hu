@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196191"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása
@@ -22,7 +22,7 @@ Ha nem ismeri az erőforrások sablon használatával történő központi telep
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version`parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-template"></a>Sablon létrehozása
 
@@ -65,7 +65,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
     }
     ```
 
-2. Mentse ezt a fájlt **OptOutTemplate. JSON** néven egy helyi mappába.
+2. Mentse ezt a fájlt **OptOutTemplate.jsként** egy helyi mappába.
 
 3. Illessze be a következő JSON-szintaxist a fájlba:
 
@@ -88,7 +88,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 
     ![Tároló tulajdonságai lap](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Mentse ezt a fájlt **OptOutParam. JSON** néven egy helyi mappába.
+5. Mentse ezt a fájlt **OptOutParam.jsként** egy helyi mappába.
 
 6. Készen áll a sablon üzembe helyezésére.
 

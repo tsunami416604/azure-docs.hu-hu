@@ -10,16 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 04/21/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81867450"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023914"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -80,7 +79,7 @@ A Privileged Identity Management a következő forgatókönyveket támogatja:
 
 A Privileged Identity Management és a dokumentációjának jobb megismeréséhez tekintse át a következő feltételeket.
 
-| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Leírás |
+| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Description |
 | --- | --- | --- |
 | támogatható | Típus | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
 | Active | Típus | Szerepkör-hozzárendelés, amely nem követeli meg, hogy a felhasználó bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal. |
@@ -100,7 +99,7 @@ A Privileged Identity Management és a dokumentációjának jobb megismeréséhe
 
 További információ a felhasználók licencéről: a [Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md)
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

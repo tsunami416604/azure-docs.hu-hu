@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536318"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
@@ -64,8 +64,8 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      | eventHubNamespaceName | A forrás-esemény központja névterét. |
      | eventHubName | A forrás-esemény hub neve. |
      | consumerGroupName | Annak a fogyasztói csoportnak a neve, amelyet a Time Series Insights szolgáltatás az Event hub adatainak beolvasásához használ majd. **Megjegyzés:** Az erőforrás-tartalom elkerüléséhez ezt a fogyasztói csoportot a Time Series Insights szolgáltatásnak kell elosztania, és nem kell más olvasókkal megosztania. |
-     | environmentName | A környezet neve. A név nem tartalmazhatja `<`a `>`következőket `%`: `&` `:` `\\`,,, `?`, `/`,,, és bármely vezérlő karaktert. Minden egyéb karakter engedélyezett.|
-     | eventSourceName | Az eseményforrás alárendelt erőforrásának neve. A név nem tartalmazhatja `<`a `>`következőket `%`: `&` `:` `\\`,,, `?`, `/`,,, és bármely vezérlő karaktert. Minden egyéb karakter engedélyezett. |
+     | environmentName | A környezet neve. A név nem tartalmazhatja a következőket:,,,,,, `<` `>` `%` `&` `:` `\\` `?` , `/` és bármely vezérlő karaktert. Minden egyéb karakter engedélyezett.|
+     | eventSourceName | Az eseményforrás alárendelt erőforrásának neve. A név nem tartalmazhatja a következőket:,,,,,, `<` `>` `%` `&` `:` `\\` `?` , `/` és bármely vezérlő karaktert. Minden egyéb karakter engedélyezett. |
 
     <div id="optional-parameters"></div>
 
@@ -140,7 +140,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       Get-AzSubscription
       ```
 
-    * Ez a parancs az elérhető Azure-előfizetések listáját adja vissza. A következő parancs futtatásával válasszon egy előfizetést az aktuális munkamenethez. Cserélje `<YourSubscriptionId>` le a helyére a használni kívánt Azure-előfizetés GUID azonosítóját:
+    * Ez a parancs az elérhető Azure-előfizetések listáját adja vissza. A következő parancs futtatásával válasszon egy előfizetést az aktuális munkamenethez. Cserélje le a helyére a `<YourSubscriptionId>` használni kívánt Azure-előfizetés GUID azonosítóját:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>

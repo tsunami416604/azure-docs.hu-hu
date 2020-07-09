@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452149"
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazás-csoportok bemutatása
@@ -184,7 +183,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 ```
 
-Ezzel a paranccsal a rendszer eltávolítja az alkalmazás-példány összes alkalmazás-kapacitási felügyeleti paraméterét. Ez magában foglalja a MinimumNodes, a MaximumNodes és az alkalmazás metrikáit, ha vannak ilyenek. A parancs hatása azonnali. A parancs végrehajtása után a fürterőforrás-kezelő az alkalmazások kezelésének alapértelmezett viselkedését használja. Az alkalmazás kapacitása paramétereit megadhatja `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`a használatával.
+Ezzel a paranccsal a rendszer eltávolítja az alkalmazás-példány összes alkalmazás-kapacitási felügyeleti paraméterét. Ez magában foglalja a MinimumNodes, a MaximumNodes és az alkalmazás metrikáit, ha vannak ilyenek. A parancs hatása azonnali. A parancs végrehajtása után a fürterőforrás-kezelő az alkalmazások kezelésének alapértelmezett viselkedését használja. Az alkalmazás kapacitása paramétereit megadhatja a használatával `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()` .
 
 ### <a name="restrictions-on-application-capacity"></a>Az alkalmazás kapacitására vonatkozó korlátozások
 Az alkalmazás-kapacitás paramétereinek számos korlátozása van, amelyeket figyelembe kell venni. Ha érvényesítési hibák történnek, a módosítások nem történnek meg.

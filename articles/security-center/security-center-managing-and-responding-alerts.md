@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769775"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 
@@ -58,21 +57,26 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 1. Az információk áttekintése után kattintson a megtámadott erőforrásra.
 
+    A biztonsági riasztás oldal bal oldali ablaktáblája a biztonsági riasztással kapcsolatos magas szintű információkat jeleníti meg: cím, súlyosság, állapot, tevékenység ideje, a gyanús tevékenység leírása és az érintett erőforrás. Az érintett erőforrás mellett az erőforráshoz tartozó Azure-címkék is szerepelnek. Ezek használatával következtetheti ki az erőforrás szervezeti környezetét a riasztás kivizsgálásakor.
+
+    A jobb oldali ablaktábla tartalmazza a riasztás **részletei** lapot, amely a riasztás további részleteit tartalmazza a probléma kivizsgálásához: IP-címek, fájlok, folyamatok és sok más.
+     
     ![Javaslatok a biztonsági riasztásokkal kapcsolatos teendők](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Az **általános információ** szakasz betekintést nyújt a biztonsági riasztás kiváltott részébe. Olyan információkat jelenít meg, mint például a cél erőforrás, a forrás IP-címe (ha van ilyen), ha a riasztás még aktív, és javaslatokat tesz a megoldására.  
+    A jobb oldali ablaktáblán is a **Take Action (művelet** ) lap jelenik meg. ezen a lapon további műveleteket végezhet a biztonsági riasztással kapcsolatban. Műveletek, például:
+    - *A fenyegetés enyhítése* – a biztonsági riasztás manuális szervizelési lépéseit nyújtja
+    - A *jövőbeli támadások megelőzése* – biztonsági ajánlásokat biztosít a támadási felület csökkentéséhez, a biztonsági helyzet növeléséhez, és ezáltal a jövőbeli támadások megelőzése érdekében
+    - *Automatizált válasz indítása* – lehetővé teszi, hogy a logikai alkalmazás a biztonsági riasztásra adott válaszként legyen aktiválva
+    - *Hasonló riasztások letiltása* – lehetővé teszi a hasonló tulajdonságokkal rendelkező jövőbeli riasztások mellőzését, ha a riasztás nem releváns a szervezet számára
 
-    > [!NOTE]
-    >Bizonyos esetekben a forrás IP-címe nem érhető el, néhány Windows biztonsági eseménynapló nem tartalmazza az IP-címet.
+    ![Művelet elvégzése lap](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. A Security Center által javasolt elhárítási lépések a biztonsági riasztástól függően eltérők lehetnek. Mindegyik riasztásnál kövesse ezeket. 
 
-    Bizonyos esetekben a biztonsági riasztások enyhítése érdekében előfordulhat, hogy más Azure-vezérlőket vagy-szolgáltatásokat kell használnia az ajánlott szervizelés megvalósításához. 
+
 
 ## <a name="see-also"></a>Lásd még
 
-Ebből a dokumentumból megismerte a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ebből a dokumentumból megtudhatta, hogyan tekintheti meg a biztonsági riasztásokat. A kapcsolódó anyagokkal kapcsolatban lásd a következő lapokat:
 
-- [A Microsoft Learn modul a Azure Security Center riasztási képességeinek használatáról a figyeléshez és a fenyegetések megválaszolásához](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Azure Security Center biztonsági riasztások](security-center-alerts-overview.md).
-* [Biztonsági incidensek kezelésével](security-center-incident.md)
+- [Riasztás-elnyomási szabályok konfigurálása](alerts-suppression-rules.md)
+- [A riasztásokra és javaslatokra adott válaszok automatizálása a munkafolyamat-automatizálással](workflow-automation.md)

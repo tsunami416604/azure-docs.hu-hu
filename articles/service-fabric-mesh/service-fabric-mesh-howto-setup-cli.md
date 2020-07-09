@@ -6,22 +6,21 @@ ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707951"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
 Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. Itt állíthatja be.
 
 A CLI három típusa használható, és az alábbi táblázatban láthatók.
 
-| CLI-modul | Cél környezet |  Leírás | 
+| CLI-modul | Cél környezet |  Description | 
 |---|---|---|
 | az Mesh | Azure Service Fabric Mesh | Az elsődleges CLI, amely lehetővé teszi az alkalmazások üzembe helyezését és az erőforrások kezelését az Azure Service Fabric Mesh-környezettel. 
 | sfctl | Helyi fürtök | Service Fabric parancssori felület, amely lehetővé teszi Service Fabric erőforrások üzembe helyezését és tesztelését helyi fürtökön.  
-| Maven parancssori felület | Helyi fürtök & Azure Service Fabric Mesh | Egy burkoló `az mesh` , `sfctl` amely lehetővé teszi a Java-fejlesztők számára, hogy ismerős parancssori felületet használjanak a helyi és az Azure-beli fejlesztési élményhez.  
+| Maven parancssori felület | Helyi fürtök & Azure Service Fabric Mesh | Egy burkoló, `az mesh` `sfctl` amely lehetővé teszi a Java-fejlesztők számára, hogy ismerős parancssori felületet használjanak a helyi és az Azure-beli fejlesztési élményhez.  
 
 Az előzetes verzióban az Azure Service Fabric Mesh parancssori felülete az Azure CLI bővítményeként van megírva. Telepítheti az Azure Cloud Shellbe vagy az Azure CLI helyileg telepített példányába. 
 
@@ -58,7 +57,7 @@ A Maven parancssori felület használatához a következőket kell telepíteni a
 
 A Service Fabric Maven parancssori felülete még előzetes verzióban érhető el. 
 
-Ha a Maven Java-alkalmazásban szeretné használni a Maven beépülő modult, adja hozzá a következő kódrészletet a Pom. xml fájlhoz:
+Ha a Maven Java-alkalmazásban szeretné használni a Maven beépülő modult, adja hozzá a következő kódrészletet a pom.xml fájlhoz:
 
 ```XML
 <project>

@@ -1,14 +1,14 @@
 ---
 title: A lekérdezésnyelv megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654454"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970450"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -17,16 +17,17 @@ Az Azure Resource Graph lekérdezési nyelve számos operátort és funkciót t�
 Ez a cikk az erőforrás-gráf által támogatott nyelvi összetevőket ismerteti:
 
 - [Resource Graph-táblák](#resource-graph-tables)
+- [Az erőforrás-gráf egyéni nyelvi elemei](#resource-graph-custom-language-elements)
 - [Támogatott KQL nyelvi elemek](#supported-kql-language-elements)
 - [Escape-karakterek](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph-táblák
 
-Az erőforrás-diagram több táblázatot is biztosít a Resource Manager-erőforrástípusok és azok tulajdonságairól tárolt adattároláshoz. Ezek a táblák a (z `join` ) és a (z `union` ) operátorokkal használhatók a kapcsolódó erőforrástípusok tulajdonságainak lekéréséhez. Itt látható az erőforrás-gráfban elérhető táblák listája:
+Az erőforrás-diagram több táblázatot is biztosít a Azure Resource Manager erőforrástípusok és tulajdonságaik által tárolt adattároláshoz. Ezek a táblák a (z `join` ) és a (z `union` ) operátorokkal használhatók a kapcsolódó erőforrástípusok tulajdonságainak lekéréséhez. Itt látható az erőforrás-gráfban elérhető táblák listája:
 
 |Resource Graph-táblák |Description |
 |---|---|
-|További források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
+|Erőforrások |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
 |ResourceContainers |A tartalmazza az előfizetést (előzetes verzióban `Microsoft.Resources/subscriptions` ) és az erőforráscsoport ( `Microsoft.Resources/subscriptions/resourcegroups` ) típusú erőforrásokat és az adattípusokat. |
 |AdvisorResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Advisor` . |
 |AlertsManagementResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.AlertsManagement` . |
@@ -62,6 +63,33 @@ Resources
 > [!NOTE]
 > Az eredmények a alkalmazással való korlátozásakor `join` `project` a által használt tulajdonságnak `join` szerepelnie kell a következő példában szereplő két tábla _subscriptionId_ `project` .
 
+## <a name="resource-graph-custom-language-elements"></a>Az erőforrás-gráf egyéni nyelvi elemei
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Megosztott lekérdezési szintaxis (előzetes verzió)
+
+Előzetes verzióként egy [megosztott lekérdezés](../tutorials/create-share-query.md) közvetlenül egy Resource Graph-lekérdezésben érhető el. Ez a forgatókönyv lehetővé teszi, hogy szabványos lekérdezéseket hozzon létre megosztott lekérdezésként, és újra felhasználhassa őket. Ha egy megosztott lekérdezést szeretne meghívni egy Erőforrásgrafikon-lekérdezésen belül, használja a `{{shared-query-uri}}` szintaxist. A megosztott lekérdezés URI-ja a lekérdezés **Beállítások** lapján található megosztott lekérdezés _erőforrás-azonosítója_ . Ebben a példában a megosztott lekérdezési URI-ja a következő: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` .
+Ez az URI az előfizetés, az erőforráscsoport és a megosztott lekérdezés teljes nevére mutat, amelyet egy másik lekérdezésben szeretnénk hivatkozni. Ez a lekérdezés ugyanaz, mint az [oktatóanyagban létrehozott: lekérdezés létrehozása és megosztása](../tutorials/create-share-query.md).
+
+> [!NOTE]
+> Megosztott lekérdezésként megosztott lekérdezésre hivatkozó lekérdezések nem menthetők.
+
+1. példa: csak a megosztott lekérdezés használata
+
+Az erőforrás-gráf lekérdezésének eredményei megegyeznek a megosztott lekérdezésben tárolt lekérdezéssel.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+2. példa: a megosztott lekérdezés belefoglalása egy nagyobb lekérdezés részeként
+
+A lekérdezés először a megosztott lekérdezést használja, majd a használatával `limit` tovább korlátozza az eredményeket.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
+
 ## <a name="supported-kql-language-elements"></a>Támogatott KQL nyelvi elemek
 
 Az erőforrás-gráf támogatja az összes KQL [adattípust](/azure/kusto/query/scalar-data-types/), [skaláris függvényt](/azure/kusto/query/scalarfunctions), [skaláris operátort](/azure/kusto/query/binoperators)és [összesítési függvényt](/azure/kusto/query/any-aggfunction). Az erőforrás-gráf bizonyos [táblázatos operátorokat](/azure/kusto/query/queries) támogat, amelyek némelyike eltérő viselkedéssel rendelkezik.
@@ -70,7 +98,7 @@ Az erőforrás-gráf támogatja az összes KQL [adattípust](/azure/kusto/query/
 
 Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-gráf adott mintákkal támogat:
 
-|KQL |Resource Graph-minta lekérdezése |Megjegyzések |
+|KQL |Resource Graph-minta lekérdezése |Jegyzetek |
 |---|---|---|
 |[száma](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
 |[különböző](/azure/kusto/query/distinctoperator) |[Egy adott alias különböző értékeinek megjelenítése](../samples/starter.md#distinct-alias-values) | |

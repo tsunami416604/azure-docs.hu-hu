@@ -5,16 +5,17 @@ description: Megtudhatja, hogyan exportálhat adatfeliratokat a Azure Machine Le
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: conceptual
+ms.subservice: core
+ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655765"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025726"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning adatkészlet létrehozása és feltárása címkékkel
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Azure Machine Learning-adatkészlet létrehozása és feltárása címkékkel (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan exportálhatja az adatfeliratokat egy Azure Machine Learning adatcímkéző projektből, és hogyan töltheti be azokat népszerű formátumba, például egy Panda dataframe az adatfeltáráshoz vagy egy Torchvision adatkészlethez a képátalakításhoz. 
 

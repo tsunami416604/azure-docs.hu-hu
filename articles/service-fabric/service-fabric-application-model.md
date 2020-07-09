@@ -3,12 +3,12 @@ title: Azure Service Fabric-alkalmazás modellje
 description: Alkalmazások és szolgáltatások modellezése és leírása az Azure Service Fabric alkalmazás-és szolgáltatás-jegyzékfájlok használatával.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75551879"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963733"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Alkalmazás modellezése Service Fabric
 Ez a cikk áttekintést nyújt az Azure Service Fabric alkalmazás modelljéről, valamint arról, hogyan határozhat meg egy alkalmazást és szolgáltatást a manifest Files használatával.
@@ -20,9 +20,9 @@ Az alkalmazások olyan összetevő-szolgáltatások gyűjteményei, amelyek egy 
 
 Az alkalmazás típusa egy alkalmazás kategorizálása, és egy csomag típusú szolgáltatásokból áll. A szolgáltatás típusa egy szolgáltatás kategorizálása. A kategorizálás különböző beállításokkal és konfigurációkkal rendelkezhet, de az alapvető funkciók változatlanok maradnak. A szolgáltatás példányai ugyanazon szolgáltatástípus különböző szolgáltatás-konfigurációs variációi.  
 
-Az alkalmazások és szolgáltatások osztályait (vagy "típusait") az XML-fájlok (az alkalmazás-jegyzékfájlok és a szolgáltatási jegyzékfájlok) írják le.  A jegyzékfájlok leírják az alkalmazásokat és a szolgáltatásokat, és azokat a sablonokat, amelyekkel a fürt rendszerkép-tárolójából lehet létrehozni alkalmazásokat.  A jegyzékfájlok részletesen szerepelnek az [alkalmazás-és szolgáltatás-jegyzékfájlokban](service-fabric-application-and-service-manifests.md). A ServiceManifest. XML és a ApplicationManifest. xml fájl sémájának definíciója a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*Service Fabric SDK-val és eszközökkel együtt települ. Az XML-sémát a [ServiceFabricServiceModel. XSD séma dokumentációjában](service-fabric-service-model-schema.md)dokumentálja.
+Az alkalmazások és szolgáltatások osztályait (vagy "típusait") az XML-fájlok (az alkalmazás-jegyzékfájlok és a szolgáltatási jegyzékfájlok) írják le.  A jegyzékfájlok leírják az alkalmazásokat és a szolgáltatásokat, és azokat a sablonokat, amelyekkel a fürt rendszerkép-tárolójából lehet létrehozni alkalmazásokat.  A jegyzékfájlok részletesen szerepelnek az [alkalmazás-és szolgáltatás-jegyzékfájlokban](service-fabric-application-and-service-manifests.md). A ServiceManifest.xml és ApplicationManifest.xml fájl sémájának definíciója telepítve van a Service Fabric SDK-val és a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*. Az XML-sémát a [ServiceFabricServiceModel. XSD séma dokumentációjában](service-fabric-service-model-schema.md)dokumentálja.
 
-A különböző alkalmazás-példányok kódja külön folyamatként fut, még akkor is, ha ugyanazon a Service Fabric csomóponton futtatja őket. Emellett az egyes alkalmazás-példányok életciklusa egymástól függetlenül kezelhető (például frissített). A következő ábra azt mutatja be, hogyan állnak az alkalmazások típusai a különböző típusú szolgáltatásokból, amelyek pedig kód-, konfigurációs és adatcsomagokból állnak. A diagram leegyszerűsítése érdekében csak a kód/konfiguráció/adatcsomagok `ServiceType4` jelennek meg, de mindegyik szolgáltatástípus tartalmaz néhányat vagy mindegyiket.
+A különböző alkalmazási példányok kódja külön folyamatként fut, még akkor is, ha ugyanazon a Service Fabric csomóponton futtatja őket. Emellett az egyes alkalmazás-példányok életciklusa egymástól függetlenül kezelhető (például frissített). A következő ábra azt mutatja be, hogyan állnak az alkalmazások típusai a különböző típusú szolgáltatásokból, amelyek pedig kód-, konfigurációs és adatcsomagokból állnak. A diagram leegyszerűsítése érdekében csak a kód/konfiguráció/adatcsomagok jelennek meg `ServiceType4` , de mindegyik szolgáltatástípus tartalmaz néhányat vagy mindegyiket.
 
 ![Service Fabric az alkalmazások típusai és a szolgáltatások típusai][cluster-imagestore-apptypes]
 
@@ -33,7 +33,7 @@ Az alábbi ábrán az alkalmazások és a szolgáltatási példányok, a partíc
 ![Partíciók és replikák egy szolgáltatáson belül][cluster-application-instances]
 
 > [!TIP]
-> A fürtben található alkalmazások elrendezését a http://&lt;yourclusteraddress&gt;: 19080/Explorerben elérhető Service Fabric Explorer eszköz használatával tekintheti meg. További információ: [a fürt megjelenítése a Service Fabric Explorersal](service-fabric-visualizing-your-cluster.md).
+> A fürtben található alkalmazások elrendezését a http:// &lt; yourclusteraddress &gt; : 19080/explorerben elérhető Service Fabric Explorer eszköz használatával tekintheti meg. További információ: [a fürt megjelenítése a Service Fabric Explorersal](service-fabric-visualizing-your-cluster.md).
 > 
 > 
 

@@ -6,14 +6,13 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628676"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway támogatja a több-bérlős háttérrendszer, például az App Service használatát
 
@@ -42,7 +41,7 @@ Ezzel a képességgel az ügyfelek megadhatják a HTTP-beállítások és az egy
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS-lezárás és végpontok közötti TLS több-bérlős szolgáltatásokkal
 
-A TLS-lezárás és a végpontok közötti TLS-titkosítás a több-bérlős szolgáltatások esetében is támogatott. Az Application Gateway TLS-lezárása esetén a TLS-tanúsítvány továbbra is szükséges az Application Gateway-figyelőhöz való hozzáadáshoz. A végpontok közötti TLS esetében azonban a megbízható Azure-szolgáltatások, például az Azure app Service Web Apps nem igénylik a háttérrendszer engedélyezését az Application gatewayben. Ezért nincs szükség hitelesítési tanúsítványok hozzáadására. 
+A TLS-lezárás és a végpontok közötti TLS-titkosítás a több-bérlős szolgáltatások esetében is támogatott. Az Application Gateway TLS-lezárása esetén a TLS-tanúsítvány továbbra is szükséges az Application Gateway-figyelőhöz való hozzáadáshoz. A végpontok közötti TLS esetében azonban a megbízható Azure-szolgáltatások, például az Azure app Service Web Apps nem igénylik a háttérrendszer használatát az Application gatewayben. Ezért nincs szükség hitelesítési tanúsítványok hozzáadására. 
 
 ![végpontok közötti TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

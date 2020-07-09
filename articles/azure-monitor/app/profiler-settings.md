@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188926"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
 
 ## <a name="updated-profiler-agent"></a>Frissített Profiler-ügynök
-Az trigger funkciói csak a Profiler-ügynök 2,6-es vagy újabb verziójával működnek. Ha Azure App Service futtat, akkor az ügynök automatikusan frissül. Megtekintheti, hogy az ügynök melyik verzióját futtatja, ha a webhely kudu URL-címét használja, és hozzáfűzi a \DiagnosticServices a végéhez, a következőhöz `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`hasonló módon:. A Application Insights Profiler Webjobs 2,6-es vagy újabb verziójúnak kell lennie. A webalkalmazás újraindításával kényszerítheti a frissítést. 
+Az trigger funkciói csak a Profiler-ügynök 2,6-es vagy újabb verziójával működnek. Ha Azure App Service futtat, akkor az ügynök automatikusan frissül. Megtekintheti, hogy az ügynök melyik verzióját futtatja, ha a webhely kudu URL-címét használja, és hozzáfűzi a \DiagnosticServices a végéhez, a következőhöz hasonló módon: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . A Application Insights Profiler Webjobs 2,6-es vagy újabb verziójúnak kell lennie. A webalkalmazás újraindításával kényszerítheti a frissítést. 
 
 Ha a Profilert egy virtuális gépen vagy egy felhőalapú szolgáltatáson futtatja, akkor a Windows Azure Diagnostics (WAD) bővítmény 16.0.4 vagy újabb verzióját kell telepítenie. A WAD verziójának ellenőrzéséhez jelentkezzen be a virtuális gépre, és tekintse meg a következő könyvtárat: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. A könyvtár neve a telepített WAD verziója. Az Azure-beli virtuálisgép-ügynök automatikusan frissíti a WAD-t, ha új verzió érhető el.
 
@@ -35,7 +35,7 @@ A **Application Insights Profiler konfigurálása** lapon a következő funkció
 | | |
 |-|-|
 Profil most | A profilkészítési munkamenetek elindítása minden olyan alkalmazáshoz, amely a Application Insights ezen példányához van csatolva.
-Eseményindítók | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
+Triggerek | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
 Közelmúltbeli profilkészítési munkamenetek | A korábbi profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg.
 
 ## <a name="profile-now"></a>Profil most
@@ -78,7 +78,7 @@ A következő részekben bemutatjuk, hogyan működik ez a forgatókönyv:
 
 Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuálisan szeretné előállítani a forgalmat, ugorja át ezt a szakaszt, és folytassa a 2. lépéssel.
 
-1. A Application Insights portálon válassza a **Configure** > **teljesítmény-tesztelés**konfigurálása elemet. 
+1. A Application Insights portálon válassza a **Configure**  >  **teljesítmény-tesztelés**konfigurálása elemet. 
 
 1. Új teljesítményteszt indításához kattintson az **új** gombra.
 

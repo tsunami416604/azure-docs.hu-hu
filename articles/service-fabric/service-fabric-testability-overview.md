@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465565"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A hiba-elemzési szolgáltatás bemutatása
@@ -79,7 +78,7 @@ Service Fabric a hiba-elemzési szolgáltatáson keresztül azt javasoljuk, hogy
 A Service Fabric, bár a hibák skálája eltérő lehet a különböző környezetekben, a tényleges mechanizmusok azonosak lesznek. Ez egy sokkal gyorsabb, a központi telepítéshez szükséges folyamat, valamint a szolgáltatások valós terhelésekkel való tesztelésének lehetősége.
 
 ## <a name="using-the-fault-analysis-service"></a>A hiba-elemzési szolgáltatás használata
-**C #**
+**C#**
 
 A hiba-elemzési szolgáltatás funkciói a System. Fabric névtérben találhatók a Microsoft. ServiceFabric NuGet-csomagban. A hiba-elemzési szolgáltatás funkcióinak használatához adja meg a nuget csomagot hivatkozásként a projektben.
 

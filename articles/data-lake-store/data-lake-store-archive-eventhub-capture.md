@@ -3,15 +3,15 @@ title: Adatok rögzítése Event Hubsból Azure Data Lake Storage Gen1
 description: Azure Data Lake Storage Gen1 használatával rögzítheti az Azure Event Hubs által fogadott adatmennyiséget.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515766"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Adatok rögzítése a Azure Data Lake Storage Gen1 használatával Event Hubs
 
@@ -44,7 +44,7 @@ Ebben a szakaszban egy mappát hoz létre azon a fiókon belül, ahová az Event
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
 
-    b. A **hozzáférés**területen kattintson a **Hozzáadás**, majd a **felhasználó vagy csoport kiválasztása**elemre, `Microsoft.EventHubs`és keresse meg a következőt:. 
+    b. A **hozzáférés**területen kattintson a **Hozzáadás**, majd a **felhasználó vagy csoport kiválasztása**elemre, és keresse meg a következőt: `Microsoft.EventHubs` . 
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
     
@@ -53,7 +53,7 @@ Ebben a szakaszban egy mappát hoz létre azon a fiókon belül, ahová az Event
     c. Az **engedélyek kiosztása**területen kattintson az **engedélyek kiválasztása**elemre. Állítsa be az **engedélyeket** a **végrehajtáshoz**. A **Hozzáadás** ehhez a **mappához és az összes gyermekhez**beállítás megadása. Adja meg a **Hozzáadás másként** **lehetőséget egy hozzáférési engedély bejegyzéséhez és egy alapértelmezett engedély bejegyzéshez**.
 
     > [!IMPORTANT]
-    > Amikor új mappastruktúrát hoz létre az Azure Event Hubs által fogadott adatrögzítéshez, ez egy egyszerű módja annak, hogy hozzáférést biztosítson a célmappához.  Ha azonban egy legfelső szintű mappa összes gyermekéhez ad hozzá engedélyeket, és sok gyermek fájl és mappa is hosszú időt vehet igénybe.  Ha a gyökérmappa nagy mennyiségű fájlt és mappát tartalmaz, előfordulhat, hogy az elérési út a **Execute** végső célmappához `Microsoft.EventHubs` tartozó minden mappához külön végrehajtási engedélyeket adhat hozzá. 
+    > Amikor új mappastruktúrát hoz létre az Azure Event Hubs által fogadott adatrögzítéshez, ez egy egyszerű módja annak, hogy hozzáférést biztosítson a célmappához.  Ha azonban egy legfelső szintű mappa összes gyermekéhez ad hozzá engedélyeket, és sok gyermek fájl és mappa is hosszú időt vehet igénybe.  Ha a gyökérmappa nagy mennyiségű fájlt és mappát tartalmaz, előfordulhat, hogy **Execute** `Microsoft.EventHubs` az elérési út a végső célmappához tartozó minden mappához külön végrehajtási engedélyeket adhat hozzá. 
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
 
@@ -65,7 +65,7 @@ Ebben a szakaszban egy mappát hoz létre azon a fiókon belül, ahová az Event
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 mappához](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Engedélyek kiosztása a Data Lake Storage Gen1 mappához")
 
-    b. A **hozzáférés**területen kattintson a **Hozzáadás**, majd a **felhasználó vagy csoport kiválasztása**elemre, `Microsoft.EventHubs`és keresse meg a következőt:. 
+    b. A **hozzáférés**területen kattintson a **Hozzáadás**, majd a **felhasználó vagy csoport kiválasztása**elemre, és keresse meg a következőt: `Microsoft.EventHubs` . 
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 mappához](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Engedélyek kiosztása a Data Lake Storage Gen1 mappához")
     
@@ -99,7 +99,7 @@ Ebben a szakaszban egy Event Hubs névtéren belül hoz létre egy Event hubot. 
 
     e. Hagyja meg a **minta rögzítési fájlnevének formátumát** az alapértelmezett értékre. Ezzel a beállítással szabályozható a rögzítési mappa alatt létrehozott mappastruktúrát.
 
-    f. Kattintson a **Létrehozás**gombra.
+    f. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="test-the-setup"></a>A telepítés tesztelése
 

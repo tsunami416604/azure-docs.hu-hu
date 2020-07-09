@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 63225f6e6daa6b3cdde7aa505c117b43305a4867
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569081"
 ---
 # <a name="azure-stack-edge-system-requirements"></a>Azure Stack Edge rendszerkövetelményei
@@ -58,7 +58,7 @@ Azure IoT Edge lehetővé teszi a kimenő kommunikációt egy helyszíni peremh�
 
 Használja a következő táblázatot a port konfigurálásához a Azure IoT Edge futtatókörnyezetet futtató kiszolgálókon:
 
-| Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutatás |
+| Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutató |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
 
@@ -82,9 +82,9 @@ Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge rögzített IP-címei ala
 
 | URL-minta                      | Összetevő vagy funkció                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//MCR.microsoft.com<br></br>https://\*. CDN.mscr.IO | Microsoft Container Registry (kötelező)               |
-| https://\*. azurecr.IO                     | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
-| https://\*. Azure-Devices.net              | IoT Hub hozzáférés (kötelező)                             | 
+| https: \/ /MCR.microsoft.com<br></br>https:// \* . CDN.mscr.IO | Microsoft Container Registry (kötelező)               |
+| https:// \* . azurecr.IO                     | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
+| https:// \* . Azure-Devices.net              | IoT Hub hozzáférés (kötelező)                             | 
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>A Azure Government átjárójának URL-mintái
 
@@ -94,9 +94,9 @@ Javasoljuk, hogy a legtöbb esetben a Azure Stack Edge rögzített IP-címei ala
 
 | URL-minta                      | Összetevő vagy funkció                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//MCR.microsoft.com<br></br>https://\*. CDN.mscr.com | Microsoft Container Registry (kötelező)               |
-| https://\*. Azure-Devices.us              | IoT Hub hozzáférés (kötelező)           |
-| https://\*. azurecr.us                    | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
+| https: \/ /MCR.microsoft.com<br></br>https:// \* . CDN.mscr.com | Microsoft Container Registry (kötelező)               |
+| https:// \* . Azure-Devices.us              | IoT Hub hozzáférés (kötelező)           |
+| https:// \* . azurecr.us                    | Személyes és harmadik féltől származó tároló-nyilvántartások (opcionális) | 
 
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 

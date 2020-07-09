@@ -14,11 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690064"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Felhasználói profil sablonjai az Azure API Management
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
@@ -105,7 +104,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 > [!NOTE]
 >  A [profil](#Profile), az [alkalmazások](#Applications)és az [előfizetések](#Subscriptions) sablonjai ugyanazt az adatmodellt használják, és ugyanazokat a sablonokat kapják meg.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|sztring|Az aktuális felhasználó vezetékneve.|  
 |`lastName`|sztring|Az aktuális felhasználó vezetékneve.|  
@@ -326,7 +325,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 > [!NOTE]
 >  A [profil](#Profile), az [alkalmazások](#Applications)és az [előfizetések](#Subscriptions) sablonjai ugyanazt az adatmodellt használják, és ugyanazokat a sablonokat kapják meg.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|sztring|Az aktuális felhasználó vezetékneve.|  
 |`lastName`|sztring|Az aktuális felhasználó vezetékneve.|  
@@ -489,7 +488,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 > [!NOTE]
 >  A [profil](#Profile), az [alkalmazások](#Applications)és az [előfizetések](#Subscriptions) sablonjai ugyanazt az adatmodellt használják, és ugyanazokat a sablonokat kapják meg.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|sztring|Az aktuális felhasználó vezetékneve.|  
 |`lastName`|sztring|Az aktuális felhasználó vezetékneve.|  

@@ -9,12 +9,11 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 1b72be91ee11ef7003e225fe830a59ea42310ac6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807502"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Felügyelt rendszerkép létrehozása általánosított Azure-beli virtuális gépből
 
@@ -26,7 +25,7 @@ Egy felügyelt rendszerkép akár 20 egyidejű telepítést is támogat. Ha töb
 
 A Sysprep eltávolítja az összes személyes fiókot és biztonsági információt, majd előkészíti a gépet képként való használatra. További információ a Sysprep eszközről: a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) és a nem [támogatott forgatókönyvekhez](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
+Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) és a nem [támogatott forgatókönyvekhez](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). A Sysprep megköveteli a meghajtók teljes visszafejtését a végrehajtás előtt. Ha engedélyezte a titkosítást a virtuális gépen, tiltsa le a titkosítást a Sysprep futtatása előtt.
 
 > [!IMPORTANT]
 > Miután futtatta a sysprept egy virtuális gépen, a virtuális gép *általánosított* minősül, és nem indítható újra. A virtuális gép általánosítása nem vonható vissza. Ha meg kell őriznie az eredeti virtuális gép működését, hozzon létre egy [másolatot a virtuális](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) gépről, és általánosítsa a másolatát. 

@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c07167a9f3a9194b7c45932ac749324429943ea9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26592b94ce13f73192890601811d22b2fd06fbe2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105013"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -61,7 +61,7 @@ A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inic
 > 
 > 
 
-A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **DownloadTo**/**BlobReadStream** kényelmi módszereinek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
+A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **DownloadTo** / **BlobReadStream** kényelmi módszereinek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
 
 Egy tetszőleges tartomány (**DownloadRange** metódus) a titkosított blobban való letöltése magában foglalja a felhasználók által megadott tartomány beállítását, hogy egy kis mennyiségű további adat kapjon segítséget, amely a kért tartomány sikeres visszafejtéséhez használható.
 
@@ -72,7 +72,9 @@ Mivel a üzenetsor-üzenetek bármilyen formátumúak lehetnek, az ügyféloldal
 
 A titkosítás során az ügyféloldali kódtár a 16 bájtos véletlenszerű CEK, valamint a 32 bájtos véletlenszerű adatmennyiséget, valamint az üzenetsor-üzenet szövegének boríték-titkosítását használja ezen információk alapján. A burkolt CEK és néhány további titkosítási metaadat hozzá lesz adva a titkosított üzenetsor-üzenethez. Ezt a módosított üzenetet (alább látható) a szolgáltatás tárolja.
 
-    <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
+```xml
+<MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
+```
 
 A visszafejtés során a rendszer kinyeri a beburkolt kulcsot az üzenetsor-üzenetből, és csomagolja ki. A rendszer kinyeri a IV-t az üzenetsor-üzenetből is, és a nem burkolt kulccsal együtt használja az üzenetsor-üzenet adatainak visszafejtéséhez. Vegye figyelembe, hogy a titkosítási metaadatok kis méretűek (500 bájtnál), így amíg a várólista-üzenet 64 kb-korlátja megesik, a hatásnak kezelhető kell lennie.
 
@@ -241,7 +243,7 @@ Ahogy fent említettük, ha az entitás TableEntity valósít meg, akkor a tulaj
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
 Vegye figyelembe, hogy a tárolási adatokat a rendszer további teljesítménybeli terhelést eredményez. A tartalmi kulcsot és a IV-t elő kell állítani, a tartalmat titkosítani kell, és további metaadatokat kell formázni és feltölteni. Ez a terhelés a titkosított adatmennyiségtől függően eltérő lesz. Javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazásaikat a fejlesztés során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Oktatóanyag: Blobok titkosítása és visszafejtése Microsoft Azure Storage használatával Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Töltse le az [Azure Storage ügyféloldali kódtárat a .net NuGet-csomaghoz](https://www.nuget.org/packages/WindowsAzure.Storage)
 * A Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)és [Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) csomagok letöltése  

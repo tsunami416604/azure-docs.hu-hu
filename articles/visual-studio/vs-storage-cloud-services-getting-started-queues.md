@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8410d082369c5eb5bc7212c50a5546e9b74c5b95
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72298781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131529"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Queue Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -42,29 +42,39 @@ Ha a várólistákat a Visual Studióban Cloud Services projektekben szeretné e
 
 1. Győződjön meg arról, hogy a C#-fájl tetején található névtér-deklarációk tartalmazzák **az alábbi utasításokat** .
    
-        using Microsoft.Framework.Configuration;
-        using Microsoft.WindowsAzure.Storage;
-        using Microsoft.WindowsAzure.Storage.Queue;
+    ```csharp
+    using Microsoft.Framework.Configuration;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    ```
 2. Szerezzen be egy **CloudStorageAccount** -objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával kérheti le a Storage-beli kapcsolódási karakterláncot és a Storage-fiók adatait az Azure-szolgáltatás konfigurációjában.
    
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 3. Szerezzen be egy **CloudQueueClient** -objektumot, amely a Storage-fiókban található üzenetsor-objektumokra hivatkozik.  
    
-        // Create the queue client.
-        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```csharp
+    // Create the queue client.
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+    ```
 4. Egy adott várólistára hivatkozó **CloudQueue** objektum beolvasása.
    
-        // Get a reference to a queue named "messageQueue"
-        CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
+    ```csharp
+    // Get a reference to a queue named "messageQueue"
+    CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
+    ```
 
 **Megjegyzés:** Használja a fenti kódot a kód elé a következő mintákban.
 
 ## <a name="create-a-queue-in-code"></a>Várólista létrehozása a kódban
 Ha a várólistát a kódban szeretné létrehozni, csak vegyen fel egy hívást a **createifnotexists metódust**.
 
-    // Create the CloudQueue if it does not exist
-    messageQueue.CreateIfNotExists();
+```csharp
+// Create the CloudQueue if it does not exist
+messageQueue.CreateIfNotExists();
+```
 
 ## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása egy várólistához
 Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, hozzon létre egy új **CloudQueueMessage** -objektumot, majd hívja meg a **AddMessage** metódust.
@@ -73,15 +83,19 @@ Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, hozzon létre 
 
 Íme egy példa, amely beszúrja a "Hello, World" üzenetet.
 
-    // Create a message and add it to the queue.
-    CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-    messageQueue.AddMessage(message);
+```csharp
+// Create a message and add it to the queue.
+CloudQueueMessage message = new CloudQueueMessage("Hello, World");
+messageQueue.AddMessage(message);
+```
 
 ## <a name="read-a-message-in-a-queue"></a>Üzenet elolvasása egy várólistában
 Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a **PeekMessage** módszert.
 
-    // Peek at the next message
-    CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
+```csharp
+// Peek at the next message
+CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
+```
 
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Üzenetsor beolvasása és eltávolítása
 A kód képes eltávolítani (de-üzenetsor) egy üzenetet egy várólistából két lépésben.
@@ -91,13 +105,15 @@ A kód képes eltávolítani (de-üzenetsor) egy üzenetet egy várólistából 
 
 Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. Az alábbi kód a **DeleteMessage** közvetlenül az üzenet feldolgozását követően hívja meg.
 
-    // Get the next message in the queue.
-    CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
+```csharp
+// Get the next message in the queue.
+CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
 
-    // Process the message in less than 30 seconds
+// Process the message in less than 30 seconds
 
-    // Then delete the message.
-    await messageQueue.DeleteMessage(retrievedMessage);
+// Then delete the message.
+await messageQueue.DeleteMessage(retrievedMessage);
+```
 
 
 ## <a name="use-additional-options-to-process-and-remove-queue-messages"></a>További beállítások használata üzenetsor-üzenetek feldolgozásához és eltávolításához
@@ -106,53 +122,61 @@ Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
 * Lekérheti az üzenetek kötegét (legfeljebb 32).
 * Megadhat egy hosszabb vagy rövidebb láthatósági időkorlátot, így a kód több vagy kevesebb időt vehet igénybe az egyes üzenetek teljes feldolgozásához. Az alábbi példakód a **GetMessages** módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
 
-Például:
+Íme egy példa:
 
-    foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
-    {
-        // Process all messages in less than 5 minutes, deleting each message after processing.
+```csharp
+foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
+{
+    // Process all messages in less than 5 minutes, deleting each message after processing.
 
-        // Then delete the message after processing
-        messageQueue.DeleteMessage(message);
+    // Then delete the message after processing
+    messageQueue.DeleteMessage(message);
 
-    }
+}
+```
 
 ## <a name="get-the-queue-length"></a>Az üzenetsor hosszának lekérése
 Megbecsülheti egy üzenetsorban található üzenetek számát. A **FetchAttributes** módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. A **ApproximateMethodCount** tulajdonság a **FetchAttributes** metódus által lekért utolsó értéket adja vissza a Queue szolgáltatás hívása nélkül.
 
-    // Fetch the queue attributes.
-    messageQueue.FetchAttributes();
+```csharp
+// Fetch the queue attributes.
+messageQueue.FetchAttributes();
 
-    // Retrieve the cached approximate message count.
-    int? cachedMessageCount = messageQueue.ApproximateMessageCount;
+// Retrieve the cached approximate message count.
+int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 
-    // Display number of messages.
-    Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
+// Display number of messages.
+Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
+```
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Az aszinkron várakozási minta használata a közös Azure üzenetsor API-kkal
 Ez a példa azt szemlélteti, hogyan használható az aszinkron várakozási minta az általános Azure üzenetsor-API-kkal. A minta meghívja az egyes metódusok aszinkron verzióját, ezt az egyes módszerek **aszinkron** utólagos javításával is megtekintheti. Aszinkron módszer használata esetén az aszinkron várakozási minta a helyi végrehajtás felfüggesztését hajtja végre, amíg a hívás be nem fejeződik. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát végezzen, ami segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
 
-    // Create a message to put in the queue
-    CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
+```csharp
+// Create a message to put in the queue
+CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
 
-    // Add the message asynchronously
-    await messageQueue.AddMessageAsync(cloudQueueMessage);
-    Console.WriteLine("Message added");
+// Add the message asynchronously
+await messageQueue.AddMessageAsync(cloudQueueMessage);
+Console.WriteLine("Message added");
 
-    // Async dequeue the message
-    CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
-    Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
+// Async dequeue the message
+CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
+Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
 
-    // Delete the message asynchronously
-    await messageQueue.DeleteMessageAsync(retrievedMessage);
-    Console.WriteLine("Deleted message");
+// Delete the message asynchronously
+await messageQueue.DeleteMessageAsync(retrievedMessage);
+Console.WriteLine("Deleted message");
+```
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
 Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a **Delete** módszert az üzenetsor-objektumhoz.
 
-    // Delete the queue.
-    messageQueue.Delete();
+```csharp
+// Delete the queue.
+messageQueue.Delete();
+```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 

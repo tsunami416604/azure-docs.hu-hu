@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432059"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hibakódok
@@ -55,11 +55,11 @@ Az "engedélyezés" fejléc a hozzáférési jogkivonat, amely az adatsík műve
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>A jogkivonat nem rendelkezik a hozzá társított megfelelő erőforrással. 
 
-Amikor hozzáférési jogkivonatot kér az Azure OAUTH végponttól, az "erőforrás" nevű paramétert kötelező megadni. Az érték fontos a jogkivonat-szolgáltató esetében, mert a jogkivonat hatókörét a kívánt célra alkalmazza. Az Key Vaulthoz való hozzáférést biztosító **összes** jogkivonat erőforrása *https\/:/Vault.keyvault.net* (záró perjel nélkül).
+Amikor hozzáférési jogkivonatot kér az Azure OAUTH végponttól, az "erőforrás" nevű paramétert kötelező megadni. Az érték fontos a jogkivonat-szolgáltató esetében, mert a jogkivonat hatókörét a kívánt célra alkalmazza. Az Key Vaulthoz való hozzáférést biztosító **összes** jogkivonat erőforrása *https: \/ /Vault.keyvault.net* (záró perjel nélkül).
 
 ### <a name="the-token-is-expired"></a>A jogkivonat lejárt
 
-A tokenek Base64 kódolással vannak kódolva, és az értékek dekódolva lesznek a webhelyeken, [http://jwt.calebb.net](http://jwt.calebb.net)például:. A fenti token dekódolva:
+A tokenek Base64 kódolással vannak kódolva, és az értékek dekódolva lesznek a webhelyeken, például: [http://jwt.calebb.net](http://jwt.calebb.net) . A fenti token dekódolva:
 
 ```
     {
@@ -89,7 +89,7 @@ A tokenek Base64 kódolással vannak kódolva, és az értékek dekódolva leszn
 
 Ebben a tokenben számos fontos rész látható:
 
-- AUD (hallgatóság): a token erőforrása. Figyelje meg, hogy <https://vault.azure.net>ez a következő:. Ez a jogkivonat nem fog működni minden olyan erőforrás esetében, amely nem felel meg explicit módon az értéknek, például gráfnak.
+- AUD (hallgatóság): a token erőforrása. Figyelje meg, hogy ez a következő: <https://vault.azure.net> . Ez a jogkivonat nem fog működni minden olyan erőforrás esetében, amely nem felel meg explicit módon az értéknek, például gráfnak.
 - IAT (kiadás időpontja): az időpontok száma a jogkivonat kiállítása óta.
 - NBF (nem korábban): az időpontok száma az időszak kezdete óta, amikor a token érvényes lesz.
 - exp (lejárat): az időpontok száma a token lejárata óta.
@@ -100,7 +100,7 @@ Fontos, hogy az összes érték megfelelően legyen azonosítva a jogkivonatban,
 
 ### <a name="troubleshooting-401"></a>Hibaelhárítás 401
 
-a 401s a jogkivonat-létrehozási pontról kell megvizsgálni, mielőtt a rendszer a kulcstartóra kéri a kérést. Általában a token igénylésére szolgáló kód használatos. A jogkivonat fogadása után a rendszer átadja a Key Vault kérelemnek. Ha a kód helyileg fut, akkor a Hegedűs használatával rögzítheti a kérést/választ a `https://login.microsoftonline.com`következőre:. A kérés így néz ki:
+a 401s a jogkivonat-létrehozási pontról kell megvizsgálni, mielőtt a rendszer a kulcstartóra kéri a kérést. Általában a token igénylésére szolgáló kód használatos. A jogkivonat fogadása után a rendszer átadja a Key Vault kérelemnek. Ha a kód helyileg fut, akkor a Hegedűs használatával rögzítheti a kérést/választ a következőre: `https://login.microsoftonline.com` . A kérés így néz ki:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1

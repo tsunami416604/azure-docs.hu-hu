@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan hozhat létre Service Fabric-fürtöt a tanús�
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614553"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése ujjlenyomat helyett
@@ -65,10 +64,10 @@ Write-Host "Common Name              :"  $CommName
 ```
 
 ## <a name="download-and-update-a-sample-template"></a>Minta sablon letöltése és frissítése
-Ez a cikk az [5 csomópontos biztonságos fürt – példa](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) sablont és a sablon paramétereit használja. Töltse le a *azuredeploy. JSON* és a *azuredeploy. Parameters. JSON* fájlt a számítógépre.
+Ez a cikk az [5 csomópontos biztonságos fürt – példa](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) sablont és a sablon paramétereit használja. Töltse le a *azuredeploy.jst* , és *azuredeploy.parameters.js* fájlokat a számítógépre.
 
 ### <a name="update-parameters-file"></a>Paraméterek frissítése fájl
-Először nyissa meg a *azuredeploy. Parameters. JSON* fájlt egy szövegszerkesztőben, és adja hozzá a következő paraméter értékét:
+Először nyissa meg a *azuredeploy.parameters.js* fájlt egy szövegszerkesztőben, és adja hozzá a következő paraméter értékét:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -95,7 +94,7 @@ Ezután állítsa be a *certificateCommonName*, a *SourceVaultValue*és a *certi
 ```
 
 ### <a name="update-the-template-file"></a>A sablonfájl frissítése
-Ezután nyissa meg a *azuredeploy. JSON* fájlt egy szövegszerkesztőben, és három frissítést készítsen a tanúsítvány köznapi nevének támogatásához.
+Ezután nyissa meg a *azuredeploy.js* fájlt egy szövegszerkesztőben, és három frissítést készítsen a tanúsítvány köznapi nevének támogatásához.
 
 1. A **Parameters (paraméterek** ) szakaszban adjon hozzá egy *certificateCommonName* paramétert:
     ```json
@@ -120,14 +119,14 @@ Ezután nyissa meg a *azuredeploy. JSON* fájlt egy szövegszerkesztőben, és h
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile**->**extensionProfile**->-**bővítmények**->**Tulajdonságok**->**settings**beállításainak->**tanúsítványa**területen adja hozzá a 
+3. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile** -> **extensionProfile**- -> **bővítmények** -> **Tulajdonságok** -> **beállításainak** -> **tanúsítványa**területen adja hozzá a 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    és távolítsa el `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    és távolítsa el `"thumbprint": "[parameters('certificateThumbprint')]",` .
 
     ```json
     "virtualMachineProfile": {

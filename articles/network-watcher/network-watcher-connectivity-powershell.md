@@ -5,20 +5,18 @@ description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsol�
 services: network-watcher
 documentationcenter: na
 author: damendo
-manager: twooley
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa5d7efed1ce1f41ebb67e2ec377e862ad14ed7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725035"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Az Azure Network Watchersal létesített kapcsolatok hibáinak megoldása a PowerShell használatával
 
@@ -39,7 +37,7 @@ Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak elle
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 
@@ -64,7 +62,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Válasz
 
-A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy **UserRule_Port80**nevű `NetworkSecurityRule` felhasználó konfigurálta, amely a 80-es porton való bejövő forgalom blokkolására van konfigurálva. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
+A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy UserRule_Port80 nevű felhasználó konfigurálta, amely a `NetworkSecurityRule` 80-es porton való bejövő forgalom blokkolására van konfigurálva. **UserRule_Port80** Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +153,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Válasz
 
-A következő példában a `ConnectionStatus` látható, hogy nem **érhető el**. A `Hops` részletek között látható, `Issues` hogy a forgalom le lett tiltva, mert egy. `UserDefinedRoute` 
+A következő példában a látható, hogy `ConnectionStatus` nem **érhető el**. A `Hops` részletek között látható, `Issues` hogy a forgalom le lett tiltva, mert egy `UserDefinedRoute` . 
 
 ```
 ConnectionStatus : Unreachable

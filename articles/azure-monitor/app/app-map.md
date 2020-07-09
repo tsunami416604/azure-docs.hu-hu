@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80989527"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
@@ -112,7 +111,7 @@ namespace CustomInitializer.Telemetry
 
 **ASP.NET-alkalmazások: az inicializáló betöltése az aktív TelemetryConfiguration**
 
-A ApplicationInsights. config fájlban:
+ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -142,7 +141,7 @@ A webalkalmazások ASP.NET alternatív módszere az inicializáló létrehozása
 
 **ASP.NET Core alkalmazások: az inicializáló betöltése a TelemetryConfiguration**
 
-[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadását a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` `Startup.cs` osztály metódusában történik.
+[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új hozzáadását `TelemetryInitializer` a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` osztály metódusában történik `Startup.cs` .
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -169,11 +168,11 @@ A [Java-ügynök 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in
 }
 ```
 
-A Felhőbeli szerepkör nevét a környezeti változó ```APPLICATIONINSIGHTS_ROLE_NAME```használatával is beállíthatja.
+A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja ```APPLICATIONINSIGHTS_ROLE_NAME``` .
 
 **Java SDK**
 
-Ha az SDK-t használja, kezdve Application Insights Java SDK 2.5.0-vel, megadhatja a Felhőbeli szerepkör nevét `<RoleName>` a `ApplicationInsights.xml` fájl hozzáadásával, például:
+Ha az SDK-t használja, kezdve Application Insights Java SDK 2.5.0-vel, megadhatja a Felhőbeli szerepkör nevét a fájl hozzáadásával `<RoleName>` `ApplicationInsights.xml` , például:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -199,7 +198,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Alternatív módszer a Node. js-hez
+### <a name="alternate-method-for-nodejs"></a>Node.js alternatív metódusa
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -229,7 +228,7 @@ A **Felhőbeli szerepkör nevének**megismerése érdekében hasznos lehet megte
 
 ![Alkalmazás-Térkép képernyőképe](media/app-map/cloud-rolename.png)
 
-Az alkalmazás-hozzárendelés a zöld mezőkben található nevek felett a Felhőbeli szerepkörök neve értékek az adott elosztott alkalmazás különböző szempontjaihoz. Így ehhez az alkalmazáshoz a szerepkörei a következők `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
+Az alkalmazás-hozzárendelés a zöld mezőkben található nevek felett a Felhőbeli szerepkörök neve értékek az adott elosztott alkalmazás különböző szempontjaihoz. Így ehhez az alkalmazáshoz a szerepkörei a következők: `Authentication` , `acmefrontend` , `Inventory Management` , a `Payment Processing Worker Role` . 
 
 Ebben az alkalmazásban a Felhőbeli szerepkörök nevei egy másik egyedi Application Insights erőforrást is jelentenek a saját kialakítási kulcsaik használatával. Mivel ennek az alkalmazásnak a tulajdonosa a négy különböző Application Insights erőforráshoz fér hozzá, az Application Map képes összekeverni az alapul szolgáló kapcsolatok térképét.
 

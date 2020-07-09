@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919311"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Az arc és az érzelem észlelése Azure Media Analytics
@@ -81,7 +80,7 @@ Ha **Azure Media Face Detectorkal**rendelkező feladatot hoz létre, meg kell ad
 ```
 
 #### <a name="attribute-descriptions"></a>Attribútumok leírása
-| Attribútum neve | Leírás |
+| Attribútum neve | Description |
 | --- | --- |
 | Mód |Gyors gyors feldolgozási sebesség, de kevésbé pontos (alapértelmezett).|
 
@@ -156,7 +155,7 @@ Ha **Azure Media Face Detectorkal**rendelkező feladatot hoz létre, meg kell ad
 
 
 #### <a name="attribute-descriptions"></a>Attribútumok leírása
-| Attribútum neve | Leírás |
+| Attribútum neve | Description |
 | --- | --- |
 | Mód |Arcok: csak Arcfelismerés.<br/>PerFaceEmotion: az érzelmeket egymástól függetlenül visszaküldi az egyes Arcfelismerés.<br/>AggregateEmotion: a keretben lévő összes arc átlagos érzelem-értékének visszaadása. |
 | AggregateEmotionWindowMs |Akkor használja, ha a AggregateEmotion mód van kiválasztva. Megadja az egyes összesített eredmények előállításához használt videó hosszát ezredmásodpercben. |
@@ -348,7 +347,7 @@ A következő program a következőket mutatja be:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 

@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76710326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267941"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
@@ -55,7 +54,7 @@ Helyi vagy Felhőbeli adatai vannak? A lehetséges helyszínek a következők:
 Hol kell az adatai feldolgozásához vagy modellezéséhez? 
 
 * Azure Blob Storage
-* Adatbázisok SQL Azure
+* SQL Azure-adatbázisok
 * Azure virtuális gépen futó SQL Server
 * HDInsight (Hadoop az Azure-ban) vagy kaptár táblák
 * Azure Machine Learning
@@ -75,7 +74,7 @@ Vegye fontolóra Azure Data Factory (ADF) használatát, ha folyamatosan át kel
 * hibrid forgatókönyv, amely a helyszíni és a Felhőbeli erőforrásokat egyaránt magában foglalja
 * olyan forgatókönyv, amelyben az üzleti logika az áttelepítés során az adatfeldolgozást, módosítást vagy módosítást végez
 
-További információ: [adatok áthelyezése helyszíni SQL serverről SQL Azurera Azure Data Factory használatával](move-sql-azure-adf.md).
+További információ: [adatok áthelyezése egy SQL Server-adatbázisból SQL Azurera a Azure Data Factory használatával](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Mennyibe kell helyezni az adatmennyiséget az Azure-ba?
 
@@ -150,7 +149,7 @@ A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehet
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
-* [Anaconda](https://www.continuum.io/why-anaconda)
+* [Anaconda](https://www.anaconda.com/)
 * [Jupyter notebookok](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 

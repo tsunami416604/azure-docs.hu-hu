@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Basti
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743983"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím és Azure-alapú megerősített kapcsolat használatával
 
@@ -25,9 +25,9 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy
 
 ### <a name="example-values"></a>Példaértékek
 
-|**Név** | **Érték** |
+|**Name (Név)** | **Érték** |
 | --- | --- |
-| Name (Név) |  VNet1Bastion |
+| Name |  VNet1Bastion |
 | Régió | eastus |
 | Virtuális hálózat |  VNet1 |
 | + Alhálózat neve | AzureBastionSubnet |
@@ -37,11 +37,11 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy
 | Nyilvános IP-cím SKU |  Standard  |
 | Hozzárendelés  | Statikus |
 
-## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Bastion-gazdagép létrehozása
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Megerősített gazdagép létrehozása
 
 Amikor egy meglévő virtuális gép használatával hoz létre egy megerősített gazdagépet a portálon, a különböző beállítások automatikusan megegyeznek a virtuális géppel és/vagy a virtuális hálózattal.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
 
    ![virtuális gép beállításai](./media/quickstart-host-portal/vm-settings.png)
 1. A legördülő listából válassza a **Bastion**lehetőséget.
@@ -77,7 +77,7 @@ Miután a megerősített állapotot telepítette a virtuális hálózatra, a ké
 
    ![RDP-kapcsolat](./media/quickstart-host-portal/443-rdp.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett a virtuális hálózat és a virtuális gépek használatával, törölje az erőforráscsoportot és a benne található összes erőforrást:
 

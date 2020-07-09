@@ -4,10 +4,9 @@ description: Hibakódok és lehetséges megoldások olyan problémákra, amelyek
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978314"
 ---
 # <a name="health-check-error-reference"></a>Állapot-ellenőrzési hiba referenciája
@@ -22,13 +21,13 @@ Ez a hiba azt jelenti, hogy a CLI-hez készült Docker-ügyfél nem található.
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-Ez a hiba azt jelenti, hogy a Docker-démon állapota nem érhető el, vagy nem érhető el a CLI használatával. Ennek eredményeképpen a Docker-műveletek (például `docker login` és `docker pull`) nem érhetők el a CLI-n keresztül.
+Ez a hiba azt jelenti, hogy a Docker-démon állapota nem érhető el, vagy nem érhető el a CLI használatával. Ennek eredményeképpen a Docker-műveletek (például `docker login` és `docker pull` ) nem érhetők el a CLI-n keresztül.
 
 *Lehetséges megoldások*: indítsa újra a Docker-démont, vagy ellenőrizze, hogy megfelelően van-e telepítve.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-Ez a hiba azt jelenti, hogy a CLI nem tudta futtatni `docker --version`a parancsot.
+Ez a hiba azt jelenti, hogy a CLI nem tudta futtatni a parancsot `docker --version` .
 
 *Lehetséges megoldások*: próbálja meg manuálisan futtatni a parancsot, győződjön meg arról, hogy rendelkezik a CLI legújabb verziójával, és vizsgálja meg a hibaüzenetet.
 
@@ -58,7 +57,7 @@ Ez a hiba azt jelenti, hogy a megadott beállításjegyzékbeli bejelentkezési 
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Ez a hiba azt jelenti, hogy a megadott beállításjegyzékhez tartozó kérdés-végpont 403 Tiltott HTTP-állapottal válaszolt. Ez a hiba azt jelenti, hogy a felhasználók nem férhetnek hozzá a beállításjegyzékhez, valószínűleg egy virtuális hálózati konfiguráció miatt, vagy mert a beállításjegyzék nyilvános végponthoz való hozzáférése nem engedélyezett. A jelenleg konfigurált tűzfalszabályok megtekintéséhez futtassa a parancsot `az acr show --query networkRuleSet --name <registry>`.
+Ez a hiba azt jelenti, hogy a megadott beállításjegyzékhez tartozó kérdés-végpont 403 Tiltott HTTP-állapottal válaszolt. Ez a hiba azt jelenti, hogy a felhasználók nem férhetnek hozzá a beállításjegyzékhez, valószínűleg egy virtuális hálózati konfiguráció miatt, vagy mert a beállításjegyzék nyilvános végponthoz való hozzáférése nem engedélyezett. A jelenleg konfigurált tűzfalszabályok megtekintéséhez futtassa a parancsot `az acr show --query networkRuleSet --name <registry>` .
 
 *Lehetséges megoldások*: távolítsa el a virtuális hálózati szabályokat, vagy adja hozzá az aktuális ügyfél IP-címét az engedélyezett listához.
 
@@ -66,25 +65,25 @@ Ez a hiba azt jelenti, hogy a megadott beállításjegyzékhez tartozó kérdés
 
 Ez a hiba azt jelenti, hogy a célként megadott beállításjegyzék kérdéses végpontja nem adott meg kihívást.
 
-*Lehetséges megoldások*: némi idő elteltével próbálkozzon újra. Ha a hiba továbbra is fennáll, nyisson meg https://aka.ms/acr/issuesegy problémát a következő helyen:.
+*Lehetséges megoldások*: némi idő elteltével próbálkozzon újra. Ha a hiba továbbra is fennáll, nyisson meg egy problémát a következő helyen: https://aka.ms/acr/issues .
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
 Ez a hiba azt jelenti, hogy a célként megadott beállításjegyzék Challenge végpontja kiadta a problémát, de a beállításjegyzék nem támogatja Azure Active Directory hitelesítést.
 
-*Lehetséges megoldások*: próbáljon ki egy másik módszert a hitelesítésre, például a rendszergazdai hitelesítő adatokkal. Ha a felhasználóknak Azure Active Directory használatával kell hitelesítést végezniük, nyisson meg egy https://aka.ms/acr/issuesproblémát a következő címen:.
+*Lehetséges megoldások*: próbáljon ki egy másik módszert a hitelesítésre, például a rendszergazdai hitelesítő adatokkal. Ha a felhasználóknak Azure Active Directory használatával kell hitelesítést végezniük, nyisson meg egy problémát a következő címen: https://aka.ms/acr/issues .
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
 Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálója nem válaszolt a frissítési tokenre, ezért a rendszer megtagadta a hozzáférést a célként megadott beállításjegyzékhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, vagy ha az Azure CLI felhasználói hitelesítő adatai elavultak.
 
-*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; a `az login` futtatásával frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
+*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; a futtatásával `az login` frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
 Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálója nem válaszolt egy hozzáférési jogkivonatra, így a rendszer megtagadta a hozzáférést a célként megadott beállításjegyzékhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzékben, vagy ha az Azure CLI felhasználói hitelesítő adatai elavultak.
 
-*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; a `az login` futtatásával frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
+*Lehetséges megoldások*: Ellenőrizze, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzékben; a futtatásával `az login` frissítheti az engedélyeket, a jogkivonatokat és a hitelesítő adatokat.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
@@ -100,7 +99,7 @@ Ez a hiba azt jelenti, hogy a CLI nem találta meg az adott beállításjegyzék
 
 ## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
 
-Ez a hiba azt jelenti, hogy a CLI nem kompatibilis a Docker/közjegyző jelenleg telepített verziójával. Próbálja megismételni a közjegyző. exe verzióját a 0.6.0 korábbi verzióra, ha a Docker-telepítő közjegyző-ügyfelét manuálisan lecseréli a probléma megoldásához.
+Ez a hiba azt jelenti, hogy a CLI nem kompatibilis a Docker/közjegyző jelenleg telepített verziójával. A probléma megoldásához a Docker-telepítő közjegyző-ügyfelét manuálisan cserélje le a 0.6.0 korábbi verziójára a notary.exe verziójának a lefokozásához.
 
 ## <a name="next-steps"></a>További lépések
 

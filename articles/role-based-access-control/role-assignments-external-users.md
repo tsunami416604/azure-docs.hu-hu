@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361904"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
 
@@ -51,7 +51,7 @@ A következő lépésekkel adhat hozzá egy vendég felhasználót a címtárhoz
 
 1. Győződjön meg arról, hogy a szervezet külső együttműködési beállításai úgy vannak konfigurálva, hogy Ön is meghívja vendégeit. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../active-directory/b2b/delegate-invitations.md)című témakört.
 
-1. A Azure Portal kattintson **Azure Active Directory** > **felhasználók** > **új vendég felhasználó**elemre.
+1. A Azure Portal kattintson **Azure Active Directory**  >  **felhasználók**  >  **új vendég felhasználó**elemre.
 
     ![Új vendég felhasználói szolgáltatás a Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -85,11 +85,13 @@ Az Azure RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört
 
 1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-1. Kattintson a**szerepkör-hozzárendelés** hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. **Add** > 
+1. Kattintson a **Hozzáadás** > **Szerepkör-hozzárendelés hozzáadása** lehetőségre a Szerepkör-hozzárendelés hozzáadása szakasz megnyitásához.
 
     Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
-    ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
+    ![Szerepkör-hozzárendelési menü hozzáadása](./media/shared/add-role-assignment-menu.png)
+
+    Megnyílik a Szerepkör-hozzárendelés hozzáadása panel.
 
 1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 
@@ -117,9 +119,11 @@ Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót kö
 
 1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-1. Kattintson a**szerepkör-hozzárendelés** hozzáadása lehetőségre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához. **Add** > 
+1. Kattintson a **Hozzáadás** > **Szerepkör-hozzárendelés hozzáadása** lehetőségre a Szerepkör-hozzárendelés hozzáadása szakasz megnyitásához.
 
-    ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
+    ![Szerepkör-hozzárendelési menü hozzáadása](./media/shared/add-role-assignment-menu.png)
+
+    Megnyílik a Szerepkör-hozzárendelés hozzáadása panel.
 
 1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 
@@ -161,7 +165,7 @@ Mielőtt eltávolít egy vendég felhasználót egy címtárból, először el k
 
 1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen**gombra.
 
-1. A bal oldali navigációs sávon kattintson **Azure Active Directory** > **felhasználók**elemre.
+1. A bal oldali navigációs sávon kattintson **Azure Active Directory**  >  **felhasználók**elemre.
 
 1. Kattintson az eltávolítani kívánt vendég felhasználóra.
 

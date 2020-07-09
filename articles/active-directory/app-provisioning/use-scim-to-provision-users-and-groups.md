@@ -2,21 +2,21 @@
 title: SCIM-végpont fejlesztése az Azure AD-ből származó alkalmazások felhasználó általi üzembe helyezéséhez
 description: A rendszer a tartományok közötti Identitáskezelés (SCIM) esetében szabványosítja a felhasználók automatikus kiépítési folyamatát. Ismerje meg, hogyan fejleszthet SCIM-végpontokat, hogyan integrálhatja a SCIM API-t a Azure Active Directoryval, és megkezdheti a felhasználók és csoportok kiépítésének automatizálását a felhőalapú alkalmazásokba.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 926c3315035534f393eba72cd1d3910bf6135347
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117318"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -745,11 +745,7 @@ TLS 1,2 titkosítási csomagok minimális sávja:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-címtartományok
-Az Azure AD Provisionong szolgáltatás jelenleg a következő IP-címtartományok alatt működik. 
-
-13.86.239.205; 52.188.178.195; 13.86.61.156; 40.67.254.206; 51.105.237.71; 20.44.38.166; 40.81.88.68; 52.184.94.250; 20.43.180.59; 20.193.16.105; 20.40.167.232; 13.86.3.57; 52.188.72.113; 13.88.140.233; 52.142.121.156; 51.124.0.213; 40.81.92.36; 20.44.39.175; 20.189.114.130; 20.44.193.163; 20.193.23.17; 20.40.173.237; 13.86.138.128; 52.142.29.23; 13.86.2.238; 40.127.246.167; 51.136.72.4; 20.44.39.244; 40.81.92.186; 20.189.114.131; 20.44.193.210; 20.193.2.21; 20.40.174.46; 13.86.219.18; 40.71.13.10; 20.44.16.38; 13.89.174.16; 13.69.66.182; 13.69.229.118; 104.211.147.176; 40.78.195.176; 13.67.9.240; 13.75.38.48; 13.70.73.48; 13.77.52.176;
-
-
+Az Azure AD-kiépítési szolgáltatás jelenleg bármely Azure-beli IP-címtartomány keretében opperate. Folyamatban van a szolgáltatás által működtetett IP-címtartományok konszolidálása. Ez a dokumentum akkor frissül, ha az IP-címtartomány listája összevonva van. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. lépés: SCIM-végpont létrehozása
 
@@ -1198,7 +1194,8 @@ A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az e
 |OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|Gallery-alkalmazások esetén támogatott. Nem Gallery-alkalmazások támogatása folyamatban van.|
 |OAuth-ügyfél hitelesítő adatainak megadása|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek. Az engedélyezési kód és az ügyfél hitelesítő adatai is azonos típusú hozzáférési tokent hoznak létre, így a módszerek közötti váltás az API-ra is átlátható.  A kiépítés teljesen automatizált lehet, és az új tokenek felhasználói beavatkozás nélkül is csendesen kérhetők. ||Katalógus-és nem katalógus-alkalmazások esetén nem támogatott. A támogatás a várakozó fájlok között található.|
 
-[!NOTE] Nem ajánlott üresen hagyni a jogkivonat mezőt az Azure AD kiépítési konfiguráció egyéni alkalmazás felhasználói felületén. A generált jogkivonat elsődlegesen tesztelési célokra használható.
+> [!NOTE]
+> Nem ajánlott üresen hagyni a jogkivonat mezőt az Azure AD kiépítési konfiguráció egyéni alkalmazás felhasználói felületén. A generált jogkivonat elsődlegesen tesztelési célokra használható.
 
 **OAuth engedélyezési kód engedélyezése:** A kiépítési szolgáltatás támogatja az [engedélyezési kód engedélyezését](https://tools.ietf.org/html/rfc6749#page-24). Miután elküldte az alkalmazást a katalógusban való közzétételre vonatkozó kérelmét, a csapat együttműködik Önnel a következő információk összegyűjtéséhez:
 *  Engedélyezési URL-cím: az ügyfél URL-címe, amely a felhasználói ügynök átirányításával szerzi be az erőforrás-tulajdonostól az engedélyt. A rendszer átirányítja a felhasználót erre az URL-címre, hogy engedélyezze a hozzáférést. Vegye figyelembe, hogy ez az URL-cím jelenleg nem konfigurálható bérlőn.

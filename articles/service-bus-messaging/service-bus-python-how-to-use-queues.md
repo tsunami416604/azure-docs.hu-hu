@@ -1,25 +1,19 @@
 ---
 title: 'Gyors útmutató: Azure Service Bus várólisták használata a Python használatával'
 description: Ez a cikk bemutatja, hogyan használható a Python a Azure Service Bus várólistákból érkező üzenetek létrehozására, üzenetek küldésére és fogadására.
-services: service-bus-messaging
+author: spelluru
 documentationcenter: python
-author: axisc
-editor: spelluru
-ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.custom: seo-python-october2019
-ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: f4fa90025e9aaa12c065514e0dd4e5d76e4f8d24
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478651"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337301"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Gyors útmutató: Azure Service Bus várólisták használata a Python használatával
 
@@ -42,19 +36,19 @@ A **ServiceBusClient** objektum lehetővé teszi a várólistákkal való munkav
 from azure.servicebus import ServiceBusClient
 ```
 
-Adja hozzá a következő kódot egy **ServiceBusClient** objektum létrehozásához. Cserélje `<connectionstring>` le az értéket a Service Bus elsődleges kapcsolattípus értékére. Ezt az értéket a [Azure Portal][Azure portal]Service Bus névterében található **megosztott hozzáférési házirendek** területen találja.
+Adja hozzá a következő kódot egy **ServiceBusClient** objektum létrehozásához. Cserélje le az `<connectionstring>` értéket a Service Bus elsődleges kapcsolattípus értékére. Ezt az értéket a [Azure Portal][Azure portal]Service Bus névterében található **megosztott hozzáférési házirendek** területen találja.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
 ```
 
-A következő kód a `create_queue` **ServiceBusClient** metódusát használja az alapértelmezett beállításokkal `taskqueue` rendelkező várólista létrehozásához:
+A következő kód a `create_queue` **ServiceBusClient** metódusát használja az `taskqueue` alapértelmezett beállításokkal rendelkező várólista létrehozásához:
 
 ```python
 sb_client.create_queue("taskqueue")
 ```
 
-A beállításokkal felülbírálhatja az alapértelmezett üzenetsor-beállításokat, például az üzenetek élettartamát (TTL) vagy a témakör maximális méretét. A következő kód egy nevű `taskqueue` várólistát hoz létre, amely a várólista maximális mérete 5 GB, a TTL értéke pedig 1 perc:
+A beállításokkal felülbírálhatja az alapértelmezett üzenetsor-beállításokat, például az üzenetek élettartamát (TTL) vagy a témakör maximális méretét. A következő kód egy nevű várólistát hoz létre, amely a `taskqueue` várólista maximális mérete 5 GB, a TTL értéke pedig 1 perc:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -63,7 +57,7 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
 
-Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja `send` a metódust a **ServiceBusClient** objektumon. A következő kódrészlet egy üzenetsor-ügyfelet hoz létre, és Tesztüzenet küldése a `taskqueue` várólistára. Cserélje `<connectionstring>` le az értéket a Service Bus elsődleges kapcsolattípus értékére. 
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `send` metódust a **ServiceBusClient** objektumon. A következő kódrészlet egy üzenetsor-ügyfelet hoz létre, és Tesztüzenet küldése a `taskqueue` várólistára. Cserélje le az `<connectionstring>` értéket a Service Bus elsődleges kapcsolattípus értékére. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -84,7 +78,7 @@ További információ a kvótákkal kapcsolatban: [Service Bus kvóták][Service
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 
-A várólista-ügyfél a `get_receiver` **ServiceBusClient** objektum metódusának használatával fogad üzeneteket egy várólistából. A következő kódrészlet létrehoz egy üzenetsor-ügyfelet, és üzenetet fogad a `taskqueue` várólistából. Cserélje `<connectionstring>` le az értéket a Service Bus elsődleges kapcsolattípus értékére. 
+A várólista-ügyfél a `get_receiver` **ServiceBusClient** objektum metódusának használatával fogad üzeneteket egy várólistából. A következő kódrészlet létrehoz egy üzenetsor-ügyfelet, és üzenetet fogad a `taskqueue` várólistából. Cserélje le az `<connectionstring>` értéket a Service Bus elsődleges kapcsolattípus értékére. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -104,9 +98,9 @@ with queue_client.get_receiver() as queue_receiver:
 
 A választható `peek_lock` paraméter `get_receiver` azt határozza meg, hogy Service Bus törli-e az üzeneteket a várólistáról az olvasáskor. Az üzenetek fogadásának alapértelmezett módja a *PeekLock*, vagy `peek_lock` **igaz**értékre van állítva, amely beolvassa (betekintést) és zárolja az üzeneteket anélkül, hogy törölné őket a várólistából. Ezután minden üzenetnek explicit módon el kell végeznie, hogy eltávolítsa azt a várólistából.
 
-Ha a várólistán lévő üzeneteket az olvasás során `peek_lock` `get_receiver` szeretné törölni, beállíthatja a paramétert **hamis**értékre. Ha a fogadási művelet részeként törli az üzeneteket, a legegyszerűbb modell, de csak akkor működik, ha az alkalmazás nem képes elviselni a hiányzó üzeneteket. Ennek a viselkedésnek a megismeréséhez Vegyünk egy olyan forgatókönyvet, amelyben a fogyasztó egy fogadási kérelmet bocsát ki, majd összeomlik a feldolgozás előtt. Ha a rendszer törölte az üzenetet a fogadáskor, amikor az alkalmazás újraindul, és megkezdi az üzenetek újrafelhasználását, az összeomlás előtt elmulasztotta a kapott üzenetet.
+Ha a várólistán lévő üzeneteket az olvasás során szeretné törölni, beállíthatja a `peek_lock` paramétert `get_receiver` **hamis**értékre. Ha a fogadási művelet részeként törli az üzeneteket, a legegyszerűbb modell, de csak akkor működik, ha az alkalmazás nem képes elviselni a hiányzó üzeneteket. Ennek a viselkedésnek a megismeréséhez Vegyünk egy olyan forgatókönyvet, amelyben a fogyasztó egy fogadási kérelmet bocsát ki, majd összeomlik a feldolgozás előtt. Ha a rendszer törölte az üzenetet a fogadáskor, amikor az alkalmazás újraindul, és megkezdi az üzenetek újrafelhasználását, az összeomlás előtt elmulasztotta a kapott üzenetet.
 
-Ha az alkalmazás nem tudja elviselni a kihagyott üzeneteket, a fogadás egy kétfázisú művelet. A PeekLock megkeresi a használni kívánt következő üzenetet, zárolja, hogy megakadályozza más fogyasztók számára a fogadást, és visszaadja az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás végrehajtja a fogadási folyamat második szakaszát úgy, hogy meghívja `complete` a metódust az **üzenet** objektumon.  A `complete` metódus felhasználja az üzenetet, és eltávolítja azt a várólistából.
+Ha az alkalmazás nem tudja elviselni a kihagyott üzeneteket, a fogadás egy kétfázisú művelet. A PeekLock megkeresi a használni kívánt következő üzenetet, zárolja, hogy megakadályozza más fogyasztók számára a fogadást, és visszaadja az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás végrehajtja a fogadási folyamat második szakaszát úgy, hogy meghívja a `complete` metódust az **üzenet** objektumon.  A `complete` metódus felhasználja az üzenetet, és eltávolítja azt a várólistából.
 
 ## <a name="handle-application-crashes-and-unreadable-messages"></a>Alkalmazás-összeomlások és nem olvasható üzenetek kezelése
 
@@ -114,7 +108,7 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 A várólistán lévő üzenetek esetében is időtúllépés van. Ha egy alkalmazás nem tud feldolgozni egy üzenetet a zárolási időtúllépés lejárta előtt, például ha az alkalmazás összeomlik, Service Bus feloldja az üzenet automatikus zárolását, és elérhetővé teszi azt újra.
 
-Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a `complete` metódus meghívása előtt, a rendszer az újraindításkor újra továbbítja az üzenetet az alkalmazásnak. Ezt a viselkedést gyakran egyszeri *feldolgozásnak*nevezik. Minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között, hogy kezelni tudja a duplikált üzenetek kézbesítését. 
+Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a metódus meghívása előtt `complete` , a rendszer az újraindításkor újra továbbítja az üzenetet az alkalmazásnak. Ezt a viselkedést gyakran egyszeri *feldolgozásnak*nevezik. Minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között, hogy kezelni tudja a duplikált üzenetek kézbesítését. 
 
 > [!TIP]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. Service Bus Explorer lehetővé teszi egy Service Bus névtérhez való kapcsolódást és az üzenetkezelési entitások egyszerű felügyeletét. Az eszköz olyan speciális funkciókat biztosít, mint például az importálási/exportálási funkciók, a témakörök, a várólisták, az előfizetések, a továbbító szolgáltatások, az értesítési központok és az Event hub-eszközök tesztelése.

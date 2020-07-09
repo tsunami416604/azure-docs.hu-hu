@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890961"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>A távoli figyelési megoldás-gyorsító helyi telepítése – Visual Studio Code
@@ -37,7 +36,7 @@ A helyi telepítés befejezéséhez a következő eszközökre van szükség a h
 * [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [VS Code C#-bővítménye](https://code.visualstudio.com/docs/languages/csharp)
-* [Node. js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node. js v10-et
+* [Node.js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node.js V10-es
 
 > [!NOTE]
 > A Visual Studio Code Windows, Mac és Ubuntu rendszerekhez érhető el.
@@ -64,7 +63,7 @@ A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási 
 1. Indítsa el a Visual Studio Code-ot.
 1. A VS Code-ban nyissa meg az **Azure-IOT-PC-Remote-Monitoring-DotNet** mappát.
 1. Hozzon létre egy **. vscode** nevű új mappát az **Azure-IOT-PC-Remote-Monitoring-DotNet** mappában.
-1. Másolja a Files **Launch. JSON** és **Tasks. JSON** fájlt a services\scripts\local\launch\idesettings\vscode-ből az imént létrehozott **. vscode** mappába.
+1. Másolja a **launch.json** és a **tasks.json** services\scripts\local\launch\idesettings\vscode az imént létrehozott **. vscode** mappába.
 1. Nyissa meg a **hibakeresési panelt** a vs Code-ban, és futtassa az **összes szolgáltatás futtatása** konfigurációt. Ez a konfiguráció futtatja az eszköz szimulációs szolgáltatását a Docker-ben, és futtatja a hibakeresőben lévő többi szolgáltatást.
 
 A hibakeresési konzolon futó **összes Microsoervices futtatásának** kimenete a következőhöz hasonlóan néz ki:
@@ -80,7 +79,7 @@ npm install
 npm start
 ```
 
-A kezdés befejezésekor a böngésző a **http:\//localhost: 3000/Dashboard**lapot jeleníti meg. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
+A kezdés befejezésekor a böngésző a **http: \/ /localhost: 3000/Dashboard**lapot jeleníti meg. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
 
 ### <a name="configure-and-run-nginx"></a>Az NGINX konfigurálása és futtatása
 
@@ -93,7 +92,7 @@ További információ az **Nginx**futtatásáról: [Nginx for Windows](https://n
 
 ### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon a\/böngészőben a http:/localhost: 9000 elemre.
+A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon a böngészőben a http: \/ /localhost: 9000 elemre.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

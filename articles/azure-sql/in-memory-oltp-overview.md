@@ -1,9 +1,9 @@
 ---
-title: Memóriában tárolt technológiák
+title: Memóriabeli technológiák
 description: A memóriában tárolt technológiák nagy mértékben javítják a tranzakciós és elemzési számítási feladatok teljesítményét Azure SQL Database és az Azure SQL felügyelt példányain.
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: ''
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046893"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985190"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -50,7 +50,7 @@ A hatékonyabb lekérdezési és tranzakciós feldolgozás miatt a memóriában 
 
 Az alábbi két példa azt mutatja be, hogyan segített a memóriában tárolt OLTP a teljesítmény jelentős javítása érdekében:
 
-- A memóriában tárolt OLTP használatával a [kvórum üzleti megoldásai megduplázzák a munkaterhelést, miközben 70%-kal javítják a DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- A memóriában tárolt OLTP használatával a [kvórum üzleti megoldásai megduplázzák a munkaterhelést, miközben 70%-kal javítják a DTU](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - Az alábbi videó az erőforrás-használat jelentős javulását mutatja be egy számítási feladattal: [memóriabeli OLTP-videó](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). További információt a blogbejegyzésben talál: [memóriabeli OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Adatméret és tárterület-korlát a memóriában tárolt OLTP
 
-A memóriában tárolt OLTP tartalmazza a memóriára optimalizált táblákat, amelyek a felhasználói adatok tárolására szolgálnak. Ezek a táblák a memóriába való illeszkedéshez szükségesek. Mivel a memóriát közvetlenül a SQL Database szolgáltatásban felügyeli, a felhasználói adatmennyiségre vonatkozó kvóta fogalma van. Ezt a gondolatot *a memóriában tárolt OLTP-tárolónak*nevezzük.
+A memóriában tárolt OLTP tartalmazza a memóriára optimalizált táblákat, amelyek a felhasználói adatok tárolására szolgálnak. Ezek a táblák a memóriába való illeszkedéshez szükségesek. Mivel a memóriát közvetlenül a SQL Database felügyeli, a felhasználói adatmennyiségre vonatkozó kvóta fogalma van. Ezt a gondolatot *a memóriában tárolt OLTP-tárolónak*nevezzük.
 
 Az egyes támogatott önálló adatbázisok díjszabási szintjei és a rugalmas készletek díjszabási szintje bizonyos mennyiségű memóriában tárolt OLTP-tárterületet tartalmaz.
 
@@ -149,7 +149,7 @@ A csomag visszaminősítése azonban negatív hatással lehet az adatbázisra. A
 
 Mielőtt visszaminősíti az adatbázist általános célú, standard vagy alapszintű verzióra, távolítsa el az összes memóriára optimalizált táblát és táblát, valamint az összes natív módon lefordított T-SQL-modult.
 
-*Erőforrások méretezése üzletileg kritikus*szinten: a memóriában optimalizált táblákban lévő adatoknak az adatbázis vagy a felügyelt példány szintjéhez társított memóriában tárolt OLTP-tárolóban kell lenniük, vagy a rugalmas készletben is elérhetők. Ha a réteg leskálázását vagy az adatbázis egy olyan készletbe való áthelyezését kísérli meg, amely nem rendelkezik elegendő memóriával rendelkező OLTP-tárolóval, a művelet meghiúsul.
+*Erőforrások méretezése üzletileg kritikus*szinten: a memóriában optimalizált táblákban lévő adatoknak az adatbázis vagy a felügyelt példány szintjéhez társított memóriában tárolt OLTP-tárolóban kell lenniük, vagy elérhetők a rugalmas készletben. Ha a réteg leskálázását vagy az adatbázis egy olyan készletbe való áthelyezését kísérli meg, amely nem rendelkezik elegendő memóriával rendelkező OLTP-tárolóval, a művelet meghiúsul.
 
 ## <a name="in-memory-columnstore"></a>Memóriában tárolt oszlopcentrikus
 
@@ -174,7 +174,7 @@ Fürtözött oszlopcentrikus indexek használatakor az oszlopos tömörítést a
 
 Ha például olyan adatbázisa van, amelynek maximális mérete 1 terabájt (TB), és a oszlopcentrikus indexek használatával 10 alkalommal éri el a tömörítést, akkor az adatbázisban összesen 10 TB felhasználói adat fér el.
 
-Ha nem fürtözött oszlopcentrikus indexeket használ, az alaptábla továbbra is a hagyományos sortárindex létrehozását formátumban tárolódik. Ezért a tárterület-megtakarítás nem annyira nagy, mint a fürtözött oszlopcentrikus indexek esetében. Ha azonban egy oszlopcentrikus indextel rendelkező hagyományos, nem fürtözött indexeket cserél le, továbbra is általános megtakarítást érhet el a tábla tárolási lábnyomában.
+Ha nem fürtözött oszlopcentrikus indexeket használ, az alaptábla továbbra is a hagyományos sortárindex létrehozását formátumban tárolódik. Ezért a tárterület-megtakarítás nem annyira jelentős, mint a fürtözött oszlopcentrikus indexek esetében. Ha azonban egy oszlopcentrikus indextel rendelkező hagyományos, nem fürtözött indexeket cserél le, továbbra is általános megtakarítást érhet el a tábla tárolási lábnyomában.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Oszlopcentrikus indexeket tartalmazó adatbázisok szolgáltatási szintjeinek módosítása
 
@@ -183,7 +183,7 @@ Előfordulhat, *hogy az önálló adatbázis alapszintű vagy standard szintre t
 Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat elérhetetlenné válik a visszalépés után. Ezért azt javasoljuk, hogy az adatbázis egy nem támogatott szintjére vagy szintre való visszalépése előtt dobja el az összes *fürtözött* oszlopcentrikus indexet.
 
 > [!Note]
-> A felügyelt példány minden szinten támogatja a Oszlopcentrikus indexeket.
+> Az SQL felügyelt példánya minden szinten támogatja a Oszlopcentrikus indexeket.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
@@ -212,6 +212,6 @@ Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat el
 
 ### <a name="tools"></a>Eszközök
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure Portalra](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179323"
 ---
 A Storage Emulator egyetlen rögzített fiókot és egy jól ismert hitelesítési kulcsot támogat a megosztott kulcsos hitelesítéshez. Ez a fiók és a kulcs az egyetlen megosztott kulcs hitelesítő adatai, amelyek használata engedélyezett a Storage Emulator használatával. Ezek a következők:
@@ -25,7 +25,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Kapcsolódás az Emulator-fiókhoz parancsikon használatával
-Az alkalmazásból a Storage emulatorhoz való kapcsolódás legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely hivatkozik a parancsikonra `UseDevelopmentStorage=true`. Az alábbi példa egy *app. config* fájlban lévő Storage emulatorhoz tartozó kapcsolódási sztringet mutat be: 
+Az alkalmazásból a Storage emulatorhoz való kapcsolódás legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely hivatkozik a parancsikonra `UseDevelopmentStorage=true` . Az alábbi példa egy *app.config* fájlban lévő Storage emulatorhoz tartozó kapcsolódási sztringet szemlélteti: 
 
 ```xml
 <appSettings>
@@ -44,7 +44,7 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Ez az érték megegyezik a fent látható parancsikonnal `UseDevelopmentStorage=true`.
+Ez az érték megegyezik a fent látható parancsikonnal `UseDevelopmentStorage=true` .
 
 #### <a name="specify-an-http-proxy"></a>HTTP-proxy meghatározása
 Megadhat egy HTTP-proxyt is, amelyet akkor használhat, ha a szolgáltatást a Storage Emulator használatával teszteli. Ez hasznos lehet a HTTP-kérések és a válaszok megfigyelésére a tárolási szolgáltatásokkal kapcsolatos műveletek hibakeresése során. Proxy megadásához adja hozzá a `DevelopmentStorageProxyUri` kapcsolót a kapcsolati karakterlánchoz, és állítsa az értékét a proxy URI-ra. Itt látható például egy olyan kapcsolódási sztring, amely a Storage emulatorra mutat, és egy HTTP-proxyt konfigurál:

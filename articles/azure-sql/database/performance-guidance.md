@@ -3,7 +3,7 @@ title: Teljesítmény-finomhangolási útmutató alkalmazások és adatbázisok 
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Ismerje meg az adatbázis-alkalmazások és-adatbázisok hangolását a Azure SQL Database és az Azure SQL felügyelt példányának teljesítményéhez.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 8536c1cfbeefc36774b5423aee39f345dc23cd18
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 793010ba9eaea32256796f5fcd42d1c469eb7917
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042707"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981983"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Alkalmazások és adatbázisok hangolása a Azure SQL Database és az Azure SQL felügyelt példányának teljesítményéhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Ez a cikk azt feltételezi, hogy már elvégezte a Azure SQL Database [Database 
 
 ## <a name="tune-your-application"></a>Az alkalmazás hangolása
 
-A hagyományos helyszíni SQL Serverban a kezdeti kapacitás tervezésének folyamata gyakran el van különítve az alkalmazások éles környezetben való futtatásának folyamatával. A hardveres és a termékspecifikus licenceket a rendszer először megvásárolja, a teljesítmény finomhangolását pedig utána végezheti el. Ha Azure SQL Database vagy az Azure SQL felügyelt példányát használja, érdemes összehangolni az alkalmazások futtatásának folyamatát. Az igény szerinti kapacitás kifizetésének modellje segítségével beállíthatja, hogy az alkalmazás a lehető legkevesebb erőforrást használja, ahelyett, hogy az alkalmazásra vonatkozó jövőbeli növekedési terveket kitalálja, ami gyakran helytelen. Egyes ügyfelek dönthetnek úgy, hogy nem hangolnak be egy alkalmazást, hanem több hardveres erőforrást is kiépítenek. Ez a megközelítés akkor lehet hasznos, ha egy kiemelt időszakban nem kívánja módosítani a kulcskezelő alkalmazást. Az alkalmazások finomhangolása azonban a Azure SQL Database és az Azure SQL felügyelt példányának szolgáltatási szintjeinek használatakor csökkentheti az erőforrások követelményeit és az alacsonyabb havi számlákat.
+A hagyományos helyszíni SQL Serverban a kezdeti kapacitás tervezésének folyamata gyakran el van különítve az alkalmazások éles környezetben való futtatásának folyamatával. A hardveres és a termékspecifikus licenceket a rendszer először megvásárolja, a teljesítmény finomhangolását pedig utána végezheti el. Ha az Azure SQL-t használja, érdemes összehangolni az alkalmazások futtatásának folyamatát és finomhangolását. Az igény szerinti kapacitás kifizetésének modellje segítségével beállíthatja, hogy az alkalmazás a lehető legkevesebb erőforrást használja, ahelyett, hogy az alkalmazásra vonatkozó jövőbeli növekedési terveket kitalálja, ami gyakran helytelen. Egyes ügyfelek dönthetnek úgy, hogy nem hangolnak be egy alkalmazást, hanem több hardveres erőforrást is kiépítenek. Ez a megközelítés akkor lehet hasznos, ha egy kiemelt időszakban nem kívánja módosítani a kulcskezelő alkalmazást. Az alkalmazások finomhangolása azonban a Azure SQL Database és az Azure SQL felügyelt példányának szolgáltatási szintjeinek használatakor csökkentheti az erőforrások követelményeit és az alacsonyabb havi számlákat.
 
 ### <a name="application-characteristics"></a>Alkalmazás jellemzői
 

@@ -2,19 +2,18 @@
 title: 'Oktatóanyag: minták – LUIS'
 description: Használjon mintázatokat a szándékok és az entitások előrejelzésének növeléséhez, miközben kevesebb példát hosszúságú kimondott szöveg ebben az oktatóanyagban. A minta sablon-kiírási példaként van megadva, amely az entitások és a figyelmen kívül hagyható szöveg azonosítására szolgáló szintaxist tartalmaz.
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592916"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039500"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Oktatóanyag: általános minta sablon-megadási formátumok hozzáadása az előrejelzések tökéletesítéséhez
 
 Ebben az oktatóanyagban mintákat használ a szándékok és az entitások előrejelzésének növeléséhez, ami lehetővé teszi, hogy kevesebb példát hosszúságú kimondott szöveg. A minta egy leképezéshez rendelt sablon-Kimondás, amely az entitások és a figyelmen kívül hagyható szöveg azonosítására szolgáló szintaxist tartalmaz.
 
-**Az oktatóanyag a következőket ismerteti:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Minta létrehozása
@@ -39,12 +38,10 @@ A rendszer a szöveg egyeztetése és a gépi tanulás kombinációja alapján a
 
 Ehhez a következő lépések szükségesek:
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true).
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
-1. Importálja a JSON-t egy új alkalmazásba a [Luis portálra](https://www.luis.ai). A **saját alkalmazások** lapon válassza az **+ új alkalmazás a beszélgetéshez**lehetőséget, majd válassza az **Importálás JSON-ként**lehetőséget. Válassza ki az előző lépésben letöltött fájlt.
-
-1. A **kezelés** szakasz **verziók** lapján válassza ki az aktív verziót, majd válassza a **klónozás**elemet. Nevezze el a klónozott verziót `patterns` . A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
+1. Importálja a JSON-t egy új alkalmazásba a [Luis portálra](https://www.luis.ai). A **saját alkalmazások** lapon válassza az **+ új alkalmazás a beszélgetéshez**lehetőséget, majd válassza az **Importálás JSON-ként**lehetőséget. Válassza ki az előző lépésben letöltött fájlt, nevezze el az alkalmazást `Patterns tutorial` .
 
 ## <a name="create-new-intents-and-their-utterances"></a>Új szándékok és a hozzájuk tartozó kimondott szövegek létrehozása
 
@@ -67,8 +64,6 @@ A két cél a kezelőt vagy a felettes közvetlen jelentéseit keresi a teljes s
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    Ne aggódjon, ha a szándék kimondott szövegeiben a keyPhrase entitás van felcímkézve az employee entitás helyett. Mindkettő megfelelően van előre jelezve a Teszt panelen és a végponton.
 
 1. A bal oldali navigációs menüben válassza az **Intents** (Szándékok) lehetőséget.
 
@@ -109,50 +104,50 @@ A két cél a kezelőt vagy a felettes közvetlen jelentéseit keresi a teljes s
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +166,9 @@ A két cél a kezelőt vagy a felettes közvetlen jelentéseit keresi a teljes s
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,13 +185,9 @@ A két cél a kezelőt vagy a felettes közvetlen jelentéseit keresi a teljes s
     }
     ```
 
-A két legfontosabb cél pontszáma a közelben van, de a legmagasabb szándék nem számottevően magas (több mint 60%) és nem elég messze a következő cél pontszáma fölé.
+A helyes elsődleges szándék előre jelezve lett, `OrgChart-Manager` de a pontszám nem 70% fölött van, és nem elég nagy a következő legmagasabb szándéknál. A minták segítségével jelentősen megnövelheti a megfelelő szándék pontszámának százalékos arányát, így az távolabb kerül a következő legmagasabb pontszámtól.
 
-Mivel a LUIS-képzés nem pontosan ugyanaz, mint minden alkalommal (van egy kis variáció), ezek az első két pontszám megfordítható a következő képzési ciklusban. Ennek eredményeként előfordulhat, hogy a rendszer nem a megfelelő szándékot adja vissza.
-
-A minták segítségével jelentősen megnövelheti a megfelelő szándék pontszámának százalékos arányát, így az távolabb kerül a következő legmagasabb pontszámtól.
-
-Ne zárja be ezt a második böngészőablakot. Az oktatóanyag későbbi részében még használni fogja.
+Ne zárja be ezt a második böngészőablakot. Később ismét használni fogja az oktatóanyagban.
 
 ## <a name="template-utterances"></a>Kimondottszöveg-sablon
 A humán erőforrás tárgyi tartományának jellegéből adódóan néhány gyakori módszer a szervezeten belüli alkalmazottak kapcsolatainak megkérdezésére. Például:
@@ -206,16 +197,16 @@ A humán erőforrás tárgyi tartományának jellegéből adódóan néhány gya
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-Ezek a kimondott szövegek túl közel esnek egymáshoz ahhoz, hogy számos kimondottszöveg-példa megadása nélkül meg lehessen határozni az egyediségüket a kontextus vonatkozásában. Ha egy szándékhoz felveszünk egy mintát, azzal a LUIS képes megtanulni az adott szándék esetében gyakori kimondott szövegek mintáit anélkül, hogy ehhez sok kimondottszöveg-példát kellene megadni.
+Ezek a hosszúságú kimondott szöveg túl vannak zárva a kontextus egyediségének meghatározásához, anélkül, hogy _sok_ teljes példát kellene megadniuk. A minta hozzáadásával a LUIS megtanítja a közös kiírási mintákat egy szándékhoz anélkül, hogy számos további példát kellene megadnia.
 
 A szándék sablonként szolgáló kimondott szövegeinek példái a következők lehetnek:
 
 |Példák kimondottszöveg-sablonokra|szintaxis jelentése|
 |--|--|
-|`Who does {Employee} report to[?]`|felcserélhetők`{Employee}`<br>figyelmen kívül`[?]`|
-|`Who reports to {Employee}[?]`|felcserélhetők`{Employee}`<br>figyelmen kívül`[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|felcserélhetők`{EmployeeListEntity}`<br>figyelmen kívül`[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|felcserélhetők`{EmployeeListEntity}`<br>figyelmen kívül`[?]`|
 
-Az `{Employee}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis, a `[?]` jelölők szavai vagy a nem kötelező [írásjelek](luis-reference-application-settings.md#punctuation-normalization) . A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
+Az `{EmployeeListEntity}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis, a `[?]` jelölők szavai vagy a nem kötelező [írásjelek](luis-reference-application-settings.md#punctuation-normalization) . A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
 
 A szintaxis úgy tűnik, hogy a reguláris kifejezés nem reguláris kifejezés. Csak a kapcsos (`{}`) és a szögletes (`[]`) zárójelek használata támogatott a szintaxisban. Ezek legfeljebb két szinten ágyazhatók be.
 
@@ -233,25 +224,25 @@ Ahhoz, hogy egy minta kimondható legyen, _először_ a Kimondás alá tartozó 
 
     |Kimondottszöveg-sablon|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    A sablon hosszúságú kimondott szöveg tartalmazza az **alkalmazott** entitást a kapcsos zárójeles jelöléssel.
+    A sablon hosszúságú kimondott szöveg tartalmazza a **EmployeeListEntity** entitást a kapcsos zárójel jelölésével.
 
 1. Miközben továbbra is a minták lapon válassza a **szervezeti diagram – jelentések** szándék lehetőséget, majd adja meg a következő sablon hosszúságú kimondott szöveg:
 
     |Kimondottszöveg-sablon|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>Végpont lekérdezése minták használata esetén
 
@@ -261,7 +252,7 @@ Most, hogy a mintákat hozzáadja az alkalmazáshoz, a betanításhoz, a közzé
 
 1. A közzététel befejezése után váltson vissza a böngésző lapjaira a végpont URL-címe lapra.
 
-1. Lépjen az URL-cím végére a címsorban, és cserélje le a _YOUR_QUERY_HERE_ a következőre:`Who is the boss of Jill Jones?`
+1. Nyissa meg az URL-cím végét a címsorban, és ellenőrizze, hogy a lekérdezés továbbra is `Who is the boss of Jill Jones?` megjelenik-e, majd küldje el az új előrejelzési URL-címet.
 
     ```json
     {
@@ -270,50 +261,50 @@ Most, hogy a mintákat hozzáadja az alkalmazáshoz, a betanításhoz, a közzé
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +323,9 @@ Most, hogy a mintákat hozzáadja az alkalmazáshoz, a betanításhoz, a közzé
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -351,7 +342,7 @@ Most, hogy a mintákat hozzáadja az alkalmazáshoz, a betanításhoz, a közzé
     }
     ```
 
-A szándék előrejelzése mostantól lényegesen nagyobb mértékben bízik, és a következő legmagasabb cél a pontszám jelentősen alacsonyabb. Ez a két cél nem lesz flip-flop a betanítás során.
+A szándék előrejelzése mostantól sokkal nagyobb mértékben bízik, és a következő legmagasabb cél a pontszám nagyon alacsony. Ez a két cél nem lesz flip-flop a betanítás során.
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>Elhagyható szövegek és előre összeállított entitások használata
 
@@ -372,8 +363,8 @@ Példa a sablon hosszúságú kimondott szöveg, amely a következő opcionális
 
 |Szándék|Kimondottszöveg-példák elhagyható szövegelemekkel és előre összeállított entitásokkal|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szövegek könnyen hozzáadhatók a kimondottszöveg-sablonhoz, továbbá két szinten is beágyazhatók (`[[]]`), valamint entitásokat vagy szövegeket tartalmazhatnak.
@@ -383,9 +374,10 @@ A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szöveg
 
 **Kérdés: Miért nem képezi az előre összeállított szám a kimondottszöveg-sablon részét, ha a March 3 (március 3.) elemet a rendszer számként (`3`) és dátumként (`March 3`) is előrejelzi?** A kimondottszöveg-sablon környezetileg egy dátumot használ, vagy kifejezetten (`March 3`) vagy elvontan (`in a month`). A dátumok tartalmazhatnak számokat, a számok azonban nem szükségszerűen értelmezendők dátumként. Mindig használja azt az entitást, amely a leginkább megfelel az előrejelzés JSON-eredményeiben visszaküldeni kívánt típusnak.
 
-**Kérdés: Mi a helyzet a helytelenül megfogalmazott szövegekkel, amilyen például a `Who will {Employee}['s] manager be on March 3?`?** A nyelvtanilag eltérő szerkezetű igeidőket – ahogy itt a `will` és a `be` például egymástól elszakítva szerepelnek – új kimondottszöveg-sablonként kell szerepeltetni. A meglévő kimondottszöveg-sablon nem fog egyezni ezzel. Bár a kimondott szöveg szándéka nem változott, a szavak elhelyezkedése igen. Ez a változás kihat az előrejelzésre a LUIS-ban. Ezeket a hosszúságú kimondott szöveg egyesítheti [és](#use-the-or-operator-and-groups) elvégezheti a műveletekben.
+**Kérdés: Mi a helyzet a helytelenül megfogalmazott szövegekkel, amilyen például a `Who will {EmployeeListEntity}['s] manager be on March 3?`?** A nyelvtanilag eltérő szerkezetű igeidőket – ahogy itt a `will` és a `be` például egymástól elszakítva szerepelnek – új kimondottszöveg-sablonként kell szerepeltetni. A meglévő kimondottszöveg-sablon nem fog egyezni ezzel. Bár a kimondott szöveg szándéka nem változott, a szavak elhelyezkedése igen. Ez a változás kihat az előrejelzésre a LUIS-ban. Ezeket a hosszúságú kimondott szöveg egyesítheti [és](#use-the-or-operator-and-groups) elvégezheti a műveletekben.
 
-**Ne feledje: a rendszer először az entitásokat keresi meg, aztán egyezteti a mintát.**
+> [!CAUTION]
+> **Ne feledje: a rendszer először az entitásokat keresi meg, aztán egyezteti a mintát.**
 
 ### <a name="add-new-pattern-template-utterances"></a>Új kimondottszöveg-sablonminták hozzáadása
 
@@ -393,9 +385,9 @@ A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szöveg
 
     |Szándék|Kimondottszöveg-példák elhagyható szövegelemekkel és előre összeállított entitásokkal|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. Válassza ki a navigációs sávon a **vonat** lehetőséget az alkalmazás betanításához.
 
@@ -403,7 +395,7 @@ A szögletes zárójeles (`[]`) szintaxis használatával az elhagyható szöveg
 
 4. Adjon meg több kimondott tesztszöveget, és ellenőrizze, hogy a minta egyezik-e, illetve hogy a szándék pontszáma jelentősen magasabb-e.
 
-    Az első kimondott szöveg bevitele után válassza az **Inspect** (Vizsgálat) lehetőséget az eredmény alatt, hogy megtekinthesse az összes előrejelzési eredményt. Minden részletnek a **szervezeti diagram-kezelő** szándékkal kell rendelkeznie, és ki kell bontania az alkalmazott és a datetimeV2 entitások értékeit.
+    Az első kimondott szöveg bevitele után válassza az **Inspect** (Vizsgálat) lehetőséget az eredmény alatt, hogy megtekinthesse az összes előrejelzési eredményt. Minden részletnek a **szervezeti diagram-kezelő** szándékkal kell rendelkeznie, és ki kell bontania a `EmployeeListEntity` és az `datetimeV2` entitások értékeit.
 
     |Kimondott szöveg|
     |--|
@@ -429,14 +421,17 @@ A következő két minta egyetlen mintával kombinálható a csoport és a `()` 
 
 |Szándék|Kimondottszöveg-példák elhagyható szövegelemekkel és előre összeállított entitásokkal|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 Az új sablon kimondása a következőket eredményezi:
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 Ez egy **csoportot** használ a szükséges műveleti idő körül, és a választható `in` , `on` **illetve egy vagy** több közötti adatcsatornával.
+
+> [!NOTE]
+> A _vagy_ a szimbólum `|` (pipe) használatakor ügyeljen arra, hogy a cső szimbólumát a példa sablon előtt és után szóközzel válassza el.
 
 1. A **minták** lapon válassza a **szervezeti diagram – kezelő** szűrőt. Szűkítse a listát a keresésével `manager` .
 
@@ -444,7 +439,7 @@ Ez egy **csoportot** használ a szükséges műveleti idő körül, és a válas
 
 1. Módosítsa a sablonszöveget a következőre: 
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. Válassza ki a navigációs sávon a **vonat** lehetőséget az alkalmazás betanításához.
 
@@ -493,7 +488,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. E
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs sávon.
 
-1. Válassza a **+ Létrehozás**lehetőséget, írja be a nevet `FormName` , és válassza a **minta. any** típust. Kattintson a **Létrehozás** gombra.
+1. Válassza a **+ Létrehozás**lehetőséget, írja be a nevet `FormName` , és válassza a **minta. any** típust. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>A Pattern.any entitást használó minta hozzáadása
 

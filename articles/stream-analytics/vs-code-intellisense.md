@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
-ms.topic: conceptual
-ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394396"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037256"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
 
@@ -21,9 +21,9 @@ Az IntelliSense [stream Analytics lekérdezési nyelvhez](https://docs.microsoft
 
 ## <a name="intellisense-features"></a>IntelliSense-funkciók
 
-A VS Code Stream Analytics eszközeinek IntelliSense-funkcióit egy nyelvi szolgáltatás látja el. A nyelvi szolgáltatás elemzi a forráskódot, és intelligens kódokat biztosít a nyelvi szemantika alapján. Ha egy nyelvi szolgáltatás képes a lehetséges befejezésre, az IntelliSense-javaslatok beírásakor. Ha folytatja a beírást, a rendszer szűri a tagok, például a változók és a metódusok listáját úgy, hogy csak olyan tagokat tartalmazzon, amelyek tartalmazzák a beírt karaktereket. Ha megnyomja `Tab` a `Enter` vagy a billentyűt, az IntelliSense beszúrja a kiválasztott tagot.
+A VS Code Stream Analytics eszközeinek IntelliSense-funkcióit egy nyelvi szolgáltatás látja el. A nyelvi szolgáltatás elemzi a forráskódot, és intelligens kódokat biztosít a nyelvi szemantika alapján. Ha egy nyelvi szolgáltatás képes a lehetséges befejezésre, az IntelliSense-javaslatok beírásakor. Ha folytatja a beírást, a rendszer szűri a tagok, például a változók és a metódusok listáját úgy, hogy csak olyan tagokat tartalmazzon, amelyek tartalmazzák a beírt karaktereket. Ha megnyomja a `Tab` vagy a `Enter` billentyűt, az IntelliSense beszúrja a kiválasztott tagot.
 
-Az IntelliSense bármely szerkesztő ablakban aktiválható egy trigger karakter, például a pont karakter `.`beírásával.
+Az IntelliSense bármely szerkesztő ablakban aktiválható egy trigger karakter, például a pont karakter beírásával `.` .
 
 ![IntelliSense-Újratöltés](./media/vs-code-intellisense/auto-completion.gif)
 
@@ -34,13 +34,12 @@ Az IntelliSense bármely szerkesztő ablakban aktiválható egy trigger karakter
 
 A VS Code IntelliSense Stream Analytics eszközei különböző típusú kiegészítéseket biztosítanak, beleértve a nyelvi kiszolgáló javaslatait, a kódrészleteket és az egyszerű, Word-alapú szöveges kiegészítéseket.
 
-|       |         |       |
-| ----- | ------- | ----- |
+|Befejezés     |  Típus       |
+| ----- | ------- |
 | Kulcsszavak | `keyword`
 | Functions | `build-in function`, `user defined function`  |
 | Adathalmaz neve| `input`, `output`, `intermediate result set`|
 | Adathalmaz oszlopának neve|`input`, `intermediate result set`|
-|
 
 #### <a name="name-completion"></a>Név befejezése
 

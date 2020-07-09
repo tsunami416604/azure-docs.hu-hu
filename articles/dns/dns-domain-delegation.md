@@ -8,10 +8,9 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76939054"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>DNS-zónák delegálása az Azure DNS-sel
@@ -54,11 +53,11 @@ Az alábbi képen egy példa DNS-lekérdezés látható. A contoso.net és a par
 1. Az ügyfél lekéri a `www.partners.contoso.net` címet a helyi DNS-kiszolgálóról.
 2. A helyi DNS-kiszolgálón nem található meg a rekord, így lekéri azt a gyökér-névkiszolgálótól.
 3. A gyökér-névkiszolgálón sem található meg a rekord, azonban ismeri a `.net`-névkiszolgáló címét, és megadja azt a DNS-kiszolgálónak.
-4. A helyi DNS-kiszolgáló elküldi a kérést `.net` a névkiszolgáló számára.
-5. A `.net` névkiszolgáló nem rendelkezik a rekordtal, de ismeri a `contoso.net` névkiszolgáló címeit. Ebben az esetben a Azure DNSban üzemeltetett DNS-zóna névkiszolgáló-címeként válaszol.
-6. A helyi DNS-kiszolgáló elküldi a kérést a Azure DNS-ben `contoso.net` üzemeltetett zóna névkiszolgálói kiszolgálójára.
+4. A helyi DNS-kiszolgáló elküldi a kérést a `.net` névkiszolgáló számára.
+5. A `.net` névkiszolgáló nem rendelkezik a rekordtal, de ismeri a névkiszolgáló címeit `contoso.net` . Ebben az esetben a Azure DNSban üzemeltetett DNS-zóna névkiszolgáló-címeként válaszol.
+6. A helyi DNS-kiszolgáló elküldi a kérést a `contoso.net` Azure DNS-ben üzemeltetett zóna névkiszolgálói kiszolgálójára.
 7. A zónában `contoso.net` nem szerepel a rekord, de ismeri a kiszolgálónevet, `partners.contoso.net` és válaszol a címnek. Ebben az esetben ez egy Azure DNS-ban üzemeltetett DNS-zóna.
-8. A helyi DNS-kiszolgáló elküldi a kérést a `partners.contoso.net` zónához tartozó névkiszolgálói kiszolgálónak.
+8. A helyi DNS-kiszolgáló elküldi a kérést a zónához tartozó névkiszolgálói kiszolgálónak `partners.contoso.net` .
 9. A `partners.contoso.net` zónában a rekord szerepel, és az IP-címmel válaszol.
 10. A helyi DNS-kiszolgáló biztosítja az IP-címet az ügyfél számára
 11. Az ügyfél csatlakozik a `www.partners.contoso.net` webhelyhez.

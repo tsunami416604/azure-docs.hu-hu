@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 79d0a648645743751eed3b50edb628a20023546e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660357"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678018"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Az Azure Enterprise szerepköreinek kezelése
 
@@ -27,6 +27,10 @@ A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállal
 <sup>1</sup>A nagyvállalati szerződés számlázási kapcsolattartója lesz ehhez a szerepkörhöz rendelve.
 
 <sup>2</sup>A számlázási kapcsolattartót nem lehet hozzáadni vagy módosítani az Azure EA portálon, és az EA-regisztrációhoz a szerződés szintjén hozzáadott számlázási kapcsolattartóként megadott felhasználó lesz hozzáadva. A számlázási kapcsolattartó módosításához regionális műveleti központ (ROC) partner-/szoftvertanácsadójához kell kérelmet benyújtani.
+
+A regisztráció kiépítése során megadott első regisztrációs rendszergazda határozza meg a számlázási kapcsolattartó fiókja hitelesítésének típusát. Ha csak olvasási jogosultsággal rendelkező rendszergazdaként adják hozzá a számlázási kapcsolattartót az EA Portalhoz, akkor a kapcsolattartó hitelesítésének típusa Microsoft-fiókkal történő hitelesítés lesz. 
+
+Ha például a kezdeti hitelesítési típus vegyesre van állítva, akkor az EA Microsoft-fiókként lesz hozzáadva, és a számlázási kapcsolattartó csak olvasási EA-rendszergazdai jogosultságokkal fog rendelkezni. Ha az EA-rendszergazda nem hagyja jóvá egy meglévő számlázási kapcsolattartó Microsoft-fiókkal történő hitelesítését, az EA-rendszergazda törölheti a szóban forgó felhasználót, és megkérheti az ügyfelet, hogy újból adja hozzá a felhasználót csak olvasási jogosultsággal rendelkező rendszergazdaként, munkahelyi vagy iskolai fiókkal, amely csak a regisztráció szintjén van megadva az EA Portalon.
 
 Ezek a szerepkörök kifejezetten az Azure Nagyvállalati Szerződések kezelésére szolgálnak, és kiegészítik az Azure beépített szerepköreit, amelyek az erőforrásokhoz való hozzáférést szabályozzák. További információkért lásd az [Azure-erőforrások beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 

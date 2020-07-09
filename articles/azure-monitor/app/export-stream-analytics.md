@@ -3,12 +3,12 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536879"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110487"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -93,7 +93,7 @@ Most szüksége lesz az elsődleges hozzáférési kulcsra a Storage-fiókjábó
 
 Az elérési út előtagja minta megadja, hogy a Stream Analytics hol találja meg a tárolóban lévő bemeneti fájlokat. Be kell állítania, hogy a folyamatos exportálás hogyan tárolja az adattárolást. Állítsa be a következőhöz hasonlót:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 Ebben a példában:
 
@@ -107,7 +107,7 @@ Ebben a példában:
 > 
 
 ## <a name="add-new-output"></a>Új kimenet hozzáadása
-Most válassza ki a feladatot, > **kimenet** > **hozzáadása**elemet.
+Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása**elemet.
 
 ![](./media/export-stream-analytics/SA006.png)
 
@@ -125,16 +125,15 @@ A teszt függvénnyel ellenőrizze, hogy a megfelelő kimenetet kapja-e. Adja me
 A lekérdezés beillesztése:
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * exportálás – a bemenet a stream bemenetéhez megadott alias.
@@ -142,40 +141,38 @@ A lekérdezés beillesztése:
 * [Külső alkalmazás-GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) használunk, mert az esemény neve beágyazott JSON-tömbben van. Ezután a válassza ki az esemény nevét, valamint az adott névvel rendelkező példányok számát az adott időszakban. A [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) záradék egy perc alatt csoportosítja az elemeket.
 
 ### <a name="query-to-display-metric-values"></a>Metrikai értékek megjelenítésére szolgáló lekérdezés
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * Ez a lekérdezés a metrikák telemetria beolvassa az esemény időpontját és a metrika értékét. A metrikai értékek egy tömbön belül találhatók, ezért a sorok kinyeréséhez a külső GetElements mintát használjuk. Ebben az esetben a "myMetric" a metrika neve. 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>A dimenzió tulajdonságainak értékeit tartalmazó lekérdezés
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * Ez a lekérdezés a dimenzió tulajdonságainak értékeit tartalmazza anélkül, hogy a dimenzió tömbben rögzített indexben lévő adott dimenzión kellene lennie.
@@ -211,7 +208,7 @@ A Noam ben Zeev azt mutatja be, hogyan lehet az exportált adatfeldolgozást Str
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Folyamatos exportálás](export-telemetry.md)
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)

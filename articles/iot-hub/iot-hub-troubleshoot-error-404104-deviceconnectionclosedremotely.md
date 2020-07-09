@@ -10,10 +10,9 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758728"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
@@ -48,7 +47,7 @@ Néhány lehetőség a következőkre terjed ki:
 
 - Az eszköz a [MQTT](iot-hub-mqtt-support.md#default-keep-alive-timeout)hosszabb ideig megszakadt a mögöttes hálózati kapcsolaton, ami távoli üresjárati időkorlátot eredményez. Az MQTT Keep-Alive beállítás nem lehet más eszközönként.
 
-- Az eszköz TCP/IP szintű alaphelyzetbe állítást küldött, de nem adott meg `MQTT DISCONNECT`alkalmazás-szintet. Alapvetően az eszköz hirtelen lezárta az alapul szolgáló szoftvercsatorna-kapcsolatát. Időnként ezt a problémát az Azure IoT SDK régebbi verzióiban felmerülő hibák okozzák.
+- Az eszköz TCP/IP szintű alaphelyzetbe állítást küldött, de nem adott meg alkalmazás-szintet `MQTT DISCONNECT` . Alapvetően az eszköz hirtelen lezárta az alapul szolgáló szoftvercsatorna-kapcsolatát. Időnként ezt a problémát az Azure IoT SDK régebbi verzióiban felmerülő hibák okozzák.
 
 - Az eszköz oldalsó alkalmazása összeomlott.
 
@@ -58,17 +57,17 @@ Előfordulhat, hogy a IoT Hub átmeneti problémákba ütközik. Lásd: [IoT hub
 
 ## <a name="solutions"></a>Megoldások
 
-### <a name="solution-1"></a>1. megoldás
+### <a name="solution-1"></a>1\. megoldás
 
 Lásd: [401003 IoTHubUnauthorized-megoldás 1](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#solution-1)
 
-### <a name="solution-2"></a>2. megoldás
+### <a name="solution-2"></a>2\. megoldás
 
 - Ellenőrizze, hogy az eszköz rendelkezik-e megfelelő kapcsolattal IoT Hub a [kapcsolat tesztelésével](tutorial-connectivity.md). Ha a hálózat megbízhatatlan vagy időszakos, nem javasoljuk, hogy növelje a Keep-Alive értéket, mivel az észlelést eredményezhet (Azure Monitor riasztásokon keresztül, például). 
 
 - Használja a [IoT SDK](iot-hub-devguide-sdks.md)-k legújabb verzióit.
 
-### <a name="solution-3"></a>3. megoldás
+### <a name="solution-3"></a>3\. megoldás
 
 Tekintse [meg IoT hub belső kiszolgálói hibák megoldásait](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution).
 

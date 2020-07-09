@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b49752eeca6a3600830d71a029b6d93c9390b13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67148282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560057"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Hibák elhárítása a lemezek Azure Data Box Diskban való feloldásával kapcsolatban
 
@@ -47,7 +47,7 @@ Ez a szakasz részletesen ismerteti a Data Box Disk üzembe helyezése során fe
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Probléma: a meghajtó nem oldható fel a BitLockerből
  
-**Okozhat** 
+**Ok** 
 
 A BitLocker párbeszédablakban használta a jelszót, és a BitLocker zárolásának feloldása párbeszédpanelen megpróbálta feloldani a lemez zárolását. Ez nem fog működni.
 
@@ -57,7 +57,7 @@ A Data Box lemezek zárolásának feloldásához a Data Box Disk-feloldási eszk
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Probléma: nem lehetett feloldani vagy ellenőrizni néhány kötetet. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
  
-**Okozhat**
+**Ok**
 
 A következő hibaüzenet jelenhet meg a naplófájlban, és nem oldható fel vagy ellenőrizhető néhány kötet.
 

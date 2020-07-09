@@ -7,12 +7,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 6351a3d27806d791e478999d04922b961949c46a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 16248cd276b63e9570221626ec32d1d4723c4ebd
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982836"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125600"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Gyors útmutató: Azure Key Vault a Javához készült ügyféloldali kódtár
 
@@ -26,7 +26,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[A forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault)[API-referenciájának dokumentációja](https://azure.github.io/azure-sdk-for-java) | [termék dokumentációs](index.yml) | [mintái](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)  | 
+[Forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault)  |  [API-referenciák dokumentációja](https://azure.github.io/azure-sdk-for-java)  |  [Termékdokumentáció](index.yml)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-
 
 ### <a name="create-new-java-console-app"></a>Új Java Console-alkalmazás létrehozása
 
-A konzol ablakban a `mvn` parancs használatával hozzon létre egy új Java-konzol alkalmazást a névvel. `akv-java`
+A konzol ablakban a `mvn` parancs használatával hozzon létre egy új Java-konzol alkalmazást a névvel `akv-java` .
 
 ```console
 mvn archetype:generate -DgroupId=com.keyvault.quickstart
@@ -83,7 +83,7 @@ cd akv-java
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Nyissa meg a *Pom. XML* fájlt a szövegszerkesztőben. Adja hozzá az alábbi függőségi elemeket a függőségek csoportjához.
+Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá az alábbi függőségi elemeket a függőségek csoportjához.
 
 ```xml
     <dependency>
@@ -116,12 +116,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 A felhőalapú alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](../general/managed-identity.md) című témakört.
 
-Az egyszerűség kedvéért azonban ez a rövid útmutató egy asztali alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. A szolgáltatási elv egyedi nevet igényel a "http://&lt;My-Unique-Service-elven-name&gt;" formátumban.
+Az egyszerűség kedvéért azonban ez a rövid útmutató egy asztali alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. Az egyszerű szolgáltatásnév egyedi nevet igényel a "http:// &lt; My-Unique-Service-principal-name &gt; " formátumban.
 
-Hozzon létre egy szolgáltatási elvet az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
+Hozzon létre egy egyszerű szolgáltatást az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
@@ -152,9 +152,9 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`és. `AZURE_TENANT_ID` használja ezeket a változókat az clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben feljegyzett. A környezeti `export VARNAME=VALUE` változók beállításához használja a formátumot. (Ez a módszer csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, `/etc/environment ` szerkessze a fájlt.) 
+Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` és `AZURE_TENANT_ID` . használja ezeket a változókat az clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben feljegyzett. A `export VARNAME=VALUE` környezeti változók beállításához használja a formátumot. (Ez a módszer csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, szerkessze a `/etc/environment ` fájlt.) 
 
-A kulcstároló nevét a nevű `KEY_VAULT_NAME`környezeti változó néven is menteni kell.
+A kulcstároló nevét a nevű környezeti változó néven is menteni kell `KEY_VAULT_NAME` .
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -188,7 +188,7 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van bontva, a következő formátumban `https://<your-key-vault-name>.vault.azure.net`:.
+A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van bontva, a következő formátumban: `https://<your-key-vault-name>.vault.azure.net` .
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -202,7 +202,7 @@ SecretClient secretClient = new SecretClientBuilder()
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, a `secretClient.setSecret` metódus használatával titkos kulcsot helyezhet a kulcstartóba. Ehhez meg kell adni a titkos kulcsot – a "keresési kifejezésként" értéket hozzá kell rendelni az `secretName` ebben a példában szereplő változóhoz.  
+Most, hogy az alkalmazás hitelesítése megtörtént, a metódus használatával titkos kulcsot helyezhet a kulcstartóba `secretClient.setSecret` . Ehhez meg kell adni a titkos kulcsot – a "keresési kifejezésként" értéket hozzá kell rendelni az ebben a `secretName` példában szereplő változóhoz.  
 
 ```java
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
@@ -222,7 +222,7 @@ Most már lekérheti a korábban beállított értéket a `secretClient.getSecre
 KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
  ```
 
-Most már elérheti a beolvasott titok értékét a használatával `retrievedSecret.getValue()`.
+Most már elérheti a beolvasott titok értékét a használatával `retrievedSecret.getValue()` .
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 
@@ -238,7 +238,7 @@ A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=az
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
 

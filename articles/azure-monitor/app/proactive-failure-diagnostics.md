@@ -4,12 +4,12 @@ description: Riasztást küld a webalkalmazásnak küldött sikertelen kérelmek
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e4a629b4c33c22bf5663d6f8e8b9d0ba11ac24dc
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254786"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan riasztást küld a közel valós időben, ha a webalkalmazása rendellenes növekedést tapasztal a sikertelen kérések arányában. Ez a művelet szokatlanul megnövekszik a HTTP-kérelmek vagy a sikertelenként jelentett függőségi hívások gyakorisága. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb szintű hibakódokkal rendelkeznek. A probléma osztályozásának és diagnosztizálásának elősegítése érdekében a riasztás részleteiben a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése szerepel. További diagnosztizálásra a Application Insights portálra mutató hivatkozások is rendelkezésre állnak. A szolgáltatásnak nincs szüksége beállításra és konfigurációra, mivel gépi tanulási algoritmusokat használ a normál meghibásodási arány előrejelzéséhez.
@@ -304,7 +304,7 @@ A kérések és a felhasználók számának százalékos aránya alapján eldön
 
 Sok esetben a probléma gyorsan diagnosztizálható a kérelem nevétől, a kivételtől, a függőségi hibáktól és a megadott nyomkövetési adatoktól.
 
-Ebben a példában az SQL-adatbázis kivételt okozott, mert elérte a kérelmekre vonatkozó korlátot.
+Ebben a példában kivétel történt a SQL Database miatt, mert elérte a kérelmekre vonatkozó korlátot.
 
 [![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 

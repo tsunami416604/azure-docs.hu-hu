@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836005"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
@@ -81,7 +80,7 @@ A Log Analytics ügynöknek a számítógépre való telepítésekor két telep�
 
 A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre beállított virtuális gépeket és számítógépeket. Az alábbi táblázatban a **Figyelés állapota** értékei, leírásai és a megoldás lépései láthatók.
 
-| Figyelés állapota | Leírás | A megoldás lépései |
+| Figyelés állapota | Description | A megoldás lépései |
 |---|---|---|
 | Ügynök függőben lévő telepítése | A Log Analytics ügynök telepítése még fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
 | Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics ügynök csak a rendszert futtató virtuális gépekre telepíthető. | Indítsa újra a virtuális gépet. |
@@ -105,10 +104,10 @@ Az alábbi táblázat a kommunikációhoz szükséges erőforrásokat tartalmazz
 
 | Ügynök erőforrása | Portok | HTTPS-ellenőrzés kihagyása |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Igen |
-| *.oms.opinsights.azure.com | 443 | Igen |
-| *.blob.core.windows.net | 443 | Igen |
-| *.azure-automation.net | 443 | Igen |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Ha problémába ütközik az ügynök előkészítése során, olvassa el a következő cikket: [Az Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 

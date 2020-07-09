@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 302ba583f11b15be98832316b1ea05c7f9be931f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfc68b144eac16681f162b3574a82351397ed37c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530663"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086857"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Példa Apache Storm-topológiák és-összetevők a HDInsight Apache Storm
 
 A következő lista a Microsoft által létrehozott és karbantartott példákat mutatja be a HDInsight- [Apache Stormokkal](https://storm.apache.org/) való használatra. Ezek a példák számos témakörre vonatkoznak, amelyek alapszintű C#-és Java-topológiákat hoznak létre az Azure-szolgáltatások, például a Event Hubs, a Cosmos DB, a SQL Database, az [Apache HBase](https://hbase.apache.org/) a HDInsight és az Azure Storage használatához. Néhány példa azt is bemutatja, hogyan dolgozhat a nem Azure-beli, vagy akár nem Microsoft-technológiákkal, például a Signaler és a Socket.IO.
 
-| Leírás | Útmutató ehhez: | Nyelv/keretrendszer |
+| Description | Útmutató ehhez: | Nyelv/keretrendszer |
 |:--- |:--- |:--- |
 | [Írás a Azure Data Lake Storageba Apache Storm](apache-storm-write-data-lake-store.md) |Írás a Azure Data Lake Storageba |Java |
 | [Event hub kiöntő és bolt forrása](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Az Event hub kiöntő és a bolt forrása |Java |

@@ -4,18 +4,18 @@ titleSuffix: Azure Storage
 description: Útmutató a Azure Storage Analytics, a AzCopy és a Microsoft Message Analyzer teljes körű hibaelhárításához
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 12/20/2019
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e94810d53bf28aeb03de32a440c56a95232d0c2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506344"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Átfogó hibaelhárítás Azure Storage-metrikák és -naplózás, az AzCopy és a Message Analyzer használatával
 
@@ -90,11 +90,11 @@ Először is be kell állítania az Azure Storage naplózását és mérőszáma
 
 ### <a name="configure-net-client-side-logging"></a>.NET ügyféloldali naplózás konfigurálása
 
-.NET-alkalmazás ügyféloldali naplózásának konfigurálásához engedélyezze a .NET-diagnosztika szolgáltatást az alkalmazás konfigurációs fájljában (web. config vagy app. config). A részletekért tekintse meg az [ügyféloldali naplózást a .net Storage ügyféloldali függvénytárával](https://msdn.microsoft.com/library/azure/dn782839.aspx) és [az ügyféloldali naplózással a javához készült Microsoft Azure Storage SDK-val](https://msdn.microsoft.com/library/azure/dn782844.aspx) .
+.NET-alkalmazás ügyféloldali naplózásának konfigurálásához engedélyezze a .NET-diagnosztika szolgáltatást az alkalmazás konfigurációs fájljában (web.config vagy app.config). A részletekért tekintse meg az [ügyféloldali naplózást a .net Storage ügyféloldali függvénytárával](https://msdn.microsoft.com/library/azure/dn782839.aspx) és [az ügyféloldali naplózással a javához készült Microsoft Azure Storage SDK-val](https://msdn.microsoft.com/library/azure/dn782844.aspx) .
 
 Az ügyféloldali napló részletes információkat tartalmaz arról, hogy az ügyfél hogyan készíti elő a kérést, és fogadja és dolgozza fel a választ.
 
-A Storage ügyféloldali kódtára az alkalmazás konfigurációs fájljában (web. config vagy app. config) megadott helyen tárolja az ügyféloldali naplózási adatforrásokat.
+A Storage ügyféloldali kódtára az alkalmazás konfigurációs fájljában (web.config vagy app.config) megadott helyen tárolja az ügyféloldali naplózási adategységeket.
 
 ### <a name="collect-a-network-trace"></a>Hálózati nyomkövetés összegyűjtése
 

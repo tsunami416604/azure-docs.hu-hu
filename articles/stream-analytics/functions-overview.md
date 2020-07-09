@@ -7,15 +7,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598368"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények Azure Stream Analytics
 
-A Azure Stream Analytics SQL-szerű lekérdezési nyelve megkönnyíti a valós idejű elemzési logikák megvalósítását a folyamatos átviteli értékeken. Stream Analytics további rugalmasságot biztosít a lekérdezésben meghívott egyéni függvények révén. A következő mintakód egy nevű `sampleFunction` UDF, amely egy paramétert fogad el, minden bemeneti rekord a feladatot fogadja, és az eredményt a kimenetre írja `sampleResult`.
+A Azure Stream Analytics SQL-szerű lekérdezési nyelve megkönnyíti a valós idejű elemzési logikák megvalósítását a folyamatos átviteli értékeken. Stream Analytics további rugalmasságot biztosít a lekérdezésben meghívott egyéni függvények révén. A következő mintakód egy nevű UDF `sampleFunction` , amely egy paramétert fogad el, minden bemeneti rekord a feladatot fogadja, és az eredményt a kimenetre írja `sampleResult` .
 
 ```sql
 SELECT 
@@ -41,7 +41,7 @@ Ezek a függvények olyan forgatókönyvekhez használhatók, mint például a v
 
 A felhasználó által definiált függvények állapot nélküliek, és a visszatérési érték csak skaláris érték lehet. Ezekből a felhasználó által definiált függvényekből nem hívhat külső REST-végpontokat, mivel ez valószínűleg hatással lesz a feladatok teljesítményére. 
 
-Azure Stream Analytics nem tartja nyilván az összes függvényt, és eredményként visszaadott eredményt. Az ismételhetőség garantálása érdekében – például a régebbi időbélyeg-feladatának újbóli futtatása esetén – a függvények nem használhatók, például a `Date.GetData()` vagy `Math.random()`a függvény, mivel ezek a függvények nem adják vissza ugyanazt az eredményt az egyes hívásokhoz.  
+Azure Stream Analytics nem tartja nyilván az összes függvényt, és eredményként visszaadott eredményt. Az ismételhetőség garantálása érdekében – például a régebbi időbélyeg-feladatának újbóli futtatása esetén – a függvények nem használhatók, például a vagy a `Date.GetData()` függvény `Math.random()` , mivel ezek a függvények nem adják vissza ugyanazt az eredményt az egyes hívásokhoz.  
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
 

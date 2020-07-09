@@ -11,12 +11,11 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: f7c182fc8cd0c9ec74a35396e3cd042ce86d8ee4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324538"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database-adatbázisok tárterületének kezelése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -124,7 +123,7 @@ A következő tárolóhelyek mennyiségének megismerése fontos a rugalmas kés
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Rugalmas készlet lekérdezése a tárolóhelyekkel kapcsolatos információkhoz
 
-A következő lekérdezések segítségével határozható meg a rugalmas készlet tárolóhelyek mennyisége.  
+Az alábbi lekérdezések segítségével meghatározható a rugalmas készlethez kapcsolódó tárterület mennyisége.  
 
 ### <a name="elastic-pool-data-space-used"></a>Rugalmas készlethez felhasznált adatterület
 
@@ -146,7 +145,7 @@ Módosítsa az alábbi példákat egy olyan tábla visszaküldéséhez, amely a 
 A rendszer a készletben lévő egyes adatbázisok számára lefoglalt terület meghatározására szolgáló lekérdezés eredményeit hozzáadhatja a rugalmas készlethez lefoglalt teljes terület meghatározásához. A lefoglalt rugalmas készlet területe nem haladhatja meg a rugalmas készlet maximális méretét.  
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor. Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
 A PowerShell-parancsfájlhoz SQL Server PowerShell-modulra van szükség – lásd: a telepítéshez szükséges [PowerShell-modul letöltése](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) .
 

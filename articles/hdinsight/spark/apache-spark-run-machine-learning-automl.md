@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638884"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087470"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
 
@@ -71,7 +71,7 @@ Az adattárt egyszeri regisztrációval is regisztrálhatja a munkaterületen.
 
 ## <a name="experiment-submission"></a>Kísérlet elküldése
 
-Az [automatikus gépi tanulás konfigurációjában](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)be kell állítani `spark_context` a tulajdonságot, hogy a csomag elosztott módban fusson. A párhuzamosan végrehajtott ismétlések maximális számát megadó tulajdonságot `concurrent_iterations`a Spark-alkalmazás végrehajtó magoknál kisebb számra kell beállítani.
+Az [automatikus gépi tanulás konfigurációjában](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)be kell állítani a tulajdonságot, `spark_context` hogy a csomag elosztott módban fusson. A `concurrent_iterations` párhuzamosan végrehajtott ismétlések maximális számát megadó tulajdonságot a Spark-alkalmazás végrehajtó magoknál kisebb számra kell beállítani.
 
 ## <a name="next-steps"></a>További lépések
 

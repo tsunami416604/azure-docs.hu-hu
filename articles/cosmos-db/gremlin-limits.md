@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: lbosq
 ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72029849"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Az Azure Cosmos DB Gremlin korlátai
@@ -26,12 +26,12 @@ Ha elérte a Gremlin korlátot, a bejárási művelet megszakad a 429 **x-MS-Sta
 **Erőforrás**    | **Alapértelmezett korlát** | **Magyarázat**
 --- | --- | ---
 *Parancsfájl hossza* | **64 KB** | Gremlin bejárási szkript maximális hossza kérelmenként.
-*Kezelő mélysége* | **400** |  A bejárások során megtett egyedi lépések teljes száma. Például ```g.V().out()``` az operátorok száma 2: v () és ki (), ```g.V('label').repeat(out()).times(100)``` a kezelő mélysége 3: v (), REPEAT () és out (), mert ```.times(100)``` a paraméter az ```.repeat()``` operátor.
+*Kezelő mélysége* | **400** |  A bejárások során megtett egyedi lépések teljes száma. Például az ```g.V().out()``` operátorok száma 2: v () és ki (), a ```g.V('label').repeat(out()).times(100)``` kezelő mélysége 3: v (), REPEAT () és out (), mert a ```.times(100)``` paraméter az ```.repeat()``` operátor.
 *Párhuzamosság szintje* | **32** | A tárolási partíciók maximális száma a tárolási réteg felé küldött egyes kérelmekben. Ezt a korlátot a több száz partíciót tartalmazó gráfok is érintik.
-*Ismétlési korlát* | **32** | A ```.repeat()``` operátor által végrehajtható iterációk maximális száma. A legtöbb esetben minden ```.repeat()``` egyes iteráció a szélesség – első bejárást futtatja, ami azt jelenti, hogy minden bejárás a csúcspontok között legfeljebb 32 ugrásra van korlátozva.
+*Ismétlési korlát* | **32** | A ```.repeat()``` operátor által végrehajtható iterációk maximális száma. A legtöbb esetben minden egyes iteráció a ```.repeat()``` szélesség – első bejárást futtatja, ami azt jelenti, hogy minden bejárás a csúcspontok között legfeljebb 32 ugrásra van korlátozva.
 *Bejárási időkorlát* | **30 másodperc** | A bejárást a rendszer megszakítja, ha ez meghaladja ezt az időt. A Cosmos DB-gráf egy OLTP-adatbázis, amelynek bejárásai többségében néhány ezredmásodperc alatt befejeződnek. Az OLAP-lekérdezések Cosmos DB gráfon való futtatásához használja a [Graph adatkereteket](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes) és a [Cosmos db Spark-összekötőt](https://github.com/Azure/azure-cosmosdb-spark)tartalmazó [Apache Spark](https://azure.microsoft.com/services/cosmos-db/) .
 *Tétlen kapcsolat időkorlátja* | **1 óra** | Az a időtartam, ameddig a Gremlin szolgáltatás megnyitva tartja az üresjáratban lévő WebSocket-kapcsolatokat. A TCP Keep-Alive csomagok vagy a HTTP Keep-Alive kérelmek nem bővítik a kapcsolatok élettartamát ezen a korláton túl. Cosmos DB gráf-kezelő úgy véli, hogy a WebSocket-kapcsolatok üresjáratban vannak, ha nem fut aktív Gremlin-kérelem.
-*Erőforrás-jogkivonat óránként* | **100** | A Gremlin-ügyfelek által egy régióban lévő Gremlin-fiókhoz való csatlakozáshoz használt egyedi erőforrás-jogkivonatok száma. Ha az alkalmazás túllépi az óránkénti egyedi token `"Exceeded allowed resource token limit of 100 that can be used concurrently"` korlátot, a rendszer a következő hitelesítési kérelemben adja vissza.
+*Erőforrás-jogkivonat óránként* | **100** | A Gremlin-ügyfelek által egy régióban lévő Gremlin-fiókhoz való csatlakozáshoz használt egyedi erőforrás-jogkivonatok száma. Ha az alkalmazás túllépi az óránkénti egyedi token korlátot, a `"Exceeded allowed resource token limit of 100 that can be used concurrently"` rendszer a következő hitelesítési kérelemben adja vissza.
 
 ## <a name="next-steps"></a>További lépések
 * [Azure Cosmos DB Gremlin-válasz fejlécei](gremlin-headers.md) 

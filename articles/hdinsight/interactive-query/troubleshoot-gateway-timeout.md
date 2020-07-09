@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
 ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895048"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Kivételt jelent az Apache Ambari kaptár nézet lekérdezésének futtatása az Azure HDInsight
@@ -33,9 +32,9 @@ Cannot create property 'errors' on string '<!DOCTYPE html PUBLIC '-//W3C//DTD XH
 
 Átjáró időtúllépése.
 
-Az átjáró időtúllépési értéke 2 perc. A Ambari struktúra nézetből érkező lekérdezések a `/hive2` végponton keresztül lesznek elküldve az átjárón keresztül. A lekérdezés sikeres lefordítása és elfogadása után a HiveServer a értéket `queryid`adja vissza. Az ügyfelek ezután megtartják a lekérdezés állapotát. Ha a folyamat során a HiveServer nem ad vissza HTTP-választ 2 percen belül, a HDI-átjáró 502,3-es átjáró időtúllépési hibát jelez a hívónak. A hiba akkor fordulhat elő, ha a lekérdezés feldolgozása (nagyobb valószínűséggel) és a lekérési állapot hívásakor (kevésbé valószínű) történik. A felhasználók bármelyiket láthatják.
+Az átjáró időtúllépési értéke 2 perc. A Ambari struktúra nézetből érkező lekérdezések a végponton keresztül lesznek elküldve az `/hive2` átjárón keresztül. A lekérdezés sikeres lefordítása és elfogadása után a HiveServer a értéket adja vissza `queryid` . Az ügyfelek ezután megtartják a lekérdezés állapotát. Ha a folyamat során a HiveServer nem ad vissza HTTP-választ 2 percen belül, a HDI-átjáró 502,3-es átjáró időtúllépési hibát jelez a hívónak. A hiba akkor fordulhat elő, ha a lekérdezés feldolgozása (nagyobb valószínűséggel) és a lekérési állapot hívásakor (kevésbé valószínű) történik. A felhasználók bármelyiket láthatják.
 
-A http-kezelő szálának gyorsnak kell lennie: Készítse elő a `queryid`feladatot, és térjen vissza. Számos ok miatt azonban az összes kezelői szálat el lehet foglalni, ami időtúllépést okoz az új lekérdezésekhez és az állapotjelentések beszerzéséhez.
+A http-kezelő szálának gyorsnak kell lennie: Készítse elő a feladatot, és térjen vissza `queryid` . Számos ok miatt azonban az összes kezelői szálat el lehet foglalni, ami időtúllépést okoz az új lekérdezésekhez és az állapotjelentések beszerzéséhez.
 
 ### <a name="responsibilities-of-the-http-handler-thread"></a>A HTTP-kezelő szálának feladatai
 
@@ -54,13 +53,13 @@ Néhány általános javaslat a helyzet javítására:
 
 * Ha külső kaptár metaadattár használ, ellenőrizze az adatbázis-metrikákat, és győződjön meg arról, hogy az adatbázis nincs túlterhelve. Érdemes lehet méretezni a metaadattár-adatbázis rétegét.
 
-* Győződjön meg arról, hogy a Parallel Ops be van kapcsolva (Ez lehetővé teszi, hogy a HTTP-kezelő szálak párhuzamosan fussanak). Az érték ellenőrzéséhez indítsa el az [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) , és navigáljon a **kaptár** > -**konfigurációk** > **speciális** > **Egyéni struktúra-helyéhez**. A értékének `hive.server2.parallel.ops.in.session` a következőnek kell lennie `true`:.
+* Győződjön meg arról, hogy a Parallel Ops be van kapcsolva (Ez lehetővé teszi, hogy a HTTP-kezelő szálak párhuzamosan fussanak). Az érték ellenőrzéséhez indítsa el az [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) , és navigáljon a **kaptár**  >  -**konfigurációk**  >  **speciális**  >  **Egyéni struktúra-helyéhez**. A értékének a következőnek kell `hive.server2.parallel.ops.in.session` lennie: `true` .
 
 * Győződjön meg arról, hogy a fürt virtuális gép SKU-jának nem túl kicsi a terheléshez. Érdemes lehet több fürt között felosztani a munkát. További információ: [fürt típusának kiválasztása](../hdinsight-capacity-planning.md#choose-a-cluster-type).
 
 * Ha a Ranger telepítve van a fürtön, ellenőrizze, hogy van-e túl sok olyan Ranger-házirend, amelyet ki kell értékelni az egyes lekérdezésekhez. Ismétlődő vagy szükségtelen házirendek megkeresése.
 
-* Győződjön meg arról, hogy a **HiveServer2 halom mérete** érték a Ambari. Navigáljon a **struktúra** > -**konfigurációk** > **beállításainak** > **optimalizálása**elemre. Győződjön meg arról, hogy az érték nagyobb, mint 10 GB. A teljesítmény optimalizálása érdekében szükség szerint módosítsa a teljesítményt.
+* Győződjön meg arról, hogy a **HiveServer2 halom mérete** érték a Ambari. Navigáljon a **struktúra**-  >  **konfigurációk**  >  **beállításainak**  >  **optimalizálása**elemre. Győződjön meg arról, hogy az érték nagyobb, mint 10 GB. A teljesítmény optimalizálása érdekében szükség szerint módosítsa a teljesítményt.
 
 * Győződjön meg arról, hogy a kaptár lekérdezése megfelelően van-e beállítva. További információ: [Apache Hive lekérdezések optimalizálása az Azure HDInsight-ben](../hdinsight-hadoop-optimize-hive-query.md).
 

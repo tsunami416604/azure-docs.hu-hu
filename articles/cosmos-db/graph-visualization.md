@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75500027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261783"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Az adatvizualizációs megoldásokkal Azure Cosmos DB Gremlin API-ban tárolt gráf-adathalmazok megjelenítése
 
@@ -20,17 +20,17 @@ A Azure Cosmos DB Gremlin API-ban tárolt adatmegjelenítés különféle adatvi
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Linkurious embléma](./media/graph-visualization/linkurious-logo.jpg)
+:::image type="content" source="./media/graph-visualization/linkurious-logo.jpg" alt-text="Linkurious embléma" border="false":::
 
 A [Linkurious Enterprise](https://linkurio.us/product/) gráf-technológiát és adatvizualizációt használ az összetett adatkészletek interaktív vizualizációs hálózatokba való bekapcsolásához. A platform csatlakozik az adatforrásokhoz, és lehetővé teszi a nyomozók számára, hogy zökkenőmentesen navigáljon több milliárd entitás és kapcsolat között. Az eredmény egy új lehetőség a gyanús kapcsolatok észlelésére lekérdezésekkel vagy táblázatokkal való zsonglőrködés nélkül.
 
 A Linkurious Enterprise interaktív felülete egyszerű módszert kínál az összetett adatmennyiség kivizsgálására. Megkeresheti az egyes entitásokat, kibonthatja a kapcsolatokat a rejtett kapcsolatok felfedéséhez, és tetszőleges elrendezést alkalmazhat az összetett hálózatokra. A Linkurious Enterprise mostantól kompatibilis a Azure Cosmos DB Gremlin API-val. Ez alkalmas a végpontok közötti gráf-vizualizációs forgatókönyvekhez, és támogatja a felhasználói felületről származó olvasási és írási képességeket. A [Linkurious bemutatóját a Azure Cosmos db](https://linkurio.us/contact/) használatával kérheti le
 
-![Linkurious bemutató](./media/graph-visualization/linkurious-demo.gif)
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious bemutató" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge-i intelligencia
 
-![Cambridge Intelligence embléma](./media/graph-visualization/ci-logo.png)
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence embléma" border="false":::
 
 [A Cambridge intelligencia](https://cambridge-intelligence.com/products/) Graph vizualizációs eszközkészletei mostantól támogatják a Azure Cosmos db. A Azure Cosmos DB a következő két vizualizációs eszközkészletet támogatja:
 
@@ -38,11 +38,11 @@ A Linkurious Enterprise interaktív felülete egyszerű módszert kínál az ös
 
 - [Újragráf a fejlesztők Reagálásához](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge Intelligence-bemutató](./media/graph-visualization/ci-demo-2.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence-bemutató" border="false":::
 
 Ezek az eszközkészletek lehetővé teszik a nagy teljesítményű Graph vizualizációs és elemzési alkalmazások kialakítását a használati esetekhez. Nagy teljesítményű web Graphics Library-(WebGL-) renderelést és gondosan elkészített kódokat biztosítanak a felhasználók számára a gyors és éleslátó vizualizációs élmény érdekében. Ezek az eszközök kompatibilisek a böngészővel, az eszközzel, a kiszolgálóval vagy az adatbázissal, és részletes oktatóanyagokkal, teljes körű dokumentált API-kkal és interaktív bemutatókkal rendelkeznek.
 
-![Cambridge Intelligence-bemutató](./media/graph-visualization/ci-demo-1.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence-bemutató" border="false":::
 
 
 ## <a name="next-steps"></a>További lépések

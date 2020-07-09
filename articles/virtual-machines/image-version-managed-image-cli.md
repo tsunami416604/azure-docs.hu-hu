@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796602"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Migrálás felügyelt rendszerképből rendszerkép-verzióra az Azure CLI használatával
@@ -36,7 +36,7 @@ A cikkben végzett munka során szükség esetén cserélje le az erőforráscso
 
 ## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása
 
-Mivel a felügyelt lemezképek mindig általánosított lemezképek, egy általánosított lemezképhez `--os-state generalized` tartozó rendszerkép-definíciót fog létrehozni.
+Mivel a felügyelt lemezképek mindig általánosított lemezképek, egy általánosított lemezképhez tartozó rendszerkép-definíciót fog létrehozni `--os-state generalized` .
 
 A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
@@ -44,7 +44,7 @@ További információ a képdefiníciók által megadható értékekről: [képd
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [általánosított](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, `--os-type Windows`használja a következőt:. 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [általánosított](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -92,7 +92,7 @@ az sig image-version create \
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> Az összes rendszerkép-verzió replikáját a [zóna redundáns tárolójában](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `--storage-account-type standard_zrs` is tárolhatja a rendszerkép verziójának létrehozásakor.
+> Az összes rendszerkép-verzió replikáját a [zóna redundáns tárolójában](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) is tárolhatja `--storage-account-type standard_zrs` a rendszerkép verziójának létrehozásakor.
 >
 
 ## <a name="next-steps"></a>További lépések

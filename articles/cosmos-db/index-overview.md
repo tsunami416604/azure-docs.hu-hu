@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798153"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
@@ -41,7 +40,7 @@ Példaként tekintse meg ezt az tételt:
 
 A következő fa fogja képviselni:
 
-![Az előző elem faszerkezetként van ábrázolva](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="Az előző elem faszerkezetként van ábrázolva" border="false":::
 
 Vegye figyelembe, hogy a tömbök a fában vannak kódolva: a tömb minden bejegyzése egy köztes csomópontot kap, amely a tömbben (0, 1 stb.) lévő bejegyzés indexével van megjelölve.
 
@@ -51,14 +50,14 @@ Ennek az az oka, hogy Azure Cosmos DB átalakítja az elemeket a fákba, mivel l
 
 Itt láthatók a fent ismertetett példában szereplő egyes tulajdonságok elérési útjai:
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /Locations/0/Country: "Németország"
+- /Locations/0/City: "Berlin"
+- /Locations/1/Country: "Franciaország"
+- /Locations/1/City: "Párizs"
+- /Headquarters/Country: "Belgium"
+- /Headquarters/Employees: 250
+- /exports/0/City: "Moszkva"
+- /exports/1/City: "Athén"
 
 Egy elem írásakor Azure Cosmos DB hatékonyan indexeli az egyes tulajdonságok elérési útját és a hozzá tartozó értéket.
 
@@ -181,7 +180,7 @@ Az adatindexelés során kinyert elérési utak megkönnyítik az index keresés
 
 Vegyük például a következő lekérdezést: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . A lekérdezési predikátum (elemek szűrése, ahol bármely hely "Franciaország" országa/régiója) megfelel az alábbi piros színnel jelölt elérési útnak:
 
-![Megadott elérési út megfeleltetése egy fában belül](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Megadott elérési út megfeleltetése egy fában belül" border="false":::
 
 > [!NOTE]
 > Egy olyan `ORDER BY` záradék, amelyet egy adott tulajdonság megrendelése *mindig* egy tartomány indexre van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. Hasonlóképpen, a `ORDER BY` több tulajdonság által megrendelést igénylő lekérdezésnek *mindig* összetett indexre van szüksége.

@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183319"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298762"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával
 
@@ -42,28 +42,27 @@ Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást re
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Átirányítási URI hozzáadása (válasz URL-címe)
 
-Az alkalmazás frissítéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
-1. A **Válasz URL-cím**területen adja hozzá `https://localhost:44316`a címet.
-1. Kattintson a **Mentés** gombra.
-1. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját a webalkalmazás konfigurálásakor egy későbbi lépésben való használatra.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, válassza a **tulajdonában lévő alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
-1. Válassza a **hitelesítés**lehetőséget, majd válassza **az új felület kipróbálása** (ha látható) lehetőséget.
-1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja `https://localhost:44316`be a nevet, majd kattintson a **Mentés**gombra.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja be a nevet `https://localhost:44316` , majd kattintson a **Mentés**gombra.
 1. Válassza az **Áttekintés** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** , hogy a webalkalmazás konfigurálásakor egy későbbi lépésben használhassa.
+
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *webapp1* alkalmazást.
+1. A **Válasz URL-cím**területen adja hozzá a címet `https://localhost:44316` .
+1. Kattintson a **Mentés** gombra.
+1. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját a webalkalmazás konfigurálásakor egy későbbi lépésben való használatra.
 
 * * *
 
@@ -92,12 +91,13 @@ Frissítse a web. config fájlban lévő beállításokat a felhasználói folya
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 1. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt.
-    1. Frissítse a `ida:Tenant` és `ida:AadInstance` a értékét a létrehozott Azure ad B2C bérlő nevével. Például cserélje le `fabrikamb2c` a `contoso`következőt:.
+    1. Frissítse a és a értékét a `ida:Tenant` `ida:AadInstance` létrehozott Azure ad B2C bérlő nevével. Például cserélje le a következőt: `fabrikamb2c` `contoso` .
+    1. Cserélje le a értéket a `ida:TenantId` címtár-azonosítóra, amelyet az Azure B2C-bérlő tulajdonságainál talál (a Azure Portal a **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár azonosítója**alatt).
     1. Cserélje le a értékét `ida:ClientId` a rögzített alkalmazás-azonosítóra.
-    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ha az ügyfél titkos kulcsa bármely előre definiált XML-entitást tartalmaz,`<`például kisebb, mint (`>`), nagyobb,`&`mint (), vagy a`"`dupla idézőjel (), akkor a karaktereket a web. config fájlhoz való hozzáadása előtt el kell kerülnie az ügyfél titkos kódjának kódolásával.
-    1. Cserélje le a értékét `ida:SignUpSignInPolicyId` a `b2c_1_signupsignin1`értékre.
-    1. Cserélje le a értékét `ida:EditProfilePolicyId` a `b2c_1_profileediting1`értékre.
-    1. Cserélje le a értékét `ida:ResetPasswordPolicyId` a `b2c_1_passwordreset1`értékre.
+    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ha az ügyfél titkos kulcsa bármely előre definiált XML-entitást tartalmaz, például kisebb, mint (), nagyobb, mint (), `<` `>` vagy a `&` dupla idézőjel ( `"` ), akkor a karaktereket a web. config fájlhoz való hozzáadása előtt el kell kerülnie az ügyfél titkos kódjának kódolásával.
+    1. Cserélje le a értékét a értékre `ida:SignUpSignInPolicyId` `b2c_1_signupsignin1` .
+    1. Cserélje le a értékét a értékre `ida:EditProfilePolicyId` `b2c_1_profileediting1` .
+    1. Cserélje le a értékét a értékre `ida:ResetPasswordPolicyId` `b2c_1_passwordreset1` .
 
 ## <a name="run-the-sample"></a>Minta futtatása
 

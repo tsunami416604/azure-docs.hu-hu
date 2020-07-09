@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980624"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Üzembe helyezési problémák az Azure Cloud Services esetén: gyakori kérdések (GYIK)
@@ -54,7 +53,7 @@ A régiójában elérhető méretek ellenőrzéséhez tekintse meg a [Microsoft 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Miért sikertelen a Cloud Service üzembe helyezése az előfizetés vagy a szolgáltatás korlátai/kvótái/korlátai miatt?
 A felhőalapú szolgáltatás telepítése meghiúsulhat, ha a lefoglalni kívánt erőforrások meghaladják a szolgáltatáshoz a régió/adatközpont szintjén engedélyezett alapértelmezett vagy maximális kvótát. További információ: [Cloud Services korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Az előfizetéshez tartozó aktuális használati/kvótát a portálon is nyomon követheti: Azure Portal => előfizetések => \<megfelelő előfizetés> => "használat + kvóta".
+Az előfizetéshez tartozó aktuális használati/kvótát a portálon is nyomon követheti: Azure Portal => Subscriptions => \<appropriate subscription>   => "használat + kvóta".
 
 Az erőforrás-használat/fogyasztással kapcsolatos információk a Azure-számlázási API-k használatával is beolvashatók. Lásd: [Azure Resource használati API (előzetes verzió)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

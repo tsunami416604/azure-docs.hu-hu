@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70080604"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek teljesítménydiagnosztikája
@@ -37,10 +37,10 @@ Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8,1, Windows
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 Piactéri rendszerkép), CentOS 6,5`*`[], 7,6, RHEL 7,2, 7,5, 8,0`*`[], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10`*`[], SLES 12 SP4`*`[]
+Oracle Linux Server 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Piactéri rendszerkép), CentOS 6,5 [ `*` ], 7,6, RHEL 7,2, 7,5, 8,0 [ `*` ], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10 [ `*` ], SLES 12 SP4 [ `*` ]
 
 >[!Note]
->[`*`] Tekintse meg az [ismert problémákat](how-to-use-perfinsights-linux.md#known-issues)
+>[ `*` ] Tekintse meg az [ismert problémákat](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>A teljesítmény-diagnosztika telepítése és futtatása a virtuális gépen
 
@@ -86,7 +86,7 @@ A következő elemzési forgatókönyvek érhetők el a Azure Portal. A teljesí
     A teljesítmény elemzésének összes ellenőrzését tartalmazza, és rögzíti a hálózati nyomkövetési és SMB-számlálókat. Ez a forgatókönyv az Azure Files teljesítményének hibakeresésére használható. Ez az elemzés 30 másodperctől 15 percet vesz igénybe, a kiválasztott időtartamtól függően. [További információ](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] Ezek az elemzési forgatókönyvek csak Windows rendszeren támogatottak.
+>[ `*` ] Ezek az elemzési forgatókönyvek csak Windows rendszeren támogatottak.
 
 ![Képernyőfelvétel a diagnosztika panelről a teljesítmény-diagnosztika panelen](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Egy értesítés jelenik meg, amikor a rendszer teljesítményfigyelőként elin
 Az elemzés befejezése után a következő elemek fel lesznek töltve az Azure-táblákba és a megadott Storage-fiókban található bináris nagy objektum (BLOB) tárolóba:
 
 * A futtatással kapcsolatos összes információ és kapcsolódó információ
-* Egy kimeneti tömörített (. zip) fájl ( **PerformanceDiagnostics_yyyy-hh-dd_hh-mm-SS-fff. zip** ) a Windows rendszerben és egy tar Ball-fájl ( **PerformanceDiagnostics_yyyy-hh-dd_hh-mm-SS-fff. tar. gz** ) a naplófájlokat tartalmazó Linux rendszeren.
+* Egy kimeneti tömörített (. zip) fájl ( **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ) a Windows rendszerben, valamint egy tar Ball-fájl ( **PerformanceDiagnostics_yyyy-hh-dd_hh-mm-SS-fff. tar. gz** ) a naplófájlokat tartalmazó Linuxon
 * HTML-jelentés
 
 A feltöltés után egy új diagnosztikai jelentés szerepel a Azure Portal.

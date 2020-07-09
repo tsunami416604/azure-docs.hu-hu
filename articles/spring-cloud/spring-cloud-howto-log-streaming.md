@@ -7,10 +7,9 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78192200"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
@@ -22,7 +21,7 @@ Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CL
 * Egy futó alkalmazást használó **Azure Spring Cloud** -példány, például a [Spring Cloud app](./spring-cloud-quickstart-launch-app-cli.md).
 
 > [!NOTE]
->  Az ASC CLI-bővítmény frissítve lett a 0.2.0 verzióról a 0.2.1-re. Ez a változás hatással van a naplózási streaming parancs szintaxisára `az spring-cloud app log tail`:, amelyet a következő váltja `az spring-cloud app logs`fel:. A következő parancs `az spring-cloud app log tail` egy későbbi kiadásban lesz elavult:. Ha már használta a 0.2.0 verziót, a 0.2.1-re frissíthet. Először távolítsa el a régi verziót a paranccsal: `az extension remove -n spring-cloud`.  Ezután telepítse a 0.2.1 a parancs használatával: `az extension add -n spring-cloud`.
+>  Az ASC CLI-bővítmény frissítve lett a 0.2.0 verzióról a 0.2.1-re. Ez a változás hatással van a naplózási streaming parancs szintaxisára: `az spring-cloud app log tail` , amelyet a következő váltja fel: `az spring-cloud app logs` . A következő parancs `az spring-cloud app log tail` egy későbbi kiadásban lesz elavult:. Ha már használta a 0.2.0 verziót, a 0.2.1-re frissíthet. Először távolítsa el a régi verziót a paranccsal: `az extension remove -n spring-cloud` .  Ezután telepítse a 0.2.1 a parancs használatával: `az extension add -n spring-cloud` .
 
 ## <a name="use-cli-to-tail-logs"></a>A CLI használata a farok naplóihoz
 
@@ -50,7 +49,7 @@ Ez a naplókat fogja visszaadni:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Az alkalmazáshoz tartozó farok naplója több példányban
-Ha a nevű `auth-service`alkalmazáshoz több példány is létezik, a (z) `-i/--instance` kapcsoló használatával megtekintheti a példány naplóját. 
+Ha a nevű alkalmazáshoz több példány is létezik, a (z `auth-service` ) kapcsoló használatával megtekintheti a példány naplóját `-i/--instance` . 
 
 Először az alábbi paranccsal kérheti le az alkalmazás-példányok nevét.
 
@@ -66,7 +65,7 @@ auth-service-default-12-75cc4577fc-pw7hb  Running   UP
 auth-service-default-12-75cc4577fc-8nt4m  Running   UP
 auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
-Ezt követően a lehetőséggel `-i/--instance` az alkalmazás egy példányát is továbbíthatja a naplókba:
+Ezt követően a lehetőséggel az alkalmazás egy példányát is továbbíthatja a naplókba `-i/--instance` :
 
 ```
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
@@ -75,7 +74,7 @@ az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-p
 Az Azure Portalból is kérheti az alkalmazás-példányok részleteit.  Miután kiválasztotta az **alkalmazásokat** az Azure Spring Cloud Service bal oldali navigációs paneljén, válassza az alkalmazások **példányai**lehetőséget.
 
 ### <a name="continuously-stream-new-logs"></a>Új naplók folyamatos továbbítása
-Alapértelmezés szerint a `az spring-cloud ap log tail` csak az alkalmazás-konzolra áramló meglévő naplókat nyomtatja ki, majd kilép. Ha új naplókat szeretne továbbítani, adja hozzá a-f (----követés):  
+Alapértelmezés szerint `az spring-cloud ap log tail` a csak az alkalmazás-konzolra áramló meglévő naplókat nyomtatja ki, majd kilép. Ha új naplókat szeretne továbbítani, adja hozzá a-f (----követés):  
 
 ```
 az spring-cloud app logs -n auth-service -f

@@ -2,14 +2,13 @@
 title: API-k és eszközök fejlesztők számára
 description: Megismerheti az Azure Batch szolgáltatással történő megoldásfejlesztéshez elérhető API-kat és eszközöket.
 ms.topic: conceptual
-ms.date: 05/22/2010
+ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: cd87419cd8c389be861cb88071884f8da1c3c1a3
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.openlocfilehash: 1a3b2bb080e80e5ddc5ac12413f312dcd930d03f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870602"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958021"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>A Batch API-k és eszközök áttekintése
 
@@ -33,9 +32,9 @@ Azure Batch két API-készlettel rendelkezik, egyet a szolgáltatási szinthez, 
 
 A tevékenység naplójában csak a felügyeleti API-k műveletei vannak nyomon követve. A szolgáltatási szint API-jai megkerülik az Azure Resource Management réteget (management.azure.com), és nincsenek naplózva.
 
-A [Batch szolgáltatásnak a készlet törlésére szolgáló API-](https://docs.microsoft.com/rest/api/batchservice/pool/delete) ját például közvetlenül a Batch-fiókban kell megcélozni:`DELETE {batchUrl}/pools/{poolId}`
+A [Batch szolgáltatásnak a készlet törlésére szolgáló API-](/rest/api/batchservice/pool/delete) ját például közvetlenül a Batch-fiókban kell megcélozni:`DELETE {batchUrl}/pools/{poolId}`
 
-A [készlet törléséhez a Batch Management API-t](https://docs.microsoft.com/rest/api/batchmanagement/pool/delete) a Management.Azure.com réteg célozza meg:`DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}`
+A [készlet törléséhez a Batch Management API-t](/rest/api/batchmanagement/pool/delete) a Management.Azure.com réteg célozza meg:`DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}`
 
 ## <a name="batch-service-apis"></a>A Batch szolgáltatás API-jai
 
@@ -43,11 +42,11 @@ Az alkalmazások és szolgáltatások közvetlen REST API-hívásokat hajthatnak
 
 | API | API-referencia | Letöltés | Oktatóanyag | Kódminták | További információ |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com](https://docs.microsoft.com/rest/api/batchservice/) |N/A |- |- | [Támogatott verziók](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[docs.microsoft.com](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Oktatóanyag](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Kibocsátási megjegyzések](https://aka.ms/batch-net-dataplane-changelog) |
-| **Batch Python** |[docs.microsoft.com](https://docs.microsoft.com/python/api/overview/azure/batch/client?view=azure-python) |[PyPI](https://pypi.org/project/azure-batch/) |[Oktatóanyag](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Olvass el](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
-| **Batch Node.js** |[docs.microsoft.com](https://docs.microsoft.com/javascript/api/overview/azure/batch/client?view=azure-node-latest) |[NPM](https://www.npmjs.com/package/azure-batch) |[Oktatóanyag](batch-nodejs-get-started.md) |- | [Olvass el](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
-| **Batch Java** |[docs.microsoft.com](https://docs.microsoft.com/java/api/overview/azure/batch?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [Olvass el](https://github.com/Azure/azure-batch-sdk-for-java)|
+| **Batch REST** |[Azure REST API – docs](/rest/api/batchservice/) |N.A. |- |- | [Támogatott verziók](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch .NET** |[Azure SDK for .NET – docs](/dotnet/api/overview/azure/batch?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Oktatóanyag](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Kibocsátási megjegyzések](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch Python** |[Pythonhoz készült Azure SDK – docs](/python/api/overview/azure/batch/client?view=azure-python) |[PyPI](https://pypi.org/project/azure-batch/) |[Oktatóanyag](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Olvass el](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
+| **Batch Node.js** |[Azure SDK a JavaScripthez – docs](/javascript/api/overview/azure/batch/client?view=azure-node-latest) |[NPM](https://www.npmjs.com/package/azure-batch) |[Oktatóanyag](batch-nodejs-get-started.md) |- | [Olvass el](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Java** |[Java-hoz készült Azure SDK – docs](/java/api/overview/azure/batch?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [Olvass el](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Batch Management API-k
 
@@ -55,17 +54,17 @@ A Batch Azure Resource Manager API-jai programozott hozzáférést biztosítanak
 
 | API | API-referencia | Letöltés | Oktatóanyag | Kódminták |
 | --- | --- | --- | --- | --- |
-| **Batch Management REST** |[docs.microsoft.com](https://docs.microsoft.com/rest/api/batchmanagement/) |- |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
-| **Batch Management .NET** |[docs.microsoft.com](https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Oktatóanyag](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
-| **Batch Management Python** |[docs.microsoft.com](https://docs.microsoft.com/python/api/overview/azure/batch/management?view=azure-python) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
-| **Batch Management Node.js** |[docs.microsoft.com](https://docs.microsoft.com/javascript/api/overview/azure/batch/management?view=azure-node-latest) |[NPM](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
-| **Batch Management Java** |[docs.microsoft.com](https://docs.microsoft.com/java/api/overview/azure/batch/management?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
+| **Batch Management REST** |[Azure REST API – docs](/rest/api/batchmanagement/) |- |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+| **Batch Management .NET** |[Azure SDK for .NET – docs](/dotnet/api/overview/azure/batch/management?view=azure-dotnet) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [Oktatóanyag](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
+| **Batch Management Python** |[Pythonhoz készült Azure SDK – docs](/python/api/overview/azure/batch/management?view=azure-python) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
+| **Batch Management Node.js** |[Azure SDK a JavaScripthez – docs](/javascript/api/overview/azure/batch/management?view=azure-node-latest) |[NPM](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
+| **Batch Management Java** |[Java-hoz készült Azure SDK – docs](/java/api/overview/azure/batch/management?view=azure-java-stable) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
 
 ## <a name="batch-command-line-tools"></a>A Batch parancssori eszközei
 
 Ezek a parancssori eszközök ugyanazt a funkcionalitást biztosítják, mint a Batch szolgáltatás API-jai és a Batch Management API-k: 
 
-- [Batch PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.batch/): Az [Azure PowerShell](/powershell/azure/overview) modulban található Azure Batch-parancsmagokkal felügyelheti a Batch-erőforrásokat a PowerShell használatával.
+- [Batch PowerShell-parancsmagok](/powershell/module/az.batch/): Az [Azure PowerShell](/powershell/azure/overview) modulban található Azure Batch-parancsmagokkal felügyelheti a Batch-erőforrásokat a PowerShell használatával.
 - [Azure CLI](/cli/azure): Az Azure parancssori felület (Azure CLI) egy többplatformos eszközkészlet, amely rendszerhéjparancsokat biztosít sok Azure-szolgáltatásokkal, például a Batch szolgáltatással és a Batch Management szolgáltatással való interakcióhoz. Az Azure CLI a Batch szolgáltatással való használatával kapcsolatos további információkért lásd: [Batch-erőforrások kezelése az Azure CLI-vel](batch-cli-get-started.md).
 
 ## <a name="other-tools-for-application-development"></a>Egyéb alkalmazásfejlesztési eszközök

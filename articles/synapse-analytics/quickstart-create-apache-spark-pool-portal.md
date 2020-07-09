@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a413ab171ea65c72182928ad4897530cb00e15
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2b199848e6c84370bd9d8711eed25dbf6c3f4dfa
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666329"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194929"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview-using-the-azure-portal"></a>Gyors útmutató: új Apache Spark készlet (előzetes verzió) létrehozása a Azure Portal használatával
 
@@ -96,7 +96,7 @@ Ha törölni szeretné a Apache Spark-készletet, tegye a következőket:
  ![Megerősítő párbeszédpanel a kiválasztott Apache Spark-készlet törléséhez.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-10.png)
 5. Ha a folyamat sikeresen befejeződik, a Apache Spark-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a rövid útmutató [: Apache Spark jegyzetfüzet létrehozása](quickstart-apache-spark-notebook.md)című témakört.
 - Lásd [: gyors útmutató: SZINAPSZIS SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).

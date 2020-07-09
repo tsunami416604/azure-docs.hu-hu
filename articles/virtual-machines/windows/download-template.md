@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085382"
 ---
 # <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
@@ -26,10 +26,10 @@ Amikor a portál vagy a PowerShell használatával hoz létre egy virtuális gé
 5. Válassza a **Letöltés** lehetőséget a felső menüben, és mentse a. zip fájlt a helyi számítógépre.
 6. Nyissa meg a. zip fájlt, és bontsa ki a fájlokat egy mappába. A. zip fájl a következőket tartalmazza:
    
-   * Parameters. JSON
-   * sablon. JSON
+   * parameters.jsbekapcsolva
+   * template.jsbekapcsolva
 
-A sablon. JSON fájl a sablon.
+A fájl template.jsa sablon.
 
 ## <a name="download-the-template-using-powershell"></a>Sablon letöltése a PowerShell használatával
 A. JSON sablonfájl az [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) parancsmaggal is letölthető. A `-path` paraméterrel megadhatja a. JSON fájl fájlnevét és elérési útját. Ebből a példából megtudhatja, hogyan töltheti le a **myResourceGroup** nevű erőforráscsoport sablonját a helyi számítógép **C:\users\public\downloads** mappájába.

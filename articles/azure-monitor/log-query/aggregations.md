@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670304"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Összesítések Azure Monitor naplóbeli lekérdezésekben
@@ -55,7 +54,7 @@ A példa kimenete 5 perces időközökben mutatja be a Perf Records Count trendv
 
 
 ### <a name="dcount-dcountif"></a>DCount, dcountif
-Egy adott oszlop különböző értékeinek megszámlálására használható `dcount` `dcountif` A következő lekérdezés kiértékeli, hogy hány különböző számítógép fogadta el a szívveréseket az elmúlt órában:
+`dcount` `dcountif` Egy adott oszlop különböző értékeinek megszámlálására használható. A következő lekérdezés kiértékeli, hogy hány különböző számítógép fogadta el a szívveréseket az elmúlt órában:
 
 ```Kusto
 Heartbeat 
@@ -63,7 +62,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Ha csak a szívverést küldő Linux rendszerű számítógépeket szeretné `dcountif`megszámolni, használja a következőt:
+Ha csak a szívverést küldő Linux rendszerű számítógépeket szeretné megszámolni, használja a következőt `dcountif` :
 
 ```Kusto
 Heartbeat 
@@ -72,7 +71,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Alcsoportok kiértékelése
-Ha az adatokban szereplő alcsoportokban darabszámot vagy egyéb összesítést szeretne végezni, használja `by` a kulcsszót. Például az egyes országokban/régiókban szívverést küldő különböző Linux-számítógépek számának megszámlálásához:
+Ha az adatokban szereplő alcsoportokban darabszámot vagy egyéb összesítést szeretne végezni, használja a `by` kulcsszót. Például az egyes országokban/régiókban szívverést küldő különböző Linux-számítógépek számának megszámlálásához:
 
 ```Kusto
 Heartbeat 
@@ -89,7 +88,7 @@ Heartbeat
 |Hollandia      | 2                   |
 
 
-Ha még kisebb alcsoportokat szeretne elemezni az adataiban, adjon hozzá további oszlopnevek `by` nevet a szakaszhoz. Előfordulhat például, hogy az egyes országokból/régiókból származó különálló számítógépeket szeretné megszámlálni OSType:
+Ha még kisebb alcsoportokat szeretne elemezni az adataiban, adjon hozzá további oszlopnevek nevet a `by` szakaszhoz. Előfordulhat például, hogy az egyes országokból/régiókból származó különálló számítógépeket szeretné megszámlálni OSType:
 
 ```Kusto
 Heartbeat 
@@ -98,7 +97,7 @@ Heartbeat
 ```
 
 ## <a name="percentiles-and-variance"></a>Percentilis és variancia
-A numerikus értékek kiértékelése során általános gyakorlat az, hogy az átlagot használja `summarize avg(expression)`. Az átlagokat csak néhány esetben jellemző szélsőséges értékek érintik. A probléma megoldásához használhat kevésbé kényes funkciókat, például `median` vagy. `variance`
+A numerikus értékek kiértékelése során általános gyakorlat az, hogy az átlagot használja `summarize avg(expression)` . Az átlagokat csak néhány esetben jellemző szélsőséges értékek érintik. A probléma megoldásához használhat kevésbé kényes funkciókat, például `median` vagy `variance` .
 
 ### <a name="percentile"></a>Percentilis
 A medián érték megkereséséhez használja a `percentile` függvényt egy értékkel a percentilis megadásához:

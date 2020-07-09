@@ -5,23 +5,23 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/13/2019
+ms.date: 06/28/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: cfb4e0e563bc604b0f03dcc5fb128c87d9710430
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b0c7f88004564a5f479c0917919ca14e0d048e8b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85516872"
 ---
-| Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott | Az [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) által támogatott | Saját üzemeltetésű [IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) által támogatott |
+| Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott | Az [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) által támogatott | [Helyi integrációs modul](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) által támogatott |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Cognitive Search index](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
+| &nbsp; |[Az Azure Cognitive Search indexe](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[MongoDB-hez készült Azure Cosmos DB API](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Adatkezelő](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
+| &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[1. generációs Azure Data Lake Storage](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
@@ -29,9 +29,9 @@ ms.locfileid: "83696483"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Felügyelt Azure SQL Database-példány](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Felügyelt Azure SQL-példány](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Synapse Analytics (korábban SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
 | **Adatbázis** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |✓ | |✓ |✓  |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |✓ | |✓ |✓  |
@@ -40,19 +40,20 @@ ms.locfileid: "83696483"
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |✓ | |✓ |✓  |
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |✓ | |✓ |✓  |
 | &nbsp; |[Apache Impala](../articles/data-factory/connector-impala.md) |✓ | |✓ |✓  |
-| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) |✓ | | |✓  |
+| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) |✓ |✓ | |✓  |
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |✓ | |✓ |✓  |
-| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |✓ | | |✓  |
+| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |✓ |✓ | |✓  |
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (előzetes verzió)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[SAP Business Warehouse az Open hub használatával](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
-| &nbsp; |[SAP Business Warehouse MDX használatával](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse via Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse via MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
-| &nbsp; |[SAP-táblázat](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
+| &nbsp; |[SAP-tábla](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
+| &nbsp; |[Snowflake](../articles/data-factory/connector-snowflake.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  |
@@ -82,7 +83,7 @@ ms.locfileid: "83696483"
 | &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |✓ | |✓ |✓  |
 | &nbsp; |[Magento (előzetes verzió)](../articles/data-factory/connector-magento.md) |✓ | |✓ |✓  |
 | &nbsp; |[Marketo (előzetes verzió)](../articles/data-factory/connector-marketo.md) |✓ | |✓ |✓  |
-| &nbsp; |[Office 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
+| &nbsp; |[Microsoft 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Eloqua (előzetes verzió)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys (előzetes verzió)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Service Cloud (előzetes verzió)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
@@ -97,9 +98,9 @@ ms.locfileid: "83696483"
 |  |[SharePoint Online-lista](../articles/data-factory/connector-sharepoint-online-list.md) |✓ | |✓ |✓ |
 | &nbsp; |[Shopify (előzetes verzió)](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Square (előzetes verzió)](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
-| &nbsp; |[Webes tábla (HTML-táblázat)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
+| &nbsp; |[Webtábla (HTML-tábla)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |✓ | |✓ |✓  |
 | &nbsp; |[Zoho (előzetes verzió)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> Ha egy összekötő *előzetesen*van megjelölve, kipróbálhatja, és visszajelzést küldhet nekünk. Ha az előzetes verziójú összekötőket szeretné használni a megoldásban, forduljon az [Azure ügyfélszolgálatához](https://azure.microsoft.com/support/).
+> Az *előzetes verzió* jelzéssel ellátott összekötőket kipróbálhatja, és visszajelzést küldhet róluk. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).

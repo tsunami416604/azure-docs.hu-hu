@@ -5,17 +5,16 @@ description: Megtudhatja, hogyan futtathat TensorFlow-betanítási szkripteket a
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 679e44a8949f283c0e01c47ca3e602ae6fc0eacf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78228312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433802"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>TensorFlow mély tanulási modellt készíthet Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +38,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
 
     - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
     - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
-    - [Töltse le a minta parancsfájl fájljait](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` , és`utils.py`
+    - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` és`utils.py`
      
     Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
@@ -67,9 +66,9 @@ from azureml.train.dnn import TensorFlow
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) .
 
-Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
+Hozzon létre egy munkaterület-objektumot az `config.json` [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
 ```Python
 ws = Workspace.from_config()
@@ -88,7 +87,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>Fájl adatkészletének létrehozása
 
-Egy `FileDataset` objektum egy vagy több fájlra hivatkozik a munkaterület adattárában vagy a nyilvános URL-címekben. A fájlok bármilyen formátumúak lehetnek, és a osztály lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A `FileDataset`létrehozásával létrehoz egy hivatkozást az adatforrás helyére. Ha az adatkészletbe átalakításokat alkalmazott, azokat az adatkészletben is tárolja a rendszer. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek. További információért tekintse `Dataset` meg [a csomag útmutatóját](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) .
+Egy `FileDataset` objektum egy vagy több fájlra hivatkozik a munkaterület adattárában vagy a nyilvános URL-címekben. A fájlok bármilyen formátumúak lehetnek, és a osztály lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A létrehozásával `FileDataset` létrehoz egy hivatkozást az adatforrás helyére. Ha az adatkészletbe átalakításokat alkalmazott, azokat az adatkészletben is tárolja a rendszer. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek. További információért tekintse [meg a csomag útmutatóját](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset` .
 
 ```python
 from azureml.core.dataset import Dataset
@@ -142,7 +141,7 @@ A [TensorFlow kalkulátor](https://docs.microsoft.com/python/api/azureml-train-c
 
 A TensorFlow kalkulátor az általános [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályon keresztül valósul meg, amely bármely keretrendszer támogatásához használható. További információ a képzési modellekről az általános kalkulátor használatával: [modellek betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md)
 
-Ha a képzési szkriptnek további pip-vagy Conda-csomagokat kell futtatnia, akkor az eredményül kapott Docker-rendszerképre is telepítheti a csomagokat `pip_packages` , `conda_packages` ha a és az argumentumokat át szeretné adni a nevüknek.
+Ha a képzési szkriptnek további pip-vagy Conda-csomagokat kell futtatnia, akkor az eredményül kapott Docker-rendszerképre is telepítheti a csomagokat, ha a és az argumentumokat át szeretné adni a nevüknek `pip_packages` `conda_packages` .
 
 ```python
 script_params = {
@@ -187,7 +186,7 @@ A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
 ## <a name="register-or-download-a-model"></a>Modell regisztrálása vagy letöltése
 
-A modell kiképzése után regisztrálhatja azt a munkaterületre. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében. A paraméterek `model_framework`, `model_framework_version`a és `resource_configuration`a, a kód nélküli üzembe helyezés lehetőség megadásával elérhetővé válik. Ez lehetővé teszi a modell közvetlen üzembe helyezését webszolgáltatásként a regisztrált modellből, és az `ResourceConfiguration` objektum meghatározza a webszolgáltatás számítási erőforrását.
+A modell kiképzése után regisztrálhatja azt a munkaterületre. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében. A paraméterek `model_framework` , a és a `model_framework_version` , a `resource_configuration` kód nélküli üzembe helyezés lehetőség megadásával elérhetővé válik. Ez lehetővé teszi a modell közvetlen üzembe helyezését webszolgáltatásként a regisztrált modellből, és az `ResourceConfiguration` objektum meghatározza a webszolgáltatás számítási erőforrását.
 
 ```Python
 from azureml.core import Model
@@ -200,7 +199,7 @@ model = run.register_model(model_name='tf-dnn-mnist',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-A modell helyi másolatát a Run objektum használatával is letöltheti. A betanítási `mnist-tf.py`parancsfájlban egy TensorFlow-megtakarító objektum megőrzi a modellt egy helyi mappába (helyi a számítási célra). A Futtatás objektum használatával letöltheti a másolatokat.
+A modell helyi másolatát a Run objektum használatával is letöltheti. A betanítási parancsfájlban `mnist-tf.py` egy TensorFlow-megtakarító objektum megőrzi a modellt egy helyi mappába (helyi a számítási célra). A Futtatás objektum használatával letöltheti a másolatokat.
 
 ```Python
 # Create a model folder in the current directory
@@ -226,7 +225,7 @@ A Azure Machine Learning a TensorFlow-ben az elosztott képzés két módszerét
 
 A [Horovod](https://github.com/uber/horovod) egy nyílt forráskódú keretrendszer az Über által fejlesztett elosztott képzésekhez. Az elosztott GPU TensorFlow feladatok egyszerű elérési útját kínálja.
 
-A Horovod használatához meg kell adnia [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) egy objektumot a `distributed_training` paraméterhez a TensorFlow konstruktorban. Ez a paraméter biztosítja, hogy a Horovod-függvénytár telepítve legyen a betanítási parancsfájlban.
+A Horovod használatához meg kell adnia egy [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objektumot a `distributed_training` paraméterhez a TensorFlow konstruktorban. Ez a paraméter biztosítja, hogy a Horovod-függvénytár telepítve legyen a betanítási parancsfájlban.
 
 ```Python
 from azureml.core.runconfig import MpiConfiguration
@@ -274,7 +273,7 @@ run = exp.submit(tf_est)
 
 #### <a name="define-cluster-specifications-in-tf_config"></a>Adja meg a fürt specifikációit a következőben: "TF_CONFIG"
 
-Szükség van a fürt hálózati címeire és portjaira is [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), így Azure Machine learning beállítja a `TF_CONFIG` környezeti változót.
+Szükség van a fürt hálózati címeire és portjaira is [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec) , így Azure Machine learning beállítja a `TF_CONFIG` környezeti változót.
 
 A `TF_CONFIG` környezeti változó egy JSON-karakterlánc. Íme egy példa a paraméter-kiszolgáló változóra:
 
@@ -289,9 +288,9 @@ TF_CONFIG='{
 }'
 ```
 
-A TensorFlow magas szintű [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API-ja esetében a TensorFlow elemzi `TF_CONFIG` a változót, és létrehozza a fürt specifikációját.
+A TensorFlow magas szintű [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API-ja esetében a TensorFlow elemzi a `TF_CONFIG` változót, és létrehozza a fürt specifikációját.
 
-A TensorFlow alsóbb szintű alapszintű API-jai a betanításhoz, a `TF_CONFIG` változó `tf.train.ClusterSpec` elemzéséhez és a betanítási kódban való létrehozásához.
+A TensorFlow alsóbb szintű alapszintű API-jai a betanításhoz, a változó elemzéséhez `TF_CONFIG` és a `tf.train.ClusterSpec` betanítási kódban való létrehozásához.
 
 ```Python
 import os, json
@@ -311,7 +310,7 @@ A korábban regisztrált modell ugyanúgy helyezhető üzembe, mint bármely má
 
 ## <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
 
-A hagyományos üzembe helyezési útvonal helyett a kód nélküli üzembe helyezési funkciót (előzetes verzió) is használhatja a Tensorflow. Ha a fentiekben látható módon regisztrálja a modellt `model_framework`, `model_framework_version`és `resource_configuration` a paramétereket is használja, egyszerűen használhatja a `deploy()` statikus függvényt a modell üzembe helyezéséhez.
+A hagyományos üzembe helyezési útvonal helyett a kód nélküli üzembe helyezési funkciót (előzetes verzió) is használhatja a Tensorflow. Ha a fentiekben látható módon regisztrálja a modellt `model_framework` , `model_framework_version` és a `resource_configuration` paramétereket is használja, egyszerűen használhatja a `deploy()` statikus függvényt a modell üzembe helyezéséhez.
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])

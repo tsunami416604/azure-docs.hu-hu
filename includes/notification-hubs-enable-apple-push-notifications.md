@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81007831"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítvány-aláírási kérelem fájljának előállítása
@@ -138,7 +138,7 @@ Az újabb megközelítés számos előnnyel jár (a tanúsítványok használata
    > [!NOTE]
    > Ha már van konfigurált kulcs a **APNS**-hez, újra használhatja a. P8-tanúsítványt, amelyet a létrehozása után közvetlenül letöltött. Ha igen, figyelmen kívül hagyhatja a **3** – **5**. lépést.
 
-3. Az új **+** kulcs létrehozásához kattintson a gombra (vagy a **kulcs létrehozása** gombra).
+3. Az **+** új kulcs létrehozásához kattintson a gombra (vagy a **kulcs létrehozása** gombra).
 4. Adjon meg egy megfelelő **Kulcsnév** értéket, majd jelölje be az **Apple push Notifications szolgáltatás (APNs)** beállítást, majd kattintson a **Continue (folytatás**) gombra, majd a következő képernyőn **regisztráljon** .
 5. Kattintson a **Letöltés** elemre, majd helyezze át a **. p8** fájlt ( *AuthKey_*) egy biztonságos helyi könyvtárba, majd kattintson a **kész**gombra.
 
@@ -167,7 +167,7 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Üzembe helyezési profil létrehozása az alkalmazáshoz
 
-1. Térjen vissza az [iOS-es kiépítési portálra](https://go.microsoft.com/fwlink/p/?LinkId=272456), válassza a **tanúsítványok, azonosítók & profilok**lehetőséget, válassza a **profilok** elemet a bal **+** oldali menüben, majd válassza az új profil létrehozása lehetőséget. Megjelenik az **új létesítési Profil regisztrálása** képernyő.
+1. Térjen vissza az [iOS-es kiépítési portálra](https://go.microsoft.com/fwlink/p/?LinkId=272456), válassza a **tanúsítványok, azonosítók & profilok**lehetőséget, válassza a **profilok** elemet a bal oldali menüben, majd válassza **+** az új profil létrehozása lehetőséget. Megjelenik az **új létesítési Profil regisztrálása** képernyő.
 
 1. Válassza az **iOS-alkalmazások fejlesztése** lehetőséget a **fejlesztés** alatt a létesítési profil típusa területen, majd válassza a **Folytatás**lehetőséget.
 
@@ -186,7 +186,7 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
     5. Válassza a **Folytatás** elemet.
     6. Töltse le a fejlesztési tanúsítványt, és jegyezze meg a helyet, ahová a rendszer mentette.
 
-1. Térjen vissza a **tanúsítványok, azonosítók & profilok** lapra, válassza a bal oldali menüben a **profilok** lehetőséget, majd **+** válassza az új profil létrehozása lehetőséget. Megjelenik az **új létesítési Profil regisztrálása** képernyő.
+1. Térjen vissza a **tanúsítványok, azonosítók & profilok** lapra, válassza a bal oldali menüben a **profilok** lehetőséget, majd válassza **+** az új profil létrehozása lehetőséget. Megjelenik az **új létesítési Profil regisztrálása** képernyő.
 
 1. A **tanúsítványok kiválasztása** ablakban válassza ki az imént létrehozott fejlesztési tanúsítványt. Ezután válassza a **Folytatás** elemet.
 

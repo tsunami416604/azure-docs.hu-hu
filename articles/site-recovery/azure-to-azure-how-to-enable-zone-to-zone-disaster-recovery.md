@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996499"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135728"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zóna használatának engedélyezése az Azure Virtual Machines szolgáltatásbeli vész-helyreállításhoz
 
@@ -20,7 +20,7 @@ Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónáb�
 
 >[!NOTE]
 >
->- A Site Recovery jelenleg nem támogatja a zónákra vonatkozó helyreállítási terveket a vész-helyreállítási zónában. 
+>- Site Recovery jelenleg nem támogatja a zónák helyreállítási terveit a-portálon keresztüli vész-helyreállításra. A PowerShell vagy a REST API használatával kihasználhatja a zóna és a zóna vész-helyreállítási helyreállítási terveit. 
 >- A zóna és a zóna közötti vész-helyreállítás támogatása jelenleg két régióra korlátozódik: Délkelet-Ázsia és Egyesült Királyság déli régiója.  
 
 A Site Recovery szolgáltatás a tervezett és nem tervezett leállások során az üzletmenet-folytonosságot és a vész-helyreállítási stratégiát segíti az üzleti alkalmazások működésének megtartásában. Az ajánlott vész-helyreállítási lehetőség, hogy az alkalmazásait akár regionális kimaradás esetén is meg kell őrizni.
@@ -65,7 +65,7 @@ A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szo
 
 Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
 
-|Funkció  | Támogatási nyilatkozat  |
+|Szolgáltatás  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |
@@ -98,7 +98,7 @@ Jelentkezzen be a Azure Portalba.
 
 5. Ha módosítani szeretné a replikációs beállításokat, kattintson a Tovább: speciális beállítások elemre.
 
-6. Ha szükséges, módosítsa a beállításokat az alapértelmezetttől függetlenül. Az Azure-ból az Azure-ba irányuló vész-helyreállítási felhasználók számára ez az oldal ismerős lehet. Az ezen a panelen bemutatott beállításokkal kapcsolatos további részletek [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) találhatók
+6. Ha szükséges, módosítsa a beállításokat az alapértelmezetttől függetlenül. Az Azure-ból az Azure-ba irányuló vész-helyreállítási felhasználók számára ez az oldal ismerős lehet. Az ezen a panelen bemutatott beállításokkal kapcsolatos további részletek [itt](./azure-to-azure-tutorial-enable-replication.md) találhatók
 
     ![Speciális beállítások lap](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -116,7 +116,7 @@ A RTO SLA ugyanaz, mint a Site Recovery általános. A RTO akár 2 óráig is Me
 A Site Recovery csapat és az Azure Capacity Management csapata elegendő infrastrukturális kapacitást tervez. A feladatátvétel indításakor a csapatok is segítenek biztosítani, hogy Site Recovery által védett virtuálisgép-példányok a célzóna számára legyenek telepítve.
 
 **4. mely operációs rendszerek támogatottak?**
-A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operációs rendszereket támogatja, mint az Azure-ban az Azure vész-helyreállítás. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
+A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operációs rendszereket támogatja, mint az Azure-ban az Azure vész-helyreállítás. Tekintse meg a támogatási mátrixot [itt](./azure-to-azure-support-matrix.md).
 
 **5. a forrás-és a célként megadott erőforráscsoportok is megegyeznek?**
 Nem, a feladatátvételt egy másik erőforráscsoporthoz kell megadnia.
@@ -125,8 +125,8 @@ Nem, a feladatátvételt egy másik erőforráscsoporthoz kell megadnia.
 
 A vész-helyreállítási részletezés, feladatátvétel, ismételt védelem és feladat-visszavétel futtatásához követendő lépések megegyeznek az Azure-beli vész-helyreállítási forgatókönyv lépéseivel.
 
-A vész-helyreállítási részletezés végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill)ismertetett lépéseket.
+A vész-helyreállítási részletezés végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-dr-drill.md)ismertetett lépéseket.
 
-A másodlagos zónában található virtuális gépek feladatátvételének és ismételt védelemének végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)ismertetett lépéseket.
+A másodlagos zónában található virtuális gépek feladatátvételének és ismételt védelemének végrehajtásához kövesse az [itt](./azure-to-azure-tutorial-failover-failback.md)ismertetett lépéseket.
 
-Az elsődleges zónába történő feladat-visszavételhez kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback)ismertetett lépéseket.
+Az elsődleges zónába történő feladat-visszavételhez kövesse az [itt](./azure-to-azure-tutorial-failback.md)ismertetett lépéseket.

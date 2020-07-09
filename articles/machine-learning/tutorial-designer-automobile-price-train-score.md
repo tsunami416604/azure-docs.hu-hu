@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119039"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517643"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
     Ha már van elérhető számítási cél, akkor kiválaszthatja a folyamat futtatásához.
 
     > [!NOTE]
-    > A tervező csak Azure Machine Learning számítási és Azure Machine Learning számítási példányokra vonatkozó célokat képes futtatni. Más számítási célok nem jelennek meg.
+    > A tervező csak Azure Machine Learning számítási és Azure Machine Learning számítási példányokon végezheti el a betanítási kísérleteket, de más számítási célok nem jelennek meg.
 
 1. Adja meg a számítási erőforrás nevét.
 
@@ -107,8 +107,8 @@ Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet
 1. A vászontól jobbra található modul részletei ablaktáblán válassza a **kimenetek + napló**lehetőséget.
 
 1. Válassza ki a Graph ikont az adatmegjelenítéshez.
-
-    ![Az adatok vizualizációja](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Helyettesítő szöveg itt.":::
 
 1. Válassza ki az adatablak különböző oszlopait az egyes adatok megtekintéséhez.
 
@@ -173,15 +173,15 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
 1. A megjelenő **oszlopok** területen bontsa ki a **Belefoglalás**elem melletti legördülő menüt. Kijelölés, **minden oszlop**
 
-1. **Mentés** kiválasztása
+1. Kattintson a **Mentés** gombra
 
 1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** mezőt, és írja be a *hiányzó értékek eltávolítása sorokat*. 
 
     A folyamatnak ekkor a következőhöz hasonlóan kell kinéznie:
-    
-    ![Oszlop kijelölése](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Oszlop kijelölése":::
 
 ## <a name="train-a-machine-learning-model"></a>Gépi tanulási modell betanítása
 
@@ -229,7 +229,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
     > [!IMPORTANT]
     > Ügyeljen arra, hogy a **felosztott adatokat** tartalmazó bal oldali kimeneti portok a **betanítási modellhez**kapcsolódjanak. A bal oldali port tartalmazza a betanítási készletet. A megfelelő port tartalmazza a tesztelési készletet.
 
-    ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.":::
 
 1. Válassza ki a **Train Model** modult.
 
@@ -244,7 +244,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     A folyamatnak így kell kinéznie:
 
-    ![Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.":::
 
 ### <a name="add-the-score-model-module"></a>A pontszám modell modul hozzáadása
 
@@ -264,7 +264,7 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
     Az utolsó folyamatnak a következőképpen kell kinéznie:
 
-    ![A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.":::
 
 ## <a name="submit-the-pipeline"></a>A folyamat elküldése
 
@@ -295,7 +295,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
-    ![Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop":::
 
 ### <a name="evaluate-models"></a>Modellek kiértékelése
 
@@ -315,7 +315,7 @@ A modellhez a következő statisztikák láthatók:
 
 Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb érték azt jelzi, hogy a jóslatok közelebb vannak a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, és [telepítse a modelleket](tutorial-designer-automobile-price-deploy.md).
 

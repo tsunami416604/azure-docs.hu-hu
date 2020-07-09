@@ -5,17 +5,17 @@ services: azure-portal
 keywords: ''
 author: santhoshsomayajula
 ms.date: 01/29/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248c643c5f1865451abbe201e7033efedb8a7e39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76900753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763941"
 ---
 # <a name="export-or-delete-user-settings"></a>Felhasználói beállítások exportálása vagy törlése
 
@@ -33,7 +33,7 @@ A törlés előtt érdemes exportálni és áttekinteni a beállításait. Az ir
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A portál fejlécében válassza a beállítások ikon ![](media/azure-portal-export-delete-settings/settings-icon.png) **beállításai**lehetőséget.
+1. A portál fejlécében válassza a ![ Beállítások ikon ](media/azure-portal-export-delete-settings/settings-icon.png) **beállításai**lehetőséget.
 
 1. Válassza **az összes beállítás exportálása** vagy **az összes beállítás és privát irányítópultok törlése**lehetőséget.
 
@@ -41,7 +41,7 @@ A törlés előtt érdemes exportálni és áttekinteni a beállításait. Az ir
 
       A következő táblázat ismerteti ezeket a műveleteket.
 
-      | Műveletek | Leírás |
+      | Műveletek | Description |
       | --- | --- |
       | **Az összes beállítás exportálása** | Létrehoz egy *. JSON* fájlt, amely tartalmazza a felhasználói beállításokat, például a színes témát, a kedvenceket és a privát irányítópultokat.|
       | **Az összes beállítás és a privát irányítópultok törlése** | Törli a privát irányítópultokra és a portálon végzett egyéb egyéni beállításokra mutató hivatkozásokat. |

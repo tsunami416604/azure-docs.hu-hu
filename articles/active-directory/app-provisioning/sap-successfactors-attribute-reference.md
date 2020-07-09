@@ -2,21 +2,20 @@
 title: SAP SuccessFactors-attribútumok referenciája
 description: Megtudhatja, hogy a SuccessFactors mely attribútumait támogatja a SuccessFactors-HR-vezérelt kiépítés
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: reference
 ms.workload: identity
 ms.date: 12/06/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781548"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-attribútumok referenciája
 
@@ -33,7 +32,7 @@ Az alábbi táblázat a következő két üzembe helyezési alkalmazás által t
 - [SuccessFactors az Azure AD-felhasználók üzembe helyezéséhez](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
 
-| \# | SuccessFactors entitás                  | SuccessFactors attribútum     | Művelettípus |
+| \# | SuccessFactors entitás                  | SuccessFactors attribútum     | Művelet típusa |
 |----|----------------------------------------|------------------------------|----------------|
 | 1  | PerPerson                              | personIdExternal             | Olvasás           |
 | 2  | PerPerson                              | Számú personid                     | Olvasás           |
@@ -92,26 +91,26 @@ Az alábbi táblázat a következő két üzembe helyezési alkalmazás által t
 | 55 | EmpJob                                 | pozíció                     | Olvasás           |
 | 65 | EmpJob                                 | customString13               | Olvasás           |
 | 56 | EmpJob                                 | managerId                    | Olvasás           |
-| 57 | EmpJob\.részleghez                   | Részleghez                 | Olvasás           |
-| 58 | EmpJob\.részleghez                   | businessUnitId               | Olvasás           |
-| 59 | EmpJob\.-vállalat                        | cég                      | Olvasás           |
-| 60 | EmpJob\.-vállalat                        | companyId                    | Olvasás           |
-| 61 | EmpJob\.vállalati\.CountryOfRegistration | twoCharCountryCode           | Olvasás           |
-| 62 | EmpJob\.CostCenter                     | costCenter                   | Olvasás           |
-| 63 | EmpJob\.CostCenter                     | costCenterId                 | Olvasás           |
-| 64 | EmpJob\.CostCenter                     | costCenterDescription        | Olvasás           |
-| 65 | EmpJob\.részleg                     | Részleg                   | Olvasás           |
-| 66 | EmpJob\.részleg                     | departmentId                 | Olvasás           |
-| 67 | EmpJob\.divízió                       | osztály                     | Olvasás           |
-| 68 | EmpJob\.divízió                       | divisionId                   | Olvasás           |
-| 69 | EmpJob\.JobCode                        | jobCode                      | Olvasás           |
-| 70 | EmpJob\.JobCode                        | jobCodeId                    | Olvasás           |
-| 71 | EmpJob\.helye                       | LocationName                 | Olvasás           |
-| 72 | EmpJob\.helye                       | officeLocationAddress        | Olvasás           |
-| 73 | EmpJob\.helye                       | officeLocationCity           | Olvasás           |
-| 74 | EmpJob\.helye                       | officeLocationCustomString4  | Olvasás           |
-| 75 | EmpJob\.helye                       | officeLocationZipCode        | Olvasás           |
-| 76 | EmpJob\.PayGrade                       | payGrade                     | Olvasás           |
+| 57 | EmpJob \. részleghez                   | Részleghez                 | Olvasás           |
+| 58 | EmpJob \. részleghez                   | businessUnitId               | Olvasás           |
+| 59 | EmpJob- \. Vállalat                        | cég                      | Olvasás           |
+| 60 | EmpJob- \. Vállalat                        | companyId                    | Olvasás           |
+| 61 | EmpJob \. vállalati \. CountryOfRegistration | twoCharCountryCode           | Olvasás           |
+| 62 | EmpJob \. CostCenter                     | costCenter                   | Olvasás           |
+| 63 | EmpJob \. CostCenter                     | costCenterId                 | Olvasás           |
+| 64 | EmpJob \. CostCenter                     | costCenterDescription        | Olvasás           |
+| 65 | EmpJob \. részleg                     | Részleg                   | Olvasás           |
+| 66 | EmpJob \. részleg                     | departmentId                 | Olvasás           |
+| 67 | EmpJob \. divízió                       | osztály                     | Olvasás           |
+| 68 | EmpJob \. divízió                       | divisionId                   | Olvasás           |
+| 69 | EmpJob \. JobCode                        | jobCode                      | Olvasás           |
+| 70 | EmpJob \. JobCode                        | jobCodeId                    | Olvasás           |
+| 71 | EmpJob \. helye                       | LocationName                 | Olvasás           |
+| 72 | EmpJob \. helye                       | officeLocationAddress        | Olvasás           |
+| 73 | EmpJob \. helye                       | officeLocationCity           | Olvasás           |
+| 74 | EmpJob \. helye                       | officeLocationCustomString4  | Olvasás           |
+| 75 | EmpJob \. helye                       | officeLocationZipCode        | Olvasás           |
+| 76 | EmpJob \. PayGrade                       | payGrade                     | Olvasás           |
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Olvasás           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Olvasás           |
 
@@ -128,16 +127,16 @@ Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmaz
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
 | 6  | Felhasználó                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | Felhasználó                                   | city                     | l                                       | NA                                                                                           |
-| 8  | Felhasználó                                   | ország                  | Co                                      | NA                                                                                           |
+| 8  | Felhasználó                                   | ország                  | co                                      | NA                                                                                           |
 | 9  | Felhasználó                                   | state                    | st                                      | NA                                                                                           |
 | 10 | Felhasználó                                   | felhasználónév                 | samAccountName                          | NA                                                                                           |
 | 11 | Felhasználó                                   | Irányítószám                  | Irányítószám                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | Levelezés                                    | NA                                                                                           |
 | 13 | EmpJob                                 | Beosztás                 | cím                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
-| 15 | EmpJob\.vállalati\.CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
-| 16 | EmpJob\.részleg                     | Részleg               | Részleg                              | NA                                                                                           |
-| 17 | EmpJob\.divízió                       | osztály                 | cég                                 | NA                                                                                           |
-| 18 | EmpJob\.helye                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | EmpJob\.helye                       | officeLocationZipCode    | Irányítószám                              | NA                                                                                           |
+| 15 | EmpJob \. vállalati \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob \. részleg                     | Részleg               | Részleg                              | NA                                                                                           |
+| 17 | EmpJob \. divízió                       | osztály                 | cég                                 | NA                                                                                           |
+| 18 | EmpJob \. helye                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | EmpJob \. helye                       | officeLocationZipCode    | Irányítószám                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Ha a activeEmploymentsCount = 0, tiltsa le a account\.                                           |

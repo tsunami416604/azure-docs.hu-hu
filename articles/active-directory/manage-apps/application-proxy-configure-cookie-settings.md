@@ -2,22 +2,21 @@
 title: Alkalmazásproxy cookie-beállításai – Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) hozzáféréssel és munkamenet-cookie-kkal rendelkezik a helyszíni alkalmazások alkalmazás-proxyn keresztüli eléréséhez. Ebből a cikkből megtudhatja, hogyan használhatja és konfigurálhatja a cookie-beállításokat.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764893"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-beállítások a helyszíni alkalmazások eléréséhez Azure Active Directory
 
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD) hozzáféréssel és munkamenet-cookie-kkal re
 
 Az [alkalmazásproxy](application-proxy.md) a következő hozzáférési és munkamenet-cookie-beállításokat használja.
 
-| Cookie-beállítás | Alapértelmezett | Leírás | Javaslatok |
+| Cookie-beállítás | Alapértelmezett | Description | Javaslatok |
 | -------------- | ------- | ----------- | --------------- |
 | Csak HTTP-cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a http-válasz fejlécekben. Ez a jelző további biztonsági előnyöket biztosít, például megakadályozza az ügyféloldali parancsfájlok (CSS) használatát a cookie-k másolásával vagy módosításával.<br></br><br></br>Mielőtt támogatjuk a csak HTTP-beállítást, az alkalmazásproxy titkosított és továbbított sütiket egy biztonságos TLS-csatornán keresztül a módosítás elleni védelem érdekében. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.<br></br><br></br>**Nem** használható olyan ügyfelek vagy felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Például a **nem** érték használata olyan RDP-vagy MTSC-ügyfél esetén, amely az alkalmazásproxy használatával csatlakozik egy távoli asztali átjáró-kiszolgálóhoz.|
 | Biztonságos cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a biztonságos jelölőt a http-válasz fejlécekben. A biztonságos cookie-k biztonságosabbá teszi a cookie-kat egy TLS-védelemmel ellátott csatornán keresztül, például a HTTPS-en keresztül. Ez megakadályozza, hogy a cookie-k a cookie-k egyszerű szövegben való továbbítása miatt ne legyenek megfigyelhetők a jogosulatlan felektől. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.|
@@ -49,7 +48,7 @@ Továbbá, ha a háttérbeli alkalmazás olyan cookie-kkal rendelkezik, amelyekn
 A cookie-beállítások beállítása a Azure Portal használatával:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**elemre.
+2. Navigáljon **Azure Active Directory**   >  **vállalati alkalmazások**   >  **minden alkalmazás**elemre.
 3. Válassza ki azt az alkalmazást, amelyhez engedélyezni kívánja a cookie-beállítást.
 4. Kattintson a **alkalmazásproxy**elemre.
 5. A **További beállítások**területen állítsa a cookie beállítást **Igen** vagy **nem**értékre.
@@ -65,7 +64,7 @@ Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl *
 
 ## <a name="set-cookie-settings---powershell"></a>Cookie-beállítások beállítása – PowerShell
 
-A következő PowerShell-parancsokban ```<ObjectId>``` az alkalmazás ObjectId. 
+A következő PowerShell-parancsokban az ```<ObjectId>``` alkalmazás ObjectId. 
 
 **Csak HTTP cookie** 
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid használata a CloudEvents-sémában lévő eseményekkel
 description: Ismerteti, hogyan használható a CloudEvents séma a Azure Event Grid eseményeihez. A szolgáltatás támogatja a felhőalapú események JSON-implementációjában lévő eseményeket.
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: b62122e7ce981a73fe8b8b3028c123054e16330d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/07/2020
+ms.openlocfilehash: 0bcd14356c4d52bb8a5b270966097d47dfc92c3c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847599"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113955"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma használata Event Grid
 Az [alapértelmezett esemény sémáján](event-schema.md)kívül Azure Event Grid natív módon támogatja a [CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) és a [http protokoll kötésének](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON-implementációjában lévő eseményeket. A [CloudEvents](https://cloudevents.io/) egy [nyílt specifikáció](https://github.com/cloudevents/spec/blob/v1.0/spec.md) az események leírásához.
@@ -188,7 +184,7 @@ A következő minta JavaScript-kód a HTTP-triggerekhez szimulálja Event Grid t
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
     
-    if (req.method == "OPTIONS) {
+    if (req.method == "OPTIONS") {
         // If the request is for subscription validation, send back the validation code
         
         context.log('Validate request received');
@@ -211,8 +207,8 @@ module.exports = function (context, req) {
 };
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
-* Javasoljuk, hogy tesztelje, véleményezze és [járuljon hozzá](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) a CloudEvents.
+* Javasoljuk, hogy tesztelje, véleményezze és [járuljon hozzá](https://github.com/cloudevents/spec/blob/master/community/CONTRIBUTING.md) a CloudEvents.
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

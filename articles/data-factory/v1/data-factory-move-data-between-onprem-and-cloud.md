@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195985"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
 > [!NOTE]
@@ -47,7 +46,7 @@ A forgatókönyv elkezdése előtt a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért tekintse meg az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) ismertető cikket.
 * **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **célként/fogadó** adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
-* **SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **forrásadattárként**.
+* **SQL Server**. Ebben az oktatóanyagban egy SQL Server-adatbázist használ **forrásként** szolgáló adattárként.
 
 ## <a name="create-data-factory"></a>Data factory létrehozása
 Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOnPremDF**nevű Azure Data Factory-példányt.
@@ -104,7 +103,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
 
     ![Átjáró – Konfigurálás lap](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Így a legegyszerűbb módszer (egy kattintással) az átjáró letöltésére, telepítésére, konfigurálására és regisztrálására egyetlen lépésben. Láthatja, hogy a **Microsoft adatkezelés Gateway Configuration Manager** alkalmazás telepítve van a számítógépen. A végrehajtható **ConfigManager. exe** fájlt a (z) **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**mappában is megtalálhatja.
+    Így a legegyszerűbb módszer (egy kattintással) az átjáró letöltésére, telepítésére, konfigurálására és regisztrálására egyetlen lépésben. Láthatja, hogy a **Microsoft adatkezelés Gateway Configuration Manager** alkalmazás telepítve van a számítógépen. A végrehajtható **ConfigManager.exe** a mappában is megtalálható: **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**.
 
     Az átjárót manuálisan is letöltheti és telepítheti az ezen a lapon található hivatkozások segítségével, és regisztrálhatja az **új kulcs** szövegmezőben látható kulccsal.
 
@@ -117,10 +116,10 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
 5. Várjon néhány percet, vagy várjon, amíg meg nem jelenik a következő értesítési üzenet:
 
     ![Az átjáró telepítése sikerült](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Indítsa el **adatkezelés Gateway Configuration Manager** alkalmazást a számítógépen. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez. A végrehajtható **ConfigManager. exe** fájl a mappában is található: **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**
+6. Indítsa el **adatkezelés Gateway Configuration Manager** alkalmazást a számítógépen. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez. A végrehajtható **ConfigManager.exe** a mappában is megtalálható: **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**
 
     ![Átjáró Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. Ellenőrizze, hogy megjelenik `adftutorialgateway is connected to the cloud service` -e az üzenet. A Lenti állapotsor a **Cloud Service-hez csatlakozik,** és **zöld pipa jelzi**.
+7. Ellenőrizze, hogy megjelenik-e az `adftutorialgateway is connected to the cloud service` üzenet. A Lenti állapotsor a **Cloud Service-hez csatlakozik,** és **zöld pipa jelzi**.
 
     A **Kezdőlap** lapon a következő műveleteket is végrehajthatja:
 
@@ -138,7 +137,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
    * Az átjáró által használt tanúsítvány megtekintése vagy exportálása.
    * Módosítsa az átjáró által használt HTTPS-végpontot.    
    * Állítsa be az átjáró által használandó HTTP-proxyt.     
-9. választható Váltson a **diagnosztika** lapra, jelölje be a **részletes naplózás engedélyezése** beállítást, ha engedélyezni szeretné a részletes naplózást, amellyel elháríthatja az átjáróval kapcsolatos problémákat. A naplózási információk a **Eseménynapló** **alkalmazások és szolgáltatások naplók** -> **adatkezelés átjáró** csomópontjában találhatók.
+9. választható Váltson a **diagnosztika** lapra, jelölje be a **részletes naplózás engedélyezése** beállítást, ha engedélyezni szeretné a részletes naplózást, amellyel elháríthatja az átjáróval kapcsolatos problémákat. A naplózási információk a **Eseménynapló** **alkalmazások és szolgáltatások naplók**  ->  **adatkezelés átjáró** csomópontjában találhatók.
 
     ![Diagnosztika lap](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
@@ -152,9 +151,9 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
 12. A bal oldali fanézetben a **adftutorialgateway** alatt található **adatátjárók** területen kell megjelennie.  Ha rákattint, megjelenik a társított JSON.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Ebben a lépésben két társított szolgáltatást hoz létre: **AzureStorageLinkedService** és **SqlServerLinkedService**. A **SqlServerLinkedService** egy helyszíni SQL Server adatbázisra hivatkozik, és a **AzureStorageLinkedService** társított szolgáltatás egy Azure BLOB-tárolót csatol az adatelőállítóhoz. Az útmutató későbbi részében létrehoz egy folyamatot, amely átmásolja a helyszíni SQL Server adatbázis adatait az Azure Blob-tárolóba.
+Ebben a lépésben két társított szolgáltatást hoz létre: **AzureStorageLinkedService** és **SqlServerLinkedService**. A **SqlServerLinkedService** egy SQL Server adatbázisra hivatkozik, és a **AzureStorageLinkedService** társított szolgáltatás egy Azure BLOB-tárolót csatol az adatelőállítóhoz. Az útmutató későbbi részében létrehoz egy folyamatot, amely átmásolja a SQL Server adatbázis adatait az Azure Blob-tárolóba.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Társított szolgáltatás hozzáadása helyszíni SQL Server-adatbázishoz
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>Társított szolgáltatás hozzáadása SQL Server adatbázishoz
 1. A **Data Factory szerkesztőben**kattintson az eszköztár **új adattár** elemére, és válassza a **SQL Server**lehetőséget.
 
    ![Új SQL Server társított szolgáltatás](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +188,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
 * Hozzon létre egy **adftutorial** nevű Blob-tárolót az adat-előállítóhoz társított szolgáltatásként hozzáadott Azure Blob Storage-fiókban.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Helyszíni SQL Server előkészítése az oktatóanyaghoz
-1. A helyszíni SQL Server-alapú társított szolgáltatáshoz (**SqlServerLinkedService**) megadott adatbázisban a következő SQL-szkripttel hozza létre az **emp** táblát.
+1. A SQL Server társított szolgáltatáshoz (**SqlServerLinkedService**) megadott adatbázisban a következő SQL-parancsfájl használatával hozza létre az **EMP** táblát az adatbázisban.
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -279,7 +278,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    * a **folderPath** a **adftutorial/outfromonpremdf** értékre van állítva, ahol a outfromonpremdf a adftutorial tárolóban található mappa. Ha még nem létezik, hozza létre az **adftutorial** tárolót.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás minden órában létrehoz egy kimeneti adatszeletet az Azure SQL Database **EMP** táblájában.
 
-   Ha nem adja meg a **filename** paramétert a **kimeneti táblához**, a **folderPath** létrehozott fájlok a következő formátumban lesznek elnevezve: `Data.<Guid>.txt` (például::. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt.).
+   Ha nem adja meg a **filename** paramétert a **kimeneti táblához**, a **folderPath** létrehozott fájlok a következő formátumban lesznek elnevezve: `Data.<Guid>.txt` (például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné beállítani a **SliceStart** változó időpontja alapján, használja a partitionedBy tulajdonságot. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz.
 
@@ -359,7 +358,7 @@ Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot ho
    * A tevékenységek szakaszban csak olyan tevékenység van, amelynek **típusa** **másolásra**van beállítva.
    * A tevékenység **bemenete** **EmpOnPremSQLTable** értékre van állítva, és a tevékenység **kimenete** **OutputBlobTable**értékre van állítva.
    * A **typeProperties** szakaszban a **SqlSource** van megadva, mert a **forrás típusa** és a **BlobSink** a fogadó **típusaként**van megadva.
-   * A SqlSource `select * from emp` **SQLREADERQUERY** tulajdonságához SQL-lekérdezés van **SqlSource**megadva.
+   * `select * from emp`A **SqlSource** **sqlReaderQuery** tulajdonságához SQL-lekérdezés van megadva.
 
    Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.
 
@@ -371,7 +370,7 @@ Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot ho
 3. Az adatkészlet üzembe helyezéséhez kattintson a parancssáv **üzembe helyezés** gombjára (a tábla egy téglalap alakú adatkészlet). Ellenőrizze, hogy a folyamat megjelenik-e a fanézetben a **folyamatok** csomópont alatt.  
 4. Most kattintson kétszer az **X** gombra a lap bezárásához, hogy visszalépjen a **ADFTutorialOnPremDF** **Data Factory** lapjára.
 
-**Gratulálok!** Sikeresen létrehozott egy Azure-beli adat-előállítót, társított szolgáltatásokat, adatkészleteket és egy folyamatot, és ütemezte a folyamatot.
+**Gratulálunk!** Sikeresen létrehozott egy Azure-beli adat-előállítót, társított szolgáltatásokat, adatkészleteket és egy folyamatot, és ütemezte a folyamatot.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>A data factory megtekintése diagramnézetben
 1. A **Azure Portal**kattintson a **diagram** csempére a **ADFTutorialOnPremDF** -adatelőállító kezdőlapján. :

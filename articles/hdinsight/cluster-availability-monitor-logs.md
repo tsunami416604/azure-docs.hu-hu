@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: 5527a27ab94c350a345bb916206057069c3d16da
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82723167"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077218"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>A fürt rendelkezésre állásának figyelése Azure Monitor naplókkal a HDInsight-ben
 
@@ -38,7 +38,7 @@ Azure Monitor naplózási integráció engedélyezése után (ez eltarthat néh�
 
 A naplók számos példa típusú lekérdezést listáznak, például:
 
-| Lekérdezés neve                      | Leírás                                                               |
+| Lekérdezés neve                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | A számítógépek rendelkezésre állása ma    | A naplókat küldő számítógépek számának diagramja óránként                     |
 | Szívverések listázása                 | Az összes számítógép szívverésének listázása az elmúlt órában                           |
@@ -123,4 +123,4 @@ A súlyossági csoportosítás (például az **1.,** a fenti Kiemelt) kiválaszt
 ## <a name="next-steps"></a>További lépések
 
 * [Fürt rendelkezésre állása – Apache Ambari](./hdinsight-cluster-availability.md)
-* [Az Azure Monitor-naplók használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Azure Monitor naplók használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)

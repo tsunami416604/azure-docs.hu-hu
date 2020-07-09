@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414172"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató
@@ -46,7 +46,7 @@ Az ADF olyan kiszolgáló nélküli architektúrát kínál, amely különböző
 
 | Adatméret/ <br/> sávszélesség | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 GB/s   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
-| **1 GB**                    | 2,7 perc    | 1,4 perc   | 0,3 perc   | 0,1 perc  | 0,03 perc | 0,01 perc | 0,0 perc   |
+| **1 GB**                    | 2,7 perc    | 1,4 perc   | 0,3 perc   | 0,1 perc  | 0,03 perc | 0,01 perc | 0,0 perc   |
 | **10 GB**                   | 27,3 perc   | 13,7 perc  | 2,7 perc   | 1,3 perc  | 0,3 perc  | 0,1 perc  | 0,03 perc  |
 | **100 GB**                  | 4,6 óra    | 2,3 óra   | 0,5 óra   | 0,2 óra  | 0,05 óra | 0,02 óra | 0,0 óra   |
 | **1 TB**                    | 46,6 óra   | 23,3 óra  | 4,7 óra   | 2,3 óra  | 0,5 óra  | 0,2 óra  | 0,05 óra  |
@@ -103,19 +103,19 @@ Azure Data Factory a következő teljesítmény-optimalizálási funkciókat biz
 
 ### <a name="data-integration-units"></a>Adatintegrációs egységek
 
-Az adatintegrációs egység olyan mérték, amely a Azure Data Factory egyetlen egységének a CPU-, memória-és hálózati erőforrás-lefoglalási kombinációját jelöli. Az adatintegrációs egység csak az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)szolgáltatásra vonatkozik, a saját üzemeltetésű [integrációs](concepts-integration-runtime.md#self-hosted-integration-runtime)modul nem. [További információ](copy-activity-performance-features.md#data-integration-units).
+Az adatintegrációs egység olyan mérték, amely a Azure Data Factory egyetlen egységének a CPU-, memória-és hálózati erőforrás-lefoglalási kombinációját jelöli. Az adatintegrációs egység csak az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)szolgáltatásra vonatkozik, a saját üzemeltetésű [integrációs](concepts-integration-runtime.md#self-hosted-integration-runtime)modul nem. [További információk](copy-activity-performance-features.md#data-integration-units).
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>Saját üzemeltetésű Integration Runtime skálázhatósága
 
-A párhuzamos munkaterhelések és a nagyobb teljesítmény elérése érdekében a saját üzemeltetésű Integration Runtime vertikális felskálázásával vagy felskálázásával végezhető el. [További információ](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability).
+A párhuzamos munkaterhelések és a nagyobb teljesítmény elérése érdekében a saját üzemeltetésű Integration Runtime vertikális felskálázásával vagy felskálázásával végezhető el. [További információk](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability).
 
 ### <a name="parallel-copy"></a>Párhuzamos másolás
 
-A párhuzamos másolással beállíthatja azt a párhuzamosságot, amelyet a másolási tevékenység használni kíván. Ezt a tulajdonságot úgy tekintheti meg, mint a másolási tevékenységben a forrásból beolvasott szálak maximális száma, vagy párhuzamosan írható a fogadó adattárba. [További információ](copy-activity-performance-features.md#parallel-copy).
+A párhuzamos másolással beállíthatja azt a párhuzamosságot, amelyet a másolási tevékenység használni kíván. Ezt a tulajdonságot úgy tekintheti meg, mint a másolási tevékenységben a forrásból beolvasott szálak maximális száma, vagy párhuzamosan írható a fogadó adattárba. [További információk](copy-activity-performance-features.md#parallel-copy).
 
 ### <a name="staged-copy"></a>Előkészített másolás
 
-Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, a blob Storage-t átmeneti átmeneti tárolóként használhatja. [További információ](copy-activity-performance-features.md#staged-copy).
+Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, a blob Storage-t átmeneti átmeneti tárolóként használhatja. [További információk](copy-activity-performance-features.md#staged-copy).
 
 ## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:

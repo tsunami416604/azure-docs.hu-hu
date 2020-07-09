@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81310991"
 ---
 # <a name="send-security-messages-sdk"></a>Biztonsági üzenetek SDK küldése
@@ -32,7 +31,7 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 > * Biztonsági üzenetek küldése az Azure IoT C SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT C# SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT Python SDK használatával
-> * Biztonsági üzenetek küldése az Azure IoT Node. js SDK használatával
+> * Biztonsági üzenetek küldése az Azure IoT Node.js SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT Java SDK használatával
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>A IoT képességeinek Azure Security Center
@@ -47,7 +46,7 @@ A IoT-Azure Security Center a következő feltételekkel határozzák meg a bizt
 - Ha az üzenet megfelel a [biztonsági üzenet sémájának](https://aka.ms/iot-security-schemas)
 - Ha az üzenet a küldés előtt biztonsági üzenetként lett beállítva
 
-Minden biztonsági üzenet tartalmazza a küldő metaadatait, például a `AgentId`, `AgentVersion` `MessageSchemaVersion` és a biztonsági események listáját.
+Minden biztonsági üzenet tartalmazza a küldő metaadatait, például a `AgentId` , `AgentVersion` `MessageSchemaVersion` és a biztonsági események listáját.
 A séma határozza meg a biztonsági üzenet érvényes és szükséges tulajdonságait, beleértve az események típusait is.
 
 > [!NOTE]
@@ -58,7 +57,7 @@ A séma határozza meg a biztonsági üzenet érvényes és szükséges tulajdon
 
 ## <a name="valid-message-example"></a>Érvényes üzenet – példa
 
-Az alábbi példa egy érvényes biztonsági üzenet objektumot mutat be. A példa tartalmazza az üzenet metaadatait és `ProcessCreate` egy biztonsági eseményt.
+Az alábbi példa egy érvényes biztonsági üzenet objektumot mutat be. A példa tartalmazza az üzenet metaadatait és egy `ProcessCreate` biztonsági eseményt.
 
 Ha biztonsági üzenetként van beállítva, és a rendszer elküldte ezt az üzenetet, a IoT Azure Security Center fogja feldolgozni.
 
@@ -92,7 +91,7 @@ Ha biztonsági üzenetként van beállítva, és a rendszer elküldte ezt az üz
 
 ## <a name="send-security-messages"></a>Biztonsági üzenetek küldése
 
-Az Azure [IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)eszközoldali SDK, az [Azure IOT C# eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), az [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node), az [Azure IoT PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python)vagy az [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)használatával küldhet biztonsági üzeneteket a IoT-ügynökkel való Azure Security Center használata *nélkül* .
+Az Azure [IoT C Device SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), az [Azure IOT C# eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), az [Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node), az [Azure IoT PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python)vagy az [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)használatával küldhet biztonsági üzeneteket a IoT-ügynökkel való Azure Security Center használata *nélkül* .
 
 Ha az eszköz adatait az eszközökről a IoT Azure Security Center történő feldolgozásra szeretné elküldeni, a következő API-k egyikével kell megjelölnie az üzeneteket a megfelelő útválasztáshoz, hogy a IoT feldolgozási folyamathoz Azure Security Center.
 
@@ -100,7 +99,7 @@ Az összes elküldött, még akkor is, ha a megfelelő fejléccel van megjelölv
 
 ### <a name="send-security-message-api"></a>Biztonsági üzenet API-nak küldése
 
-A **biztonsági üzenetek küldése** API jelenleg C és C#, Python, Node. js és Java nyelven érhető el.
+A **biztonsági üzenetek küldése** API jelenleg C és C#, Python, Node.js és Java nyelven érhető el.
 
 #### <a name="c-api"></a>C API
 

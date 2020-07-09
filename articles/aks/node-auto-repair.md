@@ -3,17 +3,17 @@ title: Az Azure Kubernetes Service (ak)-csomópontok automatikus javítása
 description: Ismerje meg a csomópontok automatikus javításának funkcióit, valamint azt, hogy az AK Hogyan javítja a törött munkavégző csomópontokat.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 9bf9df69a0a6bfa4d9f4029278d2a146811980c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 91384461567634faabaaa1dd588d6e7ec6ece60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80284840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735625"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes szolgáltatás (ak) csomópontjának automatikus javítása
 
-Az AK folyamatosan ellenőrzi a munkavégző csomópontok állapotát, és a csomópontok automatikus javítását hajtja végre, ha azok nem megfelelő állapotba kerülnek. Ez a dokumentáció azt ismerteti, hogyan figyeli az Azure Kubernetes Service (ak) a feldolgozó csomópontokat, és javítsa a nem megfelelő állapotú munkavégző csomópontokat.  A dokumentáció az AK-operátorok tájékoztatása a csomópont-javítási funkciók működéséről. Azt is fontos megjegyezni, hogy az Azure platform [karbantartási feladatokat hajt végre Virtual Machines][vm-updates] , amelyek problémákat tapasztalnak. Az AK és az Azure együttműködik a fürtök szolgáltatásbeli zavarainak minimalizálásával.
+Az AK folyamatosan ellenőrzi a munkavégző csomópontok állapotát, és a csomópontok automatikus javítását hajtja végre, ha azok nem megfelelő állapotba kerülnek. Ez a dokumentum a csomópontok automatikus javítási funkcióinak működéséről tájékoztatja a kezelőket. Az AK-s javításokon kívül az Azure-beli virtuálisgép-platform [karbantartási feladatokat hajt végre Virtual Machineson][vm-updates] is. Az AK-ban és az Azure-beli virtuális gépeken a fürtök szolgáltatásbeli fennakadások minimalizálására is használható.
 
 > [!Important]
 > A csomópont automatikus javítási funkciója jelenleg nem támogatott a Windows Server-csomópontok készletei esetében.
@@ -23,7 +23,7 @@ Az AK folyamatosan ellenőrzi a munkavégző csomópontok állapotát, és a cso
 > [!Note]
 > Az AK végrehajtja a javítási műveleteket a csomópontokon a következő felhasználói fiókkal: **AK-remediátor**.
 
-Az AK szabályok használatával határozza meg, hogy egy csomópont nem kifogástalan állapotú-e, és javításra szorul. Az AK a következő szabályok alapján határozza meg, hogy szükséges-e az automatikus javítás.
+Az AK szabályok segítségével határozza meg, hogy egy csomópont nem kifogástalan állapotú-e, és javításra szorul. Az AK a következő szabályok alapján határozza meg, hogy szükséges-e az automatikus javítás.
 
 * A csomópont egy 10 perces időkereten belül jelentést **küld az** egymást követő ellenőrzéseken
 * A csomópont 10 percen belül nem jelent állapotot.
@@ -37,16 +37,11 @@ kubectl get nodes
 ## <a name="how-automatic-repair-works"></a>Az automatikus javítás működése
 
 > [!Note]
-> Az AK végrehajtja a javítási műveleteket a csomópontokon a következő felhasználói fiókkal: **AK-remediátor**.
+> Az AK a javítási műveleteket kezdeményezi a felhasználói fiókhoz tartozó **AK-remediátortal**.
 
-Ez a viselkedés a **Virtual Machine Scale sets**.  Az automatikus javítás több lépést is végrehajt a hibás csomópontok kijavításához.  Ha egy csomópont állapota sérült, az AK több szervizelési lépést próbál meg felvenni.  A lépéseket a következő sorrendben hajtja végre:
-
-1. Ha a tároló futtatókörnyezete 10 percen belül nem válaszol, a rendszer újraindítja a feladatátvételi szolgáltatást a csomóponton.
-2. Ha a csomópont 10 percen belül nem áll készen, a csomópont újraindul.
-3. Ha a csomópont 30 percen belül nem áll készen, a csomópont újra rendszerképbe kerül.
-
-> [!Note]
-> Ha több csomópont nem kifogástalan állapotú, akkor a rendszer egy
+Alapértelmezés szerint az automatikus javítás a virtuálisgép-készlet **Virtual Machine Scale sets**-típusával rendelkező fürtök esetén támogatott. Ha egy csomópont nem Kifogástalan állapotra van meghatározva a fenti szabályok alapján, az AK 10 egymást követő, nem kifogástalan állapotú perc elteltével újraindítja a csomópontot. Ha a csomópontok állapota nem kifogástalan a kezdeti javítási művelet után, a további szervizeléseket az AK-mérnökök vizsgálják meg.
+  
+Ha egy állapot-ellenőrzés során több csomópont nem kifogástalan állapotú, akkor minden egyes csomópontot külön kell kijavítani, mielőtt egy másik javítás megkezdődik.
 
 ## <a name="next-steps"></a>További lépések
 

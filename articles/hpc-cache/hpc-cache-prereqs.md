@@ -3,19 +3,35 @@ title: Az Azure HPC gyorsítótárának előfeltételei
 description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: d7a5bfe56a17ecc2377be7b59dcbe3254d813a0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513244"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
 Mielőtt a Azure Portal használatával új Azure HPC-gyorsítótárat hozzon létre, győződjön meg arról, hogy a környezet megfelel a követelményeknek.
+
+## <a name="video-overviews"></a>Videók áttekintése
+
+Tekintse meg ezeket a videókat, és tekintse át a rendszer összetevőinek gyors áttekintését, és hogy mire van szükségük a közös munkához.
+
+(Kattintson a videó képre vagy a megtekinteni kívánt hivatkozásra.)
+
+* [Hogyan működik](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) – elmagyarázza, hogyan kommunikál az Azure HPC cache a Storage és az ügyfelekkel
+
+  [![videó miniatűr képe: Azure HPC cache: Hogyan működik (kattintson ide a videó megtekintéséhez)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+
+* [Előfeltételek](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) – a NAS Storage, az Azure Blob Storage, a hálózati hozzáférés és az ügyfelek hozzáférésének követelményeit ismerteti
+
+  [![videó miniatűr képe: Azure HPC cache: előfeltételek (kattintson ide a videó megtekintéséhez)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+
+A cikk további részében találhat konkrét javaslatokat.
 
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
@@ -103,7 +119,7 @@ További információt a [NAS-konfiguráció és az NFS-tárolási cél problém
 
   A tárolási rendszerek beállításainak vizsgálatához kövesse az alábbi eljárást.
 
-  * Adjon ki `rpcinfo` egy parancsot a tárolási rendszernek a szükséges portok vizsgálatához. Az alábbi parancs felsorolja a portokat, és formázza a kapcsolódó eredményeket egy táblában. (A *<storage_IP>* kifejezés helyett használja a számítógép IP-címét.)
+  * Adjon ki egy `rpcinfo` parancsot a tárolási rendszernek a szükséges portok vizsgálatához. Az alábbi parancs felsorolja a portokat, és formázza a kapcsolódó eredményeket egy táblában. (A *<storage_IP>* kifejezés helyett használja a számítógép IP-címét.)
 
     Ezt a parancsot bármely olyan Linux-ügyfélről kiállíthatja, amelyen telepítve van az NFS-infrastruktúra. Ha a fürt alhálózatán belül használ ügyfelet, az az alhálózat és a tárolási rendszer közötti kapcsolat ellenőrzéséhez is segítséget nyújt.
 
@@ -111,11 +127,11 @@ További információt a [NAS-konfiguráció és az NFS-tárolási cél problém
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
-  Győződjön meg arról, hogy a ``rpcinfo`` lekérdezés által visszaadott összes port engedélyezi az Azure HPC cache alhálózatának korlátozás nélküli forgalmát.
+  Győződjön meg arról, hogy a lekérdezés által visszaadott összes port ``rpcinfo`` engedélyezi az Azure HPC cache alhálózatának korlátozás nélküli forgalmát.
 
   * Ha nem tudja használni a `rpcinfo` parancsot, győződjön meg arról, hogy ezek a gyakran használt portok engedélyezik a bejövő és kimenő forgalmat:
 
-    | Protocol (Protokoll) | Port  | Szolgáltatás  |
+    | Protokoll | Port  | Szolgáltatás  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
@@ -136,7 +152,7 @@ További információt a [NAS-konfiguráció és az NFS-tárolási cél problém
 
 * **Rendszergazdai hozzáférés** (olvasás/írás): a gyorsítótár a 0. felhasználói azonosítóként csatlakozik a háttérrendszer-kiszolgálóhoz. A következő beállítások megadásával a tárolási rendszeren:
   
-  * Engedélyezés `no_root_squash`. Ezzel a beállítással biztosíthatja, hogy a távoli legfelső szintű felhasználó hozzáférhessen a root tulajdonában lévő fájlokhoz.
+  * Engedélyezés `no_root_squash` . Ezzel a beállítással biztosíthatja, hogy a távoli legfelső szintű felhasználó hozzáférhessen a root tulajdonában lévő fájlokhoz.
 
   * Ellenőrizze az exportálási szabályzatokat, és győződjön meg arról, hogy nem tartalmaznak korlátozásokat a gyorsítótár alhálózatához való rendszergazdai hozzáféréshez.
 

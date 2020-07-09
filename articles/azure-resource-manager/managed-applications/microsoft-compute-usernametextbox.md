@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651903"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. számítás. UserNameTextBox FELHASZNÁLÓIFELÜLET-elem
@@ -47,11 +46,11 @@ Egy szövegmező vezérlőelem a Windows-és Linux-felhasználónevek beépítet
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Ha `constraints.required` a értéke **true (igaz**), akkor a szövegmezőnek rendelkeznie kell egy, a sikeres ellenőrzéshez szükséges értékkel. Az alapértelmezett érték **true (igaz**).
+- Ha a `constraints.required` értéke **true (igaz**), akkor a szövegmezőnek rendelkeznie kell egy, a sikeres ellenőrzéshez szükséges értékkel. Az alapértelmezett érték **true (igaz**).
 - `osPlatform`kötelező megadni, és lehet **Windows** vagy **Linux**.
 - `constraints.regex`JavaScript reguláris kifejezési minta. Ha meg van adva, akkor a szövegmező értékének meg kell egyeznie a sikeres ellenőrzéshez szükséges mintázattal. Az alapértelmezett érték **Null**.
-- `constraints.validationMessage`egy karakterlánc, amely akkor jeleníthető meg, ha a szövegmező értéke nem felel meg `constraints.regex`a által megadott érvényesítésnek. Ha nincs megadva, a rendszer a szövegmező beépített érvényesítési üzeneteit használja. Az alapértelmezett érték **Null**.
-- Ez az elem beépített érvényesítéssel rendelkezik, amely a (z) számára `osPlatform`megadott értéken alapul. A beépített érvényesítést egy egyéni reguláris kifejezéssel együtt is használhatja. Ha meg `constraints.regex` van adva egy érték, akkor a beépített és az egyéni érvényesítés is aktiválódik.
+- `constraints.validationMessage`egy karakterlánc, amely akkor jeleníthető meg, ha a szövegmező értéke nem felel meg a által megadott érvényesítésnek `constraints.regex` . Ha nincs megadva, a rendszer a szövegmező beépített érvényesítési üzeneteit használja. Az alapértelmezett érték **Null**.
+- Ez az elem beépített érvényesítéssel rendelkezik, amely a (z) számára megadott értéken alapul `osPlatform` . A beépített érvényesítést egy egyéni reguláris kifejezéssel együtt is használhatja. Ha meg `constraints.regex` van adva egy érték, akkor a beépített és az egyéni érvényesítés is aktiválódik.
 
 ## <a name="next-steps"></a>További lépések
 

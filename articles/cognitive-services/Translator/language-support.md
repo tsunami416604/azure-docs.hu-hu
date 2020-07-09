@@ -8,124 +8,185 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996074"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888304"
 ---
-# <a name="language-and-region-support-for-translator"></a>Nyelvi és területi támogatás fordítóknak
+# <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
-A fordító a következő nyelveket támogatja szöveg szöveggé fordításához. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
+A fordító használatával a 60 és a szöveg fordítását is lefordíthatja a szolgáltatásba. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
+
+A fordítót az egyéni fordítóval együtt is használhatja olyan neurális fordítási rendszerek kiépítéséhez, amelyek megértik a saját üzleti és iparági terminológiáját, valamint a Microsoft Speech Service segítségével beszédfelismerési fordítást adhat az alkalmazásához.
 
 [További információ a gépi fordítás működéséről](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>Fordítás
+## <a name="text-translation"></a>Szövegfordítás
+A fordítás a fordítási művelettel érhető el a fordítóban elérhető bármely nyelvről, illetve azokról. Az API az észlelési művelettel, a Átbetűzés művelettel és a szótári keresési és szótári példákat használó kétnyelvű szótárakkal is kínál nyelvi észlelést. Az egyes műveletekhez elérhető nyelvek alább láthatók. 
 
-**V2 Translator**
+### <a name="translate"></a>Fordítás
 
-> [!NOTE]
-> A v2 2018. április 30-ig elavult. Telepítse át az alkalmazásait a v3-ra, hogy kihasználhassa a kizárólag a v3 verzióban elérhető új funkciókat.
+A fordító a következő nyelveket támogatja szöveg szöveggé fordításához. 
 
-* Csak statisztikai: nincs elérhető neurális rendszer ehhez a nyelvhez.
-* Neurális elérhető: egy neurális rendszer áll rendelkezésre. Használja a paramétert `category=generalnn` a neurális rendszerek eléréséhez.
-* Neurális alapértékek: a neurális az alapértelmezett fordítási rendszer. A paraméter használatával `category=smt` férhet hozzá a statisztikai rendszerhez a Microsoft Translator hub használatával.
-* Csak neurális: csak neurális fordítás érhető el.
+[A fordítási műveletekre vonatkozó dokumentáció megtekintése](reference/v3-0-translate.md)
 
-**V3 Translator** A v3 Translator alapértelmezett és statisztikai rendszerek csak akkor érhetők el, ha nem létezik neurális rendszer.
-
-> [!NOTE]
-> Jelenleg a neurális nyelvek egy részhalmaza érhető el az egyéni fordítóban, és fokozatosan adunk hozzá továbbikat. [Az egyéni fordítóban jelenleg elérhető nyelvek megtekintése](#customization).
-
-|Nyelv|    Nyelvkód|    V3 API|
-|:-----|:-----:|:-----|
-|búr|    `af`|    Neurális|
-|Arab|    `ar`    |    Neurális|
-|Bangla|    `bn`    |    Neurális|
-|Bosnyák (latin betűs)|    `bs`    |    Neurális|
-|Bolgár|    `bg`    |    Neurális|
-|Kantoni (hagyományos)|    `yue`|    Statisztikai|
-|Katalán|    `ca`    |    Statisztikai|
-|kínai (egyszerűsített)|    `zh-Hans`|Neurális|
-|kínai (hagyományos)|    `zh-Hant`        |Neurális|
-|Horvát|    `hr`    |Neurális|
-|Cseh|    `cs`    |    Neurális|
-|Dán|    `da`        |Neurális|
-|Holland|    `nl`|    Neurális|
-|Angol|    `en`    |    Neurális|
-|Észt|    `et`    |    Neurális|
-|Fidzsi|    `fj`    |    Statisztikai|
-|Filipino|    `fil`    |    Statisztikai|
-|Finn|    `fi`    |    Neurális|
-|Francia|    `fr`    |    Neurális|
-|Német|    `de`    |    Neurális|
-|Görög|    `el`    |    Neurális|
-|gudzsaráti|    `gu`    |    Neurális|
-|Haiti kreol|    `ht`        |Statisztikai|
-|Héber    |`he`    |Neurális
-|Hindi|    `hi`    |    Neurális|
-|Hmong DAW|    `mww`    |    Statisztikai|
-|Magyar|    `hu`    |    Neurális|
-|Izlandi|    `is`    |    Neurális|
-|Indonéz|    `id`    |    Statisztikai|
-|Ír | `ga`| Neurális
-|Olasz|    `it`    |    Neurális|
-|Japán|    `ja`    |    Neurális|
-|kannada|`kn`| Neurális
-|Kiswahili|    `sw`    |    Statisztikai|
-|Klingon|    `tlh`    |    Statisztikai|
-|Klingon (plqaD)|    `tlh-Qaak`    |    Statisztikai|
-|Koreai    |`ko`    |    Neurális|
-|Lett|    `lv`    |    Neurális|
-|Litván|    `lt`    |    Neurális|
-|Malgas|    `mg`    |    Statisztikai|
-|Maláj|    `ms`        |Statisztikai|
-|malajálam| `ml` | Neurális
-|Máltai|    `mt`    |    Statisztikai|
-|maori| `mi`  | Neurális|
-|marathi| `mr`  | Neurális|
-|Norvég|    `nb`    |    Neurális|
-|perzsa|    `fa`    |    Neurális|
-|Lengyel|    `pl`    |    Neurális|
-|Portugál (Brazília)|    `pt-br`    |    Neurális|
-|Portugál (Portugália)| `pt-pt` | Neurális
-|pandzsábi|`pa`|Neurális
-|Queretaro otomi|    `otq`    |    Statisztikai|
-|Román|    `ro`    |    Neurális|
-|Orosz|    `ru`    |    Neurális|
-|Szamoai|    `sm`    |    Statisztikai|
-|Szerb (cirill betűs)|    `sr-Cyrl`|    Statisztikai|
-|Szerb (latin betűs)|    `sr-Latn`        |Statisztikai|
-|Szlovák|    `sk`    |    Neurális|
-|Szlovén|    `sl`    |    Neurális|
-|Spanyol|    `es`    |    Neurális|
-|Svéd|    `sv`    |Neurális|
-|Tahitian|    `ty`    |Statisztikai|
-|tamil|    `ta`    |    Neurális|
-|telugu|    `te`    |    Neurális|
-|Thai|    `th`    |    Neurális|
-|Tongai|    `to`    |    Statisztikai|
-|Török|    `tr`        |Neurális|
-|Ukrán|    `uk`    |    Neurális|
-|urdu|    `ur`    |    Statisztikai|
-|Vietnami|    `vi`    |    Neurális|
-|walesi|    `cy`    |    Neurális|
-|Yucatec Maya|    `yua`    |    Statisztikai|
+|Nyelv|  Nyelvkód|
+|:-----|:-----:|
+|búr| `af`|
+|Arab|    `ar`    |
+|Bangla|    `bn`    |
+|Bosnyák (latin betűs)|   `bs`    |
+|Bolgár| `bg`    |
+|Kantoni (hagyományos)|   `yue`|
+|Katalán|   `ca`    |
+|kínai (egyszerűsített)|    `zh-Hans`|
+|kínai (hagyományos)|   `zh-Hant`       |
+|Horvát|  `hr`    |
+|Cseh| `cs`    |
+|Dán|    `da`        |
+|Holland| `nl`|
+|Angol|   `en`    |
+|Észt|  `et`    |
+|Fidzsi|    `fj`    |
+|Filipino|  `fil`   |
+|Finn|   `fi`    |
+|Francia|    `fr`    |
+|Német|    `de`    |
+|Görög| `el`    |
+|gudzsaráti|  `gu`    |
+|Haiti kreol|    `ht`        |
+|Héber |`he`   |
+|Hindi| `hi`    |
+|Hmong DAW| `mww`   |
+|Magyar| `hu`    |
+|Izlandi| `is`    |
+|Indonéz|    `id`    |
+|Ír | `ga`|
+|Olasz|   `it`    |
+|Japán|  `ja`    |
+|kannada|`kn`|
+|Kazak|`kk`|
+|Kiswahili| `sw`    |
+|Klingon|   `tlh-Latn`  |
+|Klingon (plqaD)|   `tlh-Piqd`  |
+|Koreai |`ko`   |
+|Lett|   `lv`    |
+|Litván|    `lt`    |
+|Malgas|  `mg`    |
+|Maláj| `ms`        |
+|malajálam| `ml` |
+|Máltai|   `mt`    |
+|maori| `mi`  |
+|marathi| `mr`  |
+|Norvég| `nb`    |
+|perzsa|   `fa`    |
+|Lengyel|    `pl`    |
+|Portugál (Brazília)|   `pt-br` |
+|Portugál (Portugália)| `pt-pt` |
+|pandzsábi|`pa`|
+|Queretaro otomi|   `otq`   |
+|Román|  `ro`    |
+|Orosz|   `ru`    |
+|Szamoai|    `sm`    |
+|Szerb (cirill betűs)|    `sr-Cyrl`|
+|Szerb (latin betűs)|   `sr-Latn`       |
+|Szlovák|    `sk`    |
+|Szlovén| `sl`    |
+|Spanyol|   `es`    |
+|Svéd|   `sv`    |
+|Tahitian|  `ty`    |
+|tamil| `ta`    |
+|telugu|    `te`    |
+|Thai|  `th`    |
+|Tongai|    `to`    |
+|Török|   `tr`        |
+|Ukrán| `uk`    |
+|urdu|  `ur`    |
+|Vietnami|    `vi`    |
+|walesi| `cy`    |
+|Yucatec Maya|  `yua`   |
 
 > [!NOTE]
 > A Nyelvkód `pt` alapértelmezett értéke `pt-br` , Portugál (Brazília).
 
-## <a name="transliteration"></a>Átbetűzésű
+### <a name="detect"></a>Észlelés
+
+A Translator a következő nyelveket észleli fordításhoz és íráshoz.
+
+[Észlelési műveletre vonatkozó dokumentáció megtekintése](reference/v3-0-detect.md)
+
+|Nyelv|  Nyelvkód|
+|:-----|:-----:|
+|búr| `af`|
+|Arab|    `ar`    |
+|Bolgár| `bg`    |
+|Katalán|   `ca`    |
+|kínai (egyszerűsített)|    `zh-Hans`|
+|kínai (hagyományos)|   `zh-Hant`       |
+|Horvát|  `hr`    |
+|Cseh| `cs`    |
+|Dán|    `da`        |
+|Holland| `nl`|
+|Angol|   `en`    |
+|Észt|  `et`    |
+|Finn|   `fi`    |
+|Francia|    `fr`    |
+|Német|    `de`    |
+|Görög| `el`    |
+|gudzsaráti|  `gu`    |
+|Haiti kreol|    `ht`        |
+|Héber |`he`   |
+|Hindi| `hi`    |
+|Magyar| `hu`    |
+|Izlandi| `is`    |
+|Indonéz|    `id`    |
+|Ír | `ga`|
+|Olasz|   `it`    |
+|Japán|  `ja`    |
+|Kiswahili| `sw`    |
+|Klingon|   `tlh-Latn`  |
+|Koreai |`ko`   |
+|Lett|   `lv`    |
+|Litván|    `lt`    |
+|Maláj| `ms`        |
+|Máltai|   `mt`    |
+|Norvég| `nb`    |
+|perzsa|   `fa`    |
+|Lengyel|    `pl`    |
+|Portugál (Brazília)|   `pt-br` |
+|Portugál (Portugália)| `pt-pt` |
+|Román|  `ro`    |
+|Orosz|   `ru`    |
+|Szerb (cirill betűs)|    `sr-Cyrl`|
+|Szerb (latin betűs)|   `sr-Latn`       |
+|Szlovák|    `sk`    |
+|Szlovén| `sl`    |
+|Spanyol|   `es`    |
+|Svéd|   `sv`    |
+|Tahitian|  `ty`    |
+|Thai|  `th`    |
+|Török|   `tr`        |
+|Ukrán| `uk`    |
+|urdu|  `ur`    |
+|Vietnami|    `vi`    |
+|walesi| `cy`    |
+|Yucatec Maya|  `yua`   |
+
+### <a name="transliterate"></a>Átírás
 
 A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" kifejezés azt jelzi, hogy a nyelv a felsorolt parancsfájlokból vagy azok egyikére is átadható. A "-->" érték azt jelzi, hogy a nyelv csak az egyik parancsfájlból a másikba való átírására használható.
+
+[A Átbetűzés-művelet dokumentációjának megtekintése](reference/v3-0-translate.md)
+
 
 | Nyelv    | Nyelvkód | Parancsfájl | Hová/honnan | Parancsfájl|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arab | `ar` | arab`Arab` | <--> | Latin betűs`Latn` |
-|Bangla  | `bn` | bengáli`Beng` | <--> | Latin betűs`Latn` |
+| Bangla  | `bn` | bengáli`Beng` | <--> | Latin betűs`Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | Latin betűs`Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | kínai (hagyományos)`Hant`|
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | Latin betűs`Latn` |
@@ -137,7 +198,7 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | kannada | `kn` | kannada`Knda` | --> | Latin betűs`Latn` |
 | malajálam | `ml` | malajálam`Mlym` | --> | Latin betűs`Latn` |
 | marathi | `mr` | Devanagari`Deva` | --> | Latin betűs`Latn` |
-| Oriya | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
+| Odia | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
 | pandzsábi | `pa` | Gurmukhi`Guru`  | <--> | Latin betűs`Latn`  |
 | Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs`Cyrl`  | --> | Latin betűs`Latn` |
 | Szerb (latin betűs) | `sr-Latn` | Latin betűs`Latn` | --> | Cirill betűs`Cyrl`|
@@ -145,9 +206,11 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | telugu | `te` | telugu`Telu` | --> | Latin betűs`Latn` |
 | Thai | `th` | thai`Thai` | --> | Latin betűs`Latn` |
 
-## <a name="dictionary"></a>Szótár
+### <a name="dictionary"></a>Szótár
 
 A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a keresési és példákat használó módszerek használatával.
+
+Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a [szótári példákhoz](reference/v3-0-dictionary-examples.md) kapcsolódó dokumentációt.
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -202,14 +265,9 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | Vietnami      | `vi`          |
 | walesi      | `cy`          |
 
-## <a name="detect"></a>Észlelés
+### <a name="access-the-translator-language-list-programmatically"></a>Programozott módon férhet hozzá a Translator Language listához
 
-A Translator a fordításhoz és az íráshoz elérhető összes nyelvet észleli.
-
-
-## <a name="access-the-translator-language-list-programmatically"></a>Programozott módon férhet hozzá a Translator Language listához
-
-Lekérheti a Translator v 3.0 által támogatott nyelvek listáját a languages metódus használatával. A listát a szolgáltatás, a Nyelvkód, valamint az angol nyelvű és más támogatott nyelven is megtekintheti. Ezt a listát a Microsoft Translator Service automatikusan frissíti, mivel a rendszer új nyelveket tesz elérhetővé.
+A fordító által támogatott nyelvek listáját a languages metódus használatával kérheti le. A listát a szolgáltatás, a Nyelvkód, valamint az angol nyelvű és más támogatott nyelven is megtekintheti. Ezt a listát a Microsoft Translator Service automatikusan frissíti, mivel a rendszer új nyelveket tesz elérhetővé.
 
 [Nyelvek megtekintése – útmutató – dokumentáció](reference/v3-0-languages.md)
 
@@ -224,7 +282,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Bosnyák (latin betűs)      | `bs`          |
 | Bolgár      | `bg`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
-|kínai (hagyományos)|    `zh-Hant`    |
+|kínai (hagyományos)|   `zh-Hant`   |
 | Horvát      | `hr`          |
 | Cseh      | `cs`          |
 | Dán      | `da`          |
@@ -239,15 +297,15 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Hindi      | `hi`          |
 | Magyar      | `hu`          |
 | Izlandi | `is` |
-| Indonéz|    `id`    |
-| Ír | `ga`    |
+| Indonéz|   `id`    |
+| Ír | `ga`  |
 | Olasz      | `it`          |
 | Japán      | `ja`          |
 | Kiswahili|    `sw`    |
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
-| Malgas|    `mg`    |
+| Malgas| `mg`    |
 | maori| `mi`  |
 | Norvég      | `nb`          |
 | perzsa      | `fa`          |
@@ -255,7 +313,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Portugál (Brazília) | `pt-br` |
 | Román      | `ro`          |
 | Orosz      | `ru`          |
-| Szamoai|    `sm`    |
+| Szamoai|   `sm`    |
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
@@ -267,8 +325,89 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Vietnami      | `vi`          |
 | walesi | `cy` |
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>A lista elérése a Microsoft Translator webhelyén
+## <a name="speech-translation"></a>Beszédfordítás
+A fordítás a fordító és a Cognitive Services Speech Service használatával érhető el. A [beszédfelismerési szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/) tájékozódhat a beszédfelismerés használatáról és az összes [elérhető nyelvi lehetőségről](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
-A Microsoft Translator webhelyén gyorsan megtekintheti a nyelveket, és a fordító és a beszédfelismerés API-k által támogatott összes nyelvet megjeleníti. Ez a lista nem tartalmazza a fejlesztői adatokat, például a nyelvi kódokat.
+### <a name="speech-to-text"></a>Diktálás
+A beszédet szöveggé alakíthatja, hogy a választott szöveg nyelvét lefordítsa. A beszédfelismerési szöveg fordítására, illetve beszéd-beszéd fordításra szolgál, ha a beszédfelismeréssel együtt használja.
+
+| Nyelv    |
+|:----------- |
+|Arab|
+|Kantoni (hagyományos)|
+|Katalán|
+|kínai (egyszerűsített)|
+|kínai (hagyományos)|
+|Dán|
+|Holland|
+|Angol|
+|Finn|
+|Francia|
+|Német|
+|gudzsaráti|
+|Hindi|
+|Olasz|
+|Japán|
+|Koreai|
+|marathi|
+|Norvég|
+|Lengyel|
+|Portugál (Brazília)|
+|Portugál (Portugália)|
+|Orosz|
+|Spanyol|
+|Svéd|
+|tamil|
+|telugu|
+|Thai|
+|Török|
+
+### <a name="text-to-speech"></a>Szövegfelolvasás
+Szöveg konvertálása beszédre A szöveg és a beszéd használatával a fordítási eredmények hallható kimenetét, illetve beszéd – beszéd fordítást lehet használni a beszédfelismerési szöveggel történő használathoz. 
+
+| Nyelv    |
+|:----------- |
+|Arab|
+|Bolgár|
+|Kantoni (hagyományos)|
+|Katalán|
+|kínai (egyszerűsített)|
+|kínai (hagyományos)|
+|Horvát|
+|Cseh|
+|Dán|
+|Holland|
+|Angol|
+|Finn|
+|Francia|
+|Német|
+|Görög|
+|Héber|
+|Hindi|
+|Magyar|
+|Indonéz|
+|Olasz|
+|Japán|
+|Koreai|
+|Maláj|
+|Norvég|
+|Lengyel|
+|Portugál (Brazília)|
+|Portugál (Portugália)|
+|Román|
+|Orosz|
+|Szlovák|
+|Szlovén|
+|Spanyol|
+|Svéd|
+|tamil|
+|telugu|
+|Thai|
+|Török|
+|Vietnami|
+
+## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>A Microsoft Translator webhelyén megtekintheti a nyelvi listát
+
+A nyelvek gyors áttekintéséhez a Microsoft Translator webhelye a fordító által támogatott összes nyelvet megjeleníti a fordítási és beszédfelismerési szolgáltatásokhoz. Ez a lista nem tartalmazza a fejlesztői adatokat, például a nyelvi kódokat.
 
 [A nyelvek listája](https://www.microsoft.com/translator/languages.aspx)

@@ -4,19 +4,19 @@ description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, 
 ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
-ms.date: 04/21/2020
-ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/04/2020
+ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021211"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080975"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk.
 
-További információ az Azure díjszabásáról: az [Azure díjszabásának áttekintése](https://azure.microsoft.com/pricing/). Itt megbecsülheti a költségeket a [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/)használatával. Megtekintheti az adott szolgáltatás díjszabási adatait tartalmazó oldalt, például a [Windows rendszerű virtuális gépeket](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). A költségek kezelésére szolgáló tippekért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../billing/billing-getting-started.md).
+További információ az Azure díjszabásáról: az [Azure díjszabásának áttekintése](https://azure.microsoft.com/pricing/). Itt megbecsülheti a költségeket a [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/)használatával. Megtekintheti az adott szolgáltatás díjszabási adatait tartalmazó oldalt, például a [Windows rendszerű virtuális gépeket](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). A költségek kezelésére szolgáló tippekért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../cost-management-billing/manage/getting-started.md).
 
 ## <a name="managing-limits"></a>Korlátozások kezelése
 
@@ -29,7 +29,7 @@ További információ az Azure díjszabásáról: az [Azure díjszabásának át
 >
 > Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, [Nyisson meg egy online ügyfélszolgálati kérést díjmentesen](../templates/error-resource-quota.md).
 
-Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](../../billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](../../cost-management-billing/manage/upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 
 Bizonyos korlátok regionális szinten kezelhetők.
 
@@ -127,6 +127,8 @@ Azure Database for PostgreSQL korlátokat a [Azure Database for PostgreSQL korl�
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
+További információ: [functions üzemeltetési csomagok összehasonlítása](../../azure-functions/functions-scale.md#hosting-plans-comparison).
+
 ## <a name="azure-kubernetes-service-limits"></a>Az Azure Kubernetes szolgáltatás korlátai
 
 [!INCLUDE [container-service-limits](../../../includes/container-service-limits.md)]
@@ -217,6 +219,13 @@ Az alábbi táblázat az alapszintű, standard és prémium [szintű szolgáltat
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
+## <a name="digital-twins-limits"></a>Digitális ikrek korlátai
+
+> [!NOTE]
+> A szolgáltatás egyes területein állítható korlátok vannak, mások pedig nem. Ezt az alábbi táblázatok tartalmazzák az *állítható?* oszlop szerint. Ha a korlát módosítható, az *állítható?* érték *Igen*.
+
+[!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
+
 ## <a name="event-grid-limits"></a>Event Grid korlátok
 
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
@@ -250,7 +259,7 @@ Az alábbi táblázat az alapszintű, standard és prémium [szintű szolgáltat
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (örökölt)
 
-A Media Services v2 (örökölt) határértékekre vonatkozó korlátokat lásd: [Media Services v2 (örökölt)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
+A Media Services v2 (örökölt) határértékekre vonatkozó korlátokat lásd: [Media Services v2 (örökölt)](../../media-services/previous/media-services-quotas-and-limitations.md)
 
 ## <a name="mobile-services-limits"></a>Mobile Services korlátok
 
@@ -323,11 +332,11 @@ A következő táblázat a v1, v2, standard és WAF SKU-ra vonatkozik, hacsak m�
 
 ## <a name="sql-database-limits"></a>SQL Database korlátok
 
-SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Database erőforrás-korlátozásokat](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL Database a rugalmas készletek és a készletezett adatbázisok](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)erőforrás-korlátait, valamint [SQL Database erőforrás-korlátozásokat a felügyelt példányok számára](../../azure-sql/managed-instance/resource-limits.md).
+SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Database erőforrás-korlátozásokat](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL Database a rugalmas készletek és a készletezett adatbázisok](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)erőforrás-korlátait, valamint [az SQL felügyelt példányának SQL Database erőforrás-korlátozásait](../../azure-sql/managed-instance/resource-limits.md).
 
-## <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse korlátok
+## <a name="azure-synapse-analytics-limits"></a>Az Azure szinapszis Analytics korlátai
 
-SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-korlátok](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+Az Azure szinapszis Analytics korlátaival kapcsolatban lásd: az [Azure szinapszis erőforrás-korlátai](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="storage-limits"></a>Tárolási korlátok
 
@@ -411,7 +420,7 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

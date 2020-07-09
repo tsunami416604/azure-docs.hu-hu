@@ -5,23 +5,23 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 0ccb87017f962650f099d506e1d200ab408316d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086194"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>A Apache Spark streaming áttekintése
 
-[Apache Spark](https://spark.apache.org/) A streaming HDInsight Spark-fürtökön biztosít adatfolyam-feldolgozást. Garantáljuk, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha a csomópont meghibásodik. A Spark stream egy hosszan futó feladat, amely számos különböző forrásból fogad bemeneti adatokat, beleértve az Azure Event Hubst is. Továbbá: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ`, nyers TCP-szoftvercsatornák, vagy a Apache Hadoop fonál-fájlrendszerek figyelése. A kizárólag eseményvezérelt folyamatokkal ellentétben a Spark-adatfolyamok a bemeneti adatokat a Windowsba. Például egy 2 másodperces szelet, majd a Térkép, a csökkentés, a csatlakozás és a kinyerési műveletek használatával átalakítja az egyes kötegeket. A Spark stream ezután az átalakított adatot a fájlrendszer, az adatbázisok, az irányítópultok és a konzolba írja.
+[Apache Spark](https://spark.apache.org/) A streaming HDInsight Spark-fürtökön biztosít adatfolyam-feldolgozást. Garantáljuk, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha a csomópont meghibásodik. A Spark stream egy hosszan futó feladat, amely számos különböző forrásból fogad bemeneti adatokat, beleértve az Azure Event Hubst is. Továbbá: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ` , nyers TCP-szoftvercsatornák, vagy a Apache HADOOP fonál-fájlrendszerek figyelése. A kizárólag eseményvezérelt folyamatokkal ellentétben a Spark-adatfolyamok a bemeneti adatokat a Windowsba. Például egy 2 másodperces szelet, majd a Térkép, a csökkentés, a csatlakozás és a kinyerési műveletek használatával átalakítja az egyes kötegeket. A Spark stream ezután az átalakított adatot a fájlrendszer, az adatbázisok, az irányítópultok és a konzolba írja.
 
 ![Adatfolyam-feldolgozás a HDInsight és a Spark streaming segítségével](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-A Spark streaming-alkalmazásoknak meg kell várniuk egy második töredékét az egyes `micro-batch` események összegyűjtéséhez, mielőtt elküldené a köteget a feldolgozásra. Ezzel szemben az eseményvezérelt alkalmazások azonnal feldolgozzák az egyes eseményeket. A Spark streaming késése általában néhány másodperc alatt van. A mikro-batch megközelítés előnyei hatékonyabb adatfeldolgozást és egyszerűbb összesített számításokat tesznek elérhetővé.
+A Spark streaming-alkalmazásoknak meg kell várniuk egy második töredékét az egyes események összegyűjtéséhez, `micro-batch` mielőtt elküldené a köteget a feldolgozásra. Ezzel szemben az eseményvezérelt alkalmazások azonnal feldolgozzák az egyes eseményeket. A Spark streaming késése általában néhány másodperc alatt van. A mikro-batch megközelítés előnyei hatékonyabb adatfeldolgozást és egyszerűbb összesített számításokat tesznek elérhetővé.
 
 ## <a name="introducing-the-dstream"></a>A DStream bemutatása
 
@@ -89,7 +89,7 @@ A kimeneti műveletek alkalmazásával leküldheti az átalakítás eredményeit
 wordCounts.print()
 ```
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 
 Indítsa el a folyamatos átviteli alkalmazást, és futtassa a parancsot a megszakítási jel fogadása előtt.
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 Az eredményül kapott kimenet a következő kimenethez hasonlít:
 
-| érték | time |
+| value | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -167,7 +167,7 @@ Hat érték van, mivel a DummySource 5 másodpercenként hoz létre egy értéke
 
 ## <a name="sliding-windows"></a>Ablakok becsúszása
 
-Ha egy adott időszakon belül összesíteni szeretné a DStream összesített számításait, például az utolsó két másodperc átlagos hőmérsékletének beszerzéséhez, `sliding window` használja a Spark streaminghez tartozó műveleteket. A csúszó ablak rendelkezik egy időtartammal (az ablak hosszával), valamint azt az intervallumot, amely alatt a rendszer kiértékeli az ablak tartalmát (a dia intervalluma).
+Ha egy adott időszakon belül összesíteni szeretné a DStream összesített számításait, például az utolsó két másodperc átlagos hőmérsékletének beszerzéséhez, használja a `sliding window` Spark streaminghez tartozó műveleteket. A csúszó ablak rendelkezik egy időtartammal (az ablak hosszával), valamint azt az intervallumot, amely alatt a rendszer kiértékeli az ablak tartalmát (a dia intervalluma).
 
 A csúszó ablakok átfedésben lehetnek, például megadható egy két másodperc hosszúságú ablak, amely a diák másodpercenkénti számát jelzi. Ez a művelet azt jelenti, hogy minden alkalommal, amikor összesítési számítást végez, az ablak az előző ablak utolsó egy másodpercének adatait fogja tartalmazni. És minden új, a következő egy másodpercben lévő adattal.
 
@@ -222,7 +222,7 @@ ssc.start()
 
 Az első perc után 12 bejegyzés van – hat bejegyzés az ablakban gyűjtött két kötegből.
 
-| érték | time |
+| value | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

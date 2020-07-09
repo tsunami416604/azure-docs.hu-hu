@@ -2,21 +2,21 @@
 title: Alkalmazások láthatósága és vezérlése Microsoft Cloud App Security
 description: Megtudhatja, hogyan azonosíthatók az alkalmazások kockázati szintjei, hogyan állíthatók be valós időben a behatolások és a szivárgások, és hogyan használhatók az alkalmazás-összekötők a szolgáltatói API-k kihasználása érdekében.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206e1a06acddae0973d5dbc7e64212026149f217
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77069741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763652"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Felhőalkalmazások láthatósága és vezérlése
 
@@ -34,7 +34,7 @@ A Microsoft Cloud alkalmazás-felderítés (egy prémium szintű Azure Active Di
 - Speciális Shadow IT Discovery-jelentéskészítés
 - Engedélyezett alkalmazások vezérlése
  
-### <a name="learn-more"></a>Részletek
+### <a name="learn-more"></a>További információ
 
 - [A hálózatban lévő árnyék felderítése és kezelése](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
 - [Felderített alkalmazások Cloud App Security](https://docs.microsoft.com/cloud-app-security/discovered-apps)
@@ -51,7 +51,7 @@ Ezzel a vezérlővel a következőket teheti:
 - Fájlok elérésének szabályozása  
 - Dokumentumok védelemmel való ellátása letöltéskor  
  
-### <a name="learn-more"></a>Részletek
+### <a name="learn-more"></a>További információ
 
 - [Alkalmazások elleni védelem a Cloud App Security munkamenet-vezérléssel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
  
@@ -59,7 +59,7 @@ Ezzel a vezérlővel a következőket teheti:
 
 Az alkalmazás-összekötők az alkalmazás-szolgáltatók API-jait használva nagyobb láthatóságot és irányítást biztosítanak Microsoft Cloud App Security a csatlakozáshoz használt alkalmazásokon keresztül. Cloud App Security kihasználja a felhőalapú szolgáltató által biztosított API-kat. Minden szolgáltatás saját keretrendszerrel és API-korlátozásokkal rendelkezik, mint például a szabályozás, az API-korlátok, a dinamikus időeltolású API-ablakok és egyebek. A Cloud App Security termék csapata ezekkel a szolgáltatásokkal optimalizálja az API-k használatát, és biztosítja a legjobb teljesítményt. A különböző korlátozási szolgáltatásokat használó API-k esetében a Cloud App Security motorok a maximálisan megengedett kapacitást használják. Egyes műveletek, például a bérlő összes fájljának vizsgálata, számos API-hívást igényelnek, hogy hosszabb időn keresztül legyenek elosztva. Bizonyos házirendek várhatóan több óráig vagy napon futnak. 
  
-### <a name="learn-more"></a>Részletek  
+### <a name="learn-more"></a>További információ  
 
 - [Alkalmazások összekötése Cloud App Security](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 

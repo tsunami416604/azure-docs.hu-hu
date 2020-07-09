@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74480569"
 ---
 # <a name="using-the-azure-function-return-value"></a>Az Azure Function Return értékének használata
@@ -20,13 +19,13 @@ A visszatérési értékkel rendelkező nyelveken a függvény [kimeneti kötés
 
 * Egy C# osztályú függvénytárban alkalmazza a kimeneti kötési attribútumot a metódus visszatérési értékére.
 * A javában alkalmazza a kimeneti kötési jegyzetet a Function metódusra.
-* Más nyelveken állítsa a `name` *function. JSON* tulajdonságot a következőre: `$return`.
+* Más nyelveken állítsa be `name` *function.js* tulajdonságát a következőre: `$return` .
 
 Ha több kimeneti kötés is van, akkor a visszatérési értéket csak az egyikre használja.
 
-A C# és C# parancsfájlokban az adatok kimeneti kötésbe való küldésének alternatív módjai `out` a paraméterek és a [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
+A C# és C# parancsfájlokban az adatok kimeneti kötésbe való küldésének alternatív módjai a `out` paraméterek és a [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő C#-kód egy kimeneti kötés visszatérési értékét használja, amelyet egy aszinkron példa követ:
 
@@ -54,7 +53,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A következő kimeneti kötés szerepel a *function.js* fájlban:
 
 ```json
 {
@@ -87,7 +86,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="f"></a>[F#](#tab/fsharp)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A következő kimeneti kötés szerepel a *function.js* fájlban:
 
 ```json
 {
@@ -109,7 +108,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A következő kimeneti kötés szerepel a *function.js* fájlban:
 
 ```json
 {
@@ -120,7 +119,7 @@ Itt látható a *function. JSON* fájlban található kimeneti kötés:
 }
 ```
 
-A JavaScriptben a visszatérési érték a második paraméterben a `context.done`következő:
+A JavaScriptben a visszatérési érték a második paraméterben a következő `context.done` :
 
 ```javascript
 module.exports = function (context, input) {
@@ -132,7 +131,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Itt látható a *function. JSON* fájlban található kimeneti kötés:
+A következő kimeneti kötés szerepel a *function.js* fájlban:
 
 ```json
 {

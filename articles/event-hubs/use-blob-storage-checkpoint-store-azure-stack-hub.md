@@ -1,19 +1,14 @@
 ---
 title: Blob Storage használata ellenőrzőpont-tárolóként Azure Stack hub-on (előzetes verzió)
 description: Ez a cikk azt ismerteti, hogyan használható a Blob Storage ellenőrzőpont-tárolóként a Event Hubs Azure Stack hub (előzetes verzió) szolgáltatásban.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322366"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob Storage használata ellenőrzőpont-tárolóként – Event Hubs az Azure Stack hub-on (előzetes verzió)
 Ha az Azure Blob Storaget használja ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK eltérő verzióját, mint amilyeneket az Azure-ban általában elérhető, akkor programkódot kell használnia a Storage szolgáltatás API-verziójának módosítására az adott környezet által támogatott adott verzióra. Ha például [egy 2002-es Azure stack hub-os verzióban](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
@@ -34,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Példa hibaüzenet a Pythonban
-Python esetén a `azure.core.exceptions.HttpResponseError` rendszer hibát ad át a `on_error(partition_context, error)` következőhöz:. `EventHubConsumerClient.receive()` A metódus `receive()` azonban nem emel kivételt. `print(error)`a következő kivételi adatokat fogja kinyomtatni:
+Python esetén a rendszer hibát ad `azure.core.exceptions.HttpResponseError` át a következőhöz: `on_error(partition_context, error)` `EventHubConsumerClient.receive()` . A metódus azonban `receive()` nem emel kivételt. `print(error)`a következő kivételi adatokat fogja kinyomtatni:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

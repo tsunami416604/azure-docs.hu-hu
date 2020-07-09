@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263863"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs használata a Java-ból
@@ -53,7 +52,7 @@ Létrehozás:
 
     mvn package
 
-## <a name="code"></a>Kód
+## <a name="code"></a>Code
 
 ### <a name="notification-hub-cruds"></a>Értesítési központ – SZIFILISZek
 
@@ -188,7 +187,7 @@ A telepítési API egy alternatív mechanizmus a regisztrációs felügyelethez.
 
 A telepítés mindent tartalmaz, amire szüksége van: push Channel (eszköz token), címkék, sablonok, másodlagos csempék (WNS és APNS). Nem kell meghívnia a szolgáltatást az azonosító többé-csak a GUID-azonosító vagy bármely más azonosító beszerzéséhez, tartsa azt az eszközön, és küldje el a háttérnek a leküldéses csatornával (eszköz token) együtt.
 
-A háttérrendszer csak egyetlen hívást hajt végre `CreateOrUpdateInstallation`; teljesen idempotens, ezért szükség esetén próbálkozzon újra.
+A háttérben csak egyetlen hívást kell végrehajtania, hogy `CreateOrUpdateInstallation` teljesen idempotens, ezért szükség esetén próbálkozzon újra.
 
 Példa az Amazon Kindle Fire:
 
@@ -221,7 +220,7 @@ Telepítés törlése:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`és `Delete` végül konzisztensek a- `Get`val. A kért művelet csak a rendszer várólistára kerül a hívás során, és a háttérben kerül végrehajtásra. A Get nem a fő futtatókörnyezeti forgatókönyvhöz készült, hanem csak hibakeresési és hibaelhárítási célból, ezért a szolgáltatás szigorúan szabályozza.
+`CreateOrUpdate`, `Patch` és `Delete` végül konzisztensek a-val `Get` . A kért művelet csak a rendszer várólistára kerül a hívás során, és a háttérben kerül végrehajtásra. A Get nem a fő futtatókörnyezeti forgatókönyvhöz készült, hanem csak hibakeresési és hibaelhárítási célból, ezért a szolgáltatás szigorúan szabályozza.
 
 A küldési folyamat ugyanaz, mint a regisztrációk esetében. Értesítés küldése az adott telepítéshez – csak a "telepítésazonosító: {desired-id}" címkét használja. Ebben az esetben a kód a következő:
 

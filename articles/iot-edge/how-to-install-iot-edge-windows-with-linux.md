@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80133164"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>A Windows IoT Edge használata Linux-tárolók futtatásához
@@ -57,7 +57,7 @@ A különböző telepítési lehetőségekről és paraméterekről további inf
 
 1. Ha még nem tette meg, regisztráljon egy új IoT Edge eszközt, és kérje le az eszköz csatlakoztatási karakterláncát. Másolja a kapcsolódási karakterláncot a szakasz későbbi részében való használatra. Ezt a lépést a következő eszközök használatával végezheti el:
 
-   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portalra](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 

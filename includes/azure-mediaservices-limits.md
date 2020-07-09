@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: media-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2fe091a4ff0295ecadfd69ba3f2d4ca59e9612e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838709"
 ---
 >[!NOTE]
 >A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.

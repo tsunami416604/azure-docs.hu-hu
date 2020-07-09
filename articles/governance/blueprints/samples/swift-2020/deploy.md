@@ -3,12 +3,11 @@ title: SWIFT CSP üzembe helyezése – CSCF v2020 terv minta
 description: Telepítse a SWIFT CSP-CSCF v2020 tervezetének lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 971b69dcc5c64d7e51e9237e09ee8474551ac43a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 84d219f47df99e5bb87bab13b9ff43b79484117f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657066"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044260"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020 Blueprint minta üzembe helyezése
 
@@ -91,9 +90,9 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Description|
 |-|-|-|-|
-|\[Előzetes verzió \] : a Swift CSP ellenőrzése – CSCF v2020 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között.|
+|\[Előzetes verzió \] : a Swift CSP ellenőrzése – CSCF v2020 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)között.|
 |\[Előzetes verzió \] : a Swift CSP ellenőrzése – CSCF v2020 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Csatlakoztatott munkaterület-azonosítók|Azon munkaterület-azonosítók pontosvesszővel tagolt listája, amelyekhez a Log Analytics ügynöknek csatlakoznia kell|
 |\[Előzetes verzió \] : a Swift CSP ellenőrzése – CSCF v2020 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|A Windows rendszerű virtuális gépek rendszergazdái csoportjának részét képező felhasználók listája|A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
 |\[Előzetes verzió \] : a Swift CSP ellenőrzése – CSCF v2020 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Tartománynév (FQDN)|A Windows rendszerű virtuális gépekhez csatlakoztatni kívánt teljes tartománynév (FQDN)|
@@ -111,7 +110,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztika Storage-fiókjának előtagja|Ezt az előtagot a hálózati biztonsági csoport helyével együtt kell összekapcsolni a létrehozott Storage-fiók nevének létrehozásához.|
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztikát szolgáló Storage-fiók erőforráscsoport-neve (léteznie kell)|Az az erőforráscsoport, amelyben a Storage-fiók létre lesz hozva. Ez az erőforráscsoport már léteznie kell.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a SWIFT CSP-CSCF v2020 Blueprint minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 

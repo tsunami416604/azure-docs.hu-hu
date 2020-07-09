@@ -80,8 +80,10 @@
           href: virtual-network-for-azure-services.md
     - name: IP-szolgáltatások
       items:
-        - name: IP-címzés
-          href: virtual-network-ip-addresses-overview-arm.md
+        - name: Nyilvános IP-címek
+          href: public-ip-addresses.md
+        - name: Magánhálózati IP-címek
+          href: private-ip-addresses.md
         - name: Nyilvános IP-előtag
           href: public-ip-address-prefix.md
         - name: IPv6 Azure-beli virtuális hálózathoz

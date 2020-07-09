@@ -1,24 +1,14 @@
 ---
 title: Azure Event Hubs – Apache Kafka események feldolgozása
 description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan dolgozhatja fel az Event hub-n keresztül betöltött Kafka-eseményeket Azure Stream Analytics használatával'
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 04/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80632800"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313263"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
 Ez a cikk bemutatja, hogyan továbbíthatja az adatstreameket a Event Hubsba, és hogyan dolgozhatja fel azokat Azure Stream Analytics használatával. Végigvezeti a következő lépéseken: 
@@ -50,8 +40,8 @@ A **standard** szintű Event Hubs névtér létrehozásakor a rendszer automatik
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>Üzenetek küldése a Kafka-vel Event Hubs
 
 1. A [Kafka-tárházhoz tartozó Azure-Event Hubs](https://github.com/Azure/azure-event-hubs-for-kafka) klónozása a gépre.
-2. Navigáljon a következő mappához: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
-4. Frissítse a gyártó konfigurációs adatait a alkalmazásban `src/main/resources/producer.config`. Adja meg az **Event hub-névtér** **nevét** és **kapcsolati karakterláncát** . 
+2. Navigáljon a következő mappához: `azure-event-hubs-for-kafka/quickstart/java/producer` . 
+4. Frissítse a gyártó konfigurációs adatait a alkalmazásban `src/main/resources/producer.config` . Adja meg az **Event hub-névtér** **nevét** és **kapcsolati karakterláncát** . 
 
     ```xml
     bootstrap.servers={EVENT HUB NAMESPACE}.servicebus.windows.net:9093
@@ -60,7 +50,7 @@ A **standard** szintű Event Hubs névtér létrehozásakor a rendszer automatik
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. Navigáljon `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`a címre, és nyissa meg a **TestDataReporter. Java** fájlt egy tetszőleges szerkesztőben. 
+5. Navigáljon a címre `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/` , és nyissa meg a **TestDataReporter. Java** fájlt egy tetszőleges szerkesztőben. 
 6. Tegye megjegyzésbe a következő kódrészletet:
 
     ```java
@@ -73,7 +63,7 @@ A **standard** szintű Event Hubs névtér létrehozásakor a rendszer automatik
     ```
 
     Ez a kód **JSON** formátumban küldi el az eseményre vonatkozó adatokat. Amikor egy stream Analytics-feladathoz konfigurálja a bemenetet, a bemeneti adatok formátuma adja meg a JSON-t. 
-7. **Futtassa a gyártót és a** streamet Event Hubsba. Windows rendszerű gépen, ha **Node. js-parancssort**használ, váltson a mappára `azure-event-hubs-for-kafka/quickstart/java/producer` a parancsok futtatása előtt. 
+7. **Futtassa a gyártót és a** streamet Event Hubsba. Ha Windows-gépen **Node.js parancssort**használ, váltson át a `azure-event-hubs-for-kafka/quickstart/java/producer` mappára a parancsok futtatása előtt. 
    
     ```shell
     mvn clean package
@@ -143,7 +133,7 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 1. Válassza a **lekérdezés**lehetőséget.
 2. A lekérdezési ablakban cserélje le `[YourOutputAlias]` a nevet a korábban létrehozott kimeneti aliasra.
-3. Cserélje `[YourInputAlias]` le a nevet a korábban létrehozott bemeneti aliasra. 
+3. Cserélje le `[YourInputAlias]` a nevet a korábban létrehozott bemeneti aliasra. 
 4. Válassza az eszköztár **Save** (Mentés) elemét. 
 
     ![Lekérdezés](./media/event-hubs-kafka-stream-analytics/query.png)

@@ -3,20 +3,69 @@ title: Gyakran használt költségelemzési megoldások az Azure Cost Management
 description: Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori költségelemzési feladatok esetében az Azure Cost Managementben.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 130d313c1ca549f3a4e6f1ec1bbac2a16a753709
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261496"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142507"
 ---
 # <a name="common-cost-analysis-uses"></a>Gyakran használt költségelemzési megoldások
 
 Az Azure Cost Management felhasználói gyakran keresnek válaszokat olyan kérdésekre, amelyeket sok más felhasználó is feltesz. Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori költségelemzési feladatok esetében a Cost Managementben.
+
+## <a name="view-forecasted-costs"></a>Előrejelzett költségek megtekintése
+
+Az előrejelzett költségek költségelemzési területeken jelennek meg a terület és halmozott oszlop nézetekben. Az előrejelzés az erőforrás-használati előzményeken alapul. Az erőforrás módosításai az előrejelzett költségekre is kihatnak.
+
+Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+
+Az alapértelmezett nézetben a felső diagramon található egy tényleges/amortizált költség és egy előrejelzett költség szakasz. A diagramon a sötétebb színű terület mutatja a tényleges/amortizált költséget. A világosabb terület az előrejelzett költséget mutatja.
+
+[![Előrejelzett költségek](./media/cost-analysis-common-uses/enrollment-forecast.png)](./media/cost-analysis-common-uses/enrollment-forecast.png#lightbox)
+
+## <a name="view-forecasted-costs-grouped-by-service"></a>Előrejelzett költségek megtekintése szolgáltatások szerint csoportosítva
+
+Az alapértelmezett nézet nem jeleníti meg a szolgáltatás szerint csoportosított előrejelzett költségeket, ezért kijelöléssel kell hozzáadnia a csoportot.
+
+Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+
+Válassza a **Csoportosítás** > **Szolgáltatásnév** lehetőséget.
+
+A nézetben a költségek az egyes szolgáltatások szerint csoportosítva jelennek meg. Az egyes szolgáltatások előrejelzett költségeit nem számítja ki a rendszer. Az összes szolgáltatás **Teljes** várható költsége jelenik meg.
+
+[![Csoportosított előrejelzett költségek](./media/cost-analysis-common-uses/forecast-group-by-service.png)](./media/cost-analysis-common-uses/forecast-group-by-service.png#lightbox)
+
+## <a name="view-forecasted-costs-for-a-service"></a>Egy szolgáltatás előrejelzett költségeinek megtekintése
+
+Az előrejelzett költségeket akár egyetlen szolgáltatásra leszűkítve is megjelenítheti. Például előfordulhat, hogy csak a virtuális gépek előrejelzett költségeit szeretné megtekinteni.
+
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza a **Szűrő hozzáadása**, majd a **Szolgáltatás neve** elemet.
+1. A **kiválasztási** listában válasszon ki egy szolgáltatást. Ebben a példában válassza a **Virtuális gépek** lehetőséget.
+
+Tekintse át a kiválasztott szolgáltatás tényleges és előrejelzett költségeit.
+
+A nézeten további testreszabást is végezhet.
+
+1. Adjon hozzá egy második szűrőt (**Mérő**), és válasszon ki egy adott mérőtípushoz tartozó értéket, amelyre szűrni kíván a kiválasztott szolgáltatásnév alatt.
+1. **Erőforrás** szerint csoportosítva áttekintheti a költségekkel járó erőforrásokat. Az egyes szolgáltatások előrejelzett költségeit nem számítja ki a rendszer. Az összes erőforrás **Teljes** várható költsége jelenik meg.
+
+[![Egy szolgáltatás előrejelzett költsége](./media/cost-analysis-common-uses/forecast-by-service.png)](./media/cost-analysis-common-uses/forecast-by-service.png#lightbox)
+
+## <a name="view-your-azure-and-aws-costs-together"></a>Az Azure és az AWS költségeinek együttes megjelenítése  
+
+Az Azure és az AWS költségeinek együttes megjelenítéséhez használja az Azure-beli felügyeleti csoportok hatóköreit.
+
+1. Hozzon létre egy felügyeleti csoportot, vagy válasszon ki egy meglévőt.
+1. Rendelje hozzá a kívánt meglévő Azure-előfizetéseket a felügyeleti csoporthoz.
+1. Rendelje hozzá *ugyanezt* a felügyeleti csoportot az összekötő csatolt fiókjához.
+1. Lépjen a Költségelemzés területre, és válassza az **Összesített költségek** elemet.
+1. Válassza a **Csoportosítás** - **Szolgáltató** lehetőséget.
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Költséglebontás megtekintése Azure-szolgáltatások szerint
 
@@ -37,7 +86,6 @@ A számlaadatok Azure Portalon való megtekintéséhez keresse meg a költségel
 A számlázási adatok megtekintésével azonosíthatja, hogy melyik szolgáltatás okozott váratlan költségeket, és megállapíthatja, hogy melyik erőforrások kapcsolódnak közvetlenül ehhez az erőforráshoz a Költségelemzésben. Ha például engedélyezni kívánja a Virtual Machines szolgáltatás díjait, navigáljon a **Halmozott költség** nézetre. A részletességet ezután állítsa **Napi** értékre, a díjakat szűréséhez adja meg a **Szolgáltatásnév: Virtual Machines** értéket, majd csoportosítsa a díjakat **Erőforrás** szerint.
 
 [![A virtuális gépek halmozott költségeit bemutató példa](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
-
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Költséglebontás megtekintése Azure-erőforrások szerint
 

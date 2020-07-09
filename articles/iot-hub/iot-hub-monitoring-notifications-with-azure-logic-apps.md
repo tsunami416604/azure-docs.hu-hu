@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680723"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT távoli figyelés és értesítések Azure Logic Apps az IoT hub és a postaláda csatlakoztatásával
@@ -28,7 +27,7 @@ A [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) segítséget 
 
 Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely összekapcsolja az IoT hubot és a postaládáját a hőmérséklet-figyeléshez és az értesítésekhez.
 
-Az eszközön futó `temperatureAlert`-ügyfél kódja egy Application tulajdonságot állít be, amely minden telemetria üzenetet küld az IoT hubhoz. Ha az ügyfél kódja 30 °C feletti hőmérsékletet észlel, a tulajdonságot a `true`következőre állítja:; Ellenkező esetben a tulajdonságot a értékre állítja be `false`.
+Az eszközön futó-ügyfél kódja egy Application tulajdonságot állít be `temperatureAlert` , amely minden telemetria üzenetet küld az IoT hubhoz. Ha az ügyfél kódja 30 °C feletti hőmérsékletet észlel, a tulajdonságot a következőre állítja be: `true` . egyéb esetben a tulajdonságot a értékre állítja be `false` .
 
 Az IoT hub-ra érkező üzenetek a következőhöz hasonlóan néz ki: a törzsben található telemetria-és az `temperatureAlert` alkalmazás tulajdonságaiban található tulajdonság (a Rendszertulajdonságok nem jelennek meg):
 
@@ -48,7 +47,7 @@ Az IoT hub-ra érkező üzenetek a következőhöz hasonlóan néz ki: a törzsb
 
 Az IoT Hub üzenet formátumával kapcsolatos további tudnivalókért tekintse meg [IoT hub üzenetek létrehozása és olvasása](iot-hub-devguide-messages-construct.md)című témakört.
 
-Ebben a témakörben az IoT hub útválasztását úgy állíthatja be, hogy olyan üzeneteket küldjön, `temperatureAlert` amelyekben `true` a tulajdonság egy Service Bus végpont. Ezután beállíthat egy logikai alkalmazást, amely elindítja a Service Bus végpontra érkező üzeneteket, és e-mailben értesítést küld Önnek.
+Ebben a témakörben az IoT hub útválasztását úgy állíthatja be, hogy olyan üzeneteket küldjön, amelyekben a `temperatureAlert` tulajdonság `true` egy Service Bus végpont. Ezután beállíthat egy logikai alkalmazást, amely elindítja a Service Bus végpontra érkező üzeneteket, és e-mailben értesítést küld Önnek.
 
 ## <a name="what-you-do"></a>Teendők
 
@@ -58,7 +57,7 @@ Ebben a témakörben az IoT hub útválasztását úgy állíthatja be, hogy oly
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például: [málna PI és Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek az alábbi követelményekre vonatkoznak:
+* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például a [málna PI és a node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek az alábbi követelményekre vonatkoznak:
 
   * Aktív Azure-előfizetés.
   * Az előfizetéshez tartozó Azure IoT hub.
@@ -70,7 +69,7 @@ Hozzon létre egy Service Bus-névteret és üzenetsort. A jelen témakör kés�
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
 
-1. A [Azure Portal](https://portal.azure.com/)válassza az **+ erőforrás** > -**integrációs** > **Service Bus**létrehozása lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)válassza az **+ erőforrás**-  >  **integrációs**  >  **Service Bus**létrehozása lehetőséget.
 
 1. A **névtér létrehozása** panelen adja meg a következő adatokat:
 
@@ -84,7 +83,7 @@ Hozzon létre egy Service Bus-névteret és üzenetsort. A jelen témakör kés�
 
    ![Service Bus-névtér létrehozása a Azure Portalban](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-1. Kattintson a **Létrehozás** gombra. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
+1. Válassza a **Létrehozás** lehetőséget. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
 
 ### <a name="add-a-service-bus-queue-to-the-namespace"></a>Service Bus üzenetsor hozzáadása a névtérhez
 
@@ -96,7 +95,7 @@ Hozzon létre egy Service Bus-névteret és üzenetsort. A jelen témakör kés�
 
    ![Service Bus-várólista hozzáadása a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Vissza a **Service Bus névtér** panel **entitások**területén válassza a **várólisták**elemet. Nyissa meg a Service Bus várólistát a listából, majd válassza a **megosztott elérési házirendek** > **+ Hozzáadás**lehetőséget.
+1. Vissza a **Service Bus névtér** panel **entitások**területén válassza a **várólisták**elemet. Nyissa meg a Service Bus várólistát a listából, majd válassza a **megosztott elérési házirendek**  >  **+ Hozzáadás**lehetőséget.
 
 1. Adja meg a házirend nevét, jelölje be a **kezelés**, majd a **Létrehozás**lehetőséget.
 
@@ -104,7 +103,7 @@ Hozzon létre egy Service Bus-névteret és üzenetsort. A jelen témakör kés�
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Egyéni végpont és útválasztási szabály hozzáadása az IoT hub-hoz
 
-Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubhoz, és hozzon létre egy üzenet-útválasztási szabályt, amely az adott végpontra vonatkozó hőmérséklet-riasztást tartalmazó üzeneteket irányítja, ahol azokat a logikai alkalmazás fogja felvenni. Az útválasztási szabály útválasztási lekérdezést `temperatureAlert = "true"`használ, az üzenetek továbbításához az eszközön futó ügyfélalkalmazás által beállított `temperatureAlert` Application tulajdonság értéke alapján. További információ: üzenet- [útválasztási lekérdezés üzenet tulajdonságai alapján](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubhoz, és hozzon létre egy üzenet-útválasztási szabályt, amely az adott végpontra vonatkozó hőmérséklet-riasztást tartalmazó üzeneteket irányítja, ahol azokat a logikai alkalmazás fogja felvenni. Az útválasztási szabály útválasztási lekérdezést használ, az `temperatureAlert = "true"` üzenetek továbbításához az `temperatureAlert` eszközön futó ügyfélalkalmazás által beállított Application tulajdonság értéke alapján. További információ: üzenet- [útválasztási lekérdezés üzenet tulajdonságai alapján](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
 
 ### <a name="add-a-custom-endpoint"></a>Egyéni végpont hozzáadása
 
@@ -124,7 +123,7 @@ Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubh
 
    ![Adjon hozzá egy végpontot az IoT hub-hoz a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
-1. Kattintson a **Létrehozás** gombra. A végpont sikeres létrehozása után folytassa a következő lépéssel.
+1. Válassza a **Létrehozás** lehetőséget. A végpont sikeres létrehozása után folytassa a következő lépéssel.
 
 ### <a name="add-a-routing-rule"></a>Útválasztási szabály hozzáadása
 
@@ -138,7 +137,7 @@ Vegyen fel egy egyéni végpontot a Service Bus üzenetsor számára az IoT hubh
 
    **Adatforrás**: válassza az **eszköz telemetria üzenetei**lehetőséget.
 
-   **Útválasztási lekérdezés**: írja `temperatureAlert = "true"`be a értéket.
+   **Útválasztási lekérdezés**: írja be a értéket `temperatureAlert = "true"` .
 
    ![Útválasztási szabály hozzáadása a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
@@ -150,7 +149,7 @@ Az előző szakaszban beállíthatja, hogy az IoT hub hőmérséklet-riasztást 
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
-1. Válassza **az erőforrás** > **létrehozása integrációs** > **logikai alkalmazás**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
 
 1. Adja meg a következő információkat:
 
@@ -162,7 +161,7 @@ Az előző szakaszban beállíthatja, hogy az IoT hub hőmérséklet-riasztást 
 
    ![Logikai alkalmazás létrehozása a Azure Portalban](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-the-logic-app-trigger"></a>A logikai alkalmazás triggerének konfigurálása
 
@@ -189,7 +188,7 @@ Az előző szakaszban beállíthatja, hogy az IoT hub hőmérséklet-riasztást 
 
       ![Service Bus-kapcsolatok létrehozása a logikai alkalmazáshoz a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-   1. Az utolsó képernyőn, a **várólista neve**mezőben válassza ki a legördülő listából létrehozott várólistát. Adja `175` meg az **üzenetek maximális száma**értéket.
+   1. Az utolsó képernyőn, a **várólista neve**mezőben válassza ki a legördülő listából létrehozott várólistát. Adja meg `175` az **üzenetek maximális száma**értéket.
 
       ![Adja meg a logikai alkalmazásban található Service Bus-kapcsolatok maximális üzeneteinek darabszámát](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
@@ -201,7 +200,7 @@ Az előző szakaszban beállíthatja, hogy az IoT hub hőmérséklet-riasztást 
 
    1. Válassza az **Új lépés** lehetőséget. A **válasszon műveletet**területen válassza az **összes** fület.
 
-   1. Írja `smtp` be a keresőmezőbe a keresést, válassza ki az **SMTP** szolgáltatást a keresési eredmények között, majd válassza az **e-mail küldése**lehetőséget.
+   1. Írja be a keresőmezőbe a keresést `smtp` , válassza ki az **SMTP** szolgáltatást a keresési eredmények között, majd válassza az **e-mail küldése**lehetőséget.
 
       ![Hozzon létre egy SMTP-kapcsolatokat a logikai alkalmazásban a Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9-create-smtp-connection-logic-app-azure-portal.png)
 
@@ -218,7 +217,7 @@ Az előző szakaszban beállíthatja, hogy az IoT hub hőmérséklet-riasztást 
 
       ![SMTP-kapcsolatok e-mail-mezőinek kiválasztása](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. Adja meg az e-mail-címét a és `High temperature detected` **a**, valamint a **tulajdonos** és a **törzs** **számára.** Ha megnyílik a **dinamikus tartalom hozzáadása az ebben a folyamatban használt alkalmazásokból és összekötőből** párbeszédpanel, válassza az **Elrejtés** elemet a bezáráshoz. Ebben az oktatóanyagban nem használ dinamikus tartalmat.
+   1. Adja **meg az e** -mail-címét a és **a**, valamint `High temperature detected` a **tulajdonos** és a **törzs**számára. Ha megnyílik a **dinamikus tartalom hozzáadása az ebben a folyamatban használt alkalmazásokból és összekötőből** párbeszédpanel, válassza az **Elrejtés** elemet a bezáráshoz. Ebben az oktatóanyagban nem használ dinamikus tartalmat.
 
       ![Kitöltési SMTP-kapcsolatok e-mail-mezői](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 

@@ -16,11 +16,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707599"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>A rendszergazda felhasználók, SSH és a Linux rendszerű virtuális gépeken található lemezek megkeresése és javítása az Azure CLI-vel való VMAccess-bővítmény használatával
 ## <a name="overview"></a>Áttekintés
@@ -56,7 +55,7 @@ A Linux rendszerű virtuális gépeken kétféleképpen használhatja a VMAccess
 Az alábbi példák az [az VM User](/cli/azure/vm/user) parancsait használják. Ezen lépések elvégzéséhez szüksége lesz a legújabb [Azure CLI](/cli/azure/install-az-cli2) -re, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
 ## <a name="update-ssh-key"></a>SSH-kulcs frissítése
-Az alábbi példa frissíti a felhasználó `azureuser` SSH-kulcsát a nevű `myVM`virtuális gépen:
+Az alábbi példa frissíti a felhasználó SSH-kulcsát a `azureuser` nevű virtuális gépen `myVM` :
 
 ```azurecli-interactive
 az vm user update \
@@ -69,7 +68,7 @@ az vm user update \
 > **Megjegyzés:** A `az vm user update` parancs hozzáfűzi az új nyilvános kulcs szövegét a `~/.ssh/authorized_keys` virtuális gép rendszergazdai felhasználójának fájljához. Ez nem helyettesíti vagy nem távolítja el a meglévő SSH-kulcsokat. Ez a beállítás nem távolítja el az üzembe helyezéskor vagy a későbbi frissítésekben beállított korábbi kulcsokat a VMAccess-bővítmény használatával.
 
 ## <a name="reset-password"></a>Új jelszó létrehozása
-A következő példa alaphelyzetbe állítja a felhasználó `azureuser` jelszavát a nevű `myVM`virtuális gépen:
+A következő példa alaphelyzetbe állítja a felhasználó jelszavát a `azureuser` nevű virtuális gépen `myVM` :
 
 ```azurecli-interactive
 az vm user update \
@@ -80,7 +79,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>SSH újraindítása
-Az alábbi példa újraindítja az SSH démont, és visszaállítja az SSH-konfigurációt egy nevű `myVM`virtuális gép alapértelmezett értékeire:
+Az alábbi példa újraindítja az SSH démont, és visszaállítja az SSH-konfigurációt egy nevű virtuális gép alapértelmezett értékeire `myVM` :
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -89,7 +88,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-an-administrativesudo-user"></a>Rendszergazdai/sudo felhasználó létrehozása
-A következő példa egy **sudo** engedélyekkel `myNewUser` ellátott felhasználót hoz létre. A fiók SSH-kulcsot használ a hitelesítéshez a nevű `myVM`virtuális gépen. Ez a módszer úgy lett kialakítva, hogy segítse a virtuális gépekhez való hozzáférés visszaszerzését abban az esetben, ha az aktuális hitelesítő adatok elvesznek vagy elfelejtenek. Ajánlott eljárásként korlátozni kell a **sudo** engedélyekkel rendelkező fiókokat.
+A következő példa egy `myNewUser` **sudo** engedélyekkel ellátott felhasználót hoz létre. A fiók SSH-kulcsot használ a hitelesítéshez a nevű virtuális gépen `myVM` . Ez a módszer úgy lett kialakítva, hogy segítse a virtuális gépekhez való hozzáférés visszaszerzését abban az esetben, ha az aktuális hitelesítő adatok elvesznek vagy elfelejtenek. Ajánlott eljárásként korlátozni kell a **sudo** engedélyekkel rendelkező fiókokat.
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +99,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Felhasználó törlése
-A következő példa töröl egy nevű `myNewUser` felhasználót a nevű `myVM`virtuális gépen:
+A következő példa töröl egy nevű felhasználót `myNewUser` a nevű virtuális gépen `myVM` :
 
 ```azurecli-interactive
 az vm user delete \
@@ -115,7 +114,7 @@ Az alábbi példák nyers JSON-fájlokat használnak. Az [az VM Extension set](/
 ### <a name="reset-user-access"></a>Felhasználói hozzáférés alaphelyzetbe állítása
 Ha megszakadt a hozzáférése a Linux rendszerű virtuális gép gyökeréhez, elindíthat egy VMAccess-szkriptet a felhasználó SSH-kulcsának vagy jelszavának frissítéséhez.
 
-Egy felhasználó nyilvános SSH-kulcsának frissítéséhez hozzon létre egy nevű `update_ssh_key.json` fájlt, és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a `username` és `ssh_key` a paraméterek saját értékeit:
+Egy felhasználó nyilvános SSH-kulcsának frissítéséhez hozzon létre egy nevű fájlt, `update_ssh_key.json` és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a és a paraméterek saját értékeit `username` `ssh_key` :
 
 ```json
 {
@@ -136,7 +135,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Egy felhasználói jelszó alaphelyzetbe állításához hozzon `reset_user_password.json` létre egy nevű fájlt, és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a `username` és `password` a paraméterek saját értékeit:
+Egy felhasználói jelszó alaphelyzetbe állításához hozzon létre egy nevű fájlt, `reset_user_password.json` és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a és a paraméterek saját értékeit `username` `password` :
 
 ```json
 {
@@ -158,7 +157,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>SSH újraindítása
-Az SSH démon újraindításához és az SSH-konfiguráció alapértelmezett értékre való visszaállításához hozzon létre egy nevű `reset_sshd.json`fájlt. Adja hozzá a következő tartalmat:
+Az SSH démon újraindításához és az SSH-konfiguráció alapértelmezett értékre való visszaállításához hozzon létre egy nevű fájlt `reset_sshd.json` . Adja hozzá a következő tartalmat:
 
 ```json
 {
@@ -180,7 +179,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>Rendszergazda felhasználók kezelése
 
-Ha olyan **sudo** -engedélyekkel rendelkező felhasználót szeretne létrehozni, amely SSH-kulcsot használ a hitelesítéshez `create_new_user.json` , hozzon létre egy nevű fájlt, és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a `username` és `ssh_key` a paraméterek saját értékeit. Ez a módszer úgy lett kialakítva, hogy segítse a virtuális gépekhez való hozzáférés visszaszerzését abban az esetben, ha az aktuális hitelesítő adatok elvesznek vagy elfelejtenek. Ajánlott eljárásként korlátozni kell a **sudo** engedélyekkel rendelkező fiókokat.
+Ha olyan **sudo** -engedélyekkel rendelkező felhasználót szeretne létrehozni, amely SSH-kulcsot használ a hitelesítéshez, hozzon létre egy nevű fájlt, `create_new_user.json` és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a és a paraméterek saját értékeit `username` `ssh_key` . Ez a módszer úgy lett kialakítva, hogy segítse a virtuális gépekhez való hozzáférés visszaszerzését abban az esetben, ha az aktuális hitelesítő adatok elvesznek vagy elfelejtenek. Ajánlott eljárásként korlátozni kell a **sudo** engedélyekkel rendelkező fiókokat.
 
 ```json
 {
@@ -202,7 +201,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Egy felhasználó törléséhez hozzon létre egy nevű `delete_user.json` fájlt, és adja hozzá a következő tartalmat. Helyettesítse be a saját értékét `remove_user` a következő paraméterhez:
+Egy felhasználó törléséhez hozzon létre egy nevű fájlt, `delete_user.json` és adja hozzá a következő tartalmat. Helyettesítse be a saját értékét a következő `remove_user` paraméterhez:
 
 ```json
 {
@@ -225,7 +224,7 @@ az vm extension set \
 ### <a name="check-or-repair-the-disk"></a>A lemez keresése vagy javítása
 A VMAccess használatával a linuxos virtuális géphez hozzáadott lemezeket is megtekintheti és kijavíthatja.
 
-A lemez vizsgálatához és kijavításához hozzon létre egy `disk_check_repair.json` nevű fájlt, és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a saját értékét a következő `repair_disk`névre:
+A lemez vizsgálatához és kijavításához hozzon létre egy nevű fájlt, `disk_check_repair.json` és adja hozzá a beállításokat a következő formátumban. Helyettesítse be a saját értékét a következő névre `repair_disk` :
 
 ```json
 {

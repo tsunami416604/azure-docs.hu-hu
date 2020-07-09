@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646472"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
@@ -32,7 +31,7 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 4. Válassza ki a kívánt metrikát. 
    <br />A DPS jelenleg három mérőszámot biztosít:
 
-    | Metrika neve | Leírás |
+    | Metrika neve | Description |
     |-------|------------|
     | Igazolási kísérletek | Az eszköz kiépítési szolgáltatásával hitelesíteni próbált eszközök száma|
     | Regisztrációs kísérletek | A sikeres hitelesítés után IoT Hub regisztrálni próbált eszközök száma|
@@ -58,7 +57,7 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 5. A kívánt naplók összegyűjtésének engedélyezése.
 
-    | Napló neve | Leírás |
+    | Napló neve | Description |
     |-------|------------|
     | DeviceOperations | Eszköz-kapcsolódási eseményekhez kapcsolódó naplók |
     | ServiceOperations | A Service SDK-val kapcsolatos eseménynaplók (például regisztrációs csoportok létrehozása vagy frissítése)|
@@ -69,13 +68,13 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 8. Kattintson a **Futtatás** gombra a legutóbbi események megtekintéséhez.
 
-9. `OperationName`Ha vannak eredmények, keresse `ResultType` `ResultSignature`meg a, a, a `ResultDescription` és a (hibaüzenetet), hogy részletesebb információkat kapjon a hibáról.
+9. Ha vannak eredmények, keresse meg a, a, a `OperationName` `ResultType` és a `ResultSignature` `ResultDescription` (hibaüzenetet), hogy részletesebb információkat kapjon a hibáról.
 
 
 ## <a name="common-error-codes"></a>Gyakori hibakódok
 Ez a táblázat a gyakori hibák megismerésére és megoldására használható.
 
-| Hibakód| Leírás | HTTP-állapotkód |
+| Hibakód| Description | HTTP-állapotkód |
 |-------|------------|------------|
 | 400 | A kérelem törzse nem érvényes; például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni.| 400 helytelen formátum |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 jogosulatlan|

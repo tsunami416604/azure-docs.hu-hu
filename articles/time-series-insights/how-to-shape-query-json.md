@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641296"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>A lekérdezési teljesítmény maximalizálása a JSON alakzat használatával
@@ -97,16 +96,16 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LINE\_-adatsorok | EU |
-   | FYYY | LINE\_-adatsorok | USA |
+   | FXXX | LINE \_ -ADATsorok | EU |
+   | FYYY | LINE \_ -ADATsorok | USA |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | messageId | deviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LINE\_-adatsorok | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | LINE\_-adatsorok | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | LINE\_-adatsorok | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | LINE \_ -ADATsorok | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | LINE \_ -ADATsorok | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | LINE \_ -ADATsorok | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - A **deviceId** oszlop a flotta különböző eszközeinek oszlop fejlécét szolgálja. A **deviceId** értékének kiszámításához a saját tulajdonságnév korlátozza a teljes eszközt 595 (S1 környezet esetén) vagy 795 (S2 környezet esetén) a másik öt oszloppal.
@@ -165,23 +164,23 @@ Példa JSON-adattartalomra:
 
 * A Key Properties **deviceId** és a **Series. tagId**kulcsot tartalmazó hivatkozási adattábla:
 
-   | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | egység |
+   | deviceId | adatsorozat. tagId | messageId | deviceLocation | típus | egység |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_-adatsorok | EU | Áramlási sebesség | FT3/s |
-   | FXXX | oilPressure | LINE\_-adatsorok | EU | Motor olajnyomás | psi |
-   | FYYY | pumpRate | LINE\_-adatsorok | USA | Áramlási sebesség | FT3/s |
-   | FYYY | oilPressure | LINE\_-adatsorok | USA | Motor olajnyomás | psi |
+   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s |
+   | FXXX | oilPressure | LINE \_ -ADATsorok | EU | Motor olajnyomás | psi |
+   | FYYY | pumpRate | LINE \_ -ADATsorok | USA | Áramlási sebesség | FT3/s |
+   | FYYY | oilPressure | LINE \_ -ADATsorok | USA | Motor olajnyomás | psi |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
-   | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | egység | időbélyeg | adatsorozat. érték |
+   | deviceId | adatsorozat. tagId | messageId | deviceLocation | típus | egység | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_-adatsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LINE\_-adatsorok | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | LINE\_-adatsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LINE\_-adatsorok | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | LINE\_-adatsorok | USA | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE\_-adatsorok | USA | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE \_ -ADATsorok | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE \_ -ADATsorok | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | LINE \_ -ADATsorok | USA | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE \_ -ADATsorok | USA | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - A **deviceId** és a **Series. tagId** oszlopok a különböző eszközök és címkék oszlopaiként szolgálnak a flottában. A saját attribútumaik használatával a lekérdezés a 594 (S1 környezetek esetén) vagy a 794 (S2 környezet esetén) értékre van korlátozva a többi hat oszloppal rendelkező összes eszköz esetében.

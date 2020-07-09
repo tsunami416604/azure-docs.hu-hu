@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681327"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360758"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -76,7 +76,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
     **Címke:** Hagyja üresen<br>
     ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Kattintson a **Tovább** gombra. 
+ 4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Ezután kattintson a **Tovább** gombra. 
 
     |Szabály|Attribútum|Operátor|Érték|
     |-----|----|----|-----|
@@ -109,7 +109,7 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
     
     ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. A **hatókör-szűrő** lapon válassza a **cloudNoFlow** egyenlő **igaz**értéket. Kattintson a **Tovább** gombra.
+ 3. A **hatókör-szűrő** lapon válassza a **cloudNoFlow** egyenlő **igaz**értéket. Ezután kattintson a **Tovább** gombra.
  ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
  4. Az **illesztési** szabályok lapon kattintson a **tovább**gombra.
@@ -223,7 +223,7 @@ Miután meggyőződött róla, hogy a kísérleti szervezeti egység felhasznál
  10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
  11. A befejezést követően kattintson a **Kilépés**gombra. 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

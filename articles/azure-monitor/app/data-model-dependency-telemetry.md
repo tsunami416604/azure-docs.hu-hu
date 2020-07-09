@@ -5,21 +5,20 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671919"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights adatmodell
 
 A függőségi telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Name
 
 A függőségi hívással kezdeményezett parancs neve. Alacsony kardinális érték. Ilyenek például a tárolt eljárás neve és az URL-cím elérési útja sablon.
 
-## <a name="id"></a>ID (Azonosító)
+## <a name="id"></a>ID
 
 A függőségi hívás példányának azonosítója. A függőségi híváshoz tartozó telemetria-elemmel való korrelációhoz használatos. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
@@ -37,7 +36,7 @@ A függőségi hívás célhelye. Ilyenek például a kiszolgáló neve, a gazda
 
 ## <a name="duration"></a>Időtartam
 
-Kérelem időtartama (formátum) `DD.HH:MM:SS.MMMMMM`:. Rövidebbnek kell lennie, mint `1000` nap.
+Kérelem időtartama (formátum `DD.HH:MM:SS.MMMMMM` ):. Rövidebbnek kell lennie, mint `1000` nap.
 
 ## <a name="result-code"></a>Eredménykód
 

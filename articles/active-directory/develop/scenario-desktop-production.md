@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882879"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó asztali alkalmazás: áthelyezés éles környezetbe
@@ -31,14 +30,14 @@ A különböző folyamatokban megtanulta, hogyan kezelheti a csendes folyamatok 
 > [!NOTE]
 > A Microsoft Identity platform számos erőforrásának beszerzése, de Azure Active Directory (Azure AD) B2C esetében nem. A Azure AD B2C csak a rendszergazdai jogosultságokat támogatja, a felhasználói beleegyezett nem.
 
-A Microsoft Identity platform (v 2.0) végpontján egyszerre több erőforráshoz nem kaphat tokent. A `scopes` paraméter csak egyetlen erőforráshoz tartalmazhat hatóköröket. A `extraScopesToConsent` paraméter használatával biztosíthatja, hogy a felhasználó előre beleegyezett több erőforrásba.
+A Microsoft Identity platform (v 2.0) végpontján egyszerre több erőforráshoz nem kaphat tokent. A `scopes` paraméter csak egyetlen erőforráshoz tartalmazhat hatóköröket. A paraméter használatával biztosíthatja, hogy a felhasználó előre beleegyezett több erőforrásba `extraScopesToConsent` .
 
 Előfordulhat például, hogy két erőforrással rendelkezik, amelyek mindegyike két hatókörrel rendelkezik:
 
 - `https://mytenant.onmicrosoft.com/customerapi`a hatókörökkel `customer.read` és`customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi`a hatókörökkel `vendor.read` és`vendor.write`
 
-Ebben a példában a `.WithAdditionalPromptToConsent` `extraScopesToConsent` paraméterrel rendelkező módosítót használja.
+Ebben a példában a `.WithAdditionalPromptToConsent` paraméterrel rendelkező módosítót használja `extraScopesToConsent` .
 
 Ilyenek például a következők:
 
@@ -95,7 +94,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Ez a hívás egy hozzáférési jogkivonatot kap az első webes API-hoz.
 
-Ha meg kell hívnia a második webes API-t, `AcquireTokenSilent` hívja meg az API-t.
+Ha meg kell hívnia a második webes API-t, hívja meg az API-t `AcquireTokenSilent` .
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

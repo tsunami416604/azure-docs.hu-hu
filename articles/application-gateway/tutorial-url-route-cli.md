@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan irányíthatja át a webes fo
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68688182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805893"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webes forgalom irányítása az URL-cím alapján az Azure CLI használatával
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, ezt az eljárást [Azure PowerShell](tutorial-url-route-powershell.md) vagy a [Azure Portal](create-url-route-portal.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -98,7 +98,7 @@ az network application-gateway create \
  Az alkalmazásátjáró létrehozása több percig is eltarthat. Az alkalmazásátjáró létrehozását követően a következő új funkciók láthatóak:
 
 
-|Szolgáltatás  |Leírás  |
+|Szolgáltatás  |Description  |
 |---------|---------|
 |appGatewayBackendPool     |Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.|
 |appGatewayBackendHttpSettings     |Megszabja, hogy a kommunikációhoz a rendszer egy HTTP-protokollt és a 80-as portot használja.|
@@ -236,7 +236,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az az network public-ip show parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, vagy `http://40.121.222.19:8080/video/test.htm`.
+Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az az network public-ip show parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://40.121.222.19` , `http://40.121.222.19:8080/images/test.htm` , vagy `http://40.121.222.19:8080/video/test.htm` .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -248,15 +248,15 @@ az network public-ip show \
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/images/test.html értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet http:// &lt; IP-cím &gt; : 8080/images/test.html értékre, és cserélje le az IP &lt; -cím IP-címét &gt; , és az alábbi példához hasonlóan kell megjelennie:
 
 ![Tesztképek URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Módosítsa az URL-címet&lt;a http://IP&gt;-cím: 8080/video/test.html értékre, és &lt;cserélje le az&gt;IP-cím IP-címét, és az alábbi példához hasonlóan kell megjelennie.
+Módosítsa az URL-címet a http:// &lt; IP-cím &gt; : 8080/video/test.html értékre, és cserélje le az IP &lt; -cím IP-címét &gt; , és az alábbi példához hasonlóan kell megjelennie.
 
 ![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, távolítsa el az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást.
 

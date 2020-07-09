@@ -2,7 +2,7 @@
 title: Monitorozás és teljesítmény-finomhangolás
 description: A Azure SQL Database és az Azure SQL felügyelt példányának monitorozási és teljesítmény-hangolási képességeinek és módszertanának áttekintése.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: ab738e829b9c3e5a5c71ea8baeff67772723b64e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6e17e2a6e5c9151080facc3a2dd8c1a18c0580fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048867"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982160"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>A monitorozás és a teljesítmény finomhangolása Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A Azure SQL Database és az Azure SQL felügyelt példányában lévő adatbázisok teljesítményének figyeléséhez először figyelje a számítási feladatok által használt CPU-és IO-erőforrásokat az adott szolgáltatási szint és teljesítmény szintjének kiválasztása során kiválasztott adatbázis-teljesítmény szintjéhez képest. Ennek elvégzéséhez Azure SQL Database és az Azure SQL felügyelt példánya olyan erőforrás-metrikákat bocsát ki, amelyek megtekinthetők a Azure Portal vagy a következő SQL Management-eszközök valamelyikével: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+A Azure SQL Database és az Azure SQL felügyelt példányában lévő adatbázisok teljesítményének figyeléséhez először figyelje a számítási feladatok által használt CPU-és IO-erőforrásokat az adott szolgáltatási szint és teljesítmény szintjének kiválasztása során kiválasztott adatbázis-teljesítmény szintjéhez képest. Ennek elvégzéséhez Azure SQL Database és az Azure SQL felügyelt példánya olyan erőforrás-metrikákat bocsát ki, amelyek megtekinthetők a Azure Portal vagy a következő SQL Server felügyeleti eszközök valamelyikével: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 Azure SQL Database számos adatbázis-tanácsadót biztosít az intelligens teljesítmény-hangolási javaslatok és az Automatikus hangolási beállítások biztosításához a teljesítmény javítása érdekében. Emellett Lekérdezési terheléselemző megjeleníti a legtöbb CPU-és IO-használatért felelős lekérdezések részleteit az önálló és a készletezett adatbázisok esetében.
 
 A Azure SQL Database és az Azure SQL felügyelt példánya fejlett monitorozási és hangolási képességeket biztosít a mesterséges intelligencia számára, hogy segítséget nyújtson az adatbázisok és megoldások teljesítményének elhárításában és maximalizálásában. Dönthet úgy, hogy a [Intelligent Insights](intelligent-insights-overview.md) és más adatbázis-erőforrás-naplók és-metrikák [adatfolyam-exportálását](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) több, a felhasználás és az elemzés céljára szolgáló célhelyre konfigurálja, különösen az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)használatával. A Azure SQL Analytics egy fejlett felhőalapú figyelési megoldás, amely az összes adatbázis teljesítményének figyelésére használható nagy léptékű és több előfizetésben egyetlen nézetben. Az exportálható naplók és metrikák listáját az [Exportálás diagnosztikai telemetria](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) című témakörben tekintheti meg.
 
-Végül az SQL saját figyelési és diagnosztikai képességekkel rendelkezik a [SQL Server Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) -val és a [dinamikus felügyeleti nézetekkel (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](monitoring-with-dmvs.md) szkripteket.
+Végezetül SQL Server saját monitorozási és diagnosztikai képességekkel rendelkezik, amelyek SQL Database és az SQL felügyelt példányainak kiaknázását, például a [lekérdezési tárolót](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) és a [dinamikus felügyeleti nézeteket (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)használják. A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](monitoring-with-dmvs.md) szkripteket.
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>A Azure Portal funkcióinak figyelése és finomhangolása
 
@@ -67,7 +67,7 @@ Engedélyezheti és konfigurálhatja a [diagnosztikai telemetria adatfolyam-expo
 
 A diagnosztikai beállításokat a mérőszámok és az erőforrás-naplók a következő Azure-erőforrások egyikére történő továbbításához kell konfigurálni: önálló adatbázisok, készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok.
 
-### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület az Azure monitorban
+### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület a Azure Monitor
 
 A metrikák és az erőforrás-naplók a [Azure Monitor log Analytics munkaterületére](../../azure-monitor/platform/resource-logs-collect-workspace.md)is továbbíthatók. Az itt továbbított adatfolyamokat az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)is felhasználhatja, ami egy kizárólag Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő ajánlásokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más figyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például a riasztások és a vizualizációk kihasználása is.
 
@@ -89,9 +89,9 @@ A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsb
 
 Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/platform/resource-logs-collect-storage.md)-ba. Az Azure Storage használatával nagy mennyiségű diagnosztikai telemetria archiválható az előző két folyamatos átviteli lehetőség díjainak töredékéért.
 
-## <a name="use-extended-events-in-the-sql-database-engine"></a>Kiterjesztett események használata az SQL Database Engine-ben
+## <a name="use-extended-events"></a>Kiterjesztett események használata 
 
-Emellett az SQL-ben [kiterjesztett eseményeket](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) is használhat további speciális figyeléshez és hibaelhárításhoz. A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
+Emellett a speciális figyeléshez és hibaelhárításhoz is használhatja a SQL Server [kiterjesztett eseményeit](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) . A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
 
 ## <a name="next-steps"></a>További lépések
 

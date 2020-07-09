@@ -2,19 +2,18 @@
 title: Date_Bucket (Transact-SQL) – Azure SQL Edge (előzetes verzió)
 description: Tudnivalók a Date_Bucket használatáról az Azure SQL Edge-ben (előzetes verzió)
 keywords: Date_Bucket, SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7cedc19c1b2a19fb26677a9426300d19c5396bd4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84233292"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -50,7 +49,7 @@ A "Number" paraméterrel használt *dátum* része. Pl. Év, hónap, perc, máso
 |**második**|**SS**, **s**|  
 |**ezredmásodperces**|**MS**|  
 
-*szám*
+*száma*
 
 Az egész szám, amely a gyűjtő szélességét határozza meg a *datePart* argumentummal együtt. Ez a dataPart-gyűjtők szélességét jelöli a forrás időpontból. **`This argument cannot be a negative integer value`**. 
 
@@ -59,7 +58,7 @@ Az egész szám, amely a gyűjtő szélességét határozza meg a *datePart* arg
 Egy kifejezés, amely a következő értékek egyikére képes feloldani:
 
 + **dátum**
-+ **dátum/idő**
++ **datetime**
 + **DateTimeOffset**
 + **datetime2**
 + **idő adattípusúra**
@@ -134,7 +133,7 @@ Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 + GROUP BY
 + HAVING
 + ORDER BY
-+ \<Lista kiválasztása>
++ Válassza\<list>
 + WHERE
 
 ## <a name="examples"></a>Példák

@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219301"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561027"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
-A **text Analytics API** hívások http post/Get hívásokat végeznek, amelyek bármilyen nyelven megadhatók. Ebben a cikkben a REST és a [Poster](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) használatával mutatjuk be a főbb fogalmakat.
+A **text Analytics API** hívások http post/Get hívásokat végeznek, amelyek bármilyen nyelven megadhatók. Ebben a cikkben a REST és a [Poster](https://www.postman.com/downloads/) használatával mutatjuk be a főbb fogalmakat.
 
-Minden kérelemnek tartalmaznia kell a hozzáférési kulcsot és egy HTTP-végpontot. A végpont meghatározza a regisztráció során kiválasztott régiót, a szolgáltatás URL-címét és a kérelemben használt erőforrást: `sentiment`, `keyphrases` `languages`,, és `entities`. 
+Minden kérelemnek tartalmaznia kell a hozzáférési kulcsot és egy HTTP-végpontot. A végpont meghatározza a regisztráció során kiválasztott régiót, a szolgáltatás URL-címét és a kérelemben használt erőforrást: `sentiment` ,,, `keyphrases` `languages` és `entities` . 
 
 Ne felejtse el, hogy Text Analytics állapot nélküli, ezért nincsenek felügyelhető adategységek. A rendszer feltölti és elemzi a szöveget, és azonnal visszaadja az eredményeket a hívó alkalmazásnak.
 
@@ -43,7 +43,7 @@ Jelenleg minden Text Analytics művelethez ugyanazokat a dokumentumokat lehet el
 |---------|--------------|-----------|-------|
 |`id` |Az adattípus karakterlánc, de a gyakorlatban a dokumentumok azonosítói általában egész számnak számítanak. | Kötelező | A rendszer az Ön által megadott azonosítókat használja a kimenet felépítéséhez. A kérelemben szereplő minden egyes AZONOSÍTÓhoz a nyelvi kódok, a legfontosabb kifejezések és a hangulati pontszámok jönnek létre.|
 |`text` | Strukturálatlan nyers szöveg, legfeljebb 5 120 karakter hosszú lehet. | Kötelező | A nyelvfelismerés a szöveg bármilyen nyelven kifejezhető. Az érzelmek elemzéséhez, a fő kifejezés kinyeréséhez és az entitás azonosításához a szövegnek [támogatott nyelven](../text-analytics-supported-languages.md)kell lennie. |
-|`language` | 2 karakteres [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kód [támogatott nyelvhez](../text-analytics-supported-languages.md) | Változó | Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások összekapcsolásához szükséges. a nyelvfelismerés nem kötelező. Nincs hiba, ha kizárják, de az elemzés a nélkül meggyengül. A nyelvi kódnak meg kell egyeznie `text` az Ön által megadott értékkel. |
+|`language` | 2 karakteres [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kód [támogatott nyelvhez](../text-analytics-supported-languages.md) | Változó | Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások összekapcsolásához szükséges. a nyelvfelismerés nem kötelező. Nincs hiba, ha kizárják, de az elemzés a nélkül meggyengül. A nyelvi kódnak meg kell egyeznie az `text` Ön által megadott értékkel. |
 
 A korlátokkal kapcsolatos további információkért tekintse meg a [text Analytics áttekintés > az adatkorlátok](../overview.md#data-limits)című témakört. 
 
@@ -82,7 +82,7 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
 
   + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
   + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)  
-  + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
+  + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)  
   + [Entitások felismerése](text-analytics-how-to-entity-linking.md)  
 
 
@@ -95,7 +95,7 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
  [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Nyelv felismerése](text-analytics-how-to-language-detection.md)

@@ -10,17 +10,16 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704947"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Virtuális gép hálózati forgalmának szűrésével kapcsolatos probléma diagnosztizálása
 
@@ -79,7 +78,7 @@ Bár az érvényes biztonsági szabályok a virtuális gépen keresztül tekinth
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa `Get-Module -ListAvailable Az` a parancsot a számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia `Connect-AzAccount` kell az Azure-ba való bejelentkezést egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa a parancsot a `Get-Module -ListAvailable Az` számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia kell az `Connect-AzAccount` Azure-ba való bejelentkezést egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
 Szerezze be a [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)hálózati adapter érvényes biztonsági szabályait. A következő példa egy *myVMVMNic*nevű hálózati adapter érvényes biztonsági szabályait olvassa be, amely egy *myResourceGroup*nevű erőforráscsoport:
 
@@ -174,10 +173,10 @@ Függetlenül attól, hogy az Azure [Portal](#diagnose-using-azure-portal), a [P
 | Forrásporttartományok      | Bármelyik                                                                                |
 | Cél             | A virtuális gép IP-címe, az IP-címek tartománya vagy az alhálózat összes címe. |
 | Célporttartományok | 80                                                                                 |
-| Protocol (Protokoll)                | TCP                                                                                |
+| Protokoll                | TCP                                                                                |
 | Műveletek                  | Engedélyezés                                                                              |
 | Prioritás                | 100                                                                                |
-| Name (Név)                    | Engedélyezés – HTTP-mind                                                                     |
+| Name                    | Engedélyezés – HTTP-mind                                                                     |
 
 A szabály létrehozása után a 80-es port engedélyezi az internetről érkező bejövő adatokat, mert a szabály prioritása nagyobb, mint az *DenyAllInBound*nevű alapértelmezett biztonsági szabály, amely megtagadja a forgalmat. Útmutató [biztonsági szabályok létrehozásához](manage-network-security-group.md#create-a-security-rule). Ha a hálózati adapterhez és az alhálózathoz is különböző NSG vannak társítva, akkor mindkét NSG ugyanazt a szabályt kell létrehoznia.
 

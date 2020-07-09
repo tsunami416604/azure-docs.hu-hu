@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 74b1c25c8bab11c0b2a72510fd419df239e2c23a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d8d9ba6d3152435382d180fe32dd78e62e5fd63
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81603580"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087586"
 ---
-# <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rövid útmutató: interaktív lekérdezési fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával
+# <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Rövid útmutató: interaktív lekérdezési fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablont használ egy [interaktív lekérdezési](./apache-interactive-query-get-started.md) fürt létrehozásához az Azure HDInsight. Az interaktív lekérdezés (más néven Apache Hive LLAP vagy [alacsony késésű analitikai feldolgozás](https://cwiki.apache.org/confluence/display/Hive/LLAP)) egy Azure HDInsight- [fürt típusú](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy [interaktív lekérdezési](./apache-interactive-query-get-started.md) fürt létrehozásához az Azure HDInsight-ben. Az interaktív lekérdezés (más néven Apache Hive LLAP vagy [alacsony késésű analitikai feldolgozás](https://cwiki.apache.org/confluence/display/Hive/LLAP)) egy Azure HDInsight- [fürt típusú](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
 
-## <a name="create-an-interactive-query-cluster"></a>Interaktív lekérdezési fürt létrehozása
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
 
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-interactive-hive)származik.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-:::code language="json" source="~/quickstart-templates/101-hdinsight-interactive-hive/azuredeploy.json" range="1-158":::
+## <a name="review-the-template"></a>A sablon áttekintése
 
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-hdinsight-interactive-hive/)származik.
+
+:::code language="json" source="~/quickstart-templates/101-hdinsight-interactive-hive/azuredeploy.json" range="1-158" highlight="49-82":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-* [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): hozzon létre egy Azure Storage-fiókot.
-* [Microsoft. HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): hozzon létre egy HDInsight-fürtöt.
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): hozzon létre egy Azure Storage-fiókot.
+* [Microsoft. HDInsight/cluster](/azure/templates/microsoft.hdinsight/clusters): hozzon létre egy HDInsight-fürtöt.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Az Azure-ba való bejelentkezéshez és a Resource Manager-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
+1. Az Azure-ba való bejelentkezéshez és az ARM-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
 
     [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json)
 
@@ -64,7 +67,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni, amely a **Go to Resource** hivatkozást fogja tartalmazni. Az erőforráscsoport lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) -fiókkal vagy egy [Azure Data Lake Storage fióktól](../hdinsight-hadoop-use-data-lake-store.md) . Ezt az alapértelmezett Storage-fióknak nevezzük. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével nem törlődik a Storage-fiók.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
@@ -74,9 +77,9 @@ A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetősége
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre interaktív lekérdezési fürtöt a HDInsight Resource Manager-sablonnal. A következő cikkben megtudhatja, hogyan futtathat Apache Hive lekérdezéseket az Apache Zeppelin használatával.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre interaktív lekérdezési fürtöt a HDInsight egy ARM-sablonnal. A következő cikkben megtudhatja, hogyan futtathat Apache Hive lekérdezéseket az Apache Zeppelin használatával.
 
 > [!div class="nextstepaction"]
 > [Apache Hive lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin-vel](./hdinsight-connect-hive-zeppelin.md)

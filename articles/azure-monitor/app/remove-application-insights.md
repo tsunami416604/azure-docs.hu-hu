@@ -4,10 +4,9 @@ description: A ASP.NET és a ASP.NET Core Application Insights SDK eltávolítá
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80805104"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights eltávolítása a Visual Studióban
@@ -25,7 +24,7 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
     ![A felső menüben kattintson az eszközök > NuGet Package Manager > csomagkezelő konzol](./media/remove-application-insights/package-manager.png)
 
     > [!NOTE]
-    > Ha a nyomkövetési gyűjtemény engedélyezve van, először el kell távolítania a Microsoft. ApplicationInsights. TraceListener. Adja `Uninstall-package Microsoft.ApplicationInsights.TraceListener` meg az alábbi lépéseket a Microsoft. ApplicationInsights. Web eltávolításához.
+    > Ha a nyomkövetési gyűjtemény engedélyezve van, először el kell távolítania a Microsoft. ApplicationInsights. TraceListener. Adja meg `Uninstall-package Microsoft.ApplicationInsights.TraceListener` az alábbi lépéseket a Microsoft. ApplicationInsights. Web eltávolításához.
 
 1. Írja be a következő parancsot: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
@@ -49,7 +48,7 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. A jobb oldali *megoldáskezelő* kattintson a jobb gombbal a **megoldás** elemre, és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget.
+1. A *Solution Explorer*   jobb oldali megoldáskezelő kattintson a jobb gombbal a **megoldás**elemre,   és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget.
 
     Ekkor megjelenik egy képernyő, amely lehetővé teszi a projekt részét képező összes NuGet szerkesztését.
     
@@ -58,9 +57,9 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
     > [!NOTE]
     > Ha a nyomkövetési gyűjtemény engedélyezve van, először el kell távolítania a Microsoft. ApplicationInsights. TraceListener elemet a függőségek eltávolítása nélkül, majd az alábbi lépések végrehajtásával távolítsa el a Microsoft. ApplicationInsights. Web elemet a kiválasztott függőségek eltávolítása lehetőséggel.
     
-1. Kattintson a "Microsoft. ApplicationInsights. Web" csomagra.A jobb oldalon jelölje be a *projekt* melletti jelölőnégyzetet az összes projekt kiválasztásához.
+1. Kattintson a "Microsoft. ApplicationInsights. Web" csomagra.A jobb oldalon jelölje be a *projekt*melletti jelölőnégyzetet az   összes projekt kiválasztásához.
     
-1. Ha az eltávolításkor az összes függőséget el szeretné távolítani, jelölje be a beállítások legördülő menü alatti **lehetőséget** a projekt kijelölt részében.
+1. Ha az eltávolításkor az összes függőséget el szeretné távolítani, jelölje be a **Beállítások**   legördülő menü alatti lehetőséget a projekt kijelölt részében.
 
     Az *eltávolítási beállítások*területen jelölje be a *függőségek eltávolítása*elem melletti jelölőnégyzetet.
 
@@ -68,15 +67,15 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
     
     ![Jelölje be a függőségek eltávolítása, majd az Eltávolítás elemet.](./media/remove-application-insights/uninstall-framework.png)
 
-    Ekkor megjelenik egy párbeszédpanel, amely megjeleníti az alkalmazásból eltávolítandó összes függőséget.Az eltávolításhoz kattintson **az OK gombra** .
+    Ekkor megjelenik egy párbeszédpanel, amely megjeleníti az alkalmazásból eltávolítandó összes függőséget.Az eltávolításhoz kattintson **az OK gombra**   .
     
     ![Jelölje be a függőségek eltávolítása, majd az Eltávolítás elemet.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  A rendszer minden eltávolítása után továbbra is láthatja a "ApplicationInsights. config" és a "AiHandleErrorAttribute.cs" kifejezést a *megoldáskezelő*.A két fájlt manuálisan is törölheti.
+1.  Az eltávolítás után a *megoldáskezelő*a "ApplicationInsights.config" és a "AiHandleErrorAttribute.cs" is megjelenik.A két fájlt manuálisan is törölheti.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. A jobb oldali *megoldáskezelő* kattintson a jobb gombbal a **megoldás** elemre, és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget.
+1. A *Solution Explorer*   jobb oldali megoldáskezelő kattintson a jobb gombbal a **megoldás**elemre,   és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget.
 
     Ekkor megjelenik egy képernyő, amely lehetővé teszi a projekt részét képező összes NuGet szerkesztését.
 
@@ -107,7 +106,7 @@ A következő kódrészletek lettek hozzáadva:
      <ApplicationInsightsResourceId>/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WebApplication4</ApplicationInsightsResourceId>
     ```
 
-- Packages. config
+- Packages.config
 
     ```xml
     <packages>
@@ -155,7 +154,7 @@ A következő kódrészletek lettek hozzáadva:
     </head>
     ```
 
-- ConnectedService. JSON
+- ConnectedService.jsbekapcsolva
 
     ```json
     {
@@ -197,14 +196,14 @@ Ha Application Insights Telemetriat ad hozzá egy Visual Studio ASP.NET Core-sab
       </ItemGroup>
     ```
 
-- AppSettings. JSON:
+- Appsettings.jsa következőn:
 
     ```json
     "ApplicationInsights": {
         "InstrumentationKey": "00000000-0000-0000-0000-000000000000"
     ```
 
-- ConnectedService. JSON
+- ConnectedService.jsbekapcsolva
     
     ```json
     {

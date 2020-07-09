@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Adat-előállító létrehozása – Resource Manager-sablon
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: Biztonság – Felhasználó által kezelt kulcstitkosítás engedélyezése
+      href: enable-customer-managed-key.md
     - name: Adatfolyam létrehozása
       href: data-flow-create.md
 - name: Oktatóanyagok
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: Helyszíni SQL Server-adatbázisból az Azure Blob Storage-ba
+        - name: SQL Server-adatbázisból az Azure Blob Storage-ba
           items:
             - name: Adatok másolása eszköz
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: Több helyszíni SQL Server-táblából
+            - name: Több SQL Server-adatbázistáblából
               items:
                 - name: Felhasználói felület (UI)
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -88,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: CDC használata az Azure SQL MI-ben
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: 'Új fájlok, a legutóbb módosított adatok alapján'
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 'Új fájlok, idő szerint particionált fájlnév alapján'
@@ -156,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrációs modul
       href: concepts-integration-runtime.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Adatfolyamok
       items:
         - name: Adatok átalakítása leképezési adatfolyamokkal
@@ -194,6 +204,8 @@
       items:
         - name: Adat-előállítók vizuális létrehozása
           href: author-visually.md
+        - name: Felügyeleti központ
+          href: author-management-hub.md
         - name: Verziókövetés
           href: source-control.md
         - name: Folyamatos integráció és teljesítés
@@ -236,8 +248,8 @@
           href: connector-azure-file-storage.md
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
-        - name: Felügyelt Azure SQL Database-példány
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Felügyelt Azure SQL-példány
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics (korábban SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -246,6 +258,8 @@
           href: format-binary.md
         - name: Cassandra
           href: connector-cassandra.md
+        - name: Common Data Model formátum
+          href: format-common-data-model.md
         - name: Common Data Service for Apps
           href: connector-dynamics-crm-office-365.md
         - name: Concur
@@ -264,10 +278,14 @@
           href: connector-dynamics-ax.md
         - name: Dynamics CRM
           href: connector-dynamics-crm-office-365.md
+        - name: Excel formátum
+          href: format-excel.md
         - name: Fájlrendszer
           href: connector-file-system.md
         - name: FTP
           href: connector-ftp.md
+        - name: GitHub
+          href: connector-github.md
         - name: Google AdWords
           href: connector-google-adwords.md
         - name: Google BigQuery
@@ -370,6 +388,8 @@
           href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
+        - name: Snowflake
+          href: connector-snowflake.md
         - name: Spark
           href: connector-spark.md
         - name: SQL Server
@@ -556,19 +576,21 @@
         - name: Felügyelt identitás Data Factoryhoz
           href: data-factory-service-identity.md
         - name: Ügyfél által felügyelt kulcstitkosítás
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: Monitorozás és kezelés
       items:
         - name: Vizuális megfigyelés
           href: monitor-visually.md
         - name: Monitorozás az Azure Monitorral
           href: monitor-using-azure-monitor.md
+        - name: SSIS monitorozása az Azure Monitorral
+          href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
         - name: Monitorozás SDK-kkal
           href: monitor-programmatically.md
         - name: Integrációs modul monitorozása
           href: monitor-integration-runtime.md
         - name: Az Azure SSIS integrációs modul monitorozása
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Az Azure SSIS integrációs modul újrakonfigurálása
           href: manage-azure-ssis-integration-runtime.md
         - name: Adat-előállító másolása vagy klónozása
@@ -605,6 +627,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Csatlakozás adatokhoz Windows-hitelesítéssel
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: Fájlok mentése és fájlmegosztásokhoz való kapcsolódás
+          href: ssis-azure-files-file-shares.md
         - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Beépített és előre telepített összetevők az Azure-SSIS IR-en
@@ -623,6 +649,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSIS-feladatok migrálása az SSMS-sel
           href: how-to-migrate-ssis-job-ssms.md
+        - name: Csomagok kezelése az Azure-SSIS IR csomagtárolóval
+          href: azure-ssis-integration-runtime-package-store.md
     - name: Eseményindítók létrehozása
       items:
         - name: Eseményalapú trigger létrehozása
@@ -633,6 +661,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Függőség létrehozása átfedésmentes ablak eseményindítójához
           href: tumbling-window-trigger-dependency.md
+    - name: Forgatókönyvek
+      items:
+        - name: Data Lake- és EDW-adatmigrálás
+          items:
+            - name: Miért érdemes az Azure Data Factoryt választani?
+              href: data-migration-guidance-overview.md
+            - name: Adatok migrálása az AWS S3-ból az Azure-ba
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: Adatok migrálása helyszíni Hadoop-fürtből az Azure-ba
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Átalakítás adatfolyam-leképezéssel
+          items:
+            - name: Rögzített szélességű szövegfájlok feldolgozása
+              href: how-to-fixed-width.md
+            - name: Hibát tartalmazó sorok kezelése
+              href: how-to-data-flow-error-rows.md
+            - name: Átállás Azure SQL DB-ről CosmosDB-re
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: SSIS-migrálás helyszínről
+          items:
+            - name: SSIS-migrálás áttekintése
+              href: scenario-ssis-migration-overview.md
+            - name: SSISDB-migrálás felügyelt Azure SQL-példányra
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: Sablonok
       items:
         - name: A sablonok áttekintése
@@ -673,32 +727,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Csomagvégrehajtás az Azure-SSIS IR-ben
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: Forgatókönyvek
-  items:
-    - name: Data Lake- és EDW-adatmigrálás
-      items:
-        - name: Miért érdemes az Azure Data Factoryt választani?
-          href: data-migration-guidance-overview.md
-        - name: Adatok migrálása az AWS S3-ból az Azure-ba
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Adatok migrálása helyszíni Hadoop-fürtből az Azure-ba
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Átalakítás adatfolyam-leképezéssel
-      items:
-        - name: Rögzített szélességű szövegfájlok feldolgozása
-          href: how-to-fixed-width.md
-        - name: Hibát tartalmazó sorok kezelése
-          href: how-to-data-flow-error-rows.md
-        - name: Átállás Azure SQL DB-ről CosmosDB-re
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: SSIS-migrálás helyszínről
-      items:
-        - name: SSIS-migrálás áttekintése
-          href: scenario-ssis-migration-overview.md
-        - name: SSISDB-migrálás felügyelt Azure SQL Database-példányra
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referencia
   items:
     - name: Adatfolyamszkript

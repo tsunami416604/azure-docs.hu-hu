@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 06/29/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f3861ab8839ba0483c5096e29cd09b6268bd765e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563909"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -60,44 +60,31 @@ Ezek a blob REST API-k nem támogatottak:
 
 A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, amelyek hierarchikus névtérrel rendelkeznek. Ha egy hierarchikus névteret szeretne engedélyezni egy Storage-fiókban, helyezze a nem felügyelt virtuális gépek lemezeit olyan Storage-fiókba, amelyben nincs engedélyezve a hierarchikus névtér funkció.
 
-<a id="api-scope-data-lake-client-library" />
+<a id="api-scope-data-lake-client-library"></a>
 
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Fájlrendszer-támogatás az SDK-k, a PowerShell és az Azure CLI-ben
 
 - Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
 
-
-## <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
-
-A blob-Pillanatképek törlése még nem támogatott. 
-
-## <a name="archive-tier"></a>Archiválási szint
-
-Jelenleg van egy olyan hiba, amely hatással van az archív hozzáférési szintre.
-
-## <a name="blobfuse"></a>Blobfuse
-
-A Blobfuse nem támogatott.
-
-<a id="known-issues-tools" />
+<a id="known-issues-tools"></a>
 
 ## <a name="azcopy"></a>AzCopy
 
 Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
 
-<a id="storage-explorer" />
+<a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 Csak a vagy újabb verziókat használja  `1.6.0`   .
 
-<a id="explorer-in-portal" />
+<a id="explorer-in-portal"></a>
 
 ## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer a Azure Portal
 
 Az ACL-ek még nem támogatottak.
 
-<a id="third-party-apps" />
+<a id="third-party-apps"></a>
 
 ## <a name="thirdpartyapplications"></a>Harmadik féltől származó alkalmazások
 

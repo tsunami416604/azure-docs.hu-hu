@@ -3,22 +3,22 @@ title: Az Azure Notebooks előzetes verziójának áttekintése
 description: Futtasson Jupyter jegyzetfüzeteket a felhőben az ingyenes Azure Notebooks előzetes verzió szolgáltatásával, ahol nincs szükség beállításra vagy konfigurációra.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: e40b7056aef7e59759c9e04ba9d98fbfb7d28ca3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647563"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85831403"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebooks előzetes verziójának áttekintése
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A [Jupyter](https://jupyter.org/) (korábbi nevén IPython) egy nyílt forráskódú projekt, amely lehetővé teszi a Markdown-szöveg *, a végrehajtható* kód, az állandó adatok, a grafikák és a vizualizációk egyszerű egyesítését egyetlen, megosztható vászonra (a jupyter.org lemezkép jóvoltából):
 
 [![Példák Jupyter notebookokra](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 A kód, a grafika és a magyarázó szöveg hatékony kombinációja miatt a Jupyter számos felhasználási célra népszerűvé vált, beleértve az adatelemzési utasításokat, az adattisztítást és-átalakítást, a numerikus szimulációt, a statisztikai modellezést és a gépi tanulási modellek fejlesztését.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>Problémamentes élmény
 
@@ -87,7 +87,7 @@ Javasoljuk, hogy a Azure Notebooks előzetes verzió használata az üzleti szem
 
 A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://github.com/Microsoft/AzureNotebooks/issues)teheti fel a problémát.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 

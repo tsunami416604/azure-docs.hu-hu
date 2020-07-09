@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: jboeshart
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76038145"
 ---
 Ez a dokumentum a felügyelt és a nem felügyelt lemezek közötti különbségeket mutatja be, amikor Azure Resource Manager sablonokat használ a virtuális gépek kiépítéséhez. A példák segítségével frissítheti a nem felügyelt lemezeket használó meglévő sablonokat a felügyelt lemezekre. Hivatkozásként az [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) sablont használjuk útmutatóként. A sablont a [felügyelt lemezekkel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) és a korábbi verziókkal is megtekintheti a nem [felügyelt lemezekkel](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , ha közvetlenül össze szeretné hasonlítani őket.
@@ -88,7 +88,7 @@ A virtuálisgép-objektumon belül adjon hozzá egy függőséget a Storage-fió
 Az Azure Managed Disks használatával a lemez legfelső szintű erőforrás lesz, és már nem szükséges a felhasználó által létrehozandó Storage-fiók létrehozása. A felügyelt lemezek először az `2016-04-30-preview` API-verzióban voltak elérhetők, a következő API-verziókban érhetők el, és most már az alapértelmezett lemez típusa. A következő szakasz végigvezeti az alapértelmezett beállításokon, és részletesen ismerteti a lemezek további testreszabását.
 
 > [!NOTE]
-> Azt javasoljuk, hogy az API-verziót később használja `2016-04-30-preview` , mint ahogy a és `2016-04-30-preview` `2017-03-30`a között megszakadt a változás.
+> Azt javasoljuk, hogy az API-verziót később használja `2016-04-30-preview` , mint ahogy a és a között megszakadt a változás `2016-04-30-preview` `2017-03-30` .
 >
 >
 
@@ -99,7 +99,7 @@ A felügyelt lemezekkel rendelkező virtuális gépek létrehozásához többé 
 - A `apiVersion` egy olyan verzió, amely támogatja a felügyelt lemezeket.
 - `osDisk`és `dataDisks` a továbbiakban nem hivatkozik a VHD-re vonatkozó egyedi URI-ra.
 - Ha további tulajdonságok megadása nélkül végzi a telepítést, a lemez a virtuális gép méretétől függően a tárolási típust fogja használni. Ha például olyan virtuálisgép-méretet használ, amely támogatja a Premium Storage-t (például Standard_D2s_v3), akkor a prémium szintű lemezek alapértelmezés szerint lesznek konfigurálva. Ezt a tárolási típus megadásához a lemez SKU-beállítása segítségével módosíthatja.
-- Ha nincs megadva a lemez neve, a rendszer az operációsrendszer-lemez és `<VMName>_OsDisk_1_<randomstring>` `<VMName>_disk<#>_<randomstring>` az egyes adatlemezek formátumát veszi alapul.
+- Ha nincs megadva a lemez neve, a `<VMName>_OsDisk_1_<randomstring>` rendszer az operációsrendszer-lemez és az `<VMName>_disk<#>_<randomstring>` egyes adatlemezek formátumát veszi alapul.
   - Ha egy virtuális gépet egy egyéni rendszerképből hoz létre, akkor a rendszer az egyéni rendszerkép-erőforrásban definiált lemez tulajdonságaiból kéri le a Storage-fiók típusának és a lemez nevének alapértelmezett beállításait. Ezek felülbírálása a sablon értékeinek megadásával lehetséges.
 - Alapértelmezés szerint az Azure Disk Encryption le van tiltva.
 - Alapértelmezés szerint a lemezes gyorsítótárazás az operációsrendszer-lemezre írható/olvasható, és nincs az adatlemezek esetében.
@@ -164,7 +164,7 @@ A virtuálisgép-objektumban a lemez konfigurációjának megadására Alternat�
 }
 ```
 
-A virtuálisgép-objektumon belül hivatkozzon a csatolni kívánt lemez objektumra. A `managedDisk` tulajdonságban létrehozott felügyelt lemez erőforrás-azonosítójának megadásával engedélyezheti a lemez mellékletét a virtuális gép létrehozásakor. A `apiVersion` virtuális gép erőforrásának beállítása a következőre van beállítva: `2017-03-30`. A rendszer hozzáadja a lemez erőforrásának függőségét annak érdekében, hogy a virtuális gép létrehozása előtt sikeresen létrejött legyen. 
+A virtuálisgép-objektumon belül hivatkozzon a csatolni kívánt lemez objektumra. A tulajdonságban létrehozott felügyelt lemez erőforrás-AZONOSÍTÓjának megadásával `managedDisk` engedélyezheti a lemez mellékletét a virtuális gép létrehozásakor. A `apiVersion` virtuális gép erőforrásának beállítása a következőre van beállítva: `2017-03-30` . A rendszer hozzáadja a lemez erőforrásának függőségét annak érdekében, hogy a virtuális gép létrehozása előtt sikeresen létrejött legyen. 
 
 ```json
 {
@@ -209,7 +209,7 @@ A virtuálisgép-objektumon belül hivatkozzon a csatolni kívánt lemez objektu
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Felügyelt rendelkezésre állási készletek létrehozása felügyelt lemezeket használó virtuális gépekkel
 
-Managed Disks-t használó virtuális gépekkel felügyelt rendelkezésre állási csoportok létrehozásához adja hozzá az `sku` objektumot a `name` rendelkezésre állási csoport erőforráshoz, és állítsa a tulajdonságot értékre `Aligned`. Ez a tulajdonság biztosítja, hogy az egyes virtuális gépek lemezei elég elszigeteltek legyenek egymástól az egyes meghibásodási pontok elkerülése érdekében. Azt is vegye figyelembe `apiVersion` , hogy a rendelkezésre állási készlet erőforrás `2018-10-01`értéke a következő:.
+Managed Disks-t használó virtuális gépekkel felügyelt rendelkezésre állási csoportok létrehozásához adja hozzá az `sku` objektumot a rendelkezésre állási csoport erőforráshoz, és állítsa a `name` tulajdonságot értékre `Aligned` . Ez a tulajdonság biztosítja, hogy az egyes virtuális gépek lemezei elég elszigeteltek legyenek egymástól az egyes meghibásodási pontok elkerülése érdekében. Azt is vegye figyelembe, hogy a `apiVersion` rendelkezésre állási készlet erőforrás értéke a következő: `2018-10-01` .
 
 ```json
 {
@@ -254,7 +254,7 @@ Az standard SSD-lemezek sablonnal történő létrehozásával kapcsolatos péld
 
 A REST API-specifikációkkal kapcsolatos teljes információkért tekintse át a [felügyelt lemez létrehozása REST API dokumentációját](/rest/api/manageddisks/disks/disks-create-or-update). További forgatókönyveket, valamint az alapértelmezett és elfogadható értékeket is megtalálhatja, amelyeket az API-hoz a sablonok üzembe helyezésével lehet elküldeni. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt lemezeket használó teljes sablonokhoz látogasson el az alábbi Azure-beli rövid útmutatókra mutató hivatkozásokra.
     * [Windowsos virtuális gép felügyelt lemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)

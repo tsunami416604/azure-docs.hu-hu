@@ -4,21 +4,21 @@ description: Ez a cikk a Azure Cosmos DB globális elosztásával kapcsolatos te
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872128"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955913"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális Adatterjesztés a Azure Cosmos DB-ben – a motorháztető alatt
 
 Azure Cosmos DB az Azure alapszintű szolgáltatása, így az összes világszerte elérhető Azure-régióban üzembe helyezhető, beleértve a nyilvános, szuverén, védelmi minisztériumi (DoD) és kormányzati felhőket is. Egy adatközponton belül üzembe helyezjük és felügyeljük a gépek nagy számú, dedikált helyi tárolóval rendelkező Azure Cosmos DBét. Az adatközpontokon belül Azure Cosmos DB több fürtön is üzembe helyezhetők, amelyek mindegyike a hardver több generációját is futtatja. A fürtön belüli gépek általában az 10-20-es tartalék tartományok között oszlanak meg a magas rendelkezésre állás érdekében a régión belül. Az alábbi képen a Cosmos DB globális terjesztési rendszertopológiája látható:
 
-![Rendszertopológia](./media/global-dist-under-the-hood/distributed-system-topology.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distributed-system-topology.png" alt-text="Rendszertopológia" border="false":::
 
 **A Azure Cosmos db globális eloszlása kulcsrakész:** Bármikor, néhány kattintással vagy programozott módon egyetlen API-hívással, hozzáadhat vagy eltávolíthat a Cosmos-adatbázishoz társított földrajzi régiókat. A Cosmos-adatbázisok a Cosmos-tárolók készletét tartalmazzák. Cosmos DB a tárolók a terjesztés és a méretezhetőség logikai egységként szolgálnak. A létrehozott gyűjtemények, táblák és diagramok (belsőleg) csak a Cosmos-tárolók. A tárolók teljes mértékben sémák és agnosztikusok, és hatókört biztosítanak a lekérdezésekhez. A Cosmos-tárolóban tárolt adatmennyiség automatikusan bekerül a betöltés után. Az Automatikus indexelés lehetővé teszi a felhasználók számára az adatlekérdezést a séma vagy az index kezelésének gondja nélkül, különösen egy globálisan elosztott telepítésben.  
 
@@ -30,7 +30,7 @@ Ha egy Cosmos DB rugalmasan méretezi az átviteli sebességet egy Cosmos-tárol
 
 Ahogy az az alábbi ábrán is látható, a tárolóban lévő adatok két dimenzión oszlanak el – egy régión belül és régiókban, a világ minden részén:  
 
-![fizikai partíciók](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fizikai partíciók" border="false":::
 
 A fizikai partíciót replikák egy csoportja *hozza létre, amelyet replika-készletnek*neveznek. Mindegyik gép több száz replikát üzemeltet, amelyek a fenti képen látható különböző fizikai partíciókhoz tartoznak. A fizikai partícióknak megfelelő replikák dinamikusan helyezhetők el és töltődnek be a fürtben lévő gépek és a régión belüli adatközpontok között.  
 
@@ -52,7 +52,7 @@ A fizikai partíciók önfelügyelt és dinamikusan elosztott replikák, amelyek
 
 A fizikai partíciók egy csoportja, amelyek mindegyike a Cosmos adatbázis-régiókkal van konfigurálva, az összes konfigurált régióban replikált azonos kulcsok kezelésére szolgál. Ezt a magasabb szintű koordinációs primitívet *partíciós készletnek* nevezzük – a fizikai partíciók földrajzilag elosztott dinamikus átfedése, amely egy adott kulcsot kezel. Míg egy adott fizikai partíció (egy replika-készlet) egy fürtön belül van, a partíciók a fürtökön, az adatközpontokban és a földrajzi régiókban is kiterjedhetnek, ahogy az alábbi képen is látható:  
 
-![Particionálási készletek](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Particionálási készletek" border="false":::
 
 Úgy gondolja, hogy a partíciók földrajzilag elszórtan szétszórt "Super Replica-set" típusúak, amely több replika-készletből áll, amelyek ugyanazt a kulcsot tartalmazza. Hasonlóan a másodpéldányhoz, a partíciós csoport tagsága is dinamikus – az implicit fizikai particionálási műveletek alapján ingadozik az új partíciók hozzáadására/eltávolítására egy adott partíción (például amikor egy tárolón kibővíti az átviteli sebességet, hozzáadhat/eltávolíthat egy régiót a Cosmos-adatbázishoz, vagy ha hiba történik). Azáltal, hogy az egyes partíciók (partíciók) a saját replikáján belül kezelik a particionálási tagságot, a tagság teljes mértékben decentralizált és magasan elérhető. Egy lemezpartíció újrakonfigurálása során a rendszer a fizikai partíciók közötti átfedés topológiáját is létrehozta. A topológia dinamikusan van kiválasztva a forrás és a cél fizikai partíciói között a konzisztencia, a földrajzi távolság és a rendelkezésre álló hálózati sávszélesség alapján.  
 

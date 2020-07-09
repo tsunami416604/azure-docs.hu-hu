@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive, tracking-python
+ms.openlocfilehash: 9bb27d1dd9c7bc5f067fa3d84f451537882150c5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74148404"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087673"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben
 
@@ -29,16 +29,16 @@ A HDInsight a Jython is tartalmazza, amely egy Java-ban írt python-implementác
 
 * **Hadoop-fürt a HDInsight-on**. Lásd: Ismerkedés [a HDInsight Linux rendszeren](apache-hadoop-linux-tutorial-get-started.md).
 * **Egy SSH-ügyfél**. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . `wasb://` Ez az Azure Storage `abfs://` esetében Azure Data Lake Storage Gen2 vagy ADL://esetében Azure Data Lake Storage Gen1. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI wasbs://lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
-* **A tárolási konfiguráció lehetséges módosítása.**  A Storage-fiók használata esetén lásd: `BlobStorage` [tárolási konfiguráció](#storage-configuration) .
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az `wasb://` Azure Storage esetében `abfs://` Azure Data Lake Storage Gen2 vagy adl://esetében Azure Data Lake Storage Gen1. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI wasbs://lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* **A tárolási konfiguráció lehetséges módosítása.**  A Storage-fiók használata esetén lásd: [tárolási konfiguráció](#storage-configuration) `BlobStorage` .
 * Választható.  Ha a PowerShell használatát tervezi, az az [modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kell telepítenie.
 
 > [!NOTE]  
-> A cikkben használt Storage-fiók az Azure Storage [szolgáltatás engedélyezve van, és](../../storage/common/storage-require-secure-transfer.md) így `wasbs` a cikk egészében használatos.
+> A cikkben használt Storage-fiók az Azure Storage [szolgáltatás engedélyezve van, és](../../storage/common/storage-require-secure-transfer.md) így a `wasbs` cikk egészében használatos.
 
 ## <a name="storage-configuration"></a>Tároló konfigurálása
 
-Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  A cikkben szereplő folyamat legalább `/tezstaging`a kimenetet fogja eredményezni.  Az alapértelmezett Hadoop-konfiguráció a `/tezstaging` szolgáltatásban `fs.azure.page.blob.dir` `core-site.xml` `HDFS`található konfigurációs változóban fog szerepelni.  Ez a konfiguráció azt eredményezi, hogy a könyvtár a könyvtárba kerül, és a Storage-fiók típusa `BlobStorage`nem támogatott.  Ennek a `BlobStorage` cikknek a használatához távolítsa `/tezstaging` el `fs.azure.page.blob.dir` a konfigurációs változót.  A konfiguráció a [Ambari felhasználói felületéről](../hdinsight-hadoop-manage-ambari.md)érhető el.  Ellenkező esetben a következő hibaüzenet jelenik meg:`Page blob is not supported for this account type.`
+Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)` .  A cikkben szereplő folyamat legalább a kimenetet fogja eredményezni `/tezstaging` .  Az alapértelmezett Hadoop-konfiguráció a `/tezstaging` `fs.azure.page.blob.dir` szolgáltatásban található konfigurációs változóban fog szerepelni `core-site.xml` `HDFS` .  Ez a konfiguráció azt eredményezi, hogy a könyvtár a könyvtárba kerül, és a Storage-fiók típusa nem támogatott `BlobStorage` .  Ennek a `BlobStorage` cikknek a használatához távolítsa el `/tezstaging` a `fs.azure.page.blob.dir` konfigurációs változót.  A konfiguráció a [Ambari felhasználói felületéről](../hdinsight-hadoop-manage-ambari.md)érhető el.  Ellenkező esetben a következő hibaüzenet jelenik meg:`Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > A jelen dokumentumban ismertetett lépések a következő feltételezéseket teszik:  
@@ -49,12 +49,12 @@ Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (g
 > Ha a [Azure Cloud shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) használatával szeretné használni a HDInsight-t, akkor a következőket kell tennie:
 >
 > * Hozza létre a parancsfájlokat a Cloud Shell-környezetben.
-> * A `scp` használatával feltöltheti a fájlokat a Cloud shellből a HDInsight-be.
+> * A használatával `scp` feltöltheti a fájlokat a Cloud shellből a HDInsight-be.
 > * A `ssh` Cloud Shell használatával csatlakozhat a HDInsight, és futtathatja a példákat.
 
 ## <a name="apache-hive-udf"></a><a name="hivepython"></a>UDF Apache Hive
 
-A Python a kaptárból UDF-ként is használható a HiveQL `TRANSFORM` utasítással. A következő HiveQL például meghívja a fürt `hiveudf.py` alapértelmezett Azure Storage-fiókjában tárolt fájlt.
+A Python a kaptárból UDF-ként is használható a HiveQL `TRANSFORM` utasítással. A következő HiveQL például meghívja a `hiveudf.py` fürt alapértelmezett Azure Storage-fiókjában tárolt fájlt.
 
 ```hiveql
 add file wasbs:///hiveudf.py;
@@ -69,14 +69,14 @@ ORDER BY clientid LIMIT 50;
 A példa a következőképpen működik:
 
 1. A `add file` fájl elején található utasítás hozzáadja a `hiveudf.py` fájlt az elosztott gyorsítótárhoz, így a fürt összes csomópontja számára elérhetővé válik.
-2. Az `SELECT TRANSFORM ... USING` utasítás kiválasztja az adatait a `hivesampletable`következőből:. Emellett a ClientID, a devicemake és a devicemodel értékeket is átadja `hiveudf.py` a parancsfájlnak.
-3. A `AS` záradék ismerteti a által `hiveudf.py`visszaadott mezőket.
+2. Az `SELECT TRANSFORM ... USING` utasítás kiválasztja az adatait a következőből: `hivesampletable` . Emellett a ClientID, a devicemake és a devicemodel értékeket is átadja a `hiveudf.py` parancsfájlnak.
+3. A `AS` záradék ismerteti a által visszaadott mezőket `hiveudf.py` .
 
 <a name="streamingpy"></a>
 
 ### <a name="create-file"></a>Fájl létrehozása
 
-A fejlesztői környezetben hozzon létre egy nevű `hiveudf.py`szövegfájlt. Használja a következő kódot a fájl tartalmához:
+A fejlesztői környezetben hozzon létre egy nevű szövegfájlt `hiveudf.py` . Használja a következő kódot a fájl tartalmához:
 
 ```python
 #!/usr/bin/env python
@@ -98,18 +98,18 @@ while True:
 Ez a szkript a következő műveleteket hajtja végre:
 
 1. Adatsorokat olvas be az STDIN-ből.
-2. A rendszer eltávolítja a záró sortörési karaktert `string.strip(line, "\n ")`a használatával.
+2. A rendszer eltávolítja a záró sortörési karaktert a használatával `string.strip(line, "\n ")` .
 3. Az adatfolyam-feldolgozás során a rendszer egyetlen sort tartalmaz az egyes értékek közötti Tab karakterrel rendelkező összes értékre. Így `string.split(line, "\t")` felhasználható a bemenet felosztása az egyes lapokon, csak a mezők visszaadása.
 4. A feldolgozás befejezésekor a kimenetet egyetlen sorba kell írni, és az egyes mezők között egy fület kell megadnia. Például: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
-5. A `while` hurok addig ismétlődik, amíg `line` nincs beolvasva.
+5. A `while` hurok addig ismétlődik, amíg nincs `line` beolvasva.
 
-A parancsfájl kimenete a `devicemake` és `devicemodel`a bemeneti értékeinek összefűzése, valamint az összefűzött érték kivonata.
+A parancsfájl kimenete a és a bemeneti értékeinek összefűzése `devicemake` `devicemodel` , valamint az összefűzött érték kivonata.
 
 ### <a name="upload-file-shell"></a>Fájl feltöltése (rendszerhéj)
 
-Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhasználónevet, ha más.  Cserélje `mycluster` le a nevet a tényleges fürt nevére.  Győződjön meg arról, hogy a munkakönyvtár a fájl helye.
+Az alábbi parancsokban cserélje le a helyére `sshuser` a tényleges felhasználónevet, ha más.  Cserélje le `mycluster` a nevet a tényleges fürt nevére.  Győződjön meg arról, hogy a munkakönyvtár a fájl helye.
 
-1. A `scp` paranccsal másolja a fájlokat a HDInsight-fürtre. Szerkessze és írja be az alábbi parancsot:
+1. `scp`A paranccsal másolja a fájlokat a HDInsight-fürtre. Szerkessze és írja be az alábbi parancsot:
 
     ```cmd
     scp hiveudf.py sshuser@mycluster-ssh.azurehdinsight.net:
@@ -150,11 +150,13 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
 
 3. Az utolsó sor megadása után a feladattípusnak indulnia kell. Miután a feladatok befejeződik, az a következő példához hasonló kimenetet ad vissza:
 
-        100041    RIM 9650    d476f3687700442549a83fac4560c51c
-        100041    RIM 9650    d476f3687700442549a83fac4560c51c
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    ```output
+    100041    RIM 9650    d476f3687700442549a83fac4560c51c
+    100041    RIM 9650    d476f3687700442549a83fac4560c51c
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    ```
 
 4. A Beeline kilépéséhez írja be a következő parancsot:
 
@@ -164,7 +166,7 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
 
 ### <a name="upload-file-powershell"></a>Fájl feltöltése (PowerShell)
 
-A PowerShell használható a kaptár-lekérdezések távoli futtatására is. Gondoskodjon arról, hogy a `hiveudf.py` munkakönyvtár hol található.  A következő PowerShell-parancsfájl használatával futtasson egy, a `hiveudf.py` parancsfájlt használó kaptár-lekérdezést:
+A PowerShell használható a kaptár-lekérdezések távoli futtatására is. Gondoskodjon arról, hogy a munkakönyvtár hol `hiveudf.py` található.  A következő PowerShell-parancsfájl használatával futtasson egy, a parancsfájlt használó kaptár-lekérdezést `hiveudf.py` :
 
 ```PowerShell
 # Login to your Azure subscription
@@ -281,20 +283,22 @@ Get-AzHDInsightJobOutput `
 
 A **kaptár** -feladatokhoz tartozó kimenetnek az alábbi példához hasonlóan kell megjelennie:
 
-    100041    RIM 9650    d476f3687700442549a83fac4560c51c
-    100041    RIM 9650    d476f3687700442549a83fac4560c51c
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+```output
+100041    RIM 9650    d476f3687700442549a83fac4560c51c
+100041    RIM 9650    d476f3687700442549a83fac4560c51c
+100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+```
 
 ## <a name="apache-pig-udf"></a><a name="pigpython"></a>Apache Pig UDF
 
-Egy Python-szkript használható a Pig-ből származó UDF-ként `GENERATE` az utasításban. A szkriptet a Jython vagy a C Python használatával is futtathatja.
+Egy Python-szkript használható a Pig-ből származó UDF-ként az `GENERATE` utasításban. A szkriptet a Jython vagy a C Python használatával is futtathatja.
 
 * A Jython a JVM fut, és natív módon hívható meg a Pig-től.
 * A C Python egy külső folyamat, így a JVM lévő Pig-ből származó adatok a Python-folyamatban futó parancsfájlba kerülnek. A Python-szkript kimenetét a rendszer visszaküldi a Pig-nek.
 
-A Python-tolmács megadásához használja `register` a Python-szkriptre való hivatkozással. Az alábbi példákban a Pig-szkriptek regisztrálása `myfuncs`:
+A Python-tolmács megadásához használja `register` a Python-szkriptre való hivatkozással. Az alábbi példákban a Pig-szkriptek regisztrálása `myfuncs` :
 
 * **A Jython használata**:`register '/path/to/pigudf.py' using jython as myfuncs;`
 * **A C Python használata**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
@@ -313,14 +317,14 @@ DUMP DETAILS;
 
 A példa a következőképpen működik:
 
-1. Az első sor betölti a minta `sample.log` adatfájlt `LOGS`a alkalmazásba. Emellett az egyes rekordokat is meghatározza `chararray`.
-2. A következő sor kiszűri a null értékeket, és a művelet eredményét a `LOG`alkalmazásba tárolja.
-3. Ezután `LOG` megismétli a és a által `GENERATE` használt rekordokat, hogy meghívja `create_structure` a Python/Jython parancsfájlban található metódust `myfuncs`. `LINE`az aktuális rekord függvénybe való továbbítására szolgál.
-4. Végül a kimenetek az STDOUT-ra kerülnek a `DUMP` parancs használatával. Ez a parancs a művelet befejeződése után jeleníti meg az eredményeket.
+1. Az első sor betölti a minta adatfájlt a `sample.log` alkalmazásba `LOGS` . Emellett az egyes rekordokat is meghatározza `chararray` .
+2. A következő sor kiszűri a null értékeket, és a művelet eredményét a alkalmazásba tárolja `LOG` .
+3. Ezután megismétli a `LOG` és a által használt rekordokat, `GENERATE` hogy meghívja a `create_structure` Python/Jython parancsfájlban található metódust `myfuncs` . `LINE`az aktuális rekord függvénybe való továbbítására szolgál.
+4. Végül a kimenetek az STDOUT-ra kerülnek a parancs használatával `DUMP` . Ez a parancs a művelet befejeződése után jeleníti meg az eredményeket.
 
 ### <a name="create-file"></a>Fájl létrehozása
 
-A fejlesztői környezetben hozzon létre egy nevű `pigudf.py`szövegfájlt. Használja a következő kódot a fájl tartalmához:
+A fejlesztői környezetben hozzon létre egy nevű szövegfájlt `pigudf.py` . Használja a következő kódot a fájl tartalmához:
 
 <a name="streamingpy"></a>
 
@@ -349,19 +353,19 @@ A Pig Latin példában a `LINE` bemenet chararray van definiálva, mert nincs ko
 
 2. Ezután az `def create_structure(input)` határozza meg azt a függvényt, amelyet a Pig sorokba továbbít.
 
-3. A példában szereplő adatok `sample.log`többnyire a Date, az Time, az osztálynév, a Level és a detail sémának felelnek meg. Azonban néhány sort tartalmaz, amelyek a-től kezdődnek `*java.lang.Exception*`. Ezeket a sorokat módosítani kell, hogy egyezzenek a sémával. Az `if` utasítás ezeket a adatokat ellenőrzi, majd a bemeneti adatok alapján a `*java.lang.Exception*` karakterláncot a végére helyezi, és az adatokat a várt kimeneti sémával összhangban hozza.
+3. A példában szereplő adatok `sample.log` többnyire a Date, az Time, az osztálynév, a Level és a detail sémának felelnek meg. Azonban néhány sort tartalmaz, amelyek a-től kezdődnek `*java.lang.Exception*` . Ezeket a sorokat módosítani kell, hogy egyezzenek a sémával. Az `if` utasítás ezeket a adatokat ellenőrzi, majd a bemeneti adatok alapján a `*java.lang.Exception*` karakterláncot a végére helyezi, és az adatokat a várt kimeneti sémával összhangban hozza.
 
-4. Ezt követően a `split` parancs az első négy szóköz karakternél az adatfelosztásra szolgál. A kimenet a,, `date`, `time`és `classname` `level` `detail`rendszerhez van rendelve.
+4. Ezt követően a `split` parancs az első négy szóköz karakternél az adatfelosztásra szolgál. A kimenet a,,, és rendszerhez van rendelve `date` `time` `classname` `level` `detail` .
 
 5. Végül a rendszer visszaadja az értékeket a Pig-nek.
 
-Amikor az adatok visszakerülnek a malacba, az `@outputSchema` utasításban meghatározott konzisztens sémával rendelkezik.
+Amikor az adatok visszakerülnek a malacba, az utasításban meghatározott konzisztens sémával rendelkezik `@outputSchema` .
 
 ### <a name="upload-file-shell"></a>Fájl feltöltése (rendszerhéj)
 
-Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhasználónevet, ha más.  Cserélje `mycluster` le a nevet a tényleges fürt nevére.  Győződjön meg arról, hogy a munkakönyvtár a fájl helye.
+Az alábbi parancsokban cserélje le a helyére `sshuser` a tényleges felhasználónevet, ha más.  Cserélje le `mycluster` a nevet a tényleges fürt nevére.  Győződjön meg arról, hogy a munkakönyvtár a fájl helye.
 
-1. A `scp` paranccsal másolja a fájlokat a HDInsight-fürtre. Szerkessze és írja be az alábbi parancsot:
+1. `scp`A paranccsal másolja a fájlokat a HDInsight-fürtre. Szerkessze és írja be az alábbi parancsot:
 
     ```cmd
     scp pigudf.py sshuser@mycluster-ssh.azurehdinsight.net:
@@ -399,19 +403,21 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
 
 3. A következő sor beírása után a feladattípusnak indulnia kell. Miután a feladatok befejeződik, az a következő adatokhoz hasonló kimenetet ad vissza:
 
-        ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
-        ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
-        ((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
-        ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
-        ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+    ```output
+    ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
+    ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
+    ((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
+    ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
+    ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+    ```
 
-4. A `quit` (z) használatával lépjen ki a morog-rendszerhéjból, majd a következő paranccsal szerkessze a pigudf.py-fájlt a helyi fájlrendszerben:
+4. A (z) használatával `quit` lépjen ki a morog-rendszerhéjból, majd a következő paranccsal szerkessze a pigudf.py-fájlt a helyi fájlrendszerben:
 
     ```bash
     nano pigudf.py
     ```
 
-5. A szerkesztőben egyszer a következő sor megjegyzésének törlésével távolítsa `#` el a karaktert a sor elejéről:
+5. A szerkesztőben egyszer a következő sor megjegyzésének törlésével távolítsa el a `#` karaktert a sor elejéről:
 
     ```bash
     #from pig_util import outputSchema
@@ -419,7 +425,7 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
 
     Ez a sor módosítja a Python-szkriptet, hogy a C Python használatával működjön a Jython helyett. A módosítás megtörténte után a **CTRL + X** billentyűkombinációval lépjen ki a szerkesztőből. Válassza az **Y**lehetőséget, majd az **ENTER billentyűt** a módosítások mentéséhez.
 
-6. A `pig` parancs használatával indítsa újra a rendszerhéjat. Ha a `grunt>` rendszer kéri, a következő paranccsal futtassa a Python-szkriptet a C Python-értelmező használatával.
+6. A `pig` parancs használatával indítsa újra a rendszerhéjat. Ha a rendszer `grunt>` kéri, a következő paranccsal futtassa a Python-szkriptet a C Python-értelmező használatával.
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -433,7 +439,7 @@ Az alábbi parancsokban cserélje le `sshuser` a helyére a tényleges felhaszn�
 
 ### <a name="upload-file-powershell"></a>Fájl feltöltése (PowerShell)
 
-A PowerShell használható a kaptár-lekérdezések távoli futtatására is. Gondoskodjon arról, hogy a `pigudf.py` munkakönyvtár hol található.  A következő PowerShell-parancsfájl használatával futtasson egy, a `pigudf.py` parancsfájlt használó kaptár-lekérdezést:
+A PowerShell használható a kaptár-lekérdezések távoli futtatására is. Gondoskodjon arról, hogy a munkakönyvtár hol `pigudf.py` található.  A következő PowerShell-parancsfájl használatával futtasson egy, a parancsfájlt használó kaptár-lekérdezést `pigudf.py` :
 
 ```PowerShell
 # Login to your Azure subscription
@@ -479,7 +485,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > Amikor a PowerShell használatával távolról küld el egy feladatot, nem lehet a C Pythont használni tolmácsként.
 
-A PowerShellt a Pig Latin feladatok futtatására is használhatja. A `pigudf.py` parancsfájlt használó Pig Latin-feladatok futtatásához használja a következő PowerShell-parancsfájlt:
+A PowerShellt a Pig Latin feladatok futtatására is használhatja. A parancsfájlt használó Pig Latin-feladatok futtatásához `pigudf.py` használja a következő PowerShell-parancsfájlt:
 
 ```PowerShell
 # Script should stop on failures
@@ -549,11 +555,13 @@ Get-AzHDInsightJobOutput `
 
 A **Pig** -feladatokhoz tartozó kimenetnek a következő adatokhoz hasonlóan kell megjelennie:
 
-    ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
-    ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
-    ((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
-    ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
-    ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+```output
+((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
+((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
+((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
+((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
+((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+```
 
 ## <a name="troubleshooting"></a><a name="troubleshooting"></a>Hibaelhárítás
 
@@ -561,7 +569,9 @@ A **Pig** -feladatokhoz tartozó kimenetnek a következő adatokhoz hasonlóan k
 
 A kaptár-feladatok futtatásakor az alábbi szöveghez hasonló hibaüzenet jelenhet meg:
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```output
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```
 
 Ezt a problémát a Python-fájlban végződő sorok okozzák. Számos Windows-szerkesztő alapértelmezés szerint a CRLF-t használja, de a Linux-alkalmazások általában a TT-t várnak.
 

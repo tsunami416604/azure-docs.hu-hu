@@ -10,10 +10,9 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82853499"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
@@ -26,7 +25,7 @@ Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [A
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -97,7 +96,7 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -142,7 +141,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> Ha azt tervezi, hogy [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használ, `-EnableHierarchicalNamespace $True` vegye fel a következő paraméterekbe.
+> Ha azt tervezi, hogy [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használ, vegye `-EnableHierarchicalNamespace $True` fel a következő paraméterekbe.
 
 Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storage-fiók létrehozásához helyettesítse be a kívánt értéket az alábbi táblázatban az **SkuName** paraméterhez.
 
@@ -185,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> Ha azt tervezi, hogy [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használ, `--enable-hierarchical-namespace true` vegye fel a következő paraméterekbe. 
+> Ha azt tervezi, hogy [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használ, vegye `--enable-hierarchical-namespace true` fel a következő paraméterekbe. 
 
 Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storage-fiók létrehozásához helyettesítse be a kívánt értéket az alábbi táblázatban az **SKU** paraméterhez.
 
@@ -220,7 +219,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> Ez a sablon csak példaként szolgál. Számos olyan Storage-fiók beállításai vannak, amelyek nem a sablon részeként vannak konfigurálva. Ha például a [Azure Data Lake Storaget](https://azure.microsoft.com/services/storage/data-lake-storage/)szeretné használni, módosítsa a sablont úgy, hogy `isHnsEnabledad` `StorageAccountPropertiesCreateParameters` `true`az objektum tulajdonságát a értékre állítja. 
+> Ez a sablon csak példaként szolgál. Számos olyan Storage-fiók beállításai vannak, amelyek nem a sablon részeként vannak konfigurálva. Ha például a [Azure Data Lake Storaget](https://azure.microsoft.com/services/storage/data-lake-storage/)szeretné használni, módosítsa a sablont úgy, `isHnsEnabledad` hogy az objektum tulajdonságát a értékre állítja `StorageAccountPropertiesCreateParameters` `true` . 
 
 A sablon módosításával vagy újak létrehozásával kapcsolatos további információkért lásd:
 

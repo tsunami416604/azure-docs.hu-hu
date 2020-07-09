@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d29ed68b2945b2473b33aa88176e6f5d832a0fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116077"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 
@@ -29,7 +29,7 @@ Az Azure Cosmos Container a méretezhetőség alapvető egysége. Gyakorlatilag 
 
 Jelenleg legfeljebb 100 Azure Cosmos-fiókot hozhat létre az Azure-előfizetések alatt. Egyetlen Azure Cosmos-fiók gyakorlatilag korlátlan számú adatmennyiséget és kiosztott átviteli sebességet tud kezelni. Az adatok és a kiépített átviteli sebesség kezeléséhez létrehozhat egy vagy több Azure Cosmos-adatbázist a fiókjában és az adatbázison belül, létrehozhat egy vagy több tárolót is. Az alábbi képen egy Azure Cosmos-fiók elemeinek hierarchiája látható:
 
-![Azure Cosmos-fiók hierarchiája](./media/account-overview/hierarchy.png)
+:::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Azure Cosmos-fiók hierarchiája" border="false":::
 
 ## <a name="next-steps"></a>További lépések
 

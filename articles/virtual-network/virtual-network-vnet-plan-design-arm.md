@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186016"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045501"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
@@ -61,7 +61,7 @@ A virtuális hálózatok egy vagy több alhálózatra oszthatók fel a [korláto
 - Minden alhálózatnak rendelkeznie kell egy, a virtuális hálózat CIDR belül megadott egyedi címtartomány-tartománnyal. A címtartomány nem fedi át a virtuális hálózat más alhálózatait.
 - Ha egyes Azure-szolgáltatási erőforrásokat egy virtuális hálózatba kíván telepíteni, akkor előfordulhat, hogy a saját alhálózatát kell létrehoznia, vagy létre kell hoznia a saját alhálózatát, így ehhez elegendő szabad területnek kell lennie. Annak megállapításához, hogy egy Azure-szolgáltatás saját alhálózatot hoz létre, tekintse meg az egyes Azure-szolgáltatások információit, [amelyek telepíthetők egy virtuális hálózatba](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Ha például egy Azure VPN Gateway használatával csatlakozik egy virtuális hálózathoz egy helyszíni hálózathoz, a virtuális hálózatnak dedikált alhálózattal kell rendelkeznie az átjáróhoz. További információ az [átjáró-alhálózatokról](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
 - Az Azure alapértelmezés szerint a virtuális hálózat összes alhálózata között irányítja a hálózati forgalmat. Felülbírálhatja az Azure alapértelmezett útválasztását, így megakadályozhatja az alhálózatok közötti Azure-útválasztást, vagy átirányíthatja az alhálózatok közötti forgalmat egy hálózati virtuális berendezésen keresztül, például a következő módon:. Ha egy hálózati virtuális berendezésen (NVA) keresztül egy virtuális hálózati folyamat erőforrásai közötti adatforgalomra van szüksége, telepítse az erőforrásokat a különböző alhálózatokra. További tudnivalók a [biztonságról](#security).
-- Korlátozhatja az Azure-erőforrásokhoz, például az Azure Storage-fiókhoz vagy az Azure SQL Database-hez való hozzáférést a virtuális hálózati szolgáltatás végpontját tartalmazó adott alhálózatokhoz. További lehetőségként megtagadhatja az internetről érkező erőforrásokhoz való hozzáférést. Több alhálózatot is létrehozhat, és egyes alhálózatokon engedélyezheti a szolgáltatási végpontot, másokat azonban nem. További információ a [szolgáltatási végpontokról](virtual-network-service-endpoints-overview.md)és az Azure-erőforrásokról, amelyekhez engedélyezheti azokat.
+- Korlátozhatja az Azure-erőforrásokhoz, például az Azure Storage-fiókokhoz vagy a Azure SQL Databaseokhoz való hozzáférést egy virtuális hálózati szolgáltatás végpontját tartalmazó adott alhálózatokra. További lehetőségként megtagadhatja az internetről érkező erőforrásokhoz való hozzáférést. Több alhálózatot is létrehozhat, és egyes alhálózatokon engedélyezheti a szolgáltatási végpontot, másokat azonban nem. További információ a [szolgáltatási végpontokról](virtual-network-service-endpoints-overview.md)és az Azure-erőforrásokról, amelyekhez engedélyezheti azokat.
 - A virtuális hálózatok mindegyik alhálózatához nulla vagy egy hálózati biztonsági csoportot is hozzárendelhet. Az egyes alhálózatokhoz ugyanazokat vagy egy másik hálózati biztonsági csoportot lehet hozzárendelni. Minden hálózati biztonsági csoport olyan szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a forrásokra és a célhelyekre. További információ a [hálózati biztonsági csoportokról](#traffic-filtering).
 
 ## <a name="security"></a>Biztonság

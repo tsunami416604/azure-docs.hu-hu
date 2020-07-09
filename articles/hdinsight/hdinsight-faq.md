@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022214"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Gyakori kérdések
@@ -133,7 +132,7 @@ További információ a következő dokumentumokban található:
 
 - [Biztonságos bejövő forgalom HDInsight-fürtökhöz privát végponttal rendelkező virtuális hálózaton](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
-- [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [HDInsight kezelése – IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Telepíthetek egy további virtuális gépet ugyanazon az alhálózaton belül, mint HDInsight-fürtöt?
 
@@ -249,7 +248,7 @@ done
 ```
  
 > [!NOTE]
-> A *fájlnév. txt* fájl a blob-tárolókban lévő fájlok abszolút elérési útját fogja tartalmazni.
+> A fájl *filenames.txt* a blob-tárolókban található fájlok abszolút elérési útját fogja tartalmazni.
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Vannak-e a Storage-beli Ranger-beépülő modulok?
 

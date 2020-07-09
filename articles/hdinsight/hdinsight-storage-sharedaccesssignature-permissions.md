@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209060"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087452"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférésű jogosultságkódok használata az adathozzáférés korlátozásához a HDInsightban
 
@@ -39,11 +39,11 @@ A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure St
 
 * A C# használata esetén a Visual Studio 2013-es vagy újabb verziójának kell lennie.
 
-* A Storage-fiók URI-sémája. Ez a séma `wasb://` az Azure Storage-hoz `abfs://` , Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az `wasbs://`URI a következő lesz:.
+* A Storage-fiók URI-sémája. Ez a séma `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` .
 
 * Egy meglévő HDInsight-fürt megosztott hozzáférési aláírás hozzáadásához a következőhöz:. Ha nem, akkor a Azure PowerShell használatával létrehozhat egy fürtöt, és hozzáadhat egy közös hozzáférési aláírást a fürt létrehozása során.
 
-* A példa a következő [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)fájlokra:. Ez a tárház a következő elemeket tartalmazza:
+* A példa a következő fájlokra: [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) . Ez a tárház a következő elemeket tartalmazza:
 
   * Egy Visual Studio-projekt, amely létrehoz egy Storage-tárolót, tárolt házirendet és SAS-t a HDInsight-mel való használatra
   * Egy Python-szkript, amely létrehoz egy Storage-tárolót, tárolt házirendet és SAS-t a HDInsight-hez való használatra
@@ -88,7 +88,7 @@ Mentse az egyes módszerek végén létrehozott SAS-jogkivonatot. A jogkivonat a
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
-Cserélje `RESOURCEGROUP`le `STORAGEACCOUNT`a, `STORAGECONTAINER` a és a értéket a meglévő Storage-tároló megfelelő értékeire. Módosítsa a könyvtárat `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` , vagy módosítsa úgy `-File` a paramétert, hogy az a `Set-AzStorageblobcontent`(z) abszolút elérési útját tartalmazza. Adja meg a következő PowerShell-parancsot:
+Cserélje le a `RESOURCEGROUP` , a `STORAGEACCOUNT` és a `STORAGECONTAINER` értéket a meglévő Storage-tároló megfelelő értékeire. Módosítsa a könyvtárat, `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` vagy módosítsa `-File` úgy a paramétert, hogy az a (z) abszolút elérési útját tartalmazza `Set-AzStorageblobcontent` . Adja meg a következő PowerShell-parancsot:
 
 ```powershell
 $resourceGroupName = "RESOURCEGROUP"
@@ -154,7 +154,7 @@ Set-AzStorageblobcontent `
 
 Az ebben a szakaszban szereplő változók használata egy Windows-környezetben alapul. A bash vagy más környezetek esetében kisebb eltérésekre lesz szükség.
 
-1. Cserélje `STORAGEACCOUNT`le a `STORAGECONTAINER` és a értéket a meglévő Storage-tároló megfelelő értékeire.
+1. Cserélje le a `STORAGEACCOUNT` és a `STORAGECONTAINER` értéket a meglévő Storage-tároló megfelelő értékeire.
 
     ```azurecli
     # set variables
@@ -171,14 +171,14 @@ Az ebben a szakaszban szereplő változók használata egy Windows-környezetben
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. A beolvasott elsődleges kulcs beállítása egy változóra későbbi használatra. Cserélje `PRIMARYKEY` le az értéket az előző lépésben lekért értékre, majd írja be az alábbi parancsot:
+2. A beolvasott elsődleges kulcs beállítása egy változóra későbbi használatra. Cserélje le az `PRIMARYKEY` értéket az előző lépésben lekért értékre, majd írja be az alábbi parancsot:
 
     ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Módosítsa a könyvtárat `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` , vagy módosítsa úgy `--file` a paramétert, hogy az a `az storage blob upload`(z) abszolút elérési útját tartalmazza. Hajtsa végre a többi parancsot:
+3. Módosítsa a könyvtárat, `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` vagy módosítsa `--file` úgy a paramétert, hogy az a (z) abszolút elérési útját tartalmazza `az storage blob upload` . Hajtsa végre a többi parancsot:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -199,9 +199,9 @@ Az ebben a szakaszban szereplő változók használata egy Windows-környezetben
 
 ### <a name="using-python"></a>A Python használata
 
-Nyissa `SASToken.py` meg a fájlt `storage_account_name`, `storage_account_key`és cserélje `storage_container_name` le a megfelelő értékeket a meglévő Storage-tárolóhoz, majd futtassa a szkriptet.
+Nyissa meg a `SASToken.py` fájlt, és cserélje le a `storage_account_name` `storage_account_key` `storage_container_name` megfelelő értékeket a meglévő Storage-tárolóhoz, majd futtassa a szkriptet.
 
-Előfordulhat, hogy végre kell `pip install --upgrade azure-storage` hajtania, ha a hibaüzenet `ImportError: No module named azure.storage`jelenik meg.
+Előfordulhat, hogy végre kell hajtania, `pip install --upgrade azure-storage` Ha a hibaüzenet jelenik meg `ImportError: No module named azure.storage` .
 
 ### <a name="using-c"></a>A C használata\#
 
@@ -211,9 +211,9 @@ Előfordulhat, hogy végre kell `pip install --upgrade azure-storage` hajtania, 
 
 3. Válassza a **Beállítások** lehetőséget, és adjon hozzá értékeket a következő bejegyzésekhez:
 
-    |Elem |Leírás |
+    |Item |Description |
     |---|---|
-    |StorageConnectionString|A Storage-fiókhoz tartozó, tárolt házirendet és SAS-t létrehozni kívánó kapcsolódási karakterlánc. A formátum `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` értéke a Storage-fiók neve, amely a Storage- `mykey` fiók kulcsa.|
+    |StorageConnectionString|A Storage-fiókhoz tartozó, tárolt házirendet és SAS-t létrehozni kívánó kapcsolódási karakterlánc. A formátum értéke a `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` Storage-fiók neve, amely a Storage-fiók `mykey` kulcsa.|
     |ContainerName|A Storage-fiók azon tárolója, amelyhez korlátozni kívánja a hozzáférést.|
     |SASPolicyName|A létrehozandó házirend létrehozásához használandó név.|
     |FileToUpload|A tárolóba feltöltött fájl elérési útja.|
@@ -228,7 +228,7 @@ A tárolók hozzáférésének korlátozásához használjon közös hozzáfér�
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>SAS-t használó fürt létrehozása
 
-`RESOURCEGROUP`Cserélje `CLUSTERNAME`le a `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`,, `TOKEN` és értéket a megfelelő értékekre. Adja meg a PowerShell-parancsokat:
+Cserélje le a,, `CLUSTERNAME` `RESOURCEGROUP` ,, `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER` `STORAGEACCOUNT` és `TOKEN` értéket a megfelelő értékekre. Adja meg a PowerShell-parancsokat:
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -351,16 +351,16 @@ Eltarthat egy ideig, amíg ez a szkript befejeződik, általában körülbelül 
 
 Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az SAS **-t a Core-site** konfigurációhoz:
 
-1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. A lap címe: `https://YOURCLUSTERNAME.azurehdinsight.net`. Ha a rendszer kéri, végezzen hitelesítést a fürtön a fürt létrehozásakor használt rendszergazdai név (rendszergazda) és jelszó használatával.
+1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. A lap címe: `https://YOURCLUSTERNAME.azurehdinsight.net` . Ha a rendszer kéri, végezzen hitelesítést a fürtön a fürt létrehozásakor használt rendszergazdai név (rendszergazda) és jelszó használatával.
 
-1. Navigáljon a **HDFS** > **konfigurációk** > **speciális** > **Egyéni Core-site**elemre.
+1. Navigáljon a **HDFS**  >  **konfigurációk**  >  **speciális**  >  **Egyéni Core-site**elemre.
 
 1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..**. lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez**:
 
     * **Kulcs**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
 
-    Cserélje `CONTAINERNAME` le a helyére a C# vagy sas-alkalmazáshoz használt tároló nevét. Cserélje `STORAGEACCOUNTNAME` le a nevet a használt Storage-fiók nevére.
+    Cserélje le a helyére a `CONTAINERNAME` C# vagy sas-alkalmazáshoz használt tároló nevét. Cserélje le `STORAGEACCOUNTNAME` a nevet a használt Storage-fiók nevére.
 
     A kulcs és az érték mentéséhez válassza a **Hozzáadás** lehetőséget.
 
@@ -381,7 +381,7 @@ Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az 
 
 Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage-fiókban lévő elemeket tudja-e olvasni és listázni.
 
-1. Kapcsolódjon a fürthöz. Cserélje `CLUSTERNAME` le a nevet a fürt nevére, és írja be a következő parancsot:
+1. Kapcsolódjon a fürthöz. Cserélje le a `CLUSTERNAME` nevet a fürt nevére, és írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -393,11 +393,11 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    A `SASCONTAINER` helyére írja be az SAS Storage-fiókhoz létrehozott tároló nevét. Cserélje `SASACCOUNTNAME` le a nevet a sas-hez használt Storage-fiók nevére.
+    A helyére írja `SASCONTAINER` be az SAS Storage-fiókhoz létrehozott tároló nevét. Cserélje le a `SASACCOUNTNAME` nevet a sas-hez használt Storage-fiók nevére.
 
     A lista tartalmazza a tároló és SAS létrehozásakor feltöltött fájlt.
 
-3. A következő parancs használatával ellenőrizheti, hogy el tudja-e olvasni a fájl tartalmát. Cserélje le `SASCONTAINER` a `SASACCOUNTNAME` és az előző lépésben leírtakat. Cserélje `sample.log` le az parancsot az előző parancsban megjelenő fájl nevére:
+3. A következő parancs használatával ellenőrizheti, hogy el tudja-e olvasni a fájl tartalmát. Cserélje le a `SASCONTAINER` és az `SASACCOUNTNAME` előző lépésben leírtakat. Cserélje le az `sample.log` parancsot az előző parancsban megjelenő fájl nevére:
 
     ```bash
     hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
@@ -411,9 +411,9 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Ez a parancs letölti a fájlt egy **TESTFILE. txt**nevű helyi fájlba.
+    Ez a parancs letölti a fájlt egy **testfile.txt**nevű helyi fájlra.
 
-5. A következő parancs használatával töltse fel a helyi fájlt egy **testupload. txt** nevű új fájlba az SAS-tárolóban:
+5. A következő parancs használatával töltse fel a helyi fájlt egy **testupload.txt** nevű új fájlba az SAS-tárolón:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -421,7 +421,9 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
 
     A következő szöveghez hasonló üzenet jelenik meg:
 
-        put: java.io.IOException
+    ```output
+    put: java.io.IOException
+    ```
 
     Ez a hiba azért fordul elő, mert a tárolási hely csak olvasható + lista. A következő paranccsal helyezheti el a fürt alapértelmezett tárolójában lévő adattárolást, amely írható:
 

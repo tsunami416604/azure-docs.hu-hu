@@ -4,17 +4,17 @@ description: A Data Lake Storage Gen2 HDFS CLI bemutatása
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992222"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109450"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS CLI használata Data Lake Storage Gen2
 
@@ -46,39 +46,39 @@ A (z) Azure Portalban található HDInsight-fürt panelének "SSH + fürt bejele
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
-* Cserélje le `<container-name>` a helyőrzőt arra a névre, amelyet meg szeretne adni a tárolónak.
+* Cserélje le a `<container-name>` helyőrzőt arra a névre, amelyet meg szeretne adni a tárolónak.
 
-* Cserélje le `<storage-account-name>` a helyőrzőt a Storage-fiók nevére.
+* Cserélje le a `<storage-account-name>` helyőrzőt a Storage-fiók nevére.
 
 ## <a name="get-a-list-of-files-or-directories"></a>Fájlok vagy könyvtárak listájának beolvasása
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
-Cserélje le `<path>` a helyőrzőt a tároló vagy a tároló mappa URI azonosítójának helyére.
+Cserélje le a `<path>` helyőrzőt a tároló vagy a tároló mappa URI azonosítójának helyére.
 
 Például:`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
-Cserélje le `<path>` a helyőrzőt a gyökér tároló nevére vagy egy, a tárolón belüli mappára.
+Cserélje le a `<path>` helyőrzőt a gyökér tároló nevére vagy egy, a tárolón belüli mappára.
 
 Például:`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>Fájl vagy könyvtár törlése
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
-Cserélje le `<path>` a helyőrzőt a törölni kívánt fájl vagy mappa URI-fájljára.
+Cserélje le a `<path>` helyőrzőt a törölni kívánt fájl vagy mappa URI-fájljára.
 
 Például:`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Fájlok és könyvtárak Access Control listáinak (ACL-jei) megjelenítése
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 Példa:
 
@@ -88,7 +88,7 @@ Lásd: [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoo
 
 ## <a name="set-acls-of-files-and-directories"></a>Fájlok és könyvtárak ACL-ek beállítása
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 Példa:
 
@@ -98,25 +98,25 @@ Lásd: [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoo
 
 ## <a name="change-the-owner-of-files"></a>A fájlok tulajdonosának módosítása
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 Lásd: [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
 ## <a name="change-group-association-of-files"></a>Fájlok csoport társításának módosítása
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 Lásd: [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>A fájlok engedélyeinek módosítása
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 Lásd: [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 
 A parancsok teljes listáját megtekintheti a [Apache Hadoop 2.4.1 fájlrendszer rendszerhéj-útmutatójának](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) webhelyén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Data Lake Storage Gen2 képes fiók használata Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 

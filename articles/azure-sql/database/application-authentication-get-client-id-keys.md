@@ -11,17 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6a0a4c0885552d7f8697a1f13b8750e084d8770a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84344611"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>Az alkalmazások kód Azure SQL Database való eléréséhez szükséges értékek beolvasása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-SQL Database kódból való létrehozásához és kezeléséhez regisztrálnia kell az alkalmazást a Azure Active Directory (HRE) tartományba az előfizetésben, ahol az Azure-erőforrásokat létrehozták.
+Azure SQL Database kódból való létrehozásához és kezeléséhez regisztrálnia kell az alkalmazást az Azure-erőforrások létrehozásához szükséges előfizetésben található Azure Active Directory (Azure AD) tartományba.
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Egyszerű szolgáltatásnév létrehozása egy alkalmazás erőforrásainak eléréséhez
 
@@ -100,7 +99,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Adatbázis létrehozása Azure SQL Database C-vel #](design-first-database-csharp-tutorial.md)  
 [Kapcsolódás Azure SQL Databasehoz Azure Active Directory hitelesítés használatával](authentication-aad-overview.md)

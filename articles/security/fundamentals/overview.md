@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125668"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ Tudjuk, hogy a biztonság az egyik a felhőben, és mennyire fontos, hogy pontos
 Ez a cikk átfogó képet nyújt az Azure-ban elérhető biztonságról.
 
 ### <a name="azure-platform"></a>Azure-platform
-Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node. js használatával az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer.
+Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; JavaScript-, Python-, .NET-, PHP-, Java-és Node.js-alkalmazásokat hozhat létre. az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer.
 
 Az Azure nyilvános felhőalapú szolgáltatásai ugyanazokat a technológiákat támogatják, mint a fejlesztők és az informatikai szakemberek, akik már használják és bíznak. Ha a-ra épít, vagy áttelepíti az IT-eszközöket, egy nyilvános felhőalapú szolgáltatóra támaszkodik, amely a szervezet képességei alapján gondoskodik az alkalmazások és adatok védelméről a szolgáltatásokkal és az általuk biztosított vezérlőkkel a felhőalapú eszközök biztonságának kezeléséhez.
 
@@ -49,7 +49,7 @@ A következő szolgáltatások olyan funkciók, amelyekkel ellenőrizheti, hogy 
 
 | [Biztonságos platform](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Adatvédelmi & vezérlők](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
-| [Biztonsági fejlesztési ciklus](https://www.microsoft.com/sdl/), belső auditok | [Az adatkezelés minden alkalommal](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Adatvédelmi központ](https://www.microsoft.com/trustcenter/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [Biztonsági fejlesztési ciklus](https://www.microsoft.com/sdl/), belső auditok | [Az adatkezelés minden alkalommal](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Trust Center](https://www.microsoft.com/trustcenter/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [Kötelező biztonsági képzés, háttérbeli ellenőrzés](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Az adathely vezérlése](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Common Controls hub](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Hogyan kezeli a Microsoft az adattárolási helyet az Azure-szolgáltatásokban](https://azuredatacentermap.azurewebsites.net/)|
 | [Behatolási teszt](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolás-észlelés, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [naplózás & naplózás](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Adathozzáférés biztosítása a használati feltételekhez](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services átvilágítás ellenőrzőlista](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[A Microsoft a következő feltételekkel férhet hozzá az adataihoz:](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [A Art adatközpont, a](https://www.microsoft.com/cloud-platform/global-datacenters)fizikai biztonság, a [biztonságos hálózat](network-overview.md) állapota | [Válaszadás a bűnüldözésre](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatás, hely & iparág szerint](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
@@ -223,7 +223,7 @@ A Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md
 
 ![Express Route](./media/overview/azure-security-fig1.png)
 
-Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
+A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services, például a Microsoft Azure, a Microsoft 365 és a CRM Online számára. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
 
 A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így a VPN-alapú megoldásoknál biztonságosabbnak tekinthetik. Így az ExpressRoute-kapcsolatok a tipikus internetes kapcsolatoknál megbízhatóbbak, gyorsabbak, gyorsabb a válaszidejük, és biztonságosabbak.
 
@@ -239,10 +239,10 @@ Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kér
 
 Az alkalmazás számos Application Delivery Controller (ADC) funkciót kínál, többek között a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a [TLS-kiszervezést](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), az egyéni állapotú mintavételeket, a többhelyes és sok más támogatást.
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazásoknak a standard Application Delivery Control (ADC) függvényekhez. A webalkalmazási tűzfal ezt úgy éri el, hogy védelmet nyújt az alkalmazásoknak az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben.
 
-![Web Application Firewall (Webalkalmazási tűzfal)](./media/overview/azure-security-fig1.png)
+![Webalkalmazási tűzfal](./media/overview/azure-security-fig1.png)
 
 -   SQL-injektálás elleni védelem
 
@@ -308,7 +308,7 @@ A [transzparens adattitkosítás (TDE)](../../virtual-machines/windows/sqlclassi
 
 A Azure Key Vault (AKV) szolgáltatás úgy lett kialakítva, hogy javítsa a kulcsok biztonságát és felügyeletét egy biztonságos és magasan elérhető helyen. A SQL Server Connector lehetővé teszi, hogy a SQL Server ezeket a kulcsokat a Azure Key Vault használatával használhassa.
 
-Ha a SQL Servert a helyszíni gépekkel futtatja, akkor a helyszíni SQL Server számítógépéről elérhető lépéseket követve elérheti a Azure Key Vault. Az Azure-beli virtuális gépek SQL Server azonban időt takaríthat meg a Azure Key Vault integrációs funkciójával. Néhány Azure PowerShell parancsmaggal engedélyezheti ezt a funkciót, automatizálhatja az SQL-alapú virtuális gépekhez szükséges konfigurációt a kulcstartó eléréséhez.
+Ha a SQL Servert a helyszíni gépekkel futtatja, akkor a helyszíni SQL Server-példányon lévő Azure Key Vault eléréséhez szükséges lépéseket követheti. Az Azure-beli virtuális gépek SQL Server azonban időt takaríthat meg a Azure Key Vault integrációs funkciójával. Néhány Azure PowerShell parancsmaggal engedélyezheti ezt a funkciót, automatizálhatja az SQL-alapú virtuális gépekhez szükséges konfigurációt a kulcstartó eléréséhez.
 
 ### <a name="vm-disk-encryption"></a>VM-lemez titkosítása
 A [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) egy új képesség, amely segít a Windows-és Linux-IaaS virtuális gépek lemezeinek titkosításában. Ez a Windows iparági szabványnak megfelelő BitLocker-szolgáltatásra és a Linux DM-Crypt szolgáltatására vonatkozik, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vault a Key Vault-előfizetésében lévő lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. A megoldás azt is biztosítja, hogy a virtuális gépek lemezein lévő összes adatok titkosítva legyenek az Azure Storage-ban.

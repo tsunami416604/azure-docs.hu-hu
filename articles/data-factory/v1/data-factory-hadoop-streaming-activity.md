@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703369"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
@@ -44,7 +43,7 @@ A Data Factory- [folyamat](data-factory-create-pipelines.md) HDInsight adatfolya
 > Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="json-sample"></a>JSON-minta
-A rendszer automatikusan kitölti a HDInsight-fürtöt például a (WC. exe és Cat. exe) és az adatokat (DaVinci. txt). Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz. 
+A rendszer automatikusan kitölti a HDInsight-fürtöt például programok (wc.exe és cat.exe) és az adatok (davinci.txt) alapján. Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz. 
 
 ```JSON
 {
@@ -96,11 +95,11 @@ Vegye figyelembe a következő szempontokat:
 
 1. Állítsa be a **linkedServiceName** a társított szolgáltatás nevére, amely arra a HDInsight-fürtre mutat, amelyen a streaming MapReduce-feladatot futtatja.
 2. Állítsa be a tevékenység típusát a **HDInsightStreaming**értékre.
-3. A **Mapper** tulajdonságnál adja meg a Mapper végrehajtható fájljának nevét. A példában a Cat. exe a Mapper végrehajtható fájlja.
-4. A **csökkentő** tulajdonságnál adja meg a csökkentő végrehajtható fájl nevét. A példában a WC. exe a csökkentő végrehajtható fájl.
-5. A **bemeneti** típus tulajdonságnál adja meg a Mapper bemeneti fájlját (beleértve a helyét is). A példában: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample a blob tároló, például az adatfájlok és a Gutenberg mappa, a DaVinci. txt pedig a blob.
+3. A **Mapper** tulajdonságnál adja meg a Mapper végrehajtható fájljának nevét. A példában a cat.exe a Mapper végrehajtható fájl.
+4. A **csökkentő** tulajdonságnál adja meg a csökkentő végrehajtható fájl nevét. A példában a wc.exe a csökkentő végrehajtható fájl.
+5. A **bemeneti** típus tulajdonságnál adja meg a Mapper bemeneti fájlját (beleértve a helyét is). A példában:: adfsample a blob-tároló, például a (z), a (z) és a (z) `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` mappa, a davinci.txt pedig a blob.
 6. A **kimeneti** típus tulajdonságnál adja meg a redukáló kimeneti fájlját (beleértve a helyét is). Az Hadoop streaming-feladatok kimenete a tulajdonsághoz megadott helyre íródik.
-7. A **filePaths** szakaszban határozza meg a mapper és a csökkentő végrehajtható fájlok elérési útját. A példában: "adfsample/example/apps/WC. exe", a adfsample a blob tároló, például az alkalmazások mappa, a WC. exe pedig a végrehajtható fájl.
+7. A **filePaths** szakaszban határozza meg a mapper és a csökkentő végrehajtható fájlok elérési útját. A példában a "adfsample/example/apps/wc.exe" adfsample a blob tároló, például az alkalmazások mappa, a wc.exe pedig a végrehajtható fájl.
 8. A **fileLinkedService** tulajdonságnál adja meg az Azure Storage társított szolgáltatást, amely az filePaths szakaszban megadott fájlokat tartalmazó Azure Storage-tárolót jelöli.
 9. Az **argumentumok** tulajdonságnál határozza meg a folyamatos átviteli feladatokhoz tartozó argumentumokat.
 10. A **getDebugInfo** tulajdonság egy opcionális elem. Ha a hiba értékre van állítva, a naplók letöltése csak meghibásodás esetén történik meg. Ha a mindig értékre van állítva, a rendszer mindig letölti a naplókat a végrehajtási állapottól függetlenül.
@@ -176,7 +175,7 @@ Az ebben a példában szereplő folyamat nem tesz elérhetővé semmilyen bemene
 ### <a name="pipeline"></a>Folyamat
 Az ebben a példában szereplő folyamathoz csak egy: **HDInsightStreaming**típusú tevékenység tartozik. 
 
-A rendszer automatikusan kitölti a HDInsight-fürtöt például a (WC. exe és Cat. exe) és az adatokat (DaVinci. txt). Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz.  
+A rendszer automatikusan kitölti a HDInsight-fürtöt például programok (wc.exe és cat.exe) és az adatok (davinci.txt) alapján. Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz.  
 
 ```JSON
 {

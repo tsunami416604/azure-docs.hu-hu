@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535706"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
@@ -91,7 +91,7 @@ Az **Egyéni tartományok** lapon kattintson a **tartomány vásárlása**elemre
 
 ### <a name="configure-the-domain-purchase"></a>A tartomány megvásárlásának konfigurálása
 
-A **app Service tartomány** lap **Keresés tartományba** mezőjébe írja be a megvásárolni kívánt tartománynevet, majd írja be `Enter`a nevet. A javasolt elérhető tartományok csak a szövegmező alatt jelennek meg. Válasszon ki egy vagy több megvásárolni kívánt tartományt.
+A **app Service tartomány** lap **Keresés tartományba** mezőjébe írja be a megvásárolni kívánt tartománynevet, majd írja be a nevet `Enter` . A javasolt elérhető tartományok csak a szövegmező alatt jelennek meg. Válasszon ki egy vagy több megvásárolni kívánt tartományt.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
@@ -108,7 +108,7 @@ Ezután válassza ki a tartományhoz a kívánt beállításokat. A magyarázato
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|Adatvédelem | Bekapcsolás | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
+|Adatvédelem | Engedélyezés | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
 | Alapértelmezett állomásnevek kiosztása | **www** és**\@** | Szükség esetén válassza ki a kívánt állomásnév-kötéseket. A tartományi megvásárlási művelet befejezésekor az alkalmazás a kiválasztott gazdagépeken is elérhető. Ha az alkalmazás az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)mögött van, nem jelenik meg a gyökértartomány (@) hozzárendelésének lehetősége, mert Traffic Manager nem támogatja a rekordokat. A tartománynév-hozzárendelések módosítása a tartomány megvásárlása után végezhető el. |
 
 ### <a name="accept-terms-and-purchase"></a>Feltételek és vásárlás elfogadása
@@ -140,7 +140,7 @@ A kiválasztott állomásnevek a Custom **Domains** (egyéni tartományok) lapon
 > Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz, és a böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. A TLS-kötés konfigurálásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
 >
 
-A gazdagépek teszteléséhez navigáljon a felsorolt gazdagépekhez a böngészőben. Az előző képernyőképen található példában próbálja meg navigálni a _kontoso.net_ és a _www\.kontoso.net_.
+A gazdagépek teszteléséhez navigáljon a felsorolt gazdagépekhez a böngészőben. Az előző képernyőképen található példában próbálja meg navigálni a _kontoso.net_ és a _www \. kontoso.net_.
 
 ## <a name="assign-hostnames-to-app"></a>Állomásnévk társítása az alkalmazáshoz
 
@@ -171,7 +171,7 @@ Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 Az **állomásnév hozzáadása** párbeszédpanelen írja be a app Service tartomány vagy bármely altartomány teljes tartománynevét. Például:
 
 - kontoso.net
-- www\.-kontoso.net
+- www- \. kontoso.net
 - abc.kontoso.net
 
 Ha elkészült, válassza az **Érvényesítés**lehetőséget. Az állomásnév bejegyzéstípus automatikusan ki lesz választva.
@@ -235,7 +235,7 @@ Az Azure-ban a App Service tartomány DNS-rekordjait [Azure DNS](https://azure.m
 
 ### <a name="open-app-service-domain"></a>App Service tartomány megnyitása
 
-A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás** > **app Service tartományok**lehetőséget.
+A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás**  >  **app Service tartományok**lehetőséget.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -255,7 +255,7 @@ Miután megvásárolta a App Service tartományt, öt napja van, hogy megszakít
 
 ### <a name="open-app-service-domain"></a>App Service tartomány megnyitása
 
-A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás** > **app Service tartományok**lehetőséget.
+A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás**  >  **app Service tartományok**lehetőséget.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -269,7 +269,7 @@ A tartomány bal oldali menüjében válassza az **állomásnév-kötések**lehe
 
 A App Service tartományt csak akkor törölheti, ha az összes állomásnév-kötés törölve lett.
 
-Az egyes állomásnév-kötések törléséhez válassza a **... lehetőséget.**  >  **Törlés**. Az összes kötés törlése után válassza a **Mentés**lehetőséget.
+Az egyes állomásnév-kötések törléséhez válassza a **...**  >  lehetőséget. **Törlés**. Az összes kötés törlése után válassza a **Mentés**lehetőséget.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
@@ -287,4 +287,4 @@ A művelet befejezése után a tartományt a rendszer az előfizetésből bocsá
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Egyéni könyvtár közvetlen alapértelmezett URL-címe
 
-Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Ha egy alkönyvtárba szeretné irányítani őket, `public`például: a [közvetlen alapértelmezett URL-cím beállítása egy egyéni könyvtárba](app-service-web-tutorial-custom-domain.md#virtualdir).
+Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Ha egy alkönyvtárba szeretné irányítani őket, például `public` : a [közvetlen alapértelmezett URL-cím beállítása egy egyéni könyvtárba](app-service-web-tutorial-custom-domain.md#virtualdir).

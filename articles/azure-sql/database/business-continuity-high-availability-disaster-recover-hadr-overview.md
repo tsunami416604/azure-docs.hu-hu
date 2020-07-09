@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Ismerje meg, hogyan támogatja a Azure SQL Database és az SQL felügyelt példány a Felhőbeli üzletmenet folytonosságát és az adatbázis-helyreállítást, és segít megőrizni a kritikus fontosságú felhőalapú alkalmazásokat.
 keywords: üzletmenet-folytonosság,felhőalapú üzletmenet-folytonosság,adatbázis-vészhelyreállítás,adatbázis-helyreállítás
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ae58cedecf0b1dab488dac00b68e2b9a8c12e46
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043603"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982472"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ A Azure SQL Database és az SQL felügyelt példányainak **üzletmenet-folytono
 
 - A felhasználó véletlenül törölt vagy frissített egy sort egy táblában.
 - A rosszindulatú támadó sikeresen törölte az adattörlést, vagy elvetette az adatbázist.
-- A földrengés áramkimaradást okozott, és átmenetileg letiltotta az adatközpontot.
+- A földrengés áramkimaradást és ideiglenes letiltott adatközpontot okozott.
 
 Ez az Áttekintés ismerteti azokat a képességeket, amelyeket a SQL Database és az SQL felügyelt példánya biztosít az üzletmenet folytonossága és a vész-helyreállítás érdekében. Ismerje meg az adatvesztést okozó, vagy az adatbázis és az alkalmazás nem elérhetővé tételéhez szükséges lehetőségeket, javaslatokat és oktatóanyagokat. Megtudhatja, mi a teendő, ha egy felhasználói vagy alkalmazáshiba hatással van az adatok integritására, egy Azure-régió leáll, vagy az alkalmazás karbantartást igényel.
 
@@ -50,8 +50,8 @@ A SQL Database és az SQL felügyelt példánya számos üzletmenet-folytonossá
 - A [beépített automatizált biztonsági mentések](automated-backups-overview.md) és [időpontok visszaállítása](recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását egy bizonyos időpontra a beállított megőrzési időtartamon belül, legfeljebb 35 napig.
 - [Visszaállíthat egy törölt adatbázist](recovery-using-backups.md#deleted-database-restore) arra a pontra, amelyen törölve lett, ha a **kiszolgáló nem lett törölve**.
 - A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md) lehetővé teszi, hogy a biztonsági mentések akár 10 évig is megmaradjanak. Ez a felügyelt SQL-példányok korlátozott nyilvános előzetes verziója
-- Az [aktív geo-replikáció](active-geo-replication-overview.md) lehetővé teszi, hogy a rendszer olvasható replikákat hozzon létre, és manuálisan végezze el a feladatátvételt az adatközpont-kimaradás vagy az alkalmazások frissítése esetén bármelyik replikára.
-- Az [automatikus feladatátvételi csoport](auto-failover-group-overview.md#terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan helyreállítsa az adatközpont-kimaradás esetén.
+- Az [aktív geo-replikáció](active-geo-replication-overview.md) lehetővé teszi, hogy a rendszer olvasható replikákat hozzon létre, és manuálisan végezze el a feladatátvételt bármely replikára adatközpont-leállás vagy alkalmazás frissítése esetén.
+- Az [automatikus feladatátvételi csoport](auto-failover-group-overview.md#terminology-and-capabilities) lehetővé teszi az alkalmazás számára, hogy adatközpont-kimaradás esetén automatikusan helyreállítsa a helyreállítást.
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Adatbázis helyreállítása ugyanazon az Azure-régión belül
 
@@ -65,20 +65,20 @@ Az [automatikus feladatátvételi csoportok](auto-failover-group-overview.md#ter
 
 |                                              | Georeplikáció | Feladatátvételi csoportok  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatikus feladatátvétel                           |     Nem          |      Yes         |
-| Több adatbázis feladatátvétele egyszerre  |     Nem          |      Yes         |
-| A felhasználónak frissítenie kell a kapcsolatok karakterláncát a feladatátvétel után      |     Yes         |      Nem          |
-| SQL felügyelt példányok támogatása                   |     Nem          |      Yes         |
-| Ugyanabban a régióban lehet, mint az elsődleges             |     Yes         |      Nem          |
-| Több replika                            |     Yes         |      Nem          |
-| Olvasási méretezés támogatása                          |     Igen         |      Igen         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Automatikus feladatátvétel**                          |     Nem          |      Yes         |
+| **Több adatbázis feladatátvétele egyszerre**  |     Nem          |      Yes         |
+| **A felhasználónak frissítenie kell a kapcsolatok karakterláncát a feladatátvétel után**      |     Yes         |      Nem          |
+| **SQL felügyelt példányok támogatása**                   |     Nem          |      Yes         |
+| **Ugyanabban a régióban lehet, mint az elsődleges**             |     Yes         |      Nem          |
+| **Több replika**                            |     Yes         |      Nem          |
+| **Olvasási méretezés támogatása**                          |     Igen         |      Igen         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Adatbázis helyreállítása a meglévő kiszolgálóra
 
-Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Leállás esetén az üzletmenet esetleg csak néhány percre, de akár több órára is megszakadhat.
+Bár ritka, az Azure-adatközpontok meghibásodása is lehet. Leállás esetén az üzletmenet esetleg csak néhány percre, de akár több órára is megszakadhat.
 
-- Az egyik lehetőség, hogy megvárja, amíg az adatközpont leállását követően az adatbázis újra elérhető lesz. Ez az olyan alkalmazások esetében működik, amelyek esetében megengedhető, hogy az adatbázis offline állapotú legyen. Például egy fejlesztési projekt vagy egy ingyenes próbaverzió esetében, amelyeken nem kell folyamatosan dolgoznia. Ha egy adatközpont leáll, nem tudja, hogy mennyi ideig tarthat a leállás, így ez a lehetőség csak akkor működik, ha egy ideig nincs szüksége az adatbázisra.
+- Az egyik lehetőség, hogy megvárja, amíg az adatbázis ismét online állapotba kerül, amikor az adatközpont kimaradása meghalad. Ez az olyan alkalmazások esetében működik, amelyek esetében megengedhető, hogy az adatbázis offline állapotú legyen. Például egy fejlesztési projekt vagy egy ingyenes próbaverzió esetében, amelyeken nem kell folyamatosan dolgoznia. Ha egy adatközpont leáll, nem tudja, hogy mennyi ideig tarthat a leállás, így ez a lehetőség csak akkor működik, ha egy ideig nincs szüksége az adatbázisra.
 - Egy másik lehetőség, hogy egy adatbázist bármely Azure-régióban lévő kiszolgálón visszaállítson a [geo-redundáns adatbázis-biztonsági mentések](recovery-using-backups.md#geo-restore) (Geo-visszaállítás) használatával. A Geo-visszaállítás a forrásként egy geo-redundáns biztonsági mentést használ, amely akkor is használható az adatbázisok helyreállításához, ha az adatbázis vagy az adatközpont egy leállás miatt nem érhető el.
 - Végezetül gyorsan helyreállíthatja az adatkimaradást, ha az [aktív geo-replikációval](active-geo-replication-overview.md) vagy az adatbázis vagy adatbázisok [automatikus feladatátvételi csoportjából](auto-failover-group-overview.md) konfigurálta a Geo-másodlagos szolgáltatást. A technológiák közül választhat, vagy manuális vagy automatikus feladatátvételt is használhat. Míg maga a feladatátvétel csak néhány másodpercet vesz igénybe, a szolgáltatás legalább egy órát vesz igénybe az aktiváláshoz. Erre azért van szükség, hogy a feladatátvételt a leállás skálázása igazolja. Emellett a feladatátvétel az aszinkron replikáció jellegéből kifolyólag kisebb adatvesztést eredményezhet.
 
@@ -109,7 +109,7 @@ Automatikus feladatátvételi csoportok használata, ha az alkalmazás megfelel 
 
 Az alkalmazás követelményeitől függően dönthet úgy, hogy az adatbázis biztonsági másolatait és az aktív geo-replikáció kombinációját használja. Az önálló adatbázisok és az ezekkel az üzletmenet-folytonossági funkciókkal rendelkező rugalmas készletek kialakításával kapcsolatos szempontokat a következő témakörben tekintheti meg: [Alkalmazások tervezése Felhőbeli](designing-cloud-solutions-for-disaster-recovery.md) vész-helyreállítási és [rugalmas készlet vész-helyreállítási stratégiákhoz](disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
-A következő szakaszokban áttekintheti az adatbázis-biztonsági másolatok vagy az aktív földrajzi replikálás használatával történő helyreállítás lépéseit. A részletes lépések, például a tervezési követelmények, a helyreállítási lépések után, valamint az kimaradás szimulálása a vész-helyreállítási gyakorlat elvégzéséhez című témakörben talál további információt: [SQL Database helyreállítása leállás](disaster-recovery-guidance.md)miatt.
+A következő szakaszokban áttekintheti az adatbázis-biztonsági másolatok vagy az aktív földrajzi replikálás használatával történő helyreállítás lépéseit. A részletes lépések, például a tervezési követelmények, a helyreállítási lépések után, valamint az kimaradás szimulálása a vész-helyreállítási gyakorlat elvégzéséhez című témakörben talál további információt az [adatbázis helyreállítása SQL Database leállás](disaster-recovery-guidance.md)miatt.
 
 ### <a name="prepare-for-an-outage"></a>Előkészületek leállás esetére
 
@@ -126,7 +126,7 @@ Ha nem készít megfelelő előfizetést, a feladatátvétel vagy adatbázis-hel
 Ha aktív geo-replikációs vagy automatikus feladatátvételi csoportokat használ helyreállítási mechanizmusként, konfigurálhat egy automatikus feladatátvételi házirendet, vagy manuális, nem [tervezett feladatátvételt](active-geo-replication-configure-portal.md#initiate-a-failover)is használhat. A művelet megkezdése után a feladatátvétel az új elsődlegesvé válik, és készen áll az új tranzakciók rögzítésére és a lekérdezésekre való reagálásra – a még nem replikált adatok minimális adatvesztése miatt. A feladatátvételi folyamat megtervezésével kapcsolatos információkért lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
-> Amikor az adatközpont ismét elérhetővé válik, a régi alapértékek automatikusan újra csatlakoznak az új elsődlegeshöz, és másodlagos adatbázisok lesznek. Ha át kell helyeznie az elsődlegest az eredeti régióba, manuálisan kezdeményezheti a tervezett feladatátvételt (feladat-visszavétel).
+> Amikor az adatközpont ismét elérhetővé válik, a régi primerek automatikusan újra csatlakoznak az új elsődlegeshöz, és másodlagos adatbázisok lesznek. Ha át kell helyeznie az elsődlegest az eredeti régióba, manuálisan kezdeményezheti a tervezett feladatátvételt (feladat-visszavétel).
 
 ### <a name="perform-a-geo-restore"></a>Georedundáns visszaállítás végrehajtása
 
@@ -139,11 +139,11 @@ Ha az automatikus biztonsági mentést a Geo-redundáns tárolóval (alapértelm
 
 A helyreállítási mechanizmusok végrehajtása után a következő további feladatokat kell végrehajtania a felhasználók és az alkalmazások újbóli üzembe helyezéséhez:
 
-- Irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra és a helyreállított adatbázisra.
+- Az ügyfelek és ügyfélalkalmazások átirányítása az új kiszolgálóra és a visszaállított adatbázisra.
 - Győződjön meg arról, hogy a megfelelő kiszolgálói szintű IP-tűzfalszabályok vannak érvényben a felhasználók számára a megfelelő szabályok engedélyezéséhez, illetve az [adatbázis-szintű tűzfalak](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) használatával történő kapcsolódáshoz.
-- Biztosítsa a megfelelő bejelentkezési adatok és főadatbázis-szintű jogosultságok rendelkezésre állását (vagy használjon [tartalmazott felhasználókat](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
-- Konfigurálja a naplózást, ha szükséges.
-- Konfigurálja a riasztásokat, ha szükséges.
+- Győződjön meg arról, hogy a megfelelő bejelentkezések és a főadatbázis-szintű engedélyek vannak érvényben (vagy használjon [tárolt felhasználókat](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
+- Szükség szerint konfigurálja a naplózást.
+- Szükség szerint konfigurálja a riasztásokat.
 
 > [!NOTE]
 > Ha feladatátvételi csoportot használ, és az írási-olvasási figyelő használatával csatlakozik az adatbázisokhoz, akkor az átirányítás a feladatátvételt követően automatikusan és transzparens módon történik az alkalmazásban.
@@ -152,6 +152,6 @@ A helyreállítási mechanizmusok végrehajtása után a következő további fe
 
 Időnként előfordulhat, hogy egy alkalmazást a tervezett karbantartás, például egy alkalmazás frissítése miatt offline állapotba kell helyezni. Az [alkalmazások frissítéseinek kezelése](manage-application-rolling-upgrade.md) azt ismerteti, hogyan használható az aktív geo-replikálás a Felhőbeli alkalmazások működés közbeni frissítésének engedélyezéséhez, hogy a frissítés során csökkentse az állásidőt, és ha valamilyen hiba történik, helyreállítási útvonalat adjon meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az önálló adatbázisok és a rugalmas készletek alkalmazás-kialakítási szempontjaival kapcsolatban lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](designing-cloud-solutions-for-disaster-recovery.md) és a [rugalmas készlet vész-helyreállítási stratégiái](disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Az önálló adatbázisokra és a rugalmas készletekre vonatkozó alkalmazás-tervezési szempontokkal kapcsolatos további információkért lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](designing-cloud-solutions-for-disaster-recovery.md) és a rugalmas készletek vész- [helyreállítási stratégiái](disaster-recovery-strategies-for-applications-with-elastic-pool.md).

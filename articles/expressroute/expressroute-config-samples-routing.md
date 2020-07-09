@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 6aa66ddc52665c22310fb58977fd516eea4e806a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b9db450139c22fdf2df0875f36c65cdf684dfb3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856702"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Útválasztó-konfigurációs minták az Útválasztás beállításához és kezeléséhez
 Ez az oldal a Cisco IOS-XE és Juniper MX sorozatú útválasztók felületi és útválasztási konfigurációs mintáit tartalmazza az Azure ExpressRoute használatakor.
@@ -40,78 +40,90 @@ Minden olyan útválasztón, amelyhez a Microsofthoz csatlakozik, egy alkapcsola
 
 Ez a példa egy VLAN-AZONOSÍTÓval rendelkező alcsatoló alkapcsolati definícióját tartalmazza. A VLAN-azonosító társítása egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <VLAN_ID>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <VLAN_ID>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 **QinQ interfész definíciója**
 
 Ez a minta a két VLAN-azonosítóval rendelkező alinterfész alfelületi definícióját tartalmazza. A külső VLAN-azonosító (s-tag), ha használatban van, változatlan marad az összes csomóponton. A belső VLAN-azonosító (c-tag) egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 ### <a name="set-up-ebgp-sessions"></a>EBGP-munkamenetek beállítása
 Minden egyes társi kapcsolathoz be kell állítania egy BGP-munkamenetet a Microsofttal. Hozzon létre egy BGP-munkamenetet a következő minta használatával. Ha az alkapcsolathoz használt IPv4-cím volt a. b. c. d, akkor a BGP-szomszéd (Microsoft) IP-címe az a. b. c. d + 1 lesz. A BGP-szomszéd IPv4-címeinek utolsó oktettje mindig páros szám lesz.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-     neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+ neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>A BGP-munkamenetben meghirdetett előtagok beállítása
 Konfigurálja úgy az útválasztót, hogy a következő minta használatával hirdesse a Microsoft számára az előtagok kiválasztását.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="route-maps"></a>Útvonalak leképezése
 Az útvonal-és előtag-listát használva szűrheti a hálózatra propagált előtagokat. Tekintse meg a következő mintát, és győződjön meg arról, hogy a megfelelő előtag-listát beállította.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
-     exit-address-family
-    !
-    route-map <MS_Prefixes_Inbound> permit 10
-     match ip address prefix-list <MS_Prefixes>
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
+ exit-address-family
+!
+route-map <MS_Prefixes_Inbound> permit 10
+ match ip address prefix-list <MS_Prefixes>
+!
+```
 
 ### <a name="configure-bfd"></a>BFD konfigurálása
 
 A BFD két helyen konfigurálhatja: egyet az illesztőfelület szintjén, egy másikat pedig a BGP szintjén. Ez a példa a QinQ interfészre mutat. 
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     bfd interval 300 min_rx 300 multiplier 3
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
-    
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> fall-over bfd
-     exit-address-family
-    !
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ bfd interval 300 min_rx 300 multiplier 3
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> fall-over bfd
+ exit-address-family
+!
+```
 
 
 ## <a name="juniper-mx-series-routers"></a>Juniper MX sorozatú útválasztók
@@ -123,6 +135,7 @@ Az ebben a szakaszban szereplő minták minden Juniper MX sorozatú útválaszt�
 
 Ez a példa egy VLAN-AZONOSÍTÓval rendelkező alcsatoló alkapcsolati definícióját tartalmazza. A VLAN-azonosító társítása egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
+```console
     interfaces {
         vlan-tagging;
         <Interface_Number> {
@@ -134,12 +147,14 @@ Ez a példa egy VLAN-AZONOSÍTÓval rendelkező alcsatoló alkapcsolati definíc
             }
         }
     }
+```
 
 
 **QinQ interfész definíciója**
 
 Ez a minta a két VLAN-azonosítóval rendelkező alinterfész alfelületi definícióját tartalmazza. A külső VLAN-azonosító (s-tag), ha használatban van, változatlan marad az összes csomóponton. A belső VLAN-azonosító (c-tag) egyedi. Az IPv4-címek utolsó oktettje mindig páratlan szám lesz.
 
+```console
     interfaces {
         <Interface_Number> {
             flexible-vlan-tagging;
@@ -151,10 +166,12 @@ Ez a minta a két VLAN-azonosítóval rendelkező alinterfész alfelületi defin
             }                               
         }                                   
     }                           
+```
 
 ### <a name="set-up-ebgp-sessions"></a>EBGP-munkamenetek beállítása
 Minden egyes társi kapcsolathoz be kell állítania egy BGP-munkamenetet a Microsofttal. Hozzon létre egy BGP-munkamenetet a következő minta használatával. Ha az alkapcsolathoz használt IPv4-cím volt a. b. c. d, akkor a BGP-szomszéd (Microsoft) IP-címe az a. b. c. d + 1 lesz. A BGP-szomszéd IPv4-címeinek utolsó oktettje mindig páros szám lesz.
 
+```console
     routing-options {
         autonomous-system <Customer_ASN>;
     }
@@ -167,10 +184,12 @@ Minden egyes társi kapcsolathoz be kell állítania egy BGP-munkamenetet a Micr
             }                               
         }                                   
     }
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>A BGP-munkamenetben meghirdetett előtagok beállítása
 Konfigurálja úgy az útválasztót, hogy a következő minta használatával hirdesse a Microsoft számára az előtagok kiválasztását.
 
+```console
     policy-options {
         policy-statement <Policy_Name> {
             term 1 {
@@ -192,11 +211,12 @@ Konfigurálja úgy az útválasztót, hogy a következő minta használatával h
             }                               
         }                                   
     }
-
+```
 
 ### <a name="route-policies"></a>Útvonal-házirendek
 Az útválasztási leképezések és az előtag-listák segítségével szűrheti a hálózatra propagált előtagokat. Tekintse meg a következő mintát, és győződjön meg arról, hogy a megfelelő előtag-listát beállította.
 
+```console
     policy-options {
         prefix-list MS_Prefixes {
             <IP_Prefix_1/Subnet_Mask>;
@@ -223,10 +243,12 @@ Az útválasztási leképezések és az előtag-listák segítségével szűrhet
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-bfd"></a>BFD konfigurálása
 Konfigurálja az BFD-t csak a protokoll BGP szakasza alatt.
 
+```console
     protocols {
         bgp { 
             group <Group_Name> { 
@@ -239,10 +261,12 @@ Konfigurálja az BFD-t csak a protokoll BGP szakasza alatt.
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-macsec"></a>MACSec konfigurálása
 A MACSec-konfigurációhoz a kapcsolati társítás kulcsa (CAK) és a kapcsolati társítási kulcs neve (CKN) a konfigurált értékekkel kell megegyeznie a PowerShell-parancsok használatával.
 
+```console
     security {
         macsec {
             connectivity-association <Connectivity_Association_Name> {
@@ -260,6 +284,7 @@ A MACSec-konfigurációhoz a kapcsolati társítás kulcsa (CAK) és a kapcsolat
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>További lépések
 További részletek: [ExpressRoute FAQ](expressroute-faqs.md) (ExpressRoute – gyakori kérdések).

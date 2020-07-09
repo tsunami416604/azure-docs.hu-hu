@@ -1,17 +1,15 @@
 ---
 title: Fizetés a Microsoft kereskedelmi piactéren
 description: Megtudhatja, hogyan fogadhatja a bevételeit a Microsoft kereskedelmi piactéren.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/09/2020
+ms.openlocfilehash: 604d5c93ca87831b1feb76095da694b4be402ad9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849025"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121690"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>Fizetés a kereskedelmi piactéren
 
@@ -27,21 +25,6 @@ Amikor [regisztrál egy fejlesztői fiókra](https://go.microsoft.com/fwlink/p/?
 A díjakat hivatalosan a [Microsoft Azure Marketplace kiadói szerződésben](https://go.microsoft.com/fwlink/p/?LinkID=699560)határozzák meg. Ha kérdése van, mindig tekintse át ezt a dokumentumot.
 
 Az áruházi díjat a kereskedelmi piactér által gyűjtött összes ajánlati értékesítésre, beleértve a bővítményeket is.
-
-## <a name="price-tiers"></a>Árképzési szintek
-
-A kiválasztott árképzési szintek az eladási árat minden olyan országban/régióban beállítja, ahol az ajánlat terjesztését választja. További díjszabási funkciókat is használhat, például különböző árakat választhat a különböző piacokon.
-
-Az alkalmazást ingyenesen kínálhatja, vagy kiválaszthat egy árat, amelyet az ügyfeleknek fizetniük kell az ajánlat megvásárlásához. Az árak szintjei a következővel kezdődnek:. 99 USD, további növekményekkel (1,09 USD, 1,19 USD stb.). Az árak szintjei közötti növekmények növekednek, ahogy az ár magasabb lesz.
-
-> [!NOTE] 
-> Ezek az árak az ajánlaton belül kínált bővítményekre is érvényesek.
-
-Minden egyes árszint megfelelő értékkel rendelkezik az áruház által kínált összes pénznemben. Ezeket az értékeket arra használjuk, hogy az ajánlatát az egész világon összehasonlítható áron értékesítse. A külföldi árfolyamok változásai miatt azonban a pontos eladások mennyisége némileg eltérhet az egyik pénznemtől a másikig.
-
-Lehetősége van arra is, hogy egy adott piac helyi pénznemében adja meg a választott szabad formájú árat. Ha ezt teszi, a rendszer nem módosítja az árat (még akkor is, ha módosulnak a konverziós arányok), kivéve, ha új árral küldi el a frissítést. 
-
-Ne feledje, hogy a kiválasztott díj olyan értékesítési vagy értéknövelt adót is tartalmazhat, amelyet az ügyfeleknek fizetniük kell. Részletekért lásd [a fizetős ajánlat adózási adatait](tax-details-paid-transactions.md).
 
 ## <a name="payout-reporting"></a>Kifizetési jelentéskészítés
 

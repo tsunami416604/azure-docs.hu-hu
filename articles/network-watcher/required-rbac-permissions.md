@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840553"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>A Network Watcher képességek használatához szükséges szerepköralapú hozzáférés-vezérlési engedélyek
@@ -25,7 +24,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/READ                              | Network Watcher beszerzése                                          |
 | Microsoft. Network/networkWatchers/Write                             | Network Watcher létrehozása vagy frissítése                             |
@@ -33,14 +32,14 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="nsg-flow-logs"></a>NSG-folyamat-naplók
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/configureFlowLog/Action           | Folyamat naplójának konfigurálása                                           |
 | Microsoft. Network/networkWatchers/queryFlowLogStatus/Action         | Folyamat naplójának lekérdezési állapota                                    |
 
 ## <a name="connection-troubleshoot"></a>Kapcsolati hibaelhárító
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/connectivityCheck/Action          | A kapcsolatok hibakeresési tesztelésének kezdeményezése
 | Microsoft. Network/networkWatchers/queryTroubleshootResult/Action    | Kapcsolatok hibakeresési tesztelési eredményeinek lekérdezése                |
@@ -48,7 +47,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="connection-monitor"></a>Csatlakozáskezelő
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/connectionMonitors/Start/művelet   | Csatlakozáskezelő indítása                                     |
 | Microsoft. Network/networkWatchers/connectionMonitors/leállítás/művelet    | Csatlakozáskezelő leállítása                                      |
@@ -59,7 +58,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="packet-capture"></a>Csomagrögzítés
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/packetCaptures/queryStatus/művelet | A csomagok rögzítési állapotának lekérdezése                           |
 | Microsoft. Network/networkWatchers/packetCaptures/leállítás/művelet        | Csomagok rögzítésének leállítása                                          |
@@ -69,31 +68,31 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="ip-flow-verify"></a>IP-forgalom ellenőrzése
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/ipFlowVerify/Action               | IP-forgalom ellenőrzése                                              |
 
 ## <a name="next-hop"></a>Következő ugrás
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/nextHop/Action                    | Virtuális gép következő ugrásának beolvasása                                     |
 
 ## <a name="network-security-group-view"></a>Hálózati biztonsági csoport nézet
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/securityGroupView/Action          | Biztonsági csoportok megtekintése                                           |
 
 ## <a name="topology"></a>Topológia
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/topológia/művelet                   | Topológia beolvasása                                                   |
 
 ## <a name="reachability-report"></a>Elérhetőségi jelentés
 
-| Műveletek                                                              | Leírás                                                           |
+| Műveletek                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/azureReachabilityReport/Action    | Azure-beli elérhetőségi jelentés beszerzése                               |
 
@@ -102,9 +101,9 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 Network Watcher képességekhez a következő műveletek is szükségesek:
 
-| Művelet (ek)                                                           | Leírás                                                    |
+| Művelet (ek)                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft. Authorization/\*/READ                                     | RBAC szerepkör-hozzárendelések és szabályzat-definíciók beolvasásához használatos          |
+| Microsoft. Authorization/ \* /READ                                     | RBAC szerepkör-hozzárendelések és szabályzat-definíciók beolvasásához használatos          |
 | Microsoft. Resources/Subscriptions/resourceGroups/READ               | Egy előfizetésben lévő összes erőforráscsoport enumerálására használatos    |
 | Microsoft. Storage/storageAccounts/olvasás                              | A megadott Storage-fiók tulajdonságainak beolvasására szolgál   |
 | Microsoft. Storage/storageAccounts/listServiceSas/művelet, </br> Microsoft. Storage/storageAccounts/listAccountSas/művelet, <br> Microsoft. Storage/storageAccounts/Listkeys műveletének beolvasása/művelet| A [Storage-fiók biztonságos elérését](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) és a Storage-fiókba való írást lehetővé tévő közös hozzáférésű aláírások (SAS) beolvasására szolgál. |

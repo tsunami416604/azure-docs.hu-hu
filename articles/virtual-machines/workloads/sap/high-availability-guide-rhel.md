@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 73b958149d9d6d907785fe1c2c56b8198bb91f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351105"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux
@@ -91,32 +91,32 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 * Előtér-konfiguráció
   * IP-10.0.0.7
 * Mintavételi port
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * Port 620<strong> &lt; nr &gt; </strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+    * 32<strong> &lt; nr &gt; </strong> TCP
+    * 36<strong> &lt; nr &gt; </strong> TCP
+    * 39<strong> &lt; nr &gt; </strong> TCP
+    * 81<strong> &lt; nr &gt; </strong> TCP
+    * 5<strong> &lt; nr &gt; </strong>13 TCP
+    * 5<strong> &lt; nr &gt; </strong>14 TCP
+    * 5<strong> &lt; nr &gt; </strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Előtér-konfiguráció
   * IP-10.0.0.8
 * Mintavételi port
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * Port 621<strong> &lt; nr &gt; </strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+    * 32<strong> &lt; nr &gt; </strong> TCP
+    * 33<strong> &lt; nr &gt; </strong> TCP
+    * 5<strong> &lt; nr &gt; </strong>13 TCP
+    * 5<strong> &lt; nr &gt; </strong>14 TCP
+    * 5<strong> &lt; nr &gt; </strong>16 TCP
 
 * Háttér-konfiguráció
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
@@ -150,7 +150,7 @@ Az Azure Marketplace egy Red Hat Enterprise Linux rendszerképet tartalmaz, amel
    1. Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
       Létrejön egy új felhasználó, amely a gépre való bejelentkezéshez használható.
    1. Alhálózat azonosítója  
-   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/**&lt;előfizetés&gt;-azonosítója**/resourceGroups/**&lt;nevű erőforráscsoport neve&gt;**/Providers/Microsoft.Network/virtualNetworks/**&lt;virtuális hálózat&gt;** neve/Subnets/**&lt;alhálózat neve&gt; **
+   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/** &lt; előfizetés &gt; -azonosítója**/ResourceGroups/** &lt; &gt; **** &lt; &gt; **nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/** &lt; alhálózat neve &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -167,7 +167,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
    Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. Adjon hozzá legalább egy adatlemezt mindkét virtuális géphez  
-   Az adatlemezek a/usr/SAP/`<SAPSID`> könyvtárához használatosak.
+   Az adatlemezek a/usr/SAP/ `<SAPSID`> könyvtárához használatosak.
 1. Load Balancer létrehozása (belső, standard):  
    1. Az előtérbeli IP-címek létrehozása
       1. A ASCS IP-10.0.0.7
@@ -708,7 +708,7 @@ Az ordító lépések azt feltételezik, hogy az alkalmazáskiszolgáló a ASCS/
 
 ## <a name="install-database"></a>Az adatbázis telepítése
 
-Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-beli telepítésével kapcsolatos további információkért lásd: a [SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken Red Hat Enterprise Linuxon][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-beli telepítésével kapcsolatos további információkért lásd: a [SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken Red Hat Enterprise Linuxon][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. Az SAP Database-példány telepítésének futtatása
 
@@ -742,7 +742,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
    Frissítse a SAP HANA biztonságos tárolót, hogy az SAP HANA rendszerreplikáció beállításának virtuális nevére mutasson.
 
-   Futtassa a következő parancsot a bejegyzések listázásához sapsid \<>adm-ként
+   Futtassa a következő parancsot a bejegyzések adm-ként való listázásához. \<sapsid>
 
    <pre><code>hdbuserstore List
    </code></pre>
@@ -895,7 +895,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart`. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart` . Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ASCS00
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
@@ -981,7 +981,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    <pre><code>[root@nw1-cl-1 ~]# pgrep er.sapNW1 | xargs kill -9
    </code></pre>
 
-   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a nem `sapstart` indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a `sapstart` nem indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
    </code></pre>

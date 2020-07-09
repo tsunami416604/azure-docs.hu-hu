@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410316"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása a térről a Azure Data Factory használatával (előzetes verzió)
@@ -51,16 +51,16 @@ A Square társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Square** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Square** | Igen |
 | gazda | A négyzet-példány URL-címe (pl. mystore.mysquare.com)  | Igen |
 | ügyfél-azonosító | A Square-alkalmazáshoz társított ügyfél-azonosító.  | Igen |
 | clientSecret | A Square-alkalmazáshoz társított ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| redirectUri | A négyzetes alkalmazás irányítópultján hozzárendelt átirányítási URL-cím. (azaz http:\//localhost: 2500)  | Igen |
+| redirectUri | A négyzetes alkalmazás irányítópultján hozzárendelt átirányítási URL-cím. (azaz http: \/ /localhost: 2500)  | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -88,10 +88,10 @@ Az adatok négyzetből való másolásához állítsa az adatkészlet Type (típ
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SquareObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SquareObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -118,10 +118,10 @@ Az adatok négyzetből való másolásához állítsa a forrás típusát a más
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SquareSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Business"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SquareSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Business"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

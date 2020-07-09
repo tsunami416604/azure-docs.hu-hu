@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 70f90026e4a67fe1f8b1d5f790aed87652975045
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 42c8dd298c1fa0de04449945c7bb82e8b8bd6ff0
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856606"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -44,7 +44,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | --- | --- | --- |
 | **Ausztrália kormányzati** |Ausztrália középső régiója, Ausztrália 2. középső régiója |Canberra, Canberra2 |
 | **Európa** | Közép-Franciaország, Dél-Franciaország, Észak-Németország, Középnyugat-Németország, Észak-Európa, Kelet-Norvégia, Norvégia nyugati régiója, Észak-Svájc, Nyugat-Svájc, Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Nyugat-Európa |Amszterdam, Amsterdam2, Berlin, Koppenhága, Dublin, Frankfurt, Genf, London, London2, Marseille, Milánó, München, Newport (Wales), Oslo, Párizs, Stavanger, Stockholm, Zürich |
-| **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2, Montreal, Québec város, Toronto, Vancouver |
+| **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, Minneapolis, New York, Queretaro (Mexikó), San Antonio, Seattle, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2, Montreal, Québec város, Toronto, Vancouver |
 | **Ázsia** | Kelet-Ázsia, Délkelet-Ázsia | Bangkok, Hongkong, Hong Kong2, Jakarta, Kuala Lumpur, Szingapúr, Szingapúr2, Taipei |
 | **India** | Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | Nyugat-Japán, Kelet-Japán |Osaka, Tokió, Tokyo2 |
@@ -84,32 +84,33 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Frankfurt, London, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
 | **[TOKIÓBAN](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Támogatott | Támogatott | Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Támogatott | Támogatott | Tokió |
-| **[BCX](https://www.bcx.co.za/solutions)** |Támogatott |Támogatott |Fokváros, Johannesburg|
+| **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Támogatott |Támogatott |Fokváros, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Támogatott |Támogatott |Montréal, Toronto, Québec város |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Támogatott |Támogatott |Amszterdam, Hongkong (KKT), Johannesburg, London, Newport (Wales), Sao Paulo, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington, D.C. |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Támogatott |Támogatott |Miami |
 | **CDC** | Támogatott | Támogatott | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Támogatott |Támogatott |Amsterdam2, Chicago, Frankfurt, Hongkong, Las Vegas, London2, New York, Párizs, San Antonio, Szilícium-völgy, Tokió, Toronto, Washington, D.C., Washington DC2 |
 | **[Telekommunikációs vezető](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Támogatott |Támogatott |Hongkong, Taipei |
-| **China Mobile International** |Támogatott |Támogatott | Szingapúr |
+| **China Mobile International** |Támogatott |Támogatott | Hongkong, Hong Kong2, Szingapúr |
 | **China Telecom Global** |Támogatott |Támogatott |Hongkong, Hong Kong2 |
 | **Kínai Unicom globális** |Támogatott |Támogatott | Singapore2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Támogatott |Támogatott |Taipei |
-| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** | Támogatott | Támogatott | Miami |
-| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Támogatott |Támogatott |Chicago, Dallas, Montreal, Toronto, Vancouver, Washington, D.C. |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Chicago, Dublin, Frankfurt, London, London2, Newport, New York, Oszaka, Párizs, Szilícium-völgy, szilícium-Valley2, Szingapúr2, Tokió, Washington, D.C. |
+| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** |Támogatott |Támogatott |Miami |
+| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Támogatott |Támogatott |Chicago, Dallas, Minneapolis, Montreal, Toronto, Vancouver, Washington, D.C. |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Chicago, Dublin, Frankfurt, London, London2, Newport, New York, Oszaka, Párizs, Szilícium-völgy, szilícium-Valley2, Szingapúr2, Tokió, Washington, D.C. |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Támogatott |Támogatott |Chicago, Denver, Los Angeles, New York, Szilícium-völgy, szilícium-Valley2, Washington, D.C., Washington DC2 |
-| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | Támogatott |Támogatott |Amsterdam2, Frankfurt, Marseille|
+| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | Támogatott |Támogatott |Amsterdam2, Dubai2, Frankfurt, Marseille, Mumbai, München, New York |
 | **[Devoli](https://devoli.com/expressroute)** | Támogatott |Támogatott | Auckland, Melbourne, Sydney |
 | **du datamena** |Támogatott |Támogatott | Dubai2 |
 | **eir** |Támogatott |Támogatott |Dublin|
 | **[Epszilon globális kommunikáció](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Támogatott |Támogatott |Szingapúr, Szingapúr2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong KKT, London, London2, Los Angeles, Melbourne, Miami, New York, Oszaka, Párizs, Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Stockholm, Sydney, Tokió, Toronto, Washington, D.C. |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong KKT, London, London2, Los Angeles, Melbourne, Miami, Milánó, New York, Oszaka, Párizs, Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Stockholm, Sydney, Tokió, Toronto, Washington, D.C. |
 | **Etisalat UAE** |Támogatott |Támogatott |Dubai|
-| **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dublin, London |
+| **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **FarEasTone** |Támogatott |Támogatott |Taipei|
-| **GÉANT** |Támogatott |Támogatott |Amszterdam, Frankfurt, Marseille |
+| **GÉANT** |Támogatott |Támogatott |Amszterdam, Dublin, Frankfurt, Marseille |
+| **GTT** |Támogatott |Támogatott |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Támogatott| Támogatott | Csennai, Mumbai |
 | **Intelsat** | Támogatott | Támogatott | Washington DC2 |
 | **[InterCloud](https://www.intercloud.com/)** |Támogatott |Támogatott |Amszterdam, Chicago, Hongkong, London, New York, Párizs, Szilícium-völgy, Szingapúr, Washington, D.C., Zürich |
@@ -127,21 +128,22 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Washington, D.C. |
 | **LG CNS** |Támogatott |Támogatott |Busan, Szöul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Támogatott |Támogatott |Fokváros, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Genf, Hongkong (KKT), Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Québec város, San Antonio, Seattle, Szilícium-völgy, Szingapúr, Szingapúr2, Sydney, Sydney2, Tokió, Toronto, Washington, D.C., Zürich |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Genf, Hongkong KKT, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Québec város, San Antonio, Seattle, Szilícium-völgy, Szingapúr, Szingapúr2, Stavanger, Stockholm, Sydney, Sydney2, Tokió, Tokyo2 Toronto, Washington, D.C., Washington DC2, Zürich |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Támogatott |Támogatott |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Támogatott |Támogatott |Dallas, Los Angeles, Miami, Sao Paulo, Washington, D.C. |
 | **[Következő generációs adatelemek](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Támogatott |Támogatott |Newport (Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Támogatott |Támogatott |Melbourne, Perth, Sydney, Sydney2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Támogatott |Támogatott |Amszterdam, Hongkong (SAR), London, Los Angeles, Oszaka, Szingapúr, Sydney, Tokió, Washington, D.C. |
-| **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Támogatott |Támogatott |Tokió |
+| **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Támogatott |Támogatott |Tokió |
 | **[NTT globális adatközpontok EMEA](https://www.ntt.com/en/services/data-center.html)** |Támogatott |Támogatott |Berlin |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Támogatott |Támogatott |Oszaka |
 | **[Ooredoo Cloud-kapcsolat](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |Támogatott |Támogatott |Marseille |
 | **[Optus](https://www.optus.com.au/enterprise/)** |Támogatott |Támogatott |Melbourne, Sydney |
-| **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dubai2, Frankfurt, Hongkong KKT, Johannesburg, London, Párizs, Sao Paulo, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington, D.C. |
+| **[Narancssárga](https://www.orange-business.com/en/products/business-vpn-galerie)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dubai2, Frankfurt, Hongkong KKT, Johannesburg, London, Párizs, Sao Paulo, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington, D.C. |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Támogatott | Támogatott | Dubai2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Támogatott |Támogatott |Chicago, Hongkong, Hong Kong2, London, Szingapúr2 |
+| **[Retelit](https://www.retelit.it/en/services/enterprises-and-public-sector/data-center-e-cloud/cloud-services/direct-cloud-4-azure-expressroute.aspx)** | Támogatott | Támogatott | Milánó | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Támogatott |Támogatott |Szöul |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Támogatott |Támogatott | Washington DC |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Támogatott |Támogatott |Csennai, Mumbai2 |
@@ -160,13 +162,14 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Telus](https://www.telus.com)** |Támogatott |Támogatott |Montreal, Seattle, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Támogatott |Támogatott |Fokváros, Johannesburg |
 | **[IDŐ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Támogatott | Támogatott | Kuala Lumpur |
-| **[Transtelco](https://transtelco.net/enterprise-services/)** |Támogatott |Támogatott |Dallas, Los Angeles|
+| **[Transtelco](https://transtelco.net/enterprise-services/)** |Támogatott |Támogatott |Dallas, Queretaro (Mexikó)|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Támogatott |Támogatott |Sao Paulo |
+| **[UIH](https://www.uih.co.th/en/network-solutions/global-network/cloud-direct-for-microsoft-azure-expressroute)** | Támogatott | Támogatott | Bangkok |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Hongkong KKT, London, Mumbai, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
 | **[Viasat](http://www.directcloud.viasatbusiness.com/)** | Támogatott | Támogatott | Washington DC2 |
 | **[Vocus-csoport – NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Támogatott | Támogatott | Auckland, Sydney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Támogatott |Támogatott |Amsterdam2, London, Szingapúr |
-| **[A Vodafone ötlete](https://discover.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | Támogatott | Támogatott | Mumbai, Mumbai2 |
+| **[A Vodafone ötlete](https://discover.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | Támogatott | Támogatott | Mumbai2 |
 | **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Denver, London, Los Angeles, Montreal, New York, Párizs, Seattle, Szilícium-völgy, Toronto, Washington, D.C., Washington DC2 |
 
  **+** a hamarosan megjelenő megjegyzések
@@ -200,7 +203,7 @@ További információ: [ExpressRoute Kínában](http://www.windowsazure.cn/home/
 
 | **Szolgáltató** | **Microsoft Azure** | **Office 365** | **Helyek** |
 | --- | --- | --- | --- |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Támogatott |Nem támogatott |Frankfurt |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |Támogatott |Nem támogatott |Frankfurt |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Nem támogatott |Frankfurt |
 | **[e-shelter](https://www.e-shelter.de/en/microsoft-expressroutetm)** |Támogatott |Nem támogatott |Berlin |
 | **Interxion** |Támogatott |Nem támogatott |Frankfurt |
@@ -255,7 +258,7 @@ Ha távoli, és nem rendelkezik száloptikás kapcsolattal, vagy más csatlakoz�
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amszterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Szingapúr | 
 | **[Aptum-technológiák](https://aptum.com/services/cloud/managed-azure/)**| Equinix | Montréal, Toronto |
-| **[CoreAzure](http://www.coreazure.com/expressroute/)**| Equinix | London |
+| **[CoreAzure](http://www.coreazure.com/)**| Equinix | London |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)**| Equinix | Dallas, Szilícium-völgy, Washington, D.C. |
 | **[Crown-kastély](https://fiber.crowncastle.com/solutions/added/cloud-connect)**| Equinix | Atlanta, Chicago, Dallas, Los Angeles, New York, Washington, D.C. |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | Dallas |
@@ -357,7 +360,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Dél-Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Ausztrália |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

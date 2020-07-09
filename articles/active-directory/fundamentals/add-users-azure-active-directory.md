@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30730f685945d129ababb27040f34bf8ab2f790
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603859"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Felhasználók hozzáadása vagy törlése Azure Active Directory használatával
 
@@ -44,7 +44,7 @@ Létrehozhat egy új felhasználót a Azure Active Directory portál használat�
 
    - **Felhasználónév**. Kötelező. Az új felhasználó felhasználóneve. Például: `mary@contoso.com`.
 
-     A Felhasználónév tartomány részének a kezdeti alapértelmezett tartománynevet, * \<a yourdomainname>. onmicrosoft.com*vagy egy egyéni tartománynevet kell használnia, például a *contoso.com*nevet. További információ az Egyéni tartománynév létrehozásáról: [Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával](add-custom-domain.md).
+     A Felhasználónév tartomány részének a kezdeti alapértelmezett tartománynevet, a * \<yourdomainname> . onmicrosoft.com*vagy egy egyéni tartománynevet kell használnia, például *contoso.com*. További információ az Egyéni tartománynév létrehozásáról: [Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával](add-custom-domain.md).
 
    - **Csoportok**. Igény szerint hozzáadhatja a felhasználót egy vagy több meglévő csoporthoz. A felhasználót később is hozzáadhatja a csoportokhoz. A felhasználók csoportokba való felvételével kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](active-directory-groups-create-azure-portal.md).
 
@@ -54,7 +54,7 @@ Létrehozhat egy új felhasználót a Azure Active Directory portál használat�
 
 1. Másolja a **jelszó** mezőben megadott automatikusan generált jelszót. Ezt a jelszót kell megadnia a felhasználónak, hogy első alkalommal jelentkezzen be.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 A rendszer létrehozza és hozzáadja a felhasználót az Azure AD-szervezethez.
 

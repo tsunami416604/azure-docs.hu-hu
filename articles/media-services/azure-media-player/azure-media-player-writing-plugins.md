@@ -7,17 +7,16 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857405"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Beépülő modulok írása Azure Media Playerhoz #
 
 A beépülő modul JavaScriptet írt a lejátszó kiterjesztéséhez vagy bővítéséhez. Írhat olyan beépülő modulokat, amelyek megváltoztatják Azure Media Player megjelenését, funkcionalitását, vagy akár más szolgáltatásokkal is. Ezt két egyszerű lépésben teheti meg:
 
-## <a name="step-1"></a>1. lépés ##
+## <a name="step-1"></a>1\. lépés ##
 
 Írja be a JavaScriptet egy olyan függvénybe, amely a következőképpen néz ki:
 
@@ -33,7 +32,7 @@ A beépülő modul JavaScriptet írt a lejátszó kiterjesztéséhez vagy bőví
     }).call(this);
 ```
 
-A kódot közvetlenül a HTML-lapba is megírhatja `<script>` a címkéken belül, vagy egy külső JavaScript-fájlban. Ha ezt teszi, ügyeljen arra, hogy a JavaScript-fájlt a HTML- `<head>` oldalán az amp parancsfájl *után* is tartalmazza.
+A kódot közvetlenül a HTML-lapba is megírhatja a `<script>` címkéken belül, vagy egy külső JavaScript-fájlban. Ha ezt teszi, ügyeljen arra, hogy a JavaScript-fájlt a HTML- `<head>` oldalán az amp parancsfájl *után* is tartalmazza.
 
 Példa:
 

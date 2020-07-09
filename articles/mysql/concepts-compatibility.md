@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537210"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
@@ -26,13 +26,13 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 | .NET | MySQL-összekötő/háló | https://github.com/mysql/mysql-connector-net | 6.6.3, 7,0, 8,0 |  | A kódolási hibák miatt a kapcsolatok sikertelenek lehetnek bizonyos nem UTF8 Windows rendszereken. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Telepítőcsomag a NPM-ből:<br> Futtatás `npm install mysql` a NPM | 2.15 | 2.14.1 és előtte | |
 | Node.js | csomópont – mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Indítás | Go MySQL-illesztőprogram | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 és előtte | Használja `allowNativePasswords=true` az 1,3-es verzióhoz tartozó kapcsolatok karakterláncát. Az 1,4-es verzió egy `allowNativePasswords=true` javítást tartalmaz, és már nem szükséges. |
+| Go | Go MySQL-illesztőprogram | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 és előtte | Használja az `allowNativePasswords=true` 1,3-es verzióhoz tartozó kapcsolatok karakterláncát. Az 1,4-es verzió egy javítást tartalmaz, és már `allowNativePasswords=true` nem szükséges. |
 | Python | MySQL-összekötő/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, a 8.0.16 + és a MySQL 8,0 használata  | 1.2.2 és korábban | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regresszió a web2py-ben) | |
 | Java | MariaDB-összekötő/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 és előtte | | 
 | Java | MySQL-összekötő/J | https://github.com/mysql/mysql-connector-j | 5.1.21 +, használja a 8.0.17 és a MySQL 8,0 | 5.1.20 és alacsonyabb | |
-| C# | MySQL-összekötő/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
-| C# | MySQL-összekötő/ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
+| C | MySQL-összekötő/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
+| C | MySQL-összekötő/ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
 | C++ | MySQL-összekötő/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 + | 1.1.3-es és alacsonyabb | | 
 | C++ | MySQL + +| https://tangentsoft.net/mysql++ | 3.2.3 + | | |
 | Ruby | mysql2 | https://github.com/brianmario/mysql2 | 0.4.10 + | | |

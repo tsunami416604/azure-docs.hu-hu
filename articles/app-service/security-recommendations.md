@@ -8,17 +8,17 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546705"
 ---
 # <a name="security-recommendations-for-app-service"></a>A App Service biztonsági javaslatai
 
 Ez a cikk a Azure App Service biztonsági javaslatait tartalmazza. A javaslatok megvalósítása a közös felelősségi modellben leírtak szerint biztosítja a biztonsági kötelezettségek teljesítését, és javítja a webalkalmazás-megoldások általános biztonságát. További információk arról, hogy a Microsoft miként teljesíti a szolgáltatói feladatokat, olvassa el az [Azure-infrastruktúra biztonsága](../security/fundamentals/infrastructure.md)című témakört.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 | Ajánlás | Megjegyzések |
 |-|-|----|
@@ -43,7 +43,7 @@ Ez a cikk a Azure App Service biztonsági javaslatait tartalmazza. A javaslatok 
 | FTPS használata | A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. Ha lehetséges, FTP helyett használjon FTPS. Ha az egyik vagy mindkét protokoll nincs használatban, [Tiltsa le őket](deploy-ftp.md#enforce-ftps). |
 | Az alkalmazásadatok védelme | Ne tárolja az alkalmazás-titkokat, például az adatbázis hitelesítő adatait, az API-jogkivonatokat vagy a titkos kulcsokat a kódban vagy a konfigurációs fájlokban. Az általánosan elfogadott módszer az, hogy az Ön által választott nyelven a standard minta alapján [környezeti változókként](https://wikipedia.org/wiki/Environment_variable) férjen hozzájuk. A Azure App Serviceban környezeti változókat adhat meg az [Alkalmazásbeállítások](web-sites-configure.md) és a [kapcsolatok karakterláncai](web-sites-configure.md)segítségével. Az Alkalmazásbeállítások és a kapcsolatok karakterláncai titkosítva tárolódnak az Azure-ban. Az Alkalmazásbeállítások csak akkor lesznek visszafejtve, ha az alkalmazás elindul az alkalmazás folyamatának memóriájában. A titkosítási kulcsok elforgatása rendszeresen történik. Azt is megteheti, hogy a Azure App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](/azure/key-vault/) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/tutorial-web-application-keyvault.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz. |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések |
 |-|-|

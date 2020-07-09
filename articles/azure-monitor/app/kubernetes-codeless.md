@@ -6,16 +6,15 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/13/2020
 ms.openlocfilehash: 76f9f922697ef6be6c959ea7f9bafd0872dba6ff
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83773756"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes---azure-monitor-application-insights"></a>Zero Instrumentation-alkalmazás figyelése a Kubernetes-Azure Monitor Application Insights
 
 > [!IMPORTANT]
->  A Kubernetes-on futó Java-alkalmazások figyelését jelenleg a kód kihelyezése nélkül engedélyezheti – használja a [Java önálló ügynököt](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Habár az alkalmazás-figyelés zökkenőmentesen való engedélyezése a megoldás más nyelveken is működik, az SDK-k segítségével figyelheti az AK-on futó alkalmazásokat: [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)és [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+>  A Kubernetes-on futó Java-alkalmazások figyelését jelenleg a kód kihelyezése nélkül engedélyezheti – használja a [Java önálló ügynököt](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Habár az alkalmazások figyelésének zökkenőmentes engedélyezése a megoldás más nyelveken is működik, az SDK-k segítségével figyelheti az AK-on futó alkalmazásokat: [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)és [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
 ## <a name="application-monitoring-without-instrumenting-the-code"></a>Alkalmazások figyelése a kód beszerelése nélkül
 Jelenleg csak a Java lehetővé teszi, hogy az alkalmazás figyelését a kód kivezetése nélkül engedélyezze. Más nyelveken futó alkalmazások figyelése az SDK-k használatával. 
@@ -25,7 +24,7 @@ Ha engedélyezve van, a Java-ügynök automatikusan gyűjt számos kérést, fü
 
 A Kubernetes-alkalmazásokban, valamint más környezetekben futó Java-alkalmazások figyeléséhez kövesse [a részletes útmutatást](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) . 
 
-## <a name="other-languages"></a>Egyéb nyelvek
+## <a name="other-languages"></a>További nyelvek
 
 Az SDK-k használata esetén jelenleg a következő nyelveken javasolt az alkalmazások használata:
 * [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)

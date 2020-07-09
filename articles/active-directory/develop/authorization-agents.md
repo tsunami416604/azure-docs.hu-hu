@@ -12,12 +12,12 @@ ms.date: 09/05/2019
 ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83a33fa3891e01c484f298f22d67467bc54a7618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551987"
 ---
 # <a name="authorization-agents-android"></a>Engedélyezési ügynökök (Android)
 
@@ -25,7 +25,7 @@ Ez a cikk azokat a különböző engedélyezési ügynököket ismerteti, amelye
 
 Az engedélyezési ügynökökhöz tartozó konkrét stratégia kiválasztása nem kötelező, és a további funkcionalitási alkalmazásokat is testreszabhatja. A legtöbb alkalmazás a MSAL alapértelmezett beállításait fogja használni (lásd: az [androidos MSAL konfigurációs fájljának ismertetése](msal-configuration.md) a különböző alapértelmezett beállítások megjelenítéséhez).
 
-A MSAL a vagy a `WebView`rendszerböngésző használatával támogatja az engedélyezést.  Az alábbi képen látható, hogyan néz ki a `WebView`vagy a rendszerböngésző a CustomTabs vagy CustomTabs nélkül:
+A MSAL a `WebView` vagy a rendszerböngésző használatával támogatja az engedélyezést.  Az alábbi képen látható, hogyan néz ki a `WebView` vagy a rendszerböngésző a CustomTabs vagy CustomTabs nélkül:
 
 ![MSAL bejelentkezési példák](./media/authorization-agents/sign-in-ui.jpg)
 
@@ -33,7 +33,7 @@ A MSAL a vagy a `WebView`rendszerböngésző használatával támogatja az enged
 
 Alapértelmezés szerint a MSAL-ben integrált alkalmazások a rendszerböngésző egyéni lapjait használják az engedélyezéshez. A webnézetekkel ellentétben az egyéni lapok megosztanak egy cookie jar-t az alapértelmezett rendszerböngészővel, így kevesebb bejelentkezést tesznek lehetővé az egyéni lapokkal integrált webes vagy más natív alkalmazásokkal.
 
-Ha az alkalmazás olyan stratégiát `WebView` használ, amely nem integrálja Microsoft Authenticator vagy céges portál támogatást az alkalmazásba, a felhasználóknak nincs egyszeri bejelentkezési (SSO) felhasználói felülete az eszközön, illetve a natív alkalmazások és a webalkalmazások között.
+Ha az alkalmazás olyan `WebView` stratégiát használ, amely nem integrálja Microsoft Authenticator vagy céges portál támogatást az alkalmazásba, a felhasználóknak nincs egyszeri bejelentkezési (SSO) felhasználói felülete az eszközön, illetve a natív alkalmazások és a webalkalmazások között.
 
 Ha az alkalmazás a MSAL-t Microsoft Authenticator vagy Céges portál támogatással használja, akkor a felhasználók az alkalmazásokban egyszeri bejelentkezéses felhasználói felülettel rendelkezhetnek, ha a felhasználó aktív bejelentkezést végez az egyik alkalmazással.
 
@@ -45,13 +45,13 @@ A alkalmazáson belüli webnézet használatához helyezze a következő sort az
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-Az alkalmazáson belüli `WebView`használatakor a felhasználó közvetlenül az alkalmazásba jelentkezik be. A tokenek az alkalmazás Homokozójában maradnak, és nem érhetők el az alkalmazás cookie jar-on kívül. Ennek eredményeképpen a felhasználónak nem lehet egyszeri bejelentkezéses felhasználói felülete, kivéve, ha az alkalmazások integrálva vannak a hitelesítő vagy a Céges portál.
+Az alkalmazáson belüli használatakor `WebView` a felhasználó közvetlenül az alkalmazásba jelentkezik be. A tokenek az alkalmazás Homokozójában maradnak, és nem érhetők el az alkalmazás cookie jar-on kívül. Ennek eredményeképpen a felhasználónak nem lehet egyszeri bejelentkezéses felhasználói felülete, kivéve, ha az alkalmazások integrálva vannak a hitelesítő vagy a Céges portál.
 
 A azonban `WebView` lehetővé teszi a bejelentkezési felhasználói felület megjelenésének és működésének testreszabását. A testreszabással kapcsolatos további tudnivalókért tekintse meg az [androidos Webnézeteket](https://developer.android.com/reference/android/webkit/WebView) .
 
 ## <a name="default-browser-plus-custom-tabs"></a>Alapértelmezett böngésző és egyéni lapok
 
-Alapértelmezés szerint a MSAL a böngészőt és az [Egyéni lapfülek](https://developer.chrome.com/multidevice/android/customtabs) stratégiát használja. Explicit módon jelezheti ezt a stratégiát, hogy megakadályozza a jövőbeli kiadásokban `DEFAULT` történt változásokat az egyéni konfigurációs fájl következő JSON-konfigurációjának használatával:
+Alapértelmezés szerint a MSAL a böngészőt és az [Egyéni lapfülek](https://developer.chrome.com/multidevice/android/customtabs) stratégiát használja. Explicit módon jelezheti ezt a stratégiát, hogy megakadályozza a jövőbeli kiadásokban történt változásokat az `DEFAULT` egyéni konfigurációs fájl következő JSON-konfigurációjának használatával:
 
 ```json
 "authorization_user_agent" : "BROWSER"
@@ -63,9 +63,9 @@ Ezzel a megközelítéssel egyszeri bejelentkezéses felhasználói élményt bi
 
 Mivel a MSAL nem tudja megállapítani az androidos telefonok széles skáláján használni kívánt böngésző-csomagot, a MSAL egy olyan böngésző-kiválasztási heurisztikus szolgáltatást valósít meg, amely a legjobb eszközök közötti egyszeri bejelentkezést próbálja megadni.
 
-A MSAL lekéri az eszközön telepített böngészők teljes listáját, hogy kiválassza a használni kívánt böngészőt. A lista a Package Manager által visszaadott sorrendben történik, amely közvetett módon a felhasználó beállításait mutatja. Például az alapértelmezett böngésző, ha be van állítva, a lista első bejegyzése. A lista _első_ böngészője attól függetlenül lesz kiválasztva, hogy támogatja-e az egyéni lapokat. Ha a böngésző támogatja az egyéni lapokat, a MSAL elindítják az egyéni fület. az egyéni lapok megjelenése és `WebView` a felhasználói felület alapvető testreszabásának engedélyezése. További információért lásd: [Egyéni lapok az Androidban](https://developer.chrome.com/multidevice/android/customtabs) .
+A MSAL lekéri az eszközön telepített böngészők teljes listáját, hogy kiválassza a használni kívánt böngészőt. A lista a Package Manager által visszaadott sorrendben történik, amely közvetett módon a felhasználó beállításait mutatja. Például az alapértelmezett böngésző, ha be van állítva, a lista első bejegyzése. A lista _első_ böngészője attól függetlenül lesz kiválasztva, hogy támogatja-e az egyéni lapokat. Ha a böngésző támogatja az egyéni lapokat, a MSAL elindítják az egyéni fület. az egyéni lapok megjelenése és a `WebView` felhasználói felület alapvető testreszabásának engedélyezése. További információért lásd: [Egyéni lapok az Androidban](https://developer.chrome.com/multidevice/android/customtabs) .
 
-Ha nincsenek böngésző-csomagok az eszközön, a MSAL az alkalmazáson belüli alkalmazást `WebView`használja.
+Ha nincsenek böngésző-csomagok az eszközön, a MSAL az alkalmazáson belüli alkalmazást használja `WebView` .
 
 A böngésző listájában szereplő böngészők sorrendjét az operációs rendszer határozza meg. A legkevesebb előnyben részesített a legkevésbé. Ha az eszköz alapértelmezett beállítása nem módosul, a bejelentkezéshez ugyanazt a böngészőt kell elindítani az egyszeri bejelentkezéses felhasználói élmény biztosítása érdekében.
 
@@ -74,9 +74,9 @@ A böngésző listájában szereplő böngészők sorrendjét az operációs ren
 
 ### <a name="tested-browsers"></a>Tesztelt böngészők
 
-A következő böngészők tesztelték, hogy megfelelően átirányítva vannak-e `"redirect_uri"` a konfigurációs fájlban megadott értékre:
+A következő böngészők tesztelték, hogy megfelelően átirányítva vannak-e a `"redirect_uri"` konfigurációs fájlban megadott értékre:
 
-| | Beépített böngésző | Chrome | Operát  | Microsoft Edge | UC böngésző | Firefox |
+| Eszköz | Beépített böngésző | Chrome | Operát  | Microsoft Edge | UC böngésző | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | 4. Nexus (API 17) | pass | pass |nem alkalmazható |nem alkalmazható |nem alkalmazható |nem alkalmazható |
 | Samsung S7 (API 25) | pass | pass | pass | pass | sikertelen |pass |

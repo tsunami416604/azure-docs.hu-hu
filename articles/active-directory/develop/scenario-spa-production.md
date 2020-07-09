@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82900314"
 ---
 # <a name="single-page-application-move-to-production"></a>Egyoldalas alkalmazás: áthelyezés éles környezetbe
@@ -32,17 +31,17 @@ Tesztelje az integrációt a [Microsoft Identity platform Integration ellenőrz�
 
 ## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezési minta részletes bemutatása, amely leírja, hogyan lehet bejelentkezni a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API MSAL. js használatával történő meghívásához:
+A gyors üzembe helyezési minta részletes bemutatása, amely leírja, hogyan lehet bejelentkezni a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API meghívásához MSAL.js használatával:
 
 > [!div class="nextstepaction"]
 > [JavaScript SPA – oktatóanyag](./tutorial-v2-javascript-spa.md)
 
-Minta, amely bemutatja, hogyan szerezhet jogkivonatokat a saját háttérbeli webes API-hoz a MSAL. js használatával:
+Minta, amely bemutatja, hogyan szerezhet jogkivonatokat a saját háttérbeli webes API-hoz a MSAL.js használatával:
 
 > [!div class="nextstepaction"]
 > [SPA ASP.NET-háttérrel](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
-Ez a minta bemutatja, hogyan lehet a MSAL. js használatával bejelentkezni a felhasználókba Azure Active Directory B2C (Azure AD B2C) szolgáltatásban regisztrált alkalmazásokban:
+Ez a minta azt mutatja be, hogyan használhatók a MSAL.js a Azure Active Directory B2C (Azure AD B2C) szolgáltatásban regisztrált alkalmazásokban lévő felhasználók bejelentkezéséhez:
 
 > [!div class="nextstepaction"]
 > [SPA Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

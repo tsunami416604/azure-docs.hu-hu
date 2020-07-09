@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 3c93eca493275612ac14a995140b2e91cc40fe98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b94fb5aba8cc54d9014a01610f467776c3a3784a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644664"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075960"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure PowerShell használatával
 
@@ -21,7 +21,7 @@ ms.locfileid: "75644664"
 
 A Azure PowerShell egy hatékony parancsfájlkezelési környezet, amellyel szabályozhatja és automatizálhatja a számítási feladatok üzembe helyezését és kezelését Microsoft Azureban. Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy Linux-alapú HDInsight-fürtöt Azure PowerShell használatával. Egy példa parancsfájlt is tartalmaz.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +60,7 @@ Egy fürt létrehozása akár 20 percet is igénybe vehet.
 
 ## <a name="create-cluster-configuration-object"></a>Fürt létrehozása: konfigurációs objektum
 
-HDInsight-konfigurációs objektumot a parancsmag használatával [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) is létrehozhat. Ezt a konfigurációs objektumot azután módosíthatja, hogy a fürt további konfigurációs beállításait is engedélyezze. Végül használja a [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag `-Config` paraméterét a konfiguráció használatához.
+HDInsight-konfigurációs objektumot a parancsmag használatával is létrehozhat [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) . Ezt a konfigurációs objektumot azután módosíthatja, hogy a fürt további konfigurációs beállításait is engedélyezze. Végül használja a `-Config` parancsmag paraméterét a [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) konfiguráció használatához.
 
 A következő parancsfájl egy konfigurációs objektumot hoz létre egy R Server HDInsight-fürtön való konfigurálásához. A konfiguráció lehetővé teszi egy peremhálózati csomópont, egy RStudio és egy további Storage-fiók használatát.
 

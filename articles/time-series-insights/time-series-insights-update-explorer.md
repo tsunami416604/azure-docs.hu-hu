@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06f235b7f1c20681beee1f5be4c18de60d53a690
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75861761"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037307"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights Preview Explorer
 
@@ -75,11 +74,11 @@ A Azure Time Series Insights előzetes verziója támogatja a teljes létrehozá
 * **Idősorozat-modell hierarchiája**: a hierarchiák az adataik szisztematikus szervezetei. A hierarchiák ábrázolják a Time Series Insights adataiban lévő különböző entitások közötti kapcsolatokat.
 * **Idősorozat-modell példány**: a példányok maguk az idősorozatok. A legtöbb esetben ezek a **DeviceID** vagy a **assetid**, amely az eszköz egyedi azonosítója a környezetben.
 
-Az idősorozat modelljével kapcsolatos további információkért olvassa el a [Times Series-modelleket](./time-series-insights-update-tsm.md).
+Az idősorozat modelljével kapcsolatos további információkért olvassa el a [Times Series-modelleket](./concepts-model-overview.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hierarchia faszerkezete és keresési panelje
 
-A hierarchia faszerkezetének és a keresési paneljének segítségével könnyedén keresheti meg és navigálhatja az [Idősorozat-modell](./time-series-insights-update-tsm.md) hierarchiáját, hogy megkeresse a diagramon megjeleníteni kívánt idősorozat-példányokat. Ha kiválasztja a példányokat, azok nem csak az aktuális diagramhoz lesznek hozzáadva, hanem az adatterülethez is hozzáadódnak. 
+A hierarchia faszerkezetének és a keresési paneljének segítségével könnyedén keresheti meg és navigálhatja az [Idősorozat-modell](./concepts-model-overview.md) hierarchiáját, hogy megkeresse a diagramon megjeleníteni kívánt idősorozat-példányokat. Ha kiválasztja a példányokat, azok nem csak az aktuális diagramhoz lesznek hozzáadva, hanem az adatterülethez is hozzáadódnak. 
 
 [![Hierarchia faszerkezete és keresési panelje](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -215,7 +214,7 @@ A Time Series Insights előzetes verziójának használati feltételeinek szerke
 
 **Hol**: a WHERE záradék használatával gyorsan szűrheti az eseményeket az alábbi táblázatban felsorolt operandusok használatával. Ha egy operandus kiválasztásával végez keresést, a rendszer automatikusan frissíti a predikátumot a keresés alapján. A támogatott operandusok típusai a következők:
 
-| Művelet | Támogatott típusok   | Megjegyzések |
+| Művelet | Támogatott típusok   | Jegyzetek |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double, DateTime, TimeSpan | |
 | `=`, `!=`, `<>` | Karakterlánc, bool, Double, DateTime, TimeSpan, NULL |
@@ -240,8 +239,10 @@ A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a lá
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Azure Time Series Insights előzetes verziójában.
+- Tudnivalók az [adatfeldolgozásról](./concepts-ingestion-overview.md) a környezetbe.
 
-- Olvassa el az [adatmodellezés](./time-series-insights-update-tsm.md)Time Series Insights előnézeti dokumentumát.
+- Tekintse meg a cikket a [Storage](concepts-storage.md) -ban
+
+- Olvassa el az [adatmodellezés](./concepts-model-overview.md)Time Series Insights előnézeti dokumentumát.
 
 - Ismerje meg [, hogyan diagnosztizálhatja és elháríthatja](./time-series-insights-update-how-to-troubleshoot.md) a Time Series Insights-példányát.

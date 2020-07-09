@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628534"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>A háttér-kiszolgálói tanúsítvány nem engedélyezett olyan Application Gateway számára, amely egy belső Load Balancert használ App Service Environment
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>A háttér-kiszolgálói tanúsítvány nem engedélyezett olyan Application Gateway számára, amely egy belső Load Balancert használ App Service Environment
 
-Ez a cikk a következő problémát ismerteti: A tanúsítvány nem engedélyezett, ha egy belső Load Balancer (ILB) és egy App Service Environment (bevezető) használatával hoz létre egy Application Gateway-t, ha az Azure-ban végpontok közötti TLS-t használ.
+Ez a cikk a következő problémát ismerteti: A tanúsítvány nem engedélyezett, ha egy belső Load Balancer (ILB) és egy App Service Environment (bevezető) használatával hoz létre egy alkalmazás-átjárót, ha az Azure-ban végpontok közötti TLS-t használ.
 
 ## <a name="symptoms"></a>Probléma
 
@@ -41,7 +40,7 @@ Amikor egy ILB használatával hoz létre egy Application Gateway-t, a háttérr
 - **Port:**: 443
 - **Egyéni mintavétel:** Állomásnév – test.appgwtestase.com
 - **Hitelesítési tanúsítvány:** . cer – test.appgwtestase.com
-- **Háttér állapota:** Nem megfelelő – a háttér-kiszolgáló tanúsítványa nincs engedélyezve a Application Gateway.
+- **Háttér állapota:** Sérült – a háttér-kiszolgáló tanúsítványa nem engedélyezett a Application Gateway.
 
 **Bemutató konfiguráció:**
 
@@ -68,7 +67,7 @@ Ha teljes tartománynevet (FQDN) használ a ILB eléréséhez, a háttér-kiszol
 
 - Ha a ILB IP-címét használja, törölje az **app Service-hez való használat** beállítását az Application Gateway esetében.
 
-A terhelés csökkentése érdekében feltöltheti a ILB-tanúsítványt a HTTP-beállításokba a mintavételi útvonal működésének érdekében. (Ez a lépés csak a Whitelisting számára érhető el. A TLS-kommunikációhoz nem használható.) A ILB-tanúsítvány lekéréséhez nyissa meg az IP-címét a ILB a HTTPS-en keresztül, majd exportálja a TLS/SSL-tanúsítványt egy Base-64 kódolású CER formátumba, és töltse fel a tanúsítványt a megfelelő HTTP-beállításokra.
+A terhelés csökkentése érdekében feltöltheti a ILB-tanúsítványt a HTTP-beállításokba a mintavételi útvonal működésének érdekében. (Ez a lépés csak a listaelemek engedélyezésére szolgál. A TLS-kommunikációhoz nem használható.) A ILB-tanúsítvány lekéréséhez nyissa meg az IP-címét a ILB a HTTPS-en keresztül, majd exportálja a TLS/SSL-tanúsítványt egy Base-64 kódolású CER formátumba, és töltse fel a tanúsítványt a megfelelő HTTP-beállításokra.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

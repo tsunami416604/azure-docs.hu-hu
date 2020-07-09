@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848696"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a Brivo onair Identity Connector konfigurálása a felhasználók automatikus kiépítési feladataihoz
 
@@ -54,17 +54,17 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>A Brivo onair Identity Connector beállítása a kiépítés számára
 
-1.    Jelentkezzen be a [Brivo onair Identity Connector felügyeleti konzolra](https://acs.brivo.com/login/). Válassza a **fiók > Fiókbeállítások lehetőséget**.
+1. Jelentkezzen be a [Brivo onair Identity Connector felügyeleti konzolra](https://acs.brivo.com/login/). Válassza a **fiók > Fiókbeállítások lehetőséget**.
 
-    ![Brivo onair Identity Connector felügyeleti konzol](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Brivo onair Identity Connector felügyeleti konzol](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  Kattintson az **Azure ad** fülre. Az **Azure ad** -Részletek lapon adja meg újra a legfelső szintű rendszergazdai fiók jelszavát. Kattintson a **Submit (elküldés**) gombra.
+2. Kattintson az **Azure ad** fülre. Az **Azure ad** -Részletek lapon adja meg újra a legfelső szintű rendszergazdai fiók jelszavát. Kattintson a **Submit (elküldés**) gombra.
 
-    ![Brivo onair Identity Connector – Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Brivo onair Identity Connector – Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    Kattintson a **jogkivonat másolása** gombra, és mentse a **titkos jogkivonatot**. Ez az érték a Brivo onair Identity Connector alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében lesz megadva a Azure Portal.
+3. Kattintson a **jogkivonat másolása** gombra, és mentse a **titkos jogkivonatot**. Ez az érték a Brivo onair Identity Connector alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében lesz megadva a Azure Portal.
 
-    ![Brivo onair-azonosító tokenje](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Brivo onair-azonosító tokenje](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Brivo onair-identitás összekötő hozzáadása a katalógusból
 
@@ -154,7 +154,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

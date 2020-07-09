@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid fogalmak
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti. A Event Grid számos kulcsfontosságú összetevőjét határozza meg.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393466"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116488"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Fogalmak a Azure Event Grid
 
@@ -41,9 +37,9 @@ A támogatott Event Grid források megvalósításával kapcsolatos további inf
 
 Az Event Grid-témakör olyan végpontot biztosít, amelyben a forrás eseményeket küld. A közzétevő létrehozza az Event Grid-témakört, és eldönti, hogy egy adott eseményforrás egy vagy több témakörre van-e szüksége. A témakörök a kapcsolódó események gyűjteményéhez használatosak. Bizonyos típusú események megválaszolásához az előfizetők eldönthetik, hogy mely témakörökre kell előfizetni.
 
-A rendszer témakörök az Azure-szolgáltatások által biztosított beépített témakörök. A rendszer témakörök nem jelennek meg az Azure-előfizetésben, mert a témakörök tulajdonosa a közzétevő, de fel lehet rájuk iratkozni. Feliratkozáshoz adja meg azzal az erőforrással kapcsolatos információkat, ahonnan eseményeket szeretne kapni. Ha hozzáférhet az erőforráshoz, feliratkozhat az eseményeire.
+A rendszertémakörök az Azure-szolgáltatások, például az Azure Storage, az Azure Event Hubs és a Azure Service Bus által nyújtott beépített témakörök. Létrehozhat rendszertémaköröket az Azure-előfizetésében, és feliratkozhat rájuk. További információ: [a rendszertémakörök áttekintése](system-topics.md). 
 
-Az egyéni témakörök az alkalmazások és a külső felek témakörei. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében.
+Az egyéni témakörök az alkalmazások és a külső felek témakörei. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében. További információ: [Egyéni témakörök](custom-topics.md).
 
 Az alkalmazás tervezésekor rugalmasságot biztosít, amikor eldönti, hány témakört kell létrehoznia. Nagyméretű megoldások esetében hozzon létre egy egyéni témakört a kapcsolódó események egyes kategóriáira. Tekintsünk például egy olyan alkalmazást, amelyik a felhasználói fiókok módosításához és a megrendelések feldolgozásához kapcsolódóan küld eseményeket. Nem valószínű, hogy valamely eseménykezelőnek mind a két esemény kategória kellene. Hozzon létre két külön témakört, és az eseménykezelők hadd iratkozzanak fel arra, amelyik érdekli őket. Kis megoldások esetében érdemes lehet az összes eseményt egyetlen témakörbe elküldeni. Az esemény-előfizetők szűrhetik a kívánt típusú eseményeket.
 
@@ -66,7 +62,7 @@ A lejárati idő beállítására példa: [előfizetés speciális szűrőkkel](
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
-Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. A kezelőként támogatott Azure-szolgáltatást vagy saját webhookot is használhat. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. A HTTP webhook-eseménykezelők esetében az eseményt a rendszer újra megkísérli, amíg a kezelő nem ad vissza `200 – OK`állapotkódot. Az Azure Storage-üzenetsor esetében az eseményeket a rendszer újra megkísérli, amíg a Queue szolgáltatás sikeresen feldolgozza az üzenetet a várólistába.
+Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. A kezelőként támogatott Azure-szolgáltatást vagy saját webhookot is használhat. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. A HTTP webhook-eseménykezelők esetében az eseményt a rendszer újra megkísérli, amíg a kezelő nem ad vissza állapotkódot `200 – OK` . Az Azure Storage-üzenetsor esetében az eseményeket a rendszer újra megkísérli, amíg a Queue szolgáltatás sikeresen feldolgozza az üzenetet a várólistába.
 
 A támogatott Event Grid kezelők megvalósításával kapcsolatos további információkért lásd: [eseménykezelők a Azure Event Gridban](event-handlers.md).
 
@@ -85,7 +81,7 @@ Egyéni témakör használatakor az eseményeket mindig közzé kell tenni egy t
 > [!NOTE]
 > A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb események díját 64 KB-os növekményekben számoljuk el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

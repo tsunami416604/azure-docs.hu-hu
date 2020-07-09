@@ -3,15 +3,15 @@ title: Data Lake Storage Gen1 erőforrások kezelése – Azure Storage Explorer
 description: Ismerje meg, hogyan érheti el és kezelheti Azure Data Lake Storage Gen1 adatait és erőforrásait Azure Storage Explorer
 author: jejiang
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73832267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508792"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával
 

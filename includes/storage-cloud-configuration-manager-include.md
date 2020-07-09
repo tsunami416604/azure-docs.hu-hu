@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 5102866cdda51ef545fd95b32946cb17c6e40a3c
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72038162"
 ---
 A [Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)egy osztályt biztosít a konfigurációs fájlokból származó kapcsolati sztringek elemzéséhez. A [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) osztály elemzi a konfigurációs beállításokat. Az alkalmazás az asztali gépen, egy mobileszközön, egy Azure-beli virtuális gépen vagy egy Azure Cloud Service-ben futó ügyfélalkalmazások beállításait elemzi.
 
-A `CloudConfigurationManager` csomagra való hivatkozáshoz adja hozzá `using` a következő irányelveket:
+A csomagra való hivatkozáshoz `CloudConfigurationManager` adja hozzá a következő `using` irányelveket:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager

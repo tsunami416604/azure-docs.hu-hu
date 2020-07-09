@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71211869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253868"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Az aktuális felhasználó regisztrálása leküldéses értesítésekhez a ASP.NET használatával
 
@@ -61,7 +59,7 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
 
     - (IBAction)login:(id)sender;
     ```
-3. Hozzon létre egy `DeviceInfo`nevű osztályt, és másolja a következő kódot a deviceinfo. h fájl Interface szakaszába:
+3. Hozzon létre egy nevű osztályt `DeviceInfo` , és másolja a következő kódot a deviceinfo. h fájl Interface szakaszába:
 
     ```objc
     @property (readonly, nonatomic) NSString* installationId;
@@ -106,7 +104,7 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
     ```objc
     @property (strong, nonatomic) DeviceInfo* deviceInfo;
     ```
-6. A PushToUserAppDelegate `didFinishLaunchingWithOptions` . m metódusában adja hozzá a következő kódot:
+6. A `didFinishLaunchingWithOptions` PushToUserAppDelegate. m metódusában adja hozzá a következő kódot:
 
     ```objc
     self.deviceInfo = [[DeviceInfo alloc] init];
@@ -114,8 +112,8 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
     ```
 
-    Az első sor inicializálja az `DeviceInfo` egypéldányos. A második sor elindítja a leküldéses értesítések regisztrációját, ami már jelen van, ha már elvégezte az első [lépések Notification Hubs] oktatóanyagot.
-7. A PushToUserAppDelegate. m-ben implementálja `didRegisterForRemoteNotificationsWithDeviceToken` a metódust a AppDelegate, és adja hozzá a következő kódot:
+    Az első sor inicializálja az Egypéldányos `DeviceInfo` . A második sor elindítja a leküldéses értesítések regisztrációját, ami már jelen van, ha már elvégezte az első [lépések Notification Hubs] oktatóanyagot.
+7. A PushToUserAppDelegate. m-ben implementálja a metódust a `didRegisterForRemoteNotificationsWithDeviceToken` AppDelegate, és adja hozzá a következő kódot:
 
     ```objc
     self.deviceInfo.deviceToken = deviceToken;
@@ -124,7 +122,7 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
     Ezzel beállítja a kérelemhez tartozó eszköz jogkivonatát.
 
    > [!NOTE]
-   > Ezen a ponton nem lehet más kód ebben a metódusban. Ha már van olyan hívása a `registerNativeWithDeviceToken` metódushoz, amelyet a [Notification Hubs első lépéseinek](notification-hubs-ios-apple-push-notification-apns-get-started.md) elvégzése oktatóanyag során adott meg, akkor megjegyzést kell kijelölnie, vagy el kell távolítania a hívást.
+   > Ezen a ponton nem lehet más kód ebben a metódusban. Ha már rendelkezik egy `registerNativeWithDeviceToken` , a [leküldéses értesítések iOS-alkalmazásokba az Azure Notification Hubs oktatóanyag használatával való elküldésekor](ios-sdk-get-started.md) hozzáadott metódushoz, akkor megjegyzést kell kijelölnie, vagy el kell távolítania a hívást.
 
 8. A `PushToUserAppDelegate.m` fájlban adja hozzá a következő kezelői metódust:
 
@@ -140,7 +138,7 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
 
     Ez a módszer riasztást jelenít meg a felhasználói felületen, ha az alkalmazás a futása közben értesítést kap.
 
-9. Nyissa `PushToUserViewController.m` meg a fájlt, és a következő implementációban küldje vissza a billentyűzetet:
+9. Nyissa meg a `PushToUserViewController.m` fájlt, és a következő implementációban küldje vissza a billentyűzetet:
 
     ```objc
     - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -151,14 +149,14 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
     }
     ```
 
-10. A `viewDidLoad` `PushToUserViewController.m` fájl metódusában a következő módon inicializálja a `installationId` címkét:
+10. A `viewDidLoad` fájl metódusában a `PushToUserViewController.m` következő módon inicializálja a `installationId` címkét:
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     Self.installationId.text = deviceInfo.installationId;
     ```
 
-11. Adja hozzá a következő tulajdonságokat a felületen `PushToUserViewController.m`a alkalmazásban:
+11. Adja hozzá a következő tulajdonságokat a felületen a alkalmazásban `PushToUserViewController.m` :
 
     ```objc
     @property (readonly) NSOperationQueue* downloadQueue;
@@ -258,4 +256,4 @@ Most, hogy az ügyfélalkalmazás frissítve lett, térjen vissza a [felhasznál
 
 <!-- URLs. -->
 [Felhasználók értesítése Notification Hubs]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[Ismerkedés a Notification Hubs]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Ismerkedés a Notification Hubs]: ios-sdk-get-started.md

@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 05/11/2020
 ms.author: radeltch
 ms.openlocfilehash: 501d49feef877addd2f3e5364a06caf1d273ca83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196870"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server
@@ -112,7 +111,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     - **Rendszerszintű rendelkezésre állás**: válassza a **Ha**lehetőséget.
     - **Rendszergazdai Felhasználónév és rendszergazdai jelszó**: új felhasználó jön létre, amely a gépre való bejelentkezéshez használható.
     - **Új vagy meglévő alhálózat**: meghatározza, hogy létre kell-e hozni egy új virtuális hálózatot és alhálózatot, vagy egy meglévő alhálózatot. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz van csatlakoztatva, válassza a **meglévő**lehetőséget.
-    - **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint az **/Subscriptions/ \< előfizetés-azonosítója>/resourcegroups/ \< erőforráscsoport neve>/Providers/Microsoft.Network/virtualnetworks/ \< virtuális hálózat neve>/Subnets/ \< alhálózat neve>**.
+    - **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint a **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /Subnets/ \<subnet name> **.
 
 ### <a name="manual-deployment"></a>Kézi üzembe helyezés
 
@@ -139,7 +138,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
    
    1. Következő lépésként hozzon létre egy háttér-készletet:
@@ -150,14 +149,14 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza **a virtuális gép hozzáadása**lehetőséget.
       1. Válassza a * * virtuális gép * * elemet.
       1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-      1. Válassza a **Hozzáadás** lehetőséget.
+      1. Válassza a **Hozzáadás** elemet.
    
    1. Következő lépésként hozzon létre egy állapot-mintavételt:
    
       1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
       1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
    
    1. Ezután hozza létre a terheléselosztási szabályokat:
    
@@ -167,7 +166,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza a **hektár portok**lehetőséget.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    > [!Note]
    > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
@@ -178,7 +177,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
    
    1. Következő lépésként hozzon létre egy háttér-készletet:
@@ -188,14 +187,14 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza **a virtuális gép hozzáadása**lehetőséget.
       1. Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
       1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
    
    1. Következő lépésként hozzon létre egy állapot-mintavételt:
    
       1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
       1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
    
    1. SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
    
@@ -205,7 +204,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
    
    1. SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
@@ -216,7 +215,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Ismételje meg ezeket a lépéseket a 3.**03**. porton.
    
    1. SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
@@ -227,7 +226,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
 
    A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az 2388694-es [SAP-megjegyzésben][2388694].

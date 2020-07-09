@@ -7,10 +7,9 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75428711"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
@@ -113,7 +112,7 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
      ![Sablon kiválasztása meglévő Function-alkalmazáshoz](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. Az **Azure Service Bus várólista-trigger** ablaktáblán adja meg az trigger nevét, majd állítsa be a **Service Bus-kapcsolatokat** a várólista számára, amely az Azure Service Bus SDK `OnMessageReceive()` -figyelőt használja, majd válassza a **Létrehozás**lehetőséget.
+1. Az **Azure Service Bus várólista-trigger** ablaktáblán adja meg az trigger nevét, majd állítsa be a **Service Bus-kapcsolatokat** a várólista számára, amely az Azure Service Bus SDK- `OnMessageReceive()` figyelőt használja, majd válassza a **Létrehozás**lehetőséget.
 
 1. Írjon egy alapszintű függvényt a korábban létrehozott Logic app-végpont meghívásához az üzenetsor-üzenet triggerként való használatával. A függvény írása előtt tekintse át a következő szempontokat:
 

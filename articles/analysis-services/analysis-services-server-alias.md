@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre Azure Analysis Services kiszolgá
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361438"
 ---
 # <a name="alias-server-names"></a>Alias-kiszolgálók nevei
 
@@ -37,7 +37,7 @@ Az ügyfélről való csatlakozáskor az alias-kiszolgáló nevét **link://** p
 
 Alias-végpont létrehozásához bármely olyan metódust használhat, amely érvényes Azure Analysis Services-kiszolgálónevet ad vissza. Például egy Azure Blob Storage fájlra mutató hivatkozás, amely a valódi kiszolgálónevet tartalmazza, vagy ASP.NET Web Forms alkalmazást hoz létre és tesz közzé.
 
-Ebben a példában egy ASP.NET Web Forms alkalmazást hoz létre a Visual Studióban. A mesterlap-hivatkozás és a felhasználói vezérlő el lesz távolítva az alapértelmezett. aspx lapról. Az alapértelmezett. aspx fájl tartalma egyszerűen a következő oldal direktíva:
+Ebben a példában egy ASP.NET Web Forms alkalmazást hoz létre a Visual Studióban. Az oldal hivatkozása és a felhasználói vezérlő el lesz távolítva az alapértelmezett. aspx lapról. Az alapértelmezett. aspx fájl tartalma egyszerűen a következő oldal direktíva:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
@@ -54,5 +54,5 @@ protected void Page_Load(object sender, EventArgs e)
 
 ## <a name="see-also"></a>Lásd még
 
-[Ügyféloldali kódtárak](analysis-services-data-providers.md)   
+[Ügyféloldali kódtárak](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Csatlakozás a Power BI Desktopból](analysis-services-connect-pbi.md)

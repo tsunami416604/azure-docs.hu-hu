@@ -4,15 +4,14 @@ description: Ezzel a képzési útvonallal megkezdheti egy Azure DNS altartomán
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
-ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710881"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS altartomány delegálása
 
@@ -33,10 +32,10 @@ Először hozza létre a zónát a **mérnöki** altartományhoz.
 
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
 2. A keresőmezőbe írja be a **DNS**kifejezést, majd válassza a **DNS-zóna**lehetőséget.
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. A **DNS-zóna létrehozása** panelen írja be a **Engineering.contoso.com** **nevet a név** szövegmezőbe.
 5. Válassza ki a zónához tartozó erőforráscsoportot. Előfordulhat, hogy ugyanazt az erőforráscsoportot szeretné használni, mint a szülő zónát, hogy a hasonló erőforrások együtt maradjanak.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 7. Az üzembe helyezés sikeres végrehajtása után lépjen az új zónára.
 
 ## <a name="note-the-name-servers"></a>Jegyezze fel a névkiszolgálók nevét

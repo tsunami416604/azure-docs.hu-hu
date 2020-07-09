@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687069"
 ---
 # <a name="get-service-access-tokens"></a>Szolgáltatás-hozzáférési jogkivonatok lekérése
@@ -24,11 +23,11 @@ Ez a cikk bemutatja, hogyan hozhat létre ilyen hozzáférési tokent.
 
 ## <a name="token-service-rest-api"></a>Jogkivonat-szolgáltatás REST API
 
-Hozzáférési tokenek létrehozásához a *biztonságos jogkivonat szolgáltatás* egyetlen REST API biztosít. Az ARR STS-szolgáltatás URL-címe https:\//STS.mixedreality.Azure.com.
+Hozzáférési tokenek létrehozásához a *biztonságos jogkivonat szolgáltatás* egyetlen REST API biztosít. Az ARR STS-szolgáltatás URL-címe https: \/ /STS.mixedreality.Azure.com.
 
 ### <a name="get-token-request"></a>"Jogkivonat beolvasása" kérés
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /accounts/**accountId**/token | GET |
 
@@ -44,7 +43,7 @@ Cserélje le a *accountId* és a *accountKey* a megfelelő adataira.
 |-----------|:-----------|:-----------|
 | 200 | AccessToken: karakterlánc | Sikeres |
 
-| Fejléc | Cél |
+| Fejléc | Szerep |
 |--------|:------|
 | MS-CV | Ezzel az értékkel lehet nyomon követni a hívást a szolgáltatáson belül |
 

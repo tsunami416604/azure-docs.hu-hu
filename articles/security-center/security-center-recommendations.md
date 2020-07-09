@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245303"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791384"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
@@ -53,7 +52,7 @@ Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosíts
     Lehetőség van a javaslatok szűrésére. A javaslatok szűréséhez válassza a **szűrés** lehetőséget a **javaslatok** panelen. Megnyílik a **szűrő** panel, és kiválasztja a megtekinteni kívánt súlyossági és állapot-értékeket.
 
    * **Javaslatok**: a javaslat.
-   * A **biztonságos pontszám hatása**: Security Center által generált pontszám a biztonsági javaslatok alapján, valamint speciális algoritmusok alkalmazása annak meghatározására, hogy az egyes javaslatok mennyire fontosak. További információ: [biztonságos pontszámok kiszámítása](security-center-secure-score.md#secure-score-calculation).
+   * A **biztonságos pontszám hatása**: Security Center által generált pontszám a biztonsági javaslatok alapján, valamint speciális algoritmusok alkalmazása annak meghatározására, hogy az egyes javaslatok mennyire fontosak. További információ: [biztonságos pontszámok kiszámítása](secure-score-security-controls.md#how-your-secure-score-is-calculated).
    * **Erőforrás**: felsorolja azokat az erőforrásokat, amelyekre ez a javaslat vonatkozik.
    * **Állapotsorok**: az adott javaslat súlyosságát ismerteti:
        * **Magas (piros)**: a biztonsági rés egy értelmes erőforrással (például egy alkalmazással, egy virtuális géppel vagy egy hálózati biztonsági csoporttal) van, és figyelmet igényel.

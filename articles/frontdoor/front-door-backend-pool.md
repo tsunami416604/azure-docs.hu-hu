@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293468"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Háttérrendszer és háttérbeli készletek az Azure-ban – bejárati ajtó
@@ -43,7 +43,7 @@ Az előtérben lévő háttérrendszer az alkalmazás állomásneve vagy nyilvá
 
 A háttérben a háttérbe továbbított kérések közé tartozik egy állomásfejléc mező, amelyet a háttér a célként megadott erőforrás lekérésére használ. A mező értéke általában a háttér-URI-ból származik, és a gazdagép és a port.
 
-A ( `www.contoso.com` z) rendszerre vonatkozó kérelem például a gazdagép fejlécének www.contoso.com lesz. Ha Azure Portalt használ a háttér konfigurálásához, a mező alapértelmezett értéke a háttér állomásneve. Ha a háttérrendszer contoso-westus.azurewebsites.net, a Azure Portal a háttérbeli állomásfejléc automatikusan kitöltött értéke contoso-westus.azurewebsites.net lesz. Ha azonban Azure Resource Manager sablonokat vagy egy másik módszert használ a mező explicit beállítása nélkül, akkor a bejárati ajtó a gazdagép fejlécének értékeként elküldi a bejövő állomásnév nevét. Ha a kérést a www\.contoso.com, a háttér pedig olyan contoso-westus.azurewebsites.net, amely üres fejlécet tartalmaz, akkor a bejárati ajtó a következőt adja\.meg: www contoso.com.
+A (z) rendszerre vonatkozó kérelem például `www.contoso.com` a gazdagép fejlécének www.contoso.com lesz. Ha Azure Portalt használ a háttér konfigurálásához, a mező alapértelmezett értéke a háttér állomásneve. Ha a háttérrendszer contoso-westus.azurewebsites.net, a Azure Portal a háttérbeli állomásfejléc automatikusan kitöltött értéke contoso-westus.azurewebsites.net lesz. Ha azonban Azure Resource Manager sablonokat vagy egy másik módszert használ a mező explicit beállítása nélkül, akkor a bejárati ajtó a gazdagép fejlécének értékeként elküldi a bejövő állomásnév nevét. Ha a kérést a www \. contoso.com, a háttér pedig olyan contoso-westus.azurewebsites.net, amely üres fejlécet tartalmaz, akkor a bejárati ajtó a következőt adja meg: www \. contoso.com.
 
 A legtöbb alkalmazás-háttér (az Azure Web Apps, a blob Storage és a Cloud Services) megköveteli, hogy a gazdagép fejléce megfeleljen a háttér tartományának. Ugyanakkor a háttér-gazdagép, amely a backend útvonalra mutat, egy másik állomásnevet fog használni, például www.contoso.net.
 
@@ -67,7 +67,7 @@ A háttér-készletek határozzák meg, hogy a különböző háttérrendszer mi
 ### <a name="health-probes"></a>Állapotminták
 A bejárati ajtó rendszeres HTTP/HTTPS mintavételi kérelmeket küld az egyes konfigurált háttérrendszer-példányoknak. A mintavételi kérelmek meghatározzák az egyes háttérrendszer közelségét és állapotát a végfelhasználói kérelmek elosztása érdekében. A háttérbeli készlet állapot-mintavételi beállításai határozzák meg, hogy az alkalmazás-háttérrendszer állapotának lekérdezése hogyan történjen. A terheléselosztási konfigurációhoz a következő beállítások érhetők el:
 
-- **Elérési út**: a háttér-készletben található összes háttérrendszer mintavételi kérelméhez használt URL-cím. Ha például az egyik háttérrendszer contoso-westus.azurewebsites.net, és az elérési út a/Probe/test.aspx értékre van állítva, akkor a bejárati ajtó környezetei, feltéve, hogy a protokoll HTTP-értékre van állítva\:, a rendszer az állapot-mintavételi kérelmeket http//contoso-westus.azurewebsites.net/Probe/test.aspx-re küldi.
+- **Elérési út**: a háttér-készletben található összes háttérrendszer mintavételi kérelméhez használt URL-cím. Ha például az egyik háttérrendszer contoso-westus.azurewebsites.net, és az elérési út a/Probe/test.aspx értékre van állítva, akkor a bejárati ajtó környezetei, feltéve, hogy a protokoll HTTP-értékre van állítva, a rendszer az állapot-mintavételi kérelmeket http//contoso-westus.azurewebsites.net/probe/test.aspx-re küldi \: .
 
 - **Protokoll**: meghatározza, hogy a rendszer elküldje-e az állapot-mintavételi kérelmeket a háttérbe a http-vagy HTTPS-protokollal.
 

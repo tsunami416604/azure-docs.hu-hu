@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112711"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554142"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -43,16 +43,16 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-Quickstart`).
->    - Az **átirányítási URI**- `https://localhost:44321/`ban adja hozzá a nevet, majd válassza a **regisztráció**lehetőséget.
+>    - Az **átirányítási URI**-ban adja hozzá a nevet `https://localhost:44321/` , majd válassza a **regisztráció**lehetőséget.
 > 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
->    - Az **átirányítási URI**- `https://localhost:44321/signin-oidc`k lapon adja hozzá a elemet, majd válassza a **Mentés**lehetőséget.
->    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a `https://localhost:44321/signout-oidc`következőre:.
+>    - Az **átirányítási URI**-k lapon adja hozzá a `https://localhost:44321/signin-oidc` elemet, majd válassza a **Mentés**lehetőséget.
+>    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:44321/signout-oidc` .
 >    - Az **Implicit engedély** területen jelölje be az **azonosító jogkivonatok** elemet.
 >    - Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia a válasz URL `https://localhost:44321/` - `https://localhost:44321/signin-oidc`címeket a és a értékkel `https://localhost:44321/signout-oidc`, hozzá kell adnia a kijelentkezési URL-címet, valamint az engedélyezési végpont által kiállított azonosító jogkivonatokat.
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia a válasz URL-címeket a és a értékkel, `https://localhost:44321/` `https://localhost:44321/signin-oidc` hozzá kell adnia a kijelentkezési URL-címet, valamint az `https://localhost:44321/signout-oidc` engedélyezési végpont által kiállított azonosító jogkivonatokat.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -79,7 +79,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 > #### <a name="step-3-run-your-visual-studio-project"></a>3. lépés: a Visual Studio-projekt futtatása
 > 1. Bontsa ki a zip-fájlt a gyökérmappa egyik helyi mappájába – például **C:\Azure-Samples**
 > 1. A megoldás megnyitása a Visual Studióban
-> 1. Szerkessze a **appSettings. JSON** fájlt. Megkeresheti `ClientId` és frissítheti `ClientId` a regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítójának** értékét.
+> 1. Szerkessze a **appsettings.js** fájlt. Megkeresheti `ClientId` és frissítheti a `ClientId` regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítójának** értékét.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -143,20 +143,20 @@ public void ConfigureServices(IServiceCollection services)
 
 A metódus `AddAuthentication` úgy konfigurálja a szolgáltatást, hogy cookie-alapú hitelesítést adjon hozzá, amely böngésző-forgatókönyvekben használatos, és beállíthatja az OpenID Connect kihívását.
 
-A sort tartalmazó `.AddAzureAd` vonal hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt követően a rendszer a Microsoft Identity platform-végpont használatával történő bejelentkezésre van konfigurálva.
+A sort tartalmazó vonal `.AddAzureAd` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt követően a rendszer a Microsoft Identity platform-végpont használatával történő bejelentkezésre van konfigurálva.
 
-> |Ahol  |  |
+> |Ahol | Leírás |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) azonosítója a Azure Portal regisztrált alkalmazásban. |
-> | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez <https://login.microsoftonline.com/{tenant}/v2.0> a nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
-> | TokenValidationParameters | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben úgy `ValidateIssuer` van beállítva `false` , hogy jelezze, hogy fogadja-e a bejelentkezést bármely személyes vagy munkahelyi vagy iskolai fiókból. |
+> | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
+> | TokenValidationParameters | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben úgy `ValidateIssuer` van beállítva, hogy `false` jelezze, hogy fogadja-e a bejelentkezést bármely személyes vagy munkahelyi vagy iskolai fiókból. |
 
 
 > [!NOTE]
-> A `ValidateIssuer = false` beállítás a rövid útmutató egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
+> A beállítás a rövid útmutató `ValidateIssuer = false` egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
 > Ennek megértéséhez tekintse meg a mintákat.
 >
-> Jegyezze fel azt `Configure` a metódust is, amely két `app.UserCookiePolicy()` fontos módszert tartalmaz: és`app.UseAuthentication()`
+> Jegyezze fel azt a `Configure` metódust is, amely két fontos módszert tartalmaz: `app.UseCookiePolicy()` és`app.UseAuthentication()`
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -171,7 +171,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Egy vezérlő vagy egy vezérlő metódusának védelme
 
-A vezérlő vagy vezérlő metódusait az `[Authorize]` attribútum használatával lehet védelemmel ellátni. Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a vezérlőhöz vagy a metódusokhoz való hozzáférést, ami azt jelenti, hogy a hitelesítési kérdés elindítható a vezérlőhöz, ha a felhasználó nem hitelesítve van.
+A vezérlő vagy vezérlő metódusait az attribútum használatával lehet védelemmel ellátni `[Authorize]` . Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a vezérlőhöz vagy a metódusokhoz való hozzáférést, ami azt jelenti, hogy a hitelesítési kérdés elindítható a vezérlőhöz, ha a felhasználó nem hitelesítve van.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

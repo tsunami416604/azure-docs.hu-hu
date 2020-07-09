@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019757"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Az Azure VMware-megoldásba való Migrálás Azure Data Box használatával
@@ -54,7 +53,7 @@ Kapcsolódjon a Data Box helyi webes felhasználói felületéhez a következő 
 
     ![NFS-ügyfélhozzáférés konfigurálása 1](media/nfs-client-access.png)
 
-2. Adja meg a VMware ESXi gazdagépek IP-címét, majd válassza a **Hozzáadás**lehetőséget. A vSphere-fürtben lévő összes gazdagép hozzáférését a következő lépés megismétlésével állíthatja be. Kattintson az **OK** gombra.
+2. Adja meg a VMware ESXi gazdagépek IP-címét, majd válassza a **Hozzáadás**lehetőséget. A vSphere-fürtben lévő összes gazdagép hozzáférését a következő lépés megismétlésével állíthatja be. Válassza az **OK** lehetőséget.
 
     ![NFS-ügyfélhozzáférés konfigurálása 2](media/nfs-client-access2.png)
 > [!IMPORTANT]
@@ -133,7 +132,7 @@ A rendszer áttelepíti a virtuális gépet a Data Box NFS-adattárára. Az öss
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Virtuális gép vagy virtuálisgép-sablon klónozása a Data Box adattárba
 
-1. Kattintson a jobb gombbal a klónozáshoz használni kívánt virtuális gépre vagy virtuálisgép-sablonra. Válassza a **klón** > klónozása**virtuális gépre**lehetőséget.
+1. Kattintson a jobb gombbal a klónozáshoz használni kívánt virtuális gépre vagy virtuálisgép-sablonra. Válassza a **klón**klónozása  >  **virtuális gépre**lehetőséget.
 
     ![Virtuális gép klónozása](media/databox-migration-vm-clone.png)
 
@@ -227,12 +226,12 @@ Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azur
 
 4. Telepítse a AzCopy-t a [linuxos virtuális gépre](../storage/common/storage-use-azcopy-v10.md).
 
-5. Töltse le az Azure Blob Storage-ból származó adatait a felügyelt lemezre a AzCopy használatával.  Parancs szintaxisa `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`:.  Cserélje `<storage-account-name>` le az-t az Azure Storage `<container-name>` -fiók nevére és a Data Box használatával átmásolt adattárolóra.
+5. Töltse le az Azure Blob Storage-ból származó adatait a felügyelt lemezre a AzCopy használatával.  Parancs szintaxisa: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` .  Cserélje le az `<storage-account-name>` -t az Azure Storage-fiók nevére és `<container-name>` a Data Box használatával átmásolt adattárolóra.
 
 6. Telepítse az NFS-kiszolgálót a linuxos virtuális gépre:
 
-    - Ubuntu/Debian disztribúcióban: `sudo apt install nfs-kernel-server`.
-    - Vállalati Linux-disztribúción: `sudo yum install nfs-utils`.
+    - Ubuntu/Debian disztribúcióban: `sudo apt install nfs-kernel-server` .
+    - Vállalati Linux-disztribúción: `sudo yum install nfs-utils` .
 
 7. Módosítsa a felügyelt lemezen lévő azon mappa engedélyét, amelyen az Azure Blob Storage-ból másolt adatok másolása megtörtént.  Módosítsa az NFS-megosztásként exportálni kívánt összes mappa engedélyeit.
 
@@ -241,7 +240,7 @@ Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azur
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. Rendeljen engedélyeket az ügyfél IP-címeihez az NFS-megosztás eléréséhez a `/etc/exports` fájl szerkesztésével.
+8. Rendeljen engedélyeket az ügyfél IP-címeihez az NFS-megosztás eléréséhez a fájl szerkesztésével `/etc/exports` .
 
     ```bash
     sudo vi /etc/exports
@@ -256,9 +255,9 @@ Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azur
     .
     ```
 
-9. Exportálja az NFS-megosztásokat `sudo exportfs -a` a parancs használatával.
+9. Exportálja az NFS-megosztásokat a `sudo exportfs -a` parancs használatával.
 
-10. Indítsa újra az NFS kernel-kiszolgálót `sudo systemctl restart nfs-kernel-server` a parancs használatával.
+10. Indítsa újra az NFS kernel-kiszolgálót a `sudo systemctl restart nfs-kernel-server` parancs használatával.
 
 
 ### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Csatlakoztassa a linuxos virtuális gép NFS-megosztását adattárként egy privát felhőalapú vCenter-fürtön, majd másolja az Adatmásolás

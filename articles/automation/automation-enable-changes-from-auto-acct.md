@@ -6,10 +6,9 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 13f17ed9d165e368d2e9d9cde694408b600006cc
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84171123"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>A Change Tracking és az Inventory engedélyezése Automation-fiókból
@@ -73,7 +72,7 @@ A manuálisan telepített gépeket vagy számítógépeket, amelyeket a munkater
 
 6. Egy vagy több gép funkciójának engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd az egyes gépek mellett kattintson a **Hozzáadás** elemre a funkció engedélyezéséhez. Ez a feladat hozzáadja a kiválasztott számítógépneveket a szolgáltatáshoz tartozó számítógépcsoport mentett keresési lekérdezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szolgáltatással való együttműködéshez tekintse meg a [change Tracking és a leltár kezelése](change-tracking-file-contents.md)című témakört.
 * A szolgáltatással kapcsolatos általános problémák elhárításához tekintse meg a [change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)című témakört.

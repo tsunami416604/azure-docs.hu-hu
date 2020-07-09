@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084515"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows rendszerű virtuális gép áthelyezése Amazon Web Services (AWS) rendszerből egy Azure-beli virtuális gépre
@@ -40,7 +40,7 @@ Az általános és a speciális virtuális merevlemezeket is feltöltheti az Azu
 
 Exportálja a EC2-példányt egy virtuális merevlemezre egy Amazon S3-gyűjtőben. Kövesse az Amazon dokumentációjában, a [példányok virtuális gépek importálásával/exportálásával](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) és a [create-instance-export-Task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) paranccsal történő exportálásával foglalkozó cikk lépéseit. 
 
-Az exportált VHD-fájlt a rendszer az Ön által megadott Amazon S3-gyűjtőbe menti. A VHD exportálásának alapszintű szintaxisa a következő: \<a helyőrző szövegének lecserélése zárójelek között,> az adataival.
+Az exportált VHD-fájlt a rendszer az Ön által megadott Amazon S3-gyűjtőbe menti. A virtuális merevlemez exportálásának alapvető szintaxisa a következő, csak cserélje le a helyőrző szövegét az \<brackets> adataira.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \

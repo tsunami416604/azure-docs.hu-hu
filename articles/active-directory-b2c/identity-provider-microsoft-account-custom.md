@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c25ce417a17024843de1b9b16f57740de1e9fc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388102"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Microsoft-fiók egyéni házirendek használatával Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Ha engedélyezni szeretné a bejelentkezést a Microsoft-fiók felhasználók sz
 1. **Regisztráció** kiválasztása
 1. Jegyezze fel az alkalmazás – Áttekintés lapon megjelenő **alkalmazást (ügyfél-azonosítót)** . Erre akkor van szükség, amikor egy későbbi szakaszban konfigurálja a jogcím-szolgáltatót.
 1. **Tanúsítványok kiválasztása & Secrets**
-1. Kattintson az **új ügyfél titka** elemre.
+1. Kattintson az **Új titkos ügyfélkód** elemre.
 1. Adja meg a titok **leírását** , például *MSA*, majd kattintson a **Hozzáadás**gombra.
 1. Jegyezze fel az **érték** oszlopban látható alkalmazás jelszavát. Ezt az értéket a következő szakaszban kell használni.
 
@@ -73,7 +73,7 @@ Most, hogy létrehozta az alkalmazást az Azure AD-bérlőben, az alkalmazás ü
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MSASecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg az előző szakaszban rögzített ügyfél-titkos kulcsot.
 1. A **kulcshasználat**beállításnál válassza a elemet `Signature` .
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -81,7 +81,7 @@ Annak engedélyezéséhez, hogy a felhasználók egy Microsoft-fiók használat�
 
 Az Azure AD-t jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja a **ClaimsProvider** elemet a szabályzat fájlkiterjesztés-fájljához.
 
-1. Nyissa meg a *TrustFrameworkExtensions. XML* házirend fájlját.
+1. Nyissa meg a *TrustFrameworkExtensions.xml* házirend-fájlt.
 1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
 1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
@@ -138,7 +138,7 @@ A folytatás előtt töltse fel a módosított szabályzatot annak megerősíté
 
 1. Navigáljon a Azure AD B2C-bérlőhöz a Azure Portal, és válassza az **identitási élmény keretrendszert**.
 1. Az **Egyéni házirendek** lapon válassza az **egyéni házirend feltöltése**lehetőséget.
-1. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
+1. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
 1. Kattintson a **Feltöltés** gombra.
 
 Ha nem jelenik meg hibaüzenet a portálon, folytassa a következő szakasszal.
@@ -147,9 +147,9 @@ Ha nem jelenik meg hibaüzenet a portálon, folytassa a következő szakasszal.
 
 Ekkor beállította az identitás-szolgáltatót, de még nem érhető el a regisztrációs vagy bejelentkezési képernyőkön. Ha elérhetővé szeretné tenni, hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az a Microsoft-fiók identitás-szolgáltatóval is rendelkezik.
 
-1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
+1. Nyissa meg a *TrustFrameworkBase.xml* fájlt az alapszintű csomagból.
 1. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
-1. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
+1. Nyissa meg a *TrustFrameworkExtensions.xmlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 1. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 1. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInMSA`.
 
@@ -157,10 +157,10 @@ Ekkor beállította az identitás-szolgáltatót, de még nem érhető el a regi
 
 A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha egy Microsoft-fiók **ClaimsProviderSelection** elemet ad hozzá, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. A *TrustFrameworkExtensions. XML* fájlban keresse meg a **OrchestrationStep** elemet, amely az `Order="1"` Ön által létrehozott felhasználói útra vonatkozik.
+1. A *TrustFrameworkExtensions.xml* fájlban keresse meg a **OrchestrationStep** elemet, amely a `Order="1"` létrehozott felhasználói útra vonatkozik.
 1. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `MicrosoftAccountExchange` :
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
     ```
 
@@ -177,7 +177,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 
     Frissítse a **TechnicalProfileReferenceId** értékét, hogy megegyezzen a `Id` korábban hozzáadott jogcím-szolgáltató **kivonatjogcím** elemében szereplő értékkel. Például: `MSA-OIDC`.
 
-1. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
+1. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
 
@@ -189,7 +189,7 @@ A Azure AD B2Ckel folytatott kommunikáció egy, a B2C-bérlőben regisztrált a
 
 Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott felhasználói utat.
 
-1. Készítsen másolatot a *SignUpOrSignIn. XML fájlról* a munkakönyvtárában, és nevezze át. Nevezze át például a *SignUpSignInMSA. XML fájlba*.
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInMSA.xmlra *.
 1. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInMSA`.
 1. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_msa`
 1. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy megfeleljen a korábban létrehozott felhasználói út azonosítójának (SignUpSignInMSA).

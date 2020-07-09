@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562061"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Függvények láncolása Durable Functions-Hello Sequence minta
@@ -22,19 +21,19 @@ A függvények láncolása egy adott sorrendben végrehajtott függvények sorre
 
 Ez a cikk a minta alkalmazás következő funkcióit ismerteti:
 
-* `E1_HelloSequence`: Egy [Orchestrator függvény](durable-functions-bindings.md#orchestration-trigger) , amely `E1_SayHello` többször is meghívja a sorozatot. Tárolja a `E1_SayHello` hívások kimeneteit, és rögzíti az eredményeket.
+* `E1_HelloSequence`: Egy [Orchestrator függvény](durable-functions-bindings.md#orchestration-trigger) , amely `E1_SayHello` többször is meghívja a sorozatot. Tárolja a hívások kimeneteit `E1_SayHello` , és rögzíti az eredményeket.
 * `E1_SayHello`: Egy [tevékenység-függvény](durable-functions-bindings.md#activity-trigger) , amely paraméterként megadott egy "Hello" karakterláncot.
 * `HttpStart`: Egy HTTP által aktivált függvény, amely elindítja a Orchestrator egy példányát.
 
 ### <a name="e1_hellosequence-orchestrator-function"></a>E1_HelloSequence Orchestrator függvény
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=13-25)]
 
-Minden C#-előkészítési függvénynek rendelkeznie kell egy típusú `DurableOrchestrationContext`paraméterrel, amely létezik `Microsoft.Azure.WebJobs.Extensions.DurableTask` a szerelvényben. Ez a környezeti objektum lehetővé teszi más *tevékenységi* függvények meghívását és a `CallActivityAsync` bemeneti paraméterek átadását a metódusának használatával.
+Minden C#-előkészítési függvénynek rendelkeznie kell egy típusú paraméterrel `DurableOrchestrationContext` , amely létezik a `Microsoft.Azure.WebJobs.Extensions.DurableTask` szerelvényben. Ez a környezeti objektum lehetővé teszi más *tevékenységi* függvények meghívását és a bemeneti paraméterek átadását a `CallActivityAsync` metódusának használatával.
 
-A kód háromszor `E1_SayHello` meghívja a különböző paraméterek értékeit. Az egyes hívások visszatérési értéke hozzáadódik a `outputs` listához, amelyet a függvény végén adnak vissza.
+A kód háromszor meghívja a `E1_SayHello` különböző paraméterek értékeit. Az egyes hívások visszatérési értéke hozzáadódik a `outputs` listához, amelyet a függvény végén adnak vissza.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -43,16 +42,16 @@ A kód háromszor `E1_SayHello` meghívja a különböző paraméterek értékei
 
 #### <a name="functionjson"></a>function.json
 
-Ha a Visual Studio Code-ot vagy a Azure Portalt használja a fejlesztéshez, itt látható a *function. JSON* fájl tartalma a Orchestrator függvényhez. A legtöbb Orchestrator *függvény. a JSON* -fájlok majdnem ugyanúgy néznek ki, mint ez.
+Ha a Visual Studio Code-ot vagy a Azure Portalt használja a fejlesztéshez, itt látható a Orchestrator függvény *function.js* fájljának tartalma. A legtöbb Orchestrator- *function.jsa* fájlokon majdnem így néz ki.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
 A lényeg a `orchestrationTrigger` kötés típusa. Az összes Orchestrator függvénynek ezt az trigger-típust kell használnia.
 
 > [!WARNING]
-> Az Orchestrator függvények "nincs I/O" szabályának betartásához ne használjon semmilyen bemeneti vagy kimeneti kötést az `orchestrationTrigger` trigger kötésének használatakor.  Ha más bemeneti vagy kimeneti kötésekre van szükség, azokat a `activityTrigger` függvények kontextusában kell használni, amelyeket a Orchestrator hívnak. További információ: [Orchestrator Function Code megkötések](durable-functions-code-constraints.md) cikk.
+> Az Orchestrator függvények "nincs I/O" szabályának betartásához ne használjon semmilyen bemeneti vagy kimeneti kötést az `orchestrationTrigger` trigger kötésének használatakor.  Ha más bemeneti vagy kimeneti kötésekre van szükség, azokat a függvények kontextusában kell használni `activityTrigger` , amelyeket a Orchestrator hívnak. További információ: [Orchestrator Function Code megkötések](durable-functions-code-constraints.md) cikk.
 
-#### <a name="indexjs"></a>index. js
+#### <a name="indexjs"></a>index.js
 
 A függvény a következő:
 
@@ -61,37 +60,37 @@ A függvény a következő:
 Minden JavaScript-előkészítési függvénynek tartalmaznia kell a [ `durable-functions` modult](https://www.npmjs.com/package/durable-functions). Ez egy olyan könyvtár, amely lehetővé teszi Durable Functions a JavaScriptben való írását. Három jelentős különbség van egy összehangoló függvény és más JavaScript-függvények között:
 
 1. A függvény egy [Generator függvény.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript).
-2. A függvény a `durable-functions` modul `orchestrator` metódusának (itt `df`) hívásával van becsomagolva.
+2. A függvény a `durable-functions` modul `orchestrator` metódusának (itt) hívásával van becsomagolva `df` .
 3. A függvénynek szinkronnak kell lennie. Mivel a "Orchestrator" metódus kezeli a "Context. Done" hívását, a függvénynek egyszerűen "Return" értéknek kell lennie.
 
-Az `context` objektum egy `df` tartós előkészítési környezeti objektumot tartalmaz, amely lehetővé teszi más *tevékenységi* funkciók meghívását és a `callActivity` bemeneti paraméterek átadását a metódusának használatával. A kód háromszor `E1_SayHello` meghívja a különböző paraméterek értékeit, ezzel jelezve, `yield` hogy a végrehajtásnak meg kell várnia a visszaadott aszinkron tevékenység függvényének hívását. Az egyes hívások visszatérési értéke hozzáadódik a `outputs` tömbhöz, amelyet a függvény végén adnak vissza.
+Az `context` objektum egy tartós előkészítési `df` környezeti objektumot tartalmaz, amely lehetővé teszi más *tevékenységi* funkciók meghívását és a bemeneti paraméterek átadását a `callActivity` metódusának használatával. A kód háromszor meghívja a `E1_SayHello` különböző paraméterek értékeit, ezzel `yield` jelezve, hogy a végrehajtásnak meg kell várnia a visszaadott aszinkron tevékenység függvényének hívását. Az egyes hívások visszatérési értéke hozzáadódik a `outputs` tömbhöz, amelyet a függvény végén adnak vissza.
 
 ---
 
 ### <a name="e1_sayhello-activity-function"></a>E1_SayHello Activity függvény
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=27-32)]
 
-A tevékenységek az `ActivityTrigger` attribútumot használják. A megadott `IDurableActivityContext` művelettel kapcsolatos műveleteket hajthat végre, például elérheti a bemeneti értéket `GetInput<T>`a használatával.
+A tevékenységek az `ActivityTrigger` attribútumot használják. A megadott művelettel `IDurableActivityContext` kapcsolatos műveleteket hajthat végre, például elérheti a bemeneti értéket a használatával `GetInput<T>` .
 
 A megvalósítása `E1_SayHello` viszonylag triviális karakterlánc-formázási művelet.
 
-Az `IDurableActivityContext`-hoz való kötés helyett közvetlenül a tevékenység függvénynek átadott típushoz köthető. Például:
+Az-hoz való kötés helyett `IDurableActivityContext` közvetlenül a tevékenység függvénynek átadott típushoz köthető. Például:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.JSON
+#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.jsbekapcsolva
 
-A *function. JSON* fájl a Activity függvényhez `E1_SayHello` hasonló, azzal a `E1_HelloSequence` kivétellel, hogy `activityTrigger` `orchestrationTrigger` kötési típus helyett kötési típust használ.
+A Activity függvényhez tartozó *function.js* hasonló a (z) rendszerhez, azzal a kivétellel, hogy `E1_SayHello` kötési típus `E1_HelloSequence` `activityTrigger` helyett kötési típust használ `orchestrationTrigger` .
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/function.json)]
 
 > [!NOTE]
-> A hanghívási függvény által hívott függvénynek a `activityTrigger` kötést kell használnia.
+> A hanghívási függvény által hívott függvénynek a kötést kell használnia `activityTrigger` .
 
 A megvalósítása `E1_SayHello` viszonylag triviális karakterlánc-formázási művelet.
 
@@ -99,46 +98,46 @@ A megvalósítása `E1_SayHello` viszonylag triviális karakterlánc-formázási
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-A JavaScript-figyelő függvényektől eltérően a tevékenység-függvények nem igényelnek speciális beállítást. A Orchestrator függvény által átadott bemenet a `context.bindings` `activityTrigger` kötés neve alatt található objektumon szerepel – ebben az esetben. `context.bindings.name` A kötési név beállítható az exportált függvény paramétereként, és közvetlenül is elérhető, ami a mintakód.
+A JavaScript-figyelő függvényektől eltérően a tevékenység-függvények nem igényelnek speciális beállítást. A Orchestrator függvény által átadott bemenet a `context.bindings` kötés neve alatt található objektumon szerepel `activityTrigger` – ebben az esetben `context.bindings.name` . A kötési név beállítható az exportált függvény paramétereként, és közvetlenül is elérhető, ami a mintakód.
 
 ---
 
 ### <a name="httpstart-client-function"></a>HttpStart-ügyfél funkció
 
-A Orchestrator függvény egy példányát elindíthatja egy ügyféloldali függvény használatával. A `HttpStart` http által aktivált függvény használatával indíthatja el a példányait `E1_HelloSequence`.
+A Orchestrator függvény egy példányát elindíthatja egy ügyféloldali függvény használatával. A `HttpStart` http által aktivált függvény használatával indíthatja el a példányait `E1_HelloSequence` .
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs?range=13-30)]
 
-A feladatokkal való kommunikációhoz a függvénynek tartalmaznia `DurableClient` kell egy bemeneti kötést. A-ügyfelet egy előkészítés elindítására használhatja. Emellett segítséget nyújthat egy olyan HTTP-válasz visszaküldéséhez, amely URL-címeket tartalmaz az új hangolás állapotának ellenőrzéséhez.
+A feladatokkal való kommunikációhoz a függvénynek tartalmaznia kell egy `DurableClient` bemeneti kötést. A-ügyfelet egy előkészítés elindítására használhatja. Emellett segítséget nyújthat egy olyan HTTP-válasz visszaküldéséhez, amely URL-címeket tartalmaz az új hangolás állapotának ellenőrzéséhez.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="httpstartfunctionjson"></a>HttpStart/function. JSON
+#### <a name="httpstartfunctionjson"></a>HttpStart/function.jsbekapcsolva
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json?highlight=16-20)]
 
-A feladatokkal való kommunikációhoz a függvénynek tartalmaznia `durableClient` kell egy bemeneti kötést.
+A feladatokkal való kommunikációhoz a függvénynek tartalmaznia kell egy `durableClient` bemeneti kötést.
 
-#### <a name="httpstartindexjs"></a>HttpStart/index. js
+#### <a name="httpstartindexjs"></a>HttpStart/index.js
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-Egy `df.getClient` `DurableOrchestrationClient` objektum beszerzésére használható. A-ügyfelet egy előkészítés elindítására használhatja. Emellett segítséget nyújthat egy olyan HTTP-válasz visszaküldéséhez, amely URL-címeket tartalmaz az új hangolás állapotának ellenőrzéséhez.
+`df.getClient`Egy objektum beszerzésére használható `DurableOrchestrationClient` . A-ügyfelet egy előkészítés elindítására használhatja. Emellett segítséget nyújthat egy olyan HTTP-válasz visszaküldéséhez, amely URL-címeket tartalmaz az új hangolás állapotának ellenőrzéséhez.
 
 ---
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Az `E1_HelloSequence` előkészítés végrehajtásához küldje el az alábbi http post-kérelmet a `HttpStart` függvénynek.
+Az előkészítés végrehajtásához `E1_HelloSequence` küldje el az alábbi http post-kérelmet a `HttpStart` függvénynek.
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
 > [!NOTE]
-> Az előző HTTP-kódrészlet feltételezi, hogy van egy bejegyzés `host.json` a fájlban, amely eltávolítja `api/` az alapértelmezett előtagot a http-trigger összes funkciójának URL-címéről. A konfigurációhoz tartozó jelölést a mintákban található `host.json` fájlban találja.
+> Az előző HTTP-kódrészlet feltételezi, hogy van egy bejegyzés a `host.json` fájlban, amely eltávolítja az alapértelmezett `api/` előtagot a http-trigger összes funkciójának URL-címéről. A konfigurációhoz tartozó jelölést a `host.json` mintákban található fájlban találja.
 
 Ha például egy "myfunctionapp" nevű Function alkalmazásban futtatja a mintát, cserélje le a "{host}" kifejezést "myfunctionapp.azurewebsites.net" értékre.
 
@@ -153,7 +152,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08
 (...trimmed...)
 ```
 
-Ezen a ponton a rendszer várólistára helyezi az előkészítést, és azonnal elindul. A `Location` fejlécben található URL-cím segítségével ellenőrizhető a végrehajtás állapota.
+Ezen a ponton a rendszer várólistára helyezi az előkészítést, és azonnal elindul. A fejlécben található URL-cím segítségével `Location` ellenőrizhető a végrehajtás állapota.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -169,10 +168,10 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-Amint láthatja, a példány `runtimeStatus` *befejeződik* , és a `output` tartalmazza a Orchestrator függvény végrehajtásának JSON-szerializált eredményét.
+Amint láthatja, a `runtimeStatus` példány *befejeződik* , és a tartalmazza a `output` Orchestrator függvény végrehajtásának JSON-szerializált eredményét.
 
 > [!NOTE]
-> Hasonló indító logikát alkalmazhat más típusú triggerekhez, `queueTrigger` `eventHubTrigger`például, vagy. `timerTrigger`
+> Hasonló indító logikát alkalmazhat más típusú triggerekhez, például, `queueTrigger` `eventHubTrigger` vagy `timerTrigger` .
 
 Tekintse meg a függvény-végrehajtási naplókat. A `E1_HelloSequence` függvény többször indult el és fejeződött be, mert a folyamat [megbízhatósága](durable-functions-orchestrations.md#reliability) című témakörben leírt újrajátszás viselkedése történt. Másfelől azonban csak három végrehajtás történt, `E1_SayHello` mivel ezek a függvények végrehajtása nem kerül újra lejátszásra.
 

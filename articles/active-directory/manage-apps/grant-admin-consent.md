@@ -2,24 +2,24 @@
 title: Bérlői szintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz – Azure AD
 description: Megtudhatja, hogyan adhat meg bérlői szintű jóváhagyást egy alkalmazáshoz, hogy a végfelhasználók ne kérjenek jóváhagyást egy alkalmazásba való bejelentkezéskor.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75480917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848374"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlői szintű rendszergazdai jóváhagyás engedélyezése egy alkalmazás számára
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz
 
 Megtudhatja, hogyan egyszerűsítheti a felhasználói élményt a bérlői szintű rendszergazdai jóváhagyás megadásával egy alkalmazáshoz. Ez a cikk a megvalósításának különböző módjait ismerteti. A módszerek a Azure Active Directory (Azure AD) bérlő összes végfelhasználója számára érvényesek.
 
@@ -69,7 +69,9 @@ Amikor a fent ismertetett módon megadta a bérlői szintű rendszergazdai jóv�
 
 A bérlői szintű rendszergazdai beleegyező URL-cím a következő formátumot követi:
 
-    https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
+```http
+https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
+```
 
 ahol:
 
@@ -80,7 +82,7 @@ Ahogy mindig, körültekintően tekintse át az alkalmazások kérelmének enged
 
 ## <a name="next-steps"></a>További lépések
 
-[Annak konfigurálása, hogy a végfelhasználók hogyan hozzájárulásukat az alkalmazásokhoz](configure-user-consent.md)
+[A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
 
 [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 

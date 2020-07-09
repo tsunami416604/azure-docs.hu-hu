@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 6ba78a44af7beb9b5b79aa1a87e08f5a82589cce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8db1c511ab9defb140720655588b27279a0f08be
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422864"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085480"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Oktatóanyag: a Azure Key Vault használata Windows rendszerű virtuális géppel a .NET-ben
 
 Azure Key Vault segítséget nyújt a titkok, például az API-kulcsok, az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges adatbázis-kapcsolati karakterláncok védelemmel való ellátásához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan szerezhet be egy konzolos alkalmazást a Azure Key Vault információk olvasásához. Ehhez felügyelt identitásokat kell használnia az Azure-erőforrásokhoz. 
+Ebből az oktatóanyagból megtudhatja, hogyan szerezhet be egy konzolos alkalmazást a Azure Key Vault információk olvasásához. Az alkalmazás a virtuális gép felügyelt identitását használja a Key Vault való hitelesítéshez. 
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -42,17 +42,8 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Windows, Mac és Linux rendszerekhez:
   * [Git](https://git-scm.com/downloads)
-  * Ehhez az oktatóanyaghoz helyileg kell futtatnia az Azure CLI-t. Telepítenie kell az Azure CLI 2.0.4 vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
-
-## <a name="about-managed-service-identity"></a>Tudnivalók a felügyeltszolgáltatás-identitásról
-
-A Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem jelennek meg a kódban. A kulcsok lekéréséhez azonban hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez szüksége lesz egy hitelesítő adatra. Ez egy klasszikus rendszerindítási dilemma. Managed Service Identity (MSI) ezt a problémát úgy oldja meg, hogy egy rendszerindító _identitást_ biztosít, amely leegyszerűsíti a folyamatot.
-
-Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](basic-concepts.md). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba. 
-
-![MSI](../media/MSI.png)
-
-A hozzáférési jogkivonat beszerzéséhez a kód meghívja az Azure-erőforráson elérhető helyi metaadat-szolgáltatást. Azure Key Vault szolgáltatásban való hitelesítéshez a kód a helyi MSI-végponttól kapott hozzáférési jogkivonatot használja. 
+  * A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 
 ## <a name="create-resources-and-assign-permissions"></a>Erőforrások létrehozása és engedélyek kiosztása
 
@@ -139,7 +130,7 @@ A virtuális gépre való bejelentkezéshez kövesse a [Kapcsolódás és bejele
 
 ## <a name="set-up-the-console-app"></a>A konzol alkalmazásának beállítása
 
-Hozzon létre egy Console-alkalmazást, és telepítse a `dotnet` szükséges csomagokat a parancs használatával.
+Hozzon létre egy Console-alkalmazást, és telepítse a szükséges csomagokat a `dotnet` parancs használatával.
 
 ### <a name="install-net-core"></a>A .NET Core telepítése
 
@@ -152,21 +143,23 @@ Nyisson meg egy parancssort.
 A következő parancsok futtatásával kinyomtathatja a konzolon a ""Helló világ!"alkalmazás" parancsot:
 
 ```console
-dotnet new console -o helloworldapp
-cd helloworldapp
+dotnet new console -n keyvault-console-app
+cd keyvault-console-app
 dotnet run
 ```
 
-### <a name="install-the-packages"></a>A csomagok telepítése
+### <a name="install-the-package"></a>A csomag telepítése
 
-A konzol ablakban telepítse az ehhez a rövid útmutatóhoz szükséges .NET-csomagokat:
+A konzol ablakban telepítse a Azure Key Vault Secrets ügyféloldali kódtárat a .NET-hez:
 
 ```console
-dotnet add package System.IO;
-dotnet add package System.Net;
-dotnet add package System.Text;
-dotnet add package Newtonsoft.Json;
-dotnet add package Newtonsoft.Json.Linq;
+dotnet add package Azure.Security.KeyVault.Secrets
+```
+
+Ebben a rövid útmutatóban a következő Identity-csomagot kell telepíteni a Azure Key Vault hitelesítéséhez:
+
+```console
+dotnet add package Azure.Identity
 ```
 
 ## <a name="edit-the-console-app"></a>A konzol alkalmazás szerkesztése
@@ -175,72 +168,70 @@ Nyissa meg a *program.cs* fájlt, és adja hozzá a következő csomagokat:
 
 ```csharp
 using System;
-using System.IO;
-using System.Net;
-using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 ```
 
-Szerkessze a kódot a következő három lépésből álló folyamat során:
-
-1. A virtuális gép helyi MSI-végpontján lévő jogkivonat beolvasása. Ezzel az Azure AD-ből is lekéri a tokent.
-2. Továbbítsa a tokent a kulcstartóba, majd olvassa be a titkot. 
-3. Adja hozzá a tároló nevét és a titkos nevet a kéréshez.
+Adja hozzá ezeket a sorokat, és frissítse az URI-t, hogy az tükrözze a `vaultUri` kulcstartót. Az alábbi kód az ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén.
 
 ```csharp
- class Program
+  class Program
     {
         static void Main(string[] args)
         {
-            // Step 1: Get a token from the local (URI) Managed Service Identity endpoint, which in turn fetches it from Azure AD
-            var token = GetToken();
+            string secretName = "mySecret";
 
-            // Step 2: Fetch the secret value from your key vault
-            System.Console.WriteLine(FetchSecretValueFromKeyVault(token));
-        }
-
-        static string GetToken()
-        {
-            WebRequest request = WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net");
-            request.Headers.Add("Metadata", "true");
-            WebResponse response = request.GetResponse();
-            return ParseWebResponse(response, "access_token");
-        }
-        
-        static string FetchSecretValueFromKeyVault(string token)
-        {
-            //Step 3: Add the vault name and secret name to the request.
-            WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
-            kvRequest.Headers.Add("Authorization", "Bearer "+  token);
-            WebResponse kvResponse = kvRequest.GetResponse();
-            return ParseWebResponse(kvResponse, "value");
-        }
-
-        private static string ParseWebResponse(WebResponse response, string tokenName)
-        {
-            string token = String.Empty;
-            using (Stream stream = response.GetResponseStream())
+            var kvUri = "https://<your-key-vault-name>.vault.azure.net";
+            SecretClientOptions options = new SecretClientOptions()
             {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                String responseString = reader.ReadToEnd();
+                Retry =
+                {
+                    Delay= TimeSpan.FromSeconds(2),
+                    MaxDelay = TimeSpan.FromSeconds(16),
+                    MaxRetries = 5,
+                    Mode = RetryMode.Exponential
+                 }
+            };
 
-                JObject joResponse = JObject.Parse(responseString);    
-                JValue ojObject = (JValue)joResponse[tokenName];             
-                token = ojObject.Value.ToString();
-            }
-            return token;
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential(),options);
+
+            Console.Write("Input the value of your secret > ");
+            string secretValue = Console.ReadLine();
+
+            Console.Write("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+
+            client.SetSecret(secretName, secretValue);
+
+            Console.WriteLine(" done.");
+
+            Console.WriteLine("Forgetting your secret.");
+            secretValue = "";
+            Console.WriteLine("Your secret is '" + secretValue + "'.");
+
+            Console.WriteLine("Retrieving your secret from " + keyVaultName + ".");
+
+            KeyVaultSecret secret = client.GetSecret(secretName);
+
+            Console.WriteLine("Your secret is '" + secret.Value + "'.");
+
+            Console.Write("Deleting your secret from " + keyVaultName + " ...");
+
+            client.StartDeleteSecret(secretName);
+
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine(" done.");
+
         }
     }
 ```
 
 Az előző kód azt mutatja be, hogyan végezheti el a műveleteket a Azure Key Vault egy Windows rendszerű virtuális gépen.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

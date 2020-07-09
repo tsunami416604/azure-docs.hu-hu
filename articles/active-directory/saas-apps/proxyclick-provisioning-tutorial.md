@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063356"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Proxyclick konfigurálása
@@ -102,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A Proxyclick **-fiók bérlői URL-címének** és **titkos jogkivonatának** lekéréséhez kövesse az útmutatót a 6. lépésben leírtak szerint.
 
-6. Jelentkezzen be a [Proxyclick felügyeleti konzolra](https://app.proxyclick.com/login//?destination=%2Fdefault). Navigáljon a **Beállítások** > **integrációk** > **böngészés piactéren**.
+6. Jelentkezzen be a [Proxyclick felügyeleti konzolra](https://app.proxyclick.com/login//?destination=%2Fdefault). Navigáljon a **Beállítások**  >  **integrációk**  >  **böngészés piactéren**.
 
     ![Proxyclick-beállítások](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
@@ -120,7 +119,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Proxyclick-felhasználó kiépítés](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    A megfelelő beállítások konfigurációs felhasználói felületének most megjelenik a **Beállítások** > **integrációja**területen. Válassza a **Beállítások** lehetőséget az **Azure ad (felhasználó kiépítés)** területen.
+    A megfelelő beállítások konfigurációs felhasználói felületének most megjelenik a **Beállítások**  >  **integrációja**területen. Válassza a **Beállítások** lehetőséget az **Azure ad (felhasználó kiépítés)** területen.
 
     ![Proxyclick létrehozása](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
@@ -169,7 +168,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Proxyclick használatához az **e-mailek** és a **felhasználónevek** értékének azonosnak kell lennie. Bármelyik attribútum frissítései módosítják a másik értéket.
 * A Proxyclick nem támogatja a csoportok üzembe helyezését.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

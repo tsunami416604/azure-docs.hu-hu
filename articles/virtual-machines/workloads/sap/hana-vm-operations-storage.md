@@ -12,27 +12,27 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa3096f43952c047620b310412b27c434fc5fb06
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c553b3508b56245be166afcdb4cb5a6c7520b271
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857101"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
 Az Azure különböző típusú tárhelyeket biztosít, amelyek a SAP HANA rendszert futtató Azure-beli virtuális gépekhez használhatók. A **SAP HANA minősített Azure Storage-típusok** , amelyek a SAP HANA központi telepítések listájához vehetők figyelembe, például: 
 
-- Azure-prémium SSD  
+- Azure Premium SSD vagy Premium Storage 
 - [Ultralemez](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Ezekről a lemezekről a lemez [típusának kiválasztása](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types) című cikkben olvashat bővebben.
+Az ilyen típusú lemezekkel kapcsolatos további tudnivalókért tekintse meg az [Azure tárolási típusai az SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) számítási feladatokhoz és [a lemez típusának kiválasztása](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types) című cikket.
 
-Az Azure két üzembe helyezési módszert kínál a VHD-k számára az Azure standard és a Premium Storage. Ha az általános forgatókönyv lehetővé teszi, használja ki az [Azure Managed Disk](https://azure.microsoft.com/services/managed-disks/) üzemelő példányait. 
+Az Azure két üzembe helyezési módszert kínál a VHD-k számára az Azure standard és a Premium Storage szolgáltatásban. Reméljük, hogy kihasználja az Azure-beli [felügyelt lemez](https://azure.microsoft.com/services/managed-disks/) előnyeit az Azure Block Storage-példányok számára. 
 
 A IOPS és a tárolási átviteli sebességű tárolási típusok listáját és SLA-kat a [felügyelt lemezek Azure-dokumentációjában](https://azure.microsoft.com/pricing/details/managed-disks/)tekintheti meg.
 
@@ -42,213 +42,230 @@ A IOPS és a tárolási átviteli sebességű tárolási típusok listáját és
 
 A különböző tárolási típusok minimális SAP HANA tanúsított feltételei a következők: 
 
-- Azure prémium SSD – a/Hana/log-t az Azure [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)-mel kell gyorsítótárazni. A/Hana/Data-kötetet prémium SSD Azure írásgyorsító vagy Ultra Disk nélkül helyezhető el
-- Legalább a/Hana/log-kötethez tartozó Azure Ultra Disk. A/Hana/Data-kötet az Azure írásgyorsító nélküli prémium SSD helyezhető el, vagy a gyorsabb újraindítási idő (Ultra Disk) használatával
-- A/Hana/log és a/Hana/Data. Azure NetApp Files-re épülő **NFS v 4.1** **-** kötetek A/Hana/Shared mennyisége NFS v3 vagy NFS v 4.1 protokollt használhat. Az NFS v 4.1 protokoll a/Hana/Data és/Hana/log kötetek esetében kötelező.
+- Az Azure Premium Storage- **/Hana/log** szükséges az Azure [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)támogatásához. A **/Hana/Data** -kötetet a Premium Storage-ra lehet helyezni az Azure írásgyorsító vagy az ultra Disk nélkül
+- Legalább a **/Hana/log** -kötethez tartozó Azure Ultra Disk. A **/Hana/Data** -kötetet az Azure írásgyorsító nélküli Premium Storage-ra vagy az ultra Disk gyorsabb újraindítására lehet helyezni
+- A **/Hana/log és a/hana/data**Azure NetApp Files felső részén található **NFS v 4.1** kötetek. A/Hana/Shared mennyisége NFS v3 vagy NFS v 4.1 protokollt használhat.
 
-Egyes tárolási típusok kombinálhatók. Előfordulhat például, hogy a/Hana/Data-et Premium Storagera helyezi, és a/Hana/log a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Ha azonban a/Hana/Data ANF alapuló NFS v 4.1-es kötetet használ, akkor egy másik NFS v 4.1-es kötetet kell használnia a/Hana/log.-ANF alapján. A ANF-en keresztüli NFS használata az egyik kötetre (például a/Hana/Data) és az Azure Premium Storage vagy a másik kötethez (például a/Hana/log) **nem támogatott**.
+Egyes tárolási típusok kombinálhatók. Előfordulhat például, hogy az **/Hana/Data** -t a Premium Storage-ra helyezi, és a **/Hana/log** a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Ha a **/HANA/Data**ANF alapuló kötetet használ, a **/Hana/log** -kötetet a ANF-on felüli NFS-en kell alapulnia. A ANF-en keresztüli NFS használata az egyik kötetre (például a/Hana/Data-ra) és az Azure Premium Storage-ra, vagy a másik kötethez tartozó Ultra Disk (például **/Hana/log**) **nem támogatott**.
 
-A helyszíni világban ritkán kell foglalkoznia az I/O-alrendszerekkel és képességeivel. Ennek az az oka, hogy a készülék gyártójának meg kell győződnie arról, hogy a minimális tárolási követelmények teljesülnek SAP HANA esetén. Ha saját maga hozza létre az Azure-infrastruktúrát, tisztában kell lennie az egyes SAP-kiállított követelményekkel. Az SAP által igényelt minimális átviteli sebességek némelyike az alábbiakat eredményezi:
+A helyszíni világban ritkán kell foglalkoznia az I/O-alrendszerekkel és képességeivel. Ennek az az oka, hogy a készülék gyártójának meg kell győződnie arról, hogy a minimális tárolási követelmények teljesülnek SAP HANA esetén. Ha saját maga hozza létre az Azure-infrastruktúrát, tisztában kell lennie az egyes SAP-kiállított követelményekkel. Az SAP által ajánlott minimális átviteli sebességek közül néhány:
 
-- Írási/olvasási műveletek engedélyezése 250 MB/s **/Hana/log** 1 MB I/O-mérettel
-- Legalább 400 MB/s olvasási tevékenység engedélyezése a **/Hana/Data** 16 MB és 64 MB I/O méret esetén
-- Az írási tevékenység engedélyezése legalább 250 MB/s **/Hana/Data** 16 mb és 64 MB I/O méret esetén
+- Írási/olvasási sebesség 250 MB/s **/Hana/log** 1 MB I/O-mérettel
+- Olvasási tevékenység legalább 400 MB/s a **/Hana/Data** 16 MB és 64 MB I/O méret esetén
+- Legalább 250 MB/s írási tevékenység **/Hana/Data** 16 mb és 64 MB I/O mérettel
 
-Mivel az adatbázis-kezelő rendszerekben az alacsony tárolási késés kritikus fontosságú, még az adatbázis-kezelői rendszerek, például a SAP HANA esetében is, az adatmemóriában marad. A tárolóban a kritikus elérési út általában az adatbázis-kezelő rendszerek tranzakciónapló-írásai körébe esik. Az összeomlás utáni helyreállítást követően azonban az olyan műveletek, mint például a visszaállítási pontok írása vagy a memóriában tárolt adatok betöltése is kritikus lehet. Ezért a **/Hana/Data** -és **/Hana/log** -kötetek esetében **kötelező** az Azure Premium-lemezek kihasználása. Az SAP által igénybe venni kívánt **/Hana/log** és **/Hana/Data** minimális átviteli sebességének elérése érdekében a MDADM vagy az LVM használatával több Azure Premium Storage-lemezre kell létrehoznia a RAID 0-ot. A RAID-kötetek pedig **/Hana/Data** -és **/Hana/log** -kötetekként használhatók. 
+Mivel az adatbázis-kezelő rendszerekben az alacsony tárolási késés kritikus fontosságú, még az adatbázis-kezelői rendszerek, például a SAP HANA esetében is, az adatmemóriában marad. A tárolóban a kritikus elérési út általában az adatbázis-kezelő rendszerek tranzakciónapló-írásai körébe esik. Az összeomlás utáni helyreállítást követően azonban az olyan műveletek, mint például a visszaállítási pontok írása vagy a memóriában tárolt adatok betöltése is kritikus lehet. Ezért a **/Hana/Data** és a **/Hana/log** kötetek esetében **kötelező** az Azure Premium Storage, az ultra Disk vagy a ANF használata. 
+
+
+A HANA tárolási konfigurációjának kiválasztásakor a következő néhány irányadó elv látható:
+
+- Döntse el a tároló típusát az [Azure Storage-típusok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) alapján az SAP számítási feladatokhoz, és [válassza ki a lemez típusát](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types)
+- A teljes VM I/O-átviteli sebesség és a IOPS a virtuális gép méretezése vagy meghatározása során figyelembe kell venni. A virtuálisgép-tárolók teljes átviteli sebességét a cikk a [memória-optimalizált virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) ismertető cikkben dokumentálja.
+- A tárolási konfiguráció eldöntése során próbálja meg a virtuális gép teljes átviteli sebességét a **/Hana/Data** -kötet konfigurációjával. A visszaállítási pontok írása SAP HANA lehet agresszív kiállító I/o-kiadás. A mentésipont írásakor könnyen lehet leküldeni a **/Hana/Data** -kötet átviteli korlátait. Ha a **/Hana/Data** -kötetet felépítő lemez (ek) nagyobb átviteli sebességgel rendelkezik, mint amennyit a virtuális gép engedélyez, akkor olyan helyzetekben futhat, ahol a mentésipont-írás által használt átviteli sebesség ütközik az Ismétlési naplók írási követelményeivel. Olyan helyzet, amely hatással lehet az alkalmazás átviteli sebességére
+- Ha az Azure Premium Storage-t használja, a legdrágább konfiguráció a logikai kötetek kezelőjének használata a **/Hana/Data** és a **/Hana/log** kötetek létrehozásához.
 
 > [!IMPORTANT]
->A/Data, a/log és a/Shared három SAP HANA fájlrendszer nem helyezhető el alapértelmezett vagy gyökérszintű kötet-csoportba.  Javasoljuk, hogy kövesse a Linux-szállítók útmutatását, amely általában különálló mennyiségi csoportok létrehozása a/Data, a/log és a/Shared.
-
-**Javaslat: a RAID 0 csíkozási méretei a következők:**
-
-- 256 KB a **/Hana/Data**
-- 32 KB a **/Hana/log**
-
-> [!IMPORTANT]
-> A/Hana/Data szalagos mérete a korábbi javaslatoktól a 64 KB-ra vagy 128 KB-ra irányuló, a legújabb Linux 256-verziókon alapuló ügyfelek tapasztalatai alapján változott. Az 256 KB mérete valamivel jobb teljesítményt biztosít
-
-> [!NOTE]
-> Az Azure Premium és a standard Storage esetében nem kell a redundancia-szintet a RAID-kötetek használatával konfigurálnia, mivel a virtuális merevlemezek három rendszerképet tárolnak. A RAID-kötetek használata kizárólag olyan kötetek konfigurálására szolgál, amelyek elegendő I/O-teljesítményt biztosítanak.
-
-A RAID alatt álló számos Azure virtuális merevlemez felhalmozódása a IOPS és a tárterület átviteli sebességével. Ha tehát a RAID 0 több mint 3 x P30 Azure Premium Storage lemezt helyez el, akkor a IOPS háromszor kell megadnia az Azure Premium Storage P30 lemez tárolási sebességét.
-
-A virtuális gép méretezése vagy meghatározása során vegye figyelembe a teljes VM I/O-sebességet is. A virtuálisgép-tárolók teljes átviteli sebességét a cikk a [memória-optimalizált virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)ismertető cikkben dokumentálja.
+> A tárolási konfigurációkra vonatkozó javaslatok a kezdéshez szükségesek. A számítási feladatok futtatása és a tárolási kihasználtsági minták elemzése során előfordulhat, hogy nem használja az összes megadott tárolási sávszélességet vagy IOPS. Érdemes megfontolni a tárterület leépítését. Ellenkező esetben előfordulhat, hogy a számítási feladathoz több tárterület-átviteli sebességre van szükség, mint amit ezekkel a konfigurációkkal javasolt. Ennek eredményeképpen előfordulhat, hogy a kapacitást, a IOPS vagy az átviteli sebességet kell telepítenie. A tárolókapacitás megkövetelt tárolási kapacitása, a tárolási késleltetés, a tárolási teljesítmény és a IOPS szükséges és a legkevésbé költséges konfiguráció terén az Azure elegendő különböző tárolási típust kínál különböző képességekkel és különböző díjszabási pontokkal, hogy megkeresse és módosítsa az Ön és a HANA számítási feladatának megfelelő kompromisszumot.
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O-ütemező mód
 A Linux számos különböző I/O-ütemezési módot tartalmaz. A Linux-szállítók és az SAP gyakori javaslata, hogy újrakonfigurálja az I/O-ütemező módot a lemezes kötetekhez az **MQ-alapú** vagy a **Kyber** módból a **NOOP** (nem többhelyes) vagy a **none** (többsoros) módra. A részletekre az [SAP-megjegyzés #1984787](https://launchpad.support.sap.com/#/notes/1984787)hivatkozik. 
 
 
-## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Megoldások Premium Storage-és Azure-írásgyorsító Azure M sorozatú virtuális gépekhez
-Az Azure írásgyorsító egy olyan funkció, amely kizárólag az Azure M sorozatú virtuális gépekhez érhető el. Ahogy a neve is jelzi, a funkció célja az, hogy javítsa az írások I/O-késését az Azure Premium Storage. SAP HANA esetén a rendszer csak a **/Hana/log** köteten használja írásgyorsító. Ezért a **/Hana/Data** és a **/Hana/log** különálló kötetek, amelyek az Azure-írásgyorsító támogatják a **/Hana/log** -kötetet. 
+## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Prémium szintű Storage-és Azure-írásgyorsító megoldások az Azure M sorozatú virtuális gépekhez
+Az Azure írásgyorsító egy olyan funkció, amely kizárólag az Azure M sorozatú virtuális gépekhez érhető el. A név szerint a funkció célja az, hogy javítsa az írási időt az Azure Premium Storage szolgáltatásban. SAP HANA esetén a rendszer csak a **/Hana/log** köteten használja írásgyorsító. Ezért a **/Hana/Data** és a **/Hana/log** különálló kötetek, amelyek az Azure-írásgyorsító támogatják a **/Hana/log** -kötetet. 
 
 > [!IMPORTANT]
-> Az Azure Premium Storage használatakor az Azure [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) vagy a/Hana/log-kötet használata kötelező. A írásgyorsító a Premium Storage és az M-Series és a Mv2 sorozatú virtuális gépek esetében is elérhető.
+> Az Azure Premium Storage használatakor a **/Hana/log** -kötethez tartozó Azure [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) használata kötelező. A írásgyorsító a Premium Storage és az M-Series és a Mv2 sorozatú virtuális gépek esetében is elérhető. A írásgyorsító nem működik együtt más Azure-beli virtuálisgép-családokkal, például a Esv3 vagy a Edsv4-mel.
 
-Az alábbi gyorsítótárazási javaslatok feltételezik, hogy a lista SAP HANA I/O-jellemzői:
+Az alábbi Azure Premium-lemezekre vonatkozó gyorsítótárazási javaslatok feltételezik, hogy a lista SAP HANA I/O-jellemzői:
 
-- A HANA-adatfájlok esetében alig van bármilyen olvasási munkaterhelés. A kivételek nagy méretű I/o-k a HANA-példány újraindítása után, vagy amikor az adatfeltöltés a HANA-ba történik. Az adatfájlok elleni nagyobb olvasási I/o-t egy másik esetben a HANA-adatbázis biztonsági mentései is lehetnek. Ennek eredményeképpen az olvasási gyorsítótárazás többnyire nem logikus, mert a legtöbb esetben az összes adatfájl kötetét teljes egészében el kell olvasni.
+- A HANA-adatfájlok esetében alig van bármilyen olvasási munkaterhelés. A kivételek nagy méretű I/o-k a HANA-példány újraindítása után, vagy amikor az adatfeltöltés a HANA-ba történik. Az adatfájlok elleni nagyobb olvasási I/o-t egy másik esetben a HANA-adatbázis biztonsági mentései is lehetnek. Ennek eredményeképpen az olvasási gyorsítótárazás többnyire nem logikus, mert a legtöbb esetben az összes adatfájl kötetét teljes egészében el kell olvasni. 
 - Az adatfájlok írása a HANA visszaállítási pontok és a HANA összeomlás-helyreállítási szolgáltatáson alapul. A visszaállítási pontok írása aszinkron módon történik, és nem tart fenn felhasználói tranzakciókat. Az összeomlás utáni helyreállítás során az adat megírása kritikus fontosságú ahhoz, hogy a rendszer gyorsan reagáljon. Az összeomlások helyreállítása azonban kivételes helyzetekben nem lehetséges
 - A HANA által visszaadott fájlokból alig történik olvasási művelet. A kivételek nagyméretű I/o-műveletek a tranzakciós naplók biztonsági másolatainak, összeomlás-helyreállításának vagy a HANA-példány újraindítási fázisának végrehajtásakor.  
 - A rendszer a SAP HANA visszaállítási naplófájljának fő terhelését írja le. A számítási feladatok jellegétől függően az I/O-t 4 KB-os vagy más esetekben 1 MB vagy annál nagyobb méretű i/O-méretekkel lehet elkészíteni. A SAP HANA az Ismétlési naplóba való írási késleltetés kritikus fontosságú.
 - Az összes írást megbízható módon kell megőrizni a lemezen
 
-**Javaslat: a megfigyelt I/O-mintázatok miatt SAP HANA szerint a különböző kötetek gyorsítótárazását az Azure Premium Storage használatával kell beállítani, például:**
+**Javaslat: a megfigyelt I/O-mintákat SAP HANA alapján a különböző kötetek gyorsítótárazását az Azure Premium Storage használatával kell beállítani, például:**
 
-- **/Hana/Data** – nincs gyorsítótárazás
+- **/Hana/Data** – nincs gyorsítótárazás vagy olvasási gyorsítótárazás
 - **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2 sorozat esetében, ahol a írásgyorsító az olvasási gyorsítótárazás nélkül kell engedélyezni. 
 - **/Hana/Shared** – olvasási gyorsítótárazás
+- **Operációsrendszer-lemez** – ne módosítsa az Azure által a virtuális gép létrehozási idején beállított alapértelmezett gyorsítótárazást
 
-### <a name="production-recommended-storage-solution"></a>Éles környezetben ajánlott tárolási megoldás
+
+Ha az LVM vagy a mdadm használatával különböző Azure Premium-lemezeken hoz létre Stripe-készleteket, meg kell határoznia a sávok méretét. Ezek a méretek különböznek a **/Hana/Data** és a **/Hana/log**között. **Javaslat: a Stripe-méretek a következő javaslatokat használják:**
+
+- 256 KB a **/Hana/Data**
+- 64 KB a **/Hana/log**
+
+> [!NOTE]
+> A **/Hana/Data** szalagos mérete a korábbi javaslatoktól a 64 kb-ra vagy 128 kb-ra irányuló, a legújabb Linux 256-verziókon alapuló ügyfelek tapasztalatai alapján változott. Az 256 KB mérete valamivel jobb teljesítményt nyújt. A 32 KB-ról 64 KB-ra készült **/Hana/log** -sávokra vonatkozó javaslatot is módosítottuk, hogy elegendő átviteli sebesség legyen nagyobb I/O-méretekkel.
+
+> [!NOTE]
+> Nem kell olyan redundancia-szintet konfigurálnia, amely RAID-köteteket használ, mivel az Azure Block Storage egy virtuális merevlemez három rendszerképét tárolja. Az Azure Premium-lemezekkel rendelkező Stripe-készlet használata kizárólag a megfelelő IOPS és/vagy I/O-teljesítményt biztosító kötetek konfigurálására szolgál.
+
+A Stripe-készlet alatt álló számos Azure virtuális merevlemez felhalmozódása egy IOPS és egy tárolási átviteli sebességi oldalról történik. Tehát, ha az Azure Premium Storage-lemezeken több mint 3 x P30-készletet helyez üzembe, akkor a IOPS háromszor kell megadnia az egyetlen Azure Premium Storage P30-lemez tárolási sebességét.
+
+> [!IMPORTANT]
+> Abban az esetben, ha az LVM vagy a mdadm-t használja a Volume Manager használatával több Azure Premium-lemezre, akkor a/Data, a/log és a/Shared három SAP HANA fájlrendszer nem helyezhető el alapértelmezett vagy gyökérszintű kötet-csoportba. Javasoljuk, hogy kövesse a Linux-szállítók útmutatását, amely általában különálló mennyiségi csoportok létrehozása a/Data, a/log és a/Shared.
+
+
+### <a name="azure-burst-functionality-for-premium-storage"></a>Azure burst-funkciók a Premium Storage-hoz
+Az Azure Premium Storage-lemezek esetében kisebb vagy egyenlő, mint a 512 GiB kapacitás, a burst funkció elérhető. A lemez-kitörés működésének pontos módját a [lemez kitörése](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting)című cikk ismerteti. A cikk elolvasása során megérti a IOPS és az átviteli sebesség felmerülésének koncepcióját abban az esetben, amikor az I/O-munkaterhelés a lemezek névleges IOPS és átviteli sebessége alá esik (a névleges átviteli sebességről lásd: [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)). A IOPS és az átviteli sebesség különbözetét fogja felhalmozni a jelenlegi használat és a lemez névleges értékei között. A törések legfeljebb 30 percre vannak korlátozva.
+
+Azok az ideális esetek, ahol a burst funkció megtervezhető, valószínűleg a különböző adatbázis-kezelő rendszer adatfájljait tartalmazó kötetek vagy lemezek lesznek. A várt I/O-számítási feladat várható a kötetek esetében, különösen kis-és közepes hatótávolságú rendszerek esetén a következőnek kell kinéznie:
+
+- Kis-és közepes olvasási munkaterhelés, mivel az adatok ideális esetben a memóriában vannak gyorsítótárazva, vagy a HANA esetében a memóriában lévőnek kell lennie.
+- Adatbázis-ellenőrzőpontok vagy visszaállítási pontok által kiváltott írások
+- Olyan biztonsági mentési feladat, amely folyamatos streamet olvas be azokban az esetekben, amikor a biztonsági mentések nem a tárolási pillanatképeken keresztül futnak
+- A SAP HANA a memóriába való betöltést egy példány újraindítása után
+
+Különösen a kisebb adatbázis-kezelő rendszerek esetében, amelyekben a számítási feladatok csak néhány száz tranzakciót kezelnek, az ilyen adatfeldolgozási funkciók a tranzakciót tároló lemezek vagy kötetek számára is hasznosak lehetnek. Az ilyen lemezek vagy kötetek várható munkaterhelése a következőképpen néz ki:
+
+- A munkaterheléstől és a számítási feladattól függő, rendszeres írás a lemezre, mivel az alkalmazás által kiadott összes véglegesített művelet valószínűleg I/O-műveletet indít el
+- Nagyobb számítási feladatok az átviteli sebességben az üzemeltetési feladatok esetében, például indexek létrehozása vagy újraépítése
+- Adatsorozatok beolvasása tranzakciónaplók végrehajtásakor vagy a naplók biztonsági másolatainak visszaállításakor
+
+
+### <a name="production-recommended-storage-solution-based-on-azure-premium-storage"></a>Az Azure Premium Storage-on alapuló éles környezetben ajánlott tárolási megoldás
 
 > [!IMPORTANT]
 > Az Azure M sorozatú virtuális gépek SAP HANA minősítése kizárólag az Azure írásgyorsító a **/Hana/log** -kötethez. Ennek eredményeképpen az Azure M sorozatú virtuális gépeken SAP HANA üzemelő példányok üzembe helyezését az Azure írásgyorsító kell konfigurálni a **/Hana/log** -kötethez.  
 
 > [!NOTE]
+> Az Azure Premium Storage-t érintő forgatókönyvekben a rendszerindítási képességek bevezetését használjuk a konfigurációban. Ahogy bármilyen alakú vagy formájú tárolási tesztelési eszközt használ, tartsa szem előtt az [Azure Premium Disk burst](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting) működésének módját. Az SAP-HWCCT vagy a HCMT eszközön keresztül továbbított tárolási tesztek futtatása nem várható, hogy az összes teszt átadja a feltételeket, mivel a tesztek némelyike túllépi a felhalmozódott feltört krediteket. Különösen akkor, ha a tesztek egymás után, megszakítás nélkül futnak.
+
+
+> [!NOTE]
 > Éles forgatókönyvek esetén győződjön meg arról, hogy a IAAS SAP- [dokumentációja](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)támogatja-e egy adott virtuálisgép-típus támogatását az sap által SAP HANA.
 
-A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
+**Javaslat: az Azure Premium Storage szolgáltatással az éles környezetekben javasolt konfigurációk a következőképpen néznek ki:**
 
-**Javaslat: az éles környezetekben javasolt konfigurációk a következőképpen néznek ki:**
+Az SAP **/Hana/Data** -kötet konfigurációja:
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | /hana/log | /hana/shared | /root-kötet | /usr/sap | Hana/Backup |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
+| --- | --- | --- | --- | --- | --- | --- | 
+| M32ts | 192 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14 000 |
+| M32ls | 256 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14 000 |
+| M64ls | 512 GiB | 1 000 MBps | 4 x P10 |  680 MBps | 2000 | 14 000 |
+| M64s | 1 000 GiB | 1 000 MBps | 4 x P15 | 680 MBps | 4 400 | 14 000 |
+| M64ms | 1 750 GiB | 1 000 MBps | 4 x P20 | 680 MBps | 9 200 | 14 000 |  
+| M128s | 2 000 GiB | 2 000 MBps | 4 x P20 | 680 MBps | 9 200| 14 000 | 
+| M128ms | 3 800 GiB | 2 000 MBps | 4 x P30 | 800 MBps (kiépítve) | 20000 | nincs burst | 
+| M208s_v2 | 2 850 GiB | 1 000 MBps | 4 x P30 | 800 MBps (kiépítve) | 20000| nincs burst | 
+| M208ms_v2 | 5 700 GiB | 1 000 MBps | 4 x P40 | 1 000 MBps (kiépítve) | 25,000 | nincs burst |
+| M416s_v2 | 5 700 GiB | 2 000 MBps | 4 x P40 | 1 000 MBps (kiépítve) | 25,000 | nincs burst |
+| M416ms_v2 | 11 400 GiB | 2 000 MBps | 4 x P50 | 2 000 MBps (kiépítve) | 25,000 | nincs burst |
+
+
+A **/Hana/log** kötethez. a konfiguráció a következőképpen fog kinézni:
+
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | **/Hana/log** -kötet | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
+| --- | --- | --- | --- | --- | --- | --- | 
+| M32ts | 192 GiB | 500 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 | 
+| M32ls | 256 GiB | 500 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 | 
+| M64ls | 512 GiB | 1 000 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 | 
+| M64s | 1 000 GiB | 1 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 | 
+| M64ms | 1 750 GiB | 1 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 |  
+| M128s | 2 000 GiB | 2 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500|  
+| M128ms | 3 800 GiB | 2 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 | 
+| M208s_v2 | 2 850 GiB | 1 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 |  
+| M208ms_v2 | 5 700 GiB | 1 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 |  
+| M416s_v2 | 5 700 GiB | 2 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 |  
+| M416ms_v2 | 11 400 GiB | 2 000 MBps | 3 x P15 | 510 MBps | 3 300 | 10 500 | 
+
+
+A többi kötet esetében a konfiguráció a következőképpen fog kinézni:
+
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/shared | /root-kötet | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
-| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
-| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
-| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
-| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 2 x P40 |
-| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P40 |
-| M208s_v2 | 2850 GiB | 1000 MB/s | 4 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P40 |
-| M208ms_v2 | 5700 GiB | 1000 MB/s | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
-| M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
-| M416ms_v2 | 11400 GiB | 2000 MB/s | 8 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P50 |
-
-Győződjön meg arról, hogy a különböző javasolt kötetek tárolási átviteli sebessége megfelel-e a futtatni kívánt munkaterhelésnek. Ha a munkaterhelés nagyobb köteteket igényel a **/Hana/Data** és a **/Hana/log**számára, növelje az Azure Premium Storage VHD-k számát. Az Azure-beli virtuálisgép-típus korlátain belül a kötetek méretezése a IOPS és az I/O-átviteli sebesség növelésével növekszik.
-
-Az Azure írásgyorsító csak az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)szolgáltatással együtt működik. Így legalább az **/Hana/log** -kötetet alkotó Azure Premium Storage lemezeket felügyelt lemezként kell telepíteni.
-
-Az Azure-írásgyorsító által támogatott Azure Premium Storage virtuális merevlemezek száma korlátozott. A jelenlegi korlátok a következők:
-
-- 16 virtuális merevlemez M128xx és M416xx virtuális géphez
-- 8 virtuális merevlemez M64xx és M208xx virtuális géphez
-- 4 virtuális merevlemez egy M32xx virtuális géphez
-
-Az Azure írásgyorsító engedélyezésével kapcsolatos részletesebb útmutatást a [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)cikkben találhat.
-
-Az Azure írásgyorsító részletei és korlátozásai ugyanabban a dokumentációban találhatók.
-
-**Javaslat: a/Hana/log-kötetet alkotó lemezekhez írásgyorsító kell használnia**
+| M32ts | 192 GiB | 500 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
+| M32ls | 256 GiB | 500 MBps |  1 x P20 | 1 x P6 | 1 x P6 |
+| M64ls | 512 GiB | 1000 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
+| M64s | 1 000 GiB | 1 000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64ms | 1 750 GiB | 1 000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 
+| M128s | 2 000 GiB | 2 000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M128ms | 3 800 GiB | 2 000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
+| M208s_v2 | 2 850 GiB | 1 000 MBps |  1 x P30 | 1 x P10 | 1 x P6 |
+| M208ms_v2 | 5 700 GiB | 1 000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M416s_v2 | 5 700 GiB | 2 000 MBps |  1 x P30 | 1 x P10 | 1 x P6 | 
+| M416ms_v2 | 11 400 GiB | 2 000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
 
 
-### <a name="cost-conscious-azure-storage-configuration"></a>Költségtakarékos Azure Storage-konfiguráció
-Az alábbi táblázat azon virtuálisgép-típusok konfigurációját mutatja be, amelyeket az ügyfelek a SAP HANA Azure-beli virtuális gépeken való üzemeltetésére is használnak. Előfordulhat, hogy egyes virtuálisgép-típusok nem teljesítik a SAP HANA minimális tárolási feltételeit, vagy az SAP nem támogatja hivatalosan a SAP HANA. De eddig ezek a virtuális gépek nem éles környezetekben is megfelelőnek látszanak. A **/Hana/Data** és a **/Hana/log** egyetlen kötethez vannak egyesítve. Ennek eredményeképpen az Azure írásgyorsító használata a IOPS feltételeinek korlátozására is válhat.
+Győződjön meg arról, hogy a különböző javasolt kötetek tárolási átviteli sebessége megfelel-e a futtatni kívánt munkaterhelésnek. Ha a munkaterhelés nagyobb köteteket igényel a **/Hana/Data** és a **/Hana/log**számára, növelje az Azure Premium Storage virtuális merevlemezek számát. Az Azure-beli virtuálisgép-típus korlátain belül a kötetek méretezése a IOPS és az I/O-átviteli sebesség növelésével növekszik.
 
-> [!NOTE]
-> Az SAP által támogatott forgatókönyvek esetén győződjön meg arról, hogy az SAP által támogatott bizonyos virtuálisgép-típusok a [IAAS SAP-dokumentációjában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)SAP HANA támogatják-e.
+Az Azure írásgyorsító csak az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)szolgáltatással együtt működik. Így legalább a **/Hana/log** -kötetet alkotó Azure Premium Storage-lemezeket felügyelt lemezként kell telepíteni. Az Azure írásgyorsító részletes utasításait és korlátozásait a cikkben találja [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
-> [!NOTE]
-> A költségtakarékos megoldás korábbi javaslatainak változása az [azure standard HDD lemezekről](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) való áttérés az Azure-beli [standard SSD-lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) jobb teljesítményére és megbízhatóbbá tételére
+Az Azure [Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -család HANA-tanúsítvánnyal rendelkező virtuális gépei és a [Edsv4](https://docs.microsoft.com/azure/virtual-machines/edv4-edsv4-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)esetében ANF kell a **/Hana/Data** és a **/Hana/log** kötetet. Vagy az Azure Premium Storage helyett az Azure Ultra Disk Storage használatát kell kihasználnia a **/Hana/log** -kötethez. Ennek eredményeképpen az Azure Premium Storage **/Hana/Data** -kötetének konfigurációi a következőhöz hasonlóak:
 
-A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
+| --- | --- | --- | --- | --- | --- | --- |
+| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 |
+| E32ds_v4 | 256 GiB | 768 MBps | 3 x P10 |  510 MBps | 1500 | 10 500|
+| E48ds_v4 | 384 GiB | 1 152 MBps | 3 x P15 |  510 MBps | 3 300  | 10 500 | 
+| E64ds_v4 | 504 GiB | 1 200 MBps | 3 x P15 |  510 MBps | 3 300 | 10 500 | 
+| E64s_v3 | 432 GiB | 1 200 MB/s | 3 x P15 |  510 MBps | 3 300 | 10 500 | 
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data és/Hana/log<br /> az LVM vagy a MDADM szalagos | /hana/shared | /root-kötet | /usr/sap | Hana/Backup |
-| --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
-| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
-| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| E64v3 | 432 GiB | 1 200 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
-| GS5 | 448 GiB | 2 000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
-| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| M64ls | 512 GiB | 1 000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
-| M64s | 1 000 GiB | 1 000 MB/s | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
-| M128s | 2 000 GiB | 2 000 MB/s |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
-| M128ms | 3 800 GiB | 2 000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
-| M416ms_v2 | 11400 GiB | 2 000 MB/s | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
+A többi kötet esetében, beleértve az **/Hana/log** is, a konfiguráció az alábbihoz hasonló:
 
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS | /hana/shared | /root-kötet | /usr/sap |
+| --- | --- | --- | --- | --- | --- | --- | --- | -- |
+| E20ds_v4 | 160 GiB | 480 MBps | 80 GB | 250 MBps | 1800 | 1 x P15 | 1 x P6 | 1 x P6 |
+| E32ds_v4 | 256 GiB | 768 MBps | 128 GB | 250 MBps | 1800 | 1 x P15 | 1 x P6 | 1 x P6 |
+| E48ds_v4 | 384 GiB | 1 152 MBps | 192 GB | 250 MBps | 1800 | 1 x P20 | 1 x P6 | 1 x P6 |
+| E64ds_v4 | 504 GiB | 1 200 MBps | 256 GB | 250 MBps | 1800 | 1 x P20 | 1 x P6 | 1 x P6 |
+| E64s_v3 | 432 GiB | 1 200 MBps | 220 GB | 250 MBps | 1800 | 1 x P20 | 1 x P6 | 1 x P6 |
 
-A kisebb, 3 x P20 rendelkező virtuálisgép-típusokhoz ajánlott lemezek túlméretezettek az [SAP TDI tárolási](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)tanulmánya alapján a tárhelyre vonatkozó ajánlásokat érintő köteteken. Azonban a táblázatban megjelenő választási lehetőség a SAP HANA megfelelő lemez-átviteli sebességének biztosítására szolgál. Ha módosítania kell a **/Hana/Backup** kötetét, amely a memória mennyiségét kétszer ábrázoló biztonsági másolatok tárolásához szükséges, nyugodtan módosítsa.   
-Győződjön meg arról, hogy a különböző javasolt kötetek tárolási átviteli sebessége megfelel-e a futtatni kívánt munkaterhelésnek. Ha a munkaterhelés nagyobb köteteket igényel a **/Hana/Data** és a **/Hana/log**számára, növelje az Azure Premium Storage VHD-k számát. Az Azure-beli virtuálisgép-típus korlátain belül a kötetek méretezése a IOPS és az I/O-átviteli sebesség növelésével növekszik. 
-
-> [!NOTE]
-> A fenti konfigurációk nem élvezhetik az [Azure-beli virtuális gépekre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) -t, mivel az Azure Premium Storage és az Azure standard Storage keverékét használja. A kiválasztás azonban a költségek optimalizálása érdekében lett kiválasztva. Az Azure standard Storage-ban (Sxx) felsorolt összes lemeznél Premium Storage kell választania, hogy a virtuális gép konfigurációja megfeleljen az Azure Single VM SLA-nak.
-
-
-> [!NOTE]
-> A lemez-konfigurációra vonatkozó javaslatok azt célozzák meg, hogy az SAP kifejezi az infrastruktúra-szolgáltatók felé irányuló minimális követelményeket. A valós ügyfelek központi telepítései és munkaterhelési forgatókönyvekben olyan helyzetek fordultak elő, amikor ezek a javaslatok még nem biztosítanak elégséges képességeket. Ezek lehetnek olyan helyzetek, amikor az ügyfél egy HANA-újraindítás után gyorsabb újratöltést igényelt, vagy ha a biztonsági mentési konfigurációk nagyobb sávszélességet igényelnek a tárolóhoz. Egyéb esetekben a **/Hana/log** , ahol az 5000 IOPS nem volt elegendő az adott számítási feladathoz. Ezért ezeket az ajánlásokat kiindulási pontként kell elvégeznie, és a számítási feladatok követelményei alapján kell alkalmazkodnia.
->  
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Az Azure ultrakönnyű lemezes tárolásának konfigurációja SAP HANA
-A Microsoft egy [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)nevű új Azure Storage-típust mutat be. Az Azure Storage által kínált eddigi jelentős különbség az, hogy a lemez képességei többé nincsenek a lemez méretéhez kötve. Ügyfélként meghatározhatja ezeket a képességeket az ultra Disk számára:
+Egy másik Azure Storage-típus neve [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk). Az Azure Storage által kínált eddigi jelentős különbség az, hogy a lemez képességei többé nincsenek a lemez méretéhez kötve. Ügyfélként meghatározhatja ezeket a képességeket az ultra Disk számára:
 
 - Lemez mérete 4 GiB-ról 65 536 GiB-ig
 - A IOPS tartománya 100 IOPS – 160K IOPS (a maximum a virtuálisgép-típusoktól függ)
 - Tárolási sebesség 300 MB/s-tól 2 000 MB/s-ig
 
-Az ultravékony lemez lehetővé teszi, hogy egyetlen lemezt adjon meg, amely megfelel a méretének, a IOPS és a lemez átviteli sebességi tartományának. Ahelyett, hogy olyan logikai köteteket használjon, mint az LVM vagy a MDADM az Azure Premium Storageon, hogy olyan köteteket szerkesszen, amelyek megfelelnek a IOPS és a tárterület átviteli sebességének. Az ultra Disk és a Premium Storage között konfigurációs kombinációt is futtathat. Ennek eredményeképpen korlátozhatja az ultra Disk használatát a teljesítmény szempontjából kritikus fontosságú/Hana/Data és/Hana/log, valamint a többi kötetet az Azure-Premium Storage
+Az ultravékony lemez lehetővé teszi, hogy egyetlen lemezt adjon meg, amely megfelel a méretének, a IOPS és a lemez átviteli sebességi tartományának. Ahelyett, hogy a logikai kötetek, például az LVM vagy a MDADM az Azure Premium Storage-on keresztül legyenek felhasználva, hogy olyan köteteket lehessen létrehozni, amelyek megfelelnek a IOPS és a Az ultra Disk és a Premium Storage közötti konfigurációs kombinációt is futtathat. Ennek eredményeképpen korlátozhatja az ultra Disk használatát a teljesítmény szempontjából kritikus fontosságú **/Hana/Data** és **/Hana/log** , valamint a többi kötetet az Azure Premium Storage használatával.
 
-Az ultra Disk egyéb előnyei a Premium Storagehoz képest a jobb olvasási késések lehetnek. A gyorsabb olvasási késés előnyeit kihasználhatja a HANA indítási idejének és az adatmennyiségnek a memóriába való későbbi betöltésének csökkentése érdekében. Az ultrakönnyű lemezes tárolás előnyei is érezhetőek lehetnek, ha HANA visszaállítási pontok ír. Mivel a/Hana/Data Premium Storage lemezei általában nem írásgyorsító gyorsítótárazva, az ultra-lemezhez képest az Premium Storage/Hana/Data írási késése magasabb. Az is előfordulhat, hogy az ultra Disk használatával végzett mentésipont-írás jobban teljesít az ultra diskon.
+Az ultra Disk egyéb előnyei a jobb olvasási késések a Premium Storage szolgáltatáshoz képest. A gyorsabb olvasási késés előnyeit kihasználhatja a HANA indítási idejének és az adatmennyiségnek a memóriába való későbbi betöltésének csökkentése érdekében. Az ultrakönnyű lemezes tárolás előnyei is érezhetőek lehetnek, ha HANA visszaállítási pontok ír. 
 
-> [!IMPORTANT]
+> [!NOTE]
 > Az ultra Disk még nem szerepel az összes Azure-régióban, és még nem támogatja az alább felsorolt virtuálisgép-típusokat. Részletes információkat talál arról, hogy mely virtuális gépek támogatottak, és milyen virtuálisgép-családokat támogatnak? tekintse meg az [Azure-ban elérhető lemez-típusok](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)című cikket.
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Éles környezetben ajánlott tárolási megoldás tiszta, ultra Disk konfigurációval
-Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek külön maradnak. A javasolt értékek abból a KPI-ből származnak, amelyet az SAP-nak hitelesítenie kell a SAP HANA és a tárolási konfigurációk virtuálisgép-típusainak az [SAP TDI tárolási](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)tanulmányában javasolt módon.
+Ebben a konfigurációban a **/Hana/Data** és a **/Hana/log** kötetek külön maradnak. A javasolt értékek abból a KPI-ből származnak, amelyet az SAP-nak hitelesítenie kell a SAP HANA és a tárolási konfigurációk virtuálisgép-típusainak az [SAP TDI tárolási](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)tanulmányában javasolt módon.
 
 A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
 
 | Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
-| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
-| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
-| M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 1 200 MBps |9000 | 512 GB | 800 MBps  | 3,000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 3,000 | 
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 1 000 MBps | 9000 | 512 GB | 400 MBps  | 2500 | 
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 1 000 MBps | 9000 | 512 GB | 400 MBps  | 2500 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 500 MBps | 9000 | 512 GB | 800 MBps  | 3,000 | 
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MBps | 9000 | 512 GB | 800 MBps  | 3,000 |   
+| E20ds_v4 | 160 GiB | 480 MB/s | 200 GB | 400 MBps | 2500 | 80 GB | 250 MB | 1800 |
+| E32ds_v4 | 256 GiB | 768 MB/s | 300 GB | 400 MBps | 2500 | 128 GB | 250 MBps | 1800 |
+| E48ds_v4 | 384 GiB | 1152 MB/s | 460 GB | 400 MBps | 3,000 | 192 GB | 250 MBps | 1800 |
+| E64ds_v4 | 504 GiB | 1200 MB/s | 610 GB | 400 MBps | 3,500 |  256 GB | 250 MBps | 1800 |
+| E64s_v3 | 432 GiB | 1 200 MB/s | 610 GB | 400 MBps | 3,500 | 220 GB | 250 MB | 1800 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 2500 | 96 GB | 250 MBps  | 1800 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 2500 | 256 GB | 250 MBps  | 1800 |
+| M64ls | 512 GiB | 1 000 MB/s | 620 GB | 400 MBps | 3,500 | 256 GB | 250 MBps  | 1800 |
+| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MBps | 5000 | 512 GB | 250 MBps  | 2500 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MBps | 5000 | 512 GB | 250 MBps  | 2500 |
+| M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 750 MBps | 7 000 | 512 GB | 250 MBps  | 2500 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 750 MBps |7 000 | 512 GB | 250 MBps  | 2500 | 
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 750 MBps | 7 000 | 512 GB | 250 MBps  | 2500 | 
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 750 MBps | 7 000 | 512 GB | 250 MBps  | 2500 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 000 MBps | 9000 | 512 GB | 400 MBps  | 4,000 | 
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MBps | 9000 | 512 GB | 400 MBps  | 4,000 |   
 
-A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket. Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.   
+**A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket.** Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.   
 
 > [!NOTE]
 > Eddig a tárolási Pillanatképek nem érhetők el az ultra Disk Storage szolgáltatásban. Ez blokkolja a virtuálisgép-Pillanatképek használatát Azure Backup szolgáltatásokkal
 
-### <a name="cost-conscious-storage-solution-with-pure-ultra-disk-configuration"></a>Költségtakarékos tárolási megoldás tiszta, ultra lemezes konfigurációval
-Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek ugyanazon a lemezen vannak. A javasolt értékek abból a KPI-ből származnak, amelyet az SAP-nak hitelesítenie kell a SAP HANA és a tárolási konfigurációk virtuálisgép-típusainak az [SAP TDI tárolási](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)tanulmányában javasolt módon. 
-
-A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
-
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data és/log kötete | /Hana/Data és a napló I/O-átviteli sebessége | /Hana/Data és log IOPS |
-| --- | --- | --- | --- | --- | --- |
-| E64s_v3 | 432 GiB | 1 200 MB/s | 1 200 GB | 1 200 MBps | 9 500 | 
-| M32ts | 192 GiB | 500 MB/s | 512 GB | 400 MBps | 9 500 | 
-| M32ls | 256 GiB | 500 MB/s | 600 GB | 400 MBps | 9 500 | 
-| M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MBps | 10,000 | 
-| M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MBps | 10,000 | 
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MBps | 10,000 | 
-| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MBps |12 000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MBps |12 000 |  
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MBps | 10,000 |  
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MBps | 10,000 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1.800MBps | 12 000 |  
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MBps | 12 000 |    
-
-A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket. Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>NFS-v 4.1 kötetek Azure NetApp Files
-A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a/Hana/Shared, a/Hana/Data és a/Hana/log kötetek esetében használhatók. A ANF-alapú NFS-megosztások használata a/Hana/Data és a/Hana/log kötetek esetében a v 4.1 NFS protokoll használatát igényli. A/Hana/Data és a/Hana/log kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
+A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a **/Hana/Shared**, a **/Hana/Data**és a **/Hana/log** kötetek esetében használhatók. A ANF-alapú NFS-megosztások használata a **/Hana/Data** és a **/Hana/log** kötetek esetében a v 4.1 NFS protokoll használatát igényli. A **/Hana/Data** és a **/Hana/log** kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
 
 > [!IMPORTANT]
-> A Azure NetApp Fileson implementált NFS v3 protokoll **nem** támogatott a/Hana/Data és a/Hana/log. Az NFS 4,1 használata kötelező a/Hana/Data és a/Hana/log kötetek számára a funkcionális szempontból. Míg a/Hana/Shared-kötet esetében az NFS v3 vagy az NFS v 4.1 protokoll használható a funkcionális nézetből.
+> A Azure NetApp Fileson implementált NFS v3 protokoll **nem** támogatott a **/Hana/Data** és a **/Hana/log**. Az NFS 4,1 használata kötelező a **/Hana/Data** és a **/Hana/log** kötetek számára a funkcionális szempontból. Míg a **/Hana/Shared** -kötet esetében az NFS v3 vagy az NFS v 4.1 protokoll használható a funkcionális nézetből.
 
 ### <a name="important-considerations"></a>Fontos szempontok
 Az SAP NetWeaver és SAP HANA Azure NetApp Filesének megfontolása során vegye figyelembe a következő fontos szempontokat:
@@ -275,12 +292,12 @@ Az Azure NetApp-kötetek átviteli sebessége a kötet méretének és a szolgá
 
 Az Azure-beli SAP-infrastruktúra megtervezése során tisztában kell lennie azzal, hogy az SAP milyen minimális tárterület-átviteli sebességre vonatkozó követelményeket támaszt, ami a következők minimális átviteli teljesítményére fordítható le:
 
-- Írási/olvasási műveletek engedélyezése 250 MB/s/Hana/log 1 MB I/O-mérettel  
-- Legalább 400 MB/s olvasási tevékenység engedélyezése a/Hana/Data 16 MB és 64 MB I/O méret esetén  
-- Az írási tevékenység engedélyezése legalább 250 MB/s/Hana/Data 16 MB és 64 MB I/O méret esetén  
+- Írási/olvasási műveletek engedélyezése 250 MB/s **/Hana/log** 1 MB I/O-mérettel  
+- Legalább 400 MB/s olvasási tevékenység engedélyezése a **/Hana/Data** 16 MB és 64 MB I/O méret esetén  
+- Az írási tevékenység engedélyezése legalább 250 MB/s **/Hana/Data** 16 mb és 64 MB I/O méret esetén  
 
 A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) 1 TiB-ra vetítve:
-- Premium Storage szintű 64 MiB/s  
+- Premium Storage-szint – 64 MiB/s  
 - Ultra Storage-réteg – 128 MiB/s  
 
 > [!IMPORTANT]

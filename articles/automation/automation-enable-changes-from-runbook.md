@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84171089"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>A Change Tracking és az Inventory engedélyezése runbookból
@@ -100,7 +99,7 @@ A runbook elindításához engedélyeznie kell az Azure-beli virtuális gép Cha
 1. A runbookfeladat indításához kattintson az **OK** gombra.
 1. A folyamat előrehaladását és az esetleges hibákat a runbookfeladat oldalán követheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A runbook a következő témakörben tekintheti meg: [az ütemtervek kezelése Azure Automationban](shared-resources/schedules.md).
 * A szolgáltatással kapcsolatos további részletekért tekintse meg a [change Tracking és a leltár kezelésével](change-tracking-file-contents.md)foglalkozó témakört.

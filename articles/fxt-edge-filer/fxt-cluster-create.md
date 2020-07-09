@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239209"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693073"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: az Azure FXT Edge Filer-fürt létrehozása
 
@@ -103,7 +103,7 @@ A hálózati kapcsolat ellenőrzéséhez győződjön meg arról, hogy a csomóp
 
 A csomópont indításakor a rendszer IP-címet kér. Ha egy DHCP-kiszolgálóhoz csatlakozik, akkor elfogadja a DHCP által biztosított IP-címet. (Ez az IP-cím ideiglenes. A fürt létrehozásakor megváltozik.)
 
-Ha nem csatlakozik egy DHCP-kiszolgálóhoz, vagy nem kap választ, a csomópont a Bonjour szoftver használatával állítja be az önkiszolgáló IP-címet a 169,254 formátumban. \*. \*. A fürt létrehozásához azonban egy ideiglenes statikus IP-címet kell beállítania a csomópont egyik hálózati kártyáján. Ebben az örökölt dokumentumban az utasítások is szerepelnek. forduljon a Microsoft szolgáltatáshoz, és támogassa a frissített információkat: [a függelék: statikus IP-cím beállítása egy FXT-csomóponton](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+Ha nem csatlakozik egy DHCP-kiszolgálóhoz, vagy nem kap választ, a csomópont a Bonjour szoftver használatával állítja be az önkiszolgáló IP-címet a 169,254 formátumban. \* . \* . A fürt létrehozásához azonban egy ideiglenes statikus IP-címet kell beállítania a csomópont egyik hálózati kártyáján. Ebben az örökölt dokumentumban az utasítások is szerepelnek. forduljon a Microsoft szolgáltatáshoz, és támogassa a frissített információkat: [a függelék: statikus IP-cím beállítása egy FXT-csomóponton](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
 ### <a name="find-the-ip-address"></a>Az IP-cím megkeresése
 
@@ -113,9 +113,9 @@ A csatlakozás után jelentkezzen be a felhasználónévvel `root` és a jelszó
 
 A bejelentkezést követően meg kell határoznia a csomópont IP-címét.
 
-A parancs `ifconfig` használatával megtekintheti a rendszerhez rendelt címeket.
+A parancs használatával `ifconfig` megtekintheti a rendszerhez rendelt címeket.
 
-A parancs `ifconfig | grep -B5 inet` például internetes címmel rendelkező portokat keres, és öt sornyi kontextust biztosít a port azonosítójának megjelenítéséhez.
+A parancs például `ifconfig | grep -B5 inet` internetes címmel rendelkező portokat keres, és öt sornyi kontextust biztosít a port azonosítójának megjelenítéséhez.
 
 Jegyezze fel az ifconfig jelentésben látható bármely IP-címet. A portok neveivel (például e0a vagy e0b) felsorolt címek jó beállítások. Ne használjon E7 * névvel rendelkező IP-címeket, mivel ezek a nevek csak a iDRAC/IPMI szolgáltatás portjaihoz használatosak.  
 
@@ -167,16 +167,16 @@ A felső szakaszban adja meg az új fürt alapvető információit.
   * Tartalmazhat betűket, számokat és kötőjelet (-) és aláhúzás (_) karaktereket. 
   * Nem tartalmazhat más írásjeleket vagy speciális karaktereket
   
-  Ezt a nevet később is megváltoztathatja a **fürt** > **általános telepítési** konfigurációs lapján. (A fürt beállításaival kapcsolatos további információkért olvassa el a [fürt konfigurációs útmutatóját](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), amely nem része ennek a dokumentáció-készletnek.)
+  Ezt a nevet később is megváltoztathatja a **fürt**  >  **általános telepítési** konfigurációs lapján. (A fürt beállításaival kapcsolatos további információkért olvassa el a [fürt konfigurációs útmutatóját](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), amely nem része ennek a dokumentáció-készletnek.)
 
   > [!NOTE] 
   > A fürt neve azonosítja a figyelési vagy hibaelhárítási támogatáshoz feltöltött rendszerinformációkat, így hasznos lehet a vállalat nevének belefoglalása.
 
-* **Rendszergazdai jelszó** – az alapértelmezett rendszergazda felhasználó jelszavának beállítása `admin`.
+* **Rendszergazdai jelszó** – az alapértelmezett rendszergazda felhasználó jelszavának beállítása `admin` .
   
-  Egyéni felhasználói fiókokat kell beállítania minden olyan személy számára, aki felügyeli a fürtöt, de nem távolíthatja el a felhasználót `admin`. Jelentkezzen be `admin` , ha további felhasználókat kell létrehoznia.
+  Egyéni felhasználói fiókokat kell beállítania minden olyan személy számára, aki felügyeli a fürtöt, de nem távolíthatja el a felhasználót `admin` . Jelentkezzen be, `admin` Ha további felhasználókat kell létrehoznia.
  
-  A jelszót `admin` a fürt Vezérlőpultjának **Adminisztráció** > **felhasználói** beállítások lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  A jelszót a `admin` **Administration**  >  fürt Vezérlőpultjának adminisztráció**felhasználói** beállítások lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -204,7 +204,7 @@ A **felügyeleti** szakaszban található beállítások olyan hálózatra vonat
 
 * **Felügyeleti IP** -Cím – Itt adhatja meg azt az IP-címet, amelyet a fürt Vezérlőpultjának eléréséhez fog használni. Ezt a címeket a fürt elsődleges csomópontja igényli, de automatikusan egy kifogástalan állapotú csomópontra kerül, ha az eredeti elsődleges csomópont elérhetetlenné válik.
 
-  A legtöbb fürt csak egy felügyeleti IP-címet használ. Ha egynél többre van szüksége, a fürt létrehozása után is hozzáadhatja őket a **fürt** > **felügyeleti hálózati** beállítások lapján. További információ a [fürt konfigurációs útmutatójában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html)olvasható.
+  A legtöbb fürt csak egy felügyeleti IP-címet használ. Ha egynél többre van szüksége, a fürt létrehozása után is hozzáadhatja őket a **fürt**  >  **felügyeleti hálózati** beállítások lapján. További információ a [fürt konfigurációs útmutatójában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html)olvasható.
 
 * **Hálózati maszk** – a felügyeleti hálózat hálózati maszkjának megadása.
 
@@ -212,7 +212,7 @@ A **felügyeleti** szakaszban található beállítások olyan hálózatra vonat
 
 * **VLAN-címke (nem kötelező)** – ha a fürt VLAN-címkéket használ, adja meg a felügyeleti hálózat címkéjét.
 
-  További VLAN-beállítások vannak konfigurálva a **fürt** > **VLAN** -beállításai lapon. További információért olvassa el a VLAN-ok és a [fürt > VLAN](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) [használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) a fürt konfigurációs útmutatójában című témakört.
+  További VLAN-beállítások vannak konfigurálva a **fürt**  >  **VLAN** -beállításai lapon. További információért olvassa el a VLAN-ok és a [fürt > VLAN](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) [használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) a fürt konfigurációs útmutatójában című témakört.
 
 * **MTU** – ha szükséges, állítsa be a fürt felügyeleti hálózatának maximális átviteli egységét (MTU).
 
@@ -226,7 +226,7 @@ A fürt hálózati beállításai a fürtcsomópontok között, valamint a fürt
 
 * **Első IP** -cím és **utolsó IP** – adja meg azokat az IP-címeket, amelyek meghatározzák a fürt belső kommunikációjához használt tartományt. Az itt használt IP-címeknek összefüggőnek kell lennie, és a DHCP nem rendeli hozzá őket.
 
-  A fürt létrehozása után további IP-címeket is hozzáadhat. Használja a **fürt** > **hálózati** beállításait tartalmazó lapot (a[fürt konfigurációs útmutatójának dokumentációja](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
+  A fürt létrehozása után további IP-címeket is hozzáadhat. Használja a **fürt**  >  **hálózati** beállításait tartalmazó lapot (a[fürt konfigurációs útmutatójának dokumentációja](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
 
   A tartományban lévő **IP-címek számának** értékét a rendszer automatikusan kiszámítja és megjeleníti.
 
@@ -282,7 +282,7 @@ A fürt létrehozása után testre kell szabnia a hálózat és a munkafolyamat 
 
 Az új fürt beállításához használja a Vezérlőpult webes felületét. Kövesse a fürt létrehozási állapota képernyő hivatkozását, vagy keresse meg a fürtön beállított felügyeleti IP-címet.
 
-Jelentkezzen be a webes felületen a fürt létrehozásakor beállított felhasználónévvel `admin` és jelszóval.
+Jelentkezzen be a webes felületen a `admin` fürt létrehozásakor beállított felhasználónévvel és jelszóval.
 
 ![a Vezérlőpult bejelentkezési mezőinek megjelenítéséhez használt webböngésző](media/fxt-cluster-create/admin-login.png)
 
@@ -371,7 +371,7 @@ Az Azure FXT Edge Filer-fürt automatikusan feltöltheti a fürt támogatási ad
 
 A támogatási feltöltések beállításához kövesse az alábbi lépéseket.
 
-1. Navigáljon a **fürt** > **támogatási** beállításai lapra. Fogadja el az adatvédelmi szabályzatot. 
+1. Navigáljon a **fürt**  >  **támogatási** beállításai lapra. Fogadja el az adatvédelmi szabályzatot. 
 
    ![Képernyőfelvétel: a Vezérlőpult és az előugró ablak, amely a Confirm (megerősítés) gombbal fogadja el az adatvédelmi szabályzatot](media/fxt-cluster-create/fxt-privacy-policy.png)
 

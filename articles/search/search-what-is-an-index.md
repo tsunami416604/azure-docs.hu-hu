@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282782"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Alapszintű index létrehozása az Azure Cognitive Searchban
@@ -145,7 +144,7 @@ A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb r
 A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.
 
 ### <a name="data-types"></a>Adattípusok
-| Típus | Leírás |
+| Típus | Description |
 | --- | --- |
 | *Edm.String* |A teljes szöveges kereséshez (Word-Breaking, fakadóan stb.) tartozó szöveg, amely lehet jogkivonatos. |
 | *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
@@ -153,7 +152,7 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 | *Edm.Int32* |32 bites egész számok. |
 | *Edm.Int64* |64 bites egész számok. |
 | *Edm.Double* |Kétszeres pontosságú numerikus adatok. |
-| *Edm.DateTimeOffset* |A dátum- `yyyy-MM-ddTHH:mm:ss.fffZ` és időértékek a OData v4 formátumban (például vagy `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`) jelennek meg. |
+| *Edm.DateTimeOffset* |A dátum-és időértékek a OData v4 formátumban (például `yyyy-MM-ddTHH:mm:ss.fffZ` vagy) jelennek meg `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` . |
 | *Edm.GeographyPoint* |A pont egy konkrét földrajzi helyet jelöl. |
 
 Az Azure Cognitive Search [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)kapcsolatos részletesebb információkat itt talál.
@@ -211,7 +210,7 @@ Az ügyféloldali JavaScriptek alapértelmezés szerint nem hívhatnak meg API-k
 
 A következő beállítások állíthatók be a CORS:
 
-+ **allowedOrigins** (kötelező): Ez azoknak a forrásoknak a listája, amelyek hozzáférést kapnak az indexhez. Ez azt jelenti, hogy az ezektől az eredettől kiszolgált JavaScript-kódok lehetővé teszik az index lekérdezését (feltéve, hogy a megfelelő API-kulcsot biztosítja). Az egyes eredetek általában az `protocol://<fully-qualified-domain-name>:<port>` űrlapból `<port>` származnak, bár gyakran kimaradnak. További részletekért tekintse meg a több [eredetű erőforrás-megosztás (wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) című témakört.
++ **allowedOrigins** (kötelező): Ez azoknak a forrásoknak a listája, amelyek hozzáférést kapnak az indexhez. Ez azt jelenti, hogy az ezektől az eredettől kiszolgált JavaScript-kódok lehetővé teszik az index lekérdezését (feltéve, hogy a megfelelő API-kulcsot biztosítja). Az egyes eredetek általában az űrlapból származnak, `protocol://<fully-qualified-domain-name>:<port>` bár `<port>` gyakran kimaradnak. További részletekért tekintse meg a több [eredetű erőforrás-megosztás (wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) című témakört.
 
   Ha engedélyezni szeretné az összes eredet elérését, a `*` **allowedOrigins** tömb egyetlen elemeként adja meg. *Ez az üzemi keresési szolgáltatások esetében nem ajánlott* , de gyakran hasznos a fejlesztéshez és a hibakereséshez.
 

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 5de9fe7c81059c56c99a55ca066e186cbf83c50f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887879"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Méretezési csoport létrehozása speciális rendszerkép-verzióval az Azure CLI használatával
 
-Méretezési csoport létrehozása egy megosztott rendszerkép-katalógusban tárolt [speciális rendszerkép-verzióból](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) . Ha általánosított rendszerkép-verzió használatával szeretne méretezési készletet létrehozni, tekintse meg [a virtuális gép létrehozása általánosított rendszerkép-verzióból](instance-generalized-image-version-cli.md)című témakört.
+Méretezési csoport létrehozása egy megosztott rendszerkép-katalógusban tárolt [speciális rendszerkép-verzióból](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) . Ha általánosított rendszerkép-verzió használatával szeretne méretezési készletet létrehozni, tekintse meg [a méretezési csoport létrehozása általánosított rendszerképből](instance-generalized-image-version-cli.md)című témakört.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.4.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -36,9 +36,9 @@ az sig image-definition list \
    --output tsv
 ```
 
-Méretezési csoport létrehozása a [`az vmss create`](/cli/azure/vmss#az-vmss-create) `--specialized` (z) paraméter használatával, amely jelzi, hogy a rendszerkép egy speciális rendszerkép.
+Méretezési csoport létrehozása [`az vmss create`](/cli/azure/vmss#az-vmss-create) a (z `--specialized` ) paraméter használatával, amely jelzi, hogy a rendszerkép egy speciális rendszerkép.
 
-A rendszerkép `--image` -definíció azonosítójának használatával hozza létre a méretezési csoport példányait az elérhető lemezkép legújabb verziójából. A méretezési csoport példányait egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának AZONOSÍTÓját `--image`. Vegye figyelembe, hogy egy adott rendszerkép-verzió használata azt jelenti, hogy az Automation sikertelen lehet, ha az adott rendszerkép verziója nem érhető el, mert törölték vagy eltávolították a régióból. Javasoljuk, hogy az új virtuális gép létrehozásához használja a rendszerkép-definíció AZONOSÍTÓját, kivéve, ha egy adott rendszerkép-verzióra van szükség.
+A rendszerkép-definíció AZONOSÍTÓjának használatával `--image` hozza létre a méretezési csoport példányait az elérhető lemezkép legújabb verziójából. A méretezési csoport példányait egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának AZONOSÍTÓját `--image` . Vegye figyelembe, hogy egy adott rendszerkép-verzió használata azt jelenti, hogy az Automation sikertelen lehet, ha az adott rendszerkép verziója nem érhető el, mert törölték vagy eltávolították a régióból. Javasoljuk, hogy az új virtuális gép létrehozásához használja a rendszerkép-definíció AZONOSÍTÓját, kivéve, ha egy adott rendszerkép-verzióra van szükség.
 
 Ebben a példában a *myImageDefinition* rendszerkép legújabb verziójából hozunk létre példányokat.
 

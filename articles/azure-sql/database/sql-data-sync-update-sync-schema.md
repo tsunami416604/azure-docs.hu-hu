@@ -11,12 +11,11 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: eb0c88797dc23c912ce360dbcfd10f210b694fbd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84188194"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,7 +208,7 @@ Ha meg szeretné tisztítani a rekordokat a séma módosításainak nyomon köve
 
 -   A séma módosításait csak abban az adatbázisban végezheti el, amelyben a DDL-trigger létrejött.
 
--   Ha egy helyszíni SQL Server-adatbázist módosít, győződjön meg arról, hogy a séma módosítása támogatott a Azure SQL Databaseban.
+-   Ha módosítást végez egy SQL Server adatbázisban, győződjön meg arról, hogy a séma módosítása támogatott a Azure SQL Databaseban.
 
 -   Ha a séma módosítása a DDL-triggert létrehozó adatbázison kívül más adatbázisokon történik, a módosítások nem replikálódnak. A probléma elkerüléséhez DDL-eseményindítókat hozhat létre a többi végpont változásainak blokkolásához.
 
@@ -225,7 +224,7 @@ További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
     - A PowerShell-lel
         -  [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Azure SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

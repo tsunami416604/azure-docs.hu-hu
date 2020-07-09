@@ -3,12 +3,12 @@ title: Service Health áttekintése | Microsoft Docs
 description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563378"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
 
@@ -21,7 +21,7 @@ A Service Health négy olyan típusú eseményt követ nyomon, amelyek hatással
 1. **Szolgáltatásokkal kapcsolatos problémák** – az Azure-szolgáltatások által jelenleg érintett problémák. 
 2. **Tervezett karbantartás** – közelgő karbantartás, amely hatással lehet a szolgáltatások rendelkezésre állására a jövőben.  
 3. **Egészségügyi tanácsadók** – a figyelmet igénylő Azure-szolgáltatások változásai. Ilyenek például az Azure-szolgáltatások vagy a frissítési követelmények elavulása (például egy támogatott PHP-keretrendszerre való frissítés).
-4. **Biztonsági tanácsadók (előzetes verzió)** – a biztonsággal kapcsolatos értesítések, amelyek befolyásolhatják az Azure-szolgáltatások rendelkezésre állását.
+4. **Biztonsági tanácsadók** – a biztonsággal kapcsolatos értesítések vagy szabálysértések, amelyek befolyásolhatják az Azure-szolgáltatások rendelkezésre állását.
 
 > [!NOTE]
 > Service Health események megtekintéséhez a felhasználóknak meg kell [adni az olvasó szerepkört az](../role-based-access-control/role-assignments-portal.md) előfizetésben.
@@ -36,11 +36,11 @@ A Service Health irányítópult elindításához válassza a portál irányít�
 
 A **szolgáltatással kapcsolatos problémák** nézet az Azure-szolgáltatásokban az erőforrásokat érintő esetleges problémákat mutatja. Megtudhatja, hogy mikor kezdődött el a probléma, és milyen szolgáltatásokat és régiókat érint. A legújabb frissítést is beolvashatja, hogy megtudja, mit tesz az Azure a probléma megoldásához. 
 
-![Szolgáltatási probléma kezelése](./media/service-health-overview/azure-service-health-overview-2.png)
+[![Szolgáltatási probléma kezelése](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 A **lehetséges hatás** lapon megtekintheti a probléma által befolyásolható erőforrások adott listáját. Letöltheti ezeket az erőforrásokat tartalmazó CSV-listát a csapattal való megosztáshoz.
 
-![Szolgáltatási probléma kezelése – hatás](./media/service-health-overview/azure-service-health-overview-4.png)
+[![Szolgáltatási probléma kezelése – hatás](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Tekintse meg a felmerülő problémákat, amelyek hatással lehetnek a szolgáltatásaira
 
@@ -52,7 +52,7 @@ Előfordulhat, hogy az elterjedt szolgáltatásokkal kapcsolatos problémák az 
 
 A probléma kezelésére szolgáló hivatkozásra kattintva kérheti le a problémát. A PDF-fájlok és a CSV-fájlok letöltése a megosztáshoz olyan személyekkel is megosztható, akik nem rendelkeznek hozzáféréssel a Azure Portalhoz.   
 
-![Szolgáltatási probléma kezelése – probléma kezelése](./media/service-health-overview/azure-service-health-overview-3.png)
+[![Szolgáltatási probléma kezelése – probléma kezelése](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>Támogatás kérése a Microsofttól
 
@@ -62,7 +62,7 @@ Forduljon az ügyfélszolgálathoz, ha az erőforrás a probléma megoldása ut�
 
 Az üzleti szempontból kritikus előfizetések, régiók és erőforrástípusok megjelenítéséhez Service Health szűrheti. Mentse a szűrőt, és rögzítse az állapotokat mutató, személyre szabott világtérképet a portál irányítópultján. 
 
-![Személyre szabott állapot-hozzárendelés szűrése](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![Személyre szabott állapot-hozzárendelés szűrése](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![Személyre szabott állapot-hozzárendelés rögzítése](./media/service-health-overview/azure-service-health-overview-6b.png)
 

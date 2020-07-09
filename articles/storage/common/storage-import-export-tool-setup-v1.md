@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan állíthatja be az Azure import/export szolgál
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512231"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Az Azure import/export eszköz beállítása
 A Microsoft Azure Import/Export eszköz a Microsoft Azure Import/Export szolgáltatással használható meghajtó-előkészítési és-javítási eszköz. A következő függvényekhez használhatja az eszközt:  
@@ -60,19 +60,19 @@ Ha egy részlegesen sikertelen importálást próbál kijavítani, a következő
 ## <a name="installing-the-azure-importexport-tool"></a>Az Azure import/export eszköz telepítése  
  Az Azure import/export eszköz az alábbi fájlokat tartalmazza:  
 
-- WAImportExport. exe  
+- WAImportExport.exe  
 
-- WAImportExport. exe. config  
+- WAImportExport.exe.config  
 
-- WAImportExportCore. dll  
+- WAImportExportCore.dll  
 
-- WAImportExportRepair. dll  
+- WAImportExportRepair.dll  
 
-- Microsoft. WindowsAzure. Storage. dll  
+- Microsoft.WindowsAzure.Storage.dll  
 
-- Hddid. dll  
+- Hddid.dll  
 
-  Másolja ezeket a fájlokat egy munkakönyvtárba, például: `c:\WAImportExport`. Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és állítsa be a fenti könyvtárat aktuális könyvtárként.  
+  Másolja ezeket a fájlokat egy munkakönyvtárba, például: `c:\WAImportExport` . Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és állítsa be a fenti könyvtárat aktuális könyvtárként.  
 
   A parancs súgójának kimenetéhez futtassa az eszközt paraméterek nélkül:  
 

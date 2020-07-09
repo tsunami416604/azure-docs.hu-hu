@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416937"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
@@ -56,7 +56,7 @@ Ezt a HTTP-összekötőt a következő célra használhatja:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -68,7 +68,7 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A **Type** tulajdonságot **HttpServer**értékre kell beállítani. | Igen |
+| típus | A **Type** tulajdonságot **HttpServer**értékre kell beállítani. | Igen |
 | url | A webkiszolgáló alap URL-címe. | Igen |
 | enableServerCertificateValidation | Itt adhatja meg, hogy engedélyezi-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését egy HTTP-végponthoz való csatlakozáskor. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa **hamis**értékre a tulajdonságot. | Nem<br /> (az alapértelmezett érték **igaz**) |
 | authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Igen |
@@ -83,7 +83,7 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 | userName (Felhasználónév) | A HTTP-végpont eléréséhez használandó Felhasználónév. | Igen |
 | jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Igen |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -120,8 +120,8 @@ A ClientCertificate-hitelesítés használatához állítsa a **authenticationTy
 Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi számítógép személyes tárolójába van telepítve, adja meg az olvasási engedélyeket a saját üzemeltetésű Integration Runtime számára:
 
 1. Nyissa meg a Microsoft Management Console (MMC) programot. Adja hozzá a **helyi számítógépet**tároló **tanúsítványok** beépülő modult.
-2. Bontsa ki a **tanúsítványok** > **személyes**csomópontot, majd válassza a **tanúsítványok**lehetőséget.
-3. Kattintson a jobb gombbal a tanúsítványra a személyes tárolóban, majd válassza a **minden feladat** > **titkos kulcsok kezelése**lehetőséget.
+2. Bontsa ki a **tanúsítványok**  >  **személyes**csomópontot, majd válassza a **tanúsítványok**lehetőséget.
+3. Kattintson a jobb gombbal a tanúsítványra a személyes tárolóban, majd válassza a **minden feladat**  >  **titkos kulcsok kezelése**lehetőséget.
 3. A **Biztonság** lapon adja hozzá azt a felhasználói fiókot, amelyben a Integration Runtime gazda szolgáltatás (DIAHostService) fut, és olvasási hozzáféréssel rendelkezik a tanúsítványhoz.
 
 **1. példa: a certThumbprint használata**
@@ -174,17 +174,17 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-A HTTP a következő tulajdonságokat támogatja a formátum `location` -alapú adatkészlet beállításai között:
+A HTTP a következő tulajdonságokat támogatja a `location` Formátum-alapú adatkészlet beállításai között:
 
 | Tulajdonság    | Leírás                                                  | Kötelező |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Az adatkészletben `location` található Type tulajdonságot **HttpServerLocation**értékre kell állítani. | Igen      |
-| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. A HTTP-összekötő a következő összevont URL- `[URL specified in linked service][relative URL specified in dataset]`címről másolja az adatait:.   | Nem       |
+| típus        | Az `location` adatkészletben található Type tulajdonságot **HttpServerLocation**értékre kell állítani. | Igen      |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. A HTTP-összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service][relative URL specified in dataset]` .   | Nem       |
 
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -220,18 +220,18 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-A HTTP a következő tulajdonságokat támogatja a Format `storeSettings` -alapú másolási forrás beállításaiban:
+A HTTP a következő tulajdonságokat támogatja a `storeSettings` Format-alapú másolási forrás beállításaiban:
 
 | Tulajdonság                 | Leírás                                                  | Kötelező |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | A Type tulajdonságot `storeSettings` a **HttpReadSettings**értékre kell állítani. | Igen      |
+| típus                     | A Type tulajdonságot a `storeSettings` **HttpReadSettings**értékre kell állítani. | Igen      |
 | requestMethod            | A HTTP-metódus. <br>Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem       |
 | addtionalHeaders         | További HTTP-kérelmek fejlécei.                             | Nem       |
 | requestBody              | A HTTP-kérelem törzse.                               | Nem       |
 | httpRequestTimeout           | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**. | Nem       |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem       |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -285,7 +285,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet **Type** tulajdonságát **HttpFile**értékre kell állítani. | Igen |
+| típus | Az adatkészlet **Type** tulajdonságát **HttpFile**értékre kell állítani. | Igen |
 | relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. | Nem |
 | requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
@@ -339,10 +339,10 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának **Type** tulajdonságát **HttpSource**értékre kell állítani. | Igen |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **HttpSource**értékre kell állítani. | Igen |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | Nem |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565331"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
@@ -41,7 +41,7 @@ A javaslatok létrehozásához adjon hozzá egyet egy [index sémához](https://
 
 + Csak karakterlánc-mezők használata
 
-+ Az alapértelmezett standard Lucene Analyzer (`"analyzer": null`) vagy a [Language Analyzer](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"`) használata a mezőben
++ Az alapértelmezett standard Lucene Analyzer ( `"analyzer": null` ) vagy a [Language Analyzer](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"` ) használata a mezőben
 
 ### <a name="choose-fields"></a>Mezők kiválasztása
 
@@ -136,8 +136,8 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |Tulajdonság      |Leírás      |
 |--------------|-----------------|
 |`name`        |A javaslat neve.|
-|`searchMode`  |A jelölt kifejezésekre való kereséshez használt stratégia. Az egyetlen jelenleg támogatott mód a `analyzingInfixMatching`(z), amely jelenleg a kifejezés kezdetének felel meg.|
-|`sourceFields`|Egy vagy több olyan mező listája, amely a javaslatok forrását képezi. A mezőknek Type és `Edm.String` `Collection(Edm.String)`típusúnak kell lenniük. Ha a mezőben egy analizátor van megadva, akkor a [listán szereplő](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) elemzőnek (nem egyéni elemzőnek) kell lennie.<p/> Ajánlott eljárásként csak azokat a mezőket kell megadnia, amelyek a várt és a megfelelő választ adják meg, legyen szó egy keresési sávon vagy egy legördülő listában szereplő befejezett sztringről.<p/>A Hotel neve jó jelölt, mert pontossággal rendelkezik. A részletes mezők, például a leírások és a megjegyzések túl sűrűk. Ehhez hasonlóan az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban bemutatjuk a "kategória" kifejezést is, amely azt mutatja be, hogy több mezőt is tartalmazhat. |
+|`searchMode`  |A jelölt kifejezésekre való kereséshez használt stratégia. Az egyetlen jelenleg támogatott mód a (z `analyzingInfixMatching` ), amely jelenleg a kifejezés kezdetének felel meg.|
+|`sourceFields`|Egy vagy több olyan mező listája, amely a javaslatok forrását képezi. A mezőknek Type és típusúnak kell lenniük `Edm.String` `Collection(Edm.String)` . Ha a mezőben egy analizátor van megadva, akkor a [listán szereplő](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) elemzőnek (nem egyéni elemzőnek) kell lennie.<p/> Ajánlott eljárásként csak azokat a mezőket kell megadnia, amelyek a várt és a megfelelő választ adják meg, legyen szó egy keresési sávon vagy egy legördülő listában szereplő befejezett sztringről.<p/>A Hotel neve jó jelölt, mert pontossággal rendelkezik. A részletes mezők, például a leírások és a megjegyzések túl sűrűk. Ehhez hasonlóan az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban bemutatjuk a "kategória" kifejezést is, amely azt mutatja be, hogy több mezőt is tartalmazhat. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -155,7 +155,7 @@ Egy keresési alkalmazásban az ügyfél kódjának egy olyan könyvtárat kell 
 Az API-használat a következő, az automatikus kiegészítési REST APIra irányuló hívásban látható. Ebből a példából két elvihetőség van. Először is, ahogy az összes lekérdezés esetében, a művelet egy index dokumentumainak gyűjteményén alapul, és a lekérdezés tartalmaz egy **keresési** paramétert, amely ebben az esetben a részleges lekérdezést biztosítja. Másodszor, **suggesterName** kell hozzáadnia a kéréshez. Ha egy javaslat nincs definiálva az indexben, az automatikus kiegészítés vagy a javaslatok sikertelenek lesznek.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

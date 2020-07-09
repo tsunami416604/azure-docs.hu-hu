@@ -3,16 +3,16 @@ title: A Azure AD Domain Services használata az SMB-en keresztüli fájlok elé
 description: Megtudhatja, hogyan engedélyezheti az identitás-alapú hitelesítést a Server Message Block (SMB) protokollon keresztül Azure Files a Azure Active Directory Domain Services használatával. A tartományhoz csatlakoztatott Windows-alapú virtuális gépek (VM-EK) az Azure AD-beli hitelesítő adatok használatával érhetik el az Azure-fájlmegosztást.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 02/21/2020
+ms.topic: how-to
+ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510388"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files
 
@@ -22,6 +22,7 @@ Az Azure-fájlmegosztás SMB protokollon keresztüli Azure AD-hitelesítésének
 
 > [!NOTE]
 > Azure Files támogatja a Kerberos-hitelesítést az Azure AD DS és az RC4-HMAC titkosítás révén. Az AES Kerberos-titkosítás még nem támogatott.
+> A Azure Files az Azure AD-vel való teljes szinkronizálással támogatja az Azure AD DS hitelesítését. Ha engedélyezte a hatókörön belüli szinkronizálást az Azure AD DSban, amely csak korlátozott számú identitást szinkronizál az Azure AD-ből, a hitelesítés és az engedélyezés nem támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,6 +55,10 @@ Mielőtt engedélyezte az Azure AD-t az Azure-fájlmegosztás SMB-en keresztül,
 1.  **Ellenőrizze Azure Files kapcsolatot az Azure-fájlmegosztás a Storage-fiók kulcsa használatával történő csatlakoztatásával.**
 
     Annak ellenőrzéséhez, hogy a virtuális gép és a fájlmegosztás megfelelően van-e konfigurálva, próbálja meg csatlakoztatni a fájlmegosztást a Storage-fiók kulcsa alapján. További információ: [Azure-fájlmegosztás csatlakoztatása és a megosztás elérése a Windowsban](storage-how-to-use-files-windows.md).
+
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+
+Az Azure AD DS Azure Files hitelesítés az [összes Azure-beli nyilvános régióban](https://azure.microsoft.com/global-infrastructure/locations/)elérhető.
 
 ## <a name="overview-of-the-workflow"></a>A munkafolyamat áttekintése
 
@@ -119,7 +124,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Ha engedélyezni szeretné az Azure AD-hitelesítést az SMB protokollon keresztül az Azure CLI-vel, telepítse a CLI legújabb verzióját (2.0.70 vagy újabb verzió). Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Hozzon létre egy új Storage-fiókot az[az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)paranccsal, és `--enable-files-aadds` állítsa a tulajdonságot **true (igaz**) értékre. A következő példában ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. (Ha az előző előzetes modult használta, a szolgáltatás engedélyezésének paramétere a **file-HRE**.)
+Hozzon létre egy új Storage-fiókot az [az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)paranccsal, és állítsa a `--enable-files-aadds` tulajdonságot **true (igaz**) értékre. A következő példában ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. (Ha az előző előzetes modult használta, a szolgáltatás engedélyezésének paramétere a **file-HRE**.)
 
 ```azurecli-interactive
 # Create a new storage account
@@ -142,4 +147,4 @@ Sikeresen engedélyezte az Azure AD DS hitelesítést az SMB protokollon kereszt
 A Azure Files és az Azure AD SMB használatával történő használatáról további információt az alábbi forrásokban talál:
 
 - [Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md)
-- [GYIK](storage-files-faq.md)
+- [Gyakori kérdések](storage-files-faq.md)

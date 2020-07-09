@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744113"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133672"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -22,11 +22,16 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 ## <a name="general"></a>Általános kérdések
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
+
 Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információk](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
 Nem, ez egy nem támogatott forgatókönyv.
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Mit tesz Site Recovery az adatok integritásának biztosításához?
+
+Az adatok integritásának biztosítása érdekében a Site Recovery különböző intézkedéseket tett. A HTTPS protokoll használatával biztonságos kapcsolat jön az összes szolgáltatás között. Ez gondoskodik arról, hogy a kártevők és a külső entitások ne tudják meghamisítani az adatvédelmet. Egy másik mérték ellenőrzőösszegeket használ. A forrás és a cél közötti adatátvitelt a közöttük lévő adatok számítási ellenőrzőösszegei végzik. Ez biztosítja, hogy az átvitt adatforgalom konzisztens legyen.
 
 ## <a name="service-providers"></a>Szolgáltatók
 
@@ -51,7 +56,7 @@ Nem, az Azure Storage-ba replikálja az adatait az előfizetésében. Ha feladat
 Igen.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Jelenleg milyen platformok támogatottak?
-Támogatjuk az Azure Pack, a Cloud platform System és a System Center-alapú (2012-es és újabb) üzembe helyezést. [További](https://technet.microsoft.com/library/dn850370.aspx) információ az Azure Pack és a site Recovery integrációról.
+Támogatjuk az Azure Pack, a Cloud platform System és a System Center-alapú (2012-es és újabb) üzembe helyezést. [További](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) információ az Azure Pack és a site Recovery integrációról.
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Támogatott az egyetlen Azure Pack-re és az egyetlen VMM-kiszolgálóra alapuló üzembe helyezési modell?
 Igen, a Hyper-V virtuális gépek replikálása az Azure-ba vagy a szolgáltatói helyek között végezhető el.  Vegye figyelembe, hogy ha a szolgáltatói helyek között replikál, az Azure runbook-integráció nem érhető el.
@@ -100,7 +105,7 @@ A Site Recovery ISO 27001:2013, 27018, HIPAA, DPA tanúsítvánnyal rendelkezik,
 Igen. Amikor létrehoz egy Site Recovery tárolót egy régióban, biztosítjuk, hogy a replikáció és a feladatátvétel engedélyezéséhez és előkészítéséhez szükséges metaadatok a régió földrajzi határain belül maradnak.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>A Site Recovery titkosítja a replikációt?
-A virtuális gépek és a fizikai kiszolgálók esetében a replikálása a helyszíni helyek között a titkosítás-átvitel során támogatott. Az Azure-ba replikált virtuális gépek és fizikai kiszolgálók esetében a titkosítást és a [titkosítást](https://docs.microsoft.com/azure/storage/storage-service-encryption) is támogatja az Azure-ban.
+A virtuális gépek és a fizikai kiszolgálók esetében a replikálása a helyszíni helyek között a titkosítás-átvitel során támogatott. Az Azure-ba replikált virtuális gépek és fizikai kiszolgálók esetében a titkosítást és a [titkosítást](../storage/common/storage-service-encryption.md) is támogatja az Azure-ban.
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Az Azure-hoz-Azure Site Recovery a TLS 1,2-et használja az Azure összes szolgáltatásával kapcsolatos kommunikációhoz?
 Igen, az Azure-Azure Site Recovery forgatókönyvhöz alapértelmezés szerint a TLS 1,2 protokollt kell kikényszeríteni. 
@@ -128,7 +133,7 @@ Igen. Ha a fiókirodákban a replikáció és a feladatátvétel összekapcsolá
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Az Azure-beli virtuális gépek esetében támogatott a vész-helyreállítási szolgáltatás?
 
-Igen, Site Recovery támogatja az Azure-beli virtuális gépek Azure-régiók közötti katasztrófáját. [Tekintse át](azure-to-azure-common-questions.md) az Azure virtuális gépek vész-helyreállítási szolgáltatásával kapcsolatos gyakori kérdéseket.
+Igen, Site Recovery támogatja az Azure-beli virtuális gépek Azure-régiók közötti katasztrófáját. [Tekintse át](azure-to-azure-common-questions.md) az Azure virtuális gépek vész-helyreállítási szolgáltatásával kapcsolatos gyakori kérdéseket. Ha két Azure-régió között szeretne replikálni ugyanazon a kontinensen, használja az Azure-t az Azure-beli DR-ajánlathoz. Nem kell beállítania a konfigurációs kiszolgáló/folyamat kiszolgálóját és a ExpressRoute-kapcsolatokat.
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Támogatott-e a vész-helyreállítási szolgáltatás a VMware virtuális gépeken?
 
@@ -193,9 +198,42 @@ A dinamikus lemezek a Hyper-V rendszerű virtuális gépek replikálásakor és 
 Igen. A sávszélesség szabályozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [A VMware virtuális gépek és fizikai kiszolgálók replikálásának kapacitásának megtervezése](site-recovery-plan-capacity-vmware.md)
-* [A Hyper-V virtuális gépek Azure-ba történő replikálásának kapacitásának megtervezése](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [A Hyper-V virtuális gépek Azure-ba történő replikálásának kapacitásának megtervezése](./hyper-v-deployment-planner-overview.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Engedélyezhető a replikáció az App-konzisztencia használatával a Linux-kiszolgálókon? 
+Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az előzetes és utáni beállításokkal rendelkező egyéni szkriptet a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazások konzisztenciája során. Az alábbi lépésekkel engedélyezheti.
 
+1. Jelentkezzen be root-ként a gépre.
+2. Módosítsa a könyvtárat Azure Site Recovery mobilitási ügynök telepítési helyére. Az alapértelmezett érték a "/usr/local/ASR"<br>
+    `# cd /usr/local/ASR`
+3. A telepítés helye alatt váltson a "VX/Scripts" könyvtárra.<br>
+    `# cd VX/scripts`
+4. Hozzon létre egy "customscript.sh" nevű bash shell-szkriptet a root user végrehajtási engedélyeivel.<br>
+    a. A parancsfájlnak támogatnia kell a "--pre" és a "--post" (a dupla kötőjeleket) parancssori kapcsolókat.<br>
+    b. Ha a parancsfájlt előzetes beállítással hívja meg, akkor az alkalmazás bemenetének/kimenetének rögzítése, valamint a post-Option paraméterrel való hívás esetén fel kell szólítani az alkalmazás bemenetét/kimenetét.<br>
+    c. Egy minta sablon –<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Adja hozzá a bemeneti/kimeneti parancsok befagyasztása és feloldása az alkalmazás-konzisztenciaot igénylő alkalmazások előzetes és utólagos lépéseiben. Dönthet úgy is, hogy hozzáad egy másik szkriptet, és meghívja azt a "customscript.sh" értékkel a pre és a post kapcsolóval.
+
+>[!Note]
+>Az egyéni parancsfájlok támogatásához a Site Recovery-ügynök verziószámának 9,24-es vagy újabb verziójúnak kell lennie.
 
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
@@ -216,7 +254,7 @@ A helyszíni Orchestrator vagy Operations Manager segítségével automatizálha
 
 * [További](site-recovery-create-recovery-plans.md) információ a helyreállítási tervekről.
 * [További](site-recovery-failover.md) információ a feladatátvételről.
-* [További](site-recovery-failback-azure-to-vmware.md) információ a VMWare virtuális gépek és a fizikai kiszolgálók meghibásodásáról
+* [További](./vmware-azure-failback.md) információ a VMWare virtuális gépek és a fizikai kiszolgálók meghibásodásáról
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Ha a helyszíni gazdagép nem válaszol vagy összeomlott, Visszatérhetek egy másik gazdagépre?
 Igen, a másik helyre történő helyreállítást használhatja a feladat-visszavételhez egy másik gazdagépre az Azure-ból.
@@ -239,6 +277,5 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)
-

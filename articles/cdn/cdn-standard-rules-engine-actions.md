@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259952"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Műveletek a standard szabályok motorban Azure CDN
@@ -30,7 +29,7 @@ Ezzel a művelettel írhatja felül a végpont élettartam (TTL) értékét azon
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Gyorsítótár viselkedése |  Leírás              
+Gyorsítótár viselkedése |  Description              
 ---------------|----------------
 Gyorsítótár megkerülése | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer nem gyorsítótárazza a tartalmat.
 Felülbírálás | Ha ez a beállítás be van jelölve, és a szabály egyezést ad meg, a rendszer felülírja a forrásból visszaadott TTL-értéket a műveletben megadott értékkel.
@@ -38,7 +37,7 @@ Ha hiányzik, állítsa be | Ha ez a beállítás be van jelölve, és a szabál
 
 #### <a name="additional-fields"></a>További mezők
 
-Napok | Óra | Percek | Másodperc
+Nap | Óra | Percek | Másodperc
 -----|-------|---------|--------
 Int | Int | Int | Int 
 
@@ -48,7 +47,7 @@ Ezzel a művelettel módosíthatja a gyorsítótár-kulcsot a lekérdezési kara
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Viselkedés | Leírás
+Viselkedés | Description
 ---------|------------
 Belefoglalás | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok a gyorsítótár kulcsának létrehozásakor is szerepelni tudnak. 
 Minden egyedi URL gyorsítótárazása | Ha ez a beállítás be van jelölve, és a szabály megfelel, minden egyedi URL-cím saját gyorsítótár-kulccsal rendelkezik. 
@@ -85,12 +84,12 @@ Ezzel a művelettel átirányíthatja az ügyfeleket egy új URL-címre.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Mező | Leírás 
+Mező | Description 
 ------|------------
 Típus | Válassza ki a kérelmezőnek visszatérni kívánt választ: talált (302), áthelyezett (301), ideiglenes átirányítás (307) és végleges átirányítás (308).
-Protocol (Protokoll) | Egyeztetési kérelem, HTTP, HTTPS.
+Protokoll | Egyeztetési kérelem, HTTP, HTTPS.
 Gazdanév | Válassza ki annak az állomásnak a nevét, amelyre át szeretné irányítani a kérést. Hagyja üresen a bejövő gazdagép megőrzését.
-Útvonal | Adja meg az átirányításhoz használandó elérési utat. Hagyja üresen a bejövő elérési út megőrzését.  
+Elérési út | Adja meg az átirányításhoz használandó elérési utat. Hagyja üresen a bejövő elérési út megőrzését.  
 Lekérdezési sztring | Adja meg az átirányítás során használt lekérdezési karakterláncot. Hagyja üresen a bejövő lekérdezési karakterlánc megőrzését. 
 Töredék | Adja meg az átirányítás során használandó kódrészletet. Hagyja üresen a bejövő töredék megőrzése érdekében. 
 
@@ -102,9 +101,9 @@ Ezzel a művelettel átírhatja egy olyan kérelem elérési útját, amely útb
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Mező | Leírás 
+Mező | Description 
 ------|------------
-Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvonalon. Jelenleg a forrás minta előtag-alapú egyezést használ. Az összes URL-cím eléréséhez használjon egy perjelet**/**() a forrás minta értékének megfelelően.
+Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvonalon. Jelenleg a forrás minta előtag-alapú egyezést használ. Az összes URL-cím eléréséhez használjon egy perjelet ( **/** ) a forrás minta értékének megfelelően.
 Cél | Adja meg az újraíráshoz használandó célhely elérési útját. A cél elérési útja felülírja a forrás mintát.
 Páratlan elérési út megőrzése | Ha az **Igen**értékre van állítva, a rendszer a forrás minta után hátralévő elérési utat hozzáfűzi az új cél elérési úthoz. 
 

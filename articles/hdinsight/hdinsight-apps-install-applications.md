@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: c8c0644a84b917acff60060a0c48f8e9aac30e16
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f9eb573573ef70c8e5336ea6cca5f247e9ec0041
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086517"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Apache Hadoop alkalmazások telepítése az Azure HDInsight
 
@@ -23,7 +23,7 @@ An méretű HDInsight alkalmazás egy olyan alkalmazás, amelyet a felhasználó
 
 A közzétett alkalmazások a következő listában láthatók:
 
-|Alkalmazás |Fürt típusa (i) | Leírás |
+|Alkalmazás |Fürt típusa (i) | Description |
 |---|---|---|
 |[AtScale Intelligence platform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |A AtScale bekapcsolja a HDInsight-fürtöt egy kibővített OLAP-kiszolgálóra, amely lehetővé teszi, hogy több milliárd sornyi adatsort interaktív módon tudjon lekérdezni a már ismert BI-eszközökkel, a saját és a szeretettel – a Microsoft Excel, a Power BI, a tabló szoftver és a QlikView használatával. |
 |[CDAP a HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |A CDAP az első olyan egységesített integrációs big data platform, amely felgyorsítja a Hadoop értékét, és lehetővé teszi az informatikai szolgáltatások számára az önkiszolgáló adattárolást. A nyílt forráskód és a bővíthető CDAP eltávolítja az innováció akadályait. Követelmények: 4 régiós csomópont, min D3 v2. |
@@ -89,7 +89,7 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
     |Állapot |Az alkalmazás állapota. |
     |Weblap |A peremhálózati csomóponton üzembe helyezett webalkalmazás URL-címe. A hitelesítő adatok ugyanazok, mint amelyeket a fürthöz beállított HTTP-felhasználónál használt. |
     |SSH-végpont |Az SSH használatával csatlakozhat a peremhálózati csomóponthoz. Az SSH hitelesítő adatai ugyanazok, mint amelyeket a fürthöz beállított SSH-felhasználónál használt. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Leírás | Az alkalmazás leírása. |
+    |Description | Az alkalmazás leírása. |
 
 6. Egy alkalmazás törléséhez kattintson a jobb gombbal az alkalmazásra, majd a helyi menüben kattintson a **Törlés** parancsra.
 

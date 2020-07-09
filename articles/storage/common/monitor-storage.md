@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684903"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955165"
 ---
 # <a name="monitor-azure-storage"></a>Az Azure Storage figyelése
 
@@ -78,7 +78,9 @@ Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A nap
 
 A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, az Azure CLI vagy a PowerShell használatával történő létrehozásával kapcsolatban lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
 
-Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, amelyhez engedélyezni szeretné a naplókat, például blob, üzenetsor, tábla vagy fájl. Ha a diagnosztikai beállítást a Azure Portal hozza létre, kiválaszthatja az erőforrást egy listából. Ha a PowerShellt vagy az Azure CLI-t használja, akkor a tárolási típus erőforrás-AZONOSÍTÓját kell használnia. A Azure Portal erőforrás-AZONOSÍTÓját a Storage-fiók **tulajdonságlapjának** megnyitásával érheti el.
+Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, amelyhez engedélyezni szeretné a naplókat, például blob, üzenetsor, tábla vagy fájl. Data Lake Storage Gen2 nem jelenik meg tárolási típusként. Ennek az az oka, hogy Data Lake Storage Gen2 a blob Storage számára elérhető képességek halmaza. 
+
+Ha a diagnosztikai beállítást a Azure Portal hozza létre, kiválaszthatja az erőforrást egy listából. Ha a PowerShellt vagy az Azure CLI-t használja, akkor a tárolási típus erőforrás-AZONOSÍTÓját kell használnia. A Azure Portal erőforrás-AZONOSÍTÓját a Storage-fiók **tulajdonságlapjának** megnyitásával érheti el.
 
 Meg kell adnia azoknak a műveleteknek a kategóriáit is, amelyekhez naplókat kíván gyűjteni. Az Azure Storage kategóriái az alábbi táblázatban láthatók.
 
@@ -337,12 +339,14 @@ További információ: [Bevezetés a log Analytics használatába Azure monitor]
 
 Az adattárolás ezekben a táblázatokban történik.
 
-| Táblázat | Description |
+| Táblázat | Leírás |
 |:---|:---|
 |StorageBlobLogs | A blob Storage-ban tevékenységet leíró naplók. |
 |StorageFileLogs | A fájlmegosztás tevékenységeit leíró naplók. |
 |StorageQueueLogs | A várólistákban tevékenységet leíró naplók.|
 |StorageTableLogs| A táblákban tevékenységet leíró naplók.|
+
+A Data Lake Storage Gen2 naplói nem jelennek meg egy dedikált táblában. Ennek oka, hogy Data Lake Storage Gen2 nem szolgáltatás. Ez a funkció egy blob Storage-fiókban is engedélyezhető. Ha engedélyezte ezeket a képességeket, a naplók továbbra is megjelennek a StorageBlobLogs táblában. 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Storage Log Analytics-lekérdezések Azure Monitor
 
@@ -407,4 +411,3 @@ Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszáma
 - Az Azure Storage által létrehozott naplók és mérőszámok ismertetését az [Azure Storage-figyelési adatok referenciája](monitor-storage-reference.md)című témakörben tekintheti meg.
 - Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).
 - A metrikák áttelepítésével kapcsolatos további információkért lásd: [Azure Storage-metrikák áttelepítése](./storage-metrics-migration.md).
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250516"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042118"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -85,7 +85,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt a futtatáshoz (https:\//RAW.githubusercontent.com/Me/Project/Hello.sh) a saját adataival. 
+Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt a futtatáshoz (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) a saját adataival. 
 
 ```azurecli
 az vm extension set `
@@ -115,7 +115,7 @@ Az alábbi képen látható, hogyan telepíthető a Linux Custom script bővítm
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON egy olyan Resource Manager-sablonból származik, amely elosztott terhelésű virtuális gépeket és egy Azure SQL Database-adatbázist telepít, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
+A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON egy olyan Resource Manager-sablonból származik, amely elosztott terhelésű virtuális gépeket és Azure SQL Database telepít, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
 
 További információ: teljes [Resource Manager-sablon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
@@ -241,7 +241,7 @@ Ha az ügynök telepítve van, a rendszer egy szülő démont hoz létre. Ez a s
 
 A fölérendelt folyamat nem frissíthető automatikusan. A szülőt csak a disztribúciós csomag frissítésével lehet frissíteni.
 
-A futtatott verziót a `waagent` következőképpen tekintheti meg:
+A futtatott verziót a következőképpen tekintheti meg `waagent` :
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Linux-ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a */var/log/waagent.log* -ben
 
-2. További részletek a *\</var/log/Azure/extensionName>*
+2. A */var/log/Azure/ \<extensionName> * kapcsolatos további részletekért olvassa el a tényleges kiterjesztési naplókat
 
 3. A bővítményekre vonatkozó dokumentációs hibaelhárítási szakaszt a hibakódok, az ismert problémák stb. című szakaszban tekintheti meg.
 
@@ -403,7 +403,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
 ## <a name="common-vm-extension-reference"></a>Általános virtuálisgép-bővítmény leírása
 
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéni parancsfájl-kiterjesztés Linux rendszerhez |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-kiterjesztés Linux rendszerhez](custom-script-linux.md) |
 | Virtuálisgép-hozzáférési bővítmény |Azure-beli virtuális gép hozzáférésének visszanyerése |[Virtuálisgép-hozzáférési bővítmény](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

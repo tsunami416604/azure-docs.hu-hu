@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882773"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609469"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Elemzés hozzáadása a Bing Search API-khoz
 
 A Bing Statistics a Bing Search API-k elemzését biztosítja. Ezek az elemzések közé tartozik a hívás mennyisége, a legnépszerűbb lekérdezési karakterláncok, a földrajzi eloszlás és sok más. A Bing-statisztikákat a [Azure Portalban](https://ms.portal.azure.com) engedélyezheti az Azure-erőforráshoz való navigálás és a **Bing-statisztika engedélyezése**lehetőségre kattintva.
 
 > [!IMPORTANT]
-> * A Bing-statisztika nem érhető el ingyenes próbaverziós előfizetéssel vagy az `F0` ingyenes díjszabási szinten található erőforrásokkal.
+> * A Bing-statisztika nem érhető el az ingyenes díjszabási szinten található erőforrásokkal `F0` .
 > * A Bing statisztikai irányítópulton keresztül nem használhat olyan adatokat, amelyek harmadik felek számára történő terjesztésre szolgáló alkalmazásokat hoznak létre.
 > * A Bing-statisztika engedélyezése némileg növeli az előfizetések arányát. A részletekért tekintse meg a [díjszabást](https://aka.ms/bingstatisticspricing) .
 
@@ -46,7 +46,7 @@ Alapértelmezés szerint a diagramok és a diagramok a hozzájuk tartozó össze
 
 - **Erőforrás-azonosító**: az Azure-előfizetést azonosító egyedi erőforrás-azonosító. Ha egynél több Bing Search API-rétegre fizet elő, a lista több azonosítót is tartalmaz. Alapértelmezés szerint az összes erőforrás ki van választva.  
   
-- **Piacok**: azok a piacok, amelyeken az eredmények származnak. Például: en-us (angol, Egyesült Államok). Alapértelmezés szerint minden piac ki van választva. A `en-WW` piac az a piac, amelyet a Bing akkor használ, ha a hívás nem ad meg piacot, és a Bing nem tudja meghatározni a felhasználó piacát.  
+- **Piacok**: azok a piacok, amelyeken az eredmények származnak. Például: en-us (angol, Egyesült Államok). Alapértelmezés szerint minden piac ki van választva. A piac az `en-WW` a piac, amelyet a Bing akkor használ, ha a hívás nem ad meg piacot, és a Bing nem tudja meghatározni a felhasználó piacát.  
   
 - **Végpontok**: a Bing Search API-végpontok. A lista tartalmazza az összes olyan végpontot, amelyhez fizetős előfizetéssel rendelkezik. Alapértelmezés szerint az összes végpont ki van választva.  
 
@@ -92,9 +92,9 @@ A következő lehetséges mérőszámok és végponti korlátozások.
 
 - **Forrás eloszlásának hívása**: a felhasználók által használt böngészők típusai. Például a Microsoft Edge, a Chrome, a Safari és a FireFox. A böngészőn kívüli hívások (például a robotok, a Poster vagy a curl használata a konzolból) a könyvtárak alatt vannak csoportosítva. A forrás meghatározása a kérelem felhasználói ügynök fejlécének értéke alapján történik. Ha a kérelem nem tartalmazza a felhasználói ügynök fejlécét, a Bing megpróbálja származtatni a forrást más jelekből.  
 
-- **Biztonságos Keresés eloszlása**: a biztonságos keresési értékek eloszlása. Például: off, mérsékelt vagy szigorú. Ha `safeSearch` meg van adva, a lekérdezési paraméter tartalmazza az értéket. Ellenkező esetben a Bing a mérsékelt értékre írja az értéket.  
+- **Biztonságos Keresés eloszlása**: a biztonságos keresési értékek eloszlása. Például: off, mérsékelt vagy szigorú. Ha meg van `safeSearch` adva, a lekérdezési paraméter tartalmazza az értéket. Ellenkező esetben a Bing a mérsékelt értékre írja az értéket.  
 
-- **Válasz kért eloszlás**: a `responseFilter` lekérdezési paraméterben kért Web Search API-válaszok.  
+- **Válasz kért eloszlás**: a lekérdezési paraméterben kért Web Search API-válaszok `responseFilter` .  
 
 - **Válaszok visszaadása**: a válaszban Web Search API által visszaadott válaszok.
 

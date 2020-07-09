@@ -3,16 +3,16 @@ title: Fejlesztés az Azure Files Javával | Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre olyan Java-alkalmazásokat és-szolgáltatásokat, amelyek a fájlok tárolásához Azure Files használnak.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54f545c2d4f897f85ab3e5fd10d07666e93e4f41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73837463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509676"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Fejlesztés az Azure Files szolgáltatáshoz Javával
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -186,7 +186,7 @@ Most, hogy már van egy hivatkozása a megosztás gyökérkönyvtárára, feltö
 ```
 
 ## <a name="download-a-file"></a>Fájl letöltése
-Az Azure Files a fájlok letöltésének egyik leggyakoribb művelete. A következő példában a kód letölti a SampleFile. txt fájlt, és megjeleníti annak tartalmát.
+Az Azure Files a fájlok letöltésének egyik leggyakoribb művelete. A következő példában a kód letölti SampleFile.txt és megjeleníti annak tartalmát.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -203,7 +203,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Fájl törlése
-Egy másik gyakori Azure Files művelet a fájl törlése. A következő kód töröl egy SampleFile. txt nevű fájlt, amely egy **sampledir**nevű könyvtárban található.
+Egy másik gyakori Azure Files művelet a fájl törlése. A következő kód törli a **sampledir**nevű könyvtárban tárolt SampleFile.txt nevű fájlt.
 
 ```java
 // Get a reference to the root directory for the share.

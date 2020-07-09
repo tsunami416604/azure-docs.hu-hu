@@ -1,10 +1,9 @@
 ---
 title: SQL Server virtuális gépek tárolási konfigurációja | Microsoft Docs
-description: Ez a témakör azt ismerteti, hogy az Azure hogyan konfigurálja a tárolót SQL Server virtuális gépek számára a kiépítés során (Resource Manager-alapú üzemi modell). Azt is ismerteti, hogyan konfigurálhatja a tárhelyet a meglévő SQL Server virtuális gépekhez.
+description: Ez a témakör azt ismerteti, hogy az Azure hogyan konfigurálja a tárolót SQL Server virtuális gépek számára a kiépítés során (Azure Resource Manager üzembehelyezési modell). Azt is ismerteti, hogyan konfigurálhatja a tárhelyet a meglévő SQL Server virtuális gépekhez.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -13,17 +12,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: f5f71f342152a1f7d524053f1a2f82937784dbd1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044268"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667369"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ha SQL Server virtuálisgép-rendszerképet konfigurál az Azure-ban, a portál segít automatizálni a tárolási konfigurációját. Ide tartozik a tároló csatlakoztatása a virtuális géphez, így a tárterület elérhetővé válik a SQL Server számára, és beállítható úgy, hogy optimalizálja az adott teljesítményre vonatkozó követelményeket.
+SQL Server virtuális gép (VM) rendszerképének az Azure-ban való konfigurálásakor a Azure Portal segíti a tárolási konfiguráció automatizálását. Ide tartozik a tároló csatlakoztatása a virtuális géphez, így a tárterület elérhetővé válik a SQL Server számára, és beállítható úgy, hogy optimalizálja az adott teljesítményre vonatkozó követelményeket.
 
 Ez a témakör azt ismerteti, hogyan konfigurálja az Azure a SQL Server virtuális gépek tárterületét a kiépítés és a meglévő virtuális gépek esetében. Ez a konfiguráció a SQL Server rendszert futtató Azure-beli virtuális gépek [teljesítményének ajánlott eljárásain](performance-guidelines-best-practices.md) alapul.
 
@@ -57,7 +55,7 @@ Ezen kívül lehetősége van a lemezek gyorsítótárazásának beállításár
 
 A prémium SSD lemezes gyorsítótárazása *readonly*, *READWRITE* vagy *none*lehet. 
 
-- A *readonly* gyorsítótárazás nagyon hasznos SQL Server Premium Storage tárolt adatfájlok esetében. Az *írásvédett* gyorsítótárazási szolgáltatás alacsony olvasási késést, nagy olvasási IOPS és átviteli sebességet biztosít, olvasások a gyorsítótárból, amely a virtuális gép memóriájában és a helyi SSD-n belül található. Ezek az olvasások sokkal gyorsabbak, mint az adatlemezről beolvasott adatok, amelyek az Azure Blob Storage-ból származnak. A Premium Storage nem számítja ki a gyorsítótárból kiszolgált adatokat a lemez IOPS és az átviteli sebesség felé. Ezért az Ön megfelelője magasabb teljes IOPS és átviteli sebesség elérésére képes. 
+- A *readonly* gyorsítótárazás nagyon hasznos SQL Server Premium Storage tárolt adatfájlok esetében. Az *írásvédett* gyorsítótárazási szolgáltatás alacsony olvasási késést, nagy olvasási IOPS és átviteli sebességet biztosít, olvasások a gyorsítótárból, amely a virtuális gép memóriájában és a helyi SSD-n belül található. Ezek az olvasások sokkal gyorsabbak, mint az Azure Blob Storage-ból származó adatlemezek olvasása. A Premium Storage nem számítja ki a gyorsítótárból kiszolgált adatokat a lemez IOPS és az átviteli sebesség felé. Ezért az Ön megfelelője magasabb teljes IOPS és átviteli sebesség elérésére képes. 
 - *Nincs* szükség gyorsítótár-konfigurációra a SQL Server naplófájlt futtató lemezekhez, mivel a naplófájlt a rendszer szekvenciálisan írja le, és nem használja az *írásvédett* gyorsítótárazást. 
 - A *READWRITE* gyorsítótárazás nem használható SQL Server fájlok üzemeltetéséhez, mivel SQL Server nem támogatja az adatkonzisztencia a *READWRITE* cache-sel. Az *írásvédett* blobos gyorsítótárban lévő adatmennyiséget írja, és a késleltetések kis mértékben megnő, ha az írások *readonly* blob cache-rétegeken mennek át. 
 
@@ -76,7 +74,7 @@ A lehetőségek alapján az Azure a következő tárolási konfigurációs felad
 
 További információ arról, hogy az Azure hogyan konfigurálja a tárolási beállításokat: [tárolási konfiguráció szakasz](#storage-configuration). A Azure Portal SQL Server VM létrehozásával kapcsolatos teljes útmutatóért tekintse meg [az üzembe helyezési oktatóanyagot](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
-### <a name="resource-manage-templates"></a>Erőforrás-sablonok kezelése
+### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 Ha a következő Resource Manager-sablonokat használja, a rendszer alapértelmezés szerint két prémium szintű adatlemezt csatol, és nem rendelkezik tároló-konfigurációval. Ezeket a sablonokat azonban testreszabhatja úgy, hogy megváltoztassa a virtuális géphez csatolt prémium szintű adatlemezek számát.
 
@@ -113,7 +111,7 @@ Módosíthatja a SQL Server VM létrehozási folyamat során konfigurált meghaj
 
 ## <a name="storage-configuration"></a>Tároló konfigurálása
 
-Ez a szakasz a tárolási konfiguráció változásairól nyújt hivatkozást, amelyeket az Azure automatikusan végrehajt az SQL virtuális gépek üzembe helyezése vagy konfigurálása során a Azure Portal.
+Ez a szakasz az Azure által a Azure Portal SQL Server VM üzembe helyezése vagy konfigurálása során automatikusan elvégezett tárolási konfigurációs módosításokat ismerteti.
 
 * Az Azure a virtuális gépről kiválasztott tárolóból konfigurálja a tárolási készletet. A témakör következő szakasza részletesen ismerteti a Storage-készlet konfigurációját.
 * Az automatikus tárolási konfiguráció mindig [prémium SSD](../../../virtual-machines/windows/disks-types.md) -P30 adatlemezeket használ. Ennek következtében a kiválasztott számú terabájt és a virtuális géphez csatolt adatlemezek száma között van egy 1:1 leképezés.
@@ -141,14 +139,14 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Munkaterhelés típusa | Leírás | Optimalizálás |
+| Munkaterhelés típusa | Description | Optimalizálás |
 | --- | --- | --- |
-| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincs |
+| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |None |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |
 | **Adattárház** |Optimalizálja a tárolót analitikai és jelentéskészítési számítási feladatokhoz |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
 
 > [!NOTE]
-> A számítási feladatok típusát csak akkor adhatja meg, ha kijelöli az SQL-alapú virtuális gépet a tárolási konfiguráció lépésben.
+> A számítási feladatok típusát csak akkor adhatja meg, ha kijelöli a SQL Server virtuális gépet a tárolási konfiguráció lépésben.
 
 ## <a name="next-steps"></a>További lépések
 

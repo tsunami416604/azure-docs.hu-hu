@@ -4,18 +4,18 @@ description: Az Azure Multi-Factor Authentication beállítása a fokozott bizto
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361149"
 ---
-# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure-Multi-Factor Authentication engedélyezése a Windows rendszerű virtuális asztalok számára
+# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Az Azure Multi-Factor Authentication engedélyezése Windows Virtual Desktophoz
 
 A Windows rendszerű virtuális asztal Windows-ügyfele kiváló megoldás a Windows rendszerű virtuális asztalok helyi géppel való integrálására. Ha azonban a Windows rendszerű virtuális asztali fiókját a Windows-ügyfélre konfigurálja, bizonyos intézkedésekre van szükség, hogy a felhasználók biztonságban maradjanak.
 
@@ -39,22 +39,23 @@ A következő lépésekkel kell kezdenie:
 Ez a szakasz bemutatja, hogyan hozhat létre olyan feltételes hozzáférési szabályzatot, amely a Windows rendszerű virtuális asztalhoz való csatlakozáskor többtényezős hitelesítést igényel.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-2. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+2. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 3. Válassza az **új szabályzat**lehetőséget.
 4. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 5. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-   - A **Belefoglalás**területen válassza a **felhasználók és csoportok** > kiválasztása**felhasználók és csoportok** lehetőséget > válassza ki az előfeltételek szakaszban létrehozott csoportot.
+   - A **Belefoglalás**területen válassza a **felhasználók és csoportok kiválasztása**  >  **felhasználók és csoportok** lehetőséget > válassza ki az előfeltételek szakaszban létrehozott csoportot.
    - Válassza a **Done** (Kész) lehetőséget.
-6. A **Cloud apps vagy** > **a**műveletek területen válassza az **alkalmazások kiválasztása**lehetőséget.
+6. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**lehetőséget.
    - Válassza a **Windows rendszerű virtuális asztali** (alkalmazás azonosítója 9cdead84-A844-4324-93f2-b2e6bb768d07) lehetőséget, majd válassza a, majd a **kész** **lehetőséget**.
-   
-     ![Képernyőkép a Cloud apps vagy a Actions lapról. A Windows rendszerű virtuális asztali és a Windows rendszerű virtuális asztali ügyfélprogramok piros színnel vannak kiemelve.](media/cloud-apps-enterprise.png)
+
+     > [!div class="mx-imgBorder"]
+     > ![Képernyőkép a Cloud apps vagy a Actions lapról. A Windows rendszerű virtuális asztali és a Windows rendszerű virtuális asztali ügyfélprogramok piros színnel vannak kiemelve.](media/cloud-apps-enterprise.png)
 
      >[!NOTE]
      >A kijelölni kívánt alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a **vállalati alkalmazások** elemet, és válassza a **Microsoft-alkalmazások** lehetőséget az alkalmazás típusa legördülő menüből.
 
-7. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
-8. A **hozzáférés-vezérlési** > **munkamenet**területen válassza a **bejelentkezési gyakoriság**elemet, állítsa az értéket **1** értékre, a mértékegységet pedig **órákra**, majd válassza a **kiválasztás**lehetőséget.
+7. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
+8. A **hozzáférés-vezérlési**  >  **munkamenet**területen válassza a **bejelentkezési gyakoriság**elemet, állítsa az értéket **1** értékre, a mértékegységet pedig **órákra**, majd válassza a **kiválasztás**lehetőséget.
 9. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 10. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 

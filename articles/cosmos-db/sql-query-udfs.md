@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81011123"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Felhasználó által definiált függvények (UDF) Azure Cosmos DB
@@ -26,13 +25,13 @@ A UDF használatával kiterjesztheti Azure Cosmos DB lekérdezési nyelvét. A U
 Javasoljuk azonban a UDF elkerülését, ha:
 
 - Egy egyenértékű [rendszerfunkció](sql-query-system-functions.md) már létezik a Azure Cosmos DBban. A System functions mindig kevesebb RU-t használ, mint az egyenértékű UDF.
-- Az UDF az egyetlen szűrő a lekérdezés `WHERE` záradékában. Az UDF nem használja az indexet, ezért az UDF kiértékeléséhez dokumentumokat kell betölteni. Az indexet használó további szűrési predikátumok és az UDF együttes használata esetén a `WHERE` záradékban az UDF által feldolgozott dokumentumok száma is csökken.
+- Az UDF az egyetlen szűrő a `WHERE` lekérdezés záradékában. Az UDF nem használja az indexet, ezért az UDF kiértékeléséhez dokumentumokat kell betölteni. Az indexet használó további szűrési predikátumok és az UDF együttes használata esetén a `WHERE` záradékban az UDF által feldolgozott dokumentumok száma is csökken.
 
 Ha ugyanazokat az UDF-ket kell használnia egy lekérdezésben, hivatkoznia kell az UDF-re egy [allekérdezésben](sql-query-subquery.md#evaluate-once-and-reference-many-times), így egy JOIN kifejezéssel kiértékelheti az UDF-t egyszer, de többször is hivatkozhat rájuk.
 
 ## <a name="examples"></a>Példák
 
-Az alábbi példa egy UDF-tárolót regisztrál a Cosmos adatbázisban. A példa létrehoz egy UDF-t, `REGEX_MATCH`amelynek a neve:. Két JSON-karakterlánc-értéket `input` fogad el `pattern`, és ellenőrzi, hogy az első a JavaScript `string.match()` függvény használatával a másodikban megadott mintázattal egyezik-e.
+Az alábbi példa egy UDF-tárolót regisztrál a Cosmos adatbázisban. A példa létrehoz egy UDF-t, amelynek a neve: `REGEX_MATCH` . Két JSON-karakterlánc-értéket fogad el, és `input` `pattern` ellenőrzi, hogy az első a JavaScript függvény használatával a másodikban megadott mintázattal egyezik-e `string.match()` .
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +47,7 @@ Az alábbi példa egy UDF-tárolót regisztrál a Cosmos adatbázisban. A példa
            regexMatchUdf).Result;  
 ```
 
-Most használja ezt az UDF-t egy lekérdezési leképezésben. A UDF a kis-és nagybetűket megkülönböztető `udf.` előtaggal kell rendelkeznie, ha lekérdezéseken belülről hívja őket.
+Most használja ezt az UDF-t egy lekérdezési leképezésben. A UDF a kis-és nagybetűket megkülönböztető előtaggal kell rendelkeznie, `udf.` Ha lekérdezéseken belülről hívja őket.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -68,7 +67,7 @@ Az eredmény a következő:
     ]
 ```
 
-A szűrőn belüli `udf.` előtaggal minősített UDF-t használhatja az alábbi példában látható módon:
+A `udf.` szűrőn belüli előtaggal minősített UDF-t használhatja az alábbi példában látható módon:
 
 ```sql
     SELECT Families.id, Families.address.city

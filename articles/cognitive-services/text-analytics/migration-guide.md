@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143270"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412583"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrálás a Text Analytics API 3. x verziójára
 
@@ -44,7 +44,7 @@ Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3
 ## <a name="feature-changes"></a>Szolgáltatások módosításai
 
 > [!NOTE] 
-> Jelenleg a [v3 entitások kategóriái](named-entity-types.md) csak angol nyelvű szövegben lesznek visszaadva. Az API az 2,1-es verziót adja vissza más nyelveken található kérelmek esetében, amennyiben azok a 2,1-es verzióban támogatottak.
+> Jelenleg a [v3 entitások kategóriái](named-entity-types.md) csak angol és spanyol nyelvű szövegben lesznek visszaadva. Az API az 2,1-es verziót adja vissza más nyelveken található kérelmek esetében, amennyiben azok a 2,1-es verzióban támogatottak.
 
 Az 2,1-es verzióban a Text Analytics API egy végpontot használ az elnevezett entitások felismeréséhez és az entitások összekapcsolásához. A 3. verzió kiterjesztett névvel ellátott entitások észlelését teszi lehetővé, és külön végpontokat használ a meghívásos és az entitások összekapcsolására A 3.1-es verziótól kezdődően (előzetes verzió: 1) a személyes `pii` és az egészségügyi információk is észlelhetők `phi` . 
 

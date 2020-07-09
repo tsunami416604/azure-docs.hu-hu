@@ -9,18 +9,17 @@ editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513624"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>A StorSimple virtuális tömb eszköz rendszergazdai jelszavának módosítása a StorSimple-n keresztül Eszközkezelő
 
@@ -60,7 +59,7 @@ Hajtsa végre az alábbi lépéseket az eszköz rendszergazdai jelszavának a he
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Az eszköz rendszergazdai jelszavának módosítása a helyi webes felületen keresztül
 
-1. A helyi webes felhasználói felületen kattintson a **karbantartási** > **jelszó módosítása** elemre az eszközön.
+1. A helyi webes felhasználói felületen kattintson a **karbantartási**  >  **jelszó módosítása** elemre az eszközön.
    
     ![jelszó1 módosítása](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. Adja meg az **aktuális jelszót**.

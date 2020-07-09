@@ -5,19 +5,19 @@ description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806805"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Application Gateway létrehozása belső átirányítás használatával az Azure CLI-vel
 
-Az Azure CLI használatával konfigurálhatja a [webes forgalom átirányítását](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www\.-contoso.com* és a *www\.-contoso.org*.
+Az Azure CLI használatával konfigurálhatja a [webes forgalom átirányítását](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www- \. contoso.com* és a *www- \. contoso.org*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
 > * CNAME rekord létrehozása a tartományban
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -97,7 +97,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 ## <a name="add-listeners-and-rules"></a>Figyelők és szabályok hozzáadása 
 
-A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában a rendszer figyelőket hoz létre a *www\.contoso.com* és a *www\.contoso.org*tartományához.
+A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában a rendszer figyelőket hoz létre a *www \. contoso.com* és a *www \. contoso.org*tartományához.
 
 Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) paranccsal.
 
@@ -120,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
 
-Adja hozzá az átirányítási konfigurációt, amely forgalmat küld a *www\.consoto.org* az Application gatewayben lévő *www\.-contoso.com* figyelőnek az az [Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)paranccsal.
+Adja hozzá az átirányítási konfigurációt, amely forgalmat küld a *www \. consoto.org* az Application gatewayben lévő *www- \. contoso.com* figyelőnek az az [Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)paranccsal.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -209,11 +209,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Például:, http:\//www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például:, http: \/ /www.contoso.com.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Módosítsa a címeket a másik tartományra, például http:\//www.contoso.org, és látnia kell, hogy a forgalom át lett irányítva a figyelőhöz a www\.-contoso.com.
+Módosítsa a címeket a másik tartományra, például http: \/ /www.contoso.org, és látnia kell, hogy a forgalom át lett irányítva a figyelőhöz a www- \. contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 

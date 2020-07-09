@@ -3,14 +3,16 @@ title: Helyi Jupyter-jegyzetfüzet migrálása Azure Notebooks előzetes verzió
 description: Gyorsan átvihet egy Jupyter-jegyzetfüzetet Azure Notebooks előzetes verzióra a helyi számítógépről vagy egy webes URL-címről, majd megoszthatja azt együttműködésre.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064325"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832117"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Gyors útmutató: helyi Jupyter-jegyzetfüzet migrálása Azure Notebooks előzetes verzióban
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ebben a rövid útmutatóban egy Jupyter-jegyzetfüzetet telepít át a helyi számítógépről vagy egy másik elérhető fájl URL-címéről Azure Notebooksra. 
 
@@ -26,15 +28,13 @@ A helyi vagy tárház-alapú jegyzetfüzetek Azure Notebooksba való áttelepít
 
 Ez a rövid útmutató bemutatja, hogyan lehet áttelepíteni egy jegyzetfüzetet a helyi számítógépről vagy egy másik elérhető fájl URL-címéről. A jegyzetfüzetek GitHub-tárházból való áttelepítéséhez lásd: gyors útmutató [: jegyzetfüzet klónozása](quickstart-clone-jupyter-notebook.md).
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
-
 1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. (Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksre](quickstart-sign-in-azure-notebooks.md)).
 
 1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
 
     ![Saját projektek hivatkozás a böngészőablak tetején](media/quickstarts/my-projects-link.png)
 
-1. A **saját projektek** lapon válassza az **új projekt** elemet (billentyűparancs: n). A gomb csak akkor jelenhet meg **+** , ha a böngészőablak keskeny:
+1. A **saját projektek** lapon válassza az **új projekt** elemet (billentyűparancs: n). A gomb csak akkor jelenhet meg, **+** Ha a böngészőablak keskeny:
 
     ![Új projekt parancs a saját projektek oldalon](media/quickstarts/new-project-command.png)
 
@@ -56,7 +56,7 @@ Ez a rövid útmutató bemutatja, hogyan lehet áttelepíteni egy jegyzetfüzete
 
      ![Feltöltés URL-felugró ablakból](media/quickstarts/upload-from-url-popup.png)
 
-1. Nyissa meg és futtassa az újonnan feltöltött jegyzetfüzetet annak tartalmának és működésének ellenőrzéséhez. Ha elkészült, válassza a **fájl** > **leállítása és bezárás** lehetőséget a jegyzetfüzet bezárásához.
+1. Nyissa meg és futtassa az újonnan feltöltött jegyzetfüzetet annak tartalmának és működésének ellenőrzéséhez. Ha elkészült, válassza a **fájl**  >  **leállítása és bezárás** lehetőséget a jegyzetfüzet bezárásához.
 
 1. A feltöltött jegyzetfüzetre mutató hivatkozás megosztásához kattintson a jobb gombbal a fájlra a projektben, és válassza a **hivatkozás másolása** (billentyűparancs: y) lehetőséget, majd illessze be a hivatkozást a megfelelő üzenetbe. Másik lehetőségként megoszthatja a projektet teljes egészében a projekt oldalon található **megosztás** vezérlőelem használatával.
 

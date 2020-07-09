@@ -3,8 +3,8 @@ title: Az Azure Access panel bővítményének üzembe helyezése az IE-ben csop
 description: Az Internet Explorer bővítmény telepítése a csoportházirend használatával a saját alkalmazások portálon.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67807686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763431"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Útmutató: a hozzáférési panel bővítményének üzembe helyezése az Internet Explorer csoportházirend használatával
 
@@ -33,7 +32,7 @@ A hozzáférési panel kiterjesztése a [Chrome](https://go.microsoft.com/fwLink
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Beállította [Active Directory tartományi szolgáltatások](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és csatlakoztatta a felhasználói gépeket a tartományhoz.
-* A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [További információ.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [Részletek](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>1. lépés: a terjesztési pont létrehozása
 
@@ -44,12 +43,12 @@ Először el kell helyeznie a telepítőcsomagot egy olyan hálózati helyre, am
 
     ![Fájlok és tárolási szolgáltatások megnyitása](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. Lépjen a **megosztások** lapra. Ezután kattintson a **feladatok** > **új megosztás...** elemre.
+1. Lépjen a **megosztások** lapra. Ezután kattintson a **feladatok**  >  **új megosztás...** elemre.
 
     ![Képernyőfelvétel: a feladatok képernyőn megjelenő új megosztás helye](./media/deploy-access-panel-browser-extension/shares.png)
 
 1. Fejezze be az **új megosztás varázslót** , és állítson be engedélyeket annak biztosítására, hogy elérhető legyen a felhasználói gépekről. [További információ a megosztásokról.](https://technet.microsoft.com/library/cc753175.aspx)
-1. Töltse le a következő Microsoft Windows Installer csomagot (. msi fájl): [Access panel Extension. msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Töltse le a következő Microsoft Windows Installer-csomagot (. msi fájl): [hozzáférési Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Másolja a telepítőcsomagot a megosztás kívánt helyére.
 
     ![Másolja az. msi fájlt a megosztásba.](./media/deploy-access-panel-browser-extension/copy-package.png)
@@ -59,14 +58,14 @@ Először el kell helyeznie a telepítőcsomagot egy olyan hálózati helyre, am
 ## <a name="step-2-create-the-group-policy-object"></a>2. lépés: a csoportházirend-objektum létrehozása
 
 1. Jelentkezzen be a Active Directory tartományi szolgáltatások (AD DS) telepítést futtató kiszolgálóra.
-1. A Kiszolgálókezelőben lépjen az **eszközök** > **csoportházirend felügyelet**elemre.
+1. A Kiszolgálókezelőben lépjen az **eszközök**  >  **csoportházirend felügyelet**elemre.
 
     ![Válassza az eszközök > Csoportházirend felügyelet](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
 1. A **csoportházirend felügyeleti** ablak bal oldali ablaktábláján tekintse meg a szervezeti egység (OU) hierarchiáját, és határozza meg, hogy melyik hatókörben szeretné alkalmazni a csoportházirendet. Dönthet például úgy, hogy egy kis szervezeti egységet szeretne üzembe helyezni néhány felhasználónak a teszteléshez, vagy ha egy legfelső szintű szervezeti egységet szeretne üzembe helyezni a teljes szervezet számára.
 
    > [!NOTE]
-   > Ha szeretné létrehozni vagy szerkeszteni a szervezeti egységeket (OU-ket), váltson vissza a Kiszolgálókezelő elemre, és válassza az **eszközök** > **Active Directory felhasználók és számítógépek**lehetőséget.
+   > Ha szeretné létrehozni vagy szerkeszteni a szervezeti egységeket (OU-ket), váltson vissza a Kiszolgálókezelő elemre, és válassza az **eszközök**  >  **Active Directory felhasználók és számítógépek**lehetőséget.
 
 1. Miután kiválasztott egy szervezeti egységet, kattintson rá a jobb gombbal, és válassza a **csoportházirend-objektum létrehozása ebben a tartományban, és hivatkozás itt..** . lehetőséget.
 
@@ -83,7 +82,7 @@ Először el kell helyeznie a telepítőcsomagot egy olyan hálózati helyre, am
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. Kattintson a jobb gombbal a **Szoftvertelepítés**elemre, majd válassza az **új** > **csomag lehetőséget...**
+1. Kattintson a jobb gombbal a **Szoftvertelepítés**elemre, majd válassza az **új**csomag lehetőséget.  >  **..**
 1. Nyissa meg a telepítőcsomagot tartalmazó megosztott mappát az 1. [lépés: hozza létre a terjesztési pontot](#step-1-create-the-distribution-point), válassza ki az. msi fájlt, és kattintson a **Megnyitás**gombra.
 
    > [!IMPORTANT]
@@ -166,7 +165,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy a bővítmény központi te
 
    ![Annak ellenőrzése, hogy a hozzáférési panel bővítmény telepítve és engedélyezve van-e](./media/deploy-access-panel-browser-extension/verify-install.png)
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Alkalmazás-hozzáférés és egyszeri bejelentkezés Azure Active Directory](what-is-single-sign-on.md)
 * [Az Internet Explorerhez készült hozzáférési panel bővítmény hibaelhárítása](manage-access-panel-browser-extension.md)

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595824"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>A CoreDNS testreszabása Azure Kubernetes Service-szel
@@ -34,7 +33,7 @@ A beépített CoreDNS beépülő modulok támogatottak. A bővítmények és a h
 
 ## <a name="rewrite-dns"></a>DNS újraírása
 
-Az egyik forgatókönyv az, ha az on-the-fly DNS-név újraírását végzi. A következő példában cserélje le `<domain to be written>` a nevet a saját teljes tartománynevére. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+Az egyik forgatókönyv az, ha az on-the-fly DNS-név újraírását végzi. A következő példában cserélje le a `<domain to be written>` nevet a saját teljes tartománynevére. Hozzon létre egy nevű fájlt `corednsms.yaml` , és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -71,11 +70,11 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> A fenti parancs helyes. A váltás `coredns`közben a telepítés a **Kube-DNS-** név alatt található.
+> A fenti parancs helyes. A váltás közben `coredns` a telepítés a **Kube-DNS-** név alatt található.
 
 ## <a name="custom-forward-server"></a>Egyéni továbbító kiszolgáló
 
-Ha meg kell adnia egy továbbító kiszolgálót a hálózati forgalomhoz, létrehozhat egy ConfigMap a DNS testreszabásához. A következő példában frissítse a `forward` nevet és a internetcímet a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+Ha meg kell adnia egy továbbító kiszolgálót a hálózati forgalomhoz, létrehozhat egy ConfigMap a DNS testreszabásához. A következő példában frissítse a `forward` nevet és a internetcímet a saját környezete értékeivel. Hozzon létre egy nevű fájlt `corednsms.yaml` , és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -101,7 +100,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 Előfordulhat, hogy olyan egyéni tartományokat szeretne konfigurálni, amelyek csak belsőleg oldhatók fel. Előfordulhat például, hogy fel szeretné oldani a *puglife. local*egyéni tartományt, amely nem érvényes legfelső szintű tartomány. Egyéni tartományi ConfigMap nélkül az AK-fürt nem tudja feloldani a címeket.
 
-Az alábbi példában frissítse az egyéni tartományt és az IP-címet, hogy a forgalmat a saját környezetéhez tartozó értékekre irányítsa. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+Az alábbi példában frissítse az egyéni tartományt és az IP-címet, hogy a forgalmat a saját környezetéhez tartozó értékekre irányítsa. Hozzon létre egy nevű fájlt `corednsms.yaml` , és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1
@@ -127,7 +126,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 ## <a name="stub-domains"></a>Helyettes tartományok
 
-A CoreDNS a helyettes tartományok konfigurálására is használható. Az alábbi példában frissítse az egyéni tartományokat és IP-címeket a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+A CoreDNS a helyettes tartományok konfigurálására is használható. Az alábbi példában frissítse az egyéni tartományokat és IP-címeket a saját környezete értékeivel. Hozzon létre egy nevű fájlt `corednsms.yaml` , és illessze be a következő példát:
 
 ```yaml
 apiVersion: v1

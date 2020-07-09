@@ -2,21 +2,21 @@
 title: Karanténba helyezés alkalmazás-létesítési állapota | Microsoft Docs
 description: Amikor konfigurált egy alkalmazást a felhasználók automatikus kiépítési felállításához, megtudhatja, mi a karanténba helyezési állapot, és hogyan törölheti azt.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/28/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e5c0b00873cd97b255eff7e001f8b54cf0397462
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593930"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024570"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -28,11 +28,11 @@ A karanténba helyezve a növekményes ciklusok gyakorisága naponta egyszer cs�
 
 Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
   
-- A Azure Portal **Azure Active Directory** > navigáljon a**vállalati alkalmazások** > &lt;*alkalmazás neve*&gt; > **kiépítés** elemre, és tekintse át a karanténba helyezett üzenet folyamatjelző sávját.   
+- A Azure Portal Azure Active Directory navigáljon a **Azure Active Directory**  >  **vállalati alkalmazások**  >  &lt; *alkalmazás neve* &gt;  >  **kiépítés** elemre, és tekintse át a karanténba helyezett üzenet folyamatjelző sávját.   
 
   ![Üzembe helyezési állapotsor, amely a karantén állapotát mutatja](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- A Azure Portal navigáljon **Azure Active Directory** > **naplók** > szűrés **tevékenység: karanténba helyezés** , és tekintse át a karanténba helyezési előzményeket. Bár a fentiekben ismertetett folyamatjelzőn látható nézet azt mutatja, hogy a kiépítés jelenleg karanténban van-e, a naplók lehetővé teszik az alkalmazások karanténba helyezési előzményeinek megtekintését. 
+- A Azure Portal navigáljon **Azure Active Directory**  >  **naplók** > szűrés **tevékenység: karanténba helyezés** , és tekintse át a karanténba helyezési előzményeket. Bár a fentiekben ismertetett folyamatjelzőn látható nézet azt mutatja, hogy a kiépítés jelenleg karanténban van-e, a naplók lehetővé teszik az alkalmazások karanténba helyezési előzményeinek megtekintését. 
 
 - Használja a Microsoft Graph kérelmet a [synchronizationJob beszerzéséhez](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) a kiépítési feladatok állapotának programozott beszerzéséhez:
 
@@ -46,7 +46,7 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Miért van a karanténba helyezett alkalmazásom?
 
-|Leírás|Javasolt művelet|
+|Description|Javasolt művelet|
 |---|---|
 |**Scim megfelelőségi probléma:** HTTP/404 nem található válasz lett visszaadva a várt HTTP/200 OK válasz helyett. Ebben az esetben az Azure AD-kiépítési szolgáltatás kérelmet küldött a célalkalmazás számára, és váratlan választ kapott.|Tekintse meg a rendszergazdai hitelesítő adatok szakaszt, és ellenőrizze, hogy az alkalmazás a bérlői URL-cím megadását igényli-e, és hogy az URL helyes-e. Ha nem jelenik meg a probléma, forduljon az alkalmazás fejlesztői szolgálatához, és győződjön meg arról, hogy a szolgáltatásuk SCIM-kompatibilis. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Érvénytelen hitelesítő adatok:** Ha a célalkalmazás hozzáférésének engedélyezését kísérli meg, a rendszer választ kapott a célalkalmazástól, amely jelzi, hogy a megadott hitelesítő adatok érvénytelenek.|Lépjen a létesítési konfiguráció felhasználói felületének rendszergazdai hitelesítő adatok szakaszára, és engedélyezze újra a hozzáférést érvényes hitelesítő adatokkal. Ha az alkalmazás szerepel a katalógusban, tekintse át az alkalmazás konfigurációját ismertető oktatóanyagot a további szükséges lépésekhez.|
@@ -66,7 +66,7 @@ Először javítsa ki azt a problémát, amely az alkalmazás karanténba helyez
 
 - Ellenőrizze az alkalmazás kiépítési beállításait, és győződjön meg arról, hogy [érvényes rendszergazdai hitelesítő adatokat](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)adott meg. Az Azure AD-nek képesnek kell lennie megbízhatóság létrehozására a célalkalmazás használatával. Győződjön meg arról, hogy érvényes hitelesítő adatokat adott meg, és a fiókja rendelkezik a szükséges engedélyekkel.
 
-- Tekintse át a [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md) , és vizsgálja meg, hogy milyen hibák okozzák a karanténba helyezést, és oldja meg a hibát. Nyissa meg a Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplóiban (előzetes verzió)** .
+- Tekintse át a [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md) , és vizsgálja meg, hogy milyen hibák okozzák a karanténba helyezést, és oldja meg a hibát. Nyissa meg a Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplóiban (előzetes verzió)** . **Activity**
 
 A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalmazás üzembe helyezési beállításainak (például az attribútum-hozzárendelések vagy a hatóköri szűrők) bizonyos módosításai automatikusan újraindulnak a kiépítés során. Az alkalmazás **üzembe** helyezési lapjának folyamatjelző sávján a kiépítés utolsó indításakor látható. Ha manuálisan kell újraindítani a kiépítési feladatot, használja az alábbi módszerek egyikét:  
 
@@ -75,3 +75,6 @@ A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalma
 - [A kiépítési feladatok újraindításához használja a](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja az alábbi kérelmet:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+       
+Cserélje le az "{id}" értéket az alkalmazás-azonosító értékére, és cserélje le a (z) {jobId} kifejezést a [szinkronizálási feladatokhoz tartozó azonosítóra](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
+

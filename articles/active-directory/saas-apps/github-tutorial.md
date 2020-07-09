@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79138977"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
 
@@ -58,7 +58,6 @@ A GitHub Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **GitHub** kifejezést a keresőmezőbe.
 1. Válassza ki a **GitHub** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a GitHubhoz
 
 Konfigurálja és tesztelje az Azure AD SSO-t a GitHubon egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a GitHubon lévő kapcsolódó felhasználó között.
@@ -84,14 +83,17 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-   a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://github.com/orgs/<entity-id>/sso`
+   a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://github.com/orgs/<Organization ID>/sso`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://github.com/orgs/<entity-id>`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://github.com/orgs/<Organization ID>`
+
+    c. A **Válasz URL-** textox írja be az URL-címet a következő minta használatával:`https://github.com/orgs/<Organization ID>/saml/consume`
+
 
     > [!NOTE]
-    > Vegye figyelembe, hogy ezek nem valódi értékek. Ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval kell frissítenie. Itt javasoljuk, hogy a karakterlánc egyedi értékét használja az azonosítóban. Az értékek beolvasásához lépjen a GitHub-adminisztrátor szakaszra.
+    > Vegye figyelembe, hogy ezek nem valódi értékek. Ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosító és válasz URL-cím használatával kell frissítenie. Itt javasoljuk, hogy a karakterlánc egyedi értékét használja az azonosítóban. Az értékek beolvasásához lépjen a GitHub-adminisztrátor szakaszra.
 
-5. A GitHub-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A GitHub-alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
+5. A GitHub-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol az **egyedi felhasználói azonosító (Name ID)** a **User. userPrincipalName**leképezéssel van leképezve. A GitHub-alkalmazás a **User. mail**használatával rendeli hozzá az **egyedi felhasználói azonosítót (Name ID)** , ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútumok leképezését.
 
     ![image](common/edit-attribute.png)
 
@@ -117,9 +119,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -147,9 +149,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-3. Jelölje be az **SAML-hitelesítés engedélyezése** jelölőnégyzetet, amely az egyszeri bejelentkezés konfigurációs mezőit mutatja be. Ezután az egyszeri bejelentkezési URL-cím használatával frissítse az egyszeri bejelentkezési URL-címet az Azure AD-konfigurációban.
+3. Jelölje be az **SAML-hitelesítés engedélyezése** jelölőnégyzetet, amely az egyszeri bejelentkezés konfigurációs mezőit mutatja be. hajtsa végre a következő lépéseket:
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_13.png)
+
+    a. Másolja az **egyszeri bejelentkezési URL-címet** , és illessze be ezt az értéket a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfigurációjában** .
+    
+    b. Másolja a **felhasználói szolgáltatás URL-címének** értékét, és illessze be ezt az értéket a Azure Portal **ALAPszintű SAML-KONFIGURÁCIÓJÁNAK** **Válasz URL-** szövege mezőjébe.
 
 4. Konfigurálja a következő mezőket:
 
@@ -211,7 +217,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen a GitHub csempére kattint, automatikusan be kell jelentkeznie a GitHubba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

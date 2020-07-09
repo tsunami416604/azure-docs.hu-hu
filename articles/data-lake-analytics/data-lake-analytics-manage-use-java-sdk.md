@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6409ac10a524f75709cbbf185efb03359606e88c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70813635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121367"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics kezelése Java-alkalmazás használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,9 +33,9 @@ A következő kódrészlet kódot biztosít a **nem interaktív** hitelesítésh
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
 1. Nyissa meg a IntelliJ, és hozzon létre egy Java-projektet a **parancssori alkalmazás** sablonnal.
 2. Kattintson a jobb gombbal a képernyő bal oldalán található projektre, majd kattintson az **Add Framework Support** (Keretrendszer-támogatás felvétele) elemre. Válassza a **Maven** lehetőséget, majd kattintson az **OK** gombra.
-3. Nyissa meg az újonnan létrehozott **„pom.xml”** fájlt, majd illessze be a következő szövegrészletet a **\</version>** és a **\</project>** címkék közé:
+3. Nyissa meg az újonnan létrehozott **"pom.xml"** fájlt, és adja hozzá a következő kódrészletet a **\</version>** címke és a **\</project>** címke között:
 
-```
+```xml
 <dependencies>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -317,7 +317,7 @@ Adja meg a kódrészletben felismert paraméterek értékeit:
 * `_clientId`
 * `_clientSecret`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével). és [U-SQL language reference](https://docs.microsoft.com/u-sql/) (U-SQL nyelvi referencia).
 * Felügyeleti feladatokhoz lásd: [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md).

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478399"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -44,7 +44,7 @@ A jogcím-hozzárendelési házirend olyan **házirend** -objektum, amely módos
 
 Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használják a jogkivonatokban.
 
-| Jogcím-készlet | Leírás |
+| Jogcím-készlet | Description |
 |---|---|
 | Alapszintű jogcímek készlete | Minden jogkivonatban jelen vannak, a szabályzattól függetlenül. Ezek a jogcímek is korlátozottnak minősülnek, és nem módosíthatók. |
 | Alapszintű jogcímek készlete | Tartalmazza azokat a jogcímeket, amelyeket a rendszer alapértelmezés szerint a jogkivonatok számára bocsát ki (az alapszintű jogcímek készletén kívül). Az alapszintű jogcímeket kihagyhatja vagy módosíthatja a jogcím-hozzárendelési szabályzatok használatával. |
@@ -284,7 +284,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: érvényes azonosító értékek/forrás
 
-| Forrás | ID | Leírás |
+| Forrás | ID | Description |
 |-----|-----|-----|
 | Felhasználó | surname | Család neve |
 | Felhasználó | givenname | utónév; |
@@ -321,10 +321,11 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | othermail | Egyéb E-mail |
 | Felhasználó | ország | Ország/régió |
 | Felhasználó | city | Város |
-| Felhasználó | state | Állam |
+| Felhasználó | state | Állapot |
 | Felhasználó | beosztás | Beosztás |
 | Felhasználó | Alkalmazottkód | Alkalmazott azonosítója |
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
+| Felhasználó | assignedroles | a felhasználóhoz rendelt alkalmazás-szerepkörök listája|
 | alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
 | alkalmazás, erőforrás, célközönség | kifogásolta | ObjectID |
 | alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatásnév címkéje |
@@ -358,7 +359,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>4. táblázat: transzformációs módszerek és várt bemenetek és kimenetek
 
-|TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
+|TransformationMethod|Várt bemenet|Várt kimenet|Description|
 |-----|-----|-----|-----|
 |Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: " foo@bar.com ", karakterlánc2: "homokozó", elválasztó: "." eredmény a következő outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|Levelezés|outputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: " foo@bar.com " eredmény a outputClaim: "foo". Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
@@ -384,7 +385,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: az SAML-NameID adatforrásként engedélyezett attribútumai
 
-|Forrás|ID|Leírás|
+|Forrás|ID|Description|
 |-----|-----|-----|
 | Felhasználó | Levelezés|E-mail-cím|
 | Felhasználó | userPrincipalName|Felhasználó egyszerű neve|
@@ -410,7 +411,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |
-| ExtractMailPrefix | Nincs |
+| ExtractMailPrefix | None |
 | Csatlakozás | A csatlakoztatott utótagnak az erőforrás-bérlő ellenőrzött tartományának kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
@@ -524,6 +525,6 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 Ha szeretné megtudni, hogyan szabhatja testre az SAML-jogkivonatban kiállított jogcímeket a Azure Portalon keresztül, tekintse meg a következő témakört [: útmutató: az SAML-jogkivonatban kiállított](active-directory-saml-claims-customization.md)

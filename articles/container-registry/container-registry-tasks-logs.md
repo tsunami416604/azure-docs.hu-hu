@@ -4,10 +4,9 @@ description: Az ACR-feladatok által létrehozott futtatási naplók megtekinté
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246967"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Feladat-futtatási naplók megtekintése és kezelése
@@ -65,7 +64,7 @@ Ha egy feladat automatikusan aktiválódik, például a forráskód frissítése
 A futtatási naplók megtekintése a portálon:
 
 1. Navigáljon a tároló-beállításjegyzékhez.
-1. A **szolgáltatások**területen válassza a **feladatok** > **Futtatás**lehetőséget.
+1. A **szolgáltatások**területen válassza a **feladatok**  >  **Futtatás**lehetőséget.
 1. Válassza ki a futtatási **azonosítót** a futtatási állapot megtekintéséhez és a naplók futtatásához. A napló ugyanazokat az információkat tartalmazza, mint a továbbított napló, ha van ilyen.
 
 ![A feladat futtatási bejelentkezési portáljának megtekintése](./media/container-registry-tasks-logs/portal-task-run-logs.png)

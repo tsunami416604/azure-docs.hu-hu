@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5aa33529a1957b6e7728b3a87bacf6bb91d987ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81378950"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Oktatóanyag: az Oracle felhőalapú infrastruktúra-konzol konfigurálása a felhasználók automatikus üzembe helyezéséhez
@@ -110,7 +110,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL** -címet `https://<IdP ID>.identity.oraclecloud.com/admin/v1` a formátumban. Például: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Adja meg a titkos jogkivonat értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak az Oracle Cloud Infrastructure-konzolhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az Oracle felhőalapú infrastruktúra-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet** a formátumban `https://<IdP ID>.identity.oraclecloud.com/admin/v1` . Például: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Adja meg a titkos jogkivonat értékét, amely korábban a **titkos jogkivonatban**lett lekérve. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak az Oracle Cloud Infrastructure-konzolhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az Oracle felhőalapú infrastruktúra-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![kiépítési](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
@@ -182,7 +182,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

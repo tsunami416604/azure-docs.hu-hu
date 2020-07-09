@@ -5,13 +5,12 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 838a4123bd5007f987f27674862409445967a2d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 6/3/2020
+ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484704"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for MariaDB-ben
 
@@ -29,24 +28,25 @@ A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendation
 
 Nyissa meg a **teljesítményre vonatkozó javaslatokat** a MariaDB-kiszolgáló Azure Portal lapjának menüsorának **intelligens teljesítmény** szakaszában.
 
-![A Teljesítménnyel kapcsolatos javaslatok kezdőlapja](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok kezdőlapja":::
 
 Válassza **az elemzés lehetőséget, és válasszon** egy adatbázist, amely megkezdi az elemzést. A munkaterheléstől függően az elemzés több percet is igénybe vehet. Amikor az elemzés elkészült, a portálon megjelenik egy értesítés. Az elemzés az adatbázis mélyreható vizsgálatát végzi. Javasoljuk, hogy az elemzést az időszakon kívüli időszakok alatt végezze el.
 
 A **javaslatok** ablak a javaslatok listáját jeleníti meg, valamint a kapcsolódó lekérdezés azonosítóját, amely a javaslatot generálta. A lekérdezés AZONOSÍTÓjának használatával a [MySQL. query_store](concepts-query-store.md#mysqlquery_store) nézetet használhatja a lekérdezés további megismeréséhez.
 
-![Teljesítményre vonatkozó javaslatok – új oldal](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Teljesítményre vonatkozó javaslatok – új oldal":::
 
 A javaslatok nem lesznek automatikusan alkalmazva. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyfélről. A javaslat kiértékeléséhez ne felejtse el tesztelni és figyelni.
 
 ## <a name="recommendation-types"></a>Javaslatok típusai
 
-Jelenleg csak az *indexek létrehozásával* kapcsolatos javaslatok támogatottak.
-
-### <a name="create-index-recommendations"></a>Tárgymutató-javaslatok létrehozása
+### <a name="index-recommendations"></a>Tárgymutató-javaslatok
 
 Az indexelési javaslatok alapján új indexek *hozhatók létre* , amelyek felgyorsítják a számítási feladatok leggyakrabban futtatott vagy időigényes lekérdezéseit. Ehhez az ajánlási típushoz engedélyezni kell a [query Store](concepts-query-store.md) -t. A lekérdezési tároló gyűjti a lekérdezési adatokat, és megadja az elemzés által a javaslat végrehajtásához használt részletes lekérdezési futtatókörnyezetet és gyakorisági statisztikát.
 
+### <a name="query-recommendations"></a>Javaslatok lekérdezése
+
+A lekérdezési javaslatok arra utalnak, hogy a számítási feladatban lévő lekérdezések optimalizálása és újraírhatók. A MariaDB-lekérdezések elleni minták azonosításával és a velük való kijavításával az időigényes lekérdezések teljesítménye javítható. Ehhez az ajánlási típushoz engedélyezni kell a Query Store-t. A lekérdezési tároló gyűjti a lekérdezési adatokat, és megadja az elemzés által a javaslat végrehajtásához használt részletes lekérdezési futtatókörnyezetet és gyakorisági statisztikát.
 ## <a name="next-steps"></a>További lépések
 
 - További információ a Azure Database for MariaDB [figyeléséről és hangolásáról](concepts-monitoring.md) .

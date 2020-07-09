@@ -3,8 +3,8 @@ title: Az Azure AD Application Proxy biztonsági szempontjai | Microsoft Docs
 description: Az Azure AD Application Proxy használatának biztonsági szempontjait ismerteti
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759888"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -79,7 +79,7 @@ Nem kell aggódnia a helyszíni kiszolgálók karbantartásával és javításá
 
 A nem javított szoftverek nagy számú támadás esetén is fiókok. Az Azure AD Application Proxy egy Internet-méretezési szolgáltatás, amelyet a Microsoft birtokol, így mindig a legújabb biztonsági javításokat és frissítéseket kapja meg.
 
-Az Azure AD Application Proxy által közzétett alkalmazások biztonságának javítása érdekében letiltjuk a webbejáró-robotok számára az alkalmazások indexelését és archiválását. Minden alkalommal, amikor egy webrobot-robot megpróbál beolvasni egy közzétett alkalmazás robotjának beállításait, az alkalmazásproxy a következőt tartalmazó robots. txt fájllal válaszol `User-agent: * Disallow: /` .
+Az Azure AD Application Proxy által közzétett alkalmazások biztonságának javítása érdekében letiltjuk a webbejáró-robotok számára az alkalmazások indexelését és archiválását. Minden alkalommal, amikor egy weblánctalpas robot megpróbál beolvasni egy közzétett alkalmazás robotjának beállításait, az alkalmazásproxy egy robots.txt fájllal válaszol, amely tartalmazza a következőt: `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection szolgáltatás
 

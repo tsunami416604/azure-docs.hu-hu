@@ -4,15 +4,14 @@ description: Az egyéni útvonalaknak a pont-hely típusú ügyfelekhez való re
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987573"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak reklámozása a P2S VPN-ügyfelek számára
 
@@ -22,7 +21,7 @@ ms.locfileid: "80756897"
 
 ## <a name="to-advertise-custom-routes"></a>Egyéni útvonalak meghirdetése
 
-Egyéni útvonalak meghirdetéséhez használja a `Set-AzVirtualNetworkGateway cmdlet`következőt:. Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [contoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
+Egyéni útvonalak meghirdetéséhez használja a következőt: `Set-AzVirtualNetworkGateway cmdlet` . Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [contoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
 
 1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Például:
 

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2f374e29f4dc5406956cd56d1bb0bd1466e65773
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384519"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604811"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Mi az Bing Entity Search API?
 
@@ -31,7 +31,7 @@ A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entit
 
 A Bing Entity Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatás a REST API vagy az SDK segítségével használható.
 
-1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services/).
 2. Küldjön egy kérést az API-ra egy érvényes keresési lekérdezéssel.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 

@@ -4,19 +4,18 @@ description: Kockázatkezelési szabályzatok engedélyezése és konfigurálás
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 01/06/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75707005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84464164"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése
 
@@ -54,24 +53,24 @@ A konfigurált megbízható [hálózati telephelyeket](../conditional-access/loc
 A felhasználói kockázat és a bejelentkezési kockázati házirendek engedélyezéséhez hajtsa végre az alábbi lépéseket.
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
-1. Tallózással keresse meg **Azure Active Directory** > **biztonsági** > **azonosítók védelmének** > **áttekintését**.
+1. Tallózással keresse meg **Azure Active Directory**  >  **biztonsági**  >  **azonosítók védelmének**  >  **áttekintését**.
 1. Válassza a **felhasználói kockázati házirend konfigurálása**lehetőséget.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Conditions**A felhasználói kockázat a Microsoft javaslata, hogy ezt a beállítást **magas**értékre állítsa.**User risk**  - 
+      1. **Feltételek**  -  **Felhasználói kockázat** A Microsoft javaslata, hogy ezt a beállítást **magas**értékre állítsa.
    1. A **vezérlők** területen
       1. **Hozzáférés** – a Microsoft javaslata a **hozzáférés engedélyezése** és a **jelszó megkövetelése**.
-   1. **Szabályzat érvénybe léptetése** - **On**
+   1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés** – ez a művelet visszaküldi az **Áttekintés** oldalra.
 1. Válassza a **bejelentkezési kockázati házirend konfigurálása**lehetőséget.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
-      1. **Conditions**A Microsoft javaslata, hogy ezt a beállítást **közepes vagy magasabb**értékűre állítsa be.**Sign-in risk**  - 
+      1. **Feltételek**  -  **Bejelentkezési kockázat** A Microsoft javaslata, hogy ezt a beállítást **közepes és újabb**értékre állítsa be.
    1. A **vezérlők** területen
       1. **Hozzáférés** – a Microsoft javaslata, hogy **engedélyezze a hozzáférést** és a **többtényezős hitelesítés megkövetelését**.
-   1. **Szabályzat érvénybe léptetése** - **On**
+   1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés**
 
 ## <a name="next-steps"></a>További lépések
@@ -82,4 +81,4 @@ A felhasználói kockázat és a bejelentkezési kockázati házirendek engedél
 
 - [Kockázatészlelések vizsgálata](howto-identity-protection-investigate-risk.md)
 
-- [Kockázati észlelések szimulálása](howto-identity-protection-simulate-risk.md)
+- [Kockázatészlelések szimulálása](howto-identity-protection-simulate-risk.md)

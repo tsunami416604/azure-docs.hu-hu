@@ -11,21 +11,20 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/18/2020
-ms.openlocfilehash: 3098ca0d3d5e41c298d3058ffa84fcf129648281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 6/10/2020
+ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730143"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Új és módosított fájlok növekményes másolása LastModifiedDate alapján a Adatok másolása eszköz használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban a Azure Portal használatával hozzon létre egy adatelőállítót. Ezután a Adatok másolása eszköz használatával létrehozhat egy folyamatot, amely fokozatosan átmásolja az új és módosított fájlokat, az Azure Blob Storage-ból az Azure Blob Storage-ba. `LastModifiedDate` A használatával határozza meg a másolandó fájlokat.
+Ebben az oktatóanyagban a Azure Portal használatával hozzon létre egy adatelőállítót. Ezután a Adatok másolása eszköz használatával létrehozhat egy folyamatot, amely fokozatosan átmásolja az új és módosított fájlokat, az Azure Blob Storage-ból az Azure Blob Storage-ba. A használatával `LastModifiedDate` határozza meg a másolandó fájlokat.
 
-Miután elvégezte a lépéseket, Azure Data Factory megvizsgálja a forrás-tárolóban lévő összes fájlt, alkalmazza a fájl szűrőjét `LastModifiedDate`, és a célhelyre másolja a fájlokat, amelyek a legutóbbi időpont óta újak vagy frissültek. Vegye figyelembe, hogy ha Data Factory nagy mennyiségű fájlt vizsgál, továbbra is hosszú időtartamot kell várnia. A fájlok vizsgálata időigényes, még akkor is, ha a másolt adatmennyiség csökken.
+Miután elvégezte a lépéseket, Azure Data Factory megvizsgálja a forrás-tárolóban lévő összes fájlt, alkalmazza a fájl szűrőjét `LastModifiedDate` , és a célhelyre másolja a fájlokat, amelyek a legutóbbi időpont óta újak vagy frissültek. Vegye figyelembe, hogy ha Data Factory nagy mennyiségű fájlt vizsgál, továbbra is hosszú időtartamot kell várnia. A fájlok vizsgálata időigényes, még akkor is, ha a másolt adatmennyiség csökken.
 
 > [!NOTE]
 > Ha még csak ismerkedik a Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
@@ -52,7 +51,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet. **Elemzési** > **Data Factory**kiválasztása:
+1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet. **Elemzési**  >  **Data Factory**kiválasztása:
 
    ![Data Factory kiválasztása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -74,7 +73,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
 5. A **Verzió** résznél válassza a **V2** értéket.
 6. A **hely**területen válassza ki az adat-előállító helyét. A listában csak a támogatott helyszínek jelennek meg. Az adattárolók (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más helyszíneken és régiókban is lehetnek.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 9. Az adatelőállító létrehozása után megjelenik a The Factory kezdőlapja.
 10. A Azure Data Factory felhasználói felületének (UI) külön lapon való megnyitásához válassza a **szerző & monitor** csempe:
 
@@ -96,7 +95,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     d. Az **Ismétlődés**alatt adja meg a **15 percet**.
 
-    e. Kattintson a **Tovább** gombra.
+    e. Válassza a **Tovább** lehetőséget.
 
     Data Factory létrehoz egy folyamatot a megadott feladathoz tartozó névvel.
 
@@ -136,7 +135,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     ![Válassza ki a kimeneti fájl vagy mappa lapot](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
-    b. Kattintson a **Tovább** gombra.
+    b. Válassza a **Tovább** lehetőséget.
 
 7. A **Beállítások** lapon kattintson a **Tovább** gombra.
 
@@ -150,7 +149,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
 10. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. Az alkalmazás a **figyelő** lapra vált. Megjelenik a folyamat állapota. A lista frissítéséhez kattintson a **Frissítés** gombra. Válassza a **folyamat neve** alatt látható hivatkozást a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újbóli futtatásához.
 
-    ![A lista frissítése és a tevékenység futtatási részleteinek megtekintése](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![A lista frissítése és a tevékenység futtatási részleteinek megtekintése](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. Csak egy tevékenység (másolási tevékenység) található a folyamatban, így csak egy bejegyzés jelenik meg. A másolási művelet részleteinek megtekintéséhez válassza a **tevékenység neve** oszlopban a **részletek** hivatkozást (a szemüveg ikont). A tulajdonságokkal kapcsolatos részletekért tekintse meg a [másolási tevékenység áttekintése](copy-activity-overview.md)című témakört.
 
@@ -160,23 +159,21 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     ![Nincsenek fájlok a forrás tárolóban vagy a tárolóban](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. Hozzon létre egy üres szövegfájlt, és nevezze el a **file1. txt**fájlba. Töltse fel ezt a szövegfájlt a Storage-fiókban található forrás tárolóba. Ezeket a feladatokat különböző eszközökkel hajthatja végre, például [Azure Storage Explorer](https://storageexplorer.com/).
+12. Hozzon létre egy üres szövegfájlt, és nevezze el **file1.txt**. Töltse fel ezt a szövegfájlt a Storage-fiókban található forrás tárolóba. Ezeket a feladatokat különböző eszközökkel hajthatja végre, például [Azure Storage Explorer](https://storageexplorer.com/).
 
-    ![Hozza létre a file1. txt fájlt, és töltse fel a forrás tárolóba](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![file1.txt létrehozása és feltöltése a forrás-tárolóba](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. Ha vissza szeretne térni a **folyamat futási** nézetéhez, válassza a **minden folyamat futtatása**lehetőséget, és várja meg, amíg a folyamat automatikusan aktiválódik.  
 
-    ![Az összes folyamat futtatásának kiválasztása](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
-
 14. A második folyamat futásának befejeződése után kövesse a korábban megemlített lépéseket a tevékenység futtatási részleteinek áttekintéséhez.  
 
-    Látni fogja, hogy az egyik fájl (file1. txt) át lett másolva a forrás tárolójából a blob Storage-fiók cél tárolójába:
+    Látni fogja, hogy egy fájl (file1.txt) át lett másolva a forrás-tárolóból a blob Storage-fiók cél tárolójába:
 
-    ![a file1. txt fájlt a rendszer átmásolta a forrás tárolójából a cél tárolóba.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![A rendszer átmásolta a file1.txt a forrás tárolójából a cél tárolóba.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
 
-15. Hozzon létre egy másik üres szövegfájlt, és nevezze el a **fájl2. txt**fájlba. Töltse fel ezt a szövegfájlt a blob Storage-fiókban található forrás tárolóba.
+15. Hozzon létre egy másik üres szövegfájlt, és nevezze el **file2.txt**. Töltse fel ezt a szövegfájlt a blob Storage-fiókban található forrás tárolóba.
 
-16. Ismételje meg a 13. és a 14. lépést a második szövegfájlban. Láthatja, hogy a folyamat futása során csak az új fájlt (fájl2. txt) másolta a rendszer a forrás tárolójából a Storage-fiók céljának tárolóba.  
+16. Ismételje meg a 13. és a 14. lépést a második szövegfájlban. Láthatja, hogy a folyamat futása során csak az új fájlt (file2.txt) másolta a rendszer a forrás tárolójából a Storage-fiók célhelyére.  
 
     Azt is megteheti, hogy csak egy fájlt másolt [Azure Storage Explorer](https://storageexplorer.com/) használatával a fájlok vizsgálatához:
 

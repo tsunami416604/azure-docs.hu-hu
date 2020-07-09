@@ -1,18 +1,18 @@
 ---
 title: Ajánlati lista – ajánlott eljárások – Microsoft kereskedelmi piactér
 description: Ismerje meg a Microsoft AppSource és az Azure Marketplace-ajánlatokkal kapcsolatos ajánlott eljárásokat.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+author: keferna
+ms.author: keferna
+ms.date: 07/06/2020
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740773"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118392"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -22,47 +22,173 @@ Ez a cikk a kereskedelmi Piactéri ajánlatok létrehozásának és folytatásá
 
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Offer Name | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
-| Ajánlat leírása | Adja meg az ajánlat egyértelmű leírását:<br> <ul> <li> A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét. </li> <li> Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg. </li> <li> Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania. </li> <li> A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.</li> <li> Emellett a tanácsadási szolgáltatások listáinak egyértelműen meg kell adniuk az Ön által megadott professzionális szolgáltatást. </li></ul> Az érték kiosztásának alapvető összetevőinek a következő információkat kell tartalmazniuk:<ul><li>A termék leírása.</li><li>A termékből származó előnyöket biztosító felhasználó típusa.</li><li>Az ügyfélnek szüksége van a termék címére vagy a fájdalomra.</li></ul> |
+| Offer Name | Alkalmazások esetében adjon meg egy világos címet, amely tartalmazza a keresési kulcsszavakat, amelyek segítségével az ügyfelek felfedezhetik az ajánlatot. <br> <br> A tanácsadási szolgáltatások esetében kövesse az alábbi formátumot: [ajánlat neve: [időtartam] [ajánlat típusa] (például contoso: 2 hetes implementáció) <br> <br> A Brand irányelvek betartása: [a Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevének megadásával kapcsolatos releváns, termékspecifikus irányelvek követése. |
+| Ajánlat leírása | Adjon meg egy egyértelmű leírást, amely leírja az ajánlat értékeit az első néhány mondatban.  Ne feledje, hogy ezek a mondatok a keresőmotor eredményeiben is használhatók. Az értékek kiosztásának alapvető összetevői a következők: <ul> <li>A termék vagy megoldás leírása. </li> <li> A termék vagy megoldás előnyeit élvező felhasználói persona. </li> <li> Az ügyfélnek szüksége van a termékre vagy a megoldás címére. </li> </ul> <br> Ha lehetséges, használja az iparági szabványnak megfelelő szókincset vagy juttatáson alapuló szövegezést.  Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez.  Ehelyett a megadott értékre kell összpontosítania. <br> <br> A tanácsadási szolgáltatások listázásához egyértelműen adja meg az Ön által megadott professzionális szolgáltatást. |
 
 Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehozására és folytatására vonatkozó javaslatokat tartalmaznak. A marketing-anyagok írásához és konfigurálásához lépjen a [partner Center webhelyre](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
 
 ## <a name="storefront-listing-details"></a>Kirakati lista részletei
 
-| Kirakati beállítás | Ajánlott eljárás |
-|:--- |:--- |  
-| Iparágak: csak Microsoft AppSource alkalmazások és tanácsadási szolgáltatások | Válassza az iparágak lehetőséget, ha az ajánlata az iparágra jellemző igényekkel foglalkozik: <ul><li> Ismerje meg az iparágra jellemző képességeket az ajánlat leírásában.</li> </ul> **Megjegyzés**: a lehetőségek maximális száma az ajánlat típusa szerint változhat, és a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/)van megadva. |
-| Kategóriák | Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat:<br> <ul> <li> Gondosan válassza ki a kategóriákat, mivel az ügyfelek a megfelelő alkalmazások keresésére használják őket. </li> <li> Ügyeljen arra, hogy az ajánlat leírásában a kategória-specifikus igényeket is támogassa. </li> </ul> **Megjegyzés**: a lehetőségek maximális száma az ajánlat típusa szerint változhat, és a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/)van megadva. |
-| Az alkalmazás által használható termékek (3 max): csak AppSource-alkalmazások | A megoldás által használt vagy kiterjeszthető további termékek és technológiák listázása. Például: Azure IoT Hub vagy Azure Machine Learning. |
-| Keresési kulcsszavak (3 max) | A keresési kulcsszavak segítségével az üzleti felhasználók megkereshetik az ajánlatot a kereséskor <ul>  <li>Microsoft AppSource</li> <li>Az Azure Marketplace-en</li><li>keresőmotorok használata</li> </ul> Ahhoz, hogy a lista megjelenjen a keresésekben, a következőket kell tennie: <ul> <li> Azonosítsa az ajánlat első három keresési kulcsszavait; </li> <li> foglalja bele a keresési kulcsszavakat az ajánlat összefoglalásában és leírásában; </li> <li> a keresési kulcsszavak listázása itt. </li> </ul> |
+A különböző kirakatok kategóriái és ágazatai a különböző típusú ajánlatokra is érvényesek lesznek.
 
-### <a name="category"></a>Kategória
+| Kirakat | Kategóriák <br>kirakat szerint | Kategóriák <br>kirakat szerint | Ágazatok <br> AppSource |
+| :------------------- |:----------------:|:------:|:-------------:|
+| **Ajánlat típusa**   |  **Azure Marketplace**  | **AppSource**  |
+| Azure-alkalmazás | X | |
+| Tároló | X | |
+| Tanácsadási szolgáltatások | | | X |
+| Dynamics 365 Customer engagement & Power platform | | X | X |
+| Dynamics 365 Finance & ellátási lánc kezelése | | X | X | 
+| Dynamics 365 Business Central | | X | X |
+| IoT Edge modulok | X | |
+| Power BI | | X | X |
+| SaaS | X | X | X |
+| Azure-beli virtuális gép |  X |    |
 
-A Microsoft AppSource és az Azure Marketplace olyan kirakatok, amelyek különböző és egyedi ügyfelek igényeit szolgálják ki. Válassza ki a megfelelő kirakatot és kategóriákat az egyes ajánlatokhoz, hogy az ügyfeleket a szerepkör alapján célozza meg. 
+### <a name="categories"></a>Kategóriák
 
-Akár két kategóriát és két alkategóriát is kijelölhet egy ajánlathoz. Az alább felsorolt kategóriák és alkategóriák mindkét kirakatban elérhetők.  Győződjön meg arról, hogy a kategória kiválasztása a célközönség, az ajánlat leírása és az ajánlat értékének kiosztása szerint van igazítva.
+A Microsoft AppSource és az Azure Marketplace két különböző kirakat, amely egyedi felhasználói igényeket szolgál ki. Az Azure Marketplace az informatikai szakemberek és fejlesztők számára kínál megoldásokat az Azure-ban.  A Microsoft AppSource üzleti és/vagy iparági SaaS-alkalmazásokat, Dynamics 365 beépülő modulokat, Microsoft 365 beépülő modulokat és a Power platformos alkalmazásokat keresik.
 
-| **Iparág**    | **Alágazat**  | 
-| :------------------- | :-------------------|
-| * Autóipar     | * Autóipar |
-| Mezőgazdaság     | * Egyéb – nem szegmentált |
-| Disztribúció    | * Nagykereskedelmi <br> * Parcella & csomag szállítása |
-| Education     | * Felsőoktatás <br> * Elsődleges & középfokú oktatás/K-12 <br> * Könyvtárak & múzeumok |
-| Pénzügyi szolgáltatások     | * Banki & tőkepiacok <br> * Biztosítás |
-| Államigazgatás    | * Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> * Közbiztonság & igazságszolgáltatás <br> * Polgári kormányzat |
-| Egészségügyi ellátás (ún. állapot)   | * Állapot költségviselő <br> * Állapot szolgáltatója <br> * Gyógyszeripar |
-| Gyártási & erőforrások (a gyártás meghívásához használatos)   | * Kémiai & Agrokémiai <br> * Diszkrét gyártás <br> * Energia |
-| Lakossági & fogyasztási cikkek (a kereskedelmi elnevezéshez használatos)  | * Fogyasztási cikkek <br> * Kiskereskedők |
-| * Media & kommunikáció (média és szórakozás néven használatos)  | * Media & Entertainment <br> * Távközlés |
-| Professzionális szolgáltatások  | * Jogi <br> * Partneri szakmai szolgáltatások |
-| * Architektúra-& (architektúra-mérnöki néven használt)  | * Egyéb – nem szegmentált |
-| * Vendéglátás & utazás  | * Hotelek & szabadidő <br> * Utazási & szállítás <br> * Éttermek & élelmiszeripari szolgáltatások |
-| * Egyéb állami szektorbeli iparágak  | * Erdészeti & horgászat <br> * Nonprofit szervezetek |
-| * Ingatlan  | * Egyéb – nem szegmentált |
+A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes kirakatokra. Az ajánlat a Microsoft AppSource vagy az Azure Marketplace-en lesz közzétéve az ajánlat típusától, az ajánlat tranzakciós képességeitől és a kategória/alkategória kiválasztástól függően. 
+
+Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a célközönséget. Az alábbiak közül választhat:
+
+* Legfeljebb két (2) kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+* Akár két (2) alkategória az egyes elsődleges és/vagy másodlagos kategóriákhoz. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető.
+
+| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (informatikai szakemberek és fejlesztők)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (üzleti felhasználók)|
+| :------------------- |:----------------|
+|**Elemzés** | **Elemzés** |
+| &nbsp;&nbsp;Adatelemzések | &nbsp;&nbsp;Fejlett Analitika  |
+| &nbsp;&nbsp;Adatelemzés |  &nbsp;&nbsp;Vizualizáció & jelentéskészítés |
+| &nbsp;&nbsp;Big-adatmennyiség | **AI + Machine Learning**  |
+| &nbsp;&nbsp;Prediktív elemzés | &nbsp;&nbsp;AI vállalatoknak |
+| &nbsp;&nbsp;Valós idejű/adatfolyam-elemzés | &nbsp;&nbsp;Bot-alkalmazások |
+| **AI + Machine Learning** | **Együttműködés** |
+| &nbsp;&nbsp;Bot Service | &nbsp;&nbsp;Kapcsolatfelvétel & személyekkel |
+| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Értekezletek kezelése |
+| &nbsp;&nbsp;ML szolgáltatás | &nbsp;&nbsp;Hely kialakításának & kezelése |
+| &nbsp;&nbsp;Automatikus ML | &nbsp;&nbsp;Feladat & projektmenedzsment |
+| &nbsp;&nbsp;Üzleti/Robotos folyamatok automatizálása | &nbsp;&nbsp;Hang & videokonferencia |
+| &nbsp;&nbsp;Adatfelirat | **Megfelelőség & jogi** |
+| &nbsp;&nbsp;Adatelőkészítés | &nbsp;&nbsp;Adózási & naplózása |
+| &nbsp;&nbsp;Tudás bányászata | &nbsp;&nbsp;Jogi |
+| &nbsp;&nbsp;ML-műveletek | &nbsp;&nbsp;Adatok, irányítási & adatvédelem |
+| **Blokklánc**  | &nbsp;&nbsp;Állapot & biztonság |
+| &nbsp;&nbsp;Alkalmazás-gyorsítók | **Customer Service**  |
+| &nbsp;&nbsp;Egycsomópontos Főkönyv | &nbsp;&nbsp;Kapcsolattartási központ |
+| &nbsp;&nbsp;Több csomópontos Főkönyv | &nbsp;&nbsp;Szembenézés a Face szolgáltatással |
+| &nbsp;&nbsp;Eszközök | &nbsp;&nbsp;Office & Employee Service |
+| **Számítás**  | &nbsp;&nbsp;Knowledge & – ügyvitel |
+| &nbsp;&nbsp;Alkalmazás-infrastruktúra | &nbsp;&nbsp;Közösségi média & Omnichannel engagement |
+| &nbsp;&nbsp;Operációs rendszerek | **Pénzügy** |
+| &nbsp;&nbsp;Gyorsítótár | &nbsp;&nbsp;Számviteli |
+| **Containers**  | &nbsp;&nbsp;Eszközkezelés |
+| &nbsp;&nbsp;Ismerkedés a tárolókkal | &nbsp;&nbsp;Elemzés, konszolidáció & jelentéskészítés |
+| &nbsp;&nbsp;Tároló alkalmazások | &nbsp;&nbsp;Kredit & gyűjtemények |
+| &nbsp;&nbsp;Tároló lemezképei | &nbsp;&nbsp;Megfelelőség & kockázatkezelés |
+| **Adatbázisok**  | **Térinformatikai** |
+| &nbsp;&nbsp;NoSQL-adatbázisok | &nbsp;&nbsp;Térképek |
+| &nbsp;&nbsp;Rokon adatbázisok | &nbsp;&nbsp;Hírek & Időjárás |
+| &nbsp;&nbsp;Főkönyv/Blockchain-adatbázisok | **Human Resources** |
+| &nbsp;&nbsp;Adattavak | &nbsp;&nbsp;Tehetség megszerzése |
+| &nbsp;&nbsp;Adattárház | &nbsp;&nbsp;Tehetségek kezelése |
+| **Fejlesztői eszközök**  | &nbsp;&nbsp;HR-műveletek |
+| &nbsp;&nbsp;Eszközök | &nbsp;&nbsp;A munkaerő megtervezése & Analitika |
+| &nbsp;&nbsp;Parancsfájlok | **IT & felügyeleti eszközök** |
+| &nbsp;&nbsp;Fejlesztői szolgáltatás | &nbsp;&nbsp;Felügyeleti megoldások |
+| **DevOps**  | &nbsp;&nbsp;Business Applications |
+| **Integráció**  | **Eszközök internetes hálózata** |
+| &nbsp;&nbsp;Üzenetkezelési | &nbsp;&nbsp;Asset Management & műveletek |
+| **IT & felügyeleti eszközök**  | &nbsp;&nbsp;Csatlakoztatott termékek |
+| &nbsp;&nbsp;Felügyeleti megoldások | &nbsp;&nbsp;Intelligens ellátási lánc |
+| &nbsp;&nbsp;Business Applications | &nbsp;&nbsp;Prediktív karbantartás |
+| **Identitás**  | &nbsp;&nbsp;Távoli figyelés |
+| &nbsp;&nbsp;Hozzáférés-kezelés | &nbsp;&nbsp;Biztonsági & biztonság |
+| **Eszközök internetes hálózata**  | &nbsp;&nbsp;Intelligens infrastruktúra-& erőforrások |
+| &nbsp;&nbsp;IoT-kapcsolat | &nbsp;&nbsp;Járművek & mobilitás |
+| &nbsp;&nbsp;IoT Core-szolgáltatások | **Marketing** |
+| &nbsp;&nbsp;IoT Edge modulok | &nbsp;&nbsp;Hirdetmény |
+| &nbsp;&nbsp;IoT-megoldások | &nbsp;&nbsp;Analytics |
+| &nbsp;&nbsp;Adatelemzési & vizualizáció | &nbsp;&nbsp;Kampány-felügyeleti & Automation |
+| **Média**  | &nbsp;&nbsp;E-mail marketing |
+| &nbsp;&nbsp;Media Services | &nbsp;&nbsp;Események & erőforrás-kezelés |
+| &nbsp;&nbsp;Content Protection | &nbsp;&nbsp;Kutatási & elemzése |
+| &nbsp;&nbsp;Igény szerinti streaming élő & | &nbsp;&nbsp;Közösségi média |
+| **& diagnosztika figyelése**  | **Műveleti & ellátási lánc** |
+| **Migrálás**  | &nbsp;&nbsp;Eszköz & üzemi felügyelet |
+| &nbsp;&nbsp;Adatáttelepítés | &nbsp;&nbsp;Kereslet-előrejelzés |
+| **Mixed Reality**  | &nbsp;&nbsp;Information Management & kapcsolat |
+| **Hálózat**  | &nbsp;&nbsp;& jelentéskészítés tervezése, beszerzése |
+| &nbsp;&nbsp;Berendezések kezelői | &nbsp;&nbsp;Minőségi & szolgáltatások kezelése |
+| &nbsp;&nbsp;Connectivity | &nbsp;&nbsp;Értékesítési & rendelés kezelése |
+| &nbsp;&nbsp;Tűzfalak | &nbsp;&nbsp;Szállítás & Warehouse Management |
+| &nbsp;&nbsp;Terheléselosztó | **Termelékenység** |
+| **Biztonság**  | &nbsp;&nbsp;Tartalom létrehozása & kezelése |
+| &nbsp;&nbsp;Identitás & hozzáférés-kezelés | &nbsp;&nbsp;Dokumentumkezelés |
+| &nbsp;&nbsp;Veszélyforrások elleni védelem | &nbsp;&nbsp;E-mailek kezelése |
+| &nbsp;&nbsp;Information Protection | &nbsp;&nbsp;Nyelvi & fordítás |
+| **Storage**  | &nbsp;&nbsp;Keresési & referenciája |
+| &nbsp;&nbsp;Biztonsági mentés & helyreállítás | &nbsp;&nbsp;Gamification |
+| &nbsp;&nbsp;Vállalati hibrid tárolás | **Sales** |
+| &nbsp;&nbsp;Fájlmegosztás | &nbsp;&nbsp;Telesales |
+| &nbsp;&nbsp;Adatéletciklus-kezelés | &nbsp;&nbsp;Konfigurálás, Ár, árajánlat (CPQ) |
+| **Web**  | &nbsp;&nbsp;Szerződések kezelése |
+| &nbsp;&nbsp;Blogok & CMSs | &nbsp;&nbsp;CRM |
+| &nbsp;&nbsp;Kezdő Web Apps | &nbsp;&nbsp;E-kereskedelmi |
+| &nbsp;&nbsp;E-kereskedelmi | &nbsp;&nbsp;Üzleti adatelemzés  |
+| &nbsp;&nbsp;Webalkalmazás-keretrendszerek | &nbsp;&nbsp;Értékesítés engedélyezése  |
+| &nbsp;&nbsp;Web Apps |  |
+
+**Fontos: SaaS-ajánlatok és Microsoft 365-bővítmények**
+
+Tekintse meg az [útmutató ajánlat típusát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) , amely részletesen ismerteti, hogy a Transact-funkciók milyen hatással lehetnek az ajánlat megtekintésére és a piactéren elérhető ügyfelek általi vásárlására. Az SaaS-ajánlatok esetében az ajánlat tranzakciós képessége, valamint a kategória kiválasztása határozza meg azt a kirakatot, ahol az ajánlat közzé lesz téve:
+
+| SaaS-ajánlat    | SaaS-ajánlat   | SaaS-ajánlat  | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat    | Alkalmazható kirakat | Alkalmazható kirakat |
+|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
+| Mért számlázás | Bővítmények Microsoft 365 | Kapcsolatfelvétel | Transact (legalább 1 csomag) | Csak privát csomag | Csak nyilvános csomag | Nyilvános & Private-csomagok | AppSource | Azure Piactér |
+|  | X |  |  |  |  |  | X |  |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | X<sup>2</sup> |
+|  |  |  | X | X |  |  |  | X |
+|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
+|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1, 2</sup> |
+|  |  | X |  |  |  |  | x<sup>1</sup> | X<sup>1</sup> | 
+
+1. Kategóriától, alkategóriától és az iparág kiválasztástól függően
+2. A privát csomagokkal rendelkező ajánlatok közzé lesznek téve a Azure Portal
+
 
 ### <a name="industries"></a>Ágazatok
 
-Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és tanácsadási szolgáltatásokban közzétett ajánlatokra vonatkozik. Válassza az iparágak és/vagy a vertikálisak lehetőséget, ha az ajánlata az iparágra jellemző igények kielégítésével foglalkozik, és az ajánlat leírásában az iparágra jellemző képességeket hívja meg. Kiválaszthat legfeljebb két (2) iparágat és két (2) vertikális elemet.
+Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és tanácsadási szolgáltatásokban közzétett ajánlatokra vonatkozik.  Válassza az iparágak és/vagy a vertikálisak lehetőséget, ha az ajánlata az iparágra jellemző igények kielégítésével foglalkozik, és az ajánlat leírásában az iparágra jellemző képességeket hívja meg. Kiválaszthat legfeljebb két (2) iparágat és két (2) vertikális elemet.
+
+>[!Note]
+>Az Azure Marketplace-en elérhető tanácsadási szolgáltatásokhoz nem tartoznak iparági vertikális szolgáltatások.
+
+| **Ágazatok** |  **Vertikumok** |
+| :------------------- | :----------------|
+| **Mezőgazdaság** | |
+| **Architektúra & építése** | |
+| **Autóipar** | |
+| **Disztribúció** | Nagykereskedelem <br> Parcella & csomag szállítása |  
+| **Education** | Felsőoktatás <br> Elsődleges & másodlagos edu/K-12 <br> Könyvtárak & múzeumok |
+| **Pénzügyi szolgáltatások** | Banki & tőkepiacok <br> Biztosítási | 
+| **Government** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
+| **Egészségügy** | Állapot költségviselő <br> Állapot szolgáltatója <br> Gyógyszerek | 
+| **Vendéglátás & utazás** | Utazási & szállítás <br> Hotelek & szabadidő <br> Éttermek & Food Services | 
+| **Gyártási & erőforrások** | Kémiai & Agrokémiai <br> Diszkrét gyártás <br> Energia | 
+| **Média & kommunikáció** | Media & Entertainment <br> Távközlés | 
+| **Más állami szektorbeli iparágak** | Erdészeti & horgászat <br> Nonprofit | 
+| **Professzionális szolgáltatások** | Partneri szakmai szolgáltatások <br> Jogi tudnivalók | 
+| **Ingatlan** | |
+
+Csak Microsoft AppSource iparág:
+
+| **Iparág** |  **Vertikumok** |
+| :------------------- | :----------------|
+| **Lakossági & fogyasztási cikkek** | Kiskereskedők <br> Fogyasztási cikkek |
 
 ### <a name="applicable-products"></a>Alkalmazható termékek
 
@@ -91,7 +217,7 @@ A következő példában szereplő URL-cím az előző lekérdezési paramétere
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 

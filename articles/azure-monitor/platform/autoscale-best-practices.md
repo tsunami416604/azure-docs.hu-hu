@@ -1,15 +1,15 @@
 ---
-title: Ajánlott eljárások az autoskálázáshoz
+title: Ajánlott eljárások az automatikus skálázáshoz
 description: Az Azure-ban Web Apps, virtuálisgép-méretezési csoportokhoz és Cloud Serviceshoz használható autoskálázási minták
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846932"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
@@ -31,7 +31,7 @@ Használja az alábbi ajánlott eljárásokat az autoscale használata során.
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Győződjön meg arról, hogy a maximális és minimális értékek eltérőek, és a közöttük lévő különbség elegendő
 
-Ha olyan beállítással rendelkezik, amely minimum = 2, maximum = 2, a jelenlegi példányszám pedig 2, akkor a méretezési művelet nem hajtható végre. Tartsa meg a megfelelő különbözetet a maximális és a minimális példányszám között, amelyek tartalmazzák a szolgáltatást. Az autoscale mindig méretezi a határértékeket.
+Ha olyan beállítással rendelkezik, amely esetében a minimum=2, a maximum=2, a jelenlegi példányszám pedig 2, akkor nem lesz skálázási művelet végrehajtva. Mindig legyen elegendő különbség a maximális és minimális példányszámok között, a határokat is beleértve. Az automatikus skálázás mindig ezek között a korlátok között skáláz.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>A kézi skálázás visszaállítása az automatikus skálázás minimuma és maximuma alapján történik
 
@@ -48,8 +48,8 @@ Javasoljuk, hogy gondosan válasszon különböző küszöbértékeket a kibőv�
 
 Nem javasoljuk, hogy az alábbi példához hasonló, a kifelé és a feltételekhez hasonló küszöbértékekkel rendelkező méretezési beállításokat *ne ajánljuk* :
 
-* A példányok számának növelésével, ha a szálak száma >= 600
-* A példányok 1 számmal való csökkentése, ha a szálak száma <= 600
+* A példányok számának növelése 1-gyel, ha a szálak száma >= 600
+* A példányok számának csökkentése 1-gyel, ha a szálak száma <= 600
 
 Lássunk egy példát arra, hogy mi vezethet olyan viselkedéshez, amely zavarosnak tűnhet. Vegye figyelembe a következő sorozatot.
 

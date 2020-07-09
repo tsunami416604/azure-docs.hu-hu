@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: include
 ms.date: 01/16/2020
-ms.author: babanisa
+ms.author: femila
 ms.custom: include file
-ms.openlocfilehash: 42d1ebb23cf582c3dfbc375e4886ed449c21f493
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d4f4f1563c16e276eb20ce4d4599b7fd5fca683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84562276"
 ---
 >[!NOTE]
 > Ha egy eszköz újraindítása esetén meg kell őriznie a függőben lévő eseményeket, engedélyeznie kell az esemény-előfizetés megőrzését. Az adatmegőrzés beállításával kapcsolatos további információkért tekintse meg a következő cikkeket: állapot megtartása [Linuxon](../articles/event-grid/edge/persist-state-linux.md) vagy [az állapot megőrzése a Windowsban](../articles/event-grid/edge/persist-state-windows.md).

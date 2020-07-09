@@ -1,18 +1,18 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2f8d55669798765cf24e13e95b261cbe4f0e9e3a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506045"
 ---
 A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
@@ -21,9 +21,17 @@ A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a na
 
 ## <a name="eviction-policy"></a>Kizárási szabályzat
 
-A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. A virtuális gépek esetében a kizárási szabályzat úgy van beállítva, hogy *felszabadítsa* a kizárt virtuális gépeket a leállított, lefoglalt állapotba, így később újra üzembe helyezheti a kizárt virtuális gépeket. A helyszíni virtuális gépek újbóli kiosztása azonban attól függ, hogy elérhető-e a hely kapacitása. A fel nem osztott virtuális gépek a helyszíni vCPU-kvótába kerülnek, és a mögöttes lemezekért díjat számítunk fel. 
+A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. A Direktszínű virtuális gépek létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
 
-A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)használatával kapják meg. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
+A *felszabadítási* házirend áthelyezi a virtuális gépet a leállított, lefoglalt állapotba, így később újra üzembe helyezheti. Azonban nem garantálható, hogy a foglalás sikeres lesz. A fel nem osztott virtuális gépek a kvóta alapján számítanak, és a mögöttes lemezek tárolási költségei lesznek felszámítva. 
+
+Ha azt szeretné, hogy a virtuális gép törölhető legyen a kizárása után, beállíthatja a kizárási házirendet a *törléshez*. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, így nem kell tovább fizetnie a tárterületért. 
+
+> [!NOTE]
+>
+> A portál jelenleg nem támogatja a `Delete` kizárási lehetőséget, csak a `Delete` PowerShell, a CLI és a sablonok használatával állítható be.
+
+Engedélyezheti, hogy a virtuális gép értesítéseit az [Azure Scheduled Eventson](../articles/virtual-machines/linux/scheduled-events.md)keresztül fogadja. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
 
 
 | Beállítás | Eredmény |
@@ -37,15 +45,29 @@ A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure 
 | Ha a maximális díj értéke`-1` | A virtuális gép díjszabása nem kerül kizárásra. A maximális díj a jelenlegi díj, amely a standard szintű virtuális gépek árával függ. A standard díj felett soha nem számítunk fel díjat.| 
 | A maximális ár módosítása | A maximális díj megváltoztatásához fel kell szabadítania a virtuális gépet. Szabadítsa fel a virtuális gépet, állítson be egy új maximális árat, majd frissítse a virtuális gépet. |
 
+
 ## <a name="limitations"></a>Korlátozások
 
 A következő virtuálisgép-méretek nem támogatottak a Direktszínű virtuális gépek esetében:
  - B sorozat
  - Bármilyen méretű promóciós verzió (például Dv2, NV, NC, H promo-méretek)
 
-A helyszíni virtuális gépek jelenleg nem használhatnak ideiglenes operációsrendszer-lemezeket.
-
 A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve Microsoft Azure China 21Vianet.
+
+Egyes előfizetési csatornák nem támogatottak:
+
+<a name="channel"></a>
+
+| Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
+|------------------------------|-----------------------------------|
+| Nagyvállalati Szerződés         | Yes                               |
+| Használatalapú fizetés                | Yes                               |
+| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Előnyök                     | Nem érhető el                     |
+| Szponzorált                    | Yes                               |
+| Ingyenes próbaverzió                   | Nem érhető el                     |
+
+
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -75,23 +97,6 @@ A változó díjszabással maximális árat állíthat be az USA dollárban (USD
 **K:** Igényelhetek további kvótát a helyszínen?
 
 **A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)keresztül.
-
-
-**K:** Milyen csatornák támogatják a helyszíni virtuális gépeket?
-
-**A:** Tekintse meg az alábbi táblázatot a helyszíni virtuális gépek rendelkezésre állásához.
-
-<a name="channel"></a>
-
-| Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
-|------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
-| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Microsoft-ügyfélszerződés | Igen                               |
-| Előnyök                     | Nem érhető el                     |
-| Szponzorált                    | Nem érhető el                     |
-| Ingyenes próbaverzió                   | Nem érhető el                     |
 
 
 **K:** Hol tehetek közzé kérdéseket?

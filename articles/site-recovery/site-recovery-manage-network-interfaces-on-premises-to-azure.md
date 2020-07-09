@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129900"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Virtuálisgép-hálózati adapterek kezelése helyszíni vész-helyreállításhoz az Azure-ba
 
@@ -26,7 +26,7 @@ Alapértelmezés szerint a Azure Site Recovery annyi hálózati adaptert hoz lé
 
 ## <a name="select-the-target-network"></a>Válassza ki a célként kijelölt hálózatot
 
-A VMware és a fizikai gépek esetében, valamint a Hyper-V (System Center Virtual Machine Manager nélküli) virtuális gépek esetében megadhatja a célként megadott virtuális hálózatot az egyes virtuális gépekhez. A Virtual Machine Manager által felügyelt Hyper-V virtuális gépek esetében a [hálózati leképezés](site-recovery-network-mapping.md) használatával képezhető le a virtuálisgép-hálózatok a forrás Virtual Machine Manager-kiszolgáló és a cél Azure-hálózatok számára.
+A VMware és a fizikai gépek esetében, valamint a Hyper-V (System Center Virtual Machine Manager nélküli) virtuális gépek esetében megadhatja a célként megadott virtuális hálózatot az egyes virtuális gépekhez. A Virtual Machine Manager által felügyelt Hyper-V virtuális gépek esetében a [hálózati leképezés](./hyper-v-vmm-network-mapping.md) használatával képezhető le a virtuálisgép-hálózatok a forrás Virtual Machine Manager-kiszolgáló és a cél Azure-hálózatok számára.
 
 1. A Recovery Services-tárolóban lévő **replikált elemek** területen válassza ki az egyik replikált elemet az adott replikált elem beállításainak eléréséhez.
 
@@ -68,5 +68,5 @@ A replikált elemek hálózati adapterei alhálózatának és IP-címének módo
 
 6. Válassza a **Mentés** lehetőséget az összes módosítás mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
   [További](../virtual-network/virtual-network-network-interface-vm.md) információ az Azure Virtual Machines szolgáltatáshoz használható hálózati adapterekről.

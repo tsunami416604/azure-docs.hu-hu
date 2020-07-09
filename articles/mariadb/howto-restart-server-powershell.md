@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Data
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: ff7a7b7d83089f575df1ac169556c2762dd674a7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1cf5cf3f34f2986bbc18b5293dad4862c24f47a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050848"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121078"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>Azure Database for MariaDB kiszolgáló újraindítása a PowerShell-lel
 
@@ -44,7 +44,7 @@ Indítsa újra a kiszolgálót a következő paranccsal:
 Restart-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MariaDB-kiszolgáló létrehozása a PowerShell használatával](quickstart-create-mariadb-server-database-using-azure-powershell.md)

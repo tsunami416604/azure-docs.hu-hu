@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan helyezheti át a nyilvános M
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738362"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Váltáson nyilvános társviszony-létesítésről Microsoft-társviszony-létesítésre
 
@@ -62,7 +62,7 @@ A Microsoft-társak engedélyezésével kapcsolatos részletes utasítások a k�
 
 Győződjön meg arról, hogy a Microsoft-társítás engedélyezve van, és a meghirdetett nyilvános előtagok a konfigurált állapotban vannak.
 
-* [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
+* [Azure Portalra](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure CLI](howto-routing-cli.md#getmsft)
 

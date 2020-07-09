@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701200"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Szolgáltatások monitorozása és diagnosztizálása egy helyi gép fejlesztési beállításánál
 > [!div class="op_single_selector"]
@@ -40,16 +39,16 @@ Service Fabric ETW eseményeket bocsát ki, hogy az alkalmazások fejlesztői me
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>Saját egyéni nyomkövetés hozzáadása az alkalmazás kódjához
 A Service Fabric Visual Studio Project-sablonok mintakód-kódot tartalmaznak. A kód bemutatja, hogyan adhat hozzá a Visual Studio ETW-megjelenítőben megjelenített egyéni ETW-nyomkövetéseket a rendszernyomok Service Fabric. Ennek a módszernek az az előnye, hogy a rendszer automatikusan hozzáadja a metaadatokat a nyomkövetésekhez, és a Visual Studio diagnosztikai eseményeinek megjelenítője már be van állítva a megjelenítésre.
 
-A **szolgáltatási sablonokból** létrehozott projektek esetében (állapot nélküli vagy állapot-nyilvántartó) csak keressen rá `RunAsync` a megvalósításra:
+A **szolgáltatási sablonokból** létrehozott projektek esetében (állapot nélküli vagy állapot-nyilvántartó) csak keressen rá a `RunAsync` megvalósításra:
 
-1. A `RunAsync` metódusban `ServiceEventSource.Current.ServiceMessage` megjelenő hívás egy példát mutat be az alkalmazás kódjából származó egyéni ETW-nyomkövetésre.
-2. A **ServiceEventSource.cs** -fájlban a nagy gyakoriságú események teljesítményének okai `ServiceEventSource.ServiceMessage` miatti túlterhelést talál a metódushoz.
+1. A metódusban megjelenő hívás egy `ServiceEventSource.Current.ServiceMessage` `RunAsync` példát mutat be az alkalmazás kódjából származó egyéni ETW-nyomkövetésre.
+2. A **ServiceEventSource.cs** -fájlban a `ServiceEventSource.ServiceMessage` nagy gyakoriságú események teljesítményének okai miatti túlterhelést talál a metódushoz.
 
 A **Actor-sablonokból** létrehozott projektek esetében (állapot nélküli vagy állapot-nyilvántartó):
 
 1. Nyissa meg a **"ProjectName". cs** fájlt, ahol a *projektnév* a Visual Studio-projekthez választott név.  
-2. Keresse meg a `ActorEventSource.Current.ActorMessage(this, "Doing Work");` kódot a *DoWorkAsync* metódusban.  Ez egy példa az alkalmazás kódjából írt egyéni ETW-nyomkövetésre.  
-3. A fájl **ActorEventSource.cs**a nagy gyakoriságú események teljesítményének okai `ActorEventSource.ActorMessage` miatt felhasználható túlterhelést talál a metódushoz.
+2. Keresse meg a kódot a `ActorEventSource.Current.ActorMessage(this, "Doing Work");` *DoWorkAsync* metódusban.  Ez egy példa az alkalmazás kódjából írt egyéni ETW-nyomkövetésre.  
+3. A fájl **ActorEventSource.cs**a `ActorEventSource.ActorMessage` nagy gyakoriságú események teljesítményének okai miatt felhasználható túlterhelést talál a metódushoz.
 
 Miután hozzáadta az egyéni ETW-nyomkövetést a szolgáltatás kódjához, felépítheti, telepítheti és futtathatja az alkalmazást, hogy megtekintse az esemény (eke) t a diagnosztikai események megjelenítőben. Ha az **F5 billentyűvel**végzi az alkalmazás hibakeresését, a rendszer automatikusan megnyitja a diagnosztikai események megjelenítőjét.
 

@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: dca07f37377880008160fa3521d66ed4f6afc084
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a4e8fc18ab7abfee483f36adef083bfb08a4a27f
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759985"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986112"
 ---
 Ismerkedjen meg az anomáliák Kiderítő ügyféloldali kódtáraval a JavaScripthez. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
@@ -22,19 +22,19 @@ A következőhöz használhatja az anomália-Kiderítő ügyféloldali kódtára
 * Az idősorozat-adatkészlet összes rendellenességének észlelése batch-kérelemként
 * Az idősorozat legújabb adatpontjának anomália állapotának észlelése
 
-[Reference documentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [A kód megkeresése a githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector) a dokumentációs[könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [-csomagja (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | 
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector)  |  [A kód megkeresése a githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Node. js](https://nodejs.org/) jelenlegi verziója
-* Anomália-detektor kulcsa és végpontja
+* A [Node.js](https://nodejs.org/) aktuális verziója
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
 
-### <a name="create-an-anomaly-detector-azure-resource"></a>Anomália-detektor Azure-erőforrás létrehozása
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
+[!INCLUDE [anomaly-detector-environment-variables](../environment-variables.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -44,23 +44,23 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init` parancsot egy `package.json` Node-alkalmazás fájlhoz való létrehozásához. 
+Futtassa a `npm init` parancsot egy Node-alkalmazás fájlhoz való létrehozásához `package.json` . 
 
 ```console
 npm init
 ```
 
-Hozzon létre egy `index.js` nevű fájlt, és importálja a következő könyvtárakat:
+Hozzon létre egy nevű fájlt `index.js` , és importálja a következő könyvtárakat:
 
 [!code-javascript[Import statements](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=imports)]
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásakor. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt. Hozzon létre egy másik változót egy későbbi lépésben letölteni kívánt adatfájlhoz, és az adatpontok üres listáját. Ezután hozzon `ApiKeyCredentials` létre egy objektumot, amely tartalmazza a kulcsot.
+Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásakor. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt. Hozzon létre egy másik változót egy későbbi lépésben letölteni kívánt adatfájlhoz, és az adatpontok üres listáját. Ezután hozzon létre egy `ApiKeyCredentials` objektumot, amely tartalmazza a kulcsot.
 
 [!code-javascript[Initial endpoint and key variables](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=vars)]
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a `ms-rest-azure` és `azure-cognitiveservices-anomalydetector` a NPM csomagokat. Ebben a rövid útmutatóban a CSV-elemzési függvénytárat is használják:
+Telepítse a `ms-rest-azure` és a `azure-cognitiveservices-anomalydetector` NPM csomagokat. Ebben a rövid útmutatóban a CSV-elemzési függvénytárat is használják:
 
 ```console
 npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
@@ -78,7 +78,7 @@ Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.c
 
 ## <a name="code-examples"></a>Kódpéldák 
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node. js-hez készült rendellenesség-Kiderítő ügyféloldali kódtár használatával:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node.js rendellenesség-Kiderítő ügyféloldali kódtár használatával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Idősorozat-adatkészlet betöltése fájlból](#load-time-series-data-from-a-file)
@@ -100,13 +100,13 @@ A rövid útmutatóhoz tartozó példa adatainak letöltése a [githubról](http
 
 Ez az idősoros adat. csv-fájlként van formázva, és a rendszer elküldi a rendellenesség-Kiderítő API-nak.
 
-Olvassa el az adatfájlt a CSV-parse `readFileSync()` Library metódusával, és elemezze `parse()`a fájlt a következővel:. Az egyes sorok esetében leküldheti az időbélyeget tartalmazó [pont](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) objektumot és a numerikus értéket.
+Olvassa el az adatfájlt a CSV-parse Library `readFileSync()` metódusával, és elemezze a fájlt a következővel: `parse()` . Az egyes sorok esetében leküldheti az időbélyeget tartalmazó [pont](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) objektumot és a numerikus értéket.
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>A teljes adathalmazban észlelt rendellenességek észlelése 
 
-Hívja meg az API-t, hogy a teljes idősorozaton keresztül észlelje a rendellenességeket az ügyfél [entireDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) metódusával. Tárolja a visszaadott [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) objektumot. Ismételje meg `isAnomaly` a válasz listáját, és nyomtassa ki bármelyik `true` érték indexét. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
+Hívja meg az API-t, hogy a teljes idősorozaton keresztül észlelje a rendellenességeket az ügyfél [entireDetect ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) metódusával. Tárolja a visszaadott [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) objektumot. Ismételje meg a válasz `isAnomaly` listáját, és nyomtassa ki bármelyik érték indexét `true` . Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
@@ -116,9 +116,9 @@ A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legut
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors `node` üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található paranccsal.
 
 ```console
 node index.js

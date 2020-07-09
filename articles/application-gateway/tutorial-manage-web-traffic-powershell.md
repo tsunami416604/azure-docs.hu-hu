@@ -4,16 +4,16 @@ description: Megismerheti, hogyan hozhat létre alkalmazásátjárót egy virtu�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a313296a9a19aa762803652a3b139cdac7ca3a58
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: cb45f4a19cf36fe291ffe7299a46a44a245fbb8f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68359929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806192"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Webes forgalom kezelése alkalmazásátjáróval az Azure PowerShell használatával
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-manage-web-traffic-cli.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -248,7 +248,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-manage-web-traffic-powershell/tutorial-iistest.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 

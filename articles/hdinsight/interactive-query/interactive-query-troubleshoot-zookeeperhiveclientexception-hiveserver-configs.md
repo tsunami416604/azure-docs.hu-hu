@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 20309babb9ece0ae20e7442543b0d378f9a51060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895066"
 ---
 # <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive Zeppelin-értelmező Zookeeper hibát ad az Azure HDInsight
@@ -34,7 +33,7 @@ A Zeppelin-struktúra JDBC-értelmező nem megfelelő URL-címre mutat.
 
 1. Navigáljon a kaptár összetevő összegzéséhez, és másolja a "kaptár JDBC URL-címét" a vágólapra.
 
-1. Navigáljon a`https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
+1. Navigáljon ide: `https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
 
 1. A JDBC beállításainak szerkesztése: frissítse a kaptár. URL értékét a kaptár JDBC URL-címére, amelyet az 1. lépésben másolt.
 

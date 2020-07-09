@@ -9,15 +9,15 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611976"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
-A Windows Virtual Desktop szolgáltatás felhasználói Profilos megoldásként ajánlja a FSLogix-profilok tárolóit. A FSLogix távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban barangoló profilokhoz készült. Egy teljes felhasználói profilt tárol egyetlen tárolóban. Bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez a natív módon támogatott virtuális merevlemez (VHD) és a Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profil. Ez a cikk azt ismerteti, hogyan használhatók a FSLogix-profilok tárolói a Windows rendszerű virtuális asztal Azure Files funkciójával.
+A Windows Virtual Desktop szolgáltatás felhasználói Profilos megoldásként ajánlja a FSLogix-profilok tárolóit. A FSLogix a távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban található profilok hordozására szolgál. Egy teljes felhasználói profilt tárol egy önálló tárolóban. Bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez a natív módon támogatott virtuális merevlemez (VHD) és a Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profil. Ez a cikk azt ismerteti, hogyan használhatók a FSLogix-profilok tárolói a Windows rendszerű virtuális asztal Azure Files funkciójával.
 
 >[!NOTE]
 >Ha összehasonlító anyagot keres az Azure-beli különböző FSLogix-profilok tárolási lehetőségeivel kapcsolatban, tekintse meg a [FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md)című témakört.
@@ -49,11 +49,11 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 | Technológia | Modern beállítások | Win32-beállítások | Operációs rendszer beállításai | Felhasználói adatok | Kiszolgáló SKU-ban támogatott | Háttérbeli tároló az Azure-ban | Helyszíni háttérbeli tároló | Verziók támogatása | Későbbi bejelentkezési idő |Megjegyzések|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Felhasználói profil lemezei (UPD)** | Igen | Igen | Igen | Igen | Igen | No | Igen | 7. győzelem + | Igen | |
-| **Barangoló felhasználói profil (központi felhasználói PROFILHOZ), karbantartási mód** | No | Igen | Igen | Igen | Igen| No | Igen | 7. győzelem + | No | |
-| **Enterprise State Roaming (ESR)** | Igen | No | Igen | No | Lásd: megjegyzések | Igen | No | 10. győzelem | No | A Server SKU-ban lévő függvények, de nem támogatott felhasználói felület |
-| **Felhasználói élmény virtualizálása (UE-V)** | Igen | Igen | Igen | No | Igen | No | Igen | 7. győzelem + | No |  |
-| **OneDrive Cloud Files** | Nem | Nem | Nem | Igen | Lásd: megjegyzések | Lásd: megjegyzések  | Lásd: megjegyzések | 10 RS3 | No | Nem tesztelt a kiszolgálói SKU-ban. Az Azure-beli háttérbeli tárterület a szinkronizálási ügyféltől függ. Az on-back-end tárolónak szinkronizálási ügyfélre van szüksége. |
+| **Felhasználói profil lemezei (UPD)** | Igen | Igen | Igen | Igen | Igen | Nem | Igen | 7. győzelem + | Igen | |
+| **Barangoló felhasználói profil (központi felhasználói PROFILHOZ), karbantartási mód** | Nem | Igen | Igen | Igen | Igen| Nem | Igen | 7. győzelem + | Nem | |
+| **Enterprise State Roaming (ESR)** | Igen | Nem | Igen | Nem | Lásd: megjegyzések | Igen | Nem | 10. győzelem | Nem | A Server SKU-ban lévő függvények, de nem támogatott felhasználói felület |
+| **Felhasználói élmény virtualizálása (UE-V)** | Igen | Igen | Igen | Nem | Igen | Nem | Igen | 7. győzelem + | Nem |  |
+| **OneDrive Cloud Files** | Nem | Nem | Nem | Igen | Lásd: megjegyzések | Lásd: megjegyzések  | Lásd: megjegyzések | 10 RS3 | Nem | Nem tesztelt a kiszolgálói SKU-ban. Az Azure-beli háttérbeli tárterület a szinkronizálási ügyféltől függ. Az on-back-end tárolónak szinkronizálási ügyfélre van szüksége. |
 
 #### <a name="performance"></a>Teljesítmény
 

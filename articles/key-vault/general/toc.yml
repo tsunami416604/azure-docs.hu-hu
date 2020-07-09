@@ -1,6 +1,7 @@
 - name: Általános kérdések
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Információk az Azure Key Vaultról
       href: overview.md
@@ -14,10 +15,20 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: Az Azure Key Vault használata Windows rendszerű virtuális géppel Pythonban
           href: tutorial-python-windows-virtual-machine.md
+    - name: Azure Kubernetes Service
+      items:
+        - name: Az Azure Key Vault integrálása a Kubernetesszel
+          href: key-vault-integrate-kubernetes.md
+    - name: Azure Databricks
+      items:
+        - name: Az Azure Blob Storage elérése az Azure Databricks és az Azure Key Vault használatával
+          href: integrate-databricks-blob-storage.md
     - name: A Key Vault és egy felügyelt identitást és .NET-et használó webalkalmazás összekapcsolása
       href: tutorial-net-create-vault-azure-web-app.md
 - name: Példák
   items:
+    - name: Key Vault-kódminták
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -61,6 +72,8 @@
   items:
     - name: Hitelesítés
       items:
+        - name: Hitelesítés a Key Vaultban
+          href: authentication.md
         - name: App Service által felügyelt identitás használata
           href: managed-identity.md
         - name: Hozzáférés-vezérlési szabályzat használata
@@ -117,18 +130,20 @@
       href: rest-error-codes.md
     - name: Gyakori paraméterek és fejlécek
       href: common-parameters-and-headers.md
+    - name: Key Vault-verziók
+      href: versions.md
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
-      href: /python/api/overview/azure/key-vault?view=azure-python
+      href: /python/api/overview/azure/keyvault/management?view=azure-python
     - name: REST
       href: /rest/api/keyvault
     - name: Resource Manager-sablon
